@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-06-02T10:56:57.926358",
+  "generated_at": "2026-06-02T14:17:00.731662",
   "period": "2026-06",
-  "score_global": 3.6,
+  "score_global": 3.5,
   "cinturones": {
     "macro": {
       "score": 1.2,
@@ -134,7 +134,7 @@
           "pj_ponderado": 28.5,
           "n_encuestas": 11,
           "unidad": "pp (LLA − PJ)",
-          "fuente": "Votómetro CIGOB",
+          "fuente": "/home/runner/work/biblitotecario-ai/biblitotecario-ai/projects/votometro/web/votometro.html",
           "fecha_dato": "2026-03-05",
           "desactualizado": true,
           "aporte_score": 0.6,
@@ -160,8 +160,8 @@
           "metrica": "92.0 conflictos acumulados",
           "unidad": "índice 0–100 (normalizado)",
           "fuente": "https://centrocepa.com.ar/documentos/informes/773-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial",
-          "fecha_dato": "2026-05-25",
-          "desactualizado": true,
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false,
           "aporte_score": 4.6,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (índice)",
           "aporte_nota": null
@@ -250,7 +250,7 @@
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político."
     },
     "vida_cotidiana": {
-      "score": 3.3,
+      "score": 3.1,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -366,6 +366,16 @@
           "aporte_formula": "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)",
           "aporte_nota": null
         },
+        "sentimiento_digital": {
+          "valor": 7.6,
+          "unidad": "interés 0–100",
+          "fuente": "Google Trends",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false,
+          "aporte_score": 0.8,
+          "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
+          "aporte_nota": null
+        },
         "patentamiento_motos": {
           "valor": 69629,
           "unidad": "unidades",
@@ -378,7 +388,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260602_1056.json",
+      "fuente_enriquecida": "vida_cotidiana_20260602_1416.json",
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
     },
     "gestion": {
@@ -387,13 +397,13 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 3.26,
-          "avance_pct": 83.7,
+          "valor": 3.72,
+          "avance_pct": 81.4,
           "unidad": "% brecha CCL/oficial (cepo corporativo)",
           "fuente": "https://dolarapi.com/v1/dolares",
           "fecha_dato": "2026-06-02",
           "desactualizado": false,
-          "aporte_score": 1.6,
+          "aporte_score": 1.9,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
           "aporte_nota": null
         },
@@ -526,7 +536,7 @@
   "barbarismo_activo": "gerencial",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:politica:votometro_ventaja_lla,movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento",
+    "desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento",
     "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes"
   ]
 }

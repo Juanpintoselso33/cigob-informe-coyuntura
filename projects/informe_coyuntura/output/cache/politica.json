@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-06-02T10:51:50.313240",
+  "generated_at": "2026-06-02T14:15:57.499431",
   "score": 4.7,
   "indicadores": {
     "votometro_ventaja_lla": {
@@ -9,7 +9,7 @@
       "pj_ponderado": 28.5,
       "n_encuestas": 11,
       "unidad": "pp (LLA − PJ)",
-      "fuente": "C:\\Users\\trico\\OneDrive\\UBA\\Analisis CIGOB\\projects\\votometro\\web\\votometro.html",
+      "fuente": "/home/runner/work/biblitotecario-ai/biblitotecario-ai/projects/votometro/web/votometro.html",
       "fecha_dato": "2026-03-05",
       "desactualizado": true
     },
@@ -29,8 +29,8 @@
       "metrica": "92.0 conflictos acumulados",
       "unidad": "índice 0–100 (normalizado)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/773-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial",
-      "fecha_dato": "2026-05-25",
-      "desactualizado": true
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
     },
     "iaf_transferencias": {
       "valor": 1.8,
