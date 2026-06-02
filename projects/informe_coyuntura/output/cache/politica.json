@@ -1,0 +1,97 @@
+{
+  "cinturon": "politica",
+  "generated_at": "2026-06-02T10:51:50.313240",
+  "score": 4.7,
+  "indicadores": {
+    "votometro_ventaja_lla": {
+      "valor": 13.3,
+      "lla_ponderado": 41.8,
+      "pj_ponderado": 28.5,
+      "n_encuestas": 11,
+      "unidad": "pp (LLA − PJ)",
+      "fuente": "C:\\Users\\trico\\OneDrive\\UBA\\Analisis CIGOB\\projects\\votometro\\web\\votometro.html",
+      "fecha_dato": "2026-03-05",
+      "desactualizado": true
+    },
+    "ratio_dnu": {
+      "valor": 3.143,
+      "dnu_count": 22,
+      "leyes_count": 7,
+      "periodo": "2026",
+      "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
+      "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
+    },
+    "movilizacion_cepa": {
+      "valor": 46.0,
+      "cifra_cruda": 92.0,
+      "metrica": "92.0 conflictos acumulados",
+      "unidad": "índice 0–100 (normalizado)",
+      "fuente": "https://centrocepa.com.ar/documentos/informes/773-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial",
+      "fecha_dato": "2026-05-25",
+      "desactualizado": true
+    },
+    "iaf_transferencias": {
+      "valor": 1.8,
+      "var_nominal_pct": 40.7,
+      "total_ref_mm": 104.0,
+      "total_ant_mm": 74.0,
+      "periodo": "2025 vs 2024",
+      "ipc_aplicado_pct": 38.3,
+      "unidad": "% variación real YoY en transferencias totales RON",
+      "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
+    },
+    "eficacia_legislativa": {
+      "valor": 4.8,
+      "aprobados_n": 1,
+      "enviados_n": 21,
+      "ventana_dias": 365,
+      "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
+      "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
+    },
+    "cohesion_bloque": {
+      "valor": 78,
+      "estado": "placeholder",
+      "unidad": "% votos en línea con la posición oficial del bloque LLA",
+      "fuente": "Votaciones Cámara de Diputados — elaboración CIGOB en base a Hcdn.gob.ar",
+      "notas": "Proporción de diputados del bloque LLA que votaron alineados con la posición oficial en las votaciones nominales de los últimos 3 meses.",
+      "fecha_dato": "2026-04-01",
+      "desactualizado": true
+    },
+    "gobernadores_alineamiento": {
+      "valor": 55,
+      "estado": "placeholder",
+      "unidad": "% gobernadores alineados con política nacional",
+      "fuente": "Análisis de declaraciones y adhesiones públicas — elaboración CIGOB",
+      "notas": "% de gobernadores provinciales (sobre 24) cuya posición pública es de alineamiento o apoyo al programa del gobierno nacional. Incluye acuerdos fiscales, apoyo a reformas, participación en foros oficiales.",
+      "fecha_dato": "2026-04-01",
+      "desactualizado": true
+    },
+    "veto_quorum": {
+      "valor": 0.0,
+      "fracasadas_n": 0,
+      "total_n": 2,
+      "periodo_id": "HCDN144",
+      "unidad": "% sesiones frustradas por falta de quórum",
+      "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
+    },
+    "comisiones_caidas": {
+      "valor": 99.5,
+      "dictamen_n": 439,
+      "aprobados_n": 2,
+      "caidas_n": 437,
+      "ventana_dias": 365,
+      "unidad": "% proyectos con dictamen que no llegaron al recinto",
+      "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
+    }
+  }
+}

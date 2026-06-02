@@ -1,0 +1,28 @@
+{
+  "cinturon": "vida_cotidiana",
+  "generated_at": "2026-06-02T10:56:50.559808",
+  "score": 3.0,
+  "indicadores": {
+    "ipc_total": {
+      "valor": 2.58,
+      "unidad": "% mensual",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2026-04-01",
+      "desactualizado": false
+    },
+    "desocupacion": {
+      "valor": 0.1,
+      "unidad": "%",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2025-10-01",
+      "desactualizado": false
+    },
+    "icc_utdt": {
+      "valor": 40.54,
+      "unidad": "índice",
+      "fuente": "https://www.utdt.edu/listado_contenidos.php?id_item_menu=16458",
+      "fecha_dato": "2026-05-01",
+      "desactualizado": false
+    }
+  }
+}

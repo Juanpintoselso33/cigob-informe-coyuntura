@@ -1,0 +1,103 @@
+{
+  "cinturon": "gestion",
+  "generated_at": "2026-06-02T10:51:55.901566",
+  "score": 5.8,
+  "indicadores": {
+    "cepo_mulc": {
+      "valor": 3.26,
+      "avance_pct": 83.7,
+      "unidad": "% brecha CCL/oficial (cepo corporativo)",
+      "fuente": "https://dolarapi.com/v1/dolares",
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
+    },
+    "privatizaciones": {
+      "valor": "En proceso — Aerolíneas y Correo sin transferencia efectiva",
+      "avance_pct": 15.0,
+      "unidad": "% empresas privatizadas efectivamente / listado DL 70/23",
+      "fuente": "Boletín Oficial — transferencia efectiva de acciones",
+      "fecha_dato": "2026-05-01",
+      "desactualizado": true
+    },
+    "concesiones_infraestructura": {
+      "valor": "Parcial — corredores viales en licitación",
+      "avance_pct": 35.0,
+      "unidad": "% corredores viales concesionados / plan total (9 corredores)",
+      "fuente": "Vialidad Nacional / ORSNA — informes periódicos",
+      "fecha_dato": "2026-05-01",
+      "desactualizado": true
+    },
+    "reduccion_estado": {
+      "valor": -0.8,
+      "avance_pct": 2.7,
+      "unidad": "% var. vs 2024-01-01",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2025-10-01",
+      "desactualizado": false
+    },
+    "reestructuracion_organismos": {
+      "valor": 18,
+      "avance_pct": 40.0,
+      "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
+      "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
+    },
+    "rigi_inversiones": {
+      "valor": 29,
+      "avance_pct": 29.0,
+      "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
+      "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
+    },
+    "desregulacion_normativa": {
+      "valor": 57,
+      "avance_pct": 57.0,
+      "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
+      "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+      "fecha_dato": "2026-06-02",
+      "desactualizado": false
+    },
+    "apertura_comercial": {
+      "valor": 42.4,
+      "avance_pct": 100.0,
+      "unidad": "% var. i.a. importaciones totales (M USD)",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2025-02-01",
+      "desactualizado": false
+    },
+    "asistencia_directa": {
+      "valor": null,
+      "avance_pct": 35.0,
+      "unidad": "% beneficiarios sociales con transferencia directa sin intermediación organizacional",
+      "fuente": "ANSES / MDS — Volver al Trabajo (ex Potenciar Trabajo)",
+      "fecha_dato": "2026-04-01",
+      "desactualizado": true
+    },
+    "fal_modernizacion_laboral": {
+      "valor": "Legislación aprobada — reglamentación pendiente (H2 2026)",
+      "avance_pct": 10.0,
+      "unidad": "% implementación FAL (ley aprobada, reglamentación, operación)",
+      "fuente": "La Nación, 22-may-2026 — MTEySS",
+      "fecha_dato": "2026-05-22",
+      "desactualizado": true
+    },
+    "libertad_opcion_salud": {
+      "valor": null,
+      "avance_pct": 40.0,
+      "unidad": "opciones de cambio captadas (SSS, acum. desde dic-2023)",
+      "fuente": "SSS — sssalud.gob.ar/index.php?page=opciones&cat=institucion",
+      "fecha_dato": "2026-04-01",
+      "desactualizado": true
+    },
+    "protocolo_antipiquetes": {
+      "valor": null,
+      "avance_pct": 55.0,
+      "unidad": "% cortes con carril libre garantizado / total cortes registrados",
+      "fuente": "Ministerio de Seguridad — elaboración CIGOB",
+      "fecha_dato": "2026-04-01",
+      "desactualizado": true
+    }
+  }
+}

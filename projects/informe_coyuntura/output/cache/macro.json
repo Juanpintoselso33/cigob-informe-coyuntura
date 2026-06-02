@@ -1,0 +1,84 @@
+{
+  "cinturon": "macro",
+  "generated_at": "2026-06-02T10:51:32.725194",
+  "score": 1.2,
+  "indicadores": {
+    "ipc_total": {
+      "valor": 2.58,
+      "unidad": "% mensual",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2026-04-01",
+      "desactualizado": false
+    },
+    "reservas_bcra": {
+      "valor": 48113.0,
+      "unidad": "mill USD",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
+      "fecha_dato": "2026-05-28",
+      "desactualizado": false
+    },
+    "badlar": {
+      "valor": 20.62,
+      "unidad": "% anual",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
+      "fecha_dato": "2026-05-29",
+      "desactualizado": false
+    },
+    "emae_ia": {
+      "valor": 5.48,
+      "unidad": "% i.a.",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2026-03-01",
+      "desactualizado": false
+    },
+    "saldo_comercial_12m": {
+      "valor": 17125.0,
+      "unidad": "mill USD acumulado 12m",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2025-02-01",
+      "desactualizado": false
+    },
+    "recaudacion": {
+      "valor": 8.27,
+      "unidad": "% var mensual nominal",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2026-04-01",
+      "desactualizado": false
+    },
+    "tcrm": {
+      "valor": 79.77,
+      "unidad": "índice base 2010=100",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2024-12-01",
+      "desactualizado": false
+    },
+    "rem_ipc_12m": {
+      "valor": 24.2,
+      "unidad": "% anual esperado (mediana REM)",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29",
+      "fecha_dato": "2026-04-30",
+      "desactualizado": false
+    },
+    "prestamos_privados": {
+      "valor": 2.8,
+      "unidad": "% var mensual nominal",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
+      "fecha_dato": "2026-05-28",
+      "desactualizado": false
+    },
+    "base_monetaria": {
+      "valor": 0.41,
+      "unidad": "% var mensual nominal",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
+      "fecha_dato": "2026-05-28",
+      "desactualizado": false
+    },
+    "tc_mayorista": {
+      "valor": 1.66,
+      "unidad": "% var mensual",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
+      "fecha_dato": "2026-06-01",
+      "desactualizado": false
+    }
+  }
+}

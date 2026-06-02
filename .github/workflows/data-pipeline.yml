@@ -1,0 +1,97 @@
+name: Daily data pipeline
+
+# Corre el pipeline completo de los 4 cinturones del Informe de Coyuntura una
+# vez al día, regenera el snapshot, lo commitea a main y deploya la web.
+#
+# 00:00 hora de Buenos Aires (UTC-3) = 03:00 UTC. Argentina no aplica horario
+# de verano, así que el offset es fijo todo el año.
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch: {}   # permite dispararlo a mano desde la pestaña Actions
+
+permissions:
+  contents: write   # commitear el snapshot + caches de vuelta a main
+  pages: write      # deployar GitHub Pages
+  id-token: write   # OIDC para deploy-pages
+
+# Comparte grupo con "Deploy to GitHub Pages" para no pisar deploys simultáneos.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20   # cota dura: pytrends/scrapers pueden colgar en rate-limit
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    defaults:
+      run:
+        working-directory: projects/informe_coyuntura
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: projects/informe_coyuntura/requirements.txt
+
+      - name: Instalar dependencias Python
+        run: pip install -r requirements.txt
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: projects/informe_coyuntura/web/package-lock.json
+
+      # Los colectores devuelven exit 1 (mezcla fresco/cache) o 2 (fallo total de
+      # fuente) de forma esperada: con los caches versionados eso degrada al
+      # último valor conocido, no debe abortar el pipeline. Solo publicar.py es
+      # bloqueante — si no produjo snapshot, el job falla y NO se deploya nada,
+      # dejando la web anterior en pie.
+      - name: Correr colectores
+        run: |
+          set +e
+          python scripts/macro.py;               echo "::notice::macro exit=$?"
+          python scripts/politica.py;            echo "::notice::politica exit=$?"
+          python scripts/gestion.py;             echo "::notice::gestion exit=$?"
+          python scripts/vida_cotidiana/main.py; echo "::notice::vida_main exit=$?"
+          python scripts/vida_cotidiana.py;      echo "::notice::vida_cache exit=$?"
+          python scripts/descargar_series.py;    echo "::notice::series exit=$?"
+          python scripts/generar_informe.py;     echo "::notice::generar exit=$?"
+          true
+
+      - name: Generar snapshot web
+        run: python scripts/publicar.py
+
+      - name: Build informe (Astro)
+        working-directory: projects/informe_coyuntura/web
+        run: |
+          npm ci
+          npm run build
+
+      - name: Commitear snapshot + caches a main
+        working-directory: .
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/informe_coyuntura/output/cache/*.json \
+                  projects/informe_coyuntura/web/src/data/informe.json \
+                  projects/informe_coyuntura/web/src/data/series.json
+          if git diff --staged --quiet; then
+            echo "::notice::Sin cambios en datos — no se commitea."
+          else
+            git commit -m "data(informe): actualización diaria automática [skip ci]"
+            git push
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+      - id: deployment
+        uses: actions/deploy-pages@v4
