@@ -4,7 +4,7 @@ API pública sin autenticación. Verificada 2026-05-10.
 Nota: CIAM no existe (DNS falla). La entidad real es CAFAM.
 """
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import requests
 
@@ -15,12 +15,22 @@ logger = logging.getLogger(__name__)
 
 def fetch_cafam(year: int | None = None, month: int | None = None) -> dict:
     """
-    Descarga el patentamiento de motovehículos del mes indicado (o el actual).
-    Retorna total nacional y desglose por provincia.
+    Descarga el patentamiento de motovehículos del mes indicado.
+
+    Por defecto reporta el último mes calendario COMPLETO (el mes anterior al
+    actual). El patentamiento es un flujo mensual que se compara contra umbrales
+    por mes; tomar el mes en curso devolvería un acumulado parcial (ej. 2.523 el
+    2-jun vs ~70.000 de un mes completo), inflando espuriamente la tensión. El
+    último dato disponible y comparable es siempre el mes completo más reciente.
     """
     now = datetime.today()
-    year = year or now.year
-    month = month or now.month
+    if year is None and month is None:
+        # Mes anterior al actual = último mes calendario completo.
+        ref = now.replace(day=1) - timedelta(days=1)
+        year, month = ref.year, ref.month
+    else:
+        year = year or now.year
+        month = month or now.month
 
     params = {
         "month_start": month,

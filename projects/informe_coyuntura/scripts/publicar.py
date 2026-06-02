@@ -276,15 +276,42 @@ def var_real_credito_12m(cc_serie, ipc_serie):
     return round(((cc_now / cc_old) / (ipc_now / ipc_old) - 1) * 100, 1)
 
 
+def _carry_forward(enriquecido, previo):
+    """Si una fuente falla y un indicador de vida viene sin valor (None), mantener
+    el último dato publicado en lugar de perderlo. Evita que un outage puntual
+    (ej. SNIC, cuyo dato es anual y sin novedad) haga caer el indicador del score.
+    `previo` = indicadores de vida del snapshot publicado anterior."""
+    for key, ind in enriquecido.items():
+        if ind.get("valor") is None and key in previo and previo[key].get("valor") is not None:
+            prev = previo[key]
+            ind["valor"] = prev.get("valor")
+            ind["fecha_dato"] = prev.get("fecha_dato")
+            if prev.get("fuente"):
+                ind["fuente"] = prev["fuente"]
+            print(f"[carry-forward] vida.{key}: sin dato nuevo, se mantiene {prev.get('valor')} ({prev.get('fecha_dato')})")
+    return enriquecido
+
+
 def main():
     informe = json.loads((OUT / "informe.json").read_text(encoding="utf-8"))
     series = build_series()
+
+    # Snapshot publicado anterior → fuente para carry-forward ante outages.
+    prev_vida = {}
+    prev_path = DATA / "informe.json"
+    if prev_path.exists():
+        try:
+            prev_snap = json.loads(prev_path.read_text(encoding="utf-8"))
+            prev_vida = prev_snap["cinturones"]["vida_cotidiana"]["indicadores"]
+        except (json.JSONDecodeError, KeyError):
+            prev_vida = {}
 
     vida_files = sorted(glob.glob(str(ROOT / "scripts" / "vida_cotidiana" / "data" / "vida_cotidiana_*.json")))
     if vida_files:
         raw = json.loads(Path(vida_files[-1]).read_text(encoding="utf-8"))
         enriquecido = build_vida(raw)
         if enriquecido:
+            enriquecido = _carry_forward(enriquecido, prev_vida)
             vida = informe["cinturones"]["vida_cotidiana"]
             vida["indicadores"] = enriquecido
             vida["fuente_enriquecida"] = os.path.basename(vida_files[-1])
