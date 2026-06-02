@@ -45,6 +45,9 @@ const seriesJson = JSON.stringify(series);
     <h4 class="cg-modal-h4" id="cg-modal-serie-h">Evolución histórica</h4>
     <p class="cg-modal-sub" id="cg-modal-sub"></p>
     <table class="cg-modal-table" id="cg-modal-table"></table>
+    <button class="cg-modal-csv" id="cg-modal-csv" type="button" hidden>
+      <span aria-hidden="true">↓</span> Descargar serie (CSV)
+    </button>
   </div>
 </div>
 <script type="application/json" id="cg-info-data" set:html={infoJson}></script>
@@ -59,6 +62,22 @@ const seriesJson = JSON.stringify(series);
   document.getElementById("cg-modal-close").addEventListener("click", close);
   modal.addEventListener("click", e => { if (e.target === modal) close(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+
+  // Descarga de la serie del indicador abierto como CSV (fecha,valor).
+  const csvBtn = document.getElementById("cg-modal-csv");
+  let serieActual = [], keyActual = "";
+  csvBtn.addEventListener("click", () => {
+    if (!serieActual.length) return;
+    const filas = [["fecha", "valor"], ...serieActual.map(p => [p.fecha, p.valor])];
+    const csv = filas.map(r => r.join(",")).join("\r\n") + "\r\n";
+    const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${keyActual}_serie.csv`;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  });
 
   document.querySelectorAll(".cg-ind--clickable[data-indicador]").forEach(li => {
     li.addEventListener("click", () => {
@@ -115,16 +134,19 @@ const seriesJson = JSON.stringify(series);
       const serieH = document.getElementById("cg-modal-serie-h");
       const sub = document.getElementById("cg-modal-sub");
       const table = document.getElementById("cg-modal-table");
+      serieActual = serie; keyActual = key;
       if (serie.length) {
         serieH.style.display = "";
         sub.textContent = `${serie.length} datos · se muestran los últimos ${Math.min(12, serie.length)}`;
         const rows = serie.slice(-12).reverse()
           .map(p => `<tr><td>${esc(p.fecha)}</td><td>${nf.format(p.valor)}</td></tr>`).join("");
         table.innerHTML = `<thead><tr><th>Fecha</th><th>Valor</th></tr></thead><tbody>${rows}</tbody>`;
+        csvBtn.removeAttribute("hidden");
       } else {
         serieH.style.display = "none";
         sub.textContent = "Sin serie histórica disponible para este indicador.";
         table.innerHTML = "";
+        csvBtn.setAttribute("hidden", "");
       }
       modal.removeAttribute("hidden");
     });

@@ -698,6 +698,18 @@ em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ct
 }
 .cg-modal-table tbody td:last-child { text-align: right; font-family: 'JetBrains Mono', monospace; font-weight: 700; }
 .cg-modal-table tbody tr:last-child td { border-bottom: none; }
+.cg-modal-csv {
+    margin-top: 18px;
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 9px 16px;
+    background: #fff; color: var(--teal);
+    border: 1px solid var(--teal); border-radius: 999px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: .02em;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+}
+.cg-modal-csv:hover { background: var(--teal); color: #fff; }
+.cg-modal-csv[hidden] { display: none; }
 
 /* ── Overlay error / empty ────────────────────── */
 .cg-overlay {
