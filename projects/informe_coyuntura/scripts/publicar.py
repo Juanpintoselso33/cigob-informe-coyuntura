@@ -93,7 +93,12 @@ def build_series():
                     continue
                 series.setdefault(ind, []).append({"fecha": row["fecha"], "valor": val})
     for ind in series:
-        series[ind].sort(key=lambda p: p["fecha"])
+        # Deduplicar por fecha: algunos indicadores (ej. ipc_total) se descargan
+        # en más de un CSV de cinturón con la misma serie INDEC, lo que produciría
+        # puntos repetidos en el sparkline y la tabla histórica. Los valores de una
+        # misma fecha son idénticos, así que colapsar a uno por fecha.
+        por_fecha = {p["fecha"]: p for p in series[ind]}
+        series[ind] = sorted(por_fecha.values(), key=lambda p: p["fecha"])
     # Alias: algunos indicadores del informe tienen su serie historica bajo otra
     # clave en los CSV. Exponer la serie tambien bajo la clave del indicador para
     # que el sparkline y el modal la encuentren.
