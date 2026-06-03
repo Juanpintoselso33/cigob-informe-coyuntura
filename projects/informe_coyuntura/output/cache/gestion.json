@@ -1,14 +1,14 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-06-02T14:16:04.581228",
+  "generated_at": "2026-06-03T04:29:42.703542",
   "score": 5.8,
   "indicadores": {
     "cepo_mulc": {
-      "valor": 3.72,
-      "avance_pct": 81.4,
+      "valor": 3.63,
+      "avance_pct": 81.8,
       "unidad": "% brecha CCL/oficial (cepo corporativo)",
       "fuente": "https://dolarapi.com/v1/dolares",
-      "fecha_dato": "2026-06-02",
+      "fecha_dato": "2026-06-03",
       "desactualizado": false
     },
     "privatizaciones": {
@@ -40,7 +40,7 @@
       "avance_pct": 40.0,
       "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-02",
+      "fecha_dato": "2026-06-03",
       "desactualizado": false
     },
     "rigi_inversiones": {
@@ -48,7 +48,7 @@
       "avance_pct": 29.0,
       "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-02",
+      "fecha_dato": "2026-06-03",
       "desactualizado": false
     },
     "desregulacion_normativa": {
@@ -56,7 +56,7 @@
       "avance_pct": 57.0,
       "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-02",
+      "fecha_dato": "2026-06-03",
       "desactualizado": false
     },
     "apertura_comercial": {

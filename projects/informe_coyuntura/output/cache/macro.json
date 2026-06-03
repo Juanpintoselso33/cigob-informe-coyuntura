@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-02T14:15:31.870842",
+  "generated_at": "2026-06-03T04:29:12.761793",
   "score": 1.2,
   "indicadores": {
     "ipc_total": {
@@ -11,17 +11,17 @@
       "desactualizado": false
     },
     "reservas_bcra": {
-      "valor": 48113.0,
+      "valor": 48193.0,
       "unidad": "mill USD",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
-      "fecha_dato": "2026-05-28",
+      "fecha_dato": "2026-05-29",
       "desactualizado": false
     },
     "badlar": {
-      "valor": 20.62,
+      "valor": 20.81,
       "unidad": "% anual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-05-29",
+      "fecha_dato": "2026-06-01",
       "desactualizado": false
     },
     "emae_ia": {
@@ -39,10 +39,10 @@
       "desactualizado": false
     },
     "recaudacion": {
-      "valor": 8.27,
+      "valor": 23.64,
       "unidad": "% var mensual nominal",
       "fuente": "https://apis.datos.gob.ar/series/api/series/",
-      "fecha_dato": "2026-04-01",
+      "fecha_dato": "2026-05-01",
       "desactualizado": false
     },
     "tcrm": {
@@ -60,24 +60,24 @@
       "desactualizado": false
     },
     "prestamos_privados": {
-      "valor": 2.8,
+      "valor": 2.86,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-05-28",
+      "fecha_dato": "2026-05-29",
       "desactualizado": false
     },
     "base_monetaria": {
-      "valor": 0.41,
+      "valor": -0.37,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-05-28",
+      "fecha_dato": "2026-05-29",
       "desactualizado": false
     },
     "tc_mayorista": {
-      "valor": 1.66,
+      "valor": 2.28,
       "unidad": "% var mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-06-01",
+      "fecha_dato": "2026-06-02",
       "desactualizado": false
     }
   }
