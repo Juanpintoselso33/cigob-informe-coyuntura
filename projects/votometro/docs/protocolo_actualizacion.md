@@ -23,7 +23,7 @@ Este documento explica paso a paso cómo hacerlo sin conocimientos técnicos ava
 ### Dónde está el archivo
 
 ```
-C:\Users\trico\OneDrive\UBA\Analisis CIGOB\web\votometro.html
+projects/votometro/web/votometro.html      (relativo a la raíz del repo)
 ```
 
 ### Cómo encontrar el lugar exacto donde agregar la encuesta

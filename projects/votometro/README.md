@@ -8,11 +8,25 @@ HTML estático puro para proyección electoral. Colaboración CIGOB + Redlines E
 |---|---|
 | `web/votometro.html` | Versión activa — editar aquí |
 
+El archivo canónico (datos inline + datos en `encuestas.json` espejo) vive en
+`projects/votometro/web/`.
+
 ## Cómo actualizar encuestas
 
-Editar directamente `web/votometro.html`. Las encuestas están en el array `pollsData` al inicio del script.
+**Opción A — script (recomendado).** Desde la raíz del repo:
 
-> Ver `scripts/mantener-votometro` en `.claude/skills/` para el proceso completo de actualización.
+```bash
+python scripts/actualizar_encuestas.py            # modo interactivo
+python scripts/actualizar_encuestas.py nueva.csv  # desde CSV
+python scripts/actualizar_encuestas.py nueva.json # desde JSON
+```
+
+Hace _dual-write_: actualiza `projects/votometro/web/encuestas.json` y parcha el
+array `encuestasRaw` dentro de `projects/votometro/web/votometro.html` (con backup
+automático `.bak` y rollback si el parcheo falla).
+
+**Opción B — manual.** Editar el array `encuestasRaw` (al inicio del `<script>`, ~línea 1169)
+en `projects/votometro/web/votometro.html`.
 
 ## Deploy
 

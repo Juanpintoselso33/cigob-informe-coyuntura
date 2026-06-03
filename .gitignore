@@ -25,7 +25,8 @@ __pycache__/
 venv/
 env/
 node_modules/
-package-lock.json
+# package-lock.json NO se ignora: el deploy (pages.yml) corre `npm ci`,
+# que requiere el lockfile versionado para builds reproducibles.
 
 # ============================================================
 # Credenciales y secretos
@@ -91,6 +92,11 @@ GEMINI.md
 .bmad-core/
 .bmad-output/
 .bmad-*/
+_bmad/
+_bmad-output/
+
+# Artefactos de planificación de Claude Code / superpowers
+docs/superpowers/
 
 # MCP servers y caches
 .mcp-cache/
@@ -108,3 +114,7 @@ projects/informe_coyuntura/web/reference/
 
 # Build output del informe (CI lo regenera desde Astro)
 web/informe/
+
+# Votómetro publicado: el deploy lo copia desde projects/votometro/web/
+# (no versionar el duplicado generado en la carpeta de deploy)
+web/votometro.html

@@ -2,7 +2,8 @@
 """
 actualizar_encuestas.py — Agrega una nueva encuesta al Votómetro Argentina 2027.
 
-Dual-write: actualiza web/encuestas.json Y web/votometro.html en cada operación.
+Dual-write: actualiza projects/votometro/web/encuestas.json Y
+projects/votometro/web/votometro.html en cada operación.
 
 Uso:
     python scripts/actualizar_encuestas.py                  # modo interactivo
@@ -21,9 +22,10 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding='utf-8')
 
 BASE = Path(__file__).parent.parent
-JSON_PATH = BASE / 'web' / 'encuestas.json'
-HTML_PATH = BASE / 'web' / 'votometro.html'
-HTML_BAK  = BASE / 'web' / 'votometro.html.bak'
+VOTOMETRO_WEB = BASE / 'projects' / 'votometro' / 'web'
+JSON_PATH = VOTOMETRO_WEB / 'encuestas.json'
+HTML_PATH = VOTOMETRO_WEB / 'votometro.html'
+HTML_BAK  = VOTOMETRO_WEB / 'votometro.html.bak'
 
 CAMPOS_NUMERICOS = ['LLA', 'PJ', 'PRO', 'PU', 'FIT', 'OTROS']
 TIPOS_VALIDOS    = {'espacio', 'candidato'}
@@ -332,7 +334,7 @@ def main():
 
     guardar_json(existentes)
     n_despues = len(existentes)
-    print(f"✓ JSON actualizado: web/encuestas.json ({n_antes} → {n_despues} entradas)")
+    print(f"✓ JSON actualizado: projects/votometro/web/encuestas.json ({n_antes} → {n_despues} entradas)")
 
     # ── Actualizar HTML ──────────────────────────────────────
     html_contenido = HTML_PATH.read_text(encoding='utf-8')
@@ -351,7 +353,7 @@ def main():
 
     HTML_PATH.write_text(html_nuevo, encoding='utf-8')
 
-    print(f"✓ HTML actualizado: web/votometro.html")
+    print(f"✓ HTML actualizado: projects/votometro/web/votometro.html")
     for enc in nuevas:
         print(f"  - encuestasRaw: +1 entrada ({enc['consultora']} {enc['fecha']})")
     print(f"  - ULTIMA_ACTUALIZACION: {fecha_ua_final or fecha_max}")

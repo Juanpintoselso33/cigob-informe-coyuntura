@@ -68,8 +68,7 @@ cd web && npm install && npm run build && npm run preview
 desde `scripts/vida_cotidiana/data/`), agrupa las series en `series.json` y
 sanitiza rutas locales en los campos `fuente`. El deploy (`.github/workflows/pages.yml`)
 corre `npm ci && npm run build` antes de publicar. Detalle de diseño en
-`docs/specs/2026-05-29-informe-coyuntura-web-design.md` y plan en
-`docs/superpowers/plans/` (raíz del repo).
+`docs/specs/2026-05-29-informe-coyuntura-web-design.md`.
 
 ## Outputs
 
