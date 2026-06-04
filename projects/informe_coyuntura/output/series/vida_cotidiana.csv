@@ -1,0 +1,95 @@
+fecha,indicador,valor,unidad,fuente
+2026-04-01,ipc_total,11363.0904,indice base dic-2016=100,INDEC/datos.gob.ar
+2026-03-01,ipc_total,11077.0608,indice base dic-2016=100,INDEC/datos.gob.ar
+2026-02-01,ipc_total,10714.6255,indice base dic-2016=100,INDEC/datos.gob.ar
+2026-01-01,ipc_total,10413.0309,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-12-01,ipc_total,10121.3715,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-11-01,ipc_total,9841.3581,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-10-01,ipc_total,9603.8623,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-09-01,ipc_total,9384.0922,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-08-01,ipc_total,9193.2441,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-07-01,ipc_total,9023.973,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-06-01,ipc_total,8855.5681,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-05-01,ipc_total,8714.4871,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-04-01,ipc_total,8585.6078,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-03-01,ipc_total,8353.3158,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-02-01,ipc_total,8052.9927,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-01-01,ipc_total,7864.1257,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-12-01,ipc_total,7694.0075,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-11-01,ipc_total,7491.4314,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-10-01,ipc_total,7313.9542,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-09-01,ipc_total,7122.2421,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-08-01,ipc_total,6883.4412,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-07-01,ipc_total,6607.7479,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-06-01,ipc_total,6351.7145,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-05-01,ipc_total,6073.7,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-04-01,ipc_total,5830.2271,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-03-01,ipc_total,5357.0929,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-02-01,ipc_total,4825.7881,indice base dic-2016=100,INDEC/datos.gob.ar
+2024-01-01,ipc_total,4261.5324,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-12-01,ipc_total,3533.1922,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-11-01,ipc_total,2816.0628,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-10-01,ipc_total,2496.273,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-09-01,ipc_total,2304.9242,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-08-01,ipc_total,2044.2832,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-07-01,ipc_total,1818.0838,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-06-01,ipc_total,1709.6115,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-05-01,ipc_total,1613.5895,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-04-01,ipc_total,1497.2147,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-03-01,ipc_total,1381.1601,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-02-01,ipc_total,1282.7091,indice base dic-2016=100,INDEC/datos.gob.ar
+2023-01-01,ipc_total,1202.979,indice base dic-2016=100,INDEC/datos.gob.ar
+2022-12-01,ipc_total,1134.5875,indice base dic-2016=100,INDEC/datos.gob.ar
+2022-11-01,ipc_total,1079.2787,indice base dic-2016=100,INDEC/datos.gob.ar
+2022-10-01,ipc_total,1028.706,indice base dic-2016=100,INDEC/datos.gob.ar
+2022-09-01,ipc_total,967.3076,indice base dic-2016=100,INDEC/datos.gob.ar
+2022-08-01,ipc_total,911.1316,indice base dic-2016=100,INDEC/datos.gob.ar
+2022-07-01,ipc_total,851.761,indice base dic-2016=100,INDEC/datos.gob.ar
+2022-06-01,ipc_total,793.0278,indice base dic-2016=100,INDEC/datos.gob.ar
+2022-05-01,ipc_total,753.147,indice base dic-2016=100,INDEC/datos.gob.ar
+2025-10-01,desocupacion,0.075,%,INDEC/datos.gob.ar
+2025-07-01,desocupacion,0.066,%,INDEC/datos.gob.ar
+2025-04-01,desocupacion,0.0757623890941418,%,INDEC/datos.gob.ar
+2025-01-01,desocupacion,0.079,%,INDEC/datos.gob.ar
+2024-10-01,desocupacion,0.064,%,INDEC/datos.gob.ar
+2024-07-01,desocupacion,0.069,%,INDEC/datos.gob.ar
+2024-04-01,desocupacion,0.0756441257608806,%,INDEC/datos.gob.ar
+2024-01-01,desocupacion,0.077,%,INDEC/datos.gob.ar
+2023-10-01,desocupacion,0.057,%,INDEC/datos.gob.ar
+2023-07-01,desocupacion,0.0572602987094246,%,INDEC/datos.gob.ar
+2023-04-01,desocupacion,0.062,%,INDEC/datos.gob.ar
+2023-01-01,desocupacion,0.0687452753758732,%,INDEC/datos.gob.ar
+2022-10-01,desocupacion,0.0628180391588461,%,INDEC/datos.gob.ar
+2022-07-01,desocupacion,0.071,%,INDEC/datos.gob.ar
+2022-04-01,desocupacion,0.069,%,INDEC/datos.gob.ar
+2022-01-01,desocupacion,0.07,%,INDEC/datos.gob.ar
+2021-10-01,desocupacion,0.07,%,INDEC/datos.gob.ar
+2021-07-01,desocupacion,0.0819999999999999,%,INDEC/datos.gob.ar
+2021-04-01,desocupacion,0.0960090333606911,%,INDEC/datos.gob.ar
+2021-01-01,desocupacion,0.102,%,INDEC/datos.gob.ar
+2020-10-01,desocupacion,0.109579322139272,%,INDEC/datos.gob.ar
+2020-07-01,desocupacion,0.117,%,INDEC/datos.gob.ar
+2020-04-01,desocupacion,0.131,%,INDEC/datos.gob.ar
+2020-01-01,desocupacion,0.104,%,INDEC/datos.gob.ar
+2019-10-01,desocupacion,0.089,%,INDEC/datos.gob.ar
+2019-07-01,desocupacion,0.097,%,INDEC/datos.gob.ar
+2019-04-01,desocupacion,0.106,%,INDEC/datos.gob.ar
+2019-01-01,desocupacion,0.101,%,INDEC/datos.gob.ar
+2018-10-01,desocupacion,0.091,%,INDEC/datos.gob.ar
+2018-07-01,desocupacion,0.09,%,INDEC/datos.gob.ar
+2018-04-01,desocupacion,0.096,%,INDEC/datos.gob.ar
+2018-01-01,desocupacion,0.091,%,INDEC/datos.gob.ar
+2017-10-01,desocupacion,0.072,%,INDEC/datos.gob.ar
+2017-07-01,desocupacion,0.083,%,INDEC/datos.gob.ar
+2017-04-01,desocupacion,0.087,%,INDEC/datos.gob.ar
+2017-01-01,desocupacion,0.092,%,INDEC/datos.gob.ar
+2016-10-01,desocupacion,0.076,%,INDEC/datos.gob.ar
+2016-07-01,desocupacion,0.085,%,INDEC/datos.gob.ar
+2016-04-01,desocupacion,0.093,%,INDEC/datos.gob.ar
+2015-07-01,desocupacion,0.059,%,INDEC/datos.gob.ar
+2015-04-01,desocupacion,0.066,%,INDEC/datos.gob.ar
+2015-01-01,desocupacion,0.071,%,INDEC/datos.gob.ar
+2014-10-01,desocupacion,0.069,%,INDEC/datos.gob.ar
+2014-07-01,desocupacion,0.075,%,INDEC/datos.gob.ar
+2014-04-01,desocupacion,0.071,%,INDEC/datos.gob.ar
+2014-01-01,desocupacion,0.071,%,INDEC/datos.gob.ar

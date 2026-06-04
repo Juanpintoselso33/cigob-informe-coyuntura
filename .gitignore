@@ -55,15 +55,10 @@ output/main_script.js
 output/review_screenshots/
 
 # Outputs de colectores e informes CIGOB
-# Se ignora todo output/ EXCEPTO output/cache/*.json: los caches se versionan
-# para que el pipeline diario (CI) tenga fallback ante caídas de fuente —
-# un colector cuya fuente falla cae al último valor cacheado en vez de
-# desaparecer del snapshot. Series CSV e informe.* se regeneran en cada corrida.
-projects/*/output/*
-!projects/*/output/cache
-projects/*/output/cache/*
-!projects/*/output/cache/*.json
-projects/informe_coyuntura/scripts/vida_cotidiana/data/
+# SE VERSIONAN para que los colaboradores tengan el reporte y los datos ya
+# generados sin tener que correr los colectores (que pegan a APIs que a veces
+# fallan). Incluye: output/cache/*.json, output/informe.{json,md}, output/series/
+# y scripts/vida_cotidiana/data/. El pipeline diario (CI) los actualiza.
 
 # ============================================================
 # Herramientas de desarrollo asistido por IA (no se versionan)

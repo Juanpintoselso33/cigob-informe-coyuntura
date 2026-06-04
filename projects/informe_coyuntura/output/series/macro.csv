@@ -1,0 +1,2016 @@
+fecha,indicador,valor,unidad,fuente
+2024-12-01,tcrm,79.7730421256683,indice base 2010=100,INDEC/datos.gob.ar
+2024-11-01,tcrm,81.7457900205989,indice base 2010=100,INDEC/datos.gob.ar
+2024-10-01,tcrm,84.03863352814257,indice base 2010=100,INDEC/datos.gob.ar
+2024-09-01,tcrm,86.04323009221208,indice base 2010=100,INDEC/datos.gob.ar
+2024-08-01,tcrm,87.15901302377064,indice base 2010=100,INDEC/datos.gob.ar
+2024-07-01,tcrm,87.87889515509198,indice base 2010=100,INDEC/datos.gob.ar
+2024-06-01,tcrm,89.89842994707736,indice base 2010=100,INDEC/datos.gob.ar
+2024-05-01,tcrm,93.43047026156258,indice base 2010=100,INDEC/datos.gob.ar
+2024-04-01,tcrm,97.0263216151782,indice base 2010=100,INDEC/datos.gob.ar
+2024-03-01,tcrm,105.87373691154625,indice base 2010=100,INDEC/datos.gob.ar
+2024-02-01,tcrm,115.75579006002025,indice base 2010=100,INDEC/datos.gob.ar
+2024-01-01,tcrm,132.78329804941433,indice base 2010=100,INDEC/datos.gob.ar
+2023-12-01,tcrm,124.8715827662506,indice base 2010=100,INDEC/datos.gob.ar
+2023-11-01,tcrm,83.19024889092823,indice base 2010=100,INDEC/datos.gob.ar
+2023-10-01,tcrm,89.62223466261251,indice base 2010=100,INDEC/datos.gob.ar
+2023-09-01,tcrm,100.66491108547751,indice base 2010=100,INDEC/datos.gob.ar
+2023-08-01,tcrm,104.82581406789554,indice base 2010=100,INDEC/datos.gob.ar
+2023-07-01,tcrm,95.84523343591636,indice base 2010=100,INDEC/datos.gob.ar
+2023-06-01,tcrm,93.9620368290703,indice base 2010=100,INDEC/datos.gob.ar
+2023-05-01,tcrm,93.05109254015332,indice base 2010=100,INDEC/datos.gob.ar
+2023-04-01,tcrm,93.81139795932678,indice base 2010=100,INDEC/datos.gob.ar
+2023-03-01,tcrm,93.58891957423567,indice base 2010=100,INDEC/datos.gob.ar
+2023-02-01,tcrm,94.76917731040544,indice base 2010=100,INDEC/datos.gob.ar
+2023-01-01,tcrm,95.14063774954568,indice base 2010=100,INDEC/datos.gob.ar
+2022-12-01,tcrm,93.21101721987628,indice base 2010=100,INDEC/datos.gob.ar
+2022-11-01,tcrm,90.097103776563,indice base 2010=100,INDEC/datos.gob.ar
+2022-10-01,tcrm,88.35327082164328,indice base 2010=100,INDEC/datos.gob.ar
+2022-09-01,tcrm,89.26422166421666,indice base 2010=100,INDEC/datos.gob.ar
+2022-08-01,tcrm,91.4911049166073,indice base 2010=100,INDEC/datos.gob.ar
+2022-07-01,tcrm,91.696043190719,indice base 2010=100,INDEC/datos.gob.ar
+2022-06-01,tcrm,95.60731519798492,indice base 2010=100,INDEC/datos.gob.ar
+2022-05-01,tcrm,96.43944341230365,indice base 2010=100,INDEC/datos.gob.ar
+2022-04-01,tcrm,99.81558963146016,indice base 2010=100,INDEC/datos.gob.ar
+2022-03-01,tcrm,101.3062471973853,indice base 2010=100,INDEC/datos.gob.ar
+2022-02-01,tcrm,102.69184163270717,indice base 2010=100,INDEC/datos.gob.ar
+2022-01-01,tcrm,101.98667299212951,indice base 2010=100,INDEC/datos.gob.ar
+2021-12-01,tcrm,102.26886322650964,indice base 2010=100,INDEC/datos.gob.ar
+2021-11-01,tcrm,104.36663150859044,indice base 2010=100,INDEC/datos.gob.ar
+2021-10-01,tcrm,106.16654980671548,indice base 2010=100,INDEC/datos.gob.ar
+2021-09-01,tcrm,110.49825119877616,indice base 2010=100,INDEC/datos.gob.ar
+2021-08-01,tcrm,112.28415164722584,indice base 2010=100,INDEC/datos.gob.ar
+2021-07-01,tcrm,114.08393231509834,indice base 2010=100,INDEC/datos.gob.ar
+2021-06-01,tcrm,117.31425780871524,indice base 2010=100,INDEC/datos.gob.ar
+2021-05-01,tcrm,117.87859929326012,indice base 2010=100,INDEC/datos.gob.ar
+2021-04-01,tcrm,117.5453002158145,indice base 2010=100,INDEC/datos.gob.ar
+2021-03-01,tcrm,119.97886178335229,indice base 2010=100,INDEC/datos.gob.ar
+2021-02-01,tcrm,123.17687562865184,indice base 2010=100,INDEC/datos.gob.ar
+2021-01-01,tcrm,123.54847201836388,indice base 2010=100,INDEC/datos.gob.ar
+2026-06-01,tc_mayorista,1421.4672,ARS/USD,BCRA
+2026-05-29,tc_mayorista,1410.2904,ARS/USD,BCRA
+2026-05-28,tc_mayorista,1411.4054,ARS/USD,BCRA
+2026-05-27,tc_mayorista,1411.1796,ARS/USD,BCRA
+2026-05-26,tc_mayorista,1407.8893,ARS/USD,BCRA
+2026-05-22,tc_mayorista,1393.5019,ARS/USD,BCRA
+2026-05-21,tc_mayorista,1392.1705,ARS/USD,BCRA
+2026-05-20,tc_mayorista,1398.8346,ARS/USD,BCRA
+2026-05-19,tc_mayorista,1398.916,ARS/USD,BCRA
+2026-05-18,tc_mayorista,1394.974,ARS/USD,BCRA
+2026-05-15,tc_mayorista,1395.3478,ARS/USD,BCRA
+2026-05-14,tc_mayorista,1393.2322,ARS/USD,BCRA
+2026-05-13,tc_mayorista,1389.2073,ARS/USD,BCRA
+2026-05-12,tc_mayorista,1386.5259,ARS/USD,BCRA
+2026-05-11,tc_mayorista,1399.4749,ARS/USD,BCRA
+2026-05-08,tc_mayorista,1394.1232,ARS/USD,BCRA
+2026-05-07,tc_mayorista,1390.637,ARS/USD,BCRA
+2026-05-06,tc_mayorista,1386.2923,ARS/USD,BCRA
+2026-05-05,tc_mayorista,1395.1909,ARS/USD,BCRA
+2026-05-04,tc_mayorista,1398.3143,ARS/USD,BCRA
+2026-04-30,tc_mayorista,1381.0954,ARS/USD,BCRA
+2026-04-29,tc_mayorista,1395.2866,ARS/USD,BCRA
+2026-04-28,tc_mayorista,1408.1491,ARS/USD,BCRA
+2026-04-27,tc_mayorista,1412.9865,ARS/USD,BCRA
+2026-04-24,tc_mayorista,1397.2063,ARS/USD,BCRA
+2026-04-23,tc_mayorista,1387.6961,ARS/USD,BCRA
+2026-04-22,tc_mayorista,1378.1258,ARS/USD,BCRA
+2026-04-21,tc_mayorista,1379.0516,ARS/USD,BCRA
+2026-04-20,tc_mayorista,1372.7745,ARS/USD,BCRA
+2026-04-17,tc_mayorista,1360.0307,ARS/USD,BCRA
+2026-04-16,tc_mayorista,1352.9774,ARS/USD,BCRA
+2026-04-15,tc_mayorista,1363.6566,ARS/USD,BCRA
+2026-04-14,tc_mayorista,1358.522,ARS/USD,BCRA
+2026-04-13,tc_mayorista,1362.8139,ARS/USD,BCRA
+2026-04-10,tc_mayorista,1373.9033,ARS/USD,BCRA
+2026-04-09,tc_mayorista,1383.2312,ARS/USD,BCRA
+2026-04-08,tc_mayorista,1387.0308,ARS/USD,BCRA
+2026-04-07,tc_mayorista,1395.0979,ARS/USD,BCRA
+2026-04-06,tc_mayorista,1391.6887,ARS/USD,BCRA
+2026-04-01,tc_mayorista,1387.7212,ARS/USD,BCRA
+2026-03-31,tc_mayorista,1382.7578,ARS/USD,BCRA
+2026-03-30,tc_mayorista,1394.9234,ARS/USD,BCRA
+2026-03-27,tc_mayorista,1376.0989,ARS/USD,BCRA
+2026-03-26,tc_mayorista,1370.2909,ARS/USD,BCRA
+2026-03-25,tc_mayorista,1378.9689,ARS/USD,BCRA
+2026-03-20,tc_mayorista,1393.438,ARS/USD,BCRA
+2026-03-19,tc_mayorista,1395.5142,ARS/USD,BCRA
+2026-03-18,tc_mayorista,1399.6042,ARS/USD,BCRA
+2026-03-17,tc_mayorista,1395.5134,ARS/USD,BCRA
+2026-03-16,tc_mayorista,1394.655,ARS/USD,BCRA
+2026-03-13,tc_mayorista,1392.9851,ARS/USD,BCRA
+2026-03-12,tc_mayorista,1399.6749,ARS/USD,BCRA
+2026-03-11,tc_mayorista,1396.4528,ARS/USD,BCRA
+2026-03-10,tc_mayorista,1402.3816,ARS/USD,BCRA
+2026-03-09,tc_mayorista,1418.2781,ARS/USD,BCRA
+2026-03-06,tc_mayorista,1413.8218,ARS/USD,BCRA
+2026-03-05,tc_mayorista,1407.1504,ARS/USD,BCRA
+2026-03-04,tc_mayorista,1401.5797,ARS/USD,BCRA
+2026-03-03,tc_mayorista,1411.1067,ARS/USD,BCRA
+2026-03-02,tc_mayorista,1401.5785,ARS/USD,BCRA
+2026-02-27,tc_mayorista,1408.9662,ARS/USD,BCRA
+2026-02-26,tc_mayorista,1408.6966,ARS/USD,BCRA
+2026-02-25,tc_mayorista,1388.5847,ARS/USD,BCRA
+2026-02-24,tc_mayorista,1377.0942,ARS/USD,BCRA
+2026-02-23,tc_mayorista,1367.2357,ARS/USD,BCRA
+2026-02-20,tc_mayorista,1384.205,ARS/USD,BCRA
+2026-02-19,tc_mayorista,1391.9703,ARS/USD,BCRA
+2026-02-18,tc_mayorista,1401.8091,ARS/USD,BCRA
+2026-02-13,tc_mayorista,1395.4205,ARS/USD,BCRA
+2026-02-12,tc_mayorista,1394.154,ARS/USD,BCRA
+2026-02-11,tc_mayorista,1403.6981,ARS/USD,BCRA
+2026-02-10,tc_mayorista,1405.427,ARS/USD,BCRA
+2026-02-09,tc_mayorista,1423.3639,ARS/USD,BCRA
+2026-02-06,tc_mayorista,1430.589,ARS/USD,BCRA
+2026-02-05,tc_mayorista,1445.6242,ARS/USD,BCRA
+2026-02-04,tc_mayorista,1447.6232,ARS/USD,BCRA
+2026-02-03,tc_mayorista,1447.6651,ARS/USD,BCRA
+2026-02-02,tc_mayorista,1451.701,ARS/USD,BCRA
+2026-01-30,tc_mayorista,1447.6657,ARS/USD,BCRA
+2026-01-29,tc_mayorista,1446.301,ARS/USD,BCRA
+2026-01-28,tc_mayorista,1442.6959,ARS/USD,BCRA
+2026-01-27,tc_mayorista,1441.3245,ARS/USD,BCRA
+2026-01-26,tc_mayorista,1438.4603,ARS/USD,BCRA
+2026-01-23,tc_mayorista,1433.1999,ARS/USD,BCRA
+2026-01-22,tc_mayorista,1427.0331,ARS/USD,BCRA
+2026-01-21,tc_mayorista,1429.7799,ARS/USD,BCRA
+2026-01-20,tc_mayorista,1435.6263,ARS/USD,BCRA
+2026-01-19,tc_mayorista,1432.6913,ARS/USD,BCRA
+2026-01-16,tc_mayorista,1431.055,ARS/USD,BCRA
+2026-01-15,tc_mayorista,1443.8584,ARS/USD,BCRA
+2026-01-14,tc_mayorista,1454.3238,ARS/USD,BCRA
+2026-01-13,tc_mayorista,1463.3168,ARS/USD,BCRA
+2026-01-12,tc_mayorista,1466.646,ARS/USD,BCRA
+2026-01-09,tc_mayorista,1466.4689,ARS/USD,BCRA
+2026-01-08,tc_mayorista,1459.5816,ARS/USD,BCRA
+2026-01-07,tc_mayorista,1466.0309,ARS/USD,BCRA
+2026-01-06,tc_mayorista,1467.6208,ARS/USD,BCRA
+2026-01-05,tc_mayorista,1472.7348,ARS/USD,BCRA
+2026-01-02,tc_mayorista,1469.613,ARS/USD,BCRA
+2025-12-30,tc_mayorista,1459.4167,ARS/USD,BCRA
+2025-12-29,tc_mayorista,1454.9167,ARS/USD,BCRA
+2025-12-26,tc_mayorista,1450.9167,ARS/USD,BCRA
+2025-12-23,tc_mayorista,1450.5,ARS/USD,BCRA
+2025-12-22,tc_mayorista,1450.4167,ARS/USD,BCRA
+2025-12-19,tc_mayorista,1452.25,ARS/USD,BCRA
+2025-12-18,tc_mayorista,1453.1667,ARS/USD,BCRA
+2025-12-17,tc_mayorista,1448.5833,ARS/USD,BCRA
+2025-12-16,tc_mayorista,1451.3333,ARS/USD,BCRA
+2025-12-15,tc_mayorista,1439.8333,ARS/USD,BCRA
+2025-12-12,tc_mayorista,1438.4167,ARS/USD,BCRA
+2025-12-11,tc_mayorista,1438.25,ARS/USD,BCRA
+2025-12-10,tc_mayorista,1439.4167,ARS/USD,BCRA
+2025-12-09,tc_mayorista,1437.4167,ARS/USD,BCRA
+2025-12-05,tc_mayorista,1438.5833,ARS/USD,BCRA
+2025-12-04,tc_mayorista,1449.3333,ARS/USD,BCRA
+2025-12-03,tc_mayorista,1453.5,ARS/USD,BCRA
+2025-12-02,tc_mayorista,1453.5833,ARS/USD,BCRA
+2025-12-01,tc_mayorista,1449.0833,ARS/USD,BCRA
+2025-11-28,tc_mayorista,1450.75,ARS/USD,BCRA
+2025-11-27,tc_mayorista,1448.0,ARS/USD,BCRA
+2025-11-26,tc_mayorista,1448.5,ARS/USD,BCRA
+2025-11-25,tc_mayorista,1442.8333,ARS/USD,BCRA
+2025-11-20,tc_mayorista,1416.6667,ARS/USD,BCRA
+2025-11-19,tc_mayorista,1402.5,ARS/USD,BCRA
+2025-11-18,tc_mayorista,1388.0,ARS/USD,BCRA
+2025-11-17,tc_mayorista,1401.0,ARS/USD,BCRA
+2025-11-14,tc_mayorista,1405.0,ARS/USD,BCRA
+2025-11-13,tc_mayorista,1408.8333,ARS/USD,BCRA
+2025-11-12,tc_mayorista,1402.0,ARS/USD,BCRA
+2025-11-11,tc_mayorista,1416.5,ARS/USD,BCRA
+2025-11-10,tc_mayorista,1419.3333,ARS/USD,BCRA
+2025-11-07,tc_mayorista,1441.5,ARS/USD,BCRA
+2025-11-05,tc_mayorista,1447.5,ARS/USD,BCRA
+2025-11-04,tc_mayorista,1473.1667,ARS/USD,BCRA
+2025-11-03,tc_mayorista,1457.4167,ARS/USD,BCRA
+2025-10-31,tc_mayorista,1443.0,ARS/USD,BCRA
+2025-10-30,tc_mayorista,1433.6667,ARS/USD,BCRA
+2025-10-29,tc_mayorista,1451.5,ARS/USD,BCRA
+2025-10-28,tc_mayorista,1470.8333,ARS/USD,BCRA
+2025-10-27,tc_mayorista,1378.9167,ARS/USD,BCRA
+2025-10-24,tc_mayorista,1485.9167,ARS/USD,BCRA
+2025-10-23,tc_mayorista,1484.0,ARS/USD,BCRA
+2025-10-22,tc_mayorista,1487.0833,ARS/USD,BCRA
+2025-10-21,tc_mayorista,1484.75,ARS/USD,BCRA
+2025-10-20,tc_mayorista,1462.8333,ARS/USD,BCRA
+2025-10-17,tc_mayorista,1439.5,ARS/USD,BCRA
+2025-10-16,tc_mayorista,1387.1667,ARS/USD,BCRA
+2025-10-15,tc_mayorista,1373.5,ARS/USD,BCRA
+2025-10-14,tc_mayorista,1359.8333,ARS/USD,BCRA
+2025-10-13,tc_mayorista,1347.6667,ARS/USD,BCRA
+2025-10-09,tc_mayorista,1451.75,ARS/USD,BCRA
+2025-10-08,tc_mayorista,1429.75,ARS/USD,BCRA
+2025-10-07,tc_mayorista,1429.75,ARS/USD,BCRA
+2025-10-06,tc_mayorista,1429.75,ARS/USD,BCRA
+2025-10-03,tc_mayorista,1424.75,ARS/USD,BCRA
+2025-10-02,tc_mayorista,1424.75,ARS/USD,BCRA
+2025-10-01,tc_mayorista,1423.8333,ARS/USD,BCRA
+2025-09-30,tc_mayorista,1366.5833,ARS/USD,BCRA
+2025-09-29,tc_mayorista,1341.0,ARS/USD,BCRA
+2025-09-26,tc_mayorista,1332.0,ARS/USD,BCRA
+2025-09-25,tc_mayorista,1325.0833,ARS/USD,BCRA
+2025-09-24,tc_mayorista,1343.3333,ARS/USD,BCRA
+2025-09-23,tc_mayorista,1354.1667,ARS/USD,BCRA
+2025-09-22,tc_mayorista,1425.6667,ARS/USD,BCRA
+2025-09-19,tc_mayorista,1474.75,ARS/USD,BCRA
+2025-09-18,tc_mayorista,1474.25,ARS/USD,BCRA
+2025-09-17,tc_mayorista,1471.4167,ARS/USD,BCRA
+2025-09-16,tc_mayorista,1464.6667,ARS/USD,BCRA
+2025-09-15,tc_mayorista,1462.0,ARS/USD,BCRA
+2025-09-12,tc_mayorista,1447.1667,ARS/USD,BCRA
+2025-09-11,tc_mayorista,1427.5833,ARS/USD,BCRA
+2025-09-10,tc_mayorista,1419.9167,ARS/USD,BCRA
+2025-09-09,tc_mayorista,1418.6667,ARS/USD,BCRA
+2025-09-08,tc_mayorista,1422.1667,ARS/USD,BCRA
+2025-09-05,tc_mayorista,1365.4167,ARS/USD,BCRA
+2025-09-04,tc_mayorista,1362.3333,ARS/USD,BCRA
+2025-09-03,tc_mayorista,1360.1667,ARS/USD,BCRA
+2025-09-02,tc_mayorista,1368.25,ARS/USD,BCRA
+2025-09-01,tc_mayorista,1371.1667,ARS/USD,BCRA
+2025-08-29,tc_mayorista,1323.8333,ARS/USD,BCRA
+2025-08-28,tc_mayorista,1343.6667,ARS/USD,BCRA
+2025-08-27,tc_mayorista,1359.4167,ARS/USD,BCRA
+2025-08-26,tc_mayorista,1352.3333,ARS/USD,BCRA
+2025-08-25,tc_mayorista,1344.1667,ARS/USD,BCRA
+2025-08-22,tc_mayorista,1321.5833,ARS/USD,BCRA
+2025-08-21,tc_mayorista,1309.25,ARS/USD,BCRA
+2025-08-20,tc_mayorista,1298.5,ARS/USD,BCRA
+2025-08-19,tc_mayorista,1292.3333,ARS/USD,BCRA
+2025-08-18,tc_mayorista,1298.8333,ARS/USD,BCRA
+2025-08-14,tc_mayorista,1308.3333,ARS/USD,BCRA
+2025-08-13,tc_mayorista,1318.0,ARS/USD,BCRA
+2025-08-12,tc_mayorista,1321.5,ARS/USD,BCRA
+2025-08-11,tc_mayorista,1330.5,ARS/USD,BCRA
+2025-08-08,tc_mayorista,1329.4167,ARS/USD,BCRA
+2025-08-07,tc_mayorista,1331.0833,ARS/USD,BCRA
+2025-08-06,tc_mayorista,1333.6667,ARS/USD,BCRA
+2025-08-05,tc_mayorista,1351.1667,ARS/USD,BCRA
+2025-08-04,tc_mayorista,1361.8333,ARS/USD,BCRA
+2025-08-01,tc_mayorista,1361.3333,ARS/USD,BCRA
+2025-07-31,tc_mayorista,1351.8333,ARS/USD,BCRA
+2025-07-30,tc_mayorista,1294.1667,ARS/USD,BCRA
+2025-07-29,tc_mayorista,1296.6667,ARS/USD,BCRA
+2025-07-28,tc_mayorista,1287.3333,ARS/USD,BCRA
+2025-07-25,tc_mayorista,1277.75,ARS/USD,BCRA
+2025-07-24,tc_mayorista,1262.0,ARS/USD,BCRA
+2025-07-23,tc_mayorista,1259.6667,ARS/USD,BCRA
+2025-07-22,tc_mayorista,1266.1667,ARS/USD,BCRA
+2025-07-21,tc_mayorista,1286.0,ARS/USD,BCRA
+2025-07-18,tc_mayorista,1283.8333,ARS/USD,BCRA
+2025-07-17,tc_mayorista,1266.25,ARS/USD,BCRA
+2025-07-16,tc_mayorista,1259.9167,ARS/USD,BCRA
+2025-07-15,tc_mayorista,1277.0,ARS/USD,BCRA
+2025-07-14,tc_mayorista,1266.1667,ARS/USD,BCRA
+2025-07-11,tc_mayorista,1261.5833,ARS/USD,BCRA
+2025-07-10,tc_mayorista,1261.1667,ARS/USD,BCRA
+2025-07-08,tc_mayorista,1258.0,ARS/USD,BCRA
+2025-07-07,tc_mayorista,1257.9167,ARS/USD,BCRA
+2025-07-04,tc_mayorista,1239.8333,ARS/USD,BCRA
+2025-07-03,tc_mayorista,1226.9167,ARS/USD,BCRA
+2025-07-02,tc_mayorista,1231.3333,ARS/USD,BCRA
+2025-07-01,tc_mayorista,1203.0,ARS/USD,BCRA
+2025-06-30,tc_mayorista,1194.0833,ARS/USD,BCRA
+2025-06-27,tc_mayorista,1189.8333,ARS/USD,BCRA
+2025-06-26,tc_mayorista,1194.6667,ARS/USD,BCRA
+2025-06-25,tc_mayorista,1176.3333,ARS/USD,BCRA
+2025-06-24,tc_mayorista,1176.0,ARS/USD,BCRA
+2025-06-23,tc_mayorista,1167.3333,ARS/USD,BCRA
+2025-06-19,tc_mayorista,1156.1667,ARS/USD,BCRA
+2025-06-18,tc_mayorista,1151.0,ARS/USD,BCRA
+2025-06-17,tc_mayorista,1180.0833,ARS/USD,BCRA
+2025-06-13,tc_mayorista,1187.6667,ARS/USD,BCRA
+2025-06-12,tc_mayorista,1185.5,ARS/USD,BCRA
+2025-06-11,tc_mayorista,1184.5,ARS/USD,BCRA
+2025-06-10,tc_mayorista,1187.0,ARS/USD,BCRA
+2025-06-09,tc_mayorista,1186.4167,ARS/USD,BCRA
+2025-06-06,tc_mayorista,1190.0,ARS/USD,BCRA
+2025-06-05,tc_mayorista,1189.6667,ARS/USD,BCRA
+2025-06-04,tc_mayorista,1184.3333,ARS/USD,BCRA
+2025-06-03,tc_mayorista,1184.0,ARS/USD,BCRA
+2025-06-02,tc_mayorista,1181.1667,ARS/USD,BCRA
+2025-05-30,tc_mayorista,1195.3333,ARS/USD,BCRA
+2025-05-29,tc_mayorista,1174.5,ARS/USD,BCRA
+2025-05-28,tc_mayorista,1161.0,ARS/USD,BCRA
+2025-05-27,tc_mayorista,1148.0,ARS/USD,BCRA
+2025-05-26,tc_mayorista,1139.8333,ARS/USD,BCRA
+2025-05-23,tc_mayorista,1137.0,ARS/USD,BCRA
+2025-05-22,tc_mayorista,1143.5833,ARS/USD,BCRA
+2025-05-21,tc_mayorista,1145.0,ARS/USD,BCRA
+2025-05-20,tc_mayorista,1142.0,ARS/USD,BCRA
+2025-05-19,tc_mayorista,1134.25,ARS/USD,BCRA
+2025-05-16,tc_mayorista,1146.1667,ARS/USD,BCRA
+2025-05-15,tc_mayorista,1135.5,ARS/USD,BCRA
+2025-05-14,tc_mayorista,1129.8333,ARS/USD,BCRA
+2025-05-13,tc_mayorista,1125.6667,ARS/USD,BCRA
+2025-05-12,tc_mayorista,1126.0,ARS/USD,BCRA
+2025-05-09,tc_mayorista,1113.5833,ARS/USD,BCRA
+2025-05-08,tc_mayorista,1117.5,ARS/USD,BCRA
+2025-05-07,tc_mayorista,1153.5,ARS/USD,BCRA
+2025-05-06,tc_mayorista,1203.8333,ARS/USD,BCRA
+2025-05-05,tc_mayorista,1178.5,ARS/USD,BCRA
+2025-04-30,tc_mayorista,1172.0,ARS/USD,BCRA
+2025-04-29,tc_mayorista,1170.6667,ARS/USD,BCRA
+2025-04-28,tc_mayorista,1163.1667,ARS/USD,BCRA
+2025-04-25,tc_mayorista,1174.1667,ARS/USD,BCRA
+2025-04-24,tc_mayorista,1176.4167,ARS/USD,BCRA
+2025-04-23,tc_mayorista,1122.5,ARS/USD,BCRA
+2025-04-22,tc_mayorista,1093.3333,ARS/USD,BCRA
+2025-04-21,tc_mayorista,1070.4167,ARS/USD,BCRA
+2025-04-16,tc_mayorista,1172.8333,ARS/USD,BCRA
+2025-04-15,tc_mayorista,1200.8333,ARS/USD,BCRA
+2025-04-14,tc_mayorista,1182.4167,ARS/USD,BCRA
+2025-04-11,tc_mayorista,1078.375,ARS/USD,BCRA
+2025-04-10,tc_mayorista,1077.375,ARS/USD,BCRA
+2025-04-09,tc_mayorista,1077.125,ARS/USD,BCRA
+2025-04-08,tc_mayorista,1076.5833,ARS/USD,BCRA
+2025-04-07,tc_mayorista,1076.3333,ARS/USD,BCRA
+2025-04-04,tc_mayorista,1075.875,ARS/USD,BCRA
+2025-04-03,tc_mayorista,1074.8333,ARS/USD,BCRA
+2025-04-01,tc_mayorista,1074.5417,ARS/USD,BCRA
+2025-03-31,tc_mayorista,1073.875,ARS/USD,BCRA
+2025-03-28,tc_mayorista,1073.375,ARS/USD,BCRA
+2025-03-27,tc_mayorista,1072.2917,ARS/USD,BCRA
+2025-03-26,tc_mayorista,1072.0833,ARS/USD,BCRA
+2025-03-25,tc_mayorista,1071.5833,ARS/USD,BCRA
+2025-03-21,tc_mayorista,1071.3333,ARS/USD,BCRA
+2025-03-20,tc_mayorista,1069.8333,ARS/USD,BCRA
+2025-03-19,tc_mayorista,1069.625,ARS/USD,BCRA
+2025-03-18,tc_mayorista,1069.125,ARS/USD,BCRA
+2025-03-17,tc_mayorista,1068.9167,ARS/USD,BCRA
+2025-03-14,tc_mayorista,1068.5417,ARS/USD,BCRA
+2025-03-13,tc_mayorista,1067.125,ARS/USD,BCRA
+2025-03-12,tc_mayorista,1066.875,ARS/USD,BCRA
+2025-03-11,tc_mayorista,1066.6667,ARS/USD,BCRA
+2025-03-10,tc_mayorista,1066.3333,ARS/USD,BCRA
+2025-03-07,tc_mayorista,1066.0417,ARS/USD,BCRA
+2025-03-06,tc_mayorista,1064.625,ARS/USD,BCRA
+2025-03-05,tc_mayorista,1064.375,ARS/USD,BCRA
+2025-02-28,tc_mayorista,1064.375,ARS/USD,BCRA
+2025-02-27,tc_mayorista,1062.375,ARS/USD,BCRA
+2025-02-26,tc_mayorista,1061.875,ARS/USD,BCRA
+2025-02-25,tc_mayorista,1061.625,ARS/USD,BCRA
+2025-02-24,tc_mayorista,1061.125,ARS/USD,BCRA
+2025-02-21,tc_mayorista,1060.875,ARS/USD,BCRA
+2025-02-20,tc_mayorista,1059.875,ARS/USD,BCRA
+2025-02-19,tc_mayorista,1059.375,ARS/USD,BCRA
+2025-02-18,tc_mayorista,1059.1667,ARS/USD,BCRA
+2025-02-17,tc_mayorista,1059.0833,ARS/USD,BCRA
+2025-02-14,tc_mayorista,1058.5,ARS/USD,BCRA
+2025-02-13,tc_mayorista,1057.4583,ARS/USD,BCRA
+2025-02-12,tc_mayorista,1056.875,ARS/USD,BCRA
+2025-02-11,tc_mayorista,1056.625,ARS/USD,BCRA
+2025-02-10,tc_mayorista,1056.375,ARS/USD,BCRA
+2025-02-07,tc_mayorista,1055.9167,ARS/USD,BCRA
+2025-02-06,tc_mayorista,1054.875,ARS/USD,BCRA
+2025-02-05,tc_mayorista,1054.7083,ARS/USD,BCRA
+2025-02-04,tc_mayorista,1054.25,ARS/USD,BCRA
+2025-02-03,tc_mayorista,1053.9167,ARS/USD,BCRA
+2025-01-31,tc_mayorista,1053.5,ARS/USD,BCRA
+2025-01-30,tc_mayorista,1052.5,ARS/USD,BCRA
+2025-01-29,tc_mayorista,1051.5833,ARS/USD,BCRA
+2025-01-28,tc_mayorista,1050.9167,ARS/USD,BCRA
+2025-01-27,tc_mayorista,1050.5,ARS/USD,BCRA
+2025-01-24,tc_mayorista,1049.5833,ARS/USD,BCRA
+2025-01-23,tc_mayorista,1047.6667,ARS/USD,BCRA
+2025-01-22,tc_mayorista,1047.25,ARS/USD,BCRA
+2025-01-21,tc_mayorista,1045.9167,ARS/USD,BCRA
+2025-01-20,tc_mayorista,1045.25,ARS/USD,BCRA
+2025-01-17,tc_mayorista,1044.5,ARS/USD,BCRA
+2025-01-16,tc_mayorista,1042.25,ARS/USD,BCRA
+2025-01-15,tc_mayorista,1041.75,ARS/USD,BCRA
+2025-01-14,tc_mayorista,1041.25,ARS/USD,BCRA
+2025-01-13,tc_mayorista,1040.25,ARS/USD,BCRA
+2025-01-10,tc_mayorista,1039.75,ARS/USD,BCRA
+2025-01-09,tc_mayorista,1037.75,ARS/USD,BCRA
+2025-01-08,tc_mayorista,1036.75,ARS/USD,BCRA
+2025-01-07,tc_mayorista,1036.25,ARS/USD,BCRA
+2025-01-06,tc_mayorista,1035.75,ARS/USD,BCRA
+2025-01-03,tc_mayorista,1034.75,ARS/USD,BCRA
+2025-01-02,tc_mayorista,1032.75,ARS/USD,BCRA
+2024-12-30,tc_mayorista,1032.5,ARS/USD,BCRA
+2024-12-27,tc_mayorista,1030.5,ARS/USD,BCRA
+2024-12-26,tc_mayorista,1029.0,ARS/USD,BCRA
+2024-12-23,tc_mayorista,1027.75,ARS/USD,BCRA
+2024-12-20,tc_mayorista,1025.4167,ARS/USD,BCRA
+2024-12-19,tc_mayorista,1023.25,ARS/USD,BCRA
+2024-12-18,tc_mayorista,1022.75,ARS/USD,BCRA
+2024-12-17,tc_mayorista,1021.8333,ARS/USD,BCRA
+2024-12-16,tc_mayorista,1021.25,ARS/USD,BCRA
+2024-12-13,tc_mayorista,1020.75,ARS/USD,BCRA
+2024-12-12,tc_mayorista,1018.75,ARS/USD,BCRA
+2024-12-11,tc_mayorista,1017.75,ARS/USD,BCRA
+2024-12-10,tc_mayorista,1017.25,ARS/USD,BCRA
+2024-12-09,tc_mayorista,1016.75,ARS/USD,BCRA
+2025-02-01,saldo_comercial,275.4164964599995,M USD,INDEC/datos.gob.ar
+2025-01-01,saldo_comercial,162.09788067000045,M USD,INDEC/datos.gob.ar
+2024-12-01,saldo_comercial,1681.6078296299993,M USD,INDEC/datos.gob.ar
+2024-11-01,saldo_comercial,1276.9301323500003,M USD,INDEC/datos.gob.ar
+2024-10-01,saldo_comercial,911.7861956099996,M USD,INDEC/datos.gob.ar
+2024-09-01,saldo_comercial,981.92177394,M USD,INDEC/datos.gob.ar
+2024-08-01,saldo_comercial,1874.8443753600004,M USD,INDEC/datos.gob.ar
+2024-07-01,saldo_comercial,1458.7371872699996,M USD,INDEC/datos.gob.ar
+2024-06-01,saldo_comercial,1879.7824356,M USD,INDEC/datos.gob.ar
+2024-05-01,saldo_comercial,2654.4164960499998,M USD,INDEC/datos.gob.ar
+2024-04-01,saldo_comercial,1806.76967506,M USD,INDEC/datos.gob.ar
+2024-03-01,saldo_comercial,2160.37502213,M USD,INDEC/datos.gob.ar
+2024-02-01,saldo_comercial,1432.09472723,M USD,INDEC/datos.gob.ar
+2024-01-01,saldo_comercial,808.3693026199999,M USD,INDEC/datos.gob.ar
+2023-12-01,saldo_comercial,1018.0371025699995,M USD,INDEC/datos.gob.ar
+2023-11-01,saldo_comercial,-558.6996693600004,M USD,INDEC/datos.gob.ar
+2023-10-01,saldo_comercial,-442.40832169999976,M USD,INDEC/datos.gob.ar
+2023-09-01,saldo_comercial,-774.4389182599998,M USD,INDEC/datos.gob.ar
+2023-08-01,saldo_comercial,-974.3922908100004,M USD,INDEC/datos.gob.ar
+2023-07-01,saldo_comercial,-700.33999356,M USD,INDEC/datos.gob.ar
+2023-06-01,saldo_comercial,-1832.73689149,M USD,INDEC/datos.gob.ar
+2023-05-01,saldo_comercial,-1124.04429049,M USD,INDEC/datos.gob.ar
+2023-04-01,saldo_comercial,-192.9935071,M USD,INDEC/datos.gob.ar
+2023-03-01,saldo_comercial,-1111.03221062,M USD,INDEC/datos.gob.ar
+2023-02-01,saldo_comercial,210.59857897999973,M USD,INDEC/datos.gob.ar
+2023-01-01,saldo_comercial,-442.65037138000025,M USD,INDEC/datos.gob.ar
+2022-12-01,saldo_comercial,1102.0,M USD,INDEC/datos.gob.ar
+2022-11-01,saldo_comercial,1360.0,M USD,INDEC/datos.gob.ar
+2022-10-01,saldo_comercial,1883.0,M USD,INDEC/datos.gob.ar
+2022-09-01,saldo_comercial,381.0,M USD,INDEC/datos.gob.ar
+2022-08-01,saldo_comercial,-296.0,M USD,INDEC/datos.gob.ar
+2022-07-01,saldo_comercial,-484.0,M USD,INDEC/datos.gob.ar
+2022-06-01,saldo_comercial,-231.0,M USD,INDEC/datos.gob.ar
+2022-05-01,saldo_comercial,368.0,M USD,INDEC/datos.gob.ar
+2022-04-01,saldo_comercial,1454.0,M USD,INDEC/datos.gob.ar
+2022-03-01,saldo_comercial,271.0,M USD,INDEC/datos.gob.ar
+2022-02-01,saldo_comercial,818.0,M USD,INDEC/datos.gob.ar
+2022-01-01,saldo_comercial,297.0,M USD,INDEC/datos.gob.ar
+2021-12-01,saldo_comercial,371.0,M USD,INDEC/datos.gob.ar
+2021-11-01,saldo_comercial,424.0,M USD,INDEC/datos.gob.ar
+2021-10-01,saldo_comercial,1616.0,M USD,INDEC/datos.gob.ar
+2021-09-01,saldo_comercial,1684.0,M USD,INDEC/datos.gob.ar
+2021-08-01,saldo_comercial,2345.0,M USD,INDEC/datos.gob.ar
+2021-07-01,saldo_comercial,1537.0,M USD,INDEC/datos.gob.ar
+2021-06-01,saldo_comercial,1101.0,M USD,INDEC/datos.gob.ar
+2021-05-01,saldo_comercial,1672.0,M USD,INDEC/datos.gob.ar
+2021-04-01,saldo_comercial,1470.0,M USD,INDEC/datos.gob.ar
+2021-03-01,saldo_comercial,400.0,M USD,INDEC/datos.gob.ar
+2026-05-28,reservas_bcra,48113.0,M USD,BCRA
+2026-05-27,reservas_bcra,47874.0,M USD,BCRA
+2026-05-26,reservas_bcra,47909.0,M USD,BCRA
+2026-05-22,reservas_bcra,46806.0,M USD,BCRA
+2026-05-21,reservas_bcra,46748.0,M USD,BCRA
+2026-05-20,reservas_bcra,46585.0,M USD,BCRA
+2026-05-19,reservas_bcra,46190.0,M USD,BCRA
+2026-05-18,reservas_bcra,46135.0,M USD,BCRA
+2026-05-15,reservas_bcra,46062.0,M USD,BCRA
+2026-05-14,reservas_bcra,46197.0,M USD,BCRA
+2026-05-13,reservas_bcra,46534.0,M USD,BCRA
+2026-05-12,reservas_bcra,46186.0,M USD,BCRA
+2026-05-11,reservas_bcra,46144.0,M USD,BCRA
+2026-05-08,reservas_bcra,46061.0,M USD,BCRA
+2026-05-07,reservas_bcra,45953.0,M USD,BCRA
+2026-05-06,reservas_bcra,45678.0,M USD,BCRA
+2026-05-05,reservas_bcra,45906.0,M USD,BCRA
+2026-05-04,reservas_bcra,45657.0,M USD,BCRA
+2026-04-30,reservas_bcra,44516.0,M USD,BCRA
+2026-04-29,reservas_bcra,45207.0,M USD,BCRA
+2026-04-28,reservas_bcra,45818.0,M USD,BCRA
+2026-04-27,reservas_bcra,46089.0,M USD,BCRA
+2026-04-24,reservas_bcra,46174.0,M USD,BCRA
+2026-04-23,reservas_bcra,46130.0,M USD,BCRA
+2026-04-22,reservas_bcra,45843.0,M USD,BCRA
+2026-04-21,reservas_bcra,45781.0,M USD,BCRA
+2026-04-20,reservas_bcra,45747.0,M USD,BCRA
+2026-04-17,reservas_bcra,45793.0,M USD,BCRA
+2026-04-16,reservas_bcra,45629.0,M USD,BCRA
+2026-04-15,reservas_bcra,45622.0,M USD,BCRA
+2026-04-14,reservas_bcra,45875.0,M USD,BCRA
+2026-04-13,reservas_bcra,45408.0,M USD,BCRA
+2026-04-10,reservas_bcra,45435.0,M USD,BCRA
+2026-04-09,reservas_bcra,45154.0,M USD,BCRA
+2026-04-08,reservas_bcra,44759.0,M USD,BCRA
+2026-04-07,reservas_bcra,44445.0,M USD,BCRA
+2026-04-06,reservas_bcra,44248.0,M USD,BCRA
+2026-04-01,reservas_bcra,44445.0,M USD,BCRA
+2026-03-31,reservas_bcra,42052.0,M USD,BCRA
+2026-03-30,reservas_bcra,43381.0,M USD,BCRA
+2026-03-27,reservas_bcra,43713.0,M USD,BCRA
+2026-03-26,reservas_bcra,43534.0,M USD,BCRA
+2026-03-25,reservas_bcra,43841.0,M USD,BCRA
+2026-03-20,reservas_bcra,43806.0,M USD,BCRA
+2026-03-19,reservas_bcra,43713.0,M USD,BCRA
+2026-03-18,reservas_bcra,44495.0,M USD,BCRA
+2026-03-17,reservas_bcra,44722.0,M USD,BCRA
+2026-03-16,reservas_bcra,44790.0,M USD,BCRA
+2026-03-13,reservas_bcra,45661.0,M USD,BCRA
+2026-03-12,reservas_bcra,45766.0,M USD,BCRA
+2026-03-11,reservas_bcra,45770.0,M USD,BCRA
+2026-03-10,reservas_bcra,46054.0,M USD,BCRA
+2026-03-09,reservas_bcra,45767.0,M USD,BCRA
+2026-03-06,reservas_bcra,46011.0,M USD,BCRA
+2026-03-05,reservas_bcra,45825.0,M USD,BCRA
+2026-03-04,reservas_bcra,46210.0,M USD,BCRA
+2026-03-03,reservas_bcra,46137.0,M USD,BCRA
+2026-03-02,reservas_bcra,46519.0,M USD,BCRA
+2026-02-27,reservas_bcra,45566.0,M USD,BCRA
+2026-02-26,reservas_bcra,46158.0,M USD,BCRA
+2026-02-25,reservas_bcra,46905.0,M USD,BCRA
+2026-02-24,reservas_bcra,46663.0,M USD,BCRA
+2026-02-23,reservas_bcra,46635.0,M USD,BCRA
+2026-02-20,reservas_bcra,46264.0,M USD,BCRA
+2026-02-19,reservas_bcra,44904.0,M USD,BCRA
+2026-02-18,reservas_bcra,45130.0,M USD,BCRA
+2026-02-13,reservas_bcra,45164.0,M USD,BCRA
+2026-02-12,reservas_bcra,45053.0,M USD,BCRA
+2026-02-11,reservas_bcra,45305.0,M USD,BCRA
+2026-02-10,reservas_bcra,45229.0,M USD,BCRA
+2026-02-09,reservas_bcra,45322.0,M USD,BCRA
+2026-02-06,reservas_bcra,44939.0,M USD,BCRA
+2026-02-05,reservas_bcra,44753.0,M USD,BCRA
+2026-02-04,reservas_bcra,45420.0,M USD,BCRA
+2026-02-03,reservas_bcra,45675.0,M USD,BCRA
+2026-02-02,reservas_bcra,45104.0,M USD,BCRA
+2026-01-30,reservas_bcra,44503.0,M USD,BCRA
+2026-01-29,reservas_bcra,46242.0,M USD,BCRA
+2026-01-28,reservas_bcra,46160.0,M USD,BCRA
+2026-01-27,reservas_bcra,45780.0,M USD,BCRA
+2026-01-26,reservas_bcra,45740.0,M USD,BCRA
+2026-01-23,reservas_bcra,45565.0,M USD,BCRA
+2026-01-22,reservas_bcra,45397.0,M USD,BCRA
+2026-01-21,reservas_bcra,45077.0,M USD,BCRA
+2026-01-20,reservas_bcra,44871.0,M USD,BCRA
+2026-01-19,reservas_bcra,44808.0,M USD,BCRA
+2026-01-16,reservas_bcra,44609.0,M USD,BCRA
+2026-01-15,reservas_bcra,44646.0,M USD,BCRA
+2026-01-14,reservas_bcra,44692.0,M USD,BCRA
+2026-01-13,reservas_bcra,44678.0,M USD,BCRA
+2026-01-12,reservas_bcra,44766.0,M USD,BCRA
+2026-01-09,reservas_bcra,44397.0,M USD,BCRA
+2026-01-08,reservas_bcra,44782.0,M USD,BCRA
+2026-01-07,reservas_bcra,44241.0,M USD,BCRA
+2026-01-06,reservas_bcra,44186.0,M USD,BCRA
+2026-01-05,reservas_bcra,43393.0,M USD,BCRA
+2026-01-02,reservas_bcra,43105.0,M USD,BCRA
+2025-12-30,reservas_bcra,41095.0,M USD,BCRA
+2025-12-29,reservas_bcra,41894.0,M USD,BCRA
+2025-12-26,reservas_bcra,43617.0,M USD,BCRA
+2025-12-23,reservas_bcra,43012.0,M USD,BCRA
+2025-12-22,reservas_bcra,42636.0,M USD,BCRA
+2025-12-19,reservas_bcra,42418.0,M USD,BCRA
+2025-12-18,reservas_bcra,42326.0,M USD,BCRA
+2025-12-17,reservas_bcra,42226.0,M USD,BCRA
+2025-12-16,reservas_bcra,42283.0,M USD,BCRA
+2025-12-15,reservas_bcra,42238.0,M USD,BCRA
+2025-12-12,reservas_bcra,41907.0,M USD,BCRA
+2025-12-11,reservas_bcra,41824.0,M USD,BCRA
+2025-12-10,reservas_bcra,41669.0,M USD,BCRA
+2025-12-09,reservas_bcra,41750.0,M USD,BCRA
+2025-12-05,reservas_bcra,41764.0,M USD,BCRA
+2025-12-04,reservas_bcra,41890.0,M USD,BCRA
+2025-12-03,reservas_bcra,41887.0,M USD,BCRA
+2025-12-02,reservas_bcra,41883.0,M USD,BCRA
+2025-12-01,reservas_bcra,41773.0,M USD,BCRA
+2025-11-28,reservas_bcra,40335.0,M USD,BCRA
+2025-11-27,reservas_bcra,41904.0,M USD,BCRA
+2025-11-26,reservas_bcra,41899.0,M USD,BCRA
+2025-11-25,reservas_bcra,41185.0,M USD,BCRA
+2025-11-20,reservas_bcra,40921.0,M USD,BCRA
+2025-11-19,reservas_bcra,40773.0,M USD,BCRA
+2025-11-18,reservas_bcra,40622.0,M USD,BCRA
+2025-11-17,reservas_bcra,40356.0,M USD,BCRA
+2025-11-14,reservas_bcra,40643.0,M USD,BCRA
+2025-11-13,reservas_bcra,40684.0,M USD,BCRA
+2025-11-12,reservas_bcra,40675.0,M USD,BCRA
+2025-11-11,reservas_bcra,40500.0,M USD,BCRA
+2025-11-10,reservas_bcra,40401.0,M USD,BCRA
+2025-11-07,reservas_bcra,40227.0,M USD,BCRA
+2025-11-05,reservas_bcra,41015.0,M USD,BCRA
+2025-11-04,reservas_bcra,40802.0,M USD,BCRA
+2025-11-03,reservas_bcra,40785.0,M USD,BCRA
+2025-10-31,reservas_bcra,39382.0,M USD,BCRA
+2025-10-30,reservas_bcra,40494.0,M USD,BCRA
+2025-10-29,reservas_bcra,40764.0,M USD,BCRA
+2025-10-28,reservas_bcra,40771.0,M USD,BCRA
+2025-10-27,reservas_bcra,41059.0,M USD,BCRA
+2025-10-24,reservas_bcra,41215.0,M USD,BCRA
+2025-10-23,reservas_bcra,40989.0,M USD,BCRA
+2025-10-22,reservas_bcra,40570.0,M USD,BCRA
+2025-10-21,reservas_bcra,40540.0,M USD,BCRA
+2025-10-20,reservas_bcra,41316.0,M USD,BCRA
+2025-10-17,reservas_bcra,41170.0,M USD,BCRA
+2025-10-16,reservas_bcra,41710.0,M USD,BCRA
+2025-10-15,reservas_bcra,41741.0,M USD,BCRA
+2025-10-14,reservas_bcra,41904.0,M USD,BCRA
+2025-10-13,reservas_bcra,42258.0,M USD,BCRA
+2025-10-09,reservas_bcra,42057.0,M USD,BCRA
+2025-10-08,reservas_bcra,42067.0,M USD,BCRA
+2025-10-07,reservas_bcra,42222.0,M USD,BCRA
+2025-10-06,reservas_bcra,42629.0,M USD,BCRA
+2025-10-03,reservas_bcra,42701.0,M USD,BCRA
+2025-10-02,reservas_bcra,42330.0,M USD,BCRA
+2025-10-01,reservas_bcra,42230.0,M USD,BCRA
+2025-09-30,reservas_bcra,40374.0,M USD,BCRA
+2025-09-29,reservas_bcra,41118.0,M USD,BCRA
+2025-09-26,reservas_bcra,41200.0,M USD,BCRA
+2025-09-25,reservas_bcra,39355.0,M USD,BCRA
+2025-09-24,reservas_bcra,39032.0,M USD,BCRA
+2025-09-23,reservas_bcra,39177.0,M USD,BCRA
+2025-09-22,reservas_bcra,39116.0,M USD,BCRA
+2025-09-19,reservas_bcra,39264.0,M USD,BCRA
+2025-09-18,reservas_bcra,39409.0,M USD,BCRA
+2025-09-17,reservas_bcra,39781.0,M USD,BCRA
+2025-09-16,reservas_bcra,39879.0,M USD,BCRA
+2025-09-15,reservas_bcra,39848.0,M USD,BCRA
+2025-09-12,reservas_bcra,40313.0,M USD,BCRA
+2025-09-11,reservas_bcra,40365.0,M USD,BCRA
+2025-09-10,reservas_bcra,40404.0,M USD,BCRA
+2025-09-09,reservas_bcra,40511.0,M USD,BCRA
+2025-09-08,reservas_bcra,40551.0,M USD,BCRA
+2025-09-05,reservas_bcra,40531.0,M USD,BCRA
+2025-09-04,reservas_bcra,40378.0,M USD,BCRA
+2025-09-03,reservas_bcra,40741.0,M USD,BCRA
+2025-09-02,reservas_bcra,40763.0,M USD,BCRA
+2025-09-01,reservas_bcra,40026.0,M USD,BCRA
+2025-08-29,reservas_bcra,39986.0,M USD,BCRA
+2025-08-28,reservas_bcra,40963.0,M USD,BCRA
+2025-08-27,reservas_bcra,41255.0,M USD,BCRA
+2025-08-26,reservas_bcra,41184.0,M USD,BCRA
+2025-08-25,reservas_bcra,41445.0,M USD,BCRA
+2025-08-22,reservas_bcra,41505.0,M USD,BCRA
+2025-08-21,reservas_bcra,41485.0,M USD,BCRA
+2025-08-20,reservas_bcra,41692.0,M USD,BCRA
+2025-08-19,reservas_bcra,41705.0,M USD,BCRA
+2025-08-18,reservas_bcra,41757.0,M USD,BCRA
+2025-08-14,reservas_bcra,41908.0,M USD,BCRA
+2025-08-13,reservas_bcra,42052.0,M USD,BCRA
+2025-08-12,reservas_bcra,41991.0,M USD,BCRA
+2025-08-11,reservas_bcra,41991.0,M USD,BCRA
+2025-08-08,reservas_bcra,42116.0,M USD,BCRA
+2025-08-07,reservas_bcra,41683.0,M USD,BCRA
+2025-08-06,reservas_bcra,42143.0,M USD,BCRA
+2025-08-05,reservas_bcra,42720.0,M USD,BCRA
+2025-08-04,reservas_bcra,43039.0,M USD,BCRA
+2025-08-01,reservas_bcra,41034.0,M USD,BCRA
+2025-07-31,reservas_bcra,38866.0,M USD,BCRA
+2025-07-30,reservas_bcra,40765.0,M USD,BCRA
+2025-07-29,reservas_bcra,41245.0,M USD,BCRA
+2025-07-28,reservas_bcra,40146.0,M USD,BCRA
+2025-07-25,reservas_bcra,40283.0,M USD,BCRA
+2025-07-24,reservas_bcra,40432.0,M USD,BCRA
+2025-07-23,reservas_bcra,40358.0,M USD,BCRA
+2025-07-22,reservas_bcra,40578.0,M USD,BCRA
+2025-07-21,reservas_bcra,40652.0,M USD,BCRA
+2025-07-18,reservas_bcra,40393.0,M USD,BCRA
+2025-07-17,reservas_bcra,39836.0,M USD,BCRA
+2025-07-16,reservas_bcra,39554.0,M USD,BCRA
+2025-07-15,reservas_bcra,39061.0,M USD,BCRA
+2025-07-14,reservas_bcra,39147.0,M USD,BCRA
+2025-07-11,reservas_bcra,39060.0,M USD,BCRA
+2025-07-10,reservas_bcra,38721.0,M USD,BCRA
+2025-07-08,reservas_bcra,39127.0,M USD,BCRA
+2025-07-07,reservas_bcra,41721.0,M USD,BCRA
+2025-07-04,reservas_bcra,41747.0,M USD,BCRA
+2025-07-03,reservas_bcra,41738.0,M USD,BCRA
+2025-07-02,reservas_bcra,41658.0,M USD,BCRA
+2025-07-01,reservas_bcra,41686.0,M USD,BCRA
+2025-06-30,reservas_bcra,39973.0,M USD,BCRA
+2025-06-27,reservas_bcra,41460.0,M USD,BCRA
+2025-06-26,reservas_bcra,41555.0,M USD,BCRA
+2025-06-25,reservas_bcra,41417.0,M USD,BCRA
+2025-06-24,reservas_bcra,41212.0,M USD,BCRA
+2025-06-23,reservas_bcra,40894.0,M USD,BCRA
+2025-06-19,reservas_bcra,40182.0,M USD,BCRA
+2025-06-18,reservas_bcra,40153.0,M USD,BCRA
+2025-06-17,reservas_bcra,40399.0,M USD,BCRA
+2025-06-13,reservas_bcra,40465.0,M USD,BCRA
+2025-06-12,reservas_bcra,38506.0,M USD,BCRA
+2025-06-11,reservas_bcra,38533.0,M USD,BCRA
+2025-06-10,reservas_bcra,38600.0,M USD,BCRA
+2025-06-09,reservas_bcra,38604.0,M USD,BCRA
+2025-06-06,reservas_bcra,38639.0,M USD,BCRA
+2025-06-05,reservas_bcra,38758.0,M USD,BCRA
+2025-06-04,reservas_bcra,38818.0,M USD,BCRA
+2025-06-03,reservas_bcra,37767.0,M USD,BCRA
+2025-06-02,reservas_bcra,37793.0,M USD,BCRA
+2025-05-30,reservas_bcra,36919.0,M USD,BCRA
+2025-05-29,reservas_bcra,38366.0,M USD,BCRA
+2025-05-28,reservas_bcra,38444.0,M USD,BCRA
+2025-05-27,reservas_bcra,38381.0,M USD,BCRA
+2025-05-26,reservas_bcra,38384.0,M USD,BCRA
+2025-05-23,reservas_bcra,38428.0,M USD,BCRA
+2025-05-22,reservas_bcra,38097.0,M USD,BCRA
+2025-05-21,reservas_bcra,38176.0,M USD,BCRA
+2025-05-20,reservas_bcra,38267.0,M USD,BCRA
+2025-05-19,reservas_bcra,38300.0,M USD,BCRA
+2025-05-16,reservas_bcra,38338.0,M USD,BCRA
+2025-05-15,reservas_bcra,38346.0,M USD,BCRA
+2025-05-14,reservas_bcra,38565.0,M USD,BCRA
+2025-05-13,reservas_bcra,38651.0,M USD,BCRA
+2025-05-12,reservas_bcra,38079.0,M USD,BCRA
+2025-05-09,reservas_bcra,38123.0,M USD,BCRA
+2025-05-08,reservas_bcra,38035.0,M USD,BCRA
+2025-05-07,reservas_bcra,38258.0,M USD,BCRA
+2025-05-06,reservas_bcra,38542.0,M USD,BCRA
+2025-05-05,reservas_bcra,38976.0,M USD,BCRA
+2025-04-30,reservas_bcra,38928.0,M USD,BCRA
+2025-04-29,reservas_bcra,39091.0,M USD,BCRA
+2025-04-28,reservas_bcra,39291.0,M USD,BCRA
+2025-04-25,reservas_bcra,39168.0,M USD,BCRA
+2025-04-24,reservas_bcra,39079.0,M USD,BCRA
+2025-04-23,reservas_bcra,38631.0,M USD,BCRA
+2025-04-22,reservas_bcra,38814.0,M USD,BCRA
+2025-04-21,reservas_bcra,38791.0,M USD,BCRA
+2025-04-16,reservas_bcra,38616.0,M USD,BCRA
+2025-04-15,reservas_bcra,36777.0,M USD,BCRA
+2025-04-14,reservas_bcra,24221.0,M USD,BCRA
+2025-04-11,reservas_bcra,24704.0,M USD,BCRA
+2025-04-10,reservas_bcra,24773.0,M USD,BCRA
+2025-04-09,reservas_bcra,24780.0,M USD,BCRA
+2025-04-08,reservas_bcra,24677.0,M USD,BCRA
+2025-04-07,reservas_bcra,24838.0,M USD,BCRA
+2025-04-04,reservas_bcra,25148.0,M USD,BCRA
+2025-04-03,reservas_bcra,25305.0,M USD,BCRA
+2025-04-01,reservas_bcra,25450.0,M USD,BCRA
+2025-03-31,reservas_bcra,24986.0,M USD,BCRA
+2025-03-28,reservas_bcra,25777.0,M USD,BCRA
+2025-03-27,reservas_bcra,26223.0,M USD,BCRA
+2025-03-26,reservas_bcra,26251.0,M USD,BCRA
+2025-03-25,reservas_bcra,26442.0,M USD,BCRA
+2025-03-21,reservas_bcra,26628.0,M USD,BCRA
+2025-03-20,reservas_bcra,26785.0,M USD,BCRA
+2025-03-19,reservas_bcra,27046.0,M USD,BCRA
+2025-03-18,reservas_bcra,27208.0,M USD,BCRA
+2025-03-17,reservas_bcra,27338.0,M USD,BCRA
+2025-03-14,reservas_bcra,28091.0,M USD,BCRA
+2025-03-13,reservas_bcra,28104.0,M USD,BCRA
+2025-03-12,reservas_bcra,27960.0,M USD,BCRA
+2025-03-11,reservas_bcra,27687.0,M USD,BCRA
+2025-03-10,reservas_bcra,27732.0,M USD,BCRA
+2025-03-07,reservas_bcra,28090.0,M USD,BCRA
+2025-03-06,reservas_bcra,28181.0,M USD,BCRA
+2025-03-05,reservas_bcra,27991.0,M USD,BCRA
+2025-02-28,reservas_bcra,28117.0,M USD,BCRA
+2025-02-27,reservas_bcra,28586.0,M USD,BCRA
+2025-02-26,reservas_bcra,28714.0,M USD,BCRA
+2025-02-25,reservas_bcra,28685.0,M USD,BCRA
+2025-02-24,reservas_bcra,28603.0,M USD,BCRA
+2025-02-21,reservas_bcra,28495.0,M USD,BCRA
+2025-02-20,reservas_bcra,28578.0,M USD,BCRA
+2025-02-19,reservas_bcra,28362.0,M USD,BCRA
+2025-02-18,reservas_bcra,28405.0,M USD,BCRA
+2025-02-17,reservas_bcra,28747.0,M USD,BCRA
+2025-02-14,reservas_bcra,28801.0,M USD,BCRA
+2025-02-13,reservas_bcra,28894.0,M USD,BCRA
+2025-02-12,reservas_bcra,28925.0,M USD,BCRA
+2025-02-11,reservas_bcra,28898.0,M USD,BCRA
+2025-02-10,reservas_bcra,28938.0,M USD,BCRA
+2025-02-07,reservas_bcra,28889.0,M USD,BCRA
+2025-02-06,reservas_bcra,28743.0,M USD,BCRA
+2025-02-05,reservas_bcra,29354.0,M USD,BCRA
+2025-02-04,reservas_bcra,29427.0,M USD,BCRA
+2025-02-03,reservas_bcra,29453.0,M USD,BCRA
+2025-01-31,reservas_bcra,28310.0,M USD,BCRA
+2025-01-30,reservas_bcra,29429.0,M USD,BCRA
+2025-01-29,reservas_bcra,29648.0,M USD,BCRA
+2025-01-28,reservas_bcra,29802.0,M USD,BCRA
+2025-01-27,reservas_bcra,29834.0,M USD,BCRA
+2025-01-24,reservas_bcra,29970.0,M USD,BCRA
+2025-01-23,reservas_bcra,29838.0,M USD,BCRA
+2025-01-22,reservas_bcra,30140.0,M USD,BCRA
+2025-01-21,reservas_bcra,30282.0,M USD,BCRA
+2025-01-20,reservas_bcra,30593.0,M USD,BCRA
+2025-01-17,reservas_bcra,30518.0,M USD,BCRA
+2025-01-16,reservas_bcra,30707.0,M USD,BCRA
+2025-01-15,reservas_bcra,30624.0,M USD,BCRA
+2025-01-14,reservas_bcra,30704.0,M USD,BCRA
+2025-01-13,reservas_bcra,30835.0,M USD,BCRA
+2025-01-10,reservas_bcra,31038.0,M USD,BCRA
+2025-01-09,reservas_bcra,30904.0,M USD,BCRA
+2025-01-08,reservas_bcra,31176.0,M USD,BCRA
+2025-01-07,reservas_bcra,32903.0,M USD,BCRA
+2025-01-06,reservas_bcra,32805.0,M USD,BCRA
+2025-01-03,reservas_bcra,32774.0,M USD,BCRA
+2025-01-02,reservas_bcra,31706.0,M USD,BCRA
+2024-12-30,reservas_bcra,29640.0,M USD,BCRA
+2024-12-27,reservas_bcra,31524.0,M USD,BCRA
+2024-12-26,reservas_bcra,32413.0,M USD,BCRA
+2024-12-23,reservas_bcra,32688.0,M USD,BCRA
+2024-12-20,reservas_bcra,32864.0,M USD,BCRA
+2024-12-19,reservas_bcra,32243.0,M USD,BCRA
+2024-12-18,reservas_bcra,32255.0,M USD,BCRA
+2024-12-17,reservas_bcra,32257.0,M USD,BCRA
+2024-12-16,reservas_bcra,31744.0,M USD,BCRA
+2024-12-13,reservas_bcra,31937.0,M USD,BCRA
+2024-12-12,reservas_bcra,31849.0,M USD,BCRA
+2024-12-11,reservas_bcra,31988.0,M USD,BCRA
+2024-12-10,reservas_bcra,31619.0,M USD,BCRA
+2024-12-09,reservas_bcra,31512.0,M USD,BCRA
+2026-04-30,rem_ipc_12m,24.2,% anual,BCRA
+2026-03-31,rem_ipc_12m,23.8,% anual,BCRA
+2026-02-28,rem_ipc_12m,22.3,% anual,BCRA
+2026-01-31,rem_ipc_12m,21.0,% anual,BCRA
+2025-12-31,rem_ipc_12m,20.1,% anual,BCRA
+2025-11-30,rem_ipc_12m,21.0,% anual,BCRA
+2025-10-31,rem_ipc_12m,20.8,% anual,BCRA
+2025-09-30,rem_ipc_12m,21.9,% anual,BCRA
+2025-08-31,rem_ipc_12m,20.9,% anual,BCRA
+2025-07-31,rem_ipc_12m,21.1,% anual,BCRA
+2025-06-30,rem_ipc_12m,20.8,% anual,BCRA
+2025-05-31,rem_ipc_12m,20.9,% anual,BCRA
+2025-04-30,rem_ipc_12m,26.3,% anual,BCRA
+2025-03-31,rem_ipc_12m,24.5,% anual,BCRA
+2025-02-28,rem_ipc_12m,22.2,% anual,BCRA
+2025-01-31,rem_ipc_12m,21.9,% anual,BCRA
+2024-12-31,rem_ipc_12m,25.9,% anual,BCRA
+2026-04-01,recaudacion,17400833.306586187,M ARS,INDEC/datos.gob.ar
+2026-03-01,recaudacion,16071028.39721067,M ARS,INDEC/datos.gob.ar
+2026-02-01,recaudacion,16231829.881584609,M ARS,INDEC/datos.gob.ar
+2026-01-01,recaudacion,18337625.030341797,M ARS,INDEC/datos.gob.ar
+2025-12-01,recaudacion,16527267.82514989,M ARS,INDEC/datos.gob.ar
+2025-11-01,recaudacion,15598231.87420104,M ARS,INDEC/datos.gob.ar
+2025-10-01,recaudacion,16165741.65153192,M ARS,INDEC/datos.gob.ar
+2025-09-01,recaudacion,15444975.67077525,M ARS,INDEC/datos.gob.ar
+2025-08-01,recaudacion,15359108.194565669,M ARS,INDEC/datos.gob.ar
+2025-07-01,recaudacion,16998944.53100429,M ARS,INDEC/datos.gob.ar
+2025-06-01,recaudacion,16184465.69467703,M ARS,INDEC/datos.gob.ar
+2025-05-01,recaudacion,15862862.396723382,M ARS,INDEC/datos.gob.ar
+2025-04-01,recaudacion,13681770.96797642,M ARS,INDEC/datos.gob.ar
+2025-03-01,recaudacion,12733317.184110267,M ARS,INDEC/datos.gob.ar
+2025-02-01,recaudacion,13520837.1049842,M ARS,INDEC/datos.gob.ar
+2025-01-01,recaudacion,15031693.08669754,M ARS,INDEC/datos.gob.ar
+2024-12-01,recaudacion,13015182.677521478,M ARS,INDEC/datos.gob.ar
+2024-11-01,recaudacion,13026430.83240848,M ARS,INDEC/datos.gob.ar
+2024-10-01,recaudacion,12780380.77223406,M ARS,INDEC/datos.gob.ar
+2024-09-01,recaudacion,12844456.67623793,M ARS,INDEC/datos.gob.ar
+2024-08-01,recaudacion,11764131.36139993,M ARS,INDEC/datos.gob.ar
+2024-07-01,recaudacion,11910547.537222948,M ARS,INDEC/datos.gob.ar
+2024-06-01,recaudacion,11297649.20446474,M ARS,INDEC/datos.gob.ar
+2024-05-01,recaudacion,13379446.494132482,M ARS,INDEC/datos.gob.ar
+2024-04-01,recaudacion,8663813.17291225,M ARS,INDEC/datos.gob.ar
+2024-03-01,recaudacion,7726458.691607789,M ARS,INDEC/datos.gob.ar
+2024-02-01,recaudacion,7249313.922219569,M ARS,INDEC/datos.gob.ar
+2024-01-01,recaudacion,7699887.38525299,M ARS,INDEC/datos.gob.ar
+2023-12-01,recaudacion,5922687.18486099,M ARS,INDEC/datos.gob.ar
+2023-11-01,recaudacion,4679609.85737704,M ARS,INDEC/datos.gob.ar
+2023-10-01,recaudacion,4466095.489322309,M ARS,INDEC/datos.gob.ar
+2023-09-01,recaudacion,4303335.131374829,M ARS,INDEC/datos.gob.ar
+2023-08-01,recaudacion,4062431.79948446,M ARS,INDEC/datos.gob.ar
+2023-07-01,recaudacion,3571198.0279958905,M ARS,INDEC/datos.gob.ar
+2023-06-01,recaudacion,3517257.61702437,M ARS,INDEC/datos.gob.ar
+2023-05-01,recaudacion,3178453.6382806497,M ARS,INDEC/datos.gob.ar
+2023-04-01,recaudacion,2551511.44943979,M ARS,INDEC/datos.gob.ar
+2023-03-01,recaudacion,2336942.38424853,M ARS,INDEC/datos.gob.ar
+2023-02-01,recaudacion,2126337.89725611,M ARS,INDEC/datos.gob.ar
+2023-01-01,recaudacion,2265961.79873514,M ARS,INDEC/datos.gob.ar
+2022-12-01,recaudacion,2307475.60560662,M ARS,INDEC/datos.gob.ar
+2022-11-01,recaudacion,1953859.6578480103,M ARS,INDEC/datos.gob.ar
+2022-10-01,recaudacion,1964056.35257018,M ARS,INDEC/datos.gob.ar
+2022-09-01,recaudacion,2127180.67389125,M ARS,INDEC/datos.gob.ar
+2022-08-01,recaudacion,1731319.4924793502,M ARS,INDEC/datos.gob.ar
+2022-07-01,recaudacion,1745178.10466373,M ARS,INDEC/datos.gob.ar
+2022-06-01,recaudacion,1680901.30723038,M ARS,INDEC/datos.gob.ar
+2022-05-01,recaudacion,1551369.96283376,M ARS,INDEC/datos.gob.ar
+2026-05-28,prestamos_privados,132291930.0,M ARS,BCRA
+2026-05-27,prestamos_privados,131829349.0,M ARS,BCRA
+2026-05-26,prestamos_privados,130850049.0,M ARS,BCRA
+2026-05-22,prestamos_privados,129816932.0,M ARS,BCRA
+2026-05-21,prestamos_privados,129722417.0,M ARS,BCRA
+2026-05-20,prestamos_privados,129411415.0,M ARS,BCRA
+2026-05-19,prestamos_privados,129323247.0,M ARS,BCRA
+2026-05-18,prestamos_privados,128788095.0,M ARS,BCRA
+2026-05-15,prestamos_privados,128195964.0,M ARS,BCRA
+2026-05-14,prestamos_privados,128006881.0,M ARS,BCRA
+2026-05-13,prestamos_privados,127463757.0,M ARS,BCRA
+2026-05-12,prestamos_privados,127528102.0,M ARS,BCRA
+2026-05-11,prestamos_privados,127285455.0,M ARS,BCRA
+2026-05-08,prestamos_privados,126916285.0,M ARS,BCRA
+2026-05-07,prestamos_privados,128386158.0,M ARS,BCRA
+2026-05-06,prestamos_privados,128429716.0,M ARS,BCRA
+2026-05-05,prestamos_privados,129217754.0,M ARS,BCRA
+2026-05-04,prestamos_privados,129340389.0,M ARS,BCRA
+2026-04-30,prestamos_privados,128694528.0,M ARS,BCRA
+2026-04-29,prestamos_privados,129062762.0,M ARS,BCRA
+2026-04-28,prestamos_privados,129269995.0,M ARS,BCRA
+2026-04-27,prestamos_privados,128620041.0,M ARS,BCRA
+2026-04-24,prestamos_privados,127936213.0,M ARS,BCRA
+2026-04-23,prestamos_privados,127230571.0,M ARS,BCRA
+2026-04-22,prestamos_privados,126633456.0,M ARS,BCRA
+2026-04-21,prestamos_privados,126502766.0,M ARS,BCRA
+2026-04-20,prestamos_privados,125728007.0,M ARS,BCRA
+2026-04-17,prestamos_privados,125160763.0,M ARS,BCRA
+2026-04-16,prestamos_privados,124820857.0,M ARS,BCRA
+2026-04-15,prestamos_privados,124605410.0,M ARS,BCRA
+2026-04-14,prestamos_privados,124403432.0,M ARS,BCRA
+2026-04-13,prestamos_privados,124018404.0,M ARS,BCRA
+2026-04-10,prestamos_privados,124130082.0,M ARS,BCRA
+2026-04-09,prestamos_privados,123850259.0,M ARS,BCRA
+2026-04-08,prestamos_privados,124675445.0,M ARS,BCRA
+2026-04-07,prestamos_privados,125030771.0,M ARS,BCRA
+2026-04-06,prestamos_privados,123906967.0,M ARS,BCRA
+2026-04-01,prestamos_privados,125474689.0,M ARS,BCRA
+2026-03-31,prestamos_privados,125860218.0,M ARS,BCRA
+2026-03-30,prestamos_privados,125085345.0,M ARS,BCRA
+2026-03-27,prestamos_privados,123997387.0,M ARS,BCRA
+2026-03-26,prestamos_privados,123425924.0,M ARS,BCRA
+2026-03-25,prestamos_privados,122824670.0,M ARS,BCRA
+2026-03-20,prestamos_privados,122586512.0,M ARS,BCRA
+2026-03-19,prestamos_privados,122133771.0,M ARS,BCRA
+2026-03-18,prestamos_privados,122012801.0,M ARS,BCRA
+2026-03-17,prestamos_privados,121621549.0,M ARS,BCRA
+2026-03-16,prestamos_privados,121084208.0,M ARS,BCRA
+2026-03-13,prestamos_privados,120717623.0,M ARS,BCRA
+2026-03-12,prestamos_privados,120597045.0,M ARS,BCRA
+2026-03-11,prestamos_privados,120447167.0,M ARS,BCRA
+2026-03-10,prestamos_privados,120705202.0,M ARS,BCRA
+2026-03-09,prestamos_privados,120562845.0,M ARS,BCRA
+2026-03-06,prestamos_privados,120375983.0,M ARS,BCRA
+2026-03-05,prestamos_privados,120968901.0,M ARS,BCRA
+2026-03-04,prestamos_privados,121680353.0,M ARS,BCRA
+2026-03-03,prestamos_privados,121832161.0,M ARS,BCRA
+2026-03-02,prestamos_privados,121598239.0,M ARS,BCRA
+2026-02-27,prestamos_privados,122369018.0,M ARS,BCRA
+2026-02-26,prestamos_privados,122261604.0,M ARS,BCRA
+2026-02-25,prestamos_privados,121279651.0,M ARS,BCRA
+2026-02-24,prestamos_privados,120929021.0,M ARS,BCRA
+2026-02-23,prestamos_privados,120155121.0,M ARS,BCRA
+2026-02-20,prestamos_privados,120013688.0,M ARS,BCRA
+2026-02-19,prestamos_privados,120045685.0,M ARS,BCRA
+2026-02-18,prestamos_privados,119770803.0,M ARS,BCRA
+2026-02-13,prestamos_privados,118965622.0,M ARS,BCRA
+2026-02-12,prestamos_privados,118887680.0,M ARS,BCRA
+2026-02-11,prestamos_privados,118930320.0,M ARS,BCRA
+2026-02-10,prestamos_privados,119275239.0,M ARS,BCRA
+2026-02-09,prestamos_privados,119244710.0,M ARS,BCRA
+2026-02-06,prestamos_privados,119042867.0,M ARS,BCRA
+2026-02-05,prestamos_privados,120445651.0,M ARS,BCRA
+2026-02-04,prestamos_privados,120709835.0,M ARS,BCRA
+2026-02-03,prestamos_privados,121248676.0,M ARS,BCRA
+2026-02-02,prestamos_privados,121225425.0,M ARS,BCRA
+2026-01-30,prestamos_privados,121439574.0,M ARS,BCRA
+2026-01-29,prestamos_privados,120971715.0,M ARS,BCRA
+2026-01-28,prestamos_privados,120507426.0,M ARS,BCRA
+2026-01-27,prestamos_privados,120204781.0,M ARS,BCRA
+2026-01-26,prestamos_privados,119936491.0,M ARS,BCRA
+2026-01-23,prestamos_privados,119110450.0,M ARS,BCRA
+2026-01-22,prestamos_privados,118582255.0,M ARS,BCRA
+2026-01-21,prestamos_privados,118550976.0,M ARS,BCRA
+2026-01-20,prestamos_privados,118569794.0,M ARS,BCRA
+2026-01-19,prestamos_privados,117796192.0,M ARS,BCRA
+2026-01-16,prestamos_privados,117518453.0,M ARS,BCRA
+2026-01-15,prestamos_privados,117560480.0,M ARS,BCRA
+2026-01-14,prestamos_privados,117463573.0,M ARS,BCRA
+2026-01-13,prestamos_privados,118030056.0,M ARS,BCRA
+2026-01-12,prestamos_privados,118201898.0,M ARS,BCRA
+2026-01-09,prestamos_privados,118244857.0,M ARS,BCRA
+2026-01-08,prestamos_privados,118042652.0,M ARS,BCRA
+2026-01-07,prestamos_privados,118788639.0,M ARS,BCRA
+2026-01-06,prestamos_privados,119543267.0,M ARS,BCRA
+2026-01-05,prestamos_privados,119166343.0,M ARS,BCRA
+2026-01-02,prestamos_privados,118991529.0,M ARS,BCRA
+2025-12-30,prestamos_privados,118896539.0,M ARS,BCRA
+2025-12-29,prestamos_privados,118552160.0,M ARS,BCRA
+2025-12-26,prestamos_privados,117354780.0,M ARS,BCRA
+2025-12-23,prestamos_privados,116920875.0,M ARS,BCRA
+2025-12-22,prestamos_privados,116238081.0,M ARS,BCRA
+2025-12-19,prestamos_privados,116026134.0,M ARS,BCRA
+2025-12-18,prestamos_privados,115518901.0,M ARS,BCRA
+2025-12-17,prestamos_privados,114919543.0,M ARS,BCRA
+2025-12-16,prestamos_privados,114475562.0,M ARS,BCRA
+2025-12-15,prestamos_privados,113684739.0,M ARS,BCRA
+2025-12-12,prestamos_privados,113374549.0,M ARS,BCRA
+2025-12-11,prestamos_privados,113183939.0,M ARS,BCRA
+2025-12-10,prestamos_privados,113948806.0,M ARS,BCRA
+2025-12-09,prestamos_privados,113375708.0,M ARS,BCRA
+2025-12-05,prestamos_privados,113445330.0,M ARS,BCRA
+2025-12-04,prestamos_privados,113803601.0,M ARS,BCRA
+2025-12-03,prestamos_privados,114092671.0,M ARS,BCRA
+2025-12-02,prestamos_privados,114447223.0,M ARS,BCRA
+2025-12-01,prestamos_privados,114320870.0,M ARS,BCRA
+2025-11-28,prestamos_privados,114807327.0,M ARS,BCRA
+2025-11-27,prestamos_privados,114010526.0,M ARS,BCRA
+2025-11-26,prestamos_privados,113713696.0,M ARS,BCRA
+2025-11-25,prestamos_privados,112625037.0,M ARS,BCRA
+2025-11-20,prestamos_privados,111468379.0,M ARS,BCRA
+2025-11-19,prestamos_privados,110785019.0,M ARS,BCRA
+2025-11-18,prestamos_privados,110507679.0,M ARS,BCRA
+2025-11-17,prestamos_privados,110283497.0,M ARS,BCRA
+2025-11-14,prestamos_privados,109829057.0,M ARS,BCRA
+2025-11-13,prestamos_privados,109717577.0,M ARS,BCRA
+2025-11-12,prestamos_privados,109688430.0,M ARS,BCRA
+2025-11-11,prestamos_privados,110201279.0,M ARS,BCRA
+2025-11-10,prestamos_privados,110096163.0,M ARS,BCRA
+2025-11-07,prestamos_privados,109800820.0,M ARS,BCRA
+2025-11-05,prestamos_privados,110810304.0,M ARS,BCRA
+2025-11-04,prestamos_privados,112030714.0,M ARS,BCRA
+2025-11-03,prestamos_privados,111921101.0,M ARS,BCRA
+2025-10-31,prestamos_privados,111937688.0,M ARS,BCRA
+2025-10-30,prestamos_privados,111572777.0,M ARS,BCRA
+2025-10-29,prestamos_privados,111478438.0,M ARS,BCRA
+2025-10-28,prestamos_privados,112012417.0,M ARS,BCRA
+2025-10-27,prestamos_privados,110017674.0,M ARS,BCRA
+2025-10-24,prestamos_privados,111435562.0,M ARS,BCRA
+2025-10-23,prestamos_privados,110951238.0,M ARS,BCRA
+2025-10-22,prestamos_privados,110654823.0,M ARS,BCRA
+2025-10-21,prestamos_privados,110368941.0,M ARS,BCRA
+2025-10-20,prestamos_privados,109487632.0,M ARS,BCRA
+2025-10-17,prestamos_privados,108764024.0,M ARS,BCRA
+2025-10-16,prestamos_privados,107767508.0,M ARS,BCRA
+2025-10-15,prestamos_privados,107684220.0,M ARS,BCRA
+2025-10-14,prestamos_privados,108148594.0,M ARS,BCRA
+2025-10-13,prestamos_privados,107735259.0,M ARS,BCRA
+2025-10-09,prestamos_privados,110211768.0,M ARS,BCRA
+2025-10-08,prestamos_privados,109750456.0,M ARS,BCRA
+2025-10-07,prestamos_privados,110139905.0,M ARS,BCRA
+2025-10-06,prestamos_privados,109892648.0,M ARS,BCRA
+2025-10-03,prestamos_privados,110138162.0,M ARS,BCRA
+2025-10-02,prestamos_privados,109896781.0,M ARS,BCRA
+2025-10-01,prestamos_privados,109879488.0,M ARS,BCRA
+2025-09-30,prestamos_privados,108617743.0,M ARS,BCRA
+2025-09-29,prestamos_privados,107545604.0,M ARS,BCRA
+2025-09-26,prestamos_privados,106340875.0,M ARS,BCRA
+2025-09-25,prestamos_privados,106058124.0,M ARS,BCRA
+2025-09-24,prestamos_privados,106068181.0,M ARS,BCRA
+2025-09-23,prestamos_privados,106065766.0,M ARS,BCRA
+2025-09-22,prestamos_privados,106989326.0,M ARS,BCRA
+2025-09-19,prestamos_privados,107432129.0,M ARS,BCRA
+2025-09-18,prestamos_privados,107132744.0,M ARS,BCRA
+2025-09-17,prestamos_privados,106818973.0,M ARS,BCRA
+2025-09-16,prestamos_privados,106531361.0,M ARS,BCRA
+2025-09-15,prestamos_privados,106111567.0,M ARS,BCRA
+2025-09-12,prestamos_privados,105463570.0,M ARS,BCRA
+2025-09-11,prestamos_privados,105016458.0,M ARS,BCRA
+2025-09-10,prestamos_privados,104853286.0,M ARS,BCRA
+2025-09-09,prestamos_privados,105048268.0,M ARS,BCRA
+2025-09-08,prestamos_privados,105144659.0,M ARS,BCRA
+2025-09-05,prestamos_privados,104408650.0,M ARS,BCRA
+2025-09-04,prestamos_privados,104463665.0,M ARS,BCRA
+2025-09-03,prestamos_privados,104886710.0,M ARS,BCRA
+2025-09-02,prestamos_privados,105558855.0,M ARS,BCRA
+2025-09-01,prestamos_privados,105426728.0,M ARS,BCRA
+2025-08-29,prestamos_privados,105098423.0,M ARS,BCRA
+2025-08-28,prestamos_privados,104965061.0,M ARS,BCRA
+2025-08-27,prestamos_privados,104675330.0,M ARS,BCRA
+2025-08-26,prestamos_privados,104299767.0,M ARS,BCRA
+2025-08-25,prestamos_privados,104225990.0,M ARS,BCRA
+2025-08-22,prestamos_privados,103251441.0,M ARS,BCRA
+2025-08-21,prestamos_privados,102714712.0,M ARS,BCRA
+2025-08-20,prestamos_privados,102148852.0,M ARS,BCRA
+2025-08-19,prestamos_privados,101930182.0,M ARS,BCRA
+2025-08-18,prestamos_privados,101368502.0,M ARS,BCRA
+2025-08-14,prestamos_privados,100973434.0,M ARS,BCRA
+2025-08-13,prestamos_privados,101232672.0,M ARS,BCRA
+2025-08-12,prestamos_privados,101304288.0,M ARS,BCRA
+2025-08-11,prestamos_privados,100769374.0,M ARS,BCRA
+2025-08-08,prestamos_privados,100769197.0,M ARS,BCRA
+2025-08-07,prestamos_privados,101256776.0,M ARS,BCRA
+2025-08-06,prestamos_privados,101773275.0,M ARS,BCRA
+2025-08-05,prestamos_privados,102409075.0,M ARS,BCRA
+2025-08-04,prestamos_privados,102601253.0,M ARS,BCRA
+2025-08-01,prestamos_privados,102864856.0,M ARS,BCRA
+2025-07-31,prestamos_privados,102500050.0,M ARS,BCRA
+2025-07-30,prestamos_privados,101364213.0,M ARS,BCRA
+2025-07-29,prestamos_privados,100953422.0,M ARS,BCRA
+2025-07-28,prestamos_privados,100380905.0,M ARS,BCRA
+2025-07-25,prestamos_privados,99793168.0,M ARS,BCRA
+2025-07-24,prestamos_privados,98971258.0,M ARS,BCRA
+2025-07-23,prestamos_privados,98644661.0,M ARS,BCRA
+2025-07-22,prestamos_privados,98596008.0,M ARS,BCRA
+2025-07-21,prestamos_privados,98525383.0,M ARS,BCRA
+2025-07-18,prestamos_privados,98197429.0,M ARS,BCRA
+2025-07-17,prestamos_privados,97555097.0,M ARS,BCRA
+2025-07-16,prestamos_privados,97298040.0,M ARS,BCRA
+2025-07-15,prestamos_privados,97270866.0,M ARS,BCRA
+2025-07-14,prestamos_privados,96643630.0,M ARS,BCRA
+2025-07-11,prestamos_privados,96204639.0,M ARS,BCRA
+2025-07-10,prestamos_privados,95921626.0,M ARS,BCRA
+2025-07-08,prestamos_privados,95555407.0,M ARS,BCRA
+2025-07-07,prestamos_privados,95901084.0,M ARS,BCRA
+2025-07-04,prestamos_privados,95773388.0,M ARS,BCRA
+2025-07-03,prestamos_privados,95491398.0,M ARS,BCRA
+2025-07-02,prestamos_privados,95921955.0,M ARS,BCRA
+2025-07-01,prestamos_privados,95774764.0,M ARS,BCRA
+2025-06-30,prestamos_privados,96069962.0,M ARS,BCRA
+2025-06-27,prestamos_privados,95004425.0,M ARS,BCRA
+2025-06-26,prestamos_privados,94690371.0,M ARS,BCRA
+2025-06-25,prestamos_privados,94070588.0,M ARS,BCRA
+2025-06-24,prestamos_privados,93485983.0,M ARS,BCRA
+2025-06-23,prestamos_privados,92693604.0,M ARS,BCRA
+2025-06-19,prestamos_privados,92656755.0,M ARS,BCRA
+2025-06-18,prestamos_privados,91279130.0,M ARS,BCRA
+2025-06-17,prestamos_privados,91090714.0,M ARS,BCRA
+2025-06-13,prestamos_privados,90674228.0,M ARS,BCRA
+2025-06-12,prestamos_privados,90371874.0,M ARS,BCRA
+2025-06-11,prestamos_privados,90245034.0,M ARS,BCRA
+2025-06-10,prestamos_privados,90282008.0,M ARS,BCRA
+2025-06-09,prestamos_privados,89914600.0,M ARS,BCRA
+2025-06-06,prestamos_privados,89707228.0,M ARS,BCRA
+2025-06-05,prestamos_privados,90623392.0,M ARS,BCRA
+2025-06-04,prestamos_privados,90554081.0,M ARS,BCRA
+2025-06-03,prestamos_privados,90891332.0,M ARS,BCRA
+2025-06-02,prestamos_privados,90591029.0,M ARS,BCRA
+2025-05-30,prestamos_privados,91068472.0,M ARS,BCRA
+2025-05-29,prestamos_privados,90733532.0,M ARS,BCRA
+2025-05-28,prestamos_privados,90139236.0,M ARS,BCRA
+2025-05-27,prestamos_privados,89533651.0,M ARS,BCRA
+2025-05-26,prestamos_privados,88863693.0,M ARS,BCRA
+2025-05-23,prestamos_privados,88262316.0,M ARS,BCRA
+2025-05-22,prestamos_privados,88060730.0,M ARS,BCRA
+2025-05-21,prestamos_privados,87561867.0,M ARS,BCRA
+2025-05-20,prestamos_privados,87299018.0,M ARS,BCRA
+2025-05-19,prestamos_privados,86691178.0,M ARS,BCRA
+2025-05-16,prestamos_privados,86449411.0,M ARS,BCRA
+2025-05-15,prestamos_privados,85979427.0,M ARS,BCRA
+2025-05-14,prestamos_privados,85454771.0,M ARS,BCRA
+2025-05-13,prestamos_privados,85482160.0,M ARS,BCRA
+2025-05-12,prestamos_privados,85020465.0,M ARS,BCRA
+2025-05-09,prestamos_privados,85050395.0,M ARS,BCRA
+2025-05-08,prestamos_privados,85265407.0,M ARS,BCRA
+2025-05-07,prestamos_privados,85854422.0,M ARS,BCRA
+2025-05-06,prestamos_privados,86963971.0,M ARS,BCRA
+2025-05-05,prestamos_privados,86732643.0,M ARS,BCRA
+2025-04-30,prestamos_privados,85889244.0,M ARS,BCRA
+2025-04-29,prestamos_privados,85984414.0,M ARS,BCRA
+2025-04-28,prestamos_privados,85231635.0,M ARS,BCRA
+2025-04-25,prestamos_privados,84813983.0,M ARS,BCRA
+2025-04-24,prestamos_privados,84511757.0,M ARS,BCRA
+2025-04-23,prestamos_privados,83272952.0,M ARS,BCRA
+2025-04-22,prestamos_privados,82798264.0,M ARS,BCRA
+2025-04-21,prestamos_privados,81779428.0,M ARS,BCRA
+2025-04-16,prestamos_privados,82676799.0,M ARS,BCRA
+2025-04-15,prestamos_privados,82956026.0,M ARS,BCRA
+2025-04-14,prestamos_privados,82119043.0,M ARS,BCRA
+2025-04-11,prestamos_privados,80538254.0,M ARS,BCRA
+2025-04-10,prestamos_privados,80226507.0,M ARS,BCRA
+2025-04-09,prestamos_privados,79862612.0,M ARS,BCRA
+2025-04-08,prestamos_privados,79562951.0,M ARS,BCRA
+2025-04-07,prestamos_privados,79780798.0,M ARS,BCRA
+2025-04-04,prestamos_privados,80051091.0,M ARS,BCRA
+2025-04-03,prestamos_privados,80164072.0,M ARS,BCRA
+2025-04-01,prestamos_privados,80627005.0,M ARS,BCRA
+2025-03-31,prestamos_privados,80020422.0,M ARS,BCRA
+2025-03-28,prestamos_privados,79975950.0,M ARS,BCRA
+2025-03-27,prestamos_privados,79388433.0,M ARS,BCRA
+2025-03-26,prestamos_privados,78767071.0,M ARS,BCRA
+2025-03-25,prestamos_privados,77845167.0,M ARS,BCRA
+2025-03-21,prestamos_privados,77581609.0,M ARS,BCRA
+2025-03-20,prestamos_privados,77028396.0,M ARS,BCRA
+2025-03-19,prestamos_privados,76622184.0,M ARS,BCRA
+2025-03-18,prestamos_privados,76068027.0,M ARS,BCRA
+2025-03-17,prestamos_privados,75572841.0,M ARS,BCRA
+2025-03-14,prestamos_privados,75248496.0,M ARS,BCRA
+2025-03-13,prestamos_privados,74957265.0,M ARS,BCRA
+2025-03-12,prestamos_privados,74978054.0,M ARS,BCRA
+2025-03-11,prestamos_privados,74949001.0,M ARS,BCRA
+2025-03-10,prestamos_privados,74386107.0,M ARS,BCRA
+2025-03-07,prestamos_privados,75075697.0,M ARS,BCRA
+2025-03-06,prestamos_privados,75627979.0,M ARS,BCRA
+2025-03-05,prestamos_privados,75294018.0,M ARS,BCRA
+2025-02-28,prestamos_privados,74970438.0,M ARS,BCRA
+2025-02-27,prestamos_privados,75078529.0,M ARS,BCRA
+2025-02-26,prestamos_privados,74309340.0,M ARS,BCRA
+2025-02-25,prestamos_privados,73877441.0,M ARS,BCRA
+2025-02-24,prestamos_privados,73656926.0,M ARS,BCRA
+2025-02-21,prestamos_privados,73090812.0,M ARS,BCRA
+2025-02-20,prestamos_privados,72485793.0,M ARS,BCRA
+2025-02-19,prestamos_privados,72015538.0,M ARS,BCRA
+2025-02-18,prestamos_privados,71766850.0,M ARS,BCRA
+2025-02-17,prestamos_privados,71203920.0,M ARS,BCRA
+2025-02-14,prestamos_privados,70762805.0,M ARS,BCRA
+2025-02-13,prestamos_privados,70553272.0,M ARS,BCRA
+2025-02-12,prestamos_privados,70485009.0,M ARS,BCRA
+2025-02-11,prestamos_privados,70355897.0,M ARS,BCRA
+2025-02-10,prestamos_privados,70003924.0,M ARS,BCRA
+2025-02-07,prestamos_privados,70601498.0,M ARS,BCRA
+2025-02-06,prestamos_privados,70589383.0,M ARS,BCRA
+2025-02-05,prestamos_privados,70722988.0,M ARS,BCRA
+2025-02-04,prestamos_privados,71034860.0,M ARS,BCRA
+2025-02-03,prestamos_privados,70913243.0,M ARS,BCRA
+2025-01-31,prestamos_privados,70470338.0,M ARS,BCRA
+2025-01-30,prestamos_privados,70889723.0,M ARS,BCRA
+2025-01-29,prestamos_privados,70442961.0,M ARS,BCRA
+2025-01-28,prestamos_privados,70291585.0,M ARS,BCRA
+2025-01-27,prestamos_privados,69656337.0,M ARS,BCRA
+2025-01-24,prestamos_privados,69023995.0,M ARS,BCRA
+2025-01-23,prestamos_privados,68462144.0,M ARS,BCRA
+2025-01-22,prestamos_privados,68099567.0,M ARS,BCRA
+2025-01-21,prestamos_privados,67823950.0,M ARS,BCRA
+2025-01-20,prestamos_privados,67313177.0,M ARS,BCRA
+2025-01-17,prestamos_privados,66922038.0,M ARS,BCRA
+2025-01-16,prestamos_privados,66655079.0,M ARS,BCRA
+2025-01-15,prestamos_privados,66367287.0,M ARS,BCRA
+2025-01-14,prestamos_privados,66074663.0,M ARS,BCRA
+2025-01-13,prestamos_privados,65831280.0,M ARS,BCRA
+2025-01-10,prestamos_privados,65315032.0,M ARS,BCRA
+2025-01-09,prestamos_privados,64973116.0,M ARS,BCRA
+2025-01-08,prestamos_privados,64738409.0,M ARS,BCRA
+2025-01-07,prestamos_privados,64674707.0,M ARS,BCRA
+2025-01-06,prestamos_privados,64912095.0,M ARS,BCRA
+2025-01-03,prestamos_privados,65405795.0,M ARS,BCRA
+2025-01-02,prestamos_privados,65905236.0,M ARS,BCRA
+2024-12-30,prestamos_privados,65884070.0,M ARS,BCRA
+2024-12-27,prestamos_privados,65715517.0,M ARS,BCRA
+2024-12-26,prestamos_privados,65087064.0,M ARS,BCRA
+2024-12-23,prestamos_privados,63938355.0,M ARS,BCRA
+2024-12-20,prestamos_privados,63019788.0,M ARS,BCRA
+2024-12-19,prestamos_privados,62523321.0,M ARS,BCRA
+2024-12-18,prestamos_privados,62051899.0,M ARS,BCRA
+2024-12-17,prestamos_privados,61578377.0,M ARS,BCRA
+2024-12-16,prestamos_privados,60956384.0,M ARS,BCRA
+2024-12-13,prestamos_privados,60364651.0,M ARS,BCRA
+2024-12-12,prestamos_privados,60076156.0,M ARS,BCRA
+2024-12-11,prestamos_privados,59978887.0,M ARS,BCRA
+2024-12-10,prestamos_privados,59891104.0,M ARS,BCRA
+2024-12-09,prestamos_privados,59252895.0,M ARS,BCRA
+2026-04-01,ipc_total,11363.0904,% mensual,INDEC/datos.gob.ar
+2026-03-01,ipc_total,11077.0608,% mensual,INDEC/datos.gob.ar
+2026-02-01,ipc_total,10714.6255,% mensual,INDEC/datos.gob.ar
+2026-01-01,ipc_total,10413.0309,% mensual,INDEC/datos.gob.ar
+2025-12-01,ipc_total,10121.3715,% mensual,INDEC/datos.gob.ar
+2025-11-01,ipc_total,9841.3581,% mensual,INDEC/datos.gob.ar
+2025-10-01,ipc_total,9603.8623,% mensual,INDEC/datos.gob.ar
+2025-09-01,ipc_total,9384.0922,% mensual,INDEC/datos.gob.ar
+2025-08-01,ipc_total,9193.2441,% mensual,INDEC/datos.gob.ar
+2025-07-01,ipc_total,9023.973,% mensual,INDEC/datos.gob.ar
+2025-06-01,ipc_total,8855.5681,% mensual,INDEC/datos.gob.ar
+2025-05-01,ipc_total,8714.4871,% mensual,INDEC/datos.gob.ar
+2025-04-01,ipc_total,8585.6078,% mensual,INDEC/datos.gob.ar
+2025-03-01,ipc_total,8353.3158,% mensual,INDEC/datos.gob.ar
+2025-02-01,ipc_total,8052.9927,% mensual,INDEC/datos.gob.ar
+2025-01-01,ipc_total,7864.1257,% mensual,INDEC/datos.gob.ar
+2024-12-01,ipc_total,7694.0075,% mensual,INDEC/datos.gob.ar
+2024-11-01,ipc_total,7491.4314,% mensual,INDEC/datos.gob.ar
+2024-10-01,ipc_total,7313.9542,% mensual,INDEC/datos.gob.ar
+2024-09-01,ipc_total,7122.2421,% mensual,INDEC/datos.gob.ar
+2024-08-01,ipc_total,6883.4412,% mensual,INDEC/datos.gob.ar
+2024-07-01,ipc_total,6607.7479,% mensual,INDEC/datos.gob.ar
+2024-06-01,ipc_total,6351.7145,% mensual,INDEC/datos.gob.ar
+2024-05-01,ipc_total,6073.7,% mensual,INDEC/datos.gob.ar
+2024-04-01,ipc_total,5830.2271,% mensual,INDEC/datos.gob.ar
+2024-03-01,ipc_total,5357.0929,% mensual,INDEC/datos.gob.ar
+2024-02-01,ipc_total,4825.7881,% mensual,INDEC/datos.gob.ar
+2024-01-01,ipc_total,4261.5324,% mensual,INDEC/datos.gob.ar
+2023-12-01,ipc_total,3533.1922,% mensual,INDEC/datos.gob.ar
+2023-11-01,ipc_total,2816.0628,% mensual,INDEC/datos.gob.ar
+2023-10-01,ipc_total,2496.273,% mensual,INDEC/datos.gob.ar
+2023-09-01,ipc_total,2304.9242,% mensual,INDEC/datos.gob.ar
+2023-08-01,ipc_total,2044.2832,% mensual,INDEC/datos.gob.ar
+2023-07-01,ipc_total,1818.0838,% mensual,INDEC/datos.gob.ar
+2023-06-01,ipc_total,1709.6115,% mensual,INDEC/datos.gob.ar
+2023-05-01,ipc_total,1613.5895,% mensual,INDEC/datos.gob.ar
+2023-04-01,ipc_total,1497.2147,% mensual,INDEC/datos.gob.ar
+2023-03-01,ipc_total,1381.1601,% mensual,INDEC/datos.gob.ar
+2023-02-01,ipc_total,1282.7091,% mensual,INDEC/datos.gob.ar
+2023-01-01,ipc_total,1202.979,% mensual,INDEC/datos.gob.ar
+2022-12-01,ipc_total,1134.5875,% mensual,INDEC/datos.gob.ar
+2022-11-01,ipc_total,1079.2787,% mensual,INDEC/datos.gob.ar
+2022-10-01,ipc_total,1028.706,% mensual,INDEC/datos.gob.ar
+2022-09-01,ipc_total,967.3076,% mensual,INDEC/datos.gob.ar
+2022-08-01,ipc_total,911.1316,% mensual,INDEC/datos.gob.ar
+2022-07-01,ipc_total,851.761,% mensual,INDEC/datos.gob.ar
+2022-06-01,ipc_total,793.0278,% mensual,INDEC/datos.gob.ar
+2022-05-01,ipc_total,753.147,% mensual,INDEC/datos.gob.ar
+2026-03-01,emae_ia,0.0547993204369523,% i.a.,INDEC/datos.gob.ar
+2026-02-01,emae_ia,-0.0202518356477873,% i.a.,INDEC/datos.gob.ar
+2026-01-01,emae_ia,0.0154275596369242,% i.a.,INDEC/datos.gob.ar
+2025-12-01,emae_ia,0.033344302606507,% i.a.,INDEC/datos.gob.ar
+2025-11-01,emae_ia,-0.0025216554310156,% i.a.,INDEC/datos.gob.ar
+2025-10-01,emae_ia,0.0308811457014952,% i.a.,INDEC/datos.gob.ar
+2025-09-01,emae_ia,0.0482982085874981,% i.a.,INDEC/datos.gob.ar
+2025-08-01,emae_ia,0.0216191765464,% i.a.,INDEC/datos.gob.ar
+2025-07-01,emae_ia,0.0281263925624826,% i.a.,INDEC/datos.gob.ar
+2025-06-01,emae_ia,0.0626262661321845,% i.a.,INDEC/datos.gob.ar
+2025-05-01,emae_ia,0.0516741086536638,% i.a.,INDEC/datos.gob.ar
+2025-04-01,emae_ia,0.077926947001881,% i.a.,INDEC/datos.gob.ar
+2025-03-01,emae_ia,0.0549764787882423,% i.a.,INDEC/datos.gob.ar
+2025-02-01,emae_ia,0.0566081117603289,% i.a.,INDEC/datos.gob.ar
+2025-01-01,emae_ia,0.0636135198601333,% i.a.,INDEC/datos.gob.ar
+2024-12-01,emae_ia,0.0662542028149406,% i.a.,INDEC/datos.gob.ar
+2024-11-01,emae_ia,0.0116827291033596,% i.a.,INDEC/datos.gob.ar
+2024-10-01,emae_ia,0.0033062775384529,% i.a.,INDEC/datos.gob.ar
+2024-09-01,emae_ia,-0.0241757521106886,% i.a.,INDEC/datos.gob.ar
+2024-08-01,emae_ia,-0.0303698993658427,% i.a.,INDEC/datos.gob.ar
+2024-07-01,emae_ia,-0.0034977745911484,% i.a.,INDEC/datos.gob.ar
+2024-06-01,emae_ia,-0.0340322714701887,% i.a.,INDEC/datos.gob.ar
+2024-05-01,emae_ia,0.0195365220819569,% i.a.,INDEC/datos.gob.ar
+2024-04-01,emae_ia,-0.0183704878128769,% i.a.,INDEC/datos.gob.ar
+2024-03-01,emae_ia,-0.0805617272676976,% i.a.,INDEC/datos.gob.ar
+2024-02-01,emae_ia,-0.0264079099899483,% i.a.,INDEC/datos.gob.ar
+2024-01-01,emae_ia,-0.0383426945741349,% i.a.,INDEC/datos.gob.ar
+2023-12-01,emae_ia,-0.0468258612294303,% i.a.,INDEC/datos.gob.ar
+2023-11-01,emae_ia,-0.0112882086398943,% i.a.,INDEC/datos.gob.ar
+2023-10-01,emae_ia,0.0064997413733831,% i.a.,INDEC/datos.gob.ar
+2023-09-01,emae_ia,-0.0049747565347354,% i.a.,INDEC/datos.gob.ar
+2023-08-01,emae_ia,0.0031445997444561,% i.a.,INDEC/datos.gob.ar
+2023-07-01,emae_ia,-0.0145784273241011,% i.a.,INDEC/datos.gob.ar
+2023-06-01,emae_ia,-0.0551101644807492,% i.a.,INDEC/datos.gob.ar
+2023-05-01,emae_ia,-0.0662881753891574,% i.a.,INDEC/datos.gob.ar
+2023-04-01,emae_ia,-0.0484620397532734,% i.a.,INDEC/datos.gob.ar
+2023-03-01,emae_ia,0.0073391191932308,% i.a.,INDEC/datos.gob.ar
+2023-02-01,emae_ia,-0.0042617953714707,% i.a.,INDEC/datos.gob.ar
+2023-01-01,emae_ia,0.0242930262122109,% i.a.,INDEC/datos.gob.ar
+2022-12-01,emae_ia,-0.0071253901004785,% i.a.,INDEC/datos.gob.ar
+2022-11-01,emae_ia,0.0297639021381734,% i.a.,INDEC/datos.gob.ar
+2022-10-01,emae_ia,0.0504580042866984,% i.a.,INDEC/datos.gob.ar
+2022-09-01,emae_ia,0.0557571005586032,% i.a.,INDEC/datos.gob.ar
+2022-08-01,emae_ia,0.0744160504197797,% i.a.,INDEC/datos.gob.ar
+2022-07-01,emae_ia,0.0703486775574098,% i.a.,INDEC/datos.gob.ar
+2022-06-01,emae_ia,0.0837377454444534,% i.a.,INDEC/datos.gob.ar
+2022-05-01,emae_ia,0.0894364050995066,% i.a.,INDEC/datos.gob.ar
+2022-04-01,emae_ia,0.0704833555703778,% i.a.,INDEC/datos.gob.ar
+2026-05-28,base_monetaria,42303192.0,M ARS,BCRA
+2026-05-27,base_monetaria,41922477.0,M ARS,BCRA
+2026-05-26,base_monetaria,41837112.0,M ARS,BCRA
+2026-05-22,base_monetaria,40812053.0,M ARS,BCRA
+2026-05-21,base_monetaria,41162596.0,M ARS,BCRA
+2026-05-20,base_monetaria,40990233.0,M ARS,BCRA
+2026-05-19,base_monetaria,41284793.0,M ARS,BCRA
+2026-05-18,base_monetaria,41006735.0,M ARS,BCRA
+2026-05-15,base_monetaria,41637331.0,M ARS,BCRA
+2026-05-14,base_monetaria,41730096.0,M ARS,BCRA
+2026-05-13,base_monetaria,41228855.0,M ARS,BCRA
+2026-05-12,base_monetaria,40570598.0,M ARS,BCRA
+2026-05-11,base_monetaria,41639647.0,M ARS,BCRA
+2026-05-08,base_monetaria,40710852.0,M ARS,BCRA
+2026-05-07,base_monetaria,41186004.0,M ARS,BCRA
+2026-05-06,base_monetaria,40768742.0,M ARS,BCRA
+2026-05-05,base_monetaria,41285996.0,M ARS,BCRA
+2026-05-04,base_monetaria,41845927.0,M ARS,BCRA
+2026-04-30,base_monetaria,42132457.0,M ARS,BCRA
+2026-04-29,base_monetaria,41994279.0,M ARS,BCRA
+2026-04-28,base_monetaria,41791914.0,M ARS,BCRA
+2026-04-27,base_monetaria,42283192.0,M ARS,BCRA
+2026-04-24,base_monetaria,40052600.0,M ARS,BCRA
+2026-04-23,base_monetaria,40372220.0,M ARS,BCRA
+2026-04-22,base_monetaria,40706598.0,M ARS,BCRA
+2026-04-21,base_monetaria,40702673.0,M ARS,BCRA
+2026-04-20,base_monetaria,40962136.0,M ARS,BCRA
+2026-04-17,base_monetaria,40105907.0,M ARS,BCRA
+2026-04-16,base_monetaria,40553716.0,M ARS,BCRA
+2026-04-15,base_monetaria,40308442.0,M ARS,BCRA
+2026-04-14,base_monetaria,40898167.0,M ARS,BCRA
+2026-04-13,base_monetaria,40941598.0,M ARS,BCRA
+2026-04-10,base_monetaria,41225945.0,M ARS,BCRA
+2026-04-09,base_monetaria,41291559.0,M ARS,BCRA
+2026-04-08,base_monetaria,41265125.0,M ARS,BCRA
+2026-04-07,base_monetaria,41976449.0,M ARS,BCRA
+2026-04-06,base_monetaria,41983916.0,M ARS,BCRA
+2026-04-01,base_monetaria,42128666.0,M ARS,BCRA
+2026-03-31,base_monetaria,41277771.0,M ARS,BCRA
+2026-03-30,base_monetaria,42639083.0,M ARS,BCRA
+2026-03-27,base_monetaria,39674505.0,M ARS,BCRA
+2026-03-26,base_monetaria,40433607.0,M ARS,BCRA
+2026-03-25,base_monetaria,41175029.0,M ARS,BCRA
+2026-03-20,base_monetaria,40514585.0,M ARS,BCRA
+2026-03-19,base_monetaria,40008553.0,M ARS,BCRA
+2026-03-18,base_monetaria,39026567.0,M ARS,BCRA
+2026-03-17,base_monetaria,39541393.0,M ARS,BCRA
+2026-03-16,base_monetaria,40219575.0,M ARS,BCRA
+2026-03-13,base_monetaria,41185271.0,M ARS,BCRA
+2026-03-12,base_monetaria,41407606.0,M ARS,BCRA
+2026-03-11,base_monetaria,40736856.0,M ARS,BCRA
+2026-03-10,base_monetaria,40799134.0,M ARS,BCRA
+2026-03-09,base_monetaria,41337760.0,M ARS,BCRA
+2026-03-06,base_monetaria,42327455.0,M ARS,BCRA
+2026-03-05,base_monetaria,42491784.0,M ARS,BCRA
+2026-03-04,base_monetaria,42455350.0,M ARS,BCRA
+2026-03-03,base_monetaria,42641381.0,M ARS,BCRA
+2026-03-02,base_monetaria,42499111.0,M ARS,BCRA
+2026-02-27,base_monetaria,40986704.0,M ARS,BCRA
+2026-02-26,base_monetaria,41414239.0,M ARS,BCRA
+2026-02-25,base_monetaria,41232963.0,M ARS,BCRA
+2026-02-24,base_monetaria,42600442.0,M ARS,BCRA
+2026-02-23,base_monetaria,42646887.0,M ARS,BCRA
+2026-02-20,base_monetaria,42378425.0,M ARS,BCRA
+2026-02-19,base_monetaria,41882460.0,M ARS,BCRA
+2026-02-18,base_monetaria,40986425.0,M ARS,BCRA
+2026-02-13,base_monetaria,40956503.0,M ARS,BCRA
+2026-02-12,base_monetaria,42461589.0,M ARS,BCRA
+2026-02-11,base_monetaria,42185386.0,M ARS,BCRA
+2026-02-10,base_monetaria,42177084.0,M ARS,BCRA
+2026-02-09,base_monetaria,41992981.0,M ARS,BCRA
+2026-02-06,base_monetaria,41940812.0,M ARS,BCRA
+2026-02-05,base_monetaria,42122917.0,M ARS,BCRA
+2026-02-04,base_monetaria,41812311.0,M ARS,BCRA
+2026-02-03,base_monetaria,41896298.0,M ARS,BCRA
+2026-02-02,base_monetaria,42050300.0,M ARS,BCRA
+2026-01-30,base_monetaria,42812343.0,M ARS,BCRA
+2026-01-29,base_monetaria,42772613.0,M ARS,BCRA
+2026-01-28,base_monetaria,41652760.0,M ARS,BCRA
+2026-01-27,base_monetaria,41880963.0,M ARS,BCRA
+2026-01-26,base_monetaria,43364675.0,M ARS,BCRA
+2026-01-23,base_monetaria,44254340.0,M ARS,BCRA
+2026-01-22,base_monetaria,44262398.0,M ARS,BCRA
+2026-01-21,base_monetaria,44265806.0,M ARS,BCRA
+2026-01-20,base_monetaria,44040732.0,M ARS,BCRA
+2026-01-19,base_monetaria,44050201.0,M ARS,BCRA
+2026-01-16,base_monetaria,44102114.0,M ARS,BCRA
+2026-01-15,base_monetaria,43701459.0,M ARS,BCRA
+2026-01-14,base_monetaria,43803268.0,M ARS,BCRA
+2026-01-13,base_monetaria,43346010.0,M ARS,BCRA
+2026-01-12,base_monetaria,42938346.0,M ARS,BCRA
+2026-01-09,base_monetaria,42895272.0,M ARS,BCRA
+2026-01-08,base_monetaria,43272002.0,M ARS,BCRA
+2026-01-07,base_monetaria,43167152.0,M ARS,BCRA
+2026-01-06,base_monetaria,42682795.0,M ARS,BCRA
+2026-01-05,base_monetaria,42683047.0,M ARS,BCRA
+2026-01-02,base_monetaria,42960320.0,M ARS,BCRA
+2025-12-30,base_monetaria,42956965.0,M ARS,BCRA
+2025-12-29,base_monetaria,42305192.0,M ARS,BCRA
+2025-12-26,base_monetaria,42492789.0,M ARS,BCRA
+2025-12-23,base_monetaria,41853086.0,M ARS,BCRA
+2025-12-22,base_monetaria,41416844.0,M ARS,BCRA
+2025-12-19,base_monetaria,40805912.0,M ARS,BCRA
+2025-12-18,base_monetaria,40972242.0,M ARS,BCRA
+2025-12-17,base_monetaria,41112794.0,M ARS,BCRA
+2025-12-16,base_monetaria,40768621.0,M ARS,BCRA
+2025-12-15,base_monetaria,41443740.0,M ARS,BCRA
+2025-12-12,base_monetaria,41173306.0,M ARS,BCRA
+2025-12-11,base_monetaria,40856240.0,M ARS,BCRA
+2025-12-10,base_monetaria,40146702.0,M ARS,BCRA
+2025-12-09,base_monetaria,40069791.0,M ARS,BCRA
+2025-12-05,base_monetaria,38933317.0,M ARS,BCRA
+2025-12-04,base_monetaria,40457720.0,M ARS,BCRA
+2025-12-03,base_monetaria,37842747.0,M ARS,BCRA
+2025-12-02,base_monetaria,39684092.0,M ARS,BCRA
+2025-12-01,base_monetaria,40862891.0,M ARS,BCRA
+2025-11-28,base_monetaria,40926609.0,M ARS,BCRA
+2025-11-27,base_monetaria,41009226.0,M ARS,BCRA
+2025-11-26,base_monetaria,40563401.0,M ARS,BCRA
+2025-11-25,base_monetaria,42341489.0,M ARS,BCRA
+2025-11-20,base_monetaria,40927869.0,M ARS,BCRA
+2025-11-19,base_monetaria,40314551.0,M ARS,BCRA
+2025-11-18,base_monetaria,40323072.0,M ARS,BCRA
+2025-11-17,base_monetaria,40819556.0,M ARS,BCRA
+2025-11-14,base_monetaria,40285409.0,M ARS,BCRA
+2025-11-13,base_monetaria,39820024.0,M ARS,BCRA
+2025-11-12,base_monetaria,40264655.0,M ARS,BCRA
+2025-11-11,base_monetaria,40036417.0,M ARS,BCRA
+2025-11-10,base_monetaria,41632920.0,M ARS,BCRA
+2025-11-07,base_monetaria,41881861.0,M ARS,BCRA
+2025-11-05,base_monetaria,41136124.0,M ARS,BCRA
+2025-11-04,base_monetaria,40730943.0,M ARS,BCRA
+2025-11-03,base_monetaria,41437306.0,M ARS,BCRA
+2025-10-31,base_monetaria,41327194.0,M ARS,BCRA
+2025-10-30,base_monetaria,40354280.0,M ARS,BCRA
+2025-10-29,base_monetaria,40147684.0,M ARS,BCRA
+2025-10-28,base_monetaria,40078019.0,M ARS,BCRA
+2025-10-27,base_monetaria,40078826.0,M ARS,BCRA
+2025-10-24,base_monetaria,39402450.0,M ARS,BCRA
+2025-10-23,base_monetaria,39850348.0,M ARS,BCRA
+2025-10-22,base_monetaria,39970044.0,M ARS,BCRA
+2025-10-21,base_monetaria,40177879.0,M ARS,BCRA
+2025-10-20,base_monetaria,40972264.0,M ARS,BCRA
+2025-10-17,base_monetaria,40428002.0,M ARS,BCRA
+2025-10-16,base_monetaria,40131062.0,M ARS,BCRA
+2025-10-15,base_monetaria,40648966.0,M ARS,BCRA
+2025-10-14,base_monetaria,41039888.0,M ARS,BCRA
+2025-10-13,base_monetaria,40840121.0,M ARS,BCRA
+2025-10-09,base_monetaria,40896326.0,M ARS,BCRA
+2025-10-08,base_monetaria,40739322.0,M ARS,BCRA
+2025-10-07,base_monetaria,40581165.0,M ARS,BCRA
+2025-10-06,base_monetaria,40792969.0,M ARS,BCRA
+2025-10-03,base_monetaria,40636784.0,M ARS,BCRA
+2025-10-02,base_monetaria,40356005.0,M ARS,BCRA
+2025-10-01,base_monetaria,41012542.0,M ARS,BCRA
+2025-09-30,base_monetaria,42295612.0,M ARS,BCRA
+2025-09-29,base_monetaria,41645095.0,M ARS,BCRA
+2025-09-26,base_monetaria,41204584.0,M ARS,BCRA
+2025-09-25,base_monetaria,40742575.0,M ARS,BCRA
+2025-09-24,base_monetaria,41246514.0,M ARS,BCRA
+2025-09-23,base_monetaria,41199281.0,M ARS,BCRA
+2025-09-22,base_monetaria,41976631.0,M ARS,BCRA
+2025-09-19,base_monetaria,40711384.0,M ARS,BCRA
+2025-09-18,base_monetaria,41372282.0,M ARS,BCRA
+2025-09-17,base_monetaria,40732354.0,M ARS,BCRA
+2025-09-16,base_monetaria,41347862.0,M ARS,BCRA
+2025-09-15,base_monetaria,42076972.0,M ARS,BCRA
+2025-09-12,base_monetaria,40989198.0,M ARS,BCRA
+2025-09-11,base_monetaria,41149389.0,M ARS,BCRA
+2025-09-10,base_monetaria,41474053.0,M ARS,BCRA
+2025-09-09,base_monetaria,41377280.0,M ARS,BCRA
+2025-09-08,base_monetaria,42234372.0,M ARS,BCRA
+2025-09-05,base_monetaria,41537947.0,M ARS,BCRA
+2025-09-04,base_monetaria,42171431.0,M ARS,BCRA
+2025-09-03,base_monetaria,41866271.0,M ARS,BCRA
+2025-09-02,base_monetaria,41682352.0,M ARS,BCRA
+2025-09-01,base_monetaria,42598268.0,M ARS,BCRA
+2025-08-29,base_monetaria,44259863.0,M ARS,BCRA
+2025-08-28,base_monetaria,44773011.0,M ARS,BCRA
+2025-08-27,base_monetaria,44202019.0,M ARS,BCRA
+2025-08-26,base_monetaria,44221777.0,M ARS,BCRA
+2025-08-25,base_monetaria,44919842.0,M ARS,BCRA
+2025-08-22,base_monetaria,44128287.0,M ARS,BCRA
+2025-08-21,base_monetaria,43584582.0,M ARS,BCRA
+2025-08-20,base_monetaria,42821346.0,M ARS,BCRA
+2025-08-19,base_monetaria,44631142.0,M ARS,BCRA
+2025-08-18,base_monetaria,48555085.0,M ARS,BCRA
+2025-08-14,base_monetaria,42615572.0,M ARS,BCRA
+2025-08-13,base_monetaria,42643973.0,M ARS,BCRA
+2025-08-12,base_monetaria,42659621.0,M ARS,BCRA
+2025-08-11,base_monetaria,42702784.0,M ARS,BCRA
+2025-08-08,base_monetaria,42743195.0,M ARS,BCRA
+2025-08-07,base_monetaria,42675620.0,M ARS,BCRA
+2025-08-06,base_monetaria,42697634.0,M ARS,BCRA
+2025-08-05,base_monetaria,42754510.0,M ARS,BCRA
+2025-08-04,base_monetaria,42800555.0,M ARS,BCRA
+2025-08-01,base_monetaria,41407090.0,M ARS,BCRA
+2025-07-31,base_monetaria,40113368.0,M ARS,BCRA
+2025-07-30,base_monetaria,37296150.0,M ARS,BCRA
+2025-07-29,base_monetaria,38348980.0,M ARS,BCRA
+2025-07-28,base_monetaria,36820448.0,M ARS,BCRA
+2025-07-25,base_monetaria,37735031.0,M ARS,BCRA
+2025-07-24,base_monetaria,38149891.0,M ARS,BCRA
+2025-07-23,base_monetaria,38169300.0,M ARS,BCRA
+2025-07-22,base_monetaria,38004625.0,M ARS,BCRA
+2025-07-21,base_monetaria,38025450.0,M ARS,BCRA
+2025-07-18,base_monetaria,37641717.0,M ARS,BCRA
+2025-07-17,base_monetaria,41459951.0,M ARS,BCRA
+2025-07-16,base_monetaria,38563168.0,M ARS,BCRA
+2025-07-15,base_monetaria,38219612.0,M ARS,BCRA
+2025-07-14,base_monetaria,42051969.0,M ARS,BCRA
+2025-07-11,base_monetaria,43032475.0,M ARS,BCRA
+2025-07-10,base_monetaria,43014258.0,M ARS,BCRA
+2025-07-08,base_monetaria,33139576.0,M ARS,BCRA
+2025-07-07,base_monetaria,34372668.0,M ARS,BCRA
+2025-07-04,base_monetaria,32748809.0,M ARS,BCRA
+2025-07-03,base_monetaria,33418387.0,M ARS,BCRA
+2025-07-02,base_monetaria,34406140.0,M ARS,BCRA
+2025-07-01,base_monetaria,35577666.0,M ARS,BCRA
+2025-06-30,base_monetaria,37175626.0,M ARS,BCRA
+2025-06-27,base_monetaria,35542364.0,M ARS,BCRA
+2025-06-26,base_monetaria,34940528.0,M ARS,BCRA
+2025-06-25,base_monetaria,34821185.0,M ARS,BCRA
+2025-06-24,base_monetaria,34844743.0,M ARS,BCRA
+2025-06-23,base_monetaria,35729694.0,M ARS,BCRA
+2025-06-19,base_monetaria,35393546.0,M ARS,BCRA
+2025-06-18,base_monetaria,35924590.0,M ARS,BCRA
+2025-06-17,base_monetaria,36061997.0,M ARS,BCRA
+2025-06-13,base_monetaria,35650056.0,M ARS,BCRA
+2025-06-12,base_monetaria,35385140.0,M ARS,BCRA
+2025-06-11,base_monetaria,36235936.0,M ARS,BCRA
+2025-06-10,base_monetaria,36212110.0,M ARS,BCRA
+2025-06-09,base_monetaria,36536164.0,M ARS,BCRA
+2025-06-06,base_monetaria,36604803.0,M ARS,BCRA
+2025-06-05,base_monetaria,36533114.0,M ARS,BCRA
+2025-06-04,base_monetaria,36636601.0,M ARS,BCRA
+2025-06-03,base_monetaria,36423142.0,M ARS,BCRA
+2025-06-02,base_monetaria,36927413.0,M ARS,BCRA
+2025-05-30,base_monetaria,34940118.0,M ARS,BCRA
+2025-05-29,base_monetaria,33286265.0,M ARS,BCRA
+2025-05-28,base_monetaria,33413949.0,M ARS,BCRA
+2025-05-27,base_monetaria,33238432.0,M ARS,BCRA
+2025-05-26,base_monetaria,33019446.0,M ARS,BCRA
+2025-05-23,base_monetaria,33289989.0,M ARS,BCRA
+2025-05-22,base_monetaria,32886199.0,M ARS,BCRA
+2025-05-21,base_monetaria,32498752.0,M ARS,BCRA
+2025-05-20,base_monetaria,32822015.0,M ARS,BCRA
+2025-05-19,base_monetaria,33277257.0,M ARS,BCRA
+2025-05-16,base_monetaria,33931781.0,M ARS,BCRA
+2025-05-15,base_monetaria,33994625.0,M ARS,BCRA
+2025-05-14,base_monetaria,34207517.0,M ARS,BCRA
+2025-05-13,base_monetaria,34281998.0,M ARS,BCRA
+2025-05-12,base_monetaria,34430644.0,M ARS,BCRA
+2025-05-09,base_monetaria,37372925.0,M ARS,BCRA
+2025-05-08,base_monetaria,36551345.0,M ARS,BCRA
+2025-05-07,base_monetaria,36874854.0,M ARS,BCRA
+2025-05-06,base_monetaria,36649451.0,M ARS,BCRA
+2025-05-05,base_monetaria,36854734.0,M ARS,BCRA
+2025-04-30,base_monetaria,32698982.0,M ARS,BCRA
+2025-04-29,base_monetaria,31591655.0,M ARS,BCRA
+2025-04-28,base_monetaria,31123513.0,M ARS,BCRA
+2025-04-25,base_monetaria,31494771.0,M ARS,BCRA
+2025-04-24,base_monetaria,30917195.0,M ARS,BCRA
+2025-04-23,base_monetaria,30799765.0,M ARS,BCRA
+2025-04-22,base_monetaria,30535306.0,M ARS,BCRA
+2025-04-21,base_monetaria,31540018.0,M ARS,BCRA
+2025-04-16,base_monetaria,33430894.0,M ARS,BCRA
+2025-04-15,base_monetaria,33925628.0,M ARS,BCRA
+2025-04-14,base_monetaria,34015295.0,M ARS,BCRA
+2025-04-11,base_monetaria,36723827.0,M ARS,BCRA
+2025-04-10,base_monetaria,34413497.0,M ARS,BCRA
+2025-04-09,base_monetaria,34124828.0,M ARS,BCRA
+2025-04-08,base_monetaria,34496121.0,M ARS,BCRA
+2025-04-07,base_monetaria,34275343.0,M ARS,BCRA
+2025-04-04,base_monetaria,33767969.0,M ARS,BCRA
+2025-04-03,base_monetaria,34468529.0,M ARS,BCRA
+2025-04-01,base_monetaria,33924898.0,M ARS,BCRA
+2025-03-31,base_monetaria,30534180.0,M ARS,BCRA
+2025-03-28,base_monetaria,29892870.0,M ARS,BCRA
+2025-03-27,base_monetaria,30090914.0,M ARS,BCRA
+2025-03-26,base_monetaria,29851367.0,M ARS,BCRA
+2025-03-25,base_monetaria,30148778.0,M ARS,BCRA
+2025-03-21,base_monetaria,30157532.0,M ARS,BCRA
+2025-03-20,base_monetaria,29715005.0,M ARS,BCRA
+2025-03-19,base_monetaria,29992603.0,M ARS,BCRA
+2025-03-18,base_monetaria,29885056.0,M ARS,BCRA
+2025-03-17,base_monetaria,30215667.0,M ARS,BCRA
+2025-03-14,base_monetaria,30562264.0,M ARS,BCRA
+2025-03-13,base_monetaria,30051710.0,M ARS,BCRA
+2025-03-12,base_monetaria,30493322.0,M ARS,BCRA
+2025-03-11,base_monetaria,30475141.0,M ARS,BCRA
+2025-03-10,base_monetaria,30146018.0,M ARS,BCRA
+2025-03-07,base_monetaria,30856427.0,M ARS,BCRA
+2025-03-06,base_monetaria,31125291.0,M ARS,BCRA
+2025-03-05,base_monetaria,30759385.0,M ARS,BCRA
+2025-02-28,base_monetaria,30282166.0,M ARS,BCRA
+2025-02-27,base_monetaria,30179493.0,M ARS,BCRA
+2025-02-26,base_monetaria,29103728.0,M ARS,BCRA
+2025-02-25,base_monetaria,29229656.0,M ARS,BCRA
+2025-02-24,base_monetaria,29282430.0,M ARS,BCRA
+2025-02-21,base_monetaria,29449494.0,M ARS,BCRA
+2025-02-20,base_monetaria,29063451.0,M ARS,BCRA
+2025-02-19,base_monetaria,28991665.0,M ARS,BCRA
+2025-02-18,base_monetaria,29264005.0,M ARS,BCRA
+2025-02-17,base_monetaria,29278470.0,M ARS,BCRA
+2025-02-14,base_monetaria,30388719.0,M ARS,BCRA
+2025-02-13,base_monetaria,30533195.0,M ARS,BCRA
+2025-02-12,base_monetaria,30436865.0,M ARS,BCRA
+2025-02-11,base_monetaria,30640926.0,M ARS,BCRA
+2025-02-10,base_monetaria,30993421.0,M ARS,BCRA
+2025-02-07,base_monetaria,31310198.0,M ARS,BCRA
+2025-02-06,base_monetaria,31034691.0,M ARS,BCRA
+2025-02-05,base_monetaria,30901745.0,M ARS,BCRA
+2025-02-04,base_monetaria,31793497.0,M ARS,BCRA
+2025-02-03,base_monetaria,31194889.0,M ARS,BCRA
+2025-01-31,base_monetaria,30246597.0,M ARS,BCRA
+2025-01-30,base_monetaria,28999198.0,M ARS,BCRA
+2025-01-29,base_monetaria,29196847.0,M ARS,BCRA
+2025-01-28,base_monetaria,29616605.0,M ARS,BCRA
+2025-01-27,base_monetaria,30451680.0,M ARS,BCRA
+2025-01-24,base_monetaria,30008838.0,M ARS,BCRA
+2025-01-23,base_monetaria,30058865.0,M ARS,BCRA
+2025-01-22,base_monetaria,30090521.0,M ARS,BCRA
+2025-01-21,base_monetaria,29894816.0,M ARS,BCRA
+2025-01-20,base_monetaria,29983683.0,M ARS,BCRA
+2025-01-17,base_monetaria,30146444.0,M ARS,BCRA
+2025-01-16,base_monetaria,30188706.0,M ARS,BCRA
+2025-01-15,base_monetaria,30122644.0,M ARS,BCRA
+2025-01-14,base_monetaria,29244363.0,M ARS,BCRA
+2025-01-13,base_monetaria,29988673.0,M ARS,BCRA
+2025-01-10,base_monetaria,30414752.0,M ARS,BCRA
+2025-01-09,base_monetaria,30687325.0,M ARS,BCRA
+2025-01-08,base_monetaria,31138876.0,M ARS,BCRA
+2025-01-07,base_monetaria,31025360.0,M ARS,BCRA
+2025-01-06,base_monetaria,31269417.0,M ARS,BCRA
+2025-01-03,base_monetaria,31660480.0,M ARS,BCRA
+2025-01-02,base_monetaria,30977989.0,M ARS,BCRA
+2024-12-30,base_monetaria,29728575.0,M ARS,BCRA
+2024-12-27,base_monetaria,28148247.0,M ARS,BCRA
+2024-12-26,base_monetaria,27902229.0,M ARS,BCRA
+2024-12-23,base_monetaria,28371966.0,M ARS,BCRA
+2024-12-20,base_monetaria,28395764.0,M ARS,BCRA
+2024-12-19,base_monetaria,27743826.0,M ARS,BCRA
+2024-12-18,base_monetaria,27711731.0,M ARS,BCRA
+2024-12-17,base_monetaria,27719282.0,M ARS,BCRA
+2024-12-16,base_monetaria,28000252.0,M ARS,BCRA
+2024-12-13,base_monetaria,28040059.0,M ARS,BCRA
+2024-12-12,base_monetaria,27226652.0,M ARS,BCRA
+2024-12-11,base_monetaria,27161741.0,M ARS,BCRA
+2024-12-10,base_monetaria,26867862.0,M ARS,BCRA
+2024-12-09,base_monetaria,27216853.0,M ARS,BCRA
+2026-05-29,badlar,20.625,% anual,BCRA
+2026-05-28,badlar,21.9375,% anual,BCRA
+2026-05-27,badlar,20.6875,% anual,BCRA
+2026-05-26,badlar,21.5625,% anual,BCRA
+2026-05-22,badlar,22.0,% anual,BCRA
+2026-05-21,badlar,22.0,% anual,BCRA
+2026-05-20,badlar,21.25,% anual,BCRA
+2026-05-19,badlar,22.0,% anual,BCRA
+2026-05-18,badlar,21.5,% anual,BCRA
+2026-05-15,badlar,21.125,% anual,BCRA
+2026-05-14,badlar,21.25,% anual,BCRA
+2026-05-13,badlar,20.25,% anual,BCRA
+2026-05-12,badlar,21.5625,% anual,BCRA
+2026-05-11,badlar,20.875,% anual,BCRA
+2026-05-08,badlar,20.875,% anual,BCRA
+2026-05-07,badlar,21.375,% anual,BCRA
+2026-05-06,badlar,20.9375,% anual,BCRA
+2026-05-05,badlar,22.3125,% anual,BCRA
+2026-05-04,badlar,21.4375,% anual,BCRA
+2026-04-30,badlar,20.875,% anual,BCRA
+2026-04-29,badlar,21.0,% anual,BCRA
+2026-04-28,badlar,21.625,% anual,BCRA
+2026-04-27,badlar,20.375,% anual,BCRA
+2026-04-24,badlar,21.3125,% anual,BCRA
+2026-04-23,badlar,22.0,% anual,BCRA
+2026-04-22,badlar,22.0,% anual,BCRA
+2026-04-21,badlar,21.8125,% anual,BCRA
+2026-04-20,badlar,21.3125,% anual,BCRA
+2026-04-17,badlar,22.375,% anual,BCRA
+2026-04-16,badlar,22.4375,% anual,BCRA
+2026-04-15,badlar,22.125,% anual,BCRA
+2026-04-14,badlar,22.5,% anual,BCRA
+2026-04-13,badlar,21.6875,% anual,BCRA
+2026-04-10,badlar,22.375,% anual,BCRA
+2026-04-09,badlar,23.25,% anual,BCRA
+2026-04-08,badlar,24.9375,% anual,BCRA
+2026-04-07,badlar,25.3125,% anual,BCRA
+2026-04-06,badlar,24.4375,% anual,BCRA
+2026-04-01,badlar,25.1875,% anual,BCRA
+2026-03-31,badlar,25.375,% anual,BCRA
+2026-03-30,badlar,25.0625,% anual,BCRA
+2026-03-27,badlar,24.8125,% anual,BCRA
+2026-03-26,badlar,25.6875,% anual,BCRA
+2026-03-25,badlar,25.375,% anual,BCRA
+2026-03-20,badlar,25.6875,% anual,BCRA
+2026-03-19,badlar,26.25,% anual,BCRA
+2026-03-18,badlar,26.875,% anual,BCRA
+2026-03-17,badlar,28.25,% anual,BCRA
+2026-03-16,badlar,28.5625,% anual,BCRA
+2026-03-13,badlar,28.5625,% anual,BCRA
+2026-03-12,badlar,29.375,% anual,BCRA
+2026-03-11,badlar,29.0,% anual,BCRA
+2026-03-10,badlar,29.3125,% anual,BCRA
+2026-03-09,badlar,28.5,% anual,BCRA
+2026-03-06,badlar,28.3125,% anual,BCRA
+2026-03-05,badlar,29.5,% anual,BCRA
+2026-03-04,badlar,28.4375,% anual,BCRA
+2026-03-03,badlar,29.5,% anual,BCRA
+2026-03-02,badlar,28.9375,% anual,BCRA
+2026-02-27,badlar,29.5,% anual,BCRA
+2026-02-26,badlar,30.25,% anual,BCRA
+2026-02-25,badlar,30.75,% anual,BCRA
+2026-02-24,badlar,34.3125,% anual,BCRA
+2026-02-23,badlar,33.125,% anual,BCRA
+2026-02-20,badlar,32.6875,% anual,BCRA
+2026-02-19,badlar,31.8125,% anual,BCRA
+2026-02-18,badlar,30.5,% anual,BCRA
+2026-02-13,badlar,31.3125,% anual,BCRA
+2026-02-12,badlar,29.875,% anual,BCRA
+2026-02-11,badlar,28.6875,% anual,BCRA
+2026-02-10,badlar,30.0,% anual,BCRA
+2026-02-09,badlar,29.1875,% anual,BCRA
+2026-02-06,badlar,30.4375,% anual,BCRA
+2026-02-05,badlar,30.3125,% anual,BCRA
+2026-02-04,badlar,30.5,% anual,BCRA
+2026-02-03,badlar,31.625,% anual,BCRA
+2026-02-02,badlar,29.375,% anual,BCRA
+2026-01-30,badlar,31.1875,% anual,BCRA
+2026-01-29,badlar,30.1875,% anual,BCRA
+2026-01-28,badlar,30.75,% anual,BCRA
+2026-01-27,badlar,33.0,% anual,BCRA
+2026-01-26,badlar,32.0,% anual,BCRA
+2026-01-23,badlar,36.4375,% anual,BCRA
+2026-01-22,badlar,35.625,% anual,BCRA
+2026-01-21,badlar,34.6875,% anual,BCRA
+2026-01-20,badlar,34.875,% anual,BCRA
+2026-01-19,badlar,32.75,% anual,BCRA
+2026-01-16,badlar,32.8125,% anual,BCRA
+2026-01-15,badlar,31.9375,% anual,BCRA
+2026-01-14,badlar,31.1875,% anual,BCRA
+2026-01-13,badlar,29.25,% anual,BCRA
+2026-01-12,badlar,27.375,% anual,BCRA
+2026-01-09,badlar,29.4375,% anual,BCRA
+2026-01-08,badlar,30.25,% anual,BCRA
+2026-01-07,badlar,29.9375,% anual,BCRA
+2026-01-06,badlar,28.0,% anual,BCRA
+2026-01-05,badlar,26.875,% anual,BCRA
+2026-01-02,badlar,26.6875,% anual,BCRA
+2025-12-30,badlar,26.6875,% anual,BCRA
+2025-12-29,badlar,26.0625,% anual,BCRA
+2025-12-26,badlar,26.875,% anual,BCRA
+2025-12-23,badlar,28.625,% anual,BCRA
+2025-12-22,badlar,26.875,% anual,BCRA
+2025-12-19,badlar,27.0,% anual,BCRA
+2025-12-18,badlar,26.1875,% anual,BCRA
+2025-12-17,badlar,25.8125,% anual,BCRA
+2025-12-16,badlar,25.75,% anual,BCRA
+2025-12-15,badlar,25.25,% anual,BCRA
+2025-12-12,badlar,24.9375,% anual,BCRA
+2025-12-11,badlar,25.75,% anual,BCRA
+2025-12-10,badlar,25.5,% anual,BCRA
+2025-12-09,badlar,25.25,% anual,BCRA
+2025-12-05,badlar,25.75,% anual,BCRA
+2025-12-04,badlar,26.0,% anual,BCRA
+2025-12-03,badlar,26.5,% anual,BCRA
+2025-12-02,badlar,28.5,% anual,BCRA
+2025-12-01,badlar,29.4375,% anual,BCRA
+2025-11-28,badlar,29.9375,% anual,BCRA
+2025-11-27,badlar,30.25,% anual,BCRA
+2025-11-26,badlar,29.8125,% anual,BCRA
+2025-11-25,badlar,30.125,% anual,BCRA
+2025-11-20,badlar,31.0,% anual,BCRA
+2025-11-19,badlar,32.1875,% anual,BCRA
+2025-11-18,badlar,32.4375,% anual,BCRA
+2025-11-17,badlar,31.125,% anual,BCRA
+2025-11-14,badlar,32.0625,% anual,BCRA
+2025-11-13,badlar,31.5625,% anual,BCRA
+2025-11-12,badlar,31.3125,% anual,BCRA
+2025-11-11,badlar,33.375,% anual,BCRA
+2025-11-10,badlar,32.5,% anual,BCRA
+2025-11-07,badlar,32.9375,% anual,BCRA
+2025-11-05,badlar,34.0625,% anual,BCRA
+2025-11-04,badlar,35.0,% anual,BCRA
+2025-11-03,badlar,34.75,% anual,BCRA
+2025-10-31,badlar,37.1875,% anual,BCRA
+2025-10-30,badlar,40.9375,% anual,BCRA
+2025-10-29,badlar,41.1875,% anual,BCRA
+2025-10-28,badlar,44.5,% anual,BCRA
+2025-10-27,badlar,41.8125,% anual,BCRA
+2025-10-24,badlar,49.4375,% anual,BCRA
+2025-10-23,badlar,48.625,% anual,BCRA
+2025-10-22,badlar,48.125,% anual,BCRA
+2025-10-21,badlar,48.75,% anual,BCRA
+2025-10-20,badlar,49.375,% anual,BCRA
+2025-10-17,badlar,53.0625,% anual,BCRA
+2025-10-16,badlar,57.25,% anual,BCRA
+2025-10-15,badlar,56.25,% anual,BCRA
+2025-10-14,badlar,51.9375,% anual,BCRA
+2025-10-13,badlar,46.5625,% anual,BCRA
+2025-10-09,badlar,49.5625,% anual,BCRA
+2025-10-08,badlar,44.3125,% anual,BCRA
+2025-10-07,badlar,44.125,% anual,BCRA
+2025-10-06,badlar,40.8125,% anual,BCRA
+2025-10-03,badlar,40.875,% anual,BCRA
+2025-10-02,badlar,40.375,% anual,BCRA
+2025-10-01,badlar,40.625,% anual,BCRA
+2025-09-30,badlar,41.0,% anual,BCRA
+2025-09-29,badlar,39.625,% anual,BCRA
+2025-09-26,badlar,39.25,% anual,BCRA
+2025-09-25,badlar,40.375,% anual,BCRA
+2025-09-24,badlar,43.5,% anual,BCRA
+2025-09-23,badlar,46.4375,% anual,BCRA
+2025-09-22,badlar,45.375,% anual,BCRA
+2025-09-19,badlar,45.25,% anual,BCRA
+2025-09-18,badlar,44.3125,% anual,BCRA
+2025-09-17,badlar,43.25,% anual,BCRA
+2025-09-16,badlar,43.375,% anual,BCRA
+2025-09-15,badlar,44.625,% anual,BCRA
+2025-09-12,badlar,46.125,% anual,BCRA
+2025-09-11,badlar,50.9375,% anual,BCRA
+2025-09-10,badlar,53.625,% anual,BCRA
+2025-09-09,badlar,59.0,% anual,BCRA
+2025-09-08,badlar,56.5,% anual,BCRA
+2025-09-05,badlar,55.25,% anual,BCRA
+2025-09-04,badlar,57.1875,% anual,BCRA
+2025-09-03,badlar,56.5625,% anual,BCRA
+2025-09-02,badlar,55.6875,% anual,BCRA
+2025-09-01,badlar,58.1875,% anual,BCRA
+2025-08-29,badlar,58.0,% anual,BCRA
+2025-08-28,badlar,59.0625,% anual,BCRA
+2025-08-27,badlar,55.375,% anual,BCRA
+2025-08-26,badlar,58.375,% anual,BCRA
+2025-08-25,badlar,52.1875,% anual,BCRA
+2025-08-22,badlar,53.125,% anual,BCRA
+2025-08-21,badlar,53.8125,% anual,BCRA
+2025-08-20,badlar,53.4375,% anual,BCRA
+2025-08-19,badlar,54.125,% anual,BCRA
+2025-08-18,badlar,49.6875,% anual,BCRA
+2025-08-14,badlar,46.6875,% anual,BCRA
+2025-08-13,badlar,44.375,% anual,BCRA
+2025-08-12,badlar,45.9375,% anual,BCRA
+2025-08-11,badlar,41.875,% anual,BCRA
+2025-08-08,badlar,40.75,% anual,BCRA
+2025-08-07,badlar,39.4375,% anual,BCRA
+2025-08-06,badlar,38.1875,% anual,BCRA
+2025-08-05,badlar,39.375,% anual,BCRA
+2025-08-04,badlar,38.8125,% anual,BCRA
+2025-08-01,badlar,38.0,% anual,BCRA
+2025-07-31,badlar,36.8125,% anual,BCRA
+2025-07-30,badlar,35.3125,% anual,BCRA
+2025-07-29,badlar,35.4375,% anual,BCRA
+2025-07-28,badlar,33.1875,% anual,BCRA
+2025-07-25,badlar,33.8125,% anual,BCRA
+2025-07-24,badlar,34.6875,% anual,BCRA
+2025-07-23,badlar,34.625,% anual,BCRA
+2025-07-22,badlar,34.4375,% anual,BCRA
+2025-07-21,badlar,32.1875,% anual,BCRA
+2025-07-18,badlar,31.4375,% anual,BCRA
+2025-07-17,badlar,30.1875,% anual,BCRA
+2025-07-16,badlar,30.0,% anual,BCRA
+2025-07-15,badlar,28.75,% anual,BCRA
+2025-07-14,badlar,28.875,% anual,BCRA
+2025-07-11,badlar,30.4375,% anual,BCRA
+2025-07-10,badlar,31.3125,% anual,BCRA
+2025-07-08,badlar,32.4375,% anual,BCRA
+2025-07-07,badlar,31.75,% anual,BCRA
+2025-07-04,badlar,31.6875,% anual,BCRA
+2025-07-03,badlar,32.4375,% anual,BCRA
+2025-07-02,badlar,32.4375,% anual,BCRA
+2025-07-01,badlar,32.6875,% anual,BCRA
+2025-06-30,badlar,32.0,% anual,BCRA
+2025-06-27,badlar,32.5,% anual,BCRA
+2025-06-26,badlar,32.3125,% anual,BCRA
+2025-06-25,badlar,32.375,% anual,BCRA
+2025-06-24,badlar,32.9375,% anual,BCRA
+2025-06-23,badlar,32.0,% anual,BCRA
+2025-06-19,badlar,33.0625,% anual,BCRA
+2025-06-18,badlar,31.9375,% anual,BCRA
+2025-06-17,badlar,32.25,% anual,BCRA
+2025-06-13,badlar,31.875,% anual,BCRA
+2025-06-12,badlar,32.1875,% anual,BCRA
+2025-06-11,badlar,31.9375,% anual,BCRA
+2025-06-10,badlar,32.125,% anual,BCRA
+2025-06-09,badlar,31.3125,% anual,BCRA
+2025-06-06,badlar,31.9375,% anual,BCRA
+2025-06-05,badlar,31.6875,% anual,BCRA
+2025-06-04,badlar,31.4375,% anual,BCRA
+2025-06-03,badlar,32.5,% anual,BCRA
+2025-06-02,badlar,32.6875,% anual,BCRA
+2025-05-30,badlar,31.8125,% anual,BCRA
+2025-05-29,badlar,32.3125,% anual,BCRA
+2025-05-28,badlar,31.9375,% anual,BCRA
+2025-05-27,badlar,33.0,% anual,BCRA
+2025-05-26,badlar,31.875,% anual,BCRA
+2025-05-23,badlar,33.5,% anual,BCRA
+2025-05-22,badlar,32.5625,% anual,BCRA
+2025-05-21,badlar,32.25,% anual,BCRA
+2025-05-20,badlar,33.75,% anual,BCRA
+2025-05-19,badlar,33.5625,% anual,BCRA
+2025-05-16,badlar,31.8125,% anual,BCRA
+2025-05-15,badlar,33.375,% anual,BCRA
+2025-05-14,badlar,32.8125,% anual,BCRA
+2025-05-13,badlar,33.5625,% anual,BCRA
+2025-05-12,badlar,32.25,% anual,BCRA
+2025-05-09,badlar,32.4375,% anual,BCRA
+2025-05-08,badlar,33.3125,% anual,BCRA
+2025-05-07,badlar,33.125,% anual,BCRA
+2025-05-06,badlar,33.625,% anual,BCRA
+2025-05-05,badlar,32.1875,% anual,BCRA
+2025-04-30,badlar,33.0,% anual,BCRA
+2025-04-29,badlar,33.25,% anual,BCRA
+2025-04-28,badlar,33.0625,% anual,BCRA
+2025-04-25,badlar,33.625,% anual,BCRA
+2025-04-24,badlar,33.5625,% anual,BCRA
+2025-04-23,badlar,34.625,% anual,BCRA
+2025-04-22,badlar,34.5,% anual,BCRA
+2025-04-21,badlar,35.0,% anual,BCRA
+2025-04-16,badlar,37.25,% anual,BCRA
+2025-04-15,badlar,35.625,% anual,BCRA
+2025-04-14,badlar,36.25,% anual,BCRA
+2025-04-11,badlar,32.125,% anual,BCRA
+2025-04-10,badlar,32.0625,% anual,BCRA
+2025-04-09,badlar,30.625,% anual,BCRA
+2025-04-08,badlar,31.8125,% anual,BCRA
+2025-04-07,badlar,31.375,% anual,BCRA
+2025-04-04,badlar,30.0625,% anual,BCRA
+2025-04-03,badlar,31.0625,% anual,BCRA
+2025-04-01,badlar,31.0625,% anual,BCRA
+2025-03-31,badlar,30.1875,% anual,BCRA
+2025-03-28,badlar,29.875,% anual,BCRA
+2025-03-27,badlar,30.5,% anual,BCRA
+2025-03-26,badlar,30.4375,% anual,BCRA
+2025-03-25,badlar,29.625,% anual,BCRA
+2025-03-21,badlar,30.1875,% anual,BCRA
+2025-03-20,badlar,30.5625,% anual,BCRA
+2025-03-19,badlar,30.3125,% anual,BCRA
+2025-03-18,badlar,30.25,% anual,BCRA
+2025-03-17,badlar,29.25,% anual,BCRA
+2025-03-14,badlar,29.25,% anual,BCRA
+2025-03-13,badlar,28.875,% anual,BCRA
+2025-03-12,badlar,28.9375,% anual,BCRA
+2025-03-11,badlar,29.0,% anual,BCRA
+2025-03-10,badlar,28.4375,% anual,BCRA
+2025-03-07,badlar,28.8125,% anual,BCRA
+2025-03-06,badlar,28.875,% anual,BCRA
+2025-03-05,badlar,27.75,% anual,BCRA
+2025-02-28,badlar,28.1875,% anual,BCRA
+2025-02-27,badlar,28.0,% anual,BCRA
+2025-02-26,badlar,27.5625,% anual,BCRA
+2025-02-25,badlar,28.5625,% anual,BCRA
+2025-02-24,badlar,27.9375,% anual,BCRA
+2025-02-21,badlar,28.125,% anual,BCRA
+2025-02-20,badlar,27.5,% anual,BCRA
+2025-02-19,badlar,27.875,% anual,BCRA
+2025-02-18,badlar,28.0,% anual,BCRA
+2025-02-17,badlar,28.4375,% anual,BCRA
+2025-02-14,badlar,29.0625,% anual,BCRA
+2025-02-13,badlar,28.125,% anual,BCRA
+2025-02-12,badlar,28.625,% anual,BCRA
+2025-02-11,badlar,29.1875,% anual,BCRA
+2025-02-10,badlar,28.5,% anual,BCRA
+2025-02-07,badlar,28.75,% anual,BCRA
+2025-02-06,badlar,29.4375,% anual,BCRA
+2025-02-05,badlar,29.6875,% anual,BCRA
+2025-02-04,badlar,29.5,% anual,BCRA
+2025-02-03,badlar,28.5,% anual,BCRA
+2025-01-31,badlar,29.3125,% anual,BCRA
+2025-01-30,badlar,31.4375,% anual,BCRA
+2025-01-29,badlar,31.5625,% anual,BCRA
+2025-01-28,badlar,32.25,% anual,BCRA
+2025-01-27,badlar,30.4375,% anual,BCRA
+2025-01-24,badlar,32.625,% anual,BCRA
+2025-01-23,badlar,31.3125,% anual,BCRA
+2025-01-22,badlar,31.3125,% anual,BCRA
+2025-01-21,badlar,31.625,% anual,BCRA
+2025-01-20,badlar,30.875,% anual,BCRA
+2025-01-17,badlar,31.25,% anual,BCRA
+2025-01-16,badlar,30.6875,% anual,BCRA
+2025-01-15,badlar,31.6875,% anual,BCRA
+2025-01-14,badlar,32.625,% anual,BCRA
+2025-01-13,badlar,31.625,% anual,BCRA
+2025-01-10,badlar,31.1875,% anual,BCRA
+2025-01-09,badlar,31.3125,% anual,BCRA
+2025-01-08,badlar,31.0,% anual,BCRA
+2025-01-07,badlar,32.375,% anual,BCRA
+2025-01-06,badlar,32.75,% anual,BCRA
+2025-01-03,badlar,32.0625,% anual,BCRA
+2025-01-02,badlar,31.625,% anual,BCRA
+2024-12-30,badlar,31.9375,% anual,BCRA
+2024-12-27,badlar,32.875,% anual,BCRA
+2024-12-26,badlar,31.9375,% anual,BCRA
+2024-12-23,badlar,32.0,% anual,BCRA
+2024-12-20,badlar,32.875,% anual,BCRA
+2024-12-19,badlar,31.6875,% anual,BCRA
+2024-12-18,badlar,32.375,% anual,BCRA
+2024-12-17,badlar,32.5,% anual,BCRA
+2024-12-16,badlar,31.9375,% anual,BCRA
+2024-12-13,badlar,32.0625,% anual,BCRA
+2024-12-12,badlar,32.0625,% anual,BCRA
+2024-12-11,badlar,31.3125,% anual,BCRA
+2024-12-10,badlar,32.6875,% anual,BCRA
+2024-12-09,badlar,31.875,% anual,BCRA

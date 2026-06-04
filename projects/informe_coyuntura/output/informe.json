@@ -1,0 +1,330 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-06-02T10:56:57.926358",
+  "period": "2026-06",
+  "score_global": 3.5,
+  "cinturones": {
+    "macro": {
+      "score": 1.2,
+      "estado": "estable",
+      "barbarismo_riesgo": "tecnocrático",
+      "indicadores": {
+        "ipc_total": {
+          "valor": 2.58,
+          "unidad": "% mensual",
+          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fecha_dato": "2026-04-01",
+          "desactualizado": false
+        },
+        "reservas_bcra": {
+          "valor": 48113.0,
+          "unidad": "mill USD",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
+          "fecha_dato": "2026-05-28",
+          "desactualizado": false
+        },
+        "badlar": {
+          "valor": 20.62,
+          "unidad": "% anual",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
+          "fecha_dato": "2026-05-29",
+          "desactualizado": false
+        },
+        "emae_ia": {
+          "valor": 5.48,
+          "unidad": "% i.a.",
+          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fecha_dato": "2026-03-01",
+          "desactualizado": false
+        },
+        "saldo_comercial_12m": {
+          "valor": 17125.0,
+          "unidad": "mill USD acumulado 12m",
+          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fecha_dato": "2025-02-01",
+          "desactualizado": false
+        },
+        "recaudacion": {
+          "valor": 8.27,
+          "unidad": "% var mensual nominal",
+          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fecha_dato": "2026-04-01",
+          "desactualizado": false
+        },
+        "tcrm": {
+          "valor": 79.77,
+          "unidad": "índice base 2010=100",
+          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fecha_dato": "2024-12-01",
+          "desactualizado": false
+        },
+        "rem_ipc_12m": {
+          "valor": 24.2,
+          "unidad": "% anual esperado (mediana REM)",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29",
+          "fecha_dato": "2026-04-30",
+          "desactualizado": false
+        },
+        "prestamos_privados": {
+          "valor": 2.8,
+          "unidad": "% var mensual nominal",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
+          "fecha_dato": "2026-05-28",
+          "desactualizado": false
+        },
+        "base_monetaria": {
+          "valor": 0.41,
+          "unidad": "% var mensual nominal",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
+          "fecha_dato": "2026-05-28",
+          "desactualizado": false
+        },
+        "tc_mayorista": {
+          "valor": 1.66,
+          "unidad": "% var mensual",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
+          "fecha_dato": "2026-06-01",
+          "desactualizado": false
+        }
+      },
+      "alerta": null
+    },
+    "politica": {
+      "score": 4.7,
+      "estado": "en_tension",
+      "barbarismo_riesgo": "político",
+      "indicadores": {
+        "votometro_ventaja_lla": {
+          "valor": 13.3,
+          "lla_ponderado": 41.8,
+          "pj_ponderado": 28.5,
+          "n_encuestas": 11,
+          "unidad": "pp (LLA − PJ)",
+          "fuente": "C:\\Users\\trico\\OneDrive\\UBA\\Analisis CIGOB\\projects\\votometro\\web\\votometro.html",
+          "fecha_dato": "2026-03-05",
+          "desactualizado": true
+        },
+        "ratio_dnu": {
+          "valor": 3.143,
+          "dnu_count": 22,
+          "leyes_count": 7,
+          "periodo": "2026",
+          "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
+          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false
+        },
+        "movilizacion_cepa": {
+          "valor": 46.0,
+          "cifra_cruda": 92.0,
+          "metrica": "92.0 conflictos acumulados",
+          "unidad": "índice 0–100 (normalizado)",
+          "fuente": "https://centrocepa.com.ar/documentos/informes/773-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial",
+          "fecha_dato": "2026-05-25",
+          "desactualizado": true
+        },
+        "iaf_transferencias": {
+          "valor": 1.8,
+          "var_nominal_pct": 40.7,
+          "total_ref_mm": 104.0,
+          "total_ant_mm": 74.0,
+          "periodo": "2025 vs 2024",
+          "ipc_aplicado_pct": 38.3,
+          "unidad": "% variación real YoY en transferencias totales RON",
+          "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false
+        },
+        "eficacia_legislativa": {
+          "valor": 4.8,
+          "aprobados_n": 1,
+          "enviados_n": 21,
+          "ventana_dias": 365,
+          "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
+          "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false
+        },
+        "cohesion_bloque": {
+          "valor": 78,
+          "estado": "placeholder",
+          "unidad": "% votos en línea con la posición oficial del bloque LLA",
+          "fuente": "Votaciones Cámara de Diputados — elaboración CIGOB en base a Hcdn.gob.ar",
+          "notas": "Proporción de diputados del bloque LLA que votaron alineados con la posición oficial en las votaciones nominales de los últimos 3 meses.",
+          "fecha_dato": "2026-04-01",
+          "desactualizado": true
+        },
+        "gobernadores_alineamiento": {
+          "valor": 55,
+          "estado": "placeholder",
+          "unidad": "% gobernadores alineados con política nacional",
+          "fuente": "Análisis de declaraciones y adhesiones públicas — elaboración CIGOB",
+          "notas": "% de gobernadores provinciales (sobre 24) cuya posición pública es de alineamiento o apoyo al programa del gobierno nacional. Incluye acuerdos fiscales, apoyo a reformas, participación en foros oficiales.",
+          "fecha_dato": "2026-04-01",
+          "desactualizado": true
+        },
+        "veto_quorum": {
+          "valor": 0.0,
+          "fracasadas_n": 0,
+          "total_n": 2,
+          "periodo_id": "HCDN144",
+          "unidad": "% sesiones frustradas por falta de quórum",
+          "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false
+        },
+        "comisiones_caidas": {
+          "valor": 99.5,
+          "dictamen_n": 439,
+          "aprobados_n": 2,
+          "caidas_n": 437,
+          "ventana_dias": 365,
+          "unidad": "% proyectos con dictamen que no llegaron al recinto",
+          "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false
+        }
+      },
+      "alerta": null
+    },
+    "vida_cotidiana": {
+      "score": 3.0,
+      "estado": "estable",
+      "barbarismo_riesgo": "político",
+      "indicadores": {
+        "ipc_total": {
+          "valor": 2.58,
+          "unidad": "% mensual",
+          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fecha_dato": "2026-04-01",
+          "desactualizado": false
+        },
+        "desocupacion": {
+          "valor": 0.1,
+          "unidad": "%",
+          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fecha_dato": "2025-10-01",
+          "desactualizado": false
+        },
+        "icc_utdt": {
+          "valor": 40.54,
+          "unidad": "índice",
+          "fuente": "https://www.utdt.edu/listado_contenidos.php?id_item_menu=16458",
+          "fecha_dato": "2026-05-01",
+          "desactualizado": false
+        }
+      },
+      "alerta": null
+    },
+    "gestion": {
+      "score": 5.8,
+      "estado": "en_tension",
+      "barbarismo_riesgo": "gerencial",
+      "indicadores": {
+        "cepo_mulc": {
+          "valor": 3.26,
+          "avance_pct": 83.7,
+          "unidad": "% brecha CCL/oficial (cepo corporativo)",
+          "fuente": "https://dolarapi.com/v1/dolares",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false
+        },
+        "privatizaciones": {
+          "valor": "En proceso — Aerolíneas y Correo sin transferencia efectiva",
+          "avance_pct": 15.0,
+          "unidad": "% empresas privatizadas efectivamente / listado DL 70/23",
+          "fuente": "Boletín Oficial — transferencia efectiva de acciones",
+          "fecha_dato": "2026-05-01",
+          "desactualizado": true
+        },
+        "concesiones_infraestructura": {
+          "valor": "Parcial — corredores viales en licitación",
+          "avance_pct": 35.0,
+          "unidad": "% corredores viales concesionados / plan total (9 corredores)",
+          "fuente": "Vialidad Nacional / ORSNA — informes periódicos",
+          "fecha_dato": "2026-05-01",
+          "desactualizado": true
+        },
+        "reduccion_estado": {
+          "valor": -0.8,
+          "avance_pct": 2.7,
+          "unidad": "% var. vs 2024-01-01",
+          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fecha_dato": "2025-10-01",
+          "desactualizado": false
+        },
+        "reestructuracion_organismos": {
+          "valor": 18,
+          "avance_pct": 40.0,
+          "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
+          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false
+        },
+        "rigi_inversiones": {
+          "valor": 29,
+          "avance_pct": 29.0,
+          "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
+          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false
+        },
+        "desregulacion_normativa": {
+          "valor": 57,
+          "avance_pct": 57.0,
+          "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
+          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": false
+        },
+        "apertura_comercial": {
+          "valor": 42.4,
+          "avance_pct": 100.0,
+          "unidad": "% var. i.a. importaciones totales (M USD)",
+          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fecha_dato": "2025-02-01",
+          "desactualizado": false
+        },
+        "asistencia_directa": {
+          "valor": null,
+          "avance_pct": 35.0,
+          "unidad": "% beneficiarios sociales con transferencia directa sin intermediación organizacional",
+          "fuente": "ANSES / MDS — Volver al Trabajo (ex Potenciar Trabajo)",
+          "fecha_dato": "2026-04-01",
+          "desactualizado": true
+        },
+        "fal_modernizacion_laboral": {
+          "valor": "Legislación aprobada — reglamentación pendiente (H2 2026)",
+          "avance_pct": 10.0,
+          "unidad": "% implementación FAL (ley aprobada, reglamentación, operación)",
+          "fuente": "La Nación, 22-may-2026 — MTEySS",
+          "fecha_dato": "2026-05-22",
+          "desactualizado": true
+        },
+        "libertad_opcion_salud": {
+          "valor": null,
+          "avance_pct": 40.0,
+          "unidad": "opciones de cambio captadas (SSS, acum. desde dic-2023)",
+          "fuente": "SSS — sssalud.gob.ar/index.php?page=opciones&cat=institucion",
+          "fecha_dato": "2026-04-01",
+          "desactualizado": true
+        },
+        "protocolo_antipiquetes": {
+          "valor": null,
+          "avance_pct": 55.0,
+          "unidad": "% cortes con carril libre garantizado / total cortes registrados",
+          "fuente": "Ministerio de Seguridad — elaboración CIGOB",
+          "fecha_dato": "2026-04-01",
+          "desactualizado": true
+        }
+      },
+      "alerta": null
+    }
+  },
+  "barbarismo_activo": "gerencial",
+  "alerta_multicinturon": false,
+  "flags": [
+    "desactualizado:politica:votometro_ventaja_lla,movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento",
+    "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes"
+  ]
+}

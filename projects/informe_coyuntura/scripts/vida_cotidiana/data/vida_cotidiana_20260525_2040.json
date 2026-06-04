@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "timestamp": "2026-05-25T20:39:59.890688",
+    "fuentes_automatizadas": [
+      "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
+      "bcra (creditos privados, tarjeta, personales, hipotecarios, BADLAR)",
+      "utdt_icc (Indice de Confianza del Consumidor)",
+      "cafam (patentamiento motos por provincia)",
+      "ciccra (consumo carne vacuna per capita — PDF mensual)",
+      "snic (estadisticas criminales nacionales + CABA)",
+      "salud (datasets DEIS/SNVS via datos.salud.gob.ar CKAN)",
+      "trends (interes Google: inflacion, precios, inseguridad, trabajo)"
+    ]
+  },
+  "indec": {
+    "ipc_total": {
+      "valor": 11077.0608,
+      "variacion_mensual_pct": 3.38262219244152,
+      "fecha": "2026-03-01"
+    },
+    "ipc_alimentos": {
+      "valor": 12014.7,
+      "variacion_mensual_pct": 3.3524287627210603,
+      "fecha": "2026-03-01"
+    },
+    "ipc_vivienda": {
+      "valor": 12045.2252,
+      "variacion_mensual_pct": 3.7113227390990655,
+      "fecha": "2026-03-01"
+    },
+    "ipc_regulados": {
+      "valor": 11298.7045,
+      "variacion_mensual_pct": 5.082429412317269,
+      "fecha": "2026-03-01"
+    },
+    "cbt": {
+      "valor": 464227.77,
+      "variacion_mensual_pct": 2.632376238661327,
+      "fecha": "2026-03-01"
+    },
+    "cba": {
+      "valor": 212948.52,
+      "variacion_mensual_pct": 2.161585297840629,
+      "fecha": "2026-03-01"
+    },
+    "ripte": {
+      "valor": 1775664.12,
+      "fecha": "2026-03-01"
+    },
+    "brecha_salario_cbt": {
+      "valor": 3.8249847052450137,
+      "ripte_pesos": 1775664.12,
+      "cbt_pesos": 464227.77,
+      "canastas_que_cubre": 3.8249847052450137,
+      "fecha": "2026-03-01",
+      "nota": "RIPTE / CBT: canastas cubiertas por el salario imponible promedio"
+    },
+    "isalarios_total": {
+      "valor": 8171.66,
+      "variacion_mensual_pct": 2.5353844609516063,
+      "fecha": "2026-01-01"
+    },
+    "salario_real_indice": {
+      "valor": 73.77101333595641,
+      "fecha": "2026-01-01",
+      "nota": "Salario nominal / IPC * 100"
+    },
+    "desocupacion": {
+      "valor": 0.075,
+      "fecha": "2025-10-01"
+    },
+    "empleo": {
+      "valor": 0.45,
+      "fecha": "2025-10-01"
+    },
+    "subocupacion_demandante": {
+      "valor": 0.078,
+      "fecha": "2025-10-01"
+    },
+    "informalidad_anual": {
+      "valor": 0.3675,
+      "fecha": "2025-01-01"
+    },
+    "isac": {
+      "valor": 143.508889519213,
+      "variacion_mensual_pct": -1.3472880209732363,
+      "fecha": "2026-02-01"
+    },
+    "emae": {
+      "valor": 0.0187640404975688,
+      "variacion_mensual_pct": -43.05551624830899,
+      "fecha": "2026-01-01"
+    },
+    "ipi": {
+      "valor": 100.46723961081064,
+      "variacion_mensual_pct": -6.113031243011269,
+      "fecha": "2026-02-01"
+    },
+    "faena_vacuna": {
+      "valor": 924.333,
+      "variacion_mensual_pct": -9.260622695520038,
+      "fecha": "2026-02-01"
+    },
+    "acero_crudo": {
+      "valor": 731.618,
+      "variacion_mensual_pct": -8.996058168447686,
+      "fecha": "2026-01-01"
+    }
+  },
+  "bcra": {
+    "prestamos_privado_total": {
+      "valor": 130843911.0,
+      "fecha": "2026-05-26"
+    },
+    "prestamos_tarjeta": {
+      "valor": 23104996.0,
+      "fecha": "2026-05-22"
+    },
+    "prestamos_personales": {
+      "valor": 20977268.0,
+      "fecha": "2026-05-22"
+    },
+    "prestamos_hipotecarios": {
+      "valor": 7579634.0,
+      "fecha": "2026-05-22"
+    },
+    "credito_consumo_total": {
+      "valor": 44082264.0,
+      "fecha": "2026-05-22",
+      "unidad": "millones_pesos",
+      "nota": "Tarjeta + personales. Proxy de endeudamiento familiar de consumo."
+    },
+    "badlar": {
+      "valor": 20.6875,
+      "fecha": "2026-05-27"
+    },
+    "credito_consumo_serie": [
+      {
+        "fecha": "2025-02-28",
+        "valor": 29126143.0
+      },
+      {
+        "fecha": "2025-03-31",
+        "valor": 31182582.0
+      },
+      {
+        "fecha": "2025-04-30",
+        "valor": 33580167.0
+      },
+      {
+        "fecha": "2025-05-30",
+        "valor": 35005775.0
+      },
+      {
+        "fecha": "2025-06-30",
+        "valor": 36458691.0
+      },
+      {
+        "fecha": "2025-07-31",
+        "valor": 37905861.0
+      },
+      {
+        "fecha": "2025-08-29",
+        "valor": 38921840.0
+      },
+      {
+        "fecha": "2025-09-30",
+        "valor": 39738476.0
+      },
+      {
+        "fecha": "2025-10-31",
+        "valor": 40706700.0
+      },
+      {
+        "fecha": "2025-11-28",
+        "valor": 41813339.0
+      },
+      {
+        "fecha": "2025-12-30",
+        "valor": 42867730.0
+      },
+      {
+        "fecha": "2026-01-30",
+        "valor": 43071509.0
+      },
+      {
+        "fecha": "2026-02-27",
+        "valor": 43497903.0
+      },
+      {
+        "fecha": "2026-03-31",
+        "valor": 44780959.0
+      },
+      {
+        "fecha": "2026-04-30",
+        "valor": 44934250.0
+      },
+      {
+        "fecha": "2026-05-22",
+        "valor": 44082264.0
+      }
+    ]
+  },
+  "utdt": {
+    "icc_utdt": {
+      "valor": 40.539215087890625,
+      "fecha": "2026-05-01",
+      "unidad": "índice"
+    }
+  },
+  "cafam": {
+    "patentamiento_motos": {
+      "valor": 55363,
+      "fecha": "2026-05",
+      "unidad": "unidades",
+      "provincias": {
+        "BUENOS AIRES": 16148,
+        "CAPITAL FEDERAL": 1534,
+        "CATAMARCA": 704,
+        "CHACO": 3687,
+        "CHUBUT": 219,
+        "CORDOBA": 4409,
+        "CORRIENTES": 2084,
+        "ENTRE RIOS": 1879,
+        "FORMOSA": 1171,
+        "JUJUY": 1602,
+        "LA PAMPA": 379,
+        "LA RIOJA": 445,
+        "MENDOZA": 1517,
+        "MISIONES": 1707,
+        "NEUQUEN": 652,
+        "RIO NEGRO": 692,
+        "SALTA": 2848,
+        "SAN JUAN": 1115,
+        "SAN LUIS": 586,
+        "SANTA CRUZ": 102,
+        "SANTA FE": 5365,
+        "SANTIAGO DEL ESTERO": 2415,
+        "TIERRA DEL FUEGO": 20,
+        "TUCUMAN": 4083
+      },
+      "fuente": "CAFAM API"
+    }
+  },
+  "ciccra": {
+    "consumo_carne_per_capita": {
+      "valor": 46.2,
+      "fecha": "2026-04",
+      "unidad": "kg/habitante/anio",
+      "fuente": "CICCRA",
+      "url": "https://ciccra.com.ar/wp-content/uploads/2026/05/Inf-No-303-2026-abril.pdf",
+      "nota": "Consumo aparente per capita anualizado"
+    }
+  },
+  "snic": {
+    "inseguridad_snic": {
+      "anio": "2024",
+      "total_hechos": 2501057,
+      "tipos_principales": {
+        "Robos (excluye los agravados por el resultado de lesiones y/o muertes)": 460618,
+        "Hurtos": 376498,
+        "Otros delitos contra la propiedad": 259044,
+        "Amenazas": 204599,
+        "Lesiones dolosas": 169511
+      },
+      "fuente": "SNIC - Ministerio de Seguridad",
+      "url": "https://cloud-snic.minseg.gob.ar/Bases/SNIC/snic-pais.csv",
+      "nota": "Datos anuales. Rezago ~5 meses desde cierre de anio."
+    },
+    "delitos_caba_disponible": {
+      "anio": 2025,
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/ministerio-de-justicia-y-seguridad/delitos/delitos_2025.csv",
+      "size_mb": 14.6,
+      "last_modified": "Fri, 08 May 2026 14:30:46 GMT",
+      "nota": "CSV con hechos geolocalizados. Descargar con pd.read_csv(url) para analisis detallado."
+    }
+  },
+  "salud": {
+    "salud_datasets": {
+      "valor": 3,
+      "datasets_disponibles": [
+        {
+          "id": "c1643775-18e1-40fd-9e7f-0cebb5b1abe6",
+          "title": "Defunciones Generales Mensuales ocurridas y registradas en la República Argentina.",
+          "name": "datos-salud-gob-ar-dataset-defunciones-mensuales-ocurridas-en-la-republica-argentina"
+        },
+        {
+          "id": "76ce7d19-921d-4d17-bb20-73c1fe55f07e",
+          "title": "Serie histórica de defunciones ocurridas en Argentina por jurisdicción",
+          "name": "serie-historica-de-defunciones-ocurridas-en-argentina-por-jurisdiccion"
+        },
+        {
+          "id": "7fd3f531-9aeb-45ea-9395-cfcc4af61515",
+          "title": "Tasa de Mortalidad Fetal Total",
+          "name": "tasa-de-mortalidad-fetal-total"
+        }
+      ],
+      "fuente": "datos.salud.gob.ar — CKAN API (busqueda general)",
+      "nota": "Usar las URLs de CKAN para descargar microdatos DEIS o SNVS."
+    }
+  },
+  "trends": {
+    "sentimiento_digital": {
+      "interes_relativo": {
+        "inflacion": 1.2,
+        "precios": 9.5,
+        "inseguridad": 0.0,
+        "trabajo": 15.2
+      },
+      "keywords": [
+        "inflacion",
+        "precios",
+        "inseguridad",
+        "trabajo"
+      ],
+      "geo": "AR",
+      "timeframe": "ultimos 3 meses",
+      "escala": "0-100 (100 = maximo historico en el periodo)",
+      "fuente": "Google Trends via pytrends",
+      "nota": "Proxy de urgencia percibida. Alto 'inseguridad'/'precios' = presion ciudadana. Sujeto a rate limits de Google — puede fallar silenciosamente."
+    }
+  }
+}
