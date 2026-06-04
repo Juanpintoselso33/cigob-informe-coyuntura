@@ -48,10 +48,9 @@ El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en 
 ├── .github/workflows/         # CI: data-pipeline + pages
 ├── web/                       # sitio estático publicado en GitHub Pages
 ├── scripts/                   # utilidades de raíz (encuestas, md→docx)
-├── projects/
-│   ├── informe_coyuntura/     # colectores + informe + web Astro
-│   └── votometro/             # proyector electoral HTML
-└── docs/                      # documentos base de análisis (no todos versionados)
+└── projects/
+    ├── informe_coyuntura/     # colectores + informe + web Astro (docs propios en projects/informe_coyuntura/docs/)
+    └── votometro/             # proyector electoral HTML (docs propios en projects/votometro/docs/)
 ```
 
 ## Onboarding para colaboradores
@@ -64,7 +63,17 @@ El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en 
 2. Para trabajar sobre el **Informe de Coyuntura**, seguir su [`README`](projects/informe_coyuntura/) (Python + Astro).
 3. Para el **Votómetro**, seguir su [`README`](projects/votometro/) (HTML estático, sin build).
 
-> **Nota:** las configuraciones de asistentes de IA (`.claude/`, `CLAUDE.md`, `_bmad/`,
-> `docs/superpowers/`) están en `.gitignore` y no forman parte del repo compartido.
-> Las credenciales y API keys nunca se versionan: se cargan por variable de entorno
-> o se ingresan en runtime.
+## Qué se versiona y qué no
+
+El repo versiona **todo el contenido real** (código, docs, datos y outputs generados),
+para que un colaborador clone y trabaje sin depender de correr los colectores. El
+`.gitignore` solo excluye tres cosas:
+
+| No se versiona | Qué incluye | Por qué |
+|---|---|---|
+| 🔒 **Secretos** | `.env`, `*.key`, `*.pem`, `credentials*` | Seguridad — nunca |
+| ♻️ **Regenerable** | `node_modules/`, `__pycache__/`, `web/informe/`, `web/votometro.html` | Se reconstruyen desde el código/source versionado (`npm install`, `pip install`, build de CI) |
+| 🤖 **Contexto de IA** | `.claude/`, `CLAUDE.md`, `_bmad/`, `docs/superpowers/`, etc. | Configuración de asistentes, no es del proyecto |
+
+> Los datos y outputs del informe (`output/`, `scripts/vida_cotidiana/data/`) **sí** se
+> versionan. Las API keys nunca: se cargan por variable de entorno o se ingresan en runtime.

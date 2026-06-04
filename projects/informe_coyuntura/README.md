@@ -106,8 +106,10 @@ projects/informe_coyuntura/
 │   ├── cinturon_politica.md
 │   ├── cinturon_vida_cotidiana.md
 │   └── archivo/                           # borradores pre-rediseño
-├── output/
-│   └── cache/                             # outputs JSON (gitignored)
+├── output/                               # outputs VERSIONADOS (ver nota abajo)
+│   ├── cache/                            # último fetch válido por cinturón (fallback CI)
+│   ├── informe.json / informe.md        # reporte generado
+│   └── series/                           # CSVs de series por cinturón
 └── scripts/
     ├── generar_informe.py
     ├── gestion.py                         # 12 indicadores
@@ -118,8 +120,15 @@ projects/informe_coyuntura/
         ├── main.py                        # orquestador completo (14+ datapoints)
         ├── collectors/                    # bcra, indec_series, utdt_icc, cafam, ciccra, snic, salud, trends
         ├── config.py
+        ├── data/                          # outputs crudos del orquestador (versionados)
         └── requirements.txt
 ```
+
+> **Outputs versionados:** `output/` y `scripts/vida_cotidiana/data/` se versionan
+> (no están en `.gitignore`) para que un colaborador tenga el reporte y los datos ya
+> generados sin correr los colectores. Se regeneran corriendo los scripts; el pipeline
+> diario (CI) los actualiza. Lo único que NO se versiona son deps/caches
+> (`node_modules/`, `__pycache__/`) y el build web (`web/informe/`, lo regenera el CI).
 
 ## Onboarding rápido
 
