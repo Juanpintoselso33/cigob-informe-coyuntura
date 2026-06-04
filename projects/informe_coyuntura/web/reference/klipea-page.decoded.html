@@ -1,0 +1,648 @@
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" href="./logo-cigob.png">
+<title>Realidad Política Argentina · Observatorio mensual de los 5 cinturones · Fundación CiGob</title>
+<meta name="description" content="Observatorio mensual de los 5 cinturones de Carlos Matus aplicado a la realidad política, económica y social de Argentina. Un proyecto de la Fundación CiGob.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&amp;family=DM+Serif+Display:wght@400&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./dashboard.css?v=5">
+</head>
+<body>
+
+<!-- ── NAV ────────────────────────────────────────── -->
+<nav class="cg-nav">
+    <div class="cg-nav-inner">
+        <a class="cg-nav-brand" href="#top">
+            <span class="cg-nav-logo"><img src="./logo-cigob.png" alt="Fundación CiGob"></span>
+            <span class="cg-nav-titles">
+                <span class="cg-nav-title">Realidad Política Argentina</span>
+                <span class="cg-nav-sub">Un proyecto de Fundación CiGob</span>
+            </span>
+        </a>
+        <div class="cg-nav-links">
+            <a href="#snapshot">Mes actual</a>
+            <a href="#evolucion">Evolución</a>
+            <a href="#archivo">Archivo</a>
+            <a href="./metodologia.html">Metodología</a>
+        </div>
+    </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────── -->
+<header class="cg-hero" id="top">
+    <div class="cg-hero-inner">
+        <p class="cg-hero-eyebrow">Observatorio mensual · Indicadores en tiempo real</p>
+        <h1 class="cg-hero-title">El clima del país <br><em>en una sola lectura.</em></h1>
+        <p class="cg-hero-lead">
+            Cada mes leemos los <strong>cinco cinturones</strong> que sostienen — o tensionan — el sistema:
+            macroeconomía, política, vida cotidiana, gestión de gobierno y espíritu de época.
+            El método es de Carlos Matus. El observatorio es de la <strong>Fundación CiGob</strong>.
+        </p>
+        <div class="cg-hero-stats" id="cg-hero-stats">
+            <div class="cg-hero-stat"><div class="cg-hero-stat-num" id="cg-hs-period">mayo 2026</div><div class="cg-hero-stat-lbl">Último informe</div></div>
+            <div class="cg-hero-stat"><div class="cg-hero-stat-num" id="cg-hs-rojos">3/5</div><div class="cg-hero-stat-lbl">Cinturones en rojo</div></div>
+            <div class="cg-hero-stat"><div class="cg-hero-stat-num" id="cg-hs-runs">4</div><div class="cg-hero-stat-lbl">Informes publicados</div></div>
+            <div class="cg-hero-stat"><div class="cg-hero-stat-num" id="cg-hs-window">75 días</div><div class="cg-hero-stat-lbl">Ventana institucional</div></div>
+        </div>
+        <p class="cg-hero-meta">
+            <span class="cg-status-pill is-draft" id="cg-status">
+                <span class="cg-status-dot"></span>
+                <span class="cg-status-text">Borrador · mayo 2026</span>
+            </span>
+            <span class="cg-hero-since">Observatorio independiente · Publicado mensualmente desde febrero 2026.</span>
+        </p>
+    </div>
+</header>
+
+<main class="cg-main">
+
+    <!-- ── BLUF + score ───────────────────────────── -->
+    <section class="cg-section cg-bluf" id="snapshot">
+        <p class="cg-eyebrow">Lectura del mes</p>
+        <h2 class="cg-h2" id="cg-meta-title">Argentina · mayo 2026</h2>
+        <p class="cg-bluf-meta" id="cg-meta-sub"><strong>Período:</strong> 17 may 2026 → 23 may 2026 · <strong>Publicado:</strong> 24 may 2026</p>
+        <p class="cg-bluf-text" id="cg-bluf-text">Argentina semana 25-may-2026: 3 de 5 cinturones en ROJO (Política, Vida cotidiana, Humor social). Único amortiguador: Macroeconomía. Ventana CIGOB: 60-90 días.</p>
+    </section>
+
+    <!-- ── 5 cinturones grid (snapshot del mes actual) ─ -->
+    <section class="cg-section">
+        <div class="cg-section-head">
+            <p class="cg-eyebrow">Los 5 cinturones esta semana</p>
+            <h2 class="cg-h2">Diagnóstico por capa</h2>
+            <p class="cg-h2-sub">
+                Cada tarjeta es uno de los cinturones del modelo PES. El color del borde
+                superior es el veredicto consolidado del mes. Pulsa cada indicador para ver
+                su evolución mes a mes.
+            </p>
+        </div>
+        <div class="cg-grid" id="cg-cinturones"><article class="cg-cint cg-cint--macro">
+                <div class="cg-cint-head">
+                    <div class="cg-cint-titles">
+                        <div class="cg-cint-sub">Cinturón 1</div>
+                        <div class="cg-cint-name">Macroeconomía</div>
+                    </div>
+                    <span class="cg-verdict amarillo">
+                        <span class="cg-verdict-dot"></span>
+                        AMARILLO
+                    </span>
+                </div>
+                <ul class="cg-ind-list"><li class="cg-ind cg-ind--clickable" data-cint="macro" data-indicador="Dólar blue">
+            <span class="cg-ind-name">Dólar blue</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,11 L20.666666666666668,20 L39.333333333333336,20 L58,2 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,11 L20.666666666666668,20 L39.333333333333336,20 L58,2" class="cg-spark-line"></path>
+            <circle cx="58" cy="2" r="2.6" class="cg-spark-dot verde"></circle>
+        </svg></span>
+            <span class="cg-ind-value">1430<span class="cg-ind-unit">ARS</span><span class="cg-ind-est verde"></span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="macro" data-indicador="Brecha cambiaria">
+            <span class="cg-ind-name">Brecha cambiaria</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,20 L20.666666666666668,2 L39.333333333333336,10.181818181818183 L58,15.090909090909092 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,20 L20.666666666666668,2 L39.333333333333336,10.181818181818183 L58,15.090909090909092" class="cg-spark-line"></path>
+            <circle cx="58" cy="15.090909090909092" r="2.6" class="cg-spark-dot verde"></circle>
+        </svg></span>
+            <span class="cg-ind-value">0.7<span class="cg-ind-unit">%</span><span class="cg-ind-est verde"></span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="macro" data-indicador="IPC mensual">
+            <span class="cg-ind-name">IPC mensual</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,13.25 L20.666666666666668,2 L39.333333333333336,20 L58,20 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,13.25 L20.666666666666668,2 L39.333333333333336,20 L58,20" class="cg-spark-line"></path>
+            <circle cx="58" cy="20" r="2.6" class="cg-spark-dot amarillo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">2.6<span class="cg-ind-unit">%</span><span class="cg-ind-est amarillo"></span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="macro" data-indicador="IPC interanual">
+            <span class="cg-ind-name">IPC interanual</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,12.125 L20.666666666666668,2 L39.333333333333336,20 L58,20 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,12.125 L20.666666666666668,2 L39.333333333333336,20 L58,20" class="cg-spark-line"></path>
+            <circle cx="58" cy="20" r="2.6" class="cg-spark-dot amarillo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">32.4<span class="cg-ind-unit">%</span><span class="cg-ind-est amarillo"></span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="macro" data-indicador="EMBIGD">
+            <span class="cg-ind-name">EMBIGD</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,2 L20.666666666666668,8.737967914438503 L39.333333333333336,15.475935828877006 L58,20 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,2 L20.666666666666668,8.737967914438503 L39.333333333333336,15.475935828877006 L58,20" class="cg-spark-line"></path>
+            <circle cx="58" cy="20" r="2.6" class="cg-spark-dot verde"></circle>
+        </svg></span>
+            <span class="cg-ind-value">533<span class="cg-ind-unit">pbs</span><span class="cg-ind-est verde"></span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="macro" data-indicador="Reservas BCRA">
+            <span class="cg-ind-name">Reservas BCRA</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,2 L20.666666666666668,20 L39.333333333333336,6.435866983372922 L58,3.091788259246691 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,2 L20.666666666666668,20 L39.333333333333336,6.435866983372922 L58,3.091788259246691" class="cg-spark-line"></path>
+            <circle cx="58" cy="3.091788259246691" r="2.6" class="cg-spark-dot verde"></circle>
+        </svg></span>
+            <span class="cg-ind-value">46190<span class="cg-ind-unit">USD M</span><span class="cg-ind-est verde"></span></span>
+        </li></ul>
+                
+            </article><article class="cg-cint cg-cint--politica">
+                <div class="cg-cint-head">
+                    <div class="cg-cint-titles">
+                        <div class="cg-cint-sub">Cinturón 2</div>
+                        <div class="cg-cint-name">Política</div>
+                    </div>
+                    <span class="cg-verdict rojo">
+                        <span class="cg-verdict-dot"></span>
+                        ROJO
+                    </span>
+                </div>
+                <ul class="cg-ind-list"><li class="cg-ind cg-ind--clickable" data-cint="politica" data-indicador="Aprobación neta Milei">
+            <span class="cg-ind-name">Aprobación neta Milei</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,2 L20.666666666666668,6.224489795918368 L39.333333333333336,16.3265306122449 L58,20 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,2 L20.666666666666668,6.224489795918368 L39.333333333333336,16.3265306122449 L58,20" class="cg-spark-line"></path>
+            <circle cx="58" cy="20" r="2.6" class="cg-spark-dot rojo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">-27.5<span class="cg-ind-unit">pts</span><span class="cg-ind-est rojo"></span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="politica" data-indicador="Conocimiento caso Adorni">
+            <span class="cg-ind-name">Conocimiento caso Adorni</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,20 L20.666666666666668,17.216494845360824 L39.333333333333336,4.226804123711339 L58,2 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,20 L20.666666666666668,17.216494845360824 L39.333333333333336,4.226804123711339 L58,2" class="cg-spark-line"></path>
+            <circle cx="58" cy="2" r="2.6" class="cg-spark-dot rojo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">97<span class="cg-ind-unit">%</span><span class="cg-ind-est rojo"></span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="politica" data-indicador="Tensión Ejecutivo-gobernadores">
+            <span class="cg-ind-name">Tensión Ejecutivo-gobernadores</span>
+            
+            <span class="cg-ind-value">alza<span class="cg-ind-unit">cualit</span><span class="cg-ind-est rojo"></span></span>
+        </li></ul>
+                <div class="cg-cint-foot">Caso Adorni: denuncia por enriquecimiento ilícito, malversación y obstrucción</div>
+            </article><article class="cg-cint cg-cint--vida">
+                <div class="cg-cint-head">
+                    <div class="cg-cint-titles">
+                        <div class="cg-cint-sub">Cinturón 3</div>
+                        <div class="cg-cint-name">Vida cotidiana</div>
+                    </div>
+                    <span class="cg-verdict rojo">
+                        <span class="cg-verdict-dot"></span>
+                        ROJO
+                    </span>
+                </div>
+                <ul class="cg-ind-list"><li class="cg-ind cg-ind--clickable" data-cint="vida" data-indicador="Canasta Básica Total (familia tipo)">
+            <span class="cg-ind-name">Canasta Básica Total (familia tipo)</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,20 L20.666666666666668,8.838497533830783 L39.333333333333336,5.34867838624004 L58,2 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,20 L20.666666666666668,8.838497533830783 L39.333333333333336,5.34867838624004 L58,2" class="cg-spark-line"></path>
+            <circle cx="58" cy="2" r="2.6" class="cg-spark-dot rojo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">1469768<span class="cg-ind-unit">ARS/mes</span><span class="cg-ind-est rojo"></span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="vida" data-indicador="Canasta Básica Alimentaria">
+            <span class="cg-ind-name">Canasta Básica Alimentaria</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,20 L20.666666666666668,11.534690134386794 L39.333333333333336,3.7042785086945784 L58,2 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,20 L20.666666666666668,11.534690134386794 L39.333333333333336,3.7042785086945784 L58,2" class="cg-spark-line"></path>
+            <circle cx="58" cy="2" r="2.6" class="cg-spark-dot rojo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">665053<span class="cg-ind-unit">ARS/mes</span><span class="cg-ind-est rojo"></span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="vida" data-indicador="Marchas opositoras">
+            <span class="cg-ind-name">Marchas opositoras</span>
+            
+            <span class="cg-ind-value">masiva CGT 1-may<span class="cg-ind-unit">cualit</span><span class="cg-ind-est rojo"></span></span>
+        </li></ul>
+                
+            </article><article class="cg-cint cg-cint--gestion">
+                <div class="cg-cint-head">
+                    <div class="cg-cint-titles">
+                        <div class="cg-cint-sub">Cinturón 4</div>
+                        <div class="cg-cint-name">Gestión CIGOB</div>
+                    </div>
+                    <span class="cg-verdict amarillo">
+                        <span class="cg-verdict-dot"></span>
+                        AMARILLO
+                    </span>
+                </div>
+                <ul class="cg-ind-list"><li class="cg-ind">
+            <span class="cg-ind-name">Reforma laboral</span>
+            <span class="cg-ind-value" style="color:var(--muted);font-weight:600;font-family:inherit;font-size:11px;">aprobada senado</span>
+        </li><li class="cg-ind">
+            <span class="cg-ind-name">Reforma previsional</span>
+            <span class="cg-ind-value" style="color:var(--muted);font-weight:600;font-family:inherit;font-size:11px;">en debate</span>
+        </li><li class="cg-ind">
+            <span class="cg-ind-name">Coparticipación</span>
+            <span class="cg-ind-value" style="color:var(--muted);font-weight:600;font-family:inherit;font-size:11px;">trabada</span>
+        </li></ul>
+                
+            </article><article class="cg-cint cg-cint--humor">
+                <div class="cg-cint-head">
+                    <div class="cg-cint-titles">
+                        <div class="cg-cint-sub">Cinturón 5</div>
+                        <div class="cg-cint-name">Espíritu de Época</div>
+                    </div>
+                    <span class="cg-verdict rojo">
+                        <span class="cg-verdict-dot"></span>
+                        ROJO
+                    </span>
+                </div>
+                <ul class="cg-ind-list"><li class="cg-ind cg-ind--clickable" data-cint="humor" data-indicador="Imagen positiva · Atlas Intel">
+            <span class="cg-ind-name">Atlas Intel</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,2 L20.666666666666668,3.241379310344829 L39.333333333333336,20 L58,6.96551724137931 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,2 L20.666666666666668,3.241379310344829 L39.333333333333336,20 L58,6.96551724137931" class="cg-spark-line"></path>
+            <circle cx="58" cy="6.96551724137931" r="2.6" class="cg-spark-dot amarillo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">35.5<span class="cg-ind-unit">%</span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="humor" data-indicador="Imagen positiva · Management &amp; Fit">
+            <span class="cg-ind-name">Management &amp; Fit</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,2 L58,20 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,2 L58,20" class="cg-spark-line"></path>
+            <circle cx="58" cy="20" r="2.6" class="cg-spark-dot amarillo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">29<span class="cg-ind-unit">%</span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="humor" data-indicador="Imagen positiva · Zuban Córdoba">
+            <span class="cg-ind-name">Zuban Córdoba</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,2 L30,10.852459016393443 L58,20 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,2 L30,10.852459016393443 L58,20" class="cg-spark-line"></path>
+            <circle cx="58" cy="20" r="2.6" class="cg-spark-dot amarillo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">39.4<span class="cg-ind-unit">%</span></span>
+        </li><li class="cg-ind cg-ind--clickable" data-cint="humor" data-indicador="Imagen positiva · CB Global Data">
+            <span class="cg-ind-name">CB Global Data</span>
+            <span class="cg-ind-sparkline"><svg viewBox="0 0 60 22" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2,2 L20.666666666666668,8.75 L39.333333333333336,17.9 L58,20 L58,22 L2,22 Z" class="cg-spark-area"></path>
+            <path d="M2,2 L20.666666666666668,8.75 L39.333333333333336,17.9 L58,20" class="cg-spark-line"></path>
+            <circle cx="58" cy="20" r="2.6" class="cg-spark-dot amarillo"></circle>
+        </svg></span>
+            <span class="cg-ind-value">34.8<span class="cg-ind-unit">%</span></span>
+        </li></ul>
+                <div class="cg-cint-foot">Driver: <strong>efecto Adorni · erosión del discurso anti-casta</strong></div>
+            </article></div>
+    </section>
+
+    <!-- ── EVOLUCIÓN — gráficos temporales ───────── -->
+    <section class="cg-section" id="evolucion">
+        <div class="cg-section-head">
+            <p class="cg-eyebrow">Series temporales · 4 meses</p>
+            <h2 class="cg-h2">Cómo va la película</h2>
+            <p class="cg-h2-sub">
+                Score sistémico mes a mes (cuántos cinturones en rojo) e indicadores
+                clave por capa. Sin contexto histórico, un dato puntual cuenta poco; con la serie,
+                cuenta una tendencia.
+            </p>
+        </div>
+
+        <div class="cg-chart-card">
+            <h3 class="cg-chart-title">Score sistémico — cinturones en rojo por mes</h3>
+            <p class="cg-chart-sub">Regla matusiana: ≥2 rojos = inestabilidad sistémica activa.</p>
+            <div id="cg-chart-score" class="cg-chart-big"><svg viewBox="0 0 812 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <line x1="50" x2="796" y1="188" y2="188" class="cg-spark-grid"></line>
+                    <text x="42" y="192" text-anchor="end" class="cg-spark-axis">0,00</text><line x1="50" x2="796" y1="101" y2="101" class="cg-spark-grid"></line>
+                    <text x="42" y="105" text-anchor="end" class="cg-spark-axis">1,50</text><line x1="50" x2="796" y1="14" y2="14" class="cg-spark-grid"></line>
+                    <text x="42" y="18" text-anchor="end" class="cg-spark-axis">3,00</text>
+            <path d="M50,188 L298.66666666666663,188 L547.3333333333333,72 L796,14 L796,188 L50,188 Z" class="cg-spark-area"></path>
+            <path d="M50,188 L298.66666666666663,188 L547.3333333333333,72 L796,14" class="cg-spark-line"></path>
+            <circle cx="50" cy="188" r="4" class="cg-spark-dot verde"></circle>
+                    <title>febrero 2026: 0,00</title><circle cx="298.66666666666663" cy="188" r="4" class="cg-spark-dot verde"></circle>
+                    <title>marzo 2026: 0,00</title><circle cx="547.3333333333333" cy="72" r="4" class="cg-spark-dot rojo"></circle>
+                    <title>abril 2026: 2,00</title><circle cx="796" cy="14" r="4" class="cg-spark-dot rojo"></circle>
+                    <title>mayo 2026: 3,00</title>
+            <text x="50" y="208" text-anchor="middle" class="cg-spark-axis">feb&nbsp;26</text><text x="298.66666666666663" y="208" text-anchor="middle" class="cg-spark-axis">mar&nbsp;26</text><text x="547.3333333333333" y="208" text-anchor="middle" class="cg-spark-axis">abr&nbsp;26</text><text x="796" y="208" text-anchor="middle" class="cg-spark-axis">may&nbsp;26</text>
+        </svg></div>
+        </div>
+
+        <div class="cg-chart-grid" id="cg-chart-grid"><div class="cg-chart-mini-card macro" data-cint="macro" data-indicador="Reservas BCRA" style="cursor: pointer;">
+            <h3>Reservas BCRA</h3>
+            <div class="cg-sub">Cinturón 1 · Macroeconomía</div>
+            <div class="cg-chart-mini"><svg viewBox="0 0 380 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <line x1="50" x2="364" y1="48" y2="48" class="cg-spark-grid"></line>
+                    <text x="42" y="52" text-anchor="end" class="cg-spark-axis">35.117</text><line x1="50" x2="364" y1="31" y2="31" class="cg-spark-grid"></line>
+                    <text x="42" y="35" text-anchor="end" class="cg-spark-axis">41.011</text><line x1="50" x2="364" y1="14" y2="14" class="cg-spark-grid"></line>
+                    <text x="42" y="18" text-anchor="end" class="cg-spark-axis">46.905</text>
+            <path d="M50,14 L154.66666666666669,48 L259.33333333333337,22.378859857482183 L364,16.062266711910414 L364,48 L50,48 Z" class="cg-spark-area"></path>
+            <path d="M50,14 L154.66666666666669,48 L259.33333333333337,22.378859857482183 L364,16.062266711910414" class="cg-spark-line"></path>
+            <circle cx="50" cy="14" r="4" class="cg-spark-dot verde"></circle>
+                    <title>febrero 2026: 46.905</title><circle cx="154.66666666666669" cy="48" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>marzo 2026: 35.117</title><circle cx="259.33333333333337" cy="22.378859857482183" r="4" class="cg-spark-dot verde"></circle>
+                    <title>abril 2026: 44.000</title><circle cx="364" cy="16.062266711910414" r="4" class="cg-spark-dot verde"></circle>
+                    <title>mayo 2026: 46.190</title>
+            <text x="50" y="68" text-anchor="middle" class="cg-spark-axis">feb&nbsp;26</text><text x="154.66666666666669" y="68" text-anchor="middle" class="cg-spark-axis">mar&nbsp;26</text><text x="259.33333333333337" y="68" text-anchor="middle" class="cg-spark-axis">abr&nbsp;26</text><text x="364" y="68" text-anchor="middle" class="cg-spark-axis">may&nbsp;26</text>
+        </svg></div>
+            <div class="cg-chart-mini-foot">
+                <div class="cg-chart-mini-now">46.190<span class="unit">USD M</span></div>
+                <span class="cg-chart-mini-delta up">↑ 5,0%</span>
+            </div>
+        </div><div class="cg-chart-mini-card macro" data-cint="macro" data-indicador="IPC interanual" style="cursor: pointer;">
+            <h3>IPC interanual</h3>
+            <div class="cg-sub">Cinturón 1 · Macroeconomía</div>
+            <div class="cg-chart-mini"><svg viewBox="0 0 380 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <line x1="50" x2="364" y1="48" y2="48" class="cg-spark-grid"></line>
+                    <text x="42" y="52" text-anchor="end" class="cg-spark-axis">324,0</text><line x1="50" x2="364" y1="31" y2="31" class="cg-spark-grid"></line>
+                    <text x="42" y="35" text-anchor="end" class="cg-spark-axis">332,0</text><line x1="50" x2="364" y1="14" y2="14" class="cg-spark-grid"></line>
+                    <text x="42" y="18" text-anchor="end" class="cg-spark-axis">340,0</text>
+            <path d="M50,33.125 L154.66666666666669,14 L259.33333333333337,48 L364,48 L364,48 L50,48 Z" class="cg-spark-area"></path>
+            <path d="M50,33.125 L154.66666666666669,14 L259.33333333333337,48 L364,48" class="cg-spark-line"></path>
+            <circle cx="50" cy="33.125" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>febrero 2026: 331,0</title><circle cx="154.66666666666669" cy="14" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>marzo 2026: 340,0</title><circle cx="259.33333333333337" cy="48" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>abril 2026: 324,0</title><circle cx="364" cy="48" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>mayo 2026: 324,0</title>
+            <text x="50" y="68" text-anchor="middle" class="cg-spark-axis">feb&nbsp;26</text><text x="154.66666666666669" y="68" text-anchor="middle" class="cg-spark-axis">mar&nbsp;26</text><text x="259.33333333333337" y="68" text-anchor="middle" class="cg-spark-axis">abr&nbsp;26</text><text x="364" y="68" text-anchor="middle" class="cg-spark-axis">may&nbsp;26</text>
+        </svg></div>
+            <div class="cg-chart-mini-foot">
+                <div class="cg-chart-mini-now">324,0<span class="unit">%</span></div>
+                <span class="cg-chart-mini-delta flat">→ 0,0%</span>
+            </div>
+        </div><div class="cg-chart-mini-card politica" data-cint="politica" data-indicador="Aprobación neta Milei" style="cursor: pointer;">
+            <h3>Aprobación neta Milei</h3>
+            <div class="cg-sub">Cinturón 2 · Política</div>
+            <div class="cg-chart-mini"><svg viewBox="0 0 380 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <line x1="50" x2="364" y1="48" y2="48" class="cg-spark-grid"></line>
+                    <text x="42" y="52" text-anchor="end" class="cg-spark-axis">-275,0</text><line x1="50" x2="364" y1="31" y2="31" class="cg-spark-grid"></line>
+                    <text x="42" y="35" text-anchor="end" class="cg-spark-axis">-177,0</text><line x1="50" x2="364" y1="14" y2="14" class="cg-spark-grid"></line>
+                    <text x="42" y="18" text-anchor="end" class="cg-spark-axis">-79,0</text>
+            <path d="M50,14 L154.66666666666669,21.979591836734695 L259.33333333333337,41.06122448979592 L364,48 L364,48 L50,48 Z" class="cg-spark-area"></path>
+            <path d="M50,14 L154.66666666666669,21.979591836734695 L259.33333333333337,41.06122448979592 L364,48" class="cg-spark-line"></path>
+            <circle cx="50" cy="14" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>febrero 2026: -79,0</title><circle cx="154.66666666666669" cy="21.979591836734695" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>marzo 2026: -125,0</title><circle cx="259.33333333333337" cy="41.06122448979592" r="4" class="cg-spark-dot rojo"></circle>
+                    <title>abril 2026: -235,0</title><circle cx="364" cy="48" r="4" class="cg-spark-dot rojo"></circle>
+                    <title>mayo 2026: -275,0</title>
+            <text x="50" y="68" text-anchor="middle" class="cg-spark-axis">feb&nbsp;26</text><text x="154.66666666666669" y="68" text-anchor="middle" class="cg-spark-axis">mar&nbsp;26</text><text x="259.33333333333337" y="68" text-anchor="middle" class="cg-spark-axis">abr&nbsp;26</text><text x="364" y="68" text-anchor="middle" class="cg-spark-axis">may&nbsp;26</text>
+        </svg></div>
+            <div class="cg-chart-mini-foot">
+                <div class="cg-chart-mini-now">-275,0<span class="unit">pts</span></div>
+                <span class="cg-chart-mini-delta down">↓ 17,0%</span>
+            </div>
+        </div><div class="cg-chart-mini-card vida" data-cint="vida" data-indicador="Canasta Básica Total (familia tipo)" style="cursor: pointer;">
+            <h3>Canasta Básica Total (familia tipo)</h3>
+            <div class="cg-sub">Cinturón 3 · Vida cotidiana</div>
+            <div class="cg-chart-mini"><svg viewBox="0 0 380 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <line x1="50" x2="364" y1="48" y2="48" class="cg-spark-grid"></line>
+                    <text x="42" y="52" text-anchor="end" class="cg-spark-axis">1,28M</text><line x1="50" x2="364" y1="31" y2="31" class="cg-spark-grid"></line>
+                    <text x="42" y="35" text-anchor="end" class="cg-spark-axis">1,37M</text><line x1="50" x2="364" y1="14" y2="14" class="cg-spark-grid"></line>
+                    <text x="42" y="18" text-anchor="end" class="cg-spark-axis">1,47M</text>
+            <path d="M50,48 L154.66666666666669,26.917162008347034 L259.33333333333337,20.325281396231187 L364,14 L364,48 L50,48 Z" class="cg-spark-area"></path>
+            <path d="M50,48 L154.66666666666669,26.917162008347034 L259.33333333333337,20.325281396231187 L364,14" class="cg-spark-line"></path>
+            <circle cx="50" cy="48" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>febrero 2026: 1,28M</title><circle cx="154.66666666666669" cy="26.917162008347034" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>marzo 2026: 1,40M</title><circle cx="259.33333333333337" cy="20.325281396231187" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>abril 2026: 1,43M</title><circle cx="364" cy="14" r="4" class="cg-spark-dot rojo"></circle>
+                    <title>mayo 2026: 1,47M</title>
+            <text x="50" y="68" text-anchor="middle" class="cg-spark-axis">feb&nbsp;26</text><text x="154.66666666666669" y="68" text-anchor="middle" class="cg-spark-axis">mar&nbsp;26</text><text x="259.33333333333337" y="68" text-anchor="middle" class="cg-spark-axis">abr&nbsp;26</text><text x="364" y="68" text-anchor="middle" class="cg-spark-axis">may&nbsp;26</text>
+        </svg></div>
+            <div class="cg-chart-mini-foot">
+                <div class="cg-chart-mini-now">1,47M<span class="unit">ARS/mes</span></div>
+                <span class="cg-chart-mini-delta up">↑ 2,5%</span>
+            </div>
+        </div><div class="cg-chart-mini-card humor" data-cint="humor" data-indicador="Imagen positiva · Atlas Intel" style="cursor: pointer;">
+            <h3>Imagen positiva · Atlas Intel</h3>
+            <div class="cg-sub">Cinturón 5 · Espíritu de Época</div>
+            <div class="cg-chart-mini"><svg viewBox="0 0 380 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <line x1="50" x2="364" y1="48" y2="48" class="cg-spark-grid"></line>
+                    <text x="42" y="52" text-anchor="end" class="cg-spark-axis">40,0</text><line x1="50" x2="364" y1="31" y2="31" class="cg-spark-grid"></line>
+                    <text x="42" y="35" text-anchor="end" class="cg-spark-axis">257,5</text><line x1="50" x2="364" y1="14" y2="14" class="cg-spark-grid"></line>
+                    <text x="42" y="18" text-anchor="end" class="cg-spark-axis">475,0</text>
+            <path d="M50,14 L154.66666666666669,16.344827586206897 L259.33333333333337,48 L364,23.379310344827587 L364,48 L50,48 Z" class="cg-spark-area"></path>
+            <path d="M50,14 L154.66666666666669,16.344827586206897 L259.33333333333337,48 L364,23.379310344827587" class="cg-spark-line"></path>
+            <circle cx="50" cy="14" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>febrero 2026: 47,5</title><circle cx="154.66666666666669" cy="16.344827586206897" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>marzo 2026: 44,5</title><circle cx="259.33333333333337" cy="48" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>abril 2026: 40,0</title><circle cx="364" cy="23.379310344827587" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>mayo 2026: 35,5</title>
+            <text x="50" y="68" text-anchor="middle" class="cg-spark-axis">feb&nbsp;26</text><text x="154.66666666666669" y="68" text-anchor="middle" class="cg-spark-axis">mar&nbsp;26</text><text x="259.33333333333337" y="68" text-anchor="middle" class="cg-spark-axis">abr&nbsp;26</text><text x="364" y="68" text-anchor="middle" class="cg-spark-axis">may&nbsp;26</text>
+        </svg></div>
+            <div class="cg-chart-mini-foot">
+                <div class="cg-chart-mini-now">35,5<span class="unit">%</span></div>
+                <span class="cg-chart-mini-delta up">↑ 787,5%</span>
+            </div>
+        </div><div class="cg-chart-mini-card humor" data-cint="humor" data-indicador="Imagen positiva · CB Global Data" style="cursor: pointer;">
+            <h3>Imagen positiva · CB Global Data</h3>
+            <div class="cg-sub">Cinturón 5 · Espíritu de Época</div>
+            <div class="cg-chart-mini"><svg viewBox="0 0 380 80" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+            <line x1="50" x2="364" y1="48" y2="48" class="cg-spark-grid"></line>
+                    <text x="42" y="52" text-anchor="end" class="cg-spark-axis">348,0</text><line x1="50" x2="364" y1="31" y2="31" class="cg-spark-grid"></line>
+                    <text x="42" y="35" text-anchor="end" class="cg-spark-axis">408,0</text><line x1="50" x2="364" y1="14" y2="14" class="cg-spark-grid"></line>
+                    <text x="42" y="18" text-anchor="end" class="cg-spark-axis">468,0</text>
+            <path d="M50,14 L154.66666666666669,26.75 L259.33333333333337,44.03333333333333 L364,48 L364,48 L50,48 Z" class="cg-spark-area"></path>
+            <path d="M50,14 L154.66666666666669,26.75 L259.33333333333337,44.03333333333333 L364,48" class="cg-spark-line"></path>
+            <circle cx="50" cy="14" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>febrero 2026: 46,8</title><circle cx="154.66666666666669" cy="26.75" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>marzo 2026: 42,3</title><circle cx="259.33333333333337" cy="44.03333333333333" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>abril 2026: 36,2</title><circle cx="364" cy="48" r="4" class="cg-spark-dot amarillo"></circle>
+                    <title>mayo 2026: 34,8</title>
+            <text x="50" y="68" text-anchor="middle" class="cg-spark-axis">feb&nbsp;26</text><text x="154.66666666666669" y="68" text-anchor="middle" class="cg-spark-axis">mar&nbsp;26</text><text x="259.33333333333337" y="68" text-anchor="middle" class="cg-spark-axis">abr&nbsp;26</text><text x="364" y="68" text-anchor="middle" class="cg-spark-axis">may&nbsp;26</text>
+        </svg></div>
+            <div class="cg-chart-mini-foot">
+                <div class="cg-chart-mini-now">34,8<span class="unit">%</span></div>
+                <span class="cg-chart-mini-delta down">↓ 3,9%</span>
+            </div>
+        </div></div>
+    </section>
+
+    <!-- ── TENSIÓN SISTÉMICA ──────────────────────── -->
+    <section class="cg-section">
+        <div class="cg-section-head">
+            <p class="cg-eyebrow">Lectura cruzada</p>
+            <h2 class="cg-h2">Tensión sistémica</h2>
+        </div>
+        <div class="cg-panel" id="cg-tension">
+            <p class="cg-eyebrow">Cruce de cinturones</p>
+            <h3>Tensión sistémica</h3>
+            <div class="cg-matriz"><span class="cg-matriz-item"><span class="cg-dot" style="background:var(--amarillo);"></span>Macroeconomía</span><span class="cg-matriz-item"><span class="cg-dot" style="background:var(--rojo);"></span>Política</span><span class="cg-matriz-item"><span class="cg-dot" style="background:var(--rojo);"></span>Vida cotidiana</span><span class="cg-matriz-item"><span class="cg-dot" style="background:var(--amarillo);"></span>Gestión CIGOB</span><span class="cg-matriz-item"><span class="cg-dot" style="background:var(--rojo);"></span>Espíritu de Época</span></div>
+            <div class="cg-tension-text">
+                <p><strong>Estado:</strong> Inestabilidad activa.</p>
+                <p><strong>Amortiguador:</strong> Cinturón 1 macroeconomia.</p>
+                <p><strong>Ventana de oportunidad:</strong> 75 días.</p>
+                <p><strong>Riesgo principal:</strong> agotamiento del shock anti-inflacionario en jun-jul.</p>
+            </div>
+            <div class="cg-tension-rule">Regla matusiana: ≥2 rojos = inestabilidad.</div>
+        </div>
+    </section>
+
+    <!-- ── ARCHIVO ─────────────────────────────────── -->
+    <section class="cg-section" id="archivo">
+        <div class="cg-section-head">
+            <p class="cg-eyebrow">Hemeroteca</p>
+            <h2 class="cg-h2">Informes anteriores</h2>
+            <p class="cg-h2-sub">
+                Cada informe es una foto del mes. Descarga el PDF firmado o consulta
+                la versión web — los datos del cuadro de mando vienen del mismo registro.
+            </p>
+        </div>
+        <div id="cg-archive" class="cg-archive"><article class="cg-archive-card current">
+                <div class="cg-archive-period">mayo 2026</div>
+                <div class="cg-archive-bluf">Argentina semana 25-may-2026: 3 de 5 cinturones en ROJO (Política, Vida cotidiana, Humor social). Único amortiguador: Macroeconomía. Ventana CIGOB: 60-90 días.…</div>
+                <div class="cg-archive-foot">
+                    <span class="cg-archive-score rojos-3">3/5 rojos</span>
+                    <div class="cg-archive-actions">
+                        <a class="cg-archive-btn" href="/api/cigob/runs/by-id/74/pdf" target="_blank" rel="noopener" title="Descargar informe firmado">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            PDF
+                        </a>
+                    </div>
+                </div>
+            </article><article class="cg-archive-card ">
+                <div class="cg-archive-period">abril 2026</div>
+                <div class="cg-archive-bluf">2 cinturónes en rojo: Política, Espíritu de Época. Regla matusiana activada — inestabilidad sistémica.</div>
+                <div class="cg-archive-foot">
+                    <span class="cg-archive-score rojos-2">2/5 rojos</span>
+                    <div class="cg-archive-actions">
+                        <a class="cg-archive-btn" href="/api/cigob/runs/by-id/77/pdf" target="_blank" rel="noopener" title="Descargar informe firmado">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            PDF
+                        </a>
+                    </div>
+                </div>
+            </article><article class="cg-archive-card ">
+                <div class="cg-archive-period">marzo 2026</div>
+                <div class="cg-archive-bluf">5 cinturones en amarillo, 0 en verde. Tensión latente sin rupturas activas.</div>
+                <div class="cg-archive-foot">
+                    <span class="cg-archive-score rojos-0">0/5 rojos</span>
+                    <div class="cg-archive-actions">
+                        <a class="cg-archive-btn" href="/api/cigob/runs/by-id/76/pdf" target="_blank" rel="noopener" title="Descargar informe firmado">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            PDF
+                        </a>
+                    </div>
+                </div>
+            </article><article class="cg-archive-card ">
+                <div class="cg-archive-period">febrero 2026</div>
+                <div class="cg-archive-bluf">4 cinturones en amarillo, 1 en verde. Tensión latente sin rupturas activas.</div>
+                <div class="cg-archive-foot">
+                    <span class="cg-archive-score rojos-0">0/5 rojos</span>
+                    <div class="cg-archive-actions">
+                        <a class="cg-archive-btn" href="/api/cigob/runs/by-id/75/pdf" target="_blank" rel="noopener" title="Descargar informe firmado">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            PDF
+                        </a>
+                    </div>
+                </div>
+            </article></div>
+    </section>
+
+    <!-- ── METODOLOGÍA (resumen) ────────────────────── -->
+    <section class="cg-section cg-method" id="metodologia">
+        <div class="cg-section-head">
+            <p class="cg-eyebrow">Cómo se construye</p>
+            <h2 class="cg-h2">El método de los 5 Cinturones</h2>
+            <p class="cg-h2-sub">
+                Los 5 cinturones de la situación que organizan este observatorio salen del
+                modelo PES (Planificación Estratégica Situacional) de <strong>Carlos Matus</strong>,
+                en la lectura propia de la Fundación CiGob. El método completo, con criterios
+                de selección de indicadores, fórmula del veredicto y roadmap de
+                automatización, está disponible en la
+                <a href="./metodologia.html" style="font-weight:700;">página dedicada de Metodología →</a>
+            </p>
+        </div>
+        <div class="cg-method-grid">
+            <article>
+                <h3>Carlos Matus y la PES</h3>
+                <p>
+                    Carlos Matus (Chile, 1931-1998) desarrolló la Planificación Estratégica
+                    Situacional para entender por qué los gobiernos fracasan al ejecutar
+                    políticas aparentemente sólidas. La PES lee la realidad como un sistema
+                    en tensión, no como una colección de problemas aislados.
+                </p>
+            </article>
+            <article>
+                <h3>Los 5 cinturones</h3>
+                <p>
+                    Los <strong>tres cinturones clásicos</strong> de Matus
+                    (macroeconomía, política, vida cotidiana) más dos cinturones que la
+                    Fundación CiGob incorporó a partir de su experiencia con gobiernos:
+                    <strong>Gestión CiGob</strong> (capacidad técnica) y <strong>Espíritu de
+                    Época</strong> (correlación entre el ánimo social y el discurso político vigente — los significantes que la política nombra frente a lo que la población siente).
+                </p>
+            </article>
+            <article>
+                <h3>Regla matusiana</h3>
+                <p>
+                    Cualquier cinturón puede estar en verde, amarillo o rojo. Con un solo rojo,
+                    el sistema lo absorbe. Con <strong>dos o más rojos al mismo tiempo</strong>, entra
+                    en zona de inestabilidad sistémica activa: las grietas dejan de ser
+                    independientes y se refuerzan entre sí.
+                </p>
+            </article>
+            <article>
+                <h3>Cadencia mensual</h3>
+                <p>
+                    Publicamos un nuevo diagnóstico el <strong>primer lunes de cada mes</strong>,
+                    con cierre de datos el día 28 del mes anterior. Cada informe se firma por
+                    dos revisores antes de salir y queda archivado en formato PDF
+                    para auditoría posterior.
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <!-- ── FUENTES ─────────────────────────────────── -->
+    <section class="cg-section cg-sources" id="cg-sources">
+        <p class="cg-eyebrow">Fuentes consultadas para el mes actual</p>
+        <ul id="cg-sources-list"><li>INDEC (IPC abril, canasta básica abril 2026)</li><li>BCRA (reservas, info monetario diario)</li><li>JP Morgan EMBIGD</li><li>Ámbito, Página 12, Infobae Economía (dólar)</li><li>Atlas Intel, Management &amp; Fit, Zuban Córdoba (encuestas)</li><li>Estudio UBA (caso Adorni)</li><li>Perfil, Cadena 3, El Cronista (CGT marcha 1-may)</li></ul>
+    </section>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer class="cg-foot">
+    <div class="cg-foot-inner">
+        <div class="cg-foot-brand">
+            <span class="cg-nav-logo"><img src="./logo-cigob.png" alt="Fundación CiGob"></span>
+            <div>
+                <strong>Realidad Política Argentina</strong>
+                <span>Un proyecto de Fundación CiGob</span>
+            </div>
+        </div>
+        <div class="cg-foot-cols">
+            <div>
+                <h4>El observatorio</h4>
+                <a href="#snapshot">Mes actual</a>
+                <a href="#evolucion">Evolución</a>
+                <a href="#archivo">Hemeroteca</a>
+                <a href="./metodologia.html">Metodología</a>
+            </div>
+            <div>
+                <h4>Institucional</h4>
+                <a href="./privacidad.html">Política de privacidad</a>
+                <a href="./aviso-legal.html">Aviso legal</a>
+                <a href="./autores.html">Autores</a>
+                <a href="https://cigob.org" target="_blank" rel="noopener">cigob.org</a>
+            </div>
+            <div>
+                <h4>Para investigadores</h4>
+                <a href="/api/cigob/runs/333/latest.json" id="cg-foot-api" target="_blank" rel="noopener">API JSON</a>
+                <a href="/api/cigob/runs/333/series.json" id="cg-foot-series" target="_blank" rel="noopener">Series temporales</a>
+                <a href="/api/cigob/runs/by-id/74/pdf" id="cg-foot-latest-pdf" target="_blank" rel="noopener">Último PDF</a>
+                <p style="margin-top:8px;color:#9CA39F;font-size:12.5px;">
+                    <a href="mailto:info@cigob.org.ar">info@cigob.org.ar</a><br>
+                    Buenos Aires · República Argentina
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="cg-foot-legal">
+        © 2026 Fundación CiGob · Observatorio independiente de indicadores públicos · Datos actualizados <span id="cg-foot-time">24 may 2026</span>
+    </div>
+</footer>
+
+<!-- ── Modal de gráfico expandido ──────────────────── -->
+<div class="cg-modal" id="cg-modal" hidden="">
+    <div class="cg-modal-card">
+        <button class="cg-modal-close" id="cg-modal-close" aria-label="Cerrar">×</button>
+        <p class="cg-eyebrow" id="cg-modal-eyebrow">—</p>
+        <h3 class="cg-modal-title" id="cg-modal-title">—</h3>
+        <p class="cg-modal-sub" id="cg-modal-sub">—</p>
+        <div id="cg-modal-chart" class="cg-chart-modal"></div>
+        <table class="cg-modal-table" id="cg-modal-table"></table>
+    </div>
+</div>
+
+<!-- ── Overlay error / empty ─────────────────────── -->
+<div class="cg-overlay" id="cg-overlay" hidden="">
+    <div class="cg-overlay-card">
+        <h3 id="cg-overlay-title">Sin datos</h3>
+        <p id="cg-overlay-msg">—</p>
+        <button type="button" id="cg-retry">Reintentar</button>
+    </div>
+</div>
+
+<script src="./dashboard.js?v=6"></script>
+
+
+</body></html>

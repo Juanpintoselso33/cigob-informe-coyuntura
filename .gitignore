@@ -1,36 +1,12 @@
 # ============================================================
-# Sistema operativo y editores
+# POLÍTICA: se versiona TODO el contenido real del monorepo.
+# Solo se ignora lo que es (a) peligroso, (b) se reconstruye solo,
+# o (c) contexto de herramientas de IA.
 # ============================================================
-*.tmp
-~$*
-desktop.ini
-Thumbs.db
-.DS_Store
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
 
-# ============================================================
-# Lenguajes y package managers
-# ============================================================
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.egg-info/
-.venv/
-venv/
-env/
-node_modules/
-# package-lock.json NO se ignora: el deploy (pages.yml) corre `npm ci`,
-# que requiere el lockfile versionado para builds reproducibles.
-
-# ============================================================
-# Credenciales y secretos
-# ============================================================
+# ------------------------------------------------------------
+# (a) PELIGROSO — credenciales y secretos (NUNCA versionar)
+# ------------------------------------------------------------
 .env
 .env.local
 .env.*.local
@@ -40,34 +16,53 @@ client_secret*.json
 credentials.json
 service-account*.json
 
-# ============================================================
-# Backup y temporales
-# ============================================================
-backup/
+# ------------------------------------------------------------
+# (b) SE RECONSTRUYE SOLO — deps, caches y build outputs
+#     (el código fuente que los genera SÍ está versionado)
+# ------------------------------------------------------------
+# Dependencias (npm install / pip install las regeneran;
+# package-lock.json SÍ se versiona para builds reproducibles)
+node_modules/
+.venv/
+venv/
+env/
+.Python
+*.egg-info/
+
+# Caches de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Build outputs que el CI regenera desde el código fuente versionado:
+#   - web/informe/      → lo buildea Astro (pages.yml)
+#   - web/votometro.html → lo copia el deploy desde projects/votometro/web/
+web/informe/
+web/votometro.html
+
+# Backups transitorios de un archivo (el script crea .bak al actualizar)
 *.bak
 *.backup
+# Carpeta de backups deprecados/viejos (no es contenido de trabajo).
+# Si se quiere versionar, quitar esta línea.
+backup/
 
-# ============================================================
-# Output generado en runtime
-# ============================================================
-output/*.png
-output/main_script.js
-output/review_screenshots/
-
-# Outputs de colectores e informes CIGOB
-# SE VERSIONAN para que los colaboradores tengan el reporte y los datos ya
-# generados sin tener que correr los colectores (que pegan a APIs que a veces
-# fallan). Incluye: output/cache/*.json, output/informe.{json,md}, output/series/
-# y scripts/vida_cotidiana/data/. El pipeline diario (CI) los actualiza.
-
-# ============================================================
-# Herramientas de desarrollo asistido por IA (no se versionan)
-# ============================================================
-# Claude Code (agentes, comandos, skills, settings locales)
+# ------------------------------------------------------------
+# (c) CONTEXTO DE HERRAMIENTAS DE IA — no se versiona
+# ------------------------------------------------------------
+# Claude Code
 .claude/
 CLAUDE.md
 CLAUDE.local.md
-
+# BMAD Method y artefactos de planificación
+.bmad-core/
+.bmad-output/
+.bmad-*/
+_bmad/
+_bmad-output/
+docs/superpowers/
 # Otros asistentes
 .cursor/
 .cursorrules
@@ -82,34 +77,26 @@ CLAUDE.local.md
 AGENTS.md
 GEMINI.md
 .gemini/
-
-# BMAD Method y frameworks similares
-.bmad-core/
-.bmad-output/
-.bmad-*/
-_bmad/
-_bmad-output/
-
-# Artefactos de planificación de Claude Code / superpowers
-docs/superpowers/
-
 # MCP servers y caches
 .mcp-cache/
 .playwright-mcp/
 *-mcp/
 mcp-debug.log
-
 # Notas de scratch del desarrollo asistido
 NOTES.md
 SCRATCH.md
 TODO_AI.md
 
-# Referencia de captura de klipea (no versionar binarios/HTML ajeno)
-projects/informe_coyuntura/web/reference/
-
-# Build output del informe (CI lo regenera desde Astro)
-web/informe/
-
-# Votómetro publicado: el deploy lo copia desde projects/votometro/web/
-# (no versionar el duplicado generado en la carpeta de deploy)
-web/votometro.html
+# ------------------------------------------------------------
+# Basura de sistema operativo y editores
+# ------------------------------------------------------------
+*.tmp
+~$*
+desktop.ini
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
