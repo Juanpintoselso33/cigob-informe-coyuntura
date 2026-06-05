@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-04T04:28:55.429040",
+  "generated_at": "2026-06-05T04:28:33.079848",
   "score": 1.5,
   "indicadores": {
     "ipc_total": {
@@ -11,17 +11,17 @@
       "desactualizado": false
     },
     "reservas_bcra": {
-      "valor": 48362.0,
+      "valor": 48430.0,
       "unidad": "mill USD",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
-      "fecha_dato": "2026-06-01",
+      "fecha_dato": "2026-06-02",
       "desactualizado": false
     },
     "badlar": {
-      "valor": 21.69,
+      "valor": 21.0,
       "unidad": "% anual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-06-02",
+      "fecha_dato": "2026-06-03",
       "desactualizado": false
     },
     "emae_ia": {
@@ -53,31 +53,31 @@
       "desactualizado": false
     },
     "rem_ipc_12m": {
-      "valor": 24.2,
+      "valor": 23.3,
       "unidad": "% anual esperado (mediana REM)",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29",
-      "fecha_dato": "2026-04-30",
+      "fecha_dato": "2026-05-31",
       "desactualizado": false
     },
     "prestamos_privados": {
-      "valor": 2.46,
+      "valor": 2.82,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-06-01",
+      "fecha_dato": "2026-06-02",
       "desactualizado": false
     },
     "base_monetaria": {
-      "valor": 3.18,
+      "valor": 4.06,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-06-01",
+      "fecha_dato": "2026-06-02",
       "desactualizado": false
     },
     "tc_mayorista": {
-      "valor": 3.54,
+      "valor": 3.46,
       "unidad": "% var mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-06-03",
+      "fecha_dato": "2026-06-04",
       "desactualizado": false
     }
   }

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-06-04T04:33:10.821402",
+  "generated_at": "2026-06-05T04:30:18.765957",
   "period": "2026-06",
   "score_global": 3.7,
   "cinturones": {
@@ -20,22 +20,22 @@
           "aporte_nota": null
         },
         "reservas_bcra": {
-          "valor": 48362.0,
+          "valor": 48430.0,
           "unidad": "mill USD",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
-          "fecha_dato": "2026-06-01",
+          "fecha_dato": "2026-06-02",
           "desactualizado": false,
           "aporte_score": 0.0,
           "aporte_formula": "≥40.000 → 0 · 20.000 → 5 · 0 → 10 (US$ M)",
           "aporte_nota": null
         },
         "badlar": {
-          "valor": 21.69,
+          "valor": 21.0,
           "unidad": "% anual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-03",
           "desactualizado": false,
-          "aporte_score": 2.2,
+          "aporte_score": 2.1,
           "aporte_formula": "0% → 0 · 50% → 5 · 100% → 10 (anual)",
           "aporte_nota": null
         },
@@ -80,42 +80,42 @@
           "aporte_nota": null
         },
         "rem_ipc_12m": {
-          "valor": 24.2,
+          "valor": 23.3,
           "unidad": "% anual esperado (mediana REM)",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29",
-          "fecha_dato": "2026-04-30",
+          "fecha_dato": "2026-05-31",
           "desactualizado": false,
-          "aporte_score": 1.6,
+          "aporte_score": 1.5,
           "aporte_formula": "10% → 0 · 55% → 5 · 100% → 9 (anual)",
           "aporte_nota": null
         },
         "prestamos_privados": {
-          "valor": 2.46,
+          "valor": 2.82,
           "unidad": "% var mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-          "fecha_dato": "2026-06-01",
+          "fecha_dato": "2026-06-02",
           "desactualizado": false,
-          "aporte_score": 2.5,
+          "aporte_score": 2.2,
           "aporte_formula": "+5% → 0 · 0% → 5 · −5% → 10 (var. m/m nominal)",
           "aporte_nota": null
         },
         "base_monetaria": {
-          "valor": 3.18,
+          "valor": 4.06,
           "unidad": "% var mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-          "fecha_dato": "2026-06-01",
+          "fecha_dato": "2026-06-02",
           "desactualizado": false,
-          "aporte_score": 1.6,
+          "aporte_score": 2.0,
           "aporte_formula": "0% → 0 · 10% → 5 · 20% → 10 (var. m/m nominal)",
           "aporte_nota": null
         },
         "tc_mayorista": {
-          "valor": 3.54,
+          "valor": 3.46,
           "unidad": "% var mensual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-          "fecha_dato": "2026-06-03",
+          "fecha_dato": "2026-06-04",
           "desactualizado": false,
-          "aporte_score": 1.8,
+          "aporte_score": 1.7,
           "aporte_formula": "0% → 0 · 10% → 5 · 20% → 10 (var. m/m)",
           "aporte_nota": null
         }
@@ -148,8 +148,8 @@
           "periodo": "2026",
           "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-03",
-          "desactualizado": true,
+          "fecha_dato": "2026-06-05",
+          "desactualizado": false,
           "aporte_score": 10.0,
           "aporte_formula": "0 → 0 · 1,0 → 5 · 2,0+ → 10 (DNU/leyes)",
           "aporte_nota": null
@@ -160,7 +160,7 @@
           "metrica": "92.0 conflictos acumulados",
           "unidad": "índice 0–100 (normalizado)",
           "fuente": "https://centrocepa.com.ar/documentos/informes/773-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial",
-          "fecha_dato": "2026-06-04",
+          "fecha_dato": "2026-06-05",
           "desactualizado": false,
           "aporte_score": 4.6,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (índice)",
@@ -175,7 +175,7 @@
           "ipc_aplicado_pct": 38.3,
           "unidad": "% variación real YoY en transferencias totales RON",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-06-04",
+          "fecha_dato": "2026-06-05",
           "desactualizado": false,
           "aporte_score": 2.1,
           "aporte_formula": "+10% → 0 · 0% → 2,5 · −10% → 5 · −30% → 10 (var. real i.a.)",
@@ -188,7 +188,7 @@
           "ventana_dias": 365,
           "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-04",
+          "fecha_dato": "2026-06-05",
           "desactualizado": false,
           "aporte_score": 9.3,
           "aporte_formula": "70% → 0 · 35% → 5 · 0% → 10",
@@ -225,7 +225,7 @@
           "periodo_id": "HCDN144",
           "unidad": "% sesiones frustradas por falta de quórum",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-06-04",
+          "fecha_dato": "2026-06-05",
           "desactualizado": false,
           "aporte_score": 0.0,
           "aporte_formula": "0% → 0 · 15% → 5 · 30%+ → 10 (sesiones caídas)",
@@ -239,7 +239,7 @@
           "ventana_dias": 365,
           "unidad": "% proyectos con dictamen que no llegaron al recinto",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-04",
+          "fecha_dato": "2026-06-05",
           "desactualizado": false,
           "aporte_score": 10.0,
           "aporte_formula": "20% → 0 · 40% → 5 · 60%+ → 10",
@@ -275,10 +275,10 @@
           "aporte_nota": null
         },
         "endeudamiento_familiar": {
-          "valor": 45.6,
+          "valor": 45.19,
           "unidad": "billones de pesos (consumo)",
           "fuente": "BCRA API v4.0",
-          "fecha_dato": "2026-05-29",
+          "fecha_dato": "2026-06-01",
           "desactualizado": false,
           "var_real_12m": 2.8,
           "aporte_input_txt": "+2,8% interanual real",
@@ -367,17 +367,17 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 8.2,
+          "valor": 8.9,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
-          "fecha_dato": "2026-06-04",
+          "fecha_dato": "2026-06-05",
           "desactualizado": false,
-          "aporte_score": 0.8,
+          "aporte_score": 0.9,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
           "aporte_nota": null
         },
         "patentamiento_motos": {
-          "valor": 69629,
+          "valor": 69700,
           "unidad": "unidades",
           "fuente": "CAFAM",
           "fecha_dato": "2026-05",
@@ -388,20 +388,20 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260604_0432.json",
+      "fuente_enriquecida": "vida_cotidiana_20260605_0429.json",
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
     },
     "gestion": {
-      "score": 5.9,
+      "score": 5.8,
       "estado": "en_tension",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 3.81,
-          "avance_pct": 81.0,
+          "valor": 3.84,
+          "avance_pct": 80.8,
           "unidad": "% brecha CCL/oficial (cepo corporativo)",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-06-04",
+          "fecha_dato": "2026-06-05",
           "desactualizado": false,
           "aporte_score": 1.9,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -441,35 +441,35 @@
           "aporte_nota": null
         },
         "reestructuracion_organismos": {
-          "valor": null,
+          "valor": 18,
           "avance_pct": 40.0,
-          "unidad": "% organismos disueltos/fusionados/centralizados / plan original",
-          "fuente": "Boletín Oficial — decretos de disolución y fusión de organismos APN",
-          "fecha_dato": "2026-04-01",
-          "desactualizado": true,
+          "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
+          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "fecha_dato": "2026-06-05",
+          "desactualizado": false,
           "aporte_score": 6.0,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
           "aporte_nota": null
         },
         "rigi_inversiones": {
-          "valor": "13 proyectos aprobados — USD 27.210M",
+          "valor": 29,
           "avance_pct": 29.0,
-          "unidad": "% USD aprobados / (aprobados + en carpeta)",
-          "fuente": "Ministerio de Economía — Comité RIGI (El Cronista, may-2026)",
-          "fecha_dato": "2026-05-06",
-          "desactualizado": true,
+          "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
+          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "fecha_dato": "2026-06-05",
+          "desactualizado": false,
           "aporte_score": 7.1,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
           "aporte_nota": null
         },
         "desregulacion_normativa": {
-          "valor": null,
-          "avance_pct": 45.0,
-          "unidad": "normas derogadas/modificadas desde dic-2023 (InfoLeg)",
-          "fuente": "InfoLeg (servicios.infoleg.gob.ar) + ILE Heritage Foundation (anual)",
-          "fecha_dato": "2026-04-01",
-          "desactualizado": true,
-          "aporte_score": 5.5,
+          "valor": 57,
+          "avance_pct": 57.0,
+          "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
+          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "fecha_dato": "2026-06-05",
+          "desactualizado": false,
+          "aporte_score": 4.3,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
           "aporte_nota": null
         },
@@ -536,7 +536,7 @@
   "barbarismo_activo": "gerencial",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:politica:votometro_ventaja_lla,ratio_dnu,cohesion_bloque,gobernadores_alineamiento",
-    "desactualizado:gestion:privatizaciones,concesiones_infraestructura,reestructuracion_organismos,rigi_inversiones,desregulacion_normativa,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes"
+    "desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento",
+    "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes"
   ]
 }
