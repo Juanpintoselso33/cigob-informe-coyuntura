@@ -8,11 +8,12 @@
  * gráficos de evolución, hemeroteca, metodología.
  */
 :root {
-    --teal:        #006363;
-    --teal-dark:   #004A4A;
-    --teal-soft:   #E6F4F1;
-    --cta:         #CD7A52;
-    --cta-dark:    #B5613C;
+    /* Paleta alineada a cigob.org (celeste #4998DB + menta) — 2026-06 */
+    --teal:        #4998DB;   /* celeste CiGob (primario/links/headings) */
+    --teal-dark:   #2F6FB0;   /* azul más oscuro para hover/contraste de texto */
+    --teal-soft:   #D1E5F6;   /* tint celeste claro CiGob */
+    --cta:         #3E9486;   /* menta CiGob (deeper, legible como texto y como botón) */
+    --cta-dark:    #2E6F65;
     --dark:        #0A1414;
     --dark-soft:   #1F2A28;
     --muted:       #6B7370;
@@ -46,7 +47,7 @@
 html { scroll-behavior: smooth; }
 html, body { margin: 0; padding: 0; }
 body {
-    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    font-family: 'Montserrat', system-ui, -apple-system, Arial, sans-serif;
     background: var(--bg-page);
     color: var(--dark);
     font-size: 15px;
@@ -56,7 +57,7 @@ body {
 }
 a { color: var(--teal); text-decoration: none; }
 a:hover { text-decoration: underline; }
-em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--cta); }
+em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta); }
 
 /* ── NAV (sticky) ──────────────────────────────── */
 .cg-nav {
@@ -85,7 +86,7 @@ em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ct
     padding: 6px 12px;
     background: var(--teal);
     border-radius: 9px;
-    box-shadow: 0 4px 12px rgba(0,99,99,.25);
+    box-shadow: 0 4px 12px rgba(73,152,219,.25);
 }
 .cg-nav-logo img {
     height: 100%; width: auto; display: block;
@@ -98,7 +99,7 @@ em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ct
     width: 36px; height: 36px; padding: 0;
     justify-content: center; color: #fff;
     font-weight: 800; font-size: 16px;
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Montserrat', sans-serif;
 }
 .cg-nav-titles { display: flex; flex-direction: column; }
 .cg-nav-title { font-weight: 800; color: var(--dark); font-size: 15px; line-height: 1.1; }
@@ -134,8 +135,8 @@ em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ct
     margin: 0 0 18px;
 }
 .cg-hero-title {
-    font-family: 'DM Serif Display', serif;
-    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
     font-size: clamp(36px, 6vw, 64px);
     line-height: 1.05;
     color: var(--dark);
@@ -166,7 +167,7 @@ em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ct
     box-shadow: var(--shadow-card);
 }
 .cg-hero-stat-num {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 32px; color: var(--teal); line-height: 1;
 }
 .cg-hero-stat-lbl {
@@ -216,8 +217,8 @@ em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ct
     color: var(--teal); margin: 0 0 6px;
 }
 .cg-h2 {
-    font-family: 'DM Serif Display', serif;
-    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
     font-size: clamp(26px, 3vw, 34px);
     color: var(--dark);
     letter-spacing: -0.015em;
@@ -533,7 +534,8 @@ em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ct
 }
 .cg-archive-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
 .cg-archive-period {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
     font-size: 22px; color: var(--dark); line-height: 1.1;
 }
 .cg-archive-bluf {
@@ -586,8 +588,8 @@ em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ct
     margin-top: 4px;
 }
 .cg-method article h3 {
-    font-family: 'DM Serif Display', serif;
-    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
     font-size: 19px; color: var(--teal);
     margin: 0 0 8px;
 }
@@ -673,8 +675,8 @@ em { font-family: 'DM Serif Display', serif; font-style: italic; color: var(--ct
 }
 .cg-modal-close:hover { background: var(--rojo); color: #fff; border-color: var(--rojo); }
 .cg-modal-title {
-    font-family: 'DM Serif Display', serif;
-    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
     font-size: 28px; color: var(--dark);
     margin: 4px 0;
 }
