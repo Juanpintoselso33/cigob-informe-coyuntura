@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prueba de embed — Informe dentro de cigob.org</title>
+  <style>
+    /* === Maqueta del "chrome" de cigob.org (header + menú) ===
+       Simula cómo se vería el informe embebido en una página de Wix.
+       NO es el diseño real de Wix; sirve para validar encaje visual y navegación. */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: #fff; color: #2b2b2b; }
+
+    .cigob-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem; border-bottom: 1px solid #eee;
+      position: sticky; top: 0; background: #fff; z-index: 10;
+    }
+    .cigob-logo { display: flex; align-items: center; gap: .6rem; font-weight: 800; font-size: 1.4rem; color: #1a8fb3; }
+    .cigob-logo small { display: block; font-size: .55rem; color: #6aa; font-weight: 600; letter-spacing: .05em; }
+    .cigob-menu { display: flex; gap: 2rem; font-weight: 600; color: #555; font-size: .95rem; }
+    .cigob-menu span { cursor: default; }
+    .cigob-menu .active { color: #1a8fb3; }
+
+    /* === Contenedor del iframe (lo que en Wix sería el elemento Embed) === */
+    .embed-wrap { width: 100%; }
+    #informe {
+      width: 100%;
+      height: 100vh;        /* Plan A (sin código): alto fijo, scroll interno */
+      border: 0;
+      display: block;
+    }
+    .note {
+      background: #f4fbfd; border-top: 1px solid #d8eef4; color: #557;
+      font-size: .8rem; padding: .6rem 2rem; text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Chrome simulado de CiGob: header + menú (lo "innegociable" de navegación) -->
+  <header class="cigob-header">
+    <div class="cigob-logo">CiGob<small>CIENCIAS PARA GOBERNAR</small></div>
+    <nav class="cigob-menu">
+      <span>Inicio</span>
+      <span>Método CiGob</span>
+      <span>Soluciones</span>
+      <span>Novedades</span>
+      <span class="active">Informe</span>
+    </nav>
+  </header>
+
+  <!-- Acá va el informe. En Wix esto es el elemento "Embed / iframe". -->
+  <div class="embed-wrap">
+    <iframe
+      id="informe"
+      src="https://juanpintoselso33.github.io/biblitotecario-ai/informe/"
+      title="Informe de Coyuntura — Fundación CiGob"
+      loading="lazy"></iframe>
+  </div>
+
+  <div class="note">
+    Maqueta de validación · El menú de arriba simula el de cigob.org · La sub-navegación (Macro/Política/…) vive dentro del informe
+  </div>
+
+  <!-- === Plan B (auto-resize): escucha la altura que el informe le avisa. ===
+       Funciona en cuanto el informe tenga el script "height-poster" en su build.
+       Hasta entonces, queda el alto fijo del CSS de arriba (Plan A). -->
+  <script>
+    window.addEventListener('message', function (e) {
+      var d = e.data;
+      if (d && d.type === 'cigob-informe-height' && d.height) {
+        document.getElementById('informe').style.height = Math.ceil(d.height) + 'px';
+      }
+    });
+  </script>
+</body>
+</html>
