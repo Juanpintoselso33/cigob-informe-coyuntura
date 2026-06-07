@@ -7,6 +7,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // "/biblitotecario-ai
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      /* Modo embebido: si el informe corre dentro de un iframe (ej. cigob.org/Wix),
+         el header/menú de CiGob ya está arriba → marcamos <html> para ocultar la
+         cromática propia redundante (logo, footer institucional). Corre antes de
+         pintar para evitar flash. El try/catch cubre el iframe cross-origin. */
+      try { if (window.self !== window.top) document.documentElement.classList.add("embedded"); }
+      catch (e) { document.documentElement.classList.add("embedded"); }
+    </script>
     <link rel="icon" type="image/png" href={`${base}/logo-cigob.png`} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />

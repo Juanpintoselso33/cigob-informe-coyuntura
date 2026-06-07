@@ -620,7 +620,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 @media (max-width: 880px) { .cg-foot-inner { grid-template-columns: 1fr; } }
 .cg-foot-brand { display: flex; align-items: center; gap: 14px; }
 .cg-foot-brand .cg-nav-logo {
-    background: var(--cta); box-shadow: 0 4px 12px rgba(205,122,82,.3);
+    background: var(--teal); box-shadow: 0 4px 12px rgba(73,152,219,.3);
 }
 .cg-foot-brand strong { display: block; color: #fff; font-size: 16px; font-weight: 800; }
 .cg-foot-brand span   { display: block; color: #9CA39F; font-size: 12px; margin-top: 2px; }

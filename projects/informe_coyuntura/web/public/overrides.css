@@ -169,3 +169,23 @@
 .cg-score-map strong { color: var(--muted); }
 .cg-score-note { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
 .cg-score-note strong { color: var(--dark); }
+
+/* ════════════════════════════════════════════════════════════════
+   MODO EMBEBIDO — informe dentro de un iframe (ej. cigob.org / Wix)
+   El header + footer de CiGob los provee el sitio contenedor, así que
+   ocultamos la cromática propia redundante (logo, footer institucional)
+   y dejamos el informe como contenido limpio: sub-nav + cuerpo +
+   atribución mínima. La clase `embedded` la setea el script inline de
+   Layout.astro cuando window.self !== window.top.
+   ════════════════════════════════════════════════════════════════ */
+
+/* Nav: fuera el logo CiGob (ya está en el header de Wix). Queda el
+   título como rótulo de sección + la sub-navegación (Macro/Política/…). */
+.embedded .cg-nav-logo { display: none; }
+.embedded .cg-nav-sub  { display: none; }
+
+/* Footer: fuera el bloque institucional (duplica el footer de CiGob);
+   conservamos sólo la línea legal/fecha como atribución mínima. */
+.embedded .cg-foot       { margin-top: 40px; padding: 18px 24px; }
+.embedded .cg-foot-inner { display: none; }
+.embedded .cg-foot-legal { margin-top: 0; }
