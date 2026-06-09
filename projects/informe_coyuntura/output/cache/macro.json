@@ -1,7 +1,7 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-08T04:28:43.920405",
-  "score": 1.4,
+  "generated_at": "2026-06-09T04:23:20.650328",
+  "score": 1.3,
   "indicadores": {
     "ipc_total": {
       "valor": 2.58,
@@ -11,17 +11,17 @@
       "desactualizado": false
     },
     "reservas_bcra": {
-      "valor": 48414.0,
+      "valor": 48372.0,
       "unidad": "mill USD",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
-      "fecha_dato": "2026-06-03",
+      "fecha_dato": "2026-06-04",
       "desactualizado": false
     },
     "badlar": {
-      "valor": 21.06,
+      "valor": 19.75,
       "unidad": "% anual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-06-04",
+      "fecha_dato": "2026-06-05",
       "desactualizado": false
     },
     "emae_ia": {
@@ -60,24 +60,24 @@
       "desactualizado": false
     },
     "prestamos_privados": {
-      "valor": 3.21,
+      "valor": 3.32,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-06-03",
+      "fecha_dato": "2026-06-04",
       "desactualizado": false
     },
     "base_monetaria": {
-      "valor": 3.55,
+      "valor": 2.84,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-06-03",
+      "fecha_dato": "2026-06-04",
       "desactualizado": false
     },
     "tc_mayorista": {
-      "valor": 3.46,
+      "valor": 3.28,
       "unidad": "% var mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-06-05",
+      "fecha_dato": "2026-06-08",
       "desactualizado": false
     }
   }
