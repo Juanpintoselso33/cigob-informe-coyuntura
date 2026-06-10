@@ -1,6 +1,6 @@
 """
 Generador del Informe de Coyuntura — CIGOB
-Lee los 4 caches de colectores y produce:
+Lee los 5 caches de colectores y produce:
   output/informe.json  — schema v1.0.0 para dev externo
   output/informe.md    — markdown con frontmatter YAML para Drive y reunión
 
@@ -22,9 +22,9 @@ PROJECT_DIR = SCRIPT_DIR.parent
 CACHE_DIR   = PROJECT_DIR / "output" / "cache"
 OUTPUT_DIR  = PROJECT_DIR / "output"
 
-CINTURONES_ESPERADOS = ["macro", "politica", "vida_cotidiana", "gestion"]
+CINTURONES_ESPERADOS = ["macro", "politica", "vida_cotidiana", "gestion", "espiritu_epoca"]
 
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
 
 
 def _estado(score: float) -> str:
@@ -118,6 +118,8 @@ def construir_informe(caches: dict) -> dict:
             "indicadores":        indicadores,
             "alerta":             None,
         }
+        if cache.get("itcm"):    # macro: índice paramétrico 0-100 con dimensiones
+            cinturones_data[nombre]["itcm"] = cache["itcm"]
 
     barbarismo_activo, alerta_multicinturon = detectar_barbarismo(cinturones_data)
 

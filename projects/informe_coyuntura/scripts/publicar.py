@@ -14,7 +14,9 @@ DATA = ROOT / "web" / "src" / "data"
 DATA.mkdir(parents=True, exist_ok=True)
 
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "scripts"))
 from config import PESOS_CINTURONES, UMBRALES        # pesos y umbrales del informe
+import itcm                                           # bandas y pesos del ITCM macro
 
 
 def _add(out, key, valor, unidad, fuente, fecha, **extra):
@@ -143,19 +145,9 @@ def _clamp10(x):
 POB_AR = 46_700_000
 
 # clave de indicador → (valor → tensión 0–10, texto de mapeo de referencia)
+# Los indicadores macro NO están acá: su puntaje viene del ITCM calculado por
+# el colector (macro.py + itcm.py) y se traduce en aplicar_scoring().
 SCORING = {
-    # ── macro ──
-    "ipc_total":           (lambda v: v,                  "0% → 0 · 5% → 5 · 10% → 10 (mensual)"),
-    "reservas_bcra":       (lambda v: (40000 - v) / 4000, "≥40.000 → 0 · 20.000 → 5 · 0 → 10 (US$ M)"),
-    "badlar":              (lambda v: v / 10,             "0% → 0 · 50% → 5 · 100% → 10 (anual)"),
-    "emae_ia":             (lambda v: 5 - v,              "+5% → 0 · 0% → 5 · −5% → 10 (i.a.)"),
-    "saldo_comercial_12m": (lambda v: 5 - v / 1200,       "+6.000 → 0 · 0 → 5 · −6.000 → 10 (US$ M, 12m)"),
-    "recaudacion":         (lambda v: 5 - v,              "+5% → 0 · 0% → 5 · −5% → 10 (var. m/m nominal)"),
-    "tcrm":                (lambda v: (100 - v) / 5,      "100 → 0 · 75 → 5 · 50 → 10 (índice 2010)"),
-    "rem_ipc_12m":         (lambda v: (v - 10) / 9,       "10% → 0 · 55% → 5 · 100% → 9 (anual)"),
-    "prestamos_privados":  (lambda v: 5 - v,              "+5% → 0 · 0% → 5 · −5% → 10 (var. m/m nominal)"),
-    "base_monetaria":      (lambda v: v / 2,              "0% → 0 · 10% → 5 · 20% → 10 (var. m/m nominal)"),
-    "tc_mayorista":        (lambda v: v / 2,              "0% → 0 · 10% → 5 · 20% → 10 (var. m/m)"),
     # ── política ──
     "votometro_ventaja_lla":     (lambda v: 5 - v / 3,          "+15pp → 0 · 0 → 5 · −15pp → 10 (gap LLA−PJ)"),
     "ratio_dnu":                 (lambda v: v * 5,              "0 → 0 · 1,0 → 5 · 2,0+ → 10 (DNU/leyes)"),
@@ -177,6 +169,8 @@ SCORING = {
     "pluriempleo":         (lambda v: v - 5,            "5% → 0 · 10% → 5 · 15% → 10 (subocupación demandante)"),
     "patentamiento_motos": (lambda v: (70_000 - v) / 5000, "70.000 → 0 · 45.000 → 5 · 20.000 → 10 (unidades/mes)"),
     "icc_utdt":            (lambda v: (60 - v) / 3,     "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)"),
+    # ── espíritu de época ── (comparte icc_utdt y sentimiento_digital con vida)
+    "clima_electoral":     (lambda v: 5 - v / 3,        "+15pp → 0 · 0 → 5 · −15pp → 10 (gap LLA−PJ, Votómetro)"),
     "sentimiento_digital": (lambda v: v / 10,           "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)"),
     "inseguridad":         (lambda v: (v / POB_AR * 100_000 - 3000) / 400,
                                                         "tasa/100k hab (pob. 46,7M): 3.000 → 0 · 5.000 → 5 · 7.000 → 10"),
@@ -190,11 +184,17 @@ GESTION_MAPA = ("10 × (1 − avance/100): a mayor avance ejecutado, menor tensi
 VIDA_CONTEXTO = ("Indicador de contexto. No se pudo calcular su variación interanual real "
                  "(falta la serie de crédito), por lo que no incide en el score en esta corrida.")
 
+MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
+
 SCORE_EXPLICACION = {
-    "macro":          "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión macroeconómica.",
+    "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 4 dimensiones: "
+                       "estabilidad monetaria 35%, viabilidad fiscal-comercial 30%, financiamiento 20%, "
+                       "actividad 15%. La tensión del cinturón es (100 − ITCM) / 10."),
     "politica":       "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político.",
     "gestion":        "Promedio simple de la tensión de sus 12 reformas: a mayor avance ejecutado, menor tensión.",
     "vida_cotidiana": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle.",
+    "espiritu_epoca": ("Promedio simple de la tensión (0–10) de sus proxies (v1 provisional). "
+                       "Mayor = más desconexión entre el gobierno y el humor social."),
 }
 
 
@@ -229,11 +229,38 @@ def recomputar_vida_y_global(informe):
     return informe
 
 
+def _scoring_macro_itcm(c):
+    """Macro se puntúa con el ITCM que computa el colector: acá solo se traduce
+    cada puntaje 0-100 a tensión equivalente (para la semántica 0-10 del modal)
+    y se anota la tabla de bandas + peso en el índice. Los indicadores con
+    en_indice=false son contexto y no aportan."""
+    for ikey, ind in c["indicadores"].items():
+        aporte = formula = nota = None
+        p = ind.get("puntaje_itcm")
+        if ind.get("en_indice") and isinstance(p, (int, float)):
+            aporte = round((100 - p) / 10, 1)
+            peso = ind.get("peso_efectivo")
+            peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + " del ITCM" if peso else ""
+            formula = (f"Banda ITCM: {itcm.texto_bandas(ikey)} "
+                       f"(puntos 0–100; puntaje {p}{peso_txt})")
+            if ind.get("puntaje_banda") is not None and ind["puntaje_banda"] != p:
+                nota = (f"Ajuste del analista: banda {ind['puntaje_banda']} → {p} "
+                        "(ver justificación en data/macro/ajustes_itcm.json).")
+        elif ind.get("en_indice") is False:
+            nota = MACRO_CONTEXTO
+        ind["aporte_score"] = aporte
+        ind["aporte_formula"] = formula
+        ind["aporte_nota"] = nota
+
+
 def aplicar_scoring(informe):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo
     explica, y cada cinturón con cómo se compone su score."""
     for ckey, c in informe["cinturones"].items():
         c["score_explicacion"] = SCORE_EXPLICACION.get(ckey, "")
+        if ckey == "macro":
+            _scoring_macro_itcm(c)
+            continue
         for ikey, ind in c["indicadores"].items():
             aporte = formula = nota = None
             avance = ind.get("avance_pct")

@@ -1,15 +1,20 @@
 # Informe de Coyuntura
 
-Colectores de datos para los cuatro cinturones matusianos (Macro, Político, Vida Cotidiana, Gestión) y generador del informe periódico.
+Colectores de datos para los cinco cinturones del marco CIGOB-Matus (Macro, Político, Vida Cotidiana, Gestión y Espíritu de Época) y generador del informe periódico.
 
-## Estado actual (mayo 2026)
+## Estado actual (junio 2026)
 
 | Cinturón | Indicadores totales | Automáticos | Carga manual | Sin fuente |
 |---|---|---|---|---|
 | Vida Cotidiana | 14 + 1 manual | 14 | 1 | 0 |
-| Macro | 11 | 11 | 0 | 0 |
+| Macro | 11 (7 en el ITCM + 4 contexto) | 11 | 0 | 0 |
 | Político | 9 | 7 | 2 | 0 |
 | Gestión | 12 | 6 | 4 | 2 |
+| Espíritu de Época | 3 (v1, proxies compartidos) | 3 | 0 | 0 |
+
+El cinturón macro se puntúa con el **ITCM** (índice paramétrico 0–100 con 4 dimensiones
+ponderadas — ver `docs/cinturon_macro.md`); el resto promedia tensiones 0–10. El score
+global pondera los cinco cinturones (`config.py`, pesos provisionales).
 
 Documento de referencia con detalle por indicador: [`docs/260523_proyecto_pais_estado_extraccion.md`](docs/260523_proyecto_pais_estado_extraccion.md).
 
@@ -36,6 +41,7 @@ python scripts/macro.py                    # 11 indicadores macro
 python scripts/politica.py                 # 7 auto + 2 manual
 python scripts/gestion.py                  # 6 auto + 4 manual + 2 sin fuente
 python scripts/vida_cotidiana/main.py      # 8 fuentes, ~32 datapoints
+python scripts/espiritu_epoca.py           # 3 proxies (corre después de vida y política)
 ```
 
 Cada colector corre de forma independiente. No es necesario correrlos todos.
@@ -77,8 +83,9 @@ corre `npm ci && npm run build` antes de publicar. Detalle de diseño en
 | `output/cache/macro.json` | Último fetch válido del cinturón macro |
 | `output/cache/politica.json` | Último fetch válido del cinturón político |
 | `output/cache/gestion.json` | Último fetch válido del cinturón gestión |
+| `output/cache/espiritu_epoca.json` | Último fetch válido del cinturón espíritu de época |
 | `scripts/vida_cotidiana/data/vida_cotidiana_*.json` | Output del orquestador de vida cotidiana |
-| `output/informe.json` | Informe completo, schema v1.0.0 |
+| `output/informe.json` | Informe completo, schema v1.1.0 |
 | `output/informe.md` | Informe markdown para Drive y reunión |
 
 ## Exit codes de los colectores
@@ -97,10 +104,12 @@ projects/informe_coyuntura/
 ├── requirements.txt                       # dependencias generales
 ├── data/
 │   ├── gestion/manuales.json              # fallback Gestión
+│   ├── macro/ajustes_itcm.json            # overrides del analista sobre el ITCM
 │   └── politica/manuales.json             # fallback Político
 ├── docs/
 │   ├── 260520 Proyecto País...docx        # documento base de los 4 cinturones
 │   ├── 260523_proyecto_pais_estado_extraccion.md  # estado actual — leer primero
+│   ├── cinturon_espiritu_epoca.md
 │   ├── cinturon_gestion.md
 │   ├── cinturon_macro.md
 │   ├── cinturon_politica.md
@@ -111,9 +120,11 @@ projects/informe_coyuntura/
 │   ├── informe.json / informe.md        # reporte generado
 │   └── series/                           # CSVs de series por cinturón
 └── scripts/
+    ├── espiritu_epoca.py                  # 3 proxies del humor social (v1)
     ├── generar_informe.py
     ├── gestion.py                         # 12 indicadores
-    ├── macro.py                           # 11 indicadores
+    ├── itcm.py                            # bandas y fórmula del ITCM macro
+    ├── macro.py                           # 11 indicadores (ITCM)
     ├── politica.py                        # 9 indicadores
     ├── vida_cotidiana.py                  # puente legacy al orquestador global
     └── vida_cotidiana/
@@ -134,7 +145,7 @@ projects/informe_coyuntura/
 
 1. Leer `docs/260523_proyecto_pais_estado_extraccion.md` para el panorama completo de indicadores, fuentes y estado.
 2. Leer el archivo `docs/cinturon_*.md` del cinturón en el que se vaya a trabajar.
-3. Correr los cuatro scripts para verificar que las fuentes respondan.
+3. Correr los cinco scripts para verificar que las fuentes respondan.
 4. Inspeccionar los outputs en `output/cache/*.json` (cada uno tiene indicadores, score y metadatos de extracción).
 
 ## Documentación en Word (institucional)

@@ -1,11 +1,11 @@
 {
-  "schema_version": "1.0.0",
-  "generated_at": "2026-06-02T10:56:57.926358",
+  "schema_version": "1.1.0",
+  "generated_at": "2026-06-10T19:09:11.204574",
   "period": "2026-06",
-  "score_global": 3.5,
+  "score_global": 3.8,
   "cinturones": {
     "macro": {
-      "score": 1.2,
+      "score": 2.9,
       "estado": "estable",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -14,80 +14,201 @@
           "unidad": "% mensual",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
           "fecha_dato": "2026-04-01",
-          "desactualizado": false
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "estabilidad_monetaria",
+          "puntaje_itcm": 65,
+          "puntaje_banda": 65,
+          "peso_efectivo": 0.175
         },
         "reservas_bcra": {
-          "valor": 48113.0,
+          "valor": 47800.0,
           "unidad": "mill USD",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
-          "fecha_dato": "2026-05-28",
-          "desactualizado": false
+          "fecha_dato": "2026-06-08",
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "financiamiento",
+          "puntaje_itcm": 70,
+          "puntaje_banda": 70,
+          "peso_efectivo": 0.1
         },
         "badlar": {
-          "valor": 20.62,
+          "valor": 20.38,
           "unidad": "% anual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-          "fecha_dato": "2026-05-29",
-          "desactualizado": false
+          "fecha_dato": "2026-06-09",
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "financiamiento",
+          "puntaje_itcm": 35,
+          "puntaje_banda": 35,
+          "peso_efectivo": 0.1
         },
         "emae_ia": {
           "valor": 5.48,
           "unidad": "% i.a.",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
           "fecha_dato": "2026-03-01",
-          "desactualizado": false
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "actividad",
+          "puntaje_itcm": 100,
+          "puntaje_banda": 100,
+          "peso_efectivo": 0.15
         },
         "saldo_comercial_12m": {
           "valor": 17125.0,
           "unidad": "mill USD acumulado 12m",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
           "fecha_dato": "2025-02-01",
-          "desactualizado": false
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "viabilidad_fiscal_comercial",
+          "puntaje_itcm": 85,
+          "puntaje_banda": 85,
+          "peso_efectivo": 0.12
         },
         "recaudacion": {
-          "valor": 8.27,
+          "valor": 23.64,
           "unidad": "% var mensual nominal",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
-          "fecha_dato": "2026-04-01",
-          "desactualizado": false
+          "fecha_dato": "2026-05-01",
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "viabilidad_fiscal_comercial",
+          "puntaje_itcm": 100,
+          "puntaje_banda": 100,
+          "peso_efectivo": 0.18
         },
         "tcrm": {
           "valor": 79.77,
           "unidad": "índice base 2010=100",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
           "fecha_dato": "2024-12-01",
-          "desactualizado": false
+          "desactualizado": false,
+          "en_indice": false
         },
         "rem_ipc_12m": {
-          "valor": 24.2,
+          "valor": 23.3,
           "unidad": "% anual esperado (mediana REM)",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29",
-          "fecha_dato": "2026-04-30",
-          "desactualizado": false
+          "fecha_dato": "2026-05-31",
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "estabilidad_monetaria",
+          "puntaje_itcm": 35,
+          "puntaje_banda": 35,
+          "peso_efectivo": 0.175
         },
         "prestamos_privados": {
-          "valor": 2.8,
+          "valor": 3.38,
           "unidad": "% var mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-          "fecha_dato": "2026-05-28",
-          "desactualizado": false
+          "fecha_dato": "2026-06-08",
+          "desactualizado": false,
+          "en_indice": false
         },
         "base_monetaria": {
-          "valor": 0.41,
+          "valor": 1.83,
           "unidad": "% var mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-          "fecha_dato": "2026-05-28",
-          "desactualizado": false
+          "fecha_dato": "2026-06-08",
+          "desactualizado": false,
+          "en_indice": false
         },
         "tc_mayorista": {
-          "valor": 1.66,
+          "valor": 3.41,
           "unidad": "% var mensual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-          "fecha_dato": "2026-06-01",
-          "desactualizado": false
+          "fecha_dato": "2026-06-10",
+          "desactualizado": false,
+          "en_indice": false
         }
       },
-      "alerta": null
+      "alerta": null,
+      "itcm": {
+        "valor": 71.2,
+        "banda": "moderadamente_aflojado",
+        "banda_legible": "Moderadamente aflojado",
+        "dimensiones": {
+          "estabilidad_monetaria": {
+            "nombre": "Estabilidad monetaria-inflacionaria",
+            "peso": 0.35,
+            "puntaje": 50.0,
+            "indicadores": {
+              "ipc_total": {
+                "peso": 0.5,
+                "puntaje_banda": 65,
+                "puntaje_aplicado": 65,
+                "peso_efectivo": 0.175
+              },
+              "rem_ipc_12m": {
+                "peso": 0.5,
+                "puntaje_banda": 35,
+                "puntaje_aplicado": 35,
+                "peso_efectivo": 0.175
+              }
+            },
+            "peso_efectivo": 0.35
+          },
+          "viabilidad_fiscal_comercial": {
+            "nombre": "Viabilidad fiscal-comercial",
+            "peso": 0.3,
+            "puntaje": 94.0,
+            "indicadores": {
+              "recaudacion": {
+                "peso": 0.6,
+                "puntaje_banda": 100,
+                "puntaje_aplicado": 100,
+                "peso_efectivo": 0.18
+              },
+              "saldo_comercial_12m": {
+                "peso": 0.4,
+                "puntaje_banda": 85,
+                "puntaje_aplicado": 85,
+                "peso_efectivo": 0.12
+              }
+            },
+            "peso_efectivo": 0.3
+          },
+          "financiamiento": {
+            "nombre": "Capacidad de financiamiento",
+            "peso": 0.2,
+            "puntaje": 52.5,
+            "indicadores": {
+              "reservas_bcra": {
+                "peso": 0.5,
+                "puntaje_banda": 70,
+                "puntaje_aplicado": 70,
+                "peso_efectivo": 0.1
+              },
+              "badlar": {
+                "peso": 0.5,
+                "puntaje_banda": 35,
+                "puntaje_aplicado": 35,
+                "peso_efectivo": 0.1
+              }
+            },
+            "peso_efectivo": 0.2
+          },
+          "actividad": {
+            "nombre": "Actividad económica",
+            "peso": 0.15,
+            "puntaje": 100.0,
+            "indicadores": {
+              "emae_ia": {
+                "peso": 1.0,
+                "puntaje_banda": 100,
+                "puntaje_aplicado": 100,
+                "peso_efectivo": 0.15
+              }
+            },
+            "peso_efectivo": 0.15
+          }
+        },
+        "ajustes_aplicados": []
+      }
     },
     "politica": {
       "score": 4.7,
@@ -100,7 +221,7 @@
           "pj_ponderado": 28.5,
           "n_encuestas": 11,
           "unidad": "pp (LLA − PJ)",
-          "fuente": "C:\\Users\\trico\\OneDrive\\UBA\\Analisis CIGOB\\projects\\votometro\\web\\votometro.html",
+          "fuente": "/home/runner/work/biblitotecario-ai/biblitotecario-ai/projects/votometro/web/votometro.html",
           "fecha_dato": "2026-03-05",
           "desactualizado": true
         },
@@ -111,7 +232,7 @@
           "periodo": "2026",
           "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-06",
           "desactualizado": false
         },
         "movilizacion_cepa": {
@@ -120,8 +241,8 @@
           "metrica": "92.0 conflictos acumulados",
           "unidad": "índice 0–100 (normalizado)",
           "fuente": "https://centrocepa.com.ar/documentos/informes/773-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial",
-          "fecha_dato": "2026-05-25",
-          "desactualizado": true
+          "fecha_dato": "2026-06-06",
+          "desactualizado": false
         },
         "iaf_transferencias": {
           "valor": 1.8,
@@ -132,17 +253,17 @@
           "ipc_aplicado_pct": 38.3,
           "unidad": "% variación real YoY en transferencias totales RON",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-06",
           "desactualizado": false
         },
         "eficacia_legislativa": {
-          "valor": 4.8,
+          "valor": 5.3,
           "aprobados_n": 1,
-          "enviados_n": 21,
+          "enviados_n": 19,
           "ventana_dias": 365,
           "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-06",
           "desactualizado": false
         },
         "cohesion_bloque": {
@@ -170,7 +291,7 @@
           "periodo_id": "HCDN144",
           "unidad": "% sesiones frustradas por falta de quórum",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-06",
           "desactualizado": false
         },
         "comisiones_caidas": {
@@ -181,7 +302,7 @@
           "ventana_dias": 365,
           "unidad": "% proyectos con dictamen que no llegaron al recinto",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-06",
           "desactualizado": false
         }
       },
@@ -222,11 +343,11 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 3.26,
-          "avance_pct": 83.7,
+          "valor": 3.46,
+          "avance_pct": 82.7,
           "unidad": "% brecha CCL/oficial (cepo corporativo)",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-06",
           "desactualizado": false
         },
         "privatizaciones": {
@@ -258,15 +379,15 @@
           "avance_pct": 40.0,
           "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-06",
           "desactualizado": false
         },
         "rigi_inversiones": {
-          "valor": 29,
-          "avance_pct": 29.0,
+          "valor": 30,
+          "avance_pct": 30.0,
           "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-06",
           "desactualizado": false
         },
         "desregulacion_normativa": {
@@ -274,7 +395,7 @@
           "avance_pct": 57.0,
           "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-02",
+          "fecha_dato": "2026-06-06",
           "desactualizado": false
         },
         "apertura_comercial": {
@@ -319,12 +440,42 @@
         }
       },
       "alerta": null
+    },
+    "espiritu_epoca": {
+      "score": 2.6,
+      "estado": "estable",
+      "barbarismo_riesgo": "político",
+      "indicadores": {
+        "icc_utdt": {
+          "valor": 40.5,
+          "unidad": "índice",
+          "fuente": "UTDT — Índice de Confianza del Consumidor",
+          "fecha_dato": "2026-05-01",
+          "desactualizado": false
+        },
+        "sentimiento_digital": {
+          "valor": 7.5,
+          "unidad": "interés 0–100",
+          "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
+          "fecha_dato": "2026-06-02",
+          "desactualizado": true
+        },
+        "clima_electoral": {
+          "valor": 13.3,
+          "unidad": "pp (LLA − PJ)",
+          "fuente": "Votómetro CIGOB",
+          "fecha_dato": "2026-03-05",
+          "desactualizado": true
+        }
+      },
+      "alerta": null
     }
   },
   "barbarismo_activo": "gerencial",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:politica:votometro_ventaja_lla,movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento",
-    "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes"
+    "desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento",
+    "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes",
+    "desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral"
   ]
 }

@@ -31,12 +31,45 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="cg-detalle-meta">
         <span class:list={["cg-verdict", verdict]}><span class="cg-verdict-dot"></span>{verdictLabel}</span>
         <span class="cg-detalle-chip">Score <strong>{c.score}/10</strong></span>
+        {c.itcm && <span class="cg-detalle-chip">ITCM <strong>{c.itcm.valor}/100</strong> · {c.itcm.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} indicadores</span>
       </div>
     </div>
   </header>
   <main class="cg-main">
+    {c.itcm && (
+      <section class="cg-section">
+        <div class="cg-section-head">
+          <p class="cg-eyebrow">Índice paramétrico</p>
+          <h2 class="cg-h2">ITCM: {c.itcm.valor}/100 — {c.itcm.banda_legible}</h2>
+          <p class="cg-h2-sub">
+            Índice de Tensión del Cinturón Macroeconómico (paramétrica CIGOB, may-2026).
+            0 = cinturón severamente apretado, 100 = aflojado. Pondera cuatro dimensiones;
+            la tensión del cinturón ({c.score}/10) es (100 − ITCM) / 10.
+          </p>
+        </div>
+        <div class="cg-itcm-dims">
+          {Object.entries(c.itcm.dimensiones).map(([dkey, dim]) => (
+            <div class="cg-itcm-dim">
+              <div class="cg-itcm-dim-head">
+                <span class="cg-itcm-dim-name">{dim.nombre}</span>
+                <span class="cg-itcm-dim-val"><strong>{dim.puntaje}</strong>/100 · pesa {Math.round(dim.peso * 100)}%</span>
+              </div>
+              <div class="cg-bar" role="img" aria-label={`${dim.puntaje} de 100`}>
+                <div class="cg-bar-fill" style={`width:${dim.puntaje}%`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+        {c.itcm.ajustes_aplicados.length > 0 && (
+          <p class="cg-h2-sub" style="margin-top:12px;">
+            <strong>Ajustes del analista:</strong>{" "}
+            {c.itcm.ajustes_aplicados.map(a => `${a.indicador}: ${a.de} → ${a.a} (${a.justificacion})`).join(" · ")}
+          </p>
+        )}
+      </section>
+    )}
     <section class="cg-section">
       <div class="cg-section-head">
         <p class="cg-eyebrow">Indicadores</p>

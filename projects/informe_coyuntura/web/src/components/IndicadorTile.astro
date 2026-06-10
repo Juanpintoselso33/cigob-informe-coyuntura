@@ -23,7 +23,7 @@ if (vis.tipo === "barra" && vis.avance) {
 
 const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) : null;
 ---
-<article class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable"]} data-indicador={ikey}>
+<article class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable"]} data-indicador={ikey} data-cinturon={slug}>
   <div class="cg-tile-head">
     <span class="cg-tile-name">{label(ikey)}</span>
     <span class:list={["cg-tile-badge", badgeCls]}>{badge}</span>

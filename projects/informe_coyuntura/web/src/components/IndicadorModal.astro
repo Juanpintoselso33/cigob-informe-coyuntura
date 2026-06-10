@@ -1,13 +1,18 @@
 ---
-import { informe, series, label, presentacion } from "../lib/datos.ts";
+import { informe, series, label, presentacion, CINTURONES } from "../lib/datos.ts";
 import { DESCRIPCIONES } from "../lib/descripciones.ts";
 
 const CINT_NOMBRE: Record<string, string> = {
   macro: "Macroeconomía", politica: "Política",
   vida_cotidiana: "Vida cotidiana", gestion: "Gestión",
+  espiritu_epoca: "Espíritu de época",
 };
+const SLUG_DE: Record<string, string> =
+  Object.fromEntries(CINTURONES.map(c => [c.key, c.slug]));
 
-// Ficha por indicador: todo lo que el modal necesita, embebido como JSON.
+// Ficha por indicador, namespaced por slug de cinturón: icc_utdt y
+// sentimiento_digital existen en vida Y espíritu de época — sin namespace el
+// último cinturón iterado pisaría al primero en el modal.
 const info: Record<string, unknown> = {};
 for (const [ckey, c] of Object.entries(informe.cinturones)) {
   for (const [ikey, ind] of Object.entries(c.indicadores)) {
@@ -16,7 +21,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
     const estado = ind.estado === "placeholder"
       ? "Estimación"
       : ind.desactualizado ? "Carga manual" : "Automático";
-    info[ikey] = {
+    info[`${SLUG_DE[ckey] ?? ckey}.${ikey}`] = {
       label: label(ikey), cinturon: CINT_NOMBRE[ckey] ?? ckey,
       que: d.que, aporta: d.aporta,
       valor: p.texto, unidad: p.unidad, unidadLarga: ind.unidad ?? "—",
@@ -82,7 +87,8 @@ const seriesJson = JSON.stringify(series);
   document.querySelectorAll(".cg-ind--clickable[data-indicador]").forEach(li => {
     li.addEventListener("click", () => {
       const key = li.getAttribute("data-indicador");
-      const d = INFO[key] || { label: key, cinturon: "", que: "", aporta: "", valor: "—", unidad: "", fuente: "", fecha: "", estado: "" };
+      const cint = li.getAttribute("data-cinturon") || "";
+      const d = INFO[`${cint}.${key}`] || INFO[key] || { label: key, cinturon: "", que: "", aporta: "", valor: "—", unidad: "", fuente: "", fecha: "", estado: "" };
       const serie = SERIES[key] || [];
 
       document.getElementById("cg-modal-eyebrow").textContent = d.cinturon ? `Indicador · ${d.cinturon}` : "Indicador";
@@ -120,7 +126,8 @@ const seriesJson = JSON.stringify(series);
           (d.aporteInputTxt ? `<p class="cg-score-map"><strong>Valor usado:</strong> ${esc(d.aporteInputTxt)} (no el stock nominal)</p>` : "") +
           (d.aporteFormula ? `<p class="cg-score-map"><strong>Cómo se calcula:</strong> ${esc(d.aporteFormula)}</p>` : "") +
           `<p class="cg-score-note">Este indicador aporta <strong>${nf.format(d.aporteScore)} de 10</strong> de tensión. ` +
-            `El score del cinturón (<strong>${nf.format(d.scoreCint)}/10</strong>) es el promedio de las tensiones de todos sus indicadores.</p>`;
+            `Score del cinturón: <strong>${nf.format(d.scoreCint)}/10</strong>. ` +
+            `${esc(d.scoreExpl || "Promedio de las tensiones de sus indicadores.")}</p>`;
         score.style.display = "";
       } else if (d.aporteNota) {
         score.innerHTML =

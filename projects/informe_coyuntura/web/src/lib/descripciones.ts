@@ -179,6 +179,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Conteo",
   },
 
+  // ── Espíritu de época (el humor social) ─────────────────────────
+  clima_electoral: {
+    que: "Ventaja del oficialismo sobre el principal opositor (LLA − PJ) según el promedio ponderado de encuestas del Votómetro CIGOB.",
+    aporta: "Proxy de la adhesión política al proyecto de gobierno: cuando el humor social acompaña, la ventaja se sostiene.",
+    frecuencia: "Continua", tipo: "Brecha (pp)",
+  },
+
   // ── Gestión (la capacidad de ejecutar) ──────────────────────────
   cepo_mulc: {
     que: "Brecha entre el dólar financiero/libre y el oficial.",

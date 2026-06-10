@@ -10,7 +10,22 @@ export interface Indicador {
   estado?: string;        // "placeholder" cuando aplica
   avance_pct?: number;
   notas?: string;
+  en_indice?: boolean;    // macro: integra el ITCM (false = contexto)
+  puntaje_itcm?: number;  // macro: puntaje 0-100 aplicado en el índice
   [k: string]: unknown;
+}
+export interface DimensionItcm {
+  nombre: string;
+  peso: number;
+  puntaje: number;
+  indicadores: Record<string, { puntaje_banda: number; puntaje_aplicado: number; peso_efectivo: number }>;
+}
+export interface Itcm {
+  valor: number;          // 0-100, mayor = menos tensión (cinturón aflojado)
+  banda: string;
+  banda_legible: string;
+  dimensiones: Record<string, DimensionItcm>;
+  ajustes_aplicados: { indicador: string; de: number; a: number; justificacion: string }[];
 }
 export interface Cinturon {
   score: number;
@@ -19,13 +34,14 @@ export interface Cinturon {
   indicadores: Record<string, Indicador>;
   alerta: string | null;
   score_explicacion?: string;
+  itcm?: Itcm;            // solo macro
 }
 export interface Informe {
   schema_version: string;
   generated_at: string;
   period: string;
   score_global: number;
-  cinturones: Record<"macro" | "politica" | "vida_cotidiana" | "gestion", Cinturon>;
+  cinturones: Record<"macro" | "politica" | "vida_cotidiana" | "gestion" | "espiritu_epoca", Cinturon>;
   barbarismo_activo: string;
   alerta_multicinturon: boolean;
   flags: string[];
@@ -36,10 +52,11 @@ export const series = seriesRaw as Record<string, { fecha: string; valor: number
 
 // Orden y metadatos de presentación de los cinturones (mapeo a clases .cg-cint--*)
 export const CINTURONES = [
-  { key: "macro",          slug: "macro",    nombre: "Macroeconomía",   sub: "El motor económico" },
-  { key: "politica",       slug: "politica", nombre: "Política",        sub: "El tablero de poder" },
-  { key: "vida_cotidiana", slug: "vida",     nombre: "Vida cotidiana",  sub: "El bolsillo y la calle" },
-  { key: "gestion",        slug: "gestion",  nombre: "Gestión",         sub: "La capacidad de ejecutar" },
+  { key: "macro",          slug: "macro",    nombre: "Macroeconomía",     sub: "El motor económico" },
+  { key: "politica",       slug: "politica", nombre: "Política",          sub: "El tablero de poder" },
+  { key: "vida_cotidiana", slug: "vida",     nombre: "Vida cotidiana",    sub: "El bolsillo y la calle" },
+  { key: "gestion",        slug: "gestion",  nombre: "Gestión",           sub: "La capacidad de ejecutar" },
+  { key: "espiritu_epoca", slug: "espiritu", nombre: "Espíritu de época", sub: "El humor social" },
 ] as const;
 
 // Semáforo del cinturón a partir de su estado
@@ -88,6 +105,8 @@ export const LABELS: Record<string, string> = {
   pluriempleo: "Subocupación demandante", inseguridad: "Hechos delictivos (SNIC)",
   icc_utdt: "Confianza del consumidor (ICC)", sentimiento_digital: "Sentimiento digital (Trends)",
   patentamiento_motos: "Patentamiento de motos", desocupacion: "Desocupación",
+  // espíritu de época (comparte icc_utdt y sentimiento_digital con vida)
+  clima_electoral: "Clima electoral (Votómetro)",
   // gestion
   cepo_mulc: "Brecha cambiaria (cepo)", privatizaciones: "Privatizaciones",
   concesiones_infraestructura: "Concesiones viales", reduccion_estado: "Reducción del Estado",
@@ -138,6 +157,8 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   peso_tarifas: "% m/m", consumo_carne: "kg/hab", informalidad: "%", mortalidad_pymes: "% m/m",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "hechos", icc_utdt: "índice",
   sentimiento_digital: "0–100", patentamiento_motos: "u.",
+  // espíritu de época
+  clima_electoral: "pp",
   // gestion (las de avance se resuelven aparte)
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "% i.a.",
 };

@@ -1,6 +1,6 @@
 name: Daily data pipeline
 
-# Corre el pipeline completo de los 4 cinturones del Informe de Coyuntura una
+# Corre el pipeline completo de los 5 cinturones del Informe de Coyuntura una
 # vez al día, regenera el snapshot, lo commitea a main y deploya la web.
 #
 # 00:00 hora de Buenos Aires (UTC-3) = 03:00 UTC. Argentina no aplica horario
@@ -61,6 +61,7 @@ jobs:
           python scripts/gestion.py;             echo "::notice::gestion exit=$?"
           python scripts/vida_cotidiana/main.py; echo "::notice::vida_main exit=$?"
           python scripts/vida_cotidiana.py;      echo "::notice::vida_cache exit=$?"
+          python scripts/espiritu_epoca.py;      echo "::notice::espiritu exit=$?"
           python scripts/descargar_series.py;    echo "::notice::series exit=$?"
           python scripts/generar_informe.py;     echo "::notice::generar exit=$?"
           true

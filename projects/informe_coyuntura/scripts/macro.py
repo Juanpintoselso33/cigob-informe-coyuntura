@@ -11,6 +11,9 @@ import logging
 from datetime import datetime, timedelta, date
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+import itcm
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 sys.stdout.reconfigure(encoding="utf-8")
 
@@ -286,80 +289,50 @@ def fetch_tc_mayorista() -> dict | None:
         return None
 
 
-# ── Scoring ───────────────────────────────────────────────────────────────────
+# ── Scoring (ITCM — Paramétrica CIGOB mayo 2026) ──────────────────────────────
+
+AJUSTES_PATH = PROJECT_DIR / "data" / "macro" / "ajustes_itcm.json"
+
+
+def calcular_itcm_cinturon(indicadores: dict) -> dict | None:
+    """ITCM 0-100 (ver scripts/itcm.py) sobre los 7 indicadores del índice.
+    Los overrides del analista vigentes para el mes corriente se leen de
+    data/macro/ajustes_itcm.json."""
+    periodo = datetime.now().strftime("%Y-%m")
+    ajustes = itcm.cargar_ajustes(AJUSTES_PATH, periodo)
+    valores = {nombre: indicadores.get(nombre, {}).get("valor")
+               for nombre in itcm.BANDAS_ITCM}
+    return itcm.calcular_itcm(valores, ajustes)
+
+
+def anotar_indicadores(indicadores: dict, resultado: dict | None) -> None:
+    """Marca cada indicador con su rol en el ITCM: los del índice llevan
+    puntaje, dimensión y peso efectivo; el resto queda como contexto."""
+    por_indicador = {}
+    if resultado:
+        for dkey, dim in resultado["dimensiones"].items():
+            for ikey, info in dim["indicadores"].items():
+                por_indicador[ikey] = {
+                    "en_indice": True,
+                    "dimension": dkey,
+                    "puntaje_itcm": info["puntaje_aplicado"],
+                    "puntaje_banda": info["puntaje_banda"],
+                    "peso_efectivo": info["peso_efectivo"],
+                }
+    for nombre, ind in indicadores.items():
+        if nombre in por_indicador:
+            ind.update(por_indicador[nombre])
+        else:
+            ind["en_indice"] = nombre in itcm.BANDAS_ITCM  # del índice pero sin dato
+            if nombre in itcm.INDICADORES_CONTEXTO:
+                ind["en_indice"] = False
+
 
 def calcular_score(indicadores: dict) -> float:
-    """
-    Score 0-10: mayor = mayor tensión macroeconómica.
-    Cada indicador aporta 1 voto al promedio (equal-weight).
-
-    ipc_total       (% mensual):     0% → 0 | 5% → 5 | 10% → 10
-    reservas_bcra   (mill USD):      ≥40000 → 0 | 20000 → 5 | 0 → 10
-    badlar          (% anual):       0% → 0 | 50% → 5 | 100% → 10
-    emae_ia         (% i.a.):        +5% → 0 | 0% → 5 | -5% → 10
-    saldo_com_12m   (mill USD 12m):  +6000 → 0 | 0 → 5 | -6000 → 10
-    recaudacion     (% var_m nom.):  +5% → 0 | 0% → 5 | -5% → 10
-    tcrm            (índice 2010):   100 → 0 | 75 → 5 | 50 → 10
-    rem_ipc_12m     (% anual):       10% → 0 | 55% → 5 | 100% → 9
-    prestamos_priv  (% var_m nom.):  +5% → 0 | 0% → 5 | -5% → 10
-    base_monetaria  (% var_m nom.):  0% → 0 | 10% → 5 | 20% → 10
-    tc_mayorista    (% var_m):       0% → 0 | 10% → 5 | 20% → 10
-    """
-    scores = []
-
-    ipc = indicadores.get("ipc_total", {}).get("valor")
-    if ipc is not None:
-        scores.append(min(10.0, max(0.0, float(ipc))))
-
-    reservas = indicadores.get("reservas_bcra", {}).get("valor")
-    if reservas is not None:
-        scores.append(min(10.0, max(0.0, (40000.0 - float(reservas)) / 4000.0)))
-
-    badlar = indicadores.get("badlar", {}).get("valor")
-    if badlar is not None:
-        scores.append(min(10.0, max(0.0, float(badlar) / 10.0)))
-
-    emae = indicadores.get("emae_ia", {}).get("valor")
-    if emae is not None:
-        # +5%→0, 0%→5, -5%→10
-        scores.append(min(10.0, max(0.0, 5.0 - float(emae))))
-
-    sc = indicadores.get("saldo_comercial_12m", {}).get("valor")
-    if sc is not None:
-        # +6000→0, 0→5, -6000→10
-        scores.append(min(10.0, max(0.0, 5.0 - float(sc) / 1200.0)))
-
-    rec = indicadores.get("recaudacion", {}).get("valor")
-    if rec is not None:
-        # var_m +5%→0, 0%→5, -5%→10
-        scores.append(min(10.0, max(0.0, 5.0 - float(rec))))
-
-    tcrm = indicadores.get("tcrm", {}).get("valor")
-    if tcrm is not None:
-        # 100→0, 75→5, 50→10
-        scores.append(min(10.0, max(0.0, (100.0 - float(tcrm)) / 5.0)))
-
-    rem = indicadores.get("rem_ipc_12m", {}).get("valor")
-    if rem is not None:
-        # 10%→0, 55%→5, 100%→9
-        scores.append(min(10.0, max(0.0, (float(rem) - 10.0) / 9.0)))
-
-    prest = indicadores.get("prestamos_privados", {}).get("valor")
-    if prest is not None:
-        # var_m +5%→0, 0%→5, -5%→10
-        scores.append(min(10.0, max(0.0, 5.0 - float(prest))))
-
-    bm = indicadores.get("base_monetaria", {}).get("valor")
-    if bm is not None:
-        # var_m 0%→0, 10%→5, 20%→10
-        scores.append(min(10.0, max(0.0, float(bm) / 2.0)))
-
-    tc = indicadores.get("tc_mayorista", {}).get("valor")
-    if tc is not None:
-        # var_m 0%→0, 10%→5, 20%→10
-        scores.append(min(10.0, max(0.0, float(tc) / 2.0)))
-
-    return round(sum(scores) / len(scores), 1) if scores else 5.0
+    """Tensión 0-10 del cinturón, derivada del ITCM: (100 − ITCM) / 10.
+    Sin ningún indicador del índice disponible, devuelve 5.0 (neutro)."""
+    resultado = calcular_itcm_cinturon(indicadores)
+    return itcm.tension_de_itcm(resultado["valor"]) if resultado else 5.0
 
 
 def main() -> None:
@@ -389,11 +362,14 @@ def main() -> None:
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
 
-    score   = calcular_score(frescos)
+    resultado = calcular_itcm_cinturon(frescos)
+    anotar_indicadores(frescos, resultado)
+    score   = itcm.tension_de_itcm(resultado["valor"]) if resultado else 5.0
     payload = {
         "cinturon":     CINTURON,
         "generated_at": datetime.now().isoformat(),
         "score":        score,
+        "itcm":         resultado,
         "indicadores":  frescos,
     }
 

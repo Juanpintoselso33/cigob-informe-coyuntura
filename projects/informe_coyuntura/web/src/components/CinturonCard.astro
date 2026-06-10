@@ -22,7 +22,7 @@ const href = `${base}/${slug}/`;
     </span>
   </div>
   <ul class="cg-ind-list">
-    {visibles.map(({ key, ind, bucket }) => <IndicadorRow ikey={key} ind={ind} bucket={bucket} />)}
+    {visibles.map(({ key, ind, bucket }) => <IndicadorRow ikey={key} ind={ind} bucket={bucket} slug={slug} />)}
   </ul>
   <div class="cg-cint-foot">
     <span>Score <strong>{cinturon.score}/10</strong> · {cap(cinturon.barbarismo_riesgo)}</span>

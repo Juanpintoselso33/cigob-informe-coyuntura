@@ -1,13 +1,13 @@
 ---
 import { label, aclaracion, presentacion } from "../lib/datos.ts";
 import Sparkline from "./Sparkline.astro";
-const { ikey, ind, bucket } = Astro.props;
+const { ikey, ind, bucket, slug } = Astro.props;
 const estDot = bucket === "fresco" ? "verde" : bucket === "manual" ? "amarillo" : "rojo";
 const nota = aclaracion(bucket, ind);
 const clickable = bucket !== "placeholder";
 const pres = presentacion(ikey, ind);
 ---
-<li class:list={["cg-ind", { "cg-ind--clickable": clickable }]} data-indicador={ikey} title={pres.titulo}>
+<li class:list={["cg-ind", { "cg-ind--clickable": clickable }]} data-indicador={ikey} data-cinturon={slug} title={pres.titulo}>
   <span class="cg-ind-name">
     {label(ikey)}
     {nota && <em style="font-style:normal;color:var(--muted-soft);font-size:11px;margin-left:6px;">({nota})</em>}

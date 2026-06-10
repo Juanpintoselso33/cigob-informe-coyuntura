@@ -17,10 +17,14 @@
 /* ── Navegación: estado activo del tab ──────────────────────────── */
 .cg-nav-links a.active { color: var(--teal); font-weight: 800; }
 
-/* ── Overview: grilla de 4 cards parejas + tira del 5º cinturón ──── */
-.cg-grid--4 { grid-template-columns: repeat(4, 1fr); }
+/* ── Overview: grilla de 5 cards (una por cinturón) ──────────────── */
+/* auto-fit: 5 en fila en desktop ancho, baja a 4/3 según viewport. */
+.cg-grid--4 { grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
 @media (max-width: 1100px) { .cg-grid--4 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 620px)  { .cg-grid--4 { grid-template-columns: 1fr; } }
+
+/* Card y elementos del 5º cinturón (slug "espiritu", color institucional humor) */
+.cg-cint--espiritu { border-top-color: var(--c-humor); }
 
 /* Título de card clickeable hacia la página de detalle */
 .cg-cint-link { color: var(--dark); text-decoration: none; }
@@ -31,23 +35,6 @@
 .cg-cint-ver { margin-left: auto; color: var(--teal); font-weight: 700; white-space: nowrap; }
 .cg-cint-ver:hover { text-decoration: underline; }
 
-/* Tira del 5º cinturón (Espíritu de la época), full-width bajo la grilla */
-.cg-proximamente {
-    margin-top: 16px;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    flex-wrap: wrap;
-    background: var(--paper); border: 1px dashed var(--bd);
-    border-left: 4px solid var(--c-humor);
-    border-radius: var(--radius-card); padding: 16px 22px;
-    box-shadow: var(--shadow-card);
-}
-.cg-proximamente strong { display: block; font-size: 15px; color: var(--dark); margin-top: 2px; }
-.cg-prox-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 12px; font-weight: 700; color: var(--muted);
-}
-.cg-prox-badge .cg-verdict-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
-
 /* ── Página de detalle por cinturón ─────────────────────────────── */
 .cg-detalle-hero { position: relative; padding: 44px 24px 30px; border-bottom: 1px solid var(--bd-soft); }
 .cg-detalle-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--muted); }
@@ -55,6 +42,7 @@
 .cg-detalle-hero--politica::before { background: var(--c-politica); }
 .cg-detalle-hero--vida::before     { background: var(--c-vida); }
 .cg-detalle-hero--gestion::before  { background: var(--c-gestion); }
+.cg-detalle-hero--espiritu::before { background: var(--c-humor); }
 .cg-detalle-inner { max-width: 1280px; margin: 0 auto; text-align: left; }
 .cg-detalle-hero .cg-eyebrow a { color: var(--muted); }
 .cg-detalle-hero .cg-eyebrow a:hover { color: var(--teal); text-decoration: none; }
@@ -88,6 +76,7 @@
 .cg-tile--politica { border-top-color: var(--c-politica); }
 .cg-tile--vida     { border-top-color: var(--c-vida); }
 .cg-tile--gestion  { border-top-color: var(--c-gestion); }
+.cg-tile--espiritu { border-top-color: var(--c-humor); }
 .cg-tile-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
 .cg-tile-name { font-size: 13.5px; font-weight: 800; color: var(--dark); line-height: 1.25; }
 .cg-tile-badge {
@@ -111,6 +100,31 @@
 .cg-tile-vis--politica .cg-bar-fill { background: var(--c-politica); }
 .cg-tile-vis--vida     .cg-bar-fill { background: var(--c-vida); }
 .cg-tile-vis--gestion  .cg-bar-fill { background: var(--c-gestion); }
+.cg-tile-vis--espiritu .cg-bar-fill { background: var(--c-humor); }
+
+/* ── Página macro: dimensiones del ITCM ─────────────────────────── */
+.cg-itcm-dims {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: 14px;
+}
+.cg-itcm-dim {
+    background: var(--paper); border: 1px solid var(--bd);
+    border-top: 3px solid var(--c-macro);
+    border-radius: var(--radius-card); padding: 14px 16px;
+    box-shadow: var(--shadow-card);
+}
+.cg-itcm-dim-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 8px; margin-bottom: 10px;
+}
+.cg-itcm-dim-name { font-size: 13px; font-weight: 800; color: var(--dark); line-height: 1.3; }
+.cg-itcm-dim-val { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.cg-itcm-dim-val strong {
+    font-family: 'JetBrains Mono', monospace; font-size: 18px;
+    color: var(--dark); font-weight: 700;
+}
+.cg-itcm-dim .cg-bar-fill { background: var(--c-macro); }
 
 /* ── Modal de indicador: qué es + qué aporta + ficha + serie ────── */
 .cg-modal-desc { font-size: 15px; line-height: 1.6; color: var(--dark); margin: 8px 0 14px; }
