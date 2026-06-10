@@ -47,9 +47,13 @@ Interpretación del ITCM: 0–20 severamente apretado · 21–40 apretado · 41�
 
 Ante indicadores faltantes los pesos se renormalizan (dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones) — consistente con el "ignorar ausencias" del resto del informe.
 
-### Ajustes del analista
+### Ajustes sobre la banda
 
-El documento aplica en su ejemplo tres ajustes discrecionales que las tablas no producen (recaudación 80→75, saldo comercial 85→60 "por contracción", EMAE 100→85). Ese juicio cualitativo no se hardcodea: se expresa como **override** en `data/macro/ajustes_itcm.json`, con formato:
+El documento aplica en su ejemplo tres ajustes discrecionales que las tablas no producen (recaudación 80→75, saldo comercial 85→60 "por contracción", EMAE 100→85). El del saldo comercial está **automatizado**; el resto del juicio cualitativo va por override manual.
+
+**Regla automática del saldo comercial** (`itcm.py::ajuste_automatico_saldo`): el colector calcula el saldo como expo − impo de las series ICA y compara los acumulados 12m contra los 12m previos. Si hay superávit con banda > 60, las importaciones **caen**, y esa caída explica más de la mejora del saldo que el aumento de exportaciones (`−Δimpo > max(0, Δexpo)`), el puntaje se ajusta a **60** (el valor del doc), con justificación generada con los números. Si las importaciones crecen —superávit genuino— la regla no opina. Estado jun-2026: NO aplica (expo +14,1% i.a., impo +10,6% i.a.).
+
+**Override manual** en `data/macro/ajustes_itcm.json` (pisa la regla automática), con formato:
 
 ```json
 {
@@ -118,11 +122,12 @@ Score actual del cinturón: **2.9 (estable)** — ITCM **71.2 (moderadamente afl
 
 ### `saldo_comercial_12m` — Balance comercial acumulado 12 meses
 
-- Fuente: `GET https://apis.datos.gob.ar/series/api/series/?ids=164.3_SOTALTAL_0_0_8&format=json&limit=13&sort=desc`
-- Cálculo: suma de los 12 últimos valores mensuales del saldo comercial total.
-- Puntaje ITCM: por bandas (>15.000 → 85 · 10–15k → 75 · 5–10k → 60 · ±5k → 50 · −5/−15k → 30 · <−15k → 10). Pesa 40% de la dimensión fiscal-comercial (12% del índice).
-- Nota: la publicación tiene rezago de aproximadamente 3 meses. El acumulado 12 meses elimina estacionalidad energética y sojera.
-- Último valor: +17.125 millones USD (12 meses hasta febrero 2025).
+- Fuente primaria: series ICA `74.3_IET_0_M_16` (expo totales) y `74.3_IIT_0_M_25` (impo totales), `limit=26`, alineadas por fecha. Saldo 12m = Σexpo − Σimpo de los últimos 12 meses comunes.
+- Composición para la regla automática: el indicador expone `expo_12m`, `impo_12m`, `expo_var_ia`, `impo_var_ia`, `expo_delta_12m`, `impo_delta_12m` (acumulado 12m vs 12m previos).
+- Fallback: serie de saldo directa `164.3_SOTALTAL_0_0_8` (≈14 meses de rezago observado en jun-2026; sin composición → la regla automática no opina).
+- Puntaje ITCM: por bandas (>15.000 → 85 · 10–15k → 75 · 5–10k → 60 · ±5k → 50 · −5/−15k → 30 · <−15k → 10), con la regla automática de ajuste por contracción (ver "Ajustes sobre la banda"). Pesa 40% de la dimensión fiscal-comercial (12% del índice).
+- Nota: el acumulado 12 meses elimina estacionalidad energética y sojera.
+- Último valor: +18.322 millones USD (12 meses hasta abril 2026); expo +14,1% i.a., impo +10,6% i.a. → ajuste no aplicado.
 
 ### `recaudacion` — Recaudación tributaria total
 

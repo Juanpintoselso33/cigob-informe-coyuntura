@@ -136,6 +136,44 @@ def _num(x: float) -> str:
     return s.replace(".", ",")
 
 
+def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
+    """Regla automática del "Subcomponente D" de la Paramétrica: un superávit
+    comercial que refleja caída de demanda interna (menos importaciones) más
+    que aumento de exportaciones es sintomático de apretamiento y se ajusta
+    a 60 puntos (el valor que aplica el documento en su ejemplo).
+
+    Condición (sobre acumulados 12m vs los 12m previos): hay superávit con
+    banda > 60, las importaciones CAEN, y esa caída explica más de la mejora
+    del saldo que el aumento de exportaciones. Requiere la composición
+    expo/impo que produce fetch_saldo_comercial_12m; sin esos campos (ej.
+    fallback a la serie de saldo directa) no opina y devuelve None.
+    """
+    valor = ind_saldo.get("valor")
+    d_expo = ind_saldo.get("expo_delta_12m")
+    d_impo = ind_saldo.get("impo_delta_12m")
+    if valor is None or d_expo is None or d_impo is None:
+        return None
+    if valor <= 5000:                # sin superávit relevante: la banda ya lo castiga
+        return None
+    if puntaje_banda(float(valor), BANDAS_ITCM["saldo_comercial_12m"]) <= 60:
+        return None
+    if d_impo >= 0:                  # importaciones creciendo: no hay contracción
+        return None
+    if -d_impo <= max(0.0, d_expo):  # la caída de impo no domina la mejora del saldo
+        return None
+    expo_var = ind_saldo.get("expo_var_ia")
+    impo_var = ind_saldo.get("impo_var_ia")
+    return {
+        "puntaje": 60,
+        "justificacion": (
+            f"Regla automática: superávit explicado por contracción de importaciones "
+            f"({impo_var:+.1f}% i.a.) más que por exportaciones ({expo_var:+.1f}% i.a.) "
+            f"— sintomático de caída de demanda interna (Paramétrica CIGOB, may-2026)."
+        ),
+        "origen": "automatico",
+    }
+
+
 def cargar_ajustes(path: Path, periodo: str) -> dict:
     """Lee los overrides del analista vigentes para `periodo` (YYYY-MM).
 
@@ -184,6 +222,7 @@ def calcular_itcm(valores: dict, ajustes: dict | None = None) -> dict | None:
                     "de": p_banda,
                     "a": p_aplicado,
                     "justificacion": ajustes[ikey].get("justificacion", ""),
+                    "origen": ajustes[ikey].get("origen", "manual"),
                 })
             presentes[ikey] = {"peso": peso, "puntaje_banda": p_banda,
                                "puntaje_aplicado": p_aplicado}

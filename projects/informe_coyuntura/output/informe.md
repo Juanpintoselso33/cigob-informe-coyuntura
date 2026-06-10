@@ -1,6 +1,6 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-10 19:14:31"
+generado: "2026-06-10 19:21:43"
 score_global: 3.8
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
@@ -13,7 +13,7 @@ schema_version: "1.1.0"
 
 ## Cinturones
 
-### 🟡 Macro — score 3.2/10 (en_tension)
+### 🟢 Macro — score 2.9/10 (estable)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -22,7 +22,7 @@ schema_version: "1.1.0"
 | reservas_bcra | 47800.0 | mill USD | 2026-06-08 | fresco |
 | badlar | 20.38 | % anual | 2026-06-09 | fresco |
 | emae_ia | 5.48 | % i.a. | 2026-03-01 | fresco |
-| saldo_comercial_12m | 17125.0 | mill USD acumulado 12m | 2025-02-01 | fresco |
+| saldo_comercial_12m | 18322.0 | mill USD acumulado 12m | 2026-04-01 | fresco |
 | recaudacion | 23.64 | % var mensual nominal | 2026-05-01 | fresco |
 | tcrm | 79.77 | índice base 2010=100 | 2024-12-01 | fresco |
 | rem_ipc_12m | 23.3 | % anual esperado (mediana REM) | 2026-05-31 | fresco |
@@ -88,4 +88,4 @@ schema_version: "1.1.0"
 - `desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-10 19:14:31 — schema 1.1.0*
+*Generado por CIGOB — 2026-06-10 19:21:43 — schema 1.1.0*

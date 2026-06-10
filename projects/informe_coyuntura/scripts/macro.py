@@ -29,7 +29,9 @@ BCRA_VARIABLES_BASE = "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias"
 # INDEC — series IDs verificados en datos.gob.ar
 INDEC_IPC_ID         = "148.3_INIVELNAL_DICI_M_26"     # IPC total nacional mensual
 INDEC_EMAE_IA_ID     = "143.3_ICE_SERVIA_2004_A_25"    # EMAE variación i.a. mensual (base 2004)
-INDEC_SALDO_COM_ID   = "164.3_SOTALTAL_0_0_8"          # Saldo comercial total mensual (M USD)
+INDEC_SALDO_COM_ID   = "164.3_SOTALTAL_0_0_8"          # Saldo comercial total mensual (M USD) — FALLBACK, ~14 meses de rezago
+INDEC_EXPO_ICA_ID    = "74.3_IET_0_M_16"               # ICA exportaciones totales mensual (M USD)
+INDEC_IMPO_ICA_ID    = "74.3_IIT_0_M_25"               # ICA importaciones totales mensual (M USD)
 INDEC_RECAUDACION_ID = "172.3_TL_RECAION_M_0_0_17"     # Recaudación total mensual (M ARS)
 INDEC_TCRM_ID        = "116.3_TCRMA_0_M_36"            # Tipo de Cambio Real Multilateral (base 2010=100)
 
@@ -179,6 +181,38 @@ def fetch_emae_ia() -> dict | None:
 
 
 def fetch_saldo_comercial_12m() -> dict | None:
+    """Saldo 12m = expo − impo de las series ICA (74.3, frescas a ~2 meses),
+    con la composición que necesita la regla automática del ITCM (¿el superávit
+    viene de exportar más o de importar menos?). La serie de saldo directa
+    (164.3) tiene ~14 meses de rezago y queda solo como fallback."""
+    try:
+        expo = _indec_serie(INDEC_EXPO_ICA_ID, limit=26)
+        impo = _indec_serie(INDEC_IMPO_ICA_ID, limit=26)
+        # Alinear por fecha: usar solo los meses presentes en ambas series.
+        impo_por_fecha = {f: v for f, v in impo if v is not None}
+        comunes = [(f, v, impo_por_fecha[f]) for f, v in expo
+                   if v is not None and f in impo_por_fecha]
+        if len(comunes) < 24:
+            raise ValueError(f"ICA: solo {len(comunes)} meses comunes expo/impo (se necesitan 24)")
+        ex  = [e for _, e, _ in comunes]
+        im  = [i for _, _, i in comunes]
+        expo_12, expo_prev = sum(ex[:12]), sum(ex[12:24])
+        impo_12, impo_prev = sum(im[:12]), sum(im[12:24])
+        return {
+            "valor": round(expo_12 - impo_12, 0),
+            "unidad": "mill USD acumulado 12m",
+            "fuente": INDEC_SERIES_BASE,
+            "fecha_dato": comunes[0][0],
+            "desactualizado": False,
+            "expo_12m": round(expo_12, 0),
+            "impo_12m": round(impo_12, 0),
+            "expo_var_ia": round((expo_12 / expo_prev - 1) * 100, 1),
+            "impo_var_ia": round((impo_12 / impo_prev - 1) * 100, 1),
+            "expo_delta_12m": round(expo_12 - expo_prev, 0),
+            "impo_delta_12m": round(impo_12 - impo_prev, 0),
+        }
+    except Exception as e:
+        _warn("saldo_comercial_12m (ICA)", e)
     try:
         data   = _indec_serie(INDEC_SALDO_COM_ID, limit=13)
         meses  = [row[1] for row in data[:12] if row[1] is not None]
@@ -296,10 +330,15 @@ AJUSTES_PATH = PROJECT_DIR / "data" / "macro" / "ajustes_itcm.json"
 
 def calcular_itcm_cinturon(indicadores: dict) -> dict | None:
     """ITCM 0-100 (ver scripts/itcm.py) sobre los 7 indicadores del índice.
-    Los overrides del analista vigentes para el mes corriente se leen de
-    data/macro/ajustes_itcm.json."""
+    Ajustes: primero la regla automática del saldo comercial (composición
+    expo/impo), luego los overrides manuales del analista vigentes para el
+    mes corriente (data/macro/ajustes_itcm.json), que pisan lo automático."""
+    ajustes = {}
+    auto_saldo = itcm.ajuste_automatico_saldo(indicadores.get("saldo_comercial_12m", {}))
+    if auto_saldo:
+        ajustes["saldo_comercial_12m"] = auto_saldo
     periodo = datetime.now().strftime("%Y-%m")
-    ajustes = itcm.cargar_ajustes(AJUSTES_PATH, periodo)
+    ajustes.update(itcm.cargar_ajustes(AJUSTES_PATH, periodo))
     valores = {nombre: indicadores.get(nombre, {}).get("valor")
                for nombre in itcm.BANDAS_ITCM}
     return itcm.calcular_itcm(valores, ajustes)

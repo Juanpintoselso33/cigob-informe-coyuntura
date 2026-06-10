@@ -234,6 +234,7 @@ def _scoring_macro_itcm(c):
     cada puntaje 0-100 a tensión equivalente (para la semántica 0-10 del modal)
     y se anota la tabla de bandas + peso en el índice. Los indicadores con
     en_indice=false son contexto y no aportan."""
+    ajustes = {a["indicador"]: a for a in (c.get("itcm") or {}).get("ajustes_aplicados", [])}
     for ikey, ind in c["indicadores"].items():
         aporte = formula = nota = None
         p = ind.get("puntaje_itcm")
@@ -243,9 +244,10 @@ def _scoring_macro_itcm(c):
             peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + " del ITCM" if peso else ""
             formula = (f"Banda ITCM: {itcm.texto_bandas(ikey)} "
                        f"(puntos 0–100; puntaje {p}{peso_txt})")
-            if ind.get("puntaje_banda") is not None and ind["puntaje_banda"] != p:
-                nota = (f"Ajuste del analista: banda {ind['puntaje_banda']} → {p} "
-                        "(ver justificación en data/macro/ajustes_itcm.json).")
+            if ikey in ajustes:
+                aj = ajustes[ikey]
+                origen = "automático" if aj.get("origen") == "automatico" else "del analista"
+                nota = f"Ajuste {origen}: banda {aj['de']} → {aj['a']}. {aj.get('justificacion', '')}"
         elif ind.get("en_indice") is False:
             nota = MACRO_CONTEXTO
         ind["aporte_score"] = aporte

@@ -126,6 +126,42 @@ def test_contexto_no_altera_el_indice():
     assert itcm.calcular_itcm(con_contexto)["valor"] == itcm.calcular_itcm(EJEMPLO_DOC)["valor"]
 
 
+def test_ajuste_automatico_saldo_por_contraccion():
+    """Superávit con importaciones cayendo más de lo que crecen las expo →
+    ajuste a 60 (caso del doc: el superávit 2024/25 'por contracción')."""
+    ind = {"valor": 17125, "expo_var_ia": 2.0, "impo_var_ia": -15.0,
+           "expo_delta_12m": 1500, "impo_delta_12m": -9000}
+    aj = itcm.ajuste_automatico_saldo(ind)
+    assert aj is not None and aj["puntaje"] == 60 and aj["origen"] == "automatico"
+    assert "contracción de importaciones" in aj["justificacion"]
+    r = itcm.calcular_itcm(dict(EJEMPLO_DOC), {"saldo_comercial_12m": aj})
+    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 72.0
+    assert r["ajustes_aplicados"][0]["origen"] == "automatico"
+
+
+def test_ajuste_automatico_saldo_no_aplica():
+    """No opina cuando: las impo crecen (superávit genuino), la caída de impo
+    no domina, no hay superávit relevante, o faltan los campos de composición."""
+    # impo creciendo (situación jun-2026 real)
+    assert itcm.ajuste_automatico_saldo(
+        {"valor": 18322, "expo_var_ia": 14.1, "impo_var_ia": 10.6,
+         "expo_delta_12m": 11451, "impo_delta_12m": 7125}) is None
+    # impo caen pero la mejora viene más de las expo
+    assert itcm.ajuste_automatico_saldo(
+        {"valor": 16000, "expo_var_ia": 12.0, "impo_var_ia": -1.0,
+         "expo_delta_12m": 9000, "impo_delta_12m": -500}) is None
+    # déficit / sin superávit relevante
+    assert itcm.ajuste_automatico_saldo(
+        {"valor": -2000, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
+         "expo_delta_12m": 0, "impo_delta_12m": -8000}) is None
+    # banda ya ≤ 60: el ajuste no agrega nada
+    assert itcm.ajuste_automatico_saldo(
+        {"valor": 8000, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
+         "expo_delta_12m": 0, "impo_delta_12m": -8000}) is None
+    # sin composición (fallback a la serie de saldo directa)
+    assert itcm.ajuste_automatico_saldo({"valor": 17125}) is None
+
+
 def test_interpretacion_bandas():
     assert itcm.banda_interpretacion(15) == "severamente_apretado"
     assert itcm.banda_interpretacion(20) == "severamente_apretado"

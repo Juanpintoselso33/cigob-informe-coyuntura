@@ -1,12 +1,12 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-06-10T19:14:31.281681",
+  "generated_at": "2026-06-10T19:21:43.083204",
   "period": "2026-06",
-  "score_global": 3.9,
+  "score_global": 3.8,
   "cinturones": {
     "macro": {
-      "score": 3.2,
-      "estado": "en_tension",
+      "score": 2.9,
+      "estado": "estable",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
         "ipc_total": {
@@ -70,19 +70,25 @@
           "aporte_nota": null
         },
         "saldo_comercial_12m": {
-          "valor": 17125.0,
+          "valor": 18322.0,
           "unidad": "mill USD acumulado 12m",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
-          "fecha_dato": "2025-02-01",
+          "fecha_dato": "2026-04-01",
           "desactualizado": false,
+          "expo_12m": 92560.0,
+          "impo_12m": 74238.0,
+          "expo_var_ia": 14.1,
+          "impo_var_ia": 10.6,
+          "expo_delta_12m": 11451.0,
+          "impo_delta_12m": 7125.0,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 60,
+          "puntaje_itcm": 85,
           "puntaje_banda": 85,
           "peso_efectivo": 0.12,
-          "aporte_score": 4.0,
-          "aporte_formula": "Banda ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤-15000 → 10 (puntos 0–100; puntaje 60; pesa 12,0% del ITCM)",
-          "aporte_nota": "Ajuste del analista: banda 85 → 60 (ver justificación en data/macro/ajustes_itcm.json)."
+          "aporte_score": 1.5,
+          "aporte_formula": "Banda ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤-15000 → 10 (puntos 0–100; puntaje 85; pesa 12,0% del ITCM)",
+          "aporte_nota": null
         },
         "recaudacion": {
           "valor": 23.64,
@@ -161,7 +167,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 68.2,
+        "valor": 71.2,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -188,7 +194,7 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.3,
-            "puntaje": 84.0,
+            "puntaje": 94.0,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
@@ -199,7 +205,7 @@
               "saldo_comercial_12m": {
                 "peso": 0.4,
                 "puntaje_banda": 85,
-                "puntaje_aplicado": 60,
+                "puntaje_aplicado": 85,
                 "peso_efectivo": 0.12
               }
             },
@@ -240,14 +246,7 @@
             "peso_efectivo": 0.15
           }
         },
-        "ajustes_aplicados": [
-          {
-            "indicador": "saldo_comercial_12m",
-            "de": 85,
-            "a": 60,
-            "justificacion": "Superávit por caída de demanda interna (menos importaciones) más que por aumento de exportaciones; sintomático de apretamiento aunque genera divisas (Paramétrica Macro CIGOB, may-2026)"
-          }
-        ]
+        "ajustes_aplicados": []
       },
       "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 4 dimensiones: estabilidad monetaria 35%, viabilidad fiscal-comercial 30%, financiamiento 20%, actividad 15%. La tensión del cinturón es (100 − ITCM) / 10."
     },
