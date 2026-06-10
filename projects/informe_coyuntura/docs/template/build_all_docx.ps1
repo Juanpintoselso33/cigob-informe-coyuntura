@@ -15,6 +15,7 @@ if (-not (Test-Path $ref)) {
 
 $archivos = @(
     "260523_proyecto_pais_estado_extraccion",
+    "cinturon_espiritu_epoca",
     "cinturon_gestion",
     "cinturon_macro",
     "cinturon_politica",

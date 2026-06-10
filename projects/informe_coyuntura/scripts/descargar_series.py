@@ -49,8 +49,27 @@ def write_csv(nombre: str, rows: list):
     print(f"[OK] {path}  ({len(rows)} filas)")
 
 
-def descargar(cinturon: str, indec_series: list, bcra_vars: list):
+def fetch_saldo_ica(limit: int = 48) -> list:
+    """Saldo comercial mensual derivado de las series ICA (expo − impo).
+    La serie de saldo directa (164.3_SOTALTAL_0_0_8) corre con ~14 meses de
+    rezago; las ICA están frescas a ~2 meses (mismo criterio que macro.py)."""
+    expo = fetch_indec("74.3_IET_0_M_16", limit)
+    impo_por_fecha = dict(fetch_indec("74.3_IIT_0_M_25", limit))
+    return [[fecha, round(valor - impo_por_fecha[fecha], 1)]
+            for fecha, valor in expo if fecha in impo_por_fecha]
+
+
+def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: list = ()):
     rows = []
+
+    for nombre, unidad, fuente, fetch_fn in derivadas:
+        try:
+            data = fetch_fn()
+            for fecha, valor in data:
+                rows.append([fecha, nombre, valor, unidad, fuente])
+            print(f"  [OK] {nombre}: {len(data)} puntos  ({data[-1][0]} → {data[0][0]})")
+        except Exception as e:
+            print(f"  [ERR] {nombre}: {e}")
 
     for sid, nombre, unidad, fuente in indec_series:
         try:
@@ -79,9 +98,11 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list):
 MACRO_INDEC = [
     ("148.3_INIVELNAL_DICI_M_26",  "ipc_total",       "% mensual",          "INDEC/datos.gob.ar"),
     ("143.3_ICE_SERVIA_2004_A_25", "emae_ia",         "% i.a.",             "INDEC/datos.gob.ar"),
-    ("164.3_SOTALTAL_0_0_8",       "saldo_comercial", "M USD",              "INDEC/datos.gob.ar"),
     ("172.3_TL_RECAION_M_0_0_17",  "recaudacion",     "M ARS",              "INDEC/datos.gob.ar"),
     ("116.3_TCRMA_0_M_36",         "tcrm",            "indice base 2010=100","INDEC/datos.gob.ar"),
+]
+MACRO_DERIVADAS = [
+    ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
 ]
 MACRO_BCRA = [
     (1,  "reservas_bcra",      "M USD",    "BCRA"),
@@ -110,7 +131,7 @@ GESTION_INDEC = [
 
 if __name__ == "__main__":
     print("=== MACRO ===")
-    descargar("macro", MACRO_INDEC, MACRO_BCRA)
+    descargar("macro", MACRO_INDEC, MACRO_BCRA, MACRO_DERIVADAS)
 
     print("\n=== POLÍTICA ===")
     print("  [SKIP] cinturón político — indicadores manuales + Votómetro HTML, sin series INDEC")
