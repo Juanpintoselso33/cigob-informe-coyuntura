@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-06-09T04:24:16.672748",
+  "generated_at": "2026-06-10T04:28:51.114462",
   "score": 4.7,
   "indicadores": {
     "votometro_ventaja_lla": {
@@ -20,17 +20,17 @@
       "periodo": "2026",
       "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-09",
+      "fecha_dato": "2026-06-10",
       "desactualizado": false
     },
     "movilizacion_cepa": {
-      "valor": 46.0,
-      "cifra_cruda": 92.0,
-      "metrica": "92.0 conflictos acumulados",
+      "valor": 50.5,
+      "cifra_cruda": 101.0,
+      "metrica": "101.0 conflictos acumulados",
       "unidad": "índice 0–100 (normalizado)",
-      "fuente": "https://centrocepa.com.ar/documentos/informes/773-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial",
-      "fecha_dato": "2026-06-08",
-      "desactualizado": true
+      "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
+      "fecha_dato": "2026-06-10",
+      "desactualizado": false
     },
     "iaf_transferencias": {
       "valor": 1.8,
@@ -41,7 +41,7 @@
       "ipc_aplicado_pct": 38.3,
       "unidad": "% variación real YoY en transferencias totales RON",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-      "fecha_dato": "2026-06-09",
+      "fecha_dato": "2026-06-10",
       "desactualizado": false
     },
     "eficacia_legislativa": {
@@ -51,8 +51,8 @@
       "ventana_dias": 365,
       "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-      "fecha_dato": "2026-06-08",
-      "desactualizado": true
+      "fecha_dato": "2026-06-10",
+      "desactualizado": false
     },
     "cohesion_bloque": {
       "valor": 78,
@@ -79,7 +79,7 @@
       "periodo_id": "HCDN144",
       "unidad": "% sesiones frustradas por falta de quórum",
       "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-      "fecha_dato": "2026-06-09",
+      "fecha_dato": "2026-06-10",
       "desactualizado": false
     },
     "comisiones_caidas": {
@@ -90,8 +90,8 @@
       "ventana_dias": 365,
       "unidad": "% proyectos con dictamen que no llegaron al recinto",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-06-08",
-      "desactualizado": true
+      "fecha_dato": "2026-06-10",
+      "desactualizado": false
     }
   }
 }
