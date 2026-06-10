@@ -1,8 +1,8 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-06-10T19:21:43.083204",
+  "generated_at": "2026-06-10T22:53:40.708063",
   "period": "2026-06",
-  "score_global": 3.8,
+  "score_global": 3.9,
   "cinturones": {
     "macro": {
       "score": 2.9,
@@ -309,15 +309,15 @@
           "aporte_nota": null
         },
         "eficacia_legislativa": {
-          "valor": 5.3,
+          "valor": 4.2,
           "aprobados_n": 1,
-          "enviados_n": 19,
+          "enviados_n": 24,
           "ventana_dias": 365,
           "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
           "fecha_dato": "2026-06-10",
           "desactualizado": false,
-          "aporte_score": 9.2,
+          "aporte_score": 9.4,
           "aporte_formula": "70% → 0 · 35% → 5 · 0% → 10",
           "aporte_nota": null
         },
@@ -348,7 +348,7 @@
         "veto_quorum": {
           "valor": 0.0,
           "fracasadas_n": 0,
-          "total_n": 2,
+          "total_n": 3,
           "periodo_id": "HCDN144",
           "unidad": "% sesiones frustradas por falta de quórum",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
@@ -359,10 +359,10 @@
           "aporte_nota": null
         },
         "comisiones_caidas": {
-          "valor": 99.5,
-          "dictamen_n": 430,
-          "aprobados_n": 2,
-          "caidas_n": 428,
+          "valor": 97.9,
+          "dictamen_n": 475,
+          "aprobados_n": 10,
+          "caidas_n": 465,
           "ventana_dias": 365,
           "unidad": "% proyectos con dictamen que no llegaron al recinto",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
@@ -377,7 +377,7 @@
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político."
     },
     "vida_cotidiana": {
-      "score": 3.3,
+      "score": 3.8,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -402,14 +402,14 @@
           "aporte_nota": null
         },
         "endeudamiento_familiar": {
-          "valor": 45.36,
+          "valor": 43.57,
           "unidad": "billones de pesos (consumo)",
           "fuente": "BCRA API v4.0",
-          "fecha_dato": "2026-05-27",
+          "fecha_dato": "2026-06-05",
           "desactualizado": false,
-          "var_real_12m": 1.3,
-          "aporte_input_txt": "+1,3% interanual real",
-          "aporte_score": 5.3,
+          "var_real_12m": 2.8,
+          "aporte_input_txt": "+2,8% interanual real",
+          "aporte_score": 5.7,
           "aporte_formula": "−20% real → 0 · 0% → 5 · +20% real → 10 (var. interanual real del crédito)",
           "aporte_nota": null
         },
@@ -444,22 +444,22 @@
           "aporte_nota": null
         },
         "mortalidad_pymes": {
-          "valor": 21.53,
+          "valor": -3.29,
           "unidad": "% m/m (IPI)",
           "fuente": "INDEC",
-          "fecha_dato": "2026-03-01",
+          "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "aporte_score": 0.0,
+          "aporte_score": 8.3,
           "aporte_formula": "+5% → 0 · 0% → 5 · −5% → 10 (IPI m/m)",
           "aporte_nota": null
         },
         "despacho_cemento": {
-          "valor": 150.3,
+          "valor": 144.1,
           "unidad": "índice ISAC",
           "fuente": "INDEC",
-          "fecha_dato": "2026-03-01",
+          "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "aporte_score": 3.0,
+          "aporte_score": 3.6,
           "aporte_formula": "180 → 0 · 130 → 5 · 80 → 10 (índice ISAC)",
           "aporte_nota": null
         },
@@ -493,8 +493,18 @@
           "aporte_formula": "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)",
           "aporte_nota": null
         },
+        "sentimiento_digital": {
+          "valor": 7.5,
+          "unidad": "interés 0–100",
+          "fuente": "Google Trends",
+          "fecha_dato": "2026-06-10",
+          "desactualizado": false,
+          "aporte_score": 0.8,
+          "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
+          "aporte_nota": null
+        },
         "patentamiento_motos": {
-          "valor": 69629,
+          "valor": 69720,
           "unidad": "unidades",
           "fuente": "CAFAM",
           "fecha_dato": "2026-05",
@@ -505,7 +515,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260602_1056.json",
+      "fuente_enriquecida": "vida_cotidiana_20260610_2253.json",
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
     },
     "gestion": {
@@ -514,8 +524,8 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 3.69,
-          "avance_pct": 81.5,
+          "valor": 3.76,
+          "avance_pct": 81.2,
           "unidad": "% brecha CCL/oficial (cepo corporativo)",
           "fuente": "https://dolarapi.com/v1/dolares",
           "fecha_dato": "2026-06-10",
@@ -668,8 +678,8 @@
           "valor": 7.5,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-06-02",
-          "desactualizado": true,
+          "fecha_dato": "2026-06-10",
+          "desactualizado": false,
           "aporte_score": 0.8,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
           "aporte_nota": null
@@ -694,6 +704,6 @@
   "flags": [
     "desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento",
     "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes",
-    "desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral"
+    "desactualizado:espiritu_epoca:clima_electoral"
   ]
 }

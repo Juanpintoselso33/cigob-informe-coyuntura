@@ -1,11 +1,11 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-06-10T04:28:57.798048",
+  "generated_at": "2026-06-10T22:52:42.044105",
   "score": 5.8,
   "indicadores": {
     "cepo_mulc": {
-      "valor": 3.69,
-      "avance_pct": 81.5,
+      "valor": 3.76,
+      "avance_pct": 81.2,
       "unidad": "% brecha CCL/oficial (cepo corporativo)",
       "fuente": "https://dolarapi.com/v1/dolares",
       "fecha_dato": "2026-06-10",

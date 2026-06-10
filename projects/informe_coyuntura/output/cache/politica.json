@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-06-10T04:28:51.114462",
+  "generated_at": "2026-06-10T22:52:36.491777",
   "score": 4.7,
   "indicadores": {
     "votometro_ventaja_lla": {
@@ -45,9 +45,9 @@
       "desactualizado": false
     },
     "eficacia_legislativa": {
-      "valor": 5.3,
+      "valor": 4.2,
       "aprobados_n": 1,
-      "enviados_n": 19,
+      "enviados_n": 24,
       "ventana_dias": 365,
       "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
@@ -75,7 +75,7 @@
     "veto_quorum": {
       "valor": 0.0,
       "fracasadas_n": 0,
-      "total_n": 2,
+      "total_n": 3,
       "periodo_id": "HCDN144",
       "unidad": "% sesiones frustradas por falta de quórum",
       "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
@@ -83,10 +83,10 @@
       "desactualizado": false
     },
     "comisiones_caidas": {
-      "valor": 99.5,
-      "dictamen_n": 430,
-      "aprobados_n": 2,
-      "caidas_n": 428,
+      "valor": 97.9,
+      "dictamen_n": 475,
+      "aprobados_n": 10,
+      "caidas_n": 465,
       "ventana_dias": 365,
       "unidad": "% proyectos con dictamen que no llegaron al recinto",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
