@@ -1,9 +1,9 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-10T18:57:04.911939",
-  "score": 2.9,
+  "generated_at": "2026-06-10T19:14:31.168137",
+  "score": 3.2,
   "itcm": {
-    "valor": 71.2,
+    "valor": 68.2,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -30,7 +30,7 @@
       "viabilidad_fiscal_comercial": {
         "nombre": "Viabilidad fiscal-comercial",
         "peso": 0.3,
-        "puntaje": 94.0,
+        "puntaje": 84.0,
         "indicadores": {
           "recaudacion": {
             "peso": 0.6,
@@ -41,7 +41,7 @@
           "saldo_comercial_12m": {
             "peso": 0.4,
             "puntaje_banda": 85,
-            "puntaje_aplicado": 85,
+            "puntaje_aplicado": 60,
             "peso_efectivo": 0.12
           }
         },
@@ -82,7 +82,14 @@
         "peso_efectivo": 0.15
       }
     },
-    "ajustes_aplicados": []
+    "ajustes_aplicados": [
+      {
+        "indicador": "saldo_comercial_12m",
+        "de": 85,
+        "a": 60,
+        "justificacion": "Superávit por caída de demanda interna (menos importaciones) más que por aumento de exportaciones; sintomático de apretamiento aunque genera divisas (Paramétrica Macro CIGOB, may-2026)"
+      }
+    ]
   },
   "indicadores": {
     "ipc_total": {
@@ -141,7 +148,7 @@
       "desactualizado": false,
       "en_indice": true,
       "dimension": "viabilidad_fiscal_comercial",
-      "puntaje_itcm": 85,
+      "puntaje_itcm": 60,
       "puntaje_banda": 85,
       "peso_efectivo": 0.12
     },

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-10 19:09:11"
+generado: "2026-06-10 19:14:31"
 score_global: 3.8
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
@@ -13,7 +13,7 @@ schema_version: "1.1.0"
 
 ## Cinturones
 
-### 🟢 Macro — score 2.9/10 (estable)
+### 🟡 Macro — score 3.2/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -36,14 +36,14 @@ schema_version: "1.1.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 13.3 | pp (LLA − PJ) | 2026-03-05 | ⚠ cache |
-| ratio_dnu | 3.143 | ratio DNUs / leyes sancionadas (año corriente) | 2026-06-06 | fresco |
-| movilizacion_cepa | 46.0 | índice 0–100 (normalizado) | 2026-06-06 | fresco |
-| iaf_transferencias | 1.8 | % variación real YoY en transferencias totales RON | 2026-06-06 | fresco |
-| eficacia_legislativa | 5.3 | % proyectos ejecutivos aprobados (ventana 12 meses) | 2026-06-06 | fresco |
+| ratio_dnu | 3.143 | ratio DNUs / leyes sancionadas (año corriente) | 2026-06-10 | fresco |
+| movilizacion_cepa | 50.5 | índice 0–100 (normalizado) | 2026-06-10 | fresco |
+| iaf_transferencias | 1.8 | % variación real YoY en transferencias totales RON | 2026-06-10 | fresco |
+| eficacia_legislativa | 5.3 | % proyectos ejecutivos aprobados (ventana 12 meses) | 2026-06-10 | fresco |
 | cohesion_bloque | 78 | % votos en línea con la posición oficial del bloque LLA | 2026-04-01 | ⚠ cache |
 | gobernadores_alineamiento | 55 | % gobernadores alineados con política nacional | 2026-04-01 | ⚠ cache |
-| veto_quorum | 0.0 | % sesiones frustradas por falta de quórum | 2026-06-06 | fresco |
-| comisiones_caidas | 99.5 | % proyectos con dictamen que no llegaron al recinto | 2026-06-06 | fresco |
+| veto_quorum | 0.0 | % sesiones frustradas por falta de quórum | 2026-06-10 | fresco |
+| comisiones_caidas | 99.5 | % proyectos con dictamen que no llegaron al recinto | 2026-06-10 | fresco |
 
 ### 🟢 Vida Cotidiana — score 3.0/10 (estable)
 *Riesgo de barbarismo: político*
@@ -59,13 +59,13 @@ schema_version: "1.1.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 3.46 | % brecha CCL/oficial (cepo corporativo) | 2026-06-06 | fresco |
+| cepo_mulc | 3.69 | % brecha CCL/oficial (cepo corporativo) | 2026-06-10 | fresco |
 | privatizaciones | En proceso — Aerolíneas y Correo sin transferencia efectiva | % empresas privatizadas efectivamente / listado DL 70/23 | 2026-05-01 | ⚠ cache |
 | concesiones_infraestructura | Parcial — corredores viales en licitación | % corredores viales concesionados / plan total (9 corredores) | 2026-05-01 | ⚠ cache |
 | reduccion_estado | -0.8 | % var. vs 2024-01-01 | 2025-10-01 | fresco |
-| reestructuracion_organismos | 18 | normas con 'disolucion' publicadas desde dic-2023 (InfoLeg) | 2026-06-06 | fresco |
-| rigi_inversiones | 30 | Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg) | 2026-06-06 | fresco |
-| desregulacion_normativa | 57 | normas con 'deroga' publicadas desde dic-2023 (InfoLeg) | 2026-06-06 | fresco |
+| reestructuracion_organismos | 18 | normas con 'disolucion' publicadas desde dic-2023 (InfoLeg) | 2026-06-10 | fresco |
+| rigi_inversiones | 30 | Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg) | 2026-06-10 | fresco |
+| desregulacion_normativa | 58 | normas con 'deroga' publicadas desde dic-2023 (InfoLeg) | 2026-06-10 | fresco |
 | apertura_comercial | 42.4 | % var. i.a. importaciones totales (M USD) | 2025-02-01 | fresco |
 | asistencia_directa | None | % beneficiarios sociales con transferencia directa sin intermediación organizacional | 2026-04-01 | ⚠ cache |
 | fal_modernizacion_laboral | Legislación aprobada — reglamentación pendiente (H2 2026) | % implementación FAL (ley aprobada, reglamentación, operación) | 2026-05-22 | ⚠ cache |
@@ -88,4 +88,4 @@ schema_version: "1.1.0"
 - `desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-10 19:09:11 — schema 1.1.0*
+*Generado por CIGOB — 2026-06-10 19:14:31 — schema 1.1.0*

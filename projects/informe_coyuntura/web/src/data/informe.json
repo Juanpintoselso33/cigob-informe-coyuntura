@@ -1,12 +1,12 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-06-10T19:09:11.204574",
+  "generated_at": "2026-06-10T19:14:31.281681",
   "period": "2026-06",
-  "score_global": 3.8,
+  "score_global": 3.9,
   "cinturones": {
     "macro": {
-      "score": 2.9,
-      "estado": "estable",
+      "score": 3.2,
+      "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
         "ipc_total": {
@@ -77,12 +77,12 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 85,
+          "puntaje_itcm": 60,
           "puntaje_banda": 85,
           "peso_efectivo": 0.12,
-          "aporte_score": 1.5,
-          "aporte_formula": "Banda ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤-15000 → 10 (puntos 0–100; puntaje 85; pesa 12,0% del ITCM)",
-          "aporte_nota": null
+          "aporte_score": 4.0,
+          "aporte_formula": "Banda ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤-15000 → 10 (puntos 0–100; puntaje 60; pesa 12,0% del ITCM)",
+          "aporte_nota": "Ajuste del analista: banda 85 → 60 (ver justificación en data/macro/ajustes_itcm.json)."
         },
         "recaudacion": {
           "valor": 23.64,
@@ -161,7 +161,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 71.2,
+        "valor": 68.2,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -188,7 +188,7 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.3,
-            "puntaje": 94.0,
+            "puntaje": 84.0,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
@@ -199,7 +199,7 @@
               "saldo_comercial_12m": {
                 "peso": 0.4,
                 "puntaje_banda": 85,
-                "puntaje_aplicado": 85,
+                "puntaje_aplicado": 60,
                 "peso_efectivo": 0.12
               }
             },
@@ -240,7 +240,14 @@
             "peso_efectivo": 0.15
           }
         },
-        "ajustes_aplicados": []
+        "ajustes_aplicados": [
+          {
+            "indicador": "saldo_comercial_12m",
+            "de": 85,
+            "a": 60,
+            "justificacion": "Superávit por caída de demanda interna (menos importaciones) más que por aumento de exportaciones; sintomático de apretamiento aunque genera divisas (Paramétrica Macro CIGOB, may-2026)"
+          }
+        ]
       },
       "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 4 dimensiones: estabilidad monetaria 35%, viabilidad fiscal-comercial 30%, financiamiento 20%, actividad 15%. La tensión del cinturón es (100 − ITCM) / 10."
     },
@@ -269,21 +276,21 @@
           "periodo": "2026",
           "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
           "aporte_score": 10.0,
           "aporte_formula": "0 → 0 · 1,0 → 5 · 2,0+ → 10 (DNU/leyes)",
           "aporte_nota": null
         },
         "movilizacion_cepa": {
-          "valor": 46.0,
-          "cifra_cruda": 92.0,
-          "metrica": "92.0 conflictos acumulados",
+          "valor": 50.5,
+          "cifra_cruda": 101.0,
+          "metrica": "101.0 conflictos acumulados",
           "unidad": "índice 0–100 (normalizado)",
-          "fuente": "https://centrocepa.com.ar/documentos/informes/773-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial",
-          "fecha_dato": "2026-06-06",
+          "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
-          "aporte_score": 4.6,
+          "aporte_score": 5.0,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (índice)",
           "aporte_nota": null
         },
@@ -296,7 +303,7 @@
           "ipc_aplicado_pct": 38.3,
           "unidad": "% variación real YoY en transferencias totales RON",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
           "aporte_score": 2.1,
           "aporte_formula": "+10% → 0 · 0% → 2,5 · −10% → 5 · −30% → 10 (var. real i.a.)",
@@ -309,7 +316,7 @@
           "ventana_dias": 365,
           "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
           "aporte_score": 9.2,
           "aporte_formula": "70% → 0 · 35% → 5 · 0% → 10",
@@ -346,7 +353,7 @@
           "periodo_id": "HCDN144",
           "unidad": "% sesiones frustradas por falta de quórum",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
           "aporte_score": 0.0,
           "aporte_formula": "0% → 0 · 15% → 5 · 30%+ → 10 (sesiones caídas)",
@@ -354,13 +361,13 @@
         },
         "comisiones_caidas": {
           "valor": 99.5,
-          "dictamen_n": 439,
+          "dictamen_n": 430,
           "aprobados_n": 2,
-          "caidas_n": 437,
+          "caidas_n": 428,
           "ventana_dias": 365,
           "unidad": "% proyectos con dictamen que no llegaron al recinto",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
           "aporte_score": 10.0,
           "aporte_formula": "20% → 0 · 40% → 5 · 60%+ → 10",
@@ -508,13 +515,13 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 3.46,
-          "avance_pct": 82.7,
+          "valor": 3.69,
+          "avance_pct": 81.5,
           "unidad": "% brecha CCL/oficial (cepo corporativo)",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
-          "aporte_score": 1.7,
+          "aporte_score": 1.9,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
           "aporte_nota": null
         },
@@ -556,7 +563,7 @@
           "avance_pct": 40.0,
           "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
           "aporte_score": 6.0,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -567,20 +574,20 @@
           "avance_pct": 30.0,
           "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
           "aporte_score": 7.0,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
           "aporte_nota": null
         },
         "desregulacion_normativa": {
-          "valor": 57,
-          "avance_pct": 57.0,
+          "valor": 58,
+          "avance_pct": 58.0,
           "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false,
-          "aporte_score": 4.3,
+          "aporte_score": 4.2,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
           "aporte_nota": null
         },

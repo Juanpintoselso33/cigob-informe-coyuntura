@@ -1,12 +1,12 @@
 {
   "schema_version": "1.1.0",
-  "generated_at": "2026-06-10T19:09:11.204574",
+  "generated_at": "2026-06-10T19:14:31.281681",
   "period": "2026-06",
   "score_global": 3.8,
   "cinturones": {
     "macro": {
-      "score": 2.9,
-      "estado": "estable",
+      "score": 3.2,
+      "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
         "ipc_total": {
@@ -65,7 +65,7 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 85,
+          "puntaje_itcm": 60,
           "puntaje_banda": 85,
           "peso_efectivo": 0.12
         },
@@ -128,7 +128,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 71.2,
+        "valor": 68.2,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -155,7 +155,7 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.3,
-            "puntaje": 94.0,
+            "puntaje": 84.0,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
@@ -166,7 +166,7 @@
               "saldo_comercial_12m": {
                 "peso": 0.4,
                 "puntaje_banda": 85,
-                "puntaje_aplicado": 85,
+                "puntaje_aplicado": 60,
                 "peso_efectivo": 0.12
               }
             },
@@ -207,7 +207,14 @@
             "peso_efectivo": 0.15
           }
         },
-        "ajustes_aplicados": []
+        "ajustes_aplicados": [
+          {
+            "indicador": "saldo_comercial_12m",
+            "de": 85,
+            "a": 60,
+            "justificacion": "Superávit por caída de demanda interna (menos importaciones) más que por aumento de exportaciones; sintomático de apretamiento aunque genera divisas (Paramétrica Macro CIGOB, may-2026)"
+          }
+        ]
       }
     },
     "politica": {
@@ -232,16 +239,16 @@
           "periodo": "2026",
           "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         },
         "movilizacion_cepa": {
-          "valor": 46.0,
-          "cifra_cruda": 92.0,
-          "metrica": "92.0 conflictos acumulados",
+          "valor": 50.5,
+          "cifra_cruda": 101.0,
+          "metrica": "101.0 conflictos acumulados",
           "unidad": "índice 0–100 (normalizado)",
-          "fuente": "https://centrocepa.com.ar/documentos/informes/773-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral-provincial",
-          "fecha_dato": "2026-06-06",
+          "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         },
         "iaf_transferencias": {
@@ -253,7 +260,7 @@
           "ipc_aplicado_pct": 38.3,
           "unidad": "% variación real YoY en transferencias totales RON",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         },
         "eficacia_legislativa": {
@@ -263,7 +270,7 @@
           "ventana_dias": 365,
           "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         },
         "cohesion_bloque": {
@@ -291,18 +298,18 @@
           "periodo_id": "HCDN144",
           "unidad": "% sesiones frustradas por falta de quórum",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         },
         "comisiones_caidas": {
           "valor": 99.5,
-          "dictamen_n": 439,
+          "dictamen_n": 430,
           "aprobados_n": 2,
-          "caidas_n": 437,
+          "caidas_n": 428,
           "ventana_dias": 365,
           "unidad": "% proyectos con dictamen que no llegaron al recinto",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         }
       },
@@ -343,11 +350,11 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 3.46,
-          "avance_pct": 82.7,
+          "valor": 3.69,
+          "avance_pct": 81.5,
           "unidad": "% brecha CCL/oficial (cepo corporativo)",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         },
         "privatizaciones": {
@@ -379,7 +386,7 @@
           "avance_pct": 40.0,
           "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         },
         "rigi_inversiones": {
@@ -387,15 +394,15 @@
           "avance_pct": 30.0,
           "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         },
         "desregulacion_normativa": {
-          "valor": 57,
-          "avance_pct": 57.0,
+          "valor": 58,
+          "avance_pct": 58.0,
           "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-06",
+          "fecha_dato": "2026-06-10",
           "desactualizado": false
         },
         "apertura_comercial": {
