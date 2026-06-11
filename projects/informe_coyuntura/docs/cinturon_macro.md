@@ -4,7 +4,7 @@
 |---|---|
 | Script | `scripts/macro.py` (+ `scripts/itcm.py`) |
 | Cache | `output/cache/macro.json` |
-| Peso en score global | 25% (provisional, 5 cinturones) |
+| Peso en score global | 20% en fase temprana del mandato · 25% en consolidación (ver `config.py`) |
 | Barbarismo de riesgo | tecnocrático |
 
 ## Encuadre

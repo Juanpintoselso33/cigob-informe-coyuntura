@@ -4,7 +4,7 @@
 |---|---|
 | Script | `scripts/espiritu_epoca.py` |
 | Cache | `output/cache/espiritu_epoca.json` |
-| Peso en score global | 15% (provisional) |
+| Peso en score global | 20% en fase temprana del mandato · 15% en consolidación (ver `config.py`) |
 | Barbarismo de riesgo | político |
 
 ## Encuadre
@@ -27,7 +27,7 @@ El colector **no re-extrae nada**: lee outputs que el pipeline ya genera (correr
 
 - `sentimiento_digital` mide **interés de búsqueda**, no polaridad: un pico puede ser preocupación o simple noticia. Una versión con análisis de sentimiento real (NLP sobre redes) queda para v2.
 - `apatia_electoral` (voto en blanco/nulo + ausentismo) está **pendiente**: el Votómetro no publica blanco/nulo por encuesta. Cuando lo incorpore, sumarlo acá.
-- El doc conceptual sugiere **ponderación temporal**: en los primeros 2–4 años de gobierno, gestión y espíritu de época pesan más que en gobiernos largos. Hoy los pesos globales son fijos (`config.py`); parametrizarlos por fase del mandato queda como mejora futura.
+- La **ponderación temporal** del doc conceptual (en los primeros 2–4 años de gobierno, gestión y espíritu de época pesan más) está implementada en `config.py`: fase temprana (primeros 4 años del mandato, pesos parejos 20%) vs. consolidación (25/25/20/15/15). El doc no fija números: los valores son operacionalización propia, ajustar cuando CIGOB los formalice.
 
 ## Ejecución
 

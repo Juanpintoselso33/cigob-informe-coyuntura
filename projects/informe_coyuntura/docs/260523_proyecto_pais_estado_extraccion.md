@@ -8,7 +8,7 @@
 > 1. *Fórmula Paramétrica — Cinturón de la Macroeconomía* (`260602 Parametrica Macro.docx`): el cinturón macro pasó a puntuarse con el **ITCM** (índice 0–100, 4 dimensiones ponderadas, 7 de los 11 indicadores; los otros 4 quedan como contexto). Detalle en `docs/cinturon_macro.md`.
 > 2. *Marco Conceptual del Informe de Coyuntura* (`260606 MARCO CONCEPTUAL lINFORME DE COYUNTURA.docx`): se amplió de 4 a **5 cinturones** con **Espíritu de Época** (colector `scripts/espiritu_epoca.py`, 3 proxies v1: ICC UTDT, sentimiento digital, clima electoral del Votómetro). Detalle en `docs/cinturon_espiritu_epoca.md`.
 >
-> Los pesos del score global pasaron a macro 25% · política 25% · vida 20% · gestión 15% · espíritu 15% (provisionales, `config.py`). Las tablas de este documento describen el estado a mayo de 2026 y siguen siendo válidas para fuentes y extracción.
+> Los pesos del score global son **por fase del mandato** (`config.py`, según la ponderación temporal del Marco Conceptual): fase temprana (primeros 4 años) 20% parejo para los cinco; consolidación 25/25/20/15/15. Las tablas de este documento describen el estado a mayo de 2026 y siguen siendo válidas para fuentes y extracción.
 
 ---
 

@@ -1,8 +1,19 @@
 {
-  "schema_version": "1.1.0",
-  "generated_at": "2026-06-10T19:21:43.083204",
+  "schema_version": "1.2.0",
+  "generated_at": "2026-06-11T11:35:18.957382",
   "period": "2026-06",
   "score_global": 3.8,
+  "ponderacion": {
+    "fase": "temprana",
+    "mandato_inicio": "2023-12-10",
+    "pesos": {
+      "macro": 0.2,
+      "politica": 0.2,
+      "vida_cotidiana": 0.2,
+      "gestion": 0.2,
+      "espiritu_epoca": 0.2
+    }
+  },
   "cinturones": {
     "macro": {
       "score": 2.9,
@@ -238,7 +249,7 @@
           "periodo": "2026",
           "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-10",
+          "fecha_dato": "2026-06-11",
           "desactualizado": false
         },
         "movilizacion_cepa": {
@@ -248,7 +259,7 @@
           "unidad": "índice 0–100 (normalizado)",
           "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
           "fecha_dato": "2026-06-10",
-          "desactualizado": false
+          "desactualizado": true
         },
         "iaf_transferencias": {
           "valor": 1.8,
@@ -259,17 +270,17 @@
           "ipc_aplicado_pct": 38.3,
           "unidad": "% variación real YoY en transferencias totales RON",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-06-10",
+          "fecha_dato": "2026-06-11",
           "desactualizado": false
         },
         "eficacia_legislativa": {
-          "valor": 5.3,
+          "valor": 4.2,
           "aprobados_n": 1,
-          "enviados_n": 19,
+          "enviados_n": 24,
           "ventana_dias": 365,
           "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-10",
+          "fecha_dato": "2026-06-11",
           "desactualizado": false
         },
         "cohesion_bloque": {
@@ -293,22 +304,22 @@
         "veto_quorum": {
           "valor": 0.0,
           "fracasadas_n": 0,
-          "total_n": 2,
+          "total_n": 3,
           "periodo_id": "HCDN144",
           "unidad": "% sesiones frustradas por falta de quórum",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-06-10",
+          "fecha_dato": "2026-06-11",
           "desactualizado": false
         },
         "comisiones_caidas": {
-          "valor": 99.5,
-          "dictamen_n": 430,
-          "aprobados_n": 2,
-          "caidas_n": 428,
+          "valor": 97.9,
+          "dictamen_n": 475,
+          "aprobados_n": 10,
+          "caidas_n": 465,
           "ventana_dias": 365,
           "unidad": "% proyectos con dictamen que no llegaron al recinto",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-10",
+          "fecha_dato": "2026-06-11",
           "desactualizado": false
         }
       },
@@ -349,11 +360,11 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 3.69,
-          "avance_pct": 81.5,
+          "valor": 3.76,
+          "avance_pct": 81.2,
           "unidad": "% brecha CCL/oficial (cepo corporativo)",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-06-10",
+          "fecha_dato": "2026-06-11",
           "desactualizado": false
         },
         "privatizaciones": {
@@ -385,7 +396,7 @@
           "avance_pct": 40.0,
           "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-10",
+          "fecha_dato": "2026-06-11",
           "desactualizado": false
         },
         "rigi_inversiones": {
@@ -393,7 +404,7 @@
           "avance_pct": 30.0,
           "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-10",
+          "fecha_dato": "2026-06-11",
           "desactualizado": false
         },
         "desregulacion_normativa": {
@@ -401,7 +412,7 @@
           "avance_pct": 58.0,
           "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-10",
+          "fecha_dato": "2026-06-11",
           "desactualizado": false
         },
         "apertura_comercial": {
@@ -480,7 +491,7 @@
   "barbarismo_activo": "gerencial",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento",
+    "desactualizado:politica:votometro_ventaja_lla,movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento",
     "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes",
     "desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral"
   ]

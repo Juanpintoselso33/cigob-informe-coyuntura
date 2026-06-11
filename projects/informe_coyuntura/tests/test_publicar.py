@@ -87,6 +87,26 @@ def test_macro_itcm_reconcilia():
         assert abs(i["aporte_score"] - round((100 - i["puntaje_itcm"]) / 10, 1)) <= 0.05
 
 
+def test_pesos_por_fase_del_mandato():
+    """Marco Conceptual: en los primeros años del mandato, gestión y espíritu
+    de época pesan más que en la fase de consolidación. Ambos sets suman 1."""
+    from datetime import date
+    from config import (pesos_cinturones, fase_mandato, PESOS_FASE_TEMPRANA,
+                        PESOS_FASE_CONSOLIDACION, PESOS_CINTURONES)
+    assert abs(sum(PESOS_FASE_TEMPRANA.values()) - 1.0) < 1e-9
+    assert abs(sum(PESOS_FASE_CONSOLIDACION.values()) - 1.0) < 1e-9
+    assert fase_mandato(date(2024, 6, 1)) == "temprana"
+    assert fase_mandato(date(2027, 12, 9)) == "temprana"     # < 4 años
+    assert fase_mandato(date(2027, 12, 11)) == "consolidacion"
+    assert pesos_cinturones(date(2024, 6, 1)) is PESOS_FASE_TEMPRANA
+    assert pesos_cinturones(date(2028, 1, 1)) is PESOS_FASE_CONSOLIDACION
+    # gestión y espíritu pesan más (o igual que nadie menos) en la fase temprana
+    for k in ("gestion", "espiritu_epoca"):
+        assert PESOS_FASE_TEMPRANA[k] > PESOS_FASE_CONSOLIDACION[k]
+    assert set(PESOS_CINTURONES) == {"macro", "politica", "vida_cotidiana",
+                                     "gestion", "espiritu_epoca"}
+
+
 def test_score_global_reconcilia_con_pesos():
     """El score global debe ser el promedio ponderado de los 4 cinturones."""
     from config import PESOS_CINTURONES

@@ -14,7 +14,8 @@ Colectores de datos para los cinco cinturones del marco CIGOB-Matus (Macro, Pol�
 
 El cinturón macro se puntúa con el **ITCM** (índice paramétrico 0–100 con 4 dimensiones
 ponderadas — ver `docs/cinturon_macro.md`); el resto promedia tensiones 0–10. El score
-global pondera los cinco cinturones (`config.py`, pesos provisionales).
+global pondera los cinco cinturones por fase del mandato (`config.py`: fase temprana
+20% parejo; consolidación 25/25/20/15/15, según la ponderación temporal del Marco Conceptual).
 
 Documento de referencia con detalle por indicador: [`docs/260523_proyecto_pais_estado_extraccion.md`](docs/260523_proyecto_pais_estado_extraccion.md).
 

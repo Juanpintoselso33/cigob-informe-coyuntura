@@ -1,17 +1,47 @@
 import sys
+from datetime import date
 sys.stdout.reconfigure(encoding='utf-8')
 
-# Pesos de cada cinturón en el score agregado (deben sumar 1.0).
-# PROVISIONALES tras la ampliación a 5 cinturones del "Marco Conceptual del
-# Informe de Coyuntura" (CIGOB, may-2026): el doc no fija pesos numéricos
-# entre cinturones; ajustar cuando la fundación los formalice.
-PESOS_CINTURONES = {
+# ── Ponderación entre cinturones: por fase del mandato ────────────────────────
+# "Marco Conceptual del Informe de Coyuntura" (CIGOB, may-2026): "los cinco
+# cinturones no tienen igual peso temporal. En los primeros 2-4 años de
+# gobierno (especialmente en ciclos electorales cortos), el cinturón de
+# gestión y el de espíritu de época pesan más que en gobiernos de largo
+# plazo" — construyen el capital de credibilidad que después permite
+# sacrificios macro mayores. El doc no fija números: estos valores son la
+# operacionalización CIGOB-informe (ajustar cuando la fundación los formalice).
+
+MANDATO_INICIO = date(2023, 12, 10)   # asunción del mandato presidencial vigente
+FASE_TEMPRANA_ANIOS = 4               # "primeros 2-4 años": tomamos el techo
+
+PESOS_FASE_TEMPRANA = {               # mandato en construcción de credibilidad
+    "macro": 0.20,
+    "politica": 0.20,
+    "vida_cotidiana": 0.20,
+    "gestion": 0.20,
+    "espiritu_epoca": 0.20,
+}
+PESOS_FASE_CONSOLIDACION = {          # mandato consolidado (4+ años / reelección)
     "macro": 0.25,
     "politica": 0.25,
     "vida_cotidiana": 0.20,
     "gestion": 0.15,
     "espiritu_epoca": 0.15,
 }
+
+
+def fase_mandato(hoy: date | None = None) -> str:
+    hoy = hoy or date.today()
+    anios = (hoy - MANDATO_INICIO).days / 365.25
+    return "temprana" if anios < FASE_TEMPRANA_ANIOS else "consolidacion"
+
+
+def pesos_cinturones(hoy: date | None = None) -> dict:
+    return PESOS_FASE_TEMPRANA if fase_mandato(hoy) == "temprana" else PESOS_FASE_CONSOLIDACION
+
+
+# Pesos vigentes hoy (lo que consumen generar_informe.py y publicar.py).
+PESOS_CINTURONES = pesos_cinturones()
 
 # Umbrales de clasificación de estado por cinturón (score 0-10)
 # score <= ESTABLE_MAX → "estable" | <= EN_TENSION_MAX → "en_tension" | > EN_TENSION_MAX → "tensionado"

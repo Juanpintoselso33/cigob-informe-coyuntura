@@ -14,7 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.stdout.reconfigure(encoding="utf-8")
 
-from config import PESOS_CINTURONES, UMBRALES, BARBARISMO_MAP
+from config import PESOS_CINTURONES, UMBRALES, BARBARISMO_MAP, fase_mandato, MANDATO_INICIO
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 SCRIPT_DIR  = Path(__file__).parent
@@ -24,7 +24,7 @@ OUTPUT_DIR  = PROJECT_DIR / "output"
 
 CINTURONES_ESPERADOS = ["macro", "politica", "vida_cotidiana", "gestion", "espiritu_epoca"]
 
-SCHEMA_VERSION = "1.1.0"
+SCHEMA_VERSION = "1.2.0"
 
 
 def _estado(score: float) -> str:
@@ -135,6 +135,11 @@ def construir_informe(caches: dict) -> dict:
         "generated_at":         now.isoformat(),
         "period":               period,
         "score_global":         score_global,
+        "ponderacion": {
+            "fase":           fase_mandato(),
+            "mandato_inicio": MANDATO_INICIO.isoformat(),
+            "pesos":          PESOS_CINTURONES,
+        },
         "cinturones":           cinturones_data,
         "barbarismo_activo":    barbarismo_activo,
         "alerta_multicinturon": alerta_multicinturon,
