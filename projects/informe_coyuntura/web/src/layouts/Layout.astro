@@ -26,5 +26,27 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // "/biblitotecario-ai
   </head>
   <body>
     <slot />
+    <script is:inline>
+      /* Height-poster (Plan B del embed en cigob.org/Wix): cuando el informe
+         corre dentro de un iframe, avisa su altura real al contenedor vía
+         postMessage para que el iframe se estire y no haya doble scroll.
+         El contenedor escucha {type: "cigob-informe-height"} (snippet Velo
+         en Wix o listener plano — ver test-embed-wix.html). Si el contenedor
+         no escucha, no pasa nada: queda el alto fijo del iframe (Plan A). */
+      try {
+        if (window.self !== window.top) {
+          var postAltura = function () {
+            parent.postMessage({
+              type: "cigob-informe-height",
+              height: document.documentElement.scrollHeight,
+            }, "*");
+          };
+          window.addEventListener("load", postAltura);
+          if (window.ResizeObserver) {
+            new ResizeObserver(postAltura).observe(document.body);
+          }
+        }
+      } catch (e) { /* cross-origin estricto: sin auto-resize */ }
+    </script>
   </body>
 </html>
