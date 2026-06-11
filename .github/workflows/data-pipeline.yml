@@ -75,6 +75,24 @@ jobs:
           npm ci
           npm run build
 
+      # informe.cigob.org: segundo build con base "/" → repo dedicado cigob-informe.
+      # Va acá (y no solo en pages.yml) porque el commit nocturno lleva [skip ci]
+      # y no dispara pages.yml: sin este paso el dominio quedaría desactualizado.
+      - name: Build informe para el dominio
+        working-directory: projects/informe_coyuntura/web
+        env:
+          DEPLOY_TARGET: dominio
+        run: npm run build
+
+      - name: Publicar al repo del dominio (cigob-informe)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.CIGOB_INFORME_DEPLOY_KEY }}
+          external_repository: Juanpintoselso33/cigob-informe
+          publish_branch: gh-pages
+          publish_dir: web-dominio
+          cname: informe.cigob.org
+
       - name: Commitear snapshot + caches a main
         working-directory: .
         run: |

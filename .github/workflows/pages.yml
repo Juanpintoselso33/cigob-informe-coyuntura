@@ -33,6 +33,20 @@ jobs:
           npm run build
       - name: Publicar Votómetro en la carpeta de deploy
         run: cp projects/votometro/web/votometro.html web/votometro.html
+      # informe.cigob.org: segundo build con base "/" → repo dedicado cigob-informe
+      - name: Build informe para el dominio
+        working-directory: projects/informe_coyuntura/web
+        env:
+          DEPLOY_TARGET: dominio
+        run: npm run build
+      - name: Publicar al repo del dominio (cigob-informe)
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: ${{ secrets.CIGOB_INFORME_DEPLOY_KEY }}
+          external_repository: Juanpintoselso33/cigob-informe
+          publish_branch: gh-pages
+          publish_dir: web-dominio
+          cname: informe.cigob.org
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
