@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-15T04:31:00.441394",
+  "generated_at": "2026-06-16T04:30:53.598837",
   "period": "2026-06",
-  "score_global": 3.9,
+  "score_global": 4.0,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -286,7 +286,7 @@
           "periodo": "2026",
           "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-15",
+          "fecha_dato": "2026-06-16",
           "desactualizado": false,
           "aporte_score": 10.0,
           "aporte_formula": "0 → 0 · 1,0 → 5 · 2,0+ → 10 (DNU/leyes)",
@@ -299,7 +299,7 @@
           "unidad": "índice 0–100 (normalizado)",
           "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
           "fecha_dato": "2026-06-15",
-          "desactualizado": false,
+          "desactualizado": true,
           "aporte_score": 5.0,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (índice)",
           "aporte_nota": null
@@ -313,7 +313,7 @@
           "ipc_aplicado_pct": 38.3,
           "unidad": "% variación real YoY en transferencias totales RON",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-06-15",
+          "fecha_dato": "2026-06-16",
           "desactualizado": false,
           "aporte_score": 2.1,
           "aporte_formula": "+10% → 0 · 0% → 2,5 · −10% → 5 · −30% → 10 (var. real i.a.)",
@@ -326,7 +326,7 @@
           "ventana_dias": 365,
           "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-15",
+          "fecha_dato": "2026-06-16",
           "desactualizado": false,
           "aporte_score": 9.4,
           "aporte_formula": "70% → 0 · 35% → 5 · 0% → 10",
@@ -363,7 +363,7 @@
           "periodo_id": "HCDN144",
           "unidad": "% sesiones frustradas por falta de quórum",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-06-15",
+          "fecha_dato": "2026-06-16",
           "desactualizado": false,
           "aporte_score": 0.0,
           "aporte_formula": "0% → 0 · 15% → 5 · 30%+ → 10 (sesiones caídas)",
@@ -377,7 +377,7 @@
           "ventana_dias": 365,
           "unidad": "% proyectos con dictamen que no llegaron al recinto",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-15",
+          "fecha_dato": "2026-06-16",
           "desactualizado": false,
           "aporte_score": 10.0,
           "aporte_formula": "20% → 0 · 40% → 5 · 60%+ → 10",
@@ -388,7 +388,7 @@
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político."
     },
     "vida_cotidiana": {
-      "score": 3.5,
+      "score": 3.8,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -504,16 +504,6 @@
           "aporte_formula": "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)",
           "aporte_nota": null
         },
-        "sentimiento_digital": {
-          "valor": 5.7,
-          "unidad": "interés 0–100",
-          "fuente": "Google Trends",
-          "fecha_dato": "2026-06-15",
-          "desactualizado": false,
-          "aporte_score": 0.6,
-          "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
-          "aporte_nota": null
-        },
         "patentamiento_motos": {
           "valor": 69724,
           "unidad": "unidades",
@@ -526,7 +516,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260615_0430.json",
+      "fuente_enriquecida": "vida_cotidiana_20260616_0430.json",
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
     },
     "gestion": {
@@ -539,7 +529,7 @@
           "avance_pct": 84.3,
           "unidad": "% brecha CCL/oficial (cepo corporativo)",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-06-15",
+          "fecha_dato": "2026-06-16",
           "desactualizado": false,
           "aporte_score": 1.6,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -583,7 +573,7 @@
           "avance_pct": 40.0,
           "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-15",
+          "fecha_dato": "2026-06-16",
           "desactualizado": false,
           "aporte_score": 6.0,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -594,7 +584,7 @@
           "avance_pct": 30.0,
           "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-15",
+          "fecha_dato": "2026-06-16",
           "desactualizado": false,
           "aporte_score": 7.0,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -605,7 +595,7 @@
           "avance_pct": 59.0,
           "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-15",
+          "fecha_dato": "2026-06-16",
           "desactualizado": false,
           "aporte_score": 4.1,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -686,12 +676,12 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 5.7,
+          "valor": 7.5,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-06-15",
-          "desactualizado": false,
-          "aporte_score": 0.6,
+          "fecha_dato": "2026-06-02",
+          "desactualizado": true,
+          "aporte_score": 0.8,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
           "aporte_nota": null
         },
@@ -713,8 +703,8 @@
   "barbarismo_activo": "gerencial",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento",
+    "desactualizado:politica:votometro_ventaja_lla,movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento",
     "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes",
-    "desactualizado:espiritu_epoca:clima_electoral"
+    "desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral"
   ]
 }
