@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-06-17T04:29:32.778469",
+  "generated_at": "2026-06-18T04:29:29.841857",
   "score": 4.7,
   "indicadores": {
     "votometro_ventaja_lla": {
@@ -14,13 +14,13 @@
       "desactualizado": true
     },
     "ratio_dnu": {
-      "valor": 3.143,
-      "dnu_count": 22,
+      "valor": 3.286,
+      "dnu_count": 23,
       "leyes_count": 7,
       "periodo": "2026",
       "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-17",
+      "fecha_dato": "2026-06-18",
       "desactualizado": false
     },
     "movilizacion_cepa": {
@@ -29,7 +29,7 @@
       "metrica": "101.0 conflictos acumulados",
       "unidad": "índice 0–100 (normalizado)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
-      "fecha_dato": "2026-06-17",
+      "fecha_dato": "2026-06-18",
       "desactualizado": false
     },
     "iaf_transferencias": {
@@ -41,7 +41,7 @@
       "ipc_aplicado_pct": 38.3,
       "unidad": "% variación real YoY en transferencias totales RON",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-      "fecha_dato": "2026-06-17",
+      "fecha_dato": "2026-06-18",
       "desactualizado": false
     },
     "eficacia_legislativa": {
@@ -51,7 +51,7 @@
       "ventana_dias": 365,
       "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-      "fecha_dato": "2026-06-17",
+      "fecha_dato": "2026-06-18",
       "desactualizado": false
     },
     "cohesion_bloque": {
@@ -79,18 +79,18 @@
       "periodo_id": "HCDN144",
       "unidad": "% sesiones frustradas por falta de quórum",
       "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-      "fecha_dato": "2026-06-17",
+      "fecha_dato": "2026-06-18",
       "desactualizado": false
     },
     "comisiones_caidas": {
-      "valor": 97.9,
-      "dictamen_n": 473,
+      "valor": 97.8,
+      "dictamen_n": 465,
       "aprobados_n": 10,
-      "caidas_n": 463,
+      "caidas_n": 455,
       "ventana_dias": 365,
       "unidad": "% proyectos con dictamen que no llegaron al recinto",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-06-17",
+      "fecha_dato": "2026-06-18",
       "desactualizado": false
     }
   }
