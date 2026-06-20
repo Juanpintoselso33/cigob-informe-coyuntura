@@ -1,6 +1,6 @@
 {
   "cinturon": "espiritu_epoca",
-  "generated_at": "2026-06-19T04:30:51.295416",
+  "generated_at": "2026-06-20T04:31:17.288450",
   "score": 2.3,
   "indicadores": {
     "icc_utdt": {
@@ -11,10 +11,10 @@
       "desactualizado": false
     },
     "sentimiento_digital": {
-      "valor": 6.3,
+      "valor": 6.0,
       "unidad": "interés 0–100",
       "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-      "fecha_dato": "2026-06-19",
+      "fecha_dato": "2026-06-20",
       "desactualizado": false
     },
     "clima_electoral": {

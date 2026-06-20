@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-19T04:29:14.354161",
+  "generated_at": "2026-06-20T04:27:14.689144",
   "score": 2.9,
   "itcm": {
     "valor": 71.2,
@@ -98,10 +98,10 @@
       "peso_efectivo": 0.175
     },
     "reservas_bcra": {
-      "valor": 47656.0,
+      "valor": 47503.0,
       "unidad": "mill USD",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
-      "fecha_dato": "2026-06-16",
+      "fecha_dato": "2026-06-17",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
@@ -110,10 +110,10 @@
       "peso_efectivo": 0.1
     },
     "badlar": {
-      "valor": 20.75,
+      "valor": 21.0,
       "unidad": "% anual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-06-17",
+      "fecha_dato": "2026-06-18",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
@@ -134,17 +134,17 @@
       "peso_efectivo": 0.15
     },
     "saldo_comercial_12m": {
-      "valor": 18322.0,
+      "valor": 21221.0,
       "unidad": "mill USD acumulado 12m",
       "fuente": "https://apis.datos.gob.ar/series/api/series/",
-      "fecha_dato": "2026-04-01",
+      "fecha_dato": "2026-05-01",
       "desactualizado": false,
-      "expo_12m": 92560.0,
-      "impo_12m": 74238.0,
-      "expo_var_ia": 14.1,
-      "impo_var_ia": 10.6,
-      "expo_delta_12m": 11451.0,
-      "impo_delta_12m": 7125.0,
+      "expo_12m": 95003.0,
+      "impo_12m": 73782.0,
+      "expo_var_ia": 18.0,
+      "impo_var_ia": 7.6,
+      "expo_delta_12m": 14466.0,
+      "impo_delta_12m": 5193.0,
       "en_indice": true,
       "dimension": "viabilidad_fiscal_comercial",
       "puntaje_itcm": 85,
@@ -184,26 +184,26 @@
       "peso_efectivo": 0.175
     },
     "prestamos_privados": {
-      "valor": 2.23,
+      "valor": 2.82,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-06-16",
+      "fecha_dato": "2026-06-17",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 5.74,
+      "valor": 6.7,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-06-16",
+      "fecha_dato": "2026-06-17",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 4.12,
+      "valor": 4.79,
       "unidad": "% var mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-06-18",
+      "fecha_dato": "2026-06-19",
       "desactualizado": false,
       "en_indice": false
     }
