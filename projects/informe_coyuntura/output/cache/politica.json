@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-06-23T04:22:03.207848",
+  "generated_at": "2026-06-24T04:24:27.939408",
   "score": 4.4,
   "indicadores": {
     "votometro_ventaja_lla": {
@@ -20,7 +20,7 @@
       "periodo": "2026",
       "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-23",
+      "fecha_dato": "2026-06-24",
       "desactualizado": false
     },
     "movilizacion_cepa": {
@@ -30,7 +30,7 @@
       "unidad": "índice 0–100 (normalizado)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
       "fecha_dato": "2026-06-23",
-      "desactualizado": false
+      "desactualizado": true
     },
     "iaf_transferencias": {
       "valor": 1.8,
@@ -41,7 +41,7 @@
       "ipc_aplicado_pct": 38.3,
       "unidad": "% variación real YoY en transferencias totales RON",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-      "fecha_dato": "2026-06-23",
+      "fecha_dato": "2026-06-24",
       "desactualizado": false
     },
     "eficacia_legislativa": {
@@ -51,7 +51,7 @@
       "ventana_dias": 365,
       "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-      "fecha_dato": "2026-06-23",
+      "fecha_dato": "2026-06-24",
       "desactualizado": false
     },
     "cohesion_bloque": {
@@ -79,7 +79,7 @@
       "periodo_id": "HCDN144",
       "unidad": "% sesiones frustradas por falta de quórum",
       "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-      "fecha_dato": "2026-06-23",
+      "fecha_dato": "2026-06-24",
       "desactualizado": false
     },
     "comisiones_caidas": {
@@ -90,7 +90,7 @@
       "ventana_dias": 365,
       "unidad": "% proyectos con dictamen que no llegaron al recinto",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-06-23",
+      "fecha_dato": "2026-06-24",
       "desactualizado": false
     }
   }

@@ -1,6 +1,6 @@
 {
   "cinturon": "vida_cotidiana",
-  "generated_at": "2026-06-23T04:22:55.800110",
+  "generated_at": "2026-06-24T04:25:53.046677",
   "score": 2.7,
   "indicadores": {
     "ipc_total": {
@@ -14,7 +14,7 @@
       "valor": 0.1,
       "unidad": "%",
       "fuente": "https://apis.datos.gob.ar/series/api/series/",
-      "fecha_dato": "2025-10-01",
+      "fecha_dato": "2026-01-01",
       "desactualizado": false
     },
     "icc_utdt": {

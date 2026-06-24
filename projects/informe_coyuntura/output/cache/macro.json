@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-23T04:21:45.728048",
+  "generated_at": "2026-06-24T04:24:02.841590",
   "score": 2.9,
   "itcm": {
     "valor": 71.2,
@@ -98,10 +98,10 @@
       "peso_efectivo": 0.175
     },
     "reservas_bcra": {
-      "valor": 47500.0,
+      "valor": 47373.0,
       "unidad": "mill USD",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
-      "fecha_dato": "2026-06-18",
+      "fecha_dato": "2026-06-19",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
@@ -110,10 +110,10 @@
       "peso_efectivo": 0.1
     },
     "badlar": {
-      "valor": 20.69,
+      "valor": 20.88,
       "unidad": "% anual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-06-19",
+      "fecha_dato": "2026-06-22",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
@@ -184,26 +184,26 @@
       "peso_efectivo": 0.175
     },
     "prestamos_privados": {
-      "valor": 2.86,
+      "valor": 2.91,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-06-18",
+      "fecha_dato": "2026-06-19",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 5.04,
+      "valor": 5.71,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-06-18",
+      "fecha_dato": "2026-06-19",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 4.58,
+      "valor": 4.41,
       "unidad": "% var mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-06-22",
+      "fecha_dato": "2026-06-23",
       "desactualizado": false,
       "en_indice": false
     }
