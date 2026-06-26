@@ -1,4 +1,5 @@
 fecha,indicador,valor,unidad,fuente
+2026-05-01,ipc_total,11607.3937,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-04-01,ipc_total,11363.0904,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-03-01,ipc_total,11077.0608,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-02-01,ipc_total,10714.6255,indice base dic-2016=100,INDEC/datos.gob.ar
@@ -46,7 +47,7 @@ fecha,indicador,valor,unidad,fuente
 2022-08-01,ipc_total,911.1316,indice base dic-2016=100,INDEC/datos.gob.ar
 2022-07-01,ipc_total,851.761,indice base dic-2016=100,INDEC/datos.gob.ar
 2022-06-01,ipc_total,793.0278,indice base dic-2016=100,INDEC/datos.gob.ar
-2022-05-01,ipc_total,753.147,indice base dic-2016=100,INDEC/datos.gob.ar
+2026-01-01,desocupacion,0.078,%,INDEC/datos.gob.ar
 2025-10-01,desocupacion,0.075,%,INDEC/datos.gob.ar
 2025-07-01,desocupacion,0.066,%,INDEC/datos.gob.ar
 2025-04-01,desocupacion,0.0757623890941418,%,INDEC/datos.gob.ar
@@ -92,4 +93,3 @@ fecha,indicador,valor,unidad,fuente
 2014-10-01,desocupacion,0.069,%,INDEC/datos.gob.ar
 2014-07-01,desocupacion,0.075,%,INDEC/datos.gob.ar
 2014-04-01,desocupacion,0.071,%,INDEC/datos.gob.ar
-2014-01-01,desocupacion,0.071,%,INDEC/datos.gob.ar

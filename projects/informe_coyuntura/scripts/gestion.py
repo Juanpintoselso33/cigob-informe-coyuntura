@@ -4,7 +4,7 @@ Mide cumplimiento de reformas del Estado y compromisos de la APN (dic-2023–).
 Score 0-10: mayor = mayor brecha compromisos/ejecución (tensión gerencial).
 
 Indicadores AUTO (6):
-  cepo_mulc               — brecha CCL/oficial (dolarapi.com)
+  cepo_mulc               — brecha CCL/mayorista (dolarapi.com)
   reduccion_estado        — variación empleo sector público vs Q4-2023 (datos.gob.ar INDEC)
   apertura_comercial      — variación i.a. importaciones totales (datos.gob.ar INDEC)
   desregulacion_normativa — count normas "deroga" vía InfoLeg (sesión POST)
@@ -175,7 +175,9 @@ def _indec_serie(series_id: str, limit: int = 16) -> list:
 
 def fetch_cepo_mulc() -> dict | None:
     """
-    Brecha CCL/oficial como proxy del cepo corporativo (giro de dividendos, capitales).
+    Brecha CCL/mayorista como proxy del cepo corporativo (giro de dividendos, capitales).
+    El mayorista (referencia A3500 del BCRA) es la tasa correcta para medir la brecha
+    cambiaria: el "oficial" minorista ya incluye el spread del banco y subestima la brecha.
     Blue≈0% porque el cepo minorista se levantó (abr-2025); el CCL mide la restricción
     que persiste para empresas: repatriación de utilidades, acceso al MULC para capital.
     brecha 0% → avance 100%; brecha 20% → avance 0%.
@@ -184,17 +186,17 @@ def fetch_cepo_mulc() -> dict | None:
         r = requests.get(DOLARAPI_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
         r.raise_for_status()
         dolares = {d["casa"]: d for d in r.json()}
-        ccl     = dolares.get("contadoconliqui", {}).get("venta")
-        oficial = dolares.get("oficial",         {}).get("venta")
-        if not ccl or not oficial:
-            raise ValueError("CCL u oficial no encontrado en respuesta")
-        brecha = round((float(ccl) - float(oficial)) / float(oficial) * 100.0, 2)
+        ccl       = dolares.get("contadoconliqui", {}).get("venta")
+        mayorista = dolares.get("mayorista",       {}).get("venta")
+        if not ccl or not mayorista:
+            raise ValueError("CCL o mayorista no encontrado en respuesta")
+        brecha = round((float(ccl) - float(mayorista)) / float(mayorista) * 100.0, 2)
         # 0% → avance 100%; 20% → avance 0%
         avance = round(max(0.0, min(100.0, 100.0 - brecha * 5.0)), 1)
         return {
             "valor":          brecha,
             "avance_pct":     avance,
-            "unidad":         "% brecha CCL/oficial (cepo corporativo)",
+            "unidad":         "% brecha CCL/mayorista (cepo corporativo)",
             "fuente":         DOLARAPI_URL,
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,

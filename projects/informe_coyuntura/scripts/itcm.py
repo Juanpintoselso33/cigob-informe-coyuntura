@@ -18,6 +18,19 @@ El documento fuente es ambiguo en los límites exactos (ej. "50-60.000" y
 Los puntajes salen siempre de las tablas. El juicio cualitativo del analista
 (ej. "saldo comercial positivo pero por contracción") se expresa como override
 en data/macro/ajustes_itcm.json, con justificación y vencimiento.
+
+Revisiones sobre el doc original (observaciones manuscritas del analista,
+"260602 Parametrica Macro (2)"):
+  * Financiamiento: la BADLAR (tasa PASIVA) se reemplazó por el SPREAD de
+    intermediación (tasa activa de adelantos en cta. cte. − tasa pasiva de
+    depósitos a 30 días). Un spread chico = intermediación sana/confianza;
+    spread grande = desconfianza/crédito caro. BADLAR pasa a contexto.
+  * Estabilidad monetaria: el REM (expectativas a 12m) ya NO se puntúa por su
+    nivel absoluto sino por la BRECHA contra el ritmo inflacionario actual
+    anualizado. Expectativa por debajo del ritmo = desinflación esperada =
+    confianza. Es dinámico y auto-calibrante (no hay puntaje hardcodeado): a
+    medida que baja la inflación, baja la vara. El valor de brecha se deriva
+    en macro.py y se alimenta a la banda de "rem_ipc_12m".
 """
 import json
 from pathlib import Path
@@ -29,8 +42,10 @@ BANDAS_ITCM = {
     "ipc_total": [                      # % mensual
         (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
     ],
-    "rem_ipc_12m": [                    # % anual esperado
-        (-INF, 10.0, 100), (10.0, 15.0, 85), (15.0, 20.0, 60), (20.0, 30.0, 35), (30.0, INF, 10),
+    "rem_ipc_12m": [                    # BRECHA (pts) = REM 12m − run-rate IPC anualizado.
+        # Valor DERIVADO en macro.py (no es el nivel del REM). Negativo = el mercado
+        # espera inflación por debajo del ritmo actual = desinflación esperada = confianza.
+        (-INF, -20.0, 100), (-20.0, -7.0, 85), (-7.0, 7.0, 60), (7.0, 20.0, 35), (20.0, INF, 10),
     ],
     "recaudacion": [                    # % var mensual
         (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60), (-5.0, 0.0, 40), (-INF, -5.0, 10),
@@ -43,8 +58,9 @@ BANDAS_ITCM = {
         (60000.0, INF, 100), (50000.0, 60000.0, 85), (40000.0, 50000.0, 70),
         (30000.0, 40000.0, 50), (20000.0, 30000.0, 30), (-INF, 20000.0, 10),
     ],
-    "badlar": [                         # % anual
-        (-INF, 5.0, 100), (5.0, 10.0, 80), (10.0, 15.0, 60), (15.0, 25.0, 35), (25.0, INF, 10),
+    "spread_intermediacion": [          # pts: tasa activa (adelantos cta cte) − pasiva (depósitos 30d).
+        # Histórico 18m: normal 3-9 pts, picos de estrés/iliquidez 20-34 pts.
+        (-INF, 4.0, 100), (4.0, 8.0, 80), (8.0, 15.0, 60), (15.0, 25.0, 35), (25.0, INF, 10),
     ],
     "emae_ia": [                        # % variación interanual
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
@@ -67,7 +83,7 @@ DIMENSIONES_ITCM = {
     "financiamiento": {
         "nombre": "Capacidad de financiamiento",
         "peso": 0.20,
-        "indicadores": {"reservas_bcra": 0.5, "badlar": 0.5},
+        "indicadores": {"reservas_bcra": 0.5, "spread_intermediacion": 0.5},
     },
     "actividad": {
         "nombre": "Actividad económica",
@@ -94,7 +110,9 @@ INTERPRETACION_LEGIBLE = {
 }
 
 # Indicadores macro que se publican pero no integran el índice.
-INDICADORES_CONTEXTO = ["tcrm", "prestamos_privados", "base_monetaria", "tc_mayorista"]
+# badlar: reemplazada por spread_intermediacion en la dimensión de financiamiento;
+# se sigue publicando como contexto (tasa pasiva de referencia).
+INDICADORES_CONTEXTO = ["badlar", "tcrm", "prestamos_privados", "base_monetaria", "tc_mayorista"]
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:
@@ -115,6 +133,29 @@ def banda_interpretacion(itcm: float) -> str:
 def tension_de_itcm(itcm: float) -> float:
     """Tensión 0-10 del cinturón (convención del informe) derivada del ITCM."""
     return round((100.0 - itcm) / 10.0, 1)
+
+
+def anualizar_mensual(var_m_pct: float) -> float:
+    """Tasa anual equivalente (capitalización) de una variación mensual %."""
+    return ((1.0 + var_m_pct / 100.0) ** 12 - 1.0) * 100.0
+
+
+def run_rate_ipc(vars_mensuales: list, meses: int = 3) -> float | None:
+    """Ritmo inflacionario anualizado: promedio de las últimas `meses`
+    variaciones m/m del IPC (más recientes primero), anualizado. None si no
+    hay datos. La ventana de 3 meses suaviza el ruido de un único dato.
+    Para un read más sensible al presente, reducir `meses` (1 = último mes)."""
+    vals = [v for v in (vars_mensuales or []) if v is not None]
+    if not vals:
+        return None
+    muestra = vals[:meses]
+    return anualizar_mensual(sum(muestra) / len(muestra))
+
+
+def brecha_rem(rem_12m: float, run_rate: float) -> float:
+    """Brecha en pts entre la expectativa de inflación a 12m (REM) y el ritmo
+    actual anualizado. Negativa = el mercado espera desinflación (confianza)."""
+    return round(rem_12m - run_rate, 1)
 
 
 def texto_bandas(indicador: str) -> str:

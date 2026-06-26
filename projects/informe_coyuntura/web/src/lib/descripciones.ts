@@ -19,8 +19,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Miden el colchón externo: sin reservas, el tipo de cambio y el pago de deuda quedan expuestos.",
     frecuencia: "Diaria", tipo: "Nivel (stock)",
   },
+  spread_intermediacion: {
+    que: "Diferencia entre la tasa activa (adelantos en cta. cte.) y la pasiva (depósitos a 30 días), en puntos.",
+    aporta: "Mide la (des)confianza en la intermediación financiera: un spread chico es crédito fluido; uno grande, bancos cautelosos y crédito caro.",
+    frecuencia: "Diaria (prom. 30d)", tipo: "Spread (pts)",
+  },
   badlar: {
-    que: "Tasa que pagan los bancos por depósitos mayoristas a 30 días o más.",
+    que: "Tasa que pagan los bancos por depósitos mayoristas a 30 días o más (referencia de contexto).",
     aporta: "Refleja el costo del dinero y el sesgo de la política monetaria (más o menos restrictiva).",
     frecuencia: "Diaria", tipo: "Tasa",
   },
@@ -46,7 +51,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   rem_ipc_12m: {
     que: "Inflación esperada a 12 meses según el Relevamiento de Expectativas de Mercado del BCRA.",
-    aporta: "Captura la credibilidad del programa: las expectativas ancladas ayudan a bajar precios.",
+    aporta: "Captura la credibilidad del programa. Se puntúa por la brecha contra el ritmo inflacionario actual anualizado: si el mercado espera inflación por debajo del ritmo de hoy, hay confianza en la desinflación.",
     frecuencia: "Mensual", tipo: "Expectativa",
   },
   prestamos_privados: {
@@ -188,7 +193,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
 
   // ── Gestión (la capacidad de ejecutar) ──────────────────────────
   cepo_mulc: {
-    que: "Brecha entre el dólar financiero/libre y el oficial.",
+    que: "Brecha entre el dólar financiero (CCL) y el mayorista (referencia A3500 del BCRA).",
     aporta: "Mide el grado de normalización cambiaria, uno de los ejes del programa económico.",
     frecuencia: "Diaria", tipo: "Brecha (%)",
   },

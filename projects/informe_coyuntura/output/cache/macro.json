@@ -1,16 +1,16 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-26T04:26:27.603535",
-  "score": 2.9,
+  "generated_at": "2026-06-26T20:34:01.856138",
+  "score": 2.0,
   "itcm": {
-    "valor": 71.2,
-    "banda": "moderadamente_aflojado",
-    "banda_legible": "Moderadamente aflojado",
+    "valor": 80.1,
+    "banda": "aflojado",
+    "banda_legible": "Aflojado",
     "dimensiones": {
       "estabilidad_monetaria": {
         "nombre": "Estabilidad monetaria-inflacionaria",
         "peso": 0.35,
-        "puntaje": 50.0,
+        "puntaje": 62.5,
         "indicadores": {
           "ipc_total": {
             "peso": 0.5,
@@ -20,8 +20,8 @@
           },
           "rem_ipc_12m": {
             "peso": 0.5,
-            "puntaje_banda": 35,
-            "puntaje_aplicado": 35,
+            "puntaje_banda": 60,
+            "puntaje_aplicado": 60,
             "peso_efectivo": 0.175
           }
         },
@@ -50,7 +50,7 @@
       "financiamiento": {
         "nombre": "Capacidad de financiamiento",
         "peso": 0.2,
-        "puntaje": 52.5,
+        "puntaje": 75.0,
         "indicadores": {
           "reservas_bcra": {
             "peso": 0.5,
@@ -58,10 +58,10 @@
             "puntaje_aplicado": 70,
             "peso_efectivo": 0.1
           },
-          "badlar": {
+          "spread_intermediacion": {
             "peso": 0.5,
-            "puntaje_banda": 35,
-            "puntaje_aplicado": 35,
+            "puntaje_banda": 80,
+            "puntaje_aplicado": 80,
             "peso_efectivo": 0.1
           }
         },
@@ -98,10 +98,10 @@
       "peso_efectivo": 0.175
     },
     "reservas_bcra": {
-      "valor": 47474.0,
+      "valor": 46936.0,
       "unidad": "mill USD",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
-      "fecha_dato": "2026-06-23",
+      "fecha_dato": "2026-06-24",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
@@ -109,17 +109,27 @@
       "puntaje_banda": 70,
       "peso_efectivo": 0.1
     },
-    "badlar": {
-      "valor": 21.56,
-      "unidad": "% anual",
-      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-06-24",
+    "spread_intermediacion": {
+      "valor": 5.39,
+      "unidad": "pts (activa − pasiva)",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/13 − https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/12",
+      "fecha_dato": "2026-06-25",
+      "tasa_activa": 25.34,
+      "tasa_pasiva": 19.95,
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 35,
-      "puntaje_banda": 35,
+      "puntaje_itcm": 80,
+      "puntaje_banda": 80,
       "peso_efectivo": 0.1
+    },
+    "badlar": {
+      "valor": 21.25,
+      "unidad": "% anual",
+      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
+      "fecha_dato": "2026-06-25",
+      "desactualizado": false,
+      "en_indice": false
     },
     "emae_ia": {
       "valor": 5.48,
@@ -179,31 +189,34 @@
       "desactualizado": false,
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
-      "puntaje_itcm": 35,
-      "puntaje_banda": 35,
-      "peso_efectivo": 0.175
+      "puntaje_itcm": 60,
+      "puntaje_banda": 60,
+      "peso_efectivo": 0.175,
+      "run_rate_anualizado": 29.1,
+      "brecha_anualizada": -5.8,
+      "nota_scoring": "Puntuado por la brecha vs el ritmo inflacionario actual anualizado (29.1%): -5.8 pts."
     },
     "prestamos_privados": {
-      "valor": 3.16,
+      "valor": 3.05,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-06-23",
+      "fecha_dato": "2026-06-24",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 3.7,
+      "valor": 5.55,
       "unidad": "% var mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-06-23",
+      "fecha_dato": "2026-06-24",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 4.67,
+      "valor": 4.57,
       "unidad": "% var mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-06-25",
+      "fecha_dato": "2026-06-26",
       "desactualizado": false,
       "en_indice": false
     }

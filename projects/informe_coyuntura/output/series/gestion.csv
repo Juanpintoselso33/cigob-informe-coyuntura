@@ -47,6 +47,7 @@ fecha,indicador,valor,unidad,fuente
 2022-07-01,isac_construccion,223.779859134946,indice base 2004=100,INDEC/datos.gob.ar
 2022-06-01,isac_construccion,217.998677542063,indice base 2004=100,INDEC/datos.gob.ar
 2022-05-01,isac_construccion,219.825064325048,indice base 2004=100,INDEC/datos.gob.ar
+2026-04-01,indice_salarios_publico,7515.45,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-03-01,indice_salarios_publico,7344.33,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-02-01,indice_salarios_publico,6991.42,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-01-01,indice_salarios_publico,6832.27,indice base oct-2016=100,INDEC/datos.gob.ar
@@ -94,4 +95,3 @@ fecha,indicador,valor,unidad,fuente
 2022-07-01,indice_salarios_publico,695.34,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-06-01,indice_salarios_publico,647.9,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-05-01,indice_salarios_publico,619.44,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-04-01,indice_salarios_publico,580.87,indice base oct-2016=100,INDEC/datos.gob.ar

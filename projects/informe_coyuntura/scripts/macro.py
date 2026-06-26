@@ -37,7 +37,9 @@ INDEC_TCRM_ID        = "116.3_TCRMA_0_M_36"            # Tipo de Cambio Real Mul
 
 # BCRA — variable IDs verificados en api.bcra.gob.ar v4.0
 BCRA_RESERVAS_ID    = 1    # Reservas internacionales (millones USD)
-BCRA_BADLAR_ID      = 7    # BADLAR bancos privados (% anual)
+BCRA_BADLAR_ID      = 7    # BADLAR bancos privados (% anual) — contexto
+BCRA_ADELANTOS_ID   = 13   # Tasa de interés por adelantos en cta. cte. (activa, % anual)
+BCRA_DEPOSITOS_ID   = 12   # Tasa de depósitos a 30 días (pasiva, % anual)
 BCRA_REM_IPC_ID     = 29   # REM: mediana expectativas IPC próximos 12 meses (% anual)
 BCRA_PRESTAMOS_ID   = 26   # Préstamos sector privado (millones ARS)
 BCRA_BASE_MON_ID    = 15   # Base monetaria (millones ARS)
@@ -46,11 +48,16 @@ BCRA_TC_MAYOR_ID    = 5    # Tipo de cambio mayorista de referencia (ARS/USD)
 HTTP_TIMEOUT = 30
 HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"}
 
+# Ventana (meses) del run-rate inflacionario que ancla la brecha del REM.
+# 1 = último IPC anualizado (más sensible al presente desinflacionario, que es la
+# calibración elegida); subir a 2-3 suaviza el ruido a costa de rezagar la desinflación.
+IPC_RUNRATE_MESES = 1
+
 logging.basicConfig(level=logging.WARNING, format="%(message)s")
 
 CINTURON = "macro"
 INDICADORES_ESPERADOS = [
-    "ipc_total", "reservas_bcra", "badlar",
+    "ipc_total", "reservas_bcra", "spread_intermediacion", "badlar",
     "emae_ia", "saldo_comercial_12m", "recaudacion", "tcrm",
     "rem_ipc_12m", "prestamos_privados", "base_monetaria", "tc_mayorista",
 ]
@@ -95,6 +102,26 @@ def _bcra_ultimo(var_id: int) -> dict:
     detalle = _bcra_detalle(var_id, dias=45)
     ultimo  = detalle[0]
     return {"valor": ultimo["valor"], "fecha": ultimo["fecha"]}
+
+
+def _bcra_promedio(var_id: int, dias: int = 30) -> dict:
+    """Promedio de los últimos `dias` del detalle diario del BCRA. Suaviza el
+    ruido día a día (las tasas de adelantos saltan con la liquidez)."""
+    detalle = _bcra_detalle(var_id, dias=dias)
+    vals = [float(d["valor"]) for d in detalle]
+    return {"valor": sum(vals) / len(vals), "fecha": detalle[0]["fecha"], "n": len(vals)}
+
+
+def _ipc_vars_mensuales(n: int = 3) -> list:
+    """Últimas `n` variaciones m/m del IPC (más reciente primero), para el
+    run-rate inflacionario que ancla la brecha del REM."""
+    data = _indec_serie(INDEC_IPC_ID, limit=n + 1)
+    out = []
+    for i in range(len(data) - 1):
+        actual, anterior = data[i][1], data[i + 1][1]
+        if anterior:
+            out.append((actual / anterior - 1) * 100)
+    return out
 
 
 def _bcra_variacion_m(var_id: int) -> dict:
@@ -161,6 +188,29 @@ def fetch_badlar() -> dict | None:
         }
     except Exception as e:
         _warn("badlar", e)
+        return None
+
+
+def fetch_spread_intermediacion() -> dict | None:
+    """Spread de intermediación: tasa activa (adelantos en cta. cte.) − tasa
+    pasiva (depósitos a 30 días), en puntos. Reemplaza a la BADLAR en el ITCM
+    (observación del analista: medir la tasa CONTRA depósitos para captar
+    confianza/desconfianza). Promediado a 30 días para domar la volatilidad."""
+    try:
+        act = _bcra_promedio(BCRA_ADELANTOS_ID, dias=30)
+        pas = _bcra_promedio(BCRA_DEPOSITOS_ID, dias=30)
+        spread = round(act["valor"] - pas["valor"], 2)
+        return {
+            "valor": spread,
+            "unidad": "pts (activa − pasiva)",
+            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_ADELANTOS_ID} − {BCRA_VARIABLES_BASE}/{BCRA_DEPOSITOS_ID}",
+            "fecha_dato": act["fecha"],
+            "tasa_activa": round(act["valor"], 2),
+            "tasa_pasiva": round(pas["valor"], 2),
+            "desactualizado": False,
+        }
+    except Exception as e:
+        _warn("spread_intermediacion", e)
         return None
 
 
@@ -328,11 +378,15 @@ def fetch_tc_mayorista() -> dict | None:
 AJUSTES_PATH = PROJECT_DIR / "data" / "macro" / "ajustes_itcm.json"
 
 
-def calcular_itcm_cinturon(indicadores: dict) -> dict | None:
-    """ITCM 0-100 (ver scripts/itcm.py) sobre los 7 indicadores del índice.
+def calcular_itcm_cinturon(indicadores: dict, run_rate: float | None = None) -> dict | None:
+    """ITCM 0-100 (ver scripts/itcm.py) sobre los indicadores del índice.
     Ajustes: primero la regla automática del saldo comercial (composición
     expo/impo), luego los overrides manuales del analista vigentes para el
-    mes corriente (data/macro/ajustes_itcm.json), que pisan lo automático."""
+    mes corriente (data/macro/ajustes_itcm.json), que pisan lo automático.
+
+    El REM se puntúa por la BRECHA contra el ritmo inflacionario anualizado
+    (`run_rate`), no por su nivel. Sin run-rate disponible, el REM se ignora
+    y la dimensión monetaria queda solo con el IPC (degradación elegante)."""
     ajustes = {}
     auto_saldo = itcm.ajuste_automatico_saldo(indicadores.get("saldo_comercial_12m", {}))
     if auto_saldo:
@@ -341,6 +395,10 @@ def calcular_itcm_cinturon(indicadores: dict) -> dict | None:
     ajustes.update(itcm.cargar_ajustes(AJUSTES_PATH, periodo))
     valores = {nombre: indicadores.get(nombre, {}).get("valor")
                for nombre in itcm.BANDAS_ITCM}
+    rem = valores.get("rem_ipc_12m")
+    valores["rem_ipc_12m"] = (
+        itcm.brecha_rem(rem, run_rate) if rem is not None and run_rate is not None else None
+    )
     return itcm.calcular_itcm(valores, ajustes)
 
 
@@ -367,11 +425,27 @@ def anotar_indicadores(indicadores: dict, resultado: dict | None) -> None:
                 ind["en_indice"] = False
 
 
-def calcular_score(indicadores: dict) -> float:
+def calcular_score(indicadores: dict, run_rate: float | None = None) -> float:
     """Tensión 0-10 del cinturón, derivada del ITCM: (100 − ITCM) / 10.
     Sin ningún indicador del índice disponible, devuelve 5.0 (neutro)."""
-    resultado = calcular_itcm_cinturon(indicadores)
+    resultado = calcular_itcm_cinturon(indicadores, run_rate)
     return itcm.tension_de_itcm(resultado["valor"]) if resultado else 5.0
+
+
+def anotar_rem_brecha(indicadores: dict, run_rate: float | None) -> None:
+    """Expone en el indicador REM la brecha y el run-rate usados para puntuarlo
+    (transparencia en la web: el valor mostrado es el nivel del REM, pero el
+    puntaje sale de la brecha contra el ritmo actual)."""
+    rem = indicadores.get("rem_ipc_12m")
+    if not rem or rem.get("valor") is None or run_rate is None:
+        return
+    brecha = itcm.brecha_rem(rem["valor"], run_rate)
+    rem["run_rate_anualizado"] = round(run_rate, 1)
+    rem["brecha_anualizada"] = brecha
+    rem["nota_scoring"] = (
+        f"Puntuado por la brecha vs el ritmo inflacionario actual anualizado "
+        f"({round(run_rate, 1)}%): {brecha:+.1f} pts."
+    )
 
 
 def main() -> None:
@@ -384,6 +458,7 @@ def main() -> None:
     for nombre, fetcher in [
         ("ipc_total",          fetch_ipc),
         ("reservas_bcra",      fetch_reservas),
+        ("spread_intermediacion", fetch_spread_intermediacion),
         ("badlar",             fetch_badlar),
         ("emae_ia",            fetch_emae_ia),
         ("saldo_comercial_12m", fetch_saldo_comercial_12m),
@@ -401,8 +476,15 @@ def main() -> None:
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
 
-    resultado = calcular_itcm_cinturon(frescos)
+    try:
+        run_rate = itcm.run_rate_ipc(_ipc_vars_mensuales(IPC_RUNRATE_MESES), meses=IPC_RUNRATE_MESES)
+    except Exception as e:
+        _warn("ipc_runrate", e)
+        run_rate = None
+
+    resultado = calcular_itcm_cinturon(frescos, run_rate)
     anotar_indicadores(frescos, resultado)
+    anotar_rem_brecha(frescos, run_rate)
     score   = itcm.tension_de_itcm(resultado["valor"]) if resultado else 5.0
     payload = {
         "cinturon":     CINTURON,

@@ -59,6 +59,18 @@ def fetch_saldo_ica(limit: int = 48) -> list:
             for fecha, valor in expo if fecha in impo_por_fecha]
 
 
+def fetch_spread_intermediacion(dias: int = 540) -> list:
+    """Spread de intermediación derivado: tasa activa (adelantos en cta. cte.,
+    var 13) − pasiva (depósitos a 30 días, var 12), muestreado a fin de mes."""
+    ade = {f: float(v) for f, v in fetch_bcra(13, dias)}
+    dep = {f: float(v) for f, v in fetch_bcra(12, dias)}
+    por_mes = {}
+    for f in sorted(ade.keys() & dep.keys()):   # asc → conserva el último día de cada mes
+        por_mes[f[:7]] = f
+    return [[por_mes[m], round(ade[por_mes[m]] - dep[por_mes[m]], 2)]
+            for m in sorted(por_mes, reverse=True)]
+
+
 def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: list = ()):
     rows = []
 
@@ -103,6 +115,7 @@ MACRO_INDEC = [
 ]
 MACRO_DERIVADAS = [
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
+    ("spread_intermediacion", "pts", "BCRA (adelantos − depósitos)", fetch_spread_intermediacion),
 ]
 MACRO_BCRA = [
     (1,  "reservas_bcra",      "M USD",    "BCRA"),

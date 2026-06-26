@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-26T04:28:14.012808",
+  "generated_at": "2026-06-26T20:34:02.067077",
   "period": "2026-06",
-  "score_global": 3.8,
+  "score_global": 3.5,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 2.9,
+      "score": 2.0,
       "estado": "estable",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -36,10 +36,10 @@
           "aporte_nota": null
         },
         "reservas_bcra": {
-          "valor": 47474.0,
+          "valor": 46936.0,
           "unidad": "mill USD",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1",
-          "fecha_dato": "2026-06-23",
+          "fecha_dato": "2026-06-24",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
@@ -50,20 +50,33 @@
           "aporte_formula": "Banda ITCM: >60000 → 100 · 50000–60000 → 85 · 40000–50000 → 70 · 30000–40000 → 50 · 20000–30000 → 30 · ≤20000 → 10 (puntos 0–100; puntaje 70; pesa 10,0% del ITCM)",
           "aporte_nota": null
         },
-        "badlar": {
-          "valor": 21.56,
-          "unidad": "% anual",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-          "fecha_dato": "2026-06-24",
+        "spread_intermediacion": {
+          "valor": 5.39,
+          "unidad": "pts (activa − pasiva)",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/13 − https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/12",
+          "fecha_dato": "2026-06-25",
+          "tasa_activa": 25.34,
+          "tasa_pasiva": 19.95,
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 35,
-          "puntaje_banda": 35,
+          "puntaje_itcm": 80,
+          "puntaje_banda": 80,
           "peso_efectivo": 0.1,
-          "aporte_score": 6.5,
-          "aporte_formula": "Banda ITCM: ≤5 → 100 · 5–10 → 80 · 10–15 → 60 · 15–25 → 35 · >25 → 10 (puntos 0–100; puntaje 35; pesa 10,0% del ITCM)",
+          "aporte_score": 2.0,
+          "aporte_formula": "Banda ITCM: ≤4 → 100 · 4–8 → 80 · 8–15 → 60 · 15–25 → 35 · >25 → 10 (puntos 0–100; puntaje 80; pesa 10,0% del ITCM)",
           "aporte_nota": null
+        },
+        "badlar": {
+          "valor": 21.25,
+          "unidad": "% anual",
+          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
+          "fecha_dato": "2026-06-25",
+          "desactualizado": false,
+          "en_indice": false,
+          "aporte_score": null,
+          "aporte_formula": null,
+          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
         },
         "emae_ia": {
           "valor": 5.48,
@@ -135,18 +148,21 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 35,
-          "puntaje_banda": 35,
+          "puntaje_itcm": 60,
+          "puntaje_banda": 60,
           "peso_efectivo": 0.175,
-          "aporte_score": 6.5,
-          "aporte_formula": "Banda ITCM: ≤10 → 100 · 10–15 → 85 · 15–20 → 60 · 20–30 → 35 · >30 → 10 (puntos 0–100; puntaje 35; pesa 17,5% del ITCM)",
+          "run_rate_anualizado": 29.1,
+          "brecha_anualizada": -5.8,
+          "nota_scoring": "Puntuado por la brecha vs el ritmo inflacionario actual anualizado (29.1%): -5.8 pts.",
+          "aporte_score": 4.0,
+          "aporte_formula": "Banda ITCM: ≤-20 → 100 · -20–-7 → 85 · -7–7 → 60 · 7–20 → 35 · >20 → 10 (puntos 0–100; puntaje 60; pesa 17,5% del ITCM)",
           "aporte_nota": null
         },
         "prestamos_privados": {
-          "valor": 3.16,
+          "valor": 3.05,
           "unidad": "% var mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-          "fecha_dato": "2026-06-23",
+          "fecha_dato": "2026-06-24",
           "desactualizado": false,
           "en_indice": false,
           "aporte_score": null,
@@ -154,10 +170,10 @@
           "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
         },
         "base_monetaria": {
-          "valor": 3.7,
+          "valor": 5.55,
           "unidad": "% var mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-          "fecha_dato": "2026-06-23",
+          "fecha_dato": "2026-06-24",
           "desactualizado": false,
           "en_indice": false,
           "aporte_score": null,
@@ -165,10 +181,10 @@
           "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
         },
         "tc_mayorista": {
-          "valor": 4.67,
+          "valor": 4.57,
           "unidad": "% var mensual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-          "fecha_dato": "2026-06-25",
+          "fecha_dato": "2026-06-26",
           "desactualizado": false,
           "en_indice": false,
           "aporte_score": null,
@@ -178,14 +194,14 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 71.2,
-        "banda": "moderadamente_aflojado",
-        "banda_legible": "Moderadamente aflojado",
+        "valor": 80.1,
+        "banda": "aflojado",
+        "banda_legible": "Aflojado",
         "dimensiones": {
           "estabilidad_monetaria": {
             "nombre": "Estabilidad monetaria-inflacionaria",
             "peso": 0.35,
-            "puntaje": 50.0,
+            "puntaje": 62.5,
             "indicadores": {
               "ipc_total": {
                 "peso": 0.5,
@@ -195,8 +211,8 @@
               },
               "rem_ipc_12m": {
                 "peso": 0.5,
-                "puntaje_banda": 35,
-                "puntaje_aplicado": 35,
+                "puntaje_banda": 60,
+                "puntaje_aplicado": 60,
                 "peso_efectivo": 0.175
               }
             },
@@ -225,7 +241,7 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.2,
-            "puntaje": 52.5,
+            "puntaje": 75.0,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.5,
@@ -233,10 +249,10 @@
                 "puntaje_aplicado": 70,
                 "peso_efectivo": 0.1
               },
-              "badlar": {
+              "spread_intermediacion": {
                 "peso": 0.5,
-                "puntaje_banda": 35,
-                "puntaje_aplicado": 35,
+                "puntaje_banda": 80,
+                "puntaje_aplicado": 80,
                 "peso_efectivo": 0.1
               }
             },
@@ -262,7 +278,7 @@
       "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 4 dimensiones: estabilidad monetaria 35%, viabilidad fiscal-comercial 30%, financiamiento 20%, actividad 15%. La tensión del cinturón es (100 − ITCM) / 10."
     },
     "politica": {
-      "score": 4.5,
+      "score": 4.4,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -280,15 +296,15 @@
           "aporte_nota": null
         },
         "ratio_dnu": {
-          "valor": 1.5,
-          "dnu_count": 24,
+          "valor": 1.438,
+          "dnu_count": 23,
           "leyes_count": 16,
           "periodo": "2026",
           "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-19",
           "desactualizado": false,
-          "aporte_score": 7.5,
+          "aporte_score": 7.2,
           "aporte_formula": "0 → 0 · 1,0 → 5 · 2,0+ → 10 (DNU/leyes)",
           "aporte_nota": null
         },
@@ -298,7 +314,7 @@
           "metrica": "101.0 conflictos acumulados",
           "unidad": "índice 0–100 (normalizado)",
           "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-19",
           "desactualizado": false,
           "aporte_score": 5.0,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (índice)",
@@ -313,20 +329,20 @@
           "ipc_aplicado_pct": 38.3,
           "unidad": "% variación real YoY en transferencias totales RON",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-19",
           "desactualizado": false,
           "aporte_score": 2.1,
           "aporte_formula": "+10% → 0 · 0% → 2,5 · −10% → 5 · −30% → 10 (var. real i.a.)",
           "aporte_nota": null
         },
         "eficacia_legislativa": {
-          "valor": 4.3,
+          "valor": 4.2,
           "aprobados_n": 1,
-          "enviados_n": 23,
+          "enviados_n": 24,
           "ventana_dias": 365,
           "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-19",
           "desactualizado": false,
           "aporte_score": 9.4,
           "aporte_formula": "70% → 0 · 35% → 5 · 0% → 10",
@@ -363,7 +379,7 @@
           "periodo_id": "HCDN144",
           "unidad": "% sesiones frustradas por falta de quórum",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-19",
           "desactualizado": false,
           "aporte_score": 0.0,
           "aporte_formula": "0% → 0 · 15% → 5 · 30%+ → 10 (sesiones caídas)",
@@ -377,7 +393,7 @@
           "ventana_dias": 365,
           "unidad": "% proyectos con dictamen que no llegaron al recinto",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-19",
           "desactualizado": false,
           "aporte_score": 10.0,
           "aporte_formula": "20% → 0 · 40% → 5 · 60%+ → 10",
@@ -388,59 +404,59 @@
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político."
     },
     "vida_cotidiana": {
-      "score": 3.5,
+      "score": 3.2,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "brecha_salario_cbt": {
-          "valor": 3.79,
+          "valor": 3.73,
           "unidad": "canastas (RIPTE/CBT)",
           "fuente": "INDEC",
-          "fecha_dato": "2026-04-01",
+          "fecha_dato": "2026-03-01",
           "desactualizado": false,
-          "aporte_score": 0.7,
+          "aporte_score": 0.9,
           "aporte_formula": "4 canastas → 0 · 2,5 → 5 · 1 → 10 (salario formal / CBT)",
           "aporte_nota": null
         },
         "ipc_alimentos": {
-          "valor": 2.46,
+          "valor": 1.5,
           "unidad": "% m/m",
           "fuente": "INDEC serie 146.3",
-          "fecha_dato": "2026-05-01",
+          "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "aporte_score": 2.5,
+          "aporte_score": 1.5,
           "aporte_formula": "0% → 0 · 5% → 5 · 10% → 10 (mensual)",
           "aporte_nota": null
         },
         "endeudamiento_familiar": {
-          "valor": 44.43,
+          "valor": 45.36,
           "unidad": "billones de pesos (consumo)",
           "fuente": "BCRA API v4.0",
-          "fecha_dato": "2026-06-22",
+          "fecha_dato": "2026-05-27",
           "desactualizado": false,
-          "var_real_12m": -1.4,
-          "aporte_input_txt": "-1,4% interanual real",
-          "aporte_score": 4.7,
+          "var_real_12m": -2.7,
+          "aporte_input_txt": "-2,7% interanual real",
+          "aporte_score": 4.3,
           "aporte_formula": "−20% real → 0 · 0% → 5 · +20% real → 10 (var. interanual real del crédito)",
           "aporte_nota": null
         },
         "peso_tarifas": {
-          "valor": 2.4,
+          "valor": 4.68,
           "unidad": "% m/m regulados",
           "fuente": "INDEC",
-          "fecha_dato": "2026-05-01",
+          "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "aporte_score": 2.4,
+          "aporte_score": 4.7,
           "aporte_formula": "0% → 0 · 5% → 5 · 10% → 10 (regulados, m/m)",
           "aporte_nota": null
         },
         "consumo_carne": {
-          "valor": 47.5,
+          "valor": 46.2,
           "unidad": "kg/hab/año",
           "fuente": "CICCRA",
-          "fecha_dato": "2026-05",
+          "fecha_dato": "2026-04",
           "desactualizado": false,
-          "aporte_score": 3.8,
+          "aporte_score": 4.4,
           "aporte_formula": "55 → 0 · 45 → 5 · 35 → 10 (kg/hab/año)",
           "aporte_nota": null
         },
@@ -455,32 +471,32 @@
           "aporte_nota": null
         },
         "mortalidad_pymes": {
-          "valor": -3.29,
+          "valor": 21.53,
           "unidad": "% m/m (IPI)",
           "fuente": "INDEC",
-          "fecha_dato": "2026-04-01",
+          "fecha_dato": "2026-03-01",
           "desactualizado": false,
-          "aporte_score": 8.3,
+          "aporte_score": 0.0,
           "aporte_formula": "+5% → 0 · 0% → 5 · −5% → 10 (IPI m/m)",
           "aporte_nota": null
         },
         "despacho_cemento": {
-          "valor": 144.1,
+          "valor": 150.3,
           "unidad": "índice ISAC",
           "fuente": "INDEC",
-          "fecha_dato": "2026-04-01",
+          "fecha_dato": "2026-03-01",
           "desactualizado": false,
-          "aporte_score": 3.6,
+          "aporte_score": 3.0,
           "aporte_formula": "180 → 0 · 130 → 5 · 80 → 10 (índice ISAC)",
           "aporte_nota": null
         },
         "pluriempleo": {
-          "valor": 7.5,
+          "valor": 7.8,
           "unidad": "%",
           "fuente": "INDEC EPH",
-          "fecha_dato": "2026-01-01",
+          "fecha_dato": "2025-10-01",
           "desactualizado": false,
-          "aporte_score": 2.5,
+          "aporte_score": 2.8,
           "aporte_formula": "5% → 0 · 10% → 5 · 15% → 10 (subocupación demandante)",
           "aporte_nota": null
         },
@@ -495,27 +511,17 @@
           "aporte_nota": null
         },
         "icc_utdt": {
-          "valor": 42.5,
+          "valor": 40.5,
           "unidad": "índice",
           "fuente": "UTDT",
-          "fecha_dato": "2026-06-01",
+          "fecha_dato": "2026-05-01",
           "desactualizado": false,
-          "aporte_score": 5.8,
+          "aporte_score": 6.5,
           "aporte_formula": "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)",
           "aporte_nota": null
         },
-        "sentimiento_digital": {
-          "valor": 7.4,
-          "unidad": "interés 0–100",
-          "fuente": "Google Trends",
-          "fecha_dato": "2026-06-26",
-          "desactualizado": false,
-          "aporte_score": 0.7,
-          "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
-          "aporte_nota": null
-        },
         "patentamiento_motos": {
-          "valor": 69740,
+          "valor": 69629,
           "unidad": "unidades",
           "fuente": "CAFAM",
           "fecha_dato": "2026-05",
@@ -526,7 +532,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260626_0427.json",
+      "fuente_enriquecida": "vida_cotidiana_20260602_1056.json",
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
     },
     "gestion": {
@@ -535,13 +541,13 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 3.35,
-          "avance_pct": 83.2,
-          "unidad": "% brecha CCL/oficial (cepo corporativo)",
+          "valor": 4.37,
+          "avance_pct": 78.2,
+          "unidad": "% brecha CCL/mayorista (cepo corporativo)",
           "fuente": "https://dolarapi.com/v1/dolares",
           "fecha_dato": "2026-06-26",
           "desactualizado": false,
-          "aporte_score": 1.7,
+          "aporte_score": 2.2,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
           "aporte_nota": null
         },
@@ -671,7 +677,7 @@
       "score_explicacion": "Promedio simple de la tensión de sus 12 reformas: a mayor avance ejecutado, menor tensión."
     },
     "espiritu_epoca": {
-      "score": 2.4,
+      "score": 2.3,
       "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -686,12 +692,12 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 7.4,
+          "valor": 6.3,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-19",
           "desactualizado": false,
-          "aporte_score": 0.7,
+          "aporte_score": 0.6,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
           "aporte_nota": null
         },
