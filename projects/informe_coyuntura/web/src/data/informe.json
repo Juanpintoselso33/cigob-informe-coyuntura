@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-27T01:32:17.948604",
+  "generated_at": "2026-06-27T01:34:37.169255",
   "period": "2026-06",
   "score_global": 3.8,
   "ponderacion": {
@@ -728,10 +728,10 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 7.4,
+          "valor": 6.8,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 0.7,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",

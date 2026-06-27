@@ -1,6 +1,6 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-27 01:32:17"
+generado: "2026-06-27 01:34:37"
 score_global: 3.7
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
@@ -79,7 +79,7 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 7.4 | interés 0–100 | 2026-06-26 | fresco |
+| sentimiento_digital | 6.8 | interés 0–100 | 2026-06-27 | fresco |
 | clima_electoral | 13.3 | pp (LLA − PJ) | 2026-03-05 | ⚠ cache |
 
 ## Advertencias
@@ -89,4 +89,4 @@ schema_version: "1.2.0"
 - `desactualizado:espiritu_epoca:clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-27 01:32:17 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-27 01:34:37 — schema 1.2.0*
