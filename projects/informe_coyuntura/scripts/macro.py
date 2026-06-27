@@ -223,18 +223,26 @@ def fetch_reservas_netas() -> dict | None:
         brutas_api = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
         if abs(bal["brutas"] - brutas_api) / brutas_api > 0.15:
             raise ValueError(f"brutas balance {bal['brutas']:.0f} vs API {brutas_api:.0f} divergen >15%")
-        if not -40000 < bal["netas"] < 40000:
-            raise ValueError(f"netas fuera de rango plausible: {bal['netas']:.0f}")
+        # Calibración al consenso de mercado "netas a secas" (Machado/Ieral): el
+        # balance consolidado define encajes/oblig algo distinto al mercado.
+        with open(RESERVAS_PASIVOS_PATH, encoding="utf-8") as f:
+            ajuste = json.load(f).get("ajuste_consenso_mercado", {})
+        delta = float(ajuste.get("delta_musd", 0))
+        netas = bal["netas"] + delta
+        if not -40000 < netas < 40000:
+            raise ValueError(f"netas fuera de rango plausible: {netas:.0f}")
         return {
-            "valor": round(bal["netas"], 0),
-            "unidad": "mill USD (netas)",
-            "fuente": f"BCRA Balance Consolidado ({BCRA_BALANCE_URL}) — cálculo propio",
+            "valor": round(netas, 0),
+            "unidad": "mill USD (netas, consenso mercado)",
+            "fuente": f"BCRA Balance Consolidado ({BCRA_BALANCE_URL}) + calibración consenso — cálculo propio",
             "fecha_dato": bal["fecha"],
+            "netas_balance": round(bal["netas"], 0),
+            "ajuste_consenso": round(delta, 0),
             "reservas_brutas": round(bal["brutas"], 0),
             "encajes_me": round(bal["encajes"], 0),
             "obligaciones_me": round(bal["oblig_me"], 0),
             "tc_valuacion": round(bal["tc"], 2),
-            "metodo": "balance_bcra",
+            "metodo": "balance_bcra+consenso",
             "desactualizado": False,
         }
     except Exception as e:

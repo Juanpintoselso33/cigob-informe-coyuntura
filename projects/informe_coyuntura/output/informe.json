@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-26T21:43:23.129884",
+  "generated_at": "2026-06-26T22:23:15.186559",
   "period": "2026-06",
-  "score_global": 3.6,
+  "score_global": 3.7,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 2.7,
+      "score": 2.9,
       "estado": "estable",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -33,20 +33,22 @@
           "peso_efectivo": 0.175
         },
         "reservas_bcra": {
-          "valor": 6376.0,
-          "unidad": "mill USD (netas)",
-          "fuente": "BCRA Balance Consolidado (https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls) — cálculo propio",
+          "valor": 3876.0,
+          "unidad": "mill USD (netas, consenso mercado)",
+          "fuente": "BCRA Balance Consolidado (https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls) + calibración consenso — cálculo propio",
           "fecha_dato": "2026-05",
+          "netas_balance": 6376.0,
+          "ajuste_consenso": -2500.0,
           "reservas_brutas": 48195.0,
           "encajes_me": 14682.0,
           "obligaciones_me": 27136.0,
           "tc_valuacion": 1410.29,
-          "metodo": "balance_bcra",
+          "metodo": "balance_bcra+consenso",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 50,
-          "puntaje_banda": 50,
+          "puntaje_itcm": 30,
+          "puntaje_banda": 30,
           "peso_efectivo": 0.1
         },
         "idc": {
@@ -169,7 +171,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 73.2,
+        "valor": 71.2,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -216,12 +218,12 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.2,
-            "puntaje": 55.0,
+            "puntaje": 45.0,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.5,
-                "puntaje_banda": 50,
-                "puntaje_aplicado": 50,
+                "puntaje_banda": 30,
+                "puntaje_aplicado": 30,
                 "peso_efectivo": 0.1
               },
               "idc": {

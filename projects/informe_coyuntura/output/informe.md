@@ -1,7 +1,7 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-26 21:43:23"
-score_global: 3.6
+generado: "2026-06-26 22:23:15"
+score_global: 3.7
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,17 +9,17 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-06
 
-**Score global:** 3.6/10  |  **Riesgo dominante:** gerencial
+**Score global:** 3.7/10  |  **Riesgo dominante:** gerencial
 
 ## Cinturones
 
-### 🟢 Macro — score 2.7/10 (estable)
+### 🟢 Macro — score 2.9/10 (estable)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ipc_total | 2.15 | % mensual | 2026-05-01 | fresco |
-| reservas_bcra | 6376.0 | mill USD (netas) | 2026-05 | fresco |
+| reservas_bcra | 3876.0 | mill USD (netas, consenso mercado) | 2026-05 | fresco |
 | idc | 1.012 | índice (~1,0) | 2026-06-23 | fresco |
 | badlar | 21.25 | % anual | 2026-06-25 | fresco |
 | emae_ia | 5.48 | % i.a. | 2026-03-01 | fresco |
@@ -89,4 +89,4 @@ schema_version: "1.2.0"
 - `desactualizado:espiritu_epoca:clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-26 21:43:23 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-26 22:23:15 — schema 1.2.0*
