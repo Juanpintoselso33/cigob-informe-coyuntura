@@ -164,33 +164,97 @@ def fetch_ipc() -> dict | None:
         return None
 
 
+# Reservas netas — fuente primaria: Balance Consolidado del BCRA (Excel oficial).
+BCRA_BALANCE_URL = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls"
+# Columnas de la hoja "B.C.R.A." (verificadas jun-2026). Valores en pesos del mes.
+BAL_COL_RESERVAS = 7    # "Oro y divisas (neto)" — reservas brutas
+BAL_COL_OBLIG_ME = 11   # "Oblig. con organismos internac. y otros" — swap+repos+OOII (negativo)
+BAL_COL_ENCAJES  = 33   # "Depósitos de entidades financieras en moneda extranjera" — encajes USD
+BAL_COL_TC       = 42   # "Tipo de cambio de valuación 1 u$s ="
 RESERVAS_PASIVOS_PATH = PROJECT_DIR / "data" / "macro" / "reservas_netas_pasivos.json"
 RESERVAS_PASIVOS_COMPONENTES = ["encajes_usd", "swap_china", "prestamos_ooii", "repos_12m"]
 
 
+def _reservas_netas_balance() -> dict:
+    """Reservas netas calculadas del Balance Consolidado del BCRA (Excel oficial):
+    netas = (Oro y divisas − Depósitos EEFF en ME − Oblig. con OOII y otros) / TC.
+    La col. "y otros" agrupa swap, repos y préstamos a organismos. Todo en pesos
+    del balance, convertido a USD con el TC de valuación del propio balance.
+    El número es 100% oficial y 100% nuestro (lo computa el colector)."""
+    import xlrd  # ya en requirements (1.2.0); import perezoso → si falta, cae al fallback
+    r = requests.get(BCRA_BALANCE_URL, headers=HTTP_HEADERS, timeout=60, verify=False)
+    r.raise_for_status()
+    sh = xlrd.open_workbook(file_contents=r.content).sheet_by_name("B.C.R.A.")
+    fila = next(row for row in range(sh.nrows - 1, 26, -1)
+                if isinstance(sh.cell_value(row, BAL_COL_RESERVAS), (int, float))
+                and sh.cell_value(row, BAL_COL_RESERVAS))
+
+    def celda(col):
+        v = sh.cell_value(fila, col)
+        if not isinstance(v, (int, float)):
+            raise ValueError(f"balance BCRA: col {col} no numérica (fila {fila})")
+        return float(v)
+
+    tc = celda(BAL_COL_TC)
+    if tc <= 0:
+        raise ValueError("balance BCRA: TC de valuación inválido")
+    # El balance está en MILES de pesos → a millones de USD: valor / TC / 1000.
+    a_usd_mill = lambda col: celda(col) / tc / 1000.0
+    brutas   = a_usd_mill(BAL_COL_RESERVAS)
+    encajes  = a_usd_mill(BAL_COL_ENCAJES)
+    oblig    = abs(a_usd_mill(BAL_COL_OBLIG_ME))
+    netas    = brutas - encajes - oblig
+    ym = sh.cell_value(fila, 0)            # año.mes (ej. 2026.05)
+    anio = int(ym); mes = round((ym - anio) * 100)
+    fecha = f"{anio}-{mes:02d}" if 1 <= mes <= 12 else str(ym)
+    return {"netas": netas, "brutas": brutas, "encajes": encajes, "oblig_me": oblig,
+            "tc": tc, "fecha": fecha}
+
+
 def fetch_reservas_netas() -> dict | None:
-    """Reservas NETAS según la metodología Machado/OPEN, calculadas con datos
-    oficiales: brutas (BCRA, automáticas) menos los pasivos en moneda extranjera
-    (encajes de depósitos USD privados, swap China, préstamos a OOII y repos a
-    ≤12m). Los pasivos —que se mueven lento— se leen de un config sembrado con
-    el desglose oficial del balance del BCRA; las brutas se actualizan solas.
-    Así el número es propio (lo calculamos nosotros, no lo scrapeamos)."""
+    """Reservas NETAS. Fuente primaria: Balance Consolidado del BCRA (Excel
+    oficial) — netas = brutas − encajes ME − obligaciones en ME, todo del propio
+    balance. Validación: las brutas del balance deben coincidir (±15%) con las
+    brutas que publica la API (var 1) — si no, el parseo está mal y se cae al
+    FALLBACK (brutas API − pasivos del config data/macro/reservas_netas_pasivos.json).
+    Así el dato es automático y oficial, y NUNCA queda silenciosamente mal."""
     try:
+        bal = _reservas_netas_balance()
+        brutas_api = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
+        if abs(bal["brutas"] - brutas_api) / brutas_api > 0.15:
+            raise ValueError(f"brutas balance {bal['brutas']:.0f} vs API {brutas_api:.0f} divergen >15%")
+        if not -40000 < bal["netas"] < 40000:
+            raise ValueError(f"netas fuera de rango plausible: {bal['netas']:.0f}")
+        return {
+            "valor": round(bal["netas"], 0),
+            "unidad": "mill USD (netas)",
+            "fuente": f"BCRA Balance Consolidado ({BCRA_BALANCE_URL}) — cálculo propio",
+            "fecha_dato": bal["fecha"],
+            "reservas_brutas": round(bal["brutas"], 0),
+            "encajes_me": round(bal["encajes"], 0),
+            "obligaciones_me": round(bal["oblig_me"], 0),
+            "tc_valuacion": round(bal["tc"], 2),
+            "metodo": "balance_bcra",
+            "desactualizado": False,
+        }
+    except Exception as e:
+        _warn("reservas_bcra (balance, cae a config)", e)
+
+    try:  # FALLBACK: brutas API − pasivos del config
         brutas = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
         fecha  = _bcra_ultimo(BCRA_RESERVAS_ID)["fecha"]
         with open(RESERVAS_PASIVOS_PATH, encoding="utf-8") as f:
             pasivos = json.load(f)
         total_pasivos = sum(float(pasivos[k]) for k in RESERVAS_PASIVOS_COMPONENTES)
-        netas = brutas - total_pasivos
         return {
-            "valor": round(netas, 0),
+            "valor": round(brutas - total_pasivos, 0),
             "unidad": "mill USD (netas)",
-            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_RESERVAS_ID} − pasivos BCRA (metodología Machado/OPEN)",
+            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_RESERVAS_ID} − pasivos config (fallback)",
             "fecha_dato": fecha,
             "reservas_brutas": round(brutas, 0),
-            "pasivos": {k: float(pasivos[k]) for k in RESERVAS_PASIVOS_COMPONENTES},
             "pasivos_total": round(total_pasivos, 0),
             "pasivos_actualizado": pasivos.get("actualizado"),
+            "metodo": "config_fallback",
             "desactualizado": False,
         }
     except Exception as e:

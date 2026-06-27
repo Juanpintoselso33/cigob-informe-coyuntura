@@ -1,9 +1,9 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-26T21:02:19.336494",
-  "score": 2.9,
+  "generated_at": "2026-06-26T21:43:22.921598",
+  "score": 2.7,
   "itcm": {
-    "valor": 71.2,
+    "valor": 73.2,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -50,12 +50,12 @@
       "financiamiento": {
         "nombre": "Capacidad de financiamiento",
         "peso": 0.2,
-        "puntaje": 45.0,
+        "puntaje": 55.0,
         "indicadores": {
           "reservas_bcra": {
             "peso": 0.5,
-            "puntaje_banda": 30,
-            "puntaje_aplicado": 30,
+            "puntaje_banda": 50,
+            "puntaje_aplicado": 50,
             "peso_efectivo": 0.1
           },
           "idc": {
@@ -98,24 +98,20 @@
       "peso_efectivo": 0.175
     },
     "reservas_bcra": {
-      "valor": 1881.0,
+      "valor": 6376.0,
       "unidad": "mill USD (netas)",
-      "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/1 − pasivos BCRA (metodología Machado/OPEN)",
-      "fecha_dato": "2026-06-24",
-      "reservas_brutas": 46936.0,
-      "pasivos": {
-        "encajes_usd": 16581.0,
-        "swap_china": 19045.0,
-        "prestamos_ooii": 1931.0,
-        "repos_12m": 7498.0
-      },
-      "pasivos_total": 45055.0,
-      "pasivos_actualizado": "2026-04-10",
+      "fuente": "BCRA Balance Consolidado (https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls) — cálculo propio",
+      "fecha_dato": "2026-05",
+      "reservas_brutas": 48195.0,
+      "encajes_me": 14682.0,
+      "obligaciones_me": 27136.0,
+      "tc_valuacion": 1410.29,
+      "metodo": "balance_bcra",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 30,
-      "puntaje_banda": 30,
+      "puntaje_itcm": 50,
+      "puntaje_banda": 50,
       "peso_efectivo": 0.1
     },
     "idc": {
