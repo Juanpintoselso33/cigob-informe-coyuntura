@@ -1,20 +1,7 @@
 {
-  "_doc": "Reservas netas. Fuente primaria AUTOMÁTICA: Balance Consolidado del BCRA (macro.py::_reservas_netas_balance). Este archivo tiene (a) la calibración al consenso de mercado y (b) el fallback de pasivos si el balance no parsea.",
-
-  "ajuste_consenso_mercado": {
-    "_doc": "El balance consolidado define encajes (~14,7k) y la cuenta 'Oblig. con OOII y otros' (~27,1k) un poco distinto a como el mercado arma las 'netas a secas' (encaje ~16,5k + swap+repos+OOII ~28,4k). Este delta reconcilia el nivel de nuestro cálculo del balance con el consenso de mercado. El número de cada día lo da el balance (automático); este delta solo se revisa cuando hay un print nuevo de consenso. Sumarlo a las netas del balance.",
-    "delta_musd": -2500,
-    "ref_fecha": "2026-06",
-    "ref_balance_netas": 6376,
-    "ref_consenso_netas": 3850,
-    "fuente_consenso": "Machado/OPEN 3.807 (4-jun-2026, Ámbito) + Ieral/Fund. Mediterránea 3.900 (fin-may, El Litoral)"
-  },
-
-  "_fallback_doc": "Pasivos (M USD) usados SOLO si el parseo del balance falla o no valida. Metodología Machado 'netas a secas': netas = brutas API - encajes - swap - OOII - repos. Refrescar desde el Balance Semanal BCRA / OPEN si el fallback queda activo.",
-  "encajes_usd": 16581,
-  "swap_china": 19045,
-  "prestamos_ooii": 1931,
-  "repos_12m": 7498,
-  "fuente": "BCRA Balance Semanal — desglose según F. Machado (OPEN), abr-2026",
-  "actualizado": "2026-04-10"
+  "_doc": "FALLBACK de reservas netas. La fuente primaria AUTOMÁTICA es la Planilla SDDS del BCRA (macro.py::_reservas_netas_sdds), que da netas = Activos de reserva (I.A) − drenajes a corto plazo en ME (Sección II). Este archivo solo se usa si el PDF de la planilla no parsea: netas_fallback = brutas_API − drenajes_seccion_ii. Refrescar drenajes_seccion_ii con cada planilla SDDS nueva (II.1 préstamos/depósitos + II.2 swaps + II.3 repos, en valor absoluto).",
+  "drenajes_seccion_ii": 49799,
+  "detalle": {"prestamos_dep": 22197, "swaps": 19216, "repos": 8385},
+  "fuente": "BCRA Planilla SDDS Liquidez en ME — temp0526.pdf (al 31/05/2026)",
+  "actualizado": "2026-05-31"
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-26T22:23:15.186559",
+  "generated_at": "2026-06-26T22:47:29.620645",
   "period": "2026-06",
   "score_global": 3.7,
   "ponderacion": {
@@ -16,8 +16,8 @@
   },
   "cinturones": {
     "macro": {
-      "score": 2.9,
-      "estado": "estable",
+      "score": 3.1,
+      "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
         "ipc_total": {
@@ -33,22 +33,20 @@
           "peso_efectivo": 0.175
         },
         "reservas_bcra": {
-          "valor": 3876.0,
-          "unidad": "mill USD (netas, consenso mercado)",
-          "fuente": "BCRA Balance Consolidado (https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls) + calibración consenso — cálculo propio",
-          "fecha_dato": "2026-05",
-          "netas_balance": 6376.0,
-          "ajuste_consenso": -2500.0,
-          "reservas_brutas": 48195.0,
-          "encajes_me": 14682.0,
-          "obligaciones_me": 27136.0,
-          "tc_valuacion": 1410.29,
-          "metodo": "balance_bcra+consenso",
+          "valor": -1605.0,
+          "unidad": "mill USD (netas, SDDS)",
+          "fuente": "BCRA Planilla SDDS Liquidez en ME (temp0526.pdf) — definición estricta",
+          "fecha_dato": "31/05/26",
+          "reservas_brutas": 48193.0,
+          "drenaje_prestamos_dep": -22197.0,
+          "drenaje_swaps": -19216.0,
+          "drenaje_repos": -8385.0,
+          "metodo": "sdds",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 30,
-          "puntaje_banda": 30,
+          "puntaje_itcm": 10,
+          "puntaje_banda": 10,
           "peso_efectivo": 0.1
         },
         "idc": {
@@ -171,7 +169,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 71.2,
+        "valor": 69.2,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -218,12 +216,12 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.2,
-            "puntaje": 45.0,
+            "puntaje": 35.0,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.5,
-                "puntaje_banda": 30,
-                "puntaje_aplicado": 30,
+                "puntaje_banda": 10,
+                "puntaje_aplicado": 10,
                 "peso_efectivo": 0.1
               },
               "idc": {

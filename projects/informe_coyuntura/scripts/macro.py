@@ -4,6 +4,7 @@ Patrón estándar: URLs → fetch → score → cache → exit codes
 Ejecutar desde projects/informe_coyuntura/: python scripts/macro.py
 """
 import sys
+import re
 import json
 import requests
 import urllib3
@@ -164,104 +165,98 @@ def fetch_ipc() -> dict | None:
         return None
 
 
-# Reservas netas — fuente primaria: Balance Consolidado del BCRA (Excel oficial).
-BCRA_BALANCE_URL = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls"
-# Columnas de la hoja "B.C.R.A." (verificadas jun-2026). Valores en pesos del mes.
-BAL_COL_RESERVAS = 7    # "Oro y divisas (neto)" — reservas brutas
-BAL_COL_OBLIG_ME = 11   # "Oblig. con organismos internac. y otros" — swap+repos+OOII (negativo)
-BAL_COL_ENCAJES  = 33   # "Depósitos de entidades financieras en moneda extranjera" — encajes USD
-BAL_COL_TC       = 42   # "Tipo de cambio de valuación 1 u$s ="
+# Reservas netas — fuente primaria: Planilla SDDS/NEDD de "Reservas Internacionales
+# y Liquidez en Moneda Extranjera" del BCRA (oficial, mensual, en millones de USD).
+# Es la fuente que usan los analistas. Definición estricta:
+#   netas = Activos de reserva (I.A) − drenajes netos a corto plazo (Sección II).
+SDDS_URL_BASE = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/{}.pdf"
 RESERVAS_PASIVOS_PATH = PROJECT_DIR / "data" / "macro" / "reservas_netas_pasivos.json"
-RESERVAS_PASIVOS_COMPONENTES = ["encajes_usd", "swap_china", "prestamos_ooii", "repos_12m"]
 
 
-def _reservas_netas_balance() -> dict:
-    """Reservas netas calculadas del Balance Consolidado del BCRA (Excel oficial):
-    netas = (Oro y divisas − Depósitos EEFF en ME − Oblig. con OOII y otros) / TC.
-    La col. "y otros" agrupa swap, repos y préstamos a organismos. Todo en pesos
-    del balance, convertido a USD con el TC de valuación del propio balance.
-    El número es 100% oficial y 100% nuestro (lo computa el colector)."""
-    import xlrd  # ya en requirements (1.2.0); import perezoso → si falta, cae al fallback
-    r = requests.get(BCRA_BALANCE_URL, headers=HTTP_HEADERS, timeout=60, verify=False)
-    r.raise_for_status()
-    sh = xlrd.open_workbook(file_contents=r.content).sheet_by_name("B.C.R.A.")
-    fila = next(row for row in range(sh.nrows - 1, 26, -1)
-                if isinstance(sh.cell_value(row, BAL_COL_RESERVAS), (int, float))
-                and sh.cell_value(row, BAL_COL_RESERVAS))
+def _num_es(s: str) -> float:
+    """Número en formato es-AR ('-22.197,23') → float."""
+    return float(s.replace(".", "").replace(",", "."))
 
-    def celda(col):
-        v = sh.cell_value(fila, col)
-        if not isinstance(v, (int, float)):
-            raise ValueError(f"balance BCRA: col {col} no numérica (fila {fila})")
-        return float(v)
 
-    tc = celda(BAL_COL_TC)
-    if tc <= 0:
-        raise ValueError("balance BCRA: TC de valuación inválido")
-    # El balance está en MILES de pesos → a millones de USD: valor / TC / 1000.
-    a_usd_mill = lambda col: celda(col) / tc / 1000.0
-    brutas   = a_usd_mill(BAL_COL_RESERVAS)
-    encajes  = a_usd_mill(BAL_COL_ENCAJES)
-    oblig    = abs(a_usd_mill(BAL_COL_OBLIG_ME))
-    netas    = brutas - encajes - oblig
-    ym = sh.cell_value(fila, 0)            # año.mes (ej. 2026.05)
-    anio = int(ym); mes = round((ym - anio) * 100)
-    fecha = f"{anio}-{mes:02d}" if 1 <= mes <= 12 else str(ym)
-    return {"netas": netas, "brutas": brutas, "encajes": encajes, "oblig_me": oblig,
-            "tc": tc, "fecha": fecha}
+def _reservas_netas_sdds() -> dict:
+    """Reservas netas de la Planilla SDDS del BCRA (temp{MM}{YY}.pdf, mensual).
+    netas = I.A Activos de reserva + Sección II (drenajes, ya negativos):
+      II.1 Préstamos/valores/depósitos en ME · II.2 forwards/swaps · II.3 repos.
+    Prueba las planillas de los últimos meses (se publican ~22 días tras el cierre)
+    y usa la primera parseable. 100% oficial, sin ajustes ni constantes."""
+    import io
+    import pdfplumber  # ya en requirements; import perezoso → si falta, cae al fallback
+    hoy = date.today(); y, m = hoy.year, hoy.month
+    for _ in range(4):
+        nombre = f"temp{m:02d}{y % 100:02d}"
+        try:
+            r = requests.get(SDDS_URL_BASE.format(nombre), headers=HTTP_HEADERS,
+                             timeout=60, verify=False)
+            if r.status_code == 200 and len(r.content) > 50000:
+                with pdfplumber.open(io.BytesIO(r.content)) as pdf:
+                    txt = "\n".join((p.extract_text() or "") for p in pdf.pages[:2])
+                ia  = re.search(r"A\.\s*Activos de reserva oficiales\s+([\d.]+,\d{2})", txt)
+                ii1 = re.search(r"Pr[ée]stamos en moneda extranjera,\s*valores,?\s*y\s*"
+                                r"dep[óo]sitos\s*\d*\s+(-?[\d.]+,\d{2})", txt)
+                ii2 = re.search(r"swaps de monedas\)\s*\d*\s*\n\s*(-?[\d.]+,\d{2})", txt)
+                ii3 = re.search(r"3\.\s*Otros \(especificar\)\s+(-?[\d.]+,\d{2})", txt)
+                if all([ia, ii1, ii2, ii3]):
+                    brutas = _num_es(ia.group(1))
+                    p_dep, swaps, repos = _num_es(ii1.group(1)), _num_es(ii2.group(1)), _num_es(ii3.group(1))
+                    mf = re.search(r"final del per[ií]odo\)\s*(\d{2}/\d{2}/\d{2})", txt)
+                    return {"netas": brutas + p_dep + swaps + repos, "brutas": brutas,
+                            "prestamos_dep": p_dep, "swaps": swaps, "repos": repos,
+                            "planilla": nombre, "fecha": mf.group(1) if mf else nombre}
+        except Exception:
+            pass
+        m -= 1
+        if m == 0: m = 12; y -= 1
+    raise ValueError("SDDS: ninguna planilla reciente parseable")
 
 
 def fetch_reservas_netas() -> dict | None:
-    """Reservas NETAS. Fuente primaria: Balance Consolidado del BCRA (Excel
-    oficial) — netas = brutas − encajes ME − obligaciones en ME, todo del propio
-    balance. Validación: las brutas del balance deben coincidir (±15%) con las
-    brutas que publica la API (var 1) — si no, el parseo está mal y se cae al
-    FALLBACK (brutas API − pasivos del config data/macro/reservas_netas_pasivos.json).
-    Así el dato es automático y oficial, y NUNCA queda silenciosamente mal."""
+    """Reservas NETAS (definición estricta SDDS). Fuente primaria: Planilla SDDS
+    del BCRA (oficial, mensual, USD), la misma que usan los analistas:
+        netas = Activos de reserva − drenajes netos a corto plazo en ME.
+    Validación: las brutas de la planilla deben coincidir (±15%) con las de la API
+    (var 1); si no, el parseo falló → FALLBACK (brutas API − drenajes Sección II del
+    último SDDS guardados en el config). Automático y oficial, nunca queda mal en silencio."""
     try:
-        bal = _reservas_netas_balance()
+        s = _reservas_netas_sdds()
         brutas_api = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
-        if abs(bal["brutas"] - brutas_api) / brutas_api > 0.15:
-            raise ValueError(f"brutas balance {bal['brutas']:.0f} vs API {brutas_api:.0f} divergen >15%")
-        # Calibración al consenso de mercado "netas a secas" (Machado/Ieral): el
-        # balance consolidado define encajes/oblig algo distinto al mercado.
-        with open(RESERVAS_PASIVOS_PATH, encoding="utf-8") as f:
-            ajuste = json.load(f).get("ajuste_consenso_mercado", {})
-        delta = float(ajuste.get("delta_musd", 0))
-        netas = bal["netas"] + delta
-        if not -40000 < netas < 40000:
-            raise ValueError(f"netas fuera de rango plausible: {netas:.0f}")
+        if abs(s["brutas"] - brutas_api) / brutas_api > 0.15:
+            raise ValueError(f"brutas SDDS {s['brutas']:.0f} vs API {brutas_api:.0f} divergen >15%")
+        if not -40000 < s["netas"] < 40000:
+            raise ValueError(f"netas fuera de rango plausible: {s['netas']:.0f}")
         return {
-            "valor": round(netas, 0),
-            "unidad": "mill USD (netas, consenso mercado)",
-            "fuente": f"BCRA Balance Consolidado ({BCRA_BALANCE_URL}) + calibración consenso — cálculo propio",
-            "fecha_dato": bal["fecha"],
-            "netas_balance": round(bal["netas"], 0),
-            "ajuste_consenso": round(delta, 0),
-            "reservas_brutas": round(bal["brutas"], 0),
-            "encajes_me": round(bal["encajes"], 0),
-            "obligaciones_me": round(bal["oblig_me"], 0),
-            "tc_valuacion": round(bal["tc"], 2),
-            "metodo": "balance_bcra+consenso",
+            "valor": round(s["netas"], 0),
+            "unidad": "mill USD (netas, SDDS)",
+            "fuente": f"BCRA Planilla SDDS Liquidez en ME ({s['planilla']}.pdf) — definición estricta",
+            "fecha_dato": s["fecha"],
+            "reservas_brutas": round(s["brutas"], 0),
+            "drenaje_prestamos_dep": round(s["prestamos_dep"], 0),
+            "drenaje_swaps": round(s["swaps"], 0),
+            "drenaje_repos": round(s["repos"], 0),
+            "metodo": "sdds",
             "desactualizado": False,
         }
     except Exception as e:
-        _warn("reservas_bcra (balance, cae a config)", e)
+        _warn("reservas_bcra (SDDS, cae a config)", e)
 
-    try:  # FALLBACK: brutas API − pasivos del config
+    try:  # FALLBACK: brutas API − drenajes Sección II del último SDDS (config)
         brutas = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
         fecha  = _bcra_ultimo(BCRA_RESERVAS_ID)["fecha"]
         with open(RESERVAS_PASIVOS_PATH, encoding="utf-8") as f:
-            pasivos = json.load(f)
-        total_pasivos = sum(float(pasivos[k]) for k in RESERVAS_PASIVOS_COMPONENTES)
+            cfg = json.load(f)
+        drenajes = float(cfg["drenajes_seccion_ii"])
         return {
-            "valor": round(brutas - total_pasivos, 0),
-            "unidad": "mill USD (netas)",
-            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_RESERVAS_ID} − pasivos config (fallback)",
+            "valor": round(brutas - drenajes, 0),
+            "unidad": "mill USD (netas, SDDS)",
+            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_RESERVAS_ID} − drenajes SDDS config (fallback)",
             "fecha_dato": fecha,
             "reservas_brutas": round(brutas, 0),
-            "pasivos_total": round(total_pasivos, 0),
-            "pasivos_actualizado": pasivos.get("actualizado"),
+            "drenajes_seccion_ii": round(drenajes, 0),
+            "drenajes_actualizado": cfg.get("actualizado"),
             "metodo": "config_fallback",
             "desactualizado": False,
         }

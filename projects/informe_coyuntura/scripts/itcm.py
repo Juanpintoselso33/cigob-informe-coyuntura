@@ -27,11 +27,11 @@ Revisiones sobre el doc original (observaciones del analista, docs
     El equivalente mensual se deriva en macro.py y alimenta la banda "rem_ipc_12m".
   * Recaudación: variación INTERANUAL REAL (deflactada por el IPC del mismo
     período), no la variación mensual nominal.
-  * Reservas: se usan las NETAS, calculadas 100% automáticas del Balance
-    Consolidado del BCRA (Excel oficial): netas = (Oro y divisas − Depósitos
-    EEFF en ME − Oblig. con OOII y otros) / TC. Escala propia de netas (ver
-    BANDAS_ITCM). Fallback a brutas (API) − pasivos del config si el balance
-    no valida. Es un número propio y oficial. BADLAR pasa a contexto.
+  * Reservas: se usan las NETAS (definición estricta SDDS), 100% automáticas de
+    la Planilla SDDS del BCRA (oficial, mensual, USD — la que usan los analistas):
+    netas = Activos de reserva (I.A) − drenajes a corto plazo en ME (Sección II:
+    préstamos/depósitos + swaps + repos). Escala propia de netas (ver BANDAS_ITCM).
+    Fallback a brutas (API) − drenajes del último SDDS (config). BADLAR pasa a contexto.
   * Financiamiento: la tasa se reemplaza por el ÍNDICE DE CAPACIDAD PRESTABLE
     (IdC): Precio (BADLAR real, 30%), Volumen (depósitos privados reales, 40%)
     y Asignación (holgura préstamos/depósitos, 30%). Índice ~1,0 (>1,02 verde /
