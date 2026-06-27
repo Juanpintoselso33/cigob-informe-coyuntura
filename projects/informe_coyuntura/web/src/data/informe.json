@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-26T23:06:51.514490",
+  "generated_at": "2026-06-26T23:21:10.809755",
   "period": "2026-06",
   "score_global": 3.8,
   "ponderacion": {
@@ -36,17 +36,18 @@
           "aporte_nota": null
         },
         "reservas_bcra": {
-          "valor": 1453.0,
-          "unidad": "mill USD (netas libre disponibilidad)",
+          "valor": 4122.0,
+          "unidad": "mill USD (netas a secas, consenso)",
           "fuente": "BCRA Planilla SDDS (temp0526.pdf) + dep. Tesoro (balance) — cálculo propio",
           "fecha_dato": "31/05/26",
           "netas_sdds_estricto": -1605.0,
           "depositos_tesoro": 3058.0,
+          "bopreal_12m": 2670.0,
           "reservas_brutas": 48193.0,
           "drenaje_prestamos_dep": -22197.0,
           "drenaje_swaps": -19216.0,
           "drenaje_repos": -8385.0,
-          "metodo": "sdds+tesoro",
+          "metodo": "sdds+tesoro+bopreal",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",

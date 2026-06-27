@@ -27,12 +27,12 @@ Revisiones sobre el doc original (observaciones del analista, docs
     El equivalente mensual se deriva en macro.py y alimenta la banda "rem_ipc_12m".
   * Recaudación: variación INTERANUAL REAL (deflactada por el IPC del mismo
     período), no la variación mensual nominal.
-  * Reservas: NETAS de libre disponibilidad (el número del mercado), 100% de datos
-    oficiales: netas = SDDS estricto (Activos de reserva − drenajes Sección II de la
-    Planilla SDDS) + depósitos del Tesoro en USD (balance BCRA; el Tesoro los suma de
-    vuelta porque no son pasivo del BCRA). Sin constantes. Escala propia (ver
-    BANDAS_ITCM). El "a secas" del mercado suma además Bopreal 12m, que el BCRA no
-    publica como serie → único término omitido. BADLAR pasa a contexto.
+  * Reservas: NETAS "a secas" (el número del mercado), 100% datos oficiales y sin
+    constantes: netas = SDDS estricto (Activos de reserva − drenajes Sección II de la
+    Planilla SDDS) + depósitos del Tesoro en USD (balance BCRA) + Bopreal 12m (bucket
+    de vencimiento 3m-1año de la Sección II.1 del SDDS). El mercado suma de vuelta
+    Tesoro y Bopreal porque no son pasivos del BCRA para defender el TC. Escala propia
+    (ver BANDAS_ITCM). BADLAR pasa a contexto.
   * Financiamiento: la tasa se reemplaza por el ÍNDICE DE CAPACIDAD PRESTABLE
     (IdC): Precio (BADLAR real, 30%), Volumen (depósitos privados reales, 40%)
     y Asignación (holgura préstamos/depósitos, 30%). Índice ~1,0 (>1,02 verde /

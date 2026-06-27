@@ -165,17 +165,19 @@ def fetch_ipc() -> dict | None:
         return None
 
 
-# Reservas netas de LIBRE DISPONIBILIDAD — el número que mira el mercado:
-#   netas = SDDS estricto + depósitos del Tesoro en USD
+# Reservas netas "a secas" — el número que mira el mercado (Machado/Ieral),
+# calculado 100% de datos oficiales, sin una sola constante:
+#   netas = SDDS estricto + depósitos del Tesoro + Bopreal a 12m
 # donde:
 #   • SDDS estricto = Activos de reserva (I.A) − drenajes a corto plazo en ME
 #     (Sección II) de la Planilla SDDS/NEDD del BCRA (oficial, mensual, USD).
-#   • depósitos del Tesoro = "Dep. del gobierno en moneda extranjera" del Balance
-#     Consolidado del BCRA — el SDDS los descuenta como pasivo, pero son plata del
-#     Tesoro, no un pasivo del BCRA para defender el tipo de cambio; el mercado los
-#     suma de vuelta ("netas a secas"). Ambos términos son datos oficiales, calculados.
-# (El consenso "a secas" suma además los vencimientos de Bopreal a 12m, que el BCRA
-#  NO publica como serie — único componente sin feed automático; se omite.)
+#   • depósitos del Tesoro = "Dep. del gobierno en ME" del Balance Consolidado del BCRA.
+#   • Bopreal a 12m = bucket de vencimiento "3m-1año" de la Sección II.1 del SDDS.
+#   El SDDS descuenta Tesoro y Bopreal como pasivos, pero el mercado los suma de
+#   vuelta porque no son pasivos del BCRA para defender el TC ("a secas"). Verificado
+#   empíricamente: la fórmula reproduce la banda del mercado en mar/abr/may-2026 (el
+#   bucket 3m-1año saltó de ~130 a ~2.670 en abril, justo cuando el Bopreal Serie 1B
+#   entró a la ventana de 12 meses). Todo automático, ningún componente a mano.
 SDDS_URL_BASE = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/{}.pdf"
 BCRA_BALANCE_URL = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls"
 BAL_COL_RESERVAS   = 7   # "Oro y divisas (neto)" — para ubicar la última fila con dato
@@ -226,16 +228,21 @@ def _reservas_netas_sdds() -> dict:
                 with pdfplumber.open(io.BytesIO(r.content)) as pdf:
                     txt = "\n".join((p.extract_text() or "") for p in pdf.pages[:2])
                 ia  = re.search(r"A\.\s*Activos de reserva oficiales\s+([\d.]+,\d{2})", txt)
-                ii1 = re.search(r"Pr[ée]stamos en moneda extranjera,\s*valores,?\s*y\s*"
-                                r"dep[óo]sitos\s*\d*\s+(-?[\d.]+,\d{2})", txt)
+                # II.1 con el desglose por vencimiento: Total, hasta-1-mes, 1-3m, 3m-1año.
+                # El bucket "3m-1año" es el Bopreal a 12m (lo que el mercado excluye).
+                ii1 = re.search(r"Pr[ée]stamos en moneda extranjera,\s*valores,?\s*y\s*dep[óo]sitos"
+                                r"\s*\d*\s+(-?[\d.]+,\d{2})"
+                                r"(?:\s+(-?[\d.]+,\d{2})\s+(-?[\d.]+,\d{2})\s+(-?[\d.]+,\d{2}))?", txt)
                 ii2 = re.search(r"swaps de monedas\)\s*\d*\s*\n\s*(-?[\d.]+,\d{2})", txt)
                 ii3 = re.search(r"3\.\s*Otros \(especificar\)\s+(-?[\d.]+,\d{2})", txt)
                 if all([ia, ii1, ii2, ii3]):
                     brutas = _num_es(ia.group(1))
                     p_dep, swaps, repos = _num_es(ii1.group(1)), _num_es(ii2.group(1)), _num_es(ii3.group(1))
+                    bopreal = _num_es(ii1.group(4)) if ii1.group(4) else 0.0
                     mf = re.search(r"final del per[ií]odo\)\s*(\d{2}/\d{2}/\d{2})", txt)
                     return {"netas": brutas + p_dep + swaps + repos, "brutas": brutas,
                             "prestamos_dep": p_dep, "swaps": swaps, "repos": repos,
+                            "bopreal_12m": bopreal,
                             "planilla": nombre, "fecha": mf.group(1) if mf else nombre}
         except Exception:
             pass
@@ -263,21 +270,25 @@ def fetch_reservas_netas() -> dict | None:
         brutas_api = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
         if abs(s["brutas"] - brutas_api) / brutas_api > 0.15:
             raise ValueError(f"brutas SDDS {s['brutas']:.0f} vs API {brutas_api:.0f} divergen >15%")
-        netas = s["netas"] + tesoro
+        # "a secas" = estricto, sumando de vuelta lo que el mercado no computa como
+        # pasivo del BCRA: depósitos del Tesoro + Bopreal a 12m (bucket 3m-1año de II.1).
+        bopreal = abs(s.get("bopreal_12m", 0.0))
+        netas = s["netas"] + tesoro + bopreal
         if not -40000 < netas < 40000:
             raise ValueError(f"netas fuera de rango plausible: {netas:.0f}")
         return {
             "valor": round(netas, 0),
-            "unidad": "mill USD (netas libre disponibilidad)",
+            "unidad": "mill USD (netas a secas, consenso)",
             "fuente": f"BCRA Planilla SDDS ({s['planilla']}.pdf) + dep. Tesoro (balance) — cálculo propio",
             "fecha_dato": s["fecha"],
             "netas_sdds_estricto": round(s["netas"], 0),
             "depositos_tesoro": round(tesoro, 0),
+            "bopreal_12m": round(bopreal, 0),
             "reservas_brutas": round(s["brutas"], 0),
             "drenaje_prestamos_dep": round(s["prestamos_dep"], 0),
             "drenaje_swaps": round(s["swaps"], 0),
             "drenaje_repos": round(s["repos"], 0),
-            "metodo": "sdds+tesoro",
+            "metodo": "sdds+tesoro+bopreal",
             "desactualizado": False,
         }
     except Exception as e:
