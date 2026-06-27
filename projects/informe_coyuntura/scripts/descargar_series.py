@@ -106,6 +106,14 @@ def fetch_reservas_netas_serie(meses: int = 18) -> list:
     return out
 
 
+def fetch_tcrm_serie(meses: int = 18) -> list:
+    """Serie mensual del ITCRM oficial del BCRA (base 17-dic-2015=100), de la
+    planilla ITCRMSerie.xlsx. Reemplaza la serie INDEC 116.3_TCRMA, discontinuada
+    en dic-2024. Devuelve los últimos `meses` como [[YYYY-MM-01, valor]]."""
+    serie = macro.fetch_itcrm_serie()  # [(YYYY-MM-01, valor)] ascendente
+    return [[ym, val] for ym, val in serie[-meses:]]
+
+
 def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: list = ()):
     rows = []
 
@@ -146,11 +154,11 @@ MACRO_INDEC = [
     ("148.3_INIVELNAL_DICI_M_26",  "ipc_total",       "% mensual",          "INDEC/datos.gob.ar"),
     ("143.3_ICE_SERVIA_2004_A_25", "emae_ia",         "% i.a.",             "INDEC/datos.gob.ar"),
     ("172.3_TL_RECAION_M_0_0_17",  "recaudacion",     "M ARS",              "INDEC/datos.gob.ar"),
-    ("116.3_TCRMA_0_M_36",         "tcrm",            "indice base 2010=100","INDEC/datos.gob.ar"),
 ]
 MACRO_DERIVADAS = [
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
+    ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
 ]
 MACRO_BCRA = [
     (7,  "badlar",             "% anual",  "BCRA"),

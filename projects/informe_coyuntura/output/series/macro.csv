@@ -1,52 +1,22 @@
 fecha,indicador,valor,unidad,fuente
-2024-12-01,tcrm,79.7730421256683,indice base 2010=100,INDEC/datos.gob.ar
-2024-11-01,tcrm,81.7457900205989,indice base 2010=100,INDEC/datos.gob.ar
-2024-10-01,tcrm,84.03863352814257,indice base 2010=100,INDEC/datos.gob.ar
-2024-09-01,tcrm,86.04323009221208,indice base 2010=100,INDEC/datos.gob.ar
-2024-08-01,tcrm,87.15901302377064,indice base 2010=100,INDEC/datos.gob.ar
-2024-07-01,tcrm,87.87889515509198,indice base 2010=100,INDEC/datos.gob.ar
-2024-06-01,tcrm,89.89842994707736,indice base 2010=100,INDEC/datos.gob.ar
-2024-05-01,tcrm,93.43047026156258,indice base 2010=100,INDEC/datos.gob.ar
-2024-04-01,tcrm,97.0263216151782,indice base 2010=100,INDEC/datos.gob.ar
-2024-03-01,tcrm,105.87373691154625,indice base 2010=100,INDEC/datos.gob.ar
-2024-02-01,tcrm,115.75579006002025,indice base 2010=100,INDEC/datos.gob.ar
-2024-01-01,tcrm,132.78329804941433,indice base 2010=100,INDEC/datos.gob.ar
-2023-12-01,tcrm,124.8715827662506,indice base 2010=100,INDEC/datos.gob.ar
-2023-11-01,tcrm,83.19024889092823,indice base 2010=100,INDEC/datos.gob.ar
-2023-10-01,tcrm,89.62223466261251,indice base 2010=100,INDEC/datos.gob.ar
-2023-09-01,tcrm,100.66491108547751,indice base 2010=100,INDEC/datos.gob.ar
-2023-08-01,tcrm,104.82581406789554,indice base 2010=100,INDEC/datos.gob.ar
-2023-07-01,tcrm,95.84523343591636,indice base 2010=100,INDEC/datos.gob.ar
-2023-06-01,tcrm,93.9620368290703,indice base 2010=100,INDEC/datos.gob.ar
-2023-05-01,tcrm,93.05109254015332,indice base 2010=100,INDEC/datos.gob.ar
-2023-04-01,tcrm,93.81139795932678,indice base 2010=100,INDEC/datos.gob.ar
-2023-03-01,tcrm,93.58891957423567,indice base 2010=100,INDEC/datos.gob.ar
-2023-02-01,tcrm,94.76917731040544,indice base 2010=100,INDEC/datos.gob.ar
-2023-01-01,tcrm,95.14063774954568,indice base 2010=100,INDEC/datos.gob.ar
-2022-12-01,tcrm,93.21101721987628,indice base 2010=100,INDEC/datos.gob.ar
-2022-11-01,tcrm,90.097103776563,indice base 2010=100,INDEC/datos.gob.ar
-2022-10-01,tcrm,88.35327082164328,indice base 2010=100,INDEC/datos.gob.ar
-2022-09-01,tcrm,89.26422166421666,indice base 2010=100,INDEC/datos.gob.ar
-2022-08-01,tcrm,91.4911049166073,indice base 2010=100,INDEC/datos.gob.ar
-2022-07-01,tcrm,91.696043190719,indice base 2010=100,INDEC/datos.gob.ar
-2022-06-01,tcrm,95.60731519798492,indice base 2010=100,INDEC/datos.gob.ar
-2022-05-01,tcrm,96.43944341230365,indice base 2010=100,INDEC/datos.gob.ar
-2022-04-01,tcrm,99.81558963146016,indice base 2010=100,INDEC/datos.gob.ar
-2022-03-01,tcrm,101.3062471973853,indice base 2010=100,INDEC/datos.gob.ar
-2022-02-01,tcrm,102.69184163270717,indice base 2010=100,INDEC/datos.gob.ar
-2022-01-01,tcrm,101.98667299212951,indice base 2010=100,INDEC/datos.gob.ar
-2021-12-01,tcrm,102.26886322650964,indice base 2010=100,INDEC/datos.gob.ar
-2021-11-01,tcrm,104.36663150859044,indice base 2010=100,INDEC/datos.gob.ar
-2021-10-01,tcrm,106.16654980671548,indice base 2010=100,INDEC/datos.gob.ar
-2021-09-01,tcrm,110.49825119877616,indice base 2010=100,INDEC/datos.gob.ar
-2021-08-01,tcrm,112.28415164722584,indice base 2010=100,INDEC/datos.gob.ar
-2021-07-01,tcrm,114.08393231509834,indice base 2010=100,INDEC/datos.gob.ar
-2021-06-01,tcrm,117.31425780871524,indice base 2010=100,INDEC/datos.gob.ar
-2021-05-01,tcrm,117.87859929326012,indice base 2010=100,INDEC/datos.gob.ar
-2021-04-01,tcrm,117.5453002158145,indice base 2010=100,INDEC/datos.gob.ar
-2021-03-01,tcrm,119.97886178335229,indice base 2010=100,INDEC/datos.gob.ar
-2021-02-01,tcrm,123.17687562865184,indice base 2010=100,INDEC/datos.gob.ar
-2021-01-01,tcrm,123.54847201836388,indice base 2010=100,INDEC/datos.gob.ar
+2026-05-01,tcrm,84.31,índice (base dic-2015),BCRA ITCRM
+2026-04-01,tcrm,84.67,índice (base dic-2015),BCRA ITCRM
+2026-03-01,tcrm,86.23,índice (base dic-2015),BCRA ITCRM
+2026-02-01,tcrm,90.09,índice (base dic-2015),BCRA ITCRM
+2026-01-01,tcrm,93.54,índice (base dic-2015),BCRA ITCRM
+2025-12-01,tcrm,94.68,índice (base dic-2015),BCRA ITCRM
+2025-11-01,tcrm,96.01,índice (base dic-2015),BCRA ITCRM
+2025-10-01,tcrm,98.9,índice (base dic-2015),BCRA ITCRM
+2025-09-01,tcrm,99.1,índice (base dic-2015),BCRA ITCRM
+2025-08-01,tcrm,95.05,índice (base dic-2015),BCRA ITCRM
+2025-07-01,tcrm,91.78,índice (base dic-2015),BCRA ITCRM
+2025-06-01,tcrm,86.13,índice (base dic-2015),BCRA ITCRM
+2025-05-01,tcrm,83.9,índice (base dic-2015),BCRA ITCRM
+2025-04-01,tcrm,82.33,índice (base dic-2015),BCRA ITCRM
+2025-03-01,tcrm,80.5,índice (base dic-2015),BCRA ITCRM
+2025-02-01,tcrm,81.04,índice (base dic-2015),BCRA ITCRM
+2025-01-01,tcrm,79.7,índice (base dic-2015),BCRA ITCRM
+2024-12-01,tcrm,79.79,índice (base dic-2015),BCRA ITCRM
 2026-06-26,tc_mayorista,1474.7207,ARS/USD,BCRA
 2026-06-25,tc_mayorista,1477.2991,ARS/USD,BCRA
 2026-06-24,tc_mayorista,1478.0437,ARS/USD,BCRA

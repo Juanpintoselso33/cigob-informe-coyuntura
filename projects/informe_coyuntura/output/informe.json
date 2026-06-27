@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-27T00:53:20.895039",
+  "generated_at": "2026-06-27T01:32:17.948604",
   "period": "2026-06",
   "score_global": 3.7,
   "ponderacion": {
@@ -124,10 +124,10 @@
           "peso_efectivo": 0.18
         },
         "tcrm": {
-          "valor": 79.77,
-          "unidad": "Índice (base 2010=100)",
-          "fuente": "https://apis.datos.gob.ar/series/api/series/",
-          "fecha_dato": "2024-12-01",
+          "valor": 84.31,
+          "unidad": "Índice (base dic-2015=100)",
+          "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+          "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "en_indice": false
         },

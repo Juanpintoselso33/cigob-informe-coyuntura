@@ -20,6 +20,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0005](0005-reservas-netas-a-secas.md) | Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal | Aceptado |
 | [0006](0006-brecha-cambiaria-ccl-mayorista.md) | La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista | Aceptado |
 | [0007](0007-fichas-explican-concepto-no-fuente.md) | Las fichas de indicador explican qué mide, no de dónde sale el dato | Aceptado |
+| [0008](0008-tcrm-itcrm-bcra.md) | El TCRM usa el ITCRM oficial del BCRA, no la serie discontinuada de INDEC | Aceptado |
 
 ## Contexto general
 

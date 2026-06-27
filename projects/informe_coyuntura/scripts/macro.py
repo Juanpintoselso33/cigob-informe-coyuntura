@@ -26,6 +26,10 @@ CACHE_PATH  = PROJECT_DIR / "output" / "cache" / "macro.json"
 # ── URL Constants (NFR6: URLs al inicio del script) ───────────────────────────
 INDEC_SERIES_BASE   = "https://apis.datos.gob.ar/series/api/series/"
 BCRA_VARIABLES_BASE = "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias"
+# ITCRM oficial del BCRA (base 17-dic-2015=100). Reemplaza la serie de INDEC
+# 116.3_TCRMA, discontinuada en dic-2024. La planilla trae prom. mensuales.
+BCRA_ITCRM_URL      = "https://www.bcra.gob.ar/Pdfs/PublicacionesEstadisticas/ITCRMSerie.xlsx"
+ITCRM_SHEET_MENSUAL = "ITCRM y bilaterales prom. mens."
 
 # INDEC — series IDs verificados en datos.gob.ar
 INDEC_IPC_ID         = "148.3_INIVELNAL_DICI_M_26"     # IPC total nacional mensual
@@ -471,16 +475,46 @@ def fetch_recaudacion() -> dict | None:
         return None
 
 
+def fetch_itcrm_serie() -> list:
+    """Serie mensual del ITCRM oficial del BCRA (base 17-dic-2015=100), de la
+    planilla ITCRMSerie.xlsx (hoja de promedios mensuales). Devuelve
+    [(YYYY-MM-01, valor)] ordenado ascendente. 100% de dato oficial."""
+    import io, openpyxl
+    r = requests.get(BCRA_ITCRM_URL, headers=HTTP_HEADERS, timeout=60, verify=False)
+    r.raise_for_status()
+    wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
+    ws = wb[ITCRM_SHEET_MENSUAL]
+    serie = []
+    for fecha, itcrm, *_ in ws.iter_rows(min_row=3, values_only=True):
+        if fecha is None or not isinstance(itcrm, (int, float)):
+            continue  # saltea encabezados y notas al pie
+        ym = fecha.date().isoformat() if hasattr(fecha, "date") else str(fecha)[:10]
+        serie.append((ym, round(float(itcrm), 2)))
+    if not serie:
+        raise ValueError("ITCRM: sin datos numéricos en la planilla del BCRA")
+    return serie
+
+
 def fetch_tcrm() -> dict | None:
-    try:
-        data = _indec_serie(INDEC_TCRM_ID, limit=2)
-        val  = data[0][1]
+    try:  # BCRA ITCRM oficial (vigente, base 17-dic-2015=100)
+        ym, val = fetch_itcrm_serie()[-1]
         return {
-            "valor": round(float(val), 2),
+            "valor": val,
+            "unidad": "Índice (base dic-2015=100)",
+            "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+            "fecha_dato": ym,
+            "desactualizado": False,
+        }
+    except Exception as e:
+        _warn("tcrm (ITCRM BCRA, cae a INDEC discontinuada)", e)
+    try:  # FALLBACK: serie INDEC 116.3_TCRMA — discontinuada en dic-2024
+        data = _indec_serie(INDEC_TCRM_ID, limit=2)
+        return {
+            "valor": round(float(data[0][1]), 2),
             "unidad": "Índice (base 2010=100)",
             "fuente": INDEC_SERIES_BASE,
             "fecha_dato": data[0][0],
-            "desactualizado": False,
+            "desactualizado": True,
         }
     except Exception as e:
         _warn("tcrm", e)

@@ -172,7 +172,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   ipc_total: "% mensual", reservas_bcra: "Millones de USD", idc: "Índice (~1,0)",
   badlar: "% anual", emae_ia: "% interanual",
   saldo_comercial_12m: "Millones de USD (acum. 12 meses)", recaudacion: "% interanual real",
-  tcrm: "Índice (base 2010=100)", rem_ipc_12m: "% anual esperado",
+  tcrm: "Índice (base dic-2015=100)", rem_ipc_12m: "% anual esperado",
   prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
   // politica
   votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-27 00:53:20"
+generado: "2026-06-27 01:32:17"
 score_global: 3.7
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
@@ -25,7 +25,7 @@ schema_version: "1.2.0"
 | emae_ia | 5.48 | % i.a. | 2026-03-01 | fresco |
 | saldo_comercial_12m | 21221.0 | Millones de USD (acum. 12 meses) | 2026-05-01 | fresco |
 | recaudacion | 1.82 | % i.a. real | 2026-05-01 | fresco |
-| tcrm | 79.77 | Índice (base 2010=100) | 2024-12-01 | fresco |
+| tcrm | 84.31 | Índice (base dic-2015=100) | 2026-05-01 | fresco |
 | rem_ipc_12m | 23.3 | % anual esperado | 2026-05-31 | fresco |
 | prestamos_privados | 3.05 | % mensual nominal | 2026-06-24 | fresco |
 | base_monetaria | 5.55 | % mensual nominal | 2026-06-24 | fresco |
@@ -89,4 +89,4 @@ schema_version: "1.2.0"
 - `desactualizado:espiritu_epoca:clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-27 00:53:20 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-27 01:32:17 — schema 1.2.0*

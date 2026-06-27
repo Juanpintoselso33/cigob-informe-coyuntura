@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-27T04:22:17.045580",
+  "generated_at": "2026-06-27T01:32:17.948604",
   "period": "2026-06",
   "score_global": 3.8,
   "ponderacion": {
@@ -152,10 +152,10 @@
           "aporte_input_txt": null
         },
         "tcrm": {
-          "valor": 79.77,
-          "unidad": "Índice (base 2010=100)",
-          "fuente": "https://apis.datos.gob.ar/series/api/series/",
-          "fecha_dato": "2024-12-01",
+          "valor": 84.31,
+          "unidad": "Índice (base dic-2015=100)",
+          "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+          "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "en_indice": false,
           "aporte_score": null,
@@ -547,7 +547,7 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 6.8,
+          "valor": 6.7,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
           "fecha_dato": "2026-06-27",
@@ -568,7 +568,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260627_0421.json",
+      "fuente_enriquecida": "vida_cotidiana_20260627_0053.json",
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
     },
     "gestion": {
@@ -728,10 +728,10 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 6.8,
+          "valor": 7.4,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-06-27",
+          "fecha_dato": "2026-06-26",
           "desactualizado": false,
           "aporte_score": 0.7,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
