@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-26T22:47:29.620645",
+  "generated_at": "2026-06-26T23:06:51.514490",
   "period": "2026-06",
   "score_global": 3.8,
   "ponderacion": {
@@ -16,8 +16,8 @@
   },
   "cinturones": {
     "macro": {
-      "score": 3.1,
-      "estado": "en_tension",
+      "score": 2.9,
+      "estado": "estable",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
         "ipc_total": {
@@ -36,23 +36,25 @@
           "aporte_nota": null
         },
         "reservas_bcra": {
-          "valor": -1605.0,
-          "unidad": "mill USD (netas, SDDS)",
-          "fuente": "BCRA Planilla SDDS Liquidez en ME (temp0526.pdf) — definición estricta",
+          "valor": 1453.0,
+          "unidad": "mill USD (netas libre disponibilidad)",
+          "fuente": "BCRA Planilla SDDS (temp0526.pdf) + dep. Tesoro (balance) — cálculo propio",
           "fecha_dato": "31/05/26",
+          "netas_sdds_estricto": -1605.0,
+          "depositos_tesoro": 3058.0,
           "reservas_brutas": 48193.0,
           "drenaje_prestamos_dep": -22197.0,
           "drenaje_swaps": -19216.0,
           "drenaje_repos": -8385.0,
-          "metodo": "sdds",
+          "metodo": "sdds+tesoro",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 10,
-          "puntaje_banda": 10,
+          "puntaje_itcm": 30,
+          "puntaje_banda": 30,
           "peso_efectivo": 0.1,
-          "aporte_score": 9.0,
-          "aporte_formula": "Banda ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntos 0–100; puntaje 10; pesa 10,0% del ITCM)",
+          "aporte_score": 7.0,
+          "aporte_formula": "Banda ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntos 0–100; puntaje 30; pesa 10,0% del ITCM)",
           "aporte_nota": null
         },
         "idc": {
@@ -205,7 +207,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 69.2,
+        "valor": 71.2,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -252,12 +254,12 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.2,
-            "puntaje": 35.0,
+            "puntaje": 45.0,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.5,
-                "puntaje_banda": 10,
-                "puntaje_aplicado": 10,
+                "puntaje_banda": 30,
+                "puntaje_aplicado": 30,
                 "peso_efectivo": 0.1
               },
               "idc": {

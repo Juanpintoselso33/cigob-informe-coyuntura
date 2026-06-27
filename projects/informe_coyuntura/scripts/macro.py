@@ -165,17 +165,47 @@ def fetch_ipc() -> dict | None:
         return None
 
 
-# Reservas netas — fuente primaria: Planilla SDDS/NEDD de "Reservas Internacionales
-# y Liquidez en Moneda Extranjera" del BCRA (oficial, mensual, en millones de USD).
-# Es la fuente que usan los analistas. Definición estricta:
-#   netas = Activos de reserva (I.A) − drenajes netos a corto plazo (Sección II).
+# Reservas netas de LIBRE DISPONIBILIDAD — el número que mira el mercado:
+#   netas = SDDS estricto + depósitos del Tesoro en USD
+# donde:
+#   • SDDS estricto = Activos de reserva (I.A) − drenajes a corto plazo en ME
+#     (Sección II) de la Planilla SDDS/NEDD del BCRA (oficial, mensual, USD).
+#   • depósitos del Tesoro = "Dep. del gobierno en moneda extranjera" del Balance
+#     Consolidado del BCRA — el SDDS los descuenta como pasivo, pero son plata del
+#     Tesoro, no un pasivo del BCRA para defender el tipo de cambio; el mercado los
+#     suma de vuelta ("netas a secas"). Ambos términos son datos oficiales, calculados.
+# (El consenso "a secas" suma además los vencimientos de Bopreal a 12m, que el BCRA
+#  NO publica como serie — único componente sin feed automático; se omite.)
 SDDS_URL_BASE = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/{}.pdf"
+BCRA_BALANCE_URL = "https://www.bcra.gob.ar/archivos/Pdfs/PublicacionesEstadisticas/balbcrhis.xls"
+BAL_COL_RESERVAS   = 7   # "Oro y divisas (neto)" — para ubicar la última fila con dato
+BAL_COL_DEP_GOB_ME = 29  # "Depósitos del gobierno nacional en moneda extranjera" (Tesoro)
+BAL_COL_TC         = 42  # "Tipo de cambio de valuación 1 u$s ="
 RESERVAS_PASIVOS_PATH = PROJECT_DIR / "data" / "macro" / "reservas_netas_pasivos.json"
 
 
 def _num_es(s: str) -> float:
     """Número en formato es-AR ('-22.197,23') → float."""
     return float(s.replace(".", "").replace(",", "."))
+
+
+def _tesoro_deposits_usd() -> float:
+    """Depósitos del Tesoro en USD en el BCRA (M USD), del Balance Consolidado
+    oficial (balbcrhis.xls): col 'Dep. del gobierno en ME' / TC / 1000 (el balance
+    está en miles de pesos). Es el término que el mercado suma de vuelta al neto
+    estricto para las 'netas de libre disponibilidad'."""
+    import xlrd  # ya en requirements (1.2.0)
+    r = requests.get(BCRA_BALANCE_URL, headers=HTTP_HEADERS, timeout=60, verify=False)
+    r.raise_for_status()
+    sh = xlrd.open_workbook(file_contents=r.content).sheet_by_name("B.C.R.A.")
+    fila = next(row for row in range(sh.nrows - 1, 26, -1)
+                if isinstance(sh.cell_value(row, BAL_COL_RESERVAS), (int, float))
+                and sh.cell_value(row, BAL_COL_RESERVAS))
+    tc  = float(sh.cell_value(fila, BAL_COL_TC))
+    dep = float(sh.cell_value(fila, BAL_COL_DEP_GOB_ME))
+    if tc <= 0:
+        raise ValueError("balance BCRA: TC inválido")
+    return dep / tc / 1000.0
 
 
 def _reservas_netas_sdds() -> dict:
@@ -215,47 +245,58 @@ def _reservas_netas_sdds() -> dict:
 
 
 def fetch_reservas_netas() -> dict | None:
-    """Reservas NETAS (definición estricta SDDS). Fuente primaria: Planilla SDDS
-    del BCRA (oficial, mensual, USD), la misma que usan los analistas:
-        netas = Activos de reserva − drenajes netos a corto plazo en ME.
-    Validación: las brutas de la planilla deben coincidir (±15%) con las de la API
-    (var 1); si no, el parseo falló → FALLBACK (brutas API − drenajes Sección II del
-    último SDDS guardados en el config). Automático y oficial, nunca queda mal en silencio."""
+    """Reservas NETAS de libre disponibilidad (el número del mercado), calculadas
+    100% de datos oficiales, sin constantes:
+        netas = SDDS estricto (planilla SDDS del BCRA) + depósitos del Tesoro (balance).
+    Validación: brutas SDDS vs API ±15%; si el PDF SDDS no parsea → FALLBACK
+    (brutas API − drenajes Sección II del último SDDS del config) + Tesoro. El término
+    del Tesoro tiene su propio try: si el balance no baja, se omite (degradación elegante).
+    Nunca queda mal en silencio."""
+    try:
+        tesoro = _tesoro_deposits_usd()
+    except Exception as e:
+        _warn("reservas_bcra (Tesoro, se omite)", e)
+        tesoro = 0.0
+
     try:
         s = _reservas_netas_sdds()
         brutas_api = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
         if abs(s["brutas"] - brutas_api) / brutas_api > 0.15:
             raise ValueError(f"brutas SDDS {s['brutas']:.0f} vs API {brutas_api:.0f} divergen >15%")
-        if not -40000 < s["netas"] < 40000:
-            raise ValueError(f"netas fuera de rango plausible: {s['netas']:.0f}")
+        netas = s["netas"] + tesoro
+        if not -40000 < netas < 40000:
+            raise ValueError(f"netas fuera de rango plausible: {netas:.0f}")
         return {
-            "valor": round(s["netas"], 0),
-            "unidad": "mill USD (netas, SDDS)",
-            "fuente": f"BCRA Planilla SDDS Liquidez en ME ({s['planilla']}.pdf) — definición estricta",
+            "valor": round(netas, 0),
+            "unidad": "mill USD (netas libre disponibilidad)",
+            "fuente": f"BCRA Planilla SDDS ({s['planilla']}.pdf) + dep. Tesoro (balance) — cálculo propio",
             "fecha_dato": s["fecha"],
+            "netas_sdds_estricto": round(s["netas"], 0),
+            "depositos_tesoro": round(tesoro, 0),
             "reservas_brutas": round(s["brutas"], 0),
             "drenaje_prestamos_dep": round(s["prestamos_dep"], 0),
             "drenaje_swaps": round(s["swaps"], 0),
             "drenaje_repos": round(s["repos"], 0),
-            "metodo": "sdds",
+            "metodo": "sdds+tesoro",
             "desactualizado": False,
         }
     except Exception as e:
         _warn("reservas_bcra (SDDS, cae a config)", e)
 
-    try:  # FALLBACK: brutas API − drenajes Sección II del último SDDS (config)
+    try:  # FALLBACK: brutas API − drenajes Sección II del último SDDS (config) + Tesoro
         brutas = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
         fecha  = _bcra_ultimo(BCRA_RESERVAS_ID)["fecha"]
         with open(RESERVAS_PASIVOS_PATH, encoding="utf-8") as f:
             cfg = json.load(f)
-        drenajes = float(cfg["drenajes_seccion_ii"])
+        estricto = brutas - float(cfg["drenajes_seccion_ii"])
         return {
-            "valor": round(brutas - drenajes, 0),
-            "unidad": "mill USD (netas, SDDS)",
-            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_RESERVAS_ID} − drenajes SDDS config (fallback)",
+            "valor": round(estricto + tesoro, 0),
+            "unidad": "mill USD (netas libre disponibilidad)",
+            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_RESERVAS_ID} − drenajes SDDS config + Tesoro (fallback)",
             "fecha_dato": fecha,
+            "netas_sdds_estricto": round(estricto, 0),
+            "depositos_tesoro": round(tesoro, 0),
             "reservas_brutas": round(brutas, 0),
-            "drenajes_seccion_ii": round(drenajes, 0),
             "drenajes_actualizado": cfg.get("actualizado"),
             "metodo": "config_fallback",
             "desactualizado": False,

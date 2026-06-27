@@ -1,9 +1,9 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-26T22:47:08.030205",
-  "score": 3.1,
+  "generated_at": "2026-06-26T23:06:35.424201",
+  "score": 2.9,
   "itcm": {
-    "valor": 69.2,
+    "valor": 71.2,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -50,12 +50,12 @@
       "financiamiento": {
         "nombre": "Capacidad de financiamiento",
         "peso": 0.2,
-        "puntaje": 35.0,
+        "puntaje": 45.0,
         "indicadores": {
           "reservas_bcra": {
             "peso": 0.5,
-            "puntaje_banda": 10,
-            "puntaje_aplicado": 10,
+            "puntaje_banda": 30,
+            "puntaje_aplicado": 30,
             "peso_efectivo": 0.1
           },
           "idc": {
@@ -98,20 +98,22 @@
       "peso_efectivo": 0.175
     },
     "reservas_bcra": {
-      "valor": -1605.0,
-      "unidad": "mill USD (netas, SDDS)",
-      "fuente": "BCRA Planilla SDDS Liquidez en ME (temp0526.pdf) — definición estricta",
+      "valor": 1453.0,
+      "unidad": "mill USD (netas libre disponibilidad)",
+      "fuente": "BCRA Planilla SDDS (temp0526.pdf) + dep. Tesoro (balance) — cálculo propio",
       "fecha_dato": "31/05/26",
+      "netas_sdds_estricto": -1605.0,
+      "depositos_tesoro": 3058.0,
       "reservas_brutas": 48193.0,
       "drenaje_prestamos_dep": -22197.0,
       "drenaje_swaps": -19216.0,
       "drenaje_repos": -8385.0,
-      "metodo": "sdds",
+      "metodo": "sdds+tesoro",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 10,
-      "puntaje_banda": 10,
+      "puntaje_itcm": 30,
+      "puntaje_banda": 30,
       "peso_efectivo": 0.1
     },
     "idc": {
