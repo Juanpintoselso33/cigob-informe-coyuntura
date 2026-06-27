@@ -1,6 +1,6 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-26 23:21:10"
+generado: "2026-06-27 00:18:34"
 score_global: 3.7
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
@@ -89,4 +89,4 @@ schema_version: "1.2.0"
 - `desactualizado:espiritu_epoca:clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-26 23:21:10 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-27 00:18:34 — schema 1.2.0*

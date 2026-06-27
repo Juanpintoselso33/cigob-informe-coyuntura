@@ -10,6 +10,9 @@ import urllib3
 from datetime import datetime, timedelta
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+import macro  # reutiliza el parser SDDS y las constantes del balance (reservas netas)
+
 sys.stdout.reconfigure(encoding="utf-8")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
@@ -59,6 +62,50 @@ def fetch_saldo_ica(limit: int = 48) -> list:
             for fecha, valor in expo if fecha in impo_por_fecha]
 
 
+def _tesoro_por_mes() -> dict:
+    """Mapa {YYYY-MM: dep. Tesoro en USD (M)} del Balance Consolidado del BCRA,
+    para componer la serie histórica de reservas netas."""
+    import xlrd
+    r = requests.get(macro.BCRA_BALANCE_URL, headers=HTTP_HEADERS, timeout=60, verify=False)
+    sh = xlrd.open_workbook(file_contents=r.content).sheet_by_name("B.C.R.A.")
+    out = {}
+    for row in range(27, sh.nrows):
+        ym = sh.cell_value(row, 0)
+        dep = sh.cell_value(row, macro.BAL_COL_DEP_GOB_ME)
+        tc  = sh.cell_value(row, macro.BAL_COL_TC)
+        if all(isinstance(x, (int, float)) for x in (ym, dep, tc)) and tc > 0:
+            anio = int(ym); mes = round((ym - anio) * 100)
+            if 1 <= mes <= 12:
+                out[f"{anio}-{mes:02d}"] = dep / tc / 1000.0
+    return out
+
+
+def fetch_reservas_netas_serie(meses: int = 18) -> list:
+    """Serie mensual de reservas NETAS "a secas" = SDDS estricto + dep. Tesoro +
+    Bopreal 12m (la misma fórmula que el indicador en macro.py), parseando las
+    últimas `meses` planillas SDDS. Salta los meses sin planilla parseable."""
+    tesoro = _tesoro_por_mes()
+    out = []
+    y, m = datetime.today().year, datetime.today().month
+    for _ in range(meses):
+        nombre = f"temp{m:02d}{y % 100:02d}"
+        try:
+            r = requests.get(macro.SDDS_URL_BASE.format(nombre), headers=HTTP_HEADERS,
+                             timeout=60, verify=False)
+            if r.status_code == 200 and len(r.content) > 50000:
+                s = macro._parse_sdds_content(r.content)
+                if s and s["fecha"]:
+                    _, mm, yy = s["fecha"].split("/")
+                    ym = f"20{yy}-{mm}"
+                    netas = s["netas"] + tesoro.get(ym, 0.0) + abs(s["bopreal_12m"])
+                    out.append([f"20{yy}-{mm}-01", round(netas, 0)])
+        except Exception:
+            pass
+        m -= 1
+        if m == 0: m = 12; y -= 1
+    return out
+
+
 def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: list = ()):
     rows = []
 
@@ -103,9 +150,9 @@ MACRO_INDEC = [
 ]
 MACRO_DERIVADAS = [
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
+    ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
 ]
 MACRO_BCRA = [
-    (1,  "reservas_bcra",      "M USD",    "BCRA"),
     (7,  "badlar",             "% anual",  "BCRA"),
     (29, "rem_ipc_12m",        "% anual",  "BCRA"),
     (26, "prestamos_privados", "M ARS",    "BCRA"),

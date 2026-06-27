@@ -210,14 +210,37 @@ def _tesoro_deposits_usd() -> float:
     return dep / tc / 1000.0
 
 
-def _reservas_netas_sdds() -> dict:
-    """Reservas netas de la Planilla SDDS del BCRA (temp{MM}{YY}.pdf, mensual).
-    netas = I.A Activos de reserva + Sección II (drenajes, ya negativos):
-      II.1 Préstamos/valores/depósitos en ME · II.2 forwards/swaps · II.3 repos.
-    Prueba las planillas de los últimos meses (se publican ~22 días tras el cierre)
-    y usa la primera parseable. 100% oficial, sin ajustes ni constantes."""
+def _parse_sdds_content(content: bytes) -> dict | None:
+    """Parsea el PDF de UNA planilla SDDS → componentes de reservas netas, o None
+    si no matchea. Reutilizable (lo usa también descargar_series.py para la serie
+    histórica). netas estricto = I.A Activos de reserva + Sección II (drenajes,
+    ya negativos: II.1 préstamos/dep + II.2 forwards/swaps + II.3 repos). El bucket
+    "3m-1año" de II.1 es el Bopreal a 12m."""
     import io
     import pdfplumber  # ya en requirements; import perezoso → si falta, cae al fallback
+    with pdfplumber.open(io.BytesIO(content)) as pdf:
+        txt = "\n".join((p.extract_text() or "") for p in pdf.pages[:2])
+    ia  = re.search(r"A\.\s*Activos de reserva oficiales\s+([\d.]+,\d{2})", txt)
+    ii1 = re.search(r"Pr[ée]stamos en moneda extranjera,\s*valores,?\s*y\s*dep[óo]sitos"
+                    r"\s*\d*\s+(-?[\d.]+,\d{2})"
+                    r"(?:\s+(-?[\d.]+,\d{2})\s+(-?[\d.]+,\d{2})\s+(-?[\d.]+,\d{2}))?", txt)
+    ii2 = re.search(r"swaps de monedas\)\s*\d*\s*\n\s*(-?[\d.]+,\d{2})", txt)
+    ii3 = re.search(r"3\.\s*Otros \(especificar\)\s+(-?[\d.]+,\d{2})", txt)
+    if not all([ia, ii1, ii2, ii3]):
+        return None
+    brutas = _num_es(ia.group(1))
+    p_dep, swaps, repos = _num_es(ii1.group(1)), _num_es(ii2.group(1)), _num_es(ii3.group(1))
+    bopreal = _num_es(ii1.group(4)) if ii1.group(4) else 0.0
+    mf = re.search(r"final del per[ií]odo\)\s*(\d{2}/\d{2}/\d{2})", txt)
+    return {"netas": brutas + p_dep + swaps + repos, "brutas": brutas,
+            "prestamos_dep": p_dep, "swaps": swaps, "repos": repos,
+            "bopreal_12m": bopreal, "fecha": mf.group(1) if mf else None}
+
+
+def _reservas_netas_sdds() -> dict:
+    """Reservas netas de la última Planilla SDDS del BCRA (temp{MM}{YY}.pdf). Prueba
+    las planillas de los últimos meses (se publican ~22 días tras el cierre) y usa la
+    primera parseable. 100% oficial, sin ajustes ni constantes."""
     hoy = date.today(); y, m = hoy.year, hoy.month
     for _ in range(4):
         nombre = f"temp{m:02d}{y % 100:02d}"
@@ -225,25 +248,9 @@ def _reservas_netas_sdds() -> dict:
             r = requests.get(SDDS_URL_BASE.format(nombre), headers=HTTP_HEADERS,
                              timeout=60, verify=False)
             if r.status_code == 200 and len(r.content) > 50000:
-                with pdfplumber.open(io.BytesIO(r.content)) as pdf:
-                    txt = "\n".join((p.extract_text() or "") for p in pdf.pages[:2])
-                ia  = re.search(r"A\.\s*Activos de reserva oficiales\s+([\d.]+,\d{2})", txt)
-                # II.1 con el desglose por vencimiento: Total, hasta-1-mes, 1-3m, 3m-1año.
-                # El bucket "3m-1año" es el Bopreal a 12m (lo que el mercado excluye).
-                ii1 = re.search(r"Pr[ée]stamos en moneda extranjera,\s*valores,?\s*y\s*dep[óo]sitos"
-                                r"\s*\d*\s+(-?[\d.]+,\d{2})"
-                                r"(?:\s+(-?[\d.]+,\d{2})\s+(-?[\d.]+,\d{2})\s+(-?[\d.]+,\d{2}))?", txt)
-                ii2 = re.search(r"swaps de monedas\)\s*\d*\s*\n\s*(-?[\d.]+,\d{2})", txt)
-                ii3 = re.search(r"3\.\s*Otros \(especificar\)\s+(-?[\d.]+,\d{2})", txt)
-                if all([ia, ii1, ii2, ii3]):
-                    brutas = _num_es(ia.group(1))
-                    p_dep, swaps, repos = _num_es(ii1.group(1)), _num_es(ii2.group(1)), _num_es(ii3.group(1))
-                    bopreal = _num_es(ii1.group(4)) if ii1.group(4) else 0.0
-                    mf = re.search(r"final del per[ií]odo\)\s*(\d{2}/\d{2}/\d{2})", txt)
-                    return {"netas": brutas + p_dep + swaps + repos, "brutas": brutas,
-                            "prestamos_dep": p_dep, "swaps": swaps, "repos": repos,
-                            "bopreal_12m": bopreal,
-                            "planilla": nombre, "fecha": mf.group(1) if mf else nombre}
+                s = _parse_sdds_content(r.content)
+                if s:
+                    return {**s, "planilla": nombre, "fecha": s["fecha"] or nombre}
         except Exception:
             pass
         m -= 1

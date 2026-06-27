@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-26T23:21:10.809755",
+  "generated_at": "2026-06-27T00:18:34.291348",
   "period": "2026-06",
   "score_global": 3.8,
   "ponderacion": {
@@ -33,7 +33,8 @@
           "peso_efectivo": 0.175,
           "aporte_score": 3.5,
           "aporte_formula": "Banda ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntos 0–100; puntaje 65; pesa 17,5% del ITCM)",
-          "aporte_nota": null
+          "aporte_nota": null,
+          "aporte_input_txt": null
         },
         "reservas_bcra": {
           "valor": 4122.0,
@@ -56,7 +57,8 @@
           "peso_efectivo": 0.1,
           "aporte_score": 7.0,
           "aporte_formula": "Banda ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntos 0–100; puntaje 30; pesa 10,0% del ITCM)",
-          "aporte_nota": null
+          "aporte_nota": null,
+          "aporte_input_txt": "netas 4122 = SDDS estricto -1605 + Tesoro 3058 + Bopreal 2670 (M USD)"
         },
         "idc": {
           "valor": 1.012,
@@ -78,7 +80,8 @@
           "peso_efectivo": 0.1,
           "aporte_score": 4.0,
           "aporte_formula": "Banda ITCM: >1,04 → 100 · 1,02–1,04 → 85 · 0,98–1,02 → 60 · 0,95–0,98 → 35 · ≤0,95 → 10 (puntos 0–100; puntaje 60; pesa 10,0% del ITCM)",
-          "aporte_nota": null
+          "aporte_nota": null,
+          "aporte_input_txt": "índice 1,012 = precio 0,9947 · volumen 1,0042 · asignación 1,0398 (amarillo)"
         },
         "badlar": {
           "valor": 21.25,
@@ -89,7 +92,8 @@
           "en_indice": false,
           "aporte_score": null,
           "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
+          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
+          "aporte_input_txt": null
         },
         "emae_ia": {
           "valor": 5.48,
@@ -104,7 +108,8 @@
           "peso_efectivo": 0.15,
           "aporte_score": 0.0,
           "aporte_formula": "Banda ITCM: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤-5 → 5 (puntos 0–100; puntaje 100; pesa 15,0% del ITCM)",
-          "aporte_nota": null
+          "aporte_nota": null,
+          "aporte_input_txt": null
         },
         "saldo_comercial_12m": {
           "valor": 21221.0,
@@ -125,7 +130,8 @@
           "peso_efectivo": 0.12,
           "aporte_score": 1.5,
           "aporte_formula": "Banda ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤-15000 → 10 (puntos 0–100; puntaje 85; pesa 12,0% del ITCM)",
-          "aporte_nota": null
+          "aporte_nota": null,
+          "aporte_input_txt": null
         },
         "recaudacion": {
           "valor": 1.82,
@@ -142,7 +148,8 @@
           "peso_efectivo": 0.18,
           "aporte_score": 4.0,
           "aporte_formula": "Banda ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · ≤-5 → 10 (puntos 0–100; puntaje 60; pesa 18,0% del ITCM)",
-          "aporte_nota": null
+          "aporte_nota": null,
+          "aporte_input_txt": null
         },
         "tcrm": {
           "valor": 79.77,
@@ -153,7 +160,8 @@
           "en_indice": false,
           "aporte_score": null,
           "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
+          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
+          "aporte_input_txt": null
         },
         "rem_ipc_12m": {
           "valor": 23.3,
@@ -170,7 +178,8 @@
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.76% mensual, en la misma escala que el IPC.",
           "aporte_score": 1.5,
           "aporte_formula": "Banda ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntos 0–100; puntaje 85; pesa 17,5% del ITCM)",
-          "aporte_nota": null
+          "aporte_nota": null,
+          "aporte_input_txt": "equiv. mensual 1,76% (raíz-12 del 23,3% anual)"
         },
         "prestamos_privados": {
           "valor": 3.05,
@@ -181,7 +190,8 @@
           "en_indice": false,
           "aporte_score": null,
           "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
+          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
+          "aporte_input_txt": null
         },
         "base_monetaria": {
           "valor": 5.55,
@@ -192,7 +202,8 @@
           "en_indice": false,
           "aporte_score": null,
           "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
+          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
+          "aporte_input_txt": null
         },
         "tc_mayorista": {
           "valor": 4.57,
@@ -203,7 +214,8 @@
           "en_indice": false,
           "aporte_score": null,
           "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
+          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
+          "aporte_input_txt": null
         }
       },
       "alerta": null,
@@ -449,7 +461,7 @@
           "fecha_dato": "2026-05-27",
           "desactualizado": false,
           "var_real_12m": -2.7,
-          "aporte_input_txt": "-2,7% interanual real",
+          "aporte_input_txt": "-2,7% interanual real (no el stock nominal)",
           "aporte_score": 4.3,
           "aporte_formula": "−20% real → 0 · 0% → 5 · +20% real → 10 (var. interanual real del crédito)",
           "aporte_nota": null

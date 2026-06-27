@@ -123,7 +123,7 @@ const seriesJson = JSON.stringify(series);
               `<span class="cg-score-c0">sin tensión</span><span class="cg-score-c10">tensión máx.</span>` +
             `</div>` +
           `</div>` +
-          (d.aporteInputTxt ? `<p class="cg-score-map"><strong>Valor usado:</strong> ${esc(d.aporteInputTxt)} (no el stock nominal)</p>` : "") +
+          (d.aporteInputTxt ? `<p class="cg-score-map"><strong>Valor usado:</strong> ${esc(d.aporteInputTxt)}</p>` : "") +
           (d.aporteFormula ? `<p class="cg-score-map"><strong>Cómo se calcula:</strong> ${esc(d.aporteFormula)}</p>` : "") +
           `<p class="cg-score-note">Este indicador aporta <strong>${nf.format(d.aporteScore)} de 10</strong> de tensión. ` +
             `Score del cinturón: <strong>${nf.format(d.scoreCint)}/10</strong>. ` +

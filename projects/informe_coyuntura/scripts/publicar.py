@@ -253,6 +253,26 @@ def _scoring_macro_itcm(c):
         ind["aporte_score"] = aporte
         ind["aporte_formula"] = formula
         ind["aporte_nota"] = nota
+        ind["aporte_input_txt"] = _macro_input_txt(ikey, ind)
+
+
+def _macro_input_txt(ikey, ind):
+    """'Valor usado' que muestra el modal: la descomposición del número que
+    realmente se puntúa (no siempre coincide con el valor mostrado)."""
+    coma = lambda x: str(x).replace(".", ",")    # decimal es-AR, sin tocar el resto
+    if ikey == "rem_ipc_12m" and ind.get("equivalente_mensual") is not None:
+        return (f"equiv. mensual {coma(ind['equivalente_mensual'])}% "
+                f"(raíz-12 del {coma(ind.get('valor'))}% anual)")
+    if ikey == "reservas_bcra" and ind.get("netas_sdds_estricto") is not None:
+        return (f"netas {int(ind.get('valor', 0))} = SDDS estricto {int(ind['netas_sdds_estricto'])} "
+                f"+ Tesoro {int(ind.get('depositos_tesoro', 0))} "
+                f"+ Bopreal {int(ind.get('bopreal_12m', 0))} (M USD)")
+    if ikey == "idc" and ind.get("componentes"):
+        c = ind["componentes"]
+        return (f"índice {coma(ind.get('valor'))} = precio {coma(c.get('precio'))} · "
+                f"volumen {coma(c.get('volumen'))} · asignación {coma(c.get('asignacion'))} "
+                f"({ind.get('semaforo', '')})")
+    return None
 
 
 def aplicar_scoring(informe):
@@ -275,7 +295,7 @@ def aplicar_scoring(informe):
                     aporte = _clamp10(fn(float(entrada)))
                     formula = mapa
                     if campo == "var_real_12m":                  # mostrar el input real, no el stock
-                        ind["aporte_input_txt"] = f"{entrada:+.1f}% interanual real".replace(".", ",")
+                        ind["aporte_input_txt"] = f"{entrada:+.1f}% interanual real (no el stock nominal)".replace(".", ",")
                 elif ckey == "vida_cotidiana":
                     nota = VIDA_CONTEXTO                          # input ausente → contexto
             elif isinstance(avance, (int, float)):
