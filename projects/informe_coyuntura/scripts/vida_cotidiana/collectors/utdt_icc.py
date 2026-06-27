@@ -56,7 +56,7 @@ def _parse_icc_xls(content: bytes) -> dict:
     if ultimo_valor is None:
         raise ValueError("No se pudo parsear ninguna fila válida del Excel ICC")
 
-    return {"valor": ultimo_valor, "fecha": ultimo_fecha, "unidad": "índice"}
+    return {"valor": ultimo_valor, "fecha": ultimo_fecha, "unidad": "Índice"}
 
 
 def fetch_icc() -> dict:

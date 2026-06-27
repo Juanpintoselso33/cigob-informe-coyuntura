@@ -1,5 +1,5 @@
 ---
-import { informe, series, label, presentacion, CINTURONES } from "../lib/datos.ts";
+import { informe, series, label, presentacion, UNIDADES_LARGAS, CINTURONES } from "../lib/datos.ts";
 import { DESCRIPCIONES } from "../lib/descripciones.ts";
 
 const CINT_NOMBRE: Record<string, string> = {
@@ -24,7 +24,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
     info[`${SLUG_DE[ckey] ?? ckey}.${ikey}`] = {
       label: label(ikey), cinturon: CINT_NOMBRE[ckey] ?? ckey,
       que: d.que, aporta: d.aporta,
-      valor: p.texto, unidad: p.unidad, unidadLarga: ind.unidad ?? "—",
+      valor: p.texto, unidad: p.unidad, unidadLarga: UNIDADES_LARGAS[ikey] ?? ind.unidad ?? "—",
       frecuencia: d.frecuencia, tipo: d.tipo,
       fuente: ind.fuente ?? "", fecha: ind.fecha_dato ?? "", estado,
       aporteScore: ind.aporte_score ?? null,

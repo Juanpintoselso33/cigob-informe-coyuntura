@@ -18,12 +18,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación",
   },
   reservas_bcra: {
-    que: "Los dólares de libre disponibilidad del Banco Central: a las reservas brutas se les descuenta la deuda en moneda extranjera de corto plazo (swap con China, encajes de los depósitos en dólares, repos). Es lo que el Central realmente posee, no lo que tiene prestado — el número 'a secas' que mira el mercado.",
+    que: "Los dólares de libre disponibilidad del Banco Central: lo que realmente posee, descontada la deuda en moneda extranjera de corto plazo. Más exigente que las brutas.",
     aporta: "Es el termómetro real de la solvencia externa: con netas bajas o negativas, cualquier shock obliga a devaluar o a frenar importaciones. Las brutas pueden lucir altas y ocultar esa fragilidad.",
     frecuencia: "Mensual", tipo: "Nivel neto (stock)",
   },
   idc: {
-    que: "Mide la capacidad y la disposición del sistema financiero para prestar al sector privado: cruza el costo real del crédito, cuánto crecen los depósitos en términos reales y el margen que les queda a los bancos para prestar más.",
+    que: "Mide si el sistema financiero tiene fondos y disposición para prestar al sector privado.",
     aporta: "Un crédito que se expande acompaña la inversión y la actividad; uno que se contrae las ahoga. Semáforo: >1,02 expansión (verde) · 0,98–1,02 neutro (amarillo) · <0,98 contracción (rojo).",
     frecuencia: "Mensual", tipo: "Índice (~1,0)",
   },

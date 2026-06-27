@@ -164,6 +164,40 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "% i.a.",
 };
 
+// Unidad "larga" para la ficha del modal (campo "Unidad"). Normalizada y
+// consistente, independiente del estado del cache de cada colector. Describe
+// SOLO la unidad de medida; la metodología vive en "Cómo se calcula".
+export const UNIDADES_LARGAS: Record<string, string> = {
+  // macro
+  ipc_total: "% mensual", reservas_bcra: "Millones de USD", idc: "Índice (~1,0)",
+  badlar: "% anual", emae_ia: "% interanual",
+  saldo_comercial_12m: "Millones de USD (acum. 12 meses)", recaudacion: "% interanual real",
+  tcrm: "Índice (base 2010=100)", rem_ipc_12m: "% anual esperado",
+  prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
+  // politica
+  votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",
+  movilizacion_cepa: "Índice (0–100)", iaf_transferencias: "% interanual real",
+  eficacia_legislativa: "% de proyectos", cohesion_bloque: "% de votos",
+  gobernadores_alineamiento: "% de gobernadores", veto_quorum: "% de sesiones",
+  comisiones_caidas: "% de proyectos",
+  // vida cotidiana
+  brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
+  endeudamiento_familiar: "Billones de pesos", peso_tarifas: "% mensual",
+  consumo_carne: "kg por habitante/año", informalidad: "% de asalariados",
+  mortalidad_pymes: "% mensual", despacho_cemento: "Índice", pluriempleo: "% de ocupados",
+  inseguridad: "Hechos por año", icc_utdt: "Índice", sentimiento_digital: "Índice (0–100)",
+  patentamiento_motos: "Unidades",
+  // espíritu de época
+  clima_electoral: "Puntos porcentuales",
+  // gestion
+  cepo_mulc: "% de brecha", privatizaciones: "% de avance",
+  concesiones_infraestructura: "% de avance", reduccion_estado: "% de variación",
+  reestructuracion_organismos: "% de avance", rigi_inversiones: "% de avance",
+  desregulacion_normativa: "% de avance", apertura_comercial: "% interanual",
+  asistencia_directa: "% de avance", fal_modernizacion_laboral: "% de avance",
+  libertad_opcion_salud: "% de avance", protocolo_antipiquetes: "% de avance",
+};
+
 export interface Presentacion { texto: string; unidad: string; titulo: string; }
 
 // Decide qué mostrar en la columna de valor sin desbordar:

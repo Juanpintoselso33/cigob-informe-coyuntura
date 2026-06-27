@@ -89,7 +89,7 @@ def fetch_ciccra() -> dict:
                 "consumo_carne_per_capita": {
                     "valor": per_capita,
                     "fecha": f"{year}-{month:02d}",
-                    "unidad": "kg/habitante/anio",
+                    "unidad": "kg por habitante/año",
                     "fuente": "CICCRA",
                     "url": url,
                     "nota": "Consumo aparente per capita anualizado" if per_capita else "PDF descargado pero no se pudo extraer valor",

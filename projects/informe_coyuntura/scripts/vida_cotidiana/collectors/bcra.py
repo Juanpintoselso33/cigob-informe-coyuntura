@@ -98,7 +98,7 @@ def fetch_bcra() -> dict:
         results["credito_consumo_total"] = {
             "valor": consumo,
             "fecha": fecha,
-            "unidad": "millones_pesos",
+            "unidad": "Millones de pesos",
             "nota": "Tarjeta + personales. Proxy de endeudamiento familiar de consumo.",
         }
         # Serie mensual (tarjeta + personales) para la variación interanual real.

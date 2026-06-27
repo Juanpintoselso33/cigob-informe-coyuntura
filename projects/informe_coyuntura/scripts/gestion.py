@@ -196,7 +196,7 @@ def fetch_cepo_mulc() -> dict | None:
         return {
             "valor":          brecha,
             "avance_pct":     avance,
-            "unidad":         "% brecha CCL/mayorista (cepo corporativo)",
+            "unidad":         "% de brecha",
             "fuente":         DOLARAPI_URL,
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,
@@ -238,7 +238,7 @@ def fetch_reduccion_estado() -> dict | None:
         return {
             "valor":          var_pct,
             "avance_pct":     avance,
-            "unidad":         f"% var. vs {baseline_date}",
+            "unidad":         f"% de variación (vs {baseline_date})",
             "fuente":         INDEC_SERIES_BASE,
             "fecha_dato":     current_date,
             "desactualizado": False,
@@ -272,7 +272,7 @@ def fetch_apertura_comercial() -> dict | None:
         return {
             "valor":          var_ia,
             "avance_pct":     avance,
-            "unidad":         "% var. i.a. importaciones totales (M USD)",
+            "unidad":         "% interanual",
             "fuente":         INDEC_SERIES_BASE,
             "fecha_dato":     current_date,
             "desactualizado": False,
@@ -300,7 +300,7 @@ def fetch_desregulacion_normativa() -> dict | None:
         return {
             "valor":          count,
             "avance_pct":     avance,
-            "unidad":         "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
+            "unidad":         "Normas (conteo)",
             "fuente":         INFOLEG_HOME,
             "fecha_dato":     today.isoformat(),
             "desactualizado": False,
@@ -358,7 +358,7 @@ def fetch_rigi_inversiones() -> dict | None:
         return {
             "valor":          count,
             "avance_pct":     avance,
-            "unidad":         "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
+            "unidad":         "Resoluciones (conteo)",
             "fuente":         INFOLEG_HOME,
             "fecha_dato":     today.isoformat(),
             "desactualizado": False,
@@ -400,7 +400,7 @@ def fetch_reestructuracion_organismos() -> dict | None:
         return {
             "valor":          count,
             "avance_pct":     avance,
-            "unidad":         "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
+            "unidad":         "Normas (conteo)",
             "fuente":         INFOLEG_HOME,
             "fecha_dato":     today.isoformat(),
             "desactualizado": False,

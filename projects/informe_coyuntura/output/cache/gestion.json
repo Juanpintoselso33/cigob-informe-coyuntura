@@ -1,14 +1,14 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-06-26T20:29:57.584801",
+  "generated_at": "2026-06-27T00:52:49.162079",
   "score": 5.8,
   "indicadores": {
     "cepo_mulc": {
       "valor": 4.37,
       "avance_pct": 78.2,
-      "unidad": "% brecha CCL/mayorista (cepo corporativo)",
+      "unidad": "% de brecha",
       "fuente": "https://dolarapi.com/v1/dolares",
-      "fecha_dato": "2026-06-26",
+      "fecha_dato": "2026-06-27",
       "desactualizado": false
     },
     "privatizaciones": {
@@ -30,7 +30,7 @@
     "reduccion_estado": {
       "valor": -0.8,
       "avance_pct": 2.7,
-      "unidad": "% var. vs 2024-01-01",
+      "unidad": "% de variación (vs 2024-01-01)",
       "fuente": "https://apis.datos.gob.ar/series/api/series/",
       "fecha_dato": "2025-10-01",
       "desactualizado": false
@@ -38,31 +38,31 @@
     "reestructuracion_organismos": {
       "valor": 18,
       "avance_pct": 40.0,
-      "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
+      "unidad": "Normas (conteo)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-26",
+      "fecha_dato": "2026-06-27",
       "desactualizado": false
     },
     "rigi_inversiones": {
       "valor": 31,
       "avance_pct": 31.0,
-      "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
+      "unidad": "Resoluciones (conteo)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-26",
+      "fecha_dato": "2026-06-27",
       "desactualizado": false
     },
     "desregulacion_normativa": {
       "valor": 60,
       "avance_pct": 60.0,
-      "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
+      "unidad": "Normas (conteo)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-26",
+      "fecha_dato": "2026-06-27",
       "desactualizado": false
     },
     "apertura_comercial": {
       "valor": 42.4,
       "avance_pct": 100.0,
-      "unidad": "% var. i.a. importaciones totales (M USD)",
+      "unidad": "% interanual",
       "fuente": "https://apis.datos.gob.ar/series/api/series/",
       "fecha_dato": "2025-02-01",
       "desactualizado": false

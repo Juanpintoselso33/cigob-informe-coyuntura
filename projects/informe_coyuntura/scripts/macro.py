@@ -285,8 +285,8 @@ def fetch_reservas_netas() -> dict | None:
             raise ValueError(f"netas fuera de rango plausible: {netas:.0f}")
         return {
             "valor": round(netas, 0),
-            "unidad": "mill USD (netas a secas, consenso)",
-            "fuente": f"BCRA Planilla SDDS ({s['planilla']}.pdf) + dep. Tesoro (balance) — cálculo propio",
+            "unidad": "Millones de USD",
+            "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
             "fecha_dato": s["fecha"],
             "netas_sdds_estricto": round(s["netas"], 0),
             "depositos_tesoro": round(tesoro, 0),
@@ -309,8 +309,8 @@ def fetch_reservas_netas() -> dict | None:
         estricto = brutas - float(cfg["drenajes_seccion_ii"])
         return {
             "valor": round(estricto + tesoro, 0),
-            "unidad": "mill USD (netas libre disponibilidad)",
-            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_RESERVAS_ID} − drenajes SDDS config + Tesoro (fallback)",
+            "unidad": "Millones de USD",
+            "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
             "fecha_dato": fecha,
             "netas_sdds_estricto": round(estricto, 0),
             "depositos_tesoro": round(tesoro, 0),
@@ -366,7 +366,7 @@ def fetch_idc() -> dict | None:
         semaforo = "verde" if idc > 1.02 else "amarillo" if idc >= 0.98 else "rojo"
         return {
             "valor": round(idc, 4),
-            "unidad": "índice (~1,0)",
+            "unidad": "Índice (~1,0)",
             "fuente": (f"{BCRA_VARIABLES_BASE}/{BCRA_BADLAR_ID},{BCRA_DEP_PRIV_ID},"
                        f"{BCRA_PREST_PRIV_ID} + IPC INDEC"),
             "fecha_dato": dep["fecha"],
@@ -420,7 +420,7 @@ def fetch_saldo_comercial_12m() -> dict | None:
         impo_12, impo_prev = sum(im[:12]), sum(im[12:24])
         return {
             "valor": round(expo_12 - impo_12, 0),
-            "unidad": "mill USD acumulado 12m",
+            "unidad": "Millones de USD (acum. 12 meses)",
             "fuente": INDEC_SERIES_BASE,
             "fecha_dato": comunes[0][0],
             "desactualizado": False,
@@ -439,7 +439,7 @@ def fetch_saldo_comercial_12m() -> dict | None:
         total  = sum(meses)
         return {
             "valor": round(total, 0),
-            "unidad": "mill USD acumulado 12m",
+            "unidad": "Millones de USD (acum. 12 meses)",
             "fuente": INDEC_SERIES_BASE,
             "fecha_dato": data[0][0],
             "desactualizado": False,
@@ -477,7 +477,7 @@ def fetch_tcrm() -> dict | None:
         val  = data[0][1]
         return {
             "valor": round(float(val), 2),
-            "unidad": "índice base 2010=100",
+            "unidad": "Índice (base 2010=100)",
             "fuente": INDEC_SERIES_BASE,
             "fecha_dato": data[0][0],
             "desactualizado": False,
@@ -492,7 +492,7 @@ def fetch_rem_ipc_12m() -> dict | None:
         ultimo = _bcra_ultimo(BCRA_REM_IPC_ID)
         return {
             "valor": round(float(ultimo["valor"]), 1),
-            "unidad": "% anual esperado (mediana REM)",
+            "unidad": "% anual esperado",
             "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_REM_IPC_ID}",
             "fecha_dato": ultimo["fecha"],
             "desactualizado": False,
@@ -507,7 +507,7 @@ def fetch_prestamos_privados() -> dict | None:
         result = _bcra_variacion_m(BCRA_PRESTAMOS_ID)
         return {
             "valor": result["var_m"],
-            "unidad": "% var mensual nominal",
+            "unidad": "% mensual nominal",
             "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_PRESTAMOS_ID}",
             "fecha_dato": result["fecha"],
             "desactualizado": False,
@@ -522,7 +522,7 @@ def fetch_base_monetaria() -> dict | None:
         result = _bcra_variacion_m(BCRA_BASE_MON_ID)
         return {
             "valor": result["var_m"],
-            "unidad": "% var mensual nominal",
+            "unidad": "% mensual nominal",
             "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_BASE_MON_ID}",
             "fecha_dato": result["fecha"],
             "desactualizado": False,
@@ -537,7 +537,7 @@ def fetch_tc_mayorista() -> dict | None:
         result = _bcra_variacion_m(BCRA_TC_MAYOR_ID)
         return {
             "valor": result["var_m"],
-            "unidad": "% var mensual",
+            "unidad": "% mensual",
             "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_TC_MAYOR_ID}",
             "fecha_dato": result["fecha"],
             "desactualizado": False,

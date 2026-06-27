@@ -51,7 +51,7 @@ def fetch_cafam(year: int | None = None, month: int | None = None) -> dict:
             "patentamiento_motos": {
                 "valor": total,
                 "fecha": f"{year}-{month:02d}",
-                "unidad": "unidades",
+                "unidad": "Unidades",
                 "provincias": provincias,
                 "fuente": "CAFAM API",
             }

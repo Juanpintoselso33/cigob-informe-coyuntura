@@ -1,6 +1,6 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-27 00:18:34"
+generado: "2026-06-27 00:53:20"
 score_global: 3.7
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
@@ -19,32 +19,32 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ipc_total | 2.15 | % mensual | 2026-05-01 | fresco |
-| reservas_bcra | 4122.0 | mill USD (netas a secas, consenso) | 31/05/26 | fresco |
-| idc | 1.012 | índice (~1,0) | 2026-06-23 | fresco |
+| reservas_bcra | 4122.0 | Millones de USD | 31/05/26 | fresco |
+| idc | 1.012 | Índice (~1,0) | 2026-06-23 | fresco |
 | badlar | 21.25 | % anual | 2026-06-25 | fresco |
 | emae_ia | 5.48 | % i.a. | 2026-03-01 | fresco |
-| saldo_comercial_12m | 21221.0 | mill USD acumulado 12m | 2026-05-01 | fresco |
+| saldo_comercial_12m | 21221.0 | Millones de USD (acum. 12 meses) | 2026-05-01 | fresco |
 | recaudacion | 1.82 | % i.a. real | 2026-05-01 | fresco |
-| tcrm | 79.77 | índice base 2010=100 | 2024-12-01 | fresco |
-| rem_ipc_12m | 23.3 | % anual esperado (mediana REM) | 2026-05-31 | fresco |
-| prestamos_privados | 3.05 | % var mensual nominal | 2026-06-24 | fresco |
-| base_monetaria | 5.55 | % var mensual nominal | 2026-06-24 | fresco |
-| tc_mayorista | 4.57 | % var mensual | 2026-06-26 | fresco |
+| tcrm | 79.77 | Índice (base 2010=100) | 2024-12-01 | fresco |
+| rem_ipc_12m | 23.3 | % anual esperado | 2026-05-31 | fresco |
+| prestamos_privados | 3.05 | % mensual nominal | 2026-06-24 | fresco |
+| base_monetaria | 5.55 | % mensual nominal | 2026-06-24 | fresco |
+| tc_mayorista | 4.57 | % mensual | 2026-06-26 | fresco |
 
 ### 🟡 Politica — score 4.5/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| votometro_ventaja_lla | 13.3 | pp (LLA − PJ) | 2026-03-05 | ⚠ cache |
-| ratio_dnu | 1.5 | ratio DNUs / leyes sancionadas (año corriente) | 2026-06-26 | fresco |
-| movilizacion_cepa | 50.5 | índice 0–100 (normalizado) | 2026-06-26 | fresco |
-| iaf_transferencias | 1.8 | % variación real YoY en transferencias totales RON | 2026-06-26 | fresco |
-| eficacia_legislativa | 4.3 | % proyectos ejecutivos aprobados (ventana 12 meses) | 2026-06-26 | fresco |
+| votometro_ventaja_lla | 13.3 | Puntos porcentuales | 2026-03-05 | ⚠ cache |
+| ratio_dnu | 1.5 | DNUs por ley | 2026-06-27 | fresco |
+| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-27 | fresco |
+| iaf_transferencias | 1.8 | % interanual real | 2026-06-27 | fresco |
+| eficacia_legislativa | 4.3 | % de proyectos | 2026-06-27 | fresco |
 | cohesion_bloque | 78 | % votos en línea con la posición oficial del bloque LLA | 2026-04-01 | ⚠ cache |
 | gobernadores_alineamiento | 55 | % gobernadores alineados con política nacional | 2026-04-01 | ⚠ cache |
-| veto_quorum | 0.0 | % sesiones frustradas por falta de quórum | 2026-06-26 | fresco |
-| comisiones_caidas | 97.8 | % proyectos con dictamen que no llegaron al recinto | 2026-06-26 | fresco |
+| veto_quorum | 0.0 | % de sesiones | 2026-06-27 | fresco |
+| comisiones_caidas | 97.8 | % de proyectos | 2026-06-27 | fresco |
 
 ### 🟢 Vida Cotidiana — score 2.7/10 (estable)
 *Riesgo de barbarismo: político*
@@ -60,14 +60,14 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 4.37 | % brecha CCL/mayorista (cepo corporativo) | 2026-06-26 | fresco |
+| cepo_mulc | 4.37 | % de brecha | 2026-06-27 | fresco |
 | privatizaciones | En proceso — Aerolíneas y Correo sin transferencia efectiva | % empresas privatizadas efectivamente / listado DL 70/23 | 2026-05-01 | ⚠ cache |
 | concesiones_infraestructura | Parcial — corredores viales en licitación | % corredores viales concesionados / plan total (9 corredores) | 2026-05-01 | ⚠ cache |
-| reduccion_estado | -0.8 | % var. vs 2024-01-01 | 2025-10-01 | fresco |
-| reestructuracion_organismos | 18 | normas con 'disolucion' publicadas desde dic-2023 (InfoLeg) | 2026-06-26 | fresco |
-| rigi_inversiones | 31 | Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg) | 2026-06-26 | fresco |
-| desregulacion_normativa | 60 | normas con 'deroga' publicadas desde dic-2023 (InfoLeg) | 2026-06-26 | fresco |
-| apertura_comercial | 42.4 | % var. i.a. importaciones totales (M USD) | 2025-02-01 | fresco |
+| reduccion_estado | -0.8 | % de variación (vs 2024-01-01) | 2025-10-01 | fresco |
+| reestructuracion_organismos | 18 | Normas (conteo) | 2026-06-27 | fresco |
+| rigi_inversiones | 31 | Resoluciones (conteo) | 2026-06-27 | fresco |
+| desregulacion_normativa | 60 | Normas (conteo) | 2026-06-27 | fresco |
+| apertura_comercial | 42.4 | % interanual | 2025-02-01 | fresco |
 | asistencia_directa | None | % beneficiarios sociales con transferencia directa sin intermediación organizacional | 2026-04-01 | ⚠ cache |
 | fal_modernizacion_laboral | Legislación aprobada — reglamentación pendiente (H2 2026) | % implementación FAL (ley aprobada, reglamentación, operación) | 2026-05-22 | ⚠ cache |
 | libertad_opcion_salud | None | opciones de cambio captadas (SSS, acum. desde dic-2023) | 2026-04-01 | ⚠ cache |
@@ -89,4 +89,4 @@ schema_version: "1.2.0"
 - `desactualizado:espiritu_epoca:clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-27 00:18:34 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-27 00:53:20 — schema 1.2.0*

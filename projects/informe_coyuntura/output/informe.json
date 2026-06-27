@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-27T00:18:34.291348",
+  "generated_at": "2026-06-27T00:53:20.895039",
   "period": "2026-06",
   "score_global": 3.7,
   "ponderacion": {
@@ -34,8 +34,8 @@
         },
         "reservas_bcra": {
           "valor": 4122.0,
-          "unidad": "mill USD (netas a secas, consenso)",
-          "fuente": "BCRA Planilla SDDS (temp0526.pdf) + dep. Tesoro (balance) — cálculo propio",
+          "unidad": "Millones de USD",
+          "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
           "fecha_dato": "31/05/26",
           "netas_sdds_estricto": -1605.0,
           "depositos_tesoro": 3058.0,
@@ -54,7 +54,7 @@
         },
         "idc": {
           "valor": 1.012,
-          "unidad": "índice (~1,0)",
+          "unidad": "Índice (~1,0)",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7,100,117 + IPC INDEC",
           "fecha_dato": "2026-06-23",
           "componentes": {
@@ -93,7 +93,7 @@
         },
         "saldo_comercial_12m": {
           "valor": 21221.0,
-          "unidad": "mill USD acumulado 12m",
+          "unidad": "Millones de USD (acum. 12 meses)",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
@@ -125,7 +125,7 @@
         },
         "tcrm": {
           "valor": 79.77,
-          "unidad": "índice base 2010=100",
+          "unidad": "Índice (base 2010=100)",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
           "fecha_dato": "2024-12-01",
           "desactualizado": false,
@@ -133,7 +133,7 @@
         },
         "rem_ipc_12m": {
           "valor": 23.3,
-          "unidad": "% anual esperado (mediana REM)",
+          "unidad": "% anual esperado",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29",
           "fecha_dato": "2026-05-31",
           "desactualizado": false,
@@ -147,7 +147,7 @@
         },
         "prestamos_privados": {
           "valor": 3.05,
-          "unidad": "% var mensual nominal",
+          "unidad": "% mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
           "fecha_dato": "2026-06-24",
           "desactualizado": false,
@@ -155,7 +155,7 @@
         },
         "base_monetaria": {
           "valor": 5.55,
-          "unidad": "% var mensual nominal",
+          "unidad": "% mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
           "fecha_dato": "2026-06-24",
           "desactualizado": false,
@@ -163,7 +163,7 @@
         },
         "tc_mayorista": {
           "valor": 4.57,
-          "unidad": "% var mensual",
+          "unidad": "% mensual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
           "fecha_dato": "2026-06-26",
           "desactualizado": false,
@@ -264,8 +264,8 @@
           "lla_ponderado": 41.8,
           "pj_ponderado": 28.5,
           "n_encuestas": 11,
-          "unidad": "pp (LLA − PJ)",
-          "fuente": "/home/runner/work/biblitotecario-ai/biblitotecario-ai/projects/votometro/web/votometro.html",
+          "unidad": "Puntos porcentuales",
+          "fuente": "Votómetro CIGOB",
           "fecha_dato": "2026-03-05",
           "desactualizado": true
         },
@@ -274,18 +274,18 @@
           "dnu_count": 24,
           "leyes_count": 16,
           "periodo": "2026",
-          "unidad": "ratio DNUs / leyes sancionadas (año corriente)",
+          "unidad": "DNUs por ley",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         },
         "movilizacion_cepa": {
           "valor": 50.5,
           "cifra_cruda": 101.0,
           "metrica": "101.0 conflictos acumulados",
-          "unidad": "índice 0–100 (normalizado)",
+          "unidad": "Índice (0–100)",
           "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         },
         "iaf_transferencias": {
@@ -295,9 +295,9 @@
           "total_ant_mm": 74.0,
           "periodo": "2025 vs 2024",
           "ipc_aplicado_pct": 38.3,
-          "unidad": "% variación real YoY en transferencias totales RON",
+          "unidad": "% interanual real",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         },
         "eficacia_legislativa": {
@@ -305,9 +305,9 @@
           "aprobados_n": 1,
           "enviados_n": 23,
           "ventana_dias": 365,
-          "unidad": "% proyectos ejecutivos aprobados (ventana 12 meses)",
+          "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         },
         "cohesion_bloque": {
@@ -333,20 +333,20 @@
           "fracasadas_n": 0,
           "total_n": 3,
           "periodo_id": "HCDN144",
-          "unidad": "% sesiones frustradas por falta de quórum",
+          "unidad": "% de sesiones",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         },
         "comisiones_caidas": {
           "valor": 97.8,
-          "dictamen_n": 464,
+          "dictamen_n": 461,
           "aprobados_n": 10,
-          "caidas_n": 454,
+          "caidas_n": 451,
           "ventana_dias": 365,
-          "unidad": "% proyectos con dictamen que no llegaron al recinto",
+          "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         }
       },
@@ -389,9 +389,9 @@
         "cepo_mulc": {
           "valor": 4.37,
           "avance_pct": 78.2,
-          "unidad": "% brecha CCL/mayorista (cepo corporativo)",
+          "unidad": "% de brecha",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         },
         "privatizaciones": {
@@ -413,7 +413,7 @@
         "reduccion_estado": {
           "valor": -0.8,
           "avance_pct": 2.7,
-          "unidad": "% var. vs 2024-01-01",
+          "unidad": "% de variación (vs 2024-01-01)",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
           "fecha_dato": "2025-10-01",
           "desactualizado": false
@@ -421,31 +421,31 @@
         "reestructuracion_organismos": {
           "valor": 18,
           "avance_pct": 40.0,
-          "unidad": "normas con 'disolucion' publicadas desde dic-2023 (InfoLeg)",
+          "unidad": "Normas (conteo)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         },
         "rigi_inversiones": {
           "valor": 31,
           "avance_pct": 31.0,
-          "unidad": "Resoluciones tipo=3 texto='VPU' desde jul-2024 (InfoLeg)",
+          "unidad": "Resoluciones (conteo)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         },
         "desregulacion_normativa": {
           "valor": 60,
           "avance_pct": 60.0,
-          "unidad": "normas con 'deroga' publicadas desde dic-2023 (InfoLeg)",
+          "unidad": "Normas (conteo)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false
         },
         "apertura_comercial": {
           "valor": 42.4,
           "avance_pct": 100.0,
-          "unidad": "% var. i.a. importaciones totales (M USD)",
+          "unidad": "% interanual",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
           "fecha_dato": "2025-02-01",
           "desactualizado": false
