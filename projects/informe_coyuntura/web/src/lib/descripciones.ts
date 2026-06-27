@@ -15,9 +15,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación",
   },
   reservas_bcra: {
-    que: "Reservas NETAS del Banco Central (metodología Machado/OPEN): brutas menos los pasivos en dólares (encajes, swap China, préstamos a organismos y repos a 12m), calculadas con datos oficiales del BCRA.",
-    aporta: "Miden los dólares de libre disponibilidad reales: a diferencia de las brutas, descuentan la deuda en moneda extranjera. Son el verdadero colchón para defender el peso y pagar deuda.",
-    frecuencia: "Diaria (brutas) + pasivos mensuales", tipo: "Nivel neto (stock)",
+    que: "Reservas NETAS de libre disponibilidad del BCRA ('a secas', el número del mercado): neto estricto de la planilla SDDS + depósitos del Tesoro + Bopreal a 12m, todo de datos oficiales (planilla SDDS y balance del BCRA).",
+    aporta: "Miden los dólares realmente disponibles para defender el peso y pagar deuda: a diferencia de las brutas, descuentan la deuda en moneda extranjera de corto plazo.",
+    frecuencia: "Mensual (planilla SDDS)", tipo: "Nivel neto (stock)",
   },
   idc: {
     que: "Índice de Capacidad Prestable: combina tasa real de la BADLAR (precio), depósitos privados reales (volumen) y holgura préstamos/depósitos (asignación).",

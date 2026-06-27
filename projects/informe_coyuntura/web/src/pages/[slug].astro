@@ -90,13 +90,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <section class="cg-section cg-nota-met">
         <p class="cg-eyebrow">Nota metodológica</p>
         <p>
-          La <strong>recaudación tributaria</strong> puntúa sobre su variación mensual nominal,
-          tal como define la paramétrica CIGOB (may-2026). Esa serie tiene fuerte estacionalidad
-          (vencimientos impositivos concentrados en ciertos meses), por lo que la dimensión
-          fiscal-comercial puede oscilar entre meses sin un cambio de fondo en la viabilidad fiscal.
-          Está en evaluación migrar la escala a variación <strong>interanual real</strong> en una
-          próxima revisión metodológica. El <strong>score {c.score}/10</strong> y el{" "}
-          <strong>ITCM {c.itcm?.valor}/100</strong> son la misma medición en dos escalas:
+          La <strong>recaudación tributaria</strong> se puntúa por su variación{" "}
+          <strong>interanual real</strong> (deflactada por el IPC del mismo período), para
+          aislar la recuperación genuina del efecto inflacionario. Las <strong>reservas</strong>{" "}
+          se miden <strong>netas de libre disponibilidad</strong> (el número del mercado): el
+          neto estricto de la planilla SDDS del BCRA más los depósitos del Tesoro y el Bopreal a
+          12 meses, que no son pasivos del BCRA para defender el tipo de cambio. La dimensión de
+          financiamiento usa el <strong>Índice de Capacidad Prestable</strong> (precio, volumen
+          y asignación del crédito), no la tasa nominal. El <strong>score {c.score}/10</strong> y
+          el <strong>ITCM {c.itcm?.valor}/100</strong> son la misma medición en dos escalas:
           tensión = (100 − ITCM) / 10; la escala 0–10 permite comparar macro con los otros
           cuatro cinturones y componer el score global.
         </p>
