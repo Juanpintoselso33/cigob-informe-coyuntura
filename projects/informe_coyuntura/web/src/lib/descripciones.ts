@@ -15,13 +15,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación",
   },
   reservas_bcra: {
-    que: "Reservas NETAS de libre disponibilidad del BCRA ('a secas', el número del mercado): neto estricto de la planilla SDDS + depósitos del Tesoro + Bopreal a 12m, todo de datos oficiales (planilla SDDS y balance del BCRA).",
-    aporta: "Miden los dólares realmente disponibles para defender el peso y pagar deuda: a diferencia de las brutas, descuentan la deuda en moneda extranjera de corto plazo.",
-    frecuencia: "Mensual (planilla SDDS)", tipo: "Nivel neto (stock)",
+    que: "Los dólares de libre disponibilidad del Banco Central: a las reservas brutas se les descuenta la deuda en moneda extranjera de corto plazo (swap con China, encajes de los depósitos en dólares, repos). Es lo que el Central realmente posee, no lo que tiene prestado — el número 'a secas' que mira el mercado.",
+    aporta: "Es el termómetro real de la solvencia externa: con netas bajas o negativas, cualquier shock obliga a devaluar o a frenar importaciones. Las brutas pueden lucir altas y ocultar esa fragilidad.",
+    frecuencia: "Mensual", tipo: "Nivel neto (stock)",
   },
   idc: {
-    que: "Índice de Capacidad Prestable: combina tasa real de la BADLAR (precio), depósitos privados reales (volumen) y holgura préstamos/depósitos (asignación).",
-    aporta: "Resume si el sistema financiero tiene fondos y disposición para prestar. >1,02 expansión (verde), 0,98-1,02 neutro (amarillo), <0,98 contracción (rojo).",
+    que: "Mide la capacidad y la disposición del sistema financiero para prestar al sector privado: cruza el costo real del crédito, cuánto crecen los depósitos en términos reales y el margen que les queda a los bancos para prestar más.",
+    aporta: "Un crédito que se expande acompaña la inversión y la actividad; uno que se contrae las ahoga. Semáforo: >1,02 expansión (verde) · 0,98–1,02 neutro (amarillo) · <0,98 contracción (rojo).",
     frecuencia: "Mensual", tipo: "Índice (~1,0)",
   },
   badlar: {
