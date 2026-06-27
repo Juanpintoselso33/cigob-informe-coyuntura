@@ -1,7 +1,7 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-26 20:34:02"
-score_global: 3.4
+generado: "2026-06-26 21:06:17"
+score_global: 3.7
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,42 +9,42 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-06
 
-**Score global:** 3.4/10  |  **Riesgo dominante:** gerencial
+**Score global:** 3.7/10  |  **Riesgo dominante:** gerencial
 
 ## Cinturones
 
-### 🟢 Macro — score 2.0/10 (estable)
+### 🟢 Macro — score 2.9/10 (estable)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ipc_total | 2.15 | % mensual | 2026-05-01 | fresco |
-| reservas_bcra | 46936.0 | mill USD | 2026-06-24 | fresco |
-| spread_intermediacion | 5.39 | pts (activa − pasiva) | 2026-06-25 | fresco |
+| reservas_bcra | 1881.0 | mill USD (netas) | 2026-06-24 | fresco |
+| idc | 1.012 | índice (~1,0) | 2026-06-23 | fresco |
 | badlar | 21.25 | % anual | 2026-06-25 | fresco |
 | emae_ia | 5.48 | % i.a. | 2026-03-01 | fresco |
 | saldo_comercial_12m | 21221.0 | mill USD acumulado 12m | 2026-05-01 | fresco |
-| recaudacion | 23.64 | % var mensual nominal | 2026-05-01 | fresco |
+| recaudacion | 1.82 | % i.a. real | 2026-05-01 | fresco |
 | tcrm | 79.77 | índice base 2010=100 | 2024-12-01 | fresco |
 | rem_ipc_12m | 23.3 | % anual esperado (mediana REM) | 2026-05-31 | fresco |
 | prestamos_privados | 3.05 | % var mensual nominal | 2026-06-24 | fresco |
 | base_monetaria | 5.55 | % var mensual nominal | 2026-06-24 | fresco |
 | tc_mayorista | 4.57 | % var mensual | 2026-06-26 | fresco |
 
-### 🟡 Politica — score 4.4/10 (en_tension)
+### 🟡 Politica — score 4.5/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 13.3 | pp (LLA − PJ) | 2026-03-05 | ⚠ cache |
-| ratio_dnu | 1.438 | ratio DNUs / leyes sancionadas (año corriente) | 2026-06-19 | fresco |
-| movilizacion_cepa | 50.5 | índice 0–100 (normalizado) | 2026-06-19 | fresco |
-| iaf_transferencias | 1.8 | % variación real YoY en transferencias totales RON | 2026-06-19 | fresco |
-| eficacia_legislativa | 4.2 | % proyectos ejecutivos aprobados (ventana 12 meses) | 2026-06-19 | fresco |
+| ratio_dnu | 1.5 | ratio DNUs / leyes sancionadas (año corriente) | 2026-06-26 | fresco |
+| movilizacion_cepa | 50.5 | índice 0–100 (normalizado) | 2026-06-26 | fresco |
+| iaf_transferencias | 1.8 | % variación real YoY en transferencias totales RON | 2026-06-26 | fresco |
+| eficacia_legislativa | 4.3 | % proyectos ejecutivos aprobados (ventana 12 meses) | 2026-06-26 | fresco |
 | cohesion_bloque | 78 | % votos en línea con la posición oficial del bloque LLA | 2026-04-01 | ⚠ cache |
 | gobernadores_alineamiento | 55 | % gobernadores alineados con política nacional | 2026-04-01 | ⚠ cache |
-| veto_quorum | 0.0 | % sesiones frustradas por falta de quórum | 2026-06-19 | fresco |
-| comisiones_caidas | 97.8 | % proyectos con dictamen que no llegaron al recinto | 2026-06-19 | fresco |
+| veto_quorum | 0.0 | % sesiones frustradas por falta de quórum | 2026-06-26 | fresco |
+| comisiones_caidas | 97.8 | % proyectos con dictamen que no llegaron al recinto | 2026-06-26 | fresco |
 
 ### 🟢 Vida Cotidiana — score 2.7/10 (estable)
 *Riesgo de barbarismo: político*
@@ -52,7 +52,7 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ipc_total | 2.15 | % mensual | 2026-05-01 | fresco |
-| desocupacion | 0.1 | % | 2025-10-01 | fresco |
+| desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
 
 ### 🟡 Gestion — score 5.8/10 (en_tension)
@@ -73,13 +73,13 @@ schema_version: "1.2.0"
 | libertad_opcion_salud | None | opciones de cambio captadas (SSS, acum. desde dic-2023) | 2026-04-01 | ⚠ cache |
 | protocolo_antipiquetes | None | % cortes con carril libre garantizado / total cortes registrados | 2026-04-01 | ⚠ cache |
 
-### 🟢 Espiritu Epoca — score 2.3/10 (estable)
+### 🟢 Espiritu Epoca — score 2.4/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 6.3 | interés 0–100 | 2026-06-19 | fresco |
+| sentimiento_digital | 7.4 | interés 0–100 | 2026-06-26 | fresco |
 | clima_electoral | 13.3 | pp (LLA − PJ) | 2026-03-05 | ⚠ cache |
 
 ## Advertencias
@@ -89,4 +89,4 @@ schema_version: "1.2.0"
 - `desactualizado:espiritu_epoca:clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-26 20:34:02 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-26 21:06:17 — schema 1.2.0*

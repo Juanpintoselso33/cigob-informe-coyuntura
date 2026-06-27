@@ -19,18 +19,26 @@ Los puntajes salen siempre de las tablas. El juicio cualitativo del analista
 (ej. "saldo comercial positivo pero por contracción") se expresa como override
 en data/macro/ajustes_itcm.json, con justificación y vencimiento.
 
-Revisiones sobre el doc original (observaciones manuscritas del analista,
-"260602 Parametrica Macro (2)"):
-  * Financiamiento: la BADLAR (tasa PASIVA) se reemplazó por el SPREAD de
-    intermediación (tasa activa de adelantos en cta. cte. − tasa pasiva de
-    depósitos a 30 días). Un spread chico = intermediación sana/confianza;
-    spread grande = desconfianza/crédito caro. BADLAR pasa a contexto.
-  * Estabilidad monetaria: el REM (expectativas a 12m) ya NO se puntúa por su
-    nivel absoluto sino por la BRECHA contra el ritmo inflacionario actual
-    anualizado. Expectativa por debajo del ritmo = desinflación esperada =
-    confianza. Es dinámico y auto-calibrante (no hay puntaje hardcodeado): a
-    medida que baja la inflación, baja la vara. El valor de brecha se deriva
-    en macro.py y se alimenta a la banda de "rem_ipc_12m".
+Revisiones sobre el doc original (observaciones del analista, docs
+"260602 Parametrica Macro (2)" y "260626 aportes para el cinturon macro"):
+  * REM: se puntúa por el EQUIVALENTE MENSUAL de la expectativa anual
+    (raíz 12: (1+REM/100)^(1/12)−1), bandeado con la misma escala mensual del
+    IPC. Pone las expectativas y la inflación realizada en la misma vara.
+    El equivalente mensual se deriva en macro.py y alimenta la banda "rem_ipc_12m".
+  * Recaudación: variación INTERANUAL REAL (deflactada por el IPC del mismo
+    período), no la variación mensual nominal.
+  * Reservas: se usan las NETAS (metodología Machado/OPEN), calculadas con
+    datos oficiales del BCRA: brutas − encajes USD − swap China − préstamos a
+    OOII − repos ≤12m. Escala propia de netas (ver BANDAS_ITCM). Los pasivos
+    (lentos) viven en data/macro/reservas_netas_pasivos.json; las brutas son
+    automáticas (API). BADLAR pasa a contexto.
+  * Financiamiento: la tasa se reemplaza por el ÍNDICE DE CAPACIDAD PRESTABLE
+    (IdC): Precio (BADLAR real, 30%), Volumen (depósitos privados reales, 40%)
+    y Asignación (holgura préstamos/depósitos, 30%). Índice ~1,0 (>1,02 verde /
+    0,98-1,02 amarillo / <0,98 rojo). Nota: el doc define A=1−R (un nivel ~0,14
+    que rompe el semáforo); se implementa A como el RATIO mensual de holgura
+    (1−R_t)/(1−R_{t-1}), que sí deja el índice centrado en 1,0 y reproduce el
+    "amarillo" de mayo 2026 del doc. El IdC se computa en macro.py.
 """
 import json
 from pathlib import Path
@@ -42,10 +50,10 @@ BANDAS_ITCM = {
     "ipc_total": [                      # % mensual
         (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
     ],
-    "rem_ipc_12m": [                    # BRECHA (pts) = REM 12m − run-rate IPC anualizado.
-        # Valor DERIVADO en macro.py (no es el nivel del REM). Negativo = el mercado
-        # espera inflación por debajo del ritmo actual = desinflación esperada = confianza.
-        (-INF, -20.0, 100), (-20.0, -7.0, 85), (-7.0, 7.0, 60), (7.0, 20.0, 35), (20.0, INF, 10),
+    "rem_ipc_12m": [                    # EQUIVALENTE MENSUAL del REM (% mensual), raíz 12.
+        # Valor DERIVADO en macro.py. Misma escala mensual que el IPC: pone la
+        # expectativa anual en términos mensuales comparables a la inflación realizada.
+        (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
     ],
     "recaudacion": [                    # % var mensual
         (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60), (-5.0, 0.0, 40), (-INF, -5.0, 10),
@@ -54,13 +62,13 @@ BANDAS_ITCM = {
         (15000.0, INF, 85), (10000.0, 15000.0, 75), (5000.0, 10000.0, 60),
         (-5000.0, 5000.0, 50), (-15000.0, -5000.0, 30), (-INF, -15000.0, 10),
     ],
-    "reservas_bcra": [                  # millones USD
-        (60000.0, INF, 100), (50000.0, 60000.0, 85), (40000.0, 50000.0, 70),
-        (30000.0, 40000.0, 50), (20000.0, 30000.0, 30), (-INF, 20000.0, 10),
+    "reservas_bcra": [                  # millones USD — RESERVAS NETAS (no brutas)
+        (20000.0, INF, 100), (15000.0, 20000.0, 85), (10000.0, 15000.0, 70),
+        (5000.0, 10000.0, 50), (0.0, 5000.0, 30), (-INF, 0.0, 10),
     ],
-    "spread_intermediacion": [          # pts: tasa activa (adelantos cta cte) − pasiva (depósitos 30d).
-        # Histórico 18m: normal 3-9 pts, picos de estrés/iliquidez 20-34 pts.
-        (-INF, 4.0, 100), (4.0, 8.0, 80), (8.0, 15.0, 60), (15.0, 25.0, 35), (25.0, INF, 10),
+    "idc": [                            # Índice de Capacidad Prestable (~1,0). Semáforo del doc:
+        # >1,02 verde · 0,98-1,02 amarillo · <0,98 rojo. Subdividido a 5 bandas.
+        (1.04, INF, 100), (1.02, 1.04, 85), (0.98, 1.02, 60), (0.95, 0.98, 35), (-INF, 0.95, 10),
     ],
     "emae_ia": [                        # % variación interanual
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
@@ -83,7 +91,7 @@ DIMENSIONES_ITCM = {
     "financiamiento": {
         "nombre": "Capacidad de financiamiento",
         "peso": 0.20,
-        "indicadores": {"reservas_bcra": 0.5, "spread_intermediacion": 0.5},
+        "indicadores": {"reservas_bcra": 0.5, "idc": 0.5},
     },
     "actividad": {
         "nombre": "Actividad económica",
@@ -110,8 +118,8 @@ INTERPRETACION_LEGIBLE = {
 }
 
 # Indicadores macro que se publican pero no integran el índice.
-# badlar: reemplazada por spread_intermediacion en la dimensión de financiamiento;
-# se sigue publicando como contexto (tasa pasiva de referencia).
+# badlar: ya no integra el índice (la dimensión de financiamiento usa el IdC);
+# se sigue publicando como contexto e insumo del IdC (tasa pasiva de referencia).
 INDICADORES_CONTEXTO = ["badlar", "tcrm", "prestamos_privados", "base_monetaria", "tc_mayorista"]
 
 
@@ -140,22 +148,26 @@ def anualizar_mensual(var_m_pct: float) -> float:
     return ((1.0 + var_m_pct / 100.0) ** 12 - 1.0) * 100.0
 
 
-def run_rate_ipc(vars_mensuales: list, meses: int = 3) -> float | None:
-    """Ritmo inflacionario anualizado: promedio de las últimas `meses`
-    variaciones m/m del IPC (más recientes primero), anualizado. None si no
-    hay datos. La ventana de 3 meses suaviza el ruido de un único dato.
-    Para un read más sensible al presente, reducir `meses` (1 = último mes)."""
-    vals = [v for v in (vars_mensuales or []) if v is not None]
-    if not vals:
-        return None
-    muestra = vals[:meses]
-    return anualizar_mensual(sum(muestra) / len(muestra))
+def rem_mensual_equivalente(rem_anual_pct: float) -> float:
+    """Equivalente mensual (raíz 12) de la expectativa de inflación anual del
+    REM: (1+REM/100)^(1/12)−1, en %. Permite bandear el REM con la misma escala
+    mensual del IPC. Ej.: REM 23,3% → 1,76% mensual."""
+    return ((1.0 + rem_anual_pct / 100.0) ** (1.0 / 12.0) - 1.0) * 100.0
 
 
-def brecha_rem(rem_12m: float, run_rate: float) -> float:
-    """Brecha en pts entre la expectativa de inflación a 12m (REM) y el ritmo
-    actual anualizado. Negativa = el mercado espera desinflación (confianza)."""
-    return round(rem_12m - run_rate, 1)
+# Ponderación interna del Índice de Capacidad Prestable (doc "260626 aportes").
+IDC_PESOS = {"precio": 0.30, "volumen": 0.40, "asignacion": 0.30}
+
+
+def indice_capacidad_prestable(precio: float, volumen: float, asignacion: float) -> float:
+    """IdC = 0,30·Precio + 0,40·Volumen + 0,30·Asignación (componentes ~1,0).
+    Precio = 1 + tasa real mensual de la BADLAR; Volumen = ratio mensual de
+    depósitos privados reales; Asignación = ratio mensual de holgura prestable
+    (1−R_t)/(1−R_{t-1}), R = préstamos/depósitos. Devuelve un índice centrado
+    en 1,0 (mayor = más capacidad prestable / crédito más fluido)."""
+    return (IDC_PESOS["precio"] * precio
+            + IDC_PESOS["volumen"] * volumen
+            + IDC_PESOS["asignacion"] * asignacion)
 
 
 def texto_bandas(indicador: str) -> str:

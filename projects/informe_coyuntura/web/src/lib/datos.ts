@@ -85,8 +85,8 @@ export function indicadoresOrdenados(c: Cinturon): { key: string; ind: Indicador
 // Etiquetas legibles por clave de indicador
 export const LABELS: Record<string, string> = {
   // macro
-  ipc_total: "Inflación mensual (IPC)", reservas_bcra: "Reservas BCRA",
-  spread_intermediacion: "Spread de intermediación", badlar: "Tasa BADLAR",
+  ipc_total: "Inflación mensual (IPC)", reservas_bcra: "Reservas netas",
+  idc: "Capacidad prestable (IdC)", badlar: "Tasa BADLAR",
   emae_ia: "Actividad económica (EMAE i.a.)",
   saldo_comercial_12m: "Saldo comercial 12m", recaudacion: "Recaudación tributaria",
   tcrm: "Tipo de cambio real (TCRM)", rem_ipc_12m: "Expectativas inflación (REM 12m)",
@@ -146,8 +146,8 @@ export function aclaracion(b: Bucket, ind: Indicador): string | null {
 // entera desborda la card. Sólo para indicadores con valor numérico.
 export const UNIDADES_CORTAS: Record<string, string> = {
   // macro
-  ipc_total: "%", reservas_bcra: "US$ M", spread_intermediacion: "pts", badlar: "%", emae_ia: "% i.a.",
-  saldo_comercial_12m: "US$ M", recaudacion: "% m/m", tcrm: "índice", rem_ipc_12m: "%",
+  ipc_total: "%", reservas_bcra: "US$ M netas", idc: "índice", badlar: "%", emae_ia: "% i.a.",
+  saldo_comercial_12m: "US$ M", recaudacion: "% i.a. real", tcrm: "índice", rem_ipc_12m: "%",
   prestamos_privados: "% m/m", base_monetaria: "% m/m", tc_mayorista: "% m/m",
   // politica
   votometro_ventaja_lla: "pp", ratio_dnu: "ratio", movilizacion_cepa: "índice",

@@ -15,17 +15,17 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación",
   },
   reservas_bcra: {
-    que: "Reservas internacionales brutas del Banco Central, en millones de dólares.",
-    aporta: "Miden el colchón externo: sin reservas, el tipo de cambio y el pago de deuda quedan expuestos.",
-    frecuencia: "Diaria", tipo: "Nivel (stock)",
+    que: "Reservas NETAS del Banco Central (metodología Machado/OPEN): brutas menos los pasivos en dólares (encajes, swap China, préstamos a organismos y repos a 12m), calculadas con datos oficiales del BCRA.",
+    aporta: "Miden los dólares de libre disponibilidad reales: a diferencia de las brutas, descuentan la deuda en moneda extranjera. Son el verdadero colchón para defender el peso y pagar deuda.",
+    frecuencia: "Diaria (brutas) + pasivos mensuales", tipo: "Nivel neto (stock)",
   },
-  spread_intermediacion: {
-    que: "Diferencia entre la tasa activa (adelantos en cta. cte.) y la pasiva (depósitos a 30 días), en puntos.",
-    aporta: "Mide la (des)confianza en la intermediación financiera: un spread chico es crédito fluido; uno grande, bancos cautelosos y crédito caro.",
-    frecuencia: "Diaria (prom. 30d)", tipo: "Spread (pts)",
+  idc: {
+    que: "Índice de Capacidad Prestable: combina tasa real de la BADLAR (precio), depósitos privados reales (volumen) y holgura préstamos/depósitos (asignación).",
+    aporta: "Resume si el sistema financiero tiene fondos y disposición para prestar. >1,02 expansión (verde), 0,98-1,02 neutro (amarillo), <0,98 contracción (rojo).",
+    frecuencia: "Mensual", tipo: "Índice (~1,0)",
   },
   badlar: {
-    que: "Tasa que pagan los bancos por depósitos mayoristas a 30 días o más (referencia de contexto).",
+    que: "Tasa que pagan los bancos por depósitos mayoristas a 30 días o más (referencia de contexto; insumo del IdC).",
     aporta: "Refleja el costo del dinero y el sesgo de la política monetaria (más o menos restrictiva).",
     frecuencia: "Diaria", tipo: "Tasa",
   },
@@ -40,9 +40,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel (acum. 12m)",
   },
   recaudacion: {
-    que: "Variación mensual de la recaudación tributaria nacional.",
-    aporta: "Aproxima la salud fiscal y el nivel de actividad económica gravada.",
-    frecuencia: "Mensual", tipo: "Variación",
+    que: "Variación INTERANUAL REAL de la recaudación tributaria nacional (deflactada por el IPC del mismo período).",
+    aporta: "Aísla la recuperación genuina de los ingresos del efecto inflacionario: mide la salud fiscal en términos reales.",
+    frecuencia: "Mensual", tipo: "Variación i.a. real",
   },
   tcrm: {
     que: "Tipo de cambio real multilateral: competitividad cambiaria frente a los socios comerciales (base 2010=100).",
@@ -51,7 +51,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   rem_ipc_12m: {
     que: "Inflación esperada a 12 meses según el Relevamiento de Expectativas de Mercado del BCRA.",
-    aporta: "Captura la credibilidad del programa. Se puntúa por la brecha contra el ritmo inflacionario actual anualizado: si el mercado espera inflación por debajo del ritmo de hoy, hay confianza en la desinflación.",
+    aporta: "Captura la credibilidad del programa. Se puntúa por su equivalente mensual (raíz 12), en la misma escala que la inflación realizada: cuanto menor la inflación mensual esperada, mayor la credibilidad.",
     frecuencia: "Mensual", tipo: "Expectativa",
   },
   prestamos_privados: {

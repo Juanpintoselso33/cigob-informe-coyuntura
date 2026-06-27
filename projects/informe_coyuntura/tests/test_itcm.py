@@ -1,8 +1,10 @@
 """Tests unitarios del módulo ITCM (sin red).
 
-Pinean: las tablas de bandas del doc "Paramétrica Macro" (CIGOB, may-2026),
-la convención de bordes (low exclusivo, high inclusivo), la ponderación por
-dimensiones, el mecanismo de ajuste manual y la renormalización ante faltantes.
+Pinean: las tablas de bandas de la Paramétrica CIGOB con las revisiones de los
+docs "260602 (2)" y "260626 aportes" (REM por equivalente mensual, recaudación
+i.a. real, reservas NETAS, Índice de Capacidad Prestable), la convención de
+bordes (low exclusivo, high inclusivo), la ponderación por dimensiones, el
+mecanismo de ajuste manual y la renormalización ante faltantes.
 """
 import json
 import sys
@@ -13,18 +15,20 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import itcm
 
-# Fixture mayo 2026 con la metodología REVISADA (observaciones del analista):
-#   * rem_ipc_12m: el valor es la BRECHA (REM − run-rate IPC anualizado), no el nivel.
-#     -5.8 (REM 23.3 vs ritmo ~29.1%) → banda (-7,7] → 60.
-#   * spread_intermediacion: tasa activa − pasiva (pts). 6.0 → banda 4-8 → 80.
-# Dimensiones: D1=62.5, D2=82, D3=75, D4=100 → ITCM=76.5.
+# Fixture mayo 2026 con la metodología REVISADA. Los valores de rem_ipc_12m,
+# reservas_bcra, recaudacion e idc son los que el colector alimenta a las bandas:
+#   * rem_ipc_12m  = equivalente MENSUAL del REM (raíz 12). 23,3% anual → 1,76% → 85.
+#   * recaudacion  = variación i.a. REAL (deflactada). 1,82% → banda 0-5 → 60.
+#   * reservas_bcra= NETAS (Machado). 1.881M → banda 0-5.000 → 30.
+#   * idc          = Índice de Capacidad Prestable. 1,012 → banda 0,98-1,02 → 60.
+# Dimensiones: D1=75, D2=70, D3=45, D4=100 → ITCM=71,2.
 EJEMPLO = {
     "ipc_total": 2.58,             # banda 2-3 → 65
-    "rem_ipc_12m": -5.8,           # BRECHA: banda -7/7 → 60
-    "recaudacion": 8.27,           # banda 5-10 → 80
+    "rem_ipc_12m": 1.76,           # equiv. mensual: banda 1-2 → 85
+    "recaudacion": 1.82,           # i.a. real: banda 0-5 → 60
     "saldo_comercial_12m": 17125,  # banda >15000 → 85
-    "reservas_bcra": 48113,        # banda 40-50k → 70
-    "spread_intermediacion": 6.0,  # banda 4-8 → 80
+    "reservas_bcra": 1881,         # netas: banda 0-5000 → 30
+    "idc": 1.012,                  # banda 0,98-1,02 → 60
     "emae_ia": 5.48,               # banda >5 → 100
 }
 
@@ -32,13 +36,13 @@ EJEMPLO = {
 def test_itcm_reproduce_ejemplo():
     r = itcm.calcular_itcm(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["estabilidad_monetaria"]["puntaje"] == 62.5
-    assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 82.0
-    assert dims["financiamiento"]["puntaje"] == 75.0
+    assert dims["estabilidad_monetaria"]["puntaje"] == 75.0
+    assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 70.0
+    assert dims["financiamiento"]["puntaje"] == 45.0
     assert dims["actividad"]["puntaje"] == 100.0
-    assert r["valor"] == 76.5
+    assert r["valor"] == 71.2
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcm.tension_de_itcm(r["valor"]) == 2.4
+    assert itcm.tension_de_itcm(r["valor"]) == 2.9
     assert r["ajustes_aplicados"] == []
 
 
@@ -60,39 +64,49 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(1.0, b["ipc_total"]) == 100
     assert itcm.puntaje_banda(2.0, b["ipc_total"]) == 85
     assert itcm.puntaje_banda(3.0, b["ipc_total"]) == 65
-    assert itcm.puntaje_banda(5.0, b["ipc_total"]) == 40
     assert itcm.puntaje_banda(5.01, b["ipc_total"]) == 10
     assert itcm.puntaje_banda(5.0, b["emae_ia"]) == 80     # >5 estricto para 100
-    assert itcm.puntaje_banda(-5.0, b["emae_ia"]) == 5      # high inclusivo: -5 cae abajo
-    assert itcm.puntaje_banda(-4.99, b["emae_ia"]) == 20
-    assert itcm.puntaje_banda(50000, b["reservas_bcra"]) == 70
-    assert itcm.puntaje_banda(50001, b["reservas_bcra"]) == 85
-    assert itcm.puntaje_banda(-5000, b["saldo_comercial_12m"]) == 30
-    assert itcm.puntaje_banda(0, b["saldo_comercial_12m"]) == 50
+    assert itcm.puntaje_banda(-5.0, b["emae_ia"]) == 5
     assert itcm.puntaje_banda(10.0, b["recaudacion"]) == 80
-    # spread de intermediación (pts): activa − pasiva
-    assert itcm.puntaje_banda(4.0, b["spread_intermediacion"]) == 100   # high inclusivo
-    assert itcm.puntaje_banda(4.01, b["spread_intermediacion"]) == 80
-    assert itcm.puntaje_banda(8.0, b["spread_intermediacion"]) == 80
-    assert itcm.puntaje_banda(25.0, b["spread_intermediacion"]) == 35
-    assert itcm.puntaje_banda(25.01, b["spread_intermediacion"]) == 10
-    # REM: la banda opera sobre la BRECHA (REM − run-rate), no sobre el nivel
-    assert itcm.puntaje_banda(-20.0, b["rem_ipc_12m"]) == 100   # high inclusivo
-    assert itcm.puntaje_banda(-7.0, b["rem_ipc_12m"]) == 85
-    assert itcm.puntaje_banda(-6.99, b["rem_ipc_12m"]) == 60
-    assert itcm.puntaje_banda(7.0, b["rem_ipc_12m"]) == 60
-    assert itcm.puntaje_banda(20.0, b["rem_ipc_12m"]) == 35
-    assert itcm.puntaje_banda(20.01, b["rem_ipc_12m"]) == 10
+    # REM: la banda opera sobre el EQUIVALENTE MENSUAL (misma escala que el IPC)
+    assert itcm.puntaje_banda(1.76, b["rem_ipc_12m"]) == 85
+    assert itcm.puntaje_banda(2.0, b["rem_ipc_12m"]) == 85
+    assert itcm.puntaje_banda(2.01, b["rem_ipc_12m"]) == 65
+    # Reservas NETAS
+    assert itcm.puntaje_banda(20000, b["reservas_bcra"]) == 85   # high inclusivo
+    assert itcm.puntaje_banda(20001, b["reservas_bcra"]) == 100
+    assert itcm.puntaje_banda(3000, b["reservas_bcra"]) == 30
+    assert itcm.puntaje_banda(0, b["reservas_bcra"]) == 10       # 0 → negativas/crisis
+    assert itcm.puntaje_banda(0.01, b["reservas_bcra"]) == 30
+    # Índice de Capacidad Prestable (semáforo)
+    assert itcm.puntaje_banda(1.02, b["idc"]) == 60              # amarillo (high inclusivo)
+    assert itcm.puntaje_banda(1.0201, b["idc"]) == 85           # verde
+    assert itcm.puntaje_banda(0.98, b["idc"]) == 35             # rojo (high inclusivo)
+    assert itcm.puntaje_banda(0.9801, b["idc"]) == 60          # amarillo
+    assert itcm.puntaje_banda(1.05, b["idc"]) == 100
+    assert itcm.puntaje_banda(0.90, b["idc"]) == 10
+
+
+def test_rem_mensual_equivalente_y_idc():
+    """Helpers de la metodología revisada."""
+    # raíz 12 de la expectativa anual → equivalente mensual
+    assert abs(itcm.rem_mensual_equivalente(23.3) - 1.7607) < 1e-3
+    assert itcm.puntaje_banda(itcm.rem_mensual_equivalente(23.3),
+                              itcm.BANDAS_ITCM["rem_ipc_12m"]) == 85
+    # IdC = 0,30·P + 0,40·V + 0,30·A
+    idc = itcm.indice_capacidad_prestable(0.9947, 1.0042, 1.0398)
+    assert abs(idc - 1.012) < 1e-3
+    assert itcm.puntaje_banda(idc, itcm.BANDAS_ITCM["idc"]) == 60
 
 
 def test_ajuste_manual_aplicado():
-    """Override del analista: reproduce el juicio del doc (saldo 85 → 60)."""
+    """Override del analista: saldo 85 → 60."""
     ajustes = {"saldo_comercial_12m": {
         "puntaje": 60, "justificacion": "Superávit por contracción de importaciones"}}
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
-    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 72.0
-    # D1=62.5, D2=72, D3=75, D4=100 → 0.35×62.5+0.30×72+0.20×75+0.15×100 = 73.5
-    assert r["valor"] == 73.5
+    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 60.0
+    # D1=75, D2=60, D3=45, D4=100 → 0.35×75+0.30×60+0.20×45+0.15×100 = 68.25 → 68.2
+    assert r["valor"] == 68.2
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85 and aj["a"] == 60
@@ -104,11 +118,11 @@ def test_ajuste_vencido_no_se_aplica(tmp_path):
     archivo = tmp_path / "ajustes.json"
     archivo.write_text(json.dumps({
         "saldo_comercial_12m": {"puntaje": 60, "justificacion": "x", "vigente_hasta": "2026-04"},
-        "badlar":              {"puntaje": 50, "justificacion": "y", "vigente_hasta": "2026-12"},
+        "idc":                 {"puntaje": 50, "justificacion": "y", "vigente_hasta": "2026-12"},
     }), encoding="utf-8")
     vigentes = itcm.cargar_ajustes(archivo, "2026-06")
     assert "saldo_comercial_12m" not in vigentes   # vencido abril < junio
-    assert "badlar" in vigentes
+    assert "idc" in vigentes
     assert itcm.cargar_ajustes(tmp_path / "no_existe.json", "2026-06") == {}
 
 
@@ -117,8 +131,8 @@ def test_renormalizacion_indicador_faltante():
     valores = dict(EJEMPLO, rem_ipc_12m=None)
     r = itcm.calcular_itcm(valores)
     assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 65.0
-    # ITCM = 0.35×65 + 0.30×82 + 0.20×75 + 0.15×100 = 77.35
-    assert abs(r["valor"] - 77.35) <= 0.05
+    # ITCM = 0.35×65 + 0.30×70 + 0.20×45 + 0.15×100 = 67.75 → 67.8
+    assert abs(r["valor"] - 67.8) <= 0.05
 
 
 def test_renormalizacion_dimension_faltante():
@@ -126,7 +140,7 @@ def test_renormalizacion_dimension_faltante():
     valores = dict(EJEMPLO, emae_ia=None)
     r = itcm.calcular_itcm(valores)
     assert "actividad" not in r["dimensiones"]
-    esperado = (0.35 * 62.5 + 0.30 * 82 + 0.20 * 75) / 0.85
+    esperado = (0.35 * 75 + 0.30 * 70 + 0.20 * 45) / 0.85
     assert abs(r["valor"] - esperado) <= 0.1
 
 
@@ -150,7 +164,7 @@ def test_ajuste_automatico_saldo_por_contraccion():
     assert aj is not None and aj["puntaje"] == 60 and aj["origen"] == "automatico"
     assert "contracción de importaciones" in aj["justificacion"]
     r = itcm.calcular_itcm(dict(EJEMPLO), {"saldo_comercial_12m": aj})
-    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 72.0
+    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 60.0
     assert r["ajustes_aplicados"][0]["origen"] == "automatico"
 
 
@@ -175,20 +189,6 @@ def test_ajuste_automatico_saldo_no_aplica():
          "expo_delta_12m": 0, "impo_delta_12m": -8000}) is None
     # sin composición (fallback a la serie de saldo directa)
     assert itcm.ajuste_automatico_saldo({"valor": 17125}) is None
-
-
-def test_run_rate_y_brecha_rem():
-    """El REM se puntúa por la brecha contra el ritmo actual anualizado."""
-    # 3 meses al 2.7% m/m → ~37.7% anual; ventana por defecto = 3
-    rr3 = itcm.run_rate_ipc([2.15, 2.58, 3.38])
-    assert abs(rr3 - itcm.anualizar_mensual((2.15 + 2.58 + 3.38) / 3)) < 1e-9
-    # ventana de 1 mes = solo el último dato (más sensible al presente)
-    rr1 = itcm.run_rate_ipc([2.15, 2.58, 3.38], meses=1)
-    assert abs(rr1 - itcm.anualizar_mensual(2.15)) < 1e-9
-    assert itcm.run_rate_ipc([]) is None
-    # brecha negativa = expectativas por debajo del ritmo = confianza
-    assert itcm.brecha_rem(23.3, 29.1) == -5.8
-    assert itcm.puntaje_banda(itcm.brecha_rem(23.3, 29.1), itcm.BANDAS_ITCM["rem_ipc_12m"]) == 60
 
 
 def test_interpretacion_bandas():

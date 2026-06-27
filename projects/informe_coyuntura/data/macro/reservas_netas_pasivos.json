@@ -1,0 +1,9 @@
+{
+  "_doc": "Pasivos en moneda extranjera del BCRA (M USD) para calcular reservas NETAS = brutas - suma de estos componentes. Metodología Machado/OPEN ('netas a secas'). Refrescar mensualmente desde el Balance Semanal del BCRA / publicaciones de OPEN (@fede_machado_b). Las brutas se toman automáticas de la API; estos pasivos se mueven lento.",
+  "encajes_usd": 16581,
+  "swap_china": 19045,
+  "prestamos_ooii": 1931,
+  "repos_12m": 7498,
+  "fuente": "BCRA Balance Semanal — desglose según F. Machado (OPEN), abr-2026",
+  "actualizado": "2026-04-10"
+}
