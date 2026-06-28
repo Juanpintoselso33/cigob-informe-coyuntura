@@ -5,9 +5,10 @@ Columnas: fecha, indicador, valor, fuente
 """
 import sys
 import csv
+import calendar
 import requests
 import urllib3
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -285,8 +286,34 @@ def fetch_rigi_serie() -> list:
     return [[f"{ym}-01", v] for ym, v in sorted(por_mes.items())]
 
 
+def fetch_infoleg_serie(texto: str) -> list:
+    """Serie mensual del conteo ACUMULADO de normas InfoLeg que contienen `texto`,
+    desde dic-2023 hasta el fin de cada mes (mismo conteo que el indicador, evaluado
+    a cada corte). [[YYYY-MM-01, count]]."""
+    out = []
+    y, mo = 2023, 12
+    today = date.today()
+    while (y, mo) <= (today.year, today.month):
+        last = min(date(y, mo, calendar.monthrange(y, mo)[1]), today)
+        try:
+            c = gestion._infoleg_post(
+                texto=texto, tipo_norma="",
+                fecha_desde=("01", "12", "2023"),
+                fecha_hasta=(last.strftime("%d"), last.strftime("%m"), last.strftime("%Y")),
+            )
+            out.append([f"{y}-{mo:02d}-01", c])
+        except Exception:
+            pass
+        mo += 1
+        if mo > 12:
+            mo = 1; y += 1
+    return out
+
+
 GESTION_DERIVADAS = [
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
+    ("desregulacion_normativa", "Normas (conteo acum.)", "InfoLeg ('deroga' desde dic-2023)", lambda: fetch_infoleg_serie("deroga")),
+    ("reestructuracion_organismos", "Normas (conteo acum.)", "InfoLeg ('disolucion' desde dic-2023)", lambda: fetch_infoleg_serie("disolucion")),
 ]
 
 
