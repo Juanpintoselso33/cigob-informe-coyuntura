@@ -54,8 +54,8 @@ const seriesJson = JSON.stringify(series);
     <dl class="cg-modal-ficha" id="cg-modal-ficha"></dl>
     <div class="cg-modal-score" id="cg-modal-score"></div>
     <h4 class="cg-modal-h4" id="cg-modal-serie-h">Evolución histórica</h4>
-    <p class="cg-modal-sub" id="cg-modal-sub"></p>
     <div class="cg-chart-modal" id="cg-modal-chart" role="img" aria-label="Gráfico del indicador" hidden></div>
+    <p class="cg-modal-sub" id="cg-modal-sub"></p>
     <table class="cg-modal-table" id="cg-modal-table"></table>
     <button class="cg-modal-csv" id="cg-modal-csv" type="button" hidden>
       <span aria-hidden="true">↓</span> Descargar serie (CSV)
@@ -193,21 +193,20 @@ const seriesJson = JSON.stringify(series);
       const HEAD = { linea: "Evolución histórica", gauge_avance: "Avance de la reforma",
                      gauge_valor: "Nivel actual", gauge_tension: "Aporte de tensión",
                      barra: "Composición del indicador" };
-      if (tipo === "linea") {
-        serieH.style.display = ""; serieH.textContent = HEAD.linea;
+      // Encabezado del gráfico
+      serieH.style.display = tipo ? "" : "none";
+      if (tipo) serieH.textContent = HEAD[tipo] ?? "Indicador";
+      // Serie de datos + CSV: siempre que haya al menos un dato (histórico acumulado).
+      if (serie.length >= 1) {
         sub.style.display = "";
-        sub.textContent = `${serie.length} datos · se muestran los últimos ${Math.min(12, serie.length)}`;
+        sub.textContent = serie.length >= 2
+          ? `${serie.length} datos · se muestran los últimos ${Math.min(12, serie.length)}`
+          : "1 dato · el histórico se va acumulando mes a mes";
         const rows = serie.slice(-12).reverse()
           .map(p => `<tr><td>${esc(p.fecha)}</td><td>${nf.format(p.valor)}</td></tr>`).join("");
         table.innerHTML = `<thead><tr><th>Fecha</th><th>Valor</th></tr></thead><tbody>${rows}</tbody>`;
         csvBtn.removeAttribute("hidden");
-      } else if (tipo) {
-        serieH.style.display = ""; serieH.textContent = HEAD[tipo] ?? "Indicador";
-        sub.style.display = "none";
-        table.innerHTML = "";
-        csvBtn.setAttribute("hidden", "");
       } else {
-        serieH.style.display = "none";
         sub.style.display = "none";
         table.innerHTML = "";
         csvBtn.setAttribute("hidden", "");

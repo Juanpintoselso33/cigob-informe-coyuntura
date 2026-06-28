@@ -1,0 +1,152 @@
+{
+  "apertura_comercial": {
+    "2026-06": 100.0
+  },
+  "asistencia_directa": {
+    "2026-06": 35.0
+  },
+  "badlar": {
+    "2026-06": 21.25
+  },
+  "base_monetaria": {
+    "2026-06": 5.55
+  },
+  "brecha_salario_cbt": {
+    "2026-06": 3.79
+  },
+  "cepo_mulc": {
+    "2026-06": 78.2
+  },
+  "clima_electoral": {
+    "2026-06": 13.3
+  },
+  "cohesion_bloque": {
+    "2026-06": 78.0
+  },
+  "comisiones_caidas": {
+    "2026-06": 97.8
+  },
+  "concesiones_infraestructura": {
+    "2026-06": 35.0
+  },
+  "consumo_carne": {
+    "2026-06": 47.5
+  },
+  "despacho_cemento": {
+    "2026-06": 144.1
+  },
+  "desregulacion_normativa": {
+    "2026-06": 60.0
+  },
+  "eficacia_legislativa": {
+    "2026-06": 4.3
+  },
+  "emae_ia": {
+    "2026-06": 5.48
+  },
+  "endeudamiento_familiar": {
+    "2026-06": 45.03
+  },
+  "fal_modernizacion_laboral": {
+    "2026-06": 10.0
+  },
+  "gobernadores_alineamiento": {
+    "2026-06": 55.0
+  },
+  "iaf_transferencias": {
+    "2026-06": 1.8
+  },
+  "iai": {
+    "2026-06": -4.2
+  },
+  "icc_utdt": {
+    "2026-06": 42.5
+  },
+  "icip": {
+    "2026-06": 8.2
+  },
+  "idc": {
+    "2026-06": 1.012
+  },
+  "idm": {
+    "2026-06": 4.52
+  },
+  "informalidad": {
+    "2026-06": 36.8
+  },
+  "inseguridad": {
+    "2026-06": 2501057.0
+  },
+  "ipc_alimentos": {
+    "2026-06": 2.46
+  },
+  "ipc_total": {
+    "2026-06": 2.15
+  },
+  "libertad_opcion_salud": {
+    "2026-06": 40.0
+  },
+  "mortalidad_pymes": {
+    "2026-06": -3.29
+  },
+  "movilizacion_cepa": {
+    "2026-06": 50.5
+  },
+  "patentamiento_motos": {
+    "2026-06": 69740.0
+  },
+  "peso_tarifas": {
+    "2026-06": 2.4
+  },
+  "pluriempleo": {
+    "2026-06": 7.5
+  },
+  "prestamos_privados": {
+    "2026-06": 3.05
+  },
+  "privatizaciones": {
+    "2026-06": 15.0
+  },
+  "protocolo_antipiquetes": {
+    "2026-06": 55.0
+  },
+  "ratio_dnu": {
+    "2026-06": 1.5
+  },
+  "recaudacion": {
+    "2026-06": 1.82
+  },
+  "reduccion_estado": {
+    "2026-06": 2.7
+  },
+  "reestructuracion_organismos": {
+    "2026-06": 40.0
+  },
+  "rem_ipc_12m": {
+    "2026-06": 23.3
+  },
+  "reservas_bcra": {
+    "2026-06": 4122.0
+  },
+  "rigi_inversiones": {
+    "2026-06": 22.1
+  },
+  "saldo_comercial_12m": {
+    "2026-06": 21221.0
+  },
+  "sentimiento_digital": {
+    "2026-06": 6.7
+  },
+  "tc_mayorista": {
+    "2026-06": 4.57
+  },
+  "tcrm": {
+    "2026-06": 84.31
+  },
+  "veto_quorum": {
+    "2026-06": 0.0
+  },
+  "votometro_ventaja_lla": {
+    "2026-06": 13.3
+  }
+}

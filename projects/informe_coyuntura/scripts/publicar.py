@@ -5,6 +5,7 @@ y escribe web/src/data/informe.json (con vida cotidiana enriquecido a ~13
 indicadores automaticos) y web/src/data/series.json.
 """
 import csv, glob, json, os, re, sys
+from datetime import datetime
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -112,6 +113,54 @@ def build_series():
     for ind_key, serie_key in alias.items():
         if serie_key in series and ind_key not in series:
             series[ind_key] = series[serie_key]
+    return series
+
+
+# Histórico acumulado: red de seguridad para NO PERDER DATOS. Cada corrida persiste
+# el valor actual de todos los indicadores keyed por mes; los que no tienen serie
+# oficial (política, vida sin fuente, espíritu, avances de gestión) construyen así
+# su serie temporal mes a mes.
+HISTORICO_PATH = ROOT / "data" / "historico" / "indicadores.json"
+
+
+def _valor_historico(ind):
+    """Número a persistir de un indicador: el avance si es reforma; si no, el valor."""
+    v = ind.get("avance_pct")
+    if not isinstance(v, (int, float)):
+        v = ind.get("valor")
+    return float(v) if isinstance(v, (int, float)) and not isinstance(v, bool) else None
+
+
+def acumular_historico(informe):
+    """Upserta el valor actual de CADA indicador en data/historico/indicadores.json,
+    keyed por mes (YYYY-MM). Aunque la fuente no publique serie, el histórico se va
+    armando solo y no se pierde ningún dato."""
+    store = {}
+    if HISTORICO_PATH.exists():
+        store = json.loads(HISTORICO_PATH.read_text(encoding="utf-8"))
+    ym = datetime.now().strftime("%Y-%m")
+    for c in informe["cinturones"].values():
+        for ik, ind in c["indicadores"].items():
+            v = _valor_historico(ind)
+            if v is not None:
+                store.setdefault(ik, {})[ym] = round(v, 4)
+    HISTORICO_PATH.parent.mkdir(parents=True, exist_ok=True)
+    HISTORICO_PATH.write_text(
+        json.dumps(store, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+    return store
+
+
+def fusionar_historico(series, store):
+    """Inyecta el histórico acumulado como serie de los indicadores que NO tienen
+    serie oficial (o tienen <2 puntos). No pisa las oficiales (macro, etc.), que
+    traen más historia y otra métrica (ej. IPC: el oficial es el índice nivel, no
+    la variación)."""
+    for ik, meses in store.items():
+        if len(series.get(ik, [])) >= 2:
+            continue
+        puntos = [{"fecha": f"{ym}-01", "valor": v} for ym, v in sorted(meses.items())]
+        if puntos:
+            series[ik] = puntos
     return series
 
 
@@ -394,11 +443,16 @@ def main():
     informe = aplicar_scoring(informe)
     informe = recomputar_vida_y_global(informe)
 
+    # Red de seguridad: persistir el valor de cada indicador y construir su serie
+    # histórica mes a mes (los que no tienen serie oficial la arman así).
+    store = acumular_historico(informe)
+    series = fusionar_historico(series, store)
+
     (DATA / "informe.json").write_text(
         json.dumps(informe, ensure_ascii=False, indent=2), encoding="utf-8")
     (DATA / "series.json").write_text(
         json.dumps(series, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Snapshot escrito en {DATA}")
+    print(f"Snapshot escrito en {DATA} · histórico: {len(store)} indicadores en {HISTORICO_PATH.name}")
 
 
 if __name__ == "__main__":

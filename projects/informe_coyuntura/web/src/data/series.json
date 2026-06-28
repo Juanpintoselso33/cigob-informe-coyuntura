@@ -7964,5 +7964,203 @@
       "fecha": "2026-05-01",
       "valor": 3504.1
     }
+  ],
+  "apertura_comercial": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 100.0
+    }
+  ],
+  "asistencia_directa": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 35.0
+    }
+  ],
+  "brecha_salario_cbt": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 3.79
+    }
+  ],
+  "cepo_mulc": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 78.2
+    }
+  ],
+  "clima_electoral": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 13.3
+    }
+  ],
+  "cohesion_bloque": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 78.0
+    }
+  ],
+  "comisiones_caidas": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 97.8
+    }
+  ],
+  "concesiones_infraestructura": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 35.0
+    }
+  ],
+  "consumo_carne": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 47.5
+    }
+  ],
+  "desregulacion_normativa": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 60.0
+    }
+  ],
+  "eficacia_legislativa": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 4.3
+    }
+  ],
+  "endeudamiento_familiar": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 45.03
+    }
+  ],
+  "fal_modernizacion_laboral": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 10.0
+    }
+  ],
+  "gobernadores_alineamiento": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 55.0
+    }
+  ],
+  "iaf_transferencias": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 1.8
+    }
+  ],
+  "icc_utdt": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 42.5
+    }
+  ],
+  "informalidad": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 36.8
+    }
+  ],
+  "inseguridad": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 2501057.0
+    }
+  ],
+  "ipc_alimentos": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 2.46
+    }
+  ],
+  "libertad_opcion_salud": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 40.0
+    }
+  ],
+  "mortalidad_pymes": [
+    {
+      "fecha": "2026-06-01",
+      "valor": -3.29
+    }
+  ],
+  "movilizacion_cepa": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 50.5
+    }
+  ],
+  "patentamiento_motos": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 69740.0
+    }
+  ],
+  "peso_tarifas": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 2.4
+    }
+  ],
+  "pluriempleo": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 7.5
+    }
+  ],
+  "privatizaciones": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 15.0
+    }
+  ],
+  "protocolo_antipiquetes": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 55.0
+    }
+  ],
+  "ratio_dnu": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 1.5
+    }
+  ],
+  "reduccion_estado": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 2.7
+    }
+  ],
+  "reestructuracion_organismos": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 40.0
+    }
+  ],
+  "sentimiento_digital": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 6.7
+    }
+  ],
+  "veto_quorum": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 0.0
+    }
+  ],
+  "votometro_ventaja_lla": [
+    {
+      "fecha": "2026-06-01",
+      "valor": 13.3
+    }
   ]
 }
