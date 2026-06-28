@@ -72,19 +72,20 @@ export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: stri
   return chart;
 }
 
-// Medidor radial (0–100) para avances de reforma sin serie temporal.
-export function gaugeChart(el: HTMLElement, valor: number, opts: { color?: string; label?: string } = {}) {
+// Medidor radial para indicadores sin serie temporal. `fill` (0–100) define cuánto
+// se llena el arco; `centerText` el número del centro (si no, "fill%").
+export function gaugeChart(el: HTMLElement, fill: number, opts: { color?: string; label?: string; centerText?: string } = {}) {
   const color = opts.color ?? "#4998DB";
   const chart = new ApexCharts(el, {
     chart: { type: "radialBar", height: 260, width: "100%", fontFamily: FONT },
-    series: [Math.max(0, Math.min(100, valor))],
+    series: [Math.max(0, Math.min(100, fill))],
     colors: [color],
     plotOptions: { radialBar: {
-      hollow: { size: "60%" }, track: { background: COL.grid, strokeWidth: "100%" },
+      hollow: { size: "58%" }, track: { background: COL.grid, strokeWidth: "100%" },
       dataLabels: {
         name: { show: true, offsetY: 24, fontSize: "12px", color: COL.muted, fontWeight: 600 },
-        value: { show: true, offsetY: -8, fontSize: "30px", fontWeight: 800, color: COL.dark,
-                 formatter: (v: number) => `${NF.format(v)}%` },
+        value: { show: true, offsetY: -8, fontSize: "28px", fontWeight: 800, color: COL.dark,
+                 formatter: () => opts.centerText ?? `${NF.format(fill)}%` },
       },
     } },
     labels: [opts.label ?? "avance"],

@@ -1,5 +1,5 @@
 ---
-import { informe, series, label, presentacion, UNIDADES_LARGAS, CINTURONES } from "../lib/datos.ts";
+import { informe, series, label, presentacion, UNIDADES_LARGAS, CINTURONES, BARRA_0_100 } from "../lib/datos.ts";
 import { DESCRIPCIONES } from "../lib/descripciones.ts";
 
 const CINT_NOMBRE: Record<string, string> = {
@@ -35,6 +35,9 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       slug: SLUG_DE[ckey] ?? ckey,
       avance: typeof ind.avance_pct === "number" ? ind.avance_pct : null,
       componentes: ind.componentes ?? null,
+      valorNum: typeof ind.valor === "number" ? ind.valor : null,
+      es0100: BARRA_0_100.has(ikey),
+      unidadCorta: p.unidad ?? "",
     };
   }
 }
@@ -80,10 +83,14 @@ const seriesJson = JSON.stringify(series);
   let chartInstance = null;
   function destruirChart() { if (chartInstance) { chartInstance.destroy(); chartInstance = null; } }
   function hayComponentes(comp) { return comp && Object.values(comp).some(v => typeof v === "number"); }
+  // Elige el gráfico: serie → línea · avance → gauge · componentes → barras ·
+  // nivel 0-100 → gauge del valor · resto (con aporte) → gauge de tensión.
   function tipoChart(d, serie) {
     if (serie && serie.length >= 2) return "linea";
-    if (typeof d.avance === "number") return "gauge";
+    if (typeof d.avance === "number") return "gauge_avance";
     if (hayComponentes(d.componentes)) return "barra";
+    if (d.es0100 && typeof d.valorNum === "number") return "gauge_valor";
+    if (typeof d.aporteScore === "number") return "gauge_tension";
     return null;
   }
   // Monta el gráfico. Debe llamarse con el modal YA visible (ApexCharts mide el
@@ -96,7 +103,11 @@ const seriesJson = JSON.stringify(series);
     const C = await ensureCharts();
     const color = C.colorDe(d.slug);
     if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidad });
-    else if (tipo === "gauge") chartInstance = C.gaugeChart(el, d.avance, { color, label: "avance ejecutado" });
+    else if (tipo === "gauge_avance") chartInstance = C.gaugeChart(el, d.avance, { color, label: "avance ejecutado" });
+    else if (tipo === "gauge_valor") chartInstance = C.gaugeChart(el, d.valorNum, { color, label: "nivel actual",
+               centerText: `${nf.format(d.valorNum)}${d.unidadCorta ? " " + d.unidadCorta : ""}` });
+    else if (tipo === "gauge_tension") chartInstance = C.gaugeChart(el, d.aporteScore * 10, { color, label: "aporte de tensión",
+               centerText: `${nf.format(d.aporteScore)} / 10` });
     else if (tipo === "barra") chartInstance = C.barChart(el, C.componentesDe(key, d.componentes), { color, unidad: d.unidad });
   }
   const close = () => { destruirChart(); modal.setAttribute("hidden", ""); };
@@ -179,7 +190,9 @@ const seriesJson = JSON.stringify(series);
       const table = document.getElementById("cg-modal-table");
       serieActual = serie; keyActual = key;
       const tipo = tipoChart(d, serie);
-      const HEAD = { linea: "Evolución histórica", gauge: "Avance de la reforma", barra: "Composición del indicador" };
+      const HEAD = { linea: "Evolución histórica", gauge_avance: "Avance de la reforma",
+                     gauge_valor: "Nivel actual", gauge_tension: "Aporte de tensión",
+                     barra: "Composición del indicador" };
       if (tipo === "linea") {
         serieH.style.display = ""; serieH.textContent = HEAD.linea;
         sub.style.display = "";
@@ -188,8 +201,8 @@ const seriesJson = JSON.stringify(series);
           .map(p => `<tr><td>${esc(p.fecha)}</td><td>${nf.format(p.valor)}</td></tr>`).join("");
         table.innerHTML = `<thead><tr><th>Fecha</th><th>Valor</th></tr></thead><tbody>${rows}</tbody>`;
         csvBtn.removeAttribute("hidden");
-      } else if (tipo === "gauge" || tipo === "barra") {
-        serieH.style.display = ""; serieH.textContent = HEAD[tipo];
+      } else if (tipo) {
+        serieH.style.display = ""; serieH.textContent = HEAD[tipo] ?? "Indicador";
         sub.style.display = "none";
         table.innerHTML = "";
         csvBtn.setAttribute("hidden", "");
