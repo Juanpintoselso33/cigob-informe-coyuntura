@@ -109,6 +109,7 @@ def build_series():
         "despacho_cemento": "isac_construccion",
         "peso_tarifas": "ipc_regulados",
         "saldo_comercial_12m": "saldo_comercial",
+        "clima_electoral": "votometro_ventaja_lla",   # espíritu reusa la serie del Votómetro
     }
     for ind_key, serie_key in alias.items():
         if serie_key in series and ind_key not in series:

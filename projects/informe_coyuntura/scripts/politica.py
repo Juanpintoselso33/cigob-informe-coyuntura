@@ -25,6 +25,7 @@ import sys
 import json
 import re
 import math
+import calendar
 import logging
 import requests
 import urllib3
@@ -230,6 +231,55 @@ def fetch_votometro() -> dict | None:
     except Exception as e:
         _warn("votometro_ventaja_lla", str(e))
         return None
+
+
+def votometro_serie_mensual() -> list:
+    """Serie histórica mensual de la brecha LLA−PJ del Votómetro, reconstruida desde
+    encuestasRaw (que trae todos los sondeos desde dic-2023). Para cada mes se aplica
+    la MISMA ponderación que fetch_votometro (recencia exp(−0,015·días) × calidad,
+    ventana de STALE_VOTOMETRO_DAYS anclada en el último sondeo del mes), evaluada al
+    cierre del mes. Devuelve [(YYYY-MM, gap)] ascendente."""
+    html = _cargar_votometro_html()
+    m = re.search(r"const\s+encuestasRaw\s*=\s*\[(.*?)\];", html, re.DOTALL)
+    if not m:
+        raise ValueError("No se encontró encuestasRaw en el HTML")
+    esp = []
+    for obj in re.finditer(r"\{([^}]+)\}", m.group(1)):
+        f = {}
+        for kv in re.finditer(r"(\w+)\s*:\s*'([^']*)'|(\w+)\s*:\s*([\d.]+)", obj.group(1)):
+            f[kv.group(1) or kv.group(3)] = kv.group(2) if kv.group(1) else float(kv.group(4))
+        if f and str(f.get("tipo", "")).strip() == "espacio" and f.get("fecha"):
+            esp.append(f)
+    fechas = sorted(date.fromisoformat(str(e["fecha"])[:10]) for e in esp)
+    if not fechas:
+        raise ValueError("Sin encuestas tipo='espacio'")
+    CAL = {"A": 3.0, "B": 2.0, "C": 1.0}; LAMBDA = 0.015
+
+    def gap_al(asof: date):
+        fmax = max((f for f in fechas if f <= asof), default=None)
+        if not fmax:
+            return None
+        cutoff = fmax.toordinal() - STALE_VOTOMETRO_DAYS
+        sw = sl = sp = 0.0
+        for e in esp:
+            fe = date.fromisoformat(str(e["fecha"])[:10])
+            if fe > asof or fe.toordinal() < cutoff:
+                continue
+            w = math.exp(-LAMBDA * (asof - fe).days) * CAL.get(str(e.get("calidad", "B")).strip().upper(), 2.0)
+            sw += w; sl += w * float(e.get("LLA", 0)); sp += w * float(e.get("PJ", 0))
+        return round((sl - sp) / sw, 1) if sw else None
+
+    out = []
+    y, mo = fechas[0].year, fechas[0].month
+    while (y, mo) <= (date.today().year, date.today().month):
+        asof = min(date(y, mo, calendar.monthrange(y, mo)[1]), date.today())
+        g = gap_al(asof)
+        if g is not None:
+            out.append((f"{y}-{mo:02d}", g))
+        mo += 1
+        if mo > 12:
+            mo = 1; y += 1
+    return out
 
 
 # ── Ratio DNU ─────────────────────────────────────────────────────────────────

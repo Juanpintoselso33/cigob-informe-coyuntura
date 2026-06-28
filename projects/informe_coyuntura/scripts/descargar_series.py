@@ -13,6 +13,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 import macro     # reutiliza el parser SDDS y las constantes del balance (reservas netas)
 import gestion   # reutiliza el lector del sheet oficial del RIGI + fechas del BO
+import politica  # reutiliza la reconstrucción histórica del Votómetro
 
 sys.stdout.reconfigure(encoding="utf-8")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -202,8 +203,18 @@ MACRO_BCRA = [
 ]
 
 POLITICA_INDEC = []
-# Cinturón político usa Votómetro HTML (parser en politica.py) + manuales.json
-# No hay series INDEC descargables para estos indicadores
+# Cinturón político: sin series INDEC, pero el Votómetro reconstruye su histórico.
+
+
+def fetch_votometro_serie() -> list:
+    """Serie histórica de la brecha LLA−PJ del Votómetro (reconstruida desde
+    encuestasRaw). [[YYYY-MM-01, gap]]."""
+    return [[f"{ym}-01", g] for ym, g in politica.votometro_serie_mensual()]
+
+
+POLITICA_DERIVADAS = [
+    ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
+]
 
 VIDA_INDEC = [
     ("148.3_INIVELNAL_DICI_M_26", "ipc_total",    "indice base dic-2016=100", "INDEC/datos.gob.ar"),
@@ -239,8 +250,7 @@ if __name__ == "__main__":
     descargar("macro", MACRO_INDEC, MACRO_BCRA, MACRO_DERIVADAS)
 
     print("\n=== POLÍTICA ===")
-    print("  [SKIP] cinturón político — indicadores manuales + Votómetro HTML, sin series INDEC")
-    descargar("politica", POLITICA_INDEC, [])
+    descargar("politica", POLITICA_INDEC, [], POLITICA_DERIVADAS)
 
     print("\n=== VIDA COTIDIANA ===")
     print("  [SKIP] icc_utdt — sin API, requiere scraping XLS UTDT")
