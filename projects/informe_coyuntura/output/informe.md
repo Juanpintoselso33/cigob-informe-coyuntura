@@ -1,7 +1,7 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-28 14:37:19"
-score_global: 3.8
+generado: "2026-06-28 16:12:29"
+score_global: 4.1
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-06
 
-**Score global:** 3.8/10  |  **Riesgo dominante:** gerencial
+**Score global:** 4.1/10  |  **Riesgo dominante:** gerencial
 
 ## Cinturones
 
@@ -34,12 +34,12 @@ schema_version: "1.2.0"
 | base_monetaria | 5.55 | % mensual nominal | 2026-06-24 | fresco |
 | tc_mayorista | 4.57 | % mensual | 2026-06-26 | fresco |
 
-### 🟡 Politica — score 4.5/10 (en_tension)
+### 🟡 Politica — score 4.8/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| votometro_ventaja_lla | 13.3 | Puntos porcentuales | 2026-03-05 | ⚠ cache |
+| votometro_ventaja_lla | 5.3 | Puntos porcentuales | 2026-05-28 | fresco |
 | ratio_dnu | 1.5 | DNUs por ley | 2026-06-28 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-28 | fresco |
 | iaf_transferencias | 1.8 | % interanual real | 2026-06-28 | fresco |
@@ -76,20 +76,19 @@ schema_version: "1.2.0"
 | libertad_opcion_salud | None | opciones de cambio captadas (SSS, acum. desde dic-2023) | 2026-04-01 | ⚠ cache |
 | protocolo_antipiquetes | None | % cortes con carril libre garantizado / total cortes registrados | 2026-04-01 | ⚠ cache |
 
-### 🟢 Espiritu Epoca — score 2.4/10 (estable)
+### 🟡 Espiritu Epoca — score 3.2/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 6.7 | interés 0–100 | 2026-06-27 | ⚠ cache |
-| clima_electoral | 13.3 | pp (LLA − PJ) | 2026-03-05 | ⚠ cache |
+| sentimiento_digital | 6.7 | interés 0–100 | 2026-06-27 | fresco |
+| clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
 
 ## Advertencias
 
-- `desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento`
+- `desactualizado:politica:cohesion_bloque,gobernadores_alineamiento`
 - `desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes`
-- `desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-28 14:37:19 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-28 16:12:29 — schema 1.2.0*

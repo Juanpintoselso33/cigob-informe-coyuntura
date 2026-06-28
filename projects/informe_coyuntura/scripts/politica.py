@@ -39,7 +39,8 @@ SCRIPT_DIR     = Path(__file__).parent
 PROJECT_DIR    = SCRIPT_DIR.parent
 CACHE_PATH     = PROJECT_DIR / "output" / "cache" / "politica.json"
 MANUALES_PATH  = PROJECT_DIR / "data" / "politica" / "manuales.json"
-VOTOMETRO_HTML = PROJECT_DIR.parent / "votometro" / "web" / "votometro.html"
+VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
+VOTOMETRO_HTML = PROJECT_DIR.parent / "votometro" / "web" / "votometro.html"  # fallback local
 
 CINTURON              = "politica"
 INDICADORES_ESPERADOS = [
@@ -118,6 +119,22 @@ def _days_old(fecha_str: str) -> int:
 
 # ── Votómetro parser ──────────────────────────────────────────────────────────
 
+def _cargar_votometro_html() -> str:
+    """HTML del Votómetro LIVE (cigob.github.io/Votometro, embebido en cigob.org).
+    Cae al archivo local si la URL falla o no trae encuestasRaw."""
+    try:
+        r = requests.get(VOTOMETRO_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        r.raise_for_status()
+        if "encuestasRaw" in r.text:
+            return r.text
+        raise ValueError("encuestasRaw ausente en la respuesta del Votómetro live")
+    except Exception as e:
+        if VOTOMETRO_HTML.exists():
+            _warn("votometro (URL live falló, uso archivo local)", str(e))
+            return VOTOMETRO_HTML.read_text(encoding="utf-8")
+        raise
+
+
 def fetch_votometro() -> dict | None:
     """
     Parsea encuestasRaw del Votómetro CIGOB y calcula la brecha ponderada LLA−PJ.
@@ -129,11 +146,7 @@ def fetch_votometro() -> dict | None:
     Peso = exp(−0.015 × días) × calidad_mult  donde A=3, B=2, C=1
     """
     try:
-        if not VOTOMETRO_HTML.exists():
-            raise FileNotFoundError(f"Votómetro no encontrado: {VOTOMETRO_HTML}")
-
-        with open(VOTOMETRO_HTML, encoding="utf-8") as f:
-            html = f.read()
+        html = _cargar_votometro_html()
 
         m = re.search(r"const\s+encuestasRaw\s*=\s*\[(.*?)\];", html, re.DOTALL)
         if not m:

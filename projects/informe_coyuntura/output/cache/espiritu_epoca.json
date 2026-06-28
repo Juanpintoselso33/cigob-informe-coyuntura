@@ -1,7 +1,7 @@
 {
   "cinturon": "espiritu_epoca",
-  "generated_at": "2026-06-28T04:29:46.468457",
-  "score": 2.4,
+  "generated_at": "2026-06-28T16:12:29.104062",
+  "score": 3.2,
   "indicadores": {
     "icc_utdt": {
       "valor": 42.5,
@@ -15,14 +15,14 @@
       "unidad": "interés 0–100",
       "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
       "fecha_dato": "2026-06-27",
-      "desactualizado": true
+      "desactualizado": false
     },
     "clima_electoral": {
-      "valor": 13.3,
+      "valor": 5.3,
       "unidad": "pp (LLA − PJ)",
       "fuente": "Votómetro CIGOB",
-      "fecha_dato": "2026-03-05",
-      "desactualizado": true
+      "fecha_dato": "2026-05-28",
+      "desactualizado": false
     }
   }
 }

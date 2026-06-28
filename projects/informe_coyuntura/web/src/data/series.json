@@ -7992,7 +7992,7 @@
   "clima_electoral": [
     {
       "fecha": "2026-06-01",
-      "valor": 13.3
+      "valor": 5.3
     }
   ],
   "cohesion_bloque": [
@@ -8160,7 +8160,7 @@
   "votometro_ventaja_lla": [
     {
       "fecha": "2026-06-01",
-      "valor": 13.3
+      "valor": 5.3
     }
   ]
 }

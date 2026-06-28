@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-28T14:37:19.342653",
+  "generated_at": "2026-06-28T16:12:29.236041",
   "period": "2026-06",
-  "score_global": 3.8,
+  "score_global": 4.1,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -347,19 +347,19 @@
       }
     },
     "politica": {
-      "score": 4.5,
+      "score": 4.8,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "votometro_ventaja_lla": {
-          "valor": 13.3,
-          "lla_ponderado": 41.8,
-          "pj_ponderado": 28.5,
-          "n_encuestas": 11,
+          "valor": 5.3,
+          "lla_ponderado": 33.4,
+          "pj_ponderado": 28.1,
+          "n_encuestas": 12,
           "unidad": "Puntos porcentuales",
           "fuente": "Votómetro CIGOB",
-          "fecha_dato": "2026-03-05",
-          "desactualizado": true
+          "fecha_dato": "2026-05-28",
+          "desactualizado": false
         },
         "ratio_dnu": {
           "valor": 1.5,
@@ -583,8 +583,8 @@
       "alerta": null
     },
     "espiritu_epoca": {
-      "score": 2.4,
-      "estado": "estable",
+      "score": 3.2,
+      "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "icc_utdt": {
@@ -599,14 +599,14 @@
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
           "fecha_dato": "2026-06-27",
-          "desactualizado": true
+          "desactualizado": false
         },
         "clima_electoral": {
-          "valor": 13.3,
+          "valor": 5.3,
           "unidad": "pp (LLA − PJ)",
           "fuente": "Votómetro CIGOB",
-          "fecha_dato": "2026-03-05",
-          "desactualizado": true
+          "fecha_dato": "2026-05-28",
+          "desactualizado": false
         }
       },
       "alerta": null
@@ -615,8 +615,7 @@
   "barbarismo_activo": "gerencial",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento",
-    "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes",
-    "desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral"
+    "desactualizado:politica:cohesion_bloque,gobernadores_alineamiento",
+    "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes"
   ]
 }

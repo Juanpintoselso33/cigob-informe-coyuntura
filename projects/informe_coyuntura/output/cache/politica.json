@@ -1,17 +1,17 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-06-28T04:28:44.692276",
-  "score": 4.5,
+  "generated_at": "2026-06-28T16:12:28.896099",
+  "score": 4.8,
   "indicadores": {
     "votometro_ventaja_lla": {
-      "valor": 13.3,
-      "lla_ponderado": 41.8,
-      "pj_ponderado": 28.5,
-      "n_encuestas": 11,
+      "valor": 5.3,
+      "lla_ponderado": 33.4,
+      "pj_ponderado": 28.1,
+      "n_encuestas": 12,
       "unidad": "Puntos porcentuales",
       "fuente": "Votómetro CIGOB",
-      "fecha_dato": "2026-03-05",
-      "desactualizado": true
+      "fecha_dato": "2026-05-28",
+      "desactualizado": false
     },
     "ratio_dnu": {
       "valor": 1.5,
