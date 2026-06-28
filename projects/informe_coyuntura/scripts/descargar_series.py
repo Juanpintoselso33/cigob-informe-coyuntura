@@ -11,7 +11,8 @@ from datetime import datetime, timedelta
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-import macro  # reutiliza el parser SDDS y las constantes del balance (reservas netas)
+import macro     # reutiliza el parser SDDS y las constantes del balance (reservas netas)
+import gestion   # reutiliza el lector del sheet oficial del RIGI + fechas del BO
 
 sys.stdout.reconfigure(encoding="utf-8")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -216,6 +217,23 @@ GESTION_INDEC = [
 ]
 
 
+def fetch_rigi_serie() -> list:
+    """Serie histórica del RIGI: inversión aprobada ACUMULADA (US$ M) por mes,
+    reconstruida con la fecha de sanción (BO) de cada proyecto aprobado. La
+    plataforma oficial solo publica la foto actual; esto arma la evolución."""
+    proy = gestion.rigi_proyectos_aprobados()   # [(fecha_iso, nombre, inv)] ordenado
+    cum, por_mes = 0.0, {}
+    for fecha, _nombre, inv in proy:
+        cum += inv
+        por_mes[fecha[:7]] = round(cum)         # acumulado al último proyecto del mes
+    return [[f"{ym}-01", v] for ym, v in sorted(por_mes.items())]
+
+
+GESTION_DERIVADAS = [
+    ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
+]
+
+
 if __name__ == "__main__":
     print("=== MACRO ===")
     descargar("macro", MACRO_INDEC, MACRO_BCRA, MACRO_DERIVADAS)
@@ -229,6 +247,6 @@ if __name__ == "__main__":
     descargar("vida_cotidiana", VIDA_INDEC, [])
 
     print("\n=== GESTIÓN ===")
-    descargar("gestion", GESTION_INDEC, [])
+    descargar("gestion", GESTION_INDEC, [], GESTION_DERIVADAS)
 
     print(f"\nCSVs en {OUTPUT_DIR.resolve()}")

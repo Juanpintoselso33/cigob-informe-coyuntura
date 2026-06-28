@@ -391,6 +391,56 @@ def _rigi_evaluacion() -> tuple:
     return int(float(vals[ci["cantidad"]])), _rigi_monto(vals[ci["inversion"]])
 
 
+# Store de fechas de aprobación (la plataforma da la foto actual, no la serie; la
+# fecha de cada proyecto se saca de su Resolución en el BO y se cachea acá).
+RIGI_FECHAS_PATH = PROJECT_DIR / "data" / "gestion" / "rigi_fechas.json"
+
+
+def _rigi_fecha_norma(url: str) -> str | None:
+    """Fecha de sanción (YYYY-MM-DD) de una norma del BO/normativa (argentina.gob.ar)."""
+    try:
+        rr = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        m = re.search(r"Sanci[oó]n[:\s]*(\d{2})-(\d{2})-(\d{4})", rr.text)
+        if m:
+            return f"{m.group(3)}-{m.group(2)}-{m.group(1)}"
+        m = re.search(r"\d{4}-\d{2}-\d{2}", re.sub(r"<[^>]+>", " ", rr.text))
+        return m.group(0) if m else None
+    except Exception:
+        return None
+
+
+def rigi_proyectos_aprobados() -> list:
+    """[(fecha_iso, nombre, inversión M USD)] de los proyectos aprobados, ordenado
+    por fecha. La inversión sale del sheet (fresca); la fecha de sanción se cachea
+    en RIGI_FECHAS_PATH y solo se fetchea del BO para proyectos nuevos. Reconstruye
+    la serie histórica que la plataforma oficial no publica."""
+    rows = _rigi_sheet_csv("dataset")
+    ci = {n: i for i, n in enumerate(rows[0])}
+    proy: dict = {}
+    for r in rows[1:]:
+        if not r or not r[0] or r[0] == "Provincia":
+            continue
+        nombre = r[ci["nombre"]].strip()
+        if nombre and nombre not in proy:
+            proy[nombre] = {"inv": _rigi_monto(r[ci["inv-comprometida"]]),
+                            "enlace": r[ci["enlace"]] if ci.get("enlace") is not None else ""}
+    store = {}
+    if RIGI_FECHAS_PATH.exists():
+        store = json.loads(RIGI_FECHAS_PATH.read_text(encoding="utf-8"))
+    dirty = False
+    for nombre, d in proy.items():
+        if nombre not in store and d["enlace"]:
+            f = _rigi_fecha_norma(d["enlace"])
+            if f:
+                store[nombre] = f
+                dirty = True
+    if dirty:
+        RIGI_FECHAS_PATH.parent.mkdir(parents=True, exist_ok=True)
+        RIGI_FECHAS_PATH.write_text(
+            json.dumps(store, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+    return sorted((store[n], n, d["inv"]) for n, d in proy.items() if n in store)
+
+
 def fetch_rigi_inversiones() -> dict | None:
     """Avance del RIGI desde la PLATAFORMA OFICIAL del Ministerio de Economía
     (jun-2026), que publica los proyectos en un Google Sheet. El avance que puntúa

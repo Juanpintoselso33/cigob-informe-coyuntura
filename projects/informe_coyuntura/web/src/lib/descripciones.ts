@@ -237,7 +237,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   rigi_inversiones: {
     que: "Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total del pipeline (aprobados + en evaluación).",
-    aporta: "Mide si el régimen convierte las promesas en inversión ratificada. Se toma de la plataforma oficial del Ministerio de Economía (proyectos aprobados y en evaluación, con monto y empleos); la ficha muestra el conteo de proyectos y los montos en USD.",
+    aporta: "Mide si el régimen convierte las promesas en inversión ratificada. Se toma de la plataforma oficial del Ministerio de Economía (proyectos aprobados y en evaluación, con monto y empleos); la ficha muestra el conteo de proyectos y los montos en USD. La evolución histórica grafica la inversión aprobada acumulada (US$ M), reconstruida con la fecha de sanción de cada resolución en el Boletín Oficial.",
     frecuencia: "Continua (plataforma oficial)", tipo: "Avance de reforma",
   },
   desregulacion_normativa: {

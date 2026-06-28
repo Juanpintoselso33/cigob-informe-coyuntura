@@ -57,3 +57,8 @@ AskUserQuestion: puntúa la inversión, se muestran los proyectos.)
 - **Riesgo:** depende del `RIGI_SHEET_ID` del Google Sheet oficial; si Economía rota el
   ID o cambia las columnas (`nombre`, `inv-comprometida`, `cantidad`, `inversion`), el
   colector cae al fallback de InfoLeg. URLs y columnas centralizadas en `gestion.py`.
+- **Serie histórica reconstruida:** la plataforma solo da la foto actual. Para el gráfico
+  del modal se reconstruye la **inversión aprobada acumulada (US$ M) por mes** usando la
+  **fecha de sanción** de la Resolución de cada proyecto (BO/normativa argentina.gob.ar),
+  cacheada en `data/gestion/rigi_fechas.json` (se fetchea el BO solo para proyectos
+  nuevos). 17 proyectos: US$ 211M (ene-2025) → US$ 31.192M (jun-2026).

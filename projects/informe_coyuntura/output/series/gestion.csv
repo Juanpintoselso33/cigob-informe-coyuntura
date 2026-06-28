@@ -1,4 +1,16 @@
 fecha,indicador,valor,unidad,fuente
+2026-06-01,rigi_inversiones,31192,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2026-05-01,rigi_inversiones,27760,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2026-03-01,rigi_inversiones,26446,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2026-01-01,rigi_inversiones,25479,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2025-11-01,rigi_inversiones,24814,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2025-10-01,rigi_inversiones,24537,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2025-08-01,rigi_inversiones,21865,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2025-07-01,rigi_inversiones,21297,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2025-05-01,rigi_inversiones,21011,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2025-04-01,rigi_inversiones,18267,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2025-03-01,rigi_inversiones,3111,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
+2025-01-01,rigi_inversiones,211,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-04-01,isac_construccion,145.188156585882,indice base 2004=100,INDEC/datos.gob.ar
 2026-03-01,isac_construccion,167.312521637531,indice base 2004=100,INDEC/datos.gob.ar
 2026-02-01,isac_construccion,158.736729279152,indice base 2004=100,INDEC/datos.gob.ar
