@@ -170,12 +170,12 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-hero-lead strong { color: var(--dark); font-weight: 700; }
 
 .cg-hero-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex; flex-wrap: wrap; justify-content: center;
     gap: 16px;
     max-width: 880px;
     margin: 0 auto 24px;
 }
+.cg-hero-stats > * { flex: 1 1 170px; max-width: 240px; }
 @media (max-width: 720px) { .cg-hero-stats { grid-template-columns: repeat(2, 1fr); } }
 .cg-hero-stat {
     background: var(--paper);
@@ -284,9 +284,13 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     justify-content: center;
     gap: 16px;
 }
-/* Flex (no grid) para que la última fila incompleta quede centrada — "árbolito
-   invertido" (p. ej. 5 cinturones = 3 arriba + 2 centrados abajo). El max-width evita
-   que las cards de una fila incompleta se estiren más anchas que las de filas llenas. */
+/* ── PATRÓN UNIVERSAL de centrado de filas incompletas ─────────────────────────
+   TODO grupo de cards usa flexbox (no grid) con wrap + justify-content:center, así la
+   última fila incompleta queda CENTRADA ("árbolito invertido", p. ej. 5 cinturones =
+   3 arriba + 2 centrados abajo) y se autoajusta al viewport. El max-width acota el ancho
+   de la fila incompleta para que matchee el de las filas llenas. Mismo patrón aplicado a:
+   .cg-grid · .cg-tile-grid · .cg-chart-grid · .cg-method-grid · .cg-archive ·
+   .cg-hero-stats · .cg-itcm-dims. Para sumar un grupo nuevo: flex-wrap + center + basis. */
 .cg-grid > * { flex: 1 1 290px; max-width: 400px; }
 .cg-cint {
     background: var(--paper);
@@ -531,10 +535,10 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 
 /* ── ARCHIVO ──────────────────────────────────── */
 .cg-archive {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex; flex-wrap: wrap; justify-content: center;
     gap: 14px;
 }
+.cg-archive > * { flex: 1 1 280px; max-width: 360px; }
 .cg-archive-card {
     background: var(--paper);
     border: 1px solid var(--bd);

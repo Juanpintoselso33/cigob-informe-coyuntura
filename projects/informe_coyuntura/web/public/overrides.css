@@ -110,10 +110,10 @@
 
 /* ── Página macro: dimensiones del ITCM ─────────────────────────── */
 .cg-itcm-dims {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    display: flex; flex-wrap: wrap; justify-content: center;
     gap: 14px;
 }
+.cg-itcm-dims > * { flex: 1 1 280px; max-width: 360px; }
 .cg-itcm-dim {
     background: var(--paper); border: 1px solid var(--bd);
     border-top: 3px solid var(--c-macro);
