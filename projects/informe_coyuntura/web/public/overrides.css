@@ -61,10 +61,13 @@
 
 /* ── Tiles de indicador (páginas de detalle) ────────────────────── */
 .cg-tile-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 14px;
 }
+/* Última fila incompleta centrada (mismo criterio que .cg-grid). */
+.cg-tile-grid > * { flex: 1 1 280px; max-width: 330px; }
 .cg-tile {
     display: flex; flex-direction: column; gap: 7px;
     background: var(--paper); border: 1px solid var(--bd);

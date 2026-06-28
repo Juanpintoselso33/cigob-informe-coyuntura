@@ -279,10 +279,15 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 
 /* ── Grid de cinturones ───────────────────────── */
 .cg-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
 }
+/* Flex (no grid) para que la última fila incompleta quede centrada — "árbolito
+   invertido" (p. ej. 5 cinturones = 3 arriba + 2 centrados abajo). El max-width evita
+   que las cards de una fila incompleta se estiren más anchas que las de filas llenas. */
+.cg-grid > * { flex: 1 1 290px; max-width: 400px; }
 .cg-cint {
     background: var(--paper);
     border: 1px solid var(--bd);
@@ -398,10 +403,12 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     width: 100%; height: 220px;
 }
 .cg-chart-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 16px;
 }
+.cg-chart-grid > * { flex: 1 1 380px; max-width: 520px; }
 .cg-chart-mini-card {
     background: var(--paper);
     border: 1px solid var(--bd);
@@ -600,11 +607,13 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     box-shadow: var(--shadow-card);
 }
 .cg-method-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 28px;
     margin-top: 4px;
 }
+.cg-method-grid > * { flex: 1 1 280px; max-width: 400px; }
 .cg-method article h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
