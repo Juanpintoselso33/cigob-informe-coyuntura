@@ -289,8 +289,9 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
    última fila incompleta queda CENTRADA ("árbolito invertido", p. ej. 5 cinturones =
    3 arriba + 2 centrados abajo) y se autoajusta al viewport. El max-width acota el ancho
    de la fila incompleta para que matchee el de las filas llenas. Mismo patrón aplicado a:
-   .cg-grid · .cg-tile-grid · .cg-chart-grid · .cg-method-grid · .cg-archive ·
-   .cg-hero-stats · .cg-itcm-dims. Para sumar un grupo nuevo: flex-wrap + center + basis. */
+   .cg-grid · .cg-tile-grid · .cg-chart-grid · .cg-archive · .cg-hero-stats ·
+   .cg-itcm-dims. (.cg-method son bloques de texto → quedan a la izquierda.)
+   Para sumar un grupo nuevo de cards: flex-wrap + center + basis. */
 .cg-grid > * { flex: 1 1 290px; max-width: 400px; }
 .cg-cint {
     background: var(--paper);
@@ -610,14 +611,14 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     padding: 40px 44px;
     box-shadow: var(--shadow-card);
 }
+/* El método NO usa el centrado universal: son bloques de texto (no cards) y leen
+   alineados a la izquierda; centrar la última fila descolgaba "Regla de lectura". */
 .cg-method-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 28px;
     margin-top: 4px;
 }
-.cg-method-grid > * { flex: 1 1 280px; max-width: 400px; }
 .cg-method article h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
