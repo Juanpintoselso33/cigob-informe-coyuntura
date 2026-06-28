@@ -16,33 +16,39 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import itcm
 
 # Fixture mayo 2026 con la metodología REVISADA. Los valores de rem_ipc_12m,
-# reservas_bcra, recaudacion e idc son los que el colector alimenta a las bandas:
+# reservas_bcra, recaudacion, idc, idm y tcrm son los que el colector alimenta:
 #   * rem_ipc_12m  = equivalente MENSUAL del REM (raíz 12). 23,3% anual → 1,76% → 85.
 #   * recaudacion  = variación i.a. REAL (deflactada). 1,82% → banda 0-5 → 60.
 #   * reservas_bcra= NETAS (Machado). 1.881M → banda 0-5.000 → 30.
 #   * idc          = Índice de Capacidad Prestable. 1,012 → banda 0,98-1,02 → 60.
-# Dimensiones: D1=75, D2=70, D3=45, D4=100 → ITCM=71,2.
+#   * idm          = Índice de Desequilibrio Monetario (gap i.a. real). 4,5 pp → banda 2-5 → 60.
+#   * tcrm         = ITCRM (base 2015=100). 84,3 → banda 75-85 → 35 (apreciación marcada).
+# Dimensiones: estabilidad=69,5 fiscal=70 financiamiento=45 actividad=100
+# competitividad=35 → ITCM=65,0.
 EJEMPLO = {
     "ipc_total": 2.58,             # banda 2-3 → 65
     "rem_ipc_12m": 1.76,           # equiv. mensual: banda 1-2 → 85
+    "idm": 4.5,                    # gap i.a. real: banda 2-5 → 60
     "recaudacion": 1.82,           # i.a. real: banda 0-5 → 60
     "saldo_comercial_12m": 17125,  # banda >15000 → 85
     "reservas_bcra": 1881,         # netas: banda 0-5000 → 30
     "idc": 1.012,                  # banda 0,98-1,02 → 60
     "emae_ia": 5.48,               # banda >5 → 100
+    "tcrm": 84.3,                  # ITCRM: banda 75-85 → 35
 }
 
 
 def test_itcm_reproduce_ejemplo():
     r = itcm.calcular_itcm(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["estabilidad_monetaria"]["puntaje"] == 75.0
+    assert dims["estabilidad_monetaria"]["puntaje"] == 69.5
     assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 70.0
     assert dims["financiamiento"]["puntaje"] == 45.0
     assert dims["actividad"]["puntaje"] == 100.0
-    assert r["valor"] == 71.2
+    assert dims["competitividad_externa"]["puntaje"] == 35.0
+    assert r["valor"] == 65.0
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcm.tension_de_itcm(r["valor"]) == 2.9
+    assert itcm.tension_de_itcm(r["valor"]) == 3.5
     assert r["ajustes_aplicados"] == []
 
 
@@ -85,6 +91,17 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(0.9801, b["idc"]) == 60          # amarillo
     assert itcm.puntaje_banda(1.05, b["idc"]) == 100
     assert itcm.puntaje_banda(0.90, b["idc"]) == 10
+    # IDM: gap i.a. real (negativo = remonetización, baja tensión, score alto)
+    assert itcm.puntaje_banda(-2.0, b["idm"]) == 100            # high inclusivo
+    assert itcm.puntaje_banda(-1.99, b["idm"]) == 85
+    assert itcm.puntaje_banda(2.0, b["idm"]) == 85
+    assert itcm.puntaje_banda(2.01, b["idm"]) == 60
+    assert itcm.puntaje_banda(8.01, b["idm"]) == 10            # excedente fuerte
+    # TCRM: apreciación (nivel bajo) = más tensión
+    assert itcm.puntaje_banda(110.1, b["tcrm"]) == 100         # competitivo
+    assert itcm.puntaje_banda(110.0, b["tcrm"]) == 80          # high inclusivo
+    assert itcm.puntaje_banda(85.0, b["tcrm"]) == 35           # apreciación marcada
+    assert itcm.puntaje_banda(74.9, b["tcrm"]) == 10           # atraso severo
 
 
 def test_rem_mensual_equivalente_y_idc():
@@ -105,8 +122,9 @@ def test_ajuste_manual_aplicado():
         "puntaje": 60, "justificacion": "Superávit por contracción de importaciones"}}
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
     assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 60.0
-    # D1=75, D2=60, D3=45, D4=100 → 0.35×75+0.30×60+0.20×45+0.15×100 = 68.25 → 68.2
-    assert r["valor"] == 68.2
+    # estab=69.5 fiscal=60 financ=45 act=100 compet=35 →
+    # 0.30×69.5+0.27×60+0.18×45+0.13×100+0.12×35 = 62.35 → 62.4
+    assert r["valor"] == 62.4
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85 and aj["a"] == 60
@@ -127,12 +145,12 @@ def test_ajuste_vencido_no_se_aplica(tmp_path):
 
 
 def test_renormalizacion_indicador_faltante():
-    """Sin REM, la dimensión monetaria queda solo con el IPC."""
+    """Sin REM, la dimensión monetaria queda con IPC + IDM (renormalizados)."""
     valores = dict(EJEMPLO, rem_ipc_12m=None)
     r = itcm.calcular_itcm(valores)
-    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 65.0
-    # ITCM = 0.35×65 + 0.30×70 + 0.20×45 + 0.15×100 = 67.75 → 67.8
-    assert abs(r["valor"] - 67.8) <= 0.05
+    # (65×0.40 + 60×0.30) / 0.70 = 62.857 → 62.9
+    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 62.9
+    assert abs(r["valor"] - 63.1) <= 0.05
 
 
 def test_renormalizacion_dimension_faltante():
@@ -140,17 +158,21 @@ def test_renormalizacion_dimension_faltante():
     valores = dict(EJEMPLO, emae_ia=None)
     r = itcm.calcular_itcm(valores)
     assert "actividad" not in r["dimensiones"]
-    esperado = (0.35 * 75 + 0.30 * 70 + 0.20 * 45) / 0.85
+    # estab=69.5 fiscal=70 financ=45 compet=35, sin actividad (peso 0.13)
+    esperado = (0.30 * 69.5 + 0.27 * 70 + 0.18 * 45 + 0.12 * 35) / 0.87
     assert abs(r["valor"] - esperado) <= 0.1
 
 
 def test_sin_indicadores_devuelve_none():
     assert itcm.calcular_itcm({}) is None
-    assert itcm.calcular_itcm({"tcrm": 79.8}) is None  # contexto no integra el índice
+    # base_monetaria es contexto: no integra el índice
+    assert itcm.calcular_itcm({"base_monetaria": 0.7}) is None
+    # tcrm AHORA integra el índice (competitividad externa): ya no devuelve None
+    assert itcm.calcular_itcm({"tcrm": 84.3})["valor"] == 35.0
 
 
 def test_contexto_no_altera_el_indice():
-    con_contexto = dict(EJEMPLO, badlar=20.62, tcrm=79.8, prestamos_privados=2.1,
+    con_contexto = dict(EJEMPLO, badlar=20.62, prestamos_privados=2.1,
                         base_monetaria=0.7, tc_mayorista=-0.3)
     assert itcm.calcular_itcm(con_contexto)["valor"] == itcm.calcular_itcm(EJEMPLO)["valor"]
 

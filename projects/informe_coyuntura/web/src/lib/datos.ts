@@ -90,6 +90,7 @@ export const LABELS: Record<string, string> = {
   emae_ia: "Actividad económica (EMAE i.a.)",
   saldo_comercial_12m: "Saldo comercial 12m", recaudacion: "Recaudación tributaria",
   tcrm: "Tipo de cambio real (TCRM)", rem_ipc_12m: "Expectativas inflación (REM 12m)",
+  idm: "Desequilibrio monetario (IDM)",
   prestamos_privados: "Préstamos al sector privado", base_monetaria: "Base monetaria",
   tc_mayorista: "Tipo de cambio mayorista",
   // politica
@@ -148,6 +149,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // macro
   ipc_total: "%", reservas_bcra: "US$ M netas", idc: "índice", badlar: "%", emae_ia: "% i.a.",
   saldo_comercial_12m: "US$ M", recaudacion: "% i.a. real", tcrm: "índice", rem_ipc_12m: "%",
+  idm: "pp",
   prestamos_privados: "% m/m", base_monetaria: "% m/m", tc_mayorista: "% m/m",
   // politica
   votometro_ventaja_lla: "pp", ratio_dnu: "ratio", movilizacion_cepa: "índice",
@@ -173,6 +175,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   badlar: "% anual", emae_ia: "% interanual",
   saldo_comercial_12m: "Millones de USD (acum. 12 meses)", recaudacion: "% interanual real",
   tcrm: "Índice (base dic-2015=100)", rem_ipc_12m: "% anual esperado",
+  idm: "Puntos porcentuales (brecha i.a. real)",
   prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
   // politica
   votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",

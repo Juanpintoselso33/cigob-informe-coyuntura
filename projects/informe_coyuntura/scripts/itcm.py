@@ -40,6 +40,23 @@ Revisiones sobre el doc original (observaciones del analista, docs
     que rompe el semáforo); se implementa A como el RATIO mensual de holgura
     (1−R_t)/(1−R_{t-1}), que sí deja el índice centrado en 1,0 y reproduce el
     "amarillo" de mayo 2026 del doc. El IdC se computa en macro.py.
+
+Incorporaciones de la 3ª tanda (propuesta "Índice de Desequilibrio Monetario"
++ tipo de cambio multilateral, jun-2026):
+  * Estabilidad monetaria suma el IDM (Índice de Desequilibrio Monetario): la
+    brecha entre el crecimiento de la oferta amplia de pesos privados (M3 privado)
+    y la demanda transaccional (M2 privado). La propuesta original lo define como
+    ΔM3 nominal − ΔM2 real mensual; esa fórmula está sesgada por la inflación
+    (resta una tasa real de una nominal → da rojo permanente) y por la
+    estacionalidad del aguinaldo. Se implementa la versión REAL-REAL INTERANUAL
+    (ΔM3 priv. real i.a. − ΔM2 priv. real i.a.), que respeta la intención
+    (oferta vs demanda real de pesos) sin esos defectos. El IDM se computa en
+    macro.py a partir de circulante (var. 17) + depósitos privados (var. 100) y
+    M2 privado transaccional (var. 197) del BCRA, deflactados por el IPC.
+  * Nueva dimensión COMPETITIVIDAD EXTERNA (12%): el TCRM (ITCRM oficial del BCRA,
+    base 2015=100) deja de ser contexto y puntúa. Apreciación real = atraso
+    cambiario = más tensión. Las 4 dimensiones originales se recortan en
+    proporción para hacer lugar (ver DIMENSIONES_ITCM).
 """
 import json
 from pathlib import Path
@@ -55,6 +72,14 @@ BANDAS_ITCM = {
         # Valor DERIVADO en macro.py. Misma escala mensual que el IPC: pone la
         # expectativa anual en términos mensuales comparables a la inflación realizada.
         (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
+    ],
+    "idm": [                            # Índice de Desequilibrio Monetario (pp, brecha i.a. real)
+        # gap = crecimiento i.a. REAL del M3 privado − del M2 privado transaccional.
+        # Negativo = la demanda real tracciona (remonetización genuina, baja tensión);
+        # positivo = la masa amplia corre por encima de la demanda → excedente de pesos
+        # que presiona la brecha cambiaria. Calibrado con la historia 2024-2026 (oct-24 a
+        # may-26 va de −11 pp en la remonetización post-estabilización a +7 pp en el pico).
+        (-INF, -2.0, 100), (-2.0, 2.0, 85), (2.0, 5.0, 60), (5.0, 8.0, 35), (8.0, INF, 10),
     ],
     "recaudacion": [                    # % var mensual
         (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60), (-5.0, 0.0, 40), (-INF, -5.0, 10),
@@ -75,29 +100,45 @@ BANDAS_ITCM = {
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],
+    "tcrm": [                           # ITCRM oficial del BCRA (base 17-dic-2015=100)
+        # Apreciación real = pérdida de competitividad y atraso cambiario = más tensión.
+        # Bandas calibradas con la historia 1997-2026 (p10≈75, p25≈87, mediana≈106):
+        # >110 competitivo · 95-110 cómodo (~nivel 2015) · 85-95 apreciación moderada ·
+        # 75-85 apreciación marcada · ≤75 atraso severo.
+        (110.0, INF, 100), (95.0, 110.0, 80), (85.0, 95.0, 60), (75.0, 85.0, 35), (-INF, 75.0, 10),
+    ],
 }
 
 # Dimensiones del índice con su peso y la ponderación interna de indicadores.
+# Pesos de dimensión revisados al sumar la 5ª dimensión (competitividad externa):
+# las 4 originales de la Paramétrica CIGOB (35/30/20/15) se recortan en proporción
+# para hacer lugar al 12% del TCRM. Estos números son operacionalización propia
+# (el doc define las 4 originales); pisables vía data/macro/ajustes_itcm.json.
 DIMENSIONES_ITCM = {
     "estabilidad_monetaria": {
         "nombre": "Estabilidad monetaria-inflacionaria",
-        "peso": 0.35,
-        "indicadores": {"ipc_total": 0.5, "rem_ipc_12m": 0.5},
+        "peso": 0.30,
+        "indicadores": {"ipc_total": 0.40, "rem_ipc_12m": 0.30, "idm": 0.30},
     },
     "viabilidad_fiscal_comercial": {
         "nombre": "Viabilidad fiscal-comercial",
-        "peso": 0.30,
+        "peso": 0.27,
         "indicadores": {"recaudacion": 0.6, "saldo_comercial_12m": 0.4},
     },
     "financiamiento": {
         "nombre": "Capacidad de financiamiento",
-        "peso": 0.20,
+        "peso": 0.18,
         "indicadores": {"reservas_bcra": 0.5, "idc": 0.5},
     },
     "actividad": {
         "nombre": "Actividad económica",
-        "peso": 0.15,
+        "peso": 0.13,
         "indicadores": {"emae_ia": 1.0},
+    },
+    "competitividad_externa": {
+        "nombre": "Competitividad externa",
+        "peso": 0.12,
+        "indicadores": {"tcrm": 1.0},
     },
 }
 
@@ -121,7 +162,8 @@ INTERPRETACION_LEGIBLE = {
 # Indicadores macro que se publican pero no integran el índice.
 # badlar: ya no integra el índice (la dimensión de financiamiento usa el IdC);
 # se sigue publicando como contexto e insumo del IdC (tasa pasiva de referencia).
-INDICADORES_CONTEXTO = ["badlar", "tcrm", "prestamos_privados", "base_monetaria", "tc_mayorista"]
+# tcrm SALIÓ de contexto: ahora puntúa en la dimensión competitividad_externa.
+INDICADORES_CONTEXTO = ["badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"]
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:

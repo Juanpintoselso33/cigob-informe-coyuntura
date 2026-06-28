@@ -23,8 +23,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel neto (stock)",
   },
   idc: {
-    que: "Mide si el sistema financiero tiene fondos y disposición para prestar al sector privado.",
-    aporta: "Un crédito que se expande acompaña la inversión y la actividad; uno que se contrae las ahoga. Semáforo: >1,02 expansión (verde) · 0,98–1,02 neutro (amarillo) · <0,98 contracción (rojo).",
+    que: "Índice de Capacidad Prestable: combina precio (BADLAR real), volumen (depósitos privados reales) y asignación (holgura préstamos/depósitos) para medir si el sistema financiero tiene fondos y disposición para prestar al sector privado.",
+    aporta: "Un crédito que se expande acompaña la inversión y la actividad; uno que se contrae las ahoga. Semáforo: >1,02 expansión (verde) · 0,98–1,02 neutro (amarillo) · <0,98 contracción (rojo). Se arma con datos del BCRA (BADLAR, depósitos y préstamos privados) y el IPC del INDEC.",
     frecuencia: "Mensual", tipo: "Índice (~1,0)",
   },
   badlar: {
@@ -48,14 +48,19 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación i.a. real",
   },
   tcrm: {
-    que: "Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria).",
-    aporta: "Un peso caro frena exportaciones y la acumulación de reservas; uno barato las favorece.",
+    que: "Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). Mide la dimensión de competitividad externa del índice.",
+    aporta: "Una apreciación real (peso caro) frena exportaciones y la acumulación de reservas, y suele anticipar presión cambiaria: cuanto más apreciado, más tensión. Un peso más competitivo afloja esa restricción.",
     frecuencia: "Mensual", tipo: "Índice",
   },
   rem_ipc_12m: {
     que: "La inflación que el mercado espera para los próximos 12 meses.",
     aporta: "Captura la credibilidad del programa: si el mercado espera que la inflación siga bajando, el ancla de expectativas funciona; si la ve acelerarse, hay desconfianza.",
     frecuencia: "Mensual", tipo: "Expectativa",
+  },
+  idm: {
+    que: "Índice de Desequilibrio Monetario: la brecha entre cuánto crece la oferta amplia de pesos del sector privado (M3 privado) y cuánto crece la demanda transaccional de dinero (M2 privado), ambos en términos reales e interanuales.",
+    aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala excedente monetario que tiende a presionar la brecha cambiaria; una negativa indica remonetización genuina traccionada por la demanda real. Se construye con agregados del BCRA (circulante, depósitos y M2 privado) deflactados por el IPC.",
+    frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
   prestamos_privados: {
     que: "Cuánto varía el crédito bancario otorgado al sector privado.",

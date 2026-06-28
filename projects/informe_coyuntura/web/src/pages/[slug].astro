@@ -18,6 +18,10 @@ const c = informe.cinturones[meta.key];
 const verdict = verdictDeCinturon(c.estado);
 const verdictLabel = { verde: "Estable", amarillo: "En tensión", rojo: "Crítico" }[verdict];
 const filas = indicadoresOrdenados(c);
+// Los indicadores de contexto (en_indice === false) no construyen la tensión:
+// se muestran en un bloque aparte para no confundirlos con los del índice.
+const filasIndice = filas.filter(({ ind }) => ind.en_indice !== false);
+const filasContexto = filas.filter(({ ind }) => ind.en_indice === false);
 const fuentes = fuentesDeCinturon(c);
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
@@ -45,7 +49,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           <h2 class="cg-h2">ITCM: {c.itcm.valor}/100 — {c.itcm.banda_legible}</h2>
           <p class="cg-h2-sub">
             Índice de Tensión del Cinturón Macroeconómico (paramétrica CIGOB, may-2026).
-            0 = cinturón severamente apretado, 100 = aflojado. Pondera cuatro dimensiones;
+            0 = cinturón severamente apretado, 100 = aflojado. Pondera cinco dimensiones;
             la tensión del cinturón ({c.score}/10) es (100 − ITCM) / 10.
           </p>
         </div>
@@ -74,12 +78,29 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="cg-section-head">
         <p class="cg-eyebrow">Indicadores</p>
         <h2 class="cg-h2">El detalle, hoy</h2>
-        <p class="cg-h2-sub">Tocá cualquier indicador para ver qué mide, qué aporta y su evolución. Automatizados primero; carga manual y estimaciones al final.</p>
+        <p class="cg-h2-sub">
+          {c.itcm
+            ? "Los que construyen el índice de tensión. Tocá cualquiera para ver qué mide, qué aporta y su evolución. Automatizados primero; carga manual y estimaciones al final."
+            : "Tocá cualquier indicador para ver qué mide, qué aporta y su evolución. Automatizados primero; carga manual y estimaciones al final."}
+        </p>
       </div>
       <div class="cg-tile-grid">
-        {filas.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+        {filasIndice.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
       </div>
     </section>
+
+    {filasContexto.length > 0 && (
+      <section class="cg-section">
+        <div class="cg-section-head">
+          <p class="cg-eyebrow">Contexto</p>
+          <h2 class="cg-h2">No integran el índice</h2>
+          <p class="cg-h2-sub">Datos de seguimiento que ayudan a leer el cinturón pero <strong>no construyen la tensión</strong> del ITCM: quedan fuera del cálculo para que el indicador sea transparente.</p>
+        </div>
+        <div class="cg-tile-grid">
+          {filasContexto.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+        </div>
+      </section>
+    )}
 
     <section class="cg-section cg-sources" id="fuentes">
       <p class="cg-eyebrow">Fuentes</p>
@@ -97,7 +118,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           neto estricto de la planilla SDDS del BCRA más los depósitos del Tesoro y el Bopreal a
           12 meses, que no son pasivos del BCRA para defender el tipo de cambio. La dimensión de
           financiamiento usa el <strong>Índice de Capacidad Prestable</strong> (precio, volumen
-          y asignación del crédito), no la tasa nominal. El <strong>score {c.score}/10</strong> y
+          y asignación del crédito), no la tasa nominal. La estabilidad monetaria incorpora el{" "}
+          <strong>Índice de Desequilibrio Monetario</strong> (brecha interanual real entre la
+          oferta amplia de pesos —M3 privado— y la demanda transaccional —M2 privado—), y una
+          quinta dimensión de <strong>competitividad externa</strong> puntúa el{" "}
+          <strong>tipo de cambio real multilateral</strong>: la apreciación se lee como tensión.
+          El <strong>score {c.score}/10</strong> y
           el <strong>ITCM {c.itcm?.valor}/100</strong> son la misma medición en dos escalas:
           tensión = (100 − ITCM) / 10; la escala 0–10 permite comparar macro con los otros
           cuatro cinturones y componer el score global.

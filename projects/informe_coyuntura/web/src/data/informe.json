@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-28T04:30:25.964130",
+  "generated_at": "2026-06-28T13:19:01.755058",
   "period": "2026-06",
   "score_global": 3.9,
   "ponderacion": {
@@ -16,8 +16,8 @@
   },
   "cinturones": {
     "macro": {
-      "score": 2.9,
-      "estado": "estable",
+      "score": 3.5,
+      "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
         "ipc_total": {
@@ -30,9 +30,9 @@
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 65,
           "puntaje_banda": 65,
-          "peso_efectivo": 0.175,
+          "peso_efectivo": 0.12,
           "aporte_score": 3.5,
-          "aporte_formula": "Banda ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntos 0–100; puntaje 65; pesa 17,5% del ITCM)",
+          "aporte_formula": "Banda ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntos 0–100; puntaje 65; pesa 12,0% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
@@ -54,16 +54,16 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 30,
           "puntaje_banda": 30,
-          "peso_efectivo": 0.1,
+          "peso_efectivo": 0.09,
           "aporte_score": 7.0,
-          "aporte_formula": "Banda ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntos 0–100; puntaje 30; pesa 10,0% del ITCM)",
+          "aporte_formula": "Banda ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntos 0–100; puntaje 30; pesa 9,0% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": "netas 4122 = SDDS estricto -1605 + Tesoro 3058 + Bopreal 2670 (M USD)"
         },
         "idc": {
           "valor": 1.012,
           "unidad": "Índice (~1,0)",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7,100,117 + IPC INDEC",
+          "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
           "fecha_dato": "2026-06-23",
           "componentes": {
             "precio": 0.9947,
@@ -77,9 +77,9 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 60,
           "puntaje_banda": 60,
-          "peso_efectivo": 0.1,
+          "peso_efectivo": 0.09,
           "aporte_score": 4.0,
-          "aporte_formula": "Banda ITCM: >1,04 → 100 · 1,02–1,04 → 85 · 0,98–1,02 → 60 · 0,95–0,98 → 35 · ≤0,95 → 10 (puntos 0–100; puntaje 60; pesa 10,0% del ITCM)",
+          "aporte_formula": "Banda ITCM: >1,04 → 100 · 1,02–1,04 → 85 · 0,98–1,02 → 60 · 0,95–0,98 → 35 · ≤0,95 → 10 (puntos 0–100; puntaje 60; pesa 9,0% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": "índice 1,012 = precio 0,9947 · volumen 1,0042 · asignación 1,0398 (amarillo)"
         },
@@ -105,9 +105,9 @@
           "dimension": "actividad",
           "puntaje_itcm": 100,
           "puntaje_banda": 100,
-          "peso_efectivo": 0.15,
+          "peso_efectivo": 0.13,
           "aporte_score": 0.0,
-          "aporte_formula": "Banda ITCM: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤-5 → 5 (puntos 0–100; puntaje 100; pesa 15,0% del ITCM)",
+          "aporte_formula": "Banda ITCM: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤-5 → 5 (puntos 0–100; puntaje 100; pesa 13,0% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
@@ -127,9 +127,9 @@
           "dimension": "viabilidad_fiscal_comercial",
           "puntaje_itcm": 85,
           "puntaje_banda": 85,
-          "peso_efectivo": 0.12,
+          "peso_efectivo": 0.108,
           "aporte_score": 1.5,
-          "aporte_formula": "Banda ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤-15000 → 10 (puntos 0–100; puntaje 85; pesa 12,0% del ITCM)",
+          "aporte_formula": "Banda ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤-15000 → 10 (puntos 0–100; puntaje 85; pesa 10,8% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
@@ -145,9 +145,9 @@
           "dimension": "viabilidad_fiscal_comercial",
           "puntaje_itcm": 60,
           "puntaje_banda": 60,
-          "peso_efectivo": 0.18,
+          "peso_efectivo": 0.162,
           "aporte_score": 4.0,
-          "aporte_formula": "Banda ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · ≤-5 → 10 (puntos 0–100; puntaje 60; pesa 18,0% del ITCM)",
+          "aporte_formula": "Banda ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · ≤-5 → 10 (puntos 0–100; puntaje 60; pesa 16,2% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
@@ -157,10 +157,14 @@
           "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
-          "en_indice": false,
-          "aporte_score": null,
-          "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
+          "en_indice": true,
+          "dimension": "competitividad_externa",
+          "puntaje_itcm": 35,
+          "puntaje_banda": 35,
+          "peso_efectivo": 0.12,
+          "aporte_score": 6.5,
+          "aporte_formula": "Banda ITCM: >110 → 100 · 95–110 → 80 · 85–95 → 60 · 75–85 → 35 · ≤75 → 10 (puntos 0–100; puntaje 35; pesa 12,0% del ITCM)",
+          "aporte_nota": null,
           "aporte_input_txt": null
         },
         "rem_ipc_12m": {
@@ -173,13 +177,31 @@
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 85,
           "puntaje_banda": 85,
-          "peso_efectivo": 0.175,
+          "peso_efectivo": 0.09,
           "equivalente_mensual": 1.76,
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.76% mensual, en la misma escala que el IPC.",
           "aporte_score": 1.5,
-          "aporte_formula": "Banda ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntos 0–100; puntaje 85; pesa 17,5% del ITCM)",
+          "aporte_formula": "Banda ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntos 0–100; puntaje 85; pesa 9,0% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": "equiv. mensual 1,76% (raíz-12 del 23,3% anual)"
+        },
+        "idm": {
+          "valor": 4.52,
+          "unidad": "pp (brecha i.a. real)",
+          "fuente": "BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; M2 privado transaccional var. 197) + IPC INDEC",
+          "fecha_dato": "2026-05-01",
+          "desactualizado": false,
+          "m3_real_ia": -2.62,
+          "m2_real_ia": -7.14,
+          "en_indice": true,
+          "dimension": "estabilidad_monetaria",
+          "puntaje_itcm": 60,
+          "puntaje_banda": 60,
+          "peso_efectivo": 0.09,
+          "aporte_score": 4.0,
+          "aporte_formula": "Banda ITCM: ≤-2 → 100 · -2–2 → 85 · 2–5 → 60 · 5–8 → 35 · >8 → 10 (puntos 0–100; puntaje 60; pesa 9,0% del ITCM)",
+          "aporte_nota": null,
+          "aporte_input_txt": "brecha 4,52 pp = M3 priv. real i.a. -2,62% − M2 priv. real i.a. -7,14%"
         },
         "prestamos_privados": {
           "valor": 3.05,
@@ -220,88 +242,108 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 71.2,
+        "valor": 65.0,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "estabilidad_monetaria": {
             "nombre": "Estabilidad monetaria-inflacionaria",
-            "peso": 0.35,
-            "puntaje": 75.0,
+            "peso": 0.3,
+            "puntaje": 69.5,
             "indicadores": {
               "ipc_total": {
-                "peso": 0.5,
+                "peso": 0.4,
                 "puntaje_banda": 65,
                 "puntaje_aplicado": 65,
-                "peso_efectivo": 0.175
+                "peso_efectivo": 0.12
               },
               "rem_ipc_12m": {
-                "peso": 0.5,
+                "peso": 0.3,
                 "puntaje_banda": 85,
                 "puntaje_aplicado": 85,
-                "peso_efectivo": 0.175
+                "peso_efectivo": 0.09
+              },
+              "idm": {
+                "peso": 0.3,
+                "puntaje_banda": 60,
+                "puntaje_aplicado": 60,
+                "peso_efectivo": 0.09
               }
             },
-            "peso_efectivo": 0.35
+            "peso_efectivo": 0.3
           },
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
-            "peso": 0.3,
+            "peso": 0.27,
             "puntaje": 70.0,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
                 "puntaje_banda": 60,
                 "puntaje_aplicado": 60,
-                "peso_efectivo": 0.18
+                "peso_efectivo": 0.162
               },
               "saldo_comercial_12m": {
                 "peso": 0.4,
                 "puntaje_banda": 85,
                 "puntaje_aplicado": 85,
-                "peso_efectivo": 0.12
+                "peso_efectivo": 0.108
               }
             },
-            "peso_efectivo": 0.3
+            "peso_efectivo": 0.27
           },
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
-            "peso": 0.2,
+            "peso": 0.18,
             "puntaje": 45.0,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.5,
                 "puntaje_banda": 30,
                 "puntaje_aplicado": 30,
-                "peso_efectivo": 0.1
+                "peso_efectivo": 0.09
               },
               "idc": {
                 "peso": 0.5,
                 "puntaje_banda": 60,
                 "puntaje_aplicado": 60,
-                "peso_efectivo": 0.1
+                "peso_efectivo": 0.09
               }
             },
-            "peso_efectivo": 0.2
+            "peso_efectivo": 0.18
           },
           "actividad": {
             "nombre": "Actividad económica",
-            "peso": 0.15,
+            "peso": 0.13,
             "puntaje": 100.0,
             "indicadores": {
               "emae_ia": {
                 "peso": 1.0,
                 "puntaje_banda": 100,
                 "puntaje_aplicado": 100,
-                "peso_efectivo": 0.15
+                "peso_efectivo": 0.13
               }
             },
-            "peso_efectivo": 0.15
+            "peso_efectivo": 0.13
+          },
+          "competitividad_externa": {
+            "nombre": "Competitividad externa",
+            "peso": 0.12,
+            "puntaje": 35.0,
+            "indicadores": {
+              "tcrm": {
+                "peso": 1.0,
+                "puntaje_banda": 35,
+                "puntaje_aplicado": 35,
+                "peso_efectivo": 0.12
+              }
+            },
+            "peso_efectivo": 0.12
           }
         },
         "ajustes_aplicados": []
       },
-      "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 4 dimensiones: estabilidad monetaria 35%, viabilidad fiscal-comercial 30%, financiamiento 20%, actividad 15%. La tensión del cinturón es (100 − ITCM) / 10."
+      "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 5 dimensiones: estabilidad monetaria 30%, viabilidad fiscal-comercial 27%, financiamiento 18%, actividad 13%, competitividad externa 12%. La tensión del cinturón es (100 − ITCM) / 10."
     },
     "politica": {
       "score": 4.5,
@@ -328,7 +370,7 @@
           "periodo": "2026",
           "unidad": "DNUs por ley",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 7.5,
           "aporte_formula": "0 → 0 · 1,0 → 5 · 2,0+ → 10 (DNU/leyes)",
@@ -340,7 +382,7 @@
           "metrica": "101.0 conflictos acumulados",
           "unidad": "Índice (0–100)",
           "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 5.0,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (índice)",
@@ -355,7 +397,7 @@
           "ipc_aplicado_pct": 38.3,
           "unidad": "% interanual real",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 2.1,
           "aporte_formula": "+10% → 0 · 0% → 2,5 · −10% → 5 · −30% → 10 (var. real i.a.)",
@@ -368,7 +410,7 @@
           "ventana_dias": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 9.4,
           "aporte_formula": "70% → 0 · 35% → 5 · 0% → 10",
@@ -405,7 +447,7 @@
           "periodo_id": "HCDN144",
           "unidad": "% de sesiones",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 0.0,
           "aporte_formula": "0% → 0 · 15% → 5 · 30%+ → 10 (sesiones caídas)",
@@ -413,13 +455,13 @@
         },
         "comisiones_caidas": {
           "valor": 97.8,
-          "dictamen_n": 458,
+          "dictamen_n": 461,
           "aprobados_n": 10,
-          "caidas_n": 448,
+          "caidas_n": 451,
           "ventana_dias": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 10.0,
           "aporte_formula": "20% → 0 · 40% → 5 · 60%+ → 10",
@@ -430,7 +472,7 @@
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político."
     },
     "vida_cotidiana": {
-      "score": 3.8,
+      "score": 3.5,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -546,6 +588,16 @@
           "aporte_formula": "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)",
           "aporte_nota": null
         },
+        "sentimiento_digital": {
+          "valor": 6.7,
+          "unidad": "interés 0–100",
+          "fuente": "Google Trends",
+          "fecha_dato": "2026-06-27",
+          "desactualizado": false,
+          "aporte_score": 0.7,
+          "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
+          "aporte_nota": null
+        },
         "patentamiento_motos": {
           "valor": 69740,
           "unidad": "unidades",
@@ -558,7 +610,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260628_0429.json",
+      "fuente_enriquecida": "vida_cotidiana_20260627_0053.json",
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
     },
     "gestion": {
@@ -571,7 +623,7 @@
           "avance_pct": 78.2,
           "unidad": "% de brecha",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 2.2,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -615,7 +667,7 @@
           "avance_pct": 40.0,
           "unidad": "Normas (conteo)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 6.0,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -626,7 +678,7 @@
           "avance_pct": 31.0,
           "unidad": "Resoluciones (conteo)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 6.9,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -637,7 +689,7 @@
           "avance_pct": 60.0,
           "unidad": "Normas (conteo)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-06-28",
+          "fecha_dato": "2026-06-27",
           "desactualizado": false,
           "aporte_score": 4.0,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
@@ -718,11 +770,11 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 6.7,
+          "valor": 6.8,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
           "fecha_dato": "2026-06-27",
-          "desactualizado": true,
+          "desactualizado": false,
           "aporte_score": 0.7,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
           "aporte_nota": null
@@ -747,6 +799,6 @@
   "flags": [
     "desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento",
     "desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes",
-    "desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral"
+    "desactualizado:espiritu_epoca:clima_electoral"
   ]
 }

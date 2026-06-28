@@ -114,6 +114,14 @@ def fetch_tcrm_serie(meses: int = 18) -> list:
     return [[ym, val] for ym, val in serie[-meses:]]
 
 
+def fetch_idm_serie(meses: int = 18) -> list:
+    """Serie mensual del Índice de Desequilibrio Monetario (brecha i.a. real entre
+    M3 y M2 privado), con la misma fórmula que el indicador en macro.py. Devuelve
+    los últimos `meses` como [[YYYY-MM-01, gap_pp]]."""
+    serie = macro._idm_serie_mensual(meses_hist=meses + 4)  # [(YYYY-MM, gap, m3, m2)] asc.
+    return [[f"{ym}-01", gap] for ym, gap, _m3, _m2 in serie[-meses:]]
+
+
 def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: list = ()):
     rows = []
 
@@ -159,6 +167,7 @@ MACRO_DERIVADAS = [
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
+    ("idm", "pp (brecha i.a. real)", "BCRA (M3/M2 privado) + IPC INDEC", fetch_idm_serie),
 ]
 MACRO_BCRA = [
     (7,  "badlar",             "% anual",  "BCRA"),

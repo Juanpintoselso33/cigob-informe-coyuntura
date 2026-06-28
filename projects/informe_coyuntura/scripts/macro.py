@@ -47,8 +47,10 @@ BCRA_REM_IPC_ID     = 29   # REM: mediana expectativas IPC próximos 12 meses (%
 BCRA_PRESTAMOS_ID   = 26   # Préstamos sector privado (millones ARS) — contexto
 BCRA_BASE_MON_ID    = 15   # Base monetaria (millones ARS)
 BCRA_TC_MAYOR_ID    = 5    # Tipo de cambio mayorista de referencia (ARS/USD)
-BCRA_DEP_PRIV_ID    = 100  # Depósitos del sector privado no financiero (incluye cedros) — insumo IdC
+BCRA_DEP_PRIV_ID    = 100  # Depósitos del sector privado no financiero (incluye cedros) — insumo IdC + M3 priv.
 BCRA_PREST_PRIV_ID  = 117  # Préstamos otorgados al sector privado — insumo IdC
+BCRA_CIRCULANTE_ID  = 17   # Billetes y monedas en poder del público — insumo M3 privado (IDM)
+BCRA_M2_PRIV_ID     = 197  # M2 transaccional del sector privado — demanda de dinero (IDM)
 
 HTTP_TIMEOUT = 30
 HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"}
@@ -59,7 +61,7 @@ CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
     "emae_ia", "saldo_comercial_12m", "recaudacion", "tcrm",
-    "rem_ipc_12m", "prestamos_privados", "base_monetaria", "tc_mayorista",
+    "rem_ipc_12m", "idm", "prestamos_privados", "base_monetaria", "tc_mayorista",
 ]
 
 
@@ -148,6 +150,65 @@ def _bcra_variacion_m(var_id: int) -> dict:
         raise ValueError(f"BCRA var {var_id}: sin datos de hace 30+ días")
     var_m = (float(ultimo["valor"]) / float(hace_30["valor"]) - 1) * 100
     return {"var_m": round(var_m, 2), "fecha": ultimo["fecha"]}
+
+
+def _bcra_fin_de_mes(var_id: int, meses: int) -> dict:
+    """{YYYY-MM: último valor del mes} de una serie BCRA, sobre los últimos
+    `meses` meses. Insumo del IDM (agregados monetarios de fin de mes)."""
+    desde = (date.today() - timedelta(days=int(meses * 31) + 10)).isoformat()
+    url   = f"{BCRA_VARIABLES_BASE}/{var_id}"
+    r = requests.get(url, params={"desde": desde, "limit": 3000},
+                     headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT, verify=False)
+    r.raise_for_status()
+    detalle = r.json()["results"][0]["detalle"]
+    por_mes = {}
+    for d in sorted(detalle, key=lambda x: x["fecha"]):
+        por_mes[d["fecha"][:7]] = float(d["valor"])   # se queda con el último día del mes
+    return por_mes
+
+
+def _ipc_indice_mensual(limit: int = 40) -> dict:
+    """{YYYY-MM: índice IPC nivel} para deflactar los agregados del IDM."""
+    data = _indec_serie(INDEC_IPC_ID, limit=limit)
+    return {row[0][:7]: row[1] for row in data if row[1] is not None}
+
+
+def _ym_shift(ym: str, meses: int) -> str:
+    """Desplaza un 'YYYY-MM' en `meses` (puede ser negativo)."""
+    total = int(ym[:4]) * 12 + (int(ym[5:7]) - 1) + meses
+    return f"{total // 12}-{total % 12 + 1:02d}"
+
+
+def _idm_serie_mensual(meses_hist: int = 24) -> list:
+    """Serie mensual del Índice de Desequilibrio Monetario (IDM).
+
+    Brecha entre el crecimiento interanual REAL de la oferta amplia de pesos del
+    sector privado (M3 privado = circulante en poder del público + depósitos
+    privados, var. 17 + 100) y el de la demanda transaccional (M2 privado, var.
+    197), ambos deflactados por el IPC. Versión real-real interanual: corrige el
+    sesgo inflacionario y la estacionalidad del aguinaldo de la propuesta original
+    (m/m nominal-real). Positivo = la masa amplia corre por encima de la demanda
+    real → excedente de pesos que presiona la brecha cambiaria.
+
+    Devuelve [(YYYY-MM, gap_pp, m3_real_ia, m2_real_ia)] ascendente.
+    """
+    n = meses_hist + 14
+    circ = _bcra_fin_de_mes(BCRA_CIRCULANTE_ID, n)
+    dep  = _bcra_fin_de_mes(BCRA_DEP_PRIV_ID, n)
+    m2   = _bcra_fin_de_mes(BCRA_M2_PRIV_ID, n)
+    ipc  = _ipc_indice_mensual(meses_hist + 16)
+    comunes = set(circ) & set(dep) & set(m2) & set(ipc)
+    out = []
+    for ym in sorted(comunes):
+        prev = _ym_shift(ym, -12)
+        if prev not in comunes:
+            continue
+        m3, m3p = circ[ym] + dep[ym], circ[prev] + dep[prev]
+        m3_real_ia = ((m3 / ipc[ym]) / (m3p / ipc[prev]) - 1) * 100
+        m2_real_ia = ((m2[ym] / ipc[ym]) / (m2[prev] / ipc[prev]) - 1) * 100
+        out.append((ym, round(m3_real_ia - m2_real_ia, 2),
+                    round(m3_real_ia, 2), round(m2_real_ia, 2)))
+    return out
 
 
 # ── Fetchers ──────────────────────────────────────────────────────────────────
@@ -371,8 +432,8 @@ def fetch_idc() -> dict | None:
         return {
             "valor": round(idc, 4),
             "unidad": "Índice (~1,0)",
-            "fuente": (f"{BCRA_VARIABLES_BASE}/{BCRA_BADLAR_ID},{BCRA_DEP_PRIV_ID},"
-                       f"{BCRA_PREST_PRIV_ID} + IPC INDEC"),
+            "fuente": ("BCRA — BADLAR (var. 7), depósitos privados (var. 100) y "
+                       "préstamos privados (var. 117) + IPC INDEC"),
             "fecha_dato": dep["fecha"],
             "componentes": {
                 "precio": round(precio, 4),
@@ -536,6 +597,32 @@ def fetch_rem_ipc_12m() -> dict | None:
         return None
 
 
+def fetch_idm() -> dict | None:
+    """Índice de Desequilibrio Monetario (IDM): brecha i.a. real entre la oferta
+    amplia de pesos privados (M3 privado) y la demanda transaccional (M2 privado).
+    Positivo = excedente de pesos sobre la demanda → presión sobre la brecha;
+    negativo = remonetización genuina traccionada por la demanda real. Ver
+    _idm_serie_mensual para la metodología (real-real interanual)."""
+    try:
+        serie = _idm_serie_mensual()
+        if not serie:
+            raise ValueError("sin meses con interanual disponible")
+        ym, gap, m3_real_ia, m2_real_ia = serie[-1]
+        return {
+            "valor": gap,
+            "unidad": "pp (brecha i.a. real)",
+            "fuente": ("BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; "
+                       "M2 privado transaccional var. 197) + IPC INDEC"),
+            "fecha_dato": f"{ym}-01",
+            "desactualizado": False,
+            "m3_real_ia": m3_real_ia,
+            "m2_real_ia": m2_real_ia,
+        }
+    except Exception as e:
+        _warn("idm", e)
+        return None
+
+
 def fetch_prestamos_privados() -> dict | None:
     try:
         result = _bcra_variacion_m(BCRA_PRESTAMOS_ID)
@@ -669,6 +756,7 @@ def main() -> None:
         ("recaudacion",        fetch_recaudacion),
         ("tcrm",               fetch_tcrm),
         ("rem_ipc_12m",        fetch_rem_ipc_12m),
+        ("idm",                fetch_idm),
         ("prestamos_privados", fetch_prestamos_privados),
         ("base_monetaria",     fetch_base_monetaria),
         ("tc_mayorista",       fetch_tc_mayorista),

@@ -372,7 +372,6 @@ fecha,indicador,valor,unidad,fuente
 2025-01-08,tc_mayorista,1036.75,ARS/USD,BCRA
 2025-01-07,tc_mayorista,1036.25,ARS/USD,BCRA
 2025-01-06,tc_mayorista,1035.75,ARS/USD,BCRA
-2025-01-03,tc_mayorista,1034.75,ARS/USD,BCRA
 2026-05-01,saldo_comercial,3504.1,M USD,INDEC/datos.gob.ar (ICA expo−impo)
 2026-04-01,saldo_comercial,2712.8,M USD,INDEC/datos.gob.ar (ICA expo−impo)
 2026-03-01,saldo_comercial,2581.2,M USD,INDEC/datos.gob.ar (ICA expo−impo)
@@ -856,7 +855,6 @@ fecha,indicador,valor,unidad,fuente
 2025-01-08,prestamos_privados,64738409.0,M ARS,BCRA
 2025-01-07,prestamos_privados,64674707.0,M ARS,BCRA
 2025-01-06,prestamos_privados,64912095.0,M ARS,BCRA
-2025-01-03,prestamos_privados,65405795.0,M ARS,BCRA
 2026-05-01,ipc_total,11607.3937,% mensual,INDEC/datos.gob.ar
 2026-04-01,ipc_total,11363.0904,% mensual,INDEC/datos.gob.ar
 2026-03-01,ipc_total,11077.0608,% mensual,INDEC/datos.gob.ar
@@ -905,6 +903,24 @@ fecha,indicador,valor,unidad,fuente
 2022-08-01,ipc_total,911.1316,% mensual,INDEC/datos.gob.ar
 2022-07-01,ipc_total,851.761,% mensual,INDEC/datos.gob.ar
 2022-06-01,ipc_total,793.0278,% mensual,INDEC/datos.gob.ar
+2026-05-01,idm,4.52,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2026-04-01,idm,6.42,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2026-03-01,idm,7.13,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2026-02-01,idm,7.1,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2026-01-01,idm,6.66,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-12-01,idm,6.22,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-11-01,idm,5.06,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-10-01,idm,4.27,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-09-01,idm,5.91,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-08-01,idm,3.62,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-07-01,idm,2.85,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-06-01,idm,4.79,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-05-01,idm,-1.11,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-04-01,idm,-11.14,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-03-01,idm,-12.02,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-02-01,idm,-9.46,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-01-01,idm,-13.44,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2024-12-01,idm,-11.17,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-03-01,emae_ia,0.0547993204369523,% i.a.,INDEC/datos.gob.ar
 2026-02-01,emae_ia,-0.0202518356477873,% i.a.,INDEC/datos.gob.ar
 2026-01-01,emae_ia,0.0154275596369242,% i.a.,INDEC/datos.gob.ar
@@ -1306,7 +1322,6 @@ fecha,indicador,valor,unidad,fuente
 2025-01-08,base_monetaria,31138876.0,M ARS,BCRA
 2025-01-07,base_monetaria,31025360.0,M ARS,BCRA
 2025-01-06,base_monetaria,31269417.0,M ARS,BCRA
-2025-01-03,base_monetaria,31660480.0,M ARS,BCRA
 2026-06-25,badlar,21.25,% anual,BCRA
 2026-06-24,badlar,21.5625,% anual,BCRA
 2026-06-23,badlar,21.6875,% anual,BCRA
@@ -1661,4 +1676,3 @@ fecha,indicador,valor,unidad,fuente
 2025-01-08,badlar,31.0,% anual,BCRA
 2025-01-07,badlar,32.375,% anual,BCRA
 2025-01-06,badlar,32.75,% anual,BCRA
-2025-01-03,badlar,32.0625,% anual,BCRA

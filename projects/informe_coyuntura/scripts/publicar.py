@@ -187,9 +187,9 @@ VIDA_CONTEXTO = ("Indicador de contexto. No se pudo calcular su variación inter
 MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
 
 SCORE_EXPLICACION = {
-    "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 4 dimensiones: "
-                       "estabilidad monetaria 35%, viabilidad fiscal-comercial 30%, financiamiento 20%, "
-                       "actividad 15%. La tensión del cinturón es (100 − ITCM) / 10."),
+    "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 5 dimensiones: "
+                       "estabilidad monetaria 30%, viabilidad fiscal-comercial 27%, financiamiento 18%, "
+                       "actividad 13%, competitividad externa 12%. La tensión del cinturón es (100 − ITCM) / 10."),
     "politica":       "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político.",
     "gestion":        "Promedio simple de la tensión de sus 12 reformas: a mayor avance ejecutado, menor tensión.",
     "vida_cotidiana": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle.",
@@ -272,6 +272,9 @@ def _macro_input_txt(ikey, ind):
         return (f"índice {coma(ind.get('valor'))} = precio {coma(c.get('precio'))} · "
                 f"volumen {coma(c.get('volumen'))} · asignación {coma(c.get('asignacion'))} "
                 f"({ind.get('semaforo', '')})")
+    if ikey == "idm" and ind.get("m3_real_ia") is not None:
+        return (f"brecha {coma(ind.get('valor'))} pp = M3 priv. real i.a. "
+                f"{coma(ind['m3_real_ia'])}% − M2 priv. real i.a. {coma(ind['m2_real_ia'])}%")
     return None
 
 
