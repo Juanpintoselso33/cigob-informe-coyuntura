@@ -187,9 +187,9 @@ VIDA_CONTEXTO = ("Indicador de contexto. No se pudo calcular su variación inter
 MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
 
 SCORE_EXPLICACION = {
-    "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 5 dimensiones: "
-                       "estabilidad monetaria 30%, viabilidad fiscal-comercial 27%, financiamiento 18%, "
-                       "actividad 13%, competitividad externa 12%. La tensión del cinturón es (100 − ITCM) / 10."),
+    "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: "
+                       "estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, "
+                       "actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."),
     "politica":       "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político.",
     "gestion":        "Promedio simple de la tensión de sus 12 reformas: a mayor avance ejecutado, menor tensión.",
     "vida_cotidiana": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle.",
@@ -275,6 +275,16 @@ def _macro_input_txt(ikey, ind):
     if ikey == "idm" and ind.get("m3_real_ia") is not None:
         return (f"brecha {coma(ind.get('valor'))} pp = M3 priv. real i.a. "
                 f"{coma(ind['m3_real_ia'])}% − M2 priv. real i.a. {coma(ind['m2_real_ia'])}%")
+    if ikey == "iai" and ind.get("componentes"):
+        c = ind["componentes"]
+        partes = [f"ISAC {coma(c.get('isac'))}%", f"BK importados {coma(c.get('bk_importados'))}%"]
+        if c.get("patentamientos_comerciales") is not None:
+            partes.append(f"patentamientos {coma(c['patentamientos_comerciales'])}%")
+        return f"{coma(ind.get('valor'))}% i.a. = " + " · ".join(partes)
+    if ikey == "icip" and ind.get("componentes"):
+        c = ind["componentes"]
+        return (f"{coma(ind.get('valor'))}% i.a. = servicios tech {coma(c.get('servicios_tech'))}% · "
+                f"productividad {coma(c.get('productividad'))}%")
     return None
 
 

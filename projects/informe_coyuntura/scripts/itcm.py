@@ -57,6 +57,20 @@ Incorporaciones de la 3ª tanda (propuesta "Índice de Desequilibrio Monetario"
     base 2015=100) deja de ser contexto y puntúa. Apreciación real = atraso
     cambiario = más tensión. Las 4 dimensiones originales se recortan en
     proporción para hacer lugar (ver DIMENSIONES_ITCM).
+
+Capítulo INVERSIÓN (docs "260629 INDICADOR DE INVERSION" + "260630 INVERSIÓN E IA",
+jun-2026): nueva 6ª dimensión (12%) con dos indicadores compuestos calculados en
+macro.py como promedios ponderados de variaciones interanuales:
+  * IAI — Índice Anticipador de Inversión (físico): ISAC construcción + bienes de
+    capital importados (+ patentamientos comerciales cuando haya histórico). Mide
+    la inversión tradicional/tangible.
+  * ICIP — Índice de Capitalización Inteligente: pagos al exterior de servicios de
+    informática (software/cloud/IA) + productividad laboral (IPI/empleo). Mide la
+    inversión digital/intangible. La lectura conjunta IAI vs ICIP expone la
+    "trampa de la madurez" (invertir en ladrillos sin digitalizarse).
+  El umbral ±2% de los docs no sobrevive al dato argentino (las series i.a. se
+  mueven ±30-180% por la base 2024-2025): se usan BANDAS ANCHAS calibradas a la
+  realidad, conservando la lógica contracción/neutro/expansión.
 """
 import json
 from pathlib import Path
@@ -107,38 +121,56 @@ BANDAS_ITCM = {
         # 75-85 apreciación marcada · ≤75 atraso severo.
         (110.0, INF, 100), (95.0, 110.0, 80), (85.0, 95.0, 60), (75.0, 85.0, 35), (-INF, 75.0, 10),
     ],
+    "iai": [                            # IAI — Índice Anticipador de Inversión (% i.a. ponderado)
+        # Inversión física (ISAC + bienes de capital importados). Más = expansión.
+        # El umbral ±2% del doc no sobrevive al dato (las series i.a. de inversión
+        # argentina se mueven ±30-180% por la base 2024); bandas ANCHAS calibradas a
+        # la realidad 2024-2026 conservando la lógica contracción/neutro/expansión.
+        (10.0, INF, 100), (2.0, 10.0, 80), (-2.0, 2.0, 60), (-10.0, -2.0, 35), (-INF, -10.0, 10),
+    ],
+    "icip": [                           # ICIP — Capitalización Inteligente (% i.a. ponderado)
+        # Inversión digital/intangible (servicios tech + productividad). Más rápido y
+        # volátil que la física (los pagos de servicios informáticos i.a. oscilan más),
+        # de ahí la banda más ancha. Más = la economía se digitaliza más rápido.
+        (20.0, INF, 100), (5.0, 20.0, 80), (-5.0, 5.0, 60), (-20.0, -5.0, 35), (-INF, -20.0, 10),
+    ],
 }
 
 # Dimensiones del índice con su peso y la ponderación interna de indicadores.
-# Pesos de dimensión revisados al sumar la 5ª dimensión (competitividad externa):
-# las 4 originales de la Paramétrica CIGOB (35/30/20/15) se recortan en proporción
-# para hacer lugar al 12% del TCRM. Estos números son operacionalización propia
-# (el doc define las 4 originales); pisables vía data/macro/ajustes_itcm.json.
+# Pesos de dimensión: operacionalización propia. La Paramétrica CIGOB define las 4
+# originales (35/30/20/15); las dimensiones 5ª (competitividad externa) y 6ª (inversión)
+# y el recorte proporcional de las demás para hacerles lugar son extensión propia.
+# Pisables vía data/macro/ajustes_itcm.json.
 DIMENSIONES_ITCM = {
     "estabilidad_monetaria": {
         "nombre": "Estabilidad monetaria-inflacionaria",
-        "peso": 0.30,
+        "peso": 0.26,
         "indicadores": {"ipc_total": 0.40, "rem_ipc_12m": 0.30, "idm": 0.30},
     },
     "viabilidad_fiscal_comercial": {
         "nombre": "Viabilidad fiscal-comercial",
-        "peso": 0.27,
+        "peso": 0.24,
         "indicadores": {"recaudacion": 0.6, "saldo_comercial_12m": 0.4},
     },
     "financiamiento": {
         "nombre": "Capacidad de financiamiento",
-        "peso": 0.18,
+        "peso": 0.16,
         "indicadores": {"reservas_bcra": 0.5, "idc": 0.5},
     },
     "actividad": {
         "nombre": "Actividad económica",
-        "peso": 0.13,
+        "peso": 0.11,
         "indicadores": {"emae_ia": 1.0},
     },
     "competitividad_externa": {
         "nombre": "Competitividad externa",
-        "peso": 0.12,
+        "peso": 0.11,
         "indicadores": {"tcrm": 1.0},
+    },
+    "inversion": {
+        "nombre": "Inversión",
+        "peso": 0.12,
+        "indicadores": {"iai": 0.6, "icip": 0.4},
     },
 }
 

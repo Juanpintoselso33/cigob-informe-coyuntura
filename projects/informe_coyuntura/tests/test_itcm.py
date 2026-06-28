@@ -23,8 +23,10 @@ import itcm
 #   * idc          = Índice de Capacidad Prestable. 1,012 → banda 0,98-1,02 → 60.
 #   * idm          = Índice de Desequilibrio Monetario (gap i.a. real). 4,5 pp → banda 2-5 → 60.
 #   * tcrm         = ITCRM (base 2015=100). 84,3 → banda 75-85 → 35 (apreciación marcada).
+#   * iai          = Índice Anticipador de Inversión (% i.a.). −4,2 → banda −10/−2 → 35.
+#   * icip         = Capitalización Inteligente (% i.a.). 8,2 → banda 5-20 → 80.
 # Dimensiones: estabilidad=69,5 fiscal=70 financiamiento=45 actividad=100
-# competitividad=35 → ITCM=65,0.
+# competitividad=35 inversión=53 (iai 35·0,6 + icip 80·0,4) → ITCM=63,3.
 EJEMPLO = {
     "ipc_total": 2.58,             # banda 2-3 → 65
     "rem_ipc_12m": 1.76,           # equiv. mensual: banda 1-2 → 85
@@ -35,6 +37,8 @@ EJEMPLO = {
     "idc": 1.012,                  # banda 0,98-1,02 → 60
     "emae_ia": 5.48,               # banda >5 → 100
     "tcrm": 84.3,                  # ITCRM: banda 75-85 → 35
+    "iai": -4.2,                   # inversión física: banda −10/−2 → 35
+    "icip": 8.2,                   # capitalización digital: banda 5-20 → 80
 }
 
 
@@ -46,9 +50,10 @@ def test_itcm_reproduce_ejemplo():
     assert dims["financiamiento"]["puntaje"] == 45.0
     assert dims["actividad"]["puntaje"] == 100.0
     assert dims["competitividad_externa"]["puntaje"] == 35.0
-    assert r["valor"] == 65.0
+    assert dims["inversion"]["puntaje"] == 53.0
+    assert r["valor"] == 63.3
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcm.tension_de_itcm(r["valor"]) == 3.5
+    assert itcm.tension_de_itcm(r["valor"]) == 3.7
     assert r["ajustes_aplicados"] == []
 
 
@@ -102,6 +107,14 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(110.0, b["tcrm"]) == 80          # high inclusivo
     assert itcm.puntaje_banda(85.0, b["tcrm"]) == 35           # apreciación marcada
     assert itcm.puntaje_banda(74.9, b["tcrm"]) == 10           # atraso severo
+    # IAI / ICIP: mayor crecimiento de inversión = menos tensión, bandas anchas
+    assert itcm.puntaje_banda(10.0, b["iai"]) == 80            # high inclusivo
+    assert itcm.puntaje_banda(10.1, b["iai"]) == 100
+    assert itcm.puntaje_banda(-2.0, b["iai"]) == 35
+    assert itcm.puntaje_banda(-10.1, b["iai"]) == 10
+    assert itcm.puntaje_banda(20.0, b["icip"]) == 80
+    assert itcm.puntaje_banda(20.1, b["icip"]) == 100
+    assert itcm.puntaje_banda(-20.1, b["icip"]) == 10
 
 
 def test_rem_mensual_equivalente_y_idc():
@@ -122,9 +135,9 @@ def test_ajuste_manual_aplicado():
         "puntaje": 60, "justificacion": "Superávit por contracción de importaciones"}}
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
     assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 60.0
-    # estab=69.5 fiscal=60 financ=45 act=100 compet=35 →
-    # 0.30×69.5+0.27×60+0.18×45+0.13×100+0.12×35 = 62.35 → 62.4
-    assert r["valor"] == 62.4
+    # estab=69.5 fiscal=60 financ=45 act=100 compet=35 inversión=53 →
+    # 0.26×69.5+0.24×60+0.16×45+0.11×100+0.11×35+0.12×53 = 60.9
+    assert r["valor"] == 60.9
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85 and aj["a"] == 60
@@ -150,7 +163,7 @@ def test_renormalizacion_indicador_faltante():
     r = itcm.calcular_itcm(valores)
     # (65×0.40 + 60×0.30) / 0.70 = 62.857 → 62.9
     assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 62.9
-    assert abs(r["valor"] - 63.1) <= 0.05
+    assert abs(r["valor"] - 61.6) <= 0.05
 
 
 def test_renormalizacion_dimension_faltante():
@@ -158,8 +171,8 @@ def test_renormalizacion_dimension_faltante():
     valores = dict(EJEMPLO, emae_ia=None)
     r = itcm.calcular_itcm(valores)
     assert "actividad" not in r["dimensiones"]
-    # estab=69.5 fiscal=70 financ=45 compet=35, sin actividad (peso 0.13)
-    esperado = (0.30 * 69.5 + 0.27 * 70 + 0.18 * 45 + 0.12 * 35) / 0.87
+    # estab=69.5 fiscal=70 financ=45 compet=35 inversión=53, sin actividad (peso 0.11)
+    esperado = (0.26 * 69.5 + 0.24 * 70 + 0.16 * 45 + 0.11 * 35 + 0.12 * 53) / 0.89
     assert abs(r["valor"] - esperado) <= 0.1
 
 

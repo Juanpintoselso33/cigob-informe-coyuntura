@@ -62,6 +62,16 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala excedente monetario que tiende a presionar la brecha cambiaria; una negativa indica remonetización genuina traccionada por la demanda real. Se construye con agregados del BCRA (circulante, depósitos y M2 privado) deflactados por el IPC.",
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
+  iai: {
+    que: "Índice Anticipador de Inversión: mide la inversión física/tradicional combinando la actividad de la construcción (ISAC) y la importación de bienes de capital, en variación interanual.",
+    aporta: "Anticipa si el país amplía su capacidad productiva (máquinas, obra, equipo) o se descapitaliza. Mayor = la inversión se expande por encima de la reposición; negativo = se consume más stock de capital del que se genera. Se construye con datos del INDEC (ISAC + ICA bienes de capital).",
+    frecuencia: "Mensual", tipo: "Variación i.a. ponderada",
+  },
+  icip: {
+    que: "Índice de Capitalización Inteligente y Productividad: mide la inversión digital/intangible —pagos al exterior por servicios de informática (software, nube, IA) y productividad laboral (IPI/empleo)— en variación interanual.",
+    aporta: "Capta el salto a la frontera tecnológica que no pasa por aduana como bien de capital. Leído junto al IAI revela la 'trampa de la madurez': un país puede invertir en ladrillos y camiones pero estancarse si no se digitaliza. Se construye con datos del INDEC (balanza de servicios + IPI/empleo).",
+    frecuencia: "Mensual", tipo: "Variación i.a. ponderada",
+  },
   prestamos_privados: {
     que: "Cuánto varía el crédito bancario otorgado al sector privado.",
     aporta: "Mide si el sistema financiero acompaña la actividad con financiamiento.",

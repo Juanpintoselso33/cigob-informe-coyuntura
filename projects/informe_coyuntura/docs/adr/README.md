@@ -22,6 +22,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0007](0007-fichas-explican-concepto-no-fuente.md) | Las fichas de indicador explican qué mide, no de dónde sale el dato | Aceptado |
 | [0008](0008-tcrm-itcrm-bcra.md) | El TCRM usa el ITCRM oficial del BCRA, no la serie discontinuada de INDEC | Aceptado |
 | [0009](0009-idm-y-tcrm-en-el-itcm.md) | IDM (desequilibrio monetario, real-real i.a.) en estabilidad monetaria + TCRM como 5ª dimensión | Aceptado |
+| [0010](0010-capitulo-inversion-iai-icip.md) | Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión; patentamientos por acumulación | Aceptado |
 
 ## Contexto general
 

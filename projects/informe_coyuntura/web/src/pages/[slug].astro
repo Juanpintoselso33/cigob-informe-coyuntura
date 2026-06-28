@@ -49,7 +49,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           <h2 class="cg-h2">ITCM: {c.itcm.valor}/100 — {c.itcm.banda_legible}</h2>
           <p class="cg-h2-sub">
             Índice de Tensión del Cinturón Macroeconómico (paramétrica CIGOB, may-2026).
-            0 = cinturón severamente apretado, 100 = aflojado. Pondera cinco dimensiones;
+            0 = cinturón severamente apretado, 100 = aflojado. Pondera seis dimensiones;
             la tensión del cinturón ({c.score}/10) es (100 − ITCM) / 10.
           </p>
         </div>
@@ -123,6 +123,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           oferta amplia de pesos —M3 privado— y la demanda transaccional —M2 privado—), y una
           quinta dimensión de <strong>competitividad externa</strong> puntúa el{" "}
           <strong>tipo de cambio real multilateral</strong>: la apreciación se lee como tensión.
+          La sexta dimensión, <strong>inversión</strong>, combina el{" "}
+          <strong>IAI</strong> (inversión física: construcción y bienes de capital) y el{" "}
+          <strong>ICIP</strong> (capitalización digital: servicios tech y productividad);
+          sus umbrales se calibraron a la volatilidad real de las series, no al ±2% teórico.
           El <strong>score {c.score}/10</strong> y
           el <strong>ITCM {c.itcm?.valor}/100</strong> son la misma medición en dos escalas:
           tensión = (100 − ITCM) / 10; la escala 0–10 permite comparar macro con los otros

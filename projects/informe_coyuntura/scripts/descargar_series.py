@@ -130,6 +130,18 @@ def fetch_idc_serie(meses: int = 18) -> list:
     return [[f"{ym}-01", idc] for ym, idc in serie[-meses:]]
 
 
+def fetch_iai_serie(meses: int = 18) -> list:
+    """Serie histórica del IAI (inversión física: ISAC + BK importados, 65/35),
+    con la misma fórmula que macro.py. [[YYYY-MM-01, valor]]."""
+    return [[f"{ym}-01", v] for ym, v in macro._iai_serie_mensual(meses=meses)]
+
+
+def fetch_icip_serie(meses: int = 18) -> list:
+    """Serie histórica del ICIP (inversión digital: servicios tech + productividad),
+    con la misma fórmula que macro.py. [[YYYY-MM-01, valor]]."""
+    return [[f"{ym}-01", v] for ym, v in macro._icip_serie_mensual(meses=meses)]
+
+
 def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: list = ()):
     rows = []
 
@@ -177,6 +189,8 @@ MACRO_DERIVADAS = [
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
     ("idm", "pp (brecha i.a. real)", "BCRA (M3/M2 privado) + IPC INDEC", fetch_idm_serie),
     ("idc", "índice (~1,0)", "BCRA (BADLAR/depósitos/préstamos) + IPC INDEC", fetch_idc_serie),
+    ("iai", "% i.a. ponderado", "INDEC (ISAC + bienes de capital importados)", fetch_iai_serie),
+    ("icip", "% i.a. ponderado", "INDEC (servicios informática + productividad)", fetch_icip_serie),
 ]
 MACRO_BCRA = [
     (7,  "badlar",             "% anual",  "BCRA"),

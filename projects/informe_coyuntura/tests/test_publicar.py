@@ -73,7 +73,7 @@ def test_macro_itcm_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    assert len(en_indice) == 9, f"esperaba 9 indicadores en el índice, hay {len(en_indice)}"
+    assert len(en_indice) == 11, f"esperaba 11 indicadores en el índice, hay {len(en_indice)}"
     assert set(contexto) == {"badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"}
 
     ponderado = sum(i["puntaje_itcm"] * i["peso_efectivo"] for i in en_indice.values())

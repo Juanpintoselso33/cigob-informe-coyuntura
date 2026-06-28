@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-28T13:30:13.024179",
+  "generated_at": "2026-06-28T14:00:26.964725",
   "period": "2026-06",
   "score_global": 3.8,
   "ponderacion": {
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 3.5,
+      "score": 3.7,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -30,7 +30,7 @@
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 65,
           "puntaje_banda": 65,
-          "peso_efectivo": 0.12
+          "peso_efectivo": 0.104
         },
         "reservas_bcra": {
           "valor": 4122.0,
@@ -50,7 +50,7 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 30,
           "puntaje_banda": 30,
-          "peso_efectivo": 0.09
+          "peso_efectivo": 0.08
         },
         "idc": {
           "valor": 1.012,
@@ -69,7 +69,7 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 60,
           "puntaje_banda": 60,
-          "peso_efectivo": 0.09
+          "peso_efectivo": 0.08
         },
         "badlar": {
           "valor": 21.25,
@@ -89,7 +89,7 @@
           "dimension": "actividad",
           "puntaje_itcm": 100,
           "puntaje_banda": 100,
-          "peso_efectivo": 0.13
+          "peso_efectivo": 0.11
         },
         "saldo_comercial_12m": {
           "valor": 21221.0,
@@ -107,7 +107,7 @@
           "dimension": "viabilidad_fiscal_comercial",
           "puntaje_itcm": 85,
           "puntaje_banda": 85,
-          "peso_efectivo": 0.108
+          "peso_efectivo": 0.096
         },
         "recaudacion": {
           "valor": 1.82,
@@ -121,7 +121,7 @@
           "dimension": "viabilidad_fiscal_comercial",
           "puntaje_itcm": 60,
           "puntaje_banda": 60,
-          "peso_efectivo": 0.162
+          "peso_efectivo": 0.144
         },
         "tcrm": {
           "valor": 84.31,
@@ -133,7 +133,7 @@
           "dimension": "competitividad_externa",
           "puntaje_itcm": 35,
           "puntaje_banda": 35,
-          "peso_efectivo": 0.12
+          "peso_efectivo": 0.11
         },
         "rem_ipc_12m": {
           "valor": 23.3,
@@ -145,7 +145,7 @@
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 85,
           "puntaje_banda": 85,
-          "peso_efectivo": 0.09,
+          "peso_efectivo": 0.078,
           "equivalente_mensual": 1.76,
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.76% mensual, en la misma escala que el IPC."
         },
@@ -161,7 +161,41 @@
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 60,
           "puntaje_banda": 60,
-          "peso_efectivo": 0.09
+          "peso_efectivo": 0.078
+        },
+        "iai": {
+          "valor": -4.2,
+          "unidad": "% i.a. ponderado",
+          "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
+          "fecha_dato": "2026-05-01",
+          "desactualizado": false,
+          "componentes": {
+            "isac": -2.8,
+            "bk_importados": -6.8
+          },
+          "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
+          "en_indice": true,
+          "dimension": "inversion",
+          "puntaje_itcm": 35,
+          "puntaje_banda": 35,
+          "peso_efectivo": 0.072
+        },
+        "icip": {
+          "valor": 8.2,
+          "unidad": "% i.a. ponderado",
+          "fuente": "INDEC — servicios de informática (balanza) + IPI/empleo (productividad)",
+          "fecha_dato": "2026-04-01",
+          "desactualizado": false,
+          "componentes": {
+            "servicios_tech": 15.6,
+            "productividad": -1.6
+          },
+          "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
+          "en_indice": true,
+          "dimension": "inversion",
+          "puntaje_itcm": 80,
+          "puntaje_banda": 80,
+          "peso_efectivo": 0.048
         },
         "prestamos_privados": {
           "valor": 3.05,
@@ -190,100 +224,120 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 65.0,
+        "valor": 63.3,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "estabilidad_monetaria": {
             "nombre": "Estabilidad monetaria-inflacionaria",
-            "peso": 0.3,
+            "peso": 0.26,
             "puntaje": 69.5,
             "indicadores": {
               "ipc_total": {
                 "peso": 0.4,
                 "puntaje_banda": 65,
                 "puntaje_aplicado": 65,
-                "peso_efectivo": 0.12
+                "peso_efectivo": 0.104
               },
               "rem_ipc_12m": {
                 "peso": 0.3,
                 "puntaje_banda": 85,
                 "puntaje_aplicado": 85,
-                "peso_efectivo": 0.09
+                "peso_efectivo": 0.078
               },
               "idm": {
                 "peso": 0.3,
                 "puntaje_banda": 60,
                 "puntaje_aplicado": 60,
-                "peso_efectivo": 0.09
+                "peso_efectivo": 0.078
               }
             },
-            "peso_efectivo": 0.3
+            "peso_efectivo": 0.26
           },
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
-            "peso": 0.27,
+            "peso": 0.24,
             "puntaje": 70.0,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
                 "puntaje_banda": 60,
                 "puntaje_aplicado": 60,
-                "peso_efectivo": 0.162
+                "peso_efectivo": 0.144
               },
               "saldo_comercial_12m": {
                 "peso": 0.4,
                 "puntaje_banda": 85,
                 "puntaje_aplicado": 85,
-                "peso_efectivo": 0.108
+                "peso_efectivo": 0.096
               }
             },
-            "peso_efectivo": 0.27
+            "peso_efectivo": 0.24
           },
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
-            "peso": 0.18,
+            "peso": 0.16,
             "puntaje": 45.0,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.5,
                 "puntaje_banda": 30,
                 "puntaje_aplicado": 30,
-                "peso_efectivo": 0.09
+                "peso_efectivo": 0.08
               },
               "idc": {
                 "peso": 0.5,
                 "puntaje_banda": 60,
                 "puntaje_aplicado": 60,
-                "peso_efectivo": 0.09
+                "peso_efectivo": 0.08
               }
             },
-            "peso_efectivo": 0.18
+            "peso_efectivo": 0.16
           },
           "actividad": {
             "nombre": "Actividad económica",
-            "peso": 0.13,
+            "peso": 0.11,
             "puntaje": 100.0,
             "indicadores": {
               "emae_ia": {
                 "peso": 1.0,
                 "puntaje_banda": 100,
                 "puntaje_aplicado": 100,
-                "peso_efectivo": 0.13
+                "peso_efectivo": 0.11
               }
             },
-            "peso_efectivo": 0.13
+            "peso_efectivo": 0.11
           },
           "competitividad_externa": {
             "nombre": "Competitividad externa",
-            "peso": 0.12,
+            "peso": 0.11,
             "puntaje": 35.0,
             "indicadores": {
               "tcrm": {
                 "peso": 1.0,
                 "puntaje_banda": 35,
                 "puntaje_aplicado": 35,
-                "peso_efectivo": 0.12
+                "peso_efectivo": 0.11
+              }
+            },
+            "peso_efectivo": 0.11
+          },
+          "inversion": {
+            "nombre": "Inversión",
+            "peso": 0.12,
+            "puntaje": 53.0,
+            "indicadores": {
+              "iai": {
+                "peso": 0.6,
+                "puntaje_banda": 35,
+                "puntaje_aplicado": 35,
+                "peso_efectivo": 0.072
+              },
+              "icip": {
+                "peso": 0.4,
+                "puntaje_banda": 80,
+                "puntaje_aplicado": 80,
+                "peso_efectivo": 0.048
               }
             },
             "peso_efectivo": 0.12

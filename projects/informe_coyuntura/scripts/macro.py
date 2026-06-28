@@ -22,6 +22,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 SCRIPT_DIR  = Path(__file__).parent
 PROJECT_DIR = SCRIPT_DIR.parent
 CACHE_PATH  = PROJECT_DIR / "output" / "cache" / "macro.json"
+PATENTAMIENTOS_PATH = PROJECT_DIR / "data" / "macro" / "patentamientos_comerciales.json"
 
 # ── URL Constants (NFR6: URLs al inicio del script) ───────────────────────────
 INDEC_SERIES_BASE   = "https://apis.datos.gob.ar/series/api/series/"
@@ -39,6 +40,20 @@ INDEC_EXPO_ICA_ID    = "74.3_IET_0_M_16"               # ICA exportaciones total
 INDEC_IMPO_ICA_ID    = "74.3_IIT_0_M_25"               # ICA importaciones totales mensual (M USD)
 INDEC_RECAUDACION_ID = "172.3_TL_RECAION_M_0_0_17"     # Recaudación total mensual (M ARS)
 INDEC_TCRM_ID        = "116.3_TCRMA_0_M_36"            # Tipo de Cambio Real Multilateral (base 2010=100)
+
+# Capítulo Inversión — IAI (físico/tradicional) e ICIP (digital/intangible)
+INDEC_ISAC_NIVEL_ID  = "33.2_ISAC_NIVELRAL_0_M_18_63"  # ISAC nivel general (índice 2004=100) → i.a.
+INDEC_BK_IMPO_ID     = "74.3_IIBCA_0_M_32"             # Importación de bienes de capital (M USD) → i.a.
+INDEC_SVC_INFO_ID    = "185.1_PAGO_SERVIICA_0_M_38"    # Pagos al exterior de servicios de informática (M USD) → i.a.
+INDEC_IPI_NIVEL_ID   = "453.1_SERIE_ORIGNAL_0_0_14_46" # IPI manufacturero nivel general (índice 2004=100)
+INDEC_EMPLEO_EIL_ID  = "50.3_ICS_0_M_12"               # Índice de empleo total (EIL) — denominador de productividad
+
+# DNRPA — patentamientos comerciales (no hay histórico: se ACUMULA mes a mes).
+DNRPA_CKAN_PACKAGE   = "https://datos.jus.gob.ar/api/3/action/package_show"
+DNRPA_INSCRIP_AUTOS  = "37c9ad39-f092-44be-9b7f-1201b3c4b7a8"  # dataset "Inscripciones iniciales de autos"
+# Tipos de vehículo (automotor_tipo_descripcion) considerados comerciales
+# (livianos + pesados), proxy de inversión en logística y transporte.
+PATENTAMIENTOS_COMERCIALES_KEYS = ("CAMION", "PICK", "UTILITARIO", "FURGON", "CHASIS", "TRACTOR DE CARRETERA")
 
 # BCRA — variable IDs verificados en api.bcra.gob.ar v4.0
 BCRA_RESERVAS_ID    = 1    # Reservas internacionales BRUTAS (millones USD)
@@ -61,7 +76,8 @@ CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
     "emae_ia", "saldo_comercial_12m", "recaudacion", "tcrm",
-    "rem_ipc_12m", "idm", "prestamos_privados", "base_monetaria", "tc_mayorista",
+    "rem_ipc_12m", "idm", "iai", "icip",
+    "prestamos_privados", "base_monetaria", "tc_mayorista",
 ]
 
 
@@ -171,6 +187,28 @@ def _ipc_indice_mensual(limit: int = 40) -> dict:
     """{YYYY-MM: índice IPC nivel} para deflactar los agregados del IDM."""
     data = _indec_serie(INDEC_IPC_ID, limit=limit)
     return {row[0][:7]: row[1] for row in data if row[1] is not None}
+
+
+def _indec_nivel_mensual(series_id: str, limit: int = 40) -> dict:
+    """{YYYY-MM: valor} de una serie INDEC mensual de nivel."""
+    return {row[0][:7]: row[1] for row in _indec_serie(series_id, limit=limit) if row[1] is not None}
+
+
+def _indec_ratio_yoy(num_id: str, den_id: str) -> dict:
+    """Variación i.a. del COCIENTE de dos series INDEC mensuales (último mes
+    común vs 12 meses antes). Insumo de la productividad del ICIP (IPI/empleo)."""
+    num = _indec_nivel_mensual(num_id, limit=20)
+    den = _indec_nivel_mensual(den_id, limit=20)
+    comunes = sorted(set(num) & set(den))
+    if not comunes:
+        raise ValueError("ratio i.a.: sin meses comunes")
+    ym = comunes[-1]
+    prev = _ym_shift(ym, -12)
+    if prev not in num or prev not in den:
+        raise ValueError("ratio i.a.: sin 12 meses previos")
+    r_t = num[ym] / den[ym]
+    r_p = num[prev] / den[prev]
+    return {"var_ia": (r_t / r_p - 1) * 100, "fecha": ym}
 
 
 def _ym_shift(ym: str, meses: int) -> str:
@@ -654,6 +692,164 @@ def fetch_idm() -> dict | None:
         return None
 
 
+# ── Capítulo Inversión: IAI (físico) e ICIP (digital) ─────────────────────────
+
+# Pesos del IAI. DNRPA no expone histórico de patentamientos comerciales, así que
+# arrancan en None y se ACUMULAN mes a mes (data/macro/patentamientos_comerciales.json);
+# hasta tener 13 meses (primer interanual), el IAI usa solo ISAC + BK renormalizados.
+IAI_PESOS_CON_PAT = {"isac": 0.55, "bk_importados": 0.30, "patentamientos_comerciales": 0.15}
+IAI_PESOS_SIN_PAT = {"isac": 0.65, "bk_importados": 0.35}
+ICIP_PESOS = {"servicios_tech": 0.57, "productividad": 0.43}
+
+
+def _cargar_patentamientos() -> dict:
+    if PATENTAMIENTOS_PATH.exists():
+        return json.loads(PATENTAMIENTOS_PATH.read_text(encoding="utf-8"))
+    return {}
+
+
+def actualizar_patentamientos_comerciales() -> dict:
+    """Descarga el CSV de inscripciones iniciales de la DNRPA (solo expone el mes
+    corriente) y UPSERTA el conteo de patentamientos comerciales del mes completo
+    en el store JSON. Es la única vía de construir la serie: la fuente no publica
+    histórico a nivel registro. Devuelve el store actualizado."""
+    store = _cargar_patentamientos()
+    try:
+        meta = requests.get(DNRPA_CKAN_PACKAGE, params={"id": DNRPA_INSCRIP_AUTOS},
+                            headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT, verify=False).json()["result"]
+        url = next(x["url"] for x in meta["resources"] if x.get("format", "").upper() == "CSV")
+        import csv as _csv, io as _io, collections as _col
+        txt = requests.get(url, headers=HTTP_HEADERS, timeout=90, verify=False)
+        txt.encoding = "utf-8"
+        rows = list(_csv.reader(_io.StringIO(txt.text)))
+        hdr = rows[0]
+        ti = hdr.index("automotor_tipo_descripcion")
+        fi = hdr.index("fecha_inscripcion_inicial")
+        por_mes = _col.Counter()
+        for r in rows[1:]:
+            if len(r) <= max(ti, fi) or not r[fi]:
+                continue
+            if any(k in r[ti].upper() for k in PATENTAMIENTOS_COMERCIALES_KEYS):
+                por_mes[r[fi][:7]] += 1
+        if por_mes:
+            ym, cnt = por_mes.most_common(1)[0]   # mes COMPLETO = el dominante del archivo
+            store[ym] = cnt
+            PATENTAMIENTOS_PATH.parent.mkdir(parents=True, exist_ok=True)
+            PATENTAMIENTOS_PATH.write_text(
+                json.dumps(store, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+    except Exception as e:
+        _warn("patentamientos_comerciales (acumulación DNRPA)", e)
+    return store
+
+
+def _patentamientos_ia() -> dict | None:
+    """Variación i.a. de los patentamientos comerciales SI ya hay 13 meses
+    acumulados con el mismo mes del año anterior; si no, None (el IAI lo omite)."""
+    store = _cargar_patentamientos()
+    meses = sorted(store)
+    if len(meses) < 13:
+        return None
+    ym = meses[-1]
+    prev = _ym_shift(ym, -12)
+    if prev not in store or not store[prev]:
+        return None
+    return {"var_ia": (store[ym] / store[prev] - 1) * 100, "fecha": ym,
+            "meses_acumulados": len(meses)}
+
+
+def fetch_iai() -> dict | None:
+    """IAI — Índice Anticipador de Inversión (físico/tradicional). Promedio
+    ponderado de variaciones i.a.: ISAC construcción + bienes de capital
+    importados (+ patentamientos comerciales cuando haya histórico acumulado).
+    Mayor = inversión expandiéndose. Bandas en itcm.BANDAS_ITCM['iai']."""
+    try:
+        isac = _indec_yoy(INDEC_ISAC_NIVEL_ID)["var_ia"]
+        bk   = _indec_yoy(INDEC_BK_IMPO_ID)
+        pat  = _patentamientos_ia()
+        componentes = {"isac": round(isac, 1), "bk_importados": round(bk["var_ia"], 1)}
+        if pat is not None:
+            w = IAI_PESOS_CON_PAT
+            componentes["patentamientos_comerciales"] = round(pat["var_ia"], 1)
+            valor = w["isac"]*isac + w["bk_importados"]*bk["var_ia"] + w["patentamientos_comerciales"]*pat["var_ia"]
+            nota = f"ISAC 55% · BK importados 30% · patentamientos comerciales 15% ({pat['meses_acumulados']} meses)"
+        else:
+            w = IAI_PESOS_SIN_PAT
+            valor = w["isac"]*isac + w["bk_importados"]*bk["var_ia"]
+            nota = "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)"
+        return {
+            "valor": round(valor, 2),
+            "unidad": "% i.a. ponderado",
+            "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
+            "fecha_dato": bk["fecha"],
+            "desactualizado": False,
+            "componentes": componentes,
+            "pesos_nota": nota,
+        }
+    except Exception as e:
+        _warn("iai", e)
+        return None
+
+
+def fetch_icip() -> dict | None:
+    """ICIP — Índice de Capitalización Inteligente y Productividad (digital/
+    intangible). Promedio ponderado de variaciones i.a.: pagos al exterior de
+    servicios de informática (software/cloud/IA) + productividad laboral
+    (IPI/empleo). Mayor = la economía se digitaliza más rápido. Banda 'icip'."""
+    try:
+        svc  = _indec_yoy(INDEC_SVC_INFO_ID)
+        prod = _indec_ratio_yoy(INDEC_IPI_NIVEL_ID, INDEC_EMPLEO_EIL_ID)
+        valor = ICIP_PESOS["servicios_tech"]*svc["var_ia"] + ICIP_PESOS["productividad"]*prod["var_ia"]
+        return {
+            "valor": round(valor, 2),
+            "unidad": "% i.a. ponderado",
+            "fuente": "INDEC — servicios de informática (balanza) + IPI/empleo (productividad)",
+            "fecha_dato": svc["fecha"],
+            "desactualizado": False,
+            "componentes": {
+                "servicios_tech": round(svc["var_ia"], 1),
+                "productividad": round(prod["var_ia"], 1),
+            },
+            "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
+        }
+    except Exception as e:
+        _warn("icip", e)
+        return None
+
+
+def _iai_serie_mensual(meses: int = 24) -> list:
+    """Serie histórica del IAI (sin patentamientos: solo ISAC + BK, 65/35).
+    Devuelve [(YYYY-MM, valor)] ascendente."""
+    isac = _indec_nivel_mensual(INDEC_ISAC_NIVEL_ID, limit=meses + 16)
+    bk   = _indec_nivel_mensual(INDEC_BK_IMPO_ID, limit=meses + 16)
+    comunes = set(isac) & set(bk)
+    out = []
+    for ym in sorted(comunes):
+        p = _ym_shift(ym, -12)
+        if p in comunes and isac[p] and bk[p]:
+            si = (isac[ym] / isac[p] - 1) * 100
+            bi = (bk[ym] / bk[p] - 1) * 100
+            out.append((ym, round(0.65 * si + 0.35 * bi, 2)))
+    return out[-meses:]
+
+
+def _icip_serie_mensual(meses: int = 24) -> list:
+    """Serie histórica del ICIP (servicios tech + productividad IPI/empleo).
+    Devuelve [(YYYY-MM, valor)] ascendente."""
+    svc = _indec_nivel_mensual(INDEC_SVC_INFO_ID, limit=meses + 16)
+    ipi = _indec_nivel_mensual(INDEC_IPI_NIVEL_ID, limit=meses + 16)
+    emp = _indec_nivel_mensual(INDEC_EMPLEO_EIL_ID, limit=meses + 16)
+    prod = {ym: ipi[ym] / emp[ym] for ym in set(ipi) & set(emp)}
+    comunes = set(svc) & set(prod)
+    out = []
+    for ym in sorted(comunes):
+        p = _ym_shift(ym, -12)
+        if p in svc and p in prod and svc[p] and prod[p]:
+            sv = (svc[ym] / svc[p] - 1) * 100
+            pr = (prod[ym] / prod[p] - 1) * 100
+            out.append((ym, round(0.57 * sv + 0.43 * pr, 2)))
+    return out[-meses:]
+
+
 def fetch_prestamos_privados() -> dict | None:
     try:
         result = _bcra_variacion_m(BCRA_PRESTAMOS_ID)
@@ -774,6 +970,10 @@ def main() -> None:
     cache_anterior         = load_cache()
     indicadores_anteriores = cache_anterior.get("indicadores", {})
 
+    # Acumular el mes corriente de patentamientos comerciales (DNRPA no expone
+    # histórico): cada corrida upserta un mes en el store que alimenta al IAI.
+    actualizar_patentamientos_comerciales()
+
     frescos: dict = {}
     frescos_count = 0
 
@@ -788,6 +988,8 @@ def main() -> None:
         ("tcrm",               fetch_tcrm),
         ("rem_ipc_12m",        fetch_rem_ipc_12m),
         ("idm",                fetch_idm),
+        ("iai",                fetch_iai),
+        ("icip",               fetch_icip),
         ("prestamos_privados", fetch_prestamos_privados),
         ("base_monetaria",     fetch_base_monetaria),
         ("tc_mayorista",       fetch_tc_mayorista),
