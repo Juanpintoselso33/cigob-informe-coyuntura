@@ -320,6 +320,25 @@ VIDA_DERIVADAS.append(
     ("sentimiento_digital", "interés 0–100", "Google Trends (ventana 3m)", fetch_sentimiento_serie)
 )
 
+
+def fetch_endeudamiento_serie() -> list:
+    """Serie del stock nominal de crédito de consumo (personales 114 + tarjeta 115, BCRA)
+    en billones de pesos — mismo valor que el headline del indicador (la variación real
+    i.a. que puntúa se muestra aparte en el box de score). [[YYYY-MM-01, billones]]."""
+    def mensual(vid):
+        out = {}
+        for f, v in sorted(fetch_bcra(vid, dias=1300)):
+            out[f[:7]] = v
+        return out
+    per, tar = mensual(114), mensual(115)
+    return [[f"{ym}-01", round((per[ym] + tar[ym]) / 1e6, 2)]
+            for ym in sorted(per) if ym in tar]
+
+
+VIDA_DERIVADAS.append(
+    ("endeudamiento_familiar", "billones de pesos (consumo)", "BCRA API v4.0 (personales + tarjeta)", fetch_endeudamiento_serie)
+)
+
 GESTION_INDEC = [
     ("149.1_SOR_PUBICO_OCTU_0_14",   "indice_salarios_publico", "indice base oct-2016=100", "INDEC/datos.gob.ar"),
     ("33.4_ISAC_CEMENAND_0_0_21_24", "isac_construccion",       "indice base 2004=100",     "INDEC/datos.gob.ar"),
@@ -362,10 +381,31 @@ def fetch_infoleg_serie(texto: str) -> list:
     return out
 
 
+def fetch_reduccion_serie() -> list:
+    """Serie de la variación % del empleo público vs el baseline (último trimestre
+    ≤ 2024-01-01), misma fórmula que el indicador. Trimestral. [[YYYY-MM-DD, var%]]."""
+    data = sorted(fetch_indec(gestion.EMPLEO_PUBLICO_ID, limit=40), key=lambda x: x[0])
+    base = [(f, v) for f, v in data if f <= "2024-01-01"]
+    if not base:
+        return []
+    bdate, bval = base[-1][0], float(base[-1][1])
+    return [[f, round((float(v) - bval) / bval * 100, 2)] for f, v in data if f >= bdate]
+
+
+def fetch_apertura_serie() -> list:
+    """Serie de la variación i.a. de importaciones totales (misma fórmula que el
+    indicador). Mensual. [[YYYY-MM-DD, var_ia]]."""
+    data = sorted(fetch_indec(gestion.IMPORTACIONES_ID, limit=48), key=lambda x: x[0])
+    return [[data[i][0], round((data[i][1] / data[i - 12][1] - 1) * 100, 2)]
+            for i in range(12, len(data)) if data[i - 12][1]]
+
+
 GESTION_DERIVADAS = [
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
     ("desregulacion_normativa", "Normas (conteo acum.)", "InfoLeg ('deroga' desde dic-2023)", lambda: fetch_infoleg_serie("deroga")),
     ("reestructuracion_organismos", "Normas (conteo acum.)", "InfoLeg ('disolucion' desde dic-2023)", lambda: fetch_infoleg_serie("disolucion")),
+    ("reduccion_estado", "% vs Q1-2024", "INDEC/datos.gob.ar (empleo público)", fetch_reduccion_serie),
+    ("apertura_comercial", "% interanual", "INDEC/datos.gob.ar (importaciones)", fetch_apertura_serie),
 ]
 
 
