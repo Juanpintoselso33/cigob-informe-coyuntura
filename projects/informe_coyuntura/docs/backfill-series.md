@@ -28,6 +28,7 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 | `endeudamiento_familiar` | Stock nominal de crédito de consumo (BCRA personales 114 + tarjeta 115) en billones = headline (la var real i.a. que puntúa va en el box de score) | 43 |
 | `reduccion_estado` · `apertura_comercial` | datos.gob.ar: empleo público vs baseline ≤2024-01 (trim.) e importaciones i.a. (mens.) | 8 / 36 |
 | `ratio_dnu` | DNUs/leyes por año (InfoLeg, loop 2020→hoy) | 7 (anual) |
+| `brecha_salario_cbt` | RIPTE / Canasta Básica Total, alineado por mes (el live mezcla meses → último 3,86 vs card 3,79, inmaterial) | 59 |
 
 > El "último punto = valor live" se verificó indicador por indicador. Todo corre en cada
 > pipeline (`descargar_series` está en el CI), con degradación elegante a la acumulación
@@ -40,7 +41,6 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 |---|---|---|---|
 | `eficacia_legislativa` | Política | CKAN HCDN | Ventana móvil 12m recomputable, pero valor bajo (~4%) y reconstrucción CKAN compleja (gotchas). |
 | `veto_quorum`, `comisiones_caidas` | Política | CKAN HCDN | **Estructuralmente planos** (0% y ~98%): la serie sería una línea casi constante → poco valor. |
-| `brecha_salario_cbt` | Vida | INDEC RIPTE + CBT | Derivable de dos series con historia (RIPTE CSV mensual + CBT). Candidato razonable. |
 | `movilizacion_cepa` | Política | centrocepa.com.ar | Scraping de informes mensuales históricos; el scraper live además está frágil. |
 | `consumo_carne` | Vida | CICCRA / IPCVA | Scraping de informes mensuales; falta fuente histórica estable. |
 | `patentamiento_motos` | Vida | CAFAM API | Verificar si la API expone meses anteriores. |
@@ -60,8 +60,7 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 ---
 
 ## Estado
-**16 indicadores con serie reconstruida** (🟢 completo + buena parte del 🟡). Lo que
-queda es de bajo rinde (CKAN `veto_quorum`/`comisiones_caidas` son planos;
-`eficacia_legislativa` es complejo y bajo) o requiere scraping frágil (CEPA, CICCRA).
-`brecha_salario_cbt` es el candidato 🟡 más razonable que falta. Las 🔴 siguen acumulando
-hacia adelante; no se pierde dato.
+**17 indicadores con serie reconstruida** (🟢 completo + casi todo el 🟡). Lo que queda es
+de bajo rinde: CKAN `veto_quorum`/`comisiones_caidas` son planos, `eficacia_legislativa`
+es complejo y bajo, y `movilizacion_cepa`/`consumo_carne` requieren scraping frágil. Las
+🔴 siguen acumulando hacia adelante; no se pierde dato.
