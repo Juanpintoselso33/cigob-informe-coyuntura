@@ -4,13 +4,14 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 <footer class="cg-foot">
     <div class="cg-foot-inner">
-        <div class="cg-foot-brand">
-            <span class="cg-nav-logo"><img src={`${base}/logo-cigob.png`} alt="Fundación CiGob" /></span>
+        <a class="cg-foot-brand" href="https://www.cigob.org" target="_blank" rel="noopener">
+            <span class="cg-foot-logo"><img src={`${base}/cigob-icono.png`} alt="CiGob" /></span>
             <div>
-                <strong>Realidad Política Argentina</strong>
-                <span>Un proyecto de Fundación CiGob</span>
+                <strong>CiGob</strong>
+                <span>Ciencias para gobernar</span>
+                <span class="cg-foot-prod">Informe de Coyuntura</span>
             </div>
-        </div>
+        </a>
         <div class="cg-foot-cols">
             <div>
                 <h4>El observatorio</h4>

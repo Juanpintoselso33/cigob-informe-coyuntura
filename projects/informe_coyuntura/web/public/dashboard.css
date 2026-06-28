@@ -636,12 +636,15 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     padding-bottom: 30px; border-bottom: 1px solid #1F2A28;
 }
 @media (max-width: 880px) { .cg-foot-inner { grid-template-columns: 1fr; } }
-.cg-foot-brand { display: flex; align-items: center; gap: 14px; }
-.cg-foot-brand .cg-nav-logo {
-    background: var(--teal); box-shadow: 0 4px 12px rgba(73,152,219,.3);
-}
-.cg-foot-brand strong { display: block; color: #fff; font-size: 16px; font-weight: 800; }
-.cg-foot-brand span   { display: block; color: #9CA39F; font-size: 12px; margin-top: 2px; }
+.cg-foot-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.cg-foot-brand:hover { text-decoration: none; }
+.cg-foot-logo { display: inline-flex; align-items: center; height: 46px; }
+.cg-foot-logo img { height: 100%; width: auto; display: block; max-height: 46px; }
+.cg-foot-brand strong { display: block; color: #fff; font-size: 24px; font-weight: 800; line-height: 1; letter-spacing: -.015em; }
+.cg-foot-brand span   { display: block; color: #9CA39F; font-size: 12px; margin-top: 3px; }
+.cg-foot-brand .cg-foot-prod { color: #DCE3E1; font-weight: 700; font-size: 13px; margin-top: 4px; }
+.cg-foot-brand:hover strong { color: #fff; }
+.cg-foot-brand:hover .cg-foot-prod { color: var(--teal); }
 .cg-foot-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 @media (max-width: 720px) { .cg-foot-cols { grid-template-columns: 1fr; } }
 .cg-foot-cols h4 {
