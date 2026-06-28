@@ -24,25 +24,25 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 | `desregulacion_normativa` · `reestructuracion_organismos` | Conteo acumulado de normas InfoLeg ("deroga"/"disolucion") reconsultado a fin de cada mes | 31 / 24 |
 | `icc_utdt` (vida + espíritu) | Todas las filas del XLS oficial UTDT (no solo la última), acotado a los últimos 60 meses | 60 |
 | `sentimiento_digital` (vida + espíritu) | Serie diaria de Google Trends en la **misma ventana 'today 3-m'** que el live (Trends es relativo al período → ventana más larga re-normaliza; se acota a 3m para no cambiar el valor) | ~90 (diaria) |
+| `informalidad` · `pluriempleo` | Tasa INDEC EPH ×100 (`fetch_indec_x100`): 52.1 (anual) y 47.2 (trimestral) | 22 / 40 |
+| `endeudamiento_familiar` | Stock nominal de crédito de consumo (BCRA personales 114 + tarjeta 115) en billones = headline (la var real i.a. que puntúa va en el box de score) | 43 |
+| `reduccion_estado` · `apertura_comercial` | datos.gob.ar: empleo público vs baseline ≤2024-01 (trim.) e importaciones i.a. (mens.) | 8 / 36 |
+| `ratio_dnu` | DNUs/leyes por año (InfoLeg, loop 2020→hoy) | 7 (anual) |
 
-> El "último punto = valor live" se verificó indicador por indicador. La variación m/m y
-> el conteo InfoLeg corren en cada pipeline (`descargar_series` está en el CI), con
-> degradación elegante a la acumulación hacia adelante si la fuente falla.
+> El "último punto = valor live" se verificó indicador por indicador. Todo corre en cada
+> pipeline (`descargar_series` está en el CI), con degradación elegante a la acumulación
+> hacia adelante si la fuente falla.
 
 ---
 
-## 🟡 Media factibilidad — próximas
-| Indicador | Cinturón | Fuente | Método / fricción |
+## 🟡 Media factibilidad — restantes (bajo rinde / scraping)
+| Indicador | Cinturón | Fuente | Por qué quedó |
 |---|---|---|---|
-| `informalidad`, `pluriempleo` | Vida | INDEC EPH | Serie **trimestral**; computar el indicador por trimestre. |
-| `brecha_salario_cbt` | Vida | INDEC salarios (RIPTE) + CBT | Derivado de dos series con historia. |
-| `endeudamiento_familiar` | Vida | BCRA crédito consumo + IPC | `credito_consumo_serie` ya existe → var real i.a. por mes. |
-| `ratio_dnu` | Política | InfoLeg | DNUs / leyes por período (acumulado mensual o anual). |
-| `eficacia_legislativa`, `veto_quorum`, `comisiones_caidas` | Política | CKAN HCDN | Recomputar la métrica por período legislativo (los gotchas del CKAN ya están documentados). |
-| `reduccion_estado` | Gestión | datos.gob.ar empleo público | Serie trimestral; variación vs Q1-2024 por trimestre. |
-| `apertura_comercial` | Gestión | datos.gob.ar importaciones | Serie mensual; variación i.a. por mes. |
-| `movilizacion_cepa` | Política | centrocepa.com.ar | Scrapear informes mensuales históricos de conflictividad. |
-| `consumo_carne` | Vida | CICCRA / IPCVA | Buscar fuente mensual con histórico. |
+| `eficacia_legislativa` | Política | CKAN HCDN | Ventana móvil 12m recomputable, pero valor bajo (~4%) y reconstrucción CKAN compleja (gotchas). |
+| `veto_quorum`, `comisiones_caidas` | Política | CKAN HCDN | **Estructuralmente planos** (0% y ~98%): la serie sería una línea casi constante → poco valor. |
+| `brecha_salario_cbt` | Vida | INDEC RIPTE + CBT | Derivable de dos series con historia (RIPTE CSV mensual + CBT). Candidato razonable. |
+| `movilizacion_cepa` | Política | centrocepa.com.ar | Scraping de informes mensuales históricos; el scraper live además está frágil. |
+| `consumo_carne` | Vida | CICCRA / IPCVA | Scraping de informes mensuales; falta fuente histórica estable. |
 | `patentamiento_motos` | Vida | CAFAM API | Verificar si la API expone meses anteriores. |
 
 ---
@@ -59,9 +59,9 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 
 ---
 
-## Orden sugerido
-1. ✅ Votómetro, 3 de Vida (m/m), `iaf_transferencias`, 2 de InfoLeg, `icc_utdt`, `sentimiento_digital` — **todo el 🟢 + Trends/UTDT** (hecho).
-2. CKAN política (`eficacia_legislativa`, `veto_quorum`, `comisiones_caidas`) + EPH trimestral (`informalidad`, `pluriempleo`) + `endeudamiento_familiar` (BCRA ya tiene la serie).
-3. datos.gob.ar de gestión (`reduccion_estado`, `apertura_comercial`) + scraping CEPA.
-
-Las bloqueadas seguirán acumulando hacia adelante; no se pierde dato.
+## Estado
+**16 indicadores con serie reconstruida** (🟢 completo + buena parte del 🟡). Lo que
+queda es de bajo rinde (CKAN `veto_quorum`/`comisiones_caidas` son planos;
+`eficacia_legislativa` es complejo y bajo) o requiere scraping frágil (CEPA, CICCRA).
+`brecha_salario_cbt` es el candidato 🟡 más razonable que falta. Las 🔴 siguen acumulando
+hacia adelante; no se pierde dato.
