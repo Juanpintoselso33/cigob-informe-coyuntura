@@ -104,6 +104,14 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-nav-titles { display: flex; flex-direction: column; }
 .cg-nav-title { font-weight: 800; color: var(--dark); font-size: 15px; line-height: 1.1; }
 .cg-nav-sub   { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+/* Marca CiGob del header (cigob.org): ícono de anillos limpio + wordmark
+   "CiGob" + tagline "Ciencias para gobernar". Scopeado a .cg-nav para no tocar
+   el logo del footer (que mantiene su caja teal sobre fondo oscuro). */
+.cg-nav .cg-nav-logo { background: none; box-shadow: none; padding: 0; border-radius: 0; height: 36px; }
+.cg-nav .cg-nav-logo img { max-height: 36px; }
+.cg-nav .cg-nav-title { font-size: 23px; line-height: 1; letter-spacing: -.01em; }
+.cg-nav .cg-nav-sub   { color: var(--dark); font-weight: 700; font-size: 10px; margin-top: 1px; letter-spacing: .015em; }
 .cg-nav-links { display: flex; gap: 22px; }
 .cg-nav-links a { color: var(--dark); font-weight: 700; font-size: 13px; }
 .cg-nav-links a:hover { color: var(--teal); text-decoration: none; }
