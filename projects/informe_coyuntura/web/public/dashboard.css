@@ -73,8 +73,18 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     padding: 14px 24px;
     display: flex; align-items: center; justify-content: space-between; gap: 28px;
 }
+.cg-nav-left { display: flex; align-items: center; gap: 14px; }
 .cg-nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .cg-nav-brand:hover { text-decoration: none; }
+/* Sección "Informe de Coyuntura" — referencia al producto, junto a la marca CiGob. */
+.cg-nav-producto {
+    display: flex; align-items: center; align-self: stretch;
+    padding-left: 14px; border-left: 1px solid var(--bd);
+    font-weight: 800; font-size: 14px; color: var(--dark);
+    letter-spacing: -.01em; text-decoration: none;
+}
+.cg-nav-producto:hover { color: var(--teal); text-decoration: none; }
+@media (max-width: 760px) { .cg-nav-producto { display: none; } }
 /* Logo CiGob — imagen oficial (256×77 RGBA, dos círculos azul+verde
    + texto blanco "CiGob"). El texto es blanco así que necesita fondo
    oscuro/teal para legibilidad. Enmarcamos en un pill teal que es el
@@ -108,10 +118,10 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 /* Marca CiGob del header (cigob.org): ícono de anillos limpio + wordmark
    "CiGob" + tagline "Ciencias para gobernar". Scopeado a .cg-nav para no tocar
    el logo del footer (que mantiene su caja teal sobre fondo oscuro). */
-.cg-nav .cg-nav-logo { background: none; box-shadow: none; padding: 0; border-radius: 0; height: 36px; }
-.cg-nav .cg-nav-logo img { max-height: 36px; }
-.cg-nav .cg-nav-title { font-size: 23px; line-height: 1; letter-spacing: -.01em; }
-.cg-nav .cg-nav-sub   { color: var(--dark); font-weight: 700; font-size: 10px; margin-top: 1px; letter-spacing: .015em; }
+.cg-nav .cg-nav-logo { background: none; box-shadow: none; padding: 0; border-radius: 0; height: 44px; }
+.cg-nav .cg-nav-logo img { max-height: 44px; }
+.cg-nav .cg-nav-title { font-size: 27px; line-height: 1; letter-spacing: -.015em; }
+.cg-nav .cg-nav-sub   { color: var(--dark); font-weight: 700; font-size: 11px; margin-top: 1px; letter-spacing: .01em; }
 .cg-nav-links { display: flex; gap: 22px; }
 .cg-nav-links a { color: var(--dark); font-weight: 700; font-size: 13px; }
 .cg-nav-links a:hover { color: var(--teal); text-decoration: none; }

@@ -18,13 +18,16 @@ function isActive(seg: string): boolean {
 ---
 <nav class="cg-nav">
   <div class="cg-nav-inner">
-    <a class="cg-nav-brand" href="https://www.cigob.org" target="_self">
-      <span class="cg-nav-logo"><img src={`${base}/cigob-icono.png`} alt="CiGob" /></span>
-      <span class="cg-nav-titles">
-        <span class="cg-nav-title">CiGob</span>
-        <span class="cg-nav-sub">Ciencias para gobernar</span>
-      </span>
-    </a>
+    <div class="cg-nav-left">
+      <a class="cg-nav-brand" href="https://www.cigob.org" target="_self">
+        <span class="cg-nav-logo"><img src={`${base}/cigob-icono.png`} alt="CiGob" /></span>
+        <span class="cg-nav-titles">
+          <span class="cg-nav-title">CiGob</span>
+          <span class="cg-nav-sub">Ciencias para gobernar</span>
+        </span>
+      </a>
+      <a class="cg-nav-producto" href={`${base}/`}>Informe de Coyuntura</a>
+    </div>
     <div class="cg-nav-links">
       {links.map(l => (
         <a href={l.href} class:list={{ active: isActive(l.seg) }} aria-current={isActive(l.seg) ? "page" : undefined}>{l.label}</a>
