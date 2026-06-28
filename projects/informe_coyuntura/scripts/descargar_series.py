@@ -5,6 +5,7 @@ Columnas: fecha, indicador, valor, fuente
 """
 import sys
 import csv
+import re
 import calendar
 import requests
 import urllib3
@@ -257,9 +258,31 @@ def fetch_iaf_serie() -> list:
     return out
 
 
+def fetch_ratio_dnu_serie() -> list:
+    """Serie ANUAL del ratio DNUs/leyes (InfoLeg), misma fórmula que el indicador:
+    DNUs (tipoNorma=2 + 'necesidad y urgencia') / leyes (tipoNorma=1) por año.
+    [[YYYY-01-01, ratio]]."""
+    s = requests.Session()
+    rh = s.get(politica.INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    rh.raise_for_status()
+    m = re.search(r'action="(/infolegInternet/[^"]+)"', rh.text)
+    if not m:
+        raise ValueError("InfoLeg: no se encontró el form action")
+    au = "https://servicios.infoleg.gob.ar" + m.group(1)
+    out = []
+    for y in range(2020, date.today().year + 1):
+        leyes = politica._infoleg_session_count(s, au, "1", y)
+        if not leyes:
+            continue
+        dnus = politica._infoleg_session_count(s, au, "2", y, texto="necesidad y urgencia")
+        out.append([f"{y}-01-01", round(dnus / leyes, 3)])
+    return out
+
+
 POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
+    ("ratio_dnu", "DNUs por ley", "InfoLeg (conteo anual)", fetch_ratio_dnu_serie),
 ]
 
 VIDA_INDEC = [
