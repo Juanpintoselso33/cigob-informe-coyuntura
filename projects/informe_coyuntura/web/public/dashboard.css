@@ -405,7 +405,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     font-size: 11px; color: var(--muted); margin: 0 0 10px;
     text-transform: uppercase; letter-spacing: .06em; font-weight: 700;
 }
-.cg-chart-mini { width: 100%; height: 80px; }
+.cg-chart-mini { width: 100%; min-height: 92px; }
 .cg-chart-mini-foot {
     display: flex; justify-content: space-between; align-items: baseline;
     margin-top: 8px;
@@ -682,18 +682,16 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 }
 .cg-modal-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 14px; }
 .cg-chart-modal {
-    width: 100%; height: auto; aspect-ratio: 600 / 260;
-    margin: 4px 0 6px; display: block;
+    width: 100%; height: 280px;
+    margin: 4px 0 8px;
     background: var(--paper, #fff);
     border: 1px solid var(--bd-soft); border-radius: 12px;
+    padding: 6px 4px 2px;
 }
 .cg-chart-modal[hidden] { display: none; }
-.cg-chart-line { fill: none; stroke: var(--teal); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
-.cg-chart-area { fill: var(--teal-soft); opacity: .45; stroke: none; }
-.cg-chart-dot  { fill: var(--teal); stroke: #fff; stroke-width: 1; }
-.cg-chart-zero { stroke: var(--bd); stroke-width: 1; stroke-dasharray: 3 3; }
-.cg-chart-yl   { fill: var(--muted); font-size: 11px; font-family: 'JetBrains Mono', monospace; }
-.cg-chart-xl   { fill: var(--muted); font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+/* Tooltip de ApexCharts alineado a la tipografía CiGob */
+.apexcharts-tooltip { font-family: 'Montserrat', sans-serif !important; box-shadow: 0 6px 20px rgba(10,20,20,.12) !important; border: 1px solid var(--bd) !important; }
+.apexcharts-tooltip-title { font-weight: 800 !important; background: var(--paper) !important; border-bottom: 1px solid var(--bd-soft) !important; }
 .cg-modal-table {
     width: 100%; border-collapse: collapse;
     font-size: 13px;

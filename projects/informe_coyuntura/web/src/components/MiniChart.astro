@@ -1,9 +1,7 @@
 ---
-import { chartPath } from "../lib/sparkline.ts";
-import { series, label, formatValor } from "../lib/datos.ts";
+import { series, label, formatValor, UNIDADES_CORTAS } from "../lib/datos.ts";
 const { indicador, slug } = Astro.props;
 const serie = series[indicador] ?? [];
-const sp = chartPath(serie, 300, 80);
 const ahora = serie.at(-1)?.valor ?? null;
 const previo = serie.at(-2)?.valor ?? null;
 const delta = ahora !== null && previo !== null ? ahora - previo : null;
@@ -12,14 +10,8 @@ const dir = delta === null ? "flat" : delta > 0 ? "up" : delta < 0 ? "down" : "f
 <div class:list={["cg-chart-mini-card", slug]}>
   <h3>{label(indicador)}</h3>
   <div class="cg-sub">Últimos {serie.length} datos</div>
-  <div class="cg-chart-mini">
-    {!sp.vacio && (
-      <svg viewBox="0 0 300 80" width="100%" height="80" preserveAspectRatio="none">
-        <path class="cg-spark-area" d={sp.area} />
-        <path class="cg-spark-line" d={sp.linea} />
-      </svg>
-    )}
-  </div>
+  <div class="cg-chart-mini" data-evo-key={indicador} data-evo-slug={slug}
+       data-evo-unidad={UNIDADES_CORTAS[indicador] ?? ""}></div>
   <div class="cg-chart-mini-foot">
     <div class="cg-chart-mini-now">{formatValor(ahora)}</div>
     <span class:list={["cg-chart-mini-delta", dir]}>

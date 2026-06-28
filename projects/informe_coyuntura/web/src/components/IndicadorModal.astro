@@ -32,6 +32,9 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       aporteNota: ind.aporte_nota ?? null,
       aporteInputTxt: ind.aporte_input_txt ?? null,
       scoreCint: c.score, scoreExpl: c.score_explicacion ?? "",
+      slug: SLUG_DE[ckey] ?? ckey,
+      avance: typeof ind.avance_pct === "number" ? ind.avance_pct : null,
+      componentes: ind.componentes ?? null,
     };
   }
 }
@@ -49,8 +52,7 @@ const seriesJson = JSON.stringify(series);
     <div class="cg-modal-score" id="cg-modal-score"></div>
     <h4 class="cg-modal-h4" id="cg-modal-serie-h">Evolución histórica</h4>
     <p class="cg-modal-sub" id="cg-modal-sub"></p>
-    <svg class="cg-chart-modal" id="cg-modal-chart" viewBox="0 0 600 260"
-         preserveAspectRatio="xMidYMid meet" role="img" aria-label="Gráfico de evolución histórica" hidden></svg>
+    <div class="cg-chart-modal" id="cg-modal-chart" role="img" aria-label="Gráfico del indicador" hidden></div>
     <table class="cg-modal-table" id="cg-modal-table"></table>
     <button class="cg-modal-csv" id="cg-modal-csv" type="button" hidden>
       <span aria-hidden="true">↓</span> Descargar serie (CSV)
@@ -60,49 +62,44 @@ const seriesJson = JSON.stringify(series);
 <script type="application/json" id="cg-info-data" set:html={infoJson}></script>
 <script type="application/json" id="cg-series-data" set:html={seriesJson}></script>
 <script>
+  // ApexCharts se carga en demanda (import dinámico) la primera vez que se abre un
+  // indicador, para no pesar en la carga de página cuando nadie abre el modal.
+  let CHARTS = null;
+  async function ensureCharts() {
+    if (!CHARTS) CHARTS = await import("../lib/charts.ts");
+    return CHARTS;
+  }
   const INFO = JSON.parse(document.getElementById("cg-info-data").textContent);
   const SERIES = JSON.parse(document.getElementById("cg-series-data").textContent);
   const modal = document.getElementById("cg-modal");
   const nf = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 2 });
   const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const fmtFecha = (f) => (f && f.length >= 7) ? f.slice(0, 7) : String(f ?? "");
 
-  // Dibuja un gráfico de línea SVG de la serie completa (timeline) en el modal.
-  function renderChart(serie) {
-    const svg = document.getElementById("cg-modal-chart");
-    if (!serie || serie.length < 2) { svg.setAttribute("hidden", ""); return; }
-    const W = 600, H = 260, padL = 56, padR = 16, padT = 18, padB = 30;
-    const vals = serie.map(p => p.valor);
-    let min = Math.min(...vals), max = Math.max(...vals);
-    if (min === max) { min -= 1; max += 1; }
-    const span = max - min;
-    const xAt = (i) => padL + (i / (serie.length - 1)) * (W - padL - padR);
-    const yAt = (v) => padT + (1 - (v - min) / span) * (H - padT - padB);
-    const pts = serie.map((p, i) => [xAt(i), yAt(p.valor)]);
-    const line = pts.map((p, i) => `${i ? "L" : "M"}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");
-    const area = `${line} L${pts[pts.length - 1][0].toFixed(1)},${H - padB} L${pts[0][0].toFixed(1)},${H - padB} Z`;
-    const parts = [];
-    if (min < 0 && max > 0) {                                   // línea de cero si hay signos mezclados
-      const yz = yAt(0).toFixed(1);
-      parts.push(`<line x1="${padL}" y1="${yz}" x2="${W - padR}" y2="${yz}" class="cg-chart-zero"/>`);
-    }
-    parts.push(`<text x="${padL - 8}" y="${(padT + 4).toFixed(1)}" text-anchor="end" class="cg-chart-yl">${esc(nf.format(max))}</text>`);
-    parts.push(`<text x="${padL - 8}" y="${(H - padB).toFixed(1)}" text-anchor="end" class="cg-chart-yl">${esc(nf.format(min))}</text>`);
-    parts.push(`<text x="${padL}" y="${H - 9}" text-anchor="start" class="cg-chart-xl">${esc(fmtFecha(serie[0].fecha))}</text>`);
-    parts.push(`<text x="${W - padR}" y="${H - 9}" text-anchor="end" class="cg-chart-xl">${esc(fmtFecha(serie[serie.length - 1].fecha))}</text>`);
-    parts.push(`<path d="${area}" class="cg-chart-area"/>`);
-    parts.push(`<path d="${line}" class="cg-chart-line"/>`);
-    if (serie.length <= 24) {                                   // puntos con tooltip nativo si son pocos
-      pts.forEach((p, i) => parts.push(
-        `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="2.5" class="cg-chart-dot"><title>${esc(fmtFecha(serie[i].fecha))}: ${esc(nf.format(serie[i].valor))}</title></circle>`));
-    } else {                                                    // solo el último punto si son muchos
-      const last = pts[pts.length - 1];
-      parts.push(`<circle cx="${last[0].toFixed(1)}" cy="${last[1].toFixed(1)}" r="3" class="cg-chart-dot"/>`);
-    }
-    svg.innerHTML = parts.join("");
-    svg.removeAttribute("hidden");
+  // Tipo de gráfico según el indicador: serie temporal → línea/área ·
+  // avance sin serie → medidor radial · componentes → barras.
+  let chartInstance = null;
+  function destruirChart() { if (chartInstance) { chartInstance.destroy(); chartInstance = null; } }
+  function hayComponentes(comp) { return comp && Object.values(comp).some(v => typeof v === "number"); }
+  function tipoChart(d, serie) {
+    if (serie && serie.length >= 2) return "linea";
+    if (typeof d.avance === "number") return "gauge";
+    if (hayComponentes(d.componentes)) return "barra";
+    return null;
   }
-  const close = () => modal.setAttribute("hidden", "");
+  // Monta el gráfico. Debe llamarse con el modal YA visible (ApexCharts mide el
+  // contenedor; con display:none renderiza a 0px). Async: carga la librería on-demand.
+  async function renderChart(tipo, key, d, serie) {
+    const el = document.getElementById("cg-modal-chart");
+    destruirChart();
+    if (!tipo) { el.setAttribute("hidden", ""); return; }
+    el.removeAttribute("hidden");
+    const C = await ensureCharts();
+    const color = C.colorDe(d.slug);
+    if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidad });
+    else if (tipo === "gauge") chartInstance = C.gaugeChart(el, d.avance, { color, label: "avance ejecutado" });
+    else if (tipo === "barra") chartInstance = C.barChart(el, C.componentesDe(key, d.componentes), { color, unidad: d.unidad });
+  }
+  const close = () => { destruirChart(); modal.setAttribute("hidden", ""); };
   document.getElementById("cg-modal-close").addEventListener("click", close);
   modal.addEventListener("click", e => { if (e.target === modal) close(); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
@@ -181,21 +178,52 @@ const seriesJson = JSON.stringify(series);
       const sub = document.getElementById("cg-modal-sub");
       const table = document.getElementById("cg-modal-table");
       serieActual = serie; keyActual = key;
-      renderChart(serie);
-      if (serie.length) {
-        serieH.style.display = "";
+      const tipo = tipoChart(d, serie);
+      const HEAD = { linea: "Evolución histórica", gauge: "Avance de la reforma", barra: "Composición del indicador" };
+      if (tipo === "linea") {
+        serieH.style.display = ""; serieH.textContent = HEAD.linea;
+        sub.style.display = "";
         sub.textContent = `${serie.length} datos · se muestran los últimos ${Math.min(12, serie.length)}`;
         const rows = serie.slice(-12).reverse()
           .map(p => `<tr><td>${esc(p.fecha)}</td><td>${nf.format(p.valor)}</td></tr>`).join("");
         table.innerHTML = `<thead><tr><th>Fecha</th><th>Valor</th></tr></thead><tbody>${rows}</tbody>`;
         csvBtn.removeAttribute("hidden");
+      } else if (tipo === "gauge" || tipo === "barra") {
+        serieH.style.display = ""; serieH.textContent = HEAD[tipo];
+        sub.style.display = "none";
+        table.innerHTML = "";
+        csvBtn.setAttribute("hidden", "");
       } else {
         serieH.style.display = "none";
-        sub.textContent = "Sin serie histórica disponible para este indicador.";
+        sub.style.display = "none";
         table.innerHTML = "";
         csvBtn.setAttribute("hidden", "");
       }
       modal.removeAttribute("hidden");
+      requestAnimationFrame(() => renderChart(tipo, key, d, serie));
     });
   });
+
+  // Mini-gráficos de la sección "Evolución" de la home (si está presente). Se montan
+  // recién al entrar en viewport, reusando SERIES y la carga on-demand de ApexCharts.
+  // Va en este script (no en Evolucion.astro) para que la home tenga UN solo módulo
+  // hoisted — con dos, Astro referencia uno y dejaba el modal sin cablear.
+  const evoGrid = document.getElementById("cg-chart-grid");
+  if (evoGrid) {
+    let evoMontado = false;
+    const io = new IntersectionObserver(async (es) => {
+      if (evoMontado || !es.some(e => e.isIntersecting)) return;
+      evoMontado = true; io.disconnect();
+      const C = await ensureCharts();
+      evoGrid.querySelectorAll("[data-evo-key]").forEach(el => {
+        const serie = SERIES[el.getAttribute("data-evo-key")];
+        if (!serie || serie.length < 2) return;
+        C.sparkChart(el, serie, {
+          color: C.colorDe(el.getAttribute("data-evo-slug")),
+          unidad: el.getAttribute("data-evo-unidad") || "",
+        });
+      });
+    }, { rootMargin: "250px" });
+    io.observe(evoGrid);
+  }
 </script>
