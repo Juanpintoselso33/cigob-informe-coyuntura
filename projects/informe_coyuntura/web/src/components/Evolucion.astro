@@ -1,21 +1,26 @@
 ---
 import MiniChart from "./MiniChart.astro";
 import { series } from "../lib/datos.ts";
-// Indicadores con serie histórica real (>=2 puntos). Política y gestión no tienen serie.
+// Indicadores con serie histórica real (>=2 puntos), uno o dos por cinturón, para que
+// la Evolución refleje los cinco cinturones (no solo macro). El backfill reconstruyó la
+// historia de política, vida, gestión y espíritu desde sus fuentes oficiales.
 const DESTACADOS = [
   { indicador: "ipc_total", slug: "macro" },
-  { indicador: "tcrm", slug: "macro" },
   { indicador: "reservas_bcra", slug: "macro" },
-  { indicador: "badlar", slug: "macro" },
-  { indicador: "recaudacion", slug: "macro" },
-  { indicador: "desocupacion", slug: "vida" },
+  { indicador: "votometro_ventaja_lla", slug: "politica" },
+  { indicador: "ratio_dnu", slug: "politica" },
+  { indicador: "ipc_alimentos", slug: "vida" },
+  { indicador: "icc_utdt", slug: "vida" },
+  { indicador: "rigi_inversiones", slug: "gestion" },
+  { indicador: "desregulacion_normativa", slug: "gestion" },
+  { indicador: "sentimiento_digital", slug: "espiritu" },
 ].filter(d => (series[d.indicador] ?? []).length >= 2);
 ---
 <section class="cg-section" id="evolucion">
   <div class="cg-section-head">
     <p class="cg-eyebrow">Cómo va la película</p>
     <h2 class="cg-h2">Evolución</h2>
-    <p class="cg-h2-sub">Series históricas de los indicadores automatizados. Política y gestión se incorporan a medida que acumulan historia.</p>
+    <p class="cg-h2-sub">Series históricas de indicadores clave de los cinco cinturones, reconstruidas desde sus fuentes oficiales. Tocá cualquiera para ver el detalle, la tabla y descargar el CSV.</p>
   </div>
   {DESTACADOS.length === 0 ? (
     <div class="cg-chart-card"><p class="cg-chart-sub">Histórico en construcción: se necesita más de un período para graficar tendencias.</p></div>
