@@ -680,8 +680,20 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     font-size: 28px; color: var(--dark);
     margin: 4px 0;
 }
-.cg-modal-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 20px; }
-.cg-chart-modal { width: 100%; height: 280px; margin: 16px 0; }
+.cg-modal-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 14px; }
+.cg-chart-modal {
+    width: 100%; height: auto; aspect-ratio: 600 / 260;
+    margin: 4px 0 6px; display: block;
+    background: var(--paper, #fff);
+    border: 1px solid var(--bd-soft); border-radius: 12px;
+}
+.cg-chart-modal[hidden] { display: none; }
+.cg-chart-line { fill: none; stroke: var(--teal); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.cg-chart-area { fill: var(--teal-soft); opacity: .45; stroke: none; }
+.cg-chart-dot  { fill: var(--teal); stroke: #fff; stroke-width: 1; }
+.cg-chart-zero { stroke: var(--bd); stroke-width: 1; stroke-dasharray: 3 3; }
+.cg-chart-yl   { fill: var(--muted); font-size: 11px; font-family: 'JetBrains Mono', monospace; }
+.cg-chart-xl   { fill: var(--muted); font-size: 11px; font-family: 'JetBrains Mono', monospace; }
 .cg-modal-table {
     width: 100%; border-collapse: collapse;
     font-size: 13px;
