@@ -374,6 +374,30 @@ VIDA_DERIVADAS += [
     ("pluriempleo", "%", "INDEC EPH (47.2, trimestral)", lambda: fetch_indec_x100("47.2_ECTSDT_0_T_47")),
 ]
 
+
+def fetch_brecha_serie() -> list:
+    """Serie de la brecha salario/CBT = RIPTE / Canasta Básica Total, ALINEADA por mes
+    (mismo mes en ambas series; el indicador live toma el último de cada una, que a veces
+    son meses distintos). Cuántas canastas cubre el salario imponible promedio.
+    [[YYYY-MM-01, canastas]]."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import RIPTE_CSV, INDEC_SERIES
+    r = requests.get(RIPTE_CSV, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    ripte = {}
+    for line in r.text.strip().split("\n"):
+        p = line.split(",")
+        if len(p) >= 2 and p[0][:4].isdigit():
+            ripte[p[0][:7]] = float(p[1])
+    cbt = {f[:7]: v for f, v in fetch_indec(INDEC_SERIES["cbt"], limit=60)}
+    comun = sorted(set(ripte) & set(cbt))
+    return [[f"{ym}-01", round(ripte[ym] / cbt[ym], 2)] for ym in comun if cbt[ym]]
+
+
+VIDA_DERIVADAS.append(
+    ("brecha_salario_cbt", "canastas (RIPTE/CBT)", "INDEC (RIPTE + Canasta Básica Total)", fetch_brecha_serie)
+)
+
 GESTION_INDEC = [
     ("149.1_SOR_PUBICO_OCTU_0_14",   "indice_salarios_publico", "indice base oct-2016=100", "INDEC/datos.gob.ar"),
     ("33.4_ISAC_CEMENAND_0_0_21_24", "isac_construccion",       "indice base 2004=100",     "INDEC/datos.gob.ar"),
