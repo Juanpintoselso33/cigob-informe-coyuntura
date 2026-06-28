@@ -293,6 +293,33 @@ VIDA_DERIVADAS.append(
     ("icc_utdt", "índice", "UTDT (ICC, serie XLS)", fetch_icc_serie)
 )
 
+
+def fetch_sentimiento_serie() -> list:
+    """Serie SEMANAL del sentimiento digital (promedio del interés Trends de las 4
+    keywords) en la MISMA ventana 'today 3-m' que usa el indicador live, así la
+    normalización 0-100 coincide y no hay re-anclado ni cambio de score. Google Trends
+    no tiene escala absoluta: una ventana más larga re-normaliza el valor, por eso la
+    serie se acota a 3 meses. [[YYYY-MM-DD, interés]]."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    import trends as _t
+    from config import TRENDS_KEYWORDS, TRENDS_GEO
+    _t._patch_urllib3()
+    from pytrends.request import TrendReq
+    pt = TrendReq(hl="es-AR", tz=-180, timeout=(10, 30), retries=2, backoff_factor=0.5)
+    pt.build_payload(TRENDS_KEYWORDS, cat=0, timeframe="today 3-m", geo=TRENDS_GEO)
+    df = pt.interest_over_time()
+    if df is None or df.empty:
+        raise ValueError("Trends devolvió vacío (rate limit)")
+    cols = [k for k in TRENDS_KEYWORDS if k in df.columns]
+    return [[d.strftime("%Y-%m-%d"), round(float(row[cols].mean()), 1)]
+            for d, row in df.iterrows()]
+
+
+VIDA_DERIVADAS.append(
+    ("sentimiento_digital", "interés 0–100", "Google Trends (ventana 3m)", fetch_sentimiento_serie)
+)
+
 GESTION_INDEC = [
     ("149.1_SOR_PUBICO_OCTU_0_14",   "indice_salarios_publico", "indice base oct-2016=100", "INDEC/datos.gob.ar"),
     ("33.4_ISAC_CEMENAND_0_0_21_24", "isac_construccion",       "indice base 2004=100",     "INDEC/datos.gob.ar"),

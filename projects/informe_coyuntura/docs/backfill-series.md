@@ -22,6 +22,8 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 | `ipc_alimentos` · `peso_tarifas` · `mortalidad_pymes` | Variación m/m % reconstruida de la serie índice INDEC (146.3 / 148.3 / 453.1) con `fetch_indec_var_mensual` | 47 c/u |
 | `iaf_transferencias` | Variación real i.a. anual (RON Hacienda) deflactada por el **IPC dic-dic oficial de INDEC** (se de-hardcodeó `IPC_ANUAL`, corrigió la card 1,8% → 7,0%) | 9 (anual) |
 | `desregulacion_normativa` · `reestructuracion_organismos` | Conteo acumulado de normas InfoLeg ("deroga"/"disolucion") reconsultado a fin de cada mes | 31 / 24 |
+| `icc_utdt` (vida + espíritu) | Todas las filas del XLS oficial UTDT (no solo la última), acotado a los últimos 60 meses | 60 |
+| `sentimiento_digital` (vida + espíritu) | Serie diaria de Google Trends en la **misma ventana 'today 3-m'** que el live (Trends es relativo al período → ventana más larga re-normaliza; se acota a 3m para no cambiar el valor) | ~90 (diaria) |
 
 > El "último punto = valor live" se verificó indicador por indicador. La variación m/m y
 > el conteo InfoLeg corren en cada pipeline (`descargar_series` está en el CI), con
@@ -29,17 +31,9 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 
 ---
 
-## 🟢 Alta factibilidad — próximas
-| Indicador | Cinturón | Fuente | Método |
-|---|---|---|---|
-| `sentimiento_digital` | Vida · Espíritu | Google Trends | Trends devuelve una **serie temporal**; usar el histórico en vez del último punto. |
-
----
-
-## 🟡 Media factibilidad
+## 🟡 Media factibilidad — próximas
 | Indicador | Cinturón | Fuente | Método / fricción |
 |---|---|---|---|
-| `icc_utdt` | Vida · Espíritu | UTDT | UTDT publica el ICC histórico mensual; scrapear la planilla histórica. |
 | `informalidad`, `pluriempleo` | Vida | INDEC EPH | Serie **trimestral**; computar el indicador por trimestre. |
 | `brecha_salario_cbt` | Vida | INDEC salarios (RIPTE) + CBT | Derivado de dos series con historia. |
 | `endeudamiento_familiar` | Vida | BCRA crédito consumo + IPC | `credito_consumo_serie` ya existe → var real i.a. por mes. |
@@ -66,9 +60,8 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 ---
 
 ## Orden sugerido
-1. ✅ Votómetro, 3 de Vida (m/m), `iaf_transferencias`, 2 de InfoLeg — **todo el 🟢 salvo Trends** (hecho).
-2. **`sentimiento_digital`** (histórico de Trends) e **`icc_utdt`** (histórico UTDT).
-3. CKAN política (`eficacia_legislativa`, `veto_quorum`, `comisiones_caidas`) + EPH trimestral (`informalidad`, `pluriempleo`) + `endeudamiento_familiar` (BCRA ya tiene la serie).
-4. datos.gob.ar de gestión (`reduccion_estado`, `apertura_comercial`) + scraping CEPA.
+1. ✅ Votómetro, 3 de Vida (m/m), `iaf_transferencias`, 2 de InfoLeg, `icc_utdt`, `sentimiento_digital` — **todo el 🟢 + Trends/UTDT** (hecho).
+2. CKAN política (`eficacia_legislativa`, `veto_quorum`, `comisiones_caidas`) + EPH trimestral (`informalidad`, `pluriempleo`) + `endeudamiento_familiar` (BCRA ya tiene la serie).
+3. datos.gob.ar de gestión (`reduccion_estado`, `apertura_comercial`) + scraping CEPA.
 
 Las bloqueadas seguirán acumulando hacia adelante; no se pierde dato.
