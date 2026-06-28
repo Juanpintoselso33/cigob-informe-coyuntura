@@ -221,8 +221,37 @@ def fetch_votometro_serie() -> list:
     return [[f"{ym}-01", g] for ym, g in politica.votometro_serie_mensual()]
 
 
+def fetch_iaf_serie() -> list:
+    """Serie ANUAL de la variación real i.a. de transferencias federales totales
+    (RON Hacienda), deflactada por el IPC dic-dic oficial de INDEC — misma fórmula
+    que el indicador. Confiable desde 2017 (base del índice IPC). [[YYYY-12-01, %]]."""
+    import csv
+    import io
+    r = requests.get(politica.RON_CSV_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    rd = csv.reader(io.StringIO(r.text), delimiter=";")
+    next(rd)
+    tot = {}
+    for row in rd:
+        if len(row) < 5:
+            continue
+        try:
+            tot[int(row[0])] = tot.get(int(row[0]), 0.0) + float(row[4].replace(",", "."))
+        except ValueError:
+            continue
+    ipc = politica._ipc_dicdic_indec()
+    out = []
+    for y in sorted(tot):
+        if y - 1 in tot and tot[y - 1] and y in ipc:
+            var_nom = tot[y] / tot[y - 1] - 1.0
+            var_real = (1.0 + var_nom) / (1.0 + ipc[y]) - 1.0
+            out.append([f"{y}-12-01", round(var_real * 100.0, 1)])
+    return out
+
+
 POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
+    ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
 ]
 
 VIDA_INDEC = [

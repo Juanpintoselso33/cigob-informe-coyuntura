@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-28T16:12:29.236041",
+  "generated_at": "2026-06-28T17:03:03.494751",
   "period": "2026-06",
   "score_global": 4.2,
   "ponderacion": {
@@ -408,7 +408,7 @@
       "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."
     },
     "politica": {
-      "score": 4.8,
+      "score": 4.6,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -451,17 +451,17 @@
           "aporte_nota": null
         },
         "iaf_transferencias": {
-          "valor": 1.8,
+          "valor": 7.0,
           "var_nominal_pct": 40.7,
           "total_ref_mm": 104.0,
           "total_ant_mm": 74.0,
           "periodo": "2025 vs 2024",
-          "ipc_aplicado_pct": 38.3,
+          "ipc_aplicado_pct": 31.5,
           "unidad": "% interanual real",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
           "fecha_dato": "2026-06-28",
           "desactualizado": false,
-          "aporte_score": 2.1,
+          "aporte_score": 0.8,
           "aporte_formula": "+10% → 0 · 0% → 2,5 · −10% → 5 · −30% → 10 (var. real i.a.)",
           "aporte_nota": null
         },

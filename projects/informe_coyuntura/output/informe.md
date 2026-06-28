@@ -1,7 +1,7 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-28 16:12:29"
-score_global: 4.1
+generado: "2026-06-28 17:03:03"
+score_global: 4.0
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-06
 
-**Score global:** 4.1/10  |  **Riesgo dominante:** gerencial
+**Score global:** 4.0/10  |  **Riesgo dominante:** gerencial
 
 ## Cinturones
 
@@ -34,7 +34,7 @@ schema_version: "1.2.0"
 | base_monetaria | 5.55 | % mensual nominal | 2026-06-24 | fresco |
 | tc_mayorista | 4.57 | % mensual | 2026-06-26 | fresco |
 
-### 🟡 Politica — score 4.8/10 (en_tension)
+### 🟡 Politica — score 4.6/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -42,7 +42,7 @@ schema_version: "1.2.0"
 | votometro_ventaja_lla | 5.3 | Puntos porcentuales | 2026-05-28 | fresco |
 | ratio_dnu | 1.5 | DNUs por ley | 2026-06-28 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-28 | fresco |
-| iaf_transferencias | 1.8 | % interanual real | 2026-06-28 | fresco |
+| iaf_transferencias | 7.0 | % interanual real | 2026-06-28 | fresco |
 | eficacia_legislativa | 4.3 | % de proyectos | 2026-06-28 | fresco |
 | cohesion_bloque | 78 | % votos en línea con la posición oficial del bloque LLA | 2026-04-01 | ⚠ cache |
 | gobernadores_alineamiento | 55 | % gobernadores alineados con política nacional | 2026-04-01 | ⚠ cache |
@@ -91,4 +91,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes`
 
 ---
-*Generado por CIGOB — 2026-06-28 16:12:29 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-28 17:03:03 — schema 1.2.0*

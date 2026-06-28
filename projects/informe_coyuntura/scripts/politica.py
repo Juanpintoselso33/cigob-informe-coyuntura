@@ -86,7 +86,24 @@ _RE_PE_EXP           = re.compile(r"\d+-PE-\d{4}")
 
 # IPC interanual diciembre (INDEC). Actualizar en enero de cada año.
 # 2024: 117.06% acumulado anual. 2025: 38.3% acumulado anual (estimado previo a cierre).
-IPC_ANUAL = {2024: 1.1706, 2025: 0.383}
+IPC_ANUAL = {2024: 1.1706, 2025: 0.383}   # fallback dic-dic si la API INDEC falla
+
+INDEC_SERIES_URL = "https://apis.datos.gob.ar/series/api/series/"
+INDEC_IPC_INDICE = "148.3_INIVELNAL_DICI_M_26"   # IPC nivel general, índice (base dic-2016=100)
+
+
+def _ipc_dicdic_indec() -> dict:
+    """IPC dic-dic por año derivado de la serie ÍNDICE oficial de INDEC (sin hardcodear):
+    {año: variación dic(año)/dic(año−1) − 1}. Confiable desde 2017 (base dic-2016=100)."""
+    r = requests.get(INDEC_SERIES_URL,
+                     params={"ids": INDEC_IPC_INDICE, "format": "json", "limit": 200, "sort": "desc"},
+                     headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    dic = {}
+    for fecha, val in r.json()["data"]:
+        if val is not None and str(fecha)[5:7] == "12":
+            dic[int(str(fecha)[:4])] = val
+    return {y: dic[y] / dic[y - 1] - 1 for y in dic if y - 1 in dic}
 
 logging.basicConfig(level=logging.WARNING, format="%(message)s")
 
@@ -495,10 +512,16 @@ def fetch_iaf_transferencias() -> dict | None:
             raise ValueError(f"Sin datos para {year_ref} o {year_ant} en RON CSV")
 
         var_nominal = (tot[year_ref] / tot[year_ant]) - 1.0
-        ipc = IPC_ANUAL.get(year_ref)
+        ipc = None
+        try:
+            ipc = _ipc_dicdic_indec().get(year_ref)   # oficial INDEC, sin hardcodear
+        except Exception as e:
+            _warn("iaf_transferencias (IPC INDEC, uso fallback)", str(e))
+        if ipc is None:
+            ipc = IPC_ANUAL.get(year_ref)              # fallback al dic-dic hardcodeado
         if ipc is None:
             raise ValueError(
-                f"IPC no configurado para {year_ref} — actualizar IPC_ANUAL en politica.py"
+                f"IPC no disponible para {year_ref} (ni INDEC ni IPC_ANUAL)"
             )
         var_real = (1.0 + var_nominal) / (1.0 + ipc) - 1.0
         score_val = round(min(10.0, max(0.0, (0.10 - var_real) * 25.0)), 2)

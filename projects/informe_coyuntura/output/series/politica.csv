@@ -30,3 +30,12 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,votometro_ventaja_lla,12.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2024-01-01,votometro_ventaja_lla,14.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2023-12-01,votometro_ventaja_lla,16.1,pp (brecha LLA−PJ),Votómetro CIGOB
+2025-12-01,iaf_transferencias,7.0,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2024-12-01,iaf_transferencias,35.5,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2023-12-01,iaf_transferencias,-28.7,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2022-12-01,iaf_transferencias,-5.4,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2021-12-01,iaf_transferencias,8.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2020-12-01,iaf_transferencias,-0.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2019-12-01,iaf_transferencias,-6.9,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2018-12-01,iaf_transferencias,-10.6,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2017-12-01,iaf_transferencias,4.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)

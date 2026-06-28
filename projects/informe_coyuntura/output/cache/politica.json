@@ -1,7 +1,7 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-06-28T16:12:28.896099",
-  "score": 4.8,
+  "generated_at": "2026-06-28T17:02:58.063569",
+  "score": 4.6,
   "indicadores": {
     "votometro_ventaja_lla": {
       "valor": 5.3,
@@ -33,12 +33,12 @@
       "desactualizado": false
     },
     "iaf_transferencias": {
-      "valor": 1.8,
+      "valor": 7.0,
       "var_nominal_pct": 40.7,
       "total_ref_mm": 104.0,
       "total_ant_mm": 74.0,
       "periodo": "2025 vs 2024",
-      "ipc_aplicado_pct": 38.3,
+      "ipc_aplicado_pct": 31.5,
       "unidad": "% interanual real",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
       "fecha_dato": "2026-06-28",
