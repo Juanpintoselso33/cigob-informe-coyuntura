@@ -34,7 +34,7 @@ export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: strin
   const cruzaCero = Math.min(...vals) < 0 && Math.max(...vals) > 0;
   const xfmt = esMensual(serie) ? "MMM yyyy" : "dd MMM yy";
   const chart = new ApexCharts(el, {
-    chart: { type: "area", height: "100%", width: "100%", fontFamily: FONT,
+    chart: { type: "area", height: 260, width: "100%", fontFamily: FONT,
              toolbar: { show: false }, zoom: { enabled: false }, animations: { enabled: true, speed: 450 } },
     series: [{ name: opts.nombre ?? "Valor", data: serie.map(p => ({ x: aTimestamp(p.fecha), y: p.valor })) }],
     colors: [color],
@@ -76,7 +76,7 @@ export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: stri
 export function gaugeChart(el: HTMLElement, valor: number, opts: { color?: string; label?: string } = {}) {
   const color = opts.color ?? "#4998DB";
   const chart = new ApexCharts(el, {
-    chart: { type: "radialBar", height: "100%", width: "100%", fontFamily: FONT },
+    chart: { type: "radialBar", height: 260, width: "100%", fontFamily: FONT },
     series: [Math.max(0, Math.min(100, valor))],
     colors: [color],
     plotOptions: { radialBar: {
@@ -98,7 +98,7 @@ export function gaugeChart(el: HTMLElement, valor: number, opts: { color?: strin
 export function barChart(el: HTMLElement, items: { nombre: string; valor: number }[], opts: { color?: string; unidad?: string } = {}) {
   const color = opts.color ?? "#4998DB";
   const chart = new ApexCharts(el, {
-    chart: { type: "bar", height: "100%", width: "100%", fontFamily: FONT, toolbar: { show: false } },
+    chart: { type: "bar", height: 260, width: "100%", fontFamily: FONT, toolbar: { show: false } },
     series: [{ name: "Valor", data: items.map(i => +Number(i.valor).toFixed(2)) }],
     colors: [color],
     plotOptions: { bar: { horizontal: true, borderRadius: 4, barHeight: "55%", distributed: false } },

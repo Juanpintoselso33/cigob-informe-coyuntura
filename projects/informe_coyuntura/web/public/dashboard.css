@@ -682,13 +682,15 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 }
 .cg-modal-sub { color: var(--muted); font-size: 13.5px; margin: 0 0 14px; }
 .cg-chart-modal {
-    width: 100%; height: 280px;
+    width: 100%; height: auto; max-height: 300px; overflow: hidden;
     margin: 4px 0 8px;
     background: var(--paper, #fff);
     border: 1px solid var(--bd-soft); border-radius: 12px;
     padding: 6px 4px 2px;
 }
 .cg-chart-modal[hidden] { display: none; }
+/* La altura del gráfico la fija ApexCharts (260px); el contenedor la envuelve. */
+.cg-chart-modal .apexcharts-canvas { margin: 0 auto; }
 /* Tooltip de ApexCharts alineado a la tipografía CiGob */
 .apexcharts-tooltip { font-family: 'Montserrat', sans-serif !important; box-shadow: 0 6px 20px rgba(10,20,20,.12) !important; border: 1px solid var(--bd) !important; }
 .apexcharts-tooltip-title { font-weight: 800 !important; background: var(--paper) !important; border-bottom: 1px solid var(--bd-soft) !important; }
