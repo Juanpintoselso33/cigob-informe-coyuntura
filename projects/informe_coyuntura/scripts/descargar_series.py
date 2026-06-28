@@ -45,6 +45,13 @@ def fetch_indec_var_mensual(series_id: str, limit: int = 48) -> list:
             for (f0, v0), (f1, v1) in zip(data, data[1:]) if v0]
 
 
+def fetch_indec_x100(series_id: str, limit: int = 40) -> list:
+    """Serie INDEC multiplicada por 100 (tasas EPH que la API devuelve en proporción,
+    p. ej. 0,368 → 36,8 %). Misma transformación que la card. [[fecha, %]] ascendente."""
+    return [[f, round(v * 100, 1)]
+            for f, v in sorted(fetch_indec(series_id, limit), key=lambda x: x[0])]
+
+
 def fetch_bcra(var_id: int, dias: int = 540) -> list:
     desde = (datetime.today() - timedelta(days=dias)).strftime("%Y-%m-%d")
     r = requests.get(f"{BCRA_BASE}/{var_id}", params={"desde": desde},
@@ -338,6 +345,11 @@ def fetch_endeudamiento_serie() -> list:
 VIDA_DERIVADAS.append(
     ("endeudamiento_familiar", "billones de pesos (consumo)", "BCRA API v4.0 (personales + tarjeta)", fetch_endeudamiento_serie)
 )
+
+VIDA_DERIVADAS += [
+    ("informalidad", "%", "INDEC EPH (52.1, anual)", lambda: fetch_indec_x100("52.1_ASDJ_0_0_37")),
+    ("pluriempleo", "%", "INDEC EPH (47.2, trimestral)", lambda: fetch_indec_x100("47.2_ECTSDT_0_T_47")),
+]
 
 GESTION_INDEC = [
     ("149.1_SOR_PUBICO_OCTU_0_14",   "indice_salarios_publico", "indice base oct-2016=100", "INDEC/datos.gob.ar"),
