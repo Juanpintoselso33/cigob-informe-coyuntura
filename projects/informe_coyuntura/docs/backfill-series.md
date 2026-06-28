@@ -19,18 +19,19 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 |---|---|---|
 | `rigi_inversiones` | Inversión aprobada acumulada por fecha de sanción del BO ([ADR-0011](adr/0011-rigi-plataforma-oficial.md)) | 12 |
 | `votometro_ventaja_lla` · `clima_electoral` | Brecha LLA−PJ ponderada recalculada mes a mes desde `encuestasRaw` (todos los sondeos desde dic-2023) | 31 |
+| `ipc_alimentos` · `peso_tarifas` · `mortalidad_pymes` | Variación m/m % reconstruida de la serie índice INDEC (146.3 / 148.3 / 453.1) con `fetch_indec_var_mensual` | 47 c/u |
+| `iaf_transferencias` | Variación real i.a. anual (RON Hacienda) deflactada por el **IPC dic-dic oficial de INDEC** (se de-hardcodeó `IPC_ANUAL`, corrigió la card 1,8% → 7,0%) | 9 (anual) |
+| `desregulacion_normativa` · `reestructuracion_organismos` | Conteo acumulado de normas InfoLeg ("deroga"/"disolucion") reconsultado a fin de cada mes | 31 / 24 |
+
+> El "último punto = valor live" se verificó indicador por indicador. La variación m/m y
+> el conteo InfoLeg corren en cada pipeline (`descargar_series` está en el CI), con
+> degradación elegante a la acumulación hacia adelante si la fuente falla.
 
 ---
 
 ## 🟢 Alta factibilidad — próximas
 | Indicador | Cinturón | Fuente | Método |
 |---|---|---|---|
-| `ipc_alimentos` | Vida | INDEC IPC aperturas | Es una serie INDEC directa → agregar a `descargar_series`. |
-| `peso_tarifas` | Vida | INDEC IPC regulados | Idem (ya existe el alias `ipc_regulados`; falta bajar la serie). |
-| `mortalidad_pymes` | Vida | INDEC IPI nivel general | Serie INDEC; computar la variación usada (ver caveat de estacionalidad en pendientes). |
-| `iaf_transferencias` | Política | CSV RON Hacienda | El CSV ya trae el histórico mensual de transferencias → computar la variación real i.a. por mes. |
-| `desregulacion_normativa` | Gestión | InfoLeg ("deroga" desde dic-2023) | Conteo ACUMULADO por fecha de norma (mismo patrón que RIGI). |
-| `reestructuracion_organismos` | Gestión | InfoLeg ("disolucion") | Conteo acumulado por fecha. |
 | `sentimiento_digital` | Vida · Espíritu | Google Trends | Trends devuelve una **serie temporal**; usar el histórico en vez del último punto. |
 
 ---
@@ -65,11 +66,9 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 ---
 
 ## Orden sugerido
-1. ✅ Votómetro (hecho).
-2. **INDEC directas de Vida** (`ipc_alimentos`, `peso_tarifas`, `mortalidad_pymes`): bajar la serie y mapearla — son el camino más corto.
-3. **`iaf_transferencias`** (el CSV ya trae la historia).
-4. **InfoLeg acumulado** (`desregulacion_normativa`, `reestructuracion_organismos`): mismo patrón que RIGI.
-5. **`sentimiento_digital`** (histórico de Trends) e **`icc_utdt`** (histórico UTDT).
-6. CKAN política + EPH trimestral + resto de gestión.
+1. ✅ Votómetro, 3 de Vida (m/m), `iaf_transferencias`, 2 de InfoLeg — **todo el 🟢 salvo Trends** (hecho).
+2. **`sentimiento_digital`** (histórico de Trends) e **`icc_utdt`** (histórico UTDT).
+3. CKAN política (`eficacia_legislativa`, `veto_quorum`, `comisiones_caidas`) + EPH trimestral (`informalidad`, `pluriempleo`) + `endeudamiento_familiar` (BCRA ya tiene la serie).
+4. datos.gob.ar de gestión (`reduccion_estado`, `apertura_comercial`) + scraping CEPA.
 
 Las bloqueadas seguirán acumulando hacia adelante; no se pierde dato.
