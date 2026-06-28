@@ -122,6 +122,14 @@ def fetch_idm_serie(meses: int = 18) -> list:
     return [[f"{ym}-01", gap] for ym, gap, _m3, _m2 in serie[-meses:]]
 
 
+def fetch_idc_serie(meses: int = 18) -> list:
+    """Serie mensual del Índice de Capacidad Prestable, con la misma fórmula que el
+    indicador en macro.py (_idc_componentes) sobre stocks de fin de mes. Devuelve
+    los últimos `meses` como [[YYYY-MM-01, idc]]."""
+    serie = macro._idc_serie_mensual(meses_hist=meses + 2)  # [(YYYY-MM, idc)] asc.
+    return [[f"{ym}-01", idc] for ym, idc in serie[-meses:]]
+
+
 def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: list = ()):
     rows = []
 
@@ -168,6 +176,7 @@ MACRO_DERIVADAS = [
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
     ("idm", "pp (brecha i.a. real)", "BCRA (M3/M2 privado) + IPC INDEC", fetch_idm_serie),
+    ("idc", "índice (~1,0)", "BCRA (BADLAR/depósitos/préstamos) + IPC INDEC", fetch_idc_serie),
 ]
 MACRO_BCRA = [
     (7,  "badlar",             "% anual",  "BCRA"),

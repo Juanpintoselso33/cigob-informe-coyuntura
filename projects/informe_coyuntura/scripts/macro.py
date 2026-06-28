@@ -404,6 +404,45 @@ def fetch_badlar() -> dict | None:
         return None
 
 
+def _idc_componentes(badlar_nivel: float, ipc_m: float,
+                     dep_t: float, dep_p: float, pre_t: float, pre_p: float) -> tuple:
+    """Componentes del IdC para un par de meses consecutivos (t vs t-1).
+    Devuelve (precio, volumen, asignacion, idc). Única fuente de la fórmula:
+    la usan tanto el indicador en vivo (fetch_idc) como la serie histórica.
+      • badlar_nivel: BADLAR (% anual) del mes t.
+      • ipc_m:        inflación % mensual del mes t.
+      • dep/pre:      depósitos y préstamos privados (stock) en t y t-1."""
+    tem    = ((1.0 + badlar_nivel / 100.0) ** (1.0 / 12.0) - 1.0) * 100.0
+    precio = 1.0 + (tem - ipc_m) / 100.0
+    volumen = (dep_t / dep_p) / (1.0 + ipc_m / 100.0)
+    r_t = pre_t / dep_t
+    r_p = pre_p / dep_p
+    asignacion = (1.0 - r_t) / (1.0 - r_p)
+    idc = itcm.indice_capacidad_prestable(precio, volumen, asignacion)
+    return precio, volumen, asignacion, idc
+
+
+def _idc_serie_mensual(meses_hist: int = 18) -> list:
+    """Serie histórica mensual del IdC, con la misma fórmula que el indicador en
+    vivo (_idc_componentes) pero sobre stocks de fin de mes. Cada punto compara el
+    mes con el anterior. Devuelve [(YYYY-MM, idc)] ascendente."""
+    n = meses_hist + 3
+    badlar = _bcra_fin_de_mes(BCRA_BADLAR_ID, n)
+    dep    = _bcra_fin_de_mes(BCRA_DEP_PRIV_ID, n)
+    pre    = _bcra_fin_de_mes(BCRA_PREST_PRIV_ID, n)
+    ipc    = _ipc_indice_mensual(meses_hist + 5)
+    comunes = set(badlar) & set(dep) & set(pre) & set(ipc)
+    out = []
+    for ym in sorted(comunes):
+        prev = _ym_shift(ym, -1)
+        if prev not in comunes:
+            continue
+        ipc_m = (ipc[ym] / ipc[prev] - 1) * 100
+        *_, idc = _idc_componentes(badlar[ym], ipc_m, dep[ym], dep[prev], pre[ym], pre[prev])
+        out.append((ym, round(idc, 4)))
+    return out
+
+
 def fetch_idc() -> dict | None:
     """Índice de Capacidad Prestable (doc "260626 aportes"). Reemplaza a la tasa
     en la dimensión de financiamiento. Tres componentes mensuales (~1,0):
@@ -413,21 +452,13 @@ def fetch_idc() -> dict | None:
                     R = préstamos/depósitos del sector privado.
     Índice >1,02 = expansión (verde); 0,98-1,02 = neutro (amarillo); <0,98 = rojo."""
     try:
-        ipc_m   = _ipc_mensual()
-        badlar  = float(_bcra_ultimo(BCRA_BADLAR_ID)["valor"])
-        tem     = ((1.0 + badlar / 100.0) ** (1.0 / 12.0) - 1.0) * 100.0
-        i_real  = tem - ipc_m
-        precio  = 1.0 + i_real / 100.0
-
+        ipc_m  = _ipc_mensual()
+        badlar = float(_bcra_ultimo(BCRA_BADLAR_ID)["valor"])
         dep = _bcra_par(BCRA_DEP_PRIV_ID)
-        volumen = (dep["actual"] / dep["anterior"]) / (1.0 + ipc_m / 100.0)
-
         pre = _bcra_par(BCRA_PREST_PRIV_ID)
-        r_t = pre["actual"]   / dep["actual"]
-        r_p = pre["anterior"] / dep["anterior"]
-        asignacion = (1.0 - r_t) / (1.0 - r_p)
-
-        idc = itcm.indice_capacidad_prestable(precio, volumen, asignacion)
+        precio, volumen, asignacion, idc = _idc_componentes(
+            badlar, ipc_m, dep["actual"], dep["anterior"], pre["actual"], pre["anterior"])
+        i_real = (precio - 1.0) * 100.0
         semaforo = "verde" if idc > 1.02 else "amarillo" if idc >= 0.98 else "rojo"
         return {
             "valor": round(idc, 4),

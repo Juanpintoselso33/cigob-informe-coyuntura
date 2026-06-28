@@ -1,6 +1,6 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-28 13:19:01"
+generado: "2026-06-28 13:30:13"
 score_global: 3.8
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
@@ -38,14 +38,14 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 13.3 | Puntos porcentuales | 2026-03-05 | ⚠ cache |
-| ratio_dnu | 1.5 | DNUs por ley | 2026-06-27 | fresco |
-| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-27 | fresco |
-| iaf_transferencias | 1.8 | % interanual real | 2026-06-27 | fresco |
-| eficacia_legislativa | 4.3 | % de proyectos | 2026-06-27 | fresco |
+| ratio_dnu | 1.5 | DNUs por ley | 2026-06-28 | fresco |
+| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-28 | fresco |
+| iaf_transferencias | 1.8 | % interanual real | 2026-06-28 | fresco |
+| eficacia_legislativa | 4.3 | % de proyectos | 2026-06-28 | fresco |
 | cohesion_bloque | 78 | % votos en línea con la posición oficial del bloque LLA | 2026-04-01 | ⚠ cache |
 | gobernadores_alineamiento | 55 | % gobernadores alineados con política nacional | 2026-04-01 | ⚠ cache |
-| veto_quorum | 0.0 | % de sesiones | 2026-06-27 | fresco |
-| comisiones_caidas | 97.8 | % de proyectos | 2026-06-27 | fresco |
+| veto_quorum | 0.0 | % de sesiones | 2026-06-28 | fresco |
+| comisiones_caidas | 97.8 | % de proyectos | 2026-06-28 | fresco |
 
 ### 🟢 Vida Cotidiana — score 2.7/10 (estable)
 *Riesgo de barbarismo: político*
@@ -61,13 +61,13 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 4.37 | % de brecha | 2026-06-27 | fresco |
+| cepo_mulc | 4.37 | % de brecha | 2026-06-28 | fresco |
 | privatizaciones | En proceso — Aerolíneas y Correo sin transferencia efectiva | % empresas privatizadas efectivamente / listado DL 70/23 | 2026-05-01 | ⚠ cache |
 | concesiones_infraestructura | Parcial — corredores viales en licitación | % corredores viales concesionados / plan total (9 corredores) | 2026-05-01 | ⚠ cache |
 | reduccion_estado | -0.8 | % de variación (vs 2024-01-01) | 2025-10-01 | fresco |
-| reestructuracion_organismos | 18 | Normas (conteo) | 2026-06-27 | fresco |
-| rigi_inversiones | 31 | Resoluciones (conteo) | 2026-06-27 | fresco |
-| desregulacion_normativa | 60 | Normas (conteo) | 2026-06-27 | fresco |
+| reestructuracion_organismos | 18 | Normas (conteo) | 2026-06-28 | fresco |
+| rigi_inversiones | 31 | Resoluciones (conteo) | 2026-06-28 | fresco |
+| desregulacion_normativa | 60 | Normas (conteo) | 2026-06-28 | fresco |
 | apertura_comercial | 42.4 | % interanual | 2025-02-01 | fresco |
 | asistencia_directa | None | % beneficiarios sociales con transferencia directa sin intermediación organizacional | 2026-04-01 | ⚠ cache |
 | fal_modernizacion_laboral | Legislación aprobada — reglamentación pendiente (H2 2026) | % implementación FAL (ley aprobada, reglamentación, operación) | 2026-05-22 | ⚠ cache |
@@ -80,14 +80,14 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 6.8 | interés 0–100 | 2026-06-27 | fresco |
+| sentimiento_digital | 6.7 | interés 0–100 | 2026-06-27 | ⚠ cache |
 | clima_electoral | 13.3 | pp (LLA − PJ) | 2026-03-05 | ⚠ cache |
 
 ## Advertencias
 
 - `desactualizado:politica:votometro_ventaja_lla,cohesion_bloque,gobernadores_alineamiento`
 - `desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes`
-- `desactualizado:espiritu_epoca:clima_electoral`
+- `desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-28 13:19:01 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-28 13:30:13 — schema 1.2.0*
