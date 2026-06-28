@@ -1,6 +1,6 @@
 ---
 periodo: "2026-06"
-generado: "2026-06-28 14:23:18"
+generado: "2026-06-28 14:37:19"
 score_global: 3.8
 barbarismo_activo: "gerencial"
 alerta_multicinturon: false
@@ -58,7 +58,7 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
 
-### 🟡 Gestion — score 5.8/10 (en_tension)
+### 🟡 Gestion — score 5.9/10 (en_tension)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -68,7 +68,7 @@ schema_version: "1.2.0"
 | concesiones_infraestructura | Parcial — corredores viales en licitación | % corredores viales concesionados / plan total (9 corredores) | 2026-05-01 | ⚠ cache |
 | reduccion_estado | -0.8 | % de variación (vs 2024-01-01) | 2025-10-01 | fresco |
 | reestructuracion_organismos | 18 | Normas (conteo) | 2026-06-28 | fresco |
-| rigi_inversiones | 31 | Resoluciones (conteo) | 2026-06-28 | fresco |
+| rigi_inversiones | US$ 31.192M aprobados · 17 proyectos | % de inversión aprobada sobre el pipeline | 2026-06-28 | fresco |
 | desregulacion_normativa | 60 | Normas (conteo) | 2026-06-28 | fresco |
 | apertura_comercial | 42.4 | % interanual | 2025-02-01 | fresco |
 | asistencia_directa | None | % beneficiarios sociales con transferencia directa sin intermediación organizacional | 2026-04-01 | ⚠ cache |
@@ -92,4 +92,4 @@ schema_version: "1.2.0"
 - `desactualizado:espiritu_epoca:sentimiento_digital,clima_electoral`
 
 ---
-*Generado por CIGOB — 2026-06-28 14:23:18 — schema 1.2.0*
+*Generado por CIGOB — 2026-06-28 14:37:19 — schema 1.2.0*

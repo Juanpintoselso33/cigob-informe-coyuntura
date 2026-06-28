@@ -314,6 +314,8 @@ def aplicar_scoring(informe):
             elif isinstance(avance, (int, float)):
                 aporte = _clamp10(10.0 * (1.0 - float(avance) / 100.0))
                 formula = GESTION_MAPA
+                if ind.get("detalle_txt"):                   # detalle rico (ej. RIGI oficial)
+                    ind["aporte_input_txt"] = ind["detalle_txt"]
             elif ckey == "vida_cotidiana":
                 nota = VIDA_CONTEXTO
             ind["aporte_score"] = aporte

@@ -23,6 +23,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0008](0008-tcrm-itcrm-bcra.md) | El TCRM usa el ITCRM oficial del BCRA, no la serie discontinuada de INDEC | Aceptado |
 | [0009](0009-idm-y-tcrm-en-el-itcm.md) | IDM (desequilibrio monetario, real-real i.a.) en estabilidad monetaria + TCRM como 5ª dimensión | Aceptado |
 | [0010](0010-capitulo-inversion-iai-icip.md) | Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión; patentamientos por acumulación | Aceptado |
+| [0011](0011-rigi-plataforma-oficial.md) | RIGI: inversión aprobada/pipeline desde la plataforma oficial (Google Sheet), no conteo de normas InfoLeg | Aceptado |
 
 ## Contexto general
 

@@ -9,7 +9,8 @@ Indicadores AUTO (6):
   apertura_comercial      — variación i.a. importaciones totales (datos.gob.ar INDEC)
   desregulacion_normativa — count normas "deroga" vía InfoLeg (sesión POST)
   reestructuracion_organismos — count normas "disolucion" vía InfoLeg (sesión POST)
-  rigi_inversiones        — count Resoluciones tipo=3 texto="VPU" vía InfoLeg (sesión POST)
+  rigi_inversiones        — inversión aprobada/total del pipeline desde la plataforma
+                            oficial RIGI (Google Sheet); fallback: conteo "VPU" InfoLeg
 
 Indicadores BLOQUEADOS (caen a manuales.json):
   libertad_opcion_salud — SSS usa fingerprinting back-end; retorna "No se reportan datos" incluso con Playwright
@@ -40,7 +41,12 @@ DOLARAPI_URL        = "https://dolarapi.com/v1/dolares"
 INDEC_SERIES_BASE   = "https://apis.datos.gob.ar/series/api/series/"
 INFOLEG_HOME        = "https://servicios.infoleg.gob.ar/infolegInternet/"
 SSS_OPCIONES_URL    = "https://www.sssalud.gob.ar/index.php"
-RIGI_PORTAL_URL     = "https://www.argentina.gob.ar/economia/industria/rigi"
+RIGI_PORTAL_URL     = "https://www.argentina.gob.ar/economia/rigi"
+# Plataforma oficial del RIGI (Min. Economía, jun-2026): el mapa interactivo se
+# alimenta de un Google Sheet público. Lo leemos vía gviz CSV (sin auth).
+# Pestañas: "dataset" (proyectos aprobados, fila por proyecto) · "evaluacion" (agregados).
+RIGI_SHEET_ID       = "1eytHJrzUjIFOXI-P1Hx_wbmZiSqPxVle059Djdos6u8"
+RIGI_SHEET_GVIZ     = "https://docs.google.com/spreadsheets/d/{sid}/gviz/tq?tqx=out:csv&sheet={tab}"
 BO_API_URL          = "https://www.boletinoficial.gob.ar/norma/detallePrimera"
 
 # datos.gob.ar series IDs
@@ -340,28 +346,96 @@ def fetch_libertad_opcion_salud() -> dict | None:
         return None
 
 
-def fetch_rigi_inversiones() -> dict | None:
-    """
-    Cuenta Resoluciones (tipo=3) RIGI vía InfoLeg sesión POST, usando texto="VPU"
-    (Vehículo de Proyecto Único — término técnico exclusivo del RIGI, Ley 27.742).
-    Desde 01/07/2024 (entrada en vigencia RIGI). Calibración: 28 normas ≈ 28% avance
-    (validado contra dato manual may-2026: 16 proyectos = USD 27.210M aprobados = 28.7%).
-    """
+def _rigi_sheet_csv(tab: str) -> list:
+    """Lee una pestaña del Google Sheet oficial del RIGI vía gviz CSV."""
+    url = RIGI_SHEET_GVIZ.format(sid=RIGI_SHEET_ID, tab=tab)
+    r = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    if "html" in r.headers.get("content-type", "").lower():
+        raise ValueError(f"pestaña '{tab}' no accesible (devolvió HTML)")
+    import csv as _csv, io as _io
+    return list(_csv.reader(_io.StringIO(r.text)))
+
+
+def _rigi_monto(raw: str) -> float:
+    """Parsea un monto en millones de USD (es-AR: punto miles, coma decimal)."""
+    s = raw.replace(".", "").replace(",", ".").strip()
     try:
+        return float(s) if s else 0.0
+    except ValueError:
+        return 0.0
+
+
+def _rigi_aprobados() -> tuple:
+    """(cantidad de proyectos aprobados, inversión aprobada en M USD) desde la
+    pestaña 'dataset'. Dedupe por título: un proyecto multi-provincia ocupa varias
+    filas pero cuenta una vez (igual que el `Set(titulo)` del sitio oficial)."""
+    rows = _rigi_sheet_csv("dataset")
+    ci = {n: i for i, n in enumerate(rows[0])}
+    n_idx, inv_idx = ci["nombre"], ci["inv-comprometida"]
+    proyectos: dict = {}
+    for r in rows[1:]:
+        if not r or not r[0] or r[0] == "Provincia":   # saltea la fila de encabezado humano
+            continue
+        nombre = r[n_idx].strip()
+        if nombre:
+            proyectos.setdefault(nombre, _rigi_monto(r[inv_idx]))
+    return len(proyectos), sum(proyectos.values())
+
+
+def _rigi_evaluacion() -> tuple:
+    """(cantidad, inversión M USD) de los proyectos en evaluación (pestaña agregada)."""
+    rows = _rigi_sheet_csv("evaluacion")
+    ci = {n: i for i, n in enumerate(rows[0])}
+    vals = rows[2]   # row0=claves, row1=etiquetas, row2=valores
+    return int(float(vals[ci["cantidad"]])), _rigi_monto(vals[ci["inversion"]])
+
+
+def fetch_rigi_inversiones() -> dict | None:
+    """Avance del RIGI desde la PLATAFORMA OFICIAL del Ministerio de Economía
+    (jun-2026), que publica los proyectos en un Google Sheet. El avance que puntúa
+    es la **inversión aprobada sobre el total del pipeline** (aprobada + en
+    evaluación); la ficha expone además el conteo de proyectos. Si el sheet falla,
+    cae al proxy histórico de InfoLeg (conteo de Resoluciones con 'VPU')."""
+    try:
+        n_ap, inv_ap = _rigi_aprobados()
+        n_ev, inv_ev = _rigi_evaluacion()
+        inv_total = inv_ap + inv_ev
+        if inv_total <= 0:
+            raise ValueError("inversión total del pipeline = 0")
+        avance = round(100.0 * inv_ap / inv_total, 1)
+        miles = lambda x: f"{x:,.0f}".replace(",", ".")
+        return {
+            "valor":          f"US$ {miles(inv_ap)}M aprobados · {n_ap} proyectos",
+            "avance_pct":     avance,
+            "unidad":         "% de inversión aprobada sobre el pipeline",
+            "fuente":         "Ministerio de Economía — Plataforma oficial RIGI",
+            "fecha_dato":     date.today().isoformat(),
+            "desactualizado": False,
+            "proyectos_aprobados":        n_ap,
+            "inversion_aprobada_musd":    round(inv_ap),
+            "proyectos_evaluacion":       n_ev,
+            "inversion_evaluacion_musd":  round(inv_ev),
+            "detalle_txt": (f"{n_ap} proyectos aprobados (US$ {miles(inv_ap)}M) / "
+                            f"{n_ev} en evaluación (US$ {miles(inv_ev)}M) → "
+                            f"{str(avance).replace('.', ',')}% de la inversión total ya aprobada"),
+        }
+    except Exception as e:
+        _warn("rigi_inversiones (plataforma oficial, cae a InfoLeg VPU)", e)
+    try:  # FALLBACK histórico: conteo de Resoluciones RIGI vía InfoLeg ("VPU")
         today = date.today()
         count = _infoleg_post(
             texto="VPU", tipo_norma="3",
             fecha_desde=("01", "07", "2024"),
             fecha_hasta=(today.strftime("%d"), today.strftime("%m"), today.strftime("%Y")),
         )
-        avance = round(min(100.0, float(count)), 1)
         return {
             "valor":          count,
-            "avance_pct":     avance,
+            "avance_pct":     round(min(100.0, float(count)), 1),
             "unidad":         "Resoluciones (conteo)",
             "fuente":         INFOLEG_HOME,
             "fecha_dato":     today.isoformat(),
-            "desactualizado": False,
+            "desactualizado": True,
         }
     except Exception as e:
         _warn("rigi_inversiones", e)

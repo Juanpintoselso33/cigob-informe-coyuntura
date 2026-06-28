@@ -1,7 +1,7 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-06-28T04:28:52.593899",
-  "score": 5.8,
+  "generated_at": "2026-06-28T14:37:19.206430",
+  "score": 5.9,
   "indicadores": {
     "cepo_mulc": {
       "valor": 4.37,
@@ -44,12 +44,17 @@
       "desactualizado": false
     },
     "rigi_inversiones": {
-      "valor": 31,
-      "avance_pct": 31.0,
-      "unidad": "Resoluciones (conteo)",
-      "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+      "valor": "US$ 31.192M aprobados · 17 proyectos",
+      "avance_pct": 22.1,
+      "unidad": "% de inversión aprobada sobre el pipeline",
+      "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
       "fecha_dato": "2026-06-28",
-      "desactualizado": false
+      "desactualizado": false,
+      "proyectos_aprobados": 17,
+      "inversion_aprobada_musd": 31192,
+      "proyectos_evaluacion": 24,
+      "inversion_evaluacion_musd": 109687,
+      "detalle_txt": "17 proyectos aprobados (US$ 31.192M) / 24 en evaluación (US$ 109.687M) → 22,1% de la inversión total ya aprobada"
     },
     "desregulacion_normativa": {
       "valor": 60,

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-06-28T14:23:18.165190",
+  "generated_at": "2026-06-28T14:37:19.342653",
   "period": "2026-06",
   "score_global": 4.0,
   "ponderacion": {
@@ -676,7 +676,7 @@
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
     },
     "gestion": {
-      "score": 5.8,
+      "score": 5.9,
       "estado": "en_tension",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
@@ -736,13 +736,19 @@
           "aporte_nota": null
         },
         "rigi_inversiones": {
-          "valor": 31,
-          "avance_pct": 31.0,
-          "unidad": "Resoluciones (conteo)",
-          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "valor": "US$ 31.192M aprobados · 17 proyectos",
+          "avance_pct": 22.1,
+          "unidad": "% de inversión aprobada sobre el pipeline",
+          "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
           "fecha_dato": "2026-06-28",
           "desactualizado": false,
-          "aporte_score": 6.9,
+          "proyectos_aprobados": 17,
+          "inversion_aprobada_musd": 31192,
+          "proyectos_evaluacion": 24,
+          "inversion_evaluacion_musd": 109687,
+          "detalle_txt": "17 proyectos aprobados (US$ 31.192M) / 24 en evaluación (US$ 109.687M) → 22,1% de la inversión total ya aprobada",
+          "aporte_input_txt": "17 proyectos aprobados (US$ 31.192M) / 24 en evaluación (US$ 109.687M) → 22,1% de la inversión total ya aprobada",
+          "aporte_score": 7.8,
           "aporte_formula": "10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. 100% → 0 · 50% → 5 · 0% → 10.",
           "aporte_nota": null
         },

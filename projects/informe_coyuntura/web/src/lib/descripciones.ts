@@ -236,9 +236,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   rigi_inversiones: {
-    que: "Cuánto avanzan las grandes inversiones aprobadas bajo el Régimen de Incentivo a Grandes Inversiones (RIGI).",
-    aporta: "Señala la llegada de grandes inversiones, apuesta de crecimiento del plan.",
-    frecuencia: "Mensual", tipo: "Avance de reforma",
+    que: "Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total del pipeline (aprobados + en evaluación).",
+    aporta: "Mide si el régimen convierte las promesas en inversión ratificada. Se toma de la plataforma oficial del Ministerio de Economía (proyectos aprobados y en evaluación, con monto y empleos); la ficha muestra el conteo de proyectos y los montos en USD.",
+    frecuencia: "Continua (plataforma oficial)", tipo: "Avance de reforma",
   },
   desregulacion_normativa: {
     que: "Cuántas normas económicas se derogaron o modificaron desde diciembre de 2023.",
