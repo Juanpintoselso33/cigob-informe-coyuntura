@@ -1,4 +1,98 @@
 fecha,indicador,valor,unidad,fuente
+2026-05-01,peso_tarifas,2.4,% m/m regulados,INDEC serie 148.3
+2026-04-01,peso_tarifas,4.68,% m/m regulados,INDEC serie 148.3
+2026-03-01,peso_tarifas,5.08,% m/m regulados,INDEC serie 148.3
+2026-02-01,peso_tarifas,4.25,% m/m regulados,INDEC serie 148.3
+2026-01-01,peso_tarifas,2.43,% m/m regulados,INDEC serie 148.3
+2025-12-01,peso_tarifas,3.29,% m/m regulados,INDEC serie 148.3
+2025-11-01,peso_tarifas,2.89,% m/m regulados,INDEC serie 148.3
+2025-10-01,peso_tarifas,2.56,% m/m regulados,INDEC serie 148.3
+2025-09-01,peso_tarifas,2.63,% m/m regulados,INDEC serie 148.3
+2025-08-01,peso_tarifas,2.67,% m/m regulados,INDEC serie 148.3
+2025-07-01,peso_tarifas,2.31,% m/m regulados,INDEC serie 148.3
+2025-06-01,peso_tarifas,2.23,% m/m regulados,INDEC serie 148.3
+2025-05-01,peso_tarifas,1.31,% m/m regulados,INDEC serie 148.3
+2025-04-01,peso_tarifas,1.77,% m/m regulados,INDEC serie 148.3
+2025-03-01,peso_tarifas,3.21,% m/m regulados,INDEC serie 148.3
+2025-02-01,peso_tarifas,2.32,% m/m regulados,INDEC serie 148.3
+2025-01-01,peso_tarifas,2.61,% m/m regulados,INDEC serie 148.3
+2024-12-01,peso_tarifas,3.37,% m/m regulados,INDEC serie 148.3
+2024-11-01,peso_tarifas,3.54,% m/m regulados,INDEC serie 148.3
+2024-10-01,peso_tarifas,2.7,% m/m regulados,INDEC serie 148.3
+2024-09-01,peso_tarifas,4.53,% m/m regulados,INDEC serie 148.3
+2024-08-01,peso_tarifas,5.89,% m/m regulados,INDEC serie 148.3
+2024-07-01,peso_tarifas,4.33,% m/m regulados,INDEC serie 148.3
+2024-06-01,peso_tarifas,8.06,% m/m regulados,INDEC serie 148.3
+2024-05-01,peso_tarifas,4.02,% m/m regulados,INDEC serie 148.3
+2024-04-01,peso_tarifas,18.39,% m/m regulados,INDEC serie 148.3
+2024-03-01,peso_tarifas,18.13,% m/m regulados,INDEC serie 148.3
+2024-02-01,peso_tarifas,21.11,% m/m regulados,INDEC serie 148.3
+2024-01-01,peso_tarifas,26.57,% m/m regulados,INDEC serie 148.3
+2023-12-01,peso_tarifas,20.68,% m/m regulados,INDEC serie 148.3
+2023-11-01,peso_tarifas,10.06,% m/m regulados,INDEC serie 148.3
+2023-10-01,peso_tarifas,6.62,% m/m regulados,INDEC serie 148.3
+2023-09-01,peso_tarifas,8.32,% m/m regulados,INDEC serie 148.3
+2023-08-01,peso_tarifas,8.28,% m/m regulados,INDEC serie 148.3
+2023-07-01,peso_tarifas,6.72,% m/m regulados,INDEC serie 148.3
+2023-06-01,peso_tarifas,7.18,% m/m regulados,INDEC serie 148.3
+2023-05-01,peso_tarifas,9.03,% m/m regulados,INDEC serie 148.3
+2023-04-01,peso_tarifas,4.89,% m/m regulados,INDEC serie 148.3
+2023-03-01,peso_tarifas,8.29,% m/m regulados,INDEC serie 148.3
+2023-02-01,peso_tarifas,5.14,% m/m regulados,INDEC serie 148.3
+2023-01-01,peso_tarifas,7.1,% m/m regulados,INDEC serie 148.3
+2022-12-01,peso_tarifas,5.11,% m/m regulados,INDEC serie 148.3
+2022-11-01,peso_tarifas,6.23,% m/m regulados,INDEC serie 148.3
+2022-10-01,peso_tarifas,7.41,% m/m regulados,INDEC serie 148.3
+2022-09-01,peso_tarifas,4.55,% m/m regulados,INDEC serie 148.3
+2022-08-01,peso_tarifas,6.29,% m/m regulados,INDEC serie 148.3
+2022-07-01,peso_tarifas,4.91,% m/m regulados,INDEC serie 148.3
+2026-04-01,mortalidad_pymes,-3.29,% m/m (IPI),INDEC serie 453.1
+2026-03-01,mortalidad_pymes,21.77,% m/m (IPI),INDEC serie 453.1
+2026-02-01,mortalidad_pymes,-5.91,% m/m (IPI),INDEC serie 453.1
+2026-01-01,mortalidad_pymes,-4.83,% m/m (IPI),INDEC serie 453.1
+2025-12-01,mortalidad_pymes,-2.07,% m/m (IPI),INDEC serie 453.1
+2025-11-01,mortalidad_pymes,-9.71,% m/m (IPI),INDEC serie 453.1
+2025-10-01,mortalidad_pymes,1.44,% m/m (IPI),INDEC serie 453.1
+2025-09-01,mortalidad_pymes,1.28,% m/m (IPI),INDEC serie 453.1
+2025-08-01,mortalidad_pymes,-0.73,% m/m (IPI),INDEC serie 453.1
+2025-07-01,mortalidad_pymes,5.78,% m/m (IPI),INDEC serie 453.1
+2025-06-01,mortalidad_pymes,-5.32,% m/m (IPI),INDEC serie 453.1
+2025-05-01,mortalidad_pymes,2.08,% m/m (IPI),INDEC serie 453.1
+2025-04-01,mortalidad_pymes,4.51,% m/m (IPI),INDEC serie 453.1
+2025-03-01,mortalidad_pymes,5.7,% m/m (IPI),INDEC serie 453.1
+2025-02-01,mortalidad_pymes,-0.64,% m/m (IPI),INDEC serie 453.1
+2025-01-01,mortalidad_pymes,-5.16,% m/m (IPI),INDEC serie 453.1
+2024-12-01,mortalidad_pymes,-6.91,% m/m (IPI),INDEC serie 453.1
+2024-11-01,mortalidad_pymes,-3.77,% m/m (IPI),INDEC serie 453.1
+2024-10-01,mortalidad_pymes,4.05,% m/m (IPI),INDEC serie 453.1
+2024-09-01,mortalidad_pymes,-2.72,% m/m (IPI),INDEC serie 453.1
+2024-08-01,mortalidad_pymes,2.92,% m/m (IPI),INDEC serie 453.1
+2024-07-01,mortalidad_pymes,16.79,% m/m (IPI),INDEC serie 453.1
+2024-06-01,mortalidad_pymes,-8.24,% m/m (IPI),INDEC serie 453.1
+2024-05-01,mortalidad_pymes,4.87,% m/m (IPI),INDEC serie 453.1
+2024-04-01,mortalidad_pymes,0.75,% m/m (IPI),INDEC serie 453.1
+2024-03-01,mortalidad_pymes,6.47,% m/m (IPI),INDEC serie 453.1
+2024-02-01,mortalidad_pymes,0.75,% m/m (IPI),INDEC serie 453.1
+2024-01-01,mortalidad_pymes,-4.12,% m/m (IPI),INDEC serie 453.1
+2023-12-01,mortalidad_pymes,-15.81,% m/m (IPI),INDEC serie 453.1
+2023-11-01,mortalidad_pymes,-4.08,% m/m (IPI),INDEC serie 453.1
+2023-10-01,mortalidad_pymes,-0.46,% m/m (IPI),INDEC serie 453.1
+2023-09-01,mortalidad_pymes,-3.43,% m/m (IPI),INDEC serie 453.1
+2023-08-01,mortalidad_pymes,4.53,% m/m (IPI),INDEC serie 453.1
+2023-07-01,mortalidad_pymes,-1.42,% m/m (IPI),INDEC serie 453.1
+2023-06-01,mortalidad_pymes,-2.23,% m/m (IPI),INDEC serie 453.1
+2023-05-01,mortalidad_pymes,2.99,% m/m (IPI),INDEC serie 453.1
+2023-04-01,mortalidad_pymes,-5.16,% m/m (IPI),INDEC serie 453.1
+2023-03-01,mortalidad_pymes,22.29,% m/m (IPI),INDEC serie 453.1
+2023-02-01,mortalidad_pymes,-2.03,% m/m (IPI),INDEC serie 453.1
+2023-01-01,mortalidad_pymes,-4.86,% m/m (IPI),INDEC serie 453.1
+2022-12-01,mortalidad_pymes,-8.05,% m/m (IPI),INDEC serie 453.1
+2022-11-01,mortalidad_pymes,0.17,% m/m (IPI),INDEC serie 453.1
+2022-10-01,mortalidad_pymes,-2.88,% m/m (IPI),INDEC serie 453.1
+2022-09-01,mortalidad_pymes,-3.36,% m/m (IPI),INDEC serie 453.1
+2022-08-01,mortalidad_pymes,3.53,% m/m (IPI),INDEC serie 453.1
+2022-07-01,mortalidad_pymes,0.07,% m/m (IPI),INDEC serie 453.1
+2022-06-01,mortalidad_pymes,1.31,% m/m (IPI),INDEC serie 453.1
 2026-05-01,ipc_total,11607.3937,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-04-01,ipc_total,11363.0904,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-03-01,ipc_total,11077.0608,indice base dic-2016=100,INDEC/datos.gob.ar
@@ -47,6 +141,53 @@ fecha,indicador,valor,unidad,fuente
 2022-08-01,ipc_total,911.1316,indice base dic-2016=100,INDEC/datos.gob.ar
 2022-07-01,ipc_total,851.761,indice base dic-2016=100,INDEC/datos.gob.ar
 2022-06-01,ipc_total,793.0278,indice base dic-2016=100,INDEC/datos.gob.ar
+2026-05-01,ipc_alimentos,2.46,% m/m,INDEC serie 146.3
+2026-04-01,ipc_alimentos,1.5,% m/m,INDEC serie 146.3
+2026-03-01,ipc_alimentos,3.35,% m/m,INDEC serie 146.3
+2026-02-01,ipc_alimentos,3.32,% m/m,INDEC serie 146.3
+2026-01-01,ipc_alimentos,4.68,% m/m,INDEC serie 146.3
+2025-12-01,ipc_alimentos,3.13,% m/m,INDEC serie 146.3
+2025-11-01,ipc_alimentos,2.81,% m/m,INDEC serie 146.3
+2025-10-01,ipc_alimentos,2.29,% m/m,INDEC serie 146.3
+2025-09-01,ipc_alimentos,1.86,% m/m,INDEC serie 146.3
+2025-08-01,ipc_alimentos,1.38,% m/m,INDEC serie 146.3
+2025-07-01,ipc_alimentos,1.9,% m/m,INDEC serie 146.3
+2025-06-01,ipc_alimentos,0.56,% m/m,INDEC serie 146.3
+2025-05-01,ipc_alimentos,0.51,% m/m,INDEC serie 146.3
+2025-04-01,ipc_alimentos,2.95,% m/m,INDEC serie 146.3
+2025-03-01,ipc_alimentos,5.9,% m/m,INDEC serie 146.3
+2025-02-01,ipc_alimentos,3.24,% m/m,INDEC serie 146.3
+2025-01-01,ipc_alimentos,1.85,% m/m,INDEC serie 146.3
+2024-12-01,ipc_alimentos,2.21,% m/m,INDEC serie 146.3
+2024-11-01,ipc_alimentos,0.91,% m/m,INDEC serie 146.3
+2024-10-01,ipc_alimentos,1.2,% m/m,INDEC serie 146.3
+2024-09-01,ipc_alimentos,2.3,% m/m,INDEC serie 146.3
+2024-08-01,ipc_alimentos,3.63,% m/m,INDEC serie 146.3
+2024-07-01,ipc_alimentos,3.21,% m/m,INDEC serie 146.3
+2024-06-01,ipc_alimentos,3.01,% m/m,INDEC serie 146.3
+2024-05-01,ipc_alimentos,4.85,% m/m,INDEC serie 146.3
+2024-04-01,ipc_alimentos,6.02,% m/m,INDEC serie 146.3
+2024-03-01,ipc_alimentos,10.55,% m/m,INDEC serie 146.3
+2024-02-01,ipc_alimentos,11.9,% m/m,INDEC serie 146.3
+2024-01-01,ipc_alimentos,20.4,% m/m,INDEC serie 146.3
+2023-12-01,ipc_alimentos,29.68,% m/m,INDEC serie 146.3
+2023-11-01,ipc_alimentos,15.67,% m/m,INDEC serie 146.3
+2023-10-01,ipc_alimentos,7.71,% m/m,INDEC serie 146.3
+2023-09-01,ipc_alimentos,14.35,% m/m,INDEC serie 146.3
+2023-08-01,ipc_alimentos,15.59,% m/m,INDEC serie 146.3
+2023-07-01,ipc_alimentos,5.76,% m/m,INDEC serie 146.3
+2023-06-01,ipc_alimentos,4.15,% m/m,INDEC serie 146.3
+2023-05-01,ipc_alimentos,5.81,% m/m,INDEC serie 146.3
+2023-04-01,ipc_alimentos,10.15,% m/m,INDEC serie 146.3
+2023-03-01,ipc_alimentos,9.35,% m/m,INDEC serie 146.3
+2023-02-01,ipc_alimentos,9.78,% m/m,INDEC serie 146.3
+2023-01-01,ipc_alimentos,6.77,% m/m,INDEC serie 146.3
+2022-12-01,ipc_alimentos,4.66,% m/m,INDEC serie 146.3
+2022-11-01,ipc_alimentos,3.51,% m/m,INDEC serie 146.3
+2022-10-01,ipc_alimentos,6.17,% m/m,INDEC serie 146.3
+2022-09-01,ipc_alimentos,6.74,% m/m,INDEC serie 146.3
+2022-08-01,ipc_alimentos,7.1,% m/m,INDEC serie 146.3
+2022-07-01,ipc_alimentos,6.02,% m/m,INDEC serie 146.3
 2026-01-01,desocupacion,0.078,%,INDEC/datos.gob.ar
 2025-10-01,desocupacion,0.075,%,INDEC/datos.gob.ar
 2025-07-01,desocupacion,0.066,%,INDEC/datos.gob.ar

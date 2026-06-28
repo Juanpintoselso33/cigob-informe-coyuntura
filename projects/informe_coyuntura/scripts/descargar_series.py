@@ -35,6 +35,15 @@ def fetch_indec(series_id: str, limit: int = 48) -> list:
     return [[row[0], row[1]] for row in r.json()["data"] if row[1] is not None]
 
 
+def fetch_indec_var_mensual(series_id: str, limit: int = 48) -> list:
+    """Serie histórica de la variación m/m % de una serie INDEC de índices:
+    (idx_t / idx_{t-1} − 1)×100. Misma fórmula que indec_series._var_mensual, para
+    todo el histórico. Devuelve [[YYYY-MM-DD, var_pct]] ascendente."""
+    data = sorted(fetch_indec(series_id, limit), key=lambda x: x[0])
+    return [[f1, round((v1 / v0 - 1) * 100, 2)]
+            for (f0, v0), (f1, v1) in zip(data, data[1:]) if v0]
+
+
 def fetch_bcra(var_id: int, dias: int = 540) -> list:
     desde = (datetime.today() - timedelta(days=dias)).strftime("%Y-%m-%d")
     r = requests.get(f"{BCRA_BASE}/{var_id}", params={"desde": desde},
@@ -220,6 +229,13 @@ VIDA_INDEC = [
     ("148.3_INIVELNAL_DICI_M_26", "ipc_total",    "indice base dic-2016=100", "INDEC/datos.gob.ar"),
     ("42.3_EPH_PUNTUATAL_0_M_30", "desocupacion", "%",                        "INDEC/datos.gob.ar"),
 ]
+# Derivadas: la variación m/m % de cada serie INDEC de índices (misma métrica que
+# muestra la card del indicador), reconstruida para todo el histórico disponible.
+VIDA_DERIVADAS = [
+    ("ipc_alimentos",    "% m/m",           "INDEC serie 146.3", lambda: fetch_indec_var_mensual("146.3_IALIMENNAL_DICI_M_45")),
+    ("peso_tarifas",     "% m/m regulados", "INDEC serie 148.3", lambda: fetch_indec_var_mensual("148.3_IREGULANAL_DICI_M_22")),
+    ("mortalidad_pymes", "% m/m (IPI)",     "INDEC serie 453.1", lambda: fetch_indec_var_mensual("453.1_SERIE_ORIGNAL_0_0_14_46")),
+]
 # icc_utdt: sin API de series — solo disponible vía scraping XLS UTDT
 
 GESTION_INDEC = [
@@ -254,7 +270,7 @@ if __name__ == "__main__":
 
     print("\n=== VIDA COTIDIANA ===")
     print("  [SKIP] icc_utdt — sin API, requiere scraping XLS UTDT")
-    descargar("vida_cotidiana", VIDA_INDEC, [])
+    descargar("vida_cotidiana", VIDA_INDEC, [], VIDA_DERIVADAS)
 
     print("\n=== GESTIÓN ===")
     descargar("gestion", GESTION_INDEC, [], GESTION_DERIVADAS)

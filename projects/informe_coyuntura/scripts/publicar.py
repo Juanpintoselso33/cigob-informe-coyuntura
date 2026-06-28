@@ -107,7 +107,6 @@ def build_series():
     # que el sparkline y el modal la encuentren.
     alias = {
         "despacho_cemento": "isac_construccion",
-        "peso_tarifas": "ipc_regulados",
         "saldo_comercial_12m": "saldo_comercial",
         "clima_electoral": "votometro_ventaja_lla",   # espíritu reusa la serie del Votómetro
     }
