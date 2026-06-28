@@ -266,7 +266,32 @@ VIDA_DERIVADAS = [
     ("peso_tarifas",     "% m/m regulados", "INDEC serie 148.3", lambda: fetch_indec_var_mensual("148.3_IREGULANAL_DICI_M_22")),
     ("mortalidad_pymes", "% m/m (IPI)",     "INDEC serie 453.1", lambda: fetch_indec_var_mensual("453.1_SERIE_ORIGNAL_0_0_14_46")),
 ]
-# icc_utdt: sin API de series — solo disponible vía scraping XLS UTDT
+def fetch_icc_serie(meses: int = 60) -> list:
+    """Serie histórica del ICC UTDT: parsea TODAS las filas del XLS oficial (col 0 fecha,
+    col 1 índice), no solo la última como el indicador. Reusa el scraper del colector de
+    vida. Devuelve los últimos `meses` como [[YYYY-MM-01, icc]] ascendente."""
+    import xlrd
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    from utdt_icc import _get_latest_xls_fname
+    from config import UTDT_ICC_DOWNLOAD_BASE
+    r = requests.get(UTDT_ICC_DOWNLOAD_BASE + _get_latest_xls_fname(),
+                     headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT, verify=False)
+    r.raise_for_status()
+    wb = xlrd.open_workbook(file_contents=r.content)
+    ws = wb.sheets()[0]
+    out = []
+    for i in range(ws.nrows):
+        fc, vc = ws.cell(i, 0), ws.cell(i, 1)
+        if fc.ctype == xlrd.XL_CELL_DATE and vc.ctype == xlrd.XL_CELL_NUMBER:
+            t = xlrd.xldate_as_tuple(fc.value, wb.datemode)
+            out.append([f"{t[0]}-{t[1]:02d}-01", round(vc.value, 1)])
+    return out[-meses:]
+
+
+VIDA_DERIVADAS.append(
+    ("icc_utdt", "índice", "UTDT (ICC, serie XLS)", fetch_icc_serie)
+)
 
 GESTION_INDEC = [
     ("149.1_SOR_PUBICO_OCTU_0_14",   "indice_salarios_publico", "indice base oct-2016=100", "INDEC/datos.gob.ar"),
@@ -325,7 +350,6 @@ if __name__ == "__main__":
     descargar("politica", POLITICA_INDEC, [], POLITICA_DERIVADAS)
 
     print("\n=== VIDA COTIDIANA ===")
-    print("  [SKIP] icc_utdt — sin API, requiere scraping XLS UTDT")
     descargar("vida_cotidiana", VIDA_INDEC, [], VIDA_DERIVADAS)
 
     print("\n=== GESTIÓN ===")
