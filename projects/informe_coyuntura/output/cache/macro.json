@@ -1,11 +1,11 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-29T07:18:17.598725",
-  "score": 3.7,
+  "generated_at": "2026-06-30T06:43:25.639965",
+  "score": 4.1,
   "itcm": {
-    "valor": 63.3,
-    "banda": "moderadamente_aflojado",
-    "banda_legible": "Moderadamente aflojado",
+    "valor": 58.9,
+    "banda": "moderadamente_apretado",
+    "banda_legible": "Moderadamente apretado",
     "dimensiones": {
       "estabilidad_monetaria": {
         "nombre": "Estabilidad monetaria-inflacionaria",
@@ -76,12 +76,12 @@
       "actividad": {
         "nombre": "Actividad económica",
         "peso": 0.11,
-        "puntaje": 100.0,
+        "puntaje": 60.0,
         "indicadores": {
           "emae_ia": {
             "peso": 1.0,
-            "puntaje_banda": 100,
-            "puntaje_aplicado": 100,
+            "puntaje_banda": 60,
+            "puntaje_aplicado": 60,
             "peso_efectivo": 0.11
           }
         },
@@ -158,16 +158,16 @@
       "peso_efectivo": 0.08
     },
     "idc": {
-      "valor": 1.012,
+      "valor": 1.0124,
       "unidad": "Índice (~1,0)",
       "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
-      "fecha_dato": "2026-06-23",
+      "fecha_dato": "2026-06-24",
       "componentes": {
-        "precio": 0.9947,
-        "volumen": 1.0042,
-        "asignacion": 1.0398
+        "precio": 0.994,
+        "volumen": 1.0025,
+        "asignacion": 1.044
       },
-      "badlar_real_mensual": -0.53,
+      "badlar_real_mensual": -0.6,
       "semaforo": "amarillo",
       "desactualizado": false,
       "en_indice": true,
@@ -177,23 +177,23 @@
       "peso_efectivo": 0.08
     },
     "badlar": {
-      "valor": 21.25,
+      "valor": 20.25,
       "unidad": "% anual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-06-25",
+      "fecha_dato": "2026-06-26",
       "desactualizado": false,
       "en_indice": false
     },
     "emae_ia": {
-      "valor": 5.48,
+      "valor": 1.64,
       "unidad": "% i.a.",
       "fuente": "https://apis.datos.gob.ar/series/api/series/",
-      "fecha_dato": "2026-03-01",
+      "fecha_dato": "2026-04-01",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "actividad",
-      "puntaje_itcm": 100,
-      "puntaje_banda": 100,
+      "puntaje_itcm": 60,
+      "puntaje_banda": 60,
       "peso_efectivo": 0.11
     },
     "saldo_comercial_12m": {
@@ -255,13 +255,13 @@
       "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.76% mensual, en la misma escala que el IPC."
     },
     "idm": {
-      "valor": 4.52,
+      "valor": 4.33,
       "unidad": "pp (brecha i.a. real)",
       "fuente": "BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; M2 privado transaccional var. 197) + IPC INDEC",
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
-      "m3_real_ia": -2.62,
-      "m2_real_ia": -7.14,
+      "m3_real_ia": -2.46,
+      "m2_real_ia": -6.79,
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_itcm": 60,
@@ -303,26 +303,26 @@
       "peso_efectivo": 0.048
     },
     "prestamos_privados": {
-      "valor": 3.05,
+      "valor": 2.55,
       "unidad": "% mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-06-24",
+      "fecha_dato": "2026-06-25",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 5.55,
+      "valor": 5.08,
       "unidad": "% mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-06-24",
+      "fecha_dato": "2026-06-25",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 4.57,
+      "valor": 4.16,
       "unidad": "% mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-06-26",
+      "fecha_dato": "2026-06-29",
       "desactualizado": false,
       "en_indice": false
     }
