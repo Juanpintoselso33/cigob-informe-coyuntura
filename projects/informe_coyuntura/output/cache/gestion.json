@@ -1,14 +1,14 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-06-30T06:43:55.535519",
+  "generated_at": "2026-07-01T07:01:26.820096",
   "score": 5.9,
   "indicadores": {
     "cepo_mulc": {
-      "valor": 4.99,
-      "avance_pct": 75.0,
+      "valor": 5.5,
+      "avance_pct": 72.5,
       "unidad": "% de brecha",
       "fuente": "https://dolarapi.com/v1/dolares",
-      "fecha_dato": "2026-06-30",
+      "fecha_dato": "2026-07-01",
       "desactualizado": false
     },
     "privatizaciones": {
@@ -40,28 +40,23 @@
       "avance_pct": 40.0,
       "unidad": "Normas (conteo)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-30",
+      "fecha_dato": "2026-07-01",
       "desactualizado": false
     },
     "rigi_inversiones": {
-      "valor": "US$ 31.192M aprobados · 17 proyectos",
-      "avance_pct": 22.1,
-      "unidad": "% de inversión aprobada sobre el pipeline",
-      "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-      "fecha_dato": "2026-06-30",
-      "desactualizado": false,
-      "proyectos_aprobados": 17,
-      "inversion_aprobada_musd": 31192,
-      "proyectos_evaluacion": 24,
-      "inversion_evaluacion_musd": 109687,
-      "detalle_txt": "17 proyectos aprobados (US$ 31.192M) / 24 en evaluación (US$ 109.687M) → 22,1% de la inversión total ya aprobada"
+      "valor": 31,
+      "avance_pct": 31.0,
+      "unidad": "Resoluciones (conteo)",
+      "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+      "fecha_dato": "2026-07-01",
+      "desactualizado": true
     },
     "desregulacion_normativa": {
       "valor": 60,
       "avance_pct": 60.0,
       "unidad": "Normas (conteo)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-06-30",
+      "fecha_dato": "2026-07-01",
       "desactualizado": false
     },
     "apertura_comercial": {

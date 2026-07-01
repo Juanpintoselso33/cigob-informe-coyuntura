@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-06-30T06:43:25.639965",
+  "generated_at": "2026-07-01T07:00:58.088339",
   "score": 4.1,
   "itcm": {
     "valor": 58.9,
@@ -158,16 +158,16 @@
       "peso_efectivo": 0.08
     },
     "idc": {
-      "valor": 1.0124,
+      "valor": 0.9951,
       "unidad": "Índice (~1,0)",
       "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
-      "fecha_dato": "2026-06-24",
+      "fecha_dato": "2026-06-25",
       "componentes": {
-        "precio": 0.994,
-        "volumen": 1.0025,
-        "asignacion": 1.044
+        "precio": 0.9945,
+        "volumen": 0.9895,
+        "asignacion": 1.003
       },
-      "badlar_real_mensual": -0.6,
+      "badlar_real_mensual": -0.55,
       "semaforo": "amarillo",
       "desactualizado": false,
       "en_indice": true,
@@ -177,10 +177,10 @@
       "peso_efectivo": 0.08
     },
     "badlar": {
-      "valor": 20.25,
+      "valor": 21.0,
       "unidad": "% anual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-06-26",
+      "fecha_dato": "2026-06-29",
       "desactualizado": false,
       "en_indice": false
     },
@@ -229,10 +229,10 @@
       "peso_efectivo": 0.144
     },
     "tcrm": {
-      "valor": 84.31,
+      "valor": 84.96,
       "unidad": "Índice (base dic-2015=100)",
       "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
-      "fecha_dato": "2026-05-01",
+      "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "competitividad_externa",
@@ -303,26 +303,26 @@
       "peso_efectivo": 0.048
     },
     "prestamos_privados": {
-      "valor": 2.55,
+      "valor": 2.52,
       "unidad": "% mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-06-25",
+      "fecha_dato": "2026-06-26",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 5.08,
+      "valor": 4.25,
       "unidad": "% mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-06-25",
+      "fecha_dato": "2026-06-26",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 4.16,
+      "valor": 3.93,
       "unidad": "% mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-06-29",
+      "fecha_dato": "2026-06-30",
       "desactualizado": false,
       "en_indice": false
     }
