@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-02 18:45:37"
-score_global: 3.5
+generado: "2026-07-02 18:55:10"
+score_global: 3.6
 barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,30 +9,30 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 3.5/10  |  **Riesgo dominante:** político
+**Score global:** 3.6/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
-### 🟡 Macro — score 3.7/10 (en_tension)
+### 🟡 Macro — score 4.5/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ipc_total | 2.15 | % mensual | 2026-05-01 | fresco |
-| reservas_bcra | 4122.0 | Millones de USD | 31/05/26 | fresco |
-| idc | 1.012 | Índice (~1,0) | 2026-06-23 | fresco |
-| badlar | 21.25 | % anual | 2026-06-25 | fresco |
-| emae_ia | 5.48 | % i.a. | 2026-03-01 | fresco |
+| reservas_bcra | -3222.0 | Millones de USD | 2026-06-29 | fresco |
+| idc | 0.9611 | Índice (~1,0) | 2026-06-26 | fresco |
+| badlar | 21.0 | % anual | 2026-06-30 | fresco |
+| emae_ia | 1.64 | % i.a. | 2026-04-01 | fresco |
 | saldo_comercial_12m | 21221.0 | Millones de USD (acum. 12 meses) | 2026-05-01 | fresco |
 | recaudacion | 1.82 | % i.a. real | 2026-05-01 | fresco |
-| tcrm | 84.31 | Índice (base dic-2015=100) | 2026-05-01 | fresco |
+| tcrm | 79.77 | Índice (base 2010=100) | 2024-12-01 | ⚠ cache |
 | rem_ipc_12m | 23.3 | % anual esperado | 2026-05-31 | fresco |
-| idm | 4.52 | pp (brecha i.a. real) | 2026-05-01 | fresco |
+| idm | 4.33 | pp (brecha i.a. real) | 2026-05-01 | fresco |
 | iai | -4.2 | % i.a. ponderado | 2026-05-01 | fresco |
 | icip | 8.2 | % i.a. ponderado | 2026-04-01 | fresco |
-| prestamos_privados | 3.05 | % mensual nominal | 2026-06-24 | fresco |
-| base_monetaria | 5.55 | % mensual nominal | 2026-06-24 | fresco |
-| tc_mayorista | 4.57 | % mensual | 2026-06-26 | fresco |
+| prestamos_privados | 3.59 | % mensual nominal | 2026-06-29 | fresco |
+| base_monetaria | 4.11 | % mensual nominal | 2026-06-29 | fresco |
+| tc_mayorista | 3.65 | % mensual | 2026-07-01 | fresco |
 
 ### 🟡 Politica — score 4.6/10 (en_tension)
 *Riesgo de barbarismo: político*
@@ -40,14 +40,14 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 5.3 | Puntos porcentuales | 2026-05-28 | fresco |
-| ratio_dnu | 1.5 | DNUs por ley | 2026-06-28 | fresco |
-| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-28 | fresco |
-| iaf_transferencias | 7.0 | % interanual real | 2026-06-28 | fresco |
-| eficacia_legislativa | 4.3 | % de proyectos | 2026-06-28 | fresco |
+| ratio_dnu | 1.412 | DNUs por ley | 2026-07-02 | fresco |
+| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-07-01 | ⚠ cache |
+| iaf_transferencias | 7.0 | % interanual real | 2026-07-02 | fresco |
+| eficacia_legislativa | 4.3 | % de proyectos | 2026-07-02 | fresco |
 | cohesion_bloque | 78 | % votos en línea con la posición oficial del bloque LLA | 2026-04-01 | ⚠ cache |
 | gobernadores_alineamiento | 55 | % gobernadores alineados con política nacional | 2026-04-01 | ⚠ cache |
-| veto_quorum | 0.0 | % de sesiones | 2026-06-28 | fresco |
-| comisiones_caidas | 97.8 | % de proyectos | 2026-06-28 | fresco |
+| veto_quorum | 0.0 | % de sesiones | 2026-07-02 | fresco |
+| comisiones_caidas | 97.8 | % de proyectos | 2026-07-02 | fresco |
 
 ### 🟢 Vida Cotidiana — score 2.7/10 (estable)
 *Riesgo de barbarismo: político*
@@ -85,13 +85,14 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 6.7 | interés 0–100 | 2026-06-27 | fresco |
+| sentimiento_digital | 7.2 | interés 0–100 | 2026-07-02 | fresco |
 | clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
 
 ## Advertencias
 
-- `desactualizado:politica:cohesion_bloque,gobernadores_alineamiento`
+- `desactualizado:macro:tcrm`
+- `desactualizado:politica:movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento`
 - `desactualizado:gestion:concesiones_infraestructura,asistencia_directa,protocolo_antipiquetes,libertad_opcion_salud`
 
 ---
-*Generado por CIGOB — 2026-07-02 18:45:37 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-02 18:55:10 — schema 1.2.0*
