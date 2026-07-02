@@ -449,6 +449,48 @@ def fetch_reduccion_serie() -> list:
             for ym, v in sorted(serie.items()) if ym >= "2023-12"]
 
 
+def fetch_tdps_serie() -> list:
+    """Serie mensual del TDPS (% del devengado pagado directo a personas,
+    partida 5.1.4, sobre el total del inciso 5) del programa de ingreso social
+    vigente en cada momento: Potenciar Trabajo (2023, jur. 85 prog. 38) y sus
+    sucesores Volver al Trabajo + Acompañamiento Social (2024–). API
+    Presupuesto Abierto; sin token devuelve [] (la serie queda en el último
+    snapshot). Meses de transición con devengado ínfimo se omiten."""
+    token = gestion._pa_token()
+    if not token:
+        return []
+    cols = ["impacto_presupuestario_mes", "inciso_id", "principal_id",
+            "parcial_id", "credito_devengado"]
+    por_mes: dict = {}
+    for anio in range(2023, date.today().year + 1):
+        if anio == 2023:
+            bloques = [[{"column": "jurisdiccion_id", "operator": "equal", "value": "85"},
+                        {"column": "programa_id", "operator": "equal", "value": "38"}]]
+        else:
+            bloques = [[{"column": "actividad_desc", "operator": "like", "value": f"%{a}%"}]
+                       for a in gestion.TDPS_ACTIVIDADES]
+        for filtros in bloques:
+            try:
+                rows = gestion._pa_credito(token, anio, filtros, columns=cols)
+            except Exception as e:
+                print(f"  [WARN] tdps serie {anio}: {e}")
+                continue
+            for r in rows:
+                try:
+                    if int(r.get("inciso_id") or 0) != 5:
+                        continue
+                    ym = f"{anio}-{int(r.get('impacto_presupuestario_mes') or 0):02d}"
+                    dev = float(r.get("credito_devengado") or 0)
+                except (TypeError, ValueError):
+                    continue
+                d = por_mes.setdefault(ym, {"directo": 0.0, "total": 0.0})
+                d["total"] += dev
+                if int(r.get("principal_id") or 0) == 1 and int(r.get("parcial_id") or 0) == 4:
+                    d["directo"] += dev
+    return [[f"{ym}-01", round(100.0 * d["directo"] / d["total"], 1)]
+            for ym, d in sorted(por_mes.items()) if d["total"] > 1000.0]
+
+
 # apertura_comercial (ILCE) no tiene serie oficial reconstruible (la brecha
 # cambiaria histórica no es pública vía API): su evolución se acumula mes a mes
 # en data/historico/indicadores.json (publicar.acumular_historico).
@@ -457,6 +499,7 @@ GESTION_DERIVADAS = [
     ("desregulacion_normativa", "Normas (conteo acum.)", "InfoLeg ('deroga' desde dic-2023)", lambda: fetch_infoleg_serie("deroga")),
     ("reestructuracion_organismos", "Normas (conteo acum.)", "InfoLeg ('disolucion' desde dic-2023)", lambda: fetch_infoleg_serie("disolucion")),
     ("reduccion_estado", "% vs dic-2023", "INDEC (dotación APN mensual)", fetch_reduccion_serie),
+    ("asistencia_directa", "% TDPS (directo a personas / transferencias)", "API Presupuesto Abierto (SIDIF)", fetch_tdps_serie),
 ]
 
 

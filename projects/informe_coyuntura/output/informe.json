@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-02T19:46:38.202100",
+  "generated_at": "2026-07-02T20:13:09.841404",
   "period": "2026-07",
   "score_global": 3.6,
   "ponderacion": {
@@ -633,13 +633,15 @@
           "peso_efectivo": 0.06
         },
         "concesiones_infraestructura": {
-          "valor": 35,
-          "unidad": "% corredores viales concesionados / plan total (9 corredores)",
-          "fuente": "Vialidad Nacional / Boletín Oficial (Dtos. 97/2025, 411/2026)",
-          "fecha_dato": "2026-06-30",
-          "estado": "estimado",
-          "notas": "Corredores Viales: oferta recibida para Tramo I (Dto. 411/2026); resto en licitación. Indicadores del doc 260702: km bajo concesión adjudicada con obra iniciada / km totales del proceso. Actualizar con adjudicaciones del BO y CONTRAT.AR.",
-          "desactualizado": true,
+          "valor": 28.7,
+          "unidad": "% de km adjudicados / km licitados (Red Federal de Concesiones)",
+          "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
+          "fecha_dato": "2026-07-02",
+          "desactualizado": false,
+          "km_adjudicados": 2614,
+          "km_totales": 9091,
+          "procesos": 4,
+          "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Acto Administrativo de Preselección · II: Adjudicado · III: Dictamen preselección pendiente publicación",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 40,
@@ -680,13 +682,15 @@
           "peso_efectivo": 0.04
         },
         "libertad_opcion_salud": {
-          "valor": 40,
-          "unidad": "% de avance de la desregulación de obras sociales (opciones de cambio)",
-          "fuente": "SSS — sssalud.gob.ar (bloqueado para scraping)",
-          "fecha_dato": "2026-04-01",
-          "estado": "estimado",
-          "notas": "Desregulación obras sociales: libre elección de prepaga u OS vigente (DNU 70/23), con adopción parcial. SSS no expone datos estructurados (fingerprinting back-end). Actualizar manualmente con comunicados SSS/prensa.",
-          "desactualizado": true,
+          "valor": 31.8,
+          "unidad": "% de usuarios de prepagas con aportes derivados directo (sin triangulación)",
+          "fuente": "SSS — RNAS y RNEMP por entidad (argentina.gob.ar/sssalud/estadisticas)",
+          "fecha_dato": "2026-03-01",
+          "desactualizado": false,
+          "derivados": 2660767,
+          "prepagas_inscriptas": 59,
+          "usuarios_prepagas": 8369312,
+          "detalle_txt": "2.660.767 beneficiarios derivados directo a 59 prepagas inscriptas (marzo-2026) / 8.369.312 usuarios de prepagas (RNEMP enero-2026); canal inexistente pre-DNU 70/23",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 65,
@@ -873,6 +877,6 @@
   "flags": [
     "desactualizado:macro:tcrm",
     "desactualizado:politica:movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento",
-    "desactualizado:gestion:concesiones_infraestructura,protocolo_antipiquetes,libertad_opcion_salud"
+    "desactualizado:gestion:protocolo_antipiquetes"
   ]
 }

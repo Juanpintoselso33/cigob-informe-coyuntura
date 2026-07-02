@@ -20,21 +20,23 @@ CINCO DIMENSIONES (35/25/15/15/10):
   4. Privatizaciones e inversión — privatizaciones (etapas 0-4 por empresa,
      store data/gestion/privatizaciones.json actualizado con el BO),
      rigi_inversiones (plataforma oficial, ADR-0011),
-     concesiones_infraestructura (manual).
+     concesiones_infraestructura (km adjudicados de la Red Federal de
+     Concesiones: CONTRAT.AR + página oficial RFC, ADR-0016).
   5. Reforma social y orden — asistencia_directa (TDPS contra la ejecución
      presupuestaria real, API Presupuesto Abierto, ADR-0015),
      protocolo_antipiquetes (reducción de cortes CABA vs 2023, manual: el
      registro histórico del GCBA está muerto; el poller GTFS-RT acumula la
      serie que lo reemplazará, ADR-0014),
-     libertad_opcion_salud (manual: SSS con fingerprinting back-end).
+     libertad_opcion_salud (derivación directa a prepagas inscriptas:
+     padrones RNAS/RNEMP de la SSS, ADR-0016).
 
-Indicadores AUTO (13): cepo_mulc, apertura_comercial, desregulacion_normativa,
+Indicadores AUTO (15): cepo_mulc, apertura_comercial, desregulacion_normativa,
   reduccion_estado, gasto_funcionamiento, masa_salarial,
   reestructuracion_organismos, fal_modernizacion_laboral (CNV),
   litigiosidad_laboral (contexto), privatizaciones (store curado),
-  rigi_inversiones, asistencia_directa (TDPS), alertas_manifestacion (contexto).
-Indicadores manuales (3, en manuales.json): concesiones_infraestructura,
-  protocolo_antipiquetes, libertad_opcion_salud.
+  rigi_inversiones, concesiones_infraestructura, asistencia_directa (TDPS),
+  libertad_opcion_salud, alertas_manifestacion (contexto).
+Indicador manual (1, en manuales.json): protocolo_antipiquetes.
 
 Nota INDEC www: el WAF de indec.gob.ar resetea el handshake TLS de Python
 (fingerprinting del ClientHello); el fetch del XLSX cae a curl como fallback.
@@ -1038,12 +1040,13 @@ def _pa_token() -> str | None:
     return token or None
 
 
-def _pa_credito(token: str, ejercicio: int, filtros: list) -> list:
-    """Consulta de crédito agrupada por partida (inciso.principal.parcial)."""
+def _pa_credito(token: str, ejercicio: int, filtros: list, columns: list | None = None) -> list:
+    """Consulta de crédito agrupada por partida (inciso.principal.parcial);
+    `columns` permite pedir otra agrupación (ej. + mes, para la serie)."""
     body = {
         "ejercicios": [ejercicio],
-        "columns": ["inciso_id", "principal_id", "parcial_id", "parcial_desc",
-                    "credito_devengado"],
+        "columns": columns or ["inciso_id", "principal_id", "parcial_id",
+                               "parcial_desc", "credito_devengado"],
         "filters": filtros,
     }
     r = requests.post(PA_CREDITO_URL, params={"format": "json"}, json=body,
@@ -1143,6 +1146,240 @@ def fetch_asistencia_directa() -> dict | None:
         return None
 
 
+# ── D4: concesiones viales — CONTRAT.AR + página RFC (ADR-0016) ───────────────
+# La Red Federal de Concesiones se licita por CONTRAT.AR (UOC 504, Min.
+# Economía): la búsqueda avanzada del portal funciona sin login (ASP.NET
+# WebForms: sesión + __VIEWSTATE y POST del formulario). El kilometraje por
+# tramo/etapa sale de las tablas de la página oficial de la RFC. Los datos
+# abiertos de CONTRAT.AR (CKAN) están congelados en mar-2023 — verificado.
+
+CONTRATAR_HOME  = "https://contratar.gob.ar/"
+CONTRATAR_BUSQ  = "https://contratar.gob.ar/BuscarAvanzado.aspx"
+RFC_PAGE_URL    = "https://www.argentina.gob.ar/transporte/vialidad-nacional/red-federal-de-concesiones"
+
+
+def _contratar_procesos_rfc() -> list:
+    """[(proceso, nombre, estado)] de la búsqueda 'RED FEDERAL' en CONTRAT.AR."""
+    from bs4 import BeautifulSoup
+    s = requests.Session()
+    s.get(CONTRATAR_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r = s.get(CONTRATAR_BUSQ, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    soup = BeautifulSoup(r.text, "html.parser")
+    form = {}
+    for campo in ("__VIEWSTATE", "__VIEWSTATEGENERATOR", "__EVENTVALIDATION"):
+        tag = soup.find("input", {"name": campo})
+        if tag and tag.get("value") is not None:
+            form[campo] = tag["value"]
+    if "__VIEWSTATE" not in form:
+        raise ValueError("CONTRAT.AR: __VIEWSTATE no encontrado (¿rediseño del portal?)")
+    form["ctl00$CPH1$txtNombrePliego"] = "RED FEDERAL"
+    form["ctl00$CPH1$btnListarPliegoAvanzado"] = "Buscar"
+    r = s.post(CONTRATAR_BUSQ, data=form, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    procesos = []
+    for fila in BeautifulSoup(r.text, "html.parser").find_all("tr"):
+        celdas = [c.get_text(" ", strip=True) for c in fila.find_all("td")]
+        texto = " | ".join(celdas)
+        m = re.search(r"\b(\d{3}-\d{4}-[A-Z]{3}\d{2})\b", texto)
+        if m and "RED FEDERAL" in texto.upper() and len(celdas) >= 3:
+            # Columnas: proceso · nombre · tipo · apertura · ESTADO · UOC
+            estado = celdas[-2]
+            nombre = next((c for c in celdas if "RED FEDERAL" in c.upper()), texto)
+            procesos.append((m.group(1), nombre, estado))
+    if not procesos:
+        raise ValueError("CONTRAT.AR: la búsqueda 'RED FEDERAL' no devolvió procesos")
+    return procesos
+
+
+def _rfc_km_por_etapa() -> dict:
+    """{etapa: km} desde las tablas de la página oficial de la RFC (una tabla
+    por etapa, en orden I · II · II-B · III). Los km vienen 'es-AR' (682,28)."""
+    from bs4 import BeautifulSoup
+    html = _http_get_resiliente(RFC_PAGE_URL).decode("utf-8", errors="replace")
+    tablas = BeautifulSoup(html, "html.parser").find_all("table")
+    etiquetas = ("I", "II", "II-B", "III")
+
+    def _km(s: str) -> float | None:
+        """'682,28' (es-AR) · '681.92' (punto decimal, tabla Etapa III) · '720'."""
+        s = s.strip()
+        if re.match(r"^[\d\.]+,\d+$", s):
+            return float(s.replace(".", "").replace(",", "."))
+        if re.match(r"^\d+(\.\d+)?$", s):
+            return float(s)
+        return None
+
+    km_por_etapa = {}
+    for etiqueta, tabla in zip(etiquetas, tablas):
+        km_total = 0.0
+        for fila in tabla.find_all("tr"):
+            celdas = [c.get_text(" ", strip=True) for c in fila.find_all("td")]
+            if len(celdas) >= 2:
+                v = _km(celdas[1])
+                if v is not None:
+                    km_total += v
+        if km_total > 0:
+            km_por_etapa[etiqueta] = round(km_total, 2)
+    if len(km_por_etapa) < 3:
+        raise ValueError(f"página RFC: se esperaban ≥3 etapas con km, hay {len(km_por_etapa)}")
+    return km_por_etapa
+
+
+def _etapa_de_proceso(nombre: str) -> str | None:
+    m = re.search(r"ETAPA\s+([IVX]+(?:\s*-\s*B)?)", nombre.upper())
+    return m.group(1).replace(" ", "") if m else None
+
+
+def fetch_concesiones_infraestructura() -> dict | None:
+    """
+    Tasa de adjudicación de la Red Federal de Concesiones, en KM (doc 260702:
+    'km bajo concesión adjudicada / km totales del proceso'): el estado de cada
+    proceso licitatorio sale de CONTRAT.AR (sin login) y el kilometraje por
+    etapa de la página oficial de la RFC. Una etapa cuenta como adjudicada
+    cuando su proceso está en estado 'Adjudicado' (las etapas II-B y III
+    adjudican por renglones — refinamiento pendiente, cuentan al cierre).
+    """
+    try:
+        procesos = _contratar_procesos_rfc()
+        km = _rfc_km_por_etapa()
+        km_total = sum(km.values())
+        adjudicadas, detalle_p = [], []
+        for proceso, nombre, estado in procesos:
+            etapa = _etapa_de_proceso(nombre)
+            adjudicado = "ADJUDICADO" in estado.upper()
+            if etapa and adjudicado and etapa in km:
+                adjudicadas.append(etapa)
+            detalle_p.append(f"{etapa or proceso}: {estado}")
+        km_adj = sum(km[e] for e in set(adjudicadas))
+        avance = round(100.0 * km_adj / km_total, 1)
+        miles = lambda x: f"{x:,.0f}".replace(",", ".")
+        return {
+            "valor":          avance,
+            "unidad":         "% de km adjudicados / km licitados (Red Federal de Concesiones)",
+            "fuente":         "CONTRAT.AR (UOC 504) + página oficial RFC",
+            "fecha_dato":     date.today().isoformat(),
+            "desactualizado": False,
+            "km_adjudicados": round(km_adj),
+            "km_totales":     round(km_total),
+            "procesos":       len(procesos),
+            "detalle_txt": (f"{miles(km_adj)} de {miles(km_total)} km adjudicados · "
+                            + " · ".join(sorted(set(detalle_p)))),
+        }
+    except Exception as e:
+        _warn("concesiones_infraestructura", e)
+        return None
+
+
+# ── D5: libertad de opción en salud — XLSX oficiales SSS (ADR-0016) ───────────
+# La SSS publica en argentina.gob.ar/sssalud/estadisticas los XLSX de
+# beneficiarios por entidad (RNAS, mensual) y usuarios de prepagas (RNEMP).
+# Las prepagas inscriptas como Agentes del Seguro (post DNU 70/23) llevan
+# código RNAS >= 900000: sus beneficiarios son aportes DERIVADOS DIRECTO, sin
+# triangulación. El viejo contador de "opciones de cambio" de sssalud.gob.ar
+# sigue muerto (fingerprinting back-end) — esto lo reemplaza con más riqueza.
+
+SSS_RNAS_URL  = ("https://www.argentina.gob.ar/sites/default/files/2020/07/"
+                 "evolucion_anual_de_beneficiarios_de_agentes_del_seguro_de_salud_por_entidad_-_ano_{anio}.xlsx")
+SSS_RNEMP_URL = ("https://www.argentina.gob.ar/sites/default/files/2020/07/"
+                 "evolucion_anual_de_usuarios_por_entidades_de_medicina_prepaga_-_ano_{anio}.xlsx")
+RNAS_PREPAGA_MIN = 900000   # códigos RNAS de prepagas inscriptas (DNU 70/23)
+
+
+def _sss_xlsx(url_tpl: str) -> tuple:
+    """(workbook, año) del XLSX del año corriente (fallback: año previo)."""
+    import openpyxl
+    anio = date.today().year
+    for a in (anio, anio - 1):
+        try:
+            content = _http_get_resiliente(url_tpl.format(anio=a))
+            return openpyxl.load_workbook(io.BytesIO(content), data_only=True), a
+        except Exception:
+            continue
+    raise ValueError("XLSX SSS no disponible (año corriente ni previo)")
+
+
+def _sss_ultimo_mes(ws) -> tuple:
+    """(índice de columna, nombre de mes) del último mes CON datos: la fila de
+    totales trae 0/None en los meses aún no cargados."""
+    filas = list(ws.iter_rows(values_only=True))
+    fila_meses = next(f for f in filas if any(str(c).strip().lower() == "enero" for c in f if c))
+    fila_total = next(f for f in filas
+                      if str(f[0] or "").strip().lower().startswith(("total de beneficiarios", "total de usuarios")))
+    ult = None
+    for idx, (mes, total) in enumerate(zip(fila_meses, fila_total)):
+        if mes and str(mes).strip().lower() != "meses":
+            try:
+                if float(total or 0) > 0:
+                    ult = (idx, str(mes).strip().lower())
+            except (TypeError, ValueError):
+                continue
+    if ult is None:
+        raise ValueError("XLSX SSS sin ningún mes con datos")
+    return ult
+
+
+_MES_NUM = {"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
+            "julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12}
+
+
+def fetch_libertad_opcion_salud() -> dict | None:
+    """
+    Libertad de opción en salud, contra los XLSX oficiales de la SSS:
+    % de los usuarios de medicina prepaga (RNEMP) cuyos aportes van DERIVADOS
+    DIRECTO a la prepaga inscripta como Agente del Seguro (RNAS, códigos
+    900000+, habilitados por el DNU 70/23). Antes de la reforma este canal no
+    existía (todo se triangulaba por una obra social). Expone además el conteo
+    de prepagas inscriptas.
+    """
+    try:
+        wb_rnas, anio_rnas = _sss_xlsx(SSS_RNAS_URL)
+        ws = wb_rnas[next(h for h in wb_rnas.sheetnames if "RNAS" in h.upper())]
+        col, mes_rnas = _sss_ultimo_mes(ws)
+        derivados, prepagas = 0.0, 0
+        for f in ws.iter_rows(values_only=True):
+            try:
+                codigo = int(str(f[0]).strip())
+            except (TypeError, ValueError):
+                continue
+            if codigo >= RNAS_PREPAGA_MIN:
+                try:
+                    v = float(f[col] or 0)
+                except (TypeError, ValueError):
+                    v = 0.0
+                if v > 0:
+                    derivados += v
+                    prepagas += 1
+
+        wb_rnemp, anio_rnemp = _sss_xlsx(SSS_RNEMP_URL)
+        ws2 = wb_rnemp[next(h for h in wb_rnemp.sheetnames if "RNEMP" in h.upper())]
+        col2, mes_rnemp = _sss_ultimo_mes(ws2)
+        fila_tot = next(f for f in ws2.iter_rows(values_only=True)
+                        if str(f[0] or "").strip().lower().startswith("total de usuarios"))
+        usuarios_prepagas = float(fila_tot[col2] or 0)
+        if not usuarios_prepagas or not derivados:
+            raise ValueError("RNAS o RNEMP sin datos del período")
+
+        avance = round(100.0 * derivados / usuarios_prepagas, 1)
+        miles = lambda x: f"{x:,.0f}".replace(",", ".")
+        fecha = f"{anio_rnas}-{_MES_NUM.get(mes_rnas, 1):02d}-01"
+        return {
+            "valor":          avance,
+            "unidad":         "% de usuarios de prepagas con aportes derivados directo (sin triangulación)",
+            "fuente":         "SSS — RNAS y RNEMP por entidad (argentina.gob.ar/sssalud/estadisticas)",
+            "fecha_dato":     fecha,
+            "desactualizado": False,
+            "derivados":            round(derivados),
+            "prepagas_inscriptas":  prepagas,
+            "usuarios_prepagas":    round(usuarios_prepagas),
+            "detalle_txt": (f"{miles(derivados)} beneficiarios derivados directo a {prepagas} prepagas "
+                            f"inscriptas ({mes_rnas}-{anio_rnas}) / {miles(usuarios_prepagas)} usuarios de "
+                            f"prepagas (RNEMP {mes_rnemp}-{anio_rnemp}); canal inexistente pre-DNU 70/23"),
+        }
+    except Exception as e:
+        _warn("libertad_opcion_salud", e)
+        return None
+
+
 # ── Scoring (ITCG — Paramétrica CIGOB jul-2026) ───────────────────────────────
 
 def calcular_itcg_cinturon(indicadores: dict) -> dict | None:
@@ -1213,7 +1450,9 @@ def main() -> None:
         "litigiosidad_laboral":         fetch_litigiosidad_laboral,
         "privatizaciones":              fetch_privatizaciones,
         "rigi_inversiones":             fetch_rigi_inversiones,
+        "concesiones_infraestructura":  fetch_concesiones_infraestructura,
         "asistencia_directa":           fetch_asistencia_directa,
+        "libertad_opcion_salud":        fetch_libertad_opcion_salud,
         "alertas_manifestacion":        fetch_alertas_manifestacion,
     }
 

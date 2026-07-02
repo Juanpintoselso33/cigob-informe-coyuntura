@@ -6,14 +6,14 @@
       "reduccion_estado", "gasto_funcionamiento", "masa_salarial",
       "reestructuracion_organismos", "fal_modernizacion_laboral",
       "litigiosidad_laboral", "privatizaciones", "rigi_inversiones",
-      "asistencia_directa", "alertas_manifestacion"
+      "concesiones_infraestructura", "asistencia_directa",
+      "libertad_opcion_salud", "alertas_manifestacion"
     ],
     "indicadores_manuales": [
-      "concesiones_infraestructura", "protocolo_antipiquetes", "libertad_opcion_salud"
+      "protocolo_antipiquetes"
     ],
     "pendiente_automatizacion": {
-      "protocolo_antipiquetes": "VERIFICADO 2026-07-02 con credenciales válidas: /transito/v1/eventos y /cortes del GCBA están MUERTOS (HTTP 500, comentados en el RAML). En su lugar corre el poller GTFS-RT acumulativo (alertas_manifestacion, 3 muestreos/día, store data/gestion/piquetes_alertas.json) — cuando la serie tenga ~12 meses, reemplaza esta carga manual. Ver ADR-0014.",
-      "libertad_opcion_salud": "SSS usa fingerprinting back-end; retorna 'No se reportan datos' incluso con Playwright. Padrón datos.gob.ar congelado en 2019."
+      "protocolo_antipiquetes": "VERIFICADO 2026-07-02 con credenciales válidas: /transito/v1/eventos y /cortes del GCBA están MUERTOS (HTTP 500, comentados en el RAML). En su lugar corre el poller GTFS-RT acumulativo (alertas_manifestacion, 3 muestreos/día, store data/gestion/piquetes_alertas.json) — cuando la serie tenga ~12 meses, reemplaza esta carga manual. Ver ADR-0014."
     }
   },
   "desregulacion_normativa": {
@@ -25,12 +25,12 @@
     "fecha_dato": "2026-06-30"
   },
   "concesiones_infraestructura": {
-    "valor": 35,
-    "unidad": "% corredores viales concesionados / plan total (9 corredores)",
+    "valor": 28.7,
+    "unidad": "% de km adjudicados / km licitados (Red Federal de Concesiones)",
     "estado": "estimado",
-    "fuente": "Vialidad Nacional / Boletín Oficial (Dtos. 97/2025, 411/2026)",
-    "notas": "Corredores Viales: oferta recibida para Tramo I (Dto. 411/2026); resto en licitación. Indicadores del doc 260702: km bajo concesión adjudicada con obra iniciada / km totales del proceso. Actualizar con adjudicaciones del BO y CONTRAT.AR.",
-    "fecha_dato": "2026-06-30"
+    "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
+    "notas": "FALLBACK: el colector AUTO scrapea CONTRAT.AR (búsqueda 'RED FEDERAL', sin login) y el kilometraje de la página oficial de la RFC (ADR-0016). Jul-2026: Etapas I y II-A adjudicadas (2.614 de 9.091 km = 28,7%); II-B en preselección; III con dictamen pendiente.",
+    "fecha_dato": "2026-07-02"
   },
   "fal_modernizacion_laboral": {
     "valor": 8,
@@ -58,11 +58,11 @@
     "fecha_dato": "2026-06-30"
   },
   "libertad_opcion_salud": {
-    "valor": 40,
-    "unidad": "% de avance de la desregulación de obras sociales (opciones de cambio)",
+    "valor": 31.8,
+    "unidad": "% de usuarios de prepagas con aportes derivados directo (sin triangulación)",
     "estado": "estimado",
-    "fuente": "SSS — sssalud.gob.ar (bloqueado para scraping)",
-    "notas": "Desregulación obras sociales: libre elección de prepaga u OS vigente (DNU 70/23), con adopción parcial. SSS no expone datos estructurados (fingerprinting back-end). Actualizar manualmente con comunicados SSS/prensa.",
-    "fecha_dato": "2026-04-01"
+    "fuente": "SSS — RNAS/RNEMP (argentina.gob.ar/sssalud/estadisticas)",
+    "notas": "FALLBACK: el colector AUTO parsea los XLSX oficiales de la SSS (ADR-0016): beneficiarios de prepagas inscriptas como Agentes del Seguro (códigos RNAS 900000+, canal creado por el DNU 70/23) sobre usuarios totales de prepagas (RNEMP). Mar-2026: 2.660.767 derivados a 59 prepagas / 8.369.312 usuarios = 31,8%. El viejo contador de 'opciones de cambio' de sssalud.gob.ar sigue muerto.",
+    "fecha_dato": "2026-07-02"
   }
 }

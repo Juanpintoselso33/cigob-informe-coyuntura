@@ -234,12 +234,12 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   clima_electoral: "Puntos porcentuales",
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
-  concesiones_infraestructura: "% de avance", reduccion_estado: "% de variación vs dic-2023",
+  concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",
   reestructuracion_organismos: "% de avance", rigi_inversiones: "% de inversión aprobada / pipeline",
   desregulacion_normativa: "% de avance", apertura_comercial: "Índice 0–100 (ILCE)",
   gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",
   asistencia_directa: "% del gasto social sin intermediación", fal_modernizacion_laboral: "Índice 0–100",
-  libertad_opcion_salud: "% de avance", protocolo_antipiquetes: "% de reducción de cortes vs 2023",
+  libertad_opcion_salud: "% de usuarios de prepagas con derivación directa", protocolo_antipiquetes: "% de reducción de cortes vs 2023",
   litigiosidad_laboral: "% variación (12m vs 12m previos)",
   alertas_manifestacion: "Alertas únicas en el mes (GTFS-RT)",
 };

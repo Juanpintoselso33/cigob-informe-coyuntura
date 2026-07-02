@@ -221,9 +221,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Quincenal (BO)", tipo: "Avance por etapas",
   },
   concesiones_infraestructura: {
-    que: "Cuánto avanza la concesión de corredores viales y obras de infraestructura al sector privado.",
-    aporta: "Indica si el Estado logra traspasar infraestructura al sector privado.",
-    frecuencia: "Trimestral", tipo: "Avance de reforma",
+    que: "Qué porcentaje de los kilómetros licitados en la Red Federal de Concesiones ya está adjudicado: el estado de cada proceso sale de CONTRAT.AR y el kilometraje por tramo de la página oficial de la RFC (16 tramos, ~9.100 km en 4 etapas).",
+    aporta: "Mide con actos administrativos —no anuncios— si el traspaso de la red vial al sector privado avanza: una etapa cuenta recién cuando su licitación figura Adjudicada en el sistema de contrataciones.",
+    frecuencia: "Continua (CONTRAT.AR)", tipo: "Avance de reforma",
   },
   reduccion_estado: {
     que: "Cuánto varía la dotación de empleo del sector público.",
@@ -271,9 +271,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
   libertad_opcion_salud: {
-    que: "Cuántos afiliados ejercen el cambio de obra social (libre elección).",
-    aporta: "Mide la desregulación del sistema de salud y la libre elección.",
-    frecuencia: "Trimestral", tipo: "Avance de reforma",
+    que: "Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el DNU 70/23 al eliminar la triangulación obligatoria por una obra social.",
+    aporta: "Mide la adopción real de la libre elección con los padrones oficiales de la SSS (RNAS y RNEMP): antes de la reforma este canal no existía; a marzo de 2026 lo usan 2,66 millones de personas en 59 prepagas inscriptas.",
+    frecuencia: "Mensual (~2 meses de rezago)", tipo: "Avance de reforma",
   },
   protocolo_antipiquetes: {
     que: "En qué porcentaje se redujeron los cortes de calle por manifestación en CABA respecto del promedio 2023 (el distrito donde actúan las fuerzas federales y aplica el protocolo).",
