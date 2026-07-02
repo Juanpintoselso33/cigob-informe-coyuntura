@@ -10,21 +10,22 @@ export interface Indicador {
   estado?: string;        // "placeholder" cuando aplica
   avance_pct?: number;
   notas?: string;
-  en_indice?: boolean;    // macro: integra el ITCM (false = contexto)
-  puntaje_itcm?: number;  // macro: puntaje 0-100 aplicado en el índice
+  en_indice?: boolean;    // macro/gestión: integra el índice paramétrico (false = contexto)
+  puntaje_itcm?: number;  // macro: puntaje 0-100 aplicado en el ITCM
+  puntaje_itcg?: number;  // gestión: puntaje 0-100 aplicado en el ITCG
   [k: string]: unknown;
 }
-export interface DimensionItcm {
+export interface DimensionIndice {
   nombre: string;
   peso: number;
   puntaje: number;
   indicadores: Record<string, { puntaje_banda: number; puntaje_aplicado: number; peso_efectivo: number }>;
 }
-export interface Itcm {
+export interface IndiceParametrico {
   valor: number;          // 0-100, mayor = menos tensión (cinturón aflojado)
   banda: string;
   banda_legible: string;
-  dimensiones: Record<string, DimensionItcm>;
+  dimensiones: Record<string, DimensionIndice>;
   ajustes_aplicados: { indicador: string; de: number; a: number; justificacion: string }[];
 }
 export interface Cinturon {
@@ -34,7 +35,36 @@ export interface Cinturon {
   indicadores: Record<string, Indicador>;
   alerta: string | null;
   score_explicacion?: string;
-  itcm?: Itcm;            // solo macro
+  itcm?: IndiceParametrico;  // solo macro
+  itcg?: IndiceParametrico;  // solo gestión
+}
+
+// Índice paramétrico del cinturón (si tiene): sigla, nombre y descripción
+// para que la página de detalle lo renderice de forma genérica.
+export interface IndiceInfo {
+  sigla: string;
+  nombre: string;
+  descripcion: string;
+  data: IndiceParametrico;
+}
+export function indiceDe(c: Cinturon): IndiceInfo | null {
+  if (c.itcm) return {
+    sigla: "ITCM",
+    nombre: "Índice de Tensión del Cinturón Macroeconómico",
+    descripcion: "Índice de Tensión del Cinturón Macroeconómico (paramétrica CIGOB, may-2026). " +
+      "0 = cinturón severamente apretado, 100 = aflojado. Pondera seis dimensiones; " +
+      `la tensión del cinturón es (100 − ITCM) / 10.`,
+    data: c.itcm,
+  };
+  if (c.itcg) return {
+    sigla: "ITCG",
+    nombre: "Índice de Tensión del Cinturón de Gestión",
+    descripcion: "Índice de Tensión del Cinturón de Gestión (paramétrica CIGOB, jul-2026). " +
+      "0 = el gobierno promete reformas pero no las ejecuta; 100 = agenda de reformas " +
+      "ejecutándose. Pondera cinco dimensiones; la tensión del cinturón es (100 − ITCG) / 10.",
+    data: c.itcg,
+  };
+  return null;
 }
 export interface Informe {
   schema_version: string;
@@ -111,12 +141,13 @@ export const LABELS: Record<string, string> = {
   // espíritu de época (comparte icc_utdt y sentimiento_digital con vida)
   clima_electoral: "Clima electoral (Votómetro)",
   // gestion
-  cepo_mulc: "Brecha cambiaria (cepo)", privatizaciones: "Privatizaciones",
-  concesiones_infraestructura: "Concesiones viales", reduccion_estado: "Reducción del Estado",
+  cepo_mulc: "Brecha cambiaria (cepo)", privatizaciones: "Privatizaciones (etapas)",
+  concesiones_infraestructura: "Concesiones viales", reduccion_estado: "Dotación del Estado (APN)",
   reestructuracion_organismos: "Reestructuración de organismos", rigi_inversiones: "Inversiones RIGI",
-  desregulacion_normativa: "Desregulación normativa", apertura_comercial: "Apertura comercial",
-  asistencia_directa: "Asistencia directa", fal_modernizacion_laboral: "Modernización laboral (FAL)",
-  libertad_opcion_salud: "Libertad de opción en salud", protocolo_antipiquetes: "Protocolo antipiquetes",
+  desregulacion_normativa: "Desregulación normativa", apertura_comercial: "Apertura comercial (ILCE)",
+  gasto_funcionamiento: "Gasto de funcionamiento", masa_salarial: "Masa salarial pública",
+  asistencia_directa: "Asistencia directa (TDPS)", fal_modernizacion_laboral: "Fondo de Cese Laboral",
+  libertad_opcion_salud: "Libertad de opción en salud", protocolo_antipiquetes: "Orden público (piquetes)",
 };
 export function label(key: string): string {
   return LABELS[key] ?? key.replace(/_/g, " ");
@@ -163,8 +194,13 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   sentimiento_digital: "0–100", patentamiento_motos: "u.",
   // espíritu de época
   clima_electoral: "pp",
-  // gestion (las de avance se resuelven aparte)
-  cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "% i.a.",
+  // gestion (insumos del ITCG)
+  cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "índice",
+  desregulacion_normativa: "%", reestructuracion_organismos: "%",
+  gasto_funcionamiento: "% real", masa_salarial: "% real",
+  rigi_inversiones: "% del pipeline", privatizaciones: "%", concesiones_infraestructura: "%",
+  fal_modernizacion_laboral: "índice", asistencia_directa: "%",
+  protocolo_antipiquetes: "%", libertad_opcion_salud: "%",
 };
 
 // Unidad "larga" para la ficha del modal (campo "Unidad"). Normalizada y
@@ -195,12 +231,13 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   // espíritu de época
   clima_electoral: "Puntos porcentuales",
   // gestion
-  cepo_mulc: "% de brecha", privatizaciones: "% de avance",
-  concesiones_infraestructura: "% de avance", reduccion_estado: "% de variación",
-  reestructuracion_organismos: "% de avance", rigi_inversiones: "% de avance",
-  desregulacion_normativa: "% de avance", apertura_comercial: "% interanual",
-  asistencia_directa: "% de avance", fal_modernizacion_laboral: "% de avance",
-  libertad_opcion_salud: "% de avance", protocolo_antipiquetes: "% de avance",
+  cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
+  concesiones_infraestructura: "% de avance", reduccion_estado: "% de variación vs dic-2023",
+  reestructuracion_organismos: "% de avance", rigi_inversiones: "% de inversión aprobada / pipeline",
+  desregulacion_normativa: "% de avance", apertura_comercial: "Índice 0–100 (ILCE)",
+  gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",
+  asistencia_directa: "% del gasto social sin intermediación", fal_modernizacion_laboral: "Índice 0–100",
+  libertad_opcion_salud: "% de avance", protocolo_antipiquetes: "% de reducción de cortes vs 2023",
 };
 
 export interface Presentacion { texto: string; unidad: string; titulo: string; }

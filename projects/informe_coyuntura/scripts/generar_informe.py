@@ -118,8 +118,9 @@ def construir_informe(caches: dict) -> dict:
             "indicadores":        indicadores,
             "alerta":             None,
         }
-        if cache.get("itcm"):    # macro: índice paramétrico 0-100 con dimensiones
-            cinturones_data[nombre]["itcm"] = cache["itcm"]
+        for indice in ("itcm", "itcg"):   # índices paramétricos 0-100 con dimensiones
+            if cache.get(indice):         # (macro: ITCM · gestión: ITCG)
+                cinturones_data[nombre][indice] = cache[indice]
 
     barbarismo_activo, alerta_multicinturon = detectar_barbarismo(cinturones_data)
 

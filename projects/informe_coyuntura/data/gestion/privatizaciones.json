@@ -1,0 +1,59 @@
+{
+  "_meta": {
+    "descripcion": "Índice de avance de privatizaciones por ETAPAS (doc 260702). Cada empresa de la cartera Ley Bases se puntúa 0-4: 0 sin definir · 1 preparatoria (marco habilitante) · 2 pliegos/estructuración · 3 licitación abierta o adjudicación en curso · 4 operación cerrada. avance_pct = promedio(etapa)/4 × 100. No hay fuente única automatizable (la Agencia de Transformación de Empresas Públicas no publica dashboard; la Bicameral tampoco): mantener con seguimiento quincenal del Boletín Oficial.",
+    "fuente": "Boletín Oficial + doc CIGOB 260702 (tabla jun-2026)",
+    "actualizado": "2026-06-30",
+    "contexto": {
+      "recaudacion_efectiva_musd": 1081,
+      "meta_recaudacion_2026_musd": [2000, 3000],
+      "nota": "Recaudación ya obtenida: IMPSA, represas del Comahue, Citelec. Meta declarada Min. Economía para 2026."
+    }
+  },
+  "empresas": {
+    "AySA": {
+      "etapa": 3,
+      "mecanismo": "Concesión (90% acciones, 51% a operador estratégico)",
+      "hito": "Pliegos publicados 15-may-2026; apertura de sobres prevista 27-ago-2026"
+    },
+    "Transener": {
+      "etapa": 4,
+      "mecanismo": "Venta de acciones (vía Citelec, controlada por Enarsa)",
+      "hito": "Venta concretada por USD 356M, consorcio Genneia-Edison Transmisión"
+    },
+    "Enarsa": {
+      "etapa": 2.5,
+      "mecanismo": "División en unidades de negocio, concesión/venta por partes",
+      "hito": "Hidroeléctricas del Comahue adjudicadas (USD 700M); quedan termoeléctricas y gasoducto"
+    },
+    "Intercargo": {
+      "etapa": 2.5,
+      "mecanismo": "Concurso público nacional/internacional",
+      "hito": "En proceso de licitación, sin cierre reportado"
+    },
+    "Corredores Viales": {
+      "etapa": 3,
+      "mecanismo": "Concesión de obra pública por peaje (Dto. 97/2025)",
+      "hito": "Decreto 411/2026; oferta recibida para Tramo I"
+    },
+    "Belgrano Cargas": {
+      "etapa": 1.5,
+      "mecanismo": "Fragmentación en 7 concesiones + venta de material rodante",
+      "hito": "Decreto 282/2026 (material rodante); pliego integral en revisión, sin llamado formal"
+    },
+    "Nucleoeléctrica": {
+      "etapa": 1,
+      "mecanismo": "Venta parcial (44% en bloque + 5% PPP)",
+      "hito": "Decreto 695/24 habilitó; etapa preparatoria, sin licitación"
+    },
+    "YCRT": {
+      "etapa": 0.5,
+      "mecanismo": "Sin definir modalidad final",
+      "hito": "Sin fechas concretas"
+    },
+    "SOFSE": {
+      "etapa": 0.5,
+      "mecanismo": "Licitación de servicios, con control estatal residual",
+      "hito": "Sin fechas concretas"
+    }
+  }
+}

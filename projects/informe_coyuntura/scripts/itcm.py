@@ -72,8 +72,9 @@ macro.py como promedios ponderados de variaciones interanuales:
   mueven ±30-180% por la base 2024-2025): se usan BANDAS ANCHAS calibradas a la
   realidad, conservando la lógica contracción/neutro/expansión.
 """
-import json
 from pathlib import Path
+
+import parametrica
 
 INF = float("inf")
 
@@ -200,22 +201,16 @@ INDICADORES_CONTEXTO = ["badlar", "prestamos_privados", "base_monetaria", "tc_ma
 
 def puntaje_banda(valor: float, bandas: list) -> int:
     """Puntaje de la banda donde cae `valor` (low exclusivo, high inclusivo)."""
-    for low, high, puntaje in bandas:
-        if low < valor <= high:
-            return puntaje
-    raise ValueError(f"valor {valor} fuera de toda banda")
+    return parametrica.puntaje_banda(valor, bandas)
 
 
 def banda_interpretacion(itcm: float) -> str:
-    for low, high, etiqueta in BANDAS_INTERPRETACION:
-        if low < itcm <= high:
-            return etiqueta
-    raise ValueError(f"ITCM {itcm} fuera de rango")
+    return parametrica.banda_interpretacion(itcm, BANDAS_INTERPRETACION)
 
 
 def tension_de_itcm(itcm: float) -> float:
     """Tensión 0-10 del cinturón (convención del informe) derivada del ITCM."""
-    return round((100.0 - itcm) / 10.0, 1)
+    return parametrica.tension_de_indice(itcm)
 
 
 def anualizar_mensual(var_m_pct: float) -> float:
@@ -247,21 +242,7 @@ def indice_capacidad_prestable(precio: float, volumen: float, asignacion: float)
 
 def texto_bandas(indicador: str) -> str:
     """Texto legible de la tabla de bandas, para transparencia en el frontend."""
-    partes = []
-    for low, high, puntaje in BANDAS_ITCM[indicador]:
-        if low == -INF:
-            rango = f"≤{_num(high)}"
-        elif high == INF:
-            rango = f">{_num(low)}"
-        else:
-            rango = f"{_num(low)}–{_num(high)}"
-        partes.append(f"{rango} → {puntaje}")
-    return " · ".join(partes)
-
-
-def _num(x: float) -> str:
-    s = f"{x:g}"
-    return s.replace(".", ",")
+    return parametrica.texto_bandas(BANDAS_ITCM[indicador])
 
 
 def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
@@ -303,87 +284,17 @@ def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
 
 
 def cargar_ajustes(path: Path, periodo: str) -> dict:
-    """Lee los overrides del analista vigentes para `periodo` (YYYY-MM).
-
-    Formato del archivo: {indicador: {puntaje, justificacion, vigente_hasta}}.
-    Un ajuste con vigente_hasta < periodo está vencido y se ignora (evita
-    overrides zombis). Archivo ausente o vacío → sin ajustes.
-    """
-    path = Path(path)
-    if not path.exists():
-        return {}
-    with open(path, encoding="utf-8") as f:
-        ajustes = json.load(f)
-    return {
-        nombre: spec for nombre, spec in ajustes.items()
-        if spec.get("vigente_hasta", "9999-12") >= periodo
-    }
+    """Overrides del analista vigentes para `periodo` (ver parametrica.cargar_ajustes)."""
+    return parametrica.cargar_ajustes(path, periodo)
 
 
 def calcular_itcm(valores: dict, ajustes: dict | None = None) -> dict | None:
     """Calcula el ITCM a partir de {indicador: valor} (valores None se ignoran).
 
-    Renormaliza pesos ante faltantes: dentro de cada dimensión entre los
-    indicadores presentes, y entre dimensiones si alguna queda vacía
-    (consistente con el "ignorar ausencias" del resto del informe).
-
-    Devuelve {valor, banda, dimensiones, ajustes_aplicados} o None si no hay
-    ningún indicador del índice disponible. `peso_efectivo` por indicador es
-    el peso final post-renormalización (suman 1.0 entre los presentes).
+    Algoritmo común en parametrica.calcular_indice (renormalización ante
+    faltantes, overrides con vencimiento); acá solo se enchufan las tablas
+    del cinturón macro.
     """
-    ajustes = ajustes or {}
-    dimensiones = {}
-    ajustes_aplicados = []
-
-    for dkey, dim in DIMENSIONES_ITCM.items():
-        presentes = {}
-        for ikey, peso in dim["indicadores"].items():
-            valor = valores.get(ikey)
-            if valor is None:
-                continue
-            p_banda = puntaje_banda(float(valor), BANDAS_ITCM[ikey])
-            p_aplicado = p_banda
-            if ikey in ajustes:
-                p_aplicado = ajustes[ikey]["puntaje"]
-                ajustes_aplicados.append({
-                    "indicador": ikey,
-                    "de": p_banda,
-                    "a": p_aplicado,
-                    "justificacion": ajustes[ikey].get("justificacion", ""),
-                    "origen": ajustes[ikey].get("origen", "manual"),
-                })
-            presentes[ikey] = {"peso": peso, "puntaje_banda": p_banda,
-                               "puntaje_aplicado": p_aplicado}
-        if not presentes:
-            continue
-        suma_pesos = sum(i["peso"] for i in presentes.values())
-        for info in presentes.values():
-            info["peso_renorm"] = info["peso"] / suma_pesos
-        puntaje_dim = sum(i["puntaje_aplicado"] * i["peso_renorm"] for i in presentes.values())
-        dimensiones[dkey] = {
-            "nombre": dim["nombre"],
-            "peso": dim["peso"],
-            "puntaje": round(puntaje_dim, 1),
-            "indicadores": presentes,
-        }
-
-    if not dimensiones:
-        return None
-
-    suma_dim = sum(d["peso"] for d in dimensiones.values())
-    itcm = 0.0
-    for d in dimensiones.values():
-        d["peso_efectivo"] = round(d["peso"] / suma_dim, 4)
-        itcm += d["puntaje"] * d["peso"] / suma_dim
-        for info in d["indicadores"].values():
-            info["peso_efectivo"] = round(info["peso_renorm"] * d["peso"] / suma_dim, 4)
-            del info["peso_renorm"]
-    itcm = round(itcm, 1)
-
-    return {
-        "valor": itcm,
-        "banda": banda_interpretacion(itcm),
-        "banda_legible": INTERPRETACION_LEGIBLE[banda_interpretacion(itcm)],
-        "dimensiones": dimensiones,
-        "ajustes_aplicados": ajustes_aplicados,
-    }
+    return parametrica.calcular_indice(
+        valores, ajustes, BANDAS_ITCM, DIMENSIONES_ITCM,
+        BANDAS_INTERPRETACION, INTERPRETACION_LEGIBLE)

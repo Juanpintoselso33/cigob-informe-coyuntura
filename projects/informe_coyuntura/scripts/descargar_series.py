@@ -441,30 +441,22 @@ def fetch_infoleg_serie(texto: str) -> list:
 
 
 def fetch_reduccion_serie() -> list:
-    """Serie de la variación % del empleo público vs el baseline (último trimestre
-    ≤ 2024-01-01), misma fórmula que el indicador. Trimestral. [[YYYY-MM-DD, var%]]."""
-    data = sorted(fetch_indec(gestion.EMPLEO_PUBLICO_ID, limit=40), key=lambda x: x[0])
-    base = [(f, v) for f, v in data if f <= "2024-01-01"]
-    if not base:
-        return []
-    bdate, bval = base[-1][0], float(base[-1][1])
-    return [[f, round((float(v) - bval) / bval * 100, 2)] for f, v in data if f >= bdate]
+    """Serie de la variación % de la dotación APN vs dic-2023 (misma fórmula y
+    fuente que el indicador: XLSX mensual del INDEC). [[YYYY-MM-01, var%]]."""
+    serie = gestion.dotacion_apn_series()          # {YYYY-MM: dotación}
+    base = serie["2023-12"]
+    return [[f"{ym}-01", round((v - base) / base * 100, 2)]
+            for ym, v in sorted(serie.items()) if ym >= "2023-12"]
 
 
-def fetch_apertura_serie() -> list:
-    """Serie de la variación i.a. de importaciones totales (misma fórmula que el
-    indicador). Mensual. [[YYYY-MM-DD, var_ia]]."""
-    data = sorted(fetch_indec(gestion.IMPORTACIONES_ID, limit=48), key=lambda x: x[0])
-    return [[data[i][0], round((data[i][1] / data[i - 12][1] - 1) * 100, 2)]
-            for i in range(12, len(data)) if data[i - 12][1]]
-
-
+# apertura_comercial (ILCE) no tiene serie oficial reconstruible (la brecha
+# cambiaria histórica no es pública vía API): su evolución se acumula mes a mes
+# en data/historico/indicadores.json (publicar.acumular_historico).
 GESTION_DERIVADAS = [
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
     ("desregulacion_normativa", "Normas (conteo acum.)", "InfoLeg ('deroga' desde dic-2023)", lambda: fetch_infoleg_serie("deroga")),
     ("reestructuracion_organismos", "Normas (conteo acum.)", "InfoLeg ('disolucion' desde dic-2023)", lambda: fetch_infoleg_serie("disolucion")),
-    ("reduccion_estado", "% vs Q1-2024", "INDEC/datos.gob.ar (empleo público)", fetch_reduccion_serie),
-    ("apertura_comercial", "% interanual", "INDEC/datos.gob.ar (importaciones)", fetch_apertura_serie),
+    ("reduccion_estado", "% vs dic-2023", "INDEC (dotación APN mensual)", fetch_reduccion_serie),
 ]
 
 

@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 from config import PESOS_CINTURONES, UMBRALES        # pesos y umbrales del informe
 import itcm                                           # bandas y pesos del ITCM macro
+import itcg                                           # bandas y pesos del ITCG gestión
 
 
 def _add(out, key, valor, unidad, fuente, fecha, **extra):
@@ -227,20 +228,20 @@ SCORING = {
     "endeudamiento_familiar": (lambda v: 5 + v / 4,     "−20% real → 0 · 0% → 5 · +20% real → 10 (var. interanual real del crédito)", "var_real_12m"),
 }
 
-GESTION_MAPA = ("10 × (1 − avance/100): a mayor avance ejecutado, menor tensión. "
-                "100% → 0 · 50% → 5 · 0% → 10.")
-
 VIDA_CONTEXTO = ("Indicador de contexto. No se pudo calcular su variación interanual real "
                  "(falta la serie de crédito), por lo que no incide en el score en esta corrida.")
 
 MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
+GESTION_CONTEXTO = "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026)."
 
 SCORE_EXPLICACION = {
     "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: "
                        "estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, "
                        "actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."),
     "politica":       "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político.",
-    "gestion":        "Promedio simple de la tensión de sus 12 reformas: a mayor avance ejecutado, menor tensión.",
+    "gestion":        ("ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
+                       "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
+                       "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),
     "vida_cotidiana": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle.",
     "espiritu_epoca": ("Promedio simple de la tensión (0–10) de sus proxies (v1 provisional). "
                        "Mayor = más desconexión entre el gobierno y el humor social."),
@@ -278,31 +279,33 @@ def recomputar_vida_y_global(informe):
     return informe
 
 
-def _scoring_macro_itcm(c):
-    """Macro se puntúa con el ITCM que computa el colector: acá solo se traduce
-    cada puntaje 0-100 a tensión equivalente (para la semántica 0-10 del modal)
-    y se anota la tabla de bandas + peso en el índice. Los indicadores con
-    en_indice=false son contexto y no aportan."""
-    ajustes = {a["indicador"]: a for a in (c.get("itcm") or {}).get("ajustes_aplicados", [])}
+def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
+    """Cinturones con índice paramétrico (macro → ITCM, gestión → ITCG): el
+    puntaje lo computa el colector; acá solo se traduce cada puntaje 0-100 a
+    tensión equivalente (para la semántica 0-10 del modal) y se anota la tabla
+    de bandas + peso en el índice. Los indicadores con en_indice=false son
+    contexto y no aportan."""
+    ajustes = {a["indicador"]: a for a in (c.get(clave) or {}).get("ajustes_aplicados", [])}
+    sigla = clave.upper()
     for ikey, ind in c["indicadores"].items():
         aporte = formula = nota = None
-        p = ind.get("puntaje_itcm")
+        p = ind.get(f"puntaje_{clave}")
         if ind.get("en_indice") and isinstance(p, (int, float)):
             aporte = round((100 - p) / 10, 1)
             peso = ind.get("peso_efectivo")
-            peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + " del ITCM" if peso else ""
-            formula = (f"Banda ITCM: {itcm.texto_bandas(ikey)} "
+            peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {sigla}" if peso else ""
+            formula = (f"Banda {sigla}: {mod.texto_bandas(ikey)} "
                        f"(puntos 0–100; puntaje {p}{peso_txt})")
             if ikey in ajustes:
                 aj = ajustes[ikey]
                 origen = "automático" if aj.get("origen") == "automatico" else "del analista"
                 nota = f"Ajuste {origen}: banda {aj['de']} → {aj['a']}. {aj.get('justificacion', '')}"
         elif ind.get("en_indice") is False:
-            nota = MACRO_CONTEXTO
+            nota = contexto_txt
         ind["aporte_score"] = aporte
         ind["aporte_formula"] = formula
         ind["aporte_nota"] = nota
-        ind["aporte_input_txt"] = _macro_input_txt(ikey, ind)
+        ind["aporte_input_txt"] = input_txt_fn(ikey, ind)
 
 
 def _macro_input_txt(ikey, ind):
@@ -337,17 +340,39 @@ def _macro_input_txt(ikey, ind):
     return None
 
 
+def _gestion_input_txt(ikey, ind):
+    """'Valor usado' del modal para gestión: la descomposición del número que
+    puntúa (compuestos como el ILCE o el Fondo de Cese exponen componentes)."""
+    coma = lambda x: str(x).replace(".", ",")
+    if ind.get("detalle_txt"):                       # detalle rico (ej. RIGI oficial)
+        return ind["detalle_txt"]
+    if ikey == "apertura_comercial" and ind.get("componentes"):
+        c = ind["componentes"]
+        partes = [f"{n} {coma(v)}" for n, v in c.items() if v is not None]
+        return f"ILCE {coma(ind.get('valor'))} = " + " · ".join(partes)
+    if ikey == "fal_modernizacion_laboral" and ind.get("componentes"):
+        c = ind["componentes"]
+        partes = [f"{n} {coma(v)}" for n, v in c.items() if v is not None]
+        return f"índice {coma(ind.get('valor'))} = " + " · ".join(partes)
+    if ikey == "privatizaciones" and ind.get("etapa_promedio") is not None:
+        return (f"etapa promedio {coma(ind['etapa_promedio'])}/4 sobre "
+                f"{ind.get('empresas', '?')} empresas de la cartera Ley Bases")
+    return None
+
+
 def aplicar_scoring(informe):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo
     explica, y cada cinturón con cómo se compone su score."""
     for ckey, c in informe["cinturones"].items():
         c["score_explicacion"] = SCORE_EXPLICACION.get(ckey, "")
         if ckey == "macro":
-            _scoring_macro_itcm(c)
+            _scoring_indice(c, "itcm", itcm, MACRO_CONTEXTO, _macro_input_txt)
+            continue
+        if ckey == "gestion":
+            _scoring_indice(c, "itcg", itcg, GESTION_CONTEXTO, _gestion_input_txt)
             continue
         for ikey, ind in c["indicadores"].items():
             aporte = formula = nota = None
-            avance = ind.get("avance_pct")
             if ikey in SCORING:
                 spec = SCORING[ikey]
                 fn, mapa = spec[0], spec[1]
@@ -360,11 +385,6 @@ def aplicar_scoring(informe):
                         ind["aporte_input_txt"] = f"{entrada:+.1f}% interanual real (no el stock nominal)".replace(".", ",")
                 elif ckey == "vida_cotidiana":
                     nota = VIDA_CONTEXTO                          # input ausente → contexto
-            elif isinstance(avance, (int, float)):
-                aporte = _clamp10(10.0 * (1.0 - float(avance) / 100.0))
-                formula = GESTION_MAPA
-                if ind.get("detalle_txt"):                   # detalle rico (ej. RIGI oficial)
-                    ind["aporte_input_txt"] = ind["detalle_txt"]
             elif ckey == "vida_cotidiana":
                 nota = VIDA_CONTEXTO
             ind["aporte_score"] = aporte

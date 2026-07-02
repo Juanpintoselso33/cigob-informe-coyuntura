@@ -1,15 +1,15 @@
 ---
-periodo: "2026-06"
-generado: "2026-06-28 17:03:03"
-score_global: 4.0
-barbarismo_activo: "gerencial"
+periodo: "2026-07"
+generado: "2026-07-02 18:45:37"
+score_global: 3.5
+barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
 ---
 
-# Informe de Coyuntura — 2026-06
+# Informe de Coyuntura — 2026-07
 
-**Score global:** 4.0/10  |  **Riesgo dominante:** gerencial
+**Score global:** 3.5/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
@@ -58,23 +58,26 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
 
-### 🟡 Gestion — score 5.9/10 (en_tension)
+### 🟡 Gestion — score 3.1/10 (en_tension)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 4.37 | % de brecha | 2026-06-28 | fresco |
-| privatizaciones | En proceso — Aerolíneas y Correo sin transferencia efectiva | % empresas privatizadas efectivamente / listado DL 70/23 | 2026-05-01 | ⚠ cache |
-| concesiones_infraestructura | Parcial — corredores viales en licitación | % corredores viales concesionados / plan total (9 corredores) | 2026-05-01 | ⚠ cache |
-| reduccion_estado | -0.8 | % de variación (vs 2024-01-01) | 2025-10-01 | fresco |
-| reestructuracion_organismos | 18 | Normas (conteo) | 2026-06-28 | fresco |
-| rigi_inversiones | US$ 31.192M aprobados · 17 proyectos | % de inversión aprobada sobre el pipeline | 2026-06-28 | fresco |
-| desregulacion_normativa | 60 | Normas (conteo) | 2026-06-28 | fresco |
-| apertura_comercial | 42.4 | % interanual | 2025-02-01 | fresco |
-| asistencia_directa | None | % beneficiarios sociales con transferencia directa sin intermediación organizacional | 2026-04-01 | ⚠ cache |
-| fal_modernizacion_laboral | Legislación aprobada — reglamentación pendiente (H2 2026) | % implementación FAL (ley aprobada, reglamentación, operación) | 2026-05-22 | ⚠ cache |
-| libertad_opcion_salud | None | opciones de cambio captadas (SSS, acum. desde dic-2023) | 2026-04-01 | ⚠ cache |
-| protocolo_antipiquetes | None | % cortes con carril libre garantizado / total cortes registrados | 2026-04-01 | ⚠ cache |
+| cepo_mulc | 5.9 | % de brecha CCL/mayorista | 2026-07-02 | fresco |
+| apertura_comercial | 81.0 | Índice 0–100 (ILCE) | 2026-05-01 | fresco |
+| desregulacion_normativa | 60.0 | % de avance (proxy InfoLeg) | 2026-07-02 | fresco |
+| reduccion_estado | -19.8 | % de variación vs dic-2023 (dotación APN) | 2026-05-01 | fresco |
+| gasto_funcionamiento | -24.35 | % de variación real vs 2023-05 (IMIG funcionamiento) | 2026-05-01 | fresco |
+| masa_salarial | -22.98 | % de variación real vs 2023-05 (SPN remuneraciones) | 2026-05-01 | fresco |
+| reestructuracion_organismos | 40.0 | % de avance (proxy InfoLeg) | 2026-07-02 | fresco |
+| fal_modernizacion_laboral | 2.9 | Índice 0–100 (Fondo de Cese: cobertura + adopción financiera) | 2026-07-02 | fresco |
+| litigiosidad_laboral | 3.6 | % variación juicios SRT (12m vs 12m previos) | 2026-03-01 | fresco |
+| privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
+| rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-02 | fresco |
+| concesiones_infraestructura | 35 | % corredores viales concesionados / plan total (9 corredores) | 2026-06-30 | ⚠ cache |
+| asistencia_directa | 100 | TDPS: % del gasto social de ingreso pagado directo (sin Unidades de Gestión) | 2026-06-30 | ⚠ cache |
+| protocolo_antipiquetes | 55 | % de reducción de cortes por manifestación en CABA vs promedio 2023 | 2026-06-30 | ⚠ cache |
+| libertad_opcion_salud | 40 | % de avance de la desregulación de obras sociales (opciones de cambio) | 2026-04-01 | ⚠ cache |
 
 ### 🟡 Espiritu Epoca — score 3.2/10 (en_tension)
 *Riesgo de barbarismo: político*
@@ -88,7 +91,7 @@ schema_version: "1.2.0"
 ## Advertencias
 
 - `desactualizado:politica:cohesion_bloque,gobernadores_alineamiento`
-- `desactualizado:gestion:privatizaciones,concesiones_infraestructura,asistencia_directa,fal_modernizacion_laboral,libertad_opcion_salud,protocolo_antipiquetes`
+- `desactualizado:gestion:concesiones_infraestructura,asistencia_directa,protocolo_antipiquetes,libertad_opcion_salud`
 
 ---
-*Generado por CIGOB — 2026-06-28 17:03:03 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-02 18:45:37 — schema 1.2.0*

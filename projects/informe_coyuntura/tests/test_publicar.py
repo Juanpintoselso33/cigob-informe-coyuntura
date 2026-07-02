@@ -46,13 +46,14 @@ def test_espiritu_epoca_presente_y_coherente():
 
 def test_aporte_score_reconcilia_con_score_publicado():
     """El promedio de los aportes por indicador debe reproducir el score del
-    cinturón. Para política/gestión esto compara contra el score que computa
-    el colector de forma independiente: si una fórmula deriva, el test falla.
+    cinturón. Para política esto compara contra el score que computa el
+    colector de forma independiente: si una fórmula deriva, el test falla.
     Para vida el score se computa acá mismo a partir de los aportes (su scoring
     vive en publicar.py), así que la igualdad confirma coherencia interna.
-    Macro no es promedio simple (usa el ITCM ponderado) y se testea aparte."""
+    Macro y gestión no son promedio simple (usan ITCM/ITCG ponderados) y se
+    testean aparte."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
-    for ck in ("politica", "gestion", "vida_cotidiana"):
+    for ck in ("politica", "vida_cotidiana"):
         c = informe["cinturones"][ck]
         aportes = [i["aporte_score"] for i in c["indicadores"].values()
                    if i.get("aporte_score") is not None]
@@ -85,6 +86,37 @@ def test_macro_itcm_reconcilia():
     for k, i in en_indice.items():
         assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
         assert abs(i["aporte_score"] - round((100 - i["puntaje_itcm"]) / 10, 1)) <= 0.05
+
+
+def test_gestion_itcg_reconcilia():
+    """Gestión: la suma ponderada de los puntajes ITCG (peso_efectivo) reproduce
+    el ITCG publicado, la tensión del cinturón es (100 − ITCG)/10 y los
+    indicadores de contexto (litigiosidad SRT) no aportan al score."""
+    informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
+    c = informe["cinturones"]["gestion"]
+    assert c.get("itcg"), "gestión sin bloque itcg"
+    itcg_val = c["itcg"]["valor"]
+
+    en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
+    contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
+    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
+    assert set(contexto) == {"litigiosidad_laboral"}
+
+    ponderado = sum(i["puntaje_itcg"] * i["peso_efectivo"] for i in en_indice.values())
+    assert abs(ponderado - itcg_val) <= 0.15, f"ponderado {ponderado} != ITCG {itcg_val}"
+    assert abs(c["score"] - round((100 - itcg_val) / 10, 1)) <= 0.05
+
+    # Los pesos de dimensión del doc 260702 llegan publicados: 35/25/15/15/10.
+    pesos = {k: d["peso"] for k, d in c["itcg"]["dimensiones"].items()}
+    assert pesos == {"reformas_economicas": 0.35, "reforma_estado": 0.25,
+                     "reforma_laboral": 0.15, "privatizaciones_inversion": 0.15,
+                     "social_orden": 0.10}
+
+    for k, i in contexto.items():
+        assert i.get("aporte_score") is None, f"{k} es contexto pero tiene aporte_score"
+    for k, i in en_indice.items():
+        assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
+        assert abs(i["aporte_score"] - round((100 - i["puntaje_itcg"]) / 10, 1)) <= 0.05
 
 
 def test_pesos_por_fase_del_mandato():

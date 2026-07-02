@@ -1,129 +1,69 @@
 {
   "_meta": {
-    "descripcion": "Fallback manual para el cinturón gestión. Los colectores AUTO/SCRAPE sobreescriben estos valores cuando tienen datos frescos. Actualizar solo los indicadores marcados como 'manual' cuando haya nuevos datos. avance_pct (0-100) → score_tension = 10×(1-avance/100).",
-    "indicadores_manuales": [
-      "concesiones_infraestructura",
-      "asistencia_directa",
-      "fal_modernizacion_laboral",
-      "protocolo_antipiquetes"
+    "descripcion": "Fallback manual para el cinturón gestión (ITCG, doc 260702). Cada entrada define 'valor' = el INSUMO que bandea el ITCG (ver itcg.BANDAS_ITCG para la semántica por indicador). Los colectores AUTO sobreescriben estos valores cuando tienen datos frescos; los indicadores manuales se actualizan acá.",
+    "indicadores_auto": [
+      "cepo_mulc", "apertura_comercial", "desregulacion_normativa",
+      "reduccion_estado", "gasto_funcionamiento", "masa_salarial",
+      "reestructuracion_organismos", "privatizaciones", "rigi_inversiones"
     ],
-    "indicadores_auto": ["cepo_mulc", "reduccion_estado", "apertura_comercial", "desregulacion_normativa", "reestructuracion_organismos", "rigi_inversiones"],
-    "indicadores_bloqueados": {
-      "libertad_opcion_salud": "SSS fingerprinting back-end; retorna 'No se reportan datos' incluso con Playwright. Padrón datos.gob.ar congelado en 2019",
-      "privatizaciones": "contar normas ≠ privatización completada; BO sin API JSON; ComprAR es ASP.NET con __VIEWSTATE. Sin proxy confiable"
-    },
+    "indicadores_manuales": [
+      "concesiones_infraestructura", "fal_modernizacion_laboral",
+      "asistencia_directa", "protocolo_antipiquetes", "libertad_opcion_salud"
+    ],
     "pendiente_automatizacion": {
-      "concesiones_infraestructura": "Vialidad Nacional / ORSNA — sin API estructurada. Km concesionados activos publicados en informes PDF trimestrales.",
-      "asistencia_directa": "ANSES — padrón de beneficiarios no disponible vía API pública.",
-      "protocolo_antipiquetes": "Ministerio de Seguridad — sin registro estructurado de cortes público."
+      "protocolo_antipiquetes": "API Transporte GCBA (apitransporte.buenosaires.gob.ar): requiere registro manual (captcha) en /registro. Con credenciales, probar /transito/v1/eventos?month=YYYY-MM&provider=1 (histórico mensual con duración) y si está muerto, poller de /transito/v1/cortes (solo hacia adelante). Ver ADR-0013.",
+      "asistencia_directa": "API Presupuesto Abierto (token por mail en presupuestoabierto.gob.ar/sici/api-pac) o CSVs sin token en dgsiaf-repo.mecon.gob.ar/repository/pa/datasets/ — permite verificar transferencias a Unidades de Gestión vs pago directo.",
+      "fal_modernizacion_laboral": "CNV/CAFCI: patrimonio de FCI de cese laboral (RG 1071/2025). Cobertura CCT: buscador del Ministerio de Trabajo sin API (scraping de PDFs homologatorios). Litigiosidad: sin consolidado nacional.",
+      "libertad_opcion_salud": "SSS usa fingerprinting back-end; retorna 'No se reportan datos' incluso con Playwright. Padrón datos.gob.ar congelado en 2019."
     }
   },
-  "cepo_mulc": {
-    "valor": null,
-    "avance_pct": null,
-    "estado": "auto",
-    "unidad": "% brecha CCL/oficial (cepo corporativo)",
-    "fuente": "dolarapi.com/v1/dolares",
-    "notas": "Proxy CCL (contado con liquidación) vs oficial. El cepo minorista se levantó abr-2025; el CCL refleja la restricción que persiste para empresas (remesas, dividendos). Brecha 0%=avance 100%; 20%=avance 0%.",
-    "fecha_dato": null
-  },
-  "privatizaciones": {
-    "valor": "En proceso — Aerolíneas y Correo sin transferencia efectiva",
-    "avance_pct": 15,
+  "desregulacion_normativa": {
+    "valor": 57,
+    "unidad": "% de avance desregulatorio",
     "estado": "estimado",
-    "unidad": "% empresas privatizadas efectivamente / listado DL 70/23",
-    "fuente": "Boletín Oficial — transferencia efectiva de acciones",
-    "notas": "Aerolíneas Argentinas y Correo Argentino en proceso parlamentario/administrativo sin transferencia efectiva al cierre. Avance = empresas con transferencia de acciones completada / empresas listadas en DL 70/23, ponderado por impacto fiscal.",
-    "fecha_dato": "2026-05-01"
+    "fuente": "Doc CIGOB 260702 (57% de normas derogadas)",
+    "notas": "Fallback si InfoLeg no responde. El doc 260702 lee 57% de normas derogadas → banda 85 ('desregulación en marcha').",
+    "fecha_dato": "2026-06-30"
   },
   "concesiones_infraestructura": {
-    "valor": "Parcial — corredores viales en licitación",
-    "avance_pct": 35,
-    "estado": "estimado",
+    "valor": 35,
     "unidad": "% corredores viales concesionados / plan total (9 corredores)",
-    "fuente": "Vialidad Nacional / ORSNA — informes periódicos",
-    "notas": "Plan de 9 corredores viales (PPP). Algunos en proceso de licitación activa. Servicios aeroportuarios y ferroviarios parcialmente avanzados. Actualizar cuando Vialidad Nacional publique informe de concesiones activas.",
-    "fecha_dato": "2026-05-01"
-  },
-  "reduccion_estado": {
-    "valor": null,
-    "avance_pct": null,
-    "estado": "auto",
-    "unidad": "% var. empleo sector público vs baseline Q4-2023",
-    "fuente": "datos.gob.ar INDEC — serie 324.1_TOTAL_SECTAJO__36",
-    "notas": "Cargado automáticamente. Fallback si falla el colector: reducción ~10-15% estimada.",
-    "fecha_dato": null
-  },
-  "reestructuracion_organismos": {
-    "valor": null,
-    "avance_pct": 40,
     "estado": "estimado",
-    "unidad": "% organismos disueltos/fusionados/centralizados / plan original",
-    "fuente": "Boletín Oficial — decretos de disolución y fusión de organismos APN",
-    "notas": "Organismos reestructurados via DNU 70/23 y decretos posteriores. Secretarías reducidas de 106 a ~54 (mayo 2026). Actualizar con conteo de BO cada trimestre.",
-    "fecha_dato": "2026-04-01"
-  },
-  "rigi_inversiones": {
-    "valor": "13 proyectos aprobados — USD 27.210M",
-    "avance_pct": 29,
-    "estado": "estimado",
-    "unidad": "% USD aprobados / (aprobados + en carpeta)",
-    "fuente": "Ministerio de Economía — Comité RIGI (El Cronista, may-2026)",
-    "notas": "may-2026: 13 proyectos aprobados (USD 27.210M) + 22 en carpeta (USD 67.755M). avance = 27210/(27210+67755) = 28.7%. Actualizar mensualmente con datos del portal RIGI o prensa oficial.",
-    "fecha_dato": "2026-05-06"
-  },
-  "desregulacion_normativa": {
-    "valor": null,
-    "avance_pct": 45,
-    "estado": "estimado",
-    "unidad": "normas derogadas/modificadas desde dic-2023 (InfoLeg)",
-    "fuente": "InfoLeg (servicios.infoleg.gob.ar) + ILE Heritage Foundation (anual)",
-    "notas": "DL 70/23 + megadecreto 70/2023 derogaron miles de artículos. ILE Heritage 2025: Argentina subió posiciones. Colector intenta scraping de InfoLeg; avance_pct estimado si falla.",
-    "fecha_dato": "2026-04-01"
-  },
-  "apertura_comercial": {
-    "valor": null,
-    "avance_pct": null,
-    "estado": "auto",
-    "unidad": "% var. i.a. importaciones totales (proxy apertura, INDEC M USD)",
-    "fuente": "datos.gob.ar INDEC — serie 163.3_MTALTAL_0_0_7",
-    "notas": "Cargado automáticamente. Proxy: más importaciones = más apertura comercial.",
-    "fecha_dato": null
-  },
-  "asistencia_directa": {
-    "valor": null,
-    "avance_pct": 35,
-    "estado": "estimado",
-    "unidad": "% beneficiarios sociales con transferencia directa sin intermediación organizacional",
-    "fuente": "ANSES / MDS — Volver al Trabajo (ex Potenciar Trabajo)",
-    "notas": "Reforma del programa Potenciar Trabajo: migración a Volver al Trabajo con cobro directo. ~330.000 beneficiarios iniciales. Avance = % que ya cobra directamente / total. Actualizar con datos de ANSES transparencia.",
-    "fecha_dato": "2026-04-01"
+    "fuente": "Vialidad Nacional / Boletín Oficial (Dtos. 97/2025, 411/2026)",
+    "notas": "Corredores Viales: oferta recibida para Tramo I (Dto. 411/2026); resto en licitación. Indicadores del doc 260702: km bajo concesión adjudicada con obra iniciada / km totales del proceso. Actualizar con adjudicaciones del BO y CONTRAT.AR.",
+    "fecha_dato": "2026-06-30"
   },
   "fal_modernizacion_laboral": {
-    "valor": "Legislación aprobada — reglamentación pendiente (H2 2026)",
-    "avance_pct": 10,
+    "valor": 8,
+    "cobertura_cct_pct": 5,
+    "unidad": "Índice de Avance del Fondo de Cese 0-100 (cobertura CCT 40% + adopción financiera 30% + litigiosidad 30%, renormalizado a lo disponible)",
     "estado": "estimado",
-    "unidad": "% implementación FAL (ley aprobada, reglamentación, operación)",
-    "fuente": "La Nación, 22-may-2026 — MTEySS",
-    "notas": "FAL (Fondo de Asistencia Laboral) aprobado como parte de Ley de Modernización Laboral. Reglamentación incompleta: pendiente MTEySS, ARCA, ANSES, CNV. Fecha de inicio: H2-2026 (postergado de jun-2026). avance_pct = 10% (ley vigente, pendiente operación). Actualizar cuando entre en vigencia.",
-    "fecha_dato": "2026-05-22"
+    "fuente": "MTEySS / CNV RG 1071/2025 — elaboración CIGOB",
+    "notas": "El colector AUTO cuenta los FCI de cese en el registro CNV (hoy: 0) y toma cobertura_cct_pct de acá (estimación: pocos CCT homologados con Sistema de Cese; ~5% de asalariados bajo convenio). 'valor' solo opera como fallback si la CNV no responde. Reglamentación operativa plena postergada a H2-2026. Actualizar cobertura_cct_pct con: CCT homologados con cláusula de cese (buscador MTEySS) y grandes gremios que lo adopten.",
+    "fecha_dato": "2026-06-30"
   },
-  "libertad_opcion_salud": {
-    "valor": null,
-    "avance_pct": 40,
+  "asistencia_directa": {
+    "valor": 100,
+    "unidad": "TDPS: % del gasto social de ingreso pagado directo (sin Unidades de Gestión)",
     "estado": "estimado",
-    "unidad": "opciones de cambio captadas (SSS, acum. desde dic-2023)",
-    "fuente": "SSS — sssalud.gob.ar/index.php?page=opciones&cat=institucion",
-    "notas": "Desregulación obras sociales: libre elección de prepaga o OS. Colector intenta scraping de SSS estadísticas. Actualizar con total de opciones captadas desde dic-2023.",
-    "fecha_dato": "2026-04-01"
+    "fuente": "Dto. 198/2024 (Volver al Trabajo / Acompañamiento Social) — CIAS-Fundar como benchmark",
+    "notas": "El Dto. 198/2024 eliminó el componente de Unidades de Gestión del ex Potenciar Trabajo: pago 100% directo vía ANSES. TDPS = 1 − (monto a organizaciones / total ejecutado). Advertencia metodológica del doc: desintermediar y recortar son promesas distintas — esto mide solo la primera. Verificar contra ejecución presupuestaria cuando haya token de Presupuesto Abierto.",
+    "fecha_dato": "2026-06-30"
   },
   "protocolo_antipiquetes": {
-    "valor": null,
-    "avance_pct": 55,
+    "valor": 55,
+    "unidad": "% de reducción de cortes por manifestación en CABA vs promedio 2023",
     "estado": "estimado",
-    "unidad": "% cortes con carril libre garantizado / total cortes registrados",
-    "fuente": "Ministerio de Seguridad — elaboración CIGOB",
-    "notas": "Protocolo Antipiquetes (Res. 943/2023 Min. Seguridad). Sin fuente pública estructurada disponible. Requiere relevamiento propio o acceso a datos Min. Seguridad / Policía Federal. Actualizar manualmente cada trimestre.",
+    "fuente": "Diagnóstico Político (vía doc CIGOB 260702) — CABA",
+    "notas": "CABA: caída superior al 50% en 2024 sostenida en 2025 (240 cortes, 6,2% del total nacional vs 11,3% en 2023). ADVERTENCIA DE PRIMER ORDEN: protocolo anulado judicialmente el 29-dic-2025 (amparo CELS, juez Cormick), en apelación — la caída posterior ya no es atribuible al instrumento; usar ajustes_itcg.json si corresponde bajar el puntaje. Automatización pendiente: API Transporte GCBA (requiere registro).",
+    "fecha_dato": "2026-06-30"
+  },
+  "libertad_opcion_salud": {
+    "valor": 40,
+    "unidad": "% de avance de la desregulación de obras sociales (opciones de cambio)",
+    "estado": "estimado",
+    "fuente": "SSS — sssalud.gob.ar (bloqueado para scraping)",
+    "notas": "Desregulación obras sociales: libre elección de prepaga u OS vigente (DNU 70/23), con adopción parcial. SSS no expone datos estructurados (fingerprinting back-end). Actualizar manualmente con comunicados SSS/prensa.",
     "fecha_dato": "2026-04-01"
   }
 }

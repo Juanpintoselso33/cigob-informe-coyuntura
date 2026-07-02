@@ -216,9 +216,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Diaria", tipo: "Brecha (%)",
   },
   privatizaciones: {
-    que: "Cuánto avanza la transferencia efectiva de empresas públicas al sector privado.",
-    aporta: "Mide la ejecución de una reforma estructural emblema del Gobierno.",
-    frecuencia: "Mensual", tipo: "Avance de reforma",
+    que: "Cuánto avanza la privatización de la cartera de empresas públicas habilitada por la Ley Bases, medida por etapas verificables: 0 sin definir · 1 preparatoria · 2 pliegos · 3 licitación/adjudicación · 4 operación cerrada.",
+    aporta: "Mide la ejecución real de una reforma emblema — el promedio de etapas separa el anuncio del hecho consumado (una venta cerrada vale más que diez pliegos). Se mantiene con seguimiento del Boletín Oficial: no existe fuente única automatizable.",
+    frecuencia: "Quincenal (BO)", tipo: "Avance por etapas",
   },
   concesiones_infraestructura: {
     que: "Cuánto avanza la concesión de corredores viales y obras de infraestructura al sector privado.",
@@ -246,19 +246,29 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   apertura_comercial: {
-    que: "El grado de apertura de la economía al comercio exterior, aproximado por la variación interanual de las importaciones (proxy).",
-    aporta: "Aproxima cuánto se abre la economía al intercambio con el mundo.",
-    frecuencia: "Mensual", tipo: "Variación i.a.",
+    que: "El Índice de Libertad Comercial Efectiva (ILCE, 0–100): cuán libre, barato y predecible es operar el comercio exterior. Combina la brecha cambiaria inversa (la madre de todas las restricciones) y la alícuota efectiva (recaudación de derechos de importación y exportación sobre el intercambio total del ICA).",
+    aporta: "No mide cuántos dólares entran o salen (eso puede ser una buena cosecha): mide si el Estado desmantela los parches regulatorios y cambiarios que encarecen el comercio. Lectura: >90 economía integrada · 70–90 apertura condicionada · <70 economía reprimida.",
+    frecuencia: "Mensual", tipo: "Índice (0–100)",
+  },
+  gasto_funcionamiento: {
+    que: "Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023.",
+    aporta: "La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal.",
+    frecuencia: "Mensual", tipo: "Variación real",
+  },
+  masa_salarial: {
+    que: "Cuánto varía en términos reales la masa salarial del personal del Estado nacional respecto de 2023.",
+    aporta: "Filtra el efecto de la inflación sobre plantas nominales: complementa a la dotación (personas) con el costo salarial real.",
+    frecuencia: "Mensual", tipo: "Variación real",
   },
   asistencia_directa: {
-    que: "Qué porcentaje de los beneficios sociales se paga directo al beneficiario, sin intermediación de organizaciones.",
-    aporta: "Mide la reforma del esquema de asistencia social y el corte de intermediarios.",
-    frecuencia: "Mensual", tipo: "Avance de reforma",
+    que: "La Tasa de Desintermediación de Planes Sociales (TDPS): qué porcentaje del gasto social de ingreso se paga directo al beneficiario, sin pasar por Unidades de Gestión u organizaciones intermediarias.",
+    aporta: "El Decreto 198/2024 eliminó el esquema de intermediación del ex Potenciar Trabajo: un cambio normativo puntual y fechado, verificable en la ejecución presupuestaria. Ojo: desintermediar y recortar son dos cosas distintas — esto mide solo la primera.",
+    frecuencia: "Trimestral", tipo: "Avance de reforma",
   },
   fal_modernizacion_laboral: {
-    que: "Cuánto avanza la modernización del régimen laboral.",
-    aporta: "Indica el progreso de la reforma del régimen de trabajo.",
-    frecuencia: "Por hito", tipo: "Avance de reforma",
+    que: "El avance del Sistema de Cese Laboral (Ley Bases · Dto. 847/2024 · RG CNV 1071/2025): adopción en convenios colectivos, cobertura de trabajadores y dinero efectivamente puesto en fondos de cese.",
+    aporta: "Es el indicador bisagra de la reforma laboral: el propio Gobierno lo presenta como la herramienta central contra la litigiosidad. No se impone por ley — se pacta por convenio —, así que su adopción mide si la reforma prende de verdad.",
+    frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
   libertad_opcion_salud: {
     que: "Cuántos afiliados ejercen el cambio de obra social (libre elección).",
@@ -266,8 +276,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Trimestral", tipo: "Avance de reforma",
   },
   protocolo_antipiquetes: {
-    que: "En qué porcentaje de los cortes de calle se garantiza un carril libre.",
-    aporta: "Mide la aplicación del protocolo de orden público en la vía pública.",
-    frecuencia: "Mensual", tipo: "Avance de reforma",
+    que: "En qué porcentaje se redujeron los cortes de calle por manifestación en CABA respecto del promedio 2023 (el distrito donde actúan las fuerzas federales y aplica el protocolo).",
+    aporta: "Mide el restablecimiento del orden público que prometió el Gobierno, donde le es atribuible. Advertencia de primer orden: el protocolo fue anulado judicialmente (29-dic-2025, en apelación) — una caída de cortes posterior ya no es atribuible al instrumento.",
+    frecuencia: "Mensual", tipo: "Variación vs. base 2023",
   },
 };

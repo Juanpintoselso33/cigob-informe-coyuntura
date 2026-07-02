@@ -9,13 +9,15 @@ Colectores de datos para los cinco cinturones del marco CIGOB-Matus (Macro, Pol�
 | Vida Cotidiana | 14 + 1 manual | 14 | 1 | 0 |
 | Macro | 11 (7 en el ITCM + 4 contexto) | 11 | 0 | 0 |
 | Político | 9 | 7 | 2 | 0 |
-| Gestión | 12 | 6 | 4 | 2 |
+| Gestión | 15 (14 en el ITCG + 1 contexto) | 11 | 4 | 0 |
 | Espíritu de Época | 3 (v1, proxies compartidos) | 3 | 0 | 0 |
 
-El cinturón macro se puntúa con el **ITCM** (índice paramétrico 0–100 con 4 dimensiones
-ponderadas — ver `docs/cinturon_macro.md`); el resto promedia tensiones 0–10. El score
-global pondera los cinco cinturones por fase del mandato (`config.py`: fase temprana
-20% parejo; consolidación 25/25/20/15/15, según la ponderación temporal del Marco Conceptual).
+Macro y gestión se puntúan con índices paramétricos 0–100 de dimensiones ponderadas
+(**ITCM**, ver `docs/cinturon_macro.md`, y **ITCG**, 5 dimensiones 35/25/15/15/10 del
+doc 260702 — ver `docs/adr/0013-itcg-parametrica-gestion.md`; motor común en
+`scripts/parametrica.py`); el resto promedia tensiones 0–10. El score global pondera
+los cinco cinturones por fase del mandato (`config.py`: fase temprana 20% parejo;
+consolidación 25/25/20/15/15, según la ponderación temporal del Marco Conceptual).
 
 Documento de referencia con detalle por indicador: [`docs/260523_proyecto_pais_estado_extraccion.md`](docs/260523_proyecto_pais_estado_extraccion.md).
 
@@ -40,7 +42,7 @@ Desde la carpeta `projects/informe_coyuntura/`:
 ```bash
 python scripts/macro.py                    # 11 indicadores macro
 python scripts/politica.py                 # 7 auto + 2 manual
-python scripts/gestion.py                  # 6 auto + 4 manual + 2 sin fuente
+python scripts/gestion.py                  # ITCG: 11 auto + 4 manual
 python scripts/vida_cotidiana/main.py      # 8 fuentes, ~32 datapoints
 python scripts/espiritu_epoca.py           # 3 proxies (corre después de vida y política)
 ```
@@ -104,7 +106,9 @@ projects/informe_coyuntura/
 ├── README.md                              # este archivo
 ├── requirements.txt                       # dependencias generales
 ├── data/
-│   ├── gestion/manuales.json              # fallback Gestión
+│   ├── gestion/manuales.json              # fallback Gestión (insumos del ITCG)
+│   ├── gestion/privatizaciones.json       # etapas 0-4 por empresa (Ley Bases, BO)
+│   ├── gestion/ajustes_itcg.json          # overrides del analista sobre el ITCG
 │   ├── macro/ajustes_itcm.json            # overrides del analista sobre el ITCM
 │   └── politica/manuales.json             # fallback Político
 ├── docs/
@@ -123,8 +127,10 @@ projects/informe_coyuntura/
 └── scripts/
     ├── espiritu_epoca.py                  # 3 proxies del humor social (v1)
     ├── generar_informe.py
-    ├── gestion.py                         # 12 indicadores
+    ├── gestion.py                         # 15 indicadores (ITCG)
+    ├── itcg.py                            # bandas y fórmula del ITCG gestión
     ├── itcm.py                            # bandas y fórmula del ITCM macro
+    ├── parametrica.py                     # motor común de los índices paramétricos
     ├── macro.py                           # 11 indicadores (ITCM)
     ├── politica.py                        # 9 indicadores
     ├── vida_cotidiana.py                  # puente legacy al orquestador global

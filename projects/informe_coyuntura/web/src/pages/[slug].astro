@@ -6,7 +6,7 @@ import IndicadorTile from "../components/IndicadorTile.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import {
   informe, CINTURONES, verdictDeCinturon, indicadoresOrdenados,
-  fuentesDeCinturon, cap,
+  fuentesDeCinturon, cap, indiceDe,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -23,6 +23,7 @@ const filas = indicadoresOrdenados(c);
 const filasIndice = filas.filter(({ ind }) => ind.en_indice !== false);
 const filasContexto = filas.filter(({ ind }) => ind.en_indice === false);
 const fuentes = fuentesDeCinturon(c);
+const indice = indiceDe(c);   // ITCM (macro) / ITCG (gestión) o null
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 <Layout title={`${meta.nombre} · Informe de Coyuntura · CiGob`}>
@@ -35,26 +36,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="cg-detalle-meta">
         <span class:list={["cg-verdict", verdict]}><span class="cg-verdict-dot"></span>{verdictLabel}</span>
         <span class="cg-detalle-chip">Score <strong>{c.score}/10</strong></span>
-        {c.itcm && <span class="cg-detalle-chip">ITCM <strong>{c.itcm.valor}/100</strong> · {c.itcm.banda_legible}</span>}
+        {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{indice.data.valor}/100</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} indicadores</span>
       </div>
     </div>
   </header>
   <main class="cg-main">
-    {c.itcm && (
+    {indice && (
       <section class="cg-section">
         <div class="cg-section-head">
           <p class="cg-eyebrow">Índice paramétrico</p>
-          <h2 class="cg-h2">ITCM: {c.itcm.valor}/100 — {c.itcm.banda_legible}</h2>
-          <p class="cg-h2-sub">
-            Índice de Tensión del Cinturón Macroeconómico (paramétrica CIGOB, may-2026).
-            0 = cinturón severamente apretado, 100 = aflojado. Pondera seis dimensiones;
-            la tensión del cinturón ({c.score}/10) es (100 − ITCM) / 10.
-          </p>
+          <h2 class="cg-h2">{indice.sigla}: {indice.data.valor}/100 — {indice.data.banda_legible}</h2>
+          <p class="cg-h2-sub">{indice.descripcion}</p>
         </div>
         <div class="cg-itcm-dims">
-          {Object.entries(c.itcm.dimensiones).map(([dkey, dim]) => (
+          {Object.entries(indice.data.dimensiones).map(([dkey, dim]) => (
             <div class="cg-itcm-dim">
               <div class="cg-itcm-dim-head">
                 <span class="cg-itcm-dim-name">{dim.nombre}</span>
@@ -66,10 +63,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             </div>
           ))}
         </div>
-        {c.itcm.ajustes_aplicados.length > 0 && (
+        {indice.data.ajustes_aplicados.length > 0 && (
           <p class="cg-h2-sub" style="margin-top:12px;">
             <strong>Ajustes del analista:</strong>{" "}
-            {c.itcm.ajustes_aplicados.map(a => `${a.indicador}: ${a.de} → ${a.a} (${a.justificacion})`).join(" · ")}
+            {indice.data.ajustes_aplicados.map(a => `${a.indicador}: ${a.de} → ${a.a} (${a.justificacion})`).join(" · ")}
           </p>
         )}
       </section>
@@ -79,7 +76,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         <p class="cg-eyebrow">Indicadores</p>
         <h2 class="cg-h2">El detalle, hoy</h2>
         <p class="cg-h2-sub">
-          {c.itcm
+          {indice
             ? "Los que construyen el índice de tensión. Tocá cualquiera para ver qué mide, qué aporta y su evolución. Automatizados primero; carga manual y estimaciones al final."
             : "Tocá cualquier indicador para ver qué mide, qué aporta y su evolución. Automatizados primero; carga manual y estimaciones al final."}
         </p>
@@ -94,7 +91,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         <div class="cg-section-head">
           <p class="cg-eyebrow">Contexto</p>
           <h2 class="cg-h2">No integran el índice</h2>
-          <p class="cg-h2-sub">Datos de seguimiento que ayudan a leer el cinturón pero <strong>no construyen la tensión</strong> del ITCM: quedan fuera del cálculo para que el indicador sea transparente.</p>
+          <p class="cg-h2-sub">Datos de seguimiento que ayudan a leer el cinturón pero <strong>no construyen la tensión</strong> del {indice?.sigla ?? "índice"}: quedan fuera del cálculo para que el indicador sea transparente.</p>
         </div>
         <div class="cg-tile-grid">
           {filasContexto.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
@@ -106,6 +103,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <p class="cg-eyebrow">Fuentes</p>
       <ul>{fuentes.map(f => <li>{f}</li>)}</ul>
     </section>
+
+    {meta.key === "gestion" && (
+      <section class="cg-section cg-nota-met">
+        <p class="cg-eyebrow">Nota metodológica</p>
+        <p>
+          El cinturón mide la <strong>brecha entre lo prometido y lo ejecutado</strong> de la
+          agenda de reformas, en cinco dimensiones (paramétrica CIGOB, jul-2026). La{" "}
+          <strong>apertura comercial</strong> se puntúa con el <strong>ILCE</strong> (Índice de
+          Libertad Comercial Efectiva): brecha cambiaria inversa más la <strong>alícuota
+          efectiva</strong> del comercio exterior (recaudación de derechos de importación y
+          exportación sobre el intercambio total); el componente aduanero (canal verde) no tiene
+          fuente pública estructurada y queda fuera. Las <strong>privatizaciones</strong> avanzan
+          por <strong>etapas verificables</strong> (0 = sin definir → 4 = operación cerrada) sobre
+          la cartera habilitada por la Ley Bases, no por conteo de anuncios. La{" "}
+          <strong>reforma laboral</strong> sigue el <strong>Fondo de Cese</strong> (el propio
+          decreto 847/2024 lo presenta como la herramienta central contra la litigiosidad). La{" "}
+          <strong>asistencia directa</strong> mide la desintermediación del gasto social (TDPS) y
+          el <strong>orden público</strong>, la reducción de cortes en CABA vs. 2023 — con la
+          advertencia de que el protocolo está judicialmente cuestionado (anulado en dic-2025, en
+          apelación). El <strong>score {c.score}/10</strong> y el{" "}
+          <strong>ITCG {c.itcg?.valor}/100</strong> son la misma medición en dos escalas:
+          tensión = (100 − ITCG) / 10.
+        </p>
+      </section>
+    )}
 
     {meta.key === "macro" && (
       <section class="cg-section cg-nota-met">
