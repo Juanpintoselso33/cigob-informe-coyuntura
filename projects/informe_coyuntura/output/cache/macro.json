@@ -1,9 +1,9 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-01T07:00:58.088339",
-  "score": 4.1,
+  "generated_at": "2026-07-02T06:28:00.803779",
+  "score": 4.5,
   "itcm": {
-    "valor": 58.9,
+    "valor": 55.3,
     "banda": "moderadamente_apretado",
     "banda_legible": "Moderadamente apretado",
     "dimensiones": {
@@ -56,18 +56,18 @@
       "financiamiento": {
         "nombre": "Capacidad de financiamiento",
         "peso": 0.16,
-        "puntaje": 45.0,
+        "puntaje": 22.5,
         "indicadores": {
           "reservas_bcra": {
             "peso": 0.5,
-            "puntaje_banda": 30,
-            "puntaje_aplicado": 30,
+            "puntaje_banda": 10,
+            "puntaje_aplicado": 10,
             "peso_efectivo": 0.08
           },
           "idc": {
             "peso": 0.5,
-            "puntaje_banda": 60,
-            "puntaje_aplicado": 60,
+            "puntaje_banda": 35,
+            "puntaje_aplicado": 35,
             "peso_efectivo": 0.08
           }
         },
@@ -138,49 +138,46 @@
       "peso_efectivo": 0.104
     },
     "reservas_bcra": {
-      "valor": 4122.0,
+      "valor": -3222.0,
       "unidad": "Millones de USD",
       "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
-      "fecha_dato": "31/05/26",
-      "netas_sdds_estricto": -1605.0,
-      "depositos_tesoro": 3058.0,
-      "bopreal_12m": 2670.0,
-      "reservas_brutas": 48193.0,
-      "drenaje_prestamos_dep": -22197.0,
-      "drenaje_swaps": -19216.0,
-      "drenaje_repos": -8385.0,
-      "metodo": "sdds+tesoro+bopreal",
+      "fecha_dato": "2026-06-29",
+      "netas_sdds_estricto": -3222.0,
+      "depositos_tesoro": 0.0,
+      "reservas_brutas": 46577.0,
+      "drenajes_actualizado": "2026-05-31",
+      "metodo": "config_fallback",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 30,
-      "puntaje_banda": 30,
+      "puntaje_itcm": 10,
+      "puntaje_banda": 10,
       "peso_efectivo": 0.08
     },
     "idc": {
-      "valor": 0.9951,
+      "valor": 0.9611,
       "unidad": "Índice (~1,0)",
       "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
-      "fecha_dato": "2026-06-25",
+      "fecha_dato": "2026-06-26",
       "componentes": {
         "precio": 0.9945,
-        "volumen": 0.9895,
-        "asignacion": 1.003
+        "volumen": 0.9731,
+        "asignacion": 0.9118
       },
       "badlar_real_mensual": -0.55,
-      "semaforo": "amarillo",
+      "semaforo": "rojo",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 60,
-      "puntaje_banda": 60,
+      "puntaje_itcm": 35,
+      "puntaje_banda": 35,
       "peso_efectivo": 0.08
     },
     "badlar": {
       "valor": 21.0,
       "unidad": "% anual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-06-29",
+      "fecha_dato": "2026-06-30",
       "desactualizado": false,
       "en_indice": false
     },
@@ -229,11 +226,11 @@
       "peso_efectivo": 0.144
     },
     "tcrm": {
-      "valor": 84.96,
-      "unidad": "Índice (base dic-2015=100)",
-      "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
-      "fecha_dato": "2026-06-01",
-      "desactualizado": false,
+      "valor": 79.77,
+      "unidad": "Índice (base 2010=100)",
+      "fuente": "https://apis.datos.gob.ar/series/api/series/",
+      "fecha_dato": "2024-12-01",
+      "desactualizado": true,
       "en_indice": true,
       "dimension": "competitividad_externa",
       "puntaje_itcm": 35,
@@ -261,7 +258,7 @@
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
       "m3_real_ia": -2.46,
-      "m2_real_ia": -6.79,
+      "m2_real_ia": -6.78,
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
       "puntaje_itcm": 60,
@@ -303,26 +300,26 @@
       "peso_efectivo": 0.048
     },
     "prestamos_privados": {
-      "valor": 2.52,
+      "valor": 3.59,
       "unidad": "% mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-06-26",
+      "fecha_dato": "2026-06-29",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 4.25,
+      "valor": 4.11,
       "unidad": "% mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-06-26",
+      "fecha_dato": "2026-06-29",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 3.93,
+      "valor": 3.65,
       "unidad": "% mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-06-30",
+      "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "en_indice": false
     }
