@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-02T19:09:30.653185",
+  "generated_at": "2026-07-02T19:45:35.575296",
   "score": 3.1,
   "itcg": {
     "valor": 68.5,
@@ -307,13 +307,18 @@
       "peso_efectivo": 0.03
     },
     "asistencia_directa": {
-      "valor": 100,
-      "unidad": "TDPS: % del gasto social de ingreso pagado directo (sin Unidades de Gestión)",
-      "fuente": "Dto. 198/2024 (Volver al Trabajo / Acompañamiento Social) — CIAS-Fundar como benchmark",
-      "fecha_dato": "2026-06-30",
-      "estado": "estimado",
-      "notas": "El Dto. 198/2024 eliminó el componente de Unidades de Gestión del ex Potenciar Trabajo: pago 100% directo vía ANSES. TDPS = 1 − (monto a organizaciones / total ejecutado). Advertencia metodológica del doc: desintermediar y recortar son promesas distintas — esto mide solo la primera. Verificar contra ejecución presupuestaria cuando haya token de Presupuesto Abierto.",
-      "desactualizado": true,
+      "valor": 100.0,
+      "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
+      "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
+      "fecha_dato": "2026-07-02",
+      "desactualizado": false,
+      "ejercicio": 2026,
+      "componentes": {
+        "directo_musd": 527680,
+        "intermediado_musd": 0,
+        "tdps_2023": 98.3
+      },
+      "detalle_txt": "Devengado 2026: $ 527.680M directo a personas (5.1.4) / $ 527.680M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
       "en_indice": true,
       "dimension": "social_orden",
       "puntaje_itcg": 100,
@@ -326,7 +331,7 @@
       "fuente": "Diagnóstico Político (vía doc CIGOB 260702) — CABA",
       "fecha_dato": "2026-06-30",
       "estado": "estimado",
-      "notas": "CABA: caída superior al 50% en 2024 sostenida en 2025 (240 cortes, 6,2% del total nacional vs 11,3% en 2023). ADVERTENCIA DE PRIMER ORDEN: protocolo anulado judicialmente el 29-dic-2025 (amparo CELS, juez Cormick), en apelación — la caída posterior ya no es atribuible al instrumento; usar ajustes_itcg.json si corresponde bajar el puntaje. Automatización pendiente: API Transporte GCBA (requiere registro).",
+      "notas": "CABA: caída superior al 50% en 2024 sostenida en 2025 (240 cortes, 6,2% del total nacional vs 11,3% en 2023). ADVERTENCIA DE PRIMER ORDEN: protocolo anulado judicialmente el 29-dic-2025 (amparo CELS, juez Cormick), en apelación — la caída posterior ya no es atribuible al instrumento; usar ajustes_itcg.json si corresponde bajar el puntaje. Automatización EN CURSO: el poller GTFS-RT (alertas_manifestacion) acumula serie propia desde jul-2026 (ADR-0014); el registro histórico oficial del GCBA está muerto.",
       "desactualizado": true,
       "en_indice": true,
       "dimension": "social_orden",

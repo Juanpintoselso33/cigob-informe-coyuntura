@@ -57,6 +57,7 @@ jobs:
         env:
           BA_TRANSPORTE_CLIENT_ID: ${{ secrets.BA_TRANSPORTE_CLIENT_ID }}
           BA_TRANSPORTE_CLIENT_SECRET: ${{ secrets.BA_TRANSPORTE_CLIENT_SECRET }}
+          PRESUPUESTO_ABIERTO_TOKEN: ${{ secrets.PRESUPUESTO_ABIERTO_TOKEN }}
         run: |
           set +e
           python scripts/macro.py;               echo "::notice::macro exit=$?"
@@ -107,7 +108,8 @@ jobs:
                   projects/informe_coyuntura/data/historico/indicadores.json \
                   projects/informe_coyuntura/data/macro/patentamientos_comerciales.json \
                   projects/informe_coyuntura/data/gestion/rigi_fechas.json \
-                  projects/informe_coyuntura/data/gestion/piquetes_alertas.json
+                  projects/informe_coyuntura/data/gestion/piquetes_alertas.json \
+                  projects/informe_coyuntura/data/gestion/tdps_baseline_2023.json
           if git diff --staged --quiet; then
             echo "::notice::Sin cambios en datos — no se commitea."
           else

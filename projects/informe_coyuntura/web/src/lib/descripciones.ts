@@ -261,9 +261,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación real",
   },
   asistencia_directa: {
-    que: "La Tasa de Desintermediación de Planes Sociales (TDPS): qué porcentaje del gasto social de ingreso se paga directo al beneficiario, sin pasar por Unidades de Gestión u organizaciones intermediarias.",
-    aporta: "El Decreto 198/2024 eliminó el esquema de intermediación del ex Potenciar Trabajo: un cambio normativo puntual y fechado, verificable en la ejecución presupuestaria. Ojo: desintermediar y recortar son dos cosas distintas — esto mide solo la primera.",
-    frecuencia: "Trimestral", tipo: "Avance de reforma",
+    que: "La Tasa de Desintermediación de Planes Sociales (TDPS): qué porcentaje del devengado de Volver al Trabajo y Acompañamiento Social se paga directo al beneficiario (partida 5.1.4, ayudas sociales a personas) sobre el total transferido, según la ejecución presupuestaria real.",
+    aporta: "Verifica contra el presupuesto — no contra el anuncio — que el Decreto 198/2024 eliminó la intermediación de las Unidades de Gestión: en 2023 el Potenciar Trabajo transfería ~$17.000M vía organizaciones y cooperativas; hoy el 100% va directo a personas. Ojo: desintermediar y recortar son dos cosas distintas — esto mide solo la primera.",
+    frecuencia: "Mensual (devengado SIDIF)", tipo: "Avance de reforma",
   },
   fal_modernizacion_laboral: {
     que: "El avance del Sistema de Cese Laboral (Ley Bases · Dto. 847/2024 · RG CNV 1071/2025): adopción en convenios colectivos, cobertura de trabajadores y dinero efectivamente puesto en fondos de cese.",

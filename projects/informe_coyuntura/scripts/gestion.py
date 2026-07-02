@@ -21,17 +21,20 @@ CINCO DIMENSIONES (35/25/15/15/10):
      store data/gestion/privatizaciones.json actualizado con el BO),
      rigi_inversiones (plataforma oficial, ADR-0011),
      concesiones_infraestructura (manual).
-  5. Reforma social y orden — asistencia_directa (TDPS, Dto. 198/2024),
-     protocolo_antipiquetes (reducción de cortes CABA vs 2023, manual: la API
-     Transporte GCBA requiere registro; ver ADR-0013),
+  5. Reforma social y orden — asistencia_directa (TDPS contra la ejecución
+     presupuestaria real, API Presupuesto Abierto, ADR-0015),
+     protocolo_antipiquetes (reducción de cortes CABA vs 2023, manual: el
+     registro histórico del GCBA está muerto; el poller GTFS-RT acumula la
+     serie que lo reemplazará, ADR-0014),
      libertad_opcion_salud (manual: SSS con fingerprinting back-end).
 
-Indicadores AUTO (9): cepo_mulc, apertura_comercial, desregulacion_normativa,
+Indicadores AUTO (13): cepo_mulc, apertura_comercial, desregulacion_normativa,
   reduccion_estado, gasto_funcionamiento, masa_salarial,
-  reestructuracion_organismos, privatizaciones (store curado), rigi_inversiones.
-Indicadores manuales (5, en manuales.json): concesiones_infraestructura,
-  fal_modernizacion_laboral, asistencia_directa, protocolo_antipiquetes,
-  libertad_opcion_salud.
+  reestructuracion_organismos, fal_modernizacion_laboral (CNV),
+  litigiosidad_laboral (contexto), privatizaciones (store curado),
+  rigi_inversiones, asistencia_directa (TDPS), alertas_manifestacion (contexto).
+Indicadores manuales (3, en manuales.json): concesiones_infraestructura,
+  protocolo_antipiquetes, libertad_opcion_salud.
 
 Nota INDEC www: el WAF de indec.gob.ar resetea el handshake TLS de Python
 (fingerprinting del ClientHello); el fetch del XLSX cae a curl como fallback.
@@ -1009,6 +1012,137 @@ def fetch_alertas_manifestacion() -> dict | None:
         return None
 
 
+# ── D5: TDPS — asistencia directa (API Presupuesto Abierto, ADR-0015) ─────────
+# TDPS = 100 × (pago directo a personas / total de transferencias del programa).
+# "Directo" = partida 5.1.4 "Ayudas sociales a personas y asignaciones
+# familiares" (clasificador por objeto del gasto); todo el resto del inciso 5
+# (instituciones sin fines de lucro, cooperativas, municipios) es plata que
+# llega al beneficiario a través de un tercero — las "Unidades de Gestión" que
+# el Dto. 198/2024 eliminó. Programas sucesores: actividades "Volver al
+# Trabajo" y "Acompañamiento Social"; baseline: Potenciar Trabajo 2023
+# (jurisdicción 85, programa 38), cacheado porque el ejercicio está cerrado.
+
+PA_CREDITO_URL = "https://www.presupuestoabierto.gob.ar/api/v1/credito"
+TDPS_ACTIVIDADES = ("Volver al Trabajo", "Acompañamiento Social")
+TDPS_BASELINE_PATH = PROJECT_DIR / "data" / "gestion" / "tdps_baseline_2023.json"
+
+
+def _pa_token() -> str | None:
+    """Token de la API Presupuesto Abierto: env PRESUPUESTO_ABIERTO_TOKEN (CI)
+    o .env local gitignored."""
+    token = os.environ.get("PRESUPUESTO_ABIERTO_TOKEN")
+    if not token and ENV_PATH.exists():
+        for linea in ENV_PATH.read_text(encoding="utf-8").splitlines():
+            if linea.strip().startswith("PRESUPUESTO_ABIERTO_TOKEN="):
+                token = linea.partition("=")[2].strip().strip('"').strip("'")
+    return token or None
+
+
+def _pa_credito(token: str, ejercicio: int, filtros: list) -> list:
+    """Consulta de crédito agrupada por partida (inciso.principal.parcial)."""
+    body = {
+        "ejercicios": [ejercicio],
+        "columns": ["inciso_id", "principal_id", "parcial_id", "parcial_desc",
+                    "credito_devengado"],
+        "filters": filtros,
+    }
+    r = requests.post(PA_CREDITO_URL, params={"format": "json"}, json=body,
+                      headers={**HTTP_HEADERS, "Authorization": token},
+                      timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    return r.json()
+
+
+def _tdps_de_partidas(rows: list) -> dict:
+    """TDPS desde filas {inciso_id, principal_id, parcial_id, credito_devengado}:
+    directo = 5.1.4 · total = inciso 5 completo. Montos en millones de ARS."""
+    directo = total = 0.0
+    for r in rows:
+        try:
+            if int(r.get("inciso_id") or 0) != 5:
+                continue
+            dev = float(r.get("credito_devengado") or 0)
+        except (TypeError, ValueError):
+            continue
+        total += dev
+        if int(r.get("principal_id") or 0) == 1 and int(r.get("parcial_id") or 0) == 4:
+            directo += dev
+    if total <= 0:
+        raise ValueError("sin transferencias devengadas (inciso 5) en el período")
+    return {"tdps": round(100.0 * directo / total, 1),
+            "directo_musd": round(directo), "total_musd": round(total),
+            "intermediado_musd": round(total - directo)}
+
+
+def _tdps_baseline_2023(token: str) -> dict | None:
+    """TDPS del Potenciar Trabajo 2023 (contexto de la ficha). El ejercicio está
+    cerrado → se computa una vez y se cachea en data/gestion/."""
+    if TDPS_BASELINE_PATH.exists():
+        return json.loads(TDPS_BASELINE_PATH.read_text(encoding="utf-8"))
+    try:
+        rows = _pa_credito(token, 2023, [
+            {"column": "jurisdiccion_id", "operator": "equal", "value": "85"},
+            {"column": "programa_id", "operator": "equal", "value": "38"},
+        ])
+        base = _tdps_de_partidas(rows)
+        base["_meta"] = ("Potenciar Trabajo 2023 (jur. 85, prog. 38), devengado del "
+                         "ejercicio cerrado — API Presupuesto Abierto")
+        TDPS_BASELINE_PATH.write_text(
+            json.dumps(base, ensure_ascii=False, indent=2), encoding="utf-8")
+        return base
+    except Exception:
+        return None
+
+
+def fetch_asistencia_directa() -> dict | None:
+    """
+    TDPS — Tasa de Desintermediación de Planes Sociales (doc 260702), contra la
+    EJECUCIÓN PRESUPUESTARIA REAL (API Presupuesto Abierto, base SIDIF):
+    qué % del devengado de los programas sucesores del Potenciar Trabajo
+    ("Volver al Trabajo" + "Acompañamiento Social") se paga directo a personas
+    (partida 5.1.4) sobre el total de transferencias. Si el ejercicio corriente
+    aún no tiene devengado (enero), cae al ejercicio anterior.
+    """
+    token = _pa_token()
+    if not token:
+        print("[WARN] gestion.asistencia_directa: sin PRESUPUESTO_ABIERTO_TOKEN. Usando fallback.")
+        return None
+    try:
+        anio = date.today().year
+        rows, ejercicio = [], anio
+        for ej in (anio, anio - 1):
+            acumulado = []
+            for actividad in TDPS_ACTIVIDADES:
+                acumulado += _pa_credito(token, ej, [
+                    {"column": "actividad_desc", "operator": "like", "value": f"%{actividad}%"},
+                ])
+            if any(float(r.get("credito_devengado") or 0) > 0 for r in acumulado):
+                rows, ejercicio = acumulado, ej
+                break
+        tdps = _tdps_de_partidas(rows)
+        base = _tdps_baseline_2023(token)
+        miles = lambda x: f"{x:,.0f}".replace(",", ".")
+        detalle = (f"Devengado {ejercicio}: $ {miles(tdps['directo_musd'])}M directo a personas "
+                   f"(5.1.4) / $ {miles(tdps['total_musd'])}M transferido"
+                   + (f" · baseline Potenciar 2023: {str(base['tdps']).replace('.', ',')}%"
+                      f" (con $ {miles(base['intermediado_musd'])}M vía organizaciones)" if base else ""))
+        return {
+            "valor":          tdps["tdps"],
+            "unidad":         "TDPS: % del gasto social pagado directo (sin intermediación)",
+            "fuente":         "API Presupuesto Abierto (SIDIF) — devengado por partida",
+            "fecha_dato":     date.today().isoformat(),
+            "desactualizado": False,
+            "ejercicio":      ejercicio,
+            "componentes":    {"directo_musd": tdps["directo_musd"],
+                               "intermediado_musd": tdps["intermediado_musd"],
+                               "tdps_2023": base["tdps"] if base else None},
+            "detalle_txt":    detalle,
+        }
+    except Exception as e:
+        _warn("asistencia_directa", e)
+        return None
+
+
 # ── Scoring (ITCG — Paramétrica CIGOB jul-2026) ───────────────────────────────
 
 def calcular_itcg_cinturon(indicadores: dict) -> dict | None:
@@ -1079,6 +1213,7 @@ def main() -> None:
         "litigiosidad_laboral":         fetch_litigiosidad_laboral,
         "privatizaciones":              fetch_privatizaciones,
         "rigi_inversiones":             fetch_rigi_inversiones,
+        "asistencia_directa":           fetch_asistencia_directa,
         "alertas_manifestacion":        fetch_alertas_manifestacion,
     }
 

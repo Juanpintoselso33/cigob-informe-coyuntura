@@ -9,7 +9,7 @@ Colectores de datos para los cinco cinturones del marco CIGOB-Matus (Macro, Pol�
 | Vida Cotidiana | 14 + 1 manual | 14 | 1 | 0 |
 | Macro | 11 (7 en el ITCM + 4 contexto) | 11 | 0 | 0 |
 | Político | 9 | 7 | 2 | 0 |
-| Gestión | 16 (14 en el ITCG + 2 contexto) | 12 | 4 | 0 |
+| Gestión | 16 (14 en el ITCG + 2 contexto) | 13 | 3 | 0 |
 | Espíritu de Época | 3 (v1, proxies compartidos) | 3 | 0 | 0 |
 
 Macro y gestión se puntúan con índices paramétricos 0–100 de dimensiones ponderadas
@@ -42,7 +42,7 @@ Desde la carpeta `projects/informe_coyuntura/`:
 ```bash
 python scripts/macro.py                    # 11 indicadores macro
 python scripts/politica.py                 # 7 auto + 2 manual
-python scripts/gestion.py                  # ITCG: 12 auto + 4 manual
+python scripts/gestion.py                  # ITCG: 13 auto + 3 manual
 python scripts/vida_cotidiana/main.py      # 8 fuentes, ~32 datapoints
 python scripts/espiritu_epoca.py           # 3 proxies (corre después de vida y política)
 ```

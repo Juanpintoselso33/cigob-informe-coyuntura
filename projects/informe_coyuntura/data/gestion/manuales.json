@@ -4,16 +4,15 @@
     "indicadores_auto": [
       "cepo_mulc", "apertura_comercial", "desregulacion_normativa",
       "reduccion_estado", "gasto_funcionamiento", "masa_salarial",
-      "reestructuracion_organismos", "privatizaciones", "rigi_inversiones"
+      "reestructuracion_organismos", "fal_modernizacion_laboral",
+      "litigiosidad_laboral", "privatizaciones", "rigi_inversiones",
+      "asistencia_directa", "alertas_manifestacion"
     ],
     "indicadores_manuales": [
-      "concesiones_infraestructura", "fal_modernizacion_laboral",
-      "asistencia_directa", "protocolo_antipiquetes", "libertad_opcion_salud"
+      "concesiones_infraestructura", "protocolo_antipiquetes", "libertad_opcion_salud"
     ],
     "pendiente_automatizacion": {
       "protocolo_antipiquetes": "VERIFICADO 2026-07-02 con credenciales válidas: /transito/v1/eventos y /cortes del GCBA están MUERTOS (HTTP 500, comentados en el RAML). En su lugar corre el poller GTFS-RT acumulativo (alertas_manifestacion, 3 muestreos/día, store data/gestion/piquetes_alertas.json) — cuando la serie tenga ~12 meses, reemplaza esta carga manual. Ver ADR-0014.",
-      "asistencia_directa": "API Presupuesto Abierto (token por mail en presupuestoabierto.gob.ar/sici/api-pac) o CSVs sin token en dgsiaf-repo.mecon.gob.ar/repository/pa/datasets/ — permite verificar transferencias a Unidades de Gestión vs pago directo.",
-      "fal_modernizacion_laboral": "CNV/CAFCI: patrimonio de FCI de cese laboral (RG 1071/2025). Cobertura CCT: buscador del Ministerio de Trabajo sin API (scraping de PDFs homologatorios). Litigiosidad: sin consolidado nacional.",
       "libertad_opcion_salud": "SSS usa fingerprinting back-end; retorna 'No se reportan datos' incluso con Playwright. Padrón datos.gob.ar congelado en 2019."
     }
   },
@@ -46,8 +45,8 @@
     "valor": 100,
     "unidad": "TDPS: % del gasto social de ingreso pagado directo (sin Unidades de Gestión)",
     "estado": "estimado",
-    "fuente": "Dto. 198/2024 (Volver al Trabajo / Acompañamiento Social) — CIAS-Fundar como benchmark",
-    "notas": "El Dto. 198/2024 eliminó el componente de Unidades de Gestión del ex Potenciar Trabajo: pago 100% directo vía ANSES. TDPS = 1 − (monto a organizaciones / total ejecutado). Advertencia metodológica del doc: desintermediar y recortar son promesas distintas — esto mide solo la primera. Verificar contra ejecución presupuestaria cuando haya token de Presupuesto Abierto.",
+    "fuente": "Dto. 198/2024 (Volver al Trabajo / Acompañamiento Social)",
+    "notas": "FALLBACK: el colector AUTO calcula el TDPS real contra la ejecución presupuestaria (API Presupuesto Abierto, ADR-0015): devengado 5.1.4 directo a personas / total inciso 5 de Volver al Trabajo + Acompañamiento Social. Verificado 2026: 100,0% directo (baseline Potenciar 2023: 98,3% con ~$16.258M vía organizaciones). Advertencia metodológica del doc: desintermediar y recortar son promesas distintas — esto mide solo la primera.",
     "fecha_dato": "2026-06-30"
   },
   "protocolo_antipiquetes": {
