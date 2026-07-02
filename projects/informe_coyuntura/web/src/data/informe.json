@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-02T20:26:44.177320",
+  "generated_at": "2026-07-02T23:35:40.201969",
   "period": "2026-07",
-  "score_global": 3.8,
+  "score_global": 3.9,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 4.5,
+      "score": 4.8,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -37,54 +37,57 @@
           "aporte_input_txt": null
         },
         "reservas_bcra": {
-          "valor": -3222.0,
+          "valor": 4122.0,
           "unidad": "Millones de USD",
           "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
-          "fecha_dato": "2026-06-29",
-          "netas_sdds_estricto": -3222.0,
-          "depositos_tesoro": 0.0,
-          "reservas_brutas": 46577.0,
-          "drenajes_actualizado": "2026-05-31",
-          "metodo": "config_fallback",
+          "fecha_dato": "31/05/26",
+          "netas_sdds_estricto": -1605.0,
+          "depositos_tesoro": 3058.0,
+          "bopreal_12m": 2670.0,
+          "reservas_brutas": 48193.0,
+          "drenaje_prestamos_dep": -22197.0,
+          "drenaje_swaps": -19216.0,
+          "drenaje_repos": -8385.0,
+          "metodo": "sdds+tesoro+bopreal",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 10,
-          "puntaje_banda": 10,
+          "puntaje_itcm": 30,
+          "puntaje_banda": 30,
           "peso_efectivo": 0.08,
-          "aporte_score": 9.0,
-          "aporte_formula": "Banda ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntos 0–100; puntaje 10; pesa 8,0% del ITCM)",
+          "aporte_score": 7.0,
+          "aporte_formula": "Banda ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntos 0–100; puntaje 30; pesa 8,0% del ITCM)",
           "aporte_nota": null,
-          "aporte_input_txt": "netas -3222 = SDDS estricto -3222 + Tesoro 0 + Bopreal 0 (M USD)"
+          "aporte_input_txt": "netas 4122 = SDDS estricto -1605 + Tesoro 3058 + Bopreal 2670 (M USD)"
         },
         "idc": {
-          "valor": 0.9611,
+          "valor": 1.0156,
           "unidad": "Índice (~1,0)",
           "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-29",
           "componentes": {
             "precio": 0.9945,
-            "volumen": 0.9731,
-            "asignacion": 0.9118
+            "volumen": 1.0123,
+            "asignacion": 1.0412
           },
           "badlar_real_mensual": -0.55,
-          "semaforo": "rojo",
+          "semaforo": "amarillo",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 35,
-          "puntaje_banda": 35,
+          "puntaje_itcm": 60,
+          "puntaje_banda": 60,
           "peso_efectivo": 0.08,
-          "aporte_score": 6.5,
-          "aporte_formula": "Banda ITCM: >1,04 → 100 · 1,02–1,04 → 85 · 0,98–1,02 → 60 · 0,95–0,98 → 35 · ≤0,95 → 10 (puntos 0–100; puntaje 35; pesa 8,0% del ITCM)",
+          "aporte_score": 4.0,
+          "aporte_formula": "Banda ITCM: >1,04 → 100 · 1,02–1,04 → 85 · 0,98–1,02 → 60 · 0,95–0,98 → 35 · ≤0,95 → 10 (puntos 0–100; puntaje 60; pesa 8,0% del ITCM)",
           "aporte_nota": null,
-          "aporte_input_txt": "índice 0,9611 = precio 0,9945 · volumen 0,9731 · asignación 0,9118 (rojo)"
+          "aporte_input_txt": "índice 1,0156 = precio 0,9945 · volumen 1,0123 · asignación 1,0412 (amarillo)"
         },
         "badlar": {
-          "valor": 21.0,
+          "valor": 20.94,
           "unidad": "% anual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-          "fecha_dato": "2026-06-30",
+          "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "en_indice": false,
           "aporte_score": null,
@@ -131,29 +134,29 @@
           "aporte_input_txt": null
         },
         "recaudacion": {
-          "valor": 1.82,
+          "valor": -7.14,
           "unidad": "% i.a. real",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
-          "fecha_dato": "2026-05-01",
-          "var_ia_nominal": 35.62,
+          "fecha_dato": "2026-06-01",
+          "var_ia_nominal": 23.68,
           "ipc_ia": 33.2,
           "desactualizado": false,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 60,
-          "puntaje_banda": 60,
+          "puntaje_itcm": 10,
+          "puntaje_banda": 10,
           "peso_efectivo": 0.144,
-          "aporte_score": 4.0,
-          "aporte_formula": "Banda ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · ≤-5 → 10 (puntos 0–100; puntaje 60; pesa 14,4% del ITCM)",
+          "aporte_score": 9.0,
+          "aporte_formula": "Banda ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · ≤-5 → 10 (puntos 0–100; puntaje 10; pesa 14,4% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
         "tcrm": {
-          "valor": 79.77,
-          "unidad": "Índice (base 2010=100)",
-          "fuente": "https://apis.datos.gob.ar/series/api/series/",
-          "fecha_dato": "2024-12-01",
-          "desactualizado": true,
+          "valor": 84.96,
+          "unidad": "Índice (base dic-2015=100)",
+          "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+          "fecha_dato": "2026-06-01",
+          "desactualizado": false,
           "en_indice": true,
           "dimension": "competitividad_externa",
           "puntaje_itcm": 35,
@@ -243,10 +246,10 @@
           "aporte_input_txt": "8,2% i.a. = servicios tech 15,6% · productividad -1,6%"
         },
         "prestamos_privados": {
-          "valor": 3.59,
+          "valor": 4.14,
           "unidad": "% mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-          "fecha_dato": "2026-06-29",
+          "fecha_dato": "2026-06-30",
           "desactualizado": false,
           "en_indice": false,
           "aporte_score": null,
@@ -255,10 +258,10 @@
           "aporte_input_txt": null
         },
         "base_monetaria": {
-          "valor": 4.11,
+          "valor": 6.4,
           "unidad": "% mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-          "fecha_dato": "2026-06-29",
+          "fecha_dato": "2026-06-30",
           "desactualizado": false,
           "en_indice": false,
           "aporte_score": null,
@@ -267,10 +270,10 @@
           "aporte_input_txt": null
         },
         "tc_mayorista": {
-          "valor": 3.65,
+          "valor": 3.6,
           "unidad": "% mensual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-          "fecha_dato": "2026-07-01",
+          "fecha_dato": "2026-07-02",
           "desactualizado": false,
           "en_indice": false,
           "aporte_score": null,
@@ -281,7 +284,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 55.3,
+        "valor": 51.7,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -314,12 +317,12 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.24,
-            "puntaje": 70.0,
+            "puntaje": 40.0,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
-                "puntaje_banda": 60,
-                "puntaje_aplicado": 60,
+                "puntaje_banda": 10,
+                "puntaje_aplicado": 10,
                 "peso_efectivo": 0.144
               },
               "saldo_comercial_12m": {
@@ -334,18 +337,18 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.16,
-            "puntaje": 22.5,
+            "puntaje": 45.0,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.5,
-                "puntaje_banda": 10,
-                "puntaje_aplicado": 10,
+                "puntaje_banda": 30,
+                "puntaje_aplicado": 30,
                 "peso_efectivo": 0.08
               },
               "idc": {
                 "peso": 0.5,
-                "puntaje_banda": 35,
-                "puntaje_aplicado": 35,
+                "puntaje_banda": 60,
+                "puntaje_aplicado": 60,
                 "peso_efectivo": 0.08
               }
             },
@@ -556,14 +559,14 @@
           "aporte_nota": null
         },
         "endeudamiento_familiar": {
-          "valor": 45.03,
+          "valor": 45.85,
           "unidad": "billones de pesos (consumo)",
           "fuente": "BCRA API v4.0",
-          "fecha_dato": "2026-06-23",
+          "fecha_dato": "2026-06-29",
           "desactualizado": false,
-          "var_real_12m": -1.4,
-          "aporte_input_txt": "-1,4% interanual real (no el stock nominal)",
-          "aporte_score": 4.7,
+          "var_real_12m": -1.5,
+          "aporte_input_txt": "-1,5% interanual real (no el stock nominal)",
+          "aporte_score": 4.6,
           "aporte_formula": "−20% real → 0 · 0% → 5 · +20% real → 10 (var. interanual real del crédito)",
           "aporte_nota": null
         },
@@ -648,28 +651,28 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 6.7,
+          "valor": 7.5,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
-          "fecha_dato": "2026-06-27",
+          "fecha_dato": "2026-07-02",
           "desactualizado": false,
-          "aporte_score": 0.7,
+          "aporte_score": 0.8,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
           "aporte_nota": null
         },
         "patentamiento_motos": {
-          "valor": 69740,
+          "valor": 69059,
           "unidad": "unidades",
           "fuente": "CAFAM",
-          "fecha_dato": "2026-05",
+          "fecha_dato": "2026-06",
           "desactualizado": false,
-          "aporte_score": 0.1,
+          "aporte_score": 0.2,
           "aporte_formula": "70.000 → 0 · 45.000 → 5 · 20.000 → 10 (unidades/mes)",
           "aporte_nota": null
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260627_0053.json",
+      "fuente_enriquecida": "vida_cotidiana_20260702_2331.json",
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
     },
     "gestion": {
@@ -1110,7 +1113,7 @@
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
     },
     "espiritu_epoca": {
-      "score": 3.2,
+      "score": 3.3,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -1125,12 +1128,12 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 7.2,
+          "valor": 7.5,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
           "fecha_dato": "2026-07-02",
           "desactualizado": false,
-          "aporte_score": 0.7,
+          "aporte_score": 0.8,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
           "aporte_nota": null
         },
@@ -1149,10 +1152,9 @@
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus proxies (v1 provisional). Mayor = más desconexión entre el gobierno y el humor social."
     }
   },
-  "barbarismo_activo": "político",
+  "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:macro:tcrm",
     "desactualizado:politica:movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento",
     "desactualizado:gestion:protocolo_antipiquetes"
   ]
