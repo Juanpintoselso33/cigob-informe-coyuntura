@@ -171,7 +171,10 @@ INTERPRETACION_LEGIBLE = {
 # litigiosidad_laboral: proxy SRT (juicios de riesgos del trabajo) — informa la
 # lectura de la reforma laboral pero no es el canal indemnizatorio que el Fondo
 # de Cese reemplaza, así que no puntúa.
-INDICADORES_CONTEXTO = ["litigiosidad_laboral"]
+# alertas_manifestacion: serie GTFS-RT en construcción (acumula desde jul-2026,
+# sin baseline 2023) — candidata a automatizar protocolo_antipiquetes cuando
+# tenga historia (ADR-0014).
+INDICADORES_CONTEXTO = ["litigiosidad_laboral", "alertas_manifestacion"]
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:

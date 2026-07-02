@@ -1,0 +1,58 @@
+name: Piquetes poll (GTFS-RT)
+
+# Muestrea los feeds de alertas de servicio del transporte porteño (GTFS-RT,
+# tiempo real puro) en la franja típica de piquetes y acumula las alertas de
+# manifestación en data/gestion/piquetes_alertas.json. Complementa la corrida
+# diaria del pipeline (00:00 ART): sin estos muestreos de mediodía/tarde la
+# serie se perdería casi todas las protestas. Ver ADR-0014.
+#
+# 15:00 UTC = 12:00 ART · 21:00 UTC = 18:00 ART (offset fijo, sin DST).
+on:
+  schedule:
+    - cron: "0 15 * * *"
+    - cron: "0 21 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write   # commitear el store actualizado a main
+
+concurrency:
+  group: piquetes-poll
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: projects/informe_coyuntura
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Instalar requests
+        run: pip install requests
+
+      - name: Muestrear alertas de manifestación
+        env:
+          BA_TRANSPORTE_CLIENT_ID: ${{ secrets.BA_TRANSPORTE_CLIENT_ID }}
+          BA_TRANSPORTE_CLIENT_SECRET: ${{ secrets.BA_TRANSPORTE_CLIENT_SECRET }}
+        run: python scripts/piquetes_poll.py
+
+      - name: Commitear store si cambió
+        working-directory: .
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/informe_coyuntura/data/gestion/piquetes_alertas.json
+          if git diff --staged --quiet; then
+            echo "::notice::Sin alertas nuevas — no se commitea."
+          else
+            git commit -m "data(gestion): muestreo de alertas de manifestación [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi

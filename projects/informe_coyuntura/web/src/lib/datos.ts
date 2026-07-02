@@ -148,6 +148,7 @@ export const LABELS: Record<string, string> = {
   gasto_funcionamiento: "Gasto de funcionamiento", masa_salarial: "Masa salarial pública",
   asistencia_directa: "Asistencia directa (TDPS)", fal_modernizacion_laboral: "Fondo de Cese Laboral",
   libertad_opcion_salud: "Libertad de opción en salud", protocolo_antipiquetes: "Orden público (piquetes)",
+  litigiosidad_laboral: "Litigiosidad laboral (SRT)", alertas_manifestacion: "Alertas de manifestación (GCBA)",
 };
 export function label(key: string): string {
   return LABELS[key] ?? key.replace(/_/g, " ");
@@ -201,6 +202,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   rigi_inversiones: "% del pipeline", privatizaciones: "%", concesiones_infraestructura: "%",
   fal_modernizacion_laboral: "índice", asistencia_directa: "%",
   protocolo_antipiquetes: "%", libertad_opcion_salud: "%",
+  litigiosidad_laboral: "% i.a.", alertas_manifestacion: "alertas/mes",
 };
 
 // Unidad "larga" para la ficha del modal (campo "Unidad"). Normalizada y
@@ -238,6 +240,8 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",
   asistencia_directa: "% del gasto social sin intermediación", fal_modernizacion_laboral: "Índice 0–100",
   libertad_opcion_salud: "% de avance", protocolo_antipiquetes: "% de reducción de cortes vs 2023",
+  litigiosidad_laboral: "% variación (12m vs 12m previos)",
+  alertas_manifestacion: "Alertas únicas en el mes (GTFS-RT)",
 };
 
 export interface Presentacion { texto: string; unidad: string; titulo: string; }

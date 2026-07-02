@@ -37,6 +37,7 @@ Nota INDEC www: el WAF de indec.gob.ar resetea el handshake TLS de Python
 (fingerprinting del ClientHello); el fetch del XLSX cae a curl como fallback.
 """
 import io
+import os
 import re
 import sys
 import json
@@ -105,8 +106,9 @@ INDICADORES_ESPERADOS = [
     "fal_modernizacion_laboral", "litigiosidad_laboral",
     # D4 — Privatizaciones e inversión
     "privatizaciones", "rigi_inversiones", "concesiones_infraestructura",
-    # D5 — Reforma social y orden
+    # D5 — Reforma social y orden (+ alertas GTFS-RT como contexto, acumulando)
     "asistencia_directa", "protocolo_antipiquetes", "libertad_opcion_salud",
+    "alertas_manifestacion",
 ]
 
 # Calibración del proxy InfoLeg de reestructuración: 18 actos = avance 40%
@@ -875,6 +877,138 @@ def fetch_rigi_inversiones() -> dict | None:
         return None
 
 
+# ── D5 (contexto): alertas de manifestación — API Transporte GCBA ─────────────
+# El endpoint histórico de cortes del GCBA (/transito/v1/eventos) está MUERTO
+# (verificado 2026-07-02 con credenciales válidas: HTTP 500, comentado en el
+# RAML oficial). Lo único vivo son los feeds GTFS-RT de alertas de servicio
+# (colectivos y subtes): tiempo real puro, sin histórico → misma estrategia que
+# los patentamientos de macro: ACUMULAR. Cada corrida upserta las alertas de
+# manifestación activas en data/gestion/piquetes_alertas.json (dedupe por id y
+# día); .github/workflows/piquetes-poll.yml muestrea además 2×/día en la franja
+# típica de piquetes (12:00/18:00 ART). Ver ADR-0014.
+
+BA_ALERTS_URL   = "https://apitransporte.buenosaires.gob.ar/{feed}/serviceAlerts"
+BA_ALERTS_FEEDS = ("colectivos", "subtes")
+PIQUETES_STORE_PATH = PROJECT_DIR / "data" / "gestion" / "piquetes_alertas.json"
+ENV_PATH = PROJECT_DIR / ".env"
+
+# GTFS-RT: cause=5 es DEMONSTRATION. El texto complementa (algunas alertas
+# vienen con cause genérico 1/2 pero describen la protesta en el header).
+GTFS_CAUSE_DEMONSTRATION = 5
+PIQUETE_KEYWORDS = ("manifestaci", "piquete", "marcha", "protesta", "movilizaci")
+
+
+def _ba_credenciales() -> tuple | None:
+    """(client_id, client_secret) de la API Transporte GCBA: variables de
+    entorno BA_TRANSPORTE_CLIENT_ID/SECRET (CI) o .env local gitignored."""
+    cid = os.environ.get("BA_TRANSPORTE_CLIENT_ID")
+    sec = os.environ.get("BA_TRANSPORTE_CLIENT_SECRET")
+    if not (cid and sec) and ENV_PATH.exists():
+        pares = {}
+        for linea in ENV_PATH.read_text(encoding="utf-8").splitlines():
+            if "=" in linea and not linea.strip().startswith("#"):
+                k, _, v = linea.partition("=")
+                pares[k.strip()] = v.strip().strip('"').strip("'")
+        cid = cid or pares.get("BA_TRANSPORTE_CLIENT_ID")
+        sec = sec or pares.get("BA_TRANSPORTE_CLIENT_SECRET")
+    return (cid, sec) if cid and sec else None
+
+
+def _alerta_es_manifestacion(alert: dict) -> bool:
+    if alert.get("cause") == GTFS_CAUSE_DEMONSTRATION:
+        return True
+    textos = []
+    for campo in ("header_text", "description_text"):
+        for t in (alert.get(campo) or {}).get("translation", []):
+            textos.append(str(t.get("text", "")))
+    blob = " ".join(textos).lower()
+    return any(kw in blob for kw in PIQUETE_KEYWORDS)
+
+
+def actualizar_alertas_manifestacion() -> dict | None:
+    """Consulta los feeds GTFS-RT de alertas (colectivos + subtes) y upserta las
+    alertas de manifestación ACTIVAS en el store, keyed por día (dedupe por id:
+    la misma protesta vista en dos muestreos del día cuenta una vez). Un día
+    presente con dict vacío = "se muestreó y no había" (cobertura verificable).
+    Devuelve {fecha, nuevas, total_dia} o None sin credenciales/red."""
+    creds = _ba_credenciales()
+    if not creds:
+        print("[WARN] gestion.alertas_manifestacion: sin credenciales BA_TRANSPORTE_*. Salteado.")
+        return None
+    cid, sec = creds
+    encontradas = {}
+    ok_algun_feed = False
+    for feed in BA_ALERTS_FEEDS:
+        try:
+            r = requests.get(BA_ALERTS_URL.format(feed=feed),
+                             params={"json": 1, "client_id": cid, "client_secret": sec},
+                             headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            r.raise_for_status()
+            ok_algun_feed = True
+            for ent in r.json().get("entity", []):
+                alert = ent.get("alert", {})
+                if _alerta_es_manifestacion(alert):
+                    tr = (alert.get("header_text") or {}).get("translation", [])
+                    texto = str(tr[0].get("text", ""))[:120] if tr else ""
+                    encontradas[f"{feed}:{ent.get('id', '')}"] = texto
+        except Exception as e:
+            _warn(f"alertas_manifestacion ({feed})", e)
+    if not ok_algun_feed:
+        return None
+
+    store = {"_meta": {"descripcion": ("Alertas GTFS-RT de manifestación (API Transporte GCBA, "
+                                       "colectivos+subtes) por día. Acumulación desde jul-2026; "
+                                       "dedupe por id de alerta. Día con {} = muestreado sin alertas."),
+                       "acumula_desde": date.today().isoformat()},
+             "dias": {}}
+    if PIQUETES_STORE_PATH.exists():
+        store = json.loads(PIQUETES_STORE_PATH.read_text(encoding="utf-8"))
+    hoy = date.today().isoformat()
+    dia = store.setdefault("dias", {}).setdefault(hoy, {})
+    nuevas = 0
+    for k, texto in encontradas.items():
+        if k not in dia:
+            dia[k] = texto
+            nuevas += 1
+    PIQUETES_STORE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PIQUETES_STORE_PATH.write_text(
+        json.dumps(store, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+    return {"fecha": hoy, "nuevas": nuevas, "total_dia": len(dia)}
+
+
+def fetch_alertas_manifestacion() -> dict | None:
+    """
+    CONTEXTO (no integra el ITCG): alertas de manifestación únicas captadas en
+    el mes corriente en los feeds GTFS-RT del transporte porteño. Serie en
+    construcción (acumula desde jul-2026, sin baseline 2023): cuando tenga
+    historia suficiente es el candidato a automatizar protocolo_antipiquetes.
+    """
+    try:
+        actualizar_alertas_manifestacion()
+        if not PIQUETES_STORE_PATH.exists():
+            return None
+        store = json.loads(PIQUETES_STORE_PATH.read_text(encoding="utf-8"))
+        dias = store.get("dias", {})
+        if not dias:
+            return None
+        ym = date.today().strftime("%Y-%m")
+        dias_mes = {d: a for d, a in dias.items() if d.startswith(ym)}
+        total_mes = sum(len(a) for a in dias_mes.values())
+        return {
+            "valor":          total_mes,
+            "unidad":         "alertas de manifestación (mes corriente, GTFS-RT)",
+            "fuente":         "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
+            "fecha_dato":     max(dias),
+            "desactualizado": False,
+            "dias_muestreados_mes": len(dias_mes),
+            "detalle_txt": (f"{total_mes} alertas en {len(dias_mes)} días muestreados de {ym} · "
+                            f"acumula desde {min(dias)} (sin baseline 2023)"),
+        }
+    except Exception as e:
+        _warn("alertas_manifestacion", e)
+        return None
+
+
 # ── Scoring (ITCG — Paramétrica CIGOB jul-2026) ───────────────────────────────
 
 def calcular_itcg_cinturon(indicadores: dict) -> dict | None:
@@ -945,6 +1079,7 @@ def main() -> None:
         "litigiosidad_laboral":         fetch_litigiosidad_laboral,
         "privatizaciones":              fetch_privatizaciones,
         "rigi_inversiones":             fetch_rigi_inversiones,
+        "alertas_manifestacion":        fetch_alertas_manifestacion,
     }
 
     for nombre in INDICADORES_ESPERADOS:

@@ -10676,5 +10676,11 @@
       "fecha": "2026-07-01",
       "valor": 0.0
     }
+  ],
+  "alertas_manifestacion": [
+    {
+      "fecha": "2026-07-01",
+      "valor": 0.0
+    }
   ]
 }

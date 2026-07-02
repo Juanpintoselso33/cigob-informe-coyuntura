@@ -26,6 +26,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0011](0011-rigi-plataforma-oficial.md) | RIGI: inversión aprobada/pipeline desde la plataforma oficial (Google Sheet), no conteo de normas InfoLeg | Aceptado |
 | [0012](0012-reconstruccion-series-historicas.md) | Reconstrucción de series históricas (backfill) para indicadores sin histórico + de-hardcode del deflactor IPC en iaf_transferencias | Aceptado |
 | [0013](0013-itcg-parametrica-gestion.md) | ITCG: el cinturón de gestión se puntúa con la paramétrica de 5 dimensiones (doc 260702); motor común en parametrica.py | Aceptado |
+| [0014](0014-piquetes-poller-gtfs-rt.md) | Piquetes: poller GTFS-RT acumulativo 3×/día (el registro de cortes del GCBA está muerto); protocolo_antipiquetes sigue manual hasta que la serie madure | Aceptado |
 
 ## Contexto general
 

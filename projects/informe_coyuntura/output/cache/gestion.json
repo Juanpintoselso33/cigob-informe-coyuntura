@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-02T18:43:55.206763",
+  "generated_at": "2026-07-02T19:09:30.653185",
   "score": 3.1,
   "itcg": {
     "valor": 68.5,
@@ -347,6 +347,16 @@
       "puntaje_itcg": 65,
       "puntaje_banda": 65,
       "peso_efectivo": 0.02
+    },
+    "alertas_manifestacion": {
+      "valor": 0,
+      "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
+      "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
+      "fecha_dato": "2026-07-02",
+      "desactualizado": false,
+      "dias_muestreados_mes": 1,
+      "detalle_txt": "0 alertas en 1 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+      "en_indice": false
     }
   }
 }

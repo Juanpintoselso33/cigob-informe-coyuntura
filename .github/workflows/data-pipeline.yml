@@ -54,6 +54,9 @@ jobs:
       # bloqueante — si no produjo snapshot, el job falla y NO se deploya nada,
       # dejando la web anterior en pie.
       - name: Correr colectores
+        env:
+          BA_TRANSPORTE_CLIENT_ID: ${{ secrets.BA_TRANSPORTE_CLIENT_ID }}
+          BA_TRANSPORTE_CLIENT_SECRET: ${{ secrets.BA_TRANSPORTE_CLIENT_SECRET }}
         run: |
           set +e
           python scripts/macro.py;               echo "::notice::macro exit=$?"
@@ -103,7 +106,8 @@ jobs:
                   projects/informe_coyuntura/web/src/data/series.json \
                   projects/informe_coyuntura/data/historico/indicadores.json \
                   projects/informe_coyuntura/data/macro/patentamientos_comerciales.json \
-                  projects/informe_coyuntura/data/gestion/rigi_fechas.json
+                  projects/informe_coyuntura/data/gestion/rigi_fechas.json \
+                  projects/informe_coyuntura/data/gestion/piquetes_alertas.json
           if git diff --staged --quiet; then
             echo "::notice::Sin cambios en datos — no se commitea."
           else

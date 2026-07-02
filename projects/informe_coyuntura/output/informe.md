@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-02 18:55:10"
+generado: "2026-07-02 19:10:35"
 score_global: 3.6
 barbarismo_activo: "político"
 alerta_multicinturon: false
@@ -78,6 +78,7 @@ schema_version: "1.2.0"
 | asistencia_directa | 100 | TDPS: % del gasto social de ingreso pagado directo (sin Unidades de Gestión) | 2026-06-30 | ⚠ cache |
 | protocolo_antipiquetes | 55 | % de reducción de cortes por manifestación en CABA vs promedio 2023 | 2026-06-30 | ⚠ cache |
 | libertad_opcion_salud | 40 | % de avance de la desregulación de obras sociales (opciones de cambio) | 2026-04-01 | ⚠ cache |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-02 | fresco |
 
 ### 🟡 Espiritu Epoca — score 3.2/10 (en_tension)
 *Riesgo de barbarismo: político*
@@ -95,4 +96,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:concesiones_infraestructura,asistencia_directa,protocolo_antipiquetes,libertad_opcion_salud`
 
 ---
-*Generado por CIGOB — 2026-07-02 18:55:10 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-02 19:10:35 — schema 1.2.0*

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-02T18:55:10.611748",
+  "generated_at": "2026-07-02T19:10:35.093250",
   "period": "2026-07",
   "score_global": 3.8,
   "ponderacion": {
@@ -949,6 +949,20 @@
           "aporte_formula": "Banda ITCG: >70 → 100 · 50–70 → 85 · 30–50 → 65 · 10–30 → 40 · ≤10 → 10 (puntos 0–100; puntaje 65; pesa 2,0% del ITCG)",
           "aporte_nota": null,
           "aporte_input_txt": null
+        },
+        "alertas_manifestacion": {
+          "valor": 0,
+          "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
+          "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
+          "fecha_dato": "2026-07-02",
+          "desactualizado": false,
+          "dias_muestreados_mes": 1,
+          "detalle_txt": "0 alertas en 1 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+          "en_indice": false,
+          "aporte_score": null,
+          "aporte_formula": null,
+          "aporte_nota": "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026).",
+          "aporte_input_txt": "0 alertas en 1 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)"
         }
       },
       "alerta": null,
