@@ -1298,28 +1298,48 @@ def _sss_xlsx(url_tpl: str) -> tuple:
     raise ValueError("XLSX SSS no disponible (año corriente ni previo)")
 
 
-def _sss_ultimo_mes(ws) -> tuple:
-    """(índice de columna, nombre de mes) del último mes CON datos: la fila de
-    totales trae 0/None en los meses aún no cargados."""
-    filas = list(ws.iter_rows(values_only=True))
-    fila_meses = next(f for f in filas if any(str(c).strip().lower() == "enero" for c in f if c))
-    fila_total = next(f for f in filas
-                      if str(f[0] or "").strip().lower().startswith(("total de beneficiarios", "total de usuarios")))
-    ult = None
-    for idx, (mes, total) in enumerate(zip(fila_meses, fila_total)):
-        if mes and str(mes).strip().lower() != "meses":
-            try:
-                if float(total or 0) > 0:
-                    ult = (idx, str(mes).strip().lower())
-            except (TypeError, ValueError):
-                continue
-    if ult is None:
-        raise ValueError("XLSX SSS sin ningún mes con datos")
-    return ult
-
-
 _MES_NUM = {"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
             "julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12}
+
+
+def _sss_tabla(ws) -> tuple:
+    """({col: 'MM'}, [(código, fila)]) de una hoja RNAS/RNEMP: columnas de
+    meses y filas de entidades (código numérico en la col. 0). Los totales se
+    computan sumando entidades — la fila 'Total de ...' FALTA en los archivos
+    de algunos años (ej. 2025), así que no se depende de ella."""
+    filas = list(ws.iter_rows(values_only=True))
+    fila_meses = next((f for f in filas
+                       if any(str(c).strip().lower() == "enero" for c in f if c)), None)
+    if fila_meses is None:
+        raise ValueError("hoja SSS sin fila de meses")
+    cols = {i: f"{_MES_NUM[str(m).strip().lower()]:02d}"
+            for i, m in enumerate(fila_meses)
+            if m and str(m).strip().lower() in _MES_NUM}
+    entidades = []
+    for f in filas:
+        try:
+            entidades.append((int(str(f[0]).strip()), f))
+        except (TypeError, ValueError):
+            continue
+    if not cols or not entidades:
+        raise ValueError("hoja SSS sin meses o sin entidades")
+    return cols, entidades
+
+
+def _sss_suma_mes(entidades: list, col: int, solo_prepagas: bool = False) -> tuple:
+    """(suma de beneficiarios/usuarios del mes, entidades con dato > 0)."""
+    total, n = 0.0, 0
+    for codigo, f in entidades:
+        if solo_prepagas and codigo < RNAS_PREPAGA_MIN:
+            continue
+        try:
+            v = float(f[col] or 0)
+        except (TypeError, ValueError):
+            continue
+        if v > 0:
+            total += v
+            n += 1
+    return total, n
 
 
 def fetch_libertad_opcion_salud() -> dict | None:
@@ -1334,34 +1354,31 @@ def fetch_libertad_opcion_salud() -> dict | None:
     try:
         wb_rnas, anio_rnas = _sss_xlsx(SSS_RNAS_URL)
         ws = wb_rnas[next(h for h in wb_rnas.sheetnames if "RNAS" in h.upper())]
-        col, mes_rnas = _sss_ultimo_mes(ws)
-        derivados, prepagas = 0.0, 0
-        for f in ws.iter_rows(values_only=True):
-            try:
-                codigo = int(str(f[0]).strip())
-            except (TypeError, ValueError):
-                continue
-            if codigo >= RNAS_PREPAGA_MIN:
-                try:
-                    v = float(f[col] or 0)
-                except (TypeError, ValueError):
-                    v = 0.0
-                if v > 0:
-                    derivados += v
-                    prepagas += 1
+        cols, entidades = _sss_tabla(ws)
+        col_rnas = mm_rnas = derivados = prepagas = None
+        for col, mm in sorted(cols.items()):
+            total_mes, _ = _sss_suma_mes(entidades, col)
+            if total_mes > 0:
+                col_rnas, mm_rnas = col, mm
+        if col_rnas is None:
+            raise ValueError("RNAS sin ningún mes con datos")
+        derivados, prepagas = _sss_suma_mes(entidades, col_rnas, solo_prepagas=True)
 
         wb_rnemp, anio_rnemp = _sss_xlsx(SSS_RNEMP_URL)
         ws2 = wb_rnemp[next(h for h in wb_rnemp.sheetnames if "RNEMP" in h.upper())]
-        col2, mes_rnemp = _sss_ultimo_mes(ws2)
-        fila_tot = next(f for f in ws2.iter_rows(values_only=True)
-                        if str(f[0] or "").strip().lower().startswith("total de usuarios"))
-        usuarios_prepagas = float(fila_tot[col2] or 0)
+        cols2, entidades2 = _sss_tabla(ws2)
+        usuarios_prepagas = mm_rnemp = None
+        for col, mm in sorted(cols2.items()):
+            total_mes, _ = _sss_suma_mes(entidades2, col)
+            if total_mes > 0:
+                usuarios_prepagas, mm_rnemp = total_mes, mm
         if not usuarios_prepagas or not derivados:
             raise ValueError("RNAS o RNEMP sin datos del período")
 
         avance = round(100.0 * derivados / usuarios_prepagas, 1)
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
-        fecha = f"{anio_rnas}-{_MES_NUM.get(mes_rnas, 1):02d}-01"
+        fecha = f"{anio_rnas}-{mm_rnas}-01"
+        mes_rnas, mes_rnemp = f"{mm_rnas}/{anio_rnas}", f"{mm_rnemp}/{anio_rnemp}"
         return {
             "valor":          avance,
             "unidad":         "% de usuarios de prepagas con aportes derivados directo (sin triangulación)",
@@ -1372,8 +1389,8 @@ def fetch_libertad_opcion_salud() -> dict | None:
             "prepagas_inscriptas":  prepagas,
             "usuarios_prepagas":    round(usuarios_prepagas),
             "detalle_txt": (f"{miles(derivados)} beneficiarios derivados directo a {prepagas} prepagas "
-                            f"inscriptas ({mes_rnas}-{anio_rnas}) / {miles(usuarios_prepagas)} usuarios de "
-                            f"prepagas (RNEMP {mes_rnemp}-{anio_rnemp}); canal inexistente pre-DNU 70/23"),
+                            f"inscriptas ({mes_rnas}) / {miles(usuarios_prepagas)} usuarios de "
+                            f"prepagas (RNEMP {mes_rnemp}); canal inexistente pre-DNU 70/23"),
         }
     except Exception as e:
         _warn("libertad_opcion_salud", e)

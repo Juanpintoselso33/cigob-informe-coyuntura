@@ -5,6 +5,7 @@ Columnas: fecha, indicador, valor, fuente
 """
 import sys
 import csv
+import io
 import re
 import calendar
 import requests
@@ -491,6 +492,102 @@ def fetch_tdps_serie() -> list:
             for ym, d in sorted(por_mes.items()) if d["total"] > 1000.0]
 
 
+def _serie_var_real_vs_2023(nominal_ids: list) -> list:
+    """Serie mensual de la variación % REAL vs el MISMO MES de 2023 (misma
+    fórmula que el indicador: deflactada por IPC, mismo mes evita el sesgo
+    del aguinaldo) para la suma de una o más series nominales de datos.gob.ar.
+    [[YYYY-MM-01, var%]] desde 2024-01."""
+    nominal: dict = {}
+    for sid in nominal_ids:
+        for ym, v in gestion._indec_nivel_mensual(sid, limit=48).items():
+            nominal[ym] = nominal.get(ym, 0.0) + v
+    ipc = gestion._indec_nivel_mensual(gestion.IPC_ID, limit=48)
+    out = []
+    for ym in sorted(nominal):
+        if ym < "2024-01":
+            continue
+        base = f"2023-{ym[5:7]}"
+        if base not in nominal or base not in ipc or ym not in ipc:
+            continue
+        real_t = nominal[ym] / ipc[ym]
+        real_b = nominal[base] / ipc[base]
+        out.append([f"{ym}-01", round((real_t / real_b - 1.0) * 100.0, 2)])
+    return out
+
+
+def fetch_opcion_salud_serie() -> list:
+    """Serie mensual del % de usuarios de prepagas con aportes derivados
+    directo (misma fórmula que el indicador): RNAS 90xxxx / total RNEMP, por
+    año desde 2024 (los XLSX de la SSS existen por año, URL estable; usa
+    gestion._sss_tabla, que no depende de la fila de totales — falta en los
+    archivos de algunos años). El denominador RNEMP se arrastra al último mes
+    disponible (cambia lento y su archivo tiene más rezago que el RNAS)."""
+    import openpyxl
+    derivados, usuarios = {}, {}
+    for anio in range(2024, date.today().year + 1):
+        for url_tpl, destino, solo_prepagas in (
+                (gestion.SSS_RNAS_URL, derivados, True),
+                (gestion.SSS_RNEMP_URL, usuarios, False)):
+            try:
+                wb = openpyxl.load_workbook(io.BytesIO(
+                    gestion._http_get_resiliente(url_tpl.format(anio=anio))), data_only=True)
+                ws = wb[wb.sheetnames[0]]
+                cols, entidades = gestion._sss_tabla(ws)
+                for col, mm in sorted(cols.items()):
+                    total_mes, _ = gestion._sss_suma_mes(entidades, col)
+                    if total_mes > 0:
+                        suma, _ = gestion._sss_suma_mes(entidades, col, solo_prepagas=solo_prepagas)
+                        destino[f"{anio}-{mm}"] = suma
+            except Exception as e:
+                registro = "RNAS" if url_tpl is gestion.SSS_RNAS_URL else "RNEMP"
+                print(f"  [WARN] opcion salud serie {registro} {anio}: {e}")
+    # Denominador: se arrastra el último RNEMP conocido; para los meses previos
+    # al primer archivo mensual (el RNEMP 2024 agrupa por cuatrimestres y se
+    # saltea) se usa el primero disponible — el canal era ínfimo en 2024.
+    out, ult_u = [], None
+    primera_u = usuarios[min(usuarios)] if usuarios else None
+    for ym in sorted(derivados):
+        if usuarios.get(ym):
+            ult_u = usuarios[ym]
+        denom = ult_u or primera_u
+        if denom:
+            out.append([f"{ym}-01", round(100.0 * derivados[ym] / denom, 1)])
+    return out
+
+
+def fetch_litigiosidad_serie() -> list:
+    """Serie mensual de la variación % de los juicios SRT (acumulado 12 meses
+    vs los 12 previos, misma fórmula que el indicador). [[YYYY-MM-01, var%]]."""
+    import io as _io, openpyxl
+    content = gestion._http_get_resiliente(gestion.SRT_JUICIOS_URL)
+    wb = openpyxl.load_workbook(_io.BytesIO(content), data_only=True)
+    hoja = next(s for s in wb.sheetnames if "TOTAL" in s.upper())
+    filas = list(wb[hoja].iter_rows(values_only=True))
+    meses_es = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6,
+                "jul": 7, "ago": 8, "sep": 9, "oct": 10, "nov": 11, "dic": 12}
+    patron = re.compile(r"^([A-Za-z]{3})-(\d{4})$")
+    header = next(f for f in filas
+                  if sum(1 for c in f if isinstance(c, str) and patron.match(c.strip())) > 20)
+    fila_total = next(f for f in filas
+                      if isinstance(f[0], str) and f[0].lower().startswith("total de juicios"))
+    serie = {}
+    for h, v in zip(header, fila_total):
+        m = patron.match(h.strip()) if isinstance(h, str) else None
+        if m and m.group(1).lower() in meses_es:
+            try:
+                serie[f"{m.group(2)}-{meses_es[m.group(1).lower()]:02d}"] = float(v)
+            except (TypeError, ValueError):
+                continue
+    yms = sorted(serie)
+    out = []
+    for i in range(23, len(yms)):
+        ult12 = sum(serie[y] for y in yms[i - 11:i + 1])
+        prev12 = sum(serie[y] for y in yms[i - 23:i - 11])
+        if prev12:
+            out.append([f"{yms[i]}-01", round((ult12 / prev12 - 1.0) * 100.0, 1)])
+    return out[-60:]   # últimos 5 años (la serie arranca en 2010)
+
+
 # apertura_comercial (ILCE) no tiene serie oficial reconstruible (la brecha
 # cambiaria histórica no es pública vía API): su evolución se acumula mes a mes
 # en data/historico/indicadores.json (publicar.acumular_historico).
@@ -500,6 +597,12 @@ GESTION_DERIVADAS = [
     ("reestructuracion_organismos", "Normas (conteo acum.)", "InfoLeg ('disolucion' desde dic-2023)", lambda: fetch_infoleg_serie("disolucion")),
     ("reduccion_estado", "% vs dic-2023", "INDEC (dotación APN mensual)", fetch_reduccion_serie),
     ("asistencia_directa", "% TDPS (directo a personas / transferencias)", "API Presupuesto Abierto (SIDIF)", fetch_tdps_serie),
+    ("gasto_funcionamiento", "% real vs mismo mes 2023", "Sec. Hacienda IMIG + IPC INDEC",
+     lambda: _serie_var_real_vs_2023([gestion.FUNC_SALARIOS_ID, gestion.FUNC_OTROS_ID])),
+    ("masa_salarial", "% real vs mismo mes 2023", "Sec. Hacienda AIF + IPC INDEC",
+     lambda: _serie_var_real_vs_2023([gestion.REMUNERACIONES_ID])),
+    ("libertad_opcion_salud", "% usuarios de prepagas con derivación directa", "SSS — RNAS/RNEMP", fetch_opcion_salud_serie),
+    ("litigiosidad_laboral", "% i.a. juicios SRT (12m vs 12m)", "SRT — serie de litigiosidad", fetch_litigiosidad_serie),
 ]
 
 

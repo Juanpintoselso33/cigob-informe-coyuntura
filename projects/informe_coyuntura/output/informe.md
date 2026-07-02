@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-02 20:13:09"
+generado: "2026-07-02 20:26:44"
 score_global: 3.6
 barbarismo_activo: "político"
 alerta_multicinturon: false
@@ -96,4 +96,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:protocolo_antipiquetes`
 
 ---
-*Generado por CIGOB — 2026-07-02 20:13:09 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-02 20:26:44 — schema 1.2.0*

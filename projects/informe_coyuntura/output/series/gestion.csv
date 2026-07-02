@@ -66,6 +66,122 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,reduccion_estado,-3.44,% vs dic-2023,INDEC (dotación APN mensual)
 2024-01-01,reduccion_estado,-3.16,% vs dic-2023,INDEC (dotación APN mensual)
 2023-12-01,reduccion_estado,0.0,% vs dic-2023,INDEC (dotación APN mensual)
+2026-05-01,masa_salarial,-22.98,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2026-04-01,masa_salarial,-23.62,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2026-03-01,masa_salarial,-31.55,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2026-02-01,masa_salarial,-23.58,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2026-01-01,masa_salarial,-31.75,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-12-01,masa_salarial,-36.0,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-11-01,masa_salarial,-34.16,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-10-01,masa_salarial,-23.39,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-09-01,masa_salarial,-29.02,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-08-01,masa_salarial,-27.46,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-07-01,masa_salarial,-29.73,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-06-01,masa_salarial,-24.87,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-05-01,masa_salarial,-19.15,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-04-01,masa_salarial,-21.1,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-03-01,masa_salarial,-27.77,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-02-01,masa_salarial,-17.02,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2025-01-01,masa_salarial,-23.38,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-12-01,masa_salarial,-26.24,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-11-01,masa_salarial,-21.42,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-10-01,masa_salarial,-17.48,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-09-01,masa_salarial,-20.53,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-08-01,masa_salarial,-22.08,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-07-01,masa_salarial,-21.89,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-06-01,masa_salarial,-18.78,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-05-01,masa_salarial,-14.57,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-04-01,masa_salarial,-17.86,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-03-01,masa_salarial,-19.13,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-02-01,masa_salarial,-10.68,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2024-01-01,masa_salarial,-27.15,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
+2026-03-01,litigiosidad_laboral,3.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2026-02-01,litigiosidad_laboral,2.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2026-01-01,litigiosidad_laboral,4.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-12-01,litigiosidad_laboral,4.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-11-01,litigiosidad_laboral,3.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-10-01,litigiosidad_laboral,4.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-09-01,litigiosidad_laboral,4.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-08-01,litigiosidad_laboral,4.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-07-01,litigiosidad_laboral,6.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-06-01,litigiosidad_laboral,6.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-05-01,litigiosidad_laboral,5.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-04-01,litigiosidad_laboral,6.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-03-01,litigiosidad_laboral,7.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-02-01,litigiosidad_laboral,5.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2025-01-01,litigiosidad_laboral,5.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-12-01,litigiosidad_laboral,5.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-11-01,litigiosidad_laboral,6.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-10-01,litigiosidad_laboral,4.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-09-01,litigiosidad_laboral,3.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-08-01,litigiosidad_laboral,1.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-07-01,litigiosidad_laboral,1.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-06-01,litigiosidad_laboral,1.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-05-01,litigiosidad_laboral,4.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-04-01,litigiosidad_laboral,7.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-03-01,litigiosidad_laboral,10.8,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-02-01,litigiosidad_laboral,20.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2024-01-01,litigiosidad_laboral,24.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-12-01,litigiosidad_laboral,24.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-11-01,litigiosidad_laboral,27.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-10-01,litigiosidad_laboral,33.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-09-01,litigiosidad_laboral,37.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-08-01,litigiosidad_laboral,46.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-07-01,litigiosidad_laboral,49.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-06-01,litigiosidad_laboral,48.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-05-01,litigiosidad_laboral,41.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-04-01,litigiosidad_laboral,37.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-03-01,litigiosidad_laboral,31.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-02-01,litigiosidad_laboral,24.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2023-01-01,litigiosidad_laboral,21.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-12-01,litigiosidad_laboral,20.8,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-11-01,litigiosidad_laboral,19.8,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-10-01,litigiosidad_laboral,16.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-09-01,litigiosidad_laboral,14.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-08-01,litigiosidad_laboral,15.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-07-01,litigiosidad_laboral,16.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-06-01,litigiosidad_laboral,17.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-05-01,litigiosidad_laboral,30.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-04-01,litigiosidad_laboral,47.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-03-01,litigiosidad_laboral,69.5,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-02-01,litigiosidad_laboral,80.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2022-01-01,litigiosidad_laboral,76.3,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-12-01,litigiosidad_laboral,77.2,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-11-01,litigiosidad_laboral,70.7,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-10-01,litigiosidad_laboral,66.8,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-09-01,litigiosidad_laboral,60.0,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-08-01,litigiosidad_laboral,42.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-07-01,litigiosidad_laboral,31.4,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-06-01,litigiosidad_laboral,31.6,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-05-01,litigiosidad_laboral,15.1,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2021-04-01,litigiosidad_laboral,-8.9,% i.a. juicios SRT (12m vs 12m),SRT — serie de litigiosidad
+2026-03-01,libertad_opcion_salud,31.8,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2026-02-01,libertad_opcion_salud,31.6,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2026-01-01,libertad_opcion_salud,31.4,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-12-01,libertad_opcion_salud,31.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-11-01,libertad_opcion_salud,30.8,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-10-01,libertad_opcion_salud,30.8,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-09-01,libertad_opcion_salud,30.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-08-01,libertad_opcion_salud,30.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-07-01,libertad_opcion_salud,30.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-06-01,libertad_opcion_salud,29.4,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-05-01,libertad_opcion_salud,28.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-04-01,libertad_opcion_salud,27.9,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-03-01,libertad_opcion_salud,24.6,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-02-01,libertad_opcion_salud,24.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2025-01-01,libertad_opcion_salud,24.5,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-12-01,libertad_opcion_salud,0.7,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-11-01,libertad_opcion_salud,0.3,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-10-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-09-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-08-01,libertad_opcion_salud,0.2,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-07-01,libertad_opcion_salud,0.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-06-01,libertad_opcion_salud,0.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-05-01,libertad_opcion_salud,0.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-04-01,libertad_opcion_salud,0.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-03-01,libertad_opcion_salud,0.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-02-01,libertad_opcion_salud,0.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
+2024-01-01,libertad_opcion_salud,0.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2026-04-01,isac_construccion,145.188156585882,indice base 2004=100,INDEC/datos.gob.ar
 2026-03-01,isac_construccion,167.312521637531,indice base 2004=100,INDEC/datos.gob.ar
 2026-02-01,isac_construccion,158.736729279152,indice base 2004=100,INDEC/datos.gob.ar
@@ -162,6 +278,35 @@ fecha,indicador,valor,unidad,fuente
 2022-07-01,indice_salarios_publico,695.34,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-06-01,indice_salarios_publico,647.9,indice base oct-2016=100,INDEC/datos.gob.ar
 2022-05-01,indice_salarios_publico,619.44,indice base oct-2016=100,INDEC/datos.gob.ar
+2026-05-01,gasto_funcionamiento,-24.35,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2026-04-01,gasto_funcionamiento,-14.47,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2026-03-01,gasto_funcionamiento,-33.77,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2026-02-01,gasto_funcionamiento,-25.89,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2026-01-01,gasto_funcionamiento,-32.22,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-12-01,gasto_funcionamiento,-27.54,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-11-01,gasto_funcionamiento,-34.42,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-10-01,gasto_funcionamiento,-20.45,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-09-01,gasto_funcionamiento,-24.74,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-08-01,gasto_funcionamiento,-26.94,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-07-01,gasto_funcionamiento,-27.19,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-06-01,gasto_funcionamiento,-27.27,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-05-01,gasto_funcionamiento,-18.67,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-04-01,gasto_funcionamiento,-12.31,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-03-01,gasto_funcionamiento,-26.99,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-02-01,gasto_funcionamiento,-15.47,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2025-01-01,gasto_funcionamiento,-19.52,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-12-01,gasto_funcionamiento,-16.64,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-11-01,gasto_funcionamiento,-22.75,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-10-01,gasto_funcionamiento,-22.66,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-09-01,gasto_funcionamiento,-21.91,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-08-01,gasto_funcionamiento,-22.76,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-07-01,gasto_funcionamiento,-23.38,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-06-01,gasto_funcionamiento,-25.96,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-05-01,gasto_funcionamiento,-19.92,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-04-01,gasto_funcionamiento,-17.81,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-03-01,gasto_funcionamiento,-20.89,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-02-01,gasto_funcionamiento,-15.63,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
+2024-01-01,gasto_funcionamiento,-28.31,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-07-01,desregulacion_normativa,60,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
 2026-06-01,desregulacion_normativa,60,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
 2026-05-01,desregulacion_normativa,56,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-02T20:13:09.841404",
+  "generated_at": "2026-07-02T20:26:44.177320",
   "period": "2026-07",
   "score_global": 3.6,
   "ponderacion": {
@@ -641,7 +641,7 @@
           "km_adjudicados": 2614,
           "km_totales": 9091,
           "procesos": 4,
-          "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Acto Administrativo de Preselección · II: Adjudicado · III: Dictamen preselección pendiente publicación",
+          "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Apertura 2º Etapa · II: Adjudicado · III: Dictamen preselección pendiente publicación",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 40,
@@ -690,7 +690,7 @@
           "derivados": 2660767,
           "prepagas_inscriptas": 59,
           "usuarios_prepagas": 8369312,
-          "detalle_txt": "2.660.767 beneficiarios derivados directo a 59 prepagas inscriptas (marzo-2026) / 8.369.312 usuarios de prepagas (RNEMP enero-2026); canal inexistente pre-DNU 70/23",
+          "detalle_txt": "2.660.767 beneficiarios derivados directo a 59 prepagas inscriptas (03/2026) / 8.369.312 usuarios de prepagas (RNEMP 01/2026); canal inexistente pre-DNU 70/23",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 65,

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-02T20:13:09.841404",
+  "generated_at": "2026-07-02T20:26:44.177320",
   "period": "2026-07",
   "score_global": 3.8,
   "ponderacion": {
@@ -887,7 +887,7 @@
           "km_adjudicados": 2614,
           "km_totales": 9091,
           "procesos": 4,
-          "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Acto Administrativo de Preselección · II: Adjudicado · III: Dictamen preselección pendiente publicación",
+          "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Apertura 2º Etapa · II: Adjudicado · III: Dictamen preselección pendiente publicación",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 40,
@@ -896,7 +896,7 @@
           "aporte_score": 6.0,
           "aporte_formula": "Banda ITCG: >75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤15 → 10 (puntos 0–100; puntaje 40; pesa 3,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_input_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Acto Administrativo de Preselección · II: Adjudicado · III: Dictamen preselección pendiente publicación"
+          "aporte_input_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Apertura 2º Etapa · II: Adjudicado · III: Dictamen preselección pendiente publicación"
         },
         "asistencia_directa": {
           "valor": 100.0,
@@ -948,7 +948,7 @@
           "derivados": 2660767,
           "prepagas_inscriptas": 59,
           "usuarios_prepagas": 8369312,
-          "detalle_txt": "2.660.767 beneficiarios derivados directo a 59 prepagas inscriptas (marzo-2026) / 8.369.312 usuarios de prepagas (RNEMP enero-2026); canal inexistente pre-DNU 70/23",
+          "detalle_txt": "2.660.767 beneficiarios derivados directo a 59 prepagas inscriptas (03/2026) / 8.369.312 usuarios de prepagas (RNEMP 01/2026); canal inexistente pre-DNU 70/23",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 65,
@@ -957,7 +957,7 @@
           "aporte_score": 3.5,
           "aporte_formula": "Banda ITCG: >70 → 100 · 50–70 → 85 · 30–50 → 65 · 10–30 → 40 · ≤10 → 10 (puntos 0–100; puntaje 65; pesa 2,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_input_txt": "2.660.767 beneficiarios derivados directo a 59 prepagas inscriptas (marzo-2026) / 8.369.312 usuarios de prepagas (RNEMP enero-2026); canal inexistente pre-DNU 70/23"
+          "aporte_input_txt": "2.660.767 beneficiarios derivados directo a 59 prepagas inscriptas (03/2026) / 8.369.312 usuarios de prepagas (RNEMP 01/2026); canal inexistente pre-DNU 70/23"
         },
         "alertas_manifestacion": {
           "valor": 0,
