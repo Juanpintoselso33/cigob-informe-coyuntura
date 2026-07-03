@@ -99,6 +99,25 @@ jobs:
           publish_dir: web-dominio
           cname: informe.cigob.org
 
+      # Mismo workaround que pages.yml: el builder legacy de Pages se cuelga
+      # tras el push de peaceiris; un commit trivial sobre gh-pages dispara un
+      # build fresco que sí completa (incondicional e inofensivo).
+      - name: Destrabar el build de Pages del dominio (workaround)
+        run: |
+          sleep 45
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+          eval "$(ssh-agent -s)"
+          ssh-add - <<< "${{ secrets.CIGOB_INFORME_DEPLOY_KEY }}"
+          git clone --depth 1 --branch gh-pages git@github.com:Juanpintoselso33/cigob-informe.git /tmp/pages-retrigger
+          cd /tmp/pages-retrigger
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          date -u +%s > .pages-retrigger
+          git add .pages-retrigger
+          git commit -m "chore: retrigger pages build (workaround builder colgado)"
+          git push origin gh-pages
+
       - name: Commitear snapshot + caches a main
         working-directory: .
         run: |
