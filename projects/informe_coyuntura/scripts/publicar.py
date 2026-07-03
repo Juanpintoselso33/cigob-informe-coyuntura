@@ -390,6 +390,36 @@ ITVC_SERIES_REBASEADAS = {
 }
 
 
+def _itvc_rebase_movil12(series, skey):
+    """Índice base-100 por ACUMULADO MÓVIL de 12 meses (ADR-0024): promedio de
+    los últimos 12 meses de la serie vs el promedio de las ventanas móviles que
+    terminan en el 4T-2023. Desestacionaliza flujos con calendario fuerte
+    (motos: enero ≈ 2× junio) — misma lógica que la carne (CICCRA ya publica
+    su PM-12m). Si la serie no alcanza para las ventanas base, devuelve None
+    (cae al fallback de baselines)."""
+    serie = series.get(skey) or []
+    vals = {p["fecha"][:7]: p["valor"] for p in serie if p.get("valor")}
+    yms = sorted(vals)
+
+    def ventana(fin):
+        i = yms.index(fin) if fin in yms else -1
+        if i < 11:
+            return None
+        win = yms[i - 11:i + 1]
+        # 12 meses CONSECUTIVOS (sin huecos): compara el rango real
+        a0, m0 = int(win[0][:4]), int(win[0][5:7])
+        af, mf = int(win[-1][:4]), int(win[-1][5:7])
+        if (af * 12 + mf) - (a0 * 12 + m0) != 11:
+            return None
+        return sum(vals[k] for k in win) / 12.0
+
+    bases = [v for v in (ventana(f) for f in ITVC_BASE_MESES) if v]
+    actual = ventana(yms[-1]) if yms else None
+    if not bases or not actual:
+        return None
+    return round(actual / (sum(bases) / len(bases)) * 100.0, 1)
+
+
 def _itvc_rebase_de_serie(series, skey, invertido=False):
     """Índice base-100 del ÚLTIMO punto de una serie vs su promedio 4T-2023.
     En series trimestrales el 4T-2023 es un único punto (2023-10), que coincide
@@ -425,7 +455,10 @@ def _itvc_indices(vida_ind, series):
     # Motos (CAFAM), carne (CICCRA PM-12m) e inseguridad (SNIC anual: su serie
     # emite el total del año en YYYY-12, así el 4T-2023 resuelve al año 2023 —
     # la excepción declarada del doc): rebase de la serie reconstruida.
-    idx["patentamiento_motos"] = _itvc_rebase_de_serie(series, "patentamiento_motos")
+    # Motos por acumulado móvil 12m (ADR-0024): el flujo mensual crudo tiene
+    # estacionalidad fuerte y contra la base fija 4T-2023 mide calendario.
+    idx["patentamiento_motos"] = (_itvc_rebase_movil12(series, "patentamiento_motos")
+                                  or _itvc_rebase_de_serie(series, "patentamiento_motos"))
     idx["consumo_carne"] = _itvc_rebase_de_serie(series, "consumo_carne")
     idx["inseguridad"] = _itvc_rebase_de_serie(series, "inseguridad", invertido=True)
     # Fallback: constante 4T-2023 documentada en itvc_baselines.json (con

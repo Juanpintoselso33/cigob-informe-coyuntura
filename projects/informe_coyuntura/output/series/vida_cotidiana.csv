@@ -86,9 +86,9 @@ fecha,indicador,valor,unidad,fuente
 2022-09-01,peso_tarifas,4.55,% m/m regulados,INDEC serie 148.3
 2022-08-01,peso_tarifas,6.29,% m/m regulados,INDEC serie 148.3
 2022-07-01,peso_tarifas,4.91,% m/m regulados,INDEC serie 148.3
-2026-06-01,patentamiento_motos,69059,unidades/mes,CAFAM API (histórico mensual)
+2026-06-01,patentamiento_motos,69154,unidades/mes,CAFAM API (histórico mensual)
 2026-05-01,patentamiento_motos,69752,unidades/mes,CAFAM API (histórico mensual)
-2026-04-01,patentamiento_motos,81976,unidades/mes,CAFAM API (histórico mensual)
+2026-04-01,patentamiento_motos,81980,unidades/mes,CAFAM API (histórico mensual)
 2026-03-01,patentamiento_motos,82160,unidades/mes,CAFAM API (histórico mensual)
 2026-02-01,patentamiento_motos,71478,unidades/mes,CAFAM API (histórico mensual)
 2026-01-01,patentamiento_motos,69294,unidades/mes,CAFAM API (histórico mensual)
@@ -119,6 +119,17 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,patentamiento_motos,33378,unidades/mes,CAFAM API (histórico mensual)
 2023-11-01,patentamiento_motos,40882,unidades/mes,CAFAM API (histórico mensual)
 2023-10-01,patentamiento_motos,43544,unidades/mes,CAFAM API (histórico mensual)
+2023-09-01,patentamiento_motos,35424,unidades/mes,CAFAM API (histórico mensual)
+2023-08-01,patentamiento_motos,43125,unidades/mes,CAFAM API (histórico mensual)
+2023-07-01,patentamiento_motos,38028,unidades/mes,CAFAM API (histórico mensual)
+2023-06-01,patentamiento_motos,34333,unidades/mes,CAFAM API (histórico mensual)
+2023-05-01,patentamiento_motos,40756,unidades/mes,CAFAM API (histórico mensual)
+2023-04-01,patentamiento_motos,40554,unidades/mes,CAFAM API (histórico mensual)
+2023-03-01,patentamiento_motos,49422,unidades/mes,CAFAM API (histórico mensual)
+2023-02-01,patentamiento_motos,36491,unidades/mes,CAFAM API (histórico mensual)
+2023-01-01,patentamiento_motos,42577,unidades/mes,CAFAM API (histórico mensual)
+2022-12-01,patentamiento_motos,29282,unidades/mes,CAFAM API (histórico mensual)
+2022-11-01,patentamiento_motos,35162,unidades/mes,CAFAM API (histórico mensual)
 2026-04-01,mortalidad_pymes,-3.29,% m/m (IPI),INDEC serie 453.1
 2026-03-01,mortalidad_pymes,21.77,% m/m (IPI),INDEC serie 453.1
 2026-02-01,mortalidad_pymes,-5.91,% m/m (IPI),INDEC serie 453.1

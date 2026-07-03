@@ -748,14 +748,16 @@ def fetch_carne_serie() -> list:
 def fetch_motos_serie() -> list:
     """Serie mensual de patentamientos de motovehículos vía la API de CAFAM
     (la misma fuente del colector; expone meses históricos — verificado
-    jul-2026). Desde oct-2023 (la línea base del ITVC) hasta el último mes
-    calendario completo. [[YYYY-MM-01, unidades]]."""
+    jul-2026). Desde nov-2022: 11 meses antes de la línea base del ITVC para
+    que el rebase por acumulado móvil de 12 meses (ADR-0024, motos tienen
+    estacionalidad fuerte: enero ≈ 2× junio) tenga ventanas completas en el
+    4T-2023. [[YYYY-MM-01, unidades]]."""
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     from config import CAFAM_API
     hoy = date.today()
     fin = (hoy.replace(day=1) - timedelta(days=1))     # último mes completo
     out = []
-    y, m = 2023, 10
+    y, m = 2022, 11
     while (y, m) <= (fin.year, fin.month):
         try:
             r = requests.get(CAFAM_API, params={"month_start": m, "month_end": m,

@@ -294,10 +294,11 @@ const dimsJson = JSON.stringify(dims);
         const pct = d.base100
           ? Math.max(3, Math.min(100, ((cmp.puntaje - 60) / 70) * 100))
           : Math.max(3, Math.min(100, cmp.puntaje));
+        const aporteCmp = +(cmp.peso * cmp.puntaje).toFixed(1);
         return `<div class="cg-dimm-row">` +
           `<div class="cg-dimm-top">` +
             `<span class="cg-dimm-name">${esc(cmp.label)}${cmp.valor ? ` <span class="cg-dimm-raw">· ${esc(cmp.valor)}</span>` : ""}</span>` +
-            `<span class="cg-dimm-val"><strong>${nf.format(cmp.puntaje)}</strong>${uni} · pesa ${Math.round(cmp.peso * 100)}%</span>` +
+            `<span class="cg-dimm-val"><strong>${nf.format(cmp.puntaje)}</strong>${uni} × ${Math.round(cmp.peso * 100)}% = ${nf.format(aporteCmp)} pts</span>` +
           `</div>` +
           `<div class="cg-bar"><div class="cg-bar-fill" style="width:${pct}%"></div></div>` +
           (cmp.ajustado ? `<p class="cg-dimm-aj">Ajustado por el analista (puntaje de banda: ${nf.format(cmp.banda)})</p>` : "") +
@@ -314,22 +315,16 @@ const dimsJson = JSON.stringify(dims);
         `${Math.round(d.peso * 100)}% × ${nf.format(d.puntaje)} = <strong>${nf.format(aporte)}</strong> puntos.</p>`;
       document.getElementById("cg-modal-score").style.display = "";
 
-      const serieH = document.getElementById("cg-modal-serie-h");
-      serieH.style.display = "";
-      serieH.textContent = "Puntaje por indicador";
+      // Sin gráfico aparte: las filas de composición YA son el visual (un
+      // bar chart de puntajes repetiría la misma información).
+      document.getElementById("cg-modal-serie-h").style.display = "none";
       document.getElementById("cg-modal-sub").style.display = "none";
       document.getElementById("cg-modal-table").innerHTML = "";
       csvBtn.setAttribute("hidden", "");
       serieActual = []; keyActual = "";
+      destruirChart();
+      document.getElementById("cg-modal-chart").setAttribute("hidden", "");
       modal.removeAttribute("hidden");
-      requestAnimationFrame(async () => {
-        const el = document.getElementById("cg-modal-chart");
-        destruirChart();
-        el.removeAttribute("hidden");
-        const C = await ensureCharts();
-        chartInstance = C.barChart(el, d.comps.map(x => ({ nombre: x.label, valor: x.puntaje })),
-          { color: C.colorDe(d.slug), unidad: d.base100 ? "índice (base 100)" : "puntos" });
-      });
     };
     card.addEventListener("click", abrir);
     card.addEventListener("keydown", e => {

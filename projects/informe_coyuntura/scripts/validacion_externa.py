@@ -60,6 +60,20 @@ def _mensual(serie: list) -> dict:
     return {p["fecha"][:7]: p["valor"] for p in serie}
 
 
+def _movil12(vals: dict) -> dict:
+    """Acumulado móvil de 12 meses consecutivos (ADR-0024: desestacionaliza
+    flujos con calendario fuerte, ej. motos)."""
+    yms = sorted(vals)
+    out = {}
+    for i in range(11, len(yms)):
+        win = yms[i - 11:i + 1]
+        a0, m0 = int(win[0][:4]), int(win[0][5:7])
+        af, mf = int(win[-1][:4]), int(win[-1][5:7])
+        if (af * 12 + mf) - (a0 * 12 + m0) == 11:
+            out[win[-1]] = sum(vals[k] for k in win) / 12.0
+    return out
+
+
 def _rebase(vals: dict, invertido: bool, anual: bool) -> dict:
     """Serie {ym: valor} → {ym: índice base-100 vs 4T-2023}."""
     if anual:
@@ -94,6 +108,8 @@ def construir_series_itvc() -> tuple:
     indices_por_comp = {}
     for comp, (skey, invertido, anual, ya_rebaseada) in COMPONENTES.items():
         vals = _mensual(series.get(skey) or [])
+        if comp == "patentamiento_motos":
+            vals = _movil12(vals)          # ADR-0024: estacionalidad fuerte
         indices_por_comp[comp] = (vals if ya_rebaseada
                                   else _rebase(vals, invertido, anual))
     ult = max(max(v) for v in indices_por_comp.values() if v)
