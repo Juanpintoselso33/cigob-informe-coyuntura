@@ -1,30 +1,35 @@
 fecha,indicador,valor,unidad,fuente
-2026-06-28,sentimiento_digital,4.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-27,sentimiento_digital,5.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-26,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
+2026-07-03,sentimiento_digital,4.8,interés 0–100,Google Trends (ventana 3m)
+2026-07-02,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
+2026-07-01,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
+2026-06-30,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
+2026-06-29,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
+2026-06-28,sentimiento_digital,5.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-27,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
+2026-06-26,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-25,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-24,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
+2026-06-24,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
 2026-06-23,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-22,sentimiento_digital,5.8,interés 0–100,Google Trends (ventana 3m)
+2026-06-22,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
 2026-06-21,sentimiento_digital,5.0,interés 0–100,Google Trends (ventana 3m)
 2026-06-20,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-19,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
 2026-06-18,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-17,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-16,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-17,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-16,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-15,sentimiento_digital,5.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-14,sentimiento_digital,4.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-13,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
+2026-06-14,sentimiento_digital,5.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-13,sentimiento_digital,5.5,interés 0–100,Google Trends (ventana 3m)
 2026-06-12,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-11,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
+2026-06-11,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
 2026-06-10,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-09,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
+2026-06-09,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
 2026-06-08,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
 2026-06-07,sentimiento_digital,5.5,interés 0–100,Google Trends (ventana 3m)
 2026-06-06,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-05,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
+2026-06-05,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
 2026-06-04,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-03,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-03,sentimiento_digital,9.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-02,sentimiento_digital,10.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-01,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
 2026-05-31,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
@@ -36,62 +41,56 @@ fecha,indicador,valor,unidad,fuente
 2026-05-25,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
 2026-05-24,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
 2026-05-23,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-22,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-21,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
+2026-05-22,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
+2026-05-21,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
 2026-05-20,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
 2026-05-19,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
 2026-05-18,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
 2026-05-17,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
 2026-05-16,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
 2026-05-15,sentimiento_digital,9.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-14,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-13,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
+2026-05-14,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
+2026-05-13,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
 2026-05-12,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
 2026-05-11,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
 2026-05-10,sentimiento_digital,5.8,interés 0–100,Google Trends (ventana 3m)
 2026-05-09,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
 2026-05-08,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-07,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-06,sentimiento_digital,9.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-05,sentimiento_digital,11.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-04,sentimiento_digital,10.5,interés 0–100,Google Trends (ventana 3m)
-2026-05-03,sentimiento_digital,6.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-02,sentimiento_digital,12.0,interés 0–100,Google Trends (ventana 3m)
+2026-05-07,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
+2026-05-06,sentimiento_digital,10.0,interés 0–100,Google Trends (ventana 3m)
+2026-05-05,sentimiento_digital,12.0,interés 0–100,Google Trends (ventana 3m)
+2026-05-04,sentimiento_digital,10.8,interés 0–100,Google Trends (ventana 3m)
+2026-05-03,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
+2026-05-02,sentimiento_digital,11.8,interés 0–100,Google Trends (ventana 3m)
 2026-05-01,sentimiento_digital,27.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-30,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-29,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
-2026-04-28,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-27,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-26,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
-2026-04-25,sentimiento_digital,6.8,interés 0–100,Google Trends (ventana 3m)
+2026-04-30,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
+2026-04-29,sentimiento_digital,9.2,interés 0–100,Google Trends (ventana 3m)
+2026-04-28,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
+2026-04-27,sentimiento_digital,10.0,interés 0–100,Google Trends (ventana 3m)
+2026-04-26,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
+2026-04-25,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
 2026-04-24,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
 2026-04-23,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
 2026-04-22,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-21,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
+2026-04-21,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
 2026-04-20,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
 2026-04-19,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
-2026-04-18,sentimiento_digital,5.8,interés 0–100,Google Trends (ventana 3m)
+2026-04-18,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
 2026-04-17,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
 2026-04-16,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-15,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
-2026-04-14,sentimiento_digital,10.2,interés 0–100,Google Trends (ventana 3m)
-2026-04-13,sentimiento_digital,9.2,interés 0–100,Google Trends (ventana 3m)
+2026-04-15,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
+2026-04-14,sentimiento_digital,10.5,interés 0–100,Google Trends (ventana 3m)
+2026-04-13,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
 2026-04-12,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-11,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
+2026-04-11,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
 2026-04-10,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
 2026-04-09,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
 2026-04-08,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-07,sentimiento_digital,9.2,interés 0–100,Google Trends (ventana 3m)
-2026-04-06,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
+2026-04-07,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
+2026-04-06,sentimiento_digital,10.2,interés 0–100,Google Trends (ventana 3m)
 2026-04-05,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
 2026-04-04,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
 2026-04-03,sentimiento_digital,6.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-02,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-01,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
-2026-03-31,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
-2026-03-30,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
-2026-03-29,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
-2026-03-28,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
 2026-01-01,pluriempleo,7.5,%,"INDEC EPH (47.2, trimestral)"
 2025-10-01,pluriempleo,7.8,%,"INDEC EPH (47.2, trimestral)"
 2025-07-01,pluriempleo,7.3,%,"INDEC EPH (47.2, trimestral)"
@@ -179,6 +178,39 @@ fecha,indicador,valor,unidad,fuente
 2022-09-01,peso_tarifas,4.55,% m/m regulados,INDEC serie 148.3
 2022-08-01,peso_tarifas,6.29,% m/m regulados,INDEC serie 148.3
 2022-07-01,peso_tarifas,4.91,% m/m regulados,INDEC serie 148.3
+2026-06-01,patentamiento_motos,69059,unidades/mes,CAFAM API (histórico mensual)
+2026-05-01,patentamiento_motos,69752,unidades/mes,CAFAM API (histórico mensual)
+2026-04-01,patentamiento_motos,81976,unidades/mes,CAFAM API (histórico mensual)
+2026-03-01,patentamiento_motos,82160,unidades/mes,CAFAM API (histórico mensual)
+2026-02-01,patentamiento_motos,71478,unidades/mes,CAFAM API (histórico mensual)
+2026-01-01,patentamiento_motos,69294,unidades/mes,CAFAM API (histórico mensual)
+2025-12-01,patentamiento_motos,60658,unidades/mes,CAFAM API (histórico mensual)
+2025-11-01,patentamiento_motos,52414,unidades/mes,CAFAM API (histórico mensual)
+2025-10-01,patentamiento_motos,63756,unidades/mes,CAFAM API (histórico mensual)
+2025-09-01,patentamiento_motos,59556,unidades/mes,CAFAM API (histórico mensual)
+2025-08-01,patentamiento_motos,55073,unidades/mes,CAFAM API (histórico mensual)
+2025-07-01,patentamiento_motos,54841,unidades/mes,CAFAM API (histórico mensual)
+2025-06-01,patentamiento_motos,48301,unidades/mes,CAFAM API (histórico mensual)
+2025-05-01,patentamiento_motos,53097,unidades/mes,CAFAM API (histórico mensual)
+2025-04-01,patentamiento_motos,53741,unidades/mes,CAFAM API (histórico mensual)
+2025-03-01,patentamiento_motos,51764,unidades/mes,CAFAM API (histórico mensual)
+2025-02-01,patentamiento_motos,41648,unidades/mes,CAFAM API (histórico mensual)
+2025-01-01,patentamiento_motos,60048,unidades/mes,CAFAM API (histórico mensual)
+2024-12-01,patentamiento_motos,50482,unidades/mes,CAFAM API (histórico mensual)
+2024-11-01,patentamiento_motos,50910,unidades/mes,CAFAM API (histórico mensual)
+2024-10-01,patentamiento_motos,46787,unidades/mes,CAFAM API (histórico mensual)
+2024-09-01,patentamiento_motos,41050,unidades/mes,CAFAM API (histórico mensual)
+2024-08-01,patentamiento_motos,55360,unidades/mes,CAFAM API (histórico mensual)
+2024-07-01,patentamiento_motos,40772,unidades/mes,CAFAM API (histórico mensual)
+2024-06-01,patentamiento_motos,33347,unidades/mes,CAFAM API (histórico mensual)
+2024-05-01,patentamiento_motos,39650,unidades/mes,CAFAM API (histórico mensual)
+2024-04-01,patentamiento_motos,39003,unidades/mes,CAFAM API (histórico mensual)
+2024-03-01,patentamiento_motos,29233,unidades/mes,CAFAM API (histórico mensual)
+2024-02-01,patentamiento_motos,31334,unidades/mes,CAFAM API (histórico mensual)
+2024-01-01,patentamiento_motos,33946,unidades/mes,CAFAM API (histórico mensual)
+2023-12-01,patentamiento_motos,33378,unidades/mes,CAFAM API (histórico mensual)
+2023-11-01,patentamiento_motos,40882,unidades/mes,CAFAM API (histórico mensual)
+2023-10-01,patentamiento_motos,43544,unidades/mes,CAFAM API (histórico mensual)
 2026-04-01,mortalidad_pymes,-3.29,% m/m (IPI),INDEC serie 453.1
 2026-03-01,mortalidad_pymes,21.77,% m/m (IPI),INDEC serie 453.1
 2026-02-01,mortalidad_pymes,-5.91,% m/m (IPI),INDEC serie 453.1
@@ -226,6 +258,161 @@ fecha,indicador,valor,unidad,fuente
 2022-08-01,mortalidad_pymes,3.53,% m/m (IPI),INDEC serie 453.1
 2022-07-01,mortalidad_pymes,0.07,% m/m (IPI),INDEC serie 453.1
 2022-06-01,mortalidad_pymes,1.31,% m/m (IPI),INDEC serie 453.1
+2026-04-01,itvc_tarifas,72.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2026-03-01,itvc_tarifas,73.6,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2026-02-01,itvc_tarifas,75.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2026-01-01,itvc_tarifas,74.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-12-01,itvc_tarifas,76.0,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-11-01,itvc_tarifas,77.4,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-10-01,itvc_tarifas,78.7,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-09-01,itvc_tarifas,78.7,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-08-01,itvc_tarifas,79.6,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-07-01,itvc_tarifas,80.7,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-06-01,itvc_tarifas,80.2,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-05-01,itvc_tarifas,79.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-04-01,itvc_tarifas,79.4,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-03-01,itvc_tarifas,78.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-02-01,itvc_tarifas,77.9,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2025-01-01,itvc_tarifas,75.1,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-12-01,itvc_tarifas,75.1,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-11-01,itvc_tarifas,76.1,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-10-01,itvc_tarifas,76.6,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-09-01,itvc_tarifas,73.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-08-01,itvc_tarifas,74.0,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-07-01,itvc_tarifas,75.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-06-01,itvc_tarifas,73.9,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-05-01,itvc_tarifas,75.3,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-04-01,itvc_tarifas,73.0,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-03-01,itvc_tarifas,74.4,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-02-01,itvc_tarifas,77.1,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2024-01-01,itvc_tarifas,83.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2023-12-01,itvc_tarifas,92.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2023-11-01,itvc_tarifas,103.0,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2023-10-01,itvc_tarifas,106.7,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
+2026-04-01,itvc_isac,80.0,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-03-01,itvc_isac,83.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-02-01,itvc_isac,79.3,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-01-01,itvc_isac,80.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-12-01,itvc_isac,80.5,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-11-01,itvc_isac,78.3,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-10-01,itvc_isac,81.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-09-01,itvc_isac,81.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-08-01,itvc_isac,80.5,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-07-01,itvc_isac,80.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-06-01,itvc_isac,81.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-05-01,itvc_isac,80.9,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-04-01,itvc_isac,82.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-03-01,itvc_isac,77.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-02-01,itvc_isac,80.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2025-01-01,itvc_isac,78.3,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-12-01,itvc_isac,80.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-11-01,itvc_isac,78.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-10-01,itvc_isac,74.8,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-09-01,itvc_isac,78.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-08-01,itvc_isac,77.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-07-01,itvc_isac,78.9,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-06-01,itvc_isac,74.0,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-05-01,itvc_isac,72.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-04-01,itvc_isac,65.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-03-01,itvc_isac,66.1,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-02-01,itvc_isac,76.3,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2024-01-01,itvc_isac,79.6,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2023-12-01,itvc_isac,92.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2023-11-01,itvc_isac,103.0,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2023-10-01,itvc_isac,104.3,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
+2026-04-01,itvc_ipi,95.8,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2026-03-01,itvc_ipi,97.9,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2026-02-01,itvc_ipi,94.4,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2026-01-01,itvc_ipi,97.4,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-12-01,itvc_ipi,95.1,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-11-01,itvc_ipi,94.6,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-10-01,itvc_ipi,95.7,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-09-01,itvc_ipi,96.6,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-08-01,itvc_ipi,96.7,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-07-01,itvc_ipi,95.5,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-06-01,itvc_ipi,98.2,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-05-01,itvc_ipi,100.1,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-04-01,itvc_ipi,98.1,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-03-01,itvc_ipi,95.4,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-02-01,itvc_ipi,101.6,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2025-01-01,itvc_ipi,98.8,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-12-01,itvc_ipi,101.1,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-11-01,itvc_ipi,100.6,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-10-01,itvc_ipi,99.1,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-09-01,itvc_ipi,99.5,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-08-01,itvc_ipi,98.4,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-07-01,itvc_ipi,96.2,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-06-01,itvc_ipi,91.4,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-05-01,itvc_ipi,91.9,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-04-01,itvc_ipi,90.1,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-03-01,itvc_ipi,90.6,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-02-01,itvc_ipi,93.3,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2024-01-01,itvc_ipi,92.7,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2023-12-01,itvc_ipi,96.0,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2023-11-01,itvc_ipi,100.8,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2023-10-01,itvc_ipi,103.3,índice (100 = 4T-2023),INDEC IPI desestacionalizado
+2026-04-01,itvc_endeudamiento,31.7,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2026-03-01,itvc_endeudamiento,33.4,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2026-02-01,itvc_endeudamiento,35.0,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2026-01-01,itvc_endeudamiento,37.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-12-01,itvc_endeudamiento,43.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-11-01,itvc_endeudamiento,46.0,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-10-01,itvc_endeudamiento,52.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-09-01,itvc_endeudamiento,56.1,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-08-01,itvc_endeudamiento,61.8,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-07-01,itvc_endeudamiento,73.5,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-06-01,itvc_endeudamiento,78.8,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-05-01,itvc_endeudamiento,90.0,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-04-01,itvc_endeudamiento,108.5,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-03-01,itvc_endeudamiento,119.9,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-02-01,itvc_endeudamiento,131.8,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2025-01-01,itvc_endeudamiento,144.5,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-12-01,itvc_endeudamiento,143.3,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-11-01,itvc_endeudamiento,134.7,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-10-01,itvc_endeudamiento,131.3,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-09-01,itvc_endeudamiento,111.1,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-08-01,itvc_endeudamiento,100.5,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-07-01,itvc_endeudamiento,93.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-06-01,itvc_endeudamiento,78.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-05-01,itvc_endeudamiento,73.4,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-04-01,itvc_endeudamiento,72.7,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-03-01,itvc_endeudamiento,70.0,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-02-01,itvc_endeudamiento,78.2,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2024-01-01,itvc_endeudamiento,81.0,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2023-12-01,itvc_endeudamiento,88.3,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2023-11-01,itvc_endeudamiento,109.0,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2023-10-01,itvc_endeudamiento,103.0,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2026-04-01,itvc_alimentos,113.4,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2026-03-01,itvc_alimentos,111.2,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2026-02-01,itvc_alimentos,112.3,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2026-01-01,itvc_alimentos,110.1,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-12-01,itvc_alimentos,114.4,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-11-01,itvc_alimentos,116.4,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-10-01,itvc_alimentos,118.3,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-09-01,itvc_alimentos,117.8,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-08-01,itvc_alimentos,118.4,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-07-01,itvc_alimentos,118.5,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-06-01,itvc_alimentos,117.3,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-05-01,itvc_alimentos,114.8,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-04-01,itvc_alimentos,113.3,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-03-01,itvc_alimentos,113.4,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-02-01,itvc_alimentos,115.4,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2025-01-01,itvc_alimentos,112.2,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-12-01,itvc_alimentos,111.4,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-11-01,itvc_alimentos,111.6,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-10-01,itvc_alimentos,109.5,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-09-01,itvc_alimentos,103.9,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-08-01,itvc_alimentos,102.1,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-07-01,itvc_alimentos,101.9,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-06-01,itvc_alimentos,98.7,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-05-01,itvc_alimentos,95.8,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-04-01,itvc_alimentos,93.6,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-03-01,itvc_alimentos,85.4,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-02-01,itvc_alimentos,82.8,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2024-01-01,itvc_alimentos,83.2,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2023-12-01,itvc_alimentos,87.3,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2023-11-01,itvc_alimentos,104.5,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
+2023-10-01,itvc_alimentos,113.8,índice (100 = 4T-2023),INDEC IPC Alimentos + RIPTE (elab. CIGOB)
 2026-05-01,ipc_total,11607.3937,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-04-01,ipc_total,11363.0904,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-03-01,ipc_total,11077.0608,indice base dic-2016=100,INDEC/datos.gob.ar
@@ -403,9 +590,9 @@ fecha,indicador,valor,unidad,fuente
 2021-07-01,icc_utdt,39.2,índice,"UTDT (ICC, serie XLS)"
 2021-06-01,icc_utdt,35.6,índice,"UTDT (ICC, serie XLS)"
 2021-05-01,icc_utdt,35.8,índice,"UTDT (ICC, serie XLS)"
-2026-06-01,endeudamiento_familiar,45.03,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2026-05-01,endeudamiento_familiar,45.95,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2026-04-01,endeudamiento_familiar,45.49,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-06-01,endeudamiento_familiar,45.85,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-05-01,endeudamiento_familiar,45.92,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-04-01,endeudamiento_familiar,45.51,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-03-01,endeudamiento_familiar,44.79,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-02-01,endeudamiento_familiar,43.51,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-01-01,endeudamiento_familiar,43.07,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)

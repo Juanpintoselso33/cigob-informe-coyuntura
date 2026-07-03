@@ -2,7 +2,7 @@
   "schema_version": "1.2.0",
   "generated_at": "2026-07-02T21:24:44.176837",
   "period": "2026-07",
-  "score_global": 3.8,
+  "score_global": 4.4,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -531,8 +531,8 @@
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político."
     },
     "vida_cotidiana": {
-      "score": 3.5,
-      "estado": "en_tension",
+      "score": 6.6,
+      "estado": "tensionado",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "brecha_salario_cbt": {
@@ -541,8 +541,12 @@
           "fuente": "INDEC",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "aporte_score": 0.7,
-          "aporte_formula": "4 canastas → 0 · 2,5 → 5 · 1 → 10 (salario formal / CBT)",
+          "en_indice": true,
+          "dimension": "ingresos",
+          "indice_itvc": 112.2,
+          "peso_efectivo": 0.2275,
+          "aporte_score": 2.6,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 112,2 (100 = arranque del mandato; más = mejora); pesa 22,8% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "ipc_alimentos": {
@@ -551,8 +555,12 @@
           "fuente": "INDEC serie 146.3",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
-          "aporte_score": 2.5,
-          "aporte_formula": "0% → 0 · 5% → 5 · 10% → 10 (mensual)",
+          "en_indice": true,
+          "dimension": "precios",
+          "indice_itvc": 113.4,
+          "peso_efectivo": 0.1,
+          "aporte_score": 2.3,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 113,4 (100 = arranque del mandato; más = mejora); pesa 10,0% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "endeudamiento_familiar": {
@@ -562,9 +570,12 @@
           "fecha_dato": "2026-06-23",
           "desactualizado": false,
           "var_real_12m": -1.4,
-          "aporte_input_txt": "-1,4% interanual real (no el stock nominal)",
-          "aporte_score": 4.7,
-          "aporte_formula": "−20% real → 0 · 0% → 5 · +20% real → 10 (var. interanual real del crédito)",
+          "en_indice": true,
+          "dimension": "vulnerabilidad",
+          "indice_itvc": 31.7,
+          "peso_efectivo": 0.1,
+          "aporte_score": 10.0,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 31,7 (100 = arranque del mandato; más = mejora); pesa 10,0% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "peso_tarifas": {
@@ -573,8 +584,12 @@
           "fuente": "INDEC",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
-          "aporte_score": 2.4,
-          "aporte_formula": "0% → 0 · 5% → 5 · 10% → 10 (regulados, m/m)",
+          "en_indice": true,
+          "dimension": "precios",
+          "indice_itvc": 72.8,
+          "peso_efectivo": 0.15,
+          "aporte_score": 10.0,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 72,8 (100 = arranque del mandato; más = mejora); pesa 15,0% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "consumo_carne": {
@@ -583,8 +598,12 @@
           "fuente": "CICCRA",
           "fecha_dato": "2026-05",
           "desactualizado": false,
-          "aporte_score": 3.8,
-          "aporte_formula": "55 → 0 · 45 → 5 · 35 → 10 (kg/hab/año)",
+          "en_indice": true,
+          "dimension": "confianza",
+          "indice_itvc": 89.3,
+          "peso_efectivo": 0.015,
+          "aporte_score": 7.1,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 89,3 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "informalidad": {
@@ -593,8 +612,12 @@
           "fuente": "INDEC EPH",
           "fecha_dato": "2025-01-01",
           "desactualizado": false,
-          "aporte_score": 4.7,
-          "aporte_formula": "25% → 0 · 37,5% → 5 · 50% → 10",
+          "en_indice": true,
+          "dimension": "ingresos",
+          "indice_itvc": 98.6,
+          "peso_efectivo": 0.1225,
+          "aporte_score": 5.3,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 98,6 (100 = arranque del mandato; más = mejora); pesa 12,2% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "mortalidad_pymes": {
@@ -603,8 +626,12 @@
           "fuente": "INDEC",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "aporte_score": 8.3,
-          "aporte_formula": "+5% → 0 · 0% → 5 · −5% → 10 (IPI m/m)",
+          "en_indice": true,
+          "dimension": "empleo",
+          "indice_itvc": 95.8,
+          "peso_efectivo": 0.0675,
+          "aporte_score": 5.8,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 95,8 (100 = arranque del mandato; más = mejora); pesa 6,8% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "despacho_cemento": {
@@ -613,8 +640,12 @@
           "fuente": "INDEC",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "aporte_score": 3.6,
-          "aporte_formula": "180 → 0 · 130 → 5 · 80 → 10 (índice ISAC)",
+          "en_indice": true,
+          "dimension": "empleo",
+          "indice_itvc": 80.0,
+          "peso_efectivo": 0.06,
+          "aporte_score": 9.0,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 80,0 (100 = arranque del mandato; más = mejora); pesa 6,0% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "pluriempleo": {
@@ -623,8 +654,12 @@
           "fuente": "INDEC EPH",
           "fecha_dato": "2026-01-01",
           "desactualizado": false,
-          "aporte_score": 2.5,
-          "aporte_formula": "5% → 0 · 10% → 5 · 15% → 10 (subocupación demandante)",
+          "en_indice": true,
+          "dimension": "empleo",
+          "indice_itvc": 90.7,
+          "peso_efectivo": 0.0225,
+          "aporte_score": 6.9,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 90,7 (100 = arranque del mandato; más = mejora); pesa 2,2% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "inseguridad": {
@@ -633,8 +668,12 @@
           "fuente": "SNIC",
           "fecha_dato": "2024",
           "desactualizado": false,
-          "aporte_score": 5.9,
-          "aporte_formula": "tasa/100k hab (pob. 46,7M): 3.000 → 0 · 5.000 → 5 · 7.000 → 10",
+          "en_indice": true,
+          "dimension": "confianza",
+          "indice_itvc": 97.4,
+          "peso_efectivo": 0.045,
+          "aporte_score": 5.5,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 97,4 (100 = arranque del mandato; más = mejora); pesa 4,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "icc_utdt": {
@@ -643,8 +682,12 @@
           "fuente": "UTDT",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "aporte_score": 5.8,
-          "aporte_formula": "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)",
+          "en_indice": true,
+          "dimension": "confianza",
+          "indice_itvc": 97.1,
+          "peso_efectivo": 0.075,
+          "aporte_score": 5.6,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 97,1 (100 = arranque del mandato; más = mejora); pesa 7,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         },
         "sentimiento_digital": {
@@ -653,9 +696,10 @@
           "fuente": "Google Trends",
           "fecha_dato": "2026-06-27",
           "desactualizado": false,
-          "aporte_score": 0.7,
-          "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
-          "aporte_nota": null
+          "en_indice": false,
+          "aporte_score": null,
+          "aporte_formula": null,
+          "aporte_nota": "Indicador de contexto — no integra el ITVC (paramétrica CIGOB jul-2026) o su componente no pudo calcularse en esta corrida."
         },
         "patentamiento_motos": {
           "valor": 69740,
@@ -663,14 +707,138 @@
           "fuente": "CAFAM",
           "fecha_dato": "2026-05",
           "desactualizado": false,
-          "aporte_score": 0.1,
-          "aporte_formula": "70.000 → 0 · 45.000 → 5 · 20.000 → 10 (unidades/mes)",
+          "en_indice": true,
+          "dimension": "confianza",
+          "indice_itvc": 175.9,
+          "peso_efectivo": 0.015,
+          "aporte_score": 0.0,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 175,9 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null
         }
       },
       "alerta": null,
       "fuente_enriquecida": "vida_cotidiana_20260627_0053.json",
-      "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle."
+      "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
+      "itvc": {
+        "valor": 92.0,
+        "banda": "deterioro_moderado",
+        "banda_legible": "Deterioro moderado vs 4T-2023",
+        "dimensiones": {
+          "ingresos": {
+            "nombre": "Sostenibilidad de ingresos",
+            "peso": 0.35,
+            "puntaje": 107.4,
+            "indicadores": {
+              "brecha_salario_cbt": {
+                "peso": 0.65,
+                "puntaje_banda": 112.2,
+                "puntaje_aplicado": 112.2,
+                "peso_efectivo": 0.2275
+              },
+              "informalidad": {
+                "peso": 0.35,
+                "puntaje_banda": 98.6,
+                "puntaje_aplicado": 98.6,
+                "peso_efectivo": 0.1225
+              }
+            },
+            "peso_efectivo": 0.35
+          },
+          "precios": {
+            "nombre": "Presión de precios",
+            "peso": 0.25,
+            "puntaje": 89.0,
+            "indicadores": {
+              "ipc_alimentos": {
+                "peso": 0.4,
+                "puntaje_banda": 113.4,
+                "puntaje_aplicado": 113.4,
+                "peso_efectivo": 0.1
+              },
+              "peso_tarifas": {
+                "peso": 0.6,
+                "puntaje_banda": 72.8,
+                "puntaje_aplicado": 72.8,
+                "peso_efectivo": 0.15
+              }
+            },
+            "peso_efectivo": 0.25
+          },
+          "vulnerabilidad": {
+            "nombre": "Vulnerabilidad financiera",
+            "peso": 0.1,
+            "puntaje": 31.7,
+            "indicadores": {
+              "endeudamiento_familiar": {
+                "peso": 1.0,
+                "puntaje_banda": 31.7,
+                "puntaje_aplicado": 31.7,
+                "peso_efectivo": 0.1
+              }
+            },
+            "peso_efectivo": 0.1
+          },
+          "empleo": {
+            "nombre": "Prospectivas de empleo",
+            "peso": 0.15,
+            "puntaje": 88.7,
+            "indicadores": {
+              "mortalidad_pymes": {
+                "peso": 0.45,
+                "puntaje_banda": 95.8,
+                "puntaje_aplicado": 95.8,
+                "peso_efectivo": 0.0675
+              },
+              "despacho_cemento": {
+                "peso": 0.4,
+                "puntaje_banda": 80.0,
+                "puntaje_aplicado": 80.0,
+                "peso_efectivo": 0.06
+              },
+              "pluriempleo": {
+                "peso": 0.15,
+                "puntaje_banda": 90.7,
+                "puntaje_aplicado": 90.7,
+                "peso_efectivo": 0.0225
+              }
+            },
+            "peso_efectivo": 0.15
+          },
+          "confianza": {
+            "nombre": "Confianza y seguridad",
+            "peso": 0.15,
+            "puntaje": 104.3,
+            "indicadores": {
+              "icc_utdt": {
+                "peso": 0.5,
+                "puntaje_banda": 97.1,
+                "puntaje_aplicado": 97.1,
+                "peso_efectivo": 0.075
+              },
+              "inseguridad": {
+                "peso": 0.3,
+                "puntaje_banda": 97.4,
+                "puntaje_aplicado": 97.4,
+                "peso_efectivo": 0.045
+              },
+              "consumo_carne": {
+                "peso": 0.1,
+                "puntaje_banda": 89.3,
+                "puntaje_aplicado": 89.3,
+                "peso_efectivo": 0.015
+              },
+              "patentamiento_motos": {
+                "peso": 0.1,
+                "puntaje_banda": 175.9,
+                "puntaje_aplicado": 175.9,
+                "peso_efectivo": 0.015
+              }
+            },
+            "peso_efectivo": 0.15
+          }
+        },
+        "ajustes_aplicados": []
+      }
     },
     "gestion": {
       "score": 3.1,

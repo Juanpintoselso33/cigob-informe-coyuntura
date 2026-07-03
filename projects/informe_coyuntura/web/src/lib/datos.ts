@@ -10,9 +10,10 @@ export interface Indicador {
   estado?: string;        // "placeholder" cuando aplica
   avance_pct?: number;
   notas?: string;
-  en_indice?: boolean;    // macro/gestión: integra el índice paramétrico (false = contexto)
+  en_indice?: boolean;    // macro/gestión/vida: integra el índice paramétrico (false = contexto)
   puntaje_itcm?: number;  // macro: puntaje 0-100 aplicado en el ITCM
   puntaje_itcg?: number;  // gestión: puntaje 0-100 aplicado en el ITCG
+  indice_itvc?: number;   // vida: índice base-100 del componente (100 = 4T-2023)
   [k: string]: unknown;
 }
 export interface DimensionIndice {
@@ -37,6 +38,7 @@ export interface Cinturon {
   score_explicacion?: string;
   itcm?: IndiceParametrico;  // solo macro
   itcg?: IndiceParametrico;  // solo gestión
+  itvc?: IndiceParametrico;  // solo vida cotidiana (base 100 = 4T-2023)
 }
 
 // Índice paramétrico del cinturón (si tiene): sigla, nombre y descripción
@@ -45,6 +47,7 @@ export interface IndiceInfo {
   sigla: string;
   nombre: string;
   descripcion: string;
+  base100?: boolean;  // índice de seguimiento base 100 (sin techo: no mostrar "/100")
   data: IndiceParametrico;
 }
 export function indiceDe(c: Cinturon): IndiceInfo | null {
@@ -63,6 +66,16 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
       "0 = el gobierno promete reformas pero no las ejecuta; 100 = agenda de reformas " +
       "ejecutándose. Pondera cinco dimensiones; la tensión del cinturón es (100 − ITCG) / 10.",
     data: c.itcg,
+  };
+  if (c.itvc) return {
+    sigla: "ITVC",
+    base100: true,   // índice de seguimiento sin techo en 100 (no mostrar "/100")
+    nombre: "Índice de Tensión del Cinturón de Vida Cotidiana",
+    descripcion: "Índice de seguimiento base 100 (paramétrica CIGOB, jul-2026): cada componente " +
+      "se rebasea a 100 = promedio del 4º trimestre de 2023 (el arranque del mandato). " +
+      "Más de 100 = mejora acumulada de la vida cotidiana; menos de 100 = deterioro. " +
+      "Pondera cinco dimensiones; la tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
+    data: c.itvc,
   };
   return null;
 }

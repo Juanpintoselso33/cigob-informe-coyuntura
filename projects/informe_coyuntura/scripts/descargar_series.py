@@ -376,6 +376,218 @@ VIDA_DERIVADAS += [
 ]
 
 
+# ── Series ITVC-B100 (vida cotidiana, doc 260702 — ADR-0018) ──────────────────
+# Componentes del ITVC que requieren TRANSFORMACIÓN (nivel relativo al salario,
+# nivel desestacionalizado rebaseado, deuda real): se emiten como series YA
+# rebaseadas a 100 = promedio 4T-2023 (oct-nov-dic), la línea base del doc.
+# La base se calcula DINÁMICAMENTE de la misma serie (nunca hardcodeada).
+
+ITVC_RIPTE_ID      = "158.1_REPTE_0_0_5"                # RIPTE mensual ($)
+ITVC_IPI_DESEST_ID = "453.1_SERIE_DESEADA_0_0_24_58"    # IPI nivel desestacionalizado
+ITVC_ISAC_DESEST_ID = "33.2_ISAC_SIN_EDAD_0_M_23_56"    # ISAC nivel desestacionalizado
+ITVC_BASE_MESES = ("2023-10", "2023-11", "2023-12")
+
+
+def _nivel_mensual(sid: str, limit: int = 60) -> dict:
+    """{YYYY-MM: valor} de una serie mensual de datos.gob.ar (vía fetch_indec)."""
+    return {f[:7]: v for f, v in fetch_indec(sid, limit=limit)}
+
+
+def _base_t423(serie: dict) -> float:
+    """Promedio del 4T-2023 de {YYYY-MM: valor}; exige los tres meses."""
+    faltan = [m for m in ITVC_BASE_MESES if m not in serie]
+    if faltan:
+        raise ValueError(f"base 4T-2023 incompleta (faltan {faltan})")
+    return sum(serie[m] for m in ITVC_BASE_MESES) / 3.0
+
+
+def _itvc_rebase(serie: dict, invertido: bool = False) -> list:
+    """Serie {ym: valor} → [[YYYY-MM-01, índice]] con 100 = promedio 4T-2023.
+    invertido=True para métricas 'más alto = peor' (I = base/valor)."""
+    base = _base_t423(serie)
+    out = []
+    for ym in sorted(serie):
+        if ym < "2023-10" or not serie[ym]:
+            continue
+        indice = (base / serie[ym] if invertido else serie[ym] / base) * 100.0
+        out.append([f"{ym}-01", round(indice, 1)])
+    return out
+
+
+def _itvc_relativo_salario(sid_precio: str) -> list:
+    """Componente de precios del ITVC: nivel del índice de precios RELATIVO al
+    salario (RIPTE), rebaseado. I(t) = (P_base/P_t) × (RIPTE_t/RIPTE_base) × 100:
+    >100 = los precios subieron MENOS que los salarios desde el 4T-2023."""
+    precio = _nivel_mensual(sid_precio)
+    ripte  = _nivel_mensual(ITVC_RIPTE_ID)
+    p_base, r_base = _base_t423(precio), _base_t423(ripte)
+    out = []
+    for ym in sorted(set(precio) & set(ripte)):
+        if ym < "2023-10" or not precio[ym] or not ripte[ym]:
+            continue
+        indice = (p_base / precio[ym]) * (ripte[ym] / r_base) * 100.0
+        out.append([f"{ym}-01", round(indice, 1)])
+    return out
+
+
+def fetch_itvc_alimentos() -> list:
+    """I_IA: poder de compra de alimentos del salario (IPC Alimentos nivel vs
+    RIPTE), 100 = 4T-2023."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import INDEC_SERIES
+    return _itvc_relativo_salario(INDEC_SERIES["ipc_alimentos"])
+
+
+def fetch_itvc_tarifas() -> list:
+    """I_PT: peso de los servicios regulados en el salario (IPC Regulados nivel
+    vs RIPTE), 100 = 4T-2023."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import INDEC_SERIES
+    return _itvc_relativo_salario(INDEC_SERIES["ipc_regulados"])
+
+
+def fetch_itvc_ipi() -> list:
+    """I_IPI: nivel del IPI manufacturero DESESTACIONALIZADO, 100 = 4T-2023."""
+    return _itvc_rebase(_nivel_mensual(ITVC_IPI_DESEST_ID))
+
+
+def fetch_itvc_isac() -> list:
+    """I_ISC: nivel del ISAC DESESTACIONALIZADO, 100 = 4T-2023 (la serie
+    original tiene un desplome estacional en dic-23 que contaminaría la base)."""
+    return _itvc_rebase(_nivel_mensual(ITVC_ISAC_DESEST_ID))
+
+
+BCRA_INF_BANCOS_ANEXO = ("https://www.bcra.gob.ar/archivos/Pdfs/"
+                         "PublicacionesEstadisticas/informes/InfBanc_Anexo.xlsx")
+
+
+def _anexo_bancos_familias() -> tuple:
+    """(deuda_consumo {ym: saldo M$}, mora {ym: % ponderado}) del corte FAMILIAS
+    del anexo del Informe sobre Bancos (hoja 'Calidad de Cartera (por líneas)',
+    personales + tarjetas: saldos e irregularidad, mensual 2010→). El layout se
+    detecta por etiquetas (no por número de fila): cada bloque tiene una fila de
+    fechas seguida de filas etiquetadas; el bloque de ratios tiene valores <100
+    y el de saldos, millones."""
+    import openpyxl
+    r = requests.get(BCRA_INF_BANCOS_ANEXO, headers=HTTP_HEADERS,
+                     timeout=HTTP_TIMEOUT * 3, verify=False)
+    r.raise_for_status()
+    wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
+    hoja = next(s for s in wb.sheetnames if "por l" in s.lower())   # "(por líneas)"
+    filas = list(wb[hoja].iter_rows(values_only=True))
+
+    def _es_fecha(c):
+        return hasattr(c, "year") and hasattr(c, "month")
+
+    # Anclado en el título de sección: "2. Familias - Total" → los DOS bloques
+    # de fechas siguientes son el ratio de irregularidad y el saldo (en ese
+    # orden, cada uno con filas etiquetadas Personales / Tarjetas de crédito).
+    inicio = next(i for i, f in enumerate(filas)
+                  if str((f or [""])[0] or "").strip().lower().startswith("2. familias"))
+    bloques = []
+    i = inicio + 1
+    while i < len(filas) and len(bloques) < 2:
+        f = filas[i]
+        if sum(1 for c in f if _es_fecha(c)) > 50:
+            fechas = {j: f"{c.year}-{c.month:02d}" for j, c in enumerate(f) if _es_fecha(c)}
+            etiquetas = {}
+            for k in range(i + 1, min(i + 10, len(filas))):
+                lbl = str(filas[k][0] or "").strip().lower()
+                if not lbl or lbl.startswith("fuente"):
+                    if lbl.startswith("fuente"):
+                        break
+                    continue
+                etiquetas[lbl] = filas[k]
+            bloques.append((fechas, etiquetas))
+        i += 1
+    if len(bloques) < 2:
+        raise ValueError("anexo Informe sobre Bancos: bloques de familias no encontrados")
+    ratios, saldos = bloques
+
+    def _serie(bloque, contiene):
+        fechas, etiquetas = bloque
+        lbl = next(l for l in etiquetas if contiene in l)
+        out = {}
+        for j, ym in fechas.items():
+            try:
+                v = float(etiquetas[lbl][j])
+            except (TypeError, ValueError, IndexError):
+                continue
+            out[ym] = v
+        return out
+
+    s_per, s_tar = _serie(saldos, "personales"), _serie(saldos, "tarjeta")
+    r_per, r_tar = _serie(ratios, "personales"), _serie(ratios, "tarjeta")
+    deuda, mora = {}, {}
+    for ym in sorted(set(s_per) & set(s_tar) & set(r_per) & set(r_tar)):
+        total = s_per[ym] + s_tar[ym]
+        if total > 0:
+            deuda[ym] = total
+            mora[ym] = (r_per[ym] * s_per[ym] + r_tar[ym] * s_tar[ym]) / total
+    return deuda, mora
+
+
+def fetch_itvc_endeudamiento() -> list:
+    """I_EC del doc 260702: crédito de consumo de FAMILIAS (personales +
+    tarjetas, anexo del Informe sobre Bancos — mismo corte para saldo y mora)
+    en términos REALES, corregido por la tasa de irregularidad:
+
+        I_EC(t) = 100 × (Deuda_real_t / Deuda_real_4T23) × (Mora_4T23 / Mora_t)
+
+    Deuda creciendo con mora estable = mejora de acceso al crédito; deuda
+    creciendo con mora disparada = sobreendeudamiento por necesidad (cae)."""
+    deuda, mora = _anexo_bancos_familias()
+    ipc = _nivel_mensual("148.3_INIVELNAL_DICI_M_26", limit=220)
+    real = {ym: deuda[ym] / ipc[ym] for ym in sorted(set(deuda) & set(ipc))}
+    base_real, base_mora = _base_t423(real), _base_t423(mora)
+    out = []
+    for ym in sorted(real):
+        if ym < "2023-10" or ym not in mora or not mora[ym]:
+            continue
+        indice = 100.0 * (real[ym] / base_real) * (base_mora / mora[ym])
+        out.append([f"{ym}-01", round(indice, 1)])
+    return out
+
+
+def fetch_motos_serie() -> list:
+    """Serie mensual de patentamientos de motovehículos vía la API de CAFAM
+    (la misma fuente del colector; expone meses históricos — verificado
+    jul-2026). Desde oct-2023 (la línea base del ITVC) hasta el último mes
+    calendario completo. [[YYYY-MM-01, unidades]]."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import CAFAM_API
+    hoy = date.today()
+    fin = (hoy.replace(day=1) - timedelta(days=1))     # último mes completo
+    out = []
+    y, m = 2023, 10
+    while (y, m) <= (fin.year, fin.month):
+        try:
+            r = requests.get(CAFAM_API, params={"month_start": m, "month_end": m,
+                                                "year": y, "type": "TODOS"},
+                             headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            r.raise_for_status()
+            total = sum(p["count"] for p in r.json().get("provinces", []))
+            if total > 0:
+                out.append([f"{y}-{m:02d}-01", total])
+        except Exception as e:
+            print(f"  [WARN] motos serie {y}-{m:02d}: {e}")
+        m += 1
+        if m > 12:
+            m = 1; y += 1
+    return out
+
+
+# Componentes transformados del ITVC-B100 (100 = promedio 4T-2023, ADR-0018)
+VIDA_DERIVADAS += [
+    ("itvc_alimentos", "índice (100 = 4T-2023)", "INDEC IPC Alimentos + RIPTE (elab. CIGOB)", fetch_itvc_alimentos),
+    ("itvc_tarifas", "índice (100 = 4T-2023)", "INDEC IPC Regulados + RIPTE (elab. CIGOB)", fetch_itvc_tarifas),
+    ("itvc_ipi", "índice (100 = 4T-2023)", "INDEC IPI desestacionalizado", fetch_itvc_ipi),
+    ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
+    ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
+    ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie),
+]
+
+
 def fetch_brecha_serie() -> list:
     """Serie de la brecha salario/CBT = RIPTE / Canasta Básica Total, ALINEADA por mes
     (mismo mes en ambas series; el indicador live toma el último de cada una, que a veces

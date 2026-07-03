@@ -46,14 +46,10 @@ def test_espiritu_epoca_presente_y_coherente():
 
 def test_aporte_score_reconcilia_con_score_publicado():
     """El promedio de los aportes por indicador debe reproducir el score del
-    cinturón. Para política esto compara contra el score que computa el
-    colector de forma independiente: si una fórmula deriva, el test falla.
-    Para vida el score se computa acá mismo a partir de los aportes (su scoring
-    vive en publicar.py), así que la igualdad confirma coherencia interna.
-    Macro y gestión no son promedio simple (usan ITCM/ITCG ponderados) y se
-    testean aparte."""
+    cinturón (solo política queda como promedio simple: macro/gestión/vida
+    usan ITCM/ITCG/ITVC y se testean aparte)."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
-    for ck in ("politica", "vida_cotidiana"):
+    for ck in ("politica",):
         c = informe["cinturones"][ck]
         aportes = [i["aporte_score"] for i in c["indicadores"].values()
                    if i.get("aporte_score") is not None]
@@ -151,21 +147,43 @@ def test_score_global_reconcilia_con_pesos():
         f"global {informe['score_global']} != ponderado {esperado}"
 
 
-def test_vida_indicadores_aportan_al_score():
-    """Vida: al menos 12 de 13 indicadores entran al score con fórmula."""
+def test_vida_itvc_reconcilia():
+    """Vida: la suma ponderada de los índices base-100 (peso_efectivo)
+    reproduce el ITVC publicado, la tensión del cinturón es 5 − (ITVC−100)×0,2
+    y el contexto (sentimiento digital) no aporta al score."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
-    vida = informe["cinturones"]["vida_cotidiana"]["indicadores"]
-    con_aporte = [k for k, i in vida.items() if i.get("aporte_score") is not None]
-    assert len(con_aporte) >= 12, f"vida: sólo {len(con_aporte)} con aporte"
+    c = informe["cinturones"]["vida_cotidiana"]
+    assert c.get("itvc"), "vida sin bloque itvc"
+    itvc_val = c["itvc"]["valor"]
+
+    en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
+    contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
+    assert len(en_indice) == 12, f"esperaba 12 componentes en el índice, hay {len(en_indice)}"
+    assert set(contexto) <= {"sentimiento_digital"}
+
+    ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
+    assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"
+    esperado = round(min(10.0, max(0.0, 5.0 - (itvc_val - 100.0) * 0.2)), 1)
+    assert abs(c["score"] - esperado) <= 0.05
+
+    # Los pesos de dimensión del doc 260702 llegan publicados: 35/25/10/15/15.
+    pesos = {k: d["peso"] for k, d in c["itvc"]["dimensiones"].items()}
+    assert pesos == {"ingresos": 0.35, "precios": 0.25, "vulnerabilidad": 0.10,
+                     "empleo": 0.15, "confianza": 0.15}
+
+    for k, i in contexto.items():
+        assert i.get("aporte_score") is None, f"{k} es contexto pero tiene aporte_score"
+    for k, i in en_indice.items():
+        assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
 
 
-def test_endeudamiento_se_puntua_por_variacion_real():
-    """Endeudamiento se puntúa sobre su variación interanual real (no el stock
-    nominal): debe tener var_real_12m y un aporte derivado de ella."""
+def test_endeudamiento_se_puntua_con_mora():
+    """Endeudamiento (D3 del ITVC): su índice viene de la serie itvc_endeudamiento
+    (deuda real de familias × corrección por mora, Informe sobre Bancos)."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
+    series = json.loads((DATA / "series.json").read_text(encoding="utf-8"))
     end = informe["cinturones"]["vida_cotidiana"]["indicadores"]["endeudamiento_familiar"]
-    assert isinstance(end.get("var_real_12m"), (int, float)), "falta var_real_12m"
-    assert end.get("aporte_score") is not None, "endeudamiento sin aporte"
-    # tensión = clamp(5 + var_real/4)
-    esperado = max(0.0, min(10.0, round(5 + end["var_real_12m"] / 4, 1)))
-    assert abs(end["aporte_score"] - esperado) <= 0.1
+    assert end.get("indice_itvc") is not None, "endeudamiento sin índice ITVC"
+    serie = series.get("itvc_endeudamiento") or []
+    assert serie, "falta la serie itvc_endeudamiento"
+    assert abs(end["indice_itvc"] - serie[-1]["valor"]) <= 0.15

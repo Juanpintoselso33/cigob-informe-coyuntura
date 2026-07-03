@@ -74,7 +74,8 @@ def cargar_ajustes(path: Path, periodo: str) -> dict:
     path = Path(path)
     if not path.exists():
         return {}
-    with open(path, encoding="utf-8") as f:
+    # utf-8-sig: tolera el BOM que meten los editores/PowerShell de Windows
+    with open(path, encoding="utf-8-sig") as f:
         ajustes = json.load(f)
     return {
         nombre: spec for nombre, spec in ajustes.items()

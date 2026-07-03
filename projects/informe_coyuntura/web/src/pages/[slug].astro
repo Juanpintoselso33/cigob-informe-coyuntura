@@ -36,7 +36,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <div class="cg-detalle-meta">
         <span class:list={["cg-verdict", verdict]}><span class="cg-verdict-dot"></span>{verdictLabel}</span>
         <span class="cg-detalle-chip">Score <strong>{c.score}/10</strong></span>
-        {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{indice.data.valor}/100</strong> · {indice.data.banda_legible}</span>}
+        {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{indice.data.valor}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} indicadores</span>
       </div>
@@ -47,7 +47,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <section class="cg-section">
         <div class="cg-section-head">
           <p class="cg-eyebrow">Índice paramétrico</p>
-          <h2 class="cg-h2">{indice.sigla}: {indice.data.valor}/100 — {indice.data.banda_legible}</h2>
+          <h2 class="cg-h2">{indice.sigla}: {indice.data.valor}{indice.base100 ? " (base 100 = 4T-2023)" : "/100"} — {indice.data.banda_legible}</h2>
           <p class="cg-h2-sub">{indice.descripcion}</p>
         </div>
         <div class="cg-itcm-dims">
@@ -55,10 +55,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             <div class="cg-itcm-dim">
               <div class="cg-itcm-dim-head">
                 <span class="cg-itcm-dim-name">{dim.nombre}</span>
-                <span class="cg-itcm-dim-val"><strong>{dim.puntaje}</strong>/100 · pesa {Math.round(dim.peso * 100)}%</span>
+                <span class="cg-itcm-dim-val"><strong>{dim.puntaje}</strong>{indice.base100 ? "" : "/100"} · pesa {Math.round(dim.peso * 100)}%</span>
               </div>
               <div class="cg-bar" role="img" aria-label={`${dim.puntaje} de 100`}>
-                <div class="cg-bar-fill" style={`width:${dim.puntaje}%`}></div>
+                <div class="cg-bar-fill" style={`width:${Math.min(100, dim.puntaje)}%`}></div>
               </div>
             </div>
           ))}
@@ -103,6 +103,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       <p class="cg-eyebrow">Fuentes</p>
       <ul>{fuentes.map(f => <li>{f}</li>)}</ul>
     </section>
+
+    {meta.key === "vida_cotidiana" && (
+      <section class="cg-section cg-nota-met">
+        <p class="cg-eyebrow">Nota metodológica</p>
+        <p>
+          El cinturón se puntúa con el <strong>ITVC-B100</strong>, un índice de{" "}
+          <strong>seguimiento de gestión</strong>: cada componente se rebasea a 100 en el{" "}
+          <strong>promedio del 4º trimestre de 2023</strong> (no diciembre puntual, para
+          amortiguar la distorsión de la devaluación) y el índice acumula la mejora o el
+          deterioro desde el arranque del mandato. Alimentos y tarifas se miden por su{" "}
+          <strong>nivel relativo a los salarios</strong> (¿suben más o menos que los
+          ingresos?), la actividad industrial y la construcción por su{" "}
+          <strong>nivel desestacionalizado</strong> (no la variación de un mes), y el
+          endeudamiento se corrige por la <strong>tasa de mora</strong> de la cartera de
+          consumo — más deuda con mora estable es acceso al crédito; con mora disparada, es
+          sobreendeudamiento. Excepciones declaradas: informalidad con base anual 2023 (la
+          serie trimestral pública murió en 2020) y delitos con base anual SNIC 2023. El{" "}
+          <strong>score {c.score}/10</strong> deriva del <strong>ITVC {c.itvc?.valor}</strong>:
+          tensión = 5 − (ITVC − 100) × 0,2.
+        </p>
+      </section>
+    )}
 
     {meta.key === "gestion" && (
       <section class="cg-section cg-nota-met">

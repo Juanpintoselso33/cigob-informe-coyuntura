@@ -19,6 +19,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from config import PESOS_CINTURONES, UMBRALES        # pesos y umbrales del informe
 import itcm                                           # bandas y pesos del ITCM macro
 import itcg                                           # bandas y pesos del ITCG gestión
+import itvc                                           # pesos y rebase del ITVC vida cotidiana
 
 
 def _add(out, key, valor, unidad, fuente, fecha, **extra):
@@ -228,8 +229,8 @@ SCORING = {
     "endeudamiento_familiar": (lambda v: 5 + v / 4,     "−20% real → 0 · 0% → 5 · +20% real → 10 (var. interanual real del crédito)", "var_real_12m"),
 }
 
-VIDA_CONTEXTO = ("Indicador de contexto. No se pudo calcular su variación interanual real "
-                 "(falta la serie de crédito), por lo que no incide en el score en esta corrida.")
+VIDA_CONTEXTO = ("Indicador de contexto — no integra el ITVC (paramétrica CIGOB jul-2026) "
+                 "o su componente no pudo calcularse en esta corrida.")
 
 MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
 GESTION_CONTEXTO = "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026)."
@@ -242,7 +243,9 @@ SCORE_EXPLICACION = {
     "gestion":        ("ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
                        "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
                        "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),
-    "vida_cotidiana": "Promedio simple de la tensión (0–10) de sus indicadores con fórmula validada. Mayor = más tensión en el bolsillo y la calle.",
+    "vida_cotidiana": ("ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida "
+                       "cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, "
+                       "empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2."),
     "espiritu_epoca": ("Promedio simple de la tensión (0–10) de sus proxies (v1 provisional). "
                        "Mayor = más desconexión entre el gobierno y el humor social."),
 }
@@ -258,19 +261,10 @@ def _estado(score):
 
 
 def recomputar_vida_y_global(informe):
-    """Vida cotidiana se puntúa ahora con sus propios indicadores (no el legacy de
-    3 indicadores del colector): su score es el promedio de los aportes calculados
-    acá. Recalculamos su score + estado y, en consecuencia, el score global
-    ponderado, para que el snapshot sea internamente coherente.
-    (El colector vida_cotidiana.py sigue emitiendo el score legacy en su cache;
-    esta es la fuente de verdad del snapshot publicado.)"""
-    vida = informe["cinturones"]["vida_cotidiana"]
-    aportes = [i["aporte_score"] for i in vida["indicadores"].values()
-               if i.get("aporte_score") is not None]
-    if aportes:
-        vida["score"] = round(sum(aportes) / len(aportes), 1)
-        vida["estado"] = _estado(vida["score"])
-
+    """Vida cotidiana se puntúa con el ITVC-B100 calculado en aplicar_scoring
+    (el colector vida_cotidiana.py sigue emitiendo su score legacy en el cache;
+    esta es la fuente de verdad del snapshot publicado). Acá solo se recalcula
+    el score global ponderado para que el snapshot sea internamente coherente."""
     num = sum(c["score"] * PESOS_CINTURONES.get(k, 0.0)
               for k, c in informe["cinturones"].items())
     den = sum(PESOS_CINTURONES.get(k, 0.0) for k in informe["cinturones"])
@@ -360,7 +354,124 @@ def _gestion_input_txt(ikey, ind):
     return None
 
 
-def aplicar_scoring(informe):
+# ── ITVC (vida cotidiana) — doc 260702, ADR-0018 ──────────────────────────────
+
+AJUSTES_ITVC_PATH = ROOT / "data" / "vida" / "ajustes_itvc.json"
+ITVC_BASELINES_PATH = ROOT / "data" / "vida" / "itvc_baselines.json"
+ITVC_BASE_MESES = ("2023-10", "2023-11", "2023-12")
+
+# Serie transformada (ya rebaseada en descargar_series) → indicador del cinturón
+ITVC_SERIES_REBASEADAS = {
+    "itvc_alimentos":     "ipc_alimentos",
+    "itvc_tarifas":       "peso_tarifas",
+    "itvc_ipi":           "mortalidad_pymes",
+    "itvc_isac":          "despacho_cemento",
+    "itvc_endeudamiento": "endeudamiento_familiar",
+}
+
+
+def _itvc_rebase_de_serie(series, skey, invertido=False):
+    """Índice base-100 del ÚLTIMO punto de una serie vs su promedio 4T-2023.
+    En series trimestrales el 4T-2023 es un único punto (2023-10), que coincide
+    naturalmente con la base del doc; en mensuales, el promedio oct-nov-dic."""
+    serie = series.get(skey) or []
+    vals = {p["fecha"][:7]: p["valor"] for p in serie}
+    base_vals = [vals[m] for m in ITVC_BASE_MESES if vals.get(m) is not None]
+    if not serie or not base_vals:
+        return None
+    base = sum(base_vals) / len(base_vals)
+    ult = serie[-1]["valor"]
+    if not ult or not base:
+        return None
+    return round((base / ult if invertido else ult / base) * 100.0, 1)
+
+
+def _itvc_indices(vida_ind, series):
+    """Índices base-100 por componente del ITVC (None = componente sin dato)."""
+    idx = {}
+    for skey, ikey in ITVC_SERIES_REBASEADAS.items():
+        serie = series.get(skey) or []
+        idx[ikey] = serie[-1]["valor"] if serie else None
+    # Rebase directo desde las series oficiales existentes
+    idx["brecha_salario_cbt"] = _itvc_rebase_de_serie(series, "brecha_salario_cbt")
+    idx["icc_utdt"] = _itvc_rebase_de_serie(series, "icc_utdt")
+    idx["pluriempleo"] = _itvc_rebase_de_serie(series, "pluriempleo", invertido=True)
+    # Informalidad: la serie trimestral de la API murió en 2020 → se usa la
+    # ANUAL con base = año 2023 (excepción declarada, doc IV.2.1).
+    inf = {p["fecha"][:4]: p["valor"] for p in (series.get("informalidad") or [])}
+    ult_anio = max(inf) if inf else None
+    idx["informalidad"] = (round(inf["2023"] / inf[ult_anio] * 100.0, 1)
+                           if inf.get("2023") and ult_anio and inf.get(ult_anio) else None)
+    # Motos: rebase de la serie CAFAM (misma fuente del colector); si la serie
+    # no está, cae a la constante documentada de itvc_baselines.json.
+    idx["patentamiento_motos"] = _itvc_rebase_de_serie(series, "patentamiento_motos")
+    # Componentes sin serie histórica: valor actual vs baseline 4T-2023
+    # documentada en data/vida/itvc_baselines.json (con fuente).
+    try:
+        bas = json.loads(ITVC_BASELINES_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        bas = {}
+    pendientes = [("consumo_carne", False), ("inseguridad", True)]
+    if idx["patentamiento_motos"] is None:
+        pendientes.append(("patentamiento_motos", False))
+    for ikey, invertido in pendientes:
+        b = (bas.get(ikey) or {}).get("valor")
+        v = (vida_ind.get(ikey) or {}).get("valor")
+        idx[ikey] = (round((b / v if invertido else v / b) * 100.0, 1)
+                     if b and isinstance(v, (int, float)) and v else None)
+    return idx
+
+
+def _scoring_vida_itvc(c, series):
+    """Vida cotidiana se puntúa con el ITVC-B100: cada componente es un índice
+    rebaseado a 100 = promedio 4T-2023, agregado con los pesos del doc 260702.
+    La tensión del cinturón y el aporte por indicador usan el mapeo lineal
+    5 − (índice − 100) × 0,2 (topeado a 0-10)."""
+    from datetime import datetime as _dt
+    indices = _itvc_indices(c["indicadores"], series)
+    ajustes = itvc.cargar_ajustes(AJUSTES_ITVC_PATH, _dt.now().strftime("%Y-%m"))
+    resultado = itvc.calcular_itvc(indices, ajustes)
+    c["itvc"] = resultado
+    if resultado:
+        c["score"] = itvc.tension_de_itvc(resultado["valor"])
+        c["estado"] = _estado(c["score"])
+
+    ajustados = {a["indicador"]: a for a in (resultado or {}).get("ajustes_aplicados", [])}
+    por_ind = {}
+    if resultado:
+        for dkey, dim in resultado["dimensiones"].items():
+            for ikey, info in dim["indicadores"].items():
+                por_ind[ikey] = (dkey, info)
+    en_itvc = {k for d in itvc.DIMENSIONES_ITVC.values() for k in d["indicadores"]}
+    coma = lambda x: str(x).replace(".", ",")
+    for ikey, ind in c["indicadores"].items():
+        aporte = formula = nota = None
+        if ikey in por_ind:
+            dkey, info = por_ind[ikey]
+            ind["en_indice"] = True
+            ind["dimension"] = dkey
+            ind["indice_itvc"] = info["puntaje_aplicado"]
+            ind["peso_efectivo"] = info["peso_efectivo"]
+            aporte = itvc.tension_de_itvc(info["puntaje_aplicado"])
+            formula = (f"Índice base-100 vs 4T-2023: {coma(info['puntaje_aplicado'])} "
+                       f"(100 = arranque del mandato; más = mejora); pesa "
+                       f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITVC. "
+                       f"Tensión = 5 − (índice − 100) × 0,2.")
+            if ikey in ajustados:
+                aj = ajustados[ikey]
+                nota = f"Ajuste del analista: índice {coma(aj['de'])} → {coma(aj['a'])}. {aj.get('justificacion', '')}"
+        else:
+            ind["en_indice"] = ikey in en_itvc     # del índice pero sin dato
+            if ikey in itvc.INDICADORES_CONTEXTO:
+                ind["en_indice"] = False
+            if ind["en_indice"] is False:
+                nota = VIDA_CONTEXTO
+        ind["aporte_score"] = aporte
+        ind["aporte_formula"] = formula
+        ind["aporte_nota"] = nota
+
+
+def aplicar_scoring(informe, series):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo
     explica, y cada cinturón con cómo se compone su score."""
     for ckey, c in informe["cinturones"].items():
@@ -370,6 +481,9 @@ def aplicar_scoring(informe):
             continue
         if ckey == "gestion":
             _scoring_indice(c, "itcg", itcg, GESTION_CONTEXTO, _gestion_input_txt)
+            continue
+        if ckey == "vida_cotidiana":
+            _scoring_vida_itvc(c, series)
             continue
         for ikey, ind in c["indicadores"].items():
             aporte = formula = nota = None
@@ -460,7 +574,7 @@ def main():
                 enriquecido["endeudamiento_familiar"]["var_real_12m"] = real
 
     informe = sanitizar_fuentes(informe)
-    informe = aplicar_scoring(informe)
+    informe = aplicar_scoring(informe, series)
     informe = recomputar_vida_y_global(informe)
 
     # Red de seguridad: persistir el valor de cada indicador y construir su serie

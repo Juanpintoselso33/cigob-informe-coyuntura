@@ -1,0 +1,24 @@
+{
+  "_meta": {
+    "descripcion": "Líneas base 4T-2023 (o la aproximación declarada) de los componentes del ITVC-B100 SIN serie histórica automatizable (doc 260702 + ADR-0018). El resto de los componentes calcula su base dinámicamente de la propia serie. Completar 'valor' con fuente verificada; un valor null deja el componente fuera del índice (renormaliza).",
+    "regla": "indice = valor_actual / valor_base × 100 (o base/actual si 'invertido')"
+  },
+  "consumo_carne": {
+    "valor": 53.17,
+    "unidad": "kg/hab/año (consumo aparente, promedio móvil 12m)",
+    "fuente": "CICCRA Inf. 273b (oct-23: 53,2) + 274b (nov-23: 53,4) + 275b (anual 2023: 52,9 provisorio) — PDFs verificados 2026-07-03",
+    "nota": "Promedio 4T-2023 de la MISMA métrica del indicador (PM 12 meses). El dato revisado 2023 es ~52,4; se usa la foto provisoria contemporánea por consistencia con la serie del colector."
+  },
+  "patentamiento_motos": {
+    "valor": 39268,
+    "unidad": "unidades/mes",
+    "fuente": "CAFAM API (back.cafam.org.ar): oct-23 43.544 · nov-23 40.882 · dic-23 33.378 — verificado 2026-07-03",
+    "nota": "FALLBACK: el índice se calcula preferentemente rebaseando la serie mensual de CAFAM (misma fuente del colector). Limitación declarada: mes puntual con estacionalidad."
+  },
+  "inseguridad": {
+    "valor": 2435858,
+    "unidad": "hechos delictivos/año (total país, criterio del colector)",
+    "fuente": "SNIC snic-pais.csv (cloud-snic.minseg.gob.ar, serie revisada a 2026-06) — 2023, mismo criterio de suma que collectors/snic.py",
+    "nota": "Excepción declarada (doc IV.2.1): base anual 2023 (el SNIC es anual). OJO: el criterio del colector suma categorías padre y subcategorías (~+22% vs el total oficial sin duplicación, 1.985.767); numerador y denominador usan el MISMO criterio, así el ratio es consistente."
+  }
+}

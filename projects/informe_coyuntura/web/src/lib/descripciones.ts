@@ -142,19 +142,19 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Ratio (canastas)",
   },
   ipc_alimentos: {
-    que: "Cuánto suben en el mes los precios de alimentos y bebidas.",
-    aporta: "Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar.",
-    frecuencia: "Mensual", tipo: "Variación",
+    que: "Cuánto suben en el mes los precios de alimentos y bebidas. En el ITVC puntúa por el NIVEL acumulado del índice de alimentos relativo a los salarios (RIPTE), rebaseado a 100 = 4T-2023: si supera 100, la comida se abarató en términos de ingresos desde el arranque del mandato.",
+    aporta: "Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar. Medirla relativa al salario captura la pérdida o ganancia acumulada de poder de compra alimentario, no el ruido de un mes.",
+    frecuencia: "Mensual", tipo: "Variación (card) · nivel vs salarios (índice)",
   },
   endeudamiento_familiar: {
-    que: "Cuánto deben las familias por consumo: el saldo de tarjetas más préstamos personales.",
-    aporta: "Refleja si los hogares llegan a fin de mes apoyándose en deuda.",
-    frecuencia: "Diaria", tipo: "Nivel (stock)",
+    que: "Cuánto deben las familias por consumo (tarjetas + personales). En el ITVC puntúa la deuda REAL corregida por la tasa de mora de esa cartera (Informe sobre Bancos, BCRA): más crédito con mora estable es acceso; más crédito con mora disparada es sobreendeudamiento por necesidad.",
+    aporta: "La corrección por mora resuelve la ambigüedad de polaridad: la deuda real creció ~66% desde el 4T-2023 pero la irregularidad de las familias se multiplicó por 5,5 — el índice del componente lo castiga con fuerza.",
+    frecuencia: "Mensual (mora con ~2 meses de rezago)", tipo: "Índice deuda real × calidad de cartera",
   },
   peso_tarifas: {
-    que: "Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte.",
-    aporta: "Mide el impacto de la quita de subsidios sobre el gasto fijo del hogar.",
-    frecuencia: "Mensual", tipo: "Variación",
+    que: "Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITVC puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.",
+    aporta: "Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.",
+    frecuencia: "Mensual", tipo: "Variación (card) · nivel vs salarios (índice)",
   },
   consumo_carne: {
     que: "Cuántos kilos de carne vacuna consume por año cada habitante.",
@@ -167,9 +167,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Trimestral", tipo: "Nivel (%)",
   },
   mortalidad_pymes: {
-    que: "La salud del entramado productivo y del empleo PyME, aproximada por la actividad industrial manufacturera (proxy).",
-    aporta: "Cuando la industria se contrae, las PyMEs y su empleo son las primeras en sufrirlo.",
-    frecuencia: "Mensual", tipo: "Variación (IPI)",
+    que: "La salud del entramado productivo y del empleo PyME, aproximada por la actividad industrial manufacturera. En el ITVC puntúa por el NIVEL del IPI desestacionalizado rebaseado a 100 = 4T-2023 (ya no la variación de un mes, que premiaba o castigaba por estacionalidad).",
+    aporta: "Cuando la industria se contrae, las PyMEs y su empleo son las primeras en sufrirlo; el nivel acumulado dice si la actividad recuperó o no el punto de partida del mandato.",
+    frecuencia: "Mensual", tipo: "Variación (card) · nivel desest. (índice)",
   },
   despacho_cemento: {
     que: "El nivel de actividad de la construcción, gran motor de empleo de baja calificación.",
