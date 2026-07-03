@@ -192,6 +192,7 @@
 }
 .cg-formula-math { overflow-x: auto; padding: 4px 0; text-align: center; }
 .cg-formula-math .katex-display { margin: 6px 0; }
+.cg-formula-math .katex { font-size: 1em; }   /* fórmulas con palabras: compactas */
 .cg-formula-leyenda {
     margin: 6px 0 0; font-size: 12px; line-height: 1.55; color: var(--muted);
 }
