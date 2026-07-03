@@ -924,10 +924,109 @@ def fetch_litigiosidad_serie() -> list:
     return out[-60:]   # últimos 5 años (la serie arranca en 2010)
 
 
-# apertura_comercial (ILCE) no tiene serie oficial reconstruible (la brecha
-# cambiaria histórica no es pública vía API): su evolución se acumula mes a mes
-# en data/historico/indicadores.json (publicar.acumular_historico).
+def fetch_ilce_serie() -> list:
+    """Serie mensual del ILCE (apertura_comercial) desde dic-2023, con la misma
+    fórmula del colector: (0,4·B_camb + 0,4·A_efec)/0,8. B_camb sale de la
+    brecha CCL/mayorista mensual (fetch_brecha_serie); A_efec de la alícuota
+    efectiva (recaudación DEX+DIM en USD por el A3500 promedio, sobre el
+    intercambio expo+impo del ICA). El live usa la brecha SPOT del día y la
+    serie el promedio del mes — divergen de forma inmaterial. [[YYYY-MM-01, índice]]."""
+    brecha = {f[:7]: v for f, v in fetch_brecha_serie()}
+    dex  = gestion._indec_nivel_mensual(gestion.DEX_ID, limit=48)
+    dim  = gestion._indec_nivel_mensual(gestion.DIM_ID, limit=48)
+    expo = gestion._indec_nivel_mensual(gestion.EXPO_ICA_ID, limit=48)
+    impo = gestion._indec_nivel_mensual(gestion.IMPO_ICA_ID, limit=48)
+    dias = (date.today() - date(2023, 11, 25)).days
+    tc   = gestion._tc_mayorista_promedio_por_mes(dias=dias)
+    out = []
+    for ym in sorted(set(brecha) & set(dex) & set(dim) & set(expo) & set(impo) & set(tc)):
+        if ym < "2023-12" or expo[ym] + impo[ym] <= 0 or tc[ym] <= 0:
+            continue
+        b_camb = 100.0 / (1.0 + max(-0.99, brecha[ym] / 100.0))
+        alicuota = 100.0 * ((dex[ym] + dim[ym]) / tc[ym]) / (expo[ym] + impo[ym])
+        a_efec = 100.0 * max(0.0, 1.0 - alicuota / gestion.ALICUOTA_CIERRE_PCT)
+        out.append([f"{ym}-01", round((0.40 * b_camb + 0.40 * a_efec) / 0.80, 1)])
+    return out
+
+
+CONCESIONES_FECHAS_STORE = Path(__file__).resolve().parents[1] / "data" / "gestion" / "concesiones_fechas.json"
+
+
+def fetch_concesiones_serie() -> list:
+    """Serie mensual del % de km adjudicados de la RFC, reconstruida como
+    función ESCALONADA por hitos fechados (las adjudicaciones son actos
+    administrativos puntuales): cada etapa suma sus km desde su mes de
+    adjudicación. El store concesiones_fechas.json trae las fechas oficiales
+    verificadas (Etapa I: RESOL-2025-80-ST ene-2026 · II-A: Res. 706/2026
+    may-2026) y se auto-actualiza cuando CONTRAT.AR muestra una etapa nueva
+    en ADJUDICADO (mes corriente) — mismo patrón que rigi_fechas.
+    Antes de la primera adjudicación el avance es 0. [[YYYY-MM-01, %]]."""
+    store = json.loads(CONCESIONES_FECHAS_STORE.read_text(encoding="utf-8-sig"))
+    etapas = store["etapas"]
+    try:
+        km = gestion._rfc_km_por_etapa()
+        store["km_totales"] = round(sum(km.values()))
+        hoy_ym = date.today().strftime("%Y-%m")
+        for proceso, nombre, estado in gestion._contratar_procesos_rfc():
+            etapa = gestion._etapa_de_proceso(nombre)
+            if etapa and "ADJUDICADO" in estado.upper() and etapa in km:
+                if etapa not in etapas:
+                    etapas[etapa] = {"fecha": hoy_ym, "km": km[etapa],
+                                     "fuente": f"CONTRAT.AR {proceso} (detectado {hoy_ym})"}
+                else:
+                    etapas[etapa]["km"] = km[etapa]
+        CONCESIONES_FECHAS_STORE.write_text(
+            json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception as e:
+        print(f"  [WARN] concesiones serie: CONTRAT.AR/RFC no disponible ({e}); se usa el store")
+    km_total = store.get("km_totales") or 0
+    if not km_total:
+        return []
+    out = []
+    y, m = 2023, 12
+    hoy = date.today()
+    while (y, m) <= (hoy.year, hoy.month):
+        ym = f"{y}-{m:02d}"
+        adj = sum(e["km"] for e in etapas.values() if e["fecha"] <= ym)
+        out.append([f"{ym}-01", round(100.0 * adj / km_total, 1)])
+        m += 1
+        if m > 12:
+            m = 1; y += 1
+    return out
+
+
+def fetch_fal_serie() -> list:
+    """Serie mensual del índice FAL (fondo de cese laboral): 0 desde dic-2023
+    hasta jun-2026 — el cero histórico es un DATO DURO, no un faltante: el
+    decreto 847/2024 recién reglamentó el instrumento en sep-2024 y el registro
+    CNV (RG 1071/2025) nunca tuvo altas —, y desde jul-2026 la medición vigente
+    (cobertura CCT estimada + adopción financiera) acumulada en el histórico,
+    con el valor live como último punto (ADR-0012). [[YYYY-MM-01, índice]]."""
+    hist_path = Path(__file__).resolve().parents[1] / "data" / "historico" / "indicadores.json"
+    try:
+        hist = json.loads(hist_path.read_text(encoding="utf-8-sig")).get(
+            "fal_modernizacion_laboral", {})
+    except (OSError, json.JSONDecodeError):
+        hist = {}
+    live = gestion.fetch_fal_modernizacion_laboral()
+    hoy_ym = date.today().strftime("%Y-%m")
+    if live and live.get("valor") is not None:
+        hist[hoy_ym] = float(live["valor"])
+    out = []
+    y, m = 2023, 12
+    while (y, m) <= (int(hoy_ym[:4]), int(hoy_ym[5:])):
+        ym = f"{y}-{m:02d}"
+        out.append([f"{ym}-01", hist[ym] if ym in hist else 0.0])
+        m += 1
+        if m > 12:
+            m = 1; y += 1
+    return out
+
+
 GESTION_DERIVADAS = [
+    ("apertura_comercial", "Índice 0–100 (ILCE)", "ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)", fetch_ilce_serie),
+    ("concesiones_infraestructura", "% km adjudicados RFC", "CONTRAT.AR + RFC (hitos fechados)", fetch_concesiones_serie),
+    ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "CNV + MTEySS (histórico: 0 hasta jul-2026)", fetch_fal_serie),
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
     ("desregulacion_normativa", "Normas (conteo acum.)", "InfoLeg ('deroga' desde dic-2023)", lambda: fetch_infoleg_serie("deroga")),
     ("reestructuracion_organismos", "Normas (conteo acum.)", "InfoLeg ('disolucion' desde dic-2023)", lambda: fetch_infoleg_serie("disolucion")),
@@ -939,7 +1038,7 @@ GESTION_DERIVADAS = [
      lambda: _serie_var_real_vs_2023([gestion.REMUNERACIONES_ID])),
     ("libertad_opcion_salud", "% usuarios de prepagas con derivación directa", "SSS — RNAS/RNEMP", fetch_opcion_salud_serie),
     ("litigiosidad_laboral", "% i.a. juicios SRT (12m vs 12m)", "SRT — serie de litigiosidad", fetch_litigiosidad_serie),
-    ("cepo_mulc", "% brecha CCL/mayorista (prom. mensual)", "Ámbito (CCL) + BCRA (A3500)", fetch_brecha_serie),
+    ("cepo_mulc", "% brecha CCL/mayorista (prom. mensual)", "ArgentinaDatos (CCL) + BCRA (A3500)", fetch_brecha_serie),
     ("protestas_caba", "eventos de protesta/mes (CABA)", "ACLED — agregado semanal (acleddata.com)", fetch_protestas_serie),
 ]
 

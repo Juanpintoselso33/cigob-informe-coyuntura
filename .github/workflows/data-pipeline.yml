@@ -113,6 +113,7 @@ jobs:
                   projects/informe_coyuntura/data/gestion/piquetes_alertas.json \
                   projects/informe_coyuntura/data/gestion/tdps_baseline_2023.json \
                   projects/informe_coyuntura/data/gestion/protestas_caba.json \
+                  projects/informe_coyuntura/data/gestion/concesiones_fechas.json \
                   projects/informe_coyuntura/data/vida/carne_serie.json
           if git diff --staged --quiet; then
             echo "::notice::Sin cambios en datos — no se commitea."

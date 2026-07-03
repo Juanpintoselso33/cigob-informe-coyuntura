@@ -1,0 +1,19 @@
+{
+  "_meta": {
+    "descripcion": "Hitos de adjudicación de la Red Federal de Concesiones (RFC) para reconstruir la serie del indicador concesiones_infraestructura como función escalonada (ADR-0012/0016). Sembrado con las fechas oficiales verificadas 2026-07-03; descargar_series.fetch_concesiones_serie agrega automáticamente las etapas nuevas cuando CONTRAT.AR las muestra ADJUDICADO (con el mes corriente) y refresca los km desde la página oficial de la RFC.",
+    "regla": "% del mes = 100 × Σ km de etapas con fecha ≤ mes / km_totales"
+  },
+  "km_totales": 9091,
+  "etapas": {
+    "I": {
+      "fecha": "2026-01",
+      "km": 741.71,
+      "fuente": "RESOL-2025-80-ST#MEC, vinculada en CONTRAT.AR (504-0007-LPU25) el 05/01/2026 — Tramos Oriental (Autovía Construcciones y Servicios) y Conexión (Obring-Rovial-Edeca-Pitón-Pietroboni)"
+    },
+    "II": {
+      "fecha": "2026-05",
+      "km": 1871.82,
+      "fuente": "Resolución 706/2026 MEC (BO ~15/05/2026) — Etapa II-A: Tramo Sur-Atlántico-Acceso Sur (Concret Nor-Marcalba-Pose-Coarco) y Tramo Pampa (Construcciones Electromecánicas del Oeste)"
+    }
+  }
+}
