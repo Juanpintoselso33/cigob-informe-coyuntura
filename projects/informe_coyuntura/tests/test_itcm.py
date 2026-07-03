@@ -30,8 +30,9 @@ import itcm
 #   * iai          = inversión física (% i.a.). −4,2 → 42,5 (banda 35).
 #   * icip         = capitalización digital (% i.a.). 8,2 → 73,1 (banda 80).
 #   * saldo/emae quedan planos más allá de la última ancla (85 y 100).
-# Dimensiones: estab=64,9 fiscal=68,4 financ=47,5 actividad=100
-# competitividad=45,7 inversión=54,7 → ITCM=63,5.
+#   * credito_privado = % i.a. REAL de préstamos privados (ADR-0022). +26% → 80.
+# Dimensiones: estab=64,9 fiscal=68,4 financ=51,2 (reservas 45% + IdC 40% +
+# crédito 15%) actividad=100 competitividad=45,7 inversión=54,7 → ITCM=64,1.
 EJEMPLO = {
     "ipc_total": 2.58,             # interpolado 63,7 (banda 65)
     "rem_ipc_12m": 1.76,           # equiv. mensual: 79,8 (banda 85)
@@ -40,6 +41,7 @@ EJEMPLO = {
     "saldo_comercial_12m": 17125,  # más allá de la última ancla → 85 plano
     "reservas_bcra": 1881,         # netas: 25,0 (banda 30)
     "idc": 1.012,                  # 70,0 (banda 60)
+    "credito_privado": 26.0,       # % i.a. real: 80,0 (banda 85)
     "emae_ia": 5.48,               # más allá de la última ancla → 100 plano
     "tcrm": 84.3,                  # ITCRM: 45,7 (banda 35)
     "iai": -4.2,                   # inversión física: 42,5 (banda 35)
@@ -52,11 +54,13 @@ def test_itcm_reproduce_ejemplo():
     dims = r["dimensiones"]
     assert dims["estabilidad_monetaria"]["puntaje"] == 64.9
     assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 68.4
-    assert dims["financiamiento"]["puntaje"] == 47.5
+    assert dims["financiamiento"]["puntaje"] == 51.2
     assert dims["actividad"]["puntaje"] == 100.0
     assert dims["competitividad_externa"]["puntaje"] == 45.7
     assert dims["inversion"]["puntaje"] == 54.7
-    assert r["valor"] == 63.5
+    ind = dims["financiamiento"]["indicadores"]["credito_privado"]
+    assert ind["puntaje_banda"] == 80.0 and ind["peso"] == 0.15
+    assert r["valor"] == 64.1
     assert r["banda"] == "moderadamente_aflojado"
     assert itcm.tension_de_itcm(r["valor"]) == 3.6
     assert r["ajustes_aplicados"] == []
@@ -156,7 +160,7 @@ def test_ajuste_manual_aplicado():
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
     # fiscal = 0,6×57,3 (recaudación interpolada) + 0,4×60 (override) = 58,4
     assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 58.4
-    assert r["valor"] == 61.1
+    assert r["valor"] == 61.7
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
@@ -182,7 +186,7 @@ def test_renormalizacion_indicador_faltante():
     r = itcm.calcular_itcm(valores)
     # (63,7×0.40 + 51,7×0.30) / 0.70 = 58.56 → 58.6
     assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 58.6
-    assert abs(r["valor"] - 61.8) <= 0.05
+    assert abs(r["valor"] - 62.4) <= 0.05
 
 
 def test_renormalizacion_dimension_faltante():
@@ -190,8 +194,8 @@ def test_renormalizacion_dimension_faltante():
     valores = dict(EJEMPLO, emae_ia=None)
     r = itcm.calcular_itcm(valores)
     assert "actividad" not in r["dimensiones"]
-    # estab=64.9 fiscal=68.4 financ=47.5 compet=45.7 inversión=54.7, sin actividad (0.11)
-    esperado = (0.26 * 64.9 + 0.24 * 68.4 + 0.16 * 47.5 + 0.11 * 45.7 + 0.12 * 54.7) / 0.89
+    # estab=64.9 fiscal=68.4 financ=51.2 compet=45.7 inversión=54.7, sin actividad (0.11)
+    esperado = (0.26 * 64.9 + 0.24 * 68.4 + 0.16 * 51.2 + 0.11 * 45.7 + 0.12 * 54.7) / 0.89
     assert abs(r["valor"] - esperado) <= 0.1
 
 

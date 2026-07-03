@@ -70,8 +70,13 @@ def test_macro_itcm_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    assert len(en_indice) == 11, f"esperaba 11 indicadores en el índice, hay {len(en_indice)}"
-    assert set(contexto) == {"badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"}
+    assert len(en_indice) == 12, f"esperaba 12 indicadores en el índice, hay {len(en_indice)}"
+    # ADR-0022: los 4 monetarios nominales quedan OCULTOS del snapshot (siguen
+    # en pipeline como insumos de IdC/IDM/TCRM); su señal entra vía credito_privado.
+    assert contexto == {}, f"macro no debería publicar contexto: {set(contexto)}"
+    for oculto in ("badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"):
+        assert oculto not in c["indicadores"], f"{oculto} debería estar oculto"
+    assert "credito_privado" in en_indice
 
     ponderado = sum(i["puntaje_itcm"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itcm_val) <= 0.15, f"ponderado {ponderado} != ITCM {itcm_val}"

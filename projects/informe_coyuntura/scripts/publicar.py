@@ -500,12 +500,21 @@ def _scoring_vida_itvc(c, series):
         ind["aporte_nota"] = nota
 
 
+# Indicadores macro OCULTOS del snapshot (ADR-0022): siguen en la pipeline
+# (colector, cache y series — son insumos del IdC/IDM/TCRM y del crédito
+# real), pero no se publican como tiles: su única señal no redundante entra
+# al índice vía credito_privado.
+MACRO_OCULTOS = {"badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"}
+
+
 def aplicar_scoring(informe, series):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo
     explica, y cada cinturón con cómo se compone su score."""
     for ckey, c in informe["cinturones"].items():
         c["score_explicacion"] = SCORE_EXPLICACION.get(ckey, "")
         if ckey == "macro":
+            for oculto in MACRO_OCULTOS:
+                c["indicadores"].pop(oculto, None)
             _scoring_indice(c, "itcm", itcm, MACRO_CONTEXTO, _macro_input_txt)
             continue
         if ckey == "gestion":

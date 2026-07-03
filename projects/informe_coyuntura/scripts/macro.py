@@ -76,7 +76,7 @@ CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
     "emae_ia", "saldo_comercial_12m", "recaudacion", "tcrm",
-    "rem_ipc_12m", "idm", "iai", "icip",
+    "rem_ipc_12m", "idm", "iai", "icip", "credito_privado",
     "prestamos_privados", "base_monetaria", "tc_mayorista",
 ]
 
@@ -865,6 +865,39 @@ def fetch_prestamos_privados() -> dict | None:
         return None
 
 
+def fetch_credito_privado() -> dict | None:
+    """Variación interanual REAL de los préstamos al sector privado (BCRA
+    var. 26), deflactada por el IPC (INDEC). ADR-0022: mide el crédito
+    REALIZADO — información distinta de la capacidad prestable del IdC (que
+    usa tasas y ratios) — y es la única señal no redundante de los viejos
+    indicadores de contexto (badlar/préstamos/base/TC quedan ocultos: son
+    insumos de IdC, IDM y TCRM)."""
+    try:
+        detalle = _bcra_detalle(BCRA_PRESTAMOS_ID, dias=400)   # desc
+        ultimo = detalle[0]
+        objetivo = datetime.fromisoformat(ultimo["fecha"]) - timedelta(days=365)
+        base = min(detalle, key=lambda d: abs(
+            (datetime.fromisoformat(d["fecha"]) - objetivo).days))
+        if abs((datetime.fromisoformat(base["fecha"]) - objetivo).days) > 12:
+            raise ValueError("sin dato de préstamos ~365 días atrás")
+        nominal = float(ultimo["valor"]) / float(base["valor"]) - 1.0
+        ipc = _indec_yoy(INDEC_IPC_ID)["var_ia"] / 100.0
+        real = ((1.0 + nominal) / (1.0 + ipc) - 1.0) * 100.0
+        return {
+            "valor": round(real, 1),
+            "unidad": "% i.a. real",
+            "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
+            "fecha_dato": ultimo["fecha"],
+            "desactualizado": False,
+            "nominal_ia": round(nominal * 100.0, 1),
+            "detalle_txt": (f"nominal {str(round(nominal * 100.0, 1)).replace('.', ',')}% i.a. "
+                            f"deflactado por IPC i.a. — crédito realizado, no capacidad (IdC)"),
+        }
+    except Exception as e:
+        _warn("credito_privado", e)
+        return None
+
+
 def fetch_base_monetaria() -> dict | None:
     try:
         result = _bcra_variacion_m(BCRA_BASE_MON_ID)
@@ -990,6 +1023,7 @@ def main() -> None:
         ("idm",                fetch_idm),
         ("iai",                fetch_iai),
         ("icip",               fetch_icip),
+        ("credito_privado",    fetch_credito_privado),
         ("prestamos_privados", fetch_prestamos_privados),
         ("base_monetaria",     fetch_base_monetaria),
         ("tc_mayorista",       fetch_tc_mayorista),

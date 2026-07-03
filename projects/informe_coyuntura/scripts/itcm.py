@@ -135,6 +135,13 @@ BANDAS_ITCM = {
         # de ahí la banda más ancha. Más = la economía se digitaliza más rápido.
         (20.0, INF, 100), (5.0, 20.0, 80), (-5.0, 5.0, 60), (-20.0, -5.0, 35), (-INF, -20.0, 10),
     ],
+    "credito_privado": [                # Crédito al sector privado, % i.a. REAL (ADR-0022)
+        # Crédito REALIZADO (complementa la capacidad del IdC). Bandas anchas
+        # calibradas a la remonetización 2024-2026: el crédito real llegó a
+        # crecer +90% i.a. desde base ínfima y se normaliza hacia +20/30%;
+        # contracción real = crunch de financiamiento.
+        (40.0, INF, 100), (20.0, 40.0, 85), (8.0, 20.0, 65), (0.0, 8.0, 45), (-10.0, 0.0, 25), (-INF, -10.0, 10),
+    ],
 }
 
 # Dimensiones del índice con su peso y la ponderación interna de indicadores.
@@ -156,7 +163,10 @@ DIMENSIONES_ITCM = {
     "financiamiento": {
         "nombre": "Capacidad de financiamiento",
         "peso": 0.16,
-        "indicadores": {"reservas_bcra": 0.5, "idc": 0.5},
+        # ADR-0022: crédito privado REAL i.a. (realizado) complementa al IdC
+        # (capacidad) y a las reservas — la única señal no redundante de los
+        # viejos indicadores de contexto.
+        "indicadores": {"reservas_bcra": 0.45, "idc": 0.40, "credito_privado": 0.15},
     },
     "actividad": {
         "nombre": "Actividad económica",

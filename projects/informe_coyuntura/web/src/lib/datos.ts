@@ -142,6 +142,7 @@ export const LABELS: Record<string, string> = {
   tcrm: "Tipo de cambio real (TCRM)", rem_ipc_12m: "Expectativas inflación (REM 12m)",
   idm: "Desequilibrio monetario (IDM)",
   iai: "Inversión física (IAI)", icip: "Capitalización digital (ICIP)",
+  credito_privado: "Crédito privado real",
   prestamos_privados: "Préstamos al sector privado", base_monetaria: "Base monetaria",
   tc_mayorista: "Tipo de cambio mayorista",
   // politica
@@ -203,7 +204,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // macro
   ipc_total: "%", reservas_bcra: "US$ M netas", idc: "índice", badlar: "%", emae_ia: "% i.a.",
   saldo_comercial_12m: "US$ M", recaudacion: "% i.a. real", tcrm: "índice", rem_ipc_12m: "%",
-  idm: "pp", iai: "% i.a.", icip: "% i.a.",
+  idm: "pp", iai: "% i.a.", icip: "% i.a.", credito_privado: "% i.a. real",
   prestamos_privados: "% m/m", base_monetaria: "% m/m", tc_mayorista: "% m/m",
   // politica
   votometro_ventaja_lla: "pp", ratio_dnu: "ratio", movilizacion_cepa: "índice",
@@ -238,6 +239,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   tcrm: "Índice (base dic-2015=100)", rem_ipc_12m: "% anual esperado",
   idm: "Puntos porcentuales (brecha i.a. real)",
   iai: "% interanual (índice ponderado)", icip: "% interanual (índice ponderado)",
+  credito_privado: "% interanual real (deflactado por IPC)",
   prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
   // politica
   votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",

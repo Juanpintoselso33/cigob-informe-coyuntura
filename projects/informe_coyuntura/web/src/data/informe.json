@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-03T14:01:02.409622",
+  "generated_at": "2026-07-03T14:46:53.556031",
   "period": "2026-07",
   "score_global": 4.4,
   "ponderacion": {
@@ -54,9 +54,9 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 36.5,
           "puntaje_banda": 36.5,
-          "peso_efectivo": 0.08,
+          "peso_efectivo": 0.072,
           "aporte_score": 6.3,
-          "aporte_formula": "Anclas ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntaje interpolado entre anclas, ADR-0021: 36.5; pesa 8,0% del ITCM)",
+          "aporte_formula": "Anclas ITCM: >20000 → 100 · 15000–20000 → 85 · 10000–15000 → 70 · 5000–10000 → 50 · 0–5000 → 30 · ≤0 → 10 (puntaje interpolado entre anclas, ADR-0021: 36.5; pesa 7,2% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": "netas 4122 = SDDS estricto -1605 + Tesoro 3058 + Bopreal 2670 (M USD)"
         },
@@ -77,23 +77,11 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 73.0,
           "puntaje_banda": 73.0,
-          "peso_efectivo": 0.08,
+          "peso_efectivo": 0.064,
           "aporte_score": 2.7,
-          "aporte_formula": "Anclas ITCM: >1,04 → 100 · 1,02–1,04 → 85 · 0,98–1,02 → 60 · 0,95–0,98 → 35 · ≤0,95 → 10 (puntaje interpolado entre anclas, ADR-0021: 73.0; pesa 8,0% del ITCM)",
+          "aporte_formula": "Anclas ITCM: >1,04 → 100 · 1,02–1,04 → 85 · 0,98–1,02 → 60 · 0,95–0,98 → 35 · ≤0,95 → 10 (puntaje interpolado entre anclas, ADR-0021: 73.0; pesa 6,4% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": "índice 1,0156 = precio 0,9945 · volumen 1,0123 · asignación 1,0412 (amarillo)"
-        },
-        "badlar": {
-          "valor": 20.94,
-          "unidad": "% anual",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-          "fecha_dato": "2026-07-01",
-          "desactualizado": false,
-          "en_indice": false,
-          "aporte_score": null,
-          "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
-          "aporte_input_txt": null
         },
         "emae_ia": {
           "valor": 1.64,
@@ -245,46 +233,28 @@
           "aporte_nota": null,
           "aporte_input_txt": "8,2% i.a. = servicios tech 15,6% · productividad -1,6%"
         },
-        "prestamos_privados": {
-          "valor": 4.14,
-          "unidad": "% mensual nominal",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
+        "credito_privado": {
+          "valor": 8.1,
+          "unidad": "% i.a. real",
+          "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
           "fecha_dato": "2026-06-30",
           "desactualizado": false,
-          "en_indice": false,
-          "aporte_score": null,
-          "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
-          "aporte_input_txt": null
-        },
-        "base_monetaria": {
-          "valor": 6.4,
-          "unidad": "% mensual nominal",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-          "fecha_dato": "2026-06-30",
-          "desactualizado": false,
-          "en_indice": false,
-          "aporte_score": null,
-          "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
-          "aporte_input_txt": null
-        },
-        "tc_mayorista": {
-          "valor": 3.6,
-          "unidad": "% mensual",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-          "fecha_dato": "2026-07-02",
-          "desactualizado": false,
-          "en_indice": false,
-          "aporte_score": null,
-          "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026).",
+          "nominal_ia": 44.0,
+          "detalle_txt": "nominal 44,0% i.a. deflactado por IPC i.a. — crédito realizado, no capacidad (IdC)",
+          "en_indice": true,
+          "dimension": "financiamiento",
+          "puntaje_itcm": 53.2,
+          "puntaje_banda": 53.2,
+          "peso_efectivo": 0.024,
+          "aporte_score": 4.7,
+          "aporte_formula": "Anclas ITCM: >40 → 100 · 20–40 → 85 · 8–20 → 65 · 0–8 → 45 · -10 a 0 → 25 · ≤-10 → 10 (puntaje interpolado entre anclas, ADR-0021: 53.2; pesa 2,4% del ITCM)",
+          "aporte_nota": null,
           "aporte_input_txt": null
         }
       },
       "alerta": null,
       "itcm": {
-        "valor": 54.7,
+        "valor": 54.5,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -344,21 +314,28 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.16,
-            "puntaje": 54.8,
+            "puntaje": 53.6,
             "indicadores": {
               "reservas_bcra": {
-                "peso": 0.5,
+                "peso": 0.45,
                 "puntaje_banda": 36.5,
                 "puntaje_aplicado": 36.5,
                 "valor": 4122.0,
-                "peso_efectivo": 0.08
+                "peso_efectivo": 0.072
               },
               "idc": {
-                "peso": 0.5,
+                "peso": 0.4,
                 "puntaje_banda": 73.0,
                 "puntaje_aplicado": 73.0,
                 "valor": 1.0156,
-                "peso_efectivo": 0.08
+                "peso_efectivo": 0.064
+              },
+              "credito_privado": {
+                "peso": 0.15,
+                "puntaje_banda": 53.2,
+                "puntaje_aplicado": 53.2,
+                "valor": 8.1,
+                "peso_efectivo": 0.024
               }
             },
             "peso_efectivo": 0.16,
@@ -423,56 +400,56 @@
         "ajustes_aplicados": [],
         "robustez": {
           "p05": 51.3,
-          "p95": 58.0,
+          "p95": 57.6,
           "tension_rango": [
             4.2,
             4.9
           ],
           "dominante": {
             "indicador": "recaudacion",
-            "indice_sin": 65.5
+            "indice_sin": 65.3
           },
           "n_draws": 1000,
           "hist": [
-            1,
-            0,
-            0,
-            1,
+            2,
             3,
-            5,
-            5,
+            3,
+            10,
+            12,
             11,
-            15,
-            21,
-            33,
+            18,
+            19,
             25,
-            38,
-            42,
             46,
-            42,
-            46,
-            49,
-            44,
-            50,
-            50,
-            50,
-            44,
-            52,
-            61,
-            65,
-            40,
             36,
-            27,
-            28,
+            34,
+            40,
+            43,
+            30,
+            50,
+            55,
+            43,
+            56,
+            57,
+            62,
+            66,
+            48,
+            48,
+            39,
+            41,
             26,
-            16,
-            14,
+            21,
+            18,
+            11,
+            7,
+            10,
             5,
-            4,
-            5
+            2,
+            2,
+            1
           ],
-          "hist_min": 48.23,
-          "hist_max": 59.68,
+          "hist_min": 49.33,
+          "hist_max": 59.78,
           "metodo": "pesos ±20% + insumos ±5% re-puntuados por interpolación (MC, ADR-0019/0021)"
         }
       },

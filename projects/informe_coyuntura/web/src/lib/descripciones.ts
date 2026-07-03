@@ -250,6 +250,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "No mide cuántos dólares entran o salen (eso puede ser una buena cosecha): mide si el Estado desmantela la fricción impositiva que encarece el comercio. La brecha cambiaria puntúa aparte (en su propio indicador) — hasta jul-2026 este índice la incluía y la contaba dos veces (corregido, ADR-0021).",
     frecuencia: "Mensual", tipo: "Nivel (%)",
   },
+  credito_privado: {
+    que: "Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el IPC).",
+    aporta: "Es el crédito REALIZADO — complementa al IdC, que mide la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto (ADR-0022).",
+    frecuencia: "Diaria (BCRA)", tipo: "Variación real",
+  },
   gasto_funcionamiento: {
     que: "Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023.",
     aporta: "La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal.",

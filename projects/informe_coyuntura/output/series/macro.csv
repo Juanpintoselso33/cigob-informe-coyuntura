@@ -1672,6 +1672,36 @@ fecha,indicador,valor,unidad,fuente
 2022-07-01,emae_ia,0.0703486757445368,% i.a.,INDEC/datos.gob.ar
 2022-06-01,emae_ia,0.0837377449005136,% i.a.,INDEC/datos.gob.ar
 2022-05-01,emae_ia,0.089436405258465,% i.a.,INDEC/datos.gob.ar
+2026-05-01,credito_privado,9.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2026-04-01,credito_privado,13.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2026-03-01,credito_privado,18.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2026-02-01,credito_privado,22.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2026-01-01,credito_privado,30.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-12-01,credito_privado,37.2,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-11-01,credito_privado,47.7,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-10-01,credito_privado,56.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-09-01,credito_privado,67.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-08-01,credito_privado,77.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-07-01,credito_privado,89.0,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-06-01,credito_privado,98.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-05-01,credito_privado,109.2,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-04-01,credito_privado,118.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-03-01,credito_privado,111.3,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-02-01,credito_privado,103.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-01-01,credito_privado,86.3,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-12-01,credito_privado,58.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-11-01,credito_privado,29.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-10-01,credito_privado,15.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-09-01,credito_privado,11.7,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-08-01,credito_privado,-1.2,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-07-01,credito_privado,-9.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-06-01,credito_privado,-17.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-05-01,credito_privado,-23.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-04-01,credito_privado,-30.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-03-01,credito_privado,-30.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-02-01,credito_privado,-29.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2024-01-01,credito_privado,-26.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2023-12-01,credito_privado,-19.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-06-30,base_monetaria,45711975.0,M ARS,BCRA
 2026-06-29,base_monetaria,44953461.0,M ARS,BCRA
 2026-06-26,base_monetaria,43761087.0,M ARS,BCRA

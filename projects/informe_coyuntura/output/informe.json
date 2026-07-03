@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-03T14:01:02.409622",
+  "generated_at": "2026-07-03T14:46:53.556031",
   "period": "2026-07",
   "score_global": 3.6,
   "ponderacion": {
@@ -50,7 +50,7 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 36.5,
           "puntaje_banda": 36.5,
-          "peso_efectivo": 0.08
+          "peso_efectivo": 0.072
         },
         "idc": {
           "valor": 1.0156,
@@ -69,7 +69,7 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 73.0,
           "puntaje_banda": 73.0,
-          "peso_efectivo": 0.08
+          "peso_efectivo": 0.064
         },
         "badlar": {
           "valor": 20.94,
@@ -197,6 +197,20 @@
           "puntaje_banda": 73.1,
           "peso_efectivo": 0.048
         },
+        "credito_privado": {
+          "valor": 8.1,
+          "unidad": "% i.a. real",
+          "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
+          "fecha_dato": "2026-06-30",
+          "desactualizado": false,
+          "nominal_ia": 44.0,
+          "detalle_txt": "nominal 44,0% i.a. deflactado por IPC i.a. — crédito realizado, no capacidad (IdC)",
+          "en_indice": true,
+          "dimension": "financiamiento",
+          "puntaje_itcm": 53.2,
+          "puntaje_banda": 53.2,
+          "peso_efectivo": 0.024
+        },
         "prestamos_privados": {
           "valor": 4.14,
           "unidad": "% mensual nominal",
@@ -224,7 +238,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 54.7,
+        "valor": 54.5,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -282,21 +296,28 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.16,
-            "puntaje": 54.8,
+            "puntaje": 53.6,
             "indicadores": {
               "reservas_bcra": {
-                "peso": 0.5,
+                "peso": 0.45,
                 "puntaje_banda": 36.5,
                 "puntaje_aplicado": 36.5,
                 "valor": 4122.0,
-                "peso_efectivo": 0.08
+                "peso_efectivo": 0.072
               },
               "idc": {
-                "peso": 0.5,
+                "peso": 0.4,
                 "puntaje_banda": 73.0,
                 "puntaje_aplicado": 73.0,
                 "valor": 1.0156,
-                "peso_efectivo": 0.08
+                "peso_efectivo": 0.064
+              },
+              "credito_privado": {
+                "peso": 0.15,
+                "puntaje_banda": 53.2,
+                "puntaje_aplicado": 53.2,
+                "valor": 8.1,
+                "peso_efectivo": 0.024
               }
             },
             "peso_efectivo": 0.16

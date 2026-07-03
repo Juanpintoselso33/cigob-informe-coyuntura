@@ -222,7 +222,28 @@ MACRO_INDEC = [
     ("143.3_ICE_SERVIA_2004_A_25", "emae_ia",         "% i.a.",             "INDEC/datos.gob.ar"),
     ("172.3_TL_RECAION_M_0_0_17",  "recaudacion",     "M ARS",              "INDEC/datos.gob.ar"),
 ]
+def fetch_credito_privado_serie() -> list:
+    """Serie mensual de la variación i.a. REAL de los préstamos al sector
+    privado (BCRA var. 26 fin de mes, deflactada por el IPC nivel) — la misma
+    métrica del indicador credito_privado (ADR-0022). [[YYYY-MM-01, %]]."""
+    fin_mes = {}
+    for f, v in sorted(fetch_bcra(26, dias=1350)):
+        fin_mes[f[:7]] = v
+    ipc = {f[:7]: v for f, v in fetch_indec("148.3_INIVELNAL_DICI_M_26", limit=60)}
+    out = []
+    for ym in sorted(fin_mes):
+        if ym < "2023-12":
+            continue
+        prev = f"{int(ym[:4]) - 1}{ym[4:]}"
+        if prev in fin_mes and ym in ipc and prev in ipc and fin_mes[prev] and ipc[prev]:
+            nominal = fin_mes[ym] / fin_mes[prev] - 1.0
+            infl = ipc[ym] / ipc[prev] - 1.0
+            out.append([f"{ym}-01", round(((1 + nominal) / (1 + infl) - 1) * 100.0, 1)])
+    return out
+
+
 MACRO_DERIVADAS = [
+    ("credito_privado", "% i.a. real", "BCRA (préstamos privados) + IPC INDEC", fetch_credito_privado_serie),
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
