@@ -298,10 +298,95 @@ def fetch_ratio_dnu_serie() -> list:
     return out
 
 
+def _hcdn_ventanas_12m() -> list:
+    """[(YYYY-MM, cutoff_iso, fin_iso)] con ventana móvil de 365 días al fin de
+    cada mes, desde dic-2023 hasta hoy."""
+    out = []
+    y, m = 2023, 12
+    hoy = date.today()
+    while (y, m) <= (hoy.year, hoy.month):
+        fin = min(date(y, m, calendar.monthrange(y, m)[1]), hoy)
+        out.append((f"{y}-{m:02d}", (fin - timedelta(days=365)).isoformat(), fin.isoformat()))
+        m += 1
+        if m > 12:
+            m = 1; y += 1
+    return out
+
+
+def fetch_eficacia_serie() -> list:
+    """Serie mensual del % de proyectos PE aprobados en ventana móvil de 12
+    meses (misma fórmula que el indicador): las fechas vienen POR REGISTRO en
+    el CKAN de HCDN (PUBLICACION_FECHA / FECHA), así que una sola descarga
+    completa permite computar todas las ventanas localmente. [[YYYY-MM-01, %]]."""
+    raw_pe = politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
+    pe = [(r["PROYECTO_ID"], str(r.get("PUBLICACION_FECHA", ""))[:10]) for r in raw_pe
+          if r.get("PROYECTO_ID")
+          and (politica._RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
+               or politica._RE_PE_EXP.search(r.get("EXP_SENADO", "") or ""))]
+    raw_san = politica._hcdn_paginate(politica.HCDN_MOVIMIENTOS_RID, q="SANCION")
+    san = [(str(r.get("PROYECTO_ID", "")), str(r.get("FECHA", ""))[:10]) for r in raw_san
+           if r.get("PROYECTO_ID")]
+    out = []
+    for ym, cutoff, fin in _hcdn_ventanas_12m():
+        pe_ids = {pid for pid, f in pe if cutoff <= f <= fin}
+        san_ids = {pid for pid, f in san if cutoff <= f <= fin}
+        if pe_ids:
+            out.append([f"{ym}-01", round(len(pe_ids & san_ids) / len(pe_ids) * 100.0, 1)])
+    return out
+
+
+def fetch_veto_quorum_serie() -> list:
+    """Serie ANUAL del % de sesiones de Diputados fracasadas por período
+    legislativo (período = 144 + (año − 2026); mismo criterio que el
+    indicador). [[YYYY-01-01, %]]."""
+    out = []
+    for y in range(2024, date.today().year + 1):
+        periodo = f"HCDN{144 + (y - 2026)}"
+        try:
+            recs = [r for r in politica._hcdn_paginate(politica.HCDN_SESIONES_RID, q=str(y))
+                    if str(r.get("PERIODO_ID", "")).startswith(periodo)
+                    and str(r.get("SESION_CAMARA", "")).upper() == "DIPUTADOS"]
+        except Exception as e:
+            print(f"  [WARN] veto_quorum serie {y}: {e}")
+            continue
+        if recs:
+            frac = sum(1 for r in recs if "fracasada" in str(r.get("REUNION_TIPO", "")).lower())
+            out.append([f"{y}-01-01", round(frac / len(recs) * 100.0, 1)])
+    return out
+
+
+def fetch_comisiones_serie() -> list:
+    """Serie mensual del % de proyectos con dictamen (Orden del Día) SIN
+    sanción, ventana móvil de 12 meses — misma fórmula que el indicador.
+    [[YYYY-MM-01, %]]."""
+    dictamenes = []
+    for y in range(2023, date.today().year + 1):
+        try:
+            dictamenes += politica._hcdn_paginate(politica.HCDN_DICTAMENES_RID, q=str(y))
+        except Exception as e:
+            print(f"  [WARN] comisiones serie dictámenes {y}: {e}")
+    od = [(str(r["EXPEDIENTE"]).strip(), str(r.get("FECHA", ""))[:10]) for r in dictamenes
+          if r.get("EXPEDIENTE") and "orden" in str(r.get("TIPO", "")).lower()]
+    raw_san = politica._hcdn_paginate(politica.HCDN_MOVIMIENTOS_RID, q="SANCION")
+    san = [(str(r.get("PROYECTO_ID", "")).strip(), str(r.get("FECHA", ""))[:10])
+           for r in raw_san if r.get("PROYECTO_ID")]
+    out = []
+    for ym, cutoff, fin in _hcdn_ventanas_12m():
+        od_ids = {e for e, f in od if cutoff <= f <= fin}
+        san_ids = {p for p, f in san if cutoff <= f <= fin}
+        if od_ids:
+            pct = round((len(od_ids) - len(od_ids & san_ids)) / len(od_ids) * 100.0, 1)
+            out.append([f"{ym}-01", pct])
+    return out
+
+
 POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
     ("ratio_dnu", "DNUs por ley", "InfoLeg (conteo anual)", fetch_ratio_dnu_serie),
+    ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_eficacia_serie),
+    ("veto_quorum", "% sesiones fracasadas (por período)", "datos.hcdn.gob.ar CKAN", fetch_veto_quorum_serie),
+    ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_comisiones_serie),
 ]
 
 VIDA_INDEC = [
