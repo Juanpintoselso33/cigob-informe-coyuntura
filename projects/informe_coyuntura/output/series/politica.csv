@@ -1,4 +1,5 @@
 fecha,indicador,valor,unidad,fuente
+2026-07-01,votometro_ventaja_lla,5.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-06-01,votometro_ventaja_lla,5.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-05-01,votometro_ventaja_lla,5.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-04-01,votometro_ventaja_lla,6.9,pp (brecha LLA−PJ),Votómetro CIGOB
@@ -30,7 +31,10 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,votometro_ventaja_lla,12.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2024-01-01,votometro_ventaja_lla,14.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2023-12-01,votometro_ventaja_lla,16.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-01-01,ratio_dnu,1.5,DNUs por ley,InfoLeg (conteo anual)
+2026-01-01,veto_quorum,0.0,% sesiones fracasadas (por período),datos.hcdn.gob.ar CKAN
+2025-01-01,veto_quorum,10.0,% sesiones fracasadas (por período),datos.hcdn.gob.ar CKAN
+2024-01-01,veto_quorum,0.0,% sesiones fracasadas (por período),datos.hcdn.gob.ar CKAN
+2026-01-01,ratio_dnu,1.471,DNUs por ley,InfoLeg (conteo anual)
 2025-01-01,ratio_dnu,4.909,DNUs por ley,InfoLeg (conteo anual)
 2024-01-01,ratio_dnu,1.69,DNUs por ley,InfoLeg (conteo anual)
 2023-01-01,ratio_dnu,1.176,DNUs por ley,InfoLeg (conteo anual)
@@ -46,3 +50,67 @@ fecha,indicador,valor,unidad,fuente
 2019-12-01,iaf_transferencias,-6.9,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2018-12-01,iaf_transferencias,-10.6,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2017-12-01,iaf_transferencias,4.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2026-07-01,eficacia_legislativa,4.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-06-01,eficacia_legislativa,4.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-05-01,eficacia_legislativa,3.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-04-01,eficacia_legislativa,4.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-03-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-02-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-01-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-12-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-11-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-10-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-09-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-08-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-07-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-06-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-05-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-04-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-03-01,eficacia_legislativa,3.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-02-01,eficacia_legislativa,3.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-01-01,eficacia_legislativa,4.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-12-01,eficacia_legislativa,4.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-11-01,eficacia_legislativa,7.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-10-01,eficacia_legislativa,7.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-09-01,eficacia_legislativa,8.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-08-01,eficacia_legislativa,6.5,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-07-01,eficacia_legislativa,6.9,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-06-01,eficacia_legislativa,7.4,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-05-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-04-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-03-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-02-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-01-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2023-12-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-07-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2026-06-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2026-05-01,comisiones_caidas,97.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2026-04-01,comisiones_caidas,99.6,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2026-03-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2026-02-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2026-01-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-12-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-11-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-10-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-09-01,comisiones_caidas,99.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-08-01,comisiones_caidas,99.5,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-07-01,comisiones_caidas,98.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-06-01,comisiones_caidas,98.3,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-05-01,comisiones_caidas,96.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-04-01,comisiones_caidas,96.4,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-03-01,comisiones_caidas,96.4,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-02-01,comisiones_caidas,96.0,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2025-01-01,comisiones_caidas,95.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-12-01,comisiones_caidas,95.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-11-01,comisiones_caidas,95.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-10-01,comisiones_caidas,94.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-09-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-08-01,comisiones_caidas,97.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-07-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-06-01,comisiones_caidas,98.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-05-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-04-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-03-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
