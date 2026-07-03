@@ -6,6 +6,7 @@ Columnas: fecha, indicador, valor, fuente
 import sys
 import csv
 import io
+import json
 import re
 import calendar
 import requests
@@ -549,6 +550,78 @@ def fetch_itvc_endeudamiento() -> list:
     return out
 
 
+def fetch_inseguridad_serie() -> list:
+    """Serie ANUAL de hechos delictivos del SNIC (total país), con el MISMO
+    criterio de suma que el colector (todas las filas del CSV: padres +
+    subcategorías — consistente con el valor del indicador y la baseline del
+    ITVC). El CSV oficial se revisa retroactivamente. [[YYYY-12-01, hechos]]."""
+    import csv as _csv
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import SNIC_CSV
+    r = requests.get(SNIC_CSV, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
+    r.raise_for_status()
+    texto = r.content.decode("utf-8", errors="replace")
+    sep = ";" if ";" in texto.split("\n", 1)[0] else ","   # el CSV cambió a ';' en 2026
+    por_anio = {}
+    for row in _csv.DictReader(io.StringIO(texto), delimiter=sep):
+        anio = (row.get("anio") or row.get("year") or row.get("Anio") or "").strip()
+        if not anio.isdigit():
+            continue
+        try:
+            hechos = int(float(row.get("cantidad_hechos") or row.get("hechos")
+                                or row.get("cantidad") or 0))
+        except ValueError:
+            continue
+        por_anio[anio] = por_anio.get(anio, 0) + hechos
+    return [[f"{a}-12-01", por_anio[a]] for a in sorted(por_anio)
+            if int(a) >= 2014 and por_anio[a] > 0]
+
+
+CARNE_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "carne_serie.json"
+
+
+def fetch_carne_serie() -> list:
+    """Serie MENSUAL del consumo de carne per cápita (promedio móvil 12m,
+    CICCRA) desde oct-2023 (línea base del ITVC). Los PDFs mensuales se bajan
+    una sola vez y quedan cacheados por mes en data/vida/carne_serie.json
+    (~33 PDFs solo la primera corrida). Los informes de 2023 usan sufijo 'b'
+    (separata económica); 2024→ van sin sufijo. [[YYYY-MM-01, kg/hab/año]]."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    from ciccra import _url_pdf, _extraer_per_capita
+    try:
+        cache = json.loads(CARNE_SERIE_STORE.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        cache = {}
+    hoy = date.today()
+    fin = hoy.replace(day=1) - timedelta(days=1)          # dato hasta ~2 meses atrás
+    fin = fin.replace(day=1) - timedelta(days=1)
+    y, m = 2023, 10
+    while (y, m) <= (fin.year, fin.month):
+        ym = f"{y}-{m:02d}"
+        if ym not in cache:
+            url = _url_pdf(y, m)
+            valor = None
+            for u in (url, url.replace(f"-{y}-", f"b-{y}-", 1)):
+                try:
+                    r = requests.get(u, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
+                    if r.status_code == 200 and r.content[:4] == b"%PDF":
+                        valor = _extraer_per_capita(r.content)
+                        if valor is not None:
+                            break
+                except requests.RequestException:
+                    continue
+            # None también se cachea (mes sin informe parseable: no reintentar
+            # cada corrida; borrar la clave del store para forzar reintento).
+            cache[ym] = valor
+            CARNE_SERIE_STORE.write_text(
+                json.dumps(cache, indent=1, ensure_ascii=False), encoding="utf-8")
+        m += 1
+        if m > 12:
+            m = 1; y += 1
+    return [[f"{ym}-01", v] for ym, v in sorted(cache.items()) if v]
+
+
 def fetch_motos_serie() -> list:
     """Serie mensual de patentamientos de motovehículos vía la API de CAFAM
     (la misma fuente del colector; expone meses históricos — verificado
@@ -585,6 +658,12 @@ VIDA_DERIVADAS += [
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
     ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie),
+    ("inseguridad", "hechos/año (total país)", "SNIC (CSV oficial, suma anual)", fetch_inseguridad_serie),
+    ("consumo_carne", "kg/hab/año (PM 12m)", "CICCRA (informes mensuales, caché local)", fetch_carne_serie),
+    # La MISMA métrica que muestra la card del indicador (ISAC nivel s.e.);
+    # antes el modal caía por alias a isac_construccion (insumo cemento 33.4).
+    ("despacho_cemento", "índice ISAC (desest.)", "INDEC ISAC (33.2, s.e.)",
+     lambda: [[f, round(v, 2)] for f, v in sorted(fetch_indec(ITVC_ISAC_DESEST_ID, limit=60))]),
 ]
 
 

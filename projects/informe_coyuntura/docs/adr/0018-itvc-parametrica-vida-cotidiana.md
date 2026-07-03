@@ -96,3 +96,21 @@ línea base 2023 posible).
   del ITVC y el global se repondera igual que antes.
 - Tests: `tests/test_itvc.py` (módulo) + reconciliación publicada en
   `tests/test_publicar.py`.
+
+## Addendum — sweep del mismo día (2026-07-03)
+
+- **SNIC revivido**: el CSV oficial cambió a separador `;` (por eso el parser
+  del colector estaba muerto desde 2026); ahora se detecta el separador. Trae
+  **2025 completo** (2.418.600) → I_HD = 100,7 con serie anual 2014→2025
+  (`fetch_inseguridad_serie`, mismo criterio de suma).
+- **Carne con serie real**: `fetch_carne_serie` parsea los informes mensuales
+  de CICCRA (PM-12m) desde oct-2023 con caché por mes en
+  `data/vida/carne_serie.json` (los de 2023 usan sufijo "b"; se agregó el
+  patrón "NN,N kg/hab" al parser del colector). La base dinámica de la serie
+  (53,2/53,4/52,9) reproduce la constante documentada; carne e inseguridad
+  pasaron a rebase dinámico (constantes quedan de fallback).
+- **Cemento/ISAC**: el modal caía por alias a la serie `isac_construccion`
+  (insumo cemento 33.4, otra métrica); ahora `despacho_cemento` tiene serie
+  propia = ISAC nivel desestacionalizado (la métrica de la card), y el label
+  pasó a "Construcción (ISAC)". Ficha de informalidad corregida a frecuencia
+  anual.

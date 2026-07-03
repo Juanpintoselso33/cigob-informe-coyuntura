@@ -1,38 +1,38 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-02 21:24:44"
-score_global: 3.6
-barbarismo_activo: "político"
+generado: "2026-07-03 02:35:13"
+score_global: 3.7
+barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
 ---
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 3.6/10  |  **Riesgo dominante:** político
+**Score global:** 3.7/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
-### 🟡 Macro — score 4.5/10 (en_tension)
+### 🟡 Macro — score 4.8/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ipc_total | 2.15 | % mensual | 2026-05-01 | fresco |
-| reservas_bcra | -3222.0 | Millones de USD | 2026-06-29 | fresco |
-| idc | 0.9611 | Índice (~1,0) | 2026-06-26 | fresco |
-| badlar | 21.0 | % anual | 2026-06-30 | fresco |
+| reservas_bcra | 4122.0 | Millones de USD | 31/05/26 | fresco |
+| idc | 1.0156 | Índice (~1,0) | 2026-06-29 | fresco |
+| badlar | 20.94 | % anual | 2026-07-01 | fresco |
 | emae_ia | 1.64 | % i.a. | 2026-04-01 | fresco |
 | saldo_comercial_12m | 21221.0 | Millones de USD (acum. 12 meses) | 2026-05-01 | fresco |
-| recaudacion | 1.82 | % i.a. real | 2026-05-01 | fresco |
-| tcrm | 79.77 | Índice (base 2010=100) | 2024-12-01 | ⚠ cache |
+| recaudacion | -7.14 | % i.a. real | 2026-06-01 | fresco |
+| tcrm | 84.96 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
 | rem_ipc_12m | 23.3 | % anual esperado | 2026-05-31 | fresco |
 | idm | 4.33 | pp (brecha i.a. real) | 2026-05-01 | fresco |
 | iai | -4.2 | % i.a. ponderado | 2026-05-01 | fresco |
 | icip | 8.2 | % i.a. ponderado | 2026-04-01 | fresco |
-| prestamos_privados | 3.59 | % mensual nominal | 2026-06-29 | fresco |
-| base_monetaria | 4.11 | % mensual nominal | 2026-06-29 | fresco |
-| tc_mayorista | 3.65 | % mensual | 2026-07-01 | fresco |
+| prestamos_privados | 4.14 | % mensual nominal | 2026-06-30 | fresco |
+| base_monetaria | 6.4 | % mensual nominal | 2026-06-30 | fresco |
+| tc_mayorista | 3.6 | % mensual | 2026-07-02 | fresco |
 
 ### 🟡 Politica — score 4.6/10 (en_tension)
 *Riesgo de barbarismo: político*
@@ -81,20 +81,19 @@ schema_version: "1.2.0"
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-02 | fresco |
 | protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
 
-### 🟡 Espiritu Epoca — score 3.2/10 (en_tension)
+### 🟡 Espiritu Epoca — score 3.3/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 7.2 | interés 0–100 | 2026-07-02 | fresco |
+| sentimiento_digital | 7.5 | interés 0–100 | 2026-07-02 | fresco |
 | clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
 
 ## Advertencias
 
-- `desactualizado:macro:tcrm`
 - `desactualizado:politica:movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento`
 - `desactualizado:gestion:protocolo_antipiquetes`
 
 ---
-*Generado por CIGOB — 2026-07-02 21:24:44 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-03 02:35:13 — schema 1.2.0*

@@ -147,7 +147,7 @@ export const LABELS: Record<string, string> = {
   brecha_salario_cbt: "Salario real vs. canasta", ipc_alimentos: "Inflación de alimentos",
   endeudamiento_familiar: "Endeudamiento de consumo", peso_tarifas: "Peso de tarifas (regulados)",
   consumo_carne: "Consumo de carne per cápita", informalidad: "Informalidad laboral",
-  mortalidad_pymes: "Actividad industrial (IPI)", despacho_cemento: "Despacho de cemento (ISAC)",
+  mortalidad_pymes: "Actividad industrial (IPI)", despacho_cemento: "Construcción (ISAC)",
   pluriempleo: "Subocupación demandante", inseguridad: "Hechos delictivos (SNIC)",
   icc_utdt: "Confianza del consumidor (ICC)", sentimiento_digital: "Sentimiento digital (Trends)",
   patentamiento_motos: "Patentamiento de motos", desocupacion: "Desocupación",
@@ -206,7 +206,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   peso_tarifas: "% m/m", consumo_carne: "kg/hab", informalidad: "%", mortalidad_pymes: "% m/m",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "hechos", icc_utdt: "índice",
-  sentimiento_digital: "0–100", patentamiento_motos: "u.",
+  sentimiento_digital: "pts", patentamiento_motos: "u.",
   // espíritu de época
   clima_electoral: "pp",
   // gestion (insumos del ITCG)

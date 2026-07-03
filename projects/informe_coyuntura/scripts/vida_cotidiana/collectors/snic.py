@@ -22,7 +22,10 @@ def _parse_snic_csv(content: bytes) -> dict:
     """
     import csv
     text = content.decode("utf-8", errors="replace")
-    reader = csv.DictReader(io.StringIO(text))
+    # El CSV oficial cambió a ';' como separador en 2026 (con headers entre
+    # comillas); detectar por la primera línea para soportar ambos formatos.
+    sep = ";" if ";" in text.split("\n", 1)[0] else ","
+    reader = csv.DictReader(io.StringIO(text), delimiter=sep)
     rows = list(reader)
     if not rows:
         return {}

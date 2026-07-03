@@ -402,19 +402,22 @@ def _itvc_indices(vida_ind, series):
     ult_anio = max(inf) if inf else None
     idx["informalidad"] = (round(inf["2023"] / inf[ult_anio] * 100.0, 1)
                            if inf.get("2023") and ult_anio and inf.get(ult_anio) else None)
-    # Motos: rebase de la serie CAFAM (misma fuente del colector); si la serie
-    # no está, cae a la constante documentada de itvc_baselines.json.
+    # Motos (CAFAM), carne (CICCRA PM-12m) e inseguridad (SNIC anual: su serie
+    # emite el total del año en YYYY-12, así el 4T-2023 resuelve al año 2023 —
+    # la excepción declarada del doc): rebase de la serie reconstruida.
     idx["patentamiento_motos"] = _itvc_rebase_de_serie(series, "patentamiento_motos")
-    # Componentes sin serie histórica: valor actual vs baseline 4T-2023
-    # documentada en data/vida/itvc_baselines.json (con fuente).
+    idx["consumo_carne"] = _itvc_rebase_de_serie(series, "consumo_carne")
+    idx["inseguridad"] = _itvc_rebase_de_serie(series, "inseguridad", invertido=True)
+    # Fallback: constante 4T-2023 documentada en itvc_baselines.json (con
+    # fuente) × valor actual del indicador, si la serie no está disponible.
     try:
         bas = json.loads(ITVC_BASELINES_PATH.read_text(encoding="utf-8-sig"))
     except (OSError, json.JSONDecodeError):
         bas = {}
-    pendientes = [("consumo_carne", False), ("inseguridad", True)]
-    if idx["patentamiento_motos"] is None:
-        pendientes.append(("patentamiento_motos", False))
-    for ikey, invertido in pendientes:
+    for ikey, invertido in (("consumo_carne", False), ("inseguridad", True),
+                            ("patentamiento_motos", False)):
+        if idx[ikey] is not None:
+            continue
         b = (bas.get(ikey) or {}).get("valor")
         v = (vida_ind.get(ikey) or {}).get("valor")
         idx[ikey] = (round((b / v if invertido else v / b) * 100.0, 1)

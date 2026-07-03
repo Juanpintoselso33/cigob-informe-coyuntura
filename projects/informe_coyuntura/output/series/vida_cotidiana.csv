@@ -1,96 +1,4 @@
 fecha,indicador,valor,unidad,fuente
-2026-07-03,sentimiento_digital,4.8,interés 0–100,Google Trends (ventana 3m)
-2026-07-02,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
-2026-07-01,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-30,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-29,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-28,sentimiento_digital,5.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-27,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-26,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-25,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-24,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-23,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-22,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-21,sentimiento_digital,5.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-20,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-19,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-18,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-17,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-16,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-15,sentimiento_digital,5.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-14,sentimiento_digital,5.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-13,sentimiento_digital,5.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-12,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-11,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-10,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-09,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-08,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-07,sentimiento_digital,5.5,interés 0–100,Google Trends (ventana 3m)
-2026-06-06,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-05,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-04,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-03,sentimiento_digital,9.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-02,sentimiento_digital,10.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-01,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-31,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-30,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
-2026-05-29,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-28,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
-2026-05-27,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
-2026-05-26,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-25,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
-2026-05-24,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-23,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-22,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
-2026-05-21,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-20,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-19,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
-2026-05-18,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-17,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-16,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-15,sentimiento_digital,9.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-14,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
-2026-05-13,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
-2026-05-12,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
-2026-05-11,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-10,sentimiento_digital,5.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-09,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
-2026-05-08,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-05-07,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
-2026-05-06,sentimiento_digital,10.0,interés 0–100,Google Trends (ventana 3m)
-2026-05-05,sentimiento_digital,12.0,interés 0–100,Google Trends (ventana 3m)
-2026-05-04,sentimiento_digital,10.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-03,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
-2026-05-02,sentimiento_digital,11.8,interés 0–100,Google Trends (ventana 3m)
-2026-05-01,sentimiento_digital,27.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-30,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-29,sentimiento_digital,9.2,interés 0–100,Google Trends (ventana 3m)
-2026-04-28,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-27,sentimiento_digital,10.0,interés 0–100,Google Trends (ventana 3m)
-2026-04-26,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-25,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-24,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-04-23,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
-2026-04-22,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-21,sentimiento_digital,9.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-20,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-04-19,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
-2026-04-18,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
-2026-04-17,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-04-16,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-15,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-14,sentimiento_digital,10.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-13,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-12,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-11,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-10,sentimiento_digital,8.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-09,sentimiento_digital,9.0,interés 0–100,Google Trends (ventana 3m)
-2026-04-08,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
-2026-04-07,sentimiento_digital,9.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-06,sentimiento_digital,10.2,interés 0–100,Google Trends (ventana 3m)
-2026-04-05,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-04,sentimiento_digital,6.5,interés 0–100,Google Trends (ventana 3m)
-2026-04-03,sentimiento_digital,6.8,interés 0–100,Google Trends (ventana 3m)
 2026-01-01,pluriempleo,7.5,%,"INDEC EPH (47.2, trimestral)"
 2025-10-01,pluriempleo,7.8,%,"INDEC EPH (47.2, trimestral)"
 2025-07-01,pluriempleo,7.3,%,"INDEC EPH (47.2, trimestral)"
@@ -508,6 +416,18 @@ fecha,indicador,valor,unidad,fuente
 2022-09-01,ipc_alimentos,6.74,% m/m,INDEC serie 146.3
 2022-08-01,ipc_alimentos,7.1,% m/m,INDEC serie 146.3
 2022-07-01,ipc_alimentos,6.02,% m/m,INDEC serie 146.3
+2025-12-01,inseguridad,2418600,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2024-12-01,inseguridad,2542456,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2023-12-01,inseguridad,2435858,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2022-12-01,inseguridad,2029465,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2021-12-01,inseguridad,1978494,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2020-12-01,inseguridad,1889437,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2019-12-01,inseguridad,2156561,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2018-12-01,inseguridad,1894568,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2017-12-01,inseguridad,1796615,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2016-12-01,inseguridad,1593233,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2015-12-01,inseguridad,1602830,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2014-12-01,inseguridad,1668437,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
 2025-01-01,informalidad,36.8,%,"INDEC EPH (52.1, anual)"
 2024-01-01,informalidad,36.2,%,"INDEC EPH (52.1, anual)"
 2023-01-01,informalidad,36.3,%,"INDEC EPH (52.1, anual)"
@@ -633,6 +553,66 @@ fecha,indicador,valor,unidad,fuente
 2023-02-01,endeudamiento_familiar,3.49,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2023-01-01,endeudamiento_familiar,3.39,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2022-12-01,endeudamiento_familiar,3.22,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-04-01,despacho_cemento,144.13,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-03-01,despacho_cemento,150.17,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-02-01,despacho_cemento,142.83,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2026-01-01,despacho_cemento,144.83,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-12-01,despacho_cemento,144.96,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-11-01,despacho_cemento,140.92,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-10-01,despacho_cemento,146.56,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-09-01,despacho_cemento,146.62,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-08-01,despacho_cemento,144.95,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-07-01,despacho_cemento,145.25,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-06-01,despacho_cemento,147.17,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-05-01,despacho_cemento,145.68,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-04-01,despacho_cemento,147.93,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-03-01,despacho_cemento,138.76,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-02-01,despacho_cemento,145.16,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2025-01-01,despacho_cemento,140.96,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-12-01,despacho_cemento,144.7,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-11-01,despacho_cemento,141.62,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-10-01,despacho_cemento,134.68,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-09-01,despacho_cemento,141.74,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-08-01,despacho_cemento,139.76,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-07-01,despacho_cemento,142.07,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-06-01,despacho_cemento,133.22,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-05-01,despacho_cemento,129.84,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-04-01,despacho_cemento,118.27,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-03-01,despacho_cemento,119.09,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-02-01,despacho_cemento,137.33,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2024-01-01,despacho_cemento,143.38,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-12-01,despacho_cemento,166.88,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-11-01,despacho_cemento,185.44,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-10-01,despacho_cemento,187.85,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-09-01,despacho_cemento,188.27,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-08-01,despacho_cemento,189.35,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-07-01,despacho_cemento,191.07,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-06-01,despacho_cemento,192.24,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-05-01,despacho_cemento,193.31,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-04-01,despacho_cemento,198.13,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-03-01,despacho_cemento,195.59,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-02-01,despacho_cemento,184.12,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2023-01-01,despacho_cemento,185.95,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-12-01,despacho_cemento,182.49,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-11-01,despacho_cemento,187.93,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-10-01,despacho_cemento,188.89,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-09-01,despacho_cemento,192.5,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-08-01,despacho_cemento,195.67,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-07-01,despacho_cemento,202.0,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-06-01,despacho_cemento,199.8,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-05-01,despacho_cemento,202.81,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-04-01,despacho_cemento,200.42,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-03-01,despacho_cemento,192.83,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-02-01,despacho_cemento,199.85,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2022-01-01,despacho_cemento,188.97,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-12-01,despacho_cemento,198.68,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-11-01,despacho_cemento,190.67,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-10-01,despacho_cemento,188.26,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-09-01,despacho_cemento,185.34,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-08-01,despacho_cemento,186.43,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-07-01,despacho_cemento,188.19,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-06-01,despacho_cemento,186.65,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
+2021-05-01,despacho_cemento,177.44,índice ISAC (desest.),"INDEC ISAC (33.2, s.e.)"
 2026-01-01,desocupacion,0.078,%,INDEC/datos.gob.ar
 2025-10-01,desocupacion,0.075,%,INDEC/datos.gob.ar
 2025-07-01,desocupacion,0.066,%,INDEC/datos.gob.ar
@@ -679,6 +659,36 @@ fecha,indicador,valor,unidad,fuente
 2014-10-01,desocupacion,0.069,%,INDEC/datos.gob.ar
 2014-07-01,desocupacion,0.075,%,INDEC/datos.gob.ar
 2014-04-01,desocupacion,0.071,%,INDEC/datos.gob.ar
+2026-05-01,consumo_carne,47.5,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2026-04-01,consumo_carne,46.2,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2026-03-01,consumo_carne,47.3,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2026-02-01,consumo_carne,47.3,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2026-01-01,consumo_carne,47.9,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-12-01,consumo_carne,48.4,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-11-01,consumo_carne,48.3,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-10-01,consumo_carne,49.1,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-09-01,consumo_carne,49.5,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-08-01,consumo_carne,49.8,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-07-01,consumo_carne,49.8,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-06-01,consumo_carne,50.1,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-05-01,consumo_carne,49.5,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-04-01,consumo_carne,49.5,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-02-01,consumo_carne,48.8,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2025-01-01,consumo_carne,47.8,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-12-01,consumo_carne,47.7,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-11-01,consumo_carne,47.4,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-10-01,consumo_carne,47.2,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-09-01,consumo_carne,46.8,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-08-01,consumo_carne,46.9,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-07-01,consumo_carne,45.6,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-06-01,consumo_carne,48.0,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-05-01,consumo_carne,44.0,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-04-01,consumo_carne,42.4,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-03-01,consumo_carne,42.6,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2024-02-01,consumo_carne,51.7,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2023-12-01,consumo_carne,52.9,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2023-11-01,consumo_carne,53.4,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2023-10-01,consumo_carne,53.2,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2026-04-01,brecha_salario_cbt,3.86,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-03-01,brecha_salario_cbt,3.82,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-02-01,brecha_salario_cbt,3.83,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)

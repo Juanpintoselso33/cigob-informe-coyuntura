@@ -47,6 +47,10 @@ def _extraer_per_capita(pdf_bytes: bytes) -> float | None:
         patterns = [
             r'(\d{2,3}[,\.]\d)\s*kilos?/a[nñ]o',
             r'(\d{2}[,\.]\d)\s*kg/a[nñ]o',
+            # 2023-2024: "se habría ubicado en 53,2 kg/hab/año" (a veces con
+            # salto de línea antes de la unidad); \d{2,3} evita capturar
+            # variaciones chicas tipo "+1,9 kg/hab/año"
+            r'(\d{2,3}[,\.]\d)\s*kg/hab',
             r'consumo\s+per\s+c[aá]pita[^\n]{0,60}?(\d{1,3}[,\.]\d{1})\s*(?:kilos?|kg)',
             r'(\d{1,3}[,\.]\d{1})\s*(?:kilos?|kg)[^\n]{0,60}?per\s+c[aá]pita',
         ]

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-02T21:24:44.176837",
+  "generated_at": "2026-07-03T02:35:13.709009",
   "period": "2026-07",
-  "score_global": 3.6,
+  "score_global": 3.7,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 4.5,
+      "score": 4.8,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -33,46 +33,49 @@
           "peso_efectivo": 0.104
         },
         "reservas_bcra": {
-          "valor": -3222.0,
+          "valor": 4122.0,
           "unidad": "Millones de USD",
           "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
-          "fecha_dato": "2026-06-29",
-          "netas_sdds_estricto": -3222.0,
-          "depositos_tesoro": 0.0,
-          "reservas_brutas": 46577.0,
-          "drenajes_actualizado": "2026-05-31",
-          "metodo": "config_fallback",
+          "fecha_dato": "31/05/26",
+          "netas_sdds_estricto": -1605.0,
+          "depositos_tesoro": 3058.0,
+          "bopreal_12m": 2670.0,
+          "reservas_brutas": 48193.0,
+          "drenaje_prestamos_dep": -22197.0,
+          "drenaje_swaps": -19216.0,
+          "drenaje_repos": -8385.0,
+          "metodo": "sdds+tesoro+bopreal",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 10,
-          "puntaje_banda": 10,
+          "puntaje_itcm": 30,
+          "puntaje_banda": 30,
           "peso_efectivo": 0.08
         },
         "idc": {
-          "valor": 0.9611,
+          "valor": 1.0156,
           "unidad": "Índice (~1,0)",
           "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
-          "fecha_dato": "2026-06-26",
+          "fecha_dato": "2026-06-29",
           "componentes": {
             "precio": 0.9945,
-            "volumen": 0.9731,
-            "asignacion": 0.9118
+            "volumen": 1.0123,
+            "asignacion": 1.0412
           },
           "badlar_real_mensual": -0.55,
-          "semaforo": "rojo",
+          "semaforo": "amarillo",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 35,
-          "puntaje_banda": 35,
+          "puntaje_itcm": 60,
+          "puntaje_banda": 60,
           "peso_efectivo": 0.08
         },
         "badlar": {
-          "valor": 21.0,
+          "valor": 20.94,
           "unidad": "% anual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-          "fecha_dato": "2026-06-30",
+          "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "en_indice": false
         },
@@ -107,25 +110,25 @@
           "peso_efectivo": 0.096
         },
         "recaudacion": {
-          "valor": 1.82,
+          "valor": -7.14,
           "unidad": "% i.a. real",
           "fuente": "https://apis.datos.gob.ar/series/api/series/",
-          "fecha_dato": "2026-05-01",
-          "var_ia_nominal": 35.62,
+          "fecha_dato": "2026-06-01",
+          "var_ia_nominal": 23.68,
           "ipc_ia": 33.2,
           "desactualizado": false,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 60,
-          "puntaje_banda": 60,
+          "puntaje_itcm": 10,
+          "puntaje_banda": 10,
           "peso_efectivo": 0.144
         },
         "tcrm": {
-          "valor": 79.77,
-          "unidad": "Índice (base 2010=100)",
-          "fuente": "https://apis.datos.gob.ar/series/api/series/",
-          "fecha_dato": "2024-12-01",
-          "desactualizado": true,
+          "valor": 84.96,
+          "unidad": "Índice (base dic-2015=100)",
+          "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
+          "fecha_dato": "2026-06-01",
+          "desactualizado": false,
           "en_indice": true,
           "dimension": "competitividad_externa",
           "puntaje_itcm": 35,
@@ -195,33 +198,33 @@
           "peso_efectivo": 0.048
         },
         "prestamos_privados": {
-          "valor": 3.59,
+          "valor": 4.14,
           "unidad": "% mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-          "fecha_dato": "2026-06-29",
+          "fecha_dato": "2026-06-30",
           "desactualizado": false,
           "en_indice": false
         },
         "base_monetaria": {
-          "valor": 4.11,
+          "valor": 6.4,
           "unidad": "% mensual nominal",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-          "fecha_dato": "2026-06-29",
+          "fecha_dato": "2026-06-30",
           "desactualizado": false,
           "en_indice": false
         },
         "tc_mayorista": {
-          "valor": 3.65,
+          "valor": 3.6,
           "unidad": "% mensual",
           "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-          "fecha_dato": "2026-07-01",
+          "fecha_dato": "2026-07-02",
           "desactualizado": false,
           "en_indice": false
         }
       },
       "alerta": null,
       "itcm": {
-        "valor": 55.3,
+        "valor": 51.7,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -254,12 +257,12 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.24,
-            "puntaje": 70.0,
+            "puntaje": 40.0,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
-                "puntaje_banda": 60,
-                "puntaje_aplicado": 60,
+                "puntaje_banda": 10,
+                "puntaje_aplicado": 10,
                 "peso_efectivo": 0.144
               },
               "saldo_comercial_12m": {
@@ -274,18 +277,18 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.16,
-            "puntaje": 22.5,
+            "puntaje": 45.0,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.5,
-                "puntaje_banda": 10,
-                "puntaje_aplicado": 10,
+                "puntaje_banda": 30,
+                "puntaje_aplicado": 30,
                 "peso_efectivo": 0.08
               },
               "idc": {
                 "peso": 0.5,
-                "puntaje_banda": 35,
-                "puntaje_aplicado": 35,
+                "puntaje_banda": 60,
+                "puntaje_aplicado": 60,
                 "peso_efectivo": 0.08
               }
             },
@@ -871,7 +874,7 @@
       }
     },
     "espiritu_epoca": {
-      "score": 3.2,
+      "score": 3.3,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -883,7 +886,7 @@
           "desactualizado": false
         },
         "sentimiento_digital": {
-          "valor": 7.2,
+          "valor": 7.5,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
           "fecha_dato": "2026-07-02",
@@ -900,10 +903,9 @@
       "alerta": null
     }
   },
-  "barbarismo_activo": "político",
+  "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:macro:tcrm",
     "desactualizado:politica:movilizacion_cepa,cohesion_bloque,gobernadores_alineamiento",
     "desactualizado:gestion:protocolo_antipiquetes"
   ]
