@@ -104,7 +104,7 @@
           "puntaje_banda": 60,
           "peso_efectivo": 0.11,
           "aporte_score": 4.0,
-          "aporte_formula": "Banda ITCM: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2–0 → 40 · -5–-2 → 20 · ≤-5 → 5 (puntos 0–100; puntaje 60; pesa 11,0% del ITCM)",
+          "aporte_formula": "Banda ITCM: >5 → 100 · 3–5 → 80 · 0–3 → 60 · -2 a 0 → 40 · -5 a -2 → 20 · ≤-5 → 5 (puntos 0–100; puntaje 60; pesa 11,0% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
@@ -126,7 +126,7 @@
           "puntaje_banda": 85,
           "peso_efectivo": 0.096,
           "aporte_score": 1.5,
-          "aporte_formula": "Banda ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000–5000 → 50 · -15000–-5000 → 30 · ≤-15000 → 10 (puntos 0–100; puntaje 85; pesa 9,6% del ITCM)",
+          "aporte_formula": "Banda ITCM: >15000 → 85 · 10000–15000 → 75 · 5000–10000 → 60 · -5000 a 5000 → 50 · -15000 a -5000 → 30 · ≤-15000 → 10 (puntos 0–100; puntaje 85; pesa 9,6% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
@@ -144,7 +144,7 @@
           "puntaje_banda": 60,
           "peso_efectivo": 0.144,
           "aporte_score": 4.0,
-          "aporte_formula": "Banda ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5–0 → 40 · ≤-5 → 10 (puntos 0–100; puntaje 60; pesa 14,4% del ITCM)",
+          "aporte_formula": "Banda ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5 a 0 → 40 · ≤-5 → 10 (puntos 0–100; puntaje 60; pesa 14,4% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
@@ -196,7 +196,7 @@
           "puntaje_banda": 60,
           "peso_efectivo": 0.078,
           "aporte_score": 4.0,
-          "aporte_formula": "Banda ITCM: ≤-2 → 100 · -2–2 → 85 · 2–5 → 60 · 5–8 → 35 · >8 → 10 (puntos 0–100; puntaje 60; pesa 7,8% del ITCM)",
+          "aporte_formula": "Banda ITCM: ≤-2 → 100 · -2 a 2 → 85 · 2–5 → 60 · 5–8 → 35 · >8 → 10 (puntos 0–100; puntaje 60; pesa 7,8% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": "brecha 4,33 pp = M3 priv. real i.a. -2,46% − M2 priv. real i.a. -6,78%"
         },
@@ -217,7 +217,7 @@
           "puntaje_banda": 35,
           "peso_efectivo": 0.072,
           "aporte_score": 6.5,
-          "aporte_formula": "Banda ITCM: >10 → 100 · 2–10 → 80 · -2–2 → 60 · -10–-2 → 35 · ≤-10 → 10 (puntos 0–100; puntaje 35; pesa 7,2% del ITCM)",
+          "aporte_formula": "Banda ITCM: >10 → 100 · 2–10 → 80 · -2 a 2 → 60 · -10 a -2 → 35 · ≤-10 → 10 (puntos 0–100; puntaje 35; pesa 7,2% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": "-4,2% i.a. = ISAC -2,8% · BK importados -6,8%"
         },
@@ -238,7 +238,7 @@
           "puntaje_banda": 80,
           "peso_efectivo": 0.048,
           "aporte_score": 2.0,
-          "aporte_formula": "Banda ITCM: >20 → 100 · 5–20 → 80 · -5–5 → 60 · -20–-5 → 35 · ≤-20 → 10 (puntos 0–100; puntaje 80; pesa 4,8% del ITCM)",
+          "aporte_formula": "Banda ITCM: >20 → 100 · 5–20 → 80 · -5 a 5 → 60 · -20 a -5 → 35 · ≤-20 → 10 (puntos 0–100; puntaje 80; pesa 4,8% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": "8,2% i.a. = servicios tech 15,6% · productividad -1,6%"
         },
@@ -748,7 +748,7 @@
           "puntaje_banda": 100,
           "peso_efectivo": 0.0875,
           "aporte_score": 0.0,
-          "aporte_formula": "Banda ITCG: ≤-12 → 100 · -12–-8 → 85 · -8–-4 → 65 · -4–0 → 40 · >0 → 10 (puntos 0–100; puntaje 100; pesa 8,8% del ITCG)",
+          "aporte_formula": "Banda ITCG: ≤-12 → 100 · -12 a -8 → 85 · -8 a -4 → 65 · -4 a 0 → 40 · >0 → 10 (puntos 0–100; puntaje 100; pesa 8,8% del ITCG)",
           "aporte_nota": null,
           "aporte_input_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023"
         },
@@ -764,7 +764,7 @@
           "puntaje_banda": 85,
           "peso_efectivo": 0.0625,
           "aporte_score": 1.5,
-          "aporte_formula": "Banda ITCG: ≤-25 → 100 · -25–-15 → 85 · -15–-5 → 65 · -5–0 → 40 · >0 → 10 (puntos 0–100; puntaje 85; pesa 6,2% del ITCG)",
+          "aporte_formula": "Banda ITCG: ≤-25 → 100 · -25 a -15 → 85 · -15 a -5 → 65 · -5 a 0 → 40 · >0 → 10 (puntos 0–100; puntaje 85; pesa 6,2% del ITCG)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
@@ -780,7 +780,7 @@
           "puntaje_banda": 100,
           "peso_efectivo": 0.05,
           "aporte_score": 0.0,
-          "aporte_formula": "Banda ITCG: ≤-20 → 100 · -20–-12 → 85 · -12–-5 → 65 · -5–0 → 40 · >0 → 10 (puntos 0–100; puntaje 100; pesa 5,0% del ITCG)",
+          "aporte_formula": "Banda ITCG: ≤-20 → 100 · -20 a -12 → 85 · -12 a -5 → 65 · -5 a 0 → 40 · >0 → 10 (puntos 0–100; puntaje 100; pesa 5,0% del ITCG)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },

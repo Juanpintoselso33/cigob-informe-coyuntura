@@ -226,9 +226,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (CONTRAT.AR)", tipo: "Avance de reforma",
   },
   reduccion_estado: {
-    que: "Cuánto varía la dotación de empleo del sector público.",
-    aporta: "Mide el ajuste del tamaño del Estado, prioridad declarada del oficialismo.",
-    frecuencia: "Mensual", tipo: "Variación",
+    que: "Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del INDEC.",
+    aporta: "La métrica insignia de la reforma del Estado: personas, no pesos. A diferencia de las series de sector público total, excluye provincias y municipios — mide solo lo que depende del Gobierno nacional.",
+    frecuencia: "Mensual", tipo: "Variación vs. dic-2023",
   },
   reestructuracion_organismos: {
     que: "Cuántos organismos públicos se disolvieron, fusionaron o centralizaron desde diciembre de 2023.",

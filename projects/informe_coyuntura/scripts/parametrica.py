@@ -50,6 +50,9 @@ def texto_bandas(bandas: list) -> str:
             rango = f"≤{_num(high)}"
         elif high == INF:
             rango = f">{_num(low)}"
+        elif low < 0 or high < 0:
+            # con negativos, el guion de rango se vuelve ilegible ("-12–-8")
+            rango = f"{_num(low)} a {_num(high)}"
         else:
             rango = f"{_num(low)}–{_num(high)}"
         partes.append(f"{rango} → {puntaje}")
