@@ -1,0 +1,53 @@
+{
+  "_meta": {
+    "descripcion": "Transiciones de etapa FECHADAS de cada empresa de la cartera Ley Bases, para reconstruir la serie histórica del indicador privatizaciones (avance = promedio de etapas vigentes / 4 × 100). Fechas = mes de publicación en el Boletín Oficial de la norma respectiva (investigación verificada 2026-07-03). MANTENIMIENTO: cuando se actualice una etapa en privatizaciones.json hay que agregar acá la transición con su fecha y norma — la serie avisa si el mes corriente no reconcilia.",
+    "criterio": "0,5 = habilitada por Ley Bases (27.742, BO 08-jul-2024) sin decreto propio · 1 = decreto específico que autoriza la privatización · 2 = resolución que inicia el proceso / estructuración · 3 = llamado a licitación con pliegos (o adjudicación en curso) · 4 = operación cerrada. Los valores intermedios (1,5 · 2,5) son juicio del analista documentado en privatizaciones.json."
+  },
+  "empresas": {
+    "AySA": [
+      {"etapa": 0.5, "fecha": "2024-07", "fuente": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización/Concesión"},
+      {"etapa": 1, "fecha": "2025-07", "fuente": "DNU 493/2025 + Decreto 494/2025 (BO 22-jul-2025): autorizan la privatización (venta ≥51% a operador estratégico)"},
+      {"etapa": 2, "fecha": "2025-08", "fuente": "Resolución ME 1198/2025 (BO 19-ago-2025): inicia el proceso de privatización"},
+      {"etapa": 3, "fecha": "2026-05", "fuente": "Resolución ME 704/2026 (BO 15-may-2026): llamado a licitación por el 90% accionario, pliegos aprobados"}
+    ],
+    "Transener": [
+      {"etapa": 1, "fecha": "2025-04", "fuente": "Decreto 286/2025 (BO 25-abr-2025), art. 2: autoriza la venta de las acciones de ENARSA en Citelec (no figura en la Ley Bases; deriva de la privatización de ENARSA)"},
+      {"etapa": 2, "fecha": "2025-07", "fuente": "Resolución ME 1050/2025 (BO 25-jul-2025): inicia el proceso (1ª fase: Citelec)"},
+      {"etapa": 3, "fecha": "2025-12", "fuente": "Resolución ME 2090/2025 (BO dic-2025): concurso público por el 50% de Citelec. Adjudicación: Res. ME 673/2026 (BO 11-may-2026), Edison-Genneia, USD 356M"},
+      {"etapa": 4, "fecha": "2026-06", "fuente": "Contrato de compraventa firmado 04-jun-2026; ENReGE Res. 130/2026 (BO 22-jun-2026) autorizó la transferencia"}
+    ],
+    "Enarsa": [
+      {"etapa": 0.5, "fecha": "2024-07", "fuente": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización"},
+      {"etapa": 1, "fecha": "2025-04", "fuente": "Decreto 286/2025 (BO 25-abr-2025): autoriza la privatización total por unidades de negocio"},
+      {"etapa": 2, "fecha": "2025-07", "fuente": "Resolución ME 1050/2025 (BO 25-jul-2025) inicia el proceso; Decreto 590/2025 (BO 19-ago-2025) autorizó la venta de las hidroeléctricas del Comahue"},
+      {"etapa": 2.5, "fecha": "2025-12", "fuente": "Comahue adjudicado: Res. ME 2124/2025 (BO 29-dic-2025), USD 706,9M; posesión ene-2026. Quedan termoeléctricas y gasoducto"}
+    ],
+    "Intercargo": [
+      {"etapa": 0.5, "fecha": "2024-07", "fuente": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización"},
+      {"etapa": 1, "fecha": "2025-03", "fuente": "Decreto 198/2025 (BO 18-mar-2025): autoriza la privatización total (100% accionario)"},
+      {"etapa": 2, "fecha": "2025-07", "fuente": "Resolución ME 1067/2025 (BO 28-jul-2025): inicia el proceso"},
+      {"etapa": 2.5, "fecha": "2026-03", "fuente": "Resolución ME 282/2026 (BO 26-mar-2026): llamado a licitación, base USD 45,12M; apertura postergada al 25-jun-2026 (Res. 833/2026), sin adjudicación"}
+    ],
+    "Corredores Viales": [
+      {"etapa": 0.5, "fecha": "2024-07", "fuente": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización/Concesión"},
+      {"etapa": 1, "fecha": "2025-02", "fuente": "Decreto 97/2025 (BO 17-feb-2025): autoriza la privatización vía concesión de obra pública por peaje"},
+      {"etapa": 2, "fecha": "2025-06", "fuente": "Resolución ST 29/2025 (BO 03-jun-2025): llamado y pliegos de la Etapa I de la Red Federal de Concesiones"},
+      {"etapa": 3, "fecha": "2025-11", "fuente": "Resolución ST 80/2025 (BO 19-nov-2025): adjudica los Tramos Oriental y Conexión (Etapa I)"}
+    ],
+    "Belgrano Cargas": [
+      {"etapa": 0.5, "fecha": "2024-07", "fuente": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización/Concesión"},
+      {"etapa": 1, "fecha": "2025-02", "fuente": "Decreto 67/2025 (BO 10-feb-2025): autoriza la privatización por desintegración vertical"},
+      {"etapa": 1.5, "fecha": "2025-07", "fuente": "Resolución ME 1049/2025 (BO 24-jul-2025): inicia el proceso, actos preparatorios; Decreto 282/2026 (BO 28-abr-2026) define la venta del material rodante — sin llamado formal"}
+    ],
+    "Nucleoeléctrica": [
+      {"etapa": 0.5, "fecha": "2024-07", "fuente": "Ley Bases 27.742 (BO 08-jul-2024), art. 8: privatización parcial con control estatal"},
+      {"etapa": 1, "fecha": "2025-09", "fuente": "Decreto 695/2025 (BO 30-sep-2025): autoriza la venta del 44% en bloque + 5% PPP. (La Res. ME 1751/2025, BO 06-nov-2025, inició el proceso; el analista la mantiene en etapa 1 hasta que haya llamado)"}
+    ],
+    "YCRT": [
+      {"etapa": 0.5, "fecha": "2024-07", "fuente": "Ley Bases 27.742 (BO 08-jul-2024), art. 9. Sin decreto de privatización; la transformación en S.A. (Dto. 115/2025, BO 24-feb-2025) es preparatoria"}
+    ],
+    "SOFSE": [
+      {"etapa": 0.5, "fecha": "2024-07", "fuente": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización/Concesión. Sin decreto; conversión a S.A. (jun-2025) obligada por DNU 70/23; proceso en pausa (feb-2026)"}
+    ]
+  }
+}

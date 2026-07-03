@@ -55,7 +55,15 @@ def fetch_indec_x100(series_id: str, limit: int = 40) -> list:
             for f, v in sorted(fetch_indec(series_id, limit), key=lambda x: x[0])]
 
 
-def fetch_bcra(var_id: int, dias: int = 540) -> list:
+def _meses_desde_asuncion() -> int:
+    """Meses entre dic-2023 (asunción del gobierno) y hoy: la ventana por
+    defecto de las series macro (regla de backfill ADR-0012 — toda serie debe
+    cubrir el mandato completo, no una ventana fija que envejece)."""
+    hoy = date.today()
+    return (hoy.year - 2023) * 12 + hoy.month - 11
+
+
+def fetch_bcra(var_id: int, dias: int = 960) -> list:
     desde = (datetime.today() - timedelta(days=dias)).strftime("%Y-%m-%d")
     r = requests.get(f"{BCRA_BASE}/{var_id}", params={"desde": desde},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT, verify=False)
@@ -102,10 +110,14 @@ def _tesoro_por_mes() -> dict:
     return out
 
 
-def fetch_reservas_netas_serie(meses: int = 18) -> list:
+def fetch_reservas_netas_serie(meses: int | None = None) -> list:
     """Serie mensual de reservas NETAS "a secas" = SDDS estricto + dep. Tesoro +
     Bopreal 12m (la misma fórmula que el indicador en macro.py), parseando las
-    últimas `meses` planillas SDDS. Salta los meses sin planilla parseable."""
+    últimas `meses` planillas SDDS (por defecto, desde dic-2023). LÍMITE DE LA
+    FUENTE: el BCRA borra las planillas viejas (404 antes de jun-2024) y no
+    están en Wayback (verificado jul-2026) → la serie arranca en jun-2024;
+    los meses sin planilla parseable se saltean."""
+    meses = meses or _meses_desde_asuncion()
     tesoro = _tesoro_por_mes()
     out = []
     y, m = datetime.today().year, datetime.today().month
@@ -128,39 +140,44 @@ def fetch_reservas_netas_serie(meses: int = 18) -> list:
     return out
 
 
-def fetch_tcrm_serie(meses: int = 18) -> list:
+def fetch_tcrm_serie(meses: int | None = None) -> list:
     """Serie mensual del ITCRM oficial del BCRA (base 17-dic-2015=100), de la
     planilla ITCRMSerie.xlsx. Reemplaza la serie INDEC 116.3_TCRMA, discontinuada
     en dic-2024. Devuelve los últimos `meses` como [[YYYY-MM-01, valor]]."""
+    meses = meses or _meses_desde_asuncion()
     serie = macro.fetch_itcrm_serie()  # [(YYYY-MM-01, valor)] ascendente
     return [[ym, val] for ym, val in serie[-meses:]]
 
 
-def fetch_idm_serie(meses: int = 18) -> list:
+def fetch_idm_serie(meses: int | None = None) -> list:
     """Serie mensual del Índice de Desequilibrio Monetario (brecha i.a. real entre
     M3 y M2 privado), con la misma fórmula que el indicador en macro.py. Devuelve
     los últimos `meses` como [[YYYY-MM-01, gap_pp]]."""
+    meses = meses or _meses_desde_asuncion()
     serie = macro._idm_serie_mensual(meses_hist=meses + 4)  # [(YYYY-MM, gap, m3, m2)] asc.
     return [[f"{ym}-01", gap] for ym, gap, _m3, _m2 in serie[-meses:]]
 
 
-def fetch_idc_serie(meses: int = 18) -> list:
+def fetch_idc_serie(meses: int | None = None) -> list:
     """Serie mensual del Índice de Capacidad Prestable, con la misma fórmula que el
     indicador en macro.py (_idc_componentes) sobre stocks de fin de mes. Devuelve
     los últimos `meses` como [[YYYY-MM-01, idc]]."""
+    meses = meses or _meses_desde_asuncion()
     serie = macro._idc_serie_mensual(meses_hist=meses + 2)  # [(YYYY-MM, idc)] asc.
     return [[f"{ym}-01", idc] for ym, idc in serie[-meses:]]
 
 
-def fetch_iai_serie(meses: int = 18) -> list:
+def fetch_iai_serie(meses: int | None = None) -> list:
     """Serie histórica del IAI (inversión física: ISAC + BK importados, 65/35),
     con la misma fórmula que macro.py. [[YYYY-MM-01, valor]]."""
+    meses = meses or _meses_desde_asuncion()
     return [[f"{ym}-01", v] for ym, v in macro._iai_serie_mensual(meses=meses)]
 
 
-def fetch_icip_serie(meses: int = 18) -> list:
+def fetch_icip_serie(meses: int | None = None) -> list:
     """Serie histórica del ICIP (inversión digital: servicios tech + productividad),
     con la misma fórmula que macro.py. [[YYYY-MM-01, valor]]."""
+    meses = meses or _meses_desde_asuncion()
     return [[f"{ym}-01", v] for ym, v in macro._icip_serie_mensual(meses=meses)]
 
 
@@ -705,6 +722,15 @@ def fetch_rigi_serie() -> list:
     for fecha, _nombre, inv in proy:
         cum += inv
         por_mes[fecha[:7]] = round(cum)         # acumulado al último proyecto del mes
+    # Antes del primer proyecto aprobado la inversión RIGI era 0 (el régimen
+    # se reglamentó en ago-2024): la serie arranca en dic-2023 con ceros.
+    y, m = 2023, 12
+    primero = min(por_mes) if por_mes else None
+    while primero and f"{y}-{m:02d}" < primero:
+        por_mes[f"{y}-{m:02d}"] = 0
+        m += 1
+        if m > 12:
+            m = 1; y += 1
     return [[f"{ym}-01", v] for ym, v in sorted(por_mes.items())]
 
 
@@ -843,6 +869,10 @@ def fetch_opcion_salud_serie() -> list:
         denom = ult_u or primera_u
         if denom:
             out.append([f"{ym}-01", round(100.0 * derivados[ym] / denom, 1)])
+    # dic-2023: el canal de derivación directa nace con el DNU 70/23 (dic-2023);
+    # antes del primer XLSX (ene-2024) los derivados eran 0.
+    if out and out[0][0] == "2024-01-01":
+        out.insert(0, ["2023-12-01", 0.0])
     return out
 
 
@@ -995,6 +1025,50 @@ def fetch_concesiones_serie() -> list:
     return out
 
 
+PRIVATIZACIONES_FECHAS_STORE = (Path(__file__).resolve().parents[1] / "data" / "gestion"
+                                / "privatizaciones_fechas.json")
+
+
+def fetch_privatizaciones_serie() -> list:
+    """Serie mensual del avance de privatizaciones (promedio de etapas/4 × 100,
+    la MISMA fórmula del indicador) reconstruida con las transiciones de etapa
+    FECHADAS por norma del BO (privatizaciones_fechas.json, verificadas
+    jul-2026). El mes corriente usa las etapas del store vivo
+    (privatizaciones.json) y avisa si no reconcilia con las transiciones —
+    señal de que falta fechar un hito nuevo. [[YYYY-MM-01, %]]."""
+    fechas = json.loads(PRIVATIZACIONES_FECHAS_STORE.read_text(encoding="utf-8-sig"))["empresas"]
+    live_path = Path(__file__).resolve().parents[1] / "data" / "gestion" / "privatizaciones.json"
+    live = json.loads(live_path.read_text(encoding="utf-8-sig"))["empresas"]
+
+    def etapa_en(emp: str, ym: str) -> float:
+        vigente = 0.0
+        for t in fechas.get(emp, []):
+            if t["fecha"] <= ym:
+                vigente = float(t["etapa"])
+        return vigente
+
+    empresas = sorted(live)
+    hoy_ym = date.today().strftime("%Y-%m")
+    for emp in empresas:
+        if abs(etapa_en(emp, hoy_ym) - float(live[emp]["etapa"])) > 0.01:
+            print(f"  [WARN] privatizaciones serie: {emp} etapa live "
+                  f"{live[emp]['etapa']} != fechada {etapa_en(emp, hoy_ym)} — "
+                  f"agregar la transición a privatizaciones_fechas.json")
+    out = []
+    y, m = 2023, 12
+    while (y, m) <= (int(hoy_ym[:4]), int(hoy_ym[5:])):
+        ym = f"{y}-{m:02d}"
+        if ym == hoy_ym:
+            etapas = [float(live[e]["etapa"]) for e in empresas]
+        else:
+            etapas = [etapa_en(e, ym) for e in empresas]
+        out.append([f"{ym}-01", round(sum(etapas) / len(etapas) / 4.0 * 100.0, 1)])
+        m += 1
+        if m > 12:
+            m = 1; y += 1
+    return out
+
+
 def fetch_fal_serie() -> list:
     """Serie mensual del índice FAL (fondo de cese laboral): 0 desde dic-2023
     hasta jun-2026 — el cero histórico es un DATO DURO, no un faltante: el
@@ -1026,6 +1100,7 @@ def fetch_fal_serie() -> list:
 GESTION_DERIVADAS = [
     ("apertura_comercial", "Índice 0–100 (ILCE)", "ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)", fetch_ilce_serie),
     ("concesiones_infraestructura", "% km adjudicados RFC", "CONTRAT.AR + RFC (hitos fechados)", fetch_concesiones_serie),
+    ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),
     ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "CNV + MTEySS (histórico: 0 hasta jul-2026)", fetch_fal_serie),
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
     ("desregulacion_normativa", "Normas (conteo acum.)", "InfoLeg ('deroga' desde dic-2023)", lambda: fetch_infoleg_serie("deroga")),

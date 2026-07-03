@@ -217,6 +217,8 @@ def _infoleg_post(texto: str, tipo_norma: str, fecha_desde: tuple, fecha_hasta: 
             r = session.post(action_url, data=post_data, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
             r.raise_for_status()
 
+            if re.search(r"No se encontraron normas", r.text, re.IGNORECASE):
+                return 0    # cero resultados es un dato, no un error (series al inicio del mandato)
             m = re.search(r"Encontradas?[:\s]+(\d+)", r.text, re.IGNORECASE)
             if not m:
                 raise ValueError("Conteo no encontrado en respuesta InfoLeg")

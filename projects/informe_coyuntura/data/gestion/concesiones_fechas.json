@@ -6,9 +6,9 @@
   "km_totales": 9091,
   "etapas": {
     "I": {
-      "fecha": "2026-01",
+      "fecha": "2025-11",
       "km": 741.71,
-      "fuente": "RESOL-2025-80-ST#MEC, vinculada en CONTRAT.AR (504-0007-LPU25) el 05/01/2026 — Tramos Oriental (Autovía Construcciones y Servicios) y Conexión (Obring-Rovial-Edeca-Pitón-Pietroboni)"
+      "fuente": "RESOL-2025-80-ST#MEC, BO 19-nov-2025 (boletinoficial.gob.ar/detalleAviso/primera/334748/20251119) — Tramos Oriental (Autovía Construcciones y Servicios) y Conexión (Obring-Rovial-Edeca-Pitón-Pietroboni). La vinculación del documento en CONTRAT.AR fue 05/01/2026; manda el BO."
     },
     "II": {
       "fecha": "2026-05",
