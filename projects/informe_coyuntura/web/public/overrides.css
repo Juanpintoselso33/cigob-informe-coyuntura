@@ -200,10 +200,10 @@
 
 /* ── Robustez del índice (ADR-0019): card en la familia de las dimensiones ── */
 .cg-rob {
-    margin: 14px auto 0; max-width: 580px;
+    margin: 0;
     background: var(--paper); border: 1px solid var(--bd);
     border-top: 3px solid var(--rob-c, var(--teal));
-    border-radius: var(--radius-card); padding: 14px 16px 12px;
+    border-radius: var(--radius-card); padding: 16px 20px 14px;
     box-shadow: var(--shadow-card);
 }
 .cg-rob-head {

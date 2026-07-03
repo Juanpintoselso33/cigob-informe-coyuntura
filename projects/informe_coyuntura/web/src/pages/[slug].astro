@@ -38,7 +38,7 @@ let robSvg: {
   pct: (x: number) => number;
 } | null = null;
 if (rob?.hist && rob.hist_max! > rob.hist_min!) {
-  const W = 560, H = 104;
+  const W = 1120, H = 150;   // panorámico: la card ocupa el ancho completo de la sección
   const n = rob.hist.length;
   const bw = (rob.hist_max! - rob.hist_min!) / n;
   // dominio x = rango simulado; base-100 lo extiende hasta incluir el 100
@@ -107,49 +107,6 @@ if (rob?.hist && rob.hist_max! > rob.hist_min!) {
             </div>
           ))}
         </div>
-        {rob && robSvg && (
-          <div class={`cg-rob cg-rob--${meta.slug}`}>
-            <div class="cg-rob-head">
-              <span>Robustez del {indice.sigla} · distribución de {rob.n_draws.toLocaleString("es-AR")} escenarios Monte Carlo</span>
-              <span>90% de los casos: <strong>{coma(rob.p05)} – {coma(rob.p95)}</strong></span>
-            </div>
-            <svg class="cg-rob-svg" viewBox={`0 0 ${robSvg.W} ${robSvg.H}`} role="img"
-                 aria-label={`Distribución simulada del ${indice.sigla}: entre ${coma(rob.p05)} y ${coma(rob.p95)} en el 90% de los escenarios`}>
-              <defs>
-                <clipPath id="rob-clip">
-                  <rect x={robSvg.x05} y="0" width={robSvg.x95 - robSvg.x05} height={robSvg.H} />
-                </clipPath>
-              </defs>
-              <path d={robSvg.area} fill="var(--rob-c)" fill-opacity="0.10" />
-              <path d={robSvg.area} fill="var(--rob-c)" fill-opacity="0.32" clip-path="url(#rob-clip)" />
-              <path d={robSvg.line} fill="none" stroke="var(--rob-c)" stroke-width="2" stroke-linejoin="round" />
-              {robSvg.x100 !== null && (
-                <line x1={robSvg.x100} x2={robSvg.x100} y1="4" y2={robSvg.base}
-                      stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.65" />
-              )}
-              <line x1={robSvg.xval} x2={robSvg.xval} y1="8" y2={robSvg.base}
-                    stroke="var(--dark)" stroke-width="1.8" />
-              <circle cx={robSvg.xval} cy="8" r="3.4" fill="var(--dark)" />
-              <line x1="0" x2={robSvg.W} y1={robSvg.base} y2={robSvg.base}
-                    stroke="var(--bd)" stroke-width="1" />
-            </svg>
-            <div class="cg-rob-ticks">
-              <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x05)}%`}>{coma(rob.p05)}</span>
-              <span class="cg-rob-tick cg-rob-tick--val" style={`left:${robSvg.pct(robSvg.xval)}%`}>{coma(indice.data.valor)}</span>
-              <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x95)}%`}>{coma(rob.p95)}</span>
-              {robSvg.x100 !== null && (
-                <span class="cg-rob-tick cg-rob-tick--ext" style={`left:${robSvg.pct(robSvg.x100)}%`}>100 = 4T-23</span>
-              )}
-            </div>
-            <p class="cg-h2-sub">
-              Perturbando los pesos ±20%{indice.base100 ? "" : " y los umbrales de banda"} en{" "}
-              {rob.n_draws.toLocaleString("es-AR")} escenarios, el {indice.sigla} queda entre{" "}
-              <strong>{coma(rob.p05)}</strong> y <strong>{coma(rob.p95)}</strong> en el 90% de los casos
-              (tensión {coma(rob.tension_rango[0])}–{coma(rob.tension_rango[1])}): la lectura del
-              cinturón no depende de la ponderación exacta elegida.
-            </p>
-          </div>
-        )}
         {indice.data.ajustes_aplicados.length > 0 && (
           <p class="cg-h2-sub" style="margin-top:12px;">
             <strong>Ajustes del analista:</strong>{" "}
@@ -182,6 +139,61 @@ if (rob?.hist && rob.hist_max! > rob.hist_min!) {
         </div>
         <div class="cg-tile-grid">
           {filasContexto.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+        </div>
+      </section>
+    )}
+
+    {rob && robSvg && indice && (
+      <section class="cg-section">
+        <div class="cg-section-head">
+          <p class="cg-eyebrow">Robustez</p>
+          <h2 class="cg-h2">¿Cuánto depende el {indice.sigla} de la ponderación elegida?</h2>
+          <p class="cg-h2-sub">
+            Análisis de sensibilidad (Monte Carlo): el índice se recalcula en{" "}
+            {rob.n_draws.toLocaleString("es-AR")} escenarios perturbando{" "}
+            {indice.base100 ? "los pesos ±20%" : "los pesos ±20% y los umbrales de banda"}.
+            La curva es la distribución de resultados; la franja sombreada, donde cae el 90% de los casos.
+          </p>
+        </div>
+        <div class={`cg-rob cg-rob--${meta.slug}`}>
+          <div class="cg-rob-head">
+            <span>Distribución simulada del {indice.sigla}</span>
+            <span>90% de los casos: <strong>{coma(rob.p05)} – {coma(rob.p95)}</strong></span>
+          </div>
+          <svg class="cg-rob-svg" viewBox={`0 0 ${robSvg.W} ${robSvg.H}`} role="img"
+               aria-label={`Distribución simulada del ${indice.sigla}: entre ${coma(rob.p05)} y ${coma(rob.p95)} en el 90% de los escenarios`}>
+            <defs>
+              <clipPath id="rob-clip">
+                <rect x={robSvg.x05} y="0" width={robSvg.x95 - robSvg.x05} height={robSvg.H} />
+              </clipPath>
+            </defs>
+            <path d={robSvg.area} fill="var(--rob-c)" fill-opacity="0.10" />
+            <path d={robSvg.area} fill="var(--rob-c)" fill-opacity="0.32" clip-path="url(#rob-clip)" />
+            <path d={robSvg.line} fill="none" stroke="var(--rob-c)" stroke-width="2" stroke-linejoin="round" />
+            {robSvg.x100 !== null && (
+              <line x1={robSvg.x100} x2={robSvg.x100} y1="4" y2={robSvg.base}
+                    stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.65" />
+            )}
+            <line x1={robSvg.xval} x2={robSvg.xval} y1="8" y2={robSvg.base}
+                  stroke="var(--dark)" stroke-width="1.8" />
+            <circle cx={robSvg.xval} cy="8" r="3.4" fill="var(--dark)" />
+            <line x1="0" x2={robSvg.W} y1={robSvg.base} y2={robSvg.base}
+                  stroke="var(--bd)" stroke-width="1" />
+          </svg>
+          <div class="cg-rob-ticks">
+            <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x05)}%`}>{coma(rob.p05)}</span>
+            <span class="cg-rob-tick cg-rob-tick--val" style={`left:${robSvg.pct(robSvg.xval)}%`}>{coma(indice.data.valor)}</span>
+            <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x95)}%`}>{coma(rob.p95)}</span>
+            {robSvg.x100 !== null && (
+              <span class="cg-rob-tick cg-rob-tick--ext" style={`left:${robSvg.pct(robSvg.x100)}%`}>100 = 4T-23</span>
+            )}
+          </div>
+          <p class="cg-h2-sub">
+            El {indice.sigla} queda entre <strong>{coma(rob.p05)}</strong> y{" "}
+            <strong>{coma(rob.p95)}</strong> en el 90% de los casos (tensión{" "}
+            {coma(rob.tension_rango[0])}–{coma(rob.tension_rango[1])}): la lectura del
+            cinturón no depende de la ponderación exacta elegida.
+          </p>
         </div>
       </section>
     )}
