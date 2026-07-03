@@ -25,6 +25,15 @@ const filasContexto = filas.filter(({ ind }) => ind.en_indice === false);
 const fuentes = fuentesDeCinturon(c);
 const indice = indiceDe(c);   // ITCM (macro) / ITCG (gestión) o null
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// Gráfico de robustez (ADR-0019): escala del dominio del índice, franja
+// p05-p95 y marcador en el valor publicado. Para índices base-100 (ITVC) el
+// dominio se centra en 100 (la línea base 4T-2023); para 0-100, la escala entera.
+const rob = indice?.data.robustez ?? null;
+const robDom = indice?.base100 ? { min: 70, max: 130 } : { min: 0, max: 100 };
+const robPct = (v: number) =>
+  Math.max(0, Math.min(100, ((v - robDom.min) / (robDom.max - robDom.min)) * 100));
+const coma = (v: number) => String(v).replace(".", ",");
 ---
 <Layout title={`${meta.nombre} · Informe de Coyuntura · CiGob`}>
   <Nav />
@@ -63,15 +72,32 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             </div>
           ))}
         </div>
-        {indice.data.robustez && (
-          <p class="cg-h2-sub" style="margin-top:12px;">
-            <strong>Robustez:</strong> perturbando los pesos ±20%{indice.base100 ? "" : " y los umbrales de banda"}{" "}
-            en {indice.data.robustez.n_draws.toLocaleString("es-AR")} escenarios (Monte Carlo), el {indice.sigla} queda
-            entre <strong>{String(indice.data.robustez.p05).replace(".", ",")}</strong> y{" "}
-            <strong>{String(indice.data.robustez.p95).replace(".", ",")}</strong> en
-            el 90% de los casos (tensión {String(indice.data.robustez.tension_rango[0]).replace(".", ",")}–{String(indice.data.robustez.tension_rango[1]).replace(".", ",")}):
-            la lectura del cinturón no depende de la ponderación exacta elegida.
-          </p>
+        {rob && (
+          <div class={`cg-rob cg-rob--${meta.slug}`}>
+            <div class="cg-rob-head">
+              <span>Robustez del {indice.sigla} · {rob.n_draws.toLocaleString("es-AR")} escenarios Monte Carlo</span>
+              <span>90% de los casos: <strong>{coma(rob.p05)} – {coma(rob.p95)}</strong></span>
+            </div>
+            <div class="cg-rob-track">
+              <div class="cg-rob-range" style={`left:${robPct(rob.p05)}%; width:${robPct(rob.p95) - robPct(rob.p05)}%`}></div>
+              {indice.base100 && <div class="cg-rob-centro" style={`left:${robPct(100)}%`} title="100 = promedio 4T-2023"></div>}
+              <span class="cg-rob-valor" style={`left:${robPct(indice.data.valor)}%`}>{coma(indice.data.valor)}</span>
+              <div class="cg-rob-marker" style={`left:${robPct(indice.data.valor)}%`} title={`Valor publicado: ${coma(indice.data.valor)}`}></div>
+            </div>
+            <div class="cg-rob-ticks">
+              <span class="cg-rob-tick cg-rob-tick--ext" style="left:0; transform:none;">{robDom.min}</span>
+              <span class="cg-rob-tick" style={`left:${robPct(rob.p05)}%`}>{coma(rob.p05)}</span>
+              <span class="cg-rob-tick" style={`left:${robPct(rob.p95)}%`}>{coma(rob.p95)}</span>
+              <span class="cg-rob-tick cg-rob-tick--ext" style="left:100%; transform:translateX(-100%);">{robDom.max}</span>
+            </div>
+            <p class="cg-h2-sub" style="margin-top:6px;">
+              Perturbando los pesos ±20%{indice.base100 ? "" : " y los umbrales de banda"} en{" "}
+              {rob.n_draws.toLocaleString("es-AR")} escenarios, el {indice.sigla} queda entre{" "}
+              <strong>{coma(rob.p05)}</strong> y <strong>{coma(rob.p95)}</strong> en el 90% de los casos
+              (tensión {coma(rob.tension_rango[0])}–{coma(rob.tension_rango[1])}): la lectura del
+              cinturón no depende de la ponderación exacta elegida.
+            </p>
+          </div>
         )}
         {indice.data.ajustes_aplicados.length > 0 && (
           <p class="cg-h2-sub" style="margin-top:12px;">

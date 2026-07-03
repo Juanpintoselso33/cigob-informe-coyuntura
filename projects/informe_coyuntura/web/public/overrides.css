@@ -197,3 +197,46 @@
 .cg-score-map strong { color: var(--muted); }
 .cg-score-note { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
 .cg-score-note strong { color: var(--dark); }
+
+/* ── Robustez del índice (ADR-0019): rango p05-p95 + marcador ─────── */
+.cg-rob { margin: 20px auto 2px; max-width: 580px; }
+.cg-rob-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 12px; font-size: .8rem; color: var(--muted); margin-bottom: 22px;
+}
+.cg-rob-head strong { color: var(--dark); }
+.cg-rob-track {
+    position: relative; height: 12px;
+    background: var(--bd-soft); border-radius: 999px;
+}
+.cg-rob-range {
+    position: absolute; top: 0; bottom: 0; border-radius: 999px;
+    background: color-mix(in srgb, var(--rob-c, var(--teal)) 28%, transparent);
+    border: 1px solid color-mix(in srgb, var(--rob-c, var(--teal)) 65%, transparent);
+}
+.cg-rob-centro {
+    position: absolute; top: -4px; bottom: -4px; width: 2px;
+    background: var(--muted); opacity: .45; border-radius: 1px;
+}
+.cg-rob-marker {
+    position: absolute; top: 50%; width: 15px; height: 15px; border-radius: 50%;
+    background: var(--rob-c, var(--teal)); border: 2.5px solid #fff;
+    box-shadow: 0 1px 5px rgba(0,0,0,.3); transform: translate(-50%, -50%);
+}
+.cg-rob-valor {
+    position: absolute; bottom: 16px; transform: translateX(-50%);
+    font-family: "JetBrains Mono", monospace; font-size: .82rem;
+    font-weight: 700; color: var(--dark); white-space: nowrap;
+}
+.cg-rob-ticks { position: relative; height: 20px; margin-top: 5px; }
+.cg-rob-tick {
+    position: absolute; transform: translateX(-50%);
+    font-family: "JetBrains Mono", monospace; font-size: .7rem; color: var(--muted);
+    white-space: nowrap;
+}
+.cg-rob-tick--ext { opacity: .55; }
+.cg-rob--macro    { --rob-c: var(--c-macro); }
+.cg-rob--politica { --rob-c: var(--c-politica); }
+.cg-rob--vida     { --rob-c: var(--c-vida); }
+.cg-rob--gestion  { --rob-c: var(--c-gestion); }
+.cg-rob--espiritu { --rob-c: var(--c-humor); }
