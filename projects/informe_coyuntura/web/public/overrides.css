@@ -139,20 +139,50 @@
 }
 .cg-dims-hint { margin: 12px 0 0; text-align: center; font-size: 12px; color: var(--muted); }
 
-/* Composición de la dimensión dentro del modal */
-.cg-dimm-list { display: grid; gap: 13px; margin: 6px 0 14px; }
+/* Composición de la dimensión dentro del modal: filas carded con el color
+   del cinturón (acento izquierdo + barra + puntaje). */
+.cg-dimm-list { display: grid; gap: 10px; margin: 6px 0 14px; }
+.cg-dimm-row {
+    padding: 10px 14px; background: var(--paper);
+    border: 1px solid var(--bd); border-left-width: 3px;
+    border-radius: 10px;
+}
 .cg-dimm-top {
     display: flex; justify-content: space-between; align-items: baseline;
-    gap: 10px; margin-bottom: 5px;
+    gap: 10px; margin-bottom: 6px;
 }
 .cg-dimm-name { font-size: 13px; font-weight: 700; color: var(--dark); line-height: 1.35; }
 .cg-dimm-raw { font-weight: 500; color: var(--muted); font-size: 12px; white-space: nowrap; }
 .cg-dimm-val { font-size: 12px; color: var(--muted); white-space: nowrap; }
 .cg-dimm-val strong {
     font-family: 'JetBrains Mono', monospace; font-size: 15px;
-    color: var(--dark); font-weight: 700;
+    font-weight: 700;
 }
-.cg-dimm-aj { margin: 4px 0 0; font-size: 11.5px; color: #7F1D1D; }
+.cg-dimm-aj { margin: 5px 0 0; font-size: 11.5px; color: #7F1D1D; }
+
+.cg-dimm--macro    .cg-dimm-row { border-left-color: var(--c-macro); }
+.cg-dimm--politica .cg-dimm-row { border-left-color: var(--c-politica); }
+.cg-dimm--vida     .cg-dimm-row { border-left-color: var(--c-vida); }
+.cg-dimm--gestion  .cg-dimm-row { border-left-color: var(--c-gestion); }
+.cg-dimm--espiritu .cg-dimm-row { border-left-color: var(--c-humor); }
+
+.cg-dimm--macro    .cg-bar-fill { background: var(--c-macro); }
+.cg-dimm--politica .cg-bar-fill { background: var(--c-politica); }
+.cg-dimm--vida     .cg-bar-fill { background: var(--c-vida); }
+.cg-dimm--gestion  .cg-bar-fill { background: var(--c-gestion); }
+.cg-dimm--espiritu .cg-bar-fill { background: var(--c-humor); }
+
+.cg-dimm--macro    .cg-bar { background: color-mix(in srgb, var(--c-macro) 10%, #fff); }
+.cg-dimm--politica .cg-bar { background: color-mix(in srgb, var(--c-politica) 10%, #fff); }
+.cg-dimm--vida     .cg-bar { background: color-mix(in srgb, var(--c-vida) 10%, #fff); }
+.cg-dimm--gestion  .cg-bar { background: color-mix(in srgb, var(--c-gestion) 10%, #fff); }
+.cg-dimm--espiritu .cg-bar { background: color-mix(in srgb, var(--c-humor) 10%, #fff); }
+
+.cg-dimm--macro    .cg-dimm-val strong { color: var(--c-macro); }
+.cg-dimm--politica .cg-dimm-val strong { color: var(--c-politica); }
+.cg-dimm--vida     .cg-dimm-val strong { color: var(--c-vida); }
+.cg-dimm--gestion  .cg-dimm-val strong { color: var(--c-gestion); }
+.cg-dimm--espiritu .cg-dimm-val strong { color: var(--c-humor); }
 
 /* Fórmula "Cómo se construye" del modal (KaTeX) */
 .cg-modal-formula {

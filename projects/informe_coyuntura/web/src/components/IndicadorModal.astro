@@ -331,7 +331,7 @@ const dimsJson = JSON.stringify(dims);
       const ajTxt = d.ajustes.map(a => esc(a.justificacion)).join(" · ");
       document.getElementById("cg-modal-score").innerHTML =
         `<h4 class="cg-modal-h4">Composición de la dimensión</h4>` +
-        `<div class="cg-dimm-list">${filas}</div>` +
+        `<div class="cg-dimm-list cg-dimm--${esc(d.slug)}">${filas}</div>` +
         (ajTxt ? `<p class="cg-score-map"><strong>Justificación del ajuste:</strong> ${ajTxt}</p>` : "") +
         `<p class="cg-score-note">El puntaje de la dimensión es la suma ponderada de los puntajes ` +
         `interpolados de sus indicadores (pesos internos de la paramétrica; si un indicador se queda sin ` +
