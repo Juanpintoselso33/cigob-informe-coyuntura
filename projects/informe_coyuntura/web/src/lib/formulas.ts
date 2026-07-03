@@ -114,8 +114,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Ejecución presupuestaria real (partida 5.1.4 sobre el total) de los programas sucesores del Potenciar: qué proporción de la asistencia llega sin intermediarios (ADR-0015).",
   },
   protocolo_antipiquetes: {
-    latex: String.raw`\left(1-\frac{\text{cortes de calle}_{\text{hoy}}}{\text{cortes de calle}_{2023}}\right)\times 100`,
-    leyenda: "Reducción porcentual de cortes contra el promedio 2023. 100 = cero cortes; 0 = igual que 2023.",
+    latex: String.raw`\left(1-\frac{\text{cortes en CABA, \'ultimo a\~no}}{\text{cortes en CABA en 2023}}\right)\times 100`,
+    leyenda: "Reducción porcentual de cortes contra 2023, con los anclajes anuales públicos de Diagnóstico Político (2023: 931 · 2025: 240). 100 = cero cortes; 0 = igual que 2023.",
   },
   libertad_opcion_salud: {
     latex: String.raw`\frac{\text{usuarios con aporte directo a su prepaga}}{\text{usuarios de prepagas}}\times 100`,

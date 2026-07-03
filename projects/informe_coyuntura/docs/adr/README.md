@@ -37,6 +37,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0022](0022-credito-real-y-contexto-oculto.md) | Crédito privado REAL i.a. entra al ITCM (financiamiento 45/40/15: la señal de crédito realizado, complementa al IdC) y los 4 monetarios nominales quedan ocultos del snapshot pero vivos en la pipeline (insumos de IdC/IDM/TCRM) | Aceptado |
 | [0023](0023-litigiosidad-al-itcg.md) | Litigiosidad SRT entra al ITCG (reforma laboral 70/30: instrumento Fondo de Cese + resultado juicios — la dimensión ya no descansa en un único indicador); protestas ACLED y alertas GTFS-RT siguen de contexto con razones documentadas | Aceptado |
 | [0024](0024-motos-movil-12m-estacionalidad.md) | Auditoría de estacionalidad: casi todo cubierto por construcción (interanuales, ventanas 12m, fuentes desestacionalizadas); la excepción real era motos (enero ≈ 2× junio) → rebase por acumulado móvil 12m (motos 175,9 → 166,7; ITVC 92,0) | Aceptado |
+| [0025](0025-protocolo-diagnostico-politico.md) | Protocolo antipiquetes AUTOMATIZADO con los anclajes anuales públicos de Diagnóstico Político (hitos curados + detector de informes nuevos) y CORREGIDO: 55% era la foto 2024/nacional — el IRPC de CABA con 2025 cerrado es 74,2% (240 vs 931 cortes); gestión queda sin indicadores manuales | Aceptado |
 
 ## Contexto general
 

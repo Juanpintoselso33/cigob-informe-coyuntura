@@ -281,9 +281,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Avance de reforma",
   },
   protocolo_antipiquetes: {
-    que: "En qué porcentaje se redujeron los cortes de calle por manifestación en CABA respecto del promedio 2023 (el distrito donde actúan las fuerzas federales y aplica el protocolo).",
-    aporta: "Mide el restablecimiento del orden público que prometió el Gobierno, donde le es atribuible. Advertencia de primer orden: el protocolo fue anulado judicialmente (29-dic-2025, en apelación) — una caída de cortes posterior ya no es atribuible al instrumento.",
-    frecuencia: "Mensual", tipo: "Variación vs. base 2023",
+    que: "En qué porcentaje se redujeron los cortes de calle por manifestación en CABA respecto de 2023 (el distrito donde actúan las fuerzas federales y aplica el protocolo).",
+    aporta: "Mide el restablecimiento del orden público que prometió el Gobierno, donde le es atribuible. Fuente: los monitoreos públicos de Diagnóstico Político (relevamiento diario sobre más de 100 medios desde 2009), cuya definición de piquete coincide con la de la Res. 943/23. La validez del instrumento fue confirmada judicialmente: la Cámara revocó en marzo de 2026 la nulidad de primera instancia.",
+    frecuencia: "Anual (informes públicos de DP)", tipo: "Variación vs. base 2023",
   },
   litigiosidad_laboral: {
     que: "Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.",

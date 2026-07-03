@@ -50,10 +50,10 @@
     "fecha_dato": "2026-06-30"
   },
   "protocolo_antipiquetes": {
-    "valor": 55,
-    "unidad": "% de reducción de cortes por manifestación en CABA vs promedio 2023",
+    "valor": 74.2,
+    "unidad": "% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)",
     "estado": "estimado",
-    "fuente": "Diagnóstico Político (vía doc CIGOB 260702) — CABA",
+    "fuente": "Diagnóstico Político — FALLBACK del colector automático (dp_piquetes.json)",
     "notas": "CABA: caída superior al 50% en 2024 sostenida en 2025 (240 cortes, 6,2% del total nacional vs 11,3% en 2023). ESTADO JUDICIAL (verificado 03-jul-2026): la nulidad de 1ª instancia (29-dic-2025, amparo CELS, juez Cormick) tuvo apelación con efecto suspensivo inmediato y fue REVOCADA por la Sala III de la Cámara Cont. Adm. Federal el 31-mar-2026 (jueces Fernández y Morán): el protocolo es un acto válido y plenamente vigente — no corresponde override en ajustes_itcg mientras no haya revés en la Corte. AUTOMATIZACIÓN (barrida 03-jul-2026): sin fuente automática con base 2023 — registro GCBA muerto, Min. Seguridad no publica dataset, ACLED nivel Open sin API de eventos. Vías (sistema myACLED verificado 03-jul-2026; nivel por DOMINIO de mail): la cuenta juan@ott.law es OPEN = solo agregados, sin API (403 verificado con OAuth ok: POST acleddata.com/oauth/token grant_type=password client_id=acled scope=authenticated → Bearer; GET acleddata.com/api/acled/read admin1='Ciudad Autonoma de Buenos Aires' + event_date BETWEEN + filtro notes corte/bloqueo/piquete/roadblock — cableado listo). (1) Mail UBA → nivel RESEARCH gratis: API + eventos con REZAGO 12 MESES → sirve para baseline 2023 real y validar el 55% manual, NO para el numerador vivo. (2) Nivel PARTNER (eventos semanales) → IRPC 100% automático; gestión institucional de CIGOB ante access@acleddata.com. (3) GTFS-RT madurando (yoy propio en 12 meses). OJO: mail y organización NO editables (org quedó registrada como 'Juan'); la CATEGORÍA sí — cambiada de Unaffiliated a ACADEMIC el 03-jul-2026 (guardado ok, nivel siguió Open en caliente; posible re-evaluación asíncrona del Access Team — re-testear la API de eventos cada tanto). Caminos deterministas: cuenta nueva mail UBA (Research) o mail a access@acleddata.com pidiendo corregir org y re-evaluar.json si corresponde bajar el puntaje. Automatización EN CURSO: el poller GTFS-RT (alertas_manifestacion) acumula serie propia desde jul-2026 (ADR-0014); el registro histórico oficial del GCBA está muerto.",
     "fecha_dato": "2026-06-30"
   },

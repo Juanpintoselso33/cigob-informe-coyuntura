@@ -37,7 +37,9 @@ Indicadores AUTO (16): cepo_mulc, apertura_comercial, desregulacion_normativa,
   rigi_inversiones, concesiones_infraestructura, asistencia_directa (TDPS),
   libertad_opcion_salud, alertas_manifestacion (contexto),
   protestas_caba (contexto, ACLED).
-Indicador manual (1, en manuales.json): protocolo_antipiquetes.
+Indicadores manuales: 0 — protocolo_antipiquetes se automatizó con los
+anclajes públicos de Diagnóstico Político (ADR-0025); manuales.json queda
+solo como fallback.
 
 Nota INDEC www: el WAF de indec.gob.ar resetea el handshake TLS de Python
 (fingerprinting del ClientHello); el fetch del XLSX cae a curl como fallback.
@@ -1449,6 +1451,58 @@ def fetch_libertad_opcion_salud() -> dict | None:
         return None
 
 
+# ── D5: protocolo antipiquetes — Diagnóstico Político (ADR-0025) ──────────────
+
+DP_PIQUETES_PATH = PROJECT_DIR / "data" / "gestion" / "dp_piquetes.json"
+DP_MONITOREOS_URL = "https://diagnosticopolitico.com.ar/monitoreos-politicos"
+
+
+def fetch_protocolo_antipiquetes() -> dict | None:
+    """
+    IRPC automático (ADR-0025): reducción % de cortes en CABA vs 2023, con los
+    anclajes ANUALES PÚBLICOS de Diagnóstico Político (la misma consultora que
+    citaba la estimación manual; su definición de piquete coincide con la Res.
+    943/23). Anclajes curados con fuente en data/gestion/dp_piquetes.json —
+    mismo patrón de hitos fechados que privatizaciones/concesiones. Además
+    scrapea la página pública de monitoreos como DETECTOR: si aparece un año
+    nuevo, avisa para actualizar el store. Corrigió la subcalibración del
+    valor manual (55% era la foto 2024; con 2025 cerrado el IRPC CABA es 74%).
+    """
+    try:
+        dp = json.loads(DP_PIQUETES_PATH.read_text(encoding="utf-8-sig"))
+        caba = {int(k): int(v) for k, v in dp["caba"].items()}
+        base = caba[2023]
+        ult = max(caba)
+        irpc = round((1.0 - caba[ult] / base) * 100.0, 1)
+
+        # Detector de informes nuevos (no fatal): años nacionales publicados
+        # posteriores al último ancla del store.
+        try:
+            r = requests.get(DP_MONITOREOS_URL, headers=HTTP_HEADERS, timeout=30)
+            r.raise_for_status()
+            anios = {int(a) for a in re.findall(r"piquetes en (20\d{2})", r.text)}
+            nuevos = sorted(a for a in anios if a > ult)
+            if nuevos:
+                print(f"  [AVISO] Diagnóstico Político publicó datos de {nuevos}: "
+                      f"actualizar data/gestion/dp_piquetes.json")
+        except Exception:
+            pass
+
+        return {
+            "valor":          irpc,
+            "unidad":         "% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)",
+            "fuente":         "Diagnóstico Político — monitoreos públicos de piquetes",
+            "fecha_dato":     f"{ult}-12-31",
+            "desactualizado": False,
+            "componentes":    {"caba_2023": base, f"caba_{ult}": caba[ult]},
+            "detalle_txt":    (f"{caba[ult]} cortes en CABA en {ult} vs {base} en 2023 "
+                               f"(Diagnóstico Político; definición de piquete = Res. 943/23)"),
+        }
+    except Exception as e:
+        _warn("protocolo_antipiquetes", e)
+        return None
+
+
 # ── D5 (contexto): protestas en CABA — ACLED (ADR-0017) ───────────────────────
 # ACLED (acleddata.com) publica para miembros un agregado SEMANAL × provincia ×
 # tipo de evento (archivo XLSX regional, actualizado semanalmente). El nivel
@@ -1656,6 +1710,7 @@ def main() -> None:
         "rigi_inversiones":             fetch_rigi_inversiones,
         "concesiones_infraestructura":  fetch_concesiones_infraestructura,
         "asistencia_directa":           fetch_asistencia_directa,
+        "protocolo_antipiquetes":       fetch_protocolo_antipiquetes,
         "libertad_opcion_salud":        fetch_libertad_opcion_salud,
         "alertas_manifestacion":        fetch_alertas_manifestacion,
         "protestas_caba":               fetch_protestas_caba,

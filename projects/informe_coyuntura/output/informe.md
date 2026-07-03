@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-03 18:10:41"
-score_global: 3.6
+generado: "2026-07-03 18:48:29"
+score_global: 3.5
 barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 3.6/10  |  **Riesgo dominante:** político
+**Score global:** 3.5/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
@@ -59,7 +59,7 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
 
-### 🟢 Gestion — score 2.8/10 (estable)
+### 🟢 Gestion — score 2.7/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -77,7 +77,7 @@ schema_version: "1.2.0"
 | rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-03 | fresco |
 | concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-07-03 | fresco |
 | asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-07-03 | fresco |
-| protocolo_antipiquetes | 55 | % de reducción de cortes por manifestación en CABA vs promedio 2023 | 2026-06-30 | ⚠ cache |
+| protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 31.8 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-03-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-03 | fresco |
 | protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
@@ -94,7 +94,6 @@ schema_version: "1.2.0"
 ## Advertencias
 
 - `desactualizado:politica:cohesion_bloque,gobernadores_alineamiento`
-- `desactualizado:gestion:protocolo_antipiquetes`
 
 ---
-*Generado por CIGOB — 2026-07-03 18:10:41 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-03 18:48:29 — schema 1.2.0*

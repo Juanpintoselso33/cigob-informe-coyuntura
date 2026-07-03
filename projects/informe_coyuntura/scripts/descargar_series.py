@@ -1269,7 +1269,32 @@ def fetch_icg_serie() -> list:
     return sorted([f, v] for f, v in out.items())
 
 
+def fetch_protocolo_serie() -> list:
+    """Serie del IRPC (reducción de cortes CABA vs 2023) por escalones ANUALES
+    de los anclajes públicos de Diagnóstico Político (ADR-0025): cada año
+    cerrado aporta su IRPC y el valor se arrastra mes a mes hasta el siguiente
+    (regla del último dato disponible). [[YYYY-MM-01, %]]."""
+    dp = json.loads((Path(__file__).resolve().parents[1] / "data" / "gestion" /
+                     "dp_piquetes.json").read_text(encoding="utf-8-sig"))
+    caba = {int(k): int(v) for k, v in dp["caba"].items()}
+    base = caba[2023]
+    hoy = date.today()
+    fin = hoy.replace(day=1) - timedelta(days=1)
+    out = []
+    y, m = 2024, 1
+    while (y, m) <= (fin.year, fin.month):
+        anio_dato = y if y in caba else max(a for a in caba if 2023 < a <= y)
+        irpc = round((1.0 - caba[anio_dato] / base) * 100.0, 1)
+        out.append([f"{y}-{m:02d}-01", irpc])
+        m += 1
+        if m > 12:
+            m, y = 1, y + 1
+    return out
+
+
 GESTION_DERIVADAS = [
+    ("protocolo_antipiquetes", "% reducción de cortes CABA vs 2023 (IRPC, anual)",
+     "Diagnóstico Político (monitoreos públicos)", fetch_protocolo_serie),
     ("icg_utdt", "índice 0-5 (confianza en el gobierno)", "UTDT (ICG, serie XLS)", fetch_icg_serie),
     ("apertura_comercial", "% alícuota efectiva del comercio exterior", "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500", fetch_alicuota_serie),
     ("concesiones_infraestructura", "% km adjudicados RFC", "CONTRAT.AR + RFC (hitos fechados)", fetch_concesiones_serie),

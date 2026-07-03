@@ -1,9 +1,9 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-03T18:10:40.931442",
-  "score": 2.8,
+  "generated_at": "2026-07-03T18:47:19.423303",
+  "score": 2.7,
   "itcg": {
-    "valor": 72.0,
+    "valor": 72.8,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -126,7 +126,7 @@
       "social_orden": {
         "nombre": "Reforma social y orden",
         "peso": 0.1,
-        "puntaje": 82.6,
+        "puntaje": 90.6,
         "indicadores": {
           "asistencia_directa": {
             "peso": 0.4,
@@ -137,9 +137,9 @@
           },
           "protocolo_antipiquetes": {
             "peso": 0.4,
-            "puntaje_banda": 79.0,
-            "puntaje_aplicado": 79.0,
-            "valor": 55.0,
+            "puntaje_banda": 99.0,
+            "puntaje_aplicado": 99.0,
+            "valor": 74.2,
             "peso_efectivo": 0.04
           },
           "libertad_opcion_salud": {
@@ -368,17 +368,20 @@
       "peso_efectivo": 0.04
     },
     "protocolo_antipiquetes": {
-      "valor": 55,
-      "unidad": "% de reducción de cortes por manifestación en CABA vs promedio 2023",
-      "fuente": "Diagnóstico Político (vía doc CIGOB 260702) — CABA",
-      "fecha_dato": "2026-06-30",
-      "estado": "estimado",
-      "notas": "CABA: caída superior al 50% en 2024 sostenida en 2025 (240 cortes, 6,2% del total nacional vs 11,3% en 2023). ADVERTENCIA DE PRIMER ORDEN: protocolo anulado judicialmente el 29-dic-2025 (amparo CELS, juez Cormick), en apelación — la caída posterior ya no es atribuible al instrumento; usar ajustes_itcg.json si corresponde bajar el puntaje. Automatización EN CURSO: el poller GTFS-RT (alertas_manifestacion) acumula serie propia desde jul-2026 (ADR-0014); el registro histórico oficial del GCBA está muerto.",
-      "desactualizado": true,
+      "valor": 74.2,
+      "unidad": "% de reducción de cortes por manifestación en CABA vs 2023 (IRPC)",
+      "fuente": "Diagnóstico Político — monitoreos públicos de piquetes",
+      "fecha_dato": "2025-12-31",
+      "desactualizado": false,
+      "componentes": {
+        "caba_2023": 931,
+        "caba_2025": 240
+      },
+      "detalle_txt": "240 cortes en CABA en 2025 vs 931 en 2023 (Diagnóstico Político; definición de piquete = Res. 943/23)",
       "en_indice": true,
       "dimension": "social_orden",
-      "puntaje_itcg": 79.0,
-      "puntaje_banda": 79.0,
+      "puntaje_itcg": 99.0,
+      "puntaje_banda": 99.0,
       "peso_efectivo": 0.04
     },
     "libertad_opcion_salud": {

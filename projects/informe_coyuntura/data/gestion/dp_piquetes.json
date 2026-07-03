@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "fuente": "Diagnóstico Político — monitoreo de piquetes (relevamiento diario sobre 100+ medios, serie desde 2009); su definición de piquete (toda interrupción total o parcial de una vía pública en protesta) coincide con la de la Res. 943/23",
+    "fuentes_publicas": [
+      "https://diagnosticopolitico.com.ar/monitoreos-politicos",
+      "https://www.lanacion.com.ar/politica/los-piquetes-se-redujeron-mas-del-527-desde-que-asumio-milei-hay-menos-protestas-de-las-nid13012026",
+      "https://chequeado.com/ultimas-noticias/javier-milei-en-la-apertura-de-sesiones-2026-hemos-terminado-con-los-piquetes-de-una-vez-por-todas-los-cuales-pasaron-de-9-mil-por-ano-a-0",
+      "https://hoydia.com.ar/sociedad/los-piquetes-cayeron-527-desde-la-asuncion-de-milei-segun-informe"
+    ],
+    "actualizado": "2026-07-03",
+    "nota": "caba_2023 derivado del share publicado (11,3% de 8.239 = 931); caba_2024 = 440 (los informes citan '240 en 2025, 200 menos que en 2024'); caba_2025 = 240 directo (6,2% de 3.893). Los reportes mensuales detallados de DP son por suscripción (info@diagnosticopolitico.com.ar): estos anclajes salen de sus publicaciones anuales públicas y de la prensa que las replica."
+  },
+  "nacional": { "2023": 8239, "2024": 5996, "2025": 3893 },
+  "caba": { "2023": 931, "2024": 440, "2025": 240 }
+}
