@@ -38,6 +38,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0023](0023-litigiosidad-al-itcg.md) | Litigiosidad SRT entra al ITCG (reforma laboral 70/30: instrumento Fondo de Cese + resultado juicios — la dimensión ya no descansa en un único indicador); protestas ACLED y alertas GTFS-RT siguen de contexto con razones documentadas | Aceptado |
 | [0024](0024-motos-movil-12m-estacionalidad.md) | Auditoría de estacionalidad: casi todo cubierto por construcción (interanuales, ventanas 12m, fuentes desestacionalizadas); la excepción real era motos (enero ≈ 2× junio) → rebase por acumulado móvil 12m (motos 175,9 → 166,7; ITVC 92,0) | Aceptado |
 | [0025](0025-protocolo-diagnostico-politico.md) | Protocolo antipiquetes AUTOMATIZADO con los anclajes anuales públicos de Diagnóstico Político (hitos curados + detector de informes nuevos) y CORREGIDO: 55% era la foto 2024/nacional — el IRPC de CABA con 2025 cerrado es 74,2% (240 vs 931 cortes); gestión queda sin indicadores manuales | Aceptado |
+| [0026](0026-irpc-mensual-gdelt.md) | Mensualización del IRPC vía GDELT (forma mensual × anclajes DP): RECHAZADO por ahora — la DOC API estranguló con 429 persistente y la señal no pudo validarse; la vía mensual queda por suscripción DP o GTFS-RT al madurar (condiciones de reapertura documentadas) | Rechazado |
 
 ## Contexto general
 
