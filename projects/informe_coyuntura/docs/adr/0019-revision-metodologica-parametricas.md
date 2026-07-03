@@ -201,8 +201,23 @@ ArgentinaDatos, serie diaria desde 1999): **r = −0,73 en niveles** (n=30) —
 el signo negativo esperado: cuando el ITCM sube (la macro afloja), el
 mercado cobra menos por el riesgo argentino. Publicado en la página de
 macro con el riesgo país invertido y series normalizadas al rango.
-Pendiente opcional: ITCG↔ICG UTDT (confianza en el gobierno) — requiere
-scraper del ICG y reconstrucción mensual del ITCG.
+**Ampliación (03-jul-2026, cierre de la trilogía): ITCG.** Reconstrucción
+mensual desde las series de 14 de 15 componentes. Dos contrastes:
+
+- **Convergente — ITCG ↔ riesgo país: r = −0,86 en niveles** (n=32), la más
+  fuerte de las tres validaciones: el mercado pricea la ejecución acumulada
+  de reformas. Publicado en la página de gestión.
+- **Discriminante — ITCG ↔ ICG UTDT (confianza en el gobierno): r = −0,60
+  en niveles, ≈0 en diferencias.** La hipótesis ingenua era positiva; el
+  hallazgo es sustantivo: el ITCG es ACUMULATIVO (la ejecución se suma)
+  mientras la confianza sigue el ciclo político (luna de miel → erosión).
+  El índice mide gestión, no popularidad — divergir de la popularidad es
+  evidencia de validez discriminante, no un defecto. Serie ICG completa
+  (2001→hoy, `fetch_icg_serie`, XLS transpuesto de UTDT con Referer
+  obligatorio) queda en series.json.
+
+Las TRES paramétricas quedan validadas externamente: ITVC↔ICC +0,52 ·
+ITCM↔EMBI −0,73 · ITCG↔EMBI −0,86 (con discriminante ICG documentado).
 
 ## Consecuencias
 

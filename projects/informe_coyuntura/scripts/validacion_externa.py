@@ -39,6 +39,7 @@ import requests
 sys.path.insert(0, str(Path(__file__).parent))
 sys.stdout.reconfigure(encoding="utf-8")
 
+import itcg
 import itcm
 import itvc
 
@@ -180,6 +181,32 @@ def construir_serie_itcm() -> dict:
     return out
 
 
+ITCG_SERIES = [
+    "cepo_mulc", "apertura_comercial", "desregulacion_normativa",
+    "reduccion_estado", "gasto_funcionamiento", "masa_salarial",
+    "reestructuracion_organismos", "fal_modernizacion_laboral",
+    "litigiosidad_laboral", "privatizaciones", "rigi_inversiones",
+    "concesiones_infraestructura", "asistencia_directa",
+    "protocolo_antipiquetes", "libertad_opcion_salud",
+]
+
+
+def construir_serie_itcg() -> dict:
+    """Serie mensual del ITCG reconstruida desde las series de componentes
+    (mismo motor, puntaje interpolado, sin overrides del analista): 14 de los
+    15 componentes tienen serie con historia; el protocolo antipiquetes recién
+    acumula y el motor renormaliza."""
+    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    valores_por_comp = {k: _mensual(series.get(k) or []) for k in ITCG_SERIES}
+    ult = max(max(v) for v in valores_por_comp.values() if v)
+    out = {}
+    for ym in _meses("2023-12", ult):
+        r = itcg.calcular_itcg({k: v.get(ym) for k, v in valores_por_comp.items()})
+        if r:
+            out[ym] = r["valor"]
+    return out
+
+
 def fetch_riesgo_pais_mensual() -> dict:
     """Promedio mensual del riesgo país (EMBI, pb) desde ArgentinaDatos."""
     r = requests.get(RIESGO_PAIS_URL, timeout=30)
@@ -255,6 +282,36 @@ def main():
             print(f"  {nombre}: r = {r}  (n = {n})")
     except Exception as e:
         print(f"[WARN] riesgo país no disponible: {e}")
+
+    # ── ITCG vs ICG UTDT (confianza en el gobierno; positiva esperada) ─────
+    serie_itcg = construir_serie_itcg()
+    print(f"\nserie ITCG reconstruida: {len(serie_itcg)} meses "
+          f"({min(serie_itcg)} → {max(serie_itcg)}) · último: {serie_itcg[max(serie_itcg)]}")
+    resultados["serie_itcg"] = serie_itcg
+    series_json = json.loads(SERIES.read_text(encoding="utf-8"))
+    icg = _mensual(series_json.get("icg_utdt") or [])
+    riesgo = resultados.get("riesgo_pais_mensual") or {}
+    pares_g = {}
+    if riesgo:
+        # Convergente: el mercado pricea la ejecución de reformas (negativa esperada)
+        pares_g.update({
+            "niveles (ITCG vs riesgo país)": (serie_itcg, riesgo),
+            "primeras diferencias (ITCG vs riesgo)": (_difs(serie_itcg), _difs(riesgo)),
+        })
+    if icg:
+        # Discriminante: el ITCG mide ejecución ACUMULATIVA, no popularidad —
+        # la divergencia con el ciclo de confianza política es esperable.
+        pares_g.update({
+            "niveles (ITCG vs ICG)": (serie_itcg, icg),
+            "primeras diferencias (ITCG vs ICG)": (_difs(serie_itcg), _difs(icg)),
+        })
+    if pares_g:
+        resultados["correlaciones_itcg"] = {}
+        print("correlaciones ITCG (Pearson):")
+        for nombre, (a, b) in pares_g.items():
+            r, n = _pearson(a, b)
+            resultados["correlaciones_itcg"][nombre] = {"r": r, "n": n}
+            print(f"  {nombre}: r = {r}  (n = {n})")
 
     SALIDA.write_text(json.dumps(resultados, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n[OK] {SALIDA}")

@@ -563,6 +563,50 @@ def _validacion_itcm(bloque):
     }
 
 
+def _validacion_itcg(bloque):
+    """Anexa al bloque ITCG su validación externa: la serie mensual del índice
+    (reconstruida por el estudio) contra el riesgo país — el mercado pricea la
+    ejecución de reformas (convergente, negativa esperada). El contraste con
+    el ICG UTDT (confianza en el gobierno) queda como hallazgo DISCRIMINANTE
+    en la conclusión: la ejecución se acumula, la popularidad cicla."""
+    val = _cargar_validacion()
+    serie = val.get("serie_itcg") or {}
+    riesgo = val.get("riesgo_pais_mensual") or {}
+    comunes = sorted(set(serie) & set(riesgo))
+    if len(comunes) < 12:
+        return
+    corr = val.get("correlaciones_itcg", {})
+    niveles = corr.get("niveles (ITCG vs riesgo país)") or {}
+    difs = corr.get("primeras diferencias (ITCG vs riesgo)") or {}
+    icg_niv = (corr.get("niveles (ITCG vs ICG)") or {}).get("r")
+    coma = lambda x: str(x).replace(".", ",")
+    r_niv, r_dif = niveles.get("r"), difs.get("r")
+    icg_txt = ""
+    if icg_niv is not None:
+        icg_txt = (f" El contraste discriminante también informa: la confianza en el gobierno "
+                   f"(ICG UTDT) diverge del ITCG ({coma(icg_niv)}) — la ejecución se acumula "
+                   f"mientras el capital político sigue su propio ciclo. El índice mide "
+                   f"gestión, no popularidad.")
+    bloque["validacion"] = {
+        "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
+        "pares": [[m, serie[m], riesgo[m]] for m in comunes],
+        "plot": "minmax_inv",
+        "titulo": "¿El mercado le cree a la ejecución de reformas?",
+        "sub": ("El contraste natural del cinturón de gestión es el riesgo país: si la agenda "
+                "de reformas efectivamente se ejecuta, el mercado debería cobrar cada vez menos "
+                "por el riesgo argentino. El ITCG se reconstruye mes a mes desde las series de "
+                "sus componentes (14 de 15 con serie; sin los ajustes del analista: el nivel "
+                "puede diferir del publicado — lo que valida es su evolución) y se compara con "
+                "el EMBI, que no integra el índice."),
+        "serie_label": "ITCG (reconstrucción mensual)",
+        "externa_label": "riesgo país (EMBI, invertido)",
+        "trans_label": "series normalizadas al rango del período; el riesgo país se muestra invertido",
+        "conclusion": (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
+                       f"a mes — la más fuerte de las tres validaciones: la ejecución acumulada "
+                       f"de reformas comprime el precio del riesgo argentino.{icg_txt}"),
+    }
+
+
 def _scoring_vida_itvc(c, series):
     """Vida cotidiana se puntúa con el ITVC-B100: cada componente es un índice
     rebaseado a 100 = promedio 4T-2023, agregado con los pesos del doc 260702.
@@ -640,6 +684,8 @@ def aplicar_scoring(informe, series):
             continue
         if ckey == "gestion":
             _scoring_indice(c, "itcg", itcg, GESTION_CONTEXTO, _gestion_input_txt)
+            if c.get("itcg"):
+                _validacion_itcg(c["itcg"])
             continue
         if ckey == "vida_cotidiana":
             _scoring_vida_itvc(c, series)

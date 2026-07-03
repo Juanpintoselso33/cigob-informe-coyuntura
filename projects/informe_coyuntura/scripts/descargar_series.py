@@ -1200,7 +1200,47 @@ def fetch_fal_serie() -> list:
     return out
 
 
+UTDT_ICG_LISTADO = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=28756"
+UTDT_ICG_REFERER = "https://www.utdt.edu/ver_contenido.php?id_contenido=1351&id_item_menu=2970"
+
+
+def fetch_icg_serie() -> list:
+    """Serie mensual del ICG UTDT (Índice de Confianza en el Gobierno, 0-5) —
+    insumo de la validación externa del ITCG (no es indicador del cinturón).
+    El XLS oficial viene TRANSPUESTO (fechas en columnas): en cada hoja se
+    busca la fila de fechas y la fila rotulada ICG. El listado de descargas
+    exige Referer (sin él devuelve vacío). [[YYYY-MM-01, índice]]."""
+    import xlrd
+    h = dict(HTTP_HEADERS, Referer=UTDT_ICG_REFERER)
+    r = requests.get(UTDT_ICG_LISTADO, headers=h, timeout=HTTP_TIMEOUT, verify=False)
+    r.raise_for_status()
+    m = re.search(r"download\.php\?fname=([^\"'\s>]+\.xls)\b", r.text, re.IGNORECASE)
+    if not m:
+        raise ValueError("listado ICG sin XLS (¿cambió la página o falta Referer?)")
+    r = requests.get(f"https://www.utdt.edu/download.php?fname={m.group(1)}",
+                     headers=h, timeout=60, verify=False)
+    r.raise_for_status()
+    wb = xlrd.open_workbook(file_contents=r.content)
+    out = {}
+    for ws in wb.sheets():
+        fila_fechas = next((i for i in range(ws.nrows)
+                            if sum(1 for j in range(ws.ncols)
+                                   if ws.cell(i, j).ctype == xlrd.XL_CELL_DATE) >= 5), None)
+        if fila_fechas is None:
+            continue
+        fila_icg = next((i for i in range(fila_fechas + 1, min(fila_fechas + 4, ws.nrows))
+                         if "icg" in str(ws.cell(i, 1).value).lower()
+                         or "icg" in str(ws.cell(i, 0).value).lower()), fila_fechas + 1)
+        for j in range(ws.ncols):
+            fc, vc = ws.cell(fila_fechas, j), ws.cell(fila_icg, j)
+            if fc.ctype == xlrd.XL_CELL_DATE and vc.ctype == xlrd.XL_CELL_NUMBER:
+                t = xlrd.xldate_as_tuple(fc.value, wb.datemode)
+                out[f"{t[0]}-{t[1]:02d}-01"] = round(float(vc.value), 3)
+    return sorted([f, v] for f, v in out.items())
+
+
 GESTION_DERIVADAS = [
+    ("icg_utdt", "índice 0-5 (confianza en el gobierno)", "UTDT (ICG, serie XLS)", fetch_icg_serie),
     ("apertura_comercial", "% alícuota efectiva del comercio exterior", "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500", fetch_alicuota_serie),
     ("concesiones_infraestructura", "% km adjudicados RFC", "CONTRAT.AR + RFC (hitos fechados)", fetch_concesiones_serie),
     ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),
