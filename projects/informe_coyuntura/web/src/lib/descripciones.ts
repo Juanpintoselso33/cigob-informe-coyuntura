@@ -246,9 +246,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   apertura_comercial: {
-    que: "El Índice de Libertad Comercial Efectiva (ILCE, 0–100): cuán libre, barato y predecible es operar el comercio exterior. Combina la brecha cambiaria inversa (la madre de todas las restricciones) y la alícuota efectiva (recaudación de derechos de importación y exportación sobre el intercambio total del ICA).",
-    aporta: "No mide cuántos dólares entran o salen (eso puede ser una buena cosecha): mide si el Estado desmantela los parches regulatorios y cambiarios que encarecen el comercio. Lectura: >90 economía integrada · 70–90 apertura condicionada · <70 economía reprimida.",
-    frecuencia: "Mensual", tipo: "Índice (0–100)",
+    que: "La alícuota efectiva del comercio exterior: cuántos impuestos (derechos de importación + exportación, ARCA) paga en promedio cada dólar de intercambio (expo+impo del ICA). 0% = comercio libre de fricción arancelaria; 15% o más = cierre de hecho.",
+    aporta: "No mide cuántos dólares entran o salen (eso puede ser una buena cosecha): mide si el Estado desmantela la fricción impositiva que encarece el comercio. La brecha cambiaria puntúa aparte (en su propio indicador) — hasta jul-2026 este índice la incluía y la contaba dos veces (corregido, ADR-0021).",
+    frecuencia: "Mensual", tipo: "Nivel (%)",
   },
   gasto_funcionamiento: {
     que: "Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023.",

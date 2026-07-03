@@ -1039,14 +1039,11 @@ def fetch_litigiosidad_serie() -> list:
     return out[-60:]   # últimos 5 años (la serie arranca en 2010)
 
 
-def fetch_ilce_serie() -> list:
-    """Serie mensual del ILCE (apertura_comercial) desde dic-2023, con la misma
-    fórmula del colector: (0,4·B_camb + 0,4·A_efec)/0,8. B_camb sale de la
-    brecha CCL/mayorista mensual (fetch_brecha_serie); A_efec de la alícuota
-    efectiva (recaudación DEX+DIM en USD por el A3500 promedio, sobre el
-    intercambio expo+impo del ICA). El live usa la brecha SPOT del día y la
-    serie el promedio del mes — divergen de forma inmaterial. [[YYYY-MM-01, índice]]."""
-    brecha = {f[:7]: v for f, v in fetch_brecha_serie()}
+def fetch_alicuota_serie() -> list:
+    """Serie mensual de la ALÍCUOTA EFECTIVA del comercio exterior
+    (apertura_comercial desde el ADR-0021: la brecha salió del compuesto):
+    recaudación DEX+DIM en USD por el A3500 promedio del mes, sobre el
+    intercambio expo+impo del ICA. Desde dic-2023. [[YYYY-MM-01, %]]."""
     dex  = gestion._indec_nivel_mensual(gestion.DEX_ID, limit=48)
     dim  = gestion._indec_nivel_mensual(gestion.DIM_ID, limit=48)
     expo = gestion._indec_nivel_mensual(gestion.EXPO_ICA_ID, limit=48)
@@ -1054,13 +1051,11 @@ def fetch_ilce_serie() -> list:
     dias = (date.today() - date(2023, 11, 25)).days
     tc   = gestion._tc_mayorista_promedio_por_mes(dias=dias)
     out = []
-    for ym in sorted(set(brecha) & set(dex) & set(dim) & set(expo) & set(impo) & set(tc)):
+    for ym in sorted(set(dex) & set(dim) & set(expo) & set(impo) & set(tc)):
         if ym < "2023-12" or expo[ym] + impo[ym] <= 0 or tc[ym] <= 0:
             continue
-        b_camb = 100.0 / (1.0 + max(-0.99, brecha[ym] / 100.0))
         alicuota = 100.0 * ((dex[ym] + dim[ym]) / tc[ym]) / (expo[ym] + impo[ym])
-        a_efec = 100.0 * max(0.0, 1.0 - alicuota / gestion.ALICUOTA_CIERRE_PCT)
-        out.append([f"{ym}-01", round((0.40 * b_camb + 0.40 * a_efec) / 0.80, 1)])
+        out.append([f"{ym}-01", round(alicuota, 2)])
     return out
 
 
@@ -1183,7 +1178,7 @@ def fetch_fal_serie() -> list:
 
 
 GESTION_DERIVADAS = [
-    ("apertura_comercial", "Índice 0–100 (ILCE)", "ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)", fetch_ilce_serie),
+    ("apertura_comercial", "% alícuota efectiva del comercio exterior", "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500", fetch_alicuota_serie),
     ("concesiones_infraestructura", "% km adjudicados RFC", "CONTRAT.AR + RFC (hitos fechados)", fetch_concesiones_serie),
     ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),
     ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "CNV + MTEySS (histórico: 0 hasta jul-2026)", fetch_fal_serie),

@@ -83,7 +83,7 @@ queda tapada por el componente cambiario (~90); en el ITVC el boom de motos
 
 **Recomendación:** (b). Costo bajo, no rompe series, hace visible el problema.
 
-## Decisión 3 — Efectos escalón de las bandas en ITCM/ITCG (PENDIENTE)
+## Decisión 3 — Efectos escalón de las bandas en ITCM/ITCG (RESUELTA → ADR-0021, opción b)
 
 **Problema.** La discretización pierde información y crea acantilados: dos
 valores casi iguales a ambos lados de un umbral difieren 15-25 puntos de
@@ -126,7 +126,7 @@ overrides respetados) sobre los valores crudos publicados en el snapshot:
   actualizar los tests pineados. Detalle completo por indicador en
   `output/interpolacion_sombra.json`.
 
-## Decisión 4 — Doble conteo de la brecha cambiaria en el ITCG (PENDIENTE)
+## Decisión 4 — Doble conteo de la brecha cambiaria en el ITCG (RESUELTA → ADR-0021, opción b)
 
 **Problema.** El Handbook exige tratar la correlación entre componentes.
 `cepo_mulc` (brecha CCL/mayorista) es un indicador del ITCG **y** el ILCE de

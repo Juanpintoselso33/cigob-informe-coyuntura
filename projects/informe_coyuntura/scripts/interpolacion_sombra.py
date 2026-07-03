@@ -1,9 +1,14 @@
 """interpolacion_sombra.py — Estudio sombra: bandas vs interpolación (ADR-0019, Decisión 3).
 
+NOTA HISTÓRICA: este estudio motivó el ADR-0021 — desde jul-2026 la
+interpolación ES el método de producción (parametrica.puntaje_interpolado) y
+el snapshot ya publica puntajes interpolados. El script se conserva como
+registro del análisis que justificó el cambio; correrlo sobre un snapshot
+actual dará Δ≈0 por construcción.
+
 Recalcula el ITCM y el ITCG con puntaje CONTINUO — interpolación lineal entre
 los anclajes de las bandas del doc (piecewise linear) — en paralelo al método
-vigente por bandas, y mide la diferencia. Es el insumo para proponer (o no)
-el cambio de método a CIGOB. NO toca el índice publicado.
+por bandas, y mide la diferencia. NO toca el índice publicado.
 
 Anclajes: cada banda finita ancla su puntaje en su PUNTO MEDIO; las bandas
 abiertas (±inf) anclan en su borde finito. Fuera del rango de anclajes el

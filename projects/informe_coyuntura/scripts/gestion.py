@@ -300,29 +300,20 @@ ALICUOTA_CIERRE_PCT = 15.0
 
 def fetch_apertura_comercial(brecha_pct: float | None = None) -> dict | None:
     """
-    ILCE — Índice de Libertad Comercial Efectiva (doc 260702), 0-100:
-    mide cuán libre, barato y predecible es operar el comercio exterior.
+    Alícuota efectiva del comercio exterior (ADR-0021): recaudación de
+    derechos de importación + exportación (ARCA, en ARS → USD por el A3500
+    promedio del mes) sobre el intercambio total del ICA (expo+impo, USD).
+    0% = comercio libre de fricción arancelaria · ≥15% = cierre de hecho
+    (la lineal del doc 260702, reproducida por las anclas de banda del ITCG).
 
-      ILCE = (0,40·B_camb + 0,40·A_efec) / 0,80   [renormalizado]
-
-    * B_camb (componente cambiario): brecha inversa 100/(1+brecha). La brecha
-      CCL/mayorista es "la madre de todas las restricciones" al comercio.
-    * A_efec (componente arancelario): alícuota efectiva = recaudación de
-      derechos de importación + exportación (ARCA, en ARS → USD por el A3500
-      promedio del mes) sobre el intercambio total del ICA (expo+impo, USD).
-      Se normaliza lineal: 0% → 100 puntos · ≥15% → 0 (cierre de hecho).
-    * T_adu (canal verde aduanero, 20% en el doc): SIN fuente pública
-      estructurada (verificado 2026-07: ni CKAN ni ARCA publican selectividad
-      por canal) → se renormaliza entre los dos componentes disponibles.
+    Historia: hasta jul-2026 este indicador era el ILCE (compuesto con la
+    brecha cambiaria al 40%) — la brecha ya puntúa como indicador propio
+    (cepo_mulc) y el compuesto la hacía pesar doble en la dimensión (doble
+    conteo, ADR-0021). El canal verde aduanero (20% en el doc) sigue sin
+    fuente pública estructurada. `brecha_pct` se acepta y se ignora
+    (compatibilidad con el orquestador).
     """
     try:
-        if brecha_pct is None:
-            cepo = fetch_cepo_mulc()
-            if not cepo:
-                raise ValueError("sin brecha cambiaria para el componente B_camb")
-            brecha_pct = float(cepo["valor"])
-        b_camb = 100.0 / (1.0 + max(-0.99, brecha_pct / 100.0))
-
         dex  = _indec_nivel_mensual(DEX_ID, limit=8)
         dim  = _indec_nivel_mensual(DIM_ID, limit=8)
         expo = _indec_nivel_mensual(EXPO_ICA_ID, limit=8)
@@ -337,25 +328,16 @@ def fetch_apertura_comercial(brecha_pct: float | None = None) -> dict | None:
         if comercio_musd <= 0:
             raise ValueError("intercambio comercial nulo")
         alicuota = 100.0 * recaudacion_musd / comercio_musd
-        a_efec   = 100.0 * max(0.0, 1.0 - alicuota / ALICUOTA_CIERRE_PCT)
-
-        ilce = (0.40 * b_camb + 0.40 * a_efec) / 0.80
+        miles = lambda x: f"{x:,.0f}".replace(",", ".")
         return {
-            "valor":          round(ilce, 1),
-            "unidad":         "Índice 0–100 (ILCE)",
-            "fuente":         "ARCA + INDEC ICA + BCRA (elaboración CIGOB)",
+            "valor":          round(alicuota, 2),
+            "unidad":         "% del intercambio (alícuota efectiva)",
+            "fuente":         "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
-            "componentes": {
-                "b_camb": round(b_camb, 1),
-                "a_efec": round(a_efec, 1),
-                "alicuota_efectiva_pct": round(alicuota, 2),
-            },
-            "detalle_txt": (f"B_camb {str(round(b_camb, 1)).replace('.', ',')} "
-                            f"(brecha {str(brecha_pct).replace('.', ',')}%) · "
-                            f"A_efec {str(round(a_efec, 1)).replace('.', ',')} "
-                            f"(alícuota efectiva {str(round(alicuota, 2)).replace('.', ',')}% "
-                            f"del intercambio, {ym}) · canal aduanero sin fuente pública"),
+            "detalle_txt": (f"US$ {miles(recaudacion_musd)} M recaudados por derechos de "
+                            f"impo+expo sobre US$ {miles(comercio_musd)} M de intercambio "
+                            f"({ym}) · canal aduanero sin fuente pública"),
         }
     except Exception as e:
         _warn("apertura_comercial", e)

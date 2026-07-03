@@ -9,10 +9,12 @@ Tres experimentos por índice (semilla fija: corridas reproducibles):
 1. PESOS (Monte Carlo, N=2000): cada peso de dimensión y de indicador se
    multiplica por U(0,8; 1,2) y se renormaliza. Mide cuánto del valor depende
    de la ponderación exacta elegida en el doc.
-2. BANDAS (solo ITCM/ITCG, N=2000): cada componente salta a la banda vecina
-   con probabilidad 7,5% hacia cada lado — proxy de "el valor del indicador
-   está cerca de un umbral" (los acantilados de la discretización). El ITVC
-   es continuo y no tiene este problema.
+2. INSUMOS (solo ITCM/ITCG, N=2000): cada valor de entrada se perturba ±5%
+   y se re-puntúa por la escala interpolada (ADR-0021) — mide la sensibilidad
+   al error de medición de las fuentes. (Reemplaza al viejo experimento de
+   "salto de banda": con interpolación ya no hay acantilados de umbral.)
+   Los componentes con override del analista no se perturban. El ITVC recibe
+   su ruido de insumos vía el rebase continuo (sólo pesos acá).
 3. LEAVE-ONE-OUT: el índice recalculado excluyendo cada indicador (con la
    renormalización estándar ante faltantes). Identifica componentes dominantes.
 
@@ -30,6 +32,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 sys.stdout.reconfigure(encoding="utf-8")
 
+import parametrica
 import itcm
 import itcg
 import itvc as itvc_mod
@@ -41,7 +44,7 @@ SALIDA = ROOT / "output" / "sensibilidad.json"
 N_DRAWS = 2000              # override por CLI en main() — no parsear argv al importar
 SEMILLA = 20260703          # fija: el análisis es reproducible corrida a corrida
 RUIDO_PESO = 0.20           # pesos × U(1−r, 1+r)
-PROB_SALTO_BANDA = 0.075    # probabilidad de saltar a la banda vecina, por lado
+RUIDO_INSUMO = 0.05         # valores de entrada × U(1−r, 1+r), re-puntuados por interpolación
 
 INDICES = {
     "itcm": {"cinturon": "macro", "bandas": itcm.BANDAS_ITCM,
@@ -54,11 +57,13 @@ INDICES = {
 
 
 def _estructura(bloque: dict) -> dict:
-    """{dkey: {peso, ind: {ikey: {peso, puntaje}}}} desde el bloque publicado."""
+    """{dkey: {peso, ind: {ikey: {peso, puntaje, banda, valor}}}} desde el
+    bloque publicado (valor = insumo crudo, para el experimento de insumos)."""
     return {
         dk: {
             "peso": d["peso"],
-            "ind": {ik: {"peso": i["peso"], "puntaje": i["puntaje_aplicado"]}
+            "ind": {ik: {"peso": i["peso"], "puntaje": i["puntaje_aplicado"],
+                         "banda": i.get("puntaje_banda"), "valor": i.get("valor")}
                     for ik, i in d["indicadores"].items()},
         }
         for dk, d in bloque["dimensiones"].items()
@@ -79,13 +84,6 @@ def _agregar(dims: dict) -> float:
     return total / wsum if wsum else 0.0
 
 
-def _escalera(bandas: dict, ikey: str) -> list:
-    """Puntajes posibles del indicador, ordenados (la 'escalera' de bandas)."""
-    if not bandas or ikey not in bandas:
-        return []
-    return sorted({p for _lo, _hi, p in bandas[ikey]})
-
-
 def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
                bandas: dict | None) -> float:
     d2 = {dk: {"peso": d["peso"], "ind": {ik: dict(i) for ik, i in d["ind"].items()}}
@@ -96,15 +94,10 @@ def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
         for ik, i in d["ind"].items():
             if pesos:
                 i["peso"] *= rng.uniform(1 - RUIDO_PESO, 1 + RUIDO_PESO)
-            if bandas:
-                esc = _escalera(bandas, ik)
-                if i["puntaje"] in esc:
-                    pos = esc.index(i["puntaje"])
-                    r = rng.random()
-                    if r < PROB_SALTO_BANDA and pos > 0:
-                        i["puntaje"] = esc[pos - 1]
-                    elif r > 1 - PROB_SALTO_BANDA and pos < len(esc) - 1:
-                        i["puntaje"] = esc[pos + 1]
+            if bandas and ik in bandas and i.get("valor") is not None \
+                    and i.get("banda") == i["puntaje"]:   # con override no se perturba
+                v = float(i["valor"]) * rng.uniform(1 - RUIDO_INSUMO, 1 + RUIDO_INSUMO)
+                i["puntaje"] = parametrica.puntaje_interpolado(v, bandas[ik])
     return _agregar(d2)
 
 
@@ -127,11 +120,11 @@ def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
 
     exp = {"pesos": [], "combinado": []}
     if bandas:
-        exp["bandas"] = []
+        exp["insumos"] = []
     for _ in range(n_draws):
         exp["pesos"].append(_perturbar(dims, rng, pesos=True, bandas=None))
         if bandas:
-            exp["bandas"].append(_perturbar(dims, rng, pesos=False, bandas=bandas))
+            exp["insumos"].append(_perturbar(dims, rng, pesos=False, bandas=bandas))
         exp["combinado"].append(_perturbar(dims, rng, pesos=True, bandas=bandas))
 
     loo = {}
@@ -194,7 +187,7 @@ def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
         "hist": hist,
         "hist_min": round(lo, 2),
         "hist_max": round(hi, 2),
-        "metodo": "pesos ±20% + bandas vecinas 7,5% (MC, ADR-0019)",
+        "metodo": "pesos ±20% + insumos ±5% re-puntuados por interpolación (MC, ADR-0019/0021)",
     }
 
 

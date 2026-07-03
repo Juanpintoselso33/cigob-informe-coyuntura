@@ -4,7 +4,7 @@ Cada cinturón con paramétrica define SUS tablas (bandas por indicador,
 dimensiones con pesos, bandas de interpretación) en su propio módulo
 (itcm.py, itcg.py); acá vive el algoritmo común:
 
-  índice = Σ peso_dimensión × Σ (peso_indicador × puntaje_banda(valor))
+  índice = Σ peso_dimensión × Σ (peso_indicador × puntaje_interpolado(valor))
 
 con renormalización de pesos ante faltantes (dentro de cada dimensión entre
 los indicadores presentes, y entre dimensiones si alguna queda vacía) y
@@ -12,6 +12,15 @@ overrides del analista con vencimiento.
 
 Convención de bordes de banda (uniforme, pineada por tests): cada banda es
 (low, high, puntaje) con low EXCLUSIVO y high INCLUSIVO.
+
+PUNTAJE POR INTERPOLACIÓN (ADR-0021, jul-2026): los umbrales institucionales
+del doc son ANCLAS — cada banda finita ancla su puntaje en su punto medio y
+las abiertas (±inf) en su borde finito; entre anclas el puntaje es lineal y
+en los extremos queda plano. Reemplaza al puntaje escalonado por banda
+(puntaje_banda, que se conserva para las etiquetas de interpretación): misma
+escala institucional, sin acantilados de umbral — el estudio sombra del
+ADR-0019 midió que los escalones duplicaban la incertidumbre del índice y
+truncaban hasta ±13 puntos por componente.
 
 La tensión 0-10 del informe se deriva como (100 − índice) / 10, así el resto
 del pipeline (umbrales, estados, score global) conserva su convención.
@@ -28,6 +37,39 @@ def puntaje_banda(valor: float, bandas: list) -> int:
         if low < valor <= high:
             return puntaje
     raise ValueError(f"valor {valor} fuera de toda banda")
+
+
+def _anclas(bandas: list) -> list:
+    """[(valor, puntaje)] ordenado: punto medio de las bandas finitas, borde
+    finito de las abiertas."""
+    out = []
+    for low, high, puntaje in bandas:
+        if low == -INF and high == INF:
+            continue
+        if low == -INF:
+            out.append((float(high), float(puntaje)))
+        elif high == INF:
+            out.append((float(low), float(puntaje)))
+        else:
+            out.append(((float(low) + float(high)) / 2.0, float(puntaje)))
+    return sorted(out)
+
+
+def puntaje_interpolado(valor: float, bandas: list) -> float:
+    """Puntaje continuo 0-100: lineal entre las anclas de la tabla de bandas,
+    plano más allá de las anclas extremas (sin extrapolación). Redondeado a 1
+    decimal (ADR-0021)."""
+    a = _anclas(bandas)
+    if valor <= a[0][0]:
+        return round(a[0][1], 1)
+    if valor >= a[-1][0]:
+        return round(a[-1][1], 1)
+    for (x0, p0), (x1, p1) in zip(a, a[1:]):
+        if x0 <= valor <= x1:
+            if x1 == x0:
+                return round(p1, 1)
+            return round(p0 + (p1 - p0) * (valor - x0) / (x1 - x0), 1)
+    return round(a[-1][1], 1)
 
 
 def banda_interpretacion(valor: float, bandas_interpretacion: list) -> str:
@@ -107,7 +149,7 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
             valor = valores.get(ikey)
             if valor is None:
                 continue
-            p_banda = puntaje_banda(float(valor), bandas_por_indicador[ikey])
+            p_banda = puntaje_interpolado(float(valor), bandas_por_indicador[ikey])
             p_aplicado = p_banda
             if ikey in ajustes:
                 p_aplicado = ajustes[ikey]["puntaje"]

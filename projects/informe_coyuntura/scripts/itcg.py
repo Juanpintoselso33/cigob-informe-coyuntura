@@ -24,11 +24,12 @@ Decisiones sobre ambigüedades del documento (ADR-0013):
     4,91% se describe como "promesa cumplida" pero aparecería puntuando 20 o
     95 según el orden). No se pinea ese resultado: los puntajes salen siempre
     de las bandas sobre datos reales.
-  * ILCE (apertura comercial): el doc define tres componentes (brecha inversa,
-    alícuota efectiva, canal verde aduanero). El canal verde no tiene fuente
-    pública estructurada → el ILCE se computa en gestion.py con los
-    componentes disponibles, renormalizando (mismo criterio que el resto del
-    informe ante faltantes).
+  * Apertura comercial: el doc definía un compuesto (brecha inversa, alícuota
+    efectiva, canal verde aduanero). El canal verde no tiene fuente pública y
+    la brecha ya puntúa como indicador propio (cepo_mulc) — mantenerla dentro
+    del compuesto la hacía pesar ~1,6 veces en la dimensión (doble conteo,
+    ADR-0021). Desde jul-2026 apertura mide la ALÍCUOTA EFECTIVA sola, con
+    bandas ancladas en la lineal del doc (0% → 100 · 15% → 0).
   * Fondo de Cese (D3): el doc lo define compuesto (cobertura CCT 40% +
     patrimonio FCI/CNV 30% + litigiosidad diff-in-diff 30%); se computa en
     gestion.py renormalizando lo disponible y conserva la clave histórica
@@ -55,10 +56,13 @@ BANDAS_ITCG = {
         # 4,91% (may-2026) se lee "promesa central cumplida".
         (-INF, 5.0, 100), (5.0, 10.0, 85), (10.0, 15.0, 65), (15.0, 25.0, 40), (25.0, INF, 10),
     ],
-    "apertura_comercial": [             # ILCE 0-100 (compuesto, calculado en gestion.py)
-        # Matriz de lectura del doc: >90 economía integrada · 70-90 apertura
-        # condicionada ("zona típica de transición") · <70 economía reprimida.
-        (90.0, INF, 100), (80.0, 90.0, 85), (70.0, 80.0, 65), (50.0, 70.0, 40), (-INF, 50.0, 10),
+    "apertura_comercial": [             # alícuota efectiva % del comercio exterior
+        # ADR-0021: la brecha cambiaria salió del compuesto (puntúa una sola
+        # vez, en cepo_mulc) y apertura mide la alícuota efectiva sola
+        # (recaudación DEX+DIM / intercambio ICA). Anclas sobre la lineal del
+        # doc (0% → 100 · 15% → 0): los puntos medios 2,25 / 5,25 / 9 caen
+        # exactos en esa recta, así el puntaje interpolado la reproduce.
+        (-INF, 1.0, 100), (1.0, 3.5, 85), (3.5, 7.0, 65), (7.0, 11.0, 40), (11.0, INF, 10),
     ],
     "desregulacion_normativa": [        # % de avance desregulatorio (0-100)
         # Doc: 57% de normas derogadas → 85 ("desregulación en marcha").

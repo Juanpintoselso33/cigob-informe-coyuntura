@@ -164,7 +164,7 @@ export const LABELS: Record<string, string> = {
   cepo_mulc: "Brecha cambiaria (cepo)", privatizaciones: "Privatizaciones (etapas)",
   concesiones_infraestructura: "Concesiones viales", reduccion_estado: "Dotación del Estado (APN)",
   reestructuracion_organismos: "Reestructuración de organismos", rigi_inversiones: "Inversiones RIGI",
-  desregulacion_normativa: "Desregulación normativa", apertura_comercial: "Apertura comercial (ILCE)",
+  desregulacion_normativa: "Desregulación normativa", apertura_comercial: "Apertura comercial (alícuota)",
   gasto_funcionamiento: "Gasto de funcionamiento", masa_salarial: "Masa salarial pública",
   asistencia_directa: "Asistencia directa (TDPS)", fal_modernizacion_laboral: "Fondo de Cese Laboral",
   libertad_opcion_salud: "Libertad de opción en salud", protocolo_antipiquetes: "Orden público (piquetes)",
@@ -217,7 +217,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // espíritu de época
   clima_electoral: "pp",
   // gestion (insumos del ITCG)
-  cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "índice",
+  cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "%",
   desregulacion_normativa: "%", reestructuracion_organismos: "%",
   gasto_funcionamiento: "% real", masa_salarial: "% real",
   rigi_inversiones: "% del pipeline", privatizaciones: "%", concesiones_infraestructura: "%",
@@ -258,7 +258,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",
   reestructuracion_organismos: "% de avance", rigi_inversiones: "% de inversión aprobada / pipeline",
-  desregulacion_normativa: "% de avance", apertura_comercial: "Índice 0–100 (ILCE)",
+  desregulacion_normativa: "% de avance", apertura_comercial: "% del intercambio (alícuota efectiva)",
   gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",
   asistencia_directa: "% del gasto social sin intermediación", fal_modernizacion_laboral: "Índice 0–100",
   libertad_opcion_salud: "% de usuarios de prepagas con derivación directa", protocolo_antipiquetes: "% de reducción de cortes vs 2023",

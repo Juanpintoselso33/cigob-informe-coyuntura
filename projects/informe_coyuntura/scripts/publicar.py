@@ -312,8 +312,8 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
             aporte = round((100 - p) / 10, 1)
             peso = ind.get("peso_efectivo")
             peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {sigla}" if peso else ""
-            formula = (f"Banda {sigla}: {mod.texto_bandas(ikey)} "
-                       f"(puntos 0–100; puntaje {p}{peso_txt})")
+            formula = (f"Anclas {sigla}: {mod.texto_bandas(ikey)} "
+                       f"(puntaje interpolado entre anclas, ADR-0021: {p}{peso_txt})")
             if ikey in ajustes:
                 aj = ajustes[ikey]
                 origen = "automático" if aj.get("origen") == "automatico" else "del analista"
@@ -364,10 +364,6 @@ def _gestion_input_txt(ikey, ind):
     coma = lambda x: str(x).replace(".", ",")
     if ind.get("detalle_txt"):                       # detalle rico (ej. RIGI oficial)
         return ind["detalle_txt"]
-    if ikey == "apertura_comercial" and ind.get("componentes"):
-        c = ind["componentes"]
-        partes = [f"{n} {coma(v)}" for n, v in c.items() if v is not None]
-        return f"ILCE {coma(ind.get('valor'))} = " + " · ".join(partes)
     if ikey == "fal_modernizacion_laboral" and ind.get("componentes"):
         c = ind["componentes"]
         partes = [f"{n} {coma(v)}" for n, v in c.items() if v is not None]

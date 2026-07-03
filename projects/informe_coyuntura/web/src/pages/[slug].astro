@@ -159,7 +159,7 @@ const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
           <p class="cg-h2-sub">
             Análisis de sensibilidad (Monte Carlo): el índice se recalcula en{" "}
             {rob.n_draws.toLocaleString("es-AR")} escenarios perturbando{" "}
-            {indice.base100 ? "los pesos ±20%" : "los pesos ±20% y los umbrales de banda"}.
+            {indice.base100 ? "los pesos ±20%" : "los pesos ±20% y los valores de entrada ±5%"}.
             La curva es la distribución de resultados; la franja sombreada, donde cae el 90% de los casos.
           </p>
         </div>
@@ -200,7 +200,7 @@ const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
             El {indice.sigla} queda entre <strong>{coma(rob.p05)}</strong> y{" "}
             <strong>{coma(rob.p95)}</strong> en el 90% de los casos (tensión{" "}
             {coma(rob.tension_rango[0])}–{coma(rob.tension_rango[1])}): la lectura del
-            cinturón no depende de la ponderación exacta elegida.
+            cinturón no depende de la ponderación exacta ni del error de medición de las fuentes.
             {robBajoBase && (
               <Fragment>
                 {" "}Incluso el escenario más favorable queda <strong>debajo de la línea
@@ -244,11 +244,12 @@ const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
         <p class="cg-eyebrow">Nota metodológica</p>
         <p>
           El cinturón mide la <strong>brecha entre lo prometido y lo ejecutado</strong> de la
-          agenda de reformas, en cinco dimensiones (paramétrica CIGOB, jul-2026). La{" "}
-          <strong>apertura comercial</strong> se puntúa con el <strong>ILCE</strong> (Índice de
-          Libertad Comercial Efectiva): brecha cambiaria inversa más la <strong>alícuota
-          efectiva</strong> del comercio exterior (recaudación de derechos de importación y
-          exportación sobre el intercambio total); el componente aduanero (canal verde) no tiene
+          agenda de reformas, en cinco dimensiones (paramétrica CIGOB, jul-2026; puntaje{" "}
+          <strong>interpolado</strong> entre los umbrales institucionales — sin escalones de
+          banda, ADR-0021). La <strong>apertura comercial</strong> se puntúa por la{" "}
+          <strong>alícuota efectiva</strong> del comercio exterior (recaudación de derechos de
+          importación y exportación sobre el intercambio total); la brecha cambiaria puntúa una
+          sola vez, en su propio indicador, y el componente aduanero (canal verde) no tiene
           fuente pública estructurada y queda fuera. Las <strong>privatizaciones</strong> avanzan
           por <strong>etapas verificables</strong> (0 = sin definir → 4 = operación cerrada) sobre
           la cartera habilitada por la Ley Bases, no por conteo de anuncios. La{" "}

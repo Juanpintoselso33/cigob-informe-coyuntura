@@ -1,19 +1,19 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-03 13:44:21"
-score_global: 3.7
-barbarismo_activo: "tecnocrático"
+generado: "2026-07-03 14:01:02"
+score_global: 3.6
+barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
 ---
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 3.7/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 3.6/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
-### 🟡 Macro — score 4.8/10 (en_tension)
+### 🟡 Macro — score 4.5/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -58,13 +58,13 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
 
-### 🟡 Gestion — score 3.1/10 (en_tension)
+### 🟢 Gestion — score 3.0/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | cepo_mulc | 5.38 | % de brecha CCL/mayorista | 2026-07-03 | fresco |
-| apertura_comercial | 81.3 | Índice 0–100 (ILCE) | 2026-05-01 | fresco |
+| apertura_comercial | 4.86 | % del intercambio (alícuota efectiva) | 2026-05-01 | fresco |
 | desregulacion_normativa | 60.0 | % de avance (proxy InfoLeg) | 2026-07-03 | fresco |
 | reduccion_estado | -19.8 | % de variación vs dic-2023 (dotación APN) | 2026-05-01 | fresco |
 | gasto_funcionamiento | -24.35 | % de variación real vs 2023-05 (IMIG funcionamiento) | 2026-05-01 | fresco |
@@ -96,4 +96,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:protocolo_antipiquetes`
 
 ---
-*Generado por CIGOB — 2026-07-03 13:44:21 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-03 14:01:02 — schema 1.2.0*

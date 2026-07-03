@@ -338,102 +338,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,libertad_opcion_salud,0.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2024-01-01,libertad_opcion_salud,0.1,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
 2023-12-01,libertad_opcion_salud,0.0,% usuarios de prepagas con derivación directa,SSS — RNAS/RNEMP
-2026-04-01,isac_construccion,145.188156585882,indice base 2004=100,INDEC/datos.gob.ar
-2026-03-01,isac_construccion,167.312521637531,indice base 2004=100,INDEC/datos.gob.ar
-2026-02-01,isac_construccion,158.736729279152,indice base 2004=100,INDEC/datos.gob.ar
-2026-01-01,isac_construccion,166.094343205864,indice base 2004=100,INDEC/datos.gob.ar
-2025-12-01,isac_construccion,160.085176697795,indice base 2004=100,INDEC/datos.gob.ar
-2025-11-01,isac_construccion,164.274396511976,indice base 2004=100,INDEC/datos.gob.ar
-2025-10-01,isac_construccion,167.200680747775,indice base 2004=100,INDEC/datos.gob.ar
-2025-09-01,isac_construccion,164.651217503301,indice base 2004=100,INDEC/datos.gob.ar
-2025-08-01,isac_construccion,165.479886621024,indice base 2004=100,INDEC/datos.gob.ar
-2025-07-01,isac_construccion,162.132429933728,indice base 2004=100,INDEC/datos.gob.ar
-2025-06-01,isac_construccion,172.7417444766,indice base 2004=100,INDEC/datos.gob.ar
-2025-05-01,isac_construccion,163.514014753266,indice base 2004=100,INDEC/datos.gob.ar
-2025-04-01,isac_construccion,166.838317708696,indice base 2004=100,INDEC/datos.gob.ar
-2025-03-01,isac_construccion,159.64446643172,indice base 2004=100,INDEC/datos.gob.ar
-2025-02-01,isac_construccion,166.319617853574,indice base 2004=100,INDEC/datos.gob.ar
-2025-01-01,isac_construccion,174.990794702558,indice base 2004=100,INDEC/datos.gob.ar
-2024-12-01,isac_construccion,163.313290774585,indice base 2004=100,INDEC/datos.gob.ar
-2024-11-01,isac_construccion,162.331609405666,indice base 2004=100,INDEC/datos.gob.ar
-2024-10-01,isac_construccion,155.71902731472,indice base 2004=100,INDEC/datos.gob.ar
-2024-09-01,isac_construccion,174.568874745419,indice base 2004=100,INDEC/datos.gob.ar
-2024-08-01,isac_construccion,156.759386363683,indice base 2004=100,INDEC/datos.gob.ar
-2024-07-01,isac_construccion,167.049557402365,indice base 2004=100,INDEC/datos.gob.ar
-2024-06-01,isac_construccion,152.601581170947,indice base 2004=100,INDEC/datos.gob.ar
-2024-05-01,isac_construccion,154.657893915504,indice base 2004=100,INDEC/datos.gob.ar
-2024-04-01,isac_construccion,132.293766840253,indice base 2004=100,INDEC/datos.gob.ar
-2024-03-01,isac_construccion,135.200241503953,indice base 2004=100,INDEC/datos.gob.ar
-2024-02-01,isac_construccion,155.731817704023,indice base 2004=100,INDEC/datos.gob.ar
-2024-01-01,isac_construccion,163.788422680391,indice base 2004=100,INDEC/datos.gob.ar
-2023-12-01,isac_construccion,180.415955305325,indice base 2004=100,INDEC/datos.gob.ar
-2023-11-01,isac_construccion,188.344339719186,indice base 2004=100,INDEC/datos.gob.ar
-2023-10-01,isac_construccion,196.999114341701,indice base 2004=100,INDEC/datos.gob.ar
-2023-09-01,isac_construccion,199.68602376748,indice base 2004=100,INDEC/datos.gob.ar
-2023-08-01,isac_construccion,211.920684897818,indice base 2004=100,INDEC/datos.gob.ar
-2023-07-01,isac_construccion,210.052620820513,indice base 2004=100,INDEC/datos.gob.ar
-2023-06-01,isac_construccion,212.39119601442,indice base 2004=100,INDEC/datos.gob.ar
-2023-05-01,isac_construccion,213.969880059687,indice base 2004=100,INDEC/datos.gob.ar
-2023-04-01,isac_construccion,218.885591830903,indice base 2004=100,INDEC/datos.gob.ar
-2023-03-01,isac_construccion,221.872042221881,indice base 2004=100,INDEC/datos.gob.ar
-2023-02-01,isac_construccion,206.9203550997,indice base 2004=100,INDEC/datos.gob.ar
-2023-01-01,isac_construccion,207.860184945875,indice base 2004=100,INDEC/datos.gob.ar
-2022-12-01,isac_construccion,194.796413928305,indice base 2004=100,INDEC/datos.gob.ar
-2022-11-01,isac_construccion,210.767653283262,indice base 2004=100,INDEC/datos.gob.ar
-2022-10-01,isac_construccion,209.81005351746,indice base 2004=100,INDEC/datos.gob.ar
-2022-09-01,isac_construccion,215.355627414593,indice base 2004=100,INDEC/datos.gob.ar
-2022-08-01,isac_construccion,216.228342648978,indice base 2004=100,INDEC/datos.gob.ar
-2022-07-01,isac_construccion,223.779859134946,indice base 2004=100,INDEC/datos.gob.ar
-2022-06-01,isac_construccion,217.998677542063,indice base 2004=100,INDEC/datos.gob.ar
-2022-05-01,isac_construccion,219.825064325048,indice base 2004=100,INDEC/datos.gob.ar
-2026-04-01,indice_salarios_publico,7515.45,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-03-01,indice_salarios_publico,7344.33,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-02-01,indice_salarios_publico,6991.42,indice base oct-2016=100,INDEC/datos.gob.ar
-2026-01-01,indice_salarios_publico,6832.27,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-12-01,indice_salarios_publico,6710.79,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-11-01,indice_salarios_publico,6645.32,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-10-01,indice_salarios_publico,6569.76,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-09-01,indice_salarios_publico,6447.94,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-08-01,indice_salarios_publico,6375.31,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-07-01,indice_salarios_publico,6202.12,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-06-01,indice_salarios_publico,6063.83,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-05-01,indice_salarios_publico,5987.03,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-04-01,indice_salarios_publico,5797.13,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-03-01,indice_salarios_publico,5668.51,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-02-01,indice_salarios_publico,5488.58,indice base oct-2016=100,INDEC/datos.gob.ar
-2025-01-01,indice_salarios_publico,5253.88,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-12-01,indice_salarios_publico,5205.72,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-11-01,indice_salarios_publico,5117.7,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-10-01,indice_salarios_publico,4982.02,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-09-01,indice_salarios_publico,4774.83,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-08-01,indice_salarios_publico,4594.73,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-07-01,indice_salarios_publico,4390.43,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-06-01,indice_salarios_publico,4113.99,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-05-01,indice_salarios_publico,3957.89,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-04-01,indice_salarios_publico,3656.07,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-03-01,indice_salarios_publico,3400.49,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-02-01,indice_salarios_publico,3062.83,indice base oct-2016=100,INDEC/datos.gob.ar
-2024-01-01,indice_salarios_publico,2660.85,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-12-01,indice_salarios_publico,2374.02,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-11-01,indice_salarios_publico,2250.34,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-10-01,indice_salarios_publico,2086.82,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-09-01,indice_salarios_publico,1911.97,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-08-01,indice_salarios_publico,1723.25,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-07-01,indice_salarios_publico,1625.51,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-06-01,indice_salarios_publico,1434.49,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-05-01,indice_salarios_publico,1353.08,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-04-01,indice_salarios_publico,1247.39,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-03-01,indice_salarios_publico,1198.55,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-02-01,indice_salarios_publico,1030.47,indice base oct-2016=100,INDEC/datos.gob.ar
-2023-01-01,indice_salarios_publico,992.3,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-12-01,indice_salarios_publico,955.04,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-11-01,indice_salarios_publico,874.76,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-10-01,indice_salarios_publico,827.5,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-09-01,indice_salarios_publico,780.81,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-08-01,indice_salarios_publico,724.84,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-07-01,indice_salarios_publico,695.34,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-06-01,indice_salarios_publico,647.9,indice base oct-2016=100,INDEC/datos.gob.ar
-2022-05-01,indice_salarios_publico,619.44,indice base oct-2016=100,INDEC/datos.gob.ar
 2026-05-01,gasto_funcionamiento,-24.35,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-04-01,gasto_funcionamiento,-14.47,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-03-01,gasto_funcionamiento,-33.77,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
@@ -630,33 +534,33 @@ fecha,indicador,valor,unidad,fuente
 2023-03-01,asistencia_directa,95.7,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
 2023-02-01,asistencia_directa,95.1,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
 2023-01-01,asistencia_directa,99.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-05-01,apertura_comercial,80.8,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2026-04-01,apertura_comercial,78.2,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2026-03-01,apertura_comercial,81.3,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2026-02-01,apertura_comercial,79.2,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2026-01-01,apertura_comercial,79.0,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-12-01,apertura_comercial,81.3,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-11-01,apertura_comercial,83.5,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-10-01,apertura_comercial,80.8,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-09-01,apertura_comercial,78.3,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-08-01,apertura_comercial,82.9,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-07-01,apertura_comercial,68.2,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-06-01,apertura_comercial,64.5,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-05-01,apertura_comercial,73.1,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-04-01,apertura_comercial,68.1,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-03-01,apertura_comercial,67.2,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-02-01,apertura_comercial,67.7,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2025-01-01,apertura_comercial,65.5,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-12-01,apertura_comercial,69.1,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-11-01,apertura_comercial,66.7,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-10-01,apertura_comercial,65.5,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-09-01,apertura_comercial,63.2,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-08-01,apertura_comercial,63.6,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-07-01,apertura_comercial,59.1,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-06-01,apertura_comercial,62.7,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-05-01,apertura_comercial,58.5,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-04-01,apertura_comercial,70.7,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-03-01,apertura_comercial,70.0,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-02-01,apertura_comercial,64.9,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2024-01-01,apertura_comercial,44.8,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
-2023-12-01,apertura_comercial,50.8,Índice 0–100 (ILCE),ARCA + INDEC ICA + BCRA + CCL (elab. CIGOB)
+2026-05-01,apertura_comercial,4.86,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-04-01,apertura_comercial,5.57,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-03-01,apertura_comercial,4.86,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-02-01,apertura_comercial,5.6,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-01-01,apertura_comercial,5.6,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-12-01,apertura_comercial,4.86,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-11-01,apertura_comercial,4.28,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-10-01,apertura_comercial,4.89,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-09-01,apertura_comercial,5.96,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-08-01,apertura_comercial,5.1,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-07-01,apertura_comercial,9.42,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-06-01,apertura_comercial,10.52,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-05-01,apertura_comercial,7.44,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-04-01,apertura_comercial,7.95,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-03-01,apertura_comercial,7.53,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-02-01,apertura_comercial,7.84,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2025-01-01,apertura_comercial,8.56,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-12-01,apertura_comercial,7.83,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-11-01,apertura_comercial,8.18,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-10-01,apertura_comercial,7.73,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-09-01,apertura_comercial,7.6,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-08-01,apertura_comercial,6.81,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-07-01,apertura_comercial,7.47,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-06-01,apertura_comercial,6.63,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-05-01,apertura_comercial,9.08,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-04-01,apertura_comercial,6.14,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-03-01,apertura_comercial,5.96,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-02-01,apertura_comercial,6.19,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2024-01-01,apertura_comercial,11.83,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2023-12-01,apertura_comercial,9.74,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500

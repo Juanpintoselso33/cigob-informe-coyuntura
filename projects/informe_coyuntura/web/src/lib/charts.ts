@@ -123,11 +123,6 @@ export function componentesDe(key: string, comp: Record<string, number>): { nomb
     idc: { precio: "Precio (BADLAR real)", volumen: "Volumen (depósitos)", asignacion: "Asignación (crédito)" },
     iai: { isac: "Construcción (ISAC)", bk_importados: "Bienes de capital", patentamientos_comerciales: "Patentamientos" },
     icip: { servicios_tech: "Servicios tech", productividad: "Productividad" },
-    apertura_comercial: {
-      b_camb: "Cambiario (0–100)",
-      a_efec: "Arancelario (0–100)",
-      alicuota_efectiva_pct: "Alícuota efectiva (%)",
-    },
     fal_modernizacion_laboral: {
       cobertura_cct: "Cobertura CCT (est. %)",
       adopcion_financiera: "FCI de cese en CNV",

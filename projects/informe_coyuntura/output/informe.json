@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-03T13:44:21.148578",
+  "generated_at": "2026-07-03T14:01:02.409622",
   "period": "2026-07",
-  "score_global": 3.7,
+  "score_global": 3.6,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 4.8,
+      "score": 4.5,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -28,8 +28,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 65,
-          "puntaje_banda": 65,
+          "puntaje_itcm": 72.0,
+          "puntaje_banda": 72.0,
           "peso_efectivo": 0.104
         },
         "reservas_bcra": {
@@ -48,8 +48,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 30,
-          "puntaje_banda": 30,
+          "puntaje_itcm": 36.5,
+          "puntaje_banda": 36.5,
           "peso_efectivo": 0.08
         },
         "idc": {
@@ -67,8 +67,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 60,
-          "puntaje_banda": 60,
+          "puntaje_itcm": 73.0,
+          "puntaje_banda": 73.0,
           "peso_efectivo": 0.08
         },
         "badlar": {
@@ -87,8 +87,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "actividad",
-          "puntaje_itcm": 60,
-          "puntaje_banda": 60,
+          "puntaje_itcm": 61.1,
+          "puntaje_banda": 61.1,
           "peso_efectivo": 0.11
         },
         "saldo_comercial_12m": {
@@ -105,8 +105,8 @@
           "impo_delta_12m": 5193.0,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 85,
-          "puntaje_banda": 85,
+          "puntaje_itcm": 85.0,
+          "puntaje_banda": 85.0,
           "peso_efectivo": 0.096
         },
         "recaudacion": {
@@ -119,8 +119,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 10,
-          "puntaje_banda": 10,
+          "puntaje_itcm": 10.0,
+          "puntaje_banda": 10.0,
           "peso_efectivo": 0.144
         },
         "tcrm": {
@@ -131,8 +131,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "competitividad_externa",
-          "puntaje_itcm": 35,
-          "puntaje_banda": 35,
+          "puntaje_itcm": 47.4,
+          "puntaje_banda": 47.4,
           "peso_efectivo": 0.11
         },
         "rem_ipc_12m": {
@@ -143,8 +143,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 85,
-          "puntaje_banda": 85,
+          "puntaje_itcm": 79.8,
+          "puntaje_banda": 79.8,
           "peso_efectivo": 0.078,
           "equivalente_mensual": 1.76,
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.76% mensual, en la misma escala que el IPC."
@@ -159,8 +159,8 @@
           "m2_real_ia": -6.78,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 60,
-          "puntaje_banda": 60,
+          "puntaje_itcm": 53.1,
+          "puntaje_banda": 53.1,
           "peso_efectivo": 0.078
         },
         "iai": {
@@ -176,8 +176,8 @@
           "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
           "en_indice": true,
           "dimension": "inversion",
-          "puntaje_itcm": 35,
-          "puntaje_banda": 35,
+          "puntaje_itcm": 42.5,
+          "puntaje_banda": 42.5,
           "peso_efectivo": 0.072
         },
         "icip": {
@@ -193,8 +193,8 @@
           "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
           "en_indice": true,
           "dimension": "inversion",
-          "puntaje_itcm": 80,
-          "puntaje_banda": 80,
+          "puntaje_itcm": 73.1,
+          "puntaje_banda": 73.1,
           "peso_efectivo": 0.048
         },
         "prestamos_privados": {
@@ -224,33 +224,33 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 51.7,
+        "valor": 54.7,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
           "estabilidad_monetaria": {
             "nombre": "Estabilidad monetaria-inflacionaria",
             "peso": 0.26,
-            "puntaje": 69.5,
+            "puntaje": 68.7,
             "indicadores": {
               "ipc_total": {
                 "peso": 0.4,
-                "puntaje_banda": 65,
-                "puntaje_aplicado": 65,
+                "puntaje_banda": 72.0,
+                "puntaje_aplicado": 72.0,
                 "valor": 2.15,
                 "peso_efectivo": 0.104
               },
               "rem_ipc_12m": {
                 "peso": 0.3,
-                "puntaje_banda": 85,
-                "puntaje_aplicado": 85,
+                "puntaje_banda": 79.8,
+                "puntaje_aplicado": 79.8,
                 "valor": 1.7607,
                 "peso_efectivo": 0.078
               },
               "idm": {
                 "peso": 0.3,
-                "puntaje_banda": 60,
-                "puntaje_aplicado": 60,
+                "puntaje_banda": 53.1,
+                "puntaje_aplicado": 53.1,
                 "valor": 4.33,
                 "peso_efectivo": 0.078
               }
@@ -264,15 +264,15 @@
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
-                "puntaje_banda": 10,
-                "puntaje_aplicado": 10,
+                "puntaje_banda": 10.0,
+                "puntaje_aplicado": 10.0,
                 "valor": -7.14,
                 "peso_efectivo": 0.144
               },
               "saldo_comercial_12m": {
                 "peso": 0.4,
-                "puntaje_banda": 85,
-                "puntaje_aplicado": 85,
+                "puntaje_banda": 85.0,
+                "puntaje_aplicado": 85.0,
                 "valor": 21221.0,
                 "peso_efectivo": 0.096
               }
@@ -282,19 +282,19 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.16,
-            "puntaje": 45.0,
+            "puntaje": 54.8,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.5,
-                "puntaje_banda": 30,
-                "puntaje_aplicado": 30,
+                "puntaje_banda": 36.5,
+                "puntaje_aplicado": 36.5,
                 "valor": 4122.0,
                 "peso_efectivo": 0.08
               },
               "idc": {
                 "peso": 0.5,
-                "puntaje_banda": 60,
-                "puntaje_aplicado": 60,
+                "puntaje_banda": 73.0,
+                "puntaje_aplicado": 73.0,
                 "valor": 1.0156,
                 "peso_efectivo": 0.08
               }
@@ -304,12 +304,12 @@
           "actividad": {
             "nombre": "Actividad económica",
             "peso": 0.11,
-            "puntaje": 60.0,
+            "puntaje": 61.1,
             "indicadores": {
               "emae_ia": {
                 "peso": 1.0,
-                "puntaje_banda": 60,
-                "puntaje_aplicado": 60,
+                "puntaje_banda": 61.1,
+                "puntaje_aplicado": 61.1,
                 "valor": 1.64,
                 "peso_efectivo": 0.11
               }
@@ -319,12 +319,12 @@
           "competitividad_externa": {
             "nombre": "Competitividad externa",
             "peso": 0.11,
-            "puntaje": 35.0,
+            "puntaje": 47.4,
             "indicadores": {
               "tcrm": {
                 "peso": 1.0,
-                "puntaje_banda": 35,
-                "puntaje_aplicado": 35,
+                "puntaje_banda": 47.4,
+                "puntaje_aplicado": 47.4,
                 "valor": 84.96,
                 "peso_efectivo": 0.11
               }
@@ -334,19 +334,19 @@
           "inversion": {
             "nombre": "Inversión",
             "peso": 0.12,
-            "puntaje": 53.0,
+            "puntaje": 54.7,
             "indicadores": {
               "iai": {
                 "peso": 0.6,
-                "puntaje_banda": 35,
-                "puntaje_aplicado": 35,
+                "puntaje_banda": 42.5,
+                "puntaje_aplicado": 42.5,
                 "valor": -4.2,
                 "peso_efectivo": 0.072
               },
               "icip": {
                 "peso": 0.4,
-                "puntaje_banda": 80,
-                "puntaje_aplicado": 80,
+                "puntaje_banda": 73.1,
+                "puntaje_aplicado": 73.1,
                 "valor": 8.2,
                 "peso_efectivo": 0.048
               }
@@ -485,8 +485,8 @@
       "alerta": null
     },
     "gestion": {
-      "score": 3.1,
-      "estado": "en_tension",
+      "score": 3.0,
+      "estado": "estable",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
@@ -497,26 +497,21 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 85,
-          "puntaje_banda": 85,
+          "puntaje_itcg": 97.7,
+          "puntaje_banda": 97.7,
           "peso_efectivo": 0.14
         },
         "apertura_comercial": {
-          "valor": 81.3,
-          "unidad": "Índice 0–100 (ILCE)",
-          "fuente": "ARCA + INDEC ICA + BCRA (elaboración CIGOB)",
+          "valor": 4.86,
+          "unidad": "% del intercambio (alícuota efectiva)",
+          "fuente": "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
-          "componentes": {
-            "b_camb": 94.9,
-            "a_efec": 67.6,
-            "alicuota_efectiva_pct": 4.86
-          },
-          "detalle_txt": "B_camb 94,9 (brecha 5,38%) · A_efec 67,6 (alícuota efectiva 4,86% del intercambio, 2026-05) · canal aduanero sin fuente pública",
+          "detalle_txt": "US$ 756 M recaudados por derechos de impo+expo sobre US$ 15.570 M de intercambio (2026-05) · canal aduanero sin fuente pública",
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 85,
-          "puntaje_banda": 85,
+          "puntaje_itcg": 67.6,
+          "puntaje_banda": 67.6,
           "peso_efectivo": 0.14
         },
         "desregulacion_normativa": {
@@ -529,8 +524,8 @@
           "detalle_txt": "60 normas con 'deroga' desde dic-2023 (100 = plan completo)",
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 85,
-          "puntaje_banda": 85,
+          "puntaje_itcg": 85.0,
+          "puntaje_banda": 85.0,
           "peso_efectivo": 0.07
         },
         "reduccion_estado": {
@@ -544,8 +539,8 @@
           "detalle_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023",
           "en_indice": true,
           "dimension": "reforma_estado",
-          "puntaje_itcg": 100,
-          "puntaje_banda": 100,
+          "puntaje_itcg": 100.0,
+          "puntaje_banda": 100.0,
           "peso_efectivo": 0.0875
         },
         "gasto_funcionamiento": {
@@ -556,8 +551,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reforma_estado",
-          "puntaje_itcg": 85,
-          "puntaje_banda": 85,
+          "puntaje_itcg": 98.1,
+          "puntaje_banda": 98.1,
           "peso_efectivo": 0.0625
         },
         "masa_salarial": {
@@ -568,8 +563,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reforma_estado",
-          "puntaje_itcg": 100,
-          "puntaje_banda": 100,
+          "puntaje_itcg": 100.0,
+          "puntaje_banda": 100.0,
           "peso_efectivo": 0.05
         },
         "reestructuracion_organismos": {
@@ -582,8 +577,8 @@
           "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
           "en_indice": true,
           "dimension": "reforma_estado",
-          "puntaje_itcg": 40,
-          "puntaje_banda": 40,
+          "puntaje_itcg": 52.5,
+          "puntaje_banda": 52.5,
           "peso_efectivo": 0.05
         },
         "fal_modernizacion_laboral": {
@@ -600,8 +595,8 @@
           "detalle_txt": "0 FCI de cese registrados en CNV · cobertura CCT ~5% (est.) · litigiosidad diferencial sin fuente",
           "en_indice": true,
           "dimension": "reforma_laboral",
-          "puntaje_itcg": 10,
-          "puntaje_banda": 10,
+          "puntaje_itcg": 10.0,
+          "puntaje_banda": 10.0,
           "peso_efectivo": 0.15
         },
         "litigiosidad_laboral": {
@@ -636,8 +631,8 @@
           "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
-          "puntaje_itcg": 65,
-          "puntaje_banda": 65,
+          "puntaje_itcg": 71.4,
+          "puntaje_banda": 71.4,
           "peso_efectivo": 0.06
         },
         "rigi_inversiones": {
@@ -653,8 +648,8 @@
           "detalle_txt": "17 proyectos aprobados (US$ 31.192M) / 25 en evaluación (US$ 110.883M) → 22,0% de la inversión total ya aprobada",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
-          "puntaje_itcg": 40,
-          "puntaje_banda": 40,
+          "puntaje_itcg": 47.5,
+          "puntaje_banda": 47.5,
           "peso_efectivo": 0.06
         },
         "concesiones_infraestructura": {
@@ -675,8 +670,8 @@
           "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Apertura 2º Etapa · II: Adjudicado · III: Dictamen preseleccion publicado",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
-          "puntaje_itcg": 40,
-          "puntaje_banda": 40,
+          "puntaje_itcg": 44.6,
+          "puntaje_banda": 44.6,
           "peso_efectivo": 0.03
         },
         "asistencia_directa": {
@@ -694,8 +689,8 @@
           "detalle_txt": "Devengado 2026: $ 527.680M directo a personas (5.1.4) / $ 527.680M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
           "en_indice": true,
           "dimension": "social_orden",
-          "puntaje_itcg": 100,
-          "puntaje_banda": 100,
+          "puntaje_itcg": 100.0,
+          "puntaje_banda": 100.0,
           "peso_efectivo": 0.04
         },
         "protocolo_antipiquetes": {
@@ -708,8 +703,8 @@
           "desactualizado": true,
           "en_indice": true,
           "dimension": "social_orden",
-          "puntaje_itcg": 85,
-          "puntaje_banda": 85,
+          "puntaje_itcg": 79.0,
+          "puntaje_banda": 79.0,
           "peso_efectivo": 0.04
         },
         "libertad_opcion_salud": {
@@ -724,8 +719,8 @@
           "detalle_txt": "2.660.767 beneficiarios derivados directo a 59 prepagas inscriptas (03/2026) / 8.369.312 usuarios de prepagas (RNEMP 01/2026); canal inexistente pre-DNU 70/23",
           "en_indice": true,
           "dimension": "social_orden",
-          "puntaje_itcg": 65,
-          "puntaje_banda": 65,
+          "puntaje_itcg": 54.8,
+          "puntaje_banda": 54.8,
           "peso_efectivo": 0.02
         },
         "alertas_manifestacion": {
@@ -752,33 +747,33 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 68.5,
+        "valor": 69.8,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "reformas_economicas": {
             "nombre": "Reformas económicas fundamentales",
             "peso": 0.35,
-            "puntaje": 85.0,
+            "puntaje": 83.1,
             "indicadores": {
               "cepo_mulc": {
                 "peso": 0.4,
-                "puntaje_banda": 85,
-                "puntaje_aplicado": 85,
+                "puntaje_banda": 97.7,
+                "puntaje_aplicado": 97.7,
                 "valor": 5.38,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
                 "peso": 0.4,
-                "puntaje_banda": 85,
-                "puntaje_aplicado": 85,
-                "valor": 81.3,
+                "puntaje_banda": 67.6,
+                "puntaje_aplicado": 67.6,
+                "valor": 4.86,
                 "peso_efectivo": 0.14
               },
               "desregulacion_normativa": {
                 "peso": 0.2,
-                "puntaje_banda": 85,
-                "puntaje_aplicado": 85,
+                "puntaje_banda": 85.0,
+                "puntaje_aplicado": 85.0,
                 "valor": 60.0,
                 "peso_efectivo": 0.07
               }
@@ -788,33 +783,33 @@
           "reforma_estado": {
             "nombre": "Reforma del Estado",
             "peso": 0.25,
-            "puntaje": 84.2,
+            "puntaje": 90.0,
             "indicadores": {
               "reduccion_estado": {
                 "peso": 0.35,
-                "puntaje_banda": 100,
-                "puntaje_aplicado": 100,
+                "puntaje_banda": 100.0,
+                "puntaje_aplicado": 100.0,
                 "valor": -19.8,
                 "peso_efectivo": 0.0875
               },
               "gasto_funcionamiento": {
                 "peso": 0.25,
-                "puntaje_banda": 85,
-                "puntaje_aplicado": 85,
+                "puntaje_banda": 98.1,
+                "puntaje_aplicado": 98.1,
                 "valor": -24.35,
                 "peso_efectivo": 0.0625
               },
               "masa_salarial": {
                 "peso": 0.2,
-                "puntaje_banda": 100,
-                "puntaje_aplicado": 100,
+                "puntaje_banda": 100.0,
+                "puntaje_aplicado": 100.0,
                 "valor": -22.98,
                 "peso_efectivo": 0.05
               },
               "reestructuracion_organismos": {
                 "peso": 0.2,
-                "puntaje_banda": 40,
-                "puntaje_aplicado": 40,
+                "puntaje_banda": 52.5,
+                "puntaje_aplicado": 52.5,
                 "valor": 40.0,
                 "peso_efectivo": 0.05
               }
@@ -828,8 +823,8 @@
             "indicadores": {
               "fal_modernizacion_laboral": {
                 "peso": 1.0,
-                "puntaje_banda": 10,
-                "puntaje_aplicado": 10,
+                "puntaje_banda": 10.0,
+                "puntaje_aplicado": 10.0,
                 "valor": 2.9,
                 "peso_efectivo": 0.15
               }
@@ -839,26 +834,26 @@
           "privatizaciones_inversion": {
             "nombre": "Privatizaciones e inversión",
             "peso": 0.15,
-            "puntaje": 50.0,
+            "puntaje": 56.5,
             "indicadores": {
               "privatizaciones": {
                 "peso": 0.4,
-                "puntaje_banda": 65,
-                "puntaje_aplicado": 65,
+                "puntaje_banda": 71.4,
+                "puntaje_aplicado": 71.4,
                 "valor": 51.4,
                 "peso_efectivo": 0.06
               },
               "rigi_inversiones": {
                 "peso": 0.4,
-                "puntaje_banda": 40,
-                "puntaje_aplicado": 40,
+                "puntaje_banda": 47.5,
+                "puntaje_aplicado": 47.5,
                 "valor": 22.0,
                 "peso_efectivo": 0.06
               },
               "concesiones_infraestructura": {
                 "peso": 0.2,
-                "puntaje_banda": 40,
-                "puntaje_aplicado": 40,
+                "puntaje_banda": 44.6,
+                "puntaje_aplicado": 44.6,
                 "valor": 28.7,
                 "peso_efectivo": 0.03
               }
@@ -868,26 +863,26 @@
           "social_orden": {
             "nombre": "Reforma social y orden",
             "peso": 0.1,
-            "puntaje": 87.0,
+            "puntaje": 82.6,
             "indicadores": {
               "asistencia_directa": {
                 "peso": 0.4,
-                "puntaje_banda": 100,
-                "puntaje_aplicado": 100,
+                "puntaje_banda": 100.0,
+                "puntaje_aplicado": 100.0,
                 "valor": 100.0,
                 "peso_efectivo": 0.04
               },
               "protocolo_antipiquetes": {
                 "peso": 0.4,
-                "puntaje_banda": 85,
-                "puntaje_aplicado": 85,
+                "puntaje_banda": 79.0,
+                "puntaje_aplicado": 79.0,
                 "valor": 55.0,
                 "peso_efectivo": 0.04
               },
               "libertad_opcion_salud": {
                 "peso": 0.2,
-                "puntaje_banda": 65,
-                "puntaje_aplicado": 65,
+                "puntaje_banda": 54.8,
+                "puntaje_aplicado": 54.8,
                 "valor": 31.8,
                 "peso_efectivo": 0.02
               }
@@ -928,7 +923,7 @@
       "alerta": null
     }
   },
-  "barbarismo_activo": "tecnocrático",
+  "barbarismo_activo": "político",
   "alerta_multicinturon": false,
   "flags": [
     "desactualizado:politica:cohesion_bloque,gobernadores_alineamiento",

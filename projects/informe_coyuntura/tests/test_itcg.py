@@ -14,50 +14,52 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import itcg
 
-# Fixture jul-2026 con valores realistas de cada indicador:
-#   * cepo_mulc 4,91% (doc: "promesa central cumplida") → banda ≤5 → 100.
-#   * apertura_comercial = ILCE 78 → "apertura condicionada" (70-80) → 65.
-#   * desregulacion_normativa 57% → 85 (el ejemplo explícito del doc).
-#   * reduccion_estado −10,5% vs dic-2023 → banda −12/−8 → 85.
-#   * gasto_funcionamiento −18% real → 85 · masa_salarial −15% real → 85.
-#   * reestructuracion_organismos 40% → banda 20-40 (high inclusivo) → 40.
-#   * fal_modernizacion_laboral (Fondo de Cese) 25 → banda 20-40 → 65.
-#   * privatizaciones 51,4% (cartera del doc: promedio etapa 2,06/4) → 65.
-#   * rigi_inversiones 22,1% (ADR-0011) → banda 10-25 → 40.
-#   * concesiones 35% → banda 15-35 (high inclusivo) → 40.
-#   * asistencia_directa TDPS 96% → 100 · protocolo 52% reducción → 85 ·
-#     libertad_opcion_salud 40% → 65.
-# Dimensiones: económicas=83 estado=76 laboral=65 privatizaciones=50 social=87
-# → ITCG = 0,35×83 + 0,25×76 + 0,15×65 + 0,15×50 + 0,10×87 = 74,0.
+# Fixture jul-2026 con valores realistas de cada indicador. Desde el ADR-0021
+# el puntaje es INTERPOLADO entre las anclas de las bandas (banda de
+# referencia entre paréntesis):
+#   * cepo_mulc 4,91% → 100 (plano bajo la primera ancla).
+#   * apertura_comercial = ALÍCUOTA efectiva 4,86% → 67,6 (la lineal del doc:
+#     0% → 100 · 15% → 0; la brecha salió del compuesto — ADR-0021).
+#   * desregulacion_normativa 57% → 82,0 (banda 85).
+#   * reduccion_estado −10,5% vs dic-2023 → 88,8 (banda 85).
+#   * gasto_funcionamiento −18% real → 81,0 · masa_salarial −15% real → 82,3.
+#   * reestructuracion_organismos 40% → 52,5 (borde de banda: promedio 40/65).
+#   * fal_modernizacion_laboral 25 → 57,9 (banda 65).
+#   * privatizaciones 51,4% → 71,4 (banda 65).
+#   * rigi_inversiones 22,1% → 47,7 (banda 40).
+#   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
+#     protocolo 52% → 76,6 (banda 85) · libertad_opcion_salud 40% → 65 (ancla).
+# Dimensiones: económicas=83,4 estado=78,3 laboral=57,9 privatizaciones=58,1
+# social=83,6 → ITCG = 74,5.
 EJEMPLO = {
-    "cepo_mulc": 4.91,                  # banda ≤5 → 100
-    "apertura_comercial": 78.0,         # banda 70-80 → 65
-    "desregulacion_normativa": 57.0,    # banda 50-70 → 85
-    "reduccion_estado": -10.5,          # banda −12/−8 → 85
-    "gasto_funcionamiento": -18.0,      # banda −25/−15 → 85
-    "masa_salarial": -15.0,             # banda −20/−12 → 85
-    "reestructuracion_organismos": 40.0,  # banda 20-40 → 40
-    "fal_modernizacion_laboral": 25.0,  # banda 20-40 → 65
-    "privatizaciones": 51.4,            # banda 35-55 → 65
-    "rigi_inversiones": 22.1,           # banda 10-25 → 40
-    "concesiones_infraestructura": 35.0,  # banda 15-35 → 40
-    "asistencia_directa": 96.0,         # banda >95 → 100
-    "protocolo_antipiquetes": 52.0,     # banda 50-75 → 85
-    "libertad_opcion_salud": 40.0,      # banda 30-50 → 65
+    "cepo_mulc": 4.91,                  # 100 (plano bajo la primera ancla)
+    "apertura_comercial": 4.86,         # alícuota efectiva % → 67,6
+    "desregulacion_normativa": 57.0,    # 82,0 (banda 85)
+    "reduccion_estado": -10.5,          # 88,8 (banda 85)
+    "gasto_funcionamiento": -18.0,      # 81,0 (banda 85)
+    "masa_salarial": -15.0,             # 82,3 (banda 85)
+    "reestructuracion_organismos": 40.0,  # 52,5 (borde 40/65)
+    "fal_modernizacion_laboral": 25.0,  # 57,9 (banda 65)
+    "privatizaciones": 51.4,            # 71,4 (banda 65)
+    "rigi_inversiones": 22.1,           # 47,7 (banda 40)
+    "concesiones_infraestructura": 35.0,  # 52,5 (borde 40/65)
+    "asistencia_directa": 96.0,         # 100
+    "protocolo_antipiquetes": 52.0,     # 76,6 (banda 85)
+    "libertad_opcion_salud": 40.0,      # 65 (ancla exacta)
 }
 
 
 def test_itcg_reproduce_ejemplo():
     r = itcg.calcular_itcg(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["reformas_economicas"]["puntaje"] == 83.0
-    assert dims["reforma_estado"]["puntaje"] == 76.0
-    assert dims["reforma_laboral"]["puntaje"] == 65.0
-    assert dims["privatizaciones_inversion"]["puntaje"] == 50.0
-    assert dims["social_orden"]["puntaje"] == 87.0
-    assert r["valor"] == 74.0
+    assert dims["reformas_economicas"]["puntaje"] == 83.4
+    assert dims["reforma_estado"]["puntaje"] == 78.3
+    assert dims["reforma_laboral"]["puntaje"] == 57.9
+    assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
+    assert dims["social_orden"]["puntaje"] == 83.6
+    assert r["valor"] == 74.5
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.6
+    assert itcg.tension_de_itcg(r["valor"]) == 2.5
     assert r["ajustes_aplicados"] == []
 
 
@@ -101,11 +103,15 @@ def test_bordes_de_banda():
     assert itcg.puntaje_banda(5.01, b["cepo_mulc"]) == 85
     assert itcg.puntaje_banda(-1.0, b["cepo_mulc"]) == 100   # CCL bajo el mayorista
     assert itcg.puntaje_banda(25.01, b["cepo_mulc"]) == 10
-    # ILCE: matriz de lectura del doc (>90 integrada, 70-90 condicionada, <70 reprimida).
-    assert itcg.puntaje_banda(90.0, b["apertura_comercial"]) == 85
-    assert itcg.puntaje_banda(90.01, b["apertura_comercial"]) == 100
-    assert itcg.puntaje_banda(70.0, b["apertura_comercial"]) == 40
-    assert itcg.puntaje_banda(70.01, b["apertura_comercial"]) == 65
+    # Apertura = alícuota efectiva % (ADR-0021): menor alícuota, mejor puntaje.
+    assert itcg.puntaje_banda(1.0, b["apertura_comercial"]) == 100
+    assert itcg.puntaje_banda(1.01, b["apertura_comercial"]) == 85
+    assert itcg.puntaje_banda(7.0, b["apertura_comercial"]) == 65
+    assert itcg.puntaje_banda(7.01, b["apertura_comercial"]) == 40
+    assert itcg.puntaje_banda(11.01, b["apertura_comercial"]) == 10
+    # y la interpolación reproduce la lineal del doc (0% → 100 · 15% → 0)
+    import parametrica
+    assert parametrica.puntaje_interpolado(4.86, b["apertura_comercial"]) == 67.6
     # Desregulación: 57% → 85 (ejemplo explícito del doc).
     assert itcg.puntaje_banda(57.0, b["desregulacion_normativa"]) == 85
     assert itcg.puntaje_banda(50.0, b["desregulacion_normativa"]) == 65
@@ -139,8 +145,8 @@ def test_renormalizacion_ante_faltantes():
     r = itcg.calcular_itcg(valores)
     d2 = r["dimensiones"]["reforma_estado"]
     assert set(d2["indicadores"]) == {"reduccion_estado", "reestructuracion_organismos"}
-    # (0,35×85 + 0,20×40) / 0,55 = 68,6
-    assert d2["puntaje"] == 68.6
+    # (0,35×88,8 + 0,20×52,5) / 0,55 = 75,6 (puntajes interpolados)
+    assert d2["puntaje"] == 75.6
     pesos = [i["peso_efectivo"] for d in r["dimensiones"].values()
              for i in d["indicadores"].values()]
     assert abs(sum(pesos) - 1.0) <= 0.001
@@ -157,10 +163,10 @@ def test_ajuste_manual_del_analista():
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "protocolo_antipiquetes"
-    assert (aj["de"], aj["a"]) == (85, 40)
+    assert (aj["de"], aj["a"]) == (76.6, 40)
     # D5 = 0,4×100 + 0,4×40 + 0,2×65 = 69
     assert r["dimensiones"]["social_orden"]["puntaje"] == 69.0
-    assert r["valor"] < 74.0
+    assert r["valor"] < 74.5
 
 
 def test_sin_datos_devuelve_none():

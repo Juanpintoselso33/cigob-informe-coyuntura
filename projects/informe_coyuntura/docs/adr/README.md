@@ -33,6 +33,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0018](0018-itvc-parametrica-vida-cotidiana.md) | ITVC-B100: vida cotidiana se puntúa con el índice base 100 = 4T-2023 (doc 260702) — niveles vs salarios, endeudamiento corregido por mora BCRA, tensión = 5−(ITVC−100)×0,2 | Aceptado |
 | [0019](0019-revision-metodologica-parametricas.md) | Revisión metodológica de las 3 paramétricas vs el canon (JRC/OCDE, Ravallion, IDH, DB, ICRG): análisis de sensibilidad implementado (`sensibilidad.py`) + decisiones abiertas (bandas→interpolación, doble conteo brecha/ILCE, concentración I_EC, validación externa) | Parcial |
 | [0020](0020-flag-dimension-critica.md) | Dimensión crítica: la compensabilidad de la agregación lineal se SEÑALIZA (flag + card en rojo cuando puntaje < 30 en bandas / < 85 en base-100), no se corrige — resuelve la Decisión 2 del ADR-0019 | Aceptado |
+| [0021](0021-interpolacion-y-apertura-sin-brecha.md) | ITCM/ITCG puntúan por INTERPOLACIÓN entre las anclas de las bandas del doc (adiós escalones: ITCM 51,7→54,7 · tensión −0,3) y apertura comercial = alícuota efectiva sola (la brecha puntúa una vez, en cepo_mulc) — resuelve las Decisiones 3 y 4 del ADR-0019 | Aceptado |
 
 ## Contexto general
 
