@@ -32,8 +32,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Acumulado de 12 meses del intercambio de bienes (ICA, INDEC), en millones de USD.",
   },
   reservas_bcra: {
-    latex: String.raw`\text{netas}=\text{brutas}-\underbrace{\text{swap} + \text{encajes USD} + \text{otros}}_{\text{plata que no es del BCRA}}+\text{dep. del Tesoro}`,
-    leyenda: "Planilla SDDS del BCRA (drenajes de la Sección II) + depósitos del Tesoro en USD del balance (ADR-0005). Lo que de verdad hay para intervenir.",
+    latex: String.raw`\text{netas}=\text{brutas}-\underbrace{\text{swap} + \text{encajes USD} + \text{otros}}_{\text{fondos comprometidos, no disponibles}}+\text{dep. del Tesoro}`,
+    leyenda: "Planilla SDDS del BCRA (drenajes de la Sección II) + depósitos del Tesoro en USD del balance (ADR-0005): las divisas de libre disponibilidad, descontando las que figuran en el activo pero están comprometidas.",
   },
   idc: {
     latex: String.raw`0{,}30\cdot\underbrace{\text{precio}}_{\text{BADLAR real}}\;+\;0{,}40\cdot\underbrace{\text{volumen}}_{\text{depósitos reales}}\;+\;0{,}30\cdot\underbrace{\text{asignación}}_{\text{préstamos/depósitos}}`,
@@ -111,7 +111,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   asistencia_directa: {
     latex: String.raw`\frac{\text{pagado directo a las personas}}{\text{total de transferencias del programa}}\times 100`,
-    leyenda: "Ejecución presupuestaria real (partida 5.1.4 sobre el total) de los programas sucesores del Potenciar: cuánta plata social llega sin intermediarios (ADR-0015).",
+    leyenda: "Ejecución presupuestaria real (partida 5.1.4 sobre el total) de los programas sucesores del Potenciar: qué proporción de la asistencia llega sin intermediarios (ADR-0015).",
   },
   protocolo_antipiquetes: {
     latex: String.raw`\left(1-\frac{\text{cortes de calle}_{\text{hoy}}}{\text{cortes de calle}_{2023}}\right)\times 100`,
@@ -129,7 +129,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   ipc_alimentos: {
     latex: String.raw`100\cdot\frac{\left(\text{salario}\,/\,\text{precio de alimentos}\right)_{\text{hoy}}}{\left(\text{salario}\,/\,\text{precio de alimentos}\right)_{\text{4T-23}}}`,
-    leyenda: "Poder de compra de alimentos del salario: cuánta comida compra el RIPTE hoy contra el arranque del mandato. Más de 100 = el sueldo rinde más en el changuito. (La card muestra la variación mensual del rubro.)",
+    leyenda: "Poder de compra de alimentos del salario: cuántos alimentos compra el salario registrado hoy contra el arranque del mandato. Más de 100 = el salario rinde más en la góndola. (La card muestra la variación mensual del rubro.)",
   },
   peso_tarifas: {
     latex: String.raw`100\cdot\frac{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{hoy}}}{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{4T-23}}}`,
