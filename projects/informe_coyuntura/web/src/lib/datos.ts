@@ -29,9 +29,11 @@ export interface IndiceParametrico {
   dimensiones: Record<string, DimensionIndice>;
   ajustes_aplicados: { indicador: string; de: number; a: number; justificacion: string }[];
   // Rango de robustez p05-p95 (Monte Carlo sobre pesos y umbrales, ADR-0019)
+  // + histograma de la simulación para el gráfico de distribución
   robustez?: { p05: number; p95: number; tension_rango: [number, number];
                dominante: { indicador: string; indice_sin: number } | null;
-               n_draws: number; metodo: string };
+               n_draws: number; metodo: string;
+               hist?: number[]; hist_min?: number; hist_max?: number };
 }
 export interface Cinturon {
   score: number;

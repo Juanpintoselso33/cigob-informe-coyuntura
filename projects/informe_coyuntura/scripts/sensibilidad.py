@@ -156,20 +156,44 @@ def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
 
 
 def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
-                      n_draws: int = 1000) -> dict:
+                      n_draws: int = 1000, n_bins: int = 36) -> dict:
     """Versión compacta para el snapshot publicado: rango p05-p95 del
     experimento combinado + su traducción a tensión + el componente dominante
-    (mayor |Δ| del leave-one-out)."""
-    r = analizar_bloque(bloque, bandas, tension_fn, n_draws=n_draws)
-    comb = r["experimentos"]["combinado"]
-    dominante = next(iter(r["leave_one_out"].items()), None)
+    (mayor |Δ| del leave-one-out) + el HISTOGRAMA de la simulación (n_bins
+    bins entre el mínimo y el máximo de los draws) para el gráfico de
+    distribución de la web."""
+    dims = _estructura(bloque)
+    rng = random.Random(SEMILLA)
+    draws = [_perturbar(dims, rng, pesos=True, bandas=bandas) for _ in range(n_draws)]
+    qs = statistics.quantiles(draws, n=20)
+    p05, p95 = round(qs[0], 1), round(qs[-1], 1)
+
+    lo, hi = min(draws), max(draws)
+    hist = [0] * n_bins
+    if hi > lo:
+        for v in draws:
+            hist[min(n_bins - 1, int((v - lo) / (hi - lo) * n_bins))] += 1
+
+    base = _agregar(dims)
+    loo = {}
+    for dk, d in dims.items():
+        for ik in d["ind"]:
+            d2 = {k: {"peso": v["peso"], "ind": {i: dict(x) for i, x in v["ind"].items()}}
+                  for k, v in dims.items()}
+            del d2[dk]["ind"][ik]
+            loo[ik] = round(_agregar(d2), 1)
+    dominante = max(loo.items(), key=lambda kv: abs(kv[1] - base), default=None)
+
     return {
-        "p05": comb["p05"],
-        "p95": comb["p95"],
-        "tension_rango": r["tension"]["rango_combinado"],
+        "p05": p05,
+        "p95": p95,
+        "tension_rango": [tension_fn(p95), tension_fn(p05)],
         "dominante": ({"indicador": dominante[0],
                        "indice_sin": dominante[1]} if dominante else None),
         "n_draws": n_draws,
+        "hist": hist,
+        "hist_min": round(lo, 2),
+        "hist_max": round(hi, 2),
         "metodo": "pesos ±20% + bandas vecinas 7,5% (MC, ADR-0019)",
     }
 
