@@ -481,15 +481,19 @@ def _itvc_indices(vida_ind, series):
 VALIDACION_EXTERNA_PATH = ROOT / "output" / "validacion_externa.json"
 
 
+def _cargar_validacion():
+    try:
+        return json.loads(VALIDACION_EXTERNA_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
 def _validacion_itvc(bloque, series):
     """Anexa al bloque ITVC la validación externa (ADR-0019 D6): la serie
     mensual del ITVC recalculado SIN su componente ICC (para no ser circular)
     junto a la serie del ICC UTDT, con las correlaciones del estudio
     (scripts/validacion_externa.py — correr ese script actualiza el insumo)."""
-    try:
-        val = json.loads(VALIDACION_EXTERNA_PATH.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return
+    val = _cargar_validacion()
     sin_icc = val.get("serie_itvc_sin_icc") or {}
     icc = {p["fecha"][:7]: p["valor"] for p in (series.get("icc_utdt") or [])}
     comunes = sorted(set(sin_icc) & set(icc))
@@ -498,12 +502,64 @@ def _validacion_itvc(bloque, series):
     corr = val.get("correlaciones", {})
     niveles = corr.get("niveles (ITVC sin ICC vs ICC)") or {}
     difs = corr.get("primeras diferencias (sin ICC)") or {}
+    coma = lambda x: str(x).replace(".", ",")
+    r_niv, r_dif = niveles.get("r"), difs.get("r")
     bloque["validacion"] = {
-        "r_niveles": niveles.get("r"),
-        "r_diferencias": difs.get("r"),
-        "n": niveles.get("n"),
+        "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
         "pares": [[m, sin_icc[m], icc[m]] for m in comunes],
-        "contra": "ICC (confianza del consumidor, UTDT)",
+        "plot": "rebase100",
+        "titulo": "¿El ITVC acompaña la percepción de la gente?",
+        "sub": ("Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables "
+                "externas relacionadas que no lo componen. El ITVC se recalcula sin su componente "
+                "de confianza (el ICC pesa 7,5% del índice) para que la comparación no sea "
+                "circular, y se contrasta con el ICC de UTDT — percepción del consumidor, "
+                "fuente totalmente independiente."),
+        "serie_label": "ITVC sin su componente de confianza",
+        "externa_label": "ICC (confianza del consumidor, UTDT)",
+        "trans_label": "ambas series rebaseadas a 100 en el primer mes",
+        "conclusion": (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
+                       f"a mes: ni redundante (cercana a 1 diría que el índice sobra) ni "
+                       f"desconectada (cercana a 0 diría que no capta la experiencia vivida). "
+                       f"Las condiciones materiales y el ánimo se mueven juntos, pero miden "
+                       f"cosas distintas."),
+    }
+
+
+def _validacion_itcm(bloque):
+    """Anexa al bloque ITCM su validación externa: la serie mensual del índice
+    (reconstruida por el estudio desde las series de componentes) contra el
+    riesgo país (EMBI) — correlación negativa esperada."""
+    val = _cargar_validacion()
+    serie = val.get("serie_itcm") or {}
+    riesgo = val.get("riesgo_pais_mensual") or {}
+    comunes = sorted(set(serie) & set(riesgo))
+    if len(comunes) < 12:
+        return
+    corr = val.get("correlaciones_itcm", {})
+    niveles = corr.get("niveles (ITCM vs riesgo país)") or {}
+    difs = corr.get("primeras diferencias (ITCM vs riesgo)") or {}
+    coma = lambda x: str(x).replace(".", ",")
+    r_niv, r_dif = niveles.get("r"), difs.get("r")
+    bloque["validacion"] = {
+        "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
+        "pares": [[m, serie[m], riesgo[m]] for m in comunes],
+        "plot": "minmax_inv",
+        "titulo": "¿El ITCM se mueve con el precio del riesgo argentino?",
+        "sub": ("El contraste natural del cinturón macro es el mercado: si la tensión "
+                "macroeconómica afloja, la Argentina debería pagar menos por su deuda. El ITCM "
+                "se reconstruye mes a mes desde las series de diez de sus doce componentes "
+                "(sin el capítulo inversión ni los ajustes del analista: el nivel puede diferir "
+                "del publicado — lo que valida es su evolución) y se compara con el riesgo "
+                "país (EMBI), que no integra el índice. La correlación esperada es negativa: "
+                "más ITCM (menos tensión), menos riesgo país."),
+        "serie_label": "ITCM (reconstrucción mensual)",
+        "externa_label": "riesgo país (EMBI, invertido)",
+        "trans_label": "series normalizadas al rango del período; el riesgo país se muestra invertido",
+        "conclusion": (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
+                       f"a mes: el signo negativo es exactamente el esperado — cuando el índice "
+                       f"sube (la macro afloja), el mercado cobra menos por el riesgo argentino. "
+                       f"En el gráfico el riesgo país se muestra invertido para leer el "
+                       f"co-movimiento en la misma dirección."),
     }
 
 
@@ -579,6 +635,8 @@ def aplicar_scoring(informe, series):
             for oculto in MACRO_OCULTOS:
                 c["indicadores"].pop(oculto, None)
             _scoring_indice(c, "itcm", itcm, MACRO_CONTEXTO, _macro_input_txt)
+            if c.get("itcm"):
+                _validacion_itcm(c["itcm"])
             continue
         if ckey == "gestion":
             _scoring_indice(c, "itcg", itcg, GESTION_CONTEXTO, _gestion_input_txt)

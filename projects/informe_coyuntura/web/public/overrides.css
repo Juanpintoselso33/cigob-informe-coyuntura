@@ -184,8 +184,10 @@
 .cg-dimm--gestion  .cg-dimm-val strong { color: var(--c-gestion); }
 .cg-dimm--espiritu .cg-dimm-val strong { color: var(--c-humor); }
 
-/* Validación externa (segunda card de la sección Robustez) */
-.cg-val { margin-top: 18px; }
+/* Validación externa (segundo bloque de la sección Robustez, con cabecera
+   propia — misma estructura que el bloque Monte Carlo) */
+.cg-val-head { margin-top: 42px; }
+.cg-val { margin-top: 0; }
 .cg-val .cg-rob-svg { margin: 12px 0 6px; }
 .cg-val-leyenda {
     display: flex; flex-wrap: wrap; align-items: center; gap: 14px;

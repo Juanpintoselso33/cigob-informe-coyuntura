@@ -1,9 +1,14 @@
-"""validacion_externa.py — Validación de constructo del ITVC (ADR-0019, Decisión 6).
+"""validacion_externa.py — Validación de constructo del ITVC y el ITCM (ADR-0019, D6).
 
 Paso 9 del Handbook JRC/OCDE ("links to other variables"): si el índice mide
 lo que dice medir, debería co-moverse con variables externas relacionadas que
-NO lo componen. Acá: el ITVC (condiciones materiales de la vida cotidiana)
-contra el ICC de UTDT (percepción del consumidor).
+NO lo componen. Dos estudios:
+  * ITVC (condiciones materiales de la vida cotidiana) contra el ICC de UTDT
+    (percepción del consumidor) — correlación positiva esperada.
+  * ITCM (tensión macroeconómica, reconstrucción mensual desde las series de
+    componentes con puntaje interpolado) contra el RIESGO PAÍS (EMBI, puntos
+    básicos, ArgentinaDatos) — correlación NEGATIVA esperada: menos tensión
+    macro, menos paga la Argentina por su deuda.
 
 Para que la comparación no sea circular (el ICC es un componente del ITVC,
 7,5% del peso), la serie del ITVC se recalcula EXCLUYENDO al ICC — la
@@ -29,10 +34,15 @@ import statistics
 import sys
 from pathlib import Path
 
+import requests
+
 sys.path.insert(0, str(Path(__file__).parent))
 sys.stdout.reconfigure(encoding="utf-8")
 
+import itcm
 import itvc
+
+RIESGO_PAIS_URL = "https://api.argentinadatos.com/v1/finanzas/indices/riesgo-pais"
 
 ROOT = Path(__file__).resolve().parents[1]
 SERIES = ROOT / "web" / "src" / "data" / "series.json"
@@ -130,6 +140,57 @@ def construir_series_itvc() -> tuple:
     return itvc_full, itvc_sin_icc, icc
 
 
+def construir_serie_itcm() -> dict:
+    """Serie mensual del ITCM reconstruida desde las series de componentes
+    (mismo motor, puntaje interpolado, sin overrides del analista): 10 de los
+    12 componentes tienen serie; IAI/ICIP faltan y el motor renormaliza.
+    Reservas netas solo desde jun-2024 (límite de fuente documentado)."""
+    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    m = lambda k: _mensual(series.get(k) or [])
+    ipc_nivel = m("ipc_total")            # NIVEL del índice → m/m por cociente
+    rem = m("rem_ipc_12m")                # % anual → equivalente mensual
+    saldo = m("saldo_comercial")          # M USD mensual → suma móvil 12m
+    directos = {k: m(k) for k in ("idm", "recaudacion", "reservas_bcra", "idc",
+                                  "credito_privado", "emae_ia", "tcrm")}
+
+    def saldo_12m(ym):
+        yms = sorted(saldo)
+        if ym not in yms or yms.index(ym) < 11:
+            return None
+        win = yms[yms.index(ym) - 11:yms.index(ym) + 1]
+        a0, m0 = int(win[0][:4]), int(win[0][5:7])
+        af, mf = int(win[-1][:4]), int(win[-1][5:7])
+        return sum(saldo[k] for k in win) if (af * 12 + mf) - (a0 * 12 + m0) == 11 else None
+
+    out = {}
+    ult = max(ipc_nivel)
+    for ym in _meses("2023-12", ult):
+        prev = sorted(k for k in ipc_nivel if k < ym)
+        valores = {
+            "ipc_total": ((ipc_nivel[ym] / ipc_nivel[prev[-1]] - 1) * 100
+                          if ym in ipc_nivel and prev else None),
+            "rem_ipc_12m": (itcm.rem_mensual_equivalente(rem[ym])
+                            if ym in rem else None),
+            "saldo_comercial_12m": saldo_12m(ym),
+            **{k: v.get(ym) for k, v in directos.items()},
+        }
+        r = itcm.calcular_itcm(valores)
+        if r:
+            out[ym] = r["valor"]
+    return out
+
+
+def fetch_riesgo_pais_mensual() -> dict:
+    """Promedio mensual del riesgo país (EMBI, pb) desde ArgentinaDatos."""
+    r = requests.get(RIESGO_PAIS_URL, timeout=30)
+    r.raise_for_status()
+    por_mes = {}
+    for p in r.json():
+        if p.get("valor") and p["fecha"] >= "2023-11":
+            por_mes.setdefault(p["fecha"][:7], []).append(float(p["valor"]))
+    return {ym: round(sum(v) / len(v), 0) for ym, v in por_mes.items()}
+
+
 def _pearson(a: dict, b: dict) -> tuple:
     comunes = sorted(set(a) & set(b))
     if len(comunes) < 6:
@@ -171,6 +232,29 @@ def main():
         r, n = _pearson(a, b)
         resultados["correlaciones"][nombre] = {"r": r, "n": n}
         print(f"  {nombre}: r = {r}  (n = {n})")
+
+    # ── ITCM vs riesgo país (correlación negativa esperada) ────────────────
+    serie_itcm = construir_serie_itcm()
+    print(f"\nserie ITCM reconstruida: {len(serie_itcm)} meses "
+          f"({min(serie_itcm)} → {max(serie_itcm)}) · último: {serie_itcm[max(serie_itcm)]}")
+    resultados["serie_itcm"] = serie_itcm
+    try:
+        riesgo = fetch_riesgo_pais_mensual()
+        resultados["riesgo_pais_mensual"] = riesgo
+        pares_m = {
+            "niveles (ITCM vs riesgo país)": (serie_itcm, riesgo),
+            "primeras diferencias (ITCM vs riesgo)": (_difs(serie_itcm), _difs(riesgo)),
+            "ITCM adelantado 1 mes vs riesgo": (_lag(serie_itcm, 1), riesgo),
+            "riesgo adelantado 1 mes vs ITCM": (serie_itcm, _lag(riesgo, 1)),
+        }
+        resultados["correlaciones_itcm"] = {}
+        print("correlaciones ITCM (Pearson, negativa = válida):")
+        for nombre, (a, b) in pares_m.items():
+            r, n = _pearson(a, b)
+            resultados["correlaciones_itcm"][nombre] = {"r": r, "n": n}
+            print(f"  {nombre}: r = {r}  (n = {n})")
+    except Exception as e:
+        print(f"[WARN] riesgo país no disponible: {e}")
 
     SALIDA.write_text(json.dumps(resultados, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n[OK] {SALIDA}")

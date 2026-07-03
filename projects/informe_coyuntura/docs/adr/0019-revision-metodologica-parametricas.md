@@ -187,12 +187,22 @@ UTDT (encuesta de percepción, fuente totalmente independiente):
   ánimo, no al revés.
 
 **Lectura:** validez de constructo razonable para un índice de 3 meses de
-diseño. **Publicado en la web** (03-jul-2026): card "Validación externa" en
-la sección Robustez de vida cotidiana, con el gráfico de co-movimiento
-(ambas series rebaseadas a 100 en el primer mes común) y las correlaciones;
-`publicar._validacion_itvc` embebe el estudio en el snapshot — correr
-`validacion_externa.py` lo actualiza. Pendiente opcional: ITCM↔riesgo país
-(requiere verificar fuente EMBI).
+diseño. **Publicado en la web** (03-jul-2026): bloque "Validación externa"
+en la sección Robustez (cabecera propia + card, misma estructura que el
+bloque Monte Carlo), con el gráfico de co-movimiento y las correlaciones;
+`publicar._validacion_*` embebe el estudio en el snapshot — correr
+`validacion_externa.py` lo actualiza.
+
+**Ampliación (03-jul-2026): ITCM ↔ riesgo país.** El estudio reconstruye
+también la serie mensual del ITCM (10 de 12 componentes tienen serie; sin
+capítulo inversión ni overrides — el nivel difiere del publicado, valida la
+EVOLUCIÓN) y la contrasta con el riesgo país (EMBI, promedio mensual,
+ArgentinaDatos, serie diaria desde 1999): **r = −0,73 en niveles** (n=30) —
+el signo negativo esperado: cuando el ITCM sube (la macro afloja), el
+mercado cobra menos por el riesgo argentino. Publicado en la página de
+macro con el riesgo país invertido y series normalizadas al rango.
+Pendiente opcional: ITCG↔ICG UTDT (confianza en el gobierno) — requiere
+scraper del ICG y reconstrucción mensual del ITCG.
 
 ## Consecuencias
 
