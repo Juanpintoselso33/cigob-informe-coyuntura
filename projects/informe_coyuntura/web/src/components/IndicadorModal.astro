@@ -1,6 +1,7 @@
 ---
 import { informe, series, label, presentacion, UNIDADES_LARGAS, CINTURONES, BARRA_0_100 } from "../lib/datos.ts";
 import { DESCRIPCIONES, DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
+import { FORMULAS } from "../lib/formulas.ts";
 
 const CINT_NOMBRE: Record<string, string> = {
   macro: "Macroeconomía", politica: "Política",
@@ -38,6 +39,8 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       valorNum: typeof ind.valor === "number" ? ind.valor : null,
       es0100: BARRA_0_100.has(ikey),
       unidadCorta: p.unidad ?? "",
+      formula: FORMULAS[ikey]?.latex ?? null,
+      formulaLeyenda: FORMULAS[ikey]?.leyenda ?? null,
     };
   }
 }
@@ -90,6 +93,11 @@ const dimsJson = JSON.stringify(dims);
     <p class="cg-modal-desc" id="cg-modal-que"></p>
     <div class="cg-modal-aporta" id="cg-modal-aporta"></div>
     <dl class="cg-modal-ficha" id="cg-modal-ficha"></dl>
+    <div class="cg-modal-formula" id="cg-modal-formula" hidden>
+      <h4 class="cg-modal-h4">Cómo se construye</h4>
+      <div class="cg-formula-math" id="cg-formula-math"></div>
+      <p class="cg-formula-leyenda" id="cg-formula-leyenda"></p>
+    </div>
     <div class="cg-modal-score" id="cg-modal-score"></div>
     <h4 class="cg-modal-h4" id="cg-modal-serie-h">Evolución histórica</h4>
     <div class="cg-chart-modal" id="cg-modal-chart" role="img" aria-label="Gráfico del indicador" hidden></div>
@@ -110,6 +118,17 @@ const dimsJson = JSON.stringify(dims);
   async function ensureCharts() {
     if (!CHARTS) CHARTS = await import("../lib/charts.ts");
     return CHARTS;
+  }
+  // KaTeX también on-demand: la fórmula "Cómo se construye" del modal.
+  let MATH = null;
+  async function mostrarFormula(latex, leyenda) {
+    const caja = document.getElementById("cg-modal-formula");
+    if (!latex) { caja.setAttribute("hidden", ""); return; }
+    caja.removeAttribute("hidden");
+    document.getElementById("cg-formula-leyenda").textContent = leyenda || "";
+    document.getElementById("cg-formula-leyenda").style.display = leyenda ? "" : "none";
+    if (!MATH) MATH = await import("../lib/math.ts");
+    MATH.renderFormula(document.getElementById("cg-formula-math"), latex);
   }
   const INFO = JSON.parse(document.getElementById("cg-info-data").textContent);
   const SERIES = JSON.parse(document.getElementById("cg-series-data").textContent);
@@ -197,6 +216,7 @@ const dimsJson = JSON.stringify(dims);
         celda("Tipo de dato", d.tipo || "—") +
         celda("Actualización", `${d.fecha || "—"} · ${d.estado}`) +
         celda("Fuente", fuenteCorta, d.fuente);
+      mostrarFormula(d.formula, d.formulaLeyenda);
 
       const score = document.getElementById("cg-modal-score");
       if (d.aporteScore != null) {
@@ -289,6 +309,10 @@ const dimsJson = JSON.stringify(dims);
         ["Agregación", "Promedio ponderado (interpolado)"],
         ["Ajustes del analista", d.ajustes.length ? `${d.ajustes.length} vigente${d.ajustes.length > 1 ? "s" : ""}` : "ninguno"],
       ].map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
+      mostrarFormula(
+        String.raw`\mathrm{Dim}=\sum_i w_i\,p_i^{\mathrm{interp}}\qquad\Big/\qquad \mathrm{aporte}=w_{\mathrm{dim}}\cdot \mathrm{Dim}`,
+        "w = pesos internos de la paramétrica · p = puntaje interpolado de cada indicador (ADR-0021). Ante un faltante, los pesos se renormalizan.",
+      );
 
       const filas = d.comps.map(cmp => {
         const pct = d.base100
