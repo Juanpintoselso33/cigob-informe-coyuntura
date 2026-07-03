@@ -54,7 +54,7 @@
     "unidad": "% de reducción de cortes por manifestación en CABA vs promedio 2023",
     "estado": "estimado",
     "fuente": "Diagnóstico Político (vía doc CIGOB 260702) — CABA",
-    "notas": "CABA: caída superior al 50% en 2024 sostenida en 2025 (240 cortes, 6,2% del total nacional vs 11,3% en 2023). ADVERTENCIA DE PRIMER ORDEN: protocolo anulado judicialmente el 29-dic-2025 (amparo CELS, juez Cormick), en apelación — la caída posterior ya no es atribuible al instrumento; usar ajustes_itcg.json si corresponde bajar el puntaje. Automatización EN CURSO: el poller GTFS-RT (alertas_manifestacion) acumula serie propia desde jul-2026 (ADR-0014); el registro histórico oficial del GCBA está muerto.",
+    "notas": "CABA: caída superior al 50% en 2024 sostenida en 2025 (240 cortes, 6,2% del total nacional vs 11,3% en 2023). ESTADO JUDICIAL (verificado 03-jul-2026): la nulidad de 1ª instancia (29-dic-2025, amparo CELS, juez Cormick) tuvo apelación con efecto suspensivo inmediato y fue REVOCADA por la Sala III de la Cámara Cont. Adm. Federal el 31-mar-2026 (jueces Fernández y Morán): el protocolo es un acto válido y plenamente vigente — no corresponde override en ajustes_itcg mientras no haya revés en la Corte.json si corresponde bajar el puntaje. Automatización EN CURSO: el poller GTFS-RT (alertas_manifestacion) acumula serie propia desde jul-2026 (ADR-0014); el registro histórico oficial del GCBA está muerto.",
     "fecha_dato": "2026-06-30"
   },
   "libertad_opcion_salud": {
