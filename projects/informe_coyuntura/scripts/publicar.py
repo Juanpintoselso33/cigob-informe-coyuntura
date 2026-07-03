@@ -20,6 +20,7 @@ from config import PESOS_CINTURONES, UMBRALES        # pesos y umbrales del info
 import itcm                                           # bandas y pesos del ITCM macro
 import itcg                                           # bandas y pesos del ITCG gestión
 import itvc                                           # pesos y rebase del ITVC vida cotidiana
+import sensibilidad                                   # rango de robustez (ADR-0019)
 
 
 def _add(out, key, valor, unidad, fuente, fecha, **extra):
@@ -281,6 +282,16 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
     contexto y no aportan."""
     ajustes = {a["indicador"]: a for a in (c.get(clave) or {}).get("ajustes_aplicados", [])}
     sigla = clave.upper()
+    # Rango de robustez (ADR-0019): pesos ±20% + bandas vecinas, MC con semilla
+    # fija → p05-p95 publicado junto al valor puntual del índice.
+    bloque = c.get(clave)
+    if bloque and bloque.get("dimensiones"):
+        try:
+            bloque["robustez"] = sensibilidad.robustez_compacta(
+                bloque, getattr(mod, f"BANDAS_{sigla}"),
+                lambda v: round((100 - v) / 10, 1))
+        except Exception as e:
+            print(f"[WARN] robustez {sigla}: {e}")
     for ikey, ind in c["indicadores"].items():
         aporte = formula = nota = None
         p = ind.get(f"puntaje_{clave}")
@@ -438,6 +449,11 @@ def _scoring_vida_itvc(c, series):
     if resultado:
         c["score"] = itvc.tension_de_itvc(resultado["valor"])
         c["estado"] = _estado(c["score"])
+        try:
+            resultado["robustez"] = sensibilidad.robustez_compacta(
+                resultado, None, itvc.tension_de_itvc)
+        except Exception as e:
+            print(f"[WARN] robustez ITVC: {e}")
 
     ajustados = {a["indicador"]: a for a in (resultado or {}).get("ajustes_aplicados", [])}
     por_ind = {}

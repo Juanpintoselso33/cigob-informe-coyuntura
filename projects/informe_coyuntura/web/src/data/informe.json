@@ -403,7 +403,21 @@
             "peso_efectivo": 0.12
           }
         },
-        "ajustes_aplicados": []
+        "ajustes_aplicados": [],
+        "robustez": {
+          "p05": 47.4,
+          "p95": 56.5,
+          "tension_rango": [
+            4.3,
+            5.3
+          ],
+          "dominante": {
+            "indicador": "recaudacion",
+            "indice_sin": 62.5
+          },
+          "n_draws": 1000,
+          "metodo": "pesos ±20% + bandas vecinas 7,5% (MC, ADR-0019)"
+        }
       },
       "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."
     },
@@ -840,7 +854,21 @@
             "peso_efectivo": 0.15
           }
         },
-        "ajustes_aplicados": []
+        "ajustes_aplicados": [],
+        "robustez": {
+          "p05": 90.3,
+          "p95": 93.9,
+          "tension_rango": [
+            6.2,
+            6.9
+          ],
+          "dominante": {
+            "indicador": "endeudamiento_familiar",
+            "indice_sin": 98.8
+          },
+          "n_draws": 1000,
+          "metodo": "pesos ±20% + bandas vecinas 7,5% (MC, ADR-0019)"
+        }
       }
     },
     "gestion": {
@@ -1308,7 +1336,21 @@
             "peso_efectivo": 0.1
           }
         },
-        "ajustes_aplicados": []
+        "ajustes_aplicados": [],
+        "robustez": {
+          "p05": 64.0,
+          "p95": 72.9,
+          "tension_rango": [
+            2.7,
+            3.6
+          ],
+          "dominante": {
+            "indicador": "fal_modernizacion_laboral",
+            "indice_sin": 78.8
+          },
+          "n_draws": 1000,
+          "metodo": "pesos ±20% + bandas vecinas 7,5% (MC, ADR-0019)"
+        }
       },
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
     },

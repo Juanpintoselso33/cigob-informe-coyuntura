@@ -38,7 +38,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = ROOT / "web" / "src" / "data" / "informe.json"
 SALIDA = ROOT / "output" / "sensibilidad.json"
 
-N_DRAWS = int(sys.argv[1]) if len(sys.argv) > 1 else 2000
+N_DRAWS = 2000              # override por CLI en main() — no parsear argv al importar
 SEMILLA = 20260703          # fija: el análisis es reproducible corrida a corrida
 RUIDO_PESO = 0.20           # pesos × U(1−r, 1+r)
 PROB_SALTO_BANDA = 0.075    # probabilidad de saltar a la banda vecina, por lado
@@ -115,19 +115,24 @@ def _resumen(muestras: list) -> dict:
             "desvio": round(statistics.pstdev(muestras), 2)}
 
 
-def analizar(nombre: str, bloque: dict, cfg: dict) -> dict:
+def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
+                    n_draws: int = N_DRAWS) -> dict:
+    """Análisis completo de un bloque de índice publicado (dimensiones con
+    puntajes): experimentos de pesos/bandas/combinado + leave-one-out.
+    Función PURA sobre el bloque — la usa este script y también publicar.py
+    para adjuntar el rango de robustez al snapshot (ADR-0019, Decisión 1)."""
     dims = _estructura(bloque)
     base = _agregar(dims)
     rng = random.Random(SEMILLA)
 
     exp = {"pesos": [], "combinado": []}
-    if cfg["bandas"]:
+    if bandas:
         exp["bandas"] = []
-    for _ in range(N_DRAWS):
+    for _ in range(n_draws):
         exp["pesos"].append(_perturbar(dims, rng, pesos=True, bandas=None))
-        if cfg["bandas"]:
-            exp["bandas"].append(_perturbar(dims, rng, pesos=False, bandas=cfg["bandas"]))
-        exp["combinado"].append(_perturbar(dims, rng, pesos=True, bandas=cfg["bandas"]))
+        if bandas:
+            exp["bandas"].append(_perturbar(dims, rng, pesos=False, bandas=bandas))
+        exp["combinado"].append(_perturbar(dims, rng, pesos=True, bandas=bandas))
 
     loo = {}
     for dk, d in dims.items():
@@ -137,17 +142,42 @@ def analizar(nombre: str, bloque: dict, cfg: dict) -> dict:
             del d2[dk]["ind"][ik]
             loo[ik] = round(_agregar(d2), 1)
 
-    t = cfg["tension"]
-    resultado = {
+    t = tension_fn
+    comb = _resumen(exp["combinado"])
+    return {
         "valor_publicado": bloque["valor"],
         "valor_recomputado": round(base, 1),
         "experimentos": {k: _resumen(v) for k, v in exp.items()},
         "leave_one_out": dict(sorted(loo.items(), key=lambda kv: abs(kv[1] - base),
                                      reverse=True)),
         "tension": {"base": t(base),
-                    "rango_combinado": [t(_resumen(exp["combinado"])["p95"]),
-                                        t(_resumen(exp["combinado"])["p05"])]},
+                    "rango_combinado": [t(comb["p95"]), t(comb["p05"])]},
     }
+
+
+def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
+                      n_draws: int = 1000) -> dict:
+    """Versión compacta para el snapshot publicado: rango p05-p95 del
+    experimento combinado + su traducción a tensión + el componente dominante
+    (mayor |Δ| del leave-one-out)."""
+    r = analizar_bloque(bloque, bandas, tension_fn, n_draws=n_draws)
+    comb = r["experimentos"]["combinado"]
+    dominante = next(iter(r["leave_one_out"].items()), None)
+    return {
+        "p05": comb["p05"],
+        "p95": comb["p95"],
+        "tension_rango": r["tension"]["rango_combinado"],
+        "dominante": ({"indicador": dominante[0],
+                       "indice_sin": dominante[1]} if dominante else None),
+        "n_draws": n_draws,
+        "metodo": "pesos ±20% + bandas vecinas 7,5% (MC, ADR-0019)",
+    }
+
+
+def analizar(nombre: str, bloque: dict, cfg: dict) -> dict:
+    resultado = analizar_bloque(bloque, cfg["bandas"], cfg["tension"])
+    base = resultado["valor_recomputado"]
+    t = cfg["tension"]
 
     comb = resultado["experimentos"]["combinado"]
     print(f"\n== {nombre.upper()} — publicado {bloque['valor']} "
@@ -166,6 +196,9 @@ def analizar(nombre: str, bloque: dict, cfg: dict) -> dict:
 
 
 def main():
+    global N_DRAWS
+    if len(sys.argv) > 1:
+        N_DRAWS = int(sys.argv[1])
     informe = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
     salida = {"_meta": {"n_draws": N_DRAWS, "semilla": SEMILLA,
                         "ruido_peso": RUIDO_PESO, "prob_salto_banda": PROB_SALTO_BANDA,

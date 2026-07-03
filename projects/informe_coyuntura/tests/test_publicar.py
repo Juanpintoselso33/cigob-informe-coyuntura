@@ -177,6 +177,20 @@ def test_vida_itvc_reconcilia():
         assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
 
 
+def test_robustez_publicada_encierra_el_valor():
+    """ADR-0019: los tres índices publican su rango de robustez p05-p95
+    (Monte Carlo con semilla fija) y el valor puntual cae dentro del rango."""
+    informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
+    for ck, clave in (("macro", "itcm"), ("gestion", "itcg"), ("vida_cotidiana", "itvc")):
+        bloque = informe["cinturones"][ck].get(clave)
+        assert bloque and bloque.get("robustez"), f"{clave}: sin bloque de robustez"
+        r = bloque["robustez"]
+        assert r["p05"] <= bloque["valor"] <= r["p95"], \
+            f"{clave}: valor {bloque['valor']} fuera del rango [{r['p05']}, {r['p95']}]"
+        t_lo, t_hi = r["tension_rango"]
+        assert t_lo <= t_hi and 0 <= t_lo and t_hi <= 10
+
+
 def test_endeudamiento_se_puntua_con_mora():
     """Endeudamiento (D3 del ITVC): su índice viene de la serie itvc_endeudamiento
     (deuda real de familias × corrección por mora, Informe sobre Bancos)."""

@@ -63,6 +63,16 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             </div>
           ))}
         </div>
+        {indice.data.robustez && (
+          <p class="cg-h2-sub" style="margin-top:12px;">
+            <strong>Robustez:</strong> perturbando los pesos ±20%{indice.base100 ? "" : " y los umbrales de banda"}{" "}
+            en {indice.data.robustez.n_draws.toLocaleString("es-AR")} escenarios (Monte Carlo), el {indice.sigla} queda
+            entre <strong>{String(indice.data.robustez.p05).replace(".", ",")}</strong> y{" "}
+            <strong>{String(indice.data.robustez.p95).replace(".", ",")}</strong> en
+            el 90% de los casos (tensión {String(indice.data.robustez.tension_rango[0]).replace(".", ",")}–{String(indice.data.robustez.tension_rango[1]).replace(".", ",")}):
+            la lectura del cinturón no depende de la ponderación exacta elegida.
+          </p>
+        )}
         {indice.data.ajustes_aplicados.length > 0 && (
           <p class="cg-h2-sub" style="margin-top:12px;">
             <strong>Ajustes del analista:</strong>{" "}
