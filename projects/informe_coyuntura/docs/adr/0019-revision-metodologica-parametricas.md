@@ -187,9 +187,12 @@ UTDT (encuesta de percepción, fuente totalmente independiente):
   ánimo, no al revés.
 
 **Lectura:** validez de constructo razonable para un índice de 3 meses de
-diseño; publicable como anexo metodológico. Pendiente opcional:
-ITCM↔riesgo país (requiere verificar fuente EMBI) y la serie mensual del
-ITVC reconstruida podría publicarse como gráfico de evolución del índice.
+diseño. **Publicado en la web** (03-jul-2026): card "Validación externa" en
+la sección Robustez de vida cotidiana, con el gráfico de co-movimiento
+(ambas series rebaseadas a 100 en el primer mes común) y las correlaciones;
+`publicar._validacion_itvc` embebe el estudio en el snapshot — correr
+`validacion_externa.py` lo actualiza. Pendiente opcional: ITCM↔riesgo país
+(requiere verificar fuente EMBI).
 
 ## Consecuencias
 

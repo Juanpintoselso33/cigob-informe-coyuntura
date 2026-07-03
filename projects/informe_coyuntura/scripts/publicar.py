@@ -478,6 +478,35 @@ def _itvc_indices(vida_ind, series):
     return idx
 
 
+VALIDACION_EXTERNA_PATH = ROOT / "output" / "validacion_externa.json"
+
+
+def _validacion_itvc(bloque, series):
+    """Anexa al bloque ITVC la validación externa (ADR-0019 D6): la serie
+    mensual del ITVC recalculado SIN su componente ICC (para no ser circular)
+    junto a la serie del ICC UTDT, con las correlaciones del estudio
+    (scripts/validacion_externa.py — correr ese script actualiza el insumo)."""
+    try:
+        val = json.loads(VALIDACION_EXTERNA_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return
+    sin_icc = val.get("serie_itvc_sin_icc") or {}
+    icc = {p["fecha"][:7]: p["valor"] for p in (series.get("icc_utdt") or [])}
+    comunes = sorted(set(sin_icc) & set(icc))
+    if len(comunes) < 12:
+        return
+    corr = val.get("correlaciones", {})
+    niveles = corr.get("niveles (ITVC sin ICC vs ICC)") or {}
+    difs = corr.get("primeras diferencias (sin ICC)") or {}
+    bloque["validacion"] = {
+        "r_niveles": niveles.get("r"),
+        "r_diferencias": difs.get("r"),
+        "n": niveles.get("n"),
+        "pares": [[m, sin_icc[m], icc[m]] for m in comunes],
+        "contra": "ICC (confianza del consumidor, UTDT)",
+    }
+
+
 def _scoring_vida_itvc(c, series):
     """Vida cotidiana se puntúa con el ITVC-B100: cada componente es un índice
     rebaseado a 100 = promedio 4T-2023, agregado con los pesos del doc 260702.
@@ -497,6 +526,7 @@ def _scoring_vida_itvc(c, series):
         except Exception as e:
             print(f"[WARN] robustez ITVC: {e}")
         _marcar_dimensiones_criticas(resultado, UMBRAL_CRITICO_BASE100)
+        _validacion_itvc(resultado, series)
 
     ajustados = {a["indicador"]: a for a in (resultado or {}).get("ajustes_aplicados", [])}
     por_ind = {}

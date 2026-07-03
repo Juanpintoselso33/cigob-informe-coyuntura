@@ -35,6 +35,10 @@ export interface IndiceParametrico {
                dominante: { indicador: string; indice_sin: number } | null;
                n_draws: number; metodo: string;
                hist?: number[]; hist_min?: number; hist_max?: number };
+  // Validación externa (ADR-0019 D6, hoy solo ITVC): serie mensual del índice
+  // recalculado sin su componente circular, junto a la variable externa.
+  validacion?: { r_niveles: number; r_diferencias: number; n: number;
+                 pares: [string, number, number][]; contra: string };
 }
 export interface Cinturon {
   score: number;

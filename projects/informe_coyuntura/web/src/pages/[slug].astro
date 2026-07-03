@@ -71,6 +71,36 @@ if (rob?.hist && rob.hist_max! > rob.hist_min!) {
 }
 // base-100 con toda la simulación debajo de la línea de base → se narra en texto
 const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
+
+// Validación externa (solo vida): co-movimiento del ITVC (recalculado SIN su
+// componente ICC, para no ser circular) contra el ICC UTDT. Ambas series se
+// rebasean a 100 en el primer mes común para dibujarlas en una misma escala.
+const val = indice?.data.validacion ?? null;
+let valSvg: {
+  W: number; H: number; base: number; top: number;
+  lineaIndice: string; lineaExterna: string;
+  ticks: { x: number; label: string }[]; y100: number;
+} | null = null;
+if (val && val.pares.length >= 12) {
+  const W = 1120, H = 190, base = H - 20, top = 14;
+  const p0 = val.pares[0];
+  const serieA = val.pares.map(p => (p[1] / p0[1]) * 100);
+  const serieB = val.pares.map(p => (p[2] / p0[2]) * 100);
+  const todos = [...serieA, ...serieB];
+  const y0 = Math.min(...todos) - 3, y1 = Math.max(...todos) + 3;
+  const VX = (i: number) => (i / (val.pares.length - 1)) * W;
+  const VY = (v: number) => base - ((v - y0) / (y1 - y0)) * (base - top);
+  const trazo = (s: number[]) =>
+    "M" + s.map((v, i) => `${VX(i).toFixed(1)},${VY(v).toFixed(1)}`).join(" L");
+  valSvg = {
+    W, H, base, top,
+    lineaIndice: trazo(serieA), lineaExterna: trazo(serieB),
+    ticks: val.pares.map((p, i) => ({ ym: p[0], i }))
+      .filter(t => t.ym.endsWith("-01"))
+      .map(t => ({ x: VX(t.i), label: t.ym.slice(0, 4) })),
+    y100: VY(100),
+  };
+}
 ---
 <Layout title={`${meta.nombre} · Informe de Coyuntura · CiGob`}>
   <Nav />
@@ -212,6 +242,49 @@ const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
             )}
           </p>
         </div>
+        {val && valSvg && (
+          <div class={`cg-rob cg-rob--${meta.slug} cg-val`}>
+            <div class="cg-rob-head">
+              <span>Validación externa: el {indice.sigla} contra la percepción</span>
+              <span>correlación <strong>{coma(val.r_niveles)}</strong> · {val.n} meses</span>
+            </div>
+            <svg class="cg-rob-svg" viewBox={`0 0 ${valSvg.W} ${valSvg.H}`} role="img"
+                 aria-label={`Evolución comparada del ${indice.sigla} (sin su componente de confianza) y el ${val.contra}`}>
+              <line x1="0" x2={valSvg.W} y1={valSvg.y100} y2={valSvg.y100}
+                    stroke="var(--muted)" stroke-width="1" stroke-dasharray="4 3" opacity="0.45" />
+              {valSvg.ticks.map(t => (
+                <Fragment>
+                  <line x1={t.x} x2={t.x} y1={valSvg.top} y2={valSvg.base}
+                        stroke="var(--bd)" stroke-width="1" opacity="0.6" />
+                  <text x={t.x + 5} y={valSvg.base - 5} fill="var(--muted)"
+                        font-size="11" font-family="inherit">{t.label}</text>
+                </Fragment>
+              ))}
+              <path d={valSvg.lineaExterna} fill="none" stroke="#64748B"
+                    stroke-width="1.8" stroke-linejoin="round" opacity="0.85" />
+              <path d={valSvg.lineaIndice} fill="none" stroke="var(--rob-c)"
+                    stroke-width="2.4" stroke-linejoin="round" />
+              <line x1="0" x2={valSvg.W} y1={valSvg.base} y2={valSvg.base}
+                    stroke="var(--bd)" stroke-width="1" />
+            </svg>
+            <p class="cg-val-leyenda">
+              <span class="cg-val-chip cg-val-chip--indice">{indice.sigla} sin su componente de confianza</span>
+              <span class="cg-val-chip cg-val-chip--externa">{val.contra}</span>
+              <span class="cg-val-chip-nota">ambas series rebaseadas a 100 en el primer mes</span>
+            </p>
+            <p class="cg-h2-sub">
+              Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables
+              externas relacionadas que <strong>no lo componen</strong>. El {indice.sigla} se
+              recalculó <strong>sin el ICC</strong> (que pesa 7,5% del índice) para que la
+              comparación no sea circular, y aun así acompaña a la confianza del consumidor:
+              correlación <strong>{coma(val.r_niveles)}</strong> en niveles y{" "}
+              <strong>{coma(val.r_diferencias)}</strong> en los cambios mes a mes. Ni redundante
+              (≈1 diría que el índice sobra) ni desconectado (≈0 diría que no capta la
+              experiencia vivida): las condiciones materiales y el ánimo se mueven juntos,
+              pero miden cosas distintas.
+            </p>
+          </div>
+        )}
       </section>
     )}
 
