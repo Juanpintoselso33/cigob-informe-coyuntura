@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-02 20:26:44"
+generado: "2026-07-02 21:24:44"
 score_global: 3.6
 barbarismo_activo: "político"
 alerta_multicinturon: false
@@ -79,6 +79,7 @@ schema_version: "1.2.0"
 | protocolo_antipiquetes | 55 | % de reducción de cortes por manifestación en CABA vs promedio 2023 | 2026-06-30 | ⚠ cache |
 | libertad_opcion_salud | 31.8 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-03-01 | fresco |
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-02 | fresco |
+| protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
 
 ### 🟡 Espiritu Epoca — score 3.2/10 (en_tension)
 *Riesgo de barbarismo: político*
@@ -96,4 +97,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:protocolo_antipiquetes`
 
 ---
-*Generado por CIGOB — 2026-07-02 20:26:44 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-02 21:24:44 — schema 1.2.0*

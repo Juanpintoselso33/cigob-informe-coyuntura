@@ -30,12 +30,13 @@ CINCO DIMENSIONES (35/25/15/15/10):
      libertad_opcion_salud (derivación directa a prepagas inscriptas:
      padrones RNAS/RNEMP de la SSS, ADR-0016).
 
-Indicadores AUTO (15): cepo_mulc, apertura_comercial, desregulacion_normativa,
+Indicadores AUTO (16): cepo_mulc, apertura_comercial, desregulacion_normativa,
   reduccion_estado, gasto_funcionamiento, masa_salarial,
   reestructuracion_organismos, fal_modernizacion_laboral (CNV),
   litigiosidad_laboral (contexto), privatizaciones (store curado),
   rigi_inversiones, concesiones_infraestructura, asistencia_directa (TDPS),
-  libertad_opcion_salud, alertas_manifestacion (contexto).
+  libertad_opcion_salud, alertas_manifestacion (contexto),
+  protestas_caba (contexto, ACLED).
 Indicador manual (1, en manuales.json): protocolo_antipiquetes.
 
 Nota INDEC www: el WAF de indec.gob.ar resetea el handshake TLS de Python
@@ -111,9 +112,9 @@ INDICADORES_ESPERADOS = [
     "fal_modernizacion_laboral", "litigiosidad_laboral",
     # D4 — Privatizaciones e inversión
     "privatizaciones", "rigi_inversiones", "concesiones_infraestructura",
-    # D5 — Reforma social y orden (+ alertas GTFS-RT como contexto, acumulando)
+    # D5 — Reforma social y orden (+ contexto: alertas GTFS-RT y protestas ACLED)
     "asistencia_directa", "protocolo_antipiquetes", "libertad_opcion_salud",
-    "alertas_manifestacion",
+    "alertas_manifestacion", "protestas_caba",
 ]
 
 # Calibración del proxy InfoLeg de reestructuración: 18 actos = avance 40%
@@ -725,6 +726,9 @@ def fetch_privatizaciones() -> dict | None:
             "desactualizado": False,
             "etapa_promedio": round(etapa_prom, 2),
             "empresas":       len(etapas),
+            # etapa por empresa → gráfico de barras del modal (0 = sin definir · 4 = cerrada)
+            "componentes":    {n: float(e["etapa"]) for n, e in
+                               sorted(empresas.items(), key=lambda kv: -float(kv[1]["etapa"]))},
             "detalle_txt": (f"{len(etapas)} empresas · etapa promedio "
                             f"{str(round(etapa_prom, 2)).replace('.', ',')}/4"
                             + (f" · cerradas: {', '.join(cerradas)}" if cerradas else "")),
@@ -1253,6 +1257,7 @@ def fetch_concesiones_infraestructura() -> dict | None:
         km_adj = sum(km[e] for e in set(adjudicadas))
         avance = round(100.0 * km_adj / km_total, 1)
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
+        etapa_key = {"I": "etapa_i", "II": "etapa_ii", "II-B": "etapa_ii_b", "III": "etapa_iii"}
         return {
             "valor":          avance,
             "unidad":         "% de km adjudicados / km licitados (Red Federal de Concesiones)",
@@ -1262,6 +1267,9 @@ def fetch_concesiones_infraestructura() -> dict | None:
             "km_adjudicados": round(km_adj),
             "km_totales":     round(km_total),
             "procesos":       len(procesos),
+            # % adjudicado por etapa → gráfico de barras del modal
+            "componentes":    {etapa_key.get(e, e): (100.0 if e in adjudicadas else 0.0)
+                               for e in km},
             "detalle_txt": (f"{miles(km_adj)} de {miles(km_total)} km adjudicados · "
                             + " · ".join(sorted(set(detalle_p)))),
         }
@@ -1397,6 +1405,141 @@ def fetch_libertad_opcion_salud() -> dict | None:
         return None
 
 
+# ── D5 (contexto): protestas en CABA — ACLED (ADR-0017) ───────────────────────
+# ACLED (acleddata.com) publica para miembros un agregado SEMANAL × provincia ×
+# tipo de evento (archivo XLSX regional, actualizado semanalmente). El nivel
+# "Open" de la cuenta no habilita la API de eventos (403) pero SÍ este archivo,
+# vía sesión web (login Drupal). CABA cubierta desde 2018 → línea base 2023
+# real. OJO: ACLED cuenta EVENTOS DE PROTESTA (marchas, concentraciones), no
+# cortes de calle — complementa a protocolo_antipiquetes (que mide cortes, DP)
+# y expone el contraste: la protesta no bajó, se reconvirtió a marcha sin corte.
+# Atribución obligatoria: datos de ACLED (acleddata.com).
+
+ACLED_LOGIN_URL = "https://acleddata.com/user/login"
+ACLED_AGG_PAGE  = "https://acleddata.com/aggregated/aggregated-data-latin-america-caribbean"
+PROTESTAS_STORE_PATH = PROJECT_DIR / "data" / "gestion" / "protestas_caba.json"
+
+
+def _acled_credenciales() -> tuple | None:
+    """(usuario, contraseña) de ACLED: env ACLED_USERNAME/ACLED_PASSWORD (CI)
+    o .env local gitignored."""
+    user = os.environ.get("ACLED_USERNAME")
+    pwd  = os.environ.get("ACLED_PASSWORD")
+    if not (user and pwd) and ENV_PATH.exists():
+        pares = {}
+        for linea in ENV_PATH.read_text(encoding="utf-8").splitlines():
+            if "=" in linea and not linea.strip().startswith("#"):
+                k, _, v = linea.partition("=")
+                pares[k.strip()] = v.strip().strip('"').strip("'")
+        user = user or pares.get("ACLED_USERNAME")
+        pwd  = pwd or pares.get("ACLED_PASSWORD")
+    return (user, pwd) if user and pwd else None
+
+
+def actualizar_protestas_caba() -> dict | None:
+    """Baja el agregado semanal LatAm de ACLED (sesión web), filtra CABA ×
+    Protests/Riots, agrega por mes y guarda la serie en el store versionado
+    (así descargar_series no re-baja los ~8 MB). Devuelve la serie mensual."""
+    creds = _acled_credenciales()
+    if not creds:
+        print("[WARN] gestion.protestas_caba: sin credenciales ACLED_*. Salteado.")
+        return None
+    import openpyxl
+    user, pwd = creds
+    try:
+        s = requests.Session()
+        s.headers.update({"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})
+        r = s.get(ACLED_LOGIN_URL, timeout=HTTP_TIMEOUT)
+        m = re.search(r'name="form_build_id" value="([^"]+)"', r.text)
+        if not m:
+            raise ValueError("login ACLED: form_build_id no encontrado")
+        s.post(ACLED_LOGIN_URL, data={"name": user, "pass": pwd, "form_build_id": m.group(1),
+                                      "form_id": "user_login_form", "op": "Log in"},
+               timeout=HTTP_TIMEOUT)
+        page = s.get(ACLED_AGG_PAGE, timeout=HTTP_TIMEOUT).text
+        m = re.search(r'href="(https://acleddata\.com/system/files/[^"]+aggregated_data[^"]+\.xlsx)"', page)
+        if not m:
+            raise ValueError("página de agregados ACLED sin link .xlsx (¿sesión no logueada?)")
+        url_xlsx = m.group(1)
+        content = s.get(url_xlsx, timeout=300).content
+
+        wb = openpyxl.load_workbook(io.BytesIO(content), read_only=True)
+        ws = wb[wb.sheetnames[0]]
+        ws.reset_dimensions()   # el export trae dimensiones rotas (dice 1×1)
+        filas = ws.iter_rows(values_only=True)
+        next(filas)             # WEEK|REGION|COUNTRY|ADMIN1|EVENT_TYPE|SUB_EVENT_TYPE|EVENTS|...
+        mensual: dict = {}
+        hasta = None
+        for f in filas:
+            if not f or len(f) < 7 or str(f[2]) != "Argentina":
+                continue
+            if "Ciudad" not in str(f[3]) or str(f[4]) not in ("Protests", "Riots"):
+                continue
+            ym = f[0].strftime("%Y-%m")
+            mensual[ym] = mensual.get(ym, 0) + int(f[6] or 0)
+            hasta = max(hasta, f[0].date()) if hasta else f[0].date()
+        if not mensual:
+            raise ValueError("agregado ACLED sin filas de CABA")
+        store = {"_meta": {"descripcion": ("Eventos de protesta (Protests+Riots) en CABA por mes, "
+                                           "del agregado semanal de ACLED (acleddata.com). "
+                                           "Atribución: datos de ACLED."),
+                           "actualizado": date.today().isoformat(),
+                           "hasta_semana": hasta.isoformat(),
+                           "fuente_xlsx": url_xlsx},
+                 "mensual": {ym: mensual[ym] for ym in sorted(mensual)}}
+        PROTESTAS_STORE_PATH.write_text(
+            json.dumps(store, ensure_ascii=False, indent=2), encoding="utf-8")
+        return store
+    except Exception as e:
+        _warn("protestas_caba (descarga ACLED)", e)
+        return None
+
+
+def fetch_protestas_caba() -> dict | None:
+    """
+    CONTEXTO (no integra el ITCG): eventos de protesta en CABA según ACLED,
+    acumulado 12 meses (sin el mes parcial del archivo), contra el total 2023.
+    Mide protesta callejera (marchas, concentraciones), NO cortes: leído junto
+    a protocolo_antipiquetes expone si la protesta cayó o solo se reconvirtió.
+    """
+    try:
+        store = actualizar_protestas_caba()
+        if store is None and PROTESTAS_STORE_PATH.exists():
+            store = json.loads(PROTESTAS_STORE_PATH.read_text(encoding="utf-8"))
+        if not store:
+            return None
+        mensual = store.get("mensual", {})
+        hasta = store.get("_meta", {}).get("hasta_semana", "")
+        yms = sorted(mensual)
+        # último mes completo: si la última semana del archivo no llega a fin de mes,
+        # el mes final está parcial y se excluye de la ventana de 12.
+        if hasta and yms and hasta[:7] == yms[-1]:
+            import calendar as _cal
+            a, m = int(hasta[:4]), int(hasta[5:7])
+            if int(hasta[8:10]) < _cal.monthrange(a, m)[1]:
+                yms = yms[:-1]
+        if len(yms) < 12:
+            raise ValueError("serie ACLED demasiado corta")
+        ult12 = sum(mensual[ym] for ym in yms[-12:])
+        base_2023 = sum(v for ym, v in mensual.items() if ym.startswith("2023"))
+        var = round((ult12 / base_2023 - 1.0) * 100.0, 1) if base_2023 else None
+        return {
+            "valor":          ult12,
+            "unidad":         "eventos de protesta en 12 meses (CABA, ACLED)",
+            "fuente":         "ACLED — agregado semanal por provincia (acleddata.com)",
+            "fecha_dato":     f"{yms[-1]}-01",
+            "desactualizado": False,
+            "eventos_2023":   base_2023,
+            "var_vs_2023":    var,
+            "detalle_txt": (f"{ult12} eventos en 12m (hasta {yms[-1]}) vs {base_2023} en 2023"
+                            + (f" ({var:+.1f}%)".replace(".", ",") if var is not None else "")
+                            + " — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo"),
+        }
+    except Exception as e:
+        _warn("protestas_caba", e)
+        return None
+
+
 # ── Scoring (ITCG — Paramétrica CIGOB jul-2026) ───────────────────────────────
 
 def calcular_itcg_cinturon(indicadores: dict) -> dict | None:
@@ -1471,6 +1614,7 @@ def main() -> None:
         "asistencia_directa":           fetch_asistencia_directa,
         "libertad_opcion_salud":        fetch_libertad_opcion_salud,
         "alertas_manifestacion":        fetch_alertas_manifestacion,
+        "protestas_caba":               fetch_protestas_caba,
     }
 
     for nombre in INDICADORES_ESPERADOS:

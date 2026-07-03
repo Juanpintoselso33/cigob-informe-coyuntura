@@ -174,7 +174,9 @@ INTERPRETACION_LEGIBLE = {
 # alertas_manifestacion: serie GTFS-RT en construcción (acumula desde jul-2026,
 # sin baseline 2023) — candidata a automatizar protocolo_antipiquetes cuando
 # tenga historia (ADR-0014).
-INDICADORES_CONTEXTO = ["litigiosidad_laboral", "alertas_manifestacion"]
+# protestas_caba: eventos de protesta ACLED (marchas/concentraciones, no cortes)
+# — el contraste con protocolo_antipiquetes es la lectura, no puntúa (ADR-0017).
+INDICADORES_CONTEXTO = ["litigiosidad_laboral", "alertas_manifestacion", "protestas_caba"]
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:

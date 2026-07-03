@@ -149,6 +149,7 @@ export const LABELS: Record<string, string> = {
   asistencia_directa: "Asistencia directa (TDPS)", fal_modernizacion_laboral: "Fondo de Cese Laboral",
   libertad_opcion_salud: "Libertad de opción en salud", protocolo_antipiquetes: "Orden público (piquetes)",
   litigiosidad_laboral: "Litigiosidad laboral (SRT)", alertas_manifestacion: "Alertas de manifestación (GCBA)",
+  protestas_caba: "Protestas en CABA (ACLED)",
 };
 export function label(key: string): string {
   return LABELS[key] ?? key.replace(/_/g, " ");
@@ -203,6 +204,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   fal_modernizacion_laboral: "índice", asistencia_directa: "%",
   protocolo_antipiquetes: "%", libertad_opcion_salud: "%",
   litigiosidad_laboral: "% i.a.", alertas_manifestacion: "alertas/mes",
+  protestas_caba: "eventos 12m",
 };
 
 // Unidad "larga" para la ficha del modal (campo "Unidad"). Normalizada y
@@ -242,6 +244,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   libertad_opcion_salud: "% de usuarios de prepagas con derivación directa", protocolo_antipiquetes: "% de reducción de cortes vs 2023",
   litigiosidad_laboral: "% variación (12m vs 12m previos)",
   alertas_manifestacion: "Alertas únicas en el mes (GTFS-RT)",
+  protestas_caba: "Eventos de protesta (acum. 12 meses, ACLED)",
 };
 
 export interface Presentacion { texto: string; unidad: string; titulo: string; }

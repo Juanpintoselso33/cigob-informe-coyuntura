@@ -555,6 +555,51 @@ def fetch_opcion_salud_serie() -> list:
     return out
 
 
+def fetch_protestas_serie() -> list:
+    """Serie mensual de eventos de protesta en CABA desde el store que llena
+    gestion.actualizar_protestas_caba() (evita re-bajar los ~8 MB de ACLED:
+    el colector corre antes en el pipeline). [[YYYY-MM-01, eventos]]."""
+    import json as _json
+    if not gestion.PROTESTAS_STORE_PATH.exists():
+        return []
+    store = _json.loads(gestion.PROTESTAS_STORE_PATH.read_text(encoding="utf-8"))
+    return [[f"{ym}-01", v] for ym, v in sorted(store.get("mensual", {}).items())]
+
+
+ARGENTINADATOS_CCL = "https://api.argentinadatos.com/v1/cotizaciones/dolares/contadoconliqui"
+
+
+def fetch_brecha_serie() -> list:
+    """Serie mensual de la brecha CCL/mayorista (misma métrica que cepo_mulc):
+    promedio mensual del CCL histórico de ArgentinaDatos (el proyecto hermano
+    de dolarapi, la MISMA familia de fuente que usa el colector vivo) sobre el
+    promedio mensual del A3500 oficial (BCRA var. 5). Desde dic-2023. El
+    último punto es el promedio del mes corriente parcial (el live es el spot
+    del día — difieren de forma inmaterial)."""
+    hoy = date.today()
+    r = requests.get(ARGENTINADATOS_CCL,
+                     headers={"User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"},
+                     timeout=120)
+    r.raise_for_status()
+    ccl: dict = {}
+    for fila in r.json():
+        fecha = str(fila.get("fecha", ""))
+        try:
+            v = float(fila.get("venta") or 0)
+        except (TypeError, ValueError):
+            continue
+        if fecha >= "2023-12" and v > 0:
+            ccl.setdefault(fecha[:7], []).append(v)
+    dias = (hoy - date(2023, 11, 25)).days
+    a3500 = gestion._tc_mayorista_promedio_por_mes(dias=dias)   # {ym: promedio}
+    out = []
+    for ym in sorted(set(ccl) & set(a3500)):
+        prom_ccl = sum(ccl[ym]) / len(ccl[ym])
+        if a3500[ym] > 0:
+            out.append([f"{ym}-01", round((prom_ccl / a3500[ym] - 1.0) * 100.0, 2)])
+    return out
+
+
 def fetch_litigiosidad_serie() -> list:
     """Serie mensual de la variación % de los juicios SRT (acumulado 12 meses
     vs los 12 previos, misma fórmula que el indicador). [[YYYY-MM-01, var%]]."""
@@ -603,6 +648,8 @@ GESTION_DERIVADAS = [
      lambda: _serie_var_real_vs_2023([gestion.REMUNERACIONES_ID])),
     ("libertad_opcion_salud", "% usuarios de prepagas con derivación directa", "SSS — RNAS/RNEMP", fetch_opcion_salud_serie),
     ("litigiosidad_laboral", "% i.a. juicios SRT (12m vs 12m)", "SRT — serie de litigiosidad", fetch_litigiosidad_serie),
+    ("cepo_mulc", "% brecha CCL/mayorista (prom. mensual)", "Ámbito (CCL) + BCRA (A3500)", fetch_brecha_serie),
+    ("protestas_caba", "eventos de protesta/mes (CABA)", "ACLED — agregado semanal (acleddata.com)", fetch_protestas_serie),
 ]
 
 

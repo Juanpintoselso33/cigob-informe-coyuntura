@@ -29,6 +29,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0014](0014-piquetes-poller-gtfs-rt.md) | Piquetes: poller GTFS-RT acumulativo 3×/día (el registro de cortes del GCBA está muerto); protocolo_antipiquetes sigue manual hasta que la serie madure | Aceptado |
 | [0015](0015-tdps-presupuesto-abierto.md) | TDPS (asistencia directa): verificado contra el devengado real vía API Presupuesto Abierto — 5.1.4 directo / inciso 5 total de Volver al Trabajo + Acompañamiento Social, baseline Potenciar 2023 | Aceptado |
 | [0016](0016-concesiones-contratar-salud-sss.md) | Concesiones: km adjudicados de la RFC vía CONTRAT.AR (sin login) · Opción salud: derivación directa a prepagas vía padrones RNAS/RNEMP de la SSS. Gestión queda 15/16 auto | Aceptado |
+| [0017](0017-protestas-acled.md) | Protestas CABA vía ACLED (agregado semanal, sesión Open): contexto con serie 2018→hoy. La protesta NO bajó vs 2023 — los cortes sí: el protocolo manual sigue puntuando (mide cortes, ACLED no los aísla) | Aceptado |
 
 ## Contexto general
 

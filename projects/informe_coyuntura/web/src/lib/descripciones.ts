@@ -290,4 +290,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Serie propia en construcción (acumula desde jul-2026, muestreada varias veces por día): cuando tenga historia suficiente será la base automatizable del indicador de orden público. Sin línea base 2023 — el registro histórico oficial de cortes fue dado de baja.",
     frecuencia: "Continua (muestreo 3×/día)", tipo: "Conteo mensual",
   },
+  protestas_caba: {
+    que: "Cuántos eventos de protesta (marchas, concentraciones, disturbios) registró ACLED en la Ciudad de Buenos Aires en los últimos 12 meses, con serie semanal desde 2018.",
+    aporta: "El contraste clave del orden público: los cortes de calle cayeron (~55% vs 2023) pero los eventos de protesta NO — la protesta se reconvirtió a marchas sin corte, que es exactamente lo que el protocolo buscaba. ACLED cuenta eventos con cobertura de prensa; no capta piquetes barriales chicos. Datos de ACLED (acleddata.com).",
+    frecuencia: "Semanal (ACLED)", tipo: "Conteo (12 meses)",
+  },
 };

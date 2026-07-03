@@ -117,11 +117,27 @@ export function barChart(el: HTMLElement, items: { nombre: string; valor: number
 }
 
 // Etiqueta legible de los componentes según el indicador (para barChart).
+// Claves sin mapa (ej. nombres de empresa en privatizaciones) se muestran tal cual.
 export function componentesDe(key: string, comp: Record<string, number>): { nombre: string; valor: number }[] {
   const LBL: Record<string, Record<string, string>> = {
     idc: { precio: "Precio (BADLAR real)", volumen: "Volumen (depósitos)", asignacion: "Asignación (crédito)" },
     iai: { isac: "Construcción (ISAC)", bk_importados: "Bienes de capital", patentamientos_comerciales: "Patentamientos" },
     icip: { servicios_tech: "Servicios tech", productividad: "Productividad" },
+    apertura_comercial: {
+      b_camb: "Cambiario (0–100)",
+      a_efec: "Arancelario (0–100)",
+      alicuota_efectiva_pct: "Alícuota efectiva (%)",
+    },
+    fal_modernizacion_laboral: {
+      cobertura_cct: "Cobertura CCT (est. %)",
+      adopcion_financiera: "FCI de cese en CNV",
+    },
+    concesiones_infraestructura: {
+      etapa_i: "Etapa I (% adj.)",
+      etapa_ii: "Etapa II-A (% adj.)",
+      etapa_ii_b: "Etapa II-B (% adj.)",
+      etapa_iii: "Etapa III (% adj.)",
+    },
   };
   const lbl = LBL[key] ?? {};
   return Object.entries(comp)

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-02T20:26:44.177320",
+  "generated_at": "2026-07-02T21:24:44.176837",
   "period": "2026-07",
   "score_global": 3.6,
   "ponderacion": {
@@ -608,6 +608,17 @@
           "desactualizado": false,
           "etapa_promedio": 2.06,
           "empresas": 9,
+          "componentes": {
+            "Transener": 4.0,
+            "AySA": 3.0,
+            "Corredores Viales": 3.0,
+            "Enarsa": 2.5,
+            "Intercargo": 2.5,
+            "Belgrano Cargas": 1.5,
+            "Nucleoeléctrica": 1.0,
+            "YCRT": 0.5,
+            "SOFSE": 0.5
+          },
           "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
@@ -641,6 +652,12 @@
           "km_adjudicados": 2614,
           "km_totales": 9091,
           "procesos": 4,
+          "componentes": {
+            "etapa_i": 100.0,
+            "etapa_ii": 100.0,
+            "etapa_ii_b": 0.0,
+            "etapa_iii": 0.0
+          },
           "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Apertura 2º Etapa · II: Adjudicado · III: Dictamen preselección pendiente publicación",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
@@ -705,6 +722,17 @@
           "desactualizado": false,
           "dias_muestreados_mes": 1,
           "detalle_txt": "0 alertas en 1 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+          "en_indice": false
+        },
+        "protestas_caba": {
+          "valor": 301,
+          "unidad": "eventos de protesta en 12 meses (CABA, ACLED)",
+          "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
+          "fecha_dato": "2026-05-01",
+          "desactualizado": false,
+          "eventos_2023": 240,
+          "var_vs_2023": 25.4,
+          "detalle_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
           "en_indice": false
         }
       },

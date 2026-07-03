@@ -100,7 +100,7 @@ def test_gestion_itcg_reconcilia():
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
     assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
-    assert set(contexto) == {"litigiosidad_laboral", "alertas_manifestacion"}
+    assert set(contexto) == {"litigiosidad_laboral", "alertas_manifestacion", "protestas_caba"}
 
     ponderado = sum(i["puntaje_itcg"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itcg_val) <= 0.15, f"ponderado {ponderado} != ITCG {itcg_val}"
