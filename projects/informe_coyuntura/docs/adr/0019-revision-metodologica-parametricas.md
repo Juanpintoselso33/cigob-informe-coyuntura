@@ -165,17 +165,31 @@ cuantifica la exposición en cada corrida.
 
 **Recomendación:** (a) ahora; explorar la fuente de (b) sin apuro.
 
-## Decisión 6 — Validación externa (PENDIENTE)
+## Decisión 6 — Validación externa (RESUELTA — implementada, resultados favorables)
 
 **Problema.** Paso 9 del JRC: correlacionar el índice con variables externas
-relacionadas. Nunca se hizo. Si el ITVC co-mueve con el ICC UTDT (que NO
-integra el ITVC) o anticipa la pobreza EPH, es evidencia de validez de
-constructo; si divergen fuerte, es una alarma temprana de diseño.
+relacionadas. (Corrección respecto de la primera redacción de este ADR: el
+ICC SÍ integra el ITVC con 7,5% del peso — por eso la validación se hace
+contra el **ITVC recalculado sin el ICC**, evitando la circularidad.)
 
-**Decisión propuesta:** script one-shot que calcule correlaciones (nivel y
-primeras diferencias) ITVC↔ICC, ITVC↔pobreza EPH (semestral), ITCM↔riesgo
-país (EMBI/rendimientos), con las series ya descargadas. Publicable como
-anexo metodológico si los resultados acompañan.
+**Implementación (2026-07-03, `scripts/validacion_externa.py`).** Reconstruye
+la serie MENSUAL del ITVC desde las series de componentes (31 meses,
+dic-2023 → jun-2026; el último punto reproduce exactamente el valor publicado
+— validación de toda la cadena de cómputo) y correlaciona contra el ICC de
+UTDT (encuesta de percepción, fuente totalmente independiente):
+
+- **Niveles, ITVC sin ICC vs ICC: r = 0,55** (n=30) — co-movimiento claro
+  entre condiciones materiales y percepción del consumidor, sin redundancia
+  (no miden lo mismo: r ≈ 0,95 habría indicado que el ITVC sobra).
+- Primeras diferencias: r = 0,35 — los cambios mes a mes también co-mueven.
+- Rezagos ±1 mes: leve ventaja del ITVC adelantado (0,49 vs 0,44) — sugerencia
+  (no concluyente con n=30) de que las condiciones materiales preceden al
+  ánimo, no al revés.
+
+**Lectura:** validez de constructo razonable para un índice de 3 meses de
+diseño; publicable como anexo metodológico. Pendiente opcional:
+ITCM↔riesgo país (requiere verificar fuente EMBI) y la serie mensual del
+ITVC reconstruida podría publicarse como gráfico de evolución del índice.
 
 ## Consecuencias
 
