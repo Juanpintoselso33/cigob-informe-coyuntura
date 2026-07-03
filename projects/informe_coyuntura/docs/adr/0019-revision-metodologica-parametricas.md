@@ -165,6 +165,28 @@ cuantifica la exposición en cada corrida.
 
 **Recomendación:** (a) ahora; explorar la fuente de (b) sin apuro.
 
+## Decisión 7 — TDPS saturado: indicador de asistencia sin información marginal (PENDIENTE, requiere CIGOB)
+
+**Problema (detectado en la revisión uno-por-uno del 03-jul-2026).** El TDPS
+mide el % del devengado pagado directo a personas (partida 5.1.4 / total de
+transferencias). Está clavado en 100% desde 2024: al medir el canal de PAGO,
+la promesa quedó cumplida casi por diseño tras el Dto. 198/2024 (el pago del
+Potenciar ya era mayormente bancarizado; el baseline 2023 era 95-99%). El
+indicador está bien MEDIDO (verificado contra el devengado real, ADR-0015)
+pero saturado: pesa 4% del ITCG y ya no discrimina nada — información
+marginal nula.
+
+**Opciones para discutir con CIGOB:**
+a) Dejarlo como está (documenta la promesa cumplida; costo: 4% del índice
+   congelado en 100).
+b) Reemplazar la métrica por una viva de la misma dimensión: % del padrón
+   con contraprestación verificada, o beneficiarios activos vs baseline
+   (fuente candidata: Presupuesto Abierto metas físicas / informes SIEMPRO).
+c) Reasignar su peso dentro de reforma social y orden (protocolo/salud) y
+   dejarlo como contexto "promesa cumplida".
+
+Sin urgencia: no distorsiona (aporta un 100 legítimo), solo desaprovecha peso.
+
 ## Decisión 6 — Validación externa (RESUELTA — implementada, resultados favorables)
 
 **Problema.** Paso 9 del JRC: correlacionar el índice con variables externas
