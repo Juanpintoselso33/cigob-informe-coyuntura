@@ -82,13 +82,13 @@ let valSvg: {
   ticks: { x: number; label: string }[]; y100: number;
 } | null = null;
 if (val && val.pares.length >= 12) {
-  const W = 1120, H = 190, base = H - 20, top = 14;
+  const W = 1120, H = 200, base = H - 26, top = 16, padx = 16;
   const p0 = val.pares[0];
   const serieA = val.pares.map(p => (p[1] / p0[1]) * 100);
   const serieB = val.pares.map(p => (p[2] / p0[2]) * 100);
   const todos = [...serieA, ...serieB];
   const y0 = Math.min(...todos) - 3, y1 = Math.max(...todos) + 3;
-  const VX = (i: number) => (i / (val.pares.length - 1)) * W;
+  const VX = (i: number) => padx + (i / (val.pares.length - 1)) * (W - padx * 2);
   const VY = (v: number) => base - ((v - y0) / (y1 - y0)) * (base - top);
   const trazo = (s: number[]) =>
     "M" + s.map((v, i) => `${VX(i).toFixed(1)},${VY(v).toFixed(1)}`).join(" L");
@@ -256,7 +256,7 @@ if (val && val.pares.length >= 12) {
                 <Fragment>
                   <line x1={t.x} x2={t.x} y1={valSvg.top} y2={valSvg.base}
                         stroke="var(--bd)" stroke-width="1" opacity="0.6" />
-                  <text x={t.x + 5} y={valSvg.base - 5} fill="var(--muted)"
+                  <text x={t.x + 6} y={valSvg.base + 16} fill="var(--muted)"
                         font-size="11" font-family="inherit">{t.label}</text>
                 </Fragment>
               ))}
