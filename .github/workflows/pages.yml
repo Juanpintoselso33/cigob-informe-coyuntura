@@ -47,6 +47,9 @@ jobs:
           publish_branch: gh-pages
           publish_dir: web-dominio
           cname: informe.cigob.org
+          # por defecto peaceiris EXCLUYE .github del publish_dir — acá viaja
+          # el workflow publish.yml que hace el deploy de Pages (obligatorio)
+          exclude_assets: ''
       # cigob-informe publica via su PROPIO workflow de Actions
       # (.github/workflows/publish.yml, que viaja dentro de web/public/ en
       # cada deploy): el push de peaceiris a gh-pages lo dispara. El builder
