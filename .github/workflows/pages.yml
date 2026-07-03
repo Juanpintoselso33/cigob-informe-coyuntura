@@ -47,26 +47,11 @@ jobs:
           publish_branch: gh-pages
           publish_dir: web-dominio
           cname: informe.cigob.org
-      # El builder legacy de Pages se cuelga en "building"/"errored" tras el
-      # push de peaceiris (visto repetidamente el 03-jul-2026; el POST a la API
-      # /pages/builds NO lo destraba). Un commit trivial sobre gh-pages dispara
-      # un build fresco que sí completa. Incondicional e inofensivo: si el
-      # build original salió bien, el nuevo re-publica el mismo contenido.
-      - name: Destrabar el build de Pages del dominio (workaround)
-        run: |
-          sleep 45
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
-          eval "$(ssh-agent -s)"
-          ssh-add - <<< "${{ secrets.CIGOB_INFORME_DEPLOY_KEY }}"
-          git clone --depth 1 --branch gh-pages git@github.com:Juanpintoselso33/cigob-informe.git /tmp/pages-retrigger
-          cd /tmp/pages-retrigger
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          date -u +%s > .pages-retrigger
-          git add .pages-retrigger
-          git commit -m "chore: retrigger pages build (workaround builder colgado)"
-          git push origin gh-pages
+      # cigob-informe publica via su PROPIO workflow de Actions
+      # (.github/workflows/publish.yml, que viaja dentro de web/public/ en
+      # cada deploy): el push de peaceiris a gh-pages lo dispara. El builder
+      # legacy de Pages quedó DESACTIVADO (build_type=workflow) tras colgarse
+      # repetidamente el 03-jul-2026.
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
