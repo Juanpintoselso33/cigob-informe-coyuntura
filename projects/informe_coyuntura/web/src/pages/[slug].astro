@@ -285,7 +285,9 @@ const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
           <strong>IAI</strong> (inversión física: construcción y bienes de capital) y el{" "}
           <strong>ICIP</strong> (capitalización digital: servicios tech y productividad);
           sus umbrales se calibraron a la volatilidad real de las series, no al ±2% teórico.
-          El <strong>score {c.score}/10</strong> y
+          Cada indicador se puntúa por <strong>interpolación entre las anclas</strong> de su
+          tabla de umbrales (sin escalones de banda: dos valores casi iguales reciben
+          puntajes casi iguales — ADR-0021). El <strong>score {c.score}/10</strong> y
           el <strong>ITCM {c.itcm?.valor}/100</strong> son la misma medición en dos escalas:
           tensión = (100 − ITCM) / 10; la escala 0–10 permite comparar macro con los otros
           cuatro cinturones y componer el score global.
