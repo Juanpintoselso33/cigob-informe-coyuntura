@@ -11,6 +11,23 @@ const CINT_NOMBRE: Record<string, string> = {
 const SLUG_DE: Record<string, string> =
   Object.fromEntries(CINTURONES.map(c => [c.key, c.slug]));
 
+// Dimensión a la que pertenece cada indicador dentro de su índice paramétrico
+// (para la celda "Dimensión" de la ficha: cose el nivel indicador ↔ dimensión).
+const INDICE_KEY: Record<string, string> = {
+  macro: "itcm", gestion: "itcg", vida_cotidiana: "itvc",
+};
+const dimDe: Record<string, string> = {};
+for (const [ckey, c] of Object.entries(informe.cinturones)) {
+  const blk = (c as any)[INDICE_KEY[ckey] ?? ""];
+  if (!blk?.dimensiones) continue;
+  for (const dim of Object.values(blk.dimensiones) as any[]) {
+    for (const [ikey, i] of Object.entries(dim.indicadores ?? {}) as [string, any][]) {
+      dimDe[`${SLUG_DE[ckey] ?? ckey}.${ikey}`] =
+        `${dim.nombre} · ${Math.round(i.peso * 100)}% interno`;
+    }
+  }
+}
+
 // Ficha por indicador, namespaced por slug de cinturón: icc_utdt y
 // sentimiento_digital existen en vida Y espíritu de época — sin namespace el
 // último cinturón iterado pisaría al primero en el modal.
@@ -41,6 +58,8 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       unidadCorta: p.unidad ?? "",
       formula: FORMULAS[ikey]?.latex ?? null,
       formulaLeyenda: FORMULAS[ikey]?.leyenda ?? null,
+      dimTxt: dimDe[`${SLUG_DE[ckey] ?? ckey}.${ikey}`]
+        ?? (ind.en_indice === false ? "Contexto — no integra el índice" : null),
     };
   }
 }
@@ -91,8 +110,8 @@ const dimsJson = JSON.stringify(dims);
     <p class="cg-eyebrow" id="cg-modal-eyebrow">Indicador</p>
     <h3 class="cg-modal-title" id="cg-modal-title"></h3>
     <p class="cg-modal-desc" id="cg-modal-que"></p>
-    <div class="cg-modal-aporta" id="cg-modal-aporta"></div>
     <dl class="cg-modal-ficha" id="cg-modal-ficha"></dl>
+    <div class="cg-modal-aporta" id="cg-modal-aporta"></div>
     <div class="cg-modal-formula" id="cg-modal-formula" hidden>
       <h4 class="cg-modal-h4">Cómo se construye</h4>
       <div class="cg-formula-math" id="cg-formula-math"></div>
@@ -211,9 +230,9 @@ const dimsJson = JSON.stringify(dims);
         `<div><dt>${rotulo}</dt><dd${titulo ? ` title="${esc(titulo)}"` : ""}>${esc(valor)}</dd></div>`;
       document.getElementById("cg-modal-ficha").innerHTML =
         celda("Último valor", `${d.valor} ${d.unidad}`.trim()) +
-        celda("Unidad", d.unidadLarga || "—") +
+        celda("Unidad", d.unidadLarga || d.tipo || "—") +
+        celda("Dimensión", d.dimTxt || "—") +
         celda("Frecuencia", d.frecuencia || "—") +
-        celda("Tipo de dato", d.tipo || "—") +
         celda("Actualización", `${d.fecha || "—"} · ${d.estado}`) +
         celda("Fuente", fuenteCorta, d.fuente);
       mostrarFormula(d.formula, d.formulaLeyenda);
