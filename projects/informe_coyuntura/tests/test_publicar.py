@@ -191,6 +191,21 @@ def test_robustez_publicada_encierra_el_valor():
         assert t_lo <= t_hi and 0 <= t_lo and t_hi <= 10
 
 
+def test_dimensiones_criticas_marcadas():
+    """ADR-0020: toda dimensión publicada trae el flag 'critica' según la
+    regla (puntaje < 30 en índices por bandas · < 85 en base-100), y las dos
+    críticas vigentes conocidas quedan señaladas."""
+    informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
+    for ck, clave, umbral in (("macro", "itcm", 30), ("gestion", "itcg", 30),
+                              ("vida_cotidiana", "itvc", 85)):
+        for dk, d in informe["cinturones"][ck][clave]["dimensiones"].items():
+            assert "critica" in d, f"{clave}.{dk}: sin flag critica"
+            assert d["critica"] == (d["puntaje"] < umbral), \
+                f"{clave}.{dk}: critica={d['critica']} con puntaje {d['puntaje']} (umbral {umbral})"
+    assert informe["cinturones"]["gestion"]["itcg"]["dimensiones"]["reforma_laboral"]["critica"]
+    assert informe["cinturones"]["vida_cotidiana"]["itvc"]["dimensiones"]["vulnerabilidad"]["critica"]
+
+
 def test_endeudamiento_se_puntua_con_mora():
     """Endeudamiento (D3 del ITVC): su índice viene de la serie itvc_endeudamiento
     (deuda real de familias × corrección por mora, Informe sobre Bancos)."""

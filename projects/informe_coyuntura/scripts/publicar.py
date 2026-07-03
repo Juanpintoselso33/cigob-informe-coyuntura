@@ -274,6 +274,18 @@ def recomputar_vida_y_global(informe):
     return informe
 
 
+# Umbral de dimensión CRÍTICA (ADR-0020): la agregación lineal compensa entre
+# dimensiones; por debajo del umbral la dimensión se marca explícitamente como
+# "no compensada" — señal visible en la web, sin tocar la fórmula.
+UMBRAL_CRITICO_BANDAS = 30.0    # índices 0-100 por bandas: la peor banda
+UMBRAL_CRITICO_BASE100 = 85.0   # base-100: "deterioro sustancial" (escala del doc)
+
+
+def _marcar_dimensiones_criticas(bloque, umbral):
+    for dim in (bloque or {}).get("dimensiones", {}).values():
+        dim["critica"] = dim["puntaje"] < umbral
+
+
 def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
     """Cinturones con índice paramétrico (macro → ITCM, gestión → ITCG): el
     puntaje lo computa el colector; acá solo se traduce cada puntaje 0-100 a
@@ -292,6 +304,7 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
                 lambda v: round((100 - v) / 10, 1))
         except Exception as e:
             print(f"[WARN] robustez {sigla}: {e}")
+        _marcar_dimensiones_criticas(bloque, UMBRAL_CRITICO_BANDAS)
     for ikey, ind in c["indicadores"].items():
         aporte = formula = nota = None
         p = ind.get(f"puntaje_{clave}")
@@ -454,6 +467,7 @@ def _scoring_vida_itvc(c, series):
                 resultado, None, itvc.tension_de_itvc)
         except Exception as e:
             print(f"[WARN] robustez ITVC: {e}")
+        _marcar_dimensiones_criticas(resultado, UMBRAL_CRITICO_BASE100)
 
     ajustados = {a["indicador"]: a for a in (resultado or {}).get("ajustes_aplicados", [])}
     por_ind = {}

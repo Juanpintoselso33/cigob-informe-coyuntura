@@ -20,6 +20,7 @@ export interface DimensionIndice {
   nombre: string;
   peso: number;
   puntaje: number;
+  critica?: boolean;   // bajo el umbral crítico: el resto del índice no la compensa (ADR-0020)
   indicadores: Record<string, { puntaje_banda: number; puntaje_aplicado: number; peso_efectivo: number }>;
 }
 export interface IndiceParametrico {

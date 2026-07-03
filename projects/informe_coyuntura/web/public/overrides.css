@@ -205,7 +205,9 @@
     border-top: 3px solid var(--rob-c, var(--teal));
     border-radius: var(--radius-card); padding: 16px 20px 14px;
     box-shadow: var(--shadow-card);
+    transition: transform .15s, box-shadow .15s;
 }
+.cg-rob:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 .cg-rob-head {
     display: flex; justify-content: space-between; align-items: baseline;
     gap: 12px; margin-bottom: 24px;
@@ -224,6 +226,17 @@
 }
 .cg-rob-tick--val { font-weight: 700; color: var(--dark); font-size: .78rem; }
 .cg-rob-tick--ext { opacity: .6; font-family: inherit; }
+/* ── Dimensión crítica (ADR-0020): bajo el umbral, el resto no la compensa ── */
+.cg-itcm-dim--critica { border-top-color: var(--rojo); }
+.cg-itcm-dim--critica .cg-bar-fill { background: var(--rojo); }
+.cg-dim-critica { margin: 9px 0 0; font-size: 11.5px; line-height: 1.4; color: var(--muted); }
+.cg-dim-critica-chip {
+    display: inline-block; padding: 1.5px 8px; border-radius: 999px;
+    background: var(--rojo-soft); color: #7F1D1D; border: 1px solid #FECACA;
+    font-size: 10.5px; font-weight: 800; text-transform: uppercase;
+    letter-spacing: .04em; vertical-align: 1px;
+}
+
 .cg-rob--macro    { --rob-c: var(--c-macro); }
 .cg-rob--politica { --rob-c: var(--c-politica); }
 .cg-rob--vida     { --rob-c: var(--c-vida); }

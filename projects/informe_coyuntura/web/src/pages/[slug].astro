@@ -96,7 +96,7 @@ if (rob?.hist && rob.hist_max! > rob.hist_min!) {
         </div>
         <div class="cg-itcm-dims">
           {Object.entries(indice.data.dimensiones).map(([dkey, dim]) => (
-            <div class="cg-itcm-dim">
+            <div class={`cg-itcm-dim${dim.critica ? " cg-itcm-dim--critica" : ""}`}>
               <div class="cg-itcm-dim-head">
                 <span class="cg-itcm-dim-name">{dim.nombre}</span>
                 <span class="cg-itcm-dim-val"><strong>{dim.puntaje}</strong>{indice.base100 ? "" : "/100"} · pesa {Math.round(dim.peso * 100)}%</span>
@@ -104,6 +104,12 @@ if (rob?.hist && rob.hist_max! > rob.hist_min!) {
               <div class="cg-bar" role="img" aria-label={`${dim.puntaje} de 100`}>
                 <div class="cg-bar-fill" style={`width:${Math.min(100, dim.puntaje)}%`}></div>
               </div>
+              {dim.critica && (
+                <p class="cg-dim-critica">
+                  <span class="cg-dim-critica-chip">Dimensión crítica</span>
+                  {" "}el promedio del índice no la compensa
+                </p>
+              )}
             </div>
           ))}
         </div>

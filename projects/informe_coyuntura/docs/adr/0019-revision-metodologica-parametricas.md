@@ -61,7 +61,7 @@ reporta junto al valor puntual ("ITCG 68,5 · robustez 65-72"). Pendiente
 operativo: decidir si el rango se publica en la nota metodológica de la web
 (recomendado) o queda como control interno.
 
-## Decisión 2 — Compensabilidad entre dimensiones (PENDIENTE)
+## Decisión 2 — Compensabilidad entre dimensiones (RESUELTA → ADR-0020, opción b)
 
 **Problema.** Las tres paramétricas agregan con promedio ponderado **lineal**
 ⇒ sustituibilidad perfecta: un colapso en una dimensión se compensa con
