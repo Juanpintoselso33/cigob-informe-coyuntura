@@ -1304,7 +1304,7 @@ def fetch_concesiones_infraestructura() -> dict | None:
         etapa_key = {"I": "etapa_i", "II": "etapa_ii", "II-B": "etapa_ii_b", "III": "etapa_iii"}
         return {
             "valor":          avance,
-            "unidad":         "% de km adjudicados / km licitados (Red Federal de Concesiones)",
+            "unidad":         "% de km adjudicados / km del plan (Red Federal de Concesiones)",
             "fuente":         "CONTRAT.AR (UOC 504) + página oficial RFC",
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,

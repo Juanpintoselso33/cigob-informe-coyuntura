@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-03T18:03:47.079195",
+  "generated_at": "2026-07-03T18:10:40.931442",
   "score": 2.8,
   "itcg": {
     "valor": 72.0,
@@ -328,7 +328,7 @@
     },
     "concesiones_infraestructura": {
       "valor": 28.7,
-      "unidad": "% de km adjudicados / km licitados (Red Federal de Concesiones)",
+      "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
       "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
       "fecha_dato": "2026-07-03",
       "desactualizado": false,

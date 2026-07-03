@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-03 18:04:54"
+generado: "2026-07-03 18:10:41"
 score_global: 3.6
 barbarismo_activo: "político"
 alerta_multicinturon: false
@@ -75,7 +75,7 @@ schema_version: "1.2.0"
 | litigiosidad_laboral | 3.6 | % variación juicios SRT (12m vs 12m previos) | 2026-03-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
 | rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-03 | fresco |
-| concesiones_infraestructura | 28.7 | % de km adjudicados / km licitados (Red Federal de Concesiones) | 2026-07-03 | fresco |
+| concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-07-03 | fresco |
 | asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-07-03 | fresco |
 | protocolo_antipiquetes | 55 | % de reducción de cortes por manifestación en CABA vs promedio 2023 | 2026-06-30 | ⚠ cache |
 | libertad_opcion_salud | 31.8 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-03-01 | fresco |
@@ -97,4 +97,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:protocolo_antipiquetes`
 
 ---
-*Generado por CIGOB — 2026-07-03 18:04:54 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-03 18:10:41 — schema 1.2.0*

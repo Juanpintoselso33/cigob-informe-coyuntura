@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-03T18:04:54.195245",
+  "generated_at": "2026-07-03T18:10:41.071865",
   "period": "2026-07",
   "score_global": 3.6,
   "ponderacion": {
@@ -682,7 +682,7 @@
         },
         "concesiones_infraestructura": {
           "valor": 28.7,
-          "unidad": "% de km adjudicados / km licitados (Red Federal de Concesiones)",
+          "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
           "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
           "fecha_dato": "2026-07-03",
           "desactualizado": false,

@@ -26,7 +26,7 @@
   },
   "concesiones_infraestructura": {
     "valor": 28.7,
-    "unidad": "% de km adjudicados / km licitados (Red Federal de Concesiones)",
+    "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
     "estado": "estimado",
     "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
     "notas": "FALLBACK: el colector AUTO scrapea CONTRAT.AR (búsqueda 'RED FEDERAL', sin login) y el kilometraje de la página oficial de la RFC (ADR-0016). Jul-2026: Etapas I y II-A adjudicadas (2.614 de 9.091 km = 28,7%); II-B en preselección; III con dictamen pendiente.",
