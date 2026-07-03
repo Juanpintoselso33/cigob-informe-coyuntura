@@ -487,12 +487,16 @@ def fetch_masa_salarial() -> dict | None:
         nominal = _indec_nivel_mensual(REMUNERACIONES_ID, limit=48)
         ipc     = _indec_nivel_mensual(IPC_ID, limit=48)
         var_pct, ym, base_ym = _var_real_vs_mismo_mes_2023(nominal, ipc)
+        infl = ipc[ym] / ipc[base_ym]
         return {
             "valor":          var_pct,
             "unidad":         f"% de variación real vs {base_ym} (SPN remuneraciones)",
             "fuente":         "Sec. Hacienda AIF (datos.gob.ar) + IPC INDEC",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
+            "detalle_txt":    (f"$ {nominal[ym]/1e6:,.2f} bn devengados ({ym}) vs "
+                               f"$ {nominal[base_ym]/1e6:,.2f} bn ({base_ym}) · inflación del "
+                               f"período ×{infl:,.1f}").replace(",", "@").replace(".", ",").replace("@", "."),
         }
     except Exception as e:
         _warn("masa_salarial", e)
@@ -513,12 +517,16 @@ def fetch_gasto_funcionamiento() -> dict | None:
         comunes  = set(salarios) & set(otros)
         total    = {ym: salarios[ym] + otros[ym] for ym in comunes}
         var_pct, ym, base_ym = _var_real_vs_mismo_mes_2023(total, ipc)
+        infl = ipc[ym] / ipc[base_ym]
         return {
             "valor":          var_pct,
             "unidad":         f"% de variación real vs {base_ym} (IMIG funcionamiento)",
             "fuente":         "Sec. Hacienda IMIG (datos.gob.ar) + IPC INDEC",
             "fecha_dato":     f"{ym}-01",
             "desactualizado": False,
+            "detalle_txt":    (f"$ {total[ym]/1e6:,.2f} bn devengados ({ym}) vs "
+                               f"$ {total[base_ym]/1e6:,.2f} bn ({base_ym}) · inflación del "
+                               f"período ×{infl:,.1f}").replace(",", "@").replace(".", ",").replace("@", "."),
         }
     except Exception as e:
         _warn("gasto_funcionamiento", e)

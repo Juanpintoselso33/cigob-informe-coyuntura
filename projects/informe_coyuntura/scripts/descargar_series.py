@@ -987,12 +987,22 @@ def fetch_opcion_salud_serie() -> list:
 def fetch_protestas_serie() -> list:
     """Serie mensual de eventos de protesta en CABA desde el store que llena
     gestion.actualizar_protestas_caba() (evita re-bajar los ~8 MB de ACLED:
-    el colector corre antes en el pipeline). [[YYYY-MM-01, eventos]]."""
+    el colector corre antes en el pipeline). El último mes se EXCLUYE si el
+    archivo ACLED no llega a fin de mes (misma regla que el indicador: un mes
+    parcial dibujaría un derrumbe falso al final de la curva).
+    [[YYYY-MM-01, eventos]]."""
     import json as _json
     if not gestion.PROTESTAS_STORE_PATH.exists():
         return []
     store = _json.loads(gestion.PROTESTAS_STORE_PATH.read_text(encoding="utf-8"))
-    return [[f"{ym}-01", v] for ym, v in sorted(store.get("mensual", {}).items())]
+    mensual = store.get("mensual", {})
+    hasta = store.get("_meta", {}).get("hasta_semana", "")
+    yms = sorted(mensual)
+    if hasta and yms and hasta[:7] == yms[-1]:
+        a, m = int(hasta[:4]), int(hasta[5:7])
+        if int(hasta[8:10]) < calendar.monthrange(a, m)[1]:
+            yms = yms[:-1]
+    return [[f"{ym}-01", mensual[ym]] for ym in yms]
 
 
 ARGENTINADATOS_CCL = "https://api.argentinadatos.com/v1/cotizaciones/dolares/contadoconliqui"
@@ -1247,7 +1257,11 @@ GESTION_DERIVADAS = [
     ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "CNV + MTEySS (histórico: 0 hasta jul-2026)", fetch_fal_serie),
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
     ("desregulacion_normativa", "Normas (conteo acum.)", "InfoLeg ('deroga' desde dic-2023)", lambda: fetch_infoleg_serie("deroga")),
-    ("reestructuracion_organismos", "Normas (conteo acum.)", "InfoLeg ('disolucion' desde dic-2023)", lambda: fetch_infoleg_serie("disolucion")),
+    # A % calibrado (45 actos = plan completo, misma escala que el titular):
+    # a diferencia de desregulación (100 normas = 100%), acá conteo ≠ %.
+    ("reestructuracion_organismos", "% de avance (proxy InfoLeg, 45 actos = 100%)",
+     "InfoLeg ('disolucion' desde dic-2023)",
+     lambda: [[f, round(min(100.0, v / 45.0 * 100.0), 1)] for f, v in fetch_infoleg_serie("disolucion")]),
     ("reduccion_estado", "% vs dic-2023", "INDEC (dotación APN mensual)", fetch_reduccion_serie),
     ("asistencia_directa", "% TDPS (directo a personas / transferencias)", "API Presupuesto Abierto (SIDIF)", fetch_tdps_serie),
     ("gasto_funcionamiento", "% real vs mismo mes 2023", "Sec. Hacienda IMIG + IPC INDEC",

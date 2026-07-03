@@ -329,7 +329,7 @@ const dimsJson = JSON.stringify(dims);
         ["Ajustes del analista", d.ajustes.length ? `${d.ajustes.length} vigente${d.ajustes.length > 1 ? "s" : ""}` : "ninguno"],
       ].map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
       mostrarFormula(
-        String.raw`\text{puntaje de la dimensión}=\sum_{\text{indicadores}}\text{peso}\times\text{puntaje interpolado}`,
+        String.raw`\text{puntaje de la dimensi\'on}=\sum_{\text{indicadores}}\text{peso}\times\text{puntaje interpolado}`,
         "Los pesos internos son los de la paramétrica CIGOB; el puntaje de cada indicador se interpola entre las anclas de sus umbrales (ADR-0021). Si un indicador se queda sin dato, los pesos se renormalizan entre los presentes.",
       );
 

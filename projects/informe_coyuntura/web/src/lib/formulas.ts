@@ -24,11 +24,11 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Crecimientos interanuales reales (descontada la inflación) de los agregados privados. Positivo = sobran pesos → presión sobre precios y brecha; negativo = remonetización genuina.",
   },
   recaudacion: {
-    latex: String.raw`\left(\frac{\text{recaudación}_{\text{hoy}}}{\text{recaudación}_{\text{hace 12 m}}}\cdot\frac{\text{IPC}_{\text{hace 12 m}}}{\text{IPC}_{\text{hoy}}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{\text{recaudaci\'on}_{\text{hoy}}}{\text{recaudaci\'on}_{\text{hace 12 m}}}\cdot\frac{\text{IPC}_{\text{hace 12 m}}}{\text{IPC}_{\text{hoy}}}-1\right)\times 100`,
     leyenda: "Variación interanual de la recaudación total, descontada la inflación: cuánto crece en serio, no por suba de precios (ADR-0003).",
   },
   saldo_comercial_12m: {
-    latex: String.raw`\sum_{\text{últimos 12 meses}}\left(\text{exportaciones}-\text{importaciones}\right)`,
+    latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{exportaciones}-\text{importaciones}\right)`,
     leyenda: "Acumulado de 12 meses del intercambio de bienes (ICA, INDEC), en millones de USD.",
   },
   reservas_bcra: {
@@ -36,11 +36,11 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Planilla SDDS del BCRA (drenajes de la Sección II) + depósitos del Tesoro en USD del balance (ADR-0005): las divisas de libre disponibilidad, descontando las que figuran en el activo pero están comprometidas.",
   },
   idc: {
-    latex: String.raw`0{,}30\cdot\underbrace{\text{precio}}_{\text{BADLAR real}}\;+\;0{,}40\cdot\underbrace{\text{volumen}}_{\text{depósitos reales}}\;+\;0{,}30\cdot\underbrace{\text{asignación}}_{\text{préstamos/depósitos}}`,
+    latex: String.raw`0{,}30\cdot\underbrace{\text{precio}}_{\text{BADLAR real}}\;+\;0{,}40\cdot\underbrace{\text{volumen}}_{\text{dep\'ositos reales}}\;+\;0{,}30\cdot\underbrace{\text{asignaci\'on}}_{\text{pr\'estamos/dep\'ositos}}`,
     leyenda: "Semáforo alrededor de 1: si el dinero está barato, los depósitos crecen y se prestan, el sistema financiero tiene capacidad de fondear la economía (ADR-0004).",
   },
   credito_privado: {
-    latex: String.raw`\left(\frac{1+\text{crecim. nominal del crédito}}{1+\text{inflación}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{1+\text{crecim. nominal del cr\'edito}}{1+\text{inflaci\'on}}-1\right)\times 100`,
     leyenda: "Préstamos al sector privado (BCRA), variación interanual descontada la inflación: el crédito que efectivamente llegó, no el que infló la nominalidad (ADR-0022).",
   },
   emae_ia: {
@@ -52,7 +52,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Tipo de cambio real multilateral oficial del BCRA: cuánto vale el peso contra las monedas de los socios comerciales, descontadas las inflaciones. Bajo = peso caro = exportar cuesta más (ADR-0008).",
   },
   iai: {
-    latex: String.raw`0{,}55\cdot\text{construcción}\;+\;0{,}30\cdot\text{bienes de capital}\;+\;0{,}15\cdot\text{patentamientos}`,
+    latex: String.raw`0{,}55\cdot\text{construcci\'on}\;+\;0{,}30\cdot\text{bienes de capital}\;+\;0{,}15\cdot\text{patentamientos}`,
     leyenda: "Variaciones interanuales de la inversión física: ISAC, importación de bienes de capital y patentamientos comerciales. Sin patentamientos, renormaliza a 0,65/0,35 (ADR-0010).",
   },
   icip: {
@@ -62,7 +62,7 @@ export const FORMULAS: Record<string, Formula> = {
 
   // ── Gestión (ITCG) ───────────────────────────────────────────────────────
   cepo_mulc: {
-    latex: String.raw`\left(\frac{\text{dólar CCL}}{\text{dólar mayorista}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{\text{d\'olar CCL}}{\text{d\'olar mayorista}}-1\right)\times 100`,
     leyenda: "Cuánto más caro es el dólar financiero libre que el oficial. Cerca de 0 = mercado unificado, el cepo dejó de morder (ADR-0006).",
   },
   apertura_comercial: {
@@ -86,7 +86,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Masa salarial devengada del personal público (Presupuesto Abierto) contra 2023, descontada la inflación — filtra tanto despidos como licuación.",
   },
   reestructuracion_organismos: {
-    latex: String.raw`\frac{\text{actos de disolución/reestructuración}}{45\;(\text{plan completo})}\times 100`,
+    latex: String.raw`\frac{\text{actos de disoluci\'on/reestructuraci\'on}}{45\;(\text{plan completo})}\times 100`,
     leyenda: "Normas con disolución de organismos desde dic-2023 (InfoLeg). Calibración validada a mano: 18 actos = 40%.",
   },
   fal_modernizacion_laboral: {
@@ -94,7 +94,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Adopción del Fondo de Cese: % de convenios colectivos con la cláusula + fondos registrados en la CNV (contra un pleno de referencia). El tercer componente del doc (litigiosidad diferencial) no tiene fuente pública y los pesos se renormalizan.",
   },
   litigiosidad_laboral: {
-    latex: String.raw`\left(\frac{\text{juicios últimos 12 meses}}{\text{juicios 12 meses anteriores}}-1\right)\times 100`,
+    latex: String.raw`\left(\frac{\text{juicios \'ultimos 12 meses}}{\text{juicios 12 meses anteriores}}-1\right)\times 100`,
     leyenda: "Juicios del sistema de riesgos del trabajo (SRT): si la industria del juicio se enfría, la variación se hace negativa (ADR-0023).",
   },
   privatizaciones: {
@@ -102,7 +102,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Cada empresa de la Ley Bases se puntúa por etapa verificable en el Boletín Oficial: 0 sin definir · 1 preparatoria · 2 pliegos · 3 licitación · 4 cerrada. Separa el anuncio del hecho.",
   },
   rigi_inversiones: {
-    latex: String.raw`\frac{\text{inversión aprobada}}{\text{inversión aprobada}+\text{inversión en evaluación}}\times 100`,
+    latex: String.raw`\frac{\text{inversi\'on aprobada}}{\text{inversi\'on aprobada}+\text{inversi\'on en evaluaci\'on}}\times 100`,
     leyenda: "Montos en USD de la plataforma oficial del RIGI: cuánto del pipeline ya tiene luz verde (ADR-0011).",
   },
   concesiones_infraestructura: {
@@ -124,7 +124,7 @@ export const FORMULAS: Record<string, Formula> = {
 
   // ── Vida cotidiana (ITVC-B100: índices 100 = promedio 4T-2023) ──────────
   brecha_salario_cbt: {
-    latex: String.raw`\frac{\text{salario registrado promedio (RIPTE)}}{\text{canasta básica total del hogar}}`,
+    latex: String.raw`\frac{\text{salario registrado promedio (RIPTE)}}{\text{canasta b\'asica total del hogar}}`,
     leyenda: "Cuántas canastas de pobreza compra un sueldo. Al ITVC entra rebaseado: 100 = arranque del mandato (4T-2023).",
   },
   ipc_alimentos: {
@@ -136,11 +136,11 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Cuántas facturas de servicios regulados paga el sueldo, contra el arranque del mandato. Debajo de 100 = las tarifas pesan más en el bolsillo que en 2023 (fin de subsidios).",
   },
   mortalidad_pymes: {
-    latex: String.raw`100\cdot\frac{\text{producción industrial}_{\text{hoy}}}{\text{producción industrial}_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\text{producci\'on industrial}_{\text{hoy}}}{\text{producci\'on industrial}_{\text{4T-23}}}`,
     leyenda: "Nivel del IPI manufacturero desestacionalizado como proxy de la salud de las pymes industriales (empleadoras), 100 = 4T-2023.",
   },
   despacho_cemento: {
-    latex: String.raw`100\cdot\frac{\text{actividad de la construcción}_{\text{hoy}}}{\text{actividad de la construcción}_{\text{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\text{actividad de la construcci\'on}_{\text{hoy}}}{\text{actividad de la construcci\'on}_{\text{4T-23}}}`,
     leyenda: "Nivel del ISAC desestacionalizado — la construcción es el sector más intensivo en mano de obra, 100 = 4T-2023.",
   },
   endeudamiento_familiar: {
@@ -148,7 +148,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Crédito de consumo (tarjetas + personales, BCRA) descontada la inflación, corregido por la mora: deuda que sube con mora estable = acceso al crédito (bueno); deuda que sube con mora disparada = endeudarse para llegar a fin de mes (malo) — ADR-0018.",
   },
   pluriempleo: {
-    latex: String.raw`100\cdot\frac{\text{subocupación}_{\text{4T-23}}}{\text{subocupación}_{\text{hoy}}}`,
+    latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4T-23}}}{\text{subocupaci\'on}_{\text{hoy}}}`,
     leyenda: "Subocupación demandante (EPH): gente que necesita trabajar más horas. Invertido: si sube, el índice baja.",
   },
   consumo_carne: {
@@ -168,7 +168,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "ICC de la Universidad Torcuato Di Tella, rebaseado al arranque del mandato.",
   },
   sentimiento_digital: {
-    latex: String.raw`\frac{\text{suma del interés de búsqueda por palabra clave}}{\text{cantidad de palabras clave}}`,
+    latex: String.raw`\frac{\text{suma del inter\'es de b\'usqueda por palabra clave}}{\text{cantidad de palabras clave}}`,
     leyenda: "Google Trends (0–100, relativo a la ventana de 3 meses): cuánto busca la gente sobre inflación, precios y trabajo — urgencia económica percibida en tiempo real.",
   },
 
@@ -178,11 +178,11 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Ventana móvil de 12 meses sobre los datos abiertos de la Cámara de Diputados.",
   },
   votometro_ventaja_lla: {
-    latex: String.raw`\text{intención de voto LLA}-\text{intención de voto PJ}`,
+    latex: String.raw`\text{intenci\'on de voto LLA}-\text{intenci\'on de voto PJ}`,
     leyenda: "Gap en puntos porcentuales del agregador Votómetro (encuestas ponderadas por calidad y recencia).",
   },
   clima_electoral: {
-    latex: String.raw`\text{intención de voto LLA}-\text{intención de voto PJ}`,
+    latex: String.raw`\text{intenci\'on de voto LLA}-\text{intenci\'on de voto PJ}`,
     leyenda: "Gap en puntos porcentuales (Votómetro).",
   },
 };

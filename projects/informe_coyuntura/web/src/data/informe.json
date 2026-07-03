@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-03T14:55:25.410620",
+  "generated_at": "2026-07-03T17:33:18.133217",
   "period": "2026-07",
   "score_global": 4.3,
   "ponderacion": {
@@ -1359,6 +1359,7 @@
           "fuente": "Sec. Hacienda IMIG (datos.gob.ar) + IPC INDEC",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
+          "detalle_txt": "$ 2,09 bn devengados (2026-05) vs $ 0,38 bn (2023-05) · inflación del período ×7,2",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 98.1,
@@ -1367,7 +1368,7 @@
           "aporte_score": 0.2,
           "aporte_formula": "Anclas ITCG: ≤-25 → 100 · -25 a -15 → 85 · -15 a -5 → 65 · -5 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas, ADR-0021: 98.1; pesa 6,2% del ITCG)",
           "aporte_nota": null,
-          "aporte_input_txt": null
+          "aporte_input_txt": "$ 2,09 bn devengados (2026-05) vs $ 0,38 bn (2023-05) · inflación del período ×7,2"
         },
         "masa_salarial": {
           "valor": -22.98,
@@ -1375,6 +1376,7 @@
           "fuente": "Sec. Hacienda AIF (datos.gob.ar) + IPC INDEC",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
+          "detalle_txt": "$ 1,62 bn devengados (2026-05) vs $ 0,29 bn (2023-05) · inflación del período ×7,2",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 100.0,
@@ -1383,7 +1385,7 @@
           "aporte_score": 0.0,
           "aporte_formula": "Anclas ITCG: ≤-20 → 100 · -20 a -12 → 85 · -12 a -5 → 65 · -5 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas, ADR-0021: 100.0; pesa 5,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_input_txt": null
+          "aporte_input_txt": "$ 1,62 bn devengados (2026-05) vs $ 0,29 bn (2023-05) · inflación del período ×7,2"
         },
         "reestructuracion_organismos": {
           "valor": 40.0,

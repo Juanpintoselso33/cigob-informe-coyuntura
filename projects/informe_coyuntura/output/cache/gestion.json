@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-03T14:55:25.270341",
+  "generated_at": "2026-07-03T17:31:51.710296",
   "score": 2.8,
   "itcg": {
     "valor": 72.0,
@@ -216,6 +216,7 @@
       "fuente": "Sec. Hacienda IMIG (datos.gob.ar) + IPC INDEC",
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
+      "detalle_txt": "$ 2,09 bn devengados (2026-05) vs $ 0,38 bn (2023-05) · inflación del período ×7,2",
       "en_indice": true,
       "dimension": "reforma_estado",
       "puntaje_itcg": 98.1,
@@ -228,6 +229,7 @@
       "fuente": "Sec. Hacienda AIF (datos.gob.ar) + IPC INDEC",
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
+      "detalle_txt": "$ 1,62 bn devengados (2026-05) vs $ 0,29 bn (2023-05) · inflación del período ×7,2",
       "en_indice": true,
       "dimension": "reforma_estado",
       "puntaje_itcg": 100.0,
