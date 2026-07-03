@@ -574,6 +574,40 @@ SRT_JUICIOS_URL = "https://www.srt.gob.ar/estadisticas/litigiosidad/series/Juici
 # hasta que exista patrimonio consultable — ver ADR-0013).
 FCI_CESE_PLENO = 10
 
+# Cobertura del Fondo de Cese vía BOLETÍN OFICIAL (jul-2026, reemplaza la
+# estimación manual): menciones de "fondo de cese laboral" en la Primera
+# Sección desde la Ley Bases. Calibración ANCLADA en la estimación manual
+# vigente al cambiar la fuente (21 menciones al 03-jul-2026 ≡ cobertura ~5%
+# → pleno = 420 menciones): el índice no salta por el cambio de fuente.
+BO_BUSQUEDA_URL = "https://www.boletinoficial.gob.ar/busquedaAvanzada/realizarBusqueda"
+FAL_BO_TEXTO = "fondo de cese laboral"
+FAL_BO_MENCIONES_PLENO = 420
+
+
+def _bo_conteo(texto: str, desde: str = "10/12/2023", hasta: str | None = None) -> int:
+    """Conteo de normas de la Primera Sección del Boletín Oficial que
+    contienen `texto` (todas las palabras, sin stemming) en el rango de
+    fechas. Endpoint público sin sesión: POST con `params` JSON mínimo; el
+    total viene en content.cantidad_result_seccion (por sección, rango
+    completo — no por página)."""
+    params = {
+        "texto": texto,
+        "fechaDesde": desde,
+        "fechaHasta": hasta or date.today().strftime("%d/%m/%Y"),
+        "todasLasPalabras": True,
+        "seccion": [1],
+        "tipoBusqueda": "Avanzada",
+        "numeroPagina": 1,
+    }
+    r = requests.post(BO_BUSQUEDA_URL,
+                      data={"params": json.dumps(params), "array_volver": "[]"},
+                      headers=HTTP_HEADERS, timeout=60)
+    r.raise_for_status()
+    d = r.json()
+    if d.get("error"):
+        raise ValueError(f"BO búsqueda error={d.get('error')}: {d.get('mensajes')}")
+    return int((d.get("content", {}).get("cantidad_result_seccion") or {}).get("1", 0))
+
 
 def _cnv_fondos_cese() -> int:
     """Cantidad de FCI registrados en CNV con 'CESE LABORAL' en la denominación
@@ -596,24 +630,38 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
     * Adopción financiera (AUTO): FCI/fideicomisos de cese registrados en CNV
       (RG 1071/2025). Hoy 0 — el sistema tiene marco normativo completo pero
       cero materialización financiera, y eso es el dato.
-    * Cobertura CCT (manual, manuales.json → cobertura_cct_pct): el buscador
-      de convenios del MTEySS no tiene API y el boletín de negociación
-      colectiva aún no clasifica la cláusula de cese.
+    * Cobertura (AUTO desde jul-2026, vía BOLETÍN OFICIAL): menciones de
+      "fondo de cese laboral" en la Primera Sección desde la Ley Bases,
+      calibradas (420 menciones = plena; anclada a la estimación manual ~5%
+      vigente al cambiar la fuente, así el índice no saltó). Fallback: la
+      estimación manual de manuales.json si el BO no responde. El buscador
+      de convenios del MTEySS sigue sin API.
     * Litigiosidad diferencial (sin fuente): no existe consolidado nacional de
-      causas por sector; la serie SRT se publica como CONTEXTO aparte.
+      causas por sector; la serie SRT puntúa aparte (ADR-0023).
     """
     try:
         n_cese = _cnv_fondos_cese()
         financiera = min(100.0, n_cese * 100.0 / FCI_CESE_PLENO)
-        m = load_manuales().get("fal_modernizacion_laboral", {})
-        cobertura = m.get("cobertura_cct_pct")
+
+        menciones = None
+        try:
+            menciones = _bo_conteo(FAL_BO_TEXTO)
+            cobertura = min(100.0, menciones * 100.0 / FAL_BO_MENCIONES_PLENO)
+            cobertura_txt = (f"cobertura {str(round(cobertura, 1)).replace('.', ',')}% "
+                             f"({menciones} menciones en el BO desde dic-2023; 420 = plena)")
+        except Exception as e:
+            _warn("fal cobertura BO (fallback manual)", e)
+            m = load_manuales().get("fal_modernizacion_laboral", {})
+            cobertura = m.get("cobertura_cct_pct")
+            cobertura_txt = (f"cobertura CCT ~{str(cobertura).replace('.', ',')}% (est. manual)"
+                             if cobertura is not None else "")
 
         pesos, componentes = [], {}
         indice_num = 0.0
         if cobertura is not None:
             indice_num += 0.40 * float(cobertura)
             pesos.append(0.40)
-            componentes["cobertura_cct"] = float(cobertura)
+            componentes["cobertura_cct"] = round(float(cobertura), 1)
         indice_num += 0.30 * financiera
         pesos.append(0.30)
         componentes["adopcion_financiera"] = round(financiera, 1)
@@ -622,14 +670,16 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
         return {
             "valor":          indice,
             "unidad":         "Índice 0–100 (Fondo de Cese: cobertura + adopción financiera)",
-            "fuente":         "CNV (registro FCI, RG 1071/2025) + MTEySS (cobertura estimada)",
+            "fuente":         ("CNV (registro FCI, RG 1071/2025) + Boletín Oficial (menciones)"
+                               if menciones is not None else
+                               "CNV (registro FCI, RG 1071/2025) + MTEySS (cobertura estimada)"),
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,
             "fci_cese_registrados": n_cese,
+            "menciones_bo":   menciones,
             "componentes":    componentes,
             "detalle_txt": (f"{n_cese} FCI de cese registrados en CNV"
-                            + (f" · cobertura CCT ~{str(cobertura).replace('.', ',')}% (est.)"
-                               if cobertura is not None else "")
+                            + (f" · {cobertura_txt}" if cobertura_txt else "")
                             + " · litigiosidad diferencial sin fuente"),
         }
     except Exception as e:

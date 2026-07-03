@@ -90,8 +90,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Normas con disolución de organismos desde dic-2023 (InfoLeg). Calibración validada a mano: 18 actos = 40%.",
   },
   fal_modernizacion_laboral: {
-    latex: String.raw`\frac{0{,}40\cdot\text{cobertura en convenios}+0{,}30\cdot\text{fondos de cese en CNV}}{0{,}40+0{,}30}`,
-    leyenda: "Adopción del Fondo de Cese: % de convenios colectivos con la cláusula + fondos registrados en la CNV (contra un pleno de referencia). El tercer componente del doc (litigiosidad diferencial) no tiene fuente pública y los pesos se renormalizan.",
+    latex: String.raw`\frac{0{,}40\cdot\text{cobertura (menciones BO)}+0{,}30\cdot\text{fondos de cese en CNV}}{0{,}40+0{,}30}`,
+    leyenda: "Adopción del Fondo de Cese: cobertura medida por menciones del instrumento en el Boletín Oficial desde la Ley Bases (420 = plena) + fondos registrados en la CNV (10 = plena). El tercer componente del doc (litigiosidad diferencial) no tiene fuente pública y los pesos se renormalizan.",
   },
   litigiosidad_laboral: {
     latex: String.raw`\left(\frac{\text{juicios \'ultimos 12 meses}}{\text{juicios 12 meses anteriores}}-1\right)\times 100`,

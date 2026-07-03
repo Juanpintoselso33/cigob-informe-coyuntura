@@ -3062,130 +3062,126 @@
   "fal_modernizacion_laboral": [
     {
       "fecha": "2023-12-01",
-      "valor": 0.0
+      "valor": 0.1
     },
     {
       "fecha": "2024-01-01",
-      "valor": 0.0
+      "valor": 0.1
     },
     {
       "fecha": "2024-02-01",
-      "valor": 0.0
+      "valor": 0.1
     },
     {
       "fecha": "2024-03-01",
-      "valor": 0.0
+      "valor": 0.3
     },
     {
       "fecha": "2024-04-01",
-      "valor": 0.0
+      "valor": 0.3
     },
     {
       "fecha": "2024-05-01",
-      "valor": 0.0
+      "valor": 0.3
     },
     {
       "fecha": "2024-06-01",
-      "valor": 0.0
+      "valor": 0.3
     },
     {
       "fecha": "2024-07-01",
-      "valor": 0.0
+      "valor": 0.4
     },
     {
       "fecha": "2024-08-01",
-      "valor": 0.0
+      "valor": 0.4
     },
     {
       "fecha": "2024-09-01",
-      "valor": 0.0
+      "valor": 0.5
     },
     {
       "fecha": "2024-10-01",
-      "valor": 0.0
+      "valor": 0.7
     },
     {
       "fecha": "2024-11-01",
-      "valor": 0.0
+      "valor": 0.7
     },
     {
       "fecha": "2024-12-01",
-      "valor": 0.0
+      "valor": 1.0
     },
     {
       "fecha": "2025-01-01",
-      "valor": 0.0
+      "valor": 1.0
     },
     {
       "fecha": "2025-02-01",
-      "valor": 0.0
+      "valor": 1.0
     },
     {
       "fecha": "2025-03-01",
-      "valor": 0.0
+      "valor": 1.1
     },
     {
       "fecha": "2025-04-01",
-      "valor": 0.0
+      "valor": 1.2
     },
     {
       "fecha": "2025-05-01",
-      "valor": 0.0
+      "valor": 1.4
     },
     {
       "fecha": "2025-06-01",
-      "valor": 0.0
+      "valor": 1.5
     },
     {
       "fecha": "2025-07-01",
-      "valor": 0.0
+      "valor": 1.5
     },
     {
       "fecha": "2025-08-01",
-      "valor": 0.0
+      "valor": 1.8
     },
     {
       "fecha": "2025-09-01",
-      "valor": 0.0
+      "valor": 2.2
     },
     {
       "fecha": "2025-10-01",
-      "valor": 0.0
+      "valor": 2.3
     },
     {
       "fecha": "2025-11-01",
-      "valor": 0.0
+      "valor": 2.3
     },
     {
       "fecha": "2025-12-01",
-      "valor": 0.0
+      "valor": 2.4
     },
     {
       "fecha": "2026-01-01",
-      "valor": 0.0
+      "valor": 2.4
     },
     {
       "fecha": "2026-02-01",
-      "valor": 0.0
+      "valor": 2.4
     },
     {
       "fecha": "2026-03-01",
-      "valor": 0.0
+      "valor": 2.6
     },
     {
       "fecha": "2026-04-01",
-      "valor": 0.0
+      "valor": 2.6
     },
     {
       "fecha": "2026-05-01",
-      "valor": 0.0
+      "valor": 2.7
     },
     {
       "fecha": "2026-06-01",
-      "valor": 0.0
-    },
-    {
-      "fecha": "2026-07-01",
       "valor": 2.9
     }
   ],

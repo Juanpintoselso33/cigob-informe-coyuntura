@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-03T17:31:51.710296",
+  "generated_at": "2026-07-03T18:03:47.079195",
   "score": 2.8,
   "itcg": {
     "valor": 72.0,
@@ -253,15 +253,16 @@
     "fal_modernizacion_laboral": {
       "valor": 2.9,
       "unidad": "Índice 0–100 (Fondo de Cese: cobertura + adopción financiera)",
-      "fuente": "CNV (registro FCI, RG 1071/2025) + MTEySS (cobertura estimada)",
+      "fuente": "CNV (registro FCI, RG 1071/2025) + Boletín Oficial (menciones)",
       "fecha_dato": "2026-07-03",
       "desactualizado": false,
       "fci_cese_registrados": 0,
+      "menciones_bo": 21,
       "componentes": {
         "cobertura_cct": 5.0,
         "adopcion_financiera": 0.0
       },
-      "detalle_txt": "0 FCI de cese registrados en CNV · cobertura CCT ~5% (est.) · litigiosidad diferencial sin fuente",
+      "detalle_txt": "0 FCI de cese registrados en CNV · cobertura 5,0% (21 menciones en el BO desde dic-2023; 420 = plena) · litigiosidad diferencial sin fuente",
       "en_indice": true,
       "dimension": "reforma_laboral",
       "puntaje_itcg": 10.0,

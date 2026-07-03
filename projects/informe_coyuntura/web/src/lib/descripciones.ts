@@ -272,7 +272,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   fal_modernizacion_laboral: {
     que: "El avance del Sistema de Cese Laboral (Ley Bases · Dto. 847/2024 · RG CNV 1071/2025): adopción en convenios colectivos, cobertura de trabajadores y dinero efectivamente puesto en fondos de cese.",
-    aporta: "Es el indicador bisagra de la reforma laboral: el propio Gobierno lo presenta como la herramienta central contra la litigiosidad. No se impone por ley — se pacta por convenio —, así que su adopción mide si la reforma prende de verdad.",
+    aporta: "Es el indicador bisagra de la reforma laboral: el propio Gobierno lo presenta como la herramienta central contra la litigiosidad. No se impone por ley — se pacta por convenio —, así que su adopción mide si la reforma prende de verdad. La cobertura se mide con las menciones del instrumento en el Boletín Oficial desde la Ley Bases (calibración: 420 menciones = adopción plena); la adopción financiera, con los fondos registrados en la CNV.",
     frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
   libertad_opcion_salud: {
