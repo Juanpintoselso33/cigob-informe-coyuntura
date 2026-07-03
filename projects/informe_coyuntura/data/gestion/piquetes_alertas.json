@@ -4,6 +4,7 @@
     "descripcion": "Alertas GTFS-RT de manifestación (API Transporte GCBA, colectivos+subtes) por día. Acumulación desde jul-2026; dedupe por id de alerta. Día con {} = muestreado sin alertas."
   },
   "dias": {
-    "2026-07-02": {}
+    "2026-07-02": {},
+    "2026-07-03": {}
   }
 }
