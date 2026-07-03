@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-03T14:46:53.556031",
+  "generated_at": "2026-07-03T14:55:25.410620",
   "period": "2026-07",
-  "score_global": 4.4,
+  "score_global": 4.3,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -951,12 +951,12 @@
       }
     },
     "gestion": {
-      "score": 3.0,
+      "score": 2.8,
       "estado": "estable",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 5.38,
+          "valor": 5.39,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
           "fecha_dato": "2026-07-03",
@@ -1091,9 +1091,9 @@
           "dimension": "reforma_laboral",
           "puntaje_itcg": 10.0,
           "puntaje_banda": 10.0,
-          "peso_efectivo": 0.15,
+          "peso_efectivo": 0.105,
           "aporte_score": 9.0,
-          "aporte_formula": "Anclas ITCG: >60 → 100 · 40–60 → 85 · 20–40 → 65 · 5–20 → 40 · ≤5 → 10 (puntaje interpolado entre anclas, ADR-0021: 10.0; pesa 15,0% del ITCG)",
+          "aporte_formula": "Anclas ITCG: >60 → 100 · 40–60 → 85 · 20–40 → 65 · 5–20 → 40 · ≤5 → 10 (puntaje interpolado entre anclas, ADR-0021: 10.0; pesa 10,5% del ITCG)",
           "aporte_nota": null,
           "aporte_input_txt": "0 FCI de cese registrados en CNV · cobertura CCT ~5% (est.) · litigiosidad diferencial sin fuente"
         },
@@ -1105,10 +1105,14 @@
           "desactualizado": false,
           "juicios_12m": 129568,
           "detalle_txt": "129.568 juicios en 12m (hasta 2026-03) vs 125.071 previos",
-          "en_indice": false,
-          "aporte_score": null,
-          "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026).",
+          "en_indice": true,
+          "dimension": "reforma_laboral",
+          "puntaje_itcg": 57.8,
+          "puntaje_banda": 57.8,
+          "peso_efectivo": 0.045,
+          "aporte_score": 4.2,
+          "aporte_formula": "Anclas ITCG: ≤-15 → 100 · -15 a -5 → 85 · -5 a 5 → 65 · 5–20 → 40 · >20 → 10 (puntaje interpolado entre anclas, ADR-0021: 57.8; pesa 4,5% del ITCG)",
+          "aporte_nota": null,
           "aporte_input_txt": "129.568 juicios en 12m (hasta 2026-03) vs 125.071 previos"
         },
         "privatizaciones": {
@@ -1281,7 +1285,7 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 69.8,
+        "valor": 72.0,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -1294,7 +1298,7 @@
                 "peso": 0.4,
                 "puntaje_banda": 97.7,
                 "puntaje_aplicado": 97.7,
-                "valor": 5.38,
+                "valor": 5.39,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -1355,14 +1359,21 @@
           "reforma_laboral": {
             "nombre": "Reforma laboral",
             "peso": 0.15,
-            "puntaje": 10.0,
+            "puntaje": 24.3,
             "indicadores": {
               "fal_modernizacion_laboral": {
-                "peso": 1.0,
+                "peso": 0.7,
                 "puntaje_banda": 10.0,
                 "puntaje_aplicado": 10.0,
                 "valor": 2.9,
-                "peso_efectivo": 0.15
+                "peso_efectivo": 0.105
+              },
+              "litigiosidad_laboral": {
+                "peso": 0.3,
+                "puntaje_banda": 57.8,
+                "puntaje_aplicado": 57.8,
+                "valor": 3.6,
+                "peso_efectivo": 0.045
               }
             },
             "peso_efectivo": 0.15,
@@ -1431,57 +1442,57 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 67.4,
-          "p95": 72.2,
+          "p05": 69.9,
+          "p95": 74.1,
           "tension_rango": [
-            2.8,
-            3.3
+            2.6,
+            3.0
           ],
           "dominante": {
             "indicador": "fal_modernizacion_laboral",
-            "indice_sin": 80.4
+            "indice_sin": 77.0
           },
           "n_draws": 1000,
           "hist": [
             1,
             0,
             0,
-            1,
             0,
-            1,
-            5,
-            4,
+            3,
             6,
-            12,
-            11,
-            22,
-            27,
-            28,
-            41,
-            41,
-            73,
-            52,
-            69,
-            70,
-            70,
-            66,
-            59,
-            55,
-            49,
-            55,
-            44,
-            40,
-            29,
-            23,
-            14,
-            16,
+            9,
             8,
+            11,
+            21,
+            22,
+            35,
+            41,
+            33,
+            42,
+            66,
+            57,
+            70,
+            59,
+            67,
+            63,
+            60,
+            59,
+            69,
+            50,
+            38,
+            26,
+            29,
+            21,
+            14,
+            6,
+            6,
+            3,
             2,
-            4,
-            2
+            2,
+            1
           ],
-          "hist_min": 64.33,
-          "hist_max": 73.89,
+          "hist_min": 67.68,
+          "hist_max": 75.85,
           "metodo": "pesos ±20% + insumos ±5% re-puntuados por interpolación (MC, ADR-0019/0021)"
         }
       },

@@ -92,7 +92,8 @@ def test_macro_itcm_reconcilia():
 def test_gestion_itcg_reconcilia():
     """Gestión: la suma ponderada de los puntajes ITCG (peso_efectivo) reproduce
     el ITCG publicado, la tensión del cinturón es (100 − ITCG)/10 y los
-    indicadores de contexto (litigiosidad SRT) no aportan al score."""
+    indicadores de contexto no aportan al score. ADR-0023: litigiosidad SRT
+    puntúa (resultado de la reforma laboral, 30% de la dimensión)."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
     c = informe["cinturones"]["gestion"]
     assert c.get("itcg"), "gestión sin bloque itcg"
@@ -100,8 +101,9 @@ def test_gestion_itcg_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
-    assert set(contexto) == {"litigiosidad_laboral", "alertas_manifestacion", "protestas_caba"}
+    assert len(en_indice) == 15, f"esperaba 15 indicadores en el índice, hay {len(en_indice)}"
+    assert "litigiosidad_laboral" in en_indice
+    assert set(contexto) == {"alertas_manifestacion", "protestas_caba"}
 
     ponderado = sum(i["puntaje_itcg"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itcg_val) <= 0.15, f"ponderado {ponderado} != ITCG {itcg_val}"

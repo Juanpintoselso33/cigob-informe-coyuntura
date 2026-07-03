@@ -24,7 +24,8 @@ import itcg
 #   * reduccion_estado −10,5% vs dic-2023 → 88,8 (banda 85).
 #   * gasto_funcionamiento −18% real → 81,0 · masa_salarial −15% real → 82,3.
 #   * reestructuracion_organismos 40% → 52,5 (borde de banda: promedio 40/65).
-#   * fal_modernizacion_laboral 25 → 57,9 (banda 65).
+#   * fal_modernizacion_laboral 25 → 57,9 · litigiosidad +3,6% → 57,8
+#     (laboral = 0,7·57,9 + 0,3·57,8 = 57,9 — ADR-0023).
 #   * privatizaciones 51,4% → 71,4 (banda 65).
 #   * rigi_inversiones 22,1% → 47,7 (banda 40).
 #   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
@@ -39,7 +40,8 @@ EJEMPLO = {
     "gasto_funcionamiento": -18.0,      # 81,0 (banda 85)
     "masa_salarial": -15.0,             # 82,3 (banda 85)
     "reestructuracion_organismos": 40.0,  # 52,5 (borde 40/65)
-    "fal_modernizacion_laboral": 25.0,  # 57,9 (banda 65)
+    "fal_modernizacion_laboral": 25.0,  # 57,9 (banda 65) — instrumento (70%)
+    "litigiosidad_laboral": 3.6,        # 57,8 (banda 65) — resultado (30%, ADR-0023)
     "privatizaciones": 51.4,            # 71,4 (banda 65)
     "rigi_inversiones": 22.1,           # 47,7 (banda 40)
     "concesiones_infraestructura": 35.0,  # 52,5 (borde 40/65)
@@ -112,6 +114,11 @@ def test_bordes_de_banda():
     # y la interpolación reproduce la lineal del doc (0% → 100 · 15% → 0)
     import parametrica
     assert parametrica.puntaje_interpolado(4.86, b["apertura_comercial"]) == 67.6
+    # Litigiosidad SRT (ADR-0023): caída fuerte = 100; expansión 2021-23 = 10.
+    assert itcg.puntaje_banda(-15.0, b["litigiosidad_laboral"]) == 100
+    assert itcg.puntaje_banda(-14.99, b["litigiosidad_laboral"]) == 85
+    assert itcg.puntaje_banda(20.01, b["litigiosidad_laboral"]) == 10
+    assert parametrica.puntaje_interpolado(3.6, b["litigiosidad_laboral"]) == 57.8
     # Desregulación: 57% → 85 (ejemplo explícito del doc).
     assert itcg.puntaje_banda(57.0, b["desregulacion_normativa"]) == 85
     assert itcg.puntaje_banda(50.0, b["desregulacion_normativa"]) == 65

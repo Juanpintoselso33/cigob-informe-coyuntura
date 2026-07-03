@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-03T14:46:53.556031",
+  "generated_at": "2026-07-03T14:55:25.410620",
   "period": "2026-07",
   "score_global": 3.6,
   "ponderacion": {
@@ -506,12 +506,12 @@
       "alerta": null
     },
     "gestion": {
-      "score": 3.0,
+      "score": 2.8,
       "estado": "estable",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 5.38,
+          "valor": 5.39,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
           "fecha_dato": "2026-07-03",
@@ -618,7 +618,7 @@
           "dimension": "reforma_laboral",
           "puntaje_itcg": 10.0,
           "puntaje_banda": 10.0,
-          "peso_efectivo": 0.15
+          "peso_efectivo": 0.105
         },
         "litigiosidad_laboral": {
           "valor": 3.6,
@@ -628,7 +628,11 @@
           "desactualizado": false,
           "juicios_12m": 129568,
           "detalle_txt": "129.568 juicios en 12m (hasta 2026-03) vs 125.071 previos",
-          "en_indice": false
+          "en_indice": true,
+          "dimension": "reforma_laboral",
+          "puntaje_itcg": 57.8,
+          "puntaje_banda": 57.8,
+          "peso_efectivo": 0.045
         },
         "privatizaciones": {
           "valor": 51.4,
@@ -768,7 +772,7 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 69.8,
+        "valor": 72.0,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -781,7 +785,7 @@
                 "peso": 0.4,
                 "puntaje_banda": 97.7,
                 "puntaje_aplicado": 97.7,
-                "valor": 5.38,
+                "valor": 5.39,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -840,14 +844,21 @@
           "reforma_laboral": {
             "nombre": "Reforma laboral",
             "peso": 0.15,
-            "puntaje": 10.0,
+            "puntaje": 24.3,
             "indicadores": {
               "fal_modernizacion_laboral": {
-                "peso": 1.0,
+                "peso": 0.7,
                 "puntaje_banda": 10.0,
                 "puntaje_aplicado": 10.0,
                 "valor": 2.9,
-                "peso_efectivo": 0.15
+                "peso_efectivo": 0.105
+              },
+              "litigiosidad_laboral": {
+                "peso": 0.3,
+                "puntaje_banda": 57.8,
+                "puntaje_aplicado": 57.8,
+                "valor": 3.6,
+                "peso_efectivo": 0.045
               }
             },
             "peso_efectivo": 0.15

@@ -287,7 +287,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   litigiosidad_laboral: {
     que: "Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.",
-    aporta: "Contexto de la reforma laboral: el clima de litigiosidad que el Fondo de Cese promete bajar. Mide juicios por ART, no despidos — por eso acompaña la lectura pero no puntúa en el índice.",
+    aporta: "Es el RESULTADO que la reforma laboral persigue: enfriar la industria del juicio. Complementa al Fondo de Cese (que mide la adopción del instrumento): si el instrumento no avanza pero la litigiosidad se enfría igual, la dimensión lo refleja. Proxy por juicios ART — la única serie nacional mensual pública (ADR-0023).",
     frecuencia: "Mensual (~3 meses de rezago)", tipo: "Variación 12m",
   },
   alertas_manifestacion: {

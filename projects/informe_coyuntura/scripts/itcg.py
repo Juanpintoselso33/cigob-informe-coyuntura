@@ -113,6 +113,14 @@ BANDAS_ITCG = {
     "libertad_opcion_salud": [          # % de avance de la desregulación de obras sociales
         (70.0, INF, 100), (50.0, 70.0, 85), (30.0, 50.0, 65), (10.0, 30.0, 40), (-INF, 10.0, 10),
     ],
+    "litigiosidad_laboral": [           # juicios SRT, % 12m vs 12m previos (ADR-0023)
+        # El RESULTADO que la reforma persigue (enfriar la industria del
+        # juicio), complementa la adopción del instrumento (Fondo de Cese).
+        # Historia: +40/67% (2021-22), +33/37% (2023), +3/7% (2024-26) —
+        # bandas calibradas a ese rango; caída sostenida = canal judicial
+        # desactivándose.
+        (-INF, -15.0, 100), (-15.0, -5.0, 85), (-5.0, 5.0, 65), (5.0, 20.0, 40), (20.0, INF, 10),
+    ],
 }
 
 # Dimensiones del índice (doc 260702: pesos 35/25/15/15/10). Los pesos internos
@@ -136,7 +144,11 @@ DIMENSIONES_ITCG = {
     "reforma_laboral": {
         "nombre": "Reforma laboral",
         "peso": 0.15,
-        "indicadores": {"fal_modernizacion_laboral": 1.0},
+        # ADR-0023: instrumento (Fondo de Cese, adopción) + resultado
+        # (litigiosidad SRT enfriándose) — antes la dimensión descansaba en
+        # un único indicador.
+        "indicadores": {"fal_modernizacion_laboral": 0.70,
+                        "litigiosidad_laboral": 0.30},
     },
     "privatizaciones_inversion": {
         "nombre": "Privatizaciones e inversión",
@@ -172,15 +184,18 @@ INTERPRETACION_LEGIBLE = {
 }
 
 # Indicadores del cinturón que se publican pero no integran el índice.
-# litigiosidad_laboral: proxy SRT (juicios de riesgos del trabajo) — informa la
-# lectura de la reforma laboral pero no es el canal indemnizatorio que el Fondo
-# de Cese reemplaza, así que no puntúa.
+# litigiosidad_laboral SALIÓ de contexto (ADR-0023): puntúa como resultado de
+# la reforma laboral (proxy SRT — no es el canal indemnizatorio que el Fondo
+# de Cese reemplaza, pero es la única serie nacional mensual y su tendencia
+# ES la "industria del juicio" que el doc menciona).
 # alertas_manifestacion: serie GTFS-RT en construcción (acumula desde jul-2026,
 # sin baseline 2023) — candidata a automatizar protocolo_antipiquetes cuando
 # tenga historia (ADR-0014).
 # protestas_caba: eventos de protesta ACLED (marchas/concentraciones, no cortes)
-# — el contraste con protocolo_antipiquetes es la lectura, no puntúa (ADR-0017).
-INDICADORES_CONTEXTO = ["litigiosidad_laboral", "alertas_manifestacion", "protestas_caba"]
+# — el contraste con protocolo_antipiquetes es la lectura, no puntúa (ADR-0017):
+# puntuar el volumen de protesta premiaría "menos marchas", que no es un
+# resultado de gestión sino un derecho ejercido.
+INDICADORES_CONTEXTO = ["alertas_manifestacion", "protestas_caba"]
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:

@@ -631,10 +631,12 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
 
 def fetch_litigiosidad_laboral() -> dict | None:
     """
-    CONTEXTO (no integra el ITCG): variación % de los juicios laborales del
-    sistema de riesgos del trabajo (SRT), acumulado 12 meses vs los 12 previos.
-    Proxy del clima de litigiosidad — no mide el canal indemnizatorio que el
-    Fondo de Cese reemplaza, pero es la única serie nacional mensual pública.
+    Variación % de los juicios laborales del sistema de riesgos del trabajo
+    (SRT), acumulado 12 meses vs los 12 previos. Desde el ADR-0023 INTEGRA el
+    ITCG (reforma laboral, 30%): es el RESULTADO que la reforma persigue —
+    enfriar la industria del juicio — y complementa la adopción del Fondo de
+    Cese (instrumento). Proxy: no mide el canal indemnizatorio que el Fondo
+    reemplaza, pero es la única serie nacional mensual pública.
     """
     try:
         import openpyxl
