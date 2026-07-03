@@ -301,3 +301,27 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Semanal (ACLED)", tipo: "Conteo (12 meses)",
   },
 };
+
+// Qué mide cada DIMENSIÓN de los índices paramétricos (modal de dimensión).
+// Claves únicas entre ITCM/ITCG/ITVC.
+export const DIM_DESCRIPCIONES: Record<string, string> = {
+  // ITCM
+  estabilidad_monetaria: "La dinámica de precios en tres tiempos: la inflación de hoy (IPC), la que el mercado espera para adelante (REM) y el desequilibrio de pesos que puede alimentarla mañana (IDM).",
+  viabilidad_fiscal_comercial: "Si las cuentas cierran: la recaudación real (el sostén del ancla fiscal) y el saldo comercial (los dólares genuinos del intercambio).",
+  financiamiento: "Si hay combustible para la economía: reservas netas (el respaldo externo), capacidad prestable del sistema financiero (IdC) y crédito real efectivamente otorgado.",
+  actividad: "Si la economía crece o se contrae: el EMAE interanual como pulso general de la actividad.",
+  competitividad_externa: "Si el tipo de cambio real alcanza para competir: el ITCRM oficial del BCRA contra su propia historia.",
+  inversion: "Si alguien está apostando al futuro: inversión física (construcción, bienes de capital) y capitalización digital e intangible.",
+  // ITCG
+  reformas_economicas: "El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.",
+  reforma_estado: "El achicamiento del Estado en cuatro medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real, masa salarial real y reestructuración de organismos.",
+  reforma_laboral: "Instrumento y resultado: la adopción del Fondo de Cese (el reemplazo del canal indemnizatorio) y la litigiosidad laboral (la industria del juicio que la reforma promete enfriar).",
+  privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: cartera de privatizaciones, pipeline del RIGI y concesiones viales.",
+  social_orden: "La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud.",
+  // ITVC
+  ingresos: "Si el sueldo alcanza: la brecha entre el salario y la canasta de pobreza, y cuánta gente trabaja en la informalidad.",
+  precios: "Lo que más duele en el changuito: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).",
+  vulnerabilidad: "Cuánto están endeudadas las familias: crédito real por hogar, corregido por la mora — deuda que crece con mora estable es acceso; con mora subiendo es fragilidad.",
+  empleo: "Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
+  confianza: "El ánimo y la seguridad de la vida diaria: confianza del consumidor (UTDT), inseguridad, consumo de carne y patentamiento de motos como termómetros de bolsillo.",
+};

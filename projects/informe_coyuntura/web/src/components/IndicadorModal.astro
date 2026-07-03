@@ -1,6 +1,6 @@
 ---
 import { informe, series, label, presentacion, UNIDADES_LARGAS, CINTURONES, BARRA_0_100 } from "../lib/datos.ts";
-import { DESCRIPCIONES } from "../lib/descripciones.ts";
+import { DESCRIPCIONES, DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 
 const CINT_NOMBRE: Record<string, string> = {
   macro: "Macroeconomía", politica: "Política",
@@ -43,6 +43,44 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
 }
 const infoJson = JSON.stringify(info);
 const seriesJson = JSON.stringify(series);
+
+// Ficha por DIMENSIÓN de los índices paramétricos (modal de dimensión):
+// composición (indicadores, pesos internos, puntajes interpolados), aporte al
+// índice y flag de dimensión crítica (ADR-0020).
+const INDICE_CFG: Record<string, { key: string; sigla: string; base100: boolean }> = {
+  macro: { key: "itcm", sigla: "ITCM", base100: false },
+  gestion: { key: "itcg", sigla: "ITCG", base100: false },
+  vida_cotidiana: { key: "itvc", sigla: "ITVC", base100: true },
+};
+const dims: Record<string, unknown> = {};
+for (const [ckey, c] of Object.entries(informe.cinturones)) {
+  const cfg = INDICE_CFG[ckey];
+  const blk = cfg ? (c as any)[cfg.key] : null;
+  if (!blk?.dimensiones) continue;
+  for (const [dkey, dim] of Object.entries(blk.dimensiones) as [string, any][]) {
+    const comps = Object.entries(dim.indicadores ?? {}).map(([ikey, i]: [string, any]) => {
+      const ind = (c as any).indicadores[ikey];
+      const p = ind ? presentacion(ikey, ind) : null;
+      return {
+        key: ikey, label: label(ikey),
+        puntaje: i.puntaje_aplicado, banda: i.puntaje_banda, peso: i.peso,
+        ajustado: i.puntaje_aplicado !== i.puntaje_banda,
+        valor: p ? `${p.texto}${p.unidad ? " " + p.unidad : ""}` : null,
+      };
+    });
+    const miembros = new Set(comps.map(x => x.key));
+    dims[`${SLUG_DE[ckey] ?? ckey}.${dkey}`] = {
+      sigla: cfg.sigla, base100: cfg.base100,
+      cinturon: CINT_NOMBRE[ckey] ?? ckey, slug: SLUG_DE[ckey] ?? ckey,
+      nombre: dim.nombre, puntaje: dim.puntaje,
+      peso: dim.peso_efectivo ?? dim.peso, critica: !!dim.critica,
+      indiceValor: blk.valor, que: DIM_DESCRIPCIONES[dkey] ?? "",
+      comps,
+      ajustes: (blk.ajustes_aplicados ?? []).filter((a: any) => miembros.has(a.indicador)),
+    };
+  }
+}
+const dimsJson = JSON.stringify(dims);
 ---
 <div class="cg-modal" id="cg-modal" hidden>
   <div class="cg-modal-card">
@@ -64,6 +102,7 @@ const seriesJson = JSON.stringify(series);
 </div>
 <script type="application/json" id="cg-info-data" set:html={infoJson}></script>
 <script type="application/json" id="cg-series-data" set:html={seriesJson}></script>
+<script type="application/json" id="cg-dims-data" set:html={dimsJson}></script>
 <script>
   // ApexCharts se carga en demanda (import dinámico) la primera vez que se abre un
   // indicador, para no pesar en la carga de página cuando nadie abre el modal.
@@ -213,6 +252,88 @@ const seriesJson = JSON.stringify(series);
       }
       modal.removeAttribute("hidden");
       requestAnimationFrame(() => renderChart(tipo, key, d, serie));
+    });
+  });
+
+  // Modal de DIMENSIÓN de los índices paramétricos: composición (indicadores,
+  // pesos internos, puntajes interpolados), aporte al índice y flag crítica.
+  const DIMS = JSON.parse(document.getElementById("cg-dims-data")?.textContent || "{}");
+  document.querySelectorAll(".cg-dim--clickable[data-dimension]").forEach(card => {
+    const abrir = () => {
+      const d = DIMS[`${card.getAttribute("data-cinturon")}.${card.getAttribute("data-dimension")}`];
+      if (!d) return;
+      const uni = d.base100 ? "" : "/100";
+      const aporte = +(d.peso * d.puntaje).toFixed(1);
+      document.getElementById("cg-modal-eyebrow").textContent = `Dimensión · ${d.sigla} · ${d.cinturon}`;
+      document.getElementById("cg-modal-title").textContent = d.nombre;
+      document.getElementById("cg-modal-que").textContent = d.que;
+
+      const aporta = document.getElementById("cg-modal-aporta");
+      aporta.innerHTML =
+        `<strong>Cómo entra al ${esc(d.sigla)}:</strong> pesa ${Math.round(d.peso * 100)}% del índice — ` +
+        `su puntaje ${nf.format(d.puntaje)}${uni} aporta <strong>${nf.format(aporte)}</strong> ` +
+        `de los ${nf.format(d.indiceValor)} puntos del ${esc(d.sigla)}.` +
+        (d.critica
+          ? `<br><br><span class="cg-dim-critica-chip">Dimensión crítica</span> Puntaje debajo del umbral ` +
+            `(${d.base100 ? 85 : 30}): el promedio del índice la compensa aritméticamente con las dimensiones ` +
+            `fuertes, pero en la realidad los frentes no se sustituyen — el flag evita que el titular esconda ` +
+            `este agujero (ADR-0020).`
+          : "");
+      aporta.style.display = "";
+
+      document.getElementById("cg-modal-ficha").innerHTML = [
+        ["Puntaje", `${nf.format(d.puntaje)}${uni || " (base 100)"}`],
+        ["Peso en el índice", `${Math.round(d.peso * 100)}%`],
+        ["Aporte al índice", `${nf.format(aporte)} pts`],
+        ["Indicadores", `${d.comps.length}`],
+        ["Agregación", "Promedio ponderado (interpolado)"],
+        ["Ajustes del analista", d.ajustes.length ? `${d.ajustes.length} vigente${d.ajustes.length > 1 ? "s" : ""}` : "ninguno"],
+      ].map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
+
+      const filas = d.comps.map(cmp => {
+        const pct = d.base100
+          ? Math.max(3, Math.min(100, ((cmp.puntaje - 60) / 70) * 100))
+          : Math.max(3, Math.min(100, cmp.puntaje));
+        return `<div class="cg-dimm-row">` +
+          `<div class="cg-dimm-top">` +
+            `<span class="cg-dimm-name">${esc(cmp.label)}${cmp.valor ? ` <span class="cg-dimm-raw">· ${esc(cmp.valor)}</span>` : ""}</span>` +
+            `<span class="cg-dimm-val"><strong>${nf.format(cmp.puntaje)}</strong>${uni} · pesa ${Math.round(cmp.peso * 100)}%</span>` +
+          `</div>` +
+          `<div class="cg-bar"><div class="cg-bar-fill" style="width:${pct}%"></div></div>` +
+          (cmp.ajustado ? `<p class="cg-dimm-aj">Ajustado por el analista (puntaje de banda: ${nf.format(cmp.banda)})</p>` : "") +
+        `</div>`;
+      }).join("");
+      const ajTxt = d.ajustes.map(a => esc(a.justificacion)).join(" · ");
+      document.getElementById("cg-modal-score").innerHTML =
+        `<h4 class="cg-modal-h4">Composición de la dimensión</h4>` +
+        `<div class="cg-dimm-list">${filas}</div>` +
+        (ajTxt ? `<p class="cg-score-map"><strong>Justificación del ajuste:</strong> ${ajTxt}</p>` : "") +
+        `<p class="cg-score-note">El puntaje de la dimensión es la suma ponderada de los puntajes ` +
+        `interpolados de sus indicadores (pesos internos de la paramétrica; si un indicador se queda sin ` +
+        `dato, los pesos se renormalizan). El ${esc(d.sigla)} compone sus dimensiones igual: ` +
+        `${Math.round(d.peso * 100)}% × ${nf.format(d.puntaje)} = <strong>${nf.format(aporte)}</strong> puntos.</p>`;
+      document.getElementById("cg-modal-score").style.display = "";
+
+      const serieH = document.getElementById("cg-modal-serie-h");
+      serieH.style.display = "";
+      serieH.textContent = "Puntaje por indicador";
+      document.getElementById("cg-modal-sub").style.display = "none";
+      document.getElementById("cg-modal-table").innerHTML = "";
+      csvBtn.setAttribute("hidden", "");
+      serieActual = []; keyActual = "";
+      modal.removeAttribute("hidden");
+      requestAnimationFrame(async () => {
+        const el = document.getElementById("cg-modal-chart");
+        destruirChart();
+        el.removeAttribute("hidden");
+        const C = await ensureCharts();
+        chartInstance = C.barChart(el, d.comps.map(x => ({ nombre: x.label, valor: x.puntaje })),
+          { color: C.colorDe(d.slug), unidad: d.base100 ? "índice (base 100)" : "puntos" });
+      });
+    };
+    card.addEventListener("click", abrir);
+    card.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrir(); }
     });
   });
 
