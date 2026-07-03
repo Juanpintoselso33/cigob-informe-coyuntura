@@ -41,10 +41,10 @@ if (rob?.hist && rob.hist_max! > rob.hist_min!) {
   const W = 1120, H = 150;   // panorámico: la card ocupa el ancho completo de la sección
   const n = rob.hist.length;
   const bw = (rob.hist_max! - rob.hist_min!) / n;
-  // dominio x = rango simulado; base-100 lo extiende hasta incluir el 100
+  // dominio x = el rango simulado (la campana ocupa todo el ancho); la
+  // referencia del 100 solo se dibuja si cae adentro — si no, lo dice el texto
   let x0 = rob.hist_min!, x1 = rob.hist_max!;
-  if (indice!.base100) { x0 = Math.min(x0, 99.2); x1 = Math.max(x1, 100.8); }
-  const pad = (x1 - x0) * 0.03;
+  const pad = (x1 - x0) * 0.04;
   x0 -= pad; x1 += pad;
   // suavizado con media móvil (±2 bins) para leerse como densidad
   const sm = rob.hist.map((_, i) => {
@@ -65,10 +65,12 @@ if (rob?.hist && rob.hist_max! > rob.hist_min!) {
   robSvg = {
     W, H, base, area: `${linea} Z`, line: linea,
     x05: X(rob.p05), x95: X(rob.p95), xval: X(indice!.data.valor),
-    x100: indice!.base100 ? X(100) : null,
+    x100: indice!.base100 && 100 >= x0 && 100 <= x1 ? X(100) : null,
     pct: (x: number) => (x / W) * 100,
   };
 }
+// base-100 con toda la simulación debajo de la línea de base → se narra en texto
+const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
 ---
 <Layout title={`${meta.nombre} · Informe de Coyuntura · CiGob`}>
   <Nav />
@@ -199,6 +201,12 @@ if (rob?.hist && rob.hist_max! > rob.hist_min!) {
             <strong>{coma(rob.p95)}</strong> en el 90% de los casos (tensión{" "}
             {coma(rob.tension_rango[0])}–{coma(rob.tension_rango[1])}): la lectura del
             cinturón no depende de la ponderación exacta elegida.
+            {robBajoBase && (
+              <Fragment>
+                {" "}Incluso el escenario más favorable queda <strong>debajo de la línea
+                de base</strong> (100 = promedio 4T-2023).
+              </Fragment>
+            )}
           </p>
         </div>
       </section>
