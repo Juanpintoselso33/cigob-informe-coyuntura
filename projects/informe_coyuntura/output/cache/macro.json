@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-03T06:20:00.417800",
+  "generated_at": "2026-07-03T13:43:03.691447",
   "score": 4.8,
   "itcm": {
     "valor": 51.7,
@@ -16,18 +16,21 @@
             "peso": 0.4,
             "puntaje_banda": 65,
             "puntaje_aplicado": 65,
+            "valor": 2.15,
             "peso_efectivo": 0.104
           },
           "rem_ipc_12m": {
             "peso": 0.3,
             "puntaje_banda": 85,
             "puntaje_aplicado": 85,
+            "valor": 1.7607,
             "peso_efectivo": 0.078
           },
           "idm": {
             "peso": 0.3,
             "puntaje_banda": 60,
             "puntaje_aplicado": 60,
+            "valor": 4.33,
             "peso_efectivo": 0.078
           }
         },
@@ -42,12 +45,14 @@
             "peso": 0.6,
             "puntaje_banda": 10,
             "puntaje_aplicado": 10,
+            "valor": -7.14,
             "peso_efectivo": 0.144
           },
           "saldo_comercial_12m": {
             "peso": 0.4,
             "puntaje_banda": 85,
             "puntaje_aplicado": 85,
+            "valor": 21221.0,
             "peso_efectivo": 0.096
           }
         },
@@ -62,12 +67,14 @@
             "peso": 0.5,
             "puntaje_banda": 30,
             "puntaje_aplicado": 30,
+            "valor": 4122.0,
             "peso_efectivo": 0.08
           },
           "idc": {
             "peso": 0.5,
             "puntaje_banda": 60,
             "puntaje_aplicado": 60,
+            "valor": 1.0156,
             "peso_efectivo": 0.08
           }
         },
@@ -82,6 +89,7 @@
             "peso": 1.0,
             "puntaje_banda": 60,
             "puntaje_aplicado": 60,
+            "valor": 1.64,
             "peso_efectivo": 0.11
           }
         },
@@ -96,6 +104,7 @@
             "peso": 1.0,
             "puntaje_banda": 35,
             "puntaje_aplicado": 35,
+            "valor": 84.96,
             "peso_efectivo": 0.11
           }
         },
@@ -110,12 +119,14 @@
             "peso": 0.6,
             "puntaje_banda": 35,
             "puntaje_aplicado": 35,
+            "valor": -4.2,
             "peso_efectivo": 0.072
           },
           "icip": {
             "peso": 0.4,
             "puntaje_banda": 80,
             "puntaje_aplicado": 80,
+            "valor": 8.2,
             "peso_efectivo": 0.048
           }
         },

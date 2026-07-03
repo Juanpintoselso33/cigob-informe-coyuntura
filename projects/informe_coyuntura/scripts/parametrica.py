@@ -119,7 +119,11 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
                     "origen": ajustes[ikey].get("origen", "manual"),
                 })
             presentes[ikey] = {"peso": peso, "puntaje_banda": p_banda,
-                               "puntaje_aplicado": p_aplicado}
+                               "puntaje_aplicado": p_aplicado,
+                               # valor crudo puntuado contra la banda: lo consumen
+                               # el estudio de interpolación (ADR-0019, Decisión 3)
+                               # y cualquier auditoría del snapshot
+                               "valor": round(float(valor), 4)}
         if not presentes:
             continue
         suma_pesos = sum(i["peso"] for i in presentes.values())

@@ -1,0 +1,239 @@
+{
+  "_meta": {
+    "adr": "0019 Decisión 3",
+    "metodo": "anclaje en punto medio de banda, lineal entre anclajes, plano en extremos"
+  },
+  "itcm": {
+    "indice_bandas": 51.7,
+    "indice_interpolado": 54.7,
+    "delta": 3.0,
+    "tension_bandas": 4.8,
+    "tension_interpolada": 4.5,
+    "dimensiones_interpoladas": {
+      "estabilidad_monetaria": 68.7,
+      "viabilidad_fiscal_comercial": 40.0,
+      "financiamiento": 54.7,
+      "actividad": 61.1,
+      "competitividad_externa": 47.4,
+      "inversion": 54.7
+    },
+    "detalle": [
+      {
+        "dimension": "financiamiento",
+        "indicador": "idc",
+        "valor": 1.0156,
+        "banda": 60,
+        "interpolado": 73.0,
+        "delta": 13.0
+      },
+      {
+        "dimension": "competitividad_externa",
+        "indicador": "tcrm",
+        "valor": 84.96,
+        "banda": 35,
+        "interpolado": 47.4,
+        "delta": 12.4
+      },
+      {
+        "dimension": "inversion",
+        "indicador": "iai",
+        "valor": -4.2,
+        "banda": 35,
+        "interpolado": 42.5,
+        "delta": 7.5
+      },
+      {
+        "dimension": "estabilidad_monetaria",
+        "indicador": "ipc_total",
+        "valor": 2.15,
+        "banda": 65,
+        "interpolado": 72.0,
+        "delta": 7.0
+      },
+      {
+        "dimension": "estabilidad_monetaria",
+        "indicador": "idm",
+        "valor": 4.33,
+        "banda": 60,
+        "interpolado": 53.1,
+        "delta": -6.9
+      },
+      {
+        "dimension": "inversion",
+        "indicador": "icip",
+        "valor": 8.2,
+        "banda": 80,
+        "interpolado": 73.1,
+        "delta": -6.9
+      },
+      {
+        "dimension": "financiamiento",
+        "indicador": "reservas_bcra",
+        "valor": 4122.0,
+        "banda": 30,
+        "interpolado": 36.5,
+        "delta": 6.5
+      },
+      {
+        "dimension": "estabilidad_monetaria",
+        "indicador": "rem_ipc_12m",
+        "valor": 1.7607,
+        "banda": 85,
+        "interpolado": 79.8,
+        "delta": -5.2
+      },
+      {
+        "dimension": "actividad",
+        "indicador": "emae_ia",
+        "valor": 1.64,
+        "banda": 60,
+        "interpolado": 61.1,
+        "delta": 1.1
+      },
+      {
+        "dimension": "viabilidad_fiscal_comercial",
+        "indicador": "recaudacion",
+        "valor": -7.14,
+        "banda": 10,
+        "interpolado": 10.0,
+        "delta": 0.0
+      },
+      {
+        "dimension": "viabilidad_fiscal_comercial",
+        "indicador": "saldo_comercial_12m",
+        "valor": 21221.0,
+        "banda": 85,
+        "interpolado": 85.0,
+        "delta": 0.0
+      }
+    ]
+  },
+  "itcg": {
+    "indice_bandas": 68.5,
+    "indice_interpolado": 71.2,
+    "delta": 2.7,
+    "tension_bandas": 3.1,
+    "tension_interpolada": 2.9,
+    "dimensiones_interpoladas": {
+      "reformas_economicas": 87.1,
+      "reforma_estado": 90.0,
+      "reforma_laboral": 10.0,
+      "privatizaciones_inversion": 56.5,
+      "social_orden": 82.5
+    },
+    "detalle": [
+      {
+        "dimension": "reforma_estado",
+        "indicador": "gasto_funcionamiento",
+        "valor": -24.35,
+        "banda": 85,
+        "interpolado": 98.1,
+        "delta": 13.1
+      },
+      {
+        "dimension": "reformas_economicas",
+        "indicador": "cepo_mulc",
+        "valor": 5.38,
+        "banda": 85,
+        "interpolado": 97.7,
+        "delta": 12.7
+      },
+      {
+        "dimension": "reforma_estado",
+        "indicador": "reestructuracion_organismos",
+        "valor": 40.0,
+        "banda": 40,
+        "interpolado": 52.5,
+        "delta": 12.5
+      },
+      {
+        "dimension": "social_orden",
+        "indicador": "libertad_opcion_salud",
+        "valor": 31.8,
+        "banda": 65,
+        "interpolado": 54.8,
+        "delta": -10.2
+      },
+      {
+        "dimension": "privatizaciones_inversion",
+        "indicador": "rigi_inversiones",
+        "valor": 22.0,
+        "banda": 40,
+        "interpolado": 47.5,
+        "delta": 7.5
+      },
+      {
+        "dimension": "reformas_economicas",
+        "indicador": "apertura_comercial",
+        "valor": 81.3,
+        "banda": 85,
+        "interpolado": 77.6,
+        "delta": -7.4
+      },
+      {
+        "dimension": "privatizaciones_inversion",
+        "indicador": "privatizaciones",
+        "valor": 51.4,
+        "banda": 65,
+        "interpolado": 71.4,
+        "delta": 6.4
+      },
+      {
+        "dimension": "social_orden",
+        "indicador": "protocolo_antipiquetes",
+        "valor": 55.0,
+        "banda": 85,
+        "interpolado": 79.0,
+        "delta": -6.0
+      },
+      {
+        "dimension": "privatizaciones_inversion",
+        "indicador": "concesiones_infraestructura",
+        "valor": 28.7,
+        "banda": 40,
+        "interpolado": 44.6,
+        "delta": 4.6
+      },
+      {
+        "dimension": "reformas_economicas",
+        "indicador": "desregulacion_normativa",
+        "valor": 60.0,
+        "banda": 85,
+        "interpolado": 85.0,
+        "delta": 0.0
+      },
+      {
+        "dimension": "reforma_estado",
+        "indicador": "reduccion_estado",
+        "valor": -19.8,
+        "banda": 100,
+        "interpolado": 100.0,
+        "delta": 0.0
+      },
+      {
+        "dimension": "reforma_estado",
+        "indicador": "masa_salarial",
+        "valor": -22.98,
+        "banda": 100,
+        "interpolado": 100.0,
+        "delta": 0.0
+      },
+      {
+        "dimension": "reforma_laboral",
+        "indicador": "fal_modernizacion_laboral",
+        "valor": 2.9,
+        "banda": 10,
+        "interpolado": 10.0,
+        "delta": 0.0
+      },
+      {
+        "dimension": "social_orden",
+        "indicador": "asistencia_directa",
+        "valor": 100.0,
+        "banda": 100,
+        "interpolado": 100.0,
+        "delta": 0.0
+      }
+    ]
+  }
+}

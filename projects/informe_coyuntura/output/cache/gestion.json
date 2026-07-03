@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-03T06:21:39.362269",
+  "generated_at": "2026-07-03T13:44:20.965069",
   "score": 3.1,
   "itcg": {
     "valor": 68.5,
@@ -16,18 +16,21 @@
             "peso": 0.4,
             "puntaje_banda": 85,
             "puntaje_aplicado": 85,
+            "valor": 5.38,
             "peso_efectivo": 0.14
           },
           "apertura_comercial": {
             "peso": 0.4,
             "puntaje_banda": 85,
             "puntaje_aplicado": 85,
+            "valor": 81.3,
             "peso_efectivo": 0.14
           },
           "desregulacion_normativa": {
             "peso": 0.2,
             "puntaje_banda": 85,
             "puntaje_aplicado": 85,
+            "valor": 60.0,
             "peso_efectivo": 0.07
           }
         },
@@ -42,24 +45,28 @@
             "peso": 0.35,
             "puntaje_banda": 100,
             "puntaje_aplicado": 100,
+            "valor": -19.8,
             "peso_efectivo": 0.0875
           },
           "gasto_funcionamiento": {
             "peso": 0.25,
             "puntaje_banda": 85,
             "puntaje_aplicado": 85,
+            "valor": -24.35,
             "peso_efectivo": 0.0625
           },
           "masa_salarial": {
             "peso": 0.2,
             "puntaje_banda": 100,
             "puntaje_aplicado": 100,
+            "valor": -22.98,
             "peso_efectivo": 0.05
           },
           "reestructuracion_organismos": {
             "peso": 0.2,
             "puntaje_banda": 40,
             "puntaje_aplicado": 40,
+            "valor": 40.0,
             "peso_efectivo": 0.05
           }
         },
@@ -74,6 +81,7 @@
             "peso": 1.0,
             "puntaje_banda": 10,
             "puntaje_aplicado": 10,
+            "valor": 2.9,
             "peso_efectivo": 0.15
           }
         },
@@ -88,18 +96,21 @@
             "peso": 0.4,
             "puntaje_banda": 65,
             "puntaje_aplicado": 65,
+            "valor": 51.4,
             "peso_efectivo": 0.06
           },
           "rigi_inversiones": {
             "peso": 0.4,
             "puntaje_banda": 40,
             "puntaje_aplicado": 40,
+            "valor": 22.0,
             "peso_efectivo": 0.06
           },
           "concesiones_infraestructura": {
             "peso": 0.2,
             "puntaje_banda": 40,
             "puntaje_aplicado": 40,
+            "valor": 28.7,
             "peso_efectivo": 0.03
           }
         },
@@ -114,18 +125,21 @@
             "peso": 0.4,
             "puntaje_banda": 100,
             "puntaje_aplicado": 100,
+            "valor": 100.0,
             "peso_efectivo": 0.04
           },
           "protocolo_antipiquetes": {
             "peso": 0.4,
             "puntaje_banda": 85,
             "puntaje_aplicado": 85,
+            "valor": 55.0,
             "peso_efectivo": 0.04
           },
           "libertad_opcion_salud": {
             "peso": 0.2,
             "puntaje_banda": 65,
             "puntaje_aplicado": 65,
+            "valor": 31.8,
             "peso_efectivo": 0.02
           }
         },
@@ -136,7 +150,7 @@
   },
   "indicadores": {
     "cepo_mulc": {
-      "valor": 5.9,
+      "valor": 5.38,
       "unidad": "% de brecha CCL/mayorista",
       "fuente": "https://dolarapi.com/v1/dolares",
       "fecha_dato": "2026-07-03",
@@ -148,17 +162,17 @@
       "peso_efectivo": 0.14
     },
     "apertura_comercial": {
-      "valor": 81.0,
+      "valor": 81.3,
       "unidad": "Índice 0–100 (ILCE)",
       "fuente": "ARCA + INDEC ICA + BCRA (elaboración CIGOB)",
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
       "componentes": {
-        "b_camb": 94.4,
+        "b_camb": 94.9,
         "a_efec": 67.6,
         "alicuota_efectiva_pct": 4.86
       },
-      "detalle_txt": "B_camb 94,4 (brecha 5,9%) · A_efec 67,6 (alícuota efectiva 4,86% del intercambio, 2026-05) · canal aduanero sin fuente pública",
+      "detalle_txt": "B_camb 94,9 (brecha 5,38%) · A_efec 67,6 (alícuota efectiva 4,86% del intercambio, 2026-05) · canal aduanero sin fuente pública",
       "en_indice": true,
       "dimension": "reformas_economicas",
       "puntaje_itcg": 85,

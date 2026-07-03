@@ -106,6 +106,26 @@ no sufre esto.
 **Recomendación:** (b), coordinado con CIGOB porque altera los valores
 publicados (es un cambio de método, amerita su propio ADR de ejecución).
 
+**Evidencia medida (2026-07-03, `scripts/interpolacion_sombra.py`).** El
+estudio sombra recalcula ambos índices con puntaje continuo (anclaje en el
+punto medio de cada banda, lineal entre anclajes, plano en los extremos;
+overrides respetados) sobre los valores crudos publicados en el snapshot:
+
+- **ITCM: 51,7 (bandas) → 54,7 (interpolado), Δ +3,0** · tensión 4,8 → 4,5.
+- **ITCG: 68,5 → 71,2, Δ +2,7** · tensión 3,1 → 2,9.
+- La lectura cualitativa NO cambia (misma banda de interpretación en ambos),
+  pero los deltas POR COMPONENTE llegan a ±13 puntos (IdC +13 · TCRM +12,4 ·
+  gasto de funcionamiento +13,1 · cepo +12,7 · opción salud −10,2): las
+  bandas truncan información real que la interpolación conserva.
+- El sesgo agregado de hoy es positivo (+3/+2,7) porque varios indicadores
+  están en la mitad ALTA de su banda — con otros datos podría ser negativo:
+  es ruido de discretización, no un sesgo estructural.
+- Combinado con el hallazgo de la Decisión 1 (las bandas duplican el σ del
+  índice), el caso para la interpolación es: misma lectura, menos ruido de
+  umbral, sin acantilados mes a mes. Costo: recalcular el histórico y
+  actualizar los tests pineados. Detalle completo por indicador en
+  `output/interpolacion_sombra.json`.
+
 ## Decisión 4 — Doble conteo de la brecha cambiaria en el ITCG (PENDIENTE)
 
 **Problema.** El Handbook exige tratar la correlación entre componentes.
