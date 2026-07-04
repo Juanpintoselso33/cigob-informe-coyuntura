@@ -42,6 +42,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0027](0027-auditoria-idc-rediseno.md) | Auditoría adversarial del IdC vs la literatura FCI (NFCI/Goldman/Bloomberg): leyenda con signo invertido CORREGIDA; doble conteo de depósitos, asignación mal condicionada, derivada-no-nivel y sin estacionalidad — resuelta por opción (a) → ADR-0028 | Resuelto |
 | [0028](0028-idc-z-scores.md) | IdC rediseñado como FCI simplificado: tres NIVELES (tasa real, depósitos i.a. real, holgura 1−R) en z-scores contra la historia 2018→hoy, pesos 30/40/30 del doc conservados, anclas por percentiles; jun-2026: 1,06 verde → −0,31 σ amarillo (el 100 lo sostenía el aguinaldo) | Aceptado |
 | [0029](0029-recaudacion-promedio-movil-3m.md) | Recaudación real: promedio móvil 3 meses sobre IPC cerrado (práctica IARAF/OPC) — el i.a. de un mes suelto heredaba el calendario tributario y movía el ITCM ±7 pts con 14,4% de peso; el mes fresco queda provisorio en el detalle; jun: puntaje 10 → tendencia real −2,3% = ~33 | Aceptado |
+| [0030](0030-borde-irregular-mes-comun.md) | Borde irregular (ragged edge): criterio de FAMILIA — titular al último mes COMÚN de todos los insumos + dato fresco provisorio en el detalle sin puntuar; imputación tipo Conference Board LEI descartada (datos estimados + revisiones retroactivas, inaceptable en un índice de rendición de cuentas) | Aceptado |
 
 ## Contexto general
 

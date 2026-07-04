@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-04T13:07:22.737034",
+  "generated_at": "2026-07-04T13:11:48.850210",
   "period": "2026-07",
   "score_global": 3.5,
   "ponderacion": {
@@ -202,6 +202,7 @@
             "productividad": -1.6
           },
           "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
+          "detalle_txt": "+8.2 % i.a. = servicios tech +15.6% · productividad -1.6% (mes común: 2026-04)",
           "en_indice": true,
           "dimension": "inversion",
           "puntaje_itcm": 73.1,

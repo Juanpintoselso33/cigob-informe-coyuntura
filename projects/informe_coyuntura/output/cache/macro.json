@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-04T13:07:22.532624",
+  "generated_at": "2026-07-04T13:11:48.660609",
   "score": 4.2,
   "itcm": {
     "valor": 57.6,
@@ -325,6 +325,7 @@
         "productividad": -1.6
       },
       "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
+      "detalle_txt": "+8.2 % i.a. = servicios tech +15.6% · productividad -1.6% (mes común: 2026-04)",
       "en_indice": true,
       "dimension": "inversion",
       "puntaje_itcm": 73.1,

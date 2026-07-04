@@ -891,20 +891,40 @@ def fetch_icip() -> dict | None:
     servicios de informática (software/cloud/IA) + productividad laboral
     (IPI/empleo). Mayor = la economía se digitaliza más rápido. Banda 'icip'."""
     try:
-        svc  = _indec_yoy(INDEC_SVC_INFO_ID)
-        prod = _indec_ratio_yoy(INDEC_IPI_NIVEL_ID, INDEC_EMPLEO_EIL_ID)
-        valor = ICIP_PESOS["servicios_tech"]*svc["var_ia"] + ICIP_PESOS["productividad"]*prod["var_ia"]
+        # ÚLTIMO MES COMÚN de los TRES insumos (ADR-0030, mismo criterio de
+        # borde irregular que IAI/recaudación/IdC): sin esto, el día que la
+        # balanza de servicios publique antes que el IPI/EIL el titular
+        # mezclaría meses. El insumo más fresco queda provisorio en el detalle.
+        svc_m = _indec_nivel_mensual(INDEC_SVC_INFO_ID, limit=16)
+        ipi_m = _indec_nivel_mensual(INDEC_IPI_NIVEL_ID, limit=16)
+        eil_m = _indec_nivel_mensual(INDEC_EMPLEO_EIL_ID, limit=16)
+        comunes = [ym for ym in sorted(set(svc_m) & set(ipi_m) & set(eil_m))
+                   if all(_ym_shift(ym, -12) in s for s in (svc_m, ipi_m, eil_m))]
+        if not comunes:
+            raise ValueError("ICIP: sin mes común con interanual disponible")
+        ym = comunes[-1]
+        p = _ym_shift(ym, -12)
+        svc_ia  = (svc_m[ym] / svc_m[p] - 1) * 100
+        prod_ia = ((ipi_m[ym] / eil_m[ym]) / (ipi_m[p] / eil_m[p]) - 1) * 100
+        valor = ICIP_PESOS["servicios_tech"]*svc_ia + ICIP_PESOS["productividad"]*prod_ia
+        fresco = ""
+        ult_svc = max(svc_m)
+        if ult_svc > ym and _ym_shift(ult_svc, -12) in svc_m:
+            svc_prov = (svc_m[ult_svc] / svc_m[_ym_shift(ult_svc, -12)] - 1) * 100
+            fresco = f" — servicios tech {ult_svc} (provisorio, no puntúa): {svc_prov:+.1f}%"
         return {
             "valor": round(valor, 2),
             "unidad": "% i.a. ponderado",
             "fuente": "INDEC — servicios de informática (balanza) + IPI/empleo (productividad)",
-            "fecha_dato": svc["fecha"],
+            "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "componentes": {
-                "servicios_tech": round(svc["var_ia"], 1),
-                "productividad": round(prod["var_ia"], 1),
+                "servicios_tech": round(svc_ia, 1),
+                "productividad": round(prod_ia, 1),
             },
             "pesos_nota": "Servicios tech 57% · productividad (IPI/empleo) 43%",
+            "detalle_txt": (f"{round(valor, 1):+} % i.a. = servicios tech {round(svc_ia, 1):+}% · "
+                            f"productividad {round(prod_ia, 1):+}% (mes común: {ym}){fresco}"),
         }
     except Exception as e:
         _warn("icip", e)
