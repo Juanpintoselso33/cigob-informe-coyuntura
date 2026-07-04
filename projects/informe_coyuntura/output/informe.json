@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-04T11:32:44.063704",
+  "generated_at": "2026-07-04T12:26:23.317256",
   "period": "2026-07",
   "score_global": 3.6,
   "ponderacion": {
@@ -23,7 +23,7 @@
         "ipc_total": {
           "valor": 2.15,
           "unidad": "% mensual",
-          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fuente": "INDEC — IPC nacional (vía datos.gob.ar)",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "en_indice": true,
@@ -80,7 +80,7 @@
         "badlar": {
           "valor": 21.31,
           "unidad": "% anual",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
+          "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
           "fecha_dato": "2026-07-02",
           "desactualizado": false,
           "en_indice": false
@@ -88,7 +88,7 @@
         "emae_ia": {
           "valor": 1.64,
           "unidad": "% i.a.",
-          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fuente": "INDEC — EMAE (vía datos.gob.ar)",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
           "en_indice": true,
@@ -100,7 +100,7 @@
         "saldo_comercial_12m": {
           "valor": 21221.0,
           "unidad": "Millones de USD (acum. 12 meses)",
-          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fuente": "INDEC — ICA, intercambio comercial (vía datos.gob.ar)",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "expo_12m": 95003.0,
@@ -118,7 +118,7 @@
         "recaudacion": {
           "valor": -7.14,
           "unidad": "% i.a. real",
-          "fuente": "https://apis.datos.gob.ar/series/api/series/",
+          "fuente": "Sec. Hacienda — recaudación total (vía datos.gob.ar)",
           "fecha_dato": "2026-06-01",
           "var_ia_nominal": 23.68,
           "ipc_ia": 33.2,
@@ -144,7 +144,7 @@
         "rem_ipc_12m": {
           "valor": 23.3,
           "unidad": "% anual esperado",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29",
+          "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
           "fecha_dato": "2026-05-31",
           "desactualizado": false,
           "en_indice": true,
@@ -220,7 +220,7 @@
         "prestamos_privados": {
           "valor": 4.63,
           "unidad": "% mensual nominal",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
+          "fuente": "BCRA — préstamos al sector privado (API monetarias)",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "en_indice": false
@@ -228,7 +228,7 @@
         "base_monetaria": {
           "valor": 9.05,
           "unidad": "% mensual nominal",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
+          "fuente": "BCRA — base monetaria (API monetarias)",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
           "en_indice": false
@@ -236,7 +236,7 @@
         "tc_mayorista": {
           "valor": 3.2,
           "unidad": "% mensual",
-          "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
+          "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
           "fecha_dato": "2026-07-03",
           "desactualizado": false,
           "en_indice": false

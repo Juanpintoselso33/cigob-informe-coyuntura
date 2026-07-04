@@ -260,7 +260,7 @@ def fetch_ipc() -> dict | None:
         return {
             "valor": round(var, 2) if var is not None else None,
             "unidad": "% mensual",
-            "fuente": INDEC_SERIES_BASE,
+            "fuente": "INDEC — IPC nacional (vía datos.gob.ar)",
             "fecha_dato": data[0][0],
             "desactualizado": False,
         }
@@ -435,7 +435,7 @@ def fetch_badlar() -> dict | None:
         return {
             "valor": round(float(ultimo["valor"]), 2),
             "unidad": "% anual",
-            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_BADLAR_ID}",
+            "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
             "fecha_dato": ultimo["fecha"],
             "desactualizado": False,
         }
@@ -551,7 +551,7 @@ def fetch_emae_ia() -> dict | None:
         return {
             "valor": round(float(val) * 100, 2),
             "unidad": "% i.a.",
-            "fuente": INDEC_SERIES_BASE,
+            "fuente": "INDEC — EMAE (vía datos.gob.ar)",
             "fecha_dato": data[0][0],
             "desactualizado": False,
         }
@@ -581,7 +581,7 @@ def fetch_saldo_comercial_12m() -> dict | None:
         return {
             "valor": round(expo_12 - impo_12, 0),
             "unidad": "Millones de USD (acum. 12 meses)",
-            "fuente": INDEC_SERIES_BASE,
+            "fuente": "INDEC — ICA, intercambio comercial (vía datos.gob.ar)",
             "fecha_dato": comunes[0][0],
             "desactualizado": False,
             "expo_12m": round(expo_12, 0),
@@ -600,7 +600,7 @@ def fetch_saldo_comercial_12m() -> dict | None:
         return {
             "valor": round(total, 0),
             "unidad": "Millones de USD (acum. 12 meses)",
-            "fuente": INDEC_SERIES_BASE,
+            "fuente": "INDEC — ICA, intercambio comercial (vía datos.gob.ar)",
             "fecha_dato": data[0][0],
             "desactualizado": False,
         }
@@ -620,7 +620,7 @@ def fetch_recaudacion() -> dict | None:
         return {
             "valor": round(var_real, 2),
             "unidad": "% i.a. real",
-            "fuente": INDEC_SERIES_BASE,
+            "fuente": "Sec. Hacienda — recaudación total (vía datos.gob.ar)",
             "fecha_dato": rec["fecha"],
             "var_ia_nominal": round(rec["var_ia"], 2),
             "ipc_ia": round(ipc["var_ia"], 2),
@@ -668,7 +668,7 @@ def fetch_tcrm() -> dict | None:
         return {
             "valor": round(float(data[0][1]), 2),
             "unidad": "Índice (base 2010=100)",
-            "fuente": INDEC_SERIES_BASE,
+            "fuente": "INDEC — TCRM, serie discontinuada (vía datos.gob.ar)",
             "fecha_dato": data[0][0],
             "desactualizado": True,
         }
@@ -683,7 +683,7 @@ def fetch_rem_ipc_12m() -> dict | None:
         return {
             "valor": round(float(ultimo["valor"]), 1),
             "unidad": "% anual esperado",
-            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_REM_IPC_ID}",
+            "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
             "fecha_dato": ultimo["fecha"],
             "desactualizado": False,
         }
@@ -882,7 +882,7 @@ def fetch_prestamos_privados() -> dict | None:
         return {
             "valor": result["var_m"],
             "unidad": "% mensual nominal",
-            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_PRESTAMOS_ID}",
+            "fuente": "BCRA — préstamos al sector privado (API monetarias)",
             "fecha_dato": result["fecha"],
             "desactualizado": False,
         }
@@ -930,7 +930,7 @@ def fetch_base_monetaria() -> dict | None:
         return {
             "valor": result["var_m"],
             "unidad": "% mensual nominal",
-            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_BASE_MON_ID}",
+            "fuente": "BCRA — base monetaria (API monetarias)",
             "fecha_dato": result["fecha"],
             "desactualizado": False,
         }
@@ -945,7 +945,7 @@ def fetch_tc_mayorista() -> dict | None:
         return {
             "valor": result["var_m"],
             "unidad": "% mensual",
-            "fuente": f"{BCRA_VARIABLES_BASE}/{BCRA_TC_MAYOR_ID}",
+            "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
             "fecha_dato": result["fecha"],
             "desactualizado": False,
         }
