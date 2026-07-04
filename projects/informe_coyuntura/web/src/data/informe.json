@@ -928,7 +928,7 @@
           "en_indice": false,
           "aporte_score": null,
           "aporte_formula": null,
-          "aporte_nota": "Indicador de contexto — no integra el ITVC (paramétrica CIGOB jul-2026) o su componente no pudo calcularse en esta corrida."
+          "aporte_nota": "Indicador de contexto — no integra el ITVC: la escala de Google Trends es relativa y se renormaliza en cada consulta, sirve como pulso en tiempo real pero no como métrica puntuable."
         },
         "patentamiento_motos": {
           "valor": 69154,

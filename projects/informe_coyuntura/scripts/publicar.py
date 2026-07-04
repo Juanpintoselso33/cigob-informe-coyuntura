@@ -738,6 +738,10 @@ def _scoring_vida_itvc(c, series):
                 ind["en_indice"] = False
             if ind["en_indice"] is False:
                 nota = VIDA_CONTEXTO
+                if ikey == "sentimiento_digital":
+                    nota = ("Indicador de contexto — no integra el ITVC: la escala de "
+                            "Google Trends es relativa y se renormaliza en cada consulta, "
+                            "sirve como pulso en tiempo real pero no como métrica puntuable.")
         ind["aporte_score"] = aporte
         ind["aporte_formula"] = formula
         ind["aporte_nota"] = nota
