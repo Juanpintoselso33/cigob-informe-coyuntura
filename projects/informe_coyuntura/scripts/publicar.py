@@ -59,7 +59,7 @@ def build_vida(raw):
     carne = ciccra.get("consumo_carne_per_capita", {})
     _add(out, "consumo_carne", carne.get("valor"),
          "kg/hab/año", "CICCRA", carne.get("fecha"))
-    inf = indec.get("informalidad_anual", {})
+    inf = indec.get("informalidad_trimestral") or indec.get("informalidad_anual", {})
     _add(out, "informalidad", round(inf.get("valor", 0) * 100, 1),
          "%", "INDEC EPH", inf.get("fecha"))
     ipi = indec.get("ipi", {})
@@ -452,12 +452,10 @@ def _itvc_indices(vida_ind, series):
     idx["brecha_salario_cbt"] = _itvc_rebase_de_serie(series, "brecha_salario_cbt")
     idx["icc_utdt"] = _itvc_rebase_de_serie(series, "icc_utdt")
     idx["pluriempleo"] = _itvc_rebase_de_serie(series, "pluriempleo", invertido=True)
-    # Informalidad: la serie trimestral de la API murió en 2020 → se usa la
-    # ANUAL con base = año 2023 (excepción declarada, doc IV.2.1).
-    inf = {p["fecha"][:4]: p["valor"] for p in (series.get("informalidad") or [])}
-    ult_anio = max(inf) if inf else None
-    idx["informalidad"] = (round(inf["2023"] / inf[ult_anio] * 100.0, 1)
-                           if inf.get("2023") and ult_anio and inf.get(ult_anio) else None)
+    # Informalidad TRIMESTRAL (52.2_ASDJ, barrido vida 2/13): la 303.1 murió en
+    # 2020 pero la 52.2 sigue viva — base = 4T-2023 exacto (punto 2023-10),
+    # invertida (menos informalidad = mejora). Reemplaza la excepción anual.
+    idx["informalidad"] = _itvc_rebase_de_serie(series, "informalidad", invertido=True)
     # Motos (CAFAM), carne (CICCRA PM-12m) e inseguridad (SNIC anual: su serie
     # emite el total del año en YYYY-12, así el 4T-2023 resuelve al año 2023 —
     # la excepción declarada del doc): rebase de la serie reconstruida.

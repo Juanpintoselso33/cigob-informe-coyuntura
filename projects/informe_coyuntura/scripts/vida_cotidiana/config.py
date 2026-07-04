@@ -23,7 +23,8 @@ INDEC_SERIES = {
     # Empleo (EPH - trimestral)
     "desocupacion":            "42.3_EPH_PUNTUATAL_0_M_30",    # Tasa desocupacion %
     "empleo":                  "42.3_EPH_PUNTUATAL_0_M_24",    # Tasa empleo %
-    "informalidad_anual":      "52.1_ASDJ_0_0_37",             # Asalariados sin desc. jubil. (ANUAL)
+    "informalidad_trimestral": "52.2_ASDJ_0_0_37",             # Asalariados sin desc. jubil. (TRIMESTRAL, 2011→) — métrica del ITVC
+    "informalidad_anual":      "52.1_ASDJ_0_0_37",             # variante anual: respaldo
     "subocupacion_demandante": "47.2_ECTSDT_0_T_47",           # Proxy pluriempleo (trimestral)
 
     # Actividad / Construccion

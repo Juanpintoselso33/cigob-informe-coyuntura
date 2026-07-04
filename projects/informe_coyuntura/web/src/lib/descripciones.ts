@@ -162,9 +162,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel per cápita",
   },
   informalidad: {
-    que: "Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro).",
-    aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. En el ITVC su base es el año 2023 completo (la serie trimestral pública se discontinuó en 2020).",
-    frecuencia: "Anual (EPH)", tipo: "Nivel (%)",
+    que: "Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC.",
+    aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. En el ITVC su base es el 4T-2023 exacto (el trimestre de arranque del mandato).",
+    frecuencia: "Trimestral (EPH)", tipo: "Nivel (%)",
   },
   mortalidad_pymes: {
     que: "La salud del entramado productivo y del empleo PyME, aproximada por la actividad industrial manufacturera. En el ITVC puntúa por el NIVEL del IPI desestacionalizado rebaseado a 100 = 4T-2023 (ya no la variación de un mes, que premiaba o castigaba por estacionalidad).",

@@ -557,7 +557,7 @@ VIDA_DERIVADAS.append(
 )
 
 VIDA_DERIVADAS += [
-    ("informalidad", "%", "INDEC EPH (52.1, anual)", lambda: fetch_indec_x100("52.1_ASDJ_0_0_37")),
+    ("informalidad", "%", "INDEC EPH (52.2, trimestral)", lambda: fetch_indec_x100("52.2_ASDJ_0_0_37")),
     ("pluriempleo", "%", "INDEC EPH (47.2, trimestral)", lambda: fetch_indec_x100("47.2_ECTSDT_0_T_47")),
 ]
 

@@ -138,12 +138,18 @@ def fetch_indec() -> dict:
         except Exception as e:
             logger.error("%s FAIL: %s", key, e)
 
-    # Informalidad (anual)
+    # Informalidad: TRIMESTRAL como métrica (52.2, viva hasta el último
+    # trimestre EPH; la anual 52.1 planchaba el dato un año) + anual de respaldo
+    try:
+        results["informalidad_trimestral"] = _ultimo(INDEC_SERIES["informalidad_trimestral"])
+        logger.info("informalidad trimestral OK: %s", results["informalidad_trimestral"]["valor"])
+    except Exception as e:
+        logger.error("informalidad trimestral FAIL: %s", e)
     try:
         results["informalidad_anual"] = _ultimo(INDEC_SERIES["informalidad_anual"])
-        logger.info("informalidad OK: %s%%", results["informalidad_anual"]["valor"])
+        logger.info("informalidad anual OK: %s%%", results["informalidad_anual"]["valor"])
     except Exception as e:
-        logger.error("informalidad FAIL: %s", e)
+        logger.error("informalidad anual FAIL: %s", e)
 
     # ── Actividad / Industria ─────────────────────────────────────────────────
     for key in ["isac", "emae", "ipi"]:

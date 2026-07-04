@@ -1,18 +1,18 @@
 fecha,indicador,valor,unidad,fuente
-2026-07-04,sentimiento_digital,3.5,interés 0–100,Google Trends (ventana 3m)
-2026-07-03,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
+2026-07-04,sentimiento_digital,3.8,interés 0–100,Google Trends (ventana 3m)
+2026-07-03,sentimiento_digital,5.8,interés 0–100,Google Trends (ventana 3m)
 2026-07-02,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
 2026-07-01,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-30,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-29,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-28,sentimiento_digital,5.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-30,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
+2026-06-29,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
+2026-06-28,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-27,sentimiento_digital,5.5,interés 0–100,Google Trends (ventana 3m)
 2026-06-26,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-25,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
-2026-06-24,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-23,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
+2026-06-25,sentimiento_digital,8.8,interés 0–100,Google Trends (ventana 3m)
+2026-06-24,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-23,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
 2026-06-22,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-21,sentimiento_digital,5.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-21,sentimiento_digital,4.8,interés 0–100,Google Trends (ventana 3m)
 2026-06-20,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-19,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
 2026-06-18,sentimiento_digital,7.0,interés 0–100,Google Trends (ventana 3m)
@@ -519,28 +519,46 @@ fecha,indicador,valor,unidad,fuente
 2022-09-01,ipc_alimentos,6.74,% m/m,INDEC serie 146.3
 2022-08-01,ipc_alimentos,7.1,% m/m,INDEC serie 146.3
 2022-07-01,ipc_alimentos,6.02,% m/m,INDEC serie 146.3
-2025-01-01,informalidad,36.8,%,"INDEC EPH (52.1, anual)"
-2024-01-01,informalidad,36.2,%,"INDEC EPH (52.1, anual)"
-2023-01-01,informalidad,36.3,%,"INDEC EPH (52.1, anual)"
-2022-01-01,informalidad,36.7,%,"INDEC EPH (52.1, anual)"
-2021-01-01,informalidad,32.6,%,"INDEC EPH (52.1, anual)"
-2020-01-01,informalidad,30.2,%,"INDEC EPH (52.1, anual)"
-2019-01-01,informalidad,35.1,%,"INDEC EPH (52.1, anual)"
-2018-01-01,informalidad,34.4,%,"INDEC EPH (52.1, anual)"
-2017-01-01,informalidad,33.9,%,"INDEC EPH (52.1, anual)"
-2016-01-01,informalidad,33.4,%,"INDEC EPH (52.1, anual)"
-2015-01-01,informalidad,32.7,%,"INDEC EPH (52.1, anual)"
-2014-01-01,informalidad,33.5,%,"INDEC EPH (52.1, anual)"
-2013-01-01,informalidad,33.7,%,"INDEC EPH (52.1, anual)"
-2012-01-01,informalidad,34.4,%,"INDEC EPH (52.1, anual)"
-2011-01-01,informalidad,34.3,%,"INDEC EPH (52.1, anual)"
-2010-01-01,informalidad,35.1,%,"INDEC EPH (52.1, anual)"
-2009-01-01,informalidad,36.2,%,"INDEC EPH (52.1, anual)"
-2008-01-01,informalidad,37.0,%,"INDEC EPH (52.1, anual)"
-2007-01-01,informalidad,40.3,%,"INDEC EPH (52.1, anual)"
-2006-01-01,informalidad,43.7,%,"INDEC EPH (52.1, anual)"
-2005-01-01,informalidad,46.6,%,"INDEC EPH (52.1, anual)"
-2004-01-01,informalidad,48.4,%,"INDEC EPH (52.1, anual)"
+2026-01-01,informalidad,37.9,%,"INDEC EPH (52.2, trimestral)"
+2025-10-01,informalidad,36.3,%,"INDEC EPH (52.2, trimestral)"
+2025-07-01,informalidad,36.7,%,"INDEC EPH (52.2, trimestral)"
+2025-04-01,informalidad,37.7,%,"INDEC EPH (52.2, trimestral)"
+2025-01-01,informalidad,36.3,%,"INDEC EPH (52.2, trimestral)"
+2024-10-01,informalidad,36.1,%,"INDEC EPH (52.2, trimestral)"
+2024-07-01,informalidad,36.7,%,"INDEC EPH (52.2, trimestral)"
+2024-04-01,informalidad,36.4,%,"INDEC EPH (52.2, trimestral)"
+2024-01-01,informalidad,35.7,%,"INDEC EPH (52.2, trimestral)"
+2023-10-01,informalidad,35.7,%,"INDEC EPH (52.2, trimestral)"
+2023-07-01,informalidad,35.8,%,"INDEC EPH (52.2, trimestral)"
+2023-04-01,informalidad,36.8,%,"INDEC EPH (52.2, trimestral)"
+2023-01-01,informalidad,36.7,%,"INDEC EPH (52.2, trimestral)"
+2022-10-01,informalidad,35.5,%,"INDEC EPH (52.2, trimestral)"
+2022-07-01,informalidad,37.4,%,"INDEC EPH (52.2, trimestral)"
+2022-04-01,informalidad,37.8,%,"INDEC EPH (52.2, trimestral)"
+2022-01-01,informalidad,35.9,%,"INDEC EPH (52.2, trimestral)"
+2021-10-01,informalidad,33.3,%,"INDEC EPH (52.2, trimestral)"
+2021-07-01,informalidad,33.1,%,"INDEC EPH (52.2, trimestral)"
+2021-04-01,informalidad,31.5,%,"INDEC EPH (52.2, trimestral)"
+2021-01-01,informalidad,32.4,%,"INDEC EPH (52.2, trimestral)"
+2020-10-01,informalidad,32.7,%,"INDEC EPH (52.2, trimestral)"
+2020-07-01,informalidad,28.6,%,"INDEC EPH (52.2, trimestral)"
+2020-04-01,informalidad,23.8,%,"INDEC EPH (52.2, trimestral)"
+2020-01-01,informalidad,35.8,%,"INDEC EPH (52.2, trimestral)"
+2019-10-01,informalidad,35.9,%,"INDEC EPH (52.2, trimestral)"
+2019-07-01,informalidad,35.0,%,"INDEC EPH (52.2, trimestral)"
+2019-04-01,informalidad,34.5,%,"INDEC EPH (52.2, trimestral)"
+2019-01-01,informalidad,35.0,%,"INDEC EPH (52.2, trimestral)"
+2018-10-01,informalidad,35.3,%,"INDEC EPH (52.2, trimestral)"
+2018-07-01,informalidad,34.3,%,"INDEC EPH (52.2, trimestral)"
+2018-04-01,informalidad,34.3,%,"INDEC EPH (52.2, trimestral)"
+2018-01-01,informalidad,33.9,%,"INDEC EPH (52.2, trimestral)"
+2017-10-01,informalidad,34.3,%,"INDEC EPH (52.2, trimestral)"
+2017-07-01,informalidad,34.4,%,"INDEC EPH (52.2, trimestral)"
+2017-04-01,informalidad,33.8,%,"INDEC EPH (52.2, trimestral)"
+2017-01-01,informalidad,33.3,%,"INDEC EPH (52.2, trimestral)"
+2016-10-01,informalidad,33.6,%,"INDEC EPH (52.2, trimestral)"
+2016-07-01,informalidad,33.8,%,"INDEC EPH (52.2, trimestral)"
+2016-04-01,informalidad,33.4,%,"INDEC EPH (52.2, trimestral)"
 2026-06-01,icc_utdt,42.5,índice,"UTDT (ICC, serie XLS)"
 2026-05-01,icc_utdt,40.5,índice,"UTDT (ICC, serie XLS)"
 2026-04-01,icc_utdt,38.1,índice,"UTDT (ICC, serie XLS)"
