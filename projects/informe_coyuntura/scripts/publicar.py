@@ -313,7 +313,7 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
             peso = ind.get("peso_efectivo")
             peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {sigla}" if peso else ""
             formula = (f"Anclas {sigla}: {mod.texto_bandas(ikey)} "
-                       f"(puntaje interpolado entre anclas, ADR-0021: {p}{peso_txt})")
+                       f"(puntaje interpolado entre anclas: {p}{peso_txt})")
             if ikey in ajustes:
                 aj = ajustes[ikey]
                 origen = "automático" if aj.get("origen") == "automatico" else "del analista"

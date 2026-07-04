@@ -187,7 +187,7 @@ def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
         "hist": hist,
         "hist_min": round(lo, 2),
         "hist_max": round(hi, 2),
-        "metodo": "pesos ±20% + insumos ±5% re-puntuados por interpolación (MC, ADR-0019/0021)",
+        "metodo": "pesos ±20% + insumos ±5% re-puntuados por interpolación (Monte Carlo)",
     }
 
 

@@ -247,12 +247,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   apertura_comercial: {
     que: "La alícuota efectiva del comercio exterior: cuántos impuestos (derechos de importación + exportación, ARCA) paga en promedio cada dólar de intercambio (expo+impo del ICA). 0% = comercio libre de fricción arancelaria; 15% o más = cierre de hecho.",
-    aporta: "No mide cuántos dólares entran o salen (eso puede ser una buena cosecha): mide si el Estado desmantela la fricción impositiva que encarece el comercio. La brecha cambiaria puntúa aparte (en su propio indicador) — hasta jul-2026 este índice la incluía y la contaba dos veces (corregido, ADR-0021).",
+    aporta: "No mide cuántos dólares entran o salen (eso puede ser una buena cosecha): mide si el Estado desmantela la fricción impositiva que encarece el comercio. La brecha cambiaria puntúa aparte (en su propio indicador) — hasta jul-2026 este índice la incluía y la contaba dos veces (corregido).",
     frecuencia: "Mensual", tipo: "Nivel (%)",
   },
   credito_privado: {
     que: "Cuánto crece el crédito al sector privado en términos reales (variación interanual de los préstamos, deflactada por el IPC).",
-    aporta: "Es el crédito REALIZADO — complementa al IdC, que mide la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto (ADR-0022).",
+    aporta: "Es el crédito REALIZADO — complementa al IdC, que mide la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.",
     frecuencia: "Diaria (BCRA)", tipo: "Variación real",
   },
   gasto_funcionamiento: {
@@ -287,7 +287,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   litigiosidad_laboral: {
     que: "Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.",
-    aporta: "Es el RESULTADO que la reforma laboral persigue: enfriar la industria del juicio. Complementa al Fondo de Cese (que mide la adopción del instrumento): si el instrumento no avanza pero la litigiosidad se enfría igual, la dimensión lo refleja. Proxy por juicios ART — la única serie nacional mensual pública (ADR-0023).",
+    aporta: "Es el RESULTADO que la reforma laboral persigue: enfriar la industria del juicio. Complementa al Fondo de Cese (que mide la adopción del instrumento): si el instrumento no avanza pero la litigiosidad se enfría igual, la dimensión lo refleja. Proxy por juicios ART — la única serie nacional mensual pública.",
     frecuencia: "Mensual (~3 meses de rezago)", tipo: "Variación 12m",
   },
   alertas_manifestacion: {

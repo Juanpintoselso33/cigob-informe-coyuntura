@@ -17,7 +17,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   rem_ipc_12m: {
     latex: String.raw`\left(\sqrt[12]{\,1+\tfrac{\text{expectativa anual}}{100}\,}-1\right)\times 100`,
-    leyenda: "La inflación esperada a 12 meses (mediana del REM, BCRA) convertida a su equivalente mensual, para compararla con el IPC en la misma escala (ADR-0002).",
+    leyenda: "La inflación esperada a 12 meses (mediana del REM, BCRA) convertida a su equivalente mensual, para compararla con el IPC en la misma escala.",
   },
   idm: {
     latex: String.raw`\underbrace{\text{crecim. real de }M3}_{\text{pesos que HAY}}\;-\;\underbrace{\text{crecim. real de }M2}_{\text{pesos que la gente QUIERE}}`,
@@ -25,7 +25,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   recaudacion: {
     latex: String.raw`\left(\frac{\text{recaudaci\'on}_{\text{hoy}}}{\text{recaudaci\'on}_{\text{hace 12 m}}}\cdot\frac{\text{IPC}_{\text{hace 12 m}}}{\text{IPC}_{\text{hoy}}}-1\right)\times 100`,
-    leyenda: "Variación interanual de la recaudación total, descontada la inflación: cuánto crece en serio, no por suba de precios (ADR-0003).",
+    leyenda: "Variación interanual de la recaudación total, descontada la inflación: cuánto crece en serio, no por suba de precios.",
   },
   saldo_comercial_12m: {
     latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{exportaciones}-\text{importaciones}\right)`,
@@ -33,15 +33,15 @@ export const FORMULAS: Record<string, Formula> = {
   },
   reservas_bcra: {
     latex: String.raw`\text{netas}=\text{brutas}-\underbrace{\text{swap} + \text{encajes USD} + \text{otros}}_{\text{fondos comprometidos, no disponibles}}+\text{dep. del Tesoro}`,
-    leyenda: "Planilla SDDS del BCRA (drenajes de la Sección II) + depósitos del Tesoro en USD del balance (ADR-0005): las divisas de libre disponibilidad, descontando las que figuran en el activo pero están comprometidas.",
+    leyenda: "Planilla SDDS del BCRA (drenajes de la Sección II) + depósitos del Tesoro en USD del balance: las divisas de libre disponibilidad, descontando las que figuran en el activo pero están comprometidas.",
   },
   idc: {
     latex: String.raw`0{,}30\cdot\underbrace{\text{precio}}_{\text{BADLAR real}}\;+\;0{,}40\cdot\underbrace{\text{volumen}}_{\text{dep\'ositos reales}}\;+\;0{,}30\cdot\underbrace{\text{asignaci\'on}}_{\text{pr\'estamos/dep\'ositos}}`,
-    leyenda: "Semáforo alrededor de 1: si el dinero está barato, los depósitos crecen y se prestan, el sistema financiero tiene capacidad de fondear la economía (ADR-0004).",
+    leyenda: "Semáforo alrededor de 1: si el dinero está barato, los depósitos crecen y se prestan, el sistema financiero tiene capacidad de fondear la economía.",
   },
   credito_privado: {
     latex: String.raw`\left(\frac{1+\text{crecim. nominal del cr\'edito}}{1+\text{inflaci\'on}}-1\right)\times 100`,
-    leyenda: "Préstamos al sector privado (BCRA), variación interanual descontada la inflación: el crédito que efectivamente llegó, no el que infló la nominalidad (ADR-0022).",
+    leyenda: "Préstamos al sector privado (BCRA), variación interanual descontada la inflación: el crédito que efectivamente llegó, no el que infló la nominalidad.",
   },
   emae_ia: {
     latex: String.raw`\left(\frac{\text{actividad}_{\text{hoy}}}{\text{actividad}_{\text{hace 12 m}}}-1\right)\times 100`,
@@ -49,25 +49,25 @@ export const FORMULAS: Record<string, Formula> = {
   },
   tcrm: {
     latex: String.raw`\text{ITCRM}_{\text{hoy}}\qquad(\text{base dic-2015}=100)`,
-    leyenda: "Tipo de cambio real multilateral oficial del BCRA: cuánto vale el peso contra las monedas de los socios comerciales, descontadas las inflaciones. Bajo = peso caro = exportar cuesta más (ADR-0008).",
+    leyenda: "Tipo de cambio real multilateral oficial del BCRA: cuánto vale el peso contra las monedas de los socios comerciales, descontadas las inflaciones. Bajo = peso caro = exportar cuesta más.",
   },
   iai: {
     latex: String.raw`0{,}55\cdot\text{construcci\'on}\;+\;0{,}30\cdot\text{bienes de capital}\;+\;0{,}15\cdot\text{patentamientos}`,
-    leyenda: "Variaciones interanuales de la inversión física: ISAC, importación de bienes de capital y patentamientos comerciales. Sin patentamientos, renormaliza a 0,65/0,35 (ADR-0010).",
+    leyenda: "Variaciones interanuales de la inversión física: ISAC, importación de bienes de capital y patentamientos comerciales. Sin patentamientos, renormaliza a 0,65/0,35.",
   },
   icip: {
     latex: String.raw`0{,}57\cdot\text{servicios tech}\;+\;0{,}43\cdot\text{productividad}`,
-    leyenda: "Variaciones interanuales de la inversión intangible: pagos al exterior por software/cloud/IA + productividad laboral (producción industrial por empleado) — ADR-0010.",
+    leyenda: "Variaciones interanuales de la inversión intangible: pagos al exterior por software/cloud/IA + productividad laboral (producción industrial por empleado).",
   },
 
   // ── Gestión (ITCG) ───────────────────────────────────────────────────────
   cepo_mulc: {
     latex: String.raw`\left(\frac{\text{d\'olar CCL}}{\text{d\'olar mayorista}}-1\right)\times 100`,
-    leyenda: "Cuánto más caro es el dólar financiero libre que el oficial. Cerca de 0 = mercado unificado, el cepo dejó de morder (ADR-0006).",
+    leyenda: "Cuánto más caro es el dólar financiero libre que el oficial. Cerca de 0 = mercado unificado, el cepo dejó de morder.",
   },
   apertura_comercial: {
     latex: String.raw`\frac{\text{impuestos al comercio exterior}}{\text{exportaciones}+\text{importaciones}}\times 100`,
-    leyenda: "Recaudación por derechos de exportación + importación (ARCA, en USD) sobre el intercambio total (ICA): cuántos centavos de impuesto paga cada dólar comerciado. 0% = libre comercio (ADR-0021).",
+    leyenda: "Recaudación por derechos de exportación + importación (ARCA, en USD) sobre el intercambio total (ICA): cuántos centavos de impuesto paga cada dólar comerciado. 0% = libre comercio.",
   },
   desregulacion_normativa: {
     latex: String.raw`\min\left(100,\;\text{normas derogatorias desde dic-2023}\right)`,
@@ -95,7 +95,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   litigiosidad_laboral: {
     latex: String.raw`\left(\frac{\text{juicios \'ultimos 12 meses}}{\text{juicios 12 meses anteriores}}-1\right)\times 100`,
-    leyenda: "Juicios del sistema de riesgos del trabajo (SRT): si la industria del juicio se enfría, la variación se hace negativa (ADR-0023).",
+    leyenda: "Juicios del sistema de riesgos del trabajo (SRT): si la industria del juicio se enfría, la variación se hace negativa.",
   },
   privatizaciones: {
     latex: String.raw`\frac{\text{etapa promedio de la cartera}}{4}\times 100`,
@@ -103,15 +103,15 @@ export const FORMULAS: Record<string, Formula> = {
   },
   rigi_inversiones: {
     latex: String.raw`\frac{\text{inversi\'on aprobada}}{\text{inversi\'on aprobada}+\text{inversi\'on en evaluaci\'on}}\times 100`,
-    leyenda: "Montos en USD de la plataforma oficial del RIGI: cuánto del pipeline ya tiene luz verde (ADR-0011).",
+    leyenda: "Montos en USD de la plataforma oficial del RIGI: cuánto del pipeline ya tiene luz verde.",
   },
   concesiones_infraestructura: {
     latex: String.raw`\frac{\text{km de rutas adjudicados}}{\text{km del plan}}\times 100`,
-    leyenda: "Red Federal de Concesiones, por etapas con fecha del Boletín Oficial (CONTRAT.AR, ADR-0016).",
+    leyenda: "Red Federal de Concesiones, por etapas con fecha del Boletín Oficial (CONTRAT.AR).",
   },
   asistencia_directa: {
     latex: String.raw`\frac{\text{pagado directo a las personas}}{\text{total de transferencias del programa}}\times 100`,
-    leyenda: "Ejecución presupuestaria real (partida 5.1.4 sobre el total) de los programas sucesores del Potenciar: qué proporción de la asistencia llega sin intermediarios (ADR-0015).",
+    leyenda: "Ejecución presupuestaria real (partida 5.1.4 sobre el total) de los programas sucesores del Potenciar: qué proporción de la asistencia llega sin intermediarios.",
   },
   protocolo_antipiquetes: {
     latex: String.raw`\left(1-\frac{\text{cortes en CABA, \'ultimo a\~no}}{\text{cortes en CABA en 2023}}\right)\times 100`,
@@ -119,7 +119,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   libertad_opcion_salud: {
     latex: String.raw`\frac{\text{usuarios con aporte directo a su prepaga}}{\text{usuarios de prepagas}}\times 100`,
-    leyenda: "Padrones oficiales de la SSS: cuántos usuarios ya derivan sus aportes directo (canal creado por el DNU 70/23), sin triangular por una obra social (ADR-0016).",
+    leyenda: "Padrones oficiales de la SSS: cuántos usuarios ya derivan sus aportes directo (canal creado por el DNU 70/23), sin triangular por una obra social.",
   },
 
   // ── Vida cotidiana (ITVC-B100: índices 100 = promedio 4T-2023) ──────────
@@ -145,7 +145,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   endeudamiento_familiar: {
     latex: String.raw`100\cdot\frac{\text{deuda real de las familias}_{\text{hoy}}}{\text{deuda real}_{\text{4T-23}}}\cdot\frac{\text{mora}_{\text{4T-23}}}{\text{mora}_{\text{hoy}}}`,
-    leyenda: "Crédito de consumo (tarjetas + personales, BCRA) descontada la inflación, corregido por la mora: deuda que sube con mora estable = acceso al crédito (bueno); deuda que sube con mora disparada = endeudarse para llegar a fin de mes (malo) — ADR-0018.",
+    leyenda: "Crédito de consumo (tarjetas + personales, BCRA) descontada la inflación, corregido por la mora: deuda que sube con mora estable = acceso al crédito (bueno); deuda que sube con mora disparada = endeudarse para llegar a fin de mes (malo).",
   },
   pluriempleo: {
     latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4T-23}}}{\text{subocupaci\'on}_{\text{hoy}}}`,
@@ -157,7 +157,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   patentamiento_motos: {
     latex: String.raw`100\cdot\frac{\text{patentamientos, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4T-23}}}`,
-    leyenda: "Motos patentadas (CAFAM) en promedio móvil anual — desestacionalizado: enero patenta ≈ el doble que junio (ADR-0024). La card muestra el mes crudo.",
+    leyenda: "Motos patentadas (CAFAM) en promedio móvil anual — desestacionalizado: enero patenta ≈ el doble que junio. La card muestra el mes crudo.",
   },
   inseguridad: {
     latex: String.raw`100\cdot\frac{\text{delitos}_{2023}}{\text{delitos}_{\text{hoy}}}`,

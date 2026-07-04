@@ -316,7 +316,7 @@ const dimsJson = JSON.stringify(dims);
           ? `<br><br><span class="cg-dim-critica-chip">Dimensión crítica</span> Puntaje debajo del umbral ` +
             `(${d.base100 ? 85 : 30}): el promedio del índice la compensa aritméticamente con las dimensiones ` +
             `fuertes, pero en la realidad los frentes no se sustituyen — el flag evita que el titular esconda ` +
-            `este agujero (ADR-0020).`
+            `este agujero.`
           : "");
       aporta.style.display = "";
 
@@ -330,7 +330,7 @@ const dimsJson = JSON.stringify(dims);
       ].map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
       mostrarFormula(
         String.raw`\text{puntaje de la dimensi\'on}=\sum_{\text{indicadores}}\text{peso}\times\text{puntaje interpolado}`,
-        "Los pesos internos son los de la paramétrica CIGOB; el puntaje de cada indicador se interpola entre las anclas de sus umbrales (ADR-0021). Si un indicador se queda sin dato, los pesos se renormalizan entre los presentes.",
+        "Los pesos internos son los de la paramétrica CIGOB; el puntaje de cada indicador se interpola entre las anclas de sus umbrales. Si un indicador se queda sin dato, los pesos se renormalizan entre los presentes.",
       );
 
       const filas = d.comps.map(cmp => {
