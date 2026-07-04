@@ -28,10 +28,35 @@ function isActive(seg: string): boolean {
       </a>
       <a class="cg-nav-producto" href={`${base}/`}>Informe de Coyuntura</a>
     </div>
-    <div class="cg-nav-links">
+    <button class="cg-nav-burger" id="cg-nav-burger" aria-label="Secciones del informe"
+            aria-expanded="false" aria-controls="cg-nav-links">☰</button>
+    <div class="cg-nav-links" id="cg-nav-links">
       {links.map(l => (
         <a href={l.href} class:list={{ active: isActive(l.seg) }} aria-current={isActive(l.seg) ? "page" : undefined}>{l.label}</a>
       ))}
     </div>
   </div>
 </nav>
+<script is:inline>
+  (function () {
+    const nav = document.querySelector(".cg-nav");
+    const btn = document.getElementById("cg-nav-burger");
+    if (!nav || !btn) return;
+    btn.addEventListener("click", () => {
+      const abierto = nav.classList.toggle("abierto");
+      btn.setAttribute("aria-expanded", String(abierto));
+      btn.textContent = abierto ? "✕" : "☰";
+    });
+    // navegar o tocar fuera cierra el menú
+    document.getElementById("cg-nav-links").addEventListener("click", e => {
+      if (e.target.tagName === "A") { nav.classList.remove("abierto"); btn.textContent = "☰"; }
+    });
+    document.addEventListener("click", e => {
+      if (!nav.contains(e.target) && nav.classList.contains("abierto")) {
+        nav.classList.remove("abierto");
+        btn.setAttribute("aria-expanded", "false");
+        btn.textContent = "☰";
+      }
+    });
+  })();
+</script>
