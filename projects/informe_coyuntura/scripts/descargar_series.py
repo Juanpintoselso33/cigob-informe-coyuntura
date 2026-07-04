@@ -92,6 +92,23 @@ def fetch_saldo_ica(limit: int = 48) -> list:
             for fecha, valor in expo if fecha in impo_por_fecha]
 
 
+def fetch_saldo_12m_serie(limit: int = 60) -> list:
+    """Saldo comercial ACUMULADO MÓVIL de 12 meses — la métrica del titular
+    del indicador (barrido 5/12: la serie mensual bajo un titular acumulado
+    confundía la lectura). La mensual sigue publicándose como saldo_comercial,
+    insumo de la validación externa del ITCM. [[YYYY-MM-01, M USD]]."""
+    mensual = dict(sorted(fetch_saldo_ica(limit)))
+    fechas = list(mensual)
+    out = []
+    for i in range(11, len(fechas)):
+        win = fechas[i - 11:i + 1]
+        a0, m0 = int(win[0][:4]), int(win[0][5:7])
+        af, mf = int(win[-1][:4]), int(win[-1][5:7])
+        if (af * 12 + mf) - (a0 * 12 + m0) == 11:      # ventana sin huecos
+            out.append([fechas[i], round(sum(mensual[f] for f in win), 1)])
+    return out
+
+
 def _tesoro_por_mes() -> dict:
     """Mapa {YYYY-MM: dep. Tesoro en USD (M)} del Balance Consolidado del BCRA,
     para componer la serie histórica de reservas netas."""
@@ -278,6 +295,7 @@ MACRO_DERIVADAS = [
     ("recaudacion", "% i.a. real", "INDEC (recaudación) + IPC (deflactor)", fetch_recaudacion_real_serie),
     ("credito_privado", "% i.a. real", "BCRA (préstamos privados) + IPC INDEC", fetch_credito_privado_serie),
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
+    ("saldo_comercial_12m", "M USD (acum. 12 meses)", "INDEC — ICA (vía datos.gob.ar)", fetch_saldo_12m_serie),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
     ("idm", "pp (brecha i.a. real)", "BCRA (M3/M2 privado) + IPC INDEC", fetch_idm_serie),
