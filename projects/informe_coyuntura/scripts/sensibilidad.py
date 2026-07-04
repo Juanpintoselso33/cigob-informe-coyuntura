@@ -218,7 +218,7 @@ def main():
         N_DRAWS = int(sys.argv[1])
     informe = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
     salida = {"_meta": {"n_draws": N_DRAWS, "semilla": SEMILLA,
-                        "ruido_peso": RUIDO_PESO, "prob_salto_banda": PROB_SALTO_BANDA,
+                        "ruido_peso": RUIDO_PESO, "ruido_insumo": RUIDO_INSUMO,
                         "snapshot": informe.get("generado", ""), "adr": "0019"}}
     for nombre, cfg in INDICES.items():
         bloque = informe["cinturones"][cfg["cinturon"]].get(nombre)
