@@ -222,53 +222,53 @@ fecha,indicador,valor,unidad,fuente
 2023-01-01,patentamiento_motos,42577,unidades/mes,CAFAM API (histórico mensual)
 2022-12-01,patentamiento_motos,29282,unidades/mes,CAFAM API (histórico mensual)
 2022-11-01,patentamiento_motos,35162,unidades/mes,CAFAM API (histórico mensual)
-2026-04-01,mortalidad_pymes,-3.29,% m/m (IPI),INDEC serie 453.1
-2026-03-01,mortalidad_pymes,21.77,% m/m (IPI),INDEC serie 453.1
-2026-02-01,mortalidad_pymes,-5.91,% m/m (IPI),INDEC serie 453.1
-2026-01-01,mortalidad_pymes,-4.83,% m/m (IPI),INDEC serie 453.1
-2025-12-01,mortalidad_pymes,-2.07,% m/m (IPI),INDEC serie 453.1
-2025-11-01,mortalidad_pymes,-9.71,% m/m (IPI),INDEC serie 453.1
-2025-10-01,mortalidad_pymes,1.44,% m/m (IPI),INDEC serie 453.1
-2025-09-01,mortalidad_pymes,1.28,% m/m (IPI),INDEC serie 453.1
-2025-08-01,mortalidad_pymes,-0.73,% m/m (IPI),INDEC serie 453.1
-2025-07-01,mortalidad_pymes,5.78,% m/m (IPI),INDEC serie 453.1
-2025-06-01,mortalidad_pymes,-5.32,% m/m (IPI),INDEC serie 453.1
-2025-05-01,mortalidad_pymes,2.08,% m/m (IPI),INDEC serie 453.1
-2025-04-01,mortalidad_pymes,4.51,% m/m (IPI),INDEC serie 453.1
-2025-03-01,mortalidad_pymes,5.7,% m/m (IPI),INDEC serie 453.1
-2025-02-01,mortalidad_pymes,-0.64,% m/m (IPI),INDEC serie 453.1
-2025-01-01,mortalidad_pymes,-5.16,% m/m (IPI),INDEC serie 453.1
-2024-12-01,mortalidad_pymes,-6.91,% m/m (IPI),INDEC serie 453.1
-2024-11-01,mortalidad_pymes,-3.77,% m/m (IPI),INDEC serie 453.1
-2024-10-01,mortalidad_pymes,4.05,% m/m (IPI),INDEC serie 453.1
-2024-09-01,mortalidad_pymes,-2.72,% m/m (IPI),INDEC serie 453.1
-2024-08-01,mortalidad_pymes,2.92,% m/m (IPI),INDEC serie 453.1
-2024-07-01,mortalidad_pymes,16.79,% m/m (IPI),INDEC serie 453.1
-2024-06-01,mortalidad_pymes,-8.24,% m/m (IPI),INDEC serie 453.1
-2024-05-01,mortalidad_pymes,4.87,% m/m (IPI),INDEC serie 453.1
-2024-04-01,mortalidad_pymes,0.75,% m/m (IPI),INDEC serie 453.1
-2024-03-01,mortalidad_pymes,6.47,% m/m (IPI),INDEC serie 453.1
-2024-02-01,mortalidad_pymes,0.75,% m/m (IPI),INDEC serie 453.1
-2024-01-01,mortalidad_pymes,-4.12,% m/m (IPI),INDEC serie 453.1
-2023-12-01,mortalidad_pymes,-15.81,% m/m (IPI),INDEC serie 453.1
-2023-11-01,mortalidad_pymes,-4.08,% m/m (IPI),INDEC serie 453.1
-2023-10-01,mortalidad_pymes,-0.46,% m/m (IPI),INDEC serie 453.1
-2023-09-01,mortalidad_pymes,-3.43,% m/m (IPI),INDEC serie 453.1
-2023-08-01,mortalidad_pymes,4.53,% m/m (IPI),INDEC serie 453.1
-2023-07-01,mortalidad_pymes,-1.42,% m/m (IPI),INDEC serie 453.1
-2023-06-01,mortalidad_pymes,-2.23,% m/m (IPI),INDEC serie 453.1
-2023-05-01,mortalidad_pymes,2.99,% m/m (IPI),INDEC serie 453.1
-2023-04-01,mortalidad_pymes,-5.16,% m/m (IPI),INDEC serie 453.1
-2023-03-01,mortalidad_pymes,22.29,% m/m (IPI),INDEC serie 453.1
-2023-02-01,mortalidad_pymes,-2.03,% m/m (IPI),INDEC serie 453.1
-2023-01-01,mortalidad_pymes,-4.86,% m/m (IPI),INDEC serie 453.1
-2022-12-01,mortalidad_pymes,-8.05,% m/m (IPI),INDEC serie 453.1
-2022-11-01,mortalidad_pymes,0.17,% m/m (IPI),INDEC serie 453.1
-2022-10-01,mortalidad_pymes,-2.88,% m/m (IPI),INDEC serie 453.1
-2022-09-01,mortalidad_pymes,-3.36,% m/m (IPI),INDEC serie 453.1
-2022-08-01,mortalidad_pymes,3.53,% m/m (IPI),INDEC serie 453.1
-2022-07-01,mortalidad_pymes,0.07,% m/m (IPI),INDEC serie 453.1
-2022-06-01,mortalidad_pymes,1.31,% m/m (IPI),INDEC serie 453.1
+2026-04-01,mortalidad_pymes,-2.14,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2026-03-01,mortalidad_pymes,3.72,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2026-02-01,mortalidad_pymes,-3.03,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2026-01-01,mortalidad_pymes,2.43,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-12-01,mortalidad_pymes,0.44,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-11-01,mortalidad_pymes,-1.1,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-10-01,mortalidad_pymes,-0.89,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-09-01,mortalidad_pymes,-0.15,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-08-01,mortalidad_pymes,1.28,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-07-01,mortalidad_pymes,-2.77,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-06-01,mortalidad_pymes,-1.87,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-05-01,mortalidad_pymes,2.05,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-04-01,mortalidad_pymes,2.8,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-03-01,mortalidad_pymes,-6.1,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-02-01,mortalidad_pymes,2.79,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2025-01-01,mortalidad_pymes,-2.27,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-12-01,mortalidad_pymes,0.51,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-11-01,mortalidad_pymes,1.48,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-10-01,mortalidad_pymes,-0.41,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-09-01,mortalidad_pymes,1.14,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-08-01,mortalidad_pymes,2.35,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-07-01,mortalidad_pymes,5.16,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-06-01,mortalidad_pymes,-0.46,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-05-01,mortalidad_pymes,1.94,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-04-01,mortalidad_pymes,-0.55,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-03-01,mortalidad_pymes,-2.89,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-02-01,mortalidad_pymes,0.65,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2024-01-01,mortalidad_pymes,-3.42,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-12-01,mortalidad_pymes,-4.72,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-11-01,mortalidad_pymes,-2.42,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-10-01,mortalidad_pymes,-2.01,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-09-01,mortalidad_pymes,0.88,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-08-01,mortalidad_pymes,-2.0,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-07-01,mortalidad_pymes,-1.54,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-06-01,mortalidad_pymes,-0.76,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-05-01,mortalidad_pymes,-2.85,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-04-01,mortalidad_pymes,1.91,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-03-01,mortalidad_pymes,3.01,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-02-01,mortalidad_pymes,-0.03,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2023-01-01,mortalidad_pymes,0.35,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2022-12-01,mortalidad_pymes,0.71,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2022-11-01,mortalidad_pymes,-0.3,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2022-10-01,mortalidad_pymes,-0.56,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2022-09-01,mortalidad_pymes,-1.25,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2022-08-01,mortalidad_pymes,-3.09,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2022-07-01,mortalidad_pymes,0.07,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2022-06-01,mortalidad_pymes,1.36,% m/m (IPI desest.),INDEC — IPI desestacionalizado
 2026-04-01,itvc_tarifas,72.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
 2026-03-01,itvc_tarifas,73.6,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
 2026-02-01,itvc_tarifas,75.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)

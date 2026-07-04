@@ -30,7 +30,10 @@ INDEC_SERIES = {
     # Actividad / Construccion
     "isac":                    "33.2_ISAC_SIN_EDAD_0_M_23_56",
     "emae":                    "143.3_ICE_SERVIA_2004_A_25",
-    "ipi":                     "453.1_SERIE_ORIGNAL_0_0_14_46", # IPI manufacturero (proxy PyMEs)
+    # IPI manufacturero DESESTACIONALIZADO (proxy PyMEs): la serie original
+    # mostraba ±20% m/m de puro calendario (Semana Santa, días hábiles)
+    "ipi":                     "453.1_SERIE_DESEADA_0_0_24_58",
+    "ipi_original":            "453.1_SERIE_ORIGNAL_0_0_14_46", # respaldo/referencia
 
     # Ganaderia
     "faena_vacuna":            "41.3_FCV_0_A_18",              # Faena vacuna (miles cabezas, mensual)

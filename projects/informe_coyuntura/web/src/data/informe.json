@@ -849,9 +849,9 @@
           "aporte_nota": null
         },
         "mortalidad_pymes": {
-          "valor": -3.29,
-          "unidad": "% m/m (IPI)",
-          "fuente": "INDEC",
+          "valor": -2.14,
+          "unidad": "% m/m (IPI desest.)",
+          "fuente": "INDEC — IPI manufacturero desestacionalizado (vía datos.gob.ar)",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
           "en_indice": true,
@@ -945,7 +945,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260704_1422.json",
+      "fuente_enriquecida": "vida_cotidiana_20260704_1454.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 91.4,

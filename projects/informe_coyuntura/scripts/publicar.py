@@ -65,7 +65,8 @@ def build_vida(raw):
          "%", "INDEC EPH", inf.get("fecha"))
     ipi = indec.get("ipi", {})
     _add(out, "mortalidad_pymes", round(ipi.get("variacion_mensual_pct", 0), 2),
-         "% m/m (IPI)", "INDEC", ipi.get("fecha"))
+         "% m/m (IPI desest.)", "INDEC — IPI manufacturero desestacionalizado (vía datos.gob.ar)",
+         ipi.get("fecha"))
     isac = indec.get("isac", {})
     _add(out, "despacho_cemento", round(isac.get("valor", 0), 1),
          "índice ISAC", "INDEC", isac.get("fecha"))

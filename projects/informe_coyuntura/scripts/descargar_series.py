@@ -481,7 +481,8 @@ VIDA_INDEC = [
 VIDA_DERIVADAS = [
     ("ipc_alimentos",    "% m/m",           "INDEC serie 146.3", lambda: fetch_indec_var_mensual("146.3_IALIMENNAL_DICI_M_45")),
     ("peso_tarifas",     "% m/m regulados", "INDEC serie 148.3", lambda: fetch_indec_var_mensual("148.3_IREGULANAL_DICI_M_22")),
-    ("mortalidad_pymes", "% m/m (IPI)",     "INDEC serie 453.1", lambda: fetch_indec_var_mensual("453.1_SERIE_ORIGNAL_0_0_14_46")),
+    ("mortalidad_pymes", "% m/m (IPI desest.)", "INDEC — IPI desestacionalizado",
+     lambda: fetch_indec_var_mensual(ITVC_IPI_DESEST_ID)),
 ]
 def fetch_icc_serie(meses: int = 60) -> list:
     """Serie histórica del ICC UTDT: parsea TODAS las filas del XLS oficial (col 0 fecha,
