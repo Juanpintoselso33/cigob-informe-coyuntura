@@ -21,6 +21,10 @@ consolidación 25/25/20/15/15, según la ponderación temporal del Marco Concept
 
 Documento de referencia con detalle por indicador: [`docs/260523_proyecto_pais_estado_extraccion.md`](docs/260523_proyecto_pais_estado_extraccion.md).
 
+**Documentación de arquitectura** (cómo funciona el sistema de punta a punta —
+pipeline, motor paramétrico, web, operaciones): [`docs/arquitectura/`](docs/arquitectura/README.md).
+Las decisiones de diseño y metodología están en [`docs/adr/`](docs/adr/README.md).
+
 ## Instalación
 
 ```bash
