@@ -241,7 +241,8 @@ export const UNIDADES_CORTAS: Record<string, string> = {
 // SOLO la unidad de medida; la metodología vive en "Cómo se calcula".
 export const UNIDADES_LARGAS: Record<string, string> = {
   // macro
-  ipc_total: "% mensual", reservas_bcra: "Millones de USD", idc: "Índice (~1,0)",
+  ipc_total: "% mensual", reservas_bcra: "Millones de USD",
+  idc: "Desvíos estándar vs. su historia (σ)",
   badlar: "% anual", emae_ia: "% interanual",
   saldo_comercial_12m: "Millones de USD (acum. 12 meses)", recaudacion: "% interanual real",
   tcrm: "Índice (base dic-2015=100)", rem_ipc_12m: "% anual esperado",

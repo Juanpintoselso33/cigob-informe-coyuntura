@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-04T11:05:12.176055",
+  "generated_at": "2026-07-04T11:32:44.063704",
   "period": "2026-07",
-  "score_global": 3.5,
+  "score_global": 3.6,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 4.4,
+      "score": 4.7,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -36,7 +36,7 @@
           "valor": 4122.0,
           "unidad": "Millones de USD",
           "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
-          "fecha_dato": "31/05/26",
+          "fecha_dato": "2026-05-31",
           "netas_sdds_estricto": -1605.0,
           "depositos_tesoro": 3058.0,
           "bopreal_12m": 2670.0,
@@ -53,22 +53,28 @@
           "peso_efectivo": 0.072
         },
         "idc": {
-          "valor": 1.0608,
-          "unidad": "Índice (~1,0)",
+          "valor": -0.31,
+          "unidad": "σ vs. su historia",
           "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
-          "fecha_dato": "2026-06-30",
+          "fecha_dato": "2026-05-01",
           "componentes": {
-            "precio": 0.9947,
-            "volumen": 1.044,
-            "asignacion": 1.1493
+            "precio": 0.33,
+            "volumen": -0.13,
+            "asignacion": -1.18
           },
-          "badlar_real_mensual": -0.53,
-          "semaforo": "verde",
+          "niveles": {
+            "tasa_real_pp": -0.58,
+            "dep_real_ia_pct": -1.3,
+            "holgura_pct": 17.1
+          },
+          "ventana": "2017-12 → 2026-05 (102 meses)",
+          "badlar_real_mensual": -0.58,
+          "semaforo": "amarillo",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 100.0,
-          "puntaje_banda": 100.0,
+          "puntaje_itcm": 49.7,
+          "puntaje_banda": 49.7,
           "peso_efectivo": 0.064
         },
         "badlar": {
@@ -238,7 +244,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 56.3,
+        "valor": 53.1,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -296,7 +302,7 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.16,
-            "puntaje": 64.6,
+            "puntaje": 44.4,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.45,
@@ -307,9 +313,9 @@
               },
               "idc": {
                 "peso": 0.4,
-                "puntaje_banda": 100.0,
-                "puntaje_aplicado": 100.0,
-                "valor": 1.0608,
+                "puntaje_banda": 49.7,
+                "puntaje_aplicado": 49.7,
+                "valor": -0.31,
                 "peso_efectivo": 0.064
               },
               "credito_privado": {
@@ -961,7 +967,7 @@
       "alerta": null
     }
   },
-  "barbarismo_activo": "político",
+  "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
   "flags": [
     "desactualizado:politica:cohesion_bloque,gobernadores_alineamiento"

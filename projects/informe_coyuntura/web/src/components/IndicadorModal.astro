@@ -179,7 +179,7 @@ const dimsJson = JSON.stringify(dims);
     el.removeAttribute("hidden");
     const C = await ensureCharts();
     const color = C.colorDe(d.slug);
-    if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidad });
+    if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidad, indicador: key.split(".").pop() });
     else if (tipo === "gauge_avance") chartInstance = C.gaugeChart(el, d.avance, { color, label: "avance ejecutado" });
     else if (tipo === "gauge_valor") chartInstance = C.gaugeChart(el, d.valorNum, { color, label: "nivel actual",
                centerText: `${nf.format(d.valorNum)}${d.unidadCorta ? " " + d.unidadCorta : ""}` });

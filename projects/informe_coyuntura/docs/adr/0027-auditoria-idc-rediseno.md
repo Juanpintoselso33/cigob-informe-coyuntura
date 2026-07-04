@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Estado** | ABIERTO — pendiente de decisión con CIGOB (la corrección de la leyenda pública ya se aplicó) |
+| **Estado** | RESUELTO el 2026-07-04 — el editor eligió la opción (a); implementada en el [ADR-0028](0028-idc-z-scores.md) |
 | **Fecha** | 2026-07-04 |
 | **Ámbito** | Dimensión Capacidad de financiamiento · indicador `idc` (ADR-0004, ADR-0022) |
 | **Disparador** | Barrido uno-por-uno de macro (indicador 3/12): el editor pidió revisión adversarial contra la literatura de índices comparables |

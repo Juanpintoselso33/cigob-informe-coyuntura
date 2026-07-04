@@ -23,9 +23,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel neto (stock)",
   },
   idc: {
-    que: "Índice de Capacidad Prestable: combina precio (BADLAR real), volumen (depósitos privados reales) y asignación (holgura préstamos/depósitos) para medir si el sistema financiero tiene fondos y disposición para prestar al sector privado.",
-    aporta: "Un crédito que se expande acompaña la inversión y la actividad; uno que se contrae las ahoga. Semáforo: >1,02 expansión (verde) · 0,98–1,02 neutro (amarillo) · <0,98 contracción (rojo). Se arma con datos del BCRA (BADLAR, depósitos y préstamos privados) y el IPC del INDEC.",
-    frecuencia: "Mensual", tipo: "Índice (~1,0)",
+    que: "Índice de Capacidad Prestable: mide si el sistema financiero tiene fondos y margen para prestar, comparando tres niveles contra su propia historia — la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).",
+    aporta: "Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico · por encima de +0,5 expansión (verde) · por debajo de −0,5 contracción (rojo). Datos del BCRA (BADLAR, depósitos y préstamos privados) e IPC del INDEC.",
+    frecuencia: "Mensual", tipo: "Índice (σ)",
   },
   badlar: {
     que: "Tasa de referencia que pagan los bancos por captar depósitos mayoristas a 30 días o más.",

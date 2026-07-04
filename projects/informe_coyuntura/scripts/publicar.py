@@ -338,10 +338,15 @@ def _macro_input_txt(ikey, ind):
                 f"+ Tesoro {int(ind.get('depositos_tesoro', 0))} "
                 f"+ Bopreal {int(ind.get('bopreal_12m', 0))} (M USD)")
     if ikey == "idc" and ind.get("componentes"):
-        c = ind["componentes"]
-        return (f"índice {coma(ind.get('valor'))} = precio {coma(c.get('precio'))} · "
-                f"volumen {coma(c.get('volumen'))} · asignación {coma(c.get('asignacion'))} "
-                f"({ind.get('semaforo', '')})")
+        c, n = ind["componentes"], ind.get("niveles") or {}
+        txt = (f"{coma(ind.get('valor'))} σ = precio {coma(c.get('precio'))} · "
+               f"volumen {coma(c.get('volumen'))} · asignación {coma(c.get('asignacion'))} "
+               f"({ind.get('semaforo', '')})")
+        if n:
+            txt += (f" — niveles: tasa real {coma(n.get('tasa_real_pp'))} pp · "
+                    f"depósitos {coma(n.get('dep_real_ia_pct'))}% i.a. real · "
+                    f"holgura {coma(n.get('holgura_pct'))}%")
+        return txt
     if ikey == "idm" and ind.get("m3_real_ia") is not None:
         return (f"brecha {coma(ind.get('valor'))} pp = M3 priv. real i.a. "
                 f"{coma(ind['m3_real_ia'])}% − M2 priv. real i.a. {coma(ind['m2_real_ia'])}%")

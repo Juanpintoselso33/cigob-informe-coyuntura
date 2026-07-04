@@ -1550,38 +1550,38 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,idm,4.23,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2023-11-01,idm,-5.24,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2023-10-01,idm,3.21,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
-2026-05-01,idc,0.98,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2026-04-01,idc,1.0469,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2026-03-01,idc,0.9749,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2026-02-01,idc,1.003,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2026-01-01,idc,0.9438,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-12-01,idc,1.0467,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-11-01,idc,1.0558,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-10-01,idc,0.9159,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-09-01,idc,1.0468,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-08-01,idc,0.977,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-07-01,idc,0.954,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-06-01,idc,1.0114,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-05-01,idc,0.9796,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-04-01,idc,0.9764,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-03-01,idc,0.9681,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-02-01,idc,0.9882,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-01-01,idc,0.9791,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-12-01,idc,1.0067,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-11-01,idc,0.9962,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-10-01,idc,0.9958,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-09-01,idc,0.9728,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-08-01,idc,0.9741,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-07-01,idc,0.9618,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-06-01,idc,0.9867,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-05-01,idc,0.9942,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-04-01,idc,0.9781,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-03-01,idc,0.9735,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-02-01,idc,0.9315,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-01-01,idc,0.9075,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2023-12-01,idc,1.048,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2023-11-01,idc,0.8792,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2023-10-01,idc,0.964,"índice (~1,0)",BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2026-05-01,idc,-0.31,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2026-04-01,idc,-0.29,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2026-03-01,idc,-0.41,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2026-02-01,idc,-0.27,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2026-01-01,idc,-0.22,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-12-01,idc,-0.1,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-11-01,idc,-0.04,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-10-01,idc,-0.03,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-09-01,idc,0.32,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-08-01,idc,0.38,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-07-01,idc,0.33,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-06-01,idc,0.44,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-05-01,idc,0.45,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-04-01,idc,0.43,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-03-01,idc,0.28,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-02-01,idc,0.37,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-01-01,idc,0.15,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-12-01,idc,-0.16,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-11-01,idc,-0.04,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-10-01,idc,-0.44,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-09-01,idc,-0.62,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-08-01,idc,-0.73,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-07-01,idc,-0.73,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-06-01,idc,-0.69,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-05-01,idc,-0.63,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-04-01,idc,-1.04,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-03-01,idc,-1.14,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-02-01,idc,-1.18,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-01-01,idc,-1.82,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2023-12-01,idc,-2.15,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2023-11-01,idc,-0.92,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2023-10-01,idc,0.09,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-04-01,icip,8.2,% i.a. ponderado,INDEC (servicios informática + productividad)
 2026-03-01,icip,3.57,% i.a. ponderado,INDEC (servicios informática + productividad)
 2026-02-01,icip,24.59,% i.a. ponderado,INDEC (servicios informática + productividad)

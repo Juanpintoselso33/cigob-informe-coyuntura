@@ -107,9 +107,10 @@ BANDAS_ITCM = {
         (20000.0, INF, 100), (15000.0, 20000.0, 85), (10000.0, 15000.0, 70),
         (5000.0, 10000.0, 50), (0.0, 5000.0, 30), (-INF, 0.0, 10),
     ],
-    "idc": [                            # Índice de Capacidad Prestable (~1,0). Semáforo del doc:
-        # >1,02 verde · 0,98-1,02 amarillo · <0,98 rojo. Subdividido a 5 bandas.
-        (1.04, INF, 100), (1.02, 1.04, 85), (0.98, 1.02, 60), (0.95, 0.98, 35), (-INF, 0.95, 10),
+    "idc": [                            # IdC en z-scores (σ vs. su historia, ADR-0028).
+        # Anclas en desvíos estándar = percentiles conocidos de la muestra:
+        # +1σ ≈ p84 · +0,5σ ≈ p69 · −0,5σ ≈ p31 · −1σ ≈ p16.
+        (1.0, INF, 100), (0.5, 1.0, 85), (-0.5, 0.5, 60), (-1.0, -0.5, 35), (-INF, -1.0, 10),
     ],
     "emae_ia": [                        # % variación interanual
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
@@ -235,16 +236,17 @@ def rem_mensual_equivalente(rem_anual_pct: float) -> float:
     return ((1.0 + rem_anual_pct / 100.0) ** (1.0 / 12.0) - 1.0) * 100.0
 
 
-# Ponderación interna del Índice de Capacidad Prestable (doc "260626 aportes").
+# Ponderación interna del IdC — los pesos conceptuales del doc "260626
+# aportes" se conservan; los componentes son z-scores desde el ADR-0028.
 IDC_PESOS = {"precio": 0.30, "volumen": 0.40, "asignacion": 0.30}
 
 
 def indice_capacidad_prestable(precio: float, volumen: float, asignacion: float) -> float:
-    """IdC = 0,30·Precio + 0,40·Volumen + 0,30·Asignación (componentes ~1,0).
-    Precio = 1 + tasa real mensual de la BADLAR; Volumen = ratio mensual de
-    depósitos privados reales; Asignación = ratio mensual de holgura prestable
-    (1−R_t)/(1−R_{t-1}), R = préstamos/depósitos. Devuelve un índice centrado
-    en 1,0 (mayor = más capacidad prestable / crédito más fluido)."""
+    """IdC = 0,30·z_precio + 0,40·z_volumen + 0,30·z_asignación (ADR-0028).
+    Cada componente llega como z-score del NIVEL contra su propia historia
+    (precio = tasa real BADLAR; volumen = depósitos privados i.a. real;
+    asignación = holgura 1−préstamos/depósitos). Devuelve σ: 0 = mes típico,
+    positivo = capacidad de fondeo mayor a la habitual."""
     return (IDC_PESOS["precio"] * precio
             + IDC_PESOS["volumen"] * volumen
             + IDC_PESOS["asignacion"] * asignacion)

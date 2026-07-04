@@ -11,6 +11,7 @@ import urllib3
 import logging
 from datetime import datetime, timedelta, date
 from pathlib import Path
+from statistics import fmean, pstdev
 
 sys.path.insert(0, str(Path(__file__).parent))
 import itcm
@@ -443,74 +444,98 @@ def fetch_badlar() -> dict | None:
         return None
 
 
-def _idc_componentes(badlar_nivel: float, ipc_m: float,
-                     dep_t: float, dep_p: float, pre_t: float, pre_p: float) -> tuple:
-    """Componentes del IdC para un par de meses consecutivos (t vs t-1).
-    Devuelve (precio, volumen, asignacion, idc). Única fuente de la fórmula:
-    la usan tanto el indicador en vivo (fetch_idc) como la serie histórica.
-      • badlar_nivel: BADLAR (% anual) del mes t.
-      • ipc_m:        inflación % mensual del mes t.
-      • dep/pre:      depósitos y préstamos privados (stock) en t y t-1."""
-    tem    = ((1.0 + badlar_nivel / 100.0) ** (1.0 / 12.0) - 1.0) * 100.0
-    precio = 1.0 + (tem - ipc_m) / 100.0
-    volumen = (dep_t / dep_p) / (1.0 + ipc_m / 100.0)
-    r_t = pre_t / dep_t
-    r_p = pre_p / dep_p
-    asignacion = (1.0 - r_t) / (1.0 - r_p)
-    idc = itcm.indice_capacidad_prestable(precio, volumen, asignacion)
-    return precio, volumen, asignacion, idc
+IDC_MESES_HIST = 120        # ventana de descarga: ~10 años (la muestra usable
+                            # arranca 13 meses después del inicio de las fuentes)
+IDC_MIN_MESES = 60          # mínimo de historia para que los z-scores signifiquen algo
+_IDC_BASE_MEMO: dict = {}   # memo por corrida: indicador y serie comparten la
+                            # misma descarga (3 series BCRA de ~2.500 filas c/u)
 
 
-def _idc_serie_mensual(meses_hist: int = 18) -> list:
-    """Serie histórica mensual del IdC, con la misma fórmula que el indicador en
-    vivo (_idc_componentes) pero sobre stocks de fin de mes. Cada punto compara el
-    mes con el anterior. Devuelve [(YYYY-MM, idc)] ascendente."""
-    n = meses_hist + 3
-    badlar = _bcra_fin_de_mes(BCRA_BADLAR_ID, n)
-    dep    = _bcra_fin_de_mes(BCRA_DEP_PRIV_ID, n)
-    pre    = _bcra_fin_de_mes(BCRA_PREST_PRIV_ID, n)
-    ipc    = _ipc_indice_mensual(meses_hist + 5)
-    comunes = set(badlar) & set(dep) & set(pre) & set(ipc)
-    out = []
-    for ym in sorted(comunes):
-        prev = _ym_shift(ym, -1)
-        if prev not in comunes:
+def _idc_base_mensual(meses_hist: int = IDC_MESES_HIST) -> dict:
+    """Los tres NIVELES mensuales del IdC rediseñado (ADR-0028) sobre toda la
+    historia disponible: {YYYY-MM: (tasa_real_pp, dep_real_ia_pct, holgura_pct)}.
+      • tasa_real:   TEM de la BADLAR de fin de mes − IPC m/m del mes (pp).
+      • dep_real_ia: depósitos privados fin de mes, variación i.a. REAL (%) —
+                     la interanual absorbe la estacionalidad (aguinaldos, cosecha).
+      • holgura:     (1 − préstamos/depósitos) × 100 de fin de mes (%). Es un
+                     NIVEL acotado: no explota cuando R→1 (ese era el defecto
+                     del ratio mensual del diseño original).
+    El primer mes usable queda 12 meses después del inicio común de las fuentes
+    (IPC nacional dic-2016 → muestra desde 2018)."""
+    if meses_hist in _IDC_BASE_MEMO:
+        return _IDC_BASE_MEMO[meses_hist]
+    badlar = _bcra_fin_de_mes(BCRA_BADLAR_ID, meses_hist)
+    dep    = _bcra_fin_de_mes(BCRA_DEP_PRIV_ID, meses_hist)
+    pre    = _bcra_fin_de_mes(BCRA_PREST_PRIV_ID, meses_hist)
+    ipc    = _ipc_indice_mensual(meses_hist + 6)
+    out = {}
+    for ym in sorted(set(badlar) & set(dep) & set(pre) & set(ipc)):
+        prev1, prev12 = _ym_shift(ym, -1), _ym_shift(ym, -12)
+        if prev1 not in ipc or prev12 not in dep or prev12 not in ipc:
             continue
-        ipc_m = (ipc[ym] / ipc[prev] - 1) * 100
-        *_, idc = _idc_componentes(badlar[ym], ipc_m, dep[ym], dep[prev], pre[ym], pre[prev])
-        out.append((ym, round(idc, 4)))
+        tem = ((1.0 + badlar[ym] / 100.0) ** (1.0 / 12.0) - 1.0) * 100.0
+        ipc_m = (ipc[ym] / ipc[prev1] - 1.0) * 100.0
+        dep_real = ((dep[ym] / dep[prev12]) / (ipc[ym] / ipc[prev12]) - 1.0) * 100.0
+        holgura = (1.0 - pre[ym] / dep[ym]) * 100.0
+        out[ym] = (tem - ipc_m, dep_real, holgura)
+    _IDC_BASE_MEMO[meses_hist] = out
     return out
 
 
+def _idc_z_series(base: dict) -> dict:
+    """{YYYY-MM: (z_precio, z_volumen, z_asignacion, idc)}: cada nivel
+    estandarizado contra TODA la muestra (media 0, desvío 1 — ventana expansiva,
+    recalculada en cada corrida) y combinado 30/40/30 (itcm.IDC_PESOS).
+    z = 0 es el mes histórico típico; +1 σ ≈ percentil 84."""
+    if len(base) < IDC_MIN_MESES:
+        raise ValueError(f"IdC: historia insuficiente para z-scores ({len(base)} meses)")
+    stats = [(fmean(c), pstdev(c)) for c in zip(*base.values())]
+    if any(sd == 0 for _, sd in stats):
+        raise ValueError("IdC: desvío nulo en un componente")
+    out = {}
+    for ym, niveles in base.items():
+        z = [round((v - mu) / sd, 2) for v, (mu, sd) in zip(niveles, stats)]
+        out[ym] = (*z, round(itcm.indice_capacidad_prestable(*z), 2))
+    return out
+
+
+def _idc_serie_mensual(meses_hist: int = 18) -> list:
+    """Serie mensual del IdC (z compuesto, ADR-0028): últimos `meses_hist`
+    puntos de la serie estandarizada sobre toda la historia. [(YYYY-MM, σ)] asc."""
+    zs = _idc_z_series(_idc_base_mensual())
+    return [(ym, z[3]) for ym, z in sorted(zs.items())][-meses_hist:]
+
+
 def fetch_idc() -> dict | None:
-    """Índice de Capacidad Prestable (doc "260626 aportes"). Reemplaza a la tasa
-    en la dimensión de financiamiento. Tres componentes mensuales (~1,0):
-      • Precio:     1 + tasa REAL mensual de la BADLAR (TEM − IPC m/m).
-      • Volumen:    ratio mensual de depósitos privados deflactados por IPC.
-      • Asignación: ratio mensual de holgura prestable (1−R_t)/(1−R_{t-1}),
-                    R = préstamos/depósitos del sector privado.
-    Índice >1,02 = expansión (verde); 0,98-1,02 = neutro (amarillo); <0,98 = rojo."""
+    """Índice de Capacidad Prestable REDISEÑADO (ADR-0028, supersede la forma
+    del doc "260626 aportes" — conserva sus tres conceptos). Tres NIVELES
+    mensuales, cada uno estandarizado contra su propia historia (z-score,
+    muestra 2018→hoy) y combinados 30/40/30:
+      • precio:     tasa real mensual de la BADLAR (TEM − IPC m/m), en nivel.
+      • volumen:    depósitos privados, variación i.a. real.
+      • asignación: holgura prestable 1 − préstamos/depósitos, en nivel.
+    Se publica en desvíos estándar (σ): 0 = mes histórico típico. Semáforo:
+    > +0,5 σ expansión (verde) · ±0,5 σ neutro (amarillo) · < −0,5 σ (rojo).
+    El mes publicado es el último con IPC cerrado (sin nowcast del deflactor)."""
     try:
-        ipc_m  = _ipc_mensual()
-        badlar = float(_bcra_ultimo(BCRA_BADLAR_ID)["valor"])
-        dep = _bcra_par(BCRA_DEP_PRIV_ID)
-        pre = _bcra_par(BCRA_PREST_PRIV_ID)
-        precio, volumen, asignacion, idc = _idc_componentes(
-            badlar, ipc_m, dep["actual"], dep["anterior"], pre["actual"], pre["anterior"])
-        i_real = (precio - 1.0) * 100.0
-        semaforo = "verde" if idc > 1.02 else "amarillo" if idc >= 0.98 else "rojo"
+        base = _idc_base_mensual()
+        zs = _idc_z_series(base)
+        ym = max(zs)
+        zp, zv, za, z = zs[ym]
+        tasa_real, dep_real, holgura = base[ym]
+        semaforo = "verde" if z > 0.5 else "amarillo" if z >= -0.5 else "rojo"
         return {
-            "valor": round(idc, 4),
-            "unidad": "Índice (~1,0)",
+            "valor": z,
+            "unidad": "σ vs. su historia",
             "fuente": ("BCRA — BADLAR (var. 7), depósitos privados (var. 100) y "
                        "préstamos privados (var. 117) + IPC INDEC"),
-            "fecha_dato": dep["fecha"],
-            "componentes": {
-                "precio": round(precio, 4),
-                "volumen": round(volumen, 4),
-                "asignacion": round(asignacion, 4),
-            },
-            "badlar_real_mensual": round(i_real, 2),
+            "fecha_dato": f"{ym}-01",
+            "componentes": {"precio": zp, "volumen": zv, "asignacion": za},
+            "niveles": {"tasa_real_pp": round(tasa_real, 2),
+                        "dep_real_ia_pct": round(dep_real, 1),
+                        "holgura_pct": round(holgura, 1)},
+            "ventana": f"{min(zs)} → {max(zs)} ({len(zs)} meses)",
+            "badlar_real_mensual": round(tasa_real, 2),
             "semaforo": semaforo,
             "desactualizado": False,
         }

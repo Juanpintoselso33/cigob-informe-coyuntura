@@ -19,6 +19,19 @@ export function colorDe(slug?: string): string {
 
 export interface Punto { fecha: string; valor: number; }
 
+// Indicadores cuya serie cruza el cero con lectura de signo clara: el área se
+// pinta verde del lado "bueno" y roja del "malo". polaridad +1 = positivo es
+// bueno (reservas, actividad); −1 = negativo es bueno (IDM: sobran pesos;
+// litigiosidad/gasto real: caer es la mejora). Sin entrada → área neutra.
+const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
+  reservas_bcra: 1, emae_ia: 1, recaudacion: 1, saldo_comercial_12m: 1,
+  idc: 1, credito_privado: 1,
+  idm: -1, litigiosidad_laboral: -1, gasto_funcionamiento: -1, masa_salarial: -1,
+  reduccion_estado: -1,
+};
+const VERDE_AREA = "#16A34A";
+const ROJO_AREA = "#DC2626";
+
 function aTimestamp(fecha: string): number {
   const p = fecha.split("-");
   return Date.UTC(+p[0], p[1] ? +p[1] - 1 : 0, p[2] ? +p[2] : 1);
@@ -28,24 +41,51 @@ function esMensual(serie: Punto[]): boolean {
 }
 
 // Gráfico de línea/área para una serie temporal, con tooltip en hover.
-export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string } = {}) {
+export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string; indicador?: string } = {}) {
   const color = opts.color ?? "#4998DB";
   const vals = serie.map(p => p.valor);
   const cruzaCero = Math.min(...vals) < 0 && Math.max(...vals) > 0;
   const xfmt = esMensual(serie) ? "MMM yyyy" : "dd MMM yy";
+  // Área con signo: verde del lado bueno del cero, roja del malo. Se fija el
+  // rango del eje Y para que el corte del degradé caiga EXACTO en el cero.
+  const pol = cruzaCero ? POLARIDAD_SIGNO[opts.indicador ?? ""] : undefined;
+  let yMin: number | undefined, yMax: number | undefined, yTicks: number | undefined;
+  let fillSigno: any = null;
+  if (pol) {
+    // eje con paso "lindo" y el CERO clavado en un tick: el rango se redondea
+    // a múltiplos del paso (el cero siempre es múltiplo) y tickAmount recorre
+    // el rango de a un paso — así el degradé y la línea del cero coinciden
+    const lo = Math.min(...vals), hi = Math.max(...vals);
+    const bruto = ((hi - lo) * 1.12) / 5;
+    const pow = Math.pow(10, Math.floor(Math.log10(bruto)));
+    const paso = [1, 2, 2.5, 5, 10].map(m => m * pow).find(s => s >= bruto)!;
+    yMin = Math.floor((lo - (hi - lo) * 0.06) / paso) * paso;
+    yMax = Math.ceil((hi + (hi - lo) * 0.06) / paso) * paso;
+    yTicks = Math.round((yMax - yMin) / paso);
+    const zeroPct = (yMax / (yMax - yMin)) * 100;      // posición del cero desde arriba
+    const [arriba, abajo] = pol === 1 ? [VERDE_AREA, ROJO_AREA] : [ROJO_AREA, VERDE_AREA];
+    fillSigno = { type: "gradient", gradient: { shadeIntensity: 0, opacityFrom: 1, opacityTo: 1,
+      colorStops: [
+        { offset: 0, color: arriba, opacity: 0.34 },
+        { offset: zeroPct, color: arriba, opacity: 0.04 },
+        { offset: zeroPct, color: abajo, opacity: 0.04 },
+        { offset: 100, color: abajo, opacity: 0.34 },
+      ] } };
+  }
   const chart = new ApexCharts(el, {
     chart: { type: "area", height: 260, width: "100%", fontFamily: FONT,
              toolbar: { show: false }, zoom: { enabled: false }, animations: { enabled: true, speed: 450 } },
     series: [{ name: opts.nombre ?? "Valor", data: serie.map(p => ({ x: aTimestamp(p.fecha), y: p.valor })) }],
     colors: [color],
     stroke: { curve: "smooth", width: 2.5 },
-    fill: { type: "gradient", gradient: { shadeIntensity: 0.4, opacityFrom: 0.42, opacityTo: 0.04, stops: [0, 100] } },
+    fill: fillSigno ?? { type: "gradient", gradient: { shadeIntensity: 0.4, opacityFrom: 0.42, opacityTo: 0.04, stops: [0, 100] } },
     dataLabels: { enabled: false },
     markers: { size: 0, hover: { size: 5 }, strokeColors: "#fff", colors: [color] },
     xaxis: { type: "datetime", tooltip: { enabled: false },
              labels: { datetimeUTC: true, style: { colors: COL.muted, fontSize: "11px" } },
              axisBorder: { show: false }, axisTicks: { show: false } },
-    yaxis: { labels: { formatter: (v: number) => NF.format(v), style: { colors: COL.muted, fontSize: "11px" } } },
+    yaxis: { min: yMin, max: yMax, tickAmount: yTicks,
+             labels: { formatter: (v: number) => NF.format(v), style: { colors: COL.muted, fontSize: "11px" } } },
     grid: { borderColor: COL.grid, strokeDashArray: 4, xaxis: { lines: { show: false } }, padding: { left: 8, right: 12, top: 0 } },
     tooltip: { theme: "light", x: { format: xfmt },
                y: { formatter: (v: number) => `${NF.format(v)}${opts.unidad ? ` ${opts.unidad}` : ""}` } },
@@ -120,7 +160,7 @@ export function barChart(el: HTMLElement, items: { nombre: string; valor: number
 // Claves sin mapa (ej. nombres de empresa en privatizaciones) se muestran tal cual.
 export function componentesDe(key: string, comp: Record<string, number>): { nombre: string; valor: number }[] {
   const LBL: Record<string, Record<string, string>> = {
-    idc: { precio: "Precio (BADLAR real)", volumen: "Volumen (depósitos)", asignacion: "Asignación (crédito)" },
+    idc: { precio: "Precio (tasa real, σ)", volumen: "Volumen (depósitos i.a., σ)", asignacion: "Asignación (holgura, σ)" },
     iai: { isac: "Construcción (ISAC)", bk_importados: "Bienes de capital", patentamientos_comerciales: "Patentamientos" },
     icip: { servicios_tech: "Servicios tech", productividad: "Productividad" },
     fal_modernizacion_laboral: {

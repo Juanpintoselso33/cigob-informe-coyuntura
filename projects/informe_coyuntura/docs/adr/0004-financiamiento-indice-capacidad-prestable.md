@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Estado** | Aceptado (supersede la BADLAR y el spread del commit `8dd8bc0`) |
+| **Estado** | SUPERSEDIDO por el [ADR-0028](0028-idc-z-scores.md) el 2026-07-04 (los ratios mensuales pasaron a z-scores de nivel; los tres conceptos y pesos se conservan) |
 | **Fecha** | 2026-06-26 |
 | **Ámbito** | Dimensión Capacidad de financiamiento · indicador `idc` |
 | **Commit** | `1016e97` |

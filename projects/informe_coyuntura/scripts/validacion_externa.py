@@ -148,7 +148,7 @@ def construir_serie_itcm() -> dict:
     Reservas netas solo desde jun-2024 (límite de fuente documentado)."""
     series = json.loads(SERIES.read_text(encoding="utf-8"))
     m = lambda k: _mensual(series.get(k) or [])
-    ipc_nivel = m("ipc_total")            # NIVEL del índice → m/m por cociente
+    ipc_mm = m("ipc_total")               # ya publicada en % m/m (04-jul-2026)
     rem = m("rem_ipc_12m")                # % anual → equivalente mensual
     saldo = m("saldo_comercial")          # M USD mensual → suma móvil 12m
     directos = {k: m(k) for k in ("idm", "recaudacion", "reservas_bcra", "idc",
@@ -164,12 +164,10 @@ def construir_serie_itcm() -> dict:
         return sum(saldo[k] for k in win) if (af * 12 + mf) - (a0 * 12 + m0) == 11 else None
 
     out = {}
-    ult = max(ipc_nivel)
+    ult = max(ipc_mm)
     for ym in _meses("2023-12", ult):
-        prev = sorted(k for k in ipc_nivel if k < ym)
         valores = {
-            "ipc_total": ((ipc_nivel[ym] / ipc_nivel[prev[-1]] - 1) * 100
-                          if ym in ipc_nivel and prev else None),
+            "ipc_total": ipc_mm.get(ym),
             "rem_ipc_12m": (itcm.rem_mensual_equivalente(rem[ym])
                             if ym in rem else None),
             "saldo_comercial_12m": saldo_12m(ym),
