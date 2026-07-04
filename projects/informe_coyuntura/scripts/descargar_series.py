@@ -618,11 +618,26 @@ def _itvc_relativo_salario(sid_precio: str) -> list:
 
 
 def fetch_itvc_alimentos() -> list:
-    """I_IA: poder de compra de alimentos del salario (IPC Alimentos nivel vs
-    RIPTE), 100 = 4T-2023."""
+    """I_IA REDISEÑADO (ADR-0033): encarecimiento RELATIVO de la comida —
+    IPC alimentos contra el IPC general, rebaseado a 4T-2023. >100 = la comida
+    sube MENOS que el resto de los precios (alivia la canasta de los hogares
+    de menores ingresos); <100 = la comida encarece por encima del promedio.
+    La versión anterior (IPC alimentos vs RIPTE) correlacionaba r=0,985 con la
+    brecha salario/CBT: un tercio del ITVC contaba dos veces el mismo ratio
+    salario/comida. Esta métrica es la pregunta de PRECIOS pura, independiente
+    del salario. [[YYYY-MM-01, índice]]."""
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     from config import INDEC_SERIES
-    return _itvc_relativo_salario(INDEC_SERIES["ipc_alimentos"])
+    alim = _nivel_mensual(INDEC_SERIES["ipc_alimentos"])
+    gen = _nivel_mensual("148.3_INIVELNAL_DICI_M_26")
+    a_base, g_base = _base_t423(alim), _base_t423(gen)
+    out = []
+    for ym in sorted(set(alim) & set(gen)):
+        if ym < "2023-10" or not alim[ym] or not gen[ym]:
+            continue
+        indice = (a_base / alim[ym]) * (gen[ym] / g_base) * 100.0
+        out.append([f"{ym}-01", round(indice, 1)])
+    return out
 
 
 def fetch_itvc_tarifas() -> list:

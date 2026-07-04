@@ -128,8 +128,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Cuántas canastas de pobreza compra un sueldo. Al ITVC entra rebaseado: 100 = arranque del mandato (4T-2023).",
   },
   ipc_alimentos: {
-    latex: String.raw`100\cdot\frac{\left(\text{salario}\,/\,\text{precio de alimentos}\right)_{\text{hoy}}}{\left(\text{salario}\,/\,\text{precio de alimentos}\right)_{\text{4T-23}}}`,
-    leyenda: "Poder de compra de alimentos del salario: cuántos alimentos compra el salario registrado hoy contra el arranque del mandato. Más de 100 = el salario rinde más en la góndola. (La card muestra la variación mensual del rubro.)",
+    latex: String.raw`100\cdot\frac{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{hoy}}}{\left(\text{precios generales}\,/\,\text{precio de alimentos}\right)_{\text{4T-23}}}`,
+    leyenda: "Encarecimiento relativo de la comida: si los alimentos suben más que el resto de los precios, la canasta de los hogares de menores ingresos se castiga aunque la inflación general baje. Más de 100 = la comida sube menos que el promedio (alivio); menos de 100 = la comida encarece por encima del resto. Independiente del salario — el poder de compra ya lo mide la brecha salario/canasta, en Ingresos. (La card muestra la variación mensual del rubro.)",
   },
   peso_tarifas: {
     latex: String.raw`100\cdot\frac{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{hoy}}}{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{4T-23}}}`,

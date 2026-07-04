@@ -390,6 +390,10 @@ def _gestion_input_txt(ikey, ind):
 AJUSTES_ITVC_PATH = ROOT / "data" / "vida" / "ajustes_itvc.json"
 ITVC_BASELINES_PATH = ROOT / "data" / "vida" / "itvc_baselines.json"
 ITVC_BASE_MESES = ("2023-10", "2023-11", "2023-12")
+ITVC_WINSOR_TOPE = 140.0   # techo de componentes B100 (ADR-0033) — SOLO techo:
+                           # un boom (motos 166,7) no compra compensación
+                           # ilimitada; las crisis NO se recortan — se señalizan
+                           # con el flag de dimensión crítica (ADR-0020)
 
 # Serie transformada (ya rebaseada en descargar_series) → indicador del cinturón
 ITVC_SERIES_REBASEADAS = {
@@ -490,6 +494,19 @@ def _itvc_indices(vida_ind, series):
         v = (vida_ind.get(ikey) or {}).get("valor")
         idx[ikey] = (round((b / v if invertido else v / b) * 100.0, 1)
                      if b and isinstance(v, (int, float)) and v else None)
+    # WINSORIZACIÓN ASIMÉTRICA (ADR-0033, tratamiento de outliers JRC): los
+    # componentes B100 se acotan al TECHO de 140 — un boom puntual (motos
+    # 166,7: +67% vs base) no debe comprar compensación ilimitada en la
+    # agregación lineal. SIN piso deliberadamente: las crisis (endeudamiento
+    # 31,7) no se recortan, se señalizan (flag crítica, ADR-0020). El crudo
+    # queda en _winsor para la nota del modal.
+    idx["_winsor"] = {}
+    for ikey, v in list(idx.items()):
+        if ikey.startswith("_") or v is None:
+            continue
+        if v > ITVC_WINSOR_TOPE:
+            idx["_winsor"][ikey] = v
+            idx[ikey] = ITVC_WINSOR_TOPE
     return idx
 
 
@@ -691,6 +708,7 @@ def _scoring_vida_itvc(c, series):
     5 − (índice − 100) × 0,2 (topeado a 0-10)."""
     from datetime import datetime as _dt
     indices = _itvc_indices(c["indicadores"], series)
+    winsorizados = indices.pop("_winsor", {})
     ajustes = itvc.cargar_ajustes(AJUSTES_ITVC_PATH, _dt.now().strftime("%Y-%m"))
     resultado = itvc.calcular_itvc(indices, ajustes)
     c["itvc"] = resultado
@@ -729,6 +747,12 @@ def _scoring_vida_itvc(c, series):
                        f"(100 = arranque del mandato; más = mejora); pesa "
                        f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITVC. "
                        f"Tensión = 5 − (índice − 100) × 0,2.")
+            if ikey in winsorizados:
+                nota = (f"Winsorizado (tratamiento de outliers): índice crudo "
+                        f"{coma(winsorizados[ikey])} acotado al techo de {coma(ITVC_WINSOR_TOPE)} "
+                        f"— un boom puntual de un componente no compra compensación "
+                        f"ilimitada en el promedio. El tope es solo hacia arriba: las "
+                        f"caídas no se recortan, se señalizan como dimensión crítica.")
             if ikey in ajustados:
                 aj = ajustados[ikey]
                 nota = f"Ajuste del analista: índice {coma(aj['de'])} → {coma(aj['a'])}. {aj.get('justificacion', '')}"
