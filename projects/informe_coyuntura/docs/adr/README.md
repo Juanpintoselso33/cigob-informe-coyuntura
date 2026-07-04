@@ -44,6 +44,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0029](0029-recaudacion-promedio-movil-3m.md) | Recaudación real: promedio móvil 3 meses sobre IPC cerrado (práctica IARAF/OPC) — el i.a. de un mes suelto heredaba el calendario tributario y movía el ITCM ±7 pts con 14,4% de peso; el mes fresco queda provisorio en el detalle; jun: puntaje 10 → tendencia real −2,3% = ~33 | Aceptado |
 | [0030](0030-borde-irregular-mes-comun.md) | Borde irregular (ragged edge): criterio de FAMILIA — titular al último mes COMÚN de todos los insumos + dato fresco provisorio en el detalle sin puntuar; imputación tipo Conference Board LEI descartada (datos estimados + revisiones retroactivas, inaceptable en un índice de rendición de cuentas) | Aceptado |
 | [0031](0031-validacion-cruzada-tercer-pilar.md) | Tercer pilar de robustez: matriz de validación CRUZADA (3 índices × 2 contrastes, convergente+discriminante — ITCM/ITCG con el mercado, ITVC parejo y declarado); lead-lag probado y descartado como claim (coincidentes, no anticipan); validacion_externa.py al pipeline nocturno (se refrescaba a mano); ruido de insumos scale-free (±5% del ancho entre anclas) | Aceptado |
+| [0032](0032-inseguridad-ivi-mensual.md) | Inseguridad MENSUALIZADA: del SNIC anual al IVI del LICIP-UTDT (encuesta de victimización, 40 centros urbanos, ventana 12m — capta la cifra negra); base declarada ene-2024 (encuesta suspendida 2020-2023); SNIC queda de contraste con store propio; divergencia registrado↓/declarado↑ visible = información | Aceptado |
 
 ## Contexto general
 

@@ -160,8 +160,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Motos patentadas (CAFAM) en promedio móvil anual — desestacionalizado: enero patenta ≈ el doble que junio. La card muestra el mes crudo.",
   },
   inseguridad: {
-    latex: String.raw`100\cdot\frac{\text{delitos}_{2023}}{\text{delitos}_{\text{hoy}}}`,
-    leyenda: "Hechos delictivos anuales (SNIC). Invertido: más delitos = índice más bajo. Frecuencia anual (excepción declarada del doc).",
+    latex: String.raw`100\cdot\frac{\text{hogares v\'ictimas}_{\text{ene-24}}}{\text{hogares v\'ictimas}_{\text{hoy}}}`,
+    leyenda: "Índice de Victimización del LICIP (Universidad Di Tella): porcentaje de hogares de 40 centros urbanos que sufrió al menos un delito en los últimos 12 meses, lo haya denunciado o no — capta la cifra negra que las estadísticas de denuncias no ven. Encuesta mensual; la ventana de 12 meses absorbe la estacionalidad. Base declarada: enero 2024, la primera medición tras la reanudación de la encuesta (suspendida 2020-2023) — su ventana de 12 meses cubre mayormente el año previo al mandato. Invertido: más victimización = índice más bajo. Contraste: los hechos denunciados del SNIC, en la ficha.",
   },
   icc_utdt: {
     latex: String.raw`100\cdot\frac{\text{confianza del consumidor}_{\text{hoy}}}{\text{confianza}_{\text{4T-23}}}`,

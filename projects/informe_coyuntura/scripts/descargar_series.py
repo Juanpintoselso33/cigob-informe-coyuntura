@@ -736,6 +736,72 @@ def fetch_itvc_endeudamiento() -> list:
     return out
 
 
+IVI_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "ivi_serie.json"
+IVI_ARCHIVO_URL = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=23763"
+IVI_ULTIMO_URL = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=2156"
+IVI_MESES = {"ENERO": 1, "FEBRERO": 2, "MARZO": 3, "ABRIL": 4, "MAYO": 5, "JUNIO": 6,
+             "JULIO": 7, "AGOSTO": 8, "SEPTIEMBRE": 9, "SETIEMBRE": 9, "OCTUBRE": 10,
+             "NOVIEMBRE": 11, "DICIEMBRE": 12}
+
+
+def _ivi_parse_pdf(content: bytes) -> tuple | None:
+    """(YYYY-MM, ivi_pct) desde la primera página del informe mensual del
+    LICIP: encabezado 'MES AÑO' + 'XX.X % de los hogares'. Patrón verificado
+    en informes de 2020, 2025 y 2026."""
+    import io as _io
+    from pypdf import PdfReader
+    t = " ".join(PdfReader(_io.BytesIO(content)).pages[0].extract_text().split())
+    m = re.search(r"([A-ZÑ]+)\s+(20\d\d)", t)
+    v = re.search(r"(\d{1,2}[.,]\d)\s*%\s*de los hogares", t)
+    if not (m and v and m.group(1).upper() in IVI_MESES):
+        return None
+    ym = f"{m.group(2)}-{IVI_MESES[m.group(1).upper()]:02d}"
+    return ym, float(v.group(1).replace(",", "."))
+
+
+def fetch_ivi_serie() -> list:
+    """IVI — Índice de Victimización del LICIP (UTDT): % de hogares de 40
+    centros urbanos que sufrieron al menos un delito en los últimos 12 meses
+    (denunciado o no — captura la cifra negra), encuesta MENSUAL (ADR-0032:
+    reemplaza al SNIC anual como métrica del ITVC; el SNIC queda de contraste).
+    La ventana de 12 meses de la pregunta desestacionaliza por construcción.
+    STORE persistente: cada corrida descubre los PDFs del archivo + el último
+    informe, parsea solo los no procesados y acumula. [[YYYY-MM-01, %]]."""
+    store = json.loads(IVI_SERIE_STORE.read_text(encoding="utf-8-sig")) \
+        if IVI_SERIE_STORE.exists() else {"_meta": {}, "procesados": [], "mensual": {}}
+    try:
+        urls = set()
+        for pagina in (IVI_ARCHIVO_URL, IVI_ULTIMO_URL):
+            r = requests.get(pagina, headers=HTTP_HEADERS, timeout=60)
+            r.raise_for_status()
+            urls |= set(re.findall(r'https://www\.utdt\.edu/download\.php\?fname=[^"&]+\.pdf', r.text))
+        nuevos = sorted(urls - set(store["procesados"]))
+        for url in nuevos:
+            try:
+                rp = requests.get(url, headers=HTTP_HEADERS, timeout=90)
+                rp.raise_for_status()
+                parsed = _ivi_parse_pdf(rp.content)
+                if parsed:
+                    ym, v = parsed
+                    store["mensual"][ym] = v
+                store["procesados"].append(url)
+            except Exception as e:
+                print(f"  [WARN] IVI: PDF no procesado ({url[-30:]}): {str(e)[:50]}")
+        if nuevos:
+            store["_meta"] = {"fuente": "UTDT — LICIP, Índice de Victimización (informes mensuales PDF)",
+                              "actualizado": datetime.today().strftime("%Y-%m-%d"),
+                              "nota": ("Encuesta mensual, 40 centros urbanos, ventana 12 meses. "
+                                       "PDFs con URL por hash: se descubren desde el listado y "
+                                       "se procesan una sola vez (ADR-0032).")}
+            IVI_SERIE_STORE.write_text(
+                json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
+            print(f"  [OK] IVI: {len(nuevos)} PDFs nuevos procesados "
+                  f"(serie: {len(store['mensual'])} meses)")
+    except Exception as e:
+        print(f"  [WARN] IVI: listado UTDT no disponible ({str(e)[:60]}); serie del store")
+    return [[f"{ym}-01", v] for ym, v in sorted(store["mensual"].items())]
+
+
 SNIC_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "snic_serie.json"
 
 
@@ -864,7 +930,10 @@ VIDA_DERIVADAS += [
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
     ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie),
-    ("inseguridad", "hechos/año (total país)", "SNIC (CSV oficial, suma anual)", fetch_inseguridad_serie),
+    # inseguridad = IVI mensual (ADR-0032); el SNIC anual sigue como serie de
+    # contraste bajo clave propia (sin card: alimenta la ficha y validaciones)
+    ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),
+    ("inseguridad_snic", "hechos/año (total país)", "SNIC (CSV oficial, suma anual)", fetch_inseguridad_serie),
     ("consumo_carne", "kg/hab/año (PM 12m)", "CICCRA (informes mensuales, caché local)", fetch_carne_serie),
     # La MISMA métrica que muestra la card del indicador (ISAC nivel s.e.);
     # antes el modal caía por alias a isac_construccion (insumo cemento 33.4).

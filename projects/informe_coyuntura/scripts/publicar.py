@@ -161,12 +161,11 @@ def fusionar_historico(series, store):
     """Inyecta el histórico acumulado como serie de los indicadores que NO tienen
     serie oficial (o tienen <2 puntos). No pisa las oficiales (macro, etc.), que
     traen más historia y otra métrica (ej. IPC: el oficial es el índice nivel, no
-    la variación). Los indicadores ANUALES nunca caen acá: su serie tiene store
-    persistente propio, y este fallback les estampaba totales anuales con la
-    fecha de corrida (bug del apagón SNIC, 04-jul-2026)."""
-    ANUALES = {"inseguridad"}
+    la variación). Nota: inseguridad pasó a mensual (IVI, ADR-0032) con store
+    persistente propio — el viejo bug del fallback anual (totales con fecha de
+    corrida durante el apagón SNIC del 04-jul-2026) ya no aplica."""
     for ik, meses in store.items():
-        if ik in ANUALES or len(series.get(ik, [])) >= 2:
+        if len(series.get(ik, [])) >= 2:
             continue
         puntos = [{"fecha": f"{ym}-01", "valor": v} for ym, v in sorted(meses.items())]
         if puntos:
@@ -432,13 +431,15 @@ def _itvc_rebase_movil12(series, skey):
     return round(actual / (sum(bases) / len(bases)) * 100.0, 1)
 
 
-def _itvc_rebase_de_serie(series, skey, invertido=False):
+def _itvc_rebase_de_serie(series, skey, invertido=False, base_meses=None):
     """Índice base-100 del ÚLTIMO punto de una serie vs su promedio 4T-2023.
     En series trimestrales el 4T-2023 es un único punto (2023-10), que coincide
-    naturalmente con la base del doc; en mensuales, el promedio oct-nov-dic."""
+    naturalmente con la base del doc; en mensuales, el promedio oct-nov-dic.
+    `base_meses` permite una base DECLARADA distinta cuando la fuente no midió
+    el 4T-2023 (ej. IVI: encuesta suspendida 2020-2023, reanudada ene-2024)."""
     serie = series.get(skey) or []
     vals = {p["fecha"][:7]: p["valor"] for p in serie}
-    base_vals = [vals[m] for m in ITVC_BASE_MESES if vals.get(m) is not None]
+    base_vals = [vals[m] for m in (base_meses or ITVC_BASE_MESES) if vals.get(m) is not None]
     if not serie or not base_vals:
         return None
     base = sum(base_vals) / len(base_vals)
@@ -470,7 +471,11 @@ def _itvc_indices(vida_ind, series):
     idx["patentamiento_motos"] = (_itvc_rebase_movil12(series, "patentamiento_motos")
                                   or _itvc_rebase_de_serie(series, "patentamiento_motos"))
     idx["consumo_carne"] = _itvc_rebase_de_serie(series, "consumo_carne")
-    idx["inseguridad"] = _itvc_rebase_de_serie(series, "inseguridad", invertido=True)
+    # IVI (ADR-0032): base = ene-2024, la primera medición tras la reanudación
+    # de la encuesta (suspendida 2020-2023; su ventana de 12 meses captura
+    # mayormente el año PRE-mandato, así que aproxima bien el arranque).
+    idx["inseguridad"] = _itvc_rebase_de_serie(series, "inseguridad", invertido=True,
+                                               base_meses=("2024-01",))
     # Fallback: constante 4T-2023 documentada en itvc_baselines.json (con
     # fuente) × valor actual del indicador, si la serie no está disponible.
     try:
@@ -717,7 +722,10 @@ def _scoring_vida_itvc(c, series):
             ind["indice_itvc"] = info["puntaje_aplicado"]
             ind["peso_efectivo"] = info["peso_efectivo"]
             aporte = itvc.tension_de_itvc(info["puntaje_aplicado"])
-            formula = (f"Índice base-100 vs 4T-2023: {coma(info['puntaje_aplicado'])} "
+            # bases DECLARADAS distintas del 4T-2023 (fuente sin medición en la base del doc)
+            base_lbl = {"inseguridad": "ene-2024 (base declarada: la encuesta se reanudó ese mes)"} \
+                .get(ikey, "4T-2023")
+            formula = (f"Índice base-100 vs {base_lbl}: {coma(info['puntaje_aplicado'])} "
                        f"(100 = arranque del mandato; más = mejora); pesa "
                        f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITVC. "
                        f"Tensión = 5 − (índice − 100) × 0,2.")
@@ -849,6 +857,28 @@ def main():
                 raw.get("bcra", {}).get("credito_consumo_serie"), series.get("ipc_nivel"))
             if real is not None and "endeudamiento_familiar" in enriquecido:
                 enriquecido["endeudamiento_familiar"]["var_real_12m"] = real
+            # Inseguridad: la card muestra el IVI mensual (LICIP-UTDT), la
+            # métrica del ITVC desde el ADR-0032. El SNIC anual (denuncias
+            # registradas) queda como contraste declarado en el detalle.
+            ivi = series.get("inseguridad") or []
+            if ivi and enriquecido.get("inseguridad"):
+                ins = enriquecido["inseguridad"]
+                snic_txt = ""
+                v_snic = ins.get("valor")
+                if isinstance(v_snic, (int, float)) and v_snic > 10000:
+                    snic_txt = (f" — contraste SNIC (denuncias registradas, año "
+                                f"{ins.get('fecha_dato')}): "
+                                f"{format(int(v_snic), ',').replace(',', '.')} hechos")
+                ult = ivi[-1]
+                ins.update({
+                    "valor": ult["valor"],
+                    "unidad": "% de hogares víctimas (últimos 12 meses)",
+                    "fuente": "UTDT — Índice de Victimización (LICIP)",
+                    "fecha_dato": ult["fecha"][:7],
+                    "detalle_txt": ("Encuesta mensual de victimización en 40 centros urbanos: "
+                                    "incluye los delitos NO denunciados (la cifra negra)"
+                                    + snic_txt),
+                })
 
     informe = sanitizar_fuentes(informe)
     informe = aplicar_scoring(informe, series)

@@ -111,12 +111,10 @@ export const informe = informeRaw as unknown as Informe;
 // dic-2023 (asunción — la ventana del mandato que evalúa el informe). Es un
 // recorte solo visual: los cálculos del pipeline (rebases base 4T-2023,
 // sumas móviles, validaciones) usan la historia completa de series.json.
-// Excepciones documentadas: protestas_caba muestra 2018→hoy porque su razón
-// de ser es comparar el nivel de protesta contra la era pre-mandato; las
-// series ANUALES (inseguridad) muestran historia completa — recortadas a
-// dic-2023 quedarían de 2 puntos.
+// Excepción documentada: protestas_caba muestra 2018→hoy porque su razón de
+// ser es comparar el nivel de protesta contra la era pre-mandato.
 const SERIE_DESDE = "2023-12-01";
-const SERIE_COMPLETA = new Set(["protestas_caba", "inseguridad"]);
+const SERIE_COMPLETA = new Set(["protestas_caba"]);
 const seriesTodas = seriesRaw as Record<string, { fecha: string; valor: number }[]>;
 export const series = Object.fromEntries(
   Object.entries(seriesTodas).map(([k, pts]) => [
@@ -180,7 +178,7 @@ export const LABELS: Record<string, string> = {
   endeudamiento_familiar: "Endeudamiento de consumo", peso_tarifas: "Peso de tarifas (regulados)",
   consumo_carne: "Consumo de carne per cápita", informalidad: "Informalidad laboral",
   mortalidad_pymes: "Actividad industrial (IPI)", despacho_cemento: "Construcción (ISAC)",
-  pluriempleo: "Subocupación demandante", inseguridad: "Hechos delictivos (SNIC)",
+  pluriempleo: "Subocupación demandante", inseguridad: "Victimización (IVI)",
   icc_utdt: "Confianza del consumidor (ICC)", sentimiento_digital: "Sentimiento digital (Trends)",
   patentamiento_motos: "Patentamiento de motos", desocupacion: "Desocupación",
   // espíritu de época (comparte icc_utdt y sentimiento_digital con vida)
@@ -237,7 +235,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // vida cotidiana
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   peso_tarifas: "% m/m", consumo_carne: "kg/hab", informalidad: "%", mortalidad_pymes: "% m/m",
-  despacho_cemento: "índice", pluriempleo: "%", inseguridad: "hechos", icc_utdt: "índice",
+  despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.",
   // espíritu de época
   clima_electoral: "pp",
@@ -278,7 +276,8 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   endeudamiento_familiar: "Billones de pesos", peso_tarifas: "% mensual",
   consumo_carne: "kg por habitante/año", informalidad: "% de asalariados",
   mortalidad_pymes: "% mensual", despacho_cemento: "Índice", pluriempleo: "% de ocupados",
-  inseguridad: "Hechos por año", icc_utdt: "Índice", sentimiento_digital: "Índice (0–100)",
+  inseguridad: "% de hogares víctimas (últimos 12 meses)", icc_utdt: "Índice",
+  sentimiento_digital: "Índice (0–100)",
   patentamiento_motos: "Unidades",
   // espíritu de época
   clima_electoral: "Puntos porcentuales",

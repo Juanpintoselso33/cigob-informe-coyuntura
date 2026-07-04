@@ -1,16 +1,16 @@
 fecha,indicador,valor,unidad,fuente
-2026-07-04,sentimiento_digital,3.8,interés 0–100,Google Trends (ventana 3m)
-2026-07-03,sentimiento_digital,6.0,interés 0–100,Google Trends (ventana 3m)
+2026-07-04,sentimiento_digital,3.5,interés 0–100,Google Trends (ventana 3m)
+2026-07-03,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
 2026-07-02,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
-2026-07-01,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-30,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
+2026-07-01,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-30,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
 2026-06-29,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
 2026-06-28,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-27,sentimiento_digital,5.5,interés 0–100,Google Trends (ventana 3m)
 2026-06-26,sentimiento_digital,7.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-25,sentimiento_digital,8.2,interés 0–100,Google Trends (ventana 3m)
-2026-06-24,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
-2026-06-23,sentimiento_digital,7.5,interés 0–100,Google Trends (ventana 3m)
+2026-06-24,sentimiento_digital,8.0,interés 0–100,Google Trends (ventana 3m)
+2026-06-23,sentimiento_digital,7.8,interés 0–100,Google Trends (ventana 3m)
 2026-06-22,sentimiento_digital,6.2,interés 0–100,Google Trends (ventana 3m)
 2026-06-21,sentimiento_digital,5.0,interés 0–100,Google Trends (ventana 3m)
 2026-06-20,sentimiento_digital,5.2,interés 0–100,Google Trends (ventana 3m)
@@ -519,18 +519,49 @@ fecha,indicador,valor,unidad,fuente
 2022-09-01,ipc_alimentos,6.74,% m/m,INDEC serie 146.3
 2022-08-01,ipc_alimentos,7.1,% m/m,INDEC serie 146.3
 2022-07-01,ipc_alimentos,6.02,% m/m,INDEC serie 146.3
-2025-12-01,inseguridad,2418600,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2024-12-01,inseguridad,2542456,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2023-12-01,inseguridad,2435858,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2022-12-01,inseguridad,2029465,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2021-12-01,inseguridad,1978494,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2020-12-01,inseguridad,1889437,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2019-12-01,inseguridad,2156561,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2018-12-01,inseguridad,1894568,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2017-12-01,inseguridad,1796615,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2016-12-01,inseguridad,1593233,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2015-12-01,inseguridad,1602830,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
-2014-12-01,inseguridad,1668437,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2025-12-01,inseguridad_snic,2418600,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2024-12-01,inseguridad_snic,2542456,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2023-12-01,inseguridad_snic,2435858,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2022-12-01,inseguridad_snic,2029465,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2021-12-01,inseguridad_snic,1978494,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2020-12-01,inseguridad_snic,1889437,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2019-12-01,inseguridad_snic,2156561,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2018-12-01,inseguridad_snic,1894568,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2017-12-01,inseguridad_snic,1796615,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2016-12-01,inseguridad_snic,1593233,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2015-12-01,inseguridad_snic,1602830,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2014-12-01,inseguridad_snic,1668437,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
+2026-04-01,inseguridad,28.0,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2026-03-01,inseguridad,30.1,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2026-02-01,inseguridad,25.2,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2026-01-01,inseguridad,27.4,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-12-01,inseguridad,24.1,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-11-01,inseguridad,20.3,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-10-01,inseguridad,19.4,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-09-01,inseguridad,22.1,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-08-01,inseguridad,25.5,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-07-01,inseguridad,22.3,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-06-01,inseguridad,25.6,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-05-01,inseguridad,31.4,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-04-01,inseguridad,26.3,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-03-01,inseguridad,29.7,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-02-01,inseguridad,25.1,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2025-01-01,inseguridad,27.2,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-12-01,inseguridad,26.7,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-11-01,inseguridad,28.5,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-10-01,inseguridad,30.7,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-09-01,inseguridad,32.1,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-08-01,inseguridad,24.3,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-07-01,inseguridad,24.7,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-06-01,inseguridad,25.3,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-05-01,inseguridad,22.4,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-04-01,inseguridad,22.0,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-03-01,inseguridad,24.5,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-02-01,inseguridad,26.7,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2024-01-01,inseguridad,28.6,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2020-03-01,inseguridad,29.2,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2020-02-01,inseguridad,28.7,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
+2020-01-01,inseguridad,28.8,% de hogares víctimas (12 meses),UTDT — IVI (LICIP)
 2026-01-01,informalidad,37.9,%,"INDEC EPH (52.2, trimestral)"
 2025-10-01,informalidad,36.3,%,"INDEC EPH (52.2, trimestral)"
 2025-07-01,informalidad,36.7,%,"INDEC EPH (52.2, trimestral)"

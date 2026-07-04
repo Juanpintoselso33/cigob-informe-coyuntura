@@ -182,9 +182,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Trimestral", tipo: "Nivel (%)",
   },
   inseguridad: {
-    que: "Cuántos hechos delictivos se registran por año.",
-    aporta: "Mide una de las principales preocupaciones cotidianas de la población.",
-    frecuencia: "Anual", tipo: "Conteo",
+    que: "Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de victimización del LICIP (Universidad Di Tella) en 40 centros urbanos.",
+    aporta: "Mide una de las principales preocupaciones cotidianas midiendo lo que la gente efectivamente sufre — incluidos los delitos que nunca se denuncian. Las denuncias registradas (SNIC, anual) quedan como contraste en el detalle: cuando ambas fuentes divergen, la divergencia es información.",
+    frecuencia: "Mensual (encuesta)", tipo: "Nivel (%)",
   },
   icc_utdt: {
     que: "El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor).",
