@@ -31,6 +31,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,tcrm,132.78,índice (base dic-2015),BCRA ITCRM
 2023-12-01,tcrm,124.88,índice (base dic-2015),BCRA ITCRM
 2023-11-01,tcrm,83.2,índice (base dic-2015),BCRA ITCRM
+2026-07-03,tc_mayorista,1488.5858,ARS/USD,BCRA
 2026-07-02,tc_mayorista,1490.6754,ARS/USD,BCRA
 2026-07-01,tc_mayorista,1487.769,ARS/USD,BCRA
 2026-06-30,tc_mayorista,1483.0198,ARS/USD,BCRA
@@ -664,7 +665,6 @@ fecha,indicador,valor,unidad,fuente
 2023-11-22,tc_mayorista,356.5083,ARS/USD,BCRA
 2023-11-21,tc_mayorista,356.025,ARS/USD,BCRA
 2023-11-17,tc_mayorista,354.0083,ARS/USD,BCRA
-2023-11-16,tc_mayorista,353.475,ARS/USD,BCRA
 2026-05-01,saldo_comercial,3504.1,M USD,INDEC/datos.gob.ar (ICA expo−impo)
 2026-04-01,saldo_comercial,2712.8,M USD,INDEC/datos.gob.ar (ICA expo−impo)
 2026-03-01,saldo_comercial,2581.2,M USD,INDEC/datos.gob.ar (ICA expo−impo)
@@ -768,62 +768,74 @@ fecha,indicador,valor,unidad,fuente
 2024-01-31,rem_ipc_12m,183.2,% anual,BCRA
 2023-12-31,rem_ipc_12m,213.0,% anual,BCRA
 2023-11-30,rem_ipc_12m,226.7,% anual,BCRA
-2026-06-01,recaudacion,20017103.9595917,M ARS,INDEC/datos.gob.ar
-2026-05-01,recaudacion,21513587.89724006,M ARS,INDEC/datos.gob.ar
-2026-04-01,recaudacion,17400833.306586187,M ARS,INDEC/datos.gob.ar
-2026-03-01,recaudacion,16071028.39721067,M ARS,INDEC/datos.gob.ar
-2026-02-01,recaudacion,16231829.881584609,M ARS,INDEC/datos.gob.ar
-2026-01-01,recaudacion,18337625.030341797,M ARS,INDEC/datos.gob.ar
-2025-12-01,recaudacion,16527267.82514989,M ARS,INDEC/datos.gob.ar
-2025-11-01,recaudacion,15598231.87420104,M ARS,INDEC/datos.gob.ar
-2025-10-01,recaudacion,16165741.65153192,M ARS,INDEC/datos.gob.ar
-2025-09-01,recaudacion,15444975.67077525,M ARS,INDEC/datos.gob.ar
-2025-08-01,recaudacion,15359108.194565669,M ARS,INDEC/datos.gob.ar
-2025-07-01,recaudacion,16998944.53100429,M ARS,INDEC/datos.gob.ar
-2025-06-01,recaudacion,16184465.69467703,M ARS,INDEC/datos.gob.ar
-2025-05-01,recaudacion,15862862.396723382,M ARS,INDEC/datos.gob.ar
-2025-04-01,recaudacion,13681770.96797642,M ARS,INDEC/datos.gob.ar
-2025-03-01,recaudacion,12733317.184110267,M ARS,INDEC/datos.gob.ar
-2025-02-01,recaudacion,13520837.1049842,M ARS,INDEC/datos.gob.ar
-2025-01-01,recaudacion,15031693.08669754,M ARS,INDEC/datos.gob.ar
-2024-12-01,recaudacion,13015182.677521478,M ARS,INDEC/datos.gob.ar
-2024-11-01,recaudacion,13026430.83240848,M ARS,INDEC/datos.gob.ar
-2024-10-01,recaudacion,12780380.77223406,M ARS,INDEC/datos.gob.ar
-2024-09-01,recaudacion,12844456.67623793,M ARS,INDEC/datos.gob.ar
-2024-08-01,recaudacion,11764131.36139993,M ARS,INDEC/datos.gob.ar
-2024-07-01,recaudacion,11910547.537222948,M ARS,INDEC/datos.gob.ar
-2024-06-01,recaudacion,11297649.20446474,M ARS,INDEC/datos.gob.ar
-2024-05-01,recaudacion,13379446.494132482,M ARS,INDEC/datos.gob.ar
-2024-04-01,recaudacion,8663813.17291225,M ARS,INDEC/datos.gob.ar
-2024-03-01,recaudacion,7726458.691607789,M ARS,INDEC/datos.gob.ar
-2024-02-01,recaudacion,7249313.922219569,M ARS,INDEC/datos.gob.ar
-2024-01-01,recaudacion,7699887.38525299,M ARS,INDEC/datos.gob.ar
-2023-12-01,recaudacion,5922687.18486099,M ARS,INDEC/datos.gob.ar
-2023-11-01,recaudacion,4679609.85737704,M ARS,INDEC/datos.gob.ar
-2023-10-01,recaudacion,4466095.489322309,M ARS,INDEC/datos.gob.ar
-2023-09-01,recaudacion,4303335.131374829,M ARS,INDEC/datos.gob.ar
-2023-08-01,recaudacion,4062431.79948446,M ARS,INDEC/datos.gob.ar
-2023-07-01,recaudacion,3571198.0279958905,M ARS,INDEC/datos.gob.ar
-2023-06-01,recaudacion,3517257.61702437,M ARS,INDEC/datos.gob.ar
-2023-05-01,recaudacion,3178453.6382806497,M ARS,INDEC/datos.gob.ar
-2023-04-01,recaudacion,2551511.44943979,M ARS,INDEC/datos.gob.ar
-2023-03-01,recaudacion,2336942.38424853,M ARS,INDEC/datos.gob.ar
-2023-02-01,recaudacion,2126337.89725611,M ARS,INDEC/datos.gob.ar
-2023-01-01,recaudacion,2265961.79873514,M ARS,INDEC/datos.gob.ar
-2022-12-01,recaudacion,2307475.60560662,M ARS,INDEC/datos.gob.ar
-2022-11-01,recaudacion,1953859.6578480103,M ARS,INDEC/datos.gob.ar
-2022-10-01,recaudacion,1964056.35257018,M ARS,INDEC/datos.gob.ar
-2022-09-01,recaudacion,2127180.67389125,M ARS,INDEC/datos.gob.ar
-2022-08-01,recaudacion,1731319.4924793502,M ARS,INDEC/datos.gob.ar
-2022-07-01,recaudacion,1745178.10466373,M ARS,INDEC/datos.gob.ar
-2026-06-30,prestamos_privados,138314876.0,M ARS,BCRA
-2026-06-29,prestamos_privados,137382182.0,M ARS,BCRA
-2026-06-26,prestamos_privados,136237687.0,M ARS,BCRA
-2026-06-25,prestamos_privados,135888809.0,M ARS,BCRA
-2026-06-24,prestamos_privados,135911459.0,M ARS,BCRA
-2026-06-23,prestamos_privados,135308925.0,M ARS,BCRA
-2026-06-22,prestamos_privados,134330277.0,M ARS,BCRA
-2026-06-19,prestamos_privados,133920168.0,M ARS,BCRA
+2026-05-01,recaudacion,1.82,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2026-04-01,recaudacion,-3.9,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2026-03-01,recaudacion,-4.82,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2026-02-01,recaudacion,-9.77,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2026-01-01,recaudacion,-7.87,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-12-01,recaudacion,-3.47,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-11-01,recaudacion,-8.85,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-10-01,recaudacion,-3.67,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-09-01,recaudacion,-8.74,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-08-01,recaudacion,-2.24,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-07-01,recaudacion,4.51,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-06-01,recaudacion,2.75,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-05-01,recaudacion,-17.37,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-04-01,recaudacion,7.24,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-03-01,recaudacion,5.69,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-02-01,recaudacion,11.77,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2025-01-01,recaudacion,5.79,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-12-01,recaudacion,0.91,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-11-01,recaudacion,4.64,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-10-01,recaudacion,-2.33,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-09-01,recaudacion,-3.41,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-08-01,recaudacion,-14.0,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-07-01,recaudacion,-8.23,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-06-01,recaudacion,-13.54,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-05-01,recaudacion,11.83,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-04-01,recaudacion,-12.8,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-03-01,recaudacion,-14.76,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-02-01,recaudacion,-9.38,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2024-01-01,recaudacion,-4.08,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-12-01,recaudacion,-17.58,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-11-01,recaudacion,-8.21,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-10-01,recaudacion,-6.29,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-09-01,recaudacion,-15.1,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-08-01,recaudacion,4.58,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-07-01,recaudacion,-4.13,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-06-01,recaudacion,-2.94,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-05-01,recaudacion,-4.37,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-04-01,recaudacion,-8.93,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-03-01,recaudacion,-7.83,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-02-01,recaudacion,-9.98,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2023-01-01,recaudacion,-2.76,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-12-01,recaudacion,0.4,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-11-01,recaudacion,-1.89,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-10-01,recaudacion,2.53,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-09-01,recaudacion,19.04,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-08-01,recaudacion,-3.53,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-07-01,recaudacion,9.36,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-06-01,recaudacion,11.07,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-05-01,recaudacion,11.95,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-04-01,recaudacion,3.79,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-03-01,recaudacion,4.75,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-02-01,recaudacion,6.87,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2022-01-01,recaudacion,0.63,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2021-12-01,recaudacion,15.01,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2021-11-01,recaudacion,5.49,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2021-10-01,recaudacion,4.31,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2021-09-01,recaudacion,5.58,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2021-08-01,recaudacion,8.45,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2021-07-01,recaudacion,9.98,% i.a. real,INDEC (recaudación) + IPC (deflactor)
+2026-07-01,prestamos_privados,138516266.0,M ARS,BCRA
+2026-06-30,prestamos_privados,138198499.0,M ARS,BCRA
+2026-06-29,prestamos_privados,137362633.0,M ARS,BCRA
+2026-06-26,prestamos_privados,136218493.0,M ARS,BCRA
+2026-06-25,prestamos_privados,135918388.0,M ARS,BCRA
+2026-06-24,prestamos_privados,135892154.0,M ARS,BCRA
+2026-06-23,prestamos_privados,135289731.0,M ARS,BCRA
+2026-06-22,prestamos_privados,134311084.0,M ARS,BCRA
+2026-06-19,prestamos_privados,133900974.0,M ARS,BCRA
 2026-06-18,prestamos_privados,133556848.0,M ARS,BCRA
 2026-06-17,prestamos_privados,133166287.0,M ARS,BCRA
 2026-06-16,prestamos_privados,132473991.0,M ARS,BCRA
@@ -1447,55 +1459,65 @@ fecha,indicador,valor,unidad,fuente
 2023-11-22,prestamos_privados,16393684.0,M ARS,BCRA
 2023-11-21,prestamos_privados,16188004.0,M ARS,BCRA
 2023-11-17,prestamos_privados,16154805.0,M ARS,BCRA
-2023-11-16,prestamos_privados,16036918.0,M ARS,BCRA
-2026-05-01,ipc_total,11607.3937,% mensual,INDEC/datos.gob.ar
-2026-04-01,ipc_total,11363.0904,% mensual,INDEC/datos.gob.ar
-2026-03-01,ipc_total,11077.0608,% mensual,INDEC/datos.gob.ar
-2026-02-01,ipc_total,10714.6255,% mensual,INDEC/datos.gob.ar
-2026-01-01,ipc_total,10413.0309,% mensual,INDEC/datos.gob.ar
-2025-12-01,ipc_total,10121.3715,% mensual,INDEC/datos.gob.ar
-2025-11-01,ipc_total,9841.3581,% mensual,INDEC/datos.gob.ar
-2025-10-01,ipc_total,9603.8623,% mensual,INDEC/datos.gob.ar
-2025-09-01,ipc_total,9384.0922,% mensual,INDEC/datos.gob.ar
-2025-08-01,ipc_total,9193.2441,% mensual,INDEC/datos.gob.ar
-2025-07-01,ipc_total,9023.973,% mensual,INDEC/datos.gob.ar
-2025-06-01,ipc_total,8855.5681,% mensual,INDEC/datos.gob.ar
-2025-05-01,ipc_total,8714.4871,% mensual,INDEC/datos.gob.ar
-2025-04-01,ipc_total,8585.6078,% mensual,INDEC/datos.gob.ar
-2025-03-01,ipc_total,8353.3158,% mensual,INDEC/datos.gob.ar
-2025-02-01,ipc_total,8052.9927,% mensual,INDEC/datos.gob.ar
-2025-01-01,ipc_total,7864.1257,% mensual,INDEC/datos.gob.ar
-2024-12-01,ipc_total,7694.0075,% mensual,INDEC/datos.gob.ar
-2024-11-01,ipc_total,7491.4314,% mensual,INDEC/datos.gob.ar
-2024-10-01,ipc_total,7313.9542,% mensual,INDEC/datos.gob.ar
-2024-09-01,ipc_total,7122.2421,% mensual,INDEC/datos.gob.ar
-2024-08-01,ipc_total,6883.4412,% mensual,INDEC/datos.gob.ar
-2024-07-01,ipc_total,6607.7479,% mensual,INDEC/datos.gob.ar
-2024-06-01,ipc_total,6351.7145,% mensual,INDEC/datos.gob.ar
-2024-05-01,ipc_total,6073.7,% mensual,INDEC/datos.gob.ar
-2024-04-01,ipc_total,5830.2271,% mensual,INDEC/datos.gob.ar
-2024-03-01,ipc_total,5357.0929,% mensual,INDEC/datos.gob.ar
-2024-02-01,ipc_total,4825.7881,% mensual,INDEC/datos.gob.ar
-2024-01-01,ipc_total,4261.5324,% mensual,INDEC/datos.gob.ar
-2023-12-01,ipc_total,3533.1922,% mensual,INDEC/datos.gob.ar
-2023-11-01,ipc_total,2816.0628,% mensual,INDEC/datos.gob.ar
-2023-10-01,ipc_total,2496.273,% mensual,INDEC/datos.gob.ar
-2023-09-01,ipc_total,2304.9242,% mensual,INDEC/datos.gob.ar
-2023-08-01,ipc_total,2044.2832,% mensual,INDEC/datos.gob.ar
-2023-07-01,ipc_total,1818.0838,% mensual,INDEC/datos.gob.ar
-2023-06-01,ipc_total,1709.6115,% mensual,INDEC/datos.gob.ar
-2023-05-01,ipc_total,1613.5895,% mensual,INDEC/datos.gob.ar
-2023-04-01,ipc_total,1497.2147,% mensual,INDEC/datos.gob.ar
-2023-03-01,ipc_total,1381.1601,% mensual,INDEC/datos.gob.ar
-2023-02-01,ipc_total,1282.7091,% mensual,INDEC/datos.gob.ar
-2023-01-01,ipc_total,1202.979,% mensual,INDEC/datos.gob.ar
-2022-12-01,ipc_total,1134.5875,% mensual,INDEC/datos.gob.ar
-2022-11-01,ipc_total,1079.2787,% mensual,INDEC/datos.gob.ar
-2022-10-01,ipc_total,1028.706,% mensual,INDEC/datos.gob.ar
-2022-09-01,ipc_total,967.3076,% mensual,INDEC/datos.gob.ar
-2022-08-01,ipc_total,911.1316,% mensual,INDEC/datos.gob.ar
-2022-07-01,ipc_total,851.761,% mensual,INDEC/datos.gob.ar
-2022-06-01,ipc_total,793.0278,% mensual,INDEC/datos.gob.ar
+2026-05-01,ipc_total,2.15,% mensual,INDEC (derivado del nivel del IPC)
+2026-04-01,ipc_total,2.58,% mensual,INDEC (derivado del nivel del IPC)
+2026-03-01,ipc_total,3.38,% mensual,INDEC (derivado del nivel del IPC)
+2026-02-01,ipc_total,2.9,% mensual,INDEC (derivado del nivel del IPC)
+2026-01-01,ipc_total,2.88,% mensual,INDEC (derivado del nivel del IPC)
+2025-12-01,ipc_total,2.85,% mensual,INDEC (derivado del nivel del IPC)
+2025-11-01,ipc_total,2.47,% mensual,INDEC (derivado del nivel del IPC)
+2025-10-01,ipc_total,2.34,% mensual,INDEC (derivado del nivel del IPC)
+2025-09-01,ipc_total,2.08,% mensual,INDEC (derivado del nivel del IPC)
+2025-08-01,ipc_total,1.88,% mensual,INDEC (derivado del nivel del IPC)
+2025-07-01,ipc_total,1.9,% mensual,INDEC (derivado del nivel del IPC)
+2025-06-01,ipc_total,1.62,% mensual,INDEC (derivado del nivel del IPC)
+2025-05-01,ipc_total,1.5,% mensual,INDEC (derivado del nivel del IPC)
+2025-04-01,ipc_total,2.78,% mensual,INDEC (derivado del nivel del IPC)
+2025-03-01,ipc_total,3.73,% mensual,INDEC (derivado del nivel del IPC)
+2025-02-01,ipc_total,2.4,% mensual,INDEC (derivado del nivel del IPC)
+2025-01-01,ipc_total,2.21,% mensual,INDEC (derivado del nivel del IPC)
+2024-12-01,ipc_total,2.7,% mensual,INDEC (derivado del nivel del IPC)
+2024-11-01,ipc_total,2.43,% mensual,INDEC (derivado del nivel del IPC)
+2024-10-01,ipc_total,2.69,% mensual,INDEC (derivado del nivel del IPC)
+2024-09-01,ipc_total,3.47,% mensual,INDEC (derivado del nivel del IPC)
+2024-08-01,ipc_total,4.17,% mensual,INDEC (derivado del nivel del IPC)
+2024-07-01,ipc_total,4.03,% mensual,INDEC (derivado del nivel del IPC)
+2024-06-01,ipc_total,4.58,% mensual,INDEC (derivado del nivel del IPC)
+2024-05-01,ipc_total,4.18,% mensual,INDEC (derivado del nivel del IPC)
+2024-04-01,ipc_total,8.83,% mensual,INDEC (derivado del nivel del IPC)
+2024-03-01,ipc_total,11.01,% mensual,INDEC (derivado del nivel del IPC)
+2024-02-01,ipc_total,13.24,% mensual,INDEC (derivado del nivel del IPC)
+2024-01-01,ipc_total,20.61,% mensual,INDEC (derivado del nivel del IPC)
+2023-12-01,ipc_total,25.47,% mensual,INDEC (derivado del nivel del IPC)
+2023-11-01,ipc_total,12.81,% mensual,INDEC (derivado del nivel del IPC)
+2023-10-01,ipc_total,8.3,% mensual,INDEC (derivado del nivel del IPC)
+2023-09-01,ipc_total,12.75,% mensual,INDEC (derivado del nivel del IPC)
+2023-08-01,ipc_total,12.44,% mensual,INDEC (derivado del nivel del IPC)
+2023-07-01,ipc_total,6.34,% mensual,INDEC (derivado del nivel del IPC)
+2023-06-01,ipc_total,5.95,% mensual,INDEC (derivado del nivel del IPC)
+2023-05-01,ipc_total,7.77,% mensual,INDEC (derivado del nivel del IPC)
+2023-04-01,ipc_total,8.4,% mensual,INDEC (derivado del nivel del IPC)
+2023-03-01,ipc_total,7.68,% mensual,INDEC (derivado del nivel del IPC)
+2023-02-01,ipc_total,6.63,% mensual,INDEC (derivado del nivel del IPC)
+2023-01-01,ipc_total,6.03,% mensual,INDEC (derivado del nivel del IPC)
+2022-12-01,ipc_total,5.12,% mensual,INDEC (derivado del nivel del IPC)
+2022-11-01,ipc_total,4.92,% mensual,INDEC (derivado del nivel del IPC)
+2022-10-01,ipc_total,6.35,% mensual,INDEC (derivado del nivel del IPC)
+2022-09-01,ipc_total,6.17,% mensual,INDEC (derivado del nivel del IPC)
+2022-08-01,ipc_total,6.97,% mensual,INDEC (derivado del nivel del IPC)
+2022-07-01,ipc_total,7.41,% mensual,INDEC (derivado del nivel del IPC)
+2022-06-01,ipc_total,5.3,% mensual,INDEC (derivado del nivel del IPC)
+2022-05-01,ipc_total,5.05,% mensual,INDEC (derivado del nivel del IPC)
+2022-04-01,ipc_total,6.05,% mensual,INDEC (derivado del nivel del IPC)
+2022-03-01,ipc_total,6.73,% mensual,INDEC (derivado del nivel del IPC)
+2022-02-01,ipc_total,4.69,% mensual,INDEC (derivado del nivel del IPC)
+2022-01-01,ipc_total,3.88,% mensual,INDEC (derivado del nivel del IPC)
+2021-12-01,ipc_total,3.84,% mensual,INDEC (derivado del nivel del IPC)
+2021-11-01,ipc_total,2.53,% mensual,INDEC (derivado del nivel del IPC)
+2021-10-01,ipc_total,3.52,% mensual,INDEC (derivado del nivel del IPC)
+2021-09-01,ipc_total,3.55,% mensual,INDEC (derivado del nivel del IPC)
+2021-08-01,ipc_total,2.47,% mensual,INDEC (derivado del nivel del IPC)
+2021-07-01,ipc_total,3.0,% mensual,INDEC (derivado del nivel del IPC)
 2026-05-01,idm,4.33,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-04-01,idm,6.42,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-03-01,idm,7.13,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
@@ -1624,54 +1646,66 @@ fecha,indicador,valor,unidad,fuente
 2023-11-01,iai,-8.1,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2023-10-01,iai,0.75,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2023-09-01,iai,-3.82,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
-2026-04-01,emae_ia,0.0163557141885246,% i.a.,INDEC/datos.gob.ar
-2026-03-01,emae_ia,0.0620977984293971,% i.a.,INDEC/datos.gob.ar
-2026-02-01,emae_ia,-0.0150113401164627,% i.a.,INDEC/datos.gob.ar
-2026-01-01,emae_ia,0.0203215716766014,% i.a.,INDEC/datos.gob.ar
-2025-12-01,emae_ia,0.0347635711478679,% i.a.,INDEC/datos.gob.ar
-2025-11-01,emae_ia,-0.0013972799103706,% i.a.,INDEC/datos.gob.ar
-2025-10-01,emae_ia,0.0319667179570291,% i.a.,INDEC/datos.gob.ar
-2025-09-01,emae_ia,0.0477141100611515,% i.a.,INDEC/datos.gob.ar
-2025-08-01,emae_ia,0.0210111396649435,% i.a.,INDEC/datos.gob.ar
-2025-07-01,emae_ia,0.0275207100374998,% i.a.,INDEC/datos.gob.ar
-2025-06-01,emae_ia,0.0640062899737103,% i.a.,INDEC/datos.gob.ar
-2025-05-01,emae_ia,0.0529794749699696,% i.a.,INDEC/datos.gob.ar
-2025-04-01,emae_ia,0.0793334551954125,% i.a.,INDEC/datos.gob.ar
-2025-03-01,emae_ia,0.0576873199372394,% i.a.,INDEC/datos.gob.ar
-2025-02-01,emae_ia,0.0594921757083617,% i.a.,INDEC/datos.gob.ar
-2025-01-01,emae_ia,0.0664123366737809,% i.a.,INDEC/datos.gob.ar
-2024-12-01,emae_ia,0.0669929545298002,% i.a.,INDEC/datos.gob.ar
-2024-11-01,emae_ia,0.0123824988560761,% i.a.,INDEC/datos.gob.ar
-2024-10-01,emae_ia,0.0040005633083561,% i.a.,INDEC/datos.gob.ar
-2024-09-01,emae_ia,-0.0243623729580977,% i.a.,INDEC/datos.gob.ar
-2024-08-01,emae_ia,-0.0305480855673461,% i.a.,INDEC/datos.gob.ar
-2024-07-01,emae_ia,-0.0036711952681541,% i.a.,INDEC/datos.gob.ar
-2024-06-01,emae_ia,-0.034328373710742,% i.a.,INDEC/datos.gob.ar
-2024-05-01,emae_ia,0.0192330035424976,% i.a.,INDEC/datos.gob.ar
-2024-04-01,emae_ia,-0.0186767666297573,% i.a.,INDEC/datos.gob.ar
-2024-03-01,emae_ia,-0.0817030838410706,% i.a.,INDEC/datos.gob.ar
-2024-02-01,emae_ia,-0.0276976391620668,% i.a.,INDEC/datos.gob.ar
-2024-01-01,emae_ia,-0.0395797336055079,% i.a.,INDEC/datos.gob.ar
-2023-12-01,emae_ia,-0.0467789121670256,% i.a.,INDEC/datos.gob.ar
-2023-11-01,emae_ia,-0.0112418904166028,% i.a.,INDEC/datos.gob.ar
-2023-10-01,emae_ia,0.0065464900239955,% i.a.,INDEC/datos.gob.ar
-2023-09-01,emae_ia,-0.0051079161190451,% i.a.,INDEC/datos.gob.ar
-2023-08-01,emae_ia,0.0030134896858795,% i.a.,INDEC/datos.gob.ar
-2023-07-01,emae_ia,-0.0147086244567463,% i.a.,INDEC/datos.gob.ar
-2023-06-01,emae_ia,-0.0548720530578296,% i.a.,INDEC/datos.gob.ar
-2023-05-01,emae_ia,-0.0660547148630547,% i.a.,INDEC/datos.gob.ar
-2023-04-01,emae_ia,-0.0482182146937317,% i.a.,INDEC/datos.gob.ar
-2023-03-01,emae_ia,0.0073680023782189,% i.a.,INDEC/datos.gob.ar
-2023-02-01,emae_ia,-0.004229617830351,% i.a.,INDEC/datos.gob.ar
-2023-01-01,emae_ia,0.0243247741758443,% i.a.,INDEC/datos.gob.ar
-2022-12-01,emae_ia,-0.0071254013937771,% i.a.,INDEC/datos.gob.ar
-2022-11-01,emae_ia,0.0297639055677558,% i.a.,INDEC/datos.gob.ar
-2022-10-01,emae_ia,0.0504580126693121,% i.a.,INDEC/datos.gob.ar
-2022-09-01,emae_ia,0.0557571031563632,% i.a.,INDEC/datos.gob.ar
-2022-08-01,emae_ia,0.0744160496477319,% i.a.,INDEC/datos.gob.ar
-2022-07-01,emae_ia,0.0703486757445368,% i.a.,INDEC/datos.gob.ar
-2022-06-01,emae_ia,0.0837377449005136,% i.a.,INDEC/datos.gob.ar
-2022-05-01,emae_ia,0.089436405258465,% i.a.,INDEC/datos.gob.ar
+2026-04-01,emae_ia,1.64,% i.a.,INDEC/datos.gob.ar
+2026-03-01,emae_ia,6.21,% i.a.,INDEC/datos.gob.ar
+2026-02-01,emae_ia,-1.5,% i.a.,INDEC/datos.gob.ar
+2026-01-01,emae_ia,2.03,% i.a.,INDEC/datos.gob.ar
+2025-12-01,emae_ia,3.48,% i.a.,INDEC/datos.gob.ar
+2025-11-01,emae_ia,-0.14,% i.a.,INDEC/datos.gob.ar
+2025-10-01,emae_ia,3.2,% i.a.,INDEC/datos.gob.ar
+2025-09-01,emae_ia,4.77,% i.a.,INDEC/datos.gob.ar
+2025-08-01,emae_ia,2.1,% i.a.,INDEC/datos.gob.ar
+2025-07-01,emae_ia,2.75,% i.a.,INDEC/datos.gob.ar
+2025-06-01,emae_ia,6.4,% i.a.,INDEC/datos.gob.ar
+2025-05-01,emae_ia,5.3,% i.a.,INDEC/datos.gob.ar
+2025-04-01,emae_ia,7.93,% i.a.,INDEC/datos.gob.ar
+2025-03-01,emae_ia,5.77,% i.a.,INDEC/datos.gob.ar
+2025-02-01,emae_ia,5.95,% i.a.,INDEC/datos.gob.ar
+2025-01-01,emae_ia,6.64,% i.a.,INDEC/datos.gob.ar
+2024-12-01,emae_ia,6.7,% i.a.,INDEC/datos.gob.ar
+2024-11-01,emae_ia,1.24,% i.a.,INDEC/datos.gob.ar
+2024-10-01,emae_ia,0.4,% i.a.,INDEC/datos.gob.ar
+2024-09-01,emae_ia,-2.44,% i.a.,INDEC/datos.gob.ar
+2024-08-01,emae_ia,-3.05,% i.a.,INDEC/datos.gob.ar
+2024-07-01,emae_ia,-0.37,% i.a.,INDEC/datos.gob.ar
+2024-06-01,emae_ia,-3.43,% i.a.,INDEC/datos.gob.ar
+2024-05-01,emae_ia,1.92,% i.a.,INDEC/datos.gob.ar
+2024-04-01,emae_ia,-1.87,% i.a.,INDEC/datos.gob.ar
+2024-03-01,emae_ia,-8.17,% i.a.,INDEC/datos.gob.ar
+2024-02-01,emae_ia,-2.77,% i.a.,INDEC/datos.gob.ar
+2024-01-01,emae_ia,-3.96,% i.a.,INDEC/datos.gob.ar
+2023-12-01,emae_ia,-4.68,% i.a.,INDEC/datos.gob.ar
+2023-11-01,emae_ia,-1.12,% i.a.,INDEC/datos.gob.ar
+2023-10-01,emae_ia,0.65,% i.a.,INDEC/datos.gob.ar
+2023-09-01,emae_ia,-0.51,% i.a.,INDEC/datos.gob.ar
+2023-08-01,emae_ia,0.3,% i.a.,INDEC/datos.gob.ar
+2023-07-01,emae_ia,-1.47,% i.a.,INDEC/datos.gob.ar
+2023-06-01,emae_ia,-5.49,% i.a.,INDEC/datos.gob.ar
+2023-05-01,emae_ia,-6.61,% i.a.,INDEC/datos.gob.ar
+2023-04-01,emae_ia,-4.82,% i.a.,INDEC/datos.gob.ar
+2023-03-01,emae_ia,0.74,% i.a.,INDEC/datos.gob.ar
+2023-02-01,emae_ia,-0.42,% i.a.,INDEC/datos.gob.ar
+2023-01-01,emae_ia,2.43,% i.a.,INDEC/datos.gob.ar
+2022-12-01,emae_ia,-0.71,% i.a.,INDEC/datos.gob.ar
+2022-11-01,emae_ia,2.98,% i.a.,INDEC/datos.gob.ar
+2022-10-01,emae_ia,5.05,% i.a.,INDEC/datos.gob.ar
+2022-09-01,emae_ia,5.58,% i.a.,INDEC/datos.gob.ar
+2022-08-01,emae_ia,7.44,% i.a.,INDEC/datos.gob.ar
+2022-07-01,emae_ia,7.03,% i.a.,INDEC/datos.gob.ar
+2022-06-01,emae_ia,8.37,% i.a.,INDEC/datos.gob.ar
+2022-05-01,emae_ia,8.94,% i.a.,INDEC/datos.gob.ar
+2022-04-01,emae_ia,7.05,% i.a.,INDEC/datos.gob.ar
+2022-03-01,emae_ia,5.46,% i.a.,INDEC/datos.gob.ar
+2022-02-01,emae_ia,9.2,% i.a.,INDEC/datos.gob.ar
+2022-01-01,emae_ia,6.17,% i.a.,INDEC/datos.gob.ar
+2021-12-01,emae_ia,9.99,% i.a.,INDEC/datos.gob.ar
+2021-11-01,emae_ia,8.85,% i.a.,INDEC/datos.gob.ar
+2021-10-01,emae_ia,6.22,% i.a.,INDEC/datos.gob.ar
+2021-09-01,emae_ia,11.1,% i.a.,INDEC/datos.gob.ar
+2021-08-01,emae_ia,12.61,% i.a.,INDEC/datos.gob.ar
+2021-07-01,emae_ia,11.74,% i.a.,INDEC/datos.gob.ar
+2021-06-01,emae_ia,12.42,% i.a.,INDEC/datos.gob.ar
+2021-05-01,emae_ia,15.37,% i.a.,INDEC/datos.gob.ar
 2026-05-01,credito_privado,9.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-04-01,credito_privado,13.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-03-01,credito_privado,18.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
@@ -1702,6 +1736,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,credito_privado,-29.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2024-01-01,credito_privado,-26.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2023-12-01,credito_privado,-19.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2026-07-01,base_monetaria,46035751.0,M ARS,BCRA
 2026-06-30,base_monetaria,45711975.0,M ARS,BCRA
 2026-06-29,base_monetaria,44953461.0,M ARS,BCRA
 2026-06-26,base_monetaria,43761087.0,M ARS,BCRA
@@ -2333,7 +2368,7 @@ fecha,indicador,valor,unidad,fuente
 2023-11-22,base_monetaria,7675811.0,M ARS,BCRA
 2023-11-21,base_monetaria,7696992.0,M ARS,BCRA
 2023-11-17,base_monetaria,7834198.0,M ARS,BCRA
-2023-11-16,base_monetaria,7758988.0,M ARS,BCRA
+2026-07-02,badlar,21.3125,% anual,BCRA
 2026-07-01,badlar,20.9375,% anual,BCRA
 2026-06-30,badlar,21.0,% anual,BCRA
 2026-06-29,badlar,21.0,% anual,BCRA
@@ -2966,4 +3001,3 @@ fecha,indicador,valor,unidad,fuente
 2023-11-22,badlar,129.4375,% anual,BCRA
 2023-11-21,badlar,129.8125,% anual,BCRA
 2023-11-17,badlar,129.25,% anual,BCRA
-2023-11-16,badlar,129.875,% anual,BCRA

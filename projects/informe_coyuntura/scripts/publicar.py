@@ -99,10 +99,10 @@ def build_series():
                     continue
                 series.setdefault(ind, []).append({"fecha": row["fecha"], "valor": val})
     for ind in series:
-        # Deduplicar por fecha: algunos indicadores (ej. ipc_total) se descargan
-        # en más de un CSV de cinturón con la misma serie INDEC, lo que produciría
-        # puntos repetidos en el sparkline y la tabla histórica. Los valores de una
-        # misma fecha son idénticos, así que colapsar a uno por fecha.
+        # Deduplicar por fecha: si un indicador aparece en más de un CSV de
+        # cinturón con la MISMA métrica, colapsar a un punto por fecha. (Las
+        # métricas distintas van bajo claves distintas — ej. ipc_total en % m/m
+        # vs ipc_nivel como insumo deflactor.)
         por_fecha = {p["fecha"]: p for p in series[ind]}
         series[ind] = sorted(por_fecha.values(), key=lambda p: p["fecha"])
     # Alias: algunos indicadores del informe tienen su serie historica bajo otra
@@ -774,7 +774,7 @@ def main():
             vida["fuente_enriquecida"] = os.path.basename(vida_files[-1])
             # Endeudamiento: scoreable vía variación interanual real del crédito.
             real = var_real_credito_12m(
-                raw.get("bcra", {}).get("credito_consumo_serie"), series.get("ipc_total"))
+                raw.get("bcra", {}).get("credito_consumo_serie"), series.get("ipc_nivel"))
             if real is not None and "endeudamiento_familiar" in enriquecido:
                 enriquecido["endeudamiento_familiar"]["var_real_12m"] = real
 

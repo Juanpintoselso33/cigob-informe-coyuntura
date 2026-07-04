@@ -217,11 +217,41 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
 
 # ── Definición de series por cinturón ─────────────────────────────────────────
 
-MACRO_INDEC = [
-    ("148.3_INIVELNAL_DICI_M_26",  "ipc_total",       "% mensual",          "INDEC/datos.gob.ar"),
-    ("143.3_ICE_SERVIA_2004_A_25", "emae_ia",         "% i.a.",             "INDEC/datos.gob.ar"),
-    ("172.3_TL_RECAION_M_0_0_17",  "recaudacion",     "M ARS",              "INDEC/datos.gob.ar"),
-]
+# Las tres series INDEC de macro se publican TRANSFORMADAS a la métrica del
+# titular (barrido macro 04-jul-2026: la bajada cruda mostraba el NIVEL del
+# IPC bajo un titular en % m/m, el EMAE en fracción y la recaudación nominal
+# bajo un titular real — mismatch valor/serie en el modal).
+MACRO_INDEC = []
+
+IPC_NIVEL_ID = "148.3_INIVELNAL_DICI_M_26"
+
+
+def fetch_ipc_mm_serie() -> list:
+    """Inflación mensual (% m/m) derivada del nivel del IPC nacional — la
+    métrica del titular. La curva de desinflación completa. [[YYYY-MM-01, %]]."""
+    niveles = dict(sorted(fetch_indec(IPC_NIVEL_ID, limit=60)))
+    fechas = list(niveles)
+    return [[fechas[i], round((niveles[fechas[i]] / niveles[fechas[i - 1]] - 1) * 100, 2)]
+            for i in range(1, len(fechas))]
+
+
+def fetch_emae_ia_serie() -> list:
+    """EMAE variación i.a. en % (la serie INDEC viene en fracción). [[YYYY-MM-01, %]]."""
+    return [[f, round(v * 100, 2)] for f, v in sorted(fetch_indec("143.3_ICE_SERVIA_2004_A_25", limit=60))]
+
+
+def fetch_recaudacion_real_serie() -> list:
+    """Recaudación total: variación i.a. REAL (deflactada por IPC) — la métrica
+    del titular, no el nivel nominal. [[YYYY-MM-01, %]]."""
+    nominal = {f[:7]: v for f, v in fetch_indec("172.3_TL_RECAION_M_0_0_17", limit=72)}
+    ipc = {f[:7]: v for f, v in fetch_indec(IPC_NIVEL_ID, limit=72)}
+    out = []
+    for ym in sorted(nominal):
+        prev = f"{int(ym[:4]) - 1}{ym[4:]}"
+        if prev in nominal and ym in ipc and prev in ipc:
+            real = (nominal[ym] / nominal[prev]) * (ipc[prev] / ipc[ym]) - 1
+            out.append([f"{ym}-01", round(real * 100, 2)])
+    return out
 def fetch_credito_privado_serie() -> list:
     """Serie mensual de la variación i.a. REAL de los préstamos al sector
     privado (BCRA var. 26 fin de mes, deflactada por el IPC nivel) — la misma
@@ -243,6 +273,9 @@ def fetch_credito_privado_serie() -> list:
 
 
 MACRO_DERIVADAS = [
+    ("ipc_total", "% mensual", "INDEC (derivado del nivel del IPC)", fetch_ipc_mm_serie),
+    ("emae_ia", "% i.a.", "INDEC/datos.gob.ar", fetch_emae_ia_serie),
+    ("recaudacion", "% i.a. real", "INDEC (recaudación) + IPC (deflactor)", fetch_recaudacion_real_serie),
     ("credito_privado", "% i.a. real", "BCRA (préstamos privados) + IPC INDEC", fetch_credito_privado_serie),
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
@@ -411,7 +444,10 @@ POLITICA_DERIVADAS = [
 ]
 
 VIDA_INDEC = [
-    ("148.3_INIVELNAL_DICI_M_26", "ipc_total",    "indice base dic-2016=100", "INDEC/datos.gob.ar"),
+    # NIVEL del IPC bajo clave propia: es un INSUMO (deflactor del crédito de
+    # consumo en publicar), no la serie de la card ipc_total (que publica el
+    # % m/m desde macro) — con la misma clave, la fusión de CSVs las mezclaba.
+    ("148.3_INIVELNAL_DICI_M_26", "ipc_nivel",    "indice base dic-2016=100", "INDEC/datos.gob.ar"),
     ("42.3_EPH_PUNTUATAL_0_M_30", "desocupacion", "%",                        "INDEC/datos.gob.ar"),
 ]
 # Derivadas: la variación m/m % de cada serie INDEC de índices (misma métrica que
