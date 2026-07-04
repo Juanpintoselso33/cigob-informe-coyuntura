@@ -36,8 +36,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Planilla SDDS del BCRA (drenajes de la Sección II) + depósitos del Tesoro en USD del balance: las divisas de libre disponibilidad, descontando las que figuran en el activo pero están comprometidas.",
   },
   idc: {
-    latex: String.raw`0{,}30\cdot\underbrace{\text{precio}}_{\text{BADLAR real}}\;+\;0{,}40\cdot\underbrace{\text{volumen}}_{\text{dep\'ositos reales}}\;+\;0{,}30\cdot\underbrace{\text{asignaci\'on}}_{\text{pr\'estamos/dep\'ositos}}`,
-    leyenda: "Semáforo alrededor de 1: si el dinero está barato, los depósitos crecen y se prestan, el sistema financiero tiene capacidad de fondear la economía.",
+    latex: String.raw`0{,}30\cdot\underbrace{\text{precio}}_{\text{tasa real de dep\'ositos}}\;+\;0{,}40\cdot\underbrace{\text{volumen}}_{\text{dep\'ositos reales}}\;+\;0{,}30\cdot\underbrace{\text{asignaci\'on}}_{\text{holgura para prestar}}`,
+    leyenda: "Semáforo alrededor de 1: mide si la capacidad de fondeo de los bancos se expandió o se contrajo en el mes. Sube cuando la tasa real que reciben los depositantes es positiva (atrae fondeo), cuando los depósitos privados crecen por encima de la inflación y cuando queda más margen para prestar sobre esos depósitos.",
   },
   credito_privado: {
     latex: String.raw`\left(\frac{1+\text{crecim. nominal del cr\'edito}}{1+\text{inflaci\'on}}-1\right)\times 100`,
