@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "fuente": "SNIC — snic-pais.csv (suma anual de todas las filas)",
+    "actualizado": "2026-07-03",
+    "nota": "Store persistente: cloud-snic.minseg.gob.ar sufre caídas prolongadas (04-jul-2026: todo el día). Se refresca automáticamente cuando el host responde; si no, la serie se sirve de acá. Criterio de suma VALIDADO contra los totales oficiales publicados (2016: 1,59M = informe SNIC; 2023: 2,4M = prensa oficial; dinámica 2025 = informe consolidado 01-jun-2026). El CSV oficial se revisa retroactivamente: cada refresco pisa la serie completa.",
+    "origen_seed": "recuperada del commit 7769b8a (03-jul-2026, último con el host vivo)"
+  },
+  "anual": {
+    "2014": 1668437,
+    "2015": 1602830,
+    "2016": 1593233,
+    "2017": 1796615,
+    "2018": 1894568,
+    "2019": 2156561,
+    "2020": 1889437,
+    "2021": 1978494,
+    "2022": 2029465,
+    "2023": 2435858,
+    "2024": 2542456,
+    "2025": 2418600
+  }
+}

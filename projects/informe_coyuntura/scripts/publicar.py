@@ -75,7 +75,8 @@ def build_vida(raw):
          "%", "INDEC EPH", sub.get("fecha"))
     seg = snic.get("inseguridad_snic", {})
     _add(out, "inseguridad", seg.get("total_hechos"),
-         "hechos/año", "SNIC", str(seg.get("anio")))
+         "hechos/año", "SNIC — Ministerio de Seguridad (calidad UNODC grado A)",
+         str(seg.get("anio")))
     icc = utdt.get("icc_utdt", {})
     _add(out, "icc_utdt", round(icc.get("valor", 0), 1),
          "índice", "UTDT — Índice de Confianza del Consumidor (CIF)", icc.get("fecha"))
@@ -160,9 +161,12 @@ def fusionar_historico(series, store):
     """Inyecta el histórico acumulado como serie de los indicadores que NO tienen
     serie oficial (o tienen <2 puntos). No pisa las oficiales (macro, etc.), que
     traen más historia y otra métrica (ej. IPC: el oficial es el índice nivel, no
-    la variación)."""
+    la variación). Los indicadores ANUALES nunca caen acá: su serie tiene store
+    persistente propio, y este fallback les estampaba totales anuales con la
+    fecha de corrida (bug del apagón SNIC, 04-jul-2026)."""
+    ANUALES = {"inseguridad"}
     for ik, meses in store.items():
-        if len(series.get(ik, [])) >= 2:
+        if ik in ANUALES or len(series.get(ik, [])) >= 2:
             continue
         puntos = [{"fecha": f"{ym}-01", "valor": v} for ym, v in sorted(meses.items())]
         if puntos:

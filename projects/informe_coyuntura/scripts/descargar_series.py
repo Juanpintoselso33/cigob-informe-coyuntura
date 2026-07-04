@@ -736,31 +736,49 @@ def fetch_itvc_endeudamiento() -> list:
     return out
 
 
+SNIC_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "snic_serie.json"
+
+
 def fetch_inseguridad_serie() -> list:
     """Serie ANUAL de hechos delictivos del SNIC (total país), con el MISMO
-    criterio de suma que el colector (todas las filas del CSV: padres +
-    subcategorías — consistente con el valor del indicador y la baseline del
-    ITVC). El CSV oficial se revisa retroactivamente. [[YYYY-12-01, hechos]]."""
+    criterio de suma que el colector — VALIDADO contra los totales oficiales
+    (2016: 1,59M · 2023: 2,4M · dinámica 2025 = informe 01-jun-2026). Con
+    STORE PERSISTENTE (barrido vida 10/13): cloud-snic sufre caídas de días
+    enteros; si el host responde se refresca el store, si no, la serie sale
+    del store — la web nunca se queda sin serie (antes, el apagón hacía que
+    el fallback del histórico inyectara totales anuales con fechas de
+    corrida). El CSV oficial se revisa retroactivamente: cada refresco pisa
+    la serie completa. [[YYYY-12-01, hechos]]."""
     import csv as _csv
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     from config import SNIC_CSV
-    r = requests.get(SNIC_CSV, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
-    r.raise_for_status()
-    texto = r.content.decode("utf-8", errors="replace")
-    sep = ";" if ";" in texto.split("\n", 1)[0] else ","   # el CSV cambió a ';' en 2026
-    por_anio = {}
-    for row in _csv.DictReader(io.StringIO(texto), delimiter=sep):
-        anio = (row.get("anio") or row.get("year") or row.get("Anio") or "").strip()
-        if not anio.isdigit():
-            continue
-        try:
-            hechos = int(float(row.get("cantidad_hechos") or row.get("hechos")
-                                or row.get("cantidad") or 0))
-        except ValueError:
-            continue
-        por_anio[anio] = por_anio.get(anio, 0) + hechos
-    return [[f"{a}-12-01", por_anio[a]] for a in sorted(por_anio)
-            if int(a) >= 2014 and por_anio[a] > 0]
+    store = json.loads(SNIC_SERIE_STORE.read_text(encoding="utf-8-sig"))
+    try:
+        r = requests.get(SNIC_CSV, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
+        r.raise_for_status()
+        texto = r.content.decode("utf-8", errors="replace")
+        sep = ";" if ";" in texto.split("\n", 1)[0] else ","   # el CSV cambió a ';' en 2026
+        por_anio = {}
+        for row in _csv.DictReader(io.StringIO(texto), delimiter=sep):
+            anio = (row.get("anio") or row.get("year") or row.get("Anio") or "").strip()
+            if not anio.isdigit():
+                continue
+            try:
+                hechos = int(float(row.get("cantidad_hechos") or row.get("hechos")
+                                    or row.get("cantidad") or 0))
+            except ValueError:
+                continue
+            por_anio[anio] = por_anio.get(anio, 0) + hechos
+        por_anio = {a: v for a, v in por_anio.items() if int(a) >= 2014 and v > 0}
+        if len(por_anio) >= 8:                       # descarga sana → refrescar store
+            store["anual"] = {a: por_anio[a] for a in sorted(por_anio)}
+            store["_meta"]["actualizado"] = datetime.today().strftime("%Y-%m-%d")
+            SNIC_SERIE_STORE.write_text(
+                json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception as e:
+        print(f"  [WARN] inseguridad: cloud-snic caído ({str(e)[:60]}); serie del store "
+              f"(al {store['_meta'].get('actualizado')})")
+    return [[f"{a}-12-01", v] for a, v in sorted(store["anual"].items())]
 
 
 CARNE_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "carne_serie.json"

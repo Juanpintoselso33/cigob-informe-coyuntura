@@ -111,10 +111,12 @@ export const informe = informeRaw as unknown as Informe;
 // dic-2023 (asunción — la ventana del mandato que evalúa el informe). Es un
 // recorte solo visual: los cálculos del pipeline (rebases base 4T-2023,
 // sumas móviles, validaciones) usan la historia completa de series.json.
-// Excepción documentada: protestas_caba muestra 2018→hoy porque su razón de
-// ser es comparar el nivel de protesta contra la era pre-mandato.
+// Excepciones documentadas: protestas_caba muestra 2018→hoy porque su razón
+// de ser es comparar el nivel de protesta contra la era pre-mandato; las
+// series ANUALES (inseguridad) muestran historia completa — recortadas a
+// dic-2023 quedarían de 2 puntos.
 const SERIE_DESDE = "2023-12-01";
-const SERIE_COMPLETA = new Set(["protestas_caba"]);
+const SERIE_COMPLETA = new Set(["protestas_caba", "inseguridad"]);
 const seriesTodas = seriesRaw as Record<string, { fecha: string; valor: number }[]>;
 export const series = Object.fromEntries(
   Object.entries(seriesTodas).map(([k, pts]) => [
