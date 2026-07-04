@@ -66,5 +66,14 @@ z          = (nivel − media histórica) / desvío histórico
   el histórico previo en escala ~1,0 se purga (regla de métricas redefinidas).
 - La volatilidad mensual del diseño anterior desaparece: los últimos 8 meses
   van de −0,03 a −0,41 sin saltos.
-- Pendiente de validación externa propia (¿anticipa el crédito real?) — queda
-  anotado en el ADR-0019 como extensión posible de la batería de validación.
+- ~~Pendiente de validación externa propia~~ **RESUELTO (04-jul-2026,
+  negativo verificado)**: se probó sobre los 102 meses de la muestra si el
+  IdC anticipa el crédito real futuro — en niveles (r +0,10 contemporáneo,
+  −0,53 a +12 meses) y como aceleración (−0,45 a +12 meses). El IdC NO
+  predice el crédito: en la Argentina 2018-2026 la capacidad medida alta fue
+  típicamente síntoma de demanda de crédito débil (la liquidez estacionada,
+  2020-21), no antesala de expansión — la capacidad nunca fue el cuello de
+  botella; la estabilidad macro y la demanda sí. El componente queda como
+  descriptor de ESTADO de las condiciones de fondeo (que es lo que su ficha
+  dice), sin claim predictivo; la validación operativa del capítulo
+  financiamiento es la del ITCM agregado (riesgo país, ADR-0031).
