@@ -1,9 +1,9 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-03T14:45:57.973153",
-  "score": 4.5,
+  "generated_at": "2026-07-04T06:07:12.000987",
+  "score": 4.4,
   "itcm": {
-    "valor": 54.5,
+    "valor": 56.3,
     "banda": "moderadamente_apretado",
     "banda_legible": "Moderadamente apretado",
     "dimensiones": {
@@ -61,7 +61,7 @@
       "financiamiento": {
         "nombre": "Capacidad de financiamiento",
         "peso": 0.16,
-        "puntaje": 53.6,
+        "puntaje": 64.6,
         "indicadores": {
           "reservas_bcra": {
             "peso": 0.45,
@@ -72,16 +72,16 @@
           },
           "idc": {
             "peso": 0.4,
-            "puntaje_banda": 73.0,
-            "puntaje_aplicado": 73.0,
-            "valor": 1.0156,
+            "puntaje_banda": 100.0,
+            "puntaje_aplicado": 100.0,
+            "valor": 1.0608,
             "peso_efectivo": 0.064
           },
           "credito_privado": {
             "peso": 0.15,
-            "puntaje_banda": 53.2,
-            "puntaje_aplicado": 53.2,
-            "valor": 8.1,
+            "puntaje_banda": 54.2,
+            "puntaje_aplicado": 54.2,
+            "valor": 8.6,
             "peso_efectivo": 0.024
           }
         },
@@ -176,29 +176,29 @@
       "peso_efectivo": 0.072
     },
     "idc": {
-      "valor": 1.0156,
+      "valor": 1.0608,
       "unidad": "Índice (~1,0)",
       "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
-      "fecha_dato": "2026-06-29",
+      "fecha_dato": "2026-06-30",
       "componentes": {
-        "precio": 0.9945,
-        "volumen": 1.0123,
-        "asignacion": 1.0412
+        "precio": 0.9947,
+        "volumen": 1.044,
+        "asignacion": 1.1493
       },
-      "badlar_real_mensual": -0.55,
-      "semaforo": "amarillo",
+      "badlar_real_mensual": -0.53,
+      "semaforo": "verde",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 73.0,
-      "puntaje_banda": 73.0,
+      "puntaje_itcm": 100.0,
+      "puntaje_banda": 100.0,
       "peso_efectivo": 0.064
     },
     "badlar": {
-      "valor": 20.94,
+      "valor": 21.31,
       "unidad": "% anual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/7",
-      "fecha_dato": "2026-07-01",
+      "fecha_dato": "2026-07-02",
       "desactualizado": false,
       "en_indice": false
     },
@@ -321,40 +321,40 @@
       "peso_efectivo": 0.048
     },
     "credito_privado": {
-      "valor": 8.1,
+      "valor": 8.6,
       "unidad": "% i.a. real",
       "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
-      "fecha_dato": "2026-06-30",
+      "fecha_dato": "2026-07-01",
       "desactualizado": false,
-      "nominal_ia": 44.0,
-      "detalle_txt": "nominal 44,0% i.a. deflactado por IPC i.a. — crédito realizado, no capacidad (IdC)",
+      "nominal_ia": 44.6,
+      "detalle_txt": "nominal 44,6% i.a. deflactado por IPC i.a. — crédito realizado, no capacidad (IdC)",
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 53.2,
-      "puntaje_banda": 53.2,
+      "puntaje_itcm": 54.2,
+      "puntaje_banda": 54.2,
       "peso_efectivo": 0.024
     },
     "prestamos_privados": {
-      "valor": 4.14,
+      "valor": 4.63,
       "unidad": "% mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/26",
-      "fecha_dato": "2026-06-30",
+      "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 6.4,
+      "valor": 9.05,
       "unidad": "% mensual nominal",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/15",
-      "fecha_dato": "2026-06-30",
+      "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 3.6,
+      "valor": 3.2,
       "unidad": "% mensual",
       "fuente": "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/5",
-      "fecha_dato": "2026-07-02",
+      "fecha_dato": "2026-07-03",
       "desactualizado": false,
       "en_indice": false
     }
