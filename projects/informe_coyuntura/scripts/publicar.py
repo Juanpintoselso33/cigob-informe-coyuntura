@@ -69,7 +69,7 @@ def build_vida(raw):
          ipi.get("fecha"))
     isac = indec.get("isac", {})
     _add(out, "despacho_cemento", round(isac.get("valor", 0), 1),
-         "índice ISAC", "INDEC", isac.get("fecha"))
+         "índice ISAC", "INDEC — ISAC desestacionalizado (vía datos.gob.ar)", isac.get("fecha"))
     sub = indec.get("subocupacion_demandante", {})
     _add(out, "pluriempleo", round(sub.get("valor", 0) * 100, 1),
          "%", "INDEC EPH", sub.get("fecha"))

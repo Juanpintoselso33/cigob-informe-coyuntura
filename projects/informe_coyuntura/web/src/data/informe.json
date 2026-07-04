@@ -865,7 +865,7 @@
         "despacho_cemento": {
           "valor": 144.1,
           "unidad": "índice ISAC",
-          "fuente": "INDEC",
+          "fuente": "INDEC — ISAC desestacionalizado (vía datos.gob.ar)",
           "fecha_dato": "2026-04-01",
           "desactualizado": false,
           "en_indice": true,
