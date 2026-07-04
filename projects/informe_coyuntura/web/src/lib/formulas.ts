@@ -36,7 +36,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Planilla SDDS del BCRA (drenajes de la Sección II) + depósitos del Tesoro en USD del balance: las divisas de libre disponibilidad, descontando las que figuran en el activo pero están comprometidas.",
   },
   idc: {
-    latex: String.raw`0{,}30\cdot\underbrace{z_{\text{tasa real}}}_{\text{precio}}\;+\;0{,}40\cdot\underbrace{z_{\text{dep\'ositos}}}_{\text{volumen}}\;+\;0{,}30\cdot\underbrace{z_{\text{holgura}}}_{\text{asignaci\'on}}\qquad z=\frac{\text{nivel de hoy}-\text{promedio hist\'orico}}{\text{desv\'io hist\'orico}}`,
+    latex: String.raw`\begin{gathered}0{,}30\cdot\underbrace{z_{\text{tasa real}}}_{\text{precio}}\;+\;0{,}40\cdot\underbrace{z_{\text{dep\'ositos}}}_{\text{volumen}}\;+\;0{,}30\cdot\underbrace{z_{\text{holgura}}}_{\text{asignaci\'on}}\\[4pt] z=\frac{\text{nivel de hoy}-\text{promedio hist\'orico}}{\text{desv\'io hist\'orico}}\end{gathered}`,
     leyenda: "Cada componente se compara con su propia historia (2018 a hoy) y se expresa en desvíos estándar: la tasa real que reciben los depositantes, el crecimiento interanual real de los depósitos privados (la comparación interanual absorbe la estacionalidad) y la holgura que queda para prestar (1 − préstamos/depósitos). Cero es el mes histórico típico; por encima de +0,5 la capacidad de fondeo es mayor a la habitual, por debajo de −0,5, menor.",
   },
   credito_privado: {
@@ -52,7 +52,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Tipo de cambio real multilateral oficial del BCRA: cuánto vale el peso contra las monedas de los socios comerciales, descontadas las inflaciones. Bajo = peso caro = exportar cuesta más.",
   },
   iai: {
-    latex: String.raw`0{,}55\cdot\text{construcci\'on}\;+\;0{,}30\cdot\text{bienes de capital}\;+\;0{,}15\cdot\text{patentamientos}`,
+    latex: String.raw`\begin{gathered}0{,}55\cdot\text{construcci\'on}\;+\;0{,}30\cdot\text{bienes de capital}\\[2pt]+\;0{,}15\cdot\text{patentamientos}\end{gathered}`,
     leyenda: "Variaciones interanuales de la inversión física, calculadas al último mes que ambas fuentes tienen publicado: ISAC (construcción), importación de bienes de capital y patentamientos comerciales. Sin patentamientos, renormaliza a 0,65/0,35. Limitación declarada: los bienes de capital se miden en dólares corrientes e incluyen el efecto de los precios internacionales — el INDEC solo publica el índice de cantidades con frecuencia trimestral.",
   },
   icip: {

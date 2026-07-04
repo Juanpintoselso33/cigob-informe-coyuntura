@@ -79,6 +79,10 @@ const val = indice?.data.validacion ?? null;
 // Matriz de validación cruzada (global a las tres paramétricas): se muestra en
 // los cinturones con índice, con la fila del índice propio señalada.
 const cruz = indice ? ((informe as any).validacion_cruzada ?? null) : null;
+// etiquetas cortas de las anclas externas para la matriz en mobile
+const CRUZ_CORTAS: Record<string, string> = {
+  riesgo: "Riesgo país", merval: "Merval USD", icc: "ICC (UTDT)",
+};
 let valSvg: {
   W: number; H: number; base: number; top: number;
   lineaIndice: string; lineaExterna: string;
@@ -313,13 +317,18 @@ if (val && val.pares.length >= 12) {
                 <thead>
                   <tr>
                     <th></th>
-                    {cruz.externas.map(e => <th>{e[1]}</th>)}
+                    {cruz.externas.map(e => (
+                      <th>
+                        <span class="cg-cruz-lbl-lg">{e[1]}</span>
+                        <span class="cg-cruz-lbl-sm">{CRUZ_CORTAS[e[0]] ?? e[1]}</span>
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
                   {cruz.filas.map(f => (
                     <tr class:list={[f.indice === indice.sigla && "es-actual"]}>
-                      <th>{f.indice}{f.indice === indice.sigla ? " (este cinturón)" : ""}</th>
+                      <th>{f.indice}{f.indice === indice.sigla && <span class="cg-cruz-este"> (este cinturón)</span>}</th>
                       {cruz.externas.map(e => (
                         <td class:list={[f.propio === e[0] && "es-propio"]}>
                           {(f[e[0]].r > 0 ? "+" : "") + coma(f[e[0]].r)}
