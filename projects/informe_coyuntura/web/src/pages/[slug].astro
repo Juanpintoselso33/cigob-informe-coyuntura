@@ -91,13 +91,13 @@ if (val && val.pares.length >= 12) {
   //   minmax_inv   → externa INVERTIDA y ambas normalizadas al rango del
   //                  período (macro: el riesgo país en pb no comparte escala)
   let serieA: number[], serieB: number[];
-  if (val.plot === "minmax_inv") {
+  if (val.plot === "minmax_inv" || val.plot === "minmax") {
     const norm = (s: number[]) => {
       const lo = Math.min(...s), hi = Math.max(...s);
       return s.map(v => ((v - lo) / (hi - lo || 1)) * 100);
     };
     serieA = norm(val.pares.map(p => p[1]));
-    serieB = norm(val.pares.map(p => -p[2]));
+    serieB = norm(val.pares.map(p => (val.plot === "minmax_inv" ? -p[2] : p[2])));
   } else {
     const p0 = val.pares[0];
     serieA = val.pares.map(p => (p[1] / p0[1]) * 100);

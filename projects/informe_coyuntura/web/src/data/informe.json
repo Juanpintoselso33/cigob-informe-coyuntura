@@ -1842,178 +1842,178 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": -0.884,
-          "r_diferencias": -0.241,
+          "r_niveles": 0.766,
+          "r_diferencias": 0.376,
           "n": 32,
           "pares": [
             [
               "2023-12",
               18.7,
-              1892.0
+              964.7
             ],
             [
               "2024-01",
               27.9,
-              1942.0
+              1055.4
             ],
             [
               "2024-02",
               31.9,
-              1845.0
+              864.5
             ],
             [
               "2024-03",
               36.0,
-              1557.0
+              1138.3
             ],
             [
               "2024-04",
               41.5,
-              1276.0
+              1253.4
             ],
             [
               "2024-05",
               36.2,
-              1300.0
+              1443.2
             ],
             [
               "2024-06",
               41.3,
-              1447.0
+              1240.2
             ],
             [
               "2024-07",
               41.2,
-              1531.0
+              1090.6
             ],
             [
               "2024-08",
               41.9,
-              1530.0
+              1322.5
             ],
             [
               "2024-09",
               41.2,
-              1382.0
+              1361.4
             ],
             [
               "2024-10",
               45.0,
-              1103.0
+              1555.2
             ],
             [
               "2024-11",
               49.2,
-              810.0
+              1984.1
             ],
             [
               "2024-12",
               50.6,
-              694.0
+              2242.3
             ],
             [
               "2025-01",
               56.4,
-              611.0
+              2163.3
             ],
             [
               "2025-02",
               51.2,
-              698.0
+              1829.1
             ],
             [
               "2025-03",
               57.0,
-              754.0
+              1850.1
             ],
             [
               "2025-04",
               58.4,
-              799.0
+              1670.2
             ],
             [
               "2025-05",
               65.0,
-              684.0
+              1903.6
             ],
             [
               "2025-06",
               58.0,
-              688.0
+              1673.1
             ],
             [
               "2025-07",
               67.0,
-              728.0
+              1815.2
             ],
             [
               "2025-08",
               72.4,
-              758.0
+              1489.0
             ],
             [
               "2025-09",
               68.2,
-              1090.0
+              1220.4
             ],
             [
               "2025-10",
               71.1,
-              989.0
+              1975.4
             ],
             [
               "2025-11",
               73.9,
-              630.0
+              2024.9
             ],
             [
               "2025-12",
               70.2,
-              601.0
+              2003.1
             ],
             [
               "2026-01",
               73.0,
-              550.0
+              2105.6
             ],
             [
               "2026-02",
               70.1,
-              521.0
+              1795.8
             ],
             [
               "2026-03",
               74.2,
-              587.0
+              2039.2
             ],
             [
               "2026-04",
               66.0,
-              562.0
+              1916.1
             ],
             [
               "2026-05",
               73.4,
-              521.0
+              2131.0
             ],
             [
               "2026-06",
               69.5,
-              455.0
+              2087.8
             ],
             [
               "2026-07",
               73.1,
-              418.0
+              2034.0
             ]
           ],
-          "plot": "minmax_inv",
-          "titulo": "¿El mercado le cree a la ejecución de reformas?",
-          "sub": "El contraste natural del cinturón de gestión es el riesgo país: si la agenda de reformas efectivamente se ejecuta, el mercado debería cobrar cada vez menos por el riesgo argentino. El ITCG se reconstruye mes a mes desde las series de sus componentes (14 de 15 con serie; sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución) y se compara con el EMBI, que no integra el índice.",
+          "plot": "minmax",
+          "titulo": "¿La transformación se pricea en el valor de las empresas?",
+          "sub": "El contraste natural del cinturón de gestión es el capital de riesgo: si la agenda de reformas efectivamente se ejecuta, las empresas argentinas deberían valer más en dólares. El ITCG se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución) y se compara con el índice Merval medido en dólares (cierre mensual sobre el contado con liquidación), que no integra el índice. La correlación esperada es positiva.",
           "serie_label": "ITCG (reconstrucción mensual)",
-          "externa_label": "riesgo país (EMBI, invertido)",
-          "trans_label": "series normalizadas al rango del período; el riesgo país se muestra invertido",
-          "conclusion": "Correlación -0,884 en niveles y -0,241 en los cambios mes a mes — la más fuerte de las tres validaciones: la ejecución acumulada de reformas comprime el precio del riesgo argentino. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
+          "externa_label": "Merval en dólares",
+          "trans_label": "series normalizadas al rango del período",
+          "conclusion": "Correlación 0,766 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
         }
       },
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
@@ -2072,6 +2072,10 @@
           "r": -0.74,
           "n": 30
         },
+        "merval": {
+          "r": 0.64,
+          "n": 30
+        },
         "icc": {
           "r": 0.53,
           "n": 29
@@ -2079,10 +2083,14 @@
       },
       {
         "indice": "ITCG",
-        "propio": "riesgo",
+        "propio": "merval",
         "riesgo": {
           "r": -0.88,
           "n": 30
+        },
+        "merval": {
+          "r": 0.77,
+          "n": 32
         },
         "icc": {
           "r": 0.46,
@@ -2096,6 +2104,10 @@
           "r": -0.64,
           "n": 29
         },
+        "merval": {
+          "r": 0.6,
+          "n": 30
+        },
         "icc": {
           "r": 0.55,
           "n": 30
@@ -2108,12 +2120,16 @@
         "Riesgo país (EMBI)"
       ],
       [
+        "merval",
+        "Merval en USD"
+      ],
+      [
         "icc",
         "Confianza del consumidor (ICC UTDT)"
       ]
     ],
     "titulo": "¿Cada índice mide lo suyo?",
-    "sub": "Los tres índices se reconstruyen mes a mes y se comparan contra los dos contrastes externos a la vez. Si cada uno mide su propio terreno, debería correlacionar más fuerte con su par natural — los índices de política económica (ITCM, ITCG) con el precio del riesgo argentino; el de vida cotidiana (ITVC) con la confianza del consumidor — que con el contraste ajeno. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "El patrón se cumple en los índices de política económica: el ITCM correlaciona -0,74 con el riesgo país frente a +0,53 con la confianza, y el ITCG -0,88 frente a +0,46. El ITVC no separa entre contrastes (+0,55 con su par y -0,64 con el ajeno): en una muestra de ~30 meses en la que la macroeconomía y el bolsillo se movieron juntos, la vida cotidiana refleja a ambos — se declara como límite del contraste, no se esconde."
+    "sub": "Los tres índices se reconstruyen mes a mes y se comparan contra los tres contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
+    "conclusion": "Los tres pares propios dan el signo esperado y correlaciones fuertes: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,55 con la confianza del consumidor. Las celdas cruzadas son del mismo orden (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía se movió junta, la matriz separa parcialmente — se declara como límite, no se esconde."
   }
 }

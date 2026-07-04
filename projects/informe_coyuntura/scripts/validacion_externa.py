@@ -32,6 +32,7 @@ Uso: python scripts/validacion_externa.py
 import json
 import statistics
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
@@ -44,6 +45,8 @@ import itcm
 import itvc
 
 RIESGO_PAIS_URL = "https://api.argentinadatos.com/v1/finanzas/indices/riesgo-pais"
+MERVAL_YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5EMERV"
+CCL_URL = "https://api.argentinadatos.com/v1/cotizaciones/dolares/contadoconliqui"
 
 ROOT = Path(__file__).resolve().parents[1]
 SERIES = ROOT / "web" / "src" / "data" / "series.json"
@@ -205,6 +208,30 @@ def construir_serie_itcg() -> dict:
     return out
 
 
+def fetch_merval_usd_mensual() -> dict:
+    """{YYYY-MM: Merval en USD} — cierre mensual del índice Merval (Yahoo
+    Finance, ^MERV) sobre el CCL promedio del mes (ArgentinaDatos). Es el par
+    convergente PROPIO del ITCG (ADR-0031): el mercado de acciones pricea la
+    transformación estructural — reformas ejecutadas, empresas que valen más.
+    El riesgo país queda como par exclusivo del ITCM."""
+    r = requests.get(MERVAL_YAHOO_URL, params={"range": "3y", "interval": "1mo"},
+                     headers={"User-Agent": "Mozilla/5.0"}, timeout=60)
+    r.raise_for_status()
+    res = r.json()["chart"]["result"][0]
+    cierres = {datetime.fromtimestamp(t, tz=timezone.utc).strftime("%Y-%m"): c
+               for t, c in zip(res["timestamp"],
+                               res["indicators"]["quote"][0]["close"]) if c}
+    r2 = requests.get(CCL_URL, headers={"User-Agent": "Mozilla/5.0"}, timeout=60)
+    r2.raise_for_status()
+    por_mes = {}
+    for d in r2.json():
+        if d.get("venta"):
+            por_mes.setdefault(d["fecha"][:7], []).append(float(d["venta"]))
+    ccl = {ym: sum(v) / len(v) for ym, v in por_mes.items()}
+    return {ym: round(cierres[ym] / ccl[ym], 1) for ym in sorted(cierres)
+            if ym in ccl and ym >= "2023-11"}
+
+
 def fetch_riesgo_pais_mensual() -> dict:
     """Promedio mensual del riesgo país (EMBI, pb) desde ArgentinaDatos."""
     r = requests.get(RIESGO_PAIS_URL, timeout=30)
@@ -290,8 +317,19 @@ def main():
     icg = _mensual(series_json.get("icg_utdt") or [])
     riesgo = resultados.get("riesgo_pais_mensual") or {}
     pares_g = {}
+    try:
+        merval = fetch_merval_usd_mensual()
+        resultados["merval_usd_mensual"] = merval
+        # Convergente PROPIO del ITCG (ADR-0031): el equity pricea la
+        # transformación estructural (positiva esperada)
+        pares_g.update({
+            "niveles (ITCG vs Merval USD)": (serie_itcg, merval),
+            "primeras diferencias (ITCG vs Merval USD)": (_difs(serie_itcg), _difs(merval)),
+        })
+    except Exception as e:
+        print(f"[WARN] Merval USD no disponible: {e}")
     if riesgo:
-        # Convergente: el mercado pricea la ejecución de reformas (negativa esperada)
+        # Referencia cruzada (el par propio del ITCM)
         pares_g.update({
             "niveles (ITCG vs riesgo país)": (serie_itcg, riesgo),
             "primeras diferencias (ITCG vs riesgo)": (_difs(serie_itcg), _difs(riesgo)),

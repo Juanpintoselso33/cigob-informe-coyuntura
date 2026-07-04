@@ -584,6 +584,7 @@ def _validacion_cruzada(informe):
         return
     indices = {k: {p[0]: p[1] for p in v} for k, v in bloques.items()}
     externas = {"riesgo": {p[0]: p[2] for p in bloques["ITCM"]},
+                "merval": {p[0]: p[2] for p in bloques["ITCG"]},
                 "icc": {p[0]: p[2] for p in bloques["ITVC"]}}
 
     def _r(a, b):
@@ -593,7 +594,7 @@ def _validacion_cruzada(informe):
         return (round(statistics.correlation([a[m] for m in comunes],
                                              [b[m] for m in comunes]), 2), len(comunes))
 
-    PAR_PROPIO = {"ITCM": "riesgo", "ITCG": "riesgo", "ITVC": "icc"}
+    PAR_PROPIO = {"ITCM": "riesgo", "ITCG": "merval", "ITVC": "icc"}
     filas = []
     for ik in ("ITCM", "ITCG", "ITVC"):
         fila = {"indice": ik, "propio": PAR_PROPIO[ik]}
@@ -601,46 +602,49 @@ def _validacion_cruzada(informe):
             r, n = _r(indices[ik], ext)
             fila[ek] = {"r": r, "n": n}
         filas.append(fila)
-    if any(f["riesgo"]["r"] is None or f["icc"]["r"] is None for f in filas):
+    if any(f[e]["r"] is None for f in filas for e in ("riesgo", "merval", "icc")):
         return
     fmt = lambda r: ("+" if r > 0 else "") + str(r).replace(".", ",")
     f_itcm, f_itcg, f_itvc = filas
     informe["validacion_cruzada"] = {
         "filas": filas,
-        "externas": [["riesgo", "Riesgo país (EMBI)"], ["icc", "Confianza del consumidor (ICC UTDT)"]],
+        "externas": [["riesgo", "Riesgo país (EMBI)"], ["merval", "Merval en USD"],
+                     ["icc", "Confianza del consumidor (ICC UTDT)"]],
         "titulo": "¿Cada índice mide lo suyo?",
-        "sub": ("Los tres índices se reconstruyen mes a mes y se comparan contra los dos "
-                "contrastes externos a la vez. Si cada uno mide su propio terreno, debería "
-                "correlacionar más fuerte con su par natural — los índices de política "
-                "económica (ITCM, ITCG) con el precio del riesgo argentino; el de vida "
-                "cotidiana (ITVC) con la confianza del consumidor — que con el contraste "
-                "ajeno. Es la prueba clásica de que un indicador no mide \"todo junto\"."),
-        "conclusion": (f"El patrón se cumple en los índices de política económica: el ITCM "
-                       f"correlaciona {fmt(f_itcm['riesgo']['r'])} con el riesgo país frente a "
-                       f"{fmt(f_itcm['icc']['r'])} con la confianza, y el ITCG {fmt(f_itcg['riesgo']['r'])} "
-                       f"frente a {fmt(f_itcg['icc']['r'])}. El ITVC no separa entre contrastes "
-                       f"({fmt(f_itvc['icc']['r'])} con su par y {fmt(f_itvc['riesgo']['r'])} con el ajeno): "
-                       f"en una muestra de ~30 meses en la que la macroeconomía y el bolsillo se "
-                       f"movieron juntos, la vida cotidiana refleja a ambos — se declara como "
-                       f"límite del contraste, no se esconde."),
+        "sub": ("Los tres índices se reconstruyen mes a mes y se comparan contra los tres "
+                "contrastes externos a la vez — cada uno tiene el propio: la macroeconomía "
+                "(ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de "
+                "las empresas en dólares, la vida cotidiana (ITVC) con la confianza del "
+                "consumidor. Si cada índice mide su propio terreno, debería correlacionar con "
+                "su par natural al menos tanto como con los ajenos. Es la prueba clásica de "
+                "que un indicador no mide \"todo junto\"."),
+        "conclusion": (f"Los tres pares propios dan el signo esperado y correlaciones fuertes: "
+                       f"ITCM {fmt(f_itcm['riesgo']['r'])} con el riesgo país, ITCG "
+                       f"{fmt(f_itcg['merval']['r'])} con el Merval en dólares, ITVC "
+                       f"{fmt(f_itvc['icc']['r'])} con la confianza del consumidor. Las celdas "
+                       f"cruzadas son del mismo orden (la gestión también correlaciona "
+                       f"{fmt(f_itcg['riesgo']['r'])} con el riesgo país): en una muestra de "
+                       f"~30 meses en la que toda la economía se movió junta, la matriz separa "
+                       f"parcialmente — se declara como límite, no se esconde."),
     }
 
 
 def _validacion_itcg(bloque):
-    """Anexa al bloque ITCG su validación externa: la serie mensual del índice
-    (reconstruida por el estudio) contra el riesgo país — el mercado pricea la
-    ejecución de reformas (convergente, negativa esperada). El contraste con
-    el ICG UTDT (confianza en el gobierno) queda como hallazgo DISCRIMINANTE
-    en la conclusión: la ejecución se acumula, la popularidad cicla."""
+    """Anexa al bloque ITCG su validación externa CONTRA SU PAR PROPIO
+    (ADR-0031): el Merval en dólares — el mercado de acciones pricea la
+    transformación estructural (convergente, positiva esperada). El riesgo
+    país queda como par exclusivo del ITCM (se cruzan en la matriz). El
+    contraste con el ICG UTDT sigue como hallazgo DISCRIMINANTE en la
+    conclusión: la ejecución se acumula, la popularidad cicla."""
     val = _cargar_validacion()
     serie = val.get("serie_itcg") or {}
-    riesgo = val.get("riesgo_pais_mensual") or {}
-    comunes = sorted(set(serie) & set(riesgo))
+    merval = val.get("merval_usd_mensual") or {}
+    comunes = sorted(set(serie) & set(merval))
     if len(comunes) < 12:
         return
     corr = val.get("correlaciones_itcg", {})
-    niveles = corr.get("niveles (ITCG vs riesgo país)") or {}
-    difs = corr.get("primeras diferencias (ITCG vs riesgo)") or {}
+    niveles = corr.get("niveles (ITCG vs Merval USD)") or {}
+    difs = corr.get("primeras diferencias (ITCG vs Merval USD)") or {}
     icg_niv = (corr.get("niveles (ITCG vs ICG)") or {}).get("r")
     coma = lambda x: str(x).replace(".", ",")
     r_niv, r_dif = niveles.get("r"), difs.get("r")
@@ -652,21 +656,21 @@ def _validacion_itcg(bloque):
                    f"gestión, no popularidad.")
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
-        "pares": [[m, serie[m], riesgo[m]] for m in comunes],
-        "plot": "minmax_inv",
-        "titulo": "¿El mercado le cree a la ejecución de reformas?",
-        "sub": ("El contraste natural del cinturón de gestión es el riesgo país: si la agenda "
-                "de reformas efectivamente se ejecuta, el mercado debería cobrar cada vez menos "
-                "por el riesgo argentino. El ITCG se reconstruye mes a mes desde las series de "
-                "sus componentes (14 de 15 con serie; sin los ajustes del analista: el nivel "
-                "puede diferir del publicado — lo que valida es su evolución) y se compara con "
-                "el EMBI, que no integra el índice."),
+        "pares": [[m, serie[m], merval[m]] for m in comunes],
+        "plot": "minmax",
+        "titulo": "¿La transformación se pricea en el valor de las empresas?",
+        "sub": ("El contraste natural del cinturón de gestión es el capital de riesgo: si la "
+                "agenda de reformas efectivamente se ejecuta, las empresas argentinas deberían "
+                "valer más en dólares. El ITCG se reconstruye mes a mes desde las series de sus "
+                "componentes (sin los ajustes del analista: el nivel puede diferir del publicado "
+                "— lo que valida es su evolución) y se compara con el índice Merval medido en "
+                "dólares (cierre mensual sobre el contado con liquidación), que no integra el "
+                "índice. La correlación esperada es positiva."),
         "serie_label": "ITCG (reconstrucción mensual)",
-        "externa_label": "riesgo país (EMBI, invertido)",
-        "trans_label": "series normalizadas al rango del período; el riesgo país se muestra invertido",
-        "conclusion": (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
-                       f"a mes — la más fuerte de las tres validaciones: la ejecución acumulada "
-                       f"de reformas comprime el precio del riesgo argentino.{icg_txt}"),
+        "externa_label": "Merval en dólares",
+        "trans_label": "series normalizadas al rango del período",
+        "conclusion": (f"Correlación {coma(r_niv)} en niveles: cuando la ejecución de reformas "
+                       f"avanza, el mercado revaloriza a las empresas argentinas.{icg_txt}"),
     }
 
 

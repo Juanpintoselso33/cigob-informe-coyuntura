@@ -50,6 +50,21 @@ tercera dimensión.
    perturba nada). Pasa a ruido ADITIVO de ±5% del ancho entre anclas
    finitas de cada indicador.
 
+## Ampliación (mismo día): tercer contraste — cada índice con su par propio
+
+El editor observó que reutilizar el riesgo país para ITCM e ITCG debilitaba
+el discriminante. Se incorporó el **Merval en dólares** (cierre mensual de
+^MERV vía Yahoo Finance sobre el CCL promedio de ArgentinaDatos) como par
+convergente PROPIO del ITCG: el mercado de acciones pricea la transformación
+estructural. Probado antes de adoptar: ITCG ↔ Merval USD **r = +0,766**
+(n=32) — el más alto de los tres índices contra ese contraste, con el signo
+esperado. La matriz pasa a 3×3 con diagonal completa: ITCM ↔ riesgo país
+(−0,74) · ITCG ↔ Merval USD (+0,77) · ITVC ↔ ICC (+0,55). El bloque de
+validación por cinturón de gestión también migra al Merval (gráfico en modo
+`minmax` sin inversión: relación positiva); el contraste ITCG ↔ riesgo país
+queda visible en la matriz (−0,88: reformas y solvencia se pricean juntas —
+declarado en la conclusión).
+
 ## Consecuencias
 
 - La batería queda en tres pilares: sensibilidad interna · validación
