@@ -988,25 +988,43 @@ def fetch_credito_privado() -> dict | None:
     indicadores de contexto (badlar/préstamos/base/TC quedan ocultos: son
     insumos de IdC, IDM y TCRM)."""
     try:
+        # ÚLTIMO MES CON IPC CERRADO (ADR-0030): el titular anterior usaba el
+        # préstamo diario al día deflactado con el IPC i.a. de dos meses atrás
+        # (la peor deriva de la familia) y difería del último punto de la
+        # serie. El dato diario fresco queda provisorio en el detalle.
+        fin_mes = _bcra_fin_de_mes(BCRA_PRESTAMOS_ID, 16)
+        ipc = _ipc_indice_mensual(20)
+        comunes = [ym for ym in sorted(set(fin_mes) & set(ipc))
+                   if _ym_shift(ym, -12) in fin_mes and _ym_shift(ym, -12) in ipc]
+        if not comunes:
+            raise ValueError("crédito privado: sin mes común con interanual disponible")
+        ym = comunes[-1]
+        p = _ym_shift(ym, -12)
+        nominal = fin_mes[ym] / fin_mes[p] - 1.0
+        deflactor = ipc[ym] / ipc[p]
+        real = ((1.0 + nominal) / deflactor - 1.0) * 100.0
+        coma = lambda x: str(round(x, 1)).replace(".", ",")
+        fresco = ""
         detalle = _bcra_detalle(BCRA_PRESTAMOS_ID, dias=400)   # desc
         ultimo = detalle[0]
-        objetivo = datetime.fromisoformat(ultimo["fecha"]) - timedelta(days=365)
-        base = min(detalle, key=lambda d: abs(
-            (datetime.fromisoformat(d["fecha"]) - objetivo).days))
-        if abs((datetime.fromisoformat(base["fecha"]) - objetivo).days) > 12:
-            raise ValueError("sin dato de préstamos ~365 días atrás")
-        nominal = float(ultimo["valor"]) / float(base["valor"]) - 1.0
-        ipc = _indec_yoy(INDEC_IPC_ID)["var_ia"] / 100.0
-        real = ((1.0 + nominal) / (1.0 + ipc) - 1.0) * 100.0
+        if ultimo["fecha"][:7] > ym:
+            objetivo = datetime.fromisoformat(ultimo["fecha"]) - timedelta(days=365)
+            base = min(detalle, key=lambda d: abs(
+                (datetime.fromisoformat(d["fecha"]) - objetivo).days))
+            if abs((datetime.fromisoformat(base["fecha"]) - objetivo).days) <= 12:
+                nom_f = float(ultimo["valor"]) / float(base["valor"]) - 1.0
+                real_f = ((1.0 + nom_f) / deflactor - 1.0) * 100.0
+                fresco = (f" — al {ultimo['fecha']} (provisorio, no puntúa): "
+                          f"{coma(real_f)}% real con deflactor de {ym}")
         return {
             "valor": round(real, 1),
             "unidad": "% i.a. real",
             "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
-            "fecha_dato": ultimo["fecha"],
+            "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "nominal_ia": round(nominal * 100.0, 1),
-            "detalle_txt": (f"nominal {str(round(nominal * 100.0, 1)).replace('.', ',')}% i.a. "
-                            f"deflactado por IPC i.a. — crédito realizado, no capacidad (IdC)"),
+            "detalle_txt": (f"nominal {coma(nominal * 100.0)}% i.a. deflactado por IPC — "
+                            f"crédito realizado, no capacidad (IdC) (mes común: {ym}){fresco}"),
         }
     except Exception as e:
         _warn("credito_privado", e)

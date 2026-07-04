@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-04 13:11:48"
+generado: "2026-07-04 13:17:34"
 score_global: 3.5
 barbarismo_activo: "político"
 alerta_multicinturon: false
@@ -30,7 +30,7 @@ schema_version: "1.2.0"
 | idm | 4.33 | pp (brecha i.a. real) | 2026-05-01 | fresco |
 | iai | -3.9 | % i.a. ponderado | 2026-04-01 | fresco |
 | icip | 8.2 | % i.a. ponderado | 2026-04-01 | fresco |
-| credito_privado | 8.6 | % i.a. real | 2026-07-01 | fresco |
+| credito_privado | 9.5 | % i.a. real | 2026-05-01 | fresco |
 | prestamos_privados | 4.63 | % mensual nominal | 2026-07-01 | fresco |
 | base_monetaria | 9.05 | % mensual nominal | 2026-07-01 | fresco |
 | tc_mayorista | 3.2 | % mensual | 2026-07-03 | fresco |
@@ -96,4 +96,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:cohesion_bloque,gobernadores_alineamiento`
 
 ---
-*Generado por CIGOB — 2026-07-04 13:11:48 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-04 13:17:34 — schema 1.2.0*

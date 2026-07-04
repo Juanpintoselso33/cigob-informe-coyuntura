@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-04T13:11:48.660609",
+  "generated_at": "2026-07-04T13:17:34.437019",
   "score": 4.2,
   "itcm": {
     "valor": 57.6,
@@ -61,7 +61,7 @@
       "financiamiento": {
         "nombre": "Capacidad de financiamiento",
         "peso": 0.16,
-        "puntaje": 44.4,
+        "puntaje": 44.7,
         "indicadores": {
           "reservas_bcra": {
             "peso": 0.45,
@@ -79,9 +79,9 @@
           },
           "credito_privado": {
             "peso": 0.15,
-            "puntaje_banda": 54.2,
-            "puntaje_aplicado": 54.2,
-            "valor": 8.6,
+            "puntaje_banda": 56.0,
+            "puntaje_aplicado": 56.0,
+            "valor": 9.5,
             "peso_efectivo": 0.024
           }
         },
@@ -333,17 +333,17 @@
       "peso_efectivo": 0.048
     },
     "credito_privado": {
-      "valor": 8.6,
+      "valor": 9.5,
       "unidad": "% i.a. real",
       "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
-      "fecha_dato": "2026-07-01",
+      "fecha_dato": "2026-05-01",
       "desactualizado": false,
-      "nominal_ia": 44.6,
-      "detalle_txt": "nominal 44,6% i.a. deflactado por IPC i.a. — crédito realizado, no capacidad (IdC)",
+      "nominal_ia": 45.9,
+      "detalle_txt": "nominal 45,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-05) — al 2026-07-01 (provisorio, no puntúa): 8,6% real con deflactor de 2026-05",
       "en_indice": true,
       "dimension": "financiamiento",
-      "puntaje_itcm": 54.2,
-      "puntaje_banda": 54.2,
+      "puntaje_itcm": 56.0,
+      "puntaje_banda": 56.0,
       "peso_efectivo": 0.024
     },
     "prestamos_privados": {
