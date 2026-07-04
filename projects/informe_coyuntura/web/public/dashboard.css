@@ -615,10 +615,13 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
    alineados a la izquierda; centrar la última fila descolgaba "Regla de lectura". */
 .cg-method-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* min(280px, 100%): el mínimo fijo expandía el layout viewport en
+       teléfonos angostos (320-340px con zoom de pantalla) */
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: 28px;
     margin-top: 4px;
 }
+@media (max-width: 560px) { .cg-method { padding: 24px 18px; } }
 .cg-method article h3 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;

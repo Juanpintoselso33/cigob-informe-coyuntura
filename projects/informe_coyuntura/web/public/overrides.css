@@ -208,6 +208,23 @@
    La tabla de la matriz cruzada era más ancha que el viewport y expandía
    el layout viewport: TODA la página se veía "zoomeada out" en el celular.
    Regla general: nada de ancho fijo sin overflow-x propio. */
+
+/* Los items de grid NO encogen por debajo de su contenido (min-width:auto):
+   con zoom de pantalla del teléfono (viewport 320-340px) las cards de
+   cinturón (~355px de mínimo) volvían a expandir el layout viewport →
+   cards de anchos dispares y texto pegado a los bordes. */
+.cg-grid--4 > * { min-width: 0; }
+@media (max-width: 400px) {
+  .cg-cint { padding: 16px 14px; }
+  .cg-ind { gap: 8px; }
+  .cg-ind-sparkline { flex-basis: 46px; }
+  .cg-ind-value { font-size: 12px; gap: 5px; }
+  .cg-ind-value .cg-ind-unit { font-size: 10px; }
+  .cg-hero-stats { grid-template-columns: 1fr; }
+  /* filas con chips nowrap: en teléfonos angostos pueden envolver */
+  .cg-rob-head { flex-wrap: wrap; }
+  .cg-rob-head span:last-child { white-space: normal; }
+}
 .cg-cruz { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 @media (max-width: 560px) {
   .cg-cruz-tabla { font-size: 11px; }
