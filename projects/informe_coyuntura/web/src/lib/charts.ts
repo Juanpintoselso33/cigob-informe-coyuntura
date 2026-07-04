@@ -102,6 +102,41 @@ export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: strin
   return chart;
 }
 
+// Gráfico multilínea para indicadores con series COMPARADAS (ej. TCRM
+// multilateral + bilaterales, como lo presenta el BCRA). La primera serie es
+// la protagonista (trazo grueso, color del cinturón); las demás acompañan en
+// tonos suaves. `refY` dibuja una referencia horizontal punteada con rótulo.
+export function multiTimeChart(el: HTMLElement, series: { nombre: string; puntos: Punto[] }[],
+                               opts: { color?: string; unidad?: string; refY?: number; refLabel?: string } = {}) {
+  const color = opts.color ?? "#4998DB";
+  const SUAVES = ["#3E9486", "#C9A227", "#8A8F98"];
+  const chart = new ApexCharts(el, {
+    chart: { type: "line", height: 280, width: "100%", fontFamily: FONT,
+             toolbar: { show: false }, zoom: { enabled: false }, animations: { enabled: true, speed: 450 } },
+    series: series.map(s => ({ name: s.nombre, data: s.puntos.map(p => ({ x: aTimestamp(p.fecha), y: p.valor })) })),
+    colors: [color, ...SUAVES.slice(0, series.length - 1)],
+    stroke: { curve: "smooth", width: [3, 1.8, 1.8, 1.8].slice(0, series.length) },
+    dataLabels: { enabled: false },
+    markers: { size: 0, hover: { size: 4 } },
+    legend: { show: true, position: "top", horizontalAlign: "left",
+              fontSize: "12px", labels: { colors: COL.dark },
+              markers: { width: 9, height: 9, radius: 9 }, itemMargin: { horizontal: 10 } },
+    xaxis: { type: "datetime", tooltip: { enabled: false },
+             labels: { datetimeUTC: true, style: { colors: COL.muted, fontSize: "11px" } },
+             axisBorder: { show: false }, axisTicks: { show: false } },
+    yaxis: { labels: { formatter: (v: number) => NF.format(v), style: { colors: COL.muted, fontSize: "11px" } } },
+    grid: { borderColor: COL.grid, strokeDashArray: 4, xaxis: { lines: { show: false } }, padding: { left: 8, right: 12, top: 0 } },
+    tooltip: { theme: "light", x: { format: "MMM yyyy" }, shared: true,
+               y: { formatter: (v: number) => `${NF.format(v)}${opts.unidad ? ` ${opts.unidad}` : ""}` } },
+    annotations: opts.refY != null ? { yaxis: [{ y: opts.refY, borderColor: COL.muted, strokeDashArray: 4,
+      label: { text: opts.refLabel ?? "", position: "right", textAnchor: "end", offsetY: -5,
+               style: { color: COL.muted, background: "rgba(255,255,255,0.85)",
+                        fontSize: "10px", padding: { left: 4, right: 4, top: 2, bottom: 2 } } } }] } : {},
+  } as any);
+  chart.render();
+  return chart;
+}
+
 // Mini gráfico (sparkline con tooltip) para las cards de la home.
 export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string } = {}) {
   const color = opts.color ?? "#4998DB";

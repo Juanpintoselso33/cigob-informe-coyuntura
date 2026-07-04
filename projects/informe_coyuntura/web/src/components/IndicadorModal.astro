@@ -179,7 +179,21 @@ const dimsJson = JSON.stringify(dims);
     el.removeAttribute("hidden");
     const C = await ensureCharts();
     const color = C.colorDe(d.slug);
-    if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidad, indicador: key.split(".").pop() });
+    // Series comparadas: indicadores que se leen contra sus pares (el TCRM
+    // multilateral junto a los bilaterales, la presentación del BCRA) con
+    // una referencia histórica punteada.
+    const MULTI = {
+      tcrm: { series: [["tcrm", "Multilateral"], ["tcrm_bilateral_brasil", "Bilateral Brasil"], ["tcrm_bilateral_eeuu", "Bilateral EE.UU."]],
+              refY: 106, refLabel: "mediana histórica 1997-2026" },
+    };
+    const baseKey = key.split(".").pop();
+    const multi = MULTI[baseKey];
+    if (tipo === "linea" && multi && multi.series.every(([k]) => (SERIES[k] || []).length > 1)) {
+      chartInstance = C.multiTimeChart(el,
+        multi.series.map(([k, nombre]) => ({ nombre, puntos: SERIES[k] })),
+        { color, unidad: d.unidad, refY: multi.refY, refLabel: multi.refLabel });
+    }
+    else if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidad, indicador: baseKey });
     else if (tipo === "gauge_avance") chartInstance = C.gaugeChart(el, d.avance, { color, label: "avance ejecutado" });
     else if (tipo === "gauge_valor") chartInstance = C.gaugeChart(el, d.valorNum, { color, label: "nivel actual",
                centerText: `${nf.format(d.valorNum)}${d.unidadCorta ? " " + d.unidadCorta : ""}` });

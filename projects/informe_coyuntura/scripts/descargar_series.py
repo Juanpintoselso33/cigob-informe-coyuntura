@@ -300,6 +300,12 @@ MACRO_DERIVADAS = [
     ("saldo_comercial_12m", "M USD (acum. 12 meses)", "INDEC — ICA (vía datos.gob.ar)", fetch_saldo_12m_serie),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
+    # bilaterales oficiales de la misma planilla (descarga memoizada): el
+    # gráfico comparado del modal del TCRM, como lo presenta el propio BCRA
+    ("tcrm_bilateral_brasil", "índice (base dic-2015)", "BCRA ITCRM",
+     lambda: [[f, v] for f, v in macro.fetch_itcrm_bilateral("brasil")][-32:]),
+    ("tcrm_bilateral_eeuu", "índice (base dic-2015)", "BCRA ITCRM",
+     lambda: [[f, v] for f, v in macro.fetch_itcrm_bilateral("eeuu")][-32:]),
     ("idm", "pp (brecha i.a. real)", "BCRA (M3/M2 privado) + IPC INDEC", fetch_idm_serie),
     ("idc", "σ vs. su historia", "BCRA (BADLAR/depósitos/préstamos) + IPC INDEC", fetch_idc_serie),
     ("iai", "% i.a. ponderado", "INDEC (ISAC + bienes de capital importados)", fetch_iai_serie),

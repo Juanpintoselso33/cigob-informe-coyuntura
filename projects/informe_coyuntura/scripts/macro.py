@@ -656,24 +656,48 @@ def fetch_recaudacion() -> dict | None:
         return None
 
 
-def fetch_itcrm_serie() -> list:
-    """Serie mensual del ITCRM oficial del BCRA (base 17-dic-2015=100), de la
-    planilla ITCRMSerie.xlsx (hoja de promedios mensuales). Devuelve
-    [(YYYY-MM-01, valor)] ordenado ascendente. 100% de dato oficial."""
+_ITCRM_FILAS_MEMO: list = []      # memo por corrida: ITCRM y bilaterales salen
+                                  # de la MISMA planilla (una sola descarga)
+
+
+def _itcrm_filas() -> list:
+    """Filas (fecha_iso, ITCRM, Brasil, EEUU, China) de la planilla oficial
+    ITCRMSerie.xlsx (hoja de promedios mensuales). Columnas de la hoja:
+    Período · ITCRM · Brasil · Canadá · Chile · EEUU · México · Uruguay ·
+    China · India — se toman los tres bilaterales más relevantes."""
+    if _ITCRM_FILAS_MEMO:
+        return _ITCRM_FILAS_MEMO
     import io, openpyxl
     r = requests.get(BCRA_ITCRM_URL, headers=HTTP_HEADERS, timeout=60, verify=False)
     r.raise_for_status()
     wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
     ws = wb[ITCRM_SHEET_MENSUAL]
-    serie = []
-    for fecha, itcrm, *_ in ws.iter_rows(min_row=3, values_only=True):
+    for fila in ws.iter_rows(min_row=3, values_only=True):
+        fecha, itcrm = fila[0], fila[1]
         if fecha is None or not isinstance(itcrm, (int, float)):
             continue  # saltea encabezados y notas al pie
         ym = fecha.date().isoformat() if hasattr(fecha, "date") else str(fecha)[:10]
-        serie.append((ym, round(float(itcrm), 2)))
-    if not serie:
+        _ITCRM_FILAS_MEMO.append(
+            (ym, round(float(itcrm), 2),
+             round(float(fila[2]), 2) if isinstance(fila[2], (int, float)) else None,   # Brasil
+             round(float(fila[5]), 2) if isinstance(fila[5], (int, float)) else None,   # EEUU
+             round(float(fila[8]), 2) if isinstance(fila[8], (int, float)) else None))  # China
+    if not _ITCRM_FILAS_MEMO:
         raise ValueError("ITCRM: sin datos numéricos en la planilla del BCRA")
-    return serie
+    return _ITCRM_FILAS_MEMO
+
+
+def fetch_itcrm_serie() -> list:
+    """Serie mensual del ITCRM oficial (base 17-dic-2015=100).
+    [(YYYY-MM-DD, valor)] ascendente. 100% de dato oficial."""
+    return [(f[0], f[1]) for f in _itcrm_filas()]
+
+
+def fetch_itcrm_bilateral(pais: str) -> list:
+    """Serie mensual del ITCR BILATERAL oficial ('brasil' | 'eeuu' | 'china'),
+    para el gráfico comparado del modal (así lo presenta el propio BCRA)."""
+    idx = {"brasil": 2, "eeuu": 3, "china": 4}[pais]
+    return [(f[0], f[idx]) for f in _itcrm_filas() if f[idx] is not None]
 
 
 def fetch_tcrm() -> dict | None:
