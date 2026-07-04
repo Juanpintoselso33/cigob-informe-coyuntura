@@ -780,7 +780,7 @@
         "ipc_alimentos": {
           "valor": 2.46,
           "unidad": "% m/m",
-          "fuente": "INDEC serie 146.3",
+          "fuente": "INDEC — IPC alimentos y bebidas (vía datos.gob.ar)",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "en_indice": true,

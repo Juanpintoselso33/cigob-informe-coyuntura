@@ -45,7 +45,7 @@ def build_vida(raw):
          detalle_txt=bs.get("nota"))
     al = indec.get("ipc_alimentos", {})
     _add(out, "ipc_alimentos", round(al.get("variacion_mensual_pct", 0), 2),
-         "% m/m", "INDEC serie 146.3", al.get("fecha"))
+         "% m/m", "INDEC — IPC alimentos y bebidas (vía datos.gob.ar)", al.get("fecha"))
     cc = bcra.get("credito_consumo_total", {})
     # El crédito de consumo viene en millones de pesos; pasar a billones para
     # que el número no sea gigante (43.560.544 millones = 43,56 billones).
