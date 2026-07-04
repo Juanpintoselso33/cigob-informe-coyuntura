@@ -327,3 +327,26 @@
 .cg-rob--vida     { --rob-c: var(--c-vida); }
 .cg-rob--gestion  { --rob-c: var(--c-gestion); }
 .cg-rob--espiritu { --rob-c: var(--c-humor); }
+
+/* ── Validación cruzada (ADR-0031): matriz índice × contraste ─────────────── */
+.cg-cruz { padding: 24px 26px 20px; }
+.cg-cruz-tabla { width: 100%; border-collapse: collapse; margin: 4px 0 0; }
+.cg-cruz-tabla th, .cg-cruz-tabla td { padding: 13px 16px; text-align: center; font-size: 15.5px; }
+.cg-cruz-tabla thead th {
+  color: var(--muted); font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .05em;
+  border-bottom: 1px solid var(--bd);
+}
+.cg-cruz-tabla tbody th {
+  text-align: left; font-weight: 700; font-size: 14.5px; letter-spacing: .02em;
+}
+.cg-cruz-tabla tbody td { font-variant-numeric: tabular-nums; font-weight: 600; }
+.cg-cruz-tabla tbody tr + tr { border-top: 1px dashed var(--bd); }
+.cg-cruz-tabla td.es-propio { background: var(--verde-soft); border-radius: 10px; }
+.cg-cruz-tabla tr.es-actual th { color: var(--rob-c); }
+.cg-cruz-n { display: block; font-size: 11px; color: var(--muted); font-weight: 400; margin-top: 3px; }
+.cg-cruz-nota {
+  font-size: 12.5px; color: var(--muted); line-height: 1.5;
+  margin: 14px 0 12px; padding-top: 12px; border-top: 1px dashed var(--bd);
+}
+.cg-cruz > .cg-h2-sub { margin: 0; }

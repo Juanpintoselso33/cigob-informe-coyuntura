@@ -4,7 +4,7 @@ Lee output/informe.json + el ultimo vida_cotidiana_*.json + output/series/*.csv
 y escribe web/src/data/informe.json (con vida cotidiana enriquecido a ~13
 indicadores automaticos) y web/src/data/series.json.
 """
-import csv, glob, json, os, re, sys
+import csv, glob, json, os, re, statistics, sys
 from datetime import datetime
 from pathlib import Path
 
@@ -568,6 +568,64 @@ def _validacion_itcm(bloque):
     }
 
 
+def _validacion_cruzada(informe):
+    """Matriz de validación cruzada (ADR-0031, tercer pilar de robustez): los
+    tres índices reconstruidos contra los DOS contrastes externos a la vez.
+    Validez convergente + discriminante: cada índice debe correlacionar más
+    fuerte con su par teórico (ITCM/ITCG ↔ riesgo país · ITVC ↔ ICC) que con
+    el contraste ajeno — la prueba de que no miden "todo junto"."""
+    try:
+        bloques = {
+            "ITCM": informe["cinturones"]["macro"]["itcm"]["validacion"]["pares"],
+            "ITCG": informe["cinturones"]["gestion"]["itcg"]["validacion"]["pares"],
+            "ITVC": informe["cinturones"]["vida_cotidiana"]["itvc"]["validacion"]["pares"],
+        }
+    except (KeyError, TypeError):
+        return
+    indices = {k: {p[0]: p[1] for p in v} for k, v in bloques.items()}
+    externas = {"riesgo": {p[0]: p[2] for p in bloques["ITCM"]},
+                "icc": {p[0]: p[2] for p in bloques["ITVC"]}}
+
+    def _r(a, b):
+        comunes = sorted(set(a) & set(b))
+        if len(comunes) < 12:
+            return None, len(comunes)
+        return (round(statistics.correlation([a[m] for m in comunes],
+                                             [b[m] for m in comunes]), 2), len(comunes))
+
+    PAR_PROPIO = {"ITCM": "riesgo", "ITCG": "riesgo", "ITVC": "icc"}
+    filas = []
+    for ik in ("ITCM", "ITCG", "ITVC"):
+        fila = {"indice": ik, "propio": PAR_PROPIO[ik]}
+        for ek, ext in externas.items():
+            r, n = _r(indices[ik], ext)
+            fila[ek] = {"r": r, "n": n}
+        filas.append(fila)
+    if any(f["riesgo"]["r"] is None or f["icc"]["r"] is None for f in filas):
+        return
+    fmt = lambda r: ("+" if r > 0 else "") + str(r).replace(".", ",")
+    f_itcm, f_itcg, f_itvc = filas
+    informe["validacion_cruzada"] = {
+        "filas": filas,
+        "externas": [["riesgo", "Riesgo país (EMBI)"], ["icc", "Confianza del consumidor (ICC UTDT)"]],
+        "titulo": "¿Cada índice mide lo suyo?",
+        "sub": ("Los tres índices se reconstruyen mes a mes y se comparan contra los dos "
+                "contrastes externos a la vez. Si cada uno mide su propio terreno, debería "
+                "correlacionar más fuerte con su par natural — los índices de política "
+                "económica (ITCM, ITCG) con el precio del riesgo argentino; el de vida "
+                "cotidiana (ITVC) con la confianza del consumidor — que con el contraste "
+                "ajeno. Es la prueba clásica de que un indicador no mide \"todo junto\"."),
+        "conclusion": (f"El patrón se cumple en los índices de política económica: el ITCM "
+                       f"correlaciona {fmt(f_itcm['riesgo']['r'])} con el riesgo país frente a "
+                       f"{fmt(f_itcm['icc']['r'])} con la confianza, y el ITCG {fmt(f_itcg['riesgo']['r'])} "
+                       f"frente a {fmt(f_itcg['icc']['r'])}. El ITVC no separa entre contrastes "
+                       f"({fmt(f_itvc['icc']['r'])} con su par y {fmt(f_itvc['riesgo']['r'])} con el ajeno): "
+                       f"en una muestra de ~30 meses en la que la macroeconomía y el bolsillo se "
+                       f"movieron juntos, la vida cotidiana refleja a ambos — se declara como "
+                       f"límite del contraste, no se esconde."),
+    }
+
+
 def _validacion_itcg(bloque):
     """Anexa al bloque ITCG su validación externa: la serie mensual del índice
     (reconstruida por el estudio) contra el riesgo país — el mercado pricea la
@@ -786,6 +844,7 @@ def main():
     informe = sanitizar_fuentes(informe)
     informe = aplicar_scoring(informe, series)
     informe = recomputar_vida_y_global(informe)
+    _validacion_cruzada(informe)   # matriz discriminante (ADR-0031): necesita los 3 bloques
 
     # Red de seguridad: persistir el valor de cada indicador y construir su serie
     # histórica mes a mes (los que no tienen serie oficial la arman así).

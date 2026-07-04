@@ -71,6 +71,7 @@ jobs:
           python scripts/vida_cotidiana.py;      echo "::notice::vida_cache exit=$?"
           python scripts/espiritu_epoca.py;      echo "::notice::espiritu exit=$?"
           python scripts/descargar_series.py;    echo "::notice::series exit=$?"
+          python scripts/validacion_externa.py;   echo "::notice::validacion exit=$?"
           python scripts/generar_informe.py;     echo "::notice::generar exit=$?"
           true
 

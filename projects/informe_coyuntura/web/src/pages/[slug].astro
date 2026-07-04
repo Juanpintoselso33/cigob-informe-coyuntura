@@ -76,6 +76,9 @@ const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
 // componente ICC, para no ser circular) contra el ICC UTDT. Ambas series se
 // rebasean a 100 en el primer mes común para dibujarlas en una misma escala.
 const val = indice?.data.validacion ?? null;
+// Matriz de validación cruzada (global a las tres paramétricas): se muestra en
+// los cinturones con índice, con la fila del índice propio señalada.
+const cruz = indice ? ((informe as any).validacion_cruzada ?? null) : null;
 let valSvg: {
   W: number; H: number; base: number; top: number;
   lineaIndice: string; lineaExterna: string;
@@ -295,6 +298,43 @@ if (val && val.pares.length >= 12) {
                 <span class="cg-val-chip-nota">{val.trans_label}</span>
               </p>
               <p class="cg-h2-sub">{val.conclusion}</p>
+            </div>
+          </Fragment>
+        )}
+        {cruz && (
+          <Fragment>
+            <div class="cg-section-head cg-val-head">
+              <p class="cg-eyebrow">Validación cruzada</p>
+              <h2 class="cg-h2">{cruz.titulo}</h2>
+              <p class="cg-h2-sub">{cruz.sub}</p>
+            </div>
+            <div class={`cg-rob cg-rob--${meta.slug} cg-cruz`}>
+              <table class="cg-cruz-tabla">
+                <thead>
+                  <tr>
+                    <th></th>
+                    {cruz.externas.map(e => <th>{e[1]}</th>)}
+                  </tr>
+                </thead>
+                <tbody>
+                  {cruz.filas.map(f => (
+                    <tr class:list={[f.indice === indice.sigla && "es-actual"]}>
+                      <th>{f.indice}{f.indice === indice.sigla ? " (este cinturón)" : ""}</th>
+                      {cruz.externas.map(e => (
+                        <td class:list={[f.propio === e[0] && "es-propio"]}>
+                          {(f[e[0]].r > 0 ? "+" : "") + coma(f[e[0]].r)}
+                          <span class="cg-cruz-n">{f[e[0]].n} meses</span>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p class="cg-cruz-nota">
+                Las celdas sombreadas marcan el contraste natural de cada índice. Correlaciones
+                sobre las reconstrucciones mensuales, sin ajustes del analista, desde dic-2023.
+              </p>
+              <p class="cg-h2-sub">{cruz.conclusion}</p>
             </div>
           </Fragment>
         )}

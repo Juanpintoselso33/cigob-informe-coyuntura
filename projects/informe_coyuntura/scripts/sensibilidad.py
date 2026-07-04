@@ -10,9 +10,11 @@ Tres experimentos por índice (semilla fija: corridas reproducibles):
    multiplica por U(0,8; 1,2) y se renormaliza. Mide cuánto del valor depende
    de la ponderación exacta elegida en el doc.
 2. INSUMOS (solo ITCM/ITCG, N=2000): cada valor de entrada se perturba ±5%
-   y se re-puntúa por la escala interpolada (ADR-0021) — mide la sensibilidad
-   al error de medición de las fuentes. (Reemplaza al viejo experimento de
-   "salto de banda": con interpolación ya no hay acantilados de umbral.)
+   DEL ANCHO ENTRE SUS ANCLAS (aditivo, scale-free — ADR-0031) y se re-puntúa
+   por la escala interpolada (ADR-0021) — mide la sensibilidad al error de
+   medición de las fuentes. (Reemplaza al viejo experimento de "salto de
+   banda"; el ruido multiplicativo previo subestimaba los indicadores con
+   signo o centrados en cero.)
    Los componentes con override del analista no se perturban. El ITVC recibe
    su ruido de insumos vía el rebase continuo (sólo pesos acá).
 3. LEAVE-ONE-OUT: el índice recalculado excluyendo cada indicador (con la
@@ -96,7 +98,15 @@ def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
                 i["peso"] *= rng.uniform(1 - RUIDO_PESO, 1 + RUIDO_PESO)
             if bandas and ik in bandas and i.get("valor") is not None \
                     and i.get("banda") == i["puntaje"]:   # con override no se perturba
-                v = float(i["valor"]) * rng.uniform(1 - RUIDO_INSUMO, 1 + RUIDO_INSUMO)
+                # Ruido ADITIVO: ±RUIDO_INSUMO del ancho entre anclas finitas
+                # (scale-free, ADR-0031). El multiplicativo original subestimaba
+                # la incertidumbre de los indicadores con signo o centrados en
+                # cero (IdC en σ, IDM en pp): ±5% de un valor cercano a 0 no
+                # perturba nada.
+                inf_ = float("inf")
+                ancs = [a for b in bandas[ik] for a in b[:2] if abs(a) != inf_]
+                span = (max(ancs) - min(ancs)) if ancs else abs(float(i["valor"])) or 1.0
+                v = float(i["valor"]) + rng.uniform(-RUIDO_INSUMO, RUIDO_INSUMO) * span
                 i["puntaje"] = parametrica.puntaje_interpolado(v, bandas[ik])
     return _agregar(d2)
 
@@ -187,7 +197,7 @@ def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
         "hist": hist,
         "hist_min": round(lo, 2),
         "hist_max": round(hi, 2),
-        "metodo": "pesos ±20% + insumos ±5% re-puntuados por interpolación (Monte Carlo)",
+        "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)",
     }
 
 
