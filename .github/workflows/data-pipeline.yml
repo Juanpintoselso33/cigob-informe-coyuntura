@@ -78,6 +78,16 @@ jobs:
       - name: Generar snapshot web
         run: python scripts/publicar.py
 
+      # Gates de calidad: si el snapshot está roto (estructura, frescura,
+      # invariante serie↔titular, jerga interna) o una reconciliación
+      # paramétrica no cierra, el run se corta ACÁ y producción sigue
+      # sirviendo el snapshot anterior, que ya pasó su gate.
+      - name: Gate de calidad del snapshot (G1-G3, G6)
+        run: python scripts/gate_calidad.py
+
+      - name: Tests de reconciliación y robustez (G4-G5)
+        run: python -m pytest tests -q
+
       - name: Build informe (Astro)
         working-directory: projects/informe_coyuntura/web
         run: |

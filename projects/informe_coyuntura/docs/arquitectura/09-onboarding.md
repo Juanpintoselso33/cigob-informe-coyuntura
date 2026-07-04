@@ -10,9 +10,9 @@
 
 ```bash
 git clone <repo>            # el repo raíz "Analisis CIGOB"
-cd "Analisis CIGOB"
-pip install -r requirements.txt        # ¡en la RAÍZ del repo, no en projects/!
-cd projects/informe_coyuntura/web && npm install
+cd "Analisis CIGOB/projects/informe_coyuntura"
+pip install -r requirements.txt
+cd web && npm install
 ```
 
 ⚠️ `xlrd==1.2.0` está pineado a propósito (el ICC de UTDT llega en `.xls`

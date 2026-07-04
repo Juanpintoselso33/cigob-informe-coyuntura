@@ -4,3 +4,4 @@ openpyxl>=3.1         # Para leer .xlsx (ITCRM oficial del BCRA, planilla ITCRMS
 beautifulsoup4>=4.12
 pdfplumber>=0.10.0
 pytrends>=4.9.2
+pytest>=8.0           # gates G4-G5 del pipeline nocturno (reconciliación + robustez)

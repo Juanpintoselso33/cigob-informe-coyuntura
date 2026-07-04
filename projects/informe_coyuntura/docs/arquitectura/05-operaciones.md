@@ -10,12 +10,24 @@ La corrida completa sin manos:
 2. `generar_informe.py` (ensambla) → `descargar_series.py` (series + stores)
    → `validacion_externa.py` (store de validación) → `publicar.py` (scoring
    + snapshot).
-3. Build Astro doble: default (`/informe`) y `DEPLOY_TARGET=dominio`
+3. **Gates de calidad** — si fallan, el run se corta acá y producción sigue
+   sirviendo el snapshot anterior (que pasó su gate):
+   - `gate_calidad.py` (G1 estructura · G2 frescura con tope por indicador y
+     presupuesto de carry-forward ≤40% por cinturón · G3 invariante
+     serie↔titular con excepciones declaradas · G6 cero jerga interna);
+   - `pytest tests/ -q` (G4 reconciliación paramétrica de los tres índices y
+     el score global · G5 la robustez Monte Carlo encierra el valor).
+4. Build Astro doble: default (`/informe`) y `DEPLOY_TARGET=dominio`
    (base `/`) → push del build del dominio al repo `cigob-informe`
    (cname informe.cigob.org).
-4. Commit del snapshot + caches + stores a `main` (bot). Por eso las
+5. Commit del snapshot + caches + stores a `main` (bot). Por eso las
    sesiones de trabajo largas suelen terminar con un `git pull --rebase`
    contra lo que el bot commiteó a la madrugada.
+
+Los topes de frescura y las excepciones del G3 se calibran en
+`scripts/gate_calidad.py` (cabecera del archivo); al cambiar la semántica
+card/serie de un indicador (ej. pulso vs canasta), declarar la excepción ahí
+con su motivo.
 
 ### `pages.yml` — deploy on-push
 En cada push a `main`: build dual + Votómetro, publica a GitHub Pages del
@@ -58,6 +70,7 @@ del repositorio del MECON (sin auth, pesado).
 | Matriz de validación "vieja" | réplica de `validacion_externa.py` desalineada de un ADR nuevo | actualizar `COMPONENTES`/`BASES_PROPIAS`/`ITVC_TECHO` y recorrer |
 | Conflicto de rebase en `informe.json`/caches | commit nocturno del bot | `checkout --theirs` + regenerar con la cadena manual |
 | Pages "Deployment failed, try again later" | transitorio GitHub | `gh run rerun`, esperar CDN |
+| El nocturno cortó en "Gate de calidad" | el snapshot salió roto o viejo (el gate hizo su trabajo) | leer las líneas `[FALLA]` del log; producción quedó en el snapshot anterior, arreglar la causa y re-dispatchar |
 
 ## Convenciones de trabajo
 

@@ -1,0 +1,159 @@
+"""Gate de calidad del snapshot — corre en el pipeline nocturno ANTES de
+publicar al dominio. Si falla, el workflow se corta y producción sigue
+sirviendo el snapshot anterior (que ya pasó su gate).
+
+Gates (ver docs/arquitectura/05-operaciones.md):
+  G1 Estructura   — todo indicador publicado con valor/fecha/fuente/unidad;
+                    todo cinturón con score 0-10.
+  G2 Frescura     — rezago máximo por indicador (calibrado a la cadencia real
+                    de cada fuente) + presupuesto de carry-forward por
+                    cinturón (≤40% de indicadores desactualizados).
+  G3 Invariante   — el último punto de la serie coincide con el titular de la
+                    card (la desincronización serie↔titular del IdC de
+                    jul-2026 motivó este gate). Excepciones DECLARADAS para
+                    los pares card/serie con semántica distinta.
+  G6 Editorial    — cero jerga interna en los textos del snapshot (números de
+                    ADR, IDs de serie de datos.gob.ar).
+
+G4 (reconciliación paramétrica) y G5 (robustez encierra el valor) son los
+pytest de tests/ — el workflow los corre como paso aparte.
+
+Uso: python scripts/gate_calidad.py [--warn-only] [--snapshot <dir>]
+"""
+import json
+import re
+import sys
+from datetime import date
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+SNAPSHOT = (Path(sys.argv[sys.argv.index("--snapshot") + 1])
+            if "--snapshot" in sys.argv else ROOT / "web" / "src" / "data")
+
+# ── G2: rezago máximo en días por indicador (default: mensual con margen) ──
+MAX_DIAS_DEFAULT = 110
+MAX_DIAS = {
+    # trimestrales EPH (fecha = inicio del trimestre, publica ~70d después del cierre)
+    "informalidad": 280, "pluriempleo": 280,
+    # fuentes con rezago estructural largo
+    "protocolo_antipiquetes": 430,      # DP publica monitoreos esporádicos
+    "litigiosidad_laboral": 220,        # SRT
+    "libertad_opcion_salud": 220,       # SSS
+    # mensuales con ~2-3 meses de rezago de publicación
+    "emae_ia": 140, "iai": 140, "icip": 140, "brecha_salario_cbt": 150,
+    "mortalidad_pymes": 140, "despacho_cemento": 140, "consumo_carne": 140,
+    "endeudamiento_familiar": 140, "inseguridad": 150,
+}
+CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón
+
+# ── G3: pares card/serie con semántica DISTINTA (excepción con motivo) ──
+G3_EXCEPCIONES = {
+    "sentimiento_digital": "card = pulso 3m en tiempo real; serie = canasta mensual ventana fija (ADR-0034)",
+    "rigi_inversiones": "card = % de la meta; serie = monto acumulado en M USD",
+    "protestas_caba": "card = eventos acumulados 12m; serie = eventos semanales",
+}
+# tolerancia relativa por indicador (default 1% o 0,11 absoluto, redondeos)
+G3_TOLERANCIA_REL = {"cepo_mulc": 0.10}   # brecha cambiaria viva: deriva intradiaria
+
+# ── G6: patrones de jerga interna prohibidos en texto público ──
+G6_PATRONES = [
+    (re.compile(r"ADR-\d"), "referencia a ADR"),
+    (re.compile(r"\d+\.\d+_[A-Z0-9]{3,}"), "ID de serie de datos.gob.ar"),
+]
+
+
+def _parse_fecha(f):
+    """'YYYY' | 'YYYY-MM' | 'YYYY-MM-DD' → date (al día 1 / año-12-31)."""
+    if not isinstance(f, str):
+        return None
+    p = f.split("-")
+    try:
+        if len(p) == 1:
+            return date(int(p[0]), 12, 31)
+        if len(p) == 2:
+            return date(int(p[0]), int(p[1]), 1)
+        return date(int(p[0]), int(p[1]), int(p[2]))
+    except ValueError:
+        return None
+
+
+def main() -> int:
+    warn_only = "--warn-only" in sys.argv
+    fallas, avisos = [], []
+    inf = json.loads((SNAPSHOT / "informe.json").read_text(encoding="utf-8"))
+    series = json.loads((SNAPSHOT / "series.json").read_text(encoding="utf-8"))
+    hoy = date.today()
+
+    for ck, c in inf["cinturones"].items():
+        # G1 — cinturón
+        score = c.get("score")
+        if not isinstance(score, (int, float)) or not (0 <= score <= 10):
+            fallas.append(f"G1 {ck}: score inválido ({score})")
+        desactualizados = 0
+        indicadores = c.get("indicadores", {})
+        for ik, i in indicadores.items():
+            # G1 — indicador completo
+            for campo in ("valor", "fecha_dato", "fuente", "unidad"):
+                if i.get(campo) in (None, ""):
+                    fallas.append(f"G1 {ck}/{ik}: sin {campo}")
+            # G2 — frescura
+            f = _parse_fecha(i.get("fecha_dato"))
+            if f:
+                rezago = (hoy - f).days
+                tope = MAX_DIAS.get(ik, MAX_DIAS_DEFAULT)
+                if rezago > tope:
+                    fallas.append(f"G2 {ck}/{ik}: rezago {rezago}d > tope {tope}d "
+                                  f"(fecha_dato {i.get('fecha_dato')})")
+            elif i.get("fecha_dato"):
+                fallas.append(f"G2 {ck}/{ik}: fecha_dato no parseable ({i.get('fecha_dato')})")
+            if i.get("desactualizado"):
+                desactualizados += 1
+            # G3 — invariante serie ↔ titular
+            s = series.get(ik)
+            v = i.get("valor")
+            if s and isinstance(v, (int, float)) and ik not in G3_EXCEPCIONES:
+                ult = s[-1]["valor"]
+                if isinstance(ult, (int, float)):
+                    tol = max(0.11, abs(v) * G3_TOLERANCIA_REL.get(ik, 0.01))
+                    if abs(ult - v) > tol:
+                        fallas.append(f"G3 {ck}/{ik}: serie[-1]={ult} ≠ card={v} "
+                                      f"(tolerancia {round(tol, 3)})")
+        # G2 — presupuesto de carry-forward del cinturón
+        if indicadores and desactualizados / len(indicadores) > CARRY_FORWARD_MAX:
+            fallas.append(f"G2 {ck}: {desactualizados}/{len(indicadores)} indicadores "
+                          f"desactualizados (> {int(CARRY_FORWARD_MAX*100)}%)")
+        elif desactualizados:
+            avisos.append(f"G2 {ck}: {desactualizados}/{len(indicadores)} en carry-forward")
+
+    # G6 — jerga interna en cualquier string del snapshot
+    def _strings(x, ruta=""):
+        if isinstance(x, dict):
+            for k, v in x.items():
+                yield from _strings(v, f"{ruta}.{k}")
+        elif isinstance(x, list):
+            for j, v in enumerate(x):
+                yield from _strings(v, f"{ruta}[{j}]")
+        elif isinstance(x, str):
+            yield ruta, x
+    for ruta, texto in _strings(inf):
+        for patron, nombre in G6_PATRONES:
+            m = patron.search(texto)
+            if m:
+                fallas.append(f"G6 {ruta}: {nombre} en texto público («{m.group(0)}»)")
+
+    print(f"Gate de calidad — {hoy.isoformat()}")
+    for a in avisos:
+        print(f"  [AVISO] {a}")
+    for f_ in fallas:
+        print(f"  [FALLA] {f_}")
+    if not fallas:
+        n_ind = sum(len(c.get("indicadores", {})) for c in inf["cinturones"].values())
+        print(f"  [OK] {n_ind} indicadores en {len(inf['cinturones'])} cinturones: "
+              f"estructura, frescura, invariante serie-titular y editorial limpios")
+        return 0
+    print(f"  → {len(fallas)} falla(s). El snapshot NO debe publicarse.")
+    return 0 if warn_only else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
