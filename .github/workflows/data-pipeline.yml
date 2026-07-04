@@ -60,6 +60,8 @@ jobs:
           PRESUPUESTO_ABIERTO_TOKEN: ${{ secrets.PRESUPUESTO_ABIERTO_TOKEN }}
           ACLED_USERNAME: ${{ secrets.ACLED_USERNAME }}
           ACLED_PASSWORD: ${{ secrets.ACLED_PASSWORD }}
+          ACLED_UBA_USERNAME: ${{ secrets.ACLED_UBA_USERNAME }}
+          ACLED_UBA_PASSWORD: ${{ secrets.ACLED_UBA_PASSWORD }}
         run: |
           set +e
           python scripts/macro.py;               echo "::notice::macro exit=$?"

@@ -1534,6 +1534,122 @@ def _acled_credenciales() -> tuple | None:
     return (user, pwd) if user and pwd else None
 
 
+# ── Cortes en CABA vía API de EVENTOS de ACLED (cuenta académica UBA) ─────────
+# La cuenta 69pi...@campus.economicas.uba.ar autentica OK pero nació con nivel
+# Open (la API de eventos da 403). El perfil quedó Academic/UBA, que es lo que
+# ACLED reevalúa de forma asíncrona. Este colector es AUTO-DESTRABANTE: corre
+# cada noche en el pipeline, y el día que el nivel pase a Research construye
+# solo la serie de cortes sin tocar código. Nivel Research = eventos con ~12
+# meses de rezago: suficiente para el baseline 2023 y la validación de los
+# anclajes DP (ADR-0025); el numerador vivo del IRPC sigue siendo DP.
+ACLED_OAUTH_URL = "https://acleddata.com/oauth/token"
+ACLED_READ_URL  = "https://acleddata.com/api/acled/read"
+ACLED_CORTES_STORE = PROJECT_DIR / "data" / "gestion" / "acled_cortes.json"
+# vocabulario de bloqueo en las notas (ACLED codifica en inglés)
+ACLED_CORTES_KEYWORDS = ("block", "picket", "barricad", "roadblock", "corte", "piquete")
+
+
+def _acled_uba_credenciales() -> tuple | None:
+    """(usuario, contraseña) de la cuenta ACLED académica: env o .env
+    ACLED_UBA_USERNAME/ACLED_UBA_PASSWORD."""
+    user = os.environ.get("ACLED_UBA_USERNAME")
+    pwd  = os.environ.get("ACLED_UBA_PASSWORD")
+    if not (user and pwd) and ENV_PATH.exists():
+        pares = {}
+        for linea in ENV_PATH.read_text(encoding="utf-8").splitlines():
+            if "=" in linea and not linea.strip().startswith("#"):
+                k, _, v = linea.partition("=")
+                pares[k.strip()] = v.strip().strip('"').strip("'")
+        user = user or pares.get("ACLED_UBA_USERNAME")
+        pwd  = pwd or pares.get("ACLED_UBA_PASSWORD")
+    return (user, pwd) if user and pwd else None
+
+
+def actualizar_acled_cortes() -> None:
+    """Intenta la API de eventos con la cuenta UBA; con nivel Open (403) se
+    saltea informando, con Research pagina los eventos de protesta de CABA
+    (2018→hoy), cuenta por mes los que mencionan bloqueo en las notas y guarda
+    data/gestion/acled_cortes.json con la comparación anual contra los
+    anclajes DP. No puntúa: es el store de validación del IRPC."""
+    creds = _acled_uba_credenciales()
+    if not creds:
+        print("[INFO] gestion.acled_cortes: sin credenciales ACLED_UBA_*. Salteado.")
+        return
+    user, pwd = creds
+    try:
+        r = requests.post(ACLED_OAUTH_URL,
+                          data={"username": user, "password": pwd,
+                                "grant_type": "password", "client_id": "acled",
+                                "scope": "authenticated"},
+                          headers={"User-Agent": "Mozilla/5.0"}, timeout=60)
+        if r.status_code != 200:
+            print(f"[WARN] gestion.acled_cortes: OAuth {r.status_code}. Salteado.")
+            return
+        H = {"Authorization": f"Bearer {r.json()['access_token']}",
+             "User-Agent": "Mozilla/5.0"}
+        eventos, pagina = [], 1
+        while pagina <= 40:
+            r2 = requests.get(ACLED_READ_URL,
+                              params={"country": "Argentina",
+                                      "admin1": "Ciudad Autonoma de Buenos Aires",
+                                      "event_date": "2018-01-01|2030-01-01",
+                                      "event_date_where": "BETWEEN",
+                                      "limit": 1000, "page": pagina},
+                              headers=H, timeout=120)
+            if r2.status_code == 403:
+                print("[INFO] gestion.acled_cortes: la cuenta UBA sigue en nivel Open "
+                      "(403 en eventos); se reintenta en la próxima corrida.")
+                return
+            r2.raise_for_status()
+            lote = r2.json().get("data", [])
+            if not lote:
+                break
+            eventos.extend(lote)
+            pagina += 1
+        if not eventos:
+            print("[WARN] gestion.acled_cortes: API de eventos accesible pero vacía.")
+            return
+        mensual: dict = {}
+        for e in eventos:
+            ym = str(e.get("event_date", ""))[:7]
+            if not ym:
+                continue
+            fila = mensual.setdefault(ym, {"eventos": 0, "cortes": 0})
+            fila["eventos"] += 1
+            notas = str(e.get("notes", "")).lower()
+            if any(k in notas for k in ACLED_CORTES_KEYWORDS):
+                fila["cortes"] += 1
+        anual = {}
+        for ym, fila in mensual.items():
+            a = anual.setdefault(ym[:4], {"eventos": 0, "cortes": 0})
+            a["eventos"] += fila["eventos"]
+            a["cortes"] += fila["cortes"]
+        dp = {}
+        if DP_PIQUETES_PATH.exists():
+            dp = json.loads(DP_PIQUETES_PATH.read_text(encoding="utf-8-sig")).get("caba", {})
+        store = {
+            "_meta": {
+                "fuente": "ACLED (acleddata.com) — API de eventos, cuenta académica UBA",
+                "descargado": datetime.now().strftime("%Y-%m-%d"),
+                "criterio": f"cortes = notas con {ACLED_CORTES_KEYWORDS}",
+                "nota": ("Serie de VALIDACIÓN de los anclajes DP (no puntúa). "
+                         "Nivel Research = eventos con ~12 meses de rezago."),
+                "dp_caba": dp,
+            },
+            "anual": anual,
+            "mensual": dict(sorted(mensual.items())),
+        }
+        ACLED_CORTES_STORE.write_text(
+            json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
+        comparacion = " · ".join(
+            f"{a}: ACLED {anual[a]['cortes']} cortes vs DP {dp.get(a, '—')}"
+            for a in sorted(anual) if a in {str(k) for k in dp} or a >= "2023")
+        print(f"[OK] gestion.acled_cortes: ¡NIVEL RESEARCH ACTIVO! {len(eventos)} eventos "
+              f"→ {ACLED_CORTES_STORE.name} | {comparacion}")
+    except Exception as e:
+        print(f"[WARN] gestion.acled_cortes: {e}. Salteado.")
+
+
 def actualizar_protestas_caba() -> dict | None:
     """Baja el agregado semanal LatAm de ACLED (sesión web), filtra CABA ×
     Protests/Riots, agrega por mes y guarda la serie en el store versionado
@@ -1688,6 +1804,10 @@ def calcular_score(indicadores: dict) -> float:
 def main() -> None:
     cache_anterior = load_cache()
     manuales       = load_manuales()
+
+    # sonda auto-destrabante: cortes CABA vía eventos ACLED (cuenta UBA).
+    # Mientras el nivel sea Open se saltea con un INFO; nunca corta la corrida.
+    actualizar_acled_cortes()
 
     indicadores: dict = {}
     frescos_auto = 0
