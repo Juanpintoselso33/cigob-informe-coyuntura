@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-04T12:26:23.317256",
+  "generated_at": "2026-07-04T12:39:58.640184",
   "period": "2026-07",
-  "score_global": 3.6,
+  "score_global": 3.5,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 4.7,
+      "score": 4.2,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -116,17 +116,21 @@
           "peso_efectivo": 0.096
         },
         "recaudacion": {
-          "valor": -7.14,
-          "unidad": "% i.a. real",
+          "valor": -2.3,
+          "unidad": "% i.a. real (prom. móvil 3 meses)",
           "fuente": "Sec. Hacienda — recaudación total (vía datos.gob.ar)",
-          "fecha_dato": "2026-06-01",
-          "var_ia_nominal": 23.68,
-          "ipc_ia": 33.2,
+          "fecha_dato": "2026-05-01",
+          "meses": {
+            "2026-03": -4.82,
+            "2026-04": -3.9,
+            "2026-05": 1.82
+          },
+          "detalle_txt": "Promedio de 2026-03: -4.8% · 2026-04: -3.9% · 2026-05: +1.8% — 2026-06 (provisorio, no puntúa): -7.1% con deflactor de 2026-05",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 10.0,
-          "puntaje_banda": 10.0,
+          "puntaje_itcm": 40.8,
+          "puntaje_banda": 40.8,
           "peso_efectivo": 0.144
         },
         "tcrm": {
@@ -244,7 +248,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 53.1,
+        "valor": 57.5,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -280,13 +284,13 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.24,
-            "puntaje": 40.0,
+            "puntaje": 58.5,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
-                "puntaje_banda": 10.0,
-                "puntaje_aplicado": 10.0,
-                "valor": -7.14,
+                "puntaje_banda": 40.8,
+                "puntaje_aplicado": 40.8,
+                "valor": -2.3,
                 "peso_efectivo": 0.144
               },
               "saldo_comercial_12m": {
@@ -967,7 +971,7 @@
       "alerta": null
     }
   },
-  "barbarismo_activo": "tecnocrático",
+  "barbarismo_activo": "político",
   "alerta_multicinturon": false,
   "flags": [
     "desactualizado:politica:cohesion_bloque,gobernadores_alineamiento"

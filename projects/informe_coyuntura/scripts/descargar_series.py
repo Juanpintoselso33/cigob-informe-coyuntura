@@ -258,17 +258,19 @@ def fetch_emae_ia_serie() -> list:
 
 
 def fetch_recaudacion_real_serie() -> list:
-    """Recaudación total: variación i.a. REAL (deflactada por IPC) — la métrica
-    del titular, no el nivel nominal. [[YYYY-MM-01, %]]."""
+    """Recaudación total: variación i.a. REAL en PROMEDIO MÓVIL 3 MESES — la
+    métrica del titular (ADR-0029: el interanual de un mes suelto hereda el
+    calendario tributario). [[YYYY-MM-01, %]]."""
     nominal = {f[:7]: v for f, v in fetch_indec("172.3_TL_RECAION_M_0_0_17", limit=72)}
     ipc = {f[:7]: v for f, v in fetch_indec(IPC_NIVEL_ID, limit=72)}
-    out = []
+    real = {}
     for ym in sorted(nominal):
         prev = f"{int(ym[:4]) - 1}{ym[4:]}"
         if prev in nominal and ym in ipc and prev in ipc:
-            real = (nominal[ym] / nominal[prev]) * (ipc[prev] / ipc[ym]) - 1
-            out.append([f"{ym}-01", round(real * 100, 2)])
-    return out
+            real[ym] = ((nominal[ym] / nominal[prev]) * (ipc[prev] / ipc[ym]) - 1) * 100
+    yms = sorted(real)
+    return [[f"{yms[i]}-01", round(sum(real[y] for y in yms[i - 2:i + 1]) / 3, 2)]
+            for i in range(2, len(yms))]
 def fetch_credito_privado_serie() -> list:
     """Serie mensual de la variación i.a. REAL de los préstamos al sector
     privado (BCRA var. 26 fin de mes, deflactada por el IPC nivel) — la misma

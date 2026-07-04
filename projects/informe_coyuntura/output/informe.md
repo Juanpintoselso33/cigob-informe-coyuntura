@@ -1,19 +1,19 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-04 12:26:23"
-score_global: 3.6
-barbarismo_activo: "tecnocrático"
+generado: "2026-07-04 12:39:58"
+score_global: 3.5
+barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
 ---
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 3.6/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 3.5/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
-### 🟡 Macro — score 4.7/10 (en_tension)
+### 🟡 Macro — score 4.2/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -24,7 +24,7 @@ schema_version: "1.2.0"
 | badlar | 21.31 | % anual | 2026-07-02 | fresco |
 | emae_ia | 1.64 | % i.a. | 2026-04-01 | fresco |
 | saldo_comercial_12m | 21221.0 | Millones de USD (acum. 12 meses) | 2026-05-01 | fresco |
-| recaudacion | -7.14 | % i.a. real | 2026-06-01 | fresco |
+| recaudacion | -2.3 | % i.a. real (prom. móvil 3 meses) | 2026-05-01 | fresco |
 | tcrm | 84.96 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
 | rem_ipc_12m | 23.3 | % anual esperado | 2026-05-31 | fresco |
 | idm | 4.33 | pp (brecha i.a. real) | 2026-05-01 | fresco |
@@ -96,4 +96,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:cohesion_bloque,gobernadores_alineamiento`
 
 ---
-*Generado por CIGOB — 2026-07-04 12:26:23 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-04 12:39:58 — schema 1.2.0*

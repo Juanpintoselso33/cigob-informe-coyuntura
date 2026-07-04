@@ -610,20 +610,45 @@ def fetch_saldo_comercial_12m() -> dict | None:
 
 
 def fetch_recaudacion() -> dict | None:
-    """Variación INTERANUAL REAL de la recaudación: la variación nominal i.a.
-    deflactada por el IPC del mismo período (doc "260626 aportes"). Aísla la
-    recuperación genuina de los ingresos del efecto inflacionario."""
+    """Variación INTERANUAL REAL de la recaudación, PROMEDIO MÓVIL 3 MESES
+    sobre meses con IPC cerrado (ADR-0029). El interanual de un solo mes
+    hereda el calendario tributario (vencimientos de Ganancias, anticipos,
+    bases raras del año previo) y, con 14,4% del ITCM, hacía oscilar el índice
+    ±7 puntos por ruido — la lectura de tendencia de los analistas fiscales
+    (IARAF/OPC) es el promedio trimestral del interanual real. El mes más
+    fresco (nominal publicado, IPC todavía no) queda como contexto provisorio
+    en el detalle, sin puntuar."""
     try:
-        rec = _indec_yoy(INDEC_RECAUDACION_ID)   # nominal i.a.
-        ipc = _indec_yoy(INDEC_IPC_ID)           # IPC i.a. (mismo período)
-        var_real = ((1.0 + rec["var_ia"] / 100.0) / (1.0 + ipc["var_ia"] / 100.0) - 1.0) * 100.0
+        nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_RECAUDACION_ID, limit=30)
+               if r[1] is not None}
+        ipc = {r[0][:7]: r[1] for r in _indec_serie(INDEC_IPC_ID, limit=30)
+               if r[1] is not None}
+        real = {}
+        for ym in sorted(nom):
+            prev = _ym_shift(ym, -12)
+            if ym in ipc and prev in nom and prev in ipc:
+                real[ym] = ((nom[ym] / nom[prev]) / (ipc[ym] / ipc[prev]) - 1.0) * 100.0
+        cerrados = sorted(real)[-3:]
+        if len(cerrados) < 3:
+            raise ValueError("recaudación: menos de 3 meses reales con IPC cerrado")
+        valor = fmean(real[ym] for ym in cerrados)
+        detalle = " · ".join(f"{ym}: {real[ym]:+.1f}%" for ym in cerrados)
+        # mes fresco (solo nominal): deflactor provisorio = i.a. del último IPC
+        ult_nom, ult_ipc = max(nom), max(ipc)
+        fresco = ""
+        if ult_nom > cerrados[-1] and _ym_shift(ult_nom, -12) in nom \
+                and _ym_shift(ult_ipc, -12) in ipc:
+            ia_ipc = ipc[ult_ipc] / ipc[_ym_shift(ult_ipc, -12)]
+            prov = ((nom[ult_nom] / nom[_ym_shift(ult_nom, -12)]) / ia_ipc - 1.0) * 100.0
+            fresco = (f" — {ult_nom} (provisorio, no puntúa): {prov:+.1f}% con "
+                      f"deflactor de {ult_ipc}")
         return {
-            "valor": round(var_real, 2),
-            "unidad": "% i.a. real",
+            "valor": round(valor, 2),
+            "unidad": "% i.a. real (prom. móvil 3 meses)",
             "fuente": "Sec. Hacienda — recaudación total (vía datos.gob.ar)",
-            "fecha_dato": rec["fecha"],
-            "var_ia_nominal": round(rec["var_ia"], 2),
-            "ipc_ia": round(ipc["var_ia"], 2),
+            "fecha_dato": f"{cerrados[-1]}-01",
+            "meses": {ym: round(real[ym], 2) for ym in cerrados},
+            "detalle_txt": f"Promedio de {detalle}{fresco}",
             "desactualizado": False,
         }
     except Exception as e:

@@ -24,8 +24,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Crecimientos interanuales reales (descontada la inflación) de los agregados privados. Positivo = sobran pesos → presión sobre precios y brecha; negativo = remonetización genuina.",
   },
   recaudacion: {
-    latex: String.raw`\left(\frac{\text{recaudaci\'on}_{\text{hoy}}}{\text{recaudaci\'on}_{\text{hace 12 m}}}\cdot\frac{\text{IPC}_{\text{hace 12 m}}}{\text{IPC}_{\text{hoy}}}-1\right)\times 100`,
-    leyenda: "Variación interanual de la recaudación total, descontada la inflación: cuánto crece en serio, no por suba de precios.",
+    latex: String.raw`\frac{1}{3}\sum_{\text{\'ultimos 3 meses}}\left(\frac{\text{recaudaci\'on}_{m}}{\text{recaudaci\'on}_{m-12}}\cdot\frac{\text{IPC}_{m-12}}{\text{IPC}_{m}}-1\right)\times 100`,
+    leyenda: "Variación interanual de la recaudación total descontada la inflación, promediada sobre los últimos tres meses con IPC publicado. El dato de un solo mes hereda el calendario tributario (vencimientos, anticipos); el promedio trimestral — la lectura habitual de los analistas fiscales — muestra la tendencia. El mes más reciente aparece como provisorio en el detalle hasta que su IPC cierre.",
   },
   saldo_comercial_12m: {
     latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{exportaciones}-\text{importaciones}\right)`,

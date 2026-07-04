@@ -1,9 +1,9 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-04T12:26:23.013514",
-  "score": 4.7,
+  "generated_at": "2026-07-04T12:39:27.898336",
+  "score": 4.2,
   "itcm": {
-    "valor": 53.1,
+    "valor": 57.5,
     "banda": "moderadamente_apretado",
     "banda_legible": "Moderadamente apretado",
     "dimensiones": {
@@ -39,13 +39,13 @@
       "viabilidad_fiscal_comercial": {
         "nombre": "Viabilidad fiscal-comercial",
         "peso": 0.24,
-        "puntaje": 40.0,
+        "puntaje": 58.5,
         "indicadores": {
           "recaudacion": {
             "peso": 0.6,
-            "puntaje_banda": 10.0,
-            "puntaje_aplicado": 10.0,
-            "valor": -7.14,
+            "puntaje_banda": 40.8,
+            "puntaje_aplicado": 40.8,
+            "valor": -2.3,
             "peso_efectivo": 0.144
           },
           "saldo_comercial_12m": {
@@ -239,17 +239,21 @@
       "peso_efectivo": 0.096
     },
     "recaudacion": {
-      "valor": -7.14,
-      "unidad": "% i.a. real",
+      "valor": -2.3,
+      "unidad": "% i.a. real (prom. móvil 3 meses)",
       "fuente": "Sec. Hacienda — recaudación total (vía datos.gob.ar)",
-      "fecha_dato": "2026-06-01",
-      "var_ia_nominal": 23.68,
-      "ipc_ia": 33.2,
+      "fecha_dato": "2026-05-01",
+      "meses": {
+        "2026-03": -4.82,
+        "2026-04": -3.9,
+        "2026-05": 1.82
+      },
+      "detalle_txt": "Promedio de 2026-03: -4.8% · 2026-04: -3.9% · 2026-05: +1.8% — 2026-06 (provisorio, no puntúa): -7.1% con deflactor de 2026-05",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "viabilidad_fiscal_comercial",
-      "puntaje_itcm": 10.0,
-      "puntaje_banda": 10.0,
+      "puntaje_itcm": 40.8,
+      "puntaje_banda": 40.8,
       "peso_efectivo": 0.144
     },
     "tcrm": {

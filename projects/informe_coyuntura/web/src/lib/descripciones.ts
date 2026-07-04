@@ -43,9 +43,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel (acum. 12m)",
   },
   recaudacion: {
-    que: "Cuánto recauda el Estado en impuestos medido en términos reales: la variación respecto del mismo mes del año anterior, una vez descontada la inflación.",
-    aporta: "Aísla la recuperación genuina de los ingresos del efecto inflacionario: mide la salud fiscal de verdad.",
-    frecuencia: "Mensual", tipo: "Variación i.a. real",
+    que: "Cuánto recauda el Estado en impuestos medido en términos reales: la variación contra el mismo mes del año anterior, descontada la inflación y promediada sobre los últimos tres meses para filtrar el calendario tributario.",
+    aporta: "Aísla la recuperación genuina de los ingresos del efecto inflacionario y del ruido de los vencimientos impositivos: mide la tendencia fiscal de verdad, no el mes suelto.",
+    frecuencia: "Mensual", tipo: "Variación i.a. real (prom. 3 meses)",
   },
   tcrm: {
     que: "Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). Mide la dimensión de competitividad externa del índice.",

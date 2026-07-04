@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-04T12:26:23.317256",
+  "generated_at": "2026-07-04T12:39:58.640184",
   "period": "2026-07",
-  "score_global": 4.4,
+  "score_global": 4.3,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 4.7,
+      "score": 4.2,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -128,20 +128,24 @@
           "aporte_input_txt": null
         },
         "recaudacion": {
-          "valor": -7.14,
-          "unidad": "% i.a. real",
+          "valor": -2.3,
+          "unidad": "% i.a. real (prom. móvil 3 meses)",
           "fuente": "Sec. Hacienda — recaudación total (vía datos.gob.ar)",
-          "fecha_dato": "2026-06-01",
-          "var_ia_nominal": 23.68,
-          "ipc_ia": 33.2,
+          "fecha_dato": "2026-05-01",
+          "meses": {
+            "2026-03": -4.82,
+            "2026-04": -3.9,
+            "2026-05": 1.82
+          },
+          "detalle_txt": "Promedio de 2026-03: -4.8% · 2026-04: -3.9% · 2026-05: +1.8% — 2026-06 (provisorio, no puntúa): -7.1% con deflactor de 2026-05",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 10.0,
-          "puntaje_banda": 10.0,
+          "puntaje_itcm": 40.8,
+          "puntaje_banda": 40.8,
           "peso_efectivo": 0.144,
-          "aporte_score": 9.0,
-          "aporte_formula": "Anclas ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5 a 0 → 40 · ≤-5 → 10 (puntaje interpolado entre anclas: 10.0; pesa 14,4% del ITCM)",
+          "aporte_score": 5.9,
+          "aporte_formula": "Anclas ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5 a 0 → 40 · ≤-5 → 10 (puntaje interpolado entre anclas: 40.8; pesa 14,4% del ITCM)",
           "aporte_nota": null,
           "aporte_input_txt": null
         },
@@ -260,7 +264,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 53.1,
+        "valor": 57.5,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -297,13 +301,13 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.24,
-            "puntaje": 40.0,
+            "puntaje": 58.5,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
-                "puntaje_banda": 10.0,
-                "puntaje_aplicado": 10.0,
-                "valor": -7.14,
+                "puntaje_banda": 40.8,
+                "puntaje_aplicado": 40.8,
+                "valor": -2.3,
                 "peso_efectivo": 0.144
               },
               "saldo_comercial_12m": {
@@ -405,11 +409,11 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 51.0,
-          "p95": 55.0,
+          "p05": 55.8,
+          "p95": 59.1,
           "tension_rango": [
-            4.5,
-            4.9
+            4.1,
+            4.4
           ],
           "dominante": {
             "indicador": "recaudacion",
@@ -417,45 +421,45 @@
           },
           "n_draws": 1000,
           "hist": [
-            2,
             1,
-            1,
+            0,
+            0,
             2,
-            6,
-            8,
-            16,
-            19,
-            25,
-            33,
-            37,
-            31,
-            54,
-            45,
-            44,
-            64,
-            61,
-            71,
-            65,
-            65,
-            71,
-            62,
-            49,
-            46,
-            34,
-            24,
-            14,
-            19,
-            10,
+            2,
             5,
-            7,
-            2,
-            3,
+            8,
+            8,
+            25,
+            23,
+            33,
+            31,
+            42,
+            52,
+            54,
+            51,
+            73,
+            71,
+            79,
+            61,
+            62,
+            56,
+            57,
+            56,
+            47,
+            30,
+            20,
+            17,
+            12,
+            8,
+            5,
+            4,
             3,
             0,
+            1,
             1
           ],
-          "hist_min": 49.36,
-          "hist_max": 56.91,
+          "hist_min": 54.25,
+          "hist_max": 60.66,
           "metodo": "pesos ±20% + insumos ±5% re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
@@ -2052,7 +2056,7 @@
       "score_explicacion": "Promedio simple de la tensión (0–10) de sus proxies (v1 provisional). Mayor = más desconexión entre el gobierno y el humor social."
     }
   },
-  "barbarismo_activo": "tecnocrático",
+  "barbarismo_activo": "político",
   "alerta_multicinturon": false,
   "flags": [
     "desactualizado:politica:cohesion_bloque,gobernadores_alineamiento"
