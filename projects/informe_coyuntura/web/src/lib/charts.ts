@@ -64,12 +64,15 @@ export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: strin
     yTicks = Math.round((yMax - yMin) / paso);
     const zeroPct = (yMax / (yMax - yMin)) * 100;      // posición del cero desde arriba
     const [arriba, abajo] = pol === 1 ? [VERDE_AREA, ROJO_AREA] : [ROJO_AREA, VERDE_AREA];
+    // opacidad mínima 0,16 junto al cero: con 0,04 el color se lavaba y la
+    // franja pegada al eje quedaba como un resplandor blanco cuando la serie
+    // no se aleja mucho del cero
     fillSigno = { type: "gradient", gradient: { shadeIntensity: 0, opacityFrom: 1, opacityTo: 1,
       colorStops: [
-        { offset: 0, color: arriba, opacity: 0.34 },
-        { offset: zeroPct, color: arriba, opacity: 0.04 },
-        { offset: zeroPct, color: abajo, opacity: 0.04 },
-        { offset: 100, color: abajo, opacity: 0.34 },
+        { offset: 0, color: arriba, opacity: 0.36 },
+        { offset: zeroPct, color: arriba, opacity: 0.16 },
+        { offset: zeroPct, color: abajo, opacity: 0.16 },
+        { offset: 100, color: abajo, opacity: 0.36 },
       ] } };
   }
   const chart = new ApexCharts(el, {
