@@ -25,7 +25,7 @@ export interface Punto { fecha: string; valor: number; }
 // litigiosidad/gasto real: caer es la mejora). Sin entrada → área neutra.
 const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
   reservas_bcra: 1, emae_ia: 1, recaudacion: 1, saldo_comercial_12m: 1,
-  idc: 1, credito_privado: 1,
+  idc: 1, credito_privado: 1, iai: 1, icip: 1,
   idm: -1, litigiosidad_laboral: -1, gasto_funcionamiento: -1, masa_salarial: -1,
   reduccion_estado: -1,
 };
