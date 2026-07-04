@@ -41,7 +41,8 @@ def build_vida(raw):
 
     bs = indec.get("brecha_salario_cbt", {})
     _add(out, "brecha_salario_cbt", round(bs.get("valor", 0), 2),
-         "canastas (RIPTE/CBT)", "INDEC", bs.get("fecha"))
+         "canastas (RIPTE/CBT)", "Sec. Trabajo (RIPTE) + INDEC (CBT)", bs.get("fecha"),
+         detalle_txt=bs.get("nota"))
     al = indec.get("ipc_alimentos", {})
     _add(out, "ipc_alimentos", round(al.get("variacion_mensual_pct", 0), 2),
          "% m/m", "INDEC serie 146.3", al.get("fecha"))

@@ -40,14 +40,27 @@ def search_serie(query: str, limit: int = 10) -> list[dict]:
 
 def _get_ripte() -> dict:
     """RIPTE via CSV directo. Mensual desde jul-1994."""
-    import io
+    hist = _get_ripte_hist()
+    ult = max(hist)
+    return {"valor": hist[ult], "fecha": f"{ult}-01"}
+
+
+def _get_ripte_hist() -> dict:
+    """{YYYY-MM: RIPTE en pesos} — la serie completa del CSV oficial, para
+    alinear la brecha salario/CBT por MES COMÚN (ADR-0030)."""
     r = requests.get(RIPTE_CSV, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
-    lines = [l for l in r.text.strip().split("\n") if l.strip() and not l.startswith("indice")]
-    if not lines:
+    hist = {}
+    for line in r.text.strip().split("\n"):
+        p = line.split(",")
+        if len(p) >= 2 and p[0][:4].isdigit():
+            try:
+                hist[p[0][:7]] = float(p[1])
+            except ValueError:
+                continue
+    if not hist:
         raise ValueError("RIPTE CSV vacio")
-    last = lines[-1].split(",")
-    return {"valor": float(last[1]), "fecha": last[0]}
+    return hist
 
 
 def fetch_indec() -> dict:
@@ -69,22 +82,35 @@ def fetch_indec() -> dict:
         except Exception as e:
             logger.error("%s FAIL: %s", key, e)
 
-    # ── RIPTE + Brecha salario vs CBT ────────────────────────────────────────
+    # ── RIPTE + Brecha salario vs CBT (MES COMÚN, ADR-0030) ──────────────────
+    # El RIPTE corre ~1 mes detrás de la CBT: dividir el último de cada uno
+    # mezclaba meses (salario de abril / canasta de mayo) y subestimaba la
+    # brecha en desinflación. Se alinea al último mes que ambos tienen y la
+    # CBT más fresca queda declarada como provisoria.
     try:
-        ripte = _get_ripte()
-        results["ripte"] = ripte
-        if "cbt" in results:
-            cbt_val = results["cbt"]["valor"]
-            brecha = (ripte["valor"] / cbt_val) if cbt_val else None
+        ripte_hist = _get_ripte_hist()
+        ult_r = max(ripte_hist)
+        results["ripte"] = {"valor": ripte_hist[ult_r], "fecha": f"{ult_r}-01"}
+        cbt_hist = {f[:7]: v for f, v in _get_serie(INDEC_SERIES["cbt"], limit=8)}
+        comunes = sorted(set(ripte_hist) & set(cbt_hist))
+        if comunes:
+            ym = comunes[-1]
+            brecha = ripte_hist[ym] / cbt_hist[ym]
+            nota = (f"RIPTE / CBT del mismo mes ({ym}): canastas cubiertas por "
+                    f"el salario imponible promedio")
+            ult_c = max(cbt_hist)
+            if ult_c > ym:
+                nota += (f" — CBT de {ult_c} ya publicada (${cbt_hist[ult_c]:,.0f}): "
+                         f"esa brecha queda provisoria hasta que salga el RIPTE")
             results["brecha_salario_cbt"] = {
                 "valor": brecha,
-                "ripte_pesos": ripte["valor"],
-                "cbt_pesos": cbt_val,
+                "ripte_pesos": ripte_hist[ym],
+                "cbt_pesos": cbt_hist[ym],
                 "canastas_que_cubre": brecha,
-                "fecha": ripte["fecha"],
-                "nota": "RIPTE / CBT: canastas cubiertas por el salario imponible promedio",
+                "fecha": f"{ym}-01",
+                "nota": nota,
             }
-            logger.info("Brecha sal/CBT OK: %.2f canastas", brecha)
+            logger.info("Brecha sal/CBT OK (mes comun %s): %.2f canastas", ym, brecha)
     except Exception as e:
         logger.error("RIPTE FAIL: %s", e)
 
