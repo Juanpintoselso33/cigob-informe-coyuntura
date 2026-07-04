@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-04T13:17:34.639716",
+  "generated_at": "2026-07-04T21:33:31.506854",
   "period": "2026-07",
   "score_global": 4.3,
   "ponderacion": {
@@ -920,7 +920,7 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 6.3,
+          "valor": 6.7,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
           "fecha_dato": "2026-07-04",
@@ -950,7 +950,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260704_1454.json",
+      "fuente_enriquecida": "vida_cotidiana_20260704_2120.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 90.7,
@@ -2046,12 +2046,12 @@
           "aporte_nota": null
         },
         "sentimiento_digital": {
-          "valor": 6.2,
+          "valor": 6.7,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
           "fecha_dato": "2026-07-04",
           "desactualizado": false,
-          "aporte_score": 0.6,
+          "aporte_score": 0.7,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
           "aporte_nota": null
         },
