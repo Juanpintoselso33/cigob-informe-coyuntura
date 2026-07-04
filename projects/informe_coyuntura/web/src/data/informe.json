@@ -809,7 +809,7 @@
         "peso_tarifas": {
           "valor": 2.4,
           "unidad": "% m/m regulados",
-          "fuente": "INDEC",
+          "fuente": "INDEC — IPC precios regulados (vía datos.gob.ar)",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "en_indice": true,

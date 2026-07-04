@@ -55,7 +55,7 @@ def build_vida(raw):
          "billones de pesos (consumo)", "BCRA API v4.0", cc.get("fecha"))
     reg = indec.get("ipc_regulados", {})
     _add(out, "peso_tarifas", round(reg.get("variacion_mensual_pct", 0), 2),
-         "% m/m regulados", "INDEC", reg.get("fecha"))
+         "% m/m regulados", "INDEC — IPC precios regulados (vía datos.gob.ar)", reg.get("fecha"))
     carne = ciccra.get("consumo_carne_per_capita", {})
     _add(out, "consumo_carne", carne.get("valor"),
          "kg/hab/año", "CICCRA", carne.get("fecha"))
