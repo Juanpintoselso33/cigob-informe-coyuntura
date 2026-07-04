@@ -52,7 +52,8 @@ def build_vida(raw):
     cc_val = cc.get("valor")
     _add(out, "endeudamiento_familiar",
          round(cc_val / 1e6, 2) if isinstance(cc_val, (int, float)) else cc_val,
-         "billones de pesos (consumo)", "BCRA API v4.0", cc.get("fecha"))
+         "billones de pesos (consumo)",
+         "BCRA — crédito de consumo (API) + Informe sobre Bancos (mora)", cc.get("fecha"))
     reg = indec.get("ipc_regulados", {})
     _add(out, "peso_tarifas", round(reg.get("variacion_mensual_pct", 0), 2),
          "% m/m regulados", "INDEC — IPC precios regulados (vía datos.gob.ar)", reg.get("fecha"))

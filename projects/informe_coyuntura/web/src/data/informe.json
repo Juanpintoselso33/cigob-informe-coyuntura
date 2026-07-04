@@ -794,7 +794,7 @@
         "endeudamiento_familiar": {
           "valor": 46.42,
           "unidad": "billones de pesos (consumo)",
-          "fuente": "BCRA API v4.0",
+          "fuente": "BCRA — crédito de consumo (API) + Informe sobre Bancos (mora)",
           "fecha_dato": "2026-06-30",
           "desactualizado": false,
           "var_real_12m": -1.5,
