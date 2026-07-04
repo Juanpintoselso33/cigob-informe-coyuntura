@@ -838,27 +838,47 @@ def fetch_iai() -> dict | None:
     importados (+ patentamientos comerciales cuando haya histórico acumulado).
     Mayor = inversión expandiéndose. Bandas en itcm.BANDAS_ITCM['iai']."""
     try:
-        isac = _indec_yoy(INDEC_ISAC_NIVEL_ID)["var_ia"]
-        bk   = _indec_yoy(INDEC_BK_IMPO_ID)
+        # ÚLTIMO MES COMÚN de ambos componentes (barrido 10/12): el ISAC corre
+        # ~1 mes detrás del ICA — mezclar meses etiquetaba abril+mayo como
+        # "mayo" y el titular difería del último punto de la serie. El
+        # componente más fresco queda como provisorio en el detalle.
+        isac_m = _indec_nivel_mensual(INDEC_ISAC_NIVEL_ID, limit=16)
+        bk_m   = _indec_nivel_mensual(INDEC_BK_IMPO_ID, limit=16)
+        comunes = [ym for ym in sorted(set(isac_m) & set(bk_m))
+                   if _ym_shift(ym, -12) in isac_m and _ym_shift(ym, -12) in bk_m]
+        if not comunes:
+            raise ValueError("IAI: sin mes común con interanual disponible")
+        ym = comunes[-1]
+        isac = (isac_m[ym] / isac_m[_ym_shift(ym, -12)] - 1) * 100
+        bk_ia = (bk_m[ym] / bk_m[_ym_shift(ym, -12)] - 1) * 100
         pat  = _patentamientos_ia()
-        componentes = {"isac": round(isac, 1), "bk_importados": round(bk["var_ia"], 1)}
+        componentes = {"isac": round(isac, 1), "bk_importados": round(bk_ia, 1)}
         if pat is not None:
             w = IAI_PESOS_CON_PAT
             componentes["patentamientos_comerciales"] = round(pat["var_ia"], 1)
-            valor = w["isac"]*isac + w["bk_importados"]*bk["var_ia"] + w["patentamientos_comerciales"]*pat["var_ia"]
+            valor = w["isac"]*isac + w["bk_importados"]*bk_ia + w["patentamientos_comerciales"]*pat["var_ia"]
             nota = f"ISAC 55% · BK importados 30% · patentamientos comerciales 15% ({pat['meses_acumulados']} meses)"
         else:
             w = IAI_PESOS_SIN_PAT
-            valor = w["isac"]*isac + w["bk_importados"]*bk["var_ia"]
+            valor = w["isac"]*isac + w["bk_importados"]*bk_ia
             nota = "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)"
+        # componente con dato más nuevo que el mes común → contexto provisorio
+        fresco = ""
+        ult_bk = max(bk_m)
+        if ult_bk > ym and _ym_shift(ult_bk, -12) in bk_m:
+            bk_prov = (bk_m[ult_bk] / bk_m[_ym_shift(ult_bk, -12)] - 1) * 100
+            fresco = f" — BK {ult_bk} (provisorio, no puntúa): {bk_prov:+.1f}%"
         return {
             "valor": round(valor, 2),
             "unidad": "% i.a. ponderado",
             "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
-            "fecha_dato": bk["fecha"],
+            "fecha_dato": f"{ym}-01",
             "desactualizado": False,
             "componentes": componentes,
             "pesos_nota": nota,
+            "detalle_txt": (f"{round(valor, 1):+} % i.a. = ISAC {componentes['isac']:+}% · "
+                            f"BK importados {componentes['bk_importados']:+}% "
+                            f"(mes común: {ym}){fresco}"),
         }
     except Exception as e:
         _warn("iai", e)

@@ -1,9 +1,9 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-04T12:39:27.898336",
+  "generated_at": "2026-07-04T13:07:22.532624",
   "score": 4.2,
   "itcm": {
-    "valor": 57.5,
+    "valor": 57.6,
     "banda": "moderadamente_apretado",
     "banda_legible": "Moderadamente apretado",
     "dimensiones": {
@@ -120,13 +120,13 @@
       "inversion": {
         "nombre": "Inversión",
         "peso": 0.12,
-        "puntaje": 54.7,
+        "puntaje": 55.5,
         "indicadores": {
           "iai": {
             "peso": 0.6,
-            "puntaje_banda": 42.5,
-            "puntaje_aplicado": 42.5,
-            "valor": -4.2,
+            "puntaje_banda": 43.8,
+            "puntaje_aplicado": 43.8,
+            "valor": -3.9,
             "peso_efectivo": 0.072
           },
           "icip": {
@@ -297,20 +297,21 @@
       "peso_efectivo": 0.078
     },
     "iai": {
-      "valor": -4.2,
+      "valor": -3.9,
       "unidad": "% i.a. ponderado",
       "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
-      "fecha_dato": "2026-05-01",
+      "fecha_dato": "2026-04-01",
       "desactualizado": false,
       "componentes": {
         "isac": -2.8,
-        "bk_importados": -6.8
+        "bk_importados": -5.9
       },
       "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
+      "detalle_txt": "-3.9 % i.a. = ISAC -2.8% · BK importados -5.9% (mes común: 2026-04) — BK 2026-05 (provisorio, no puntúa): -6.8%",
       "en_indice": true,
       "dimension": "inversion",
-      "puntaje_itcm": 42.5,
-      "puntaje_banda": 42.5,
+      "puntaje_itcm": 43.8,
+      "puntaje_banda": 43.8,
       "peso_efectivo": 0.072
     },
     "icip": {

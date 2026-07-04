@@ -53,7 +53,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   iai: {
     latex: String.raw`0{,}55\cdot\text{construcci\'on}\;+\;0{,}30\cdot\text{bienes de capital}\;+\;0{,}15\cdot\text{patentamientos}`,
-    leyenda: "Variaciones interanuales de la inversión física: ISAC, importación de bienes de capital y patentamientos comerciales. Sin patentamientos, renormaliza a 0,65/0,35.",
+    leyenda: "Variaciones interanuales de la inversión física, calculadas al último mes que ambas fuentes tienen publicado: ISAC (construcción), importación de bienes de capital y patentamientos comerciales. Sin patentamientos, renormaliza a 0,65/0,35. Limitación declarada: los bienes de capital se miden en dólares corrientes e incluyen el efecto de los precios internacionales — el INDEC solo publica el índice de cantidades con frecuencia trimestral.",
   },
   icip: {
     latex: String.raw`0{,}57\cdot\text{servicios tech}\;+\;0{,}43\cdot\text{productividad}`,

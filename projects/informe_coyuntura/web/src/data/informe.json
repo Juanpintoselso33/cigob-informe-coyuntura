@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-04T12:39:58.640184",
+  "generated_at": "2026-07-04T13:07:22.737034",
   "period": "2026-07",
   "score_global": 4.3,
   "ponderacion": {
@@ -202,25 +202,26 @@
           "aporte_input_txt": "brecha 4,33 pp = M3 priv. real i.a. -2,46% − M2 priv. real i.a. -6,78%"
         },
         "iai": {
-          "valor": -4.2,
+          "valor": -3.9,
           "unidad": "% i.a. ponderado",
           "fuente": "INDEC — ISAC (construcción) + ICA (bienes de capital importados)",
-          "fecha_dato": "2026-05-01",
+          "fecha_dato": "2026-04-01",
           "desactualizado": false,
           "componentes": {
             "isac": -2.8,
-            "bk_importados": -6.8
+            "bk_importados": -5.9
           },
           "pesos_nota": "ISAC 65% · BK importados 35% (patentamientos comerciales: acumulando histórico DNRPA)",
+          "detalle_txt": "-3.9 % i.a. = ISAC -2.8% · BK importados -5.9% (mes común: 2026-04) — BK 2026-05 (provisorio, no puntúa): -6.8%",
           "en_indice": true,
           "dimension": "inversion",
-          "puntaje_itcm": 42.5,
-          "puntaje_banda": 42.5,
+          "puntaje_itcm": 43.8,
+          "puntaje_banda": 43.8,
           "peso_efectivo": 0.072,
-          "aporte_score": 5.8,
-          "aporte_formula": "Anclas ITCM: >10 → 100 · 2–10 → 80 · -2 a 2 → 60 · -10 a -2 → 35 · ≤-10 → 10 (puntaje interpolado entre anclas: 42.5; pesa 7,2% del ITCM)",
+          "aporte_score": 5.6,
+          "aporte_formula": "Anclas ITCM: >10 → 100 · 2–10 → 80 · -2 a 2 → 60 · -10 a -2 → 35 · ≤-10 → 10 (puntaje interpolado entre anclas: 43.8; pesa 7,2% del ITCM)",
           "aporte_nota": null,
-          "aporte_input_txt": "-4,2% i.a. = ISAC -2,8% · BK importados -6,8%"
+          "aporte_input_txt": "-3,9% i.a. = ISAC -2,8% · BK importados -5,9%"
         },
         "icip": {
           "valor": 8.2,
@@ -264,7 +265,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 57.5,
+        "valor": 57.6,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
@@ -386,13 +387,13 @@
           "inversion": {
             "nombre": "Inversión",
             "peso": 0.12,
-            "puntaje": 54.7,
+            "puntaje": 55.5,
             "indicadores": {
               "iai": {
                 "peso": 0.6,
-                "puntaje_banda": 42.5,
-                "puntaje_aplicado": 42.5,
-                "valor": -4.2,
+                "puntaje_banda": 43.8,
+                "puntaje_aplicado": 43.8,
+                "valor": -3.9,
                 "peso_efectivo": 0.072
               },
               "icip": {
@@ -409,15 +410,15 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 55.8,
-          "p95": 59.1,
+          "p05": 55.9,
+          "p95": 59.2,
           "tension_rango": [
             4.1,
             4.4
           ],
           "dominante": {
             "indicador": "recaudacion",
-            "indice_sin": 63.9
+            "indice_sin": 64.0
           },
           "n_draws": 1000,
           "hist": [
@@ -425,41 +426,41 @@
             0,
             0,
             2,
-            2,
-            5,
-            8,
-            8,
-            25,
-            23,
-            33,
-            31,
-            42,
-            52,
-            54,
-            51,
-            73,
-            71,
-            79,
-            61,
-            62,
-            56,
-            57,
-            56,
-            47,
-            30,
-            20,
-            17,
-            12,
-            8,
-            5,
+            1,
             4,
+            10,
+            8,
+            23,
+            24,
+            33,
+            33,
+            37,
+            57,
+            53,
+            51,
+            76,
+            68,
+            81,
+            60,
+            61,
+            58,
+            56,
+            55,
+            49,
+            30,
+            18,
+            19,
+            9,
+            9,
+            6,
+            3,
             3,
             0,
             1,
             1
           ],
-          "hist_min": 54.25,
-          "hist_max": 60.66,
+          "hist_min": 54.33,
+          "hist_max": 60.76,
           "metodo": "pesos ±20% + insumos ±5% re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
