@@ -907,7 +907,7 @@
         "icc_utdt": {
           "valor": 42.5,
           "unidad": "índice",
-          "fuente": "UTDT",
+          "fuente": "UTDT — Índice de Confianza del Consumidor (CIF)",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
           "en_indice": true,

@@ -78,7 +78,7 @@ def build_vida(raw):
          "hechos/año", "SNIC", str(seg.get("anio")))
     icc = utdt.get("icc_utdt", {})
     _add(out, "icc_utdt", round(icc.get("valor", 0), 1),
-         "índice", "UTDT", icc.get("fecha"))
+         "índice", "UTDT — Índice de Confianza del Consumidor (CIF)", icc.get("fecha"))
     sd = trends.get("sentimiento_digital", {}).get("interes_relativo", {})
     if sd:
         _add(out, "sentimiento_digital", round(sum(sd.values()) / len(sd), 1),
