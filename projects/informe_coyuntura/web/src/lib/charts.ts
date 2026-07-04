@@ -50,10 +50,22 @@ export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: strin
   const xfmt = esMensual(serie) ? "MMM yyyy" : "dd MMM yy";
   // Área con signo: verde del lado bueno del cero, roja del malo. Se fija el
   // rango del eje Y para que el corte del degradé caiga EXACTO en el cero.
-  const pol = cruzaCero ? POLARIDAD_SIGNO[opts.indicador ?? ""] : undefined;
+  const pol = POLARIDAD_SIGNO[opts.indicador ?? ""];
   let yMin: number | undefined, yMax: number | undefined, yTicks: number | undefined;
   let fillSigno: any = null;
-  if (pol) {
+  if (pol && !cruzaCero && vals.some(v => v !== 0)) {
+    // Serie entera de un solo lado del cero: se tiñe del color de ese lado
+    // (ej. gasto real i.a. siempre negativo = todo el período en zona verde),
+    // más intensa lejos del cero. Sin eje clavado: el cero puede quedar fuera
+    // del rango visible.
+    const arriba = Math.min(...vals) >= 0;
+    const colorLado = (pol === 1) === arriba ? VERDE_AREA : ROJO_AREA;
+    fillSigno = { type: "gradient", gradient: { shadeIntensity: 0, opacityFrom: 1, opacityTo: 1,
+      colorStops: arriba
+        ? [{ offset: 0, color: colorLado, opacity: 0.36 }, { offset: 100, color: colorLado, opacity: 0.14 }]
+        : [{ offset: 0, color: colorLado, opacity: 0.14 }, { offset: 100, color: colorLado, opacity: 0.36 }] } };
+  }
+  if (pol && cruzaCero) {
     // eje con paso "lindo" y el CERO clavado en un tick: el rango se redondea
     // a múltiplos del paso (el cero siempre es múltiplo) y tickAmount recorre
     // el rango de a un paso — así el degradé y la línea del cero coinciden
