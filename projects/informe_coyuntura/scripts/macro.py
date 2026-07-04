@@ -390,7 +390,8 @@ def fetch_reservas_netas() -> dict | None:
             "valor": round(netas, 0),
             "unidad": "Millones de USD",
             "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
-            "fecha_dato": s["fecha"],
+            # la planilla trae dd/mm/yy; a ISO como el resto de las fichas
+            "fecha_dato": datetime.strptime(s["fecha"], "%d/%m/%y").date().isoformat(),
             "netas_sdds_estricto": round(s["netas"], 0),
             "depositos_tesoro": round(tesoro, 0),
             "bopreal_12m": round(bopreal, 0),

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-04 10:45:29"
+generado: "2026-07-04 11:05:12"
 score_global: 3.5
 barbarismo_activo: "político"
 alerta_multicinturon: false
@@ -96,4 +96,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:cohesion_bloque,gobernadores_alineamiento`
 
 ---
-*Generado por CIGOB — 2026-07-04 10:45:29 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-04 11:05:12 — schema 1.2.0*
