@@ -16,8 +16,8 @@ import itvc
 # Fixture con índices base-100 realistas (100 = promedio 4T-2023):
 # ingresos = 0,65×87,5 + 0,35×96 = 90,5 · precios = 0,4×95 + 0,6×60 = 74,0
 # vulnerabilidad = 118,0 · empleo = 0,45×102 + 0,4×80 + 0,15×96 = 92,3
-# confianza = 0,5×118 + 0,3×104 + 0,1×92 + 0,1×130 = 112,4
-# ITVC = 0,35×90,5 + 0,25×74 + 0,10×118 + 0,15×92,3 + 0,15×112,4 = 92,7
+# confianza (ADR-0034) = 0,45×118 + 0,3×104 + 0,1×110 + 0,1×92 + 0,05×130 = 111,0
+# ITVC = 0,35×90,5 + 0,25×74 + 0,10×118 + 0,15×92,3 + 0,15×111,0 = 92,5
 EJEMPLO = {
     "brecha_salario_cbt": 87.5,
     "informalidad": 96.0,
@@ -29,6 +29,7 @@ EJEMPLO = {
     "pluriempleo": 96.0,
     "icc_utdt": 118.0,
     "inseguridad": 104.0,
+    "sentimiento_digital": 110.0,
     "consumo_carne": 92.0,
     "patentamiento_motos": 130.0,
 }
@@ -41,14 +42,15 @@ def test_itvc_reproduce_ejemplo():
     assert dims["precios"]["puntaje"] == 74.0
     assert dims["vulnerabilidad"]["puntaje"] == 118.0
     assert dims["empleo"]["puntaje"] == 92.3
-    assert dims["confianza"]["puntaje"] == 112.4
-    assert r["valor"] == 92.7
+    assert dims["confianza"]["puntaje"] == 111.0
+    assert r["valor"] == 92.5
     assert r["banda"] == "deterioro_moderado"
     assert r["ajustes_aplicados"] == []
 
 
 def test_pesos_del_documento():
-    """35/25/10/15/15 y los internos del doc, sin operacionalización propia."""
+    """35/25/10/15/15 y los internos del doc; confianza enmendada por el
+    ADR-0034 (entra sentimiento_digital 10%, cede ICC 5 y motos 5)."""
     pesos = {k: d["peso"] for k, d in itvc.DIMENSIONES_ITVC.items()}
     assert pesos == {"ingresos": 0.35, "precios": 0.25, "vulnerabilidad": 0.10,
                      "empleo": 0.15, "confianza": 0.15}
@@ -58,8 +60,9 @@ def test_pesos_del_documento():
     assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.40, "peso_tarifas": 0.60}
     assert d["empleo"]["indicadores"] == {"mortalidad_pymes": 0.45, "despacho_cemento": 0.40,
                                           "pluriempleo": 0.15}
-    assert d["confianza"]["indicadores"] == {"icc_utdt": 0.50, "inseguridad": 0.30,
-                                             "consumo_carne": 0.10, "patentamiento_motos": 0.10}
+    assert d["confianza"]["indicadores"] == {"icc_utdt": 0.45, "inseguridad": 0.30,
+                                             "sentimiento_digital": 0.10,
+                                             "consumo_carne": 0.10, "patentamiento_motos": 0.05}
     for dim in d.values():
         assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
 
@@ -88,15 +91,15 @@ def test_escala_interpretacion():
 
 def test_renormalizacion_ante_faltantes():
     """Sin carne ni motos (fuentes sin dato), confianza renormaliza entre
-    ICC (0,5) e inseguridad (0,3)."""
+    ICC (0,45), inseguridad (0,3) y sentimiento (0,1)."""
     valores = dict(EJEMPLO)
     valores["consumo_carne"] = None
     valores["patentamiento_motos"] = None
     r = itvc.calcular_itvc(valores)
     conf = r["dimensiones"]["confianza"]
-    assert set(conf["indicadores"]) == {"icc_utdt", "inseguridad"}
-    # (0,5×118 + 0,3×104) / 0,8 = 112,75 → 112,8
-    assert conf["puntaje"] == 112.8
+    assert set(conf["indicadores"]) == {"icc_utdt", "inseguridad", "sentimiento_digital"}
+    # (0,45×118 + 0,3×104 + 0,1×110) / 0,85 = 112,06 → 112,1
+    assert conf["puntaje"] == 112.1
     pesos = [i["peso_efectivo"] for d in r["dimensiones"].values()
              for i in d["indicadores"].values()]
     assert abs(sum(pesos) - 1.0) <= 0.001

@@ -512,30 +512,59 @@ VIDA_DERIVADAS.append(
 )
 
 
+SENTIMIENTO_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "sentimiento_serie.json"
+
+
 def fetch_sentimiento_serie() -> list:
-    """Serie SEMANAL del sentimiento digital (promedio del interés Trends de las 4
-    keywords) en la MISMA ventana 'today 3-m' que usa el indicador live, así la
-    normalización 0-100 coincide y no hay re-anclado ni cambio de score. Google Trends
-    no tiene escala absoluta: una ventana más larga re-normaliza el valor, por eso la
-    serie se acota a 3 meses. [[YYYY-MM-DD, interés]]."""
+    """Serie MENSUAL del sentimiento digital (ADR-0034): canasta de las 4
+    keywords en VENTANA FIJA 2021→hoy con resolución mensual nativa de Trends.
+    La escala de Trends es relativa a la ventana consultada, pero el COCIENTE
+    entre dos meses de la MISMA consulta es invariante a la renormalización —
+    eso vuelve puntuable el B100 vs 4T-2023 (verificado: 3 corridas idénticas,
+    amplitud 0,0; r = +0,76 contra el IPC m/m). El mes en curso se descarta
+    (incompleto). Store persistente con REEMPLAZO TOTAL en cada descarga sana:
+    valores de corridas distintas no se mezclan (escalas distintas).
+    [[YYYY-MM-01, interés]]."""
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
     import trends as _t
     from config import TRENDS_KEYWORDS, TRENDS_GEO
-    _t._patch_urllib3()
-    from pytrends.request import TrendReq
-    pt = TrendReq(hl="es-AR", tz=-180, timeout=(10, 30), retries=2, backoff_factor=0.5)
-    pt.build_payload(TRENDS_KEYWORDS, cat=0, timeframe="today 3-m", geo=TRENDS_GEO)
-    df = pt.interest_over_time()
-    if df is None or df.empty:
-        raise ValueError("Trends devolvió vacío (rate limit)")
-    cols = [k for k in TRENDS_KEYWORDS if k in df.columns]
-    return [[d.strftime("%Y-%m-%d"), round(float(row[cols].mean()), 1)]
-            for d, row in df.iterrows()]
+    store = json.loads(SENTIMIENTO_SERIE_STORE.read_text(encoding="utf-8-sig")) \
+        if SENTIMIENTO_SERIE_STORE.exists() else {"_meta": {}, "mensual": {}}
+    try:
+        _t._patch_urllib3()
+        from pytrends.request import TrendReq
+        pt = TrendReq(hl="es-AR", tz=-180, timeout=(10, 40), retries=2, backoff_factor=1)
+        hoy = datetime.today()
+        pt.build_payload(TRENDS_KEYWORDS, cat=0,
+                         timeframe=f"2021-01-01 {hoy.strftime('%Y-%m-%d')}", geo=TRENDS_GEO)
+        df = pt.interest_over_time()
+        if df is None or df.empty:
+            raise ValueError("Trends devolvió vacío (rate limit)")
+        cols = [k for k in TRENDS_KEYWORDS if k in df.columns]
+        canasta = df[cols].mean(axis=1)
+        mensual = {}
+        for d, v in canasta.groupby(canasta.index.strftime("%Y-%m")).mean().items():
+            if v > 0 and d < hoy.strftime("%Y-%m"):        # mes en curso: fuera
+                mensual[d] = round(float(v), 1)
+        if len(mensual) >= 36:                              # descarga sana → REEMPLAZO total
+            store["mensual"] = mensual
+            store["_meta"] = {"fuente": "Google Trends (canasta mensual, ventana fija 2021→)",
+                              "actualizado": datetime.today().strftime("%Y-%m-%d"),
+                              "nota": ("ADR-0034: escala relativa a la ventana — el store se "
+                                       "reemplaza entero en cada corrida sana; corridas "
+                                       "distintas no se mezclan.")}
+            SENTIMIENTO_SERIE_STORE.write_text(
+                json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception as e:
+        print(f"  [WARN] sentimiento: Trends no disponible ({str(e)[:60]}); serie del store "
+              f"(al {store['_meta'].get('actualizado')})")
+    return [[f"{ym}-01", v] for ym, v in sorted(store["mensual"].items())]
 
 
 VIDA_DERIVADAS.append(
-    ("sentimiento_digital", "interés 0–100", "Google Trends (ventana 3m)", fetch_sentimiento_serie)
+    ("sentimiento_digital", "interés 0–100 (canasta mensual)",
+     "Google Trends (ventana fija 2021→, ADR-0034)", fetch_sentimiento_serie)
 )
 
 

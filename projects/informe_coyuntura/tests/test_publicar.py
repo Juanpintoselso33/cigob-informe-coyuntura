@@ -156,17 +156,16 @@ def test_score_global_reconcilia_con_pesos():
 
 def test_vida_itvc_reconcilia():
     """Vida: la suma ponderada de los índices base-100 (peso_efectivo)
-    reproduce el ITVC publicado, la tensión del cinturón es 5 − (ITVC−100)×0,2
-    y el contexto (sentimiento digital) no aporta al score."""
+    reproduce el ITVC publicado y la tensión del cinturón es
+    5 − (ITVC−100)×0,2. Desde el ADR-0034 los 13 indicadores puntúan
+    (sentimiento digital dejó de ser contexto)."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
     c = informe["cinturones"]["vida_cotidiana"]
     assert c.get("itvc"), "vida sin bloque itvc"
     itvc_val = c["itvc"]["valor"]
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
-    contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    assert len(en_indice) == 12, f"esperaba 12 componentes en el índice, hay {len(en_indice)}"
-    assert set(contexto) <= {"sentimiento_digital"}
+    assert len(en_indice) == 13, f"esperaba 13 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"
@@ -178,8 +177,6 @@ def test_vida_itvc_reconcilia():
     assert pesos == {"ingresos": 0.35, "precios": 0.25, "vulnerabilidad": 0.10,
                      "empleo": 0.15, "confianza": 0.15}
 
-    for k, i in contexto.items():
-        assert i.get("aporte_score") is None, f"{k} es contexto pero tiene aporte_score"
     for k, i in en_indice.items():
         assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
 

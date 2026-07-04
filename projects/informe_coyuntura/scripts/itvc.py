@@ -61,8 +61,12 @@ DIMENSIONES_ITVC = {
     "confianza": {
         "nombre": "Confianza y seguridad",
         "peso": 0.15,
-        "indicadores": {"icc_utdt": 0.50, "inseguridad": 0.30,
-                        "consumo_carne": 0.10, "patentamiento_motos": 0.10},
+        # ADR-0034: entra sentimiento_digital (10%) — le cede el ICC (mide ánimo
+        # con encuesta, el Trends lo mide con conducta de búsqueda) y motos (el
+        # componente más eufórico del cinturón).
+        "indicadores": {"icc_utdt": 0.45, "inseguridad": 0.30,
+                        "sentimiento_digital": 0.10,
+                        "consumo_carne": 0.10, "patentamiento_motos": 0.05},
     },
 }
 
@@ -84,10 +88,10 @@ INTERPRETACION_LEGIBLE = {
 }
 
 # Indicadores del cinturón que se publican pero no integran el índice.
-# sentimiento_digital: proxy Trends sin línea base 2023 (la ventana rolling de
-# 3 meses no permite rebasear al 4T-2023); comparte con espíritu de época,
-# donde sí puntúa.
-INDICADORES_CONTEXTO = ["sentimiento_digital"]
+# ADR-0034: sentimiento_digital dejó de ser contexto — la serie mensual de
+# ventana fija (2021→) permite el B100 vs 4T-2023 con cociente intra-consulta,
+# inmune a la renormalización de Trends.
+INDICADORES_CONTEXTO = []
 
 
 def banda_interpretacion(itvc: float) -> str:

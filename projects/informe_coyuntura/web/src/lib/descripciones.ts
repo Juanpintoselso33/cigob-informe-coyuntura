@@ -194,9 +194,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Índice",
   },
   sentimiento_digital: {
-    que: "La urgencia económica que percibe la sociedad, medida por cuánto se busca en internet sobre inflación y precios.",
-    aporta: "Proxy en tiempo real de la preocupación económica de la gente.",
-    frecuencia: "Tiempo real", tipo: "Índice (0–100)",
+    que: "La urgencia económica que percibe la sociedad, medida por cuánto se busca en internet sobre inflación, precios, inseguridad y trabajo.",
+    aporta: "Mide la preocupación económica por la conducta (qué busca la gente cuando le duele el bolsillo), complementando al ICC que la mide por encuesta. Puntúa en el índice con la canasta mensual comparada contra el arranque del mandato; el titular es el pulso en tiempo real.",
+    frecuencia: "Mensual (puntaje) · tiempo real (pulso)", tipo: "Índice (0–100)",
   },
   patentamiento_motos: {
     que: "Cuántas motos se patentan en el mes.",

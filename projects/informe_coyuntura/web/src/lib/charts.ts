@@ -28,6 +28,8 @@ const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
   idc: 1, credito_privado: 1, iai: 1, icip: 1,
   idm: -1, litigiosidad_laboral: -1, gasto_funcionamiento: -1, masa_salarial: -1,
   reduccion_estado: -1,
+  // vida cotidiana (series que cruzan el cero)
+  ipi_manufacturero: 1, mortalidad_pymes: 1, endeudamiento_familiar: -1,
 };
 const VERDE_AREA = "#16A34A";
 const ROJO_AREA = "#DC2626";

@@ -168,8 +168,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "ICC de la Universidad Torcuato Di Tella, rebaseado al arranque del mandato.",
   },
   sentimiento_digital: {
-    latex: String.raw`\frac{\text{suma del inter\'es de b\'usqueda por palabra clave}}{\text{cantidad de palabras clave}}`,
-    leyenda: "Google Trends (0–100, relativo a la ventana de 3 meses): cuánto busca la gente sobre inflación, precios y trabajo — urgencia económica percibida en tiempo real.",
+    latex: String.raw`100\cdot\frac{\text{inter\'es de b\'usqueda}_{\text{4T-23}}}{\text{inter\'es de b\'usqueda}_{\text{hoy}}}`,
+    leyenda: "Canasta de búsquedas en Google sobre inflación, precios, inseguridad y trabajo (promedio mensual, ventana fija desde 2021). La escala de Google Trends es relativa a la ventana consultada, pero el cociente entre dos meses de la misma consulta no depende de esa escala — eso permite compararlo contra el 4T-2023. Invertido: más búsquedas de urgencia económica = índice más bajo. Validación: correlación +0,76 con la inflación mensual. El titular de la card es el pulso de los últimos 3 meses, en tiempo real.",
   },
 
   // ── Política ─────────────────────────────────────────────────────────────

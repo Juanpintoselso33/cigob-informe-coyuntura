@@ -83,7 +83,11 @@ def build_vida(raw):
     sd = trends.get("sentimiento_digital", {}).get("interes_relativo", {})
     if sd:
         _add(out, "sentimiento_digital", round(sum(sd.values()) / len(sd), 1),
-             "interés 0–100", "Google Trends", ts)
+             "interés 0–100", "Google Trends", ts,
+             detalle_txt=("El titular es el pulso de los últimos 3 meses (escala relativa "
+                          "de esa ventana). El gráfico y el puntaje del ITVC usan la "
+                          "canasta mensual de ventana fija desde 2021, cuyo cociente "
+                          "contra el 4T-2023 es inmune a la renormalización de Trends."))
     motos = cafam.get("patentamiento_motos", {})
     _add(out, "patentamiento_motos", motos.get("valor"),
          "unidades", "CAFAM", motos.get("fecha"))
@@ -480,6 +484,11 @@ def _itvc_indices(vida_ind, series):
     # mayormente el año PRE-mandato, así que aproxima bien el arranque).
     idx["inseguridad"] = _itvc_rebase_de_serie(series, "inseguridad", invertido=True,
                                                base_meses=("2024-01",))
+    # Sentimiento digital (ADR-0034): canasta mensual Trends de ventana fija —
+    # el cociente intra-consulta es inmune a la renormalización. Invertido:
+    # más búsquedas de inflación/precios = más urgencia percibida.
+    idx["sentimiento_digital"] = _itvc_rebase_de_serie(series, "sentimiento_digital",
+                                                       invertido=True)
     # Fallback: constante 4T-2023 documentada en itvc_baselines.json (con
     # fuente) × valor actual del indicador, si la serie no está disponible.
     try:
@@ -762,10 +771,6 @@ def _scoring_vida_itvc(c, series):
                 ind["en_indice"] = False
             if ind["en_indice"] is False:
                 nota = VIDA_CONTEXTO
-                if ikey == "sentimiento_digital":
-                    nota = ("Indicador de contexto — no integra el ITVC: la escala de "
-                            "Google Trends es relativa y se renormaliza en cada consulta, "
-                            "sirve como pulso en tiempo real pero no como métrica puntuable.")
         ind["aporte_score"] = aporte
         ind["aporte_formula"] = formula
         ind["aporte_nota"] = nota
