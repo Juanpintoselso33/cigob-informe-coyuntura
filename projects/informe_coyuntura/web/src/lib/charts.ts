@@ -62,7 +62,11 @@ export function timeChart(el: HTMLElement, serie: Punto[], opts: { color?: strin
     yMin = Math.floor((lo - (hi - lo) * 0.06) / paso) * paso;
     yMax = Math.ceil((hi + (hi - lo) * 0.06) / paso) * paso;
     yTicks = Math.round((yMax - yMin) / paso);
-    const zeroPct = (yMax / (yMax - yMin)) * 100;      // posición del cero desde arriba
+    // ¡El degradé se pinta sobre la caja de la SERIE (min..max de los datos),
+    // no sobre el rango del eje! Calcular el corte con el rango del eje
+    // (con padding redondeado) corría el cero y dejaba una banda del color
+    // equivocado pegada al eje.
+    const zeroPct = (hi / (hi - lo)) * 100;            // posición del cero desde arriba
     const [arriba, abajo] = pol === 1 ? [VERDE_AREA, ROJO_AREA] : [ROJO_AREA, VERDE_AREA];
     // opacidad mínima 0,16 junto al cero: con 0,04 el color se lavaba y la
     // franja pegada al eje quedaba como un resplandor blanco cuando la serie
