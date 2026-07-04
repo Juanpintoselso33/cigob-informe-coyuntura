@@ -55,7 +55,7 @@ BASE_MESES = ("2023-10", "2023-11", "2023-12")
 
 # componente → (clave de serie, invertido, anual)
 COMPONENTES = {
-    "ipc_alimentos":          ("itvc_alimentos", False, False, True),   # ya base-100
+    "ipc_alimentos":          ("itvc_alimentos", False, False, True),   # ya base-100 (ADR-0033: relativo al IPC)
     "peso_tarifas":           ("itvc_tarifas", False, False, True),
     "mortalidad_pymes":       ("itvc_ipi", False, False, True),
     "despacho_cemento":       ("itvc_isac", False, False, True),
@@ -66,8 +66,12 @@ COMPONENTES = {
     "consumo_carne":          ("consumo_carne", False, False, False),
     "patentamiento_motos":    ("patentamiento_motos", False, False, False),
     "informalidad":           ("informalidad", True, True, False),
-    "inseguridad":            ("inseguridad", True, True, False),
+    "inseguridad":            ("inseguridad", True, False, False),      # IVI mensual (ADR-0032)
+    "sentimiento_digital":    ("sentimiento_digital", True, False, False),  # ADR-0034
 }
+# Bases DECLARADAS distintas del 4T-2023 (misma regla que publicar):
+BASES_PROPIAS = {"inseguridad": ("2024-01",)}   # IVI reanudado ene-2024 (ADR-0032)
+ITVC_TECHO = 140.0                              # winsorización asimétrica (ADR-0033)
 
 
 def _mensual(serie: list) -> dict:
@@ -88,8 +92,8 @@ def _movil12(vals: dict) -> dict:
     return out
 
 
-def _rebase(vals: dict, invertido: bool, anual: bool) -> dict:
-    """Serie {ym: valor} → {ym: índice base-100 vs 4T-2023}."""
+def _rebase(vals: dict, invertido: bool, anual: bool, base_meses: tuple = None) -> dict:
+    """Serie {ym: valor} → {ym: índice base-100 vs 4T-2023 (o base declarada)}."""
     if anual:
         # base = valor del año 2023; el índice anual se asigna al mes de enero
         # del dato y el forward-fill mensual lo propaga
@@ -98,7 +102,7 @@ def _rebase(vals: dict, invertido: bool, anual: bool) -> dict:
             return {}
         return {ym: round((base / v if invertido else v / base) * 100.0, 1)
                 for ym, v in vals.items() if v}
-    base_vals = [vals[m] for m in BASE_MESES if vals.get(m)]
+    base_vals = [vals[m] for m in (base_meses or BASE_MESES) if vals.get(m)]
     if not base_vals:
         return {}
     base = sum(base_vals) / len(base_vals)
@@ -124,8 +128,10 @@ def construir_series_itvc() -> tuple:
         vals = _mensual(series.get(skey) or [])
         if comp == "patentamiento_motos":
             vals = _movil12(vals)          # ADR-0024: estacionalidad fuerte
-        indices_por_comp[comp] = (vals if ya_rebaseada
-                                  else _rebase(vals, invertido, anual))
+        idx = (vals if ya_rebaseada
+               else _rebase(vals, invertido, anual, BASES_PROPIAS.get(comp)))
+        # winsorización asimétrica del ADR-0033: mismo techo que publicar
+        indices_por_comp[comp] = {ym: min(v, ITVC_TECHO) for ym, v in idx.items()}
     ult = max(max(v) for v in indices_por_comp.values() if v)
     itvc_full, itvc_sin_icc = {}, {}
     for ym in _meses("2023-12", ult):
