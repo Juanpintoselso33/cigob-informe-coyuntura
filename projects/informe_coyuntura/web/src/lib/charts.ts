@@ -157,7 +157,7 @@ export function multiTimeChart(el: HTMLElement, series: { nombre: string; puntos
 // acá se ven los números de verdad).
 export function dualTimeChart(el: HTMLElement, a: { nombre: string; puntos: Punto[]; unidad?: string },
                               b: { nombre: string; puntos: Punto[]; unidad?: string },
-                              opts: { color?: string } = {}) {
+                              opts: { color?: string; ejeBInvertido?: boolean } = {}) {
   const color = opts.color ?? "#3E9486";
   const fmt = (s: { unidad?: string }) => (v: number) =>
     `${NF.format(v)}${s.unidad ? ` ${s.unidad}` : ""}`;
@@ -180,7 +180,10 @@ export function dualTimeChart(el: HTMLElement, a: { nombre: string; puntos: Punt
              axisBorder: { show: false }, axisTicks: { show: false } },
     yaxis: [
       { seriesName: a.nombre, labels: { formatter: fmt(a), style: { colors: color, fontSize: "11px" } } },
-      { seriesName: b.nombre, opposite: true,
+      // ejeBInvertido: para pares de correlación NEGATIVA (ej. riesgo país) el
+      // eje de la externa se invierte — las curvas co-mueven visualmente como
+      // en la tarjeta, pero el tooltip muestra el valor real.
+      { seriesName: b.nombre, opposite: true, reversed: !!opts.ejeBInvertido,
         labels: { formatter: fmt(b), style: { colors: "#64748B", fontSize: "11px" } } },
     ],
     grid: { borderColor: COL.grid, strokeDashArray: 4, xaxis: { lines: { show: false } },

@@ -138,6 +138,7 @@ const valChartData = val && indice ? {
     nombre: val.externa_label.replace(", invertido", ""),
     unidad: ({ macro: "pb", gestion: "puntos", vida_cotidiana: "puntos" } as Record<string, string>)[meta.key] ?? "",
   },
+  ejeBInvertido: val.plot === "minmax_inv",   // correlación negativa: mismo sentido visual que la card
   pares: val.pares,
 } : null;
 // Distribución interactiva del modal de robustez
@@ -542,6 +543,7 @@ const robChartData = rob?.hist && indice ? {
       <div id="cg-det-val-chart"></div>
       <p class="cg-formula-leyenda">
         Cada escala en su eje: el índice a la izquierda, el contraste externo a la derecha.
+        {val.plot === "minmax_inv" && " El eje del contraste está invertido (baja = mejora), igual que en la tarjeta, para que el co-movimiento se lea derecho; el valor del tooltip es el real."}{" "}
         Pasá el cursor (o el dedo) por las curvas para ver el valor de cada mes.
       </p>
       <p class="cg-modal-h4">Por qué dos correlaciones</p>
@@ -625,7 +627,7 @@ const robChartData = rob?.hist && indice ? {
             const bPuntos = d.pares.map((p: any) => ({ fecha: p[0] + "-01", valor: p[2] }));
             chart = dualTimeChart(dest,
               { ...d.indice, puntos: aPuntos }, { ...d.externa, puntos: bPuntos },
-              { color: colorDe(d.slug) });
+              { color: colorDe(d.slug), ejeBInvertido: !!d.ejeBInvertido });
           }
         }
         if (key === "rob") {
