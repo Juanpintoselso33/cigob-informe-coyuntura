@@ -151,6 +151,47 @@ export function multiTimeChart(el: HTMLElement, series: { nombre: string; puntos
   return chart;
 }
 
+// Comparado de DOS series con escalas distintas (índice vs ancla externa) para
+// el modal de validación: doble eje Y, tooltip compartido con los valores
+// REALES de cada punto (la card estática muestra las series normalizadas;
+// acá se ven los números de verdad).
+export function dualTimeChart(el: HTMLElement, a: { nombre: string; puntos: Punto[]; unidad?: string },
+                              b: { nombre: string; puntos: Punto[]; unidad?: string },
+                              opts: { color?: string } = {}) {
+  const color = opts.color ?? "#3E9486";
+  const fmt = (s: { unidad?: string }) => (v: number) =>
+    `${NF.format(v)}${s.unidad ? ` ${s.unidad}` : ""}`;
+  const chart = new ApexCharts(el, {
+    chart: { type: "line", height: 300, width: "100%", fontFamily: FONT,
+             toolbar: { show: false }, zoom: { enabled: false }, animations: { enabled: true, speed: 450 } },
+    series: [
+      { name: a.nombre, data: a.puntos.map(p => ({ x: aTimestamp(p.fecha), y: p.valor })) },
+      { name: b.nombre, data: b.puntos.map(p => ({ x: aTimestamp(p.fecha), y: p.valor })) },
+    ],
+    colors: [color, "#64748B"],
+    stroke: { curve: "smooth", width: [3, 1.8] },
+    dataLabels: { enabled: false },
+    markers: { size: 0, hover: { size: 5 }, strokeColors: "#fff" },
+    legend: { show: true, position: "top", horizontalAlign: "left",
+              fontSize: "12px", labels: { colors: COL.dark },
+              markers: { width: 9, height: 9, radius: 9 }, itemMargin: { horizontal: 10 } },
+    xaxis: { type: "datetime", tooltip: { enabled: false },
+             labels: { datetimeUTC: true, style: { colors: COL.muted, fontSize: "11px" } },
+             axisBorder: { show: false }, axisTicks: { show: false } },
+    yaxis: [
+      { seriesName: a.nombre, labels: { formatter: fmt(a), style: { colors: color, fontSize: "11px" } } },
+      { seriesName: b.nombre, opposite: true,
+        labels: { formatter: fmt(b), style: { colors: "#64748B", fontSize: "11px" } } },
+    ],
+    grid: { borderColor: COL.grid, strokeDashArray: 4, xaxis: { lines: { show: false } },
+            padding: { left: 8, right: 8, top: 0 } },
+    tooltip: { theme: "light", shared: true, intersect: false, x: { format: "MMM yyyy" },
+               y: [{ formatter: fmt(a) }, { formatter: fmt(b) }] },
+  } as any);
+  chart.render();
+  return chart;
+}
+
 // Mini gráfico (sparkline con tooltip) para las cards de la home.
 export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string } = {}) {
   const color = opts.color ?? "#4998DB";
