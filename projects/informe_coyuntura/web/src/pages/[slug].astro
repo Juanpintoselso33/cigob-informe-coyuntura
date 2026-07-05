@@ -140,6 +140,13 @@ const valChartData = val && indice ? {
   },
   pares: val.pares,
 } : null;
+// Distribución interactiva del modal de robustez
+const robChartData = rob?.hist && indice ? {
+  slug: meta.slug, sigla: indice.sigla,
+  hist: rob.hist, hist_min: rob.hist_min, hist_max: rob.hist_max,
+  p05: rob.p05, p95: rob.p95, valor: indice.data.valor,
+  n_draws: rob.n_draws, base100: !!indice.base100,
+} : null;
 ---
 <Layout title={`${meta.nombre} · Informe de Coyuntura · CiGob`}>
   <Nav />
@@ -487,6 +494,12 @@ const valChartData = val && indice ? {
         <div><dt>Amplitud</dt><dd>{coma(robAmplitud!)} puntos</dd></div>
         <div><dt>En tensión (0-10)</dt><dd>{coma(rob.tension_rango[0])} – {coma(rob.tension_rango[1])}</dd></div>
       </dl>
+      <p class="cg-modal-h4">La distribución de los {rob.n_draws.toLocaleString("es-AR")} escenarios</p>
+      <div id="cg-det-rob-chart" data-sigla={indice.sigla}></div>
+      <p class="cg-formula-leyenda">
+        Pasá el cursor (o el dedo) por la campana: cada punto dice cuántos escenarios
+        simulados dieron ese valor del índice.
+      </p>
       {domLabel && (
         <Fragment>
           <p class="cg-modal-h4">El componente que más pesa hoy</p>
@@ -582,6 +595,9 @@ const valChartData = val && indice ? {
   {valChartData && (
     <script type="application/json" id="cg-det-val-data" set:html={JSON.stringify(valChartData)} />
   )}
+  {robChartData && (
+    <script type="application/json" id="cg-det-rob-data" set:html={JSON.stringify(robChartData)} />
+  )}
   <script>
     const modal = document.getElementById("cg-det-modal");
     if (modal) {
@@ -610,6 +626,15 @@ const valChartData = val && indice ? {
             chart = dualTimeChart(dest,
               { ...d.indice, puntos: aPuntos }, { ...d.externa, puntos: bPuntos },
               { color: colorDe(d.slug) });
+          }
+        }
+        if (key === "rob") {
+          const dataEl = document.getElementById("cg-det-rob-data");
+          const dest = body.querySelector("#cg-det-rob-chart") as HTMLElement | null;
+          if (dataEl && dest) {
+            const d = JSON.parse(dataEl.textContent!);
+            const { distChart, colorDe } = await import("../lib/charts.ts");
+            chart = distChart(dest, d, { color: colorDe(d.slug) });
           }
         }
       };

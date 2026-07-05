@@ -192,6 +192,61 @@ export function dualTimeChart(el: HTMLElement, a: { nombre: string; puntos: Punt
   return chart;
 }
 
+// Distribución del Monte Carlo de robustez (modal de detalle): la campana de
+// los escenarios simulados como área interactiva — el tooltip dice cuántos
+// escenarios cayeron en cada valor del índice; anotaciones en p05/p95, el
+// valor publicado y (para índices base-100) la línea del 100.
+export function distChart(el: HTMLElement,
+                          d: { hist: number[]; hist_min: number; hist_max: number;
+                               p05: number; p95: number; valor: number;
+                               n_draws: number; base100?: boolean },
+                          opts: { color?: string } = {}) {
+  const color = opts.color ?? "#3E9486";
+  const n = d.hist.length;
+  const bw = (d.hist_max - d.hist_min) / n;
+  const puntos = d.hist.map((c, i) => ({
+    x: Math.round((d.hist_min + (i + 0.5) * bw) * 100) / 100, y: c,
+  }));
+  const anot = (x: number, texto: string, colorLinea: string, dash = 0) => ({
+    x, borderColor: colorLinea, strokeDashArray: dash,
+    label: { text: texto, orientation: "horizontal", offsetY: -4,
+             style: { color: COL.muted, background: "rgba(255,255,255,0.9)", fontSize: "10px",
+                      padding: { left: 4, right: 4, top: 2, bottom: 2 } } },
+  });
+  const anotaciones: any[] = [
+    anot(d.p05, `p05 · ${NF.format(d.p05)}`, COL.muted, 4),
+    anot(d.valor, `valor · ${NF.format(d.valor)}`, "#1F2937"),
+    anot(d.p95, `p95 · ${NF.format(d.p95)}`, COL.muted, 4),
+  ];
+  if (d.base100 && 100 >= d.hist_min && 100 <= d.hist_max) {
+    anotaciones.push(anot(100, "100 = base", COL.muted, 6));
+  }
+  const chart = new ApexCharts(el, {
+    chart: { type: "area", height: 260, width: "100%", fontFamily: FONT,
+             toolbar: { show: false }, zoom: { enabled: false }, animations: { enabled: true, speed: 450 } },
+    series: [{ name: "Escenarios", data: puntos }],
+    colors: [color],
+    stroke: { curve: "smooth", width: 2.4 },
+    fill: { type: "gradient", gradient: { shadeIntensity: 0.4, opacityFrom: 0.4, opacityTo: 0.05 } },
+    dataLabels: { enabled: false },
+    markers: { size: 0, hover: { size: 5 }, strokeColors: "#fff" },
+    xaxis: { type: "numeric", tickAmount: 6, tooltip: { enabled: false },
+             labels: { formatter: (v: number) => NF.format(Math.round(v * 10) / 10),
+                       style: { colors: COL.muted, fontSize: "11px" } },
+             axisBorder: { show: false }, axisTicks: { show: false } },
+    yaxis: { labels: { formatter: (v: number) => String(Math.round(v)),
+                       style: { colors: COL.muted, fontSize: "11px" } } },
+    grid: { borderColor: COL.grid, strokeDashArray: 4, xaxis: { lines: { show: false } },
+            padding: { left: 8, right: 12, top: 12 } },
+    tooltip: { theme: "light", intersect: false, shared: true,
+               x: { formatter: (v: number) => `${(el.closest("[data-sigla]") as HTMLElement)?.dataset.sigla ?? "índice"} ≈ ${NF.format(Math.round(v * 10) / 10)}` },
+               y: { formatter: (v: number) => `${Math.round(v)} de ${d.n_draws.toLocaleString("es-AR")} escenarios` } },
+    annotations: { xaxis: anotaciones },
+  } as any);
+  chart.render();
+  return chart;
+}
+
 // Mini gráfico (sparkline con tooltip) para las cards de la home.
 export function sparkChart(el: HTMLElement, serie: Punto[], opts: { color?: string; nombre?: string; unidad?: string } = {}) {
   const color = opts.color ?? "#4998DB";
