@@ -233,11 +233,13 @@
   .cg-cruz-lbl-lg, .cg-cruz-este { display: none; }
   .cg-cruz-lbl-sm { display: inline; }
   .cg-cruz-tabla { table-layout: fixed; width: 100%; }
-  .cg-cruz-tabla th, .cg-cruz-tabla td { padding: 7px 4px; }
+  .cg-cruz-tabla th, .cg-cruz-tabla td { padding: 7px 2px; }
   .cg-cruz-tabla thead th { font-size: 9.5px; line-height: 1.3; }
-  .cg-cruz-tabla tbody th { width: 19%; font-size: 11px; }
-  .cg-cruz-tabla td { font-size: 12.5px; white-space: nowrap; }
-  .cg-cruz-n { font-size: 8.5px; display: block; white-space: nowrap; }
+  .cg-cruz-tabla tbody th { width: 17%; font-size: 11px; }
+  /* SIN nowrap: con el escalado de fuente de Android los "30 meses" se
+     salían de la columna — si no entran, envuelven (nunca desbordan) */
+  .cg-cruz-tabla td { font-size: 12.5px; }
+  .cg-cruz-n { font-size: 8.5px; display: block; }
   .cg-modal-card { padding: 24px 16px 20px; }
   .cg-modal-title { font-size: 22px; }
 }
