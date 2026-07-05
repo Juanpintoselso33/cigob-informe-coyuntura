@@ -330,10 +330,9 @@ if (val && val.pares.length >= 12) {
                     <tr class:list={[f.indice === indice.sigla && "es-actual"]}>
                       <th>{f.indice}{f.indice === indice.sigla && <span class="cg-cruz-este"> (este cinturón)</span>}</th>
                       {cruz.externas.map(e => (
-                        <td class:list={[f.propio === e[0] && "es-propio"]}>
-                          {(f[e[0]].r > 0 ? "+" : "") + coma(f[e[0]].r)}
-                          <span class="cg-cruz-n">{f[e[0]].n} meses</span>
-                        </td>
+                        // sin espacios entre el número y el span: el salto de línea
+                        // quedaba como espacio final y descentraba el número ~6px
+                        <td class:list={[f.propio === e[0] && "es-propio"]}>{(f[e[0]].r > 0 ? "+" : "") + coma(f[e[0]].r)}<span class="cg-cruz-n">{f[e[0]].n} meses</span></td>
                       ))}
                     </tr>
                   ))}
