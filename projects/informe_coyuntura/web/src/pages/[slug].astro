@@ -6,7 +6,7 @@ import IndicadorTile from "../components/IndicadorTile.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import {
   informe, CINTURONES, verdictDeCinturon, indicadoresOrdenados,
-  fuentesDeCinturon, cap, indiceDe,
+  fuentesDeCinturon, cap, indiceDe, label,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -71,6 +71,12 @@ if (rob?.hist && rob.hist_max! > rob.hist_min!) {
 }
 // base-100 con toda la simulación debajo de la línea de base → se narra en texto
 const robBajoBase = !!(rob && indice?.base100 && rob.hist_max! < 100);
+
+// Datos extra para los modales de detalle (robustez / validación / matriz)
+const domLabel = rob?.dominante ? (label(rob.dominante.indicador) ?? rob.dominante.indicador) : null;
+const domDelta = rob?.dominante && indice
+  ? Math.round((rob.dominante.indice_sin - indice.data.valor) * 10) / 10 : null;
+const robAmplitud = rob ? Math.round((rob.p95 - rob.p05) * 10) / 10 : null;
 
 // Validación externa (solo vida): co-movimiento del ITVC (recalculado SIN su
 // componente ICC, para no ser circular) contra el ICC UTDT. Ambas series se
@@ -217,7 +223,8 @@ if (val && val.pares.length >= 12) {
             La curva es la distribución de resultados; la franja sombreada, donde cae el 90% de los casos.
           </p>
         </div>
-        <div class={`cg-rob cg-rob--${meta.slug}`}>
+        <div class={`cg-rob cg-rob--${meta.slug}`} data-det="rob" role="button" tabindex="0"
+             aria-label="Ver el detalle del análisis de robustez">
           <div class="cg-rob-head">
             <span>Distribución simulada del {indice.sigla}</span>
             <span>90% de los casos: <strong>{coma(rob.p05)} – {coma(rob.p95)}</strong></span>
@@ -262,6 +269,7 @@ if (val && val.pares.length >= 12) {
               </Fragment>
             )}
           </p>
+          <div class="cg-det-cta">Ver el detalle →</div>
         </div>
         {val && valSvg && (
           <Fragment>
@@ -270,7 +278,8 @@ if (val && val.pares.length >= 12) {
               <h2 class="cg-h2">{val.titulo}</h2>
               <p class="cg-h2-sub">{val.sub}</p>
             </div>
-            <div class={`cg-rob cg-rob--${meta.slug} cg-val`}>
+            <div class={`cg-rob cg-rob--${meta.slug} cg-val`} data-det="val" role="button" tabindex="0"
+                 aria-label="Ver el detalle de la validación externa">
               <div class="cg-rob-head">
                 <span>El {indice.sigla} y su contraste externo, mes a mes</span>
                 <span>correlación <strong>{coma(val.r_niveles)}</strong> · {val.n} meses</span>
@@ -302,6 +311,7 @@ if (val && val.pares.length >= 12) {
                 <span class="cg-val-chip-nota">{val.trans_label}</span>
               </p>
               <p class="cg-h2-sub">{val.conclusion}</p>
+              <div class="cg-det-cta">Ver el detalle →</div>
             </div>
           </Fragment>
         )}
@@ -312,7 +322,8 @@ if (val && val.pares.length >= 12) {
               <h2 class="cg-h2">{cruz.titulo}</h2>
               <p class="cg-h2-sub">{cruz.sub}</p>
             </div>
-            <div class={`cg-rob cg-rob--${meta.slug} cg-cruz`}>
+            <div class={`cg-rob cg-rob--${meta.slug} cg-cruz`} data-det="cruz" role="button" tabindex="0"
+                 aria-label="Ver el detalle de la validación cruzada">
               <table class="cg-cruz-tabla">
                 <thead>
                   <tr>
@@ -343,6 +354,7 @@ if (val && val.pares.length >= 12) {
                 sobre las reconstrucciones mensuales, sin ajustes del analista, desde dic-2023.
               </p>
               <p class="cg-h2-sub">{cruz.conclusion}</p>
+              <div class="cg-det-cta">Ver el detalle →</div>
             </div>
           </Fragment>
         )}
@@ -434,4 +446,152 @@ if (val && val.pares.length >= 12) {
   </main>
   <Footer />
   <IndicadorModal />
+
+  {indice && (
+    <div class="cg-modal" id="cg-det-modal" hidden>
+      <div class="cg-modal-card cg-det-card">
+        <button class="cg-modal-close" id="cg-det-close" aria-label="Cerrar">×</button>
+        <div id="cg-det-body"></div>
+      </div>
+    </div>
+  )}
+
+  {rob && indice && (
+    <template id="cg-det-rob">
+      <p class="cg-eyebrow">Robustez · {indice.sigla}</p>
+      <h3 class="cg-modal-title">¿Cuánto puede moverse el índice sin que cambie la historia?</h3>
+      <p class="cg-modal-desc">
+        Ningún índice compuesto es inocente: depende de qué pesos se eligieron y de la
+        precisión de las fuentes. Este ejercicio mide cuánto importa eso acá: el{" "}
+        {indice.sigla} se recalcula <strong>{rob.n_draws.toLocaleString("es-AR")} veces</strong>,
+        perturbando al azar en cada corrida los pesos de dimensiones e indicadores
+        (hasta ±20% de su valor) y las mediciones de entrada (hasta ±5% del ancho entre
+        sus umbrales de puntuación, para que el ruido sea proporcional a lo que de verdad
+        puede mover un puntaje). El azar usa una semilla fija: el ejercicio es reproducible.
+      </p>
+      <dl class="cg-modal-ficha">
+        <div><dt>Valor publicado</dt><dd>{coma(indice.data.valor)}</dd></div>
+        <div><dt>90% de los casos</dt><dd>{coma(rob.p05)} – {coma(rob.p95)}</dd></div>
+        <div><dt>Amplitud</dt><dd>{coma(robAmplitud!)} puntos</dd></div>
+        <div><dt>En tensión (0-10)</dt><dd>{coma(rob.tension_rango[0])} – {coma(rob.tension_rango[1])}</dd></div>
+      </dl>
+      {domLabel && (
+        <Fragment>
+          <p class="cg-modal-h4">El componente que más pesa hoy</p>
+          <p class="cg-modal-desc">
+            <strong>{domLabel}</strong> es el indicador que más arrastra el resultado: si se
+            lo quitara del índice (repartiendo su peso entre los demás), el {indice.sigla}{" "}
+            sería <strong>{coma(rob.dominante.indice_sin)}</strong> —{" "}
+            {domDelta! > 0 ? "una mejora" : "un deterioro"} de {coma(Math.abs(domDelta!))} puntos.
+            Que un solo componente explique una diferencia así no invalida el índice, pero es
+            la señal a vigilar: su dato manda sobre la lectura del mes.
+          </p>
+        </Fragment>
+      )}
+      <p class="cg-modal-h4">Cómo leerlo</p>
+      <p class="cg-modal-desc">
+        La franja sombreada del gráfico concentra el 90% de los escenarios simulados. Si esa
+        franja no cruza un umbral de lectura, la historia que cuenta el cinturón no depende
+        de la cocina del índice.{robBajoBase ? " En este caso, incluso el escenario más favorable queda debajo de la línea de base (100 = promedio del 4º trimestre de 2023): el signo del resultado no es discutible por ponderación." : " Hoy la lectura es estable en todo el rango simulado."}
+      </p>
+    </template>
+  )}
+
+  {val && indice && (
+    <template id="cg-det-val">
+      <p class="cg-eyebrow">Validación externa · {indice.sigla}</p>
+      <h3 class="cg-modal-title">{val.titulo}</h3>
+      <p class="cg-modal-desc">
+        El {indice.sigla} se reconstruye hacia atrás, mes a mes, con las mismas reglas de
+        cálculo y <strong>sin ajustes del analista</strong>, y se compara contra{" "}
+        <strong>{val.externa_label}</strong>: una medición externa e independiente que no
+        alimenta al índice. Si el índice midiera algo real, ambas series deberían moverse
+        juntas — sin ser idénticas.
+      </p>
+      <dl class="cg-modal-ficha">
+        <div><dt>Correlación (niveles)</dt><dd>{coma(val.r_niveles)}</dd></div>
+        <div><dt>Cambios mes a mes</dt><dd>{coma(val.r_diferencias)}</dd></div>
+        <div><dt>Muestra</dt><dd>{val.n} meses</dd></div>
+      </dl>
+      <p class="cg-modal-h4">Por qué dos correlaciones</p>
+      <p class="cg-modal-desc">
+        La correlación de <strong>niveles</strong> compara las trayectorias completas: en un
+        período dominado por una gran tendencia, tiende a dar alta "gratis". La de{" "}
+        <strong>cambios mes a mes</strong> es la prueba exigente — pregunta si las dos series
+        aceleran y frenan al mismo ritmo, no solo si van para el mismo lado.
+      </p>
+      <p class="cg-modal-h4">Lectura</p>
+      <p class="cg-modal-desc">{val.conclusion}</p>
+      <p class="cg-formula-leyenda">{val.trans_label}.</p>
+    </template>
+  )}
+
+  {cruz && indice && (
+    <template id="cg-det-cruz">
+      <p class="cg-eyebrow">Validación cruzada</p>
+      <h3 class="cg-modal-title">{cruz.titulo}</h3>
+      <p class="cg-modal-desc">
+        Los tres índices del informe se reconstruyen mes a mes y se comparan contra los tres
+        contrastes externos <strong>a la vez</strong>. La pregunta: ¿cada índice se parece más
+        a su contraste natural que a los ajenos, o todos miden lo mismo con distinto nombre?
+      </p>
+      <div id="cg-det-cruz-tabla"></div>
+      <p class="cg-modal-h4">Cómo leer la matriz</p>
+      <p class="cg-modal-desc">
+        Cada fila es un índice; cada columna, una vara externa. Las celdas sombreadas marcan
+        el par natural: la macroeconomía con el precio del riesgo argentino, la gestión con el
+        valor de las empresas, la vida cotidiana con el ánimo del consumidor. Una fila cuyo
+        par natural es el más fuerte de su fila está midiendo algo propio.
+      </p>
+      <p class="cg-modal-h4">Los límites, declarados</p>
+      <p class="cg-modal-desc">
+        La muestra es corta (~30 meses) y cubre un período donde toda la economía se movió
+        junta: eso infla todas las correlaciones de niveles y hace que las celdas cruzadas
+        sean del mismo orden que las propias. Algunos cruces además tienen lectura económica
+        genuina — la prima de riesgo soberana también pricea la gestión. Por eso la matriz
+        se publica como un contraste de convergencia, no como una prueba de separación
+        perfecta.
+      </p>
+      <p class="cg-modal-h4">Lectura</p>
+      <p class="cg-modal-desc">{cruz.conclusion}</p>
+      <p class="cg-formula-leyenda">
+        Correlaciones sobre las reconstrucciones mensuales, sin ajustes del analista, desde
+        diciembre de 2023.
+      </p>
+    </template>
+  )}
+
+  <script is:inline>
+    (function () {
+      const modal = document.getElementById("cg-det-modal");
+      if (!modal) return;
+      const body = document.getElementById("cg-det-body");
+      const abrir = (key) => {
+        const tpl = document.getElementById("cg-det-" + key);
+        if (!tpl) return;
+        body.innerHTML = "";
+        body.appendChild(tpl.content.cloneNode(true));
+        if (key === "cruz") {
+          const dest = body.querySelector("#cg-det-cruz-tabla");
+          const tabla = document.querySelector(".cg-cruz .cg-cruz-tabla");
+          if (dest && tabla) dest.appendChild(tabla.cloneNode(true));
+        }
+        modal.removeAttribute("hidden");
+        document.body.style.overflow = "hidden";
+      };
+      const cerrar = () => {
+        modal.setAttribute("hidden", "");
+        document.body.style.overflow = "";
+      };
+      for (const el of document.querySelectorAll("[data-det]")) {
+        el.addEventListener("click", () => abrir(el.dataset.det));
+        el.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrir(el.dataset.det); }
+        });
+      }
+      document.getElementById("cg-det-close").addEventListener("click", (e) => { e.stopPropagation(); cerrar(); });
+      modal.addEventListener("click", (e) => { if (e.target === modal) cerrar(); });
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hasAttribute("hidden")) cerrar(); });
+    })();
+  </script>
 </Layout>
