@@ -534,3 +534,83 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   .cg-dicc-chips { justify-content: flex-start; }
   .cg-ficha-foot { flex-direction: column; }
 }
+
+/* ── Metodología de la portada: el recorrido del dato ───────────────────── */
+.cg-met-flow {
+  display: flex; align-items: stretch; gap: 6px;
+  background: var(--paper); border: 1px solid var(--bd);
+  border-radius: var(--radius-card); box-shadow: var(--shadow-card);
+  padding: 20px 22px 18px; margin: 0 0 16px;
+}
+.cg-met-step { flex: 1; min-width: 0; text-align: center; padding: 2px 6px; }
+.cg-met-num {
+  display: block; font-family: 'JetBrains Mono', monospace;
+  font-weight: 700; font-size: 27px; line-height: 1.1; color: var(--dark);
+}
+.cg-met-num small { font-size: 14px; color: var(--muted); font-weight: 500; }
+.cg-met-lbl {
+  display: block; margin-top: 4px;
+  font-size: 10.5px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--teal);
+}
+.cg-met-desc { display: block; margin-top: 6px; font-size: 11.5px; line-height: 1.5; color: var(--muted); }
+.cg-met-arrow { align-self: center; flex-shrink: 0; color: var(--muted-soft); font-size: 17px; font-weight: 800; }
+.cg-met-indices {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+  gap: 14px; margin: 0 0 16px;
+}
+.cg-met-ind {
+  display: block; min-width: 0;
+  background: var(--paper); border: 1px solid var(--bd);
+  border-top: 3px solid var(--ind-c, var(--teal));
+  border-radius: var(--radius-card); box-shadow: var(--shadow-card);
+  padding: 14px 16px 12px; color: inherit; text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.cg-met-ind:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.cg-met-ind--macro { --ind-c: var(--c-macro); }
+.cg-met-ind--gestion { --ind-c: var(--c-gestion); }
+.cg-met-ind--vida { --ind-c: var(--c-vida); }
+.cg-met-ind-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.cg-met-ind-sigla { font-weight: 800; font-size: 13.5px; color: var(--dark); letter-spacing: .02em; }
+.cg-met-ind-cint { font-size: 11px; font-weight: 700; color: var(--muted); white-space: nowrap; }
+.cg-met-ind-val {
+  margin-top: 8px; font-family: 'JetBrains Mono', monospace;
+  font-weight: 700; font-size: 26px; line-height: 1.1; color: var(--dark);
+}
+.cg-met-ind-val small { font-size: 12.5px; color: var(--muted); font-weight: 500; }
+.cg-met-ind-banda { margin-top: 3px; font-size: 12.5px; font-weight: 700; color: var(--dark); }
+.cg-met-ind-comp { margin-top: 6px; font-size: 11.5px; line-height: 1.5; color: var(--muted); }
+.cg-met-ind-cta { margin-top: 9px; font-size: 12px; font-weight: 800; color: var(--teal); }
+.cg-method .cg-method-grid { margin-bottom: 16px; }
+/* 4 tiles balanceados en 2×2 en desktop (auto-fit dejaba 3+1 con huérfano) */
+@media (min-width: 900px) {
+  .cg-method .cg-method-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.cg-met-cta {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  background: var(--paper); border: 1px solid var(--bd); border-left: 4px solid var(--teal);
+  border-radius: var(--radius-card); box-shadow: var(--shadow-card);
+  padding: 16px 20px; color: inherit; text-decoration: none;
+  transition: transform .15s, box-shadow .15s;
+}
+.cg-met-cta:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+.cg-met-cta > div { display: flex; align-items: center; gap: 16px; min-width: 0; }
+.cg-met-cta-num {
+  font-family: 'JetBrains Mono', monospace; font-weight: 700;
+  font-size: 34px; color: var(--teal); line-height: 1; flex-shrink: 0;
+}
+.cg-met-cta-txt { font-size: 13px; line-height: 1.55; color: var(--muted); max-width: 62ch; }
+.cg-met-cta-txt strong { display: block; color: var(--dark); font-size: 13.5px; }
+.cg-met-cta-go { flex-shrink: 0; font-size: 13px; font-weight: 800; color: var(--teal); white-space: nowrap; }
+
+@media (max-width: 700px) {
+  .cg-met-flow { flex-direction: column; gap: 10px; padding: 18px 16px; }
+  .cg-met-step { text-align: left; display: grid; grid-template-columns: 64px 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: baseline; }
+  .cg-met-num { grid-row: 1 / 3; font-size: 24px; text-align: right; }
+  .cg-met-lbl { margin-top: 0; }
+  .cg-met-desc { margin-top: 2px; grid-column: 2; }
+  .cg-met-arrow { display: none; }
+  .cg-met-cta { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .cg-met-cta-num { font-size: 28px; }
+}

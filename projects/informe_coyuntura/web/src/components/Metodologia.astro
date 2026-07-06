@@ -1,19 +1,138 @@
 ---
+// Sección Metodología de la portada: el recorrido del dato (fuentes →
+// extracción → gates → índices → tensión), los tres índices con sus valores
+// vivos, los controles de credibilidad y el acceso al diccionario de fichas.
+// TODOS los números salen del snapshot en el build — nada cargado a mano.
+import { informe, CINTURONES, indiceDe, badgeEstado, cinturonesRojos, cap } from "../lib/datos.ts";
+import { FICHAS } from "../lib/fichas.ts";
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// conteos vivos: indicadores únicos, automáticos y fuentes distintas
+const vistos = new Set<string>();
+const fuentes = new Set<string>();
+let autos = 0;
+for (const c of Object.values(informe.cinturones)) {
+  for (const [k, ind] of Object.entries(c.indicadores)) {
+    if (!vistos.has(k)) {
+      vistos.add(k);
+      if (badgeEstado(ind) === "Automático") autos++;
+    }
+    if (ind.fuente) fuentes.add(ind.fuente as string);
+  }
+}
+const nInd = vistos.size;
+const nFuentes = fuentes.size;
+const nFichas = Object.keys(FICHAS).length;
+const rojos = cinturonesRojos(informe);
+
+// los tres índices paramétricos, con valor vivo y composición
+const indices = CINTURONES
+  .map(c => ({ meta: c, indice: indiceDe(informe.cinturones[c.key]) }))
+  .filter(x => x.indice) as { meta: (typeof CINTURONES)[number]; indice: NonNullable<ReturnType<typeof indiceDe>> }[];
+const compDe = (i: (typeof indices)[number]["indice"]) => {
+  const dims = Object.values(i.data.dimensiones);
+  const nDims = dims.length;
+  const nComp = dims.reduce((s, d) => s + Object.keys(d.indicadores ?? {}).length, 0);
+  return `${nDims} dimensiones · ${nComp} ${i.base100 ? "componentes" : "indicadores"}`;
+};
+// correlaciones vivas de la validación externa, en el orden de los índices
+const rs = indices
+  .map(x => x.indice.data.validacion?.r_niveles)
+  .filter((r): r is number => typeof r === "number")
+  .map(r => (r > 0 ? "+" : "−") + Math.abs(r).toFixed(2).replace(".", ","));
+
+const fase = (informe as any).ponderacion?.fase === "temprana"
+  ? "fase temprana del mandato" : "fase de consolidación";
+const coma = (v: number) => String(v).replace(".", ",");
 ---
 <section class="cg-section cg-method" id="metodologia">
   <div class="cg-section-head">
     <p class="cg-eyebrow">Cómo se construye</p>
     <h2 class="cg-h2">El método de los cinturones</h2>
-    <p class="cg-h2-sub">Lectura situacional de la realidad como sistema, según la Planificación Estratégica Situacional (PES) de Carlos Matus.</p>
+    <p class="cg-h2-sub">Lectura situacional de la realidad como sistema, según la Planificación Estratégica Situacional (PES) de Carlos Matus: cinco cinturones — macro, política, vida cotidiana, gestión y espíritu de época — rodean al gobierno y se leen juntos.</p>
   </div>
+
+  <!-- El recorrido del dato: de la fuente oficial al semáforo, con números vivos -->
+  <div class="cg-met-flow" role="list" aria-label="El recorrido del dato, de la fuente a la tensión">
+    <div class="cg-met-step" role="listitem">
+      <span class="cg-met-num">{nFuentes}</span>
+      <span class="cg-met-lbl">Fuentes</span>
+      <span class="cg-met-desc">INDEC, BCRA, Hacienda, InfoLeg, HCDN y más: públicas y citadas.</span>
+    </div>
+    <span class="cg-met-arrow" aria-hidden="true">→</span>
+    <div class="cg-met-step" role="listitem">
+      <span class="cg-met-num">{nInd}</span>
+      <span class="cg-met-lbl">Indicadores</span>
+      <span class="cg-met-desc">{autos} se extraen solos cada madrugada; el resto se declara manual o estimación.</span>
+    </div>
+    <span class="cg-met-arrow" aria-hidden="true">→</span>
+    <div class="cg-met-step" role="listitem">
+      <span class="cg-met-num">6</span>
+      <span class="cg-met-lbl">Controles</span>
+      <span class="cg-met-desc">Si un dato no cierra, no se publica: queda en pie la edición anterior.</span>
+    </div>
+    <span class="cg-met-arrow" aria-hidden="true">→</span>
+    <div class="cg-met-step" role="listitem">
+      <span class="cg-met-num">3</span>
+      <span class="cg-met-lbl">Índices</span>
+      <span class="cg-met-desc">ITCM, ITCG e ITVC; política y espíritu promedian sus tensiones.</span>
+    </div>
+    <span class="cg-met-arrow" aria-hidden="true">→</span>
+    <div class="cg-met-step" role="listitem">
+      <span class="cg-met-num">{coma(informe.score_global)}<small>/10</small></span>
+      <span class="cg-met-lbl">Tensión global hoy</span>
+      <span class="cg-met-desc">Pondera los cinco cinturones según la fase del mandato.</span>
+    </div>
+  </div>
+
+  <!-- Los tres índices paramétricos, con su valor vivo → ficha metodológica -->
+  <div class="cg-met-indices">
+    {indices.map(({ meta, indice }) => (
+      <a class={`cg-met-ind cg-met-ind--${meta.slug}`} href={`${base}/metodologia/${indice.sigla.toLowerCase()}/`}>
+        <div class="cg-met-ind-head">
+          <span class="cg-met-ind-sigla">{indice.sigla}</span>
+          <span class="cg-met-ind-cint">{meta.nombre}</span>
+        </div>
+        <div class="cg-met-ind-val">
+          {coma(indice.data.valor)}<small>{indice.base100 ? " · base 100" : "/100"}</small>
+        </div>
+        <div class="cg-met-ind-banda">{indice.data.banda_legible}</div>
+        <div class="cg-met-ind-comp">{compDe(indice)} · puntaje {indice.base100 ? "por evolución vs. 4T-2023" : "interpolado entre umbrales institucionales"}</div>
+        <div class="cg-met-ind-cta">Ficha metodológica →</div>
+      </a>
+    ))}
+  </div>
+
+  <!-- Por qué creerle: los controles publicados -->
   <div class="cg-method-grid">
-    <article><h3>Cinco cinturones</h3><p>Macro, política, vida cotidiana, gestión y <strong>espíritu de época</strong> (la sintonía emocional del gobierno con el humor social). Cada uno agrupa indicadores que, leídos juntos, describen el clima del país.</p></article>
-    <article><h3>Indicadores automatizados</h3><p>La mayoría de los indicadores se extraen automáticamente de fuentes públicas (<strong>INDEC</strong>, <strong>BCRA</strong>, <strong>InfoLeg</strong>, HCDN). Los de carga manual o pendientes se marcan como tales.</p></article>
-    <article><h3>Score y barbarismos</h3><p>Cada indicador se traduce a una <strong>tensión 0–10</strong> con una fórmula explícita (visible al tocar cada indicador). Macro usa el <strong>ITCM</strong> y gestión el <strong>ITCG</strong> (índices paramétricos 0–100 con puntaje interpolado entre los umbrales institucionales); vida cotidiana usa el <strong>ITVC</strong>, un índice base 100 que mide la mejora o deterioro acumulado desde el 4º trimestre de 2023; en el resto, el score es el <strong>promedio</strong> de las tensiones. El global pondera los cinco cinturones <strong>según la fase del mandato</strong>: en los primeros años pesan más gestión y espíritu de época (construyen la credibilidad del proyecto); en la consolidación, macro y política. Cada cinturón tiene además un <strong>riesgo de barbarismo</strong> (tecnocrático, político, gerencial).</p></article>
-    <article><h3>Regla de lectura</h3><p>Un cinturón en rojo es manejable; <strong>dos o más</strong> simultáneos señalan inestabilidad sistémica.</p></article>
+    <article>
+      <h3>Robustez publicada</h3>
+      <p>Cada índice se recalcula en <strong>1.000 escenarios</strong> perturbando pesos e insumos (Monte Carlo); la banda donde cae el 90% de los casos se publica junto al valor. Si la lectura dependiera de la ponderación exacta, se vería.</p>
+    </article>
+    <article>
+      <h3>Validación externa</h3>
+      <p>Cada índice se contrasta contra un ancla externa que nadie del proyecto controla — riesgo país (ITCM), confianza del consumidor (ITVC), Merval en dólares (ITCG) — y la matriz cruzada verifica que cada uno correlacione más con su ancla propia.{rs.length === 3 && <Fragment> Hoy: <strong>r {rs[0]} · {rs[1]} · {rs[2]}</strong>.</Fragment>}</p>
+    </article>
+    <article>
+      <h3>Ponderación por fase</h3>
+      <p>El global pondera los cinco cinturones según el momento del mandato ({fase}): al principio pesan más gestión y espíritu de época — construyen credibilidad —; en la consolidación, macro y política. Cada cinturón vigila además su <strong>riesgo de barbarismo</strong> (hoy: {cap(informe.barbarismo_activo)}).</p>
+    </article>
+    <article>
+      <h3>Regla de lectura</h3>
+      <p>Un cinturón en rojo es manejable; <strong>dos o más simultáneos</strong> señalan inestabilidad sistémica. Hoy: {rojos === 0 ? "ninguno en rojo" : `${rojos} en rojo`}.</p>
+    </article>
   </div>
-  <p class="cg-method-cta">
-    <a href={`${base}/metodologia/`}>Diccionario de indicadores y fichas metodológicas →</a>
-  </p>
+
+  <!-- Acceso al diccionario: la documentación completa -->
+  <a class="cg-met-cta" href={`${base}/metodologia/`}>
+    <div>
+      <span class="cg-met-cta-num">{nFichas}</span>
+      <div class="cg-met-cta-txt">
+        <strong>fichas metodológicas — una por indicador e índice.</strong>
+        Qué mide, de dónde sale el dato, cómo se calcula, cómo puntúa, qué limitaciones tiene y qué cambió de método. Formato del estándar internacional (ODS / OCDE), generado de los mismos datos que ve en pantalla.
+      </div>
+    </div>
+    <span class="cg-met-cta-go">Abrir el diccionario →</span>
+  </a>
 </section>
