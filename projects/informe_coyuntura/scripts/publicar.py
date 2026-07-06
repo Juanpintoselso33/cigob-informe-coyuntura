@@ -316,10 +316,27 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
             print(f"[WARN] robustez {sigla}: {e}")
         _marcar_dimensiones_criticas(bloque, UMBRAL_CRITICO_BANDAS)
     for ikey, ind in c["indicadores"].items():
-        aporte = formula = nota = None
+        aporte = formula = nota = lectura = None
         p = ind.get(f"puntaje_{clave}")
         if ind.get("en_indice") and isinstance(p, (int, float)):
             aporte = round((100 - p) / 10, 1)
+            # El score del cinturón NO es la suma de estos números: el índice
+            # agrega puntajes ponderados y la tensión sale del agregado. Este
+            # número es la tensión EQUIVALENTE del indicador leído solo — y el
+            # texto lo dice, con lectura especial en los extremos (un "0" pelado
+            # parecía dato roto y un logro terminado leía como irrelevante).
+            cm = lambda x: str(x).replace(".", ",")
+            if p >= 95:
+                lectura = (f"Leído solo en la escala del {sigla}, equivale a una tensión de "
+                           f"{cm(aporte)}/10: puntaje pleno o casi pleno — este frente está "
+                           f"logrado y hoy no agrega tensión al índice.")
+            elif p <= 15:
+                lectura = (f"Leído solo en la escala del {sigla}, equivale a una tensión de "
+                           f"{cm(aporte)}/10: puntaje mínimo — este frente concentra la "
+                           f"tensión del cinturón.")
+            else:
+                lectura = (f"Leído solo en la escala del {sigla}, este indicador equivale a "
+                           f"una tensión de {cm(aporte)}/10.")
             peso = ind.get("peso_efectivo")
             peso_txt = f"; pesa {peso * 100:.1f}%".replace(".", ",") + f" del {sigla}" if peso else ""
             formula = (f"Anclas {sigla}: {mod.texto_bandas(ikey)} "
@@ -333,6 +350,7 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
         ind["aporte_score"] = aporte
         ind["aporte_formula"] = formula
         ind["aporte_nota"] = nota
+        ind["aporte_lectura"] = lectura
         ind["aporte_input_txt"] = input_txt_fn(ikey, ind)
 
 
@@ -741,7 +759,7 @@ def _scoring_vida_itvc(c, series):
     en_itvc = {k for d in itvc.DIMENSIONES_ITVC.values() for k in d["indicadores"]}
     coma = lambda x: str(x).replace(".", ",")
     for ikey, ind in c["indicadores"].items():
-        aporte = formula = nota = None
+        aporte = formula = nota = lectura = None
         if ikey in por_ind:
             dkey, info = por_ind[ikey]
             ind["en_indice"] = True
@@ -749,6 +767,23 @@ def _scoring_vida_itvc(c, series):
             ind["indice_itvc"] = info["puntaje_aplicado"]
             ind["peso_efectivo"] = info["peso_efectivo"]
             aporte = itvc.tension_de_itvc(info["puntaje_aplicado"])
+            # tensión SIN topear: el 0 de un componente en mejora fuerte no es
+            # "no incide" — es tensión negativa cortada por la escala, y hay
+            # que decirlo (varios componentes distintos mostraban el mismo 0)
+            cruda = round(5 - (info["puntaje_aplicado"] - 100) * 0.2, 1)
+            if cruda < 0:
+                lectura = (f"Este componente está en {coma(info['puntaje_aplicado'])} contra una "
+                           f"base de 100: su tensión equivalente daría negativa "
+                           f"({coma(cruda)}) y la escala se corta en 0. No solo no suma "
+                           f"tensión — empuja el índice del cinturón hacia arriba. Por eso "
+                           f"más de un componente en mejora fuerte puede mostrar el mismo 0.")
+            elif cruda > 10:
+                lectura = (f"La tensión equivalente excede el tope de la escala "
+                           f"({coma(cruda)}) y se corta en 10: deterioro profundo contra el "
+                           f"arranque del mandato.")
+            else:
+                lectura = (f"En la escala del cinturón, este componente equivale a una "
+                           f"tensión de {coma(aporte)}/10.")
             # bases DECLARADAS distintas del 4T-2023 (fuente sin medición en la base del doc)
             base_lbl = {"inseguridad": "ene-2024 (base declarada: la encuesta se reanudó ese mes)"} \
                 .get(ikey, "4T-2023")
@@ -774,6 +809,7 @@ def _scoring_vida_itvc(c, series):
         ind["aporte_score"] = aporte
         ind["aporte_formula"] = formula
         ind["aporte_nota"] = nota
+        ind["aporte_lectura"] = lectura
 
 
 # Indicadores macro OCULTOS del snapshot (ADR-0022): siguen en la pipeline
@@ -804,7 +840,7 @@ def aplicar_scoring(informe, series):
             _scoring_vida_itvc(c, series)
             continue
         for ikey, ind in c["indicadores"].items():
-            aporte = formula = nota = None
+            aporte = formula = nota = lectura = None
             if ikey in SCORING:
                 spec = SCORING[ikey]
                 fn, mapa = spec[0], spec[1]
@@ -813,6 +849,11 @@ def aplicar_scoring(informe, series):
                 if isinstance(entrada, (int, float)):
                     aporte = _clamp10(fn(float(entrada)))
                     formula = mapa
+                    # acá el score del cinturón SÍ es el promedio de estas tensiones
+                    cm = lambda x: str(x).replace(".", ",")
+                    lectura = (f"Entra al promedio del cinturón con una tensión de "
+                               f"{cm(aporte)}/10." +
+                               (" Hoy no registra tensión." if aporte == 0 else ""))
                     if campo == "var_real_12m":                  # mostrar el input real, no el stock
                         ind["aporte_input_txt"] = f"{entrada:+.1f}% interanual real (no el stock nominal)".replace(".", ",")
                 elif ckey == "vida_cotidiana":
@@ -822,6 +863,7 @@ def aplicar_scoring(informe, series):
             ind["aporte_score"] = aporte
             ind["aporte_formula"] = formula
             ind["aporte_nota"] = nota
+            ind["aporte_lectura"] = lectura
     return informe
 
 

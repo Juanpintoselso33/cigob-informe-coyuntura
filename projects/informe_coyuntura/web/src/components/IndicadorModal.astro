@@ -48,6 +48,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       aporteScore: ind.aporte_score ?? null,
       aporteFormula: ind.aporte_formula ?? null,
       aporteNota: ind.aporte_nota ?? null,
+      aporteLectura: ind.aporte_lectura ?? null,
       aporteInputTxt: ind.aporte_input_txt ?? null,
       scoreCint: c.score, scoreExpl: c.score_explicacion ?? "",
       slug: SLUG_DE[ckey] ?? ckey,
@@ -197,7 +198,7 @@ const dimsJson = JSON.stringify(dims);
     else if (tipo === "gauge_avance") chartInstance = C.gaugeChart(el, d.avance, { color, label: "avance ejecutado" });
     else if (tipo === "gauge_valor") chartInstance = C.gaugeChart(el, d.valorNum, { color, label: "nivel actual",
                centerText: `${nf.format(d.valorNum)}${d.unidadCorta ? " " + d.unidadCorta : ""}` });
-    else if (tipo === "gauge_tension") chartInstance = C.gaugeChart(el, d.aporteScore * 10, { color, label: "aporte de tensión",
+    else if (tipo === "gauge_tension") chartInstance = C.gaugeChart(el, d.aporteScore * 10, { color, label: "tensión equivalente",
                centerText: `${nf.format(d.aporteScore)} / 10` });
     else if (tipo === "barra") chartInstance = C.barChart(el, C.componentesDe(key, d.componentes), { color, unidad: d.unidad });
   }
@@ -264,7 +265,7 @@ const dimsJson = JSON.stringify(dims);
           `</div>` +
           (d.aporteInputTxt ? `<p class="cg-score-map"><strong>Valor usado:</strong> ${esc(d.aporteInputTxt)}</p>` : "") +
           (d.aporteFormula ? `<p class="cg-score-map"><strong>Cómo se calcula:</strong> ${esc(d.aporteFormula)}</p>` : "") +
-          `<p class="cg-score-note">Este indicador aporta <strong>${nf.format(d.aporteScore)} de 10</strong> de tensión. ` +
+          `<p class="cg-score-note">${esc(d.aporteLectura || `Este indicador equivale a una tensión de ${nf.format(d.aporteScore)} de 10.`)} ` +
             `Score del cinturón: <strong>${nf.format(d.scoreCint)}/10</strong>. ` +
             `${esc(d.scoreExpl || "Promedio de las tensiones de sus indicadores.")}</p>`;
         score.style.display = "";
