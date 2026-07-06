@@ -1,0 +1,143 @@
+---
+// Diccionario de indicadores (/metodologia): el índice de las fichas
+// metodológicas. Lista los tres índices paramétricos y todos los indicadores
+// por cinturón; los que ya tienen ficha completa linkean a ella.
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import { informe, CINTURONES, label, badgeEstado, indiceDe, indicadoresOrdenados } from "../../lib/datos.ts";
+import { DESCRIPCIONES } from "../../lib/descripciones.ts";
+import { FICHAS } from "../../lib/fichas.ts";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// organismo productor (chip corto): primer tramo del campo fuente. Algunas
+// fuentes son URLs crudas — se reducen al dominio para no reventar el layout.
+const org = (fuente?: string) => {
+  if (!fuente) return null;
+  if (/^https?:\/\//.test(fuente)) {
+    try { return new URL(fuente).hostname.replace(/^www\./, ""); } catch { return null; }
+  }
+  const o = fuente.split("—")[0].split("(")[0].trim();
+  return o.length > 42 ? o.slice(0, 39) + "…" : o;
+};
+
+const indices = CINTURONES
+  .map(c => ({ meta: c, indice: indiceDe(informe.cinturones[c.key]) }))
+  .filter(x => x.indice);
+
+const totalFichas = Object.keys(FICHAS).length;
+---
+<Layout title="Diccionario de indicadores · Informe de Coyuntura · CiGob">
+  <Nav />
+  <header class="cg-hero cg-detalle-hero" id="top">
+    <div class="cg-hero-inner cg-detalle-inner">
+      <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a> · Metodología</p>
+      <h1 class="cg-hero-title cg-detalle-title">Diccionario de indicadores</h1>
+      <p class="cg-hero-lead cg-detalle-lead">
+        Una ficha metodológica por indicador, con estructura estándar: qué mide, de dónde sale,
+        cómo se calcula, cómo incide en el índice, qué limitaciones tiene y qué decisiones de
+        método se tomaron. Para leer el informe no hace falta nada de esto; para auditarlo, está todo.
+      </p>
+      <div class="cg-detalle-meta">
+        <span class="cg-detalle-chip">Edición <strong>{informe.period}</strong></span>
+        <span class="cg-detalle-chip"><strong>{totalFichas}</strong> fichas publicadas · el resto en preparación</span>
+      </div>
+    </div>
+  </header>
+  <main class="cg-main">
+
+    <section class="cg-section">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">El estándar</p>
+        <h2 class="cg-h2">Cómo se documenta cada indicador</h2>
+        <p class="cg-h2-sub">El formato adapta los estándares de la estadística pública al tamaño de este informe.</p>
+      </div>
+      <div class="cg-method-grid">
+        <article><h3>Una ficha por indicador</h3><p>Estructura fija tomada del <strong>template de metadatos ODS</strong> (Naciones Unidas) y de las fichas metodológicas de los institutos de estadística: definición, fuente exacta, método de cómputo, limitaciones declaradas y tratamiento de datos faltantes.</p></article>
+        <article><h3>Índices según OCDE/JRC</h3><p>Los índices compuestos (ITCM, ITCG, ITVC) se documentan con el <strong>checklist del Handbook on Constructing Composite Indicators</strong> (OCDE/JRC, 2008): marco conceptual, normalización, agregación, robustez y validación, paso por paso.</p></article>
+        <article><h3>Generada desde los datos</h3><p>Los números de cada ficha (valores, puntajes, pesos, bandas de robustez) <strong>no se transcriben</strong>: salen del mismo archivo de datos que alimenta las cards del informe y se reconstruyen con cada actualización.</p></article>
+        <article><h3>Decisiones con registro</h3><p>Cada cambio de método queda asentado con fecha en un <strong>registro de decisiones</strong> (ADR): qué se cambió, por qué, qué alternativas se descartaron y cómo afectó al valor publicado.</p></article>
+      </div>
+    </section>
+
+    <section class="cg-section">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">Índices paramétricos</p>
+        <h2 class="cg-h2">Los tres índices del informe</h2>
+      </div>
+      <div class="cg-dicc-list">
+        {indices.map(({ meta, indice }) => {
+          const tieneFicha = indice!.sigla.toLowerCase() in FICHAS;
+          const href = `${base}/metodologia/${indice!.sigla.toLowerCase()}/`;
+          const Row = tieneFicha ? "a" : "div";
+          return (
+            <Row class:list={["cg-dicc-row", { "is-pend": !tieneFicha }]} href={tieneFicha ? href : undefined}>
+              <div class="cg-dicc-main">
+                <span class="cg-dicc-name">{indice!.sigla} — {indice!.nombre}</span>
+                <span class="cg-dicc-que">Cinturón {meta.nombre.toLowerCase()} · hoy {indice!.data.valor}{indice!.base100 ? "" : "/100"} · {indice!.data.banda_legible}</span>
+              </div>
+              <div class="cg-dicc-chips">
+                <span class="cg-dicc-chip">Índice compuesto</span>
+                {tieneFicha
+                  ? <span class="cg-dicc-cta">Ficha completa →</span>
+                  : <span class="cg-dicc-pend">Ficha en preparación</span>}
+              </div>
+            </Row>
+          );
+        })}
+      </div>
+    </section>
+
+    {CINTURONES.map(c => {
+      const cint = informe.cinturones[c.key];
+      const filas = indicadoresOrdenados(cint);
+      return (
+        <section class="cg-section">
+          <div class="cg-section-head">
+            <p class="cg-eyebrow">Cinturón</p>
+            <h2 class="cg-h2">{c.nombre}</h2>
+            <p class="cg-h2-sub">{c.sub}. {filas.length} indicadores publicados.</p>
+          </div>
+          <div class="cg-dicc-list">
+            {filas.map(({ key, ind }) => {
+              const tieneFicha = key in FICHAS;
+              const href = `${base}/metodologia/${key}/`;
+              const que = DESCRIPCIONES[key]?.que ?? "";
+              const o = org(ind.fuente as string | undefined);
+              const Row = tieneFicha ? "a" : "div";
+              return (
+                <Row class:list={["cg-dicc-row", { "is-pend": !tieneFicha }]} href={tieneFicha ? href : undefined}>
+                  <div class="cg-dicc-main">
+                    <span class="cg-dicc-name">{label(key)}</span>
+                    <span class="cg-dicc-que">{que}</span>
+                  </div>
+                  <div class="cg-dicc-chips">
+                    {o && <span class="cg-dicc-chip">{o}</span>}
+                    <span class="cg-dicc-chip">{badgeEstado(ind)}</span>
+                    {tieneFicha
+                      ? <span class="cg-dicc-cta">Ficha completa →</span>
+                      : <span class="cg-dicc-pend">Ficha en preparación</span>}
+                  </div>
+                </Row>
+              );
+            })}
+          </div>
+        </section>
+      );
+    })}
+
+    <section class="cg-section">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">Referencias</p>
+        <h2 class="cg-h2">Los estándares que sigue este diccionario</h2>
+      </div>
+      <ul class="cg-ficha-ul">
+        <li><strong>Template de metadatos de indicadores ODS</strong> (IAEG-SDGs, Naciones Unidas): la estructura de las fichas de indicador — definición, fuentes, método de cómputo, limitaciones, tratamiento de faltantes.</li>
+        <li><strong>Handbook on Constructing Composite Indicators: Methodology and User Guide</strong> (OCDE / JRC de la Comisión Europea, 2008): el checklist de construcción y documentación de los índices compuestos.</li>
+        <li><strong>Fichas metodológicas de la estadística oficial</strong> (lineamientos DANE; informes metodológicos estandarizados del sistema estadístico europeo): el formato de ficha única por operación estadística.</li>
+      </ul>
+    </section>
+  </main>
+  <Footer />
+</Layout>

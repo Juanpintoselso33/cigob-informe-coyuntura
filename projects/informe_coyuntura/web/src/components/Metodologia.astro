@@ -1,3 +1,6 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
 <section class="cg-section cg-method" id="metodologia">
   <div class="cg-section-head">
     <p class="cg-eyebrow">Cómo se construye</p>
@@ -10,4 +13,7 @@
     <article><h3>Score y barbarismos</h3><p>Cada indicador se traduce a una <strong>tensión 0–10</strong> con una fórmula explícita (visible al tocar cada indicador). Macro usa el <strong>ITCM</strong> y gestión el <strong>ITCG</strong> (índices paramétricos 0–100 con puntaje interpolado entre los umbrales institucionales); vida cotidiana usa el <strong>ITVC</strong>, un índice base 100 que mide la mejora o deterioro acumulado desde el 4º trimestre de 2023; en el resto, el score es el <strong>promedio</strong> de las tensiones. El global pondera los cinco cinturones <strong>según la fase del mandato</strong>: en los primeros años pesan más gestión y espíritu de época (construyen la credibilidad del proyecto); en la consolidación, macro y política. Cada cinturón tiene además un <strong>riesgo de barbarismo</strong> (tecnocrático, político, gerencial).</p></article>
     <article><h3>Regla de lectura</h3><p>Un cinturón en rojo es manejable; <strong>dos o más</strong> simultáneos señalan inestabilidad sistémica.</p></article>
   </div>
+  <p class="cg-method-cta">
+    <a href={`${base}/metodologia/`}>Diccionario de indicadores y fichas metodológicas →</a>
+  </p>
 </section>

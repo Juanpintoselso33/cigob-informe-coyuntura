@@ -1,0 +1,407 @@
+---
+// Ficha metodológica de un indicador o índice (/metodologia/<id>).
+// El contenido editorial (limitaciones, fuente exacta, ADRs, changelog) vive en
+// lib/fichas.ts; los números (valor, puntajes, pesos, robustez) se leen de
+// informe.json en el build — la ficha se reconstruye con cada actualización.
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import seriesRaw from "../../data/series.json";
+import { informe, CINTURONES, label, presentacion, badgeEstado, UNIDADES_LARGAS, indiceDe } from "../../lib/datos.ts";
+import { DESCRIPCIONES } from "../../lib/descripciones.ts";
+import { FORMULAS } from "../../lib/formulas.ts";
+import { FICHAS, tramoDeAnclas, type FichaIndicador, type FichaIndice } from "../../lib/fichas.ts";
+
+export function getStaticPaths() {
+  return Object.keys(FICHAS).map(id => ({ params: { id } }));
+}
+
+const { id } = Astro.params;
+const f = FICHAS[id!];
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+const CINT_NOMBRE: Record<string, string> = {
+  macro: "Macroeconomía", politica: "Política", vida_cotidiana: "Vida cotidiana",
+  gestion: "Gestión", espiritu_epoca: "Espíritu de época",
+};
+const slugDe = Object.fromEntries(CINTURONES.map(c => [c.key, c.slug]));
+const cinturon = (informe.cinturones as any)[f.cinturon];
+const slug = slugDe[f.cinturon];
+
+const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const mesLeg = (iso: string) => {
+  const [y, m] = iso.split("-");
+  return `${MESES[+m - 1]}-${y}`;
+};
+const coma = (n: number, dec = 1) =>
+  n.toLocaleString("es-AR", { maximumFractionDigits: dec });
+const pct = (n: number) => coma(Math.round(n * 1000) / 10) + "%";
+
+// ── Datos runtime según el tipo de ficha ────────────────────────────────
+const esIndicador = f.tipo === "indicador";
+const fi = f as FichaIndicador;
+const fx = f as FichaIndice;
+
+// indicador: fila del cinturón + su lugar dentro del índice paramétrico
+const ind = esIndicador ? cinturon.indicadores[f.id] : null;
+const desc = esIndicador ? (DESCRIPCIONES[f.id] ?? { que: "", aporta: "", frecuencia: "—", tipo: "—" }) : null;
+const formula = esIndicador ? FORMULAS[f.id] : null;
+const pres = ind ? presentacion(f.id, ind) : null;
+const indice = indiceDe(cinturon);
+let dimNombre: string | null = null, pesoDim = 0, pesoInterno = 0, puntajeHoy: number | null = null;
+if (esIndicador && indice) {
+  for (const dim of Object.values(indice.data.dimensiones) as any[]) {
+    if (f.id in (dim.indicadores ?? {})) {
+      dimNombre = dim.nombre; pesoDim = dim.peso;
+      pesoInterno = dim.indicadores[f.id].peso;
+      puntajeHoy = dim.indicadores[f.id].puntaje_aplicado;
+    }
+  }
+}
+const pesoEfectivo = esIndicador ? (ind?.peso_efectivo ?? pesoDim * pesoInterno) : 0;
+
+// serie completa (sin la ventana de presentación) para la cobertura real
+const serie = (seriesRaw as Record<string, { fecha: string }[]>)[f.id] ?? [];
+const cobertura = serie.length
+  ? `${mesLeg(serie[0].fecha)} → ${mesLeg(serie[serie.length - 1].fecha)} (${serie.length} puntos mensuales)`
+  : null;
+
+// ejemplo resuelto de la interpolación con el dato vigente
+let ejemplo: string | null = null;
+if (esIndicador && fi.anclas && typeof ind?.valor === "number" && puntajeHoy !== null) {
+  const t = tramoDeAnclas(fi.anclas.puntos, ind.valor);
+  const v = `${coma(ind.valor, 2)} ${fi.anclas.unidadCorta}`;
+  ejemplo = t.plano
+    ? `El dato vigente (${v}, ${mesLeg(ind.fecha_dato)}) cae en el tramo plano de la escala (más allá del ancla ${coma(t.borde, 2)}): puntaje ${coma(puntajeHoy)}.`
+    : `El dato vigente (${v}, ${mesLeg(ind.fecha_dato)}) cae entre las anclas ${coma(t.x0, 2)} → ${t.y0} puntos y ${coma(t.x1, 2)} → ${t.y1} puntos. La recta entre ambas da el puntaje del mes: ${coma(puntajeHoy)}.`;
+}
+
+// índice: bloque paramétrico completo
+const it = !esIndicador ? (cinturon as any)[f.id] : null;
+const rob = it?.robustez ?? null;
+const val = it?.validacion ?? null;
+const tension = it ? Math.round((100 - it.valor) * 10) / 100 : null;
+const composicion = it
+  ? Object.entries(it.dimensiones).map(([dkey, dim]: [string, any]) => ({
+      key: dkey, nombre: dim.nombre, peso: dim.peso, puntaje: dim.puntaje, critica: !!dim.critica,
+      inds: Object.entries(dim.indicadores ?? {}).map(([ikey, i]: [string, any]) => ({
+        key: ikey, label: label(ikey), peso: i.peso, puntaje: i.puntaje_aplicado,
+      })),
+    }))
+  : [];
+
+// secciones OCDE/JRC del índice (título, chip de paso, párrafos)
+const pasosIndice = !esIndicador ? [
+  { paso: "Paso 1 · OCDE/JRC", titulo: "Marco conceptual", parrafos: fx.marcoConceptual },
+  { paso: "Paso 2 · OCDE/JRC", titulo: "Selección de indicadores", parrafos: fx.seleccion },
+  { paso: "Paso 3 · OCDE/JRC", titulo: "Tratamiento de los datos", parrafos: fx.tratamiento },
+  { paso: "Paso 5 · OCDE/JRC", titulo: "Normalización: anclas interpoladas", parrafos: fx.normalizacion },
+] : [];
+
+const titulo = esIndicador ? label(f.id) : `${fx.sigla} — ${fx.nombreLargo}`;
+const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
+---
+<Layout title={`Ficha metodológica: ${titulo} · Informe de Coyuntura · CiGob`}>
+  <Nav />
+  <header class={`cg-hero cg-detalle-hero cg-detalle-hero--${slug}`} id="top">
+    <div class="cg-hero-inner cg-detalle-inner">
+      <p class="cg-eyebrow"><a href={`${base}/metodologia/`}>← Diccionario</a> · Ficha metodológica</p>
+      <h1 class="cg-hero-title cg-detalle-title">{heroTitulo}</h1>
+      <p class="cg-hero-lead cg-detalle-lead">{esIndicador ? desc!.que : fx.resumen}</p>
+      <div class="cg-detalle-meta">
+        {esIndicador && pres && (
+          <span class="cg-detalle-chip">Hoy <strong>{pres.texto}{pres.unidad ? ` ${pres.unidad}` : ""}</strong> ({mesLeg(ind.fecha_dato)})</span>
+        )}
+        {esIndicador && puntajeHoy !== null && indice && (
+          <span class="cg-detalle-chip">Puntaje en el {indice.sigla} <strong>{coma(puntajeHoy)}/100</strong></span>
+        )}
+        {esIndicador && pesoEfectivo > 0 && indice && (
+          <span class="cg-detalle-chip">Pesa <strong>{pct(pesoEfectivo)}</strong> del {indice.sigla}</span>
+        )}
+        {esIndicador && ind && <span class="cg-detalle-chip"><strong>{badgeEstado(ind)}</strong></span>}
+        {!esIndicador && it && (
+          <span class="cg-detalle-chip">Hoy <strong>{coma(it.valor)}/100</strong> · {it.banda_legible}</span>
+        )}
+        {!esIndicador && tension !== null && (
+          <span class="cg-detalle-chip">Tensión <strong>{coma(tension)}/10</strong></span>
+        )}
+        {!esIndicador && rob && (
+          <span class="cg-detalle-chip">90% de escenarios <strong>{coma(rob.p05)}–{coma(rob.p95)}</strong></span>
+        )}
+        <span class="cg-detalle-chip">Cinturón <strong>{CINT_NOMBRE[f.cinturon]}</strong></span>
+      </div>
+    </div>
+  </header>
+  <main class="cg-main">
+
+    {esIndicador && (
+      <Fragment>
+        <!-- ── Identificación (ficha ODS 0-3: qué es, unidad, fuente) ── -->
+        <section class="cg-section">
+          <div class="cg-section-head">
+            <p class="cg-eyebrow">Identificación</p>
+            <h2 class="cg-h2">La ficha del indicador</h2>
+            <p class="cg-h2-sub">Estructura según el estándar internacional de metadatos de indicadores (template ODS de Naciones Unidas, adaptado).</p>
+          </div>
+          <dl class="cg-ficha-dl">
+            <div><dt>Identificador técnico</dt><dd><code>{f.id}</code></dd></div>
+            <div><dt>Cinturón</dt><dd>{CINT_NOMBRE[f.cinturon]}</dd></div>
+            {dimNombre && indice && (
+              <div><dt>Dimensión en el {indice.sigla}</dt><dd>{dimNombre} ({pct(pesoDim)} del índice) · {pct(pesoInterno)} interno</dd></div>
+            )}
+            <div><dt>Unidad de medida</dt><dd>{UNIDADES_LARGAS[f.id] ?? ind.unidad ?? "—"}</dd></div>
+            <div><dt>Frecuencia</dt><dd>{desc!.frecuencia}</dd></div>
+            <div><dt>Tipo de dato</dt><dd>{desc!.tipo}</dd></div>
+            {cobertura && <div><dt>Serie disponible</dt><dd>{cobertura}; el informe grafica desde dic-2023 (inicio del mandato)</dd></div>}
+            <div><dt>Rezago de publicación</dt><dd>{fi.rezago}</dd></div>
+            <div><dt>Productor del dato</dt><dd>{fi.fuente.organismo}</dd></div>
+            <div>
+              <dt>Operación estadística</dt>
+              <dd>{fi.fuente.url ? <a href={fi.fuente.url} target="_blank" rel="noopener">{fi.fuente.operacion}</a> : fi.fuente.operacion}</dd>
+            </div>
+            {fi.fuente.serie && <div><dt>Serie exacta</dt><dd>{fi.fuente.serie}</dd></div>}
+            <div><dt>Modo de acceso</dt><dd>{fi.fuente.acceso}</dd></div>
+            <div><dt>Última actualización</dt><dd>Dato a {mesLeg(ind.fecha_dato)} · informe generado el {informe.generated_at.slice(0, 10)}</dd></div>
+          </dl>
+        </section>
+
+        <!-- ── Qué mide y por qué importa (ODS 2.a + 4.a) ── -->
+        <section class="cg-section">
+          <div class="cg-section-head">
+            <p class="cg-eyebrow">Definición</p>
+            <h2 class="cg-h2">Qué mide y por qué importa</h2>
+          </div>
+          <p class="cg-ficha-p"><strong>Qué mide.</strong> {desc!.que}</p>
+          <p class="cg-ficha-p"><strong>Por qué importa.</strong> {desc!.aporta}</p>
+        </section>
+
+        <!-- ── Método de cómputo (ODS 4.c) ── -->
+        <section class="cg-section">
+          <div class="cg-section-head">
+            <p class="cg-eyebrow">Método de cómputo</p>
+            <h2 class="cg-h2">Cómo se calcula</h2>
+          </div>
+          <div class="cg-ficha-card">
+            {formula && <div class="cg-ficha-math" data-latex={formula.latex}></div>}
+            {formula?.leyenda && <p class="cg-ficha-p" style="margin-top:8px;">{formula.leyenda}</p>}
+            <ul class="cg-ficha-ul">
+              {fi.transformaciones.map(t => <li>{t}</li>)}
+            </ul>
+          </div>
+        </section>
+
+        <!-- ── Cómo entra al índice: umbrales + interpolación + ejemplo ── -->
+        {fi.anclas && indice && (
+          <section class="cg-section">
+            <div class="cg-section-head">
+              <p class="cg-eyebrow">Puntaje</p>
+              <h2 class="cg-h2">Cómo entra al {indice.sigla}</h2>
+              <p class="cg-h2-sub">Los umbrales son institucionales (paramétrica CIGOB); el motor los lee como anclas y el puntaje se interpola linealmente entre ellas.</p>
+            </div>
+            <div class="cg-ficha-card">
+              <div class="cg-ficha-tablewrap">
+                <table class="cg-ficha-tabla">
+                  <thead><tr><th>Valor ({fi.anclas.unidadCorta})</th><th>Puntaje de banda</th></tr></thead>
+                  <tbody>
+                    {fi.anclas.bandas.map(b => (
+                      <tr><td class="num">{b.banda}</td><td class="num">{b.puntaje}</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p class="cg-ficha-p" style="margin-top:10px;">
+                Cada banda finita ancla su puntaje en su punto medio y las abiertas en su borde;
+                entre anclas el puntaje es lineal, fuera de la primera y la última queda plano.
+                Así, dos valores casi iguales nunca reciben puntajes lejanos.
+              </p>
+              {ejemplo && <div class="cg-ficha-callout"><strong>Ejemplo con el dato vigente.</strong> {ejemplo}</div>}
+              {ind.aporte_lectura && <p class="cg-ficha-p" style="margin-top:12px;">{ind.aporte_lectura}</p>}
+            </div>
+            {fi.dobleUso && (
+              <p class="cg-ficha-p" style="margin-top:14px;"><strong>Participación en otros indicadores.</strong> {fi.dobleUso}</p>
+            )}
+          </section>
+        )}
+
+        <!-- ── Limitaciones (ODS 4.b) + faltantes (4.g) + revisiones ── -->
+        <section class="cg-section">
+          <div class="cg-section-head">
+            <p class="cg-eyebrow">Transparencia</p>
+            <h2 class="cg-h2">Limitaciones declaradas</h2>
+          </div>
+          <ul class="cg-ficha-ul">
+            {fi.limitaciones.map(l => <li>{l}</li>)}
+          </ul>
+          <dl class="cg-ficha-dl" style="margin-top:16px;">
+            <div><dt>Si falta el dato</dt><dd>{fi.faltantes}</dd></div>
+            <div><dt>Política de revisiones</dt><dd>{fi.revisiones}</dd></div>
+          </dl>
+        </section>
+      </Fragment>
+    )}
+
+    {!esIndicador && it && (
+      <Fragment>
+        {pasosIndice.map(sec => (
+          <section class="cg-section">
+            <div class="cg-section-head">
+              <span class="cg-paso-chip">{sec.paso}</span>
+              <h2 class="cg-h2">{sec.titulo}</h2>
+            </div>
+            {sec.parrafos.map(p => <p class="cg-ficha-p">{p}</p>)}
+            {sec.titulo === "Selección de indicadores" && (
+              <div class="cg-ficha-card" style="margin-top:14px;">
+                <div class="cg-ficha-tablewrap">
+                  <table class="cg-ficha-tabla">
+                    <thead><tr><th>Dimensión</th><th>Peso</th><th>Indicador</th><th>Peso interno</th><th>Puntaje hoy</th></tr></thead>
+                    <tbody>
+                      {composicion.map(dim =>
+                        dim.inds.map((i, k) => (
+                          <tr>
+                            {k === 0 && <th rowspan={dim.inds.length}>{dim.nombre}{dim.critica ? " ⚠" : ""}</th>}
+                            {k === 0 && <td class="num" rowspan={dim.inds.length}>{pct(dim.peso)}</td>}
+                            <td>{i.label}</td>
+                            <td class="num">{pct(i.peso)}</td>
+                            <td class="num">{coma(i.puntaje)}</td>
+                          </tr>
+                        ))
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+                <p class="cg-ficha-p" style="margin:10px 0 0; font-size:12.5px; color:var(--muted);">
+                  Composición vigente a {informe.period}, generada de los mismos datos que publica el informe.
+                </p>
+              </div>
+            )}
+          </section>
+        ))}
+
+        <!-- ── Paso 6: agregación (fórmula) ── -->
+        <section class="cg-section">
+          <div class="cg-section-head">
+            <span class="cg-paso-chip">Paso 6 · OCDE/JRC</span>
+            <h2 class="cg-h2">Ponderación y agregación</h2>
+          </div>
+          <div class="cg-ficha-card">
+            <div class="cg-ficha-math" data-latex={fx.agregacion.latex}></div>
+            <p class="cg-ficha-p" style="margin-top:8px;">{fx.agregacion.leyenda}</p>
+          </div>
+          {fx.agregacion.parrafos.map(p => <p class="cg-ficha-p" style="margin-top:12px;">{p}</p>)}
+          {it.ajustes_aplicados?.length > 0 && (
+            <div class="cg-ficha-callout">
+              <strong>Ajustes de analista activos este mes:</strong>{" "}
+              {it.ajustes_aplicados.map((a: any) => `${label(a.indicador)}: ${a.de} → ${a.a} (${a.justificacion})`).join(" · ")}
+            </div>
+          )}
+          {(!it.ajustes_aplicados || it.ajustes_aplicados.length === 0) && (
+            <p class="cg-ficha-p" style="font-size:12.5px; color:var(--muted);">Este mes no hay ajustes de analista activos: el índice es 100% automático.</p>
+          )}
+        </section>
+
+        <!-- ── Paso 7: robustez (números runtime) ── -->
+        {rob && (
+          <section class="cg-section">
+            <div class="cg-section-head">
+              <span class="cg-paso-chip">Paso 7 · OCDE/JRC</span>
+              <h2 class="cg-h2">Robustez y sensibilidad</h2>
+            </div>
+            {fx.robustez.map(p => <p class="cg-ficha-p">{p}</p>)}
+            <div class="cg-ficha-callout">
+              <strong>Edición vigente ({informe.period}).</strong>{" "}
+              {fx.sigla} publicado: {coma(it.valor)}. En {rob.n_draws.toLocaleString("es-AR")} escenarios simulados,
+              el 90% cae entre {coma(rob.p05)} y {coma(rob.p95)} (tensión {coma(rob.tension_rango[0])}–{coma(rob.tension_rango[1])}).
+              {rob.dominante && ` Componente dominante: ${label(rob.dominante.indicador)} — sin él, el índice sería ${coma(rob.dominante.indice_sin)}.`}
+            </div>
+          </section>
+        )}
+
+        <!-- ── Paso 9: validación externa (números runtime) ── -->
+        <section class="cg-section">
+          <div class="cg-section-head">
+            <span class="cg-paso-chip">Paso 9 · OCDE/JRC</span>
+            <h2 class="cg-h2">Validación contra anclas externas</h2>
+          </div>
+          {fx.validacion.map(p => <p class="cg-ficha-p">{p}</p>)}
+          {val && (
+            <div class="cg-ficha-callout">
+              <strong>Edición vigente.</strong> Correlación en niveles con el ancla externa: r = {coma(val.r_niveles, 2)} ({val.n} meses).
+              El detalle — niveles vs. cambios mes a mes, y la matriz cruzada de los tres índices — se publica en la <a href={`${base}/${slug}/`}>página del cinturón</a>.
+            </div>
+          )}
+        </section>
+
+        <!-- ── Paso 10: comunicación + interpretación ── -->
+        <section class="cg-section">
+          <div class="cg-section-head">
+            <span class="cg-paso-chip">Paso 10 · OCDE/JRC</span>
+            <h2 class="cg-h2">Comunicación y lectura</h2>
+          </div>
+          {fx.comunicacion.map(p => <p class="cg-ficha-p">{p}</p>)}
+          <div class="cg-ficha-card" style="margin-top:14px; max-width:480px;">
+            <div class="cg-ficha-tablewrap">
+              <table class="cg-ficha-tabla">
+                <thead><tr><th>{fx.sigla}</th><th>Lectura</th></tr></thead>
+                <tbody>
+                  {fx.interpretacion.map(r => (
+                    <tr><td class="num">{r.rango}</td><td>{r.lectura}</td></tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Limitaciones del índice ── -->
+        <section class="cg-section">
+          <div class="cg-section-head">
+            <p class="cg-eyebrow">Transparencia</p>
+            <h2 class="cg-h2">Limitaciones declaradas</h2>
+          </div>
+          <ul class="cg-ficha-ul">
+            {fx.limitaciones.map(l => <li>{l}</li>)}
+          </ul>
+        </section>
+      </Fragment>
+    )}
+
+    <!-- ── Registro de decisiones + changelog (común a ambos tipos) ── -->
+    <section class="cg-section">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">Registro de decisiones</p>
+        <h2 class="cg-h2">Cambios metodológicos documentados</h2>
+        <p class="cg-h2-sub">Cada decisión de método queda asentada en un registro interno (ADR) con contexto, opciones consideradas y consecuencias. Acá, el historial del {esIndicador ? "indicador" : "índice"}.</p>
+      </div>
+      <ul class="cg-cambios">
+        {[...f.cambios].reverse().map(c => (
+          <li>
+            <span class="fecha">{c.fecha}{c.adr ? ` · ${c.adr}` : ""}</span>
+            {c.cambio}
+          </li>
+        ))}
+      </ul>
+      <h3 class="cg-modal-h4" style="margin-top:18px;">Decisiones vinculadas (registro interno)</h3>
+      <ul class="cg-adr-list">
+        {f.adrs.map(a => (
+          <li><span class="cg-adr-id">{a.id}</span><span>{a.titulo}</span></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="cg-section">
+      <div class="cg-ficha-foot">
+        <a href={`${base}/metodologia/`}>← Diccionario de indicadores</a>
+        <a href={`${base}/${slug}/`}>Ver el cinturón {CINT_NOMBRE[f.cinturon]} en vivo →</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  // KaTeX para las fórmulas de la ficha (mismo motor que el modal).
+  import { renderFormula } from "../../lib/math.ts";
+  document.querySelectorAll<HTMLElement>(".cg-ficha-math[data-latex]").forEach(el => {
+    renderFormula(el, el.dataset.latex!);
+  });
+</script>
