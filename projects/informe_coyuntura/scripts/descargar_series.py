@@ -933,6 +933,28 @@ def fetch_carne_serie() -> list:
         m += 1
         if m > 12:
             m = 1; y += 1
+    # El informe del MES PASADO (M−1) sale en los primeros días del mes
+    # corriente y la card (fetch_ciccra) lo levanta apenas existe: la serie
+    # también debe intentarlo, pero SIN persistir None (el None permanente es
+    # la razón por la que el bucle principal corta en M−2) — si el PDF todavía
+    # no salió, se reintenta en la corrida siguiente. Sin esto, el titular
+    # avanza un mes antes que la serie y el gate G3 corta el pipeline.
+    ult = hoy.replace(day=1) - timedelta(days=1)
+    ym_ult = f"{ult.year}-{ult.month:02d}"
+    if cache.get(ym_ult) is None:
+        url = _url_pdf(ult.year, ult.month)
+        for u in (url, url.replace(f"-{ult.year}-", f"b-{ult.year}-", 1)):
+            try:
+                r = requests.get(u, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
+                if r.status_code == 200 and r.content[:4] == b"%PDF":
+                    valor = _extraer_per_capita(r.content)
+                    if valor is not None:
+                        cache[ym_ult] = valor
+                        CARNE_SERIE_STORE.write_text(
+                            json.dumps(cache, indent=1, ensure_ascii=False), encoding="utf-8")
+                        break
+            except requests.RequestException:
+                continue
     return [[f"{ym}-01", v] for ym, v in sorted(cache.items()) if v]
 
 
