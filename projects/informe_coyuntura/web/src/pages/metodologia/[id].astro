@@ -68,7 +68,7 @@ const cobertura = serie.length
 
 // ejemplo resuelto de la interpolación con el dato vigente
 let ejemplo: string | null = null;
-if (esIndicador && fi.anclas && typeof ind?.valor === "number" && puntajeHoy !== null) {
+if (esIndicador && fi.anclas && !fi.anclas.sinEjemplo && typeof ind?.valor === "number" && puntajeHoy !== null) {
   const t = tramoDeAnclas(fi.anclas.puntos, ind.valor);
   const v = `${coma(ind.valor, 2)} ${fi.anclas.unidadCorta}`;
   ejemplo = t.plano
@@ -80,7 +80,12 @@ if (esIndicador && fi.anclas && typeof ind?.valor === "number" && puntajeHoy !==
 const it = !esIndicador ? (cinturon as any)[f.id] : null;
 const rob = it?.robustez ?? null;
 const val = it?.validacion ?? null;
-const tension = it ? Math.round((100 - it.valor) * 10) / 100 : null;
+// tensión 0-10: paramétricas = (100 − valor) / 10 · base-100 = 5 − (valor − 100) × 0,2
+const tension = it
+  ? (fx.base100
+      ? Math.round((5 - (it.valor - 100) * 0.2) * 10) / 10
+      : Math.round((100 - it.valor) * 10) / 100)
+  : null;
 const composicion = it
   ? Object.entries(it.dimensiones).map(([dkey, dim]: [string, any]) => ({
       key: dkey, nombre: dim.nombre, peso: dim.peso, puntaje: dim.puntaje, critica: !!dim.critica,
@@ -95,7 +100,7 @@ const pasosIndice = !esIndicador ? [
   { paso: "Paso 1 · OCDE/JRC", titulo: "Marco conceptual", parrafos: fx.marcoConceptual },
   { paso: "Paso 2 · OCDE/JRC", titulo: "Selección de indicadores", parrafos: fx.seleccion },
   { paso: "Paso 3 · OCDE/JRC", titulo: "Tratamiento de los datos", parrafos: fx.tratamiento },
-  { paso: "Paso 5 · OCDE/JRC", titulo: "Normalización: anclas interpoladas", parrafos: fx.normalizacion },
+  { paso: "Paso 5 · OCDE/JRC", titulo: fx.base100 ? "Normalización: base 100" : "Normalización: anclas interpoladas", parrafos: fx.normalizacion },
 ] : [];
 
 const titulo = esIndicador ? label(f.id) : `${fx.sigla} — ${fx.nombreLargo}`;
@@ -113,14 +118,14 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
           <span class="cg-detalle-chip">Hoy <strong>{pres.texto}{pres.unidad ? ` ${pres.unidad}` : ""}</strong> ({mesLeg(ind.fecha_dato)})</span>
         )}
         {esIndicador && puntajeHoy !== null && indice && (
-          <span class="cg-detalle-chip">Puntaje en el {indice.sigla} <strong>{coma(puntajeHoy)}/100</strong></span>
+          <span class="cg-detalle-chip">{indice.base100 ? "Componente" : `Puntaje en el ${indice.sigla}`} <strong>{coma(puntajeHoy)}{indice.base100 ? "" : "/100"}</strong>{indice.base100 ? " · 100 = 4T-2023" : ""}</span>
         )}
         {esIndicador && pesoEfectivo > 0 && indice && (
           <span class="cg-detalle-chip">Pesa <strong>{pct(pesoEfectivo)}</strong> del {indice.sigla}</span>
         )}
         {esIndicador && ind && <span class="cg-detalle-chip"><strong>{badgeEstado(ind)}</strong></span>}
         {!esIndicador && it && (
-          <span class="cg-detalle-chip">Hoy <strong>{coma(it.valor)}/100</strong> · {it.banda_legible}</span>
+          <span class="cg-detalle-chip">Hoy <strong>{coma(it.valor)}{fx.base100 ? "" : "/100"}</strong>{it.banda_legible ? ` · ${it.banda_legible}` : ""}{fx.base100 ? " · base 100 = 4T-2023" : ""}</span>
         )}
         {!esIndicador && tension !== null && (
           <span class="cg-detalle-chip">Tensión <strong>{coma(tension)}/10</strong></span>
@@ -190,31 +195,41 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
           </div>
         </section>
 
-        <!-- ── Cómo entra al índice: umbrales + interpolación + ejemplo ── -->
-        {fi.anclas && indice && (
+        <!-- ── Cómo entra al índice/score: anclas interpoladas O explicación directa ── -->
+        {(fi.anclas || fi.incidenciaTexto) && (
           <section class="cg-section">
             <div class="cg-section-head">
               <p class="cg-eyebrow">Puntaje</p>
-              <h2 class="cg-h2">Cómo entra al {indice.sigla}</h2>
-              <p class="cg-h2-sub">Los umbrales son institucionales (paramétrica CIGOB); el motor los lee como anclas y el puntaje se interpola linealmente entre ellas.</p>
+              <h2 class="cg-h2">{indice ? `Cómo entra al ${indice.sigla}` : "Cómo se convierte en tensión"}</h2>
+              {fi.anclas && (
+                <p class="cg-h2-sub">Los umbrales son institucionales (paramétrica CIGOB); el motor los lee como anclas y el puntaje se interpola linealmente entre ellas.</p>
+              )}
             </div>
             <div class="cg-ficha-card">
-              <div class="cg-ficha-tablewrap">
-                <table class="cg-ficha-tabla">
-                  <thead><tr><th>Valor ({fi.anclas.unidadCorta})</th><th>Puntaje de banda</th></tr></thead>
-                  <tbody>
-                    {fi.anclas.bandas.map(b => (
-                      <tr><td class="num">{b.banda}</td><td class="num">{b.puntaje}</td></tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p class="cg-ficha-p" style="margin-top:10px;">
-                Cada banda finita ancla su puntaje en su punto medio y las abiertas en su borde;
-                entre anclas el puntaje es lineal, fuera de la primera y la última queda plano.
-                Así, dos valores casi iguales nunca reciben puntajes lejanos.
-              </p>
-              {ejemplo && <div class="cg-ficha-callout"><strong>Ejemplo con el dato vigente.</strong> {ejemplo}</div>}
+              {fi.anclas && (
+                <Fragment>
+                  <div class="cg-ficha-tablewrap">
+                    <table class="cg-ficha-tabla">
+                      <thead><tr><th>Valor ({fi.anclas.unidadCorta})</th><th>Puntaje de banda</th></tr></thead>
+                      <tbody>
+                        {fi.anclas.bandas.map(b => (
+                          <tr><td class="num">{b.banda}</td><td class="num">{b.puntaje}</td></tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p class="cg-ficha-p" style="margin-top:10px;">
+                    Cada banda finita ancla su puntaje en su punto medio y las abiertas en su borde;
+                    entre anclas el puntaje es lineal, fuera de la primera y la última queda plano.
+                    Así, dos valores casi iguales nunca reciben puntajes lejanos.
+                  </p>
+                  {ejemplo && <div class="cg-ficha-callout"><strong>Ejemplo con el dato vigente.</strong> {ejemplo}</div>}
+                </Fragment>
+              )}
+              {fi.incidenciaTexto?.map(p => <p class="cg-ficha-p">{p}</p>)}
+              {!fi.anclas && ind.aporte_formula && (
+                <div class="cg-ficha-callout"><strong>Regla vigente.</strong> {ind.aporte_formula}</div>
+              )}
               {ind.aporte_lectura && <p class="cg-ficha-p" style="margin-top:12px;">{ind.aporte_lectura}</p>}
             </div>
             {fi.dobleUso && (
@@ -253,7 +268,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
               <div class="cg-ficha-card" style="margin-top:14px;">
                 <div class="cg-ficha-tablewrap">
                   <table class="cg-ficha-tabla">
-                    <thead><tr><th>Dimensión</th><th>Peso</th><th>Indicador</th><th>Peso interno</th><th>Puntaje hoy</th></tr></thead>
+                    <thead><tr><th>Dimensión</th><th>Peso</th><th>Indicador</th><th>Peso interno</th><th>{fx.base100 ? "Nivel hoy (100 = 4T-23)" : "Puntaje hoy"}</th></tr></thead>
                     <tbody>
                       {composicion.map(dim =>
                         dim.inds.map((i, k) => (
@@ -365,25 +380,19 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
       </Fragment>
     )}
 
-    <!-- ── Registro de decisiones + changelog (común a ambos tipos) ── -->
+    <!-- ── Historial de cambios metodológicos (común a ambos tipos) ── -->
     <section class="cg-section">
       <div class="cg-section-head">
-        <p class="cg-eyebrow">Registro de decisiones</p>
+        <p class="cg-eyebrow">Historial</p>
         <h2 class="cg-h2">Cambios metodológicos documentados</h2>
-        <p class="cg-h2-sub">Cada decisión de método queda asentada en un registro interno (ADR) con contexto, opciones consideradas y consecuencias. Acá, el historial del {esIndicador ? "indicador" : "índice"}.</p>
+        <p class="cg-h2-sub">Cada decisión de método queda asentada con fecha en el registro de decisiones del proyecto — con contexto, opciones consideradas y su efecto sobre el valor publicado. Acá, el historial del {esIndicador ? "indicador" : "índice"}.</p>
       </div>
       <ul class="cg-cambios">
         {[...f.cambios].reverse().map(c => (
           <li>
-            <span class="fecha">{c.fecha}{c.adr ? ` · ${c.adr}` : ""}</span>
+            <span class="fecha">{c.fecha}</span>
             {c.cambio}
           </li>
-        ))}
-      </ul>
-      <h3 class="cg-modal-h4" style="margin-top:18px;">Decisiones vinculadas (registro interno)</h3>
-      <ul class="cg-adr-list">
-        {f.adrs.map(a => (
-          <li><span class="cg-adr-id">{a.id}</span><span>{a.titulo}</span></li>
         ))}
       </ul>
     </section>
