@@ -227,3 +227,24 @@ def test_parsear_acta_ignora_fila_de_encabezado():
 
 def test_parsear_acta_html_vacio():
     assert politica._parsear_acta("") == []
+
+
+def test_parsear_acta_ignora_fila_sin_bloque():
+    # Regresión: fila real "PENDIENTE DE INCORPORACIÓN" (legislador sin asignar)
+    # tiene nombre no-vacío pero bloque vacío — debe ser filtrada.
+    # Estructura: 6 <td> (pasar el gate de longitud), pero bloque data-order=""
+    html = """
+    <table id="myTable">
+    <tbody>
+    <tr>
+      <td><div><a><img></a></div></td>
+      <td data-order="pendiente">PENDIENTE DE INCORPORACIÓN</td>
+      <td data-order=""></td>
+      <td data-order="">—</td>
+      <td><center><span class="label label-default">INEXISTENTE</span></center></td>
+      <td></td>
+    </tr>
+    </tbody>
+    </table>
+    """
+    assert politica._parsear_acta(html) == []
