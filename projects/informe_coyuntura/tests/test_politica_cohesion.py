@@ -303,3 +303,9 @@ def test_cohesion_desactualizada_corrida_previa_reciente():
 def test_cohesion_desactualizada_corrida_previa_vieja():
     vieja = (datetime.now() - timedelta(days=20)).strftime("%Y-%m-%d")
     assert politica._cohesion_desactualizada({"corrida_exitosa_en": vieja}, None)
+
+
+def test_cohesion_desactualizada_corrida_exitosa_sin_votos_nuevos():
+    hoy = datetime.now().strftime("%Y-%m-%d")
+    corrida_receso = {"valor": None, "n_actas": 0, "corrida_exitosa_en": hoy}
+    assert not politica._cohesion_desactualizada(None, corrida_receso)
