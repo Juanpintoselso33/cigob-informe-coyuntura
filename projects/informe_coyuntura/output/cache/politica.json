@@ -1,7 +1,139 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-05T06:28:07.943279",
-  "score": 4.6,
+  "generated_at": "2026-07-07T18:23:25.788450",
+  "score": 3.5,
+  "itcp": {
+    "valor": 64.7,
+    "banda": "moderadamente_aflojado",
+    "banda_legible": "Moderadamente aflojado",
+    "dimensiones": {
+      "poder_legislativo": {
+        "nombre": "Poder legislativo",
+        "peso": 0.3,
+        "puntaje": 36.8,
+        "indicadores": {
+          "ratio_dnu": {
+            "peso": 0.25,
+            "puntaje_banda": 45.0,
+            "puntaje_aplicado": 45.0,
+            "valor": 1.471,
+            "peso_efectivo": 0.075
+          },
+          "eficacia_legislativa": {
+            "peso": 0.3,
+            "puntaje_banda": 10.0,
+            "puntaje_aplicado": 10.0,
+            "valor": 4.3,
+            "peso_efectivo": 0.09
+          },
+          "veto_quorum": {
+            "peso": 0.2,
+            "puntaje_banda": 100.0,
+            "puntaje_aplicado": 100.0,
+            "valor": 0.0,
+            "peso_efectivo": 0.06
+          },
+          "comisiones_caidas": {
+            "peso": 0.25,
+            "puntaje_banda": 10.0,
+            "puntaje_aplicado": 10.0,
+            "valor": 97.7,
+            "peso_efectivo": 0.075
+          }
+        },
+        "peso_efectivo": 0.3
+      },
+      "alianzas_territoriales": {
+        "nombre": "Alianzas territoriales",
+        "peso": 0.25,
+        "puntaje": 86.4,
+        "indicadores": {
+          "iaf_transferencias": {
+            "peso": 0.4,
+            "puntaje_banda": 91.0,
+            "puntaje_aplicado": 91.0,
+            "valor": 7.0,
+            "peso_efectivo": 0.1
+          },
+          "gobernadores_alineamiento": {
+            "peso": 0.3,
+            "puntaje_banda": 85.0,
+            "puntaje_aplicado": 85.0,
+            "valor": 55.0,
+            "peso_efectivo": 0.075
+          },
+          "adhesion_reformas_provincial": {
+            "peso": 0.3,
+            "puntaje_banda": 81.7,
+            "puntaje_aplicado": 81.7,
+            "valor": 66.7,
+            "peso_efectivo": 0.075
+          }
+        },
+        "peso_efectivo": 0.25
+      },
+      "cohesion_interna": {
+        "nombre": "Cohesión interna del oficialismo",
+        "peso": 0.2,
+        "puntaje": 86.3,
+        "indicadores": {
+          "cohesion_bloque": {
+            "peso": 0.65,
+            "puntaje_banda": 79.0,
+            "puntaje_aplicado": 79.0,
+            "valor": 78.0,
+            "peso_efectivo": 0.13
+          },
+          "cohesion_bloque_senado": {
+            "peso": 0.35,
+            "puntaje_banda": 100.0,
+            "puntaje_aplicado": 100.0,
+            "valor": 99.5,
+            "peso_efectivo": 0.07
+          }
+        },
+        "peso_efectivo": 0.2
+      },
+      "conflicto_social": {
+        "nombre": "Conflicto social",
+        "peso": 0.15,
+        "puntaje": 48.2,
+        "indicadores": {
+          "movilizacion_cepa": {
+            "peso": 0.6,
+            "puntaje_banda": 64.4,
+            "puntaje_aplicado": 64.4,
+            "valor": 50.5,
+            "peso_efectivo": 0.09
+          },
+          "protestas_caba": {
+            "peso": 0.4,
+            "puntaje_banda": 23.8,
+            "puntaje_aplicado": 23.8,
+            "valor": 25.4,
+            "peso_efectivo": 0.06
+          }
+        },
+        "peso_efectivo": 0.15
+      },
+      "imagen_voto": {
+        "nombre": "Imagen y voto",
+        "peso": 0.1,
+        "puntaje": 75.6,
+        "indicadores": {
+          "votometro_ventaja_lla": {
+            "peso": 1.0,
+            "puntaje_banda": 75.6,
+            "puntaje_aplicado": 75.6,
+            "valor": 5.3,
+            "peso_efectivo": 0.1
+          }
+        },
+        "peso_efectivo": 0.1
+      }
+    },
+    "ajustes_aplicados": []
+  },
   "indicadores": {
     "votometro_ventaja_lla": {
       "valor": 5.3,
@@ -20,7 +152,7 @@
       "periodo": "2026",
       "unidad": "DNUs por ley",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-07-05",
+      "fecha_dato": "2026-07-07",
       "desactualizado": false
     },
     "movilizacion_cepa": {
@@ -29,7 +161,7 @@
       "metrica": "101.0 conflictos acumulados",
       "unidad": "Índice (0–100)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
-      "fecha_dato": "2026-07-05",
+      "fecha_dato": "2026-07-07",
       "desactualizado": false
     },
     "iaf_transferencias": {
@@ -41,7 +173,7 @@
       "ipc_aplicado_pct": 31.5,
       "unidad": "% interanual real",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-      "fecha_dato": "2026-07-05",
+      "fecha_dato": "2026-07-07",
       "desactualizado": false
     },
     "eficacia_legislativa": {
@@ -51,17 +183,8 @@
       "ventana_dias": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-      "fecha_dato": "2026-07-05",
+      "fecha_dato": "2026-07-07",
       "desactualizado": false
-    },
-    "cohesion_bloque": {
-      "valor": 78,
-      "estado": "placeholder",
-      "unidad": "% votos en línea con la posición oficial del bloque LLA",
-      "fuente": "Votaciones Cámara de Diputados — elaboración CIGOB en base a Hcdn.gob.ar",
-      "notas": "Proporción de diputados del bloque LLA que votaron alineados con la posición oficial en las votaciones nominales de los últimos 3 meses.",
-      "fecha_dato": "2026-04-01",
-      "desactualizado": true
     },
     "gobernadores_alineamiento": {
       "valor": 55,
@@ -79,7 +202,7 @@
       "periodo_id": "HCDN144",
       "unidad": "% de sesiones",
       "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-      "fecha_dato": "2026-07-05",
+      "fecha_dato": "2026-07-07",
       "desactualizado": false
     },
     "comisiones_caidas": {
@@ -90,8 +213,42 @@
       "ventana_dias": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-07-05",
+      "fecha_dato": "2026-07-07",
       "desactualizado": false
+    },
+    "adhesion_reformas_provincial": {
+      "valor": 66.7,
+      "unidad": "% de provincias (sobre 24) adheridas al RIGI",
+      "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+      "fecha_dato": "2026-07-07",
+      "n_provincias": 16
+    },
+    "protestas_caba": {
+      "valor": 301,
+      "unidad": "eventos de protesta en 12 meses (CABA, ACLED)",
+      "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
+      "fecha_dato": "2026-05-01",
+      "desactualizado": false,
+      "eventos_2023": 240,
+      "var_vs_2023": 25.4,
+      "detalle_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo"
+    },
+    "cohesion_bloque": {
+      "valor": 78,
+      "estado": "placeholder",
+      "unidad": "% votos en línea con la posición oficial del bloque LLA",
+      "fuente": "Votaciones Cámara de Diputados — elaboración CIGOB en base a Hcdn.gob.ar",
+      "notas": "Proporción de diputados del bloque LLA que votaron alineados con la posición oficial en las votaciones nominales de los últimos 3 meses.",
+      "fecha_dato": "2026-04-01",
+      "desactualizado": true
+    },
+    "cohesion_bloque_senado": {
+      "valor": 99.5,
+      "unidad": "% cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días",
+      "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+      "fecha_dato": "2026-06-04",
+      "n_actas": 21,
+      "corrida_exitosa_en": "2026-07-07"
     }
   }
 }

@@ -115,9 +115,19 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (12m)", tipo: "Nivel (%)",
   },
   cohesion_bloque: {
-    que: "Qué porcentaje de los diputados de LLA vota alineado con la posición oficial del bloque.",
-    aporta: "Indica la disciplina de la tropa propia, clave para sostener vetos y aprobar leyes.",
-    frecuencia: "Trimestral", tipo: "Nivel (%)",
+    que: "Qué tan pareja o dispareja vota puertas adentro el bloque propio de diputados de LLA en las votaciones nominales divididas de los últimos 90 días: resta los votos a favor menos los votos en contra de cada acta, en valor absoluto, sobre el total de votos que emitió el bloque en esa acta.",
+    aporta: "Mide la cohesión interna del oficialismo — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente —, clave para sostener vetos y aprobar leyes.",
+    frecuencia: "Continua (90d)", tipo: "Nivel (%)",
+  },
+  cohesion_bloque_senado: {
+    que: "El mismo cálculo que la cohesión de bloque en Diputados, aplicado a las votaciones nominales del bloque propio de LLA en el Senado: a favor menos en contra por acta dividida, en valor absoluto sobre el total, promediado en los últimos 90 días.",
+    aporta: "Es una lectura complementaria, no un reemplazo, de la cohesión en Diputados: otra cámara, con un bloque propio mucho más chico, donde una sola disidencia mueve el promedio con más fuerza.",
+    frecuencia: "Continua (90d)", tipo: "Nivel (%)",
+  },
+  adhesion_reformas_provincial: {
+    que: "Cuántas de las 24 provincias (incluida CABA) figuran adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI), sobre el total.",
+    aporta: "Mide adhesión fiscal a un régimen de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de gobernadores.",
+    frecuencia: "Continua", tipo: "Nivel (%)",
   },
   gobernadores_alineamiento: {
     que: "Qué porcentaje de los gobernadores se posiciona públicamente alineado con la política nacional.",

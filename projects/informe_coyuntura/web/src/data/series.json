@@ -16936,7 +16936,19 @@
     },
     {
       "fecha": "2026-07-01",
-      "valor": 97.8
+      "valor": 97.7
+    }
+  ],
+  "cohesion_bloque_senado": [
+    {
+      "fecha": "2026-07-01",
+      "valor": 99.5
+    }
+  ],
+  "adhesion_reformas_provincial": [
+    {
+      "fecha": "2026-07-01",
+      "valor": 66.7
     }
   ],
   "sentimiento_digital": [
