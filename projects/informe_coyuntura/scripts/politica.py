@@ -27,6 +27,7 @@ import re
 import math
 import calendar
 import logging
+import time
 import requests
 import urllib3
 from datetime import datetime, date, timedelta
@@ -84,6 +85,11 @@ HCDN_SESIONES_RID    = "4ac70a51-a82d-428b-966a-0a203dd0a7e3"   # sesiones plena
 HCDN_DICTAMENES_RID  = "59595a93-5a5e-4ba6-a3db-c1044e2f949e"   # dictámenes de comisión
 _RE_PE_EXP           = re.compile(r"\d+-PE-\d{4}")
 
+# HCDN Votaciones — votaciones.hcdn.gob.ar (portal de votaciones nominales)
+HCDN_VOTACIONES_BASE = "https://votaciones.hcdn.gob.ar"
+_HCDN_VOTACIONES_DELAY = 0.3  # segundos entre requests — evita el WAF F5 BIG-IP
+                              # (confirmado: Como_voto corre a diario con este patrón)
+
 # IPC interanual diciembre (INDEC). Actualizar en enero de cada año.
 # 2024: 117.06% acumulado anual. 2025: 38.3% acumulado anual (estimado previo a cierre).
 IPC_ANUAL = {2024: 1.1706, 2025: 0.383}   # fallback dic-dic si la API INDEC falla
@@ -106,6 +112,35 @@ def _ipc_dicdic_indec() -> dict:
     return {y: dic[y] / dic[y - 1] - 1 for y in dic if y - 1 in dic}
 
 logging.basicConfig(level=logging.WARNING, format="%(message)s")
+
+
+# ── HCDN Votaciones session helpers ──────────────────────────────────────────────
+
+def _hcdn_votaciones_session() -> requests.Session:
+    """Sesión persistente con headers estables. El WAF del sitio devuelve 403
+    ante ráfagas o headers que varían entre requests — reusar la misma sesión
+    y no variar el UA es lo que lo evita."""
+    s = requests.Session()
+    s.headers.update(HTTP_HEADERS)
+    return s
+
+
+def _hcdn_votaciones_get(session: requests.Session, path: str, **kwargs):
+    """GET con pacing fijo y retry/backoff ante 403 (hasta 3 intentos).
+    None si se agotan los reintentos o hay un error de red."""
+    url = f"{HCDN_VOTACIONES_BASE}{path}"
+    for intento in range(3):
+        time.sleep(_HCDN_VOTACIONES_DELAY)
+        try:
+            r = session.get(url, timeout=HTTP_TIMEOUT, **kwargs)
+        except requests.RequestException:
+            return None
+        if r.status_code == 200:
+            return r
+        if r.status_code == 403:
+            continue
+        return None
+    return None
 
 
 # ── Cache helpers ─────────────────────────────────────────────────────────────
