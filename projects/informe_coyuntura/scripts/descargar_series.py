@@ -947,7 +947,6 @@ def fetch_inseguridad_serie() -> list:
 
 
 CARNE_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "carne_serie.json"
-MOTOS_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "motos_serie.json"
 
 
 def fetch_carne_serie() -> list:
@@ -1044,67 +1043,6 @@ def fetch_motos_serie() -> list:
     return out
 
 
-def fetch_motos_serie_cached() -> list:
-    """Serie mensual de motos con cache historico persistente."""
-    import importlib.util
-    config_path = Path(__file__).parent / "vida_cotidiana" / "config.py"
-    spec = importlib.util.spec_from_file_location("_vida_cotidiana_config", config_path)
-    vida_config = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(vida_config)
-    CAFAM_API = vida_config.CAFAM_API
-
-    def _load_cache() -> dict:
-        try:
-            data = json.loads(MOTOS_SERIE_STORE.read_text(encoding="utf-8-sig"))
-            if isinstance(data, dict):
-                return {k: int(v) for k, v in data.items() if v is not None}
-        except (OSError, json.JSONDecodeError, TypeError, ValueError):
-            pass
-
-        cache = {}
-        csv_path = OUTPUT_DIR / "vida_cotidiana.csv"
-        try:
-            with open(csv_path, newline="", encoding="utf-8-sig") as f:
-                for row in csv.DictReader(f):
-                    if row.get("indicador") == "patentamiento_motos":
-                        ym = str(row.get("fecha", ""))[:7]
-                        try:
-                            cache[ym] = int(float(row.get("valor") or 0))
-                        except ValueError:
-                            continue
-        except OSError:
-            pass
-        return cache
-
-    cache = _load_cache()
-    hoy = date.today()
-    fin = hoy.replace(day=1) - timedelta(days=1)
-    y, m = 2022, 11
-    while (y, m) <= (fin.year, fin.month):
-        ym = f"{y}-{m:02d}"
-        if ym not in cache:
-            try:
-                r = requests.get(CAFAM_API, params={"month_start": m, "month_end": m,
-                                                    "year": y, "type": "TODOS"},
-                                 headers=HTTP_HEADERS, timeout=min(HTTP_TIMEOUT, 10))
-                r.raise_for_status()
-                total = sum(p["count"] for p in r.json().get("provinces", []))
-                if total > 0:
-                    cache[ym] = total
-                    MOTOS_SERIE_STORE.write_text(
-                        json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
-            except Exception as e:
-                print(f"  [WARN] motos serie {ym}: {e}")
-        m += 1
-        if m > 12:
-            m = 1; y += 1
-    if cache:
-        MOTOS_SERIE_STORE.write_text(
-            json.dumps({k: cache[k] for k in sorted(cache)}, indent=2, ensure_ascii=False),
-            encoding="utf-8")
-    return [[f"{ym}-01", cache[ym]] for ym in sorted(cache)]
-
-
 # Componentes transformados del ITVC-B100 (100 = promedio 4T-2023, ADR-0018)
 VIDA_DERIVADAS += [
     ("itvc_alimentos", "índice (100 = 4T-2023)", "INDEC IPC Alimentos + RIPTE (elab. CIGOB)", fetch_itvc_alimentos),
@@ -1112,7 +1050,7 @@ VIDA_DERIVADAS += [
     ("itvc_ipi", "índice (100 = 4T-2023)", "INDEC IPI desestacionalizado", fetch_itvc_ipi),
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
-    ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie_cached),
+    ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie),
     # inseguridad = IVI mensual (ADR-0032); el SNIC anual sigue como serie de
     # contraste bajo clave propia (sin card: alimenta la ficha y validaciones)
     ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),
