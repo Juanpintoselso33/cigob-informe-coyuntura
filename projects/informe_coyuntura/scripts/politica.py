@@ -785,6 +785,17 @@ def fetch_manual(nombre: str, stale_days: int = STALE_MANUAL_DAYS) -> dict | Non
 
 # ── Score ─────────────────────────────────────────────────────────────────────
 
+def indice_rice(afirmativos: int, negativos: int) -> float | None:
+    """Índice de Rice de cohesión (0-100): |afirm-neg|/(afirm+neg) * 100.
+    Ausentes/abstenciones ya excluidos por el caller (no forman parte de la
+    votación dividida). None si no hubo votos afirmativos ni negativos del
+    bloque en esa acta (no aporta información de cohesión)."""
+    total = afirmativos + negativos
+    if total == 0:
+        return None
+    return round(abs(afirmativos - negativos) / total * 100.0, 2)
+
+
 def calcular_score(indicadores: dict) -> float:
     """
     Score 0–10: mayor = mayor tensión en capital político.
