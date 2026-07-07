@@ -35,6 +35,14 @@ jobs:
           import politica
 
           s = politica._hcdn_votaciones_session()
+
+          r_raw = s.post(f'{politica.HCDN_VOTACIONES_BASE}/votaciones/search', data={'anoSearch': '2026'}, timeout=politica.HTTP_TIMEOUT)
+          print('RAW STATUS:', r_raw.status_code)
+          print('RAW LEN:', len(r_raw.text))
+          print('OCURRENCIAS redirectActa:', r_raw.text.count('redirectActa'))
+          print('OCURRENCIAS display:', r_raw.text.lower().count('display'))
+          print('SNIPPET (0:800):', r_raw.text[:800])
+
           actas = politica._descubrir_actas(s, 2026)
           print('N ACTAS 2026:', len(actas) if actas is not None else actas)
           if actas:
