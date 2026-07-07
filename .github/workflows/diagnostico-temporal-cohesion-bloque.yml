@@ -1,0 +1,38 @@
+name: "[TEMPORAL] Diagnóstico cohesion_bloque desde runner real"
+
+# Workflow descartable, SOLO para la Tarea 11 del plan de automatización de
+# cohesion_bloque: confirmar si votaciones.hcdn.gob.ar bloquea también a los
+# runners de GitHub Actions (ya sabemos que bloquea desde este sandbox de
+# desarrollo, IP-level, per Tareas 4-10). Sin el environment "github-pages"
+# del pipeline real (que gatea el job entero a ramas autorizadas) — corre
+# libre en cualquier rama. Se borra después de leer el resultado.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: projects/informe_coyuntura
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: projects/informe_coyuntura/requirements.txt
+
+      - name: Instalar dependencias Python
+        run: pip install -r requirements.txt
+
+      - name: Probar fetch_cohesion_bloque contra el sitio real
+        run: |
+          python -c "
+          import sys; sys.path.insert(0, 'scripts')
+          import politica
+          resultado = politica.fetch_cohesion_bloque()
+          print('RESULTADO fetch_cohesion_bloque():', resultado)
+          "
