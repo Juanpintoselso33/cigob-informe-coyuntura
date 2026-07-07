@@ -136,3 +136,9 @@ def test_descubrir_actas_acepta_slug_vacio():
     session.post.return_value = MagicMock(status_code=200, text=fixture)
     actas = politica._descubrir_actas(session, 2026)
     assert actas == [{"id": "2623", "slug": "", "fecha": datetime(2026, 2, 11)}]
+
+
+def test_descubrir_actas_excepcion_de_red_devuelve_none():
+    session = MagicMock()
+    session.post.side_effect = politica.requests.RequestException("timeout")
+    assert politica._descubrir_actas(session, 2026) is None

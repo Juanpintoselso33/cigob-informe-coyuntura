@@ -861,9 +861,12 @@ def _descubrir_actas(session: requests.Session, anio: int):
     de redirectActa (slug) viene SIEMPRE vacío ('') — no es un bug de parseo,
     es el dato real; no asumir slugs legibles aguas abajo.
     None si el request en sí falló (distinto de 'sin actas ese año' = [])."""
-    r = session.post(f"{HCDN_VOTACIONES_BASE}/votaciones/search",
-                      data={"anoSearch": str(anio)}, timeout=HTTP_TIMEOUT)
-    if r is None or r.status_code != 200:
+    try:
+        r = session.post(f"{HCDN_VOTACIONES_BASE}/votaciones/search",
+                          data={"anoSearch": str(anio)}, timeout=HTTP_TIMEOUT)
+    except requests.RequestException:
+        return None
+    if r.status_code != 200:
         return None
     soup = BeautifulSoup(r.text, "html.parser")
     actas = []
