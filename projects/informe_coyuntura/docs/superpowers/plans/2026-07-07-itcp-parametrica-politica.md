@@ -640,9 +640,49 @@ git commit -m "feat(politica): reutiliza protestas_caba de gestión como indicad
     ]
 ```
 
-(`cohesion_bloque` y `cohesion_bloque_senado` se manejan aparte, igual que en
-el plan anterior — extender el bloque especial ya agregado para incluir
-también a `cohesion_bloque_senado` con la misma lógica.)
+`cohesion_bloque` y `cohesion_bloque_senado` se manejan aparte (no en la lista
+`colectores` genérica), igual que en el plan anterior. En `main()`, el bloque
+especial que el plan anterior agregó para `cohesion_bloque` (después del `for
+nombre, fetcher in colectores:` loop, antes de `score = ...`) queda así, con
+`cohesion_bloque_senado` repitiendo la misma lógica:
+
+```python
+    resultado_cohesion = fetch_cohesion_bloque()
+    anterior_cohesion = indicadores_anteriores.get("cohesion_bloque")
+    if resultado_cohesion is not None and resultado_cohesion.get("valor") is not None:
+        frescos["cohesion_bloque"] = resultado_cohesion
+        frescos_count += 1
+    elif resultado_cohesion is not None and anterior_cohesion is not None:
+        frescos["cohesion_bloque"] = {
+            **anterior_cohesion,
+            "desactualizado": False,
+            "corrida_exitosa_en": resultado_cohesion["corrida_exitosa_en"],
+        }
+        frescos_count += 1
+    elif anterior_cohesion is not None:
+        frescos["cohesion_bloque"] = {
+            **anterior_cohesion,
+            "desactualizado": _cohesion_desactualizada(anterior_cohesion, resultado_cohesion),
+        }
+
+    resultado_cohesion_senado = fetch_cohesion_bloque_senado()
+    anterior_cohesion_senado = indicadores_anteriores.get("cohesion_bloque_senado")
+    if resultado_cohesion_senado is not None and resultado_cohesion_senado.get("valor") is not None:
+        frescos["cohesion_bloque_senado"] = resultado_cohesion_senado
+        frescos_count += 1
+    elif resultado_cohesion_senado is not None and anterior_cohesion_senado is not None:
+        frescos["cohesion_bloque_senado"] = {
+            **anterior_cohesion_senado,
+            "desactualizado": False,
+            "corrida_exitosa_en": resultado_cohesion_senado["corrida_exitosa_en"],
+        }
+        frescos_count += 1
+    elif anterior_cohesion_senado is not None:
+        frescos["cohesion_bloque_senado"] = {
+            **anterior_cohesion_senado,
+            "desactualizado": _cohesion_desactualizada(anterior_cohesion_senado, resultado_cohesion_senado),
+        }
+```
 
 - [ ] **Step 2: Actualizar `INDICADORES_ESPERADOS`**
 
