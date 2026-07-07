@@ -39,9 +39,13 @@ jobs:
           r_raw = s.post(f'{politica.HCDN_VOTACIONES_BASE}/votaciones/search', data={'anoSearch': '2026'}, timeout=politica.HTTP_TIMEOUT)
           print('RAW STATUS:', r_raw.status_code)
           print('RAW LEN:', len(r_raw.text))
-          print('OCURRENCIAS redirectActa:', r_raw.text.count('redirectActa'))
-          print('OCURRENCIAS display:', r_raw.text.lower().count('display'))
-          print('SNIPPET (0:800):', r_raw.text[:800])
+          txt = r_raw.text
+          txt_low = txt.lower()
+          for marca in ['redirectacta', '<tr', 'acta', 'votac', 'sin resultado', 'no se encontr', 'recaptcha', 'captcha', 'iniciar sesion', 'iniciar sesión', 'login', 'onclick=']:
+              print(f'OCURRENCIAS {marca!r}:', txt_low.count(marca))
+          # buscar el bloque <body> para saltear head/css y ver contenido real
+          i = txt_low.find('<body')
+          print('SNIPPET DESDE <body> (2000 chars):', txt[i:i+2000] if i >= 0 else 'NO HAY <body>')
 
           actas = politica._descubrir_actas(s, 2026)
           print('N ACTAS 2026:', len(actas) if actas is not None else actas)
