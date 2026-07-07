@@ -30,6 +30,7 @@ import logging
 import time
 import requests
 import urllib3
+from bs4 import BeautifulSoup
 from datetime import datetime, date, timedelta
 from pathlib import Path
 
@@ -839,6 +840,49 @@ BLOQUES_LLA = {"la libertad avanza", "libertad avanza"}
 
 def es_bloque_lla(nombre_bloque: str) -> bool:
     return nombre_bloque.strip().lower() in BLOQUES_LLA
+
+
+_RE_REDIRECT_ACTA = re.compile(r"redirectActa\((\d+),\s*(\d+),\s*'([^']*)'\)")
+_RE_DISPLAY_NONE   = re.compile(r"display\s*:\s*none")  # el sitio real usa "display: none" (con
+                                                          # espacio) — confirmado vía snapshot de
+                                                          # Wayback Machine (ene-2026) del listado
+                                                          # real de votaciones.hcdn.gob.ar; el
+                                                          # substring "display:none" sin espacio
+                                                          # (supuesto inicial del fixture) no
+                                                          # matchea contra la marca real.
+
+def _descubrir_actas(session: requests.Session, anio: int):
+    """POST a /votaciones/search por año -> [{id, slug, fecha}] de cada acta
+    nominal encontrada. Cada fila del listado trae la fecha en un
+    <span style="display: none">YYYYMMDD</span> y el link de detalle en un
+    onclick=redirectActa(id, ?, 'slug') — se emparejan por fila (no por regex
+    global sobre toda la página) para no desalinear fecha/acta.
+    Nota: en el sitio real (confirmado vía snapshot archivado) el 3er argumento
+    de redirectActa (slug) viene SIEMPRE vacío ('') — no es un bug de parseo,
+    es el dato real; no asumir slugs legibles aguas abajo.
+    None si el request en sí falló (distinto de 'sin actas ese año' = [])."""
+    r = session.post(f"{HCDN_VOTACIONES_BASE}/votaciones/search",
+                      data={"anoSearch": str(anio)}, timeout=HTTP_TIMEOUT)
+    if r is None or r.status_code != 200:
+        return None
+    soup = BeautifulSoup(r.text, "html.parser")
+    actas = []
+    vistos = set()
+    for fila in soup.select("tr"):
+        m = _RE_REDIRECT_ACTA.search(str(fila))
+        span_fecha = fila.find("span", style=lambda s: s and _RE_DISPLAY_NONE.search(s))
+        if not m or span_fecha is None:
+            continue
+        id_acta, _, slug = m.groups()
+        if id_acta in vistos:
+            continue
+        try:
+            fecha = datetime.strptime(span_fecha.get_text(strip=True), "%Y%m%d")
+        except ValueError:
+            continue
+        vistos.add(id_acta)
+        actas.append({"id": id_acta, "slug": slug, "fecha": fecha})
+    return actas
 
 
 def calcular_score(indicadores: dict) -> float:
