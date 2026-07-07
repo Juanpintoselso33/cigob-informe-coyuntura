@@ -142,3 +142,88 @@ def test_descubrir_actas_excepcion_de_red_devuelve_none():
     session = MagicMock()
     session.post.side_effect = politica.requests.RequestException("timeout")
     assert politica._descubrir_actas(session, 2026) is None
+
+
+def test_url_acta_con_slug():
+    assert politica._url_acta({"id": "5939", "slug": "regimen-de-zona-fria"}) == "/votacion/regimen-de-zona-fria/5939"
+
+
+def test_url_acta_sin_slug():
+    # Caso real de producción (Tarea 4: slug vacío en 500/500 filas reales)
+    assert politica._url_acta({"id": "5840", "slug": ""}) == "/votacion/5840"
+
+
+# NOTA (verificación en vivo, Tarea 5): la estructura de 3 columnas asumida
+# originalmente (`<td>nombre</td><td class="ocultar">bloque</td><td>voto</td>`)
+# NUNCA fue observada en Diputados — era inferencia por analogía con Senado.
+# Confirmado contra un snapshot real de Wayback Machine (2026-01-15, acta id
+# 5840, votaciones.hcdn.gob.ar, tabla #myTable con 257 filas = las 257 bancas):
+# cada fila real tiene 6 <td> (foto vacía, DIPUTADO, BLOQUE, PROVINCIA, voto
+# anidado en <span class="label ..."> dentro de <center>, "¿QUÉ DIJO?"); CERO
+# ocurrencias de class="ocultar" en la página real. El fixture reproduce esa
+# estructura real (incluida la celda de foto vacía y el voto anidado en
+# <span>), no la asumida originalmente. El bloque real se ve en Title Case
+# ("La Libertad Avanza", no "LA LIBERTAD AVANZA") — se preserva así en el
+# fixture porque es exactamente como llega de la fuente y es case-insensitive
+# para es_bloque_lla.
+FIXTURE_ACTA = """
+<table id="myTable">
+<thead>
+<tr class="tr-oficial"><th></th><th>DIPUTADO</th><th>BLOQUE</th><th>PROVINCIA</th><th>¿CÓMO VOTÓ?</th><th>¿QUÉ DIJO?</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="juez, luis alfredo">JUEZ, LUIS ALFREDO</td>
+  <td data-order="la libertad avanza">La Libertad Avanza</td>
+  <td data-order="cordoba">Córdoba</td>
+  <td><center><span class="label label-success col-sm-9 force-square">AFIRMATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="kueider, edgardo">KUEIDER, EDGARDO</td>
+  <td data-order="union por la patria">Union Por La Patria</td>
+  <td data-order="entre rios">Entre Ríos</td>
+  <td><center><span class="label label-danger col-sm-9 force-square">NEGATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="alguien, ausente">ALGUIEN, AUSENTE</td>
+  <td data-order="pro">Pro</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-warning col-sm-9 force-square">AUSENTE</span></center></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+"""
+
+
+def test_parsear_acta_extrae_filas():
+    filas = politica._parsear_acta(FIXTURE_ACTA)
+    assert filas == [
+        {"nombre": "JUEZ, LUIS ALFREDO", "bloque": "La Libertad Avanza", "voto": "AFIRMATIVO"},
+        {"nombre": "KUEIDER, EDGARDO", "bloque": "Union Por La Patria", "voto": "NEGATIVO"},
+        {"nombre": "ALGUIEN, AUSENTE", "bloque": "Pro", "voto": "AUSENTE"},
+    ]
+
+
+def test_parsear_acta_ignora_filas_incompletas():
+    assert politica._parsear_acta("<table><tr><td>Solo una celda</td></tr></table>") == []
+
+
+def test_parsear_acta_ignora_fila_de_encabezado():
+    # La fila <thead> real tiene solo <th> (0 <td>) — no debe colarse como dato.
+    html = """
+    <table id="myTable">
+    <thead><tr class="tr-oficial"><th></th><th>DIPUTADO</th><th>BLOQUE</th><th>PROVINCIA</th><th>VOTO</th><th></th></tr></thead>
+    <tbody></tbody>
+    </table>
+    """
+    assert politica._parsear_acta(html) == []
+
+
+def test_parsear_acta_html_vacio():
+    assert politica._parsear_acta("") == []

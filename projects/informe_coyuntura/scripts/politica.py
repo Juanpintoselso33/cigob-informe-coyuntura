@@ -888,6 +888,56 @@ def _descubrir_actas(session: requests.Session, anio: int):
     return actas
 
 
+def _url_acta(acta: dict) -> str:
+    """Construye la URL de detalle de una acta. En producción el slug viene
+    VACÍO en el 100% de las filas observadas (Tarea 4, HTML real archivado
+    2026-01-15) — con slug vacío la URL real es /votacion/{id} (confirmado
+    contra un snapshot real de Wayback Machine, id 5840, status 200), NO
+    /votacion//{id}. Se soporta igual el caso con slug por si la fuente
+    cambia en el futuro."""
+    if acta.get("slug"):
+        return f"/votacion/{acta['slug']}/{acta['id']}"
+    return f"/votacion/{acta['id']}"
+
+
+def _parsear_acta(html: str) -> list[dict]:
+    """Parsea el HTML de una acta de votación nominal de Diputados ->
+    [{nombre, bloque, voto}]. Ignora filas sin las columnas esperadas.
+
+    Estructura REAL confirmada (Tarea 5, snapshot real de Wayback Machine
+    2026-01-15, acta id 5840, tabla #myTable con 257 filas = las 257 bancas
+    de la Cámara): cada fila tiene 6 <td> — foto (índice 0, sin texto),
+    DIPUTADO/nombre (1), BLOQUE (2), PROVINCIA (3), "¿CÓMO VOTÓ?"/voto (4,
+    anidado en un <span class="label ..."> dentro de <center>, no como texto
+    directo del <td>), "¿QUÉ DIJO?" (5). La fila de <thead> tiene solo <th>
+    (0 <td>) y queda afuera sola por el chequeo de longitud.
+
+    Esto reemplaza la suposición original de 3 columnas
+    (`<td>nombre</td><td class="ocultar">bloque</td><td>voto</td>`) que
+    JAMÁS fue observada en vivo para Diputados (era inferencia por analogía
+    con Senado, donde sí se había confirmado esa estructura de 3 columnas, y
+    con el scraper de terceros Como_voto) — el HTML real de Diputados no
+    tiene ninguna clase "ocultar" (0 ocurrencias en la página real).
+    get_text(strip=True) extrae igual el voto aunque esté anidado en <span>.
+
+    parser="html.parser" (stdlib): lxml NO está en requirements.txt y
+    rompería en CI (confirmado en la Tarea 4; mismo parser que ya usa
+    fetch_cepa_movilizacion)."""
+    soup = BeautifulSoup(html, "html.parser")
+    filas = []
+    for tr in soup.select("table tr"):
+        celdas = tr.find_all("td")
+        if len(celdas) < 5:
+            continue
+        nombre = celdas[1].get_text(strip=True)
+        bloque = celdas[2].get_text(strip=True)
+        voto = celdas[4].get_text(strip=True).upper()
+        if not nombre or not bloque:
+            continue
+        filas.append({"nombre": nombre, "bloque": bloque, "voto": voto})
+    return filas
+
+
 def calcular_score(indicadores: dict) -> float:
     """
     Score 0–10: mayor = mayor tensión en capital político.
