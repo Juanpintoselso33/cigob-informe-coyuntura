@@ -17,32 +17,76 @@ jobs:
           pip install playwright
           playwright install --with-deps chromium
 
-      - name: Probar votaciones.hcdn.gob.ar con headless browser
+      - name: Probar votaciones.hcdn.gob.ar con headless browser (interacción real + captura de red)
         run: |
           python3 -c "
           from playwright.sync_api import sync_playwright
+
+          api_calls = []
+
+          def on_response(resp):
+              ct = resp.headers.get('content-type', '')
+              if 'json' in ct or 'search' in resp.url.lower() or 'acta' in resp.url.lower() or 'votac' in resp.url.lower():
+                  api_calls.append((resp.request.method, resp.url, resp.status, ct))
+
           with sync_playwright() as p:
               browser = p.chromium.launch()
               page = browser.new_page()
+              page.on('response', on_response)
               try:
-                  resp = page.goto('https://votaciones.hcdn.gob.ar/', timeout=25000, wait_until='networkidle')
-                  print('STATUS:', resp.status if resp else 'sin respuesta')
-                  print('TITLE:', page.title())
+                  page.goto('https://votaciones.hcdn.gob.ar/', timeout=25000, wait_until='networkidle')
+                  print('HOME cargado. TITLE:', page.title())
+
+                  # Inspeccionar selects/forms/botones reales de la página
+                  selects = page.query_selector_all('select')
+                  print(f'N SELECTS: {len(selects)}')
+                  for i, s in enumerate(selects):
+                      name = s.get_attribute('name') or s.get_attribute('id') or '(sin name/id)'
+                      opciones = [o.get_attribute('value') for o in s.query_selector_all('option')][:5]
+                      print(f'  select[{i}] name/id={name!r} opciones(primeras 5)={opciones}')
+
+                  botones = page.query_selector_all('button, input[type=submit]')
+                  print(f'N BOTONES: {len(botones)}')
+                  for i, b in enumerate(botones[:10]):
+                      texto = b.inner_text().strip() if b.inner_text() else (b.get_attribute('value') or '')
+                      print(f'  boton[{i}] texto={texto!r}')
+
+                  # Intentar seleccionar 2026 en el primer select que tenga esa opción, y buscar un botón 'buscar'
+                  intentos = 0
+                  for s in selects:
+                      opciones = [o.get_attribute('value') for o in s.query_selector_all('option')]
+                      if '2026' in opciones:
+                          s.select_option('2026')
+                          print('Seleccionado 2026 en un select')
+                          intentos += 1
+                          break
+
+                  boton_buscar = None
+                  for b in botones:
+                      texto = (b.inner_text() or b.get_attribute('value') or '').strip().lower()
+                      if 'buscar' in texto or 'search' in texto:
+                          boton_buscar = b
+                          break
+
+                  if boton_buscar:
+                      boton_buscar.click()
+                      print('Click en boton buscar hecho, esperando red...')
+                      page.wait_for_load_state('networkidle', timeout=15000)
+                  else:
+                      print('NO SE ENCONTRO boton buscar - probando Enter en el select')
+                      page.wait_for_timeout(3000)
+
                   html = page.content()
-                  print('LEN HTML renderizado:', len(html))
+                  print('LEN HTML tras interaccion:', len(html))
                   print('OCURRENCIAS redirectActa:', html.count('redirectActa'))
                   print('OCURRENCIAS <tr:', html.lower().count('<tr'))
-                  print('OCURRENCIAS loading:', html.lower().count('id=\"loading\"'))
 
-                  # Probar también la búsqueda por año, con JS ejecutado
-                  page2 = browser.new_page()
-                  resp2 = page2.goto('https://votaciones.hcdn.gob.ar/votaciones/search', timeout=25000, wait_until='networkidle')
-                  print('---BUSQUEDA POR AÑO---')
-                  print('STATUS2:', resp2.status if resp2 else 'sin respuesta')
-                  html2 = page2.content()
-                  print('LEN HTML2:', len(html2))
-                  print('OCURRENCIAS redirectActa (pagina de busqueda):', html2.count('redirectActa'))
               except Exception as e:
                   print('EXCEPTION:', type(e).__name__, str(e)[:500])
+
+              print('--- LLAMADAS DE RED CAPTURADAS (json/search/acta/votac) ---')
+              for method, url, status, ct in api_calls:
+                  print(f'{method} {status} {ct} {url}')
+
               browser.close()
           "
