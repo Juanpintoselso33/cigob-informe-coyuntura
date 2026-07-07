@@ -1,19 +1,10 @@
 {
   "_meta": {
-    "descripcion": "Indicadores manuales del cinturón político (capital político según Matus). Actualizar cuando haya nuevos datos. desactualizado se setea automáticamente si fecha_dato > 45 días. Los automáticos (votometro, ratio_dnu, movilizacion_cepa, iaf_transferencias, eficacia_legislativa, veto_quorum, comisiones_caidas) no van aquí.",
-    "indicadores": ["cohesion_bloque", "gobernadores_alineamiento"],
+    "descripcion": "Indicadores manuales del cinturón político (capital político según Matus). Actualizar cuando haya nuevos datos. desactualizado se setea automáticamente si fecha_dato > 45 días. Los automáticos (votometro, ratio_dnu, movilizacion_cepa, iaf_transferencias, eficacia_legislativa, cohesion_bloque, veto_quorum, comisiones_caidas) no van aquí.",
+    "indicadores": ["gobernadores_alineamiento"],
     "pendiente_automatizacion": {
-      "cohesion_bloque": "votaciones CKAN congeladas en 2019 — LLA no existía, bloques actuales sin PERSONA_ID que mapee a votos históricos. Requiere headless browser (hcdn.gob.ar/votaciones) o fuente alternativa.",
-      "gobernadores_alineamiento": "métrica cualitativa — sin fuente estructurada disponible"
+      "gobernadores_alineamiento": "métrica cualitativa — sin fuente estructurada disponible. Proxies investigados y DESCARTADOS (2026-07-07, no volver a evaluar sin fuente nueva): (1) composición partidaria del Senado por provincia — mide bancas legislativas, no conducta del Poder Ejecutivo provincial; (2) composición de Diputados por distrito (CKAN HCDN) — varios legisladores de distinto signo por provincia simultáneamente, sin campo de gobernador; (3) API de Presupuesto Abierto (transferencias/ATN) — sin columna de corte provincial confirmada, y el organismo correcto para ATN es Interior, no Economía; (4) tabla de adhesión provincial al RIGI — mide adhesión fiscal a un régimen puntual, no alineamiento político general (se automatiza como indicador NUEVO y DISTINTO, adhesion_reformas_provincial, ver ADR-0035). Único camino identificado: NLP sobre cobertura periodística (La Nación Data, Infobae) — proyecto separado."
     }
-  },
-  "cohesion_bloque": {
-    "valor": 78,
-    "estado": "placeholder",
-    "unidad": "% votos en línea con la posición oficial del bloque LLA",
-    "fuente": "Votaciones Cámara de Diputados — elaboración CIGOB en base a Hcdn.gob.ar",
-    "notas": "Proporción de diputados del bloque LLA que votaron alineados con la posición oficial en las votaciones nominales de los últimos 3 meses.",
-    "fecha_dato": "2026-04-01"
   },
   "gobernadores_alineamiento": {
     "valor": 55,
