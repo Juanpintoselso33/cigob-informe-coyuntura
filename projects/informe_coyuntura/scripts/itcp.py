@@ -16,6 +16,17 @@ distingue capital político de popularidad.
 Bandas de cohesion_bloque, cohesion_bloque_senado, adhesion_reformas_provincial
 y protestas_caba son PROVISIONALES (sin serie histórica propia todavía) — ver
 ADR-0036, a recalibrar cuando el backfill esté corriendo.
+
+protestas_caba puntúa sobre "var_vs_2023" (% de variación de eventos de
+protesta en CABA, ACLED, contra la base 2023), NO sobre "valor" — a diferencia
+de todos los demás indicadores de este índice, que puntúan directo sobre su
+propio "valor". "valor" en gestion.fetch_protestas_caba() es el conteo CRUDO
+de eventos acumulado 12 meses (puede ser un número en cientos): una tabla de
+bandas pensada para una escala 0-100 (como la de movilizacion_cepa) lo
+interpretaría mal. "var_vs_2023" sí es una variación porcentual, comparable a
+otros indicadores %-variación ya en BANDAS_ITCP (ej. iaf_transferencias) —
+hallazgo posterior al Task 1 (bug real, no hipotético), corregido en el
+wiring de main() (politica.py).
 """
 import parametrica
 
@@ -55,8 +66,8 @@ BANDAS_ITCP = {
     "movilizacion_cepa": [                # índice 0-100, menor = mejor
         (-INF, 20.0, 100), (20.0, 40.0, 85), (40.0, 60.0, 65), (60.0, 80.0, 40), (80.0, INF, 10),
     ],
-    "protestas_caba": [                   # nivel 0-100 (mismo tratamiento que CEPA) — PROVISIONAL
-        (-INF, 20.0, 100), (20.0, 40.0, 85), (40.0, 60.0, 65), (60.0, 80.0, 40), (80.0, INF, 10),
+    "protestas_caba": [                   # % var. eventos vs. base 2023 (ACLED) — PROVISIONAL
+        (-INF, -30.0, 100), (-30.0, -10.0, 85), (-10.0, 10.0, 65), (10.0, 30.0, 40), (30.0, INF, 10),
     ],
 }
 

@@ -463,3 +463,24 @@ def test_politica_protestas_caba_devuelve_none_si_gestion_devuelve_none(monkeypa
     import gestion
     monkeypatch.setattr(gestion, "fetch_protestas_caba", lambda: None)
     assert politica.fetch_protestas_caba() is None
+
+
+# ── _valor_itcp (wiring ITCP, Tarea 5) ───────────────────────────────────────
+# Cross-fix: protestas_caba puntúa en el ITCP sobre "var_vs_2023" (% variación
+# vs. base 2023), NO sobre "valor" (conteo crudo de eventos, que puede estar
+# en cientos — itcp.BANDAS_ITCP["protestas_caba"] espera una escala %).
+
+def test_valor_itcp_protestas_caba_usa_var_vs_2023_no_valor():
+    entry = {"valor": 347, "var_vs_2023": 15.3}
+    assert politica._valor_itcp("protestas_caba", entry) == 15.3
+
+
+def test_valor_itcp_protestas_caba_none_si_var_vs_2023_ausente():
+    # base_2023 == 0 -> gestion.fetch_protestas_caba() deja var_vs_2023 en None
+    entry = {"valor": 347, "var_vs_2023": None}
+    assert politica._valor_itcp("protestas_caba", entry) is None
+
+
+def test_valor_itcp_otros_indicadores_usan_valor_directo():
+    entry = {"valor": 62.5, "var_vs_2023": 999.0}  # campo ajeno, no debe usarse
+    assert politica._valor_itcp("cohesion_bloque", entry) == 62.5

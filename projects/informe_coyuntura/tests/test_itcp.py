@@ -23,6 +23,24 @@ def test_banda_low_exclusivo_high_inclusivo():
     assert itcp.puntaje_banda(0.30001, bandas) == 85  # low exclusivo del siguiente tramo
 
 
+def test_banda_protestas_caba_var_vs_2023():
+    # (-inf,-30,100)·(-30,-10,85)·(-10,10,65)·(10,30,40)·(30,inf,10)
+    # Cross-fix (post Task 1): esta tabla puntúa sobre "var_vs_2023" (% de
+    # variación de eventos ACLED en CABA contra la base 2023), NO sobre el
+    # conteo crudo de eventos ("valor") — la tabla original (heredada de
+    # movilizacion_cepa, pensada para una escala 0-100) habría interpretado
+    # mal un conteo crudo que puede estar en cientos. Menor variación (menos
+    # protesta que en 2023) = mejor = puntaje alto: tabla invertida respecto
+    # de iaf_transferencias aunque comparta la misma escala %-variación.
+    bandas = itcp.BANDAS_ITCP["protestas_caba"]
+    assert itcp.puntaje_banda(-50.0, bandas) == 100
+    assert itcp.puntaje_banda(-30.0, bandas) == 100   # high inclusivo
+    assert itcp.puntaje_banda(-29.99, bandas) == 85   # low exclusivo del siguiente tramo
+    assert itcp.puntaje_banda(0.0, bandas) == 65
+    assert itcp.puntaje_banda(30.0, bandas) == 40
+    assert itcp.puntaje_banda(30.01, bandas) == 10
+
+
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
         "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100
@@ -36,7 +54,7 @@ def test_calcular_itcp_pondera_dimensiones():
         "cohesion_bloque": 95.0,             # cohesion_interna, puntaje 100
         "cohesion_bloque_senado": 95.0,      # cohesion_interna, puntaje 100
         "movilizacion_cepa": 5.0,            # conflicto_social, puntaje 100
-        "protestas_caba": 5.0,               # conflicto_social, puntaje 100
+        "protestas_caba": -35.0,             # conflicto_social, puntaje 100 (var_vs_2023, no valor crudo)
     }
     resultado = itcp.calcular_itcp(valores)
     assert resultado is not None

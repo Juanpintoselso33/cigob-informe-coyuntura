@@ -9,10 +9,13 @@ Indicadores:
   movilizacion_cepa         — Conflictividad social CEPA 0–100 (scrape centrocepa.com.ar, auto)
   iaf_transferencias        — Variación real YoY transferencias federales RON (Hacienda, auto)
   eficacia_legislativa      — % proyectos PE aprobados, ventana 12m (datos.hcdn.gob.ar CKAN, auto)
-  cohesion_bloque           — % cohesión del bloque LLA en Diputados (manual — votaciones CKAN congeladas en 2019)
+  cohesion_bloque           — % cohesión (Rice) del bloque LLA en Diputados (scrape votaciones.hcdn.gob.ar, auto)
+  cohesion_bloque_senado    — % cohesión (Rice) del bloque LLA en Senado (scrape senado.gob.ar, auto)
   gobernadores_alineamiento — % gobernadores alineados con política nacional (manual — sin fuente estructurada)
   veto_quorum               — % sesiones frustradas por falta de quórum (datos.hcdn.gob.ar CKAN, auto)
   comisiones_caidas         — % proyectos con dictamen que no llegan al recinto (datos.hcdn.gob.ar CKAN, auto)
+  adhesion_reformas_provincial — % provincias adheridas al RIGI (MAGyP, auto)
+  protestas_caba            — % var. eventos de protesta en CABA vs. base 2023 (ACLED, reutiliza gestion.py)
 
 Nota: ICG UTDT removido (mide confianza ciudadana, no capacidad de gobernar con actores
 políticos). Reemplazado por ratio_dnu según framework Luis Babino / reunión 12-may-2026.
@@ -31,6 +34,7 @@ import time
 import requests
 import urllib3
 import gestion  # reutiliza el fetcher ACLED ya construido para protestas_caba (ADR-0017)
+import itcp
 from bs4 import BeautifulSoup
 from datetime import datetime, date, timedelta
 from pathlib import Path
@@ -43,6 +47,7 @@ SCRIPT_DIR     = Path(__file__).parent
 PROJECT_DIR    = SCRIPT_DIR.parent
 CACHE_PATH     = PROJECT_DIR / "output" / "cache" / "politica.json"
 MANUALES_PATH  = PROJECT_DIR / "data" / "politica" / "manuales.json"
+AJUSTES_ITCP_PATH = PROJECT_DIR / "data" / "politica" / "ajustes_itcp.json"
 VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
 VOTOMETRO_HTML = PROJECT_DIR.parent / "votometro" / "web" / "votometro.html"  # fallback local
 
@@ -53,10 +58,13 @@ INDICADORES_ESPERADOS = [
     "movilizacion_cepa",
     "iaf_transferencias",
     "cohesion_bloque",
+    "cohesion_bloque_senado",
     "eficacia_legislativa",
     "gobernadores_alineamiento",
+    "adhesion_reformas_provincial",
     "veto_quorum",
     "comisiones_caidas",
+    "protestas_caba",
 ]
 
 STALE_MANUAL_DAYS    = 45
@@ -1148,70 +1156,17 @@ def _cohesion_desactualizada(cache_previo: dict | None, corrida_actual: dict | N
     return (datetime.now() - ultima).days > umbral_dias
 
 
-def calcular_score(indicadores: dict) -> float:
-    """
-    Score 0–10: mayor = mayor tensión en capital político.
-    Cada dimensión de Matus pesa igual (1/N disponibles).
+def _valor_itcp(nombre: str, entry: dict):
+    """Valor a puntuar en el ITCP para un indicador ya fresco/cacheado.
 
-    votometro_ventaja_lla (gap LLA−PJ en pp):
-        +15pp→0, 0→5, −15pp→10
-    ratio_dnu (DNUs / leyes, año corriente):
-        0→0, 1.0→5, 2.0+→10
-    movilizacion_cepa (índice 0–100):
-        0→0, 50→5, 100→10
-    iaf_transferencias (% variación real YoY):
-        +10%→0, 0%→2.5, −10%→5, −20%→7.5, −30%+→10
-    eficacia_legislativa (% 0–100):
-        70%→0, 35%→5, 0%→10
-    cohesion_bloque (% 0–100):
-        95%→0, 60%→5, 25%→10
-    gobernadores_alineamiento (% 0–100):
-        80%→0, 40%→5, 0%→10
-    veto_quorum (% sesiones frustradas por quórum):
-        0%→0, 15%→5, 30%+→10
-    comisiones_caidas (% proyectos con dictamen que no llegan al recinto):
-        20%→0, 40%→5, 60%+→10
-    """
-    scores = []
-
-    vot = indicadores.get("votometro_ventaja_lla", {}).get("valor")
-    if vot is not None:
-        scores.append(min(10.0, max(0.0, 5.0 - float(vot) / 3.0)))
-
-    dnu = indicadores.get("ratio_dnu", {}).get("valor")
-    if dnu is not None:
-        scores.append(min(10.0, max(0.0, float(dnu) * 5.0)))
-
-    cepa = indicadores.get("movilizacion_cepa", {}).get("valor")
-    if cepa is not None:
-        scores.append(min(10.0, max(0.0, float(cepa) / 10.0)))
-
-    iaf = indicadores.get("iaf_transferencias", {}).get("valor")
-    if iaf is not None:
-        var_real = float(iaf) / 100.0
-        scores.append(min(10.0, max(0.0, (0.10 - var_real) * 25.0)))
-
-    efic = indicadores.get("eficacia_legislativa", {}).get("valor")
-    if efic is not None:
-        scores.append(min(10.0, max(0.0, (70.0 - float(efic)) / 7.0)))
-
-    coh = indicadores.get("cohesion_bloque", {}).get("valor")
-    if coh is not None:
-        scores.append(min(10.0, max(0.0, (95.0 - float(coh)) / 7.0)))
-
-    gob = indicadores.get("gobernadores_alineamiento", {}).get("valor")
-    if gob is not None:
-        scores.append(min(10.0, max(0.0, (80.0 - float(gob)) / 8.0)))
-
-    veto = indicadores.get("veto_quorum", {}).get("valor")
-    if veto is not None:
-        scores.append(min(10.0, max(0.0, float(veto) / 3.0)))
-
-    com = indicadores.get("comisiones_caidas", {}).get("valor")
-    if com is not None:
-        scores.append(min(10.0, max(0.0, (float(com) - 20.0) / 4.0)))
-
-    return round(sum(scores) / len(scores), 1) if scores else 5.0
+    protestas_caba es la ÚNICA excepción: puntúa sobre "var_vs_2023" (% de
+    variación de eventos ACLED en CABA contra la base 2023), NO sobre "valor"
+    (el conteo crudo de eventos acumulado 12 meses, que gestion.fetch_protestas_caba
+    devuelve y que puede estar en cientos — ver docstring de itcp.BANDAS_ITCP).
+    Cualquier otro indicador puntúa directo sobre su propio "valor"."""
+    if nombre == "protestas_caba":
+        return entry.get("var_vs_2023")
+    return entry.get("valor")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -1224,14 +1179,16 @@ def main() -> None:
     frescos_count = 0
 
     colectores = [
-        ("votometro_ventaja_lla",       fetch_votometro),
-        ("ratio_dnu",                   fetch_ratio_dnu),
-        ("movilizacion_cepa",           fetch_cepa_movilizacion),
-        ("iaf_transferencias",          fetch_iaf_transferencias),
-        ("eficacia_legislativa",        fetch_eficacia_legislativa),
-        ("gobernadores_alineamiento",   lambda: fetch_manual("gobernadores_alineamiento")),
-        ("veto_quorum",                 fetch_veto_quorum),
-        ("comisiones_caidas",           fetch_comisiones_caidas),
+        ("votometro_ventaja_lla",         fetch_votometro),
+        ("ratio_dnu",                     fetch_ratio_dnu),
+        ("movilizacion_cepa",             fetch_cepa_movilizacion),
+        ("iaf_transferencias",            fetch_iaf_transferencias),
+        ("eficacia_legislativa",          fetch_eficacia_legislativa),
+        ("gobernadores_alineamiento",     lambda: fetch_manual("gobernadores_alineamiento")),
+        ("veto_quorum",                   fetch_veto_quorum),
+        ("comisiones_caidas",             fetch_comisiones_caidas),
+        ("adhesion_reformas_provincial",  fetch_adhesion_reformas_provincial),
+        ("protestas_caba",                fetch_protestas_caba),
     ]
 
     for nombre, fetcher in colectores:
@@ -1262,11 +1219,38 @@ def main() -> None:
             "desactualizado": _cohesion_desactualizada(anterior_cohesion, resultado_cohesion),
         }
 
-    score   = calcular_score(frescos)
+    resultado_cohesion_senado = fetch_cohesion_bloque_senado()
+    anterior_cohesion_senado = indicadores_anteriores.get("cohesion_bloque_senado")
+    if resultado_cohesion_senado is not None and resultado_cohesion_senado.get("valor") is not None:
+        frescos["cohesion_bloque_senado"] = resultado_cohesion_senado
+        frescos_count += 1
+    elif resultado_cohesion_senado is not None and anterior_cohesion_senado is not None:
+        frescos["cohesion_bloque_senado"] = {
+            **anterior_cohesion_senado,
+            "desactualizado": False,
+            "corrida_exitosa_en": resultado_cohesion_senado["corrida_exitosa_en"],
+        }
+        frescos_count += 1
+    elif anterior_cohesion_senado is not None:
+        frescos["cohesion_bloque_senado"] = {
+            **anterior_cohesion_senado,
+            "desactualizado": _cohesion_desactualizada(anterior_cohesion_senado, resultado_cohesion_senado),
+        }
+
+    ajustes = itcp.cargar_ajustes(AJUSTES_ITCP_PATH, datetime.now().strftime("%Y-%m"))
+    valores = {}
+    for nombre, entry in frescos.items():
+        valor = _valor_itcp(nombre, entry)
+        if valor is not None:
+            valores[nombre] = valor
+    resultado_itcp = itcp.calcular_itcp(valores, ajustes)
+    score = itcp.tension_de_itcp(resultado_itcp["valor"]) if resultado_itcp else 5.0
+
     payload = {
         "cinturon":     CINTURON,
         "generated_at": datetime.now().isoformat(),
         "score":        score,
+        "itcp":         resultado_itcp,
         "indicadores":  frescos,
     }
 
