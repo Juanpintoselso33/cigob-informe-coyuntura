@@ -117,13 +117,13 @@ A diferencia de ITCM/ITCG/ITVC, NO hay un documento CIGOB que fije los pesos
 de las 5 dimensiones (imagen y voto, poder legislativo, alianzas
 territoriales, cohesión interna del oficialismo, conflicto social) — ya
 descriptas en docs/cinturon_politica.md pero nunca pesadas. Los pesos acá son
-una decisión editorial explícita (ver ADR-0035): "imagen y voto" pesa
+una decisión editorial explícita (ver ADR-0036): "imagen y voto" pesa
 deliberadamente MENOS que las demás porque el propio marco del proyecto
 distingue capital político de popularidad.
 
 Bandas de cohesion_bloque, cohesion_bloque_senado, adhesion_reformas_provincial
 y protestas_caba son PROVISIONALES (sin serie histórica propia todavía) — ver
-ADR-0035, a recalibrar cuando el backfill esté corriendo.
+ADR-0036, a recalibrar cuando el backfill esté corriendo.
 """
 import parametrica
 
@@ -867,7 +867,7 @@ git commit -m "feat(politica): backfill de cohesion_bloque_senado y adhesion_ref
 
 ---
 
-### Task 8: ADR-0035
+### Task 8: ADR-0036
 
 **Files:**
 - Create: `docs/adr/0035-itcp-parametrica-politica.md`
@@ -900,7 +900,7 @@ a incluir (ya redactado en el spec, `docs/superpowers/specs/2026-07-07-itcp-cint
 
 ```bash
 git add docs/adr/0035-itcp-parametrica-politica.md
-git commit -m "docs(adr): ADR-0035 — paramétrica ITCP del cinturón política"
+git commit -m "docs(adr): ADR-0036 — paramétrica ITCP del cinturón política"
 ```
 
 ---
