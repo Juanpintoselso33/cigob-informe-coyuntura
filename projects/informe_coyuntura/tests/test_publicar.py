@@ -56,7 +56,15 @@ def test_politica_itcp_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    assert len(en_indice) == 12, f"esperaba 12 indicadores en el índice, hay {len(en_indice)}"
+    # cohesion_bloque (Diputados) puede faltar por tiempo indefinido mientras el
+    # scraping siga bloqueado (ADR-0037) — el índice se renormaliza y sigue
+    # siendo válido con 11/12. Los otros 11 SIEMPRE deben estar.
+    assert len(en_indice) >= 11, f"esperaba >=11 indicadores en el índice, hay {len(en_indice)}"
+    faltantes = {"votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
+                 "comisiones_caidas", "iaf_transferencias", "gobernadores_alineamiento",
+                 "adhesion_reformas_provincial", "cohesion_bloque_senado", "movilizacion_cepa",
+                 "protestas_caba"} - set(en_indice)
+    assert not faltantes, f"faltan indicadores que no deberían faltar: {faltantes}"
     assert contexto == {}, f"política no debería tener contexto todavía: {set(contexto)}"
 
     ponderado = sum(i["puntaje_itcp"] * i["peso_efectivo"] for i in en_indice.values())

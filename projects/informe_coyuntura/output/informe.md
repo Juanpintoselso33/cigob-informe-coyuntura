@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-07 19:40:44"
-score_global: 3.3
+generado: "2026-07-07 20:54:48"
+score_global: 3.2
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 3.3/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 3.2/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
@@ -35,7 +35,7 @@ schema_version: "1.2.0"
 | base_monetaria | 6.48 | % mensual nominal | 2026-07-02 | fresco |
 | tc_mayorista | 3.06 | % mensual | 2026-07-06 | fresco |
 
-### 🟡 Politica — score 3.5/10 (en_tension)
+### 🟡 Politica — score 3.3/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -50,7 +50,6 @@ schema_version: "1.2.0"
 | comisiones_caidas | 97.7 | % de proyectos | 2026-07-07 | fresco |
 | adhesion_reformas_provincial | 66.7 | % de provincias (sobre 24) adheridas al RIGI | 2026-07-07 | fresco |
 | protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
-| cohesion_bloque | 78 | % votos en línea con la posición oficial del bloque LLA | 2026-04-01 | ⚠ cache |
 | cohesion_bloque_senado | 99.5 | % cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días | 2026-06-04 | fresco |
 
 ### 🟢 Vida Cotidiana — score 2.7/10 (estable)
@@ -96,7 +95,7 @@ schema_version: "1.2.0"
 
 ## Advertencias
 
-- `desactualizado:politica:gobernadores_alineamiento,cohesion_bloque`
+- `desactualizado:politica:gobernadores_alineamiento`
 
 ---
-*Generado por CIGOB — 2026-07-07 19:40:44 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-07 20:54:48 — schema 1.2.0*

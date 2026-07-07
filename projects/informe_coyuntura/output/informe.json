@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-07T19:40:44.871833",
+  "generated_at": "2026-07-07T20:54:48.718423",
   "period": "2026-07",
-  "score_global": 3.3,
+  "score_global": 3.2,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -391,7 +391,7 @@
       }
     },
     "politica": {
-      "score": 3.5,
+      "score": 3.3,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -544,20 +544,6 @@
           "puntaje_banda": 23.8,
           "peso_efectivo": 0.06
         },
-        "cohesion_bloque": {
-          "valor": 78,
-          "estado": "placeholder",
-          "unidad": "% votos en línea con la posición oficial del bloque LLA",
-          "fuente": "Votaciones Cámara de Diputados — elaboración CIGOB en base a Hcdn.gob.ar",
-          "notas": "Proporción de diputados del bloque LLA que votaron alineados con la posición oficial en las votaciones nominales de los últimos 3 meses.",
-          "fecha_dato": "2026-04-01",
-          "desactualizado": true,
-          "en_indice": true,
-          "dimension": "cohesion_interna",
-          "puntaje_itcp": 79.0,
-          "puntaje_banda": 79.0,
-          "peso_efectivo": 0.13
-        },
         "cohesion_bloque_senado": {
           "valor": 99.5,
           "unidad": "% cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días",
@@ -570,12 +556,12 @@
           "dimension": "cohesion_interna",
           "puntaje_itcp": 100.0,
           "puntaje_banda": 100.0,
-          "peso_efectivo": 0.07
+          "peso_efectivo": 0.2
         }
       },
       "alerta": null,
       "itcp": {
-        "valor": 64.7,
+        "valor": 67.4,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -647,21 +633,14 @@
           "cohesion_interna": {
             "nombre": "Cohesión interna del oficialismo",
             "peso": 0.2,
-            "puntaje": 86.3,
+            "puntaje": 100.0,
             "indicadores": {
-              "cohesion_bloque": {
-                "peso": 0.65,
-                "puntaje_banda": 79.0,
-                "puntaje_aplicado": 79.0,
-                "valor": 78.0,
-                "peso_efectivo": 0.13
-              },
               "cohesion_bloque_senado": {
                 "peso": 0.35,
                 "puntaje_banda": 100.0,
                 "puntaje_aplicado": 100.0,
                 "valor": 99.5,
-                "peso_efectivo": 0.07
+                "peso_efectivo": 0.2
               }
             },
             "peso_efectivo": 0.2
@@ -1195,6 +1174,6 @@
   "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
   "flags": [
-    "desactualizado:politica:gobernadores_alineamiento,cohesion_bloque"
+    "desactualizado:politica:gobernadores_alineamiento"
   ]
 }
