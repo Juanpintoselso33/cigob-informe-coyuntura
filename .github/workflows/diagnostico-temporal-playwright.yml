@@ -17,7 +17,7 @@ jobs:
           pip install playwright
           playwright install --with-deps chromium
 
-      - name: Screenshot + HTML completo de votaciones.hcdn.gob.ar
+      - name: Prueba única y limpia (sin ráfagas) de votaciones.hcdn.gob.ar
         run: |
           python3 -c "
           from playwright.sync_api import sync_playwright
@@ -31,34 +31,72 @@ jobs:
                   page.screenshot(path='home.png', full_page=True)
                   with open('home.html', 'w', encoding='utf-8') as f:
                       f.write(page.content())
-                  print('Screenshot y HTML de HOME guardados.')
+                  print('HOME cargado. TITLE:', page.title())
+                  bloqueado = 'temporalmente bloqueado' in page.content().lower()
+                  print('BLOQUEADO:', bloqueado)
 
-                  # Intentar cerrar posibles modales 'Aceptar' antes de otra screenshot
-                  for b in page.query_selector_all('button'):
-                      texto = (b.inner_text() or '').strip().lower()
-                      if texto == 'aceptar':
+                  if not bloqueado:
+                      # Cerrar posibles modales 'Aceptar'
+                      for b in page.query_selector_all('button'):
+                          texto = (b.inner_text() or '').strip().lower()
+                          if texto == 'aceptar':
+                              try:
+                                  b.click(timeout=2000)
+                                  page.wait_for_timeout(500)
+                              except Exception:
+                                  pass
+
+                      # Buscar dropdown de año (bootstrap-select/custom-select suelen
+                      # envolver un <select> real, aunque quede oculto para el usuario)
+                      selects = page.query_selector_all('select')
+                      print(f'N SELECTS: {len(selects)}')
+                      elegido = False
+                      for i, s in enumerate(selects):
+                          opciones = [o.get_attribute('value') for o in s.query_selector_all('option')]
+                          name = s.get_attribute('name') or s.get_attribute('id') or f'select[{i}]'
+                          print(f'  {name}: opciones(primeras 8)={opciones[:8]}')
+                          if '2026' in opciones and not elegido:
+                              s.select_option('2026', force=True)
+                              print(f'Elegido 2026 en {name}')
+                              elegido = True
+
+                      botones = page.query_selector_all('button, input[type=submit], a.btn')
+                      boton_buscar = None
+                      for b in botones:
+                          texto = (b.inner_text() or b.get_attribute('value') or '').strip().lower()
+                          if 'buscar' in texto:
+                              boton_buscar = b
+                              break
+                      print('BOTON BUSCAR ENCONTRADO:', boton_buscar is not None)
+
+                      if boton_buscar:
+                          boton_buscar.click()
+                          page.wait_for_timeout(4000)
                           try:
-                              b.click(timeout=2000)
-                              page.wait_for_timeout(500)
+                              page.wait_for_load_state('networkidle', timeout=10000)
                           except Exception:
                               pass
-                  page.screenshot(path='home_post_aceptar.png', full_page=True)
-                  with open('home_post_aceptar.html', 'w', encoding='utf-8') as f:
-                      f.write(page.content())
-                  print('Screenshot y HTML post-Aceptar guardados.')
+
+                      page.screenshot(path='resultado.png', full_page=True)
+                      with open('resultado.html', 'w', encoding='utf-8') as f:
+                          f.write(page.content())
+                      html_final = page.content()
+                      print('OCURRENCIAS redirectActa (resultado):', html_final.count('redirectActa'))
+                      print('OCURRENCIAS <tr (resultado):', html_final.lower().count('<tr'))
               except Exception as e:
                   print('EXCEPTION:', type(e).__name__, str(e)[:500])
               browser.close()
           "
           echo "Archivos generados:"
-          ls -la *.png *.html
+          ls -la *.png *.html 2>&1 || true
 
       - uses: actions/upload-artifact@v4
         with:
-          name: diagnostico-playwright
+          name: diagnostico-playwright-final
           path: |
             home.png
             home.html
-            home_post_aceptar.png
-            home_post_aceptar.html
+            resultado.png
+            resultado.html
+          if-no-files-found: warn
           retention-days: 1
