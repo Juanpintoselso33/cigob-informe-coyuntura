@@ -938,6 +938,48 @@ def _parsear_acta(html: str) -> list[dict]:
     return filas
 
 
+def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> dict | None:
+    """Cohesión del bloque LLA en Diputados: índice de Rice promedio sobre
+    las actas nominales divididas de los últimos `dias_ventana` días.
+    `anio`: para backfill (descargar_series.py itera años pasados).
+    Devuelve None SOLO si el scraping en sí falló (sin llegar al sitio) —
+    'sin votos en la ventana' (receso legislativo) es un resultado válido con
+    valor=None pero corrida_exitosa_en seteado, para que el guard de frescura
+    (Tarea 7) no lo confunda con un scraper roto."""
+    anio = anio or datetime.now().year
+    session = _hcdn_votaciones_session()
+    actas = _descubrir_actas(session, anio)
+    if actas is None:
+        return None
+
+    limite = datetime.now() - timedelta(days=dias_ventana)
+    indices = []
+    fecha_max = None
+    for acta in actas:
+        if acta["fecha"] < limite:
+            continue
+        r = _hcdn_votaciones_get(session, _url_acta(acta))
+        if r is None:
+            continue
+        filas = _parsear_acta(r.text)
+        afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
+        neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
+        rice = indice_rice(afirm, neg)
+        if rice is None:
+            continue
+        indices.append(rice)
+        fecha_max = acta["fecha"] if fecha_max is None else max(fecha_max, acta["fecha"])
+
+    return {
+        "valor": round(sum(indices) / len(indices), 1) if indices else None,
+        "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
+        "fuente": "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+        "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
+        "n_actas": len(indices),
+        "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+    }
+
+
 def calcular_score(indicadores: dict) -> float:
     """
     Score 0–10: mayor = mayor tensión en capital político.

@@ -3,7 +3,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import politica
 from unittest.mock import MagicMock
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def test_indice_rice_unanime_afirmativo():
@@ -248,3 +248,40 @@ def test_parsear_acta_ignora_fila_sin_bloque():
     </table>
     """
     assert politica._parsear_acta(html) == []
+
+
+def test_fetch_cohesion_bloque_promedia_solo_actas_en_ventana(monkeypatch):
+    hoy = datetime.now()
+    actas = [
+        {"id": "1", "slug": "a", "fecha": hoy - timedelta(days=10)},
+        {"id": "2", "slug": "b", "fecha": hoy - timedelta(days=200)},  # fuera de ventana
+    ]
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: actas)
+    monkeypatch.setattr(politica, "_hcdn_votaciones_get", lambda s, p: MagicMock(text="<html></html>"))
+    monkeypatch.setattr(politica, "_parsear_acta", lambda html: [
+        {"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+        {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"},
+    ])
+    resultado = politica.fetch_cohesion_bloque(dias_ventana=90)
+    assert resultado["n_actas"] == 1
+    assert resultado["valor"] == politica.indice_rice(1, 1)
+    assert resultado["fecha_dato"] == (hoy - timedelta(days=10)).strftime("%Y-%m-%d")
+
+
+def test_fetch_cohesion_bloque_sin_actas_en_ventana_pero_corrida_exitosa(monkeypatch):
+    hoy = datetime.now()
+    actas = [{"id": "1", "slug": "a", "fecha": hoy - timedelta(days=200)}]
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: actas)
+    resultado = politica.fetch_cohesion_bloque(dias_ventana=90)
+    assert resultado is not None
+    assert resultado["valor"] is None
+    assert resultado["n_actas"] == 0
+    assert resultado["corrida_exitosa_en"] == hoy.strftime("%Y-%m-%d")
+
+
+def test_fetch_cohesion_bloque_falla_de_red_devuelve_none(monkeypatch):
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: None)
+    assert politica.fetch_cohesion_bloque() is None
