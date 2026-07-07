@@ -1,9 +1,9 @@
 {
   "_meta": {
     "descripcion": "Eventos de protesta (Protests+Riots) en CABA por mes, del agregado semanal de ACLED (acleddata.com). Atribución: datos de ACLED.",
-    "actualizado": "2026-07-05",
-    "hasta_semana": "2026-06-20",
-    "fuente_xlsx": "https://acleddata.com/system/files/2026-06/Latin-America-the-Caribbean_aggregated_data_up_to_week_of-2026-06-20.xlsx"
+    "actualizado": "2026-07-07",
+    "hasta_semana": "2026-06-27",
+    "fuente_xlsx": "https://acleddata.com/system/files/2026-07/Latin-America-the-Caribbean_aggregated_data_up_to_week_of-2026-06-27.xlsx"
   },
   "mensual": {
     "2017-12": 5,
@@ -108,6 +108,6 @@
     "2026-03": 23,
     "2026-04": 27,
     "2026-05": 34,
-    "2026-06": 15
+    "2026-06": 24
   }
 }
