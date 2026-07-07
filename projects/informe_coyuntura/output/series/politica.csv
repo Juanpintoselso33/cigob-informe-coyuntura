@@ -82,7 +82,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2024-01-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2023-12-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-07-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2026-07-01,comisiones_caidas,97.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2026-06-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2026-05-01,comisiones_caidas,97.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2026-04-01,comisiones_caidas,99.6,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
@@ -114,3 +114,5 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
+2026-01-01,cohesion_bloque_senado,99.7,"% cohesión (índice de Rice, Senado, anual)",Votaciones nominales Senado — elaboración CIGOB (scraping directo)
+2026-01-01,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"

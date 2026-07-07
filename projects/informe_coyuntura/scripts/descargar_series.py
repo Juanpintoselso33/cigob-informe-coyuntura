@@ -474,6 +474,33 @@ def fetch_cohesion_bloque_serie(anio_inicio: int = 2023) -> list:
     return out
 
 
+def fetch_cohesion_bloque_senado_serie(anio_inicio: int = 2023) -> list:
+    """Serie ANUAL de cohesión del bloque LLA en el Senado (índice de Rice
+    promedio): mismo patrón que fetch_cohesion_bloque_serie (Diputados) —
+    un punto por año desde `anio_inicio`, con dias_ventana=366 para cubrir
+    TODAS las actas divididas del año sin depender de la fecha de corrida.
+    Indicador COMPLEMENTARIO (otra cámara), no reemplaza a cohesion_bloque.
+    [[YYYY-01-01, % cohesión]]."""
+    out = []
+    for anio in range(anio_inicio, date.today().year + 1):
+        resultado = politica.fetch_cohesion_bloque_senado(anio=anio, dias_ventana=366)
+        if resultado and resultado.get("valor") is not None:
+            out.append([f"{anio}-01-01", resultado["valor"]])
+    return out
+
+
+def fetch_adhesion_reformas_provincial_serie() -> list:
+    """adhesion_reformas_provincial es un STOCK: la adhesión al RIGI es un
+    evento único e irreversible por provincia, no una magnitud que fluctúe
+    mes a mes — un solo punto con el valor actual, no un backfill año por
+    año (no hay fuente con la fecha en la que cada provincia adhirió, así
+    que no hay forma de reconstruir el pasado). [[YYYY-01-01, % provincias]]."""
+    resultado = politica.fetch_adhesion_reformas_provincial()
+    if not resultado or resultado.get("valor") is None:
+        return []
+    return [[f"{date.today().year}-01-01", resultado["valor"]]]
+
+
 POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
@@ -484,6 +511,17 @@ POLITICA_DERIVADAS = [
     ("cohesion_bloque", "% cohesión (índice de Rice, anual)",
      "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
      fetch_cohesion_bloque_serie),
+    ("cohesion_bloque_senado", "% cohesión (índice de Rice, Senado, anual)",
+     "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+     fetch_cohesion_bloque_senado_serie),
+    ("adhesion_reformas_provincial", "% de provincias (sobre 24) adheridas al RIGI",
+     "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+     fetch_adhesion_reformas_provincial_serie),
+    # protestas_caba NO se registra acá: ya está en GESTION_DERIVADAS
+    # (fetch_protestas_serie) y build_series() en publicar.py fusiona TODOS
+    # los CSV de output/series/ en un único dict keyed por indicador — la
+    # clave "protestas_caba" ya queda disponible para el ITCP de política sin
+    # duplicar la descarga (~8 MB de ACLED) ni la lógica de scraping.
 ]
 
 VIDA_INDEC = [
@@ -909,6 +947,7 @@ def fetch_inseguridad_serie() -> list:
 
 
 CARNE_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "carne_serie.json"
+MOTOS_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "motos_serie.json"
 
 
 def fetch_carne_serie() -> list:
@@ -1005,6 +1044,67 @@ def fetch_motos_serie() -> list:
     return out
 
 
+def fetch_motos_serie_cached() -> list:
+    """Serie mensual de motos con cache historico persistente."""
+    import importlib.util
+    config_path = Path(__file__).parent / "vida_cotidiana" / "config.py"
+    spec = importlib.util.spec_from_file_location("_vida_cotidiana_config", config_path)
+    vida_config = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(vida_config)
+    CAFAM_API = vida_config.CAFAM_API
+
+    def _load_cache() -> dict:
+        try:
+            data = json.loads(MOTOS_SERIE_STORE.read_text(encoding="utf-8-sig"))
+            if isinstance(data, dict):
+                return {k: int(v) for k, v in data.items() if v is not None}
+        except (OSError, json.JSONDecodeError, TypeError, ValueError):
+            pass
+
+        cache = {}
+        csv_path = OUTPUT_DIR / "vida_cotidiana.csv"
+        try:
+            with open(csv_path, newline="", encoding="utf-8-sig") as f:
+                for row in csv.DictReader(f):
+                    if row.get("indicador") == "patentamiento_motos":
+                        ym = str(row.get("fecha", ""))[:7]
+                        try:
+                            cache[ym] = int(float(row.get("valor") or 0))
+                        except ValueError:
+                            continue
+        except OSError:
+            pass
+        return cache
+
+    cache = _load_cache()
+    hoy = date.today()
+    fin = hoy.replace(day=1) - timedelta(days=1)
+    y, m = 2022, 11
+    while (y, m) <= (fin.year, fin.month):
+        ym = f"{y}-{m:02d}"
+        if ym not in cache:
+            try:
+                r = requests.get(CAFAM_API, params={"month_start": m, "month_end": m,
+                                                    "year": y, "type": "TODOS"},
+                                 headers=HTTP_HEADERS, timeout=min(HTTP_TIMEOUT, 10))
+                r.raise_for_status()
+                total = sum(p["count"] for p in r.json().get("provinces", []))
+                if total > 0:
+                    cache[ym] = total
+                    MOTOS_SERIE_STORE.write_text(
+                        json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
+            except Exception as e:
+                print(f"  [WARN] motos serie {ym}: {e}")
+        m += 1
+        if m > 12:
+            m = 1; y += 1
+    if cache:
+        MOTOS_SERIE_STORE.write_text(
+            json.dumps({k: cache[k] for k in sorted(cache)}, indent=2, ensure_ascii=False),
+            encoding="utf-8")
+    return [[f"{ym}-01", cache[ym]] for ym in sorted(cache)]
+
+
 # Componentes transformados del ITVC-B100 (100 = promedio 4T-2023, ADR-0018)
 VIDA_DERIVADAS += [
     ("itvc_alimentos", "índice (100 = 4T-2023)", "INDEC IPC Alimentos + RIPTE (elab. CIGOB)", fetch_itvc_alimentos),
@@ -1012,7 +1112,7 @@ VIDA_DERIVADAS += [
     ("itvc_ipi", "índice (100 = 4T-2023)", "INDEC IPI desestacionalizado", fetch_itvc_ipi),
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
-    ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie),
+    ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie_cached),
     # inseguridad = IVI mensual (ADR-0032); el SNIC anual sigue como serie de
     # contraste bajo clave propia (sin card: alimenta la ficha y validaciones)
     ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),
