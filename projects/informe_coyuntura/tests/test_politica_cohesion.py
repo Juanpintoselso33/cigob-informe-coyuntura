@@ -328,3 +328,79 @@ def test_cohesion_desactualizada_corrida_exitosa_sin_votos_nuevos():
     hoy = datetime.now().strftime("%Y-%m-%d")
     corrida_receso = {"valor": None, "n_actas": 0, "corrida_exitosa_en": hoy}
     assert not politica._cohesion_desactualizada(None, corrida_receso)
+
+
+# ── Senado (cohesion_bloque_senado) ──────────────────────────────────────────
+
+FIXTURE_LISTADO_SENADO = """
+<table>
+<tr>
+  <td><span style="display:none">20260211</span> 11/02/2026</td>
+  <td>Modernización Laboral. Título I.
+    <a href="/votaciones/detalleActa/2623">Ver</a>
+  </td>
+</tr>
+</table>
+"""
+
+
+def test_paced_get_reusa_logica_de_pacing(monkeypatch):
+    session = MagicMock()
+    session.get.return_value = MagicMock(status_code=200)
+    monkeypatch.setattr(politica.time, "sleep", lambda s: None)
+    r = politica._paced_get(session, "https://www.senado.gob.ar", "/votaciones/actas")
+    assert r.status_code == 200
+    session.get.assert_called_with("https://www.senado.gob.ar/votaciones/actas", timeout=politica.HTTP_TIMEOUT)
+
+
+def test_hcdn_votaciones_get_sigue_funcionando_via_paced_get(monkeypatch):
+    session = MagicMock()
+    session.get.return_value = MagicMock(status_code=200)
+    monkeypatch.setattr(politica.time, "sleep", lambda s: None)
+    r = politica._hcdn_votaciones_get(session, "/votaciones/actas")
+    assert r.status_code == 200
+    session.get.assert_called_with(f"{politica.HCDN_VOTACIONES_BASE}/votaciones/actas", timeout=politica.HTTP_TIMEOUT)
+
+
+def test_descubrir_actas_senado_extrae_id_y_fecha():
+    session = MagicMock()
+    session.get.return_value = MagicMock(status_code=200, text=FIXTURE_LISTADO_SENADO)
+    actas = politica._descubrir_actas_senado(session, 2026)
+    assert actas == [{"id": "2623", "fecha": datetime(2026, 2, 11)}]
+
+
+def test_fetch_cohesion_bloque_senado_es_complementario(monkeypatch):
+    hoy = datetime.now()
+    actas = [{"id": "2623", "fecha": hoy - timedelta(days=5)}]
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, a: actas)
+    monkeypatch.setattr(politica, "_paced_get", lambda s, base, path: MagicMock(text="<html></html>"))
+    monkeypatch.setattr(politica, "_parsear_acta", lambda html: [
+        {"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+        {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+    ])
+    resultado = politica.fetch_cohesion_bloque_senado()
+    assert resultado["valor"] == 100.0
+    assert "Senado" in resultado["fuente"]
+
+
+def test_fetch_cohesion_bloque_senado_ventana_de_backfill_ancla_al_anio_pedido(monkeypatch):
+    # Regresión (hallazgo de revisión, Tarea 2 de este plan): fetch_cohesion_bloque
+    # (Diputados) tuvo este mismo bug (Tarea 6, cross-fix) — la ventana de
+    # dias_ventana anclada a datetime.now() en vez de al 31-dic de `anio` hace
+    # que el backfill de años pasados sea estructuralmente imposible. El brief
+    # de esta tarea reintrodujo la versión sin el fix; se corrige acá mirando
+    # la implementación ya probada de fetch_cohesion_bloque.
+    anio_backfill = datetime.now().year - 2
+    acta_de_ese_anio = datetime(anio_backfill, 6, 15)
+    actas = [{"id": "1", "fecha": acta_de_ese_anio}]
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, a: actas)
+    monkeypatch.setattr(politica, "_paced_get", lambda s, base, path: MagicMock(text="<html></html>"))
+    monkeypatch.setattr(politica, "_parsear_acta", lambda html: [
+        {"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+        {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"},
+    ])
+    resultado = politica.fetch_cohesion_bloque_senado(anio=anio_backfill, dias_ventana=366)
+    assert resultado["n_actas"] == 1
+    assert resultado["valor"] == politica.indice_rice(1, 1)

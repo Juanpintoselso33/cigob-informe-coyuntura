@@ -91,6 +91,9 @@ HCDN_VOTACIONES_BASE = "https://votaciones.hcdn.gob.ar"
 _HCDN_VOTACIONES_DELAY = 0.3  # segundos entre requests — evita el WAF F5 BIG-IP
                               # (confirmado: Como_voto corre a diario con este patrón)
 
+# Senado — senado.gob.ar (portal de votaciones nominales, sitio distinto de HCDN)
+SENADO_BASE = "https://www.senado.gob.ar"
+
 # IPC interanual diciembre (INDEC). Actualizar en enero de cada año.
 # 2024: 117.06% acumulado anual. 2025: 38.3% acumulado anual (estimado previo a cierre).
 IPC_ANUAL = {2024: 1.1706, 2025: 0.383}   # fallback dic-dic si la API INDEC falla
@@ -126,10 +129,11 @@ def _hcdn_votaciones_session() -> requests.Session:
     return s
 
 
-def _hcdn_votaciones_get(session: requests.Session, path: str, **kwargs):
+def _paced_get(session: requests.Session, base_url: str, path: str, **kwargs):
     """GET con pacing fijo y retry/backoff ante 403 (hasta 3 intentos).
+    Generaliza el helper de HCDN para reusar sesión/pacing contra Senado.
     None si se agotan los reintentos o hay un error de red."""
-    url = f"{HCDN_VOTACIONES_BASE}{path}"
+    url = f"{base_url}{path}"
     for intento in range(3):
         time.sleep(_HCDN_VOTACIONES_DELAY)
         try:
@@ -142,6 +146,10 @@ def _hcdn_votaciones_get(session: requests.Session, path: str, **kwargs):
             continue
         return None
     return None
+
+
+def _hcdn_votaciones_get(session: requests.Session, path: str, **kwargs):
+    return _paced_get(session, HCDN_VOTACIONES_BASE, path, **kwargs)
 
 
 # ── Cache helpers ─────────────────────────────────────────────────────────────
@@ -979,6 +987,92 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
         "valor": round(sum(indices) / len(indices), 1) if indices else None,
         "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
         "fuente": "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+        "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
+        "n_actas": len(indices),
+        "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+    }
+
+
+_RE_DETALLE_ACTA_SENADO = re.compile(r"/votaciones/detalleActa/(\d+)")
+
+
+def _descubrir_actas_senado(session: requests.Session, anio: int):
+    """GET a /votaciones/actas (listado con fecha en <span style="display:none">
+    YYYYMMDD</span> y link <a href="/votaciones/detalleActa/{id}">) ->
+    [{id, fecha}] del año dado. Estructura confirmada en vivo (Senado, HTML
+    server-side, sin headless browser). parser="html.parser": lxml no está en
+    requirements.txt (Tarea 4 del plan de cohesion_bloque). Reusa
+    _RE_DISPLAY_NONE (mismo plan, Tarea 4) en vez de un match exacto de
+    "display:none" — la Tarea 4 confirmó que el HTML real de HCDN usa
+    "display: none" CON espacio; dado que Senado es la misma familia de sitios
+    de gobierno, no asumir que acá sí será sin espacio sin verificarlo en vivo
+    (ver Step de verificación más abajo)."""
+    r = _paced_get(session, SENADO_BASE, "/votaciones/actas")
+    if r is None:
+        return None
+    soup = BeautifulSoup(r.text, "html.parser")
+    actas = []
+    vistos = set()
+    for fila in soup.select("tr"):
+        link = fila.find("a", href=_RE_DETALLE_ACTA_SENADO)
+        span_fecha = fila.find("span", style=lambda s: s and _RE_DISPLAY_NONE.search(s))
+        if link is None or span_fecha is None:
+            continue
+        m = _RE_DETALLE_ACTA_SENADO.search(link["href"])
+        if not m:
+            continue
+        id_acta = m.group(1)
+        try:
+            fecha = datetime.strptime(span_fecha.get_text(strip=True), "%Y%m%d")
+        except ValueError:
+            continue
+        if fecha.year != anio or id_acta in vistos:
+            continue
+        vistos.add(id_acta)
+        actas.append({"id": id_acta, "fecha": fecha})
+    return actas
+
+
+def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90) -> dict | None:
+    """Cohesión del bloque LLA en el Senado — mismo índice de Rice que
+    fetch_cohesion_bloque, indicador COMPLEMENTARIO (otra cámara, otra
+    composición de bloque): nunca reemplaza al de Diputados.
+
+    La ventana de recencia se ancla a HOY para el año en curso, y al 31 de
+    diciembre de `anio` para años pasados (backfill) — mismo fix aplicado en
+    fetch_cohesion_bloque (Tarea 6, cross-fix del plan de Diputados): anclar
+    siempre a datetime.now() hacía el backfill de años pasados estructuralmente
+    imposible (hallazgo de revisión de esta tarea, mismo bug reintroducido por
+    el brief)."""
+    anio = anio or datetime.now().year
+    session = _hcdn_votaciones_session()
+    actas = _descubrir_actas_senado(session, anio)
+    if actas is None:
+        return None
+
+    referencia = datetime.now() if anio == datetime.now().year else datetime(anio, 12, 31)
+    limite = referencia - timedelta(days=dias_ventana)
+    indices = []
+    fecha_max = None
+    for acta in actas:
+        if acta["fecha"] < limite:
+            continue
+        r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
+        if r is None:
+            continue
+        filas = _parsear_acta(r.text)
+        afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
+        neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
+        rice = indice_rice(afirm, neg)
+        if rice is None:
+            continue
+        indices.append(rice)
+        fecha_max = acta["fecha"] if fecha_max is None else max(fecha_max, acta["fecha"])
+
+    return {
+        "valor": round(sum(indices) / len(indices), 1) if indices else None,
+        "unidad": "% cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días",
+        "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(indices),
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
