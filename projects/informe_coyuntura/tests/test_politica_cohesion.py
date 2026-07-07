@@ -285,3 +285,21 @@ def test_fetch_cohesion_bloque_falla_de_red_devuelve_none(monkeypatch):
     monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
     monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: None)
     assert politica.fetch_cohesion_bloque() is None
+
+
+def test_cohesion_desactualizada_corrida_exitosa_hoy():
+    assert not politica._cohesion_desactualizada(None, {"valor": 90.0, "corrida_exitosa_en": "2026-07-07"})
+
+
+def test_cohesion_desactualizada_sin_corrida_previa_ni_actual():
+    assert politica._cohesion_desactualizada(None, None)
+
+
+def test_cohesion_desactualizada_corrida_previa_reciente():
+    reciente = (datetime.now() - timedelta(days=3)).strftime("%Y-%m-%d")
+    assert not politica._cohesion_desactualizada({"corrida_exitosa_en": reciente}, None)
+
+
+def test_cohesion_desactualizada_corrida_previa_vieja():
+    vieja = (datetime.now() - timedelta(days=20)).strftime("%Y-%m-%d")
+    assert politica._cohesion_desactualizada({"corrida_exitosa_en": vieja}, None)

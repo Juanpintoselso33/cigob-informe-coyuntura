@@ -980,6 +980,22 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     }
 
 
+UMBRAL_FRESCURA_COHESION = 10  # días SIN una corrida exitosa (no sin votos nuevos)
+
+
+def _cohesion_desactualizada(cache_previo: dict | None, corrida_actual: dict | None,
+                              umbral_dias: int = UMBRAL_FRESCURA_COHESION) -> bool:
+    """True solo si no hubo NINGUNA corrida que haya llegado al sitio en los
+    últimos `umbral_dias` días — nunca por ausencia de votos nuevos (el receso
+    legislativo es normal y no debe marcarse como stale)."""
+    if corrida_actual is not None:
+        return False
+    if cache_previo is None or not cache_previo.get("corrida_exitosa_en"):
+        return True
+    ultima = datetime.strptime(cache_previo["corrida_exitosa_en"], "%Y-%m-%d")
+    return (datetime.now() - ultima).days > umbral_dias
+
+
 def calcular_score(indicadores: dict) -> float:
     """
     Score 0–10: mayor = mayor tensión en capital político.
