@@ -33,6 +33,24 @@ jobs:
           python -c "
           import sys; sys.path.insert(0, 'scripts')
           import politica
+
+          s = politica._hcdn_votaciones_session()
+          actas = politica._descubrir_actas(s, 2026)
+          print('N ACTAS 2026:', len(actas) if actas is not None else actas)
+          if actas:
+              print('MAS RECIENTE:', max(a[\"fecha\"] for a in actas))
+              print('MAS VIEJA:', min(a[\"fecha\"] for a in actas))
+              acta_reciente = max(actas, key=lambda a: a['fecha'])
+              print('EJEMPLO ACTA:', acta_reciente)
+              r = politica._hcdn_votaciones_get(s, politica._url_acta(acta_reciente))
+              print('DETALLE HTTP STATUS:', r.status_code if r else 'sin respuesta')
+              if r:
+                  filas = politica._parsear_acta(r.text)
+                  print('FILAS PARSEADAS:', len(filas))
+                  print('EJEMPLO FILAS:', filas[:3])
+                  lla = [f for f in filas if politica.es_bloque_lla(f['bloque'])]
+                  print('FILAS LLA:', len(lla))
+
           resultado = politica.fetch_cohesion_bloque()
           print('RESULTADO fetch_cohesion_bloque():', resultado)
           "
