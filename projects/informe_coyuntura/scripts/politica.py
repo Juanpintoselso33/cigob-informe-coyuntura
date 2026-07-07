@@ -1077,7 +1077,6 @@ def main() -> None:
         ("movilizacion_cepa",           fetch_cepa_movilizacion),
         ("iaf_transferencias",          fetch_iaf_transferencias),
         ("eficacia_legislativa",        fetch_eficacia_legislativa),
-        ("cohesion_bloque",             lambda: fetch_manual("cohesion_bloque")),
         ("gobernadores_alineamiento",   lambda: fetch_manual("gobernadores_alineamiento")),
         ("veto_quorum",                 fetch_veto_quorum),
         ("comisiones_caidas",           fetch_comisiones_caidas),
@@ -1090,6 +1089,26 @@ def main() -> None:
             frescos_count += 1
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
+
+    resultado_cohesion = fetch_cohesion_bloque()
+    anterior_cohesion = indicadores_anteriores.get("cohesion_bloque")
+    if resultado_cohesion is not None and resultado_cohesion.get("valor") is not None:
+        frescos["cohesion_bloque"] = resultado_cohesion
+        frescos_count += 1
+    elif resultado_cohesion is not None and anterior_cohesion is not None:
+        # corrida exitosa (llegó al sitio) pero sin votos nuevos en la ventana —
+        # se reusa el último valor conocido, NO se marca desactualizado por eso
+        frescos["cohesion_bloque"] = {
+            **anterior_cohesion,
+            "desactualizado": False,
+            "corrida_exitosa_en": resultado_cohesion["corrida_exitosa_en"],
+        }
+        frescos_count += 1
+    elif anterior_cohesion is not None:
+        frescos["cohesion_bloque"] = {
+            **anterior_cohesion,
+            "desactualizado": _cohesion_desactualizada(anterior_cohesion, resultado_cohesion),
+        }
 
     score   = calcular_score(frescos)
     payload = {
