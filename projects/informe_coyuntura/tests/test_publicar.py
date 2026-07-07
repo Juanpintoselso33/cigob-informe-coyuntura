@@ -44,19 +44,34 @@ def test_espiritu_epoca_presente_y_coherente():
     assert esp["indicadores"]["clima_electoral"]["fuente"] == "Votómetro CIGOB"
 
 
-def test_aporte_score_reconcilia_con_score_publicado():
-    """El promedio de los aportes por indicador debe reproducir el score del
-    cinturón (solo política queda como promedio simple: macro/gestión/vida
-    usan ITCM/ITCG/ITVC y se testean aparte)."""
+def test_politica_itcp_reconcilia():
+    """Política: la suma ponderada de los puntajes ITCP (peso_efectivo) reproduce
+    el ITCP publicado, la tensión del cinturón es (100 − ITCP)/10 y los pesos de
+    dimensión son los del ADR-0036 (política es, con esta corrida, el último de
+    los 4 cinturones automatizados en pasar de promedio simple a paramétrica)."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
-    for ck in ("politica",):
-        c = informe["cinturones"][ck]
-        aportes = [i["aporte_score"] for i in c["indicadores"].values()
-                   if i.get("aporte_score") is not None]
-        assert aportes, f"{ck}: ningún indicador tiene aporte_score"
-        promedio = round(sum(aportes) / len(aportes), 1)
-        assert abs(promedio - c["score"]) <= 0.1, \
-            f"{ck}: promedio de aportes {promedio} != score publicado {c['score']}"
+    c = informe["cinturones"]["politica"]
+    assert c.get("itcp"), "política sin bloque itcp"
+    itcp_val = c["itcp"]["valor"]
+
+    en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
+    contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
+    assert len(en_indice) == 12, f"esperaba 12 indicadores en el índice, hay {len(en_indice)}"
+    assert contexto == {}, f"política no debería tener contexto todavía: {set(contexto)}"
+
+    ponderado = sum(i["puntaje_itcp"] * i["peso_efectivo"] for i in en_indice.values())
+    assert abs(ponderado - itcp_val) <= 0.15, f"ponderado {ponderado} != ITCP {itcp_val}"
+    assert abs(c["score"] - round((100 - itcp_val) / 10, 1)) <= 0.05
+
+    # Pesos de dimensión (ADR-0036): 30/25/20/15/10.
+    pesos = {k: d["peso"] for k, d in c["itcp"]["dimensiones"].items()}
+    assert pesos == {"poder_legislativo": 0.30, "alianzas_territoriales": 0.25,
+                     "cohesion_interna": 0.20, "conflicto_social": 0.15,
+                     "imagen_voto": 0.10}
+
+    for k, i in en_indice.items():
+        assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
+        assert abs(i["aporte_score"] - round((100 - i["puntaje_itcp"]) / 10, 1)) <= 0.05
 
 
 def test_macro_itcm_reconcilia():

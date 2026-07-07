@@ -1,7 +1,7 @@
 ---
 // Sección Metodología de la portada: el recorrido del dato (fuentes →
-// extracción → gates → índices → tensión), los tres índices con sus valores
-// vivos, los controles de credibilidad y el acceso al diccionario de fichas.
+// extracción → gates → índices → tensión), los índices paramétricos con sus
+// valores vivos, los controles de credibilidad y el acceso al diccionario de fichas.
 // TODOS los números salen del snapshot en el build — nada cargado a mano.
 import { informe, CINTURONES, indiceDe, badgeEstado, cinturonesRojos, cap } from "../lib/datos.ts";
 import { FICHAS } from "../lib/fichas.ts";
@@ -26,7 +26,7 @@ const nFuentes = fuentes.size;
 const nFichas = Object.keys(FICHAS).length;
 const rojos = cinturonesRojos(informe);
 
-// los tres índices paramétricos, con valor vivo y composición
+// los índices paramétricos, con valor vivo y composición
 const indices = CINTURONES
   .map(c => ({ meta: c, indice: indiceDe(informe.cinturones[c.key]) }))
   .filter(x => x.indice) as { meta: (typeof CINTURONES)[number]; indice: NonNullable<ReturnType<typeof indiceDe>> }[];
@@ -74,9 +74,9 @@ const coma = (v: number) => String(v).replace(".", ",");
     </div>
     <span class="cg-met-arrow" aria-hidden="true">→</span>
     <div class="cg-met-step" role="listitem">
-      <span class="cg-met-num">3</span>
+      <span class="cg-met-num">{indices.length}</span>
       <span class="cg-met-lbl">Índices</span>
-      <span class="cg-met-desc">ITCM, ITCG e ITVC; política y espíritu promedian sus tensiones.</span>
+      <span class="cg-met-desc">ITCM, ITCP, ITVC e ITCG; solo espíritu de época promedia su tensión.</span>
     </div>
     <span class="cg-met-arrow" aria-hidden="true">→</span>
     <div class="cg-met-step" role="listitem">
@@ -86,7 +86,7 @@ const coma = (v: number) => String(v).replace(".", ",");
     </div>
   </div>
 
-  <!-- Los tres índices paramétricos, con su valor vivo → ficha metodológica -->
+  <!-- Los índices paramétricos, con su valor vivo → ficha metodológica -->
   <div class="cg-met-indices">
     {indices.map(({ meta, indice }) => (
       <a class={`cg-met-ind cg-met-ind--${meta.slug}`} href={`${base}/metodologia/${indice.sigla.toLowerCase()}/`}>

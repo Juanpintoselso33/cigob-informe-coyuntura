@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-07 19:24:24"
+generado: "2026-07-07 19:40:44"
 score_global: 3.3
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -21,19 +21,19 @@ schema_version: "1.2.0"
 | ipc_total | 2.15 | % mensual | 2026-05-01 | fresco |
 | reservas_bcra | 4122.0 | Millones de USD | 2026-05-31 | fresco |
 | idc | -0.31 | σ vs. su historia | 2026-05-01 | fresco |
-| badlar | 21.31 | % anual | 2026-07-02 | fresco |
+| badlar | 20.81 | % anual | 2026-07-03 | fresco |
 | emae_ia | 1.64 | % i.a. | 2026-04-01 | fresco |
 | saldo_comercial_12m | 21221.0 | Millones de USD (acum. 12 meses) | 2026-05-01 | fresco |
 | recaudacion | -2.3 | % i.a. real (prom. móvil 3 meses) | 2026-05-01 | fresco |
 | tcrm | 84.96 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
-| rem_ipc_12m | 23.3 | % anual esperado | 2026-05-31 | fresco |
+| rem_ipc_12m | 22.3 | % anual esperado | 2026-06-30 | fresco |
 | idm | 4.33 | pp (brecha i.a. real) | 2026-05-01 | fresco |
 | iai | -3.9 | % i.a. ponderado | 2026-04-01 | fresco |
 | icip | 8.2 | % i.a. ponderado | 2026-04-01 | fresco |
 | credito_privado | 9.5 | % i.a. real | 2026-05-01 | fresco |
-| prestamos_privados | 4.63 | % mensual nominal | 2026-07-01 | fresco |
-| base_monetaria | 9.05 | % mensual nominal | 2026-07-01 | fresco |
-| tc_mayorista | 3.2 | % mensual | 2026-07-03 | fresco |
+| prestamos_privados | 4.58 | % mensual nominal | 2026-07-02 | fresco |
+| base_monetaria | 6.48 | % mensual nominal | 2026-07-02 | fresco |
+| tc_mayorista | 3.06 | % mensual | 2026-07-06 | fresco |
 
 ### 🟡 Politica — score 3.5/10 (en_tension)
 *Riesgo de barbarismo: político*
@@ -67,22 +67,22 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 5.39 | % de brecha CCL/mayorista | 2026-07-05 | fresco |
+| cepo_mulc | 5.6 | % de brecha CCL/mayorista | 2026-07-06 | fresco |
 | apertura_comercial | 4.86 | % del intercambio (alícuota efectiva) | 2026-05-01 | fresco |
-| desregulacion_normativa | 60.0 | % de avance (proxy InfoLeg) | 2026-07-05 | fresco |
+| desregulacion_normativa | 60.0 | % de avance (proxy InfoLeg) | 2026-07-06 | fresco |
 | reduccion_estado | -19.8 | % de variación vs dic-2023 (dotación APN) | 2026-05-01 | fresco |
 | gasto_funcionamiento | -24.35 | % de variación real vs 2023-05 (IMIG funcionamiento) | 2026-05-01 | fresco |
 | masa_salarial | -22.98 | % de variación real vs 2023-05 (SPN remuneraciones) | 2026-05-01 | fresco |
-| reestructuracion_organismos | 40.0 | % de avance (proxy InfoLeg) | 2026-07-05 | fresco |
-| fal_modernizacion_laboral | 2.9 | Índice 0–100 (Fondo de Cese: cobertura + adopción financiera) | 2026-07-05 | fresco |
+| reestructuracion_organismos | 40.0 | % de avance (proxy InfoLeg) | 2026-07-06 | fresco |
+| fal_modernizacion_laboral | 2.9 | Índice 0–100 (Fondo de Cese: cobertura + adopción financiera) | 2026-07-06 | fresco |
 | litigiosidad_laboral | 3.6 | % variación juicios SRT (12m vs 12m previos) | 2026-03-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
-| rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-05 | fresco |
-| concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-07-05 | fresco |
-| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-07-05 | fresco |
+| rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-06 | fresco |
+| concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-07-06 | fresco |
+| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-07-06 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 31.8 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-03-01 | fresco |
-| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-05 | fresco |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-06 | fresco |
 | protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
 
 ### 🟡 Espiritu Epoca — score 3.2/10 (en_tension)
@@ -91,7 +91,7 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 5.5 | interés 0–100 | 2026-07-05 | fresco |
+| sentimiento_digital | 5.5 | interés 0–100 | 2026-07-06 | fresco |
 | clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
 
 ## Advertencias
@@ -99,4 +99,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:gobernadores_alineamiento,cohesion_bloque`
 
 ---
-*Generado por CIGOB — 2026-07-07 19:24:24 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-07 19:40:44 — schema 1.2.0*

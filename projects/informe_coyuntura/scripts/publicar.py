@@ -19,6 +19,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from config import PESOS_CINTURONES, UMBRALES        # pesos y umbrales del informe
 import itcm                                           # bandas y pesos del ITCM macro
 import itcg                                           # bandas y pesos del ITCG gestión
+import itcp                                           # bandas y pesos del ITCP política
 import itvc                                           # pesos y rebase del ITVC vida cotidiana
 import sensibilidad                                   # rango de robustez (ADR-0019)
 
@@ -207,19 +208,10 @@ def _clamp10(x):
 POB_AR = 46_700_000
 
 # clave de indicador → (valor → tensión 0–10, texto de mapeo de referencia)
-# Los indicadores macro NO están acá: su puntaje viene del ITCM calculado por
-# el colector (macro.py + itcm.py) y se traduce en aplicar_scoring().
+# Los indicadores macro, gestión y política NO están acá: su puntaje viene del
+# ITCM/ITCG/ITCP calculado por el colector (macro.py+itcm.py, gestion.py+itcg.py,
+# politica.py+itcp.py) y se traduce en aplicar_scoring() vía _scoring_indice().
 SCORING = {
-    # ── política ──
-    "votometro_ventaja_lla":     (lambda v: 5 - v / 3,          "+15pp → 0 · 0 → 5 · −15pp → 10 (gap LLA−PJ)"),
-    "ratio_dnu":                 (lambda v: v * 5,              "0 → 0 · 1,0 → 5 · 2,0+ → 10 (DNU/leyes)"),
-    "movilizacion_cepa":         (lambda v: v / 10,             "0 → 0 · 50 → 5 · 100 → 10 (índice)"),
-    "iaf_transferencias":        (lambda v: (0.10 - v / 100) * 25, "+10% → 0 · 0% → 2,5 · −10% → 5 · −30% → 10 (var. real i.a.)"),
-    "eficacia_legislativa":      (lambda v: (70 - v) / 7,       "70% → 0 · 35% → 5 · 0% → 10"),
-    "cohesion_bloque":           (lambda v: (95 - v) / 7,       "95% → 0 · 60% → 5 · 25% → 10"),
-    "gobernadores_alineamiento": (lambda v: (80 - v) / 8,       "80% → 0 · 40% → 5 · 0% → 10"),
-    "veto_quorum":               (lambda v: v / 3,              "0% → 0 · 15% → 5 · 30%+ → 10 (sesiones caídas)"),
-    "comisiones_caidas":         (lambda v: (v - 20) / 4,       "20% → 0 · 40% → 5 · 60%+ → 10"),
     # ── vida cotidiana ── (metodología CIGOB validada may-2026; anclas de dominio)
     "ipc_alimentos":       (lambda v: v,                "0% → 0 · 5% → 5 · 10% → 10 (mensual)"),
     "peso_tarifas":        (lambda v: v,                "0% → 0 · 5% → 5 · 10% → 10 (regulados, m/m)"),
@@ -245,12 +237,18 @@ VIDA_CONTEXTO = ("Indicador de contexto — no integra el ITVC (paramétrica CIG
 
 MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
 GESTION_CONTEXTO = "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026)."
+# Sin uso hoy: los 12 indicadores de política puntúan en el ITCP (itcp.py no
+# declara indicadores de contexto todavía) — se deja igual que MACRO/GESTION_CONTEXTO
+# por si un futuro indicador de política entra como contexto puro.
+POLITICA_CONTEXTO = "Indicador de contexto — no integra el ITCP (paramétrica CIGOB jul-2026)."
 
 SCORE_EXPLICACION = {
     "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: "
                        "estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, "
                        "actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."),
-    "politica":       "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político.",
+    "politica":       ("ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: "
+                       "poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, "
+                       "conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."),
     "gestion":        ("ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
                        "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
                        "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),
@@ -297,11 +295,11 @@ def _marcar_dimensiones_criticas(bloque, umbral):
 
 
 def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
-    """Cinturones con índice paramétrico (macro → ITCM, gestión → ITCG): el
-    puntaje lo computa el colector; acá solo se traduce cada puntaje 0-100 a
-    tensión equivalente (para la semántica 0-10 del modal) y se anota la tabla
-    de bandas + peso en el índice. Los indicadores con en_indice=false son
-    contexto y no aportan."""
+    """Cinturones con índice paramétrico (macro → ITCM, gestión → ITCG,
+    política → ITCP): el puntaje lo computa el colector; acá solo se traduce
+    cada puntaje 0-100 a tensión equivalente (para la semántica 0-10 del
+    modal) y se anota la tabla de bandas + peso en el índice. Los indicadores
+    con en_indice=false son contexto y no aportan."""
     ajustes = {a["indicador"]: a for a in (c.get(clave) or {}).get("ajustes_aplicados", [])}
     sigla = clave.upper()
     # Rango de robustez (ADR-0019): pesos ±20% + bandas vecinas, MC con semilla
@@ -404,6 +402,21 @@ def _gestion_input_txt(ikey, ind):
     if ikey == "privatizaciones" and ind.get("etapa_promedio") is not None:
         return (f"etapa promedio {coma(ind['etapa_promedio'])}/4 sobre "
                 f"{ind.get('empresas', '?')} empresas de la cartera Ley Bases")
+    return None
+
+
+def _politica_input_txt(ikey, ind):
+    """'Valor usado' del modal para política: la descomposición del número que
+    puntúa (protestas_caba puntúa sobre la variación vs. 2023, no el conteo
+    crudo de eventos; adhesion_reformas_provincial expone la cuenta de
+    provincias detrás del %)."""
+    coma = lambda x: str(x).replace(".", ",")
+    if ind.get("detalle_txt"):                       # detalle rico (ej. protestas_caba, ACLED)
+        return ind["detalle_txt"]
+    if ikey == "adhesion_reformas_provincial" and ind.get("n_provincias") is not None:
+        return f"{ind['n_provincias']} de 24 provincias adheridas al RIGI"
+    if ikey == "cohesion_bloque_senado" and ind.get("n_actas") is not None:
+        return f"promedio de {ind['n_actas']} actas divididas (Senado, últimos 90 días)"
     return None
 
 
@@ -838,6 +851,9 @@ def aplicar_scoring(informe, series):
             continue
         if ckey == "vida_cotidiana":
             _scoring_vida_itvc(c, series)
+            continue
+        if ckey == "politica":
+            _scoring_indice(c, "itcp", itcp, POLITICA_CONTEXTO, _politica_input_txt)
             continue
         for ikey, ind in c["indicadores"].items():
             aporte = formula = nota = lectura = None

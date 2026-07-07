@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-07T19:24:24.247585",
+  "generated_at": "2026-07-07T19:40:44.871833",
   "period": "2026-07",
   "score_global": 4.1,
   "ponderacion": {
@@ -173,23 +173,23 @@
           "aporte_input_txt": null
         },
         "rem_ipc_12m": {
-          "valor": 23.3,
+          "valor": 22.3,
           "unidad": "% anual esperado",
           "fuente": "BCRA — REM, expectativas de inflación (API monetarias)",
-          "fecha_dato": "2026-05-31",
+          "fecha_dato": "2026-06-30",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 79.8,
-          "puntaje_banda": 79.8,
+          "puntaje_itcm": 81.2,
+          "puntaje_banda": 81.2,
           "peso_efectivo": 0.078,
-          "equivalente_mensual": 1.76,
-          "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.76% mensual, en la misma escala que el IPC.",
-          "aporte_score": 2.0,
-          "aporte_formula": "Anclas ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 79.8; pesa 7,8% del ITCM)",
+          "equivalente_mensual": 1.69,
+          "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.69% mensual, en la misma escala que el IPC.",
+          "aporte_score": 1.9,
+          "aporte_formula": "Anclas ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 81.2; pesa 7,8% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 2,0/10.",
-          "aporte_input_txt": "equiv. mensual 1,76% (raíz-12 del 23,3% anual)"
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 1,9/10.",
+          "aporte_input_txt": "equiv. mensual 1,69% (raíz-12 del 22,3% anual)"
         },
         "idm": {
           "valor": 4.33,
@@ -197,7 +197,7 @@
           "fuente": "BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; M2 privado transaccional var. 197) + IPC INDEC",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
-          "m3_real_ia": -2.46,
+          "m3_real_ia": -2.45,
           "m2_real_ia": -6.78,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
@@ -208,7 +208,7 @@
           "aporte_formula": "Anclas ITCM: ≤-2 → 100 · -2 a 2 → 85 · 2–5 → 60 · 5–8 → 35 · >8 → 10 (puntaje interpolado entre anclas: 53.1; pesa 7,8% del ITCM)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 4,7/10.",
-          "aporte_input_txt": "brecha 4,33 pp = M3 priv. real i.a. -2,46% − M2 priv. real i.a. -6,78%"
+          "aporte_input_txt": "brecha 4,33 pp = M3 priv. real i.a. -2,45% − M2 priv. real i.a. -6,78%"
         },
         "iai": {
           "valor": -3.9,
@@ -263,7 +263,7 @@
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "nominal_ia": 45.9,
-          "detalle_txt": "nominal 45,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-05) — al 2026-07-01 (provisorio, no puntúa): 8,6% real con deflactor de 2026-05",
+          "detalle_txt": "nominal 45,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-05) — al 2026-07-02 (provisorio, no puntúa): 8,5% real con deflactor de 2026-05",
           "en_indice": true,
           "dimension": "financiamiento",
           "puntaje_itcm": 56.0,
@@ -278,14 +278,14 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 57.6,
+        "valor": 57.8,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
           "estabilidad_monetaria": {
             "nombre": "Estabilidad monetaria-inflacionaria",
             "peso": 0.26,
-            "puntaje": 68.7,
+            "puntaje": 69.1,
             "indicadores": {
               "ipc_total": {
                 "peso": 0.4,
@@ -296,9 +296,9 @@
               },
               "rem_ipc_12m": {
                 "peso": 0.3,
-                "puntaje_banda": 79.8,
-                "puntaje_aplicado": 79.8,
-                "valor": 1.7607,
+                "puntaje_banda": 81.2,
+                "puntaje_aplicado": 81.2,
+                "valor": 1.6917,
                 "peso_efectivo": 0.078
               },
               "idm": {
@@ -423,15 +423,15 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 55.8,
-          "p95": 59.1,
+          "p05": 55.9,
+          "p95": 59.2,
           "tension_rango": [
             4.1,
             4.4
           ],
           "dominante": {
             "indicador": "recaudacion",
-            "indice_sin": 64.0
+            "indice_sin": 64.1
           },
           "n_draws": 1000,
           "hist": [
@@ -439,41 +439,41 @@
             5,
             2,
             5,
-            4,
-            10,
-            12,
+            3,
+            11,
+            11,
             13,
-            22,
-            33,
+            24,
+            32,
             34,
-            35,
-            39,
-            53,
-            49,
-            58,
+            36,
+            34,
+            56,
+            51,
+            59,
             69,
-            54,
-            68,
-            75,
-            64,
+            52,
+            69,
+            76,
+            63,
+            52,
+            48,
+            43,
             50,
-            50,
-            46,
-            47,
-            28,
+            29,
             21,
-            15,
-            9,
-            9,
+            13,
+            10,
+            8,
+            5,
+            5,
+            3,
             4,
-            6,
-            3,
-            3,
-            3,
+            2,
             1
           ],
-          "hist_min": 54.55,
-          "hist_max": 60.51,
+          "hist_min": 54.62,
+          "hist_max": 60.65,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
@@ -657,10 +657,16 @@
           "fuente": "Votómetro CIGOB",
           "fecha_dato": "2026-05-28",
           "desactualizado": false,
-          "aporte_score": 3.2,
-          "aporte_formula": "+15pp → 0 · 0 → 5 · −15pp → 10 (gap LLA−PJ)",
+          "en_indice": true,
+          "dimension": "imagen_voto",
+          "puntaje_itcp": 75.6,
+          "puntaje_banda": 75.6,
+          "peso_efectivo": 0.1,
+          "aporte_score": 2.4,
+          "aporte_formula": "Anclas ITCP: >15 → 100 · 5–15 → 85 · -5 a 5 → 65 · -15 a -5 → 40 · ≤-15 → 10 (puntaje interpolado entre anclas: 75.6; pesa 10,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 3,2/10."
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 2,4/10.",
+          "aporte_input_txt": null
         },
         "ratio_dnu": {
           "valor": 1.471,
@@ -671,10 +677,16 @@
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
           "fecha_dato": "2026-07-07",
           "desactualizado": false,
-          "aporte_score": 7.4,
-          "aporte_formula": "0 → 0 · 1,0 → 5 · 2,0+ → 10 (DNU/leyes)",
+          "en_indice": true,
+          "dimension": "poder_legislativo",
+          "puntaje_itcp": 45.0,
+          "puntaje_banda": 45.0,
+          "peso_efectivo": 0.075,
+          "aporte_score": 5.5,
+          "aporte_formula": "Anclas ITCP: ≤0,3 → 100 · 0,3–0,7 → 85 · 0,7–1,2 → 65 · 1,2–2 → 40 · >2 → 10 (puntaje interpolado entre anclas: 45.0; pesa 7,5% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 7,4/10."
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 5,5/10.",
+          "aporte_input_txt": null
         },
         "movilizacion_cepa": {
           "valor": 50.5,
@@ -684,10 +696,16 @@
           "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
           "fecha_dato": "2026-07-07",
           "desactualizado": false,
-          "aporte_score": 5.0,
-          "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (índice)",
+          "en_indice": true,
+          "dimension": "conflicto_social",
+          "puntaje_itcp": 64.4,
+          "puntaje_banda": 64.4,
+          "peso_efectivo": 0.09,
+          "aporte_score": 3.6,
+          "aporte_formula": "Anclas ITCP: ≤20 → 100 · 20–40 → 85 · 40–60 → 65 · 60–80 → 40 · >80 → 10 (puntaje interpolado entre anclas: 64.4; pesa 9,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 5,0/10."
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 3,6/10.",
+          "aporte_input_txt": null
         },
         "iaf_transferencias": {
           "valor": 7.0,
@@ -700,10 +718,16 @@
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
           "fecha_dato": "2026-07-07",
           "desactualizado": false,
-          "aporte_score": 0.8,
-          "aporte_formula": "+10% → 0 · 0% → 2,5 · −10% → 5 · −30% → 10 (var. real i.a.)",
+          "en_indice": true,
+          "dimension": "alianzas_territoriales",
+          "puntaje_itcp": 91.0,
+          "puntaje_banda": 91.0,
+          "peso_efectivo": 0.1,
+          "aporte_score": 0.9,
+          "aporte_formula": "Anclas ITCP: >10 → 100 · 0–10 → 85 · -10 a 0 → 65 · -20 a -10 → 40 · ≤-20 → 10 (puntaje interpolado entre anclas: 91.0; pesa 10,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 0,8/10."
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 0,9/10.",
+          "aporte_input_txt": null
         },
         "eficacia_legislativa": {
           "valor": 4.3,
@@ -714,10 +738,16 @@
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
           "fecha_dato": "2026-07-07",
           "desactualizado": false,
-          "aporte_score": 9.4,
-          "aporte_formula": "70% → 0 · 35% → 5 · 0% → 10",
+          "en_indice": true,
+          "dimension": "poder_legislativo",
+          "puntaje_itcp": 10.0,
+          "puntaje_banda": 10.0,
+          "peso_efectivo": 0.09,
+          "aporte_score": 9.0,
+          "aporte_formula": "Anclas ITCP: >55 → 100 · 35–55 → 85 · 15–35 → 65 · 5–15 → 40 · ≤5 → 10 (puntaje interpolado entre anclas: 10.0; pesa 9,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 9,4/10."
+          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 9,0/10: puntaje mínimo — este frente concentra la tensión del cinturón.",
+          "aporte_input_txt": null
         },
         "gobernadores_alineamiento": {
           "valor": 55,
@@ -727,10 +757,16 @@
           "notas": "% de gobernadores provinciales (sobre 24) cuya posición pública es de alineamiento o apoyo al programa del gobierno nacional. Incluye acuerdos fiscales, apoyo a reformas, participación en foros oficiales.",
           "fecha_dato": "2026-04-01",
           "desactualizado": true,
-          "aporte_score": 3.1,
-          "aporte_formula": "80% → 0 · 40% → 5 · 0% → 10",
+          "en_indice": true,
+          "dimension": "alianzas_territoriales",
+          "puntaje_itcp": 85.0,
+          "puntaje_banda": 85.0,
+          "peso_efectivo": 0.075,
+          "aporte_score": 1.5,
+          "aporte_formula": "Anclas ITCP: >65 → 100 · 45–65 → 85 · 25–45 → 65 · 10–25 → 40 · ≤10 → 10 (puntaje interpolado entre anclas: 85.0; pesa 7,5% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 3,1/10."
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 1,5/10.",
+          "aporte_input_txt": null
         },
         "veto_quorum": {
           "valor": 0.0,
@@ -741,10 +777,16 @@
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
           "fecha_dato": "2026-07-07",
           "desactualizado": false,
+          "en_indice": true,
+          "dimension": "poder_legislativo",
+          "puntaje_itcp": 100.0,
+          "puntaje_banda": 100.0,
+          "peso_efectivo": 0.06,
           "aporte_score": 0.0,
-          "aporte_formula": "0% → 0 · 15% → 5 · 30%+ → 10 (sesiones caídas)",
+          "aporte_formula": "Anclas ITCP: ≤5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · >30 → 10 (puntaje interpolado entre anclas: 100.0; pesa 6,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 0,0/10. Hoy no registra tensión."
+          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_input_txt": null
         },
         "comisiones_caidas": {
           "valor": 97.7,
@@ -756,10 +798,16 @@
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
           "fecha_dato": "2026-07-07",
           "desactualizado": false,
-          "aporte_score": 10.0,
-          "aporte_formula": "20% → 0 · 40% → 5 · 60%+ → 10",
+          "en_indice": true,
+          "dimension": "poder_legislativo",
+          "puntaje_itcp": 10.0,
+          "puntaje_banda": 10.0,
+          "peso_efectivo": 0.075,
+          "aporte_score": 9.0,
+          "aporte_formula": "Anclas ITCP: ≤30 → 100 · 30–50 → 85 · 50–70 → 65 · 70–85 → 40 · >85 → 10 (puntaje interpolado entre anclas: 10.0; pesa 7,5% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 10,0/10."
+          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 9,0/10: puntaje mínimo — este frente concentra la tensión del cinturón.",
+          "aporte_input_txt": null
         },
         "adhesion_reformas_provincial": {
           "valor": 66.7,
@@ -767,10 +815,17 @@
           "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
           "fecha_dato": "2026-07-07",
           "n_provincias": 16,
-          "aporte_score": null,
-          "aporte_formula": null,
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "alianzas_territoriales",
+          "puntaje_itcp": 81.7,
+          "puntaje_banda": 81.7,
+          "peso_efectivo": 0.075,
+          "aporte_score": 1.8,
+          "aporte_formula": "Anclas ITCP: >80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤20 → 10 (puntaje interpolado entre anclas: 81.7; pesa 7,5% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": null
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 1,8/10.",
+          "aporte_input_txt": "16 de 24 provincias adheridas al RIGI"
         },
         "protestas_caba": {
           "valor": 301,
@@ -781,10 +836,16 @@
           "eventos_2023": 240,
           "var_vs_2023": 25.4,
           "detalle_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
-          "aporte_score": null,
-          "aporte_formula": null,
+          "en_indice": true,
+          "dimension": "conflicto_social",
+          "puntaje_itcp": 23.8,
+          "puntaje_banda": 23.8,
+          "peso_efectivo": 0.06,
+          "aporte_score": 7.6,
+          "aporte_formula": "Anclas ITCP: ≤-30 → 100 · -30 a -10 → 85 · -10 a 10 → 65 · 10–30 → 40 · >30 → 10 (puntaje interpolado entre anclas: 23.8; pesa 6,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": null
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 7,6/10.",
+          "aporte_input_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo"
         },
         "cohesion_bloque": {
           "valor": 78,
@@ -794,10 +855,16 @@
           "notas": "Proporción de diputados del bloque LLA que votaron alineados con la posición oficial en las votaciones nominales de los últimos 3 meses.",
           "fecha_dato": "2026-04-01",
           "desactualizado": true,
-          "aporte_score": 2.4,
-          "aporte_formula": "95% → 0 · 60% → 5 · 25% → 10",
+          "en_indice": true,
+          "dimension": "cohesion_interna",
+          "puntaje_itcp": 79.0,
+          "puntaje_banda": 79.0,
+          "peso_efectivo": 0.13,
+          "aporte_score": 2.1,
+          "aporte_formula": "Anclas ITCP: >90 → 100 · 75–90 → 85 · 60–75 → 65 · 40–60 → 40 · ≤40 → 10 (puntaje interpolado entre anclas: 79.0; pesa 13,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 2,4/10."
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 2,1/10.",
+          "aporte_input_txt": null
         },
         "cohesion_bloque_senado": {
           "valor": 99.5,
@@ -806,14 +873,212 @@
           "fecha_dato": "2026-06-04",
           "n_actas": 21,
           "corrida_exitosa_en": "2026-07-07",
-          "aporte_score": null,
-          "aporte_formula": null,
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "cohesion_interna",
+          "puntaje_itcp": 100.0,
+          "puntaje_banda": 100.0,
+          "peso_efectivo": 0.07,
+          "aporte_score": 0.0,
+          "aporte_formula": "Anclas ITCP: >90 → 100 · 75–90 → 85 · 60–75 → 65 · 40–60 → 40 · ≤40 → 10 (puntaje interpolado entre anclas: 100.0; pesa 7,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": null
+          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_input_txt": "promedio de 21 actas divididas (Senado, últimos 90 días)"
         }
       },
       "alerta": null,
-      "score_explicacion": "Promedio simple de la tensión (0–10) de sus indicadores. Mayor = más tensión en el capital político."
+      "itcp": {
+        "valor": 64.7,
+        "banda": "moderadamente_aflojado",
+        "banda_legible": "Moderadamente aflojado",
+        "dimensiones": {
+          "poder_legislativo": {
+            "nombre": "Poder legislativo",
+            "peso": 0.3,
+            "puntaje": 36.8,
+            "indicadores": {
+              "ratio_dnu": {
+                "peso": 0.25,
+                "puntaje_banda": 45.0,
+                "puntaje_aplicado": 45.0,
+                "valor": 1.471,
+                "peso_efectivo": 0.075
+              },
+              "eficacia_legislativa": {
+                "peso": 0.3,
+                "puntaje_banda": 10.0,
+                "puntaje_aplicado": 10.0,
+                "valor": 4.3,
+                "peso_efectivo": 0.09
+              },
+              "veto_quorum": {
+                "peso": 0.2,
+                "puntaje_banda": 100.0,
+                "puntaje_aplicado": 100.0,
+                "valor": 0.0,
+                "peso_efectivo": 0.06
+              },
+              "comisiones_caidas": {
+                "peso": 0.25,
+                "puntaje_banda": 10.0,
+                "puntaje_aplicado": 10.0,
+                "valor": 97.7,
+                "peso_efectivo": 0.075
+              }
+            },
+            "peso_efectivo": 0.3,
+            "critica": false
+          },
+          "alianzas_territoriales": {
+            "nombre": "Alianzas territoriales",
+            "peso": 0.25,
+            "puntaje": 86.4,
+            "indicadores": {
+              "iaf_transferencias": {
+                "peso": 0.4,
+                "puntaje_banda": 91.0,
+                "puntaje_aplicado": 91.0,
+                "valor": 7.0,
+                "peso_efectivo": 0.1
+              },
+              "gobernadores_alineamiento": {
+                "peso": 0.3,
+                "puntaje_banda": 85.0,
+                "puntaje_aplicado": 85.0,
+                "valor": 55.0,
+                "peso_efectivo": 0.075
+              },
+              "adhesion_reformas_provincial": {
+                "peso": 0.3,
+                "puntaje_banda": 81.7,
+                "puntaje_aplicado": 81.7,
+                "valor": 66.7,
+                "peso_efectivo": 0.075
+              }
+            },
+            "peso_efectivo": 0.25,
+            "critica": false
+          },
+          "cohesion_interna": {
+            "nombre": "Cohesión interna del oficialismo",
+            "peso": 0.2,
+            "puntaje": 86.3,
+            "indicadores": {
+              "cohesion_bloque": {
+                "peso": 0.65,
+                "puntaje_banda": 79.0,
+                "puntaje_aplicado": 79.0,
+                "valor": 78.0,
+                "peso_efectivo": 0.13
+              },
+              "cohesion_bloque_senado": {
+                "peso": 0.35,
+                "puntaje_banda": 100.0,
+                "puntaje_aplicado": 100.0,
+                "valor": 99.5,
+                "peso_efectivo": 0.07
+              }
+            },
+            "peso_efectivo": 0.2,
+            "critica": false
+          },
+          "conflicto_social": {
+            "nombre": "Conflicto social",
+            "peso": 0.15,
+            "puntaje": 48.2,
+            "indicadores": {
+              "movilizacion_cepa": {
+                "peso": 0.6,
+                "puntaje_banda": 64.4,
+                "puntaje_aplicado": 64.4,
+                "valor": 50.5,
+                "peso_efectivo": 0.09
+              },
+              "protestas_caba": {
+                "peso": 0.4,
+                "puntaje_banda": 23.8,
+                "puntaje_aplicado": 23.8,
+                "valor": 25.4,
+                "peso_efectivo": 0.06
+              }
+            },
+            "peso_efectivo": 0.15,
+            "critica": false
+          },
+          "imagen_voto": {
+            "nombre": "Imagen y voto",
+            "peso": 0.1,
+            "puntaje": 75.6,
+            "indicadores": {
+              "votometro_ventaja_lla": {
+                "peso": 1.0,
+                "puntaje_banda": 75.6,
+                "puntaje_aplicado": 75.6,
+                "valor": 5.3,
+                "peso_efectivo": 0.1
+              }
+            },
+            "peso_efectivo": 0.1,
+            "critica": false
+          }
+        },
+        "ajustes_aplicados": [],
+        "robustez": {
+          "p05": 62.5,
+          "p95": 67.6,
+          "tension_rango": [
+            3.2,
+            3.8
+          ],
+          "dominante": {
+            "indicador": "veto_quorum",
+            "indice_sin": 59.9
+          },
+          "n_draws": 1000,
+          "hist": [
+            1,
+            0,
+            0,
+            1,
+            1,
+            2,
+            2,
+            3,
+            8,
+            9,
+            16,
+            16,
+            33,
+            39,
+            43,
+            52,
+            51,
+            64,
+            71,
+            69,
+            81,
+            83,
+            59,
+            56,
+            54,
+            46,
+            35,
+            31,
+            18,
+            20,
+            12,
+            9,
+            3,
+            7,
+            2,
+            3
+          ],
+          "hist_min": 59.1,
+          "hist_max": 69.49,
+          "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
+        }
+      },
+      "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
     },
     "vida_cotidiana": {
       "score": 6.9,
@@ -997,12 +1262,12 @@
           "detalle_txt": "El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITVC usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.",
           "en_indice": true,
           "dimension": "confianza",
-          "indice_itvc": 135.9,
+          "indice_itvc": 136.0,
           "peso_efectivo": 0.015,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 135,9 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 136,0 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
-          "aporte_lectura": "Este componente está en 135,9 contra una base de 100: su tensión equivalente daría negativa (-2,2) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
+          "aporte_lectura": "Este componente está en 136,0 contra una base de 100: su tensión equivalente daría negativa (-2,2) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
         },
         "patentamiento_motos": {
           "valor": 69154,
@@ -1016,7 +1281,7 @@
           "peso_efectivo": 0.0075,
           "aporte_score": 0.0,
           "aporte_formula": "Índice base-100 vs 4T-2023: 140,0 (100 = arranque del mandato; más = mejora); pesa 0,8% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
-          "aporte_nota": "Winsorizado (tratamiento de outliers): índice crudo 166,7 acotado al techo de 140,0 — un boom puntual de un componente no compra compensación ilimitada en el promedio. El tope es solo hacia arriba: las caídas no se recortan, se señalizan como dimensión crítica.",
+          "aporte_nota": "Winsorizado (tratamiento de outliers): índice crudo 166,8 acotado al techo de 140,0 — un boom puntual de un componente no compra compensación ilimitada en el promedio. El tope es solo hacia arriba: las caídas no se recortan, se señalizan como dimensión crítica.",
           "aporte_lectura": "Este componente está en 140,0 contra una base de 100: su tensión equivalente daría negativa (-3,0) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
         }
       },
@@ -1115,7 +1380,7 @@
           "confianza": {
             "nombre": "Confianza y seguridad",
             "peso": 0.15,
-            "puntaje": 103.8,
+            "puntaje": 103.9,
             "indicadores": {
               "icc_utdt": {
                 "peso": 0.45,
@@ -1131,8 +1396,8 @@
               },
               "sentimiento_digital": {
                 "peso": 0.1,
-                "puntaje_banda": 135.9,
-                "puntaje_aplicado": 135.9,
+                "puntaje_banda": 136.0,
+                "puntaje_aplicado": 136.0,
                 "peso_efectivo": 0.015
               },
               "consumo_carne": {
@@ -1177,19 +1442,19 @@
             24,
             34,
             26,
-            37,
-            35,
+            36,
+            36,
             32,
             51,
             50,
-            55,
-            45,
+            54,
+            46,
             51,
             62,
             60,
             55,
-            48,
-            54,
+            47,
+            55,
             44,
             36,
             33,
@@ -1379,20 +1644,20 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 5.39,
+          "valor": 5.6,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-07-05",
+          "fecha_dato": "2026-07-06",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 97.7,
-          "puntaje_banda": 97.7,
+          "puntaje_itcg": 96.4,
+          "puntaje_banda": 96.4,
           "peso_efectivo": 0.14,
-          "aporte_score": 0.2,
-          "aporte_formula": "Anclas ITCG: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 97.7; pesa 14,0% del ITCG)",
+          "aporte_score": 0.4,
+          "aporte_formula": "Anclas ITCG: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 96.4; pesa 14,0% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,2/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,4/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": null
         },
         "apertura_comercial": {
@@ -1417,7 +1682,7 @@
           "valor": 60.0,
           "unidad": "% de avance (proxy InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-05",
+          "fecha_dato": "2026-07-06",
           "desactualizado": false,
           "conteo_normas": 60,
           "detalle_txt": "60 normas con 'deroga' desde dic-2023 (100 = plan completo)",
@@ -1492,7 +1757,7 @@
           "valor": 40.0,
           "unidad": "% de avance (proxy InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-05",
+          "fecha_dato": "2026-07-06",
           "desactualizado": false,
           "conteo_normas": 18,
           "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -1511,7 +1776,7 @@
           "valor": 2.9,
           "unidad": "Índice 0–100 (Fondo de Cese: cobertura + adopción financiera)",
           "fuente": "CNV (registro FCI, RG 1071/2025) + Boletín Oficial (menciones)",
-          "fecha_dato": "2026-07-05",
+          "fecha_dato": "2026-07-06",
           "desactualizado": false,
           "fci_cese_registrados": 0,
           "menciones_bo": 21,
@@ -1585,7 +1850,7 @@
           "valor": 22.0,
           "unidad": "% de inversión aprobada sobre el pipeline",
           "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-          "fecha_dato": "2026-07-05",
+          "fecha_dato": "2026-07-06",
           "desactualizado": false,
           "proyectos_aprobados": 17,
           "inversion_aprobada_musd": 31192,
@@ -1607,7 +1872,7 @@
           "valor": 28.7,
           "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
           "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-          "fecha_dato": "2026-07-05",
+          "fecha_dato": "2026-07-06",
           "desactualizado": false,
           "km_adjudicados": 2614,
           "km_totales": 9091,
@@ -1618,7 +1883,7 @@
             "etapa_ii_b": 0.0,
             "etapa_iii": 0.0
           },
-          "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Apertura 2º Etapa · II: Adjudicado · III: Dictamen preseleccion publicado",
+          "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: En Apertura 2º Etapa · II: Adjudicado · III: Dictamen preseleccion publicado",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 44.6,
@@ -1628,13 +1893,13 @@
           "aporte_formula": "Anclas ITCG: >75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤15 → 10 (puntaje interpolado entre anclas: 44.6; pesa 3,0% del ITCG)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 5,5/10.",
-          "aporte_input_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Pendiente Apertura 2º Etapa · II: Adjudicado · III: Dictamen preseleccion publicado"
+          "aporte_input_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: En Apertura 2º Etapa · II: Adjudicado · III: Dictamen preseleccion publicado"
         },
         "asistencia_directa": {
           "valor": 100.0,
           "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
           "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-          "fecha_dato": "2026-07-05",
+          "fecha_dato": "2026-07-06",
           "desactualizado": false,
           "ejercicio": 2026,
           "componentes": {
@@ -1701,16 +1966,16 @@
           "valor": 0,
           "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
           "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-          "fecha_dato": "2026-07-05",
+          "fecha_dato": "2026-07-06",
           "desactualizado": false,
-          "dias_muestreados_mes": 4,
-          "detalle_txt": "0 alertas en 4 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+          "dias_muestreados_mes": 5,
+          "detalle_txt": "0 alertas en 5 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
           "en_indice": false,
           "aporte_score": null,
           "aporte_formula": null,
           "aporte_nota": "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026).",
           "aporte_lectura": null,
-          "aporte_input_txt": "0 alertas en 4 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)"
+          "aporte_input_txt": "0 alertas en 5 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)"
         },
         "protestas_caba": {
           "valor": 301,
@@ -1731,20 +1996,20 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 72.8,
+        "valor": 72.6,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "reformas_economicas": {
             "nombre": "Reformas económicas fundamentales",
             "peso": 0.35,
-            "puntaje": 83.1,
+            "puntaje": 82.6,
             "indicadores": {
               "cepo_mulc": {
                 "peso": 0.4,
-                "puntaje_banda": 97.7,
-                "puntaje_aplicado": 97.7,
-                "valor": 5.39,
+                "puntaje_banda": 96.4,
+                "puntaje_aplicado": 96.4,
+                "valor": 5.6,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -1888,7 +2153,7 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 70.4,
+          "p05": 70.2,
           "p95": 75.0,
           "tension_rango": [
             2.5,
@@ -1896,49 +2161,49 @@
           ],
           "dominante": {
             "indicador": "fal_modernizacion_laboral",
-            "indice_sin": 77.8
+            "indice_sin": 77.6
           },
           "n_draws": 1000,
           "hist": [
             1,
-            2,
+            1,
             3,
+            3,
+            4,
+            7,
+            15,
+            8,
+            26,
+            17,
+            32,
+            42,
+            35,
+            45,
+            58,
+            56,
+            64,
+            58,
+            58,
+            68,
+            59,
+            63,
+            46,
+            55,
+            49,
+            26,
+            28,
+            16,
+            21,
+            16,
+            9,
+            4,
             2,
             4,
-            8,
-            10,
-            12,
-            23,
-            20,
-            31,
-            40,
-            36,
-            36,
-            59,
-            61,
-            53,
-            64,
-            45,
-            82,
-            54,
-            66,
-            49,
-            56,
-            47,
-            29,
-            32,
-            16,
-            17,
-            20,
-            10,
-            3,
-            3,
-            5,
             0,
             1
           ],
-          "hist_min": 68.44,
-          "hist_max": 76.77,
+          "hist_min": 68.28,
+          "hist_max": 76.76,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
@@ -2138,7 +2403,7 @@
           "valor": 5.5,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-07-05",
+          "fecha_dato": "2026-07-06",
           "desactualizado": false,
           "aporte_score": 0.6,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",

@@ -1099,6 +1099,7 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(indices),
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+        "desactualizado": False,
     }
 
 
@@ -1137,6 +1138,7 @@ def fetch_adhesion_reformas_provincial() -> dict | None:
         "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
         "fecha_dato": datetime.now().strftime("%Y-%m-%d"),
         "n_provincias": len(provincias),
+        "desactualizado": False,
     }
 
 
@@ -1167,6 +1169,31 @@ def _valor_itcp(nombre: str, entry: dict):
     if nombre == "protestas_caba":
         return entry.get("var_vs_2023")
     return entry.get("valor")
+
+
+def _anotar_indicadores_itcp(indicadores: dict, resultado: dict | None) -> None:
+    """Marca cada indicador con su rol en el ITCP: los del índice llevan
+    puntaje, dimensión y peso efectivo; el resto queda como contexto (mismo
+    patrón que gestion.anotar_indicadores para el ITCG). A diferencia del
+    ITCG, el ITCP no tiene indicadores de contexto declarados todavía (los 12
+    de itcp.BANDAS_ITCP puntúan todos) — `en_indice` cae a False solo si el
+    indicador no está ni en el resultado ni en la tabla de bandas."""
+    por_indicador = {}
+    if resultado:
+        for dkey, dim in resultado["dimensiones"].items():
+            for ikey, info in dim["indicadores"].items():
+                por_indicador[ikey] = {
+                    "en_indice": True,
+                    "dimension": dkey,
+                    "puntaje_itcp": info["puntaje_aplicado"],
+                    "puntaje_banda": info["puntaje_banda"],
+                    "peso_efectivo": info["peso_efectivo"],
+                }
+    for nombre, ind in indicadores.items():
+        if nombre in por_indicador:
+            ind.update(por_indicador[nombre])
+        else:
+            ind["en_indice"] = nombre in itcp.BANDAS_ITCP  # del índice pero sin dato
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -1245,6 +1272,7 @@ def main() -> None:
             valores[nombre] = valor
     resultado_itcp = itcp.calcular_itcp(valores, ajustes)
     score = itcp.tension_de_itcp(resultado_itcp["valor"]) if resultado_itcp else 5.0
+    _anotar_indicadores_itcp(frescos, resultado_itcp)
 
     payload = {
         "cinturon":     CINTURON,

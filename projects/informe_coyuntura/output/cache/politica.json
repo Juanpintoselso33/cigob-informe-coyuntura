@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-07T18:23:25.788450",
+  "generated_at": "2026-07-07T19:40:38.758985",
   "score": 3.5,
   "itcp": {
     "valor": 64.7,
@@ -143,7 +143,12 @@
       "unidad": "Puntos porcentuales",
       "fuente": "Votómetro CIGOB",
       "fecha_dato": "2026-05-28",
-      "desactualizado": false
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "imagen_voto",
+      "puntaje_itcp": 75.6,
+      "puntaje_banda": 75.6,
+      "peso_efectivo": 0.1
     },
     "ratio_dnu": {
       "valor": 1.471,
@@ -153,7 +158,12 @@
       "unidad": "DNUs por ley",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
       "fecha_dato": "2026-07-07",
-      "desactualizado": false
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 45.0,
+      "puntaje_banda": 45.0,
+      "peso_efectivo": 0.075
     },
     "movilizacion_cepa": {
       "valor": 50.5,
@@ -162,7 +172,12 @@
       "unidad": "Índice (0–100)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
       "fecha_dato": "2026-07-07",
-      "desactualizado": false
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "conflicto_social",
+      "puntaje_itcp": 64.4,
+      "puntaje_banda": 64.4,
+      "peso_efectivo": 0.09
     },
     "iaf_transferencias": {
       "valor": 7.0,
@@ -174,7 +189,12 @@
       "unidad": "% interanual real",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
       "fecha_dato": "2026-07-07",
-      "desactualizado": false
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "alianzas_territoriales",
+      "puntaje_itcp": 91.0,
+      "puntaje_banda": 91.0,
+      "peso_efectivo": 0.1
     },
     "eficacia_legislativa": {
       "valor": 4.3,
@@ -184,7 +204,12 @@
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
       "fecha_dato": "2026-07-07",
-      "desactualizado": false
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 10.0,
+      "puntaje_banda": 10.0,
+      "peso_efectivo": 0.09
     },
     "gobernadores_alineamiento": {
       "valor": 55,
@@ -193,7 +218,12 @@
       "fuente": "Análisis de declaraciones y adhesiones públicas — elaboración CIGOB",
       "notas": "% de gobernadores provinciales (sobre 24) cuya posición pública es de alineamiento o apoyo al programa del gobierno nacional. Incluye acuerdos fiscales, apoyo a reformas, participación en foros oficiales.",
       "fecha_dato": "2026-04-01",
-      "desactualizado": true
+      "desactualizado": true,
+      "en_indice": true,
+      "dimension": "alianzas_territoriales",
+      "puntaje_itcp": 85.0,
+      "puntaje_banda": 85.0,
+      "peso_efectivo": 0.075
     },
     "veto_quorum": {
       "valor": 0.0,
@@ -203,7 +233,12 @@
       "unidad": "% de sesiones",
       "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
       "fecha_dato": "2026-07-07",
-      "desactualizado": false
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 100.0,
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.06
     },
     "comisiones_caidas": {
       "valor": 97.7,
@@ -214,14 +249,25 @@
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
       "fecha_dato": "2026-07-07",
-      "desactualizado": false
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 10.0,
+      "puntaje_banda": 10.0,
+      "peso_efectivo": 0.075
     },
     "adhesion_reformas_provincial": {
       "valor": 66.7,
       "unidad": "% de provincias (sobre 24) adheridas al RIGI",
       "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
       "fecha_dato": "2026-07-07",
-      "n_provincias": 16
+      "n_provincias": 16,
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "alianzas_territoriales",
+      "puntaje_itcp": 81.7,
+      "puntaje_banda": 81.7,
+      "peso_efectivo": 0.075
     },
     "protestas_caba": {
       "valor": 301,
@@ -231,7 +277,12 @@
       "desactualizado": false,
       "eventos_2023": 240,
       "var_vs_2023": 25.4,
-      "detalle_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo"
+      "detalle_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
+      "en_indice": true,
+      "dimension": "conflicto_social",
+      "puntaje_itcp": 23.8,
+      "puntaje_banda": 23.8,
+      "peso_efectivo": 0.06
     },
     "cohesion_bloque": {
       "valor": 78,
@@ -240,7 +291,12 @@
       "fuente": "Votaciones Cámara de Diputados — elaboración CIGOB en base a Hcdn.gob.ar",
       "notas": "Proporción de diputados del bloque LLA que votaron alineados con la posición oficial en las votaciones nominales de los últimos 3 meses.",
       "fecha_dato": "2026-04-01",
-      "desactualizado": true
+      "desactualizado": true,
+      "en_indice": true,
+      "dimension": "cohesion_interna",
+      "puntaje_itcp": 79.0,
+      "puntaje_banda": 79.0,
+      "peso_efectivo": 0.13
     },
     "cohesion_bloque_senado": {
       "valor": 99.5,
@@ -248,7 +304,13 @@
       "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
       "fecha_dato": "2026-06-04",
       "n_actas": 21,
-      "corrida_exitosa_en": "2026-07-07"
+      "corrida_exitosa_en": "2026-07-07",
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "cohesion_interna",
+      "puntaje_itcp": 100.0,
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.07
     }
   }
 }

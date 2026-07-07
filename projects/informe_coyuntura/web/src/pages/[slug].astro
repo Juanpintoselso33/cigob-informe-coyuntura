@@ -82,9 +82,14 @@ const robAmplitud = rob ? Math.round((rob.p95 - rob.p05) * 10) / 10 : null;
 // componente ICC, para no ser circular) contra el ICC UTDT. Ambas series se
 // rebasean a 100 en el primer mes común para dibujarlas en una misma escala.
 const val = indice?.data.validacion ?? null;
-// Matriz de validación cruzada (global a las tres paramétricas): se muestra en
-// los cinturones con índice, con la fila del índice propio señalada.
-const cruz = indice ? ((informe as any).validacion_cruzada ?? null) : null;
+// Matriz de validación cruzada (global a las tres paramétricas con contraste
+// externo — ITCM/ITCG/ITVC): se muestra solo en esos cinturones, con la fila
+// del índice propio señalada. Política (ITCP) todavía no tiene contraste
+// externo declarado (sin serie histórica propia — decisión editorial
+// separada), así que no debe filtrar esta matriz ajena a su página.
+const cruzRaw = indice ? ((informe as any).validacion_cruzada ?? null) : null;
+const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice!.sigla)
+  ? cruzRaw : null;
 // etiquetas cortas de las anclas externas para la matriz en mobile
 const CRUZ_CORTAS: Record<string, string> = {
   riesgo: "Riesgo país", merval: "Merval USD", icc: "ICC",

@@ -10,9 +10,10 @@ export interface Indicador {
   estado?: string;        // "placeholder" cuando aplica
   avance_pct?: number;
   notas?: string;
-  en_indice?: boolean;    // macro/gestión/vida: integra el índice paramétrico (false = contexto)
+  en_indice?: boolean;    // macro/gestión/política/vida: integra el índice paramétrico (false = contexto)
   puntaje_itcm?: number;  // macro: puntaje 0-100 aplicado en el ITCM
   puntaje_itcg?: number;  // gestión: puntaje 0-100 aplicado en el ITCG
+  puntaje_itcp?: number;  // política: puntaje 0-100 aplicado en el ITCP
   indice_itvc?: number;   // vida: índice base-100 del componente (100 = 4T-2023)
   [k: string]: unknown;
 }
@@ -53,6 +54,7 @@ export interface Cinturon {
   score_explicacion?: string;
   itcm?: IndiceParametrico;  // solo macro
   itcg?: IndiceParametrico;  // solo gestión
+  itcp?: IndiceParametrico;  // solo política
   itvc?: IndiceParametrico;  // solo vida cotidiana (base 100 = 4T-2023)
 }
 
@@ -91,6 +93,14 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
       "Más de 100 = mejora acumulada de la vida cotidiana; menos de 100 = deterioro. " +
       "Pondera cinco dimensiones; la tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
     data: c.itvc,
+  };
+  if (c.itcp) return {
+    sigla: "ITCP",
+    nombre: "Índice de Tensión del Cinturón Político",
+    descripcion: "Índice de Tensión del Cinturón Político (paramétrica CIGOB, jul-2026). " +
+      "0 = mínimo capital político, 100 = máximo (capacidad de gobernar, no popularidad). " +
+      "Pondera cinco dimensiones; la tensión del cinturón es (100 − ITCP) / 10.",
+    data: c.itcp,
   };
   return null;
 }
