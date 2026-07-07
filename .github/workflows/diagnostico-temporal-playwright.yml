@@ -1,0 +1,48 @@
+name: "[TEMPORAL] Diagnóstico Playwright para votaciones.hcdn.gob.ar"
+
+# Workflow descartable — confirma si un headless browser (Playwright/Chromium)
+# ve contenido real donde requests+BeautifulSoup solo ve el shell de carga de
+# la SPA (confirmado en la Tarea 11 del plan de cohesion_bloque). Se borra
+# después de leer el resultado.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Instalar Playwright + Chromium
+        run: |
+          pip install playwright
+          playwright install --with-deps chromium
+
+      - name: Probar votaciones.hcdn.gob.ar con headless browser
+        run: |
+          python3 -c "
+          from playwright.sync_api import sync_playwright
+          with sync_playwright() as p:
+              browser = p.chromium.launch()
+              page = browser.new_page()
+              try:
+                  resp = page.goto('https://votaciones.hcdn.gob.ar/', timeout=25000, wait_until='networkidle')
+                  print('STATUS:', resp.status if resp else 'sin respuesta')
+                  print('TITLE:', page.title())
+                  html = page.content()
+                  print('LEN HTML renderizado:', len(html))
+                  print('OCURRENCIAS redirectActa:', html.count('redirectActa'))
+                  print('OCURRENCIAS <tr:', html.lower().count('<tr'))
+                  print('OCURRENCIAS loading:', html.lower().count('id=\"loading\"'))
+
+                  # Probar también la búsqueda por año, con JS ejecutado
+                  page2 = browser.new_page()
+                  resp2 = page2.goto('https://votaciones.hcdn.gob.ar/votaciones/search', timeout=25000, wait_until='networkidle')
+                  print('---BUSQUEDA POR AÑO---')
+                  print('STATUS2:', resp2.status if resp2 else 'sin respuesta')
+                  html2 = page2.content()
+                  print('LEN HTML2:', len(html2))
+                  print('OCURRENCIAS redirectActa (pagina de busqueda):', html2.count('redirectActa'))
+              except Exception as e:
+                  print('EXCEPTION:', type(e).__name__, str(e)[:500])
+              browser.close()
+          "
