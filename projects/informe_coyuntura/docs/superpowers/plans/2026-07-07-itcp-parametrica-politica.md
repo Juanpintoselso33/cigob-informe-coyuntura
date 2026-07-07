@@ -364,16 +364,22 @@ def _descubrir_actas_senado(session: requests.Session, anio: int):
     """GET a /votaciones/actas (listado con fecha en <span style="display:none">
     YYYYMMDD</span> y link <a href="/votaciones/detalleActa/{id}">) ->
     [{id, fecha}] del año dado. Estructura confirmada en vivo (Senado, HTML
-    server-side, sin headless browser)."""
+    server-side, sin headless browser). parser="html.parser": lxml no está en
+    requirements.txt (Tarea 4 del plan de cohesion_bloque). Reusa
+    _RE_DISPLAY_NONE (mismo plan, Tarea 4) en vez de un match exacto de
+    "display:none" — la Tarea 4 confirmó que el HTML real de HCDN usa
+    "display: none" CON espacio; dado que Senado es la misma familia de sitios
+    de gobierno, no asumir que acá sí seŕa sin espacio sin verificarlo en vivo
+    (ver Step de verificación más abajo)."""
     r = _paced_get(session, SENADO_BASE, "/votaciones/actas")
     if r is None:
         return None
-    soup = BeautifulSoup(r.text, "lxml")
+    soup = BeautifulSoup(r.text, "html.parser")
     actas = []
     vistos = set()
     for fila in soup.select("tr"):
         link = fila.find("a", href=_RE_DETALLE_ACTA_SENADO)
-        span_fecha = fila.find("span", style=lambda s: s and "display:none" in s)
+        span_fecha = fila.find("span", style=lambda s: s and _RE_DISPLAY_NONE.search(s))
         if link is None or span_fecha is None:
             continue
         m = _RE_DETALLE_ACTA_SENADO.search(link["href"])
@@ -434,6 +440,31 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
 Run: `python -m pytest tests/test_politica_cohesion.py -v`
 Expected: todos los tests (plan anterior + esta tarea) pasan
 
+- [ ] **Step 4b: Verificación en vivo (obligatoria antes de continuar)**
+
+La Tarea 4 del plan de `cohesion_bloque` confirmó que HCDN usa
+`"display: none"` (CON espacio) en el sitio de Diputados, no `"display:none"`
+— y que el sitio devuelve 403 desde este tipo de entorno (bloqueo a nivel IP,
+no resuelto con pacing/retry/UA). Antes de confiar esta tarea a producción,
+repetir el mismo intento contra `senado.gob.ar` (probablemente NO esté detrás
+del mismo bloqueo — es un host distinto — pero no asumirlo):
+
+```bash
+python -c "
+import sys; sys.path.insert(0, 'scripts')
+import politica
+s = politica._hcdn_votaciones_session()
+actas = politica._descubrir_actas_senado(s, 2026)
+print(actas[:3] if actas else actas)
+"
+```
+
+Si responde con datos reales, confirmar que el espaciado de `display:none`
+coincide con el fixture (ajustar si difiere, igual que la Tarea 4). Si devuelve
+`None`/403, documentarlo como el mismo tipo de bloqueo ya conocido (no bloquea
+esta tarea — el guard de frescura de la Tarea 7 del plan anterior ya cubre
+este caso) y seguir con el Step 5.
+
 - [ ] **Step 5: Commit**
 
 ```bash
@@ -492,15 +523,19 @@ def fetch_adhesion_reformas_provincial() -> dict | None:
     """% de provincias (sobre 24) adheridas formalmente al RIGI (Título VII,
     Ley 27.742) — tabla MAGyP. Mide adhesión FISCAL a un régimen puntual, NO
     alineamiento político general — no reemplaza a gobernadores_alineamiento.
-    parser='lxml' explícito: con html.parser el HTML fuente produce una fila
-    duplicada (confirmado en vivo, <tr> vacío malformado en el sitio)."""
+    parser="html.parser" (stdlib, lxml no está en requirements.txt — ver
+    Tarea 4 del plan de cohesion_bloque): el sitio fuente tiene un <tr> vacío
+    malformado que con html.parser produce una fila SANTA CRUZ duplicada
+    (confirmado en vivo en la investigación previa) — no requiere lxml para
+    resolverlo, `provincias` ya es un `set()` más abajo, así que agregar el
+    mismo nombre dos veces es un no-op y el conteo final no se infla."""
     try:
         r = requests.get(MAGYP_RIGI_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     except requests.RequestException:
         return None
     if r.status_code != 200:
         return None
-    soup = BeautifulSoup(r.text, "lxml")
+    soup = BeautifulSoup(r.text, "html.parser")
     provincias = set()
     for fila in soup.select("table tr"):
         celdas = fila.find_all("td")

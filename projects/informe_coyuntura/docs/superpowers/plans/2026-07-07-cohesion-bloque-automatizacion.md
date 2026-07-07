@@ -6,7 +6,7 @@
 
 **Architecture:** Todo vive en `scripts/politica.py` (mismo archivo que los demás `fetch_*`, sin módulo nuevo): una sesión HTTP persistente con pacing evita el WAF del sitio; se descubren actas por año (POST + regex/BeautifulSoup), se parsea cada acta, se filtra al bloque LLA, se calcula el índice de Rice por acta dividida, y se promedia en ventana móvil. Un guard de frescura separado trackea "¿la corrida de hoy llegó al sitio?" independientemente de "¿hay votos nuevos?".
 
-**Tech Stack:** Python 3, `requests`, `BeautifulSoup4` (`lxml` parser) — ambos ya son dependencias del proyecto (usados en `movilizacion_cepa`/`gestion.py`). `pytest` + `unittest.mock` para tests (ya usado en `tests/test_itcg.py`).
+**Tech Stack:** Python 3, `requests`, `BeautifulSoup4` (parser `"html.parser"`, stdlib — `lxml` NO está en `requirements.txt`, confirmado en la Tarea 4; no agregarlo como dependencia nueva) — ambos ya son dependencias del proyecto (usados en `movilizacion_cepa`/`gestion.py`). `pytest` + `unittest.mock` para tests (ya usado en `tests/test_itcg.py`).
 
 ## Global Constraints
 
@@ -15,6 +15,8 @@
 - `HTTP_TIMEOUT = 20` (ya definido en `politica.py:64`) para todo request nuevo.
 - Nunca marcar `desactualizado=True` solo por ausencia de votos nuevos — solo si la corrida de scraping en sí no llegó al sitio en `UMBRAL_FRESCURA_COHESION = 10` días.
 - Todas las funciones nuevas van en `scripts/politica.py`; los tests nuevos en `tests/test_politica_cohesion.py` (archivo nuevo, mismo estilo que `tests/test_itcg.py`).
+- Parser de BeautifulSoup: `"html.parser"` (stdlib) en todo el plan, nunca `"lxml"` — confirmado en la Tarea 4 que `lxml` no está en `requirements.txt` y rompería `bs4.FeatureNotFound` en CI.
+- Construcción de URL de acta: siempre vía `_url_acta(acta)` (Tarea 5), nunca `f"/votacion/{acta['slug']}/{acta['id']}"` manual — el slug viene vacío en el 100% de las filas reales de producción (confirmado en la Tarea 4), y esa construcción manual generaría una URL incorrecta (`/votacion//{id}`, doble barra) en vez de la real (`/votacion/{id}`).
 
 ---
 
@@ -335,12 +337,14 @@ def _descubrir_actas(session: requests.Session, anio: int):
                       data={"anoSearch": str(anio)}, timeout=HTTP_TIMEOUT)
     if r is None or r.status_code != 200:
         return None
-    soup = BeautifulSoup(r.text, "lxml")
+    soup = BeautifulSoup(r.text, "html.parser")  # lxml no está en requirements.txt
     actas = []
     vistos = set()
     for fila in soup.select("tr"):
         m = _RE_REDIRECT_ACTA.search(str(fila))
-        span_fecha = fila.find("span", style=lambda s: s and "display:none" in s)
+        # ACTUALIZADO tras verificación en vivo (Tarea 4): el HTML real usa
+        # "display: none" (con espacio), no "display:none" — regex tolerante:
+        span_fecha = fila.find("span", style=lambda s: s and _RE_DISPLAY_NONE.search(s))
         if not m or span_fecha is None:
             continue
         id_acta, _, slug = m.groups()
@@ -393,16 +397,56 @@ git commit -m "feat(politica): descubrimiento de actas de votación por año"
 
 ---
 
-### Task 5: Parsing de una acta individual
+### Task 5: Parsing de una acta individual + construcción de URL
+
+> **Actualización post-Tarea 4 (hallazgo real, no hipotético):** el implementador de
+> la Tarea 4 verificó contra HTML real archivado (Wayback Machine, 2026-01-15) que el
+> 3er argumento de `redirectActa` (el slug) viene **vacío en el 100% de las 500 filas
+> reales observadas**. El autor del plan confirmó además, vía
+> `archive.org/wayback/available?url=votaciones.hcdn.gob.ar/votacion/5840`, que la URL
+> real de una acta con slug vacío es **`/votacion/{id}`** (dos segmentos, sin el slug)
+> — no `/votacion//{id}` — y que ese snapshot existe con status 200. Esta tarea agrega
+> un helper `_url_acta()` para construir la URL correctamente en ambos casos, y usa
+> `"html.parser"` en vez de `"lxml"` (la Tarea 4 ya estableció que `lxml` NO está en
+> `requirements.txt` y rompería en CI).
 
 **Files:**
 - Modify: `scripts/politica.py`
 - Test: `tests/test_politica_cohesion.py`
 
 **Interfaces:**
-- Produces: `politica._parsear_acta(html: str) -> list[dict]` — cada dict `{"nombre": str, "bloque": str, "voto": str}`.
+- Produces: `politica._url_acta(acta: dict) -> str` (dado `{"id": str, "slug": str, ...}`), `politica._parsear_acta(html: str) -> list[dict]` — cada dict `{"nombre": str, "bloque": str, "voto": str}`.
 
-- [ ] **Step 1: Write the failing tests**
+- [ ] **Step 0: Write the failing tests for `_url_acta`**
+
+```python
+def test_url_acta_con_slug():
+    assert politica._url_acta({"id": "5939", "slug": "regimen-de-zona-fria"}) == "/votacion/regimen-de-zona-fria/5939"
+
+
+def test_url_acta_sin_slug():
+    # Caso real de producción (Tarea 4: slug vacío en 500/500 filas reales)
+    assert politica._url_acta({"id": "5840", "slug": ""}) == "/votacion/5840"
+```
+
+Run: `python -m pytest tests/test_politica_cohesion.py -v -k url_acta` → FAIL (`AttributeError`), luego implementar:
+
+```python
+def _url_acta(acta: dict) -> str:
+    """Construye la URL de detalle de una acta. En producción el slug viene
+    VACÍO en el 100% de las filas observadas (Tarea 4, HTML real archivado
+    2026-01-15) — con slug vacío la URL real es /votacion/{id} (confirmado
+    contra un snapshot real de Wayback Machine, id 5840, status 200), NO
+    /votacion//{id}. Se soporta igual el caso con slug por si la fuente
+    cambia en el futuro."""
+    if acta.get("slug"):
+        return f"/votacion/{acta['slug']}/{acta['id']}"
+    return f"/votacion/{acta['id']}"
+```
+
+Run de nuevo → 2 passed. Commitear junto con el resto de esta tarea (Step 6).
+
+- [ ] **Step 1: Write the failing tests for `_parsear_acta`**
 
 ```python
 FIXTURE_ACTA = """
@@ -442,8 +486,11 @@ Expected: FAIL con `AttributeError`
 def _parsear_acta(html: str) -> list[dict]:
     """Parsea el HTML de una acta de votación nominal (misma estructura de
     tabla en Diputados y Senado: nombre, bloque, voto por fila) ->
-    [{nombre, bloque, voto}]. Ignora filas sin las 3 columnas esperadas."""
-    soup = BeautifulSoup(html, "lxml")
+    [{nombre, bloque, voto}]. Ignora filas sin las 3 columnas esperadas.
+    parser="html.parser" (stdlib): lxml NO está en requirements.txt y
+    rompería en CI (confirmado en la Tarea 4; mismo parser que ya usa
+    fetch_cepa_movilizacion)."""
+    soup = BeautifulSoup(html, "html.parser")
     filas = []
     for tr in soup.select("table tr"):
         celdas = tr.find_all("td")
@@ -467,7 +514,8 @@ Expected: 3 passed
 
 Esta estructura (`<td>nombre</td><td class="ocultar">bloque</td><td>voto</td>`)
 fue confirmada en vivo para el Senado. Para Diputados es inferencia del código
-de `Como_voto`, nunca observada de primera mano. Confirmar contra una acta real:
+de `Como_voto`, nunca observada de primera mano. Confirmar contra una acta real,
+usando `_url_acta()` (Step 0) para construir la URL correctamente:
 
 ```bash
 python -c "
@@ -475,20 +523,33 @@ import sys; sys.path.insert(0, 'scripts')
 import politica
 s = politica._hcdn_votaciones_session()
 actas = politica._descubrir_actas(s, 2026)
-r = politica._hcdn_votaciones_get(s, f'/votacion/{actas[0][\"slug\"]}/{actas[0][\"id\"]}')
-print(politica._parsear_acta(r.text)[:5] if r else 'sin respuesta')
+if actas:
+    r = politica._hcdn_votaciones_get(s, politica._url_acta(actas[0]))
+    print(politica._parsear_acta(r.text)[:5] if r else 'sin respuesta (probable bloqueo IP, ver Tarea 4)')
+else:
+    print('_descubrir_actas devolvió None/[] — ver Tarea 4 (bloqueo IP ya confirmado desde este tipo de entorno)')
 "
 ```
 
-Ajustar los selectores de `_parsear_acta` si la tabla real usa otra estructura
-(por ejemplo, columnas en otro orden, o el bloque en un `<span>` en vez de `<td>`
-directo) antes de seguir a la Tarea 6.
+**Nota (esperable, no un fallo del implementador):** la Tarea 4 ya confirmó un
+bloqueo a nivel IP del sitio en vivo desde este tipo de entorno (no resuelto con
+pacing/retry/UA de navegador) — el mismo bloqueo probablemente reproduce acá. Si
+pasa, repetir el approach de la Tarea 4: traer el HTML real vía Wayback Machine
+con `requests`/`curl` directo (NO con una herramienta de fetch de alto nivel —
+algunas bloquean `web.archive.org` para lectura de contenido aunque su API
+`archive.org/wayback/available` sí responde). El id `5840` con timestamp
+`20260115001539` ya está confirmado como snapshot real con status 200
+(`https://web.archive.org/web/20260115001539/https://votaciones.hcdn.gob.ar/votacion/5840`)
+— usarlo como fixture de verdad. Ajustar los selectores de `_parsear_acta` si la
+tabla real usa otra estructura (columnas en otro orden, bloque en un `<span>` en
+vez de `<td>` directo, etc.) antes de seguir a la Tarea 6, igual que la Tarea 4
+ajustó su regex de fecha contra la evidencia real.
 
 - [ ] **Step 6: Commit**
 
 ```bash
 git add scripts/politica.py tests/test_politica_cohesion.py
-git commit -m "feat(politica): parsing de tabla nominal de una acta"
+git commit -m "feat(politica): parsing de tabla nominal de una acta + construcción de URL"
 ```
 
 ---
@@ -574,7 +635,7 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     for acta in actas:
         if acta["fecha"] < limite:
             continue
-        r = _hcdn_votaciones_get(session, f"/votacion/{acta['slug']}/{acta['id']}")
+        r = _hcdn_votaciones_get(session, _url_acta(acta))
         if r is None:
             continue
         filas = _parsear_acta(r.text)
@@ -595,6 +656,8 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
     }
 ```
+
+Nota: usa `_url_acta(acta)` (Tarea 5), no la construcción manual `f"/votacion/{acta['slug']}/{acta['id']}"` — con slug vacío (caso real de producción) esa construcción manual generaría `/votacion//{id}` (doble barra), que difiere de la URL real confirmada `/votacion/{id}`.
 
 Confirmar que `from datetime import datetime, date, timedelta` ya cubre `timedelta`
 (el import existente en `politica.py:32` ya lo trae).
