@@ -1013,6 +1013,7 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(indices),
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+        "desactualizado": False,
     }
 
 
@@ -1158,6 +1159,23 @@ def _cohesion_desactualizada(cache_previo: dict | None, corrida_actual: dict | N
     return (datetime.now() - ultima).days > umbral_dias
 
 
+def _es_cohesion_legado(anterior: dict) -> bool:
+    """True si `anterior` (el cache previo de cohesion_bloque) tiene la forma
+    VIEJA del placeholder manual (pre-scraper) — {"valor": 78, "estado":
+    "placeholder", "unidad": "% votos en línea con la posición oficial del
+    bloque LLA", ...} — en vez de la forma NUEVA que devuelve
+    fetch_cohesion_bloque (índice de Rice real).
+
+    El discriminador es la AUSENCIA de "n_actas": es una clave que solo la
+    corrida del scraper nuevo pone (junto con "corrida_exitosa_en"); el
+    placeholder manual nunca la tuvo. Ambas formas son números 0-100 con
+    significados totalmente distintos (78 = "% de diputados alineados con la
+    posición oficial" vs. índice de Rice real) — sin este chequeo, un cache
+    viejo se arrastraría para siempre como si fuera un dato de Rice genuino
+    (hallazgo de revisión externa, ver commit)."""
+    return "n_actas" not in anterior
+
+
 def _valor_itcp(nombre: str, entry: dict):
     """Valor a puntuar en el ITCP para un indicador ya fresco/cacheado.
 
@@ -1228,6 +1246,12 @@ def main() -> None:
 
     resultado_cohesion = fetch_cohesion_bloque()
     anterior_cohesion = indicadores_anteriores.get("cohesion_bloque")
+    if anterior_cohesion is not None and _es_cohesion_legado(anterior_cohesion):
+        # Cache heredado del viejo placeholder manual (78, "% votos alineados
+        # con la posición oficial") — NO es un dato de Rice genuino, tratarlo
+        # como ausente para no corromper el ITCP con un valor de significado
+        # distinto (hallazgo de revisión externa).
+        anterior_cohesion = None
     if resultado_cohesion is not None and resultado_cohesion.get("valor") is not None:
         frescos["cohesion_bloque"] = resultado_cohesion
         frescos_count += 1

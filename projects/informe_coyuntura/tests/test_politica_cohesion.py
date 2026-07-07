@@ -287,6 +287,26 @@ def test_fetch_cohesion_bloque_falla_de_red_devuelve_none(monkeypatch):
     assert politica.fetch_cohesion_bloque() is None
 
 
+def test_fetch_cohesion_bloque_incluye_desactualizado_false(monkeypatch):
+    # Regresión (hallazgo P2 de revisión externa / Codex): toda corrida exitosa
+    # debe traer "desactualizado": False, igual que fetch_cohesion_bloque_senado
+    # y fetch_adhesion_reformas_provincial -- sin esta clave, main() la asigna
+    # directo a frescos["cohesion_bloque"] sin agregarla en ningún lado, y
+    # tests/test_publicar.py::test_publicar_genera_snapshot exige que todo
+    # indicador publicado tenga "desactualizado".
+    hoy = datetime.now()
+    actas = [{"id": "1", "slug": "a", "fecha": hoy - timedelta(days=10)}]
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: actas)
+    monkeypatch.setattr(politica, "_hcdn_votaciones_get", lambda s, p: MagicMock(text="<html></html>"))
+    monkeypatch.setattr(politica, "_parsear_acta", lambda html: [
+        {"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+        {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"},
+    ])
+    resultado = politica.fetch_cohesion_bloque(dias_ventana=90)
+    assert resultado["desactualizado"] is False
+
+
 def test_fetch_cohesion_bloque_ventana_de_backfill_ancla_al_anio_pedido(monkeypatch):
     anio_backfill = datetime.now().year - 2   # un año claramente pasado, no el actual
     acta_de_ese_anio = datetime(anio_backfill, 6, 15)   # bien adentro del año pedido
@@ -328,6 +348,64 @@ def test_cohesion_desactualizada_corrida_exitosa_sin_votos_nuevos():
     hoy = datetime.now().strftime("%Y-%m-%d")
     corrida_receso = {"valor": None, "n_actas": 0, "corrida_exitosa_en": hoy}
     assert not politica._cohesion_desactualizada(None, corrida_receso)
+
+
+# ── _es_cohesion_legado (hallazgo P1 de revisión externa / Codex) ───────────
+# cohesion_bloque fue, hasta ea95da2, un placeholder MANUAL: {"valor": 78,
+# "estado": "placeholder", "unidad": "% votos en línea con la posición oficial
+# del bloque LLA", ...} (forma real confirmada vía
+# `git show 584571b:./data/politica/manuales.json`). Si ese cache sobrevive en
+# indicadores_anteriores cuando este código corre por primera vez contra el
+# cache de producción (antes de que el scraper nuevo tenga su primera corrida
+# exitosa), el código de carry-forward de main() lo arrastraría para siempre
+# como si fuera un índice de Rice genuino -- ambas son números 0-100, pero con
+# significados completamente distintos. El discriminador es la AUSENCIA de
+# "n_actas", clave que SOLO fetch_cohesion_bloque (el scraper nuevo) setea.
+
+LEGADO_MANUAL_COHESION_BLOQUE = {
+    "valor": 78,
+    "estado": "placeholder",
+    "unidad": "% votos en línea con la posición oficial del bloque LLA",
+    "fuente": "Votaciones Cámara de Diputados — elaboración CIGOB en base a Hcdn.gob.ar",
+    "notas": (
+        "Proporción de diputados del bloque LLA que votaron alineados con la "
+        "posición oficial en las votaciones nominales de los últimos 3 meses."
+    ),
+    "fecha_dato": "2026-04-01",
+}
+
+
+def test_es_cohesion_legado_detecta_placeholder_manual():
+    assert politica._es_cohesion_legado(LEGADO_MANUAL_COHESION_BLOQUE)
+
+
+def test_es_cohesion_legado_no_marca_forma_nueva_como_legado():
+    # Forma real devuelta por fetch_cohesion_bloque en una corrida exitosa.
+    forma_nueva = {
+        "valor": 62.5,
+        "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
+        "fuente": "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+        "fecha_dato": "2026-07-01",
+        "n_actas": 4,
+        "corrida_exitosa_en": "2026-07-07",
+        "desactualizado": False,
+    }
+    assert not politica._es_cohesion_legado(forma_nueva)
+
+
+def test_es_cohesion_legado_no_marca_receso_legislativo_como_legado():
+    # Corrida exitosa pero sin actas en la ventana (receso) -- "valor" es None
+    # pero "n_actas" (0) SÍ está presente: no debe confundirse con el legado.
+    forma_nueva_sin_votos = {
+        "valor": None,
+        "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
+        "fuente": "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+        "fecha_dato": None,
+        "n_actas": 0,
+        "corrida_exitosa_en": "2026-07-07",
+        "desactualizado": False,
+    }
+    assert not politica._es_cohesion_legado(forma_nueva_sin_votos)
 
 
 # ── Senado (cohesion_bloque_senado) ──────────────────────────────────────────

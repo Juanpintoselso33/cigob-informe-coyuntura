@@ -72,7 +72,7 @@ export interface FichaIndice {
   nombreLargo: string;
   base100?: boolean;                // índice de seguimiento base 100 (ITVC): sin techo,
                                     // tensión = 5 − (valor − 100) × 0,2
-  cinturon: "macro" | "gestion" | "vida_cotidiana";
+  cinturon: "macro" | "gestion" | "vida_cotidiana" | "politica";
   resumen: string;                  // qué es, para el encabezado
   // Secciones = pasos del checklist OCDE/JRC (2008). Los pasos 4 (análisis
   // multivariado) y 8 (vuelta a los datos) no tienen sección propia: su estado
@@ -2314,6 +2314,70 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial del cinturón: fórmulas de tensión ancladas por indicador, promediadas." },
       { fecha: "2026-07-03", cambio: "Nace el ITVC base 100: reemplaza el promedio de fórmulas ancladas por la evolución acumulada contra el 4º trimestre de 2023, con robustez Monte Carlo y flag de dimensión crítica publicados. Los patentamientos pasan al acumulado móvil de 12 meses por estacionalidad." },
       { fecha: "2026-07-04", cambio: "Barrido componente por componente: la victimización pasa de la serie anual de denuncias a la encuesta mensual; se elimina el doble conteo salario/comida (dos componentes correlacionaban 0,985); se aplica el techo de recorte 140 sin piso; el sentimiento digital pasa a puntuar tras un banco de pruebas empírico; y la matriz de validación cruzada queda como tercer pilar de robustez." },
+    ],
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // ITCP — índice compuesto del cinturón político (checklist OCDE/JRC)
+  // ═══════════════════════════════════════════════════════════════════════
+  itcp: {
+    tipo: "indice",
+    id: "itcp",
+    sigla: "ITCP",
+    nombreLargo: "Índice de Tensión del Cinturón Político",
+    cinturon: "politica",
+    resumen: "Mide el capital político del gobierno —la capacidad de gobernar con otros actores, no la popularidad— en una escala 0–100: 0 = mínimo capital político, 100 = máximo. Cinco dimensiones con pesos editoriales explícitos, sin documento institucional previo que los fije.",
+    marcoConceptual: [
+      "El cinturón político mide el capital político del gobierno según el marco de Carlos Matus (Política, Planificación y Gobierno): la capacidad de gobernar con otros actores —el Congreso, los gobernadores, el propio bloque legislativo, la calle—, no la popularidad medida en encuestas. Se organiza en cinco dimensiones: poder legislativo, alianzas territoriales, cohesión interna del oficialismo, conflicto social e imagen y voto.",
+      "A diferencia del ITCM, el ITCG y el ITVC, no existe un documento institucional que fije los pesos de estas cinco dimensiones: el marco ya las describía, pero nunca se habían ponderado. Los pesos son una decisión editorial explícita, apoyada en esa misma distinción del marco: la dimensión de imagen y voto pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
+    ],
+    seleccion: [
+      "Doce indicadores en cinco dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El cinturón no tiene indicadores de contexto: todos los que se miden puntúan en el índice. Reemplaza a un promedio simple de nueve indicadores que pesaba todo por igual, sin distinguir la capacidad de gobernar de la popularidad.",
+      "Criterio de selección: fuentes públicas verificables y automatizables. Un indicador —el alineamiento de gobernadores— sigue siendo carga manual del analista: no se identificó todavía una fuente estructurada que lo mida de forma objetiva, y los caminos alternativos evaluados (composición legislativa por provincia, transferencias discrecionales) resultaron no ser proxies válidos de la conducta del Poder Ejecutivo provincial.",
+    ],
+    tratamiento: [
+      "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones.",
+      "Juicio experto: la paramétrica admite ajustes manuales por indicador con justificación escrita y fecha de vencimiento (un ajuste vencido se ignora solo); todo ajuste activo se publica junto al índice.",
+      "Cuatro indicadores —la cohesión del bloque propio en ambas cámaras, la adhesión provincial a un régimen de inversión y la variación de protestas en la Ciudad de Buenos Aires— son incorporaciones recientes sin serie histórica propia todavía: sus umbrales de puntaje son provisorios y se recalibrarán cuando haya más recorrido.",
+    ],
+    normalizacion: [
+      "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante umbrales por banda, leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las abiertas en su borde; entre anclas el puntaje es lineal, en los extremos queda plano.",
+      "A diferencia de ITCM/ITCG, cuyos umbrales provienen de un documento institucional, acá los umbrales de los indicadores originales heredan el criterio de la fórmula que reemplazan, y los de los indicadores nuevos son una calibración propia declarada, sin historia propia todavía (ver tratamiento).",
+    ],
+    agregacion: {
+      latex: String.raw`\text{ITCP}=\sum_{\text{5 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
+      leyenda: "Promedio ponderado en dos niveles: dentro de cada dimensión y entre dimensiones (30% poder legislativo · 25% alianzas territoriales · 20% cohesión interna del oficialismo · 15% conflicto social · 10% imagen y voto).",
+      parrafos: [
+        "La agregación es compensatoria: una dimensión alta puede tapar una baja. Por eso el índice incluye el flag de dimensión crítica: si una dimensión cae por debajo de su umbral, se declara junto al valor publicado en lugar de dejar que el promedio la esconda.",
+      ],
+    },
+    robustez: [
+      "Análisis de sensibilidad Monte Carlo: el índice se recalcula en 1.000 escenarios perturbando los pesos ±20% y los insumos ±5% del rango entre anclas, re-puntuados por la escala interpolada. La banda donde cae el 90% de los escenarios se publica junto al valor en cada edición.",
+      "Se acompaña con el ejercicio de quitar cada componente por vez, para identificar cuál domina la lectura del mes.",
+    ],
+    validacion: [
+      "A diferencia del ITCM (riesgo país), el ITCG (Merval en dólares) y el ITVC (confianza del consumidor), el ITCP todavía no se contrasta contra un ancla externa de mercado o de opinión, ni participa de la matriz de validación cruzada que compara a los otros tres índices entre sí: es la incorporación más reciente al sistema de paramétricas del informe y esa validación queda como trabajo pendiente, declarado en las limitaciones de abajo.",
+    ],
+    comunicacion: [
+      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCP) / 10, con los mismos umbrales globales de siempre (0–3 estable · 4–6 en tensión · 7–10 tensionado).",
+      "Cada indicador del cinturón publica su ficha, su fórmula y su tensión equivalente, junto con los ajustes de analista activos, si los hay.",
+    ],
+    interpretacion: [
+      { rango: "0 – 20", lectura: "Severamente apretado" },
+      { rango: "21 – 40", lectura: "Apretado" },
+      { rango: "41 – 60", lectura: "Moderadamente apretado" },
+      { rango: "61 – 80", lectura: "Moderadamente aflojado" },
+      { rango: "81 – 100", lectura: "Aflojado" },
+    ],
+    limitaciones: [
+      "Los pesos de las cinco dimensiones no provienen de un documento institucional previo, a diferencia de los otros tres índices del informe: son una decisión editorial explícita, declarada como tal.",
+      "Cuatro de los doce indicadores son incorporaciones recientes sin serie histórica propia: sus umbrales de puntaje son una calibración provisoria a falta de historia, no una vara validada empíricamente todavía.",
+      "El índice todavía no se contrasta contra un ancla externa ni participa de la matriz de validación cruzada de los otros tres índices del informe, a diferencia de ITCM/ITCG/ITVC: trabajo pendiente declarado, no escondido.",
+      "Uno de los doce indicadores —el alineamiento de gobernadores— sigue siendo una estimación cualitativa del analista, sin fuente pública estructurada todavía.",
+      "El análisis multivariado previo del estándar OCDE/JRC (contrastar la estructura teórica con la correlación real entre los indicadores) está pendiente, igual que en el resto de los índices del informe.",
+    ],
+    cambios: [
+      { fecha: "2026-07-07", cambio: "Nace el ITCP: reemplaza al promedio simple de nueve indicadores por la paramétrica de cinco dimensiones ponderadas, con flag de dimensión crítica y ajustes de analista con vencimiento. Se incorporan tres indicadores —cohesión de bloque en el Senado, adhesión provincial a un régimen de inversión y variación de protestas en la Ciudad de Buenos Aires— y se redefine la cohesión de bloque en Diputados, de una estimación manual a un cálculo automático sobre las votaciones nominales." },
     ],
   },
 };
