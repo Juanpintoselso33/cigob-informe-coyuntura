@@ -796,6 +796,16 @@ def indice_rice(afirmativos: int, negativos: int) -> float | None:
     return round(abs(afirmativos - negativos) / total * 100.0, 2)
 
 
+# Bloque propio de LLA en Diputados/Senado. Excluye DELIBERADAMENTE aliados
+# ambiguos (ej. "Fuerzas del Cielo - Espacio Liberal F.C.E.") que no son el
+# bloque propio — sumarlos infla artificialmente la cohesión medida.
+BLOQUES_LLA = {"la libertad avanza", "libertad avanza"}
+
+
+def es_bloque_lla(nombre_bloque: str) -> bool:
+    return nombre_bloque.strip().lower() in BLOQUES_LLA
+
+
 def calcular_score(indicadores: dict) -> float:
     """
     Score 0–10: mayor = mayor tensión en capital político.
