@@ -886,29 +886,98 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "cohesion_bloque",
     cinturon: "politica",
-    rezago: "Se actualiza cuando el analista carga una estimación nueva; a los 45 días el dato se marca como desactualizado.",
+    rezago: "El portal de votaciones nominales de Diputados registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada corrida.",
     fuente: {
-      organismo: "Elaboración CIGOB (objetivo: votaciones nominales de la Cámara de Diputados)",
-      operacion: "Estimación del analista — carga manual declarada",
-      acceso: "Carga manual: las votaciones nominales del portal de datos abiertos están congeladas en 2019 (anteriores a la existencia del bloque oficialista actual); no hay fuente estructurada vigente para automatizarlo.",
+      organismo: "Cámara de Diputados de la Nación",
+      operacion: "Votaciones nominales de Diputados — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días",
+      url: "https://votaciones.hcdn.gob.ar",
+      acceso: "Automático: scraping directo del portal público de votaciones nominales; ya no depende de una carga manual del analista.",
     },
     transformaciones: [
-      "Definición objetivo: porcentaje de diputados del bloque oficialista que vota alineado con la posición del bloque en las votaciones nominales de los últimos tres meses.",
-      "El valor vigente es una estimación de referencia, no una medición: se publica con esa etiqueta.",
+      "Para cada acta con al menos un voto a favor o en contra del bloque propio de La Libertad Avanza (se excluyen deliberadamente los bloques aliados de nombre ambiguo, para no inflar la cohesión medida con votos que no son del oficialismo propiamente dicho), calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
+      "El indicador es el promedio de ese cálculo en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran en la cuenta.",
     ],
     incidenciaTexto: [
-      "La tensión crece cuando la disciplina se rompe: 95% alineado → tensión 0 · 60% → 5 · 25% → 10.",
-      "El score del cinturón es el promedio simple de las tensiones de los indicadores disponibles.",
+      "Mide qué tan unido vota el bloque oficialista puertas adentro — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
+      "El puntaje sube en escalones con ese porcentaje: más de 90% → el más alto; entre 75% y 90% → alto; entre 60% y 75% → moderado; entre 40% y 60% → bajo; menos de 40% (el bloque prácticamente se divide a la mitad) → el más bajo. Los umbrales son provisorios: se fijaron sin serie histórica propia del indicador y se van a recalibrar cuando la haya.",
+      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 65% frente al 35% del mismo cálculo aplicado al Senado.",
     ],
     limitaciones: [
-      "Es una estimación declarada: no hay medición automática detrás, y la web la marca como tal.",
-      "La fuente estructurada disponible se congeló en 2019; automatizar exige recolectar las votaciones del sitio de la Cámara por otra vía.",
-      "El valor entra al promedio del cinturón aunque esté vencido, marcado como desactualizado.",
+      "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
+      "No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el diputado no hubiera votado.",
+      "Depende de que el portal público mantenga su estructura actual: un cambio de diseño del sitio puede interrumpir la lectura automática hasta que se ajuste.",
+      "Con pocas actas divididas en la ventana de 90 días, un solo voto conflictivo mueve el promedio con fuerza.",
     ],
-    faltantes: "Si no hay valor cargado, el indicador queda fuera y el score del cinturón promedia los presentes.",
-    revisiones: "Solo cambia con una nueva carga del analista.",
+    faltantes: "Si el scraping no logra llegar al sitio, se conserva el último promedio calculado en caché; recién se marca desactualizado si pasan más de 10 días sin una corrida que haya llegado al portal — un receso legislativo sin actas nuevas no cuenta como desactualización.",
+    revisiones: "El promedio de los últimos 90 días se recalcula completo desde la fuente en cada corrida; no se arrastran promedios previos.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón como estimación manual, a la espera de una fuente estructurada de votaciones vigente." },
+      { fecha: "2026-07-07", cambio: "Deja de ser una estimación manual: pasa a calcularse en forma automática con el scraping de las votaciones nominales de Diputados. Cambia también la definición — de «porcentaje alineado con la posición oficial» (no observable de forma independiente) a «qué tan pareja o dispareja es la votación interna del bloque propio», calculada acta por acta." },
+    ],
+  },
+
+  cohesion_bloque_senado: {
+    tipo: "indicador",
+    id: "cohesion_bloque_senado",
+    cinturon: "politica",
+    rezago: "El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada corrida.",
+    fuente: {
+      organismo: "Senado de la Nación",
+      operacion: "Votaciones nominales del Senado — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días",
+      url: "https://www.senado.gob.ar/votaciones/actas",
+      acceso: "Automático: scraping directo del portal público de votaciones nominales del Senado; sin carga manual.",
+    },
+    transformaciones: [
+      "Mismo cálculo que la cohesión de bloque en Diputados, aplicado a las actas del Senado: para cada acta con al menos un voto a favor o en contra del bloque propio de LLA, resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
+      "El indicador es el promedio de ese cálculo en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran en la cuenta.",
+    ],
+    incidenciaTexto: [
+      "Es una lectura complementaria de la cohesión de bloque, no un reemplazo de la de Diputados: otra cámara, otra composición de bloque. Se lee junto a la de Diputados, nunca en su lugar.",
+      "El puntaje sube en escalones con ese porcentaje, el mismo criterio que en Diputados: más de 90% → el más alto; entre 75% y 90% → alto; entre 60% y 75% → moderado; entre 40% y 60% → bajo; menos de 40% → el más bajo. Los umbrales son provisorios: se fijaron sin serie histórica propia del indicador y se van a recalibrar cuando la haya.",
+      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 35% frente al 65% del indicador de Diputados — el bloque propio en el Senado tiene muchas menos bancas, así que pesa menos y cada acta dividida mueve su propio promedio con más fuerza.",
+    ],
+    limitaciones: [
+      "Bloque chico: el número de senadores propios de LLA es mucho menor al de la Cámara de Diputados, así que un solo voto disidente mueve el promedio con más fuerza.",
+      "Indicador complementario: otra cámara y otra composición de bloque, no sustituye a la lectura de Diputados.",
+      "Depende de que el portal público del Senado mantenga su estructura actual: un cambio de diseño del sitio puede interrumpir la lectura automática hasta que se ajuste.",
+      "No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el senador no hubiera votado.",
+    ],
+    faltantes: "Si el scraping no logra llegar al sitio, se conserva el último promedio calculado en caché; recién se marca desactualizado si pasan más de 10 días sin una corrida que haya llegado al portal — un receso legislativo sin actas nuevas no cuenta como desactualización.",
+    revisiones: "El promedio de los últimos 90 días se recalcula completo desde la fuente en cada corrida; no se arrastran promedios previos.",
+    cambios: [
+      { fecha: "2026-07-07", cambio: "Alta como lectura complementaria de la cohesión de bloque en Diputados, con el mismo criterio de cálculo aplicado a las votaciones nominales del Senado." },
+    ],
+  },
+
+  adhesion_reformas_provincial: {
+    tipo: "indicador",
+    id: "adhesion_reformas_provincial",
+    cinturon: "politica",
+    rezago: "La tabla de provincias adheridas se actualiza en el sitio oficial apenas una provincia formaliza su adhesión; el informe la relee completa en cada corrida.",
+    fuente: {
+      organismo: "Ministerio de Agricultura, Ganadería y Pesca (MAGyP)",
+      operacion: "Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742)",
+      url: "https://www.magyp.gob.ar/desarrollo-foresto-industrial/provincias-adheridas.php",
+      acceso: "Automático: lectura directa de la tabla publicada en el sitio del MAGyP.",
+    },
+    transformaciones: [
+      "Cuenta cuántas de las 24 provincias (incluida la Ciudad de Buenos Aires) figuran en la tabla oficial como adheridas al RIGI.",
+      "El indicador es ese conteo sobre 24, expresado en porcentaje.",
+    ],
+    incidenciaTexto: [
+      "Mide adhesión a un régimen fiscal y de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de gobernadores. Una provincia puede adherir al RIGI por conveniencia fiscal aun con un gobernador crítico del gobierno nacional, y a la inversa.",
+      "El puntaje sube en escalones con el porcentaje adherido: más de 80% de provincias adheridas → el más alto; entre 60% y 80% → alto; entre 40% y 60% → moderado; entre 20% y 40% → bajo; menos de 20% → el más bajo. Los umbrales son provisorios: se fijaron sin serie histórica propia del indicador y se van a recalibrar cuando la haya.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de gobernadores.",
+    ],
+    limitaciones: [
+      "Cuenta la adhesión formal, no la inversión efectiva que esa adhesión termina generando en cada provincia.",
+      "Es una tabla acumulativa: una vez que una provincia adhiere no se espera que salga de la lista, así que el indicador solo sube o queda estable — no capta marchas atrás.",
+      "El sitio fuente tiene una fila vacía mal formada que puede duplicar el nombre de una provincia al leer la tabla; no altera el conteo final porque cada provincia se cuenta una sola vez.",
+    ],
+    faltantes: "Si la consulta al sitio falla, el indicador queda fuera de esa corrida y el puntaje del cinturón se calcula con los indicadores disponibles.",
+    revisiones: "La tabla completa se relee de la fuente en cada corrida; no se acumulan lecturas parciales.",
+    cambios: [
+      { fecha: "2026-07-07", cambio: "Alta como indicador de la dimensión de alianzas territoriales: mide adhesión fiscal al RIGI, distinta del alineamiento político general que ya capta el indicador de gobernadores." },
     ],
   },
 
@@ -1694,6 +1763,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Indicador de contexto: no integra el ITCG, por una razón declarada — puntuar el volumen de protesta premiaría «menos marchas», que es un derecho ejercido y no un resultado de gestión. Leído junto al indicador de orden público, muestra que la protesta se reconvirtió: menos cortes, no menos marchas.",
     ],
+    dobleUso: "El mismo dato (variación de eventos contra la base 2023) integra también el índice del cinturón político, dentro de la dimensión de conflicto social (15% del total, donde pesa 40% junto al 60% de la conflictividad CEPA). Ahí la lectura es distinta: mide una condición de gobernabilidad — cuánta conflictividad social tiene que administrar la gestión —, no un juicio sobre si protestar es legítimo ni una medida de gestión en sí misma.",
     limitaciones: [
       "Fuente de membresía con criterios de codificación propios (en inglés), no la definición local de piquete.",
       "Cuenta eventos de protesta (marchas, concentraciones), no cortes de calle: complementa, no sustituye, al indicador de orden público.",
@@ -1702,6 +1772,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "La fuente revisa y agrega semanas hacia atrás; el archivo local se regenera completo en cada descarga exitosa.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Alta como indicador de contexto, con cobertura desde 2018 (línea de base 2023 real). En la revisión posterior se confirmó que siga fuera del índice." },
+      { fecha: "2026-07-07", cambio: "El mismo dato pasa a integrar también, como indicador de condición de gobernabilidad, la dimensión de conflicto social del índice del cinturón político." },
     ],
   },
 
