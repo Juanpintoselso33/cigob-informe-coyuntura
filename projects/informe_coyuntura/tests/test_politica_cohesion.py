@@ -287,6 +287,25 @@ def test_fetch_cohesion_bloque_falla_de_red_devuelve_none(monkeypatch):
     assert politica.fetch_cohesion_bloque() is None
 
 
+def test_fetch_cohesion_bloque_ventana_de_backfill_ancla_al_anio_pedido(monkeypatch):
+    anio_backfill = datetime.now().year - 2   # un año claramente pasado, no el actual
+    acta_de_ese_anio = datetime(anio_backfill, 6, 15)   # bien adentro del año pedido
+    actas = [{"id": "1", "slug": "a", "fecha": acta_de_ese_anio}]
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: actas)
+    monkeypatch.setattr(politica, "_hcdn_votaciones_get", lambda s, p: MagicMock(text="<html></html>"))
+    monkeypatch.setattr(politica, "_parsear_acta", lambda html: [
+        {"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+        {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"},
+    ])
+    resultado = politica.fetch_cohesion_bloque(anio=anio_backfill, dias_ventana=366)
+    # Con el bug (limite anclado a HOY), esta acta habría quedado SIEMPRE fuera de ventana
+    # (un año pasado nunca puede estar a <366 días de "hoy" salvo el año en curso/anterior parcial).
+    # Con el fix (limite anclado al 31-dic de anio_backfill), esta acta SÍ debe entrar.
+    assert resultado["n_actas"] == 1
+    assert resultado["valor"] == politica.indice_rice(1, 1)
+
+
 def test_cohesion_desactualizada_corrida_exitosa_hoy():
     assert not politica._cohesion_desactualizada(None, {"valor": 90.0, "corrida_exitosa_en": "2026-07-07"})
 

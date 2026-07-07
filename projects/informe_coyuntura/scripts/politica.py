@@ -945,14 +945,19 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     Devuelve None SOLO si el scraping en sí falló (sin llegar al sitio) —
     'sin votos en la ventana' (receso legislativo) es un resultado válido con
     valor=None pero corrida_exitosa_en seteado, para que el guard de frescura
-    (Tarea 7) no lo confunda con un scraper roto."""
+    (Tarea 7) no lo confunda con un scraper roto.
+    La ventana de recencia se ancla a HOY para el año en curso, y al 31 de
+    diciembre de `anio` para años pasados (backfill) — así `dias_ventana`
+    mide 'actividad dentro de ese año', no 'actividad reciente respecto de
+    la fecha de corrida real'."""
     anio = anio or datetime.now().year
     session = _hcdn_votaciones_session()
     actas = _descubrir_actas(session, anio)
     if actas is None:
         return None
 
-    limite = datetime.now() - timedelta(days=dias_ventana)
+    referencia = datetime.now() if anio == datetime.now().year else datetime(anio, 12, 31)
+    limite = referencia - timedelta(days=dias_ventana)
     indices = []
     fecha_max = None
     for acta in actas:
