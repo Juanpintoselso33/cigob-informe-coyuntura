@@ -94,6 +94,9 @@ _HCDN_VOTACIONES_DELAY = 0.3  # segundos entre requests — evita el WAF F5 BIG-
 # Senado — senado.gob.ar (portal de votaciones nominales, sitio distinto de HCDN)
 SENADO_BASE = "https://www.senado.gob.ar"
 
+# MAGyP — tabla de provincias adheridas al RIGI (Título VII, Ley 27.742)
+MAGYP_RIGI_URL = "https://www.magyp.gob.ar/desarrollo-foresto-industrial/provincias-adheridas.php"
+
 # IPC interanual diciembre (INDEC). Actualizar en enero de cada año.
 # 2024: 117.06% acumulado anual. 2025: 38.3% acumulado anual (estimado previo a cierre).
 IPC_ANUAL = {2024: 1.1706, 2025: 0.383}   # fallback dic-dic si la API INDEC falla
@@ -1076,6 +1079,44 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(indices),
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+    }
+
+
+# ── MAGyP — adhesión provincial al RIGI ──────────────────────────────────────
+
+def fetch_adhesion_reformas_provincial() -> dict | None:
+    """% de provincias (sobre 24) adheridas formalmente al RIGI (Título VII,
+    Ley 27.742) — tabla MAGyP. Mide adhesión FISCAL a un régimen puntual, NO
+    alineamiento político general — no reemplaza a gobernadores_alineamiento.
+    parser="html.parser" (stdlib, lxml no está en requirements.txt — ver
+    Tarea 4 del plan de cohesion_bloque): el sitio fuente tiene un <tr> vacío
+    malformado que con html.parser produce una fila SANTA CRUZ duplicada
+    (confirmado en vivo en la investigación previa) — no requiere lxml para
+    resolverlo, `provincias` ya es un `set()` más abajo, así que agregar el
+    mismo nombre dos veces es un no-op y el conteo final no se infla."""
+    try:
+        r = requests.get(MAGYP_RIGI_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    except requests.RequestException:
+        return None
+    if r.status_code != 200:
+        return None
+    soup = BeautifulSoup(r.text, "html.parser")
+    provincias = set()
+    for fila in soup.select("table tr"):
+        celdas = fila.find_all("td")
+        if len(celdas) < 2:
+            continue
+        provincia = celdas[0].get_text(strip=True)
+        if provincia:
+            provincias.add(provincia.upper())
+    if not provincias:
+        return None
+    return {
+        "valor": round(len(provincias) / 24.0 * 100.0, 1),
+        "unidad": "% de provincias (sobre 24) adheridas al RIGI",
+        "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+        "fecha_dato": datetime.now().strftime("%Y-%m-%d"),
+        "n_provincias": len(provincias),
     }
 
 

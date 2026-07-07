@@ -404,3 +404,42 @@ def test_fetch_cohesion_bloque_senado_ventana_de_backfill_ancla_al_anio_pedido(m
     resultado = politica.fetch_cohesion_bloque_senado(anio=anio_backfill, dias_ventana=366)
     assert resultado["n_actas"] == 1
     assert resultado["valor"] == politica.indice_rice(1, 1)
+
+
+# ── Adhesión a reformas (RIGI) ────────────────────────────────────────────────
+
+FIXTURE_TABLA_RIGI = """
+<table>
+<tr><td>CATAMARCA</td><td><a href="/ley_dgr_catamarca">Ley DGR Catamarca 5.863</a></td></tr>
+<tr><td>CHUBUT</td><td><a href="/ley_dgr_chubut">Ley DGR Chubut 123</a></td></tr>
+</table>
+"""
+
+
+def test_fetch_adhesion_reformas_provincial_cuenta_provincias(monkeypatch):
+    monkeypatch.setattr(politica.requests, "get",
+        lambda *a, **kw: MagicMock(status_code=200, text=FIXTURE_TABLA_RIGI))
+    resultado = politica.fetch_adhesion_reformas_provincial()
+    assert resultado["n_provincias"] == 2
+    assert resultado["valor"] == round(2 / 24 * 100, 1)
+
+
+def test_fetch_adhesion_reformas_provincial_request_fallido(monkeypatch):
+    monkeypatch.setattr(politica.requests, "get",
+        lambda *a, **kw: MagicMock(status_code=500, text=""))
+    assert politica.fetch_adhesion_reformas_provincial() is None
+
+
+def test_fetch_adhesion_reformas_provincial_deduplica_filas_repetidas(monkeypatch):
+    # Regresión: el sitio real (MAGyP) tiene un <tr> vacío malformado que con
+    # html.parser produce una fila duplicada (confirmado en vivo: SANTA CRUZ
+    # aparece 2 veces). `provincias` debe ser un set() -- si se refactoriza a
+    # una lista, este test debe fallar (con la fixture de 2 arriba no lo haría).
+    fixture_con_duplicado = FIXTURE_TABLA_RIGI.replace(
+        "</table>",
+        '<tr><td>CATAMARCA</td><td><a href="/x">otra ley</a></td></tr></table>',
+    )
+    monkeypatch.setattr(politica.requests, "get",
+        lambda *a, **kw: MagicMock(status_code=200, text=fixture_con_duplicado))
+    resultado = politica.fetch_adhesion_reformas_provincial()
+    assert resultado["n_provincias"] == 2  # CATAMARCA + CHUBUT, no 3
