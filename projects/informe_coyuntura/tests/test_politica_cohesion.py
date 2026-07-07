@@ -443,3 +443,23 @@ def test_fetch_adhesion_reformas_provincial_deduplica_filas_repetidas(monkeypatc
         lambda *a, **kw: MagicMock(status_code=200, text=fixture_con_duplicado))
     resultado = politica.fetch_adhesion_reformas_provincial()
     assert resultado["n_provincias"] == 2  # CATAMARCA + CHUBUT, no 3
+
+
+# ── protestas_caba (reutiliza el fetcher ACLED de gestión, ADR-0017) ─────────
+# En gestión este indicador es CONTEXTO y no puntúa ("premiaría menos
+# marchas"). En política SÍ puntúa: nivel de conflicto social como condición
+# objetiva de gobernabilidad (Matus), no un juicio sobre la legitimidad de
+# protestar.
+
+def test_politica_reutiliza_fetcher_de_gestion(monkeypatch):
+    import gestion
+    monkeypatch.setattr(gestion, "fetch_protestas_caba",
+                         lambda: {"valor": 12.0, "fecha_dato": "2026-07-07"})
+    resultado = politica.fetch_protestas_caba()
+    assert resultado["valor"] == 12.0
+
+
+def test_politica_protestas_caba_devuelve_none_si_gestion_devuelve_none(monkeypatch):
+    import gestion
+    monkeypatch.setattr(gestion, "fetch_protestas_caba", lambda: None)
+    assert politica.fetch_protestas_caba() is None

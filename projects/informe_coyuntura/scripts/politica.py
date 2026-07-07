@@ -30,6 +30,7 @@ import logging
 import time
 import requests
 import urllib3
+import gestion  # reutiliza el fetcher ACLED ya construido para protestas_caba (ADR-0017)
 from bs4 import BeautifulSoup
 from datetime import datetime, date, timedelta
 from pathlib import Path
@@ -511,6 +512,17 @@ def fetch_cepa_movilizacion() -> dict | None:
     except Exception as e:
         _warn("movilizacion_cepa", str(e))
         return None
+
+
+# ── Protestas CABA (ACLED) — reutilizado de gestión ──────────────────────────
+
+def fetch_protestas_caba() -> dict | None:
+    """Reutiliza el fetcher ACLED ya construido en gestion.py (ADR-0017) para
+    eventos de protesta en CABA. En gestión es CONTEXTO y no puntúa
+    ('premiaría menos marchas'); en política SÍ puntúa como condición
+    objetiva de gobernabilidad (nivel de conflicto social, Matus) — no como
+    juicio sobre la legitimidad de protestar."""
+    return gestion.fetch_protestas_caba()
 
 
 # ── IAF — Índice de Armonía Federal (transferencias) ─────────────────────────
