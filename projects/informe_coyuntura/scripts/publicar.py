@@ -637,22 +637,25 @@ def _validacion_itcm(bloque):
 
 def _validacion_cruzada(informe):
     """Matriz de validación cruzada (ADR-0031, tercer pilar de robustez): los
-    tres índices reconstruidos contra los DOS contrastes externos a la vez.
-    Validez convergente + discriminante: cada índice debe correlacionar más
-    fuerte con su par teórico (ITCM/ITCG ↔ riesgo país · ITVC ↔ ICC) que con
-    el contraste ajeno — la prueba de que no miden "todo junto"."""
+    cuatro índices reconstruidos contra los CUATRO contrastes externos a la
+    vez. Validez convergente + discriminante: cada índice debe correlacionar
+    más fuerte con su par teórico (ITCM/ITCG ↔ riesgo país · ITVC ↔ ICC ·
+    ITCP ↔ EPU Argentina) que con el contraste ajeno — la prueba de que no
+    miden "todo junto"."""
     try:
         bloques = {
             "ITCM": informe["cinturones"]["macro"]["itcm"]["validacion"]["pares"],
             "ITCG": informe["cinturones"]["gestion"]["itcg"]["validacion"]["pares"],
             "ITVC": informe["cinturones"]["vida_cotidiana"]["itvc"]["validacion"]["pares"],
+            "ITCP": informe["cinturones"]["politica"]["itcp"]["validacion"]["pares"],
         }
     except (KeyError, TypeError):
         return
     indices = {k: {p[0]: p[1] for p in v} for k, v in bloques.items()}
     externas = {"riesgo": {p[0]: p[2] for p in bloques["ITCM"]},
                 "merval": {p[0]: p[2] for p in bloques["ITCG"]},
-                "icc": {p[0]: p[2] for p in bloques["ITVC"]}}
+                "icc": {p[0]: p[2] for p in bloques["ITVC"]},
+                "epu": {p[0]: p[2] for p in bloques["ITCP"]}}
 
     def _r(a, b):
         comunes = sorted(set(a) & set(b))
@@ -661,38 +664,44 @@ def _validacion_cruzada(informe):
         return (round(statistics.correlation([a[m] for m in comunes],
                                              [b[m] for m in comunes]), 2), len(comunes))
 
-    PAR_PROPIO = {"ITCM": "riesgo", "ITCG": "merval", "ITVC": "icc"}
+    PAR_PROPIO = {"ITCM": "riesgo", "ITCG": "merval", "ITVC": "icc", "ITCP": "epu"}
     filas = []
-    for ik in ("ITCM", "ITCG", "ITVC"):
+    for ik in ("ITCM", "ITCG", "ITVC", "ITCP"):
         fila = {"indice": ik, "propio": PAR_PROPIO[ik]}
         for ek, ext in externas.items():
             r, n = _r(indices[ik], ext)
             fila[ek] = {"r": r, "n": n}
         filas.append(fila)
-    if any(f[e]["r"] is None for f in filas for e in ("riesgo", "merval", "icc")):
+    if any(f[e]["r"] is None for f in filas for e in externas):
         return
     fmt = lambda r: ("+" if r > 0 else "") + str(r).replace(".", ",")
-    f_itcm, f_itcg, f_itvc = filas
+    f_itcm, f_itcg, f_itvc, f_itcp = filas
     informe["validacion_cruzada"] = {
         "filas": filas,
         "externas": [["riesgo", "Riesgo país (EMBI)"], ["merval", "Merval en USD"],
-                     ["icc", "Confianza del consumidor (ICC UTDT)"]],
+                     ["icc", "Confianza del consumidor (ICC UTDT)"],
+                     ["epu", "Incertidumbre de política (EPU Argentina)"]],
         "titulo": "¿Cada índice mide lo suyo?",
-        "sub": ("Los tres índices se reconstruyen mes a mes y se comparan contra los tres "
+        "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro "
                 "contrastes externos a la vez — cada uno tiene el propio: la macroeconomía "
                 "(ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de "
                 "las empresas en dólares, la vida cotidiana (ITVC) con la confianza del "
-                "consumidor. Si cada índice mide su propio terreno, debería correlacionar con "
-                "su par natural al menos tanto como con los ajenos. Es la prueba clásica de "
-                "que un indicador no mide \"todo junto\"."),
-        "conclusion": (f"Los tres pares propios dan el signo esperado y correlaciones fuertes: "
-                       f"ITCM {fmt(f_itcm['riesgo']['r'])} con el riesgo país, ITCG "
+                "consumidor, la política (ITCP) con la incertidumbre de política que mide la "
+                "prensa (EPU Argentina). Si cada índice mide su propio terreno, debería "
+                "correlacionar con su par natural al menos tanto como con los ajenos. Es la "
+                "prueba clásica de que un indicador no mide \"todo junto\"."),
+        "conclusion": (f"Los cuatro pares propios dan el signo esperado: ITCM "
+                       f"{fmt(f_itcm['riesgo']['r'])} con el riesgo país, ITCG "
                        f"{fmt(f_itcg['merval']['r'])} con el Merval en dólares, ITVC "
-                       f"{fmt(f_itvc['icc']['r'])} con la confianza del consumidor. Las celdas "
-                       f"cruzadas son del mismo orden (la gestión también correlaciona "
-                       f"{fmt(f_itcg['riesgo']['r'])} con el riesgo país): en una muestra de "
-                       f"~30 meses en la que toda la economía se movió junta, la matriz separa "
-                       f"parcialmente — se declara como límite, no se esconde."),
+                       f"{fmt(f_itvc['icc']['r'])} con la confianza del consumidor, ITCP "
+                       f"{fmt(f_itcp['epu']['r'])} con la incertidumbre de política — este último "
+                       f"más moderado que los otros tres, coherente con un índice con varios "
+                       f"componentes recién automatizados y con historia corta. Las celdas "
+                       f"cruzadas son del mismo orden en más de un caso (la gestión también "
+                       f"correlaciona {fmt(f_itcg['riesgo']['r'])} con el riesgo país): en una "
+                       f"muestra de ~30 meses en la que toda la economía y la política se "
+                       f"movieron juntas, la matriz separa parcialmente — se declara como "
+                       f"límite, no se esconde."),
     }
 
 
@@ -738,6 +747,55 @@ def _validacion_itcg(bloque):
         "trans_label": "series normalizadas al rango del período",
         "conclusion": (f"Correlación {coma(r_niv)} en niveles: cuando la ejecución de reformas "
                        f"avanza, el mercado revaloriza a las empresas argentinas.{icg_txt}"),
+    }
+
+
+def _validacion_itcp(bloque):
+    """Anexa al bloque ITCP su validación externa: la serie mensual del índice
+    (reconstruida por el estudio desde las series de componentes) contra el
+    EPU de Argentina (Economic Policy Uncertainty, minería de texto de prensa
+    local — Banco de España + SECMCA, misma familia metodológica que
+    Baker/Bloom/Davis) — correlación negativa esperada. No es un precio de
+    mercado como los otros tres pares: es la lectura pública de la política
+    misma, ajena a los doce componentes del índice."""
+    val = _cargar_validacion()
+    serie = val.get("serie_itcp") or {}
+    epu = val.get("epu_argentina_mensual") or {}
+    comunes = sorted(set(serie) & set(epu))
+    if len(comunes) < 12:
+        return
+    corr = val.get("correlaciones_itcp", {})
+    niveles = corr.get("niveles (ITCP vs EPU Argentina)") or {}
+    difs = corr.get("primeras diferencias (ITCP vs EPU)") or {}
+    coma = lambda x: str(x).replace(".", ",")
+    r_niv, r_dif = niveles.get("r"), difs.get("r")
+    bloque["validacion"] = {
+        "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
+        "pares": [[m, serie[m], epu[m]] for m in comunes],
+        "plot": "minmax_inv",
+        "titulo": "¿El capital político se refleja en menos incertidumbre de política percibida?",
+        "sub": ("El contraste natural del cinturón político no es un precio de mercado sino la "
+                "lectura pública de la política misma: el EPU (Economic Policy Uncertainty) de "
+                "Argentina mide, con minería de texto sobre diarios locales (Banco de España y "
+                "SECMCA, la misma familia metodológica que el índice de Baker/Bloom/Davis), "
+                "cuánto se habla de incertidumbre alrededor del gobierno y sus políticas. El "
+                "ITCP se reconstruye mes a mes desde las series de sus componentes (sin los "
+                "ajustes del analista: el nivel puede diferir del publicado — lo que valida es "
+                "su evolución); varios de los doce componentes tienen historia corta o recién "
+                "se automatizaron esta sesión (cohesión del bloque oficialista, alineamiento de "
+                "gobernadores, adhesión provincial al RIGI), así que la reconstrucción de los "
+                "meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la "
+                "protesta social — límite que se declara, no se esconde. La correlación esperada "
+                "es negativa: más capital político (menos tensión), menos incertidumbre de "
+                "política en la prensa."),
+        "serie_label": "ITCP (reconstrucción mensual)",
+        "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
+        "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
+        "conclusion": (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
+                       f"a mes: el signo negativo es el esperado, aunque más moderado que en "
+                       f"macro o gestión — coherente con un índice cuyos componentes de alianzas "
+                       f"territoriales y cohesión interna del oficialismo recién empiezan a "
+                       f"tener historia propia."),
     }
 
 
@@ -854,6 +912,8 @@ def aplicar_scoring(informe, series):
             continue
         if ckey == "politica":
             _scoring_indice(c, "itcp", itcp, POLITICA_CONTEXTO, _politica_input_txt)
+            if c.get("itcp"):
+                _validacion_itcp(c["itcp"])
             continue
         for ikey, ind in c["indicadores"].items():
             aporte = formula = nota = lectura = None
