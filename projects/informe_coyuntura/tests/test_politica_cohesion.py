@@ -629,6 +629,110 @@ def test_fetch_alineamiento_senadores_prov_promedia_provincias(monkeypatch):
     assert resultado["n_provincias"] == 2
 
 
+# Acta 2: mismo bloque LLA de CABA (2 AFIRMATIVO), pero el senador no-LLA de
+# CABA ahora vota NEGATIVO (se desalinea) -- sin filas de Córdoba, para poder
+# aislar el cálculo de acumulación de CABA entre 2 actas.
+FIXTURE_ACTA2_CABA_DESALINEADO = """
+<table id="myTable">
+<tbody>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador uno">SENADOR UNO</td>
+  <td data-order="la libertad avanza">La Libertad Avanza</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-success">AFIRMATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador dos">SENADOR DOS</td>
+  <td data-order="la libertad avanza">La Libertad Avanza</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-success">AFIRMATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador tres">SENADOR TRES</td>
+  <td data-order="union civica radical">Union Civica Radical</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-danger">NEGATIVO</span></center></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+"""
+
+# Acta 3: el bloque LLA de CABA queda empatado (1 AFIRMATIVO, 1 NEGATIVO) --
+# _alineamiento_por_provincia debe devolver {} (sin señal), y esta acta NO
+# debe mover fecha_max aunque sea la más reciente de las 3.
+FIXTURE_ACTA3_LLA_EMPATADO = """
+<table id="myTable">
+<tbody>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador uno">SENADOR UNO</td>
+  <td data-order="la libertad avanza">La Libertad Avanza</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-success">AFIRMATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador dos">SENADOR DOS</td>
+  <td data-order="la libertad avanza">La Libertad Avanza</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-danger">NEGATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador tres">SENADOR TRES</td>
+  <td data-order="union civica radical">Union Civica Radical</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-success">AFIRMATIVO</span></center></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+"""
+
+
+def test_fetch_alineamiento_senadores_prov_acumula_entre_actas_y_fecha_max_solo_avanza_con_senal(monkeypatch):
+    # Hallazgo de revisión (2026-07-08): fecha_max se actualizaba si el
+    # acumulado GLOBAL era no vacío, no si la acta ACTUAL había aportado señal
+    # -- una acta posterior sin señal (empate LLA) hacía avanzar fecha_dato
+    # igual, sobreestimando la recencia real del dato.
+    session = MagicMock()
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: session)
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, anio: [
+        {"id": "1", "fecha": datetime(2026, 6, 1)},
+        {"id": "2", "fecha": datetime(2026, 6, 10)},
+        {"id": "3", "fecha": datetime(2026, 6, 20)},  # LLA empatado -- sin señal
+    ])
+    fixtures = {
+        "1": FIXTURE_ACTA_ALINEAMIENTO,
+        "2": FIXTURE_ACTA2_CABA_DESALINEADO,
+        "3": FIXTURE_ACTA3_LLA_EMPATADO,
+    }
+
+    def fake_paced_get(s, base, path):
+        acta_id = path.rsplit("/", 1)[-1]
+        return MagicMock(status_code=200, text=fixtures[acta_id])
+
+    monkeypatch.setattr(politica, "_paced_get", fake_paced_get)
+
+    resultado = politica.fetch_alineamiento_senadores_prov(anio=2026, dias_ventana=366)
+
+    # CABA acumulado entre acta 1 y 2: (1+0, 1+1) = (1, 2) -> 50%.
+    # Córdoba solo aporta en acta 1: (1, 3) -> 33.3%. Promedio: 41.7%.
+    assert resultado["valor"] == 41.7
+    assert resultado["n_provincias"] == 2
+    # La acta 3 (20-jun) no aporta señal (empate LLA) -- fecha_dato debe
+    # quedar en la última acta que SÍ aportó (acta 2, 10-jun), no en 20-jun.
+    assert resultado["fecha_dato"] == "2026-06-10"
+
+
 # ── Adhesión a reformas (RIGI) ────────────────────────────────────────────────
 
 FIXTURE_TABLA_RIGI = """

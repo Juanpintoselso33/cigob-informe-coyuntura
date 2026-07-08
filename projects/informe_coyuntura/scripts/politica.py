@@ -1242,10 +1242,11 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
         if r is None:
             continue
         filas = _parsear_acta(r.text)
-        for provincia, (coincide, total) in _alineamiento_por_provincia(filas).items():
+        resultado_acta = _alineamiento_por_provincia(filas)
+        for provincia, (coincide, total) in resultado_acta.items():
             c0, t0 = acumulado.get(provincia, (0, 0))
             acumulado[provincia] = (c0 + coincide, t0 + total)
-        if acumulado:
+        if resultado_acta:
             fecha_max = acta["fecha"] if fecha_max is None else max(fecha_max, acta["fecha"])
 
     if not acumulado:
