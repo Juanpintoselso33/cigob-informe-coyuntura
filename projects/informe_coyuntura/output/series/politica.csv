@@ -34,13 +34,15 @@ fecha,indicador,valor,unidad,fuente
 2026-01-01,veto_quorum,0.0,% sesiones fracasadas (por período),datos.hcdn.gob.ar CKAN
 2025-01-01,veto_quorum,10.0,% sesiones fracasadas (por período),datos.hcdn.gob.ar CKAN
 2024-01-01,veto_quorum,0.0,% sesiones fracasadas (por período),datos.hcdn.gob.ar CKAN
-2026-01-01,ratio_dnu,1.471,DNUs por ley,InfoLeg (conteo anual)
+2026-01-01,ratio_dnu,1.529,DNUs por ley,InfoLeg (conteo anual)
 2025-01-01,ratio_dnu,4.909,DNUs por ley,InfoLeg (conteo anual)
 2024-01-01,ratio_dnu,1.69,DNUs por ley,InfoLeg (conteo anual)
 2023-01-01,ratio_dnu,1.176,DNUs por ley,InfoLeg (conteo anual)
 2022-01-01,ratio_dnu,0.973,DNUs por ley,InfoLeg (conteo anual)
 2021-01-01,ratio_dnu,0.705,DNUs por ley,InfoLeg (conteo anual)
 2020-01-01,ratio_dnu,1.277,DNUs por ley,InfoLeg (conteo anual)
+2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
+2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2025-12-01,iaf_transferencias,7.0,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2024-12-01,iaf_transferencias,35.5,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2023-12-01,iaf_transferencias,-28.7,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
@@ -115,4 +117,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2026-01-01,cohesion_bloque_senado,99.7,"% cohesión (índice de Rice, Senado, anual)",Votaciones nominales Senado — elaboración CIGOB (scraping directo)
+2025-01-01,cohesion_bloque_senado,91.4,"% cohesión (índice de Rice, Senado, anual)",Votaciones nominales Senado — elaboración CIGOB (scraping directo)
+2024-01-01,cohesion_bloque_senado,94.5,"% cohesión (índice de Rice, Senado, anual)",Votaciones nominales Senado — elaboración CIGOB (scraping directo)
+2023-01-01,cohesion_bloque_senado,81.8,"% cohesión (índice de Rice, Senado, anual)",Votaciones nominales Senado — elaboración CIGOB (scraping directo)
 2026-01-01,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"

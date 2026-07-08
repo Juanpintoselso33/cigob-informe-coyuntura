@@ -160,6 +160,27 @@ def _paced_get(session: requests.Session, base_url: str, path: str, **kwargs):
     return None
 
 
+def _paced_post(session: requests.Session, base_url: str, path: str, data: dict, **kwargs):
+    """POST con el mismo pacing/retry que _paced_get (backoff ante 403, hasta
+    3 intentos). Usado por _descubrir_actas_senado: el listado de actas de
+    Senado requiere POST con busqueda_actas[anio] en el form -- un GET plano
+    siempre devuelve el año en curso (bug encontrado en auditoría 2026-07-08,
+    ver commit)."""
+    url = f"{base_url}{path}"
+    for intento in range(3):
+        time.sleep(_HCDN_VOTACIONES_DELAY)
+        try:
+            r = session.post(url, data=data, timeout=HTTP_TIMEOUT, **kwargs)
+        except requests.RequestException:
+            return None
+        if r.status_code == 200:
+            return r
+        if r.status_code == 403:
+            continue
+        return None
+    return None
+
+
 def _hcdn_votaciones_get(session: requests.Session, path: str, **kwargs):
     return _paced_get(session, HCDN_VOTACIONES_BASE, path, **kwargs)
 
@@ -438,6 +459,66 @@ def fetch_ratio_dnu() -> dict | None:
 
 # ── CEPA conflictividad ───────────────────────────────────────────────────────
 
+_RE_CEPA_FECHA = re.compile(r'property="datePublished"\s+content="(\d{4}-\d{2}-\d{2})')
+
+
+def _fecha_informe_cepa(html: str) -> str:
+    """Fecha real de publicación del informe (meta datePublished), NO la
+    fecha de la corrida del scraper -- necesaria para el backfill (cada
+    informe histórico debe fechar SU período, no 'hoy'). Fallback a hoy si
+    el informe no trae el tag (no esperado: confirmado presente en los 4
+    informes históricos verificados en vivo, 2026-07-08)."""
+    m = _RE_CEPA_FECHA.search(html)
+    return m.group(1) if m else str(date.today())
+
+
+def _extraer_cifra_cepa(html: str) -> dict | None:
+    """Cifra de conflictividad de UN informe CEPA (índice 0-100
+    normalizado), con el mismo regex que fetch_cepa_movilizacion() usa para
+    el informe vigente. Reconoce dos patrones textuales, mutuamente
+    excluyentes, cada uno con su propia escala de normalización:
+
+      - "X casos por mes" / "promedio de X casos mensuales" -> TASA mensual
+        (rama "m_mes", escala 0-CEPA_MAX_CASOS_MES).
+      - "al menos N conflictos" / "se registraron N conflictos" -> CONTEO
+        acumulado (rama "m_tot", escala 0-CEPA_MAX_CONFLICTOS_TOT).
+
+    El dict devuelto incluye "rama": "m_mes" o "m_tot" para que el llamador
+    pueda distinguir de forma explícita qué patrón matcheó (en vez de
+    inspeccionar el string "metrica"). Devuelve None si el HTML no matchea
+    ninguno de los dos patrones.
+
+    Esta función NO sabe nada sobre qué informes deben excluirse de una
+    serie histórica ni por qué -- eso es responsabilidad de cada llamador.
+    En particular, un informe puede citar una cifra bajo un ancla temporal
+    distinta a la del indicador vigente (p.ej. acumulado "desde enero 2024"
+    en vez de "desde inicios del año en curso") y aun así matchear (rama
+    m_mes o m_tot) si el patrón textual está presente en algún lugar del
+    HTML -- ver docstring de fetch_cepa_movilizacion_serie() en
+    descargar_series.py para el filtro real que excluye lecturas no
+    comparables de la serie."""
+    m_mes = re.search(
+        r"(\d+(?:[.,]\d+)?)\s+casos?\s+por\s+mes"
+        r"|promedio\s+de\s+(\d+(?:[.,]\d+)?)\s+casos?\s+mensuales?",
+        html, re.IGNORECASE
+    )
+    m_tot = re.search(
+        r"(?:al menos,?\s+|se registraron,?\s+al menos,?\s+|se registraron\s+)"
+        r"(\d+)\s+conflictos?",
+        html, re.IGNORECASE
+    )
+    if m_mes:
+        raw = (m_mes.group(1) or m_mes.group(2)).replace(",", ".")
+        cifra = float(raw)
+        return {"valor": round(min(100.0, (cifra / CEPA_MAX_CASOS_MES) * 100.0), 1),
+                "cifra_cruda": cifra, "metrica": f"{cifra} casos/mes", "rama": "m_mes"}
+    if m_tot:
+        cifra = float(m_tot.group(1))
+        return {"valor": round(min(100.0, (cifra / CEPA_MAX_CONFLICTOS_TOT) * 100.0), 1),
+                "cifra_cruda": cifra, "metrica": f"{cifra} conflictos acumulados", "rama": "m_tot"}
+    return None
+
+
 def fetch_cepa_movilizacion() -> dict | None:
     """
     Conflictividad social CEPA — índice 0–100 normalizado.
@@ -484,36 +565,28 @@ def fetch_cepa_movilizacion() -> dict | None:
         r2 = requests.get(informe_url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
         r2.raise_for_status()
 
-        m_mes = re.search(
-            r"(\d+(?:[.,]\d+)?)\s+casos?\s+por\s+mes"
-            r"|promedio\s+de\s+(\d+(?:[.,]\d+)?)\s+casos?\s+mensuales?",
-            r2.text, re.IGNORECASE
-        )
-        m_tot = re.search(
-            r"(?:al menos,?\s+|se registraron,?\s+al menos,?\s+|se registraron\s+)"
-            r"(\d+)\s+conflictos?",
-            r2.text, re.IGNORECASE
-        )
-
-        if m_mes:
-            raw = (m_mes.group(1) or m_mes.group(2)).replace(",", ".")
-            cifra = float(raw)
-            val = round(min(100.0, (cifra / CEPA_MAX_CASOS_MES) * 100.0), 1)
-            metrica = f"{cifra} casos/mes"
-        elif m_tot:
-            cifra = float(m_tot.group(1))
-            val = round(min(100.0, (cifra / CEPA_MAX_CONFLICTOS_TOT) * 100.0), 1)
-            metrica = f"{cifra} conflictos acumulados"
-        else:
+        cifra_info = _extraer_cifra_cepa(r2.text)
+        if cifra_info is None:
             raise ValueError(f"No se encontró patrón de conflictividad en {informe_url}")
+        if cifra_info["rama"] != "m_tot":
+            # Hallazgo de revisión final (2026-07-08): el informe más reciente
+            # puede matchear la rama m_mes (tasa mensual, escala 0-80) en vez de
+            # m_tot (conteo acumulado "desde inicios del año", escala 0-200) --
+            # ver fetch_cepa_movilizacion_serie() para el caso real (informe
+            # 748). Si eso pasara acá, BANDAS_ITCP["movilizacion_cepa"] (0-200)
+            # puntuaría mal una tasa mensual. Se trata igual que "sin patrón":
+            # degrada a cache en vez de publicar un valor en la escala
+            # equivocada.
+            raise ValueError(
+                f"informe más reciente ({informe_url}) es rama={cifra_info['rama']!r}, "
+                "no comparable con la escala m_tot ya publicada"
+            )
 
         return {
-            "valor": val,
-            "cifra_cruda": cifra,
-            "metrica": metrica,
+            **cifra_info,
             "unidad": "Índice (0–100)",
             "fuente": informe_url,
-            "fecha_dato": str(date.today()),
+            "fecha_dato": _fecha_informe_cepa(r2.text),
             "desactualizado": False,
         }
 
@@ -1021,7 +1094,7 @@ _RE_DETALLE_ACTA_SENADO = re.compile(r"/votaciones/detalleActa/(\d+)")
 
 
 def _descubrir_actas_senado(session: requests.Session, anio: int):
-    """GET a /votaciones/actas (listado con fecha en <span style="display:none">
+    """POST a /votaciones/actas (listado con fecha en <span style="display:none">
     YYYYMMDD</span> y link <a href="/votaciones/detalleActa/{id}">) ->
     [{id, fecha}] del año dado. Estructura confirmada en vivo (Senado, HTML
     server-side, sin headless browser). parser="html.parser": lxml no está en
@@ -1030,8 +1103,17 @@ def _descubrir_actas_senado(session: requests.Session, anio: int):
     "display:none" — la Tarea 4 confirmó que el HTML real de HCDN usa
     "display: none" CON espacio; dado que Senado es la misma familia de sitios
     de gobierno, no asumir que acá sí será sin espacio sin verificarlo en vivo
-    (ver Step de verificación más abajo)."""
-    r = _paced_get(session, SENADO_BASE, "/votaciones/actas")
+    (ver Step de verificación más abajo).
+
+    FIX (auditoría 2026-07-08): un GET plano a esta URL siempre devuelve el
+    listado del año EN CURSO -- el filtro `fecha.year != anio` de abajo
+    descartaba todo cuando `anio` era un año pasado, y el backfill
+    'funcionaba' produciendo 1 solo punto real (el año en curso). Verificado
+    en vivo: el sitio acepta POST con busqueda_actas[anio]=<año> y devuelve el
+    listado real de ESE año (26 actas en 2023, 91 en 2024, 95 en 2025, sin
+    bloqueo anti-bot, a diferencia de HCDN Diputados)."""
+    r = _paced_post(session, SENADO_BASE, "/votaciones/actas",
+                     data={"busqueda_actas[anio]": str(anio)})
     if r is None:
         return None
     soup = BeautifulSoup(r.text, "html.parser")
@@ -1189,6 +1271,17 @@ def _valor_itcp(nombre: str, entry: dict):
     return entry.get("valor")
 
 
+def _resultado_utilizable(nombre: str, resultado: dict | None) -> bool:
+    """True si el resultado de un fetcher tiene el valor que efectivamente se
+    usa en el ITCP para `nombre` (vía _valor_itcp), no solo un "valor" crudo
+    presente. Cierra un borde latente (auditoría 2026-07-08): protestas_caba
+    puntúa sobre var_vs_2023; si var_vs_2023 fuera None con "valor" presente
+    (base_2023 == 0), el indicador se contaría como fresco sin aportar
+    realmente al índice. Para el resto de los indicadores es equivalente a
+    `resultado.get("valor") is not None` (_valor_itcp devuelve "valor" directo)."""
+    return resultado is not None and _valor_itcp(nombre, resultado) is not None
+
+
 def _anotar_indicadores_itcp(indicadores: dict, resultado: dict | None) -> None:
     """Marca cada indicador con su rol en el ITCP: los del índice llevan
     puntaje, dimensión y peso efectivo; el resto queda como contexto (mismo
@@ -1238,7 +1331,7 @@ def main() -> None:
 
     for nombre, fetcher in colectores:
         resultado = fetcher()
-        if resultado is not None and resultado.get("valor") is not None:
+        if _resultado_utilizable(nombre, resultado):
             frescos[nombre] = resultado
             frescos_count += 1
         elif nombre in indicadores_anteriores:

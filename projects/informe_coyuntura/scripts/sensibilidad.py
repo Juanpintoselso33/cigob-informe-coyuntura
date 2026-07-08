@@ -38,6 +38,7 @@ import parametrica
 import itcm
 import itcg
 import itvc as itvc_mod
+import itcp
 
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = ROOT / "web" / "src" / "data" / "informe.json"
@@ -55,6 +56,8 @@ INDICES = {
              "tension": lambda v: round((100 - v) / 10, 1)},
     "itvc": {"cinturon": "vida_cotidiana", "bandas": None,   # continuo
              "tension": lambda v: round(min(10.0, max(0.0, 5 - (v - 100) * 0.2)), 1)},
+    "itcp": {"cinturon": "politica", "bandas": itcp.BANDAS_ITCP,
+             "tension": lambda v: round((100 - v) / 10, 1)},
 }
 
 

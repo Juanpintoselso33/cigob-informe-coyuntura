@@ -431,6 +431,32 @@ def test_paced_get_reusa_logica_de_pacing(monkeypatch):
     session.get.assert_called_with("https://www.senado.gob.ar/votaciones/actas", timeout=politica.HTTP_TIMEOUT)
 
 
+def test_paced_post_reusa_logica_de_pacing(monkeypatch):
+    session = MagicMock()
+    session.post.return_value = MagicMock(status_code=200)
+    monkeypatch.setattr(politica.time, "sleep", lambda s: None)
+    r = politica._paced_post(session, "https://www.senado.gob.ar", "/votaciones/actas",
+                              data={"busqueda_actas[anio]": "2024"})
+    assert r.status_code == 200
+    session.post.assert_called_with(
+        "https://www.senado.gob.ar/votaciones/actas",
+        data={"busqueda_actas[anio]": "2024"},
+        timeout=politica.HTTP_TIMEOUT,
+    )
+
+
+def test_paced_post_reintenta_ante_403(monkeypatch):
+    session = MagicMock()
+    resp_403 = MagicMock(status_code=403)
+    resp_200 = MagicMock(status_code=200)
+    session.post.side_effect = [resp_403, resp_403, resp_200]
+    monkeypatch.setattr(politica.time, "sleep", lambda s: None)
+    resultado = politica._paced_post(session, "https://www.senado.gob.ar", "/votaciones/actas",
+                                      data={"busqueda_actas[anio]": "2023"})
+    assert resultado is resp_200
+    assert session.post.call_count == 3
+
+
 def test_hcdn_votaciones_get_sigue_funcionando_via_paced_get(monkeypatch):
     session = MagicMock()
     session.get.return_value = MagicMock(status_code=200)
@@ -442,9 +468,28 @@ def test_hcdn_votaciones_get_sigue_funcionando_via_paced_get(monkeypatch):
 
 def test_descubrir_actas_senado_extrae_id_y_fecha():
     session = MagicMock()
-    session.get.return_value = MagicMock(status_code=200, text=FIXTURE_LISTADO_SENADO)
+    session.post.return_value = MagicMock(status_code=200, text=FIXTURE_LISTADO_SENADO)
     actas = politica._descubrir_actas_senado(session, 2026)
     assert actas == [{"id": "2623", "fecha": datetime(2026, 2, 11)}]
+    session.post.assert_called_with(
+        "https://www.senado.gob.ar/votaciones/actas",
+        data={"busqueda_actas[anio]": "2026"},
+        timeout=politica.HTTP_TIMEOUT,
+    )
+
+
+def test_descubrir_actas_senado_pide_el_anio_correcto_no_el_actual():
+    # Regresión directa del bug de auditoría 2026-07-08: un año PASADO debe
+    # pedirse explícitamente en el form, no depender de que el servidor
+    # devuelva el año en curso por default.
+    session = MagicMock()
+    session.post.return_value = MagicMock(status_code=200, text=FIXTURE_LISTADO_SENADO)
+    politica._descubrir_actas_senado(session, 2023)
+    session.post.assert_called_with(
+        "https://www.senado.gob.ar/votaciones/actas",
+        data={"busqueda_actas[anio]": "2023"},
+        timeout=politica.HTTP_TIMEOUT,
+    )
 
 
 def test_fetch_cohesion_bloque_senado_es_complementario(monkeypatch):
@@ -562,3 +607,148 @@ def test_valor_itcp_protestas_caba_none_si_var_vs_2023_ausente():
 def test_valor_itcp_otros_indicadores_usan_valor_directo():
     entry = {"valor": 62.5, "var_vs_2023": 999.0}  # campo ajeno, no debe usarse
     assert politica._valor_itcp("cohesion_bloque", entry) == 62.5
+
+
+# ── _resultado_utilizable (hallazgo de auditoría 2026-07-08) ────────────────
+# protestas_caba puntúa en el ITCP sobre var_vs_2023, no sobre "valor" (conteo
+# crudo). El gate de frescura de main() históricamente miraba solo "valor" --
+# si algún día base_2023 fuera 0, gestion.fetch_protestas_caba() deja
+# var_vs_2023 en None pero "valor" sigue presente, y el indicador se contaría
+# como fresco sin aportar realmente al ITCP. Reusa _valor_itcp para que el
+# gate de frescura y el cálculo del índice usen SIEMPRE el mismo valor.
+
+def test_resultado_utilizable_protestas_caba_requiere_var_vs_2023():
+    entry = {"valor": 347, "var_vs_2023": None}
+    assert not politica._resultado_utilizable("protestas_caba", entry)
+
+
+def test_resultado_utilizable_protestas_caba_con_var_vs_2023():
+    entry = {"valor": 347, "var_vs_2023": 15.3}
+    assert politica._resultado_utilizable("protestas_caba", entry)
+
+
+def test_resultado_utilizable_otro_indicador_usa_valor_directo():
+    assert politica._resultado_utilizable("cohesion_bloque", {"valor": 62.5})
+
+
+def test_resultado_utilizable_none_no_es_utilizable():
+    assert not politica._resultado_utilizable("cohesion_bloque", None)
+
+
+# ── _extraer_cifra_cepa / _fecha_informe_cepa (backfill movilizacion_cepa) ──
+# Fixtures = fragmentos REALES de 4 informes de centrocepa.com.ar verificados
+# en vivo 2026-07-08 (ids 809, 773, 748, 739). 748 y 739 acumulan desde un
+# ancla temporal distinta (ene-2024 / dic-2023, no "desde inicios del año en
+# curso").
+#
+# CORRECCIÓN (verificado en vivo por segunda vez, contra la página COMPLETA
+# de 748, no solo el fragmento de la cifra acumulada): a diferencia de lo que
+# se asumió al escribir el fixture original, _extraer_cifra_cepa NO devuelve
+# None para 748 -- el cuerpo del informe también trae una oración con un
+# promedio mensual ("promediando 24 casos por mes") que matchea la rama
+# m_mes. FRAGMENTO_748 abajo incluye AMBAS oraciones reales (en el mismo
+# orden en que aparecen en la página real) para reflejar esto con fidelidad.
+# La exclusión de 748 de la serie NO ocurre en _extraer_cifra_cepa: ocurre
+# en el filtro de fetch_cepa_movilizacion_serie() (scripts/descargar_series.py),
+# que descarta cualquier lectura cuyo campo "rama" no sea "m_tot" -- ver
+# test_extraer_cifra_cepa_informe_748_no_es_acumulado más abajo, que
+# documenta el discriminador real. 739 sí fue reverificado
+# contra su página completa real y sigue devolviendo None (ninguna de las
+# 2 frases-gatillo del regex está presente en esa página).
+
+FRAGMENTO_809 = (
+    '<meta property="datePublished" content="2026-06-09T15:40:01-03:00">'
+    "Desde inicios del 2026 se registraron, al menos, 101 conflictos "
+    "laborales de trabajadores estatales en todo el país."
+)
+FRAGMENTO_773 = (
+    '<meta property="datePublished" content="2026-04-09T23:47:31-03:00">'
+    "Desde inicios del 2026 se registraron, al menos, 92 conflictos "
+    "laborales de trabajadores estatales en todo el país."
+)
+FRAGMENTO_748 = (
+    '<meta property="datePublished" content="2026-02-18T18:29:01-03:00">'
+    "Desde enero 2024 hasta el 5 de febrero 2026 se registraron al menos "
+    "717 casos de conflictividad laboral en todo el país."
+    "Desde la elección del 26 de octubre de 2025 los conflictos no se "
+    "detuvieron, sino que se recrudecieron. Desde enero 2024 hasta "
+    "septiembre 2025, se registraron 507 casos de conflictividad laboral "
+    "(promediando 24 casos por mes). Sin embargo, luego de las elecciones "
+    "se contabilizó un promedio de 42 casos por mes (210 desde las "
+    "elecciones a febrero)."
+)
+FRAGMENTO_739 = (
+    '<meta property="datePublished" content="2025-12-31T20:40:01-03:00">'
+    "Ofrecemos un recuentro gráfico de los 629 conflictos laborales y "
+    "cierres de empresas registrados durante el gobierno de Javier Milei."
+)
+
+
+def test_extraer_cifra_cepa_informe_809():
+    r = politica._extraer_cifra_cepa(FRAGMENTO_809)
+    assert r["cifra_cruda"] == 101.0
+    assert r["valor"] == round(min(100.0, 101.0 / 200.0 * 100.0), 1)
+
+
+def test_extraer_cifra_cepa_informe_773():
+    r = politica._extraer_cifra_cepa(FRAGMENTO_773)
+    assert r["cifra_cruda"] == 92.0
+
+
+def test_extraer_cifra_cepa_informe_748_no_es_acumulado():
+    # La página real de 748 SÍ matchea -- vía m_mes (tasa mensual, no el
+    # "717 casos" acumulado desde ene-2024, que no dispara ninguna rama del
+    # regex porque dice "casos" y no "conflictos"). re.search encuentra la
+    # PRIMERA ocurrencia de "N casos por mes": "24 casos por mes" (ventana
+    # ene24-sep25), no "42 casos por mes" (ventana post-elección) -- ambas
+    # aparecen en el cuerpo real del informe.
+    r = politica._extraer_cifra_cepa(FRAGMENTO_748)
+    assert r == {"valor": 30.0, "cifra_cruda": 24.0, "metrica": "24.0 casos/mes", "rama": "m_mes"}
+    # Discriminador real usado por fetch_cepa_movilizacion_serie() para
+    # excluir esta lectura de la serie: no es "conflictos acumulados" (m_tot),
+    # es una tasa mensual (m_mes) -- escala distinta (0-80 vs. 0-200),
+    # no comparable con el resto de la serie (que es 100% m_tot).
+    assert r["rama"] == "m_mes"
+
+
+def test_extraer_cifra_cepa_informe_739_no_matchea_ninguna_rama():
+    # "629 conflictos" pero sin ninguna de las 2 frases-gatillo del regex
+    # ("al menos" / "se registraron" inmediatamente antes del número), y sin
+    # ninguna oración de tasa mensual tampoco -- reverificado contra la
+    # página real completa de 739 (2026-07-08), no solo este fragmento.
+    assert politica._extraer_cifra_cepa(FRAGMENTO_739) is None
+
+
+def test_fecha_informe_cepa_extrae_datepublished():
+    assert politica._fecha_informe_cepa(FRAGMENTO_809) == "2026-06-09"
+    assert politica._fecha_informe_cepa(FRAGMENTO_748) == "2026-02-18"
+
+
+def test_fecha_informe_cepa_fallback_a_hoy_si_no_hay_meta():
+    from datetime import date
+    assert politica._fecha_informe_cepa("<html>sin meta tag</html>") == str(date.today())
+
+
+# ── fetch_cepa_movilizacion: guard de rama en el fetch vigente ──────────────
+# Hallazgo de la revisión final (2026-07-08): fetch_cepa_movilizacion_serie()
+# ya filtra por rama=="m_tot", pero el fetch del indicador VIGENTE no lo
+# hacía -- publicaba lo que sea que matcheara primero. Regresión directa:
+# si el informe más reciente listado es rama=="m_mes" (tasa mensual, escala
+# 0-80), no debe publicarse contra las bandas calibradas para m_tot
+# (conteo acumulado, escala 0-200) -- degrada a None (cache), igual que
+# "sin patrón encontrado".
+
+def test_fetch_cepa_movilizacion_rechaza_informe_mas_reciente_si_no_es_m_tot(monkeypatch):
+    listado_html = '<a href="/documentos/informes/999-conflictividad-ejemplo">ver</a>'
+    informe_html = (
+        '<meta property="datePublished" content="2026-07-01T00:00:00-03:00">'
+        "Se registró un promedio de 30 casos por mes en el último trimestre."
+    )
+
+    def fake_get(url, headers=None, timeout=None):
+        if "documentos/informes/999" in url:
+            return MagicMock(status_code=200, text=informe_html)
+        return MagicMock(status_code=200, text=listado_html)
+
+    monkeypatch.setattr(politica.requests, "get", fake_get)
+    assert politica.fetch_cepa_movilizacion() is None
