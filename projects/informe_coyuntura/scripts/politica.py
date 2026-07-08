@@ -459,6 +459,53 @@ def fetch_ratio_dnu() -> dict | None:
 
 # ── CEPA conflictividad ───────────────────────────────────────────────────────
 
+_RE_CEPA_FECHA = re.compile(r'property="datePublished"\s+content="(\d{4}-\d{2}-\d{2})')
+
+
+def _fecha_informe_cepa(html: str) -> str:
+    """Fecha real de publicación del informe (meta datePublished), NO la
+    fecha de la corrida del scraper -- necesaria para el backfill (cada
+    informe histórico debe fechar SU período, no 'hoy'). Fallback a hoy si
+    el informe no trae el tag (no esperado: confirmado presente en los 4
+    informes históricos verificados en vivo, 2026-07-08)."""
+    m = _RE_CEPA_FECHA.search(html)
+    return m.group(1) if m else str(date.today())
+
+
+def _extraer_cifra_cepa(html: str) -> dict | None:
+    """Cifra de conflictividad de UN informe CEPA (índice 0-100
+    normalizado), con el mismo regex que fetch_cepa_movilizacion() usa para
+    el informe vigente. None si el informe no matchea ninguno de los dos
+    patrones conocidos ("X casos por mes" / "al menos N conflictos") --
+    DELIBERADO: informes que citan una cifra acumulada bajo un ancla
+    temporal DISTINTA ("desde enero 2024" o "durante todo el gobierno de
+    Milei", en vez de "desde inicios del año en curso") no son comparables
+    en la misma escala 0-200 y no deben forzarse a la serie (verificado en
+    vivo 2026-07-08: los informes CEPA de "conflictividad a 2 años" y
+    "mapa federal" quedan fuera de la serie por este motivo, no por un
+    error de parseo)."""
+    m_mes = re.search(
+        r"(\d+(?:[.,]\d+)?)\s+casos?\s+por\s+mes"
+        r"|promedio\s+de\s+(\d+(?:[.,]\d+)?)\s+casos?\s+mensuales?",
+        html, re.IGNORECASE
+    )
+    m_tot = re.search(
+        r"(?:al menos,?\s+|se registraron,?\s+al menos,?\s+|se registraron\s+)"
+        r"(\d+)\s+conflictos?",
+        html, re.IGNORECASE
+    )
+    if m_mes:
+        raw = (m_mes.group(1) or m_mes.group(2)).replace(",", ".")
+        cifra = float(raw)
+        return {"valor": round(min(100.0, (cifra / CEPA_MAX_CASOS_MES) * 100.0), 1),
+                "cifra_cruda": cifra, "metrica": f"{cifra} casos/mes"}
+    if m_tot:
+        cifra = float(m_tot.group(1))
+        return {"valor": round(min(100.0, (cifra / CEPA_MAX_CONFLICTOS_TOT) * 100.0), 1),
+                "cifra_cruda": cifra, "metrica": f"{cifra} conflictos acumulados"}
+    return None
+
+
 def fetch_cepa_movilizacion() -> dict | None:
     """
     Conflictividad social CEPA — índice 0–100 normalizado.
@@ -505,36 +552,15 @@ def fetch_cepa_movilizacion() -> dict | None:
         r2 = requests.get(informe_url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
         r2.raise_for_status()
 
-        m_mes = re.search(
-            r"(\d+(?:[.,]\d+)?)\s+casos?\s+por\s+mes"
-            r"|promedio\s+de\s+(\d+(?:[.,]\d+)?)\s+casos?\s+mensuales?",
-            r2.text, re.IGNORECASE
-        )
-        m_tot = re.search(
-            r"(?:al menos,?\s+|se registraron,?\s+al menos,?\s+|se registraron\s+)"
-            r"(\d+)\s+conflictos?",
-            r2.text, re.IGNORECASE
-        )
-
-        if m_mes:
-            raw = (m_mes.group(1) or m_mes.group(2)).replace(",", ".")
-            cifra = float(raw)
-            val = round(min(100.0, (cifra / CEPA_MAX_CASOS_MES) * 100.0), 1)
-            metrica = f"{cifra} casos/mes"
-        elif m_tot:
-            cifra = float(m_tot.group(1))
-            val = round(min(100.0, (cifra / CEPA_MAX_CONFLICTOS_TOT) * 100.0), 1)
-            metrica = f"{cifra} conflictos acumulados"
-        else:
+        cifra_info = _extraer_cifra_cepa(r2.text)
+        if cifra_info is None:
             raise ValueError(f"No se encontró patrón de conflictividad en {informe_url}")
 
         return {
-            "valor": val,
-            "cifra_cruda": cifra,
-            "metrica": metrica,
+            **cifra_info,
             "unidad": "Índice (0–100)",
             "fuente": informe_url,
-            "fecha_dato": str(date.today()),
+            "fecha_dato": _fecha_informe_cepa(r2.text),
             "desactualizado": False,
         }
 

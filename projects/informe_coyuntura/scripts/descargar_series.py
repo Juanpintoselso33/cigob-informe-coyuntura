@@ -507,6 +507,80 @@ def fetch_adhesion_reformas_provincial_serie() -> list:
     return [[f"{date.today().year}-01-01", resultado["valor"]]]
 
 
+def fetch_cepa_movilizacion_serie(max_paginas: int = 40) -> list:
+    """Backfill histórico de movilizacion_cepa: escanea hasta `max_paginas`
+    páginas de centrocepa.com.ar/documentos/informes (10 informes por
+    página) buscando TODOS los links con "conflictividad"/"conflictos-laborales"
+    en la URL -- no solo el más reciente, a diferencia de
+    politica.fetch_cepa_movilizacion(). Verificado en vivo (2026-07-08): con
+    40 páginas se cubren de sobra los ~4 informes de este tipo publicados
+    hasta la fecha (CEPA recién empezó a publicarlos a fines de 2025 -- no
+    hay nada más atrás que buscar). Reusa politica._extraer_cifra_cepa /
+    politica._fecha_informe_cepa: informes que citan la cifra bajo un ancla
+    temporal distinta (ver docstring de _extraer_cifra_cepa) devuelven None
+    y se saltean, no rompen el backfill.
+
+    Filtro adicional (hallazgo en vivo 2026-07-08, posterior a la primera
+    versión de este docstring): _extraer_cifra_cepa NO siempre devuelve None
+    para informes con ancla distinta -- el informe 748 ("2 años de Milei")
+    acumula desde ene-2024 con la frase-gatillo "desde inicios del año en
+    curso" ausente, PERO el cuerpo del informe también contiene una oración
+    con un promedio mensual ("promediando 24 casos por mes") que sí matchea
+    la rama m_mes de _extraer_cifra_cepa (esa rama es anterior a esta tarea
+    y no se modifica acá). Esa cifra es una TASA mensual sobre una ventana
+    ene24-sep25, mientras que el indicador vigente (m_tot, "acumulados
+    desde inicios del año en curso") es un CONTEO acumulado -- dos escalas
+    incompatibles (CEPA_MAX_CASOS_MES=80 vs. CEPA_MAX_CONFLICTOS_TOT=200)
+    que no deben mezclarse en la misma serie. Por eso acá, a diferencia de
+    fetch_cepa_movilizacion() (que no discrimina entre ramas porque solo ve
+    UN informe a la vez y ese informe siempre viene de m_tot en la
+    práctica), se descartan explícitamente las lecturas m_mes: solo se
+    conservan lecturas "conflictos acumulados" (m_tot), homogéneas con el
+    valor vigente publicado hoy (50.5 = 101/200*100, informe 809).
+    [[YYYY-MM-DD, índice 0-100]]."""
+    try:
+        from bs4 import BeautifulSoup
+    except ImportError:
+        print("[WARN] movilizacion_cepa_serie: beautifulsoup4 no disponible")
+        return []
+
+    links = []
+    for page in range(max_paginas):
+        page_url = politica.CEPA_INFORMES_URL if page == 0 else f"{politica.CEPA_INFORMES_URL}?start={page * 10}"
+        try:
+            r = requests.get(page_url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            r.raise_for_status()
+        except requests.RequestException:
+            break
+        soup = BeautifulSoup(r.text, "html.parser")
+        for a in soup.find_all("a", href=True):
+            href_lower = a["href"].lower()
+            if any(kw in href_lower for kw in ("conflictividad", "conflictos-laborales")):
+                links.append(a["href"])
+
+    out = []
+    vistos = set()
+    for href in links:
+        if href in vistos:
+            continue
+        vistos.add(href)
+        informe_url = ("https://centrocepa.com.ar" + href) if href.startswith("/") else href
+        try:
+            r2 = requests.get(informe_url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            r2.raise_for_status()
+        except requests.RequestException as e:
+            print(f"[WARN] movilizacion_cepa_serie: {informe_url}: {e}")
+            continue
+        cifra_info = politica._extraer_cifra_cepa(r2.text)
+        if cifra_info is None or not cifra_info["metrica"].endswith("conflictos acumulados"):
+            continue   # sin match, o cifra de tasa mensual (m_mes) -- ver docstring, no comparable
+        fecha = politica._fecha_informe_cepa(r2.text)
+        out.append([fecha, cifra_info["valor"]])
+
+    out.sort(key=lambda x: x[0])
+    return out
+
+
 POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
@@ -523,6 +597,9 @@ POLITICA_DERIVADAS = [
     ("adhesion_reformas_provincial", "% de provincias (sobre 24) adheridas al RIGI",
      "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
      fetch_adhesion_reformas_provincial_serie),
+    ("movilizacion_cepa", "Índice de conflictividad social (0-100)",
+     "Centro CEPA — informes de conflictividad (elaboración CIGOB)",
+     fetch_cepa_movilizacion_serie),
     # protestas_caba NO se registra acá: ya está en GESTION_DERIVADAS
     # (fetch_protestas_serie) y build_series() en publicar.py fusiona TODOS
     # los CSV de output/series/ en un único dict keyed por indicador — la
