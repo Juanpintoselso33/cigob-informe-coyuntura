@@ -1,5 +1,7 @@
 # Reemplazo de movilizacion_cepa por conflictividad_laboral_srt — Plan de implementación
 
+> **ABANDONADO tras Task 1 (2026-07-08).** La premisa del plan era incorrecta: la Secretaría de Trabajo dejó de publicar informes trimestrales después de 2020t2 y no tiene NINGÚN dato posterior a marzo-2023 (confirmado contra la planilla de Google oficial que alimenta la página de listado, 32/32 URLs verificadas). No puede ser fuente vigente. Tampoco sirve como validación externa (el Excel mensual de SRT termina en 2023-03; la reconstrucción mensual del ITCP arranca en 2023-12 — cero superposición temporal, ninguna correlación es calculable). Decisión del usuario: cerrar este frente sin más cambios de código, `movilizacion_cepa` queda como se arregló el mismo día (guard de "rama"/m_tot). Tasks 2-6 de abajo NO se ejecutaron y no se van a ejecutar. Ver `.superpowers/sdd/task-1-report.md` para el hallazgo completo y `.superpowers/sdd/progress.md` (Plan4-Task 1) para el registro de la decisión.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Reemplazar la fuente del indicador `movilizacion_cepa` (CEPA, alcance angosto y ~4 informes irregulares) por la serie oficial de "Conflictividad Laboral" de la Secretaría de Trabajo (Ministerio de Capital Humano), con ~40 informes trimestrales confirmados desde 2016 y metodología documentada.
