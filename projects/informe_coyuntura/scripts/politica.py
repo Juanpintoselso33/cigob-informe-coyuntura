@@ -1187,6 +1187,91 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
     }
 
 
+def _alineamiento_por_provincia(filas: list[dict]) -> dict:
+    """Dada la lista de filas de UNA acta (nombre/bloque/provincia/voto),
+    devuelve {provincia: (coincidencias, total)} solo para las provincias que
+    tienen AL MENOS 1 senador no-LLA en esa acta. La posición del oficialismo
+    en esa acta es el voto mayoritario de los senadores del bloque LLA
+    (cualquier provincia); si LLA no tiene votos claros (empate o sin
+    senadores LLA presentes) esa acta no aporta señal, se devuelve {}."""
+    afirm_lla = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
+    neg_lla = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
+    if afirm_lla == neg_lla:
+        return {}
+    posicion_lla = "AFIRMATIVO" if afirm_lla > neg_lla else "NEGATIVO"
+
+    resultado = {}
+    for f in filas:
+        if es_bloque_lla(f["bloque"]) or f["voto"] not in ("AFIRMATIVO", "NEGATIVO"):
+            continue
+        coincide, total = resultado.get(f["provincia"], (0, 0))
+        resultado[f["provincia"]] = (coincide + (1 if f["voto"] == posicion_lla else 0), total + 1)
+    return resultado
+
+
+def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int = 90) -> dict | None:
+    """% de votos de senadores NO-LLA que coincide con la posición del
+    bloque LLA en el Senado, agregado por provincia y promediado entre
+    provincias con al menos 1 senador no-LLA (las 100% LLA se excluyen --
+    su "alineamiento" con LLA es tautológico, no aporta señal).
+
+    Reemplaza a gobernadores_alineamiento (placeholder manual congelado
+    desde 2026-04, sin fuente automatizable encontrada tras 2 rondas de
+    investigación). CAVEAT HONESTO: mide comportamiento de voto de
+    SENADORES, no la postura pública del gobernador (Poder Ejecutivo
+    provincial) -- un senador no depende del gobernador de turno. Es la
+    mejor señal automatizable disponible hoy (2026-07-08), no una medición
+    directa -- mismo tipo de proxy que adhesion_reformas_provincial/RIGI.
+
+    Misma ventana/ancla que fetch_cohesion_bloque_senado (hoy para año en
+    curso, 31-dic para backfill)."""
+    anio = anio or datetime.now().year
+    session = _hcdn_votaciones_session()
+    actas = _descubrir_actas_senado(session, anio)
+    if actas is None:
+        return None
+
+    referencia = datetime.now() if anio == datetime.now().year else datetime(anio, 12, 31)
+    limite = referencia - timedelta(days=dias_ventana)
+    acumulado = {}
+    fecha_max = None
+    for acta in actas:
+        if acta["fecha"] < limite:
+            continue
+        r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
+        if r is None:
+            continue
+        filas = _parsear_acta(r.text)
+        for provincia, (coincide, total) in _alineamiento_por_provincia(filas).items():
+            c0, t0 = acumulado.get(provincia, (0, 0))
+            acumulado[provincia] = (c0 + coincide, t0 + total)
+        if acumulado:
+            fecha_max = acta["fecha"] if fecha_max is None else max(fecha_max, acta["fecha"])
+
+    if not acumulado:
+        return {
+            "valor": None,
+            "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
+            "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+            "fecha_dato": None,
+            "n_provincias": 0,
+            "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+            "desactualizado": False,
+        }
+
+    ratios_por_provincia = [c / t for c, t in acumulado.values() if t > 0]
+    valor = round(100 * sum(ratios_por_provincia) / len(ratios_por_provincia), 1)
+    return {
+        "valor": valor,
+        "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
+        "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+        "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
+        "n_provincias": len(acumulado),
+        "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+        "desactualizado": False,
+    }
+
+
 # ── MAGyP — adhesión provincial al RIGI ──────────────────────────────────────
 
 def fetch_adhesion_reformas_provincial() -> dict | None:

@@ -535,6 +535,100 @@ def test_fetch_cohesion_bloque_senado_ventana_de_backfill_ancla_al_anio_pedido(m
     assert resultado["valor"] == politica.indice_rice(1, 1)
 
 
+# ── Alineamiento de senadores por provincia (reemplaza gobernadores_alineamiento) ──
+
+FIXTURE_ACTA_ALINEAMIENTO = """
+<table id="myTable">
+<tbody>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador uno">SENADOR UNO</td>
+  <td data-order="la libertad avanza">La Libertad Avanza</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-success">AFIRMATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador dos">SENADOR DOS</td>
+  <td data-order="la libertad avanza">La Libertad Avanza</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-success">AFIRMATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador tres">SENADOR TRES</td>
+  <td data-order="union civica radical">Union Civica Radical</td>
+  <td data-order="caba">CABA</td>
+  <td><center><span class="label label-success">AFIRMATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador cuatro">SENADOR CUATRO</td>
+  <td data-order="union por la patria">Union Por La Patria</td>
+  <td data-order="cordoba">Córdoba</td>
+  <td><center><span class="label label-success">AFIRMATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador cinco">SENADOR CINCO</td>
+  <td data-order="union por la patria">Union Por La Patria</td>
+  <td data-order="cordoba">Córdoba</td>
+  <td><center><span class="label label-danger">NEGATIVO</span></center></td>
+  <td></td>
+</tr>
+<tr>
+  <td><div><a><img></a></div></td>
+  <td data-order="senador seis">SENADOR SEIS</td>
+  <td data-order="union por la patria">Union Por La Patria</td>
+  <td data-order="cordoba">Córdoba</td>
+  <td><center><span class="label label-danger">NEGATIVO</span></center></td>
+  <td></td>
+</tr>
+</tbody>
+</table>
+"""
+
+
+def test_alineamiento_de_una_acta_agrupa_por_provincia_excluyendo_full_lla():
+    # Posición LLA en esta acta: 2 senadores LLA de CABA, ambos AFIRMATIVO -> posición = AFIRMATIVO.
+    # CABA tiene 1 senador no-LLA (UCR, AFIRMATIVO) -> coincide -> CABA: 1/1 = 100%.
+    # Córdoba tiene 3 senadores no-LLA (PJ): AFIRMATIVO, NEGATIVO, NEGATIVO -> 1/3 coincide -> 33.3%.
+    # (CABA no se excluye del todo -- tiene 1 senador no-LLA real, solo se ignora el voto de los 2 LLA)
+    filas = politica._parsear_acta(FIXTURE_ACTA_ALINEAMIENTO)
+    resultado = politica._alineamiento_por_provincia(filas)
+    assert resultado == {"CABA": (1, 1), "Córdoba": (1, 3)}  # (coincidencias, total) por provincia
+
+
+def test_alineamiento_por_provincia_provincia_100pct_lla_no_aparece():
+    fixture_solo_lla = FIXTURE_ACTA_ALINEAMIENTO.replace(
+        'data-order="union civica radical">Union Civica Radical',
+        'data-order="la libertad avanza">La Libertad Avanza',
+    )
+    filas = politica._parsear_acta(fixture_solo_lla)
+    resultado = politica._alineamiento_por_provincia(filas)
+    assert "CABA" not in resultado  # los 3 senadores de CABA son LLA -- sin señal, se excluye
+    assert resultado == {"Córdoba": (1, 3)}
+
+
+def test_fetch_alineamiento_senadores_prov_promedia_provincias(monkeypatch):
+    session = MagicMock()
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: session)
+    monkeypatch.setattr(politica, "_descubrir_actas_senado",
+                         lambda s, anio: [{"id": "1", "fecha": datetime(2026, 6, 1)}])
+    monkeypatch.setattr(politica, "_paced_get",
+                         lambda s, base, path: MagicMock(status_code=200, text=FIXTURE_ACTA_ALINEAMIENTO))
+
+    resultado = politica.fetch_alineamiento_senadores_prov(anio=2026, dias_ventana=366)
+
+    # CABA=100%, Córdoba=33.33...% -> promedio = 66.67%
+    assert resultado["valor"] == 66.7
+    assert resultado["n_provincias"] == 2
+
+
 # ── Adhesión a reformas (RIGI) ────────────────────────────────────────────────
 
 FIXTURE_TABLA_RIGI = """
