@@ -460,18 +460,60 @@ def fetch_comisiones_serie() -> list:
     return out
 
 
+COHESION_BLOQUE_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "cohesion_bloque_serie.json"
+COHESION_BLOQUE_SENADO_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "cohesion_bloque_senado_serie.json"
+
+
+def _serie_cohesion_cacheada(store_path: Path, fetch_fn, anio_inicio: int, nombre: str) -> list:
+    """Serie ANUAL de cohesión de bloque (índice de Rice) con caché
+    persistente por año -- hallazgo real 2026-07-08: cada año requiere
+    scrapear TODAS sus actas divididas una por una (~80/año en Senado), y
+    repetir esto para 2023..hoy en CADA corrida diaria es lento y expone la
+    serie a la intermitencia del sitio fuente (un timeout tira abajo un año
+    entero). Mismo patrón ya usado para motos/carne/snic/ivi/sentimiento en
+    este archivo: los años CERRADOS (anteriores al actual) son inmutables
+    una vez bajados -- no se vuelven a pedir. El año EN CURSO SIEMPRE se
+    re-pide (pueden sumarse actas nuevas); si el pedido de hoy falla, se
+    degrada al último valor cacheado de ese año en vez de perder el punto
+    más nuevo de la serie (que es justo el que dispara el gate G3 si falta).
+    `fetch_fn` sigue la firma de politica.fetch_cohesion_bloque[_senado]
+    (anio, dias_ventana). [[YYYY-01-01, % cohesión]]."""
+    try:
+        cache = json.loads(store_path.read_text(encoding="utf-8-sig"))
+        if not isinstance(cache, dict):
+            cache = {}
+    except (OSError, json.JSONDecodeError):
+        cache = {}
+
+    hoy_anio = date.today().year
+    for anio in range(anio_inicio, hoy_anio + 1):
+        clave = str(anio)
+        if anio < hoy_anio and clave in cache:
+            continue   # año cerrado ya cacheado -- inmutable, no se vuelve a pedir
+        try:
+            resultado = fetch_fn(anio=anio, dias_ventana=366)
+        except Exception as e:
+            print(f"  [WARN] {nombre} {anio}: {e}")
+            continue
+        if resultado and resultado.get("valor") is not None:
+            cache[clave] = resultado["valor"]
+            store_path.write_text(json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
+        elif clave not in cache:
+            print(f"  [WARN] {nombre} {anio}: sin dato y sin cache previo -- se omite")
+
+    return [[f"{anio}-01-01", cache[str(anio)]]
+            for anio in range(anio_inicio, hoy_anio + 1) if str(anio) in cache]
+
+
 def fetch_cohesion_bloque_serie(anio_inicio: int = 2023) -> list:
     """Serie ANUAL de cohesión del bloque LLA en Diputados (índice de Rice
     promedio): un punto por año desde `anio_inicio`, con dias_ventana=366
     para cubrir TODAS las actas divididas del año sin depender de la fecha de
     corrida — mismo criterio que el indicador cohesion_bloque (Tarea 6).
+    Caché persistente por año, ver _serie_cohesion_cacheada.
     [[YYYY-01-01, % cohesión]]."""
-    out = []
-    for anio in range(anio_inicio, date.today().year + 1):
-        resultado = politica.fetch_cohesion_bloque(anio=anio, dias_ventana=366)
-        if resultado and resultado.get("valor") is not None:
-            out.append([f"{anio}-01-01", resultado["valor"]])
-    return out
+    return _serie_cohesion_cacheada(COHESION_BLOQUE_STORE, politica.fetch_cohesion_bloque,
+                                     anio_inicio, "cohesion_bloque")
 
 
 def fetch_cohesion_bloque_senado_serie(anio_inicio: int = 2023) -> list:
@@ -480,13 +522,10 @@ def fetch_cohesion_bloque_senado_serie(anio_inicio: int = 2023) -> list:
     un punto por año desde `anio_inicio`, con dias_ventana=366 para cubrir
     TODAS las actas divididas del año sin depender de la fecha de corrida.
     Indicador COMPLEMENTARIO (otra cámara), no reemplaza a cohesion_bloque.
+    Caché persistente por año, ver _serie_cohesion_cacheada.
     [[YYYY-01-01, % cohesión]]."""
-    out = []
-    for anio in range(anio_inicio, date.today().year + 1):
-        resultado = politica.fetch_cohesion_bloque_senado(anio=anio, dias_ventana=366)
-        if resultado and resultado.get("valor") is not None:
-            out.append([f"{anio}-01-01", resultado["valor"]])
-    return out
+    return _serie_cohesion_cacheada(COHESION_BLOQUE_SENADO_STORE, politica.fetch_cohesion_bloque_senado,
+                                     anio_inicio, "cohesion_bloque_senado")
 
 
 def fetch_adhesion_reformas_provincial_serie() -> list:
