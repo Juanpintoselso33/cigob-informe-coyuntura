@@ -650,9 +650,9 @@ def test_resultado_utilizable_none_no_es_utilizable():
 # orden en que aparecen en la página real) para reflejar esto con fidelidad.
 # La exclusión de 748 de la serie NO ocurre en _extraer_cifra_cepa: ocurre
 # en el filtro de fetch_cepa_movilizacion_serie() (scripts/descargar_series.py),
-# que descarta cualquier lectura cuya "metrica" no sea "conflictos
-# acumulados" -- ver test_extraer_cifra_cepa_informe_748_no_es_acumulado
-# más abajo, que documenta el discriminador real. 739 sí fue reverificado
+# que descarta cualquier lectura cuyo campo "rama" no sea "m_tot" -- ver
+# test_extraer_cifra_cepa_informe_748_no_es_acumulado más abajo, que
+# documenta el discriminador real. 739 sí fue reverificado
 # contra su página completa real y sigue devolviendo None (ninguna de las
 # 2 frases-gatillo del regex está presente en esa página).
 

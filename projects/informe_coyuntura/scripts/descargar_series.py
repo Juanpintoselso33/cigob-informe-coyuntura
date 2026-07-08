@@ -516,27 +516,25 @@ def fetch_cepa_movilizacion_serie(max_paginas: int = 40) -> list:
     40 páginas se cubren de sobra los ~4 informes de este tipo publicados
     hasta la fecha (CEPA recién empezó a publicarlos a fines de 2025 -- no
     hay nada más atrás que buscar). Reusa politica._extraer_cifra_cepa /
-    politica._fecha_informe_cepa: informes que citan la cifra bajo un ancla
-    temporal distinta (ver docstring de _extraer_cifra_cepa) devuelven None
-    y se saltean, no rompen el backfill.
-
-    Filtro adicional (hallazgo en vivo 2026-07-08, posterior a la primera
-    versión de este docstring): _extraer_cifra_cepa NO siempre devuelve None
-    para informes con ancla distinta -- el informe 748 ("2 años de Milei")
-    acumula desde ene-2024 con la frase-gatillo "desde inicios del año en
-    curso" ausente, PERO el cuerpo del informe también contiene una oración
-    con un promedio mensual ("promediando 24 casos por mes") que sí matchea
-    la rama m_mes de _extraer_cifra_cepa (esa rama es anterior a esta tarea
-    y no se modifica acá). Esa cifra es una TASA mensual sobre una ventana
-    ene24-sep25, mientras que el indicador vigente (m_tot, "acumulados
-    desde inicios del año en curso") es un CONTEO acumulado -- dos escalas
-    incompatibles (CEPA_MAX_CASOS_MES=80 vs. CEPA_MAX_CONFLICTOS_TOT=200)
-    que no deben mezclarse en la misma serie. Por eso acá, a diferencia de
+    politica._fecha_informe_cepa, pero NO se limita a saltear los informes
+    donde _extraer_cifra_cepa devuelve None (ausencia de cualquier patrón
+    conocido) -- también filtra por el campo "rama" que esa función expone
+    (hallazgo en vivo 2026-07-08): el informe 748 ("2 años de Milei") acumula
+    desde ene-2024, sin la frase-gatillo "desde inicios del año en curso" que
+    usa el indicador vigente, PERO su cuerpo también trae una oración con un
+    promedio mensual ("promediando 24 casos por mes") que sí matchea la rama
+    m_mes de _extraer_cifra_cepa (rama anterior a esta tarea, no se modifica
+    acá) -- por lo tanto NO devuelve None, devuelve {"rama": "m_mes", ...}.
+    Esa cifra es una TASA mensual sobre una ventana ene24-sep25, mientras que
+    el indicador vigente (rama m_tot, "acumulados desde inicios del año en
+    curso") es un CONTEO acumulado -- dos escalas incompatibles
+    (CEPA_MAX_CASOS_MES=80 vs. CEPA_MAX_CONFLICTOS_TOT=200) que no deben
+    mezclarse en la misma serie. Por eso acá, a diferencia de
     fetch_cepa_movilizacion() (que no discrimina entre ramas porque solo ve
     UN informe a la vez y ese informe siempre viene de m_tot en la
-    práctica), se descartan explícitamente las lecturas m_mes: solo se
-    conservan lecturas "conflictos acumulados" (m_tot), homogéneas con el
-    valor vigente publicado hoy (50.5 = 101/200*100, informe 809).
+    práctica), se descartan explícitamente las lecturas rama="m_mes": solo
+    se conservan lecturas rama="m_tot" ("conflictos acumulados"), homogéneas
+    con el valor vigente publicado hoy (50.5 = 101/200*100, informe 809).
     [[YYYY-MM-DD, índice 0-100]]."""
     try:
         from bs4 import BeautifulSoup
