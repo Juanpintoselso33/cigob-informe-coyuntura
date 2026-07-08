@@ -9,10 +9,13 @@ Indicadores:
   movilizacion_cepa         — Conflictividad social CEPA 0–100 (scrape centrocepa.com.ar, auto)
   iaf_transferencias        — Variación real YoY transferencias federales RON (Hacienda, auto)
   eficacia_legislativa      — % proyectos PE aprobados, ventana 12m (datos.hcdn.gob.ar CKAN, auto)
-  cohesion_bloque           — % cohesión del bloque LLA en Diputados (manual — votaciones CKAN congeladas en 2019)
+  cohesion_bloque           — % cohesión (Rice) del bloque LLA en Diputados (scrape votaciones.hcdn.gob.ar, auto)
+  cohesion_bloque_senado    — % cohesión (Rice) del bloque LLA en Senado (scrape senado.gob.ar, auto)
   gobernadores_alineamiento — % gobernadores alineados con política nacional (manual — sin fuente estructurada)
   veto_quorum               — % sesiones frustradas por falta de quórum (datos.hcdn.gob.ar CKAN, auto)
   comisiones_caidas         — % proyectos con dictamen que no llegan al recinto (datos.hcdn.gob.ar CKAN, auto)
+  adhesion_reformas_provincial — % provincias adheridas al RIGI (MAGyP, auto)
+  protestas_caba            — % var. eventos de protesta en CABA vs. base 2023 (ACLED, reutiliza gestion.py)
 
 Nota: ICG UTDT removido (mide confianza ciudadana, no capacidad de gobernar con actores
 políticos). Reemplazado por ratio_dnu según framework Luis Babino / reunión 12-may-2026.
@@ -27,8 +30,12 @@ import re
 import math
 import calendar
 import logging
+import time
 import requests
 import urllib3
+import gestion  # reutiliza el fetcher ACLED ya construido para protestas_caba (ADR-0017)
+import itcp
+from bs4 import BeautifulSoup
 from datetime import datetime, date, timedelta
 from pathlib import Path
 
@@ -40,6 +47,7 @@ SCRIPT_DIR     = Path(__file__).parent
 PROJECT_DIR    = SCRIPT_DIR.parent
 CACHE_PATH     = PROJECT_DIR / "output" / "cache" / "politica.json"
 MANUALES_PATH  = PROJECT_DIR / "data" / "politica" / "manuales.json"
+AJUSTES_ITCP_PATH = PROJECT_DIR / "data" / "politica" / "ajustes_itcp.json"
 VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
 VOTOMETRO_HTML = PROJECT_DIR.parent / "votometro" / "web" / "votometro.html"  # fallback local
 
@@ -50,10 +58,13 @@ INDICADORES_ESPERADOS = [
     "movilizacion_cepa",
     "iaf_transferencias",
     "cohesion_bloque",
+    "cohesion_bloque_senado",
     "eficacia_legislativa",
     "gobernadores_alineamiento",
+    "adhesion_reformas_provincial",
     "veto_quorum",
     "comisiones_caidas",
+    "protestas_caba",
 ]
 
 STALE_MANUAL_DAYS    = 45
@@ -84,6 +95,17 @@ HCDN_SESIONES_RID    = "4ac70a51-a82d-428b-966a-0a203dd0a7e3"   # sesiones plena
 HCDN_DICTAMENES_RID  = "59595a93-5a5e-4ba6-a3db-c1044e2f949e"   # dictámenes de comisión
 _RE_PE_EXP           = re.compile(r"\d+-PE-\d{4}")
 
+# HCDN Votaciones — votaciones.hcdn.gob.ar (portal de votaciones nominales)
+HCDN_VOTACIONES_BASE = "https://votaciones.hcdn.gob.ar"
+_HCDN_VOTACIONES_DELAY = 0.3  # segundos entre requests — evita el WAF F5 BIG-IP
+                              # (confirmado: Como_voto corre a diario con este patrón)
+
+# Senado — senado.gob.ar (portal de votaciones nominales, sitio distinto de HCDN)
+SENADO_BASE = "https://www.senado.gob.ar"
+
+# MAGyP — tabla de provincias adheridas al RIGI (Título VII, Ley 27.742)
+MAGYP_RIGI_URL = "https://www.magyp.gob.ar/desarrollo-foresto-industrial/provincias-adheridas.php"
+
 # IPC interanual diciembre (INDEC). Actualizar en enero de cada año.
 # 2024: 117.06% acumulado anual. 2025: 38.3% acumulado anual (estimado previo a cierre).
 IPC_ANUAL = {2024: 1.1706, 2025: 0.383}   # fallback dic-dic si la API INDEC falla
@@ -106,6 +128,40 @@ def _ipc_dicdic_indec() -> dict:
     return {y: dic[y] / dic[y - 1] - 1 for y in dic if y - 1 in dic}
 
 logging.basicConfig(level=logging.WARNING, format="%(message)s")
+
+
+# ── HCDN Votaciones session helpers ──────────────────────────────────────────────
+
+def _hcdn_votaciones_session() -> requests.Session:
+    """Sesión persistente con headers estables. El WAF del sitio devuelve 403
+    ante ráfagas o headers que varían entre requests — reusar la misma sesión
+    y no variar el UA es lo que lo evita."""
+    s = requests.Session()
+    s.headers.update(HTTP_HEADERS)
+    return s
+
+
+def _paced_get(session: requests.Session, base_url: str, path: str, **kwargs):
+    """GET con pacing fijo y retry/backoff ante 403 (hasta 3 intentos).
+    Generaliza el helper de HCDN para reusar sesión/pacing contra Senado.
+    None si se agotan los reintentos o hay un error de red."""
+    url = f"{base_url}{path}"
+    for intento in range(3):
+        time.sleep(_HCDN_VOTACIONES_DELAY)
+        try:
+            r = session.get(url, timeout=HTTP_TIMEOUT, **kwargs)
+        except requests.RequestException:
+            return None
+        if r.status_code == 200:
+            return r
+        if r.status_code == 403:
+            continue
+        return None
+    return None
+
+
+def _hcdn_votaciones_get(session: requests.Session, path: str, **kwargs):
+    return _paced_get(session, HCDN_VOTACIONES_BASE, path, **kwargs)
 
 
 # ── Cache helpers ─────────────────────────────────────────────────────────────
@@ -466,6 +522,17 @@ def fetch_cepa_movilizacion() -> dict | None:
         return None
 
 
+# ── Protestas CABA (ACLED) — reutilizado de gestión ──────────────────────────
+
+def fetch_protestas_caba() -> dict | None:
+    """Reutiliza el fetcher ACLED ya construido en gestion.py (ADR-0017) para
+    eventos de protesta en CABA. En gestión es CONTEXTO y no puntúa
+    ('premiaría menos marchas'); en política SÍ puntúa como condición
+    objetiva de gobernabilidad (nivel de conflicto social, Matus) — no como
+    juicio sobre la legitimidad de protestar."""
+    return gestion.fetch_protestas_caba()
+
+
 # ── IAF — Índice de Armonía Federal (transferencias) ─────────────────────────
 
 def fetch_iaf_transferencias() -> dict | None:
@@ -785,70 +852,366 @@ def fetch_manual(nombre: str, stale_days: int = STALE_MANUAL_DAYS) -> dict | Non
 
 # ── Score ─────────────────────────────────────────────────────────────────────
 
-def calcular_score(indicadores: dict) -> float:
-    """
-    Score 0–10: mayor = mayor tensión en capital político.
-    Cada dimensión de Matus pesa igual (1/N disponibles).
+def indice_rice(afirmativos: int, negativos: int) -> float | None:
+    """Índice de Rice de cohesión (0-100): |afirm-neg|/(afirm+neg) * 100.
+    Ausentes/abstenciones ya excluidos por el caller (no forman parte de la
+    votación dividida). None si no hubo votos afirmativos ni negativos del
+    bloque en esa acta (no aporta información de cohesión)."""
+    total = afirmativos + negativos
+    if total == 0:
+        return None
+    return round(abs(afirmativos - negativos) / total * 100.0, 2)
 
-    votometro_ventaja_lla (gap LLA−PJ en pp):
-        +15pp→0, 0→5, −15pp→10
-    ratio_dnu (DNUs / leyes, año corriente):
-        0→0, 1.0→5, 2.0+→10
-    movilizacion_cepa (índice 0–100):
-        0→0, 50→5, 100→10
-    iaf_transferencias (% variación real YoY):
-        +10%→0, 0%→2.5, −10%→5, −20%→7.5, −30%+→10
-    eficacia_legislativa (% 0–100):
-        70%→0, 35%→5, 0%→10
-    cohesion_bloque (% 0–100):
-        95%→0, 60%→5, 25%→10
-    gobernadores_alineamiento (% 0–100):
-        80%→0, 40%→5, 0%→10
-    veto_quorum (% sesiones frustradas por quórum):
-        0%→0, 15%→5, 30%+→10
-    comisiones_caidas (% proyectos con dictamen que no llegan al recinto):
-        20%→0, 40%→5, 60%+→10
-    """
-    scores = []
 
-    vot = indicadores.get("votometro_ventaja_lla", {}).get("valor")
-    if vot is not None:
-        scores.append(min(10.0, max(0.0, 5.0 - float(vot) / 3.0)))
+# Bloque propio de LLA en Diputados/Senado. Excluye DELIBERADAMENTE aliados
+# ambiguos (ej. "Fuerzas del Cielo - Espacio Liberal F.C.E.") que no son el
+# bloque propio — sumarlos infla artificialmente la cohesión medida.
+BLOQUES_LLA = {"la libertad avanza", "libertad avanza"}
 
-    dnu = indicadores.get("ratio_dnu", {}).get("valor")
-    if dnu is not None:
-        scores.append(min(10.0, max(0.0, float(dnu) * 5.0)))
 
-    cepa = indicadores.get("movilizacion_cepa", {}).get("valor")
-    if cepa is not None:
-        scores.append(min(10.0, max(0.0, float(cepa) / 10.0)))
+def es_bloque_lla(nombre_bloque: str) -> bool:
+    return nombre_bloque.strip().lower() in BLOQUES_LLA
 
-    iaf = indicadores.get("iaf_transferencias", {}).get("valor")
-    if iaf is not None:
-        var_real = float(iaf) / 100.0
-        scores.append(min(10.0, max(0.0, (0.10 - var_real) * 25.0)))
 
-    efic = indicadores.get("eficacia_legislativa", {}).get("valor")
-    if efic is not None:
-        scores.append(min(10.0, max(0.0, (70.0 - float(efic)) / 7.0)))
+_RE_REDIRECT_ACTA = re.compile(r"redirectActa\((\d+),\s*(\d+),\s*'([^']*)'\)")
+_RE_DISPLAY_NONE   = re.compile(r"display\s*:\s*none")  # el sitio real usa "display: none" (con
+                                                          # espacio) — confirmado vía snapshot de
+                                                          # Wayback Machine (ene-2026) del listado
+                                                          # real de votaciones.hcdn.gob.ar; el
+                                                          # substring "display:none" sin espacio
+                                                          # (supuesto inicial del fixture) no
+                                                          # matchea contra la marca real.
 
-    coh = indicadores.get("cohesion_bloque", {}).get("valor")
-    if coh is not None:
-        scores.append(min(10.0, max(0.0, (95.0 - float(coh)) / 7.0)))
+def _descubrir_actas(session: requests.Session, anio: int):
+    """POST a /votaciones/search por año -> [{id, slug, fecha}] de cada acta
+    nominal encontrada. Cada fila del listado trae la fecha en un
+    <span style="display: none">YYYYMMDD</span> y el link de detalle en un
+    onclick=redirectActa(id, ?, 'slug') — se emparejan por fila (no por regex
+    global sobre toda la página) para no desalinear fecha/acta.
+    Nota: en el sitio real (confirmado vía snapshot archivado) el 3er argumento
+    de redirectActa (slug) viene SIEMPRE vacío ('') — no es un bug de parseo,
+    es el dato real; no asumir slugs legibles aguas abajo.
+    None si el request en sí falló (distinto de 'sin actas ese año' = [])."""
+    try:
+        r = session.post(f"{HCDN_VOTACIONES_BASE}/votaciones/search",
+                          data={"anoSearch": str(anio)}, timeout=HTTP_TIMEOUT)
+    except requests.RequestException:
+        return None
+    if r.status_code != 200:
+        return None
+    soup = BeautifulSoup(r.text, "html.parser")
+    actas = []
+    vistos = set()
+    for fila in soup.select("tr"):
+        m = _RE_REDIRECT_ACTA.search(str(fila))
+        span_fecha = fila.find("span", style=lambda s: s and _RE_DISPLAY_NONE.search(s))
+        if not m or span_fecha is None:
+            continue
+        id_acta, _, slug = m.groups()
+        if id_acta in vistos:
+            continue
+        try:
+            fecha = datetime.strptime(span_fecha.get_text(strip=True), "%Y%m%d")
+        except ValueError:
+            continue
+        vistos.add(id_acta)
+        actas.append({"id": id_acta, "slug": slug, "fecha": fecha})
+    return actas
 
-    gob = indicadores.get("gobernadores_alineamiento", {}).get("valor")
-    if gob is not None:
-        scores.append(min(10.0, max(0.0, (80.0 - float(gob)) / 8.0)))
 
-    veto = indicadores.get("veto_quorum", {}).get("valor")
-    if veto is not None:
-        scores.append(min(10.0, max(0.0, float(veto) / 3.0)))
+def _url_acta(acta: dict) -> str:
+    """Construye la URL de detalle de una acta. En producción el slug viene
+    VACÍO en el 100% de las filas observadas (Tarea 4, HTML real archivado
+    2026-01-15) — con slug vacío la URL real es /votacion/{id} (confirmado
+    contra un snapshot real de Wayback Machine, id 5840, status 200), NO
+    /votacion//{id}. Se soporta igual el caso con slug por si la fuente
+    cambia en el futuro."""
+    if acta.get("slug"):
+        return f"/votacion/{acta['slug']}/{acta['id']}"
+    return f"/votacion/{acta['id']}"
 
-    com = indicadores.get("comisiones_caidas", {}).get("valor")
-    if com is not None:
-        scores.append(min(10.0, max(0.0, (float(com) - 20.0) / 4.0)))
 
-    return round(sum(scores) / len(scores), 1) if scores else 5.0
+def _parsear_acta(html: str) -> list[dict]:
+    """Parsea el HTML de una acta de votación nominal de Diputados ->
+    [{nombre, bloque, voto}]. Ignora filas sin las columnas esperadas.
+
+    Estructura REAL confirmada (Tarea 5, snapshot real de Wayback Machine
+    2026-01-15, acta id 5840, tabla #myTable con 257 filas = las 257 bancas
+    de la Cámara): cada fila tiene 6 <td> — foto (índice 0, sin texto),
+    DIPUTADO/nombre (1), BLOQUE (2), PROVINCIA (3), "¿CÓMO VOTÓ?"/voto (4,
+    anidado en un <span class="label ..."> dentro de <center>, no como texto
+    directo del <td>), "¿QUÉ DIJO?" (5). La fila de <thead> tiene solo <th>
+    (0 <td>) y queda afuera sola por el chequeo de longitud.
+
+    Esto reemplaza la suposición original de 3 columnas
+    (`<td>nombre</td><td class="ocultar">bloque</td><td>voto</td>`) que
+    JAMÁS fue observada en vivo para Diputados (era inferencia por analogía
+    con Senado, donde sí se había confirmado esa estructura de 3 columnas, y
+    con el scraper de terceros Como_voto) — el HTML real de Diputados no
+    tiene ninguna clase "ocultar" (0 ocurrencias en la página real).
+    get_text(strip=True) extrae igual el voto aunque esté anidado en <span>.
+
+    parser="html.parser" (stdlib): lxml NO está en requirements.txt y
+    rompería en CI (confirmado en la Tarea 4; mismo parser que ya usa
+    fetch_cepa_movilizacion)."""
+    soup = BeautifulSoup(html, "html.parser")
+    filas = []
+    for tr in soup.select("table tr"):
+        celdas = tr.find_all("td")
+        if len(celdas) < 5:
+            continue
+        nombre = celdas[1].get_text(strip=True)
+        bloque = celdas[2].get_text(strip=True)
+        voto = celdas[4].get_text(strip=True).upper()
+        if not nombre or not bloque:
+            continue
+        filas.append({"nombre": nombre, "bloque": bloque, "voto": voto})
+    return filas
+
+
+def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> dict | None:
+    """Cohesión del bloque LLA en Diputados: índice de Rice promedio sobre
+    las actas nominales divididas de los últimos `dias_ventana` días.
+    `anio`: para backfill (descargar_series.py itera años pasados).
+    Devuelve None SOLO si el scraping en sí falló (sin llegar al sitio) —
+    'sin votos en la ventana' (receso legislativo) es un resultado válido con
+    valor=None pero corrida_exitosa_en seteado, para que el guard de frescura
+    (Tarea 7) no lo confunda con un scraper roto.
+    La ventana de recencia se ancla a HOY para el año en curso, y al 31 de
+    diciembre de `anio` para años pasados (backfill) — así `dias_ventana`
+    mide 'actividad dentro de ese año', no 'actividad reciente respecto de
+    la fecha de corrida real'."""
+    anio = anio or datetime.now().year
+    session = _hcdn_votaciones_session()
+    actas = _descubrir_actas(session, anio)
+    if actas is None:
+        return None
+
+    referencia = datetime.now() if anio == datetime.now().year else datetime(anio, 12, 31)
+    limite = referencia - timedelta(days=dias_ventana)
+    indices = []
+    fecha_max = None
+    for acta in actas:
+        if acta["fecha"] < limite:
+            continue
+        r = _hcdn_votaciones_get(session, _url_acta(acta))
+        if r is None:
+            continue
+        filas = _parsear_acta(r.text)
+        afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
+        neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
+        rice = indice_rice(afirm, neg)
+        if rice is None:
+            continue
+        indices.append(rice)
+        fecha_max = acta["fecha"] if fecha_max is None else max(fecha_max, acta["fecha"])
+
+    return {
+        "valor": round(sum(indices) / len(indices), 1) if indices else None,
+        "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
+        "fuente": "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+        "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
+        "n_actas": len(indices),
+        "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+        "desactualizado": False,
+    }
+
+
+_RE_DETALLE_ACTA_SENADO = re.compile(r"/votaciones/detalleActa/(\d+)")
+
+
+def _descubrir_actas_senado(session: requests.Session, anio: int):
+    """GET a /votaciones/actas (listado con fecha en <span style="display:none">
+    YYYYMMDD</span> y link <a href="/votaciones/detalleActa/{id}">) ->
+    [{id, fecha}] del año dado. Estructura confirmada en vivo (Senado, HTML
+    server-side, sin headless browser). parser="html.parser": lxml no está en
+    requirements.txt (Tarea 4 del plan de cohesion_bloque). Reusa
+    _RE_DISPLAY_NONE (mismo plan, Tarea 4) en vez de un match exacto de
+    "display:none" — la Tarea 4 confirmó que el HTML real de HCDN usa
+    "display: none" CON espacio; dado que Senado es la misma familia de sitios
+    de gobierno, no asumir que acá sí será sin espacio sin verificarlo en vivo
+    (ver Step de verificación más abajo)."""
+    r = _paced_get(session, SENADO_BASE, "/votaciones/actas")
+    if r is None:
+        return None
+    soup = BeautifulSoup(r.text, "html.parser")
+    actas = []
+    vistos = set()
+    for fila in soup.select("tr"):
+        link = fila.find("a", href=_RE_DETALLE_ACTA_SENADO)
+        span_fecha = fila.find("span", style=lambda s: s and _RE_DISPLAY_NONE.search(s))
+        if link is None or span_fecha is None:
+            continue
+        m = _RE_DETALLE_ACTA_SENADO.search(link["href"])
+        if not m:
+            continue
+        id_acta = m.group(1)
+        try:
+            fecha = datetime.strptime(span_fecha.get_text(strip=True), "%Y%m%d")
+        except ValueError:
+            continue
+        if fecha.year != anio or id_acta in vistos:
+            continue
+        vistos.add(id_acta)
+        actas.append({"id": id_acta, "fecha": fecha})
+    return actas
+
+
+def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90) -> dict | None:
+    """Cohesión del bloque LLA en el Senado — mismo índice de Rice que
+    fetch_cohesion_bloque, indicador COMPLEMENTARIO (otra cámara, otra
+    composición de bloque): nunca reemplaza al de Diputados.
+
+    La ventana de recencia se ancla a HOY para el año en curso, y al 31 de
+    diciembre de `anio` para años pasados (backfill) — mismo fix aplicado en
+    fetch_cohesion_bloque (Tarea 6, cross-fix del plan de Diputados): anclar
+    siempre a datetime.now() hacía el backfill de años pasados estructuralmente
+    imposible (hallazgo de revisión de esta tarea, mismo bug reintroducido por
+    el brief)."""
+    anio = anio or datetime.now().year
+    session = _hcdn_votaciones_session()
+    actas = _descubrir_actas_senado(session, anio)
+    if actas is None:
+        return None
+
+    referencia = datetime.now() if anio == datetime.now().year else datetime(anio, 12, 31)
+    limite = referencia - timedelta(days=dias_ventana)
+    indices = []
+    fecha_max = None
+    for acta in actas:
+        if acta["fecha"] < limite:
+            continue
+        r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
+        if r is None:
+            continue
+        filas = _parsear_acta(r.text)
+        afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
+        neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
+        rice = indice_rice(afirm, neg)
+        if rice is None:
+            continue
+        indices.append(rice)
+        fecha_max = acta["fecha"] if fecha_max is None else max(fecha_max, acta["fecha"])
+
+    return {
+        "valor": round(sum(indices) / len(indices), 1) if indices else None,
+        "unidad": "% cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días",
+        "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+        "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
+        "n_actas": len(indices),
+        "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
+        "desactualizado": False,
+    }
+
+
+# ── MAGyP — adhesión provincial al RIGI ──────────────────────────────────────
+
+def fetch_adhesion_reformas_provincial() -> dict | None:
+    """% de provincias (sobre 24) adheridas formalmente al RIGI (Título VII,
+    Ley 27.742) — tabla MAGyP. Mide adhesión FISCAL a un régimen puntual, NO
+    alineamiento político general — no reemplaza a gobernadores_alineamiento.
+    parser="html.parser" (stdlib, lxml no está en requirements.txt — ver
+    Tarea 4 del plan de cohesion_bloque): el sitio fuente tiene un <tr> vacío
+    malformado que con html.parser produce una fila SANTA CRUZ duplicada
+    (confirmado en vivo en la investigación previa) — no requiere lxml para
+    resolverlo, `provincias` ya es un `set()` más abajo, así que agregar el
+    mismo nombre dos veces es un no-op y el conteo final no se infla."""
+    try:
+        r = requests.get(MAGYP_RIGI_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    except requests.RequestException:
+        return None
+    if r.status_code != 200:
+        return None
+    soup = BeautifulSoup(r.text, "html.parser")
+    provincias = set()
+    for fila in soup.select("table tr"):
+        celdas = fila.find_all("td")
+        if len(celdas) < 2:
+            continue
+        provincia = celdas[0].get_text(strip=True)
+        if provincia:
+            provincias.add(provincia.upper())
+    if not provincias:
+        return None
+    return {
+        "valor": round(len(provincias) / 24.0 * 100.0, 1),
+        "unidad": "% de provincias (sobre 24) adheridas al RIGI",
+        "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+        "fecha_dato": datetime.now().strftime("%Y-%m-%d"),
+        "n_provincias": len(provincias),
+        "desactualizado": False,
+    }
+
+
+UMBRAL_FRESCURA_COHESION = 10  # días SIN una corrida exitosa (no sin votos nuevos)
+
+
+def _cohesion_desactualizada(cache_previo: dict | None, corrida_actual: dict | None,
+                              umbral_dias: int = UMBRAL_FRESCURA_COHESION) -> bool:
+    """True solo si no hubo NINGUNA corrida que haya llegado al sitio en los
+    últimos `umbral_dias` días — nunca por ausencia de votos nuevos (el receso
+    legislativo es normal y no debe marcarse como stale)."""
+    if corrida_actual is not None:
+        return False
+    if cache_previo is None or not cache_previo.get("corrida_exitosa_en"):
+        return True
+    ultima = datetime.strptime(cache_previo["corrida_exitosa_en"], "%Y-%m-%d")
+    return (datetime.now() - ultima).days > umbral_dias
+
+
+def _es_cohesion_legado(anterior: dict) -> bool:
+    """True si `anterior` (el cache previo de cohesion_bloque) tiene la forma
+    VIEJA del placeholder manual (pre-scraper) — {"valor": 78, "estado":
+    "placeholder", "unidad": "% votos en línea con la posición oficial del
+    bloque LLA", ...} — en vez de la forma NUEVA que devuelve
+    fetch_cohesion_bloque (índice de Rice real).
+
+    El discriminador es la AUSENCIA de "n_actas": es una clave que solo la
+    corrida del scraper nuevo pone (junto con "corrida_exitosa_en"); el
+    placeholder manual nunca la tuvo. Ambas formas son números 0-100 con
+    significados totalmente distintos (78 = "% de diputados alineados con la
+    posición oficial" vs. índice de Rice real) — sin este chequeo, un cache
+    viejo se arrastraría para siempre como si fuera un dato de Rice genuino
+    (hallazgo de revisión externa, ver commit)."""
+    return "n_actas" not in anterior
+
+
+def _valor_itcp(nombre: str, entry: dict):
+    """Valor a puntuar en el ITCP para un indicador ya fresco/cacheado.
+
+    protestas_caba es la ÚNICA excepción: puntúa sobre "var_vs_2023" (% de
+    variación de eventos ACLED en CABA contra la base 2023), NO sobre "valor"
+    (el conteo crudo de eventos acumulado 12 meses, que gestion.fetch_protestas_caba
+    devuelve y que puede estar en cientos — ver docstring de itcp.BANDAS_ITCP).
+    Cualquier otro indicador puntúa directo sobre su propio "valor"."""
+    if nombre == "protestas_caba":
+        return entry.get("var_vs_2023")
+    return entry.get("valor")
+
+
+def _anotar_indicadores_itcp(indicadores: dict, resultado: dict | None) -> None:
+    """Marca cada indicador con su rol en el ITCP: los del índice llevan
+    puntaje, dimensión y peso efectivo; el resto queda como contexto (mismo
+    patrón que gestion.anotar_indicadores para el ITCG). A diferencia del
+    ITCG, el ITCP no tiene indicadores de contexto declarados todavía (los 12
+    de itcp.BANDAS_ITCP puntúan todos) — `en_indice` cae a False solo si el
+    indicador no está ni en el resultado ni en la tabla de bandas."""
+    por_indicador = {}
+    if resultado:
+        for dkey, dim in resultado["dimensiones"].items():
+            for ikey, info in dim["indicadores"].items():
+                por_indicador[ikey] = {
+                    "en_indice": True,
+                    "dimension": dkey,
+                    "puntaje_itcp": info["puntaje_aplicado"],
+                    "puntaje_banda": info["puntaje_banda"],
+                    "peso_efectivo": info["peso_efectivo"],
+                }
+    for nombre, ind in indicadores.items():
+        if nombre in por_indicador:
+            ind.update(por_indicador[nombre])
+        else:
+            ind["en_indice"] = nombre in itcp.BANDAS_ITCP  # del índice pero sin dato
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -861,15 +1224,16 @@ def main() -> None:
     frescos_count = 0
 
     colectores = [
-        ("votometro_ventaja_lla",       fetch_votometro),
-        ("ratio_dnu",                   fetch_ratio_dnu),
-        ("movilizacion_cepa",           fetch_cepa_movilizacion),
-        ("iaf_transferencias",          fetch_iaf_transferencias),
-        ("eficacia_legislativa",        fetch_eficacia_legislativa),
-        ("cohesion_bloque",             lambda: fetch_manual("cohesion_bloque")),
-        ("gobernadores_alineamiento",   lambda: fetch_manual("gobernadores_alineamiento")),
-        ("veto_quorum",                 fetch_veto_quorum),
-        ("comisiones_caidas",           fetch_comisiones_caidas),
+        ("votometro_ventaja_lla",         fetch_votometro),
+        ("ratio_dnu",                     fetch_ratio_dnu),
+        ("movilizacion_cepa",             fetch_cepa_movilizacion),
+        ("iaf_transferencias",            fetch_iaf_transferencias),
+        ("eficacia_legislativa",          fetch_eficacia_legislativa),
+        ("gobernadores_alineamiento",     lambda: fetch_manual("gobernadores_alineamiento")),
+        ("veto_quorum",                   fetch_veto_quorum),
+        ("comisiones_caidas",             fetch_comisiones_caidas),
+        ("adhesion_reformas_provincial",  fetch_adhesion_reformas_provincial),
+        ("protestas_caba",                fetch_protestas_caba),
     ]
 
     for nombre, fetcher in colectores:
@@ -880,11 +1244,65 @@ def main() -> None:
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
 
-    score   = calcular_score(frescos)
+    resultado_cohesion = fetch_cohesion_bloque()
+    anterior_cohesion = indicadores_anteriores.get("cohesion_bloque")
+    if anterior_cohesion is not None and _es_cohesion_legado(anterior_cohesion):
+        # Cache heredado del viejo placeholder manual (78, "% votos alineados
+        # con la posición oficial") — NO es un dato de Rice genuino, tratarlo
+        # como ausente para no corromper el ITCP con un valor de significado
+        # distinto (hallazgo de revisión externa).
+        anterior_cohesion = None
+    if resultado_cohesion is not None and resultado_cohesion.get("valor") is not None:
+        frescos["cohesion_bloque"] = resultado_cohesion
+        frescos_count += 1
+    elif resultado_cohesion is not None and anterior_cohesion is not None:
+        # corrida exitosa (llegó al sitio) pero sin votos nuevos en la ventana —
+        # se reusa el último valor conocido, NO se marca desactualizado por eso
+        frescos["cohesion_bloque"] = {
+            **anterior_cohesion,
+            "desactualizado": False,
+            "corrida_exitosa_en": resultado_cohesion["corrida_exitosa_en"],
+        }
+        frescos_count += 1
+    elif anterior_cohesion is not None:
+        frescos["cohesion_bloque"] = {
+            **anterior_cohesion,
+            "desactualizado": _cohesion_desactualizada(anterior_cohesion, resultado_cohesion),
+        }
+
+    resultado_cohesion_senado = fetch_cohesion_bloque_senado()
+    anterior_cohesion_senado = indicadores_anteriores.get("cohesion_bloque_senado")
+    if resultado_cohesion_senado is not None and resultado_cohesion_senado.get("valor") is not None:
+        frescos["cohesion_bloque_senado"] = resultado_cohesion_senado
+        frescos_count += 1
+    elif resultado_cohesion_senado is not None and anterior_cohesion_senado is not None:
+        frescos["cohesion_bloque_senado"] = {
+            **anterior_cohesion_senado,
+            "desactualizado": False,
+            "corrida_exitosa_en": resultado_cohesion_senado["corrida_exitosa_en"],
+        }
+        frescos_count += 1
+    elif anterior_cohesion_senado is not None:
+        frescos["cohesion_bloque_senado"] = {
+            **anterior_cohesion_senado,
+            "desactualizado": _cohesion_desactualizada(anterior_cohesion_senado, resultado_cohesion_senado),
+        }
+
+    ajustes = itcp.cargar_ajustes(AJUSTES_ITCP_PATH, datetime.now().strftime("%Y-%m"))
+    valores = {}
+    for nombre, entry in frescos.items():
+        valor = _valor_itcp(nombre, entry)
+        if valor is not None:
+            valores[nombre] = valor
+    resultado_itcp = itcp.calcular_itcp(valores, ajustes)
+    score = itcp.tension_de_itcp(resultado_itcp["valor"]) if resultado_itcp else 5.0
+    _anotar_indicadores_itcp(frescos, resultado_itcp)
+
     payload = {
         "cinturon":     CINTURON,
         "generated_at": datetime.now().isoformat(),
         "score":        score,
+        "itcp":         resultado_itcp,
         "indicadores":  frescos,
     }
 

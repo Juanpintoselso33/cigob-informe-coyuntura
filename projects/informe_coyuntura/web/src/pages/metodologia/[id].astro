@@ -139,7 +139,30 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
   </header>
   <main class="cg-main">
 
-    {esIndicador && (
+    {esIndicador && !ind && !serie.length && (() => {
+      // Sin dato vigente Y sin serie histórica: no es una ausencia temporal
+      // legítima (como cohesion_bloque hoy, ADR-0037) sino una ficha cuyo
+      // `id` nunca coincidió con ningún indicador real — probable error de
+      // tipeo. Falla el build en vez de publicar una ficha fantasma en
+      // silencio (antes de este guard, CUALQUIER `ind` undefined rompía el
+      // build igual, así que esto preserva esa señal para el caso realmente
+      // anómalo).
+      throw new Error(
+        `Ficha "${f.id}": no hay dato vigente NI serie histórica — ` +
+        `¿el id no coincide con ningún indicador real de informe.json/series.json?`
+      );
+    })()}
+
+    {esIndicador && !ind && !!serie.length && (
+      <section class="cg-section">
+        <div class="cg-ficha-callout">
+          <strong>Sin dato vigente.</strong> Este indicador no tiene un valor
+          publicado en el informe actual — {desc!.que} {fi.faltantes}
+        </div>
+      </section>
+    )}
+
+    {esIndicador && ind && (
       <Fragment>
         <!-- ── Identificación (ficha ODS 0-3: qué es, unidad, fuente) ── -->
         <section class="cg-section">

@@ -1,6 +1,6 @@
 ---
 // Diccionario de indicadores (/metodologia): el índice de las fichas
-// metodológicas. Lista los tres índices paramétricos y todos los indicadores
+// metodológicas. Lista los índices paramétricos y todos los indicadores
 // por cinturón; los que ya tienen ficha completa linkean a ella.
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
@@ -64,7 +64,7 @@ const totalFichas = Object.keys(FICHAS).length;
     <section class="cg-section">
       <div class="cg-section-head">
         <p class="cg-eyebrow">Índices paramétricos</p>
-        <h2 class="cg-h2">Los tres índices del informe</h2>
+        <h2 class="cg-h2">Los índices del informe</h2>
       </div>
       <div class="cg-dicc-list">
         {indices.map(({ meta, indice }) => {

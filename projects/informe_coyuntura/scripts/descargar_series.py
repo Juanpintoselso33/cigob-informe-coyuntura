@@ -460,6 +460,47 @@ def fetch_comisiones_serie() -> list:
     return out
 
 
+def fetch_cohesion_bloque_serie(anio_inicio: int = 2023) -> list:
+    """Serie ANUAL de cohesión del bloque LLA en Diputados (índice de Rice
+    promedio): un punto por año desde `anio_inicio`, con dias_ventana=366
+    para cubrir TODAS las actas divididas del año sin depender de la fecha de
+    corrida — mismo criterio que el indicador cohesion_bloque (Tarea 6).
+    [[YYYY-01-01, % cohesión]]."""
+    out = []
+    for anio in range(anio_inicio, date.today().year + 1):
+        resultado = politica.fetch_cohesion_bloque(anio=anio, dias_ventana=366)
+        if resultado and resultado.get("valor") is not None:
+            out.append([f"{anio}-01-01", resultado["valor"]])
+    return out
+
+
+def fetch_cohesion_bloque_senado_serie(anio_inicio: int = 2023) -> list:
+    """Serie ANUAL de cohesión del bloque LLA en el Senado (índice de Rice
+    promedio): mismo patrón que fetch_cohesion_bloque_serie (Diputados) —
+    un punto por año desde `anio_inicio`, con dias_ventana=366 para cubrir
+    TODAS las actas divididas del año sin depender de la fecha de corrida.
+    Indicador COMPLEMENTARIO (otra cámara), no reemplaza a cohesion_bloque.
+    [[YYYY-01-01, % cohesión]]."""
+    out = []
+    for anio in range(anio_inicio, date.today().year + 1):
+        resultado = politica.fetch_cohesion_bloque_senado(anio=anio, dias_ventana=366)
+        if resultado and resultado.get("valor") is not None:
+            out.append([f"{anio}-01-01", resultado["valor"]])
+    return out
+
+
+def fetch_adhesion_reformas_provincial_serie() -> list:
+    """adhesion_reformas_provincial es un STOCK: la adhesión al RIGI es un
+    evento único e irreversible por provincia, no una magnitud que fluctúe
+    mes a mes — un solo punto con el valor actual, no un backfill año por
+    año (no hay fuente con la fecha en la que cada provincia adhirió, así
+    que no hay forma de reconstruir el pasado). [[YYYY-01-01, % provincias]]."""
+    resultado = politica.fetch_adhesion_reformas_provincial()
+    if not resultado or resultado.get("valor") is None:
+        return []
+    return [[f"{date.today().year}-01-01", resultado["valor"]]]
+
+
 POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
@@ -467,6 +508,20 @@ POLITICA_DERIVADAS = [
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_eficacia_serie),
     ("veto_quorum", "% sesiones fracasadas (por período)", "datos.hcdn.gob.ar CKAN", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_comisiones_serie),
+    ("cohesion_bloque", "% cohesión (índice de Rice, anual)",
+     "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+     fetch_cohesion_bloque_serie),
+    ("cohesion_bloque_senado", "% cohesión (índice de Rice, Senado, anual)",
+     "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+     fetch_cohesion_bloque_senado_serie),
+    ("adhesion_reformas_provincial", "% de provincias (sobre 24) adheridas al RIGI",
+     "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
+     fetch_adhesion_reformas_provincial_serie),
+    # protestas_caba NO se registra acá: ya está en GESTION_DERIVADAS
+    # (fetch_protestas_serie) y build_series() en publicar.py fusiona TODOS
+    # los CSV de output/series/ en un único dict keyed por indicador — la
+    # clave "protestas_caba" ya queda disponible para el ITCP de política sin
+    # duplicar la descarga (~8 MB de ACLED) ni la lógica de scraping.
 ]
 
 VIDA_INDEC = [
