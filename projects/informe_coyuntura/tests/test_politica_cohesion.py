@@ -727,3 +727,28 @@ def test_fecha_informe_cepa_extrae_datepublished():
 def test_fecha_informe_cepa_fallback_a_hoy_si_no_hay_meta():
     from datetime import date
     assert politica._fecha_informe_cepa("<html>sin meta tag</html>") == str(date.today())
+
+
+# ── fetch_cepa_movilizacion: guard de rama en el fetch vigente ──────────────
+# Hallazgo de la revisión final (2026-07-08): fetch_cepa_movilizacion_serie()
+# ya filtra por rama=="m_tot", pero el fetch del indicador VIGENTE no lo
+# hacía -- publicaba lo que sea que matcheara primero. Regresión directa:
+# si el informe más reciente listado es rama=="m_mes" (tasa mensual, escala
+# 0-80), no debe publicarse contra las bandas calibradas para m_tot
+# (conteo acumulado, escala 0-200) -- degrada a None (cache), igual que
+# "sin patrón encontrado".
+
+def test_fetch_cepa_movilizacion_rechaza_informe_mas_reciente_si_no_es_m_tot(monkeypatch):
+    listado_html = '<a href="/documentos/informes/999-conflictividad-ejemplo">ver</a>'
+    informe_html = (
+        '<meta property="datePublished" content="2026-07-01T00:00:00-03:00">'
+        "Se registró un promedio de 30 casos por mes en el último trimestre."
+    )
+
+    def fake_get(url, headers=None, timeout=None):
+        if "documentos/informes/999" in url:
+            return MagicMock(status_code=200, text=informe_html)
+        return MagicMock(status_code=200, text=listado_html)
+
+    monkeypatch.setattr(politica.requests, "get", fake_get)
+    assert politica.fetch_cepa_movilizacion() is None

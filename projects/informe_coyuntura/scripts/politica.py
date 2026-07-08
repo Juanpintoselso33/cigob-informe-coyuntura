@@ -568,6 +568,19 @@ def fetch_cepa_movilizacion() -> dict | None:
         cifra_info = _extraer_cifra_cepa(r2.text)
         if cifra_info is None:
             raise ValueError(f"No se encontró patrón de conflictividad en {informe_url}")
+        if cifra_info["rama"] != "m_tot":
+            # Hallazgo de revisión final (2026-07-08): el informe más reciente
+            # puede matchear la rama m_mes (tasa mensual, escala 0-80) en vez de
+            # m_tot (conteo acumulado "desde inicios del año", escala 0-200) --
+            # ver fetch_cepa_movilizacion_serie() para el caso real (informe
+            # 748). Si eso pasara acá, BANDAS_ITCP["movilizacion_cepa"] (0-200)
+            # puntuaría mal una tasa mensual. Se trata igual que "sin patrón":
+            # degrada a cache en vez de publicar un valor en la escala
+            # equivocada.
+            raise ValueError(
+                f"informe más reciente ({informe_url}) es rama={cifra_info['rama']!r}, "
+                "no comparable con la escala m_tot ya publicada"
+            )
 
         return {
             **cifra_info,
