@@ -42,11 +42,14 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 import itcg
 import itcm
+import itcp
 import itvc
 
 RIESGO_PAIS_URL = "https://api.argentinadatos.com/v1/finanzas/indices/riesgo-pais"
 MERVAL_YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5EMERV"
 CCL_URL = "https://api.argentinadatos.com/v1/cotizaciones/dolares/contadoconliqui"
+EPU_LATAM_URL = ("https://www.bde.es/f/webbe/SES/AnalisisEconomico/AnalisisEconomico/"
+                 "America_latina/Publicaciones/EPU_LATAM.xlsx")
 
 ROOT = Path(__file__).resolve().parents[1]
 SERIES = ROOT / "web" / "src" / "data" / "series.json"
@@ -214,6 +217,70 @@ def construir_serie_itcg() -> dict:
     return out
 
 
+ITCP_SERIES = [
+    "votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
+    "comisiones_caidas", "iaf_transferencias", "gobernadores_alineamiento",
+    "adhesion_reformas_provincial", "cohesion_bloque", "cohesion_bloque_senado",
+    "movilizacion_cepa",
+]
+
+
+def _protestas_caba_var_vs_2023(vals: dict) -> dict:
+    """{ym: % var. de eventos ACLED en CABA} — MISMA transformación que usa el
+    indicador vivo (gestion.fetch_protestas_caba): acumulado de los 12 meses
+    que terminan en `ym` contra la suma FIJA de los eventos de todo el año
+    2023 (no un promedio móvil: protestas_caba puntúa en el ITCP sobre
+    "var_vs_2023", nunca sobre el conteo crudo — ver itcp.py)."""
+    base_2023 = sum(v for ym, v in vals.items() if ym.startswith("2023"))
+    if not base_2023:
+        return {}
+    yms = sorted(vals)
+    out = {}
+    for i in range(11, len(yms)):
+        win = yms[i - 11:i + 1]
+        a0, m0 = int(win[0][:4]), int(win[0][5:7])
+        af, mf = int(win[-1][:4]), int(win[-1][5:7])
+        if (af * 12 + mf) - (a0 * 12 + m0) == 11:
+            ult12 = sum(vals[k] for k in win)
+            out[win[-1]] = round((ult12 / base_2023 - 1.0) * 100.0, 1)
+    return out
+
+
+def construir_serie_itcp() -> dict:
+    """Serie mensual del ITCP reconstruida desde las series de componentes
+    (mismo motor, puntaje interpolado, sin overrides del analista) — bastante
+    más ruidosa que la de ITCM/ITCG porque la cobertura histórica real de
+    política es dispareja:
+    - Con historia mensual sólida desde dic-2023: votometro_ventaja_lla,
+      eficacia_legislativa, comisiones_caidas.
+    - protestas_caba entra con la MISMA transformación "var_vs_2023" del
+      indicador vivo (acumulado 12m / total 2023), no el conteo crudo.
+    - ratio_dnu y veto_quorum llegan por período/año (pocos puntos, no un
+      valor por mes) y iaf_transferencias es un dato anual (dic-dic): solo
+      "prenden" en los meses exactos en que hay dato — el resto del tiempo el
+      motor renormaliza sin ellos, igual que ITCM/ITCG con sus faltantes.
+    - gobernadores_alineamiento, adhesion_reformas_provincial,
+      cohesion_bloque y cohesion_bloque_senado recién tienen 1-2 puntos
+      (automatizados/scrapeados por primera vez esta sesión — cohesion_bloque
+      además bloqueado, ADR-0037): prácticamente no aportan a la
+      reconstrucción histórica, solo a los últimos 1-2 meses. Los pesos de
+      las dimensiones "alianzas_territoriales" y "cohesión interna" quedan
+      renormalizados sobre lo poco disponible durante casi toda la serie."""
+    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    m = lambda k: _mensual(series.get(k) or [])
+    directos = {k: m(k) for k in ITCP_SERIES}
+    protestas_var = _protestas_caba_var_vs_2023(m("protestas_caba"))
+    ult = max([max(v) for v in directos.values() if v] + [max(protestas_var, default="")])
+    out = {}
+    for ym in _meses("2023-12", ult):
+        valores = {k: v.get(ym) for k, v in directos.items()}
+        valores["protestas_caba"] = protestas_var.get(ym)
+        r = itcp.calcular_itcp(valores)
+        if r:
+            out[ym] = r["valor"]
+    return out
+
+
 def fetch_merval_usd_mensual() -> dict:
     """{YYYY-MM: Merval en USD} — cierre mensual del índice Merval (Yahoo
     Finance, ^MERV) sobre el CCL promedio del mes (ArgentinaDatos). Es el par
@@ -247,6 +314,31 @@ def fetch_riesgo_pais_mensual() -> dict:
         if p.get("valor") and p["fecha"] >= "2023-11":
             por_mes.setdefault(p["fecha"][:7], []).append(float(p["valor"]))
     return {ym: round(sum(v) / len(v), 0) for ym, v in por_mes.items()}
+
+
+def fetch_epu_argentina_mensual() -> dict:
+    """Promedio mensual del EPU (Economic Policy Uncertainty) de Argentina,
+    columna EPU_ARG_local (basado en diarios locales) de la hoja data_LATAM
+    del dataset EPU_LATAM del Banco de España + SECMCA (misma familia
+    metodológica de minería de texto que Baker/Bloom/Davis, no un precio de
+    mercado): es el par externo del ITCP. Correlación NEGATIVA esperada — más
+    capital político (menos tensión del cinturón), menos incertidumbre de
+    política percibida en la prensa."""
+    import io as _io
+    import openpyxl
+    r = requests.get(EPU_LATAM_URL, headers={"User-Agent": "Mozilla/5.0"}, timeout=60)
+    r.raise_for_status()
+    wb = openpyxl.load_workbook(_io.BytesIO(r.content), data_only=True)
+    ws = wb["data_LATAM"]
+    filas = ws.iter_rows(values_only=True)
+    encabezado = next(filas)
+    col = encabezado.index("EPU_ARG_local")
+    out = {}
+    for fila in filas:
+        fecha, valor = fila[0], fila[col]
+        if fecha and valor is not None:
+            out[fecha.strftime("%Y-%m")] = round(float(valor), 1)
+    return out
 
 
 def _pearson(a: dict, b: dict) -> tuple:
@@ -354,6 +446,29 @@ def main():
             r, n = _pearson(a, b)
             resultados["correlaciones_itcg"][nombre] = {"r": r, "n": n}
             print(f"  {nombre}: r = {r}  (n = {n})")
+
+    # ── ITCP vs EPU Argentina (incertidumbre de política; negativa esperada) ──
+    serie_itcp = construir_serie_itcp()
+    print(f"\nserie ITCP reconstruida: {len(serie_itcp)} meses "
+          f"({min(serie_itcp)} → {max(serie_itcp)}) · último: {serie_itcp[max(serie_itcp)]}")
+    resultados["serie_itcp"] = serie_itcp
+    try:
+        epu = fetch_epu_argentina_mensual()
+        resultados["epu_argentina_mensual"] = epu
+        pares_p = {
+            "niveles (ITCP vs EPU Argentina)": (serie_itcp, epu),
+            "primeras diferencias (ITCP vs EPU)": (_difs(serie_itcp), _difs(epu)),
+            "ITCP adelantado 1 mes vs EPU": (_lag(serie_itcp, 1), epu),
+            "EPU adelantado 1 mes vs ITCP": (serie_itcp, _lag(epu, 1)),
+        }
+        resultados["correlaciones_itcp"] = {}
+        print("correlaciones ITCP (Pearson, negativa = válida):")
+        for nombre, (a, b) in pares_p.items():
+            r, n = _pearson(a, b)
+            resultados["correlaciones_itcp"][nombre] = {"r": r, "n": n}
+            print(f"  {nombre}: r = {r}  (n = {n})")
+    except Exception as e:
+        print(f"[WARN] EPU Argentina no disponible: {e}")
 
     SALIDA.write_text(json.dumps(resultados, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n[OK] {SALIDA}")

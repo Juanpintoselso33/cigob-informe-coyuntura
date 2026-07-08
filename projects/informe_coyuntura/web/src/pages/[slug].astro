@@ -78,21 +78,25 @@ const domDelta = rob?.dominante && indice
   ? Math.round((rob.dominante.indice_sin - indice.data.valor) * 10) / 10 : null;
 const robAmplitud = rob ? Math.round((rob.p95 - rob.p05) * 10) / 10 : null;
 
-// Validación externa (solo vida): co-movimiento del ITVC (recalculado SIN su
-// componente ICC, para no ser circular) contra el ICC UTDT. Ambas series se
-// rebasean a 100 en el primer mes común para dibujarlas en una misma escala.
+// Validación externa (una por cinturón con paramétrica): co-movimiento del
+// índice reconstruido mes a mes contra su contraste externo propio (ITVC
+// recalculado SIN su componente ICC, para no ser circular, contra el ICC
+// UTDT; ITCM/ITCG/ITCP contra su propio par de mercado o de prensa). Ambas
+// series se rebasean/normalizan al período común para dibujarlas en una
+// misma escala.
 const val = indice?.data.validacion ?? null;
-// Matriz de validación cruzada (global a las tres paramétricas con contraste
-// externo — ITCM/ITCG/ITVC): se muestra solo en esos cinturones, con la fila
-// del índice propio señalada. Política (ITCP) todavía no tiene contraste
-// externo declarado (sin serie histórica propia — decisión editorial
-// separada), así que no debe filtrar esta matriz ajena a su página.
+// Matriz de validación cruzada (las cuatro paramétricas con contraste
+// externo — ITCM/ITCG/ITVC/ITCP): se muestra solo en esos cinturones, con la
+// fila del índice propio señalada. El filtro es genérico (busca la sigla del
+// cinturón actual entre las filas ya calculadas), así que un cinturón sin
+// validación propia (n < 12 meses de solape) queda afuera automáticamente
+// sin necesidad de una excepción explícita por nombre.
 const cruzRaw = indice ? ((informe as any).validacion_cruzada ?? null) : null;
 const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice!.sigla)
   ? cruzRaw : null;
 // etiquetas cortas de las anclas externas para la matriz en mobile
 const CRUZ_CORTAS: Record<string, string> = {
-  riesgo: "Riesgo país", merval: "Merval USD", icc: "ICC",
+  riesgo: "Riesgo país", merval: "Merval USD", icc: "ICC", epu: "EPU Argentina",
 };
 let valSvg: {
   W: number; H: number; base: number; top: number;

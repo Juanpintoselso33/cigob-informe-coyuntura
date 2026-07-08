@@ -573,7 +573,7 @@
             ],
             [
               "2025-06",
-              66.8,
+              66.9,
               688.0
             ],
             [
@@ -1050,6 +1050,170 @@
           "hist_min": 61.23,
           "hist_max": 73.18,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
+        },
+        "validacion": {
+          "r_niveles": -0.382,
+          "r_diferencias": -0.224,
+          "n": 30,
+          "pares": [
+            [
+              "2023-12",
+              31.6,
+              126.8
+            ],
+            [
+              "2024-01",
+              54.7,
+              85.2
+            ],
+            [
+              "2024-02",
+              40.7,
+              84.7
+            ],
+            [
+              "2024-03",
+              39.5,
+              78.5
+            ],
+            [
+              "2024-04",
+              40.2,
+              90.7
+            ],
+            [
+              "2024-05",
+              40.2,
+              72.7
+            ],
+            [
+              "2024-06",
+              42.8,
+              109.4
+            ],
+            [
+              "2024-07",
+              42.1,
+              97.5
+            ],
+            [
+              "2024-08",
+              41.4,
+              77.7
+            ],
+            [
+              "2024-09",
+              45.5,
+              73.0
+            ],
+            [
+              "2024-10",
+              41.0,
+              85.0
+            ],
+            [
+              "2024-11",
+              40.7,
+              82.5
+            ],
+            [
+              "2024-12",
+              57.4,
+              85.5
+            ],
+            [
+              "2025-01",
+              46.5,
+              78.6
+            ],
+            [
+              "2025-02",
+              40.5,
+              81.1
+            ],
+            [
+              "2025-03",
+              40.1,
+              92.7
+            ],
+            [
+              "2025-04",
+              40.0,
+              113.7
+            ],
+            [
+              "2025-05",
+              39.5,
+              79.2
+            ],
+            [
+              "2025-06",
+              39.2,
+              91.8
+            ],
+            [
+              "2025-07",
+              36.8,
+              101.9
+            ],
+            [
+              "2025-08",
+              35.1,
+              101.2
+            ],
+            [
+              "2025-09",
+              31.0,
+              182.8
+            ],
+            [
+              "2025-10",
+              33.9,
+              145.8
+            ],
+            [
+              "2025-11",
+              34.7,
+              116.4
+            ],
+            [
+              "2025-12",
+              53.4,
+              118.5
+            ],
+            [
+              "2026-01",
+              51.2,
+              76.8
+            ],
+            [
+              "2026-02",
+              34.5,
+              84.2
+            ],
+            [
+              "2026-03",
+              35.3,
+              89.0
+            ],
+            [
+              "2026-04",
+              31.1,
+              95.5
+            ],
+            [
+              "2026-05",
+              25.7,
+              95.2
+            ]
+          ],
+          "plot": "minmax_inv",
+          "titulo": "¿El capital político se refleja en menos incertidumbre de política percibida?",
+          "sub": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el EPU (Economic Policy Uncertainty) de Argentina mide, con minería de texto sobre diarios locales (Banco de España y SECMCA, la misma familia metodológica que el índice de Baker/Bloom/Davis), cuánto se habla de incertidumbre alrededor del gobierno y sus políticas. El ITCP se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los doce componentes tienen historia corta o recién se automatizaron esta sesión (cohesión del bloque oficialista, alineamiento de gobernadores, adhesión provincial al RIGI), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la protesta social — límite que se declara, no se esconde. La correlación esperada es negativa: más capital político (menos tensión), menos incertidumbre de política en la prensa.",
+          "serie_label": "ITCP (reconstrucción mensual)",
+          "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
+          "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
+          "conclusion": "Correlación -0,382 en niveles y -0,224 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
@@ -1447,13 +1611,13 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": 0.464,
-          "r_diferencias": 0.339,
+          "r_niveles": 0.466,
+          "r_diferencias": 0.34,
           "n": 30,
           "pares": [
             [
               "2023-12",
-              93.7,
+              93.8,
               40.4
             ],
             [
@@ -1463,7 +1627,7 @@
             ],
             [
               "2024-02",
-              88.6,
+              88.7,
               33.8
             ],
             [
@@ -1473,7 +1637,7 @@
             ],
             [
               "2024-05",
-              91.0,
+              91.1,
               41.8
             ],
             [
@@ -1488,22 +1652,22 @@
             ],
             [
               "2024-08",
-              95.9,
+              95.8,
               43.0
             ],
             [
               "2024-09",
-              95.1,
+              95.2,
               38.8
             ],
             [
               "2024-10",
-              99.1,
+              99.2,
               39.5
             ],
             [
               "2024-11",
-              101.0,
+              100.9,
               44.4
             ],
             [
@@ -1523,17 +1687,17 @@
             ],
             [
               "2025-03",
-              100.7,
+              100.6,
               43.5
             ],
             [
               "2025-04",
-              100.7,
+              100.8,
               42.4
             ],
             [
               "2025-05",
-              97.9,
+              98.1,
               42.4
             ],
             [
@@ -1558,7 +1722,7 @@
             ],
             [
               "2025-10",
-              99.8,
+              99.7,
               40.3
             ],
             [
@@ -1568,22 +1732,22 @@
             ],
             [
               "2025-12",
-              95.2,
+              95.3,
               48.3
             ],
             [
               "2026-01",
-              91.7,
+              91.8,
               47.6
             ],
             [
               "2026-02",
-              92.5,
+              92.6,
               43.9
             ],
             [
               "2026-03",
-              91.0,
+              90.9,
               40.8
             ],
             [
@@ -1608,7 +1772,7 @@
           "serie_label": "ITVC sin su componente de confianza",
           "externa_label": "ICC (confianza del consumidor, UTDT)",
           "trans_label": "ambas series rebaseadas a 100 en el primer mes",
-          "conclusion": "Correlación 0,464 en niveles y 0,339 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
+          "conclusion": "Correlación 0,466 en niveles y 0,34 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
         }
       }
     },
@@ -2181,8 +2345,8 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": 0.767,
-          "r_diferencias": 0.379,
+          "r_niveles": 0.766,
+          "r_diferencias": 0.375,
           "n": 32,
           "pares": [
             [
@@ -2342,8 +2506,8 @@
             ],
             [
               "2026-07",
-              73.1,
-              2080.5
+              73.8,
+              2053.0
             ]
           ],
           "plot": "minmax",
@@ -2352,7 +2516,7 @@
           "serie_label": "ITCG (reconstrucción mensual)",
           "externa_label": "Merval en dólares",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,767 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
+          "conclusion": "Correlación 0,766 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
         }
       },
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
@@ -2421,6 +2585,10 @@
         "icc": {
           "r": 0.53,
           "n": 29
+        },
+        "epu": {
+          "r": 0.14,
+          "n": 30
         }
       },
       {
@@ -2437,6 +2605,10 @@
         "icc": {
           "r": 0.46,
           "n": 30
+        },
+        "epu": {
+          "r": 0.27,
+          "n": 30
         }
       },
       {
@@ -2451,7 +2623,31 @@
           "n": 30
         },
         "icc": {
-          "r": 0.46,
+          "r": 0.47,
+          "n": 30
+        },
+        "epu": {
+          "r": 0.17,
+          "n": 29
+        }
+      },
+      {
+        "indice": "ITCP",
+        "propio": "epu",
+        "riesgo": {
+          "r": 0.13,
+          "n": 30
+        },
+        "merval": {
+          "r": 0.05,
+          "n": 30
+        },
+        "icc": {
+          "r": 0.12,
+          "n": 29
+        },
+        "epu": {
+          "r": -0.38,
           "n": 30
         }
       }
@@ -2468,10 +2664,14 @@
       [
         "icc",
         "Confianza del consumidor (ICC UTDT)"
+      ],
+      [
+        "epu",
+        "Incertidumbre de política (EPU Argentina)"
       ]
     ],
     "titulo": "¿Cada índice mide lo suyo?",
-    "sub": "Los tres índices se reconstruyen mes a mes y se comparan contra los tres contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los tres pares propios dan el signo esperado y correlaciones fuertes: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,46 con la confianza del consumidor. Las celdas cruzadas son del mismo orden (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía se movió junta, la matriz separa parcialmente — se declara como límite, no se esconde."
+    "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,47 con la confianza del consumidor, ITCP -0,38 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde."
   }
 }
