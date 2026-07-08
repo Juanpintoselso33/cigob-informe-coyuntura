@@ -74,15 +74,15 @@ Ante indicadores faltantes los pesos se renormalizan (dentro de la dimensión y,
 | `iaf_transferencias` | Variación real interanual de transferencias federales (RON) | Hacienda, CSV | Anual | Automático |
 | `gobernadores_alineamiento` | % de gobernadores alineados con política nacional | Carga manual | Mensual | Carga manual |
 | `adhesion_reformas_provincial` | % de provincias adheridas al RIGI | MAGyP (scraping tabla) | Variable | Automático |
-| `cohesion_bloque` | Índice de Rice del bloque LLA en Diputados | Scraping `votaciones.hcdn.gob.ar` | Mensual | Automático — **bloqueado en producción** (degrada a cache pre-Rice) |
+| `cohesion_bloque` | Índice de Rice del bloque LLA en Diputados | Scraping `votaciones.hcdn.gob.ar` | Mensual | Automático — **bloqueado en producción** (hoy sin dato: cache pre-Rice purgado) |
 | `cohesion_bloque_senado` | Índice de Rice del bloque LLA en Senado | Scraping `senado.gob.ar` | Mensual | Automático |
 | `movilizacion_cepa` | Conflictividad social: conflictos laborales y protesta | centrocepa.com.ar (scraping) | Por informe | Automático |
 | `protestas_caba` | Variación % de eventos de protesta en CABA vs. base 2023 | ACLED (reutiliza fetcher de gestión) | Semanal | Automático |
 | `votometro_ventaja_lla` | Brecha ponderada LLA − PJ en intención de voto | Votómetro CIGOB (HTML) | Por encuesta | Automático |
 
-**Score actual del cinturón (corrida en vivo, 7 de julio de 2026):** `python scripts/politica.py` → **ITCP = 64,7 (moderadamente aflojado)**, tensión derivada **3,5/10**. 11 de 12 indicadores frescos (exit code 1): el único indicador que no pudo actualizarse en vivo es `cohesion_bloque` —bloqueado en producción (ver detalle abajo)—, cuyo cache degrada al placeholder manual pre-automatización (78%, dato de abril de 2026). Esto es hoy el estado normal esperable de cada corrida, no una falla puntual, hasta que se resuelva el acceso a `votaciones.hcdn.gob.ar`.
+**Score actual del cinturón (corrida en vivo, 8 de julio de 2026):** `python scripts/politica.py` → **ITCP = 67,2 (moderadamente aflojado)**, tensión derivada **3,3/10**. 11 de 12 indicadores frescos (exit code 1): el único indicador que no pudo actualizarse en vivo es `cohesion_bloque` —bloqueado en producción (ver detalle abajo)—, hoy **ausente** del cache (el placeholder manual pre-automatización de 78% fue purgado, commit `3973d00`; la dimensión `cohesion_interna` se renormaliza al 100% sobre `cohesion_bloque_senado`). Esto es hoy el estado normal esperable de cada corrida, no una falla puntual, hasta que se resuelva el acceso a `votaciones.hcdn.gob.ar`.
 
-Nota de continuidad: el score bajo la métrica anterior (promedio simple) era 4,7/10. El salto a 3,5/10 bajo el ITCP es un cambio de metodología —ponderación por dimensión en vez de promedio plano, y tres indicadores nuevos que hoy puntúan relativamente bien (`cohesion_bloque_senado`, `iaf_transferencias`, `adhesion_reformas_provincial`)—, no una mejora real de golpe en la situación política. Mismo efecto de escala que tuvo ITCG al adoptar su paramétrica.
+Nota de continuidad: el score bajo la métrica anterior (promedio simple) era 4,7/10. El salto a 3,3/10 bajo el ITCP es un cambio de metodología —ponderación por dimensión en vez de promedio plano, y tres indicadores nuevos que hoy puntúan relativamente bien (`cohesion_bloque_senado`, `iaf_transferencias`, `adhesion_reformas_provincial`)—, no una mejora real de golpe en la situación política. Mismo efecto de escala que tuvo ITCG al adoptar su paramétrica.
 
 ## Detalle por indicador
 
@@ -152,8 +152,9 @@ Nota de continuidad: el score bajo la métrica anterior (promedio simple) era 4,
 
 - Qué mide: mismo índice de Rice que `cohesion_bloque`, aplicado a las votaciones nominales del bloque LLA en el Senado. Reduce la dependencia de una sola cámara para la dimensión "cohesión interna".
 - Fuente: scraping directo de `senado.gob.ar/votaciones` — sitio distinto al de Diputados, sin evidencia del mismo bloqueo anti-bot.
-- **Estado real: automático y funcionando en producción.** A diferencia de Diputados, el Senado es alcanzable sin bloqueo. Último valor: 99,5% (21 actas divididas de los últimos 90 días, dato del 4 de junio de 2026, corrida exitosa confirmada el 7 de julio de 2026) → puntaje banda 100,0.
+- **Estado real: automático y funcionando en producción.** A diferencia de Diputados, el Senado es alcanzable sin bloqueo. Último valor: 99,4% (18 actas divididas de los últimos 90 días, dato del 4 de junio de 2026, corrida exitosa confirmada el 8 de julio de 2026) → puntaje banda 100,0.
 - Caveat: complementario, no reemplaza a `cohesion_bloque` de Diputados — cámaras distintas, composiciones de bloque distintas.
+- Backfill real disponible desde 2026-07-08: serie anual 2023-2026 (4 puntos), ver `output/series/politica.csv`.
 - Bandas provisionales: sin serie histórica propia todavía (mismas anclas que `cohesion_bloque`, mismo constructo).
 
 ### `movilizacion_cepa` — Conflictividad social
@@ -161,7 +162,8 @@ Nota de continuidad: el score bajo la métrica anterior (promedio simple) era 4,
 - Qué mide: intensidad de la protesta social: huelgas, cortes, conflictos laborales y movilizaciones (dimensión conflicto social del marco Matus).
 - Fuente: scraping de `centrocepa.com.ar/informes`. Identifica el último informe con "conflictividad" en URL y extrae la cifra de conflictos del texto.
 - Cálculo: extrae "X casos por mes" o "al menos N conflictos" y normaliza a escala 0–100.
-- Último valor: 50,5 (101,0 conflictos acumulados, informe CEPA del 7 de julio de 2026) → puntaje banda 64,4.
+- Último valor: 50,5 (101,0 conflictos acumulados, informe CEPA del 9 de junio de 2026) → puntaje banda 64,4.
+- Backfill parcial disponible desde 2026-07-08: 2 puntos reales adicionales (abr-2026, jun-2026) — CEPA no publicaba este tipo de informe antes de fines de 2025, así que no hay historia más atrás que reconstruir (ver `output/series/politica.csv`).
 
 ### `protestas_caba` — Protestas en CABA (nuevo, reutilizado de gestión)
 
@@ -192,7 +194,7 @@ Códigos de salida:
 | Código | Significado |
 |---|---|
 | 0 | Los 12 indicadores frescos |
-| 1 | Al menos un indicador fresco (estado normal hoy: `cohesion_bloque` degrada a cache mientras `votaciones.hcdn.gob.ar` esté bloqueado) |
+| 1 | Al menos un indicador fresco (estado normal hoy: `cohesion_bloque` queda ausente mientras `votaciones.hcdn.gob.ar` esté bloqueado) |
 | 2 | Ningún indicador fresco (todo desde cache) |
 
 ## Notas de mantenimiento
