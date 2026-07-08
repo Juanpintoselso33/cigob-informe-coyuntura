@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "descripcion": "Manifest de URLs confirmadas de informes de Conflictividad Laboral, Secretaría de Trabajo (argentina.gob.ar). Generado para Plan 4 (conflictividad_laboral_srt reemplaza movilizacion_cepa).",
+    "fecha_verificacion": "2026-07-08",
+    "base_url": "https://www.argentina.gob.ar/sites/default/files/",
+    "regla_reconstruccion": "URL completa = base_url + nombre_archivo. Todos los nombres de archivo listados en este manifest (trimestral y recursos_alternativos) fueron verificados en vivo (HTTP HEAD, status 200) en fecha_verificacion.",
+    "metodo_descubrimiento": [
+      "Paso 1 (fuerza bruta de patrones de nombre): script HEAD-request contra 6 variantes de nombre x 4 trimestres x 11 anios (2016-2026, 264 combinaciones). Confirmo 11 informes trimestrales, todos en el rango 2016t1-2020t2. CERO resultados para 2021-2026 bajo cualquier variante probada (conflicto_laboral_{a}t{t}.pdf/.docx, conflicto_laboral_{a}_t{t}.pdf, conflictividad_laboral_{a}t{t}.pdf, informe_conflictividad_laboral_{a}t{t}.pdf, conflicto_laboral_{a}_trim{t}.pdf).",
+      "Paso 2 (fuente canonica, no fuerza bruta): se inspecciono el HTML de https://www.argentina.gob.ar/node/335319 (redirige a https://www.argentina.gob.ar/trabajo/estadisticas/conflictos-laborales) y se determino que la tabla 'Informes' de esa pagina NO es un Drupal View AJAX (no hay view-dom-id ni data-view en el HTML) sino un widget 'poncho' (poncho.min.js) que lee de una Google Spreadsheet publica via Google Sheets API v4, usando una API key publica embebida en el propio JS del sitio (AIzaSyCq2wEEKL9-6RmX-TkW23qJsrmnFHFf5tY). La hoja es idSpread=1A0LVnx172cQUVYm0J5CxoZbKqfoKjsdBo606lwcg6qc, hojaNumero=13 (titulo real de la pestania: '13 con laborales'). Se leyeron las 34 filas de esa hoja (32 filas de datos + 2 de encabezado) -- es la fuente autoritativa y completa que alimenta la pagina oficial de listado -- y se HEAD-verificaron las 32 URLs resultantes: 32/32 con status 200.",
+      "Confirmacion cruzada: los 11 informes trimestrales encontrados por fuerza bruta en el Paso 1 coinciden exactamente, uno a uno, con los 11 informes trimestrales listados en la Google Spreadsheet oficial -- misma cobertura, sin discrepancias, sin URLs adicionales de ningun lado."
+    ],
+    "hallazgo_clave": "La Secretaria de Trabajo DISCONTINUO la serie de informes TRIMESTRALES despues del segundo trimestre de 2020 (2020t2). Esto esta confirmado de forma autoritativa contra la spreadsheet canonica que alimenta la pagina oficial de listado -- no es una ausencia inferida por fuerza bruta fallida, sino la lista completa y oficial de todo lo publicado. No existe ningun informe trimestral 2021-2026 en la fuente oficial.",
+    "cobertura_alternativa_no_trimestral": "Despues de 2020t2 la SRT publico: 1 informe ANUAL para 2021 (PDF, sintesis), 1 informe especial sobre el impacto de la pandemia (PDF, sin fecha de corte especifica en el nombre), y 2 series estructuradas en xlsx: 'evolucion mensual' (2006 a marzo 2023, verificada como genuinamente parseable con openpyxl: 15 tablas C1-C15 con series mensuales reales por ambito institucional/actividad/geografia/tipo de accion) y 'evolucion anual' (2006 a 2022). Ninguna de estas fue actualizada mas alla de esas fechas (verificado en vivo hoy, 2026-07-08 -- la spreadsheet no tiene filas mas recientes) -- la fuente SRT como conjunto NO tiene NINGUN dato posterior a marzo de 2023.",
+    "advertencia_para_tareas_siguientes": "Esta fuente es valida para BACKFILL HISTORICO (2006 a marzo-2023) pero NO puede servir por si sola como reemplazo de un indicador LIVE: no cubre nada posterior a marzo de 2023, mientras que movilizacion_cepa (el indicador que Plan 4 busca reemplazar) tiene datos en vivo hasta 2026-06-09 y el proyecto requiere que el ultimo punto de todo indicador automatizado sea un valor live (ver MEMORY.md / feedback_backfill_series, y ADR de backfill del proyecto). Quien planifique las Tareas 2-6 de Plan 4 debe decidir explicitamente: (a) usar SRT solo para historia y mantener CEPA (u otra fuente) para el valor vigente, o (b) reconsiderar la premisa de Plan 4 de que SRT 'reemplaza' (en el sentido de sustituir por completo) a CEPA.",
+    "gaps_2016_2020": "Incluso dentro del rango activo de la serie trimestral, la spreadsheet oficial solo lista 11 de los 20 trimestres posibles entre 2016t1 y 2020t2 (faltan 2016t4, 2017t4, 2018t4, 2019t2, 2019t3, 2019t4, 2020t1, 2020t3, 2020t4). No hay evidencia de que existan bajo otro nombre de archivo; es posible que hayan sido absorbidos en los informes semestral/anual de esos anios en vez de publicarse como trimestral independiente."
+  },
+  "trimestral": {
+    "2016t1": "conflicto_laboral_2016t1.pdf",
+    "2016t2": "conflicto_laboral_2016t2.pdf",
+    "2016t3": "conflicto_laboral_2016t3.pdf",
+    "2017t1": "conflicto_laboral_2017t1.pdf",
+    "2017t2": "conflicto_laboral_2017t2.pdf",
+    "2017t3": "conflicto_laboral_2017t3.docx",
+    "2018t1": "conflicto_laboral_2018t1.docx",
+    "2018t2": "conflicto_laboral_2018t2.pdf",
+    "2018t3": "conflicto_laboral_2018t3.pdf",
+    "2019t1": "conflicto_laboral_2019t1.pdf",
+    "2020t2": "conflicto_laboral_2020t2.pdf"
+  },
+  "trimestral_2021_2026": {
+    "encontrado": false,
+    "nota": "Confirmado ausente de forma autoritativa contra la spreadsheet oficial completa que alimenta la pagina de listado -- ver _meta.hallazgo_clave y _meta.metodo_descubrimiento."
+  },
+  "recursos_alternativos": {
+    "informe_anual_2021": {
+      "fuente": "informe_anual_pdf",
+      "nombre_archivo": "mteyss-speye-conflictos-laborales-sintesis-informe-2021.pdf",
+      "detalle": "Conflictividad laboral 2021 (sintesis anual)"
+    },
+    "informe_impacto_pandemia": {
+      "fuente": "informe_especial_pdf",
+      "nombre_archivo": "mteyss-informe-conflictividad-covid.pdf",
+      "detalle": "El impacto de la Pandemia en la Conflictividad laboral"
+    },
+    "evolucion_mensual_2006_2023t1": {
+      "fuente": "serie_estructurada_xlsx",
+      "nombre_archivo": "conflictos_laborales_2006-2023_hasta_marzo.xlsx",
+      "detalle": "Evolucion mensual de los conflictos laborales, 2006 a marzo 2023. Verificado con openpyxl: 15 tablas (C1-C15) con series mensuales reales por ambito institucional del empleador, actividad economica, localizacion geografica y tipo de accion (incluye 'acciones conflictivas', la tabla mas comparable a un conteo tipo movilizacion_cepa).",
+      "cobertura": "2006-01 a 2023-03"
+    },
+    "evolucion_anual_2006_2022": {
+      "fuente": "serie_estructurada_xlsx",
+      "nombre_archivo": "mteyss-sss-serie_anual_2006-2022.xlsx",
+      "detalle": "Evolucion anual de los conflictos laborales, 2006 a 2022",
+      "cobertura": "2006 a 2022"
+    }
+  }
+}
