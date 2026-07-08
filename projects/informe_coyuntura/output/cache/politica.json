@@ -1,22 +1,22 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-08T05:41:07.344786",
+  "generated_at": "2026-07-08T16:44:05.668221",
   "score": 3.3,
   "itcp": {
-    "valor": 67.4,
+    "valor": 67.2,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.3,
-        "puntaje": 36.8,
+        "puntaje": 36.2,
         "indicadores": {
           "ratio_dnu": {
             "peso": 0.25,
-            "puntaje_banda": 45.0,
-            "puntaje_aplicado": 45.0,
-            "valor": 1.471,
+            "puntaje_banda": 42.7,
+            "puntaje_aplicado": 42.7,
+            "valor": 1.529,
             "peso_efectivo": 0.075
           },
           "eficacia_legislativa": {
@@ -144,8 +144,8 @@
       "peso_efectivo": 0.1
     },
     "ratio_dnu": {
-      "valor": 1.471,
-      "dnu_count": 25,
+      "valor": 1.529,
+      "dnu_count": 26,
       "leyes_count": 17,
       "periodo": "2026",
       "unidad": "DNUs por ley",
@@ -154,17 +154,18 @@
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 45.0,
-      "puntaje_banda": 45.0,
+      "puntaje_itcp": 42.7,
+      "puntaje_banda": 42.7,
       "peso_efectivo": 0.075
     },
     "movilizacion_cepa": {
       "valor": 50.5,
       "cifra_cruda": 101.0,
       "metrica": "101.0 conflictos acumulados",
+      "rama": "m_tot",
       "unidad": "Índice (0–100)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
-      "fecha_dato": "2026-07-08",
+      "fecha_dato": "2026-06-09",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "conflicto_social",
