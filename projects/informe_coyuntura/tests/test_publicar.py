@@ -61,7 +61,7 @@ def test_politica_itcp_reconcilia():
     # siendo válido con 11/12. Los otros 11 SIEMPRE deben estar.
     assert len(en_indice) >= 11, f"esperaba >=11 indicadores en el índice, hay {len(en_indice)}"
     faltantes = {"votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
-                 "comisiones_caidas", "iaf_transferencias", "gobernadores_alineamiento",
+                 "comisiones_caidas", "iaf_transferencias", "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque_senado", "movilizacion_cepa",
                  "protestas_caba"} - set(en_indice)
     assert not faltantes, f"faltan indicadores que no deberían faltar: {faltantes}"
