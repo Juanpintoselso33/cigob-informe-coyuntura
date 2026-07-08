@@ -160,6 +160,27 @@ def _paced_get(session: requests.Session, base_url: str, path: str, **kwargs):
     return None
 
 
+def _paced_post(session: requests.Session, base_url: str, path: str, data: dict, **kwargs):
+    """POST con el mismo pacing/retry que _paced_get (backoff ante 403, hasta
+    3 intentos). Usado por _descubrir_actas_senado: el listado de actas de
+    Senado requiere POST con busqueda_actas[anio] en el form -- un GET plano
+    siempre devuelve el año en curso (bug encontrado en auditoría 2026-07-08,
+    ver commit)."""
+    url = f"{base_url}{path}"
+    for intento in range(3):
+        time.sleep(_HCDN_VOTACIONES_DELAY)
+        try:
+            r = session.post(url, data=data, timeout=HTTP_TIMEOUT, **kwargs)
+        except requests.RequestException:
+            return None
+        if r.status_code == 200:
+            return r
+        if r.status_code == 403:
+            continue
+        return None
+    return None
+
+
 def _hcdn_votaciones_get(session: requests.Session, path: str, **kwargs):
     return _paced_get(session, HCDN_VOTACIONES_BASE, path, **kwargs)
 
@@ -1030,8 +1051,17 @@ def _descubrir_actas_senado(session: requests.Session, anio: int):
     "display:none" — la Tarea 4 confirmó que el HTML real de HCDN usa
     "display: none" CON espacio; dado que Senado es la misma familia de sitios
     de gobierno, no asumir que acá sí será sin espacio sin verificarlo en vivo
-    (ver Step de verificación más abajo)."""
-    r = _paced_get(session, SENADO_BASE, "/votaciones/actas")
+    (ver Step de verificación más abajo).
+
+    FIX (auditoría 2026-07-08): un GET plano a esta URL siempre devuelve el
+    listado del año EN CURSO -- el filtro `fecha.year != anio` de abajo
+    descartaba todo cuando `anio` era un año pasado, y el backfill
+    'funcionaba' produciendo 1 solo punto real (el año en curso). Verificado
+    en vivo: el sitio acepta POST con busqueda_actas[anio]=<año> y devuelve el
+    listado real de ESE año (26 actas en 2023, 91 en 2024, 95 en 2025, sin
+    bloqueo anti-bot, a diferencia de HCDN Diputados)."""
+    r = _paced_post(session, SENADO_BASE, "/votaciones/actas",
+                     data={"busqueda_actas[anio]": str(anio)})
     if r is None:
         return None
     soup = BeautifulSoup(r.text, "html.parser")

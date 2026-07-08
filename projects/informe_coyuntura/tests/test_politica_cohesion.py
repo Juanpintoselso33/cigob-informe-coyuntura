@@ -431,6 +431,32 @@ def test_paced_get_reusa_logica_de_pacing(monkeypatch):
     session.get.assert_called_with("https://www.senado.gob.ar/votaciones/actas", timeout=politica.HTTP_TIMEOUT)
 
 
+def test_paced_post_reusa_logica_de_pacing(monkeypatch):
+    session = MagicMock()
+    session.post.return_value = MagicMock(status_code=200)
+    monkeypatch.setattr(politica.time, "sleep", lambda s: None)
+    r = politica._paced_post(session, "https://www.senado.gob.ar", "/votaciones/actas",
+                              data={"busqueda_actas[anio]": "2024"})
+    assert r.status_code == 200
+    session.post.assert_called_with(
+        "https://www.senado.gob.ar/votaciones/actas",
+        data={"busqueda_actas[anio]": "2024"},
+        timeout=politica.HTTP_TIMEOUT,
+    )
+
+
+def test_paced_post_reintenta_ante_403(monkeypatch):
+    session = MagicMock()
+    resp_403 = MagicMock(status_code=403)
+    resp_200 = MagicMock(status_code=200)
+    session.post.side_effect = [resp_403, resp_403, resp_200]
+    monkeypatch.setattr(politica.time, "sleep", lambda s: None)
+    resultado = politica._paced_post(session, "https://www.senado.gob.ar", "/votaciones/actas",
+                                      data={"busqueda_actas[anio]": "2023"})
+    assert resultado is resp_200
+    assert session.post.call_count == 3
+
+
 def test_hcdn_votaciones_get_sigue_funcionando_via_paced_get(monkeypatch):
     session = MagicMock()
     session.get.return_value = MagicMock(status_code=200)
@@ -442,9 +468,28 @@ def test_hcdn_votaciones_get_sigue_funcionando_via_paced_get(monkeypatch):
 
 def test_descubrir_actas_senado_extrae_id_y_fecha():
     session = MagicMock()
-    session.get.return_value = MagicMock(status_code=200, text=FIXTURE_LISTADO_SENADO)
+    session.post.return_value = MagicMock(status_code=200, text=FIXTURE_LISTADO_SENADO)
     actas = politica._descubrir_actas_senado(session, 2026)
     assert actas == [{"id": "2623", "fecha": datetime(2026, 2, 11)}]
+    session.post.assert_called_with(
+        "https://www.senado.gob.ar/votaciones/actas",
+        data={"busqueda_actas[anio]": "2026"},
+        timeout=politica.HTTP_TIMEOUT,
+    )
+
+
+def test_descubrir_actas_senado_pide_el_anio_correcto_no_el_actual():
+    # Regresión directa del bug de auditoría 2026-07-08: un año PASADO debe
+    # pedirse explícitamente en el form, no depender de que el servidor
+    # devuelva el año en curso por default.
+    session = MagicMock()
+    session.post.return_value = MagicMock(status_code=200, text=FIXTURE_LISTADO_SENADO)
+    politica._descubrir_actas_senado(session, 2023)
+    session.post.assert_called_with(
+        "https://www.senado.gob.ar/votaciones/actas",
+        data={"busqueda_actas[anio]": "2023"},
+        timeout=politica.HTTP_TIMEOUT,
+    )
 
 
 def test_fetch_cohesion_bloque_senado_es_complementario(monkeypatch):
