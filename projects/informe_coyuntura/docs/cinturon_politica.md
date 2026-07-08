@@ -163,7 +163,7 @@ Nota de continuidad: el score bajo la métrica anterior (promedio simple) era 4,
 - Fuente: scraping de `centrocepa.com.ar/informes`. Identifica el último informe con "conflictividad" en URL y extrae la cifra de conflictos del texto.
 - Cálculo: extrae "X casos por mes" o "al menos N conflictos" y normaliza a escala 0–100.
 - Último valor: 50,5 (101,0 conflictos acumulados, informe CEPA del 9 de junio de 2026) → puntaje banda 64,4.
-- Backfill parcial disponible desde 2026-07-08: 2 puntos reales adicionales (abr-2026, jun-2026) — CEPA no publicaba este tipo de informe antes de fines de 2025, así que no hay historia más atrás que reconstruir (ver `output/series/politica.csv`).
+- Backfill parcial disponible desde 2026-07-08: 2 puntos reales adicionales (abr-2026, jun-2026) — CEPA no publicaba este tipo de informe antes de fines de 2025, así que no hay historia más atrás que reconstruir (ver `output/series/politica.csv`). Alcance honesto: ambos puntos son conteos acumulados **desde inicio del año en curso** (no una tasa mensual) — el aumento aparente entre abril (46,0) y junio (50,5) refleja en parte que transcurrió más tiempo del año, no necesariamente una aceleración de la conflictividad. Comparar estos dos puntos como si fueran una serie mensual homogénea sería engañoso.
 
 ### `protestas_caba` — Protestas en CABA (nuevo, reutilizado de gestión)
 
