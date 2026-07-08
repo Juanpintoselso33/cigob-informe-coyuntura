@@ -1189,6 +1189,17 @@ def _valor_itcp(nombre: str, entry: dict):
     return entry.get("valor")
 
 
+def _resultado_utilizable(nombre: str, resultado: dict | None) -> bool:
+    """True si el resultado de un fetcher tiene el valor que efectivamente se
+    usa en el ITCP para `nombre` (vía _valor_itcp), no solo un "valor" crudo
+    presente. Cierra un borde latente (auditoría 2026-07-08): protestas_caba
+    puntúa sobre var_vs_2023; si var_vs_2023 fuera None con "valor" presente
+    (base_2023 == 0), el indicador se contaría como fresco sin aportar
+    realmente al índice. Para el resto de los indicadores es equivalente a
+    `resultado.get("valor") is not None` (_valor_itcp devuelve "valor" directo)."""
+    return resultado is not None and _valor_itcp(nombre, resultado) is not None
+
+
 def _anotar_indicadores_itcp(indicadores: dict, resultado: dict | None) -> None:
     """Marca cada indicador con su rol en el ITCP: los del índice llevan
     puntaje, dimensión y peso efectivo; el resto queda como contexto (mismo
@@ -1238,7 +1249,7 @@ def main() -> None:
 
     for nombre, fetcher in colectores:
         resultado = fetcher()
-        if resultado is not None and resultado.get("valor") is not None:
+        if _resultado_utilizable(nombre, resultado):
             frescos[nombre] = resultado
             frescos_count += 1
         elif nombre in indicadores_anteriores:

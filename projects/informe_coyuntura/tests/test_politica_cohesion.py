@@ -562,3 +562,29 @@ def test_valor_itcp_protestas_caba_none_si_var_vs_2023_ausente():
 def test_valor_itcp_otros_indicadores_usan_valor_directo():
     entry = {"valor": 62.5, "var_vs_2023": 999.0}  # campo ajeno, no debe usarse
     assert politica._valor_itcp("cohesion_bloque", entry) == 62.5
+
+
+# ── _resultado_utilizable (hallazgo de auditoría 2026-07-08) ────────────────
+# protestas_caba puntúa en el ITCP sobre var_vs_2023, no sobre "valor" (conteo
+# crudo). El gate de frescura de main() históricamente miraba solo "valor" --
+# si algún día base_2023 fuera 0, gestion.fetch_protestas_caba() deja
+# var_vs_2023 en None pero "valor" sigue presente, y el indicador se contaría
+# como fresco sin aportar realmente al ITCP. Reusa _valor_itcp para que el
+# gate de frescura y el cálculo del índice usen SIEMPRE el mismo valor.
+
+def test_resultado_utilizable_protestas_caba_requiere_var_vs_2023():
+    entry = {"valor": 347, "var_vs_2023": None}
+    assert not politica._resultado_utilizable("protestas_caba", entry)
+
+
+def test_resultado_utilizable_protestas_caba_con_var_vs_2023():
+    entry = {"valor": 347, "var_vs_2023": 15.3}
+    assert politica._resultado_utilizable("protestas_caba", entry)
+
+
+def test_resultado_utilizable_otro_indicador_usa_valor_directo():
+    assert politica._resultado_utilizable("cohesion_bloque", {"valor": 62.5})
+
+
+def test_resultado_utilizable_none_no_es_utilizable():
+    assert not politica._resultado_utilizable("cohesion_bloque", None)
