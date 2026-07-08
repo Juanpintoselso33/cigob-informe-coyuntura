@@ -1081,7 +1081,7 @@ _RE_DETALLE_ACTA_SENADO = re.compile(r"/votaciones/detalleActa/(\d+)")
 
 
 def _descubrir_actas_senado(session: requests.Session, anio: int):
-    """GET a /votaciones/actas (listado con fecha en <span style="display:none">
+    """POST a /votaciones/actas (listado con fecha en <span style="display:none">
     YYYYMMDD</span> y link <a href="/votaciones/detalleActa/{id}">) ->
     [{id, fecha}] del año dado. Estructura confirmada en vivo (Senado, HTML
     server-side, sin headless browser). parser="html.parser": lxml no está en
