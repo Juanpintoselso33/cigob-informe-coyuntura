@@ -13,9 +13,16 @@ una decisión editorial explícita (ver ADR-0036): "imagen y voto" pesa
 deliberadamente MENOS que las demás porque el propio marco del proyecto
 distingue capital político de popularidad.
 
-Bandas de cohesion_bloque, cohesion_bloque_senado, adhesion_reformas_provincial
-y protestas_caba son PROVISIONALES (sin serie histórica propia todavía) — ver
-ADR-0036, a recalibrar cuando el backfill esté corriendo.
+Bandas de cohesion_bloque, cohesion_bloque_senado, adhesion_reformas_provincial,
+protestas_caba y alineamiento_senadores_prov son PROVISIONALES (sin serie
+histórica propia todavía) — ver ADR-0036, a recalibrar cuando el backfill esté
+corriendo.
+
+alineamiento_senadores_prov (2026-07-08) reemplaza a gobernadores_alineamiento
+en el peso de la dimensión "alianzas_territoriales" — placeholder manual
+congelado desde 2026-04, sin fuente automatizable. Su banda queda en
+BANDAS_ITCP como referencia histórica (no se borra), pero ya no pondera en
+DIMENSIONES_ITCP.
 
 protestas_caba puntúa sobre "var_vs_2023" (% de variación de eventos de
 protesta en CABA, ACLED, contra la base 2023), NO sobre "valor" — a diferencia
@@ -52,7 +59,29 @@ BANDAS_ITCP = {
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
     ],
     "gobernadores_alineamiento": [        # % gobernadores alineados, mayor = mejor (manual)
+        # Placeholder manual congelado desde 2026-04 (55%), retirado del peso
+        # del ITCP (ver DIMENSIONES_ITCP) en favor de alineamiento_senadores_prov
+        # (2026-07-08). Banda NO se borra — queda como referencia histórica,
+        # mismo criterio que dejar cohesion_bloque en el código aunque el
+        # scraping de Diputados esté bloqueado (ADR-0037).
         (65.0, INF, 100), (45.0, 65.0, 85), (25.0, 45.0, 65), (10.0, 25.0, 40), (-INF, 10.0, 10),
+    ],
+    "alineamiento_senadores_prov": [
+        # Provisional (2026-07-08, sin historia real todavía): MISMAS anclas
+        # que gobernadores_alineamiento — tramos extremos abiertos (INF),
+        # como el resto de las bandas del ITCP (incluyendo otros indicadores
+        # %-acotados como cohesion_bloque/cohesion_bloque_senado/
+        # movilizacion_cepa) — hasta recalibrar con datos reales
+        # backfilleados. Un tramo superior finito (65,100,100) desplazaría la
+        # saturación al punto medio del motor interpolado (82.5 en vez de
+        # 65) y puntuaría el valor real (~68) en ~92 en vez de 100 —
+        # corregido tras detectarlo en el test de ponderación (99.5 en vez
+        # de 100.0 esperado).
+        (65.0, INF, 100),
+        (45.0, 65.0, 85),
+        (25.0, 45.0, 65),
+        (10.0, 25.0, 40),
+        (-INF, 10.0, 10),
     ],
     "adhesion_reformas_provincial": [     # % provincias adheridas RIGI, mayor = mejor — PROVISIONAL
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
@@ -81,7 +110,7 @@ DIMENSIONES_ITCP = {
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
         "peso": 0.25,
-        "indicadores": {"iaf_transferencias": 0.40, "gobernadores_alineamiento": 0.30,
+        "indicadores": {"iaf_transferencias": 0.40, "alineamiento_senadores_prov": 0.30,
                         "adhesion_reformas_provincial": 0.30},
     },
     "cohesion_interna": {

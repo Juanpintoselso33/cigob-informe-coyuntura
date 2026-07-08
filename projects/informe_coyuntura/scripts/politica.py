@@ -11,7 +11,9 @@ Indicadores:
   eficacia_legislativa      — % proyectos PE aprobados, ventana 12m (datos.hcdn.gob.ar CKAN, auto)
   cohesion_bloque           — % cohesión (Rice) del bloque LLA en Diputados (scrape votaciones.hcdn.gob.ar, auto)
   cohesion_bloque_senado    — % cohesión (Rice) del bloque LLA en Senado (scrape senado.gob.ar, auto)
-  gobernadores_alineamiento — % gobernadores alineados con política nacional (manual — sin fuente estructurada)
+  alineamiento_senadores_prov — % votos de senadores no-LLA alineados con LLA, por provincia
+                               (scrape senado.gob.ar, auto — reemplaza a gobernadores_alineamiento,
+                               placeholder manual congelado desde 2026-04, ver manuales.json)
   veto_quorum               — % sesiones frustradas por falta de quórum (datos.hcdn.gob.ar CKAN, auto)
   comisiones_caidas         — % proyectos con dictamen que no llegan al recinto (datos.hcdn.gob.ar CKAN, auto)
   adhesion_reformas_provincial — % provincias adheridas al RIGI (MAGyP, auto)
@@ -20,7 +22,8 @@ Indicadores:
 Nota: ICG UTDT removido (mide confianza ciudadana, no capacidad de gobernar con actores
 políticos). Reemplazado por ratio_dnu según framework Luis Babino / reunión 12-may-2026.
 IAF (Índice de Armonía Federal): iaf_transferencias captura cumplimiento fiscal federal
-(Babino: Agregados de Poder). gobernadores_alineamiento captura la dimensión territorial.
+(Babino: Agregados de Poder). alineamiento_senadores_prov captura la dimensión territorial
+(reemplaza a gobernadores_alineamiento, ver docstring de fetch_alineamiento_senadores_prov).
 veto_quorum y comisiones_caidas capturan la eficacia legislativa de la oposición y el
 bloqueo en comisiones — candidatos a fusionarse en índice compuesto legislativo.
 """
@@ -60,7 +63,7 @@ INDICADORES_ESPERADOS = [
     "cohesion_bloque",
     "cohesion_bloque_senado",
     "eficacia_legislativa",
-    "gobernadores_alineamiento",
+    "alineamiento_senadores_prov",
     "adhesion_reformas_provincial",
     "veto_quorum",
     "comisiones_caidas",
@@ -1409,7 +1412,6 @@ def main() -> None:
         ("movilizacion_cepa",             fetch_cepa_movilizacion),
         ("iaf_transferencias",            fetch_iaf_transferencias),
         ("eficacia_legislativa",          fetch_eficacia_legislativa),
-        ("gobernadores_alineamiento",     lambda: fetch_manual("gobernadores_alineamiento")),
         ("veto_quorum",                   fetch_veto_quorum),
         ("comisiones_caidas",             fetch_comisiones_caidas),
         ("adhesion_reformas_provincial",  fetch_adhesion_reformas_provincial),
@@ -1466,6 +1468,32 @@ def main() -> None:
         frescos["cohesion_bloque_senado"] = {
             **anterior_cohesion_senado,
             "desactualizado": _cohesion_desactualizada(anterior_cohesion_senado, resultado_cohesion_senado),
+        }
+
+    # alineamiento_senadores_prov comparte el mismo contrato de retorno que
+    # cohesion_bloque_senado (misma sesión/descubrimiento de actas de Senado):
+    # dict con "valor": None (no None a secas) cuando la corrida llegó al
+    # sitio pero no hubo actas divididas en la ventana de recencia (receso
+    # legislativo normal). Mismo bloque dedicado que cohesion_bloque_senado
+    # en vez de la lista plana de colectores, para no marcar "desactualizado"
+    # solo por ausencia de votos nuevos (reutiliza _cohesion_desactualizada,
+    # que es un chequeo de staleness genérico, no específico de cohesión).
+    resultado_alineamiento = fetch_alineamiento_senadores_prov()
+    anterior_alineamiento = indicadores_anteriores.get("alineamiento_senadores_prov")
+    if resultado_alineamiento is not None and resultado_alineamiento.get("valor") is not None:
+        frescos["alineamiento_senadores_prov"] = resultado_alineamiento
+        frescos_count += 1
+    elif resultado_alineamiento is not None and anterior_alineamiento is not None:
+        frescos["alineamiento_senadores_prov"] = {
+            **anterior_alineamiento,
+            "desactualizado": False,
+            "corrida_exitosa_en": resultado_alineamiento["corrida_exitosa_en"],
+        }
+        frescos_count += 1
+    elif anterior_alineamiento is not None:
+        frescos["alineamiento_senadores_prov"] = {
+            **anterior_alineamiento,
+            "desactualizado": _cohesion_desactualizada(anterior_alineamiento, resultado_alineamiento),
         }
 
     ajustes = itcp.cargar_ajustes(AJUSTES_ITCP_PATH, datetime.now().strftime("%Y-%m"))

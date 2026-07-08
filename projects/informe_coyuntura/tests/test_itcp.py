@@ -41,6 +41,13 @@ def test_banda_protestas_caba_var_vs_2023():
     assert itcp.puntaje_banda(30.01, bandas) == 10
 
 
+def test_bandas_itcp_tiene_alineamiento_senadores_prov_no_gobernadores_alineamiento():
+    assert "alineamiento_senadores_prov" in itcp.BANDAS_ITCP
+    dim = itcp.DIMENSIONES_ITCP["alianzas_territoriales"]
+    assert "alineamiento_senadores_prov" in dim["indicadores"]
+    assert "gobernadores_alineamiento" not in dim["indicadores"]
+
+
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
         "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100
@@ -49,7 +56,7 @@ def test_calcular_itcp_pondera_dimensiones():
         "veto_quorum": 2.0,                  # poder_legislativo, puntaje 100
         "comisiones_caidas": 10.0,           # poder_legislativo, puntaje 100
         "iaf_transferencias": 12.0,          # alianzas_territoriales, puntaje 100
-        "gobernadores_alineamiento": 70.0,   # alianzas_territoriales, puntaje 100
+        "alineamiento_senadores_prov": 70.0, # alianzas_territoriales, puntaje 100
         "adhesion_reformas_provincial": 90.0, # alianzas_territoriales, puntaje 100
         "cohesion_bloque": 95.0,             # cohesion_interna, puntaje 100
         "cohesion_bloque_senado": 95.0,      # cohesion_interna, puntaje 100
