@@ -120,4 +120,8 @@ fecha,indicador,valor,unidad,fuente
 2025-01-01,cohesion_bloque_senado,91.9,"% cohesión (índice de Rice, Senado, anual)",Votaciones nominales Senado — elaboración CIGOB (scraping directo)
 2024-01-01,cohesion_bloque_senado,94.5,"% cohesión (índice de Rice, Senado, anual)",Votaciones nominales Senado — elaboración CIGOB (scraping directo)
 2023-01-01,cohesion_bloque_senado,81.8,"% cohesión (índice de Rice, Senado, anual)",Votaciones nominales Senado — elaboración CIGOB (scraping directo)
+2026-01-01,alineamiento_senadores_prov,51.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
+2025-01-01,alineamiento_senadores_prov,45.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
+2024-01-01,alineamiento_senadores_prov,57.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
+2023-01-01,alineamiento_senadores_prov,71.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
 2026-01-01,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"

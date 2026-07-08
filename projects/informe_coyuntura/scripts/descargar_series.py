@@ -462,6 +462,7 @@ def fetch_comisiones_serie() -> list:
 
 COHESION_BLOQUE_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "cohesion_bloque_serie.json"
 COHESION_BLOQUE_SENADO_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "cohesion_bloque_senado_serie.json"
+ALINEAMIENTO_SENADORES_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "alineamiento_senadores_serie.json"
 
 
 def _serie_cohesion_cacheada(store_path: Path, fetch_fn, anio_inicio: int, nombre: str) -> list:
@@ -526,6 +527,14 @@ def fetch_cohesion_bloque_senado_serie(anio_inicio: int = 2023) -> list:
     [[YYYY-01-01, % cohesión]]."""
     return _serie_cohesion_cacheada(COHESION_BLOQUE_SENADO_STORE, politica.fetch_cohesion_bloque_senado,
                                      anio_inicio, "cohesion_bloque_senado")
+
+
+def fetch_alineamiento_senadores_prov_serie(anio_inicio: int = 2023) -> list:
+    """Serie ANUAL de alineamiento_senadores_prov (reemplaza a
+    gobernadores_alineamiento). Caché persistente por año, ver
+    _serie_cohesion_cacheada."""
+    return _serie_cohesion_cacheada(ALINEAMIENTO_SENADORES_STORE, politica.fetch_alineamiento_senadores_prov,
+                                     anio_inicio, "alineamiento_senadores_prov")
 
 
 def fetch_adhesion_reformas_provincial_serie() -> list:
@@ -637,6 +646,9 @@ POLITICA_DERIVADAS = [
     ("movilizacion_cepa", "Índice de conflictividad social (0-100)",
      "Centro CEPA — informes de conflictividad (elaboración CIGOB)",
      fetch_cepa_movilizacion_serie),
+    ("alineamiento_senadores_prov", "% votos de senadores no-LLA alineados con LLA",
+     "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+     fetch_alineamiento_senadores_prov_serie),
     # protestas_caba NO se registra acá: ya está en GESTION_DERIVADAS
     # (fetch_protestas_serie) y build_series() en publicar.py fusiona TODOS
     # los CSV de output/series/ en un único dict keyed por indicador — la

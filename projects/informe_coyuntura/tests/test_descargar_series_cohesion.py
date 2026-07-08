@@ -115,3 +115,12 @@ def test_fetch_cohesion_bloque_senado_serie_usa_el_store_de_senado(tmp_path, mon
                          lambda anio, dias_ventana: {"valor": 99.7})
     serie = descargar_series.fetch_cohesion_bloque_senado_serie(anio_inicio=2026)
     assert serie == [["2026-01-01", 99.7]]
+
+
+def test_fetch_alineamiento_senadores_prov_serie_usa_su_propio_store(tmp_path, monkeypatch):
+    monkeypatch.setattr(descargar_series, "date", _FakeDate)
+    monkeypatch.setattr(descargar_series, "ALINEAMIENTO_SENADORES_STORE", tmp_path / "alineamiento.json")
+    monkeypatch.setattr(descargar_series.politica, "fetch_alineamiento_senadores_prov",
+                         lambda anio, dias_ventana: {"valor": 66.7})
+    serie = descargar_series.fetch_alineamiento_senadores_prov_serie(anio_inicio=2026)
+    assert serie == [["2026-01-01", 66.7]]
