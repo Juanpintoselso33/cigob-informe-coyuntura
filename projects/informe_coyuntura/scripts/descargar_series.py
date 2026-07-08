@@ -494,7 +494,13 @@ def fetch_adhesion_reformas_provincial_serie() -> list:
     evento único e irreversible por provincia, no una magnitud que fluctúe
     mes a mes — un solo punto con el valor actual, no un backfill año por
     año (no hay fuente con la fecha en la que cada provincia adhirió, así
-    que no hay forma de reconstruir el pasado). [[YYYY-01-01, % provincias]]."""
+    que no hay forma de reconstruir el pasado). Confirmado en vivo
+    (2026-07-08): la tabla de MAGyP solo tiene 2 columnas (provincia, link a
+    la ley), sin fecha de adhesión; el sitio que sí podría tenerla
+    (trivia.consejo.org.ar, donde apuntan los links de ley) devuelve
+    "Request Rejected" ante fetch directo — mismo patrón de WAF categórico
+    que HCDN Diputados (ADR-0037), no reintentar sin una vía nueva.
+    [[YYYY-01-01, % provincias]]."""
     resultado = politica.fetch_adhesion_reformas_provincial()
     if not resultado or resultado.get("valor") is None:
         return []
