@@ -204,9 +204,9 @@ FIXTURE_ACTA = """
 def test_parsear_acta_extrae_filas():
     filas = politica._parsear_acta(FIXTURE_ACTA)
     assert filas == [
-        {"nombre": "JUEZ, LUIS ALFREDO", "bloque": "La Libertad Avanza", "voto": "AFIRMATIVO"},
-        {"nombre": "KUEIDER, EDGARDO", "bloque": "Union Por La Patria", "voto": "NEGATIVO"},
-        {"nombre": "ALGUIEN, AUSENTE", "bloque": "Pro", "voto": "AUSENTE"},
+        {"nombre": "JUEZ, LUIS ALFREDO", "bloque": "La Libertad Avanza", "provincia": "Córdoba", "voto": "AFIRMATIVO"},
+        {"nombre": "KUEIDER, EDGARDO", "bloque": "Union Por La Patria", "provincia": "Entre Ríos", "voto": "NEGATIVO"},
+        {"nombre": "ALGUIEN, AUSENTE", "bloque": "Pro", "provincia": "CABA", "voto": "AUSENTE"},
     ]
 
 
@@ -227,6 +227,12 @@ def test_parsear_acta_ignora_fila_de_encabezado():
 
 def test_parsear_acta_html_vacio():
     assert politica._parsear_acta("") == []
+
+
+def test_parsear_acta_incluye_provincia():
+    filas = politica._parsear_acta(FIXTURE_ACTA)
+    assert filas[0]["provincia"] == "Córdoba"
+    assert filas[1]["provincia"] == "Entre Ríos"
 
 
 def test_parsear_acta_ignora_fila_sin_bloque():

@@ -1006,7 +1006,7 @@ def _url_acta(acta: dict) -> str:
 
 def _parsear_acta(html: str) -> list[dict]:
     """Parsea el HTML de una acta de votación nominal de Diputados ->
-    [{nombre, bloque, voto}]. Ignora filas sin las columnas esperadas.
+    [{nombre, bloque, provincia, voto}]. Ignora filas sin las columnas esperadas.
 
     Estructura REAL confirmada (Tarea 5, snapshot real de Wayback Machine
     2026-01-15, acta id 5840, tabla #myTable con 257 filas = las 257 bancas
@@ -1035,10 +1035,11 @@ def _parsear_acta(html: str) -> list[dict]:
             continue
         nombre = celdas[1].get_text(strip=True)
         bloque = celdas[2].get_text(strip=True)
+        provincia = celdas[3].get_text(strip=True)
         voto = celdas[4].get_text(strip=True).upper()
         if not nombre or not bloque:
             continue
-        filas.append({"nombre": nombre, "bloque": bloque, "voto": voto})
+        filas.append({"nombre": nombre, "bloque": bloque, "provincia": provincia, "voto": voto})
     return filas
 
 
