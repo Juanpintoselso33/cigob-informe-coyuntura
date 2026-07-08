@@ -572,8 +572,8 @@ def fetch_cepa_movilizacion_serie(max_paginas: int = 40) -> list:
             print(f"[WARN] movilizacion_cepa_serie: {informe_url}: {e}")
             continue
         cifra_info = politica._extraer_cifra_cepa(r2.text)
-        if cifra_info is None or not cifra_info["metrica"].endswith("conflictos acumulados"):
-            continue   # sin match, o cifra de tasa mensual (m_mes) -- ver docstring, no comparable
+        if cifra_info is None or cifra_info["rama"] != "m_tot":
+            continue   # sin match, o tasa mensual (m_mes) -- no comparable con el conteo acumulado, ver docstring de _extraer_cifra_cepa
         fecha = politica._fecha_informe_cepa(r2.text)
         out.append([fecha, cifra_info["valor"]])
 

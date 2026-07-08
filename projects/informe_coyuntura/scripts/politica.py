@@ -475,15 +475,28 @@ def _fecha_informe_cepa(html: str) -> str:
 def _extraer_cifra_cepa(html: str) -> dict | None:
     """Cifra de conflictividad de UN informe CEPA (índice 0-100
     normalizado), con el mismo regex que fetch_cepa_movilizacion() usa para
-    el informe vigente. None si el informe no matchea ninguno de los dos
-    patrones conocidos ("X casos por mes" / "al menos N conflictos") --
-    DELIBERADO: informes que citan una cifra acumulada bajo un ancla
-    temporal DISTINTA ("desde enero 2024" o "durante todo el gobierno de
-    Milei", en vez de "desde inicios del año en curso") no son comparables
-    en la misma escala 0-200 y no deben forzarse a la serie (verificado en
-    vivo 2026-07-08: los informes CEPA de "conflictividad a 2 años" y
-    "mapa federal" quedan fuera de la serie por este motivo, no por un
-    error de parseo)."""
+    el informe vigente. Reconoce dos patrones textuales, mutuamente
+    excluyentes, cada uno con su propia escala de normalización:
+
+      - "X casos por mes" / "promedio de X casos mensuales" -> TASA mensual
+        (rama "m_mes", escala 0-CEPA_MAX_CASOS_MES).
+      - "al menos N conflictos" / "se registraron N conflictos" -> CONTEO
+        acumulado (rama "m_tot", escala 0-CEPA_MAX_CONFLICTOS_TOT).
+
+    El dict devuelto incluye "rama": "m_mes" o "m_tot" para que el llamador
+    pueda distinguir de forma explícita qué patrón matcheó (en vez de
+    inspeccionar el string "metrica"). Devuelve None si el HTML no matchea
+    ninguno de los dos patrones.
+
+    Esta función NO sabe nada sobre qué informes deben excluirse de una
+    serie histórica ni por qué -- eso es responsabilidad de cada llamador.
+    En particular, un informe puede citar una cifra bajo un ancla temporal
+    distinta a la del indicador vigente (p.ej. acumulado "desde enero 2024"
+    en vez de "desde inicios del año en curso") y aun así matchear (rama
+    m_mes o m_tot) si el patrón textual está presente en algún lugar del
+    HTML -- ver docstring de fetch_cepa_movilizacion_serie() en
+    descargar_series.py para el filtro real que excluye lecturas no
+    comparables de la serie."""
     m_mes = re.search(
         r"(\d+(?:[.,]\d+)?)\s+casos?\s+por\s+mes"
         r"|promedio\s+de\s+(\d+(?:[.,]\d+)?)\s+casos?\s+mensuales?",
@@ -498,11 +511,11 @@ def _extraer_cifra_cepa(html: str) -> dict | None:
         raw = (m_mes.group(1) or m_mes.group(2)).replace(",", ".")
         cifra = float(raw)
         return {"valor": round(min(100.0, (cifra / CEPA_MAX_CASOS_MES) * 100.0), 1),
-                "cifra_cruda": cifra, "metrica": f"{cifra} casos/mes"}
+                "cifra_cruda": cifra, "metrica": f"{cifra} casos/mes", "rama": "m_mes"}
     if m_tot:
         cifra = float(m_tot.group(1))
         return {"valor": round(min(100.0, (cifra / CEPA_MAX_CONFLICTOS_TOT) * 100.0), 1),
-                "cifra_cruda": cifra, "metrica": f"{cifra} conflictos acumulados"}
+                "cifra_cruda": cifra, "metrica": f"{cifra} conflictos acumulados", "rama": "m_tot"}
     return None
 
 

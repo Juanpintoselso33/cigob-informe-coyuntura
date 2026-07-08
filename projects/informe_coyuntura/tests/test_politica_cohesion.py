@@ -703,12 +703,12 @@ def test_extraer_cifra_cepa_informe_748_no_es_acumulado():
     # ene24-sep25), no "42 casos por mes" (ventana post-elección) -- ambas
     # aparecen en el cuerpo real del informe.
     r = politica._extraer_cifra_cepa(FRAGMENTO_748)
-    assert r == {"valor": 30.0, "cifra_cruda": 24.0, "metrica": "24.0 casos/mes"}
+    assert r == {"valor": 30.0, "cifra_cruda": 24.0, "metrica": "24.0 casos/mes", "rama": "m_mes"}
     # Discriminador real usado por fetch_cepa_movilizacion_serie() para
     # excluir esta lectura de la serie: no es "conflictos acumulados" (m_tot),
     # es una tasa mensual (m_mes) -- escala distinta (0-80 vs. 0-200),
     # no comparable con el resto de la serie (que es 100% m_tot).
-    assert not r["metrica"].endswith("conflictos acumulados")
+    assert r["rama"] == "m_mes"
 
 
 def test_extraer_cifra_cepa_informe_739_no_matchea_ninguna_rama():
