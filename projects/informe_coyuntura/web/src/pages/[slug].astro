@@ -145,7 +145,7 @@ const valChartData = val && indice ? {
   indice: { nombre: `${indice.sigla} (reconstrucción)`, unidad: "puntos" },
   externa: {
     nombre: val.externa_label.replace(", invertido", ""),
-    unidad: ({ macro: "pb", gestion: "puntos", vida_cotidiana: "puntos" } as Record<string, string>)[meta.key] ?? "",
+    unidad: ({ macro: "pb", gestion: "puntos", vida_cotidiana: "puntos", politica: "puntos" } as Record<string, string>)[meta.key] ?? "",
   },
   ejeBInvertido: val.plot === "minmax_inv",   // correlación negativa: mismo sentido visual que la card
   pares: val.pares,
@@ -409,8 +409,10 @@ const robChartData = rob?.hist && indice ? {
           <strong>nivel desestacionalizado</strong> (no la variación de un mes), y el
           endeudamiento se corrige por la <strong>tasa de mora</strong> de la cartera de
           consumo — más deuda con mora estable es acceso al crédito; con mora disparada, es
-          sobreendeudamiento. Excepciones declaradas: informalidad con base anual 2023 (la
-          serie trimestral pública murió en 2020) y delitos con base anual SNIC 2023. El{" "}
+          sobreendeudamiento. Excepción declarada: la inseguridad se mide con la encuesta de
+          victimización (LICIP-UTDT) con base en enero de 2024 — la encuesta estuvo suspendida
+          entre 2020 y 2023 y no existe medición del 4º trimestre de 2023; el registro de
+          denuncias (SNIC) queda como contraste. El{" "}
           <strong>score {c.score}/10</strong> deriva del <strong>ITVC {c.itvc?.valor}</strong>:
           tensión = 5 − (ITVC − 100) × 0,2.
         </p>
@@ -434,9 +436,9 @@ const robChartData = rob?.hist && indice ? {
           <strong>reforma laboral</strong> sigue el <strong>Fondo de Cese</strong> (el propio
           decreto 847/2024 lo presenta como la herramienta central contra la litigiosidad). La{" "}
           <strong>asistencia directa</strong> mide la desintermediación del gasto social (TDPS) y
-          el <strong>orden público</strong>, la reducción de cortes en CABA vs. 2023 — con la
-          advertencia de que el protocolo está judicialmente cuestionado (anulado en dic-2025, en
-          apelación). El <strong>score {c.score}/10</strong> y el{" "}
+          el <strong>orden público</strong>, la reducción de cortes en CABA vs. 2023 — con su
+          validez judicial restablecida: la Cámara revocó en marzo de 2026 la nulidad de primera
+          instancia. El <strong>score {c.score}/10</strong> y el{" "}
           <strong>ITCG {c.itcg?.valor}/100</strong> son la misma medición en dos escalas:
           tensión = (100 − ITCG) / 10.
         </p>
@@ -573,7 +575,7 @@ const robChartData = rob?.hist && indice ? {
       <p class="cg-eyebrow">Validación cruzada</p>
       <h3 class="cg-modal-title">{cruz.titulo}</h3>
       <p class="cg-modal-desc">
-        Los tres índices del informe se reconstruyen mes a mes y se comparan contra los tres
+        Los cuatro índices del informe se reconstruyen mes a mes y se comparan contra los cuatro
         contrastes externos <strong>a la vez</strong>. La pregunta: ¿cada índice se parece más
         a su contraste natural que a los ajenos, o todos miden lo mismo con distinto nombre?
       </p>
@@ -582,8 +584,9 @@ const robChartData = rob?.hist && indice ? {
       <p class="cg-modal-desc">
         Cada fila es un índice; cada columna, una vara externa. Las celdas sombreadas marcan
         el par natural: la macroeconomía con el precio del riesgo argentino, la gestión con el
-        valor de las empresas, la vida cotidiana con el ánimo del consumidor. Una fila cuyo
-        par natural es el más fuerte de su fila está midiendo algo propio.
+        valor de las empresas, la vida cotidiana con el ánimo del consumidor y la política con
+        la incertidumbre de política en la prensa (EPU). Una fila cuyo par natural es el más
+        fuerte de su fila está midiendo algo propio.
       </p>
       <p class="cg-modal-h4">Los límites, declarados</p>
       <p class="cg-modal-desc">

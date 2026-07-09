@@ -151,6 +151,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4T-23}}}{\text{subocupaci\'on}_{\text{hoy}}}`,
     leyenda: "Subocupación demandante (EPH): gente que necesita trabajar más horas. Invertido: si sube, el índice baja.",
   },
+  informalidad: {
+    latex: String.raw`100\cdot\frac{\text{informalidad}_{\text{4T-23}}}{\text{informalidad}_{\text{hoy}}}`,
+    leyenda: "Asalariados sin descuento jubilatorio (EPH, trimestral). Invertido: más empleo en negro = índice más bajo. La card muestra la tasa del trimestre.",
+  },
   consumo_carne: {
     latex: String.raw`100\cdot\frac{\text{kg de carne por habitante}_{\text{hoy}}}{\text{kg por habitante}_{\text{4T-23}}}`,
     leyenda: "Consumo per cápita anualizado (promedio móvil 12 meses, CICCRA): el termómetro de bolsillo más argentino, 100 = 4T-2023.",

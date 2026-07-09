@@ -1146,7 +1146,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "La tensión es lineal en la ventaja: +15 puntos → tensión 0 · empate → 5 · −15 puntos → 10.",
-      "El cinturón espíritu de época tampoco usa índice compuesto: promedia las tensiones de sus tres indicadores (confianza del consumidor, sentimiento digital y clima electoral).",
+      "El cinturón espíritu de época no usa un índice compuesto: promedia las tensiones de sus tres indicadores (confianza del consumidor, sentimiento digital y clima electoral).",
     ],
     dobleUso: "Es la segunda lectura del mismo dato del Votómetro: puntúa en política como ventaja electoral y acá como clima. La duplicación es una decisión declarada de la versión inicial del cinturón, hasta que exista una paramétrica propia.",
     limitaciones: [
@@ -2408,7 +2408,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     validacion: [
       "El ITCP se contrasta contra el EPU de Argentina (Economic Policy Uncertainty: minería de texto sobre diarios locales, la misma familia metodológica que el índice de Baker/Bloom/Davis): el índice se reconstruye mes a mes desde las series de sus componentes y se correlaciona contra el EPU — la correlación esperada es negativa (más capital político, menos incertidumbre de política en la prensa) y el resultado se publica en la sección de validación del cinturón, actualizado en cada corrida.",
-      "Todavía no participa de la matriz de validación cruzada que compara a los otros tres índices del informe entre sí: es la incorporación más reciente al sistema de paramétricas y ese cruce queda como trabajo pendiente declarado.",
+      "Participa además de la matriz de validación cruzada que compara los cuatro índices del informe contra sus cuatro anclas externas a la vez, publicada en la página del cinturón.",
     ],
     comunicacion: [
       "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCP) / 10, con los mismos umbrales globales de siempre (0–3 estable · 4–6 en tensión · 7–10 tensionado).",
@@ -2424,7 +2424,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Los pesos de las cinco dimensiones no provienen de un documento institucional previo, a diferencia de los otros tres índices del informe: son una decisión editorial explícita, declarada como tal.",
       "Varios de los doce indicadores son incorporaciones de julio de 2026: sus umbrales se calibraron contra series mensuales reconstruidas de unos dos años — una historia real pero corta, que cubre un solo gobierno.",
-      "El índice se valida contra el EPU de Argentina, pero todavía no participa de la matriz de validación cruzada que compara a los otros tres índices del informe entre sí: trabajo pendiente declarado, no escondido.",
+      "Su validación externa es la más reciente del sistema: varios componentes tienen historia corta y la reconstrucción de los meses más antiguos se apoya en los indicadores de serie más larga (con un piso de cobertura declarado) — las correlaciones se leen como consistencia, no como prueba.",
       "El alineamiento territorial se mide por el comportamiento de voto de los senadores, no por la postura del Poder Ejecutivo provincial: no existe todavía una fuente pública estructurada que mida directamente el alineamiento de los gobernadores.",
       "El análisis multivariado previo del estándar OCDE/JRC (contrastar la estructura teórica con la correlación real entre los indicadores) está pendiente, igual que en el resto de los índices del informe.",
     ],

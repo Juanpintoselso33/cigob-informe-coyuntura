@@ -316,7 +316,8 @@ export const UNIDADES_LARGAS: Record<string, string> = {
 // (pares card/serie con semántica distinta, las excepciones G3 del gate).
 // Sin entrada, el gráfico usa la unidad corta de la card.
 export const UNIDADES_SERIE: Record<string, string> = {
-  protestas_caba: "eventos/mes",   // card = acumulado 12m; serie = eventos por mes
+  protestas_caba: "eventos/mes",       // card = acumulado 12m; serie = eventos por mes
+  rigi_inversiones: "US$ M aprobados", // card = % del pipeline; serie = inversión aprobada acumulada
 };
 
 export interface Presentacion { texto: string; unidad: string; titulo: string; }
