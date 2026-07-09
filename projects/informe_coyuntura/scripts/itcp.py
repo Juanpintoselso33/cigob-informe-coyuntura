@@ -13,16 +13,19 @@ una decisión editorial explícita (ver ADR-0036): "imagen y voto" pesa
 deliberadamente MENOS que las demás porque el propio marco del proyecto
 distingue capital político de popularidad.
 
-Bandas de cohesion_bloque, cohesion_bloque_senado, adhesion_reformas_provincial,
-protestas_caba y alineamiento_senadores_prov son PROVISIONALES (sin serie
-histórica propia todavía) — ver ADR-0036, a recalibrar cuando el backfill esté
-corriendo.
+Bandas de cohesion_bloque, cohesion_bloque_senado, adhesion_reformas_provincial
+y protestas_caba son PROVISIONALES (sin serie histórica propia todavía) — ver
+ADR-0036, a recalibrar cuando el backfill esté corriendo.
 
 alineamiento_senadores_prov (2026-07-08) reemplaza a gobernadores_alineamiento
 en el peso de la dimensión "alianzas_territoriales" — placeholder manual
 congelado desde 2026-04, sin fuente automatizable. Su banda queda en
 BANDAS_ITCP como referencia histórica (no se borra), pero ya no pondera en
-DIMENSIONES_ITCP.
+DIMENSIONES_ITCP. **Sus propias anclas (distinto indicador de
+gobernadores_alineamiento) ya NO son provisionales**: recalibradas 2026-07-09
+con 29 puntos mensuales reales backfilleados (ver el comentario en
+BANDAS_ITCP y ADR-0038) — primera banda del ITCP en salir del estado
+PROVISIONAL con datos propios en vez de heredados.
 
 protestas_caba puntúa sobre "var_vs_2023" (% de variación de eventos de
 protesta en CABA, ACLED, contra la base 2023), NO sobre "valor" — a diferencia
@@ -67,21 +70,24 @@ BANDAS_ITCP = {
         (65.0, INF, 100), (45.0, 65.0, 85), (25.0, 45.0, 65), (10.0, 25.0, 40), (-INF, 10.0, 10),
     ],
     "alineamiento_senadores_prov": [
-        # Provisional (2026-07-08, sin historia real todavía): MISMAS anclas
-        # que gobernadores_alineamiento — tramos extremos abiertos (INF),
-        # como el resto de las bandas del ITCP (incluyendo otros indicadores
-        # %-acotados como cohesion_bloque/cohesion_bloque_senado/
-        # movilizacion_cepa) — hasta recalibrar con datos reales
-        # backfilleados. Un tramo superior finito (65,100,100) desplazaría la
-        # saturación al punto medio del motor interpolado (82.5 en vez de
-        # 65) y puntuaría el valor real (~68) en ~92 en vez de 100 —
-        # corregido tras detectarlo en el test de ponderación (99.5 en vez
-        # de 100.0 esperado).
-        (65.0, INF, 100),
-        (45.0, 65.0, 85),
-        (25.0, 45.0, 65),
-        (10.0, 25.0, 40),
-        (-INF, 10.0, 10),
+        # RECALIBRADO 2026-07-09 con backfill real (ADR-0038): las anclas
+        # 65/45/25/10 de abajo eran heredadas de gobernadores_alineamiento
+        # (nunca validadas contra este indicador). Con 29 puntos mensuales
+        # reales reconstruidos (feb-2024→jun-2026, ventana rolling 90d —
+        # descargar_series.fetch_alineamiento_senadores_prov_mensual), el
+        # rango observado es 19,4–100,0 (media 56,9, mediana 57,7): el techo
+        # de 65 saturaba en 8/29 meses (28%, no un caso de borde) y el piso
+        # de 10 casi no se tocaba (0/29). Anclas nuevas en 40/50/60/70
+        # (números redondos, chequeados contra los 29 puntos: 6/6/6/7/4 por
+        # banda, casi equidistribuido). Tramos extremos siguen ABIERTOS
+        # (INF) — un tramo superior finito (70,100,100) desplazaría la
+        # saturación al punto medio del motor interpolado (85 en vez de 70),
+        # mismo gotcha ya documentado antes de este cambio.
+        (70.0, INF, 100),
+        (60.0, 70.0, 85),
+        (50.0, 60.0, 65),
+        (40.0, 50.0, 40),
+        (-INF, 40.0, 10),
     ],
     "adhesion_reformas_provincial": [     # % provincias adheridas RIGI, mayor = mejor — PROVISIONAL
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),

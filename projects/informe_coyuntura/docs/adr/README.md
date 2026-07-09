@@ -47,6 +47,10 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0032](0032-inseguridad-ivi-mensual.md) | Inseguridad MENSUALIZADA: del SNIC anual al IVI del LICIP-UTDT (encuesta de victimización, 40 centros urbanos, ventana 12m — capta la cifra negra); base declarada ene-2024 (encuesta suspendida 2020-2023); SNIC queda de contraste con store propio; divergencia registrado↓/declarado↑ visible = información | Aceptado |
 | [0033](0033-itvc-doble-conteo-y-winsorizacion.md) | ITVC saneado: doble conteo salario/comida eliminado (brecha vs alimentos r=0,985 = 32,75% del índice repetido → alimentos pasa a encarecimiento RELATIVO vs IPC general) + winsorización ASIMÉTRICA (techo 140 para booms — motos 166,7; sin piso: las crisis se señalizan con la flag crítica, no se recortan); ITVC 91,5 → 90,5; D10 abierta (taxonomía de dimensiones, CIGOB) | Aceptado |
 | [0034](0034-sentimiento-digital-puntuable.md) | Sentimiento digital PUNTUABLE: el cociente intra-consulta cancela la renormalización de Trends (verificado: 3 corridas amplitud 0,0; r=+0,76 vs IPC m/m; Wikipedia descartada con datos) — serie mensual ventana fija 2021→ con store de reemplazo total; entra a Confianza con 10% (ICC 45/IVI 30/sent 10/carne 10/motos 5); 13/13 puntúan, ITVC 90,7 | Aceptado |
+| [0035](0035-indice-expectativa-futuro-emigracion.md) | Índice de Expectativa de Futuro (intención migratoria) evaluado como 4º indicador de `espiritu_epoca` | Aceptado |
+| [0036](0036-itcp-parametrica-politica.md) | ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB que fije los pesos) | Aceptado |
+| [0037](0037-cohesion-bloque-scraping-bloqueado-antibot.md) | `cohesion_bloque` (Diputados): scraping directo implementado y correcto, pero bloqueado en producción por detección anti-bot de HCDN | Implementado, bloqueado en producción |
+| [0038](0038-alineamiento-senadores-recalibracion-bandas.md) | `alineamiento_senadores_prov`: anclas ITCP recalibradas 65/45/25/10 → 70/60/50/40 con backfill mensual real (29 puntos feb-2024→jun-2026); el techo viejo saturaba en 28% de los meses reales | Aceptado |
 
 ## Contexto general
 

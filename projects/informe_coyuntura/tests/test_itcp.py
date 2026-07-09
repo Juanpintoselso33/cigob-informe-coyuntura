@@ -48,6 +48,33 @@ def test_bandas_itcp_tiene_alineamiento_senadores_prov_no_gobernadores_alineamie
     assert "gobernadores_alineamiento" not in dim["indicadores"]
 
 
+def test_banda_alineamiento_senadores_prov_recalibrada():
+    # Recalibración 2026-07-09 (ADR-0038) con 29 puntos mensuales reales
+    # backfilleados: anclas 70/60/50/40 (antes 65/45/25/10, heredadas sin
+    # validar de gobernadores_alineamiento).
+    bandas = itcp.BANDAS_ITCP["alineamiento_senadores_prov"]
+    assert itcp.puntaje_banda(70.0, bandas) == 85    # low exclusivo del tramo abierto
+    assert itcp.puntaje_banda(70.01, bandas) == 100
+    assert itcp.puntaje_banda(60.0, bandas) == 65    # high inclusivo
+    assert itcp.puntaje_banda(50.0, bandas) == 40
+    assert itcp.puntaje_banda(40.0, bandas) == 10
+    assert itcp.puntaje_banda(19.4, bandas) == 10    # mínimo real observado (ago-2025)
+
+
+def test_banda_alineamiento_senadores_prov_ya_no_satura_el_valor_live_actual():
+    # El hallazgo que motivó la recalibración: bajo las anclas viejas
+    # (65,inf,100), el valor live de la card (68.3%) saturaba en puntaje
+    # interpolado 100.0 -- una tensión de 0.0/10 pese a no ser el máximo
+    # observado en la serie real (que llega a 100.0 en feb-2024). Con las
+    # anclas nuevas, 68.3 queda ENTRE el ancla de (65, 85) y (70, 100) --
+    # ya no se aplana en el techo.
+    import parametrica
+    bandas = itcp.BANDAS_ITCP["alineamiento_senadores_prov"]
+    puntaje = parametrica.puntaje_interpolado(68.3, bandas)
+    assert puntaje < 100.0
+    assert puntaje == 94.9
+
+
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
         "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100

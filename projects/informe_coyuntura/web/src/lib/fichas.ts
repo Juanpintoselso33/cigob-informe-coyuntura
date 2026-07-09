@@ -968,7 +968,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Reemplaza, desde julio de 2026, a un indicador de carga manual (\"alineamiento de gobernadores\") que quedó congelado por meses sin una fuente pública estructurada para actualizarlo — dos rondas de búsqueda de fuentes automatizables no encontraron ninguna que midiera directamente la postura del Poder Ejecutivo provincial.",
       "Caveat importante: este indicador mide comportamiento de voto de SENADORES, no la postura pública del gobernador de la provincia — un senador no depende del gobernador de turno, puede responder a la estrategia nacional de su propio partido. Es la mejor señal automatizable disponible hoy, no una medición directa del Poder Ejecutivo provincial.",
-      "El puntaje sube en escalones con ese porcentaje: más de 65% de coincidencia → el más alto; entre 45% y 65% → alto; entre 25% y 45% → moderado; entre 10% y 25% → bajo; menos de 10% → el más bajo. Los umbrales son provisorios: se fijaron sin serie histórica propia del indicador y se van a recalibrar cuando la haya.",
+      "El puntaje sube en escalones con ese porcentaje: más de 70% de coincidencia → el más alto; entre 60% y 70% → alto; entre 50% y 60% → moderado; entre 40% y 50% → bajo; 40% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante).",
       "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
     ],
     limitaciones: [
@@ -981,6 +981,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "El promedio de los últimos 90 días se recalcula completo desde la fuente en cada corrida; no se arrastran promedios previos.",
     cambios: [
       { fecha: "2026-07-08", cambio: "Alta como reemplazo de \"alineamiento de gobernadores\" (indicador de carga manual, sin fuente automatizable encontrada): mide coincidencia de voto de senadores no oficialistas con la posición del bloque de gobierno, por provincia." },
+      { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 65/45/25/10, heredados de \"alineamiento de gobernadores\" sin validar) a partir de una serie mensual propia reconstruida (29 meses reales, feb-2024 a jun-2026): nuevos cortes en 70/60/50/40." },
     ],
   },
 

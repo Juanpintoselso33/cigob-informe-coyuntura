@@ -1276,6 +1276,70 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
     }
 
 
+def fetch_alineamiento_senadores_actas_anio(anio: int) -> list | None:
+    """Detalle CRUDO de alineamiento por acta de TODO el año dado (sin
+    recortar por ventana de días): [{"fecha": "YYYY-MM-DD", "provincias":
+    {provincia: [coincide, total]}}, ...], una fila por acta CON señal (las
+    actas donde el bloque LLA queda empatado no aportan fila).
+
+    A diferencia de fetch_alineamiento_senadores_prov (que recorta por
+    dias_ventana ANTES de pedir el detalle de cada acta, para no gastar
+    requests de más en la corrida diaria), acá se pide el año COMPLETO de
+    una sola pasada. Existe para el backfill mensual
+    (descargar_series.fetch_alineamiento_senadores_prov_mensual): con el
+    detalle crudo cacheado por año se pueden derivar múltiples ventanas de
+    90 días (una por fin de mes) sin volver a scrapear el Senado por cada
+    mes — sólo tiene sentido llamarla para años YA cerrados (o, para el año
+    en curso, sabiendo que se re-pide entera en cada corrida, igual que el
+    resto de las series de Senado)."""
+    session = _hcdn_votaciones_session()
+    actas = _descubrir_actas_senado(session, anio)
+    if actas is None:
+        return None
+    detalle = []
+    for acta in actas:
+        r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
+        if r is None:
+            continue
+        filas = _parsear_acta(r.text)
+        resultado_acta = _alineamiento_por_provincia(filas)
+        if resultado_acta:
+            detalle.append({
+                "fecha": acta["fecha"].strftime("%Y-%m-%d"),
+                "provincias": {p: list(ct) for p, ct in resultado_acta.items()},
+            })
+    return detalle
+
+
+def _agregar_alineamiento_ventana(detalle: list[dict], referencia: datetime, dias_ventana: int) -> dict | None:
+    """Agrega el detalle crudo por acta (fetch_alineamiento_senadores_actas_anio,
+    de uno o más años) dentro de la ventana [referencia − dias_ventana,
+    referencia] y devuelve {valor, fecha_dato, n_provincias}, o None si
+    ninguna acta cae en la ventana. Misma fórmula que
+    fetch_alineamiento_senadores_prov (promedio simple entre provincias con
+    señal) — factorizada acá para que el backfill mensual pueda recalcularla
+    para cada fin de mes sin duplicar la matemática ni volver a pedir red."""
+    limite = referencia - timedelta(days=dias_ventana)
+    acumulado = {}
+    fecha_max = None
+    for fila in detalle:
+        fecha = datetime.strptime(fila["fecha"], "%Y-%m-%d")
+        if fecha < limite or fecha > referencia:
+            continue
+        for provincia, (coincide, total) in fila["provincias"].items():
+            c0, t0 = acumulado.get(provincia, (0, 0))
+            acumulado[provincia] = (c0 + coincide, t0 + total)
+        fecha_max = fecha if fecha_max is None else max(fecha_max, fecha)
+    if not acumulado:
+        return None
+    ratios_por_provincia = [c / t for c, t in acumulado.values() if t > 0]
+    return {
+        "valor": round(100 * sum(ratios_por_provincia) / len(ratios_por_provincia), 1),
+        "fecha_dato": fecha_max.strftime("%Y-%m-%d"),
+        "n_provincias": len(acumulado),
+    }
+
+
 # ── MAGyP — adhesión provincial al RIGI ──────────────────────────────────────
 
 def fetch_adhesion_reformas_provincial() -> dict | None:

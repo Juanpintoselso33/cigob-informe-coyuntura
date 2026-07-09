@@ -537,6 +537,84 @@ def fetch_alineamiento_senadores_prov_serie(anio_inicio: int = 2023) -> list:
                                      anio_inicio, "alineamiento_senadores_prov")
 
 
+ALINEAMIENTO_SENADORES_ACTAS_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "alineamiento_senadores_actas.json"
+
+
+def _actas_alineamiento_cacheadas(anio_inicio: int) -> dict:
+    """Cachea el detalle CRUDO por acta (politica.fetch_alineamiento_senadores_actas_anio)
+    por año -- mismo criterio que _serie_cohesion_cacheada: los años
+    CERRADOS son inmutables una vez bajados, el año en curso se re-pide
+    siempre. {anio (str): [detalle de fetch_alineamiento_senadores_actas_anio]}.
+    Existe para poder derivar la serie MENSUAL (fetch_alineamiento_senadores_prov_mensual)
+    sin volver a scrapear el Senado en cada corrida -- el año completo se
+    pide una sola vez, la ventana de 90 días se recorta después en Python."""
+    try:
+        cache = json.loads(ALINEAMIENTO_SENADORES_ACTAS_STORE.read_text(encoding="utf-8-sig"))
+        if not isinstance(cache, dict):
+            cache = {}
+    except (OSError, json.JSONDecodeError):
+        cache = {}
+
+    hoy_anio = date.today().year
+    for anio in range(anio_inicio, hoy_anio + 1):
+        clave = str(anio)
+        if anio < hoy_anio and clave in cache:
+            continue   # año cerrado ya cacheado -- inmutable, no se vuelve a pedir
+        try:
+            detalle = politica.fetch_alineamiento_senadores_actas_anio(anio)
+        except Exception as e:
+            print(f"  [WARN] alineamiento_senadores_actas {anio}: {e}")
+            continue
+        if detalle is not None:
+            cache[clave] = detalle
+            ALINEAMIENTO_SENADORES_ACTAS_STORE.write_text(
+                json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
+            print(f"  [OK] alineamiento_senadores_actas {anio}: {len(detalle)} actas con señal")
+        elif clave not in cache:
+            print(f"  [WARN] alineamiento_senadores_actas {anio}: sin dato y sin cache previo -- se omite")
+
+    return cache
+
+
+def _fines_de_mes(desde: date, hasta: date) -> list:
+    """Lista de fechas de fin de mes (inclusive) entre `desde` y `hasta`,
+    redondeando `desde` al fin de SU mes."""
+    puntos = []
+    anio, mes = desde.year, desde.month
+    while True:
+        fin_mes = date(anio, mes, calendar.monthrange(anio, mes)[1])
+        if fin_mes > hasta:
+            break
+        puntos.append(fin_mes)
+        anio, mes = (anio + 1, 1) if mes == 12 else (anio, mes + 1)
+    return puntos
+
+
+def fetch_alineamiento_senadores_prov_mensual(anio_inicio: int = 2023, dias_ventana: int = 90) -> list:
+    """Serie MENSUAL de alineamiento_senadores_prov: un punto por fin de mes
+    desde diciembre de `anio_inicio` hasta hoy, cada uno una ventana rolling
+    de `dias_ventana` días (mismo criterio "Continua (90d)" que el valor
+    live de la card) -- a diferencia de la serie ANUAL de arriba
+    (fetch_alineamiento_senadores_prov_serie, un punto por año con ventana
+    de 366 días), esta da resolución mensual real para poder evaluar si las
+    anclas del ITCP (PROVISIONAL, ver itcp.BANDAS_ITCP) siguen siendo
+    razonables con más recorrido de datos. Reusa el detalle crudo por acta
+    cacheado por año (_actas_alineamiento_cacheadas) -- una sola pasada de
+    scraping por año, no una por mes. [[YYYY-MM-DD, valor]]."""
+    cache = _actas_alineamiento_cacheadas(anio_inicio)
+    detalle = [fila for detalle_anio in cache.values() for fila in detalle_anio]
+    if not detalle:
+        return []
+
+    puntos = []
+    for fin_mes in _fines_de_mes(date(anio_inicio, 12, 1), date.today()):
+        referencia = datetime(fin_mes.year, fin_mes.month, fin_mes.day)
+        resultado = politica._agregar_alineamiento_ventana(detalle, referencia, dias_ventana)
+        if resultado:
+            puntos.append([fin_mes.strftime("%Y-%m-%d"), resultado["valor"]])
+    return puntos
+
+
 def fetch_adhesion_reformas_provincial_serie() -> list:
     """adhesion_reformas_provincial es un STOCK: la adhesión al RIGI es un
     evento único e irreversible por provincia, no una magnitud que fluctúe

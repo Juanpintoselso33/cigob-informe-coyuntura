@@ -733,6 +733,60 @@ def test_fetch_alineamiento_senadores_prov_acumula_entre_actas_y_fecha_max_solo_
     assert resultado["fecha_dato"] == "2026-06-10"
 
 
+def test_fetch_alineamiento_senadores_actas_anio_devuelve_detalle_crudo_por_acta(monkeypatch):
+    # Mismas 3 actas que el test de acumulación de arriba, pero acá se pide
+    # el detalle SIN agregar -- una fila por acta con señal, la 3ª (LLA
+    # empatado) se excluye igual que en la agregación.
+    session = MagicMock()
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: session)
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, anio: [
+        {"id": "1", "fecha": datetime(2026, 6, 1)},
+        {"id": "2", "fecha": datetime(2026, 6, 10)},
+        {"id": "3", "fecha": datetime(2026, 6, 20)},  # LLA empatado -- sin señal
+    ])
+    fixtures = {
+        "1": FIXTURE_ACTA_ALINEAMIENTO,
+        "2": FIXTURE_ACTA2_CABA_DESALINEADO,
+        "3": FIXTURE_ACTA3_LLA_EMPATADO,
+    }
+
+    def fake_paced_get(s, base, path):
+        acta_id = path.rsplit("/", 1)[-1]
+        return MagicMock(status_code=200, text=fixtures[acta_id])
+
+    monkeypatch.setattr(politica, "_paced_get", fake_paced_get)
+
+    detalle = politica.fetch_alineamiento_senadores_actas_anio(2026)
+
+    assert detalle == [
+        {"fecha": "2026-06-01", "provincias": {"CABA": [1, 1], "Córdoba": [1, 3]}},
+        {"fecha": "2026-06-10", "provincias": {"CABA": [0, 1]}},
+    ]
+
+
+def test_fetch_alineamiento_senadores_actas_anio_sin_actas_devuelve_none(monkeypatch):
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, anio: None)
+    assert politica.fetch_alineamiento_senadores_actas_anio(2026) is None
+
+
+def test_agregar_alineamiento_ventana_filtra_por_fecha_y_promedia():
+    detalle = [
+        {"fecha": "2026-01-01", "provincias": {"CABA": [1, 1]}},          # fuera de ventana
+        {"fecha": "2026-06-01", "provincias": {"CABA": [1, 1], "Córdoba": [1, 3]}},
+        {"fecha": "2026-06-10", "provincias": {"CABA": [0, 1]}},
+    ]
+    resultado = politica._agregar_alineamiento_ventana(detalle, datetime(2026, 6, 15), dias_ventana=90)
+    # CABA acumulado entre 01-jun y 10-jun: (1+0, 1+1) = (1, 2) -> 50%.
+    # Córdoba solo aporta el 01-jun: (1, 3) -> 33.3%. Promedio: 41.7%.
+    assert resultado == {"valor": 41.7, "fecha_dato": "2026-06-10", "n_provincias": 2}
+
+
+def test_agregar_alineamiento_ventana_sin_actas_en_ventana_devuelve_none():
+    detalle = [{"fecha": "2025-01-01", "provincias": {"CABA": [1, 1]}}]
+    assert politica._agregar_alineamiento_ventana(detalle, datetime(2026, 6, 15), dias_ventana=90) is None
+
+
 # ── Adhesión a reformas (RIGI) ────────────────────────────────────────────────
 
 FIXTURE_TABLA_RIGI = """
