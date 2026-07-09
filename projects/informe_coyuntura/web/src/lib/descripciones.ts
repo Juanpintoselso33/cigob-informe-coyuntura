@@ -126,13 +126,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   adhesion_reformas_provincial: {
     que: "Cuántas de las 24 provincias (incluida CABA) figuran adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI), sobre el total.",
-    aporta: "Mide adhesión fiscal a un régimen de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de gobernadores.",
+    aporta: "Mide adhesión fiscal a un régimen de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia.",
     frecuencia: "Continua", tipo: "Nivel (%)",
   },
-  gobernadores_alineamiento: {
-    que: "Qué porcentaje de los gobernadores se posiciona públicamente alineado con la política nacional.",
-    aporta: "Mide el apoyo territorial, decisivo en el Senado y en la gobernabilidad.",
-    frecuencia: "Trimestral", tipo: "Nivel (%)",
+  alineamiento_senadores_prov: {
+    que: "Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición que tomó el bloque oficialista en esa misma votación, promediado entre provincias.",
+    aporta: "Mide comportamiento de voto legislativo por provincia, no la postura pública del gobernador (Poder Ejecutivo provincial) — un senador no depende del gobernador de turno. Es la señal automatizable más cercana al apoyo territorial disponible hoy.",
+    frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   veto_quorum: {
     que: "Qué porcentaje de las sesiones de Diputados se cae por falta de quórum.",

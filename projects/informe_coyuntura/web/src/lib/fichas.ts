@@ -949,6 +949,41 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  alineamiento_senadores_prov: {
+    tipo: "indicador",
+    id: "alineamiento_senadores_prov",
+    cinturon: "politica",
+    rezago: "El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada corrida.",
+    fuente: {
+      organismo: "Senado de la Nación",
+      operacion: "Votaciones nominales del Senado — coincidencia de senadores no alineados con la posición del bloque de La Libertad Avanza, por provincia, actas de los últimos 90 días",
+      url: "https://www.senado.gob.ar/votaciones/actas",
+      acceso: "Automático: scraping directo del portal público de votaciones nominales del Senado; sin carga manual.",
+    },
+    transformaciones: [
+      "Para cada acta, determina la posición del bloque de La Libertad Avanza (el sentido en el que votó la mayoría de sus senadores). Si el bloque queda empatado, esa acta no aporta señal.",
+      "Para cada provincia, mide qué proporción de los votos de sus senadores QUE NO son del bloque LLA coincidió con esa posición. Las provincias donde los 3 senadores son de LLA quedan fuera del cálculo: su coincidencia sería automática por definición, no aporta información.",
+      "El indicador es el promedio simple de esa proporción entre todas las provincias con al menos un senador no-LLA, sobre las actas de los últimos 90 días.",
+    ],
+    incidenciaTexto: [
+      "Reemplaza, desde julio de 2026, a un indicador de carga manual (\"alineamiento de gobernadores\") que quedó congelado por meses sin una fuente pública estructurada para actualizarlo — dos rondas de búsqueda de fuentes automatizables no encontraron ninguna que midiera directamente la postura del Poder Ejecutivo provincial.",
+      "Caveat importante: este indicador mide comportamiento de voto de SENADORES, no la postura pública del gobernador de la provincia — un senador no depende del gobernador de turno, puede responder a la estrategia nacional de su propio partido. Es la mejor señal automatizable disponible hoy, no una medición directa del Poder Ejecutivo provincial.",
+      "El puntaje sube en escalones con ese porcentaje: más de 65% de coincidencia → el más alto; entre 45% y 65% → alto; entre 25% y 45% → moderado; entre 10% y 25% → bajo; menos de 10% → el más bajo. Los umbrales son provisorios: se fijaron sin serie histórica propia del indicador y se van a recalibrar cuando la haya.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
+    ],
+    limitaciones: [
+      "Proxy de comportamiento legislativo, no medición directa de la postura del gobernador (Poder Ejecutivo provincial) — ver caveat arriba.",
+      "Incluye votaciones consensuadas (donde todo el Senado vota en el mismo sentido), no solo las genuinamente disputadas — solo se excluyen las actas donde el propio bloque LLA queda internamente empatado.",
+      "Bloque LLA chico en el Senado: pocos senadores propios hacen que su 'posición' en un acta dependa de muy pocos votos.",
+      "Depende de que el portal público del Senado mantenga su estructura actual: un cambio de diseño del sitio puede interrumpir la lectura automática hasta que se ajuste.",
+    ],
+    faltantes: "Si el scraping no logra llegar al sitio, se conserva el último promedio calculado en caché; recién se marca desactualizado si pasan más de 10 días sin una corrida que haya llegado al portal — un receso legislativo sin actas nuevas no cuenta como desactualización.",
+    revisiones: "El promedio de los últimos 90 días se recalcula completo desde la fuente en cada corrida; no se arrastran promedios previos.",
+    cambios: [
+      { fecha: "2026-07-08", cambio: "Alta como reemplazo de \"alineamiento de gobernadores\" (indicador de carga manual, sin fuente automatizable encontrada): mide coincidencia de voto de senadores no oficialistas con la posición del bloque de gobierno, por provincia." },
+    ],
+  },
+
   adhesion_reformas_provincial: {
     tipo: "indicador",
     id: "adhesion_reformas_provincial",
@@ -965,9 +1000,9 @@ export const FICHAS: Record<string, Ficha> = {
       "El indicador es ese conteo sobre 24, expresado en porcentaje.",
     ],
     incidenciaTexto: [
-      "Mide adhesión a un régimen fiscal y de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de gobernadores. Una provincia puede adherir al RIGI por conveniencia fiscal aun con un gobernador crítico del gobierno nacional, y a la inversa.",
+      "Mide adhesión a un régimen fiscal y de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia. Una provincia puede adherir al RIGI por conveniencia fiscal aun con un gobernador crítico del gobierno nacional, y a la inversa.",
       "El puntaje sube en escalones con el porcentaje adherido: más de 80% de provincias adheridas → el más alto; entre 60% y 80% → alto; entre 40% y 60% → moderado; entre 20% y 40% → bajo; menos de 20% → el más bajo. Los umbrales son provisorios: se fijaron sin serie histórica propia del indicador y se van a recalibrar cuando la haya.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de gobernadores.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
     ],
     limitaciones: [
       "Cuenta la adhesión formal, no la inversión efectiva que esa adhesión termina generando en cada provincia.",
@@ -1007,6 +1042,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "Solo cambia con una nueva carga del analista.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón como estimación manual: la relación con los gobernadores es una dimensión del capital político sin fuente estructurada." },
+      { fecha: "2026-07-08", cambio: "Retirado del peso del índice: reemplazado por alineamiento_senadores_prov, un proxy automatizable de comportamiento de voto legislativo por provincia. Esta ficha queda como referencia histórica." },
     ],
   },
 
