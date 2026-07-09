@@ -713,8 +713,8 @@ export const FICHAS: Record<string, Ficha> = {
   },
 
   // ═══════════════════════════════════════════════════════════════════════
-  // Política — el score del cinturón es el promedio simple de las tensiones
-  // de los indicadores disponibles (sin índice paramétrico)
+  // Política — puntúa en el ITCP (paramétrica de 5 dimensiones ponderadas,
+  // jul-2026); la tensión del cinturón es (100 − ITCP) / 10
   // ═══════════════════════════════════════════════════════════════════════
   votometro_ventaja_lla: {
     tipo: "indicador",
@@ -733,8 +733,8 @@ export const FICHAS: Record<string, Ficha> = {
       "El indicador es la diferencia LLA − PJ de esas intenciones ponderadas, en puntos porcentuales.",
     ],
     incidenciaTexto: [
-      "La tensión es lineal en la ventaja: +15 puntos → tensión 0 · empate → 5 · −15 puntos → 10.",
-      "El cinturón político no usa un índice compuesto: su score es el promedio simple de las tensiones de los indicadores disponibles — cada dimensión pesa igual.",
+      "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre anclas: más de +15 puntos → el más alto; entre +5 y +15 → alto; entre −5 y +5 → moderado; entre −15 y −5 → bajo; −15 o menos → el más bajo.",
+      "Es el único indicador de la dimensión de imagen y voto del índice del cinturón (10% del total) — la dimensión que pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
     ],
     dobleUso: "El mismo dato alimenta el indicador de clima electoral del cinturón espíritu de época: la ventaja del Votómetro puntúa en los dos cinturones, decisión declarada de la versión inicial de ese cinturón.",
     limitaciones: [
@@ -742,11 +742,12 @@ export const FICHAS: Record<string, Ficha> = {
       "El peso por recencia se calcula contra el día de la corrida: sin encuestas nuevas, el valor deriva lentamente día a día.",
       "Si pasan más de 60 días sin sondeos, el indicador se marca como desactualizado.",
     ],
-    faltantes: "Si la lectura falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y el score del cinturón promedia los presentes.",
-    revisiones: "La serie mensual completa se rederiva de las encuestas en cada corrida: un sondeo cargado con retraso corrige los meses que toca. El último punto de la serie siempre coincide con el valor publicado.",
+    faltantes: "Si la lectura falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
+    revisiones: "La serie mensual completa se rederiva de las encuestas en cada corrida: un sondeo cargado con retraso corrige los meses que toca. La serie evalúa la ponderación al cierre de cada mes, así que su último punto puede diferir levemente del titular, que se recalcula todos los días.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del capital electoral del oficialismo." },
       { fecha: "2026-06-30", cambio: "Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes." },
+      { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
     ],
   },
 
@@ -767,19 +768,20 @@ export const FICHAS: Record<string, Ficha> = {
       "La serie histórica repite el mismo cociente por año calendario completo, desde 2020.",
     ],
     incidenciaTexto: [
-      "La tensión es lineal en el ratio: 0 DNU por ley → tensión 0 · 1 → 5 · 2 o más → 10.",
-      "El score del cinturón es el promedio simple de las tensiones de los indicadores disponibles.",
+      "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto a la eficacia legislativa, las sesiones caídas por quórum y los proyectos varados en comisión.",
     ],
     limitaciones: [
       "Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.",
       "El ratio del año corriente es inestable en los primeros meses (pocas leyes en el denominador).",
       "Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.",
     ],
-    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y el score promedia los presentes.",
+    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "Los conteos se reconsultan completos en cada corrida: si la fuente carga normas con retraso, el número se corrige solo.",
     cambios: [
       { fecha: "2026-05", cambio: "Entra al cinturón en reemplazo del índice de confianza en el gobierno (UTDT): el cinturón mide capacidad de gobernar, no popularidad." },
       { fecha: "2026-06-30", cambio: "Serie anual desde 2020 para dar contexto histórico al ratio del año en curso." },
+      { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
     ],
   },
 
@@ -799,8 +801,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Según cómo reporte la fuente, se usan dos escalas de referencia distintas: casos por mes (sobre un máximo de 80) o conflictos acumulados (sobre 200).",
     ],
     incidenciaTexto: [
-      "La tensión es el índice dividido por 10: índice 0 → tensión 0 · 50 → 5 · 100 → 10.",
-      "El score del cinturón es el promedio simple de las tensiones de los indicadores disponibles.",
+      "El puntaje del índice se asigna por bandas del nivel de conflictividad, interpolado entre anclas: 20 o menos → el más alto; entre 20 y 40 → alto; entre 40 y 60 → moderado; entre 60 y 80 → bajo; más de 80 → el más bajo.",
+      "Integra la dimensión de conflicto social del índice del cinturón (15% del total), donde pesa 60% junto al 40% de la variación de eventos de protesta en la Ciudad de Buenos Aires.",
     ],
     limitaciones: [
       "La fuente es un centro de estudios con línea editorial propia, no un organismo oficial.",
@@ -808,10 +810,11 @@ export const FICHAS: Record<string, Ficha> = {
       "Los máximos de las escalas (80 casos por mes, 200 conflictos) son calibraciones propias del informe, no de la fuente.",
       "No hay serie histórica reconstruible: la fuente no publica una serie comparable hacia atrás, así que las mediciones se acumulan hacia adelante.",
     ],
-    faltantes: "Si la lectura falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y el score promedia los presentes.",
+    faltantes: "Si la lectura falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "Cada informe nuevo reemplaza al anterior; la fuente no revisa hacia atrás.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como aproximación a la conflictividad social y laboral en la calle." },
+      { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de conflicto social — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
     ],
   },
 
@@ -832,19 +835,20 @@ export const FICHAS: Record<string, Ficha> = {
       "La variación nominal se deflacta por el IPC diciembre contra diciembre: el resultado es la variación real interanual.",
     ],
     incidenciaTexto: [
-      "La tensión crece cuando las transferencias reales caen: +10% real → tensión 0 · 0% → 2,5 · −10% → 5 · −30% → 10.",
-      "El score del cinturón es el promedio simple de las tensiones de los indicadores disponibles.",
+      "El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas: más de +10% → el más alto; entre 0% y +10% → alto; entre −10% y 0% → moderado; entre −20% y −10% → bajo; −20% o menos → el más bajo.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI.",
     ],
     limitaciones: [
       "Granularidad anual: no capta la tensión federal dentro del año.",
       "El nombre del archivo oficial cambia cada año: hay que apuntar la descarga de nuevo cada enero.",
       "Mide el flujo fiscal hacia las provincias — una aproximación parcial a la relación política con los gobernadores.",
     ],
-    faltantes: "Si la descarga falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y el score promedia los presentes.",
+    faltantes: "Si la descarga falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "Se recalcula completo desde la fuente en cada corrida: revisiones del archivo oficial o del IPC se absorben automáticamente.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida de la armonía fiscal entre la Nación y las provincias." },
       { fecha: "2026-06-30", cambio: "El deflactor pasó de una proyección fija al índice IPC oficial del INDEC: la variación real publicada se corrigió de +1,8% a +7,0%." },
+      { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de alianzas territoriales — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
     ],
   },
 
@@ -866,19 +870,20 @@ export const FICHAS: Record<string, Ficha> = {
       "Ambos hechos dentro de una ventana móvil de 12 meses: el indicador es aprobados sobre enviados.",
     ],
     incidenciaTexto: [
-      "La tensión crece cuando la agenda no se convierte en ley: 70% aprobado → tensión 0 · 35% → 5 · 0% → 10.",
-      "El score del cinturón es el promedio simple de las tensiones de los indicadores disponibles.",
+      "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 55% → el más alto; entre 35% y 55% → alto; entre 15% y 35% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 30% junto al ratio DNU, las sesiones caídas por quórum y los proyectos varados en comisión.",
     ],
     limitaciones: [
       "Denominador chico: con unos veinte proyectos en la ventana, uno solo mueve más de cuatro puntos porcentuales.",
       "La sanción se detecta por el texto del movimiento: no distingue medias sanciones de otras variantes de registro.",
       "Cuenta proyectos por igual, sin ponderar su peso político.",
     ],
-    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y el score promedia los presentes.",
+    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "La serie completa de ventanas móviles se regenera desde la fuente en cada corrida.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida de la capacidad de convertir la agenda de gobierno en ley." },
       { fecha: "2026-06-30", cambio: "Serie mensual de ventanas móviles de 12 meses desde diciembre de 2023." },
+      { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
     ],
   },
 
@@ -899,7 +904,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
-      "El puntaje sube en escalones con ese porcentaje: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 98% y 99% → moderado; entre 97% y 98% → bajo; 97% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (dic-2023 en adelante) — antes eran una fórmula ad hoc nunca validada, y saturaban en el escalón más alto en el 100% de los meses reales.",
+      "El puntaje del índice se asigna por bandas de ese porcentaje, interpolado entre anclas: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 98% y 99% → moderado; entre 97% y 98% → bajo; 97% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (dic-2023 en adelante) — antes eran una fórmula ad hoc nunca validada, que saturaba en la banda más alta en el 100% de los meses reales.",
       "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 65% frente al 35% del mismo cálculo aplicado al Senado.",
     ],
     limitaciones: [
@@ -931,17 +936,17 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: scraping directo del portal público de votaciones nominales del Senado; sin carga manual.",
     },
     transformaciones: [
-      "Mismo cálculo que la cohesión de bloque en Diputados, aplicado a las actas del Senado: para cada acta con al menos un voto a favor o en contra del bloque propio de LLA, resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
+      "Para cada acta del Senado con al menos un voto a favor o en contra del bloque propio de LLA, calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
       "El indicador es el promedio de ese cálculo en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran en la cuenta.",
     ],
     incidenciaTexto: [
-      "Es una lectura complementaria de la cohesión de bloque, no un reemplazo de la de Diputados: otra cámara, otra composición de bloque. Se lee junto a la de Diputados, nunca en su lugar.",
-      "El puntaje sube en escalones con ese porcentaje: más de 95% → el más alto; entre 90% y 95% → alto; entre 85% y 90% → moderado; entre 80% y 85% → bajo; 80% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante) — antes copiaban, sin validar, los de Diputados.",
-      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 35% frente al 65% del indicador de Diputados — el bloque propio en el Senado tiene muchas menos bancas, así que pesa menos y cada acta dividida mueve su propio promedio con más fuerza.",
+      "Mide qué tan unido vota el bloque oficialista puertas adentro de la cámara alta. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
+      "El puntaje del índice se asigna por bandas de ese porcentaje, interpolado entre anclas: más de 95% → el más alto; entre 90% y 95% → alto; entre 85% y 90% → moderado; entre 80% y 85% → bajo; 80% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante); las anclas son propias del Senado, donde el bloque tiene pocas bancas y cada acta dividida mueve el promedio con más fuerza.",
+      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 35%.",
     ],
     limitaciones: [
-      "Bloque chico: el número de senadores propios de LLA es mucho menor al de la Cámara de Diputados, así que un solo voto disidente mueve el promedio con más fuerza.",
-      "Indicador complementario: otra cámara y otra composición de bloque, no sustituye a la lectura de Diputados.",
+      "Bloque chico: LLA tiene pocas bancas propias en el Senado, así que un solo voto disidente mueve el promedio con más fuerza.",
+      "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
       "Depende de que el portal público del Senado mantenga su estructura actual: un cambio de diseño del sitio puede interrumpir la lectura automática hasta que se ajuste.",
       "No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el senador no hubiera votado.",
     ],
@@ -972,7 +977,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Reemplaza, desde julio de 2026, a un indicador de carga manual (\"alineamiento de gobernadores\") que quedó congelado por meses sin una fuente pública estructurada para actualizarlo — dos rondas de búsqueda de fuentes automatizables no encontraron ninguna que midiera directamente la postura del Poder Ejecutivo provincial.",
       "Caveat importante: este indicador mide comportamiento de voto de SENADORES, no la postura pública del gobernador de la provincia — un senador no depende del gobernador de turno, puede responder a la estrategia nacional de su propio partido. Es la mejor señal automatizable disponible hoy, no una medición directa del Poder Ejecutivo provincial.",
-      "El puntaje sube en escalones con ese porcentaje: más de 70% de coincidencia → el más alto; entre 60% y 70% → alto; entre 50% y 60% → moderado; entre 40% y 50% → bajo; 40% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante).",
+      "El puntaje del índice se asigna por bandas de ese porcentaje, interpolado entre anclas: más de 70% de coincidencia → el más alto; entre 60% y 70% → alto; entre 50% y 60% → moderado; entre 40% y 50% → bajo; 40% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante).",
       "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
     ],
     limitaciones: [
@@ -1001,12 +1006,12 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: lectura directa de la tabla publicada en el sitio del MAGyP.",
     },
     transformaciones: [
-      "Cuenta cuántas de las 24 provincias (incluida la Ciudad de Buenos Aires) figuran en la tabla oficial como adheridas al RIGI.",
+      "Cuenta cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran en la tabla oficial como adheridas al RIGI.",
       "El indicador es ese conteo sobre 24, expresado en porcentaje.",
     ],
     incidenciaTexto: [
       "Mide adhesión a un régimen fiscal y de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia. Una provincia puede adherir al RIGI por conveniencia fiscal aun con un gobernador crítico del gobierno nacional, y a la inversa.",
-      "El puntaje sube en escalones con el porcentaje adherido: más de 80% de provincias adheridas → el más alto; entre 60% y 80% → alto; entre 40% y 60% → moderado; entre 20% y 40% → bajo; menos de 20% → el más bajo. Los umbrales se chequearon contra la serie histórica real del indicador (24 meses, jul-2024 a jun-2026): a diferencia de otros indicadores del cinturón, no se recalibraron — la adhesión es un evento irreversible por provincia, así que el rango observado hoy es el arranque de un proceso todavía en curso, no una muestra representativa contra la cual fijar anclas permanentes.",
+      "El puntaje del índice se asigna por bandas del porcentaje adherido, interpolado entre anclas: más de 80% de jurisdicciones adheridas → el más alto; entre 60% y 80% → alto; entre 40% y 60% → moderado; entre 20% y 40% → bajo; menos de 20% → el más bajo. Los umbrales se chequearon contra la serie histórica real del indicador (24 meses, jul-2024 a jun-2026): a diferencia de otros indicadores del cinturón, no se recalibraron — la adhesión es un evento irreversible por jurisdicción, así que el rango observado hoy es el arranque de un proceso todavía en curso, no una muestra representativa contra la cual fijar anclas permanentes.",
       "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
     ],
     limitaciones: [
@@ -1069,19 +1074,20 @@ export const FICHAS: Record<string, Ficha> = {
       "El indicador es sesiones fracasadas sobre sesiones convocadas.",
     ],
     incidenciaTexto: [
-      "La tensión crece con las sesiones caídas: 0% → tensión 0 · 15% → 5 · 30% o más → 10.",
-      "El score del cinturón es el promedio simple de las tensiones de los indicadores disponibles.",
+      "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa y los proyectos varados en comisión.",
     ],
     limitaciones: [
       "Las sesiones desactivadas antes de la apertura formal no aparecen en el registro oficial: el indicador subestima el bloqueo.",
       "Muestra chica: con pocas sesiones en el período, cada una mueve decenas de puntos porcentuales.",
       "No distingue el quórum frustrado por la oposición de la inasistencia propia — decisión metodológica declarada.",
     ],
-    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y el score promedia los presentes.",
+    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "El dataset se reconsulta completo en cada corrida.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del bloqueo parlamentario." },
       { fecha: "2026-06-30", cambio: "Serie por período legislativo desde 2024." },
+      { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
     ],
   },
 
@@ -1103,18 +1109,19 @@ export const FICHAS: Record<string, Ficha> = {
       "El indicador es proyectos caídos sobre el total con dictamen.",
     ],
     incidenciaTexto: [
-      "La tensión crece con los dictámenes que no llegan a ley: 20% → tensión 0 · 40% → 5 · 60% o más → 10.",
-      "El score del cinturón es el promedio simple de las tensiones de los indicadores disponibles.",
+      "El puntaje del índice se asigna por bandas del porcentaje de proyectos caídos, interpolado entre anclas: 30% o menos → el más alto; entre 30% y 50% → alto; entre 50% y 70% → moderado; entre 70% y 85% → bajo; más de 85% → el más bajo.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto al ratio DNU, la eficacia legislativa y las sesiones caídas por quórum.",
     ],
     limitaciones: [
       "El valor vive cerca del máximo por una razón estructural: la gran mayoría de los dictámenes no llega al recinto bajo ningún gobierno — el indicador satura en el tope y pierde capacidad de discriminar la coyuntura.",
       "Depende del etiquetado de la fuente («Orden del Día», «sanción»): variantes de registro pueden contar mal.",
     ],
-    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y el score promedia los presentes.",
+    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "La serie completa se regenera desde la fuente en cada corrida.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del embudo entre comisiones y recinto." },
       { fecha: "2026-06-30", cambio: "Serie mensual de ventanas móviles de 12 meses desde diciembre de 2023." },
+      { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
     ],
   },
 
@@ -2376,16 +2383,16 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     seleccion: [
       "Doce indicadores en cinco dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El cinturón no tiene indicadores de contexto: todos los que se miden puntúan en el índice. Reemplaza a un promedio simple de nueve indicadores que pesaba todo por igual, sin distinguir la capacidad de gobernar de la popularidad.",
-      "Criterio de selección: fuentes públicas verificables y automatizables. Un indicador —el alineamiento de gobernadores— sigue siendo carga manual del analista: no se identificó todavía una fuente estructurada que lo mida de forma objetiva, y los caminos alternativos evaluados (composición legislativa por provincia, transferencias discrecionales) resultaron no ser proxies válidos de la conducta del Poder Ejecutivo provincial.",
+      "Criterio de selección: fuentes públicas verificables y automatizables. Los doce indicadores vigentes se calculan en forma automática. El alineamiento de los gobernadores —una estimación manual del analista, sin fuente pública estructurada que lo mida de forma objetiva— se retiró del índice en julio de 2026 y lo reemplazó el alineamiento de voto de los senadores por provincia; los caminos alternativos evaluados (composición legislativa por provincia, transferencias discrecionales) resultaron no ser proxies válidos de la conducta del Poder Ejecutivo provincial.",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones.",
       "Juicio experto: la paramétrica admite ajustes manuales por indicador con justificación escrita y fecha de vencimiento (un ajuste vencido se ignora solo); todo ajuste activo se publica junto al índice.",
-      "Cuatro indicadores —la cohesión del bloque propio en ambas cámaras, la adhesión provincial a un régimen de inversión y la variación de protestas en la Ciudad de Buenos Aires— son incorporaciones recientes sin serie histórica propia todavía: sus umbrales de puntaje son provisorios y se recalibrarán cuando haya más recorrido.",
+      "Cinco indicadores —la cohesión del bloque propio en ambas cámaras, el alineamiento de senadores por provincia, la adhesión provincial a un régimen de inversión y la variación de protestas en la Ciudad de Buenos Aires— son incorporaciones o redefiniciones de julio de 2026: sus series mensuales se reconstruyeron hacia atrás desde las fuentes (24 a 31 meses según el indicador) y sus umbrales se recalibraron contra esa historia real. La excepción declarada es la adhesión provincial, cuyos umbrales no se recalibraron: la adhesión es un proceso acumulativo todavía en curso y su rango observado no es una muestra representativa.",
     ],
     normalizacion: [
       "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante umbrales por banda, leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las abiertas en su borde; entre anclas el puntaje es lineal, en los extremos queda plano.",
-      "A diferencia de ITCM/ITCG, cuyos umbrales provienen de un documento institucional, acá los umbrales de los indicadores originales heredan el criterio de la fórmula que reemplazan, y los de los indicadores nuevos son una calibración propia declarada, sin historia propia todavía (ver tratamiento).",
+      "A diferencia de ITCM/ITCG, cuyos umbrales provienen de un documento institucional, acá los umbrales de los indicadores originales heredan el criterio de la fórmula que reemplazan, y los de los indicadores incorporados en julio de 2026 se calibraron contra la serie mensual reconstruida de cada uno (la ficha de cada indicador documenta sus cortes y su calibración).",
     ],
     agregacion: {
       latex: String.raw`\text{ITCP}=\sum_{\text{5 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
@@ -2399,7 +2406,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Se acompaña con el ejercicio de quitar cada componente por vez, para identificar cuál domina la lectura del mes.",
     ],
     validacion: [
-      "A diferencia del ITCM (riesgo país), el ITCG (Merval en dólares) y el ITVC (confianza del consumidor), el ITCP todavía no se contrasta contra un ancla externa de mercado o de opinión, ni participa de la matriz de validación cruzada que compara a los otros tres índices entre sí: es la incorporación más reciente al sistema de paramétricas del informe y esa validación queda como trabajo pendiente, declarado en las limitaciones de abajo.",
+      "El ITCP se contrasta contra el EPU de Argentina (Economic Policy Uncertainty: minería de texto sobre diarios locales, la misma familia metodológica que el índice de Baker/Bloom/Davis): el índice se reconstruye mes a mes desde las series de sus componentes y se correlaciona contra el EPU — la correlación esperada es negativa (más capital político, menos incertidumbre de política en la prensa) y el resultado se publica en la sección de validación del cinturón, actualizado en cada corrida.",
+      "Todavía no participa de la matriz de validación cruzada que compara a los otros tres índices del informe entre sí: es la incorporación más reciente al sistema de paramétricas y ese cruce queda como trabajo pendiente declarado.",
     ],
     comunicacion: [
       "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCP) / 10, con los mismos umbrales globales de siempre (0–3 estable · 4–6 en tensión · 7–10 tensionado).",
@@ -2414,13 +2422,15 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Los pesos de las cinco dimensiones no provienen de un documento institucional previo, a diferencia de los otros tres índices del informe: son una decisión editorial explícita, declarada como tal.",
-      "Cuatro de los doce indicadores son incorporaciones recientes sin serie histórica propia: sus umbrales de puntaje son una calibración provisoria a falta de historia, no una vara validada empíricamente todavía.",
-      "El índice todavía no se contrasta contra un ancla externa ni participa de la matriz de validación cruzada de los otros tres índices del informe, a diferencia de ITCM/ITCG/ITVC: trabajo pendiente declarado, no escondido.",
-      "Uno de los doce indicadores —el alineamiento de gobernadores— sigue siendo una estimación cualitativa del analista, sin fuente pública estructurada todavía.",
+      "Varios de los doce indicadores son incorporaciones de julio de 2026: sus umbrales se calibraron contra series mensuales reconstruidas de unos dos años — una historia real pero corta, que cubre un solo gobierno.",
+      "El índice se valida contra el EPU de Argentina, pero todavía no participa de la matriz de validación cruzada que compara a los otros tres índices del informe entre sí: trabajo pendiente declarado, no escondido.",
+      "El alineamiento territorial se mide por el comportamiento de voto de los senadores, no por la postura del Poder Ejecutivo provincial: no existe todavía una fuente pública estructurada que mida directamente el alineamiento de los gobernadores.",
       "El análisis multivariado previo del estándar OCDE/JRC (contrastar la estructura teórica con la correlación real entre los indicadores) está pendiente, igual que en el resto de los índices del informe.",
     ],
     cambios: [
       { fecha: "2026-07-07", cambio: "Nace el ITCP: reemplaza al promedio simple de nueve indicadores por la paramétrica de cinco dimensiones ponderadas, con flag de dimensión crítica y ajustes de analista con vencimiento. Se incorporan tres indicadores —cohesión de bloque en el Senado, adhesión provincial a un régimen de inversión y variación de protestas en la Ciudad de Buenos Aires— y se redefine la cohesión de bloque en Diputados, de una estimación manual a un cálculo automático sobre las votaciones nominales." },
+      { fecha: "2026-07-08", cambio: "El alineamiento de gobernadores (estimación manual, congelada por falta de fuente) se retira del índice; lo reemplaza el alineamiento de voto de los senadores por provincia, calculado en forma automática de las votaciones nominales del Senado." },
+      { fecha: "2026-07-09", cambio: "Recalibración contra historia real: los umbrales de la cohesión de bloque (ambas cámaras), el alineamiento de senadores y las protestas se recalibran con series mensuales reconstruidas desde las fuentes (24 a 31 meses). Se publica la validación externa del índice contra el EPU de Argentina." },
     ],
   },
 };

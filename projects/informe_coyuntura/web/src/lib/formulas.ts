@@ -177,6 +177,46 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{\text{proyectos del Ejecutivo aprobados}_{\text{12 m}}}{\text{proyectos enviados}_{\text{12 m}}}\times 100`,
     leyenda: "Ventana móvil de 12 meses sobre los datos abiertos de la Cámara de Diputados.",
   },
+  ratio_dnu: {
+    latex: String.raw`\frac{\text{DNU dictados en el a\~no en curso}}{\text{leyes sancionadas en el a\~no en curso}}`,
+    leyenda: "Conteos del buscador oficial de InfoLeg. Más de 1 = el Ejecutivo dicta más decretos de necesidad y urgencia que leyes logra sancionar el Congreso.",
+  },
+  veto_quorum: {
+    latex: String.raw`\frac{\text{sesiones fracasadas}}{\text{sesiones convocadas}}\times 100`,
+    leyenda: "Sesiones plenarias de Diputados del período legislativo en curso (datos abiertos HCDN). Una sesión cuenta como fracasada cuando no reúne quórum para abrir el debate.",
+  },
+  comisiones_caidas: {
+    latex: String.raw`\frac{\text{proyectos con dictamen sin sanci\'on}_{\text{12 m}}}{\text{proyectos con dictamen}_{\text{12 m}}}\times 100`,
+    leyenda: "Dictámenes de comisión con Orden del Día de los últimos 12 meses que nunca llegaron a sancionarse en el recinto (datos abiertos HCDN).",
+  },
+  movilizacion_cepa: {
+    latex: String.raw`\frac{\text{conflictos laborales acumulados del a\~no}}{200\;(\text{m\'aximo de referencia})}\times 100`,
+    leyenda: "La cifra del informe de conflictividad de CEPA, normalizada a un índice 0–100. El máximo de referencia (200 conflictos acumulados) es una calibración propia del informe, declarada en la ficha.",
+  },
+  iaf_transferencias: {
+    latex: String.raw`\left(\frac{\text{transferencias a provincias}_{\text{a\~no}}}{\text{transferencias}_{\text{a\~no anterior}}}\cdot\frac{\text{IPC}_{\text{a\~no anterior}}}{\text{IPC}_{\text{a\~no}}}-1\right)\times 100`,
+    leyenda: "Serie oficial de recursos de origen nacional (Hacienda), deflactada con el IPC del INDEC: la variación real interanual de lo que la Nación transfiere a las provincias.",
+  },
+  adhesion_reformas_provincial: {
+    latex: String.raw`\frac{\text{jurisdicciones adheridas al RIGI}}{24}\times 100`,
+    leyenda: "Conteo sobre la tabla oficial de adhesiones (MAGyP): 24 jurisdicciones = 23 provincias más la Ciudad de Buenos Aires.",
+  },
+  protestas_caba: {
+    latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\text{eventos de protesta en CABA}`,
+    leyenda: "Conteo de ACLED (marchas, concentraciones, disturbios con cobertura de prensa). El índice político no puntúa el conteo sino su variación contra el total de 2023, la línea de base del mandato.",
+  },
+  cohesion_bloque: {
+    latex: String.raw`\frac{1}{N}\sum_{\text{actas divididas, 90 d\'ias}}\frac{\left|\text{a favor}-\text{en contra}\right|}{\text{votos del bloque}}\times 100`,
+    leyenda: "Votaciones nominales del bloque propio de LLA en Diputados: qué tan pareja fue cada votación puertas adentro, promediado sobre las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.",
+  },
+  cohesion_bloque_senado: {
+    latex: String.raw`\frac{1}{N}\sum_{\text{actas divididas, 90 d\'ias}}\frac{\left|\text{a favor}-\text{en contra}\right|}{\text{votos del bloque}}\times 100`,
+    leyenda: "Votaciones nominales del bloque propio de LLA en el Senado: qué tan pareja fue cada votación puertas adentro, promediado sobre las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.",
+  },
+  alineamiento_senadores_prov: {
+    latex: String.raw`\frac{1}{N_{\text{provincias}}}\sum_{\text{provincias}}\frac{\text{votos no-LLA que coinciden con la posici\'on LLA}}{\text{votos no-LLA}}\times 100`,
+    leyenda: "Actas del Senado de los últimos 90 días: por provincia, qué proporción de los votos de senadores que no son del bloque LLA coincidió con el sentido en que votó ese bloque; el indicador promedia entre provincias con al menos un senador no oficialista.",
+  },
   votometro_ventaja_lla: {
     latex: String.raw`\text{intenci\'on de voto LLA}-\text{intenci\'on de voto PJ}`,
     leyenda: "Gap en puntos porcentuales del agregador Votómetro (encuestas ponderadas por calidad y recencia).",

@@ -1,5 +1,5 @@
 ---
-import { informe, series, label, presentacion, UNIDADES_LARGAS, CINTURONES, BARRA_0_100 } from "../lib/datos.ts";
+import { informe, series, label, presentacion, UNIDADES_LARGAS, UNIDADES_SERIE, CINTURONES, BARRA_0_100 } from "../lib/datos.ts";
 import { DESCRIPCIONES, DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import { FORMULAS } from "../lib/formulas.ts";
 
@@ -42,7 +42,8 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
     info[`${SLUG_DE[ckey] ?? ckey}.${ikey}`] = {
       label: label(ikey), cinturon: CINT_NOMBRE[ckey] ?? ckey,
       que: d.que, aporta: d.aporta,
-      valor: p.texto, unidad: p.unidad, unidadLarga: UNIDADES_LARGAS[ikey] ?? ind.unidad ?? "—",
+      valor: p.texto, unidad: p.unidad, unidadSerie: UNIDADES_SERIE[ikey] ?? p.unidad,
+      unidadLarga: UNIDADES_LARGAS[ikey] ?? ind.unidad ?? "—",
       frecuencia: d.frecuencia, tipo: d.tipo,
       fuente: ind.fuente ?? "", fecha: ind.fecha_dato ?? "", estado,
       aporteScore: ind.aporte_score ?? null,
@@ -203,7 +204,7 @@ const dimsJson = JSON.stringify(dims);
         multi.series.map(([k, nombre]) => ({ nombre, puntos: SERIES[k] })),
         { color, unidad: d.unidad, refY: multi.refY, refLabel: multi.refLabel });
     }
-    else if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidad, indicador: baseKey });
+    else if (tipo === "linea") chartInstance = C.timeChart(el, serie, { color, nombre: d.label, unidad: d.unidadSerie ?? d.unidad, indicador: baseKey });
     else if (tipo === "gauge_avance") chartInstance = C.gaugeChart(el, d.avance, { color, label: "avance ejecutado" });
     else if (tipo === "gauge_valor") chartInstance = C.gaugeChart(el, d.valorNum, { color, label: "nivel actual",
                centerText: `${nf.format(d.valorNum)}${d.unidadCorta ? " " + d.unidadCorta : ""}` });

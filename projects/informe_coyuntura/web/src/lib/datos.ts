@@ -287,7 +287,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   cohesion_bloque_senado: "% de votos (Senado)",
   gobernadores_alineamiento: "% de gobernadores (retirado)", veto_quorum: "% de sesiones",
   alineamiento_senadores_prov: "% de senadores no-LLA",
-  adhesion_reformas_provincial: "% de provincias adheridas",
+  adhesion_reformas_provincial: "% de jurisdicciones adheridas (sobre 24)",
   comisiones_caidas: "% de proyectos",
   // vida cotidiana
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
@@ -310,6 +310,13 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   litigiosidad_laboral: "% variación (12m vs 12m previos)",
   alertas_manifestacion: "Alertas únicas en el mes (GTFS-RT)",
   protestas_caba: "Eventos de protesta (acum. 12 meses, ACLED)",
+};
+
+// Unidad de la SERIE del gráfico cuando difiere de la unidad de la card
+// (pares card/serie con semántica distinta, las excepciones G3 del gate).
+// Sin entrada, el gráfico usa la unidad corta de la card.
+export const UNIDADES_SERIE: Record<string, string> = {
+  protestas_caba: "eventos/mes",   // card = acumulado 12m; serie = eventos por mes
 };
 
 export interface Presentacion { texto: string; unidad: string; titulo: string; }

@@ -120,12 +120,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   cohesion_bloque_senado: {
-    que: "El mismo cálculo que la cohesión de bloque en Diputados, aplicado a las votaciones nominales del bloque propio de LLA en el Senado: a favor menos en contra por acta dividida, en valor absoluto sobre el total, promediado en los últimos 90 días.",
-    aporta: "Es una lectura complementaria, no un reemplazo, de la cohesión en Diputados: otra cámara, con un bloque propio mucho más chico, donde una sola disidencia mueve el promedio con más fuerza.",
+    que: "Qué tan pareja o dispareja vota puertas adentro el bloque propio de LLA en el Senado, en las votaciones nominales divididas de los últimos 90 días: resta los votos a favor menos los votos en contra de cada acta, en valor absoluto, sobre el total de votos que emitió el bloque en esa acta.",
+    aporta: "Mide la cohesión interna del oficialismo en la cámara alta, donde el bloque propio tiene pocas bancas y una sola disidencia mueve el promedio con fuerza — clave para sostener vetos y aprobar leyes en el Senado.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   adhesion_reformas_provincial: {
-    que: "Cuántas de las 24 provincias (incluida CABA) figuran adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI), sobre el total.",
+    que: "Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI), sobre el total.",
     aporta: "Mide adhesión fiscal a un régimen de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia.",
     frecuencia: "Continua", tipo: "Nivel (%)",
   },
@@ -332,7 +332,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   social_orden: "La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud.",
   // ITVC
   ingresos: "Si el sueldo alcanza: la brecha entre el salario y la canasta de pobreza, y cuánta gente trabaja en la informalidad.",
-  precios: "Lo que más duele en el changuito: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).",
+  precios: "Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).",
   vulnerabilidad: "Cuánto están endeudadas las familias: crédito real por hogar, corregido por la mora — deuda que crece con mora estable es acceso; con mora subiendo es fragilidad.",
   empleo: "Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
   confianza: "El ánimo y la seguridad de la vida diaria: confianza del consumidor (UTDT), inseguridad, consumo de carne y patentamiento de motos como termómetros de bolsillo.",

@@ -23,7 +23,7 @@ const filas = indicadoresOrdenados(c);
 const filasIndice = filas.filter(({ ind }) => ind.en_indice !== false);
 const filasContexto = filas.filter(({ ind }) => ind.en_indice === false);
 const fuentes = fuentesDeCinturon(c);
-const indice = indiceDe(c);   // ITCM (macro) / ITCG (gestión) o null
+const indice = indiceDe(c);   // ITCM / ITCG / ITVC / ITCP, o null (espíritu)
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 // Gráfico de robustez (ADR-0019): la DISTRIBUCIÓN de la simulación Monte
