@@ -297,6 +297,15 @@ def construir_serie_itcp() -> dict:
     directos = {k: m(k) for k in ITCP_SERIES}
     protestas_var = _protestas_caba_var_vs_2023(m("protestas_caba"))
     ult = max([max(v) for v in directos.values() if v] + [max(protestas_var, default="")])
+    # tope: el último mes CALENDARIO COMPLETO. Con rotacion_gabinete (serie
+    # que incluye el mes corriente por diseño) el mes parcial pasó a superar
+    # el piso de cobertura por lo justo (60%) con la dimensión de cohesión
+    # representada solo por la rotación renormalizada — el mismo artefacto
+    # que el piso quería excluir, ahora por otra puerta. El mes en curso
+    # nunca tiene par EPU, así que recortarlo no pierde nada.
+    hoy = datetime.now(timezone.utc)
+    ult_completo = f"{hoy.year - 1}-12" if hoy.month == 1 else f"{hoy.year}-{hoy.month - 1:02d}"
+    ult = min(ult, ult_completo)
     out = {}
     for ym in _meses("2024-01", ult):
         valores = {k: v.get(ym) for k, v in directos.items()}

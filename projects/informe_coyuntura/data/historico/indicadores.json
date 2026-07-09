@@ -54,6 +54,9 @@
   "credito_privado": {
     "2026-07": 9.5
   },
+  "derrotas_legislativas": {
+    "2026-07": 8.0
+  },
   "despacho_cemento": {
     "2026-06": 144.1,
     "2026-07": 154.5
@@ -191,6 +194,9 @@
   "rigi_inversiones": {
     "2026-06": 22.1,
     "2026-07": 22.0
+  },
+  "rotacion_gabinete": {
+    "2026-07": 7.0
   },
   "saldo_comercial_12m": {
     "2026-06": 21221.0,

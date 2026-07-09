@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-09 16:00:00"
-score_global: 3.1
+generado: "2026-07-09 18:29:23"
+score_global: 3.2
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 3.1/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 3.2/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
@@ -35,7 +35,7 @@ schema_version: "1.2.0"
 | base_monetaria | 7.47 | % mensual nominal | 2026-07-06 | fresco |
 | tc_mayorista | 3.78 | % mensual | 2026-07-08 | fresco |
 
-### 🟢 Politica — score 2.9/10 (estable)
+### 🟡 Politica — score 3.5/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -48,6 +48,8 @@ schema_version: "1.2.0"
 | veto_quorum | 0.0 | % de sesiones | 2026-07-09 | fresco |
 | comisiones_caidas | 97.7 | % de proyectos | 2026-07-09 | fresco |
 | adhesion_reformas_provincial | 66.7 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-07-09 | fresco |
+| derrotas_legislativas | 8 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-07-09 | fresco |
+| rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-07-09 | fresco |
 | protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
 | cohesion_bloque | 99.9 | % cohesión (índice de Rice), promedio actas divididas últimos 90 días | 2026-06-24 | fresco |
 | cohesion_bloque_senado | 99.4 | % cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días | 2026-06-04 | fresco |
@@ -95,4 +97,4 @@ schema_version: "1.2.0"
 | clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-09 16:00:00 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-09 18:29:23 — schema 1.2.0*

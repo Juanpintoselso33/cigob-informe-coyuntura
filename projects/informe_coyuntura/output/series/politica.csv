@@ -116,6 +116,37 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2024-01-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2023-12-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-06-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-05-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-04-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-03-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-02-28,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-01-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-12-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-11-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-10-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-09-30,derrotas_legislativas,6,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-08-31,derrotas_legislativas,5,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-07-31,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-06-30,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-05-31,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-04-30,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-03-31,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-02-28,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2025-01-31,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-12-31,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-11-30,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-10-31,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-09-30,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-08-31,derrotas_legislativas,2,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-07-31,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-06-30,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-05-31,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-04-30,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-03-31,derrotas_legislativas,1,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-02-29,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2024-01-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2023-12-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-07-01,comisiones_caidas,97.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2026-06-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2026-05-01,comisiones_caidas,97.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
@@ -237,27 +268,27 @@ fecha,indicador,valor,unidad,fuente
 2024-04-30,alineamiento_senadores_prov,74.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
 2024-03-31,alineamiento_senadores_prov,69.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
 2024-02-29,alineamiento_senadores_prov,100.0,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2026-06-30,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2026-05-31,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2026-04-30,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2026-03-31,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2026-02-28,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2026-01-31,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-12-31,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-11-30,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-10-31,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-09-30,adhesion_reformas_provincial,66.7,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-08-31,adhesion_reformas_provincial,62.5,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-07-31,adhesion_reformas_provincial,62.5,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-06-30,adhesion_reformas_provincial,62.5,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-05-31,adhesion_reformas_provincial,62.5,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-04-30,adhesion_reformas_provincial,62.5,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-03-31,adhesion_reformas_provincial,62.5,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-02-28,adhesion_reformas_provincial,62.5,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2025-01-31,adhesion_reformas_provincial,62.5,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2024-12-31,adhesion_reformas_provincial,54.2,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2024-11-30,adhesion_reformas_provincial,54.2,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2024-10-31,adhesion_reformas_provincial,50.0,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2024-09-30,adhesion_reformas_provincial,37.5,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2024-08-31,adhesion_reformas_provincial,20.8,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
-2024-07-31,adhesion_reformas_provincial,4.2,% de provincias (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-06-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-05-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-04-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-03-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-02-28,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2026-01-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-12-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-11-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-10-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-09-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-08-31,adhesion_reformas_provincial,62.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-07-31,adhesion_reformas_provincial,62.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-06-30,adhesion_reformas_provincial,62.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-05-31,adhesion_reformas_provincial,62.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-04-30,adhesion_reformas_provincial,62.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-03-31,adhesion_reformas_provincial,62.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-02-28,adhesion_reformas_provincial,62.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2025-01-31,adhesion_reformas_provincial,62.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-12-31,adhesion_reformas_provincial,54.2,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-11-30,adhesion_reformas_provincial,54.2,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-10-31,adhesion_reformas_provincial,50.0,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-09-30,adhesion_reformas_provincial,37.5,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-08-31,adhesion_reformas_provincial,20.8,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
+2024-07-31,adhesion_reformas_provincial,4.2,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
