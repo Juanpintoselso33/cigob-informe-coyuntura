@@ -14,7 +14,7 @@ const SLUG_DE: Record<string, string> =
 // Dimensión a la que pertenece cada indicador dentro de su índice paramétrico
 // (para la celda "Dimensión" de la ficha: cose el nivel indicador ↔ dimensión).
 const INDICE_KEY: Record<string, string> = {
-  macro: "itcm", gestion: "itcg", vida_cotidiana: "itvc",
+  macro: "itcm", gestion: "itcg", vida_cotidiana: "itvc", politica: "itcp",
 };
 const dimDe: Record<string, string> = {};
 for (const [ckey, c] of Object.entries(informe.cinturones)) {
@@ -74,6 +74,7 @@ const INDICE_CFG: Record<string, { key: string; sigla: string; base100: boolean 
   macro: { key: "itcm", sigla: "ITCM", base100: false },
   gestion: { key: "itcg", sigla: "ITCG", base100: false },
   vida_cotidiana: { key: "itvc", sigla: "ITVC", base100: true },
+  politica: { key: "itcp", sigla: "ITCP", base100: false },
 };
 const dims: Record<string, unknown> = {};
 for (const [ckey, c] of Object.entries(informe.cinturones)) {

@@ -336,4 +336,10 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   vulnerabilidad: "Cuánto están endeudadas las familias: crédito real por hogar, corregido por la mora — deuda que crece con mora estable es acceso; con mora subiendo es fragilidad.",
   empleo: "Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
   confianza: "El ánimo y la seguridad de la vida diaria: confianza del consumidor (UTDT), inseguridad, consumo de carne y patentamiento de motos como termómetros de bolsillo.",
+  // ITCP
+  imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
+  poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum y cuántos proyectos quedan varados en comisión.",
+  alianzas_territoriales: "El sostén federal del gobierno: las transferencias a las provincias (armonía fiscal), el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI.",
+  cohesion_interna: "Qué tan unido vota puertas adentro el bloque propio de La Libertad Avanza, en Diputados y en el Senado.",
+  conflicto_social: "La conflictividad social que el gobierno tiene que administrar: el índice de movilización de CEPA y la variación de eventos de protesta en CABA contra la base 2023.",
 };
