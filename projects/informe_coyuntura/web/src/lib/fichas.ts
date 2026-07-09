@@ -765,7 +765,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Ratio = DNU dictados en el año corriente / leyes sancionadas en el año corriente.",
       "Los DNU se identifican buscando la frase «necesidad y urgencia» dentro de los decretos.",
-      "La serie histórica repite el mismo cociente por año calendario completo, desde 2020.",
+      "La serie histórica repite el mismo cociente por año calendario, desde 2020. Los años cerrados son completos; el punto del año en curso es parcial (de enero a la fecha de la corrida) y se actualiza hasta cerrar el año — al comparar en el gráfico, ese último punto no es estrictamente homogéneo con los anteriores.",
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo.",
