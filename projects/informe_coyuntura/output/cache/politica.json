@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-09T12:58:31.021098",
-  "score": 3.2,
+  "generated_at": "2026-07-09T14:23:53.126270",
+  "score": 3.3,
   "itcp": {
-    "valor": 68.0,
+    "valor": 67.2,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -97,7 +97,7 @@
       "conflicto_social": {
         "nombre": "Conflicto social",
         "peso": 0.15,
-        "puntaje": 48.2,
+        "puntaje": 42.6,
         "indicadores": {
           "movilizacion_cepa": {
             "peso": 0.6,
@@ -108,8 +108,8 @@
           },
           "protestas_caba": {
             "peso": 0.4,
-            "puntaje_banda": 23.8,
-            "puntaje_aplicado": 23.8,
+            "puntaje_banda": 10.0,
+            "puntaje_aplicado": 10.0,
             "valor": 25.4,
             "peso_efectivo": 0.06
           }
@@ -267,8 +267,8 @@
       "detalle_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
       "en_indice": true,
       "dimension": "conflicto_social",
-      "puntaje_itcp": 23.8,
-      "puntaje_banda": 23.8,
+      "puntaje_itcp": 10.0,
+      "puntaje_banda": 10.0,
       "peso_efectivo": 0.06
     },
     "cohesion_bloque": {

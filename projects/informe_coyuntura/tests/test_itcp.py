@@ -24,7 +24,7 @@ def test_banda_low_exclusivo_high_inclusivo():
 
 
 def test_banda_protestas_caba_var_vs_2023():
-    # (-inf,-30,100)·(-30,-10,85)·(-10,10,65)·(10,30,40)·(30,inf,10)
+    # (-inf,-6,100)·(-6,-3,85)·(-3,0,65)·(0,10,40)·(10,inf,10)
     # Cross-fix (post Task 1): esta tabla puntúa sobre "var_vs_2023" (% de
     # variación de eventos ACLED en CABA contra la base 2023), NO sobre el
     # conteo crudo de eventos ("valor") — la tabla original (heredada de
@@ -32,13 +32,16 @@ def test_banda_protestas_caba_var_vs_2023():
     # mal un conteo crudo que puede estar en cientos. Menor variación (menos
     # protesta que en 2023) = mejor = puntaje alto: tabla invertida respecto
     # de iaf_transferencias aunque comparta la misma escala %-variación.
+    # Anclas recalibradas 2026-07-09 con la serie ACLED ya existente (antes
+    # -30/-10/10/30, simétricas y nunca validadas -- ver comentario en
+    # BANDAS_ITCP).
     bandas = itcp.BANDAS_ITCP["protestas_caba"]
     assert itcp.puntaje_banda(-50.0, bandas) == 100
-    assert itcp.puntaje_banda(-30.0, bandas) == 100   # high inclusivo
-    assert itcp.puntaje_banda(-29.99, bandas) == 85   # low exclusivo del siguiente tramo
+    assert itcp.puntaje_banda(-6.0, bandas) == 100    # high inclusivo
+    assert itcp.puntaje_banda(-5.99, bandas) == 85    # low exclusivo del siguiente tramo
     assert itcp.puntaje_banda(0.0, bandas) == 65
-    assert itcp.puntaje_banda(30.0, bandas) == 40
-    assert itcp.puntaje_banda(30.01, bandas) == 10
+    assert itcp.puntaje_banda(10.0, bandas) == 40
+    assert itcp.puntaje_banda(10.01, bandas) == 10
 
 
 def test_bandas_itcp_tiene_alineamiento_senadores_prov_no_gobernadores_alineamiento():

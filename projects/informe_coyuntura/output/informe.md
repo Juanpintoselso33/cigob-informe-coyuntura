@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-09 14:12:39"
+generado: "2026-07-09 14:24:00"
 score_global: 3.2
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -35,7 +35,7 @@ schema_version: "1.2.0"
 | base_monetaria | 7.47 | % mensual nominal | 2026-07-06 | fresco |
 | tc_mayorista | 3.78 | % mensual | 2026-07-08 | fresco |
 
-### 🟡 Politica — score 3.2/10 (en_tension)
+### 🟡 Politica — score 3.3/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -95,4 +95,4 @@ schema_version: "1.2.0"
 | clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-09 14:12:39 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-09 14:24:00 — schema 1.2.0*

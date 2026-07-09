@@ -1814,6 +1814,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-03", cambio: "Alta como indicador de contexto, con cobertura desde 2018 (línea de base 2023 real). En la revisión posterior se confirmó que siga fuera del índice." },
       { fecha: "2026-07-07", cambio: "El mismo dato pasa a integrar también, como indicador de condición de gobernabilidad, la dimensión de conflicto social del índice del cinturón político." },
+      { fecha: "2026-07-09", cambio: "Umbrales de puntaje del índice político recalibrados (antes ±30/±10, simétricos y nunca validados) reconstruyendo la métrica de puntaje mes a mes sobre la serie ya existente (30 meses reales, dic-2023 a may-2026): nuevos cortes en -6,0/-3,0/0,0/10,0. Con las anclas viejas, el 73% de los meses caía en el mismo escalón intermedio." },
     ],
   },
 

@@ -13,14 +13,25 @@ una decisión editorial explícita (ver ADR-0036): "imagen y voto" pesa
 deliberadamente MENOS que las demás porque el propio marco del proyecto
 distingue capital político de popularidad.
 
-Bandas de adhesion_reformas_provincial y protestas_caba son PROVISIONALES
-(sin serie histórica propia todavía) — ver ADR-0036, a recalibrar cuando el
-backfill esté corriendo. cohesion_bloque (Diputados) YA NO está bloqueado
-(ADR-0037 quedó superado por ADR-0040, 2026-07-09: el endpoint PDF directo
-de votaciones.hcdn.gob.ar no tiene el anti-bot de la SPA) y sus anclas
-tampoco son provisionales desde el mismo día (ADR-0041/0042): recalibradas
-con 31 puntos mensuales reales backfilleados gracias a la caché permanente
-por acta (ver el comentario en BANDAS_ITCP).
+Banda de adhesion_reformas_provincial es la ÚNICA que sigue PROVISIONAL —
+ver ADR-0036. A diferencia de los demás indicadores de este índice, no es
+un problema de "todavía no se corrió el backfill": la fuente (MAGyP) no
+tiene fecha de adhesión por provincia, así que no hay forma de reconstruir
+el pasado con ella, y la única fuente alternativa con esa fecha
+(trivia.consejo.org.ar) devuelve "Request Rejected" (WAF) ante fetch
+directo, mismo patrón categórico que bloqueaba a Diputados (ADR-0037) antes
+de encontrarse el endpoint PDF alternativo (ADR-0040) — acá todavía no
+apareció un camino equivalente.
+
+`protestas_caba` (2026-07-09, sin ADR propio -- recalibración menor, ver
+comentario en BANDAS_ITCP) también salió de PROVISIONAL: a diferencia de
+los demás, no necesitó backfill nuevo -- la serie ACLED ya tenía 102 meses
+en disco. cohesion_bloque (Diputados) YA NO está bloqueado (ADR-0037 quedó
+superado por ADR-0040, 2026-07-09: el endpoint PDF directo de
+votaciones.hcdn.gob.ar no tiene el anti-bot de la SPA) y sus anclas tampoco
+son provisionales desde el mismo día (ADR-0041/0042): recalibradas con 31
+puntos mensuales reales backfilleados gracias a la caché permanente por
+acta (ver el comentario en BANDAS_ITCP).
 
 alineamiento_senadores_prov (2026-07-08) reemplaza a gobernadores_alineamiento
 en el peso de la dimensión "alianzas_territoriales" — placeholder manual
@@ -152,8 +163,21 @@ BANDAS_ITCP = {
     "movilizacion_cepa": [                # índice 0-100, menor = mejor
         (-INF, 20.0, 100), (20.0, 40.0, 85), (40.0, 60.0, 65), (60.0, 80.0, 40), (80.0, INF, 10),
     ],
-    "protestas_caba": [                   # % var. eventos vs. base 2023 (ACLED) — PROVISIONAL
-        (-INF, -30.0, 100), (-30.0, -10.0, 85), (-10.0, 10.0, 65), (10.0, 30.0, 40), (30.0, INF, 10),
+    "protestas_caba": [
+        # RECALIBRADO 2026-07-09 con la serie ACLED ya existente (102 meses
+        # en output/series/gestion.csv desde 2017, sin backfill nuevo --
+        # solo hubo que reconstruir var_vs_2023 mes a mes con la misma
+        # fórmula de gestion.fetch_protestas_caba(): rolling 12m / total
+        # 2023 − 1). Las anclas -30/-10/10/30 (simétricas, nunca validadas)
+        # eran demasiado anchas para el rango real observado: con 30 puntos
+        # mensuales válidos (dic-2023→may-2026, primer mes en que la
+        # ventana de 12m ya no se solapa con el propio 2023 parcial), el
+        # rango es -10,0 a +25,4 -- 22 de 30 meses (73%) caían todos en la
+        # misma banda "moderado" (65), aplanando el puntaje justo donde más
+        # variación real hay. Anclas nuevas en -6,0/-3,0/0,0/10,0
+        # (chequeadas contra los 30 puntos: 5/5/7/6/7 por banda, todas con
+        # datos reales, sin huecos).
+        (-INF, -6.0, 100), (-6.0, -3.0, 85), (-3.0, 0.0, 65), (0.0, 10.0, 40), (10.0, INF, 10),
     ],
 }
 
