@@ -1,0 +1,129 @@
+{
+  "_meta": {
+    "descripcion": "Registro curado de salidas de rango ministerial del gabinete nacional (dic-2023 en adelante): Jefatura de Gabinete de Ministros + ministerios. Es la fuente de verdad del indicador rotacion_gabinete (ITCP): la serie y la card se computan SOLO desde este archivo; el detector InfoLeg de politica.py no lo modifica, solo avisa si aparece un decreto de renuncia ministerial cuyo protagonista no figura aca. Esqueleto inicial verificado contra el Boletin Oficial via InfoLeg (decreto por decreto, 2026-07-09) y prensa (Infobae, La Nacion, El Pais, TN, C5N, Ambito).",
+    "corte_de_universo": "Solo cargos con rango ministerial pleno del gabinete nacional: Jefe de Gabinete de Ministros + ministros segun la Ley de Ministerios vigente en cada momento. Se EXCLUYEN las secretarias de Presidencia con rango ministerial (Secretaria General, Legal y Tecnica, SIDE, Voceria): (1) su jerarquia 'de ministro' es una asimilacion salarial/protocolar por decreto, no membresia del gabinete segun la Ley de Ministerios; (2) la literatura de rotacion ministerial (Martinez-Gallardo 2014; Camerlo & Perez-Linan 2015) define rotacion sobre carteras ministeriales; (3) la SIDE ademas cambio de naturaleza juridica en el periodo (AFI->SIDE, DNU 614/2024) y contaminaria la serie con reestructuraciones no comparables. Sus eventos quedan documentados aparte en 'secretarias_excluidas' por robustez.",
+    "criterio_fecha": "Mes del CESE EFECTIVO del funcionario (la fecha del hecho politico), no el de la publicacion del decreto en el BO, que puede demorar hasta ~40 dias (caso Ferraro: eyectado a fines de enero de 2024, cese formal 25-feb, decreto publicado 05-mar). El decreto BO se registra como respaldo documental.",
+    "clasificacion": "salida_politica = renuncia forzada / eyeccion / desgaste en conflicto; salida_estructural_electoral = cese programado para asumir una banca ganada en una eleccion. AMBAS cuentan en la serie (la composicion se publica como transparencia). NO cuentan: 'movimientos_laterales_no_contados' (pase a otro cargo del mismo gabinete: la persona sigue adentro) y 'reestructuraciones_ley_ministerios' (cartera creada/disuelta por reforma de la Ley de Ministerios: una fusion no es una eyeccion).",
+    "mantenimiento": "Ante una salida nueva: agregar la entrada a 'salidas' con persona, cargo, mes de cese efectivo, decreto BO, clasificacion, motivo y fuentes. Si es un pase interno, va a 'movimientos_laterales_no_contados'. El detector InfoLeg del colector avisa en el log de la corrida ([ALERTA] rotacion_gabinete) cuando encuentra un decreto de renuncia ministerial no reflejado aca.",
+    "actualizado": "2026-07-09"
+  },
+  "salidas": [
+    {
+      "n": 1, "persona": "Guillermo Ferraro", "cargo": "Ministro de Infraestructura",
+      "inicio": "2023-12-10", "cese_efectivo": "2024-02-25", "mes": "2024-02",
+      "decreto_renuncia": "Decreto 216/2024 (BO 05-mar-2024; acepta la renuncia 'a partir del 25 de febrero de 2024')",
+      "clasificacion": "salida_politica",
+      "motivo": "Eyectado a fines de enero de 2024, senalado por la Casa Rosada como responsable de filtrar a la prensa el contenido de reuniones de Gabinete; formalmente renuncia. El ministerio se disolvio (Decreto 195/2024, BO 26-feb-2024, competencias a Economia).",
+      "fuentes": ["https://www.lanacion.com.ar/politica/a-casi-40-dias-de-su-desplazamiento-se-oficializo-la-salida-de-guillermo-ferraro-como-ministro-de-nid05032024", "https://www.c5n.com/politica/el-gobierno-oficializo-la-renuncia-guillermo-ferraro-al-frente-del-ministerio-infraestructura-n149061"]
+    },
+    {
+      "n": 2, "persona": "Nicolas Posse", "cargo": "Jefe de Gabinete de Ministros",
+      "inicio": "2023-12-10", "cese_efectivo": "2024-05-27", "mes": "2024-05",
+      "decreto_renuncia": "Decreto 472/2024 (BO 28-may-2024: acepta la renuncia y designa a Francos; el Decreto 471/2024 acepta la renuncia de Francos a Interior)",
+      "clasificacion": "salida_politica",
+      "motivo": "Milei le pidio la renuncia tras meses de tensiones internas y demoras de gestion (primera crisis de gabinete).",
+      "fuentes": ["https://www.infobae.com/politica/2024/05/28/javier-milei-le-pidio-la-renuncia-a-nicolas-posse-y-guillermo-francos-ocupara-su-lugar-como-jefe-de-gabinete/"]
+    },
+    {
+      "n": 3, "persona": "Mario Russo", "cargo": "Ministro de Salud",
+      "inicio": "2023-12-10", "cese_efectivo": "2024-09-27", "mes": "2024-09",
+      "decreto_renuncia": "Decreto 856/2024 (BO 30-sep-2024; verificado en vivo via detector InfoLeg). El Decreto 857/2024 designa a Lugones",
+      "clasificacion": "salida_politica",
+      "motivo": "Renuncia en medio de tensiones con el entorno de Capital Humano y cuestionamientos de gestion sanitaria; oficialmente motivos personales.",
+      "fuentes": ["https://www.boletinoficial.gob.ar/detalleAviso/primera/314808/20240930"]
+    },
+    {
+      "n": 4, "persona": "Diana Mondino", "cargo": "Ministra de Relaciones Exteriores, Comercio Internacional y Culto",
+      "inicio": "2023-12-10", "cese_efectivo": "2024-10-31", "mes": "2024-10",
+      "decreto_renuncia": "Decreto 970/2024 (BO 01-nov-2024, acepta la renuncia; verificado en vivo via detector InfoLeg). El Decreto 980/2024 (BO 01-nov-2024) designa a Werthein",
+      "clasificacion": "salida_politica",
+      "motivo": "Eyectada horas despues del voto argentino en la ONU contra el embargo a Cuba (30-oct-2024), en contra de la linea presidencial.",
+      "fuentes": ["https://www.boletinoficial.gob.ar/detalleAviso/primera/316447/20241101"]
+    },
+    {
+      "n": 5, "persona": "Gerardo Werthein", "cargo": "Ministro de Relaciones Exteriores, Comercio Internacional y Culto",
+      "inicio": "2024-10-31", "cese_efectivo": "2025-10-27", "mes": "2025-10",
+      "decreto_renuncia": "Decreto 774/2025 (BO 28-oct-2025, acepta la renuncia y designa a Quirno)",
+      "clasificacion": "salida_politica",
+      "motivo": "Renuncio dias antes de la eleccion del 26-oct-2025, en plena interna con el asesor presidencial Santiago Caputo y su entorno digital.",
+      "fuentes": ["https://www.boletinoficial.gob.ar/detalleAviso/primera/333489/20251028"]
+    },
+    {
+      "n": 6, "persona": "Guillermo Francos", "cargo": "Jefe de Gabinete de Ministros",
+      "inicio": "2024-05-27", "cese_efectivo": "2025-11-01", "mes": "2025-11",
+      "decreto_renuncia": "Decreto 784/2025 (BO 04-nov-2025, acepta la renuncia y designa a Adorni)",
+      "clasificacion": "salida_politica",
+      "motivo": "Renuncio el 31-oct-2025, 5 dias despues de la victoria electoral de LLA, desplazado en el reacomodamiento de poder interno. Reshuffle post-electoral con componente de purga interna.",
+      "fuentes": ["https://www.infobae.com/politica/2025/11/01/guillermo-francos-renuncio-como-jefe-de-gabinete"]
+    },
+    {
+      "n": 7, "persona": "Lisandro Catalan", "cargo": "Ministro del Interior",
+      "inicio": "2025-09-14", "cese_efectivo": "2025-11-03", "mes": "2025-11",
+      "decreto_renuncia": "Decreto 792/2025 (BO 11-nov-2025, acepta la renuncia; verificado en vivo via detector InfoLeg). El Decreto 794/2025 (BO 11-nov-2025) designa a Santilli",
+      "clasificacion": "salida_politica",
+      "motivo": "Renuncio en tandem con Francos (era su hombre en Interior, elevado a ministro apenas 7 semanas antes). Ministro mas breve del ciclo: 50 dias.",
+      "fuentes": ["https://www.boletinoficial.gob.ar/detalleAviso/primera/334303/20251111"]
+    },
+    {
+      "n": 8, "persona": "Patricia Bullrich", "cargo": "Ministra de Seguridad Nacional",
+      "inicio": "2023-12-10", "cese_efectivo": "2025-12-02", "mes": "2025-12",
+      "decreto_renuncia": "Decreto 851/2025 (BO 02-dic-2025, acepta la renuncia y designa a Monteoliva)",
+      "clasificacion": "salida_estructural_electoral",
+      "motivo": "Electa senadora nacional por CABA (26-oct-2025); dejo el cargo para asumir la banca el 10-dic-2025. Cese programado, no crisis.",
+      "fuentes": ["https://www.boletinoficial.gob.ar/detalleAviso/primera/335404/20251202"]
+    },
+    {
+      "n": 9, "persona": "Luis Petri", "cargo": "Ministro de Defensa",
+      "inicio": "2023-12-10", "cese_efectivo": "2025-12-09", "mes": "2025-12",
+      "decreto_renuncia": "Decreto 869/2025 (BO 09-dic-2025, acepta la renuncia y designa a Presti)",
+      "clasificacion": "salida_estructural_electoral",
+      "motivo": "Electo diputado nacional por Mendoza (26-oct-2025); dejo el cargo para asumir la banca. Cese programado, no crisis.",
+      "fuentes": ["https://www.boletinoficial.gob.ar/detalleAviso/primera/335681/20251209"]
+    },
+    {
+      "n": 10, "persona": "Mariano Cuneo Libarona", "cargo": "Ministro de Justicia",
+      "inicio": "2023-12-10", "cese_efectivo": "2026-03-04", "mes": "2026-03",
+      "decreto_renuncia": "Decreto 133/2026 (BO 05-mar-2026, acepta la renuncia y designa a Mahiques)",
+      "clasificacion": "salida_politica",
+      "motivo": "Renuncia por 'motivos personales, familiares y de salud' tras haberla postergado varias veces (la habia amagado antes de las elecciones de oct-2025). Desgaste prolongado, salida amortiguada.",
+      "fuentes": ["https://elpais.com/argentina/2026-03-04/juan-bautista-mahiques-un-fiscal-con-lazos-politicos-reemplaza-a-cuneo-libarona-como-ministro-de-justicia-argentino.html"]
+    },
+    {
+      "n": 11, "persona": "Manuel Adorni", "cargo": "Jefe de Gabinete de Ministros",
+      "inicio": "2025-11-04", "cese_efectivo": "2026-06-29", "mes": "2026-06",
+      "decreto_renuncia": "Decreto 548/2026 (BO 30-jun-2026, acepta la renuncia de Adorni + la renuncia de Santilli a Interior + designa a Santilli JGM; resumen completo verificado en vivo en InfoLeg id=427132)",
+      "clasificacion": "salida_politica",
+      "motivo": "Renuncio el 27-jun-2026 tras tres meses de escandalo por su patrimonio (causa por presunto enriquecimiento ilicito, gastos no declarados), presionado internamente y por el Congreso. El Financial Times lo califico como 'el escandalo mas perjudicial' del gobierno.",
+      "fuentes": ["https://www.lanacion.com.ar/politica/manuel-adorni-renuncio-despues-de-tres-meses-de-escandalo-por-su-patrimonio-nid27062026", "https://www.infobae.com/politica/2026/06/28/la-renuncia-de-adorni-por-corrupcion-es-la-acusacion-mas-perjudicial-contra-el-gobierno-de-milei-segun-el-financial-times"]
+    }
+  ],
+  "movimientos_laterales_no_contados": [
+    {
+      "persona": "Guillermo Francos", "de": "Ministro del Interior", "a": "Jefe de Gabinete de Ministros",
+      "mes": "2024-05", "decreto": "Decreto 471/2024 acepta la renuncia a Interior (verificado en vivo, detector InfoLeg) + Decreto 472/2024 designa JGM (BO 28-may-2024)",
+      "nota": "Ascenso dentro del gabinete: NO es salida. El Ministerio del Interior se disuelve (Secretaria de Interior bajo JGM, Catalan secretario, Decreto 528/2024 BO 13-jun-2024)."
+    },
+    {
+      "persona": "Diego Santilli", "de": "Ministro del Interior", "a": "Jefe de Gabinete de Ministros",
+      "mes": "2026-06", "decreto": "Decreto 548/2026 (BO 30-jun-2026): el mismo decreto acepta ambas renuncias y lo designa JGM",
+      "nota": "Ascenso dentro del gabinete: NO es salida. Interior se disuelve por segunda vez (competencias a JGM, Coria vicejefe de Gabinete del Interior)."
+    }
+  ],
+  "reestructuraciones_ley_ministerios": [
+    {"mes": "2023-12", "hecho": "Arranque con 9 ministerios + JGM (DNU 8/2023, Ley de Ministerios reducida)", "cargos_rango_ministerial": 10},
+    {"mes": "2024-02", "hecho": "Disolucion de Infraestructura (Decreto 195/2024, BO 26-feb-2024; competencias a Economia)", "cargos_rango_ministerial": 9},
+    {"mes": "2024-05", "hecho": "Interior absorbido por JGM (degradado a Secretaria de Interior; consolidado en DNU 585/2024: 'el Jefe de Gabinete y OCHO ministros')", "cargos_rango_ministerial": 8},
+    {"mes": "2024-07", "hecho": "Creacion del Ministerio de Desregulacion y Transformacion del Estado (DNU 585/2024, BO 05-jul-2024; Sturzenegger designado por Decreto 586/2024)", "cargos_rango_ministerial": 9},
+    {"mes": "2025-09", "hecho": "Re-creacion del Ministerio del Interior (Decreto 672/2025, BO 15-sep-2025; Catalan ministro), respuesta a la derrota bonaerense del 07-sep-2025", "cargos_rango_ministerial": 10},
+    {"mes": "2026-06", "hecho": "Segunda disolucion de Interior: Santilli pasa a JGM y absorbe las competencias (Decreto 548/2026 y normas complementarias)", "cargos_rango_ministerial": 9}
+  ],
+  "secretarias_excluidas": {
+    "nota": "Documentadas para robustez; NO computan en la serie (ver corte_de_universo).",
+    "eventos": [
+      {"mes": "2024-07", "hecho": "SIDE: Neiffert titular (Decreto 616/2024, BO 16-jul-2024) tras reconversion AFI->SIDE (DNU 614/2024); desplaza a Sivori (AFI)"},
+      {"mes": "2025-04", "hecho": "Legal y Tecnica: sale Javier Herrera Bravo (03-abr-2025), entra Maria Ibarzabal Murphy (Decreto 254/2025, BO 08-abr-2025)"},
+      {"mes": "2025-12", "hecho": "SIDE: sale Neiffert (02-dic-2025), entra Cristian Auguadra (Decreto 852/2025, BO 03-dic-2025)"},
+      {"mes": "2026-07", "hecho": "Voceria: Adrian Ravier (Decreto 572/2026, BO 03-jul-2026); Comunicacion y Medios: Fabian Fernandez (Decreto 573/2026) — reorganizacion post-Adorni"}
+    ]
+  }
+}

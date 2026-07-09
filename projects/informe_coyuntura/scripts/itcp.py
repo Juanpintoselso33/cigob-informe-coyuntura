@@ -210,6 +210,27 @@ BANDAS_ITCP = {
         (80.0, 85.0, 40),
         (-INF, 80.0, 10),
     ],
+    "rotacion_gabinete": [
+        # Salidas de rango ministerial (JGM + ministros) acumuladas en
+        # ventana móvil de 12 meses, desde el registro curado
+        # data/politica/gabinete_salidas.json (ADR-0047) — menor = mejor.
+        # Pata EJECUTIVA de la dimensión cohesion_interna, que hasta
+        # 2026-07-09 era 100% legislativa (Diputados+Senado). Anclas
+        # calibradas contra la serie real reconstruida completa (32 puntos,
+        # dic-2023→jul-2026, rango 0-7): distribución por banda 7/8/9/6/2,
+        # las CINCO bandas pobladas con datos reales (criterio ADR-0042 —
+        # nace discriminando, a diferencia de cohesion_bloque que nació
+        # saturado y hubo que recalibrar). Cuenta salidas políticas Y
+        # estructurales-electorales sin distinguir (la composición se
+        # publica; el caso extremo se administra por override en
+        # ajustes_itcp.json). Tramos extremos abiertos (ADR-0021): >7
+        # salidas satura en 10 sin romperse.
+        (-INF, 1.0, 100),   # 0-1: recambio fisiológico
+        (1.0, 2.0, 85),     # 2: recambio bajo
+        (2.0, 4.0, 65),     # 3-4: rotación sostenida
+        (4.0, 6.0, 40),     # 5-6: crisis de gabinete
+        (6.0, INF, 10),     # 7+: crisis abierta
+    ],
     "movilizacion_cepa": [                # índice 0-100, menor = mejor
         (-INF, 20.0, 100), (20.0, 40.0, 85), (40.0, 60.0, 65), (60.0, 80.0, 40), (80.0, INF, 10),
     ],
@@ -256,7 +277,12 @@ DIMENSIONES_ITCP = {
     "cohesion_interna": {
         "nombre": "Cohesión interna del oficialismo",
         "peso": 0.20,
-        "indicadores": {"cohesion_bloque": 0.65, "cohesion_bloque_senado": 0.35},
+        # 2026-07-09 (ADR-0047): entra rotacion_gabinete (30%) como pata
+        # EJECUTIVA de la cohesión — la dimensión era 100% legislativa. El
+        # par legislativo conserva su ratio interno 65/35 ≈ 45/25; los pesos
+        # ENTRE dimensiones (ADR-0036) no se tocan.
+        "indicadores": {"cohesion_bloque": 0.45, "cohesion_bloque_senado": 0.25,
+                        "rotacion_gabinete": 0.30},
     },
     "conflicto_social": {
         "nombre": "Conflicto social",

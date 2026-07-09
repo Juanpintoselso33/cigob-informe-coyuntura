@@ -222,6 +222,7 @@ ITCP_SERIES = [
     "comisiones_caidas", "derrotas_legislativas", "iaf_transferencias",
     "alineamiento_senadores_prov", "adhesion_reformas_provincial",
     "cohesion_bloque", "cohesion_bloque_senado", "movilizacion_cepa",
+    "rotacion_gabinete",
 ]
 
 

@@ -59,6 +59,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0044](0044-adhesion-reformas-provincial-serie-mensual.md) | `adhesion_reformas_provincial`: serie mensual real (24 puntos) vía investigación manual de la fecha de adhesión de cada provincia; anclas chequeadas y conservadas (proceso irreversible en curso) | Aceptado |
 | [0045](0045-comisiones-caidas-recalibracion-bandas.md) | `comisiones_caidas`: anclas ITCP recalibradas 30/50/70/85 → 96/97/98/99 con 32 puntos mensuales reales; el rango observado (94,7–99,8) caía completo en la banda del piso | Aceptado |
 | [0046](0046-derrotas-legislativas-itcp.md) | `derrotas_legislativas`: nuevo indicador del ITCP — conteo 12m de derrotas consumadas del Ejecutivo (vetos insistidos por ambas cámaras + decretos rechazados bajo la ley 26.122), fusión de dos investigaciones de factibilidad; registro de eventos versionado + detección incremental (InfoLeg + actas del Senado); pesos internos de poder_legislativo redistribuidos | Aceptado |
+| [0047](0047-rotacion-gabinete-itcp.md) | `rotacion_gabinete`: salidas de rango ministerial (JGM + ministros) acumuladas 12m entra al ITCP como pata ejecutiva de cohesión interna (45/25/30); registro curado con decreto BO por salida + detector de alerta InfoLeg (recall 11/11); anclas 1/2/4/6 calibradas con la serie real de 32 meses, 5 bandas pobladas | Aceptado |
 
 ## Contexto general
 
