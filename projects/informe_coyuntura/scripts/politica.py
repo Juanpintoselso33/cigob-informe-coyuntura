@@ -712,11 +712,31 @@ def _hcdn_paginate(resource_id: str, *, q: str = "") -> list[dict]:
     return records
 
 
+def _es_media_sancion(movimiento: str) -> bool:
+    """True si el movimiento es EXPLÍCITAMENTE una media sanción ('TEXTO DE
+    LA MEDIA SANCION' y variantes) — aprobación de UNA cámara, no ley.
+    Auditoría 2026-07-09: el q='SANCION' del CKAN también matchea esas filas
+    (54 en el dataset) y las contaba como aprobación. Ningún número publicado
+    llegó a estar mal (los únicos proyectos con SOLO media sanción son de
+    legislaturas viejas, 2011), pero una media sanción futura de un proyecto
+    recién enviado habría creado un 'aprobado' fantasma en eficacia_legislativa.
+    Nota: el caso inverso (un 'CONSIDERACION Y SANCION' pelado de la cámara
+    de ORIGEN también es solo media sanción) no se puede distinguir con las
+    etiquetas del dataset — la Ley de Bases figura con esa misma etiqueta en
+    su sanción DEFINITIVA (27-jun-2024) — así que solo se filtra lo
+    inequívoco. comisiones_caidas NO usa este filtro a propósito: ahí la
+    media sanción debe contar como 'avanzó' (mide varados en comisión, no
+    leyes)."""
+    return "MEDIA SANCION" in movimiento.upper()
+
+
 def fetch_eficacia_legislativa() -> dict | None:
     """
     % proyectos ejecutivos aprobados en los últimos 12 meses.
     Identificación PE: EXP_DIPUTADOS o EXP_SENADO con patrón NNNN-PE-AAAA.
-    Aprobación: aparición del PROYECTO_ID en movimientos-de-proyectos con MOVIMIENTO~'SANCION'.
+    Aprobación: aparición del PROYECTO_ID en movimientos-de-proyectos con
+    MOVIMIENTO~'SANCION', excluyendo medias sanciones explícitas
+    (_es_media_sancion).
     Ventana: PUBLICACION_FECHA (proyectos) y FECHA (movimientos) >= hoy − 365 días.
 
     Fuente: datos.hcdn.gob.ar CKAN
@@ -746,6 +766,7 @@ def fetch_eficacia_legislativa() -> dict | None:
             r["PROYECTO_ID"]
             for r in raw_san
             if str(r.get("FECHA", ""))[:10] >= cutoff
+            and not _es_media_sancion(str(r.get("MOVIMIENTO", "")))
         }
 
         aprobados = pe_recientes & sancionados

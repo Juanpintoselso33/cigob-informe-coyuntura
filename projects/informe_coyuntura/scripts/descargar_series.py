@@ -430,7 +430,8 @@ def fetch_eficacia_serie() -> list:
                or politica._RE_PE_EXP.search(r.get("EXP_SENADO", "") or ""))]
     raw_san = politica._hcdn_paginate(politica.HCDN_MOVIMIENTOS_RID, q="SANCION")
     san = [(str(r.get("PROYECTO_ID", "")), str(r.get("FECHA", ""))[:10]) for r in raw_san
-           if r.get("PROYECTO_ID")]
+           if r.get("PROYECTO_ID")
+           and not politica._es_media_sancion(str(r.get("MOVIMIENTO", "")))]
     out = []
     for ym, cutoff, fin in _hcdn_ventanas_12m():
         pe_ids = {pid for pid, f in pe if cutoff <= f <= fin}

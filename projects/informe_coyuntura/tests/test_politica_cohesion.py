@@ -1009,6 +1009,42 @@ def test_fetch_adhesion_reformas_provincial_deduplica_filas_repetidas(monkeypatc
     assert resultado["n_provincias"] == 2  # CATAMARCA + CHUBUT, no 3
 
 
+# ── eficacia_legislativa: media sanción no es ley ────────────────────────────
+
+def test_es_media_sancion_distingue_etiquetas():
+    assert politica._es_media_sancion("TEXTO DE LA MEDIA SANCION")
+    assert politica._es_media_sancion("Texto de la media sancion con modificaciones")
+    assert not politica._es_media_sancion("CONSIDERACION Y SANCION")
+    assert not politica._es_media_sancion("TEXTO SANCION DEFINITIVA")
+
+
+def test_fetch_eficacia_legislativa_excluye_medias_sanciones(monkeypatch):
+    # regresión (auditoría 2026-07-09): q='SANCION' del CKAN también matchea
+    # 'TEXTO DE LA MEDIA SANCION' (aprobación de UNA cámara, no ley) y esas
+    # filas contaban como proyecto aprobado. Acá: 2 proyectos PE enviados en
+    # ventana; uno con sanción real, otro SOLO con media sanción -> 1/2 = 50%,
+    # no 100%.
+    hoy = datetime.now().strftime("%Y-%m-%d")
+
+    def fake_paginate(rid, q=""):
+        if rid == politica.HCDN_PROYECTOS_RID:
+            return [
+                {"PROYECTO_ID": "HCDN1", "EXP_DIPUTADOS": "0001-PE-2026", "PUBLICACION_FECHA": hoy},
+                {"PROYECTO_ID": "HCDN2", "EXP_SENADO": "0002-PE-2026", "PUBLICACION_FECHA": hoy},
+            ]
+        return [
+            {"PROYECTO_ID": "HCDN1", "MOVIMIENTO": "TEXTO DE LA MEDIA SANCION", "FECHA": hoy},
+            {"PROYECTO_ID": "HCDN2", "MOVIMIENTO": "CONSIDERACION Y SANCION", "FECHA": hoy},
+        ]
+
+    monkeypatch.setattr(politica, "_hcdn_paginate", fake_paginate)
+    resultado = politica.fetch_eficacia_legislativa()
+
+    assert resultado["enviados_n"] == 2
+    assert resultado["aprobados_n"] == 1   # solo la sanción real; la media sanción no cuenta
+    assert resultado["valor"] == 50.0
+
+
 # ── protestas_caba (reutiliza el fetcher ACLED de gestión, ADR-0017) ─────────
 # En gestión este indicador es CONTEXTO y no puntúa ("premiaría menos
 # marchas"). En política SÍ puntúa: nivel de conflicto social como condición
