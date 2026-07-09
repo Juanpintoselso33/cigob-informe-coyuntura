@@ -165,6 +165,38 @@ def test_fetch_cohesion_bloque_senado_mensual_sin_detalle_devuelve_vacio(tmp_pat
     assert descargar_series.fetch_cohesion_bloque_senado_mensual(anio_inicio=2026) == []
 
 
+def test_write_csv_merge_preserva_indicadores_no_tocados(tmp_path, monkeypatch):
+    monkeypatch.setattr(descargar_series, "OUTPUT_DIR", tmp_path)
+    (tmp_path / "politica.csv").write_text(
+        "fecha,indicador,valor,unidad,fuente\n"
+        "2026-01-01,votometro_ventaja_lla,5.0,pp,x\n"
+        "2026-01-01,cohesion_bloque_senado,90.0,%,y\n",
+        encoding="utf-8",
+    )
+    descargar_series.write_csv("politica", [["2026-02-01", "cohesion_bloque_senado", 95.0, "%", "y"]], merge=True)
+    filas = (tmp_path / "politica.csv").read_text(encoding="utf-8").splitlines()
+    assert any("votometro_ventaja_lla" in f for f in filas)          # preservada
+    assert any("2026-02-01,cohesion_bloque_senado,95.0" in f for f in filas)  # actualizada
+    assert not any("2026-01-01,cohesion_bloque_senado" in f for f in filas)   # reemplazada, no duplicada
+
+
+def test_write_csv_sin_merge_sobreescribe_todo(tmp_path, monkeypatch):
+    monkeypatch.setattr(descargar_series, "OUTPUT_DIR", tmp_path)
+    (tmp_path / "politica.csv").write_text(
+        "fecha,indicador,valor,unidad,fuente\n2026-01-01,votometro_ventaja_lla,5.0,pp,x\n",
+        encoding="utf-8",
+    )
+    descargar_series.write_csv("politica", [["2026-02-01", "cohesion_bloque_senado", 95.0, "%", "y"]])
+    filas = (tmp_path / "politica.csv").read_text(encoding="utf-8").splitlines()
+    assert not any("votometro_ventaja_lla" in f for f in filas)   # sin merge, se pierde -- comportamiento de siempre
+
+
+def test_cinturon_de_indicador_encuentra_en_las_tres_listas():
+    assert descargar_series._cinturon_de_indicador("cohesion_bloque_senado") == "politica"   # DERIVADAS
+    assert descargar_series._cinturon_de_indicador("rem_ipc_12m") == "macro"                 # BCRA
+    assert descargar_series._cinturon_de_indicador("no_existe_este_indicador") is None
+
+
 def test_fetch_alineamiento_senadores_prov_serie_usa_su_propio_store(tmp_path, monkeypatch):
     monkeypatch.setattr(descargar_series, "date", _FakeDate)
     monkeypatch.setattr(descargar_series, "ALINEAMIENTO_SENADORES_STORE", tmp_path / "alineamiento.json")

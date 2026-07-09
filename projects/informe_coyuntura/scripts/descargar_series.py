@@ -73,8 +73,19 @@ def fetch_bcra(var_id: int, dias: int = 960) -> list:
                   key=lambda x: x[0], reverse=True)
 
 
-def write_csv(nombre: str, rows: list):
+def write_csv(nombre: str, rows: list, merge: bool = False):
+    """Escribe el CSV de un cinturón. Con merge=True, preserva del archivo
+    existente las filas de los indicadores que NO están en `rows` (columna
+    "indicador", índice 1) en vez de sobreescribir el cinturón entero --
+    usado por `descargar(..., solo_indicador=...)` para poder refrescar un
+    único indicador sin perder la serie del resto."""
     path = OUTPUT_DIR / f"{nombre}.csv"
+    if merge and path.exists():
+        tocados = {r[1] for r in rows}
+        with open(path, newline="", encoding="utf-8-sig") as f:
+            existentes = list(csv.reader(f))[1:]   # sin encabezado
+        rows = [r for r in existentes if r[1] not in tocados] + rows
+        rows.sort(key=lambda x: (x[1], x[0]), reverse=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
         writer.writerow(["fecha", "indicador", "valor", "unidad", "fuente"])
@@ -198,10 +209,20 @@ def fetch_icip_serie(meses: int | None = None) -> list:
     return [[f"{ym}-01", v] for ym, v in macro._icip_serie_mensual(meses=meses)]
 
 
-def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: list = ()):
+def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: list = (), solo_indicador: str | None = None):
+    """Arma el CSV de un cinturón. Con `solo_indicador`, corre SOLO ese
+    indicador (buscado por nombre en las tres listas) y hace MERGE con el
+    CSV existente (preserva las filas de los indicadores no tocados) en vez
+    de sobreescribir el cinturón entero -- así se puede refrescar un
+    indicador puntual sin arrastrar al resto de su cinturón a quedar
+    desincronizado card↔serie por una corrida parcial (ver CLAUDE.md,
+    sección "Publishing data 'now'", y el hallazgo de gate_calidad G3 del
+    2026-07-09)."""
     rows = []
 
     for nombre, unidad, fuente, fetch_fn in derivadas:
+        if solo_indicador and nombre != solo_indicador:
+            continue
         try:
             data = fetch_fn()
             for fecha, valor in data:
@@ -211,6 +232,8 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
             print(f"  [ERR] {nombre}: {e}")
 
     for sid, nombre, unidad, fuente in indec_series:
+        if solo_indicador and nombre != solo_indicador:
+            continue
         try:
             data = fetch_indec(sid)
             for fecha, valor in data:
@@ -220,6 +243,8 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
             print(f"  [ERR] {nombre}: {e}")
 
     for var_id, nombre, unidad, fuente in bcra_vars:
+        if solo_indicador and nombre != solo_indicador:
+            continue
         try:
             data = fetch_bcra(var_id)
             for fecha, valor in data:
@@ -229,7 +254,7 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
             print(f"  [ERR] {nombre}: {e}")
 
     rows.sort(key=lambda x: (x[1], x[0]), reverse=True)
-    write_csv(cinturon, rows)
+    write_csv(cinturon, rows, merge=solo_indicador is not None)
 
 
 # ── Definición de series por cinturón ─────────────────────────────────────────
@@ -1921,17 +1946,53 @@ GESTION_DERIVADAS = [
 ]
 
 
+CINTURONES_SERIES = {
+    "macro": (MACRO_INDEC, MACRO_BCRA, MACRO_DERIVADAS),
+    "politica": (POLITICA_INDEC, [], POLITICA_DERIVADAS),
+    "vida_cotidiana": (VIDA_INDEC, [], VIDA_DERIVADAS),
+    "gestion": (GESTION_INDEC, [], GESTION_DERIVADAS),
+}
+
+
+def _nombres_de(indec: list, bcra: list, derivadas: list) -> set:
+    return ({n for _, n, *_ in indec} | {n for _, n, *_ in bcra}
+            | {n for n, *_ in derivadas})
+
+
+def _cinturon_de_indicador(nombre: str) -> str | None:
+    for cinturon, (indec, bcra, derivadas) in CINTURONES_SERIES.items():
+        if nombre in _nombres_de(indec, bcra, derivadas):
+            return cinturon
+    return None
+
+
 if __name__ == "__main__":
-    print("=== MACRO ===")
-    descargar("macro", MACRO_INDEC, MACRO_BCRA, MACRO_DERIVADAS)
+    import argparse
 
-    print("\n=== POLÍTICA ===")
-    descargar("politica", POLITICA_INDEC, [], POLITICA_DERIVADAS)
+    parser = argparse.ArgumentParser(
+        description="Backfill de series históricas. Sin argumentos: los 4 "
+                     "cinturones completos (comportamiento de siempre). Con "
+                     "--cinturon o --indicador: corrida acotada -- NO toca "
+                     "las series de los cinturones/indicadores no incluidos, "
+                     "así no queda card↔serie desincronizado en el resto "
+                     "(ver CLAUDE.md).")
+    parser.add_argument("--cinturon", choices=sorted(CINTURONES_SERIES),
+                         help="Solo este cinturón (los otros 3 quedan intactos).")
+    parser.add_argument("--indicador",
+                         help="Solo este indicador (el cinturón se detecta solo; "
+                              "el resto del cinturón se preserva vía merge).")
+    args = parser.parse_args()
 
-    print("\n=== VIDA COTIDIANA ===")
-    descargar("vida_cotidiana", VIDA_INDEC, [], VIDA_DERIVADAS)
+    if args.indicador and not args.cinturon:
+        args.cinturon = _cinturon_de_indicador(args.indicador)
+        if args.cinturon is None:
+            raise SystemExit(f"'{args.indicador}' no está en ningún cinturón "
+                              f"(revisar INDEC/BCRA/DERIVADAS de cada uno)")
 
-    print("\n=== GESTIÓN ===")
-    descargar("gestion", GESTION_INDEC, [], GESTION_DERIVADAS)
+    cinturones = [args.cinturon] if args.cinturon else list(CINTURONES_SERIES)
+    for c in cinturones:
+        indec, bcra, derivadas = CINTURONES_SERIES[c]
+        print(f"\n=== {c.upper()} ===")
+        descargar(c, indec, bcra, derivadas, solo_indicador=args.indicador)
 
     print(f"\nCSVs en {OUTPUT_DIR.resolve()}")

@@ -81,14 +81,22 @@ def build_vida(raw):
     icc = utdt.get("icc_utdt", {})
     _add(out, "icc_utdt", round(icc.get("valor", 0), 1),
          "índice", "UTDT — Índice de Confianza del Consumidor (CIF)", icc.get("fecha"))
-    sd = trends.get("sentimiento_digital", {}).get("interes_relativo", {})
-    if sd:
-        _add(out, "sentimiento_digital", round(sum(sd.values()) / len(sd), 1),
-             "interés 0–100", "Google Trends", ts,
-             detalle_txt=("El titular es el pulso de los últimos 3 meses (escala relativa "
-                          "de esa ventana). El gráfico y el puntaje del ITVC usan la "
-                          "canasta mensual de ventana fija desde 2021, cuyo cociente "
-                          "contra el 4T-2023 es inmune a la renormalización de Trends."))
+    # sd puede venir {} (nunca corrió) o {"...": null} (Trends 429/timeout,
+    # ver "nota" del dump crudo) -- en ambos casos _add() se llama SIEMPRE
+    # (con valor=None si no hay dato) para que _carry_forward pueda
+    # detectar el indicador y restaurar el último valor publicado. Antes
+    # `if sd:` omitía la llamada entera cuando Trends fallaba: el indicador
+    # quedaba AUSENTE del dict (no solo desactualizado), invisible para
+    # _carry_forward (que solo repara claves ya presentes con valor=None) --
+    # hallazgo real 2026-07-09, sentimiento_digital desapareció del índice
+    # tras varias corridas seguidas que agotaron el rate limit de Trends.
+    sd = trends.get("sentimiento_digital", {}).get("interes_relativo") or {}
+    _add(out, "sentimiento_digital", round(sum(sd.values()) / len(sd), 1) if sd else None,
+         "interés 0–100", "Google Trends", ts,
+         detalle_txt=("El titular es el pulso de los últimos 3 meses (escala relativa "
+                      "de esa ventana). El gráfico y el puntaje del ITVC usan la "
+                      "canasta mensual de ventana fija desde 2021, cuyo cociente "
+                      "contra el 4T-2023 es inmune a la renormalización de Trends."))
     motos = cafam.get("patentamiento_motos", {})
     _add(out, "patentamiento_motos", motos.get("valor"),
          "unidades", "CAFAM", motos.get("fecha"))

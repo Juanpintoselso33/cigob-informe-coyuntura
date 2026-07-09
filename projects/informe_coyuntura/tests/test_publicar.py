@@ -4,6 +4,31 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]   # projects/informe_coyuntura
 DATA = ROOT / "web" / "src" / "data"
 sys.path.insert(0, str(ROOT))                # para importar config.py
+sys.path.insert(0, str(ROOT / "scripts"))
+import publicar
+
+
+def test_build_vida_agrega_sentimiento_digital_aunque_trends_falle():
+    # Regresión (hallazgo real 2026-07-09): cuando Trends devuelve
+    # interes_relativo=None (429/timeout), build_vida omitía la llamada a
+    # _add() por completo -- el indicador quedaba AUSENTE del dict, no solo
+    # con valor=None, así que _carry_forward (que solo repara claves ya
+    # presentes) no podía restaurarlo y sentimiento_digital desaparecía del
+    # índice entero.
+    raw = {"trends": {"sentimiento_digital": {"interes_relativo": None}},
+           "metadata": {"timestamp": "2026-07-09T00:00:00"}}
+    enriquecido = publicar.build_vida(raw)
+    assert "sentimiento_digital" in enriquecido
+    assert enriquecido["sentimiento_digital"]["valor"] is None
+
+
+def test_carry_forward_restaura_sentimiento_digital_ausente_de_trends():
+    enriquecido = {"sentimiento_digital": {"valor": None, "fecha_dato": None, "fuente": None}}
+    previo = {"sentimiento_digital": {"valor": 5.8, "fecha_dato": "2026-07-08", "fuente": "Google Trends"}}
+    resultado = publicar._carry_forward(enriquecido, previo)
+    assert resultado["sentimiento_digital"]["valor"] == 5.8
+    assert resultado["sentimiento_digital"]["fecha_dato"] == "2026-07-08"
+
 
 def test_publicar_genera_snapshot():
     subprocess.run([sys.executable, "scripts/publicar.py"], cwd=ROOT, check=True)
