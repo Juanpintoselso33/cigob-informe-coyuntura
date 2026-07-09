@@ -80,6 +80,10 @@
   "gasto_funcionamiento": {
     "2026-07": -24.35
   },
+  "gobernadores_alineamiento": {
+    "2026-06": 55.0,
+    "2026-07": 55.0
+  },
   "iaf_transferencias": {
     "2026-06": 7.0,
     "2026-07": 7.0
