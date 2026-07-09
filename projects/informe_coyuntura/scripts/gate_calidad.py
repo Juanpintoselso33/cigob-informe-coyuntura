@@ -51,6 +51,7 @@ G3_EXCEPCIONES = {
     "sentimiento_digital": "card = pulso 3m en tiempo real; serie = canasta mensual ventana fija (ADR-0034)",
     "rigi_inversiones": "card = % de la meta; serie = monto acumulado en M USD",
     "protestas_caba": "card = eventos acumulados 12m; serie = eventos semanales",
+    "alineamiento_senadores_prov": "card = ventana móvil de 90 días; serie = ventana anual fija (dias_ventana=366 en el backfill)",
 }
 # tolerancia relativa por indicador (default 1% o 0,11 absoluto, redondeos)
 G3_TOLERANCIA_REL = {"cepo_mulc": 0.10}   # brecha cambiaria viva: deriva intradiaria
