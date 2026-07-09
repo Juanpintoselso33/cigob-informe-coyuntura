@@ -1631,16 +1631,19 @@ def _agregar_alineamiento_ventana(detalle: list[dict], referencia: datetime, dia
 
 # ── MAGyP — adhesión provincial al RIGI ──────────────────────────────────────
 
-def fetch_adhesion_reformas_provincial() -> dict | None:
-    """% de provincias (sobre 24) adheridas formalmente al RIGI (Título VII,
-    Ley 27.742) — tabla MAGyP. Mide adhesión FISCAL a un régimen puntual, NO
-    alineamiento político general — no reemplaza a gobernadores_alineamiento.
+def _provincias_adheridas_rigi() -> set[str] | None:
+    """{NOMBRE_PROVINCIA en mayúsculas, ...} de la tabla MAGyP de provincias
+    adheridas al RIGI (Título VII, Ley 27.742), o None si el fetch falló.
     parser="html.parser" (stdlib, lxml no está en requirements.txt — ver
     Tarea 4 del plan de cohesion_bloque): el sitio fuente tiene un <tr> vacío
     malformado que con html.parser produce una fila SANTA CRUZ duplicada
     (confirmado en vivo en la investigación previa) — no requiere lxml para
-    resolverlo, `provincias` ya es un `set()` más abajo, así que agregar el
-    mismo nombre dos veces es un no-op y el conteo final no se infla."""
+    resolverlo, el resultado ya es un `set()`, así que agregar el mismo
+    nombre dos veces es un no-op y el conteo final no se infla. Factorizada
+    de fetch_adhesion_reformas_provincial (que solo necesita el conteo) para
+    que descargar_series.fetch_adhesion_reformas_provincial_serie pueda
+    cruzar los NOMBRES contra las fechas de adhesión investigadas a mano
+    (data/politica/adhesion_reformas_provincial_fechas.json, ADR-0044)."""
     try:
         r = requests.get(MAGYP_RIGI_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     except requests.RequestException:
@@ -1656,6 +1659,14 @@ def fetch_adhesion_reformas_provincial() -> dict | None:
         provincia = celdas[0].get_text(strip=True)
         if provincia:
             provincias.add(provincia.upper())
+    return provincias or None
+
+
+def fetch_adhesion_reformas_provincial() -> dict | None:
+    """% de provincias (sobre 24) adheridas formalmente al RIGI (Título VII,
+    Ley 27.742) — tabla MAGyP. Mide adhesión FISCAL a un régimen puntual, NO
+    alineamiento político general — no reemplaza a gobernadores_alineamiento."""
+    provincias = _provincias_adheridas_rigi()
     if not provincias:
         return None
     return {

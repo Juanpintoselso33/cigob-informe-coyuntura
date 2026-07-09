@@ -1006,7 +1006,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Mide adhesión a un régimen fiscal y de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia. Una provincia puede adherir al RIGI por conveniencia fiscal aun con un gobernador crítico del gobierno nacional, y a la inversa.",
-      "El puntaje sube en escalones con el porcentaje adherido: más de 80% de provincias adheridas → el más alto; entre 60% y 80% → alto; entre 40% y 60% → moderado; entre 20% y 40% → bajo; menos de 20% → el más bajo. Los umbrales son provisorios: se fijaron sin serie histórica propia del indicador y se van a recalibrar cuando la haya.",
+      "El puntaje sube en escalones con el porcentaje adherido: más de 80% de provincias adheridas → el más alto; entre 60% y 80% → alto; entre 40% y 60% → moderado; entre 20% y 40% → bajo; menos de 20% → el más bajo. Los umbrales se chequearon contra la serie histórica real del indicador (24 meses, jul-2024 a jun-2026): a diferencia de otros indicadores del cinturón, no se recalibraron — la adhesión es un evento irreversible por provincia, así que el rango observado hoy es el arranque de un proceso todavía en curso, no una muestra representativa contra la cual fijar anclas permanentes.",
       "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
     ],
     limitaciones: [
@@ -1018,6 +1018,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "La tabla completa se relee de la fuente en cada corrida; no se acumulan lecturas parciales.",
     cambios: [
       { fecha: "2026-07-07", cambio: "Alta como indicador de la dimensión de alianzas territoriales: mide adhesión fiscal al RIGI, distinta del alineamiento político general que ya capta el indicador de gobernadores." },
+      { fecha: "2026-07-09", cambio: "Serie histórica MENSUAL del gráfico (antes: 1 solo punto, el valor actual). La tabla fuente no trae fecha de adhesión por provincia, así que se investigó a mano la fecha de la ley de adhesión de cada una de las 16 provincias (Boletín Oficial provincial u otra fuente oficial equivalente) — no es un scraper automático, es un dataset investigado una vez y versionado (data/politica/adhesion_reformas_provincial_fechas.json)." },
     ],
   },
 

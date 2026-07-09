@@ -765,22 +765,55 @@ def fetch_alineamiento_senadores_prov_mensual(anio_inicio: int = 2023, dias_vent
     return puntos
 
 
+ADHESION_REFORMAS_FECHAS_PATH = Path(__file__).resolve().parents[1] / "data" / "politica" / "adhesion_reformas_provincial_fechas.json"
+
+
 def fetch_adhesion_reformas_provincial_serie() -> list:
-    """adhesion_reformas_provincial es un STOCK: la adhesión al RIGI es un
-    evento único e irreversible por provincia, no una magnitud que fluctúe
-    mes a mes — un solo punto con el valor actual, no un backfill año por
-    año (no hay fuente con la fecha en la que cada provincia adhirió, así
-    que no hay forma de reconstruir el pasado). Confirmado en vivo
-    (2026-07-08): la tabla de MAGyP solo tiene 2 columnas (provincia, link a
-    la ley), sin fecha de adhesión; el sitio que sí podría tenerla
-    (trivia.consejo.org.ar, donde apuntan los links de ley) devuelve
-    "Request Rejected" ante fetch directo — mismo patrón de WAF categórico
-    que HCDN Diputados (ADR-0037), no reintentar sin una vía nueva.
-    [[YYYY-01-01, % provincias]]."""
-    resultado = politica.fetch_adhesion_reformas_provincial()
-    if not resultado or resultado.get("valor") is None:
+    """Serie MENSUAL de adhesion_reformas_provincial: % de provincias (sobre
+    24) que ya habían adherido al RIGI a cada fin de mes, reconstruida desde
+    ADHESION_REFORMAS_FECHAS_PATH (fechas investigadas A MANO, 2026-07-09,
+    ADR-0044) -- a diferencia de Diputados/Senado, no existe un endpoint
+    único con fecha de adhesión por provincia: cada provincia adhirió con su
+    propia ley, publicada en su propio Boletín Oficial provincial, así que
+    esta serie no se puede reconstruir con un scraper genérico. Reemplaza el
+    punto único que existía antes (el dato SÍ era un STOCK sin historia
+    reconstruible -- dejó de serlo el día que se investigaron las fuentes
+    provinciales una por una).
+
+    Las provincias que aparecen HOY en la tabla MAGyP pero no tienen fecha
+    investigada (adhesiones nuevas posteriores a esta investigación) NO
+    entran al histórico -- solo al valor live de la card
+    (politica.fetch_adhesion_reformas_provincial, que sigue releyendo la
+    tabla MAGyP fresca en cada corrida). Por eso adhesion_reformas_provincial
+    está en G3_EXCEPCIONES de gate_calidad.py: mientras todas las provincias
+    adheridas tengan fecha conocida (el caso de hoy, 16/16) card y serie
+    coinciden exacto; el día que aparezca una provincia nueva sin fecha
+    investigada, van a dejar de coincidir hasta que se la investigue a mano
+    y se agregue a ADHESION_REFORMAS_FECHAS_PATH.
+    [[YYYY-MM-DD, % de provincias]]."""
+    provincias_actuales = politica._provincias_adheridas_rigi()
+    if not provincias_actuales:
         return []
-    return [[f"{date.today().year}-01-01", resultado["valor"]]]
+    try:
+        crudo = json.loads(ADHESION_REFORMAS_FECHAS_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return []
+    fechas = {k: v["fecha"] for k, v in crudo.items() if not k.startswith("_")}
+    conocidas = {p: datetime.strptime(fechas[p], "%Y-%m-%d").date()
+                 for p in provincias_actuales if p in fechas}
+    desconocidas = provincias_actuales - set(fechas)
+    if desconocidas:
+        print(f"  [WARN] adhesion_reformas_provincial: sin fecha investigada para {sorted(desconocidas)} "
+              "-- excluidas del histórico mensual, solo cuentan en el valor live de la card")
+    if not conocidas:
+        return []
+
+    puntos = []
+    desde = min(conocidas.values()).replace(day=1)
+    for fin_mes in _fines_de_mes(desde, date.today()):
+        cuenta = sum(1 for f in conocidas.values() if f <= fin_mes)
+        puntos.append([fin_mes.strftime("%Y-%m-%d"), round(cuenta / 24.0 * 100.0, 1)])
+    return puntos
 
 
 def fetch_cepa_movilizacion_serie(max_paginas: int = 40) -> list:

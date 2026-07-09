@@ -13,15 +13,18 @@ una decisión editorial explícita (ver ADR-0036): "imagen y voto" pesa
 deliberadamente MENOS que las demás porque el propio marco del proyecto
 distingue capital político de popularidad.
 
-Banda de adhesion_reformas_provincial es la ÚNICA que sigue PROVISIONAL —
-ver ADR-0036. A diferencia de los demás indicadores de este índice, no es
-un problema de "todavía no se corrió el backfill": la fuente (MAGyP) no
-tiene fecha de adhesión por provincia, así que no hay forma de reconstruir
-el pasado con ella, y la única fuente alternativa con esa fecha
-(trivia.consejo.org.ar) devuelve "Request Rejected" (WAF) ante fetch
-directo, mismo patrón categórico que bloqueaba a Diputados (ADR-0037) antes
-de encontrarse el endpoint PDF alternativo (ADR-0040) — acá todavía no
-apareció un camino equivalente.
+Ninguna banda de este índice sigue PROVISIONAL desde 2026-07-09 (ver
+ADR-0036 para el estado original). `adhesion_reformas_provincial` fue la
+última: no había fecha de adhesión por provincia en la fuente (MAGyP), y la
+alternativa con esa fecha (trivia.consejo.org.ar) devuelve "Request
+Rejected" (WAF) ante fetch directo — pero investigando A MANO, provincia por
+provincia, la fecha real de sanción/publicación de cada ley de adhesión
+(24 puntos mensuales reales, jul-2024→jun-2026, ADR-0044), se pudo construir
+la serie igual. Sus anclas (80/60/40/20) se CHEQUEARON contra esa serie y no
+se tocaron -- a diferencia de las otras 4 recalibraciones de hoy, discriminan
+bien en todo el rango observado (ver comentario en BANDAS_ITCP: la adhesión
+es un evento irreversible, no una tasa que oscila, así que el rango de hoy es
+un punto de partida en curso, no el rango final contra el que calibrar).
 
 `protestas_caba` (2026-07-09, sin ADR propio -- recalibración menor, ver
 comentario en BANDAS_ITCP) también salió de PROVISIONAL: a diferencia de
@@ -109,7 +112,21 @@ BANDAS_ITCP = {
         (40.0, 50.0, 40),
         (-INF, 40.0, 10),
     ],
-    "adhesion_reformas_provincial": [     # % provincias adheridas RIGI, mayor = mejor — PROVISIONAL
+    "adhesion_reformas_provincial": [
+        # CHEQUEADO 2026-07-09 contra 24 puntos mensuales reales (jul-2024 a
+        # jun-2026, reconstruidos investigando a mano la fecha de adhesión
+        # de cada provincia, ADR-0044) -- a diferencia de los otros 4
+        # indicadores recalibrados hoy, acá NO se tocaron las anclas: la
+        # adhesión al RIGI es un evento IRREVERSIBLE por provincia (un
+        # trinquete, no una tasa que oscila), así que el rango observado
+        # (4,2%–66,7%) es el arranque de un proceso todavía en curso, no una
+        # muestra representativa de su rango final -- recalibrar ahora
+        # anclaría las bandas a un punto de partida que se va a quedar
+        # obsoleto apenas sigan adhiriendo provincias. El puntaje interpolado
+        # ya discrimina de verdad en todo el rango observado (10 en jul-2024,
+        # 82 en jun-2026, sin aplanarse en ningún tramo) -- las anclas
+        # heredadas resultaron razonables, no hace falta cambiarlas. Vuelve
+        # a evaluarse si el rango observado se estanca de forma sostenida.
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
     "cohesion_bloque": [

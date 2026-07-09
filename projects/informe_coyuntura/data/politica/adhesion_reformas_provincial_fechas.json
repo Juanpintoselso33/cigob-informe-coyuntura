@@ -1,0 +1,87 @@
+{
+  "_meta": {
+    "descripcion": "Fecha de adhesión formal al RIGI (Título VII, Ley 27.742) por provincia -- dataset investigado manualmente (búsqueda web + fuentes oficiales), NO scrapeado automáticamente: no existe un endpoint único con fecha de adhesión por provincia (ver docs/adr/0044). criterio='publicacion_bo' es la fecha en que la ley provincial entra en vigencia (publicación en el Boletín Oficial provincial); se usa 'sancion' o 'promulgacion' como fallback cuando no se encontró una fecha de publicación explícita en las fuentes consultadas.",
+    "investigado_en": "2026-07-09",
+    "provincias_sin_fecha_conocida": "Las provincias que todavía no figuran en la tabla de MAGyP (8 de 24) no tienen entrada acá -- si adhieren en el futuro, esta fecha no se descubre sola: hay que investigarla a mano y agregarla (mismo criterio que este dataset)."
+  },
+  "CATAMARCA": {
+    "fecha": "2024-09-27", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "DGR Catamarca 5.863",
+    "fuente": "https://cedop.gob.ar/buscar/ley/5863"
+  },
+  "CÓRDOBA": {
+    "fecha": "2024-10-21", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "DGR Córdoba 10.997",
+    "fuente": "https://boletinoficial.cba.gov.ar/wp-content/4p96humuzp/2024/10/1_Secc_211024.pdf"
+  },
+  "CORRIENTES": {
+    "fecha": "2024-09-23", "criterio": "sancion", "confianza": "alta",
+    "ley": "DGR Corrientes 6.694",
+    "fuente": "https://hcdcorrientes.gov.ar/wp-content/uploads/2024/09/Ley-6694.pdf"
+  },
+  "CHACO": {
+    "fecha": "2024-09-30", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "ATP Chaco 4.086",
+    "fuente": "https://chacodiapordia.com/en-sesion-extraordinaria-chaco-adhirio-al-regimen-de-incentivo-para-grandes-inversiones-rigi/"
+  },
+  "CHUBUT": {
+    "fecha": "2024-08-29", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "DGR Chubut IX-171",
+    "fuente": "https://sistemas.chubut.gov.ar/digesto/sistema/consulta.php?idile1=86593"
+  },
+  "ENTRE RÍOS": {
+    "fecha": "2024-11-15", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "ATER Entre Ríos 11.162",
+    "fuente": "https://www.senadoer.gob.ar/ley/ley-n-11162"
+  },
+  "JUJUY": {
+    "fecha": "2024-08-14", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "DPR Jujuy 6.409",
+    "fuente": "https://boletinoficial.jujuy.gob.ar?p=293185"
+  },
+  "MENDOZA": {
+    "fecha": "2024-08-27", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "ATM Mendoza 9.567",
+    "fuente": "https://boe.mendoza.gov.ar/publico/pdf_pedido/60ae63f91bed234ae345da071f57506389087f5910"
+  },
+  "MISIONES": {
+    "fecha": "2025-09-12", "criterio": "publicacion_bo", "confianza": "media",
+    "ley": "ATM Misiones VII-106",
+    "fuente": "https://www.primeraedicion.com.ar/nota/101040554/misiones-oficializo-su-adhesion-al-rigi-para-atraer-grandes-inversiones (corroborado por trivia.consejo.org.ar/ficha/526912 -- Boletín Oficial de Misiones no permitió fetch directo)"
+  },
+  "NEUQUEN": {
+    "fecha": "2025-01-08", "criterio": "promulgacion", "confianza": "alta",
+    "ley": "DPR Neuquén 3.491",
+    "fuente": "https://perezmarzo.com.ar/archivos/ley_3491___neuquen_adhiere_al_rigi_promulgacion_pdf_250113_87130.pdf"
+  },
+  "RÍO NEGRO": {
+    "fecha": "2024-07-18", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "ART Río Negro 5.724",
+    "fuente": "https://web.legisrn.gov.ar/legislativa/legislacion/ver?id=10875"
+  },
+  "SALTA": {
+    "fecha": "2024-09-19", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "DGR Salta 8.451",
+    "fuente": "https://boletinoficialsalta.gob.ar/Imprimir_doc.php"
+  },
+  "SAN JUAN": {
+    "fecha": "2024-08-22", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "DGR San Juan 2671-I",
+    "fuente": "https://trivia.consejo.org.ar/ficha/521990-ley_dgr_san_juan_2671-i._adhesion_al_regimen_de_incentivo_para_grandes_inversiones_rigi"
+  },
+  "SAN LUIS": {
+    "fecha": "2024-10-18", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "DPIP San Luis VIII-1.135",
+    "fuente": "SAIJ Id LPD0001135 / boletinoficial.sanluis.gov.ar"
+  },
+  "SANTA CRUZ": {
+    "fecha": "2025-01-14", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "ASIP N° 3912",
+    "fuente": "https://boletinoficial.santacruz.gob.ar/legislacion/leyes/41593"
+  },
+  "TUCUMÁN": {
+    "fecha": "2024-10-14", "criterio": "publicacion_bo", "confianza": "alta",
+    "ley": "9803/2024 (la tabla de MAGyP cita erróneamente \"ASIP N° 3912\", copiado de Santa Cruz -- verificado que el hipervínculo real de esa fila apunta a la ley 9803/2024, distinta)",
+    "fuente": "https://legislaturadetucuman.gob.ar/pdfs/sesiones/diariosesion/2024-09-26.pdf"
+  }
+}
