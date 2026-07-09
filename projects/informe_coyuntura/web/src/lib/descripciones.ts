@@ -124,6 +124,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Mide la cohesión interna del oficialismo en la cámara alta, donde el bloque propio tiene pocas bancas y una sola disidencia mueve el promedio con fuerza — clave para sostener vetos y aprobar leyes en el Senado.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
+  rotacion_gabinete: {
+    que: "Cuántos funcionarios de rango ministerial pleno (el jefe de Gabinete y los ministros) dejaron su cargo en los últimos 12 meses, con la fecha del cese efectivo. No cuenta los pases de un ministro a otro cargo del mismo gabinete ni los cierres o fusiones de ministerios: una reorganización no es una salida.",
+    aporta: "Un gabinete estable indica que el Presidente conserva la capacidad de sostener a su equipo; las salidas encadenadas son señal de tensión interna. Es la lectura del Poder Ejecutivo dentro de la cohesión del oficialismo, que se complementa con la disciplina de voto del bloque en las dos cámaras.",
+    frecuencia: "Continua (registro curado, chequeo diario)", tipo: "Conteo (12 meses)",
+  },
   adhesion_reformas_provincial: {
     que: "Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI), sobre el total.",
     aporta: "Mide adhesión fiscal a un régimen de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia.",
@@ -340,6 +345,6 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
   poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum y cuántos proyectos quedan varados en comisión.",
   alianzas_territoriales: "El sostén federal del gobierno: las transferencias a las provincias (armonía fiscal), el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI.",
-  cohesion_interna: "Qué tan unido vota puertas adentro el bloque propio de La Libertad Avanza, en Diputados y en el Senado.",
+  cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza en Diputados y en el Senado, y la estabilidad del gabinete del Presidente (cuántos ministros dejaron su cargo en el último año).",
   conflicto_social: "La conflictividad social que el gobierno tiene que administrar: el índice de movilización de CEPA y la variación de eventos de protesta en CABA contra la base 2023.",
 };

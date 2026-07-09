@@ -138,7 +138,9 @@ jobs:
                   projects/informe_coyuntura/data/politica/alineamiento_senadores_actas.json \
                   projects/informe_coyuntura/data/politica/cohesion_bloque_senado_actas.json \
                   projects/informe_coyuntura/data/politica/cohesion_bloque_diputados_actas.json \
-                  projects/informe_coyuntura/data/politica/cohesion_bloque_diputados_actas_cache.json
+                  projects/informe_coyuntura/data/politica/cohesion_bloque_diputados_actas_cache.json \
+                  projects/informe_coyuntura/data/politica/gabinete_salidas.json \
+                  projects/informe_coyuntura/data/politica/gabinete_decretos_cache.json
           if git diff --staged --quiet; then
             echo "::notice::Sin cambios en datos — no se commitea."
           else

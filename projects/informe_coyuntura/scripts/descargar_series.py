@@ -817,6 +817,37 @@ def fetch_adhesion_reformas_provincial_serie() -> list:
     return puntos
 
 
+def fetch_rotacion_gabinete_serie() -> list:
+    """Serie MENSUAL de rotacion_gabinete: salidas de rango ministerial (JGM +
+    ministros) acumuladas en la ventana móvil de 12 meses que termina en cada
+    mes, desde dic-2023 (asunción) hasta el mes CORRIENTE inclusive —
+    determinística desde el registro curado data/politica/gabinete_salidas.json
+    (misma familia que adhesion_reformas_provincial_fechas.json: dataset
+    curado y versionado, sin red). Los movimientos laterales dentro del
+    gabinete y las reestructuraciones de la Ley de Ministerios no cuentan
+    (viven en claves aparte del registro, ver su _meta).
+
+    El mes corriente SÍ se incluye (fechado al día 1, como las series INDEC):
+    la ventana de 12 meses calendario que termina en el mes en curso es
+    exactamente la métrica del valor live de la card
+    (politica.fetch_rotacion_gabinete), así que card y serie[-1] coinciden
+    por construcción y el G3 del gate no necesita excepción — un no-evento en
+    lo que va del mes es dato, no un parcial. [[YYYY-MM-01, salidas 12m]]."""
+    registro = politica.cargar_gabinete_salidas()
+    if registro is None or not isinstance(registro.get("salidas"), list):
+        print("[WARN] rotacion_gabinete_serie: registro curado ausente o ilegible")
+        return []
+    salidas = registro["salidas"]
+    puntos = []
+    anio, mes = 2023, 12
+    hoy = date.today()
+    while (anio, mes) <= (hoy.year, hoy.month):
+        ym = f"{anio}-{mes:02d}"
+        puntos.append([f"{ym}-01", len(politica.salidas_gabinete_ventana_12m(salidas, ym))])
+        anio, mes = (anio + 1, 1) if mes == 12 else (anio, mes + 1)
+    return puntos
+
+
 def fetch_cepa_movilizacion_serie(max_paginas: int = 40) -> list:
     """Backfill histórico de movilizacion_cepa: escanea hasta `max_paginas`
     páginas de centrocepa.com.ar/documentos/informes (10 informes por
@@ -911,6 +942,9 @@ POLITICA_DERIVADAS = [
     ("adhesion_reformas_provincial", "% de jurisdicciones (sobre 24) adheridas al RIGI",
      "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
      fetch_adhesion_reformas_provincial_serie),
+    ("rotacion_gabinete", "salidas de rango ministerial (acum. 12 meses)",
+     "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
+     fetch_rotacion_gabinete_serie),
     ("movilizacion_cepa", "Índice de conflictividad social (0-100)",
      "Centro CEPA — informes de conflictividad (elaboración CIGOB)",
      fetch_cepa_movilizacion_serie),

@@ -221,7 +221,7 @@ ITCP_SERIES = [
     "votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
     "comisiones_caidas", "iaf_transferencias", "alineamiento_senadores_prov",
     "adhesion_reformas_provincial", "cohesion_bloque", "cohesion_bloque_senado",
-    "movilizacion_cepa",
+    "movilizacion_cepa", "rotacion_gabinete",
 ]
 
 

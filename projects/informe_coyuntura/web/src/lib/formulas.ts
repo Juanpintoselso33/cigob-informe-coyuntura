@@ -209,6 +209,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\text{eventos de protesta en CABA}`,
     leyenda: "Conteo de ACLED (marchas, concentraciones, disturbios con cobertura de prensa). El índice político no puntúa el conteo sino su variación contra el total de 2023, la línea de base del mandato.",
   },
+  rotacion_gabinete: {
+    latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\text{salidas de jefes de Gabinete y ministros}`,
+    leyenda: "Salidas de cargos de rango ministerial pleno (jefe de Gabinete y ministros), contadas por el mes del cese efectivo sobre un registro curado de decretos del Boletín Oficial. No cuentan los pases a otro cargo del mismo gabinete ni los ministerios cerrados o fusionados por reorganización. Menos salidas = puntaje más alto.",
+  },
   cohesion_bloque: {
     latex: String.raw`\frac{1}{N}\sum_{\text{actas divididas, 90 d\'ias}}\frac{\left|\text{a favor}-\text{en contra}\right|}{\text{votos del bloque}}\times 100`,
     leyenda: "Votaciones nominales del bloque propio de LLA en Diputados: qué tan pareja fue cada votación puertas adentro, promediado sobre las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.",

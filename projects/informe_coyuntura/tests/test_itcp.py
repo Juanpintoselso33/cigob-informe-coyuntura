@@ -142,6 +142,53 @@ def test_banda_comisiones_caidas_recalibrada():
     assert parametrica.puntaje_interpolado(97.7, bandas) > 10.0
 
 
+def test_banda_rotacion_gabinete():
+    # (-inf,1,100)·(1,2,85)·(2,4,65)·(4,6,40)·(6,inf,10) — salidas de rango
+    # ministerial acumuladas 12m, menor = mejor (ADR-0047). Anclas calibradas
+    # contra la serie real completa de 32 meses (rango 0-7, las 5 bandas con
+    # datos: 7/8/9/6/2).
+    bandas = itcp.BANDAS_ITCP["rotacion_gabinete"]
+    assert itcp.puntaje_banda(0, bandas) == 100
+    assert itcp.puntaje_banda(1.0, bandas) == 100   # high inclusivo
+    assert itcp.puntaje_banda(2.0, bandas) == 85
+    assert itcp.puntaje_banda(3.0, bandas) == 65
+    assert itcp.puntaje_banda(4.0, bandas) == 65    # high inclusivo
+    assert itcp.puntaje_banda(5.0, bandas) == 40
+    assert itcp.puntaje_banda(6.0, bandas) == 40    # high inclusivo
+    assert itcp.puntaje_banda(7, bandas) == 10      # máximo real observado (jun-2026)
+
+
+def test_banda_rotacion_gabinete_interpolado_discrimina():
+    # Puntaje interpolado (motor ADR-0021, anclas 1→100 · 1,5→85 · 3→65 ·
+    # 5→40 · 6→10): los valores reales de la serie recorren 10-100 sin
+    # aplanarse en el cuerpo — el indicador nace discriminando.
+    import parametrica
+    bandas = itcp.BANDAS_ITCP["rotacion_gabinete"]
+    assert parametrica.puntaje_interpolado(0, bandas) == 100.0
+    assert parametrica.puntaje_interpolado(2, bandas) == 78.3   # 2024-05..08 reales
+    assert parametrica.puntaje_interpolado(4, bandas) == 52.5   # pico 2024
+    assert parametrica.puntaje_interpolado(5, bandas) == 40.0   # dic-2025 (crisis)
+    assert parametrica.puntaje_interpolado(7, bandas) == 10.0   # jun-2026 (máximo)
+
+
+def test_dimension_cohesion_interna_pesos_con_rotacion_gabinete():
+    # ADR-0047: la pata ejecutiva entra con 30%; el par legislativo conserva
+    # su ratio interno 65/35 ≈ 45/25. Los pesos ENTRE dimensiones (ADR-0036)
+    # no se tocan.
+    dim = itcp.DIMENSIONES_ITCP["cohesion_interna"]
+    assert dim["indicadores"] == {"cohesion_bloque": 0.45,
+                                  "cohesion_bloque_senado": 0.25,
+                                  "rotacion_gabinete": 0.30}
+    assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
+    assert dim["peso"] == 0.20
+
+
+def test_pesos_itcp_suman_uno_en_cada_dimension():
+    for dkey, dim in itcp.DIMENSIONES_ITCP.items():
+        assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9, dkey
+    assert abs(sum(d["peso"] for d in itcp.DIMENSIONES_ITCP.values()) - 1.0) < 1e-9
+
+
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
         "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100
@@ -154,6 +201,7 @@ def test_calcular_itcp_pondera_dimensiones():
         "adhesion_reformas_provincial": 90.0, # alianzas_territoriales, puntaje 100
         "cohesion_bloque": 100.0,            # cohesion_interna, puntaje 100
         "cohesion_bloque_senado": 95.0,      # cohesion_interna, puntaje 100
+        "rotacion_gabinete": 0.0,            # cohesion_interna, puntaje 100 (0 salidas 12m)
         "movilizacion_cepa": 5.0,            # conflicto_social, puntaje 100
         "protestas_caba": -35.0,             # conflicto_social, puntaje 100 (var_vs_2023, no valor crudo)
     }

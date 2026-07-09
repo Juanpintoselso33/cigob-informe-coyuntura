@@ -11,6 +11,9 @@ Indicadores:
   eficacia_legislativa      — % proyectos PE aprobados, ventana 12m (datos.hcdn.gob.ar CKAN, auto)
   cohesion_bloque           — % cohesión (Rice) del bloque LLA en Diputados (scrape votaciones.hcdn.gob.ar, auto)
   cohesion_bloque_senado    — % cohesión (Rice) del bloque LLA en Senado (scrape senado.gob.ar, auto)
+  rotacion_gabinete         — salidas de rango ministerial (JGM + ministros) acumuladas 12m
+                               (registro curado data/politica/gabinete_salidas.json + detector
+                               de alerta InfoLeg, semiauto — patrón privatizaciones del ITCG)
   alineamiento_senadores_prov — % votos de senadores no-LLA alineados con LLA, por provincia
                                (scrape senado.gob.ar, auto — reemplaza a gobernadores_alineamiento,
                                placeholder manual congelado desde 2026-04, ver manuales.json)
@@ -35,6 +38,7 @@ import math
 import calendar
 import logging
 import time
+import unicodedata
 import requests
 import urllib3
 import pdfplumber
@@ -53,6 +57,8 @@ PROJECT_DIR    = SCRIPT_DIR.parent
 CACHE_PATH     = PROJECT_DIR / "output" / "cache" / "politica.json"
 MANUALES_PATH  = PROJECT_DIR / "data" / "politica" / "manuales.json"
 AJUSTES_ITCP_PATH = PROJECT_DIR / "data" / "politica" / "ajustes_itcp.json"
+GABINETE_SALIDAS_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_salidas.json"
+GABINETE_DECRETOS_CACHE_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_decretos_cache.json"
 VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
 VOTOMETRO_HTML = PROJECT_DIR.parent / "votometro" / "web" / "votometro.html"  # fallback local
 
@@ -64,6 +70,7 @@ INDICADORES_ESPERADOS = [
     "iaf_transferencias",
     "cohesion_bloque",
     "cohesion_bloque_senado",
+    "rotacion_gabinete",
     "eficacia_legislativa",
     "alineamiento_senadores_prov",
     "adhesion_reformas_provincial",
@@ -1700,6 +1707,304 @@ def fetch_adhesion_reformas_provincial() -> dict | None:
     }
 
 
+# ── Rotación del gabinete (registro curado + detector de alerta InfoLeg) ─────
+#
+# Modelo semiautomático, mismo patrón que privatizaciones (ITCG) y
+# adhesion_reformas_provincial: la FUENTE DE VERDAD es un registro curado
+# versionado (data/politica/gabinete_salidas.json — cada salida con persona,
+# cargo, mes de cese efectivo, decreto BO y clasificación), y un detector
+# automático contra InfoLeg AVISA si aparece un decreto de renuncia
+# ministerial que el registro no refleja — el detector nunca modifica el
+# registro solo (distinguir eyección de pase lateral es una clasificación
+# política que ningún regex hace: el Dto. 548/2026 acepta la renuncia de
+# Adorni a JGM Y la de Santilli a Interior en el mismo acto, pero solo la
+# primera es una salida del gabinete).
+#
+# El detector es de dos etapas porque el buscador de InfoLeg es OR sobre
+# palabras (no frase ni AND: "acéptase la renuncia ministro" devuelve MÁS
+# resultados que "renuncia" sola) y trunca la síntesis del listado a ~150
+# caracteres, casi siempre antes del cargo. E1: listado mensual con
+# texto="renuncia" + tipoNorma=2 (7-20 filas/mes). E2: para las filas cuyo
+# resumen truncado arranca con tag de dependencia ministerial y contiene
+# RENUNCIA (2-8/mes), detalle verNorma.do (cacheado en disco, patrón
+# cohesion_bloque_diputados_actas_cache) y regex final de cargo sobre el
+# resumen completo. Probado end-to-end sobre dic-2023→jul-2026: recall 11/11
+# salidas reales, cero renuncias no-ministeriales filtradas (jueces,
+# fiscales, embajadores y directorios quedan afuera por el tag de
+# dependencia; los "ministros plenipotenciarios" del servicio exterior, por
+# la exigencia de "MINISTR[OA] DE").
+
+_GABINETE_INFOLEG_PAUSA = 1.6   # seg entre requests al buscador (detector)
+_RE_GABINETE_TAG = re.compile(r"^(JEFATURA DE GABINETE DE MINISTROS|MINISTERIO DE[L]? )")
+_RE_GABINETE_CARGO = re.compile(
+    r"RENUNCIA PRESENTADA POR (?:LA|EL) ([^(]{3,80}?)\s*\(D\.?N\.?I[^)]*\)\s*"
+    r"AL CARGO DE (JEFE DE GABINETE DE MINISTROS|JEFA DE GABINETE DE MINISTROS|"
+    r"MINISTR[OA] DE[L]? [A-ZÑ ,]{3,70})")
+_RE_GABINETE_DECRETO = re.compile(r"Decreto\s+(\d+)\s*/\s*(\d{4})")
+
+
+def _norm_mayusculas(s: str) -> str:
+    """Mayúsculas sin acentos (el HTML de InfoLeg mezcla ambas formas)."""
+    s = unicodedata.normalize("NFKD", s)
+    return "".join(c for c in s if not unicodedata.combining(c)).upper()
+
+
+def cargar_gabinete_salidas() -> dict | None:
+    """Registro curado de salidas de rango ministerial, o None si falta/roto."""
+    try:
+        return json.loads(GABINETE_SALIDAS_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return None
+
+
+def _indice_mes(ym: str) -> int | None:
+    """'YYYY-MM' → meses desde el año 0 (para aritmética de ventanas)."""
+    try:
+        return int(ym[:4]) * 12 + (int(ym[5:7]) - 1)
+    except (ValueError, TypeError):
+        return None
+
+
+def salidas_gabinete_ventana_12m(salidas: list, ym: str) -> list:
+    """Salidas del registro cuyo mes de cese efectivo cae en la ventana de 12
+    meses calendario que termina en `ym` (YYYY-MM, inclusive) — la métrica
+    del indicador. Los movimientos laterales y las reestructuraciones de la
+    Ley de Ministerios no están en `salidas` (viven en sus propias claves del
+    registro), así que quedan excluidos por construcción."""
+    fin = _indice_mes(ym)
+    if fin is None:
+        return []
+    out = []
+    for s in salidas:
+        idx = _indice_mes(str(s.get("mes", "")))
+        if idx is not None and fin - 11 <= idx <= fin:
+            out.append(s)
+    return out
+
+
+def _cargar_cache_gabinete_decretos() -> dict:
+    try:
+        return json.loads(GABINETE_DECRETOS_CACHE_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _guardar_cache_gabinete_decretos(cache: dict) -> None:
+    GABINETE_DECRETOS_CACHE_PATH.write_text(
+        json.dumps(cache, indent=1, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+
+
+def _gabinete_sesion_infoleg():
+    """(session, action_url) contra el buscador de InfoLeg — misma mecánica
+    que fetch_ratio_dnu / gestion._infoleg_post (GET home → form action)."""
+    session = requests.Session()
+    r_home = session.get(INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r_home.raise_for_status()
+    action_m = re.search(r'action="(/infolegInternet/[^"]+)"', r_home.text)
+    if not action_m:
+        raise ValueError("No se encontró la URL del formulario InfoLeg")
+    time.sleep(_GABINETE_INFOLEG_PAUSA)
+    return session, "https://servicios.infoleg.gob.ar" + action_m.group(1)
+
+
+def _gabinete_parsear_filas(html: str) -> list:
+    """Filas del listado de resultados de InfoLeg → [{id, decreto, descripcion}].
+    La síntesis viene truncada a ~150 caracteres — solo sirve para el
+    prefiltro de E2, nunca para clasificar."""
+    filas = []
+    for tr in re.findall(r"<tr[^>]*>.*?</tr>", html, re.S):
+        m_id = re.search(r"verNorma\.do\?id=(\d+)", tr)
+        if not m_id:
+            continue
+        celdas = re.findall(r"<td[^>]*>(.*?)</td>", tr, re.S)
+        limpio = [re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", c)).strip() for c in celdas]
+        titulo = limpio[0] if limpio else ""
+        m_dec = _RE_GABINETE_DECRETO.search(titulo)
+        filas.append({
+            "id": m_id.group(1),
+            "decreto": f"Decreto {m_dec.group(1)}/{m_dec.group(2)}" if m_dec else titulo[:40],
+            "descripcion": limpio[-1] if len(limpio) >= 2 else "",
+        })
+    return filas
+
+
+def _gabinete_listado_mes(session, action_url: str, anio: int, mes: int,
+                           max_paginas: int = 4) -> list:
+    """E1 del detector: decretos publicados en el mes con 'renuncia' en el
+    texto (paginado con desplazamiento=AP, como el buscador real)."""
+    ultimo_dia = calendar.monthrange(anio, mes)[1]
+    data = {
+        "tipoNorma": "2", "numero": "", "anioSancion": "", "dependencia": "",
+        "diaPubDesde": "01", "mesPubDesde": f"{mes:02d}", "anioPubDesde": str(anio),
+        "diaPubHasta": str(ultimo_dia), "mesPubHasta": f"{mes:02d}", "anioPubHasta": str(anio),
+        "texto": "renuncia",
+    }
+    r = session.post(action_url, data=data, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    time.sleep(_GABINETE_INFOLEG_PAUSA)
+    if re.search(r"No se encontraron normas", r.text, re.IGNORECASE):
+        return []
+    m = re.search(r"Encontradas?[:\s]+(\d+)", r.text, re.IGNORECASE)
+    total = int(m.group(1)) if m else None
+    filas = _gabinete_parsear_filas(r.text)
+    pagina = 2
+    while total and len(filas) < total and pagina <= max_paginas:
+        rp = session.post(action_url, data={"desplazamiento": "AP", "irAPagina": str(pagina)},
+                          headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+        rp.raise_for_status()
+        time.sleep(_GABINETE_INFOLEG_PAUSA)
+        nuevas = _gabinete_parsear_filas(rp.text)
+        if not nuevas:
+            break
+        filas.extend(nuevas)
+        pagina += 1
+    return filas
+
+
+def _gabinete_resumen_norma(session, norma_id: str, cache: dict) -> str:
+    """E2 del detector: el campo Resumen COMPLETO de verNorma.do (el listado
+    lo trunca antes del cargo). Cacheado en disco de inmediato — una norma
+    publicada no cambia, y el caché evita repagar los GET en cada corrida
+    (mismo criterio que la caché permanente por acta de Diputados)."""
+    if norma_id in cache:
+        return cache[norma_id]
+    r = session.get(f"https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id={norma_id}",
+                    headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    time.sleep(_GABINETE_INFOLEG_PAUSA)
+    txt = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", r.text))
+    m = re.search(r"Resumen:\s*(.*?)(?:Texto completo de la norma|Esta norma|$)", txt)
+    resumen = _norm_mayusculas(m.group(1).strip()) if m else ""
+    cache[norma_id] = resumen
+    _guardar_cache_gabinete_decretos(cache)
+    return resumen
+
+
+def _detectar_salidas_gabinete_infoleg(meses_atras: int = 1) -> list | None:
+    """Detector de alerta: renuncias a cargos de rango ministerial publicadas
+    en el BO en el mes corriente y los `meses_atras` previos (el decreto puede
+    llegar hasta ~40 días después del hecho político — caso Ferraro). Devuelve
+    [{decreto, persona, cargo, mes_bo}] dedupeado (un mismo decreto puede
+    repetir el párrafo de una renuncia en su resumen), o None si InfoLeg no
+    respondió — el indicador NO depende de esto para publicar (el registro
+    curado manda), solo para avisar."""
+    try:
+        session, action_url = _gabinete_sesion_infoleg()
+    except Exception:
+        return None
+    hoy = date.today()
+    meses = []
+    anio, mes = hoy.year, hoy.month
+    for _ in range(meses_atras + 1):
+        meses.append((anio, mes))
+        anio, mes = (anio - 1, 12) if mes == 1 else (anio, mes - 1)
+
+    cache = _cargar_cache_gabinete_decretos()
+    detecciones, vistos = [], set()
+    for anio, mes in meses:
+        try:
+            filas = _gabinete_listado_mes(session, action_url, anio, mes)
+        except Exception:
+            return None   # listado caído: sin señal confiable, mejor no "detectar nada"
+        for fila in filas:
+            desc = _norm_mayusculas(fila["descripcion"])
+            if not _RE_GABINETE_TAG.search(desc) or "RENUNCIA" not in desc:
+                continue
+            try:
+                resumen = _gabinete_resumen_norma(session, fila["id"], cache)
+            except Exception:
+                continue   # un detalle caído no invalida el resto del barrido
+            for m_c in _RE_GABINETE_CARGO.finditer(resumen):
+                clave = (fila["decreto"], m_c.group(1).strip(), m_c.group(2).strip())
+                if clave in vistos:
+                    continue
+                vistos.add(clave)
+                detecciones.append({
+                    "decreto": fila["decreto"],
+                    "persona": m_c.group(1).strip().title(),
+                    "cargo": m_c.group(2).strip(),
+                    "mes_bo": f"{anio}-{mes:02d}",
+                })
+    return detecciones
+
+
+def _gabinete_discrepancias(registro: dict, detecciones: list) -> list:
+    """Detecciones cuyo decreto NO está citado en el registro curado (ni como
+    salida ni como movimiento lateral): son las que exigen curaduría. Se
+    compara por número de decreto (no por persona) para que una re-salida de
+    una persona ya registrada también dispare la alerta."""
+    texto_registro = json.dumps(registro, ensure_ascii=False)
+    decretos_registrados = {f"Decreto {n}/{a}" for n, a
+                            in _RE_GABINETE_DECRETO.findall(texto_registro)}
+    return [d for d in detecciones if d["decreto"] not in decretos_registrados]
+
+
+def fetch_rotacion_gabinete() -> dict | None:
+    """Salidas de rango ministerial (jefe de Gabinete + ministros) acumuladas
+    en la ventana móvil de 12 meses que termina en el mes corriente, desde el
+    registro curado (menor = mejor). Cuenta salidas políticas Y estructurales
+    (ceses por banca electoral) sin distinguir — la composición se publica
+    como transparencia y los casos extremos se administran con el override
+    del analista (ajustes_itcp.json). No cuenta pases laterales dentro del
+    gabinete ni reestructuraciones de la Ley de Ministerios.
+
+    fecha_dato = fecha del chequeo (hoy): el registro no "vence" por falta de
+    eventos — el no-evento es dato (0 salidas ese mes) — y el guard real de
+    frescura es el detector InfoLeg, que avisa si aparece un decreto de
+    renuncia ministerial no registrado. La última salida queda en
+    `ultima_salida` para la lectura fina."""
+    registro = cargar_gabinete_salidas()
+    if registro is None or not isinstance(registro.get("salidas"), list):
+        _warn("rotacion_gabinete", f"registro curado ausente o ilegible ({GABINETE_SALIDAS_PATH.name})")
+        return None
+
+    ym = date.today().strftime("%Y-%m")
+    en_ventana = salidas_gabinete_ventana_12m(registro["salidas"], ym)
+    politicas = [s for s in en_ventana if s.get("clasificacion") == "salida_politica"]
+    estructurales = [s for s in en_ventana if s.get("clasificacion") == "salida_estructural_electoral"]
+    ultima = max(registro["salidas"], key=lambda s: str(s.get("mes", "")), default=None)
+
+    if en_ventana:
+        lista = ", ".join(f"{s['persona']} ({s['mes']})"
+                          for s in sorted(en_ventana, key=lambda s: str(s.get("mes", ""))))
+        detalle = (f"{len(en_ventana)} salidas en 12 meses = {len(politicas)} políticas · "
+                   f"{len(estructurales)} por bancas electorales — {lista}")
+    else:
+        detalle = "0 salidas de rango ministerial en los últimos 12 meses"
+
+    resultado = {
+        "valor": len(en_ventana),
+        "unidad": "salidas de rango ministerial (acum. 12 meses)",
+        "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
+        "fecha_dato": str(date.today()),
+        "desactualizado": False,
+        "salidas_politicas": len(politicas),
+        "salidas_estructurales": len(estructurales),
+        "ultima_salida": (f"{ultima['persona']} — {ultima['cargo']} ({ultima['mes']})"
+                          if ultima else None),
+        "detalle_txt": detalle,
+    }
+
+    # Detector de alerta (no bloquea: si InfoLeg falla, el registro manda)
+    try:
+        detecciones = _detectar_salidas_gabinete_infoleg()
+    except Exception as e:
+        print(f"[WARN] {CINTURON}.rotacion_gabinete: detector InfoLeg falló ({e}) — "
+              "se publica igual desde el registro curado")
+        detecciones = None
+    if detecciones is not None:
+        discrepancias = _gabinete_discrepancias(registro, detecciones)
+        for d in discrepancias:
+            print(f"[ALERTA] {CINTURON}.rotacion_gabinete: {d['decreto']} (BO {d['mes_bo']}) "
+                  f"acepta la renuncia de {d['persona']} al cargo de {d['cargo']} y NO figura "
+                  f"en el registro curado — revisar data/politica/gabinete_salidas.json")
+        if discrepancias:
+            resultado["detector_decretos_sin_registrar"] = [
+                f"{d['decreto']} — {d['persona']} ({d['cargo']})" for d in discrepancias]
+
+    return resultado
+
+
 UMBRAL_FRESCURA_COHESION = 10  # días SIN una corrida exitosa (no sin votos nuevos)
 
 
@@ -1800,6 +2105,7 @@ def main() -> None:
         ("veto_quorum",                   fetch_veto_quorum),
         ("comisiones_caidas",             fetch_comisiones_caidas),
         ("adhesion_reformas_provincial",  fetch_adhesion_reformas_provincial),
+        ("rotacion_gabinete",             fetch_rotacion_gabinete),
         ("protestas_caba",                fetch_protestas_caba),
     ]
 

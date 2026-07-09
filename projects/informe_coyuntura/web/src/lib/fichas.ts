@@ -959,6 +959,52 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  rotacion_gabinete: {
+    tipo: "indicador",
+    id: "rotacion_gabinete",
+    cinturon: "politica",
+    rezago: "El registro se actualiza con cada salida (eventos de alta visibilidad, con semanas de cobertura de prensa) y se recomputa a diario. El decreto que formaliza una renuncia puede publicarse en el Boletín Oficial hasta unos 40 días después del hecho político; por eso el registro fecha cada salida por el cese efectivo, no por la publicación.",
+    fuente: {
+      organismo: "Boletín Oficial de la República Argentina (decretos de aceptación de renuncia, verificados en InfoLeg); elaboración CIGOB",
+      operacion: "Registro curado de salidas de cargos de rango ministerial pleno (jefe de Gabinete de Ministros y ministros), cada una con su decreto de respaldo, la fecha del cese efectivo y la clasificación del motivo",
+      url: "https://servicios.infoleg.gob.ar/infolegInternet/",
+      acceso: "Semiautomático: registro curado a partir del Boletín Oficial, con un monitor automático que recorre a diario el buscador oficial de normas y avisa ante cada nuevo decreto de salida ministerial que el registro no refleje. El monitor solo alerta: la incorporación de una salida al registro es siempre una decisión documentada del analista.",
+    },
+    transformaciones: [
+      "Cuenta las salidas de funcionarios con rango ministerial pleno (jefe de Gabinete y ministros) acumuladas en una ventana móvil de 12 meses, imputadas al mes del cese efectivo.",
+      "No cuenta los pases de un ministro a otro cargo del mismo gabinete (la persona sigue adentro: contarla duplicaría el evento político real) ni los ministerios creados, cerrados o fusionados por reorganización de la Ley de Ministerios (una fusión no es una salida).",
+      "Quedan fuera del universo las secretarías de la Presidencia aun cuando tengan rango protocolar de ministro: su jerarquía surge de decretos que cambian con más frecuencia que las carteras, y la literatura de rotación ministerial se define sobre el gabinete propiamente dicho. Sus recambios quedan documentados aparte en el mismo registro.",
+      "Cada salida se clasifica por motivo (salida política o cese programado para asumir una banca ganada en una elección); la serie cuenta las dos por igual y la composición se publica en el detalle.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ 1", puntaje: 100 },
+        { banda: "1 – 2", puntaje: 85 },
+        { banda: "2 – 4", puntaje: 65 },
+        { banda: "4 – 6", puntaje: 40 },
+        { banda: "> 6", puntaje: 10 },
+      ],
+      puntos: [[1, 100], [1.5, 85], [3, 65], [5, 40], [6, 10]],
+      unidadCorta: "salidas 12m",
+    },
+    incidenciaTexto: [
+      "Los umbrales se calibraron contra la serie completa reconstruida del propio indicador (diciembre de 2023 en adelante, rango observado de 0 a 7 salidas): una o ninguna salida en el año es recambio fisiológico; dos, recambio bajo; tres o cuatro, rotación sostenida; cinco o seis, crisis de gabinete; siete o más, crisis abierta. Las cinco bandas tienen meses reales observados.",
+      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 30% como la pata del Poder Ejecutivo, junto al 45% de la cohesión del bloque en Diputados y el 25% de la del Senado — hasta julio de 2026 esa dimensión solo medía la disciplina legislativa.",
+    ],
+    limitaciones: [
+      "Ambigüedad de lectura declarada: un recambio puede reflejar tanto una crisis como una decisión estratégica del Presidente (por ejemplo, ministros que dejan el cargo para asumir bancas ganadas en una elección). El indicador cuenta ambas — incluso el recambio estratégico consume capital político: curva de aprendizaje del entrante, renegociación de equilibrios internos, señal de inestabilidad hacia afuera —, el registro público clasifica el motivo de cada salida para que esa composición sea verificable, y para un caso extremo (un recambio masivo programado) existe el mecanismo general de ajuste del analista, con justificación y vencimiento publicados.",
+      "Es un registro curado, no un cálculo enteramente automático: si una salida tardara en cargarse, el indicador la reflejaría con demora. El riesgo está mitigado por el monitor automático del Boletín Oficial (que avisa ante cada decreto de renuncia ministerial no registrado) y por la altísima visibilidad mediática del evento.",
+      "El decreto puede publicarse hasta unos 40 días después del hecho (el registro fecha por cese efectivo para corregirlo, pero el monitor automático solo ve el Boletín Oficial: su alerta puede llegar semanas después del hecho político).",
+      "Cuenta salidas, no las pondera: la renuncia de un ministro central y la de uno periférico valen igual en la serie.",
+      "La serie describe al gobierno en ejercicio: no es comparable entre presidencias (un fin de mandato reinicia el gabinete completo por diseño institucional, no por crisis).",
+    ],
+    faltantes: "El no-evento es dato: un mes sin salidas cuenta cero y el indicador nunca queda vacío mientras el registro exista. Si el monitor automático del Boletín Oficial no responde, el indicador se publica igual desde el registro curado y la verificación queda para la corrida siguiente.",
+    revisiones: "La serie completa se recomputa desde el registro en cada corrida: una corrección de fecha o de clasificación en el registro se refleja en toda la historia. Cada entrada conserva su decreto de respaldo, verificable en InfoLeg.",
+    cambios: [
+      { fecha: "2026-07-09", cambio: "Alta del indicador: la dimensión de cohesión interna del oficialismo medía solo la disciplina legislativa (Diputados y Senado) y no la estabilidad del propio gabinete, donde se jugaron las principales crisis internas del ciclo. Registro inicial verificado decreto por decreto contra InfoLeg (11 salidas, dic-2023 a jun-2026), con serie mensual completa desde diciembre de 2023 y umbrales calibrados contra esa serie." },
+    ],
+  },
+
   alineamiento_senadores_prov: {
     tipo: "indicador",
     id: "alineamiento_senadores_prov",
