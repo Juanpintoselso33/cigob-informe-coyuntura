@@ -372,15 +372,18 @@ const robChartData = rob?.hist && indice ? {
                       {cruz.externas.map(e => (
                         // sin espacios entre el número y el span: el salto de línea
                         // quedaba como espacio final y descentraba el número ~6px
-                        <td class:list={[f.propio === e[0] && "es-propio"]}>{(f[e[0]].r > 0 ? "+" : "") + coma(f[e[0]].r)}<span class="cg-cruz-n">{f[e[0]].n} meses</span></td>
+                        <td class:list={[f.propio === e[0] && "es-propio"]}>{(f[e[0]].r > 0 ? "+" : "") + coma(f[e[0]].r)}<span class="cg-cruz-n">{typeof f[e[0]].rd === "number" ? `Δ ${(f[e[0]].rd > 0 ? "+" : "") + coma(f[e[0]].rd)} · ` : ""}{f[e[0]].n} meses</span></td>
                       ))}
                     </tr>
                   ))}
                 </tbody>
               </table>
               <p class="cg-cruz-nota">
-                Las celdas sombreadas marcan el contraste natural de cada índice. Correlaciones
-                sobre las reconstrucciones mensuales, sin ajustes del analista, desde dic-2023.
+                Las celdas sombreadas marcan el contraste natural de cada índice. Cada celda
+                muestra la correlación de niveles y, debajo, la de los cambios mes a mes (Δ) —
+                la prueba exigente, inmune a la tendencia común del período. Correlaciones sobre
+                las reconstrucciones mensuales, sin ajustes del analista, desde el arranque del
+                mandato.
               </p>
               <p class="cg-h2-sub">{cruz.conclusion}</p>
               <div class="cg-det-cta">Ver el detalle →</div>
@@ -592,10 +595,12 @@ const robChartData = rob?.hist && indice ? {
       <p class="cg-modal-desc">
         La muestra es corta (~30 meses) y cubre un período donde toda la economía se movió
         junta: eso infla todas las correlaciones de niveles y hace que las celdas cruzadas
-        sean del mismo orden que las propias. Algunos cruces además tienen lectura económica
-        genuina — la prima de riesgo soberana también pricea la gestión. Por eso la matriz
-        se publica como un contraste de convergencia, no como una prueba de separación
-        perfecta.
+        sean del mismo orden que las propias — y, en el caso inverso, dos tendencias que
+        divergen de fondo pueden enmascarar o dar vuelta el signo de un co-movimiento genuino.
+        Por eso cada celda publica también la correlación de los cambios mes a mes (Δ), que no
+        depende de las tendencias. Algunos cruces además tienen lectura económica genuina — la
+        prima de riesgo soberana también pricea la gestión. Por eso la matriz se publica como
+        un contraste de convergencia, no como una prueba de separación perfecta.
       </p>
       <p class="cg-modal-h4">Lectura</p>
       <p class="cg-modal-desc">{cruz.conclusion}</p>

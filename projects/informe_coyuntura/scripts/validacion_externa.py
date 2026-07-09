@@ -276,15 +276,26 @@ def construir_serie_itcp() -> dict:
     mes (55,0 en la corrida anterior, 26,4 en la de hoy, para el MISMO
     mes) — sin par EPU todavía no contaminaba la correlación, pero lo iba
     a hacer apenas EPU publicara ese mes. El piso solo recorta esos meses
-    de cola parcial: toda la historia dic-2023→jun-2026 tiene cobertura
-    ≥75% y no se toca."""
+    de cola parcial: toda la historia 2024-01→jun-2026 tiene cobertura
+    ≥75% y no se toca.
+
+    ARRANQUE EN 2024-01 (2026-07-09, revisión conceptual de la celda
+    ITCP×riesgo de la matriz): dic-2023 se excluye de la reconstrucción.
+    No por cobertura (pasaba el piso) sino por composición degenerada: los
+    componentes de ventana anual que "prenden" ese mes describen el año
+    2023 COMPLETO de la gestión anterior — iaf_transferencias dic-dic 2023
+    (transferencias de todo 2023 vs 2022) y protestas_caba, cuya ventana
+    12m a dic-2023 es exactamente su propia base 2023 (variación ≈ 0 por
+    construcción). El punto resultante (47,6, contra 68,7 en ene-2024) era
+    un salto de composición, no de política, y metía ruido justo en el
+    arranque de todas las correlaciones."""
     series = json.loads(SERIES.read_text(encoding="utf-8"))
     m = lambda k: _mensual(series.get(k) or [])
     directos = {k: m(k) for k in ITCP_SERIES}
     protestas_var = _protestas_caba_var_vs_2023(m("protestas_caba"))
     ult = max([max(v) for v in directos.values() if v] + [max(protestas_var, default="")])
     out = {}
-    for ym in _meses("2023-12", ult):
+    for ym in _meses("2024-01", ult):
         valores = {k: v.get(ym) for k, v in directos.items()}
         valores["protestas_caba"] = protestas_var.get(ym)
         r = itcp.calcular_itcp(valores)

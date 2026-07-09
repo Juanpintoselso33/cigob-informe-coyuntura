@@ -674,13 +674,22 @@ def _validacion_cruzada(informe):
         return (round(statistics.correlation([a[m] for m in comunes],
                                              [b[m] for m in comunes]), 2), len(comunes))
 
+    def _difs(s):
+        ms = sorted(s)
+        return {ms[i]: s[ms[i]] - s[ms[i - 1]] for i in range(1, len(ms))}
+
     PAR_PROPIO = {"ITCM": "riesgo", "ITCG": "merval", "ITVC": "icc", "ITCP": "epu"}
     filas = []
     for ik in ("ITCM", "ITCG", "ITVC", "ITCP"):
         fila = {"indice": ik, "propio": PAR_PROPIO[ik]}
         for ek, ext in externas.items():
             r, n = _r(indices[ik], ext)
-            fila[ek] = {"r": r, "n": n}
+            # rd: correlación de los cambios mes a mes — la prueba exigente,
+            # inmune a la tendencia común del período (los niveles pueden
+            # inflar una correlación espuria O enmascarar/invertir el signo
+            # de un co-movimiento genuino, como la celda ITCP×riesgo).
+            rd, _ = _r(_difs(indices[ik]), _difs(ext))
+            fila[ek] = {"r": r, "n": n, "rd": rd}
         filas.append(fila)
     if any(f[e]["r"] is None for f in filas for e in externas):
         return
@@ -711,8 +720,31 @@ def _validacion_cruzada(informe):
                        f"correlaciona {fmt(f_itcg['riesgo']['r'])} con el riesgo país): en una "
                        f"muestra de ~30 meses en la que toda la economía y la política se "
                        f"movieron juntas, la matriz separa parcialmente — se declara como "
-                       f"límite, no se esconde."),
+                       f"límite, no se esconde."
+                       + _nota_itcp_riesgo(f_itcp)),
     }
+
+
+def _nota_itcp_riesgo(f_itcp):
+    """Oración extra de la conclusión de la matriz para la celda ITCP×riesgo
+    país cuando su signo de NIVELES es positivo (contraintuitivo a primera
+    vista) pero el de los cambios mes a mes es negativo (el esperado). Es el
+    caso clásico de dos tendencias que divergen de fondo: el riesgo país cayó
+    por el ancla macro mientras el capital político de 2025-2026 quedó debajo
+    de la luna de miel de 2024 — el intercambio de problemas del marco, no un
+    defecto de medición. Solo se emite cuando los datos muestran exactamente
+    ese patrón; si el patrón cambia, la oración desaparece sola."""
+    r, rd = f_itcp["riesgo"]["r"], f_itcp["riesgo"].get("rd")
+    fmt = lambda x: ("+" if x > 0 else "") + str(x).replace(".", ",")
+    if r is None or rd is None or not (r > 0 and rd < 0):
+        return ""
+    return (f" La celda que más preguntas genera — ITCP {fmt(r)} con el riesgo país, el único "
+            f"cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los "
+            f"cambios mes a mes da {fmt(rd)}, el signo esperado. Las tendencias de fondo "
+            f"divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el "
+            f"capital político quedó debajo de su luna de miel de 2024 — que el índice registre "
+            f"ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que "
+            f"esta matriz verifica.")
 
 
 def _validacion_itcg(bloque):
