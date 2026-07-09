@@ -181,8 +181,10 @@ export const LABELS: Record<string, string> = {
   votometro_ventaja_lla: "Ventaja LLA−PJ (Votómetro)", ratio_dnu: "Ratio DNU / leyes",
   movilizacion_cepa: "Tensión social (CEPA)", iaf_transferencias: "Armonía federal (transferencias)",
   eficacia_legislativa: "Eficacia parlamentaria", cohesion_bloque: "Cohesión del bloque LLA",
+  cohesion_bloque_senado: "Cohesión del bloque LLA (Senado)",
   gobernadores_alineamiento: "Alineamiento de gobernadores (retirado)", veto_quorum: "Sesiones caídas por quórum",
   alineamiento_senadores_prov: "Alineamiento de senadores por provincia",
+  adhesion_reformas_provincial: "Adhesión provincial al RIGI",
   comisiones_caidas: "Comisiones sin sanción",
   // vida cotidiana (claves de publicar.py)
   brecha_salario_cbt: "Salario real vs. canasta", ipc_alimentos: "Inflación de alimentos",
@@ -242,8 +244,9 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // politica
   votometro_ventaja_lla: "pp", ratio_dnu: "ratio", movilizacion_cepa: "índice",
   iaf_transferencias: "% real", eficacia_legislativa: "%", cohesion_bloque: "%",
+  cohesion_bloque_senado: "%",
   gobernadores_alineamiento: "%", veto_quorum: "%", comisiones_caidas: "%",
-  alineamiento_senadores_prov: "%",
+  alineamiento_senadores_prov: "%", adhesion_reformas_provincial: "%",
   // vida cotidiana
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   peso_tarifas: "% m/m", consumo_carne: "kg/hab", informalidad: "%", mortalidad_pymes: "% m/m",
@@ -281,8 +284,10 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",
   movilizacion_cepa: "Índice (0–100)", iaf_transferencias: "% interanual real",
   eficacia_legislativa: "% de proyectos", cohesion_bloque: "% de votos",
+  cohesion_bloque_senado: "% de votos (Senado)",
   gobernadores_alineamiento: "% de gobernadores (retirado)", veto_quorum: "% de sesiones",
   alineamiento_senadores_prov: "% de senadores no-LLA",
+  adhesion_reformas_provincial: "% de provincias adheridas",
   comisiones_caidas: "% de proyectos",
   // vida cotidiana
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
@@ -336,8 +341,8 @@ export function cinturonesRojos(inf: Informe): number {
 // índice 0–100) y admiten una barra de progreso. Se excluyen variaciones
 // (% m/m, % i.a., % real), ratios y conteos, donde una barra 0–100 no aplica.
 export const BARRA_0_100 = new Set<string>([
-  "eficacia_legislativa", "cohesion_bloque", "alineamiento_senadores_prov",
-  "veto_quorum", "comisiones_caidas", "movilizacion_cepa",
+  "eficacia_legislativa", "cohesion_bloque", "cohesion_bloque_senado", "alineamiento_senadores_prov",
+  "adhesion_reformas_provincial", "veto_quorum", "comisiones_caidas", "movilizacion_cepa",
   "informalidad", "pluriempleo", "sentimiento_digital", "icc_utdt",
 ]);
 
