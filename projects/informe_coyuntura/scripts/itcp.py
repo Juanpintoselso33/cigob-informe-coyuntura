@@ -13,14 +13,14 @@ una decisión editorial explícita (ver ADR-0036): "imagen y voto" pesa
 deliberadamente MENOS que las demás porque el propio marco del proyecto
 distingue capital político de popularidad.
 
-Bandas de cohesion_bloque (Diputados), adhesion_reformas_provincial y
-protestas_caba son PROVISIONALES (sin serie histórica propia todavía) — ver
-ADR-0036, a recalibrar cuando el backfill esté corriendo. cohesion_bloque
-YA NO está bloqueado (ADR-0037 quedó superado por ADR-0040, 2026-07-09: el
-endpoint PDF directo de votaciones.hcdn.gob.ar no tiene el anti-bot de la
-SPA) — vuelve a traer datos reales, pero sus anclas (90/75/60/40, heredadas
-sin validar de la fórmula ad hoc original) todavía no se recalibraron con
-backfill propio como sí se hizo con cohesion_bloque_senado (ADR-0039).
+Bandas de adhesion_reformas_provincial y protestas_caba son PROVISIONALES
+(sin serie histórica propia todavía) — ver ADR-0036, a recalibrar cuando el
+backfill esté corriendo. cohesion_bloque (Diputados) YA NO está bloqueado
+(ADR-0037 quedó superado por ADR-0040, 2026-07-09: el endpoint PDF directo
+de votaciones.hcdn.gob.ar no tiene el anti-bot de la SPA) y sus anclas
+tampoco son provisionales desde el mismo día (ADR-0041/0042): recalibradas
+con 31 puntos mensuales reales backfilleados gracias a la caché permanente
+por acta (ver el comentario en BANDAS_ITCP).
 
 alineamiento_senadores_prov (2026-07-08) reemplaza a gobernadores_alineamiento
 en el peso de la dimensión "alianzas_territoriales" — placeholder manual
@@ -31,9 +31,10 @@ gobernadores_alineamiento) ya NO son provisionales**: recalibradas 2026-07-09
 con 29 puntos mensuales reales backfilleados (ver el comentario en
 BANDAS_ITCP y ADR-0038) — primera banda del ITCP en salir del estado
 PROVISIONAL con datos propios en vez de heredados.
-`cohesion_bloque_senado` (mismo día, ADR-0039) siguió el mismo camino: sus
-propias anclas (distintas de las de `cohesion_bloque` Diputados, con las que
-compartía tabla sin fundamento) ya no son provisionales.
+`cohesion_bloque_senado` (mismo día, ADR-0039) y `cohesion_bloque` Diputados
+(mismo día, ADR-0042) siguieron el mismo camino: sus propias anclas
+(distintas entre sí, ya no comparten tabla sin fundamento) tampoco son
+provisionales.
 
 protestas_caba puntúa sobre "var_vs_2023" (% de variación de eventos de
 protesta en CABA, ACLED, contra la base 2023), NO sobre "valor" — a diferencia
@@ -100,8 +101,29 @@ BANDAS_ITCP = {
     "adhesion_reformas_provincial": [     # % provincias adheridas RIGI, mayor = mejor — PROVISIONAL
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
-    "cohesion_bloque": [                  # índice de Rice %, mayor = mejor — PROVISIONAL
-        (90.0, INF, 100), (75.0, 90.0, 85), (60.0, 75.0, 65), (40.0, 60.0, 40), (-INF, 40.0, 10),
+    "cohesion_bloque": [
+        # RECALIBRADO 2026-07-09 con backfill real (mismo criterio que
+        # alineamiento_senadores_prov/cohesion_bloque_senado, ADR-0038/0039):
+        # las anclas 90/75/60/40 eran una fórmula ad hoc original, nunca
+        # validadas contra la cohesión real de Diputados. Con 31 puntos
+        # mensuales reales (dic-2023→jun-2026, ventana rolling 90d, ver
+        # descargar_series.fetch_cohesion_bloque_diputados_mensual), el rango
+        # observado es 96,7–100,0 (media 99,2, mediana 99,8): el techo de 90
+        # saturaba en 31/31 meses (100% -- ni un solo punto quedó por debajo),
+        # completamente inútil como umbral. El bloque propio de LLA en
+        # Diputados es mucho más grande que en el Senado, así que un solo
+        # disidente mueve menos el promedio -- la cohesión observada es más
+        # alta y más apretada (rango de apenas 3,3 puntos) que en cualquiera
+        # de los otros dos indicadores de esta familia. Anclas nuevas en
+        # 99,9/99,0/98,0/97,0 (chequeadas contra los 31 puntos: 14/7/4/3/3 por
+        # banda, todas con datos reales -- 14/31 meses tuvieron cohesión
+        # perfecta 100,0, indistinguibles entre sí por diseño: no hay forma de
+        # separar valores idénticos en bandas distintas).
+        (99.9, INF, 100),
+        (99.0, 99.9, 85),
+        (98.0, 99.0, 65),
+        (97.0, 98.0, 40),
+        (-INF, 97.0, 10),
     ],
     "cohesion_bloque_senado": [
         # RECALIBRADO 2026-07-09 con backfill real (mismo criterio que
@@ -117,8 +139,10 @@ BANDAS_ITCP = {
         # nunca se tocó ni de cerca (mínimo real 77,8). Anclas nuevas en
         # 95/90/85/80 (chequeadas contra los 29 puntos: 12/13/3/0/1 por
         # banda — el hueco en 80-85 es real, no hay datos ahí, se deja como
-        # margen hasta que aparezcan). cohesion_bloque (Diputados) NO se
-        # toca: sigue con las anclas viejas hasta tener datos propios.
+        # margen hasta que aparezcan). cohesion_bloque (Diputados) en ese
+        # momento NO se tocó, seguía con las anclas viejas -- recalibrada
+        # unas horas después, mismo día, ver comentario propio más arriba
+        # (ADR-0041/0042).
         (95.0, INF, 100),
         (90.0, 95.0, 85),
         (85.0, 90.0, 65),

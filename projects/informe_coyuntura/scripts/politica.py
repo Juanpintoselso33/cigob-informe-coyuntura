@@ -1138,6 +1138,65 @@ def _diputados_acta_pdf(session: requests.Session, id_acta: int):
     return r.content if r is not None else None
 
 
+# Caché PERMANENTE por acta (id -> {fecha, rice}): a diferencia de los
+# stores "por año" de Senado/alineamiento (donde el año en curso se
+# re-pide siempre porque pueden aparecer actas nuevas), acá el caché es a
+# nivel de ACTA INDIVIDUAL -- una vez publicada, un acta nunca cambia de
+# fecha ni de resultado, así que cachearla para siempre es seguro y barato.
+# Sin este caché, cada corrida (live O backfill) volvía a descargar y
+# parsear el mismo PDF de siempre -- hallazgo real 2026-07-09: sin caché,
+# el backfill anual completo (4 años) tardó ~35 minutos extra en el
+# pipeline; con caché, cada acta se descarga una sola vez en la vida del
+# proyecto, sea cual sea cuántas veces se llame a fetch_cohesion_bloque o
+# fetch_cohesion_bloque_diputados_actas_anio después.
+DIPUTADOS_COHESION_CACHE_PATH = Path(__file__).resolve().parents[1] / "data" / "politica" / "cohesion_bloque_diputados_actas_cache.json"
+
+
+def _cargar_cache_cohesion_diputados() -> dict:
+    try:
+        return json.loads(DIPUTADOS_COHESION_CACHE_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
+def _guardar_cache_cohesion_diputados(cache: dict) -> None:
+    DIPUTADOS_COHESION_CACHE_PATH.write_text(
+        json.dumps(cache, indent=2, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+
+
+def _acta_diputados_cacheada(session: requests.Session, id_acta: int, cache: dict) -> dict | None:
+    """{"fecha": datetime, "rice": float | None} de una acta, mirando
+    primero `cache` (dict mutable id-str -> {"fecha": "YYYY-MM-DD", "rice":
+    float | None}) antes de pedir red. Si no está cacheada, descarga+parsea
+    y la agrega a `cache`, persistiendo a disco DE INMEDIATO (no al final
+    del walk que la llama) -- un backfill completo camina cientos de ids a
+    ~0,3s/request (varios minutos reales), y si se corta a mitad de camino
+    (timeout de CI, corrida manual interrumpida) el trabajo ya hecho no
+    puede perderse: la próxima corrida debe retomar desde donde quedó, no
+    desde cero. Se cachea SIEMPRE que se pudo leer la fecha, con rice=None
+    cuando el bloque LLA no aporta señal (empate o sin presentes), para que
+    un walk repetido nunca vuelva a descargar la misma acta. None solo si
+    la acta no existe (404, puede ser transitorio) o no se pudo extraer la
+    fecha del PDF -- ninguno de esos dos casos se cachea."""
+    clave = str(id_acta)
+    if clave in cache:
+        entrada = cache[clave]
+        return {"fecha": datetime.strptime(entrada["fecha"], "%Y-%m-%d"), "rice": entrada["rice"]}
+    contenido = _diputados_acta_pdf(session, id_acta)
+    if contenido is None:
+        return None
+    fecha = _diputados_acta_fecha(contenido)
+    if fecha is None:
+        return None
+    filas = _parsear_acta_diputados_pdf(contenido)
+    afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
+    neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
+    rice = indice_rice(afirm, neg)
+    cache[clave] = {"fecha": fecha.strftime("%Y-%m-%d"), "rice": rice}
+    _guardar_cache_cohesion_diputados(cache)
+    return {"fecha": fecha, "rice": rice}
+
+
 def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -> int | None:
     """Encuentra el id de acta más reciente disponible, caminando desde
     `desde_id` (semilla conocida: 5959 = 24-jun-2026, verificado en vivo
@@ -1159,59 +1218,46 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
     return actual
 
 
-def _descubrir_actas_diputados_pdf(session: requests.Session, anio: int, id_maximo: int | None = None):
-    """[{id, fecha}] de las actas de Diputados del año `anio`, caminando
-    HACIA ATRÁS desde `id_maximo` (o el descubierto en vivo si no se pasa)
-    -- no hay listado público id↔fecha para este endpoint, así que cada
-    acta se descarga igual para leer su fecha. Corta al encontrar
-    MARGEN_SALIDA actas seguidas con fecha.year < anio (los ids son
-    monotónicos por fecha, confirmado en vivo) para tolerar algún id
-    fuera de orden sin cortar de más. None solo si ni siquiera se pudo
-    determinar el id máximo (fallo real del endpoint)."""
-    MARGEN_SALIDA = 5
-    if id_maximo is None:
-        id_maximo = _diputados_acta_id_maximo(session)
-    if id_maximo is None:
-        return None
-
-    actas = []
-    fuera_de_anio_seguidas = 0
-    id_actual = id_maximo
-    while id_actual > 0 and fuera_de_anio_seguidas < MARGEN_SALIDA:
-        contenido = _diputados_acta_pdf(session, id_actual)
-        id_actual -= 1
-        if contenido is None:
-            continue   # acta inexistente (hueco en la numeración) -- no cuenta como "fuera de año"
-        fecha = _diputados_acta_fecha(contenido)
-        if fecha is None:
-            continue
-        if fecha.year != anio:
-            fuera_de_anio_seguidas += 1
-            continue
-        fuera_de_anio_seguidas = 0
-        actas.append({"id": id_actual + 1, "fecha": fecha, "_contenido": contenido})
-    return actas
-
-
 def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
     """Detalle CRUDO de cohesión por acta de Diputados de TODO el año dado
     (sin recortar por ventana de días), vía el endpoint PDF directo --
     mismo shape que fetch_cohesion_bloque_senado_actas_anio (Senado):
     [{"fecha": "YYYY-MM-DD", "rice": float}, ...], una fila por acta con
     señal (votos del bloque LLA, no empatados). Existe para el backfill
-    mensual (descargar_series.py) con el mismo patrón que Senado."""
+    mensual (descargar_series.py) con el mismo patrón que Senado.
+
+    A diferencia de Senado (que tiene un listado liviano por año), acá no
+    hay forma de pedir "solo este año" -- camina hacia atrás desde el id
+    más reciente HOY, así que llamar esta función para 2023..2026 en
+    cualquier orden vuelve a caminar por los años ya vistos en llamadas
+    anteriores. Eso es barato gracias a _acta_diputados_cacheada (caché
+    PERMANENTE por acta, ver ahí) -- cada acta se descarga una sola vez,
+    las siguientes veces que el walk la vuelve a pisar es solo un lookup
+    de diccionario."""
+    MARGEN_SALIDA = 5
     session = _hcdn_votaciones_session()
-    actas = _descubrir_actas_diputados_pdf(session, anio)
-    if actas is None:
+    id_maximo = _diputados_acta_id_maximo(session)
+    if id_maximo is None:
         return None
+
+    cache = _cargar_cache_cohesion_diputados()
     detalle = []
-    for acta in actas:
-        filas = _parsear_acta_diputados_pdf(acta["_contenido"])
-        afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
-        neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
-        rice = indice_rice(afirm, neg)
-        if rice is not None:
-            detalle.append({"fecha": acta["fecha"].strftime("%Y-%m-%d"), "rice": rice})
+    fuera_de_anio_seguidas = 0
+    id_actual = id_maximo
+    while id_actual > 0 and fuera_de_anio_seguidas < MARGEN_SALIDA:
+        entrada = _acta_diputados_cacheada(session, id_actual, cache)
+        id_actual -= 1
+        if entrada is None:
+            continue   # acta inexistente o sin señal -- no cuenta como "fuera de año"
+        if entrada["fecha"].year > anio:
+            continue   # todavía viajando desde HOY hacia el año pedido -- no cuenta como salida
+        if entrada["fecha"].year < anio:
+            fuera_de_anio_seguidas += 1
+            continue
+        fuera_de_anio_seguidas = 0
+        if entrada["rice"] is not None:
+            detalle.append({"fecha": entrada["fecha"].strftime("%Y-%m-%d"), "rice": entrada["rice"]})
+
     return detalle
 
 
@@ -1235,6 +1281,11 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     `_diputados_acta_id_maximo` seguiría ancladando al id de HOY, no al de
     fin de `anio`, así que no se soporta acá.
 
+    Desde 2026-07-09 usa la caché permanente por acta
+    (_acta_diputados_cacheada) en vez de descargar cada acta sin registro:
+    en una corrida repetida (cron nocturno incluido) solo las actas nuevas
+    desde la última corrida pagan una descarga real.
+
     Devuelve None SOLO si no se pudo determinar el id más reciente (el
     endpoint en sí falló) — 'sin votos en la ventana' (receso legislativo)
     es un resultado válido con valor=None pero corrida_exitosa_en seteado."""
@@ -1248,28 +1299,23 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     limite = referencia - timedelta(days=dias_ventana)
 
     MARGEN_SALIDA = 5
+    cache = _cargar_cache_cohesion_diputados()
     detalle = []
     fuera_de_ventana_seguidas = 0
     id_actual = id_maximo
     while id_actual > 0 and fuera_de_ventana_seguidas < MARGEN_SALIDA:
-        contenido = _diputados_acta_pdf(session, id_actual)
+        entrada = _acta_diputados_cacheada(session, id_actual, cache)
         id_actual -= 1
-        if contenido is None:
-            continue   # hueco en la numeración -- no cuenta como "fuera de ventana"
-        fecha = _diputados_acta_fecha(contenido)
-        if fecha is None or fecha > referencia:
+        if entrada is None:
+            continue   # hueco en la numeración o PDF ilegible -- no cuenta como "fuera de ventana"
+        if entrada["fecha"] > referencia:
             continue
-        if fecha < limite:
+        if entrada["fecha"] < limite:
             fuera_de_ventana_seguidas += 1
             continue
         fuera_de_ventana_seguidas = 0
-        filas = _parsear_acta_diputados_pdf(contenido)
-        afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
-        neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
-        rice = indice_rice(afirm, neg)
-        if rice is None:
-            continue
-        detalle.append((fecha, rice))
+        if entrada["rice"] is not None:
+            detalle.append((entrada["fecha"], entrada["rice"]))
 
     fecha_max = max((f for f, _ in detalle), default=None)
     return {

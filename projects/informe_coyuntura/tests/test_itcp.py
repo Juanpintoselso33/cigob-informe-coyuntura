@@ -99,6 +99,29 @@ def test_banda_cohesion_bloque_senado_ya_no_satura_valores_antes_planos():
     assert puntaje == 86.8
 
 
+def test_banda_cohesion_bloque_diputados_recalibrada():
+    # Recalibración 2026-07-09 (ADR-0042) con 31 puntos mensuales reales
+    # backfilleados (dic-2023->jun-2026): anclas 99,9/99,0/98,0/97,0 (antes
+    # 90/75/60/40, fórmula ad hoc nunca validada).
+    bandas = itcp.BANDAS_ITCP["cohesion_bloque"]
+    assert itcp.puntaje_banda(99.9, bandas) == 85     # low exclusivo del tramo abierto
+    assert itcp.puntaje_banda(99.91, bandas) == 100
+    assert itcp.puntaje_banda(99.0, bandas) == 65     # high inclusivo
+    assert itcp.puntaje_banda(98.0, bandas) == 40
+    assert itcp.puntaje_banda(97.0, bandas) == 10
+    assert itcp.puntaje_banda(96.7, bandas) == 10     # mínimo real observado (dic-2023)
+
+
+def test_banda_cohesion_bloque_diputados_ya_no_satura_valores_antes_planos():
+    # Bajo las anclas viejas (90,inf,100), CUALQUIER valor real observado
+    # (96,7-100,0) saturaba en 100 -- 31 de 31 meses, sin excepción. Un valor
+    # real de esa franja (ago-2025, 97.5%) ya no se aplana en el techo.
+    import parametrica
+    bandas = itcp.BANDAS_ITCP["cohesion_bloque"]
+    puntaje = parametrica.puntaje_interpolado(97.5, bandas)
+    assert puntaje < 100.0
+
+
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
         "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100
@@ -109,7 +132,7 @@ def test_calcular_itcp_pondera_dimensiones():
         "iaf_transferencias": 12.0,          # alianzas_territoriales, puntaje 100
         "alineamiento_senadores_prov": 70.0, # alianzas_territoriales, puntaje 100
         "adhesion_reformas_provincial": 90.0, # alianzas_territoriales, puntaje 100
-        "cohesion_bloque": 95.0,             # cohesion_interna, puntaje 100
+        "cohesion_bloque": 100.0,            # cohesion_interna, puntaje 100
         "cohesion_bloque_senado": 95.0,      # cohesion_interna, puntaje 100
         "movilizacion_cepa": 5.0,            # conflicto_social, puntaje 100
         "protestas_caba": -35.0,             # conflicto_social, puntaje 100 (var_vs_2023, no valor crudo)

@@ -899,7 +899,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
-      "El puntaje sube en escalones con ese porcentaje: más de 90% → el más alto; entre 75% y 90% → alto; entre 60% y 75% → moderado; entre 40% y 60% → bajo; menos de 40% (el bloque prácticamente se divide a la mitad) → el más bajo. Los umbrales son provisorios: se fijaron sin serie histórica propia del indicador y se van a recalibrar cuando la haya.",
+      "El puntaje sube en escalones con ese porcentaje: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 98% y 99% → moderado; entre 97% y 98% → bajo; 97% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (dic-2023 en adelante) — antes eran una fórmula ad hoc nunca validada, y saturaban en el escalón más alto en el 100% de los meses reales.",
       "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 65% frente al 35% del mismo cálculo aplicado al Senado.",
     ],
     limitaciones: [
@@ -914,6 +914,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón como estimación manual, a la espera de una fuente estructurada de votaciones vigente." },
       { fecha: "2026-07-07", cambio: "Deja de ser una estimación manual: pasa a calcularse en forma automática con el scraping de las votaciones nominales de Diputados. Cambia también la definición — de «porcentaje alineado con la posición oficial» (no observable de forma independiente) a «qué tan pareja o dispareja es la votación interna del bloque propio», calculada acta por acta." },
       { fecha: "2026-07-09", cambio: "El scraping automático quedó bloqueado en producción entre el 07 y el 09 de julio (protección del portal contra acceso automatizado) — el indicador se sostuvo con el último dato calculado. Restablecido usando una vía de acceso directa del mismo portal, sin depender de la parte bloqueada." },
+      { fecha: "2026-07-09", cambio: "Suma una caché permanente por acta: una corrida ya no vuelve a descargar actas ya vistas, solo las nuevas desde la corrida anterior (antes de esto, reconstruir el historial completo agregaba ~53 minutos al pipeline). Habilita también la serie histórica MENSUAL del gráfico (antes: 3 puntos anuales)." },
+      { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 90/75/60/40, fórmula ad hoc nunca validada) a partir de la serie mensual reconstruida en el punto anterior (31 meses reales, dic-2023 a jun-2026): nuevos cortes en 99,9/99,0/98,0/97,0. El techo anterior saturaba en el 100% de los meses reales — el bloque propio de LLA en Diputados es mucho más grande que en el Senado, así que la cohesión observada es naturalmente más alta y más apretada." },
     ],
   },
 

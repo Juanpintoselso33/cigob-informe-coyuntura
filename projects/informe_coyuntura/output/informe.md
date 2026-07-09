@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-09 12:27:51"
+generado: "2026-07-09 14:12:39"
 score_global: 3.2
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -95,4 +95,4 @@ schema_version: "1.2.0"
 | clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-09 12:27:51 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-09 14:12:39 — schema 1.2.0*

@@ -197,6 +197,63 @@ def test_cinturon_de_indicador_encuentra_en_las_tres_listas():
     assert descargar_series._cinturon_de_indicador("no_existe_este_indicador") is None
 
 
+def test_cohesion_bloque_diputados_registrado_en_politica_derivadas():
+    # regresión 2026-07-09: se había sacado de la lista por el hallazgo de
+    # performance (ver comentario en POLITICA_DERIVADAS) -- debe volver a
+    # estar, ahora con la función _mensual cacheada por acta.
+    nombres = [d[0] for d in descargar_series.POLITICA_DERIVADAS]
+    assert "cohesion_bloque" in nombres
+    assert descargar_series._cinturon_de_indicador("cohesion_bloque") == "politica"
+
+
+def test_actas_cohesion_diputados_cacheadas_anio_cerrado_no_se_vuelve_a_pedir(tmp_path, monkeypatch):
+    monkeypatch.setattr(descargar_series, "date", _FakeDate)
+    monkeypatch.setattr(descargar_series, "COHESION_DIPUTADOS_ACTAS_STORE", tmp_path / "actas.json")
+    (tmp_path / "actas.json").write_text(json.dumps({
+        "2023": [{"fecha": "2023-06-01", "rice": 88.0}],
+    }), encoding="utf-8")
+    llamados = []
+
+    def fake_fetch(anio):
+        llamados.append(anio)
+        return [{"fecha": f"{anio}-06-01", "rice": 92.0}]
+
+    monkeypatch.setattr(descargar_series.politica, "fetch_cohesion_bloque_diputados_actas_anio", fake_fetch)
+
+    cache = descargar_series._actas_cohesion_diputados_cacheadas(2023)
+
+    assert llamados == [2024, 2025, 2026]
+    assert set(cache.keys()) == {"2023", "2024", "2025", "2026"}
+
+
+def test_fetch_cohesion_bloque_diputados_mensual_deriva_ventanas_rolling(tmp_path, monkeypatch):
+    monkeypatch.setattr(descargar_series, "date", _FakeDate)   # hoy = 2026-07-08
+    monkeypatch.setattr(descargar_series, "COHESION_DIPUTADOS_ACTAS_STORE", tmp_path / "actas.json")
+
+    detalle_2026 = [
+        {"fecha": "2026-03-15", "rice": 99.0},
+        {"fecha": "2026-06-01", "rice": 70.0},
+    ]
+    monkeypatch.setattr(descargar_series.politica, "fetch_cohesion_bloque_diputados_actas_anio",
+                         lambda anio: detalle_2026 if anio == 2026 else [])
+
+    serie = descargar_series.fetch_cohesion_bloque_diputados_mensual(anio_inicio=2023, dias_ventana=90)
+
+    marzo = next(p for p in serie if p[0] == "2026-03-31")
+    assert marzo[1] == 99.0
+    # 30-jun: 15-mar queda fuera de la ventana de 90d (107 días) -- solo
+    # cuenta la acta del 1-jun.
+    junio = next(p for p in serie if p[0] == "2026-06-30")
+    assert junio[1] == 70.0
+
+
+def test_fetch_cohesion_bloque_diputados_mensual_sin_detalle_devuelve_vacio(tmp_path, monkeypatch):
+    monkeypatch.setattr(descargar_series, "date", _FakeDate)
+    monkeypatch.setattr(descargar_series, "COHESION_DIPUTADOS_ACTAS_STORE", tmp_path / "actas.json")
+    monkeypatch.setattr(descargar_series.politica, "fetch_cohesion_bloque_diputados_actas_anio", lambda anio: [])
+    assert descargar_series.fetch_cohesion_bloque_diputados_mensual(anio_inicio=2026) == []
+
+
 def test_fetch_alineamiento_senadores_prov_serie_usa_su_propio_store(tmp_path, monkeypatch):
     monkeypatch.setattr(descargar_series, "date", _FakeDate)
     monkeypatch.setattr(descargar_series, "ALINEAMIENTO_SENADORES_STORE", tmp_path / "alineamiento.json")

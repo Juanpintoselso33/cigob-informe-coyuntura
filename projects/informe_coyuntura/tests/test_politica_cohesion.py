@@ -2,8 +2,19 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import politica
+import pytest
 from unittest.mock import MagicMock
 from datetime import datetime, timedelta
+
+
+@pytest.fixture(autouse=True)
+def _cache_diputados_aislado(monkeypatch, tmp_path):
+    # ningún test de este archivo debe leer/escribir la caché PERMANENTE
+    # real (data/politica/cohesion_bloque_diputados_actas_cache.json) --
+    # aislada acá una sola vez para que sea imposible olvidarlo en un test
+    # nuevo (regresión real: la primera corrida de esta suite escribió en el
+    # archivo real antes de que existiera este fixture).
+    monkeypatch.setattr(politica, "DIPUTADOS_COHESION_CACHE_PATH", tmp_path / "cohesion_diputados_cache_test.json")
 
 
 def test_indice_rice_unanime_afirmativo():
@@ -295,18 +306,103 @@ def test_diputados_acta_id_maximo_avanza_hasta_el_primer_hueco(monkeypatch):
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 7
 
 
-def test_descubrir_actas_diputados_pdf_corta_al_margen_de_salida_del_anio(monkeypatch):
+def _mock_acta_diputados(monkeypatch, fechas: dict, filas_lla_por_id: dict | None = None):
+    """Helper: simula el endpoint PDF para los ids en `fechas`
+    ({id: datetime}), con _parsear_acta_diputados_pdf devolviendo
+    filas_lla_por_id.get(id, filas por defecto con señal) para que
+    indice_rice() no sea None salvo que el test pida lo contrario."""
+    filas_lla_por_id = filas_lla_por_id or {}
+    filas_default = [{"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+                      {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"}]
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: str(id).encode() if id in fechas else None)
+    monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: fechas[int(c.decode())])
+    monkeypatch.setattr(politica, "_parsear_acta_diputados_pdf",
+                         lambda c: filas_lla_por_id.get(int(c.decode()), filas_default))
+
+
+def test_acta_diputados_cacheada_no_pide_red_si_ya_esta_en_cache(monkeypatch):
+    llamadas = []
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: llamadas.append(id) or b"x")
+    cache = {"5": {"fecha": "2026-06-24", "rice": 87.5}}
+
+    entrada = politica._acta_diputados_cacheada(MagicMock(), 5, cache)
+
+    assert entrada == {"fecha": datetime(2026, 6, 24), "rice": 87.5}
+    assert llamadas == []   # cache hit -- nunca llamó a _diputados_acta_pdf
+
+
+def test_acta_diputados_cacheada_descarga_y_cachea_en_miss(monkeypatch):
+    _mock_acta_diputados(monkeypatch, {5: datetime(2026, 6, 24)})
+    cache = {}
+
+    entrada = politica._acta_diputados_cacheada(MagicMock(), 5, cache)
+
+    assert entrada == {"fecha": datetime(2026, 6, 24), "rice": politica.indice_rice(1, 1)}
+    assert cache["5"] == {"fecha": "2026-06-24", "rice": politica.indice_rice(1, 1)}
+
+
+def test_acta_diputados_cacheada_sin_senal_igual_se_cachea_con_rice_none(monkeypatch):
+    # regresión: la primera versión NO cacheaba las actas sin señal (bloque
+    # LLA empatado/ausente), así que un walk repetido las re-descargaba
+    # cada vez -- contradice "la próxima corrida solo baja lo no cacheado".
+    _mock_acta_diputados(monkeypatch, {5: datetime(2026, 6, 24)},
+                          filas_lla_por_id={5: []})
+    cache = {}
+
+    entrada = politica._acta_diputados_cacheada(MagicMock(), 5, cache)
+
+    assert entrada == {"fecha": datetime(2026, 6, 24), "rice": None}
+    assert cache["5"] == {"fecha": "2026-06-24", "rice": None}
+
+
+def test_acta_diputados_cacheada_404_no_se_cachea(monkeypatch):
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: None)
+    cache = {}
+
+    assert politica._acta_diputados_cacheada(MagicMock(), 5, cache) is None
+    assert cache == {}   # un 404 puede ser transitorio -- no se guarda
+
+
+def test_cargar_y_guardar_cache_cohesion_diputados_hacen_roundtrip(tmp_path, monkeypatch):
+    monkeypatch.setattr(politica, "DIPUTADOS_COHESION_CACHE_PATH", tmp_path / "cache.json")
+    assert politica._cargar_cache_cohesion_diputados() == {}
+
+    politica._guardar_cache_cohesion_diputados({"5": {"fecha": "2026-06-24", "rice": 87.5}})
+
+    assert politica._cargar_cache_cohesion_diputados() == {"5": {"fecha": "2026-06-24", "rice": 87.5}}
+
+
+def test_fetch_cohesion_bloque_diputados_actas_anio_recorta_por_anio(monkeypatch):
     # ids 10..6 son de 2026, 5..1 son de 2025 -- pidiendo anio=2026 con
-    # MARGEN_SALIDA=5, debe cortar apenas ve 5 actas seguidas fuera de año
-    # (ids 5,4,3,2,1) y no seguir caminando.
+    # MARGEN_SALIDA=5, debe cortar apenas ve 5 actas seguidas de un año
+    # ANTERIOR (ids 5,4,3,2,1) y no seguir caminando.
     fechas = {i: datetime(2026, 1, i) for i in range(6, 11)}
     fechas.update({i: datetime(2025, 1, i) for i in range(1, 6)})
-    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: str(id).encode() if id in fechas else None)
-    monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: fechas[int(c.decode())])
+    _mock_acta_diputados(monkeypatch, fechas)
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: 10)
 
-    actas = politica._descubrir_actas_diputados_pdf(MagicMock(), 2026, id_maximo=10)
+    detalle = politica.fetch_cohesion_bloque_diputados_actas_anio(2026)
 
-    assert sorted(a["id"] for a in actas) == [6, 7, 8, 9, 10]
+    assert sorted(f["fecha"] for f in detalle) == [f"2026-01-{i:02d}" for i in range(6, 11)]
+
+
+def test_fetch_cohesion_bloque_diputados_actas_anio_anio_pasado_no_corta_de_mas(monkeypatch):
+    # regresión del bug real: id_maximo SIEMPRE ancla a HOY (2026), así que
+    # pedir un año pasado (2025) caminando desde ahí solía toparse con 5
+    # actas de 2026 seguidas de entrada y cortar ANTES de llegar a 2025. Las
+    # actas de un año más nuevo que el pedido no deben contar para el margen
+    # de salida -- solo las de un año más viejo (ya pasamos el objetivo).
+    fechas = {i: datetime(2026, 1, i) for i in range(6, 11)}     # 5 actas de 2026 (más nuevo que el pedido)
+    fechas.update({i: datetime(2025, 6, i) for i in range(1, 4)})  # 3 actas de 2025 (el año pedido)
+    _mock_acta_diputados(monkeypatch, fechas)
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: 10)
+
+    detalle = politica.fetch_cohesion_bloque_diputados_actas_anio(2025)
+
+    assert sorted(f["fecha"] for f in detalle) == ["2025-06-01", "2025-06-02", "2025-06-03"]
 
 
 def test_fetch_cohesion_bloque_diputados_promedia_solo_actas_en_ventana(monkeypatch):
@@ -334,6 +430,7 @@ def test_fetch_cohesion_bloque_diputados_sin_actas_en_ventana_pero_corrida_exito
     monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: 5)
     monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: b"x" if id == 5 else None)
     monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: hoy - timedelta(days=200))
+    monkeypatch.setattr(politica, "_parsear_acta_diputados_pdf", lambda c: [])
 
     resultado = politica.fetch_cohesion_bloque(dias_ventana=90)
 

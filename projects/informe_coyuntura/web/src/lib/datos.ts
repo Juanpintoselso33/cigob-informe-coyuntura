@@ -180,7 +180,7 @@ export const LABELS: Record<string, string> = {
   // politica
   votometro_ventaja_lla: "Ventaja LLA−PJ (Votómetro)", ratio_dnu: "Ratio DNU / leyes",
   movilizacion_cepa: "Tensión social (CEPA)", iaf_transferencias: "Armonía federal (transferencias)",
-  eficacia_legislativa: "Eficacia parlamentaria", cohesion_bloque: "Cohesión del bloque LLA",
+  eficacia_legislativa: "Eficacia parlamentaria", cohesion_bloque: "Cohesión del bloque LLA (Diputados)",
   cohesion_bloque_senado: "Cohesión del bloque LLA (Senado)",
   gobernadores_alineamiento: "Alineamiento de gobernadores (retirado)", veto_quorum: "Sesiones caídas por quórum",
   alineamiento_senadores_prov: "Alineamiento de senadores por provincia",
@@ -283,7 +283,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   // politica
   votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",
   movilizacion_cepa: "Índice (0–100)", iaf_transferencias: "% interanual real",
-  eficacia_legislativa: "% de proyectos", cohesion_bloque: "% de votos",
+  eficacia_legislativa: "% de proyectos", cohesion_bloque: "% de votos (Diputados)",
   cohesion_bloque_senado: "% de votos (Senado)",
   gobernadores_alineamiento: "% de gobernadores (retirado)", veto_quorum: "% de sesiones",
   alineamiento_senadores_prov: "% de senadores no-LLA",

@@ -612,6 +612,73 @@ def fetch_cohesion_bloque_senado_mensual(anio_inicio: int = 2023, dias_ventana: 
     return puntos
 
 
+COHESION_DIPUTADOS_ACTAS_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "cohesion_bloque_diputados_actas.json"
+
+
+def _actas_cohesion_diputados_cacheadas(anio_inicio: int) -> dict:
+    """Cachea el detalle CRUDO por acta de Diputados
+    (politica.fetch_cohesion_bloque_diputados_actas_anio) por año -- mismo
+    criterio que _actas_cohesion_senado_cacheadas: años CERRADOS inmutables,
+    el año en curso se re-pide siempre. A diferencia de Senado, cada llamada
+    a fetch_cohesion_bloque_diputados_actas_anio ya camina sobre la caché
+    PERMANENTE por acta de politica.py (_acta_diputados_cacheada) -- este
+    caché por año evita además volver a RECORRER (aunque sea solo lookups de
+    diccionario) los años cerrados en cada corrida.
+    {anio (str): [detalle de fetch_cohesion_bloque_diputados_actas_anio]}."""
+    try:
+        cache = json.loads(COHESION_DIPUTADOS_ACTAS_STORE.read_text(encoding="utf-8-sig"))
+        if not isinstance(cache, dict):
+            cache = {}
+    except (OSError, json.JSONDecodeError):
+        cache = {}
+
+    hoy_anio = date.today().year
+    for anio in range(anio_inicio, hoy_anio + 1):
+        clave = str(anio)
+        if anio < hoy_anio and clave in cache:
+            continue   # año cerrado ya cacheado -- inmutable, no se vuelve a pedir
+        try:
+            detalle = politica.fetch_cohesion_bloque_diputados_actas_anio(anio)
+        except Exception as e:
+            print(f"  [WARN] cohesion_bloque_diputados_actas {anio}: {e}")
+            continue
+        if detalle is not None:
+            cache[clave] = detalle
+            COHESION_DIPUTADOS_ACTAS_STORE.write_text(
+                json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
+            print(f"  [OK] cohesion_bloque_diputados_actas {anio}: {len(detalle)} actas con señal")
+        elif clave not in cache:
+            print(f"  [WARN] cohesion_bloque_diputados_actas {anio}: sin dato y sin cache previo -- se omite")
+
+    return cache
+
+
+def fetch_cohesion_bloque_diputados_mensual(anio_inicio: int = 2023, dias_ventana: int = 90) -> list:
+    """Serie MENSUAL de cohesion_bloque (Diputados): un punto por fin de mes
+    desde diciembre de `anio_inicio` hasta hoy, cada uno una ventana rolling
+    de `dias_ventana` días (mismo criterio "Continua (90d)" que el valor live
+    de la card) -- mismo patrón que fetch_cohesion_bloque_senado_mensual
+    (ADR-0039) y fetch_alineamiento_senadores_prov_mensual (ADR-0038), ahora
+    viable para Diputados gracias a la caché permanente por acta (ADR-0040
+    follow-up, 2026-07-09): sin ella, reconstruir 2023..hoy caminaba TODA la
+    historia desde el id más reciente en cada una de las 4 llamadas anuales
+    (~53min extra medidos en el pipeline completo). Reusa el detalle crudo
+    por acta cacheado por año (_actas_cohesion_diputados_cacheadas).
+    [[YYYY-MM-DD, valor]]."""
+    cache = _actas_cohesion_diputados_cacheadas(anio_inicio)
+    detalle = [fila for detalle_anio in cache.values() for fila in detalle_anio]
+    if not detalle:
+        return []
+
+    puntos = []
+    for fin_mes in _fines_de_mes(date(anio_inicio, 12, 1), date.today()):
+        referencia = datetime(fin_mes.year, fin_mes.month, fin_mes.day)
+        resultado = politica._agregar_cohesion_ventana(detalle, referencia, dias_ventana)
+        if resultado:
+            puntos.append([fin_mes.strftime("%Y-%m-%d"), resultado["valor"]])
+    return puntos
+
+
 def fetch_alineamiento_senadores_prov_serie(anio_inicio: int = 2023) -> list:
     """Serie ANUAL de alineamiento_senadores_prov (reemplaza a
     gobernadores_alineamiento). Caché persistente por año, ver
@@ -795,20 +862,15 @@ POLITICA_DERIVADAS = [
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_eficacia_serie),
     ("veto_quorum", "% sesiones fracasadas (por período)", "datos.hcdn.gob.ar CKAN", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_comisiones_serie),
-    # cohesion_bloque (Diputados) NO se registra acá -- fetch_cohesion_bloque_serie
-    # llama politica.fetch_cohesion_bloque(anio, dias_ventana=366) por año, un
-    # patrón que dependía de _descubrir_actas (listado liviano por año, SPA
-    # bloqueada, ADR-0037). El fetch nuevo (ADR-0040, endpoint PDF) SIEMPRE
-    # ancla al id más reciente de HOY sin importar `anio`, así que ese mismo
-    # patrón camina TODA la historia desde hoy hasta encontrar el año pedido en
-    # cada una de las 4 llamadas anuales (2023..2026) -- hallazgo real
-    # 2026-07-09: el pipeline completo pasó de ~20min a ~53min por esto solo,
-    # con riesgo real de superar el timeout de 20min del job de CI. Hasta que
-    # se construya un backfill propio y eficiente para Diputados (mismo patrón
-    # que cohesion_bloque_senado/alineamiento_senadores_prov, ADR-0038/0039 --
-    # la infraestructura ya existe: fetch_cohesion_bloque_diputados_actas_anio),
-    # cohesion_bloque queda sin serie histórica en el chart web; el valor live
-    # (fetch_cohesion_bloque, ventana de 90 días) sigue andando bien.
+    # cohesion_bloque (Diputados) volvió a registrarse acá 2026-07-09 (ADR-0040
+    # follow-up) usando fetch_cohesion_bloque_diputados_mensual, que camina la
+    # historia UNA sola vez gracias a la caché permanente por acta -- ver esa
+    # función y _actas_cohesion_diputados_cacheadas para el detalle de por qué
+    # el registro anterior (fetch_cohesion_bloque_serie, anual, sin caché por
+    # acta) se había sacado de esta lista (~53min extra en el pipeline).
+    ("cohesion_bloque", "% cohesión (índice de Rice)",
+     "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+     fetch_cohesion_bloque_diputados_mensual),
     ("cohesion_bloque_senado", "% cohesión (índice de Rice, Senado)",
      "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
      fetch_cohesion_bloque_senado_mensual),

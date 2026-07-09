@@ -115,8 +115,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (12m)", tipo: "Nivel (%)",
   },
   cohesion_bloque: {
-    que: "Qué tan pareja o dispareja vota puertas adentro el bloque propio de diputados de LLA en las votaciones nominales divididas de los últimos 90 días: resta los votos a favor menos los votos en contra de cada acta, en valor absoluto, sobre el total de votos que emitió el bloque en esa acta.",
-    aporta: "Mide la cohesión interna del oficialismo — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente —, clave para sostener vetos y aprobar leyes.",
+    que: "Qué tan pareja o dispareja vota puertas adentro el bloque propio de LLA en la Cámara de Diputados, en las votaciones nominales divididas de los últimos 90 días: resta los votos a favor menos los votos en contra de cada acta, en valor absoluto, sobre el total de votos que emitió el bloque en esa acta.",
+    aporta: "Mide la cohesión interna del oficialismo en Diputados — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente —, clave para sostener vetos y aprobar leyes.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   cohesion_bloque_senado: {
