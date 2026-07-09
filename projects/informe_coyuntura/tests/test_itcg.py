@@ -8,11 +8,13 @@ ajuste manual y la renormalización ante faltantes — mismo motor que el ITCM
 """
 import sys
 from pathlib import Path
+from openpyxl import Workbook
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import itcg
+import gestion
 
 # Fixture jul-2026 con valores realistas de cada indicador. Desde el ADR-0021
 # el puntaje es INTERPOLADO entre las anclas de las bandas (banda de
@@ -179,6 +181,23 @@ def test_ajuste_manual_del_analista():
 def test_sin_datos_devuelve_none():
     assert itcg.calcular_itcg({}) is None
     assert itcg.calcular_itcg({k: None for k in EJEMPLO}) is None
+
+
+def test_sss_tabla_parsea_rnemp_2024_con_encabezados_agrupados():
+    wb = Workbook()
+    ws = wb.active
+    ws.append(["EVOLUCION ANUAL DE USUARIOS POR ENTIDADES DE MEDICINA PREPAGA"])
+    ws.append(["RNEMP", "Entidad de Medicina Prepaga", "Meses"])
+    ws.append([None, None, "1er. Cuatrimestre *", "mayo", "junio", "julio",
+               "agosto y septiembre **", "octubre ", "noviembre", "diciembre"])
+    ws.append([110022, "GERMED S.A.", 6723, 6720, 6716, 6626, 6723, 6793, 6854, 6847])
+
+    cols, entidades = gestion._sss_tabla(ws)
+
+    assert cols == {2: "04", 3: "05", 4: "06", 5: "07", 6: "09",
+                    7: "10", 8: "11", 9: "12"}
+    assert len(entidades) == 1
+    assert entidades[0][0] == 110022
 
 
 def test_texto_bandas_legible():

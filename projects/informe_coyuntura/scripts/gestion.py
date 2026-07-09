@@ -1356,6 +1356,29 @@ _MES_NUM = {"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio"
             "julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12}
 
 
+def _sss_mes_columna(valor) -> str | None:
+    """Mes de una columna SSS.
+
+    Algunos RNEMP historicos no traen los 12 meses: 2024 publica
+    "1er. Cuatrimestre" y "agosto y septiembre". En esos casos se usa el
+    ultimo mes del rango; el consumidor arrastra el ultimo denominador conocido.
+    """
+    texto = str(valor or "").strip().lower()
+    if not texto:
+        return None
+    meses = [num for mes, num in _MES_NUM.items() if mes in texto]
+    if meses:
+        return f"{max(meses):02d}"
+    if "cuatrimestre" in texto:
+        if "1" in texto or "primer" in texto:
+            return "04"
+        if "2" in texto or "segundo" in texto:
+            return "08"
+        if "3" in texto or "tercer" in texto:
+            return "12"
+    return None
+
+
 def _sss_tabla(ws) -> tuple:
     """({col: 'MM'}, [(código, fila)]) de una hoja RNAS/RNEMP: columnas de
     meses y filas de entidades (código numérico en la col. 0). Los totales se
@@ -1363,12 +1386,13 @@ def _sss_tabla(ws) -> tuple:
     de algunos años (ej. 2025), así que no se depende de ella."""
     filas = list(ws.iter_rows(values_only=True))
     fila_meses = next((f for f in filas
-                       if any(str(c).strip().lower() == "enero" for c in f if c)), None)
+                       if sum(1 for c in f if _sss_mes_columna(c)) >= 3), None)
     if fila_meses is None:
         raise ValueError("hoja SSS sin fila de meses")
-    cols = {i: f"{_MES_NUM[str(m).strip().lower()]:02d}"
+    cols = {i: mm
             for i, m in enumerate(fila_meses)
-            if m and str(m).strip().lower() in _MES_NUM}
+            for mm in [_sss_mes_columna(m)]
+            if mm}
     entidades = []
     for f in filas:
         try:
