@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-09T06:32:40.781182",
+  "generated_at": "2026-07-09T09:26:30.375990",
   "score": 3.2,
   "itcp": {
-    "valor": 68.4,
+    "valor": 68.0,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -46,7 +46,7 @@
       "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
         "peso": 0.25,
-        "puntaje": 90.9,
+        "puntaje": 89.4,
         "indicadores": {
           "iaf_transferencias": {
             "peso": 0.4,
@@ -57,8 +57,8 @@
           },
           "alineamiento_senadores_prov": {
             "peso": 0.3,
-            "puntaje_banda": 100.0,
-            "puntaje_aplicado": 100.0,
+            "puntaje_banda": 94.9,
+            "puntaje_aplicado": 94.9,
             "valor": 68.3,
             "peso_efectivo": 0.075
           },
@@ -288,8 +288,8 @@
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
-      "puntaje_itcp": 100.0,
-      "puntaje_banda": 100.0,
+      "puntaje_itcp": 94.9,
+      "puntaje_banda": 94.9,
       "peso_efectivo": 0.075
     }
   }

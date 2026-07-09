@@ -1,5 +1,5 @@
 fecha,indicador,valor,unidad,fuente
-2026-06-01,tcrm_bilateral_eeuu,93.13,índice (base dic-2015),BCRA ITCRM
+2026-06-01,tcrm_bilateral_eeuu,93.2,índice (base dic-2015),BCRA ITCRM
 2026-05-01,tcrm_bilateral_eeuu,91.36,índice (base dic-2015),BCRA ITCRM
 2026-04-01,tcrm_bilateral_eeuu,91.99,índice (base dic-2015),BCRA ITCRM
 2026-03-01,tcrm_bilateral_eeuu,94.92,índice (base dic-2015),BCRA ITCRM
@@ -31,7 +31,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,tcrm_bilateral_eeuu,146.58,índice (base dic-2015),BCRA ITCRM
 2023-12-01,tcrm_bilateral_eeuu,137.41,índice (base dic-2015),BCRA ITCRM
 2023-11-01,tcrm_bilateral_eeuu,92.33,índice (base dic-2015),BCRA ITCRM
-2026-06-01,tcrm_bilateral_brasil,85.94,índice (base dic-2015),BCRA ITCRM
+2026-06-01,tcrm_bilateral_brasil,86.0,índice (base dic-2015),BCRA ITCRM
 2026-05-01,tcrm_bilateral_brasil,86.65,índice (base dic-2015),BCRA ITCRM
 2026-04-01,tcrm_bilateral_brasil,86.31,índice (base dic-2015),BCRA ITCRM
 2026-03-01,tcrm_bilateral_brasil,85.52,índice (base dic-2015),BCRA ITCRM
@@ -63,8 +63,8 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,tcrm_bilateral_brasil,135.58,índice (base dic-2015),BCRA ITCRM
 2023-12-01,tcrm_bilateral_brasil,127.36,índice (base dic-2015),BCRA ITCRM
 2023-11-01,tcrm_bilateral_brasil,85.14,índice (base dic-2015),BCRA ITCRM
-2026-06-01,tcrm,84.96,índice (base dic-2015),BCRA ITCRM
-2026-05-01,tcrm,84.31,índice (base dic-2015),BCRA ITCRM
+2026-06-01,tcrm,85.04,índice (base dic-2015),BCRA ITCRM
+2026-05-01,tcrm,84.32,índice (base dic-2015),BCRA ITCRM
 2026-04-01,tcrm,84.67,índice (base dic-2015),BCRA ITCRM
 2026-03-01,tcrm,86.23,índice (base dic-2015),BCRA ITCRM
 2026-02-01,tcrm,90.09,índice (base dic-2015),BCRA ITCRM
@@ -95,6 +95,9 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,tcrm,132.78,índice (base dic-2015),BCRA ITCRM
 2023-12-01,tcrm,124.88,índice (base dic-2015),BCRA ITCRM
 2023-11-01,tcrm,83.2,índice (base dic-2015),BCRA ITCRM
+2026-07-08,tc_mayorista,1490.9024,ARS/USD,BCRA
+2026-07-07,tc_mayorista,1491.55,ARS/USD,BCRA
+2026-07-06,tc_mayorista,1489.5949,ARS/USD,BCRA
 2026-07-03,tc_mayorista,1488.5858,ARS/USD,BCRA
 2026-07-02,tc_mayorista,1490.6754,ARS/USD,BCRA
 2026-07-01,tc_mayorista,1487.769,ARS/USD,BCRA
@@ -727,8 +730,6 @@ fecha,indicador,valor,unidad,fuente
 2023-11-24,tc_mayorista,357.525,ARS/USD,BCRA
 2023-11-23,tc_mayorista,357.0083,ARS/USD,BCRA
 2023-11-22,tc_mayorista,356.5083,ARS/USD,BCRA
-2023-11-21,tc_mayorista,356.025,ARS/USD,BCRA
-2023-11-17,tc_mayorista,354.0083,ARS/USD,BCRA
 2026-05-01,saldo_comercial_12m,21221.0,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-04-01,saldo_comercial_12m,18324.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-03-01,saldo_comercial_12m,15825.7,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
@@ -850,6 +851,7 @@ fecha,indicador,valor,unidad,fuente
 2024-08-01,reservas_bcra,-3992.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
 2024-07-01,reservas_bcra,-3917.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
 2024-06-01,reservas_bcra,181.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
+2026-06-30,rem_ipc_12m,22.3,% anual,BCRA
 2026-05-31,rem_ipc_12m,23.3,% anual,BCRA
 2026-04-30,rem_ipc_12m,24.2,% anual,BCRA
 2026-03-31,rem_ipc_12m,23.8,% anual,BCRA
@@ -938,17 +940,20 @@ fecha,indicador,valor,unidad,fuente
 2021-11-01,recaudacion,5.12,% i.a. real,INDEC (recaudación) + IPC (deflactor)
 2021-10-01,recaudacion,6.11,% i.a. real,INDEC (recaudación) + IPC (deflactor)
 2021-09-01,recaudacion,8.0,% i.a. real,INDEC (recaudación) + IPC (deflactor)
-2026-07-01,prestamos_privados,138516266.0,M ARS,BCRA
-2026-06-30,prestamos_privados,138198499.0,M ARS,BCRA
-2026-06-29,prestamos_privados,137362633.0,M ARS,BCRA
-2026-06-26,prestamos_privados,136218493.0,M ARS,BCRA
-2026-06-25,prestamos_privados,135918388.0,M ARS,BCRA
-2026-06-24,prestamos_privados,135892154.0,M ARS,BCRA
-2026-06-23,prestamos_privados,135289731.0,M ARS,BCRA
-2026-06-22,prestamos_privados,134311084.0,M ARS,BCRA
+2026-07-06,prestamos_privados,138517969.0,M ARS,BCRA
+2026-07-03,prestamos_privados,138440159.0,M ARS,BCRA
+2026-07-02,prestamos_privados,138572954.0,M ARS,BCRA
+2026-07-01,prestamos_privados,138244904.0,M ARS,BCRA
+2026-06-30,prestamos_privados,138557299.0,M ARS,BCRA
+2026-06-29,prestamos_privados,137514978.0,M ARS,BCRA
+2026-06-26,prestamos_privados,136325240.0,M ARS,BCRA
+2026-06-25,prestamos_privados,135914928.0,M ARS,BCRA
+2026-06-24,prestamos_privados,135886200.0,M ARS,BCRA
+2026-06-23,prestamos_privados,135278247.0,M ARS,BCRA
+2026-06-22,prestamos_privados,134304336.0,M ARS,BCRA
 2026-06-19,prestamos_privados,133900974.0,M ARS,BCRA
 2026-06-18,prestamos_privados,133556848.0,M ARS,BCRA
-2026-06-17,prestamos_privados,133166287.0,M ARS,BCRA
+2026-06-17,prestamos_privados,133174541.0,M ARS,BCRA
 2026-06-16,prestamos_privados,132473991.0,M ARS,BCRA
 2026-06-12,prestamos_privados,131845295.0,M ARS,BCRA
 2026-06-11,prestamos_privados,131506852.0,M ARS,BCRA
@@ -960,7 +965,7 @@ fecha,indicador,valor,unidad,fuente
 2026-06-03,prestamos_privados,132390785.0,M ARS,BCRA
 2026-06-02,prestamos_privados,132821888.0,M ARS,BCRA
 2026-06-01,prestamos_privados,132601161.0,M ARS,BCRA
-2026-05-29,prestamos_privados,132859755.0,M ARS,BCRA
+2026-05-29,prestamos_privados,132862203.0,M ARS,BCRA
 2026-05-28,prestamos_privados,132505263.0,M ARS,BCRA
 2026-05-27,prestamos_privados,131835085.0,M ARS,BCRA
 2026-05-26,prestamos_privados,131126865.0,M ARS,BCRA
@@ -1568,8 +1573,6 @@ fecha,indicador,valor,unidad,fuente
 2023-11-24,prestamos_privados,16552523.0,M ARS,BCRA
 2023-11-23,prestamos_privados,16501956.0,M ARS,BCRA
 2023-11-22,prestamos_privados,16393684.0,M ARS,BCRA
-2023-11-21,prestamos_privados,16188004.0,M ARS,BCRA
-2023-11-17,prestamos_privados,16154805.0,M ARS,BCRA
 2026-05-01,ipc_total,2.15,% mensual,INDEC (derivado del nivel del IPC)
 2026-04-01,ipc_total,2.58,% mensual,INDEC (derivado del nivel del IPC)
 2026-03-01,ipc_total,3.38,% mensual,INDEC (derivado del nivel del IPC)
@@ -1629,10 +1632,10 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,ipc_total,3.55,% mensual,INDEC (derivado del nivel del IPC)
 2021-08-01,ipc_total,2.47,% mensual,INDEC (derivado del nivel del IPC)
 2021-07-01,ipc_total,3.0,% mensual,INDEC (derivado del nivel del IPC)
-2026-05-01,idm,4.33,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2026-05-01,idm,4.31,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-04-01,idm,6.42,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-03-01,idm,7.13,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
-2026-02-01,idm,7.1,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2026-02-01,idm,7.09,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-01-01,idm,6.66,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2025-12-01,idm,6.22,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2025-11-01,idm,5.08,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
@@ -1640,7 +1643,7 @@ fecha,indicador,valor,unidad,fuente
 2025-09-01,idm,5.91,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2025-08-01,idm,3.62,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2025-07-01,idm,2.85,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
-2025-06-01,idm,4.99,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2025-06-01,idm,4.79,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2025-05-01,idm,-1.11,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2025-04-01,idm,-11.14,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2025-03-01,idm,-12.02,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
@@ -1693,13 +1696,13 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,idc,-2.15,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2023-11-01,idc,-0.92,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2023-10-01,idc,0.09,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2026-04-01,icip,8.2,% i.a. ponderado,INDEC (servicios informática + productividad)
-2026-03-01,icip,3.57,% i.a. ponderado,INDEC (servicios informática + productividad)
-2026-02-01,icip,24.59,% i.a. ponderado,INDEC (servicios informática + productividad)
-2026-01-01,icip,8.03,% i.a. ponderado,INDEC (servicios informática + productividad)
+2026-04-01,icip,8.3,% i.a. ponderado,INDEC (servicios informática + productividad)
+2026-03-01,icip,3.54,% i.a. ponderado,INDEC (servicios informática + productividad)
+2026-02-01,icip,24.55,% i.a. ponderado,INDEC (servicios informática + productividad)
+2026-01-01,icip,7.97,% i.a. ponderado,INDEC (servicios informática + productividad)
 2025-12-01,icip,25.61,% i.a. ponderado,INDEC (servicios informática + productividad)
-2025-11-01,icip,11.4,% i.a. ponderado,INDEC (servicios informática + productividad)
-2025-10-01,icip,30.91,% i.a. ponderado,INDEC (servicios informática + productividad)
+2025-11-01,icip,11.41,% i.a. ponderado,INDEC (servicios informática + productividad)
+2025-10-01,icip,30.92,% i.a. ponderado,INDEC (servicios informática + productividad)
 2025-09-01,icip,66.27,% i.a. ponderado,INDEC (servicios informática + productividad)
 2025-08-01,icip,8.56,% i.a. ponderado,INDEC (servicios informática + productividad)
 2025-07-01,icip,13.6,% i.a. ponderado,INDEC (servicios informática + productividad)
@@ -1725,7 +1728,8 @@ fecha,indicador,valor,unidad,fuente
 2023-11-01,icip,-5.79,% i.a. ponderado,INDEC (servicios informática + productividad)
 2023-10-01,icip,-13.26,% i.a. ponderado,INDEC (servicios informática + productividad)
 2023-09-01,icip,-31.73,% i.a. ponderado,INDEC (servicios informática + productividad)
-2026-04-01,iai,-3.9,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
+2026-05-01,iai,0.31,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
+2026-04-01,iai,-3.91,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2026-03-01,iai,9.85,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2026-02-01,iai,-7.16,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2026-01-01,iai,-2.65,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
@@ -1756,7 +1760,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,iai,-19.92,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2023-11-01,iai,-8.1,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2023-10-01,iai,0.75,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
-2023-09-01,iai,-3.82,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2026-04-01,emae_ia,1.64,% i.a.,INDEC/datos.gob.ar
 2026-03-01,emae_ia,6.21,% i.a.,INDEC/datos.gob.ar
 2026-02-01,emae_ia,-1.5,% i.a.,INDEC/datos.gob.ar
@@ -1847,6 +1850,9 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,credito_privado,-29.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2024-01-01,credito_privado,-26.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2023-12-01,credito_privado,-19.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2026-07-06,base_monetaria,45569923.0,M ARS,BCRA
+2026-07-03,base_monetaria,45368949.0,M ARS,BCRA
+2026-07-02,base_monetaria,45099295.0,M ARS,BCRA
 2026-07-01,base_monetaria,46035751.0,M ARS,BCRA
 2026-06-30,base_monetaria,45711975.0,M ARS,BCRA
 2026-06-29,base_monetaria,44953461.0,M ARS,BCRA
@@ -2477,8 +2483,9 @@ fecha,indicador,valor,unidad,fuente
 2023-11-24,base_monetaria,7885973.0,M ARS,BCRA
 2023-11-23,base_monetaria,7755607.0,M ARS,BCRA
 2023-11-22,base_monetaria,7675811.0,M ARS,BCRA
-2023-11-21,base_monetaria,7696992.0,M ARS,BCRA
-2023-11-17,base_monetaria,7834198.0,M ARS,BCRA
+2026-07-07,badlar,21.0,% anual,BCRA
+2026-07-06,badlar,20.3125,% anual,BCRA
+2026-07-03,badlar,20.8125,% anual,BCRA
 2026-07-02,badlar,21.3125,% anual,BCRA
 2026-07-01,badlar,20.9375,% anual,BCRA
 2026-06-30,badlar,21.0,% anual,BCRA
@@ -3110,5 +3117,3 @@ fecha,indicador,valor,unidad,fuente
 2023-11-24,badlar,129.25,% anual,BCRA
 2023-11-23,badlar,128.5625,% anual,BCRA
 2023-11-22,badlar,129.4375,% anual,BCRA
-2023-11-21,badlar,129.8125,% anual,BCRA
-2023-11-17,badlar,129.25,% anual,BCRA

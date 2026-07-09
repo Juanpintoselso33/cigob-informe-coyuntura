@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-09T06:49:42.676856",
+  "generated_at": "2026-07-09T09:33:05.563320",
   "period": "2026-07",
   "score_global": 4.0,
   "ponderacion": {
@@ -858,19 +858,19 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
-          "puntaje_itcp": 100.0,
-          "puntaje_banda": 100.0,
+          "puntaje_itcp": 94.9,
+          "puntaje_banda": 94.9,
           "peso_efectivo": 0.075,
-          "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCP: >65 → 100 · 45–65 → 85 · 25–45 → 65 · 10–25 → 40 · ≤10 → 10 (puntaje interpolado entre anclas: 100.0; pesa 7,5% del ITCP)",
+          "aporte_score": 0.5,
+          "aporte_formula": "Anclas ITCP: >70 → 100 · 60–70 → 85 · 50–60 → 65 · 40–50 → 40 · ≤40 → 10 (puntaje interpolado entre anclas: 94.9; pesa 7,5% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 0,5/10.",
           "aporte_input_txt": null
         }
       },
       "alerta": null,
       "itcp": {
-        "valor": 68.4,
+        "valor": 68.0,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -914,7 +914,7 @@
           "alianzas_territoriales": {
             "nombre": "Alianzas territoriales",
             "peso": 0.25,
-            "puntaje": 90.9,
+            "puntaje": 89.4,
             "indicadores": {
               "iaf_transferencias": {
                 "peso": 0.4,
@@ -925,8 +925,8 @@
               },
               "alineamiento_senadores_prov": {
                 "peso": 0.3,
-                "puntaje_banda": 100.0,
-                "puntaje_aplicado": 100.0,
+                "puntaje_banda": 94.9,
+                "puntaje_aplicado": 94.9,
                 "valor": 68.3,
                 "peso_efectivo": 0.075
               },
@@ -999,15 +999,15 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 65.3,
-          "p95": 71.5,
+          "p05": 65.0,
+          "p95": 71.1,
           "tension_rango": [
             2.9,
             3.5
           ],
           "dominante": {
             "indicador": "cohesion_bloque_senado",
-            "indice_sin": 60.5
+            "indice_sin": 60.0
           },
           "n_draws": 1000,
           "hist": [
@@ -1015,46 +1015,46 @@
             0,
             0,
             0,
-            3,
-            4,
             2,
-            12,
-            14,
-            16,
-            16,
-            23,
-            27,
-            39,
-            52,
-            61,
-            48,
-            59,
-            91,
-            72,
-            67,
-            68,
-            68,
-            53,
-            57,
-            33,
-            33,
-            29,
-            18,
-            12,
-            8,
             6,
             3,
+            7,
+            19,
+            15,
+            15,
+            21,
+            31,
+            43,
+            46,
+            58,
+            56,
+            70,
+            94,
+            70,
+            66,
+            62,
+            62,
+            60,
+            55,
+            33,
+            33,
+            23,
+            19,
+            8,
+            10,
+            6,
             2,
-            2,
+            3,
+            0,
             1
           ],
-          "hist_min": 62.1,
-          "hist_max": 74.09,
+          "hist_min": 61.69,
+          "hist_max": 73.82,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": -0.362,
-          "r_diferencias": -0.272,
+          "r_niveles": -0.367,
+          "r_diferencias": -0.25,
           "n": 31,
           "pares": [
             [
@@ -1064,7 +1064,7 @@
             ],
             [
               "2024-01",
-              72.4,
+              67.7,
               85.2
             ],
             [
@@ -1124,7 +1124,7 @@
             ],
             [
               "2025-01",
-              64.4,
+              55.8,
               78.6
             ],
             [
@@ -1184,7 +1184,7 @@
             ],
             [
               "2026-01",
-              68.5,
+              62.3,
               76.8
             ],
             [
@@ -1219,7 +1219,7 @@
           "serie_label": "ITCP (reconstrucción mensual)",
           "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
           "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
-          "conclusion": "Correlación -0,362 en niveles y -0,272 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
+          "conclusion": "Correlación -0,367 en niveles y -0,25 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
@@ -1398,7 +1398,7 @@
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,6/10."
         },
         "sentimiento_digital": {
-          "valor": 6.2,
+          "valor": 5.8,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
           "fecha_dato": "2026-07-09",
@@ -1406,15 +1406,15 @@
           "detalle_txt": "El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITVC usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.",
           "en_indice": true,
           "dimension": "confianza",
-          "indice_itvc": 135.7,
+          "indice_itvc": 136.6,
           "peso_efectivo": 0.015,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 135,7 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 136,6 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
-          "aporte_lectura": "Este componente está en 135,7 contra una base de 100: su tensión equivalente daría negativa (-2,1) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
+          "aporte_lectura": "Este componente está en 136,6 contra una base de 100: su tensión equivalente daría negativa (-2,3) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
         },
         "patentamiento_motos": {
-          "valor": 69291,
+          "valor": 69298,
           "unidad": "unidades",
           "fuente": "CAFAM",
           "fecha_dato": "2026-06",
@@ -1430,7 +1430,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260709_0634.json",
+      "fuente_enriquecida": "vida_cotidiana_20260709_0928.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 91.1,
@@ -1524,7 +1524,7 @@
           "confianza": {
             "nombre": "Confianza y seguridad",
             "peso": 0.15,
-            "puntaje": 103.8,
+            "puntaje": 103.9,
             "indicadores": {
               "icc_utdt": {
                 "peso": 0.45,
@@ -1540,8 +1540,8 @@
               },
               "sentimiento_digital": {
                 "peso": 0.1,
-                "puntaje_banda": 135.7,
-                "puntaje_aplicado": 135.7,
+                "puntaje_banda": 136.6,
+                "puntaje_aplicado": 136.6,
                 "peso_efectivo": 0.015
               },
               "consumo_carne": {
@@ -1576,14 +1576,14 @@
           "n_draws": 1000,
           "hist": [
             1,
-            2,
-            5,
+            3,
+            4,
             6,
             7,
             6,
             11,
-            14,
-            24,
+            13,
+            25,
             26,
             33,
             38,
@@ -1593,15 +1593,15 @@
             58,
             55,
             41,
-            55,
-            62,
+            53,
+            64,
+            59,
             60,
-            61,
-            45,
+            47,
             49,
             48,
-            40,
-            30,
+            38,
+            32,
             31,
             22,
             14,
@@ -1612,33 +1612,33 @@
             2,
             3
           ],
-          "hist_min": 88.05,
-          "hist_max": 93.86,
+          "hist_min": 88.06,
+          "hist_max": 93.87,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": 0.466,
-          "r_diferencias": 0.318,
+          "r_niveles": 0.467,
+          "r_diferencias": 0.341,
           "n": 30,
           "pares": [
             [
               "2023-12",
-              93.8,
+              93.7,
               40.4
             ],
             [
               "2024-01",
-              90.0,
+              89.9,
               32.7
             ],
             [
               "2024-02",
-              88.7,
+              88.6,
               33.8
             ],
             [
               "2024-04",
-              89.7,
+              89.6,
               38.5
             ],
             [
@@ -1658,17 +1658,17 @@
             ],
             [
               "2024-08",
-              95.8,
+              95.9,
               43.0
             ],
             [
               "2024-09",
-              95.3,
+              95.1,
               38.8
             ],
             [
               "2024-10",
-              99.3,
+              99.1,
               39.5
             ],
             [
@@ -1678,7 +1678,7 @@
             ],
             [
               "2024-12",
-              102.3,
+              102.2,
               42.2
             ],
             [
@@ -1688,7 +1688,7 @@
             ],
             [
               "2025-02",
-              103.9,
+              103.8,
               45.3
             ],
             [
@@ -1698,17 +1698,17 @@
             ],
             [
               "2025-04",
-              100.9,
+              100.8,
               42.4
             ],
             [
               "2025-05",
-              97.9,
+              97.8,
               42.4
             ],
             [
               "2025-06",
-              99.5,
+              99.3,
               43.8
             ],
             [
@@ -1718,7 +1718,7 @@
             ],
             [
               "2025-08",
-              98.4,
+              98.3,
               37.1
             ],
             [
@@ -1733,22 +1733,22 @@
             ],
             [
               "2025-11",
-              98.0,
+              97.8,
               39.9
             ],
             [
               "2025-12",
-              95.4,
+              95.2,
               48.3
             ],
             [
               "2026-01",
-              91.8,
+              91.7,
               47.6
             ],
             [
               "2026-02",
-              92.6,
+              92.5,
               43.9
             ],
             [
@@ -1758,7 +1758,7 @@
             ],
             [
               "2026-04",
-              91.4,
+              91.3,
               38.1
             ],
             [
@@ -1778,7 +1778,7 @@
           "serie_label": "ITVC sin su componente de confianza",
           "externa_label": "ICC (confianza del consumidor, UTDT)",
           "trans_label": "ambas series rebaseadas a 100 en el primer mes",
-          "conclusion": "Correlación 0,466 en niveles y 0,318 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
+          "conclusion": "Correlación 0,467 en niveles y 0,341 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
         }
       }
     },
@@ -1919,16 +1919,16 @@
         "fal_modernizacion_laboral": {
           "valor": 2.9,
           "unidad": "Índice 0–100 (Fondo de Cese: cobertura + adopción financiera)",
-          "fuente": "CNV (registro FCI, RG 1071/2025) + MTEySS (cobertura estimada)",
+          "fuente": "CNV (registro FCI, RG 1071/2025) + Boletín Oficial (menciones)",
           "fecha_dato": "2026-07-09",
           "desactualizado": false,
           "fci_cese_registrados": 0,
-          "menciones_bo": null,
+          "menciones_bo": 21,
           "componentes": {
             "cobertura_cct": 5.0,
             "adopcion_financiera": 0.0
           },
-          "detalle_txt": "0 FCI de cese registrados en CNV · cobertura CCT ~5% (est. manual) · litigiosidad diferencial sin fuente",
+          "detalle_txt": "0 FCI de cese registrados en CNV · cobertura 5,0% (21 menciones en el BO desde dic-2023; 420 = plena) · litigiosidad diferencial sin fuente",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 10.0,
@@ -1938,7 +1938,7 @@
           "aporte_formula": "Anclas ITCG: >60 → 100 · 40–60 → 85 · 20–40 → 65 · 5–20 → 40 · ≤5 → 10 (puntaje interpolado entre anclas: 10.0; pesa 10,5% del ITCG)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 9,0/10: puntaje mínimo — este frente concentra la tensión del cinturón.",
-          "aporte_input_txt": "0 FCI de cese registrados en CNV · cobertura CCT ~5% (est. manual) · litigiosidad diferencial sin fuente"
+          "aporte_input_txt": "0 FCI de cese registrados en CNV · cobertura 5,0% (21 menciones en el BO desde dic-2023; 420 = plena) · litigiosidad diferencial sin fuente"
         },
         "litigiosidad_laboral": {
           "valor": 3.6,
@@ -2047,11 +2047,11 @@
           "desactualizado": false,
           "ejercicio": 2026,
           "componentes": {
-            "directo_musd": 527680,
+            "directo_musd": 527681,
             "intermediado_musd": 0,
             "tdps_2023": 98.3
           },
-          "detalle_txt": "Devengado 2026: $ 527.680M directo a personas (5.1.4) / $ 527.680M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
+          "detalle_txt": "Devengado 2026: $ 527.681M directo a personas (5.1.4) / $ 527.681M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 100.0,
@@ -2061,7 +2061,7 @@
           "aporte_formula": "Anclas ITCG: >95 → 100 · 85–95 → 85 · 60–85 → 65 · 30–60 → 40 · ≤30 → 10 (puntaje interpolado entre anclas: 100.0; pesa 4,0% del ITCG)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
-          "aporte_input_txt": "Devengado 2026: $ 527.680M directo a personas (5.1.4) / $ 527.680M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)"
+          "aporte_input_txt": "Devengado 2026: $ 527.681M directo a personas (5.1.4) / $ 527.681M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)"
         },
         "protocolo_antipiquetes": {
           "valor": 74.2,
@@ -2512,7 +2512,7 @@
             ],
             [
               "2026-07",
-              73.7,
+              73.8,
               2039.4
             ]
           ],
@@ -2544,7 +2544,7 @@
           "aporte_lectura": "Entra al promedio del cinturón con una tensión de 5,8/10."
         },
         "sentimiento_digital": {
-          "valor": 6.2,
+          "valor": 5.8,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
           "fecha_dato": "2026-07-09",
@@ -2639,19 +2639,19 @@
         "indice": "ITCP",
         "propio": "epu",
         "riesgo": {
-          "r": 0.09,
+          "r": 0.12,
           "n": 30
         },
         "merval": {
-          "r": 0.12,
+          "r": 0.1,
           "n": 31
         },
         "icc": {
-          "r": 0.09,
+          "r": 0.08,
           "n": 30
         },
         "epu": {
-          "r": -0.36,
+          "r": -0.37,
           "n": 31
         }
       }
@@ -2676,6 +2676,6 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,47 con la confianza del consumidor, ITCP -0,36 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde."
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,47 con la confianza del consumidor, ITCP -0,37 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde."
   }
 }
