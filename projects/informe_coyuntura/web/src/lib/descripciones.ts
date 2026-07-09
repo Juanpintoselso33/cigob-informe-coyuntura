@@ -131,7 +131,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   alineamiento_senadores_prov: {
     que: "Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición que tomó el bloque oficialista en esa misma votación, promediado entre provincias.",
-    aporta: "Mide comportamiento de voto legislativo por provincia, no la postura pública del gobernador (Poder Ejecutivo provincial) — un senador no depende del gobernador de turno. Es la señal automatizable más cercana al apoyo territorial disponible hoy.",
+    aporta: "Mide alianzas territoriales por el comportamiento real de voto en el Senado, no por declaraciones o el alineamiento partidario formal de cada gobernador con la Nación.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   veto_quorum: {
