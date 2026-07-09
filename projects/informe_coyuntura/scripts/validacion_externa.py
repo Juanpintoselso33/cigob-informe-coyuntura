@@ -259,16 +259,25 @@ def construir_serie_itcp() -> dict:
       valor por mes) y iaf_transferencias es un dato anual (dic-dic): solo
       "prenden" en los meses exactos en que hay dato — el resto del tiempo el
       motor renormaliza sin ellos, igual que ITCM/ITCG con sus faltantes.
-    - adhesion_reformas_provincial, cohesion_bloque y cohesion_bloque_senado
-      recién tienen 1-2 puntos (automatizados/scrapeados por primera vez esta
-      sesión — cohesion_bloque además bloqueado, ADR-0037): prácticamente no
-      aportan a la reconstrucción histórica, solo a los últimos 1-2 meses.
-      alineamiento_senadores_prov (reemplaza a gobernadores_alineamiento
-      desde 2026-07-08) tiene backfill anual 2023-2026 (4 puntos, no
-      mensual): "prende" solo en enero de cada año, igual que
-      iaf_transferencias. Los pesos de las dimensiones "alianzas
-      territoriales" y "cohesión interna" quedan renormalizados sobre lo
-      poco disponible durante casi toda la serie."""
+    - Desde 2026-07-09 la cobertura mejoró de verdad: cohesion_bloque
+      (Diputados, desbloqueado ADR-0040, serie mensual ADR-0041),
+      cohesion_bloque_senado y alineamiento_senadores_prov (ADR-0038/0039)
+      tienen ~29-31 puntos mensuales reales cada uno, y
+      adhesion_reformas_provincial 24 (fechas investigadas a mano,
+      ADR-0044) — las dimensiones "alianzas territoriales" y "cohesión
+      interna" ya no quedan renormalizadas sobre casi nada.
+
+    PISO DE COBERTURA (2026-07-09): los meses donde las dimensiones con
+    algún dato suman menos del 60% del peso del índice se EXCLUYEN de la
+    serie. Hallazgo real de la auditoría de hoy: el mes en curso (parcial)
+    quedaba reconstruido solo con "poder legislativo" e "imagen y voto"
+    (40% del peso, renormalizado al 100%) y daba un valor artefacto que
+    saltaba decenas de puntos según qué serie tuviera o no un punto en ese
+    mes (55,0 en la corrida anterior, 26,4 en la de hoy, para el MISMO
+    mes) — sin par EPU todavía no contaminaba la correlación, pero lo iba
+    a hacer apenas EPU publicara ese mes. El piso solo recorta esos meses
+    de cola parcial: toda la historia dic-2023→jun-2026 tiene cobertura
+    ≥75% y no se toca."""
     series = json.loads(SERIES.read_text(encoding="utf-8"))
     m = lambda k: _mensual(series.get(k) or [])
     directos = {k: m(k) for k in ITCP_SERIES}
@@ -279,8 +288,14 @@ def construir_serie_itcp() -> dict:
         valores = {k: v.get(ym) for k, v in directos.items()}
         valores["protestas_caba"] = protestas_var.get(ym)
         r = itcp.calcular_itcp(valores)
-        if r:
-            out[ym] = r["valor"]
+        if not r:
+            continue
+        cobertura = sum(d["peso"] for d in r["dimensiones"].values())
+        if cobertura < 0.6:
+            print(f"  [i] serie ITCP: {ym} excluido por cobertura insuficiente "
+                  f"({cobertura:.0%} del peso del índice con datos)")
+            continue
+        out[ym] = r["valor"]
     return out
 
 

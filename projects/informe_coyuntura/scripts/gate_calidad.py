@@ -53,6 +53,7 @@ G3_EXCEPCIONES = {
     "protestas_caba": "card = eventos acumulados 12m; serie = eventos semanales",
     "alineamiento_senadores_prov": "ambos usan ventana móvil de 90 días, pero anclada a fechas distintas: card = hoy; serie = fin de cada mes (fetch_alineamiento_senadores_prov_mensual, 2026-07-09)",
     "cohesion_bloque_senado": "mismo caso que alineamiento_senadores_prov: ambos usan ventana móvil de 90 días, pero anclada a fechas distintas: card = hoy; serie = fin de cada mes (fetch_cohesion_bloque_senado_mensual, 2026-07-09)",
+    "cohesion_bloque": "mismo caso que cohesion_bloque_senado: card = ventana 90d anclada a hoy; serie = fin de cada mes (fetch_cohesion_bloque_diputados_mensual, 2026-07-09). Omitida al construir la serie y detectada en la auditoría del mismo día: hoy pasan por 0,1 de diferencia, pero un acta dividida a mitad de mes los separa más que la tolerancia",
 }
 # tolerancia relativa por indicador (default 1% o 0,11 absoluto, redondeos)
 G3_TOLERANCIA_REL = {"cepo_mulc": 0.10}   # brecha cambiaria viva: deriva intradiaria
