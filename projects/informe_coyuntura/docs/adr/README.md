@@ -51,6 +51,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0036](0036-itcp-parametrica-politica.md) | ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB que fije los pesos) | Aceptado |
 | [0037](0037-cohesion-bloque-scraping-bloqueado-antibot.md) | `cohesion_bloque` (Diputados): scraping directo implementado y correcto, pero bloqueado en producción por detección anti-bot de HCDN | Implementado, bloqueado en producción |
 | [0038](0038-alineamiento-senadores-recalibracion-bandas.md) | `alineamiento_senadores_prov`: anclas ITCP recalibradas 65/45/25/10 → 70/60/50/40 con backfill mensual real (29 puntos feb-2024→jun-2026); el techo viejo saturaba en 28% de los meses reales | Aceptado |
+| [0039](0039-cohesion-bloque-senado-recalibracion-bandas.md) | `cohesion_bloque_senado`: anclas ITCP recalibradas 90/75/60/40 → 95/90/85/80 con backfill mensual real (29 puntos feb-2024→jun-2026); el techo viejo saturaba en 86% de los meses reales — único insumo real hoy del 20% "cohesión interna" del ITCP mientras Diputados siga bloqueado | Aceptado |
 
 ## Contexto general
 

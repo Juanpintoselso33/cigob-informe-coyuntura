@@ -75,6 +75,30 @@ def test_banda_alineamiento_senadores_prov_ya_no_satura_el_valor_live_actual():
     assert puntaje == 94.9
 
 
+def test_banda_cohesion_bloque_senado_recalibrada():
+    # Recalibración 2026-07-09 (ADR-0039) con 29 puntos mensuales reales
+    # backfilleados: anclas 95/90/85/80 (antes 90/75/60/40, copiadas sin
+    # validar de cohesion_bloque Diputados, que no tiene datos propios).
+    bandas = itcp.BANDAS_ITCP["cohesion_bloque_senado"]
+    assert itcp.puntaje_banda(95.0, bandas) == 85    # low exclusivo del tramo abierto
+    assert itcp.puntaje_banda(95.01, bandas) == 100
+    assert itcp.puntaje_banda(90.0, bandas) == 65    # high inclusivo
+    assert itcp.puntaje_banda(85.0, bandas) == 40
+    assert itcp.puntaje_banda(80.0, bandas) == 10
+    assert itcp.puntaje_banda(77.8, bandas) == 10    # mínimo real observado (ago-2025)
+
+
+def test_banda_cohesion_bloque_senado_ya_no_satura_valores_antes_planos():
+    # Bajo las anclas viejas (90,inf,100), cualquier valor >90 saturaba en
+    # 100 -- 25 de 29 meses reales caían ahí. Un valor real de esa franja
+    # (sep-2024, 92.8%) ya no se aplana en el techo con las anclas nuevas.
+    import parametrica
+    bandas = itcp.BANDAS_ITCP["cohesion_bloque_senado"]
+    puntaje = parametrica.puntaje_interpolado(92.8, bandas)
+    assert puntaje < 100.0
+    assert puntaje == 86.8
+
+
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
         "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100

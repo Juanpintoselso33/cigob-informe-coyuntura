@@ -1190,6 +1190,60 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
     }
 
 
+def fetch_cohesion_bloque_senado_actas_anio(anio: int) -> list | None:
+    """Detalle CRUDO de cohesión por acta de TODO el año dado (sin recortar
+    por ventana de días): [{"fecha": "YYYY-MM-DD", "rice": float}, ...], una
+    fila por acta con señal (votos AFIRMATIVO/NEGATIVO del bloque LLA, no
+    empatados). Mismo criterio que fetch_alineamiento_senadores_actas_anio:
+    factorizada de fetch_cohesion_bloque_senado sin modificarla (el valor
+    live sigue pidiendo solo las actas dentro de su ventana de 90 días) --
+    existe para el backfill mensual (descargar_series.fetch_cohesion_bloque_senado_mensual),
+    que necesita derivar múltiples ventanas de 90 días sin re-scrapear el
+    Senado por cada mes."""
+    session = _hcdn_votaciones_session()
+    actas = _descubrir_actas_senado(session, anio)
+    if actas is None:
+        return None
+    detalle = []
+    for acta in actas:
+        r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
+        if r is None:
+            continue
+        filas = _parsear_acta(r.text)
+        afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
+        neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
+        rice = indice_rice(afirm, neg)
+        if rice is not None:
+            detalle.append({"fecha": acta["fecha"].strftime("%Y-%m-%d"), "rice": rice})
+    return detalle
+
+
+def _agregar_cohesion_ventana(detalle: list[dict], referencia: datetime, dias_ventana: int) -> dict | None:
+    """Agrega el detalle crudo por acta (fetch_cohesion_bloque_senado_actas_anio,
+    de uno o más años) dentro de la ventana [referencia − dias_ventana,
+    referencia] y devuelve {valor, fecha_dato, n_actas}, o None si ninguna
+    acta cae en la ventana. Misma fórmula que fetch_cohesion_bloque_senado
+    (promedio simple del índice de Rice entre las actas con señal) --
+    factorizada acá para que el backfill mensual pueda recalcularla para
+    cada fin de mes sin duplicar la matemática ni volver a pedir red."""
+    limite = referencia - timedelta(days=dias_ventana)
+    indices = []
+    fecha_max = None
+    for fila in detalle:
+        fecha = datetime.strptime(fila["fecha"], "%Y-%m-%d")
+        if fecha < limite or fecha > referencia:
+            continue
+        indices.append(fila["rice"])
+        fecha_max = fecha if fecha_max is None else max(fecha_max, fecha)
+    if not indices:
+        return None
+    return {
+        "valor": round(sum(indices) / len(indices), 1),
+        "fecha_dato": fecha_max.strftime("%Y-%m-%d"),
+        "n_actas": len(indices),
+    }
+
+
 def _alineamiento_por_provincia(filas: list[dict]) -> dict:
     """Dada la lista de filas de UNA acta (nombre/bloque/provincia/voto),
     devuelve {provincia: (coincidencias, total)} solo para las provincias que

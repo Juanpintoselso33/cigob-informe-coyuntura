@@ -529,6 +529,64 @@ def fetch_cohesion_bloque_senado_serie(anio_inicio: int = 2023) -> list:
                                      anio_inicio, "cohesion_bloque_senado")
 
 
+COHESION_SENADO_ACTAS_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "cohesion_bloque_senado_actas.json"
+
+
+def _actas_cohesion_senado_cacheadas(anio_inicio: int) -> dict:
+    """Cachea el detalle CRUDO por acta (politica.fetch_cohesion_bloque_senado_actas_anio)
+    por año -- mismo criterio que _actas_alineamiento_cacheadas: años
+    CERRADOS inmutables, el año en curso se re-pide siempre.
+    {anio (str): [detalle de fetch_cohesion_bloque_senado_actas_anio]}."""
+    try:
+        cache = json.loads(COHESION_SENADO_ACTAS_STORE.read_text(encoding="utf-8-sig"))
+        if not isinstance(cache, dict):
+            cache = {}
+    except (OSError, json.JSONDecodeError):
+        cache = {}
+
+    hoy_anio = date.today().year
+    for anio in range(anio_inicio, hoy_anio + 1):
+        clave = str(anio)
+        if anio < hoy_anio and clave in cache:
+            continue   # año cerrado ya cacheado -- inmutable, no se vuelve a pedir
+        try:
+            detalle = politica.fetch_cohesion_bloque_senado_actas_anio(anio)
+        except Exception as e:
+            print(f"  [WARN] cohesion_bloque_senado_actas {anio}: {e}")
+            continue
+        if detalle is not None:
+            cache[clave] = detalle
+            COHESION_SENADO_ACTAS_STORE.write_text(
+                json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
+            print(f"  [OK] cohesion_bloque_senado_actas {anio}: {len(detalle)} actas con señal")
+        elif clave not in cache:
+            print(f"  [WARN] cohesion_bloque_senado_actas {anio}: sin dato y sin cache previo -- se omite")
+
+    return cache
+
+
+def fetch_cohesion_bloque_senado_mensual(anio_inicio: int = 2023, dias_ventana: int = 90) -> list:
+    """Serie MENSUAL de cohesion_bloque_senado: un punto por fin de mes desde
+    diciembre de `anio_inicio` hasta hoy, cada uno una ventana rolling de
+    `dias_ventana` días (mismo criterio "Continua (90d)" que el valor live
+    de la card) -- mismo patrón que fetch_alineamiento_senadores_prov_mensual
+    (ver ese docstring y ADR-0038). Reusa el detalle crudo por acta cacheado
+    por año (_actas_cohesion_senado_cacheadas) -- una sola pasada de
+    scraping por año, no una por mes. [[YYYY-MM-DD, valor]]."""
+    cache = _actas_cohesion_senado_cacheadas(anio_inicio)
+    detalle = [fila for detalle_anio in cache.values() for fila in detalle_anio]
+    if not detalle:
+        return []
+
+    puntos = []
+    for fin_mes in _fines_de_mes(date(anio_inicio, 12, 1), date.today()):
+        referencia = datetime(fin_mes.year, fin_mes.month, fin_mes.day)
+        resultado = politica._agregar_cohesion_ventana(detalle, referencia, dias_ventana)
+        if resultado:
+            puntos.append([fin_mes.strftime("%Y-%m-%d"), resultado["valor"]])
+    return puntos
+
+
 def fetch_alineamiento_senadores_prov_serie(anio_inicio: int = 2023) -> list:
     """Serie ANUAL de alineamiento_senadores_prov (reemplaza a
     gobernadores_alineamiento). Caché persistente por año, ver
@@ -715,9 +773,9 @@ POLITICA_DERIVADAS = [
     ("cohesion_bloque", "% cohesión (índice de Rice, anual)",
      "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
      fetch_cohesion_bloque_serie),
-    ("cohesion_bloque_senado", "% cohesión (índice de Rice, Senado, anual)",
+    ("cohesion_bloque_senado", "% cohesión (índice de Rice, Senado)",
      "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
-     fetch_cohesion_bloque_senado_serie),
+     fetch_cohesion_bloque_senado_mensual),
     ("adhesion_reformas_provincial", "% de provincias (sobre 24) adheridas al RIGI",
      "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
      fetch_adhesion_reformas_provincial_serie),

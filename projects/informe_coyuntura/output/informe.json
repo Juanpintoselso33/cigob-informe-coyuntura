@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-09T10:10:52.072157",
+  "generated_at": "2026-07-09T10:47:50.023839",
   "period": "2026-07",
   "score_global": 3.2,
   "ponderacion": {
@@ -1159,7 +1159,7 @@
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
           "fecha_dato": "2026-07-09",
-          "desactualizado": false
+          "desactualizado": true
         },
         "clima_electoral": {
           "valor": 5.3,
@@ -1174,5 +1174,7 @@
   },
   "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
-  "flags": []
+  "flags": [
+    "desactualizado:espiritu_epoca:sentimiento_digital"
+  ]
 }

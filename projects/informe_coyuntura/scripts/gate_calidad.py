@@ -52,6 +52,7 @@ G3_EXCEPCIONES = {
     "rigi_inversiones": "card = % de la meta; serie = monto acumulado en M USD",
     "protestas_caba": "card = eventos acumulados 12m; serie = eventos semanales",
     "alineamiento_senadores_prov": "ambos usan ventana móvil de 90 días, pero anclada a fechas distintas: card = hoy; serie = fin de cada mes (fetch_alineamiento_senadores_prov_mensual, 2026-07-09)",
+    "cohesion_bloque_senado": "mismo caso que alineamiento_senadores_prov: ambos usan ventana móvil de 90 días, pero anclada a fechas distintas: card = hoy; serie = fin de cada mes (fetch_cohesion_bloque_senado_mensual, 2026-07-09)",
 }
 # tolerancia relativa por indicador (default 1% o 0,11 absoluto, redondeos)
 G3_TOLERANCIA_REL = {"cepo_mulc": 0.10}   # brecha cambiaria viva: deriva intradiaria

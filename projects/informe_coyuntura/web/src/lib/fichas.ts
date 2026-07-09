@@ -933,7 +933,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "Es una lectura complementaria de la cohesión de bloque, no un reemplazo de la de Diputados: otra cámara, otra composición de bloque. Se lee junto a la de Diputados, nunca en su lugar.",
-      "El puntaje sube en escalones con ese porcentaje, el mismo criterio que en Diputados: más de 90% → el más alto; entre 75% y 90% → alto; entre 60% y 75% → moderado; entre 40% y 60% → bajo; menos de 40% → el más bajo. Los umbrales son provisorios: se fijaron sin serie histórica propia del indicador y se van a recalibrar cuando la haya.",
+      "El puntaje sube en escalones con ese porcentaje: más de 95% → el más alto; entre 90% y 95% → alto; entre 85% y 90% → moderado; entre 80% y 85% → bajo; 80% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante) — antes copiaban, sin validar, los de Diputados.",
       "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 35% frente al 65% del indicador de Diputados — el bloque propio en el Senado tiene muchas menos bancas, así que pesa menos y cada acta dividida mueve su propio promedio con más fuerza.",
     ],
     limitaciones: [
@@ -946,6 +946,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "El promedio de los últimos 90 días se recalcula completo desde la fuente en cada corrida; no se arrastran promedios previos.",
     cambios: [
       { fecha: "2026-07-07", cambio: "Alta como lectura complementaria de la cohesión de bloque en Diputados, con el mismo criterio de cálculo aplicado a las votaciones nominales del Senado." },
+      { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 90/75/60/40, copiados de Diputados sin validar) a partir de una serie mensual propia reconstruida (29 meses reales, feb-2024 a jun-2026): nuevos cortes en 95/90/85/80." },
     ],
   },
 

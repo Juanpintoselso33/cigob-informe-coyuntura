@@ -535,6 +535,57 @@ def test_fetch_cohesion_bloque_senado_ventana_de_backfill_ancla_al_anio_pedido(m
     assert resultado["valor"] == politica.indice_rice(1, 1)
 
 
+def test_fetch_cohesion_bloque_senado_actas_anio_devuelve_detalle_crudo_por_acta(monkeypatch):
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, anio: [
+        {"id": "1", "fecha": datetime(2026, 6, 1)},
+        {"id": "2", "fecha": datetime(2026, 6, 10)},
+    ])
+    filas_por_acta = {
+        "1": [{"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+              {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"}],
+        "2": [{"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+              {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"}],
+    }
+
+    # El "html" que devuelve _paced_get es el id de la acta (path pedido);
+    # _parsear_acta lo usa para elegir qué filas devolver -- mismo truco que
+    # el resto de los tests de detalle-por-acta de este archivo.
+    def fake_paced_get(s, base, path):
+        return MagicMock(text=path.rsplit("/", 1)[-1])
+
+    monkeypatch.setattr(politica, "_paced_get", fake_paced_get)
+    monkeypatch.setattr(politica, "_parsear_acta", lambda html: filas_por_acta[html])
+
+    detalle = politica.fetch_cohesion_bloque_senado_actas_anio(2026)
+
+    assert detalle == [
+        {"fecha": "2026-06-01", "rice": 100.0},
+        {"fecha": "2026-06-10", "rice": politica.indice_rice(1, 1)},
+    ]
+
+
+def test_fetch_cohesion_bloque_senado_actas_anio_sin_actas_devuelve_none(monkeypatch):
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, anio: None)
+    assert politica.fetch_cohesion_bloque_senado_actas_anio(2026) is None
+
+
+def test_agregar_cohesion_ventana_filtra_por_fecha_y_promedia():
+    detalle = [
+        {"fecha": "2026-01-01", "rice": 50.0},   # fuera de ventana
+        {"fecha": "2026-06-01", "rice": 100.0},
+        {"fecha": "2026-06-10", "rice": 80.0},
+    ]
+    resultado = politica._agregar_cohesion_ventana(detalle, datetime(2026, 6, 15), dias_ventana=90)
+    assert resultado == {"valor": 90.0, "fecha_dato": "2026-06-10", "n_actas": 2}
+
+
+def test_agregar_cohesion_ventana_sin_actas_en_ventana_devuelve_none():
+    detalle = [{"fecha": "2025-01-01", "rice": 90.0}]
+    assert politica._agregar_cohesion_ventana(detalle, datetime(2026, 6, 15), dias_ventana=90) is None
+
+
 # ── Alineamiento de senadores por provincia (reemplaza gobernadores_alineamiento) ──
 
 FIXTURE_ACTA_ALINEAMIENTO = """
