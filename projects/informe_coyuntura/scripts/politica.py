@@ -1692,7 +1692,7 @@ def fetch_adhesion_reformas_provincial() -> dict | None:
         return None
     return {
         "valor": round(len(provincias) / 24.0 * 100.0, 1),
-        "unidad": "% de provincias (sobre 24) adheridas al RIGI",
+        "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
         "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
         "fecha_dato": datetime.now().strftime("%Y-%m-%d"),
         "n_provincias": len(provincias),

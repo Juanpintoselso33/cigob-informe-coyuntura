@@ -908,7 +908,7 @@ POLITICA_DERIVADAS = [
     ("cohesion_bloque_senado", "% cohesión (índice de Rice, Senado)",
      "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
      fetch_cohesion_bloque_senado_mensual),
-    ("adhesion_reformas_provincial", "% de provincias (sobre 24) adheridas al RIGI",
+    ("adhesion_reformas_provincial", "% de jurisdicciones (sobre 24) adheridas al RIGI",
      "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
      fetch_adhesion_reformas_provincial_serie),
     ("movilizacion_cepa", "Índice de conflictividad social (0-100)",
