@@ -28,6 +28,7 @@ veto_quorum y comisiones_caidas capturan la eficacia legislativa de la oposició
 bloqueo en comisiones — candidatos a fusionarse en índice compuesto legislativo.
 """
 import sys
+import io
 import json
 import re
 import math
@@ -36,6 +37,7 @@ import logging
 import time
 import requests
 import urllib3
+import pdfplumber
 import gestion  # reutiliza el fetcher ACLED ya construido para protestas_caba (ADR-0017)
 import itcp
 from bs4 import BeautifulSoup
@@ -995,6 +997,13 @@ def _descubrir_actas(session: requests.Session, anio: int):
     return actas
 
 
+# DORMIDO desde 2026-07-09 (ADR-0040): _descubrir_actas/_url_acta/_parsear_acta
+# construían el listado vía la SPA de votaciones.hcdn.gob.ar, bloqueada por
+# anti-bot (ADR-0037) -- fetch_cohesion_bloque ya no los llama, usa el
+# endpoint PDF directo (_descubrir_actas_diputados_pdf y compañía, más abajo).
+# Se conservan sin borrar (mismo criterio que las bandas de
+# gobernadores_alineamiento): si el endpoint PDF alguna vez deja de andar,
+# es la referencia de qué ya se probó del lado de la SPA.
 def _url_acta(acta: dict) -> str:
     """Construye la URL de detalle de una acta. En producción el slug viene
     VACÍO en el 100% de las filas observadas (Tarea 4, HTML real archivado
@@ -1046,49 +1055,229 @@ def _parsear_acta(html: str) -> list[dict]:
     return filas
 
 
+# ── Diputados vía PDF directo (desbloquea ADR-0037, ver ADR-0040) ────────────
+#
+# votaciones.hcdn.gob.ar/pdf/acta/{id} sirve el PDF de cada acta SIN pasar
+# por la SPA bloqueada -- verificado en vivo 2026-07-09: HTTP 200 directo,
+# sin JS, sin anti-bot. El id es un contador GLOBAL secuencial (no por
+# período): actas consecutivas de una misma sesión tienen ids consecutivos
+# (confirmado: 5955-5959 son 5 votaciones de la sesión del 24-jun-2026); no
+# hay listado público de ids↔fecha, así que el rango se descubre caminando
+# el propio endpoint.
+_DIPUTADOS_ACTA_PDF_PATH = "/pdf/acta/{id}"
+_DIPUTADOS_VOTOS_VALIDOS = {"AFIRMATIVO", "NEGATIVO", "ABSTENCION", "AUSENTE"}
+_DIPUTADOS_UMBRAL_COLUMNA = 15.0   # puntos pdfplumber: separa columnas (~50-120pt) de palabras dentro de una columna (~2pt)
+
+
+def _parsear_acta_diputados_pdf(contenido: bytes) -> list[dict]:
+    """Parsea el PDF de una acta de votación nominal de Diputados (endpoint
+    directo) -> [{nombre, bloque, provincia, voto}].
+
+    El PDF no tiene una tabla con bordes que pdfplumber pueda detectar como
+    tal (extract_tables() solo encuentra el bloque de metadata/encabezado,
+    no la lista de votantes) -- se agrupan palabras por fila (mismo `top`,
+    redondeado a 1 decimal) y se cortan en columnas nuevas donde el hueco
+    horizontal entre palabras supera _DIPUTADOS_UMBRAL_COLUMNA (~2pt dentro
+    de una columna -- "GUILLERMO CESAR", "Union Civica Radical" -- vs.
+    50-120pt entre columnas, confirmado en vivo contra el acta 5959).
+
+    El título decorativo ("Honorable Cámara...") y la fila de encabezados de
+    columna vienen con cada CARÁCTER duplicado (fuente en negrita simulada
+    del generador de PDF) -- no se intenta arreglar eso, esas filas no
+    forman 4 columnas limpias y quedan afuera solas. La línea de metadata
+    repetida en cada página ("Acta Nº... Fecha:... Hora:...") SÍ arma 4
+    columnas por casualidad -- se filtra exigiendo que la última columna sea
+    un voto válido (_DIPUTADOS_VOTOS_VALIDOS), no por posición de página."""
+    filas = []
+    with pdfplumber.open(io.BytesIO(contenido)) as pdf:
+        for pagina in pdf.pages:
+            por_fila = {}
+            for palabra in pagina.extract_words():
+                clave = round(palabra["top"], 1)
+                por_fila.setdefault(clave, []).append(palabra)
+            for _, palabras in sorted(por_fila.items()):
+                palabras.sort(key=lambda p: p["x0"])
+                columnas, actual = [], [palabras[0]["text"]]
+                for anterior, palabra in zip(palabras, palabras[1:]):
+                    if palabra["x0"] - anterior["x1"] > _DIPUTADOS_UMBRAL_COLUMNA:
+                        columnas.append(" ".join(actual))
+                        actual = [palabra["text"]]
+                    else:
+                        actual.append(palabra["text"])
+                columnas.append(" ".join(actual))
+                if len(columnas) != 4:
+                    continue
+                nombre, bloque, provincia, voto = columnas
+                voto = voto.upper()
+                if voto not in _DIPUTADOS_VOTOS_VALIDOS:
+                    continue
+                filas.append({"nombre": nombre, "bloque": bloque, "provincia": provincia, "voto": voto})
+    return filas
+
+
+def _diputados_acta_fecha(contenido: bytes) -> datetime | None:
+    """Extrae la fecha ('Fecha: DD/MM/YYYY') del encabezado de metadata del
+    PDF de una acta -- esa línea extrae limpia (sin duplicado de carácter),
+    a diferencia del título decorativo."""
+    with pdfplumber.open(io.BytesIO(contenido)) as pdf:
+        texto = pdf.pages[0].extract_text() or ""
+    m = re.search(r"Fecha:\s*(\d{2}/\d{2}/\d{4})", texto)
+    if not m:
+        return None
+    try:
+        return datetime.strptime(m.group(1), "%d/%m/%Y")
+    except ValueError:
+        return None
+
+
+def _diputados_acta_pdf(session: requests.Session, id_acta: int):
+    """GET pausado del PDF de una acta puntual. None si no existe (404) o
+    el request falló -- _paced_get ya distingue eso de un 403 (reintenta) y
+    de un error de red (None)."""
+    r = _paced_get(session, HCDN_VOTACIONES_BASE, _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta))
+    return r.content if r is not None else None
+
+
+def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -> int | None:
+    """Encuentra el id de acta más reciente disponible, caminando desde
+    `desde_id` (semilla conocida: 5959 = 24-jun-2026, verificado en vivo
+    2026-07-09). Si la semilla ya no existe (quedó vieja), retrocede de a
+    50 hasta encontrar un id válido; desde ahí avanza de a uno hasta el
+    primer 404. None solo si ni retrocediendo se encuentra ningún id válido
+    (fallo real del endpoint, no "sin sesiones nuevas")."""
+    actual = desde_id
+    intentos = 0
+    while actual > 0 and _diputados_acta_pdf(session, actual) is None:
+        actual -= 50
+        intentos += 1
+        if intentos > 200:   # ~10000 ids de margen -- corta un loop patológico
+            return None
+    if actual <= 0:
+        return None
+    while _diputados_acta_pdf(session, actual + 1) is not None:
+        actual += 1
+    return actual
+
+
+def _descubrir_actas_diputados_pdf(session: requests.Session, anio: int, id_maximo: int | None = None):
+    """[{id, fecha}] de las actas de Diputados del año `anio`, caminando
+    HACIA ATRÁS desde `id_maximo` (o el descubierto en vivo si no se pasa)
+    -- no hay listado público id↔fecha para este endpoint, así que cada
+    acta se descarga igual para leer su fecha. Corta al encontrar
+    MARGEN_SALIDA actas seguidas con fecha.year < anio (los ids son
+    monotónicos por fecha, confirmado en vivo) para tolerar algún id
+    fuera de orden sin cortar de más. None solo si ni siquiera se pudo
+    determinar el id máximo (fallo real del endpoint)."""
+    MARGEN_SALIDA = 5
+    if id_maximo is None:
+        id_maximo = _diputados_acta_id_maximo(session)
+    if id_maximo is None:
+        return None
+
+    actas = []
+    fuera_de_anio_seguidas = 0
+    id_actual = id_maximo
+    while id_actual > 0 and fuera_de_anio_seguidas < MARGEN_SALIDA:
+        contenido = _diputados_acta_pdf(session, id_actual)
+        id_actual -= 1
+        if contenido is None:
+            continue   # acta inexistente (hueco en la numeración) -- no cuenta como "fuera de año"
+        fecha = _diputados_acta_fecha(contenido)
+        if fecha is None:
+            continue
+        if fecha.year != anio:
+            fuera_de_anio_seguidas += 1
+            continue
+        fuera_de_anio_seguidas = 0
+        actas.append({"id": id_actual + 1, "fecha": fecha, "_contenido": contenido})
+    return actas
+
+
+def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
+    """Detalle CRUDO de cohesión por acta de Diputados de TODO el año dado
+    (sin recortar por ventana de días), vía el endpoint PDF directo --
+    mismo shape que fetch_cohesion_bloque_senado_actas_anio (Senado):
+    [{"fecha": "YYYY-MM-DD", "rice": float}, ...], una fila por acta con
+    señal (votos del bloque LLA, no empatados). Existe para el backfill
+    mensual (descargar_series.py) con el mismo patrón que Senado."""
+    session = _hcdn_votaciones_session()
+    actas = _descubrir_actas_diputados_pdf(session, anio)
+    if actas is None:
+        return None
+    detalle = []
+    for acta in actas:
+        filas = _parsear_acta_diputados_pdf(acta["_contenido"])
+        afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
+        neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
+        rice = indice_rice(afirm, neg)
+        if rice is not None:
+            detalle.append({"fecha": acta["fecha"].strftime("%Y-%m-%d"), "rice": rice})
+    return detalle
+
+
 def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> dict | None:
     """Cohesión del bloque LLA en Diputados: índice de Rice promedio sobre
     las actas nominales divididas de los últimos `dias_ventana` días.
-    `anio`: para backfill (descargar_series.py itera años pasados).
-    Devuelve None SOLO si el scraping en sí falló (sin llegar al sitio) —
-    'sin votos en la ventana' (receso legislativo) es un resultado válido con
-    valor=None pero corrida_exitosa_en seteado, para que el guard de frescura
-    (Tarea 7) no lo confunda con un scraper roto.
-    La ventana de recencia se ancla a HOY para el año en curso, y al 31 de
-    diciembre de `anio` para años pasados (backfill) — así `dias_ventana`
-    mide 'actividad dentro de ese año', no 'actividad reciente respecto de
-    la fecha de corrida real'."""
+
+    Desde 2026-07-09 (ADR-0040) usa el endpoint PDF directo
+    (votaciones.hcdn.gob.ar/pdf/acta/{id}), NO la SPA bloqueada por
+    anti-bot (ADR-0037) que usaban _descubrir_actas/_url_acta/_parsear_acta
+    (dormidas más arriba). No hay listado id↔fecha para este endpoint, así
+    que camina hacia atrás desde el id más reciente descargando cada acta
+    -- se corta a los MARGEN_SALIDA actas seguidas fuera de la ventana en
+    vez de solo por fecha de la última, para tolerar algún id fuera de
+    orden sin perder actas más viejas que sí caen en la ventana.
+
+    `anio`/`dias_ventana=366` para backfill de un año pasado usan
+    fetch_cohesion_bloque_diputados_actas_anio + descargar_series (mismo
+    patrón que cohesion_bloque_senado) -- ESTA función solo sirve bien el
+    caso live (año en curso, ventana de 90 días); para años pasados
+    `_diputados_acta_id_maximo` seguiría ancladando al id de HOY, no al de
+    fin de `anio`, así que no se soporta acá.
+
+    Devuelve None SOLO si no se pudo determinar el id más reciente (el
+    endpoint en sí falló) — 'sin votos en la ventana' (receso legislativo)
+    es un resultado válido con valor=None pero corrida_exitosa_en seteado."""
     anio = anio or datetime.now().year
     session = _hcdn_votaciones_session()
-    actas = _descubrir_actas(session, anio)
-    if actas is None:
+    id_maximo = _diputados_acta_id_maximo(session)
+    if id_maximo is None:
         return None
 
     referencia = datetime.now() if anio == datetime.now().year else datetime(anio, 12, 31)
     limite = referencia - timedelta(days=dias_ventana)
-    indices = []
-    fecha_max = None
-    for acta in actas:
-        if acta["fecha"] < limite:
+
+    MARGEN_SALIDA = 5
+    detalle = []
+    fuera_de_ventana_seguidas = 0
+    id_actual = id_maximo
+    while id_actual > 0 and fuera_de_ventana_seguidas < MARGEN_SALIDA:
+        contenido = _diputados_acta_pdf(session, id_actual)
+        id_actual -= 1
+        if contenido is None:
+            continue   # hueco en la numeración -- no cuenta como "fuera de ventana"
+        fecha = _diputados_acta_fecha(contenido)
+        if fecha is None or fecha > referencia:
             continue
-        r = _hcdn_votaciones_get(session, _url_acta(acta))
-        if r is None:
+        if fecha < limite:
+            fuera_de_ventana_seguidas += 1
             continue
-        filas = _parsear_acta(r.text)
+        fuera_de_ventana_seguidas = 0
+        filas = _parsear_acta_diputados_pdf(contenido)
         afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
         neg = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "NEGATIVO")
         rice = indice_rice(afirm, neg)
         if rice is None:
             continue
-        indices.append(rice)
-        fecha_max = acta["fecha"] if fecha_max is None else max(fecha_max, acta["fecha"])
+        detalle.append((fecha, rice))
 
+    fecha_max = max((f for f, _ in detalle), default=None)
     return {
-        "valor": round(sum(indices) / len(indices), 1) if indices else None,
+        "valor": round(sum(r for _, r in detalle) / len(detalle), 1) if detalle else None,
         "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
         "fuente": "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
-        "n_actas": len(indices),
+        "n_actas": len(detalle),
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
         "desactualizado": False,
     }

@@ -795,9 +795,20 @@ POLITICA_DERIVADAS = [
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_eficacia_serie),
     ("veto_quorum", "% sesiones fracasadas (por período)", "datos.hcdn.gob.ar CKAN", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_comisiones_serie),
-    ("cohesion_bloque", "% cohesión (índice de Rice, anual)",
-     "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
-     fetch_cohesion_bloque_serie),
+    # cohesion_bloque (Diputados) NO se registra acá -- fetch_cohesion_bloque_serie
+    # llama politica.fetch_cohesion_bloque(anio, dias_ventana=366) por año, un
+    # patrón que dependía de _descubrir_actas (listado liviano por año, SPA
+    # bloqueada, ADR-0037). El fetch nuevo (ADR-0040, endpoint PDF) SIEMPRE
+    # ancla al id más reciente de HOY sin importar `anio`, así que ese mismo
+    # patrón camina TODA la historia desde hoy hasta encontrar el año pedido en
+    # cada una de las 4 llamadas anuales (2023..2026) -- hallazgo real
+    # 2026-07-09: el pipeline completo pasó de ~20min a ~53min por esto solo,
+    # con riesgo real de superar el timeout de 20min del job de CI. Hasta que
+    # se construya un backfill propio y eficiente para Diputados (mismo patrón
+    # que cohesion_bloque_senado/alineamiento_senadores_prov, ADR-0038/0039 --
+    # la infraestructura ya existe: fetch_cohesion_bloque_diputados_actas_anio),
+    # cohesion_bloque queda sin serie histórica en el chart web; el valor live
+    # (fetch_cohesion_bloque, ventana de 90 días) sigue andando bien.
     ("cohesion_bloque_senado", "% cohesión (índice de Rice, Senado)",
      "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
      fetch_cohesion_bloque_senado_mensual),

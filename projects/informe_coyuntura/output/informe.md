@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-09 10:47:50"
+generado: "2026-07-09 12:27:51"
 score_global: 3.2
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -49,6 +49,7 @@ schema_version: "1.2.0"
 | comisiones_caidas | 97.7 | % de proyectos | 2026-07-09 | fresco |
 | adhesion_reformas_provincial | 66.7 | % de provincias (sobre 24) adheridas al RIGI | 2026-07-09 | fresco |
 | protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
+| cohesion_bloque | 99.9 | % cohesión (índice de Rice), promedio actas divididas últimos 90 días | 2026-06-24 | fresco |
 | cohesion_bloque_senado | 99.4 | % cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días | 2026-06-04 | fresco |
 | alineamiento_senadores_prov | 68.3 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-06-04 | fresco |
 
@@ -90,12 +91,8 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 5.8 | interés 0–100 | 2026-07-09 | ⚠ cache |
+| sentimiento_digital | 6.0 | interés 0–100 | 2026-07-09 | fresco |
 | clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
 
-## Advertencias
-
-- `desactualizado:espiritu_epoca:sentimiento_digital`
-
 ---
-*Generado por CIGOB — 2026-07-09 10:47:50 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-09 12:27:51 — schema 1.2.0*

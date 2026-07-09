@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-09T10:47:50.023839",
+  "generated_at": "2026-07-09T12:27:51.826402",
   "period": "2026-07",
   "score_global": 3.2,
   "ponderacion": {
@@ -531,6 +531,20 @@
           "puntaje_banda": 23.8,
           "peso_efectivo": 0.06
         },
+        "cohesion_bloque": {
+          "valor": 99.9,
+          "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
+          "fuente": "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+          "fecha_dato": "2026-06-24",
+          "n_actas": 33,
+          "corrida_exitosa_en": "2026-07-09",
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "cohesion_interna",
+          "puntaje_itcp": 100.0,
+          "puntaje_banda": 100.0,
+          "peso_efectivo": 0.13
+        },
         "cohesion_bloque_senado": {
           "valor": 99.4,
           "unidad": "% cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días",
@@ -543,7 +557,7 @@
           "dimension": "cohesion_interna",
           "puntaje_itcp": 100.0,
           "puntaje_banda": 100.0,
-          "peso_efectivo": 0.2
+          "peso_efectivo": 0.07
         },
         "alineamiento_senadores_prov": {
           "valor": 68.3,
@@ -636,12 +650,19 @@
             "peso": 0.2,
             "puntaje": 100.0,
             "indicadores": {
+              "cohesion_bloque": {
+                "peso": 0.65,
+                "puntaje_banda": 100.0,
+                "puntaje_aplicado": 100.0,
+                "valor": 99.9,
+                "peso_efectivo": 0.13
+              },
               "cohesion_bloque_senado": {
                 "peso": 0.35,
                 "puntaje_banda": 100.0,
                 "puntaje_aplicado": 100.0,
                 "valor": 99.4,
-                "peso_efectivo": 0.2
+                "peso_efectivo": 0.07
               }
             },
             "peso_efectivo": 0.2
@@ -1155,11 +1176,11 @@
           "desactualizado": false
         },
         "sentimiento_digital": {
-          "valor": 5.8,
+          "valor": 6.0,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
           "fecha_dato": "2026-07-09",
-          "desactualizado": true
+          "desactualizado": false
         },
         "clima_electoral": {
           "valor": 5.3,
@@ -1174,7 +1195,5 @@
   },
   "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
-  "flags": [
-    "desactualizado:espiritu_epoca:sentimiento_digital"
-  ]
+  "flags": []
 }

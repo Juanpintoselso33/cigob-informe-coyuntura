@@ -913,6 +913,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón como estimación manual, a la espera de una fuente estructurada de votaciones vigente." },
       { fecha: "2026-07-07", cambio: "Deja de ser una estimación manual: pasa a calcularse en forma automática con el scraping de las votaciones nominales de Diputados. Cambia también la definición — de «porcentaje alineado con la posición oficial» (no observable de forma independiente) a «qué tan pareja o dispareja es la votación interna del bloque propio», calculada acta por acta." },
+      { fecha: "2026-07-09", cambio: "El scraping automático quedó bloqueado en producción entre el 07 y el 09 de julio (protección del portal contra acceso automatizado) — el indicador se sostuvo con el último dato calculado. Restablecido usando una vía de acceso directa del mismo portal, sin depender de la parte bloqueada." },
     ],
   },
 

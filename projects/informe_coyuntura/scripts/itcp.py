@@ -13,10 +13,14 @@ una decisión editorial explícita (ver ADR-0036): "imagen y voto" pesa
 deliberadamente MENOS que las demás porque el propio marco del proyecto
 distingue capital político de popularidad.
 
-Bandas de cohesion_bloque (Diputados, sigue bloqueado por anti-bot, ADR-0037,
-sin datos propios), adhesion_reformas_provincial y protestas_caba son
-PROVISIONALES (sin serie histórica propia todavía) — ver ADR-0036, a
-recalibrar cuando el backfill esté corriendo.
+Bandas de cohesion_bloque (Diputados), adhesion_reformas_provincial y
+protestas_caba son PROVISIONALES (sin serie histórica propia todavía) — ver
+ADR-0036, a recalibrar cuando el backfill esté corriendo. cohesion_bloque
+YA NO está bloqueado (ADR-0037 quedó superado por ADR-0040, 2026-07-09: el
+endpoint PDF directo de votaciones.hcdn.gob.ar no tiene el anti-bot de la
+SPA) — vuelve a traer datos reales, pero sus anclas (90/75/60/40, heredadas
+sin validar de la fórmula ad hoc original) todavía no se recalibraron con
+backfill propio como sí se hizo con cohesion_bloque_senado (ADR-0039).
 
 alineamiento_senadores_prov (2026-07-08) reemplaza a gobernadores_alineamiento
 en el peso de la dimensión "alianzas_territoriales" — placeholder manual

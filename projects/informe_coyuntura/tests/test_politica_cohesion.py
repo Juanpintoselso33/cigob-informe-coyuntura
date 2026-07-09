@@ -256,80 +256,115 @@ def test_parsear_acta_ignora_fila_sin_bloque():
     assert politica._parsear_acta(html) == []
 
 
-def test_fetch_cohesion_bloque_promedia_solo_actas_en_ventana(monkeypatch):
+# ── Diputados vía PDF directo (ADR-0040 — reemplaza el mock de la SPA bloqueada) ──
+
+FIXTURE_ACTA_DIPUTADOS_PDF = (Path(__file__).parent / "fixtures" / "acta_diputados_5959.pdf").read_bytes()
+
+
+def test_parsear_acta_diputados_pdf_extrae_filas_reales():
+    filas = politica._parsear_acta_diputados_pdf(FIXTURE_ACTA_DIPUTADOS_PDF)
+    # Acta real (O.D. 149, RIGI, 24-jun-2026): 131 AFIRMATIVO + 103 NEGATIVO
+    # + 16 AUSENTE + 2 ABSTENCION = 252 filas -- verificado contra el PDF real.
+    assert len(filas) == 252
+    from collections import Counter
+    assert Counter(f["voto"] for f in filas) == {
+        "AFIRMATIVO": 131, "NEGATIVO": 103, "AUSENTE": 16, "ABSTENCION": 2,
+    }
+    lla = [f for f in filas if politica.es_bloque_lla(f["bloque"])]
+    assert Counter(f["voto"] for f in lla) == {"AFIRMATIVO": 93, "AUSENTE": 1}
+    assert filas[0] == {"nombre": "AGUERO, GUILLERMO CESAR", "bloque": "Ucr - Union Civica Radical",
+                         "provincia": "Chaco", "voto": "AFIRMATIVO"}
+
+
+def test_diputados_acta_fecha_extrae_del_encabezado_real():
+    assert politica._diputados_acta_fecha(FIXTURE_ACTA_DIPUTADOS_PDF) == datetime(2026, 6, 24)
+
+
+def test_diputados_acta_id_maximo_retrocede_si_la_semilla_no_existe(monkeypatch):
+    existentes = {10, 20, 30}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: b"x" if id in existentes else None)
+    # semilla 45 no existe -- retrocede de a 50 (a -5, ya <=0) sin encontrar nada
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=45) is None
+
+
+def test_diputados_acta_id_maximo_avanza_hasta_el_primer_hueco(monkeypatch):
+    existentes = {5, 6, 7}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: b"x" if id in existentes else None)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 7
+
+
+def test_descubrir_actas_diputados_pdf_corta_al_margen_de_salida_del_anio(monkeypatch):
+    # ids 10..6 son de 2026, 5..1 son de 2025 -- pidiendo anio=2026 con
+    # MARGEN_SALIDA=5, debe cortar apenas ve 5 actas seguidas fuera de año
+    # (ids 5,4,3,2,1) y no seguir caminando.
+    fechas = {i: datetime(2026, 1, i) for i in range(6, 11)}
+    fechas.update({i: datetime(2025, 1, i) for i in range(1, 6)})
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: str(id).encode() if id in fechas else None)
+    monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: fechas[int(c.decode())])
+
+    actas = politica._descubrir_actas_diputados_pdf(MagicMock(), 2026, id_maximo=10)
+
+    assert sorted(a["id"] for a in actas) == [6, 7, 8, 9, 10]
+
+
+def test_fetch_cohesion_bloque_diputados_promedia_solo_actas_en_ventana(monkeypatch):
     hoy = datetime.now()
-    actas = [
-        {"id": "1", "slug": "a", "fecha": hoy - timedelta(days=10)},
-        {"id": "2", "slug": "b", "fecha": hoy - timedelta(days=200)},  # fuera de ventana
-    ]
+    fechas = {10: hoy - timedelta(days=5), 9: hoy - timedelta(days=200)}
+    filas_lla = [{"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+                 {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"}]
     monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
-    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: actas)
-    monkeypatch.setattr(politica, "_hcdn_votaciones_get", lambda s, p: MagicMock(text="<html></html>"))
-    monkeypatch.setattr(politica, "_parsear_acta", lambda html: [
-        {"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
-        {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"},
-    ])
+    monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: 10)
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: str(id).encode() if id in fechas else None)
+    monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: fechas[int(c.decode())])
+    monkeypatch.setattr(politica, "_parsear_acta_diputados_pdf", lambda c: filas_lla)
+
     resultado = politica.fetch_cohesion_bloque(dias_ventana=90)
+
     assert resultado["n_actas"] == 1
     assert resultado["valor"] == politica.indice_rice(1, 1)
-    assert resultado["fecha_dato"] == (hoy - timedelta(days=10)).strftime("%Y-%m-%d")
+    assert resultado["fecha_dato"] == fechas[10].strftime("%Y-%m-%d")
 
 
-def test_fetch_cohesion_bloque_sin_actas_en_ventana_pero_corrida_exitosa(monkeypatch):
+def test_fetch_cohesion_bloque_diputados_sin_actas_en_ventana_pero_corrida_exitosa(monkeypatch):
     hoy = datetime.now()
-    actas = [{"id": "1", "slug": "a", "fecha": hoy - timedelta(days=200)}]
     monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
-    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: actas)
+    monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: 5)
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: b"x" if id == 5 else None)
+    monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: hoy - timedelta(days=200))
+
     resultado = politica.fetch_cohesion_bloque(dias_ventana=90)
+
     assert resultado is not None
     assert resultado["valor"] is None
     assert resultado["n_actas"] == 0
     assert resultado["corrida_exitosa_en"] == hoy.strftime("%Y-%m-%d")
 
 
-def test_fetch_cohesion_bloque_falla_de_red_devuelve_none(monkeypatch):
+def test_fetch_cohesion_bloque_diputados_sin_id_maximo_devuelve_none(monkeypatch):
     monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
-    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: None)
+    monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: None)
     assert politica.fetch_cohesion_bloque() is None
 
 
-def test_fetch_cohesion_bloque_incluye_desactualizado_false(monkeypatch):
-    # Regresión (hallazgo P2 de revisión externa / Codex): toda corrida exitosa
-    # debe traer "desactualizado": False, igual que fetch_cohesion_bloque_senado
-    # y fetch_adhesion_reformas_provincial -- sin esta clave, main() la asigna
-    # directo a frescos["cohesion_bloque"] sin agregarla en ningún lado, y
-    # tests/test_publicar.py::test_publicar_genera_snapshot exige que todo
-    # indicador publicado tenga "desactualizado".
+def test_fetch_cohesion_bloque_diputados_incluye_desactualizado_false(monkeypatch):
+    # Regresión (hallazgo P2 de revisión externa / Codex, ya vigente antes del
+    # cambio a PDF): toda corrida exitosa debe traer "desactualizado": False.
     hoy = datetime.now()
-    actas = [{"id": "1", "slug": "a", "fecha": hoy - timedelta(days=10)}]
     monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
-    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: actas)
-    monkeypatch.setattr(politica, "_hcdn_votaciones_get", lambda s, p: MagicMock(text="<html></html>"))
-    monkeypatch.setattr(politica, "_parsear_acta", lambda html: [
+    monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: 1)
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: b"x" if id == 1 else None)
+    monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: hoy - timedelta(days=10))
+    monkeypatch.setattr(politica, "_parsear_acta_diputados_pdf", lambda c: [
         {"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
         {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"},
     ])
+
     resultado = politica.fetch_cohesion_bloque(dias_ventana=90)
+
     assert resultado["desactualizado"] is False
-
-
-def test_fetch_cohesion_bloque_ventana_de_backfill_ancla_al_anio_pedido(monkeypatch):
-    anio_backfill = datetime.now().year - 2   # un año claramente pasado, no el actual
-    acta_de_ese_anio = datetime(anio_backfill, 6, 15)   # bien adentro del año pedido
-    actas = [{"id": "1", "slug": "a", "fecha": acta_de_ese_anio}]
-    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
-    monkeypatch.setattr(politica, "_descubrir_actas", lambda s, a: actas)
-    monkeypatch.setattr(politica, "_hcdn_votaciones_get", lambda s, p: MagicMock(text="<html></html>"))
-    monkeypatch.setattr(politica, "_parsear_acta", lambda html: [
-        {"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
-        {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"},
-    ])
-    resultado = politica.fetch_cohesion_bloque(anio=anio_backfill, dias_ventana=366)
-    # Con el bug (limite anclado a HOY), esta acta habría quedado SIEMPRE fuera de ventana
-    # (un año pasado nunca puede estar a <366 días de "hoy" salvo el año en curso/anterior parcial).
-    # Con el fix (limite anclado al 31-dic de anio_backfill), esta acta SÍ debe entrar.
-    assert resultado["n_actas"] == 1
-    assert resultado["valor"] == politica.indice_rice(1, 1)
 
 
 def test_cohesion_desactualizada_corrida_exitosa_hoy():

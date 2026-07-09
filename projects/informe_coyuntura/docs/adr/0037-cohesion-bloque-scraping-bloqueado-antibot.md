@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| **Estado** | Implementado, bloqueado en producción — revisar cuando exista una vía de acceso alternativa |
+| **Estado** | **Superado por [ADR-0040](0040-cohesion-bloque-diputados-desbloqueo-pdf.md)** (2026-07-09) — el bloqueo de la SPA sigue vigente (no se intentó evadirlo), pero se encontró una vía de acceso alternativa legítima (endpoint PDF directo, sin anti-bot) que no requirió ninguna de las opciones "a evaluar" de este ADR. El diagnóstico y los hallazgos de abajo siguen siendo válidos para la SPA específicamente. |
 | **Fecha** | 2026-07-07 |
 | **Ámbito** | `scripts/politica.py` (`indice_rice`, `es_bloque_lla`, `_hcdn_votaciones_session`, `_hcdn_votaciones_get`, `_descubrir_actas`, `_url_acta`, `_parsear_acta`, `fetch_cohesion_bloque`, `_cohesion_desactualizada`) · `data/politica/manuales.json` · `scripts/descargar_series.py` |
 
