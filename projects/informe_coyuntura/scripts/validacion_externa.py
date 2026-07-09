@@ -219,7 +219,7 @@ def construir_serie_itcg() -> dict:
 
 ITCP_SERIES = [
     "votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
-    "comisiones_caidas", "iaf_transferencias", "gobernadores_alineamiento",
+    "comisiones_caidas", "iaf_transferencias", "alineamiento_senadores_prov",
     "adhesion_reformas_provincial", "cohesion_bloque", "cohesion_bloque_senado",
     "movilizacion_cepa",
 ]
@@ -259,13 +259,16 @@ def construir_serie_itcp() -> dict:
       valor por mes) y iaf_transferencias es un dato anual (dic-dic): solo
       "prenden" en los meses exactos en que hay dato — el resto del tiempo el
       motor renormaliza sin ellos, igual que ITCM/ITCG con sus faltantes.
-    - gobernadores_alineamiento, adhesion_reformas_provincial,
-      cohesion_bloque y cohesion_bloque_senado recién tienen 1-2 puntos
-      (automatizados/scrapeados por primera vez esta sesión — cohesion_bloque
-      además bloqueado, ADR-0037): prácticamente no aportan a la
-      reconstrucción histórica, solo a los últimos 1-2 meses. Los pesos de
-      las dimensiones "alianzas_territoriales" y "cohesión interna" quedan
-      renormalizados sobre lo poco disponible durante casi toda la serie."""
+    - adhesion_reformas_provincial, cohesion_bloque y cohesion_bloque_senado
+      recién tienen 1-2 puntos (automatizados/scrapeados por primera vez esta
+      sesión — cohesion_bloque además bloqueado, ADR-0037): prácticamente no
+      aportan a la reconstrucción histórica, solo a los últimos 1-2 meses.
+      alineamiento_senadores_prov (reemplaza a gobernadores_alineamiento
+      desde 2026-07-08) tiene backfill anual 2023-2026 (4 puntos, no
+      mensual): "prende" solo en enero de cada año, igual que
+      iaf_transferencias. Los pesos de las dimensiones "alianzas
+      territoriales" y "cohesión interna" quedan renormalizados sobre lo
+      poco disponible durante casi toda la serie."""
     series = json.loads(SERIES.read_text(encoding="utf-8"))
     m = lambda k: _mensual(series.get(k) or [])
     directos = {k: m(k) for k in ITCP_SERIES}
