@@ -807,7 +807,7 @@
           "aporte_formula": "Anclas ITCP: >80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤20 → 10 (puntaje interpolado entre anclas: 81.7; pesa 7,5% del ITCP)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 1,8/10.",
-          "aporte_input_txt": "16 de 24 provincias adheridas al RIGI"
+          "aporte_input_txt": "16 de 24 jurisdicciones adheridas al RIGI"
         },
         "protestas_caba": {
           "valor": 301,

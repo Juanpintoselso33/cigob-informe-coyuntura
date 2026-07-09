@@ -422,7 +422,9 @@ def _politica_input_txt(ikey, ind):
     if ind.get("detalle_txt"):                       # detalle rico (ej. protestas_caba, ACLED)
         return ind["detalle_txt"]
     if ikey == "adhesion_reformas_provincial" and ind.get("n_provincias") is not None:
-        return f"{ind['n_provincias']} de 24 provincias adheridas al RIGI"
+        # "jurisdicciones", NO "provincias": de las 24, una es CABA, que no
+        # es una provincia -- llamarlas "24 provincias" sería impreciso.
+        return f"{ind['n_provincias']} de 24 jurisdicciones adheridas al RIGI"
     if ikey == "cohesion_bloque_senado" and ind.get("n_actas") is not None:
         return f"promedio de {ind['n_actas']} actas divididas (Senado, últimos 90 días)"
     return None

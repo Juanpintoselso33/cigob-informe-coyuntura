@@ -55,12 +55,14 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       avance: typeof ind.avance_pct === "number" ? ind.avance_pct : null,
       componentes: ind.componentes ?? null,
       valorNum: typeof ind.valor === "number" ? ind.valor : null,
-      // Para indicadores que son un % sobre un total chico y contable
-      // (hoy solo adhesion_reformas_provincial, 24 provincias): mostrar
+      // Para indicadores que son un % sobre un total chico y contable (hoy
+      // solo adhesion_reformas_provincial, 24 jurisdicciones): mostrar
       // también el conteo absoluto junto al %, más legible que un
       // porcentaje sobre una base que no es 100 (66,7% de 24 se lee peor
-      // que "16 de 24").
-      valorAbsolutoTxt: typeof ind.n_provincias === "number" ? `${ind.n_provincias} de 24 provincias` : null,
+      // que "16 de 24"). "jurisdicciones", NO "provincias": de las 24, una
+      // es CABA, que no es una provincia -- llamarlas "24 provincias" acá
+      // sería impreciso y contradice la propia descripción del indicador.
+      valorAbsolutoTxt: typeof ind.n_provincias === "number" ? `${ind.n_provincias} de 24 jurisdicciones` : null,
       es0100: BARRA_0_100.has(ikey),
       unidadCorta: p.unidad ?? "",
       formula: FORMULAS[ikey]?.latex ?? null,
