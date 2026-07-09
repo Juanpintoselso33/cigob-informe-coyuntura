@@ -5,6 +5,9 @@
   "alertas_manifestacion": {
     "2026-07": 0.0
   },
+  "alineamiento_senadores_prov": {
+    "2026-07": 68.3
+  },
   "apertura_comercial": {
     "2026-07": 4.86
   },
@@ -76,10 +79,6 @@
   },
   "gasto_funcionamiento": {
     "2026-07": -24.35
-  },
-  "gobernadores_alineamiento": {
-    "2026-06": 55.0,
-    "2026-07": 55.0
   },
   "iaf_transferencias": {
     "2026-06": 7.0,

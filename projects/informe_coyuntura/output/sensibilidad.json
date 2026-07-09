@@ -9,12 +9,12 @@
   },
   "itcm": {
     "valor_publicado": 57.8,
-    "valor_recomputado": 57.7,
+    "valor_recomputado": 57.8,
     "experimentos": {
       "pesos": {
         "media": 57.8,
         "p05": 56.7,
-        "p95": 58.8,
+        "p95": 58.9,
         "desvio": 0.64
       },
       "combinado": {
@@ -25,8 +25,8 @@
       },
       "insumos": {
         "media": 57.6,
-        "p05": 56.3,
-        "p95": 58.7,
+        "p05": 56.4,
+        "p95": 58.8,
         "desvio": 0.72
       }
     },
@@ -34,15 +34,15 @@
       "recaudacion": 64.1,
       "saldo_comercial_12m": 53.5,
       "iai": 59.9,
-      "idm": 59.5,
-      "icip": 56.3,
+      "idm": 59.6,
       "rem_ipc_12m": 56.4,
+      "icip": 56.4,
       "tcrm": 59.0,
       "reservas_bcra": 58.8,
-      "ipc_total": 57.2,
       "idc": 57.2,
-      "emae_ia": 57.3,
-      "credito_privado": 57.4
+      "ipc_total": 57.3,
+      "emae_ia": 57.4,
+      "credito_privado": 57.5
     },
     "tension": {
       "base": 4.2,
@@ -53,44 +53,44 @@
     }
   },
   "itcg": {
-    "valor_publicado": 72.6,
-    "valor_recomputado": 72.6,
+    "valor_publicado": 72.8,
+    "valor_recomputado": 72.8,
     "experimentos": {
       "pesos": {
-        "media": 72.6,
-        "p05": 70.5,
-        "p95": 74.6,
-        "desvio": 1.23
+        "media": 72.8,
+        "p05": 70.7,
+        "p95": 74.8,
+        "desvio": 1.24
       },
       "combinado": {
-        "media": 72.5,
-        "p05": 70.2,
-        "p95": 74.8,
+        "media": 72.7,
+        "p05": 70.4,
+        "p95": 75.0,
         "desvio": 1.39
       },
       "insumos": {
-        "media": 72.5,
-        "p05": 71.5,
-        "p95": 73.5,
-        "desvio": 0.6
+        "media": 72.7,
+        "p05": 71.7,
+        "p95": 73.7,
+        "desvio": 0.59
       }
     },
     "leave_one_out": {
-      "fal_modernizacion_laboral": 77.6,
-      "apertura_comercial": 76.1,
-      "cepo_mulc": 69.4,
-      "reestructuracion_organismos": 74.9,
-      "litigiosidad_laboral": 70.4,
-      "privatizaciones": 71.1,
-      "reduccion_estado": 71.3,
-      "rigi_inversiones": 73.5,
-      "libertad_opcion_salud": 73.5,
-      "gasto_funcionamiento": 71.9,
-      "masa_salarial": 72.0,
-      "asistencia_directa": 72.0,
-      "protocolo_antipiquetes": 72.0,
-      "concesiones_infraestructura": 73.0,
-      "desregulacion_normativa": 72.4
+      "fal_modernizacion_laboral": 77.8,
+      "apertura_comercial": 76.4,
+      "cepo_mulc": 69.6,
+      "reestructuracion_organismos": 75.1,
+      "litigiosidad_laboral": 70.6,
+      "privatizaciones": 71.3,
+      "reduccion_estado": 71.5,
+      "rigi_inversiones": 73.7,
+      "libertad_opcion_salud": 73.7,
+      "gasto_funcionamiento": 72.1,
+      "masa_salarial": 72.2,
+      "asistencia_directa": 72.2,
+      "protocolo_antipiquetes": 72.2,
+      "concesiones_infraestructura": 73.2,
+      "desregulacion_normativa": 72.5
     },
     "tension": {
       "base": 2.7,
@@ -101,85 +101,85 @@
     }
   },
   "itvc": {
-    "valor_publicado": 90.7,
-    "valor_recomputado": 90.7,
+    "valor_publicado": 91.1,
+    "valor_recomputado": 91.2,
     "experimentos": {
       "pesos": {
-        "media": 90.7,
-        "p05": 89.0,
-        "p95": 92.4,
-        "desvio": 1.05
+        "media": 91.1,
+        "p05": 89.4,
+        "p95": 92.8,
+        "desvio": 1.04
       },
       "combinado": {
-        "media": 90.7,
-        "p05": 88.9,
-        "p95": 92.5,
+        "media": 91.1,
+        "p05": 89.4,
+        "p95": 92.9,
         "desvio": 1.07
       }
     },
     "leave_one_out": {
-      "endeudamiento_familiar": 97.3,
-      "peso_tarifas": 95.8,
-      "brecha_salario_cbt": 86.6,
-      "ipc_alimentos": 87.3,
-      "informalidad": 92.9,
-      "despacho_cemento": 91.6,
-      "icc_utdt": 91.6,
-      "mortalidad_pymes": 89.9,
-      "sentimiento_digital": 90.2,
-      "patentamiento_motos": 90.4,
-      "consumo_carne": 91.0,
-      "inseguridad": 90.8,
-      "pluriempleo": 90.7
+      "endeudamiento_familiar": 97.8,
+      "peso_tarifas": 96.3,
+      "brecha_salario_cbt": 87.1,
+      "ipc_alimentos": 87.7,
+      "informalidad": 93.4,
+      "icc_utdt": 92.0,
+      "mortalidad_pymes": 90.5,
+      "sentimiento_digital": 90.6,
+      "despacho_cemento": 91.7,
+      "patentamiento_motos": 90.9,
+      "consumo_carne": 91.4,
+      "inseguridad": 91.3,
+      "pluriempleo": 91.2
     },
     "tension": {
-      "base": 6.9,
+      "base": 6.8,
       "rango_combinado": [
-        6.5,
-        7.2
+        6.4,
+        7.1
       ]
     }
   },
   "itcp": {
-    "valor_publicado": 67.4,
-    "valor_recomputado": 67.4,
+    "valor_publicado": 68.4,
+    "valor_recomputado": 68.4,
     "experimentos": {
       "pesos": {
-        "media": 67.5,
-        "p05": 64.8,
-        "p95": 70.1,
-        "desvio": 1.59
+        "media": 68.4,
+        "p05": 65.7,
+        "p95": 71.2,
+        "desvio": 1.67
       },
       "combinado": {
-        "media": 67.6,
-        "p05": 64.7,
-        "p95": 70.5,
-        "desvio": 1.75
+        "media": 68.5,
+        "p05": 65.5,
+        "p95": 71.5,
+        "desvio": 1.8
       },
       "insumos": {
-        "media": 67.6,
-        "p05": 66.6,
-        "p95": 68.7,
-        "desvio": 0.62
+        "media": 68.5,
+        "p05": 67.6,
+        "p95": 69.5,
+        "desvio": 0.59
       }
     },
     "leave_one_out": {
-      "cohesion_bloque_senado": 59.3,
-      "veto_quorum": 62.7,
-      "movilizacion_cepa": 63.8,
-      "eficacia_legislativa": 70.9,
-      "comisiones_caidas": 70.1,
-      "protestas_caba": 69.8,
-      "votometro_ventaja_lla": 66.5,
-      "ratio_dnu": 66.6,
-      "iaf_transferencias": 66.6,
-      "adhesion_reformas_provincial": 67.9,
-      "gobernadores_alineamiento": 67.6
+      "cohesion_bloque_senado": 60.5,
+      "veto_quorum": 63.6,
+      "movilizacion_cepa": 64.7,
+      "eficacia_legislativa": 71.7,
+      "comisiones_caidas": 71.0,
+      "protestas_caba": 70.8,
+      "adhesion_reformas_provincial": 69.4,
+      "alineamiento_senadores_prov": 67.4,
+      "votometro_ventaja_lla": 67.6,
+      "ratio_dnu": 67.7,
+      "iaf_transferencias": 68.3
     },
     "tension": {
-      "base": 3.3,
+      "base": 3.2,
       "rango_combinado": [
-        3.0,
+        2.9,
         3.5
       ]
     }

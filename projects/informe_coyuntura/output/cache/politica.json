@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-08T16:44:05.668221",
-  "score": 3.3,
+  "generated_at": "2026-07-08T20:57:09.777113",
+  "score": 3.2,
   "itcp": {
-    "valor": 67.2,
+    "valor": 68.4,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -46,7 +46,7 @@
       "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
         "peso": 0.25,
-        "puntaje": 86.4,
+        "puntaje": 90.9,
         "indicadores": {
           "iaf_transferencias": {
             "peso": 0.4,
@@ -55,11 +55,11 @@
             "valor": 7.0,
             "peso_efectivo": 0.1
           },
-          "gobernadores_alineamiento": {
+          "alineamiento_senadores_prov": {
             "peso": 0.3,
-            "puntaje_banda": 85.0,
-            "puntaje_aplicado": 85.0,
-            "valor": 55.0,
+            "puntaje_banda": 100.0,
+            "puntaje_aplicado": 100.0,
+            "valor": 68.3,
             "peso_efectivo": 0.075
           },
           "adhesion_reformas_provincial": {
@@ -205,20 +205,6 @@
       "puntaje_banda": 10.0,
       "peso_efectivo": 0.09
     },
-    "gobernadores_alineamiento": {
-      "valor": 55,
-      "estado": "placeholder",
-      "unidad": "% gobernadores alineados con política nacional",
-      "fuente": "Análisis de declaraciones y adhesiones públicas — elaboración CIGOB",
-      "notas": "% de gobernadores provinciales (sobre 24) cuya posición pública es de alineamiento o apoyo al programa del gobierno nacional. Incluye acuerdos fiscales, apoyo a reformas, participación en foros oficiales.",
-      "fecha_dato": "2026-04-01",
-      "desactualizado": true,
-      "en_indice": true,
-      "dimension": "alianzas_territoriales",
-      "puntaje_itcp": 85.0,
-      "puntaje_banda": 85.0,
-      "peso_efectivo": 0.075
-    },
     "veto_quorum": {
       "valor": 0.0,
       "fracasadas_n": 0,
@@ -291,6 +277,20 @@
       "puntaje_itcp": 100.0,
       "puntaje_banda": 100.0,
       "peso_efectivo": 0.2
+    },
+    "alineamiento_senadores_prov": {
+      "valor": 68.3,
+      "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
+      "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+      "fecha_dato": "2026-06-04",
+      "n_provincias": 24,
+      "corrida_exitosa_en": "2026-07-08",
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "alianzas_territoriales",
+      "puntaje_itcp": 100.0,
+      "puntaje_banda": 100.0,
+      "peso_efectivo": 0.075
     }
   }
 }
