@@ -136,6 +136,7 @@ jobs:
                   projects/informe_coyuntura/data/gestion/concesiones_fechas.json \
                   projects/informe_coyuntura/data/vida/carne_serie.json \
                   projects/informe_coyuntura/data/politica/alineamiento_senadores_actas.json \
+                  projects/informe_coyuntura/data/politica/derrotas_legislativas_eventos.json \
                   projects/informe_coyuntura/data/politica/cohesion_bloque_senado_actas.json \
                   projects/informe_coyuntura/data/politica/cohesion_bloque_diputados_actas.json \
                   projects/informe_coyuntura/data/politica/cohesion_bloque_diputados_actas_cache.json

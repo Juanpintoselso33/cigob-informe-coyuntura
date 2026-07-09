@@ -142,6 +142,45 @@ def test_banda_comisiones_caidas_recalibrada():
     assert parametrica.puntaje_interpolado(97.7, bandas) > 10.0
 
 
+def test_banda_derrotas_legislativas():
+    # NUEVO 2026-07-09 (ADR-0046): conteo absoluto 12m de derrotas
+    # legislativas consumadas (vetos insistidos + decretos rechazados bajo la
+    # ley 26.122), menor = mejor. Anclas 1/3/8/14 calibradas contra la serie
+    # reconstruida real de 32 meses (valores observados {0,1,2,5,6,8}; las
+    # dos bandas inferiores quedan vacías a propósito como margen).
+    bandas = itcp.BANDAS_ITCP["derrotas_legislativas"]
+    assert itcp.puntaje_banda(0.0, bandas) == 100
+    assert itcp.puntaje_banda(1.0, bandas) == 100   # high inclusivo
+    assert itcp.puntaje_banda(1.01, bandas) == 85   # low exclusivo del siguiente tramo
+    assert itcp.puntaje_banda(3.0, bandas) == 85
+    assert itcp.puntaje_banda(8.0, bandas) == 65    # pico real observado (oct-2025→)
+    assert itcp.puntaje_banda(8.01, bandas) == 40
+    assert itcp.puntaje_banda(14.0, bandas) == 40
+    assert itcp.puntaje_banda(14.01, bandas) == 10
+
+
+def test_banda_derrotas_legislativas_interpolada_discrimina_la_serie_real():
+    # puntajes interpolados de los valores realmente observados en los 32
+    # meses reconstruidos: el indicador varía de verdad (no nace saturado)
+    import parametrica
+    bandas = itcp.BANDAS_ITCP["derrotas_legislativas"]
+    assert parametrica.puntaje_interpolado(0.0, bandas) == 100.0
+    assert parametrica.puntaje_interpolado(2.0, bandas) == 85.0
+    assert parametrica.puntaje_interpolado(5.0, bandas) == 67.9
+    assert parametrica.puntaje_interpolado(6.0, bandas) == 62.7
+    assert parametrica.puntaje_interpolado(8.0, bandas) == 53.6   # valor vigente jul-2026
+
+
+def test_pesos_internos_poder_legislativo_con_derrotas():
+    # Redistribución 2026-07-09 (ADR-0046): antes 25/30/20/25 sin derrotas.
+    dim = itcp.DIMENSIONES_ITCP["poder_legislativo"]
+    assert dim["indicadores"] == {
+        "ratio_dnu": 0.20, "eficacia_legislativa": 0.25, "veto_quorum": 0.15,
+        "comisiones_caidas": 0.20, "derrotas_legislativas": 0.20,
+    }
+    assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
+
+
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
         "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100
@@ -149,6 +188,7 @@ def test_calcular_itcp_pondera_dimensiones():
         "eficacia_legislativa": 60.0,        # poder_legislativo, puntaje 100
         "veto_quorum": 2.0,                  # poder_legislativo, puntaje 100
         "comisiones_caidas": 10.0,           # poder_legislativo, puntaje 100
+        "derrotas_legislativas": 0.0,        # poder_legislativo, puntaje 100
         "iaf_transferencias": 12.0,          # alianzas_territoriales, puntaje 100
         "alineamiento_senadores_prov": 70.0, # alianzas_territoriales, puntaje 100
         "adhesion_reformas_provincial": 90.0, # alianzas_territoriales, puntaje 100

@@ -96,6 +96,24 @@ BANDAS_ITCP = {
         # tramos extremos abiertos como siempre (ADR-0021).
         (-INF, 96.0, 100), (96.0, 97.0, 85), (97.0, 98.0, 65), (98.0, 99.0, 40), (99.0, INF, 10),
     ],
+    "derrotas_legislativas": [
+        # NUEVO 2026-07-09 (ADR-0046): derrotas legislativas consumadas del
+        # Ejecutivo en ventana móvil de 12 meses — vetos insistidos por ambas
+        # cámaras (art. 83 CN) + decretos DNU/delegados rechazados por al
+        # menos una cámara bajo la ley 26.122. Conteo absoluto por NORMA
+        # (cada derrota cuenta una vez, fechada en el mes en que se consuma);
+        # menor = mejor, misma polaridad que veto_quorum/comisiones_caidas.
+        # Anclas calibradas contra la serie mensual reconstruida real
+        # (32 meses, dic-2023→jul-2026, eventos verificados contra InfoLeg,
+        # actas del Senado y actas PDF de Diputados): valores observados
+        # {0×3, 1×10, 2×7, 5×1, 6×1, 8×10} → 13/7/12/0/0 por banda. Las dos
+        # bandas inferiores quedan vacías A PROPÓSITO: son el margen para
+        # escenarios de confrontación aún más intensos que el pico real de
+        # ago-oct 2025 (mismo criterio que el hueco documentado en
+        # cohesion_bloque_senado, ADR-0039). El indicador nace SIN estado
+        # provisional. Tramos extremos abiertos (ADR-0021).
+        (-INF, 1.0, 100), (1.0, 3.0, 85), (3.0, 8.0, 65), (8.0, 14.0, 40), (14.0, INF, 10),
+    ],
     "iaf_transferencias": [               # % var real YoY transferencias federales, mayor = mejor
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
     ],
@@ -217,8 +235,17 @@ DIMENSIONES_ITCP = {
     "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.30,
-        "indicadores": {"ratio_dnu": 0.25, "eficacia_legislativa": 0.30,
-                        "veto_quorum": 0.20, "comisiones_caidas": 0.25},
+        # Pesos internos redistribuidos 2026-07-09 al entrar
+        # derrotas_legislativas (antes 25/30/20/25, ADR-0046): eficacia sigue
+        # primera (la medida más abarcativa de capacidad legislativa); las
+        # derrotas entran al nivel de ratio_dnu/comisiones porque son la
+        # expresión más directa del balance de poder Ejecutivo-Congreso (con
+        # ratio_dnu forman el par "gobernar por decreto / sostener la norma
+        # propia"); veto_quorum cede más por ser la medida más estrecha (solo
+        # sesiones fracasadas de una cámara).
+        "indicadores": {"ratio_dnu": 0.20, "eficacia_legislativa": 0.25,
+                        "veto_quorum": 0.15, "comisiones_caidas": 0.20,
+                        "derrotas_legislativas": 0.20},
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",

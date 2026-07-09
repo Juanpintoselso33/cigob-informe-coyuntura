@@ -144,6 +144,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Mide el embudo legislativo: cuánto queda trabado antes de poder votarse.",
     frecuencia: "Continua (12m)", tipo: "Nivel (%)",
   },
+  derrotas_legislativas: {
+    que: "Cuántas veces en los últimos 12 meses el Congreso le volteó una norma al Poder Ejecutivo en el recinto. Cuenta dos tipos de derrota consumada: leyes vetadas por el Presidente que ambas cámaras insistieron con dos tercios de los votos (la ley se promulga pese al veto, como fija la Constitución) y decretos —de necesidad y urgencia o delegados— rechazados por al menos una cámara bajo el procedimiento de control de la ley 26.122. Cada norma cuenta una sola vez, en el mes en que la derrota se consuma.",
+    aporta: "Es la medida más directa del balance de fuerzas entre el Ejecutivo y el Congreso: cada insistencia o rechazo en el recinto es una derrota política difícil de revertir. Cero derrotas indican control de la agenda (o ausencia de confrontación); un conteo alto marca un Congreso capaz de imponerse.",
+    frecuencia: "Continua (12m)", tipo: "Conteo (12m)",
+  },
 
   // ── Vida cotidiana (el bolsillo y la calle) ─────────────────────
   brecha_salario_cbt: {

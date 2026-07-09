@@ -1,0 +1,296 @@
+{
+  "_meta": {
+    "descripcion": "Registro versionado de derrotas legislativas del Poder Ejecutivo (indicador derrotas_legislativas del ITCP): vetos insistidos por ambas cámaras (art. 83 CN) y decretos (DNU/delegados) rechazados en el recinto bajo la ley 26.122. Semilla verificada a mano contra InfoLeg, actas del Senado y actas PDF de Diputados (investigación 2026-07-09); politica.fetch_derrotas_legislativas() lo actualiza de forma incremental en cada corrida.",
+    "regla_conteo": "Cada norma cuenta UNA sola vez, fechada en el mes en que la derrota se consuma: para una ley vetada, la insistencia de la segunda cámara (proxy automático: publicación de la ley en el B.O.); para un decreto, el primer rechazo en el recinto de una cámara. El rechazo de una sola cámara no deroga el decreto (ley 26.122, art. 24) pero cuenta como derrota política consumada.",
+    "fuentes": [
+      "servicios.infoleg.gob.ar — decretos de observación total/parcial y leyes promulgadas por insistencia",
+      "senado.gob.ar/votaciones — actas con la fórmula 'en los términos de la ley 26.122' (tallies contados del detalleActa)",
+      "votaciones.hcdn.gob.ar/pdf/acta/{id} — actas de Diputados (solo semilla histórica: la detección automática de decretos usa el Senado)"
+    ],
+    "actualizado": "2026-07-09"
+  },
+  "vetos": [
+    {
+      "proyecto": "27.739",
+      "tema": "Prevención del lavado de activos (Código Penal) — observación parcial (arts. 5, 7 y 40)",
+      "decreto": "254/2024",
+      "infoleg_id_decreto": 397356,
+      "fecha_veto": "2024-03-15",
+      "tipo": "parcial",
+      "insistencia_completa": null,
+      "fuente_insistencia": null,
+      "detalle": "Sin insistencia del Congreso sobre los artículos observados; el resto de la ley se promulgó el mismo día (la ley publicada con fecha igual a la del decreto NO es una insistencia)."
+    },
+    {
+      "proyecto": "27.756",
+      "tema": "Movilidad jubilatoria (recomposición 8,1% y nueva fórmula)",
+      "decreto": "782/2024",
+      "infoleg_id_decreto": 403575,
+      "fecha_veto": "2024-09-02",
+      "tipo": "total",
+      "insistencia_completa": null,
+      "fuente_insistencia": null,
+      "detalle": "Diputados rechazó la insistencia el 2024-09-11 (no alcanzó 2/3) — veto sostenido."
+    },
+    {
+      "proyecto": "27.757",
+      "tema": "Financiamiento universitario I",
+      "decreto": "879/2024",
+      "infoleg_id_decreto": 404840,
+      "fecha_veto": "2024-10-03",
+      "tipo": "total",
+      "insistencia_completa": null,
+      "fuente_insistencia": null,
+      "detalle": "Diputados rechazó la insistencia el 2024-10-09 (no alcanzó 2/3) — veto sostenido."
+    },
+    {
+      "proyecto": "27.790",
+      "tema": "Emergencia y catástrofe Bahía Blanca / Coronel Rosales",
+      "decreto": "424/2025",
+      "infoleg_id_decreto": 414326,
+      "fecha_veto": "2025-06-24",
+      "tipo": "total",
+      "insistencia_completa": null,
+      "fuente_insistencia": null,
+      "detalle": "Senado insistió el 2025-07-10 (51-0); Diputados nunca lo trató — insistencia inconclusa, sin plazo de caducidad: puede completarse en cualquier momento (por eso se sigue verificando en cada corrida)."
+    },
+    {
+      "proyecto": "27.791",
+      "tema": "Aumento excepcional 7,2% y bono a jubilaciones",
+      "decreto": "534/2025",
+      "infoleg_id_decreto": 415879,
+      "fecha_veto": "2025-08-04",
+      "tipo": "total",
+      "insistencia_completa": null,
+      "fuente_insistencia": null,
+      "detalle": "Diputados rechazó la insistencia el 2025-08-20 (160-83, a 2 votos de los 2/3) — veto sostenido."
+    },
+    {
+      "proyecto": "27.792",
+      "tema": "Moratoria previsional (prórroga 2 años)",
+      "decreto": "534/2025",
+      "infoleg_id_decreto": 415879,
+      "fecha_veto": "2025-08-04",
+      "tipo": "total",
+      "insistencia_completa": null,
+      "fuente_insistencia": null,
+      "detalle": "La insistencia nunca se trató en el recinto — veto sostenido."
+    },
+    {
+      "proyecto": "27.793",
+      "tema": "Emergencia nacional en discapacidad",
+      "decreto": "534/2025",
+      "infoleg_id_decreto": 415879,
+      "fecha_veto": "2025-08-04",
+      "tipo": "total",
+      "insistencia_completa": "2025-09-04",
+      "fuente_insistencia": "voto de la segunda cámara (Senado 63-7, tras Diputados 172-73-2 el 2025-08-20); ley publicada en el B.O. el 2025-09-22",
+      "detalle": "INSISTIDO — primera insistencia exitosa sobre un veto presidencial desde 2003."
+    },
+    {
+      "proyecto": "27.795",
+      "tema": "Financiamiento universitario II y recomposición del salario docente",
+      "decreto": "647/2025",
+      "infoleg_id_decreto": 417371,
+      "fecha_veto": "2025-09-10",
+      "tipo": "total",
+      "insistencia_completa": "2025-10-02",
+      "fuente_insistencia": "voto de la segunda cámara (Senado, tras Diputados el 2025-09-17); ley publicada en el B.O. el 2025-10-21",
+      "detalle": "INSISTIDO."
+    },
+    {
+      "proyecto": "27.796",
+      "tema": "Emergencia sanitaria pediátrica (Garrahan) y residencias",
+      "decreto": "651/2025",
+      "infoleg_id_decreto": 417372,
+      "fecha_veto": "2025-09-11",
+      "tipo": "total",
+      "insistencia_completa": "2025-10-02",
+      "fuente_insistencia": "voto de la segunda cámara (Senado, tras Diputados el 2025-09-17); ley publicada en el B.O. el 2025-10-21",
+      "detalle": "INSISTIDO."
+    },
+    {
+      "proyecto": "27.794",
+      "tema": "Distribución automática del Fondo de ATN",
+      "decreto": "652/2025",
+      "infoleg_id_decreto": 417425,
+      "fecha_veto": "2025-09-12",
+      "tipo": "total",
+      "insistencia_completa": null,
+      "fuente_insistencia": null,
+      "detalle": "Senado insistió el 2025-09-18; Diputados nunca lo trató — insistencia inconclusa, sin plazo de caducidad: puede completarse en cualquier momento (por eso se sigue verificando en cada corrida)."
+    }
+  ],
+  "decretos": [
+    {
+      "clave": "70/2023",
+      "etiqueta": "DNU 70/2023",
+      "tipo": "DNU",
+      "tema": "Megadecreto 'Bases para la Reconstrucción de la Economía Argentina' (~300 medidas)",
+      "publicado_bo": "2023-12-21",
+      "rechazos": [
+        {
+          "fecha": "2024-03-14",
+          "camara": "Senado",
+          "acta": "2441",
+          "votos": "42 rechazo - 25 validez - 4 abst."
+        }
+      ],
+      "estado": "vigente",
+      "detalle": "Rechazado solo por el Senado; Diputados nunca lo trató, así que sigue vigente (ley 26.122, art. 24). Cuenta como una derrota (rechazo de una cámara)."
+    },
+    {
+      "clave": "656/2024",
+      "etiqueta": "DNU 656/2024",
+      "tipo": "DNU",
+      "tema": "Fondos reservados a la SIDE ($100.000 millones)",
+      "publicado_bo": "2024-07-22",
+      "rechazos": [
+        {
+          "fecha": "2024-08-21",
+          "camara": "Diputados",
+          "acta": "sesión especial 21-ago-2024 (156-52-6)"
+        },
+        {
+          "fecha": "2024-09-12",
+          "camara": "Senado",
+          "acta": "2512",
+          "votos": "49 rechazo - 11 validez - 2 abst."
+        }
+      ],
+      "estado": "derogado",
+      "detalle": "Primer DNU derogado por ambas cámaras desde 1994; InfoLeg (id 401912) lo anota como abrogado por el art. 24 de la ley 26.122."
+    },
+    {
+      "clave": "179/2025",
+      "etiqueta": "DNU 179/2025",
+      "tipo": "DNU",
+      "tema": "Acuerdo con el FMI (Facilidades Extendidas)",
+      "publicado_bo": "2025-03-11",
+      "rechazos": [],
+      "estado": "ratificado",
+      "detalle": "Aprobado por Diputados el 2025-03-19 (129-108-6): con la aprobación de una cámara queda firme bajo la ley 26.122. No es una derrota — se registra para dejar constancia del único decreto aprobado en el recinto."
+    },
+    {
+      "clave": "340/2025",
+      "etiqueta": "DNU 340/2025",
+      "tipo": "DNU",
+      "tema": "Régimen de excepción de la Marina Mercante y restricción del derecho a huelga",
+      "publicado_bo": "2025-05-21",
+      "rechazos": [
+        {
+          "fecha": "2025-08-07",
+          "camara": "Diputados",
+          "acta": "pdf/5718 (118-77-8)"
+        },
+        {
+          "fecha": "2025-08-21",
+          "camara": "Senado",
+          "acta": "2568",
+          "votos": "55 rechazo - 13 validez - 3 abst."
+        }
+      ],
+      "estado": "derogado",
+      "detalle": "Derogado por ambas cámaras (segundo DNU de la historia); statu quo restituido por DNU 628/2025."
+    },
+    {
+      "clave": "345/2025",
+      "etiqueta": "Decreto delegado 345/2025",
+      "tipo": "delegado",
+      "tema": "Disolución/fusión de organismos de Cultura",
+      "publicado_bo": "2025-05-22",
+      "rechazos": [
+        {
+          "fecha": "2025-08-07",
+          "camara": "Diputados",
+          "acta": "pdf/5716 (134-68-3)"
+        },
+        {
+          "fecha": "2025-08-21",
+          "camara": "Senado",
+          "acta": "2566",
+          "votos": "57 rechazo - 13 validez - 1 abst."
+        }
+      ],
+      "estado": "derogado",
+      "detalle": "Derogado por ambas cámaras; statu quo restituido por Decreto 627/2025."
+    },
+    {
+      "clave": "351/2025",
+      "etiqueta": "Decreto delegado 351/2025",
+      "tipo": "delegado",
+      "tema": "Banco Nacional de Datos Genéticos (descentralizado a desconcentrado)",
+      "publicado_bo": "2025-05-23",
+      "rechazos": [
+        {
+          "fecha": "2025-08-07",
+          "camara": "Diputados",
+          "acta": "pdf/5717 (133-69-2)"
+        },
+        {
+          "fecha": "2025-08-21",
+          "camara": "Senado",
+          "acta": "2567",
+          "votos": "58 rechazo - 12 validez - 1 abst."
+        }
+      ],
+      "estado": "derogado",
+      "detalle": "Derogado por ambas cámaras; statu quo restituido por Decreto 627/2025."
+    },
+    {
+      "clave": "461/2025",
+      "etiqueta": "Decreto delegado 461/2025",
+      "tipo": "delegado",
+      "tema": "Disolución de Vialidad Nacional, ANSV y CNTySV",
+      "publicado_bo": "2025-07-08",
+      "rechazos": [
+        {
+          "fecha": "2025-08-07",
+          "camara": "Diputados",
+          "acta": "pdf/5719 (138-65-2)"
+        },
+        {
+          "fecha": "2025-08-21",
+          "camara": "Senado",
+          "acta": "2569",
+          "votos": "60 rechazo - 10 validez - 1 abst."
+        }
+      ],
+      "estado": "derogado",
+      "detalle": "Derogado por ambas cámaras; statu quo restituido por Decreto 627/2025."
+    },
+    {
+      "clave": "462/2025",
+      "etiqueta": "Decreto delegado 462/2025",
+      "tipo": "delegado",
+      "tema": "Transformación de INTA, INTI, INV, INPI; disolución de ARICCAME, INAFCI, INASE",
+      "publicado_bo": "2025-07-08",
+      "rechazos": [
+        {
+          "fecha": "2025-08-07",
+          "camara": "Diputados",
+          "acta": "pdf/5715 (141-65-1)"
+        },
+        {
+          "fecha": "2025-08-21",
+          "camara": "Senado",
+          "acta": "2565",
+          "votos": "60 rechazo - 9 validez - 2 abst."
+        }
+      ],
+      "estado": "derogado",
+      "detalle": "Derogado por ambas cámaras; statu quo restituido por Decreto 627/2025."
+    }
+  ],
+  "actas_senado_vistas": {
+    "2440": "70/2023: votación anulada/rehecha (67 votos sin sentido registrado) — sin efecto",
+    "2441": "70/2023: RECHAZO (42-25) — primer rechazo en recinto del DNU 70/23",
+    "2512": "656/2024: RECHAZO (49-11) — consuma la derogación (Diputados ya lo había rechazado)",
+    "2518": "829/2019: aprobación de un decreto de la gestión anterior — fuera de alcance (dic-2023→)",
+    "2565": "462/2025: RECHAZO (60-9) — consuma la derogación",
+    "2566": "345/2025: RECHAZO (57-13) — consuma la derogación",
+    "2567": "351/2025: RECHAZO (58-12) — consuma la derogación",
+    "2568": "340/2025: RECHAZO (55-13) — consuma la derogación",
+    "2569": "461/2025: RECHAZO (60-10) — consuma la derogación"
+  }
+}

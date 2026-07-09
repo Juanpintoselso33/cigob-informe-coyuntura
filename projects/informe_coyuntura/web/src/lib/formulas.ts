@@ -193,6 +193,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{\text{proyectos con dictamen sin sanci\'on}_{\text{12 m}}}{\text{proyectos con dictamen}_{\text{12 m}}}\times 100`,
     leyenda: "Dictámenes de comisión con Orden del Día de los últimos 12 meses que nunca llegaron a sancionarse en el recinto (datos abiertos HCDN).",
   },
+  derrotas_legislativas: {
+    latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{vetos insistidos por ambas c\'amaras}+\text{decretos rechazados en el recinto}\right)`,
+    leyenda: "Conteo de derrotas consumadas del Ejecutivo: una ley vetada cuenta cuando la segunda cámara completa la insistencia con dos tercios (la ley se promulga pese al veto); un decreto cuenta cuando una cámara lo rechaza bajo el procedimiento de la ley 26.122. Cada norma cuenta una sola vez, en el mes de la derrota. Fuentes: base InfoLeg de legislación nacional y actas de votación del Senado. Menos es mejor para el Ejecutivo.",
+  },
   movilizacion_cepa: {
     latex: String.raw`\frac{\text{conflictos laborales acumulados del a\~no}}{200\;(\text{m\'aximo de referencia})}\times 100`,
     leyenda: "La cifra del informe de conflictividad de CEPA, normalizada a un índice 0–100. El máximo de referencia (200 conflictos acumulados) es una calibración propia del informe, declarada en la ficha.",
