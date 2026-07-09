@@ -817,6 +817,31 @@ def fetch_adhesion_reformas_provincial_serie() -> list:
     return puntos
 
 
+def fetch_derrotas_legislativas_mensual() -> list:
+    """Serie MENSUAL de derrotas_legislativas: para cada fin de mes desde
+    dic-2023, cuántas derrotas legislativas consumadas (vetos insistidos por
+    ambas cámaras + decretos rechazados en el recinto bajo la ley 26.122)
+    acumulan los 12 meses calendario que terminan en ese mes — la MISMA
+    ventana y conteo que la card (politica._derrotas_conteo_12m). Se deriva
+    determinísticamente del registro versionado de eventos
+    (data/politica/derrotas_legislativas_eventos.json, semilla verificada a
+    mano + detección incremental de politica.fetch_derrotas_legislativas, que
+    corre ANTES en el mismo pipeline nocturno): sin red, sin re-scrapear por
+    mes. Backfill completo dic-2023→hoy disponible desde el día uno.
+    [[YYYY-MM-DD, conteo]]."""
+    registro = politica._cargar_derrotas_registro()
+    if registro is None:
+        print(f"  [WARN] derrotas_legislativas: registro de eventos ausente o ilegible "
+              f"({politica.DERROTAS_EVENTOS_PATH}) -- serie omitida")
+        return []
+    eventos = politica._derrotas_eventos(registro)
+    puntos = []
+    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
+        total, _, _, _ = politica._derrotas_conteo_12m(eventos, fin_mes)
+        puntos.append([fin_mes.strftime("%Y-%m-%d"), total])
+    return puntos
+
+
 def fetch_cepa_movilizacion_serie(max_paginas: int = 40) -> list:
     """Backfill histórico de movilizacion_cepa: escanea hasta `max_paginas`
     páginas de centrocepa.com.ar/documentos/informes (10 informes por
@@ -896,6 +921,9 @@ POLITICA_DERIVADAS = [
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_eficacia_serie),
     ("veto_quorum", "% sesiones fracasadas (por período)", "datos.hcdn.gob.ar CKAN", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_comisiones_serie),
+    ("derrotas_legislativas", "derrotas del Ejecutivo en el recinto (12m móviles)",
+     "InfoLeg + actas del Senado — elaboración CIGOB",
+     fetch_derrotas_legislativas_mensual),
     # cohesion_bloque (Diputados) volvió a registrarse acá 2026-07-09 (ADR-0040
     # follow-up) usando fetch_cohesion_bloque_diputados_mensual, que camina la
     # historia UNA sola vez gracias a la caché permanente por acta -- ver esa

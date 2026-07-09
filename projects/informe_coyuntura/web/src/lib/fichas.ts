@@ -1127,6 +1127,52 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  derrotas_legislativas: {
+    tipo: "indicador",
+    id: "derrotas_legislativas",
+    cinturon: "politica",
+    rezago: "InfoLeg incorpora decretos y leyes el día de su publicación en el Boletín Oficial; el Senado publica sus actas de votación a los días de cada sesión. Una insistencia se registra con la publicación de la ley en el Boletín Oficial, que llega dos a tres semanas después del voto de la segunda cámara.",
+    fuente: {
+      organismo: "InfoLeg (Ministerio de Justicia) + Senado de la Nación",
+      operacion: "Base de legislación nacional (decretos de observación total o parcial y leyes promulgadas por insistencia) + actas de votación nominal del Senado (tratamientos de decretos bajo la ley 26.122)",
+      url: "https://servicios.infoleg.gob.ar",
+      acceso: "Automático: búsqueda de frase exacta en el buscador oficial de InfoLeg (tres variantes de sumario que cubren todos los vetos del período, verificadas una por una) y filtrado de las actas del Senado por la fórmula «en los términos de la ley 26.122», con recuento de votos del acta para clasificar rechazo o aprobación. El registro de eventos es versionado: cada derrota queda documentada con su fecha, acta y fuente.",
+    },
+    transformaciones: [
+      "Un veto cuenta como derrota cuando ambas cámaras insisten la ley con dos tercios de los votos y la ley se promulga pese al veto (art. 83 de la Constitución); se fecha en el mes en que la insistencia se completa.",
+      "Un decreto —de necesidad y urgencia, delegado o de promulgación parcial— cuenta como derrota cuando al menos una cámara lo rechaza en el recinto bajo la ley 26.122; se fecha en el mes del primer rechazo. El rechazo de una sola cámara no deroga el decreto (hace falta el de ambas), pero es una derrota política consumada y así se cuenta.",
+      "Cada norma cuenta una sola vez: el segundo rechazo de un decreto (el que consuma la derogación) no suma un evento nuevo.",
+      "El indicador es la suma de derrotas de los últimos 12 meses calendario (ventana móvil).",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ 1", puntaje: 100 },
+        { banda: "1 – 3", puntaje: 85 },
+        { banda: "3 – 8", puntaje: 65 },
+        { banda: "8 – 14", puntaje: 40 },
+        { banda: "> 14", puntaje: 10 },
+      ],
+      puntos: [[1, 100], [2, 85], [5.5, 65], [11, 40], [14, 10]],
+      unidadCorta: "derrotas 12m",
+    },
+    incidenciaTexto: [
+      "Los umbrales se calibraron contra la serie mensual reconstruida completa del indicador (32 meses, diciembre de 2023 en adelante, con cada evento verificado contra la fuente primaria): el período cubre desde meses sin ninguna derrota hasta el pico de ocho derrotas en doce meses tras la ola de rechazos e insistencias de agosto-octubre de 2025. Las dos bandas más bajas quedan deliberadamente por encima de todo lo observado: son el margen para escenarios de confrontación más intensos que los ya vistos.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa, las sesiones caídas por quórum y los proyectos varados en comisión. Menos derrotas = puntaje más alto.",
+    ],
+    limitaciones: [
+      "Es un indicador de eventos raros con ventana móvil: el valor puede saltar varios enteros de un mes al siguiente, tanto cuando ocurre una tanda de derrotas como —en espejo— doce meses después, cuando esa tanda sale de la ventana. El movimiento de salida es mecánico (aritmética de la ventana), no una mejora política nueva; el detalle de la card publica la composición del conteo para leerlo con contexto.",
+      "Un conteo de cero informa ausencia de derrotas, no necesariamente dominio del Ejecutivo: también puede reflejar que no hubo vetos ni tratamientos de decretos en juego en el período (menos confrontación, no más control).",
+      "La detección automática de rechazos de decretos mira las actas del Senado: un rechazo que ocurra primero en Diputados se registra recién cuando el Senado también lo vota (o con una corrección manual del registro). En el período histórico eso habría corrido la fecha de cinco decretos apenas dos semanas, sin alterar el conteo anual.",
+      "Las insistencias se fechan por la publicación de la ley en el Boletín Oficial, no por el voto de la segunda cámara: una insistencia votada sobre el fin de mes puede registrarse al mes siguiente. En los tres casos reales del período ambos hechos cayeron en el mismo mes.",
+      "Mide derrotas consumadas en el recinto; los amagues que no llegan a votarse (sesiones sin quórum para rechazar un decreto, insistencias que no reúnen los dos tercios) no cuentan — las sesiones fracasadas las captura, con otro método, el indicador de sesiones caídas por quórum.",
+    ],
+    faltantes: "Si InfoLeg o el Senado fallan, se usa el último valor en caché marcado como desactualizado; el registro versionado de eventos preserva todo el pasado, así que una caída de fuente solo retrasa la detección de eventos nuevos. Sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
+    revisiones: "Los eventos consumados son inmutables (una insistencia no se des-insiste; un rechazo no se des-vota). Los vetos con insistencia incompleta se re-verifican en cada corrida: media insistencia pendiente no caduca y puede completarse en cualquier momento — si eso ocurre, el evento nuevo se fecha en el mes en que se complete, sin reescribir el histórico.",
+    cambios: [
+      { fecha: "2026-07-09", cambio: "Incorporado al cinturón político: las insistencias de 2025 fueron las primeras que revirtieron vetos presidenciales desde 2003, y ningún otro indicador del cinturón capturaba ese pulso ni los rechazos de decretos en el recinto. Serie mensual completa desde diciembre de 2023, reconstruida evento por evento contra fuente primaria." },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════
   // Espíritu de época — promedio simple de tres indicadores, dos de ellos
   // compartidos con vida cotidiana (icc_utdt, sentimiento_digital)

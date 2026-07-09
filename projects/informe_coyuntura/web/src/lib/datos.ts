@@ -186,6 +186,7 @@ export const LABELS: Record<string, string> = {
   alineamiento_senadores_prov: "Alineamiento de senadores por provincia",
   adhesion_reformas_provincial: "Adhesión provincial al RIGI",
   comisiones_caidas: "Comisiones sin sanción",
+  derrotas_legislativas: "Derrotas legislativas del Ejecutivo",
   // vida cotidiana (claves de publicar.py)
   brecha_salario_cbt: "Salario real vs. canasta", ipc_alimentos: "Inflación de alimentos",
   endeudamiento_familiar: "Endeudamiento de consumo", peso_tarifas: "Peso de tarifas (regulados)",
@@ -247,6 +248,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   cohesion_bloque_senado: "%",
   gobernadores_alineamiento: "%", veto_quorum: "%", comisiones_caidas: "%",
   alineamiento_senadores_prov: "%", adhesion_reformas_provincial: "%",
+  derrotas_legislativas: "derrotas 12m",
   // vida cotidiana
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   peso_tarifas: "% m/m", consumo_carne: "kg/hab", informalidad: "%", mortalidad_pymes: "% m/m",
@@ -289,6 +291,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   alineamiento_senadores_prov: "% de senadores no-LLA",
   adhesion_reformas_provincial: "% de jurisdicciones adheridas (sobre 24)",
   comisiones_caidas: "% de proyectos",
+  derrotas_legislativas: "Derrotas en el recinto (vetos insistidos + decretos rechazados, acum. 12 meses)",
   // vida cotidiana
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
   endeudamiento_familiar: "Billones de pesos", peso_tarifas: "% mensual",

@@ -17,6 +17,8 @@ Indicadores:
   veto_quorum               — % sesiones frustradas por falta de quórum (datos.hcdn.gob.ar CKAN, auto)
   comisiones_caidas         — % proyectos con dictamen que no llegan al recinto (datos.hcdn.gob.ar CKAN, auto)
   adhesion_reformas_provincial — % provincias adheridas al RIGI (MAGyP, auto)
+  derrotas_legislativas     — derrotas del Ejecutivo en el recinto, 12m: vetos insistidos +
+                               decretos rechazados bajo la ley 26.122 (InfoLeg + actas Senado, auto)
   protestas_caba            — % var. eventos de protesta en CABA vs. base 2023 (ACLED, reutiliza gestion.py)
 
 Nota: ICG UTDT removido (mide confianza ciudadana, no capacidad de gobernar con actores
@@ -53,6 +55,11 @@ PROJECT_DIR    = SCRIPT_DIR.parent
 CACHE_PATH     = PROJECT_DIR / "output" / "cache" / "politica.json"
 MANUALES_PATH  = PROJECT_DIR / "data" / "politica" / "manuales.json"
 AJUSTES_ITCP_PATH = PROJECT_DIR / "data" / "politica" / "ajustes_itcp.json"
+# Registro versionado de derrotas legislativas (semilla verificada a mano +
+# detección incremental de fetch_derrotas_legislativas) — está en el git add
+# del cron (data-pipeline.yml): un caché que no se commitea no sobrevive a la
+# corrida nocturna (lección 2026-07-09, ver CLAUDE.md).
+DERROTAS_EVENTOS_PATH = PROJECT_DIR / "data" / "politica" / "derrotas_legislativas_eventos.json"
 VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
 VOTOMETRO_HTML = PROJECT_DIR.parent / "votometro" / "web" / "votometro.html"  # fallback local
 
@@ -69,6 +76,7 @@ INDICADORES_ESPERADOS = [
     "adhesion_reformas_provincial",
     "veto_quorum",
     "comisiones_caidas",
+    "derrotas_legislativas",
     "protestas_caba",
 ]
 
@@ -1700,6 +1708,430 @@ def fetch_adhesion_reformas_provincial() -> dict | None:
     }
 
 
+# ── Derrotas legislativas del Ejecutivo (vetos insistidos + decretos caídos) ──
+#
+# Indicador de conteo absoluto en ventana móvil de 12 meses (ADR-0046): cuántas
+# veces el Congreso le volteó una norma al Ejecutivo en el recinto. Dos familias
+# de eventos, las dos únicas derrotas legislativas TERMINALES del régimen:
+#   (a) veto insistido: ambas cámaras insisten con 2/3 (art. 83 CN) y la ley se
+#       promulga pese al veto — se detecta vía InfoLeg (el proyecto vetado
+#       aparece publicado como Ley con fecha POSTERIOR al decreto de veto);
+#   (b) decreto rechazado: una cámara rechaza un DNU/decreto delegado bajo la
+#       ley 26.122 — se detecta vía las actas del Senado (título con la fórmula
+#       estable "en los términos de la ley 26.122"; en esas actas se vota la
+#       VALIDEZ del decreto, así que gana NEGATIVO = rechazo, verificado contra
+#       los 8 casos reales 2024-2025).
+# Cada norma cuenta UNA vez, fechada en el mes de la derrota consumada
+# (insistencia de la segunda cámara / primer rechazo en recinto). El estado
+# vive en DERROTAS_EVENTOS_PATH (semilla histórica verificada a mano +
+# detección incremental); la serie mensual se deriva determinísticamente del
+# registro en descargar_series.fetch_derrotas_legislativas_mensual().
+#
+# Limitación declarada (ficha): la detección automática de decretos mira solo
+# el Senado — un rechazo que ocurra primero en Diputados se registra recién
+# con el voto del Senado (o a mano en el registro); en los 32 meses de la
+# semilla eso habría corrido la fecha de los 5 decretos de ago-2025 apenas
+# dos semanas, sin cambiar ningún conteo mensual publicado salvo el de agosto.
+
+_DERROTAS_FRASES_VETO = (
+    # Frases EXACTAS (entre comillas dobles: sin comillas InfoLeg hace OR de
+    # palabras y devuelve miles de resultados) que cubren las 3 variantes de
+    # sumario observadas en los 10 vetos reales dic-2023→jul-2026, con 0
+    # falsos positivos y 0 falsos negativos (verificado en vivo 2026-07-09).
+    '"observase en su totalidad"',
+    '"observa en su totalidad"',
+    '"promulgacion parcial"',
+)
+_RE_VERNORMA = re.compile(r"verNorma\.do\?(?:[^\"']*?&)?id=(\d+)")
+_RE_DECRETO_ITEM = re.compile(r"Decreto\s+(\d+)\s*/\s*(\d{4})", re.IGNORECASE)
+_RE_PROYECTO_LEY = re.compile(r"\b(2[5-9])\.?(\d{3})\b")
+# Número de decreto en el título de un acta del Senado ("… Nº 340/25 …"). El
+# prefijo Nº/N° es obligatorio a propósito: sin él matchearía el expediente
+# ("PE-44/25-DC") que acompaña al título en el listado.
+_RE_DECRETO_TITULO = re.compile(r"N[º°]\s*(\d+)\s*/\s*(\d{2,4})")
+_MESES_INFOLEG = {"ene": 1, "feb": 2, "mar": 3, "abr": 4, "may": 5, "jun": 6,
+                  "jul": 7, "ago": 8, "sep": 9, "oct": 10, "nov": 11, "dic": 12}
+_RE_FECHA_INFOLEG = re.compile(r"(\d{1,2})-([a-z]{3})-(\d{4})", re.IGNORECASE)
+_DERROTAS_PAUSA_INFOLEG = 1.5   # segundos entre POSTs a InfoLeg (mismo pacing
+                                # probado en vivo sin bloqueo, 2026-07-09)
+
+
+def _cargar_derrotas_registro() -> dict | None:
+    """Registro de eventos (DERROTAS_EVENTOS_PATH) o None si falta/ilegible.
+    utf-8-sig: tolera el BOM de editores/PowerShell de Windows (mismo criterio
+    que cargar_ajustes)."""
+    try:
+        registro = json.loads(DERROTAS_EVENTOS_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not isinstance(registro, dict) or "vetos" not in registro or "decretos" not in registro:
+        return None
+    return registro
+
+
+def _guardar_derrotas_registro(registro: dict) -> None:
+    DERROTAS_EVENTOS_PATH.write_text(
+        json.dumps(registro, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def _infoleg_abrir_sesion() -> tuple:
+    """(session, action_url) para postear a buscarNormas.do — misma mecánica
+    de sesión que fetch_ratio_dnu (GET al home para el jsessionid + action URL
+    del formulario)."""
+    session = requests.Session()
+    r = session.get(INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    m = re.search(r'action="(/infolegInternet/[^"]+)"', r.text)
+    if not m:
+        raise ValueError("No se encontró la URL del formulario InfoLeg")
+    return session, "https://servicios.infoleg.gob.ar" + m.group(1)
+
+
+def _infoleg_buscar(session: requests.Session, action_url: str, *, tipo: str,
+                    texto: str = "", numero: str = "",
+                    desde: date | None = None, hasta: date | None = None) -> str:
+    """POST a buscarNormas.do dentro de la sesión y devuelve el HTML del
+    listado. Valida que la página sea un resultado real (con conteo
+    "Encontradas: N" o el texto de cero resultados) — cualquier otra cosa es
+    un fallo de la fuente, no "0 vetos". Pacing fijo antes de cada POST."""
+    time.sleep(_DERROTAS_PAUSA_INFOLEG)
+    data = {
+        "tipoNorma": tipo,
+        "numero": numero,
+        "anioSancion": "",
+        "dependencia": "",
+        "diaPubDesde": f"{desde.day:02d}" if desde else "",
+        "mesPubDesde": f"{desde.month:02d}" if desde else "",
+        "anioPubDesde": str(desde.year) if desde else "",
+        "diaPubHasta": f"{hasta.day:02d}" if hasta else "",
+        "mesPubHasta": f"{hasta.month:02d}" if hasta else "",
+        "anioPubHasta": str(hasta.year) if hasta else "",
+        "texto": texto,
+    }
+    r = session.post(action_url, data=data, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    if "Encontradas" not in r.text and "No se encontraron normas" not in r.text:
+        raise ValueError(f"respuesta InfoLeg sin listado (tipo={tipo}, texto={texto!r}, numero={numero!r})")
+    return r.text
+
+
+def _fecha_infoleg(texto: str) -> str | None:
+    """'12-sep-2025' (formato del listado InfoLeg) → '2025-09-12'."""
+    m = _RE_FECHA_INFOLEG.search(texto)
+    if not m:
+        return None
+    mes = _MESES_INFOLEG.get(m.group(2).lower())
+    if not mes:
+        return None
+    return f"{m.group(3)}-{mes:02d}-{int(m.group(1)):02d}"
+
+
+def _parsear_listado_infoleg(html: str) -> list[dict]:
+    """Filas del listado de resultados de buscarNormas.do:
+    [{infoleg_id, norma, fecha_pub, sumario}]. Cada resultado es un <tr> con 3
+    <td> (número/dependencia con link a verNorma.do, fecha de publicación,
+    descripción); el link "Ver Norma y Textos Resaltados" repite el id en la
+    misma fila y se deduplica. Página sin resultados → [] (sin error: la
+    validación de que la página es un listado real vive en _infoleg_buscar)."""
+    soup = BeautifulSoup(html, "html.parser")
+    items, vistos = [], set()
+    for fila in soup.select("tr"):
+        link = fila.find("a", href=_RE_VERNORMA)
+        if link is None:
+            continue
+        m = _RE_VERNORMA.search(link["href"])
+        celdas = fila.find_all("td")
+        if not m or len(celdas) < 3:
+            continue
+        iid = m.group(1)
+        if iid in vistos:
+            continue
+        vistos.add(iid)
+        items.append({
+            "infoleg_id": iid,
+            "norma": re.sub(r"\s+", " ", celdas[0].get_text(" ", strip=True)),
+            "fecha_pub": _fecha_infoleg(celdas[1].get_text(" ", strip=True)),
+            "sumario": re.sub(r"\s+", " ", celdas[2].get_text(" ", strip=True)),
+        })
+    return items
+
+
+def _proyectos_de_sumario(sumario: str) -> list[str]:
+    """Números de proyecto de ley del sumario de un decreto de veto,
+    normalizados con punto de miles ("27794"/"27.794" → "27.794"). Soporta el
+    caso multiproyecto (el decreto 534/2025 vetó tres leyes de una vez)."""
+    return sorted({f"{m.group(1)}.{m.group(2)}" for m in _RE_PROYECTO_LEY.finditer(sumario)})
+
+
+def _derrotas_detectar_vetos(session, action_url, registro: dict) -> None:
+    """Detecta decretos de veto (observación total/parcial) nuevos vía las 3
+    frases exactas y los agrega al registro con insistencia_completa=null.
+    Muta `registro` en memoria; el caller persiste al final si todo salió bien."""
+    conocidos = {v["proyecto"] for v in registro["vetos"]}
+    for frase in _DERROTAS_FRASES_VETO:
+        html = _infoleg_buscar(session, action_url, tipo="2", texto=frase,
+                               desde=date(2023, 12, 1), hasta=date.today())
+        for item in _parsear_listado_infoleg(html):
+            m = _RE_DECRETO_ITEM.search(item["norma"])
+            proyectos = _proyectos_de_sumario(item["sumario"])
+            if not m or not item["fecha_pub"] or not proyectos:
+                continue
+            decreto = f"{m.group(1)}/{m.group(2)}"
+            es_parcial = "PROMULGACION PARCIAL" in item["sumario"].upper()
+            for proyecto in proyectos:
+                if proyecto in conocidos:
+                    continue
+                conocidos.add(proyecto)
+                registro["vetos"].append({
+                    "proyecto": proyecto,
+                    "tema": item["sumario"][:200],
+                    "decreto": decreto,
+                    "infoleg_id_decreto": int(item["infoleg_id"]),
+                    "fecha_veto": item["fecha_pub"],
+                    "tipo": "parcial" if es_parcial else "total",
+                    "insistencia_completa": None,
+                    "fuente_insistencia": None,
+                    "detalle": "Detectado automáticamente en InfoLeg.",
+                })
+
+
+def _derrotas_detectar_insistencias(session, action_url, registro: dict) -> None:
+    """Verifica si algún veto aún no insistido flipeó: el proyecto vetado
+    aparece publicado como Ley en InfoLeg con fecha POSTERIOR al decreto de
+    veto (una ley publicada el MISMO día es la promulgación parcial del propio
+    decreto, no una insistencia — caso real 27.739). Se re-chequean TODOS los
+    vetos sin insistencia, estén o no en ventana: media insistencia pendiente
+    (27.790/27.794) no caduca y puede completarse en cualquier momento; el
+    evento nuevo se fecharía en el mes del flip, no en el del veto. La fecha
+    usada es la de publicación en el B.O. (proxy de la insistencia de la
+    segunda cámara: rezago observado 18-19 días, mismo mes en los 3 casos
+    reales de 2025 — limitación declarada en la ficha)."""
+    for veto in registro["vetos"]:
+        if veto.get("insistencia_completa"):
+            continue   # inmutable: una insistencia consumada no se des-consuma
+        numero = veto["proyecto"].replace(".", "")
+        html = _infoleg_buscar(session, action_url, tipo="1", numero=numero)
+        for item in _parsear_listado_infoleg(html):
+            if item["fecha_pub"] and item["fecha_pub"] > veto["fecha_veto"]:
+                veto["insistencia_completa"] = item["fecha_pub"]
+                veto["fuente_insistencia"] = ("fecha de publicación en el B.O. de la ley "
+                                              "insistida (InfoLeg, detección automática)")
+                break
+
+
+def _actas_senado_26122(session: requests.Session, anio: int):
+    """[{id, fecha, titulo}] de las actas del Senado del año cuyo título
+    contiene la fórmula estable "en los términos de la ley 26.122" (presente
+    en los 8 tratamientos reales de decretos 2024-2025 y ausente en los falsos
+    amigos: mociones de orden, el decreto simple 681/25, la reforma de la
+    propia ley). Mismo POST/parseo de filas que _descubrir_actas_senado, pero
+    conservando el texto de la fila (el título de la votación).
+    None si el request falló (distinto de 'sin actas con match' = [])."""
+    r = _paced_post(session, SENADO_BASE, "/votaciones/actas",
+                    data={"busqueda_actas[anio]": str(anio)})
+    if r is None:
+        return None
+    soup = BeautifulSoup(r.text, "html.parser")
+    actas, vistos = [], set()
+    for fila in soup.select("tr"):
+        link = fila.find("a", href=_RE_DETALLE_ACTA_SENADO)
+        span_fecha = fila.find("span", style=lambda s: s and _RE_DISPLAY_NONE.search(s))
+        if link is None or span_fecha is None:
+            continue
+        m = _RE_DETALLE_ACTA_SENADO.search(link["href"])
+        if not m:
+            continue
+        id_acta = m.group(1)
+        try:
+            fecha = datetime.strptime(span_fecha.get_text(strip=True), "%Y%m%d")
+        except ValueError:
+            continue
+        if fecha.year != anio or id_acta in vistos:
+            continue
+        titulo = re.sub(r"\s+", " ", fila.get_text(" ", strip=True))
+        # el texto de la fila arrastra la fecha oculta y el bloque "Ver
+        # Expedientes ..." del listado — se recorta lo segundo para guardar
+        # un título legible (la fecha oculta no molesta al filtro)
+        titulo = titulo.split("Ver Expedientes")[0].strip()
+        if "26.122" not in titulo:
+            continue
+        vistos.add(id_acta)
+        actas.append({"id": id_acta, "fecha": fecha, "titulo": titulo})
+    return actas
+
+
+def _clave_decreto_de_titulo(titulo: str) -> str | None:
+    """'… Decreto … Nº 340/25 …' → '340/2025' (clave normalizada del registro).
+    None si el título no trae un número con prefijo Nº/N° (se avisa y se deja
+    para revisión manual — no se adivina)."""
+    m = _RE_DECRETO_TITULO.search(titulo)
+    if not m:
+        return None
+    numero, anio = m.group(1), m.group(2)
+    if len(anio) == 2:
+        anio = f"20{anio}"
+    return f"{int(numero)}/{anio}"
+
+
+def _tipo_decreto_de_titulo(titulo: str) -> str:
+    t = titulo.lower()
+    if "facultades delegadas" in t:
+        return "delegado"
+    if "necesidad" in t and "urgencia" in t:
+        return "DNU"
+    return "decreto"
+
+
+def _derrotas_detectar_decretos(registro: dict) -> None:
+    """Detecta tratamientos nuevos de decretos bajo la ley 26.122 en el recinto
+    del Senado (año en curso + anterior; las actas ya procesadas quedan en
+    actas_senado_vistas y no se re-piden). En estas actas se vota la VALIDEZ
+    del decreto: gana NEGATIVO = rechazo (dirección verificada contra los 8
+    casos reales 2024-2025; una votación sin votos A/N registrados es un acta
+    anulada y se ignora). Decretos anteriores a 2023 (la bicameral a veces
+    trata decretos viejos de gestiones anteriores, caso 829/19 en 2024) quedan
+    fuera de alcance. Muta `registro`; el caller persiste al final."""
+    session = _hcdn_votaciones_session()
+    vistos = registro.setdefault("actas_senado_vistas", {})
+    hoy = date.today()
+    for anio in sorted({hoy.year - 1, hoy.year}):
+        actas = _actas_senado_26122(session, anio)
+        if actas is None:
+            raise ValueError(f"listado de actas del Senado {anio} inaccesible")
+        for acta in actas:
+            if acta["id"] in vistos:
+                continue
+            clave = _clave_decreto_de_titulo(acta["titulo"])
+            if clave is None:
+                # no se marca vista: el aviso se repite cada corrida hasta que
+                # alguien resuelva el caso a mano (preferible a perder una
+                # derrota en silencio)
+                print(f"[WARN] {CINTURON}.derrotas_legislativas: acta {acta['id']} con fórmula "
+                      f"26.122 pero sin número de decreto legible — revisar a mano: {acta['titulo'][:140]}")
+                continue
+            if int(clave.split("/")[1]) < 2023:
+                vistos[acta["id"]] = f"{clave}: decreto de gestión anterior — fuera de alcance (dic-2023→)"
+                continue
+            r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
+            if r is None:
+                raise ValueError(f"detalleActa {acta['id']} del Senado inaccesible")
+            filas = _parsear_acta(r.text)
+            afirm = sum(1 for f in filas if f["voto"] == "AFIRMATIVO")
+            neg = sum(1 for f in filas if f["voto"] == "NEGATIVO")
+            if afirm == 0 and neg == 0:
+                vistos[acta["id"]] = f"{clave}: votación sin votos registrados (anulada/rehecha) — sin efecto"
+                continue
+            if neg > afirm:
+                entry = next((d for d in registro["decretos"] if d.get("clave") == clave), None)
+                if entry is None:
+                    entry = {"clave": clave, "etiqueta": f"Decreto {clave}",
+                             "tipo": _tipo_decreto_de_titulo(acta["titulo"]),
+                             "tema": acta["titulo"], "publicado_bo": None, "rechazos": [],
+                             "estado": "rechazado por el Senado",
+                             "detalle": "Detectado automáticamente en las actas del Senado."}
+                    registro["decretos"].append(entry)
+                fecha = acta["fecha"].strftime("%Y-%m-%d")
+                if not any(rz.get("camara") == "Senado" and rz.get("fecha") == fecha
+                           for rz in entry["rechazos"]):
+                    entry["rechazos"].append({"fecha": fecha, "camara": "Senado",
+                                              "acta": acta["id"],
+                                              "votos": f"{neg} rechazo - {afirm} validez"})
+                vistos[acta["id"]] = f"{clave}: RECHAZO ({neg}-{afirm})"
+            else:
+                vistos[acta["id"]] = f"{clave}: aprobación/validez ({afirm}-{neg}) — no es derrota"
+
+
+def _derrotas_eventos(registro: dict) -> list[dict]:
+    """Eventos de derrota consumada derivados del registro, cada norma UNA vez:
+    [{fecha, tipo: veto_insistido | decreto_rechazado, nombre}] ascendente.
+    Veto → fecha de la insistencia completa; decreto → fecha del PRIMER rechazo
+    en recinto (el segundo consuma la derogación pero es la misma derrota)."""
+    eventos = []
+    for v in registro.get("vetos", []):
+        if v.get("insistencia_completa"):
+            eventos.append({"fecha": v["insistencia_completa"], "tipo": "veto_insistido",
+                            "nombre": f"ley {v['proyecto']}"})
+    for d in registro.get("decretos", []):
+        fechas = [rz["fecha"] for rz in d.get("rechazos", []) if rz.get("fecha")]
+        if fechas:
+            eventos.append({"fecha": min(fechas), "tipo": "decreto_rechazado",
+                            "nombre": d.get("etiqueta") or d.get("clave", "?")})
+    return sorted(eventos, key=lambda e: e["fecha"])
+
+
+def _derrotas_conteo_12m(eventos: list[dict], referencia: date) -> tuple:
+    """(total, n_vetos, n_decretos, fecha_ultimo_evento) en la ventana de los
+    12 meses calendario que terminan en el mes de `referencia` (inclusive) —
+    misma ventana con la que descargar_series deriva la serie mensual, así
+    card y serie cuentan igual."""
+    meses = referencia.year * 12 + (referencia.month - 1)
+    desde = meses - 11
+    ym_desde = f"{desde // 12}-{desde % 12 + 1:02d}"
+    ym_hasta = f"{referencia.year}-{referencia.month:02d}"
+    en_ventana = [e for e in eventos if ym_desde <= e["fecha"][:7] <= ym_hasta]
+    n_vetos = sum(1 for e in en_ventana if e["tipo"] == "veto_insistido")
+    ultimo = max((e["fecha"] for e in en_ventana), default=None)
+    return len(en_ventana), n_vetos, len(en_ventana) - n_vetos, ultimo
+
+
+def _derrotas_detalle_txt(n_vetos: int, n_decretos: int) -> str:
+    """Detalle legible de la card ("valor usado" del modal, vía publicar.py)."""
+    if n_vetos == 0 and n_decretos == 0:
+        return ("sin derrotas legislativas en los últimos 12 meses "
+                "(ni vetos insistidos ni decretos rechazados en el recinto)")
+    txt_vetos = (f"{n_vetos} veto{'s' if n_vetos != 1 else ''} "
+                 f"insistido{'s' if n_vetos != 1 else ''} por el Congreso")
+    txt_decretos = (f"{n_decretos} decreto{'s' if n_decretos != 1 else ''} "
+                    f"rechazado{'s' if n_decretos != 1 else ''} en el recinto")
+    return f"{txt_vetos} + {txt_decretos} en los últimos 12 meses"
+
+
+def fetch_derrotas_legislativas() -> dict | None:
+    """
+    Derrotas legislativas del Ejecutivo en los últimos 12 meses: vetos
+    insistidos por ambas cámaras + decretos (DNU/delegados) rechazados por al
+    menos una cámara bajo la ley 26.122. Conteo absoluto, cada norma una vez,
+    fechada en el mes de la derrota consumada. Menor = mejor.
+
+    Fuentes: InfoLeg (decretos de veto + leyes promulgadas por insistencia,
+    misma sesión que fetch_ratio_dnu) y actas de votación del Senado (misma
+    mecánica de POST paginado que cohesion_bloque_senado). El estado vive en
+    DERROTAS_EVENTOS_PATH; la corrida hace detección INCREMENTAL (≈5 POSTs a
+    InfoLeg + 1-2 al Senado por corrida) y solo persiste el registro si las
+    tres etapas llegaron a las fuentes — un fallo degrada al caché del
+    snapshot anterior (desactualizado=True), sin corromper el registro.
+    """
+    try:
+        registro = _cargar_derrotas_registro()
+        if registro is None:
+            raise ValueError(f"registro de eventos ausente o ilegible ({DERROTAS_EVENTOS_PATH})")
+        session, action_url = _infoleg_abrir_sesion()
+        _derrotas_detectar_vetos(session, action_url, registro)
+        _derrotas_detectar_insistencias(session, action_url, registro)
+        _derrotas_detectar_decretos(registro)
+        registro.setdefault("_meta", {})["actualizado"] = str(date.today())
+        _guardar_derrotas_registro(registro)
+
+        eventos = _derrotas_eventos(registro)
+        total, n_vetos, n_decretos, ultimo = _derrotas_conteo_12m(eventos, date.today())
+        return {
+            "valor": total,
+            "n_vetos_12m": n_vetos,
+            "n_decretos_12m": n_decretos,
+            "n_eventos_historico": len(eventos),
+            "ultimo_evento": ultimo,
+            "detalle_txt": _derrotas_detalle_txt(n_vetos, n_decretos),
+            "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
+            "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
+            "fecha_dato": str(date.today()),
+            "desactualizado": False,
+        }
+
+    except Exception as e:
+        _warn("derrotas_legislativas", str(e))
+        return None
+
+
 UMBRAL_FRESCURA_COHESION = 10  # días SIN una corrida exitosa (no sin votos nuevos)
 
 
@@ -1800,6 +2232,7 @@ def main() -> None:
         ("veto_quorum",                   fetch_veto_quorum),
         ("comisiones_caidas",             fetch_comisiones_caidas),
         ("adhesion_reformas_provincial",  fetch_adhesion_reformas_provincial),
+        ("derrotas_legislativas",         fetch_derrotas_legislativas),
         ("protestas_caba",                fetch_protestas_caba),
     ]
 
