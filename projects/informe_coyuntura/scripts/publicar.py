@@ -610,7 +610,13 @@ def _validacion_itvc(bloque, series):
 def _validacion_itcm(bloque):
     """Anexa al bloque ITCM su validación externa: la serie mensual del índice
     (reconstruida por el estudio desde las series de componentes) contra el
-    riesgo país (EMBI) — correlación negativa esperada."""
+    riesgo país (EMBI) — correlación negativa esperada.
+
+    La conclusión distingue FRECUENCIAS (revisión 2026-07-09, disparada por la
+    matriz con Δ): la asociación ITCM↔riesgo es fuerte en niveles y en ventanas
+    semestrales pero nula en los saltos de un mes — el mercado reacciona en el
+    día y el índice publica con el rezago y el suavizado de sus fuentes. Cada
+    afirmación extra se emite solo si su número la respalda en la corrida."""
     val = _cargar_validacion()
     serie = val.get("serie_itcm") or {}
     riesgo = val.get("riesgo_pais_mensual") or {}
@@ -622,6 +628,52 @@ def _validacion_itcm(bloque):
     difs = corr.get("primeras diferencias (ITCM vs riesgo)") or {}
     coma = lambda x: str(x).replace(".", ",")
     r_niv, r_dif = niveles.get("r"), difs.get("r")
+
+    def _r(a, b):
+        ms = sorted(set(a) & set(b))
+        if len(ms) < 12:
+            return None
+        return round(statistics.correlation([a[m] for m in ms], [b[m] for m in ms]), 2)
+
+    def _difs_k(s, k=1):
+        ms = sorted(s)
+        return {ms[i]: s[ms[i]] - s[ms[i - k]] for i in range(k, len(ms))}
+
+    def _adelantada(s, k=1):
+        ms = sorted(s)
+        return {ms[i + k]: s[ms[i]] for i in range(len(ms) - k)}
+
+    # cambios acumulados en 6 meses (la media frecuencia) y salto del riesgo
+    # de un mes contra el salto del índice del mes SIGUIENTE (¿quién lidera?)
+    r_6m = _r(_difs_k(serie, 6), _difs_k(riesgo, 6))
+    r_lidera_mercado = _r(_difs_k(serie), _adelantada(_difs_k(riesgo)))
+    serie_itcp = val.get("serie_itcp") or {}
+    r_riesgo_politica = _r(_difs_k(serie_itcp), _difs_k(riesgo)) if serie_itcp else None
+
+    if r_dif is not None and r_dif <= -0.3:
+        conclusion = (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
+                      f"a mes: el signo negativo es exactamente el esperado — cuando el índice "
+                      f"sube (la macro afloja), el mercado cobra menos por el riesgo argentino.")
+    else:
+        partes = [(f"Correlación {coma(r_niv)} en niveles pero {coma(r_dif)} en los saltos de un "
+                   f"mes: la asociación con el mercado es real aunque de baja frecuencia — el "
+                   f"índice y el riesgo país cuentan la misma historia de fondo, no el mismo mes.")]
+        if r_6m is not None and r_6m <= -0.4:
+            partes.append(f"Medida en ventanas de seis meses, la relación reaparece con fuerza "
+                          f"({coma(r_6m)}).")
+        if r_lidera_mercado is not None and r_lidera_mercado <= -0.3:
+            partes.append(f"El orden temporal es el esperable: el mercado reacciona en el día y "
+                          f"el ITCM — que publica con el rezago y el suavizado de sus fuentes — "
+                          f"registra el mismo movimiento un mes después ({coma(r_lidera_mercado)} "
+                          f"entre el salto del riesgo de un mes y el del índice del mes "
+                          f"siguiente): el índice describe la macro, no anticipa al mercado.")
+        if r_riesgo_politica is not None and r_riesgo_politica <= -0.15:
+            partes.append("Los sobresaltos de un mes del riesgo país, además, suelen ser "
+                          "políticos antes que macroeconómicos: co-mueven con la reconstrucción "
+                          "del cinturón político, no con ésta (ver la matriz de validación "
+                          "cruzada).")
+        conclusion = " ".join(partes)
+
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
         "pares": [[m, serie[m], riesgo[m]] for m in comunes],
@@ -637,11 +689,7 @@ def _validacion_itcm(bloque):
         "serie_label": "ITCM (reconstrucción mensual)",
         "externa_label": "riesgo país (EMBI, invertido)",
         "trans_label": "series normalizadas al rango del período; el riesgo país se muestra invertido",
-        "conclusion": (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
-                       f"a mes: el signo negativo es exactamente el esperado — cuando el índice "
-                       f"sube (la macro afloja), el mercado cobra menos por el riesgo argentino. "
-                       f"En el gráfico el riesgo país se muestra invertido para leer el "
-                       f"co-movimiento en la misma dirección."),
+        "conclusion": conclusion,
     }
 
 

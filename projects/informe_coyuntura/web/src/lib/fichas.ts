@@ -203,6 +203,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     validacion: [
       "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra un ancla externa que nadie del proyecto controla: el riesgo país (EMBI). Se espera correlación negativa — a menor tensión macroeconómica, menor riesgo percibido por el mercado.",
+      "La asociación es de tendencia y de media frecuencia, no de mes a mes: reaparece con fuerza en ventanas semestrales pero es nula en los saltos de un mes, porque el mercado reacciona en el día mientras el índice publica con el rezago y el suavizado de sus fuentes — el ITCM describe la macro, no anticipa al mercado. Los sobresaltos mensuales del riesgo país suelen ser políticos antes que macroeconómicos. Ambas correlaciones (niveles y cambios mes a mes) se publican en la página del cinturón.",
       "La matriz de validación cruzada verifica además el poder discriminante: que cada índice del informe correlacione más con su ancla propia que con las ajenas (que el ITCM mida lo macroeconómico y no «el humor general»). La matriz completa, con sus límites declarados, se publica en la página del cinturón.",
     ],
     comunicacion: [
