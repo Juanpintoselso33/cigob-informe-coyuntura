@@ -4,7 +4,7 @@
 |---|---|
 | Script | `scripts/politica.py` (+ `scripts/itcp.py`) |
 | Cache | `output/cache/politica.json` |
-| Datos de carga manual | `data/politica/manuales.json` (solo `gobernadores_alineamiento`) |
+| Datos de carga manual | Ninguno hoy — `data/politica/manuales.json` queda como registro histórico de `gobernadores_alineamiento` (retirado del ITCP el 8 de julio de 2026, ver Encuadre); el archivo ya no se lee en `main()` |
 | Peso en score global | 30% |
 | Barbarismo de riesgo | político — confundir popularidad con poder |
 
@@ -14,6 +14,8 @@ Fuente conceptual: Carlos Matus, *Política, Planificación y Gobierno*. Mide el
 
 **Nota metodológica (mayo 2026):** el ICG UTDT fue removido del cinturón. Mide confianza ciudadana en el gobierno —dimensión que corresponde al cinturón vida cotidiana / Votómetro—, no la capacidad de gobernar con actores políticos. Según Luis Babino (reunión 12 de mayo de 2026): "yo no lo veo" en este cinturón. Fue reemplazado por `ratio_dnu`, indicador de debilidad legislativa y exposición judicial.
 
+**Nota metodológica (8 de julio de 2026):** `gobernadores_alineamiento` —carga manual, placeholder de 55% congelado desde abril de 2026, sin fuente estructurada automatizable pese a dos rondas de investigación (ver detalle más abajo)— fue retirado del peso del ITCP y reemplazado por `alineamiento_senadores_prov`, indicador automático: % de votos de senadores no-LLA que coincide con la posición del bloque LLA en el Senado, promediado por provincia. Caveat honesto: mide comportamiento de voto de **senadores**, no la postura pública del gobernador (Poder Ejecutivo provincial) —un senador no depende del gobernador de turno—; es la mejor señal automatizable disponible hoy, no una medición directa del alineamiento del Ejecutivo provincial. `gobernadores_alineamiento` queda documentado en este archivo como intento manual descartado: su definición de banda se conserva en `itcp.py::BANDAS_ITCP` como referencia histórica inerte (mismo criterio que se aplicó a `cohesion_bloque` mientras está bloqueado), pero ya no pondera en el ITCP ni se lee desde `manuales.json`.
+
 El cinturón se puntúa con el **ITCP** (Índice de Tensión del Cinturón Político), escala 0–100 donde 0 = máxima tensión (mínimo capital político) y 100 = mínima tensión (máximo capital político). La tensión 0–10 que consume el resto del informe se deriva como `(100 − ITCP) / 10`, así los umbrales globales no cambian: 0–3 estable, 4–6 en tensión, 7–10 tensionado. Reemplaza al promedio simple de los 9 indicadores previamente activos (mismo tipo de cambio metodológico que ITCM/ITCG/ITVC ya atravesaron en sus cinturones).
 
 A diferencia de ITCM/ITCG/ITVC, **no hay un documento CIGOB que fije los pesos** de las cinco dimensiones —ya descriptas en este documento desde mayo 2026, pero nunca ponderadas—. Los pesos de abajo son una decisión editorial explícita, consistente con la lectura ya presente en el propio proyecto: "capital político según Matus: capacidad de gobernar, NO popularidad". Por eso "imagen y voto" pesa deliberadamente menos que las demás dimensiones.
@@ -22,7 +24,7 @@ A diferencia de ITCM/ITCG/ITVC, **no hay un documento CIGOB que fije los pesos**
 
 ```
 ITCP = 0,30 × (0,25×P_ratio_dnu + 0,30×P_eficacia_legislativa + 0,20×P_veto_quorum + 0,25×P_comisiones_caidas)
-     + 0,25 × (0,40×P_iaf_transferencias + 0,30×P_gobernadores_alineamiento + 0,30×P_adhesion_reformas_provincial)
+     + 0,25 × (0,40×P_iaf_transferencias + 0,30×P_alineamiento_senadores_prov + 0,30×P_adhesion_reformas_provincial)
      + 0,20 × (0,65×P_cohesion_bloque + 0,35×P_cohesion_bloque_senado)
      + 0,15 × (0,60×P_movilizacion_cepa + 0,40×P_protestas_caba)
      + 0,10 × P_votometro_ventaja_lla
@@ -31,7 +33,7 @@ ITCP = 0,30 × (0,25×P_ratio_dnu + 0,30×P_eficacia_legislativa + 0,20×P_veto_
 | Dimensión | Peso | Indicadores (peso interno) |
 |---|---|---|
 | Poder legislativo | 30% | `ratio_dnu` (25%) + `eficacia_legislativa` (30%) + `veto_quorum` (20%) + `comisiones_caidas` (25%) |
-| Alianzas territoriales | 25% | `iaf_transferencias` (40%) + `gobernadores_alineamiento` (30%) + `adhesion_reformas_provincial` (30%) |
+| Alianzas territoriales | 25% | `iaf_transferencias` (40%) + `alineamiento_senadores_prov` (30%) + `adhesion_reformas_provincial` (30%) |
 | Cohesión interna del oficialismo | 20% | `cohesion_bloque` (65%) + `cohesion_bloque_senado` (35%) |
 | Conflicto social | 15% | `movilizacion_cepa` (60%) + `protestas_caba` (40%) |
 | Imagen y voto | 10% | `votometro_ventaja_lla` (100%) |
@@ -46,7 +48,7 @@ Cada indicador puntúa 0–100 por **tabla de bandas** (implementadas en `script
 | `veto_quorum` (%) | ≤5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · >30 → 10 |
 | `comisiones_caidas` (%, 20–30% es "normal") | ≤30 → 100 · 30–50 → 85 · 50–70 → 65 · 70–85 → 40 · >85 → 10 |
 | `iaf_transferencias` (% var. real i.a.) | >10 → 100 · 0–10 → 85 · −10–0 → 65 · −20–−10 → 40 · <−20 → 10 |
-| `gobernadores_alineamiento` (%) | >65 → 100 · 45–65 → 85 · 25–45 → 65 · 10–25 → 40 · <10 → 10 |
+| `alineamiento_senadores_prov` (%) — **provisional** | >65 → 100 · 45–65 → 85 · 25–45 → 65 · 10–25 → 40 · <10 → 10 |
 | `adhesion_reformas_provincial` (%) — **provisional** | >80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · <20 → 10 |
 | `cohesion_bloque` (índice de Rice, %) — **provisional** | >90 → 100 · 75–90 → 85 · 60–75 → 65 · 40–60 → 40 · <40 → 10 |
 | `cohesion_bloque_senado` (índice de Rice, %) — **provisional** | mismas bandas que `cohesion_bloque` (mismo constructo) |
@@ -55,7 +57,7 @@ Cada indicador puntúa 0–100 por **tabla de bandas** (implementadas en `script
 
 Convención de bordes: cada banda es `(low, high]` — low exclusivo, high inclusivo. Los puntajes intermedios se **interpolan linealmente entre anclas contiguas** (el motor común `parametrica.py` que también usan ITCM/ITCG/ITVC), no son escalones discretos: el puntaje real aplicado a un valor casi nunca cae justo en 100/85/65/40/10 (ver el detalle por indicador más abajo, donde se cita el puntaje efectivamente aplicado).
 
-Las bandas marcadas **provisional** (`cohesion_bloque`, `cohesion_bloque_senado`, `adhesion_reformas_provincial`, `protestas_caba`) son anclas propias sin serie histórica todavía — a recalibrar cuando el backfill correspondiente esté corriendo con datos reales.
+Las bandas marcadas **provisional** (`cohesion_bloque`, `cohesion_bloque_senado`, `adhesion_reformas_provincial`, `protestas_caba`, `alineamiento_senadores_prov`) son anclas propias sin serie histórica todavía — a recalibrar cuando el backfill correspondiente esté corriendo con datos reales. La banda de `gobernadores_alineamiento` (retirado, ver Encuadre) queda en `itcp.py::BANDAS_ITCP` únicamente como referencia histórica inerte — ya no se usa para puntuar nada.
 
 Interpretación del ITCP: 0–20 severamente apretado · 20–40 apretado · 40–60 moderadamente apretado · 60–80 moderadamente aflojado · 80–100 aflojado.
 
@@ -72,7 +74,7 @@ Ante indicadores faltantes los pesos se renormalizan (dentro de la dimensión y,
 | `veto_quorum` | % de sesiones frustradas por falta de quórum | datos.hcdn.gob.ar CKAN | Mensual | Automático |
 | `comisiones_caidas` | % de proyectos con dictamen OD que no llegan al recinto | datos.hcdn.gob.ar CKAN | Mensual | Automático |
 | `iaf_transferencias` | Variación real interanual de transferencias federales (RON) | Hacienda, CSV | Anual | Automático |
-| `gobernadores_alineamiento` | % de gobernadores alineados con política nacional | Carga manual | Mensual | Carga manual |
+| `alineamiento_senadores_prov` | % de votos de senadores no-LLA alineados con LLA, promedio por provincia | Scraping `senado.gob.ar` | Mensual | Automático |
 | `adhesion_reformas_provincial` | % de provincias adheridas al RIGI | MAGyP (scraping tabla) | Variable | Automático |
 | `cohesion_bloque` | Índice de Rice del bloque LLA en Diputados | Scraping `votaciones.hcdn.gob.ar` | Mensual | Automático — **bloqueado en producción** (hoy sin dato: cache pre-Rice purgado) |
 | `cohesion_bloque_senado` | Índice de Rice del bloque LLA en Senado | Scraping `senado.gob.ar` | Mensual | Automático |
@@ -80,9 +82,9 @@ Ante indicadores faltantes los pesos se renormalizan (dentro de la dimensión y,
 | `protestas_caba` | Variación % de eventos de protesta en CABA vs. base 2023 | ACLED (reutiliza fetcher de gestión) | Semanal | Automático |
 | `votometro_ventaja_lla` | Brecha ponderada LLA − PJ en intención de voto | Votómetro CIGOB (HTML) | Por encuesta | Automático |
 
-**Score actual del cinturón (corrida en vivo, 8 de julio de 2026):** `python scripts/politica.py` → **ITCP = 67,2 (moderadamente aflojado)**, tensión derivada **3,3/10**. 11 de 12 indicadores frescos (exit code 1): el único indicador que no pudo actualizarse en vivo es `cohesion_bloque` —bloqueado en producción (ver detalle abajo)—, hoy **ausente** del cache (el placeholder manual pre-automatización de 78% fue purgado, commit `3973d00`; la dimensión `cohesion_interna` se renormaliza al 100% sobre `cohesion_bloque_senado`). Esto es hoy el estado normal esperable de cada corrida, no una falla puntual, hasta que se resuelva el acceso a `votaciones.hcdn.gob.ar`.
+**Score actual del cinturón (corrida en vivo, 8 de julio de 2026):** `python scripts/politica.py` → **ITCP = 68,4 (moderadamente aflojado)**, tensión derivada **3,2/10**. 11 de 12 indicadores frescos (exit code 1): el único indicador que no pudo actualizarse en vivo es `cohesion_bloque` —bloqueado en producción (ver detalle abajo)—, hoy **ausente** del cache (el placeholder manual pre-automatización de 78% fue purgado, commit `3973d00`; la dimensión `cohesion_interna` se renormaliza al 100% sobre `cohesion_bloque_senado`). Esto es hoy el estado normal esperable de cada corrida, no una falla puntual, hasta que se resuelva el acceso a `votaciones.hcdn.gob.ar`.
 
-Nota de continuidad: el score bajo la métrica anterior (promedio simple) era 4,7/10. El salto a 3,3/10 bajo el ITCP es un cambio de metodología —ponderación por dimensión en vez de promedio plano, y tres indicadores nuevos que hoy puntúan relativamente bien (`cohesion_bloque_senado`, `iaf_transferencias`, `adhesion_reformas_provincial`)—, no una mejora real de golpe en la situación política. Mismo efecto de escala que tuvo ITCG al adoptar su paramétrica.
+Nota de continuidad: el score bajo la métrica anterior (promedio simple) era 4,7/10. El salto a 3,2/10 bajo el ITCP es un cambio de metodología —ponderación por dimensión en vez de promedio plano, y varios indicadores nuevos que hoy puntúan relativamente bien (`cohesion_bloque_senado`, `iaf_transferencias`, `adhesion_reformas_provincial`, `alineamiento_senadores_prov`)—, no una mejora real de golpe en la situación política. Mismo efecto de escala que tuvo ITCG al adoptar su paramétrica. El ITCP subió levemente respecto de la corrida anterior documentada en este archivo (67,2 → 68,4, ambas del 8 de julio de 2026, corridas distintas el mismo día): parte del movimiento es el reemplazo de `gobernadores_alineamiento` (placeholder 55% → puntaje banda 85,0) por `alineamiento_senadores_prov` (68,3% en vivo → puntaje banda 100,0, la banda satura), con el resto siendo deriva normal de las demás fuentes en vivo entre corridas (ej. `ratio_dnu` pasó de 1,471 a 1,529).
 
 ## Detalle por indicador
 
@@ -92,7 +94,7 @@ Nota de continuidad: el score bajo la métrica anterior (promedio simple) era 4,
 - Fuente: InfoLeg, búsqueda mediante sesión POST.
 - Cálculo: `ratio = count(DNUs enero–hoy) / count(leyes sancionadas enero–hoy)`.
 - Bandas: ver tabla en Encuadre. Referencia histórica: año normal 0,3–0,7; gobierno DNU-intensivo >1,2.
-- Último valor (7 de julio de 2026): 1,471 (25 DNUs / 17 leyes, período 2026) → puntaje banda 45,0.
+- Último valor (8 de julio de 2026): 1,529 (26 DNUs / 17 leyes, período 2026) → puntaje banda 42,7.
 
 ### `eficacia_legislativa` — Eficacia legislativa del Ejecutivo
 
@@ -122,22 +124,25 @@ Nota de continuidad: el score bajo la métrica anterior (promedio simple) era 4,
 - Cálculo: variación nominal deflactada por IPC interanual diciembre INDEC (con fallback hardcodeado si la API INDEC falla).
 - Último valor: +7,0% real i.a. (período 2025 vs. 2024; nominal +40,7%, IPC aplicado 31,5%) → puntaje banda 91,0.
 
-### `gobernadores_alineamiento` — Alineamiento de gobernadores
+### `alineamiento_senadores_prov` — Alineamiento de senadores no-LLA por provincia (nuevo, 8 de julio de 2026)
 
-- Qué mide: soporte territorial y federal del gobierno.
-- Fuente: carga manual en `data/politica/manuales.json` (placeholder 55%, dato de abril de 2026).
-- Cálculo objetivo: porcentaje de gobernadores (sobre 24) con posición pública de apoyo al programa nacional.
-- Razón de la carga manual: sin fuente pública estructurada. Se investigaron y descartaron cuatro proxies (documentados en `manuales.json._meta.pendiente_automatizacion`): composición del Senado por provincia (mide bancas, no conducta del Ejecutivo provincial), composición de Diputados por distrito (varios legisladores de distinto signo por provincia, sin campo de gobernador), API de Presupuesto Abierto/ATN (sin columna de corte provincial confirmada) y la tabla de adhesión provincial al RIGI —esta última sí se automatizó, pero como indicador **nuevo y distinto** (`adhesion_reformas_provincial`, ver más abajo): mide adhesión fiscal a un régimen puntual, no alineamiento político general, y no reemplaza a este indicador.
-- Único camino identificado para automatizar: NLP sobre cobertura periodística (La Nación Data, Infobae) — proyecto separado, fuera de alcance.
-- Último valor: 55% (placeholder) → puntaje banda 85,0.
+- Qué mide: porcentaje de votos de senadores **no-LLA** que coincide con la posición del bloque LLA en cada votación nominal del Senado, agregado por provincia y promediado entre las provincias con al menos un senador no-LLA (las provincias 100% LLA se excluyen: su "alineamiento" con LLA sería tautológico y no aporta señal).
+- Fuente: scraping directo de `senado.gob.ar/votaciones` — misma sesión y descubrimiento de actas que `cohesion_bloque_senado`.
+- Cálculo: `Σ(votos no-LLA que coinciden con LLA) / Σ(votos no-LLA totales)`, por provincia, sobre las actas divididas de los últimos 90 días; el resultado final es el promedio simple entre provincias (no ponderado por cantidad de senadores).
+- Reemplaza a `gobernadores_alineamiento` (ver Encuadre): placeholder manual de 55%, congelado desde abril de 2026, sin fuente pública estructurada pese a dos rondas de investigación que descartaron cuatro proxies (documentadas en `data/politica/manuales.json._meta.pendiente_automatizacion`): composición del Senado por provincia (mide bancas, no conducta del Ejecutivo), composición de Diputados por distrito (sin campo de gobernador), API de Presupuesto Abierto/ATN (sin corte provincial confirmado) y la tabla de adhesión al RIGI (automatizada aparte, ver `adhesion_reformas_provincial` abajo). El único camino identificado para automatizar `gobernadores_alineamiento` tal cual estaba definido —NLP sobre cobertura periodística— seguía fuera de alcance; `alineamiento_senadores_prov` es una vía distinta, aprovechando el mismo scraping ya construido para `cohesion_bloque_senado`.
+- **Caveat honesto:** mide comportamiento de voto de **senadores**, no la postura pública del gobernador (Poder Ejecutivo provincial) —un senador no depende del gobernador de turno—. Es la mejor señal automatizable disponible hoy, no una medición directa del alineamiento del Ejecutivo provincial con la Nación. Mismo tipo de proxy que `adhesion_reformas_provincial`/RIGI: automatizable y honesto sobre lo que mide, pero no idéntico al constructo original.
+- Bandas provisionales: mismas anclas que tenía `gobernadores_alineamiento` (sin serie histórica propia todavía, ver nota en Encuadre).
+- Último valor: 68,3% (24 de 24 provincias con senador no-LLA, dato del 4 de junio de 2026, corrida exitosa confirmada el 8 de julio de 2026) → puntaje banda 100,0 (la banda satura por encima de 65%).
+- Backfill real disponible desde 2026-07-08: serie anual 2023-2026 (4 puntos: 2023=71,9% · 2024=57,7% · 2025=45,3% · 2026=51,9%), ver `output/series/politica.csv`.
+- Nota de consistencia: el valor vigente (68,3%) usa una ventana móvil de 90 días; el punto 2026 de la serie backfilleada (51,9%) usa una ventana anual completa (`dias_ventana=366`, todas las actas divididas del año) — mismo patrón de "card vivo vs. serie anual" que `cohesion_bloque_senado`. La diferencia acá es más marcada que en `cohesion_bloque_senado` porque el alineamiento subió notablemente en los meses recientes respecto del promedio de todo el año 2026 — no es un error de cálculo, es una lectura genuina de una tendencia dentro del año.
 
 ### `adhesion_reformas_provincial` — Adhesión provincial al RIGI (nuevo)
 
 - Qué mide: porcentaje de provincias (sobre 24) adheridas formalmente al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742).
 - Fuente: tabla de provincias adheridas publicada por el Ministerio de Agricultura, Ganadería y Pesca (MAGyP), scraping directo.
-- Alcance honesto: mide adhesión **fiscal** a un régimen puntual, no alineamiento político general con el gobierno nacional. No reemplaza a `gobernadores_alineamiento`, que sigue siendo carga manual.
+- Alcance honesto: mide adhesión **fiscal** a un régimen puntual, no alineamiento político general con el gobierno nacional. No reemplaza a `alineamiento_senadores_prov` ni al retirado `gobernadores_alineamiento`: son constructos distintos que conviven en la dimensión "alianzas territoriales".
 - Bandas provisionales: sin serie histórica propia todavía (ver nota en Encuadre).
-- Último valor: 66,7% (16 de 24 provincias, dato del 7 de julio de 2026) → puntaje banda 81,7.
+- Último valor: 66,7% (16 de 24 provincias, dato del 8 de julio de 2026) → puntaje banda 81,7.
 
 ### `cohesion_bloque` — Cohesión del bloque LLA en Diputados
 
@@ -206,9 +211,11 @@ Códigos de salida:
 - **`cohesion_bloque` bloqueado:** no reintentar requests directos ni headless browser sin leer primero `docs/adr/0037-cohesion-bloque-scraping-bloqueado-antibot.md` — ya se probaron ambos y fallan por el mismo muro anti-bot. Caminos a evaluar (ninguno intentado todavía): gestión institucional directa con HCDN, monitoreo pasivo de si `Como_voto` (terceros) vuelve a actualizarse con normalidad, o re-test periódico (el bloqueo puede levantarse con el tiempo, como pasó al revés entre enero y julio de 2026).
 - **`cohesion_bloque_senado`:** vía independiente de `cohesion_bloque` — si en el futuro Senado también empieza a bloquear, no asumir que es el mismo problema de Diputados sin verificarlo (son sitios distintos).
 - **`adhesion_reformas_provincial`:** si `magyp.gob.ar` cambia de URL o estructura de tabla, ajustar `MAGYP_RIGI_URL` y el parsing en `fetch_adhesion_reformas_provincial()`.
-- **Datos de carga manual:** actualizar `data/politica/manuales.json` con nuevos valores y `fecha_dato` actualizada en cada ciclo (hoy solo aplica a `gobernadores_alineamiento`).
-- **Bandas provisionales:** `cohesion_bloque`, `cohesion_bloque_senado`, `adhesion_reformas_provincial` y `protestas_caba` usan anclas propias sin historia — revisar cuando el backfill de cada uno esté corriendo con datos reales.
+- **`alineamiento_senadores_prov`:** comparte sesión y descubrimiento de actas con `cohesion_bloque_senado` — si Senado empieza a bloquear, ambos indicadores se ven afectados a la vez (a diferencia de `cohesion_bloque`, que es un sitio distinto). No se degrada a `desactualizado` solo por ausencia de votos nuevos en la ventana de 90 días (mismo criterio de `_cohesion_desactualizada` que el resto de la familia Senado).
+- **Datos de carga manual:** hoy no hay ninguno activo. `data/politica/manuales.json` y `fetch_manual()` quedan en el código como mecanismo genérico sin uso — `gobernadores_alineamiento`, el único indicador que los usaba, fue retirado del ITCP el 8 de julio de 2026 (ver Encuadre) y ya no se lee desde `main()`.
+- **Bandas provisionales:** `cohesion_bloque`, `cohesion_bloque_senado`, `adhesion_reformas_provincial`, `protestas_caba` y `alineamiento_senadores_prov` usan anclas propias sin historia — revisar cuando el backfill de cada uno esté corriendo con datos reales.
 - **Ajustes puntuales:** overrides con vencimiento vía `data/politica/ajustes_itcp.json` — mismo mecanismo que `ajustes_itcm/itcg/itvc.json`.
+- **Gate de calidad G3 (`scripts/gate_calidad.py`):** hoy falla para `alineamiento_senadores_prov` (serie[-1]=51,9 vs. card=68,3, fuera de tolerancia) por el mismo motivo de diseño documentado arriba (ventana anual vs. ventana móvil de 90 días) — pendiente agregar la excepción declarada correspondiente a `G3_EXCEPCIONES` (mismo mecanismo ya usado para `sentimiento_digital`, `rigi_inversiones` y `protestas_caba`); no se tocó en esta sincronización de docs por estar fuera de su alcance (cambio de código, no de documentación).
 
 ## Limitaciones documentadas de CKAN HCDN
 
