@@ -78,8 +78,23 @@ BANDAS_ITCP = {
     "veto_quorum": [                      # % sesiones fracasadas, menor = mejor
         (-INF, 5.0, 100), (5.0, 10.0, 85), (10.0, 20.0, 65), (20.0, 30.0, 40), (30.0, INF, 10),
     ],
-    "comisiones_caidas": [                # % varados (20-30% es "normal" según el doc), menor = mejor
-        (-INF, 30.0, 100), (30.0, 50.0, 85), (50.0, 70.0, 65), (70.0, 85.0, 40), (85.0, INF, 10),
+    "comisiones_caidas": [
+        # RECALIBRADO 2026-07-09 (auditoría adversarial del cinturón,
+        # ADR-0045) con los 32 puntos mensuales reales ya existentes en
+        # output/series/politica.csv (dic-2023→jul-2026): las anclas
+        # anteriores (30/50/70/85, "20-30% es normal" según el doc de
+        # diseño) describen un congreso de manual, no la métrica real de
+        # este indicador -- con ventana móvil de 12 meses, un dictamen
+        # reciente casi nunca alcanza a sancionarse dentro de SU MISMA
+        # ventana, así que el piso estructural observado es 94,7 y el
+        # rango real 94,7-99,8 (media 98,2). Resultado: los 32 meses
+        # caían en la banda (85,inf)->10 -- tensión máxima clavada, cero
+        # discriminación, exactamente la misma patología (en espejo) que
+        # cohesion_bloque saturando su techo (ADR-0042). Anclas nuevas en
+        # 96/97/98/99 (números redondos, chequeadas contra los 32 puntos:
+        # 5/3/5/10/9 por banda, todas con datos reales). menor = mejor,
+        # tramos extremos abiertos como siempre (ADR-0021).
+        (-INF, 96.0, 100), (96.0, 97.0, 85), (97.0, 98.0, 65), (98.0, 99.0, 40), (99.0, INF, 10),
     ],
     "iaf_transferencias": [               # % var real YoY transferencias federales, mayor = mejor
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),

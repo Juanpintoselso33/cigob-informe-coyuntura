@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-09T14:55:48.931049",
+  "generated_at": "2026-07-09T16:00:00.894812",
   "period": "2026-07",
-  "score_global": 3.2,
+  "score_global": 3.1,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -391,8 +391,8 @@
       }
     },
     "politica": {
-      "score": 3.3,
-      "estado": "en_tension",
+      "score": 2.9,
+      "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "votometro_ventaja_lla": {
@@ -499,13 +499,13 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
-          "puntaje_itcp": 10.0,
-          "puntaje_banda": 10.0,
+          "puntaje_itcp": 60.0,
+          "puntaje_banda": 60.0,
           "peso_efectivo": 0.075
         },
         "adhesion_reformas_provincial": {
           "valor": 66.7,
-          "unidad": "% de provincias (sobre 24) adheridas al RIGI",
+          "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
           "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
           "fecha_dato": "2026-07-09",
           "n_provincias": 16,
@@ -576,14 +576,14 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 67.2,
+        "valor": 70.9,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
             "peso": 0.3,
-            "puntaje": 36.2,
+            "puntaje": 48.7,
             "indicadores": {
               "ratio_dnu": {
                 "peso": 0.25,
@@ -608,8 +608,8 @@
               },
               "comisiones_caidas": {
                 "peso": 0.25,
-                "puntaje_banda": 10.0,
-                "puntaje_aplicado": 10.0,
+                "puntaje_banda": 60.0,
+                "puntaje_aplicado": 60.0,
                 "valor": 97.7,
                 "peso_efectivo": 0.075
               }

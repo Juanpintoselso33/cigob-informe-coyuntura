@@ -1,16 +1,16 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-09T14:54:14.505606",
-  "score": 3.3,
+  "generated_at": "2026-07-09T15:59:33.213315",
+  "score": 2.9,
   "itcp": {
-    "valor": 67.2,
+    "valor": 70.9,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.3,
-        "puntaje": 36.2,
+        "puntaje": 48.7,
         "indicadores": {
           "ratio_dnu": {
             "peso": 0.25,
@@ -35,8 +35,8 @@
           },
           "comisiones_caidas": {
             "peso": 0.25,
-            "puntaje_banda": 10.0,
-            "puntaje_aplicado": 10.0,
+            "puntaje_banda": 60.0,
+            "puntaje_aplicado": 60.0,
             "valor": 97.7,
             "peso_efectivo": 0.075
           }
@@ -239,13 +239,13 @@
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 10.0,
-      "puntaje_banda": 10.0,
+      "puntaje_itcp": 60.0,
+      "puntaje_banda": 60.0,
       "peso_efectivo": 0.075
     },
     "adhesion_reformas_provincial": {
       "valor": 66.7,
-      "unidad": "% de provincias (sobre 24) adheridas al RIGI",
+      "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
       "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
       "fecha_dato": "2026-07-09",
       "n_provincias": 16,

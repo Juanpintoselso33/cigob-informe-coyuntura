@@ -125,6 +125,23 @@ def test_banda_cohesion_bloque_diputados_ya_no_satura_valores_antes_planos():
     assert puntaje < 100.0
 
 
+def test_banda_comisiones_caidas_recalibrada():
+    # Recalibración 2026-07-09 (ADR-0045, auditoría adversarial) con 32
+    # puntos mensuales reales (rango 94,7-99,8): las anclas 30/50/70/85
+    # del doc de diseño dejaban los 32 meses en la banda del piso (10) --
+    # tensión máxima clavada, cero discriminación.
+    bandas = itcp.BANDAS_ITCP["comisiones_caidas"]
+    assert itcp.puntaje_banda(96.0, bandas) == 100    # high inclusivo del tramo abierto
+    assert itcp.puntaje_banda(96.01, bandas) == 85
+    assert itcp.puntaje_banda(97.0, bandas) == 85
+    assert itcp.puntaje_banda(98.0, bandas) == 65
+    assert itcp.puntaje_banda(99.0, bandas) == 40
+    assert itcp.puntaje_banda(99.8, bandas) == 10     # máximo real observado
+    import parametrica
+    assert parametrica.puntaje_interpolado(97.7, bandas) < 100.0  # valor real de hoy, ya no aplana en 10
+    assert parametrica.puntaje_interpolado(97.7, bandas) > 10.0
+
+
 def test_calcular_itcp_pondera_dimensiones():
     valores = {
         "votometro_ventaja_lla": 15.0,       # imagen_voto, puntaje 100

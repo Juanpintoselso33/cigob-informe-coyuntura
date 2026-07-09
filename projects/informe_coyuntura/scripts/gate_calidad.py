@@ -54,6 +54,7 @@ G3_EXCEPCIONES = {
     "alineamiento_senadores_prov": "ambos usan ventana móvil de 90 días, pero anclada a fechas distintas: card = hoy; serie = fin de cada mes (fetch_alineamiento_senadores_prov_mensual, 2026-07-09)",
     "cohesion_bloque_senado": "mismo caso que alineamiento_senadores_prov: ambos usan ventana móvil de 90 días, pero anclada a fechas distintas: card = hoy; serie = fin de cada mes (fetch_cohesion_bloque_senado_mensual, 2026-07-09)",
     "cohesion_bloque": "mismo caso que cohesion_bloque_senado: card = ventana 90d anclada a hoy; serie = fin de cada mes (fetch_cohesion_bloque_diputados_mensual, 2026-07-09). Omitida al construir la serie y detectada en la auditoría del mismo día: hoy pasan por 0,1 de diferencia, pero un acta dividida a mitad de mes los separa más que la tolerancia",
+    "votometro_ventaja_lla": "misma familia de anclaje: card = ponderación de encuestas evaluada HOY (recencia exp(-0,015·días) desde hoy); serie = el mismo cálculo evaluado al cierre de cada mes (votometro_serie_mensual). Hoy difieren 0,1pp (5,3 vs 5,2) y pasan por tolerancia de casualidad — una encuesta nueva a mitad de mes los separa más (auditoría 2026-07-09)",
 }
 # tolerancia relativa por indicador (default 1% o 0,11 absoluto, redondeos)
 G3_TOLERANCIA_REL = {"cepo_mulc": 0.10}   # brecha cambiaria viva: deriva intradiaria

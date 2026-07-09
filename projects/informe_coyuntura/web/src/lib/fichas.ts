@@ -1109,11 +1109,11 @@ export const FICHAS: Record<string, Ficha> = {
       "El indicador es proyectos caídos sobre el total con dictamen.",
     ],
     incidenciaTexto: [
-      "El puntaje del índice se asigna por bandas del porcentaje de proyectos caídos, interpolado entre anclas: 30% o menos → el más alto; entre 30% y 50% → alto; entre 50% y 70% → moderado; entre 70% y 85% → bajo; más de 85% → el más bajo.",
+      "El puntaje del índice se asigna por bandas del porcentaje de proyectos caídos, interpolado entre anclas: 96% o menos → el más alto; entre 96% y 97% → alto; entre 97% y 98% → moderado; entre 98% y 99% → bajo; más de 99% → el más bajo. Los umbrales se calibraron con la serie mensual real del indicador (32 meses, dic-2023 en adelante) — los anteriores (30/50/70/85) describían un congreso teórico y dejaban el puntaje clavado en el mínimo todos los meses, sin discriminar nada.",
       "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto al ratio DNU, la eficacia legislativa y las sesiones caídas por quórum.",
     ],
     limitaciones: [
-      "El valor vive cerca del máximo por una razón estructural: la gran mayoría de los dictámenes no llega al recinto bajo ningún gobierno — el indicador satura en el tope y pierde capacidad de discriminar la coyuntura.",
+      "El valor vive cerca del máximo por una razón estructural: la gran mayoría de los dictámenes no llega al recinto bajo ningún gobierno, y con una ventana móvil de 12 meses un dictamen reciente casi nunca alcanza a sancionarse dentro de su propia ventana. Por eso los umbrales de puntaje se calibraron sobre el rango realmente observado (94,7%–99,8%) y no sobre porcentajes teóricos.",
       "Depende del etiquetado de la fuente («Orden del Día», «sanción»): variantes de registro pueden contar mal.",
     ],
     faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
@@ -1122,6 +1122,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del embudo entre comisiones y recinto." },
       { fecha: "2026-06-30", cambio: "Serie mensual de ventanas móviles de 12 meses desde diciembre de 2023." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
+      { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 30/50/70/85, tomados del diseño conceptual y nunca validados) con la serie mensual real de 32 meses: nuevos cortes en 96/97/98/99. Con los anteriores, el rango realmente observado (94,7%–99,8%) caía completo en el escalón más bajo — tensión máxima permanente, sin capacidad de distinguir un mes de otro; la propia ficha ya declaraba esa saturación como limitación." },
     ],
   },
 
