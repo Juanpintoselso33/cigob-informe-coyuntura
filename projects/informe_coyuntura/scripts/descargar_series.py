@@ -726,7 +726,7 @@ POLITICA_DERIVADAS = [
      fetch_cepa_movilizacion_serie),
     ("alineamiento_senadores_prov", "% votos de senadores no-LLA alineados con LLA",
      "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
-     fetch_alineamiento_senadores_prov_serie),
+     fetch_alineamiento_senadores_prov_mensual),
     # protestas_caba NO se registra acá: ya está en GESTION_DERIVADAS
     # (fetch_protestas_serie) y build_series() en publicar.py fusiona TODOS
     # los CSV de output/series/ en un único dict keyed por indicador — la
