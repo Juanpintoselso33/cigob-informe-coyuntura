@@ -55,6 +55,12 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       avance: typeof ind.avance_pct === "number" ? ind.avance_pct : null,
       componentes: ind.componentes ?? null,
       valorNum: typeof ind.valor === "number" ? ind.valor : null,
+      // Para indicadores que son un % sobre un total chico y contable
+      // (hoy solo adhesion_reformas_provincial, 24 provincias): mostrar
+      // también el conteo absoluto junto al %, más legible que un
+      // porcentaje sobre una base que no es 100 (66,7% de 24 se lee peor
+      // que "16 de 24").
+      valorAbsolutoTxt: typeof ind.n_provincias === "number" ? `${ind.n_provincias} de 24 provincias` : null,
       es0100: BARRA_0_100.has(ikey),
       unidadCorta: p.unidad ?? "",
       formula: FORMULAS[ikey]?.latex ?? null,
@@ -245,7 +251,7 @@ const dimsJson = JSON.stringify(dims);
       const celda = (rotulo, valor, titulo) =>
         `<div><dt>${rotulo}</dt><dd${titulo ? ` title="${esc(titulo)}"` : ""}>${esc(valor)}</dd></div>`;
       document.getElementById("cg-modal-ficha").innerHTML =
-        celda("Último valor", `${d.valor} ${d.unidad}`.trim()) +
+        celda("Último valor", `${d.valor} ${d.unidad}`.trim() + (d.valorAbsolutoTxt ? ` (${d.valorAbsolutoTxt})` : "")) +
         celda("Unidad", d.unidadLarga || d.tipo || "—") +
         celda("Dimensión", d.dimTxt || "—") +
         celda("Frecuencia", d.frecuencia || "—") +
