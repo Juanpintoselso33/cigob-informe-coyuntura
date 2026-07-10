@@ -71,7 +71,15 @@ en un proxy de búsqueda aislado.
    fuente argentina automatizable (CONICET solo publica actas PDF caso por caso sin agregado;
    DNM no desagrega por motivo). Candidatas reales para una iteración futura: **US State
    Department** — visas mensuales a argentinos por categoría (H1B/F1/L1/J1/O1), dato duro,
-   mensual, parseable (`travel.state.gov`); **ISTAT/AIRE** (Italia) e **INE** (España) —
+   mensual, parseable (`travel.state.gov`); **verificado** el mismo día bajando y parseando
+   con `openpyxl` el archivo real de septiembre 2025
+   (`.../MonthlyNIVIssuances/Excel/FY2025/SEPTEMBER 2025 - NIV Issuances by Nationality and
+   Visa Class.xlsx`, estructura `Nationality | Visa Class | Issuances`, una fila por
+   combinación): Argentina esa corrida, 31.362 emisiones totales, de las cuales las clases
+   relevantes para migración (no turismo) son chicas frente al total dominado por B1/B2 —
+   J1 1.664 · L1 48 · H1B 41 · F1 40 · O1 25. Excel disponible desde FY2023 (oct-2022) en
+   adelante — cubre de sobra el backfill del proyecto (dic-2023+); antes de FY2023 solo hay
+   PDF. **ISTAT/AIRE** (Italia) e **INE** (España) —
    ciudadanía adquirida por argentinos, dato duro pero **anual**. Se deja como próximo ADR, no
    se mezcla con el Componente A (fuentes y formatos totalmente distintos) en este cambio.
 4. **Backfill**: **2021-01**, igual que `sentimiento_digital` (ADR-0034) — consistencia dentro
