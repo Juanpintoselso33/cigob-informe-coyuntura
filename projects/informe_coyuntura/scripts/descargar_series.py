@@ -8,6 +8,7 @@ import csv
 import io
 import json
 import re
+import time
 import calendar
 import requests
 import urllib3
@@ -2156,6 +2157,232 @@ GESTION_DERIVADAS = [
     ("cepo_mulc", "% brecha CCL/mayorista (prom. mensual)", "ArgentinaDatos (CCL) + BCRA (A3500)", fetch_brecha_serie),
     ("protestas_caba", "eventos de protesta/mes (CABA)", "ACLED — agregado semanal (acleddata.com)", fetch_protestas_serie),
 ]
+
+
+# ── Componente B — datos duros de migración real (ADR-0035) ──────────────────
+# Cruce de validación del Componente A (Google Trends, intención expresada):
+# flujos reales de migración argentina hacia los principales destinos. NUNCA
+# se puntúa (mezclaría proxies de naturaleza distinta sin una paramétrica que
+# los pondere) -- se expone como contexto duro en la card de
+# indice_intencion_migratoria (espiritu_epoca.py), nunca como indicador solo.
+
+COMPONENTE_B_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "componente_b_migracion.json"
+
+MESES_EN = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY",
+            "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]
+
+
+def _fiscal_year_eeuu(anio: int, mes: int) -> int:
+    """Año fiscal de EEUU (oct->sep): oct/nov/dic pertenecen al FY siguiente."""
+    return anio + 1 if mes >= 10 else anio
+
+
+def _meses_desde(anio_inicio: int, mes_inicio: int) -> list:
+    """[(anio, mes), ...] desde (anio_inicio, mes_inicio) hasta el mes anterior
+    al actual (el mes en curso todavía no está publicado)."""
+    hoy = datetime.today()
+    out = []
+    y, m = anio_inicio, mes_inicio
+    while (y, m) < (hoy.year, hoy.month):
+        out.append((y, m))
+        m = 1 if m == 12 else m + 1
+        y = y + 1 if m == 1 else y
+    return out
+
+
+def _fetch_visa_mes_argentina(tipo: str, anio: int, mes: int) -> int | None:
+    """Descarga el Excel mensual del State Dept (NIV o IV) de un mes puntual
+    y devuelve el total de emisiones a Argentina (todas las clases de visa
+    sumadas). None si el archivo todavía no está publicado o falla.
+    Prueba dos variantes de nombre: el State Dept publicó marzo-septiembre
+    2024 con DOBLE espacio antes del guión ("MARCH 2024  - NIV...", typo real
+    del sitio, verificado 2026-07-10) en vez del espacio simple habitual."""
+    fy = _fiscal_year_eeuu(anio, mes)
+    nombre_mes = MESES_EN[mes - 1]
+    if tipo == "niv":
+        carpeta = "Non-Immigrant-Statistics/MonthlyNIVIssuances"
+        sufijo = "NIV Issuances by Nationality and Visa Class.xlsx"
+    else:
+        carpeta = "Immigrant-Statistics/MonthlyIVIssuances"
+        sufijo = "IV Issuances by FSC or Place of Birth and Visa Class.xlsx"
+    base = f"https://travel.state.gov/content/dam/visas/Statistics/{carpeta}/Excel/FY{fy}/"
+    for espacios in (" ", "  "):
+        archivo = f"{nombre_mes} {anio}{espacios}- {sufijo}"
+        url = base + archivo.replace(" ", "%20")
+        try:
+            r = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            if r.status_code == 404:
+                continue
+            r.raise_for_status()
+            import openpyxl
+            wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
+            ws = wb[wb.sheetnames[0]]
+            total, encontrado = 0, False
+            for row in ws.iter_rows(min_row=3, values_only=True):
+                if row[0] == "Argentina":
+                    total += int(row[2] or 0)
+                    encontrado = True
+            if encontrado:
+                return total
+        except Exception as e:
+            print(f"  [WARN] componente_b {tipo} {anio}-{mes:02d}: {str(e)[:80]}")
+    return None
+
+
+def fetch_componente_b_eeuu_niv_mensual(store: dict) -> dict:
+    """Serie MENSUAL de visas NIV (no-inmigrante, incluye turismo) emitidas a
+    argentinos -- backfill incremental desde dic-2023, solo pide los meses
+    que todavía no están en el store (no re-descarga los ya guardados)."""
+    mensual = dict(store.get("eeuu_niv", {}).get("mensual", {}))
+    for a, m in _meses_desde(2023, 12):
+        clave = f"{a}-{m:02d}"
+        if clave in mensual:
+            continue
+        total = _fetch_visa_mes_argentina("niv", a, m)
+        if total is not None:
+            mensual[clave] = total
+        time.sleep(0.5)   # evitar el CAPTCHA blando de travel.state.gov ante ráfagas
+    return {"mensual": mensual}
+
+
+def fetch_componente_b_eeuu_iv_mensual(store: dict) -> dict:
+    """Serie MENSUAL de visas IV (inmigrante permanente, green card) emitidas
+    a argentinos -- backfill incremental desde dic-2023. Señal más directa de
+    inmigración permanente real que el NIV (que incluye turismo/negocios)."""
+    mensual = dict(store.get("eeuu_iv", {}).get("mensual", {}))
+    for a, m in _meses_desde(2023, 12):
+        clave = f"{a}-{m:02d}"
+        if clave in mensual:
+            continue
+        total = _fetch_visa_mes_argentina("iv", a, m)
+        if total is not None:
+            mensual[clave] = total
+        time.sleep(0.5)   # evitar el CAPTCHA blando de travel.state.gov ante ráfagas
+    return {"mensual": mensual}
+
+
+def fetch_componente_b_canada_mensual() -> dict:
+    """Serie MENSUAL de residentes permanentes de Canadá por ciudadanía
+    argentina (IRCC, datos abiertos, CSV completo 2015->hoy). Valores
+    redondeados a 5 por privacidad -- no sumar como valor exacto, sirve para
+    tendencia, no para totales precisos."""
+    url = "https://www.ircc.canada.ca/opendata-donneesouvertes/data/ODP-PR-Citz.csv"
+    r = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 2)
+    r.raise_for_status()
+    meses_map = {m: i + 1 for i, m in enumerate(
+        ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])}
+    mensual = {}
+    reader = csv.DictReader(io.StringIO(r.content.decode("utf-8-sig")), delimiter="\t")
+    for row in reader:
+        if row.get("EN_COUNTRY_OF_CITIZENSHIP") == "Argentina":
+            mes = meses_map.get(row["EN_MONTH"])
+            if mes:
+                mensual[f"{row['EN_YEAR']}-{mes:02d}"] = int(row["TOTAL"])
+    return {"mensual": mensual}
+
+
+def fetch_componente_b_espana_anual() -> dict:
+    """Serie ANUAL de argentinos que adquirieron la nacionalidad española
+    (INE, Estadística de Adquisiciones de Nacionalidad Española de
+    Residentes, tabla 15800 -- API pública, sin scraping)."""
+    r = requests.get("https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/15800",
+                      params={"nult": 15}, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 2)
+    r.raise_for_status()
+    anual = {}
+    for serie in r.json():
+        if serie["Nombre"].strip() == "Total Nacional. Dato base. Argentina. Total.":
+            for punto in serie["Data"]:
+                anual[str(punto["Anyo"])] = int(punto["Valor"])
+            break
+    return {"anual": anual}
+
+
+def fetch_componente_b_italia_aire_anual() -> dict:
+    """Serie ANUAL de argentinos que adquirieron la ciudadanía italiana
+    (ISTAT, balance demográfico AIRE, columna 'Acquisizioni di cittadinanza',
+    Paese=Argentina, Sesso=Totale -- ZIP/CSV descargable, sin scraping)."""
+    import zipfile
+    r = requests.get("https://demo.istat.it/data/aire/AIRE_it.zip",
+                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 2)
+    r.raise_for_status()
+    anual = {}
+    with zipfile.ZipFile(io.BytesIO(r.content)) as z:
+        with z.open("AIRE_it.csv") as f:
+            reader = csv.DictReader(io.TextIOWrapper(f, encoding="utf-8-sig"), delimiter=";")
+            for row in reader:
+                if row["Paese"] == "Argentina" and row["Sesso"] == "Totale":
+                    anual[row["Anno"]] = int(row["Acquisizioni di cittadinanza"])
+    return {"anual": anual}
+
+
+def fetch_componente_b_chile_anual() -> dict:
+    """Serie ANUAL de residencias definitivas OTORGADAS a argentinos en Chile
+    (SERMIG, ex-DEM, datos abiertos -- microdato RD-Resueltas, filtrado
+    PAÍS=Argentina y TIPO_RESUELTO=Otorga, serie completa desde 2000)."""
+    pagina = requests.get("https://serviciomigraciones.cl/estudios-migratorios/datos-abiertos",
+                          headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    pagina.raise_for_status()
+    m = re.search(r'href="(https://serviciomigraciones\.cl/[^"]*RD-Resueltas[^"]*\.xlsx)"',
+                  pagina.text)
+    if not m:
+        raise ValueError("no se encontró el link de RD-Resueltas en datos-abiertos")
+    r = requests.get(m.group(1), headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
+    r.raise_for_status()
+    import openpyxl
+    wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
+    ws = wb[wb.sheetnames[0]]
+    anual, header = {}, None
+    for i, row in enumerate(ws.iter_rows(values_only=True)):
+        if i == 0:
+            header = row
+            continue
+        d = dict(zip(header, row))
+        if d.get("PAÍS") == "Argentina" and d.get("TIPO_RESUELTO") == "Otorga":
+            anio = str(d["AÑO"])
+            anual[anio] = anual.get(anio, 0) + int(d["Total"])
+    return {"anual": anual}
+
+
+def fetch_componente_b_store() -> dict:
+    """Arma/actualiza data/vida/componente_b_migracion.json: datos duros de
+    migración real (ADR-0035) para cruzar contra el Componente A (Trends).
+    Ninguna de las 6 fuentes cambia más de una vez por mes -- gateado por
+    frescura igual que el store de Trends: si ya se actualizó este mes
+    calendario, no vuelve a pegarle a las 6 APIs/descargas. Cada fuente falla
+    de forma independiente (try/except propio) -- si una cae, las demás
+    igual se actualizan y esa mantiene su último valor sano."""
+    store = json.loads(COMPONENTE_B_STORE.read_text(encoding="utf-8-sig")) \
+        if COMPONENTE_B_STORE.exists() else {}
+
+    mes_actual = datetime.today().strftime("%Y-%m")
+    if store.get("_meta", {}).get("actualizado", "")[:7] == mes_actual:
+        return store
+
+    fetchers = {
+        "eeuu_niv": lambda: fetch_componente_b_eeuu_niv_mensual(store),
+        "eeuu_iv": lambda: fetch_componente_b_eeuu_iv_mensual(store),
+        "canada_pr": fetch_componente_b_canada_mensual,
+        "espana_nacionalidad": fetch_componente_b_espana_anual,
+        "italia_aire": fetch_componente_b_italia_aire_anual,
+        "chile_residencia": fetch_componente_b_chile_anual,
+    }
+    fuentes_meta = {
+        "eeuu_niv": "US State Dept — NIV Issuances by Nationality (mensual)",
+        "eeuu_iv": "US State Dept — IV Issuances by FSC or Place of Birth (mensual)",
+        "canada_pr": "IRCC — Permanent Residents by Country of Citizenship (mensual, redondeado a 5)",
+        "espana_nacionalidad": "INE — Adquisiciones de Nacionalidad Española de Residentes (anual)",
+        "italia_aire": "ISTAT/AIRE — Acquisizioni di cittadinanza (anual)",
+        "chile_residencia": "SERMIG (ex-DEM) — Residencias Definitivas Resueltas (anual)",
+    }
+    for clave, fetcher in fetchers.items():
+        try:
+            store[clave] = fetcher()
+        except Exception as e:
+            print(f"  [WARN] componente_b.{clave}: {str(e)[:100]} -- se mantiene el valor anterior")
+    store["_meta"] = {"actualizado": datetime.today().strftime("%Y-%m-%d"), "fuentes": fuentes_meta}
+    COMPONENTE_B_STORE.parent.mkdir(parents=True, exist_ok=True)
+    COMPONENTE_B_STORE.write_text(json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
+    return store
 
 
 CINTURONES_SERIES = {

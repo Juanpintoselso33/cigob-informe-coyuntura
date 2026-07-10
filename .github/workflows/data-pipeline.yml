@@ -140,6 +140,7 @@ jobs:
                   projects/informe_coyuntura/data/vida/motos_serie.json \
                   projects/informe_coyuntura/data/vida/snic_serie.json \
                   projects/informe_coyuntura/data/vida/intencion_migratoria_serie.json \
+                  projects/informe_coyuntura/data/vida/componente_b_migracion.json \
                   projects/informe_coyuntura/data/politica/alineamiento_senadores_actas.json \
                   projects/informe_coyuntura/data/politica/derrotas_legislativas_eventos.json \
                   projects/informe_coyuntura/data/politica/cohesion_bloque_senado_actas.json \

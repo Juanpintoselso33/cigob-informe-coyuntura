@@ -123,6 +123,28 @@ def fetch_clima_electoral() -> dict | None:
         return None
 
 
+def _contexto_duro_componente_b() -> dict:
+    """Último valor de cada una de las 6 fuentes de datos duros de migración
+    real (ADR-0035, Componente B) -- cruce de validación del Componente A,
+    NUNCA puntúa. Si falla entero, devuelve {} (Componente A sigue solo,
+    igual que antes de que existiera el Componente B)."""
+    try:
+        import descargar_series as _ds
+        store = _ds.fetch_componente_b_store()
+    except Exception as e:
+        _warn("indice_intencion_migratoria.contexto_duro", e)
+        return {}
+    contexto = {}
+    for clave, serie in store.items():
+        if clave == "_meta" or not isinstance(serie, dict):
+            continue
+        puntos = serie.get("mensual") or serie.get("anual") or {}
+        if puntos:
+            ultimo_periodo = sorted(puntos.keys())[-1]
+            contexto[clave] = {"periodo": ultimo_periodo, "valor": puntos[ultimo_periodo]}
+    return contexto
+
+
 def fetch_indice_intencion_migratoria() -> dict | None:
     """Intención expresada de emigrar (Google Trends, ADR-0035) — único proxy
     puntuable de las 5 tandas del Componente A. Store mensual COMPARTIDO con
@@ -148,6 +170,7 @@ def fetch_indice_intencion_migratoria() -> dict | None:
             "fuente": "Google Trends (canasta intención migratoria, ventana fija 2021→)",
             "fecha_dato": f"{ultimo_mes}-01",
             "desactualizado": actualizado[:7] != mes_actual,
+            "contexto_duro": _contexto_duro_componente_b(),
         }
     except Exception as e:
         _warn("indice_intencion_migratoria", e)

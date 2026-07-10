@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-10T16:51:03.964996",
+  "generated_at": "2026-07-10T19:26:21.904258",
   "period": "2026-07",
   "score_global": 3.8,
   "ponderacion": {
@@ -2575,6 +2575,32 @@
           "fuente": "Google Trends (canasta intención migratoria, ventana fija 2021→)",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
+          "contexto_duro": {
+            "eeuu_niv": {
+              "periodo": "2025-09",
+              "valor": 31362
+            },
+            "eeuu_iv": {
+              "periodo": "2025-09",
+              "valor": 63
+            },
+            "canada_pr": {
+              "periodo": "2026-04",
+              "valor": 25
+            },
+            "espana_nacionalidad": {
+              "periodo": "2025",
+              "valor": 11291
+            },
+            "italia_aire": {
+              "periodo": "2024",
+              "valor": 33492
+            },
+            "chile_residencia": {
+              "periodo": "2025",
+              "valor": 580
+            }
+          },
           "aporte_score": 0.6,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en términos de intención de emigrar: mayor = más desconexión)",
           "aporte_nota": null,

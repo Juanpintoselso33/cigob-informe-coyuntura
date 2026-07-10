@@ -2,9 +2,9 @@
 
 | | |
 |---|---|
-| **Estado** | Aceptado — decisiones tomadas 2026-07-10, pendiente de implementación |
-| **Fecha** | 2026-07-07 (propuesto) · 2026-07-10 (decidido) |
-| **Ámbito** | `scripts/vida_cotidiana/collectors/trends.py` (fetch compartido) · `scripts/espiritu_epoca.py` · `scripts/descargar_series.py` · `data/vida/intencion_migratoria_serie.json` (nuevo) · `data-pipeline.yml` · ficha metodológica |
+| **Estado** | Aceptado e implementado — Componente A y Componente B, 2026-07-10 |
+| **Fecha** | 2026-07-07 (propuesto) · 2026-07-10 (decidido e implementado, misma sesión) |
+| **Ámbito** | `scripts/vida_cotidiana/collectors/trends.py` (fetch compartido Componente A) · `scripts/espiritu_epoca.py` · `scripts/descargar_series.py` (Componente A y B) · `data/vida/intencion_migratoria_serie.json` · `data/vida/componente_b_migracion.json` (nuevo) · `data-pipeline.yml` · ficha metodológica |
 
 ## Contexto
 
@@ -67,7 +67,9 @@ en un proxy de búsqueda aislado.
    diluir el score con proxies correlacionados entre sí.
 2. **Nombre**: `indice_intencion_migratoria` — alcance angosto y preciso, no "expectativa de
    futuro" genérica.
-3. **Componente B**: **queda fuera de esta iteración.** Investigación (2026-07-10): no hay
+3. **Componente B**: **implementado en esta misma sesión** (2026-07-10), a pedido explícito del
+   usuario tras el barrido de fuentes — ver sección "Implementación de Componente B" más abajo
+   para el detalle de arquitectura. Investigación previa (mismo día): no hay
    fuente argentina automatizable (CONICET solo publica actas PDF caso por caso sin agregado;
    DNM no desagrega por motivo). Candidatas reales para una iteración futura: **US State
    Department** — visas mensuales a argentinos por categoría (H1B/F1/L1/J1/O1), dato duro,
@@ -182,6 +184,42 @@ en un proxy de búsqueda aislado.
   descartado — no resuelve el pedido de evitar llamadas repetidas a Trends para meses ya
   registrados; la fuente única mensual gateada por frescura cumple el mismo rol con menos
   exposición a rate-limit.
-- **Sumar Componente B en esta misma iteración**: descartado por ahora — mezclaría dos fuentes
-  de datos totalmente distintas (Trends vs. scraping de tablas de gobiernos extranjeros) en un
-  mismo cambio; queda como próximo ADR concreto ya con las fuentes candidatas identificadas.
+- **Sumar Componente B en esta misma iteración**: evaluado inicialmente como fuera de alcance
+  (mezclaría dos fuentes de datos totalmente distintas en un mismo cambio) — revertido ese
+  mismo día a pedido del usuario; ver "Implementación de Componente B" más abajo.
+
+## Implementación de Componente B (2026-07-10, misma sesión)
+
+**Qué se guarda y dónde.** Un store nuevo, `data/vida/componente_b_migracion.json`, con las
+6 fuentes evaluadas (5 verificadas + reintento fallido de una 6ª), cada una con su cadencia
+nativa — sin forzar todo a mensual:
+
+```json
+{
+  "_meta": {"actualizado": "2026-07-10", "fuentes": {"...": "..."}},
+  "eeuu_niv":   {"mensual": {"2023-12": 12345, "...": "..."}},
+  "eeuu_iv":    {"mensual": {"2023-12": 58, "...": "..."}},
+  "canada_pr":  {"mensual": {"2023-12": 20, "...": "..."}},
+  "espana_nacionalidad": {"anual": {"2023": 7208, "2024": 8558, "2025": 11291}},
+  "italia_aire":        {"anual": {"2022": 25846, "2023": 33130, "2024": 33492}},
+  "chile_residencia":   {"anual": {"2000": 617, "...": "...", "2025": 580}}
+}
+```
+
+**Por qué NO es un 5º indicador puntuable.** Mismo principio que las Tandas 2-5 del
+Componente A: sumar 6 series más a `calcular_score()` diluiría el promedio del cinturón con
+proxies de naturaleza completamente distinta (dato duro de otros países vs. búsquedas locales),
+sin una paramétrica formal que las pondere. Componente B es **contexto de validación** del
+Componente A (nota metodológica de la guía original: "nunca reportarse solo"), no una tensión
+propia. Se expone como un campo `contexto_duro` en la card de `indice_intencion_migratoria`
+(`espiritu_epoca.py`), con el último valor de cada fuente — visible en el JSON público, sin
+entrar al score ni (por ahora) con visualización dedicada en la web — eso queda como posible
+fase 2 si se decide mostrarlo.
+
+**Por qué backfill completo en las que se puede.** Canadá (CSV con todo 2015→hoy), España
+(API con todo el histórico de la tabla), Italia (ZIP con 2022-2024, todo lo que publica
+ISTAT) y Chile (Excel con 2000-2025) entregan su serie completa en una sola descarga — se
+guarda todo, no hay motivo para recortar. Los dos de EEUU (NIV e IV) publican un archivo por
+mes: se backfillea desde dic-2023 (convención del proyecto) con un loop de descargas, y las
+corridas siguientes solo agregan el mes nuevo (append incremental al store, no se re-descargan
+meses ya guardados).

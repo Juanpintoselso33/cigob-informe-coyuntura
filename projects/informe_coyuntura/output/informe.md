@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-10 16:51:03"
+generado: "2026-07-10 19:26:21"
 score_global: 2.9
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -101,4 +101,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-07-10 16:51:03 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-10 19:26:21 — schema 1.2.0*
