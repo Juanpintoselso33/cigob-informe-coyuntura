@@ -82,22 +82,22 @@ def test_politica_itcp_reconcilia():
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
     # ADR-0048 (revisión editorial 2026-07-10): 11 indicadores puntúan (la
-    # cohesión es UNA card, el compuesto bicameral) y 2 se publican como
-    # contexto sin puntuar. cohesion_bloque_senado ya no existe como card.
+    # cohesión es UNA card, el compuesto bicameral). rotacion_gabinete y
+    # protestas_caba quedan OCULTOS del snapshot (POLITICA_OCULTOS, mismo
+    # criterio ADR-0022 que los monetarios de macro): se siguen relevando y
+    # cacheando, pero el tablero solo muestra lo que integra las dimensiones.
+    # cohesion_bloque_senado ya no existe como card (fusionado).
     assert len(en_indice) == 11, f"esperaba 11 indicadores en el índice, hay {len(en_indice)}"
     faltantes = {"votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
                  "comisiones_caidas", "iaf_transferencias", "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque", "movilizacion_cepa",
                  "derrotas_legislativas"} - set(en_indice)
     assert not faltantes, f"faltan indicadores que no deberían faltar: {faltantes}"
-    assert set(contexto) == {"rotacion_gabinete", "protestas_caba"}, \
-        f"contexto esperado rotacion_gabinete+protestas_caba: {set(contexto)}"
-    assert "cohesion_bloque_senado" not in c["indicadores"], \
-        "cohesion_bloque_senado fue fusionado en el compuesto — no debería publicarse como card"
+    assert contexto == {}, f"política no debería publicar contexto: {set(contexto)}"
+    for oculto in ("rotacion_gabinete", "protestas_caba", "cohesion_bloque_senado"):
+        assert oculto not in c["indicadores"], f"{oculto} debería estar oculto del snapshot"
     # El compuesto expone su composición por cámara (patrón Fondo de Cese)
     assert set(c["indicadores"]["cohesion_bloque"].get("componentes", {})) >= {"diputados"}
-    for k, i in contexto.items():
-        assert i.get("aporte_score") is None, f"{k} es contexto pero tiene aporte_score"
 
     ponderado = sum(i["puntaje_itcp"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itcp_val) <= 0.15, f"ponderado {ponderado} != ITCP {itcp_val}"

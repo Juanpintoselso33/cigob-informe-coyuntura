@@ -928,53 +928,6 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
-  rotacion_gabinete: {
-    tipo: "indicador",
-    id: "rotacion_gabinete",
-    cinturon: "politica",
-    rezago: "El registro se actualiza con cada salida (eventos de alta visibilidad, con semanas de cobertura de prensa) y se recomputa a diario. El decreto que formaliza una renuncia puede publicarse en el Boletín Oficial hasta unos 40 días después del hecho político; por eso el registro fecha cada salida por el cese efectivo, no por la publicación.",
-    fuente: {
-      organismo: "Boletín Oficial de la República Argentina (decretos de aceptación de renuncia, verificados en InfoLeg); elaboración CIGOB",
-      operacion: "Registro curado de salidas de cargos de rango ministerial pleno (jefe de Gabinete de Ministros y ministros), cada una con su decreto de respaldo, la fecha del cese efectivo y la clasificación del motivo",
-      url: "https://servicios.infoleg.gob.ar/infolegInternet/",
-      acceso: "Semiautomático: registro curado a partir del Boletín Oficial, con un monitor automático que recorre a diario el buscador oficial de normas y avisa ante cada nuevo decreto de salida ministerial que el registro no refleje. El monitor solo alerta: la incorporación de una salida al registro es siempre una decisión documentada del analista.",
-    },
-    transformaciones: [
-      "Cuenta las salidas de funcionarios con rango ministerial pleno (jefe de Gabinete y ministros) acumuladas en una ventana móvil de 12 meses, imputadas al mes del cese efectivo.",
-      "No cuenta los pases de un ministro a otro cargo del mismo gabinete (la persona sigue adentro: contarla duplicaría el evento político real) ni los ministerios creados, cerrados o fusionados por reorganización de la Ley de Ministerios (una fusión no es una salida).",
-      "Quedan fuera del universo las secretarías de la Presidencia aun cuando tengan rango protocolar de ministro: su jerarquía surge de decretos que cambian con más frecuencia que las carteras, y la literatura de rotación ministerial se define sobre el gabinete propiamente dicho. Sus recambios quedan documentados aparte en el mismo registro.",
-      "Cada salida se clasifica por motivo (salida política o cese programado para asumir una banca ganada en una elección); la serie cuenta las dos por igual y la composición se publica en el detalle.",
-    ],
-    anclas: {
-      bandas: [
-        { banda: "≤ 1", puntaje: 100 },
-        { banda: "1 – 2", puntaje: 85 },
-        { banda: "2 – 4", puntaje: 65 },
-        { banda: "4 – 6", puntaje: 40 },
-        { banda: "> 6", puntaje: 10 },
-      ],
-      puntos: [[1, 100], [1.5, 85], [3, 65], [5, 40], [6, 10]],
-      unidadCorta: "salidas 12m",
-    },
-    incidenciaTexto: [
-      "Los umbrales se calibraron contra la serie completa reconstruida del propio indicador (diciembre de 2023 en adelante, rango observado de 0 a 7 salidas): una o ninguna salida en el año es recambio fisiológico; dos, recambio bajo; tres o cuatro, rotación sostenida; cinco o seis, crisis de gabinete; siete o más, crisis abierta. Las cinco bandas tienen meses reales observados.",
-      "Indicador de contexto: desde el 10 de julio de 2026 no integra el índice del cinturón. La revisión editorial acotó el índice a la capacidad del gobierno de gestionar y avanzar su agenda con otros actores (el Parlamento, las provincias, su propio bloque legislativo); la estabilidad del gabinete se sigue midiendo y publicando como lectura complementaria, con los umbrales de arriba como referencia interpretativa.",
-    ],
-    limitaciones: [
-      "Ambigüedad de lectura declarada: un recambio puede reflejar tanto una crisis como una decisión estratégica del Presidente (por ejemplo, ministros que dejan el cargo para asumir bancas ganadas en una elección). El indicador cuenta ambas — incluso el recambio estratégico consume capital político: curva de aprendizaje del entrante, renegociación de equilibrios internos, señal de inestabilidad hacia afuera —, el registro público clasifica el motivo de cada salida para que esa composición sea verificable, y para un caso extremo (un recambio masivo programado) existe el mecanismo general de ajuste del analista, con justificación y vencimiento publicados.",
-      "Es un registro curado, no un cálculo enteramente automático: si una salida tardara en cargarse, el indicador la reflejaría con demora. El riesgo está mitigado por el monitor automático del Boletín Oficial (que avisa ante cada decreto de renuncia ministerial no registrado) y por la altísima visibilidad mediática del evento.",
-      "El decreto puede publicarse hasta unos 40 días después del hecho (el registro fecha por cese efectivo para corregirlo, pero el monitor automático solo ve el Boletín Oficial: su alerta puede llegar semanas después del hecho político).",
-      "Cuenta salidas, no las pondera: la renuncia de un ministro central y la de uno periférico valen igual en la serie.",
-      "La serie describe al gobierno en ejercicio: no es comparable entre presidencias (un fin de mandato reinicia el gabinete completo por diseño institucional, no por crisis).",
-    ],
-    faltantes: "El no-evento es dato: un mes sin salidas cuenta cero y el indicador nunca queda vacío mientras el registro exista. Si el monitor automático del Boletín Oficial no responde, el indicador se publica igual desde el registro curado y la verificación queda para la corrida siguiente.",
-    revisiones: "La serie completa se recomputa desde el registro en cada corrida: una corrección de fecha o de clasificación en el registro se refleja en toda la historia. Cada entrada conserva su decreto de respaldo, verificable en InfoLeg.",
-    cambios: [
-      { fecha: "2026-07-09", cambio: "Alta del indicador: la dimensión de cohesión interna del oficialismo medía solo la disciplina legislativa (Diputados y Senado) y no la estabilidad del propio gabinete, donde se jugaron las principales crisis internas del ciclo. Registro inicial verificado decreto por decreto contra InfoLeg (11 salidas, dic-2023 a jun-2026), con serie mensual completa desde diciembre de 2023 y umbrales calibrados contra esa serie." },
-      { fecha: "2026-07-10", cambio: "Pasa a indicador de contexto: la revisión editorial del cinturón acotó el índice a la capacidad de gestionar y avanzar la agenda de gobierno, y la rotación del gabinete quedó fuera del puntaje. El registro, la serie y la card se mantienen sin cambios." },
-    ],
-  },
-
   alineamiento_senadores_prov: {
     tipo: "indicador",
     id: "alineamiento_senadores_prov",
@@ -1907,7 +1860,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Indicador de contexto: no integra el ITCG, por una razón declarada — puntuar el volumen de protesta premiaría «menos marchas», que es un derecho ejercido y no un resultado de gestión. Leído junto al indicador de orden público, muestra que la protesta se reconvirtió: menos cortes, no menos marchas.",
     ],
-    dobleUso: "El mismo dato (variación de eventos contra la base 2023) se publica también en el cinturón político, como indicador de contexto de la dimensión de conflicto social. Integró el puntaje de ese índice entre el 07 y el 10 de julio de 2026, hasta que la revisión editorial acotó el índice a la capacidad de gestionar y avanzar la agenda de gobierno; la lectura como condición de gobernabilidad — cuánta conflictividad social tiene que administrar la gestión — se mantiene en la card y en el gráfico.",
+    dobleUso: "El mismo dato (variación de eventos contra la base 2023) integró el puntaje del índice del cinturón político entre el 07 y el 10 de julio de 2026, hasta que la revisión editorial acotó ese índice a la capacidad de gestionar y avanzar la agenda de gobierno. Desde entonces el cinturón político no lo publica: la serie se sigue relevando como seguimiento interno de la conflictividad, y esta card de gestión queda como su única lectura pública.",
     limitaciones: [
       "Fuente de membresía con criterios de codificación propios (en inglés), no la definición local de piquete.",
       "Cuenta eventos de protesta (marchas, concentraciones), no cortes de calle: complementa, no sustituye, al indicador de orden público.",
@@ -2478,9 +2431,9 @@ export const FICHAS: Record<string, Ficha> = {
       "A diferencia del ITCM, el ITCG y el ITVC, no existe un documento institucional que fije los pesos de estas cinco dimensiones: el marco ya las describía, pero nunca se habían ponderado. Los pesos son una decisión editorial explícita, apoyada en esa misma distinción del marco: la dimensión de imagen y voto pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
     ],
     seleccion: [
-      "Once indicadores puntúan en cinco dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy), más dos indicadores de contexto declarados que se publican sin puntuar: la rotación del gabinete y las protestas en la Ciudad de Buenos Aires. Reemplaza a un promedio simple de nueve indicadores que pesaba todo por igual, sin distinguir la capacidad de gobernar de la popularidad.",
+      "Once indicadores puntúan en cinco dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El tablero publica solo lo que integra el índice: dos mediciones que quedaron fuera del puntaje (la rotación del gabinete y las protestas en la Ciudad de Buenos Aires) se siguen relevando como seguimiento interno, sin tile propio. Reemplaza a un promedio simple de nueve indicadores que pesaba todo por igual, sin distinguir la capacidad de gobernar de la popularidad.",
       "Criterio de selección: fuentes públicas verificables y automatizables. Los indicadores vigentes se calculan en forma automática (la rotación del gabinete, desde un registro curado con respaldo documental en el Boletín Oficial). El alineamiento de los gobernadores —una estimación manual del analista, sin fuente pública estructurada que lo mida de forma objetiva— se retiró del índice en julio de 2026 y lo reemplazó el alineamiento de voto de los senadores por provincia; los caminos alternativos evaluados (composición legislativa por provincia, transferencias discrecionales) resultaron no ser proxies válidos de la conducta del Poder Ejecutivo provincial.",
-      "La revisión editorial de julio de 2026 acotó el alcance del índice a la capacidad del gobierno de gestionar y avanzar su agenda —el Parlamento, las alianzas territoriales y la cohesión del oficialismo—: la rotación del gabinete y el volumen de protesta se siguen midiendo y publicando, pero como contexto del cinturón, no como parte del puntaje.",
+      "La revisión editorial de julio de 2026 acotó el alcance del índice a la capacidad del gobierno de gestionar y avanzar su agenda —el Parlamento, las alianzas territoriales y la cohesión del oficialismo—: la rotación del gabinete y el volumen de protesta quedaron fuera del puntaje y del tablero, aunque su recolección continúa (mismo criterio que los insumos monetarios del índice macroeconómico).",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones.",
@@ -2529,7 +2482,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-08", cambio: "El alineamiento de gobernadores (estimación manual, congelada por falta de fuente) se retira del índice; lo reemplaza el alineamiento de voto de los senadores por provincia, calculado en forma automática de las votaciones nominales del Senado." },
       { fecha: "2026-07-09", cambio: "Recalibración contra historia real: los umbrales de la cohesión de bloque (ambas cámaras), el alineamiento de senadores y las protestas se recalibran con series mensuales reconstruidas desde las fuentes (24 a 31 meses). Se publica la validación externa del índice contra el EPU de Argentina." },
       { fecha: "2026-07-09", cambio: "Se incorporan dos indicadores: las derrotas legislativas del Ejecutivo (vetos insistidos y decretos rechazados, acumulados en 12 meses) en la dimensión de poder legislativo, y la rotación del gabinete en la de cohesión interna." },
-      { fecha: "2026-07-10", cambio: "Revisión editorial del cinturón: el índice se acota a la capacidad de gestionar y avanzar la agenda de gobierno. La rotación del gabinete y las protestas en la Ciudad de Buenos Aires pasan a contexto (se publican sin puntuar), y la cohesión del bloque en Diputados y en el Senado se fusiona en un único indicador bicameral (Diputados 65%, Senado 35%), con umbrales recalibrados contra la serie compuesta." },
+      { fecha: "2026-07-10", cambio: "Revisión editorial del cinturón: el índice se acota a la capacidad de gestionar y avanzar la agenda de gobierno. La rotación del gabinete y las protestas en la Ciudad de Buenos Aires salen del puntaje y del tablero (su recolección continúa como seguimiento interno), y la cohesión del bloque en Diputados y en el Senado se fusiona en un único indicador bicameral (Diputados 65%, Senado 35%), con umbrales recalibrados contra la serie compuesta." },
     ],
   },
 };

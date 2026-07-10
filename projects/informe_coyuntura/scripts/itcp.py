@@ -63,9 +63,10 @@ wiring de main() (politica.py).
 
 REVISIÓN EDITORIAL CIGOB 2026-07-10 (ADR-0048): el cinturón se acota a
 capacidad de gobernar y avanzar la agenda legislativa. Tres cambios:
-(1) `rotacion_gabinete` y `protestas_caba` SALEN del índice — siguen
-publicándose como cards de contexto (INDICADORES_CONTEXTO, mismo patrón que
-badlar en ITCM); sus bandas quedan abajo como referencia histórica.
+(1) `rotacion_gabinete` y `protestas_caba` SALEN del índice Y del tablero —
+se siguen relevando y cacheando (INDICADORES_CONTEXTO), pero publicar.py
+los oculta del snapshot, mismo patrón que badlar en ITCM (ADR-0022); sus
+bandas quedan abajo como referencia histórica.
 (2) `cohesion_bloque` pasa a ser el COMPUESTO bicameral (Rice de Diputados
 65% + Senado 35%, el ratio interno que ya tenían como indicadores separados)
 y es el único indicador de la dimensión cohesion_interna; la banda del
@@ -227,9 +228,10 @@ BANDAS_ITCP = {
         (-INF, 80.0, 10),
     ],
     "rotacion_gabinete": [
-        # FUERA DEL ÍNDICE desde 2026-07-10 (ADR-0048, revisión editorial
-        # CIGOB: "no sería pertinente en este cinturón") — sigue publicándose
-        # como card de contexto (INDICADORES_CONTEXTO); banda de referencia.
+        # FUERA DEL ÍNDICE Y DEL TABLERO desde 2026-07-10 (ADR-0048,
+        # revisión editorial CIGOB: "no sería pertinente en este cinturón")
+        # — se sigue relevando (INDICADORES_CONTEXTO, oculto del snapshot
+        # por publicar.py); banda de referencia.
         # Salidas de rango ministerial (JGM + ministros) acumuladas en
         # ventana móvil de 12 meses, desde el registro curado
         # data/politica/gabinete_salidas.json (ADR-0047) — menor = mejor.
@@ -254,9 +256,11 @@ BANDAS_ITCP = {
         (-INF, 20.0, 100), (20.0, 40.0, 85), (40.0, 60.0, 65), (60.0, 80.0, 40), (80.0, INF, 10),
     ],
     "protestas_caba": [
-        # FUERA DEL ÍNDICE desde 2026-07-10 (ADR-0048, revisión editorial
-        # CIGOB: "no sería pertinente en este cinturón") — sigue publicándose
-        # como card de contexto (INDICADORES_CONTEXTO); banda de referencia.
+        # FUERA DEL ÍNDICE Y DEL TABLERO de política desde 2026-07-10
+        # (ADR-0048: "no sería pertinente en este cinturón") — se sigue
+        # relevando (INDICADORES_CONTEXTO, oculto del snapshot por
+        # publicar.py; la card de GESTIÓN sigue siendo su lectura pública);
+        # banda de referencia.
         # RECALIBRADO 2026-07-09 con la serie ACLED ya existente (102 meses
         # en output/series/gestion.csv desde 2017, sin backfill nuevo --
         # solo hubo que reconstruir var_vs_2023 mes a mes con la misma
@@ -320,10 +324,12 @@ DIMENSIONES_ITCP = {
     },
 }
 
-# Indicadores de política que se publican pero NO integran el índice
-# (ADR-0048, revisión editorial CIGOB 2026-07-10) — mismo patrón que
-# itcm.INDICADORES_CONTEXTO (badlar y los monetarios nominales) y que
-# protestas_caba en gestión: la card sigue, el puntaje no.
+# Indicadores de política que NO integran el índice (ADR-0048, revisión
+# editorial CIGOB 2026-07-10) — mismo patrón que itcm.INDICADORES_CONTEXTO
+# (badlar y los monetarios nominales, ADR-0022): se siguen relevando y
+# cacheando como seguimiento interno, pero publicar.py los OCULTA del
+# snapshot (POLITICA_OCULTOS) — el tablero solo muestra lo que integra
+# las dimensiones.
 INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba"]
 
 BANDAS_INTERPRETACION = [

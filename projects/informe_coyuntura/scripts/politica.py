@@ -15,7 +15,8 @@ Indicadores:
   rotacion_gabinete         — salidas de rango ministerial (JGM + ministros) acumuladas 12m
                                (registro curado data/politica/gabinete_salidas.json + detector
                                de alerta InfoLeg, semiauto — patrón privatizaciones del ITCG).
-                               CONTEXTO desde 2026-07-10 (ADR-0048): se publica, no puntúa
+                               SEGUIMIENTO INTERNO desde 2026-07-10 (ADR-0048): no puntúa
+                               y publicar.py lo oculta del snapshot; se sigue relevando
   alineamiento_senadores_prov — % votos de senadores no-LLA alineados con LLA, por provincia
                                (scrape senado.gob.ar, auto — reemplaza a gobernadores_alineamiento,
                                placeholder manual congelado desde 2026-04, ver manuales.json)
@@ -25,7 +26,9 @@ Indicadores:
   derrotas_legislativas     — derrotas del Ejecutivo en el recinto, 12m: vetos insistidos +
                                decretos rechazados bajo la ley 26.122 (InfoLeg + actas Senado, auto)
   protestas_caba            — % var. eventos de protesta en CABA vs. base 2023 (ACLED, reutiliza
-                               gestion.py). CONTEXTO desde 2026-07-10 (ADR-0048): se publica, no puntúa
+                               gestion.py). SEGUIMIENTO INTERNO desde 2026-07-10 (ADR-0048): no
+                               puntúa y publicar.py lo oculta del snapshot de política (la card
+                               de gestión sigue siendo su lectura pública)
 
 Nota: ICG UTDT removido (mide confianza ciudadana, no capacidad de gobernar con actores
 políticos). Reemplazado por ratio_dnu según framework Luis Babino / reunión 12-may-2026.

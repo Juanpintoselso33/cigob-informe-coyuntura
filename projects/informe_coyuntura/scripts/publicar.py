@@ -993,6 +993,12 @@ def _scoring_vida_itvc(c, series):
 # al índice vía credito_privado.
 MACRO_OCULTOS = {"badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"}
 
+# Indicadores de política OCULTOS del snapshot (ADR-0048, mismo criterio que
+# ADR-0022): la revisión editorial los sacó del ITCP y el tablero solo
+# muestra lo que integra las dimensiones. Siguen en la pipeline completa
+# (colector, registro curado, cache y series) como seguimiento interno.
+POLITICA_OCULTOS = set(itcp.INDICADORES_CONTEXTO)
+
 
 def aplicar_scoring(informe, series):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo
@@ -1015,6 +1021,8 @@ def aplicar_scoring(informe, series):
             _scoring_vida_itvc(c, series)
             continue
         if ckey == "politica":
+            for oculto in POLITICA_OCULTOS:
+                c["indicadores"].pop(oculto, None)
             _scoring_indice(c, "itcp", itcp, POLITICA_CONTEXTO, _politica_input_txt)
             if c.get("itcp"):
                 _validacion_itcp(c["itcp"])

@@ -35,17 +35,22 @@ Esta es la **lectura mínima** de la revisión: solo se implementa lo explícito
 
 ## Decisión
 
-### 1. `rotacion_gabinete` y `protestas_caba` pasan a CONTEXTO
+### 1. `rotacion_gabinete` y `protestas_caba` salen del índice Y del tablero
 
-Salen de `DIMENSIONES_ITCP`; se declaran en `itcp.INDICADORES_CONTEXTO`
-(mismo patrón que `badlar` y los monetarios nominales en ITCM, y que
-`protestas_caba` ya tenía en gestión): la card se sigue publicando con su
-serie, pero `en_indice=False` y sin `aporte_score`. **No se borra nada**: el
+Salen de `DIMENSIONES_ITCP`; se declaran en `itcp.INDICADORES_CONTEXTO` y
+`publicar.py` los OCULTA del snapshot (`POLITICA_OCULTOS`) — el mismo
+criterio de ADR-0022 para los monetarios nominales de macro: **el tablero
+solo muestra lo que integra las dimensiones** (regla confirmada por el
+editor el mismo 10-jul, al ver la primera versión que los publicaba como
+cards de contexto visibles, estilo gestión). **No se borra nada**: el
 colector de rotación, su registro curado (`gabinete_salidas.json`), el
-detector InfoLeg y las series siguen corriendo — el trabajo de ADR-0047
-queda como lectura complementaria publicada. Las bandas de ambos quedan en
-`BANDAS_ITCP` como referencia histórica (precedente:
-`gobernadores_alineamiento`).
+detector InfoLeg, los caches y las series siguen corriendo como seguimiento
+interno — el trabajo de ADR-0047 queda disponible para reincorporarse si
+una revisión futura lo pide. La card de protestas en GESTIÓN (donde siempre
+fue contexto visible) no cambia. Las bandas de ambos quedan en `BANDAS_ITCP`
+como referencia histórica (precedente: `gobernadores_alineamiento`); la
+ficha metodológica de rotación se retira de /metodologia (los ocultos no
+tienen ficha — precedente badlar).
 
 ### 2. Cohesión fusionada: compuesto bicameral bajo la clave `cohesion_bloque`
 
@@ -83,7 +88,8 @@ queda como lectura complementaria publicada. Las bandas de ambos quedan en
 | Conflicto social | 15% | `movilizacion_cepa` 100 |
 | Imagen y voto | 10% | `votometro_ventaja_lla` 100 |
 
-**11 indicadores puntúan + 2 de contexto** (antes: 14 puntuaban).
+**11 indicadores puntúan; 2 quedan como seguimiento interno no publicado**
+(antes: 14 puntuaban y se publicaban).
 
 ## Opciones descartadas
 
@@ -123,8 +129,9 @@ queda como lectura complementaria publicada. Las bandas de ambos quedan en
   tensión 2,7 [2,4–3,0]; el componente dominante pasa a ser el compuesto de
   cohesión (sin él, el índice cae a 67,7).
 - `tests/test_publicar.py::test_politica_itcp_reconcilia` pinea la nueva
-  composición (11 en índice + 2 contexto, senado ausente, componentes en el
-  compuesto); `test_itcp.py` pinea banda compuesta, dimensiones y contexto;
+  composición (11 en índice; rotación, protestas y senado AUSENTES del
+  snapshot, como los ocultos de macro; componentes en el compuesto);
+  `test_itcp.py` pinea banda compuesta, dimensiones y contexto;
   `test_politica_cohesion.py` cubre `componer_cohesion_bloque`,
   `_anterior_camara` (incluida la migración del cache viejo) y
   `_entrada_camara`.

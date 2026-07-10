@@ -121,7 +121,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   rotacion_gabinete: {
     que: "Cuántos funcionarios de rango ministerial pleno (el jefe de Gabinete y los ministros) dejaron su cargo en los últimos 12 meses, con la fecha del cese efectivo. No cuenta los pases de un ministro a otro cargo del mismo gabinete ni los cierres o fusiones de ministerios: una reorganización no es una salida.",
-    aporta: "Un gabinete estable indica que el Presidente conserva la capacidad de sostener a su equipo; las salidas encadenadas son señal de tensión interna. Es un indicador de contexto del cinturón: se publica como lectura complementaria de la cohesión del oficialismo, sin integrar el puntaje del índice.",
+    aporta: "Un gabinete estable indica que el Presidente conserva la capacidad de sostener a su equipo; las salidas encadenadas son señal de tensión interna. Desde julio de 2026 no integra el índice del cinturón ni se publica en el tablero: la medición continúa como seguimiento interno.",
     frecuencia: "Continua (registro curado, chequeo diario)", tipo: "Conteo (12 meses)",
   },
   adhesion_reformas_provincial: {
@@ -350,6 +350,6 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
   poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántos proyectos quedan varados en comisión y cuántas derrotas consumadas sufre el Ejecutivo en el recinto (vetos insistidos y decretos rechazados).",
   alianzas_territoriales: "El sostén federal del gobierno: las transferencias a las provincias (armonía fiscal), el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI.",
-  cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza, medida en un único indicador bicameral (Diputados 65%, Senado 35%). La estabilidad del gabinete se publica como contexto del cinturón, fuera del puntaje.",
-  conflicto_social: "La conflictividad social que el gobierno tiene que administrar, medida por el índice de movilización de CEPA. La variación de protestas en CABA acompaña como contexto, fuera del puntaje.",
+  cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza, medida en un único indicador bicameral (Diputados 65%, Senado 35%).",
+  conflicto_social: "La conflictividad social que el gobierno tiene que administrar, medida por el índice de movilización de CEPA.",
 };
