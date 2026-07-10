@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-10T06:48:29.797294",
+  "generated_at": "2026-07-10T16:38:12.041883",
   "period": "2026-07",
-  "score_global": 4.1,
+  "score_global": 3.9,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -644,8 +644,8 @@
       "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."
     },
     "politica": {
-      "score": 3.5,
-      "estado": "en_tension",
+      "score": 2.7,
+      "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "votometro_ventaja_lla": {
@@ -701,9 +701,9 @@
           "dimension": "conflicto_social",
           "puntaje_itcp": 64.4,
           "puntaje_banda": 64.4,
-          "peso_efectivo": 0.09,
+          "peso_efectivo": 0.15,
           "aporte_score": 3.6,
-          "aporte_formula": "Anclas ITCP: ≤20 → 100 · 20–40 → 85 · 40–60 → 65 · 60–80 → 40 · >80 → 10 (puntaje interpolado entre anclas: 64.4; pesa 9,0% del ITCP)",
+          "aporte_formula": "Anclas ITCP: ≤20 → 100 · 20–40 → 85 · 40–60 → 65 · 60–80 → 40 · >80 → 10 (puntaje interpolado entre anclas: 64.4; pesa 15,0% del ITCP)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 3,6/10.",
           "aporte_input_txt": null
@@ -841,15 +841,11 @@
           "salidas_estructurales": 2,
           "ultima_salida": "Manuel Adorni — Jefe de Gabinete de Ministros (2026-06)",
           "detalle_txt": "7 salidas en 12 meses = 5 políticas · 2 por bancas electorales — Gerardo Werthein (2025-10), Guillermo Francos (2025-11), Lisandro Catalan (2025-11), Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)",
-          "en_indice": true,
-          "dimension": "cohesion_interna",
-          "puntaje_itcp": 10.0,
-          "puntaje_banda": 10.0,
-          "peso_efectivo": 0.06,
-          "aporte_score": 9.0,
-          "aporte_formula": "Anclas ITCP: ≤1 → 100 · 1–2 → 85 · 2–4 → 65 · 4–6 → 40 · >6 → 10 (puntaje interpolado entre anclas: 10.0; pesa 6,0% del ITCP)",
-          "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 9,0/10: puntaje mínimo — este frente concentra la tensión del cinturón.",
+          "en_indice": false,
+          "aporte_score": null,
+          "aporte_formula": null,
+          "aporte_nota": "Indicador de contexto — no integra el ITCP (paramétrica CIGOB jul-2026).",
+          "aporte_lectura": null,
           "aporte_input_txt": "7 salidas en 12 meses = 5 políticas · 2 por bancas electorales — Gerardo Werthein (2025-10), Guillermo Francos (2025-11), Lisandro Catalan (2025-11), Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)"
         },
         "protestas_caba": {
@@ -861,54 +857,46 @@
           "eventos_2023": 240,
           "var_vs_2023": 25.4,
           "detalle_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
-          "en_indice": true,
-          "dimension": "conflicto_social",
-          "puntaje_itcp": 10.0,
-          "puntaje_banda": 10.0,
-          "peso_efectivo": 0.06,
-          "aporte_score": 9.0,
-          "aporte_formula": "Anclas ITCP: ≤-6 → 100 · -6 a -3 → 85 · -3 a 0 → 65 · 0–10 → 40 · >10 → 10 (puntaje interpolado entre anclas: 10.0; pesa 6,0% del ITCP)",
-          "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 9,0/10: puntaje mínimo — este frente concentra la tensión del cinturón.",
+          "en_indice": false,
+          "aporte_score": null,
+          "aporte_formula": null,
+          "aporte_nota": "Indicador de contexto — no integra el ITCP (paramétrica CIGOB jul-2026).",
+          "aporte_lectura": null,
           "aporte_input_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo"
         },
         "cohesion_bloque": {
-          "valor": 99.9,
-          "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
-          "fuente": "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+          "valor": 99.7,
+          "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
+          "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)",
           "fecha_dato": "2026-06-24",
-          "n_actas": 33,
-          "corrida_exitosa_en": "2026-07-10",
+          "n_actas": 51,
           "desactualizado": false,
+          "componentes": {
+            "diputados": {
+              "valor": 99.9,
+              "fecha_dato": "2026-06-24",
+              "n_actas": 33,
+              "corrida_exitosa_en": "2026-07-10",
+              "desactualizado": false
+            },
+            "senado": {
+              "valor": 99.4,
+              "fecha_dato": "2026-06-04",
+              "n_actas": 18,
+              "corrida_exitosa_en": "2026-07-10",
+              "desactualizado": false
+            }
+          },
           "en_indice": true,
           "dimension": "cohesion_interna",
-          "puntaje_itcp": 100.0,
-          "puntaje_banda": 100.0,
-          "peso_efectivo": 0.09,
-          "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCP: >99,9 → 100 · 99–99,9 → 85 · 98–99 → 65 · 97–98 → 40 · ≤97 → 10 (puntaje interpolado entre anclas: 100.0; pesa 9,0% del ITCP)",
+          "puntaje_itcp": 93.3,
+          "puntaje_banda": 93.3,
+          "peso_efectivo": 0.2,
+          "aporte_score": 0.7,
+          "aporte_formula": "Anclas ITCP: >99,9 → 100 · 99–99,9 → 85 · 97–99 → 65 · 95–97 → 40 · ≤95 → 10 (puntaje interpolado entre anclas: 93.3; pesa 20,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
-          "aporte_input_txt": null
-        },
-        "cohesion_bloque_senado": {
-          "valor": 99.4,
-          "unidad": "% cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días",
-          "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
-          "fecha_dato": "2026-06-04",
-          "n_actas": 18,
-          "corrida_exitosa_en": "2026-07-10",
-          "desactualizado": false,
-          "en_indice": true,
-          "dimension": "cohesion_interna",
-          "puntaje_itcp": 100.0,
-          "puntaje_banda": 100.0,
-          "peso_efectivo": 0.05,
-          "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCP: >95 → 100 · 90–95 → 85 · 85–90 → 65 · 80–85 → 40 · ≤80 → 10 (puntaje interpolado entre anclas: 100.0; pesa 5,0% del ITCP)",
-          "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
-          "aporte_input_txt": "promedio de 18 actas divididas (Senado, últimos 90 días)"
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 0,7/10.",
+          "aporte_input_txt": "99,7% = Diputados 99,9% (peso 65%, 33 actas) · Senado 99,4% (peso 35%, 18 actas)"
         },
         "alineamiento_senadores_prov": {
           "valor": 68.3,
@@ -932,7 +920,7 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 65.5,
+        "valor": 72.9,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -1013,28 +1001,14 @@
           "cohesion_interna": {
             "nombre": "Cohesión interna del oficialismo",
             "peso": 0.2,
-            "puntaje": 73.0,
+            "puntaje": 93.3,
             "indicadores": {
               "cohesion_bloque": {
-                "peso": 0.45,
-                "puntaje_banda": 100.0,
-                "puntaje_aplicado": 100.0,
-                "valor": 99.9,
-                "peso_efectivo": 0.09
-              },
-              "cohesion_bloque_senado": {
-                "peso": 0.25,
-                "puntaje_banda": 100.0,
-                "puntaje_aplicado": 100.0,
-                "valor": 99.4,
-                "peso_efectivo": 0.05
-              },
-              "rotacion_gabinete": {
-                "peso": 0.3,
-                "puntaje_banda": 10.0,
-                "puntaje_aplicado": 10.0,
-                "valor": 7.0,
-                "peso_efectivo": 0.06
+                "peso": 1.0,
+                "puntaje_banda": 93.3,
+                "puntaje_aplicado": 93.3,
+                "valor": 99.7,
+                "peso_efectivo": 0.2
               }
             },
             "peso_efectivo": 0.2,
@@ -1043,21 +1017,14 @@
           "conflicto_social": {
             "nombre": "Conflicto social",
             "peso": 0.15,
-            "puntaje": 42.6,
+            "puntaje": 64.4,
             "indicadores": {
               "movilizacion_cepa": {
-                "peso": 0.6,
+                "peso": 1.0,
                 "puntaje_banda": 64.4,
                 "puntaje_aplicado": 64.4,
                 "valor": 50.5,
-                "peso_efectivo": 0.09
-              },
-              "protestas_caba": {
-                "peso": 0.4,
-                "puntaje_banda": 10.0,
-                "puntaje_aplicado": 10.0,
-                "valor": 25.4,
-                "peso_efectivo": 0.06
+                "peso_efectivo": 0.15
               }
             },
             "peso_efectivo": 0.15,
@@ -1082,212 +1049,212 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 63.3,
-          "p95": 67.9,
+          "p05": 70.2,
+          "p95": 75.7,
           "tension_rango": [
-            3.2,
-            3.7
+            2.4,
+            3.0
           ],
           "dominante": {
-            "indicador": "rotacion_gabinete",
-            "indice_sin": 70.9
+            "indicador": "cohesion_bloque",
+            "indice_sin": 67.7
           },
           "n_draws": 1000,
           "hist": [
             3,
-            1,
-            5,
-            7,
-            12,
-            16,
-            23,
-            31,
-            22,
-            39,
-            57,
-            50,
-            69,
-            66,
-            60,
-            72,
-            59,
-            63,
-            66,
-            62,
-            48,
-            47,
-            32,
-            19,
-            22,
-            17,
-            12,
-            5,
             3,
-            4,
-            4,
             1,
-            0,
-            1,
-            1,
-            1
+            8,
+            7,
+            6,
+            21,
+            13,
+            25,
+            33,
+            22,
+            30,
+            41,
+            45,
+            48,
+            57,
+            64,
+            45,
+            54,
+            56,
+            67,
+            42,
+            50,
+            35,
+            39,
+            30,
+            32,
+            33,
+            23,
+            21,
+            15,
+            10,
+            10,
+            5,
+            2,
+            4
           ],
-          "hist_min": 61.76,
-          "hist_max": 70.56,
+          "hist_min": 68.55,
+          "hist_max": 77.18,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": -0.574,
-          "r_diferencias": -0.155,
+          "r_niveles": -0.565,
+          "r_diferencias": -0.196,
           "n": 30,
           "pares": [
             [
               "2024-01",
-              73.5,
+              73.3,
               85.2
             ],
             [
               "2024-02",
-              77.2,
+              77.7,
               84.7
             ],
             [
               "2024-03",
-              79.1,
+              75.8,
               78.5
             ],
             [
               "2024-04",
-              79.8,
+              76.2,
               90.7
             ],
             [
               "2024-05",
-              78.3,
+              76.0,
               72.7
             ],
             [
               "2024-06",
-              68.5,
+              69.6,
               109.4
             ],
             [
               "2024-07",
-              62.1,
+              57.1,
               97.5
             ],
             [
               "2024-08",
-              65.2,
+              58.1,
               77.7
             ],
             [
               "2024-09",
-              66.5,
+              60.9,
               73.0
             ],
             [
               "2024-10",
-              64.6,
+              67.0,
               85.0
             ],
             [
               "2024-11",
-              55.9,
+              57.9,
               82.5
             ],
             [
               "2024-12",
-              71.3,
+              69.1,
               85.5
             ],
             [
               "2025-01",
-              67.0,
+              66.2,
               78.6
             ],
             [
               "2025-02",
-              77.7,
+              77.2,
               81.1
             ],
             [
               "2025-03",
-              75.2,
+              75.6,
               92.7
             ],
             [
               "2025-04",
-              70.9,
+              74.2,
               113.7
             ],
             [
               "2025-05",
-              75.3,
+              76.8,
               79.2
             ],
             [
               "2025-06",
-              69.8,
+              73.3,
               91.8
             ],
             [
               "2025-07",
-              60.6,
+              65.0,
               101.9
             ],
             [
               "2025-08",
-              36.1,
+              45.1,
               101.2
             ],
             [
               "2025-09",
-              38.2,
+              43.4,
               182.8
             ],
             [
               "2025-10",
-              41.6,
+              45.7,
               145.8
             ],
             [
               "2025-11",
-              49.5,
+              59.0,
               116.4
             ],
             [
               "2025-12",
-              53.8,
+              63.9,
               118.5
             ],
             [
               "2026-01",
-              54.4,
+              66.5,
               76.8
             ],
             [
               "2026-02",
-              47.5,
+              58.4,
               84.2
             ],
             [
               "2026-03",
-              48.2,
+              61.3,
               89.0
             ],
             [
               "2026-04",
-              52.4,
+              61.4,
               95.5
             ],
             [
               "2026-05",
-              57.5,
+              72.3,
               95.2
             ],
             [
               "2026-06",
-              65.9,
+              71.3,
               105.3
             ]
           ],
@@ -1297,7 +1264,7 @@
           "serie_label": "ITCP (reconstrucción mensual)",
           "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
           "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
-          "conclusion": "Correlación -0,574 en niveles y -0,155 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
+          "conclusion": "Correlación -0,565 en niveles y -0,196 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
@@ -1476,20 +1443,20 @@
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,6/10."
         },
         "sentimiento_digital": {
-          "valor": 5.7,
+          "valor": 6.0,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-09",
           "desactualizado": false,
           "detalle_txt": "El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITVC usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.",
           "en_indice": true,
           "dimension": "confianza",
-          "indice_itvc": 138.9,
+          "indice_itvc": 137.0,
           "peso_efectivo": 0.015,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 138,9 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 137,0 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
-          "aporte_lectura": "Este componente está en 138,9 contra una base de 100: su tensión equivalente daría negativa (-2,8) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
+          "aporte_lectura": "Este componente está en 137,0 contra una base de 100: su tensión equivalente daría negativa (-2,4) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
         },
         "patentamiento_motos": {
           "valor": 69298,
@@ -1508,7 +1475,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260710_0635.json",
+      "fuente_enriquecida": "vida_cotidiana_20260709_1131.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 91.1,
@@ -1602,7 +1569,7 @@
           "confianza": {
             "nombre": "Confianza y seguridad",
             "peso": 0.15,
-            "puntaje": 104.1,
+            "puntaje": 104.0,
             "indicadores": {
               "icc_utdt": {
                 "peso": 0.45,
@@ -1618,8 +1585,8 @@
               },
               "sentimiento_digital": {
                 "peso": 0.1,
-                "puntaje_banda": 138.9,
-                "puntaje_aplicado": 138.9,
+                "puntaje_banda": 137.0,
+                "puntaje_aplicado": 137.0,
                 "peso_efectivo": 0.015
               },
               "consumo_carne": {
@@ -1642,56 +1609,56 @@
         "ajustes_aplicados": [],
         "robustez": {
           "p05": 89.3,
-          "p95": 92.9,
+          "p95": 92.8,
           "tension_rango": [
             6.4,
             7.1
           ],
           "dominante": {
             "indicador": "endeudamiento_familiar",
-            "indice_sin": 97.8
+            "indice_sin": 97.7
           },
           "n_draws": 1000,
           "hist": [
             1,
             3,
             4,
-            5,
-            8,
+            6,
+            7,
             6,
             11,
-            12,
-            25,
-            27,
-            31,
-            36,
-            34,
-            35,
-            46,
-            53,
-            58,
-            42,
-            53,
-            62,
-            60,
-            58,
-            49,
-            48,
-            49,
-            38,
-            33,
-            30,
-            22,
-            15,
-            14,
             13,
+            24,
+            27,
+            33,
+            37,
+            31,
+            37,
+            44,
+            58,
+            55,
+            41,
+            53,
+            61,
+            61,
+            59,
+            49,
+            49,
+            49,
+            35,
+            33,
+            32,
+            21,
+            15,
+            16,
+            10,
             7,
             7,
             2,
             3
           ],
-          "hist_min": 88.1,
-          "hist_max": 93.9,
+          "hist_min": 88.07,
+          "hist_max": 93.88,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
@@ -2421,8 +2388,8 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": 0.766,
-          "r_diferencias": 0.374,
+          "r_niveles": 0.767,
+          "r_diferencias": 0.378,
           "n": 32,
           "pares": [
             [
@@ -2583,7 +2550,7 @@
             [
               "2026-07",
               73.8,
-              2040.0
+              2086.2
             ]
           ],
           "plot": "minmax",
@@ -2592,7 +2559,7 @@
           "serie_label": "ITCG (reconstrucción mensual)",
           "externa_label": "Merval en dólares",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,766 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
+          "conclusion": "Correlación 0,767 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
         }
       },
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
@@ -2682,7 +2649,7 @@
         "merval": {
           "r": 0.77,
           "n": 32,
-          "rd": 0.37
+          "rd": 0.38
         },
         "icc": {
           "r": 0.46,
@@ -2723,24 +2690,24 @@
         "indice": "ITCP",
         "propio": "epu",
         "riesgo": {
-          "r": 0.42,
+          "r": 0.15,
           "n": 29,
-          "rd": -0.2
+          "rd": -0.29
         },
         "merval": {
-          "r": -0.3,
+          "r": -0.06,
           "n": 30,
-          "rd": 0.27
+          "rd": 0.28
         },
         "icc": {
-          "r": -0.07,
+          "r": 0.04,
           "n": 29,
-          "rd": 0.36
+          "rd": 0.27
         },
         "epu": {
-          "r": -0.57,
+          "r": -0.56,
           "n": 30,
-          "rd": -0.15
+          "rd": -0.2
         }
       }
     ],
@@ -2764,6 +2731,6 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,46 con la confianza del consumidor, ITCP -0,57 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,42 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,2, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,46 con la confianza del consumidor, ITCP -0,56 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,15 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,29, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
   }
 }

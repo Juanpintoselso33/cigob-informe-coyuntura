@@ -680,6 +680,26 @@ def fetch_cohesion_bloque_diputados_mensual(anio_inicio: int = 2023, dias_ventan
     return puntos
 
 
+def fetch_cohesion_bloque_compuesta_mensual(anio_inicio: int = 2023, dias_ventana: int = 90) -> list:
+    """Serie MENSUAL del compuesto bicameral de cohesión (ADR-0048): por cada
+    fin de mes, Rice de Diputados 65% + Rice del Senado 35%
+    (politica.COHESION_PESOS_CAMARAS — la misma fórmula que la card), sobre
+    las dos series mensuales por cámara ya cacheadas. Si un mes tiene dato de
+    una sola cámara (el Senado arranca en feb-2024), renormaliza igual que la
+    card. [[YYYY-MM-DD, valor]]."""
+    dip = dict(fetch_cohesion_bloque_diputados_mensual(anio_inicio, dias_ventana))
+    sen = dict(fetch_cohesion_bloque_senado_mensual(anio_inicio, dias_ventana))
+    pesos = politica.COHESION_PESOS_CAMARAS
+    out = []
+    for fecha in sorted(set(dip) | set(sen)):
+        con_dato = {c: v for c, v in (("diputados", dip.get(fecha)),
+                                       ("senado", sen.get(fecha))) if v is not None}
+        peso_total = sum(pesos[c] for c in con_dato)
+        valor = sum(v * pesos[c] for c, v in con_dato.items()) / peso_total
+        out.append([fecha, round(valor, 1)])
+    return out
+
+
 def fetch_alineamiento_senadores_prov_serie(anio_inicio: int = 2023) -> list:
     """Serie ANUAL de alineamiento_senadores_prov (reemplaza a
     gobernadores_alineamiento). Caché persistente por año, ver
@@ -955,18 +975,16 @@ POLITICA_DERIVADAS = [
     ("derrotas_legislativas", "derrotas del Ejecutivo en el recinto (12m móviles)",
      "InfoLeg + actas del Senado — elaboración CIGOB",
      fetch_derrotas_legislativas_mensual),
-    # cohesion_bloque (Diputados) volvió a registrarse acá 2026-07-09 (ADR-0040
-    # follow-up) usando fetch_cohesion_bloque_diputados_mensual, que camina la
-    # historia UNA sola vez gracias a la caché permanente por acta -- ver esa
-    # función y _actas_cohesion_diputados_cacheadas para el detalle de por qué
-    # el registro anterior (fetch_cohesion_bloque_serie, anual, sin caché por
-    # acta) se había sacado de esta lista (~53min extra en el pipeline).
-    ("cohesion_bloque", "% cohesión (índice de Rice)",
-     "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
-     fetch_cohesion_bloque_diputados_mensual),
-    ("cohesion_bloque_senado", "% cohesión (índice de Rice, Senado)",
-     "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
-     fetch_cohesion_bloque_senado_mensual),
+    # cohesion_bloque es el COMPUESTO bicameral desde 2026-07-10 (ADR-0048):
+    # las dos series mensuales por cámara (fetch_cohesion_bloque_diputados_mensual
+    # y fetch_cohesion_bloque_senado_mensual, cada una con su caché permanente
+    # por acta — ver ADR-0040/0041 para por qué eso importa, ~53min de
+    # diferencia) siguen siendo los insumos, pero al CSV va una sola serie
+    # 65/35 — la card del Senado dejó de existir como indicador propio, así
+    # que su serie separada se purga del CSV en la primera corrida sin merge.
+    ("cohesion_bloque", "% cohesión (índice de Rice bicameral 65/35)",
+     "Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)",
+     fetch_cohesion_bloque_compuesta_mensual),
     ("adhesion_reformas_provincial", "% de jurisdicciones (sobre 24) adheridas al RIGI",
      "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
      fetch_adhesion_reformas_provincial_serie),

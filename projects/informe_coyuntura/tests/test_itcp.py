@@ -102,27 +102,33 @@ def test_banda_cohesion_bloque_senado_ya_no_satura_valores_antes_planos():
     assert puntaje == 86.8
 
 
-def test_banda_cohesion_bloque_diputados_recalibrada():
-    # Recalibración 2026-07-09 (ADR-0042) con 31 puntos mensuales reales
-    # backfilleados (dic-2023->jun-2026): anclas 99,9/99,0/98,0/97,0 (antes
-    # 90/75/60/40, fórmula ad hoc nunca validada).
+def test_banda_cohesion_bloque_compuesta_recalibrada():
+    # ADR-0048 (2026-07-10): cohesion_bloque pasa a ser el COMPUESTO
+    # bicameral 65/35 y sus anclas se recalibran contra la serie compuesta
+    # reconstruida (31 puntos, dic-2023->jun-2026, rango 90,3-100,0):
+    # 99,9/99,0/97,0/95,0 -- distribución 8/4/9/7/3 por banda, las cinco
+    # con datos reales. Las anclas anteriores (99,9/99,0/98,0/97,0,
+    # ADR-0042) estaban calibradas para Diputados sola.
     bandas = itcp.BANDAS_ITCP["cohesion_bloque"]
     assert itcp.puntaje_banda(99.9, bandas) == 85     # low exclusivo del tramo abierto
     assert itcp.puntaje_banda(99.91, bandas) == 100
     assert itcp.puntaje_banda(99.0, bandas) == 65     # high inclusivo
-    assert itcp.puntaje_banda(98.0, bandas) == 40
-    assert itcp.puntaje_banda(97.0, bandas) == 10
-    assert itcp.puntaje_banda(96.7, bandas) == 10     # mínimo real observado (dic-2023)
+    assert itcp.puntaje_banda(97.0, bandas) == 40
+    assert itcp.puntaje_banda(95.0, bandas) == 10
+    assert itcp.puntaje_banda(90.3, bandas) == 10     # mínimo real observado (ago-2025)
 
 
-def test_banda_cohesion_bloque_diputados_ya_no_satura_valores_antes_planos():
-    # Bajo las anclas viejas (90,inf,100), CUALQUIER valor real observado
-    # (96,7-100,0) saturaba en 100 -- 31 de 31 meses, sin excepción. Un valor
-    # real de esa franja (ago-2025, 97.5%) ya no se aplana en el techo.
+def test_banda_cohesion_bloque_compuesta_discrimina_la_serie_real():
+    # Valores reales de la serie compuesta que con las anclas de Diputados
+    # sola caían casi todos en el piso (menores a 97): con las anclas del
+    # compuesto recorren el cuerpo de la escala sin aplanarse.
     import parametrica
     bandas = itcp.BANDAS_ITCP["cohesion_bloque"]
-    puntaje = parametrica.puntaje_interpolado(97.5, bandas)
-    assert puntaje < 100.0
+    assert parametrica.puntaje_interpolado(99.7, bandas) < 100.0   # valor live 10-jul-2026
+    assert parametrica.puntaje_interpolado(99.7, bandas) > 85.0
+    assert 40.0 < parametrica.puntaje_interpolado(97.4, bandas) < 85.0   # mediana real
+    assert parametrica.puntaje_interpolado(92.7, bandas) < 40.0   # sep-2025 real
+    assert parametrica.puntaje_interpolado(90.3, bandas) == 10.0  # mínimo real
 
 
 def test_banda_comisiones_caidas_recalibrada():
@@ -208,16 +214,33 @@ def test_banda_rotacion_gabinete_interpolado_discrimina():
     assert parametrica.puntaje_interpolado(7, bandas) == 10.0   # jun-2026 (máximo)
 
 
-def test_dimension_cohesion_interna_pesos_con_rotacion_gabinete():
-    # ADR-0047: la pata ejecutiva entra con 30%; el par legislativo conserva
-    # su ratio interno 65/35 ≈ 45/25. Los pesos ENTRE dimensiones (ADR-0036)
-    # no se tocan.
+def test_dimension_cohesion_interna_es_solo_el_compuesto():
+    # ADR-0048 (revisión editorial 2026-07-10): la dimensión queda en el
+    # compuesto bicameral solo; rotacion_gabinete sale a contexto y
+    # cohesion_bloque_senado se fusiona adentro del compuesto. Los pesos
+    # ENTRE dimensiones (ADR-0036) no se tocan.
     dim = itcp.DIMENSIONES_ITCP["cohesion_interna"]
-    assert dim["indicadores"] == {"cohesion_bloque": 0.45,
-                                  "cohesion_bloque_senado": 0.25,
-                                  "rotacion_gabinete": 0.30}
-    assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
+    assert dim["indicadores"] == {"cohesion_bloque": 1.0}
     assert dim["peso"] == 0.20
+
+
+def test_dimension_conflicto_social_sin_protestas():
+    # ADR-0048: protestas_caba sale a contexto — movilizacion_cepa queda sola.
+    dim = itcp.DIMENSIONES_ITCP["conflicto_social"]
+    assert dim["indicadores"] == {"movilizacion_cepa": 1.0}
+    assert dim["peso"] == 0.15
+
+
+def test_indicadores_contexto_declarados_y_fuera_de_las_dimensiones():
+    # ADR-0048: se publican sin puntuar; sus bandas quedan como referencia
+    # histórica en BANDAS_ITCP, así que el override de contexto es lo único
+    # que los mantiene fuera del en_indice de la card (patrón macro/ITCM).
+    assert set(itcp.INDICADORES_CONTEXTO) == {"rotacion_gabinete", "protestas_caba"}
+    en_dimensiones = {k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]}
+    for contexto in itcp.INDICADORES_CONTEXTO:
+        assert contexto not in en_dimensiones
+        assert contexto in itcp.BANDAS_ITCP   # referencia histórica, no se borra
+    assert "cohesion_bloque_senado" not in en_dimensiones   # fusionado, no contexto
 
 
 def test_pesos_itcp_suman_uno_en_cada_dimension():
@@ -237,11 +260,12 @@ def test_calcular_itcp_pondera_dimensiones():
         "iaf_transferencias": 12.0,          # alianzas_territoriales, puntaje 100
         "alineamiento_senadores_prov": 70.0, # alianzas_territoriales, puntaje 100
         "adhesion_reformas_provincial": 90.0, # alianzas_territoriales, puntaje 100
-        "cohesion_bloque": 100.0,            # cohesion_interna, puntaje 100
-        "cohesion_bloque_senado": 95.0,      # cohesion_interna, puntaje 100
-        "rotacion_gabinete": 0.0,            # cohesion_interna, puntaje 100 (0 salidas 12m)
+        "cohesion_bloque": 100.0,            # cohesion_interna, puntaje 100 (compuesto bicameral)
         "movilizacion_cepa": 5.0,            # conflicto_social, puntaje 100
-        "protestas_caba": -35.0,             # conflicto_social, puntaje 100 (var_vs_2023, no valor crudo)
+        # rotacion_gabinete / protestas_caba: contexto (ADR-0048) — aunque
+        # llegaran en `valores`, el motor los ignora al no estar en dimensiones
+        "rotacion_gabinete": 7.0,
+        "protestas_caba": 25.0,
     }
     resultado = itcp.calcular_itcp(valores)
     assert resultado is not None

@@ -115,18 +115,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (12m)", tipo: "Nivel (%)",
   },
   cohesion_bloque: {
-    que: "Qué tan pareja o dispareja vota puertas adentro el bloque propio de LLA en la Cámara de Diputados, en las votaciones nominales divididas de los últimos 90 días: resta los votos a favor menos los votos en contra de cada acta, en valor absoluto, sobre el total de votos que emitió el bloque en esa acta.",
-    aporta: "Mide la cohesión interna del oficialismo en Diputados — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente —, clave para sostener vetos y aprobar leyes.",
-    frecuencia: "Continua (90d)", tipo: "Nivel (%)",
-  },
-  cohesion_bloque_senado: {
-    que: "Qué tan pareja o dispareja vota puertas adentro el bloque propio de LLA en el Senado, en las votaciones nominales divididas de los últimos 90 días: resta los votos a favor menos los votos en contra de cada acta, en valor absoluto, sobre el total de votos que emitió el bloque en esa acta.",
-    aporta: "Mide la cohesión interna del oficialismo en la cámara alta, donde el bloque propio tiene pocas bancas y una sola disidencia mueve el promedio con fuerza — clave para sostener vetos y aprobar leyes en el Senado.",
+    que: "Qué tan pareja o dispareja vota puertas adentro el bloque propio de LLA, en las votaciones nominales divididas de los últimos 90 días de las dos cámaras: por acta, resta los votos a favor menos los votos en contra, en valor absoluto, sobre el total de votos que emitió el bloque. El indicador pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso se reparte sobre la otra.",
+    aporta: "Mide la cohesión interna del oficialismo en el Congreso — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente —, clave para sostener vetos y aprobar leyes. La composición por cámara se publica en el detalle.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   rotacion_gabinete: {
     que: "Cuántos funcionarios de rango ministerial pleno (el jefe de Gabinete y los ministros) dejaron su cargo en los últimos 12 meses, con la fecha del cese efectivo. No cuenta los pases de un ministro a otro cargo del mismo gabinete ni los cierres o fusiones de ministerios: una reorganización no es una salida.",
-    aporta: "Un gabinete estable indica que el Presidente conserva la capacidad de sostener a su equipo; las salidas encadenadas son señal de tensión interna. Es la lectura del Poder Ejecutivo dentro de la cohesión del oficialismo, que se complementa con la disciplina de voto del bloque en las dos cámaras.",
+    aporta: "Un gabinete estable indica que el Presidente conserva la capacidad de sostener a su equipo; las salidas encadenadas son señal de tensión interna. Es un indicador de contexto del cinturón: se publica como lectura complementaria de la cohesión del oficialismo, sin integrar el puntaje del índice.",
     frecuencia: "Continua (registro curado, chequeo diario)", tipo: "Conteo (12 meses)",
   },
   adhesion_reformas_provincial: {
@@ -348,8 +343,8 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   confianza: "El ánimo y la seguridad de la vida diaria: confianza del consumidor (UTDT), inseguridad, consumo de carne y patentamiento de motos como termómetros de bolsillo.",
   // ITCP
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
-  poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum y cuántos proyectos quedan varados en comisión.",
+  poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántos proyectos quedan varados en comisión y cuántas derrotas consumadas sufre el Ejecutivo en el recinto (vetos insistidos y decretos rechazados).",
   alianzas_territoriales: "El sostén federal del gobierno: las transferencias a las provincias (armonía fiscal), el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI.",
-  cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza en Diputados y en el Senado, y la estabilidad del gabinete del Presidente (cuántos ministros dejaron su cargo en el último año).",
-  conflicto_social: "La conflictividad social que el gobierno tiene que administrar: el índice de movilización de CEPA y la variación de eventos de protesta en CABA contra la base 2023.",
+  cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza, medida en un único indicador bicameral (Diputados 65%, Senado 35%). La estabilidad del gabinete se publica como contexto del cinturón, fuera del puntaje.",
+  conflicto_social: "La conflictividad social que el gobierno tiene que administrar, medida por el índice de movilización de CEPA. La variación de protestas en CABA acompaña como contexto, fuera del puntaje.",
 };

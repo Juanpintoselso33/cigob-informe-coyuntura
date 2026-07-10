@@ -426,8 +426,21 @@ def _politica_input_txt(ikey, ind):
         # "jurisdicciones", NO "provincias": de las 24, una es CABA, que no
         # es una provincia -- llamarlas "24 provincias" sería impreciso.
         return f"{ind['n_provincias']} de 24 jurisdicciones adheridas al RIGI"
-    if ikey == "cohesion_bloque_senado" and ind.get("n_actas") is not None:
-        return f"promedio de {ind['n_actas']} actas divididas (Senado, últimos 90 días)"
+    if ikey == "cohesion_bloque" and ind.get("componentes"):
+        # Compuesto bicameral (ADR-0048): la descomposición por cámara,
+        # mismo patrón que el Fondo de Cese en gestión. El peso nominal
+        # (65/35) solo se muestra cuando ambas cámaras aportan — con una
+        # sola, el compuesto renormaliza y el 65/35 sería engañoso.
+        camaras = [(nombre, peso, ind["componentes"].get(clave) or {})
+                   for nombre, clave, peso in (("Diputados", "diputados", 65),
+                                                ("Senado", "senado", 35))]
+        camaras = [(n, p, c) for n, p, c in camaras if c.get("valor") is not None]
+        partes = [f"{nombre} {coma(c['valor'])}% "
+                  + (f"(peso {peso}%, {c.get('n_actas', '?')} actas)" if len(camaras) == 2
+                     else f"({c.get('n_actas', '?')} actas)")
+                  for nombre, peso, c in camaras]
+        if partes:
+            return f"{coma(ind.get('valor'))}% = " + " · ".join(partes)
     return None
 
 

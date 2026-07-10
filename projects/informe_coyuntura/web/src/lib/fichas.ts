@@ -892,70 +892,39 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "cohesion_bloque",
     cinturon: "politica",
-    rezago: "El portal de votaciones nominales de Diputados registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada corrida.",
+    rezago: "Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada corrida.",
     fuente: {
-      organismo: "Cámara de Diputados de la Nación",
-      operacion: "Votaciones nominales de Diputados — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días",
+      organismo: "Cámara de Diputados y Senado de la Nación",
+      operacion: "Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días",
       url: "https://votaciones.hcdn.gob.ar",
-      acceso: "Automático: scraping directo del portal público de votaciones nominales; ya no depende de una carga manual del analista.",
+      acceso: "Automático: scraping directo de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista.",
     },
     transformaciones: [
       "Para cada acta con al menos un voto a favor o en contra del bloque propio de La Libertad Avanza (se excluyen deliberadamente los bloques aliados de nombre ambiguo, para no inflar la cohesión medida con votos que no son del oficialismo propiamente dicho), calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
-      "El indicador es el promedio de ese cálculo en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran en la cuenta.",
+      "Por cámara, el cálculo es el promedio de esa cuenta en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.",
+      "El indicador publicado es el compuesto bicameral: Diputados pesa 65% y el Senado 35% — el mismo reparto que las dos cámaras tenían cuando eran indicadores separados. Si una cámara no tiene dato (por ejemplo, receso sin actas divididas), el peso se reparte sobre la que sí lo tiene; la composición por cámara se publica en el detalle de la card.",
     ],
     incidenciaTexto: [
-      "Mide qué tan unido vota el bloque oficialista puertas adentro — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
-      "El puntaje del índice se asigna por bandas de ese porcentaje, interpolado entre anclas: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 98% y 99% → moderado; entre 97% y 98% → bajo; 97% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (dic-2023 en adelante) — antes eran una fórmula ad hoc nunca validada, que saturaba en la banda más alta en el 100% de los meses reales.",
-      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 65% frente al 35% del mismo cálculo aplicado al Senado.",
+      "Mide qué tan unido vota el bloque oficialista puertas adentro de las dos cámaras — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
+      "El puntaje del índice se asigna por bandas del compuesto, interpolado entre anclas: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 97% y 99% → moderado; entre 95% y 97% → bajo; 95% o menos → el más bajo. Los umbrales se calibraron contra la serie mensual del propio compuesto (dic-2023 en adelante, rango observado 90,3–100): las cinco bandas tienen meses reales observados.",
+      "Es el único indicador de la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total).",
     ],
     limitaciones: [
       "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
-      "No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el diputado no hubiera votado.",
-      "Depende de que el portal público mantenga su estructura actual: un cambio de diseño del sitio puede interrumpir la lectura automática hasta que se ajuste.",
+      "Las dos cámaras tienen sensibilidad distinta: el bloque de Diputados es grande (un disidente mueve poco el promedio) y el del Senado es chico (un solo voto disidente lo mueve con fuerza). El compuesto pondera esa asimetría (65/35) pero no la elimina — la composición por cámara se publica para poder leerla.",
+      "No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el legislador no hubiera votado.",
+      "Depende de que los portales públicos mantengan su estructura actual: un cambio de diseño puede interrumpir la lectura automática hasta que se ajuste.",
       "Con pocas actas divididas en la ventana de 90 días, un solo voto conflictivo mueve el promedio con fuerza.",
     ],
-    faltantes: "Si el scraping no logra llegar al sitio, se conserva el último promedio calculado en caché; recién se marca desactualizado si pasan más de 10 días sin una corrida que haya llegado al portal — un receso legislativo sin actas nuevas no cuenta como desactualización.",
-    revisiones: "El promedio de los últimos 90 días se recalcula completo desde la fuente en cada corrida; no se arrastran promedios previos.",
+    faltantes: "Si el scraping no logra llegar a uno de los portales, se conserva el último promedio calculado de esa cámara y el compuesto se arma igual; recién se marca desactualizado si ninguna cámara tuvo una corrida que llegara a su portal en más de 10 días — un receso legislativo sin actas nuevas no cuenta como desactualización.",
+    revisiones: "El promedio de los últimos 90 días se recalcula completo desde las fuentes en cada corrida; no se arrastran promedios previos.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón como estimación manual, a la espera de una fuente estructurada de votaciones vigente." },
-      { fecha: "2026-07-07", cambio: "Deja de ser una estimación manual: pasa a calcularse en forma automática con el scraping de las votaciones nominales de Diputados. Cambia también la definición — de «porcentaje alineado con la posición oficial» (no observable de forma independiente) a «qué tan pareja o dispareja es la votación interna del bloque propio», calculada acta por acta." },
-      { fecha: "2026-07-09", cambio: "El scraping automático quedó bloqueado en producción entre el 07 y el 09 de julio (protección del portal contra acceso automatizado) — el indicador se sostuvo con el último dato calculado. Restablecido usando una vía de acceso directa del mismo portal, sin depender de la parte bloqueada." },
+      { fecha: "2026-07-07", cambio: "Deja de ser una estimación manual: pasa a calcularse en forma automática con el scraping de las votaciones nominales de Diputados. Cambia también la definición — de «porcentaje alineado con la posición oficial» (no observable de forma independiente) a «qué tan pareja o dispareja es la votación interna del bloque propio», calculada acta por acta. El mismo día nace la lectura complementaria sobre el Senado, como indicador separado." },
+      { fecha: "2026-07-09", cambio: "El scraping automático de Diputados quedó bloqueado en producción entre el 07 y el 09 de julio (protección del portal contra acceso automatizado) — el indicador se sostuvo con el último dato calculado. Restablecido usando una vía de acceso directa del mismo portal, sin depender de la parte bloqueada." },
       { fecha: "2026-07-09", cambio: "Suma una caché permanente por acta: una corrida ya no vuelve a descargar actas ya vistas, solo las nuevas desde la corrida anterior (antes de esto, reconstruir el historial completo agregaba ~53 minutos al pipeline). Habilita también la serie histórica MENSUAL del gráfico (antes: 3 puntos anuales)." },
-      { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 90/75/60/40, fórmula ad hoc nunca validada) a partir de la serie mensual reconstruida en el punto anterior (31 meses reales, dic-2023 a jun-2026): nuevos cortes en 99,9/99,0/98,0/97,0. El techo anterior saturaba en el 100% de los meses reales — el bloque propio de LLA en Diputados es mucho más grande que en el Senado, así que la cohesión observada es naturalmente más alta y más apretada." },
-    ],
-  },
-
-  cohesion_bloque_senado: {
-    tipo: "indicador",
-    id: "cohesion_bloque_senado",
-    cinturon: "politica",
-    rezago: "El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada corrida.",
-    fuente: {
-      organismo: "Senado de la Nación",
-      operacion: "Votaciones nominales del Senado — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días",
-      url: "https://www.senado.gob.ar/votaciones/actas",
-      acceso: "Automático: scraping directo del portal público de votaciones nominales del Senado; sin carga manual.",
-    },
-    transformaciones: [
-      "Para cada acta del Senado con al menos un voto a favor o en contra del bloque propio de LLA, calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
-      "El indicador es el promedio de ese cálculo en las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran en la cuenta.",
-    ],
-    incidenciaTexto: [
-      "Mide qué tan unido vota el bloque oficialista puertas adentro de la cámara alta. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
-      "El puntaje del índice se asigna por bandas de ese porcentaje, interpolado entre anclas: más de 95% → el más alto; entre 90% y 95% → alto; entre 85% y 90% → moderado; entre 80% y 85% → bajo; 80% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante); las anclas son propias del Senado, donde el bloque tiene pocas bancas y cada acta dividida mueve el promedio con más fuerza.",
-      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 35%.",
-    ],
-    limitaciones: [
-      "Bloque chico: LLA tiene pocas bancas propias en el Senado, así que un solo voto disidente mueve el promedio con más fuerza.",
-      "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
-      "Depende de que el portal público del Senado mantenga su estructura actual: un cambio de diseño del sitio puede interrumpir la lectura automática hasta que se ajuste.",
-      "No distingue ausencias de abstenciones: ambas quedan fuera del cálculo igual que si el senador no hubiera votado.",
-    ],
-    faltantes: "Si el scraping no logra llegar al sitio, se conserva el último promedio calculado en caché; recién se marca desactualizado si pasan más de 10 días sin una corrida que haya llegado al portal — un receso legislativo sin actas nuevas no cuenta como desactualización.",
-    revisiones: "El promedio de los últimos 90 días se recalcula completo desde la fuente en cada corrida; no se arrastran promedios previos.",
-    cambios: [
-      { fecha: "2026-07-07", cambio: "Alta como lectura complementaria de la cohesión de bloque en Diputados, con el mismo criterio de cálculo aplicado a las votaciones nominales del Senado." },
-      { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 90/75/60/40, copiados de Diputados sin validar) a partir de una serie mensual propia reconstruida (29 meses reales, feb-2024 a jun-2026): nuevos cortes en 95/90/85/80." },
+      { fecha: "2026-07-09", cambio: "Umbrales de puntaje de cada cámara recalibrados (antes 90/75/60/40, fórmula ad hoc nunca validada) a partir de las series mensuales reconstruidas (29 a 31 meses reales por cámara)." },
+      { fecha: "2026-07-10", cambio: "Revisión editorial del cinturón: las dos cámaras se fusionan en este único indicador bicameral (Diputados 65%, Senado 35% — el reparto que ya tenían como indicadores separados), con umbrales recalibrados contra la serie mensual del compuesto (99,9/99,0/97,0/95,0). La serie del gráfico pasa a ser la del compuesto." },
     ],
   },
 
@@ -989,7 +958,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los umbrales se calibraron contra la serie completa reconstruida del propio indicador (diciembre de 2023 en adelante, rango observado de 0 a 7 salidas): una o ninguna salida en el año es recambio fisiológico; dos, recambio bajo; tres o cuatro, rotación sostenida; cinco o seis, crisis de gabinete; siete o más, crisis abierta. Las cinco bandas tienen meses reales observados.",
-      "Integra la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total), donde pesa 30% como la pata del Poder Ejecutivo, junto al 45% de la cohesión del bloque en Diputados y el 25% de la del Senado — hasta julio de 2026 esa dimensión solo medía la disciplina legislativa.",
+      "Indicador de contexto: desde el 10 de julio de 2026 no integra el índice del cinturón. La revisión editorial acotó el índice a la capacidad del gobierno de gestionar y avanzar su agenda con otros actores (el Parlamento, las provincias, su propio bloque legislativo); la estabilidad del gabinete se sigue midiendo y publicando como lectura complementaria, con los umbrales de arriba como referencia interpretativa.",
     ],
     limitaciones: [
       "Ambigüedad de lectura declarada: un recambio puede reflejar tanto una crisis como una decisión estratégica del Presidente (por ejemplo, ministros que dejan el cargo para asumir bancas ganadas en una elección). El indicador cuenta ambas — incluso el recambio estratégico consume capital político: curva de aprendizaje del entrante, renegociación de equilibrios internos, señal de inestabilidad hacia afuera —, el registro público clasifica el motivo de cada salida para que esa composición sea verificable, y para un caso extremo (un recambio masivo programado) existe el mecanismo general de ajuste del analista, con justificación y vencimiento publicados.",
@@ -1002,6 +971,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "La serie completa se recomputa desde el registro en cada corrida: una corrección de fecha o de clasificación en el registro se refleja en toda la historia. Cada entrada conserva su decreto de respaldo, verificable en InfoLeg.",
     cambios: [
       { fecha: "2026-07-09", cambio: "Alta del indicador: la dimensión de cohesión interna del oficialismo medía solo la disciplina legislativa (Diputados y Senado) y no la estabilidad del propio gabinete, donde se jugaron las principales crisis internas del ciclo. Registro inicial verificado decreto por decreto contra InfoLeg (11 salidas, dic-2023 a jun-2026), con serie mensual completa desde diciembre de 2023 y umbrales calibrados contra esa serie." },
+      { fecha: "2026-07-10", cambio: "Pasa a indicador de contexto: la revisión editorial del cinturón acotó el índice a la capacidad de gestionar y avanzar la agenda de gobierno, y la rotación del gabinete quedó fuera del puntaje. El registro, la serie y la card se mantienen sin cambios." },
     ],
   },
 
@@ -1937,7 +1907,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Indicador de contexto: no integra el ITCG, por una razón declarada — puntuar el volumen de protesta premiaría «menos marchas», que es un derecho ejercido y no un resultado de gestión. Leído junto al indicador de orden público, muestra que la protesta se reconvirtió: menos cortes, no menos marchas.",
     ],
-    dobleUso: "El mismo dato (variación de eventos contra la base 2023) integra también el índice del cinturón político, dentro de la dimensión de conflicto social (15% del total, donde pesa 40% junto al 60% de la conflictividad CEPA). Ahí la lectura es distinta: mide una condición de gobernabilidad — cuánta conflictividad social tiene que administrar la gestión —, no un juicio sobre si protestar es legítimo ni una medida de gestión en sí misma.",
+    dobleUso: "El mismo dato (variación de eventos contra la base 2023) se publica también en el cinturón político, como indicador de contexto de la dimensión de conflicto social. Integró el puntaje de ese índice entre el 07 y el 10 de julio de 2026, hasta que la revisión editorial acotó el índice a la capacidad de gestionar y avanzar la agenda de gobierno; la lectura como condición de gobernabilidad — cuánta conflictividad social tiene que administrar la gestión — se mantiene en la card y en el gráfico.",
     limitaciones: [
       "Fuente de membresía con criterios de codificación propios (en inglés), no la definición local de piquete.",
       "Cuenta eventos de protesta (marchas, concentraciones), no cortes de calle: complementa, no sustituye, al indicador de orden público.",
@@ -1948,6 +1918,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Alta como indicador de contexto, con cobertura desde 2018 (línea de base 2023 real). En la revisión posterior se confirmó que siga fuera del índice." },
       { fecha: "2026-07-07", cambio: "El mismo dato pasa a integrar también, como indicador de condición de gobernabilidad, la dimensión de conflicto social del índice del cinturón político." },
       { fecha: "2026-07-09", cambio: "Umbrales de puntaje del índice político recalibrados (antes ±30/±10, simétricos y nunca validados) reconstruyendo la métrica de puntaje mes a mes sobre la serie ya existente (30 meses reales, dic-2023 a may-2026): nuevos cortes en -6,0/-3,0/0,0/10,0. Con las anclas viejas, el 73% de los meses caía en el mismo escalón intermedio." },
+      { fecha: "2026-07-10", cambio: "Deja de puntuar también en el índice político: la revisión editorial acotó ese índice a la capacidad de gestionar y avanzar la agenda de gobierno. Queda como indicador de contexto en los dos cinturones, con la misma card y el mismo gráfico." },
     ],
   },
 
@@ -2507,13 +2478,14 @@ export const FICHAS: Record<string, Ficha> = {
       "A diferencia del ITCM, el ITCG y el ITVC, no existe un documento institucional que fije los pesos de estas cinco dimensiones: el marco ya las describía, pero nunca se habían ponderado. Los pesos son una decisión editorial explícita, apoyada en esa misma distinción del marco: la dimensión de imagen y voto pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
     ],
     seleccion: [
-      "Doce indicadores en cinco dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El cinturón no tiene indicadores de contexto: todos los que se miden puntúan en el índice. Reemplaza a un promedio simple de nueve indicadores que pesaba todo por igual, sin distinguir la capacidad de gobernar de la popularidad.",
-      "Criterio de selección: fuentes públicas verificables y automatizables. Los doce indicadores vigentes se calculan en forma automática. El alineamiento de los gobernadores —una estimación manual del analista, sin fuente pública estructurada que lo mida de forma objetiva— se retiró del índice en julio de 2026 y lo reemplazó el alineamiento de voto de los senadores por provincia; los caminos alternativos evaluados (composición legislativa por provincia, transferencias discrecionales) resultaron no ser proxies válidos de la conducta del Poder Ejecutivo provincial.",
+      "Once indicadores puntúan en cinco dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy), más dos indicadores de contexto declarados que se publican sin puntuar: la rotación del gabinete y las protestas en la Ciudad de Buenos Aires. Reemplaza a un promedio simple de nueve indicadores que pesaba todo por igual, sin distinguir la capacidad de gobernar de la popularidad.",
+      "Criterio de selección: fuentes públicas verificables y automatizables. Los indicadores vigentes se calculan en forma automática (la rotación del gabinete, desde un registro curado con respaldo documental en el Boletín Oficial). El alineamiento de los gobernadores —una estimación manual del analista, sin fuente pública estructurada que lo mida de forma objetiva— se retiró del índice en julio de 2026 y lo reemplazó el alineamiento de voto de los senadores por provincia; los caminos alternativos evaluados (composición legislativa por provincia, transferencias discrecionales) resultaron no ser proxies válidos de la conducta del Poder Ejecutivo provincial.",
+      "La revisión editorial de julio de 2026 acotó el alcance del índice a la capacidad del gobierno de gestionar y avanzar su agenda —el Parlamento, las alianzas territoriales y la cohesión del oficialismo—: la rotación del gabinete y el volumen de protesta se siguen midiendo y publicando, pero como contexto del cinturón, no como parte del puntaje.",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones.",
       "Juicio experto: la paramétrica admite ajustes manuales por indicador con justificación escrita y fecha de vencimiento (un ajuste vencido se ignora solo); todo ajuste activo se publica junto al índice.",
-      "Cinco indicadores —la cohesión del bloque propio en ambas cámaras, el alineamiento de senadores por provincia, la adhesión provincial a un régimen de inversión y la variación de protestas en la Ciudad de Buenos Aires— son incorporaciones o redefiniciones de julio de 2026: sus series mensuales se reconstruyeron hacia atrás desde las fuentes (24 a 31 meses según el indicador) y sus umbrales se recalibraron contra esa historia real. La excepción declarada es la adhesión provincial, cuyos umbrales no se recalibraron: la adhesión es un proceso acumulativo todavía en curso y su rango observado no es una muestra representativa.",
+      "Varios indicadores —la cohesión del bloque propio (hoy un único indicador bicameral: Diputados 65% y Senado 35% dentro de la misma fórmula), el alineamiento de senadores por provincia, la adhesión provincial a un régimen de inversión y las derrotas legislativas— son incorporaciones o redefiniciones de julio de 2026: sus series mensuales se reconstruyeron hacia atrás desde las fuentes (24 a 31 meses según el indicador) y sus umbrales se calibraron contra esa historia real. La excepción declarada es la adhesión provincial, cuyos umbrales no se recalibraron: la adhesión es un proceso acumulativo todavía en curso y su rango observado no es una muestra representativa.",
     ],
     normalizacion: [
       "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante umbrales por banda, leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las abiertas en su borde; entre anclas el puntaje es lineal, en los extremos queda plano.",
@@ -2547,7 +2519,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Los pesos de las cinco dimensiones no provienen de un documento institucional previo, a diferencia de los otros tres índices del informe: son una decisión editorial explícita, declarada como tal.",
-      "Varios de los doce indicadores son incorporaciones de julio de 2026: sus umbrales se calibraron contra series mensuales reconstruidas de unos dos años — una historia real pero corta, que cubre un solo gobierno.",
+      "Varios de los indicadores son incorporaciones de julio de 2026: sus umbrales se calibraron contra series mensuales reconstruidas de unos dos años — una historia real pero corta, que cubre un solo gobierno.",
       "Su validación externa es la más reciente del sistema: varios componentes tienen historia corta y la reconstrucción de los meses más antiguos se apoya en los indicadores de serie más larga (con un piso de cobertura declarado) — las correlaciones se leen como consistencia, no como prueba.",
       "El alineamiento territorial se mide por el comportamiento de voto de los senadores, no por la postura del Poder Ejecutivo provincial: no existe todavía una fuente pública estructurada que mida directamente el alineamiento de los gobernadores.",
       "El análisis multivariado previo del estándar OCDE/JRC (contrastar la estructura teórica con la correlación real entre los indicadores) está pendiente, igual que en el resto de los índices del informe.",
@@ -2556,6 +2528,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-07", cambio: "Nace el ITCP: reemplaza al promedio simple de nueve indicadores por la paramétrica de cinco dimensiones ponderadas, con flag de dimensión crítica y ajustes de analista con vencimiento. Se incorporan tres indicadores —cohesión de bloque en el Senado, adhesión provincial a un régimen de inversión y variación de protestas en la Ciudad de Buenos Aires— y se redefine la cohesión de bloque en Diputados, de una estimación manual a un cálculo automático sobre las votaciones nominales." },
       { fecha: "2026-07-08", cambio: "El alineamiento de gobernadores (estimación manual, congelada por falta de fuente) se retira del índice; lo reemplaza el alineamiento de voto de los senadores por provincia, calculado en forma automática de las votaciones nominales del Senado." },
       { fecha: "2026-07-09", cambio: "Recalibración contra historia real: los umbrales de la cohesión de bloque (ambas cámaras), el alineamiento de senadores y las protestas se recalibran con series mensuales reconstruidas desde las fuentes (24 a 31 meses). Se publica la validación externa del índice contra el EPU de Argentina." },
+      { fecha: "2026-07-09", cambio: "Se incorporan dos indicadores: las derrotas legislativas del Ejecutivo (vetos insistidos y decretos rechazados, acumulados en 12 meses) en la dimensión de poder legislativo, y la rotación del gabinete en la de cohesión interna." },
+      { fecha: "2026-07-10", cambio: "Revisión editorial del cinturón: el índice se acota a la capacidad de gestionar y avanzar la agenda de gobierno. La rotación del gabinete y las protestas en la Ciudad de Buenos Aires pasan a contexto (se publican sin puntuar), y la cohesión del bloque en Diputados y en el Senado se fusiona en un único indicador bicameral (Diputados 65%, Senado 35%), con umbrales recalibrados contra la serie compuesta." },
     ],
   },
 };

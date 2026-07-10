@@ -192,18 +192,41 @@ def test_write_csv_sin_merge_sobreescribe_todo(tmp_path, monkeypatch):
 
 
 def test_cinturon_de_indicador_encuentra_en_las_tres_listas():
-    assert descargar_series._cinturon_de_indicador("cohesion_bloque_senado") == "politica"   # DERIVADAS
+    assert descargar_series._cinturon_de_indicador("alineamiento_senadores_prov") == "politica"  # DERIVADAS
     assert descargar_series._cinturon_de_indicador("rem_ipc_12m") == "macro"                 # BCRA
     assert descargar_series._cinturon_de_indicador("no_existe_este_indicador") is None
 
 
-def test_cohesion_bloque_diputados_registrado_en_politica_derivadas():
-    # regresión 2026-07-09: se había sacado de la lista por el hallazgo de
-    # performance (ver comentario en POLITICA_DERIVADAS) -- debe volver a
-    # estar, ahora con la función _mensual cacheada por acta.
+def test_cohesion_bloque_registrado_en_politica_derivadas_como_compuesto():
+    # ADR-0048: la clave publicada es UNA (el compuesto bicameral);
+    # cohesion_bloque_senado deja de tener serie propia en el CSV — su
+    # remoción de la lista es lo que la purga en la primera corrida sin merge.
     nombres = [d[0] for d in descargar_series.POLITICA_DERIVADAS]
     assert "cohesion_bloque" in nombres
+    assert "cohesion_bloque_senado" not in nombres
     assert descargar_series._cinturon_de_indicador("cohesion_bloque") == "politica"
+    assert descargar_series._cinturon_de_indicador("cohesion_bloque_senado") is None
+
+
+def test_fetch_cohesion_bloque_compuesta_mensual_pondera_65_35(monkeypatch):
+    monkeypatch.setattr(descargar_series, "fetch_cohesion_bloque_diputados_mensual",
+                         lambda anio_inicio, dias_ventana: [["2026-05-31", 100.0], ["2026-06-30", 99.0]])
+    monkeypatch.setattr(descargar_series, "fetch_cohesion_bloque_senado_mensual",
+                         lambda anio_inicio, dias_ventana: [["2026-06-30", 90.0]])
+
+    serie = descargar_series.fetch_cohesion_bloque_compuesta_mensual()
+
+    # may-2026: solo Diputados -> renormaliza a esa cámara sola (100.0).
+    # jun-2026: 0.65*99.0 + 0.35*90.0 = 95.85 -> 95.9 (mismo redondeo que la card).
+    assert serie == [["2026-05-31", 100.0], ["2026-06-30", 95.9]]
+
+
+def test_fetch_cohesion_bloque_compuesta_mensual_sin_datos_devuelve_vacio(monkeypatch):
+    monkeypatch.setattr(descargar_series, "fetch_cohesion_bloque_diputados_mensual",
+                         lambda anio_inicio, dias_ventana: [])
+    monkeypatch.setattr(descargar_series, "fetch_cohesion_bloque_senado_mensual",
+                         lambda anio_inicio, dias_ventana: [])
+    assert descargar_series.fetch_cohesion_bloque_compuesta_mensual() == []
 
 
 def test_actas_cohesion_diputados_cacheadas_anio_cerrado_no_se_vuelve_a_pedir(tmp_path, monkeypatch):

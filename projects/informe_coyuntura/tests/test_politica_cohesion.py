@@ -1229,3 +1229,109 @@ def test_fetch_cepa_movilizacion_rechaza_informe_mas_reciente_si_no_es_m_tot(mon
 
     monkeypatch.setattr(politica.requests, "get", fake_get)
     assert politica.fetch_cepa_movilizacion() is None
+
+
+# ── Compuesto bicameral de cohesión (ADR-0048) ───────────────────────────────
+
+def _camara(valor=99.0, fecha="2026-06-24", n_actas=10, corrida="2026-07-10",
+            desactualizado=False):
+    return {"valor": valor, "fecha_dato": fecha, "n_actas": n_actas,
+            "corrida_exitosa_en": corrida, "desactualizado": desactualizado}
+
+
+def test_componer_cohesion_bloque_pondera_65_35():
+    dip = _camara(valor=99.9, fecha="2026-06-24", n_actas=33)
+    sen = _camara(valor=99.4, fecha="2026-06-04", n_actas=18)
+    card = politica.componer_cohesion_bloque(dip, sen)
+    # 0.65*99.9 + 0.35*99.4 = 99.725 -> 99.7 (valores live reales al 10-jul)
+    assert card["valor"] == 99.7
+    assert card["fecha_dato"] == "2026-06-24"    # la más nueva de las dos
+    assert card["n_actas"] == 51
+    assert card["desactualizado"] is False
+    assert set(card["componentes"]) == {"diputados", "senado"}
+    assert card["componentes"]["senado"]["valor"] == 99.4
+
+
+def test_componer_cohesion_bloque_renormaliza_con_una_camara():
+    card = politica.componer_cohesion_bloque(_camara(valor=98.0), None)
+    assert card["valor"] == 98.0                 # 100% del peso a la única cámara
+    assert set(card["componentes"]) == {"diputados"}
+
+
+def test_componer_cohesion_bloque_sin_camaras_devuelve_none():
+    assert politica.componer_cohesion_bloque(None, None) is None
+
+
+def test_componer_cohesion_bloque_desactualizado_solo_si_todas_las_camaras():
+    dip = _camara(desactualizado=True)
+    sen = _camara(desactualizado=False)
+    assert politica.componer_cohesion_bloque(dip, sen)["desactualizado"] is False
+    sen_stale = _camara(desactualizado=True)
+    assert politica.componer_cohesion_bloque(dip, sen_stale)["desactualizado"] is True
+
+
+def test_anterior_camara_lee_componentes_de_la_card_compuesta():
+    anteriores = {"cohesion_bloque": {
+        "valor": 99.7, "componentes": {
+            "diputados": {"valor": 99.9, "n_actas": 33},
+            "senado": {"valor": 99.4, "n_actas": 18},
+        },
+    }}
+    assert politica._anterior_camara(anteriores, "diputados")["valor"] == 99.9
+    assert politica._anterior_camara(anteriores, "senado")["valor"] == 99.4
+
+
+def test_anterior_camara_migra_del_cache_pre_compuesto():
+    # Primera corrida post ADR-0048: el cache viejo tiene las DOS cards
+    # separadas — diputados sale de cohesion_bloque (forma vieja, sin
+    # "componentes") y senado de cohesion_bloque_senado.
+    anteriores = {
+        "cohesion_bloque": {"valor": 99.9, "n_actas": 33},
+        "cohesion_bloque_senado": {"valor": 99.4, "n_actas": 18},
+    }
+    assert politica._anterior_camara(anteriores, "diputados")["valor"] == 99.9
+    assert politica._anterior_camara(anteriores, "senado")["valor"] == 99.4
+
+
+def test_anterior_camara_sin_cache_devuelve_none():
+    assert politica._anterior_camara({}, "diputados") is None
+    assert politica._anterior_camara({}, "senado") is None
+
+
+def test_entrada_camara_fresca():
+    resultado = _camara(valor=98.5)
+    entrada, ok = politica._entrada_camara(resultado, _camara(valor=97.0))
+    assert entrada is resultado
+    assert ok is True
+
+
+def test_entrada_camara_receso_reusa_anterior_sin_marcar_desactualizado():
+    # Corrida exitosa (llegó al sitio) pero sin actas divididas en la ventana:
+    # se reusa el último valor y se actualiza corrida_exitosa_en — misma
+    # semántica que tenían las dos cards separadas.
+    receso = {"valor": None, "n_actas": 0, "corrida_exitosa_en": "2026-07-10"}
+    anterior = _camara(valor=97.0, corrida="2026-07-01")
+    entrada, ok = politica._entrada_camara(receso, anterior)
+    assert ok is True
+    assert entrada["valor"] == 97.0
+    assert entrada["desactualizado"] is False
+    assert entrada["corrida_exitosa_en"] == "2026-07-10"
+
+
+def test_entrada_camara_sin_corrida_cae_al_cache_con_chequeo_de_staleness():
+    reciente = (datetime.now() - timedelta(days=3)).strftime("%Y-%m-%d")
+    anterior = _camara(valor=97.0, corrida=reciente)
+    entrada, ok = politica._entrada_camara(None, anterior)
+    assert ok is False
+    assert entrada["valor"] == 97.0
+    assert entrada["desactualizado"] is False    # corrida previa reciente
+
+    vieja = (datetime.now() - timedelta(days=20)).strftime("%Y-%m-%d")
+    entrada, _ = politica._entrada_camara(None, _camara(valor=97.0, corrida=vieja))
+    assert entrada["desactualizado"] is True
+
+
+def test_entrada_camara_sin_nada_devuelve_none():
+    entrada, ok = politica._entrada_camara(None, None)
+    assert entrada is None
+    assert ok is False

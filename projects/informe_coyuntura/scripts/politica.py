@@ -9,11 +9,13 @@ Indicadores:
   movilizacion_cepa         — Conflictividad social CEPA 0–100 (scrape centrocepa.com.ar, auto)
   iaf_transferencias        — Variación real YoY transferencias federales RON (Hacienda, auto)
   eficacia_legislativa      — % proyectos PE aprobados, ventana 12m (datos.hcdn.gob.ar CKAN, auto)
-  cohesion_bloque           — % cohesión (Rice) del bloque LLA en Diputados (scrape votaciones.hcdn.gob.ar, auto)
-  cohesion_bloque_senado    — % cohesión (Rice) del bloque LLA en Senado (scrape senado.gob.ar, auto)
+  cohesion_bloque           — % cohesión (Rice) del bloque LLA, COMPUESTO bicameral desde
+                               2026-07-10 (ADR-0048): Diputados 65% (scrape votaciones.hcdn.gob.ar)
+                               + Senado 35% (scrape senado.gob.ar), renormalizado si falta una cámara
   rotacion_gabinete         — salidas de rango ministerial (JGM + ministros) acumuladas 12m
                                (registro curado data/politica/gabinete_salidas.json + detector
-                               de alerta InfoLeg, semiauto — patrón privatizaciones del ITCG)
+                               de alerta InfoLeg, semiauto — patrón privatizaciones del ITCG).
+                               CONTEXTO desde 2026-07-10 (ADR-0048): se publica, no puntúa
   alineamiento_senadores_prov — % votos de senadores no-LLA alineados con LLA, por provincia
                                (scrape senado.gob.ar, auto — reemplaza a gobernadores_alineamiento,
                                placeholder manual congelado desde 2026-04, ver manuales.json)
@@ -22,7 +24,8 @@ Indicadores:
   adhesion_reformas_provincial — % provincias adheridas al RIGI (MAGyP, auto)
   derrotas_legislativas     — derrotas del Ejecutivo en el recinto, 12m: vetos insistidos +
                                decretos rechazados bajo la ley 26.122 (InfoLeg + actas Senado, auto)
-  protestas_caba            — % var. eventos de protesta en CABA vs. base 2023 (ACLED, reutiliza gestion.py)
+  protestas_caba            — % var. eventos de protesta en CABA vs. base 2023 (ACLED, reutiliza
+                               gestion.py). CONTEXTO desde 2026-07-10 (ADR-0048): se publica, no puntúa
 
 Nota: ICG UTDT removido (mide confianza ciudadana, no capacidad de gobernar con actores
 políticos). Reemplazado por ratio_dnu según framework Luis Babino / reunión 12-may-2026.
@@ -76,7 +79,6 @@ INDICADORES_ESPERADOS = [
     "movilizacion_cepa",
     "iaf_transferencias",
     "cohesion_bloque",
-    "cohesion_bloque_senado",
     "rotacion_gabinete",
     "eficacia_legislativa",
     "alineamiento_senadores_prov",
@@ -2469,6 +2471,80 @@ def _es_cohesion_legado(anterior: dict) -> bool:
     return "n_actas" not in anterior
 
 
+# Pesos por cámara del compuesto bicameral de cohesión (ADR-0048): el mismo
+# ratio interno 65/35 ≈ 45/25 que las dos cámaras tenían como indicadores
+# separados dentro de la dimensión (ADR-0036/0047). Renormaliza si una cámara
+# no tiene dato — mismo criterio que la paramétrica ante faltantes.
+COHESION_PESOS_CAMARAS = {"diputados": 0.65, "senado": 0.35}
+
+
+def componer_cohesion_bloque(dip: dict | None, sen: dict | None) -> dict | None:
+    """Card compuesta bicameral de cohesión del bloque LLA (ADR-0048,
+    revisión editorial CIGOB 2026-07-10): un solo indicador en lugar de las
+    dos cards por cámara. Rice de Diputados 65% + Rice del Senado 35%,
+    renormalizado sobre las cámaras con dato. Los componentes por cámara
+    quedan en la card (mismo patrón que el Fondo de Cese en gestión) y son
+    la fuente del carry-forward por cámara de la próxima corrida
+    (_anterior_camara los lee de vuelta)."""
+    camaras = {"diputados": dip, "senado": sen}
+    con_dato = {c: e for c, e in camaras.items()
+                if e is not None and e.get("valor") is not None}
+    if not con_dato:
+        return None
+    peso_total = sum(COHESION_PESOS_CAMARAS[c] for c in con_dato)
+    valor = round(sum(e["valor"] * COHESION_PESOS_CAMARAS[c]
+                      for c, e in con_dato.items()) / peso_total, 1)
+    fechas = [e["fecha_dato"] for e in con_dato.values() if e.get("fecha_dato")]
+    return {
+        "valor": valor,
+        "unidad": ("% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, "
+                   "promedio actas divididas últimos 90 días)"),
+        "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)",
+        "fecha_dato": max(fechas) if fechas else None,
+        "n_actas": sum(e.get("n_actas") or 0 for e in con_dato.values()),
+        # desactualizado solo si TODAS las cámaras que aportan están
+        # desactualizadas: con una cámara fresca el compuesto tiene
+        # información nueva (la composición por cámara queda visible abajo).
+        "desactualizado": all(e.get("desactualizado") for e in con_dato.values()),
+        "componentes": {
+            c: {k: e.get(k) for k in ("valor", "fecha_dato", "n_actas",
+                                       "corrida_exitosa_en", "desactualizado")}
+            for c, e in camaras.items() if e is not None
+        },
+    }
+
+
+def _anterior_camara(indicadores_anteriores: dict, camara: str) -> dict | None:
+    """Último dato conocido de una cámara para el carry-forward del compuesto.
+    Forma nueva: dentro de "componentes" de la card compuesta. Formas de
+    migración (cache anterior a ADR-0048): cohesion_bloque era la card de
+    Diputados sola y cohesion_bloque_senado la del Senado."""
+    comp = indicadores_anteriores.get("cohesion_bloque")
+    if comp is not None and isinstance(comp.get("componentes"), dict):
+        return comp["componentes"].get(camara)
+    if camara == "diputados":
+        return comp
+    return indicadores_anteriores.get("cohesion_bloque_senado")
+
+
+def _entrada_camara(resultado: dict | None, anterior: dict | None) -> tuple:
+    """(entrada, corrida_ok) por cámara para el compuesto — las MISMAS tres
+    ramas que tenían las dos cards separadas: corrida con votos nuevos /
+    corrida exitosa sin votos en la ventana (receso: se reusa el último valor
+    sin marcarlo desactualizado) / sin corrida (cache, con el chequeo de
+    staleness de _cohesion_desactualizada). corrida_ok = la corrida de HOY
+    llegó al sitio (insumo del conteo de frescura del colector)."""
+    if resultado is not None and resultado.get("valor") is not None:
+        return resultado, True
+    if resultado is not None and anterior is not None:
+        return ({**anterior, "desactualizado": False,
+                 "corrida_exitosa_en": resultado["corrida_exitosa_en"]}, True)
+    if anterior is not None:
+        return ({**anterior,
+                 "desactualizado": _cohesion_desactualizada(anterior, resultado)}, False)
+    return None, resultado is not None
+
+
 def _valor_itcp(nombre: str, entry: dict):
     """Valor a puntuar en el ITCP para un indicador ya fresco/cacheado.
 
@@ -2496,10 +2572,11 @@ def _resultado_utilizable(nombre: str, resultado: dict | None) -> bool:
 def _anotar_indicadores_itcp(indicadores: dict, resultado: dict | None) -> None:
     """Marca cada indicador con su rol en el ITCP: los del índice llevan
     puntaje, dimensión y peso efectivo; el resto queda como contexto (mismo
-    patrón que gestion.anotar_indicadores para el ITCG). A diferencia del
-    ITCG, el ITCP no tiene indicadores de contexto declarados todavía (los 12
-    de itcp.BANDAS_ITCP puntúan todos) — `en_indice` cae a False solo si el
-    indicador no está ni en el resultado ni en la tabla de bandas."""
+    patrón que gestion.anotar_indicadores para el ITCG). Desde ADR-0048 el
+    ITCP tiene contexto declarado (itcp.INDICADORES_CONTEXTO:
+    rotacion_gabinete y protestas_caba — se publican, no puntúan); sus bandas
+    siguen en itcp.BANDAS_ITCP como referencia histórica, por eso el
+    override explícito después del fallback (mismo esquema que macro/ITCM)."""
     por_indicador = {}
     if resultado:
         for dkey, dim in resultado["dimensiones"].items():
@@ -2516,6 +2593,8 @@ def _anotar_indicadores_itcp(indicadores: dict, resultado: dict | None) -> None:
             ind.update(por_indicador[nombre])
         else:
             ind["en_indice"] = nombre in itcp.BANDAS_ITCP  # del índice pero sin dato
+            if nombre in itcp.INDICADORES_CONTEXTO:
+                ind["en_indice"] = False
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -2549,49 +2628,31 @@ def main() -> None:
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
 
+    # Compuesto bicameral de cohesión (ADR-0048): una sola card desde las dos
+    # corridas por cámara. Cada cámara conserva sus tres ramas de fallback
+    # (fresco / receso / cache) vía _entrada_camara; el compuesto cuenta como
+    # fresco solo si AMBAS corridas llegaron a su sitio — con una sola cámara
+    # fresca el valor sale igual (renormalizado) pero el exit code del
+    # colector reporta frescura mixta, como cuando eran dos cards.
     resultado_cohesion = fetch_cohesion_bloque()
-    anterior_cohesion = indicadores_anteriores.get("cohesion_bloque")
-    if anterior_cohesion is not None and _es_cohesion_legado(anterior_cohesion):
+    anterior_dip = _anterior_camara(indicadores_anteriores, "diputados")
+    if anterior_dip is not None and _es_cohesion_legado(anterior_dip):
         # Cache heredado del viejo placeholder manual (78, "% votos alineados
         # con la posición oficial") — NO es un dato de Rice genuino, tratarlo
         # como ausente para no corromper el ITCP con un valor de significado
         # distinto (hallazgo de revisión externa).
-        anterior_cohesion = None
-    if resultado_cohesion is not None and resultado_cohesion.get("valor") is not None:
-        frescos["cohesion_bloque"] = resultado_cohesion
-        frescos_count += 1
-    elif resultado_cohesion is not None and anterior_cohesion is not None:
-        # corrida exitosa (llegó al sitio) pero sin votos nuevos en la ventana —
-        # se reusa el último valor conocido, NO se marca desactualizado por eso
-        frescos["cohesion_bloque"] = {
-            **anterior_cohesion,
-            "desactualizado": False,
-            "corrida_exitosa_en": resultado_cohesion["corrida_exitosa_en"],
-        }
-        frescos_count += 1
-    elif anterior_cohesion is not None:
-        frescos["cohesion_bloque"] = {
-            **anterior_cohesion,
-            "desactualizado": _cohesion_desactualizada(anterior_cohesion, resultado_cohesion),
-        }
+        anterior_dip = None
+    entrada_dip, dip_ok = _entrada_camara(resultado_cohesion, anterior_dip)
 
     resultado_cohesion_senado = fetch_cohesion_bloque_senado()
-    anterior_cohesion_senado = indicadores_anteriores.get("cohesion_bloque_senado")
-    if resultado_cohesion_senado is not None and resultado_cohesion_senado.get("valor") is not None:
-        frescos["cohesion_bloque_senado"] = resultado_cohesion_senado
-        frescos_count += 1
-    elif resultado_cohesion_senado is not None and anterior_cohesion_senado is not None:
-        frescos["cohesion_bloque_senado"] = {
-            **anterior_cohesion_senado,
-            "desactualizado": False,
-            "corrida_exitosa_en": resultado_cohesion_senado["corrida_exitosa_en"],
-        }
-        frescos_count += 1
-    elif anterior_cohesion_senado is not None:
-        frescos["cohesion_bloque_senado"] = {
-            **anterior_cohesion_senado,
-            "desactualizado": _cohesion_desactualizada(anterior_cohesion_senado, resultado_cohesion_senado),
-        }
+    anterior_sen = _anterior_camara(indicadores_anteriores, "senado")
+    entrada_sen, sen_ok = _entrada_camara(resultado_cohesion_senado, anterior_sen)
+
+    compuesto_cohesion = componer_cohesion_bloque(entrada_dip, entrada_sen)
+    if compuesto_cohesion is not None:
+        frescos["cohesion_bloque"] = compuesto_cohesion
+        if dip_ok and sen_ok:
+            frescos_count += 1
 
     # alineamiento_senadores_prov comparte el mismo contrato de retorno que
     # cohesion_bloque_senado (misma sesión/descubrimiento de actas de Senado):

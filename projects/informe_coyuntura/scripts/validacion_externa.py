@@ -217,34 +217,16 @@ def construir_serie_itcg() -> dict:
     return out
 
 
+# Composición post ADR-0048 (2026-07-10): cohesion_bloque ya es la serie del
+# COMPUESTO bicameral 65/35 (una sola clave); cohesion_bloque_senado,
+# rotacion_gabinete y protestas_caba salieron del índice — no entran a la
+# reconstrucción aunque sus series sigan existiendo como contexto.
 ITCP_SERIES = [
     "votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
     "comisiones_caidas", "derrotas_legislativas", "iaf_transferencias",
     "alineamiento_senadores_prov", "adhesion_reformas_provincial",
-    "cohesion_bloque", "cohesion_bloque_senado", "movilizacion_cepa",
-    "rotacion_gabinete",
+    "cohesion_bloque", "movilizacion_cepa",
 ]
-
-
-def _protestas_caba_var_vs_2023(vals: dict) -> dict:
-    """{ym: % var. de eventos ACLED en CABA} — MISMA transformación que usa el
-    indicador vivo (gestion.fetch_protestas_caba): acumulado de los 12 meses
-    que terminan en `ym` contra la suma FIJA de los eventos de todo el año
-    2023 (no un promedio móvil: protestas_caba puntúa en el ITCP sobre
-    "var_vs_2023", nunca sobre el conteo crudo — ver itcp.py)."""
-    base_2023 = sum(v for ym, v in vals.items() if ym.startswith("2023"))
-    if not base_2023:
-        return {}
-    yms = sorted(vals)
-    out = {}
-    for i in range(11, len(yms)):
-        win = yms[i - 11:i + 1]
-        a0, m0 = int(win[0][:4]), int(win[0][5:7])
-        af, mf = int(win[-1][:4]), int(win[-1][5:7])
-        if (af * 12 + mf) - (a0 * 12 + m0) == 11:
-            ult12 = sum(vals[k] for k in win)
-            out[win[-1]] = round((ult12 / base_2023 - 1.0) * 100.0, 1)
-    return out
 
 
 def construir_serie_itcp() -> dict:
@@ -256,19 +238,20 @@ def construir_serie_itcp() -> dict:
       eficacia_legislativa, comisiones_caidas y (desde 2026-07-09, ADR-0046)
       derrotas_legislativas, cuya serie completa se deriva del registro
       versionado de eventos.
-    - protestas_caba entra con la MISMA transformación "var_vs_2023" del
-      indicador vivo (acumulado 12m / total 2023), no el conteo crudo.
     - ratio_dnu y veto_quorum llegan por período/año (pocos puntos, no un
       valor por mes) y iaf_transferencias es un dato anual (dic-dic): solo
       "prenden" en los meses exactos en que hay dato — el resto del tiempo el
       motor renormaliza sin ellos, igual que ITCM/ITCG con sus faltantes.
     - Desde 2026-07-09 la cobertura mejoró de verdad: cohesion_bloque
-      (Diputados, desbloqueado ADR-0040, serie mensual ADR-0041),
-      cohesion_bloque_senado y alineamiento_senadores_prov (ADR-0038/0039)
-      tienen ~29-31 puntos mensuales reales cada uno, y
-      adhesion_reformas_provincial 24 (fechas investigadas a mano,
+      (desde ADR-0048 la serie del compuesto bicameral 65/35, construida
+      sobre las dos series por cámara de ADR-0039/0041) y
+      alineamiento_senadores_prov (ADR-0038) tienen ~29-31 puntos mensuales
+      reales, y adhesion_reformas_provincial 24 (fechas investigadas a mano,
       ADR-0044) — las dimensiones "alianzas territoriales" y "cohesión
       interna" ya no quedan renormalizadas sobre casi nada.
+    - protestas_caba y rotacion_gabinete NO entran (contexto desde
+      ADR-0048); la transformación var_vs_2023 que protestas necesitaba
+      se fue con ellos.
 
     PISO DE COBERTURA (2026-07-09): los meses donde las dimensiones con
     algún dato suman menos del 60% del peso del índice se EXCLUYEN de la
@@ -287,29 +270,24 @@ def construir_serie_itcp() -> dict:
     No por cobertura (pasaba el piso) sino por composición degenerada: los
     componentes de ventana anual que "prenden" ese mes describen el año
     2023 COMPLETO de la gestión anterior — iaf_transferencias dic-dic 2023
-    (transferencias de todo 2023 vs 2022) y protestas_caba, cuya ventana
-    12m a dic-2023 es exactamente su propia base 2023 (variación ≈ 0 por
-    construcción). El punto resultante (47,6, contra 68,7 en ene-2024) era
-    un salto de composición, no de política, y metía ruido justo en el
-    arranque de todas las correlaciones."""
+    (transferencias de todo 2023 vs 2022; cuando se decidió también pesaba
+    protestas_caba, hoy fuera del índice). El punto resultante era un salto
+    de composición, no de política, y metía ruido justo en el arranque de
+    todas las correlaciones."""
     series = json.loads(SERIES.read_text(encoding="utf-8"))
     m = lambda k: _mensual(series.get(k) or [])
     directos = {k: m(k) for k in ITCP_SERIES}
-    protestas_var = _protestas_caba_var_vs_2023(m("protestas_caba"))
-    ult = max([max(v) for v in directos.values() if v] + [max(protestas_var, default="")])
-    # tope: el último mes CALENDARIO COMPLETO. Con rotacion_gabinete (serie
-    # que incluye el mes corriente por diseño) el mes parcial pasó a superar
-    # el piso de cobertura por lo justo (60%) con la dimensión de cohesión
-    # representada solo por la rotación renormalizada — el mismo artefacto
-    # que el piso quería excluir, ahora por otra puerta. El mes en curso
-    # nunca tiene par EPU, así que recortarlo no pierde nada.
+    ult = max(max(v) for v in directos.values() if v)
+    # tope: el último mes CALENDARIO COMPLETO. El mes en curso (parcial)
+    # reconstruye con la cobertura justa y sin par EPU — recortarlo no
+    # pierde nada (el artefacto original entró vía rotacion_gabinete, que ya
+    # no puntúa, pero el criterio del mes completo sigue valiendo solo).
     hoy = datetime.now(timezone.utc)
     ult_completo = f"{hoy.year - 1}-12" if hoy.month == 1 else f"{hoy.year}-{hoy.month - 1:02d}"
     ult = min(ult, ult_completo)
     out = {}
     for ym in _meses("2024-01", ult):
         valores = {k: v.get(ym) for k, v in directos.items()}
-        valores["protestas_caba"] = protestas_var.get(ym)
         r = itcp.calcular_itcp(valores)
         if not r:
             continue

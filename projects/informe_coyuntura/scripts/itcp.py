@@ -60,6 +60,19 @@ interpretaría mal. "var_vs_2023" sí es una variación porcentual, comparable a
 otros indicadores %-variación ya en BANDAS_ITCP (ej. iaf_transferencias) —
 hallazgo posterior al Task 1 (bug real, no hipotético), corregido en el
 wiring de main() (politica.py).
+
+REVISIÓN EDITORIAL CIGOB 2026-07-10 (ADR-0048): el cinturón se acota a
+capacidad de gobernar y avanzar la agenda legislativa. Tres cambios:
+(1) `rotacion_gabinete` y `protestas_caba` SALEN del índice — siguen
+publicándose como cards de contexto (INDICADORES_CONTEXTO, mismo patrón que
+badlar en ITCM); sus bandas quedan abajo como referencia histórica.
+(2) `cohesion_bloque` pasa a ser el COMPUESTO bicameral (Rice de Diputados
+65% + Senado 35%, el ratio interno que ya tenían como indicadores separados)
+y es el único indicador de la dimensión cohesion_interna; la banda del
+compuesto se calibró contra su propia serie reconstruida (ver comentario).
+(3) `cohesion_bloque_senado` deja de ser un indicador propio (absorbido por
+el compuesto); su banda queda como referencia histórica, igual que
+gobernadores_alineamiento.
 """
 import parametrica
 
@@ -163,30 +176,33 @@ BANDAS_ITCP = {
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
     "cohesion_bloque": [
-        # RECALIBRADO 2026-07-09 con backfill real (mismo criterio que
-        # alineamiento_senadores_prov/cohesion_bloque_senado, ADR-0038/0039):
-        # las anclas 90/75/60/40 eran una fórmula ad hoc original, nunca
-        # validadas contra la cohesión real de Diputados. Con 31 puntos
-        # mensuales reales (dic-2023→jun-2026, ventana rolling 90d, ver
-        # descargar_series.fetch_cohesion_bloque_diputados_mensual), el rango
-        # observado es 96,7–100,0 (media 99,2, mediana 99,8): el techo de 90
-        # saturaba en 31/31 meses (100% -- ni un solo punto quedó por debajo),
-        # completamente inútil como umbral. El bloque propio de LLA en
-        # Diputados es mucho más grande que en el Senado, así que un solo
-        # disidente mueve menos el promedio -- la cohesión observada es más
-        # alta y más apretada (rango de apenas 3,3 puntos) que en cualquiera
-        # de los otros dos indicadores de esta familia. Anclas nuevas en
-        # 99,9/99,0/98,0/97,0 (chequeadas contra los 31 puntos: 14/7/4/3/3 por
-        # banda, todas con datos reales -- 14/31 meses tuvieron cohesión
-        # perfecta 100,0, indistinguibles entre sí por diseño: no hay forma de
-        # separar valores idénticos en bandas distintas).
+        # COMPUESTO BICAMERAL desde 2026-07-10 (ADR-0048, revisión editorial
+        # CIGOB): Rice de Diputados 65% + Rice del Senado 35% (el ratio
+        # interno 65/35 ≈ 45/25 que las dos cámaras ya tenían como
+        # indicadores separados desde ADR-0036), renormalizado si una cámara
+        # no tiene dato. Anclas calibradas contra la serie compuesta
+        # reconstruida desde las dos series mensuales por cámara ya en
+        # output/series/politica.csv (31 puntos, dic-2023→jun-2026, rango
+        # 90,3–100,0, media 97,6): las anclas del indicador anterior
+        # (99,9/99,0/98,0/97,0, calibradas para Diputados sola, ADR-0042) no
+        # sirven para el compuesto — el Senado (bloque chico, un disidente
+        # mueve mucho el promedio) le mete al compuesto un rango 3 veces más
+        # ancho que el de Diputados sola. Anclas nuevas 99,9/99,0/97,0/95,0
+        # (chequeadas contra los 31 puntos: 8/4/9/7/3 por banda, las cinco
+        # con datos reales — los 8 meses en 100,0 exacto son cohesión
+        # perfecta simultánea en ambas cámaras, indistinguibles entre sí por
+        # diseño, mismo caveat que ADR-0042).
         (99.9, INF, 100),
         (99.0, 99.9, 85),
-        (98.0, 99.0, 65),
-        (97.0, 98.0, 40),
-        (-INF, 97.0, 10),
+        (97.0, 99.0, 65),
+        (95.0, 97.0, 40),
+        (-INF, 95.0, 10),
     ],
     "cohesion_bloque_senado": [
+        # RETIRADO como indicador propio 2026-07-10 (ADR-0048): absorbido por
+        # el compuesto bicameral de cohesion_bloque (35% interno). La banda
+        # queda como referencia histórica (mismo criterio que
+        # gobernadores_alineamiento) — ya no pondera en DIMENSIONES_ITCP.
         # RECALIBRADO 2026-07-09 con backfill real (mismo criterio que
         # alineamiento_senadores_prov, ADR-0038/0039): las anclas 90/75/60/40
         # eran una copia de cohesion_bloque (Diputados, sin datos — sigue
@@ -211,6 +227,9 @@ BANDAS_ITCP = {
         (-INF, 80.0, 10),
     ],
     "rotacion_gabinete": [
+        # FUERA DEL ÍNDICE desde 2026-07-10 (ADR-0048, revisión editorial
+        # CIGOB: "no sería pertinente en este cinturón") — sigue publicándose
+        # como card de contexto (INDICADORES_CONTEXTO); banda de referencia.
         # Salidas de rango ministerial (JGM + ministros) acumuladas en
         # ventana móvil de 12 meses, desde el registro curado
         # data/politica/gabinete_salidas.json (ADR-0047) — menor = mejor.
@@ -235,6 +254,9 @@ BANDAS_ITCP = {
         (-INF, 20.0, 100), (20.0, 40.0, 85), (40.0, 60.0, 65), (60.0, 80.0, 40), (80.0, INF, 10),
     ],
     "protestas_caba": [
+        # FUERA DEL ÍNDICE desde 2026-07-10 (ADR-0048, revisión editorial
+        # CIGOB: "no sería pertinente en este cinturón") — sigue publicándose
+        # como card de contexto (INDICADORES_CONTEXTO); banda de referencia.
         # RECALIBRADO 2026-07-09 con la serie ACLED ya existente (102 meses
         # en output/series/gestion.csv desde 2017, sin backfill nuevo --
         # solo hubo que reconstruir var_vs_2023 mes a mes con la misma
@@ -277,17 +299,19 @@ DIMENSIONES_ITCP = {
     "cohesion_interna": {
         "nombre": "Cohesión interna del oficialismo",
         "peso": 0.20,
-        # 2026-07-09 (ADR-0047): entra rotacion_gabinete (30%) como pata
-        # EJECUTIVA de la cohesión — la dimensión era 100% legislativa. El
-        # par legislativo conserva su ratio interno 65/35 ≈ 45/25; los pesos
+        # 2026-07-10 (ADR-0048): la dimensión queda en un solo indicador — el
+        # compuesto bicameral (Diputados 65% + Senado 35% adentro de la
+        # fórmula). rotacion_gabinete (que había entrado el 09-jul por
+        # ADR-0047) sale del índice por la revisión editorial; los pesos
         # ENTRE dimensiones (ADR-0036) no se tocan.
-        "indicadores": {"cohesion_bloque": 0.45, "cohesion_bloque_senado": 0.25,
-                        "rotacion_gabinete": 0.30},
+        "indicadores": {"cohesion_bloque": 1.0},
     },
     "conflicto_social": {
         "nombre": "Conflicto social",
         "peso": 0.15,
-        "indicadores": {"movilizacion_cepa": 0.60, "protestas_caba": 0.40},
+        # 2026-07-10 (ADR-0048): protestas_caba sale del índice por la
+        # revisión editorial — movilizacion_cepa queda sola en la dimensión.
+        "indicadores": {"movilizacion_cepa": 1.0},
     },
     "imagen_voto": {
         "nombre": "Imagen y voto",
@@ -295,6 +319,12 @@ DIMENSIONES_ITCP = {
         "indicadores": {"votometro_ventaja_lla": 1.0},
     },
 }
+
+# Indicadores de política que se publican pero NO integran el índice
+# (ADR-0048, revisión editorial CIGOB 2026-07-10) — mismo patrón que
+# itcm.INDICADORES_CONTEXTO (badlar y los monetarios nominales) y que
+# protestas_caba en gestión: la card sigue, el puntaje no.
+INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba"]
 
 BANDAS_INTERPRETACION = [
     (-INF, 20.0, "severamente_apretado"),

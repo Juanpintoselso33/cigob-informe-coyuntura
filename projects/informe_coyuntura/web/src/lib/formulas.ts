@@ -218,12 +218,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Salidas de cargos de rango ministerial pleno (jefe de Gabinete y ministros), contadas por el mes del cese efectivo sobre un registro curado de decretos del Boletín Oficial. No cuentan los pases a otro cargo del mismo gabinete ni los ministerios cerrados o fusionados por reorganización. Menos salidas = puntaje más alto.",
   },
   cohesion_bloque: {
-    latex: String.raw`\frac{1}{N}\sum_{\text{actas divididas, 90 d\'ias}}\frac{\left|\text{a favor}-\text{en contra}\right|}{\text{votos del bloque}}\times 100`,
-    leyenda: "Votaciones nominales del bloque propio de LLA en Diputados: qué tan pareja fue cada votación puertas adentro, promediado sobre las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.",
-  },
-  cohesion_bloque_senado: {
-    latex: String.raw`\frac{1}{N}\sum_{\text{actas divididas, 90 d\'ias}}\frac{\left|\text{a favor}-\text{en contra}\right|}{\text{votos del bloque}}\times 100`,
-    leyenda: "Votaciones nominales del bloque propio de LLA en el Senado: qué tan pareja fue cada votación puertas adentro, promediado sobre las actas divididas de los últimos 90 días. Abstenciones y ausencias no entran.",
+    latex: String.raw`0{,}65\times\text{cohesi\'on Diputados}+0{,}35\times\text{cohesi\'on Senado}`,
+    leyenda: "Compuesto bicameral. La cohesión de cada cámara es el promedio, sobre las actas divididas de los últimos 90 días, de |votos a favor − votos en contra| dividido por el total de votos que emitió el bloque propio de LLA en cada acta (índice de Rice); abstenciones y ausencias no entran. Si una cámara no tiene actas divididas en la ventana, el peso se reparte sobre la otra.",
   },
   alineamiento_senadores_prov: {
     latex: String.raw`\frac{1}{N_{\text{provincias}}}\sum_{\text{provincias}}\frac{\text{votos no-LLA que coinciden con la posici\'on LLA}}{\text{votos no-LLA}}\times 100`,
