@@ -4,11 +4,14 @@ Marco: "Marco Conceptual del Informe de Coyuntura" (CIGOB, mayo 2026), que
 amplía los cinturones de Matus con la sintonía emocional del gobierno con
 los sentimientos colectivos (política de las emociones, redes sociales).
 
-v1 PROVISIONAL: tres proxies derivados de fuentes que el pipeline ya extrae
+v1 PROVISIONAL: cuatro proxies derivados de fuentes que el pipeline ya extrae
 (no re-fetchea nada, evita rate-limits y doble parseo):
-  - icc_utdt             ← último scripts/vida_cotidiana/data/vida_cotidiana_*.json
-  - sentimiento_digital  ← ídem (Google Trends; busca hacia atrás si vino null)
-  - clima_electoral      ← output/cache/politica.json (votometro_ventaja_lla)
+  - icc_utdt                    ← último scripts/vida_cotidiana/data/vida_cotidiana_*.json
+  - sentimiento_digital         ← ídem (Google Trends; busca hacia atrás si vino null)
+  - clima_electoral             ← output/cache/politica.json (votometro_ventaja_lla)
+  - indice_intencion_migratoria ← data/vida/intencion_migratoria_serie.json (Google
+    Trends, ADR-0035; store mensual compartido con descargar_series.py, gateado
+    por frescura — no se re-fetchea si el store ya tiene el mes en curso)
 
 `apatia_electoral` (voto en blanco/nulo + ausentismo) queda pendiente: el
 Votómetro aún no publica blanco/nulo por encuesta.
@@ -31,7 +34,10 @@ VIDA_GLOB   = str(SCRIPT_DIR / "vida_cotidiana" / "data" / "vida_cotidiana_*.jso
 POLITICA_CACHE = PROJECT_DIR / "output" / "cache" / "politica.json"
 
 CINTURON = "espiritu_epoca"
-INDICADORES_ESPERADOS = ["icc_utdt", "sentimiento_digital", "clima_electoral"]
+INDICADORES_ESPERADOS = [
+    "icc_utdt", "sentimiento_digital", "clima_electoral", "indice_intencion_migratoria",
+]
+INTENCION_MIGRATORIA_STORE = PROJECT_DIR / "data" / "vida" / "intencion_migratoria_serie.json"
 
 
 def load_cache() -> dict:
@@ -117,6 +123,37 @@ def fetch_clima_electoral() -> dict | None:
         return None
 
 
+def fetch_indice_intencion_migratoria() -> dict | None:
+    """Intención expresada de emigrar (Google Trends, ADR-0035) — único proxy
+    puntuable de las 5 tandas del Componente A. Store mensual COMPARTIDO con
+    descargar_series.py: se actualiza a lo sumo una vez por mes (el que corra
+    primero esa noche hace el fetch real si hace falta; el otro reutiliza el
+    store ya fresco). El mes en curso siempre queda excluido (incompleto)."""
+    try:
+        sys.path.insert(0, str(SCRIPT_DIR / "vida_cotidiana"))
+        sys.path.insert(0, str(SCRIPT_DIR / "vida_cotidiana" / "collectors"))
+        import trends as _trends
+
+        store = _trends.fetch_intencion_migratoria_store(INTENCION_MIGRATORIA_STORE)
+        mensual = store.get("mensual", {})
+        if not mensual:
+            raise ValueError("store de intencion_migratoria sin datos mensuales")
+
+        ultimo_mes = sorted(mensual.keys())[-1]
+        actualizado = store.get("_meta", {}).get("actualizado", "")
+        mes_actual = datetime.today().strftime("%Y-%m")
+        return {
+            "valor": mensual[ultimo_mes],
+            "unidad": "interés 0–100 (canasta mensual)",
+            "fuente": "Google Trends (canasta intención migratoria, ventana fija 2021→)",
+            "fecha_dato": f"{ultimo_mes}-01",
+            "desactualizado": actualizado[:7] != mes_actual,
+        }
+    except Exception as e:
+        _warn("indice_intencion_migratoria", e)
+        return None
+
+
 # ── Scoring ───────────────────────────────────────────────────────────────────
 
 def _clamp10(x: float) -> float:
@@ -128,9 +165,10 @@ def calcular_score(indicadores: dict) -> float:
     Score 0-10: mayor = mayor desconexión con el humor social.
     Promedio simple (v1 provisional; sin paramétrica CIGOB definida aún).
 
-    icc_utdt            (índice):       60 → 0 | 45 → 5 | 30 → 10
-    sentimiento_digital (interés 0-100): 0 → 0 | 50 → 5 | 100 → 10
-    clima_electoral     (pp LLA−PJ):   +15 → 0 |  0 → 5 | −15 → 10
+    icc_utdt                    (índice):       60 → 0 | 45 → 5 | 30 → 10
+    sentimiento_digital         (interés 0-100): 0 → 0 | 50 → 5 | 100 → 10
+    clima_electoral             (pp LLA−PJ):   +15 → 0 |  0 → 5 | −15 → 10
+    indice_intencion_migratoria (interés 0-100): 0 → 0 | 50 → 5 | 100 → 10
     """
     scores = []
     icc = indicadores.get("icc_utdt", {}).get("valor")
@@ -142,6 +180,9 @@ def calcular_score(indicadores: dict) -> float:
     clima = indicadores.get("clima_electoral", {}).get("valor")
     if clima is not None:
         scores.append(_clamp10(5.0 - float(clima) / 3.0))
+    intencion_migratoria = indicadores.get("indice_intencion_migratoria", {}).get("valor")
+    if intencion_migratoria is not None:
+        scores.append(_clamp10(float(intencion_migratoria) / 10.0))
     return round(sum(scores) / len(scores), 1) if scores else 5.0
 
 
@@ -153,9 +194,10 @@ def main() -> None:
     frescos_count = 0
 
     for nombre, fetcher in [
-        ("icc_utdt",            fetch_icc_utdt),
-        ("sentimiento_digital", fetch_sentimiento_digital),
-        ("clima_electoral",     fetch_clima_electoral),
+        ("icc_utdt",                    fetch_icc_utdt),
+        ("sentimiento_digital",         fetch_sentimiento_digital),
+        ("clima_electoral",             fetch_clima_electoral),
+        ("indice_intencion_migratoria", fetch_indice_intencion_migratoria),
     ]:
         resultado = fetcher()
         if resultado is not None and resultado.get("valor") is not None:

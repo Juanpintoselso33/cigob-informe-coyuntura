@@ -1220,7 +1220,7 @@ export const FICHAS: Record<string, Ficha> = {
   },
 
   // ═══════════════════════════════════════════════════════════════════════
-  // Espíritu de época — promedio simple de tres indicadores, dos de ellos
+  // Espíritu de época — promedio simple de cuatro indicadores, dos de ellos
   // compartidos con vida cotidiana (icc_utdt, sentimiento_digital)
   // ═══════════════════════════════════════════════════════════════════════
   clima_electoral: {
@@ -1239,7 +1239,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "La tensión es lineal en la ventaja: +15 puntos → tensión 0 · empate → 5 · −15 puntos → 10.",
-      "El cinturón espíritu de época no usa un índice compuesto: promedia las tensiones de sus tres indicadores (confianza del consumidor, sentimiento digital y clima electoral).",
+      "El cinturón espíritu de época no usa un índice compuesto: promedia las tensiones de sus cuatro indicadores (confianza del consumidor, sentimiento digital, clima electoral e intención migratoria).",
     ],
     dobleUso: "Es la segunda lectura del mismo dato del Votómetro: puntúa en política como ventaja electoral y acá como clima. La duplicación es una decisión declarada de la versión inicial del cinturón, hasta que exista una paramétrica propia.",
     limitaciones: [
@@ -1252,6 +1252,37 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-06-10", cambio: "Nace el cinturón espíritu de época (quinto cinturón del marco conceptual) con tres indicadores tomados de vida cotidiana y política." },
       { fecha: "2026-06-30", cambio: "Serie histórica publicada como alias de la serie del Votómetro." },
+    ],
+  },
+
+  indice_intencion_migratoria: {
+    tipo: "indicador",
+    id: "indice_intencion_migratoria",
+    cinturon: "espiritu_epoca",
+    rezago: "Hasta un mes: el mes en curso se descarta por incompleto; el dato se actualiza como máximo una vez por mes calendario.",
+    fuente: {
+      organismo: "Google Trends (fuente no oficial)",
+      operacion: "Interés de búsqueda en Argentina de una canasta de términos de intención de emigrar (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\")",
+      url: "https://trends.google.com/",
+      acceso: "Automático: consulta mensual de la canasta en ventana fija (2021 en adelante); cada descarga sana reemplaza el archivo completo — corridas con escalas distintas nunca se mezclan.",
+    },
+    transformaciones: [
+      "La tensión es lineal en el interés de búsqueda: 0 → tensión 0 · 50 → tensión 5 · 100 → tensión 10.",
+      "El cociente entre valores de una misma consulta cancela la renormalización de escala de la fuente, igual que en sentimiento digital.",
+      "Se recolectan además canastas de contexto (ciudadanías, trabajo/visas, destinos y un diagnóstico de causa económica vs. estructural) y un desglose por provincia — ninguna de estas entra al puntaje: son insumo de lectura para el analista, no números publicados en la card.",
+    ],
+    incidenciaTexto: [
+      "El cinturón espíritu de época no usa un índice compuesto: promedia las tensiones de sus cuatro indicadores (confianza del consumidor, sentimiento digital, clima electoral e intención migratoria).",
+    ],
+    limitaciones: [
+      "Mide intención expresada en la búsqueda, no un trámite ni una salida real del país: alguien puede buscar por curiosidad sin intención de emigrar.",
+      "Por eso este indicador nunca debería leerse solo — falta todavía un cruce sistemático contra datos duros (trámites de ciudadanía o visa, fuga de investigadores) que sea real y automatizable; hasta que exista, la lectura de este indicador es únicamente un proxy de atención, no de flujo migratorio efectivo.",
+      "Fuente no oficial con límites de consulta: si el servicio restringe el acceso, se mantiene el último valor del archivo propio.",
+    ],
+    faltantes: "Con la fuente caída o sin el mes calendario todavía consultado, se mantiene el último valor del archivo propio, marcado como desactualizado.",
+    revisiones: "Reemplazo total del archivo en cada descarga sana; la fuente no revisa datos propiamente.",
+    cambios: [
+      { fecha: "2026-07-10", cambio: "Cuarto indicador del cinturón espíritu de época: intención de emigrar vía Google Trends, distinta de la ansiedad económica inmediata que ya mide sentimiento digital." },
     ],
   },
 

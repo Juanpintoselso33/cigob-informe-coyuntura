@@ -135,6 +135,11 @@ jobs:
                   projects/informe_coyuntura/data/gestion/protestas_caba.json \
                   projects/informe_coyuntura/data/gestion/concesiones_fechas.json \
                   projects/informe_coyuntura/data/vida/carne_serie.json \
+                  projects/informe_coyuntura/data/vida/sentimiento_serie.json \
+                  projects/informe_coyuntura/data/vida/ivi_serie.json \
+                  projects/informe_coyuntura/data/vida/motos_serie.json \
+                  projects/informe_coyuntura/data/vida/snic_serie.json \
+                  projects/informe_coyuntura/data/vida/intencion_migratoria_serie.json \
                   projects/informe_coyuntura/data/politica/alineamiento_senadores_actas.json \
                   projects/informe_coyuntura/data/politica/derrotas_legislativas_eventos.json \
                   projects/informe_coyuntura/data/politica/cohesion_bloque_senado_actas.json \

@@ -198,6 +198,7 @@ export const LABELS: Record<string, string> = {
   patentamiento_motos: "Patentamiento de motos", desocupacion: "Desocupación",
   // espíritu de época (comparte icc_utdt y sentimiento_digital con vida)
   clima_electoral: "Clima electoral (Votómetro)",
+  indice_intencion_migratoria: "Intención migratoria (Trends)",
   // gestion
   cepo_mulc: "Brecha cambiaria (cepo)", privatizaciones: "Privatizaciones (etapas)",
   concesiones_infraestructura: "Concesiones viales", reduccion_estado: "Dotación del Estado (APN)",
@@ -256,7 +257,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.",
   // espíritu de época
-  clima_electoral: "pp",
+  clima_electoral: "pp", indice_intencion_migratoria: "pts",
   // gestion (insumos del ITCG)
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "%",
   desregulacion_normativa: "%", reestructuracion_organismos: "%",
@@ -304,6 +305,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   patentamiento_motos: "Unidades",
   // espíritu de época
   clima_electoral: "Puntos porcentuales",
+  indice_intencion_migratoria: "Índice (0–100)",
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",
@@ -356,7 +358,7 @@ export function cinturonesRojos(inf: Informe): number {
 export const BARRA_0_100 = new Set<string>([
   "eficacia_legislativa", "cohesion_bloque", "cohesion_bloque_senado", "alineamiento_senadores_prov",
   "adhesion_reformas_provincial", "veto_quorum", "comisiones_caidas", "movilizacion_cepa",
-  "informalidad", "pluriempleo", "sentimiento_digital", "icc_utdt",
+  "informalidad", "pluriempleo", "sentimiento_digital", "icc_utdt", "indice_intencion_migratoria",
 ]);
 
 function clamp100(n: number): number { return Math.max(0, Math.min(100, n)); }

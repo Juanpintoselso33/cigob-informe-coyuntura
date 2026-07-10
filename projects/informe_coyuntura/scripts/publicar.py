@@ -234,6 +234,7 @@ SCORING = {
     # ── espíritu de época ── (comparte icc_utdt y sentimiento_digital con vida)
     "clima_electoral":     (lambda v: 5 - v / 3,        "+15pp → 0 · 0 → 5 · −15pp → 10 (gap LLA−PJ, Votómetro)"),
     "sentimiento_digital": (lambda v: v / 10,           "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)"),
+    "indice_intencion_migratoria": (lambda v: v / 10,   "0 → 0 · 50 → 5 · 100 → 10 (interés en términos de intención de emigrar: mayor = más desconexión)"),
     "inseguridad":         (lambda v: (v / POB_AR * 100_000 - 3000) / 400,
                                                         "tasa/100k hab (pob. 46,7M): 3.000 → 0 · 5.000 → 5 · 7.000 → 10"),
     # Se puntúa sobre la variación interanual REAL (deflactada), no el stock nominal.

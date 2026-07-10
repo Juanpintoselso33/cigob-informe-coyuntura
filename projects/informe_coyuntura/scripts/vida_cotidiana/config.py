@@ -88,6 +88,30 @@ SALUD_CKAN_BASE = "https://datos.salud.gob.ar/api/3/action/"
 TRENDS_KEYWORDS = ["inflacion", "precios", "inseguridad", "trabajo"]
 TRENDS_GEO      = "AR"
 
+# ── Google Trends — intencion migratoria (ADR-0035) ──────────────────────────
+# Tanda 1: puntuable (4o proxy de espiritu_epoca). Tandas 2-4: contexto, sin
+# backfill. Tanda 5: diagnostico de causa (economico vs. estructural).
+MIGRACION_TANDA_INTENCION = [
+    "emigrar de argentina", "como irme de argentina", "quiero irme del pais",
+    "vivir en el exterior", "trabajo en el exterior",
+]
+MIGRACION_TANDA_CIUDADANIAS = [
+    "ciudadania italiana", "ciudadania espanola", "pasaporte italiano",
+    "pasaporte europeo", "descendencia italiana",
+]
+MIGRACION_TANDA_TRABAJO_VISAS = [
+    "visa de trabajo", "trabajar en espana", "trabajar en estados unidos",
+    "sponsorship visa", "curriculum en ingles",
+]
+MIGRACION_TANDA_DESTINOS = [
+    "mudarse a espana", "mudarse a estados unidos", "mudarse a australia",
+    "vivir en miami", "emigrar a canada",
+]
+MIGRACION_TANDA_DIAGNOSTICO = [
+    "inflacion argentina", "inseguridad argentina", "no hay futuro en argentina",
+]
+MIGRACION_CATEGORIA_EMPLEO = 60  # categoria "Jobs" de Google Trends
+
 # ── General ───────────────────────────────────────────────────────────────────
 HTTP_TIMEOUT = 30
 HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"}

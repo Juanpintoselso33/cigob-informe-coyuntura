@@ -1,10 +1,10 @@
-# ADR-0035 — Índice de Expectativa de Futuro (intención migratoria): evaluar como 4º indicador de espíritu_epoca
+# ADR-0035 — Índice de intención migratoria: 4º indicador de espíritu_epoca
 
 | | |
 |---|---|
-| **Estado** | Propuesto — evaluación pendiente, no implementar todavía |
-| **Fecha** | 2026-07-07 |
-| **Ámbito** | `scripts/espiritu_epoca.py` · `scripts/vida_cotidiana/collectors/trends.py` (patrón a espejar) · futura ficha metodológica |
+| **Estado** | Aceptado — decisiones tomadas 2026-07-10, pendiente de implementación |
+| **Fecha** | 2026-07-07 (propuesto) · 2026-07-10 (decidido) |
+| **Ámbito** | `scripts/vida_cotidiana/collectors/trends.py` (fetch compartido) · `scripts/espiritu_epoca.py` · `scripts/descargar_series.py` · `data/vida/intencion_migratoria_serie.json` (nuevo) · `data-pipeline.yml` · ficha metodológica |
 
 ## Contexto
 
@@ -57,35 +57,71 @@ siempre contra un "Componente B" de datos duros (fuga real de investigadores CON
 de ciudadanía/visa reales). Coincide con el patrón ya establecido en el proyecto de no confiar
 en un proxy de búsqueda aislado.
 
-## Decisión
+## Decisión (2026-07-10)
 
-**Ninguna todavía.** Este ADR deja registrada la evaluación para retomarla en una sesión
-dedicada. Preguntas a resolver antes de implementar:
+1. **Alcance de tandas**: se implementa el Componente A **completo** de la guía — las 5 tandas
+   (intención, ciudadanías, trabajo/visas, destinos, diagnóstico de causa) + desglose regional +
+   tanda de control filtrada por categoría "Empleo". Pero de las 5 tandas, **solo la Tanda 1
+   (intención expresada) se convierte en proxy puntuable**; las Tandas 2-5 + regional quedan
+   como contexto/diagnóstico guardado en el store, sin entrar a `calcular_score()` — evita
+   diluir el score con proxies correlacionados entre sí.
+2. **Nombre**: `indice_intencion_migratoria` — alcance angosto y preciso, no "expectativa de
+   futuro" genérica.
+3. **Componente B**: **queda fuera de esta iteración.** Investigación (2026-07-10): no hay
+   fuente argentina automatizable (CONICET solo publica actas PDF caso por caso sin agregado;
+   DNM no desagrega por motivo). Candidatas reales para una iteración futura: **US State
+   Department** — visas mensuales a argentinos por categoría (H1B/F1/L1/J1/O1), dato duro,
+   mensual, parseable (`travel.state.gov`); **ISTAT/AIRE** (Italia) e **INE** (España) —
+   ciudadanía adquirida por argentinos, dato duro pero **anual**. Se deja como próximo ADR, no
+   se mezcla con el Componente A (fuentes y formatos totalmente distintos) en este cambio.
+4. **Backfill**: **2021-01**, igual que `sentimiento_digital` (ADR-0034) — consistencia dentro
+   del mismo cinturón; evita series de longitud distinta entre los dos indicadores de Trends.
+5. **Peso en `calcular_score()`**: **igual** — promedio simple de 4 (sin pesos ad-hoc; el
+   cinturón entero sigue siendo v1 provisional sin paramétrica formal).
+6. **Arquitectura de fetch — fuente única mensual, gateada por frescura** (decisión de diseño,
+   no una de las 5 preguntas originales, pero necesaria para resolver el riesgo de rate-limit
+   sin sacrificar alcance): en vez de espejar el patrón dual de `sentimiento_digital` (card
+   nightly vía `trends.py` + serie histórica separada vía `descargar_series.py`, dos llamadas a
+   Trends independientes), este indicador usa **un solo store mensual**
+   (`data/vida/intencion_migratoria_serie.json`) que alimenta tanto la card/score como la serie
+   pública. Una función compartida en `trends.py` chequea si el store ya tiene el mes calendario
+   actual antes de llamar a pytrends — si sí, no hay llamada de red. Cuando el mes es nuevo,
+   corre el batch completo (Tanda 1 + control Empleo + regional, mismo payload; Tandas 2-4 con
+   payloads propios, solo último valor sin backfill; Tanda 5 con comparación de tendencia contra
+   Tanda 1 → etiqueta `motivo_dominante`). Como el store se reemplaza entero en cada corrida sana
+   (nunca mezcla corridas distintas), todos los valores de un momento dado vienen de la MISMA
+   consulta — el cociente entre meses es estable (mismo principio de ADR-0034), por lo que se
+   puede puntuar directo del último valor del store sin necesitar una card por separado.
+   `espiritu_epoca.py` y `descargar_series.py` llaman a la misma función: el que corra primero
+   esa noche hace el fetch real si hace falta, el otro reutiliza el store ya fresco.
 
-1. ¿Automatizar con `pytrends` espejando `trends.py`, con cuántos términos/tandas reales (no
-   los ~25 de la guía completa — hay que acotar para no saturar el rate-limit compartido con
-   `sentimiento_digital`)?
-2. ¿Nombre final del indicador — mantener "Índice de Expectativa de Futuro" con alcance
-   documentado, o renombrar a algo más angosto y preciso?
-3. ¿Existe una fuente real y automatizable para el "Componente B" (fuga de investigadores
-   CONICET, trámites de ciudadanía/visa) con la que cruzarlo, o queda como validación cualitativa
-   manual del analista?
-4. ¿Backfill desde dic-2023 (convención del proyecto) en vez de 2020-01-01 (rango de la guía) —
-   pytrends permite pedir rangos históricos, confirmar si sufre el mismo problema de
-   normalización cruzada entre ventanas temporales distintas?
-5. ¿Pesos/integración en `calcular_score()` de espíritu_epoca (hoy promedio simple de 3;
-   pasaría a 4)?
+## Consecuencias
 
-## Consecuencias (si se implementa más adelante)
-
-- Nuevo indicador en `INDICADORES_ESPERADOS` de `espiritu_epoca.py` (`icc_utdt`,
-  `sentimiento_digital`, `clima_electoral`, + el nuevo).
-- Nueva función `fetch_*` reutilizando el patrón pytrends de `trends.py`, no un proceso manual.
-- Ficha metodológica nueva, con el alcance (intención migratoria, no "expectativa" genérica)
-  documentado explícitamente y la limitación búsqueda≠intención real ya incorporada como nota
-  permanente (mismo estándar que las 55 fichas existentes).
+- `INDICADORES_ESPERADOS` de `espiritu_epoca.py` pasa a 4 (`icc_utdt`, `sentimiento_digital`,
+  `clima_electoral`, `indice_intencion_migratoria`); `calcular_score()` suma una línea
+  `valor / 10` (mismo estilo lineal que `sentimiento_digital`).
+- Nuevo store `data/vida/intencion_migratoria_serie.json` — **debe agregarse al `git add` de
+  `data-pipeline.yml` en el mismo cambio que lo crea** (precedente: 3 cachés se perdieron por
+  este motivo el 2026-07-09).
+- Nueva ficha metodológica en `lib/fichas.ts`, registro institucional, con la limitación
+  permanente "búsqueda ≠ intención real" y nota de que el Componente B queda pendiente (sin
+  referencias a números de ADR en el texto público, mismo estándar que las 55 fichas existentes).
+- `SCORING`/`SCORE_EXPLICACION` en `publicar.py`: entrada espejo, rama genérica (sin scoring
+  dedicado, igual que hoy).
+- Términos de Tanda 1 (puntuable): `emigrar de argentina`, `como irme de argentina`, `quiero
+  irme del pais`, `vivir en el exterior`, `trabajo en el exterior`. Tanda 5 (diagnóstico, ya
+  dada por la guía): `inflacion argentina`, `inseguridad argentina`, `no hay futuro en
+  argentina`. Tandas 2-4 (contexto): ciudadanías, trabajo/visas, destinos — ver implementación
+  para el detalle exacto de keywords.
 
 ## Opciones descartadas
 
 - **Seguir la guía tal cual (proceso manual mensual)**: descartado — contradice ADR-0001 y el
   patrón ya automatizado de Trends en este mismo repo.
+- **Espejar el patrón dual exacto de `sentimiento_digital`** (card nightly + serie separada):
+  descartado — no resuelve el pedido de evitar llamadas repetidas a Trends para meses ya
+  registrados; la fuente única mensual gateada por frescura cumple el mismo rol con menos
+  exposición a rate-limit.
+- **Sumar Componente B en esta misma iteración**: descartado por ahora — mezclaría dos fuentes
+  de datos totalmente distintas (Trends vs. scraping de tablas de gobiernos extranjeros) en un
+  mismo cambio; queda como próximo ADR concreto ya con las fuentes candidatas identificadas.
