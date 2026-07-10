@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-10T16:38:12.041883",
+  "generated_at": "2026-07-10T16:51:03.964996",
   "period": "2026-07",
-  "score_global": 3.1,
+  "score_global": 2.9,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -1175,8 +1175,8 @@
       }
     },
     "espiritu_epoca": {
-      "score": 3.2,
-      "estado": "en_tension",
+      "score": 2.5,
+      "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "icc_utdt": {
@@ -1187,10 +1187,10 @@
           "desactualizado": false
         },
         "sentimiento_digital": {
-          "valor": 5.7,
+          "valor": 6.0,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-09",
           "desactualizado": false
         },
         "clima_electoral": {
@@ -1198,6 +1198,13 @@
           "unidad": "pp (LLA − PJ)",
           "fuente": "Votómetro CIGOB",
           "fecha_dato": "2026-05-28",
+          "desactualizado": false
+        },
+        "indice_intencion_migratoria": {
+          "valor": 5.6,
+          "unidad": "interés 0–100 (canasta mensual)",
+          "fuente": "Google Trends (canasta intención migratoria, ventana fija 2021→)",
+          "fecha_dato": "2026-06-01",
           "desactualizado": false
         }
       },

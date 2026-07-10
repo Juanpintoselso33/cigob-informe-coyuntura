@@ -1,7 +1,7 @@
 {
   "cinturon": "espiritu_epoca",
-  "generated_at": "2026-07-10T06:35:53.583799",
-  "score": 3.2,
+  "generated_at": "2026-07-10T16:50:42.072392",
+  "score": 2.5,
   "indicadores": {
     "icc_utdt": {
       "valor": 42.5,
@@ -11,10 +11,10 @@
       "desactualizado": false
     },
     "sentimiento_digital": {
-      "valor": 5.7,
+      "valor": 6.0,
       "unidad": "interés 0–100",
       "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-      "fecha_dato": "2026-07-10",
+      "fecha_dato": "2026-07-09",
       "desactualizado": false
     },
     "clima_electoral": {
@@ -22,6 +22,13 @@
       "unidad": "pp (LLA − PJ)",
       "fuente": "Votómetro CIGOB",
       "fecha_dato": "2026-05-28",
+      "desactualizado": false
+    },
+    "indice_intencion_migratoria": {
+      "valor": 5.6,
+      "unidad": "interés 0–100 (canasta mensual)",
+      "fuente": "Google Trends (canasta intención migratoria, ventana fija 2021→)",
+      "fecha_dato": "2026-06-01",
       "desactualizado": false
     }
   }

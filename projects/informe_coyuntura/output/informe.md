@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-10 16:38:12"
-score_global: 3.1
+generado: "2026-07-10 16:51:03"
+score_global: 2.9
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 3.1/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 2.9/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
@@ -86,18 +86,19 @@ schema_version: "1.2.0"
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-10 | fresco |
 | protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
 
-### 🟡 Espiritu Epoca — score 3.2/10 (en_tension)
+### 🟢 Espiritu Epoca — score 2.5/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 5.7 | interés 0–100 | 2026-07-10 | fresco |
+| sentimiento_digital | 6.0 | interés 0–100 | 2026-07-09 | fresco |
 | clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
+| indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ## Advertencias
 
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-07-10 16:38:12 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-10 16:51:03 — schema 1.2.0*

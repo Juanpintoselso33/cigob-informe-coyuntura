@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-10T16:38:12.041883",
+  "generated_at": "2026-07-10T16:51:03.964996",
   "period": "2026-07",
-  "score_global": 3.9,
+  "score_global": 3.8,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -2565,8 +2565,8 @@
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
     },
     "espiritu_epoca": {
-      "score": 3.2,
-      "estado": "en_tension",
+      "score": 2.5,
+      "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "icc_utdt": {
@@ -2581,10 +2581,10 @@
           "aporte_lectura": "Entra al promedio del cinturón con una tensión de 5,8/10."
         },
         "sentimiento_digital": {
-          "valor": 5.7,
+          "valor": 6.0,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-09",
           "desactualizado": false,
           "aporte_score": 0.6,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
@@ -2601,6 +2601,17 @@
           "aporte_formula": "+15pp → 0 · 0 → 5 · −15pp → 10 (gap LLA−PJ, Votómetro)",
           "aporte_nota": null,
           "aporte_lectura": "Entra al promedio del cinturón con una tensión de 3,2/10."
+        },
+        "indice_intencion_migratoria": {
+          "valor": 5.6,
+          "unidad": "interés 0–100 (canasta mensual)",
+          "fuente": "Google Trends (canasta intención migratoria, ventana fija 2021→)",
+          "fecha_dato": "2026-06-01",
+          "desactualizado": false,
+          "aporte_score": 0.6,
+          "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en términos de intención de emigrar: mayor = más desconexión)",
+          "aporte_nota": null,
+          "aporte_lectura": "Entra al promedio del cinturón con una tensión de 0,6/10."
         }
       },
       "alerta": null,
