@@ -108,13 +108,32 @@ en un proxy de búsqueda aislado.
      el dataset mide extranjeros que ENTRAN al país (dirección opuesta a la que buscamos) y
      está desactualizado desde 2020.
 
+   **Segundo barrido (mismo día), pedido específicamente por cadencia** — el usuario marcó
+   que anual/semestral es demasiado lento para cruzar contra un indicador mensual de Trends:
+   - **US State Department — Immigrant Visa (IV), no solo NIV**: además del NIV ya verificado
+     (visas temporales, incluye turismo), el State Dept también publica **mensual** la
+     "Monthly Immigrant Visa Issuances by Foreign State of Chargeability" (green cards reales,
+     inmigración permanente, no turismo) — **verificado** bajando y parseando el archivo real
+     de septiembre 2025 (misma estructura `Country | Visa Class | Issuances`): Argentina, 63
+     emisiones ese mes (IR1/IR5 — cónyuges/padres de ciudadano 11+11, F1-F4 reunificación
+     familiar, E1-E3 tratado de comercio/inversión, DV lotería de visas). Volumen chico pero
+     es la señal MÁS directa de inmigración permanente real que se encontró, y mensual.
+   - Se intentó bajar el equivalente español (INE, tabla de flujo de inmigración por país de
+     origen, id. 24290) para ver si tenía mejor cadencia que la de nacionalización — la tabla
+     resultó impracticable de bajar entera vía API (>30MB, la respuesta se corta) y su
+     periodicidad declarada por el propio INE es igual "Semestral" que la de emigración con
+     destino al extranjero ya revisada — no hay mejora de cadencia disponible del lado
+     español; se descarta seguir por ahí.
+
    En total, de seis fuentes evaluadas, **cinco quedan verificadas y automatizables sin
-   bloqueos** (EEUU, Canadá, España, Italia, Chile) — todas API o descarga directa, ninguna
-   requiere unlocker ni scraping de HTML. Cadencias mixtas: **mensual** (EEUU, Canadá) vs.
-   **anual/semestral** (España, Italia, Chile) — un cruce real de Componente B tendría que
-   vivir en `descargar_series.py` como series independientes con su propia cadencia cada una,
-   no forzarlas a la mensual del Componente A. Se deja como próximo ADR, no se mezcla con el
-   Componente A (fuentes y formatos totalmente distintos) en este cambio.
+   bloqueos** (EEUU —con DOS series mensuales, NIV y IV—, Canadá, España, Italia, Chile) —
+   todas API o descarga directa, ninguna requiere unlocker ni scraping de HTML. Cadencias
+   mixtas: **mensual** (EEUU ×2, Canadá) vs. **anual/semestral** (España, Italia, Chile,
+   confirmado como techo de cadencia real de esas fuentes, no solo falta de búsqueda) — un
+   cruce real de Componente B tendría que vivir en `descargar_series.py` como series
+   independientes con su propia cadencia cada una, no forzarlas a la mensual del Componente A.
+   Se deja como próximo ADR, no se mezcla con el Componente A (fuentes y formatos totalmente
+   distintos) en este cambio.
 4. **Backfill**: **2021-01**, igual que `sentimiento_digital` (ADR-0034) — consistencia dentro
    del mismo cinturón; evita series de longitud distinta entre los dos indicadores de Trends.
 5. **Peso en `calcular_score()`**: **igual** — promedio simple de 4 (sin pesos ad-hoc; el
