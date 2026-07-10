@@ -79,9 +79,21 @@ en un proxy de búsqueda aislado.
    relevantes para migración (no turismo) son chicas frente al total dominado por B1/B2 —
    J1 1.664 · L1 48 · H1B 41 · F1 40 · O1 25. Excel disponible desde FY2023 (oct-2022) en
    adelante — cubre de sobra el backfill del proyecto (dic-2023+); antes de FY2023 solo hay
-   PDF. **ISTAT/AIRE** (Italia) e **INE** (España) —
-   ciudadanía adquirida por argentinos, dato duro pero **anual**. Se deja como próximo ADR, no
-   se mezcla con el Componente A (fuentes y formatos totalmente distintos) en este cambio.
+   PDF. **INE (España)** e **ISTAT/AIRE (Italia)** — ciudadanía adquirida por argentinos, dato
+   duro pero **anual**, ambas también **verificadas** el mismo día:
+   - **INE**: API pública limpia (`servicios.ine.es/wstempus/js/ES/DATOS_TABLA/15800`, sin
+     scraping, JSON), serie "Argentina, Total" del cuadro de adquisiciones de nacionalidad
+     española de residentes — 2023: 7.208 · 2024: 8.558 · 2025: 11.291 (tendencia creciente).
+   - **ISTAT/AIRE**: ZIP/CSV descargable (`demo.istat.it/data/aire/AIRE_it.zip`, sin
+     scraping), columna "Acquisizioni di cittadinanza" filtrando `Paese=Argentina,
+     Sesso=Totale` — 2022: 25.846 · 2023: 33.130 · 2024: 33.492 (coincide con el comunicado
+     de prensa oficial de ISTAT: "in Argentina circa 33mila" en 2023, en su mayoría por
+     reconocimiento *iure sanguinis*).
+   Las tres fuentes son automatizables sin bloqueos (APIs/descargas directas, no requieren
+   unlocker ni scraping de HTML), pero **anuales, no mensuales** — un cruce real de Componente
+   B tendría que vivir en `descargar_series.py` como serie anual aparte, no forzarla a la
+   cadencia mensual del Componente A. Se deja como próximo ADR, no se mezcla con el Componente
+   A (fuentes y formatos totalmente distintos) en este cambio.
 4. **Backfill**: **2021-01**, igual que `sentimiento_digital` (ADR-0034) — consistencia dentro
    del mismo cinturón; evita series de longitud distinta entre los dos indicadores de Trends.
 5. **Peso en `calcular_score()`**: **igual** — promedio simple de 4 (sin pesos ad-hoc; el
