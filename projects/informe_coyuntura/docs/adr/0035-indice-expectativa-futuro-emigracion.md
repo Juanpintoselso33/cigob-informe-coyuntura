@@ -89,11 +89,32 @@ en un proxy de búsqueda aislado.
      Sesso=Totale` — 2022: 25.846 · 2023: 33.130 · 2024: 33.492 (coincide con el comunicado
      de prensa oficial de ISTAT: "in Argentina circa 33mila" en 2023, en su mayoría por
      reconocimiento *iure sanguinis*).
-   Las tres fuentes son automatizables sin bloqueos (APIs/descargas directas, no requieren
-   unlocker ni scraping de HTML), pero **anuales, no mensuales** — un cruce real de Componente
-   B tendría que vivir en `descargar_series.py` como serie anual aparte, no forzarla a la
-   cadencia mensual del Componente A. Se deja como próximo ADR, no se mezcla con el Componente
-   A (fuentes y formatos totalmente distintos) en este cambio.
+   Barrido ampliado el mismo día a más destinos reales de la emigración argentina, dos
+   candidatas más **verificadas**:
+   - **Canadá (IRCC)**: CSV público abierto (`ircc.canada.ca/opendata-donneesouvertes/data/
+     ODP-PR-Citz.csv`, sin scraping, actualizado **mensualmente** — el único candidato nuevo
+     con esa cadencia), residentes permanentes por país de ciudadanía. Argentina, valores
+     redondeados a 5 por privacidad (no sirven para sumar exacto, sí para tendencia):
+     entre 15 y 60 por mes en el último año (jun-2025 a abr-2026, el dato más reciente
+     disponible).
+   - **Chile (SERMIG, ex-DEM)**: Excel descargable (`serviciomigraciones.cl/.../RD-Resueltas-
+     2o-semestre-2025.xlsx`, sin scraping), microdato con país + año + tipo de resolución —
+     residencias definitivas OTORGADAS a argentinos, serie completa 2000-2025: 2023: 1.139 ·
+     2024: 928 · 2025 (parcial): 580. Actualización semestral, no mensual.
+   - **Uruguay (DNM)** quedó descartado por ahora: solo publica capítulos en PDF (no CSV/Excel),
+     más costoso de automatizar de forma confiable que las demás fuentes — candidata débil, no
+     verificada en detalle.
+   - **Argentina (datos.gob.ar, Dirección Nacional de Migraciones)**: revisado y descartado —
+     el dataset mide extranjeros que ENTRAN al país (dirección opuesta a la que buscamos) y
+     está desactualizado desde 2020.
+
+   En total, de seis fuentes evaluadas, **cinco quedan verificadas y automatizables sin
+   bloqueos** (EEUU, Canadá, España, Italia, Chile) — todas API o descarga directa, ninguna
+   requiere unlocker ni scraping de HTML. Cadencias mixtas: **mensual** (EEUU, Canadá) vs.
+   **anual/semestral** (España, Italia, Chile) — un cruce real de Componente B tendría que
+   vivir en `descargar_series.py` como series independientes con su propia cadencia cada una,
+   no forzarlas a la mensual del Componente A. Se deja como próximo ADR, no se mezcla con el
+   Componente A (fuentes y formatos totalmente distintos) en este cambio.
 4. **Backfill**: **2021-01**, igual que `sentimiento_digital` (ADR-0034) — consistencia dentro
    del mismo cinturón; evita series de longitud distinta entre los dos indicadores de Trends.
 5. **Peso en `calcular_score()`**: **igual** — promedio simple de 4 (sin pesos ad-hoc; el
