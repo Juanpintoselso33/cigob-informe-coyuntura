@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-10T19:26:21.904258",
+  "generated_at": "2026-07-11T05:48:03.043528",
   "period": "2026-07",
   "score_global": 3.8,
   "ponderacion": {
@@ -675,7 +675,7 @@
           "periodo": "2026",
           "unidad": "DNUs por ley",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -717,7 +717,7 @@
           "ipc_aplicado_pct": 31.5,
           "unidad": "% interanual real",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -737,7 +737,7 @@
           "ventana_dias": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -757,7 +757,7 @@
           "periodo_id": "HCDN144",
           "unidad": "% de sesiones",
           "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -778,7 +778,7 @@
           "ventana_dias": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -795,7 +795,7 @@
           "valor": 66.7,
           "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
           "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "n_provincias": 16,
           "desactualizado": false,
           "en_indice": true,
@@ -818,7 +818,7 @@
           "detalle_txt": "3 vetos insistidos por el Congreso + 5 decretos rechazados en el recinto en los últimos 12 meses",
           "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
           "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -843,14 +843,14 @@
               "valor": 99.9,
               "fecha_dato": "2026-06-24",
               "n_actas": 33,
-              "corrida_exitosa_en": "2026-07-10",
+              "corrida_exitosa_en": "2026-07-11",
               "desactualizado": false
             },
             "senado": {
               "valor": 99.4,
               "fecha_dato": "2026-06-04",
               "n_actas": 18,
-              "corrida_exitosa_en": "2026-07-10",
+              "corrida_exitosa_en": "2026-07-11",
               "desactualizado": false
             }
           },
@@ -871,7 +871,7 @@
           "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
           "fecha_dato": "2026-06-04",
           "n_provincias": 24,
-          "corrida_exitosa_en": "2026-07-10",
+          "corrida_exitosa_en": "2026-07-11",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -1070,8 +1070,8 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": -0.565,
-          "r_diferencias": -0.196,
+          "r_niveles": -0.633,
+          "r_diferencias": -0.302,
           "n": 30,
           "pares": [
             [
@@ -1101,97 +1101,97 @@
             ],
             [
               "2024-06",
-              69.6,
+              63.1,
               109.4
             ],
             [
               "2024-07",
-              57.1,
+              51.4,
               97.5
             ],
             [
               "2024-08",
-              58.1,
+              53.5,
               77.7
             ],
             [
               "2024-09",
-              60.9,
+              54.9,
               73.0
             ],
             [
               "2024-10",
-              67.0,
+              60.9,
               85.0
             ],
             [
               "2024-11",
-              57.9,
+              51.4,
               82.5
             ],
             [
               "2024-12",
-              69.1,
+              62.6,
               85.5
             ],
             [
               "2025-01",
-              66.2,
+              58.9,
               78.6
             ],
             [
               "2025-02",
-              77.2,
+              66.9,
               81.1
             ],
             [
               "2025-03",
-              75.6,
+              65.5,
               92.7
             ],
             [
               "2025-04",
-              74.2,
+              58.8,
               113.7
             ],
             [
               "2025-05",
-              76.8,
+              68.4,
               79.2
             ],
             [
               "2025-06",
-              73.3,
+              64.9,
               91.8
             ],
             [
               "2025-07",
-              65.0,
+              57.4,
               101.9
             ],
             [
               "2025-08",
-              45.1,
+              34.9,
               101.2
             ],
             [
               "2025-09",
-              43.4,
+              34.2,
               182.8
             ],
             [
               "2025-10",
-              45.7,
+              33.4,
               145.8
             ],
             [
               "2025-11",
-              59.0,
+              48.5,
               116.4
             ],
             [
               "2025-12",
-              63.9,
+              57.7,
               118.5
             ],
             [
@@ -1221,7 +1221,7 @@
             ],
             [
               "2026-06",
-              71.3,
+              70.6,
               105.3
             ]
           ],
@@ -1231,7 +1231,7 @@
           "serie_label": "ITCP (reconstrucción mensual)",
           "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
           "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
-          "conclusion": "Correlación -0,565 en niveles y -0,196 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
+          "conclusion": "Correlación -0,633 en niveles y -0,302 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
@@ -1413,17 +1413,17 @@
           "valor": 6.0,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
-          "fecha_dato": "2026-07-09",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "detalle_txt": "El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITVC usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.",
           "en_indice": true,
           "dimension": "confianza",
-          "indice_itvc": 137.0,
+          "indice_itvc": 140.0,
           "peso_efectivo": 0.015,
           "aporte_score": 0.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 137,0 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
-          "aporte_nota": null,
-          "aporte_lectura": "Este componente está en 137,0 contra una base de 100: su tensión equivalente daría negativa (-2,4) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
+          "aporte_formula": "Índice base-100 vs 4T-2023: 140,0 (100 = arranque del mandato; más = mejora); pesa 1,5% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_nota": "Winsorizado (tratamiento de outliers): índice crudo 140,5 acotado al techo de 140,0 — un boom puntual de un componente no compra compensación ilimitada en el promedio. El tope es solo hacia arriba: las caídas no se recortan, se señalizan como dimensión crítica.",
+          "aporte_lectura": "Este componente está en 140,0 contra una base de 100: su tensión equivalente daría negativa (-3,0) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
         },
         "patentamiento_motos": {
           "valor": 69298,
@@ -1442,10 +1442,10 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260709_1131.json",
+      "fuente_enriquecida": "vida_cotidiana_20260711_0536.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
-        "valor": 91.1,
+        "valor": 91.2,
         "banda": "deterioro_moderado",
         "banda_legible": "Deterioro moderado vs 4T-2023",
         "dimensiones": {
@@ -1536,7 +1536,7 @@
           "confianza": {
             "nombre": "Confianza y seguridad",
             "peso": 0.15,
-            "puntaje": 104.0,
+            "puntaje": 104.3,
             "indicadores": {
               "icc_utdt": {
                 "peso": 0.45,
@@ -1552,8 +1552,8 @@
               },
               "sentimiento_digital": {
                 "peso": 0.1,
-                "puntaje_banda": 137.0,
-                "puntaje_aplicado": 137.0,
+                "puntaje_banda": 140.0,
+                "puntaje_aplicado": 140.0,
                 "peso_efectivo": 0.015
               },
               "consumo_carne": {
@@ -1575,57 +1575,57 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 89.3,
-          "p95": 92.8,
+          "p05": 89.4,
+          "p95": 92.9,
           "tension_rango": [
             6.4,
             7.1
           ],
           "dominante": {
             "indicador": "endeudamiento_familiar",
-            "indice_sin": 97.7
+            "indice_sin": 97.8
           },
           "n_draws": 1000,
           "hist": [
             1,
             3,
-            4,
+            3,
             6,
+            8,
             7,
-            6,
-            11,
-            13,
-            24,
+            10,
+            12,
+            25,
             27,
-            33,
-            37,
             31,
-            37,
-            44,
-            58,
-            55,
-            41,
+            36,
+            34,
+            34,
+            45,
             53,
-            61,
-            61,
+            59,
+            43,
+            52,
+            63,
+            59,
             59,
             49,
-            49,
-            49,
-            35,
-            33,
-            32,
+            48,
+            48,
+            38,
+            34,
+            30,
             21,
-            15,
             16,
-            10,
+            13,
+            14,
+            6,
             7,
-            7,
-            2,
+            3,
             3
           ],
-          "hist_min": 88.07,
-          "hist_max": 93.88,
+          "hist_min": 88.11,
+          "hist_max": 93.91,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
@@ -1803,7 +1803,7 @@
           "valor": 5.24,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reformas_economicas",
@@ -1838,7 +1838,7 @@
           "valor": 61.0,
           "unidad": "% de avance (proxy InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "conteo_normas": 61,
           "detalle_txt": "61 normas con 'deroga' desde dic-2023 (100 = plan completo)",
@@ -1913,7 +1913,7 @@
           "valor": 40.0,
           "unidad": "% de avance (proxy InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "conteo_normas": 18,
           "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -1932,7 +1932,7 @@
           "valor": 2.9,
           "unidad": "Índice 0–100 (Fondo de Cese: cobertura + adopción financiera)",
           "fuente": "CNV (registro FCI, RG 1071/2025) + Boletín Oficial (menciones)",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "fci_cese_registrados": 0,
           "menciones_bo": 21,
@@ -2006,7 +2006,7 @@
           "valor": 22.0,
           "unidad": "% de inversión aprobada sobre el pipeline",
           "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "proyectos_aprobados": 17,
           "inversion_aprobada_musd": 31192,
@@ -2047,7 +2047,7 @@
           "valor": 100.0,
           "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
           "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "ejercicio": 2026,
           "componentes": {
@@ -2114,16 +2114,16 @@
           "valor": 0,
           "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
           "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-          "fecha_dato": "2026-07-10",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
-          "dias_muestreados_mes": 9,
-          "detalle_txt": "0 alertas en 9 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+          "dias_muestreados_mes": 10,
+          "detalle_txt": "0 alertas en 10 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
           "en_indice": false,
           "aporte_score": null,
           "aporte_formula": null,
           "aporte_nota": "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026).",
           "aporte_lectura": null,
-          "aporte_input_txt": "0 alertas en 9 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)"
+          "aporte_input_txt": "0 alertas en 10 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)"
         },
         "protestas_caba": {
           "valor": 301,
@@ -2355,7 +2355,7 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": 0.767,
+          "r_niveles": 0.768,
           "r_diferencias": 0.378,
           "n": 32,
           "pares": [
@@ -2517,7 +2517,7 @@
             [
               "2026-07",
               73.8,
-              2086.2
+              2090.0
             ]
           ],
           "plot": "minmax",
@@ -2526,7 +2526,7 @@
           "serie_label": "ITCG (reconstrucción mensual)",
           "externa_label": "Merval en dólares",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,767 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
+          "conclusion": "Correlación 0,768 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
         }
       },
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
@@ -2551,7 +2551,7 @@
           "valor": 6.0,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-07-09",
+          "fecha_dato": "2026-07-11",
           "desactualizado": false,
           "aporte_score": 0.6,
           "aporte_formula": "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)",
@@ -2694,24 +2694,24 @@
         "indice": "ITCP",
         "propio": "epu",
         "riesgo": {
-          "r": 0.15,
+          "r": 0.22,
           "n": 29,
-          "rd": -0.29
+          "rd": -0.32
         },
         "merval": {
-          "r": -0.06,
+          "r": -0.11,
           "n": 30,
-          "rd": 0.28
+          "rd": 0.31
         },
         "icc": {
-          "r": 0.04,
+          "r": -0.04,
           "n": 29,
-          "rd": 0.27
+          "rd": 0.37
         },
         "epu": {
-          "r": -0.56,
+          "r": -0.63,
           "n": 30,
-          "rd": -0.2
+          "rd": -0.3
         }
       }
     ],
@@ -2735,6 +2735,6 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,46 con la confianza del consumidor, ITCP -0,56 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,15 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,29, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,46 con la confianza del consumidor, ITCP -0,63 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,22 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,32, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
   }
 }
