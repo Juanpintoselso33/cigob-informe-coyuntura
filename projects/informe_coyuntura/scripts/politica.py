@@ -166,10 +166,14 @@ def _hcdn_votaciones_session() -> requests.Session:
     return s
 
 
-def _paced_get(session: requests.Session, base_url: str, path: str, **kwargs):
+def _paced_get(session: requests.Session, base_url: str, path: str, aceptar_404: bool = False, **kwargs):
     """GET con pacing fijo y retry/backoff ante 403 (hasta 3 intentos).
     Generaliza el helper de HCDN para reusar sesión/pacing contra Senado.
-    None si se agotan los reintentos o hay un error de red."""
+    None si se agotan los reintentos o hay un error de red. Con
+    `aceptar_404=True` un 404 devuelve la Response (para que el caller pueda
+    distinguir "no existe" de un fallo transitorio -- lo necesita el walk de
+    actas de Diputados, donde un hueco de id es normal pero un fallo de red
+    no debe congelarse como hueco)."""
     url = f"{base_url}{path}"
     for intento in range(3):
         time.sleep(_HCDN_VOTACIONES_DELAY)
@@ -181,6 +185,8 @@ def _paced_get(session: requests.Session, base_url: str, path: str, **kwargs):
             return r
         if r.status_code == 403:
             continue
+        if r.status_code == 404 and aceptar_404:
+            return r
         return None
     return None
 
@@ -1171,12 +1177,28 @@ def _diputados_acta_fecha(contenido: bytes) -> datetime | None:
         return None
 
 
+# Sentinelas del walk de actas de Diputados: un 404 genuino es un hueco de
+# id (tolerable, la numeración puede saltearse) -- un fallo transitorio (red,
+# 403 agotado, 5xx) NO es un hueco, y el backfill anual no debe congelar un
+# año como "cerrado" si alguna acta falló por esto (quedaría un agujero
+# permanente en la serie histórica y en la reconstrucción del ITCP).
+_ACTA_NO_EXISTE = object()
+_ACTA_FALLO = object()
+
+
 def _diputados_acta_pdf(session: requests.Session, id_acta: int):
-    """GET pausado del PDF de una acta puntual. None si no existe (404) o
-    el request falló -- _paced_get ya distingue eso de un 403 (reintenta) y
-    de un error de red (None)."""
-    r = _paced_get(session, HCDN_VOTACIONES_BASE, _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta))
-    return r.content if r is not None else None
+    """GET pausado del PDF de una acta puntual. Devuelve los bytes del PDF,
+    `_ACTA_NO_EXISTE` si el servidor respondió 404 (hueco de id genuino), o
+    `_ACTA_FALLO` si el request falló de forma transitoria (error de red,
+    403 agotado, 5xx) -- los callers que cachean por año necesitan la
+    distinción para no congelar un fallo como si fuera un hueco."""
+    r = _paced_get(session, HCDN_VOTACIONES_BASE, _DIPUTADOS_ACTA_PDF_PATH.format(id=id_acta),
+                   aceptar_404=True)
+    if r is None:
+        return _ACTA_FALLO
+    if r.status_code == 404:
+        return _ACTA_NO_EXISTE
+    return r.content
 
 
 # Caché PERMANENTE por acta (id -> {fecha, rice}): a diferencia de los
@@ -1216,15 +1238,21 @@ def _acta_diputados_cacheada(session: requests.Session, id_acta: int, cache: dic
     puede perderse: la próxima corrida debe retomar desde donde quedó, no
     desde cero. Se cachea SIEMPRE que se pudo leer la fecha, con rice=None
     cuando el bloque LLA no aporta señal (empate o sin presentes), para que
-    un walk repetido nunca vuelva a descargar la misma acta. None solo si
-    la acta no existe (404, puede ser transitorio) o no se pudo extraer la
-    fecha del PDF -- ninguno de esos dos casos se cachea."""
+    un walk repetido nunca vuelva a descargar la misma acta. None si la
+    acta no existe (404, hueco de id genuino) o no se pudo extraer la fecha
+    del PDF; `_ACTA_FALLO` si la descarga falló de forma transitoria (red,
+    403 agotado) -- el backfill anual usa la distinción para no cachear un
+    año con agujeros. Ninguno de esos casos se cachea."""
     clave = str(id_acta)
     if clave in cache:
         entrada = cache[clave]
         return {"fecha": datetime.strptime(entrada["fecha"], "%Y-%m-%d"), "rice": entrada["rice"]}
     contenido = _diputados_acta_pdf(session, id_acta)
-    if contenido is None:
+    if contenido is _ACTA_FALLO:
+        return _ACTA_FALLO
+    if contenido is _ACTA_NO_EXISTE or contenido is None:
+        # None: tolerancia defensiva (el contrato actual de
+        # _diputados_acta_pdf ya no lo produce) -- se trata como hueco.
         return None
     fecha = _diputados_acta_fecha(contenido)
     if fecha is None:
@@ -1245,16 +1273,21 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
     50 hasta encontrar un id válido; desde ahí avanza de a uno hasta el
     primer 404. None solo si ni retrocediendo se encuentra ningún id válido
     (fallo real del endpoint, no "sin sesiones nuevas")."""
+    def _hay_acta(id_acta: int) -> bool:
+        # Para el probeo de existencia, un fallo transitorio cuenta como "no
+        # está": conservador, la próxima corrida recupera (mismo criterio que
+        # antes de distinguir 404 de fallo).
+        return isinstance(_diputados_acta_pdf(session, id_acta), bytes)
     actual = desde_id
     intentos = 0
-    while actual > 0 and _diputados_acta_pdf(session, actual) is None:
+    while actual > 0 and not _hay_acta(actual):
         actual -= 50
         intentos += 1
         if intentos > 200:   # ~10000 ids de margen -- corta un loop patológico
             return None
     if actual <= 0:
         return None
-    while _diputados_acta_pdf(session, actual + 1) is not None:
+    while _hay_acta(actual + 1):
         actual += 1
     return actual
 
@@ -1274,7 +1307,14 @@ def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
     anteriores. Eso es barato gracias a _acta_diputados_cacheada (caché
     PERMANENTE por acta, ver ahí) -- cada acta se descarga una sola vez,
     las siguientes veces que el walk la vuelve a pisar es solo un lookup
-    de diccionario."""
+    de diccionario.
+
+    Si la descarga de ALGUNA acta falla de forma transitoria (_ACTA_FALLO,
+    distinto de un hueco de id genuino), devuelve None (detalle incompleto):
+    el caller cachea años cerrados como inmutables y un año con agujeros
+    contaminaría la serie histórica para siempre. El caché por acta igual
+    retiene lo ya descargado, así que la corrida siguiente solo paga las
+    actas que faltan."""
     MARGEN_SALIDA = 5
     session = _hcdn_votaciones_session()
     id_maximo = _diputados_acta_id_maximo(session)
@@ -1283,13 +1323,22 @@ def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
 
     cache = _cargar_cache_cohesion_diputados()
     detalle = []
+    fallidas = 0
     fuera_de_anio_seguidas = 0
     id_actual = id_maximo
     while id_actual > 0 and fuera_de_anio_seguidas < MARGEN_SALIDA:
         entrada = _acta_diputados_cacheada(session, id_actual, cache)
         id_actual -= 1
+        if entrada is _ACTA_FALLO:
+            # fallo transitorio: el acta existe pero no se pudo leer AHORA.
+            # No se puede saber de qué año es, así que el resultado completo
+            # queda incompleto -- se termina el walk igual (para aprovechar
+            # el caché por acta de lo que sí se pudo leer) pero se devuelve
+            # None: el caller NO debe congelar este año con un agujero.
+            fallidas += 1
+            continue
         if entrada is None:
-            continue   # acta inexistente o sin señal -- no cuenta como "fuera de año"
+            continue   # hueco de id genuino (404) o sin fecha -- no cuenta como "fuera de año"
         if entrada["fecha"].year > anio:
             continue   # todavía viajando desde HOY hacia el año pedido -- no cuenta como salida
         if entrada["fecha"].year < anio:
@@ -1299,6 +1348,10 @@ def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
         if entrada["rice"] is not None:
             detalle.append({"fecha": entrada["fecha"].strftime("%Y-%m-%d"), "rice": entrada["rice"]})
 
+    if fallidas:
+        print(f"  [WARN] cohesion_bloque_diputados_actas_anio {anio}: "
+              f"{fallidas} actas con descarga fallida -- detalle incompleto, no se devuelve")
+        return None
     return detalle
 
 
@@ -1336,7 +1389,13 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     if id_maximo is None:
         return None
 
-    referencia = datetime.now() if anio == datetime.now().year else datetime(anio, 12, 31)
+    # Referencia SIEMPRE a medianoche: el backfill mensual ancla sus ventanas
+    # a medianoche del fin de mes, y con la hora del día incluida una acta
+    # fechada exactamente `dias_ventana` días atrás quedaba fuera de la card
+    # pero dentro de la serie (borde inconsistente entre las dos vistas).
+    hoy = datetime.now()
+    referencia = (datetime(hoy.year, hoy.month, hoy.day)
+                  if anio == hoy.year else datetime(anio, 12, 31))
     limite = referencia - timedelta(days=dias_ventana)
 
     MARGEN_SALIDA = 5
@@ -1347,8 +1406,11 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     while id_actual > 0 and fuera_de_ventana_seguidas < MARGEN_SALIDA:
         entrada = _acta_diputados_cacheada(session, id_actual, cache)
         id_actual -= 1
-        if entrada is None:
-            continue   # hueco en la numeración o PDF ilegible -- no cuenta como "fuera de ventana"
+        if entrada is None or entrada is _ACTA_FALLO:
+            # hueco en la numeración, PDF ilegible o fallo transitorio -- el
+            # valor live es best-effort (se recalcula entero cada corrida,
+            # no se congela), así que acá el fallo solo se saltea.
+            continue
         if entrada["fecha"] > referencia:
             continue
         if entrada["fecha"] < limite:
@@ -1436,7 +1498,13 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
     if actas is None:
         return None
 
-    referencia = datetime.now() if anio == datetime.now().year else datetime(anio, 12, 31)
+    # Referencia SIEMPRE a medianoche: el backfill mensual ancla sus ventanas
+    # a medianoche del fin de mes, y con la hora del día incluida una acta
+    # fechada exactamente `dias_ventana` días atrás quedaba fuera de la card
+    # pero dentro de la serie (borde inconsistente entre las dos vistas).
+    hoy = datetime.now()
+    referencia = (datetime(hoy.year, hoy.month, hoy.day)
+                  if anio == hoy.year else datetime(anio, 12, 31))
     limite = referencia - timedelta(days=dias_ventana)
     indices = []
     fecha_max = None
@@ -1475,15 +1543,23 @@ def fetch_cohesion_bloque_senado_actas_anio(anio: int) -> list | None:
     live sigue pidiendo solo las actas dentro de su ventana de 90 días) --
     existe para el backfill mensual (descargar_series.fetch_cohesion_bloque_senado_mensual),
     que necesita derivar múltiples ventanas de 90 días sin re-scrapear el
-    Senado por cada mes."""
+    Senado por cada mes.
+
+    Si el detalle de ALGUNA acta del listado falla, devuelve None (detalle
+    incompleto): el caller cachea años cerrados como inmutables y un año
+    con agujeros contaminaría la serie histórica para siempre."""
     session = _hcdn_votaciones_session()
     actas = _descubrir_actas_senado(session, anio)
     if actas is None:
         return None
     detalle = []
+    fallidas = 0
     for acta in actas:
         r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
         if r is None:
+            # Cada acta viene del listado oficial del año: su detalle DEBE
+            # existir, así que esto es un fallo transitorio, no un hueco.
+            fallidas += 1
             continue
         filas = _parsear_acta(r.text)
         afirm = sum(1 for f in filas if es_bloque_lla(f["bloque"]) and f["voto"] == "AFIRMATIVO")
@@ -1491,6 +1567,10 @@ def fetch_cohesion_bloque_senado_actas_anio(anio: int) -> list | None:
         rice = indice_rice(afirm, neg)
         if rice is not None:
             detalle.append({"fecha": acta["fecha"].strftime("%Y-%m-%d"), "rice": rice})
+    if fallidas:
+        print(f"  [WARN] cohesion_bloque_senado_actas_anio {anio}: "
+              f"{fallidas} actas con detalle fallido -- detalle incompleto, no se devuelve")
+        return None
     return detalle
 
 
@@ -1564,7 +1644,13 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
     if actas is None:
         return None
 
-    referencia = datetime.now() if anio == datetime.now().year else datetime(anio, 12, 31)
+    # Referencia SIEMPRE a medianoche: el backfill mensual ancla sus ventanas
+    # a medianoche del fin de mes, y con la hora del día incluida una acta
+    # fechada exactamente `dias_ventana` días atrás quedaba fuera de la card
+    # pero dentro de la serie (borde inconsistente entre las dos vistas).
+    hoy = datetime.now()
+    referencia = (datetime(hoy.year, hoy.month, hoy.day)
+                  if anio == hoy.year else datetime(anio, 12, 31))
     limite = referencia - timedelta(days=dias_ventana)
     acumulado = {}
     fecha_max = None
@@ -1621,15 +1707,23 @@ def fetch_alineamiento_senadores_actas_anio(anio: int) -> list | None:
     90 días (una por fin de mes) sin volver a scrapear el Senado por cada
     mes — sólo tiene sentido llamarla para años YA cerrados (o, para el año
     en curso, sabiendo que se re-pide entera en cada corrida, igual que el
-    resto de las series de Senado)."""
+    resto de las series de Senado).
+
+    Si el detalle de ALGUNA acta del listado falla, devuelve None (detalle
+    incompleto): el caller cachea años cerrados como inmutables y un año
+    con agujeros contaminaría la serie histórica para siempre."""
     session = _hcdn_votaciones_session()
     actas = _descubrir_actas_senado(session, anio)
     if actas is None:
         return None
     detalle = []
+    fallidas = 0
     for acta in actas:
         r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
         if r is None:
+            # Cada acta viene del listado oficial del año: su detalle DEBE
+            # existir, así que esto es un fallo transitorio, no un hueco.
+            fallidas += 1
             continue
         filas = _parsear_acta(r.text)
         resultado_acta = _alineamiento_por_provincia(filas)
@@ -1638,6 +1732,10 @@ def fetch_alineamiento_senadores_actas_anio(anio: int) -> list | None:
                 "fecha": acta["fecha"].strftime("%Y-%m-%d"),
                 "provincias": {p: list(ct) for p, ct in resultado_acta.items()},
             })
+    if fallidas:
+        print(f"  [WARN] alineamiento_senadores_actas_anio {anio}: "
+              f"{fallidas} actas con detalle fallido -- detalle incompleto, no se devuelve")
+        return None
     return detalle
 
 

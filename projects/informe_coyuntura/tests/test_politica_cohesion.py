@@ -310,12 +310,15 @@ def _mock_acta_diputados(monkeypatch, fechas: dict, filas_lla_por_id: dict | Non
     """Helper: simula el endpoint PDF para los ids en `fechas`
     ({id: datetime}), con _parsear_acta_diputados_pdf devolviendo
     filas_lla_por_id.get(id, filas por defecto con señal) para que
-    indice_rice() no sea None salvo que el test pida lo contrario."""
+    indice_rice() no sea None salvo que el test pida lo contrario. Los ids
+    que no están en `fechas` responden _ACTA_NO_EXISTE (hueco de id genuino,
+    404) -- para simular un fallo transitorio, el test debe mockear
+    _diputados_acta_pdf con _ACTA_FALLO explícitamente."""
     filas_lla_por_id = filas_lla_por_id or {}
     filas_default = [{"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
                       {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"}]
     monkeypatch.setattr(politica, "_diputados_acta_pdf",
-                         lambda s, id: str(id).encode() if id in fechas else None)
+                         lambda s, id: str(id).encode() if id in fechas else politica._ACTA_NO_EXISTE)
     monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: fechas[int(c.decode())])
     monkeypatch.setattr(politica, "_parsear_acta_diputados_pdf",
                          lambda c: filas_lla_por_id.get(int(c.decode()), filas_default))
@@ -357,11 +360,21 @@ def test_acta_diputados_cacheada_sin_senal_igual_se_cachea_con_rice_none(monkeyp
 
 
 def test_acta_diputados_cacheada_404_no_se_cachea(monkeypatch):
-    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: None)
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: politica._ACTA_NO_EXISTE)
     cache = {}
 
     assert politica._acta_diputados_cacheada(MagicMock(), 5, cache) is None
-    assert cache == {}   # un 404 puede ser transitorio -- no se guarda
+    assert cache == {}   # un hueco de id no es un dato -- no se guarda
+
+
+def test_acta_diputados_cacheada_fallo_transitorio_devuelve_sentinela(monkeypatch):
+    # Un fallo de red NO es un hueco de id: se devuelve _ACTA_FALLO para que
+    # el backfill anual sepa que el detalle quedó incompleto, y no se cachea.
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: politica._ACTA_FALLO)
+    cache = {}
+
+    assert politica._acta_diputados_cacheada(MagicMock(), 5, cache) is politica._ACTA_FALLO
+    assert cache == {}
 
 
 def test_cargar_y_guardar_cache_cohesion_diputados_hacen_roundtrip(tmp_path, monkeypatch):
@@ -405,6 +418,24 @@ def test_fetch_cohesion_bloque_diputados_actas_anio_anio_pasado_no_corta_de_mas(
     assert sorted(f["fecha"] for f in detalle) == ["2025-06-01", "2025-06-02", "2025-06-03"]
 
 
+def test_fetch_cohesion_bloque_diputados_actas_anio_fallo_transitorio_devuelve_none(monkeypatch):
+    # ids 6..10 son de 2026, pero el id 8 falla de forma transitoria (red):
+    # no se puede saber de qué año era, así que el detalle del año queda
+    # incompleto y se devuelve None -- el caller no debe cachearlo. Un hueco
+    # de id genuino (404, ausente de `fechas`) NO invalida: eso lo cubren
+    # los dos tests de arriba, donde los ids fuera de `fechas` responden
+    # _ACTA_NO_EXISTE y el detalle igual se devuelve.
+    fechas = {i: datetime(2026, 1, i) for i in range(6, 11)}
+    _mock_acta_diputados(monkeypatch, fechas)
+    pdf_mock = politica._diputados_acta_pdf
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: politica._ACTA_FALLO if id == 8 else pdf_mock(s, id))
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: 10)
+
+    assert politica.fetch_cohesion_bloque_diputados_actas_anio(2026) is None
+
+
 def test_fetch_cohesion_bloque_diputados_promedia_solo_actas_en_ventana(monkeypatch):
     hoy = datetime.now()
     fechas = {10: hoy - timedelta(days=5), 9: hoy - timedelta(days=200)}
@@ -413,7 +444,7 @@ def test_fetch_cohesion_bloque_diputados_promedia_solo_actas_en_ventana(monkeypa
     monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
     monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: 10)
     monkeypatch.setattr(politica, "_diputados_acta_pdf",
-                         lambda s, id: str(id).encode() if id in fechas else None)
+                         lambda s, id: str(id).encode() if id in fechas else politica._ACTA_NO_EXISTE)
     monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: fechas[int(c.decode())])
     monkeypatch.setattr(politica, "_parsear_acta_diputados_pdf", lambda c: filas_lla)
 
@@ -428,7 +459,8 @@ def test_fetch_cohesion_bloque_diputados_sin_actas_en_ventana_pero_corrida_exito
     hoy = datetime.now()
     monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
     monkeypatch.setattr(politica, "_diputados_acta_id_maximo", lambda s: 5)
-    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: b"x" if id == 5 else None)
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: b"x" if id == 5 else politica._ACTA_NO_EXISTE)
     monkeypatch.setattr(politica, "_diputados_acta_fecha", lambda c: hoy - timedelta(days=200))
     monkeypatch.setattr(politica, "_parsear_acta_diputados_pdf", lambda c: [])
 
@@ -703,6 +735,29 @@ def test_fetch_cohesion_bloque_senado_actas_anio_sin_actas_devuelve_none(monkeyp
     assert politica.fetch_cohesion_bloque_senado_actas_anio(2026) is None
 
 
+def test_fetch_cohesion_bloque_senado_actas_anio_detalle_fallido_devuelve_none(monkeypatch):
+    # Un timeout puntual en el detalle de UNA acta no puede producir una
+    # lista "válida" con esa acta faltante: el caller cachea años cerrados
+    # como inmutables y el agujero quedaría congelado para siempre.
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, anio: [
+        {"id": "1", "fecha": datetime(2026, 6, 1)},
+        {"id": "2", "fecha": datetime(2026, 6, 10)},
+    ])
+    filas = [{"nombre": "X", "bloque": "LA LIBERTAD AVANZA", "voto": "AFIRMATIVO"},
+             {"nombre": "Y", "bloque": "LA LIBERTAD AVANZA", "voto": "NEGATIVO"}]
+
+    def fake_paced_get(s, base, path):
+        if path.endswith("/2"):
+            return None   # detalle de la acta 2: fallo transitorio
+        return MagicMock(text="1")
+
+    monkeypatch.setattr(politica, "_paced_get", fake_paced_get)
+    monkeypatch.setattr(politica, "_parsear_acta", lambda html: filas)
+
+    assert politica.fetch_cohesion_bloque_senado_actas_anio(2026) is None
+
+
 def test_agregar_cohesion_ventana_filtra_por_fecha_y_promedia():
     detalle = [
         {"fecha": "2026-01-01", "rice": 50.0},   # fuera de ventana
@@ -950,6 +1005,26 @@ def test_fetch_alineamiento_senadores_actas_anio_devuelve_detalle_crudo_por_acta
 def test_fetch_alineamiento_senadores_actas_anio_sin_actas_devuelve_none(monkeypatch):
     monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
     monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, anio: None)
+    assert politica.fetch_alineamiento_senadores_actas_anio(2026) is None
+
+
+def test_fetch_alineamiento_senadores_actas_anio_detalle_fallido_devuelve_none(monkeypatch):
+    # Mismo contrato que cohesion_bloque_senado_actas_anio: un fallo
+    # transitorio en el detalle de una acta invalida el año completo, para
+    # que el caché anual inmutable nunca congele un agujero.
+    monkeypatch.setattr(politica, "_hcdn_votaciones_session", lambda: MagicMock())
+    monkeypatch.setattr(politica, "_descubrir_actas_senado", lambda s, anio: [
+        {"id": "1", "fecha": datetime(2026, 6, 1)},
+        {"id": "2", "fecha": datetime(2026, 6, 10)},
+    ])
+
+    def fake_paced_get(s, base, path):
+        if path.endswith("/2"):
+            return None   # detalle de la acta 2: fallo transitorio
+        return MagicMock(status_code=200, text=FIXTURE_ACTA_ALINEAMIENTO)
+
+    monkeypatch.setattr(politica, "_paced_get", fake_paced_get)
+
     assert politica.fetch_alineamiento_senadores_actas_anio(2026) is None
 
 
