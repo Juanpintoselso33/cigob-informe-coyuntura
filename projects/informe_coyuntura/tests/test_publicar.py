@@ -160,7 +160,12 @@ def test_gestion_itcg_reconcilia():
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
     assert len(en_indice) == 15, f"esperaba 15 indicadores en el índice, hay {len(en_indice)}"
     assert "litigiosidad_laboral" in en_indice
-    assert set(contexto) == {"alertas_manifestacion", "protestas_caba"}
+    # ADR-0051: los 2 de contexto (alertas_manifestacion, protestas_caba)
+    # quedan OCULTOS del snapshot (GESTION_OCULTOS, mismo criterio que
+    # ADR-0022/0048/0049) — siguen en pipeline como seguimiento interno.
+    assert contexto == {}, f"gestión no debería publicar contexto: {set(contexto)}"
+    for oculto in ("alertas_manifestacion", "protestas_caba"):
+        assert oculto not in c["indicadores"], f"{oculto} debería estar oculto del snapshot"
 
     ponderado = sum(i["puntaje_itcg"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itcg_val) <= 0.15, f"ponderado {ponderado} != ITCG {itcg_val}"

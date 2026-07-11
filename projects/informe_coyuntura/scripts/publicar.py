@@ -1009,6 +1009,13 @@ POLITICA_OCULTOS = set(itcp.INDICADORES_CONTEXTO)
 # interno.
 ESPIRITU_OCULTOS = {"icc_utdt", "sentimiento_digital", "clima_electoral"}
 
+# Indicadores de gestión OCULTOS del snapshot (ADR-0051, cierra la regla de
+# ADR-0048/0049 sobre el último cinturón que publicaba contexto visible): el
+# tablero solo muestra lo que integra las dimensiones del ITCG. Colector,
+# stores y series siguen corriendo como seguimiento interno (razones de no
+# puntuar documentadas en itcg.INDICADORES_CONTEXTO).
+GESTION_OCULTOS = set(itcg.INDICADORES_CONTEXTO)
+
 
 def aplicar_scoring(informe, series):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo
@@ -1023,6 +1030,8 @@ def aplicar_scoring(informe, series):
                 _validacion_itcm(c["itcm"])
             continue
         if ckey == "gestion":
+            for oculto in GESTION_OCULTOS:
+                c["indicadores"].pop(oculto, None)
             _scoring_indice(c, "itcg", itcg, GESTION_CONTEXTO, _gestion_input_txt)
             if c.get("itcg"):
                 _validacion_itcg(c["itcg"])

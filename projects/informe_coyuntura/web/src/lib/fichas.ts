@@ -1734,7 +1734,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[0, 10], [12.5, 40], [37.5, 65], [62.5, 85], [75, 100]],
       unidadCorta: "% de reducción",
     },
-    dobleUso: "Se lee junto a la serie de contexto de protestas (ACLED): la protesta no desapareció — se reconvirtió a marchas sin corte.",
+    dobleUso: "El seguimiento interno de eventos de protesta (ACLED) que mantiene el proyecto muestra que la protesta no desapareció — se reconvirtió a marchas sin corte; ese contraste informa la lectura de este indicador aunque ya no se publique como card propia.",
     limitaciones: [
       "Fuente privada sin microdatos abiertos: los anclajes se reconstruyen de cifras publicadas.",
       "Granularidad anual: el valor se arrastra todo el año hasta el anclaje siguiente.",
@@ -1789,65 +1789,10 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
-  alertas_manifestacion: {
-    tipo: "indicador",
-    id: "alertas_manifestacion",
-    cinturon: "gestion",
-    rezago: "Sin rezago: alertas activas del momento, muestreadas varias veces por día.",
-    fuente: {
-      organismo: "GCBA — API Transporte (alertas de servicio de colectivos y subtes)",
-      operacion: "Alertas de servicio clasificadas como manifestación (por causa declarada o vocabulario del texto), acumuladas día a día",
-      url: "https://apitransporte.buenosaires.gob.ar/",
-      acceso: "Automático con credenciales: la fuente es de tiempo real puro, sin histórico — el informe acumula su propia serie con muestreos diarios en la franja típica de cortes.",
-    },
-    transformaciones: [
-      "Valor = alertas únicas del mes corriente (la misma protesta vista en dos muestreos cuenta una vez).",
-    ],
-    incidenciaTexto: [
-      "Indicador de contexto: no integra el ITCG. Es una serie recién nacida, sin línea de base 2023 — cuando acumule unos 12 meses de historia, está llamada a automatizar el indicador de orden público.",
-    ],
-    limitaciones: [
-      "Serie sin historia previa: imposible compararla contra el arranque del mandato todavía.",
-      "Mide alertas de transporte, no cortes verificados; la cobertura depende de la franja horaria muestreada.",
-    ],
-    faltantes: "Si la API no responde, la corrida se saltea y el acumulado propio persiste.",
-    revisiones: "Acumulación con deduplicación, sin revisión hacia atrás.",
-    cambios: [
-      { fecha: "2026-07-02", cambio: "Se crea el monitoreo acumulativo: el registro histórico oficial de cortes del GCBA está fuera de servicio y no hay alternativa pública con historia." },
-    ],
-  },
-
-  protestas_caba: {
-    tipo: "indicador",
-    id: "protestas_caba",
-    cinturon: "gestion",
-    rezago: "1-2 meses efectivos: el archivo se actualiza semanalmente y el mes parcial se excluye.",
-    fuente: {
-      organismo: "ACLED — Armed Conflict Location & Event Data",
-      operacion: "Agregado semanal de eventos de protesta por provincia (América Latina y el Caribe), filtrado CABA y agregado a meses",
-      url: "https://acleddata.com/",
-      acceso: "Automático con cuenta de miembro: descarga del archivo agregado semanal (el nivel de acceso disponible no habilita el detalle por evento).",
-    },
-    transformaciones: [
-      "Valor = eventos de protesta acumulados en 12 meses, comparados contra el total de 2023 (la línea de base del mandato).",
-    ],
-    incidenciaTexto: [
-      "Indicador de contexto: no integra el ITCG, por una razón declarada — puntuar el volumen de protesta premiaría «menos marchas», que es un derecho ejercido y no un resultado de gestión. Leído junto al indicador de orden público, muestra que la protesta se reconvirtió: menos cortes, no menos marchas.",
-    ],
-    dobleUso: "El mismo dato (variación de eventos contra la base 2023) integró el puntaje del índice del cinturón político entre el 07 y el 10 de julio de 2026, hasta que la revisión editorial acotó ese índice a la capacidad de gestionar y avanzar la agenda de gobierno. Desde entonces el cinturón político no lo publica: la serie se sigue relevando como seguimiento interno de la conflictividad, y esta card de gestión queda como su única lectura pública.",
-    limitaciones: [
-      "Fuente de membresía con criterios de codificación propios (en inglés), no la definición local de piquete.",
-      "Cuenta eventos de protesta (marchas, concentraciones), no cortes de calle: complementa, no sustituye, al indicador de orden público.",
-    ],
-    faltantes: "Si la descarga falla, se usa el archivo local versionado de la última descarga exitosa; el dato sigue publicándose como contexto.",
-    revisiones: "La fuente revisa y agrega semanas hacia atrás; el archivo local se regenera completo en cada descarga exitosa.",
-    cambios: [
-      { fecha: "2026-07-03", cambio: "Alta como indicador de contexto, con cobertura desde 2018 (línea de base 2023 real). En la revisión posterior se confirmó que siga fuera del índice." },
-      { fecha: "2026-07-07", cambio: "El mismo dato pasa a integrar también, como indicador de condición de gobernabilidad, la dimensión de conflicto social del índice del cinturón político." },
-      { fecha: "2026-07-09", cambio: "Umbrales de puntaje del índice político recalibrados (antes ±30/±10, simétricos y nunca validados) reconstruyendo la métrica de puntaje mes a mes sobre la serie ya existente (30 meses reales, dic-2023 a may-2026): nuevos cortes en -6,0/-3,0/0,0/10,0. Con las anclas viejas, el 73% de los meses caía en el mismo escalón intermedio." },
-      { fecha: "2026-07-10", cambio: "Deja de puntuar también en el índice político: la revisión editorial acotó ese índice a la capacidad de gestionar y avanzar la agenda de gobierno. Queda como indicador de contexto en los dos cinturones, con la misma card y el mismo gráfico." },
-    ],
-  },
+  // (alertas_manifestacion y protestas_caba no tienen ficha: quedaron fuera
+  // del tablero de gestión en jul-2026 — el tablero solo muestra lo que
+  // integra las dimensiones del índice; ambos se siguen relevando como
+  // seguimiento interno, igual que los ocultos de macro/política/espíritu.)
 
   // ═══════════════════════════════════════════════════════════════════════
   // Vida cotidiana — componentes base-100 del ITVC (100 = promedio 4T-2023)
@@ -2272,7 +2217,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El marco proviene de la «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Gestión» (Fundación CIGOB, julio de 2026). Los pesos de las cinco dimensiones y la estructura de la primera vienen del documento; los pesos internos de las restantes son operacionalización propia documentada.",
     ],
     seleccion: [
-      "Quince indicadores puntúan en cinco dimensiones (la tabla de composición muestra la estructura vigente con los puntajes de hoy), más dos series de contexto declaradas que no integran el índice.",
+      "Quince indicadores puntúan en cinco dimensiones (la tabla de composición muestra la estructura vigente con los puntajes de hoy). El tablero solo muestra lo que integra el índice: dos series complementarias de conflictividad (alertas de manifestación y eventos de protesta) se siguen relevando como seguimiento interno, sin publicarse ni puntuar.",
       "Criterio de selección: fuentes públicas verificables y automatizables. Hoy el cinturón es 100% automático: el único registro curado a mano (privatizaciones) cita la norma del Boletín Oficial detrás de cada estado.",
     ],
     tratamiento: [
