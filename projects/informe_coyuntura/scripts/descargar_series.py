@@ -2374,12 +2374,27 @@ def fetch_componente_b_store() -> dict:
         "italia_aire": "ISTAT/AIRE — Acquisizioni di cittadinanza (anual)",
         "chile_residencia": "SERMIG (ex-DEM) — Residencias Definitivas Resueltas (anual)",
     }
+    fallidas = 0
     for clave, fetcher in fetchers.items():
         try:
             store[clave] = fetcher()
         except Exception as e:
+            fallidas += 1
             print(f"  [WARN] componente_b.{clave}: {str(e)[:100]} -- se mantiene el valor anterior")
-    store["_meta"] = {"actualizado": datetime.today().strftime("%Y-%m-%d"), "fuentes": fuentes_meta}
+    # El gate de frescura solo avanza si TODAS las fuentes respondieron: si
+    # se sellara "actualizado" con fuentes caídas, el gate saltearía los
+    # reintentos durante el resto del mes y los datos viejos quedarían
+    # presentados bajo una fecha de actualización nueva.
+    meta = {"fuentes": fuentes_meta}
+    if fallidas == 0:
+        meta["actualizado"] = datetime.today().strftime("%Y-%m-%d")
+    else:
+        anterior = store.get("_meta", {}).get("actualizado")
+        if anterior:
+            meta["actualizado"] = anterior
+        print(f"  [WARN] componente_b: {fallidas} fuente(s) fallida(s) -- "
+              f"el gate mensual no avanza, la próxima corrida reintenta")
+    store["_meta"] = meta
     COMPONENTE_B_STORE.parent.mkdir(parents=True, exist_ok=True)
     COMPONENTE_B_STORE.write_text(json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
     return store

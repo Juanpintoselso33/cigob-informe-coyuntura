@@ -122,6 +122,23 @@ def main() -> int:
                     if abs(ult - v) > tol:
                         fallas.append(f"G3 {ck}/{ik}: serie[-1]={ult} ≠ card={v} "
                                       f"(tolerancia {round(tol, 3)})")
+            # G3b — los exentos de reconciliación no quedan sin NINGÚN control:
+            # su card y su serie difieren por semántica/anclaje (motivo
+            # documentado arriba), pero la serie igual tiene que seguir viva.
+            # Sin esto, una serie que dejara de actualizarse pasaría el gate
+            # para siempre (G2 solo mira la fecha_dato de la card).
+            if s and ik in G3_EXCEPCIONES:
+                f_ult = _parse_fecha(s[-1].get("fecha"))
+                if f_ult is None:
+                    fallas.append(f"G3b {ck}/{ik}: última fecha de la serie no parseable "
+                                  f"({s[-1].get('fecha')})")
+                else:
+                    rezago_serie = (hoy - f_ult).days
+                    tope = MAX_DIAS.get(ik, MAX_DIAS_DEFAULT)
+                    if rezago_serie > tope:
+                        fallas.append(f"G3b {ck}/{ik}: serie exenta de reconciliación con "
+                                      f"último punto de hace {rezago_serie}d > tope {tope}d "
+                                      f"({s[-1].get('fecha')}) — la serie dejó de actualizarse")
         # G2 — presupuesto de carry-forward del cinturón
         if indicadores and desactualizados / len(indicadores) > CARRY_FORWARD_MAX:
             fallas.append(f"G2 {ck}: {desactualizados}/{len(indicadores)} indicadores "

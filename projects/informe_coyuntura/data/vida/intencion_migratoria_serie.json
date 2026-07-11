@@ -109,33 +109,8 @@
     },
     "control_empleo": {
       "valor": null,
-      "delta_pct_vs_tanda1": null
+      "nota": "escala propia (0-100 vs su pico de 12m); no comparable con la tanda de intención"
     },
-    "regional": {
-      "Buenos Aires": 20.0,
-      "Catamarca": 20.0,
-      "Chaco": 20.0,
-      "Chubut": 20.0,
-      "Ciudad Autónoma de Buenos Aires": 20.0,
-      "Corrientes": 20.0,
-      "Córdoba": 20.0,
-      "Entre Ríos": 20.0,
-      "Formosa": 20.0,
-      "Jujuy": 20.0,
-      "La Pampa": 20.0,
-      "La Rioja": 20.0,
-      "Mendoza": 20.0,
-      "Misiónes": 20.0,
-      "Neuquén": 20.0,
-      "Río Negro": 20.0,
-      "Salta": 20.0,
-      "San Juan": 20.0,
-      "San Luis": 20.0,
-      "Santa Cruz": 20.0,
-      "Santa Fe": 20.0,
-      "Santiago del Estero": 20.0,
-      "Tierra del Fuego": 20.0,
-      "Tucumán": 20.0
-    }
+    "regional": {}
   }
 }

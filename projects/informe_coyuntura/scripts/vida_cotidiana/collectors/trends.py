@@ -149,28 +149,37 @@ def fetch_intencion_migratoria_store(store_path: Path) -> dict:
         if len(mensual) < 36:
             raise ValueError(f"Tanda 1 con muy poca historia sana ({len(mensual)} meses)")
 
+        # Desglose regional con payload de UN solo término (el principal de la
+        # canasta). Con la canasta completa, interest_by_region devuelve la
+        # participación relativa de cada término DENTRO de cada región (las
+        # columnas suman ~100 por región), y su promedio da 100/5 = 20 para
+        # todas las provincias — un número sin contenido (verificado: el store
+        # publicaba 20,0 para las 24). Con un término solo, el valor es
+        # interés relativo ENTRE regiones (0–100 contra la región pico), que
+        # sí es un desglose regional real.
+        termino_regional = MIGRACION_TANDA_INTENCION[0]
         try:
+            pt.build_payload([termino_regional], cat=0, timeframe=timeframe_full, geo=TRENDS_GEO)
             regional_df = pt.interest_by_region(resolution="REGION", inc_low_vol=True)
-            cols = [k for k in MIGRACION_TANDA_INTENCION if k in regional_df.columns]
-            canasta_reg = regional_df[cols].mean(axis=1)
             regional = {prov: round(float(v), 1) for prov, v in
-                        canasta_reg.sort_values(ascending=False).items() if v > 0}
+                        regional_df[termino_regional].sort_values(ascending=False).items() if v > 0}
         except Exception as e:
             logger.warning("Regional intencion_migratoria FAIL: %s", e)
             regional = store.get("contexto", {}).get("regional", {})
 
-        # Tanda de control: Tanda 1 filtrada por categoria "Jobs" (ruido)
+        # Tanda de control: Tanda 1 filtrada por categoria "Jobs". Se guarda
+        # solo su nivel reciente DENTRO de su propia escala (0-100 contra su
+        # pico de 12 meses). NO se compara contra la Tanda 1: cada payload de
+        # Trends se normaliza por separado, así que restar o dividir niveles
+        # de dos payloads distintos no tiene significado.
         try:
             pt.build_payload(MIGRACION_TANDA_INTENCION, cat=MIGRACION_CATEGORIA_EMPLEO,
                               timeframe="today 12-m", geo=TRENDS_GEO)
             df_control = pt.interest_over_time()
             valor_control = _tail_promedio(df_control, MIGRACION_TANDA_INTENCION, n=3)
-            valor_tanda1_reciente = _tail_promedio(df1, MIGRACION_TANDA_INTENCION, n=3)
-            delta_pct = (round((valor_control - valor_tanda1_reciente) / valor_tanda1_reciente * 100, 1)
-                         if valor_control is not None and valor_tanda1_reciente else None)
         except Exception as e:
             logger.warning("Control empleo intencion_migratoria FAIL: %s", e)
-            valor_control, delta_pct = None, None
+            valor_control = None
 
         # Tandas 2-4: contexto, solo ultimo valor (sin backfill historico)
         contexto = {}
@@ -211,8 +220,12 @@ def fetch_intencion_migratoria_store(store_path: Path) -> dict:
             motivo = store.get("contexto", {}).get("diagnostico_causa", {}).get("motivo_dominante", "indeterminado")
 
         contexto["diagnostico_causa"] = {"motivo_dominante": motivo, "keywords": MIGRACION_TANDA_DIAGNOSTICO}
-        contexto["control_empleo"] = {"valor": valor_control, "delta_pct_vs_tanda1": delta_pct}
+        contexto["control_empleo"] = {
+            "valor": valor_control,
+            "nota": "escala propia (0-100 vs su pico de 12m); no comparable con la tanda de intención",
+        }
         contexto["regional"] = regional
+        contexto["regional_termino"] = termino_regional
 
         store["mensual"] = mensual
         store["contexto"] = contexto

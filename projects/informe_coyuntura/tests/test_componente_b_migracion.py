@@ -219,6 +219,41 @@ def test_fetch_componente_b_store_no_llama_fetchers_si_ya_esta_al_dia(tmp_path, 
     assert resultado["eeuu_niv"]["mensual"] == {"2024-01": 111}
 
 
+def test_fetch_componente_b_store_con_fuente_fallida_no_avanza_el_gate(tmp_path, monkeypatch):
+    # Si una fuente falla, el sello "actualizado" NO avanza al mes actual:
+    # si avanzara, el gate de frescura saltearía los reintentos el resto del
+    # mes y el dato viejo quedaría presentado bajo fecha de actualización
+    # nueva. Las fuentes sanas sí se actualizan en la misma pasada.
+    store_path = tmp_path / "componente_b_migracion.json"
+    store_path.write_text(json.dumps({
+        "_meta": {"actualizado": "2026-06-03"},   # mes PASADO: el gate no corta
+        "eeuu_niv": {"mensual": {"2024-01": 111}},
+    }), encoding="utf-8")
+    monkeypatch.setattr(descargar_series, "COMPONENTE_B_STORE", store_path)
+
+    sanos = {
+        "fetch_componente_b_canada_mensual": {"mensual": {"2026-05": 25}},
+        "fetch_componente_b_espana_anual": {"anual": {"2025": 11291}},
+        "fetch_componente_b_italia_aire_anual": {"anual": {"2024": 33492}},
+        "fetch_componente_b_chile_anual": {"anual": {"2025": 580}},
+        "fetch_componente_b_eeuu_iv_mensual": {"mensual": {"2025-09": 63}},
+    }
+    for nombre, retorno in sanos.items():
+        monkeypatch.setattr(descargar_series, nombre, lambda *a, _r=retorno, **k: _r)
+
+    def _falla(*a, **k):
+        raise RuntimeError("timeout simulado")
+    monkeypatch.setattr(descargar_series, "fetch_componente_b_eeuu_niv_mensual", _falla)
+
+    resultado = descargar_series.fetch_componente_b_store()
+
+    persistido = json.loads(store_path.read_text(encoding="utf-8"))
+    assert persistido["_meta"]["actualizado"] == "2026-06-03"   # no avanzó
+    assert persistido["canada_pr"]["mensual"] == {"2026-05": 25}   # sana: actualizada
+    assert persistido["eeuu_niv"]["mensual"] == {"2024-01": 111}   # fallida: conserva lo anterior
+    assert resultado["_meta"]["actualizado"] == "2026-06-03"
+
+
 # ── espiritu_epoca.py: contexto_duro en la card ─────────────────────────────
 
 def test_contexto_duro_componente_b_toma_el_ultimo_periodo_de_cada_fuente(monkeypatch):
