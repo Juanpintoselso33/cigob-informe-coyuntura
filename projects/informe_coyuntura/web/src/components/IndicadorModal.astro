@@ -460,7 +460,10 @@ const dimsJson = JSON.stringify(dims);
       evoMontado = true; io.disconnect();
       const C = await ensureCharts();
       evoGrid.querySelectorAll("[data-evo-key]").forEach(el => {
-        const serie = SERIES[el.getAttribute("data-evo-key")];
+        // data-evo-serie: serie embebida inline (tiles de tensión por
+        // cinturón, que no viven en series.json) — tiene prioridad.
+        const inline = el.getAttribute("data-evo-serie");
+        const serie = inline ? JSON.parse(inline) : SERIES[el.getAttribute("data-evo-key")];
         if (!serie || serie.length < 2) return;
         C.sparkChart(el, serie, {
           color: C.colorDe(el.getAttribute("data-evo-slug")),

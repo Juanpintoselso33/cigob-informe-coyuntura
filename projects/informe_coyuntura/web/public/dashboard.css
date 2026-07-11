@@ -375,11 +375,12 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-genoma-tip-cta  { display: block; margin-top: 5px; font-size: 9.5px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .05em; }
 .cg-genoma-cap { font-size: 10px; color: var(--muted); margin-bottom: 6px; letter-spacing: .01em; }
 .cg-genoma-cap--solo { margin: 12px 0 3px; }
-/* Notas de origen de contenido generado (bluf y watchlist) */
-.cg-bluf-nota, .cg-rec-nota {
+/* Notas de origen de contenido generado (bluf, watchlist, evolución) */
+.cg-bluf-nota, .cg-rec-nota, .cg-evolucion-nota {
     font-size: 11px; color: var(--muted); font-style: italic;
     margin-top: 10px;
 }
+.cg-evolucion-nota { max-width: 760px; }
 
 .cg-ind-list {
     list-style: none; margin: 0; padding: 0;

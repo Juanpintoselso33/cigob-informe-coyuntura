@@ -1,33 +1,64 @@
 ---
-import MiniChart from "./MiniChart.astro";
-import { series } from "../lib/datos.ts";
-// Indicadores con serie histórica real (>=2 puntos), uno o dos por cinturón, para que
-// la Evolución refleje los cinco cinturones (no solo macro). El backfill reconstruyó la
-// historia de política, vida, gestión y espíritu desde sus fuentes oficiales.
-const DESTACADOS = [
-  { indicador: "ipc_total", slug: "macro" },
-  { indicador: "reservas_bcra", slug: "macro" },
-  { indicador: "votometro_ventaja_lla", slug: "politica" },
-  { indicador: "conflictividad_nacional", slug: "politica" },
-  { indicador: "ratio_dnu", slug: "politica" },
-  { indicador: "ipc_alimentos", slug: "vida" },
-  { indicador: "icc_utdt", slug: "vida" },
-  { indicador: "rigi_inversiones", slug: "gestion" },
-  { indicador: "desregulacion_normativa", slug: "gestion" },
-  { indicador: "indice_intencion_migratoria", slug: "espiritu" },
-].filter(d => (series[d.indicador] ?? []).length >= 2);
+import { informe, CINTURONES, indiceDe, tensionDeDimension } from "../lib/datos.ts";
+
+// "Cómo va la película" DE VERDAD (revisión estructural 2026-07-11): antes
+// esta sección repetía en grande 10 indicadores que ya están en las cards
+// (cada fila trae sparkline y su modal con tabla/CSV) — redundancia pura.
+// Lo que la home NO mostraba en ningún lado es la trayectoria de los
+// CINTURONES: acá van las series mensuales reconstruidas de los 4 índices,
+// convertidas a TENSIÓN (0-10) con las fórmulas publicadas de cada uno —
+// única forma honesta de ponerlas en un mismo eje (ITVC es base-100).
+// La reconstrucción viene de la validación externa (pares del snapshot):
+// series de componentes SIN ajustes del analista — el nivel puede diferir
+// del publicado; lo que vale es la evolución (caveat declarado abajo).
+const coma = (n: number) => String(n).replace(".", ",");
+const MES_ABREV = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const mesCorto = (ym: string) => `${MES_ABREV[+ym.slice(5, 7) - 1]}-${ym.slice(0, 4)}`;
+
+const trayectorias = CINTURONES
+  .map(meta => {
+    const c = informe.cinturones[meta.key];
+    const idx = c ? indiceDe(c) : null;
+    const pares: [string, number, number][] = (idx?.data as any)?.validacion?.pares ?? [];
+    if (!idx || pares.length < 2) return null;
+    const serie = pares.map(([ym, v]) => ({
+      fecha: `${ym}-01`,
+      valor: Math.round(tensionDeDimension(v, !!idx.base100) * 10) / 10,
+    }));
+    const ahora = serie.at(-1)!.valor;
+    const previo = serie.at(-2)!.valor;
+    const delta = Math.round((ahora - previo) * 10) / 10;
+    return { meta, idx, serie, ahora, delta,
+             desde: mesCorto(pares[0][0]), hasta: mesCorto(pares.at(-1)![0]) };
+  })
+  .filter((x): x is NonNullable<typeof x> => !!x);
 ---
 <section class="cg-section" id="evolucion">
   <div class="cg-section-head">
     <p class="cg-eyebrow">Cómo va la película</p>
-    <h2 class="cg-h2">Evolución</h2>
-    <p class="cg-h2-sub">Series históricas de indicadores clave de los cinco cinturones, reconstruidas desde sus fuentes oficiales. Tocá cualquiera para ver el detalle, la tabla y descargar el CSV.</p>
+    <h2 class="cg-h2">La tensión de cada cinturón, mes a mes</h2>
+    <p class="cg-h2-sub">Trayectoria de los índices de los cuatro cinturones paramétricos desde diciembre de 2023, expresada en tensión (0 = aflojado, 10 = apretado) para poder compararlos en un mismo eje. El detalle por indicador vive en cada card y en la página de cada cinturón.</p>
   </div>
-  {DESTACADOS.length === 0 ? (
+  {trayectorias.length === 0 ? (
     <div class="cg-chart-card"><p class="cg-chart-sub">Histórico en construcción: se necesita más de un período para graficar tendencias.</p></div>
   ) : (
     <div class="cg-chart-grid" id="cg-chart-grid">
-      {DESTACADOS.map(d => <MiniChart indicador={d.indicador} slug={d.slug} />)}
+      {trayectorias.map(t => (
+        <div class:list={["cg-chart-mini-card", t.meta.slug]}>
+          <h3>{t.meta.nombre} · {t.idx.sigla}</h3>
+          <div class="cg-sub">{t.desde} → {t.hasta} · {t.serie.length} meses</div>
+          <div class="cg-chart-mini" data-evo-key={`__tension_${t.meta.slug}`}
+               data-evo-slug={t.meta.slug} data-evo-unidad="tensión /10"
+               data-evo-serie={JSON.stringify(t.serie)}></div>
+          <div class="cg-chart-mini-foot">
+            <div class="cg-chart-mini-now">{coma(t.ahora)}</div>
+            <span class:list={["cg-chart-mini-delta", t.delta > 0 ? "up" : t.delta < 0 ? "down" : "flat"]}>
+              {t.delta > 0 ? "+" : ""}{coma(t.delta)}
+            </span>
+          </div>
+        </div>
+      ))}
     </div>
   )}
+  <p class="cg-evolucion-nota">Series reconstruidas mes a mes desde los componentes de cada índice, sin los ajustes del analista: el nivel puede diferir del publicado — lo que muestran es la evolución, no la foto oficial del mes. Espíritu de época no integra esta vista porque no tiene índice de dimensiones.</p>
 </section>

@@ -26,7 +26,7 @@ const frases: string[] = [];
 if (rojos.length > 0) {
   frases.push(`${cap(nombres(rojos))} ${rojos.length === 1 ? "está" : "están"} en zona crítica`);
 }
-frases.push(`${cap(masTenso.meta.nombre)} es el cinturón más exigido del tablero (tensión ${coma(masTenso.c.score)}/10)`);
+frases.push(`Con una tensión global de ${coma(informe.score_global)}/10, ${masTenso.meta.nombre.toLowerCase()} es el cinturón más exigido del tablero (${coma(masTenso.c.score)}/10)`);
 if (amarillos.length > 0 && !amarillos.includes(masTenso)) {
   frases.push(`${nombres(amarillos)} ${amarillos.length === 1 ? "opera" : "operan"} en tensión`);
 } else if (amarillos.length > 1) {
@@ -43,10 +43,9 @@ const fraseFoco = foco
 <section class="cg-section cg-bluf" id="snapshot">
   <p class="cg-eyebrow">La lectura del mes</p>
   <h2 class="cg-h2">Argentina · {mesLegible(informe.period)}</h2>
-  <p class="cg-bluf-meta">
-    <strong>Score global {informe.score_global}/10</strong> ·
-    <strong>Riesgo dominante: {cap(informe.barbarismo_activo)}</strong>
-  </p>
+  {/* sin línea de score/riesgo: el hero los muestra un scroll arriba y el
+      texto de abajo los integra — duplicarlos acá fue hallazgo de la
+      revisión adversarial 2026-07-11 */}
   <p class="cg-bluf-text">
     {fraseEstados} {fraseFoco} El riesgo dominante del período es el barbarismo
     {informe.barbarismo_activo}: el desequilibrio hacia el que más se inclina hoy el
