@@ -1,8 +1,9 @@
-"""Tests de espiritu_epoca (indice_intencion_migratoria, ADR-0035): scoring
-promedio de 4 proxies y el gate de frescura mensual del store compartido con
-descargar_series.py -- no debe llamar a pytrends si el store ya tiene el mes
-calendario actual (el diseño explícitamente evita pedir Trends para meses ya
-registrados, ver ADR-0035)."""
+"""Tests de espiritu_epoca (indice_intencion_migratoria, ADR-0035/0049):
+scoring con la intención migratoria como único puntuable (los otros 3 proxies
+se siguen cacheando pero no puntúan, ADR-0049) y el gate de frescura mensual
+del store compartido con descargar_series.py -- no debe llamar a pytrends si
+el store ya tiene el mes calendario actual (el diseño explícitamente evita
+pedir Trends para meses ya registrados, ver ADR-0035)."""
 import json
 import sys
 from datetime import datetime
@@ -31,47 +32,49 @@ def _import_trends(monkeypatch):
     return trends
 
 
-# ── calcular_score(): promedio simple de hasta 4 proxies ────────────────────
+# ── calcular_score(): único puntuable = intención migratoria (ADR-0049) ─────
 
-def test_indicadores_esperados_incluye_el_4to():
+def test_indicadores_esperados_sigue_relevando_los_4():
+    # los 3 ocultos se siguen fetcheando/cacheando (seguimiento interno)
     assert ee.INDICADORES_ESPERADOS == [
         "icc_utdt", "sentimiento_digital", "clima_electoral", "indice_intencion_migratoria",
     ]
 
 
-def test_score_promedio_de_4_proxies_completos():
+def test_score_es_solo_la_intencion_migratoria():
     indicadores = {
-        "icc_utdt": {"valor": 45.0},                      # -> 5.0
-        "sentimiento_digital": {"valor": 50.0},           # -> 5.0
-        "clima_electoral": {"valor": 0.0},                # -> 5.0
-        "indice_intencion_migratoria": {"valor": 50.0},   # -> 5.0
+        "icc_utdt": {"valor": 45.0},
+        "sentimiento_digital": {"valor": 80.0},
+        "clima_electoral": {"valor": -10.0},
+        "indice_intencion_migratoria": {"valor": 30.0},   # -> 3.0
     }
-    assert ee.calcular_score(indicadores) == 5.0
+    assert ee.calcular_score(indicadores) == 3.0
 
 
-def test_score_con_solo_3_proxies_ignora_el_4to_ausente():
-    # promedio de los 3 de siempre, sin el nuevo -- no debe romper ni contarlo como 0
+def test_score_ignora_los_ocultos_aunque_esten_tensos():
+    # con los 3 ocultos al máximo de tensión y migración en 0, el score es 0
     indicadores = {
-        "icc_utdt": {"valor": 60.0},               # -> 0.0
-        "sentimiento_digital": {"valor": 0.0},     # -> 0.0
-        "clima_electoral": {"valor": 15.0},        # -> 0.0
+        "icc_utdt": {"valor": 30.0},               # tensión 10 si puntuara
+        "sentimiento_digital": {"valor": 100.0},   # tensión 10 si puntuara
+        "clima_electoral": {"valor": -15.0},       # tensión 10 si puntuara
+        "indice_intencion_migratoria": {"valor": 0.0},
     }
     assert ee.calcular_score(indicadores) == 0.0
 
 
-def test_score_intencion_migratoria_sube_la_tension():
-    base = {
+def test_score_sin_intencion_migratoria_devuelve_default_5():
+    # aunque los otros 3 estén presentes: no puntúan
+    indicadores = {
         "icc_utdt": {"valor": 60.0},
         "sentimiento_digital": {"valor": 0.0},
         "clima_electoral": {"valor": 15.0},
     }
-    con_migracion = {**base, "indice_intencion_migratoria": {"valor": 100.0}}  # -> 10.0
-    assert ee.calcular_score(base) == 0.0
-    assert ee.calcular_score(con_migracion) == 2.5   # (0+0+0+10)/4
-
-
-def test_score_sin_ningun_proxy_devuelve_default_5():
+    assert ee.calcular_score(indicadores) == 5.0
     assert ee.calcular_score({}) == 5.0
+
+
+def test_score_clampea_a_0_10():
+    assert ee.calcular_score({"indice_intencion_migratoria": {"valor": 130.0}}) == 10.0
 
 
 # ── Gate de frescura del store compartido (ADR-0035) ────────────────────────

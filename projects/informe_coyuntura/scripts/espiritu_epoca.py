@@ -4,14 +4,18 @@ Marco: "Marco Conceptual del Informe de Coyuntura" (CIGOB, mayo 2026), que
 amplía los cinturones de Matus con la sintonía emocional del gobierno con
 los sentimientos colectivos (política de las emociones, redes sociales).
 
-v1 PROVISIONAL: cuatro proxies derivados de fuentes que el pipeline ya extrae
-(no re-fetchea nada, evita rate-limits y doble parseo):
-  - icc_utdt                    ← último scripts/vida_cotidiana/data/vida_cotidiana_*.json
-  - sentimiento_digital         ← ídem (Google Trends; busca hacia atrás si vino null)
-  - clima_electoral             ← output/cache/politica.json (votometro_ventaja_lla)
+v1 PROVISIONAL — único indicador PUNTUABLE (ADR-0049):
   - indice_intencion_migratoria ← data/vida/intencion_migratoria_serie.json (Google
     Trends, ADR-0035; store mensual compartido con descargar_series.py, gateado
     por frescura — no se re-fetchea si el store ya tiene el mes en curso)
+
+Los tres proxies iniciales del cinturón se siguen relevando y cacheando como
+seguimiento interno, pero NO puntúan ni se publican en el tablero
+(publicar.ESPIRITU_OCULTOS, mismo criterio que ADR-0022/0048) — son lecturas
+duplicadas de cards que ya viven en otros cinturones:
+  - icc_utdt                    ← último scripts/vida_cotidiana/data/vida_cotidiana_*.json
+  - sentimiento_digital         ← ídem (Google Trends; busca hacia atrás si vino null)
+  - clima_electoral             ← output/cache/politica.json (votometro_ventaja_lla)
 
 `apatia_electoral` (voto en blanco/nulo + ausentismo) queda pendiente: el
 Votómetro aún no publica blanco/nulo por encuesta.
@@ -186,27 +190,18 @@ def _clamp10(x: float) -> float:
 def calcular_score(indicadores: dict) -> float:
     """
     Score 0-10: mayor = mayor desconexión con el humor social.
-    Promedio simple (v1 provisional; sin paramétrica CIGOB definida aún).
+    Único puntuable (ADR-0049; v1 provisional, sin paramétrica CIGOB aún):
 
-    icc_utdt                    (índice):       60 → 0 | 45 → 5 | 30 → 10
-    sentimiento_digital         (interés 0-100): 0 → 0 | 50 → 5 | 100 → 10
-    clima_electoral             (pp LLA−PJ):   +15 → 0 |  0 → 5 | −15 → 10
     indice_intencion_migratoria (interés 0-100): 0 → 0 | 50 → 5 | 100 → 10
+
+    Los otros 3 proxies del cache (icc_utdt, sentimiento_digital,
+    clima_electoral) son seguimiento interno: no entran al score.
+    Sin dato de intención migratoria → 5.0 neutral.
     """
-    scores = []
-    icc = indicadores.get("icc_utdt", {}).get("valor")
-    if icc is not None:
-        scores.append(_clamp10((60.0 - float(icc)) / 3.0))
-    sd = indicadores.get("sentimiento_digital", {}).get("valor")
-    if sd is not None:
-        scores.append(_clamp10(float(sd) / 10.0))
-    clima = indicadores.get("clima_electoral", {}).get("valor")
-    if clima is not None:
-        scores.append(_clamp10(5.0 - float(clima) / 3.0))
     intencion_migratoria = indicadores.get("indice_intencion_migratoria", {}).get("valor")
     if intencion_migratoria is not None:
-        scores.append(_clamp10(float(intencion_migratoria) / 10.0))
-    return round(sum(scores) / len(scores), 1) if scores else 5.0
+        return _clamp10(float(intencion_migratoria) / 10.0)
+    return 5.0
 
 
 def main() -> None:

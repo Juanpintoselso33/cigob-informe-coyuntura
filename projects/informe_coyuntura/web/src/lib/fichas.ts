@@ -737,7 +737,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre anclas: más de +15 puntos → el más alto; entre +5 y +15 → alto; entre −5 y +5 → moderado; entre −15 y −5 → bajo; −15 o menos → el más bajo.",
       "Es el único indicador de la dimensión de imagen y voto del índice del cinturón (10% del total) — la dimensión que pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
     ],
-    dobleUso: "El mismo dato alimenta el indicador de clima electoral del cinturón espíritu de época: la ventaja del Votómetro puntúa en los dos cinturones, decisión declarada de la versión inicial de ese cinturón.",
+    dobleUso: "El mismo dato alimentó el indicador de clima electoral del cinturón espíritu de época entre junio y julio de 2026, hasta que ese cinturón quedó acotado a la intención migratoria como único indicador; la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.",
     limitaciones: [
       "La fuente es una curaduría propia de encuestas de terceros, no un registro oficial.",
       "El peso por recencia se calcula contra el día de la corrida: sin encuestas nuevas, el valor deriva lentamente día a día.",
@@ -770,7 +770,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto a la eficacia legislativa, las sesiones caídas por quórum y los proyectos varados en comisión.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto a la eficacia legislativa, las sesiones caídas por quórum, los proyectos varados en comisión y las derrotas legislativas.",
     ],
     limitaciones: [
       "Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.",
@@ -871,10 +871,11 @@ export const FICHAS: Record<string, Ficha> = {
       "Ambos hechos dentro de una ventana móvil de 12 meses: el indicador es aprobados sobre enviados.",
     ],
     incidenciaTexto: [
-      "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 55% → el más alto; entre 35% y 55% → alto; entre 15% y 35% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 30% junto al ratio DNU, las sesiones caídas por quórum y los proyectos varados en comisión.",
+      "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 7% → el más alto; entre 5% y 7% → alto; entre 3% y 5% → moderado; entre 1% y 3% → bajo; 1% o menos → el más bajo. Los umbrales se calibraron con la serie mensual real del indicador (32 meses, dic-2023 en adelante) — los anteriores (5/15/35/55) describían la tasa de aprobación de un congreso teórico y dejaban el puntaje en las dos bandas más bajas todos los meses, sin discriminar nada.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto al ratio DNU, las sesiones caídas por quórum, los proyectos varados en comisión y las derrotas legislativas.",
     ],
     limitaciones: [
+      "Como el envío del proyecto y su sanción deben caer dentro de la misma ventana de 12 meses, los proyectos enviados hace pocos meses casi nunca tuvieron tiempo de aprobarse: el porcentaje alcanzable está comprimido hacia abajo por construcción. Las bandas de puntaje están calibradas contra esa escala real, no contra tasas de aprobación históricas de manual.",
       "Denominador chico: con unos veinte proyectos en la ventana, uno solo mueve más de cuatro puntos porcentuales.",
       "La sanción se detecta por el texto del movimiento: no distingue medias sanciones de otras variantes de registro.",
       "Cuenta proyectos por igual, sin ponderar su peso político.",
@@ -885,6 +886,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida de la capacidad de convertir la agenda de gobierno en ley." },
       { fecha: "2026-06-30", cambio: "Serie mensual de ventanas móviles de 12 meses desde diciembre de 2023." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
+      { fecha: "2026-07-11", cambio: "Umbrales de puntaje recalibrados contra la serie mensual real del indicador (32 meses): los anteriores describían la tasa de aprobación de un congreso teórico y dejaban el puntaje en el mínimo casi todos los meses, sin discriminar. Se documenta además que, por construcción de la ventana única de 12 meses, el techo alcanzable del porcentaje es más bajo que una tasa de aprobación de manual." },
     ],
   },
 
@@ -1045,7 +1047,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa y los proyectos varados en comisión.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 15% junto al ratio DNU, la eficacia legislativa, los proyectos varados en comisión y las derrotas legislativas.",
     ],
     limitaciones: [
       "Las sesiones desactivadas antes de la apertura formal no aparecen en el registro oficial: el indicador subestima el bloqueo.",
@@ -1080,7 +1082,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje de proyectos caídos, interpolado entre anclas: 96% o menos → el más alto; entre 96% y 97% → alto; entre 97% y 98% → moderado; entre 98% y 99% → bajo; más de 99% → el más bajo. Los umbrales se calibraron con la serie mensual real del indicador (32 meses, dic-2023 en adelante) — los anteriores (30/50/70/85) describían un congreso teórico y dejaban el puntaje clavado en el mínimo todos los meses, sin discriminar nada.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto al ratio DNU, la eficacia legislativa y las sesiones caídas por quórum.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa, las sesiones caídas por quórum y las derrotas legislativas.",
     ],
     limitaciones: [
       "El valor vive cerca del máximo por una razón estructural: la gran mayoría de los dictámenes no llega al recinto bajo ningún gobierno, y con una ventana móvil de 12 meses un dictamen reciente casi nunca alcanza a sancionarse dentro de su propia ventana. Por eso los umbrales de puntaje se calibraron sobre el rango realmente observado (94,7%–99,8%) y no sobre porcentajes teóricos.",
@@ -1143,41 +1145,11 @@ export const FICHAS: Record<string, Ficha> = {
   },
 
   // ═══════════════════════════════════════════════════════════════════════
-  // Espíritu de época — promedio simple de cuatro indicadores, dos de ellos
-  // compartidos con vida cotidiana (icc_utdt, sentimiento_digital)
+  // Espíritu de época — un único indicador puntuable (intención migratoria,
+  // jul-2026); los tres proxies iniciales (clima electoral, y los icc_utdt/
+  // sentimiento_digital compartidos con vida) quedaron como seguimiento
+  // interno, fuera del tablero y del score
   // ═══════════════════════════════════════════════════════════════════════
-  clima_electoral: {
-    tipo: "indicador",
-    id: "clima_electoral",
-    cinturon: "espiritu_epoca",
-    rezago: "Hereda la cadencia del Votómetro: se actualiza cuando hay encuestas nuevas, típicamente semanas.",
-    fuente: {
-      organismo: "Fundación CIGOB — Votómetro",
-      operacion: "Lectura del indicador de ventaja electoral del cinturón político (el mismo dato, sin re-extracción)",
-      url: "https://cigob.github.io/Votometro/",
-      acceso: "Automático: se copia del cálculo del cinturón político dentro de la misma corrida diaria.",
-    },
-    transformaciones: [
-      "Sin transformación adicional: es la misma ventaja LLA − PJ ponderada por recencia y calidad de encuesta.",
-    ],
-    incidenciaTexto: [
-      "La tensión es lineal en la ventaja: +15 puntos → tensión 0 · empate → 5 · −15 puntos → 10.",
-      "El cinturón espíritu de época no usa un índice compuesto: promedia las tensiones de sus cuatro indicadores (confianza del consumidor, sentimiento digital, clima electoral e intención migratoria).",
-    ],
-    dobleUso: "Es la segunda lectura del mismo dato del Votómetro: puntúa en política como ventaja electoral y acá como clima. La duplicación es una decisión declarada de la versión inicial del cinturón, hasta que exista una paramétrica propia.",
-    limitaciones: [
-      "No es una medición independiente del humor social: correlaciona uno a uno con el indicador del cinturón político.",
-      "Aproximación provisional: el marco conceptual todavía no define indicadores propios para este cinturón.",
-      "Queda pendiente medir la apatía electoral (voto en blanco y ausentismo): las encuestas agregadas no publican ese dato por sondeo.",
-    ],
-    faltantes: "Si la lectura del cinturón político no está disponible, usa el último caché marcado como desactualizado; sin nada, el score del cinturón promedia los presentes.",
-    revisiones: "Hereda las del Votómetro: la serie se rederiva completa en cada corrida.",
-    cambios: [
-      { fecha: "2026-06-10", cambio: "Nace el cinturón espíritu de época (quinto cinturón del marco conceptual) con tres indicadores tomados de vida cotidiana y política." },
-      { fecha: "2026-06-30", cambio: "Serie histórica publicada como alias de la serie del Votómetro." },
-    ],
-  },
-
   indice_intencion_migratoria: {
     tipo: "indicador",
     id: "indice_intencion_migratoria",
@@ -1195,7 +1167,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se recolectan además canastas de contexto (ciudadanías, trabajo/visas, destinos y un diagnóstico de causa económica vs. estructural) y un desglose por provincia — ninguna de estas entra al puntaje: son insumo de lectura para el analista, no números publicados en la card.",
     ],
     incidenciaTexto: [
-      "El cinturón espíritu de época no usa un índice compuesto: promedia las tensiones de sus cuatro indicadores (confianza del consumidor, sentimiento digital, clima electoral e intención migratoria).",
+      "Es el único indicador del cinturón espíritu de época: la tensión del cinturón es directamente la de este indicador (0 → tensión 0 · 50 → 5 · 100 → 10), sin índice compuesto (versión provisional).",
     ],
     limitaciones: [
       "Mide intención expresada en la búsqueda, no un trámite ni una salida real del país: alguien puede buscar por curiosidad sin intención de emigrar.",
@@ -1207,6 +1179,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-10", cambio: "Cuarto indicador del cinturón espíritu de época: intención de emigrar vía Google Trends, distinta de la ansiedad económica inmediata que ya mide sentimiento digital." },
       { fecha: "2026-07-10", cambio: "La card del indicador incorpora el contraste de migración real: seis registros administrativos de EE.UU., Canadá, España, Italia y Chile, que acompañan la lectura sin puntuar." },
+      { fecha: "2026-07-11", cambio: "Queda como único indicador del cinturón: la revisión editorial retiró del tablero las tres lecturas duplicadas de otros cinturones (confianza del consumidor, sentimiento digital y clima electoral), que se siguen registrando como seguimiento interno sin puntuar." },
     ],
   },
 
@@ -2207,7 +2180,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Pertenece a la dimensión de confianza y seguridad (45% interno · 6,75% del ITVC).",
     ],
-    dobleUso: "Triple función declarada: (1) componente del ITVC; (2) indicador del cinturón espíritu de época, con fórmula de tensión propia; (3) ancla de la validación externa del ITVC — para no ser circular, en ese estudio el índice se recalcula sin este componente.",
+    dobleUso: "Doble función declarada: (1) componente del ITVC; (2) ancla de la validación externa del ITVC — para no ser circular, en ese estudio el índice se recalcula sin este componente. Hasta julio de 2026 puntuó además en el cinturón espíritu de época, que desde entonces quedó acotado a la intención migratoria; esa lectura se sigue registrando como seguimiento interno.",
     limitaciones: [
       "Mide percepción y ánimo, no condiciones materiales: por diseño convive con medidas de conducta (consumo, patentamientos) en la misma dimensión.",
       "Depende del formato de publicación de la universidad: un cambio en el listado o la planilla interrumpe la lectura hasta adaptarla.",
@@ -2239,7 +2212,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Pertenece a la dimensión de confianza y seguridad (10% interno · 1,5% del ITVC): peso chico acorde a un constructo blando.",
       "La card muestra el pulso de tres meses; el puntaje usa la canasta mensual de ventana fija — doble registro declarado.",
     ],
-    dobleUso: "Integra también el cinturón espíritu de época con fórmula de tensión propia.",
+    dobleUso: "Hasta julio de 2026 integró además el cinturón espíritu de época con fórmula de tensión propia; ese cinturón quedó acotado a la intención migratoria y la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.",
     limitaciones: [
       "Mide atención, no sentimiento: una noticia dispara búsquedas sin que cambie el bolsillo.",
       "Fuente no oficial con límites de consulta: si el servicio restringe el acceso, la serie continúa desde el archivo propio.",

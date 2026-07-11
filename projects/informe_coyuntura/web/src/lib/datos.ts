@@ -196,7 +196,8 @@ export const LABELS: Record<string, string> = {
   pluriempleo: "Subocupación demandante", inseguridad: "Victimización (IVI)",
   icc_utdt: "Confianza del consumidor (ICC)", sentimiento_digital: "Sentimiento digital (Trends)",
   patentamiento_motos: "Patentamiento de motos", desocupacion: "Desocupación",
-  // espíritu de época (comparte icc_utdt y sentimiento_digital con vida)
+  // espíritu de época (único puntuable: intención migratoria; clima_electoral
+  // quedó oculto del tablero — seguimiento interno)
   clima_electoral: "Clima electoral (Votómetro)",
   indice_intencion_migratoria: "Intención migratoria (Trends)",
   // gestion

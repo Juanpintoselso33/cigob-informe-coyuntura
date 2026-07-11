@@ -56,17 +56,19 @@ def test_publicar_genera_snapshot():
 
 
 def test_espiritu_epoca_presente_y_coherente():
-    """El 5º cinturón trae sus 3 proxies v1, cada uno con aporte, y el score
-    publicado es el promedio que computa el colector."""
+    """El 5º cinturón publica SOLO la intención migratoria (ADR-0049): los 3
+    proxies iniciales quedan OCULTOS del snapshot (ESPIRITU_OCULTOS, mismo
+    criterio ADR-0022/0048 — se siguen cacheando como seguimiento interno) y
+    el score publicado es la tensión de ese único indicador."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
     esp = informe["cinturones"]["espiritu_epoca"]
-    assert set(esp["indicadores"]) >= {"icc_utdt", "sentimiento_digital", "clima_electoral"}
-    aportes = [i["aporte_score"] for i in esp["indicadores"].values()
-               if i.get("aporte_score") is not None]
-    assert len(aportes) >= 3, "espíritu de época: faltan aportes"
-    assert abs(round(sum(aportes) / len(aportes), 1) - esp["score"]) <= 0.1
-    # la fuente del clima electoral no debe filtrar rutas locales
-    assert esp["indicadores"]["clima_electoral"]["fuente"] == "Votómetro CIGOB"
+    assert set(esp["indicadores"]) == {"indice_intencion_migratoria"}, \
+        f"espíritu de época debería publicar solo la intención migratoria: {set(esp['indicadores'])}"
+    mig = esp["indicadores"]["indice_intencion_migratoria"]
+    assert mig.get("aporte_score") is not None, "intención migratoria sin aporte_score"
+    assert abs(mig["aporte_score"] - esp["score"]) <= 0.1
+    # la card conserva el contraste de migración real (Componente B, nunca puntúa)
+    assert isinstance(mig.get("contexto_duro"), dict)
 
 
 def test_politica_itcp_reconcilia():
