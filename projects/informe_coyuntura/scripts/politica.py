@@ -1288,8 +1288,18 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
     puede saber dónde termina la numeración, y un máximo subestimado haría
     que el walk anual cachee un año sin sus actas de arriba), o si el avance
     supera _TOPE_AVANCE_ID ids nuevos (endpoint patológico que responde 200
-    a cualquier id)."""
-    actual = desde_id
+    a cualquier id).
+
+    El punto de partida efectivo es el MAYOR entre `desde_id` (semilla
+    estática de respaldo) y el id más alto ya presente en el caché por acta:
+    así el arranque, el probeo y su tope acompañan el crecimiento real de la
+    numeración. Con la semilla fija sola, cada corrida re-descargaba todos
+    los ids posteriores a la semilla y, con el paso de las sesiones, el
+    flujo normal habría alcanzado el tope y devuelto None para siempre
+    (hallazgo de cuarta pasada de revisión)."""
+    cache = _cargar_cache_cohesion_diputados()
+    ultimo_conocido = max((int(k) for k in cache if str(k).isdigit()), default=0)
+    actual = max(desde_id, ultimo_conocido)
     intentos = 0
     while actual > 0:
         contenido = _diputados_acta_pdf(session, actual)

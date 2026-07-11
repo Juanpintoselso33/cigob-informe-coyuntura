@@ -332,6 +332,22 @@ def test_diputados_acta_id_maximo_endpoint_patologico_devuelve_none(monkeypatch)
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) is None
 
 
+def test_diputados_acta_id_maximo_arranca_del_maximo_cacheado(monkeypatch):
+    # El punto de partida acompaña el crecimiento real de la numeración: si
+    # el caché por acta ya conoce ids más altos que la semilla estática, el
+    # probeo arranca del máximo cacheado — con la semilla fija sola, cada
+    # corrida re-descargaba todos los ids posteriores y el tope de avance se
+    # volvía alcanzable con el paso de las sesiones (None permanente).
+    monkeypatch.setattr(politica, "_cargar_cache_cohesion_diputados",
+                         lambda: {"100": {"fecha": "2026-06-24", "rice": 90.0}})
+    existentes = {100, 101}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: b"x" if id in existentes else None)
+    # desde_id=5 no existe: si arrancara de la semilla, el retroceso daría
+    # None; que devuelva 101 prueba que arrancó del máximo cacheado (100).
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 101
+
+
 def test_diputados_acta_id_maximo_fallo_transitorio_devuelve_none(monkeypatch):
     # Si un probeo falla de forma transitoria no se puede saber dónde termina
     # la numeración: un máximo subestimado haría que el walk anual cachee el
