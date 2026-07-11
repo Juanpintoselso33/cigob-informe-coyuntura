@@ -374,7 +374,7 @@ def test_diputados_acta_id_maximo_reusa_store_del_dia(monkeypatch):
     # descubrimiento exitoso se persiste con fecha y el segundo proceso del
     # día lo reusa sin pagar el probeo terminal (~450 requests).
     politica.DIPUTADOS_ID_MAXIMO_STORE.write_text(json.dumps(
-        {"maximo": 77, "sondeado_hasta": 527, "descubierto": datetime.now().strftime("%Y-%m-%d")}),
+        {"maximo": 77, "sondeado_hasta": 527, "descubierto": politica._hoy_buenos_aires()}),
         encoding="utf-8")
     llamadas = []
     monkeypatch.setattr(politica, "_diputados_acta_pdf",
@@ -394,7 +394,7 @@ def test_diputados_acta_id_maximo_store_viejo_se_redescubre(monkeypatch):
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 6
     persistido = json.loads(politica.DIPUTADOS_ID_MAXIMO_STORE.read_text(encoding="utf-8"))
     assert persistido["maximo"] == 6
-    assert persistido["descubierto"] == datetime.now().strftime("%Y-%m-%d")
+    assert persistido["descubierto"] == politica._hoy_buenos_aires()
 
 
 def test_diputados_acta_id_maximo_fallo_no_persiste_store(monkeypatch):

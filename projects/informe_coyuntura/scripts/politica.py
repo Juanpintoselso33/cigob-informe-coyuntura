@@ -1295,6 +1295,22 @@ _ID_MAXIMO_MEMO: dict = {}
 DIPUTADOS_ID_MAXIMO_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "id_maximo_diputados.json"
 
 
+def _hoy_buenos_aires() -> str:
+    """Fecha calendario de referencia del proyecto (ART, UTC-3 fijo, sin
+    horario de verano) como YYYY-MM-DD. El runner del cron vive en UTC: con
+    datetime.now() a secas, un workflow_dispatch entre 00:00 y 02:59 UTC
+    (todavía el día ANTERIOR en Argentina) sellaría el store con la fecha
+    UTC nueva y el cron de las 03:00 UTC reutilizaría ese máximo sin
+    redescubrir (hallazgo de octava pasada de revisión). Fallback a la hora
+    local de la máquina si la base de zonas horarias no está disponible
+    (Windows sin el paquete tzdata)."""
+    try:
+        from zoneinfo import ZoneInfo
+        return datetime.now(ZoneInfo("America/Argentina/Buenos_Aires")).strftime("%Y-%m-%d")
+    except Exception:
+        return datetime.now().strftime("%Y-%m-%d")
+
+
 def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -> int | None:
     """Encuentra el id de acta más reciente disponible, caminando desde
     `desde_id` (semilla conocida: 5959 = 24-jun-2026, verificado en vivo
@@ -1324,7 +1340,7 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
     subir la semilla estática a mano."""
     if "valor" in _ID_MAXIMO_MEMO:
         return _ID_MAXIMO_MEMO["valor"]
-    hoy_str = datetime.now().strftime("%Y-%m-%d")
+    hoy_str = _hoy_buenos_aires()
     try:
         store = json.loads(DIPUTADOS_ID_MAXIMO_STORE.read_text(encoding="utf-8-sig"))
         if store.get("descubierto") == hoy_str and isinstance(store.get("maximo"), int):
