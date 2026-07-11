@@ -15,6 +15,9 @@ def _cache_diputados_aislado(monkeypatch, tmp_path):
     # nuevo (regresión real: la primera corrida de esta suite escribió en el
     # archivo real antes de que existiera este fixture).
     monkeypatch.setattr(politica, "DIPUTADOS_COHESION_CACHE_PATH", tmp_path / "cohesion_diputados_cache_test.json")
+    # el memo por proceso del id máximo también se aísla: sin esto, el
+    # resultado de un test contaminaría al siguiente.
+    monkeypatch.setattr(politica, "_ID_MAXIMO_MEMO", {})
 
 
 def test_indice_rice_unanime_afirmativo():
@@ -346,6 +349,31 @@ def test_diputados_acta_id_maximo_arranca_del_maximo_cacheado(monkeypatch):
     # desde_id=5 no existe: si arrancara de la semilla, el retroceso daría
     # None; que devuelva 101 prueba que arrancó del máximo cacheado (100).
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 101
+
+
+def test_diputados_acta_id_maximo_memoiza_por_proceso(monkeypatch):
+    # El descubrimiento (~450 probeos al agotar la búsqueda) se paga UNA vez
+    # por proceso: politica.py y descargar_series.py lo llaman varias veces
+    # por corrida y el máximo no cambia dentro del mismo proceso.
+    existentes = {5, 6, 7}
+    llamadas = []
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: llamadas.append(id) or (b"x" if id in existentes else None))
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 7
+    n_primera = len(llamadas)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 7
+    assert len(llamadas) == n_primera   # segunda llamada: memo, cero probeos
+
+
+def test_diputados_acta_id_maximo_fallo_no_se_memoiza(monkeypatch):
+    # Un None (fallo transitorio) NO se memoiza: la próxima llamada del mismo
+    # proceso debe reintentar el descubrimiento.
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: politica._ACTA_FALLO)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) is None
+    existentes = {5, 6}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: b"x" if id in existentes else None)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 6
 
 
 def test_diputados_acta_id_maximo_cache_corrupto_cae_a_la_semilla(monkeypatch):

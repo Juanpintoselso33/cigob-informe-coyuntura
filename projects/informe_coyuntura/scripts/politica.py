@@ -1267,12 +1267,24 @@ def _acta_diputados_cacheada(session: requests.Session, id_acta: int, cache: dic
 
 
 # El avance de _diputados_acta_id_maximo tolera huecos de numeración: la
-# numeración real de actas NO es contigua (101 huecos internos en el caché
-# 4694..5959, el más ancho de 15 ids: 5902→5918, verificado 2026-07-11), así
-# que "primer 404 = final" perdía toda acta nueva publicada después de un
-# hueco. El margen dobla holgadamente el hueco máximo observado.
-_MARGEN_HUECOS_ID = 30
-_TOPE_AVANCE_ID = 1000
+# numeración real de actas NO es contigua — 101 huecos internos en el caché
+# 4694..5959, con anchos de hasta 202 ids (4897→5100; luego 72, 35, 34, 33)
+# y verificado EN VIVO 2026-07-11 que esos rangos devuelven 404 real, no un
+# PDF sin fecha. "Primer 404 = final" perdía toda acta nueva publicada
+# después de un hueco. El margen dobla el hueco máximo observado; el costo
+# (~450 probeos pacientes al agotar la búsqueda) se paga UNA vez por proceso
+# gracias a la memoización de abajo.
+_MARGEN_HUECOS_ID = 450
+_TOPE_AVANCE_ID = 2000
+
+# Memo por PROCESO del id máximo descubierto: politica.py (card live) y
+# descargar_series.py (4 backfills anuales) llaman al descubrimiento varias
+# veces por corrida — el máximo no cambia dentro de un mismo proceso, y sin
+# memo el probeo terminal de ~450 requests se pagaría por cada llamada. Solo
+# se memoiza un resultado exitoso (int): un None (fallo transitorio) debe
+# reintentar en la próxima llamada. Corridas distintas del cron son procesos
+# distintos, así que el memo nunca queda viejo entre noches.
+_ID_MAXIMO_MEMO: dict = {}
 
 
 def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -> int | None:
@@ -1296,7 +1308,14 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
     numeración. Con la semilla fija sola, cada corrida re-descargaba todos
     los ids posteriores a la semilla y, con el paso de las sesiones, el
     flujo normal habría alcanzado el tope y devuelto None para siempre
-    (hallazgo de cuarta pasada de revisión)."""
+    (hallazgo de cuarta pasada de revisión).
+
+    Caso extremo documentado: si la numeración avanzara más de
+    _TOPE_AVANCE_ID ids sin que ninguna corrida lo registre (colector caído
+    por meses), el descubrimiento devolvería None con WARN y haría falta
+    subir la semilla estática a mano."""
+    if "valor" in _ID_MAXIMO_MEMO:
+        return _ID_MAXIMO_MEMO["valor"]
     cache = _cargar_cache_cohesion_diputados()
     ultimo_conocido = max((int(k) for k in cache if str(k).isdigit()), default=0)
     arranques = [max(desde_id, ultimo_conocido)]
@@ -1344,6 +1363,7 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
             huecos_seguidos = 0
         else:
             huecos_seguidos += 1
+    _ID_MAXIMO_MEMO["valor"] = maximo
     return maximo
 
 
