@@ -1,5 +1,6 @@
 ---
 import { verdictDeCinturon, indicadoresOrdenados, cap, indiceDe, semaforoDimension } from "../lib/datos.ts";
+import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import IndicadorRow from "./IndicadorRow.astro";
 const { slug, nombre, sub, cinturon } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -33,17 +34,26 @@ const pesoPct = (d: any) => Math.round((d.peso_efectivo ?? d.peso) * 100);
     <>
       <div class="cg-genoma" role="group" aria-label={`Dimensiones del ${indice.sigla}: el ancho de cada tramo es su peso en el índice`}>
         {dims.map(([dkey, dim]) => (
-          <button
-            type="button"
-            class:list={["cg-genoma-seg", `sem-${semaforoDimension(dim.puntaje, !!indice.base100)}`, "cg-dim--clickable", { "is-critica": dim.critica }]}
-            data-dimension={dkey} data-cinturon={slug}
-            style={`flex-grow:${pesoPct(dim)};`}
-            title={`${dim.nombre} · ${dim.puntaje}${indice.base100 ? "" : "/100"} · pesa ${pesoPct(dim)}%`}
-            aria-label={`${dim.nombre}: puntaje ${dim.puntaje}, pesa ${pesoPct(dim)}% del índice — tocá para ver qué mide`}></button>
+          <>
+            <button
+              type="button"
+              class:list={["cg-genoma-seg", `sem-${semaforoDimension(dim.puntaje, !!indice.base100)}`, "cg-dim--clickable", { "is-critica": dim.critica }]}
+              data-dimension={dkey} data-cinturon={slug}
+              style={`flex-grow:${pesoPct(dim)};`}
+              aria-label={`${dim.nombre}: puntaje ${dim.puntaje}, pesa ${pesoPct(dim)}% del índice — tocá para ver qué mide`}></button>
+            <span class="cg-genoma-tip" aria-hidden="true">
+              <span class="cg-genoma-tip-head">{dim.nombre} · <strong>{dim.puntaje}{indice.base100 ? "" : "/100"}</strong> · pesa {pesoPct(dim)}%{dim.critica ? " · dimensión crítica" : ""}</span>
+              {DIM_DESCRIPCIONES[dkey] && <span class="cg-genoma-tip-desc">{DIM_DESCRIPCIONES[dkey]}</span>}
+              <span class="cg-genoma-tip-cta">Tocá para ver la composición completa</span>
+            </span>
+          </>
         ))}
       </div>
       <div class="cg-genoma-cap">{dims.length} dimensiones · ancho = peso · tocá un tramo para ver qué mide</div>
     </>
+  )}
+  {!indice && (
+    <div class="cg-genoma-cap cg-genoma-cap--solo">Cinturón cualitativo · sin índice de dimensiones — se lee por su indicador</div>
   )}
   <ul class="cg-ind-list">
     {visibles.map(({ key, ind, bucket }) => <IndicadorRow ikey={key} ind={ind} bucket={bucket} slug={slug} />)}

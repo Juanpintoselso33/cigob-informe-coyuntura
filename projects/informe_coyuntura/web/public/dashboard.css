@@ -338,8 +338,11 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 
 /* Genoma del cinturón: un tramo por dimensión del índice (ancho = peso,
    color = semáforo de la fórmula de tensión). Tocar un tramo abre el modal
-   de dimensión (mismo wiring cg-dim--clickable que la página del cinturón). */
-.cg-genoma { display: flex; gap: 3px; margin: 12px 0 3px; }
+   de dimensión (mismo wiring cg-dim--clickable que la página del cinturón).
+   El hover muestra un tooltip propio con la descripción de la dimensión —
+   los tips son HERMANOS del botón (no hijos): el transform del hover del
+   botón crearía un containing block y rompería el anclaje al ancho total. */
+.cg-genoma { display: flex; gap: 3px; margin: 12px 0 3px; position: relative; }
 .cg-genoma-seg {
     flex-basis: 0; min-width: 8px; height: 9px;
     border: none; padding: 0; border-radius: 3px;
@@ -352,7 +355,22 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-genoma-seg.sem-amarillo { background: var(--amarillo); }
 .cg-genoma-seg.sem-rojo     { background: var(--rojo); }
 .cg-genoma-seg.is-critica   { box-shadow: 0 0 0 1.5px var(--rojo); }
+.cg-genoma-tip {
+    position: absolute; left: 0; right: 0; bottom: calc(100% + 8px);
+    background: var(--paper); border: 1px solid var(--bd); border-radius: 8px;
+    box-shadow: var(--shadow-hover);
+    padding: 9px 11px; font-size: 11px; line-height: 1.5; color: var(--dark);
+    opacity: 0; pointer-events: none; transform: translateY(3px);
+    transition: opacity .13s ease, transform .13s ease;
+    z-index: 30; text-align: left;
+}
+.cg-genoma-seg:hover + .cg-genoma-tip,
+.cg-genoma-seg:focus-visible + .cg-genoma-tip { opacity: 1; transform: translateY(0); }
+.cg-genoma-tip-head { display: block; font-weight: 700; }
+.cg-genoma-tip-desc { display: block; margin-top: 3px; color: var(--muted); font-size: 10.5px; }
+.cg-genoma-tip-cta  { display: block; margin-top: 5px; font-size: 9.5px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .05em; }
 .cg-genoma-cap { font-size: 10px; color: var(--muted); margin-bottom: 6px; letter-spacing: .01em; }
+.cg-genoma-cap--solo { margin: 12px 0 3px; }
 
 .cg-ind-list {
     list-style: none; margin: 0; padding: 0;

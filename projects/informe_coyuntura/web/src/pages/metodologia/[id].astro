@@ -7,7 +7,7 @@ import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import seriesRaw from "../../data/series.json";
-import { informe, CINTURONES, label, presentacion, badgeEstado, UNIDADES_LARGAS, indiceDe } from "../../lib/datos.ts";
+import { informe, CINTURONES, label, presentacion, badgeEstado, UNIDADES_LARGAS, indiceDe, mesLegible } from "../../lib/datos.ts";
 import { DESCRIPCIONES } from "../../lib/descripciones.ts";
 import { FORMULAS } from "../../lib/formulas.ts";
 import { FICHAS, tramoDeAnclas, type FichaIndicador, type FichaIndice } from "../../lib/fichas.ts";
@@ -313,7 +313,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
                   </table>
                 </div>
                 <p class="cg-ficha-p" style="margin:10px 0 0; font-size:12.5px; color:var(--muted);">
-                  Composición vigente a {informe.period}, generada de los mismos datos que publica el informe.
+                  Composición vigente a {mesLegible(informe.period)}, generada de los mismos datos que publica el informe.
                 </p>
               </div>
             )}
@@ -351,7 +351,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
             </div>
             {fx.robustez.map(p => <p class="cg-ficha-p">{p}</p>)}
             <div class="cg-ficha-callout">
-              <strong>Edición vigente ({informe.period}).</strong>{" "}
+              <strong>Edición vigente ({mesLegible(informe.period)}).</strong>{" "}
               {fx.sigla} publicado: {coma(it.valor)}. En {rob.n_draws.toLocaleString("es-AR")} escenarios simulados,
               el 90% cae entre {coma(rob.p05)} y {coma(rob.p95)} (tensión {coma(rob.tension_rango[0])}–{coma(rob.tension_rango[1])}).
               {rob.dominante && ` Componente dominante: ${label(rob.dominante.indicador)} — sin él, el índice sería ${coma(rob.dominante.indice_sin)}.`}

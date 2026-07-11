@@ -5,7 +5,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
-import { informe, CINTURONES, label, badgeEstado, indiceDe, indicadoresOrdenados } from "../../lib/datos.ts";
+import { informe, CINTURONES, label, badgeEstado, indiceDe, indicadoresOrdenados, mesLegible } from "../../lib/datos.ts";
 import { DESCRIPCIONES } from "../../lib/descripciones.ts";
 import { FICHAS } from "../../lib/fichas.ts";
 
@@ -40,7 +40,7 @@ const totalFichas = Object.keys(FICHAS).length;
         método se tomaron. Para leer el informe no hace falta nada de esto; para auditarlo, está todo.
       </p>
       <div class="cg-detalle-meta">
-        <span class="cg-detalle-chip">Edición <strong>{informe.period}</strong></span>
+        <span class="cg-detalle-chip">Edición <strong>{mesLegible(informe.period)}</strong></span>
         <span class="cg-detalle-chip"><strong>{totalFichas}</strong> fichas publicadas</span>
       </div>
     </div>
