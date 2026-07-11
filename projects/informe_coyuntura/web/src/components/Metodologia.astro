@@ -100,7 +100,11 @@ const coma = (v: number) => String(v).replace(".", ",");
           {coma(indice.data.valor)}<small>{indice.base100 ? " · base 100" : "/100"}</small>
         </div>
         <div class="cg-met-ind-banda">{indice.data.banda_legible}</div>
-        <div class="cg-met-ind-comp">{compDe(indice)} · puntaje {indice.base100 ? "por evolución vs. 4T-2023" : "interpolado entre umbrales institucionales"}</div>
+        {/* "umbrales publicados", no "institucionales": vale para los cuatro
+            índices — los del ITCM/ITCG salen de un documento institucional,
+            los del ITCP son decisión editorial declarada en su propia ficha,
+            y todos están documentados indicador por indicador. */}
+        <div class="cg-met-ind-comp">{compDe(indice)} · puntaje {indice.base100 ? "por evolución vs. 4T-2023" : "interpolado entre umbrales publicados"}</div>
         <div class="cg-met-ind-cta">Ficha metodológica →</div>
       </a>
     ))}

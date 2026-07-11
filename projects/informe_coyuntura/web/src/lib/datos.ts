@@ -292,7 +292,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   cohesion_bloque_senado: "% de votos (Senado — fusionado en el compuesto bicameral)",
   rotacion_gabinete: "Salidas de rango ministerial (acum. 12 meses)",
   gobernadores_alineamiento: "% de gobernadores (retirado)", veto_quorum: "% de sesiones",
-  alineamiento_senadores_prov: "% de senadores no-LLA",
+  alineamiento_senadores_prov: "% de votos de senadores no-LLA que acompañan a LLA (promedio entre provincias)",
   adhesion_reformas_provincial: "% de jurisdicciones adheridas (sobre 24)",
   comisiones_caidas: "% de proyectos",
   derrotas_legislativas: "Derrotas en el recinto (vetos insistidos + decretos rechazados, acum. 12 meses)",
@@ -326,6 +326,20 @@ export const UNIDADES_LARGAS: Record<string, string> = {
 export const UNIDADES_SERIE: Record<string, string> = {
   protestas_caba: "eventos/mes",       // card = acumulado 12m; serie = eventos por mes
   rigi_inversiones: "US$ M aprobados", // card = % del pipeline; serie = inversión aprobada acumulada
+};
+
+// Datos duros de migración real que acompañan a indice_intencion_migratoria
+// como contraste (bloque contexto_duro de la card). Las claves son las que
+// publica espiritu_epoca.py; el orden de este objeto es el orden de lectura.
+// Nunca puntúan: el modal los muestra solo para que la intención expresada
+// en búsquedas no se lea sin la migración efectiva al lado.
+export const CONTEXTO_DURO_META: Record<string, { label: string; freq: "mensual" | "anual"; nota?: string }> = {
+  eeuu_niv: { label: "EE.UU. — visas de no inmigrante emitidas a argentinos", freq: "mensual", nota: "incluye turismo y negocios" },
+  eeuu_iv: { label: "EE.UU. — visas de inmigrante (residencia permanente)", freq: "mensual" },
+  canada_pr: { label: "Canadá — nuevos residentes permanentes argentinos", freq: "mensual", nota: "la fuente redondea a múltiplos de 5" },
+  espana_nacionalidad: { label: "España — nacionalidad española otorgada a argentinos", freq: "anual" },
+  italia_aire: { label: "Italia — ciudadanía italiana otorgada a argentinos", freq: "anual" },
+  chile_residencia: { label: "Chile — residencias definitivas otorgadas a argentinos", freq: "anual" },
 };
 
 export interface Presentacion { texto: string; unidad: string; titulo: string; }

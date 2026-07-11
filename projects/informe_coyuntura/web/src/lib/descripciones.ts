@@ -227,7 +227,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   indice_intencion_migratoria: {
     que: "Cuánto se busca en internet sobre emigrar de Argentina (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\").",
-    aporta: "Es una señal más estructural que sentimiento digital: no mide urgencia económica del momento, sino gente que dejó de creer en un cambio dentro del país. Nunca debería leerse sola — es un proxy de atención, no de flujo migratorio real.",
+    aporta: "Es una señal más estructural que sentimiento digital: no mide urgencia económica del momento, sino gente que dejó de creer en un cambio dentro del país. Nunca debería leerse sola — es un proxy de atención, no de flujo migratorio real; por eso su card la acompaña con la migración efectiva hacia los destinos principales, como contraste.",
     frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
 

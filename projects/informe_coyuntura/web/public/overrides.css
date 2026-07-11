@@ -339,6 +339,28 @@
 .cg-score-note { margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
 .cg-score-note strong { color: var(--dark); }
 
+/* ── Modal: contraste de migración real (contexto_duro) ──────────── */
+.cg-modal-contexto {
+    background: var(--bg-page); border: 1px solid var(--bd);
+    border-radius: 10px; padding: 14px 16px; margin: 0 0 20px;
+}
+.cg-modal-contexto .cg-modal-h4 { margin-top: 0; }
+.cg-ctx-intro { margin: 0 0 8px; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+.cg-ctx-row {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 14px; padding: 7px 0; border-top: 1px dashed var(--bd);
+    font-size: 12.5px; line-height: 1.5;
+}
+.cg-ctx-nombre { color: var(--dark); }
+.cg-ctx-nota { color: var(--muted-soft); }
+.cg-ctx-valor { white-space: nowrap; color: var(--dark); }
+.cg-ctx-valor strong { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+.cg-ctx-periodo { color: var(--muted); font-size: 11.5px; }
+@media (max-width: 560px) {
+    .cg-ctx-row { flex-direction: column; gap: 2px; }
+    .cg-ctx-valor { white-space: normal; }
+}
+
 /* ── Robustez del índice (ADR-0019): card en la familia de las dimensiones ── */
 .cg-rob {
     margin: 0;

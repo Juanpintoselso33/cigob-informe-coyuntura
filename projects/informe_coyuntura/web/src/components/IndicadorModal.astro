@@ -1,5 +1,5 @@
 ---
-import { informe, series, label, presentacion, UNIDADES_LARGAS, UNIDADES_SERIE, CINTURONES, BARRA_0_100 } from "../lib/datos.ts";
+import { informe, series, label, presentacion, formatValor, UNIDADES_LARGAS, UNIDADES_SERIE, CINTURONES, BARRA_0_100, CONTEXTO_DURO_META } from "../lib/datos.ts";
 import { DESCRIPCIONES, DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import { FORMULAS } from "../lib/formulas.ts";
 
@@ -26,6 +26,30 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
         `${dim.nombre} · ${Math.round(i.peso * 100)}% interno`;
     }
   }
+}
+
+// Contraste de migración real (contexto_duro de indice_intencion_migratoria):
+// se precomputa acá la fila lista para mostrar — label público, valor
+// formateado y período legible — así el script del modal no repite lógica.
+const MES_ABREV = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+function periodoLegible(p: string): string {
+  const m = /^(\d{4})-(\d{2})$/.exec(p);
+  return m ? `${MES_ABREV[+m[2] - 1]} ${m[1]}` : p;
+}
+function contextoDuroFilas(ctx: unknown): { label: string; valor: string; periodo: string; nota: string | null }[] | null {
+  if (!ctx || typeof ctx !== "object") return null;
+  const filas = Object.entries(CONTEXTO_DURO_META)
+    .filter(([k]) => (ctx as any)[k] && typeof (ctx as any)[k].valor === "number")
+    .map(([k, meta]) => {
+      const p = (ctx as any)[k];
+      return {
+        label: meta.label,
+        valor: formatValor(p.valor),
+        periodo: `${periodoLegible(String(p.periodo))} · ${meta.freq}`,
+        nota: meta.nota ?? null,
+      };
+    });
+  return filas.length ? filas : null;
 }
 
 // Ficha por indicador, namespaced por slug de cinturón: icc_utdt y
@@ -68,6 +92,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       unidadCorta: p.unidad ?? "",
       formula: FORMULAS[ikey]?.latex ?? null,
       formulaLeyenda: FORMULAS[ikey]?.leyenda ?? null,
+      contextoDuro: contextoDuroFilas((ind as any).contexto_duro),
       dimTxt: dimDe[`${SLUG_DE[ckey] ?? ckey}.${ikey}`]
         ?? (ind.en_indice === false ? "Contexto — no integra el índice" : null),
     };
@@ -129,6 +154,7 @@ const dimsJson = JSON.stringify(dims);
       <p class="cg-formula-leyenda" id="cg-formula-leyenda"></p>
     </div>
     <div class="cg-modal-score" id="cg-modal-score"></div>
+    <div class="cg-modal-contexto" id="cg-modal-contexto" style="display:none"></div>
     <h4 class="cg-modal-h4" id="cg-modal-serie-h">Evolución histórica</h4>
     <div class="cg-chart-modal" id="cg-modal-chart" role="img" aria-label="Gráfico del indicador" hidden></div>
     <p class="cg-modal-sub" id="cg-modal-sub"></p>
@@ -288,6 +314,27 @@ const dimsJson = JSON.stringify(dims);
         score.style.display = "none";
       }
 
+      // Contraste de migración real (solo indice_intencion_migratoria): la
+      // intención expresada en búsquedas no debe leerse sin la migración
+      // efectiva al lado — ADR de diseño del indicador.
+      const ctxCaja = document.getElementById("cg-modal-contexto");
+      if (d.contextoDuro && d.contextoDuro.length) {
+        ctxCaja.innerHTML =
+          `<h4 class="cg-modal-h4">La migración real, como contraste</h4>` +
+          `<p class="cg-ctx-intro">El índice mide interés de búsqueda, no personas que se van. ` +
+          `Estos registros administrativos de los destinos principales muestran la migración efectiva ` +
+          `y acompañan al indicador solo como contraste: no suman ni restan al score. ` +
+          `Cada fuente publica con su propio calendario, por eso los períodos difieren.</p>` +
+          d.contextoDuro.map(f =>
+            `<div class="cg-ctx-row">` +
+              `<span class="cg-ctx-nombre">${esc(f.label)}${f.nota ? ` <span class="cg-ctx-nota">(${esc(f.nota)})</span>` : ""}</span>` +
+              `<span class="cg-ctx-valor"><strong>${esc(f.valor)}</strong> <span class="cg-ctx-periodo">${esc(f.periodo)}</span></span>` +
+            `</div>`).join("");
+        ctxCaja.style.display = "";
+      } else {
+        ctxCaja.style.display = "none";
+      }
+
       const serieH = document.getElementById("cg-modal-serie-h");
       const sub = document.getElementById("cg-modal-sub");
       const table = document.getElementById("cg-modal-table");
@@ -383,6 +430,7 @@ const dimsJson = JSON.stringify(dims);
         `${Math.round(d.peso * 100)}% × ${nf.format(d.puntaje)} = <strong>${nf.format(aporte)}</strong> puntos.</p>`;
       document.getElementById("cg-modal-score").style.display = "";
 
+      document.getElementById("cg-modal-contexto").style.display = "none";
       // Sin gráfico aparte: las filas de composición YA son el visual (un
       // bar chart de puntajes repetiría la misma información).
       document.getElementById("cg-modal-serie-h").style.display = "none";

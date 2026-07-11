@@ -861,7 +861,7 @@ def _validacion_itcp(bloque):
     local — Banco de España + SECMCA, misma familia metodológica que
     Baker/Bloom/Davis) — correlación negativa esperada. No es un precio de
     mercado como los otros tres pares: es la lectura pública de la política
-    misma, ajena a los doce componentes del índice."""
+    misma, ajena a los once componentes del índice."""
     val = _cargar_validacion()
     serie = val.get("serie_itcp") or {}
     epu = val.get("epu_argentina_mensual") or {}
@@ -885,7 +885,7 @@ def _validacion_itcp(bloque):
                 "cuánto se habla de incertidumbre alrededor del gobierno y sus políticas. El "
                 "ITCP se reconstruye mes a mes desde las series de sus componentes (sin los "
                 "ajustes del analista: el nivel puede diferir del publicado — lo que valida es "
-                "su evolución); varios de los doce componentes tienen historia corta o recién "
+                "su evolución); varios de los once componentes tienen historia corta o recién "
                 "se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento "
                 "de senadores por provincia, adhesión provincial al RIGI), así que la reconstrucción de los "
                 "meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la "

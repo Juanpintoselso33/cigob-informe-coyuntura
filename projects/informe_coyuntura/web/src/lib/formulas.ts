@@ -235,6 +235,6 @@ export const FORMULAS: Record<string, Formula> = {
   },
   indice_intencion_migratoria: {
     latex: String.raw`\text{inter\'es de b\'usqueda mensual}\;(0\text{-}100)`,
-    leyenda: "Canasta de búsquedas en Google sobre intención de emigrar (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\"), promedio mensual en ventana fija desde 2021 — misma técnica que sentimiento digital. Más búsqueda = más tensión: a diferencia de sentimiento digital (urgencia económica del momento), esta es una señal de salida más estructural. Nunca debería leerse sola: falta un cruce contra datos duros de emigración real.",
+    leyenda: "Canasta de búsquedas en Google sobre intención de emigrar (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\"), promedio mensual en ventana fija desde 2021 — misma técnica que sentimiento digital. Más búsqueda = más tensión: a diferencia de sentimiento digital (urgencia económica del momento), esta es una señal de salida más estructural. Nunca debería leerse sola: por eso la card la acompaña con un contraste de migración efectiva (visas, residencias y ciudadanías otorgadas a argentinos en los destinos principales) que se muestra sin puntuar.",
   },
 };

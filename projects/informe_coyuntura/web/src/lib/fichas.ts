@@ -1199,13 +1199,14 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Mide intención expresada en la búsqueda, no un trámite ni una salida real del país: alguien puede buscar por curiosidad sin intención de emigrar.",
-      "Por eso este indicador nunca debería leerse solo — falta todavía un cruce sistemático contra datos duros (trámites de ciudadanía o visa, fuga de investigadores) que sea real y automatizable; hasta que exista, la lectura de este indicador es únicamente un proxy de atención, no de flujo migratorio efectivo.",
+      "Por eso este indicador nunca se publica solo: su card en el tablero lo acompaña con un contraste de migración efectiva — seis registros administrativos de cinco destinos (visas de EE.UU., residencias permanentes de Canadá, nacionalizaciones de España, ciudadanías de Italia y residencias definitivas de Chile). El contraste no puntúa: mezcla flujos de naturaleza distinta y cada fuente publica con su propio calendario (las europeas y Chile son anuales; las series de EE.UU. llegan con rezago).",
       "Fuente no oficial con límites de consulta: si el servicio restringe el acceso, se mantiene el último valor del archivo propio.",
     ],
     faltantes: "Con la fuente caída o sin el mes calendario todavía consultado, se mantiene el último valor del archivo propio, marcado como desactualizado.",
     revisiones: "Reemplazo total del archivo en cada descarga sana; la fuente no revisa datos propiamente.",
     cambios: [
       { fecha: "2026-07-10", cambio: "Cuarto indicador del cinturón espíritu de época: intención de emigrar vía Google Trends, distinta de la ansiedad económica inmediata que ya mide sentimiento digital." },
+      { fecha: "2026-07-10", cambio: "La card del indicador incorpora el contraste de migración real: seis registros administrativos de EE.UU., Canadá, España, Italia y Chile, que acompañan la lectura sin puntuar." },
     ],
   },
 
