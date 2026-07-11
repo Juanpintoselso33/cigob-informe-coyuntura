@@ -764,12 +764,15 @@ def fetch_eficacia_legislativa() -> dict | None:
     MOVIMIENTO~'SANCION', excluyendo medias sanciones explícitas
     (_es_media_sancion).
     Ventana: PUBLICACION_FECHA (proyectos) y FECHA (movimientos) >= hoy − 365 días.
+    OJO: ambas fechas dentro de la MISMA ventana ⇒ el techo alcanzable del %
+    está estructuralmente deprimido (un proyecto recién enviado casi nunca
+    llegó a sancionarse aún) — las bandas del ITCP están calibradas contra la
+    serie real de ESTA métrica, no contra tasas de aprobación de manual
+    (ADR-0050).
 
     Fuente: datos.hcdn.gob.ar CKAN
       - proyectos-parlamentarios: 22b2d52c-7a0e-426b-ac0a-a3326c388ba6
       - movimientos-de-proyectos: 6108ea83-3f12-423c-a136-df1ae9cb2972
-
-    Score: 70%→0, 35%→5, 0%→10  (formula: (70 − valor) / 7)
     """
     try:
         cutoff = (date.today() - timedelta(days=365)).isoformat()[:10]

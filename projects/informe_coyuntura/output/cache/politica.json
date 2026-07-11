@@ -1,16 +1,16 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-11T05:33:04.839645",
-  "score": 2.7,
+  "generated_at": "2026-07-11T13:17:30.381150",
+  "score": 2.3,
   "itcp": {
-    "valor": 72.9,
+    "valor": 77.2,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.3,
-        "puntaje": 48.8,
+        "puntaje": 63.3,
         "indicadores": {
           "ratio_dnu": {
             "peso": 0.2,
@@ -21,8 +21,8 @@
           },
           "eficacia_legislativa": {
             "peso": 0.25,
-            "puntaje_banda": 10.0,
-            "puntaje_aplicado": 10.0,
+            "puntaje_banda": 68.0,
+            "puntaje_aplicado": 68.0,
             "valor": 4.3,
             "peso_efectivo": 0.075
           },
@@ -201,8 +201,8 @@
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 10.0,
-      "puntaje_banda": 10.0,
+      "puntaje_itcp": 68.0,
+      "puntaje_banda": 68.0,
       "peso_efectivo": 0.075
     },
     "veto_quorum": {

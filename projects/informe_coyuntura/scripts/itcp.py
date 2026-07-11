@@ -86,8 +86,29 @@ BANDAS_ITCP = {
     "ratio_dnu": [                        # DNUs / leyes, menor = mejor
         (-INF, 0.3, 100), (0.3, 0.7, 85), (0.7, 1.2, 65), (1.2, 2.0, 40), (2.0, INF, 10),
     ],
-    "eficacia_legislativa": [             # % proyectos PE aprobados, mayor = mejor
-        (55.0, INF, 100), (35.0, 55.0, 85), (15.0, 35.0, 65), (5.0, 15.0, 40), (-INF, 5.0, 10),
+    "eficacia_legislativa": [
+        # RECALIBRADO 2026-07-11 (ADR-0050) con los 32 puntos mensuales
+        # reales de output/series/politica.csv (dic-2023→jul-2026): las
+        # anclas anteriores (5/15/35/55, heredadas de la fórmula ad hoc
+        # pre-paramétrica) describían la tasa de aprobación de un congreso
+        # de manual, no esta métrica: el numerador exige que la SANCIÓN
+        # caiga dentro de la MISMA ventana de 365 días en que se publicó el
+        # proyecto, y un proyecto enviado hace pocos meses casi nunca llegó
+        # a sancionarse todavía — el techo alcanzable está estructuralmente
+        # deprimido (misma patología, en espejo, que comisiones_caidas,
+        # ADR-0045). Rango real observado 0–8,7 (media 2,4): los 32 meses
+        # caían en las dos bandas más bajas — cero discriminación en el
+        # 7,5% del índice. Anclas nuevas 1/3/5/7 (números redondos,
+        # chequeadas contra los 32 puntos: 4/2/8/0/18 por banda). El hueco
+        # en la banda 40 (1–3%) es estructural y queda como margen: con
+        # ~23-25 proyectos PE/año de denominador, un solo aprobado ya da
+        # ~4% — solo un PE que duplique el envío de proyectos puede caer
+        # ahí (mismo criterio que el hueco de cohesion_bloque_senado,
+        # ADR-0039). Los 18 meses en 0,0 exacto van todos al piso: cero
+        # sanciones en un año es señal real e indistinguible entre sí por
+        # diseño (caveat ADR-0042). mayor = mejor, tramos extremos
+        # abiertos (ADR-0021).
+        (7.0, INF, 100), (5.0, 7.0, 85), (3.0, 5.0, 65), (1.0, 3.0, 40), (-INF, 1.0, 10),
     ],
     "veto_quorum": [                      # % sesiones fracasadas, menor = mejor
         (-INF, 5.0, 100), (5.0, 10.0, 85), (10.0, 20.0, 65), (20.0, 30.0, 40), (30.0, INF, 10),
