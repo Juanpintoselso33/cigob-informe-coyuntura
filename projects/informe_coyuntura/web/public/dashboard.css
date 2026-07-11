@@ -84,6 +84,12 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     letter-spacing: -.01em; text-decoration: none;
 }
 .cg-nav-producto:hover { color: var(--teal); text-decoration: none; }
+/* Mes de la edición junto al nombre del producto (entrega mensual) */
+.cg-nav-mes {
+    margin-left: 10px; padding-left: 10px; border-left: 1px solid var(--bd);
+    font-weight: 600; font-size: 12px; color: var(--muted); letter-spacing: 0;
+}
+.cg-nav-producto:hover .cg-nav-mes { color: var(--teal); }
 @media (max-width: 760px) { .cg-nav-producto { display: none; } }
 /* Logo CiGob — imagen oficial (256×77 RGBA, dos círculos azul+verde
    + texto blanco "CiGob"). El texto es blanco así que necesita fondo
@@ -329,6 +335,24 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-verdict.verde    .cg-verdict-dot { background: var(--verde); }
 .cg-verdict.amarillo .cg-verdict-dot { background: var(--amarillo); }
 .cg-verdict.rojo     .cg-verdict-dot { background: var(--rojo); }
+
+/* Genoma del cinturón: un tramo por dimensión del índice (ancho = peso,
+   color = semáforo de la fórmula de tensión). Tocar un tramo abre el modal
+   de dimensión (mismo wiring cg-dim--clickable que la página del cinturón). */
+.cg-genoma { display: flex; gap: 3px; margin: 12px 0 3px; }
+.cg-genoma-seg {
+    flex-basis: 0; min-width: 8px; height: 9px;
+    border: none; padding: 0; border-radius: 3px;
+    cursor: pointer; opacity: .82;
+    transition: opacity .15s, transform .15s;
+}
+.cg-genoma-seg:hover, .cg-genoma-seg:focus-visible { opacity: 1; transform: scaleY(1.35); }
+.cg-genoma-seg:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.cg-genoma-seg.sem-verde    { background: var(--verde); }
+.cg-genoma-seg.sem-amarillo { background: var(--amarillo); }
+.cg-genoma-seg.sem-rojo     { background: var(--rojo); }
+.cg-genoma-seg.is-critica   { box-shadow: 0 0 0 1.5px var(--rojo); }
+.cg-genoma-cap { font-size: 10px; color: var(--muted); margin-bottom: 6px; letter-spacing: .01em; }
 
 .cg-ind-list {
     list-style: none; margin: 0; padding: 0;

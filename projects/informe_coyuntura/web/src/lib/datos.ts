@@ -141,6 +141,24 @@ export const CINTURONES = [
   { key: "espiritu_epoca", slug: "espiritu", nombre: "Espíritu de época", sub: "El humor social" },
 ] as const;
 
+// Edición mensual: "2026-07" → "Julio 2026" (la entrega del informe es
+// mensual; el día de la corrida queda solo como dato de frescura).
+const MESES_LARGO = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+export function mesLegible(period: string): string {
+  const m = /^(\d{4})-(\d{2})/.exec(period);
+  return m ? `${MESES_LARGO[+m[2] - 1]} ${m[1]}` : period;
+}
+
+// Semáforo de una dimensión, derivado de la fórmula de tensión publicada de
+// cada índice — no es un umbral nuevo: bandas: tensión = (100−p)/10 → verde
+// tensión ≤4 (p≥60), rojo >6 (p<40); base-100 (ITVC): tensión = 5−(p−100)×0,2
+// → verde p≥95, rojo p<90.
+export function semaforoDimension(puntaje: number, base100: boolean): "verde" | "amarillo" | "rojo" {
+  if (base100) return puntaje >= 95 ? "verde" : puntaje >= 90 ? "amarillo" : "rojo";
+  return puntaje >= 60 ? "verde" : puntaje >= 40 ? "amarillo" : "rojo";
+}
+
 // Semáforo del cinturón a partir de su estado
 export function verdictDeCinturon(estado: string): "verde" | "amarillo" | "rojo" {
   if (estado === "estable") return "verde";

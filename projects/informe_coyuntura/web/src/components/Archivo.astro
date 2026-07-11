@@ -1,16 +1,16 @@
 ---
-import { informe, cinturonesRojos } from "../lib/datos.ts";
+import { informe, cinturonesRojos, mesLegible } from "../lib/datos.ts";
 const rojos = cinturonesRojos(informe);
 ---
 <section class="cg-section" id="archivo">
   <div class="cg-section-head">
     <p class="cg-eyebrow">Informes anteriores</p>
     <h2 class="cg-h2">Archivo</h2>
-    <p class="cg-h2-sub">El observatorio arranca en {informe.period}. La hemeroteca crece mes a mes.</p>
+    <p class="cg-h2-sub">El observatorio arranca en {mesLegible(informe.period)}. La hemeroteca crece mes a mes.</p>
   </div>
   <div class="cg-archive">
     <article class="cg-archive-card current">
-      <div class="cg-archive-period">{informe.period}</div>
+      <div class="cg-archive-period">{mesLegible(informe.period)}</div>
       <div class="cg-archive-bluf">Resumen editorial pendiente. Score global {informe.score_global}/10, riesgo dominante {informe.barbarismo_activo}.</div>
       <div class="cg-archive-foot">
         <span class:list={["cg-archive-score", `rojos-${rojos}`]}>{rojos} en rojo</span>

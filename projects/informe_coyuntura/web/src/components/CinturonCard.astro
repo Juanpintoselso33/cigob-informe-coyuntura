@@ -1,5 +1,5 @@
 ---
-import { verdictDeCinturon, indicadoresOrdenados, cap } from "../lib/datos.ts";
+import { verdictDeCinturon, indicadoresOrdenados, cap, indiceDe, semaforoDimension } from "../lib/datos.ts";
 import IndicadorRow from "./IndicadorRow.astro";
 const { slug, nombre, sub, cinturon } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -10,6 +10,14 @@ const MAX = 6;
 const visibles = filas.slice(0, MAX);
 const ocultos = filas.length - visibles.length;
 const href = `${base}/${slug}/`;
+// Genoma del cinturón: un tramo por dimensión del índice (ancho = peso,
+// color = semáforo derivado de la fórmula de tensión publicada). Cada tramo
+// abre el modal de dimensión que ya usa la página del cinturón (mismo
+// wiring: cg-dim--clickable + data-dimension/data-cinturon). Espíritu de
+// época no tiene paramétrica → sin genoma.
+const indice = indiceDe(cinturon);
+const dims: [string, any][] = indice ? Object.entries(indice.data.dimensiones) : [];
+const pesoPct = (d: any) => Math.round((d.peso_efectivo ?? d.peso) * 100);
 ---
 <article class:list={["cg-cint", `cg-cint--${slug}`]}>
   <div class="cg-cint-head">
@@ -21,6 +29,22 @@ const href = `${base}/${slug}/`;
       <span class="cg-verdict-dot"></span>{verdictLabel}
     </span>
   </div>
+  {dims.length > 0 && (
+    <>
+      <div class="cg-genoma" role="group" aria-label={`Dimensiones del ${indice.sigla}: el ancho de cada tramo es su peso en el índice`}>
+        {dims.map(([dkey, dim]) => (
+          <button
+            type="button"
+            class:list={["cg-genoma-seg", `sem-${semaforoDimension(dim.puntaje, !!indice.base100)}`, "cg-dim--clickable", { "is-critica": dim.critica }]}
+            data-dimension={dkey} data-cinturon={slug}
+            style={`flex-grow:${pesoPct(dim)};`}
+            title={`${dim.nombre} · ${dim.puntaje}${indice.base100 ? "" : "/100"} · pesa ${pesoPct(dim)}%`}
+            aria-label={`${dim.nombre}: puntaje ${dim.puntaje}, pesa ${pesoPct(dim)}% del índice — tocá para ver qué mide`}></button>
+        ))}
+      </div>
+      <div class="cg-genoma-cap">{dims.length} dimensiones · ancho = peso · tocá un tramo para ver qué mide</div>
+    </>
+  )}
   <ul class="cg-ind-list">
     {visibles.map(({ key, ind, bucket }) => <IndicadorRow ikey={key} ind={ind} bucket={bucket} slug={slug} />)}
   </ul>

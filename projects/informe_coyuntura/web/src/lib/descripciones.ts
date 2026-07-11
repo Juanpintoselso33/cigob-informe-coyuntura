@@ -356,5 +356,5 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántos proyectos quedan varados en comisión y cuántas derrotas consumadas sufre el Ejecutivo en el recinto (vetos insistidos y decretos rechazados).",
   alianzas_territoriales: "El sostén federal del gobierno: las transferencias a las provincias (armonía fiscal), el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI.",
   cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza, medida en un único indicador bicameral (Diputados 65%, Senado 35%).",
-  conflicto_social: "La conflictividad social que el gobierno tiene que administrar, medida por el índice de movilización de CEPA.",
+  conflicto_social: "La conflictividad social que el gobierno tiene que administrar: los eventos de protesta y disturbios de todo el país registrados por ACLED, acumulados en 12 meses y comparados contra 2023, la línea de base del mandato.",
 };

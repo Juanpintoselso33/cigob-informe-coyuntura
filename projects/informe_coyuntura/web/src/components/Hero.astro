@@ -1,6 +1,8 @@
 ---
-import { informe, cinturonesRojos, cap } from "../lib/datos.ts";
+import { informe, cinturonesRojos, cap, mesLegible } from "../lib/datos.ts";
 const rojos = cinturonesRojos(informe);
+const f = informe.generated_at;
+const datosAl = `${f.slice(8, 10)}/${f.slice(5, 7)}/${f.slice(0, 4)}`;
 ---
 <header class="cg-hero" id="top">
   <div class="cg-hero-inner">
@@ -15,7 +17,7 @@ const rojos = cinturonesRojos(informe);
       se recalculan en tiempo real.
     </p>
     <div class="cg-hero-stats">
-      <div class="cg-hero-stat"><div class="cg-hero-stat-num">{informe.period}</div><div class="cg-hero-stat-lbl">Período</div></div>
+      <div class="cg-hero-stat"><div class="cg-hero-stat-num" style="font-size:20px;">{mesLegible(informe.period)}</div><div class="cg-hero-stat-lbl">Edición</div></div>
       <div class="cg-hero-stat"><div class="cg-hero-stat-num">{rojos}</div><div class="cg-hero-stat-lbl">Cinturones en rojo</div></div>
       <div class="cg-hero-stat"><div class="cg-hero-stat-num">{informe.score_global}</div><div class="cg-hero-stat-lbl">Score global /10</div></div>
       <div class="cg-hero-stat"><div class="cg-hero-stat-num" style="font-size:20px;">{cap(informe.barbarismo_activo)}</div><div class="cg-hero-stat-lbl">Riesgo dominante</div></div>
@@ -25,7 +27,7 @@ const rojos = cinturonesRojos(informe);
         <span class="cg-status-dot"></span>
         <span class="cg-status-text">{informe.alerta_multicinturon ? "Alerta sistémica" : "Estable"}</span>
       </span>
-      <span class="cg-hero-since">Datos al {informe.generated_at.slice(0,10)}</span>
+      <span class="cg-hero-since">Edición mensual · datos actualizados al {datosAl}</span>
     </p>
   </div>
 </header>
