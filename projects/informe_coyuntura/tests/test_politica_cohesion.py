@@ -306,6 +306,18 @@ def test_diputados_acta_id_maximo_avanza_hasta_el_primer_hueco(monkeypatch):
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 7
 
 
+def test_diputados_acta_id_maximo_fallo_transitorio_devuelve_none(monkeypatch):
+    # Si un probeo falla de forma transitoria no se puede saber dónde termina
+    # la numeración: un máximo subestimado haría que el walk anual cachee el
+    # año sin las actas de arriba (hallazgo de re-revisión). El fallo debe
+    # propagarse como None (sin id_maximo esta corrida), no tratarse como 404.
+    existentes = {5, 6, 7}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: politica._ACTA_FALLO if id == 7
+                         else (b"x" if id in existentes else None))
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) is None
+
+
 def _mock_acta_diputados(monkeypatch, fechas: dict, filas_lla_por_id: dict | None = None):
     """Helper: simula el endpoint PDF para los ids en `fechas`
     ({id: datetime}), con _parsear_acta_diputados_pdf devolviendo

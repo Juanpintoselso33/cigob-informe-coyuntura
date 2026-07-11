@@ -59,6 +59,14 @@ G3_EXCEPCIONES = {
 # tolerancia relativa por indicador (default 1% o 0,11 absoluto, redondeos)
 G3_TOLERANCIA_REL = {"cepo_mulc": 0.10}   # brecha cambiaria viva: deriva intradiaria
 
+# G3b: tope de rezago propio de la SERIE cuando difiere del de la card. Las
+# series de eventos esporádicos pueden pasar meses sin punto nuevo aunque el
+# colector siga vivo — el default (MAX_DIAS de la card) les daría falso
+# positivo.
+G3B_MAX_DIAS = {
+    "rigi_inversiones": 430,   # solo suma un punto cuando se aprueba un proyecto
+}
+
 # ── G6: patrones de jerga interna prohibidos en texto público ──
 G6_PATRONES = [
     (re.compile(r"ADR-\d"), "referencia a ADR"),
@@ -126,19 +134,26 @@ def main() -> int:
             # su card y su serie difieren por semántica/anclaje (motivo
             # documentado arriba), pero la serie igual tiene que seguir viva.
             # Sin esto, una serie que dejara de actualizarse pasaría el gate
-            # para siempre (G2 solo mira la fecha_dato de la card).
-            if s and ik in G3_EXCEPCIONES:
-                f_ult = _parse_fecha(s[-1].get("fecha"))
-                if f_ult is None:
-                    fallas.append(f"G3b {ck}/{ik}: última fecha de la serie no parseable "
-                                  f"({s[-1].get('fecha')})")
+            # para siempre (G2 solo mira la fecha_dato de la card). Corre
+            # también con la serie AUSENTE o vacía: una excepción existe
+            # justamente porque hay una serie con otra semántica — si la
+            # serie desapareció, eso es una regresión, no un caso benigno.
+            if ik in G3_EXCEPCIONES:
+                if not s:
+                    fallas.append(f"G3b {ck}/{ik}: exento de reconciliación pero SIN serie "
+                                  f"publicada — la excepción presupone una serie viva")
                 else:
-                    rezago_serie = (hoy - f_ult).days
-                    tope = MAX_DIAS.get(ik, MAX_DIAS_DEFAULT)
-                    if rezago_serie > tope:
-                        fallas.append(f"G3b {ck}/{ik}: serie exenta de reconciliación con "
-                                      f"último punto de hace {rezago_serie}d > tope {tope}d "
-                                      f"({s[-1].get('fecha')}) — la serie dejó de actualizarse")
+                    f_ult = _parse_fecha(s[-1].get("fecha"))
+                    if f_ult is None:
+                        fallas.append(f"G3b {ck}/{ik}: última fecha de la serie no parseable "
+                                      f"({s[-1].get('fecha')})")
+                    else:
+                        rezago_serie = (hoy - f_ult).days
+                        tope = G3B_MAX_DIAS.get(ik, MAX_DIAS.get(ik, MAX_DIAS_DEFAULT))
+                        if rezago_serie > tope:
+                            fallas.append(f"G3b {ck}/{ik}: serie exenta de reconciliación con "
+                                          f"último punto de hace {rezago_serie}d > tope {tope}d "
+                                          f"({s[-1].get('fecha')}) — la serie dejó de actualizarse")
         # G2 — presupuesto de carry-forward del cinturón
         if indicadores and desactualizados / len(indicadores) > CARRY_FORWARD_MAX:
             fallas.append(f"G2 {ck}: {desactualizados}/{len(indicadores)} indicadores "

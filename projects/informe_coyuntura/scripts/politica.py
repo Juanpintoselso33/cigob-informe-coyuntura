@@ -1271,25 +1271,32 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
     `desde_id` (semilla conocida: 5959 = 24-jun-2026, verificado en vivo
     2026-07-09). Si la semilla ya no existe (quedó vieja), retrocede de a
     50 hasta encontrar un id válido; desde ahí avanza de a uno hasta el
-    primer 404. None solo si ni retrocediendo se encuentra ningún id válido
-    (fallo real del endpoint, no "sin sesiones nuevas")."""
-    def _hay_acta(id_acta: int) -> bool:
-        # Para el probeo de existencia, un fallo transitorio cuenta como "no
-        # está": conservador, la próxima corrida recupera (mismo criterio que
-        # antes de distinguir 404 de fallo).
-        return isinstance(_diputados_acta_pdf(session, id_acta), bytes)
+    primer 404. None si ni retrocediendo se encuentra ningún id válido, o si
+    CUALQUIER probeo falla de forma transitoria (_ACTA_FALLO): con un fallo
+    en el medio no se puede saber dónde termina la numeración, y un máximo
+    subestimado haría que el walk anual nunca visite las actas de arriba y
+    cachee el año como completo sin ellas (hallazgo de re-revisión)."""
     actual = desde_id
     intentos = 0
-    while actual > 0 and not _hay_acta(actual):
+    while actual > 0:
+        contenido = _diputados_acta_pdf(session, actual)
+        if contenido is _ACTA_FALLO:
+            return None
+        if isinstance(contenido, bytes):
+            break
         actual -= 50
         intentos += 1
         if intentos > 200:   # ~10000 ids de margen -- corta un loop patológico
             return None
     if actual <= 0:
         return None
-    while _hay_acta(actual + 1):
+    while True:
+        contenido = _diputados_acta_pdf(session, actual + 1)
+        if contenido is _ACTA_FALLO:
+            return None
+        if not isinstance(contenido, bytes):
+            return actual
         actual += 1
-    return actual
 
 
 def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
