@@ -30,6 +30,8 @@ const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
   reduccion_estado: -1,
   // vida cotidiana (series que cruzan el cero)
   ipi_manufacturero: 1, mortalidad_pymes: 1, endeudamiento_familiar: -1,
+  // política: % var. vs 2023 — caer (menos conflicto en la calle) es la mejora
+  conflictividad_nacional: -1,
 };
 const VERDE_AREA = "#16A34A";
 const ROJO_AREA = "#DC2626";
