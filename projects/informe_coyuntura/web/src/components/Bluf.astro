@@ -1,5 +1,44 @@
 ---
-import { informe, cap, mesLegible } from "../lib/datos.ts";
+import { informe, cap, mesLegible, CINTURONES, verdictDeCinturon, peorDimension } from "../lib/datos.ts";
+
+// Síntesis AUTOMÁTICA del tablero (sin placeholder editorial en producción):
+// se arma de los mismos datos del snapshot, así nunca queda vieja ni vacía.
+// La lectura editorial firmada del equipo se suma con cada edición mensual;
+// mientras no exista, esta síntesis es honesta sobre su origen (ver nota).
+const coma = (n: number) => String(n).replace(".", ",");
+const estados = CINTURONES.map(m => ({ meta: m, c: informe.cinturones[m.key] }))
+  .filter(x => x.c);
+const porVerdict = (v: string) => estados.filter(x => verdictDeCinturon(x.c.estado) === v);
+const rojos = porVerdict("rojo"), amarillos = porVerdict("amarillo"), verdes = porVerdict("verde");
+const masTenso = [...estados].sort((a, b) => b.c.score - a.c.score)[0];
+const nombres = (xs: typeof estados) => xs.map(x => x.meta.nombre.toLowerCase()).join(", ")
+  .replace(/, ([^,]*)$/, " y $1");
+
+// La dimensión que más tensión aporta en TODO el tablero (comparada en
+// tensión equivalente, para poder cruzar índices de bandas con base-100).
+let foco: { dim: NonNullable<ReturnType<typeof peorDimension>>; meta: (typeof CINTURONES)[number] } | null = null;
+for (const x of estados) {
+  const p = peorDimension(x.c);
+  if (p && (!foco || p.tension > foco.dim.tension)) foco = { dim: p, meta: x.meta };
+}
+
+const frases: string[] = [];
+if (rojos.length > 0) {
+  frases.push(`${cap(nombres(rojos))} ${rojos.length === 1 ? "está" : "están"} en zona crítica`);
+}
+frases.push(`${cap(masTenso.meta.nombre)} es el cinturón más exigido del tablero (tensión ${coma(masTenso.c.score)}/10)`);
+if (amarillos.length > 0 && !amarillos.includes(masTenso)) {
+  frases.push(`${nombres(amarillos)} ${amarillos.length === 1 ? "opera" : "operan"} en tensión`);
+} else if (amarillos.length > 1) {
+  frases.push(`también ${nombres(amarillos.filter(x => x !== masTenso))} en tensión`);
+}
+if (verdes.length > 0) {
+  frases.push(`${nombres(verdes)} se ${verdes.length === 1 ? "mantiene estable" : "mantienen estables"}`);
+}
+const fraseEstados = frases.join("; ") + ".";
+const fraseFoco = foco
+  ? `La mayor presión puntual del mes está en ${foco.dim.nombre.toLowerCase()} (${coma(foco.dim.puntaje)}${foco.dim.base100 ? "" : "/100"}), la dimensión que más tensión aporta al índice de ${foco.meta.nombre.toLowerCase()}.`
+  : "";
 ---
 <section class="cg-section cg-bluf" id="snapshot">
   <p class="cg-eyebrow">La lectura del mes</p>
@@ -9,6 +48,9 @@ import { informe, cap, mesLegible } from "../lib/datos.ts";
     <strong>Riesgo dominante: {cap(informe.barbarismo_activo)}</strong>
   </p>
   <p class="cg-bluf-text">
-    <em style="font-style:normal;color:var(--muted);">[Resumen editorial del mes — pendiente de redacción.]</em>
+    {fraseEstados} {fraseFoco} El riesgo dominante del período es el barbarismo
+    {informe.barbarismo_activo}: el desequilibrio hacia el que más se inclina hoy el
+    tablero si las tensiones no se procesan.
   </p>
+  <p class="cg-bluf-nota">Síntesis generada automáticamente a partir del tablero de indicadores. La lectura editorial del equipo acompaña cada edición mensual.</p>
 </section>

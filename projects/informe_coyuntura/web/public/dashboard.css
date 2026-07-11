@@ -353,7 +353,11 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-genoma-seg:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .cg-genoma-seg.sem-verde    { background: var(--verde); }
 .cg-genoma-seg.sem-amarillo { background: var(--amarillo); }
-.cg-genoma-seg.sem-rojo     { background: var(--rojo); }
+/* rojo con trama diagonal: señal redundante al color (lectura sin color) */
+.cg-genoma-seg.sem-rojo     {
+    background: repeating-linear-gradient(45deg,
+        var(--rojo), var(--rojo) 4px, #B91C1C 4px, #B91C1C 7px);
+}
 .cg-genoma-seg.is-critica   { box-shadow: 0 0 0 1.5px var(--rojo); }
 .cg-genoma-tip {
     position: absolute; left: 0; right: 0; bottom: calc(100% + 8px);
@@ -371,6 +375,11 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-genoma-tip-cta  { display: block; margin-top: 5px; font-size: 9.5px; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: .05em; }
 .cg-genoma-cap { font-size: 10px; color: var(--muted); margin-bottom: 6px; letter-spacing: .01em; }
 .cg-genoma-cap--solo { margin: 12px 0 3px; }
+/* Notas de origen de contenido generado (bluf y watchlist) */
+.cg-bluf-nota, .cg-rec-nota {
+    font-size: 11px; color: var(--muted); font-style: italic;
+    margin-top: 10px;
+}
 
 .cg-ind-list {
     list-style: none; margin: 0; padding: 0;

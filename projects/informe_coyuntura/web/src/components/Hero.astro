@@ -1,8 +1,12 @@
 ---
-import { informe, cinturonesRojos, cap, mesLegible } from "../lib/datos.ts";
+import { informe, cinturonesRojos, cap, mesLegible, indicadoresRezagados } from "../lib/datos.ts";
 const rojos = cinturonesRojos(informe);
 const f = informe.generated_at;
 const datosAl = `${f.slice(8, 10)}/${f.slice(5, 7)}/${f.slice(0, 4)}`;
+// Frescura honesta (revisión adversarial 2026-07-11): generated_at es la
+// fecha del ARMADO del snapshot, no de todos los datos — cada fuente tiene
+// su propio rezago (visible por indicador) y los desactualizados se cuentan.
+const rezagados = indicadoresRezagados(informe);
 ---
 <header class="cg-hero" id="top">
   <div class="cg-hero-inner">
@@ -27,7 +31,7 @@ const datosAl = `${f.slice(8, 10)}/${f.slice(5, 7)}/${f.slice(0, 4)}`;
         <span class="cg-status-dot"></span>
         <span class="cg-status-text">{informe.alerta_multicinturon ? "Alerta sistémica" : "Estable"}</span>
       </span>
-      <span class="cg-hero-since">Edición mensual · datos actualizados al {datosAl}</span>
+      <span class="cg-hero-since">Edición mensual · snapshot generado el {datosAl} — cada indicador muestra la fecha de su propio dato{rezagados > 0 ? ` · ${rezagados} con rezago declarado` : ""}</span>
     </p>
   </div>
 </header>

@@ -159,6 +159,40 @@ export function semaforoDimension(puntaje: number, base100: boolean): "verde" | 
   return puntaje >= 60 ? "verde" : puntaje >= 40 ? "amarillo" : "rojo";
 }
 
+// Peor dimensión (la que más tensión aporta) del índice de un cinturón.
+// La comparación entre índices de escala distinta (bandas 0-100 vs ITVC
+// base-100) se hace en TENSIÓN equivalente, con las fórmulas publicadas.
+export function tensionDeDimension(puntaje: number, base100: boolean): number {
+  return base100 ? 5 - (puntaje - 100) * 0.2 : (100 - puntaje) / 10;
+}
+export interface PeorDim {
+  key: string; nombre: string; puntaje: number; peso: number;
+  base100: boolean; critica: boolean; tension: number;
+}
+export function peorDimension(c: Cinturon): PeorDim | null {
+  const idx = indiceDe(c);
+  if (!idx) return null;
+  let peor: PeorDim | null = null;
+  for (const [key, d] of Object.entries(idx.data.dimensiones) as [string, any][]) {
+    const t = tensionDeDimension(d.puntaje, !!idx.base100);
+    if (!peor || t > peor.tension) {
+      peor = { key, nombre: d.nombre, puntaje: d.puntaje,
+               peso: d.peso_efectivo ?? d.peso, base100: !!idx.base100,
+               critica: !!d.critica, tension: t };
+    }
+  }
+  return peor;
+}
+
+// Indicadores publicados con rezago declarado (desactualizado=true) en todo
+// el informe — insumo de la línea de frescura honesta del hero.
+export function indicadoresRezagados(inf: Informe): number {
+  let n = 0;
+  for (const c of Object.values(inf.cinturones))
+    for (const i of Object.values(c.indicadores)) if (i.desactualizado) n++;
+  return n;
+}
+
 // Semáforo del cinturón a partir de su estado
 export function verdictDeCinturon(estado: string): "verde" | "amarillo" | "rojo" {
   if (estado === "estable") return "verde";

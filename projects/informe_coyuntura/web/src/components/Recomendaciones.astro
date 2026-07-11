@@ -1,9 +1,51 @@
+---
+import { informe, CINTURONES, peorDimension, indicadoresRezagados } from "../lib/datos.ts";
+
+// "Qué vigilar este mes": watchlist GENERADA del tablero (sin placeholder
+// editorial en producción, hallazgo de la revisión adversarial 2026-07-11).
+// No son recomendaciones prescriptivas — eso requiere firma editorial y se
+// suma con cada edición —: son las dimensiones que más tensión aportan hoy,
+// comparadas en tensión equivalente entre índices (bandas vs base-100).
+const coma = (n: number) => String(n).replace(".", ",");
+const candidatas = CINTURONES
+  .map(m => ({ meta: m, c: informe.cinturones[m.key] }))
+  .filter(x => x.c)
+  .map(x => ({ meta: x.meta, dim: peorDimension(x.c) }))
+  .filter((x): x is { meta: (typeof CINTURONES)[number]; dim: NonNullable<ReturnType<typeof peorDimension>> } => !!x.dim)
+  .sort((a, b) => b.dim.tension - a.dim.tension)
+  .slice(0, 3);
+const pillDe = (t: number) => t > 6 ? ["cg-rec-pill--critica", "tensión alta"] :
+                              t > 4 ? ["cg-rec-pill--alta", "tensión media"] :
+                                      ["cg-rec-pill--media", "en seguimiento"];
+const rezagados = indicadoresRezagados(informe);
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
 <div class="cg-panel">
-  <h3>Recomendaciones</h3>
+  <h3>Qué vigilar este mes</h3>
   <ol class="cg-rec-list">
-    <li class="cg-rec">
-      <p class="cg-rec-title">[Recomendaciones del mes — pendientes de redacción.]</p>
-      <div class="cg-rec-meta"><span class="cg-rec-pill cg-rec-pill--media">placeholder</span></div>
-    </li>
+    {candidatas.map(({ meta, dim }) => {
+      const [pill, pillTxt] = pillDe(dim.tension);
+      return (
+        <li class="cg-rec">
+          <p class="cg-rec-title">
+            <a href={`${base}/${meta.slug}/`}>{dim.nombre}</a> — {meta.nombre.toLowerCase()}
+          </p>
+          <div class="cg-rec-meta">
+            <span class:list={["cg-rec-pill", pill]}>{pillTxt}</span>
+            <span>{coma(dim.puntaje)}{dim.base100 ? "" : "/100"} · pesa {Math.round(dim.peso * 100)}% de su índice{dim.critica ? " · dimensión crítica" : ""}</span>
+          </div>
+        </li>
+      );
+    })}
+    {rezagados > 0 && (
+      <li class="cg-rec">
+        <p class="cg-rec-title">Frescura del tablero</p>
+        <div class="cg-rec-meta">
+          <span class="cg-rec-pill cg-rec-pill--baja">rezago declarado</span>
+          <span>{rezagados} {rezagados === 1 ? "indicador publica" : "indicadores publican"} con el último dato disponible de su fuente</span>
+        </div>
+      </li>
+    )}
   </ol>
+  <p class="cg-rec-nota">Generado del tablero: la dimensión que más tensión aporta en cada cinturón, ordenadas de mayor a menor. Las recomendaciones editoriales acompañan cada edición mensual.</p>
 </div>

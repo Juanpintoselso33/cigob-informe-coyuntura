@@ -7,7 +7,6 @@ import CinturonCard from "../components/CinturonCard.astro";
 import Evolucion from "../components/Evolucion.astro";
 import TensionPanel from "../components/TensionPanel.astro";
 import Recomendaciones from "../components/Recomendaciones.astro";
-import Archivo from "../components/Archivo.astro";
 import Metodologia from "../components/Metodologia.astro";
 import Footer from "../components/Footer.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
@@ -38,7 +37,10 @@ import { informe, CINTURONES } from "../lib/datos.ts";
         <Recomendaciones />
       </div>
     </section>
-    <Archivo />
+    {/* Archivo retirado hasta que exista al menos una edición anterior
+        (revisión adversarial 2026-07-11: mostraba solo la edición vigente
+        con un placeholder — hemeroteca sin hemeroteca). Reincorporar con
+        la edición de agosto 2026. */}
     <Metodologia />
   </main>
   <Footer />

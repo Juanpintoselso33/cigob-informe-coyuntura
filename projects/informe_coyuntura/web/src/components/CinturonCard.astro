@@ -1,5 +1,5 @@
 ---
-import { verdictDeCinturon, indicadoresOrdenados, cap, indiceDe, semaforoDimension } from "../lib/datos.ts";
+import { verdictDeCinturon, indicadoresOrdenados, cap, indiceDe, semaforoDimension, peorDimension } from "../lib/datos.ts";
 import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import IndicadorRow from "./IndicadorRow.astro";
 const { slug, nombre, sub, cinturon } = Astro.props;
@@ -19,6 +19,12 @@ const href = `${base}/${slug}/`;
 const indice = indiceDe(cinturon);
 const dims: [string, any][] = indice ? Object.entries(indice.data.dimensiones) : [];
 const pesoPct = (d: any) => Math.round((d.peso_efectivo ?? d.peso) * 100);
+// La leyenda nombra la dimensión que más tensión aporta (revisión
+// adversarial 2026-07-11: el genoma solo-color no alcanzaba para la
+// lectura rápida — el texto siempre visible responde "qué explica la
+// tensión" sin hover ni modal, y cubre también la lectura sin color).
+const peor = peorDimension(cinturon);
+const comaTxt = (n: number) => String(n).replace(".", ",");
 ---
 <article class:list={["cg-cint", `cg-cint--${slug}`]}>
   <div class="cg-cint-head">
@@ -49,7 +55,7 @@ const pesoPct = (d: any) => Math.round((d.peso_efectivo ?? d.peso) * 100);
           </>
         ))}
       </div>
-      <div class="cg-genoma-cap">{dims.length} dimensiones · ancho = peso · tocá un tramo para ver qué mide</div>
+      <div class="cg-genoma-cap">{dims.length} dimensiones (ancho = peso){peor ? ` · mayor tensión: ${peor.nombre.toLowerCase()} (${comaTxt(peor.puntaje)}${peor.base100 ? "" : "/100"})` : ""} · tocá un tramo</div>
     </>
   )}
   {!indice && (
