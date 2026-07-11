@@ -1282,9 +1282,17 @@ _TOPE_AVANCE_ID = 2000
 # veces por corrida — el máximo no cambia dentro de un mismo proceso, y sin
 # memo el probeo terminal de ~450 requests se pagaría por cada llamada. Solo
 # se memoiza un resultado exitoso (int): un None (fallo transitorio) debe
-# reintentar en la próxima llamada. Corridas distintas del cron son procesos
-# distintos, así que el memo nunca queda viejo entre noches.
+# reintentar en la próxima llamada.
 _ID_MAXIMO_MEMO: dict = {}
+
+# Persistencia del descubrimiento por DÍA: el cron corre politica.py y
+# descargar_series.py como PROCESOS separados en el mismo job, así que el
+# memo de proceso no evita pagar dos veces el probeo terminal (~450 requests
+# ≈ 2-3 min cada uno) — y el job ya roza su timeout (corridas reales de
+# 19m32s/20m2s contra una cota de 20). Solo se persiste un descubrimiento
+# EXITOSO y con fecha: al día siguiente se re-descubre (la numeración
+# avanza), y un None o una exploración parcial nunca se persisten.
+DIPUTADOS_ID_MAXIMO_STORE = Path(__file__).resolve().parents[1] / "data" / "politica" / "id_maximo_diputados.json"
 
 
 def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -> int | None:
@@ -1316,6 +1324,18 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
     subir la semilla estática a mano."""
     if "valor" in _ID_MAXIMO_MEMO:
         return _ID_MAXIMO_MEMO["valor"]
+    hoy_str = datetime.now().strftime("%Y-%m-%d")
+    try:
+        store = json.loads(DIPUTADOS_ID_MAXIMO_STORE.read_text(encoding="utf-8-sig"))
+        if store.get("descubierto") == hoy_str and isinstance(store.get("maximo"), int):
+            # Descubrimiento de HOY hecho por otro proceso de la misma
+            # corrida (o una corrida manual previa del día): se reusa. Las
+            # actas se publican con rezago, así que congelar el máximo por
+            # un día calendario no pierde nada en la práctica.
+            _ID_MAXIMO_MEMO["valor"] = store["maximo"]
+            return store["maximo"]
+    except (OSError, json.JSONDecodeError):
+        pass
     cache = _cargar_cache_cohesion_diputados()
     ultimo_conocido = max((int(k) for k in cache if str(k).isdigit()), default=0)
     arranques = [max(desde_id, ultimo_conocido)]
@@ -1364,6 +1384,13 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
         else:
             huecos_seguidos += 1
     _ID_MAXIMO_MEMO["valor"] = maximo
+    try:
+        DIPUTADOS_ID_MAXIMO_STORE.parent.mkdir(parents=True, exist_ok=True)
+        DIPUTADOS_ID_MAXIMO_STORE.write_text(json.dumps(
+            {"maximo": maximo, "sondeado_hasta": sonda, "descubierto": hoy_str},
+            indent=2), encoding="utf-8")
+    except OSError:
+        pass   # persistencia best-effort: el memo del proceso igual sirve
     return maximo
 
 

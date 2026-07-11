@@ -1,3 +1,4 @@
+import json
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
@@ -16,8 +17,10 @@ def _cache_diputados_aislado(monkeypatch, tmp_path):
     # archivo real antes de que existiera este fixture).
     monkeypatch.setattr(politica, "DIPUTADOS_COHESION_CACHE_PATH", tmp_path / "cohesion_diputados_cache_test.json")
     # el memo por proceso del id máximo también se aísla: sin esto, el
-    # resultado de un test contaminaría al siguiente.
+    # resultado de un test contaminaría al siguiente. Ídem el store por día
+    # (un archivo real fechado hoy secuestraría todos los tests de id_maximo).
     monkeypatch.setattr(politica, "_ID_MAXIMO_MEMO", {})
+    monkeypatch.setattr(politica, "DIPUTADOS_ID_MAXIMO_STORE", tmp_path / "id_maximo_test.json")
 
 
 def test_indice_rice_unanime_afirmativo():
@@ -363,6 +366,43 @@ def test_diputados_acta_id_maximo_memoiza_por_proceso(monkeypatch):
     n_primera = len(llamadas)
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 7
     assert len(llamadas) == n_primera   # segunda llamada: memo, cero probeos
+
+
+def test_diputados_acta_id_maximo_reusa_store_del_dia(monkeypatch):
+    # El cron corre politica.py y descargar_series.py como procesos
+    # SEPARADOS: el memo de proceso no comparte entre ellos, así que un
+    # descubrimiento exitoso se persiste con fecha y el segundo proceso del
+    # día lo reusa sin pagar el probeo terminal (~450 requests).
+    politica.DIPUTADOS_ID_MAXIMO_STORE.write_text(json.dumps(
+        {"maximo": 77, "sondeado_hasta": 527, "descubierto": datetime.now().strftime("%Y-%m-%d")}),
+        encoding="utf-8")
+    llamadas = []
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: llamadas.append(id) or b"x")
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 77
+    assert llamadas == []   # cero probeos: reusó el store del día
+
+
+def test_diputados_acta_id_maximo_store_viejo_se_redescubre(monkeypatch):
+    # Un store de AYER no se reusa (la numeración avanza): se re-descubre y
+    # el resultado nuevo queda persistido con la fecha de hoy.
+    politica.DIPUTADOS_ID_MAXIMO_STORE.write_text(json.dumps(
+        {"maximo": 77, "sondeado_hasta": 527, "descubierto": "2026-07-10"}), encoding="utf-8")
+    existentes = {5, 6}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: b"x" if id in existentes else None)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 6
+    persistido = json.loads(politica.DIPUTADOS_ID_MAXIMO_STORE.read_text(encoding="utf-8"))
+    assert persistido["maximo"] == 6
+    assert persistido["descubierto"] == datetime.now().strftime("%Y-%m-%d")
+
+
+def test_diputados_acta_id_maximo_fallo_no_persiste_store(monkeypatch):
+    # Un descubrimiento fallido (None) no puede quedar persistido: el
+    # siguiente proceso del día debe reintentar, no heredar el fallo.
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: politica._ACTA_FALLO)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) is None
+    assert not politica.DIPUTADOS_ID_MAXIMO_STORE.exists()
 
 
 def test_diputados_acta_id_maximo_fallo_no_se_memoiza(monkeypatch):

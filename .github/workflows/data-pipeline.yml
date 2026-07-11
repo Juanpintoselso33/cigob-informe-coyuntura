@@ -23,7 +23,10 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 20   # cota dura: pytrends/scrapers pueden colgar en rate-limit
+    timeout-minutes: 30   # cota dura: pytrends/scrapers pueden colgar en rate-limit.
+                          # 20 quedó al ras (corridas reales de 19m32s/20m2s) y el
+                          # probeo terminal de id_maximo de Diputados (margen de
+                          # huecos 450, una vez por día vía store) suma ~2-3 min.
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -146,6 +149,7 @@ jobs:
                   projects/informe_coyuntura/data/politica/cohesion_bloque_senado_actas.json \
                   projects/informe_coyuntura/data/politica/cohesion_bloque_diputados_actas.json \
                   projects/informe_coyuntura/data/politica/cohesion_bloque_diputados_actas_cache.json \
+                  projects/informe_coyuntura/data/politica/id_maximo_diputados.json \
                   projects/informe_coyuntura/data/politica/gabinete_salidas.json \
                   projects/informe_coyuntura/data/politica/gabinete_decretos_cache.json
           if git diff --staged --quiet; then
