@@ -348,6 +348,19 @@ def test_diputados_acta_id_maximo_arranca_del_maximo_cacheado(monkeypatch):
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 101
 
 
+def test_diputados_acta_id_maximo_cache_corrupto_cae_a_la_semilla(monkeypatch):
+    # Una entrada corrupta/manual del caché con un id inverosímilmente alto
+    # NO puede dejar al colector muerto para siempre: cuando el retroceso
+    # desde el candidato cacheado agota sus intentos sin tocar el rango real,
+    # se reintenta una vez desde la semilla estática.
+    monkeypatch.setattr(politica, "_cargar_cache_cohesion_diputados",
+                         lambda: {"999999": {"fecha": "2026-06-24", "rice": 90.0}})
+    existentes = {10, 11}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: b"x" if id in existentes else None)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=60) == 11
+
+
 def test_diputados_acta_id_maximo_fallo_transitorio_devuelve_none(monkeypatch):
     # Si un probeo falla de forma transitoria no se puede saber dónde termina
     # la numeración: un máximo subestimado haría que el walk anual cachee el

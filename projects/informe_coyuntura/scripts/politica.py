@@ -1299,18 +1299,31 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
     (hallazgo de cuarta pasada de revisión)."""
     cache = _cargar_cache_cohesion_diputados()
     ultimo_conocido = max((int(k) for k in cache if str(k).isdigit()), default=0)
-    actual = max(desde_id, ultimo_conocido)
-    intentos = 0
-    while actual > 0:
-        contenido = _diputados_acta_pdf(session, actual)
-        if contenido is _ACTA_FALLO:
-            return None
-        if isinstance(contenido, bytes):
+    arranques = [max(desde_id, ultimo_conocido)]
+    if arranques[0] > desde_id:
+        # Respaldo: el máximo cacheado no se valida contra nada, así que una
+        # entrada corrupta/manual con un id inverosímilmente alto agotaría el
+        # retroceso sin tocar el rango real. En ese caso se reintenta UNA vez
+        # desde la semilla estática, en vez de devolver None para siempre
+        # (el caché persistente impediría la recuperación automática).
+        arranques.append(desde_id)
+    actual = 0
+    for arranque in arranques:
+        actual = arranque
+        intentos = 0
+        while actual > 0:
+            contenido = _diputados_acta_pdf(session, actual)
+            if contenido is _ACTA_FALLO:
+                return None
+            if isinstance(contenido, bytes):
+                break
+            actual -= 50
+            intentos += 1
+            if intentos > 200:   # ~10000 ids de margen -- corta un loop patológico
+                actual = 0
+                break
+        if actual > 0:
             break
-        actual -= 50
-        intentos += 1
-        if intentos > 200:   # ~10000 ids de margen -- corta un loop patológico
-            return None
     if actual <= 0:
         return None
 
