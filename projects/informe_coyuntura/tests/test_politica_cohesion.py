@@ -306,6 +306,32 @@ def test_diputados_acta_id_maximo_avanza_hasta_el_primer_hueco(monkeypatch):
     assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 7
 
 
+def test_diputados_acta_id_maximo_tolera_huecos_de_numeracion(monkeypatch):
+    # La numeración real de actas tiene huecos (verificado: 101 en el caché,
+    # el más ancho de 15 ids) -- un acta nueva publicada DESPUÉS de un hueco
+    # tiene que descubrirse igual, no quedar invisible tras el primer 404.
+    existentes = {5, 6, 9}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: b"x" if id in existentes else None)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) == 9
+
+
+def test_diputados_acta_id_maximo_retrocede_y_encuentra(monkeypatch):
+    # Retroceso EXITOSO: la semilla 60 no existe, retrocede de a 50 hasta 10
+    # (válido) y desde ahí avanza hasta el máximo real (11).
+    existentes = {10, 11}
+    monkeypatch.setattr(politica, "_diputados_acta_pdf",
+                         lambda s, id: b"x" if id in existentes else None)
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=60) == 11
+
+
+def test_diputados_acta_id_maximo_endpoint_patologico_devuelve_none(monkeypatch):
+    # Si el endpoint respondiera 200 a cualquier id, el avance no puede ser
+    # infinito: corta en el tope y devuelve None (no un máximo inventado).
+    monkeypatch.setattr(politica, "_diputados_acta_pdf", lambda s, id: b"x")
+    assert politica._diputados_acta_id_maximo(MagicMock(), desde_id=5) is None
+
+
 def test_diputados_acta_id_maximo_fallo_transitorio_devuelve_none(monkeypatch):
     # Si un probeo falla de forma transitoria no se puede saber dónde termina
     # la numeración: un máximo subestimado haría que el walk anual cachee el

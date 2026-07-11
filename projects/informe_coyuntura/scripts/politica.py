@@ -1266,16 +1266,29 @@ def _acta_diputados_cacheada(session: requests.Session, id_acta: int, cache: dic
     return {"fecha": fecha, "rice": rice}
 
 
+# El avance de _diputados_acta_id_maximo tolera huecos de numeración: la
+# numeración real de actas NO es contigua (101 huecos internos en el caché
+# 4694..5959, el más ancho de 15 ids: 5902→5918, verificado 2026-07-11), así
+# que "primer 404 = final" perdía toda acta nueva publicada después de un
+# hueco. El margen dobla holgadamente el hueco máximo observado.
+_MARGEN_HUECOS_ID = 30
+_TOPE_AVANCE_ID = 1000
+
+
 def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -> int | None:
     """Encuentra el id de acta más reciente disponible, caminando desde
     `desde_id` (semilla conocida: 5959 = 24-jun-2026, verificado en vivo
     2026-07-09). Si la semilla ya no existe (quedó vieja), retrocede de a
-    50 hasta encontrar un id válido; desde ahí avanza de a uno hasta el
-    primer 404. None si ni retrocediendo se encuentra ningún id válido, o si
-    CUALQUIER probeo falla de forma transitoria (_ACTA_FALLO): con un fallo
-    en el medio no se puede saber dónde termina la numeración, y un máximo
-    subestimado haría que el walk anual nunca visite las actas de arriba y
-    cachee el año como completo sin ellas (hallazgo de re-revisión)."""
+    50 hasta encontrar un id válido; desde ahí avanza de a uno tolerando
+    hasta _MARGEN_HUECOS_ID ids consecutivos sin acta (la numeración real
+    tiene huecos, ver arriba) antes de dar por encontrado el máximo.
+
+    None si ni retrocediendo se encuentra un id válido, si CUALQUIER probeo
+    falla de forma transitoria (_ACTA_FALLO: con un fallo en el medio no se
+    puede saber dónde termina la numeración, y un máximo subestimado haría
+    que el walk anual cachee un año sin sus actas de arriba), o si el avance
+    supera _TOPE_AVANCE_ID ids nuevos (endpoint patológico que responde 200
+    a cualquier id)."""
     actual = desde_id
     intentos = 0
     while actual > 0:
@@ -1290,13 +1303,25 @@ def _diputados_acta_id_maximo(session: requests.Session, desde_id: int = 5959) -
             return None
     if actual <= 0:
         return None
-    while True:
-        contenido = _diputados_acta_pdf(session, actual + 1)
+
+    maximo = actual
+    sonda = actual
+    huecos_seguidos = 0
+    while huecos_seguidos < _MARGEN_HUECOS_ID:
+        sonda += 1
+        if sonda - actual > _TOPE_AVANCE_ID:
+            print(f"  [WARN] _diputados_acta_id_maximo: más de {_TOPE_AVANCE_ID} ids nuevos "
+                  f"desde {actual} -- sospechoso, no se determina el máximo")
+            return None
+        contenido = _diputados_acta_pdf(session, sonda)
         if contenido is _ACTA_FALLO:
             return None
-        if not isinstance(contenido, bytes):
-            return actual
-        actual += 1
+        if isinstance(contenido, bytes):
+            maximo = sonda
+            huecos_seguidos = 0
+        else:
+            huecos_seguidos += 1
+    return maximo
 
 
 def fetch_cohesion_bloque_diputados_actas_anio(anio: int) -> list | None:
