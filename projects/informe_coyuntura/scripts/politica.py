@@ -6,7 +6,14 @@ Ejecutar desde projects/informe_coyuntura/: python scripts/politica.py
 Indicadores:
   votometro_ventaja_lla     — Brecha LLA−PJ en intención de voto (Votómetro CIGOB, auto)
   ratio_dnu                 — DNUs / leyes sancionadas año corriente (InfoLeg, auto)
-  movilizacion_cepa         — Conflictividad social CEPA 0–100 (scrape centrocepa.com.ar, auto)
+  conflictividad_nacional   — % var. eventos de protesta y disturbios en TODO el país vs. base
+                               2023 (ACLED, 12m completos; ADR-0052 — reemplaza a
+                               movilizacion_cepa en la dimensión conflicto_social)
+  movilizacion_cepa         — Conflictividad social CEPA 0–100 (scrape centrocepa.com.ar, auto).
+                               SEGUIMIENTO INTERNO desde 2026-07-11 (ADR-0052): sin backfill
+                               posible (CEPA publica desde fines de 2025) y con fórmula de
+                               acumulado YTD no comparable mes a mes — queda como contraste
+                               oculto del snapshot
   iaf_transferencias        — Variación real YoY transferencias federales RON (Hacienda, auto)
   eficacia_legislativa      — % proyectos PE aprobados, ventana 12m (datos.hcdn.gob.ar CKAN, auto)
   cohesion_bloque           — % cohesión (Rice) del bloque LLA, COMPUESTO bicameral desde
@@ -79,6 +86,7 @@ CINTURON              = "politica"
 INDICADORES_ESPERADOS = [
     "votometro_ventaja_lla",
     "ratio_dnu",
+    "conflictividad_nacional",
     "movilizacion_cepa",
     "iaf_transferencias",
     "cohesion_bloque",
@@ -631,10 +639,77 @@ def fetch_cepa_movilizacion() -> dict | None:
 def fetch_protestas_caba() -> dict | None:
     """Reutiliza el fetcher ACLED ya construido en gestion.py (ADR-0017) para
     eventos de protesta en CABA. En gestión es CONTEXTO y no puntúa
-    ('premiaría menos marchas'); en política SÍ puntúa como condición
-    objetiva de gobernabilidad (nivel de conflicto social, Matus) — no como
-    juicio sobre la legitimidad de protestar."""
+    ('premiaría menos marchas'); en política fue indicador del ITCP hasta
+    ADR-0048 (revisión editorial: "no pertinente en este cinturón") — sigue
+    relevándose como seguimiento interno oculto del snapshot."""
     return gestion.fetch_protestas_caba()
+
+
+# ── Conflictividad social nacional (ACLED, país entero) ──────────────────────
+
+STALE_CONFLICTIVIDAD_DAYS = 30   # el agregado ACLED es semanal con rezago corto
+
+
+def fetch_conflictividad_nacional() -> dict | None:
+    """
+    Conflictividad social nacional (ADR-0052): eventos de protesta y
+    disturbios (Protests+Riots, ACLED) en TODO el país, acumulados en 12
+    meses completos, expresados como % de variación contra el total 2023
+    (la base del mandato). Reemplaza a movilizacion_cepa como el indicador
+    puntuante de la dimensión conflicto_social del ITCP.
+
+    "valor" ES la variación % (puntúa directo sobre BANDAS_ITCP, sin el
+    caso especial que necesitaba protestas_caba, que exponía el conteo
+    crudo). El conteo y la base quedan en el detalle (acum_12m,
+    eventos_2023).
+
+    El último mes del archivo se excluye si está parcial (la semana final
+    no llega a fin de mes — el corte semanal + rezago de carga de ACLED lo
+    dejan incompleto) — mismo criterio que gestion.fetch_protestas_caba.
+    La serie usable arranca en dic-2023 (primera ventana 12m íntegramente
+    comparable con la base); la cobertura ACLED pre-2020 NO es confiable
+    (2019 promedia 102 eventos/mes vs 240 de 2020 — artefacto de expansión
+    de cobertura, ver ADR-0052) y no se usa ni para calibrar ni para el
+    gráfico público.
+    """
+    try:
+        store = gestion.actualizar_protestas_caba()
+        if store is None and gestion.PROTESTAS_STORE_PATH.exists():
+            store = json.loads(gestion.PROTESTAS_STORE_PATH.read_text(encoding="utf-8"))
+        if not store or "mensual_nacional" not in store:
+            raise ValueError("store ACLED sin serie nacional (¿corrida vieja sin ADR-0052?)")
+        mensual = store["mensual_nacional"]
+        hasta = store.get("_meta", {}).get("hasta_semana", "")
+        yms = sorted(mensual)
+        if hasta and yms and hasta[:7] == yms[-1]:
+            import calendar as _cal
+            a, m = int(hasta[:4]), int(hasta[5:7])
+            if int(hasta[8:10]) < _cal.monthrange(a, m)[1]:
+                yms = yms[:-1]
+        if len(yms) < 12:
+            raise ValueError("serie ACLED nacional demasiado corta")
+        ult12 = sum(mensual[ym] for ym in yms[-12:])
+        base_2023 = sum(v for ym, v in mensual.items() if ym.startswith("2023"))
+        if not base_2023:
+            raise ValueError("store ACLED sin base 2023")
+        var = round((ult12 / base_2023 - 1.0) * 100.0, 1)
+        return {
+            "valor":          var,
+            "acum_12m":       ult12,
+            "eventos_2023":   base_2023,
+            "unidad":         "% vs 2023",
+            "fuente":         "ACLED — agregado semanal por provincia (acleddata.com)",
+            "fecha_dato":     f"{yms[-1]}-01",
+            "desactualizado": bool(hasta) and _days_old(str(hasta)) > STALE_CONFLICTIVIDAD_DAYS,
+            "detalle_txt": (f"{ult12} eventos de protesta y disturbios en el país en 12m "
+                            f"(hasta {yms[-1]}) vs {base_2023} en todo 2023 "
+                            + f"({var:+.1f}%)".replace(".", ",")
+                            + " — cuenta marchas, concentraciones y disturbios de ACLED en "
+                              "las 24 jurisdicciones; CABA es ~9% del total del país"),
+        }
+    except Exception as e:
+        _warn("conflictividad_nacional", str(e))
+        return None
 
 
 # ── IAF — Índice de Armonía Federal (transferencias) ─────────────────────────
@@ -2831,6 +2906,7 @@ def main() -> None:
     colectores = [
         ("votometro_ventaja_lla",         fetch_votometro),
         ("ratio_dnu",                     fetch_ratio_dnu),
+        ("conflictividad_nacional",       fetch_conflictividad_nacional),
         ("movilizacion_cepa",             fetch_cepa_movilizacion),
         ("iaf_transferencias",            fetch_iaf_transferencias),
         ("eficacia_legislativa",          fetch_eficacia_legislativa),

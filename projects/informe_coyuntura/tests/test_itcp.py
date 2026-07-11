@@ -225,22 +225,42 @@ def test_dimension_cohesion_interna_es_solo_el_compuesto():
 
 
 def test_dimension_conflicto_social_sin_protestas():
-    # ADR-0048: protestas_caba sale a contexto — movilizacion_cepa queda sola.
+    # ADR-0048: protestas_caba salió a contexto. ADR-0052: movilizacion_cepa
+    # también (sin backfill posible + acumulado YTD no comparable) —
+    # conflictividad_nacional (ACLED país entero) queda sola en la dimensión.
     dim = itcp.DIMENSIONES_ITCP["conflicto_social"]
-    assert dim["indicadores"] == {"movilizacion_cepa": 1.0}
+    assert dim["indicadores"] == {"conflictividad_nacional": 1.0}
     assert dim["peso"] == 0.15
 
 
 def test_indicadores_contexto_declarados_y_fuera_de_las_dimensiones():
-    # ADR-0048: se publican sin puntuar; sus bandas quedan como referencia
-    # histórica en BANDAS_ITCP, así que el override de contexto es lo único
-    # que los mantiene fuera del en_indice de la card (patrón macro/ITCM).
-    assert set(itcp.INDICADORES_CONTEXTO) == {"rotacion_gabinete", "protestas_caba"}
+    # ADR-0048/0052: seguimiento interno sin puntuar; sus bandas quedan como
+    # referencia histórica en BANDAS_ITCP, así que el override de contexto es
+    # lo único que los mantiene fuera del en_indice de la card (patrón macro).
+    assert set(itcp.INDICADORES_CONTEXTO) == {"rotacion_gabinete", "protestas_caba",
+                                              "movilizacion_cepa"}
     en_dimensiones = {k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]}
     for contexto in itcp.INDICADORES_CONTEXTO:
         assert contexto not in en_dimensiones
         assert contexto in itcp.BANDAS_ITCP   # referencia histórica, no se borra
     assert "cohesion_bloque_senado" not in en_dimensiones   # fusionado, no contexto
+
+
+def test_banda_conflictividad_nacional():
+    # (-inf,-32,100)·(-32,-29,85)·(-29,-26,65)·(-26,-15,40)·(-15,inf,10) —
+    # % var. eventos Protests+Riots país entero vs total 2023, menor = mejor
+    # (ADR-0052). Anclas calibradas contra la serie real de 30 puntos
+    # (dic-2023→may-2026, rango −34,2 a +2,7): 5/7/8/4/6 por banda, las
+    # cinco pobladas, cada corte en un hueco real de los datos.
+    bandas = itcp.BANDAS_ITCP["conflictividad_nacional"]
+    assert itcp.puntaje_banda(-34.2, bandas) == 100   # mínimo real (nov-2025)
+    assert itcp.puntaje_banda(-32.0, bandas) == 100   # high inclusivo
+    assert itcp.puntaje_banda(-30.0, bandas) == 85
+    assert itcp.puntaje_banda(-29.0, bandas) == 85    # high inclusivo
+    assert itcp.puntaje_banda(-27.7, bandas) == 65    # mediana real
+    assert itcp.puntaje_banda(-21.4, bandas) == 40    # valor vigente (may-2026)
+    assert itcp.puntaje_banda(0.0, bandas) == 10      # dic-2023 (= base)
+    assert itcp.puntaje_banda(2.7, bandas) == 10      # máximo real (ene-2024)
 
 
 def test_pesos_itcp_suman_uno_en_cada_dimension():
@@ -261,11 +281,13 @@ def test_calcular_itcp_pondera_dimensiones():
         "alineamiento_senadores_prov": 70.0, # alianzas_territoriales, puntaje 100
         "adhesion_reformas_provincial": 90.0, # alianzas_territoriales, puntaje 100
         "cohesion_bloque": 100.0,            # cohesion_interna, puntaje 100 (compuesto bicameral)
-        "movilizacion_cepa": 5.0,            # conflicto_social, puntaje 100
-        # rotacion_gabinete / protestas_caba: contexto (ADR-0048) — aunque
-        # llegaran en `valores`, el motor los ignora al no estar en dimensiones
+        "conflictividad_nacional": -40.0,    # conflicto_social, puntaje 100 (ADR-0052)
+        # rotacion_gabinete / protestas_caba (ADR-0048) / movilizacion_cepa
+        # (ADR-0052): contexto — aunque lleguen en `valores`, el motor los
+        # ignora al no estar en dimensiones
         "rotacion_gabinete": 7.0,
         "protestas_caba": 25.0,
+        "movilizacion_cepa": 95.0,
     }
     resultado = itcp.calcular_itcp(valores)
     assert resultado is not None

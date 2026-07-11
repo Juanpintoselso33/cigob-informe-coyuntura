@@ -99,10 +99,15 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Un ratio alto indica un Ejecutivo que legisla por decreto ante un Congreso que no acompaña.",
     frecuencia: "Continua (año)", tipo: "Ratio",
   },
+  conflictividad_nacional: {
+    que: "Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el total de 2023 (el año base del mandato). Cuenta marchas, concentraciones y disturbios registrados por ACLED, el relevamiento académico internacional estándar de conflicto social, en las 24 jurisdicciones.",
+    aporta: "Aproxima la tensión en la calle a escala nacional, un límite real al margen de maniobra del Gobierno. Menos conflicto que en 2023 significa menos tensión; la comparación de 12 meses contra el año completo absorbe la estacionalidad del calendario de protestas.",
+    frecuencia: "Semanal (ACLED)", tipo: "Variación (%)",
+  },
   movilizacion_cepa: {
-    que: "El nivel de conflictividad social y laboral: paros, protestas y cortes.",
-    aporta: "Aproxima la tensión en la calle, un límite real al margen de maniobra del Gobierno.",
-    frecuencia: "Mensual", tipo: "Índice (0–100)",
+    que: "El nivel de conflictividad social y laboral: paros, protestas y cortes, según los informes del centro CEPA.",
+    aporta: "Aproxima la tensión en la calle. Desde julio de 2026 no integra el índice del cinturón ni se publica en el tablero: su fuente publica informes recién desde fines de 2025 (sin serie histórica posible) y su cifra acumula conflictos desde el inicio de cada año, lo que impide comparar meses entre sí — la medición continúa como contraste interno del indicador nacional de conflictividad.",
+    frecuencia: "Por informe", tipo: "Índice (0–100)",
   },
   iaf_transferencias: {
     que: "Cuánto varían, en términos reales, las transferencias del Estado nacional a las provincias.",

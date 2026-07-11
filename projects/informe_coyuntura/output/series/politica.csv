@@ -147,6 +147,36 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2024-01-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2023-12-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-05-01,conflictividad_nacional,-21.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-04-01,conflictividad_nacional,-26.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-03-01,conflictividad_nacional,-31.9,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-02-01,conflictividad_nacional,-32.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-01-01,conflictividad_nacional,-31.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-12-01,conflictividad_nacional,-33.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-11-01,conflictividad_nacional,-34.2,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-10-01,conflictividad_nacional,-33.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-09-01,conflictividad_nacional,-27.3,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-08-01,conflictividad_nacional,-27.8,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-07-01,conflictividad_nacional,-29.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-06-01,conflictividad_nacional,-30.2,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-05-01,conflictividad_nacional,-30.9,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-04-01,conflictividad_nacional,-28.3,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-03-01,conflictividad_nacional,-27.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-02-01,conflictividad_nacional,-27.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2025-01-01,conflictividad_nacional,-32.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-12-01,conflictividad_nacional,-27.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-11-01,conflictividad_nacional,-23.9,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-10-01,conflictividad_nacional,-25.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-09-01,conflictividad_nacional,-30.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-08-01,conflictividad_nacional,-29.8,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-07-01,conflictividad_nacional,-28.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-06-01,conflictividad_nacional,-18.5,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-05-01,conflictividad_nacional,-12.5,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-04-01,conflictividad_nacional,-12.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-03-01,conflictividad_nacional,-5.8,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-02-01,conflictividad_nacional,-0.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2024-01-01,conflictividad_nacional,2.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2023-12-01,conflictividad_nacional,0.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-07-01,comisiones_caidas,97.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2026-06-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
 2026-05-01,comisiones_caidas,97.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN

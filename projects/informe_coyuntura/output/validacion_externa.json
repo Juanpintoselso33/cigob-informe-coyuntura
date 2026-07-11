@@ -299,9 +299,9 @@
     "2026-01": 66.5,
     "2026-02": 58.4,
     "2026-03": 61.3,
-    "2026-04": 68.1,
+    "2026-04": 67.9,
     "2026-05": 79.4,
-    "2026-06": 77.3
+    "2026-06": 79.6
   },
   "epu_argentina_mensual": {
     "2002-11": 137.0,
@@ -591,19 +591,19 @@
   },
   "correlaciones_itcp": {
     "niveles (ITCP vs EPU Argentina)": {
-      "r": -0.684,
+      "r": -0.676,
       "n": 30
     },
     "primeras diferencias (ITCP vs EPU)": {
-      "r": -0.244,
+      "r": -0.241,
       "n": 29
     },
     "ITCP adelantado 1 mes vs EPU": {
-      "r": -0.633,
+      "r": -0.634,
       "n": 29
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.541,
+      "r": -0.537,
       "n": 30
     }
   }

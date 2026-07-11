@@ -201,6 +201,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{\text{conflictos laborales acumulados del a\~no}}{200\;(\text{m\'aximo de referencia})}\times 100`,
     leyenda: "La cifra del informe de conflictividad de CEPA, normalizada a un índice 0–100. El máximo de referencia (200 conflictos acumulados) es una calibración propia del informe, declarada en la ficha.",
   },
+  conflictividad_nacional: {
+    latex: String.raw`\left(\frac{\text{eventos de protesta y disturbios en el pa\'is}_{\text{\'ultimos 12 meses}}}{\text{eventos}_{\text{2023}}}-1\right)\times 100`,
+    leyenda: "Eventos de protesta y disturbios en todo el país (marchas, concentraciones y disturbios registrados por ACLED, el relevamiento académico internacional estándar), acumulados en los últimos 12 meses completos y comparados contra el total de 2023, la línea de base del mandato. Negativo = menos conflicto en la calle que en 2023. El mes en curso se excluye hasta que cierra, porque el registro se carga con rezago.",
+  },
   iaf_transferencias: {
     latex: String.raw`\left(\frac{\text{transferencias a provincias}_{\text{a\~no}}}{\text{transferencias}_{\text{a\~no anterior}}}\cdot\frac{\text{IPC}_{\text{a\~no anterior}}}{\text{IPC}_{\text{a\~no}}}-1\right)\times 100`,
     leyenda: "Serie oficial de recursos de origen nacional (Hacienda), deflactada con el IPC del INDEC: la variación real interanual de lo que la Nación transfiere a las provincias.",

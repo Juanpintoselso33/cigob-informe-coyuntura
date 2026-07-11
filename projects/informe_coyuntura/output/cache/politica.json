@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-11T13:17:30.381150",
-  "score": 2.3,
+  "generated_at": "2026-07-11T14:00:16.719772",
+  "score": 2.6,
   "itcp": {
-    "valor": 77.2,
+    "valor": 74.0,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -97,13 +97,13 @@
       "conflicto_social": {
         "nombre": "Conflicto social",
         "peso": 0.15,
-        "puntaje": 64.4,
+        "puntaje": 43.2,
         "indicadores": {
-          "movilizacion_cepa": {
+          "conflictividad_nacional": {
             "peso": 1.0,
-            "puntaje_banda": 64.4,
-            "puntaje_aplicado": 64.4,
-            "valor": 50.5,
+            "puntaje_banda": 43.2,
+            "puntaje_aplicado": 43.2,
+            "valor": -21.4,
             "peso_efectivo": 0.15
           }
         },
@@ -158,6 +158,21 @@
       "puntaje_banda": 42.7,
       "peso_efectivo": 0.06
     },
+    "conflictividad_nacional": {
+      "valor": -21.4,
+      "acum_12m": 2048,
+      "eventos_2023": 2605,
+      "unidad": "% vs 2023",
+      "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
+      "fecha_dato": "2026-05-01",
+      "desactualizado": false,
+      "detalle_txt": "2048 eventos de protesta y disturbios en el país en 12m (hasta 2026-05) vs 2605 en todo 2023 (-21,4%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país",
+      "en_indice": true,
+      "dimension": "conflicto_social",
+      "puntaje_itcp": 43.2,
+      "puntaje_banda": 43.2,
+      "peso_efectivo": 0.15
+    },
     "movilizacion_cepa": {
       "valor": 50.5,
       "cifra_cruda": 101.0,
@@ -167,11 +182,7 @@
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
       "fecha_dato": "2026-06-09",
       "desactualizado": false,
-      "en_indice": true,
-      "dimension": "conflicto_social",
-      "puntaje_itcp": 64.4,
-      "puntaje_banda": 64.4,
-      "peso_efectivo": 0.15
+      "en_indice": false
     },
     "iaf_transferencias": {
       "valor": 7.0,

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-11 13:18:06"
+generado: "2026-07-11 14:00:34"
 score_global: 2.5
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -35,13 +35,14 @@ schema_version: "1.2.0"
 | base_monetaria | 7.47 | % mensual nominal | 2026-07-06 | fresco |
 | tc_mayorista | 3.78 | % mensual | 2026-07-08 | fresco |
 
-### 🟢 Politica — score 2.3/10 (estable)
+### 🟢 Politica — score 2.6/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 5.3 | Puntos porcentuales | 2026-05-28 | fresco |
 | ratio_dnu | 1.529 | DNUs por ley | 2026-07-11 | fresco |
+| conflictividad_nacional | -21.4 | % vs 2023 | 2026-05-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | fresco |
 | iaf_transferencias | 7.0 | % interanual real | 2026-07-11 | fresco |
 | eficacia_legislativa | 4.3 | % de proyectos | 2026-07-11 | fresco |
@@ -101,4 +102,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-07-11 13:18:06 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-11 14:00:34 — schema 1.2.0*

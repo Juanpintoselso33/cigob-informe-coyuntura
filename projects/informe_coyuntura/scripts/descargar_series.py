@@ -966,6 +966,43 @@ def fetch_cepa_movilizacion_serie(max_paginas: int = 40) -> list:
     return out
 
 
+def fetch_conflictividad_nacional_mensual() -> list:
+    """Serie mensual de conflictividad_nacional (ADR-0052): % de variación
+    del acumulado 12 meses de eventos Protests+Riots de ACLED en TODO el
+    país contra el total 2023, mes a mes desde dic-2023 (primera ventana
+    12m íntegramente post-asunción, comparable con la base). Lee la serie
+    "mensual_nacional" del store que llena gestion.actualizar_protestas_caba()
+    (una sola descarga de ~8 MB por corrida, memo por proceso en gestion).
+    El último mes se EXCLUYE si el archivo ACLED no llega a fin de mes —
+    misma regla que politica.fetch_conflictividad_nacional(), así el último
+    punto de la serie coincide con la card (G3). No se emiten puntos
+    pre-dic-2023: la cobertura ACLED pre-2020 no es confiable y 2023 es la
+    base, no un punto de la curva. [[YYYY-MM-01, % vs 2023]]."""
+    import json as _json
+    if not gestion.PROTESTAS_STORE_PATH.exists():
+        return []
+    store = _json.loads(gestion.PROTESTAS_STORE_PATH.read_text(encoding="utf-8"))
+    mensual = store.get("mensual_nacional", {})
+    if not mensual:
+        return []
+    hasta = store.get("_meta", {}).get("hasta_semana", "")
+    yms = sorted(mensual)
+    if hasta and yms and hasta[:7] == yms[-1]:
+        a, m = int(hasta[:4]), int(hasta[5:7])
+        if int(hasta[8:10]) < calendar.monthrange(a, m)[1]:
+            yms = yms[:-1]
+    base_2023 = sum(v for ym, v in mensual.items() if ym.startswith("2023"))
+    if not base_2023:
+        return []
+    out = []
+    for i, ym in enumerate(yms):
+        if ym < "2023-12" or i < 11:
+            continue
+        acum = sum(mensual[y] for y in yms[i - 11:i + 1])
+        out.append([f"{ym}-01", round((acum / base_2023 - 1.0) * 100.0, 1)])
+    return out
+
+
 POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
@@ -992,6 +1029,13 @@ POLITICA_DERIVADAS = [
     ("rotacion_gabinete", "salidas de rango ministerial (acum. 12 meses)",
      "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
      fetch_rotacion_gabinete_serie),
+    # conflictividad_nacional (ADR-0052): la pata puntuante de
+    # conflicto_social — ACLED país entero, misma descarga que protestas.
+    ("conflictividad_nacional", "% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles)",
+     "ACLED — agregado semanal por provincia (elaboración CIGOB)",
+     fetch_conflictividad_nacional_mensual),
+    # movilizacion_cepa: seguimiento interno desde 2026-07-11 (ADR-0052) —
+    # la serie se sigue guardando como contraste, igual que rotacion_gabinete.
     ("movilizacion_cepa", "Índice de conflictividad social (0-100)",
      "Centro CEPA — informes de conflictividad (elaboración CIGOB)",
      fetch_cepa_movilizacion_serie),

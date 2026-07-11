@@ -273,14 +273,54 @@ BANDAS_ITCP = {
         (4.0, 6.0, 40),     # 5-6: crisis de gabinete
         (6.0, INF, 10),     # 7+: crisis abierta
     ],
-    "movilizacion_cepa": [                # índice 0-100, menor = mejor
+    "movilizacion_cepa": [
+        # FUERA DEL ÍNDICE Y DEL TABLERO desde 2026-07-11 (ADR-0052) — se
+        # sigue relevando (INDICADORES_CONTEXTO, oculto del snapshot por
+        # publicar.py) como contraste del indicador que lo reemplaza
+        # (conflictividad_nacional); banda de referencia. Dos razones,
+        # verificadas en vivo 2026-07-11: (1) SIN BACKFILL POSIBLE — CEPA
+        # publica informes de conflictividad recién desde fines de 2025 (40
+        # páginas escaneadas: ~4 informes, 2 usables) y era el único
+        # indicador puntuante sin serie desde dic-2023; (2) FÓRMULA NO
+        # COMPARABLE MES A MES — "conflictos acumulados desde inicios del
+        # año" crece mecánicamente con el calendario y se resetea en enero,
+        # sobre un máximo de referencia arbitrario (200), extraído por
+        # regex de la prosa del informe. índice 0-100, menor = mejor.
         (-INF, 20.0, 100), (20.0, 40.0, 85), (40.0, 60.0, 65), (60.0, 80.0, 40), (80.0, INF, 10),
+    ],
+    "conflictividad_nacional": [
+        # NUEVO 2026-07-11 (ADR-0052): % de variación de eventos de
+        # protesta y disturbios (Protests+Riots, ACLED) en TODO el país —
+        # acumulado 12 meses completos contra el total 2023 (2.605
+        # eventos; CABA, lo que medía protestas_caba, es ~9% del país).
+        # Reemplaza a movilizacion_cepa como única pata de la dimensión
+        # conflicto_social. menor = mejor (menos conflicto que en 2023 =
+        # menos tensión), misma polaridad que tenía protestas_caba.
+        # Anclas calibradas contra la serie reconstruida real (30 puntos,
+        # dic-2023→may-2026, excluido el mes parcial del archivo; rango
+        # −34,2 a +2,7, mediana −27,8): −32/−29/−26/−15, chequeadas contra
+        # los 30 puntos: 5/7/8/4/6 por banda, las cinco pobladas y cada
+        # corte en un hueco real de los datos. La historia que cuenta la
+        # serie se verificó contra prensa (ADR-0052): caída 2024 (−27,7%
+        # en dic-24 ≈ el −27% del balance oficial de bloqueos), meseta
+        # 2025, reaceleración feb-may 2026 (4° paro general 19-feb, paro
+        # docente 2-mar, marchas 30-abr, pico may-2026). Cobertura ACLED
+        # pre-2020 NO confiable (expansión de cobertura): no se usa ni
+        # para calibrar ni para el gráfico. Tramos extremos abiertos
+        # (ADR-0021).
+        (-INF, -32.0, 100),
+        (-32.0, -29.0, 85),
+        (-29.0, -26.0, 65),
+        (-26.0, -15.0, 40),
+        (-15.0, INF, 10),
     ],
     "protestas_caba": [
         # FUERA DEL ÍNDICE Y DEL TABLERO de política desde 2026-07-10
         # (ADR-0048: "no sería pertinente en este cinturón") — se sigue
         # relevando (INDICADORES_CONTEXTO, oculto del snapshot por
-        # publicar.py; la card de GESTIÓN sigue siendo su lectura pública);
+        # publicar.py; en gestión también dejó de ser card visible por
+        # ADR-0051 — seguimiento interno en ambos cinturones; su sucesor
+        # puntuante en política es conflictividad_nacional, ADR-0052);
         # banda de referencia.
         # RECALIBRADO 2026-07-09 con la serie ACLED ya existente (102 meses
         # en output/series/gestion.csv desde 2017, sin backfill nuevo --
@@ -334,9 +374,13 @@ DIMENSIONES_ITCP = {
     "conflicto_social": {
         "nombre": "Conflicto social",
         "peso": 0.15,
-        # 2026-07-10 (ADR-0048): protestas_caba sale del índice por la
-        # revisión editorial — movilizacion_cepa queda sola en la dimensión.
-        "indicadores": {"movilizacion_cepa": 1.0},
+        # 2026-07-11 (ADR-0052): conflictividad_nacional (ACLED país
+        # entero, 30 puntos reales) reemplaza a movilizacion_cepa (2
+        # puntos, acumulado YTD no comparable, sin backfill posible), que
+        # pasa a seguimiento interno. Antes: 2026-07-10 (ADR-0048)
+        # protestas_caba había salido por la revisión editorial y CEPA
+        # había quedado solo. Los pesos ENTRE dimensiones no se tocan.
+        "indicadores": {"conflictividad_nacional": 1.0},
     },
     "imagen_voto": {
         "nombre": "Imagen y voto",
@@ -345,13 +389,14 @@ DIMENSIONES_ITCP = {
     },
 }
 
-# Indicadores de política que NO integran el índice (ADR-0048, revisión
-# editorial CIGOB 2026-07-10) — mismo patrón que itcm.INDICADORES_CONTEXTO
+# Indicadores de política que NO integran el índice (rotación y protestas:
+# ADR-0048, revisión editorial CIGOB 2026-07-10; movilizacion_cepa:
+# ADR-0052, 2026-07-11) — mismo patrón que itcm.INDICADORES_CONTEXTO
 # (badlar y los monetarios nominales, ADR-0022): se siguen relevando y
 # cacheando como seguimiento interno, pero publicar.py los OCULTA del
 # snapshot (POLITICA_OCULTOS) — el tablero solo muestra lo que integra
 # las dimensiones.
-INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba"]
+INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cepa"]
 
 BANDAS_INTERPRETACION = [
     (-INF, 20.0, "severamente_apretado"),

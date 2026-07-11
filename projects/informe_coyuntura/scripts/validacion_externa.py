@@ -217,15 +217,20 @@ def construir_serie_itcg() -> dict:
     return out
 
 
-# Composición post ADR-0048 (2026-07-10): cohesion_bloque ya es la serie del
-# COMPUESTO bicameral 65/35 (una sola clave); cohesion_bloque_senado,
-# rotacion_gabinete y protestas_caba salieron del índice — no entran a la
-# reconstrucción aunque sus series sigan existiendo como contexto.
+# Composición post ADR-0052 (2026-07-11): conflictividad_nacional (ACLED
+# país, serie real de 30 meses) reemplaza a movilizacion_cepa (2 puntos,
+# acumulado YTD) en la dimensión conflicto_social — la reconstrucción gana
+# una pata mensual completa desde dic-2023. Antes, post ADR-0048
+# (2026-07-10): cohesion_bloque ya es la serie del COMPUESTO bicameral
+# 65/35 (una sola clave); cohesion_bloque_senado, rotacion_gabinete,
+# protestas_caba y ahora movilizacion_cepa están fuera del índice — no
+# entran a la reconstrucción aunque sus series sigan existiendo como
+# contexto.
 ITCP_SERIES = [
     "votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
     "comisiones_caidas", "derrotas_legislativas", "iaf_transferencias",
     "alineamiento_senadores_prov", "adhesion_reformas_provincial",
-    "cohesion_bloque", "movilizacion_cepa",
+    "cohesion_bloque", "conflictividad_nacional",
 ]
 
 

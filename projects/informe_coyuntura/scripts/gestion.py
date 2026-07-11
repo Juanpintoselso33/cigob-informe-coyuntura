@@ -1569,6 +1569,8 @@ def _acled_credenciales() -> tuple | None:
 ACLED_OAUTH_URL = "https://acleddata.com/oauth/token"
 ACLED_READ_URL  = "https://acleddata.com/api/acled/read"
 ACLED_CORTES_STORE = PROJECT_DIR / "data" / "gestion" / "acled_cortes.json"
+# memo por proceso del store de protestas (ver actualizar_protestas_caba)
+_PROTESTAS_STORE_MEMO: dict | None = None
 # vocabulario de bloqueo en las notas (ACLED codifica en inglés)
 ACLED_CORTES_KEYWORDS = ("block", "picket", "barricad", "roadblock", "corte", "piquete")
 
@@ -1675,9 +1677,18 @@ def actualizar_acled_cortes() -> None:
 
 
 def actualizar_protestas_caba() -> dict | None:
-    """Baja el agregado semanal LatAm de ACLED (sesión web), filtra CABA ×
-    Protests/Riots, agrega por mes y guarda la serie en el store versionado
-    (así descargar_series no re-baja los ~8 MB). Devuelve la serie mensual."""
+    """Baja el agregado semanal LatAm de ACLED (sesión web), filtra Argentina ×
+    Protests/Riots, agrega por mes — CABA ("mensual") y país entero
+    ("mensual_nacional", ADR-0052: insumo de conflictividad_nacional del ITCP)
+    — y guarda ambas series en el store versionado (así descargar_series no
+    re-baja los ~8 MB). Devuelve el store completo.
+
+    Memo por proceso: politica.py consume este store dos veces por corrida
+    (conflictividad_nacional y protestas_caba de contexto) y gestion.py una —
+    sin el memo, cada llamada re-bajaría el XLSX de ~8 MB."""
+    global _PROTESTAS_STORE_MEMO
+    if _PROTESTAS_STORE_MEMO is not None:
+        return _PROTESTAS_STORE_MEMO
     creds = _acled_credenciales()
     if not creds:
         print("[WARN] gestion.protestas_caba: sin credenciales ACLED_*. Salteado.")
@@ -1707,26 +1718,35 @@ def actualizar_protestas_caba() -> dict | None:
         filas = ws.iter_rows(values_only=True)
         next(filas)             # WEEK|REGION|COUNTRY|ADMIN1|EVENT_TYPE|SUB_EVENT_TYPE|EVENTS|...
         mensual: dict = {}
+        nacional: dict = {}
         hasta = None
         for f in filas:
             if not f or len(f) < 7 or str(f[2]) != "Argentina":
                 continue
-            if "Ciudad" not in str(f[3]) or str(f[4]) not in ("Protests", "Riots"):
+            if str(f[4]) not in ("Protests", "Riots"):
                 continue
             ym = f[0].strftime("%Y-%m")
-            mensual[ym] = mensual.get(ym, 0) + int(f[6] or 0)
+            n = int(f[6] or 0)
+            nacional[ym] = nacional.get(ym, 0) + n
+            if "Ciudad" in str(f[3]):
+                mensual[ym] = mensual.get(ym, 0) + n
             hasta = max(hasta, f[0].date()) if hasta else f[0].date()
         if not mensual:
             raise ValueError("agregado ACLED sin filas de CABA")
-        store = {"_meta": {"descripcion": ("Eventos de protesta (Protests+Riots) en CABA por mes, "
-                                           "del agregado semanal de ACLED (acleddata.com). "
+        store = {"_meta": {"descripcion": ("Eventos de protesta (Protests+Riots) por mes, del "
+                                           "agregado semanal de ACLED (acleddata.com): 'mensual' "
+                                           "= CABA (card de contexto de gestión), "
+                                           "'mensual_nacional' = Argentina entera (insumo de "
+                                           "conflictividad_nacional del ITCP, ADR-0052). "
                                            "Atribución: datos de ACLED."),
                            "actualizado": date.today().isoformat(),
                            "hasta_semana": hasta.isoformat(),
                            "fuente_xlsx": url_xlsx},
-                 "mensual": {ym: mensual[ym] for ym in sorted(mensual)}}
+                 "mensual": {ym: mensual[ym] for ym in sorted(mensual)},
+                 "mensual_nacional": {ym: nacional[ym] for ym in sorted(nacional)}}
         PROTESTAS_STORE_PATH.write_text(
             json.dumps(store, ensure_ascii=False, indent=2), encoding="utf-8")
+        _PROTESTAS_STORE_MEMO = store
         return store
     except Exception as e:
         _warn("protestas_caba (descarga ACLED)", e)
