@@ -17,9 +17,9 @@ La corrida completa sin manos:
      serie↔titular con excepciones declaradas · G6 cero jerga interna);
    - `pytest tests/ -q` (G4 reconciliación paramétrica de los tres índices y
      el score global · G5 la robustez Monte Carlo encierra el valor).
-4. Build Astro doble: default (`/informe`) y `DEPLOY_TARGET=dominio`
-   (base `/`) → push del build del dominio al repo `cigob-informe`
-   (cname informe.cigob.org).
+4. Un único build Astro, con `site: "https://informe.cigob.org"`, `base: "/"`
+   y salida en `web-dominio/`; el artefacto se publica directamente con
+   GitHub Pages desde este mismo repo.
 5. Commit del snapshot + caches + stores a `main` (bot). Por eso las
    sesiones de trabajo largas suelen terminar con un `git pull --rebase`
    contra lo que el bot commiteó a la madrugada.
@@ -30,8 +30,11 @@ card/serie de un indicador (ej. pulso vs canasta), declarar la excepción ahí
 con su motivo.
 
 ### `pages.yml` — deploy on-push
-En cada push a `main`: build dual + Votómetro, publica a GitHub Pages del
-repo y al repo del dominio (`external_repository: Juanpintoselso33/cigob-informe`).
+En cada push a `main`, ejecuta un solo `npm ci && npm run build` dentro de la
+app Astro, configura Pages, sube `web-dominio/` con
+`actions/upload-pages-artifact` y publica directamente con
+`actions/deploy-pages`. No usa `DEPLOY_TARGET` ni envía el build a otro repo.
+El antiguo repo `cigob-informe` quedó archivado y no participa del deploy.
 
 ### `piquetes-poll.yml` — poll liviano (15:00 y 21:00 UTC)
 Corre `piquetes_poll.py` (alertas de manifestaciones) sin la pipeline entera.
@@ -45,20 +48,19 @@ del repositorio del MECON (sin auth, pesado).
 
 ## Deploy y verificación — el ritual completo
 
-1. Build local dual si se tocó la web (`DEPLOY_TARGET=dominio` y default).
+1. Si se tocó la web, ejecutar un único build local con `npm run build`; la
+   salida queda en `web-dominio/`.
 2. Commit **solo de archivos relevantes** + push a `main` (mensajes largos:
    `git commit -F` o here-string).
 3. `gh run watch` del "Deploy to GitHub Pages" — ojo: a veces engancha el run
    anterior; verificar por SHA.
-4. El repo `cigob-informe` corre su "Publish Pages". Falla frecuente:
-   **"Deployment failed, try again later"** — es transitorio de GitHub, se
-   resuelve con `gh run rerun` (a veces pega en los dos repos a la vez).
+4. El mismo workflow publica el artefacto con `actions/deploy-pages`. Si
+   falla, inspeccionar el job y sus logs antes de decidir si corresponde
+   corregir el build o reintentar una falla de infraestructura.
 5. **Verificar producción con marcadores ÚNICOS del cambio** (un texto o
    número que solo exista en la versión nueva). Lección documentada: buscar
    una fecha genérica dio falso positivo (matcheaba la fecha del REM).
    El CDN puede tardar unos minutos; cache-bust con `?cb=<random>`.
-6. Si Pages queda colgado: commit trivial a `gh-pages` lo destraba
-   (el destrabador ya está horneado en los workflows).
 
 ## Troubleshooting conocido
 
@@ -69,7 +71,7 @@ del repositorio del MECON (sin auth, pesado).
 | Serie de inseguridad/IVI/sentimiento vacía | host caído (cloud-snic) o 429 (Trends) | el store sirve la última buena; verificar `_meta.actualizado` |
 | Matriz de validación "vieja" | réplica de `validacion_externa.py` desalineada de un ADR nuevo | actualizar `COMPONENTES`/`BASES_PROPIAS`/`ITVC_TECHO` y recorrer |
 | Conflicto de rebase en `informe.json`/caches | commit nocturno del bot | `checkout --theirs` + regenerar con la cadena manual |
-| Pages "Deployment failed, try again later" | transitorio GitHub | `gh run rerun`, esperar CDN |
+| Falla el job de Pages | error de build o infraestructura de GitHub | inspeccionar pasos y logs; corregir la causa o reintentar solo si es una falla transitoria confirmada |
 | El nocturno cortó en "Gate de calidad" | el snapshot salió roto o viejo (el gate hizo su trabajo) | leer las líneas `[FALLA]` del log; producción quedó en el snapshot anterior, arreglar la causa y re-dispatchar |
 
 ## Convenciones de trabajo

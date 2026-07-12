@@ -28,8 +28,8 @@ Las decisiones de diseño y metodología están en [`docs/adr/`](docs/adr/README
 ## Instalación
 
 ```bash
-git clone https://github.com/Juanpintoselso33/biblitotecario-ai.git
-cd biblitotecario-ai/projects/informe_coyuntura
+git clone https://github.com/Fundacion-CIGOB/cigob-informe-coyuntura.git
+cd cigob-informe-coyuntura/projects/informe_coyuntura
 pip install -r requirements.txt
 ```
 
@@ -62,7 +62,7 @@ python scripts/generar_informe.py
 ## Web pública
 
 La página pública del informe vive en `web/` (app Astro) y se publica en
-`https://juanpintoselso33.github.io/biblitotecario-ai/informe/`. Replica el
+`https://informe.cigob.org`. Replica el
 observatorio de klipea (CSS propio de CIGOB) y se alimenta del snapshot de datos.
 
 Ciclo de actualización:
@@ -150,7 +150,8 @@ projects/informe_coyuntura/
 > (no están en `.gitignore`) para que un colaborador tenga el reporte y los datos ya
 > generados sin correr los colectores. Se regeneran corriendo los scripts; el pipeline
 > diario (CI) los actualiza. Lo único que NO se versiona son deps/caches
-> (`node_modules/`, `__pycache__/`) y el build web (`web/informe/`, lo regenera el CI).
+> (`node_modules/`, `__pycache__/`) y el build web (`web-dominio/` en la raíz del
+> repo, lo regenera el CI).
 
 ## Onboarding rápido
 

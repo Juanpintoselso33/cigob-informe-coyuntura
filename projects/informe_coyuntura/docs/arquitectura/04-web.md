@@ -65,8 +65,10 @@ analista) y la evolución histórica.
 4. Cards nuevas: familia visual completa + respiración interna, y
    **screenshot comparado contra una card aprobada ANTES de pushear**.
 
-## Build dual
+## Build y publicación
 
-El sitio se compila dos veces (ver [05 — Operaciones](05-operaciones.md)):
-`DEPLOY_TARGET=dominio` (base `/`, sale a `web-dominio/` para
-informe.cigob.org) y default (base `/informe`, para GitHub Pages del repo).
+Hay un único target de deploy (ver [05 — Operaciones](05-operaciones.md)).
+`astro.config.mjs` fija `site: "https://informe.cigob.org"`, `base: "/"` y
+`outDir: "../../../web-dominio"`. El CI ejecuta un solo `npm run build` y
+publica `web-dominio/` directamente en GitHub Pages desde este mismo repo.
+No se usa `DEPLOY_TARGET`, un subpath `/informe/` ni un repo de deploy externo.

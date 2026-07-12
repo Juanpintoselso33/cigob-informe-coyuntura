@@ -4,7 +4,7 @@ App [Astro](https://astro.build/) que renderiza el observatorio público del Inf
 Coyuntura. Replica el estilo del observatorio de klipea (CSS propio de CIGOB) y se
 alimenta de un snapshot de datos en JSON.
 
-- **Publicado en:** https://juanpintoselso33.github.io/biblitotecario-ai/informe/
+- **Publicado en:** https://informe.cigob.org
 - **Stack:** Astro 4.16, sin framework de UI (componentes `.astro` puros)
 - **Node:** 20 (el que usa el CI)
 
@@ -12,8 +12,9 @@ alimenta de un snapshot de datos en JSON.
 
 | Opción | Valor | Por qué |
 |---|---|---|
-| `base` | `/biblitotecario-ai/informe` | Sub-path bajo el dominio de GitHub Pages |
-| `outDir` | `../../../web/informe` | El build sale a la carpeta de deploy (`web/` en la raíz del repo) |
+| `site` | `https://informe.cigob.org` | URL canónica del único sitio publicado |
+| `base` | `/` | El sitio se sirve desde la raíz del dominio custom |
+| `outDir` | `../../../web-dominio` | El build sale a la carpeta que el workflow sube como artefacto de Pages |
 
 ## Desarrollo local
 
@@ -21,7 +22,7 @@ alimenta de un snapshot de datos en JSON.
 cd projects/informe_coyuntura/web
 npm install
 npm run dev        # servidor de desarrollo con HMR
-npm run build      # build de producción → ../../../web/informe
+npm run build      # build de producción → ../../../web-dominio
 npm run preview    # previsualizar el build
 ```
 
@@ -58,5 +59,7 @@ web/
 
 ## Deploy
 
-Automático vía `.github/workflows/pages.yml` en cada push a `main`: corre
-`npm ci && npm run build` y publica toda la carpeta `web/` (raíz) en GitHub Pages.
+Automático vía `.github/workflows/pages.yml` en cada push a `main`: corre un
+solo `npm ci && npm run build`, sube `web-dominio/` con
+`actions/upload-pages-artifact` y publica directamente desde este repo con
+`actions/deploy-pages`. No usa `DEPLOY_TARGET` ni un repo externo de deploy.

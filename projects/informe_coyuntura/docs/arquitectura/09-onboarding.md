@@ -51,7 +51,7 @@ python -m pytest tests/ -q             # 40 verdes o no se pushea
 
 ```bash
 cd web
-DEPLOY_TARGET=dominio npm run build    # sale a ../../..//web-dominio (base /)
+npm run build    # sale a ../../../web-dominio (base /)
 ```
 
 ⚠️ No servir el build con `python -m http.server` pelado: en Windows sirve
