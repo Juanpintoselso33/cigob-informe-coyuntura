@@ -91,36 +91,16 @@ jobs:
       - name: Tests de reconciliación y robustez (G4-G5)
         run: python -m pytest tests -q
 
+      # Un único build (site https://informe.cigob.org, base "/", sale a
+      # web-dominio/) — se publica directo desde este repo más abajo con
+      # actions/deploy-pages. Va acá (y no solo en pages.yml) porque el
+      # commit nocturno lleva [skip ci] y no dispara pages.yml: sin este
+      # paso el dominio quedaría desactualizado.
       - name: Build informe (Astro)
         working-directory: projects/informe_coyuntura/web
         run: |
           npm ci
           npm run build
-
-      # informe.cigob.org: segundo build con base "/" → repo dedicado cigob-informe.
-      # Va acá (y no solo en pages.yml) porque el commit nocturno lleva [skip ci]
-      # y no dispara pages.yml: sin este paso el dominio quedaría desactualizado.
-      - name: Build informe para el dominio
-        working-directory: projects/informe_coyuntura/web
-        env:
-          DEPLOY_TARGET: dominio
-        run: npm run build
-
-      - name: Publicar al repo del dominio (cigob-informe)
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          deploy_key: ${{ secrets.CIGOB_INFORME_DEPLOY_KEY }}
-          external_repository: Juanpintoselso33/cigob-informe
-          publish_branch: gh-pages
-          publish_dir: web-dominio
-          cname: informe.cigob.org
-          # por defecto peaceiris EXCLUYE .github del publish_dir — acá viaja
-          # el workflow publish.yml que hace el deploy de Pages (obligatorio)
-          exclude_assets: ''
-
-      # cigob-informe publica via su propio workflow de Actions (publish.yml
-      # viaja dentro del publish_dir): el push de peaceiris lo dispara. El
-      # builder legacy quedó desactivado (build_type=workflow, 03-jul-2026).
 
       - name: Commitear snapshot + caches a main
         working-directory: .
@@ -162,6 +142,6 @@ jobs:
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: web
+          path: web-dominio
       - id: deployment
         uses: actions/deploy-pages@v5
