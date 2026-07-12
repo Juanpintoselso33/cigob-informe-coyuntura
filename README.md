@@ -63,6 +63,12 @@ El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en 
 2. Para trabajar sobre el **Informe de Coyuntura**, seguir su [`README`](projects/informe_coyuntura/) (Python + Astro).
 3. Para el **Votómetro**, seguir su [`README`](projects/votometro/) (HTML estático, sin build).
 
+### Colaboradores no técnicos
+
+Si no vas a programar y solo querés poder preguntarle a una IA cómo funciona
+el proyecto, no hace falta clonar nada — seguí la
+[guía de onboarding no técnico](docs/onboarding_colaboradores.md).
+
 ## Qué se versiona y qué no
 
 El repo versiona **todo el contenido real** (código, docs, datos y outputs generados),
