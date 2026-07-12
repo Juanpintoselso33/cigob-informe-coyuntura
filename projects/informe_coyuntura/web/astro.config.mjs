@@ -1,14 +1,10 @@
 import { defineConfig } from 'astro/config';
 
-// Dos targets de deploy del mismo sitio:
-//  - default: GitHub Pages del monorepo (juanpintoselso33.github.io/biblitotecario-ai/informe/)
-//  - DEPLOY_TARGET=dominio: informe.cigob.org (raíz del repo dedicado cigob-informe,
-//    publicado por el paso "Publicar al repo del dominio" de los workflows)
-const dominio = process.env.DEPLOY_TARGET === 'dominio';
-
+// Un solo target de deploy: informe.cigob.org, servido directo desde este
+// mismo repo (Pages con dominio custom) — sin repo de deploy separado.
 export default defineConfig({
-  site: dominio ? 'https://informe.cigob.org' : 'https://juanpintoselso33.github.io',
-  base: dominio ? '/' : '/biblitotecario-ai/informe',
-  outDir: dominio ? '../../../web-dominio' : '../../../web/informe',
+  site: 'https://informe.cigob.org',
+  base: '/',
+  outDir: '../../../web-dominio',
   build: { format: 'directory', assets: '_assets' },
 });

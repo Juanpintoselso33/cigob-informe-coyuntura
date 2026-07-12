@@ -31,31 +31,9 @@ jobs:
         run: |
           npm ci
           npm run build
-      # informe.cigob.org: segundo build con base "/" → repo dedicado cigob-informe
-      - name: Build informe para el dominio
-        working-directory: projects/informe_coyuntura/web
-        env:
-          DEPLOY_TARGET: dominio
-        run: npm run build
-      - name: Publicar al repo del dominio (cigob-informe)
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          deploy_key: ${{ secrets.CIGOB_INFORME_DEPLOY_KEY }}
-          external_repository: Juanpintoselso33/cigob-informe
-          publish_branch: gh-pages
-          publish_dir: web-dominio
-          cname: informe.cigob.org
-          # por defecto peaceiris EXCLUYE .github del publish_dir — acá viaja
-          # el workflow publish.yml que hace el deploy de Pages (obligatorio)
-          exclude_assets: ''
-      # cigob-informe publica via su PROPIO workflow de Actions
-      # (.github/workflows/publish.yml, que viaja dentro de web/public/ en
-      # cada deploy): el push de peaceiris a gh-pages lo dispara. El builder
-      # legacy de Pages quedó DESACTIVADO (build_type=workflow) tras colgarse
-      # repetidamente el 03-jul-2026.
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: web
+          path: web-dominio
       - id: deployment
         uses: actions/deploy-pages@v5

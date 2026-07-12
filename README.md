@@ -13,15 +13,11 @@ Cada proyecto tiene su propio `README.md` con instalación, ejecución y detalle
 
 ## Web pública (GitHub Pages)
 
-El sitio se publica en **https://juanpintoselso33.github.io/biblitotecario-ai/** y se
-arma desde `web/`:
-
-| Archivo | Descripción |
-|---|---|
-| `web/index.html` | Landing — índice de herramientas de análisis |
-| `web/informe/` | Build del informe (lo regenera CI desde la app Astro; gitignored) |
-
-El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en cada push a `main`.
+El sitio se publica en **https://informe.cigob.org** (dominio custom, único
+target de deploy — un solo repo, un solo sitio). El workflow
+`.github/workflows/pages.yml` compila la app Astro y sube `web-dominio/`
+(build generado por CI, gitignored) como artefacto de Pages en cada push a
+`main`. Ver `web/README.md` para el detalle.
 
 ## Scripts de utilidad (raíz)
 
@@ -42,8 +38,8 @@ El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en 
 .
 ├── README.md                  # este archivo
 ├── .github/workflows/         # CI: data-pipeline + pages
-├── web/                       # sitio estático publicado en GitHub Pages
-├── scripts/                   # utilidades de raíz (encuestas, md→docx)
+├── web/                       # carpeta de trabajo del deploy (ver web/README.md)
+├── scripts/                   # utilidades de raíz (md→docx)
 └── projects/
     └── informe_coyuntura/     # colectores + informe + web Astro (docs propios en projects/informe_coyuntura/docs/)
 ```
@@ -52,8 +48,8 @@ El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en 
 
 1. Clonar el repo:
    ```bash
-   git clone https://github.com/Juanpintoselso33/biblitotecario-ai.git
-   cd biblitotecario-ai
+   git clone https://github.com/Fundacion-CIGOB/cigob-informe-coyuntura.git
+   cd cigob-informe-coyuntura
    ```
 2. Para trabajar sobre el **Informe de Coyuntura**, seguir su [`README`](projects/informe_coyuntura/) (Python + Astro).
 
@@ -72,7 +68,7 @@ para que un colaborador clone y trabaje sin depender de correr los colectores. E
 | No se versiona | Qué incluye | Por qué |
 |---|---|---|
 | 🔒 **Secretos** | `.env`, `*.key`, `*.pem`, `credentials*` | Seguridad — nunca |
-| ♻️ **Regenerable** | `node_modules/`, `__pycache__/`, `web/informe/` | Se reconstruyen desde el código/source versionado (`npm install`, `pip install`, build de CI) |
+| ♻️ **Regenerable** | `node_modules/`, `__pycache__/`, `web-dominio/` | Se reconstruyen desde el código/source versionado (`npm install`, `pip install`, build de CI) |
 | 🤖 **Contexto de IA** | `.claude/`, `CLAUDE.md`, `_bmad/`, `docs/superpowers/`, etc. | Configuración de asistentes, no es del proyecto |
 
 > Los datos y outputs del informe (`output/`, `scripts/vida_cotidiana/data/`) **sí** se
