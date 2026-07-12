@@ -14,7 +14,7 @@ GitHub es donde vive el proyecto (el "repositorio" o "repo").
 
 1. Si no tenés cuenta, creá una gratis en [github.com](https://github.com/signup).
 2. Avisale a Juan tu usuario de GitHub para que te invite como colaborador
-   del repo `biblitotecario-ai`.
+   del repo `Fundacion-CIGOB/cigob-informe-coyuntura`.
 3. Te va a llegar un mail de invitación de GitHub — aceptala.
 
 No vas a necesitar usar GitHub directamente para nada más que esto: es solo
@@ -34,10 +34,11 @@ Elegí la que prefieras (o la que ya uses) — ambas sirven igual para este uso.
 
 - **En Claude**: andá a la configuración de tu cuenta → *Connectors* (o
   *Conectores*) → GitHub → conectá tu cuenta de GitHub → cuando te pida
-  elegir a qué repos dar acceso, elegí **solo** `biblitotecario-ai` (no
-  "todos mis repositorios").
+  elegir a qué repos dar acceso, elegí **solo**
+  `Fundacion-CIGOB/cigob-informe-coyuntura` (no "todos mis repositorios").
 - **En ChatGPT**: andá a Settings → Connectors → GitHub → mismo proceso:
-  conectá tu cuenta de GitHub y dale acceso solo a `biblitotecario-ai`.
+  conectá tu cuenta de GitHub y dale acceso solo a
+  `Fundacion-CIGOB/cigob-informe-coyuntura`.
 
 Una vez conectado, abrí un chat nuevo y empezá a preguntar. Algunos
 ejemplos:
