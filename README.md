@@ -19,7 +19,6 @@ arma desde `web/`:
 | Archivo | Descripción |
 |---|---|
 | `web/index.html` | Landing — índice de herramientas de análisis |
-| `web/bibliotecario.html` | Prototipo del Bibliotecario IA (RAG sobre corpus CIGOB) — **en desarrollo, aún no funcional**; la API key se ingresa en runtime, no se versiona |
 | `web/informe/` | Build del informe (lo regenera CI desde la app Astro; gitignored) |
 
 El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en cada push a `main`.
