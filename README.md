@@ -8,7 +8,6 @@ Reúne colectores de datos, generadores de informe y tableros web estáticos.
 | Proyecto | Descripción | Path |
 |---|---|---|
 | **Informe de Coyuntura** | Colectores de datos + generador de informe periódico sobre cuatro cinturones (marco Matusiano) y web pública en Astro | [`projects/informe_coyuntura/`](projects/informe_coyuntura/) |
-| **Votómetro Argentina 2027** | Proyector electoral (Monte Carlo + fundamentals) en HTML estático | [`projects/votometro/`](projects/votometro/) |
 
 Cada proyecto tiene su propio `README.md` con instalación, ejecución y detalle técnico.
 
@@ -20,8 +19,6 @@ arma desde `web/`:
 | Archivo | Descripción |
 |---|---|
 | `web/index.html` | Landing — índice de herramientas de análisis |
-| `web/bibliotecario.html` | Prototipo del Bibliotecario IA (RAG sobre corpus CIGOB) — **en desarrollo, aún no funcional**; la API key se ingresa en runtime, no se versiona |
-| `web/votometro.html` | Espejo del Votómetro (fuente en `projects/votometro/`) |
 | `web/informe/` | Build del informe (lo regenera CI desde la app Astro; gitignored) |
 
 El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en cada push a `main`.
@@ -30,7 +27,6 @@ El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en 
 
 | Script | Uso |
 |---|---|
-| `scripts/actualizar_encuestas.py` | Agrega una encuesta al Votómetro (dual-write a `projects/votometro/web/encuestas.json` y al HTML) |
 | `scripts/md_to_docx.py` | Convierte Markdown → Word con identidad visual CIGOB |
 
 ## Automatización
@@ -49,8 +45,7 @@ El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en 
 ├── web/                       # sitio estático publicado en GitHub Pages
 ├── scripts/                   # utilidades de raíz (encuestas, md→docx)
 └── projects/
-    ├── informe_coyuntura/     # colectores + informe + web Astro (docs propios en projects/informe_coyuntura/docs/)
-    └── votometro/             # proyector electoral HTML (docs propios en projects/votometro/docs/)
+    └── informe_coyuntura/     # colectores + informe + web Astro (docs propios en projects/informe_coyuntura/docs/)
 ```
 
 ## Onboarding para colaboradores
@@ -61,7 +56,6 @@ El deploy es automático vía GitHub Actions (`.github/workflows/pages.yml`) en 
    cd biblitotecario-ai
    ```
 2. Para trabajar sobre el **Informe de Coyuntura**, seguir su [`README`](projects/informe_coyuntura/) (Python + Astro).
-3. Para el **Votómetro**, seguir su [`README`](projects/votometro/) (HTML estático, sin build).
 
 ### Colaboradores no técnicos
 
@@ -78,7 +72,7 @@ para que un colaborador clone y trabaje sin depender de correr los colectores. E
 | No se versiona | Qué incluye | Por qué |
 |---|---|---|
 | 🔒 **Secretos** | `.env`, `*.key`, `*.pem`, `credentials*` | Seguridad — nunca |
-| ♻️ **Regenerable** | `node_modules/`, `__pycache__/`, `web/informe/`, `web/votometro.html` | Se reconstruyen desde el código/source versionado (`npm install`, `pip install`, build de CI) |
+| ♻️ **Regenerable** | `node_modules/`, `__pycache__/`, `web/informe/` | Se reconstruyen desde el código/source versionado (`npm install`, `pip install`, build de CI) |
 | 🤖 **Contexto de IA** | `.claude/`, `CLAUDE.md`, `_bmad/`, `docs/superpowers/`, etc. | Configuración de asistentes, no es del proyecto |
 
 > Los datos y outputs del informe (`output/`, `scripts/vida_cotidiana/data/`) **sí** se

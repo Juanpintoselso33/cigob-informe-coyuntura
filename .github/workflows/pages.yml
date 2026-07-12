@@ -31,8 +31,6 @@ jobs:
         run: |
           npm ci
           npm run build
-      - name: Publicar Votómetro en la carpeta de deploy
-        run: cp projects/votometro/web/votometro.html web/votometro.html
       # informe.cigob.org: segundo build con base "/" → repo dedicado cigob-informe
       - name: Build informe para el dominio
         working-directory: projects/informe_coyuntura/web

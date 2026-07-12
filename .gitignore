@@ -38,10 +38,8 @@ __pycache__/
 
 # Build outputs que el CI regenera desde el código fuente versionado:
 #   - web/informe/      → lo buildea Astro (pages.yml)
-#   - web/votometro.html → lo copia el deploy desde projects/votometro/web/
 #   - web-dominio/      → build del informe para informe.cigob.org (repo cigob-informe)
 web/informe/
-web/votometro.html
 web-dominio/
 
 # Backups transitorios de un archivo (el script crea .bak al actualizar)
