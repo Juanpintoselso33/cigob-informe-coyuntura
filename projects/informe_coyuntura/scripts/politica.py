@@ -80,7 +80,7 @@ DERROTAS_EVENTOS_PATH = PROJECT_DIR / "data" / "politica" / "derrotas_legislativ
 GABINETE_SALIDAS_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_salidas.json"
 GABINETE_DECRETOS_CACHE_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_decretos_cache.json"
 VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
-VOTOMETRO_HTML = PROJECT_DIR.parent / "votometro" / "web" / "votometro.html"  # fallback local
+VOTOMETRO_HTML = PROJECT_DIR / "data" / "politica" / "votometro_fallback.html"  # fallback local
 
 CINTURON              = "politica"
 INDICADORES_ESPERADOS = [
