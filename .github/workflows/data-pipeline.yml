@@ -1,7 +1,8 @@
 name: Daily data pipeline
 
 # Corre el pipeline completo de los 5 cinturones del Informe de Coyuntura una
-# vez al día, regenera el snapshot, lo commitea a main y deploya la web.
+# vez al día y commitea el snapshot a main. El deploy de la web (Vercel) lo
+# dispara Vercel solo, vía su integración de GitHub, en cuanto ve el push.
 #
 # 00:00 hora de Buenos Aires (UTC-3) = 03:00 UTC. Argentina no aplica horario
 # de verano, así que el offset es fijo todo el año.
@@ -12,13 +13,6 @@ on:
 
 permissions:
   contents: write   # commitear el snapshot + caches de vuelta a main
-  pages: write      # deployar GitHub Pages
-  id-token: write   # OIDC para deploy-pages
-
-# Comparte grupo con "Deploy to GitHub Pages" para no pisar deploys simultáneos.
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 jobs:
   run:
@@ -27,9 +21,6 @@ jobs:
                           # 20 quedó al ras (corridas reales de 19m32s/20m2s) y el
                           # probeo terminal de id_maximo de Diputados (margen de
                           # huecos 450, una vez por día vía store) suma ~2-3 min.
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     defaults:
       run:
         working-directory: projects/informe_coyuntura
@@ -91,17 +82,6 @@ jobs:
       - name: Tests de reconciliación y robustez (G4-G5)
         run: python -m pytest tests -q
 
-      # Un único build (site https://informe.cigob.org, base "/", sale a
-      # web-dominio/) — se publica directo desde este repo más abajo con
-      # actions/deploy-pages. Va acá (y no solo en pages.yml) porque el
-      # commit nocturno lleva [skip ci] y no dispara pages.yml: sin este
-      # paso el dominio quedaría desactualizado.
-      - name: Build informe (Astro)
-        working-directory: projects/informe_coyuntura/web
-        run: |
-          npm ci
-          npm run build
-
       - name: Commitear snapshot + caches a main
         working-directory: .
         run: |
@@ -135,13 +115,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "::notice::Sin cambios en datos — no se commitea."
           else
-            git commit -m "data(informe): actualización diaria automática [skip ci]"
+            git commit -m "data(informe): actualización diaria automática"
             git push
           fi
-
-      - uses: actions/configure-pages@v6
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: web-dominio
-      - id: deployment
-        uses: actions/deploy-pages@v5

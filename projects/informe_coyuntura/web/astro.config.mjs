@@ -1,10 +1,9 @@
 import { defineConfig } from 'astro/config';
 
-// Un solo target de deploy: informe.cigob.org, servido directo desde este
-// mismo repo (Pages con dominio custom) — sin repo de deploy separado.
+// Deploy: Vercel (proyecto con Root Directory = projects/informe_coyuntura/web),
+// dominio custom informe.cigob.org. outDir default (dist/) — Vercel lo detecta solo.
 export default defineConfig({
   site: 'https://informe.cigob.org',
   base: '/',
-  outDir: '../../../web-dominio',
   build: { format: 'directory', assets: '_assets' },
 });

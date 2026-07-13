@@ -36,10 +36,6 @@ __pycache__/
 *.pyd
 .pytest_cache/
 
-# Build output que el CI regenera desde el código fuente versionado:
-#   - web-dominio/ → lo buildea Astro (pages.yml), único target de deploy,
-#     publicado directo en informe.cigob.org desde este mismo repo.
-web-dominio/
 
 # Backups transitorios de un archivo (el script crea .bak al actualizar)
 *.bak
