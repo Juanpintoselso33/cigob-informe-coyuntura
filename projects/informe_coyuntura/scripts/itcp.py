@@ -8,7 +8,7 @@ informe = (100 − ITCP) / 10 (motor común en parametrica.py).
 A diferencia de ITCM/ITCG/ITVC, NO hay un documento CIGOB que fije los pesos
 de las 5 dimensiones (imagen y voto, poder legislativo, alianzas
 territoriales, cohesión interna del oficialismo, conflicto social) — ya
-descriptas en docs/cinturon_politica.md pero nunca pesadas. Los pesos acá son
+descriptas en docs/archivo/cinturon_politica.md pero nunca pesadas. Los pesos acá son
 una decisión editorial explícita (ver ADR-0036): "imagen y voto" pesa
 deliberadamente MENOS que las demás porque el propio marco del proyecto
 distingue capital político de popularidad.

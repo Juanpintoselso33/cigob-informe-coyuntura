@@ -72,4 +72,6 @@ Todas estas decisiones corresponden al **rediseño del cinturón macro (ITCM)** 
 junio 2026, a partir de los documentos de la Fundación CIGOB (`260602 Parametrica
 Macro`, `260602 (2)`, `260626 aportes para el cinturon macro`) y de las
 observaciones del analista. El marco base del ITCM (4 dimensiones, pesos, escala
-0–100, tensión = (100−ITCM)/10) está descrito en `docs/cinturon_macro.md`.
+0–100, tensión = (100−ITCM)/10) está descrito en `docs/archivo/cinturon_macro.md`
+(diseño original, pre-implementación — la versión vigente surge de sumar las
+decisiones de esta tabla, ver `scripts/itcm.py`).

@@ -109,7 +109,7 @@ publica como serie automatizable (investigado a fondo, detalle en `docs/pendient
 - **Decisiones de diseño**: `docs/adr/` (ADR-0001 a 0010) — una por decisión, con contexto,
   alternativas descartadas y consecuencias.
 - **Pendientes y fuentes bloqueadas**: `docs/pendientes-datos.md`.
-- **Metodología base del ITCM**: `docs/cinturon_macro.md`.
+- **Metodología base del ITCM (diseño original, archivado)**: `docs/archivo/cinturon_macro.md`. Versión vigente: `scripts/itcm.py`.
 
 ---
 

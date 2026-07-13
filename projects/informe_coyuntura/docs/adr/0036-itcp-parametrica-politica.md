@@ -12,7 +12,7 @@
 El cinturón de política se puntuaba con un **promedio simple** de fórmulas lineales ad
 hoc por indicador (`calcular_score()` en `politica.py`), sin ponderación entre
 dimensiones ni bandas explícitas — el mismo estado en que estaba gestión antes de
-ADR-0013 y vida cotidiana antes de ADR-0018. `docs/cinturon_politica.md` ya describe
+ADR-0013 y vida cotidiana antes de ADR-0018. `docs/archivo/cinturon_politica.md` ya describe
 las **cinco dimensiones de Matus** (poder legislativo, alianzas territoriales, cohesión
 interna del oficialismo, conflicto social, imagen y voto) pero nunca las pesó: cada
 indicador aportaba 1/9 del score final, sin distinguir "capacidad de gobernar" de
@@ -165,6 +165,6 @@ saber que ya se probaron.
   interna del oficialismo" depende hoy de un indicador (`cohesion_bloque`) que publica
   desde cache indefinidamente hasta que se resuelva el bloqueo anti-bot de HCDN
   (ADR-0037); si esa resolución tarda, el 65% de esa dimensión queda congelado en el
-  último valor conocido. `docs/cinturon_politica.md` y las fichas metodológicas web de
+  último valor conocido. `docs/archivo/cinturon_politica.md` y las fichas metodológicas web de
   los 3 indicadores nuevos (mismo tratamiento que `cinturon_gestion.md` recibió en
   ADR-0013) quedan como trabajo posterior, fuera del alcance de este ADR.

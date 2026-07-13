@@ -3,7 +3,7 @@
 > Doc vivo de seguimiento. Registra qué indicadores faltan automatizar, qué datos
 > están bloqueados o son de pago, qué se acumula a la espera de histórico, y el
 > índice de decisiones (ADRs). **No** es metodología del informe (eso vive en
-> `docs/cinturon_*.md`): es la lista de trabajo pendiente.
+> `docs/archivo/cinturon_*.md`, diseño original ya archivado): es la lista de trabajo pendiente.
 >
 > **Última actualización:** 2026-06-30.
 

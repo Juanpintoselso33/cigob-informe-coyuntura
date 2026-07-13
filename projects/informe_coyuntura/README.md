@@ -13,7 +13,9 @@ Colectores de datos para los cinco cinturones del marco CIGOB-Matus (Macro, Pol�
 | Espíritu de Época | 3 (v1, proxies compartidos) | 3 | 0 | 0 |
 
 Macro y gestión se puntúan con índices paramétricos 0–100 de dimensiones ponderadas
-(**ITCM**, ver `docs/cinturon_macro.md`, y **ITCG**, 5 dimensiones 35/25/15/15/10 del
+(**ITCM**, diseño original en `docs/archivo/cinturon_macro.md` — superado por los
+ADRs 0009/0010/0021/0022, versión vigente en `scripts/itcm.py`, y **ITCG**, 5
+dimensiones 35/25/15/15/10 del
 doc 260702 — ver `docs/adr/0013-itcg-parametrica-gestion.md`; motor común en
 `scripts/parametrica.py`); el resto promedia tensiones 0–10. El score global pondera
 los cinco cinturones por fase del mandato (`config.py`: fase temprana 20% parejo;
@@ -156,7 +158,10 @@ projects/informe_coyuntura/
 ## Onboarding rápido
 
 1. Leer `docs/260523_proyecto_pais_estado_extraccion.md` para el panorama completo de indicadores, fuentes y estado.
-2. Leer el archivo `docs/cinturon_*.md` del cinturón en el que se vaya a trabajar.
+2. Leer los ADRs del cinturón en el que se vaya a trabajar (`docs/adr/README.md`)
+   y el motor paramétrico correspondiente (`scripts/itcm.py`, `itcg.py`, `itcp.py`,
+   `parametrica.py`). `docs/archivo/cinturon_*.md` es el diseño original
+   pre-implementación — superado por los ADRs, no refleja el estado actual.
 3. Correr los cinco scripts para verificar que las fuentes respondan.
 4. Inspeccionar los outputs en `output/cache/*.json` (cada uno tiene indicadores, score y metadatos de extracción).
 
