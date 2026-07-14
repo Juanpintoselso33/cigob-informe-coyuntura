@@ -15,8 +15,13 @@ respaldó esa decisión.
 
 ### ITCM — `itcm.py` (macro)
 - 6 dimensiones (pesos 26/24/16/11/11/12), 13 indicadores puntuables.
-- Estabilidad monetaria 40/25/25/10: IPC, REM, IDM y dolarización de
-  depósitos (ADR-0053/0054).
+- Estabilidad monetaria 40/25/25/10: IPC, REM, IDM y
+  `presion_dolarizacion` (ADR-0053/0055). El cuarto componente mide una presión
+  latente 0-100 con observable por régimen: promedio móvil contiguo de 3 meses
+  de la brecha CCL/A3500 antes de abril de 2025; desde entonces, compras netas
+  de Personas Humanas divididas por M2 privado en USD, con transición 1/2/3
+  meses y suma de numeradores y denominadores. Una segunda interpolación común
+  convierte presión 0/25/50/75/100 en puntaje ITCM 100/85/60/35/10.
 - Financiamiento interno 45/40/15 con crédito real (ADR-0022); IdC por
   z-scores de nivel vs historia 2017→ (ADR-0028).
 - 4 indicadores nominales ocultos del snapshot pero vivos como insumos.

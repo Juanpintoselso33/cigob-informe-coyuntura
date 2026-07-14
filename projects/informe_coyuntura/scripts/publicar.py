@@ -158,6 +158,7 @@ def acumular_historico(informe):
     store = {}
     if HISTORICO_PATH.exists():
         store = json.loads(HISTORICO_PATH.read_text(encoding="utf-8"))
+    store.pop("dolarizacion_depositos", None)
     ym = datetime.now().strftime("%Y-%m")
     for c in informe["cinturones"].values():
         for ik, ind in c["indicadores"].items():
@@ -320,7 +321,8 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
         try:
             bloque["robustez"] = sensibilidad.robustez_compacta(
                 bloque, getattr(mod, f"BANDAS_{sigla}"),
-                lambda v: round((100 - v) / 10, 1))
+                lambda v: round((100 - v) / 10, 1),
+                anclas=getattr(mod, f"ANCLAS_{sigla}", None))
         except Exception as e:
             print(f"[WARN] robustez {sigla}: {e}")
         _marcar_dimensiones_criticas(bloque, UMBRAL_CRITICO_BANDAS)
@@ -387,10 +389,18 @@ def _macro_input_txt(ikey, ind):
     if ikey == "idm" and ind.get("m3_real_ia") is not None:
         return (f"brecha {coma(ind.get('valor'))} pp = M3 priv. real i.a. "
                 f"{coma(ind['m3_real_ia'])}% − M2 priv. real i.a. {coma(ind['m2_real_ia'])}%")
-    if ikey == "dolarizacion_depositos" and ind.get("crecimiento_usd_ia") is not None:
-        return (f"brecha {coma(ind.get('valor'))} pp = depósitos USD "
-                f"{coma(ind['crecimiento_usd_ia'])}% i.a. − depósitos en pesos "
-                f"{coma(ind['crecimiento_pesos_real_ia'])}% i.a. real")
+    if ikey == "presion_dolarizacion" and ind.get("metrica") is not None:
+        meses = int(ind.get("ventana_meses") or 0)
+        periodo = f"{meses} {'mes' if meses == 1 else 'meses'}"
+        if ind.get("regimen") == "precio":
+            return (f"presión {coma(ind.get('valor'))} pts = brecha CCL/mayorista "
+                    f"{coma(ind['metrica'])}% (promedio móvil {periodo})")
+        if ind.get("regimen") == "flujo":
+            ventana = (f"ventana de transición: {periodo}" if ind.get("ventana_parcial")
+                       else f"ventana móvil {periodo}")
+            return (f"presión {coma(ind.get('valor'))} pts = compras netas de USD "
+                    f"de personas humanas {coma(ind['metrica'])}% del M2 privado "
+                    f"({ventana})")
     if ikey == "iai" and ind.get("componentes"):
         c = ind["componentes"]
         partes = [f"ISAC {coma(c.get('isac'))}%", f"BK importados {coma(c.get('bk_importados'))}%"]

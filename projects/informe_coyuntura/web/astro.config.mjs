@@ -6,4 +6,7 @@ export default defineConfig({
   site: 'https://informe.cigob.org',
   base: '/',
   build: { format: 'directory', assets: '_assets' },
+  redirects: {
+    '/metodologia/dolarizacion_depositos/': '/metodologia/presion_dolarizacion/',
+  },
 });

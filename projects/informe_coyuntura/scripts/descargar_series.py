@@ -30,6 +30,9 @@ HTTP_TIMEOUT = 20
 HTTP_HEADERS = {"User-Agent": "CIGOB-InformeCoyuntura/1.0"}
 INDEC_BASE   = "https://apis.datos.gob.ar/series/api/series/"
 BCRA_BASE    = "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias"
+INDICADORES_SUSTITUIDOS = {
+    "presion_dolarizacion": {"dolarizacion_depositos"},
+}
 
 
 def fetch_indec(series_id: str, limit: int = 48) -> list:
@@ -74,15 +77,16 @@ def fetch_bcra(var_id: int, dias: int = 960) -> list:
                   key=lambda x: x[0], reverse=True)
 
 
-def write_csv(nombre: str, rows: list, merge: bool = False):
-    """Escribe el CSV de un cinturón. Con merge=True, preserva del archivo
-    existente las filas de los indicadores que NO están en `rows` (columna
-    "indicador", índice 1) en vez de sobreescribir el cinturón entero --
-    usado por `descargar(..., solo_indicador=...)` para poder refrescar un
-    único indicador sin perder la serie del resto."""
+def write_csv(
+    nombre: str,
+    rows: list,
+    merge: bool = False,
+    eliminar_indicadores: set[str] | None = None,
+):
+    """Escribe un cinturón y permite purgar claves sustituidas durante el merge."""
     path = OUTPUT_DIR / f"{nombre}.csv"
     if merge and path.exists():
-        tocados = {r[1] for r in rows}
+        tocados = {r[1] for r in rows} | (eliminar_indicadores or set())
         with open(path, newline="", encoding="utf-8-sig") as f:
             existentes = list(csv.reader(f))[1:]   # sin encabezado
         rows = [r for r in existentes if r[1] not in tocados] + rows
@@ -187,18 +191,18 @@ def fetch_idm_serie(meses: int | None = None) -> list:
     return [[f"{ym}-01", gap] for ym, gap, _m3, _m2 in serie[-meses:]]
 
 
-def fetch_dolarizacion_depositos_serie(meses: int | None = None) -> list:
-    """Serie de la brecha i.a. entre depósitos privados en USD y en pesos reales.
-
-    Reutiliza la fuente única de macro.py y publica el mandato completo desde
-    diciembre de 2023, incluido el quiebre de CERA.
-    """
+def fetch_presion_dolarizacion_serie(
+    meses: int | None = None,
+) -> list:
+    """Serie 0–100 construida por el mismo helper que alimenta el titular."""
     meses = meses or _meses_desde_asuncion()
-    serie = macro._dolarizacion_depositos_serie_mensual(meses_hist=meses + 4)
+    serie = macro._presion_dolarizacion_serie_mensual(
+        meses_hist=meses + 4,
+    )
     return [
-        [f"{ym}-01", brecha]
-        for ym, brecha, _usd, _pesos_real in serie
-        if ym >= "2023-12"
+        [f'{fila["mes"]}-01', fila["presion"]]
+        for fila in serie
+        if fila["mes"] >= "2023-12"
     ][-meses:]
 
 
@@ -270,7 +274,17 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
             print(f"  [ERR] {nombre}: {e}")
 
     rows.sort(key=lambda x: (x[1], x[0]), reverse=True)
-    write_csv(cinturon, rows, merge=solo_indicador is not None)
+    eliminados = (
+        INDICADORES_SUSTITUIDOS.get(solo_indicador, set())
+        if rows
+        else set()
+    )
+    write_csv(
+        cinturon,
+        rows,
+        merge=solo_indicador is not None,
+        eliminar_indicadores=eliminados,
+    )
 
 
 # ── Definición de series por cinturón ─────────────────────────────────────────
@@ -348,8 +362,9 @@ MACRO_DERIVADAS = [
     ("tcrm_bilateral_eeuu", "índice (base dic-2015)", "BCRA ITCRM",
      lambda: [[f, v] for f, v in macro.fetch_itcrm_bilateral("eeuu")][-32:]),
     ("idm", "pp (brecha i.a. real)", "BCRA (M3/M2 privado) + IPC INDEC", fetch_idm_serie),
-    ("dolarizacion_depositos", "pp (brecha i.a.)",
-     "BCRA (depósitos privados por moneda) + IPC INDEC", fetch_dolarizacion_depositos_serie),
+    ("presion_dolarizacion", "pts (0-100)",
+     "ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)",
+     fetch_presion_dolarizacion_serie),
     ("idc", "σ vs. su historia", "BCRA (BADLAR/depósitos/préstamos) + IPC INDEC", fetch_idc_serie),
     ("iai", "% i.a. ponderado", "INDEC (ISAC + bienes de capital importados)", fetch_iai_serie),
     ("icip", "% i.a. ponderado", "INDEC (servicios informática + productividad)", fetch_icip_serie),

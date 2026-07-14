@@ -16,11 +16,12 @@ Convención de bordes de banda (uniforme, pineada por tests): cada banda es
 PUNTAJE POR INTERPOLACIÓN (ADR-0021, jul-2026): los umbrales institucionales
 del doc son ANCLAS — cada banda finita ancla su puntaje en su punto medio y
 las abiertas (±inf) en su borde finito; entre anclas el puntaje es lineal y
-en los extremos queda plano. Reemplaza al puntaje escalonado por banda
-(puntaje_banda, que se conserva para las etiquetas de interpretación): misma
-escala institucional, sin acantilados de umbral — el estudio sombra del
-ADR-0019 midió que los escalones duplicaban la incertidumbre del índice y
-truncaban hasta ±13 puntos por componente.
+en los extremos queda plano. Indicadores con un contrato continuo propio
+pueden declarar anclas explícitas, sin cambiar la semántica de las tablas
+tradicionales. Reemplaza al puntaje escalonado por banda (puntaje_banda, que
+se conserva en el contrato público): misma escala institucional, sin
+acantilados de umbral — el estudio sombra del ADR-0019 midió que los escalones
+duplicaban la incertidumbre del índice y truncaban hasta ±13 puntos por componente.
 
 La tensión 0-10 del informe se deriva como (100 − índice) / 10, así el resto
 del pipeline (umbrales, estados, score global) conserva su convención.
@@ -55,11 +56,11 @@ def _anclas(bandas: list) -> list:
     return sorted(out)
 
 
-def puntaje_interpolado(valor: float, bandas: list) -> float:
-    """Puntaje continuo 0-100: lineal entre las anclas de la tabla de bandas,
-    plano más allá de las anclas extremas (sin extrapolación). Redondeado a 1
-    decimal (ADR-0021)."""
-    a = _anclas(bandas)
+def puntaje_desde_anclas(valor: float, anclas: list | tuple) -> float:
+    """Interpola un puntaje 0-100 entre anclas explícitas y satura extremos."""
+    a = sorted((float(x), float(puntaje)) for x, puntaje in anclas)
+    if not a:
+        raise ValueError("se requiere al menos un ancla")
     if valor <= a[0][0]:
         return round(a[0][1], 1)
     if valor >= a[-1][0]:
@@ -70,6 +71,13 @@ def puntaje_interpolado(valor: float, bandas: list) -> float:
                 return round(p1, 1)
             return round(p0 + (p1 - p0) * (valor - x0) / (x1 - x0), 1)
     return round(a[-1][1], 1)
+
+
+def puntaje_interpolado(valor: float, bandas: list) -> float:
+    """Puntaje continuo 0-100: lineal entre las anclas de la tabla de bandas,
+    plano más allá de las anclas extremas (sin extrapolación). Redondeado a 1
+    decimal (ADR-0021)."""
+    return puntaje_desde_anclas(valor, _anclas(bandas))
 
 
 def banda_interpretacion(valor: float, bandas_interpretacion: list) -> str:
@@ -127,7 +135,8 @@ def cargar_ajustes(path: Path, periodo: str) -> dict:
 
 def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: dict,
                     dimensiones: dict, bandas_interpretacion: list,
-                    interpretacion_legible: dict) -> dict | None:
+                    interpretacion_legible: dict,
+                    anclas_por_indicador: dict | None = None) -> dict | None:
     """Calcula el índice 0-100 a partir de {indicador: valor} (None se ignora).
 
     Renormaliza pesos ante faltantes: dentro de cada dimensión entre los
@@ -140,6 +149,7 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
     presentes).
     """
     ajustes = ajustes or {}
+    anclas_por_indicador = anclas_por_indicador or {}
     resultado_dims = {}
     ajustes_aplicados = []
 
@@ -149,7 +159,14 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
             valor = valores.get(ikey)
             if valor is None:
                 continue
-            p_banda = puntaje_interpolado(float(valor), bandas_por_indicador[ikey])
+            if ikey in anclas_por_indicador:
+                p_banda = puntaje_desde_anclas(
+                    float(valor), anclas_por_indicador[ikey]
+                )
+            else:
+                p_banda = puntaje_interpolado(
+                    float(valor), bandas_por_indicador[ikey]
+                )
             p_aplicado = p_banda
             if ikey in ajustes:
                 p_aplicado = ajustes[ikey]["puntaje"]

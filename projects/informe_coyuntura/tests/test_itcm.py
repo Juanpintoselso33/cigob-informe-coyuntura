@@ -26,19 +26,19 @@ import itcm
 #   * reservas_bcra= NETAS (Machado). 1.881M → 25,0 (banda 30).
 #   * idc          = IdC en z-scores (σ vs. historia, ADR-0028). −0,31 → 49,7 (banda 60).
 #   * idm          = Índice de Desequilibrio Monetario. 4,5 pp → 51,7 (banda 60).
-#   * dolarización = brecha depósitos USD vs. pesos reales. 29,07 pp → 10,0.
+#   * presión dolarización = presión 0-100 sensible al régimen. 45,24 → 64,8.
 #   * tcrm         = ITCRM (base 2015=100). 84,3 → 45,7 (banda 35).
 #   * iai          = inversión física (% i.a.). −4,2 → 42,5 (banda 35).
 #   * icip         = capitalización digital (% i.a.). 8,2 → 73,1 (banda 80).
 #   * saldo/emae quedan planos más allá de la última ancla (85 y 100).
 #   * credito_privado = % i.a. REAL de préstamos privados (ADR-0022). +26% → 80.
-# Dimensiones: estab=59,4 fiscal=68,4 financ=43,1 (reservas 45% + IdC 40% +
-# crédito 15%) actividad=100 competitividad=45,7 inversión=54,7 → ITCM=61,3.
+# Dimensiones: estab=64,8 fiscal=68,4 financ=43,1 (reservas 45% + IdC 40% +
+# crédito 15%) actividad=100 competitividad=45,7 inversión=54,7 → ITCM=62,8.
 EJEMPLO = {
     "ipc_total": 2.58,             # interpolado 63,7 (banda 65)
     "rem_ipc_12m": 1.76,           # equiv. mensual: 79,8 (banda 85)
     "idm": 4.5,                    # gap i.a. real: 51,7 (banda 60)
-    "dolarizacion_depositos": 29.07,  # brecha USD vs. pesos reales: 10,0
+    "presion_dolarizacion": 45.24,   # presión de carteras 0-100: 64,8
     "recaudacion": 1.82,           # i.a. real: 57,3 (banda 60)
     "saldo_comercial_12m": 17125,  # más allá de la última ancla → 85 plano
     "reservas_bcra": 1881,         # netas: 25,0 (banda 30)
@@ -54,7 +54,7 @@ EJEMPLO = {
 def test_itcm_reproduce_ejemplo():
     r = itcm.calcular_itcm(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["estabilidad_monetaria"]["puntaje"] == 59.4
+    assert dims["estabilidad_monetaria"]["puntaje"] == 64.8
     assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 68.4
     assert dims["financiamiento"]["puntaje"] == 43.1
     assert dims["actividad"]["puntaje"] == 100.0
@@ -63,13 +63,13 @@ def test_itcm_reproduce_ejemplo():
     ind = dims["financiamiento"]["indicadores"]["credito_privado"]
     assert ind["puntaje_banda"] == 80.0 and ind["peso"] == 0.15
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
-    assert r["valor"] == 61.3
+    assert r["valor"] == 62.8
     assert r["banda"] == "moderadamente_aflojado"
-    dolarizacion = dims["estabilidad_monetaria"]["indicadores"]["dolarizacion_depositos"]
-    assert dolarizacion["puntaje_aplicado"] == 10.0
-    assert dolarizacion["peso"] == 0.10
-    assert dolarizacion["peso_efectivo"] == 0.026
-    assert itcm.tension_de_itcm(r["valor"]) == 3.9
+    presion = dims["estabilidad_monetaria"]["indicadores"]["presion_dolarizacion"]
+    assert presion["puntaje_aplicado"] == 64.8
+    assert presion["peso"] == 0.10
+    assert presion["peso_efectivo"] == 0.026
+    assert itcm.tension_de_itcm(r["valor"]) == 3.7
     assert r["ajustes_aplicados"] == []
 
 
@@ -87,13 +87,46 @@ def test_puntaje_interpolado():
     assert parametrica.puntaje_interpolado(5.0, b) == 10.0    # última ancla
     assert parametrica.puntaje_interpolado(9.0, b) == 10.0    # plano más allá
 
-    d = itcm.BANDAS_ITCM["dolarizacion_depositos"]
-    assert parametrica.puntaje_interpolado(-25.0, d) == 100.0
-    assert parametrica.puntaje_interpolado(-12.5, d) == 85.0
-    assert parametrica.puntaje_interpolado(5.0, d) == 60.0
-    assert parametrica.puntaje_interpolado(15.0, d) == 35.0
-    assert parametrica.puntaje_interpolado(20.0, d) == 10.0
-    assert parametrica.puntaje_interpolado(29.07, d) == 10.0
+    idm = itcm.BANDAS_ITCM["idm"]
+    assert parametrica.puntaje_interpolado(-2.0, idm) == 100.0
+    assert parametrica.puntaje_interpolado(0.0, idm) == 85.0
+    assert parametrica.puntaje_interpolado(3.5, idm) == 60.0
+    assert parametrica.puntaje_interpolado(6.5, idm) == 35.0
+    assert parametrica.puntaje_interpolado(8.0, idm) == 10.0
+
+
+def test_puntaje_desde_anclas_respeta_los_cinco_puntos_aprobados():
+    """Las anclas explícitas no se reinterpretan como puntos medios de bandas."""
+    import parametrica
+    anclas = ((0.0, 100.0), (25.0, 85.0), (50.0, 60.0),
+              (75.0, 35.0), (100.0, 10.0))
+
+    assert parametrica.puntaje_desde_anclas(-5.0, anclas) == 100.0
+    assert parametrica.puntaje_desde_anclas(0.0, anclas) == 100.0
+    assert parametrica.puntaje_desde_anclas(25.0, anclas) == 85.0
+    assert parametrica.puntaje_desde_anclas(37.5, anclas) == 72.5
+    assert parametrica.puntaje_desde_anclas(50.0, anclas) == 60.0
+    assert parametrica.puntaje_desde_anclas(75.0, anclas) == 35.0
+    assert parametrica.puntaje_desde_anclas(100.0, anclas) == 10.0
+    assert parametrica.puntaje_desde_anclas(120.0, anclas) == 10.0
+
+
+def test_itcm_usa_anclas_explicitas_para_presion_dolarizacion():
+    valores = dict(EJEMPLO)
+
+    r = itcm.calcular_itcm(valores)
+    indicador = r["dimensiones"]["estabilidad_monetaria"]["indicadores"][
+        "presion_dolarizacion"
+    ]
+
+    assert itcm.ANCLAS_ITCM["presion_dolarizacion"] == (
+        (0.0, 100.0), (25.0, 85.0), (50.0, 60.0),
+        (75.0, 35.0), (100.0, 10.0),
+    )
+    assert indicador["puntaje_banda"] == 64.8
+    assert indicador["puntaje_aplicado"] == 64.8
+    assert indicador["peso"] == 0.10
+    assert indicador["peso_efectivo"] == 0.026
 
 
 def test_estabilidad_monetaria_usa_pesos_40_25_25_10():
@@ -101,7 +134,7 @@ def test_estabilidad_monetaria_usa_pesos_40_25_25_10():
         "ipc_total": 0.40,
         "rem_ipc_12m": 0.25,
         "idm": 0.25,
-        "dolarizacion_depositos": 0.10,
+        "presion_dolarizacion": 0.10,
     }
 
 
@@ -150,15 +183,15 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(2.0, b["idm"]) == 85
     assert itcm.puntaje_banda(2.01, b["idm"]) == 60
     assert itcm.puntaje_banda(8.01, b["idm"]) == 10            # excedente fuerte
-    # Dolarización: brecha positiva = mayor preferencia relativa por USD
-    assert itcm.puntaje_banda(-25.0, b["dolarizacion_depositos"]) == 100
-    assert itcm.puntaje_banda(-24.99, b["dolarizacion_depositos"]) == 85
-    assert itcm.puntaje_banda(0.0, b["dolarizacion_depositos"]) == 85
-    assert itcm.puntaje_banda(0.01, b["dolarizacion_depositos"]) == 60
-    assert itcm.puntaje_banda(10.0, b["dolarizacion_depositos"]) == 60
-    assert itcm.puntaje_banda(10.01, b["dolarizacion_depositos"]) == 35
-    assert itcm.puntaje_banda(20.0, b["dolarizacion_depositos"]) == 35
-    assert itcm.puntaje_banda(20.01, b["dolarizacion_depositos"]) == 10
+    # Presión de dolarización: mayor presión = menor puntaje ITCM
+    assert itcm.puntaje_banda(0.0, b["presion_dolarizacion"]) == 100
+    assert itcm.puntaje_banda(0.01, b["presion_dolarizacion"]) == 85
+    assert itcm.puntaje_banda(25.0, b["presion_dolarizacion"]) == 85
+    assert itcm.puntaje_banda(25.01, b["presion_dolarizacion"]) == 60
+    assert itcm.puntaje_banda(50.0, b["presion_dolarizacion"]) == 60
+    assert itcm.puntaje_banda(50.01, b["presion_dolarizacion"]) == 35
+    assert itcm.puntaje_banda(75.0, b["presion_dolarizacion"]) == 35
+    assert itcm.puntaje_banda(75.01, b["presion_dolarizacion"]) == 10
     # TCRM: apreciación (nivel bajo) = más tensión
     assert itcm.puntaje_banda(110.1, b["tcrm"]) == 100         # competitivo
     assert itcm.puntaje_banda(110.0, b["tcrm"]) == 80          # high inclusivo
@@ -193,7 +226,7 @@ def test_ajuste_manual_aplicado():
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
     # fiscal = 0,6×57,3 (recaudación interpolada) + 0,4×60 (override) = 58,4
     assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 58.4
-    assert r["valor"] == 58.9
+    assert r["valor"] == 60.4
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
@@ -214,20 +247,20 @@ def test_ajuste_vencido_no_se_aplica(tmp_path):
 
 
 def test_renormalizacion_indicador_faltante():
-    """Sin REM, la dimensión monetaria renormaliza IPC, IDM y dolarización."""
+    """Sin REM, la dimensión renormaliza IPC, IDM y presión de dolarización."""
     valores = dict(EJEMPLO, rem_ipc_12m=None)
     r = itcm.calcular_itcm(valores)
-    # (63,7×0.40 + 51,7×0.25 + 10×0.10) / 0.75 = 52,54 → 52,5
-    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 52.5
-    assert abs(r["valor"] - 59.6) <= 0.05
+    # (63,7×0.40 + 51,7×0.25 + 64,8×0.10) / 0.75 = 59,85 → 59,8
+    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 59.8
+    assert abs(r["valor"] - 61.5) <= 0.05
 
 
-def test_sin_dolarizacion_renormaliza_los_componentes_disponibles():
-    valores = dict(EJEMPLO, dolarizacion_depositos=None)
+def test_sin_presion_dolarizacion_renormaliza_los_componentes_disponibles():
+    valores = dict(EJEMPLO, presion_dolarizacion=None)
     r = itcm.calcular_itcm(valores)
     estabilidad = r["dimensiones"]["estabilidad_monetaria"]
     assert estabilidad["puntaje"] == 64.8
-    assert "dolarizacion_depositos" not in estabilidad["indicadores"]
+    assert "presion_dolarizacion" not in estabilidad["indicadores"]
 
 
 def test_renormalizacion_dimension_faltante():
@@ -235,8 +268,8 @@ def test_renormalizacion_dimension_faltante():
     valores = dict(EJEMPLO, emae_ia=None)
     r = itcm.calcular_itcm(valores)
     assert "actividad" not in r["dimensiones"]
-    # estab=59.4 fiscal=68.4 financ=43.1 compet=45.7 inversión=54.7, sin actividad (0.11)
-    esperado = (0.26 * 59.4 + 0.24 * 68.4 + 0.16 * 43.1 + 0.11 * 45.7 + 0.12 * 54.7) / 0.89
+    # estab=64.8 fiscal=68.4 financ=43.1 compet=45.7 inversión=54.7, sin actividad (0.11)
+    esperado = (0.26 * 64.8 + 0.24 * 68.4 + 0.16 * 43.1 + 0.11 * 45.7 + 0.12 * 54.7) / 0.89
     assert abs(r["valor"] - esperado) <= 0.1
 
 

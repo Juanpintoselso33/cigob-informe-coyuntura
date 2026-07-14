@@ -53,11 +53,11 @@ Incorporaciones de la 3ª tanda (propuesta "Índice de Desequilibrio Monetario"
     (oferta vs demanda real de pesos) sin esos defectos. El IDM se computa en
     macro.py a partir de circulante (var. 17) + depósitos privados (var. 100) y
     M2 privado transaccional (var. 197) del BCRA, deflactados por el IPC.
-  * Dolarización de depósitos: indicador separado del IDM que compara el
-    crecimiento i.a. de depósitos privados denominados en USD con el crecimiento
-    i.a. real de depósitos privados en pesos. Una brecha positiva indica mayor
-    preferencia relativa por moneda extranjera. Los movimientos de CERA se
-    conservan en la serie publicada y no se usan para calibrar las bandas.
+  * Presión de dolarización de carteras: indicador separado del IDM que usa
+    brecha CCL/mayorista durante el régimen restringido y compras netas de USD
+    de personas humanas relativas al M2 privado durante el régimen abierto.
+    Ambos observables se convierten a una presión común 0-100; mayor presión
+    reduce el ITCM mediante anclas explícitas, sin confundir el CERA con una corrida.
   * Nueva dimensión COMPETITIVIDAD EXTERNA (12%): el TCRM (ITCRM oficial del BCRA,
     base 2015=100) deja de ser contexto y puntúa. Apreciación real = atraso
     cambiario = más tensión. Las 4 dimensiones originales se recortan en
@@ -80,6 +80,7 @@ macro.py como promedios ponderados de variaciones interanuales:
 from pathlib import Path
 
 import parametrica
+from presion_dolarizacion import ANCLAS_PUNTAJE
 
 INF = float("inf")
 
@@ -101,12 +102,12 @@ BANDAS_ITCM = {
         # may-26 va de −11 pp en la remonetización post-estabilización a +7 pp en el pico).
         (-INF, -2.0, 100), (-2.0, 2.0, 85), (2.0, 5.0, 60), (5.0, 8.0, 35), (8.0, INF, 10),
     ],
-    "dolarizacion_depositos": [         # pp: dep. privados USD i.a. − dep. pesos reales i.a.
-        # Positivo = preferencia relativa por depósitos en moneda extranjera, mayor tensión.
-        # Bandas calibradas con 2018-2023; sep-2024 a ago-2025 se conserva como quiebre
-        # regulatorio por CERA, pero queda fuera de futuras calibraciones.
-        (-INF, -25.0, 100), (-25.0, 0.0, 85), (0.0, 10.0, 60),
-        (10.0, 20.0, 35), (20.0, INF, 10),
+    "presion_dolarizacion": [           # presión de salida del peso, escala 0-100
+        # La categoría conserva los cortes institucionales; el puntaje continuo usa
+        # ANCLAS_ITCM para reproducir exactamente 0→100, 25→85, 50→60,
+        # 75→35 y 100→10, sin reinterpretar los cortes como puntos medios.
+        (-INF, 0.0, 100), (0.0, 25.0, 85), (25.0, 50.0, 60),
+        (50.0, 75.0, 35), (75.0, INF, 10),
     ],
     "recaudacion": [                    # % var mensual
         (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60), (-5.0, 0.0, 40), (-INF, -5.0, 10),
@@ -157,6 +158,10 @@ BANDAS_ITCM = {
     ],
 }
 
+ANCLAS_ITCM = {
+    "presion_dolarizacion": ANCLAS_PUNTAJE,
+}
+
 # Dimensiones del índice con su peso y la ponderación interna de indicadores.
 # Pesos de dimensión: operacionalización propia. La Paramétrica CIGOB define las 4
 # originales (35/30/20/15); las dimensiones 5ª (competitividad externa) y 6ª (inversión)
@@ -170,7 +175,7 @@ DIMENSIONES_ITCM = {
             "ipc_total": 0.40,
             "rem_ipc_12m": 0.25,
             "idm": 0.25,
-            "dolarizacion_depositos": 0.10,
+            "presion_dolarizacion": 0.10,
         },
     },
     "viabilidad_fiscal_comercial": {
@@ -326,4 +331,5 @@ def calcular_itcm(valores: dict, ajustes: dict | None = None) -> dict | None:
     """
     return parametrica.calcular_indice(
         valores, ajustes, BANDAS_ITCM, DIMENSIONES_ITCM,
-        BANDAS_INTERPRETACION, INTERPRETACION_LEGIBLE)
+        BANDAS_INTERPRETACION, INTERPRETACION_LEGIBLE,
+        anclas_por_indicador=ANCLAS_ITCM)

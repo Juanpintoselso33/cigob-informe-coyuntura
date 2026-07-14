@@ -15,6 +15,7 @@ from statistics import fmean, pstdev
 
 sys.path.insert(0, str(Path(__file__).parent))
 import itcm
+import presion_dolarizacion
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 sys.stdout.reconfigure(encoding="utf-8")
@@ -63,11 +64,11 @@ BCRA_REM_IPC_ID     = 29   # REM: mediana expectativas IPC próximos 12 meses (%
 BCRA_PRESTAMOS_ID   = 26   # Préstamos sector privado (millones ARS) — contexto
 BCRA_BASE_MON_ID    = 15   # Base monetaria (millones ARS)
 BCRA_TC_MAYOR_ID    = 5    # Tipo de cambio mayorista de referencia (ARS/USD)
-BCRA_DEP_PRIV_ID        = 100  # Depósitos privados en pesos — insumo IdC, IDM y dolarización
-BCRA_DEP_PRIV_ME_USD_ID = 108  # Depósitos privados en moneda extranjera, millones USD
+BCRA_DEP_PRIV_ID        = 100  # Depósitos privados en pesos — insumo IdC e IDM
 BCRA_PREST_PRIV_ID      = 117  # Préstamos otorgados al sector privado — insumo IdC
 BCRA_CIRCULANTE_ID      = 17   # Billetes y monedas en poder del público — insumo M3 privado (IDM)
 BCRA_M2_PRIV_ID         = 197  # M2 transaccional del sector privado — demanda de dinero (IDM)
+PRESION_MAX_REZAGO_MESES = 2   # Mercado de Cambios publica con hasta dos meses de rezago
 
 HTTP_TIMEOUT = 30
 HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"}
@@ -78,7 +79,7 @@ CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
     "emae_ia", "saldo_comercial_12m", "recaudacion", "tcrm",
-    "rem_ipc_12m", "idm", "dolarizacion_depositos", "iai", "icip",
+    "rem_ipc_12m", "idm", "presion_dolarizacion", "iai", "icip",
     "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
 ]
 
@@ -94,6 +95,10 @@ def save_cache(data: dict) -> None:
     CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(CACHE_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2, default=str)
+
+
+def _purgar_indicadores_obsoletos(indicadores: dict) -> None:
+    indicadores.pop("dolarizacion_depositos", None)
 
 
 def _warn(indicador: str, err: Exception) -> None:
@@ -251,38 +256,14 @@ def _idm_serie_mensual(meses_hist: int = 24) -> list:
     return out
 
 
-def _dolarizacion_depositos_serie_mensual(meses_hist: int = 24) -> list:
-    """Brecha entre depósitos privados en USD y depósitos en pesos reales.
-
-    Compara el crecimiento interanual del stock en moneda extranjera medido
-    directamente en USD con el crecimiento interanual real del stock en pesos.
-    Positivo = los depósitos en USD crecen más; negativo = los depósitos reales
-    en pesos crecen más. Devuelve
-    [(YYYY-MM, brecha_pp, crecimiento_usd_ia, crecimiento_pesos_real_ia)].
-    """
-    n = meses_hist + 14
-    dep_usd = _bcra_fin_de_mes(BCRA_DEP_PRIV_ME_USD_ID, n)
-    dep_pesos = _bcra_fin_de_mes(BCRA_DEP_PRIV_ID, n)
-    ipc = _ipc_indice_mensual(n)
-    comunes = set(dep_usd) & set(dep_pesos) & set(ipc)
-    out = []
-    for ym in sorted(comunes):
-        prev = _ym_shift(ym, -12)
-        if prev not in comunes:
-            continue
-        crecimiento_usd_ia = (dep_usd[ym] / dep_usd[prev] - 1.0) * 100.0
-        crecimiento_pesos_real_ia = (
-            (dep_pesos[ym] / ipc[ym])
-            / (dep_pesos[prev] / ipc[prev])
-            - 1.0
-        ) * 100.0
-        out.append((
-            ym,
-            round(crecimiento_usd_ia - crecimiento_pesos_real_ia, 2),
-            round(crecimiento_usd_ia, 2),
-            round(crecimiento_pesos_real_ia, 2),
-        ))
-    return out[-meses_hist:]
+def _presion_dolarizacion_serie_mensual(
+    meses_hist: int = 36,
+) -> list[dict]:
+    """Serie común de presión de dolarización para el titular y el backfill."""
+    return presion_dolarizacion.obtener_serie(
+        meses_hist=meses_hist,
+        fetch_bcra_fin_mes=_bcra_fin_de_mes,
+    )
 
 
 # ── Fetchers ──────────────────────────────────────────────────────────────────
@@ -330,18 +311,39 @@ def _num_es(s: str) -> float:
     return float(s.replace(".", "").replace(",", "."))
 
 
-def _tesoro_deposits_usd() -> float:
+def _mes_balance(sh, row: int) -> tuple[int, int] | None:
+    """Año y mes de una fila del balance BCRA: la columna 0 codifica el período
+    como AAAA.MM (ej. 2026.05 = mayo de 2026); None si la celda no es numérica."""
+    valor = sh.cell_value(row, 0)
+    if not isinstance(valor, (int, float)):
+        return None
+    anio = int(valor)
+    return anio, round((valor - anio) * 100)
+
+
+def _tesoro_deposits_usd(mes: str | None = None) -> float:
     """Depósitos del Tesoro en USD en el BCRA (M USD), del Balance Consolidado
     oficial (balbcrhis.xls): col 'Dep. del gobierno en ME' / TC / 1000 (el balance
-    está en miles de pesos). Es el término que el mercado suma de vuelta al neto
-    estricto para las 'netas de libre disponibilidad'."""
+    está en miles de pesos). Si se indica ``YYYY-MM``, usa el último balance de ese
+    mes para mantener la misma fecha de corte que la planilla SDDS."""
     import xlrd  # ya en requirements (1.2.0)
     r = requests.get(BCRA_BALANCE_URL, headers=HTTP_HEADERS, timeout=60, verify=False)
     r.raise_for_status()
     sh = xlrd.open_workbook(file_contents=r.content).sheet_by_name("B.C.R.A.")
-    fila = next(row for row in range(sh.nrows - 1, 26, -1)
-                if isinstance(sh.cell_value(row, BAL_COL_RESERVAS), (int, float))
-                and sh.cell_value(row, BAL_COL_RESERVAS))
+    filas = [
+        row for row in range(27, sh.nrows)
+        if isinstance(sh.cell_value(row, BAL_COL_RESERVAS), (int, float))
+        and sh.cell_value(row, BAL_COL_RESERVAS)
+    ]
+    if mes:
+        anio_objetivo, mes_objetivo = map(int, mes.split("-"))
+        filas = [
+            row for row in filas
+            if _mes_balance(sh, row) == (anio_objetivo, mes_objetivo)
+        ]
+    if not filas:
+        raise ValueError(f"balance BCRA: sin fila válida para {mes or 'último dato'}")
+    fila = filas[-1]
     tc  = float(sh.cell_value(fila, BAL_COL_TC))
     dep = float(sh.cell_value(fila, BAL_COL_DEP_GOB_ME))
     if tc <= 0:
@@ -401,18 +403,19 @@ def fetch_reservas_netas() -> dict | None:
     """Reservas NETAS de libre disponibilidad (el número del mercado), calculadas
     100% de datos oficiales, sin constantes:
         netas = SDDS estricto (planilla SDDS del BCRA) + depósitos del Tesoro (balance).
-    Validación: brutas SDDS vs API ±15%; si el PDF SDDS no parsea → FALLBACK
-    (brutas API − drenajes Sección II del último SDDS del config) + Tesoro. El término
-    del Tesoro tiene su propio try: si el balance no baja, se omite (degradación elegante).
-    Nunca queda mal en silencio."""
-    try:
-        tesoro = _tesoro_deposits_usd()
-    except Exception as e:
-        _warn("reservas_bcra (Tesoro, se omite)", e)
-        tesoro = 0.0
-
+    Ambos componentes usan el mismo mes de cierre. Validación: brutas SDDS vs API
+    ±15%; si el PDF SDDS no parsea → FALLBACK (brutas API − drenajes Sección II
+    del último SDDS del config) + Tesoro. Si el balance no aporta el mismo mes de
+    cierre, el indicador falla y el colector conserva el último cache como desactualizado.
+    Nunca se publica una reserva neta parcial como dato fresco."""
     try:
         s = _reservas_netas_sdds()
+        fecha_sdds = datetime.strptime(s["fecha"], "%d/%m/%y")
+        try:
+            tesoro = _tesoro_deposits_usd(fecha_sdds.strftime("%Y-%m"))
+        except Exception as e:
+            _warn("reservas_bcra (Tesoro del mes SDDS)", e)
+            return None
         brutas_api = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
         if abs(s["brutas"] - brutas_api) / brutas_api > 0.15:
             raise ValueError(f"brutas SDDS {s['brutas']:.0f} vs API {brutas_api:.0f} divergen >15%")
@@ -426,8 +429,7 @@ def fetch_reservas_netas() -> dict | None:
             "valor": round(netas, 0),
             "unidad": "Millones de USD",
             "fuente": "BCRA — Planilla SDDS y Balance Consolidado",
-            # la planilla trae dd/mm/yy; a ISO como el resto de las fichas
-            "fecha_dato": datetime.strptime(s["fecha"], "%d/%m/%y").date().isoformat(),
+            "fecha_dato": fecha_sdds.date().isoformat(),
             "netas_sdds_estricto": round(s["netas"], 0),
             "depositos_tesoro": round(tesoro, 0),
             "bopreal_12m": round(bopreal, 0),
@@ -442,10 +444,17 @@ def fetch_reservas_netas() -> dict | None:
         _warn("reservas_bcra (SDDS, cae a config)", e)
 
     try:  # FALLBACK: brutas API − drenajes Sección II del último SDDS (config) + Tesoro
-        brutas = float(_bcra_ultimo(BCRA_RESERVAS_ID)["valor"])
-        fecha  = _bcra_ultimo(BCRA_RESERVAS_ID)["fecha"]
+        ultimo = _bcra_ultimo(BCRA_RESERVAS_ID)
+        brutas = float(ultimo["valor"])
+        fecha = ultimo["fecha"]
         with open(RESERVAS_PASIVOS_PATH, encoding="utf-8") as f:
             cfg = json.load(f)
+        if str(cfg.get("actualizado", ""))[:7] != fecha[:7]:
+            raise ValueError(
+                "fallback de reservas: drenajes y reservas brutas "
+                "corresponden a meses distintos"
+            )
+        tesoro = _tesoro_deposits_usd(fecha[:7])
         estricto = brutas - float(cfg["drenajes_seccion_ii"])
         return {
             "valor": round(estricto + tesoro, 0),
@@ -802,29 +811,43 @@ def fetch_idm() -> dict | None:
         return None
 
 
-def fetch_dolarizacion_depositos() -> dict | None:
-    """Presión de dolarización de depósitos privados.
+def _rezago_mensual(mes: str, hoy: date | None = None) -> int:
+    """Meses calendario entre ``mes`` (YYYY-MM) y la fecha de referencia."""
+    hoy = hoy or date.today()
+    anio, numero_mes = map(int, mes.split("-"))
+    return (hoy.year - anio) * 12 + hoy.month - numero_mes
 
-    Brecha entre el crecimiento i.a. del stock denominado en USD y el
-    crecimiento i.a. real de los depósitos en pesos. Usa el último mes común
-    con IPC cerrado; no convierte a pesos el stock en moneda extranjera.
-    """
+
+def fetch_presion_dolarizacion() -> dict | None:
+    """Presión de salida del peso con observable específico para cada régimen."""
     try:
-        serie = _dolarizacion_depositos_serie_mensual()
+        serie = _presion_dolarizacion_serie_mensual()
         if not serie:
-            raise ValueError("sin meses con interanual disponible")
-        ym, brecha, crecimiento_usd_ia, crecimiento_pesos_real_ia = serie[-1]
+            raise ValueError("sin meses con insumos completos")
+        fila = serie[-1]
+        rezago = _rezago_mensual(fila["mes"])
+        if not 0 <= rezago <= PRESION_MAX_REZAGO_MESES:
+            raise ValueError(
+                f'último mes {fila["mes"]} fuera del rezago admisible '
+                f"(0-{PRESION_MAX_REZAGO_MESES} meses)"
+            )
         return {
-            "valor": brecha,
-            "unidad": "pp (brecha i.a.)",
-            "fuente": "BCRA — depósitos privados por moneda + INDEC — IPC nacional",
-            "fecha_dato": f"{ym}-01",
+            "valor": fila["presion"],
+            "unidad": "pts (0-100)",
+            "fuente": (
+                "ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y "
+                "Mercado de Cambios)"
+            ),
+            "fecha_dato": f'{fila["mes"]}-01',
             "desactualizado": False,
-            "crecimiento_usd_ia": crecimiento_usd_ia,
-            "crecimiento_pesos_real_ia": crecimiento_pesos_real_ia,
+            "regimen": fila["regimen"],
+            "metrica": fila["metrica"],
+            "ventana_meses": fila["ventana_meses"],
+            "ventana_parcial": fila["ventana_parcial"],
+            "puntaje_itcm": fila["puntaje_itcm"],
         }
     except Exception as e:
-        _warn("dolarizacion_depositos", e)
+        _warn("presion_dolarizacion", e)
         return None
 
 
@@ -1194,8 +1217,9 @@ def anotar_rem_mensual(indicadores: dict) -> None:
 
 
 def main() -> None:
-    cache_anterior         = load_cache()
+    cache_anterior = load_cache()
     indicadores_anteriores = cache_anterior.get("indicadores", {})
+    _purgar_indicadores_obsoletos(indicadores_anteriores)
 
     # Acumular el mes corriente de patentamientos comerciales (DNRPA no expone
     # histórico): cada corrida upserta un mes en el store que alimenta al IAI.
@@ -1215,7 +1239,7 @@ def main() -> None:
         ("tcrm",               fetch_tcrm),
         ("rem_ipc_12m",        fetch_rem_ipc_12m),
         ("idm",                fetch_idm),
-        ("dolarizacion_depositos", fetch_dolarizacion_depositos),
+        ("presion_dolarizacion", fetch_presion_dolarizacion),
         ("iai",                fetch_iai),
         ("icip",               fetch_icip),
         ("credito_privado",    fetch_credito_privado),
@@ -1230,6 +1254,7 @@ def main() -> None:
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
 
+    _purgar_indicadores_obsoletos(frescos)
     resultado = calcular_itcm_cinturon(frescos)
     anotar_indicadores(frescos, resultado)
     anotar_rem_mensual(frescos)

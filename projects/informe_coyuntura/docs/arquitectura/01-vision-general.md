@@ -24,9 +24,11 @@ sitio los agrega en un panel global.
 ## Las tres paramétricas
 
 - **ITCM** (macro): 6 dimensiones (26/24/16/11/11/12), 13 indicadores con
-  bandas ancladas e interpolación. Estabilidad monetaria combina IPC, REM, IDM
-  y dolarización de depósitos con pesos internos 40/25/25/10. ~58 pts al
-  cierre de esta foto.
+  anclas e interpolación. Estabilidad monetaria combina IPC, REM, IDM y presión
+  de dolarización de carteras con pesos internos 40/25/25/10. Esta última mide
+  un constructo latente con observable por régimen: brecha CCL/A3500 suavizada
+  antes de abril de 2025 y compras netas de personas sobre M2 privado desde la
+  apertura (ADR-0055).
 - **ITCG** (gestión): avance de la transformación del Estado, 0-100 con
   bandas por indicador. ~73 pts.
 - **ITVC-B100** (vida): índice de seguimiento con base 100 = 4T-2023
@@ -40,7 +42,7 @@ El detalle de agregación está en [03 — Motor paramétrico](03-motor-parametr
 1. **La app deployada es la fuente de verdad.** Los documentos metodológicos
    de origen son read-only; cuando la metodología evoluciona, cambia el
    código (scripts, ponderaciones, datos) y se documenta la decisión como ADR.
-2. **Toda decisión no trivial es un ADR** (`docs/adr/`, 54 al momento):
+2. **Toda decisión no trivial es un ADR** (`docs/adr/`, 55 al momento):
    rediseños de indicadores, criterios de familia (ragged edge, ADR-0030),
    tratamiento de outliers (ADR-0033), fuentes descartadas con evidencia.
 3. **Todo indicador automatizado reconstruye su serie hacia atrás** — mínimo
@@ -67,7 +69,7 @@ projects/informe_coyuntura/
 ├── web/                # sitio Astro (ver 04)
 ├── tests/              # pytest: motor paramétrico, fuentes y reconciliación
 └── docs/
-    ├── adr/            # decisiones (54)
+    ├── adr/            # decisiones (55)
     └── arquitectura/   # esta carpeta
 ```
 

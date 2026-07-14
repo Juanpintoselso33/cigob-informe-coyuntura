@@ -6,6 +6,7 @@ DATA = ROOT / "web" / "src" / "data"
 sys.path.insert(0, str(ROOT))                # para importar config.py
 sys.path.insert(0, str(ROOT / "scripts"))
 import publicar
+import itcm
 
 
 def test_build_vida_agrega_sentimiento_digital_aunque_trends_falle():
@@ -22,16 +23,101 @@ def test_build_vida_agrega_sentimiento_digital_aunque_trends_falle():
     assert enriquecido["sentimiento_digital"]["valor"] is None
 
 
-def test_macro_input_txt_descompone_dolarizacion_depositos():
+def test_macro_input_txt_explica_presion_dolarizacion_en_regimen_restringido():
     ind = {
-        "valor": 29.07,
-        "crecimiento_usd_ia": 27.76,
-        "crecimiento_pesos_real_ia": -1.31,
+        "valor": 75.15,
+        "regimen": "precio",
+        "metrica": 50.12,
+        "ventana_meses": 3,
+        "ventana_parcial": False,
     }
-    assert publicar._macro_input_txt("dolarizacion_depositos", ind) == (
-        "brecha 29,07 pp = depósitos USD 27,76% i.a. − depósitos en pesos "
-        "-1,31% i.a. real"
+    assert publicar._macro_input_txt("presion_dolarizacion", ind) == (
+        "presión 75,15 pts = brecha CCL/mayorista 50,12% "
+        "(promedio móvil 3 meses)"
     )
+
+
+def test_macro_input_txt_explica_transicion_del_regimen_abierto():
+    ind = {
+        "valor": 42.86,
+        "regimen": "flujo",
+        "metrica": 5.14,
+        "ventana_meses": 1,
+        "ventana_parcial": True,
+    }
+    assert publicar._macro_input_txt("presion_dolarizacion", ind) == (
+        "presión 42,86 pts = compras netas de USD de personas humanas "
+        "5,14% del M2 privado (ventana de transición: 1 mes)"
+    )
+
+
+def test_macro_input_txt_explica_ventana_movil_del_regimen_abierto():
+    ind = {
+        "valor": 45.24,
+        "regimen": "flujo",
+        "metrica": 5.43,
+        "ventana_meses": 3,
+        "ventana_parcial": False,
+    }
+    assert publicar._macro_input_txt("presion_dolarizacion", ind) == (
+        "presión 45,24 pts = compras netas de USD de personas humanas "
+        "5,43% del M2 privado (ventana móvil 3 meses)"
+    )
+
+
+def test_scoring_itcm_pasa_anclas_explicitas_al_monte_carlo(monkeypatch):
+    recibidos = {}
+
+    def robustez(*args, **kwargs):
+        recibidos.update(kwargs)
+        return {"p05": 0.0, "p95": 100.0}
+
+    monkeypatch.setattr(publicar.sensibilidad, "robustez_compacta", robustez)
+    cinturon = {
+        "itcm": {
+            "dimensiones": {
+                "estabilidad_monetaria": {
+                    "peso": 1.0,
+                    "puntaje": 60.0,
+                    "indicadores": {},
+                }
+            }
+        },
+        "indicadores": {},
+    }
+
+    publicar._scoring_indice(
+        cinturon,
+        "itcm",
+        itcm,
+        publicar.MACRO_CONTEXTO,
+        publicar._macro_input_txt,
+    )
+
+    assert recibidos["anclas"] == itcm.ANCLAS_ITCM
+
+
+def test_acumular_historico_purga_indicador_sustituido(monkeypatch, tmp_path):
+    historico = tmp_path / "indicadores.json"
+    historico.write_text(
+        json.dumps({"dolarizacion_depositos": {"2026-06": 29.07}}),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(publicar, "HISTORICO_PATH", historico)
+    informe = {
+        "cinturones": {
+            "macro": {
+                "indicadores": {
+                    "presion_dolarizacion": {"valor": 45.24},
+                }
+            }
+        }
+    }
+
+    store = publicar.acumular_historico(informe)
+
+    assert "dolarizacion_depositos" not in store
+    assert list(store["presion_dolarizacion"].values()) == [45.24]
 
 
 def test_carry_forward_restaura_sentimiento_digital_ausente_de_trends():
@@ -149,18 +235,16 @@ def test_macro_itcm_reconcilia():
     for oculto in ("badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto"
     assert "credito_privado" in en_indice
-    dolarizacion = en_indice["dolarizacion_depositos"]
-    assert dolarizacion["peso_efectivo"] == 0.026
-    assert dolarizacion["aporte_input_txt"] == (
-        f"brecha {str(dolarizacion['valor']).replace('.', ',')} pp = depósitos USD "
-        f"{str(dolarizacion['crecimiento_usd_ia']).replace('.', ',')}% i.a. − depósitos en pesos "
-        f"{str(dolarizacion['crecimiento_pesos_real_ia']).replace('.', ',')}% i.a. real"
+    presion = en_indice["presion_dolarizacion"]
+    assert presion["peso_efectivo"] == 0.026
+    assert presion["aporte_input_txt"] == publicar._macro_input_txt(
+        "presion_dolarizacion", presion
     )
-    serie_dolarizacion = json.loads((DATA / "series.json").read_text(encoding="utf-8"))[
-        "dolarizacion_depositos"
-    ]
-    assert serie_dolarizacion[0]["fecha"][:7] == "2023-12"
-    assert serie_dolarizacion[-1]["valor"] == dolarizacion["valor"]
+    series = json.loads((DATA / "series.json").read_text(encoding="utf-8"))
+    assert "dolarizacion_depositos" not in series
+    serie_presion = series["presion_dolarizacion"]
+    assert serie_presion[0]["fecha"][:7] == "2023-12"
+    assert serie_presion[-1]["valor"] == presion["valor"]
 
     ponderado = sum(i["puntaje_itcm"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itcm_val) <= 0.15, f"ponderado {ponderado} != ITCM {itcm_val}"

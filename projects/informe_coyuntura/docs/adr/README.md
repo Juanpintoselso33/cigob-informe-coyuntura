@@ -66,7 +66,8 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0051](0051-gestion-contexto-oculto.md) | Gestión: `alertas_manifestacion` y `protestas_caba` salen del tablero (`GESTION_OCULTOS`, mismo criterio 0022/0048/0049) — el último cinturón que publicaba cards de contexto; siguen en pipeline como seguimiento interno. Regla pareja: nada visible que no puntúe | Aceptado |
 | [0052](0052-conflictividad-nacional-acled.md) | Conflicto social del ITCP: `conflictividad_nacional` (Protests+Riots ACLED país entero, 12m vs total 2023, anclas −32/−29/−26/−15 sobre 30 puntos reales verificados contra la cronología de prensa) reemplaza a `movilizacion_cepa` (2 puntos, acumulado YTD no comparable, sin backfill posible), que pasa a contexto oculto; misma descarga ACLED que gestión (store suma `mensual_nacional`) | Aceptado |
 | [0053](0053-transparencia-y-agregados-monetarios-idm.md) | IDM: se conserva M3 privado en pesos y M2 transaccional BCRA 197; M3* no reemplaza la fórmula; la web publica peso interno × dimensión = peso efectivo y distingue aporte aritmético de tensión equivalente | Aceptado |
-| [0054](0054-dolarizacion-depositos-itcm.md) | `dolarizacion_depositos`: brecha entre depósitos privados en USD y depósitos reales en pesos entra al ITCM con 2,6% efectivo; medición directa en USD, bandas 2018–2023 y quiebre CERA declarado | Aceptado |
+| [0054](0054-dolarizacion-depositos-itcm.md) | `dolarizacion_depositos`: brecha entre depósitos privados en USD y depósitos reales en pesos; formulación de stocks interanuales afectada por CERA y el cambio de régimen | Superado por 0055 |
+| [0055](0055-presion-dolarizacion-carteras-itcm.md) | `presion_dolarizacion`: presión latente de salida del peso con observable por régimen — brecha CCL/A3500 restringida y compras netas de personas sobre M2 en el régimen abierto; escala común y 2,6% nominal del ITCM | Aceptado |
 
 ## Contexto general
 

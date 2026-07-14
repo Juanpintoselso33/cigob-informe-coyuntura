@@ -179,7 +179,7 @@ def construir_serie_itcm() -> dict:
     ipc_mm = m("ipc_total")               # ya publicada en % m/m (04-jul-2026)
     rem = m("rem_ipc_12m")                # % anual → equivalente mensual
     saldo = m("saldo_comercial")          # M USD mensual → suma móvil 12m
-    directos = {k: m(k) for k in ("idm", "dolarizacion_depositos", "recaudacion",
+    directos = {k: m(k) for k in ("idm", "presion_dolarizacion", "recaudacion",
                                   "reservas_bcra", "idc", "credito_privado",
                                   "emae_ia", "tcrm")}
 

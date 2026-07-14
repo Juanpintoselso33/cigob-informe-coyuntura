@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-14 00:12:16"
-score_global: 2.6
+generado: "2026-07-14 15:30:19"
+score_global: 2.5
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,11 +9,11 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 2.6/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 2.5/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
-### 🟡 Macro — score 4.2/10 (en_tension)
+### 🟡 Macro — score 4.1/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -28,7 +28,7 @@ schema_version: "1.2.0"
 | tcrm | 85.04 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
 | rem_ipc_12m | 22.3 | % anual esperado | 2026-06-30 | fresco |
 | idm | 4.3 | pp (brecha i.a. real) | 2026-05-01 | fresco |
-| dolarizacion_depositos | 29.07 | pp (brecha i.a.) | 2026-05-01 | fresco |
+| presion_dolarizacion | 45.24 | pts (0-100) | 2026-05-01 | fresco |
 | iai | 0.31 | % i.a. ponderado | 2026-05-01 | fresco |
 | icip | 8.3 | % i.a. ponderado | 2026-04-01 | fresco |
 | credito_privado | 9.5 | % i.a. real | 2026-05-01 | fresco |
@@ -41,18 +41,18 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| votometro_ventaja_lla | 5.3 | Puntos porcentuales | 2026-05-28 | fresco |
-| ratio_dnu | 1.529 | DNUs por ley | 2026-07-13 | fresco |
-| conflictividad_nacional | -21.4 | % vs 2023 | 2026-05-01 | fresco |
-| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | ⚠ cache |
-| iaf_transferencias | 7.0 | % interanual real | 2026-07-13 | fresco |
-| eficacia_legislativa | 4.3 | % de proyectos | 2026-07-13 | fresco |
-| veto_quorum | 0.0 | % de sesiones | 2026-07-13 | fresco |
-| comisiones_caidas | 97.7 | % de proyectos | 2026-07-13 | fresco |
-| adhesion_reformas_provincial | 66.7 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-07-13 | fresco |
-| derrotas_legislativas | 8 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-07-13 | fresco |
-| rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-07-13 | fresco |
-| protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
+| votometro_ventaja_lla | 3.1 | Puntos porcentuales | 2026-06-10 | fresco |
+| ratio_dnu | 1.588 | DNUs por ley | 2026-07-14 | fresco |
+| conflictividad_nacional | -23.2 | % vs 2023 | 2026-06-01 | fresco |
+| movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | fresco |
+| iaf_transferencias | 7.0 | % interanual real | 2026-07-14 | fresco |
+| eficacia_legislativa | 4.3 | % de proyectos | 2026-07-14 | fresco |
+| veto_quorum | 0.0 | % de sesiones | 2026-07-14 | fresco |
+| comisiones_caidas | 97.7 | % de proyectos | 2026-07-14 | fresco |
+| adhesion_reformas_provincial | 66.7 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-07-14 | fresco |
+| derrotas_legislativas | 8 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-07-14 | fresco |
+| rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-07-14 | fresco |
+| protestas_caba | 294 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-06-01 | fresco |
 | cohesion_bloque | 99.7 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-06-24 | fresco |
 | alineamiento_senadores_prov | 68.3 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-06-04 | fresco |
 
@@ -70,23 +70,23 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 5.24 | % de brecha CCL/mayorista | 2026-07-13 | fresco |
+| cepo_mulc | 5.77 | % de brecha CCL/mayorista | 2026-07-14 | fresco |
 | apertura_comercial | 4.86 | % del intercambio (alícuota efectiva) | 2026-05-01 | fresco |
-| desregulacion_normativa | 61.0 | % de avance (proxy InfoLeg) | 2026-07-13 | fresco |
+| desregulacion_normativa | 61.0 | % de avance (proxy InfoLeg) | 2026-07-14 | fresco |
 | reduccion_estado | -19.8 | % de variación vs dic-2023 (dotación APN) | 2026-05-01 | fresco |
 | gasto_funcionamiento | -24.35 | % de variación real vs 2023-05 (IMIG funcionamiento) | 2026-05-01 | fresco |
 | masa_salarial | -22.98 | % de variación real vs 2023-05 (SPN remuneraciones) | 2026-05-01 | fresco |
-| reestructuracion_organismos | 40.0 | % de avance (proxy InfoLeg) | 2026-07-13 | fresco |
-| fal_modernizacion_laboral | 2.9 | Índice 0–100 (Fondo de Cese: cobertura + adopción financiera) | 2026-07-13 | fresco |
+| reestructuracion_organismos | 40.0 | % de avance (proxy InfoLeg) | 2026-07-14 | fresco |
+| fal_modernizacion_laboral | 2.9 | Índice 0–100 (Fondo de Cese: cobertura + adopción financiera) | 2026-07-14 | fresco |
 | litigiosidad_laboral | 3.6 | % variación juicios SRT (12m vs 12m previos) | 2026-03-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
-| rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-13 | fresco |
+| rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-14 | fresco |
 | concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-07-02 | ⚠ cache |
-| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-07-13 | fresco |
+| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-07-14 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 31.8 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-03-01 | fresco |
-| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-13 | fresco |
-| protestas_caba | 301 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-05-01 | fresco |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-14 | fresco |
+| protestas_caba | 294 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-06-01 | fresco |
 
 ### 🟢 Espiritu Epoca — score 0.6/10 (estable)
 *Riesgo de barbarismo: político*
@@ -94,14 +94,13 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 42.5 | índice | 2026-06-01 | fresco |
-| sentimiento_digital | 5.3 | interés 0–100 | 2026-07-13 | fresco |
-| clima_electoral | 5.3 | pp (LLA − PJ) | 2026-05-28 | fresco |
+| sentimiento_digital | 6.0 | interés 0–100 | 2026-07-14 | fresco |
+| clima_electoral | 3.1 | pp (LLA − PJ) | 2026-06-10 | fresco |
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ## Advertencias
 
-- `desactualizado:politica:movilizacion_cepa`
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-07-14 00:12:16 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-14 15:30:19 — schema 1.2.0*

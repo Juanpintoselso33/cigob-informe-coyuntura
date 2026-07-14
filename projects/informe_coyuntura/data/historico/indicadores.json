@@ -68,9 +68,6 @@
     "2026-06": 60.0,
     "2026-07": 61.0
   },
-  "dolarizacion_depositos": {
-    "2026-07": 29.07
-  },
   "eficacia_legislativa": {
     "2026-06": 4.3,
     "2026-07": 4.3
@@ -81,7 +78,7 @@
   },
   "endeudamiento_familiar": {
     "2026-06": 45.15,
-    "2026-07": 45.61
+    "2026-07": 46.03
   },
   "fal_modernizacion_laboral": {
     "2026-07": 2.9
@@ -162,6 +159,9 @@
   "pluriempleo": {
     "2026-06": 7.5,
     "2026-07": 7.5
+  },
+  "presion_dolarizacion": {
+    "2026-07": 45.24
   },
   "prestamos_privados": {
     "2026-06": 2.55,

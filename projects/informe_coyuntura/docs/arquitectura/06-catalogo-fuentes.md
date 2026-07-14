@@ -18,7 +18,7 @@ se completarán en detalle cuando pasen por la revisión uno-por-uno.)
 | `tcrm` | BCRA planilla ITCRM (xlsx) | diaria | + bilaterales Brasil/EEUU/China para el comparado |
 | `rem_ipc_12m` | BCRA REM (API monetarias) | mensual | — |
 | `idm` | BCRA M3 privado + M2 transaccional privado + IPC | mensual | brecha i.a. real en pp; pesos contra pesos (ADR-0053) |
-| `dolarizacion_depositos` | BCRA depósitos privados por moneda (v.108 en USD y v.100 en ARS) + IPC INDEC | mensual (último mes común) | brecha entre crecimiento i.a. en USD y crecimiento i.a. real en pesos; CERA se conserva como quiebre (ADR-0054) |
+| `presion_dolarizacion` | Régimen restringido: ArgentinaDatos CCL + BCRA A3500 (v.5). Régimen abierto: BCRA Mercado de Cambios — Personas Humanas, M2 privado (v.197) y A3500 | mensual; ventana contigua 3m, con transición 1/2/3m desde abr-2025 | presión latente 0-100: brecha CCL/A3500 antes de la apertura y compras netas / M2 privado en USD después; evita los efectos contemporáneos y de base de CERA de la fórmula de stocks. Solapamiento histórico declarado con `cepo_mulc` (ADR-0055) |
 | `iai` | INDEC ISAC + ICA bienes de capital | mensual | mes común (ADR-0030), BK provisorio declarado |
 | `icip` | INDEC balanza de servicios + IPI/EIL | mensual | mes común de 3 insumos |
 | `credito_privado` | BCRA préstamos privados (v.26) + IPC | mensual | nivel a mes cerrado, diario provisorio |

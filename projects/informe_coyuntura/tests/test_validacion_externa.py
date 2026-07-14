@@ -13,11 +13,11 @@ def test_carga_itcm_prioriza_csv_fresco_y_preserva_historico(monkeypatch, tmp_pa
     snapshot = tmp_path / "series.json"
     snapshot.write_text(json.dumps({
         "idm": [{"fecha": "2023-12-01", "valor": 1.0}],
-        "dolarizacion_depositos": [{"fecha": "2023-12-01", "valor": -99.0}],
+        "presion_dolarizacion": [{"fecha": "2023-12-01", "valor": -99.0}],
     }), encoding="utf-8")
     monkeypatch.setattr(validacion_externa, "SERIES", snapshot)
     monkeypatch.setattr(validacion_externa.publicar, "build_series", lambda: {
-        "dolarizacion_depositos": [
+        "presion_dolarizacion": [
             {"fecha": "2023-12-01", "valor": -2.0},
             {"fecha": "2024-01-01", "valor": 1.5},
         ],
@@ -26,7 +26,7 @@ def test_carga_itcm_prioriza_csv_fresco_y_preserva_historico(monkeypatch, tmp_pa
     series = validacion_externa._cargar_series_itcm()
 
     assert series["idm"] == [{"fecha": "2023-12-01", "valor": 1.0}]
-    assert series["dolarizacion_depositos"][-1] == {
+    assert series["presion_dolarizacion"][-1] == {
         "fecha": "2024-01-01",
         "valor": 1.5,
     }
@@ -35,7 +35,7 @@ def test_carga_itcm_prioriza_csv_fresco_y_preserva_historico(monkeypatch, tmp_pa
 def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
     monkeypatch.setattr(validacion_externa, "_cargar_series_itcm", lambda: {
         "ipc_total": [{"fecha": "2023-12-01", "valor": 25.5}],
-        "dolarizacion_depositos": [{"fecha": "2023-12-01", "valor": -2.0}],
+        "presion_dolarizacion": [{"fecha": "2023-12-01", "valor": -2.0}],
     })
     recibidos = []
 
@@ -51,7 +51,7 @@ def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
         "rem_ipc_12m": None,
         "saldo_comercial_12m": None,
         "idm": None,
-        "dolarizacion_depositos": -2.0,
+        "presion_dolarizacion": -2.0,
         "recaudacion": None,
         "reservas_bcra": None,
         "idc": None,

@@ -14,12 +14,16 @@ Colectores de datos para los cinco cinturones del marco CIGOB-Matus (Macro, Pol�
 
 Macro y gestión se puntúan con índices paramétricos 0–100 de dimensiones ponderadas
 (**ITCM**, diseño original en `docs/archivo/cinturon_macro.md` — superado por los
-ADRs 0009/0010/0021/0022/0053/0054, versión vigente en `scripts/itcm.py`, y **ITCG**, 5
+ADRs 0009/0010/0021/0022/0053/0055, versión vigente en `scripts/itcm.py`, y **ITCG**, 5
 dimensiones 35/25/15/15/10 del
 doc 260702 — ver `docs/adr/0013-itcg-parametrica-gestion.md`; motor común en
 `scripts/parametrica.py`); el resto promedia tensiones 0–10. El score global pondera
 los cinco cinturones por fase del mandato (`config.py`: fase temprana 20% parejo;
 consolidación 25/25/20/15/15, según la ponderación temporal del Marco Conceptual).
+En el ITCM, `presion_dolarizacion` mide la presión latente de salida del peso con
+un observable acorde a cada régimen: brecha CCL/A3500 suavizada antes de abril de
+2025 y compras netas de personas sobre M2 privado desde la apertura; ambos se
+traducen a una escala común (ADR-0055).
 
 Documento de referencia con detalle por indicador: [`docs/260523_proyecto_pais_estado_extraccion.md`](docs/260523_proyecto_pais_estado_extraccion.md).
 

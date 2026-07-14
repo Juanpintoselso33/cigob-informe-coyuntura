@@ -23,9 +23,9 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\underbrace{\text{crecim. real de }M3}_{\text{pesos que HAY}}\;-\;\underbrace{\text{crecim. real de }M2}_{\text{pesos que la gente QUIERE}}`,
     leyenda: "Crecimientos interanuales reales (descontada la inflación) de los agregados privados. Positivo = sobran pesos → presión sobre precios y brecha; negativo = remonetización genuina.",
   },
-  dolarizacion_depositos: {
-    latex: String.raw`\underbrace{\left(\frac{\text{dep. USD}_{t}}{\text{dep. USD}_{t-12}}-1\right)}_{\text{crecimiento i.a. en USD}}\times 100\;-\;\underbrace{\left(\frac{\text{dep. pesos}_{t}/\text{IPC}_{t}}{\text{dep. pesos}_{t-12}/\text{IPC}_{t-12}}-1\right)}_{\text{crecimiento i.a. real en pesos}}\times 100`,
-    leyenda: "Compara los depósitos en moneda extranjera en su unidad original con los depósitos en pesos descontados por IPC. Positivo = los depósitos en USD crecen más; negativo = crecen más los depósitos reales en pesos.",
+  presion_dolarizacion: {
+    latex: String.raw`\begin{cases}P_t=f_{precio}\!\left(\overline{100\left(\frac{CCL}{TC_{may}}-1\right)}_{\,3m}\right),&\text{régimen restringido}\\[6pt]P_t=f_{flujo}\!\left(100\,\frac{\sum \text{compras netas USD de personas humanas}}{\sum \left(M2_{privado,ARS}/TC_{may}\right)}\right),&\text{régimen abierto}\end{cases}\qquad \text{puntaje ITCM}=g(P_t),\;P_t\in[0,100]`,
+    leyenda: "La señal cambia con el régimen. Hasta marzo de 2025 usa el promedio móvil de tres meses de la brecha CCL/mayorista. Desde abril usa las compras netas de dólares de personas humanas como porcentaje del M2 privado expresado en USD: una ventana de 1 mes en abril, 2 en mayo y 3 meses desde junio. Ambas métricas se convierten a presión 0–100; mayor presión implica menor puntaje ITCM.",
   },
   recaudacion: {
     latex: String.raw`\frac{1}{3}\sum_{\text{\'ultimos 3 meses}}\left(\frac{\text{recaudaci\'on}_{m}}{\text{recaudaci\'on}_{m-12}}\cdot\frac{\text{IPC}_{m-12}}{\text{IPC}_{m}}-1\right)\times 100`,

@@ -8,48 +8,48 @@
     "adr": "0019"
   },
   "itcm": {
-    "valor_publicado": 57.5,
-    "valor_recomputado": 57.5,
+    "valor_publicado": 59.0,
+    "valor_recomputado": 59.0,
     "experimentos": {
       "pesos": {
-        "media": 57.6,
-        "p05": 56.6,
-        "p95": 58.6,
-        "desvio": 0.62
+        "media": 59.0,
+        "p05": 57.9,
+        "p95": 60.1,
+        "desvio": 0.64
       },
       "combinado": {
-        "media": 57.4,
-        "p05": 55.9,
-        "p95": 59.0,
-        "desvio": 0.94
+        "media": 58.9,
+        "p05": 57.3,
+        "p95": 60.4,
+        "desvio": 0.96
       },
       "insumos": {
-        "media": 57.4,
-        "p05": 56.2,
-        "p95": 58.6,
-        "desvio": 0.72
+        "media": 58.9,
+        "p05": 57.6,
+        "p95": 60.0,
+        "desvio": 0.73
       }
     },
     "leave_one_out": {
-      "recaudacion": 63.9,
-      "saldo_comercial_12m": 53.3,
-      "dolarizacion_depositos": 59.1,
-      "rem_ipc_12m": 56.0,
-      "ipc_total": 56.1,
-      "tcrm": 58.8,
-      "reservas_bcra": 58.6,
-      "idm": 58.4,
-      "iai": 58.4,
-      "idc": 57.0,
-      "icip": 57.0,
-      "emae_ia": 57.1,
-      "credito_privado": 57.2
+      "recaudacion": 65.3,
+      "saldo_comercial_12m": 54.7,
+      "tcrm": 60.4,
+      "idm": 60.3,
+      "rem_ipc_12m": 57.9,
+      "reservas_bcra": 60.0,
+      "iai": 59.9,
+      "ipc_total": 58.4,
+      "idc": 58.4,
+      "icip": 58.4,
+      "credito_privado": 58.7,
+      "emae_ia": 58.7,
+      "presion_dolarizacion": 59.1
     },
     "tension": {
-      "base": 4.2,
+      "base": 4.1,
       "rango_combinado": [
-        4.1,
-        4.4
+        4.0,
+        4.3
       ]
     }
   },

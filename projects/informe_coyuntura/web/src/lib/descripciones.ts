@@ -62,10 +62,10 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala un excedente monetario que puede presionar sobre los precios y la brecha cambiaria; una negativa indica una remonetización traccionada por la demanda real de dinero.",
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
-  dolarizacion_depositos: {
-    que: "La brecha entre el crecimiento interanual de los depósitos privados en moneda extranjera, medidos directamente en dólares, y el crecimiento interanual real de los depósitos privados en pesos.",
-    aporta: "Mide la preferencia relativa entre ahorrar en moneda extranjera o en pesos: una brecha positiva señala mayor presión de dolarización; una negativa indica que los depósitos reales en pesos crecen más.",
-    frecuencia: "Mensual", tipo: "Brecha i.a.",
+  presion_dolarizacion: {
+    que: "Una medida de 0 a 100 de la presión por salir del peso. Bajo restricciones cambiarias observa la brecha entre el dólar CCL y el mayorista; desde abril de 2025 observa las compras netas de dólares de personas humanas en relación con el M2 privado.",
+    aporta: "Distingue la presión de cartera que se expresa en precios paralelos de la que, con acceso abierto, se expresa en compras efectivas de divisas. Mayor presión reduce el puntaje de estabilidad monetaria.",
+    frecuencia: "Mensual", tipo: "Presión 0–100",
   },
   iai: {
     que: "Índice Anticipador de Inversión: mide la inversión física/tradicional combinando la actividad de la construcción (ISAC) y la importación de bienes de capital, en variación interanual.",
@@ -338,7 +338,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
 // Claves únicas entre ITCM/ITCG/ITVC.
 export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCM
-  estabilidad_monetaria: "La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), el desequilibrio entre oferta y demanda transaccional de pesos (IDM) y la preferencia relativa por depósitos en dólares frente a depósitos reales en pesos.",
+  estabilidad_monetaria: "La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), el desequilibrio entre oferta y demanda transaccional de pesos (IDM) y la presión por salir del peso, observada según el régimen cambiario vigente.",
   viabilidad_fiscal_comercial: "Si las cuentas cierran: la recaudación real (el sostén del ancla fiscal) y el saldo comercial (los dólares genuinos del intercambio).",
   financiamiento: "Si hay combustible para la economía: reservas netas (el respaldo externo), capacidad prestable del sistema financiero (IdC) y crédito real efectivamente otorgado.",
   actividad: "Si la economía crece o se contrae: el EMAE interanual como pulso general de la actividad.",
