@@ -171,13 +171,13 @@ export const FICHAS: Record<string, Ficha> = {
     sigla: "ITCM",
     nombreLargo: "Índice de Tensión del Cinturón Macroeconómico",
     cinturon: "macro",
-    resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Doce indicadores en seis dimensiones, con umbrales y pesos de la paramétrica institucional CIGOB.",
+    resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Trece indicadores en seis dimensiones, con umbrales y pesos de la paramétrica institucional CIGOB.",
     marcoConceptual: [
       "El informe lee la realidad como un sistema de cinco cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales y externas, financiamiento, actividad, competitividad e inversión.",
       "El marco, las dimensiones, los umbrales y los pesos provienen de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). El índice no estima esos parámetros a partir de los datos: los toma del marco y luego mide — con las herramientas de robustez de abajo — cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
-      "Doce indicadores agrupados en seis dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023).",
+      "Trece indicadores agrupados en seis dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023).",
       "Las variables nominales de seguimiento (préstamos y base monetaria nominales, tipo de cambio mayorista, BADLAR) se extraen como insumo de cálculo pero no se publican como indicadores del cinturón: en un régimen de desinflación, su variación nominal confunde más de lo que informa. La BADLAR entra al índice a través de la tasa real del IdC; el crédito entra deflactado.",
     ],
     tratamiento: [
@@ -536,13 +536,14 @@ export const FICHAS: Record<string, Ficha> = {
       "La conversión a equivalente mensual supone un ritmo constante a lo largo del año esperado.",
       "La escala vigente es una decisión propia: las bandas absolutas del documento original quedaron miscalibradas para un régimen de desinflación y se reemplazaron, con el cambio documentado.",
     ],
-    faltantes: "Si el dato falta, se usa el último valor en caché marcado como desactualizado; sin dato, el IPC y el IDM renormalizan dentro de la dimensión de estabilidad monetaria.",
+    faltantes: "Si el dato falta, se usa el último valor en caché marcado como desactualizado; sin dato, el IPC, el IDM y la dolarización de depósitos renormalizan dentro de la dimensión de estabilidad monetaria.",
     revisiones: "El REM publicado no se revisa: cada mes es un relevamiento nuevo.",
     cambios: [
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, con bandas absolutas sobre el nivel anual." },
       { fecha: "2026-06-26", cambio: "Pasa a puntuarse por el equivalente mensual con las bandas del IPC, tras descartarse una versión intermedia por brecha contra el ritmo corriente." },
       { fecha: "2026-06-28", cambio: "Su peso interno baja de 50% a 30% de la dimensión al entrar el IDM." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-07-13", cambio: "Su peso interno pasa de 30% a 25% al incorporarse la dolarización de depósitos como cuarta señal de estabilidad monetaria." },
     ],
   },
 
@@ -580,12 +581,13 @@ export const FICHAS: Record<string, Ficha> = {
       "Las bandas están calibradas con una historia corta (fines de 2024 en adelante): desde −11 puntos en la remonetización hasta +7 en el pico de excedente.",
       "La fórmula es una reinterpretación documentada de la propuesta institucional: la versión literal (nominal contra real, mensual) tenía sesgo inflacionario y estacionalidad de aguinaldo, y se reemplazó por la versión interanual real-real.",
     ],
-    faltantes: "Si falta un insumo, se usa el último valor en caché marcado como desactualizado; sin dato, IPC y REM renormalizan dentro de la dimensión.",
+    faltantes: "Si falta un insumo, se usa el último valor en caché marcado como desactualizado; sin dato, IPC, REM y dolarización de depósitos renormalizan dentro de la dimensión.",
     revisiones: "Los stocks del BCRA no se revisan de forma habitual; la serie se regenera completa en cada corrida.",
     cambios: [
       { fecha: "2026-06-28", cambio: "Nace y entra al índice: la dimensión de estabilidad monetaria pasa de IPC 50% / REM 50% a IPC 40% / REM 30% / IDM 30%, en versión interanual real-real." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-13", cambio: "Aclaración de transparencia, sin cambio metodológico: la ficha explicita la composición del M2 transaccional y publica la cadena completa de ponderación y el aporte vigente del IDM al ITCM." },
+      { fecha: "2026-07-13", cambio: "Su peso interno pasa de 30% a 25% al incorporarse la dolarización de depósitos; su peso nominal efectivo en el ITCM pasa de 7,8% a 6,5%." },
     ],
   },
 

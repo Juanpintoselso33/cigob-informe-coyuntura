@@ -5,7 +5,7 @@ cómo llega y qué lo amortigua. Credenciales: solo donde se indica.
 (Los cinturones política y espíritu de época están **pre-barrido**: sus filas
 se completarán en detalle cuando pasen por la revisión uno-por-uno.)
 
-## Macro (12 puntuables + 4 nominales ocultos)
+## Macro (13 puntuables + 4 nominales ocultos)
 
 | Indicador | Fuente / vía | Frec. y rezago | Notas de resiliencia / ADRs |
 |---|---|---|---|
@@ -17,7 +17,8 @@ se completarán en detalle cuando pasen por la revisión uno-por-uno.)
 | `recaudacion` | Sec. Hacienda vía datos.gob.ar | mensual, días | media móvil 3m del i.a. real sobre meses con IPC cerrado (ADR-0029); fresco provisorio en detalle |
 | `tcrm` | BCRA planilla ITCRM (xlsx) | diaria | + bilaterales Brasil/EEUU/China para el comparado |
 | `rem_ipc_12m` | BCRA REM (API monetarias) | mensual | — |
-| `idm` | BCRA M3 privado + IPC | mensual | brecha i.a. real en pp |
+| `idm` | BCRA M3 privado + M2 transaccional privado + IPC | mensual | brecha i.a. real en pp; pesos contra pesos (ADR-0053) |
+| `dolarizacion_depositos` | BCRA depósitos privados por moneda (v.108 en USD y v.100 en ARS) + IPC INDEC | mensual (último mes común) | brecha entre crecimiento i.a. en USD y crecimiento i.a. real en pesos; CERA se conserva como quiebre (ADR-0054) |
 | `iai` | INDEC ISAC + ICA bienes de capital | mensual | mes común (ADR-0030), BK provisorio declarado |
 | `icip` | INDEC balanza de servicios + IPI/EIL | mensual | mes común de 3 insumos |
 | `credito_privado` | BCRA préstamos privados (v.26) + IPC | mensual | nivel a mes cerrado, diario provisorio |

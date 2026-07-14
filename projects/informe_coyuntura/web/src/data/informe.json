@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-13T23:15:03.318047",
+  "generated_at": "2026-07-14T00:12:16.401393",
   "period": "2026-07",
   "score_global": 3.4,
   "ponderacion": {
@@ -654,13 +654,13 @@
             ],
             [
               "2026-05",
-              55.3,
+              55.4,
               521.0
             ]
           ],
           "plot": "minmax_inv",
           "titulo": "¿El ITCM se mueve con el precio del riesgo argentino?",
-          "sub": "El contraste natural del cinturón macro es el mercado: si la tensión macroeconómica afloja, la Argentina debería pagar menos por su deuda. El ITCM se reconstruye mes a mes desde las series de diez de sus doce componentes (sin el capítulo inversión ni los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución) y se compara con el riesgo país (EMBI), que no integra el índice. La correlación esperada es negativa: más ITCM (menos tensión), menos riesgo país.",
+          "sub": "El contraste natural del cinturón macro es el mercado: si la tensión macroeconómica afloja, la Argentina debería pagar menos por su deuda. El ITCM se reconstruye mes a mes desde las series de once de sus trece componentes (IAI e ICIP no ingresan en esta reconstrucción histórica, ni tampoco los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución) y se compara con el riesgo país (EMBI), que no integra el índice. La correlación esperada es negativa: más ITCM (menos tensión), menos riesgo país.",
           "serie_label": "ITCM (reconstrucción mensual)",
           "externa_label": "riesgo país (EMBI, invertido)",
           "trans_label": "series normalizadas al rango del período; el riesgo país se muestra invertido",
@@ -1655,8 +1655,8 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": 0.47,
-          "r_diferencias": 0.351,
+          "r_niveles": 0.463,
+          "r_diferencias": 0.315,
           "n": 30,
           "pares": [
             [
@@ -1666,17 +1666,17 @@
             ],
             [
               "2024-01",
-              89.9,
+              90.0,
               32.7
             ],
             [
               "2024-02",
-              88.6,
+              88.7,
               33.8
             ],
             [
               "2024-04",
-              89.6,
+              89.7,
               38.5
             ],
             [
@@ -1691,12 +1691,12 @@
             ],
             [
               "2024-07",
-              95.4,
+              95.5,
               36.3
             ],
             [
               "2024-08",
-              95.9,
+              95.8,
               43.0
             ],
             [
@@ -1706,7 +1706,7 @@
             ],
             [
               "2024-10",
-              99.3,
+              99.4,
               39.5
             ],
             [
@@ -1716,12 +1716,12 @@
             ],
             [
               "2024-12",
-              102.2,
+              102.3,
               42.2
             ],
             [
               "2025-01",
-              102.0,
+              102.1,
               44.8
             ],
             [
@@ -1736,7 +1736,7 @@
             ],
             [
               "2025-04",
-              100.7,
+              100.9,
               42.4
             ],
             [
@@ -1746,17 +1746,17 @@
             ],
             [
               "2025-06",
-              99.3,
+              99.4,
               43.8
             ],
             [
               "2025-07",
-              100.8,
+              100.9,
               47.2
             ],
             [
               "2025-08",
-              98.3,
+              98.4,
               37.1
             ],
             [
@@ -1766,22 +1766,22 @@
             ],
             [
               "2025-10",
-              99.7,
+              99.8,
               40.3
             ],
             [
               "2025-11",
-              97.7,
+              98.0,
               39.9
             ],
             [
               "2025-12",
-              95.4,
+              95.2,
               48.3
             ],
             [
               "2026-01",
-              91.7,
+              91.8,
               47.6
             ],
             [
@@ -1796,17 +1796,17 @@
             ],
             [
               "2026-04",
-              91.3,
+              91.4,
               38.1
             ],
             [
               "2026-05",
-              91.6,
+              91.7,
               40.5
             ],
             [
               "2026-06",
-              92.2,
+              92.3,
               42.5
             ]
           ],
@@ -1816,7 +1816,7 @@
           "serie_label": "ITVC sin su componente de confianza",
           "externa_label": "ICC (confianza del consumidor, UTDT)",
           "trans_label": "ambas series rebaseadas a 100 en el primer mes",
-          "conclusion": "Correlación 0,47 en niveles y 0,351 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
+          "conclusion": "Correlación 0,463 en niveles y 0,315 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
         }
       }
     },
@@ -2351,7 +2351,7 @@
         },
         "validacion": {
           "r_niveles": 0.767,
-          "r_diferencias": 0.375,
+          "r_diferencias": 0.376,
           "n": 32,
           "pares": [
             [
@@ -2511,7 +2511,7 @@
             ],
             [
               "2026-07",
-              74.0,
+              73.8,
               2062.3
             ]
           ],
@@ -2635,7 +2635,7 @@
         "riesgo": {
           "r": -0.41,
           "n": 29,
-          "rd": -0.03
+          "rd": -0.04
         },
         "merval": {
           "r": 0.37,
@@ -2643,14 +2643,14 @@
           "rd": -0.01
         },
         "icc": {
-          "r": 0.47,
+          "r": 0.46,
           "n": 30,
-          "rd": 0.33
+          "rd": 0.3
         },
         "epu": {
           "r": 0.19,
           "n": 29,
-          "rd": 0.32
+          "rd": 0.31
         }
       },
       {
@@ -2698,6 +2698,6 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,47 con la confianza del consumidor, ITCP -0,68 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde."
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,74 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,46 con la confianza del consumidor, ITCP -0,68 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde."
   }
 }

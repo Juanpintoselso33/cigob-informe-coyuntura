@@ -173,6 +173,13 @@ def test_macro_itcm_reconcilia():
         assert abs(i["aporte_score"] - round((100 - i["puntaje_itcm"]) / 10, 1)) <= 0.05
 
 
+def test_validacion_itcm_declara_cobertura_vigente():
+    informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
+    sub = informe["cinturones"]["macro"]["itcm"]["validacion"]["sub"]
+    assert "once de sus trece componentes" in sub
+    assert "sin el capítulo inversión" not in sub
+
+
 def test_gestion_itcg_reconcilia():
     """Gestión: la suma ponderada de los puntajes ITCG (peso_efectivo) reproduce
     el ITCG publicado, la tensión del cinturón es (100 − ITCG)/10 y los

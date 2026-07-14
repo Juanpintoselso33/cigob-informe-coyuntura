@@ -338,7 +338,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
 // Claves únicas entre ITCM/ITCG/ITVC.
 export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCM
-  estabilidad_monetaria: "La dinámica de precios en tres tiempos: la inflación de hoy (IPC), la que el mercado espera para adelante (REM) y el desequilibrio de pesos que puede alimentarla mañana (IDM).",
+  estabilidad_monetaria: "La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), el desequilibrio entre oferta y demanda transaccional de pesos (IDM) y la preferencia relativa por depósitos en dólares frente a depósitos reales en pesos.",
   viabilidad_fiscal_comercial: "Si las cuentas cierran: la recaudación real (el sostén del ancla fiscal) y el saldo comercial (los dólares genuinos del intercambio).",
   financiamiento: "Si hay combustible para la economía: reservas netas (el respaldo externo), capacidad prestable del sistema financiero (IdC) y crédito real efectivamente otorgado.",
   actividad: "Si la economía crece o se contrae: el EMAE interanual como pulso general de la actividad.",

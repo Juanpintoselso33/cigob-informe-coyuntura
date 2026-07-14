@@ -701,9 +701,10 @@ def _validacion_itcm(bloque):
         "titulo": "¿El ITCM se mueve con el precio del riesgo argentino?",
         "sub": ("El contraste natural del cinturón macro es el mercado: si la tensión "
                 "macroeconómica afloja, la Argentina debería pagar menos por su deuda. El ITCM "
-                "se reconstruye mes a mes desde las series de diez de sus doce componentes "
-                "(sin el capítulo inversión ni los ajustes del analista: el nivel puede diferir "
-                "del publicado — lo que valida es su evolución) y se compara con el riesgo "
+                "se reconstruye mes a mes desde las series de once de sus trece componentes "
+                "(IAI e ICIP no ingresan en esta reconstrucción histórica, ni tampoco los ajustes "
+                "del analista: el nivel puede diferir del publicado — lo que valida es su "
+                "evolución) y se compara con el riesgo "
                 "país (EMBI), que no integra el índice. La correlación esperada es negativa: "
                 "más ITCM (menos tensión), menos riesgo país."),
         "serie_label": "ITCM (reconstrucción mensual)",

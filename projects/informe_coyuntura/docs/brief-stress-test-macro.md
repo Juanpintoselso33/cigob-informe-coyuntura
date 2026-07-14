@@ -2,7 +2,7 @@
 
 > Para: **Heber** y **Diego** (macroeconomistas)
 > De: equipo Informe de Coyuntura — CIGOB
-> Fecha: 2026-06-30 · Sitio en vivo: **informe.cigob.org** (pestaña Macro)
+> Fecha: 2026-07-14 · Sitio en vivo: **informe.cigob.org** (pestaña Macro)
 >
 > El objetivo de este documento es que puedan **estresar el criterio económico** del
 > índice. La factibilidad de datos (todo sale de fuente oficial, sin valores cargados
@@ -23,30 +23,45 @@ El ITCM es un **promedio ponderado por dimensiones**; dentro de cada dimensión,
 indicador se traduce a un puntaje 0–100 por **bandas** (tablas de umbrales) y se
 promedia. Convención de bordes: límite inferior exclusivo, superior inclusivo.
 
-**Hoy: ITCM 63,3 — "Moderadamente aflojado" — tensión 3,7 / 10.**
+**Hoy: ITCM 57,5 — "Moderadamente apretado" — tensión 4,2 / 10.**
 
 ---
 
-## 2. Foto actual (junio 2026)
+## 2. Foto actual (últimos datos disponibles al 14-jul-2026)
 
 | Dimensión | Peso | Indicador | Valor | Puntaje | Dim. |
 |---|---|---|---|---|---|
-| **Estabilidad monetaria** | 26% | IPC mensual | 2,15% | 65 | **69,5** |
-| | | REM (expectativas) | 23,3% anual | 85 | |
-| | | IDM (desequilibrio monetario) | +4,5 pp | 60 | |
-| **Viabilidad fiscal-comercial** | 24% | Recaudación i.a. real | +1,8% | 60 | **70,0** |
-| | | Saldo comercial 12m | +21.221 M USD | 85 | |
-| **Capacidad de financiamiento** | 16% | Reservas netas | +4.122 M USD | 30 | **45,0** |
-| | | IdC (capacidad prestable) | 1,012 | 60 | |
-| **Actividad económica** | 11% | EMAE i.a. | +5,5% | 100 | **100,0** |
-| **Competitividad externa** | 11% | TCRM (ITCRM) | 84,3 | 35 | **35,0** |
-| **Inversión** | 12% | IAI (físico) | −4,2% i.a. | 35 | **53,0** |
-| | | ICIP (digital) | +8,2% i.a. | 80 | |
+| **Estabilidad monetaria** | 26% | IPC mensual | 2,15% | 72,0 | **63,4** |
+| | | REM (expectativas) | 22,3% anual | 81,2 | |
+| | | IDM (desequilibrio monetario) | +4,3 pp | 53,3 | |
+| | | Dolarización de depósitos | +29,07 pp | 10,0 | |
+| **Viabilidad fiscal-comercial** | 24% | Recaudación i.a. real (media móvil 3m) | −2,3% | 40,8 | **58,5** |
+| | | Saldo comercial 12m | +21.221 M USD | 85,0 | |
+| **Capacidad de financiamiento** | 16% | Reservas netas | +4.122 M USD | 36,5 | **44,7** |
+| | | IdC (capacidad prestable) | −0,31 σ | 49,7 | |
+| | | Crédito privado i.a. real | +9,5% | 56,0 | |
+| **Actividad económica** | 11% | EMAE i.a. | +1,64% | 61,1 | **61,1** |
+| **Competitividad externa** | 11% | TCRM (ITCRM) | 85,04 | 47,6 | **47,6** |
+| **Inversión** | 12% | IAI (físico) | +0,31% i.a. | 61,0 | **65,9** |
+| | | ICIP (digital) | +8,3% i.a. | 73,3 | |
 
-Lectura: el índice está sostenido por **actividad** (EMAE rebotando) y un **saldo
-comercial** holgado, y traccionado a la baja por **reservas netas** todavía flacas, la
-**apreciación real** del peso y la **inversión física** en contracción. La inversión
-**digital**, en cambio, crece — la divergencia física-vs-digital queda a la vista.
+Lectura: el saldo comercial y las expectativas de inflación sostienen el índice. La
+principal tensión de estabilidad monetaria es la **dolarización de depósitos**: los
+depósitos privados en dólares crecieron 27,76% i.a., mientras los depósitos reales en
+pesos cayeron 1,31% i.a.; la brecha resultante es 29,07 puntos porcentuales. También
+presionan la recaudación real, las reservas netas y la competitividad cambiaria. La
+actividad y la inversión muestran una situación intermedia, sin la fortaleza que tenían
+en la foto de junio.
+
+### Robustez y contraste externo
+
+- Monte Carlo embebido (1.000 simulaciones): **ITCM 57,5**, intervalo p05-p95
+  **55,9–59,0**; tensión compatible **4,1–4,4**.
+- Monte Carlo ampliado (2.000 simulaciones): al excluir sólo la dolarización de
+  depósitos, el ITCM contrafactual es **59,1** (**+1,6 puntos**).
+- Reconstrucción histórica: 30 meses (dic-2023 a may-2026). Correlación en niveles
+  con riesgo país: **−0,741**; en primeras diferencias: **0,060**. La evidencia
+  respalda una asociación de mediano plazo, no una capacidad de anticipación mensual.
 
 ---
 
@@ -62,6 +77,11 @@ proponen otros números, los incorporamos sin tocar código.
    ¿Inversión y competitividad deberían pesar más/menos?
 
 2. **Umbrales de las bandas.** Algunas son nuestras:
+   - **Dolarización de depósitos**: ≤−25 pp → 100; −25 a 0 → 85; 0 a 10 → 60;
+     10 a 20 → 35; >20 → 10, con interpolación entre anclas. Se calibró con
+     2018–2023; el ingreso extraordinario de dólares del CERA se conserva en la serie
+     como quiebre regulatorio, pero no se usa para recalibrar. ¿La brecha actual debe
+     tratarse como tensión monetaria con esta severidad?
    - **TCRM**: calibrado por percentiles históricos del ITCRM (1997-2026): >110 competitivo,
      95-110 cómodo, 85-95 apreciación moderada, 75-85 marcada, ≤75 atraso severo. ¿Es 75-85
      la zona de "tensión" correcta para el régimen actual?
@@ -72,16 +92,23 @@ proponen otros números, los incorporamos sin tocar código.
    - **Reservas netas**: escala propia (>20k→100 … neg→10). 
 
 3. **Desvíos respecto de los documentos fuente** (justificados en los ADRs):
-   - **IDM** se implementa **real-real interanual** (ΔM3 priv. real − ΔM2 priv. real), no el
-     nominal-real mensual del doc, que daba rojo permanente por sesgo inflacionario.
+   - **IDM** se implementa **real-real interanual** (ΔM3 privado real − ΔM2
+     transaccional privado real), no el nominal-real mensual del documento, que daba
+     rojo permanente por sesgo inflacionario.
+   - Los depósitos en dólares no se mezclan dentro de un M3 ampliado: se publican como
+     **indicador independiente**, comparando su crecimiento en USD con el crecimiento
+     real de los depósitos en pesos. Así se evita introducir valuación cambiaria dentro
+     del IDM y se mantiene visible la preferencia por moneda.
    - **Recaudación** en variación **i.a. real**, no m/m nominal.
    - **Reservas** netas "a secas" (SDDS estricto + Tesoro + Bopreal 12m), el número del mercado.
    - **REM** puntuado por su equivalente mensual (raíz-12), comparable al IPC.
 
-4. **Solapamientos a discutir.** El IPC está en estabilidad monetaria y el IDM también es
-   monetario (aunque el IDM es real-real, no re-mide inflación). El `servicios_tech` del ICIP
-   es una importación (egreso de divisas) que roza el frente externo. ¿Los ven como
-   doble-conteo o como dimensiones legítimamente distintas?
+4. **Solapamientos a discutir.** El IPC, el IDM y la dolarización conviven en
+   estabilidad monetaria, pero miden mecanismos distintos: precios corrientes, holgura
+   de pesos y preferencia relativa por moneda. El `servicios_tech` del ICIP es una
+   importación (egreso de divisas) que roza el frente externo. ¿Los ven como
+   doble-conteo o como señales complementarias? ¿Es adecuado que la dolarización pese
+   10% dentro de la dimensión —2,6% del ITCM—?
 
 5. **Agregación.** Hoy es **promedio ponderado** de puntajes de banda. ¿Tiene sentido, o
    alguna dimensión (p. ej. reservas) debería actuar como **umbral duro** que domine cuando
@@ -106,7 +133,8 @@ publica como serie automatizable (investigado a fondo, detalle en `docs/pendient
 
 - **Sitio en vivo**: informe.cigob.org → Macro (cada indicador tiene ficha con qué mide,
   fuente, cómo incide en el score, y evolución histórica descargable).
-- **Decisiones de diseño**: `docs/adr/` (ADR-0001 a 0010) — una por decisión, con contexto,
+- **Decisiones de diseño**: `docs/adr/` — en particular ADR-0053 (IDM y
+  transparencia de ponderaciones) y ADR-0054 (dolarización de depósitos), con contexto,
   alternativas descartadas y consecuencias.
 - **Pendientes y fuentes bloqueadas**: `docs/pendientes-datos.md`.
 - **Metodología base del ITCM (diseño original, archivado)**: `docs/archivo/cinturon_macro.md`. Versión vigente: `scripts/itcm.py`.

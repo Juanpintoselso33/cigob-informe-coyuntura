@@ -12,7 +12,7 @@ el CIGOB:
 
 | Cinturón | Slug | Indicadores | Puntuación |
 |---|---|---|---|
-| Situación macroeconómica | `macro` | 12 (+4 nominales ocultos) | **ITCM** paramétrico |
+| Situación macroeconómica | `macro` | 13 (+4 nominales ocultos) | **ITCM** paramétrico |
 | Gestión / reformas | `gestion` | 17 | **ITCG** paramétrico |
 | Vida cotidiana | `vida_cotidiana` | 13 | **ITVC-B100** |
 | Política | `politica` | 9 | score directo |
@@ -23,8 +23,10 @@ sitio los agrega en un panel global.
 
 ## Las tres paramétricas
 
-- **ITCM** (macro): 6 dimensiones (26/24/16/11/11/12), 12 indicadores con
-  bandas ancladas e interpolación. ~58 pts al cierre de esta foto.
+- **ITCM** (macro): 6 dimensiones (26/24/16/11/11/12), 13 indicadores con
+  bandas ancladas e interpolación. Estabilidad monetaria combina IPC, REM, IDM
+  y dolarización de depósitos con pesos internos 40/25/25/10. ~58 pts al
+  cierre de esta foto.
 - **ITCG** (gestión): avance de la transformación del Estado, 0-100 con
   bandas por indicador. ~73 pts.
 - **ITVC-B100** (vida): índice de seguimiento con base 100 = 4T-2023
@@ -38,7 +40,7 @@ El detalle de agregación está en [03 — Motor paramétrico](03-motor-parametr
 1. **La app deployada es la fuente de verdad.** Los documentos metodológicos
    de origen son read-only; cuando la metodología evoluciona, cambia el
    código (scripts, ponderaciones, datos) y se documenta la decisión como ADR.
-2. **Toda decisión no trivial es un ADR** (`docs/adr/`, 34 al momento):
+2. **Toda decisión no trivial es un ADR** (`docs/adr/`, 54 al momento):
    rediseños de indicadores, criterios de familia (ragged edge, ADR-0030),
    tratamiento de outliers (ADR-0033), fuentes descartadas con evidencia.
 3. **Todo indicador automatizado reconstruye su serie hacia atrás** — mínimo
@@ -63,9 +65,9 @@ projects/informe_coyuntura/
 ├── data/               # stores persistentes y overrides del analista
 ├── output/             # artefactos intermedios: cache/, series/, informe.json
 ├── web/                # sitio Astro (ver 04)
-├── tests/              # pytest: motor paramétrico y reconciliación (40 tests)
+├── tests/              # pytest: motor paramétrico, fuentes y reconciliación
 └── docs/
-    ├── adr/            # decisiones (34)
+    ├── adr/            # decisiones (54)
     └── arquitectura/   # esta carpeta
 ```
 

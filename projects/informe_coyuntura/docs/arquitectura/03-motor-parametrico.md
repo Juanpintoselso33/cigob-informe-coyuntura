@@ -14,7 +14,9 @@ respaldó esa decisión.
 ## Los tres índices
 
 ### ITCM — `itcm.py` (macro)
-- 6 dimensiones (pesos 26/24/16/11/11/12), 12 indicadores puntuables.
+- 6 dimensiones (pesos 26/24/16/11/11/12), 13 indicadores puntuables.
+- Estabilidad monetaria 40/25/25/10: IPC, REM, IDM y dolarización de
+  depósitos (ADR-0053/0054).
 - Financiamiento interno 45/40/15 con crédito real (ADR-0022); IdC por
   z-scores de nivel vs historia 2017→ (ADR-0028).
 - 4 indicadores nominales ocultos del snapshot pero vivos como insumos.
@@ -40,11 +42,19 @@ respaldó esa decisión.
 
 ## La batería de robustez (tres pilares, ADR-0019/0020/0031)
 
-Todo corre automáticamente en cada `publicar` o en el pipeline nocturno:
+La robustez compacta se calcula dentro de `publicar.py` para cada snapshot; el
+pipeline nocturno regenera además el informe ampliado y la validación externa.
 
 ### 1. Monte Carlo — `sensibilidad.py`
 Perturba pesos (±20% relativo) e insumos (±5% **del ancho entre anclas** —
-scale-free, no multiplicativo) con semilla fija; publica p05-p95 por índice.
+scale-free, no multiplicativo) con semilla fija. Hay dos productos coordinados:
+
+- `robustez_compacta()` ejecuta **1.000 simulaciones** durante `publicar.py` y
+  embebe p05-p95, mediana y probabilidad de zona en `web/src/data/informe.json`.
+- `analizar_bloque()` ejecuta **2.000 simulaciones** después de publicar y
+  escribe el análisis ampliado, incluido leave-one-out, en
+  `output/sensibilidad.json`.
+
 Un test verifica que el valor puntual cae dentro del rango.
 
 ### 2. Dimensión crítica — flag ADR-0020
@@ -76,9 +86,8 @@ que se ve en la web.
 
 ## Tests — `tests/`
 
-40 tests de pytest sin red: `test_itcm.py` (bandas, interpolación, ejemplo
-completo al decimal), `test_itcg.py`, `test_itvc.py` (pesos del doc +
-enmiendas ADR, renormalización, ajustes), `test_publicar.py` (reconciliación
-del snapshot publicado: suma ponderada = índice, robustez encierra el valor,
-tensión = fórmula). Cuando un ADR cambia el motor, los valores esperados se
-recalibran **con el engine**, nunca a mano.
+La suite pytest sin red cubre bandas, interpolación y ejemplos completos de
+ITCM/ITCG/ITVC; contratos de fuentes; series; y reconciliación del snapshot
+publicado (suma ponderada = índice, robustez encierra el valor, tensión =
+fórmula). Cuando un ADR cambia el motor, los valores esperados se recalibran
+**con el engine**, nunca a mano.
