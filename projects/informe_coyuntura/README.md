@@ -7,14 +7,14 @@ Colectores de datos para los cinco cinturones del marco CIGOB-Matus (Macro, Pol�
 | Cinturón | Indicadores totales | Automáticos | Carga manual | Sin fuente |
 |---|---|---|---|---|
 | Vida Cotidiana | 14 + 1 manual | 14 | 1 | 0 |
-| Macro | 11 (7 en el ITCM + 4 contexto) | 11 | 0 | 0 |
+| Macro | 17 (13 en el ITCM + 4 internos ocultos) | 17 | 0 | 0 |
 | Político | 9 | 7 | 2 | 0 |
 | Gestión | 17 (14 en el ITCG + 3 contexto) | 16 | 1 | 0 |
 | Espíritu de Época | 3 (v1, proxies compartidos) | 3 | 0 | 0 |
 
 Macro y gestión se puntúan con índices paramétricos 0–100 de dimensiones ponderadas
 (**ITCM**, diseño original en `docs/archivo/cinturon_macro.md` — superado por los
-ADRs 0009/0010/0021/0022, versión vigente en `scripts/itcm.py`, y **ITCG**, 5
+ADRs 0009/0010/0021/0022/0053/0054, versión vigente en `scripts/itcm.py`, y **ITCG**, 5
 dimensiones 35/25/15/15/10 del
 doc 260702 — ver `docs/adr/0013-itcg-parametrica-gestion.md`; motor común en
 `scripts/parametrica.py`); el resto promedia tensiones 0–10. El score global pondera
@@ -46,7 +46,7 @@ pip install -r scripts/vida_cotidiana/requirements.txt
 Desde la carpeta `projects/informe_coyuntura/`:
 
 ```bash
-python scripts/macro.py                    # 11 indicadores macro
+python scripts/macro.py                    # 17 indicadores (13 ITCM + 4 internos ocultos)
 python scripts/politica.py                 # 7 auto + 2 manual
 python scripts/gestion.py                  # ITCG: 16 auto + 1 manual (protocolo)
 python scripts/vida_cotidiana/main.py      # 8 fuentes, ~32 datapoints
@@ -137,7 +137,7 @@ projects/informe_coyuntura/
     ├── itcg.py                            # bandas y fórmula del ITCG gestión
     ├── itcm.py                            # bandas y fórmula del ITCM macro
     ├── parametrica.py                     # motor común de los índices paramétricos
-    ├── macro.py                           # 11 indicadores (ITCM)
+    ├── macro.py                           # 17 indicadores (13 ITCM + 4 internos ocultos) (ITCM)
     ├── politica.py                        # 9 indicadores
     ├── vida_cotidiana.py                  # puente legacy al orquestador global
     └── vida_cotidiana/

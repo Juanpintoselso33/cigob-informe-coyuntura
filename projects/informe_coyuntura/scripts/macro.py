@@ -63,10 +63,11 @@ BCRA_REM_IPC_ID     = 29   # REM: mediana expectativas IPC próximos 12 meses (%
 BCRA_PRESTAMOS_ID   = 26   # Préstamos sector privado (millones ARS) — contexto
 BCRA_BASE_MON_ID    = 15   # Base monetaria (millones ARS)
 BCRA_TC_MAYOR_ID    = 5    # Tipo de cambio mayorista de referencia (ARS/USD)
-BCRA_DEP_PRIV_ID    = 100  # Depósitos del sector privado no financiero (incluye cedros) — insumo IdC + M3 priv.
-BCRA_PREST_PRIV_ID  = 117  # Préstamos otorgados al sector privado — insumo IdC
-BCRA_CIRCULANTE_ID  = 17   # Billetes y monedas en poder del público — insumo M3 privado (IDM)
-BCRA_M2_PRIV_ID     = 197  # M2 transaccional del sector privado — demanda de dinero (IDM)
+BCRA_DEP_PRIV_ID        = 100  # Depósitos privados en pesos — insumo IdC, IDM y dolarización
+BCRA_DEP_PRIV_ME_USD_ID = 108  # Depósitos privados en moneda extranjera, millones USD
+BCRA_PREST_PRIV_ID      = 117  # Préstamos otorgados al sector privado — insumo IdC
+BCRA_CIRCULANTE_ID      = 17   # Billetes y monedas en poder del público — insumo M3 privado (IDM)
+BCRA_M2_PRIV_ID         = 197  # M2 transaccional del sector privado — demanda de dinero (IDM)
 
 HTTP_TIMEOUT = 30
 HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"}
@@ -77,8 +78,8 @@ CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
     "emae_ia", "saldo_comercial_12m", "recaudacion", "tcrm",
-    "rem_ipc_12m", "idm", "iai", "icip", "credito_privado",
-    "prestamos_privados", "base_monetaria", "tc_mayorista",
+    "rem_ipc_12m", "idm", "dolarizacion_depositos", "iai", "icip",
+    "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
 ]
 
 
@@ -248,6 +249,40 @@ def _idm_serie_mensual(meses_hist: int = 24) -> list:
         out.append((ym, round(m3_real_ia - m2_real_ia, 2),
                     round(m3_real_ia, 2), round(m2_real_ia, 2)))
     return out
+
+
+def _dolarizacion_depositos_serie_mensual(meses_hist: int = 24) -> list:
+    """Brecha entre depósitos privados en USD y depósitos en pesos reales.
+
+    Compara el crecimiento interanual del stock en moneda extranjera medido
+    directamente en USD con el crecimiento interanual real del stock en pesos.
+    Positivo = los depósitos en USD crecen más; negativo = los depósitos reales
+    en pesos crecen más. Devuelve
+    [(YYYY-MM, brecha_pp, crecimiento_usd_ia, crecimiento_pesos_real_ia)].
+    """
+    n = meses_hist + 14
+    dep_usd = _bcra_fin_de_mes(BCRA_DEP_PRIV_ME_USD_ID, n)
+    dep_pesos = _bcra_fin_de_mes(BCRA_DEP_PRIV_ID, n)
+    ipc = _ipc_indice_mensual(n)
+    comunes = set(dep_usd) & set(dep_pesos) & set(ipc)
+    out = []
+    for ym in sorted(comunes):
+        prev = _ym_shift(ym, -12)
+        if prev not in comunes:
+            continue
+        crecimiento_usd_ia = (dep_usd[ym] / dep_usd[prev] - 1.0) * 100.0
+        crecimiento_pesos_real_ia = (
+            (dep_pesos[ym] / ipc[ym])
+            / (dep_pesos[prev] / ipc[prev])
+            - 1.0
+        ) * 100.0
+        out.append((
+            ym,
+            round(crecimiento_usd_ia - crecimiento_pesos_real_ia, 2),
+            round(crecimiento_usd_ia, 2),
+            round(crecimiento_pesos_real_ia, 2),
+        ))
+    return out[-meses_hist:]
 
 
 # ── Fetchers ──────────────────────────────────────────────────────────────────
@@ -767,6 +802,32 @@ def fetch_idm() -> dict | None:
         return None
 
 
+def fetch_dolarizacion_depositos() -> dict | None:
+    """Presión de dolarización de depósitos privados.
+
+    Brecha entre el crecimiento i.a. del stock denominado en USD y el
+    crecimiento i.a. real de los depósitos en pesos. Usa el último mes común
+    con IPC cerrado; no convierte a pesos el stock en moneda extranjera.
+    """
+    try:
+        serie = _dolarizacion_depositos_serie_mensual()
+        if not serie:
+            raise ValueError("sin meses con interanual disponible")
+        ym, brecha, crecimiento_usd_ia, crecimiento_pesos_real_ia = serie[-1]
+        return {
+            "valor": brecha,
+            "unidad": "pp (brecha i.a.)",
+            "fuente": "BCRA — depósitos privados por moneda + INDEC — IPC nacional",
+            "fecha_dato": f"{ym}-01",
+            "desactualizado": False,
+            "crecimiento_usd_ia": crecimiento_usd_ia,
+            "crecimiento_pesos_real_ia": crecimiento_pesos_real_ia,
+        }
+    except Exception as e:
+        _warn("dolarizacion_depositos", e)
+        return None
+
+
 # ── Capítulo Inversión: IAI (físico) e ICIP (digital) ─────────────────────────
 
 # Pesos del IAI. DNRPA no expone histórico de patentamientos comerciales, así que
@@ -1154,6 +1215,7 @@ def main() -> None:
         ("tcrm",               fetch_tcrm),
         ("rem_ipc_12m",        fetch_rem_ipc_12m),
         ("idm",                fetch_idm),
+        ("dolarizacion_depositos", fetch_dolarizacion_depositos),
         ("iai",                fetch_iai),
         ("icip",               fetch_icip),
         ("credito_privado",    fetch_credito_privado),

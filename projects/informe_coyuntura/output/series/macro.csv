@@ -1820,6 +1820,36 @@ fecha,indicador,valor,unidad,fuente
 2021-07-01,emae_ia,11.74,% i.a.,INDEC/datos.gob.ar
 2021-06-01,emae_ia,12.42,% i.a.,INDEC/datos.gob.ar
 2021-05-01,emae_ia,15.37,% i.a.,INDEC/datos.gob.ar
+2026-05-01,dolarizacion_depositos,29.07,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2026-04-01,dolarizacion_depositos,27.48,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2026-03-01,dolarizacion_depositos,31.49,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2026-02-01,dolarizacion_depositos,25.07,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2026-01-01,dolarizacion_depositos,18.36,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-12-01,dolarizacion_depositos,10.13,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-11-01,dolarizacion_depositos,1.03,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-10-01,dolarizacion_depositos,-6.61,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-09-01,dolarizacion_depositos,-9.39,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-08-01,dolarizacion_depositos,52.14,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-07-01,dolarizacion_depositos,57.2,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-06-01,dolarizacion_depositos,52.23,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-05-01,dolarizacion_depositos,51.35,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-04-01,dolarizacion_depositos,52.36,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-03-01,dolarizacion_depositos,52.88,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-02-01,dolarizacion_depositos,67.89,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2025-01-01,dolarizacion_depositos,89.54,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-12-01,dolarizacion_depositos,105.37,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-11-01,dolarizacion_depositos,135.8,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-10-01,dolarizacion_depositos,165.43,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-09-01,dolarizacion_depositos,138.88,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-08-01,dolarizacion_depositos,60.66,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-07-01,dolarizacion_depositos,54.85,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-06-01,dolarizacion_depositos,49.93,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-05-01,dolarizacion_depositos,51.31,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-04-01,dolarizacion_depositos,51.16,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-03-01,dolarizacion_depositos,42.78,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-02-01,dolarizacion_depositos,36.98,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2024-01-01,dolarizacion_depositos,29.04,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
+2023-12-01,dolarizacion_depositos,19.61,pp (brecha i.a.),BCRA (depósitos privados por moneda) + IPC INDEC
 2026-05-01,credito_privado,9.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-04-01,credito_privado,13.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-03-01,credito_privado,18.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC

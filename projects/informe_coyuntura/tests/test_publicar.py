@@ -22,6 +22,18 @@ def test_build_vida_agrega_sentimiento_digital_aunque_trends_falle():
     assert enriquecido["sentimiento_digital"]["valor"] is None
 
 
+def test_macro_input_txt_descompone_dolarizacion_depositos():
+    ind = {
+        "valor": 29.07,
+        "crecimiento_usd_ia": 27.76,
+        "crecimiento_pesos_real_ia": -1.31,
+    }
+    assert publicar._macro_input_txt("dolarizacion_depositos", ind) == (
+        "brecha 29,07 pp = depósitos USD 27,76% i.a. − depósitos en pesos "
+        "-1,31% i.a. real"
+    )
+
+
 def test_carry_forward_restaura_sentimiento_digital_ausente_de_trends():
     enriquecido = {"sentimiento_digital": {"valor": None, "fecha_dato": None, "fuente": None}}
     previo = {"sentimiento_digital": {"valor": 5.8, "fecha_dato": "2026-07-08", "fuente": "Google Trends"}}
@@ -130,13 +142,25 @@ def test_macro_itcm_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    assert len(en_indice) == 12, f"esperaba 12 indicadores en el índice, hay {len(en_indice)}"
+    assert len(en_indice) == 13, f"esperaba 13 indicadores en el índice, hay {len(en_indice)}"
     # ADR-0022: los 4 monetarios nominales quedan OCULTOS del snapshot (siguen
     # en pipeline como insumos de IdC/IDM/TCRM); su señal entra vía credito_privado.
     assert contexto == {}, f"macro no debería publicar contexto: {set(contexto)}"
     for oculto in ("badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto"
     assert "credito_privado" in en_indice
+    dolarizacion = en_indice["dolarizacion_depositos"]
+    assert dolarizacion["peso_efectivo"] == 0.026
+    assert dolarizacion["aporte_input_txt"] == (
+        f"brecha {str(dolarizacion['valor']).replace('.', ',')} pp = depósitos USD "
+        f"{str(dolarizacion['crecimiento_usd_ia']).replace('.', ',')}% i.a. − depósitos en pesos "
+        f"{str(dolarizacion['crecimiento_pesos_real_ia']).replace('.', ',')}% i.a. real"
+    )
+    serie_dolarizacion = json.loads((DATA / "series.json").read_text(encoding="utf-8"))[
+        "dolarizacion_depositos"
+    ]
+    assert serie_dolarizacion[0]["fecha"][:7] == "2023-12"
+    assert serie_dolarizacion[-1]["valor"] == dolarizacion["valor"]
 
     ponderado = sum(i["puntaje_itcm"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itcm_val) <= 0.15, f"ponderado {ponderado} != ITCM {itcm_val}"

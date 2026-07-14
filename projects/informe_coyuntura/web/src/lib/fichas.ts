@@ -589,6 +589,50 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  dolarizacion_depositos: {
+    tipo: "indicador",
+    id: "dolarizacion_depositos",
+    cinturon: "macro",
+    rezago: "Se publica para el último mes en que coinciden los depósitos por moneda y el IPC nacional cerrado, habitualmente unas dos semanas después de mediados del mes siguiente.",
+    fuente: {
+      organismo: "BCRA (depósitos privados por moneda) + INDEC (IPC como deflactor)",
+      operacion: "Depósitos del sector privado no financiero en moneda extranjera, expresados en millones de USD, y depósitos privados en moneda local",
+      url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Principales_variables.asp",
+      acceso: "Automático: API pública del BCRA y API de series de datos.gob.ar; la brecha se calcula en el pipeline.",
+    },
+    transformaciones: [
+      "Se toma el último dato disponible de cada mes para los depósitos privados en moneda extranjera y en pesos.",
+      "Se calcula el crecimiento interanual de los depósitos en moneda extranjera en su unidad original (USD).",
+      "Los depósitos en pesos se deflactan por el IPC y luego se calcula su crecimiento interanual real.",
+      "Dolarización de depósitos = crecimiento interanual de depósitos en USD − crecimiento interanual real de depósitos en pesos, en puntos porcentuales.",
+      "El cálculo exige que los tres insumos estén disponibles tanto en el mes corriente como doce meses antes. Una brecha positiva indica mayor crecimiento relativo de los depósitos en moneda extranjera.",
+      "Pesa 10% dentro de estabilidad monetaria, dimensión que representa 26% del ITCM: su peso nominal efectivo es 2,6% del índice.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ −25", puntaje: 100 },
+        { banda: "−25 – 0", puntaje: 85 },
+        { banda: "0 – 10", puntaje: 60 },
+        { banda: "10 – 20", puntaje: 35 },
+        { banda: "> 20", puntaje: 10 },
+      ],
+      puntos: [[-25, 100], [-12.5, 85], [5, 60], [15, 35], [20, 10]],
+      unidadCorta: "pp",
+    },
+    dobleUso: "Comparte los depósitos privados en pesos y el IPC con otros indicadores monetarios, pero mide un fenómeno distinto: la preferencia relativa por moneda, no la cantidad de pesos ni la competitividad cambiaria.",
+    limitaciones: [
+      "Los depósitos en moneda extranjera se miden directamente en USD para evitar que una devaluación se confunda con un aumento del stock depositado.",
+      "El blanqueo mediante Cuentas Especiales de Regularización de Activos (CERA) produjo un quiebre regulatorio entre septiembre de 2024 y agosto de 2025. Esos datos se conservan sin correcciones en la serie, pero no se usan para calibrar las bandas.",
+      "Las bandas iniciales se calibraron con la distribución mensual de 2018 a 2023; deberán revisarse cuando exista una historia posterior al quiebre suficientemente extensa.",
+      "El indicador registra stocks bancarios: no identifica por sí solo si el cambio responde a nuevos ahorros, transferencias desde efectivo o movimientos entre cuentas.",
+    ],
+    faltantes: "Si falta un insumo, se conserva el último valor válido en caché, marcado como desactualizado. Si nunca hubo un valor disponible, el indicador se omite y los restantes se renormalizan; nunca se imputa cero ni se reconstruye el stock en USD mediante un tipo de cambio.",
+    revisiones: "La serie se reconstruye desde diciembre de 2023 con los datos oficiales vigentes. Las revisiones de fuente se incorporan en la siguiente corrida sin corregir ni neutralizar el período CERA.",
+    cambios: [
+      { fecha: "2026-07-13", cambio: "Se incorpora al ITCM como cuarto componente de estabilidad monetaria; la composición interna pasa a IPC 40% / REM 25% / IDM 25% / dolarización 10%." },
+    ],
+  },
+
   iai: {
     tipo: "indicador",
     id: "iai",

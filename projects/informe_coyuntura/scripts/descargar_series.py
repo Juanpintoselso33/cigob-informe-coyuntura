@@ -187,6 +187,21 @@ def fetch_idm_serie(meses: int | None = None) -> list:
     return [[f"{ym}-01", gap] for ym, gap, _m3, _m2 in serie[-meses:]]
 
 
+def fetch_dolarizacion_depositos_serie(meses: int | None = None) -> list:
+    """Serie de la brecha i.a. entre depósitos privados en USD y en pesos reales.
+
+    Reutiliza la fuente única de macro.py y publica el mandato completo desde
+    diciembre de 2023, incluido el quiebre de CERA.
+    """
+    meses = meses or _meses_desde_asuncion()
+    serie = macro._dolarizacion_depositos_serie_mensual(meses_hist=meses + 4)
+    return [
+        [f"{ym}-01", brecha]
+        for ym, brecha, _usd, _pesos_real in serie
+        if ym >= "2023-12"
+    ][-meses:]
+
+
 def fetch_idc_serie(meses: int | None = None) -> list:
     """Serie mensual del Índice de Capacidad Prestable, con la misma fórmula que el
     indicador en macro.py (_idc_componentes) sobre stocks de fin de mes. Devuelve
@@ -333,6 +348,8 @@ MACRO_DERIVADAS = [
     ("tcrm_bilateral_eeuu", "índice (base dic-2015)", "BCRA ITCRM",
      lambda: [[f, v] for f, v in macro.fetch_itcrm_bilateral("eeuu")][-32:]),
     ("idm", "pp (brecha i.a. real)", "BCRA (M3/M2 privado) + IPC INDEC", fetch_idm_serie),
+    ("dolarizacion_depositos", "pp (brecha i.a.)",
+     "BCRA (depósitos privados por moneda) + IPC INDEC", fetch_dolarizacion_depositos_serie),
     ("idc", "σ vs. su historia", "BCRA (BADLAR/depósitos/préstamos) + IPC INDEC", fetch_idc_serie),
     ("iai", "% i.a. ponderado", "INDEC (ISAC + bienes de capital importados)", fetch_iai_serie),
     ("icip", "% i.a. ponderado", "INDEC (servicios informática + productividad)", fetch_icip_serie),

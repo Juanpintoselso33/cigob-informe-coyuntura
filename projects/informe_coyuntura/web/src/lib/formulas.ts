@@ -23,6 +23,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\underbrace{\text{crecim. real de }M3}_{\text{pesos que HAY}}\;-\;\underbrace{\text{crecim. real de }M2}_{\text{pesos que la gente QUIERE}}`,
     leyenda: "Crecimientos interanuales reales (descontada la inflación) de los agregados privados. Positivo = sobran pesos → presión sobre precios y brecha; negativo = remonetización genuina.",
   },
+  dolarizacion_depositos: {
+    latex: String.raw`\underbrace{\left(\frac{\text{dep. USD}_{t}}{\text{dep. USD}_{t-12}}-1\right)}_{\text{crecimiento i.a. en USD}}\times 100\;-\;\underbrace{\left(\frac{\text{dep. pesos}_{t}/\text{IPC}_{t}}{\text{dep. pesos}_{t-12}/\text{IPC}_{t-12}}-1\right)}_{\text{crecimiento i.a. real en pesos}}\times 100`,
+    leyenda: "Compara los depósitos en moneda extranjera en su unidad original con los depósitos en pesos descontados por IPC. Positivo = los depósitos en USD crecen más; negativo = crecen más los depósitos reales en pesos.",
+  },
   recaudacion: {
     latex: String.raw`\frac{1}{3}\sum_{\text{\'ultimos 3 meses}}\left(\frac{\text{recaudaci\'on}_{m}}{\text{recaudaci\'on}_{m-12}}\cdot\frac{\text{IPC}_{m-12}}{\text{IPC}_{m}}-1\right)\times 100`,
     leyenda: "Variación interanual de la recaudación total descontada la inflación, promediada sobre los últimos tres meses con IPC publicado. El dato de un solo mes hereda el calendario tributario (vencimientos, anticipos); el promedio trimestral — la lectura habitual de los analistas fiscales — muestra la tendencia. El mes más reciente aparece como provisorio en el detalle hasta que su IPC cierre.",

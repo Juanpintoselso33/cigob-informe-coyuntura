@@ -62,6 +62,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala un excedente monetario que puede presionar sobre los precios y la brecha cambiaria; una negativa indica una remonetización traccionada por la demanda real de dinero.",
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
+  dolarizacion_depositos: {
+    que: "La brecha entre el crecimiento interanual de los depósitos privados en moneda extranjera, medidos directamente en dólares, y el crecimiento interanual real de los depósitos privados en pesos.",
+    aporta: "Mide la preferencia relativa entre ahorrar en moneda extranjera o en pesos: una brecha positiva señala mayor presión de dolarización; una negativa indica que los depósitos reales en pesos crecen más.",
+    frecuencia: "Mensual", tipo: "Brecha i.a.",
+  },
   iai: {
     que: "Índice Anticipador de Inversión: mide la inversión física/tradicional combinando la actividad de la construcción (ISAC) y la importación de bienes de capital, en variación interanual.",
     aporta: "Anticipa si el país amplía su capacidad productiva (máquinas, obra, equipo) o se descapitaliza. Mayor = la inversión se expande por encima de la reposición; negativo = se consume más stock de capital del que se genera. Se construye con datos del INDEC (ISAC + ICA bienes de capital).",

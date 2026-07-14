@@ -24,6 +24,7 @@ DATOS_TS = (ROOT / "web" / "src" / "lib" / "datos.ts").read_text(encoding="utf-8
 INDICADOR_MODAL_ASTRO = (ROOT / "web" / "src" / "components" / "IndicadorModal.astro").read_text(encoding="utf-8")
 METODOLOGIA_ASTRO = (ROOT / "web" / "src" / "pages" / "metodologia" / "[id].astro").read_text(encoding="utf-8")
 DESCRIPCIONES_TS = (ROOT / "web" / "src" / "lib" / "descripciones.ts").read_text(encoding="utf-8")
+FORMULAS_TS = (ROOT / "web" / "src" / "lib" / "formulas.ts").read_text(encoding="utf-8")
 FICHAS_TS = (ROOT / "web" / "src" / "lib" / "fichas.ts").read_text(encoding="utf-8")
 
 CINTURON_DE_INDICE = {"itcm": "macro", "itcg": "gestion", "itvc": "vida_cotidiana", "itcp": "politica"}
@@ -153,3 +154,39 @@ def test_idm_explica_la_composicion_oficial_del_m2_transaccional():
     assert "BCRA" not in aporta_idm.group(1) and "IPC" not in aporta_idm.group(1), (
         "DESCRIPCIONES.idm.aporta debe explicar relevancia conceptual, no fuentes o plumbing"
     )
+
+
+def test_dolarizacion_depositos_tiene_capa_publica_completa_y_sin_jerga_interna():
+    clave = "dolarizacion_depositos"
+    for nombre, fuente in {
+        "datos": DATOS_TS,
+        "descripciones": DESCRIPCIONES_TS,
+        "formulas": FORMULAS_TS,
+        "fichas": FICHAS_TS,
+    }.items():
+        assert re.search(r"(?<![a-zA-Z_])" + clave + r":", fuente), (
+            f"Falta {clave} en {nombre}.ts"
+        )
+
+    descripcion = re.search(
+        r'dolarizacion_depositos:\s*\{[\s\S]*?aporta:\s*"([^"]+)"',
+        DESCRIPCIONES_TS,
+    )
+    assert descripcion
+    assert "BCRA" not in descripcion.group(1) and "IPC" not in descripcion.group(1)
+
+    formula = re.search(
+        r'dolarizacion_depositos:\s*\{([\s\S]*?)\n\s*\},',
+        FORMULAS_TS,
+    )
+    assert formula and "IPC" in formula.group(1) and "USD" in formula.group(1)
+
+    ficha = re.search(
+        r'dolarizacion_depositos:\s*\{([\s\S]*?)\n\s*\},\n\n\s*iai:',
+        FICHAS_TS,
+    )
+    assert ficha
+    texto = ficha.group(1)
+    assert "10%" in texto and "2,6%" in texto
+    assert "CERA" in texto and "septiembre de 2024" in texto and "agosto de 2025" in texto
+    assert "variable 108" not in texto and "variable 100" not in texto and "ADR-" not in texto

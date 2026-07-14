@@ -387,6 +387,10 @@ def _macro_input_txt(ikey, ind):
     if ikey == "idm" and ind.get("m3_real_ia") is not None:
         return (f"brecha {coma(ind.get('valor'))} pp = M3 priv. real i.a. "
                 f"{coma(ind['m3_real_ia'])}% − M2 priv. real i.a. {coma(ind['m2_real_ia'])}%")
+    if ikey == "dolarizacion_depositos" and ind.get("crecimiento_usd_ia") is not None:
+        return (f"brecha {coma(ind.get('valor'))} pp = depósitos USD "
+                f"{coma(ind['crecimiento_usd_ia'])}% i.a. − depósitos en pesos "
+                f"{coma(ind['crecimiento_pesos_real_ia'])}% i.a. real")
     if ikey == "iai" and ind.get("componentes"):
         c = ind["componentes"]
         partes = [f"ISAC {coma(c.get('isac'))}%", f"BK importados {coma(c.get('bk_importados'))}%"]

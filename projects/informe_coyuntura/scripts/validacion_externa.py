@@ -44,6 +44,7 @@ import itcg
 import itcm
 import itcp
 import itvc
+import publicar
 
 RIESGO_PAIS_URL = "https://api.argentinadatos.com/v1/finanzas/indices/riesgo-pais"
 MERVAL_YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5EMERV"
@@ -79,6 +80,21 @@ ITVC_TECHO = 140.0                              # winsorización asimétrica (AD
 
 def _mensual(serie: list) -> dict:
     return {p["fecha"][:7]: p["valor"] for p in serie}
+
+
+def _cargar_series_itcm() -> dict:
+    """Combina el snapshot publicado con los CSV locales recién descargados.
+
+    La validación corre antes que publicar.py: los CSV deben prevalecer para que
+    una serie nueva o actualizada entre en la reconstrucción sin perder puntos
+    históricos que todavía solo existan en el snapshot acumulado.
+    """
+    acumuladas = json.loads(SERIES.read_text(encoding="utf-8"))
+    for clave, puntos_frescos in publicar.build_series().items():
+        por_fecha = {p["fecha"]: p for p in acumuladas.get(clave) or []}
+        por_fecha.update({p["fecha"]: p for p in puntos_frescos})
+        acumuladas[clave] = [por_fecha[fecha] for fecha in sorted(por_fecha)]
+    return acumuladas
 
 
 def _movil12(vals: dict) -> dict:
@@ -155,16 +171,17 @@ def construir_series_itvc() -> tuple:
 
 def construir_serie_itcm() -> dict:
     """Serie mensual del ITCM reconstruida desde las series de componentes
-    (mismo motor, puntaje interpolado, sin overrides del analista): 10 de los
-    12 componentes tienen serie; IAI/ICIP faltan y el motor renormaliza.
+    (mismo motor, puntaje interpolado, sin overrides del analista): 11 de los
+    13 componentes tienen serie; IAI/ICIP faltan y el motor renormaliza.
     Reservas netas solo desde jun-2024 (límite de fuente documentado)."""
-    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    series = _cargar_series_itcm()
     m = lambda k: _mensual(series.get(k) or [])
     ipc_mm = m("ipc_total")               # ya publicada en % m/m (04-jul-2026)
     rem = m("rem_ipc_12m")                # % anual → equivalente mensual
     saldo = m("saldo_comercial")          # M USD mensual → suma móvil 12m
-    directos = {k: m(k) for k in ("idm", "recaudacion", "reservas_bcra", "idc",
-                                  "credito_privado", "emae_ia", "tcrm")}
+    directos = {k: m(k) for k in ("idm", "dolarizacion_depositos", "recaudacion",
+                                  "reservas_bcra", "idc", "credito_privado",
+                                  "emae_ia", "tcrm")}
 
     def saldo_12m(ym):
         yms = sorted(saldo)

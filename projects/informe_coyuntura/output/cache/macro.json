@@ -1,16 +1,16 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-13T04:12:09.999432",
-  "score": 4.1,
+  "generated_at": "2026-07-13T23:13:55.377204",
+  "score": 4.2,
   "itcm": {
-    "valor": 59.0,
+    "valor": 57.5,
     "banda": "moderadamente_apretado",
     "banda_legible": "Moderadamente apretado",
     "dimensiones": {
       "estabilidad_monetaria": {
         "nombre": "Estabilidad monetaria-inflacionaria",
         "peso": 0.26,
-        "puntaje": 69.1,
+        "puntaje": 63.4,
         "indicadores": {
           "ipc_total": {
             "peso": 0.4,
@@ -20,18 +20,25 @@
             "peso_efectivo": 0.104
           },
           "rem_ipc_12m": {
-            "peso": 0.3,
+            "peso": 0.25,
             "puntaje_banda": 81.2,
             "puntaje_aplicado": 81.2,
             "valor": 1.6917,
-            "peso_efectivo": 0.078
+            "peso_efectivo": 0.065
           },
           "idm": {
-            "peso": 0.3,
-            "puntaje_banda": 53.2,
-            "puntaje_aplicado": 53.2,
-            "valor": 4.31,
-            "peso_efectivo": 0.078
+            "peso": 0.25,
+            "puntaje_banda": 53.3,
+            "puntaje_aplicado": 53.3,
+            "valor": 4.3,
+            "peso_efectivo": 0.065
+          },
+          "dolarizacion_depositos": {
+            "peso": 0.1,
+            "puntaje_banda": 10.0,
+            "puntaje_aplicado": 10.0,
+            "valor": 29.07,
+            "peso_efectivo": 0.026
           }
         },
         "peso_efectivo": 0.26
@@ -188,7 +195,7 @@
       "niveles": {
         "tasa_real_pp": -0.58,
         "dep_real_ia_pct": -1.3,
-        "holgura_pct": 17.1
+        "holgura_pct": 17.0
       },
       "ventana": "2017-12 → 2026-05 (102 meses)",
       "badlar_real_mensual": -0.58,
@@ -201,10 +208,10 @@
       "peso_efectivo": 0.064
     },
     "badlar": {
-      "valor": 21.0,
+      "valor": 20.5,
       "unidad": "% anual",
       "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
-      "fecha_dato": "2026-07-07",
+      "fecha_dato": "2026-07-08",
       "desactualizado": false,
       "en_indice": false
     },
@@ -278,23 +285,37 @@
       "dimension": "estabilidad_monetaria",
       "puntaje_itcm": 81.2,
       "puntaje_banda": 81.2,
-      "peso_efectivo": 0.078,
+      "peso_efectivo": 0.065,
       "equivalente_mensual": 1.69,
       "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.69% mensual, en la misma escala que el IPC."
     },
     "idm": {
-      "valor": 4.31,
+      "valor": 4.3,
       "unidad": "pp (brecha i.a. real)",
       "fuente": "BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; M2 privado transaccional var. 197) + IPC INDEC",
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
-      "m3_real_ia": -2.47,
-      "m2_real_ia": -6.79,
+      "m3_real_ia": -2.48,
+      "m2_real_ia": -6.78,
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
-      "puntaje_itcm": 53.2,
-      "puntaje_banda": 53.2,
-      "peso_efectivo": 0.078
+      "puntaje_itcm": 53.3,
+      "puntaje_banda": 53.3,
+      "peso_efectivo": 0.065
+    },
+    "dolarizacion_depositos": {
+      "valor": 29.07,
+      "unidad": "pp (brecha i.a.)",
+      "fuente": "BCRA — depósitos privados por moneda + INDEC — IPC nacional",
+      "fecha_dato": "2026-05-01",
+      "desactualizado": false,
+      "crecimiento_usd_ia": 27.76,
+      "crecimiento_pesos_real_ia": -1.31,
+      "en_indice": true,
+      "dimension": "estabilidad_monetaria",
+      "puntaje_itcm": 10.0,
+      "puntaje_banda": 10.0,
+      "peso_efectivo": 0.026
     },
     "iai": {
       "valor": 0.31,
@@ -339,7 +360,7 @@
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
       "nominal_ia": 45.9,
-      "detalle_txt": "nominal 45,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-05) — al 2026-07-06 (provisorio, no puntúa): 8,4% real con deflactor de 2026-05",
+      "detalle_txt": "nominal 45,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-05) — al 2026-07-07 (provisorio, no puntúa): 8,6% real con deflactor de 2026-05",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 56.0,
@@ -347,26 +368,26 @@
       "peso_efectivo": 0.024
     },
     "prestamos_privados": {
-      "valor": 5.64,
+      "valor": 5.46,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — préstamos al sector privado (API monetarias)",
-      "fecha_dato": "2026-07-06",
+      "fecha_dato": "2026-07-07",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 7.47,
+      "valor": 8.8,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — base monetaria (API monetarias)",
-      "fecha_dato": "2026-07-06",
+      "fecha_dato": "2026-07-07",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 3.78,
+      "valor": 3.86,
       "unidad": "% mensual",
       "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
-      "fecha_dato": "2026-07-08",
+      "fecha_dato": "2026-07-13",
       "desactualizado": false,
       "en_indice": false
     }
