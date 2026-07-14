@@ -209,3 +209,8 @@ def test_url_metodologica_anterior_redirige_a_la_ficha_vigente():
         r"['\"]/metodologia/presion_dolarizacion/?['\"]",
         ASTRO_CONFIG,
     )
+
+
+def test_metodologia_describe_anclas_declaradas_sin_afirmar_puntos_medios():
+    assert "Los puntos declarados anclan el puntaje" in METODOLOGIA_ASTRO
+    assert "Cada banda finita ancla su puntaje en su punto medio" not in METODOLOGIA_ASTRO
