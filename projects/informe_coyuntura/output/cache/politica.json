@@ -1,22 +1,22 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-13T04:17:28.131990",
+  "generated_at": "2026-07-14T05:24:24.927433",
   "score": 2.6,
   "itcp": {
-    "valor": 74.0,
+    "valor": 74.4,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.3,
-        "puntaje": 63.3,
+        "puntaje": 62.8,
         "indicadores": {
           "ratio_dnu": {
             "peso": 0.2,
-            "puntaje_banda": 42.7,
-            "puntaje_aplicado": 42.7,
-            "valor": 1.529,
+            "puntaje_banda": 40.5,
+            "puntaje_aplicado": 40.5,
+            "valor": 1.588,
             "peso_efectivo": 0.06
           },
           "eficacia_legislativa": {
@@ -97,13 +97,13 @@
       "conflicto_social": {
         "nombre": "Conflicto social",
         "peso": 0.15,
-        "puntaje": 43.2,
+        "puntaje": 49.6,
         "indicadores": {
           "conflictividad_nacional": {
             "peso": 1.0,
-            "puntaje_banda": 43.2,
-            "puntaje_aplicado": 43.2,
-            "valor": -21.4,
+            "puntaje_banda": 49.6,
+            "puntaje_aplicado": 49.6,
+            "valor": -23.2,
             "peso_efectivo": 0.15
           }
         },
@@ -112,13 +112,13 @@
       "imagen_voto": {
         "nombre": "Imagen y voto",
         "peso": 0.1,
-        "puntaje": 75.6,
+        "puntaje": 71.2,
         "indicadores": {
           "votometro_ventaja_lla": {
             "peso": 1.0,
-            "puntaje_banda": 75.6,
-            "puntaje_aplicado": 75.6,
-            "valor": 5.3,
+            "puntaje_banda": 71.2,
+            "puntaje_aplicado": 71.2,
+            "valor": 3.1,
             "peso_efectivo": 0.1
           }
         },
@@ -129,48 +129,48 @@
   },
   "indicadores": {
     "votometro_ventaja_lla": {
-      "valor": 5.3,
-      "lla_ponderado": 33.4,
-      "pj_ponderado": 28.1,
-      "n_encuestas": 12,
+      "valor": 3.1,
+      "lla_ponderado": 32.7,
+      "pj_ponderado": 29.6,
+      "n_encuestas": 11,
       "unidad": "Puntos porcentuales",
       "fuente": "Votómetro CIGOB",
-      "fecha_dato": "2026-05-28",
+      "fecha_dato": "2026-06-10",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "imagen_voto",
-      "puntaje_itcp": 75.6,
-      "puntaje_banda": 75.6,
+      "puntaje_itcp": 71.2,
+      "puntaje_banda": 71.2,
       "peso_efectivo": 0.1
     },
     "ratio_dnu": {
-      "valor": 1.529,
-      "dnu_count": 26,
+      "valor": 1.588,
+      "dnu_count": 27,
       "leyes_count": 17,
       "periodo": "2026",
       "unidad": "DNUs por ley",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 42.7,
-      "puntaje_banda": 42.7,
+      "puntaje_itcp": 40.5,
+      "puntaje_banda": 40.5,
       "peso_efectivo": 0.06
     },
     "conflictividad_nacional": {
-      "valor": -21.4,
-      "acum_12m": 2048,
+      "valor": -23.2,
+      "acum_12m": 2000,
       "eventos_2023": 2605,
       "unidad": "% vs 2023",
       "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
-      "fecha_dato": "2026-05-01",
+      "fecha_dato": "2026-06-01",
       "desactualizado": false,
-      "detalle_txt": "2048 eventos de protesta y disturbios en el país en 12m (hasta 2026-05) vs 2605 en todo 2023 (-21,4%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país",
+      "detalle_txt": "2000 eventos de protesta y disturbios en el país en 12m (hasta 2026-06) vs 2605 en todo 2023 (-23,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país",
       "en_indice": true,
       "dimension": "conflicto_social",
-      "puntaje_itcp": 43.2,
-      "puntaje_banda": 43.2,
+      "puntaje_itcp": 49.6,
+      "puntaje_banda": 49.6,
       "peso_efectivo": 0.15
     },
     "movilizacion_cepa": {
@@ -181,7 +181,7 @@
       "unidad": "Índice (0–100)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
       "fecha_dato": "2026-06-09",
-      "desactualizado": true,
+      "desactualizado": false,
       "en_indice": false
     },
     "iaf_transferencias": {
@@ -193,7 +193,7 @@
       "ipc_aplicado_pct": 31.5,
       "unidad": "% interanual real",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
@@ -208,7 +208,7 @@
       "ventana_dias": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
@@ -223,7 +223,7 @@
       "periodo_id": "HCDN144",
       "unidad": "% de sesiones",
       "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
@@ -239,7 +239,7 @@
       "ventana_dias": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
@@ -251,7 +251,7 @@
       "valor": 66.7,
       "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
       "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-14",
       "n_provincias": 16,
       "desactualizado": false,
       "en_indice": true,
@@ -269,7 +269,7 @@
       "detalle_txt": "3 vetos insistidos por el Congreso + 5 decretos rechazados en el recinto en los últimos 12 meses",
       "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
@@ -281,7 +281,7 @@
       "valor": 7,
       "unidad": "salidas de rango ministerial (acum. 12 meses)",
       "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "salidas_politicas": 5,
       "salidas_estructurales": 2,
@@ -290,14 +290,14 @@
       "en_indice": false
     },
     "protestas_caba": {
-      "valor": 301,
+      "valor": 294,
       "unidad": "eventos de protesta en 12 meses (CABA, ACLED)",
       "fuente": "ACLED — agregado semanal por provincia (acleddata.com)",
-      "fecha_dato": "2026-05-01",
+      "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "eventos_2023": 240,
-      "var_vs_2023": 25.4,
-      "detalle_txt": "301 eventos en 12m (hasta 2026-05) vs 240 en 2023 (+25,4%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
+      "var_vs_2023": 22.5,
+      "detalle_txt": "294 eventos en 12m (hasta 2026-06) vs 240 en 2023 (+22,5%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
       "en_indice": false
     },
     "cohesion_bloque": {
@@ -312,14 +312,14 @@
           "valor": 99.9,
           "fecha_dato": "2026-06-24",
           "n_actas": 33,
-          "corrida_exitosa_en": "2026-07-13",
+          "corrida_exitosa_en": "2026-07-14",
           "desactualizado": false
         },
         "senado": {
           "valor": 99.4,
           "fecha_dato": "2026-06-04",
           "n_actas": 18,
-          "corrida_exitosa_en": "2026-07-13",
+          "corrida_exitosa_en": "2026-07-14",
           "desactualizado": false
         }
       },
@@ -335,7 +335,7 @@
       "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
       "fecha_dato": "2026-06-04",
       "n_provincias": 24,
-      "corrida_exitosa_en": "2026-07-13",
+      "corrida_exitosa_en": "2026-07-14",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",

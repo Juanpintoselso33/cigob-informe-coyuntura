@@ -1,7 +1,7 @@
 fecha,indicador,valor,unidad,fuente
-2026-07-01,votometro_ventaja_lla,5.2,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-06-01,votometro_ventaja_lla,5.2,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-05-01,votometro_ventaja_lla,5.2,pp (brecha LLA−PJ),Votómetro CIGOB
+2026-07-01,votometro_ventaja_lla,3.1,pp (brecha LLA−PJ),Votómetro CIGOB
+2026-06-01,votometro_ventaja_lla,3.1,pp (brecha LLA−PJ),Votómetro CIGOB
+2026-05-01,votometro_ventaja_lla,4.5,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-04-01,votometro_ventaja_lla,6.9,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-03-01,votometro_ventaja_lla,13.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-02-01,votometro_ventaja_lla,12.8,pp (brecha LLA−PJ),Votómetro CIGOB
@@ -66,7 +66,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
-2026-01-01,ratio_dnu,1.529,DNUs por ley,InfoLeg (conteo anual)
+2026-01-01,ratio_dnu,1.588,DNUs por ley,InfoLeg (conteo anual)
 2025-01-01,ratio_dnu,4.909,DNUs por ley,InfoLeg (conteo anual)
 2024-01-01,ratio_dnu,1.69,DNUs por ley,InfoLeg (conteo anual)
 2023-01-01,ratio_dnu,1.176,DNUs por ley,InfoLeg (conteo anual)
@@ -147,6 +147,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2024-01-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2023-12-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-06-01,conflictividad_nacional,-23.2,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-05-01,conflictividad_nacional,-21.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-04-01,conflictividad_nacional,-26.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-03-01,conflictividad_nacional,-31.9,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
