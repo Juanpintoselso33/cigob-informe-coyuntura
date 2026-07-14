@@ -11,19 +11,68 @@ const CINT_NOMBRE: Record<string, string> = {
 const SLUG_DE: Record<string, string> =
   Object.fromEntries(CINTURONES.map(c => [c.key, c.slug]));
 
-// Dimensión a la que pertenece cada indicador dentro de su índice paramétrico
-// (para la celda "Dimensión" de la ficha: cose el nivel indicador ↔ dimensión).
+// Índice paramétrico y metadata de ponderación por indicador. Se conservan
+// peso efectivo y puntaje aplicado del snapshot: pueden diferir de los
+// nominales cuando hay faltantes o ajustes del analista (ADR-0053).
+// INDICE_KEY se conserva como objetivo del guard de wiring estático de
+// test_web_labels.py (mapea cinturón → índice en forma literal cinturon: "itcm").
 const INDICE_KEY: Record<string, string> = {
   macro: "itcm", gestion: "itcg", vida_cotidiana: "itvc", politica: "itcp",
 };
-const dimDe: Record<string, string> = {};
+const INDICE_CFG: Record<string, { key: string; sigla: string; base100: boolean }> = {
+  macro: { key: "itcm", sigla: "ITCM", base100: false },
+  gestion: { key: "itcg", sigla: "ITCG", base100: false },
+  vida_cotidiana: { key: "itvc", sigla: "ITVC", base100: true },
+  politica: { key: "itcp", sigla: "ITCP", base100: false },
+};
+const numero = (valor: unknown): number | null =>
+  typeof valor === "number" && Number.isFinite(valor) ? valor : null;
+type MetaIndiceIndicador = {
+  dimNombre: string;
+  sigla: string;
+  base100: boolean;
+  pesoInternoNominal: number | null;
+  pesoDimensionNominal: number | null;
+  pesoDimensionEfectivo: number | null;
+  pesoEfectivo: number | null;
+  puntajeAplicado: number | null;
+  aporteIndice: number | null;
+};
+const indiceMetaDe: Record<string, MetaIndiceIndicador> = {};
 for (const [ckey, c] of Object.entries(informe.cinturones)) {
-  const blk = (c as any)[INDICE_KEY[ckey] ?? ""];
+  const cfg = INDICE_CFG[ckey];
+  const blk = cfg ? (c as any)[cfg.key] : null;
   if (!blk?.dimensiones) continue;
   for (const dim of Object.values(blk.dimensiones) as any[]) {
     for (const [ikey, i] of Object.entries(dim.indicadores ?? {}) as [string, any][]) {
-      dimDe[`${SLUG_DE[ckey] ?? ckey}.${ikey}`] =
-        `${dim.nombre} · ${Math.round(i.peso * 100)}% interno`;
+      const ind = (c as any).indicadores?.[ikey];
+      if (ind?.en_indice === false) continue;
+      const pesoInternoNominal = numero(i.peso);
+      const pesoDimensionNominal = numero(dim.peso);
+      const pesoDimensionEfectivo = numero(dim.peso_efectivo) ?? pesoDimensionNominal;
+      const pesoEfectivo = numero(i.peso_efectivo)
+        ?? numero(ind?.peso_efectivo)
+        ?? (pesoDimensionEfectivo !== null && pesoInternoNominal !== null
+          ? pesoDimensionEfectivo * pesoInternoNominal
+          : null);
+      const puntajePublicado = numero(ind?.[`puntaje_${cfg.key}`]);
+      const puntajeAplicado = numero(i.puntaje_aplicado)
+        ?? numero(i.puntaje_banda)
+        ?? puntajePublicado
+        ?? numero(ind?.puntaje_banda);
+      indiceMetaDe[`${SLUG_DE[ckey] ?? ckey}.${ikey}`] = {
+        dimNombre: dim.nombre,
+        sigla: cfg.sigla,
+        base100: cfg.base100,
+        pesoInternoNominal,
+        pesoDimensionNominal,
+        pesoDimensionEfectivo,
+        pesoEfectivo,
+        puntajeAplicado,
+        aporteIndice: pesoEfectivo !== null && puntajeAplicado !== null
+          ? pesoEfectivo * puntajeAplicado
+          : null,
+      };
     }
   }
 }
@@ -63,7 +112,9 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
     const estado = ind.estado === "placeholder"
       ? "Estimación"
       : ind.desactualizado ? "Carga manual" : "Automático";
-    info[`${SLUG_DE[ckey] ?? ckey}.${ikey}`] = {
+    const claveInfo = `${SLUG_DE[ckey] ?? ckey}.${ikey}`;
+    const indiceMeta = ind.en_indice === false ? null : (indiceMetaDe[claveInfo] ?? null);
+    info[claveInfo] = {
       label: label(ikey), cinturon: CINT_NOMBRE[ckey] ?? ckey,
       que: d.que, aporta: d.aporta,
       valor: p.texto, unidad: p.unidad, unidadSerie: UNIDADES_SERIE[ikey] ?? p.unidad,
@@ -93,8 +144,10 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       formula: FORMULAS[ikey]?.latex ?? null,
       formulaLeyenda: FORMULAS[ikey]?.leyenda ?? null,
       contextoDuro: contextoDuroFilas((ind as any).contexto_duro),
-      dimTxt: dimDe[`${SLUG_DE[ckey] ?? ckey}.${ikey}`]
-        ?? (ind.en_indice === false ? "Contexto — no integra el índice" : null),
+      dimTxt: indiceMeta
+        ? `${indiceMeta.dimNombre} · ${indiceMeta.pesoInternoNominal !== null ? Math.round(indiceMeta.pesoInternoNominal * 100) + "% interno" : "peso interno no disponible"}`
+        : (ind.en_indice === false ? "Contexto — no integra el índice" : null),
+      indiceMeta,
     };
   }
 }
@@ -104,12 +157,6 @@ const seriesJson = JSON.stringify(series);
 // Ficha por DIMENSIÓN de los índices paramétricos (modal de dimensión):
 // composición (indicadores, pesos internos, puntajes interpolados), aporte al
 // índice y flag de dimensión crítica (ADR-0020).
-const INDICE_CFG: Record<string, { key: string; sigla: string; base100: boolean }> = {
-  macro: { key: "itcm", sigla: "ITCM", base100: false },
-  gestion: { key: "itcg", sigla: "ITCG", base100: false },
-  vida_cotidiana: { key: "itvc", sigla: "ITVC", base100: true },
-  politica: { key: "itcp", sigla: "ITCP", base100: false },
-};
 const dims: Record<string, unknown> = {};
 for (const [ckey, c] of Object.entries(informe.cinturones)) {
   const cfg = INDICE_CFG[ckey];
@@ -190,7 +237,41 @@ const dimsJson = JSON.stringify(dims);
   const SERIES = JSON.parse(document.getElementById("cg-series-data").textContent);
   const modal = document.getElementById("cg-modal");
   const nf = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 2 });
+  const nfPct = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 1 });
   const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const pctIndice = (n) => `${nfPct.format(n * 100)}%`;
+  function incidenciaIndiceHtml(meta) {
+    if (!meta || typeof meta.pesoEfectivo !== "number") return "";
+    const pesoNominalEsperado = typeof meta.pesoInternoNominal === "number" && typeof meta.pesoDimensionNominal === "number"
+      ? meta.pesoInternoNominal * meta.pesoDimensionNominal
+      : null;
+    const sinRenormalizacion = pesoNominalEsperado !== null
+      && Math.abs(pesoNominalEsperado - meta.pesoEfectivo) < 0.0005;
+    let ponderacion;
+    if (sinRenormalizacion) {
+      ponderacion = `${pctIndice(meta.pesoInternoNominal)} interno × ` +
+        `${pctIndice(meta.pesoDimensionNominal)} de la dimensión = ` +
+        `<strong>${pctIndice(meta.pesoEfectivo)} efectivo del ${esc(meta.sigla)}</strong>.`;
+    } else {
+      const nominales = typeof meta.pesoInternoNominal === "number" && typeof meta.pesoDimensionNominal === "number"
+        ? ` Pesos nominales: ${pctIndice(meta.pesoInternoNominal)} interno y ${pctIndice(meta.pesoDimensionNominal)} de la dimensión.`
+        : "";
+      const dimensionEfectiva = typeof meta.pesoDimensionEfectivo === "number"
+        && typeof meta.pesoDimensionNominal === "number"
+        && Math.abs(meta.pesoDimensionNominal - meta.pesoDimensionEfectivo) >= 0.0005
+        ? ` La dimensión pesa ${pctIndice(meta.pesoDimensionEfectivo)} tras la renormalización.`
+        : "";
+      ponderacion = `<strong>${pctIndice(meta.pesoEfectivo)} efectivo del ${esc(meta.sigla)}</strong>.` +
+        `${nominales}${dimensionEfectiva} La ponderación efectiva refleja los datos disponibles en el período.`;
+    }
+    const aporte = typeof meta.aporteIndice === "number" && typeof meta.puntajeAplicado === "number"
+      ? `<p class="cg-score-map"><strong>Aporte actual:</strong> ` +
+        `${meta.base100 ? `nivel aplicado ${nf.format(meta.puntajeAplicado)} (100 = 4T-2023)` : `puntaje aplicado ${nf.format(meta.puntajeAplicado)}/100`} ` +
+        `× ${pctIndice(meta.pesoEfectivo)} ≈ <strong>${nf.format(meta.aporteIndice)} puntos del ${esc(meta.sigla)}</strong>.</p>`
+      : "";
+    return `<h4 class="cg-modal-h4">Cómo entra al ${esc(meta.sigla)}</h4>` +
+      `<p class="cg-score-map"><strong>Ponderación vigente:</strong> ${ponderacion}</p>${aporte}`;
+  }
 
   // Tipo de gráfico según el indicador: serie temporal → línea/área ·
   // avance sin serie → medidor radial · componentes → barras.
@@ -289,10 +370,12 @@ const dimsJson = JSON.stringify(dims);
       mostrarFormula(d.formula, d.formulaLeyenda);
 
       const score = document.getElementById("cg-modal-score");
+      const indiceHtml = incidenciaIndiceHtml(d.indiceMeta);
+      let tensionHtml = "";
       if (d.aporteScore != null) {
         const pct = Math.max(0, Math.min(100, d.aporteScore * 10));
-        score.innerHTML =
-          `<h4 class="cg-modal-h4">Cómo incide en el score</h4>` +
+        tensionHtml =
+          `<h4 class="cg-modal-h4">${d.indiceMeta ? "Tensión equivalente del indicador" : "Cómo incide en el score"}</h4>` +
           `<div class="cg-score-row">` +
             `<div class="cg-score-val">${nf.format(d.aporteScore)}<span>/10</span></div>` +
             `<div class="cg-score-track"><div class="cg-score-fill" style="width:${pct}%"></div>` +
@@ -303,16 +386,16 @@ const dimsJson = JSON.stringify(dims);
           (d.aporteFormula ? `<p class="cg-score-map"><strong>Cómo se calcula:</strong> ${esc(d.aporteFormula)}</p>` : "") +
           `<p class="cg-score-note">${esc(d.aporteLectura || `Este indicador equivale a una tensión de ${nf.format(d.aporteScore)} de 10.`)} ` +
             `Score del cinturón: <strong>${nf.format(d.scoreCint)}/10</strong>. ` +
-            `${esc(d.scoreExpl || "Promedio de las tensiones de sus indicadores.")}</p>`;
-        score.style.display = "";
+            `${esc(d.scoreExpl || "Promedio de las tensiones de sus indicadores.")}` +
+            (d.indiceMeta ? ` Esta tensión equivalente no es el aporte aritmético al ${esc(d.indiceMeta.sigla)} mostrado arriba.` : "") +
+          `</p>`;
       } else if (d.aporteNota) {
-        score.innerHTML =
+        tensionHtml =
           `<h4 class="cg-modal-h4">Cómo incide en el score</h4>` +
           `<p class="cg-score-note">${esc(d.aporteNota)}</p>`;
-        score.style.display = "";
-      } else {
-        score.style.display = "none";
       }
+      score.innerHTML = indiceHtml + tensionHtml;
+      score.style.display = score.innerHTML ? "" : "none";
 
       // Contraste de migración real (solo indice_intencion_migratoria): la
       // intención expresada en búsquedas no debe leerse sin la migración

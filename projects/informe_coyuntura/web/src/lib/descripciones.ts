@@ -58,8 +58,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Expectativa",
   },
   idm: {
-    que: "Índice de Desequilibrio Monetario: la brecha entre cuánto crece la oferta amplia de pesos del sector privado (M3 privado) y cuánto crece la demanda transaccional de dinero (M2 privado), ambos en términos reales e interanuales.",
-    aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala excedente monetario que tiende a presionar la brecha cambiaria; una negativa indica remonetización genuina traccionada por la demanda real. Se construye con agregados del BCRA (circulante, depósitos y M2 privado) deflactados por el IPC.",
+    que: "Índice de Desequilibrio Monetario: compara cuánto crece la oferta amplia de pesos del sector privado (M3 privado) con cuánto crece su demanda transaccional (M2 privado), ambos en términos reales e interanuales. El M2 transaccional incluye el circulante en poder del público, las cuentas corrientes privadas en pesos y las cajas de ahorro privadas en pesos; excluye los depósitos a la vista remunerados de personas jurídicas.",
+    aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala un excedente monetario que puede presionar sobre los precios y la brecha cambiaria; una negativa indica una remonetización traccionada por la demanda real de dinero.",
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
   iai: {

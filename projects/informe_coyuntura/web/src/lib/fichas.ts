@@ -553,13 +553,14 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "Necesita el IPC cerrado para deflactar: se publica para el último mes con IPC disponible, unas dos semanas después de mediados del mes siguiente.",
     fuente: {
       organismo: "BCRA (agregados monetarios) + INDEC (IPC como deflactor)",
-      operacion: "Agregados monetarios privados: circulante en poder del público, depósitos privados y M2 privado; índice de elaboración propia",
+      operacion: "Agregados monetarios privados: circulante en poder del público, depósitos privados, cuentas corrientes privadas en pesos, cajas de ahorro privadas en pesos y M2 transaccional privado; índice de elaboración propia",
       serie: "API de Estadísticas Monetarias del BCRA (variables 17, 100 y 197) + IPC 148.3_INIVELNAL_DICI_M_26",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Principales_variables.asp",
       acceso: "Automático: API pública del BCRA y API de series de datos.gob.ar; la brecha se calcula en el pipeline.",
     },
     transformaciones: [
       "M3 privado construido = circulante en poder del público + depósitos privados, a fin de mes (no existe como serie directa del BCRA).",
+      "M2 privado transaccional = circulante en poder del público + cuentas corrientes privadas en pesos + cajas de ahorro privadas en pesos. Excluye los depósitos a la vista remunerados de personas jurídicas.",
       "IDM = crecimiento interanual real del M3 privado − crecimiento interanual real del M2 privado, ambos deflactados por IPC, en puntos porcentuales.",
       "Positivo = sobran pesos respecto de lo que la economía quiere retener (presión latente sobre precios y brecha); negativo = remonetización genuina.",
     ],
@@ -584,6 +585,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-06-28", cambio: "Nace y entra al índice: la dimensión de estabilidad monetaria pasa de IPC 50% / REM 50% a IPC 40% / REM 30% / IDM 30%, en versión interanual real-real." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-07-13", cambio: "Aclaración de transparencia, sin cambio metodológico: la ficha explicita la composición del M2 transaccional y publica la cadena completa de ponderación y el aporte vigente del IDM al ITCM." },
     ],
   },
 

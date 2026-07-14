@@ -22,7 +22,9 @@ import itvc
 
 DATOS_TS = (ROOT / "web" / "src" / "lib" / "datos.ts").read_text(encoding="utf-8")
 INDICADOR_MODAL_ASTRO = (ROOT / "web" / "src" / "components" / "IndicadorModal.astro").read_text(encoding="utf-8")
+METODOLOGIA_ASTRO = (ROOT / "web" / "src" / "pages" / "metodologia" / "[id].astro").read_text(encoding="utf-8")
 DESCRIPCIONES_TS = (ROOT / "web" / "src" / "lib" / "descripciones.ts").read_text(encoding="utf-8")
+FICHAS_TS = (ROOT / "web" / "src" / "lib" / "fichas.ts").read_text(encoding="utf-8")
 
 CINTURON_DE_INDICE = {"itcm": "macro", "itcg": "gestion", "itvc": "vida_cotidiana", "itcp": "politica"}
 DIMENSIONES_POR_INDICE = {
@@ -98,3 +100,56 @@ def test_toda_dimension_parametrica_tiene_descripcion_en_dim_descripciones():
             if not re.search(r"(?<![a-zA-Z_])" + re.escape(dkey) + r":", DESCRIPCIONES_TS):
                 faltantes.append(f"{indice}/{dkey}")
     assert not faltantes, f"Faltan entradas en DIM_DESCRIPCIONES de descripciones.ts: {faltantes}"
+
+
+def test_modal_y_ficha_metodologica_publican_aporte_efectivo_del_indicador():
+    """La contribución sumable usa puntaje aplicado × peso efectivo.
+
+    `aporte_score` es una tensión equivalente sobre 10 y no puede reutilizarse
+    como aporte al índice (ADR-0053).
+    """
+    for nombre, fuente in {
+        "modal": INDICADOR_MODAL_ASTRO,
+        "ficha metodológica": METODOLOGIA_ASTRO,
+    }.items():
+        assert "peso_efectivo" in fuente, f"{nombre}: no lee el peso efectivo publicado"
+        assert "puntaje_aplicado" in fuente, f"{nombre}: no lee el puntaje aplicado"
+        assert "aporteIndice" in fuente, f"{nombre}: no calcula el aporte al índice"
+        assert re.search(
+            r"aporteIndice[\s\S]{0,240}?pesoEfectivo\s*\*\s*puntaje",
+            fuente,
+        ), f"{nombre}: el aporte no se deriva de peso efectivo × puntaje aplicado"
+        assert not re.search(
+            r"aporteIndice\s*[:=][^\n;]*aporte_?[Ss]core",
+            fuente,
+        ), f"{nombre}: confunde aporte_score con aporte aritmético"
+
+
+def test_transparencia_de_pesos_respeta_contexto_e_itvc_base_100():
+    assert "ind.en_indice === false" in INDICADOR_MODAL_ASTRO
+    assert "ind?.en_indice !== false" in METODOLOGIA_ASTRO
+    assert "nivel aplicado" in INDICADOR_MODAL_ASTRO.lower()
+    assert "nivel aplicado" in METODOLOGIA_ASTRO.lower()
+    assert "100 = 4T-2023" in INDICADOR_MODAL_ASTRO
+    assert "100 = 4T-2023" in METODOLOGIA_ASTRO
+
+
+def test_idm_explica_la_composicion_oficial_del_m2_transaccional():
+    componentes = [
+        "circulante en poder del público",
+        "cuentas corrientes privadas en pesos",
+        "cajas de ahorro privadas en pesos",
+        "depósitos a la vista remunerados de personas jurídicas",
+    ]
+    for componente in componentes:
+        assert componente in DESCRIPCIONES_TS, f"Falta {componente!r} en la definición pública del IDM"
+        assert componente in FICHAS_TS, f"Falta {componente!r} en la ficha técnica del IDM"
+
+    aporta_idm = re.search(
+        r'idm:\s*\{[\s\S]*?aporta:\s*"([^"]+)"',
+        DESCRIPCIONES_TS,
+    )
+    assert aporta_idm, "No se encontró DESCRIPCIONES.idm.aporta"
+    assert "BCRA" not in aporta_idm.group(1) and "IPC" not in aporta_idm.group(1), (
+        "DESCRIPCIONES.idm.aporta debe explicar relevancia conceptual, no fuentes o plumbing"
+    )

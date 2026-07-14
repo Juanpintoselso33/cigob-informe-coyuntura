@@ -36,29 +36,59 @@ const mesLeg = (iso: string) => {
 const coma = (n: number, dec = 1) =>
   n.toLocaleString("es-AR", { maximumFractionDigits: dec });
 const pct = (n: number) => coma(Math.round(n * 1000) / 10) + "%";
+const numero = (valor: unknown): number | null =>
+  typeof valor === "number" && Number.isFinite(valor) ? valor : null;
 
 // ── Datos runtime según el tipo de ficha ────────────────────────────────
 const esIndicador = f.tipo === "indicador";
 const fi = f as FichaIndicador;
 const fx = f as FichaIndice;
 
-// indicador: fila del cinturón + su lugar dentro del índice paramétrico
+// indicador: fila del cinturón + su lugar dentro del índice paramétrico.
+// La transparencia usa los valores efectivos/aplicados del snapshot: los
+// nominales quedan como referencia y como fallback histórico (ADR-0053).
 const ind = esIndicador ? cinturon.indicadores[f.id] : null;
 const desc = esIndicador ? (DESCRIPCIONES[f.id] ?? { que: "", aporta: "", frecuencia: "—", tipo: "—" }) : null;
 const formula = esIndicador ? FORMULAS[f.id] : null;
 const pres = ind ? presentacion(f.id, ind) : null;
 const indice = indiceDe(cinturon);
-let dimNombre: string | null = null, pesoDim = 0, pesoInterno = 0, puntajeHoy: number | null = null;
-if (esIndicador && indice) {
+let dimNombre: string | null = null;
+let pesoDimNominal: number | null = null;
+let pesoDimEfectivo: number | null = null;
+let pesoInternoNominal: number | null = null;
+let pesoEfectivo: number | null = null;
+let puntajeHoy: number | null = null;
+let integraIndice = false;
+if (esIndicador && indice && ind?.en_indice !== false) {
   for (const dim of Object.values(indice.data.dimensiones) as any[]) {
     if (f.id in (dim.indicadores ?? {})) {
-      dimNombre = dim.nombre; pesoDim = dim.peso;
-      pesoInterno = dim.indicadores[f.id].peso;
-      puntajeHoy = dim.indicadores[f.id].puntaje_aplicado;
+      const comp = dim.indicadores[f.id];
+      dimNombre = dim.nombre;
+      pesoDimNominal = numero(dim.peso);
+      pesoDimEfectivo = numero(dim.peso_efectivo) ?? pesoDimNominal;
+      pesoInternoNominal = numero(comp.peso);
+      pesoEfectivo = numero(comp.peso_efectivo)
+        ?? numero(ind?.peso_efectivo)
+        ?? (pesoDimEfectivo !== null && pesoInternoNominal !== null
+          ? pesoDimEfectivo * pesoInternoNominal
+          : null);
+      puntajeHoy = numero(comp.puntaje_aplicado)
+        ?? numero(comp.puntaje_banda)
+        ?? numero(ind?.[`puntaje_${indice.sigla.toLowerCase()}`])
+        ?? numero(ind?.puntaje_banda);
+      integraIndice = true;
+      break;
     }
   }
 }
-const pesoEfectivo = esIndicador ? (ind?.peso_efectivo ?? pesoDim * pesoInterno) : 0;
+const aporteIndice = pesoEfectivo !== null && puntajeHoy !== null
+  ? pesoEfectivo * puntajeHoy
+  : null;
+const pesoNominalEsperado = pesoDimNominal !== null && pesoInternoNominal !== null
+  ? pesoDimNominal * pesoInternoNominal
+  : null;
+const sinRenormalizacion = pesoNominalEsperado !== null && pesoEfectivo !== null
+  && Math.abs(pesoNominalEsperado - pesoEfectivo) < 0.0005;
 
 // serie completa (sin la ventana de presentación) para la cobertura real
 const serie = (seriesRaw as Record<string, { fecha: string }[]>)[f.id] ?? [];
@@ -120,8 +150,8 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
         {esIndicador && puntajeHoy !== null && indice && (
           <span class="cg-detalle-chip">{indice.base100 ? "Componente" : `Puntaje en el ${indice.sigla}`} <strong>{coma(puntajeHoy)}{indice.base100 ? "" : "/100"}</strong>{indice.base100 ? " · 100 = 4T-2023" : ""}</span>
         )}
-        {esIndicador && pesoEfectivo > 0 && indice && (
-          <span class="cg-detalle-chip">Pesa <strong>{pct(pesoEfectivo)}</strong> del {indice.sigla}</span>
+        {esIndicador && integraIndice && pesoEfectivo !== null && pesoEfectivo > 0 && indice && (
+          <span class="cg-detalle-chip">Peso efectivo <strong>{pct(pesoEfectivo)}</strong> del {indice.sigla}</span>
         )}
         {esIndicador && ind && <span class="cg-detalle-chip"><strong>{badgeEstado(ind)}</strong></span>}
         {!esIndicador && it && (
@@ -179,8 +209,17 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
           <dl class="cg-ficha-dl">
             <div><dt>Identificador técnico</dt><dd><code>{f.id}</code></dd></div>
             <div><dt>Cinturón</dt><dd>{CINT_NOMBRE[f.cinturon]}</dd></div>
-            {dimNombre && indice && (
-              <div><dt>Dimensión en el {indice.sigla}</dt><dd>{dimNombre} ({pct(pesoDim)} del índice) · {pct(pesoInterno)} interno</dd></div>
+            {dimNombre && indice && integraIndice && (
+              <div>
+                <dt>Dimensión en el {indice.sigla}</dt>
+                <dd>
+                  {dimNombre}
+                  {pesoDimNominal !== null && ` · ${pct(pesoDimNominal)} de peso nominal en el índice`}
+                  {pesoInternoNominal !== null && ` · ${pct(pesoInternoNominal)} interno`}
+                  {pesoEfectivo !== null && ` · ${pct(pesoEfectivo)} efectivo del ${indice.sigla}`}
+                  {!sinRenormalizacion && pesoEfectivo !== null && " · ponderación efectiva ajustada a los datos disponibles"}
+                </dd>
+              </div>
             )}
             <div><dt>Unidad de medida</dt><dd>{UNIDADES_LARGAS[f.id] ?? ind.unidad ?? "—"}</dd></div>
             <div><dt>Frecuencia</dt><dd>{desc!.frecuencia}</dd></div>
@@ -224,7 +263,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
         </section>
 
         <!-- ── Cómo entra al índice/score: anclas interpoladas O explicación directa ── -->
-        {(fi.anclas || fi.incidenciaTexto) && (
+        {(fi.anclas || fi.incidenciaTexto || integraIndice) && (
           <section class="cg-section">
             <div class="cg-section-head">
               <p class="cg-eyebrow">Puntaje</p>
@@ -234,6 +273,19 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
               )}
             </div>
             <div class="cg-ficha-card">
+              {integraIndice && indice && pesoEfectivo !== null && (
+                <div class="cg-ficha-callout">
+                  <strong>Ponderación y aporte vigentes.</strong>{" "}
+                  {sinRenormalizacion && pesoInternoNominal !== null && pesoDimNominal !== null
+                    ? `${pct(pesoInternoNominal)} interno × ${pct(pesoDimNominal)} de la dimensión = ${pct(pesoEfectivo)} efectivo del ${indice.sigla}.`
+                    : `El indicador representa ${pct(pesoEfectivo)} efectivo del ${indice.sigla}; los pesos nominales se ajustan cuando faltan datos.`}
+                  {aporteIndice !== null && puntajeHoy !== null && (
+                    <Fragment>{" "}{indice.base100
+                      ? `Nivel aplicado ${coma(puntajeHoy)} (100 = 4T-2023) × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`
+                      : `Puntaje aplicado ${coma(puntajeHoy)}/100 × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`}</Fragment>
+                  )}
+                </div>
+              )}
               {fi.anclas && (
                 <Fragment>
                   <div class="cg-ficha-tablewrap">
