@@ -19,28 +19,60 @@ serie / velocidad de crecimiento"). La serie publicada crecía monótona de 0,1
 La cobertura contaba menciones de **"fondo de cese laboral"** en la Primera
 Sección del BO desde dic-2023 (`todasLasPalabras`: matchea las tres palabras
 en cualquier parte del documento — el DNU 70/2023 entra por "Fondo
-Monetario… cese… laboral"). Pero ese nombre designa desde 1980 al régimen de
-la **industria de la construcción (Ley 22.250)**. Conteo pre-reforma de la
-misma frase: 2021 = 10 · 2022 = 6 · 2023 pre-Ley Bases = 4 (~7-8/año).
+Monetario… cese… laboral"). Pero ese nombre designa al régimen de la
+**industria de la construcción (Estatuto de la Ley 22.250)**: el Capítulo V se
+llama "Fondo de Cese Laboral" desde la Ley 25.371 (2001), que renombró el
+"Fondo de Desempleo" original de 1980 — 20+ años de ruido en el BO. Conteo
+pre-reforma de la misma frase: 2021 = 10 · 2022 = 6 · 2023 pre-Ley Bases = 4
+(~7-8/año).
 Post-Ley Bases: 21 menciones en 31 meses ≈ **8,1/año — indistinguible de la
 línea de base**. El "crecimiento" de la serie era la acumulación del ruido
 administrativo de siempre; su velocidad, la tasa de ese ruido.
 
 ### 2. El instrumento de la reforma cambió de nombre
 
-La **Ley 27.802 (Modernización Laboral, publicada 06-mar-2026)** reencuadró
-el instrumento como **"Fondo de Asistencia Laboral" (FAL)**, reglamentado por
-el **Decreto 408/2026 (01-jun-2026)**. La consulta vieja no podía verlo.
+La **Ley 27.802 (Modernización Laboral; sancionada 27-feb-2026, promulgada
+05-mar, publicada BO 06-mar-2026)** creó el instrumento como **"Fondo de
+Asistencia Laboral" (FAL)** en su Título II (art. 58), reglamentado por el
+**Decreto 408/2026 (BO 01-jun-2026)**. La consulta vieja no podía verlo.
 Menciones de la frase nueva: 17 desde dic-2023, pero solo **3 desde la
 publicación de la ley** (mar = ley, may, jun = reglamentación) — las 14
 previas son el mismo ruido de palabras sueltas (verificado mes a mes: 1
 mención espuria en ene-2026). El corte de fecha en la sanción limpia la
 señal sin heurísticas.
 
+**El régimen entra en vigencia el 1-nov-2026** (art. 27 del Decreto 408/2026
+prorrogó el arranque originalmente previsto para el 1-jun-2026). La
+recaudación se canaliza por ARCA dentro de la CUSS; los fondos se instrumentan
+como FCI o fideicomisos supervisados por la CNV (art. 5 del decreto). Es
+decir: la adopción financiera (aportes, altas de fondos en CNV) es
+**legalmente imposible antes de noviembre de 2026** — el 0 de la CNV no es
+solo "temprano", está impedido por la propia norma hasta esa fecha.
+
 ### 3. CNV: cero bajo cualquier denominación (dato duro)
 
 Sobre 1.656 fondos del registro CNV: 0 con "CESE", 0 con "ASISTENCIA
-LABORAL". La materialización financiera del régimen es exactamente cero.
+LABORAL". La materialización financiera del régimen es exactamente cero
+(coherente con el diferimiento a nov-2026: los fondos aún no pueden operar).
+
+### Verificación externa (chequeo pedido por el usuario)
+
+Los hechos posteriores al corte de conocimiento se confirmaron contra fuente
+independiente, no solo contra el BO consultado por el colector:
+
+| Hecho | Fuente | Resultado |
+|---|---|---|
+| Ley 27.802 = "Modernización Laboral", BO 06-mar-2026 | InfoLeg (norma id 423680), Biblioteca AFIP, BO 35865 | ✓ |
+| Título II crea el FAL (art. 58); aporte 1% grandes / 2,5% MiPyMEs (art. 60) | Texto BO de la ley; La Nación, Perfil, TN | ✓ |
+| Decreto 408/2026 (BO 01-jun-2026) reglamenta el FAL vía FCI/fideicomisos CNV | BO aviso 342622; Microjuris; 4 estudios jurídicos | ✓ |
+| Entrada en vigencia prorrogada al 01-nov-2026 (art. 27) | Decreto 408/2026 art. 27; La Nación; Perfil | ✓ |
+| "Fondo de Cese Laboral" = régimen de la construcción (Ley 22.250, nombre desde Ley 25.371/2001) | InfoLeg Ley 22.250 texto actualizado | ✓ |
+
+Correcciones que introdujo el chequeo respecto del borrador inicial: (a) la
+vigencia es nov-2026, no jun-2026 (el "reglamentado hace seis semanas" era
+impreciso — la adopción financiera está diferida por norma); (b) el nombre
+"Fondo de Cese Laboral" de la construcción rige desde 2001, no 1980 (el
+régimen es de 1980; el argumento de contaminación se sostiene igual).
 
 ## Decisión
 
@@ -71,10 +103,12 @@ LABORAL". La materialización financiera del régimen es exactamente cero.
 
 - El valor publicado pasa de 2,9 a **0,4** y la serie deja de mostrar un
   crecimiento que no existió. La lectura honesta queda expuesta: régimen
-  reglamentado hace seis semanas, adopción en el punto de partida — el valor
+  cuya adopción financiera recién puede arrancar el 1-nov-2026 — el valor
   cercano a cero es el dato, no una falla (mismo principio que ADR-0061:
   no recalibrar contra el rango propio para "subir" un indicador que mide
-  bien un fenómeno que todavía no ocurrió).
+  bien un fenómeno que todavía no ocurrió). Hasta noviembre el indicador
+  mide el andamiaje normativo (ley + decreto + normas complementarias de
+  ARCA/CNV/Secretaría de Trabajo); a partir de ahí captará adopción real.
 - Impacto ITCG mínimo (~±0,1: ambos valores puntúan en el piso de la banda),
   pero la card, sus componentes y la serie ahora cuentan la historia real.
 - Cuando el FAL empiece a aparecer en homologaciones, la serie lo captará

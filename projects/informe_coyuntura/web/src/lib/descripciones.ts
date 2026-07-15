@@ -308,8 +308,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (devengado SIDIF)", tipo: "Avance de reforma",
   },
   fal_modernizacion_laboral: {
-    que: "El avance del Fondo de Asistencia Laboral, el reemplazo de las indemnizaciones por despido que creó la Ley de Modernización Laboral (Ley 27.802, reglamentada en junio de 2026): adopción en convenios colectivos y dinero efectivamente puesto en fondos registrados ante la CNV.",
-    aporta: "Es el indicador bisagra de la reforma laboral: el propio Gobierno lo presenta como la herramienta central contra la litigiosidad. No se impone por ley — se pacta por convenio —, así que su adopción mide si la reforma prende de verdad. La cobertura se mide con las menciones del instrumento en el Boletín Oficial desde la publicación de la ley (calibración: 420 menciones = adopción plena, equivalente a un año donde una de cada cinco homologaciones lo incorpora); la adopción financiera, con los fondos registrados en la CNV. El régimen recién arranca: el valor cercano a cero es el dato, no una falla de medición.",
+    que: "El avance del Fondo de Asistencia Laboral, el mecanismo para financiar las indemnizaciones por despido que creó la Ley de Modernización Laboral (Ley 27.802, marzo de 2026; reglamentada por el Decreto 408/2026): construcción normativa y dinero efectivamente puesto en fondos registrados ante la CNV.",
+    aporta: "Es el indicador bisagra de la reforma laboral: el propio Gobierno lo presenta como la herramienta central contra la litigiosidad. La cobertura se mide con las menciones del instrumento en el Boletín Oficial desde la publicación de la ley (calibración: 420 menciones = adopción plena, equivalente a un año donde una de cada cinco homologaciones lo incorpora); la adopción financiera, con los fondos registrados en la CNV. El régimen recién entra en vigencia el 1 de noviembre de 2026, así que hasta entonces el valor cercano a cero mide el andamiaje normativo —no puede haber aportes ni fondos antes de esa fecha— y es el dato, no una falla de medición.",
     frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
   libertad_opcion_salud: {

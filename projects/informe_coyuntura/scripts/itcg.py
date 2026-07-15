@@ -87,7 +87,7 @@ BANDAS_ITCG = {
     "fal_modernizacion_laboral": [      # Índice de Avance del FAL 0-100 (compuesto, ADR-0068)
         # Reforma opt-in por CCT: 40-60 ya sería adopción masiva; <5 = solo
         # marco normativo sin adopción (la foto del arranque del FAL,
-        # Ley 27.802 reglamentada en jun-2026 por el Dto. 408/2026).
+        # Ley 27.802; entra en vigencia el 1-nov-2026, Dto. 408/2026 art. 27).
         (60.0, INF, 100), (40.0, 60.0, 85), (20.0, 40.0, 65), (5.0, 20.0, 40), (-INF, 5.0, 10),
     ],
     "privatizaciones": [                # % de avance por etapas (promedio etapa/4 de la cartera)

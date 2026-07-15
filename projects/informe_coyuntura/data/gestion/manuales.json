@@ -39,7 +39,7 @@
     "unidad": "Índice de Avance del Fondo de Asistencia Laboral 0-100 (cobertura CCT 40% + adopción financiera 30% + litigiosidad 30%, renormalizado a lo disponible)",
     "estado": "estimado",
     "fuente": "MTEySS / CNV / Boletín Oficial — elaboración CIGOB",
-    "notas": "El colector AUTO cuenta los fondos de cese o asistencia laboral del registro CNV (hoy: 0) y las menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde la publicación de la Ley de Modernización Laboral (marzo de 2026). 'valor' y 'cobertura_cct_pct' solo operan como respaldo si esas fuentes no responden. El régimen fue reglamentado en junio de 2026: la adopción está en su punto de partida y el valor bajo refleja eso. Actualizar el respaldo con: convenios homologados que incorporen el fondo (buscador del MTEySS) y grandes gremios que lo adopten.",
+    "notas": "El colector AUTO cuenta los fondos de cese o asistencia laboral del registro CNV (hoy: 0) y las menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde la publicación de la Ley de Modernización Laboral (marzo de 2026). 'valor' y 'cobertura_cct_pct' solo operan como respaldo si esas fuentes no responden. El régimen entra en vigencia el 1 de noviembre de 2026 (el Decreto 408/2026 prorrogó el arranque desde junio): la adopción financiera no puede comenzar antes de esa fecha y el valor bajo refleja eso. Actualizar el respaldo con: convenios homologados que incorporen el fondo (buscador del MTEySS) y grandes gremios que lo adopten.",
     "fecha_dato": "2026-07-15"
   },
   "asistencia_directa": {

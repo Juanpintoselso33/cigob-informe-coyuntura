@@ -583,9 +583,12 @@ FCI_CESE_PLENO = 10
 # menciones/año ANTES de la reforma vs 8,1/año después, señal neta nula; la
 # serie que "crecía" era ruido de fondo acumulado. La Ley 27.802
 # (Modernización Laboral, publicada mar-2026; Dto. 408/2026 reglamentó)
-# renombró el instrumento a "Fondo de Asistencia Laboral": se cuenta esa
-# frase DESDE la publicación de la ley — el corte de fecha elimina el ruido
-# pre-creación (verificado: 1 mención espuria en ene-2026 queda afuera).
+# renombró el instrumento a "Fondo de Asistencia Laboral" (FAL, Título II;
+# entra en vigencia el 1-nov-2026 según el art. 27 del Dto. 408/2026): se
+# cuenta esa frase DESDE la publicación de la ley — el corte de fecha elimina
+# el ruido pre-creación (verificado: 1 mención espuria en ene-2026 queda
+# afuera). Hasta nov-2026 la cobertura mide andamiaje normativo; la adopción
+# financiera (CNV) está diferida por norma, por eso es 0.
 # Pleno = 420 menciones acumuladas ≈ un año de negociación colectiva donde
 # ~1 de cada 5 homologaciones incorpora el FAL (el MTEySS homologa ~2.000
 # convenios y acuerdos/año, serie 2008-2022; las cláusulas de crisis

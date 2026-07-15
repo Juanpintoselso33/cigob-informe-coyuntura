@@ -1529,7 +1529,7 @@ export const FICHAS: Record<string, Ficha> = {
     dobleUso: "La litigiosidad laboral puntúa como indicador aparte de la misma dimensión: par instrumento (este) / resultado (aquella), sin doble conteo.",
     limitaciones: [
       "La cobertura por menciones en el Boletín Oficial es una aproximación: cuenta actos normativos que nombran al instrumento, no convenios homologados ni trabajadores cubiertos. El pleno de 420 menciones es una calibración provisoria anclada al ritmo de homologaciones del Ministerio de Trabajo.",
-      "El régimen fue reglamentado en junio de 2026: la adopción está en su punto de partida y el valor cercano a cero refleja eso, no una falla de medición.",
+      "El régimen recién entra en vigencia el 1 de noviembre de 2026 (el decreto reglamentario de junio prorrogó el arranque): la adopción financiera —aportes y fondos registrados— no puede comenzar antes de esa fecha, así que el valor cercano a cero refleja un régimen todavía en construcción normativa, no una falla de medición.",
     ],
     faltantes: "Si el Boletín falla, la cobertura cae a la estimación manual declarada; si el registro CNV falla, entra el valor de respaldo completo; después, caché y renormalización.",
     revisiones: "El registro CNV se reverifica en cada corrida; la serie de menciones se reconstruye por consulta mensual.",
