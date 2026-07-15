@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-15T04:16:58.846779",
+  "generated_at": "2026-07-15T12:24:18.985376",
   "period": "2026-07",
   "score_global": 3.4,
   "ponderacion": {
@@ -16,25 +16,25 @@
   },
   "cinturones": {
     "macro": {
-      "score": 4.1,
+      "score": 4.3,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
         "ipc_total": {
-          "valor": 2.15,
+          "valor": 1.89,
           "unidad": "% mensual",
           "fuente": "INDEC — IPC nacional (vía datos.gob.ar)",
-          "fecha_dato": "2026-05-01",
+          "fecha_dato": "2026-06-01",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 72.0,
-          "puntaje_banda": 72.0,
+          "puntaje_itcm": 77.2,
+          "puntaje_banda": 77.2,
           "peso_efectivo": 0.104,
-          "aporte_score": 2.8,
-          "aporte_formula": "Anclas ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 72.0; pesa 10,4% del ITCM)",
+          "aporte_score": 2.3,
+          "aporte_formula": "Anclas ITCM: ≤1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · >5 → 10 (puntaje interpolado entre anclas: 77.2; pesa 10,4% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 2,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 2,3/10.",
           "aporte_input_txt": null
         },
         "reservas_bcra": {
@@ -63,34 +63,34 @@
           "aporte_input_txt": "netas 4122 = SDDS estricto -1605 + Tesoro 3058 + Bopreal 2670 (M USD)"
         },
         "idc": {
-          "valor": -0.31,
+          "valor": -0.24,
           "unidad": "σ vs. su historia",
           "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
-          "fecha_dato": "2026-05-01",
+          "fecha_dato": "2026-06-01",
           "componentes": {
-            "precio": 0.33,
+            "precio": 0.43,
             "volumen": -0.13,
-            "asignacion": -1.18
+            "asignacion": -1.06
           },
           "niveles": {
-            "tasa_real_pp": -0.58,
+            "tasa_real_pp": -0.29,
             "dep_real_ia_pct": -1.3,
-            "holgura_pct": 17.0
+            "holgura_pct": 18.8
           },
-          "ventana": "2017-12 → 2026-05 (102 meses)",
-          "badlar_real_mensual": -0.58,
+          "ventana": "2017-12 → 2026-06 (103 meses)",
+          "badlar_real_mensual": -0.29,
           "semaforo": "amarillo",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 49.7,
-          "puntaje_banda": 49.7,
+          "puntaje_itcm": 52.0,
+          "puntaje_banda": 52.0,
           "peso_efectivo": 0.064,
-          "aporte_score": 5.0,
-          "aporte_formula": "Anclas ITCM: >1 → 100 · 0,5–1 → 85 · -0,5 a 0,5 → 60 · -1 a -0,5 → 35 · ≤-1 → 10 (puntaje interpolado entre anclas: 49.7; pesa 6,4% del ITCM)",
+          "aporte_score": 4.8,
+          "aporte_formula": "Anclas ITCM: >1 → 100 · 0,5–1 → 85 · -0,5 a 0,5 → 60 · -1 a -0,5 → 35 · ≤-1 → 10 (puntaje interpolado entre anclas: 52.0; pesa 6,4% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 5,0/10.",
-          "aporte_input_txt": "-0,31 σ = precio 0,33 · volumen -0,13 · asignación -1,18 (amarillo) — niveles: tasa real -0,58 pp · depósitos -1,3% i.a. real · holgura 17,0%"
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 4,8/10.",
+          "aporte_input_txt": "-0,24 σ = precio 0,43 · volumen -0,13 · asignación -1,06 (amarillo) — niveles: tasa real -0,29 pp · depósitos -1,3% i.a. real · holgura 18,8%"
         },
         "emae_ia": {
           "valor": 1.64,
@@ -133,26 +133,26 @@
           "aporte_input_txt": null
         },
         "recaudacion": {
-          "valor": -2.3,
+          "valor": -3.16,
           "unidad": "% i.a. real (prom. móvil 3 meses)",
           "fuente": "Sec. Hacienda — recaudación total (vía datos.gob.ar)",
-          "fecha_dato": "2026-05-01",
+          "fecha_dato": "2026-06-01",
           "meses": {
-            "2026-03": -4.82,
             "2026-04": -3.9,
-            "2026-05": 1.82
+            "2026-05": 1.82,
+            "2026-06": -7.39
           },
-          "detalle_txt": "Promedio de 2026-03: -4.8% · 2026-04: -3.9% · 2026-05: +1.8% — 2026-06 (provisorio, no puntúa): -7.1% con deflactor de 2026-05",
+          "detalle_txt": "Promedio de 2026-04: -3.9% · 2026-05: +1.8% · 2026-06: -7.4%",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 40.8,
-          "puntaje_banda": 40.8,
+          "puntaje_itcm": 32.1,
+          "puntaje_banda": 32.1,
           "peso_efectivo": 0.144,
-          "aporte_score": 5.9,
-          "aporte_formula": "Anclas ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5 a 0 → 40 · ≤-5 → 10 (puntaje interpolado entre anclas: 40.8; pesa 14,4% del ITCM)",
+          "aporte_score": 6.8,
+          "aporte_formula": "Anclas ITCM: >10 → 100 · 5–10 → 80 · 0–5 → 60 · -5 a 0 → 40 · ≤-5 → 10 (puntaje interpolado entre anclas: 32.1; pesa 14,4% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 5,9/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 6,8/10.",
           "aporte_input_txt": null
         },
         "tcrm": {
@@ -192,44 +192,47 @@
           "aporte_input_txt": "equiv. mensual 1,69% (raíz-12 del 22,3% anual)"
         },
         "idm": {
-          "valor": 4.3,
+          "valor": 6.38,
           "unidad": "pp (brecha i.a. real)",
           "fuente": "BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; M2 privado transaccional var. 197) + IPC INDEC",
-          "fecha_dato": "2026-05-01",
+          "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "m3_real_ia": -2.48,
-          "m2_real_ia": -6.78,
+          "m3_real_ia": -2.52,
+          "m2_real_ia": -8.9,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_itcm": 53.3,
-          "puntaje_banda": 53.3,
+          "puntaje_itcm": 36.0,
+          "puntaje_banda": 36.0,
           "peso_efectivo": 0.065,
-          "aporte_score": 4.7,
-          "aporte_formula": "Anclas ITCM: ≤-2 → 100 · -2 a 2 → 85 · 2–5 → 60 · 5–8 → 35 · >8 → 10 (puntaje interpolado entre anclas: 53.3; pesa 6,5% del ITCM)",
+          "aporte_score": 6.4,
+          "aporte_formula": "Anclas ITCM: ≤-2 → 100 · -2 a 2 → 85 · 2–5 → 60 · 5–8 → 35 · >8 → 10 (puntaje interpolado entre anclas: 36.0; pesa 6,5% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 4,7/10.",
-          "aporte_input_txt": "brecha 4,3 pp = M3 priv. real i.a. -2,48% − M2 priv. real i.a. -6,78%"
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 6,4/10.",
+          "aporte_input_txt": "brecha 6,38 pp = M3 priv. real i.a. -2,52% − M2 priv. real i.a. -8,9%"
         },
         "presion_dolarizacion": {
-          "valor": 45.24,
+          "valor": 46.61,
           "unidad": "pts (0-100)",
-          "fuente": "ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)",
+          "fuente": "ArgentinaDatos (CCL + dólar cripto) + BCRA (A3500, M2 privado y Mercado de Cambios)",
           "fecha_dato": "2026-05-01",
           "desactualizado": false,
           "regimen": "flujo",
           "metrica": 5.43,
           "ventana_meses": 3,
           "ventana_parcial": false,
-          "puntaje_itcm": 64.8,
+          "puntaje_itcm": 63.4,
+          "presion_formal": 45.24,
+          "presion_informal": 49.82,
+          "brecha_informal": 5.98,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
-          "puntaje_banda": 64.8,
+          "puntaje_banda": 63.4,
           "peso_efectivo": 0.026,
-          "aporte_score": 3.5,
-          "aporte_formula": "Anclas ITCM: ≤0 → 100 · 0–25 → 85 · 25–50 → 60 · 50–75 → 35 · >75 → 10 (puntaje interpolado entre anclas: 64.8; pesa 2,6% del ITCM)",
+          "aporte_score": 3.7,
+          "aporte_formula": "Anclas ITCM: ≤0 → 100 · 0–25 → 85 · 25–50 → 60 · 50–75 → 35 · >75 → 10 (puntaje interpolado entre anclas: 63.4; pesa 2,6% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 3,5/10.",
-          "aporte_input_txt": "presión 45,24 pts = compras netas de USD de personas humanas 5,43% del M2 privado (ventana móvil 3 meses)"
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 3,7/10.",
+          "aporte_input_txt": "presión 46,61 pts = compras netas de USD de personas humanas 5,43% del M2 privado (ventana móvil 3 meses)"
         },
         "iai": {
           "valor": 0.31,
@@ -278,41 +281,41 @@
           "aporte_input_txt": "8,3% i.a. = servicios tech 15,6% · productividad -1,4%"
         },
         "credito_privado": {
-          "valor": 9.5,
+          "valor": 8.0,
           "unidad": "% i.a. real",
           "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
-          "fecha_dato": "2026-05-01",
+          "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "nominal_ia": 45.9,
-          "detalle_txt": "nominal 45,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-05) — al 2026-07-08 (provisorio, no puntúa): 8,6% real con deflactor de 2026-05",
+          "nominal_ia": 44.2,
+          "detalle_txt": "nominal 44,2% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-06) — al 2026-07-08 (provisorio, no puntúa): 8,4% real con deflactor de 2026-06",
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 56.0,
-          "puntaje_banda": 56.0,
+          "puntaje_itcm": 53.0,
+          "puntaje_banda": 53.0,
           "peso_efectivo": 0.024,
-          "aporte_score": 4.4,
-          "aporte_formula": "Anclas ITCM: >40 → 100 · 20–40 → 85 · 8–20 → 65 · 0–8 → 45 · -10 a 0 → 25 · ≤-10 → 10 (puntaje interpolado entre anclas: 56.0; pesa 2,4% del ITCM)",
+          "aporte_score": 4.7,
+          "aporte_formula": "Anclas ITCM: >40 → 100 · 20–40 → 85 · 8–20 → 65 · 0–8 → 45 · -10 a 0 → 25 · ≤-10 → 10 (puntaje interpolado entre anclas: 53.0; pesa 2,4% del ITCM)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 4,4/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCM, este indicador equivale a una tensión de 4,7/10.",
           "aporte_input_txt": null
         }
       },
       "alerta": null,
       "itcm": {
-        "valor": 59.0,
+        "valor": 57.2,
         "banda": "moderadamente_apretado",
         "banda_legible": "Moderadamente apretado",
         "dimensiones": {
           "estabilidad_monetaria": {
             "nombre": "Estabilidad monetaria-inflacionaria",
             "peso": 0.26,
-            "puntaje": 68.9,
+            "puntaje": 66.5,
             "indicadores": {
               "ipc_total": {
                 "peso": 0.4,
-                "puntaje_banda": 72.0,
-                "puntaje_aplicado": 72.0,
-                "valor": 2.15,
+                "puntaje_banda": 77.2,
+                "puntaje_aplicado": 77.2,
+                "valor": 1.89,
                 "peso_efectivo": 0.104
               },
               "rem_ipc_12m": {
@@ -324,16 +327,16 @@
               },
               "idm": {
                 "peso": 0.25,
-                "puntaje_banda": 53.3,
-                "puntaje_aplicado": 53.3,
-                "valor": 4.3,
+                "puntaje_banda": 36.0,
+                "puntaje_aplicado": 36.0,
+                "valor": 6.38,
                 "peso_efectivo": 0.065
               },
               "presion_dolarizacion": {
                 "peso": 0.1,
-                "puntaje_banda": 64.8,
-                "puntaje_aplicado": 64.8,
-                "valor": 45.24,
+                "puntaje_banda": 63.4,
+                "puntaje_aplicado": 63.4,
+                "valor": 46.61,
                 "peso_efectivo": 0.026
               }
             },
@@ -343,13 +346,13 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.24,
-            "puntaje": 58.5,
+            "puntaje": 53.3,
             "indicadores": {
               "recaudacion": {
                 "peso": 0.6,
-                "puntaje_banda": 40.8,
-                "puntaje_aplicado": 40.8,
-                "valor": -2.3,
+                "puntaje_banda": 32.1,
+                "puntaje_aplicado": 32.1,
+                "valor": -3.16,
                 "peso_efectivo": 0.144
               },
               "saldo_comercial_12m": {
@@ -366,7 +369,7 @@
           "financiamiento": {
             "nombre": "Capacidad de financiamiento",
             "peso": 0.16,
-            "puntaje": 44.7,
+            "puntaje": 45.2,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.45,
@@ -377,16 +380,16 @@
               },
               "idc": {
                 "peso": 0.4,
-                "puntaje_banda": 49.7,
-                "puntaje_aplicado": 49.7,
-                "valor": -0.31,
+                "puntaje_banda": 52.0,
+                "puntaje_aplicado": 52.0,
+                "valor": -0.24,
                 "peso_efectivo": 0.064
               },
               "credito_privado": {
                 "peso": 0.15,
-                "puntaje_banda": 56.0,
-                "puntaje_aplicado": 56.0,
-                "valor": 9.5,
+                "puntaje_banda": 53.0,
+                "puntaje_aplicado": 53.0,
+                "valor": 8.0,
                 "peso_efectivo": 0.024
               }
             },
@@ -451,62 +454,62 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 57.2,
-          "p95": 60.4,
+          "p05": 55.2,
+          "p95": 59.0,
           "tension_rango": [
-            4.0,
-            4.3
+            4.1,
+            4.5
           ],
           "dominante": {
             "indicador": "recaudacion",
-            "indice_sin": 65.3
+            "indice_sin": 64.8
           },
           "n_draws": 1000,
           "hist": [
-            2,
             1,
-            3,
+            2,
+            0,
+            5,
+            6,
+            7,
             10,
-            5,
-            5,
-            18,
-            21,
-            24,
-            27,
-            34,
-            40,
-            46,
+            12,
+            26,
+            32,
+            31,
+            35,
+            47,
             48,
-            57,
-            59,
-            55,
-            56,
+            33,
+            48,
+            54,
             67,
-            68,
-            63,
+            73,
+            77,
             55,
+            59,
+            52,
             56,
-            46,
-            37,
-            24,
-            24,
-            13,
+            38,
+            31,
+            28,
+            21,
+            10,
             11,
-            8,
-            8,
+            10,
             4,
-            1,
+            6,
             2,
-            1,
-            1
+            0,
+            3
           ],
-          "hist_min": 56.05,
-          "hist_max": 61.89,
+          "hist_min": 53.51,
+          "hist_max": 60.71,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
           "r_niveles": -0.749,
-          "r_diferencias": -0.01,
+          "r_diferencias": -0.009,
           "n": 30,
           "pares": [
             [
@@ -591,47 +594,47 @@
             ],
             [
               "2025-04",
-              74.0,
+              73.8,
               799.0
             ],
             [
               "2025-05",
-              69.3,
+              69.5,
               684.0
             ],
             [
               "2025-06",
-              66.5,
+              66.8,
               688.0
             ],
             [
               "2025-07",
-              61.3,
+              62.0,
               728.0
             ],
             [
               "2025-08",
-              65.5,
+              66.2,
               758.0
             ],
             [
               "2025-09",
-              65.1,
+              65.8,
               1090.0
             ],
             [
               "2025-10",
-              54.3,
+              54.8,
               989.0
             ],
             [
               "2025-11",
-              49.8,
+              50.2,
               630.0
             ],
             [
               "2025-12",
-              52.7,
+              52.9,
               601.0
             ],
             [
@@ -641,7 +644,7 @@
             ],
             [
               "2026-02",
-              45.5,
+              45.6,
               521.0
             ],
             [
@@ -666,7 +669,7 @@
           "serie_label": "ITCM (reconstrucción mensual)",
           "externa_label": "riesgo país (EMBI, invertido)",
           "trans_label": "series normalizadas al rango del período; el riesgo país se muestra invertido",
-          "conclusion": "Correlación -0,749 en niveles pero -0,01 en los saltos de un mes: la asociación con el mercado es real aunque de baja frecuencia — el índice y el riesgo país cuentan la misma historia de fondo, no el mismo mes. Medida en ventanas de seis meses, la relación reaparece con fuerza (-0,64). El orden temporal es el esperable: el mercado reacciona en el día y el ITCM — que publica con el rezago y el suavizado de sus fuentes — registra el mismo movimiento un mes después (-0,43 entre el salto del riesgo de un mes y el del índice del mes siguiente): el índice describe la macro, no anticipa al mercado. Los sobresaltos de un mes del riesgo país, además, suelen ser políticos antes que macroeconómicos: co-mueven con la reconstrucción del cinturón político, no con ésta (ver la matriz de validación cruzada)."
+          "conclusion": "Correlación -0,749 en niveles pero -0,009 en los saltos de un mes: la asociación con el mercado es real aunque de baja frecuencia — el índice y el riesgo país cuentan la misma historia de fondo, no el mismo mes. Medida en ventanas de seis meses, la relación reaparece con fuerza (-0,63). El orden temporal es el esperable: el mercado reacciona en el día y el ITCM — que publica con el rezago y el suavizado de sus fuentes — registra el mismo movimiento un mes después (-0,43 entre el salto del riesgo de un mes y el del índice del mes siguiente): el índice describe la macro, no anticipa al mercado. Los sobresaltos de un mes del riesgo país, además, suelen ser políticos antes que macroeconómicos: co-mueven con la reconstrucción del cinturón político, no con ésta (ver la matriz de validación cruzada)."
         }
       },
       "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."
@@ -1270,12 +1273,12 @@
       "barbarismo_riesgo": "político",
       "indicadores": {
         "brecha_salario_cbt": {
-          "valor": 3.81,
+          "valor": 3.86,
           "unidad": "canastas (RIPTE/CBT)",
           "fuente": "Sec. Trabajo (RIPTE) + INDEC (CBT)",
-          "fecha_dato": "2026-05-01",
+          "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "detalle_txt": "RIPTE / CBT del mismo mes (2026-05): canastas cubiertas por el salario imponible promedio",
+          "detalle_txt": "RIPTE / CBT del mismo mes (2026-04): canastas cubiertas por el salario imponible promedio — CBT de 2026-05 ya publicada ($485,030): esa brecha queda provisoria hasta que salga el RIPTE",
           "en_indice": true,
           "dimension": "ingresos",
           "indice_itvc": 110.8,
@@ -1301,10 +1304,10 @@
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 3,6/10."
         },
         "endeudamiento_familiar": {
-          "valor": 45.66,
+          "valor": 46.03,
           "unidad": "billones de pesos (consumo)",
           "fuente": "BCRA — crédito de consumo (API) + Informe sobre Bancos (mora)",
-          "fecha_dato": "2026-07-07",
+          "fecha_dato": "2026-07-03",
           "desactualizado": false,
           "var_real_12m": -1.5,
           "en_indice": true,
@@ -1438,10 +1441,10 @@
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,6/10."
         },
         "sentimiento_digital": {
-          "valor": 7.2,
+          "valor": 6.0,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
-          "fecha_dato": "2026-07-15",
+          "fecha_dato": "2026-07-09",
           "desactualizado": false,
           "detalle_txt": "El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITVC usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.",
           "en_indice": true,
@@ -1454,7 +1457,7 @@
           "aporte_lectura": "Este componente está en 138,3 contra una base de 100: su tensión equivalente daría negativa (-2,7) y la escala se corta en 0. No solo no suma tensión — empuja el índice del cinturón hacia arriba. Por eso más de un componente en mejora fuerte puede mostrar el mismo 0."
         },
         "patentamiento_motos": {
-          "valor": 69299,
+          "valor": 69298,
           "unidad": "unidades",
           "fuente": "CAFAM",
           "fecha_dato": "2026-06",
@@ -1470,7 +1473,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260715_0406.json",
+      "fuente_enriquecida": "vida_cotidiana_20260709_1131.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 90.7,
@@ -1657,8 +1660,8 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": 0.466,
-          "r_diferencias": 0.328,
+          "r_niveles": 0.462,
+          "r_diferencias": 0.323,
           "n": 30,
           "pares": [
             [
@@ -1803,12 +1806,12 @@
             ],
             [
               "2026-05",
-              91.5,
+              91.0,
               40.5
             ],
             [
               "2026-06",
-              92.3,
+              91.8,
               42.5
             ]
           ],
@@ -1818,7 +1821,7 @@
           "serie_label": "ITVC sin su componente de confianza",
           "externa_label": "ICC (confianza del consumidor, UTDT)",
           "trans_label": "ambas series rebaseadas a 100 en el primer mes",
-          "conclusion": "Correlación 0,466 en niveles y 0,328 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
+          "conclusion": "Correlación 0,462 en niveles y 0,323 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
         }
       }
     },
@@ -2361,7 +2364,7 @@
         },
         "validacion": {
           "r_niveles": 0.767,
-          "r_diferencias": 0.375,
+          "r_diferencias": 0.376,
           "n": 32,
           "pares": [
             [
@@ -2521,8 +2524,8 @@
             ],
             [
               "2026-07",
-              74.0,
-              2059.9
+              73.8,
+              2068.5
             ]
           ],
           "plot": "minmax",
@@ -2607,7 +2610,7 @@
           "rd": 0.1
         },
         "epu": {
-          "r": 0.23,
+          "r": 0.24,
           "n": 29,
           "rd": 0.06
         }
@@ -2640,19 +2643,19 @@
         "indice": "ITVC",
         "propio": "icc",
         "riesgo": {
-          "r": -0.41,
+          "r": -0.4,
           "n": 29,
           "rd": -0.03
         },
         "merval": {
-          "r": 0.37,
+          "r": 0.36,
           "n": 30,
-          "rd": -0.01
+          "rd": -0.02
         },
         "icc": {
-          "r": 0.47,
+          "r": 0.46,
           "n": 30,
-          "rd": 0.31
+          "rd": 0.3
         },
         "epu": {
           "r": 0.19,
@@ -2705,6 +2708,6 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,75 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,47 con la confianza del consumidor, ITCP -0,71 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde."
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,75 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,46 con la confianza del consumidor, ITCP -0,71 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde."
   }
 }

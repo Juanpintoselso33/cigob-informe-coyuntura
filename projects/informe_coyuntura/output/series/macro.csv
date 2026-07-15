@@ -881,6 +881,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-31,rem_ipc_12m,183.2,% anual,BCRA
 2023-12-31,rem_ipc_12m,213.0,% anual,BCRA
 2023-11-30,rem_ipc_12m,226.7,% anual,BCRA
+2026-06-01,recaudacion,-3.16,% i.a. real,INDEC (recaudación) + IPC (deflactor)
 2026-05-01,recaudacion,-2.3,% i.a. real,INDEC (recaudación) + IPC (deflactor)
 2026-04-01,recaudacion,-6.17,% i.a. real,INDEC (recaudación) + IPC (deflactor)
 2026-03-01,recaudacion,-7.49,% i.a. real,INDEC (recaudación) + IPC (deflactor)
@@ -1569,20 +1570,20 @@ fecha,indicador,valor,unidad,fuente
 2023-11-30,prestamos_privados,17164802.0,M ARS,BCRA
 2023-11-29,prestamos_privados,16973376.0,M ARS,BCRA
 2023-11-28,prestamos_privados,16888696.0,M ARS,BCRA
-2026-05-01,presion_dolarizacion,45.24,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2026-04-01,presion_dolarizacion,47.64,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2026-03-01,presion_dolarizacion,50.41,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2026-02-01,presion_dolarizacion,51.07,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2026-01-01,presion_dolarizacion,46.48,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2025-12-01,presion_dolarizacion,61.48,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2025-11-01,presion_dolarizacion,84.92,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2025-10-01,presion_dolarizacion,92.43,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2025-09-01,presion_dolarizacion,90.84,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2025-08-01,presion_dolarizacion,77.1,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2025-07-01,presion_dolarizacion,76.19,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2025-06-01,presion_dolarizacion,59.09,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2025-05-01,presion_dolarizacion,53.91,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
-2025-04-01,presion_dolarizacion,42.86,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2026-05-01,presion_dolarizacion,46.61,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2026-04-01,presion_dolarizacion,48.2,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2026-03-01,presion_dolarizacion,49.3,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2026-02-01,presion_dolarizacion,48.25,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2026-01-01,presion_dolarizacion,44.6,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2025-12-01,presion_dolarizacion,55.01,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2025-11-01,presion_dolarizacion,72.81,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2025-10-01,presion_dolarizacion,75.86,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2025-09-01,presion_dolarizacion,66.4,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2025-08-01,presion_dolarizacion,53.97,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2025-07-01,presion_dolarizacion,53.33,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2025-06-01,presion_dolarizacion,48.24,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2025-05-01,presion_dolarizacion,47.0,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2025-04-01,presion_dolarizacion,49.7,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2025-03-01,presion_dolarizacion,25.44,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2025-02-01,presion_dolarizacion,19.37,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2025-01-01,presion_dolarizacion,19.09,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
@@ -1599,6 +1600,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,presion_dolarizacion,69.44,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2024-01-01,presion_dolarizacion,100.0,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2023-12-01,presion_dolarizacion,100.0,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
+2026-06-01,ipc_total,1.89,% mensual,INDEC (derivado del nivel del IPC)
 2026-05-01,ipc_total,2.15,% mensual,INDEC (derivado del nivel del IPC)
 2026-04-01,ipc_total,2.58,% mensual,INDEC (derivado del nivel del IPC)
 2026-03-01,ipc_total,3.38,% mensual,INDEC (derivado del nivel del IPC)
@@ -1657,7 +1659,7 @@ fecha,indicador,valor,unidad,fuente
 2021-10-01,ipc_total,3.52,% mensual,INDEC (derivado del nivel del IPC)
 2021-09-01,ipc_total,3.55,% mensual,INDEC (derivado del nivel del IPC)
 2021-08-01,ipc_total,2.47,% mensual,INDEC (derivado del nivel del IPC)
-2021-07-01,ipc_total,3.0,% mensual,INDEC (derivado del nivel del IPC)
+2026-06-01,idm,6.38,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-05-01,idm,4.3,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-04-01,idm,6.42,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-03-01,idm,7.13,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
@@ -1689,39 +1691,38 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,idm,4.35,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2023-12-01,idm,4.23,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2023-11-01,idm,-5.24,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
-2023-10-01,idm,3.21,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
-2026-05-01,idc,-0.31,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2026-06-01,idc,-0.24,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2026-05-01,idc,-0.3,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-04-01,idc,-0.29,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-03-01,idc,-0.41,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-02-01,idc,-0.27,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2026-01-01,idc,-0.22,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2026-01-01,idc,-0.21,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-12-01,idc,-0.1,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-11-01,idc,-0.04,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-11-01,idc,-0.03,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-10-01,idc,-0.03,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-09-01,idc,0.32,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-09-01,idc,0.33,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-08-01,idc,0.38,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-07-01,idc,0.33,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-06-01,idc,0.44,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-06-01,idc,0.45,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-05-01,idc,0.45,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-04-01,idc,0.43,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-03-01,idc,0.28,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-02-01,idc,0.37,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-02-01,idc,0.38,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-01-01,idc,0.15,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2024-12-01,idc,-0.16,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-11-01,idc,-0.04,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-11-01,idc,-0.03,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2024-10-01,idc,-0.44,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2024-09-01,idc,-0.62,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2024-08-01,idc,-0.73,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-07-01,idc,-0.73,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-07-01,idc,-0.74,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2024-06-01,idc,-0.69,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2024-05-01,idc,-0.63,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-04-01,idc,-1.04,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-03-01,idc,-1.14,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-02-01,idc,-1.18,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2024-01-01,idc,-1.82,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2023-12-01,idc,-2.15,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2023-11-01,idc,-0.92,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2023-10-01,idc,0.09,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-04-01,idc,-1.05,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-03-01,idc,-1.15,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-02-01,idc,-1.19,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2024-01-01,idc,-1.83,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2023-12-01,idc,-2.16,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2023-11-01,idc,-0.93,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-04-01,icip,8.3,% i.a. ponderado,INDEC (servicios informática + productividad)
 2026-03-01,icip,3.54,% i.a. ponderado,INDEC (servicios informática + productividad)
 2026-02-01,icip,24.55,% i.a. ponderado,INDEC (servicios informática + productividad)
@@ -1846,6 +1847,7 @@ fecha,indicador,valor,unidad,fuente
 2021-07-01,emae_ia,11.74,% i.a.,INDEC/datos.gob.ar
 2021-06-01,emae_ia,12.42,% i.a.,INDEC/datos.gob.ar
 2021-05-01,emae_ia,15.37,% i.a.,INDEC/datos.gob.ar
+2026-06-01,credito_privado,8.0,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-05-01,credito_privado,9.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-04-01,credito_privado,13.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-03-01,credito_privado,18.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
