@@ -839,60 +839,77 @@ def _es_media_sancion(movimiento: str) -> bool:
 
 def fetch_eficacia_legislativa() -> dict | None:
     """
-    % proyectos ejecutivos aprobados en los últimos 12 meses.
+    % de proyectos ejecutivos MADUROS que se sancionaron alguna vez (ADR-0061,
+    reemplaza a ADR-0050 — mismo defecto en espejo que motivó, ese mismo día,
+    la corrección de ratio_dnu en ADR-0058/0059).
+
+    ADR-0050 exigía que PUBLICACION_FECHA y la sanción cayeran en la MISMA
+    ventana de 365 días: un proyecto recién enviado casi nunca alcanza a
+    sancionarse todavía, así que el % quedaba estructuralmente deprimido. Esa
+    ADR asumió que ni un Ejecutivo con mayoría sólida podría superar 35-55%,
+    pero nunca lo verificó contra ningún caso real — verificado hoy contra
+    Directorio Legislativo (tasas de éxito eventual: CFK 2do mandato 82%,
+    Alberto Fernández primer año 67% con 63 días de trámite promedio): el
+    trámite típico histórico (63-112 días) deja tiempo de sobra dentro de una
+    ventana de 12 meses salvo para lo publicado en sus últimos 2-3 meses — el
+    sesgo era real pero mucho menor al asumido.
+
+    Cohorte MADURA (en vez de ventana compartida): proyectos PE publicados
+    entre hoy−730 y hoy−365 días — un tramo de 12 meses de publicaciones,
+    desplazado un año atrás para que CADA proyecto de la cohorte haya tenido
+    AL MENOS 365 días de margen antes de evaluarlo. Elimina el sesgo de raíz
+    en vez de compensarlo con anclas más generosas.
+
     Identificación PE: EXP_DIPUTADOS o EXP_SENADO con patrón NNNN-PE-AAAA.
     Aprobación: aparición del PROYECTO_ID en movimientos-de-proyectos con
-    MOVIMIENTO~'SANCION', excluyendo medias sanciones explícitas
-    (_es_media_sancion).
-    Ventana: PUBLICACION_FECHA (proyectos) y FECHA (movimientos) >= hoy − 365 días.
-    OJO: ambas fechas dentro de la MISMA ventana ⇒ el techo alcanzable del %
-    está estructuralmente deprimido (un proyecto recién enviado casi nunca
-    llegó a sancionarse aún) — las bandas del ITCP están calibradas contra la
-    serie real de ESTA métrica, no contra tasas de aprobación de manual
-    (ADR-0050).
+    MOVIMIENTO~'SANCION' EN CUALQUIER MOMENTO (no acotado a la cohorte),
+    excluyendo medias sanciones explícitas (_es_media_sancion).
 
     Fuente: datos.hcdn.gob.ar CKAN
       - proyectos-parlamentarios: 22b2d52c-7a0e-426b-ac0a-a3326c388ba6
       - movimientos-de-proyectos: 6108ea83-3f12-423c-a136-df1ae9cb2972
     """
     try:
-        cutoff = (date.today() - timedelta(days=365)).isoformat()[:10]
+        hoy = date.today()
+        cohorte_hasta = (hoy - timedelta(days=365)).isoformat()[:10]
+        cohorte_desde = (hoy - timedelta(days=730)).isoformat()[:10]
 
         raw_pe = _hcdn_paginate(HCDN_PROYECTOS_RID, q="-PE-")
-        pe_recientes: set[str] = {
+        pe_cohorte: set[str] = {
             r["PROYECTO_ID"]
             for r in raw_pe
-            if str(r.get("PUBLICACION_FECHA", ""))[:10] >= cutoff
+            if cohorte_desde <= str(r.get("PUBLICACION_FECHA", ""))[:10] <= cohorte_hasta
             and (
                 _RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
                 or _RE_PE_EXP.search(r.get("EXP_SENADO", "") or "")
             )
         }
-        if not pe_recientes:
-            raise ValueError("Sin proyectos PE en los últimos 12 meses")
+        if not pe_cohorte:
+            raise ValueError("Sin proyectos PE en la cohorte madura (hoy-730d a hoy-365d)")
 
         raw_san = _hcdn_paginate(HCDN_MOVIMIENTOS_RID, q="SANCION")
         sancionados: set[str] = {
             r["PROYECTO_ID"]
             for r in raw_san
-            if str(r.get("FECHA", ""))[:10] >= cutoff
-            and not _es_media_sancion(str(r.get("MOVIMIENTO", "")))
+            if not _es_media_sancion(str(r.get("MOVIMIENTO", "")))
         }
 
-        aprobados = pe_recientes & sancionados
-        total     = len(pe_recientes)
+        aprobados = pe_cohorte & sancionados
+        total     = len(pe_cohorte)
         count     = len(aprobados)
         pct       = round(count / total * 100.0, 1) if total else 0.0
 
         return {
-            "valor":        pct,
-            "aprobados_n":  count,
-            "enviados_n":   total,
-            "ventana_dias": 365,
-            "unidad":       "% de proyectos",
-            "fuente":       "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
-            "fecha_dato":   str(date.today()),
-            "desactualizado": False,
+            "valor":             pct,
+            "aprobados_n":       count,
+            "enviados_n":        total,
+            "cohorte_desde":     cohorte_desde,
+            "cohorte_hasta":     cohorte_hasta,
+            "dias_madurado_min": 365,
+            "unidad":            "% de proyectos",
+            "fuente":            "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
+            "fecha_dato":        str(hoy),
+            "desactualizado":    False,
         }
 
     except Exception as e:

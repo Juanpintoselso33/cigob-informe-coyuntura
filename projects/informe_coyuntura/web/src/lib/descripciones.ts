@@ -120,8 +120,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Anual", tipo: "Variación real",
   },
   eficacia_legislativa: {
-    que: "Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina aprobando (últimos 12 meses).",
-    aporta: "Mide la capacidad real de convertir la agenda de gobierno en ley.",
+    que: "Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina aprobando, contados recién a partir de que tuvieron un año de margen para tramitarse.",
+    aporta: "Mide la capacidad real de convertir la agenda de gobierno en ley, sin castigar a los proyectos recién enviados que todavía no tuvieron tiempo de tratarse.",
     frecuencia: "Continua (12m)", tipo: "Nivel (%)",
   },
   cohesion_bloque: {

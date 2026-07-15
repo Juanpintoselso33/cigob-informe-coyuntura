@@ -463,10 +463,17 @@ def _hcdn_ventanas_12m() -> list:
 
 
 def fetch_eficacia_serie() -> list:
-    """Serie mensual del % de proyectos PE aprobados en ventana móvil de 12
-    meses (misma fórmula que el indicador): las fechas vienen POR REGISTRO en
-    el CKAN de HCDN (PUBLICACION_FECHA / FECHA), así que una sola descarga
-    completa permite computar todas las ventanas localmente. [[YYYY-MM-01, %]]."""
+    """Serie mensual del % de proyectos PE MADUROS (publicados 12-24 meses
+    antes de cada mes) que se sancionaron alguna vez, evaluado a fin de ese
+    mes — misma fórmula que el indicador tras ADR-0061 (cohorte madura, ya
+    no ventana compartida entre publicación y sanción; ver fetch_eficacia_legislativa
+    en politica.py para el porqué). Reutiliza _hcdn_ventanas_12m() pero
+    reinterpreta su `cutoff` como el LÍMITE SUPERIOR de la cohorte de
+    publicación (no como el piso de una ventana compartida). Reproducible:
+    la sanción se acota a lo ocurrido hasta el CIERRE de ese mes histórico,
+    no hasta hoy, para que un punto ya publicado no cambie retroactivamente
+    solo porque el proyecto finalmente se sancionó más tarde.
+    [[YYYY-MM-01, %]]."""
     raw_pe = politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
     pe = [(r["PROYECTO_ID"], str(r.get("PUBLICACION_FECHA", ""))[:10]) for r in raw_pe
           if r.get("PROYECTO_ID")
@@ -477,9 +484,10 @@ def fetch_eficacia_serie() -> list:
            if r.get("PROYECTO_ID")
            and not politica._es_media_sancion(str(r.get("MOVIMIENTO", "")))]
     out = []
-    for ym, cutoff, fin in _hcdn_ventanas_12m():
-        pe_ids = {pid for pid, f in pe if cutoff <= f <= fin}
-        san_ids = {pid for pid, f in san if cutoff <= f <= fin}
+    for ym, cohorte_hasta, fin in _hcdn_ventanas_12m():
+        cohorte_desde = (date.fromisoformat(cohorte_hasta) - timedelta(days=365)).isoformat()
+        pe_ids = {pid for pid, f in pe if cohorte_desde <= f <= cohorte_hasta}
+        san_ids = {pid for pid, f in san if f <= fin}
         if pe_ids:
             out.append([f"{ym}-01", round(len(pe_ids & san_ids) / len(pe_ids) * 100.0, 1)])
     return out

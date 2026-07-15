@@ -96,28 +96,27 @@ BANDAS_ITCP = {
         (-INF, 0.3, 100), (0.3, 0.7, 85), (0.7, 1.2, 65), (1.2, 2.0, 40), (2.0, INF, 10),
     ],
     "eficacia_legislativa": [
-        # RECALIBRADO 2026-07-11 (ADR-0050) con los 32 puntos mensuales
-        # reales de output/series/politica.csv (dic-2023→jul-2026): las
-        # anclas anteriores (5/15/35/55, heredadas de la fórmula ad hoc
-        # pre-paramétrica) describían la tasa de aprobación de un congreso
-        # de manual, no esta métrica: el numerador exige que la SANCIÓN
-        # caiga dentro de la MISMA ventana de 365 días en que se publicó el
-        # proyecto, y un proyecto enviado hace pocos meses casi nunca llegó
-        # a sancionarse todavía — el techo alcanzable está estructuralmente
-        # deprimido (misma patología, en espejo, que comisiones_caidas,
-        # ADR-0045). Rango real observado 0–8,7 (media 2,4): los 32 meses
-        # caían en las dos bandas más bajas — cero discriminación en el
-        # 7,5% del índice. Anclas nuevas 1/3/5/7 (números redondos,
-        # chequeadas contra los 32 puntos: 4/2/8/0/18 por banda). El hueco
-        # en la banda 40 (1–3%) es estructural y queda como margen: con
-        # ~23-25 proyectos PE/año de denominador, un solo aprobado ya da
-        # ~4% — solo un PE que duplique el envío de proyectos puede caer
-        # ahí (mismo criterio que el hueco de cohesion_bloque_senado,
-        # ADR-0039). Los 18 meses en 0,0 exacto van todos al piso: cero
-        # sanciones en un año es señal real e indistinguible entre sí por
-        # diseño (caveat ADR-0042). mayor = mejor, tramos extremos
-        # abiertos (ADR-0021).
-        (7.0, INF, 100), (5.0, 7.0, 85), (3.0, 5.0, 65), (1.0, 3.0, 40), (-INF, 1.0, 10),
+        # ADR-0061 (2026-07-15) reemplaza la métrica Y las anclas de ADR-0050:
+        # el numerador pasó de "sancionado dentro de la MISMA ventana de 365
+        # días que la publicación" (sesgo estructural real, pero ADR-0050 lo
+        # sobreestimó sin verificarlo contra ningún caso externo) a "cohorte
+        # MADURA (publicada hace 365-730 días) sancionada alguna vez" — saca
+        # el sesgo de raíz en vez de compensarlo con anclas más generosas.
+        # Con la métrica nueva, el rango real observado (32 meses,
+        # dic-2023→jul-2026) es 0-14,8% (mediana 6,5%) — YA SIN el sesgo de
+        # ventana compartida, y sigue muy por debajo de cualquier antecedente
+        # histórico: Directorio Legislativo mide 40-50% para Macri (gobierno
+        # en minoría, sin mayoría propia), 63-67% para Alberto Fernández y
+        # 75-82% para los mandatos de CFK con mayoría. Las anclas usan esos
+        # tramos históricos como referencia externa (no el rango de esta
+        # gestión): >50 (rango CFK/AF) → 100; 30-50 (rango Macri, gobierno
+        # funcional en minoría) → 85; 15-30 → 65; 5-15 (la mitad de los 32
+        # puntos reales cae acá) → 40; ≤5 (la otra mitad) → 10. Que el 100%
+        # de la serie real quede en las dos bandas del piso es intencional:
+        # refleja que esta gestión está muy por debajo de cualquier gobierno
+        # argentino post-1983 medido con esta vara, no un error de escala.
+        # mayor = mejor, tramos extremos abiertos (ADR-0021).
+        (50.0, INF, 100), (30.0, 50.0, 85), (15.0, 30.0, 65), (5.0, 15.0, 40), (-INF, 5.0, 10),
     ],
     "veto_quorum": [                      # % sesiones fracasadas, menor = mejor
         (-INF, 5.0, 100), (5.0, 10.0, 85), (10.0, 20.0, 65), (20.0, 30.0, 40), (30.0, INF, 10),

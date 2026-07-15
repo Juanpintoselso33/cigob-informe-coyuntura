@@ -1231,20 +1231,21 @@ def test_es_media_sancion_distingue_etiquetas():
 def test_fetch_eficacia_legislativa_excluye_medias_sanciones(monkeypatch):
     # regresión (auditoría 2026-07-09): q='SANCION' del CKAN también matchea
     # 'TEXTO DE LA MEDIA SANCION' (aprobación de UNA cámara, no ley) y esas
-    # filas contaban como proyecto aprobado. Acá: 2 proyectos PE enviados en
-    # ventana; uno con sanción real, otro SOLO con media sanción -> 1/2 = 50%,
-    # no 100%.
-    hoy = datetime.now().strftime("%Y-%m-%d")
+    # filas contaban como proyecto aprobado. Acá: 2 proyectos PE en la
+    # cohorte madura (publicados hace ~500 días, ADR-0061); uno con sanción
+    # real, otro SOLO con media sanción -> 1/2 = 50%, no 100%.
+    publicado = (datetime.now() - timedelta(days=500)).strftime("%Y-%m-%d")
+    sancionado_en = (datetime.now() - timedelta(days=100)).strftime("%Y-%m-%d")
 
     def fake_paginate(rid, q=""):
         if rid == politica.HCDN_PROYECTOS_RID:
             return [
-                {"PROYECTO_ID": "HCDN1", "EXP_DIPUTADOS": "0001-PE-2026", "PUBLICACION_FECHA": hoy},
-                {"PROYECTO_ID": "HCDN2", "EXP_SENADO": "0002-PE-2026", "PUBLICACION_FECHA": hoy},
+                {"PROYECTO_ID": "HCDN1", "EXP_DIPUTADOS": "0001-PE-2025", "PUBLICACION_FECHA": publicado},
+                {"PROYECTO_ID": "HCDN2", "EXP_SENADO": "0002-PE-2025", "PUBLICACION_FECHA": publicado},
             ]
         return [
-            {"PROYECTO_ID": "HCDN1", "MOVIMIENTO": "TEXTO DE LA MEDIA SANCION", "FECHA": hoy},
-            {"PROYECTO_ID": "HCDN2", "MOVIMIENTO": "CONSIDERACION Y SANCION", "FECHA": hoy},
+            {"PROYECTO_ID": "HCDN1", "MOVIMIENTO": "TEXTO DE LA MEDIA SANCION", "FECHA": sancionado_en},
+            {"PROYECTO_ID": "HCDN2", "MOVIMIENTO": "CONSIDERACION Y SANCION", "FECHA": sancionado_en},
         ]
 
     monkeypatch.setattr(politica, "_hcdn_paginate", fake_paginate)
@@ -1253,6 +1254,33 @@ def test_fetch_eficacia_legislativa_excluye_medias_sanciones(monkeypatch):
     assert resultado["enviados_n"] == 2
     assert resultado["aprobados_n"] == 1   # solo la sanción real; la media sanción no cuenta
     assert resultado["valor"] == 50.0
+
+
+def test_fetch_eficacia_legislativa_excluye_proyecto_demasiado_reciente(monkeypatch):
+    """Un proyecto publicado hace 100 días (fuera de la cohorte madura
+    hoy-730/hoy-365) no entra al denominador — ADR-0061: ya no basta con
+    estar en los últimos 365 días, tiene que haber tenido AL MENOS 365 días
+    de margen antes de contarlo."""
+    reciente = (datetime.now() - timedelta(days=100)).strftime("%Y-%m-%d")
+    maduro = (datetime.now() - timedelta(days=500)).strftime("%Y-%m-%d")
+
+    def fake_paginate(rid, q=""):
+        if rid == politica.HCDN_PROYECTOS_RID:
+            return [
+                {"PROYECTO_ID": "HCDN1", "EXP_DIPUTADOS": "0001-PE-2025", "PUBLICACION_FECHA": maduro},
+                {"PROYECTO_ID": "HCDN2", "EXP_SENADO": "0002-PE-2026", "PUBLICACION_FECHA": reciente},
+            ]
+        return [
+            {"PROYECTO_ID": "HCDN1", "MOVIMIENTO": "CONSIDERACION Y SANCION", "FECHA": reciente},
+            {"PROYECTO_ID": "HCDN2", "MOVIMIENTO": "CONSIDERACION Y SANCION", "FECHA": reciente},
+        ]
+
+    monkeypatch.setattr(politica, "_hcdn_paginate", fake_paginate)
+    resultado = politica.fetch_eficacia_legislativa()
+
+    assert resultado["enviados_n"] == 1     # HCDN2 (reciente) queda afuera
+    assert resultado["aprobados_n"] == 1    # HCDN1 sí maduró y sí se sancionó
+    assert resultado["valor"] == 100.0
 
 
 # ── protestas_caba (reutiliza el fetcher ACLED de gestión, ADR-0017) ─────────
