@@ -889,7 +889,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: descarga el archivo oficial y deflacta con el IPC del INDEC obtenido por API.",
     },
     transformaciones: [
-      "Suma todas las transferencias efectivamente giradas durante el año de referencia y durante el año anterior — es ejecución, no presupuesto: la fila de un año es lo que la Nación transfirió ese año calendario.",
+      "Suma las transferencias efectivamente giradas a las 24 jurisdicciones durante el año de referencia y durante el año anterior — es ejecución, no presupuesto: la fila de un año es lo que la Nación transfirió ese año calendario. El archivo oficial también distribuye recursos al Tesoro Nacional, a la Seguridad Social y al Fondo ATN; esas porciones no son transferencias a provincias y quedan excluidas (con la exclusión, el nivel anual coincide con los informes fiscales de referencia).",
       "La variación nominal se deflacta por la inflación promedio anual (promedio del índice IPC del año contra el promedio del año anterior): el resultado es la variación real interanual. El promedio —y no la punta diciembre contra diciembre— es el deflactor correcto para sumas anuales de flujos, porque las transferencias se devengan mes a mes a los precios de cada mes; es el mismo criterio que usan los análisis fiscales de referencia.",
       "En el gráfico, cada punto anual se ubica en diciembre del año que cierra: el valor fechado en diciembre de 2025 es la variación del año 2025 completo contra 2024.",
     ],
@@ -901,7 +901,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Granularidad anual: no capta la tensión federal dentro del año.",
       "El nombre del archivo oficial cambia cada año: hay que apuntar la descarga de nuevo cada enero.",
       "Mide el flujo fiscal hacia las provincias — una aproximación parcial a la relación política con los gobernadores.",
-      "La serie RON cubre coparticipación y leyes especiales; no incluye algunos conceptos que otros análisis suman (compensaciones del Consenso Fiscal, giros discrecionales), por lo que el nivel puede diferir levemente de informes que usan el agregado más amplio.",
+      "La serie cubre las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones del Consenso Fiscal); no incluye los giros discrecionales —las transferencias no automáticas—, que otros informes agregan por separado.",
     ],
     faltantes: "Si la descarga falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "Se recalcula completo desde la fuente en cada corrida: revisiones del archivo oficial o del IPC se absorben automáticamente.",
@@ -910,6 +910,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06-30", cambio: "El deflactor pasó de una proyección fija al índice IPC oficial del INDEC: la variación real publicada se corrigió de +1,8% a +7,0%." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de alianzas territoriales — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
       { fecha: "2026-07-15", cambio: "El deflactor pasó de la variación diciembre contra diciembre a la inflación promedio anual, el criterio correcto para sumas anuales de flujos y el que usan los análisis fiscales de referencia — con inflación en baja, la punta de diciembre subdeflactaba: la variación real de 2025 se corrigió de +7,0% a un valor en línea con los informes externos (~0/+2% real)." },
+      { fecha: "2026-07-15", cambio: "Se excluyeron del cálculo las porciones del archivo oficial que no son transferencias a provincias (Tesoro Nacional, Seguridad Social, Fondo ATN): el nivel anual pasó a coincidir con los informes fiscales de referencia (~$60 billones en 2025) y la variación quedó medida solo sobre lo que efectivamente reciben las jurisdicciones." },
     ],
   },
 

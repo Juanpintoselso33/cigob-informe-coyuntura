@@ -120,6 +120,14 @@ INFOLEG_BUSCAR  = "https://servicios.infoleg.gob.ar/infolegInternet/buscarNormas
 
 # Hacienda RON — transferencias federales históricas (serie anual 2003–año_actual)
 RON_CSV_URL = "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv"
+# El CSV distribuye los recursos entre TODAS las jurisdicciones del régimen,
+# no solo provincias: la porción del Tesoro Nacional (~35% del total) y de la
+# Seguridad Social/ANSES no son transferencias a provincias, y el Fondo ATN es
+# una retención que queda en la Nación hasta repartirse discrecionalmente
+# (ADR-0066 — sin este filtro el nivel daba $104B cuando IARAF/DNAP reportan
+# ~$60B, y la variación mezclaba la dinámica de la porción nacional). El
+# fdo.compensador SÍ se gira a provincias y se conserva.
+RON_NO_PROVINCIA = {"tesoro nacional", "seguridad social", "fondo a.t.n."}
 
 # HCDN CKAN — datos.hcdn.gob.ar (open data portal de la Cámara de Diputados)
 HCDN_CKAN            = "https://datos.hcdn.gob.ar/api/3/action/datastore_search"
@@ -741,7 +749,10 @@ def fetch_iaf_transferencias() -> dict | None:
 
     Fuente: CSV anual Hacienda — columnas: ano;provincia;impuesto;regimen;monto
     Decimal en monto: coma (ej. 2787,1198 → 2787.1198).
-    Se suman todos los montos del año de referencia (año_actual − 1) y año anterior.
+    Se suman los montos del año de referencia (año_actual − 1) y año anterior,
+    EXCLUYENDO las jurisdicciones que no son provincias (RON_NO_PROVINCIA:
+    Tesoro Nacional, Seguridad Social, Fondo ATN — ADR-0066; validado: con el
+    filtro, nivel 2025 ≈ $60B y nominal +43,0%, idénticos a IARAF/DNAP).
     Deflactor: inflación PROMEDIO anual del índice IPC de INDEC (ADR-0065 —
     el dic-dic anterior subdeflactaba sumas anuales con inflación en baja;
     validado contra IARAF/OPC/Politikon, que deflactan igual). La serie es de
@@ -769,6 +780,8 @@ def fetch_iaf_transferencias() -> dict | None:
             except ValueError:
                 continue
             if yr not in tot:
+                continue
+            if row[1].strip().lower() in RON_NO_PROVINCIA:   # ADR-0066
                 continue
             try:
                 tot[yr] += float(row[4].replace(",", "."))

@@ -404,6 +404,8 @@ def fetch_iaf_serie() -> list:
     for row in rd:
         if len(row) < 5:
             continue
+        if row[1].strip().lower() in politica.RON_NO_PROVINCIA:   # ADR-0066
+            continue
         try:
             tot[int(row[0])] = tot.get(int(row[0]), 0.0) + float(row[4].replace(",", "."))
         except ValueError:
