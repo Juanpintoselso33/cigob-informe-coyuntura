@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-15T16:06:08.579111",
+  "generated_at": "2026-07-15T16:19:24.919607",
   "score": 3.0,
   "itcp": {
-    "valor": 69.5,
+    "valor": 69.9,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -46,13 +46,13 @@
       "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
         "peso": 0.25,
-        "puntaje": 82.3,
+        "puntaje": 83.6,
         "indicadores": {
           "iaf_transferencias": {
             "peso": 0.4,
-            "puntaje_banda": 73.4,
-            "puntaje_aplicado": 73.4,
-            "valor": -0.8,
+            "puntaje_banda": 76.6,
+            "puntaje_aplicado": 76.6,
+            "valor": 0.8,
             "peso_efectivo": 0.1
           },
           "alineamiento_senadores_prov": {
@@ -178,10 +178,10 @@
       "en_indice": false
     },
     "iaf_transferencias": {
-      "valor": -0.8,
-      "var_nominal_pct": 40.7,
-      "total_ref_mm": 104.0,
-      "total_ant_mm": 74.0,
+      "valor": 0.8,
+      "var_nominal_pct": 43.1,
+      "total_ref_mm": 60.0,
+      "total_ant_mm": 42.0,
       "periodo": "2025 vs 2024",
       "ipc_aplicado_pct": 41.9,
       "unidad": "% interanual real",
@@ -190,8 +190,8 @@
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
-      "puntaje_itcp": 73.4,
-      "puntaje_banda": 73.4,
+      "puntaje_itcp": 76.6,
+      "puntaje_banda": 76.6,
       "peso_efectivo": 0.1
     },
     "eficacia_legislativa": {

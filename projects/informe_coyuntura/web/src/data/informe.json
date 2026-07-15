@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-15T16:09:17.427875",
+  "generated_at": "2026-07-15T16:22:13.481351",
   "period": "2026-07",
   "score_global": 3.5,
   "ponderacion": {
@@ -745,10 +745,10 @@
           "aporte_input_txt": "2000 eventos de protesta y disturbios en el país en 12m (hasta 2026-06) vs 2605 en todo 2023 (-23,2%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país"
         },
         "iaf_transferencias": {
-          "valor": -0.8,
-          "var_nominal_pct": 40.7,
-          "total_ref_mm": 104.0,
-          "total_ant_mm": 74.0,
+          "valor": 0.8,
+          "var_nominal_pct": 43.1,
+          "total_ref_mm": 60.0,
+          "total_ant_mm": 42.0,
           "periodo": "2025 vs 2024",
           "ipc_aplicado_pct": 41.9,
           "unidad": "% interanual real",
@@ -757,13 +757,13 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
-          "puntaje_itcp": 73.4,
-          "puntaje_banda": 73.4,
+          "puntaje_itcp": 76.6,
+          "puntaje_banda": 76.6,
           "peso_efectivo": 0.1,
-          "aporte_score": 2.7,
-          "aporte_formula": "Anclas ITCP: >10 → 100 · 0–10 → 85 · -10 a 0 → 65 · -20 a -10 → 40 · ≤-20 → 10 (puntaje interpolado entre anclas: 73.4; pesa 10,0% del ITCP)",
+          "aporte_score": 2.3,
+          "aporte_formula": "Anclas ITCP: >10 → 100 · 0–10 → 85 · -10 a 0 → 65 · -20 a -10 → 40 · ≤-20 → 10 (puntaje interpolado entre anclas: 76.6; pesa 10,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 2,7/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 2,3/10.",
           "aporte_input_txt": null
         },
         "eficacia_legislativa": {
@@ -904,7 +904,7 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 69.5,
+        "valor": 69.9,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -948,13 +948,13 @@
           "alianzas_territoriales": {
             "nombre": "Alianzas territoriales",
             "peso": 0.25,
-            "puntaje": 82.3,
+            "puntaje": 83.6,
             "indicadores": {
               "iaf_transferencias": {
                 "peso": 0.4,
-                "puntaje_banda": 73.4,
-                "puntaje_aplicado": 73.4,
-                "valor": -0.8,
+                "puntaje_banda": 76.6,
+                "puntaje_aplicado": 76.6,
+                "valor": 0.8,
                 "peso_efectivo": 0.1
               },
               "alineamiento_senadores_prov": {
@@ -1026,15 +1026,15 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 67.1,
-          "p95": 72.1,
+          "p05": 67.4,
+          "p95": 72.4,
           "tension_rango": [
             2.8,
             3.3
           ],
           "dominante": {
             "indicador": "cohesion_bloque",
-            "indice_sin": 63.6
+            "indice_sin": 64.0
           },
           "n_draws": 1000,
           "hist": [
@@ -1042,46 +1042,46 @@
             1,
             3,
             3,
-            2,
-            8,
-            8,
-            18,
-            19,
-            27,
-            28,
-            36,
-            36,
+            1,
+            6,
+            10,
+            12,
+            23,
+            25,
+            29,
+            32,
             38,
-            47,
+            37,
+            48,
+            55,
+            51,
+            58,
+            66,
+            68,
             56,
-            54,
-            58,
-            70,
-            59,
-            58,
-            58,
+            63,
+            37,
+            55,
+            36,
             43,
-            50,
-            39,
-            38,
-            38,
-            24,
-            19,
+            37,
+            23,
+            23,
+            11,
             13,
             15,
-            12,
-            8,
-            5,
-            5,
+            7,
+            7,
+            4,
             2
           ],
-          "hist_min": 65.2,
-          "hist_max": 73.5,
+          "hist_min": 65.46,
+          "hist_max": 73.83,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": -0.45,
-          "r_diferencias": -0.417,
+          "r_niveles": -0.448,
+          "r_diferencias": -0.415,
           "n": 30,
           "pares": [
             [
@@ -1141,7 +1141,7 @@
             ],
             [
               "2024-12",
-              57.2,
+              57.1,
               85.5
             ],
             [
@@ -1201,7 +1201,7 @@
             ],
             [
               "2025-12",
-              68.8,
+              69.1,
               118.5
             ],
             [
@@ -1241,7 +1241,7 @@
           "serie_label": "ITCP (reconstrucción mensual)",
           "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
           "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
-          "conclusion": "Correlación -0,45 en niveles y -0,417 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
+          "conclusion": "Correlación -0,448 en niveles y -0,415 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
@@ -2504,7 +2504,7 @@
             [
               "2026-07",
               73.8,
-              2102.2
+              2102.5
             ]
           ],
           "plot": "minmax",
@@ -2663,7 +2663,7 @@
         "epu": {
           "r": -0.45,
           "n": 30,
-          "rd": -0.42
+          "rd": -0.41
         }
       }
     ],

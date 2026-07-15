@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-15 16:09:17"
+generado: "2026-07-15 16:22:13"
 score_global: 2.7
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -45,7 +45,7 @@ schema_version: "1.2.0"
 | ratio_dnu | 2.19 | DNUs por ley | 2026-07-15 | fresco |
 | conflictividad_nacional | -23.2 | % vs 2023 | 2026-06-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | fresco |
-| iaf_transferencias | -0.8 | % interanual real | 2026-07-15 | fresco |
+| iaf_transferencias | 0.8 | % interanual real | 2026-07-15 | fresco |
 | eficacia_legislativa | 17.6 | % de proyectos | 2026-07-15 | fresco |
 | veto_quorum | 0.0 | % de sesiones | 2026-07-15 | fresco |
 | comisiones_caidas | 97.7 | % de proyectos | 2026-07-15 | fresco |
@@ -99,4 +99,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-15 16:09:17 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-15 16:22:13 — schema 1.2.0*

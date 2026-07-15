@@ -17006,35 +17006,35 @@
   "iaf_transferencias": [
     {
       "fecha": "2018-12-01",
-      "valor": -1.7
+      "valor": 6.3
     },
     {
       "fecha": "2019-12-01",
-      "valor": -6.8
+      "valor": -1.4
     },
     {
       "fecha": "2020-12-01",
-      "valor": -4.3
+      "valor": -3.2
     },
     {
       "fecha": "2021-12-01",
-      "valor": 10.1
-    },
-    {
-      "fecha": "2022-12-01",
       "valor": 6.9
     },
     {
+      "fecha": "2022-12-01",
+      "valor": 6.5
+    },
+    {
       "fecha": "2023-12-01",
-      "valor": -4.9
+      "valor": -5.8
     },
     {
       "fecha": "2024-12-01",
-      "valor": -7.7
+      "valor": -8.3
     },
     {
       "fecha": "2025-12-01",
-      "valor": -0.8
+      "valor": 0.8
     }
   ],
   "eficacia_legislativa": [
