@@ -63,8 +63,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
   presion_dolarizacion: {
-    que: "Una medida de 0 a 100 de la presión por salir del peso. Bajo restricciones cambiarias observa la brecha entre el dólar CCL y el mayorista; desde abril de 2025 observa las compras netas de dólares de personas humanas en relación con el M2 privado.",
-    aporta: "Distingue la presión de cartera que se expresa en precios paralelos de la que, con acceso abierto, se expresa en compras efectivas de divisas. Mayor presión reduce el puntaje de estabilidad monetaria.",
+    que: "Una medida de 0 a 100 de la presión por salir del peso. Bajo restricciones cambiarias observa la brecha entre el dólar CCL y el mayorista; desde abril de 2025 combina las compras netas de dólares de personas humanas en relación con el M2 privado (canal bancarizado) con la brecha del dólar cripto frente al mayorista (canal no bancarizado).",
+    aporta: "Distingue la presión de cartera que se expresa en precios paralelos de la que, con acceso abierto, se expresa en compras efectivas de divisas — y ya no se queda ciega a la demanda que elige un canal no bancarizado. Mayor presión reduce el puntaje de estabilidad monetaria.",
     frecuencia: "Mensual", tipo: "Presión 0–100",
   },
   iai: {
