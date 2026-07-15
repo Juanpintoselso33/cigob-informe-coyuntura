@@ -142,46 +142,46 @@
     }
   },
   "itcp": {
-    "valor_publicado": 72.6,
-    "valor_recomputado": 72.6,
+    "valor_publicado": 68.2,
+    "valor_recomputado": 68.2,
     "experimentos": {
       "pesos": {
-        "media": 72.6,
-        "p05": 70.8,
-        "p95": 74.3,
-        "desvio": 1.06
+        "media": 68.3,
+        "p05": 66.0,
+        "p95": 70.6,
+        "desvio": 1.4
       },
       "combinado": {
-        "media": 72.6,
-        "p05": 70.1,
-        "p95": 75.1,
-        "desvio": 1.52
+        "media": 68.3,
+        "p05": 65.5,
+        "p95": 71.2,
+        "desvio": 1.77
       },
       "insumos": {
-        "media": 72.6,
-        "p05": 70.8,
-        "p95": 74.3,
-        "desvio": 1.07
+        "media": 68.2,
+        "p05": 66.5,
+        "p95": 69.9,
+        "desvio": 1.06
       }
     },
     "leave_one_out": {
-      "cohesion_bloque": 67.4,
-      "conflictividad_nacional": 76.6,
-      "ratio_dnu": 76.1,
-      "veto_quorum": 70.3,
+      "cohesion_bloque": 62.0,
       "eficacia_legislativa": 71.5,
-      "adhesion_reformas_provincial": 73.4,
-      "alineamiento_senadores_prov": 72.0,
-      "comisiones_caidas": 72.3,
-      "iaf_transferencias": 72.3,
-      "derrotas_legislativas": 72.8,
-      "votometro_ventaja_lla": 72.7
+      "conflictividad_nacional": 71.5,
+      "veto_quorum": 65.2,
+      "ratio_dnu": 70.6,
+      "comisiones_caidas": 66.9,
+      "adhesion_reformas_provincial": 69.1,
+      "derrotas_legislativas": 67.4,
+      "alineamiento_senadores_prov": 67.6,
+      "votometro_ventaja_lla": 67.9,
+      "iaf_transferencias": 68.0
     },
     "tension": {
-      "base": 2.7,
+      "base": 3.2,
       "rango_combinado": [
-        2.5,
-        3.0
+        2.9,
+        3.5
       ]
     }
   }

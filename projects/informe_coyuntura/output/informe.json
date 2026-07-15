@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-15T13:42:39.719109",
+  "generated_at": "2026-07-15T14:34:55.660089",
   "period": "2026-07",
-  "score_global": 2.6,
+  "score_global": 2.7,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -417,8 +417,8 @@
       }
     },
     "politica": {
-      "score": 2.7,
-      "estado": "estable",
+      "score": 3.2,
+      "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "votometro_ventaja_lla": {
@@ -495,18 +495,20 @@
           "peso_efectivo": 0.1
         },
         "eficacia_legislativa": {
-          "valor": 4.3,
-          "aprobados_n": 1,
-          "enviados_n": 23,
-          "ventana_dias": 365,
+          "valor": 0.0,
+          "aprobados_n": 0,
+          "enviados_n": 20,
+          "cohorte_desde": "2024-07-15",
+          "cohorte_hasta": "2025-07-15",
+          "dias_madurado_min": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
           "fecha_dato": "2026-07-15",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
-          "puntaje_itcp": 68.0,
-          "puntaje_banda": 68.0,
+          "puntaje_itcp": 10.0,
+          "puntaje_banda": 10.0,
           "peso_efectivo": 0.075
         },
         "veto_quorum": {
@@ -639,14 +641,14 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 72.6,
+        "valor": 68.2,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
             "peso": 0.3,
-            "puntaje": 56.7,
+            "puntaje": 42.2,
             "indicadores": {
               "ratio_dnu": {
                 "peso": 0.2,
@@ -657,9 +659,9 @@
               },
               "eficacia_legislativa": {
                 "peso": 0.25,
-                "puntaje_banda": 68.0,
-                "puntaje_aplicado": 68.0,
-                "valor": 4.3,
+                "puntaje_banda": 10.0,
+                "puntaje_aplicado": 10.0,
+                "valor": 0.0,
                 "peso_efectivo": 0.075
               },
               "veto_quorum": {
