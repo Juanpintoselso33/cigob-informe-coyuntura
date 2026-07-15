@@ -5,7 +5,8 @@ Ejecutar desde projects/informe_coyuntura/: python scripts/politica.py
 
 Indicadores:
   votometro_ventaja_lla     — Brecha LLA−PJ en intención de voto (Votómetro CIGOB, auto)
-  ratio_dnu                 — DNUs / leyes sancionadas año corriente (InfoLeg, auto)
+  ratio_dnu                 — DNUs / leyes sancionadas, ventana móvil 365 días (InfoLeg, auto;
+                               ADR-0058 — antes acumulado del año calendario, resetaba en enero)
   conflictividad_nacional   — % var. eventos de protesta y disturbios en TODO el país vs. base
                                2023 (ACLED, 12m completos; ADR-0052 — reemplaza a
                                movilizacion_cepa en la dimensión conflicto_social)
@@ -418,23 +419,25 @@ def votometro_serie_mensual() -> list:
 # ── Ratio DNU ─────────────────────────────────────────────────────────────────
 
 def _infoleg_session_count(session: requests.Session, action_url: str,
-                            tipo: str, year: int, texto: str = "") -> int:
+                            tipo: str, desde: date, hasta: date, texto: str = "") -> int:
     """
     POST a InfoLeg buscarNormas.do dentro de una sesión activa.
     tipo: "1"=Ley, "2"=Decreto. DNUs se identifican con texto="necesidad y urgencia".
+    Ventana [desde, hasta] explícita (ADR-0058): antes tomaba un año calendario
+    completo (o el año corriente hasta hoy); ahora cualquier rango, para poder
+    pedir ventanas móviles de 365 días además del corte anual.
     """
-    hasta = date.today().strftime("%d/%m/%Y") if year == date.today().year else f"31/12/{year}"
     post_data = {
         "tipoNorma": tipo,
         "numero": "",
         "anioSancion": "",
         "dependencia": "",
-        "diaPubDesde": "01",
-        "mesPubDesde": "01",
-        "anioPubDesde": str(year),
-        "diaPubHasta": hasta[:2],
-        "mesPubHasta": hasta[3:5],
-        "anioPubHasta": hasta[6:],
+        "diaPubDesde": f"{desde.day:02d}",
+        "mesPubDesde": f"{desde.month:02d}",
+        "anioPubDesde": str(desde.year),
+        "diaPubHasta": f"{hasta.day:02d}",
+        "mesPubHasta": f"{hasta.month:02d}",
+        "anioPubHasta": str(hasta.year),
         "texto": texto,
     }
     r = session.post(action_url, data=post_data, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
@@ -448,7 +451,11 @@ def _infoleg_session_count(session: requests.Session, action_url: str,
 
 def fetch_ratio_dnu() -> dict | None:
     """
-    Ratio DNU = count(DNUs) / count(leyes sancionadas) — año corriente.
+    Ratio DNU = count(DNUs) / count(leyes sancionadas) en los últimos 365 días
+    (ventana móvil, ADR-0058 — antes era acumulado del año calendario en
+    curso, resetado cada 1° de enero, igual que el defecto que hizo sacar a
+    movilizacion_cepa del tablero por ADR-0052; el criterio no se le había
+    aplicado a este indicador hasta esta revisión).
     Mayor ratio = mayor dependencia del decreto → debilidad legislativa y exposición judicial.
     Dimensión: capacidad legislativa del Ejecutivo (Luis Babino: Agregados de Poder).
 
@@ -456,12 +463,10 @@ def fetch_ratio_dnu() -> dict | None:
     - Leyes: tipoNorma=1 (Ley)
     - DNUs: tipoNorma=2 (Decreto) + texto="necesidad y urgencia"
     Requiere GET previo para obtener jsessionid del formulario.
-
-    Score: ratio 0→0, 1.0→5, 2.0+→10  (formula: ratio × 5)
-    Referencia 2026 (may): ~22 DNUs / 7 leyes = 3.14 → score 10 (tensionado)
     """
     try:
-        year = date.today().year
+        hasta = date.today()
+        desde = hasta - timedelta(days=365)
 
         session = requests.Session()
         r_home = session.get(INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
@@ -472,11 +477,12 @@ def fetch_ratio_dnu() -> dict | None:
             raise ValueError("No se encontró la URL del formulario InfoLeg")
         action_url = "https://servicios.infoleg.gob.ar" + action_m.group(1)
 
-        leyes = _infoleg_session_count(session, action_url, "1", year)
+        leyes = _infoleg_session_count(session, action_url, "1", desde, hasta)
         if leyes == 0:
             raise ValueError("0 leyes — posible fallo en búsqueda InfoLeg (tipoNorma=1)")
 
-        dnus = _infoleg_session_count(session, action_url, "2", year, texto="necesidad y urgencia")
+        dnus = _infoleg_session_count(session, action_url, "2", desde, hasta,
+                                       texto="necesidad y urgencia")
 
         ratio = round(dnus / leyes, 3)
 
@@ -484,7 +490,7 @@ def fetch_ratio_dnu() -> dict | None:
             "valor": ratio,
             "dnu_count": dnus,
             "leyes_count": leyes,
-            "periodo": str(year),
+            "ventana_dias": 365,
             "unidad": "DNUs por ley",
             "fuente": INFOLEG_HOME,
             "fecha_dato": str(date.today()),

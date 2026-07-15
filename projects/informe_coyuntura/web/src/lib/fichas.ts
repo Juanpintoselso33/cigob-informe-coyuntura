@@ -815,23 +815,23 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "InfoLeg carga las normas al ritmo del Boletín Oficial: días entre la publicación y su aparición en el buscador.",
     fuente: {
       organismo: "InfoLeg (Ministerio de Justicia)",
-      operacion: "Buscador oficial de normas — conteo de decretos de necesidad y urgencia y de leyes sancionadas del año corriente",
+      operacion: "Buscador oficial de normas — conteo de decretos de necesidad y urgencia y de leyes sancionadas en los últimos 365 días",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/",
-      acceso: "Automático: consulta el buscador oficial con dos búsquedas (leyes del año y decretos con el texto «necesidad y urgencia») y toma los conteos de resultados.",
+      acceso: "Automático: consulta el buscador oficial con dos búsquedas (leyes y decretos con el texto «necesidad y urgencia», ambas acotadas a los últimos 365 días) y toma los conteos de resultados.",
     },
     transformaciones: [
-      "Ratio = DNU dictados en el año corriente / leyes sancionadas en el año corriente.",
+      "Ratio = DNU dictados en los últimos 365 días / leyes sancionadas en los últimos 365 días — ventana móvil, no acumulado del año calendario.",
       "Los DNU se identifican buscando la frase «necesidad y urgencia» dentro de los decretos.",
-      "La serie histórica repite el mismo cociente por año calendario, desde 2020. Los años cerrados son completos; el punto del año en curso es parcial (de enero a la fecha de la corrida) y se actualiza hasta cerrar el año — al comparar en el gráfico, ese último punto no es estrictamente homogéneo con los anteriores.",
+      "La serie histórica recalcula esta misma ventana móvil al cierre de cada mes desde diciembre de 2023: cada punto es homogéneo y comparable con el anterior, sin el reseteo de un acumulado que arranca de cero cada enero.",
     ],
     incidenciaTexto: [
-      "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo.",
+      "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 1,5 o menos → el más alto; entre 1,5 y 2 → alto; entre 2 y 3 → moderado; entre 3 y 4,5 → bajo; más de 4,5 → el más bajo.",
       "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto a la eficacia legislativa, las sesiones caídas por quórum, los proyectos varados en comisión y las derrotas legislativas.",
     ],
     limitaciones: [
       "Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.",
-      "El ratio del año corriente es inestable en los primeros meses (pocas leyes en el denominador).",
       "Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.",
+      "El buscador no expone un listado con fecha por norma: reconstruir la serie mensual exige una consulta separada por mes, no una descarga única.",
     ],
     faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
     revisiones: "Los conteos se reconsultan completos en cada corrida: si la fuente carga normas con retraso, el número se corrige solo.",
@@ -839,6 +839,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Entra al cinturón en reemplazo del índice de confianza en el gobierno (UTDT): el cinturón mide capacidad de gobernar, no popularidad." },
       { fecha: "2026-06-30", cambio: "Serie anual desde 2020 para dar contexto histórico al ratio del año en curso." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
+      { fecha: "2026-07-15", cambio: "El cociente pasó de acumulado del año calendario (un punto por año, reseteaba en enero) a ventana móvil de 365 días (un punto por mes, comparable mes a mes); las anclas del puntaje se recalibraron con la serie mensual real." },
     ],
   },
 

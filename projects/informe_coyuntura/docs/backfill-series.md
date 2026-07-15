@@ -27,7 +27,7 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 | `informalidad` · `pluriempleo` | Tasa INDEC EPH ×100 (`fetch_indec_x100`): 52.1 (anual) y 47.2 (trimestral) | 22 / 40 |
 | `endeudamiento_familiar` | Stock nominal de crédito de consumo (BCRA personales 114 + tarjeta 115) en billones = headline (la var real i.a. que puntúa va en el box de score) | 43 |
 | `reduccion_estado` · `apertura_comercial` | datos.gob.ar: empleo público vs baseline ≤2024-01 (trim.) e importaciones i.a. (mens.) | 8 / 36 |
-| `ratio_dnu` | DNUs/leyes por año (InfoLeg, loop 2020→hoy) | 7 (anual) |
+| `ratio_dnu` | DNUs/leyes en ventana móvil de 365 días, recalculada al fin de cada mes (InfoLeg; ADR-0058 reemplazó el acumulado anual) | 32 (mensual) |
 | `brecha_salario_cbt` | RIPTE / Canasta Básica Total, alineado por mes (el live mezcla meses → último 3,86 vs card 3,79, inmaterial) | 59 |
 
 > El "último punto = valor live" se verificó indicador por indicador. Todo corre en cada

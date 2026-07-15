@@ -257,11 +257,13 @@ def construir_serie_itcp() -> dict:
     más ruidosa que la de ITCM/ITCG porque la cobertura histórica real de
     política es dispareja:
     - Con historia mensual sólida desde dic-2023: votometro_ventaja_lla,
-      eficacia_legislativa, comisiones_caidas y (desde 2026-07-09, ADR-0046)
-      derrotas_legislativas, cuya serie completa se deriva del registro
-      versionado de eventos.
-    - ratio_dnu y veto_quorum llegan por período/año (pocos puntos, no un
-      valor por mes) y iaf_transferencias es un dato anual (dic-dic): solo
+      eficacia_legislativa, comisiones_caidas, (desde 2026-07-09, ADR-0046)
+      derrotas_legislativas —cuya serie completa se deriva del registro
+      versionado de eventos— y (desde 2026-07-15, ADR-0058) ratio_dnu, que
+      pasó de un punto por año calendario a ventana móvil de 365 días
+      recalculada al fin de cada mes.
+    - veto_quorum llega por período legislativo (pocos puntos, no un valor
+      por mes) e iaf_transferencias es un dato anual (dic-dic): solo
       "prenden" en los meses exactos en que hay dato — el resto del tiempo el
       motor renormaliza sin ellos, igual que ITCM/ITCG con sus faltantes.
     - Desde 2026-07-09 la cobertura mejoró de verdad: cohesion_bloque

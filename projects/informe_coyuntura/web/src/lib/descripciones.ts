@@ -100,9 +100,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua", tipo: "Brecha (pp)",
   },
   ratio_dnu: {
-    que: "Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada en el año.",
+    que: "Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en los últimos 12 meses.",
     aporta: "Un ratio alto indica un Ejecutivo que legisla por decreto ante un Congreso que no acompaña.",
-    frecuencia: "Continua (año)", tipo: "Ratio",
+    frecuencia: "Continua (12m)", tipo: "Ratio",
   },
   conflictividad_nacional: {
     que: "Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el total de 2023 (el año base del mandato). Cuenta marchas, concentraciones y disturbios registrados por ACLED, el relevamiento académico internacional estándar de conflicto social, en las 24 jurisdicciones.",

@@ -18,9 +18,9 @@ def test_banda_votometro_extremos():
 
 
 def test_banda_low_exclusivo_high_inclusivo():
-    bandas = itcp.BANDAS_ITCP["ratio_dnu"]  # (-inf,0.3,100)·(0.3,0.7,85)·...
-    assert itcp.puntaje_banda(0.3, bandas) == 100   # high inclusivo
-    assert itcp.puntaje_banda(0.30001, bandas) == 85  # low exclusivo del siguiente tramo
+    bandas = itcp.BANDAS_ITCP["ratio_dnu"]  # (-inf,1.5,100)·(1.5,2.0,85)·...
+    assert itcp.puntaje_banda(1.5, bandas) == 100   # high inclusivo
+    assert itcp.puntaje_banda(1.50001, bandas) == 85  # low exclusivo del siguiente tramo
 
 
 def test_banda_protestas_caba_var_vs_2023():

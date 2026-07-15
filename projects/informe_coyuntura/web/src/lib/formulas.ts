@@ -186,8 +186,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Ventana móvil de 12 meses sobre los datos abiertos de la Cámara de Diputados.",
   },
   ratio_dnu: {
-    latex: String.raw`\frac{\text{DNU dictados en el a\~no en curso}}{\text{leyes sancionadas en el a\~no en curso}}`,
-    leyenda: "Conteos del buscador oficial de InfoLeg. Más de 1 = el Ejecutivo dicta más decretos de necesidad y urgencia que leyes logra sancionar el Congreso.",
+    latex: String.raw`\frac{\text{DNU dictados, \'ultimos 365 d\'ias}}{\text{leyes sancionadas, \'ultimos 365 d\'ias}}`,
+    leyenda: "Conteos del buscador oficial de InfoLeg sobre una ventana móvil de 365 días (no el año calendario). Más de 1 = el Ejecutivo dicta más decretos de necesidad y urgencia que leyes logra sancionar el Congreso.",
   },
   veto_quorum: {
     latex: String.raw`\frac{\text{sesiones fracasadas}}{\text{sesiones convocadas}}\times 100`,
