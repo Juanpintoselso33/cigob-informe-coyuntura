@@ -389,8 +389,11 @@ def fetch_votometro_serie() -> list:
 
 def fetch_iaf_serie() -> list:
     """Serie ANUAL de la variación real i.a. de transferencias federales totales
-    (RON Hacienda), deflactada por el IPC dic-dic oficial de INDEC — misma fórmula
-    que el indicador. Confiable desde 2017 (base del índice IPC). [[YYYY-12-01, %]]."""
+    (RON Hacienda, transferencias EJECUTADAS del año calendario — el punto
+    YYYY-12-01 es el acumulado de ESE año cerrado, no el presupuesto del
+    siguiente), deflactada por la inflación PROMEDIO anual del índice IPC de
+    INDEC (ADR-0065) — misma fórmula que el indicador. Confiable desde 2018
+    (primer año con promedio completo de la base dic-2016). [[YYYY-12-01, %]]."""
     import csv
     import io
     r = requests.get(politica.RON_CSV_URL, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
@@ -405,7 +408,7 @@ def fetch_iaf_serie() -> list:
             tot[int(row[0])] = tot.get(int(row[0]), 0.0) + float(row[4].replace(",", "."))
         except ValueError:
             continue
-    ipc = politica._ipc_dicdic_indec()
+    ipc = politica._ipc_promedio_indec()
     out = []
     for y in sorted(tot):
         if y - 1 in tot and tot[y - 1] and y in ipc:

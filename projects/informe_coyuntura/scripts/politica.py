@@ -147,24 +147,33 @@ MAGYP_RIGI_URL = "https://www.magyp.gob.ar/desarrollo-foresto-industrial/provinc
 
 # IPC interanual diciembre (INDEC). Actualizar en enero de cada año.
 # 2024: 117.06% acumulado anual. 2025: 38.3% acumulado anual (estimado previo a cierre).
-IPC_ANUAL = {2024: 1.1706, 2025: 0.383}   # fallback dic-dic si la API INDEC falla
 
 INDEC_SERIES_URL = "https://apis.datos.gob.ar/series/api/series/"
 INDEC_IPC_INDICE = "148.3_INIVELNAL_DICI_M_26"   # IPC nivel general, índice (base dic-2016=100)
 
 
-def _ipc_dicdic_indec() -> dict:
-    """IPC dic-dic por año derivado de la serie ÍNDICE oficial de INDEC (sin hardcodear):
-    {año: variación dic(año)/dic(año−1) − 1}. Confiable desde 2017 (base dic-2016=100)."""
+def _ipc_promedio_indec() -> dict:
+    """Inflación PROMEDIO anual derivada de la serie ÍNDICE oficial de INDEC
+    (sin hardcodear): {año: promedio(índice año)/promedio(índice año−1) − 1},
+    solo para años con los 12 meses publicados. Confiable desde 2018 (base
+    dic-2016=100 → primer año completo 2017).
+
+    ADR-0065: es el deflactor correcto para comparar SUMAS ANUALES de flujos
+    (las transferencias del año se devengan mes a mes a los precios de cada
+    mes, no a los de diciembre). El dic-dic que se usaba antes subdeflactaba
+    en años de inflación descendente: para 2025, dic-dic 31,5% vs promedio
+    ~40% — la variación real publicada daba +7,0% cuando IARAF/OPC/Politikon
+    (que deflactan por promedio) reportan +1,6/2,7%."""
     r = requests.get(INDEC_SERIES_URL,
                      params={"ids": INDEC_IPC_INDICE, "format": "json", "limit": 200, "sort": "desc"},
                      headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
-    dic = {}
+    por_anio: dict[int, list[float]] = {}
     for fecha, val in r.json()["data"]:
-        if val is not None and str(fecha)[5:7] == "12":
-            dic[int(str(fecha)[:4])] = val
-    return {y: dic[y] / dic[y - 1] - 1 for y in dic if y - 1 in dic}
+        if val is not None:
+            por_anio.setdefault(int(str(fecha)[:4]), []).append(float(val))
+    prom = {y: sum(v) / len(v) for y, v in por_anio.items() if len(v) == 12}
+    return {y: prom[y] / prom[y - 1] - 1 for y in prom if y - 1 in prom}
 
 logging.basicConfig(level=logging.WARNING, format="%(message)s")
 
@@ -733,10 +742,11 @@ def fetch_iaf_transferencias() -> dict | None:
     Fuente: CSV anual Hacienda — columnas: ano;provincia;impuesto;regimen;monto
     Decimal en monto: coma (ej. 2787,1198 → 2787.1198).
     Se suman todos los montos del año de referencia (año_actual − 1) y año anterior.
-    Deflactor: IPC_ANUAL[año_ref] (variación dic-dic INDEC).
-
-    Score: +10% real growth→0, 0%→2.5, −10%→5, −20%→7.5, −30%+→10
-    formula: min(10, max(0, (0.10 − var_real) × 25))
+    Deflactor: inflación PROMEDIO anual del índice IPC de INDEC (ADR-0065 —
+    el dic-dic anterior subdeflactaba sumas anuales con inflación en baja;
+    validado contra IARAF/OPC/Politikon, que deflactan igual). La serie es de
+    transferencias EJECUTADAS del año calendario (no presupuesto): la fila
+    "2025" del CSV es lo efectivamente girado durante 2025.
     """
     import csv
     import io
@@ -769,19 +779,12 @@ def fetch_iaf_transferencias() -> dict | None:
             raise ValueError(f"Sin datos para {year_ref} o {year_ant} en RON CSV")
 
         var_nominal = (tot[year_ref] / tot[year_ant]) - 1.0
-        ipc = None
-        try:
-            ipc = _ipc_dicdic_indec().get(year_ref)   # oficial INDEC, sin hardcodear
-        except Exception as e:
-            _warn("iaf_transferencias (IPC INDEC, uso fallback)", str(e))
-        if ipc is None:
-            ipc = IPC_ANUAL.get(year_ref)              # fallback al dic-dic hardcodeado
+        ipc = _ipc_promedio_indec().get(year_ref)
         if ipc is None:
             raise ValueError(
-                f"IPC no disponible para {year_ref} (ni INDEC ni IPC_ANUAL)"
+                f"IPC promedio no disponible para {year_ref} (serie índice INDEC incompleta)"
             )
         var_real = (1.0 + var_nominal) / (1.0 + ipc) - 1.0
-        score_val = round(min(10.0, max(0.0, (0.10 - var_real) * 25.0)), 2)
 
         return {
             "valor": round(var_real * 100.0, 1),
