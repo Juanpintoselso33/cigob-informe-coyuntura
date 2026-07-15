@@ -66,13 +66,38 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
-2026-01-01,ratio_dnu,1.588,DNUs por ley,InfoLeg (conteo anual)
-2025-01-01,ratio_dnu,4.909,DNUs por ley,InfoLeg (conteo anual)
-2024-01-01,ratio_dnu,1.69,DNUs por ley,InfoLeg (conteo anual)
-2023-01-01,ratio_dnu,1.176,DNUs por ley,InfoLeg (conteo anual)
-2022-01-01,ratio_dnu,0.973,DNUs por ley,InfoLeg (conteo anual)
-2021-01-01,ratio_dnu,0.705,DNUs por ley,InfoLeg (conteo anual)
-2020-01-01,ratio_dnu,1.277,DNUs por ley,InfoLeg (conteo anual)
+2026-07-01,ratio_dnu,2.19,DNUs por ley (12m móviles),InfoLeg
+2026-06-01,ratio_dnu,2.3,DNUs por ley (12m móviles),InfoLeg
+2026-05-01,ratio_dnu,4.727,DNUs por ley (12m móviles),InfoLeg
+2026-04-01,ratio_dnu,4.0,DNUs por ley (12m móviles),InfoLeg
+2026-03-01,ratio_dnu,4.75,DNUs por ley (12m móviles),InfoLeg
+2026-02-01,ratio_dnu,4.214,DNUs por ley (12m móviles),InfoLeg
+2026-01-01,ratio_dnu,4.769,DNUs por ley (12m móviles),InfoLeg
+2025-12-01,ratio_dnu,4.909,DNUs por ley (12m móviles),InfoLeg
+2025-11-01,ratio_dnu,5.273,DNUs por ley (12m móviles),InfoLeg
+2025-10-01,ratio_dnu,5.545,DNUs por ley (12m móviles),InfoLeg
+2025-09-01,ratio_dnu,1.939,DNUs por ley (12m móviles),InfoLeg
+2025-08-01,ratio_dnu,1.442,DNUs por ley (12m móviles),InfoLeg
+2025-07-01,ratio_dnu,1.488,DNUs por ley (12m móviles),InfoLeg
+2025-06-01,ratio_dnu,1.522,DNUs por ley (12m móviles),InfoLeg
+2025-05-01,ratio_dnu,1.457,DNUs por ley (12m móviles),InfoLeg
+2025-04-01,ratio_dnu,1.467,DNUs por ley (12m móviles),InfoLeg
+2025-03-01,ratio_dnu,1.511,DNUs por ley (12m móviles),InfoLeg
+2025-02-01,ratio_dnu,1.643,DNUs por ley (12m móviles),InfoLeg
+2025-01-01,ratio_dnu,1.643,DNUs por ley (12m móviles),InfoLeg
+2024-12-01,ratio_dnu,1.69,DNUs por ley (12m móviles),InfoLeg
+2024-11-01,ratio_dnu,1.833,DNUs por ley (12m móviles),InfoLeg
+2024-10-01,ratio_dnu,1.833,DNUs por ley (12m móviles),InfoLeg
+2024-09-01,ratio_dnu,2.406,DNUs por ley (12m móviles),InfoLeg
+2024-08-01,ratio_dnu,3.667,DNUs por ley (12m móviles),InfoLeg
+2024-07-01,ratio_dnu,3.571,DNUs por ley (12m móviles),InfoLeg
+2024-06-01,ratio_dnu,2.783,DNUs por ley (12m móviles),InfoLeg
+2024-05-01,ratio_dnu,2.652,DNUs por ley (12m móviles),InfoLeg
+2024-04-01,ratio_dnu,1.812,DNUs por ley (12m móviles),InfoLeg
+2024-03-01,ratio_dnu,1.576,DNUs por ley (12m móviles),InfoLeg
+2024-02-01,ratio_dnu,1.5,DNUs por ley (12m móviles),InfoLeg
+2024-01-01,ratio_dnu,1.353,DNUs por ley (12m móviles),InfoLeg
+2023-12-01,ratio_dnu,1.176,DNUs por ley (12m móviles),InfoLeg
 2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2025-12-01,iaf_transferencias,7.0,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
