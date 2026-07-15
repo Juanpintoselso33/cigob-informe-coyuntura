@@ -72,6 +72,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0057](0057-canal-informal-cripto-presion-dolarizacion.md) | `presion_dolarizacion`: el régimen abierto (desde abr-2025) suma un canal informal (brecha dólar cripto/A3500, ArgentinaDatos) al 100% formal (MULC/M2) anterior — combinación 70/30, degrada a 100% formal si falta el dato; no supersede ADR-0055 | Aceptado |
 | [0058](0058-ratio-dnu-ventana-movil-12m.md) | `ratio_dnu` (ITCP): pasa de acumulado YTD (resetea en enero, mismo defecto que sacó a movilizacion_cepa del tablero en ADR-0052) a ventana móvil de 365 días | Aceptado (0059 revierte la recalibración de anclas del mismo commit) |
 | [0059](0059-ratio-dnu-no-recalibrar-anclas.md) | `ratio_dnu`: se revierte la recalibración de anclas de ADR-0058 — el rango elevado observado es señal real (verificado contra benchmark externo ACIJ, ratio histórico 2011-2024 ≈0,3), no un artefacto estructural como comisiones_caidas/ADR-0045; anclas vuelven a 0,3/0,7/1,2/2,0 | Aceptado |
+| [0060](0060-generar-informe-recalcula-indices-desde-crudo.md) | `generar_informe.py` recalcula ITCM/ITCG/ITCP desde los valores crudos del caché con el código vigente (antes copiaba verbatim lo que el colector calculó al momento del fetch, quedando stale si el motor de scoring cambiaba sin re-correr el colector — bug encontrado corrigiendo ADR-0059); publicar.py/sensibilidad.py heredan el fix sin cambios propios | Aceptado |
 
 ## Contexto general
 

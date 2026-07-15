@@ -2872,6 +2872,21 @@ def _resultado_utilizable(nombre: str, resultado: dict | None) -> bool:
     return resultado is not None and _valor_itcp(nombre, resultado) is not None
 
 
+def calcular_itcp_cinturon(indicadores: dict) -> dict | None:
+    """ITCP 0-100 (ver scripts/itcp.py) sobre los indicadores del índice, a
+    partir de valores YA PERSISTIDOS (fetch fresco del colector o
+    cache["indicadores"] existente) — no depende de red. Extraída de main()
+    para que generar_informe.py pueda recomputar el ITCP con el itcp.py
+    vigente sin volver a pegarle a InfoLeg/HCDN/etc."""
+    ajustes = itcp.cargar_ajustes(AJUSTES_ITCP_PATH, datetime.now().strftime("%Y-%m"))
+    valores = {}
+    for nombre, entry in indicadores.items():
+        valor = _valor_itcp(nombre, entry)
+        if valor is not None:
+            valores[nombre] = valor
+    return itcp.calcular_itcp(valores, ajustes)
+
+
 def _anotar_indicadores_itcp(indicadores: dict, resultado: dict | None) -> None:
     """Marca cada indicador con su rol en el ITCP: los del índice llevan
     puntaje, dimensión y peso efectivo; el resto queda como contexto (mismo
@@ -2984,13 +2999,7 @@ def main() -> None:
             "desactualizado": _cohesion_desactualizada(anterior_alineamiento, resultado_alineamiento),
         }
 
-    ajustes = itcp.cargar_ajustes(AJUSTES_ITCP_PATH, datetime.now().strftime("%Y-%m"))
-    valores = {}
-    for nombre, entry in frescos.items():
-        valor = _valor_itcp(nombre, entry)
-        if valor is not None:
-            valores[nombre] = valor
-    resultado_itcp = itcp.calcular_itcp(valores, ajustes)
+    resultado_itcp = calcular_itcp_cinturon(frescos)
     score = itcp.tension_de_itcp(resultado_itcp["valor"]) if resultado_itcp else 5.0
     _anotar_indicadores_itcp(frescos, resultado_itcp)
 
