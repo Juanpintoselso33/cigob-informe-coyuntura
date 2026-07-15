@@ -126,7 +126,6 @@ def build_series():
     # clave en los CSV. Exponer la serie tambien bajo la clave del indicador para
     # que el sparkline y el modal la encuentren.
     alias = {
-        "despacho_cemento": "isac_construccion",
         "saldo_comercial_12m": "saldo_comercial",
         "clima_electoral": "votometro_ventaja_lla",   # espíritu reusa la serie del Votómetro
     }

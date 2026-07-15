@@ -1741,8 +1741,8 @@ VIDA_DERIVADAS += [
     ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),
     ("inseguridad_snic", "hechos/año (total país)", "SNIC (CSV oficial, suma anual)", fetch_inseguridad_serie),
     ("consumo_carne", "kg/hab/año (PM 12m)", "CICCRA (informes mensuales, caché local)", fetch_carne_serie),
-    # La MISMA métrica que muestra la card del indicador (ISAC nivel s.e.);
-    # antes el modal caía por alias a isac_construccion (insumo cemento 33.4).
+    # La MISMA métrica que muestra la card del indicador (ISAC general nivel
+    # s.e., serie 33.2 desestacionalizada): card y modal comparten fuente.
     ("despacho_cemento", "índice ISAC (desest.)", "INDEC ISAC (33.2, s.e.)",
      lambda: [[f, round(v, 2)] for f, v in sorted(fetch_indec(ITVC_ISAC_DESEST_ID, limit=60))]),
 ]
@@ -1773,7 +1773,9 @@ VIDA_DERIVADAS.append(
 
 GESTION_INDEC = [
     ("149.1_SOR_PUBICO_OCTU_0_14",   "indice_salarios_publico", "indice base oct-2016=100", "INDEC/datos.gob.ar"),
-    ("33.4_ISAC_CEMENAND_0_0_21_24", "isac_construccion",       "indice base 2004=100",     "INDEC/datos.gob.ar"),
+    # (33.4 ISAC insumo cemento se retiró jul-2026: no lo consumía ningún
+    #  indicador ni el front — la card de construcción usa el ISAC general
+    #  33.2 s.e., ver despacho_cemento arriba.)
 ]
 
 
