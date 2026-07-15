@@ -169,9 +169,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   // ADR-0033: en el ITVC puntúa el encarecimiento RELATIVO (alimentos vs IPC
   // general) — la versión salario/alimentos duplicaba la brecha (r = 0,985)
   ipc_alimentos: {
-    que: "Cuánto suben en el mes los precios de alimentos y bebidas. En el ITVC puntúa por el NIVEL acumulado del índice de alimentos relativo a los salarios (RIPTE), rebaseado a 100 = 4T-2023: si supera 100, la comida se abarató en términos de ingresos desde el arranque del mandato.",
-    aporta: "Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar. Medirla relativa al salario captura la pérdida o ganancia acumulada de poder de compra alimentario, no el ruido de un mes.",
-    frecuencia: "Mensual", tipo: "Variación (card) · nivel vs salarios (índice)",
+    que: "Cuánto suben en el mes los precios de alimentos y bebidas. En el ITVC puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.",
+    aporta: "Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.",
+    frecuencia: "Mensual", tipo: "Variación (card) · nivel vs IPC general (índice)",
   },
   endeudamiento_familiar: {
     que: "Cuánto deben las familias por consumo (tarjetas + personales). En el ITVC puntúa la deuda REAL corregida por la tasa de mora de esa cartera (Informe sobre Bancos, BCRA): más crédito con mora estable es acceso; más crédito con mora disparada es sobreendeudamiento por necesidad.",

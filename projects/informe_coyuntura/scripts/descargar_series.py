@@ -1715,7 +1715,7 @@ def fetch_motos_serie_cached() -> list:
 
 # Componentes transformados del ITVC-B100 (100 = promedio 4T-2023, ADR-0018)
 VIDA_DERIVADAS += [
-    ("itvc_alimentos", "índice (100 = 4T-2023)", "INDEC IPC Alimentos + RIPTE (elab. CIGOB)", fetch_itvc_alimentos),
+    ("itvc_alimentos", "índice (100 = 4T-2023)", "INDEC IPC Alimentos + IPC general (elab. CIGOB)", fetch_itvc_alimentos),
     ("itvc_tarifas", "índice (100 = 4T-2023)", "INDEC IPC Regulados + RIPTE (elab. CIGOB)", fetch_itvc_tarifas),
     ("itvc_ipi", "índice (100 = 4T-2023)", "INDEC IPI desestacionalizado", fetch_itvc_ipi),
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
