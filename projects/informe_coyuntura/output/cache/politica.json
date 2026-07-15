@@ -1,51 +1,44 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-15T15:33:24.792482",
-  "score": 2.8,
+  "generated_at": "2026-07-15T15:50:14.387335",
+  "score": 2.9,
   "itcp": {
-    "valor": 71.6,
+    "valor": 71.3,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.3,
-        "puntaje": 53.5,
+        "puntaje": 52.5,
         "indicadores": {
           "ratio_dnu": {
-            "peso": 0.2,
+            "peso": 0.25,
             "puntaje_banda": 10.0,
             "puntaje_aplicado": 10.0,
             "valor": 2.19,
-            "peso_efectivo": 0.06
+            "peso_efectivo": 0.075
           },
           "eficacia_legislativa": {
-            "peso": 0.25,
+            "peso": 0.3,
             "puntaje_banda": 55.2,
             "puntaje_aplicado": 55.2,
             "valor": 17.6,
-            "peso_efectivo": 0.075
+            "peso_efectivo": 0.09
           },
           "veto_quorum": {
-            "peso": 0.15,
+            "peso": 0.2,
             "puntaje_banda": 100.0,
             "puntaje_aplicado": 100.0,
             "valor": 0.0,
-            "peso_efectivo": 0.045
-          },
-          "comisiones_caidas": {
-            "peso": 0.2,
-            "puntaje_banda": 60.0,
-            "puntaje_aplicado": 60.0,
-            "valor": 97.7,
             "peso_efectivo": 0.06
           },
           "derrotas_legislativas": {
-            "peso": 0.2,
+            "peso": 0.25,
             "puntaje_banda": 53.6,
             "puntaje_aplicado": 53.6,
             "valor": 8.0,
-            "peso_efectivo": 0.06
+            "peso_efectivo": 0.075
           }
         },
         "peso_efectivo": 0.3
@@ -156,7 +149,7 @@
       "dimension": "poder_legislativo",
       "puntaje_itcp": 10.0,
       "puntaje_banda": 10.0,
-      "peso_efectivo": 0.06
+      "peso_efectivo": 0.075
     },
     "conflictividad_nacional": {
       "valor": -23.2,
@@ -216,7 +209,7 @@
       "dimension": "poder_legislativo",
       "puntaje_itcp": 55.2,
       "puntaje_banda": 55.2,
-      "peso_efectivo": 0.075
+      "peso_efectivo": 0.09
     },
     "veto_quorum": {
       "valor": 0.0,
@@ -231,7 +224,7 @@
       "dimension": "poder_legislativo",
       "puntaje_itcp": 100.0,
       "puntaje_banda": 100.0,
-      "peso_efectivo": 0.045
+      "peso_efectivo": 0.06
     },
     "comisiones_caidas": {
       "valor": 97.7,
@@ -243,11 +236,7 @@
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
       "fecha_dato": "2026-07-15",
       "desactualizado": false,
-      "en_indice": true,
-      "dimension": "poder_legislativo",
-      "puntaje_itcp": 60.0,
-      "puntaje_banda": 60.0,
-      "peso_efectivo": 0.06
+      "en_indice": false
     },
     "adhesion_reformas_provincial": {
       "valor": 66.7,
@@ -277,7 +266,7 @@
       "dimension": "poder_legislativo",
       "puntaje_itcp": 53.6,
       "puntaje_banda": 53.6,
-      "peso_efectivo": 0.06
+      "peso_efectivo": 0.075
     },
     "rotacion_gabinete": {
       "valor": 7,
