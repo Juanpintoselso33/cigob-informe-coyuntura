@@ -84,17 +84,16 @@ BANDAS_ITCP = {
         (15.0, INF, 100), (5.0, 15.0, 85), (-5.0, 5.0, 65), (-15.0, -5.0, 40), (-INF, -15.0, 10),
     ],
     "ratio_dnu": [
-        # RECALIBRADO 2026-07-15 (ADR-0058) al pasar de acumulado YTD (resetaba
-        # cada 1-ene, un punto por año) a ventana móvil de 365 días (un punto
-        # por mes). Las anclas viejas (0.3/0.7/1.2/2.0) se calibraron contra el
-        # ratio del AÑO CORRIENTE, que arranca bajo en enero (pocas leyes en
-        # el denominador) — la ventana móvil nunca baja de eso: 32 puntos
-        # reales dic-2023→jul-2026 van de 1,176 a 5,545 (mediana 1,89). Con las
-        # anclas viejas, 31/32 meses caían en las dos bandas del piso (40/10) y
-        # ninguno alcanzaba nunca 85 o 100 — la misma saturación en espejo que
-        # comisiones_caidas (ADR-0045). Anclas nuevas 1,5/2,0/3,0/4,5, menor =
-        # mejor, población real 7/10/5/4/6 por banda (todas pobladas).
-        (-INF, 1.5, 100), (1.5, 2.0, 85), (2.0, 3.0, 65), (3.0, 4.5, 40), (4.5, INF, 10),
+        # ADR-0058 cambió la ventana (año calendario → móvil de 365 días) SIN
+        # tocar estas anclas (ADR-0059 revirtió una recalibración de un día:
+        # ver ese ADR — a diferencia de comisiones_caidas/ADR-0045, acá el
+        # rango elevado observado bajo este gobierno es señal real, no un
+        # artefacto estructural de la ventana, y las anclas 0.3/0.7/1.2/2.0
+        # están ancladas a un benchmark histórico externo real, no a un doc
+        # sin fundamento: ACIJ (2011-2024, CFK+Macri+AF+primer año Milei)
+        # midió 344 DNU / 1.058 leyes ≈ 0,33 — "cada 3 leyes, 1 DNU" — casi
+        # exactamente el corte de 0,3 para el puntaje máximo).
+        (-INF, 0.3, 100), (0.3, 0.7, 85), (0.7, 1.2, 65), (1.2, 2.0, 40), (2.0, INF, 10),
     ],
     "eficacia_legislativa": [
         # RECALIBRADO 2026-07-11 (ADR-0050) con los 32 puntos mensuales
