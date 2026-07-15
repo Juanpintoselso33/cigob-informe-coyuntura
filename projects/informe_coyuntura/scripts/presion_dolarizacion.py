@@ -9,6 +9,9 @@ import requests
 ARGENTINA_DATOS_CCL_URL = (
     "https://api.argentinadatos.com/v1/cotizaciones/dolares/contadoconliqui"
 )
+ARGENTINA_DATOS_CRIPTO_URL = (
+    "https://api.argentinadatos.com/v1/cotizaciones/dolares/cripto"
+)
 BCRA_MONETARIAS_URL = "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias"
 BCRA_TC_A3500_ID = 5
 BCRA_M2_PRIV_ID = 197
@@ -37,6 +40,23 @@ ANCLAS_FLUJO = (
     (10.0, 75.0),
     (15.0, 100.0),
 )
+# Brecha dólar cripto/A3500 → presión informal (ADR-0057). Reutiliza la misma
+# forma de ANCLAS_FLUJO (no es coincidencia: el rango observado post-cepo,
+# may-2025 en adelante, es 1,5%-19,5%, el mismo orden de magnitud) en vez de
+# inventar una calibración nueva sin datos que la respalden.
+ANCLAS_INFORMAL = (
+    (0.0, 0.0),
+    (3.0, 25.0),
+    (6.0, 50.0),
+    (10.0, 75.0),
+    (15.0, 100.0),
+)
+# Peso del canal formal (compras MULC/M2) vs. el informal (brecha cripto) al
+# combinar ambas señales en el régimen abierto (ADR-0057). El canal formal
+# sigue pesando más porque es flujo efectivamente transaccionado, no un proxy
+# de precio.
+PESO_PRESION_FORMAL = 0.7
+PESO_PRESION_INFORMAL = 0.3
 ANCLAS_PUNTAJE = (
     (0.0, 100.0),
     (25.0, 85.0),
@@ -73,6 +93,10 @@ def _fila(
     metrica: float,
     presion: float,
     ventana_meses: int,
+    *,
+    presion_formal: float | None = None,
+    presion_informal: float | None = None,
+    brecha_informal: float | None = None,
 ) -> dict:
     return {
         "mes": mes,
@@ -82,6 +106,12 @@ def _fila(
         "puntaje_itcm": round(interpolar(presion, ANCLAS_PUNTAJE), 2),
         "ventana_meses": ventana_meses,
         "ventana_parcial": regimen == "flujo" and ventana_meses < 3,
+        # Composición formal/informal (ADR-0057): solo poblada en el régimen
+        # abierto y cuando hay dato de dólar cripto para toda la ventana; si
+        # falta, la presión se degrada a 100% formal y estos campos quedan None.
+        "presion_formal": round(presion_formal, 2) if presion_formal is not None else None,
+        "presion_informal": round(presion_informal, 2) if presion_informal is not None else None,
+        "brecha_informal": round(brecha_informal, 2) if brecha_informal is not None else None,
     }
 
 
@@ -90,9 +120,11 @@ def construir_serie(
     demanda_neta_usd: dict[str, float],
     m2_privado_ars: dict[str, float],
     tc_a3500: dict[str, float],
+    cripto_mensual: dict[str, float] | None = None,
     desde: str = "2023-12",
 ) -> list[dict]:
     """Construye la presión mensual con el observable válido en cada régimen."""
+    cripto_mensual = cripto_mensual or {}
     meses = sorted(
         set(brecha_ccl)
         | set(demanda_neta_usd)
@@ -130,8 +162,32 @@ def construir_serie(
         if denominador <= 0:
             continue
         metrica = 100.0 * sum(demanda_neta_usd[m] for m in ventana) / denominador
-        presion = interpolar(metrica, ANCLAS_FLUJO)
-        out.append(_fila(mes, "flujo", metrica, presion, len(ventana)))
+        presion_formal = interpolar(metrica, ANCLAS_FLUJO)
+
+        # Canal informal (ADR-0057): misma ventana que el flujo formal, para no
+        # introducir una segunda convención de suavizado. Complementario, no
+        # obligatorio — si falta cripto para algún mes de la ventana, la
+        # presión se degrada a 100% formal en vez de omitir el mes entero.
+        if all(m in cripto_mensual for m in ventana):
+            cripto_prom = sum(cripto_mensual[m] for m in ventana) / len(ventana)
+            a3500_prom = sum(tc_a3500[m] for m in ventana) / len(ventana)
+            brecha_informal = 100.0 * (cripto_prom / a3500_prom - 1.0)
+            presion_informal = interpolar(brecha_informal, ANCLAS_INFORMAL)
+            presion = (
+                PESO_PRESION_FORMAL * presion_formal
+                + PESO_PRESION_INFORMAL * presion_informal
+            )
+        else:
+            brecha_informal = None
+            presion_informal = None
+            presion = presion_formal
+
+        out.append(_fila(
+            mes, "flujo", metrica, presion, len(ventana),
+            presion_formal=presion_formal,
+            presion_informal=presion_informal,
+            brecha_informal=brecha_informal,
+        ))
     return out
 
 
@@ -257,6 +313,24 @@ def fetch_brecha_ccl_mensual(
     return brechas
 
 
+def fetch_cripto_mensual(desde: str = "2023-10") -> dict[str, float]:
+    """Promedio mensual del dólar cripto (ArgentinaDatos), proxy del canal
+    INFORMAL de dolarización (ADR-0057): a diferencia del CCL, no pasa por el
+    circuito bancario ni queda declarado ante el BCRA. Fuente complementaria:
+    quien la llama decide si un fallo acá tumba todo el indicador o solo
+    degrada la presión a 100% formal (ver obtener_serie)."""
+    respuesta = requests.get(
+        ARGENTINA_DATOS_CRIPTO_URL,
+        headers=HTTP_HEADERS,
+        timeout=HTTP_TIMEOUT,
+    )
+    respuesta.raise_for_status()
+    cripto = _promedios_mensuales(respuesta.json(), "venta", desde)
+    if not cripto:
+        raise ValueError("ArgentinaDatos: sin datos mensuales de dólar cripto")
+    return cripto
+
+
 def fetch_demanda_neta_personas_humanas() -> dict[str, float]:
     """Descarga el anexo acumulativo del BCRA y devuelve compras netas mensuales."""
     respuesta = requests.get(
@@ -273,6 +347,7 @@ def obtener_serie(
     *,
     fetch_brecha=fetch_brecha_ccl_mensual,
     fetch_demanda=fetch_demanda_neta_personas_humanas,
+    fetch_cripto=fetch_cripto_mensual,
     fetch_bcra_fin_mes=None,
 ) -> list[dict]:
     """Obtiene todos los insumos y construye la serie única para card y backfill."""
@@ -291,11 +366,19 @@ def obtener_serie(
     ):
         if not valores:
             raise ValueError(f"sin datos para {nombre}")
+    # Canal informal (ADR-0057): complementario, no obligatorio. Un fallo acá
+    # no debe tumbar el indicador entero (que descansa en las 4 fuentes de
+    # arriba) — construir_serie ya sabe degradarse a 100% formal si falta.
+    try:
+        cripto_mensual = fetch_cripto(desde="2023-10")
+    except Exception:
+        cripto_mensual = {}
     serie = construir_serie(
         brecha_ccl=brecha_ccl,
         demanda_neta_usd=demanda_neta_usd,
         m2_privado_ars=m2_privado_ars,
         tc_a3500=tc_a3500,
+        cripto_mensual=cripto_mensual,
     )
     if not serie:
         raise ValueError("sin meses con insumos completos")

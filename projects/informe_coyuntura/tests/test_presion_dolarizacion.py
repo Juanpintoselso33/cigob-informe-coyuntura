@@ -55,6 +55,9 @@ def test_regimen_restringido_usa_brecha_ccl_contigua_de_tres_meses():
             "puntaje_itcm": 35.0,
             "ventana_meses": 3,
             "ventana_parcial": False,
+            "presion_formal": None,
+            "presion_informal": None,
+            "brecha_informal": None,
         }
     ]
 
@@ -89,6 +92,9 @@ def test_regimen_abierto_suma_flujo_y_m2_antes_de_dividir():
             "puntaje_itcm": 68.33,
             "ventana_meses": 1,
             "ventana_parcial": True,
+            "presion_formal": 41.67,
+            "presion_informal": None,
+            "brecha_informal": None,
         },
         {
             "mes": "2025-05",
@@ -98,6 +104,9 @@ def test_regimen_abierto_suma_flujo_y_m2_antes_de_dividir():
             "puntaje_itcm": 60.0,
             "ventana_meses": 2,
             "ventana_parcial": True,
+            "presion_formal": 50.0,
+            "presion_informal": None,
+            "brecha_informal": None,
         },
         {
             "mes": "2025-06",
@@ -107,8 +116,81 @@ def test_regimen_abierto_suma_flujo_y_m2_antes_de_dividir():
             "puntaje_itcm": 47.5,
             "ventana_meses": 3,
             "ventana_parcial": False,
+            "presion_formal": 62.5,
+            "presion_informal": None,
+            "brecha_informal": None,
         },
     ]
+
+
+def test_regimen_abierto_combina_formal_e_informal_70_30():
+    """Con dólar cripto disponible, la presión del régimen abierto es el
+    promedio ponderado 70/30 (formal/informal) sobre la MISMA ventana que ya
+    usa el flujo formal (ADR-0057), no un promedio de brechas diarias aparte."""
+    meses = ("2025-04", "2025-05", "2025-06")
+    m2, tc = _m2_y_tc(*meses)
+    # brecha cripto/A3500 (tc=1000): 3%, 4%, 6% por mes
+    cripto = {"2025-04": 1030.0, "2025-05": 1040.0, "2025-06": 1060.0}
+
+    serie = pdol.construir_serie(
+        brecha_ccl={},
+        demanda_neta_usd={"2025-04": 5.0, "2025-05": 7.0, "2025-06": 12.0},
+        m2_privado_ars=m2,
+        tc_a3500=tc,
+        cripto_mensual=cripto,
+        desde="2025-04",
+    )
+
+    assert serie == [
+        {
+            "mes": "2025-04", "regimen": "flujo", "metrica": 5.0,
+            "presion": 36.67, "puntaje_itcm": 73.33,
+            "ventana_meses": 1, "ventana_parcial": True,
+            "presion_formal": 41.67, "presion_informal": 25.0,
+            "brecha_informal": 3.0,
+        },
+        {
+            "mes": "2025-05", "regimen": "flujo", "metrica": 6.0,
+            "presion": 43.75, "puntaje_itcm": 66.25,
+            "ventana_meses": 2, "ventana_parcial": True,
+            "presion_formal": 50.0, "presion_informal": 29.17,
+            "brecha_informal": 3.5,
+        },
+        {
+            "mes": "2025-06", "regimen": "flujo", "metrica": 8.0,
+            "presion": 54.58, "puntaje_itcm": 55.42,
+            "ventana_meses": 3, "ventana_parcial": False,
+            "presion_formal": 62.5, "presion_informal": 36.11,
+            "brecha_informal": 4.33,
+        },
+    ]
+
+
+def test_regimen_abierto_sin_cripto_para_toda_la_ventana_se_degrada_a_formal():
+    """Si falta cripto para AL MENOS un mes de la ventana, no se mezcla nada
+    a medias: la presión de ese mes queda 100% formal (sin inventar el dato
+    faltante ni omitir el mes)."""
+    meses = ("2025-04", "2025-05", "2025-06")
+    m2, tc = _m2_y_tc(*meses)
+    cripto_incompleto = {"2025-05": 1040.0, "2025-06": 1060.0}  # falta 2025-04
+
+    serie = pdol.construir_serie(
+        brecha_ccl={},
+        demanda_neta_usd={"2025-04": 5.0, "2025-05": 7.0, "2025-06": 12.0},
+        m2_privado_ars=m2,
+        tc_a3500=tc,
+        cripto_mensual=cripto_incompleto,
+        desde="2025-04",
+    )
+    por_mes = {fila["mes"]: fila for fila in serie}
+
+    # 2025-04: ventana = [2025-04] sola, falta cripto ahí → degrada a formal
+    assert por_mes["2025-04"]["presion"] == 41.67
+    assert por_mes["2025-04"]["presion_informal"] is None
+    # 2025-06: ventana = [04,05,06], falta 04 en cripto → degrada a formal
+    # también, aunque 05 y 06 sí tengan dato
+    assert por_mes["2025-06"]["presion"] == 62.5
+    assert por_mes["2025-06"]["presion_informal"] is None
 
 
 def test_regimen_abierto_no_une_meses_no_contiguos():
@@ -258,6 +340,36 @@ def test_fetch_brecha_ccl_promedia_cada_serie_por_mes(monkeypatch):
     assert llamadas[1][0].endswith("/5")
 
 
+def test_fetch_cripto_promedia_por_mes(monkeypatch):
+    respuesta = _Respuesta(json_data=[
+        {"fecha": "2024-01-02", "venta": 120.0},
+        {"fecha": "2024-01-31", "venta": 130.0},
+        {"fecha": "2024-02-01", "venta": 150.0},
+        {"fecha": "2024-02-29", "venta": 170.0},
+    ])
+    llamadas = []
+
+    def get(url, **kwargs):
+        llamadas.append(url)
+        return respuesta
+
+    monkeypatch.setattr(pdol.requests, "get", get)
+
+    assert pdol.fetch_cripto_mensual(desde="2024-01") == {
+        "2024-01": 125.0,
+        "2024-02": 160.0,
+    }
+    assert llamadas[0].endswith("/cripto")
+
+
+def test_fetch_cripto_falla_si_viene_vacio(monkeypatch):
+    monkeypatch.setattr(
+        pdol.requests, "get", lambda *_a, **_k: _Respuesta(json_data=[]),
+    )
+    with pytest.raises(ValueError, match="dólar cripto"):
+        pdol.fetch_cripto_mensual(desde="2023-10")
+
+
 def test_fetch_brecha_falla_si_una_fuente_viene_vacia(monkeypatch):
     respuestas = iter([
         _Respuesta(json_data=[]),
@@ -317,6 +429,7 @@ def test_obtener_serie_comparte_fuentes_y_recorta_el_historial():
             "2025-05": 7.0,
             "2025-06": 12.0,
         },
+        fetch_cripto=lambda desde: {},
         fetch_bcra_fin_mes=fetch_bcra_fin_mes,
     )
 
@@ -326,6 +439,32 @@ def test_obtener_serie_comparte_fuentes_y_recorta_el_historial():
         (pdol.BCRA_M2_PRIV_ID, 6),
         (pdol.BCRA_TC_A3500_ID, 6),
     ]
+
+
+def test_obtener_serie_no_tumba_si_falla_solo_el_canal_informal():
+    """El dólar cripto es complementario (ADR-0057): si su fetch explota, el
+    indicador se sigue calculando con la presión 100% formal, no se pierde."""
+    def fetch_bcra_fin_mes(var_id, _meses):
+        if var_id == pdol.BCRA_M2_PRIV_ID:
+            return {"2025-04": 100_000.0, "2025-05": 100_000.0, "2025-06": 100_000.0}
+        return {"2025-04": 1_000.0, "2025-05": 1_000.0, "2025-06": 1_000.0}
+
+    def fetch_cripto_roto(desde):
+        raise RuntimeError("ArgentinaDatos caído")
+
+    serie = pdol.obtener_serie(
+        meses_hist=2,
+        fetch_brecha=lambda desde: {
+            "2023-10": 40.0, "2023-11": 50.0, "2023-12": 60.0,
+        },
+        fetch_demanda=lambda: {"2025-04": 5.0, "2025-05": 7.0, "2025-06": 12.0},
+        fetch_cripto=fetch_cripto_roto,
+        fetch_bcra_fin_mes=fetch_bcra_fin_mes,
+    )
+
+    assert [fila["mes"] for fila in serie] == ["2025-05", "2025-06"]
+    assert serie[-1]["presion"] == 62.5
+    assert serie[-1]["presion_informal"] is None
 
 
 def test_obtener_serie_falla_si_falta_una_familia_de_fuentes():

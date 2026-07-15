@@ -69,6 +69,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0054](0054-dolarizacion-depositos-itcm.md) | `dolarizacion_depositos`: brecha entre depósitos privados en USD y depósitos reales en pesos; formulación de stocks interanuales afectada por CERA y el cambio de régimen | Superado por 0055 |
 | [0055](0055-presion-dolarizacion-carteras-itcm.md) | `presion_dolarizacion`: presión latente de salida del peso con observable por régimen — brecha CCL/A3500 restringida y compras netas de personas sobre M2 en el régimen abierto; escala común y 2,6% nominal del ITCM | Aceptado |
 | [0056](0056-suavizado-ajuste-automatico-saldo-comercial.md) | `saldo_comercial_12m`: el ajuste automático por composición expo/impo (Subcomponente D) deja de forzar 60 puntos binario y pasa a interpolar entre el puntaje de banda y el piso de 60 según share_impo = mejora_impo/(mejora_expo+mejora_impo) — mismo piso, sin acantilado | Aceptado |
+| [0057](0057-canal-informal-cripto-presion-dolarizacion.md) | `presion_dolarizacion`: el régimen abierto (desde abr-2025) suma un canal informal (brecha dólar cripto/A3500, ArgentinaDatos) al 100% formal (MULC/M2) anterior — combinación 70/30, degrada a 100% formal si falta el dato; no supersede ADR-0055 | Aceptado |
 
 ## Contexto general
 

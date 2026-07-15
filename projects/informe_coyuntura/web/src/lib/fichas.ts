@@ -598,16 +598,18 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "macro",
     rezago: "Se publica para el último mes con todos los insumos del régimen correspondiente. Bajo apertura, el cierre queda condicionado por la planilla mensual del mercado de cambios.",
     fuente: {
-      organismo: "ArgentinaDatos (dólar CCL) + BCRA",
-      operacion: "Cotización CCL, tipo de cambio mayorista, M2 transaccional privado y compras netas de divisas de personas humanas sin fines específicos",
+      organismo: "ArgentinaDatos (dólar CCL y dólar cripto) + BCRA",
+      operacion: "Cotización CCL, dólar cripto, tipo de cambio mayorista, M2 transaccional privado y compras netas de divisas de personas humanas sin fines específicos",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/mercado_de_cambios.asp",
       acceso: "Automático: API diaria de ArgentinaDatos, API monetaria del BCRA y planilla acumulativa del mercado de cambios.",
     },
     transformaciones: [
       "Régimen restringido, hasta marzo de 2025: se calcula la brecha porcentual entre el CCL y el tipo de cambio mayorista y se promedia sobre tres meses estrictamente consecutivos.",
       "La brecha se convierte a presión 0–100 con estas anclas: 5% → 0; 15% → 25; 30% → 50; 50% → 75; 70% → 100.",
-      "Régimen abierto, desde abril de 2025: se suman las compras netas de USD de personas humanas y se dividen por el M2 privado de los mismos meses, convertido a USD al tipo de cambio mayorista.",
+      "Régimen abierto, desde abril de 2025: se suman las compras netas de USD de personas humanas (canal formal, bancarizado) y se dividen por el M2 privado de los mismos meses, convertido a USD al tipo de cambio mayorista.",
       "El flujo relativo se convierte a presión 0–100 con estas anclas: 0% → 0; 3% → 25; 6% → 50; 10% → 75; 15% → 100.",
+      "Sobre la misma ventana, se calcula además la brecha entre el dólar cripto y el mayorista — un canal que no pasa por el circuito bancario — y se traduce a presión con las mismas anclas del flujo formal.",
+      "La presión del régimen abierto combina ambos canales: 70% la señal formal (flujo bancarizado) y 30% la informal (brecha cripto). Si falta el dato del dólar cripto para algún mes de la ventana, la presión queda 100% formal para ese mes, sin inventar el faltante.",
       "La transición usa una ventana de 1 mes en abril de 2025, 2 meses en mayo y 3 meses estrictamente consecutivos desde junio de 2025. No se unen meses salteados ni se imputan faltantes como cero.",
       "La presión común se traduce al ITCM con anclas explícitas: 0 → 100; 25 → 85; 50 → 60; 75 → 35; 100 → 10. Mayor presión reduce el puntaje.",
       "Pesa 10% dentro de estabilidad monetaria, dimensión que representa 26% del ITCM: su peso nominal efectivo es 2,6% del índice.",
@@ -627,7 +629,8 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "La serie cambia de observable en abril de 2025 porque la presión se manifiesta de modo distinto bajo restricciones y bajo acceso abierto al mercado. Los niveles son comparables por la escala común, pero no por la métrica bruta.",
       "La brecha CCL es un proxy de presión mientras existen restricciones y se superpone parcialmente con la señal histórica del cepo cambiario.",
-      "Las compras registradas por personas humanas no captan toda la cobertura privada ni las operaciones realizadas fuera del mercado oficial.",
+      "Las compras registradas por personas humanas no captan toda la cobertura privada; el complemento con dólar cripto amplía la mirada a un canal no bancarizado, pero sigue sin captar efectivo fuera del sistema, atesoramiento físico ni dolarización corporativa no declarada.",
+      "El dólar cripto no tiene un organismo oficial que lo regule ni publique: el precio puede diferir entre plataformas. Se usa como proxy razonable, reproducible y de la misma fuente pública que ya provee el CCL, no como una cotización oficial.",
       "El indicador anterior basado en stocks de depósitos fue sustituido porque el blanqueo mediante Cuentas Especiales de Regularización de Activos (CERA) alteró contemporáneamente la serie y luego produjo efectos de base que podían invertir su lectura.",
       "La historia bajo régimen abierto todavía es corta; las anclas deberán revisarse cuando exista más evidencia posterior al cambio regulatorio.",
     ],
@@ -636,6 +639,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-13", cambio: "Se incorporó una primera señal basada en stocks de depósitos como cuarto componente de estabilidad monetaria." },
       { fecha: "2026-07-14", cambio: "La señal de stocks fue sustituida por presión de dolarización de carteras sensible al régimen, para evitar las distorsiones contemporáneas y de base del CERA." },
+      { fecha: "2026-07-15", cambio: "El régimen abierto sumó un canal informal (brecha del dólar cripto contra el mayorista), combinado 70/30 con el canal formal — hasta ahora la presión del régimen abierto dependía solo de compras bancarizadas." },
     ],
   },
 

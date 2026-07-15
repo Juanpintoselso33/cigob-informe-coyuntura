@@ -835,8 +835,8 @@ def fetch_presion_dolarizacion() -> dict | None:
             "valor": fila["presion"],
             "unidad": "pts (0-100)",
             "fuente": (
-                "ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y "
-                "Mercado de Cambios)"
+                "ArgentinaDatos (CCL + dólar cripto) + BCRA (A3500, M2 "
+                "privado y Mercado de Cambios)"
             ),
             "fecha_dato": f'{fila["mes"]}-01',
             "desactualizado": False,
@@ -845,6 +845,11 @@ def fetch_presion_dolarizacion() -> dict | None:
             "ventana_meses": fila["ventana_meses"],
             "ventana_parcial": fila["ventana_parcial"],
             "puntaje_itcm": fila["puntaje_itcm"],
+            # Composición formal/informal (ADR-0057): None si el régimen es
+            # "precio" o si faltó el dólar cripto para la ventana del mes.
+            "presion_formal": fila.get("presion_formal"),
+            "presion_informal": fila.get("presion_informal"),
+            "brecha_informal": fila.get("brecha_informal"),
         }
     except Exception as e:
         _warn("presion_dolarizacion", e)
