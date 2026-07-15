@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-15 14:34:55"
-score_global: 2.7
+generado: "2026-07-15 15:02:16"
+score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 2.7/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 2.6/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
@@ -36,7 +36,7 @@ schema_version: "1.2.0"
 | base_monetaria | 9.12 | % mensual nominal | 2026-07-08 | fresco |
 | tc_mayorista | 2.94 | % mensual | 2026-07-14 | fresco |
 
-### 🟡 Politica — score 3.2/10 (en_tension)
+### 🟢 Politica — score 2.8/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -46,7 +46,7 @@ schema_version: "1.2.0"
 | conflictividad_nacional | -23.2 | % vs 2023 | 2026-06-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | fresco |
 | iaf_transferencias | 7.0 | % interanual real | 2026-07-15 | fresco |
-| eficacia_legislativa | 0.0 | % de proyectos | 2026-07-15 | fresco |
+| eficacia_legislativa | 18.8 | % de proyectos | 2026-07-15 | fresco |
 | veto_quorum | 0.0 | % de sesiones | 2026-07-15 | fresco |
 | comisiones_caidas | 97.7 | % de proyectos | 2026-07-15 | fresco |
 | adhesion_reformas_provincial | 66.7 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-07-15 | fresco |
@@ -99,4 +99,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-15 14:34:55 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-15 15:02:16 — schema 1.2.0*

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-15T14:34:55.660089",
+  "generated_at": "2026-07-15T15:02:16.904777",
   "period": "2026-07",
   "score_global": 3.5,
   "ponderacion": {
@@ -680,8 +680,8 @@
       "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."
     },
     "politica": {
-      "score": 3.2,
-      "estado": "en_tension",
+      "score": 2.8,
+      "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "votometro_ventaja_lla": {
@@ -767,25 +767,25 @@
           "aporte_input_txt": null
         },
         "eficacia_legislativa": {
-          "valor": 0.0,
-          "aprobados_n": 0,
-          "enviados_n": 20,
+          "valor": 18.8,
+          "aprobados_n": 3,
+          "enviados_n": 16,
           "cohorte_desde": "2024-07-15",
           "cohorte_hasta": "2025-07-15",
           "dias_madurado_min": 365,
           "unidad": "% de proyectos",
-          "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
+          "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
           "fecha_dato": "2026-07-15",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
-          "puntaje_itcp": 10.0,
-          "puntaje_banda": 10.0,
+          "puntaje_itcp": 57.6,
+          "puntaje_banda": 57.6,
           "peso_efectivo": 0.075,
-          "aporte_score": 9.0,
-          "aporte_formula": "Anclas ITCP: >50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤5 → 10 (puntaje interpolado entre anclas: 10.0; pesa 7,5% del ITCP)",
+          "aporte_score": 4.2,
+          "aporte_formula": "Anclas ITCP: >50 → 100 · 30–50 → 85 · 15–30 → 65 · 5–15 → 40 · ≤5 → 10 (puntaje interpolado entre anclas: 57.6; pesa 7,5% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 9,0/10: puntaje mínimo — este frente concentra la tensión del cinturón.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 4,2/10.",
           "aporte_input_txt": null
         },
         "veto_quorum": {
@@ -925,14 +925,14 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 68.2,
+        "valor": 71.8,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
             "peso": 0.3,
-            "puntaje": 42.2,
+            "puntaje": 54.1,
             "indicadores": {
               "ratio_dnu": {
                 "peso": 0.2,
@@ -943,9 +943,9 @@
               },
               "eficacia_legislativa": {
                 "peso": 0.25,
-                "puntaje_banda": 10.0,
-                "puntaje_aplicado": 10.0,
-                "valor": 0.0,
+                "puntaje_banda": 57.6,
+                "puntaje_aplicado": 57.6,
+                "valor": 18.8,
                 "peso_efectivo": 0.075
               },
               "veto_quorum": {
@@ -1054,212 +1054,212 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 65.3,
-          "p95": 71.2,
+          "p05": 69.2,
+          "p95": 74.4,
           "tension_rango": [
-            2.9,
-            3.5
+            2.6,
+            3.1
           ],
           "dominante": {
             "indicador": "cohesion_bloque",
-            "indice_sin": 62.0
+            "indice_sin": 66.4
           },
           "n_draws": 1000,
           "hist": [
-            1,
-            1,
-            3,
-            4,
+            2,
+            0,
+            0,
+            2,
+            8,
+            8,
             11,
             17,
-            12,
-            16,
-            16,
+            22,
+            17,
             29,
+            35,
+            50,
             37,
-            19,
-            36,
-            64,
-            54,
-            47,
-            69,
-            59,
-            54,
+            56,
             49,
-            64,
-            55,
+            56,
+            72,
+            56,
+            63,
+            43,
+            57,
+            60,
             42,
-            44,
-            47,
+            41,
+            31,
             32,
-            18,
-            30,
-            20,
-            19,
-            11,
-            8,
+            33,
+            23,
+            21,
+            7,
+            7,
+            3,
+            3,
             4,
-            4,
-            2,
-            2
+            3
           ],
-          "hist_min": 63.31,
-          "hist_max": 73.12,
+          "hist_min": 67.21,
+          "hist_max": 76.15,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": -0.58,
-          "r_diferencias": -0.374,
+          "r_niveles": -0.549,
+          "r_diferencias": -0.383,
           "n": 30,
           "pares": [
             [
               "2024-01",
-              63.5,
+              68.0,
               85.2
             ],
             [
               "2024-02",
-              69.6,
+              73.3,
               84.7
             ],
             [
               "2024-03",
-              68.0,
+              72.2,
               78.5
             ],
             [
               "2024-04",
-              67.5,
+              71.1,
               90.7
             ],
             [
               "2024-05",
-              64.1,
+              68.9,
               72.7
             ],
             [
               "2024-06",
-              54.1,
+              58.9,
               109.4
             ],
             [
               "2024-07",
-              51.0,
+              55.5,
               97.5
             ],
             [
               "2024-08",
-              53.7,
+              57.6,
               77.7
             ],
             [
               "2024-09",
-              54.5,
+              56.1,
               73.0
             ],
             [
               "2024-10",
-              55.6,
+              58.4,
               85.0
             ],
             [
               "2024-11",
-              46.9,
+              49.7,
               82.5
             ],
             [
               "2024-12",
-              62.0,
+              64.7,
               85.5
             ],
             [
               "2025-01",
-              67.5,
+              69.5,
               78.6
             ],
             [
               "2025-02",
-              66.0,
+              68.5,
               81.1
             ],
             [
               "2025-03",
-              64.9,
+              66.7,
               92.7
             ],
             [
               "2025-04",
-              61.3,
+              64.0,
               113.7
             ],
             [
               "2025-05",
-              71.5,
+              76.0,
               79.2
             ],
             [
               "2025-06",
-              68.5,
+              72.9,
               91.8
             ],
             [
               "2025-07",
-              61.3,
+              66.2,
               101.9
             ],
             [
               "2025-08",
-              41.8,
+              46.6,
               101.2
             ],
             [
               "2025-09",
-              39.9,
+              43.9,
               182.8
             ],
             [
               "2025-10",
-              43.8,
+              48.1,
               145.8
             ],
             [
               "2025-11",
-              56.7,
+              60.8,
               116.4
             ],
             [
               "2025-12",
-              63.1,
+              68.3,
               118.5
             ],
             [
               "2026-01",
-              68.0,
+              72.5,
               76.8
             ],
             [
               "2026-02",
-              63.7,
+              69.2,
               84.2
             ],
             [
               "2026-03",
-              66.1,
+              71.8,
               89.0
             ],
             [
               "2026-04",
-              59.3,
+              63.7,
               95.5
             ],
             [
               "2026-05",
-              65.8,
+              69.7,
               95.2
             ],
             [
               "2026-06",
-              66.0,
+              71.0,
               105.3
             ]
           ],
@@ -1269,7 +1269,7 @@
           "serie_label": "ITCP (reconstrucción mensual)",
           "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
           "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
-          "conclusion": "Correlación -0,58 en niveles y -0,374 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
+          "conclusion": "Correlación -0,549 en niveles y -0,383 en los cambios mes a mes: el signo negativo es el esperado, aunque más moderado que en macro o gestión — coherente con un índice cuyos componentes de alianzas territoriales y cohesión interna del oficialismo recién empiezan a tener historia propia."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
@@ -2370,8 +2370,8 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)"
         },
         "validacion": {
-          "r_niveles": 0.767,
-          "r_diferencias": 0.377,
+          "r_niveles": 0.768,
+          "r_diferencias": 0.378,
           "n": 32,
           "pares": [
             [
@@ -2532,7 +2532,7 @@
             [
               "2026-07",
               73.8,
-              2076.2
+              2090.6
             ]
           ],
           "plot": "minmax",
@@ -2541,7 +2541,7 @@
           "serie_label": "ITCG (reconstrucción mensual)",
           "externa_label": "Merval en dólares",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,767 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
+          "conclusion": "Correlación 0,768 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,631) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
         }
       },
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
@@ -2681,17 +2681,17 @@
         "merval": {
           "r": 0.18,
           "n": 30,
-          "rd": 0.37
+          "rd": 0.38
         },
         "icc": {
-          "r": 0.24,
+          "r": 0.23,
           "n": 29,
-          "rd": 0.34
+          "rd": 0.35
         },
         "epu": {
-          "r": -0.58,
+          "r": -0.55,
           "n": 30,
-          "rd": -0.37
+          "rd": -0.38
         }
       }
     ],
@@ -2715,6 +2715,6 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,73 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,46 con la confianza del consumidor, ITCP -0,58 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde."
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,73 con el riesgo país, ITCG +0,77 con el Merval en dólares, ITVC +0,46 con la confianza del consumidor, ITCP -0,55 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,88 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde."
   }
 }

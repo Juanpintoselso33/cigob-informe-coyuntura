@@ -109,38 +109,38 @@ fecha,indicador,valor,unidad,fuente
 2019-12-01,iaf_transferencias,-6.9,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2018-12-01,iaf_transferencias,-10.6,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2017-12-01,iaf_transferencias,4.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2026-07-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-06-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-05-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-04-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-03-01,eficacia_legislativa,3.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-02-01,eficacia_legislativa,3.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-01-01,eficacia_legislativa,4.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-12-01,eficacia_legislativa,4.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-11-01,eficacia_legislativa,7.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-10-01,eficacia_legislativa,7.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-09-01,eficacia_legislativa,8.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-08-01,eficacia_legislativa,6.5,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-07-01,eficacia_legislativa,6.9,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-06-01,eficacia_legislativa,7.4,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-05-01,eficacia_legislativa,6.9,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-04-01,eficacia_legislativa,8.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-03-01,eficacia_legislativa,6.9,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-02-01,eficacia_legislativa,6.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-01-01,eficacia_legislativa,6.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-12-01,eficacia_legislativa,6.5,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-11-01,eficacia_legislativa,3.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-10-01,eficacia_legislativa,3.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-09-01,eficacia_legislativa,0.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-08-01,eficacia_legislativa,4.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-07-01,eficacia_legislativa,4.5,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-06-01,eficacia_legislativa,4.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-05-01,eficacia_legislativa,4.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-04-01,eficacia_legislativa,9.5,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-03-01,eficacia_legislativa,8.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-02-01,eficacia_legislativa,8.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-01-01,eficacia_legislativa,7.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2023-12-01,eficacia_legislativa,14.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-07-01,eficacia_legislativa,18.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-06-01,eficacia_legislativa,23.5,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-05-01,eficacia_legislativa,16.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-04-01,eficacia_legislativa,20.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-03-01,eficacia_legislativa,32.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-02-01,eficacia_legislativa,29.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-01-01,eficacia_legislativa,26.1,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-12-01,eficacia_legislativa,26.1,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-11-01,eficacia_legislativa,29.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-10-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-09-01,eficacia_legislativa,33.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-08-01,eficacia_legislativa,30.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-07-01,eficacia_legislativa,32.1,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-06-01,eficacia_legislativa,30.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-05-01,eficacia_legislativa,28.6,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-04-01,eficacia_legislativa,21.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-03-01,eficacia_legislativa,10.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-02-01,eficacia_legislativa,13.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2025-01-01,eficacia_legislativa,13.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-12-01,eficacia_legislativa,14.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-11-01,eficacia_legislativa,10.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-10-01,eficacia_legislativa,11.1,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-09-01,eficacia_legislativa,8.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-08-01,eficacia_legislativa,16.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-07-01,eficacia_legislativa,21.1,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-06-01,eficacia_legislativa,22.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-05-01,eficacia_legislativa,22.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-04-01,eficacia_legislativa,33.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-03-01,eficacia_legislativa,35.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-02-01,eficacia_legislativa,28.6,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2024-01-01,eficacia_legislativa,27.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2023-12-01,eficacia_legislativa,33.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2026-06-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-05-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-04-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
