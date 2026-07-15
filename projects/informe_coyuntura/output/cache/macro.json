@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-14T15:29:25.519293",
+  "generated_at": "2026-07-15T04:00:00.720861",
   "score": 4.1,
   "itcm": {
     "valor": 59.0,
@@ -208,10 +208,10 @@
       "peso_efectivo": 0.064
     },
     "badlar": {
-      "valor": 20.5,
+      "valor": 20.0,
       "unidad": "% anual",
       "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
-      "fecha_dato": "2026-07-08",
+      "fecha_dato": "2026-07-13",
       "desactualizado": false,
       "en_indice": false
     },
@@ -362,7 +362,7 @@
       "fecha_dato": "2026-05-01",
       "desactualizado": false,
       "nominal_ia": 45.9,
-      "detalle_txt": "nominal 45,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-05) — al 2026-07-07 (provisorio, no puntúa): 8,6% real con deflactor de 2026-05",
+      "detalle_txt": "nominal 45,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-05) — al 2026-07-08 (provisorio, no puntúa): 8,6% real con deflactor de 2026-05",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 56.0,
@@ -370,26 +370,26 @@
       "peso_efectivo": 0.024
     },
     "prestamos_privados": {
-      "valor": 5.46,
+      "valor": 5.14,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — préstamos al sector privado (API monetarias)",
-      "fecha_dato": "2026-07-07",
+      "fecha_dato": "2026-07-08",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 8.8,
+      "valor": 9.12,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — base monetaria (API monetarias)",
-      "fecha_dato": "2026-07-07",
+      "fecha_dato": "2026-07-08",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 3.86,
+      "valor": 2.94,
       "unidad": "% mensual",
       "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "en_indice": false
     }

@@ -243,6 +243,7 @@ fecha,indicador,valor,unidad,fuente
 2022-09-01,mortalidad_pymes,-1.28,% m/m (IPI desest.),INDEC — IPI desestacionalizado
 2022-08-01,mortalidad_pymes,-3.08,% m/m (IPI desest.),INDEC — IPI desestacionalizado
 2022-07-01,mortalidad_pymes,0.07,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2026-05-01,itvc_tarifas,71.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
 2026-04-01,itvc_tarifas,72.8,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
 2026-03-01,itvc_tarifas,73.6,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
 2026-02-01,itvc_tarifas,75.5,índice (100 = 4T-2023),INDEC IPC Regulados + RIPTE (elab. CIGOB)
@@ -701,7 +702,7 @@ fecha,indicador,valor,unidad,fuente
 2021-07-01,icc_utdt,39.2,índice,"UTDT (ICC, serie XLS)"
 2021-06-01,icc_utdt,35.6,índice,"UTDT (ICC, serie XLS)"
 2021-05-01,icc_utdt,35.8,índice,"UTDT (ICC, serie XLS)"
-2026-07-01,endeudamiento_familiar,45.61,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-07-01,endeudamiento_familiar,45.66,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-06-01,endeudamiento_familiar,46.74,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-05-01,endeudamiento_familiar,45.92,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-04-01,endeudamiento_familiar,45.51,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
@@ -881,6 +882,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,consumo_carne,52.9,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2023-11-01,consumo_carne,53.4,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2023-10-01,consumo_carne,53.2,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2026-05-01,brecha_salario_cbt,3.81,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-04-01,brecha_salario_cbt,3.86,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-03-01,brecha_salario_cbt,3.82,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-02-01,brecha_salario_cbt,3.83,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
@@ -939,4 +941,3 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,brecha_salario_cbt,4.13,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2021-08-01,brecha_salario_cbt,4.08,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2021-07-01,brecha_salario_cbt,4.04,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
-2021-06-01,brecha_salario_cbt,3.93,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
