@@ -39,7 +39,7 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 ## 🟡 Media factibilidad — restantes (bajo rinde / scraping)
 | Indicador | Cinturón | Fuente | Por qué quedó |
 |---|---|---|---|
-| `eficacia_legislativa` | Política | CKAN HCDN | Ventana móvil 12m recomputable, pero valor bajo (~4%) y reconstrucción CKAN compleja (gotchas). |
+| `eficacia_legislativa` | Política | CKAN HCDN | **Ya reconstruida** (32 puntos mensuales): cohorte madura 12-24m × leyes-sancionadas (ADR-0061/0062, corrigió el ~4% espurio de la ventana compartida — serie real 8-35%). |
 | `veto_quorum`, `comisiones_caidas` | Política | CKAN HCDN | **Estructuralmente planos** (0% y ~98%): la serie sería una línea casi constante → poco valor. |
 | `movilizacion_cepa` | Política | centrocepa.com.ar | Scraping de informes mensuales históricos; el scraper live además está frágil. |
 | `consumo_carne` | Vida | CICCRA / IPCVA | Scraping de informes mensuales; falta fuente histórica estable. |
@@ -60,7 +60,7 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 ---
 
 ## Estado
-**17 indicadores con serie reconstruida** (🟢 completo + casi todo el 🟡). Lo que queda es
-de bajo rinde: CKAN `veto_quorum`/`comisiones_caidas` son planos, `eficacia_legislativa`
-es complejo y bajo, y `movilizacion_cepa`/`consumo_carne` requieren scraping frágil. Las
-🔴 siguen acumulando hacia adelante; no se pierde dato.
+**18 indicadores con serie reconstruida** (🟢 completo + casi todo el 🟡, incluida
+`eficacia_legislativa` desde 2026-07-15). Lo que queda es de bajo rinde: CKAN
+`veto_quorum`/`comisiones_caidas` son planos, y `movilizacion_cepa`/`consumo_carne`
+requieren scraping frágil. Las 🔴 siguen acumulando hacia adelante; no se pierde dato.
