@@ -474,7 +474,8 @@ def fetch_eficacia_serie() -> list:
     SANCION_DEFINITIVA al CIERRE de ese mes histórico, no hasta hoy, para
     que un punto ya publicado no cambie retroactivamente solo porque el
     proyecto finalmente se sancionó más tarde. [[YYYY-MM-01, %]]."""
-    raw_pe = politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
+    raw_pe = (politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
+              + politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-JGM-"))
     pe = [(r["PROYECTO_ID"], str(r.get("PUBLICACION_FECHA", ""))[:10]) for r in raw_pe
           if r.get("PROYECTO_ID")
           and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()

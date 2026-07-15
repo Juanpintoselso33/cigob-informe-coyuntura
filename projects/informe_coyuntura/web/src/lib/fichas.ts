@@ -923,7 +923,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras).",
     },
     transformaciones: [
-      "Identifica los proyectos de ley enviados por el Poder Ejecutivo por su número de expediente y su tipo de trámite — las comunicaciones administrativas del Ejecutivo (avisos de vetos o resoluciones), que llevan numeración similar pero no son proyectos, quedan fuera del denominador.",
+      "Identifica los proyectos de ley enviados por el Poder Ejecutivo por su número de expediente — tanto los de la Presidencia como los de la Jefatura de Gabinete, la vía por la que entra siempre el Presupuesto anual — y por su tipo de trámite: las comunicaciones administrativas (avisos de vetos, resoluciones, decisiones administrativas), que llevan numeración similar pero no son proyectos, quedan fuera del denominador.",
       "Toma una cohorte MADURA: proyectos enviados entre hace 12 y 24 meses — ya tuvieron al menos un año de margen para tramitarse antes de evaluarlos.",
       "Un proyecto de esa cohorte cuenta como aprobado si figura en el registro oficial de leyes sancionadas, sin importar en qué cámara ocurrió la sanción definitiva ni cuándo.",
       "El indicador es aprobados sobre el total de esa cohorte — ya no exige que envío y sanción caigan en la misma ventana.",
@@ -948,6 +948,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-11", cambio: "Umbrales de puntaje recalibrados contra la serie mensual real del indicador (32 meses): los anteriores describían la tasa de aprobación de un congreso teórico y dejaban el puntaje en el mínimo casi todos los meses, sin discriminar. Se documenta además que, por construcción de la ventana única de 12 meses, el techo alcanzable del porcentaje es más bajo que una tasa de aprobación de manual." },
       { fecha: "2026-07-15", cambio: "Se reemplazó la ventana compartida entre envío y sanción por una cohorte madura (proyectos con 12-24 meses de margen) — elimina el sesgo hacia abajo que la ventana compartida introducía. Los umbrales de puntaje se recalibraron contra series históricas de otras gestiones en vez de contra el rango de esta." },
       { fecha: "2026-07-15", cambio: "Corrección de fuentes tras auditoría registro por registro: la aprobación pasó a verificarse contra el registro oficial de leyes sancionadas (el dataset de movimientos usado antes solo registra la vida del expediente en Diputados, y las sanciones definitivas del Senado quedaban invisibles — tres leyes de la cohorte vigente no se estaban contando), y las comunicaciones administrativas del Ejecutivo dejaron de contar como proyectos enviados." },
+      { fecha: "2026-07-15", cambio: "Se incorporaron los proyectos enviados por la Jefatura de Gabinete — la vía constitucional del Presupuesto anual, que hasta ahora quedaba fuera del conteo en ambas direcciones (ni el Presupuesto 2025 sin aprobar contaba como fracaso, ni el 2026 aprobado contaría como éxito al madurar su camada)." },
     ],
   },
 

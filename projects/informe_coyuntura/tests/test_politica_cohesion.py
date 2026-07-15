@@ -1226,11 +1226,24 @@ def test_fetch_eficacia_legislativa_cruza_leyes_sancionadas(monkeypatch):
     leyes-sancionadas (cubre sanciones del SENADO, invisibles en
     movimientos-de-proyectos), y el denominador solo admite TIPO con
     'PROYECTO DE LEY' — un 'MENSAJE' a secas (comunicación de un veto) no
-    puede sancionarse y no debe contarse como proyecto enviado."""
+    puede sancionarse y no debe contarse como proyecto enviado.
+    ADR-0063: los expedientes -JGM- (Jefatura de Gabinete = el Presupuesto
+    anual) son del Ejecutivo y cuentan en el denominador."""
     publicado = (datetime.now() - timedelta(days=500)).strftime("%Y-%m-%d")
 
     def fake_paginate(rid, q=""):
         if rid == politica.HCDN_PROYECTOS_RID:
+            # el fetch consulta q='-PE-' y q='-JGM-'; devolver por consulta lo
+            # que el CKAN devolvería (los sets del fetch deduplican igual)
+            if q == "-JGM-":
+                return [
+                    # el Presupuesto: proyecto de ley del Ejecutivo vía JGM
+                    {"PROYECTO_ID": "HCDN4", "TIPO": "MENSAJE Y PROYECTO DE LEY",
+                     "EXP_DIPUTADOS": "0012-JGM-2024", "PUBLICACION_FECHA": publicado},
+                    # decisión administrativa JGM: no es proyecto, queda fuera
+                    {"PROYECTO_ID": "HCDN5", "TIPO": "MENSAJE",
+                     "EXP_DIPUTADOS": "0020-JGM-2024", "PUBLICACION_FECHA": publicado},
+                ]
             return [
                 {"PROYECTO_ID": "HCDN1", "TIPO": "MENSAJE Y PROYECTO DE LEY",
                  "EXP_DIPUTADOS": "0001-PE-2025", "PUBLICACION_FECHA": publicado},
@@ -1250,9 +1263,9 @@ def test_fetch_eficacia_legislativa_cruza_leyes_sancionadas(monkeypatch):
     monkeypatch.setattr(politica, "_hcdn_paginate", fake_paginate)
     resultado = politica.fetch_eficacia_legislativa()
 
-    assert resultado["enviados_n"] == 2     # HCDN3 (MENSAJE) fuera del denominador
-    assert resultado["aprobados_n"] == 1    # HCDN1, sancionada en Senado, SÍ cuenta
-    assert resultado["valor"] == 50.0
+    assert resultado["enviados_n"] == 3     # HCDN1, HCDN2 y el Presupuesto (JGM);
+    assert resultado["aprobados_n"] == 1    # los MENSAJE (HCDN3/HCDN5) fuera
+    assert resultado["valor"] == 33.3
     assert "leyes-sancionadas" in resultado["fuente"]
 
 

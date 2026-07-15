@@ -128,7 +128,11 @@ HCDN_MOVIMIENTOS_RID = "6108ea83-3f12-423c-a136-df1ae9cb2972"   # movimientos-de
 HCDN_LEYES_SANC_RID  = "68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98"   # leyes-sancionadas (ADR-0062)
 HCDN_SESIONES_RID    = "4ac70a51-a82d-428b-966a-0a203dd0a7e3"   # sesiones plenarias
 HCDN_DICTAMENES_RID  = "59595a93-5a5e-4ba6-a3db-c1044e2f949e"   # dictámenes de comisión
-_RE_PE_EXP           = re.compile(r"\d+-PE-\d{4}")
+# Expedientes del Poder Ejecutivo: -PE- (Presidencia) y -JGM- (Jefatura de
+# Gabinete — el Presupuesto anual entra SIEMPRE por esta vía, art. 100 inc. 6
+# CN; sin JGM el indicador de eficacia era ciego a la ley más importante del
+# año, ADR-0063).
+_RE_PE_EXP           = re.compile(r"\d+-(?:PE|JGM)-\d{4}")
 
 # HCDN Votaciones — votaciones.hcdn.gob.ar (portal de votaciones nominales)
 HCDN_VOTACIONES_BASE = "https://votaciones.hcdn.gob.ar"
@@ -868,11 +872,13 @@ def fetch_eficacia_legislativa() -> dict | None:
     AL MENOS 365 días de margen antes de evaluarlo. Elimina el sesgo de raíz
     en vez de compensarlo con anclas más generosas.
 
-    Identificación PE: EXP_DIPUTADOS o EXP_SENADO con patrón NNNN-PE-AAAA,
-    y TIPO con "PROYECTO DE LEY" (ADR-0062: los TIPO "MENSAJE" a secas son
-    comunicaciones administrativas — avisos de vetos, resoluciones — que
-    jamás pueden sancionarse y contaminaban el denominador: 4 de 20 en la
-    cohorte de jul-2025).
+    Identificación PE: EXP_DIPUTADOS o EXP_SENADO con patrón NNNN-PE-AAAA o
+    NNNN-JGM-AAAA (ADR-0063: el Presupuesto anual entra siempre por la
+    Jefatura de Gabinete, art. 100 inc. 6 CN — sin la sigla JGM el indicador
+    era ciego a la ley más importante del año), y TIPO con "PROYECTO DE LEY"
+    (ADR-0062: los TIPO "MENSAJE" a secas son comunicaciones administrativas
+    — avisos de vetos, resoluciones, decisiones administrativas de JGM — que
+    jamás pueden sancionarse y contaminaban el denominador).
 
     Aprobación: PROYECTO_ID presente en el dataset oficial leyes-sancionadas
     de HCDN (ADR-0062). El dataset movimientos-de-proyectos que se usaba
@@ -893,7 +899,10 @@ def fetch_eficacia_legislativa() -> dict | None:
         cohorte_hasta = (hoy - timedelta(days=365)).isoformat()[:10]
         cohorte_desde = (hoy - timedelta(days=730)).isoformat()[:10]
 
-        raw_pe = _hcdn_paginate(HCDN_PROYECTOS_RID, q="-PE-")
+        # q= del CKAN es búsqueda full-text por token: una consulta por sigla
+        # (los sets de abajo deduplican solos)
+        raw_pe = (_hcdn_paginate(HCDN_PROYECTOS_RID, q="-PE-")
+                  + _hcdn_paginate(HCDN_PROYECTOS_RID, q="-JGM-"))
         pe_cohorte: set[str] = {
             r["PROYECTO_ID"]
             for r in raw_pe
