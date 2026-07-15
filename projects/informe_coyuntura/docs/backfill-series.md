@@ -55,7 +55,8 @@ cómputo trimestral) · 🔴 bloqueada (no hay dato histórico) · ✅ hecho.
 | `inseguridad` (SNIC) | Anual y con el parser roto; sin granularidad mensual. |
 | `cepo_mulc` | dolarapi solo da el valor actual; la brecha histórica necesitaría otra fuente CCL. |
 | Patentamientos comerciales (IAI) | DNRPA no expone histórico → acumulación hacia adelante (ya activa). |
-| `privatizaciones`, `concesiones_infraestructura`, `asistencia_directa`, `fal_modernizacion_laboral`, `libertad_opcion_salud`, `protocolo_antipiquetes` | Carga manual / fuentes bloqueadas (ver `pendientes-datos.md`). |
+| `privatizaciones`, `concesiones_infraestructura`, `asistencia_directa`, `libertad_opcion_salud`, `protocolo_antipiquetes` | Carga manual / fuentes bloqueadas (ver `pendientes-datos.md`). |
+| `fal_modernizacion_laboral` | Reconstruida desde el BO: 0,0 hasta feb-2026 (el régimen FAL de la Ley 27.802 no existía; ADR-0068) y menciones acumuladas desde mar-2026. |
 
 ---
 

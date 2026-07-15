@@ -261,7 +261,7 @@ export const LABELS: Record<string, string> = {
   reestructuracion_organismos: "Reestructuración de organismos", rigi_inversiones: "Inversiones RIGI",
   desregulacion_normativa: "Desregulación normativa", apertura_comercial: "Apertura comercial (alícuota)",
   gasto_funcionamiento: "Gasto de funcionamiento", masa_salarial: "Masa salarial pública",
-  asistencia_directa: "Asistencia directa (TDPS)", fal_modernizacion_laboral: "Fondo de Cese Laboral",
+  asistencia_directa: "Asistencia directa (TDPS)", fal_modernizacion_laboral: "Fondo de Asistencia Laboral",
   libertad_opcion_salud: "Libertad de opción en salud", protocolo_antipiquetes: "Orden público (piquetes)",
   litigiosidad_laboral: "Litigiosidad laboral (SRT)", alertas_manifestacion: "Alertas de manifestación (GCBA)",
   protestas_caba: "Protestas en CABA (ACLED)",

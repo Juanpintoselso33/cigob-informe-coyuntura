@@ -1505,13 +1505,14 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "Sin rezago: registro de fondos y Boletín Oficial al día.",
     fuente: {
       organismo: "CNV (registro de fondos comunes) + Boletín Oficial",
-      operacion: "Índice de avance del Fondo de Cese Laboral: cobertura en convenios (40%) + adopción financiera (30%), renormalizados sobre lo medible",
+      operacion: "Índice de avance del Fondo de Asistencia Laboral (Ley 27.802): cobertura en convenios (40%) + adopción financiera (30%), renormalizados sobre lo medible",
       url: "https://www.boletinoficial.gob.ar/",
-      acceso: "Automático: registro público de la CNV (los fondos de cese llevan la denominación obligatoria «Cese Laboral») + buscador del Boletín Oficial (menciones del instrumento en la Primera Sección desde la Ley Bases).",
+      acceso: "Automático: registro público de la CNV (se buscan las denominaciones «Cese Laboral» y «Asistencia Laboral») + buscador del Boletín Oficial (menciones del Fondo de Asistencia Laboral en la Primera Sección desde la publicación de la Ley de Modernización Laboral, marzo de 2026).",
     },
     transformaciones: [
-      "Adopción financiera = fondos de cese registrados en la CNV sobre 10 (adopción plena, calibración provisoria). Hoy: cero fondos — dato duro, no faltante.",
-      "Cobertura = menciones en el Boletín Oficial sobre 420 (plena), calibración anclada a la estimación manual vigente al cambiar de fuente, para que el índice no saltara por el cambio de método.",
+      "Adopción financiera = fondos de cese o asistencia laboral registrados en la CNV sobre 10 (adopción plena, calibración provisoria). Hoy: cero fondos — dato duro, no faltante.",
+      "Cobertura = menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026, sobre 420 (plena). La calibración se ancla en el ritmo de la negociación colectiva: el Ministerio de Trabajo homologa unos 2.000 convenios y acuerdos por año, así que 420 menciones equivalen a un año donde una de cada cinco homologaciones incorpora el instrumento.",
+      "La consulta anterior contaba la frase «fondo de cese laboral» desde diciembre de 2023, pero ese nombre designa desde 1980 al régimen de la construcción (Ley 22.250): las menciones previas a la reforma (7-8 por año) eran indistinguibles de las posteriores. El corte en marzo de 2026 y el nombre nuevo del instrumento eliminan esa contaminación.",
       "El tercer componente del diseño institucional (litigiosidad diferencial por sector) no tiene fuente pública: los pesos se renormalizan sobre lo disponible.",
     ],
     anclas: {
@@ -1527,8 +1528,8 @@ export const FICHAS: Record<string, Ficha> = {
     },
     dobleUso: "La litigiosidad laboral puntúa como indicador aparte de la misma dimensión: par instrumento (este) / resultado (aquella), sin doble conteo.",
     limitaciones: [
-      "La cobertura por menciones en el Boletín Oficial es una aproximación con pleno calibrado a mano; el buscador oficial de convenios no tiene interfaz consultable.",
-      "La reglamentación operativa plena del instrumento está postergada al segundo semestre de 2026: el valor bajo refleja eso.",
+      "La cobertura por menciones en el Boletín Oficial es una aproximación: cuenta actos normativos que nombran al instrumento, no convenios homologados ni trabajadores cubiertos. El pleno de 420 menciones es una calibración provisoria anclada al ritmo de homologaciones del Ministerio de Trabajo.",
+      "El régimen fue reglamentado en junio de 2026: la adopción está en su punto de partida y el valor cercano a cero refleja eso, no una falla de medición.",
     ],
     faltantes: "Si el Boletín falla, la cobertura cae a la estimación manual declarada; si el registro CNV falla, entra el valor de respaldo completo; después, caché y renormalización.",
     revisiones: "El registro CNV se reverifica en cada corrida; la serie de menciones se reconstruye por consulta mensual.",
@@ -1536,6 +1537,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial como carga manual de etapas implementadas." },
       { fecha: "2026-07-02", cambio: "Compuesto del documento institucional renormalizado a lo medible, con el registro CNV automático." },
       { fecha: "2026-07-03", cambio: "La litigiosidad se separa como indicador propio de la dimensión. Después, la cobertura se automatizó vía menciones del Boletín Oficial con calibración anclada." },
+      { fecha: "2026-07-15", cambio: "La cobertura pasa a contar las menciones del Fondo de Asistencia Laboral (Ley 27.802) desde marzo de 2026: la consulta anterior era indistinguible del régimen homónimo de la construcción y su serie crecía por ruido de fondo. La serie histórica se reconstruye en cero hasta la creación del régimen." },
     ],
   },
 

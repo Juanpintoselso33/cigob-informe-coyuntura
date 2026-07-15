@@ -569,20 +569,32 @@ def fetch_reestructuracion_organismos() -> dict | None:
 CNV_FCI_URL = "https://www.cnv.gov.ar/SitioWeb/FondosComunesInversion/GetFCIPorTipo"
 SRT_JUICIOS_URL = "https://www.srt.gob.ar/estadisticas/litigiosidad/series/Juicios%20-%20Total%20Sistema.xlsx"
 
-# Escala del componente de adopción financiera del Fondo de Cese: la RG CNV
-# 1071/2025 (art. 2) obliga a incluir "Cese Laboral" en la denominación de los
-# PICs, así el substring sobre el registro es detector sin falsos negativos.
+# Escala del componente de adopción financiera del Fondo de Cese/FAL: la RG
+# CNV 1071/2025 (art. 2) obliga a incluir "Cese Laboral" en la denominación
+# de los PICs del régimen Ley Bases; la Ley 27.802 renombró el instrumento a
+# "Fondo de Asistencia Laboral" — el detector busca ambas denominaciones.
 # 10 fondos/fideicomisos registrados ≈ adopción financiera plena (provisional
 # hasta que exista patrimonio consultable — ver ADR-0013).
 FCI_CESE_PLENO = 10
 
-# Cobertura del Fondo de Cese vía BOLETÍN OFICIAL (jul-2026, reemplaza la
-# estimación manual): menciones de "fondo de cese laboral" en la Primera
-# Sección desde la Ley Bases. Calibración ANCLADA en la estimación manual
-# vigente al cambiar la fuente (21 menciones al 03-jul-2026 ≡ cobertura ~5%
-# → pleno = 420 menciones): el índice no salta por el cambio de fuente.
+# Cobertura del FAL vía BOLETÍN OFICIAL (ADR-0068, reemplaza la consulta por
+# "fondo de cese laboral" desde dic-2023): esa frase era indistinguible del
+# régimen de la CONSTRUCCIÓN (Ley 22.250, llamado así desde 1980) — 7-8
+# menciones/año ANTES de la reforma vs 8,1/año después, señal neta nula; la
+# serie que "crecía" era ruido de fondo acumulado. La Ley 27.802
+# (Modernización Laboral, publicada mar-2026; Dto. 408/2026 reglamentó)
+# renombró el instrumento a "Fondo de Asistencia Laboral": se cuenta esa
+# frase DESDE la publicación de la ley — el corte de fecha elimina el ruido
+# pre-creación (verificado: 1 mención espuria en ene-2026 queda afuera).
+# Pleno = 420 menciones acumuladas ≈ un año de negociación colectiva donde
+# ~1 de cada 5 homologaciones incorpora el FAL (el MTEySS homologa ~2.000
+# convenios y acuerdos/año, serie 2008-2022; las cláusulas de crisis
+# llegaron al 42% anual en 2020-21 — techo empírico de difusión de una
+# cláusula nueva). Provisional hasta que exista serie MTEySS de
+# homologaciones con FAL.
 BO_BUSQUEDA_URL = "https://www.boletinoficial.gob.ar/busquedaAvanzada/realizarBusqueda"
-FAL_BO_TEXTO = "fondo de cese laboral"
+FAL_BO_TEXTO = "fondo de asistencia laboral"
+FAL_BO_DESDE = "01/03/2026"           # publicación de la Ley 27.802
 FAL_BO_MENCIONES_PLENO = 420
 
 
@@ -612,32 +624,39 @@ def _bo_conteo(texto: str, desde: str = "10/12/2023", hasta: str | None = None) 
 
 
 def _cnv_fondos_cese() -> int:
-    """Cantidad de FCI registrados en CNV con 'CESE LABORAL' en la denominación
-    (registro completo vía POST JSON, sin auth — verificado 2026-07: 1.656
-    fondos, 0 de cese; el cero es un dato duro, no un faltante)."""
+    """Cantidad de FCI registrados en CNV cuya denominación refiere al
+    instrumento de cese: 'CESE' (RG 1071/2025, régimen Ley Bases) o
+    'ASISTENCIA LABORAL' (FAL, Ley 27.802). Registro completo vía POST JSON,
+    sin auth — verificado 2026-07: 1.656 fondos, 0 bajo cualquiera de las dos
+    denominaciones; el cero es un dato duro, no un faltante."""
     r = requests.post(CNV_FCI_URL, json={}, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
     fondos = r.json()
     if not isinstance(fondos, list) or not fondos:
         raise ValueError("registro CNV de FCI vacío o con formato inesperado")
-    return sum(1 for f in fondos if "CESE" in str(f.get("Text", "")).upper())
+    return sum(1 for f in fondos
+               if any(t in str(f.get("Text", "")).upper()
+                      for t in ("CESE", "ASISTENCIA LABORAL")))
 
 
 def fetch_fal_modernizacion_laboral() -> dict | None:
     """
-    Índice de Avance del Fondo de Cese Laboral (doc 260702), 0-100:
+    Índice de Avance del Fondo de Asistencia Laboral (doc 260702 + ADR-0068),
+    0-100:
       0,40·cobertura CCT + 0,30·adopción financiera + 0,30·litigiosidad dif.
     renormalizado a lo disponible.
 
-    * Adopción financiera (AUTO): FCI/fideicomisos de cese registrados en CNV
-      (RG 1071/2025). Hoy 0 — el sistema tiene marco normativo completo pero
-      cero materialización financiera, y eso es el dato.
-    * Cobertura (AUTO desde jul-2026, vía BOLETÍN OFICIAL): menciones de
-      "fondo de cese laboral" en la Primera Sección desde la Ley Bases,
-      calibradas (420 menciones = plena; anclada a la estimación manual ~5%
-      vigente al cambiar la fuente, así el índice no saltó). Fallback: la
-      estimación manual de manuales.json si el BO no responde. El buscador
-      de convenios del MTEySS sigue sin API.
+    * Adopción financiera (AUTO): FCI/fideicomisos de cese/asistencia laboral
+      registrados en CNV (RG 1071/2025 + Ley 27.802). Hoy 0 — el sistema
+      tiene marco normativo completo pero cero materialización financiera,
+      y eso es el dato.
+    * Cobertura (AUTO vía BOLETÍN OFICIAL, ADR-0068): menciones de "fondo de
+      asistencia laboral" en la Primera Sección desde la publicación de la
+      Ley 27.802 (mar-2026), calibradas (420 menciones = plena, ancla externa
+      en el ritmo de homologaciones MTEySS — ver comentario de FAL_BO_*). La
+      consulta anterior ("fondo de cese laboral" desde dic-2023) contaba el
+      régimen homónimo de la construcción (Ley 22.250): señal neta nula.
+      Fallback: la estimación manual de manuales.json si el BO no responde.
     * Litigiosidad diferencial (sin fuente): no existe consolidado nacional de
       causas por sector; la serie SRT puntúa aparte (ADR-0023).
     """
@@ -647,10 +666,10 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
 
         menciones = None
         try:
-            menciones = _bo_conteo(FAL_BO_TEXTO)
+            menciones = _bo_conteo(FAL_BO_TEXTO, desde=FAL_BO_DESDE)
             cobertura = min(100.0, menciones * 100.0 / FAL_BO_MENCIONES_PLENO)
             cobertura_txt = (f"cobertura {str(round(cobertura, 1)).replace('.', ',')}% "
-                             f"({menciones} menciones en el BO desde dic-2023; 420 = plena)")
+                             f"({menciones} menciones del FAL en el BO desde mar-2026; 420 = plena)")
         except Exception as e:
             _warn("fal cobertura BO (fallback manual)", e)
             m = load_manuales().get("fal_modernizacion_laboral", {})
@@ -671,16 +690,16 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
 
         return {
             "valor":          indice,
-            "unidad":         "Índice 0–100 (Fondo de Cese: cobertura + adopción financiera)",
-            "fuente":         ("CNV (registro FCI, RG 1071/2025) + Boletín Oficial (menciones)"
+            "unidad":         "Índice 0–100 (FAL: cobertura + adopción financiera)",
+            "fuente":         ("CNV (registro FCI) + Boletín Oficial (menciones del FAL, Ley 27.802)"
                                if menciones is not None else
-                               "CNV (registro FCI, RG 1071/2025) + MTEySS (cobertura estimada)"),
+                               "CNV (registro FCI) + MTEySS (cobertura estimada)"),
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,
             "fci_cese_registrados": n_cese,
             "menciones_bo":   menciones,
             "componentes":    componentes,
-            "detalle_txt": (f"{n_cese} FCI de cese registrados en CNV"
+            "detalle_txt": (f"{n_cese} fondos de cese/asistencia laboral registrados en CNV"
                             + (f" · {cobertura_txt}" if cobertura_txt else "")
                             + " · litigiosidad diferencial sin fuente"),
         }

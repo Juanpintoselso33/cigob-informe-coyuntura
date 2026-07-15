@@ -34,13 +34,13 @@
     "fecha_dato": "2026-07-02"
   },
   "fal_modernizacion_laboral": {
-    "valor": 8,
-    "cobertura_cct_pct": 5,
-    "unidad": "Índice de Avance del Fondo de Cese 0-100 (cobertura CCT 40% + adopción financiera 30% + litigiosidad 30%, renormalizado a lo disponible)",
+    "valor": 0.4,
+    "cobertura_cct_pct": 0.7,
+    "unidad": "Índice de Avance del Fondo de Asistencia Laboral 0-100 (cobertura CCT 40% + adopción financiera 30% + litigiosidad 30%, renormalizado a lo disponible)",
     "estado": "estimado",
-    "fuente": "MTEySS / CNV RG 1071/2025 — elaboración CIGOB",
-    "notas": "El colector AUTO cuenta los FCI de cese en el registro CNV (hoy: 0) y toma cobertura_cct_pct de acá (estimación: pocos CCT homologados con Sistema de Cese; ~5% de asalariados bajo convenio). 'valor' solo opera como fallback si la CNV no responde. Reglamentación operativa plena postergada a H2-2026. Actualizar cobertura_cct_pct con: CCT homologados con cláusula de cese (buscador MTEySS) y grandes gremios que lo adopten.",
-    "fecha_dato": "2026-06-30"
+    "fuente": "MTEySS / CNV / Boletín Oficial — elaboración CIGOB",
+    "notas": "El colector AUTO cuenta los fondos de cese o asistencia laboral del registro CNV (hoy: 0) y las menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde la publicación de la Ley de Modernización Laboral (marzo de 2026). 'valor' y 'cobertura_cct_pct' solo operan como respaldo si esas fuentes no responden. El régimen fue reglamentado en junio de 2026: la adopción está en su punto de partida y el valor bajo refleja eso. Actualizar el respaldo con: convenios homologados que incorporen el fondo (buscador del MTEySS) y grandes gremios que lo adopten.",
+    "fecha_dato": "2026-07-15"
   },
   "asistencia_directa": {
     "valor": 100,

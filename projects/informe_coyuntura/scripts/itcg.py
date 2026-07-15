@@ -84,9 +84,10 @@ BANDAS_ITCG = {
     "reestructuracion_organismos": [    # % de avance (actos de disolución/fusión vs plan)
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
-    "fal_modernizacion_laboral": [      # Índice de Avance del Fondo de Cese 0-100 (compuesto)
+    "fal_modernizacion_laboral": [      # Índice de Avance del FAL 0-100 (compuesto, ADR-0068)
         # Reforma opt-in por CCT: 40-60 ya sería adopción masiva; <5 = solo
-        # marco normativo sin adopción (la foto de la reglamentación pendiente).
+        # marco normativo sin adopción (la foto del arranque del FAL,
+        # Ley 27.802 reglamentada en jun-2026 por el Dto. 408/2026).
         (60.0, INF, 100), (40.0, 60.0, 85), (20.0, 40.0, 65), (5.0, 20.0, 40), (-INF, 5.0, 10),
     ],
     "privatizaciones": [                # % de avance por etapas (promedio etapa/4 de la cartera)

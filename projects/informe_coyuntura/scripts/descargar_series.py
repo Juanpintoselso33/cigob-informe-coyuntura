@@ -2140,24 +2140,32 @@ def fetch_privatizaciones_serie() -> list:
 
 def fetch_fal_serie() -> list:
     """Serie mensual del índice FAL reconstruida desde el BOLETÍN OFICIAL
-    (jul-2026): menciones acumuladas de "fondo de cese laboral" hasta el fin
-    de cada mes → cobertura (420 = plena, calibración del colector) → índice
-    con adopción financiera = 0 (el registro CNV nunca tuvo altas — dato
-    duro). Una consulta BO por mes (~30; el endpoint tolera batch sin
-    throttling, verificado 03-jul-2026). Fallback al histórico acumulado si
-    el BO no responde. [[YYYY-MM-01, índice]]."""
+    (ADR-0068): el régimen medible nace con la Ley 27.802 (publicada
+    mar-2026; Dto. 408/2026 reglamentó el Fondo de Asistencia Laboral) —
+    antes, el instrumento de la Ley Bases no era separable del ruido del BO
+    (el régimen de la construcción se llama "fondo de cese laboral" desde
+    1980) y la adopción financiera CNV fue siempre 0 (dato duro), así que la
+    serie previa a mar-2026 vale 0,0. Desde mar-2026: menciones acumuladas de
+    "fondo de asistencia laboral" hasta el fin de cada mes (una consulta BO
+    por mes) → cobertura (420 = plena, calibración del colector) → índice con
+    adopción financiera = 0 histórico. Fallback al histórico acumulado si el
+    BO no responde. [[YYYY-MM-01, índice]]."""
     try:
         out = []
         hoy = date.today()
         fin = hoy.replace(day=1) - timedelta(days=1)      # último mes completo
         y, m = 2023, 12
         while (y, m) <= (fin.year, fin.month):
-            ult_dia = calendar.monthrange(y, m)[1]
-            n = gestion._bo_conteo(gestion.FAL_BO_TEXTO,
-                                   hasta=f"{ult_dia:02d}/{m:02d}/{y}")
-            cobertura = min(100.0, n * 100.0 / gestion.FAL_BO_MENCIONES_PLENO)
-            indice = round((0.40 * cobertura) / 0.70, 1)   # financiera = 0 histórico
-            out.append([f"{y}-{m:02d}-01", indice])
+            if (y, m) < (2026, 3):
+                out.append([f"{y}-{m:02d}-01", 0.0])       # régimen inexistente
+            else:
+                ult_dia = calendar.monthrange(y, m)[1]
+                n = gestion._bo_conteo(gestion.FAL_BO_TEXTO,
+                                       desde=gestion.FAL_BO_DESDE,
+                                       hasta=f"{ult_dia:02d}/{m:02d}/{y}")
+                cobertura = min(100.0, n * 100.0 / gestion.FAL_BO_MENCIONES_PLENO)
+                indice = round((0.40 * cobertura) / 0.70, 1)  # financiera = 0 histórico
+                out.append([f"{y}-{m:02d}-01", indice])
             m += 1
             if m > 12:
                 m, y = 1, y + 1
@@ -2255,7 +2263,7 @@ GESTION_DERIVADAS = [
     ("apertura_comercial", "% alícuota efectiva del comercio exterior", "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500", fetch_alicuota_serie),
     ("concesiones_infraestructura", "% km adjudicados RFC", "CONTRAT.AR + RFC (hitos fechados)", fetch_concesiones_serie),
     ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),
-    ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "Boletín Oficial (menciones) + CNV (registro FCI)", fetch_fal_serie),
+    ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)", fetch_fal_serie),
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
     ("desregulacion_normativa", "Normas (conteo acum.)", "InfoLeg ('deroga' desde dic-2023)", lambda: fetch_infoleg_serie("deroga")),
     # A % calibrado (45 actos = plan completo, misma escala que el titular):
