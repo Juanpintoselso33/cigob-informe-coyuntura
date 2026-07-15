@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-15 17:16:08"
+generado: "2026-07-15 18:06:06"
 score_global: 2.7
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -65,20 +65,20 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
 
-### 🟢 Gestion — score 2.7/10 (estable)
+### 🟢 Gestion — score 2.8/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 5.65 | % de brecha CCL/mayorista | 2026-07-15 | fresco |
+| cepo_mulc | 6.08 | % de brecha CCL/mayorista | 2026-07-15 | fresco |
 | apertura_comercial | 4.86 | % del intercambio (alícuota efectiva) | 2026-05-01 | fresco |
 | desregulacion_normativa | 61.0 | % de avance (proxy InfoLeg) | 2026-07-15 | fresco |
 | reduccion_estado | -19.8 | % de variación vs dic-2023 (dotación APN) | 2026-05-01 | fresco |
 | gasto_funcionamiento | -24.35 | % de variación real vs 2023-05 (IMIG funcionamiento) | 2026-05-01 | fresco |
 | masa_salarial | -22.98 | % de variación real vs 2023-05 (SPN remuneraciones) | 2026-05-01 | fresco |
 | reestructuracion_organismos | 40.0 | % de avance (proxy InfoLeg) | 2026-07-15 | fresco |
-| fal_modernizacion_laboral | 2.9 | Índice 0–100 (Fondo de Cese: cobertura + adopción financiera) | 2026-07-15 | fresco |
-| litigiosidad_laboral | 3.6 | % variación juicios SRT (12m vs 12m previos) | 2026-03-01 | fresco |
+| fal_modernizacion_laboral | 0.4 | Índice 0–100 (FAL: cobertura + adopción financiera) | 2026-07-15 | fresco |
+| litigiosidad_laboral | 2.8 | % variación juicios SRT (12m vs 12m previos) | 2026-04-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
 | rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-15 | fresco |
 | concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-07-15 | fresco |
@@ -99,4 +99,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-15 17:16:08 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-15 18:06:06 — schema 1.2.0*

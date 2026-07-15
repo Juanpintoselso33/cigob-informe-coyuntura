@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-15T17:16:08.191519",
+  "generated_at": "2026-07-15T18:06:06.707679",
   "period": "2026-07",
   "score_global": 2.7,
   "ponderacion": {
@@ -785,20 +785,20 @@
       "alerta": null
     },
     "gestion": {
-      "score": 2.7,
+      "score": 2.8,
       "estado": "estable",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 5.65,
+          "valor": 6.08,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
           "fecha_dato": "2026-07-15",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 96.1,
-          "puntaje_banda": 96.1,
+          "puntaje_itcg": 93.5,
+          "puntaje_banda": 93.5,
           "peso_efectivo": 0.14
         },
         "apertura_comercial": {
@@ -884,18 +884,18 @@
           "peso_efectivo": 0.05
         },
         "fal_modernizacion_laboral": {
-          "valor": 2.9,
-          "unidad": "Índice 0–100 (Fondo de Cese: cobertura + adopción financiera)",
-          "fuente": "CNV (registro FCI, RG 1071/2025) + Boletín Oficial (menciones)",
+          "valor": 0.4,
+          "unidad": "Índice 0–100 (FAL: cobertura + adopción financiera)",
+          "fuente": "CNV (registro FCI) + Boletín Oficial (menciones del FAL, Ley 27.802)",
           "fecha_dato": "2026-07-15",
           "desactualizado": false,
           "fci_cese_registrados": 0,
-          "menciones_bo": 21,
+          "menciones_bo": 3,
           "componentes": {
-            "cobertura_cct": 5.0,
+            "cobertura_cct": 0.7,
             "adopcion_financiera": 0.0
           },
-          "detalle_txt": "0 FCI de cese registrados en CNV · cobertura 5,0% (21 menciones en el BO desde dic-2023; 420 = plena) · litigiosidad diferencial sin fuente",
+          "detalle_txt": "0 fondos de cese/asistencia laboral registrados en CNV · cobertura 0,7% (3 menciones del FAL en el BO desde mar-2026; 420 = plena) · litigiosidad diferencial sin fuente",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 10.0,
@@ -903,17 +903,17 @@
           "peso_efectivo": 0.105
         },
         "litigiosidad_laboral": {
-          "valor": 3.6,
+          "valor": 2.8,
           "unidad": "% variación juicios SRT (12m vs 12m previos)",
           "fuente": "SRT — Serie histórica de litigiosidad",
-          "fecha_dato": "2026-03-01",
+          "fecha_dato": "2026-04-01",
           "desactualizado": false,
-          "juicios_12m": 129568,
-          "detalle_txt": "129.568 juicios en 12m (hasta 2026-03) vs 125.071 previos",
+          "juicios_12m": 128619,
+          "detalle_txt": "128.619 juicios en 12m (hasta 2026-04) vs 125.153 previos",
           "en_indice": true,
           "dimension": "reforma_laboral",
-          "puntaje_itcg": 57.8,
-          "puntaje_banda": 57.8,
+          "puntaje_itcg": 59.4,
+          "puntaje_banda": 59.4,
           "peso_efectivo": 0.045
         },
         "privatizaciones": {
@@ -974,7 +974,7 @@
             "etapa_ii_b": 0.0,
             "etapa_iii": 0.0
           },
-          "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: En Apertura 2º Etapa · II: Adjudicado · III: Pendiente Acto Administrativo de Preselección",
+          "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: En Evaluacion · II: Adjudicado · III: Pendiente Acto Administrativo de Preselección",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 44.6,
@@ -989,11 +989,11 @@
           "desactualizado": false,
           "ejercicio": 2026,
           "componentes": {
-            "directo_musd": 527681,
+            "directo_musd": 527684,
             "intermediado_musd": 0,
             "tdps_2023": 98.3
           },
-          "detalle_txt": "Devengado 2026: $ 527.681M directo a personas (5.1.4) / $ 527.681M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
+          "detalle_txt": "Devengado 2026: $ 527.684M directo a personas (5.1.4) / $ 527.684M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
           "en_indice": true,
           "dimension": "social_orden",
           "puntaje_itcg": 100.0,
@@ -1057,20 +1057,20 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 72.7,
+        "valor": 72.3,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "reformas_economicas": {
             "nombre": "Reformas económicas fundamentales",
             "peso": 0.35,
-            "puntaje": 82.8,
+            "puntaje": 81.7,
             "indicadores": {
               "cepo_mulc": {
                 "peso": 0.4,
-                "puntaje_banda": 96.1,
-                "puntaje_aplicado": 96.1,
-                "valor": 5.65,
+                "puntaje_banda": 93.5,
+                "puntaje_aplicado": 93.5,
+                "valor": 6.08,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -1129,20 +1129,20 @@
           "reforma_laboral": {
             "nombre": "Reforma laboral",
             "peso": 0.15,
-            "puntaje": 24.3,
+            "puntaje": 24.8,
             "indicadores": {
               "fal_modernizacion_laboral": {
                 "peso": 0.7,
                 "puntaje_banda": 10.0,
                 "puntaje_aplicado": 10.0,
-                "valor": 2.9,
+                "valor": 0.4,
                 "peso_efectivo": 0.105
               },
               "litigiosidad_laboral": {
                 "peso": 0.3,
-                "puntaje_banda": 57.8,
-                "puntaje_aplicado": 57.8,
-                "valor": 3.6,
+                "puntaje_banda": 59.4,
+                "puntaje_aplicado": 59.4,
+                "valor": 2.8,
                 "peso_efectivo": 0.045
               }
             },
