@@ -32,6 +32,10 @@ const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
   ipi_manufacturero: 1, mortalidad_pymes: 1, endeudamiento_familiar: -1,
   // política: % var. vs 2023 — caer (menos conflicto en la calle) es la mejora
   conflictividad_nacional: -1,
+  // política: % var. real i.a. de transferencias a provincias — el 0 es
+  // "crecer igual que la inflación"; arriba las provincias reciben más en
+  // términos reales (verde), abajo hay ajuste real (rojo)
+  iaf_transferencias: 1,
 };
 const VERDE_AREA = "#16A34A";
 const ROJO_AREA = "#DC2626";
