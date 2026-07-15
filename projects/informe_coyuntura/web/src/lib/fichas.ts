@@ -826,7 +826,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo. Estas anclas están ancladas a la práctica histórica 2011-2024 (cuatro presidencias distintas): en promedio, una de cada tres leyes sancionadas tuvo un DNU — ratio ≈0,3.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto a la eficacia legislativa, las sesiones caídas por quórum, los proyectos varados en comisión y las derrotas legislativas.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto a la eficacia legislativa, las sesiones caídas por quórum y las derrotas legislativas.",
     ],
     limitaciones: [
       "Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.",
@@ -930,7 +930,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Los umbrales se calibraron contra series históricas de otras gestiones (proporción de proyectos del Ejecutivo que se convirtieron en ley), no contra el rango de esta gestión.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto al ratio DNU, las sesiones caídas por quórum, los proyectos varados en comisión y las derrotas legislativas.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 30% junto al ratio DNU, las sesiones caídas por quórum y las derrotas legislativas.",
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
@@ -1109,7 +1109,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 15% junto al ratio DNU, la eficacia legislativa, los proyectos varados en comisión y las derrotas legislativas.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa y las derrotas legislativas.",
     ],
     limitaciones: [
       "Las sesiones desactivadas antes de la apertura formal no aparecen en el registro oficial: el indicador subestima el bloqueo.",
@@ -1122,41 +1122,6 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del bloqueo parlamentario." },
       { fecha: "2026-06-30", cambio: "Serie por período legislativo desde 2024." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
-    ],
-  },
-
-  comisiones_caidas: {
-    tipo: "indicador",
-    id: "comisiones_caidas",
-    cinturon: "politica",
-    rezago: "El portal de datos abiertos de Diputados carga dictámenes y movimientos con días o semanas de demora.",
-    fuente: {
-      organismo: "HCDN — Cámara de Diputados de la Nación",
-      operacion: "Datasets «dictámenes de comisión» y «movimientos de proyectos» del portal oficial de datos abiertos",
-      serie: "API CKAN de datos.hcdn.gob.ar",
-      url: "https://datos.hcdn.gob.ar",
-      acceso: "Automático: API pública del portal, cruzando dictámenes con Orden del Día contra sanciones registradas.",
-    },
-    transformaciones: [
-      "Toma los dictámenes de comisión con Orden del Día de los últimos 12 meses.",
-      "Un proyecto cuenta como caído si obtuvo dictamen pero no registra sanción en la ventana.",
-      "El indicador es proyectos caídos sobre el total con dictamen.",
-    ],
-    incidenciaTexto: [
-      "El puntaje del índice se asigna por bandas del porcentaje de proyectos caídos, interpolado entre anclas: 96% o menos → el más alto; entre 96% y 97% → alto; entre 97% y 98% → moderado; entre 98% y 99% → bajo; más de 99% → el más bajo. Los umbrales se calibraron con la serie mensual real del indicador (32 meses, dic-2023 en adelante) — los anteriores (30/50/70/85) describían un congreso teórico y dejaban el puntaje clavado en el mínimo todos los meses, sin discriminar nada.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa, las sesiones caídas por quórum y las derrotas legislativas.",
-    ],
-    limitaciones: [
-      "El valor vive cerca del máximo por una razón estructural: la gran mayoría de los dictámenes no llega al recinto bajo ningún gobierno, y con una ventana móvil de 12 meses un dictamen reciente casi nunca alcanza a sancionarse dentro de su propia ventana. Por eso los umbrales de puntaje se calibraron sobre el rango realmente observado (94,7%–99,8%) y no sobre porcentajes teóricos.",
-      "Depende del etiquetado de la fuente («Orden del Día», «sanción»): variantes de registro pueden contar mal.",
-    ],
-    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
-    revisiones: "La serie completa se regenera desde la fuente en cada corrida.",
-    cambios: [
-      { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del embudo entre comisiones y recinto." },
-      { fecha: "2026-06-30", cambio: "Serie mensual de ventanas móviles de 12 meses desde diciembre de 2023." },
-      { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
-      { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 30/50/70/85, tomados del diseño conceptual y nunca validados) con la serie mensual real de 32 meses: nuevos cortes en 96/97/98/99. Con los anteriores, el rango realmente observado (94,7%–99,8%) caía completo en el escalón más bajo — tensión máxima permanente, sin capacidad de distinguir un mes de otro; la propia ficha ya declaraba esa saturación como limitación." },
     ],
   },
 
@@ -1190,7 +1155,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los umbrales se calibraron contra la serie mensual reconstruida completa del indicador (32 meses, diciembre de 2023 en adelante, con cada evento verificado contra la fuente primaria): el período cubre desde meses sin ninguna derrota hasta el pico de ocho derrotas en doce meses tras la ola de rechazos e insistencias de agosto-octubre de 2025. Las dos bandas más bajas quedan deliberadamente por encima de todo lo observado: son el margen para escenarios de confrontación más intensos que los ya vistos.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa, las sesiones caídas por quórum y los proyectos varados en comisión. Menos derrotas = puntaje más alto.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto al ratio DNU, la eficacia legislativa y las sesiones caídas por quórum. Menos derrotas = puntaje más alto.",
     ],
     limitaciones: [
       "Es un indicador de eventos raros con ventana móvil: el valor puede saltar varios enteros de un mes al siguiente, tanto cuando ocurre una tanda de derrotas como —en espejo— doce meses después, cuando esa tanda sale de la ventana. El movimiento de salida es mecánico (aritmética de la ventana), no una mejora política nueva; el detalle de la card publica la composición del conteo para leerlo con contexto.",

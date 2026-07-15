@@ -245,9 +245,11 @@ def construir_serie_itcg() -> dict:
 # contexto.
 ITCP_SERIES = [
     "votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
-    "comisiones_caidas", "derrotas_legislativas", "iaf_transferencias",
+    "derrotas_legislativas", "iaf_transferencias",
     "alineamiento_senadores_prov", "adhesion_reformas_provincial",
     "cohesion_bloque", "conflictividad_nacional",
+    # comisiones_caidas salió del índice (ADR-0064) — su serie sigue
+    # existiendo como seguimiento interno pero no entra a la reconstrucción
 ]
 
 
@@ -257,7 +259,7 @@ def construir_serie_itcp() -> dict:
     más ruidosa que la de ITCM/ITCG porque la cobertura histórica real de
     política es dispareja:
     - Con historia mensual sólida desde dic-2023: votometro_ventaja_lla,
-      eficacia_legislativa, comisiones_caidas, (desde 2026-07-09, ADR-0046)
+      eficacia_legislativa, (desde 2026-07-09, ADR-0046)
       derrotas_legislativas —cuya serie completa se deriva del registro
       versionado de eventos— y (desde 2026-07-15, ADR-0058) ratio_dnu, que
       pasó de un punto por año calendario a ventana móvil de 365 días

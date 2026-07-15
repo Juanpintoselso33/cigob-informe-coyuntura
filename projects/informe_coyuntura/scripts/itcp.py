@@ -351,17 +351,17 @@ DIMENSIONES_ITCP = {
     "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.30,
-        # Pesos internos redistribuidos 2026-07-09 al entrar
-        # derrotas_legislativas (antes 25/30/20/25, ADR-0046): eficacia sigue
-        # primera (la medida más abarcativa de capacidad legislativa); las
-        # derrotas entran al nivel de ratio_dnu/comisiones porque son la
-        # expresión más directa del balance de poder Ejecutivo-Congreso (con
-        # ratio_dnu forman el par "gobernar por decreto / sostener la norma
-        # propia"); veto_quorum cede más por ser la medida más estrecha (solo
-        # sesiones fracasadas de una cámara).
-        "indicadores": {"ratio_dnu": 0.20, "eficacia_legislativa": 0.25,
-                        "veto_quorum": 0.15, "comisiones_caidas": 0.20,
-                        "derrotas_legislativas": 0.20},
+        # Pesos internos redistribuidos 2026-07-15 al salir comisiones_caidas
+        # (ADR-0064: su fuente —movimientos q='SANCION'— es ciega a las
+        # sanciones del Senado, el mismo defecto que ADR-0062 corrigió en
+        # eficacia_legislativa; acá se retira en vez de repararse). El 0.20
+        # liberado se reparte parejo (+0.05 a cada uno): eficacia sigue
+        # primera (la medida más abarcativa, y desde ADR-0061/0062/0063 la
+        # más sólida); ratio_dnu y derrotas conservan su paridad ("gobernar
+        # por decreto / sostener la norma propia"); veto_quorum sigue último
+        # por ser la medida más estrecha. Antes 20/25/15/20/20 (ADR-0046).
+        "indicadores": {"ratio_dnu": 0.25, "eficacia_legislativa": 0.30,
+                        "veto_quorum": 0.20, "derrotas_legislativas": 0.25},
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
@@ -404,7 +404,10 @@ DIMENSIONES_ITCP = {
 # cacheando como seguimiento interno, pero publicar.py los OCULTA del
 # snapshot (POLITICA_OCULTOS) — el tablero solo muestra lo que integra
 # las dimensiones.
-INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cepa"]
+INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cepa",
+                        # ADR-0064: fuente ciega a sanciones del Senado (ver ADR-0062);
+                        # su banda queda arriba como referencia histórica
+                        "comisiones_caidas"]
 
 BANDAS_INTERPRETACION = [
     (-INF, 20.0, "severamente_apretado"),

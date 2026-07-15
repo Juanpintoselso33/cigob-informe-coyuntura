@@ -184,20 +184,21 @@ def test_politica_itcp_reconcilia():
     # ADR-0048 (revisión editorial 2026-07-10) + ADR-0052 (2026-07-11): 11
     # indicadores puntúan (la cohesión es UNA card, el compuesto bicameral;
     # conflictividad_nacional reemplaza a movilizacion_cepa en conflicto
-    # social). rotacion_gabinete, protestas_caba y movilizacion_cepa quedan
-    # OCULTOS del snapshot (POLITICA_OCULTOS, mismo criterio ADR-0022 que
-    # los monetarios de macro): se siguen relevando y cacheando, pero el
-    # tablero solo muestra lo que integra las dimensiones.
+    # social). rotacion_gabinete, protestas_caba, movilizacion_cepa y
+    # comisiones_caidas (ADR-0064) quedan OCULTOS del snapshot
+    # (POLITICA_OCULTOS, mismo criterio ADR-0022 que los monetarios de
+    # macro): se siguen relevando y cacheando, pero el tablero solo muestra
+    # lo que integra las dimensiones.
     # cohesion_bloque_senado ya no existe como card (fusionado).
-    assert len(en_indice) == 11, f"esperaba 11 indicadores en el índice, hay {len(en_indice)}"
+    assert len(en_indice) == 10, f"esperaba 10 indicadores en el índice, hay {len(en_indice)}"
     faltantes = {"votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
-                 "comisiones_caidas", "iaf_transferencias", "alineamiento_senadores_prov",
+                 "iaf_transferencias", "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque", "conflictividad_nacional",
                  "derrotas_legislativas"} - set(en_indice)
     assert not faltantes, f"faltan indicadores que no deberían faltar: {faltantes}"
     assert contexto == {}, f"política no debería publicar contexto: {set(contexto)}"
     for oculto in ("rotacion_gabinete", "protestas_caba", "movilizacion_cepa",
-                   "cohesion_bloque_senado"):
+                   "comisiones_caidas", "cohesion_bloque_senado"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto del snapshot"
     # El compuesto expone su composición por cámara (patrón Fondo de Cese)
     assert set(c["indicadores"]["cohesion_bloque"].get("componentes", {})) >= {"diputados"}

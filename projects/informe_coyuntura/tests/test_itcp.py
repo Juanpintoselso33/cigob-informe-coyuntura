@@ -178,11 +178,13 @@ def test_banda_derrotas_legislativas_interpolada_discrimina_la_serie_real():
 
 
 def test_pesos_internos_poder_legislativo_con_derrotas():
-    # Redistribución 2026-07-09 (ADR-0046): antes 25/30/20/25 sin derrotas.
+    # Redistribución 2026-07-15 (ADR-0064): comisiones_caidas sale a contexto
+    # (fuente ciega a sanciones del Senado, ver ADR-0062) y su 0.20 se
+    # reparte parejo. Antes 20/25/15/20/20 (ADR-0046).
     dim = itcp.DIMENSIONES_ITCP["poder_legislativo"]
     assert dim["indicadores"] == {
-        "ratio_dnu": 0.20, "eficacia_legislativa": 0.25, "veto_quorum": 0.15,
-        "comisiones_caidas": 0.20, "derrotas_legislativas": 0.20,
+        "ratio_dnu": 0.25, "eficacia_legislativa": 0.30, "veto_quorum": 0.20,
+        "derrotas_legislativas": 0.25,
     }
     assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
 def test_banda_rotacion_gabinete():
@@ -237,7 +239,7 @@ def test_indicadores_contexto_declarados_y_fuera_de_las_dimensiones():
     # ADR-0048/0052: seguimiento interno sin puntuar; sus bandas quedan como
     # referencia histórica en BANDAS_ITCP, así que el override de contexto es
     # lo único que los mantiene fuera del en_indice de la card (patrón macro).
-    assert set(itcp.INDICADORES_CONTEXTO) == {"rotacion_gabinete", "protestas_caba",
+    assert set(itcp.INDICADORES_CONTEXTO) == {"rotacion_gabinete", "protestas_caba", "comisiones_caidas",
                                               "movilizacion_cepa"}
     en_dimensiones = {k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]}
     for contexto in itcp.INDICADORES_CONTEXTO:
@@ -275,7 +277,6 @@ def test_calcular_itcp_pondera_dimensiones():
         "ratio_dnu": 0.2,                    # poder_legislativo, puntaje 100
         "eficacia_legislativa": 60.0,        # poder_legislativo, puntaje 100
         "veto_quorum": 2.0,                  # poder_legislativo, puntaje 100
-        "comisiones_caidas": 10.0,           # poder_legislativo, puntaje 100
         "derrotas_legislativas": 0.0,        # poder_legislativo, puntaje 100
         "iaf_transferencias": 12.0,          # alianzas_territoriales, puntaje 100
         "alineamiento_senadores_prov": 70.0, # alianzas_territoriales, puntaje 100
@@ -283,11 +284,12 @@ def test_calcular_itcp_pondera_dimensiones():
         "cohesion_bloque": 100.0,            # cohesion_interna, puntaje 100 (compuesto bicameral)
         "conflictividad_nacional": -40.0,    # conflicto_social, puntaje 100 (ADR-0052)
         # rotacion_gabinete / protestas_caba (ADR-0048) / movilizacion_cepa
-        # (ADR-0052): contexto — aunque lleguen en `valores`, el motor los
-        # ignora al no estar en dimensiones
+        # (ADR-0052) / comisiones_caidas (ADR-0064): contexto — aunque
+        # lleguen en `valores`, el motor los ignora al no estar en dimensiones
         "rotacion_gabinete": 7.0,
         "protestas_caba": 25.0,
         "movilizacion_cepa": 95.0,
+        "comisiones_caidas": 10.0,
     }
     resultado = itcp.calcular_itcp(valores)
     assert resultado is not None
