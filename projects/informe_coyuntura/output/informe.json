@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-15T13:10:35.142896",
+  "generated_at": "2026-07-15T13:22:01.738923",
   "period": "2026-07",
-  "score_global": 2.5,
+  "score_global": 2.6,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -417,7 +417,7 @@
       }
     },
     "politica": {
-      "score": 2.4,
+      "score": 2.7,
       "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -447,8 +447,8 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
-          "puntaje_itcp": 73.3,
-          "puntaje_banda": 73.3,
+          "puntaje_itcp": 10.0,
+          "puntaje_banda": 10.0,
           "peso_efectivo": 0.06
         },
         "conflictividad_nacional": {
@@ -639,19 +639,19 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 76.4,
+        "valor": 72.6,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
             "peso": 0.3,
-            "puntaje": 69.4,
+            "puntaje": 56.7,
             "indicadores": {
               "ratio_dnu": {
                 "peso": 0.2,
-                "puntaje_banda": 73.3,
-                "puntaje_aplicado": 73.3,
+                "puntaje_banda": 10.0,
+                "puntaje_aplicado": 10.0,
                 "valor": 2.19,
                 "peso_efectivo": 0.06
               },

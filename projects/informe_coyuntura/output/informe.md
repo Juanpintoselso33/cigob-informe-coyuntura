@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-15 13:10:35"
-score_global: 2.5
+generado: "2026-07-15 13:22:01"
+score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 2.5/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 2.6/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
@@ -36,7 +36,7 @@ schema_version: "1.2.0"
 | base_monetaria | 9.12 | % mensual nominal | 2026-07-08 | fresco |
 | tc_mayorista | 2.94 | % mensual | 2026-07-14 | fresco |
 
-### 🟢 Politica — score 2.4/10 (estable)
+### 🟢 Politica — score 2.7/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -99,4 +99,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-15 13:10:35 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-15 13:22:01 — schema 1.2.0*

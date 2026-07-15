@@ -1,21 +1,21 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-15T13:07:18.747462",
-  "score": 2.4,
+  "generated_at": "2026-07-15T13:21:34.250439",
+  "score": 2.7,
   "itcp": {
-    "valor": 76.4,
+    "valor": 72.6,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.3,
-        "puntaje": 69.4,
+        "puntaje": 56.7,
         "indicadores": {
           "ratio_dnu": {
             "peso": 0.2,
-            "puntaje_banda": 73.3,
-            "puntaje_aplicado": 73.3,
+            "puntaje_banda": 10.0,
+            "puntaje_aplicado": 10.0,
             "valor": 2.19,
             "peso_efectivo": 0.06
           },
@@ -154,8 +154,8 @@
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 73.3,
-      "puntaje_banda": 73.3,
+      "puntaje_itcp": 10.0,
+      "puntaje_banda": 10.0,
       "peso_efectivo": 0.06
     },
     "conflictividad_nacional": {
