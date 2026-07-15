@@ -917,15 +917,15 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "El portal de datos abiertos de Diputados carga proyectos y movimientos con días o semanas de demora respecto del hecho parlamentario.",
     fuente: {
       organismo: "HCDN — Cámara de Diputados de la Nación",
-      operacion: "Datasets «proyectos parlamentarios» y «movimientos de proyectos» del portal oficial de datos abiertos",
+      operacion: "Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos",
       serie: "API CKAN de datos.hcdn.gob.ar",
       url: "https://datos.hcdn.gob.ar",
-      acceso: "Automático: API pública del portal, cruzando los proyectos enviados por el Ejecutivo con los movimientos de sanción.",
+      acceso: "Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras).",
     },
     transformaciones: [
-      "Identifica los proyectos enviados por el Poder Ejecutivo por su número de expediente.",
+      "Identifica los proyectos de ley enviados por el Poder Ejecutivo por su número de expediente y su tipo de trámite — las comunicaciones administrativas del Ejecutivo (avisos de vetos o resoluciones), que llevan numeración similar pero no son proyectos, quedan fuera del denominador.",
       "Toma una cohorte MADURA: proyectos enviados entre hace 12 y 24 meses — ya tuvieron al menos un año de margen para tramitarse antes de evaluarlos.",
-      "Un proyecto de esa cohorte cuenta como aprobado si registró una sanción en cualquier momento hasta hoy (no acotado a ninguna ventana).",
+      "Un proyecto de esa cohorte cuenta como aprobado si figura en el registro oficial de leyes sancionadas, sin importar en qué cámara ocurrió la sanción definitiva ni cuándo.",
       "El indicador es aprobados sobre el total de esa cohorte — ya no exige que envío y sanción caigan en la misma ventana.",
     ],
     incidenciaTexto: [
@@ -934,8 +934,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
-      "Denominador chico: con unos veinte proyectos por cohorte, uno solo mueve varios puntos porcentuales.",
-      "La sanción se detecta por el texto del movimiento: no distingue medias sanciones de otras variantes de registro.",
+      "Denominador chico: con unos quince a veinte proyectos por cohorte, uno solo mueve varios puntos porcentuales.",
       "Cuenta proyectos por igual, sin ponderar su peso político.",
       "La serie histórica es reproducible: si un proyecto se sanciona después de publicado un punto de la serie, ese punto no se corrige retroactivamente (aunque el indicador vigente sí lo refleje al recorrer la fuente completa).",
     ],
@@ -947,6 +946,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
       { fecha: "2026-07-11", cambio: "Umbrales de puntaje recalibrados contra la serie mensual real del indicador (32 meses): los anteriores describían la tasa de aprobación de un congreso teórico y dejaban el puntaje en el mínimo casi todos los meses, sin discriminar. Se documenta además que, por construcción de la ventana única de 12 meses, el techo alcanzable del porcentaje es más bajo que una tasa de aprobación de manual." },
       { fecha: "2026-07-15", cambio: "Se reemplazó la ventana compartida entre envío y sanción por una cohorte madura (proyectos con 12-24 meses de margen) — elimina el sesgo hacia abajo que la ventana compartida introducía. Los umbrales de puntaje se recalibraron contra series históricas de otras gestiones en vez de contra el rango de esta." },
+      { fecha: "2026-07-15", cambio: "Corrección de fuentes tras auditoría registro por registro: la aprobación pasó a verificarse contra el registro oficial de leyes sancionadas (el dataset de movimientos usado antes solo registra la vida del expediente en Diputados, y las sanciones definitivas del Senado quedaban invisibles — tres leyes de la cohorte vigente no se estaban contando), y las comunicaciones administrativas del Ejecutivo dejaron de contar como proyectos enviados." },
     ],
   },
 

@@ -182,8 +182,8 @@ export const FORMULAS: Record<string, Formula> = {
 
   // ── Política ─────────────────────────────────────────────────────────────
   eficacia_legislativa: {
-    latex: String.raw`\frac{\text{proyectos del Ejecutivo aprobados}}{\text{proyectos enviados hace 12-24 meses}}\times 100`,
-    leyenda: "Cohorte madura: solo cuenta proyectos con al menos 12 meses de margen desde que se enviaron, sobre los datos abiertos de la Cámara de Diputados. La aprobación se mira sin tope de tiempo (a diferencia de una ventana común, que exigiría envío y sanción en el mismo período).",
+    latex: String.raw`\frac{\text{proyectos del Ejecutivo convertidos en ley}}{\text{proyectos de ley enviados hace 12-24 meses}}\times 100`,
+    leyenda: "Cohorte madura: solo cuenta proyectos de ley con al menos 12 meses de margen desde que se enviaron, sobre los datos abiertos de la Cámara de Diputados. La aprobación se verifica contra el registro oficial de leyes sancionadas — cubre las sanciones de ambas cámaras — y se mira sin tope de tiempo.",
   },
   ratio_dnu: {
     latex: String.raw`\frac{\text{DNU dictados, \'ultimos 365 d\'ias}}{\text{leyes sancionadas, \'ultimos 365 d\'ias}}`,

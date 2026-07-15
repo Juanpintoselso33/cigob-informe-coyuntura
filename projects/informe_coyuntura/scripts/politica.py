@@ -125,6 +125,7 @@ RON_CSV_URL = "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2
 HCDN_CKAN            = "https://datos.hcdn.gob.ar/api/3/action/datastore_search"
 HCDN_PROYECTOS_RID   = "22b2d52c-7a0e-426b-ac0a-a3326c388ba6"   # proyectos-parlamentarios
 HCDN_MOVIMIENTOS_RID = "6108ea83-3f12-423c-a136-df1ae9cb2972"   # movimientos-de-proyectos
+HCDN_LEYES_SANC_RID  = "68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98"   # leyes-sancionadas (ADR-0062)
 HCDN_SESIONES_RID    = "4ac70a51-a82d-428b-966a-0a203dd0a7e3"   # sesiones plenarias
 HCDN_DICTAMENES_RID  = "59595a93-5a5e-4ba6-a3db-c1044e2f949e"   # dictámenes de comisión
 _RE_PE_EXP           = re.compile(r"\d+-PE-\d{4}")
@@ -819,22 +820,29 @@ def _hcdn_paginate(resource_id: str, *, q: str = "") -> list[dict]:
     return records
 
 
-def _es_media_sancion(movimiento: str) -> bool:
-    """True si el movimiento es EXPLÍCITAMENTE una media sanción ('TEXTO DE
-    LA MEDIA SANCION' y variantes) — aprobación de UNA cámara, no ley.
-    Auditoría 2026-07-09: el q='SANCION' del CKAN también matchea esas filas
-    (54 en el dataset) y las contaba como aprobación. Ningún número publicado
-    llegó a estar mal (los únicos proyectos con SOLO media sanción son de
-    legislaturas viejas, 2011), pero una media sanción futura de un proyecto
-    recién enviado habría creado un 'aprobado' fantasma en eficacia_legislativa.
-    Nota: el caso inverso (un 'CONSIDERACION Y SANCION' pelado de la cámara
-    de ORIGEN también es solo media sanción) no se puede distinguir con las
-    etiquetas del dataset — la Ley de Bases figura con esa misma etiqueta en
-    su sanción DEFINITIVA (27-jun-2024) — así que solo se filtra lo
-    inequívoco. comisiones_caidas NO usa este filtro a propósito: ahí la
-    media sanción debe contar como 'avanzó' (mide varados en comisión, no
-    leyes)."""
-    return "MEDIA SANCION" in movimiento.upper()
+def _leyes_sancionadas_ids(hasta: str | None = None) -> set[str]:
+    """PROYECTO_IDs con sanción definitiva según el dataset oficial
+    leyes-sancionadas de HCDN (cada fila trae número de ley, fecha de
+    sanción definitiva y cámara sancionadora — cubre las sanciones que
+    ocurren en el SENADO, invisibles en movimientos-de-proyectos, que solo
+    registra la vida del expediente en Diputados; ADR-0062). Reemplaza a la
+    detección por texto de movimiento (q='SANCION' + filtro de medias
+    sanciones): el registro de leyes trae solo sanciones definitivas por
+    construcción, así que las ambigüedades de etiquetas ('TEXTO DE LA MEDIA
+    SANCION' vs 'CONSIDERACION Y SANCION', auditoría 2026-07-09) dejan de
+    existir para eficacia_legislativa.
+
+    `hasta` (ISO YYYY-MM-DD) acota por SANCION_DEFINITIVA — lo usa la serie
+    histórica para que un punto ya publicado no cambie retroactivamente
+    cuando un proyecto se sanciona más tarde. Filas con fecha "NA" solo
+    entran sin cota (no se puede verificar su timing)."""
+    filas = _hcdn_paginate(HCDN_LEYES_SANC_RID)
+    return {
+        str(r["PROYECTO_ID"]).strip()
+        for r in filas
+        if r.get("PROYECTO_ID")
+        and (hasta is None or str(r.get("SANCION_DEFINITIVA", ""))[:10] <= hasta)
+    }
 
 
 def fetch_eficacia_legislativa() -> dict | None:
@@ -860,14 +868,25 @@ def fetch_eficacia_legislativa() -> dict | None:
     AL MENOS 365 días de margen antes de evaluarlo. Elimina el sesgo de raíz
     en vez de compensarlo con anclas más generosas.
 
-    Identificación PE: EXP_DIPUTADOS o EXP_SENADO con patrón NNNN-PE-AAAA.
-    Aprobación: aparición del PROYECTO_ID en movimientos-de-proyectos con
-    MOVIMIENTO~'SANCION' EN CUALQUIER MOMENTO (no acotado a la cohorte),
-    excluyendo medias sanciones explícitas (_es_media_sancion).
+    Identificación PE: EXP_DIPUTADOS o EXP_SENADO con patrón NNNN-PE-AAAA,
+    y TIPO con "PROYECTO DE LEY" (ADR-0062: los TIPO "MENSAJE" a secas son
+    comunicaciones administrativas — avisos de vetos, resoluciones — que
+    jamás pueden sancionarse y contaminaban el denominador: 4 de 20 en la
+    cohorte de jul-2025).
+
+    Aprobación: PROYECTO_ID presente en el dataset oficial leyes-sancionadas
+    de HCDN (ADR-0062). El dataset movimientos-de-proyectos que se usaba
+    antes solo registra la vida del expediente EN DIPUTADOS: para un
+    proyecto con origen en Diputados la sanción definitiva ocurre en el
+    SENADO y jamás aparece como movimiento "SANCION" — el numerador era
+    ciego a toda ley sancionada por la cámara revisora (verificado: leyes
+    27.783, 27.799 y 27.801, las tres PE de la cohorte vigente, las tres
+    invisibles para la métrica anterior; el 0,0% publicado era en realidad
+    18,8%).
 
     Fuente: datos.hcdn.gob.ar CKAN
       - proyectos-parlamentarios: 22b2d52c-7a0e-426b-ac0a-a3326c388ba6
-      - movimientos-de-proyectos: 6108ea83-3f12-423c-a136-df1ae9cb2972
+      - leyes-sancionadas:        68dfd7f8-91f3-4ecf-aebf-a860d1ca1a98
     """
     try:
         hoy = date.today()
@@ -879,20 +898,16 @@ def fetch_eficacia_legislativa() -> dict | None:
             r["PROYECTO_ID"]
             for r in raw_pe
             if cohorte_desde <= str(r.get("PUBLICACION_FECHA", ""))[:10] <= cohorte_hasta
+            and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()
             and (
                 _RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
                 or _RE_PE_EXP.search(r.get("EXP_SENADO", "") or "")
             )
         }
         if not pe_cohorte:
-            raise ValueError("Sin proyectos PE en la cohorte madura (hoy-730d a hoy-365d)")
+            raise ValueError("Sin proyectos de ley PE en la cohorte madura (hoy-730d a hoy-365d)")
 
-        raw_san = _hcdn_paginate(HCDN_MOVIMIENTOS_RID, q="SANCION")
-        sancionados: set[str] = {
-            r["PROYECTO_ID"]
-            for r in raw_san
-            if not _es_media_sancion(str(r.get("MOVIMIENTO", "")))
-        }
+        sancionados = _leyes_sancionadas_ids()
 
         aprobados = pe_cohorte & sancionados
         total     = len(pe_cohorte)
@@ -907,7 +922,7 @@ def fetch_eficacia_legislativa() -> dict | None:
             "cohorte_hasta":     cohorte_hasta,
             "dias_madurado_min": 365,
             "unidad":            "% de proyectos",
-            "fuente":            "datos.hcdn.gob.ar — proyectos-parlamentarios + movimientos-de-proyectos",
+            "fuente":            "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
             "fecha_dato":        str(hoy),
             "desactualizado":    False,
         }

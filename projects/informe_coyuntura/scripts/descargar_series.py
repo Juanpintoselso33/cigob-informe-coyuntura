@@ -463,30 +463,31 @@ def _hcdn_ventanas_12m() -> list:
 
 
 def fetch_eficacia_serie() -> list:
-    """Serie mensual del % de proyectos PE MADUROS (publicados 12-24 meses
-    antes de cada mes) que se sancionaron alguna vez, evaluado a fin de ese
-    mes — misma fórmula que el indicador tras ADR-0061 (cohorte madura, ya
-    no ventana compartida entre publicación y sanción; ver fetch_eficacia_legislativa
-    en politica.py para el porqué). Reutiliza _hcdn_ventanas_12m() pero
-    reinterpreta su `cutoff` como el LÍMITE SUPERIOR de la cohorte de
-    publicación (no como el piso de una ventana compartida). Reproducible:
-    la sanción se acota a lo ocurrido hasta el CIERRE de ese mes histórico,
-    no hasta hoy, para que un punto ya publicado no cambie retroactivamente
-    solo porque el proyecto finalmente se sancionó más tarde.
-    [[YYYY-MM-01, %]]."""
+    """Serie mensual del % de proyectos de ley PE MADUROS (publicados 12-24
+    meses antes de cada mes) que se convirtieron en ley, evaluado a fin de
+    ese mes — misma fórmula que el indicador tras ADR-0061 (cohorte madura)
+    y ADR-0062 (numerador desde el dataset leyes-sancionadas, que cubre las
+    sanciones del Senado; denominador sin comunicaciones administrativas —
+    ver fetch_eficacia_legislativa en politica.py). Reutiliza
+    _hcdn_ventanas_12m() reinterpretando su `cutoff` como el LÍMITE SUPERIOR
+    de la cohorte de publicación. Reproducible: la sanción se acota por
+    SANCION_DEFINITIVA al CIERRE de ese mes histórico, no hasta hoy, para
+    que un punto ya publicado no cambie retroactivamente solo porque el
+    proyecto finalmente se sancionó más tarde. [[YYYY-MM-01, %]]."""
     raw_pe = politica._hcdn_paginate(politica.HCDN_PROYECTOS_RID, q="-PE-")
     pe = [(r["PROYECTO_ID"], str(r.get("PUBLICACION_FECHA", ""))[:10]) for r in raw_pe
           if r.get("PROYECTO_ID")
+          and "PROYECTO DE LEY" in str(r.get("TIPO", "")).upper()
           and (politica._RE_PE_EXP.search(r.get("EXP_DIPUTADOS", "") or "")
                or politica._RE_PE_EXP.search(r.get("EXP_SENADO", "") or ""))]
-    raw_san = politica._hcdn_paginate(politica.HCDN_MOVIMIENTOS_RID, q="SANCION")
-    san = [(str(r.get("PROYECTO_ID", "")), str(r.get("FECHA", ""))[:10]) for r in raw_san
-           if r.get("PROYECTO_ID")
-           and not politica._es_media_sancion(str(r.get("MOVIMIENTO", "")))]
+    raw_leyes = politica._hcdn_paginate(politica.HCDN_LEYES_SANC_RID)
+    san = [(str(r.get("PROYECTO_ID", "")).strip(), str(r.get("SANCION_DEFINITIVA", ""))[:10])
+           for r in raw_leyes if r.get("PROYECTO_ID")]
     out = []
     for ym, cohorte_hasta, fin in _hcdn_ventanas_12m():
         cohorte_desde = (date.fromisoformat(cohorte_hasta) - timedelta(days=365)).isoformat()
         pe_ids = {pid for pid, f in pe if cohorte_desde <= f <= cohorte_hasta}
+        # "NA" en SANCION_DEFINITIVA queda excluido solo ('N' > dígitos en str)
         san_ids = {pid for pid, f in san if f <= fin}
         if pe_ids:
             out.append([f"{ym}-01", round(len(pe_ids & san_ids) / len(pe_ids) * 100.0, 1)])

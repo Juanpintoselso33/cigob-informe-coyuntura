@@ -1219,41 +1219,41 @@ def test_fetch_adhesion_reformas_provincial_deduplica_filas_repetidas(monkeypatc
     assert resultado["n_provincias"] == 2  # CATAMARCA + CHUBUT, no 3
 
 
-# ── eficacia_legislativa: media sanción no es ley ────────────────────────────
+# ── eficacia_legislativa: cohorte madura × leyes-sancionadas (ADR-0061/0062) ──
 
-def test_es_media_sancion_distingue_etiquetas():
-    assert politica._es_media_sancion("TEXTO DE LA MEDIA SANCION")
-    assert politica._es_media_sancion("Texto de la media sancion con modificaciones")
-    assert not politica._es_media_sancion("CONSIDERACION Y SANCION")
-    assert not politica._es_media_sancion("TEXTO SANCION DEFINITIVA")
-
-
-def test_fetch_eficacia_legislativa_excluye_medias_sanciones(monkeypatch):
-    # regresión (auditoría 2026-07-09): q='SANCION' del CKAN también matchea
-    # 'TEXTO DE LA MEDIA SANCION' (aprobación de UNA cámara, no ley) y esas
-    # filas contaban como proyecto aprobado. Acá: 2 proyectos PE en la
-    # cohorte madura (publicados hace ~500 días, ADR-0061); uno con sanción
-    # real, otro SOLO con media sanción -> 1/2 = 50%, no 100%.
+def test_fetch_eficacia_legislativa_cruza_leyes_sancionadas(monkeypatch):
+    """ADR-0062: la aprobación se determina contra el dataset oficial
+    leyes-sancionadas (cubre sanciones del SENADO, invisibles en
+    movimientos-de-proyectos), y el denominador solo admite TIPO con
+    'PROYECTO DE LEY' — un 'MENSAJE' a secas (comunicación de un veto) no
+    puede sancionarse y no debe contarse como proyecto enviado."""
     publicado = (datetime.now() - timedelta(days=500)).strftime("%Y-%m-%d")
-    sancionado_en = (datetime.now() - timedelta(days=100)).strftime("%Y-%m-%d")
 
     def fake_paginate(rid, q=""):
         if rid == politica.HCDN_PROYECTOS_RID:
             return [
-                {"PROYECTO_ID": "HCDN1", "EXP_DIPUTADOS": "0001-PE-2025", "PUBLICACION_FECHA": publicado},
-                {"PROYECTO_ID": "HCDN2", "EXP_SENADO": "0002-PE-2025", "PUBLICACION_FECHA": publicado},
+                {"PROYECTO_ID": "HCDN1", "TIPO": "MENSAJE Y PROYECTO DE LEY",
+                 "EXP_DIPUTADOS": "0001-PE-2025", "PUBLICACION_FECHA": publicado},
+                {"PROYECTO_ID": "HCDN2", "TIPO": "MENSAJE Y PROYECTO DE LEY",
+                 "EXP_SENADO": "0002-PE-2025", "PUBLICACION_FECHA": publicado},
+                # comunicación de veto: mismo patrón -PE- pero no es un proyecto
+                {"PROYECTO_ID": "HCDN3", "TIPO": "MENSAJE",
+                 "EXP_DIPUTADOS": "0003-PE-2025", "PUBLICACION_FECHA": publicado},
             ]
+        assert rid == politica.HCDN_LEYES_SANC_RID
         return [
-            {"PROYECTO_ID": "HCDN1", "MOVIMIENTO": "TEXTO DE LA MEDIA SANCION", "FECHA": sancionado_en},
-            {"PROYECTO_ID": "HCDN2", "MOVIMIENTO": "CONSIDERACION Y SANCION", "FECHA": sancionado_en},
+            # sancionada por el SENADO — el caso que la fuente vieja no veía
+            {"PROYECTO_ID": "HCDN1", "LEY": 27801, "CAMARA_SANCIONADORA": "Senado",
+             "SANCION_DEFINITIVA": "2026-02-27T00:00:00"},
         ]
 
     monkeypatch.setattr(politica, "_hcdn_paginate", fake_paginate)
     resultado = politica.fetch_eficacia_legislativa()
 
-    assert resultado["enviados_n"] == 2
-    assert resultado["aprobados_n"] == 1   # solo la sanción real; la media sanción no cuenta
+    assert resultado["enviados_n"] == 2     # HCDN3 (MENSAJE) fuera del denominador
+    assert resultado["aprobados_n"] == 1    # HCDN1, sancionada en Senado, SÍ cuenta
     assert resultado["valor"] == 50.0
+    assert "leyes-sancionadas" in resultado["fuente"]
 
 
 def test_fetch_eficacia_legislativa_excluye_proyecto_demasiado_reciente(monkeypatch):
@@ -1267,19 +1267,24 @@ def test_fetch_eficacia_legislativa_excluye_proyecto_demasiado_reciente(monkeypa
     def fake_paginate(rid, q=""):
         if rid == politica.HCDN_PROYECTOS_RID:
             return [
-                {"PROYECTO_ID": "HCDN1", "EXP_DIPUTADOS": "0001-PE-2025", "PUBLICACION_FECHA": maduro},
-                {"PROYECTO_ID": "HCDN2", "EXP_SENADO": "0002-PE-2026", "PUBLICACION_FECHA": reciente},
+                {"PROYECTO_ID": "HCDN1", "TIPO": "MENSAJE Y PROYECTO DE LEY",
+                 "EXP_DIPUTADOS": "0001-PE-2025", "PUBLICACION_FECHA": maduro},
+                {"PROYECTO_ID": "HCDN2", "TIPO": "MENSAJE Y PROYECTO DE LEY",
+                 "EXP_SENADO": "0002-PE-2026", "PUBLICACION_FECHA": reciente},
             ]
+        assert rid == politica.HCDN_LEYES_SANC_RID
         return [
-            {"PROYECTO_ID": "HCDN1", "MOVIMIENTO": "CONSIDERACION Y SANCION", "FECHA": reciente},
-            {"PROYECTO_ID": "HCDN2", "MOVIMIENTO": "CONSIDERACION Y SANCION", "FECHA": reciente},
+            {"PROYECTO_ID": "HCDN1", "LEY": 27790, "CAMARA_SANCIONADORA": "Diputados",
+             "SANCION_DEFINITIVA": reciente},
+            {"PROYECTO_ID": "HCDN2", "LEY": 27791, "CAMARA_SANCIONADORA": "Senado",
+             "SANCION_DEFINITIVA": reciente},
         ]
 
     monkeypatch.setattr(politica, "_hcdn_paginate", fake_paginate)
     resultado = politica.fetch_eficacia_legislativa()
 
     assert resultado["enviados_n"] == 1     # HCDN2 (reciente) queda afuera
-    assert resultado["aprobados_n"] == 1    # HCDN1 sí maduró y sí se sancionó
+    assert resultado["aprobados_n"] == 1    # HCDN1 sí maduró y sí es ley
     assert resultado["valor"] == 100.0
 
 
