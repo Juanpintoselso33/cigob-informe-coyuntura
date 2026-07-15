@@ -148,8 +148,12 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Nivel del ISAC desestacionalizado — la construcción es el sector más intensivo en mano de obra, 100 = 4T-2023.",
   },
   endeudamiento_familiar: {
-    latex: String.raw`100\cdot\frac{\text{deuda real de las familias}_{\text{hoy}}}{\text{deuda real}_{\text{4T-23}}}\cdot\frac{\text{mora}_{\text{4T-23}}}{\text{mora}_{\text{hoy}}}`,
-    leyenda: "Crédito de consumo (tarjetas + personales, BCRA) descontada la inflación, corregido por la mora: deuda que sube con mora estable = acceso al crédito (bueno); deuda que sube con mora disparada = endeudarse para llegar a fin de mes (malo).",
+    latex: String.raw`100\cdot\frac{\text{deuda real de las familias}_{\text{hoy}}}{\text{deuda real}_{\text{4T-23}}}`,
+    leyenda: "Crédito de consumo (tarjetas + personales, BCRA) descontado la inflación, como stock puro: mide el acceso de los hogares al financiamiento. El estrés de pago lo mide por separado la mora de las familias, en la misma dimensión.",
+  },
+  mora_familias: {
+    latex: String.raw`\frac{\text{mora}_{\text{pers}}\cdot\text{saldo}_{\text{pers}}+\text{mora}_{\text{tarj}}\cdot\text{saldo}_{\text{tarj}}}{\text{saldo}_{\text{pers}}+\text{saldo}_{\text{tarj}}}`,
+    leyenda: "Porcentaje de la cartera de consumo de las familias en situación irregular (Informe sobre Bancos, BCRA), ponderando la mora de personales y tarjetas por el saldo de cada línea. En el ITVC puntúa por el nivel relativo al 4T-2023, invertido: más mora, peor.",
   },
   pluriempleo: {
     latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4T-23}}}{\text{subocupaci\'on}_{\text{hoy}}}`,

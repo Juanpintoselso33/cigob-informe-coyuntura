@@ -437,6 +437,7 @@ export const BARRA_0_100 = new Set<string>([
   "eficacia_legislativa", "cohesion_bloque", "alineamiento_senadores_prov",
   "adhesion_reformas_provincial", "veto_quorum", "comisiones_caidas", "movilizacion_cepa",
   "informalidad", "pluriempleo", "sentimiento_digital", "icc_utdt", "indice_intencion_migratoria",
+  "mora_familias",
 ]);
 
 function clamp100(n: number): number { return Math.max(0, Math.min(100, n)); }
