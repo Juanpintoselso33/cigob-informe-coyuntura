@@ -100,15 +100,14 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,ratio_dnu,1.176,DNUs por ley (12m móviles),InfoLeg
 2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
-2025-12-01,iaf_transferencias,7.0,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2024-12-01,iaf_transferencias,35.5,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2023-12-01,iaf_transferencias,-28.7,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2022-12-01,iaf_transferencias,-5.4,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2021-12-01,iaf_transferencias,8.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2020-12-01,iaf_transferencias,-0.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2019-12-01,iaf_transferencias,-6.9,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2018-12-01,iaf_transferencias,-10.6,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2017-12-01,iaf_transferencias,4.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2025-12-01,iaf_transferencias,-0.8,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2024-12-01,iaf_transferencias,-7.7,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2023-12-01,iaf_transferencias,-4.9,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2022-12-01,iaf_transferencias,6.9,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2021-12-01,iaf_transferencias,10.1,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2020-12-01,iaf_transferencias,-4.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2019-12-01,iaf_transferencias,-6.8,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
+2018-12-01,iaf_transferencias,-1.7,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2026-07-01,eficacia_legislativa,17.6,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2026-06-01,eficacia_legislativa,22.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2026-05-01,eficacia_legislativa,15.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN

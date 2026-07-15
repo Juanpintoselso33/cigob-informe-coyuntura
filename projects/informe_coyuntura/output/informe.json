@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-15T15:52:41.751349",
+  "generated_at": "2026-07-15T16:09:17.427875",
   "period": "2026-07",
-  "score_global": 2.6,
+  "score_global": 2.7,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -417,7 +417,7 @@
       }
     },
     "politica": {
-      "score": 2.9,
+      "score": 3.0,
       "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -478,20 +478,20 @@
           "en_indice": false
         },
         "iaf_transferencias": {
-          "valor": 7.0,
+          "valor": -0.8,
           "var_nominal_pct": 40.7,
           "total_ref_mm": 104.0,
           "total_ant_mm": 74.0,
           "periodo": "2025 vs 2024",
-          "ipc_aplicado_pct": 31.5,
+          "ipc_aplicado_pct": 41.9,
           "unidad": "% interanual real",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
           "fecha_dato": "2026-07-15",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
-          "puntaje_itcp": 91.0,
-          "puntaje_banda": 91.0,
+          "puntaje_itcp": 73.4,
+          "puntaje_banda": 73.4,
           "peso_efectivo": 0.1
         },
         "eficacia_legislativa": {
@@ -637,7 +637,7 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 71.3,
+        "valor": 69.5,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -680,13 +680,13 @@
           "alianzas_territoriales": {
             "nombre": "Alianzas territoriales",
             "peso": 0.25,
-            "puntaje": 89.4,
+            "puntaje": 82.3,
             "indicadores": {
               "iaf_transferencias": {
                 "peso": 0.4,
-                "puntaje_banda": 91.0,
-                "puntaje_aplicado": 91.0,
-                "valor": 7.0,
+                "puntaje_banda": 73.4,
+                "puntaje_aplicado": 73.4,
+                "valor": -0.8,
                 "peso_efectivo": 0.1
               },
               "alineamiento_senadores_prov": {
