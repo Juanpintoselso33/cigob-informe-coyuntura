@@ -174,9 +174,14 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación (card) · nivel vs IPC general (índice)",
   },
   endeudamiento_familiar: {
-    que: "Cuánto deben las familias por consumo (tarjetas + personales). En el ITVC puntúa la deuda REAL corregida por la tasa de mora de esa cartera (Informe sobre Bancos, BCRA): más crédito con mora estable es acceso; más crédito con mora disparada es sobreendeudamiento por necesidad.",
-    aporta: "La corrección por mora resuelve la ambigüedad de polaridad: la deuda real creció ~66% desde el 4T-2023 pero la irregularidad de las familias se multiplicó por 5,5 — el índice del componente lo castiga con fuerza.",
-    frecuencia: "Mensual (mora con ~2 meses de rezago)", tipo: "Índice deuda real × calidad de cartera",
+    que: "Cuánto deben las familias por consumo (tarjetas + personales). En el ITVC puntúa el NIVEL de deuda REAL (descontada la inflación), rebaseado a 100 = 4T-2023: más crédito real es más acceso al financiamiento.",
+    aporta: "Mide el acceso al crédito de los hogares como stock puro. La otra cara —si esa deuda se puede pagar— la mide la mora de las familias, su compañera en la dimensión de vulnerabilidad: juntas distinguen crédito que financia consumo de endeudamiento por necesidad.",
+    frecuencia: "Mensual (~2 meses de rezago)", tipo: "Índice de deuda real (B100)",
+  },
+  mora_familias: {
+    que: "Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular — con atrasos de pago —, ponderado por el saldo de cada línea.",
+    aporta: "Es la señal directa de estrés financiero de los hogares: la deuda puede crecer por acceso sano o por necesidad, pero la mora que se dispara solo tiene una lectura. Puntúa invertida: más mora, peor.",
+    frecuencia: "Mensual (~2 meses de rezago)", tipo: "Nivel (%)",
   },
   peso_tarifas: {
     que: "Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITVC puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.",

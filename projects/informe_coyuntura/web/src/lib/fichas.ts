@@ -1906,23 +1906,55 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API pública para el stock y lectura de la planilla oficial para deuda real y mora.",
     },
     transformaciones: [
-      "El componente combina dos cosas: la deuda de las familias deflactada por IPC y la mora de esa cartera contra su nivel del 4º trimestre de 2023.",
-      "Polaridad empírica declarada: más deuda con mora estable es acceso al crédito (mejora); más deuda con mora disparada es sobreendeudamiento (deterioro).",
+      "El componente es la deuda de consumo de las familias deflactada por IPC, como índice contra su nivel del 4º trimestre de 2023: mide el acceso de los hogares al financiamiento como stock real puro.",
+      "La calidad de esa cartera —si la deuda se puede pagar— se mide por separado en la mora de las familias, su compañera en la dimensión: mantener la mora también acá la contaría dos veces.",
       "Sin piso de recorte deliberadamente: la crisis no se maquilla — se señaliza.",
     ],
     incidenciaTexto: [
-      "Es el único componente de la dimensión de vulnerabilidad financiera (10% del ITVC) — hoy la dimensión está marcada como crítica y es el componente que domina la lectura del índice.",
+      "Integra la dimensión de vulnerabilidad financiera (10% del ITVC), donde pesa 50% junto a la mora de las familias.",
     ],
     limitaciones: [
-      "La mora de las familias se multiplicó por más de cinco desde la base: el componente concentra el arrastre del índice, y así se publica.",
       "Card y componente miden cortes distintos de la misma realidad (stock vivo contra cartera bancaria consolidada).",
-      "Si el BCRA discontinuara la mora por línea, el plan declarado es volver a deuda real sin corrección.",
+      "Un stock real creciendo puede ser acceso sano o endeudamiento por necesidad — esa distinción la aporta la mora, leída en conjunto.",
     ],
-    faltantes: "Se mantiene el último valor publicado como desactualizado; sin el componente, la dimensión de vulnerabilidad desaparece y su peso se redistribuye.",
+    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componentes, la dimensión de vulnerabilidad desaparece y su peso se redistribuye.",
     revisiones: "La planilla oficial se relee completa en cada corrida y adopta las revisiones del BCRA.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC como deuda real castigada por mora, con la polaridad empírica documentada (corrección sobre el diseño original)." },
       { fecha: "2026-07-04", cambio: "Se decide no aplicarle piso de recorte: la primera prueba con piso maquillaba el deterioro y se revirtió." },
+      { fecha: "2026-07-15", cambio: "La mora salió del componente a un indicador propio de la misma dimensión: el endeudamiento quedó como stock real puro (acceso al crédito) y la mora como señal de estrés de pago — el compuesto multiplicativo penalizaba dos veces el mismo fenómeno dentro de un solo número." },
+    ],
+  },
+
+  mora_familias: {
+    tipo: "indicador",
+    id: "mora_familias",
+    cinturon: "vida_cotidiana",
+    rezago: "El anexo del Informe sobre Bancos se publica con ~2 meses de rezago.",
+    fuente: {
+      organismo: "BCRA",
+      operacion: "Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas",
+      serie: "InfBanc_Anexo.xlsx, hoja de calidad de cartera por líneas",
+      url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Informe_mensual_sobre_bancos.asp",
+      acceso: "Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual.",
+    },
+    transformaciones: [
+      "Mora ponderada: el ratio de irregularidad de préstamos personales y el de tarjetas de crédito se combinan según el saldo de cada línea.",
+      "En el ITVC puntúa por el nivel relativo al 4º trimestre de 2023 (índice base 100), invertido: más mora que en la base, peor puntaje.",
+      "Sin piso de recorte, igual que el resto de los componentes: el deterioro no se maquilla.",
+    ],
+    incidenciaTexto: [
+      "Integra la dimensión de vulnerabilidad financiera (10% del ITVC), donde pesa 50% junto al endeudamiento de consumo: la deuda mide el acceso al crédito, la mora mide si esa deuda se puede pagar.",
+    ],
+    limitaciones: [
+      "La mora de las familias se multiplicó por varias veces desde la base 4T-2023: el componente concentra buena parte del arrastre del índice, y así se publica.",
+      "Cubre el crédito bancario regulado: no ve el endeudamiento no bancario (fintech, cadenas de consumo, prestamistas informales), donde el estrés suele ser mayor.",
+      "El corte es la cartera consolidada del sistema, con el rezago de la planilla oficial.",
+    ],
+    faltantes: "Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado; sin dato, el peso se renormaliza dentro de la dimensión.",
+    revisiones: "La planilla oficial se relee completa en cada corrida y adopta las revisiones del BCRA.",
+    cambios: [
+      { fecha: "2026-07-15", cambio: "Entra al ITVC como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa." },
     ],
   },
 

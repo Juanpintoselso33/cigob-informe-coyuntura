@@ -338,15 +338,16 @@ def test_score_global_reconcilia_con_pesos():
 def test_vida_itvc_reconcilia():
     """Vida: la suma ponderada de los índices base-100 (peso_efectivo)
     reproduce el ITVC publicado y la tensión del cinturón es
-    5 − (ITVC−100)×0,2. Desde el ADR-0034 los 13 indicadores puntúan
-    (sentimiento digital dejó de ser contexto)."""
+    5 − (ITVC−100)×0,2. Desde el ADR-0034 todos los indicadores puntúan
+    (sentimiento digital dejó de ser contexto); desde el ADR-0067 son 14
+    (la mora salió del compuesto de endeudamiento como indicador propio)."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
     c = informe["cinturones"]["vida_cotidiana"]
     assert c.get("itvc"), "vida sin bloque itvc"
     itvc_val = c["itvc"]["valor"]
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
-    assert len(en_indice) == 13, f"esperaba 13 componentes en el índice, hay {len(en_indice)}"
+    assert len(en_indice) == 14, f"esperaba 14 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"
@@ -391,13 +392,27 @@ def test_dimensiones_criticas_marcadas():
     assert informe["cinturones"]["vida_cotidiana"]["itvc"]["dimensiones"]["vulnerabilidad"]["critica"]
 
 
-def test_endeudamiento_se_puntua_con_mora():
-    """Endeudamiento (D3 del ITVC): su índice viene de la serie itvc_endeudamiento
-    (deuda real de familias × corrección por mora, Informe sobre Bancos)."""
+def test_endeudamiento_y_mora_separados():
+    """Vulnerabilidad (D3 del ITVC, ADR-0067): endeudamiento puntúa el stock
+    REAL puro (serie itvc_endeudamiento, ya sin el factor mora) y la mora es
+    un indicador propio cuya card ES el último punto de su serie (sintetizada
+    en publicar, sin colector)."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
     series = json.loads((DATA / "series.json").read_text(encoding="utf-8"))
-    end = informe["cinturones"]["vida_cotidiana"]["indicadores"]["endeudamiento_familiar"]
+    vida = informe["cinturones"]["vida_cotidiana"]["indicadores"]
+    end = vida["endeudamiento_familiar"]
     assert end.get("indice_itvc") is not None, "endeudamiento sin índice ITVC"
     serie = series.get("itvc_endeudamiento") or []
     assert serie, "falta la serie itvc_endeudamiento"
-    assert abs(end["indice_itvc"] - serie[-1]["valor"]) <= 0.15
+    # el stock real puro puede superar el techo de winsorización (ADR-0033):
+    # el índice publicado es el crudo acotado a 140
+    esperado = min(serie[-1]["valor"], 140.0)
+    assert abs(end["indice_itvc"] - esperado) <= 0.15
+
+    mora = vida.get("mora_familias")
+    assert mora, "falta la card de mora_familias"
+    serie_mora = series.get("mora_familias") or []
+    assert serie_mora, "falta la serie mora_familias"
+    assert mora["valor"] == serie_mora[-1]["valor"]   # titular = último punto
+    assert mora.get("en_indice"), "la mora debe puntuar en el ITVC"
+    assert mora.get("indice_itvc") is not None

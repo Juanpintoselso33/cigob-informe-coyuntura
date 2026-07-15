@@ -50,7 +50,11 @@ DIMENSIONES_ITVC = {
     "vulnerabilidad": {
         "nombre": "Vulnerabilidad financiera",
         "peso": 0.10,
-        "indicadores": {"endeudamiento_familiar": 1.0},
+        # ADR-0067: la mora sale del compuesto multiplicativo I_EC y puntúa
+        # como indicador propio — endeudamiento queda como stock REAL puro
+        # (acceso al crédito) y la mora como señal de estrés de pago. 50/50
+        # provisorio, sujeto a revisión editorial (misma nota que ADR-0064).
+        "indicadores": {"endeudamiento_familiar": 0.5, "mora_familias": 0.5},
     },
     "empleo": {
         "nombre": "Prospectivas de empleo",

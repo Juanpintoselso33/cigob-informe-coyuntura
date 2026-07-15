@@ -244,7 +244,8 @@ export const LABELS: Record<string, string> = {
   derrotas_legislativas: "Derrotas legislativas del Ejecutivo",
   // vida cotidiana (claves de publicar.py)
   brecha_salario_cbt: "Salario real vs. canasta", ipc_alimentos: "Inflación de alimentos",
-  endeudamiento_familiar: "Endeudamiento de consumo", peso_tarifas: "Peso de tarifas (regulados)",
+  endeudamiento_familiar: "Endeudamiento de consumo", mora_familias: "Mora de las familias",
+  peso_tarifas: "Peso de tarifas (regulados)",
   consumo_carne: "Consumo de carne per cápita", informalidad: "Informalidad laboral",
   mortalidad_pymes: "Actividad industrial (IPI)", despacho_cemento: "Construcción (ISAC)",
   pluriempleo: "Subocupación demandante", inseguridad: "Victimización (IVI)",
@@ -310,6 +311,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   derrotas_legislativas: "derrotas 12m",
   // vida cotidiana
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
+  mora_familias: "%",
   peso_tarifas: "% m/m", consumo_carne: "kg/hab", informalidad: "%", mortalidad_pymes: "% m/m",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.",
@@ -358,7 +360,8 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   derrotas_legislativas: "Derrotas en el recinto (vetos insistidos + decretos rechazados, acum. 12 meses)",
   // vida cotidiana
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
-  endeudamiento_familiar: "Billones de pesos", peso_tarifas: "% mensual",
+  endeudamiento_familiar: "Billones de pesos", mora_familias: "% de la cartera en situación irregular",
+  peso_tarifas: "% mensual",
   consumo_carne: "kg por habitante/año", informalidad: "% de asalariados",
   mortalidad_pymes: "% mensual", despacho_cemento: "Índice", pluriempleo: "% de ocupados",
   inseguridad: "% de hogares víctimas (últimos 12 meses)", icc_utdt: "Índice",

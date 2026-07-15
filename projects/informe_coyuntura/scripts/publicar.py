@@ -54,7 +54,7 @@ def build_vida(raw):
     _add(out, "endeudamiento_familiar",
          round(cc_val / 1e6, 2) if isinstance(cc_val, (int, float)) else cc_val,
          "billones de pesos (consumo)",
-         "BCRA — crédito de consumo (API) + Informe sobre Bancos (mora)", cc.get("fecha"))
+         "BCRA — crédito de consumo (API) + Informe sobre Bancos", cc.get("fecha"))
     reg = indec.get("ipc_regulados", {})
     _add(out, "peso_tarifas", round(reg.get("variacion_mensual_pct", 0), 2),
          "% m/m regulados", "INDEC — IPC precios regulados (vía datos.gob.ar)", reg.get("fecha"))
@@ -536,6 +536,10 @@ def _itvc_indices(vida_ind, series):
         idx[ikey] = serie[-1]["valor"] if serie else None
     # Rebase directo desde las series oficiales existentes
     idx["brecha_salario_cbt"] = _itvc_rebase_de_serie(series, "brecha_salario_cbt")
+    # Mora del crédito familiar (ADR-0067): % de cartera irregular, invertido
+    # (más mora = peor). Compañera de endeudamiento_familiar en Vulnerabilidad
+    # desde que el factor mora salió del compuesto I_EC.
+    idx["mora_familias"] = _itvc_rebase_de_serie(series, "mora_familias", invertido=True)
     idx["icc_utdt"] = _itvc_rebase_de_serie(series, "icc_utdt")
     idx["pluriempleo"] = _itvc_rebase_de_serie(series, "pluriempleo", invertido=True)
     # Informalidad TRIMESTRAL (52.2_ASDJ, barrido vida 2/13): la 303.1 murió en
@@ -1159,6 +1163,20 @@ def main():
                 raw.get("bcra", {}).get("credito_consumo_serie"), series.get("ipc_nivel"))
             if real is not None and "endeudamiento_familiar" in enriquecido:
                 enriquecido["endeudamiento_familiar"]["var_real_12m"] = real
+            # Mora de las familias (ADR-0067): sin colector propio — la card
+            # se sintetiza desde la serie del anexo del Informe sobre Bancos
+            # (el titular ES el último punto, invariante serie-titular por
+            # construcción). Mismo patrón que la card de inseguridad (IVI).
+            serie_mora = series.get("mora_familias") or []
+            if serie_mora:
+                ult_mora = serie_mora[-1]
+                _add(enriquecido, "mora_familias", ult_mora["valor"],
+                     "% de la cartera en situación irregular",
+                     "BCRA — Informe sobre Bancos (personales + tarjetas de familias)",
+                     ult_mora["fecha"][:7],
+                     detalle_txt=("Porcentaje del crédito de consumo de las familias "
+                                  "(préstamos personales y tarjetas) con atrasos de pago, "
+                                  "ponderado por el saldo de cada línea."))
             # Inseguridad: la card muestra el IVI mensual (LICIP-UTDT), la
             # métrica del ITVC desde el ADR-0032. El SNIC anual (denuncias
             # registradas) queda como contraste declarado en el detalle.

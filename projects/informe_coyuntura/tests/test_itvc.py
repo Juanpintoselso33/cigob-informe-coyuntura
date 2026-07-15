@@ -15,15 +15,17 @@ import itvc
 
 # Fixture con índices base-100 realistas (100 = promedio 4T-2023):
 # ingresos = 0,65×87,5 + 0,35×96 = 90,5 · precios = 0,4×95 + 0,6×60 = 74,0
-# vulnerabilidad = 118,0 · empleo = 0,45×102 + 0,4×80 + 0,15×96 = 92,3
+# vulnerabilidad (ADR-0067) = 0,5×118 + 0,5×60 = 89,0
+# empleo = 0,45×102 + 0,4×80 + 0,15×96 = 92,3
 # confianza (ADR-0034) = 0,45×118 + 0,3×104 + 0,1×110 + 0,1×92 + 0,05×130 = 111,0
-# ITVC = 0,35×90,5 + 0,25×74 + 0,10×118 + 0,15×92,3 + 0,15×111,0 = 92,5
+# ITVC = 0,35×90,5 + 0,25×74 + 0,10×89 + 0,15×92,3 + 0,15×111,0 = 89,6
 EJEMPLO = {
     "brecha_salario_cbt": 87.5,
     "informalidad": 96.0,
     "ipc_alimentos": 95.0,
     "peso_tarifas": 60.0,
     "endeudamiento_familiar": 118.0,
+    "mora_familias": 60.0,
     "mortalidad_pymes": 102.0,
     "despacho_cemento": 80.0,
     "pluriempleo": 96.0,
@@ -40,10 +42,10 @@ def test_itvc_reproduce_ejemplo():
     dims = r["dimensiones"]
     assert dims["ingresos"]["puntaje"] == 90.5
     assert dims["precios"]["puntaje"] == 74.0
-    assert dims["vulnerabilidad"]["puntaje"] == 118.0
+    assert dims["vulnerabilidad"]["puntaje"] == 89.0
     assert dims["empleo"]["puntaje"] == 92.3
     assert dims["confianza"]["puntaje"] == 111.0
-    assert r["valor"] == 92.5
+    assert r["valor"] == 89.6
     assert r["banda"] == "deterioro_moderado"
     assert r["ajustes_aplicados"] == []
 
@@ -57,6 +59,8 @@ def test_pesos_del_documento():
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
     d = itvc.DIMENSIONES_ITVC
     assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.65, "informalidad": 0.35}
+    assert d["vulnerabilidad"]["indicadores"] == {"endeudamiento_familiar": 0.5,
+                                                  "mora_familias": 0.5}
     assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.40, "peso_tarifas": 0.60}
     assert d["empleo"]["indicadores"] == {"mortalidad_pymes": 0.45, "despacho_cemento": 0.40,
                                           "pluriempleo": 0.15}
@@ -110,9 +114,9 @@ def test_ajuste_manual_del_analista():
     r = itvc.calcular_itvc(EJEMPLO, ajustes)
     assert len(r["ajustes_aplicados"]) == 1
     assert (r["ajustes_aplicados"][0]["de"], r["ajustes_aplicados"][0]["a"]) == (60.0, 80.0)
-    # precios = 0,4×95 + 0,6×80 = 86
+    # precios = 0,4×95 + 0,6×80 = 86 → ITVC = 89,57 + 0,25×12 = 92,6
     assert r["dimensiones"]["precios"]["puntaje"] == 86.0
-    assert r["valor"] > 92.7
+    assert r["valor"] == 92.6
 
 
 def test_sin_datos_devuelve_none():

@@ -1422,25 +1422,39 @@ def _anexo_bancos_familias() -> tuple:
 
 
 def fetch_itvc_endeudamiento() -> list:
-    """I_EC del doc 260702: crédito de consumo de FAMILIAS (personales +
-    tarjetas, anexo del Informe sobre Bancos — mismo corte para saldo y mora)
-    en términos REALES, corregido por la tasa de irregularidad:
+    """Crédito de consumo de FAMILIAS (personales + tarjetas, anexo del
+    Informe sobre Bancos) en términos REALES — stock puro, base 4T-2023:
 
-        I_EC(t) = 100 × (Deuda_real_t / Deuda_real_4T23) × (Mora_4T23 / Mora_t)
+        I_EC(t) = 100 × (Deuda_real_t / Deuda_real_4T23)
 
-    Deuda creciendo con mora estable = mejora de acceso al crédito; deuda
-    creciendo con mora disparada = sobreendeudamiento por necesidad (cae)."""
-    deuda, mora = _anexo_bancos_familias()
+    ADR-0067: el factor de mora que multiplicaba este índice (I_EC del doc
+    260702) salió a un indicador propio (`mora_familias`) — mantenerlo acá
+    la contaría dos veces (el mismo doble conteo que ADR-0033 eliminó entre
+    brecha y alimentos). Deuda real creciendo = acceso al crédito; el estrés
+    de pago lo mide la mora por separado, en la misma dimensión."""
+    deuda, _mora = _anexo_bancos_familias()
     ipc = _nivel_mensual("148.3_INIVELNAL_DICI_M_26", limit=220)
     real = {ym: deuda[ym] / ipc[ym] for ym in sorted(set(deuda) & set(ipc))}
-    base_real, base_mora = _base_t423(real), _base_t423(mora)
+    base_real = _base_t423(real)
     out = []
     for ym in sorted(real):
-        if ym < "2023-10" or ym not in mora or not mora[ym]:
+        if ym < "2023-10":
             continue
-        indice = 100.0 * (real[ym] / base_real) * (base_mora / mora[ym])
+        indice = 100.0 * (real[ym] / base_real)
         out.append([f"{ym}-01", round(indice, 1)])
     return out
+
+
+def fetch_mora_serie() -> list:
+    """Mora del crédito familiar (ADR-0067): % de la cartera de consumo de
+    FAMILIAS (personales + tarjetas) en situación irregular, ponderado por el
+    saldo de cada línea — anexo del Informe sobre Bancos, mismo corte que el
+    endeudamiento. Serie desde 2021-07 (contexto pre-mandato, como la brecha);
+    el rebase B100 invertido (más mora = peor) lo hace publicar._itvc_indices.
+    [[YYYY-MM-01, %]]."""
+    _deuda, mora = _anexo_bancos_familias()
+    return [[f"{ym}-01", round(v, 2)] for ym, v in sorted(mora.items())
+            if ym >= "2021-07" and v]
 
 
 IVI_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "ivi_serie.json"
@@ -1720,6 +1734,7 @@ VIDA_DERIVADAS += [
     ("itvc_ipi", "índice (100 = 4T-2023)", "INDEC IPI desestacionalizado", fetch_itvc_ipi),
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
+    ("mora_familias", "% de cartera irregular (familias)", "BCRA — Informe sobre Bancos (personales + tarjetas)", fetch_mora_serie),
     ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie_cached),
     # inseguridad = IVI mensual (ADR-0032); el SNIC anual sigue como serie de
     # contraste bajo clave propia (sin card: alimenta la ficha y validaciones)
