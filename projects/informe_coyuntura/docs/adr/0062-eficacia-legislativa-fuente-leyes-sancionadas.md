@@ -110,6 +110,44 @@ comparte la fuente con el defecto documentado acá. **Queda flaggeado para
 auditoría propia** — no se cambia en este ADR para no alterar dos
 indicadores en el mismo movimiento sin revisión editorial.
 
+## Anexo — auditoría de profundidad (mismo día, pedida por el usuario)
+
+Tras el fix, el usuario pidió verificar si 18,8% seguía siendo bajo por otro
+error. Resultados de la auditoría exhaustiva:
+
+1. **El filtro `q="-PE-"` no pierde nada**: los PROYECTO_ID de las 161 leyes
+   PE del dataset leyes-sancionadas están todos en el dump de proyectos con
+   ese filtro (0 faltantes).
+2. **La ley 27.784 (antimafia, 0009-PE-2024) no es un faltante**: publicada
+   el 2024-07-12, tres días antes del inicio de la cohorte vigente
+   (2024-07-15) — pertenece a la cohorte anterior.
+3. **El dataset de leyes está completo y al día**: 42 sancionadas en 2024,
+   17 en 2025 y 14 en 2026 (máxima: 27.813) — coincide con los conteos de
+   Chequeado/HCDN.
+4. **Destino de los 16 proyectos de la cohorte, uno por uno**: 3 leyes
+   (27.783 PASO, 27.799 Inocencia Fiscal, 27.801 Penal Juvenil) · 3 con
+   media sanción en el Senado (2 tratados girados en feb-2026 y Ficha
+   Limpia, rechazada en el recinto del Senado por un voto — correctamente
+   no cuenta como ley) · 10 sin tratamiento (Aerolíneas, Hojarasca —que
+   caducó y fue re-enviada en 2026 con expediente nuevo—, reformas penales,
+   partidos políticos). El 18,8% es fiel al registro político conocido; si
+   los 2 tratados se sancionan, sube a ~31%.
+
+### ¿Bajar la ventana de maduración? — considerada y descartada
+
+Duración real publicación→sanción de las leyes PE (join proyectos ×
+leyes-sancionadas): mediana histórica **68 días** (161 leyes, desde 2008) y
+**126 días** desde 2016 — el origen del "2-4 meses" del benchmark. Pero bajo
+la gestión actual la distribución se corrió dramáticamente: mediana **310
+días**, p75 **653**, con la 27.801 en 592 días, la 27.803 en 685 y la
+27.805 en 729. Bajar la maduración mínima (p.ej. cohorte de 6-18 meses)
+volvería a subcontar: quedarían sistemáticamente afuera las sanciones que
+llegan entre los 12 y 24 meses de trámite — la mitad de los éxitos de esta
+era. La ventana 12-24 meses queda como está. Limitación simétrica declarada:
+un trámite que supere los 24 meses nunca llega a contarse dentro de su
+cohorte (hasta ahora solo pasó con proyectos heredados de la gestión
+anterior, p.ej. 27.740: 1.358 días).
+
 ## Consecuencias
 
 - `eficacia_legislativa` pasa de 0,0% (0/20) a **18,8% (3/16)** en la

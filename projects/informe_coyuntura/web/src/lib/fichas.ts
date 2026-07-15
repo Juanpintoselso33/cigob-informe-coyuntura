@@ -934,6 +934,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
+      "Un trámite que supera los 24 meses nunca llega a contarse dentro de su cohorte: la ventana captura la mediana y el tramo alto de las duraciones observadas, pero los trámites excepcionalmente largos quedan fuera por construcción.",
       "Denominador chico: con unos quince a veinte proyectos por cohorte, uno solo mueve varios puntos porcentuales.",
       "Cuenta proyectos por igual, sin ponderar su peso político.",
       "La serie histórica es reproducible: si un proyecto se sanciona después de publicado un punto de la serie, ese punto no se corrige retroactivamente (aunque el indicador vigente sí lo refleje al recorrer la fuente completa).",
