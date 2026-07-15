@@ -290,26 +290,54 @@ def test_contexto_no_altera_el_indice():
 
 def test_ajuste_automatico_saldo_por_contraccion():
     """Superávit con importaciones cayendo más de lo que crecen las expo →
-    ajuste a 60 (caso del doc: el superávit 2024/25 'por contracción')."""
+    ajuste interpolado hacia 60 (caso del doc: el superávit 2024/25 'por
+    contracción'; share_impo=9000/10500=85,7% → puntaje 85 − 0,714×25 = 67,1;
+    ADR-0056 suaviza el force-a-60 original de este mismo caso)."""
     ind = {"valor": 17125, "expo_var_ia": 2.0, "impo_var_ia": -15.0,
            "expo_delta_12m": 1500, "impo_delta_12m": -9000}
     aj = itcm.ajuste_automatico_saldo(ind)
-    assert aj is not None and aj["puntaje"] == 60 and aj["origen"] == "automatico"
+    assert aj is not None and aj["puntaje"] == 67.1 and aj["origen"] == "automatico"
     assert "contracción de importaciones" in aj["justificacion"]
     r = itcm.calcular_itcm(dict(EJEMPLO), {"saldo_comercial_12m": aj})
-    # fiscal = 0,6×57,3 (recaudación interpolada) + 0,4×60 (ajuste) = 58,4
-    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 58.4
+    # fiscal = 0,6×57,3 (recaudación interpolada) + 0,4×67,1 (ajuste) = 61,2
+    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 61.2
     assert r["ajustes_aplicados"][0]["origen"] == "automatico"
+
+
+def test_ajuste_automatico_saldo_interpolado():
+    """La penalización escala con share_impo (mejora_impo/mejora_total), sin
+    acantilado: mismo p_banda=85 (valor=17125, flat más allá de la última
+    ancla), variando cuánto de la mejora es atribuible a la caída de M."""
+    base = {"valor": 17125, "expo_var_ia": 0.0, "impo_var_ia": 0.0}
+    # share_impo = 60% → 85 − 0,2×25 = 80,0
+    aj60 = itcm.ajuste_automatico_saldo(
+        dict(base, expo_delta_12m=4000, impo_delta_12m=-6000))
+    assert aj60["puntaje"] == 80.0
+    # share_impo = 80% → 85 − 0,6×25 = 70,0
+    aj80 = itcm.ajuste_automatico_saldo(
+        dict(base, expo_delta_12m=2000, impo_delta_12m=-8000))
+    assert aj80["puntaje"] == 70.0
+    # share_impo = 100% (expo sin mejora) → piso de 60, incluso con p_banda
+    # apenas por encima de 60 (valor=8000 → interpolado 61,5): el caso límite
+    # que antes quedaba fuera del gate por usar el escalonado (puntaje_banda
+    # daba exactamente 60 y el rule se abstenía) ahora sí se evalúa.
+    aj_full = itcm.ajuste_automatico_saldo(
+        {"valor": 8000, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
+         "expo_delta_12m": 0, "impo_delta_12m": -8000})
+    assert aj_full["puntaje"] == 60.0
+    # monotonía: a mayor share_impo, menor puntaje
+    assert aj60["puntaje"] > aj80["puntaje"] > aj_full["puntaje"]
 
 
 def test_ajuste_automatico_saldo_no_aplica():
     """No opina cuando: las impo crecen (superávit genuino), la caída de impo
-    no domina, no hay superávit relevante, o faltan los campos de composición."""
+    no domina (share_impo ≤ 50%), no hay superávit relevante, o faltan los
+    campos de composición."""
     # impo creciendo (situación jun-2026 real)
     assert itcm.ajuste_automatico_saldo(
         {"valor": 18322, "expo_var_ia": 14.1, "impo_var_ia": 10.6,
          "expo_delta_12m": 11451, "impo_delta_12m": 7125}) is None
-    # impo caen pero la mejora viene más de las expo
+    # impo caen pero la mejora viene más de las expo (share_impo = 5,3%)
     assert itcm.ajuste_automatico_saldo(
         {"valor": 16000, "expo_var_ia": 12.0, "impo_var_ia": -1.0,
          "expo_delta_12m": 9000, "impo_delta_12m": -500}) is None
@@ -317,10 +345,10 @@ def test_ajuste_automatico_saldo_no_aplica():
     assert itcm.ajuste_automatico_saldo(
         {"valor": -2000, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
          "expo_delta_12m": 0, "impo_delta_12m": -8000}) is None
-    # banda ya ≤ 60: el ajuste no agrega nada
+    # banda interpolada ya ≤ 60 (valor=5001 → 56,7): el ajuste no agrega nada
     assert itcm.ajuste_automatico_saldo(
-        {"valor": 8000, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
-         "expo_delta_12m": 0, "impo_delta_12m": -8000}) is None
+        {"valor": 5001, "expo_var_ia": 0.0, "impo_var_ia": -20.0,
+         "expo_delta_12m": 0, "impo_delta_12m": -3000}) is None
     # sin composición (fallback a la serie de saldo directa)
     assert itcm.ajuste_automatico_saldo({"valor": 17125}) is None
 

@@ -282,14 +282,30 @@ def texto_bandas(indicador: str) -> str:
 def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
     """Regla automática del "Subcomponente D" de la Paramétrica: un superávit
     comercial que refleja caída de demanda interna (menos importaciones) más
-    que aumento de exportaciones es sintomático de apretamiento y se ajusta
-    a 60 puntos (el valor que aplica el documento en su ejemplo).
+    que aumento de exportaciones es sintomático de apretamiento y se penaliza
+    (ADR-0056: suavizado por interpolación, sin el acantilado del "todo o
+    nada" original — el piso de 60 puntos del documento fuente se conserva
+    como el caso límite de dominación total de las importaciones).
 
-    Condición (sobre acumulados 12m vs los 12m previos): hay superávit con
-    banda > 60, las importaciones CAEN, y esa caída explica más de la mejora
-    del saldo que el aumento de exportaciones. Requiere la composición
+    Definiciones (sobre acumulados 12m vs los 12m previos):
+      mejora_expo = max(0, Δexpo_12m)   — aporte positivo de las exportaciones
+      mejora_impo = max(0, −Δimpo_12m)  — aporte positivo de la caída de importaciones
+      share_impo  = mejora_impo / (mejora_expo + mejora_impo)
+
+    share_impo ≤ 0,5 (la mejora exportadora domina o empata): no opina. Por
+    encima de 0,5 se interpola linealmente el puntaje de banda hacia el piso
+    de 60 a medida que share_impo va de 0,5 a 1,0:
+      frac = (share_impo − 0,5) / 0,5
+      puntaje = puntaje_banda − frac × (puntaje_banda − 60)
+
+    El puntaje de banda usado es el INTERPOLADO (parametrica.puntaje_interpolado),
+    el mismo que consume calcular_indice — no el escalonado histórico, que
+    generaba su propio acantilado en el gate de activación.
+
+    Requiere superávit relevante (banda interpolada > 60) y la composición
     expo/impo que produce fetch_saldo_comercial_12m; sin esos campos (ej.
-    fallback a la serie de saldo directa) no opina y devuelve None.
+    fallback a la serie de saldo directa) o sin mejora positiva de ningún
+    lado, no opina y devuelve None.
     """
     valor = ind_saldo.get("valor")
     d_expo = ind_saldo.get("expo_delta_12m")
@@ -298,20 +314,28 @@ def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
         return None
     if valor <= 5000:                # sin superávit relevante: la banda ya lo castiga
         return None
-    if puntaje_banda(float(valor), BANDAS_ITCM["saldo_comercial_12m"]) <= 60:
+    p_banda = parametrica.puntaje_interpolado(float(valor), BANDAS_ITCM["saldo_comercial_12m"])
+    if p_banda <= 60:
         return None
-    if d_impo >= 0:                  # importaciones creciendo: no hay contracción
+    mejora_expo = max(0.0, d_expo)
+    mejora_impo = max(0.0, -d_impo)
+    total = mejora_expo + mejora_impo
+    if total <= 0:                   # ni expo ni impo mejoraron: nada que atribuir
         return None
-    if -d_impo <= max(0.0, d_expo):  # la caída de impo no domina la mejora del saldo
+    share_impo = mejora_impo / total
+    if share_impo <= 0.5:            # la mejora exportadora domina o empata: no opina
         return None
+    frac = (share_impo - 0.5) / 0.5
+    puntaje = round(p_banda - frac * (p_banda - 60), 1)
     expo_var = ind_saldo.get("expo_var_ia")
     impo_var = ind_saldo.get("impo_var_ia")
     return {
-        "puntaje": 60,
+        "puntaje": puntaje,
         "justificacion": (
-            f"Regla automática: superávit explicado por contracción de importaciones "
-            f"({impo_var:+.1f}% i.a.) más que por exportaciones ({expo_var:+.1f}% i.a.) "
-            f"— sintomático de caída de demanda interna (Paramétrica CIGOB, may-2026)."
+            f"Regla automática: {share_impo:.0%} de la mejora del saldo se explica por "
+            f"contracción de importaciones ({impo_var:+.1f}% i.a.) más que por "
+            f"exportaciones ({expo_var:+.1f}% i.a.) — ajuste interpolado hacia el piso "
+            f"de 60 puntos (Paramétrica CIGOB, may-2026; suavizado ADR-0056)."
         ),
         "origen": "automatico",
     }

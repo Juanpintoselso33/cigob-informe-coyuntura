@@ -389,7 +389,7 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Saldo acumulado de 12 meses: suma de exportaciones menos suma de importaciones de los últimos 12 meses comunes de ambas series.",
       "El acumulado anual elimina la estacionalidad energética y sojera.",
-      "Regla automática declarada: si hay superávit pero se explica por una caída de importaciones mayor que el aumento de exportaciones (contracción de la demanda interna, no éxito exportador), el puntaje se rebaja a 60 con la justificación generada a partir de los números.",
+      "Regla automática declarada: si hay superávit pero se explica más por una caída de importaciones que por un aumento de exportaciones (contracción de la demanda interna, no éxito exportador), el puntaje se interpola hacia un piso de 60 en proporción a cuánto domina esa caída, sin un corte brusco apenas se cruza el umbral. La justificación se genera a partir de los números de cada corrida.",
     ],
     anclas: {
       bandas: [
@@ -415,6 +415,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, calculado por las series de exportaciones e importaciones del ICA (frescas a ~2 meses) en lugar de la serie de saldo directa (~14 meses de rezago), con la regla de superávit por contracción automatizada." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "La serie del gráfico pasó del saldo mensual al acumulado móvil de 12 meses — la métrica del titular." },
+      { fecha: "2026-07-15", cambio: "La regla automática de superávit por contracción dejó de rebajar de golpe a 60 puntos: ahora interpola hacia ese mismo piso según cuánto de la mejora del saldo se explica por la caída de importaciones." },
     ],
   },
 
