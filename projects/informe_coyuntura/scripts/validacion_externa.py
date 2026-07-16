@@ -64,6 +64,12 @@ COMPONENTES = {
     "mortalidad_pymes":       ("itvc_ipi", False, False, True),
     "despacho_cemento":       ("itvc_isac", False, False, True),
     "endeudamiento_familiar": ("itvc_endeudamiento", False, False, True),
+    "mora_familias":          ("mora_familias", True, False, False),   # ADR-0067 (2026-07-15):
+    # separada del compuesto de endeudamiento; nivel B100 vs 4T-2023 INVERTIDO
+    # (más mora = peor) — la reconstrucción quedó un día desactualizada tras el
+    # split y la dimensión vulnerabilidad renormalizaba sobre endeudamiento solo
+    # (hallazgo de la revisión ITVC↔ICC 2026-07-16: el pico reconstruido de
+    # oct-2025 ignoraba la mora disparándose en plena crisis)
     "brecha_salario_cbt":     ("brecha_salario_cbt", False, False, False),
     "icc_utdt":               ("icc_utdt", False, False, False),
     "pluriempleo":            ("pluriempleo", True, False, False),
