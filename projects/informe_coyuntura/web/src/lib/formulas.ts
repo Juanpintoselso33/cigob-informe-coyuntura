@@ -205,6 +205,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{vetos insistidos por ambas c\'amaras}+\text{decretos rechazados en el recinto}\right)`,
     leyenda: "Conteo de derrotas consumadas del Ejecutivo: una ley vetada cuenta cuando la segunda cámara completa la insistencia con dos tercios (la ley se promulga pese al veto); un decreto cuenta cuando una cámara lo rechaza bajo el procedimiento de la ley 26.122. Cada norma cuenta una sola vez, en el mes de la derrota. Fuentes: base InfoLeg de legislación nacional y actas de votación del Senado. Menos es mejor para el Ejecutivo.",
   },
+  bloqueo_sostenido: {
+    latex: String.raw`\frac{\text{normas desafiadas que siguen en pie}_{\text{12 m}}}{\text{normas desafiadas en el recinto}_{\text{12 m}}}\times 100`,
+    leyenda: "Una norma queda desafiada desde su primera votación en el recinto: la insistencia de una ley vetada (gane o pierda) o el control de un decreto bajo la ley 26.122. Sigue en pie mientras la insistencia no se complete en ambas cámaras o el decreto no sea rechazado por las dos. Fuentes: actas de votación nominales de Diputados y del Senado, y base InfoLeg para vetos e insistencias. Más es mejor para el Ejecutivo: es la contracara del conteo de derrotas, la capacidad de sostener la norma propia con un tercio de una cámara.",
+  },
   movilizacion_cepa: {
     latex: String.raw`\frac{\text{conflictos laborales acumulados del a\~no}}{200\;(\text{m\'aximo de referencia})}\times 100`,
     leyenda: "La cifra del informe de conflictividad de CEPA, normalizada a un índice 0–100. El máximo de referencia (200 conflictos acumulados) es una calibración propia del informe, declarada en la ficha.",

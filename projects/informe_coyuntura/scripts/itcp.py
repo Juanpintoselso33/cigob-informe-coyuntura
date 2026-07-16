@@ -160,6 +160,32 @@ BANDAS_ITCP = {
     "iaf_transferencias": [               # % var real YoY transferencias federales, mayor = mejor
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
     ],
+    "bloqueo_sostenido": [
+        # NUEVO 2026-07-16 (ADR-0069): % de normas propias DESAFIADAS en el
+        # recinto (insistencias de veto votadas + validez de decretos votada
+        # bajo la ley 26.122) que el Ejecutivo mantuvo en pie, ventana móvil
+        # de 12 meses. Es el espejo de derrotas_legislativas: aquél cuenta
+        # las derrotas consumadas en términos absolutos y nunca acredita los
+        # bloqueos GANADOS — un gobierno que sostiene 6 vetos desafiados
+        # puntúa igual que uno al que nadie desafió. Éste mide la TASA de
+        # supervivencia sobre el total de desafíos (capacidad de bloqueo:
+        # el recurso de poder central de un Ejecutivo sin mayoría, que
+        # gobierna sosteniendo el tercio del art. 83 CN y la vigencia de
+        # sus decretos). Anclas con referencia externa, no el rango propio:
+        # entre 2003 y 2025 NINGÚN veto presidencial fue insistido por el
+        # Congreso (tasa histórica de sostenimiento ~100%, incluso en los
+        # gobiernos en minoría de Macri), así que ≥90 = dominio normal del
+        # bloqueo; 75-90 = bloqueo firme con derrotas puntuales (el H2-2024
+        # real de esta gestión: 75%); 50-75 = bloqueo disputado (ago-sep
+        # 2025: 54,5/53,8%); 25-50 = minoría en jaque (oct-2025: 33%); <25 =
+        # bloqueo perdido (jul-2026: 20%, la resaca de la ventana).
+        # mayor = mejor, tramos extremos abiertos (ADR-0021).
+        # Limitación declarada (ficha): la ventana de 12m retiene las caídas
+        # durante un año — la recuperación del bloqueo tras una crisis
+        # aparece con rezago, y un período sin desafíos votados no genera
+        # dato (el motor renormaliza, igual que veto_quorum entre períodos).
+        (90.0, INF, 100), (75.0, 90.0, 85), (50.0, 75.0, 60), (25.0, 50.0, 35), (-INF, 25.0, 10),
+    ],
     "gobernadores_alineamiento": [        # % gobernadores alineados, mayor = mejor (manual)
         # Placeholder manual congelado desde 2026-04 (55%), retirado del peso
         # del ITCP (ver DIMENSIONES_ITCP) en favor de alineamiento_senadores_prov
@@ -351,17 +377,19 @@ DIMENSIONES_ITCP = {
     "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.30,
-        # Pesos internos redistribuidos 2026-07-15 al salir comisiones_caidas
-        # (ADR-0064: su fuente —movimientos q='SANCION'— es ciega a las
-        # sanciones del Senado, el mismo defecto que ADR-0062 corrigió en
-        # eficacia_legislativa; acá se retira en vez de repararse). El 0.20
-        # liberado se reparte parejo (+0.05 a cada uno): eficacia sigue
-        # primera (la medida más abarcativa, y desde ADR-0061/0062/0063 la
-        # más sólida); ratio_dnu y derrotas conservan su paridad ("gobernar
-        # por decreto / sostener la norma propia"); veto_quorum sigue último
-        # por ser la medida más estrecha. Antes 20/25/15/20/20 (ADR-0046).
-        "indicadores": {"ratio_dnu": 0.25, "eficacia_legislativa": 0.30,
-                        "veto_quorum": 0.20, "derrotas_legislativas": 0.25},
+        # Pesos internos redistribuidos 2026-07-16 al entrar bloqueo_sostenido
+        # (ADR-0069): cada indicador cede 0.05 y el nuevo toma 0.20 — la
+        # dimensión gana la cara ganada del bloqueo (derrotas solo cuenta la
+        # perdida) sin tocar los pesos ENTRE dimensiones (ADR-0036). El orden
+        # relativo previo se conserva: eficacia sigue primera (la medida más
+        # abarcativa, ADR-0061/0062/0063), ratio_dnu/derrotas/bloqueo quedan
+        # parejos ("gobernar por decreto / perder la norma / sostener la
+        # norma"), veto_quorum sigue último por ser la medida más estrecha.
+        # Antes 25/30/20/25 (2026-07-15, salida de comisiones_caidas por
+        # ADR-0064; antes de eso 20/25/15/20/20, ADR-0046).
+        "indicadores": {"ratio_dnu": 0.20, "eficacia_legislativa": 0.25,
+                        "veto_quorum": 0.15, "derrotas_legislativas": 0.20,
+                        "bloqueo_sostenido": 0.20},
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",

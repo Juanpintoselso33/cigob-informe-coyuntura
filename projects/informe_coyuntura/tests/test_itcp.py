@@ -177,16 +177,31 @@ def test_banda_derrotas_legislativas_interpolada_discrimina_la_serie_real():
     assert parametrica.puntaje_interpolado(8.0, bandas) == 53.6   # valor vigente jul-2026
 
 
-def test_pesos_internos_poder_legislativo_con_derrotas():
-    # Redistribución 2026-07-15 (ADR-0064): comisiones_caidas sale a contexto
-    # (fuente ciega a sanciones del Senado, ver ADR-0062) y su 0.20 se
-    # reparte parejo. Antes 20/25/15/20/20 (ADR-0046).
+def test_pesos_internos_poder_legislativo_con_bloqueo():
+    # Redistribución 2026-07-16 (ADR-0069): entra bloqueo_sostenido con 0.20
+    # (cada uno de los 4 previos cede 0.05, orden relativo conservado).
+    # Antes 25/30/20/25 (ADR-0064, salida de comisiones_caidas); antes de
+    # eso 20/25/15/20/20 (ADR-0046).
     dim = itcp.DIMENSIONES_ITCP["poder_legislativo"]
     assert dim["indicadores"] == {
-        "ratio_dnu": 0.25, "eficacia_legislativa": 0.30, "veto_quorum": 0.20,
-        "derrotas_legislativas": 0.25,
+        "ratio_dnu": 0.20, "eficacia_legislativa": 0.25, "veto_quorum": 0.15,
+        "derrotas_legislativas": 0.20, "bloqueo_sostenido": 0.20,
     }
     assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
+
+
+def test_banda_bloqueo_sostenido():
+    # (90,inf,100)·(75,90,85)·(50,75,60)·(25,50,35)·(-inf,25,10) — % de
+    # normas desafiadas en pie, 12m, mayor = mejor (ADR-0069). Anclas con
+    # referencia externa: ninguna insistencia exitosa 2003-2025 (~100%
+    # histórico de sostenimiento).
+    bandas = itcp.BANDAS_ITCP["bloqueo_sostenido"]
+    assert itcp.puntaje_banda(100.0, bandas) == 100
+    assert itcp.puntaje_banda(75.0, bandas) == 60    # high inclusivo de (50,75]
+    assert itcp.puntaje_banda(80.0, bandas) == 85
+    assert itcp.puntaje_banda(54.5, bandas) == 60    # ago-2025 real
+    assert itcp.puntaje_banda(33.3, bandas) == 35    # oct-2025 real
+    assert itcp.puntaje_banda(20.0, bandas) == 10    # jul-2026 real (card)
 def test_banda_rotacion_gabinete():
     # (-inf,1,100)·(1,2,85)·(2,4,65)·(4,6,40)·(6,inf,10) — salidas de rango
     # ministerial acumuladas 12m, menor = mejor (ADR-0047). Anclas calibradas

@@ -921,6 +921,36 @@ def fetch_derrotas_legislativas_mensual() -> list:
     return puntos
 
 
+def fetch_bloqueo_sostenido_mensual() -> list:
+    """Serie MENSUAL de bloqueo_sostenido (ADR-0069): para cada fin de mes
+    desde dic-2023, % de normas DESAFIADAS en el recinto (insistencias de
+    veto votadas + decretos votados bajo la ley 26.122) en los 12 meses
+    calendario que terminan en ese mes que seguían EN PIE al cierre — la
+    MISMA ventana y regla que la card (politica._bloqueo_tasa_12m, que evalúa
+    la caída al corte del mes histórico: un punto ya publicado no cambia
+    retroactivamente porque la norma cayera después). Se deriva
+    determinísticamente del registro versionado de eventos (el mismo de
+    derrotas_legislativas, que fetch_bloqueo_sostenido actualiza ANTES en el
+    pipeline nocturno): sin red, sin re-scrapear por mes. Los meses sin
+    desafíos en ventana no generan punto (sin denominador no hay tasa: el
+    primer desafío real es el DNU 70/2023 en mar-2024, así que la serie
+    arranca ahí y el motor renormaliza antes — igual que veto_quorum entre
+    períodos). Backfill completo dic-2023→hoy desde el día uno.
+    [[YYYY-MM-DD, %]]."""
+    registro = politica._cargar_derrotas_registro()
+    if registro is None:
+        print(f"  [WARN] bloqueo_sostenido: registro de eventos ausente o ilegible "
+              f"({politica.DERROTAS_EVENTOS_PATH}) -- serie omitida")
+        return []
+    desafios = politica._bloqueo_desafios(registro)
+    puntos = []
+    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
+        tasa = politica._bloqueo_tasa_12m(desafios, fin_mes)
+        if tasa is not None:
+            puntos.append([fin_mes.strftime("%Y-%m-%d"), tasa[0]])
+    return puntos
+
+
 def fetch_rotacion_gabinete_serie() -> list:
     """Serie MENSUAL de rotacion_gabinete: salidas de rango ministerial (JGM +
     ministros) acumuladas en la ventana móvil de 12 meses que termina en cada
@@ -1071,6 +1101,9 @@ POLITICA_DERIVADAS = [
     ("derrotas_legislativas", "derrotas del Ejecutivo en el recinto (12m móviles)",
      "InfoLeg + actas del Senado — elaboración CIGOB",
      fetch_derrotas_legislativas_mensual),
+    ("bloqueo_sostenido", "% normas desafiadas en el recinto que siguen en pie (12m móviles)",
+     "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
+     fetch_bloqueo_sostenido_mensual),
     # cohesion_bloque es el COMPUESTO bicameral desde 2026-07-10 (ADR-0048):
     # las dos series mensuales por cámara (fetch_cohesion_bloque_diputados_mensual
     # y fetch_cohesion_bloque_senado_mensual, cada una con su caché permanente

@@ -181,16 +181,19 @@ def test_politica_itcp_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    # ADR-0048 (revisión editorial 2026-07-10) + ADR-0052 (2026-07-11): 11
-    # indicadores puntúan (la cohesión es UNA card, el compuesto bicameral;
-    # conflictividad_nacional reemplaza a movilizacion_cepa en conflicto
-    # social). rotacion_gabinete, protestas_caba, movilizacion_cepa y
+    # ADR-0048 (revisión editorial 2026-07-10) + ADR-0052 (2026-07-11) +
+    # ADR-0069 (2026-07-16): 11 indicadores puntúan (la cohesión es UNA card,
+    # el compuesto bicameral; conflictividad_nacional reemplaza a
+    # movilizacion_cepa en conflicto social; bloqueo_sostenido entra a poder
+    # legislativo como la cara ganada del pulso que derrotas no acredita).
+    # rotacion_gabinete, protestas_caba, movilizacion_cepa y
     # comisiones_caidas (ADR-0064) quedan OCULTOS del snapshot
     # (POLITICA_OCULTOS, mismo criterio ADR-0022 que los monetarios de
     # macro): se siguen relevando y cacheando, pero el tablero solo muestra
     # lo que integra las dimensiones.
     # cohesion_bloque_senado ya no existe como card (fusionado).
-    assert len(en_indice) == 10, f"esperaba 10 indicadores en el índice, hay {len(en_indice)}"
+    assert len(en_indice) == 11, f"esperaba 11 indicadores en el índice, hay {len(en_indice)}"
+    assert "bloqueo_sostenido" in en_indice
     faltantes = {"votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
                  "iaf_transferencias", "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque", "conflictividad_nacional",

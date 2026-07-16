@@ -242,6 +242,7 @@ export const LABELS: Record<string, string> = {
   adhesion_reformas_provincial: "Adhesión provincial al RIGI",
   comisiones_caidas: "Comisiones sin sanción",
   derrotas_legislativas: "Derrotas legislativas del Ejecutivo",
+  bloqueo_sostenido: "Bloqueo legislativo sostenido",
   // vida cotidiana (claves de publicar.py)
   brecha_salario_cbt: "Salario real vs. canasta", ipc_alimentos: "Inflación de alimentos",
   endeudamiento_familiar: "Endeudamiento de consumo", mora_familias: "Mora de las familias",
@@ -309,6 +310,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   gobernadores_alineamiento: "%", veto_quorum: "%", comisiones_caidas: "%",
   alineamiento_senadores_prov: "%", adhesion_reformas_provincial: "%",
   derrotas_legislativas: "derrotas 12m",
+  bloqueo_sostenido: "% en pie",
   // vida cotidiana
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   mora_familias: "%",
@@ -358,6 +360,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   adhesion_reformas_provincial: "% de jurisdicciones adheridas (sobre 24)",
   comisiones_caidas: "% de proyectos",
   derrotas_legislativas: "Derrotas en el recinto (vetos insistidos + decretos rechazados, acum. 12 meses)",
+  bloqueo_sostenido: "% de normas desafiadas en el recinto que siguen en pie (últimos 12 meses)",
   // vida cotidiana
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
   endeudamiento_familiar: "Billones de pesos", mora_familias: "% de la cartera en situación irregular",

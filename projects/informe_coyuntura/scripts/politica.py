@@ -33,6 +33,11 @@ Indicadores:
   adhesion_reformas_provincial — % provincias adheridas al RIGI (MAGyP, auto)
   derrotas_legislativas     — derrotas del Ejecutivo en el recinto, 12m: vetos insistidos +
                                decretos rechazados bajo la ley 26.122 (InfoLeg + actas Senado, auto)
+  bloqueo_sostenido         — % de normas desafiadas en el recinto que siguen en pie, 12m
+                               (ADR-0069): la cara ganada del pulso que derrotas no acredita —
+                               insistencias de veto votadas + decretos bajo la 26.122 (actas de
+                               AMBAS cámaras + InfoLeg, auto; comparte el registro de eventos
+                               con derrotas_legislativas)
   protestas_caba            — % var. eventos de protesta en CABA vs. base 2023 (ACLED, reutiliza
                                gestion.py). SEGUIMIENTO INTERNO desde 2026-07-10 (ADR-0048): no
                                puntúa y publicar.py lo oculta del snapshot de política (la card
@@ -98,6 +103,7 @@ INDICADORES_ESPERADOS = [
     "veto_quorum",
     "comisiones_caidas",
     "derrotas_legislativas",
+    "bloqueo_sostenido",
     "protestas_caba",
 ]
 
@@ -2500,6 +2506,527 @@ def fetch_derrotas_legislativas() -> dict | None:
         _warn("derrotas_legislativas", str(e))
         return None
 
+# ── Bloqueo sostenido (ADR-0069) ──────────────────────────────────────────────
+#
+# bloqueo_sostenido = % de normas propias DESAFIADAS en el recinto que el
+# Ejecutivo mantuvo en pie, ventana de 12 meses calendario (la misma de
+# derrotas_legislativas). Es el espejo de derrotas: aquél cuenta las derrotas
+# consumadas en términos absolutos y nunca acredita los bloqueos GANADOS (los
+# vetos sostenidos de sep/oct-2024 no puntúan en ningún lado); éste mide la
+# TASA de supervivencia sobre el total de desafíos votados.
+#
+# Comparte el registro versionado de eventos (DERROTAS_EVENTOS_PATH) y sus
+# detecciones ya existentes (vetos por InfoLeg, insistencias completas por
+# B.O., rechazos de decretos por actas del Senado — fetch_derrotas_legislativas
+# corre ANTES en el mismo main()) y le suma la detección de los DESAFÍOS:
+#
+#   * Diputados (clasificador de actas PDF, ids del caché permanente de
+#     cohesión): una insistencia de veto se reconoce en dos formatos reales
+#     — desde 2025, motivo "INSISTENCIA PROYECTO DE LEY 27.791." (la ley
+#     directa, sin lookup); en 2024, motivo "EXPTE. N-PE-AAAA" a secas con
+#     mayoría "Dos tercios" (el expediente del MENSAJE del PE que comunicó
+#     el veto — se mapea a la ley vetada buscando ese expediente en
+#     proyectos-parlamentarios del CKAN: TIPO "MENSAJE" con "OBSERVA" en el
+#     título, verificado contra 0015-PE-2024→27.756 y 0017-PE-2024→27.757).
+#     Las HABILITACIONES de tratamiento (2/3 procesal previo, mismo
+#     expediente) se excluyen por palabra clave: en la sesión del
+#     20-ago-2025 la habilitación de la 27.791 salió AFIRMATIVA y la
+#     insistencia real NEGATIVA — confundirlas invierte el registro. El
+#     "Resultado de Votación" impreso en el PDF decide (ya incorpora la
+#     regla de los 2/3): NEGATIVO = insistencia rechazada (veto sostenido),
+#     AFIRMATIVO = la cámara insistió (la caída solo se consuma con la
+#     segunda cámara, vía InfoLeg como siempre). Una votación de decreto se
+#     reconoce por motivo "DECRETO […] N° X/AA" o "DNU X/AAAA"; la moción
+#     estándar de la bicameral es el RECHAZO (AFIRMATIVO lo consuma —
+#     dirección verificada contra los 7 casos reales de Diputados
+#     2024-2025), y un motivo con "APRUEBA"/"VALIDEZ" (dictamen de
+#     aprobación, caso real DNU 179/2025 del FMI) queda PENDIENTE con
+#     aviso: la dirección es ambigua y no se adivina. Solo se anotan
+#     votaciones sobre decretos YA presentes en el registro (detección del
+#     Senado o semilla): un número que el registro no conoce puede ser un
+#     decreto simple fuera de la ley 26.122 (caso real 681/25) y queda
+#     pendiente para triage manual.
+#
+#   * Senado (listado anual de actas, misma mecánica que las 26.122): las
+#     insistencias se titulan "Insistencia …" — se excluyen las
+#     habilitaciones de tratamiento sobre tablas — y casi siempre traen el
+#     número de ley en el título (27.793/27.794/27.795/27.796 verificados);
+#     un título sin número matcheable avisa en cada corrida hasta resolverse
+#     a mano (caso real: 27.790 Bahía Blanca, resuelto en la semilla).
+#     Insistió = afirmativos ≥ 2/3 de los votos emitidos (art. 83 CN).
+#
+# El avance por Diputados es un watermark por id de acta
+# (registro["actas_diputados_bloqueo"]["clasificadas_hasta_id"]): cada acta
+# se descarga y clasifica UNA vez en la vida del proyecto (las anteriores a
+# la gestión ni se descargan: la fecha ya está en el caché de cohesión); las
+# ambiguas quedan en "pendientes" y se reintentan/avisan en cada corrida.
+# Limitaciones declaradas (ficha): el universo de ids es el caché del walk
+# de cohesión (un acta publicada hoy se clasifica cuando el walk nocturno la
+# cachea), y un mes sin desafíos votados en la ventana no genera dato — el
+# motor renormaliza, igual que veto_quorum entre períodos.
+
+_RE_EXPTE_PE_MOTIVO = re.compile(r"\bEXPTE\.?\s*0*(\d{1,4})-PE-(\d{4})\b", re.IGNORECASE)
+_RE_DECRETO_MOTIVO = re.compile(
+    r"(?:DECRETO(?:\s+DE\s+(?:NECESIDAD\s+Y\s+URGENCIA|FACULTADES\s+DELEGADAS))?\s*N\s*[º°]\s*"
+    r"|DNU\s+)(\d{1,4})\s*/\s*(\d{2,4})\b", re.IGNORECASE)
+_BLOQUEO_ERA_DESDE = "2023-12-10"   # asunción — actas anteriores ni se descargan
+
+
+def _dedup_tokens_dobles(texto: str) -> str:
+    """'MMááss ddee llaa mmiittaadd' → 'Más de la mitad'. La negrita simulada del
+    generador de PDF duplica CADA carácter dentro de cada palabra (los
+    espacios quedan simples); solo se colapsa un token si viene entero en
+    pares, para no romper palabras legítimas con letras dobles."""
+    def _colapsar(tok: str) -> str:
+        if len(tok) >= 2 and len(tok) % 2 == 0 and all(
+                tok[i] == tok[i + 1] for i in range(0, len(tok), 2)):
+            return tok[::2]
+        return tok
+    return " ".join(_colapsar(t) for t in texto.split())
+
+
+def _parsear_encabezado_acta_diputados(contenido: bytes) -> dict | None:
+    """{fecha ("YYYY-MM-DD"), motivo, mayoria, resultado, votos_txt} del
+    encabezado de la página 1 del PDF de un acta de Diputados. El motivo son
+    las líneas entre la línea de sesión ("143° - Período … Reunión") y la
+    línea "Acta Nº …" (títulos largos ocupan más de una línea y se unen);
+    mayoría y resultado vienen con carácter duplicado y se normalizan token a
+    token. None si falta algún campo (acta ilegible para clasificar)."""
+    with pdfplumber.open(io.BytesIO(contenido)) as pdf:
+        texto = pdf.pages[0].extract_text() or ""
+    m_fecha = re.search(r"Fecha:\s*(\d{2}/\d{2}/\d{4})", texto)
+    m_mayoria = re.search(r"Tipo Mayor[íi]a:\s*(.+?)\s*Miembros", texto)
+    m_resultado = re.search(r"Resultado de Votaci[óo]n:\s*(\S+)", texto)
+    lineas = [l.strip() for l in texto.split("\n")]
+    ini = next((i for i, l in enumerate(lineas) if re.search(r"\d+°\s*-\s*Per[íi]odo", l)), None)
+    fin = next((i for i, l in enumerate(lineas) if re.match(r"Acta\s*N", l)), None)
+    if not (m_fecha and m_mayoria and m_resultado) or ini is None or fin is None or fin <= ini:
+        return None
+    try:
+        fecha = datetime.strptime(m_fecha.group(1), "%d/%m/%Y").strftime("%Y-%m-%d")
+    except ValueError:
+        return None
+    votos = {}
+    for campo in ("Afirmativos", "Negativos", "Abstenciones"):
+        m = re.search(rf"{campo}\s+(\d+)", texto)
+        votos[campo] = int(m.group(1)) if m else None
+    votos_txt = (f"{votos['Afirmativos']} afirmativos - {votos['Negativos']} negativos - "
+                 f"{votos['Abstenciones']} abst.") if None not in votos.values() else None
+    return {
+        "fecha": fecha,
+        "motivo": " ".join(lineas[ini + 1:fin]).strip(),
+        "mayoria": _dedup_tokens_dobles(m_mayoria.group(1)),
+        "resultado": _dedup_tokens_dobles(m_resultado.group(1)).upper(),
+        "votos_txt": votos_txt,
+    }
+
+
+def _mensaje_pe_a_leyes(numero: int, anio: str) -> list[str] | None:
+    """Leyes observadas por el MENSAJE del PE con expediente NNNN-PE-AAAA
+    (dataset proyectos-parlamentarios del CKAN): ['27.756', …]. Lista vacía
+    si el expediente existe pero no es un mensaje de veto (tratado, proyecto
+    del PE, etc. — la votación 2/3 era otra cosa); None si el CKAN no
+    devolvió ninguna fila para el expediente (no se puede clasificar)."""
+    expte = f"{numero:04d}-PE-{anio}"
+    filas = _hcdn_paginate(HCDN_PROYECTOS_RID, q=expte)
+    encontrado = False
+    leyes: set[str] = set()
+    for r in filas:
+        if str(r.get("EXP_DIPUTADOS", "")).strip() != expte:
+            continue
+        encontrado = True
+        if str(r.get("TIPO", "")).strip().upper() != "MENSAJE":
+            continue
+        titulo = str(r.get("TITULO", ""))
+        if "OBSERVA" not in titulo.upper():
+            continue
+        leyes.update(f"{m.group(1)}.{m.group(2)}" for m in _RE_PROYECTO_LEY.finditer(titulo))
+    if not encontrado:
+        return None
+    return sorted(leyes)
+
+
+def _bloqueo_clasificar_acta_diputados(session, registro: dict, id_acta: int) -> tuple:
+    """Clasifica UNA acta de Diputados para bloqueo_sostenido, mutando el
+    registro si produce un evento. Devuelve (resuelta, nota): resuelta=False
+    deja el acta en pendientes (se reintenta y avisa en cada corrida);
+    nota=None es un acta sin interés (solo avanza el watermark). Levanta
+    ValueError ante un fallo transitorio de descarga (el caller corta el
+    walk y reintenta mañana desde el watermark)."""
+    contenido = _diputados_acta_pdf(session, id_acta)
+    if contenido is _ACTA_FALLO:
+        raise ValueError(f"acta {id_acta} de Diputados inaccesible (fallo transitorio)")
+    if contenido is _ACTA_NO_EXISTE:
+        return True, None   # hueco de numeración genuino
+    enc = _parsear_encabezado_acta_diputados(contenido)
+    if enc is None:
+        return True, "encabezado ilegible — sin motivo/mayoría/resultado parseable"
+    if enc["fecha"] < _BLOQUEO_ERA_DESDE:
+        return True, None
+    motivo_u = enc["motivo"].upper()
+
+    # Las HABILITACIONES de tratamiento son la moción procesal previa (2/3
+    # sobre el mismo expediente del mensaje del PE) — NO son la insistencia:
+    # en la sesión del 20-ago-2025 la habilitación de la 27.791 salió
+    # AFIRMATIVA (159-75, acta 5736) y la insistencia real fue NEGATIVA
+    # (160-83, acta 5737). Confundirlas invierte el resultado registrado.
+    if "HABILITACI" in motivo_u or "SOBRE TABLAS" in motivo_u:
+        return True, None
+
+    # ── votación de decreto (validez/rechazo, ley 26.122) ────────────────
+    m_dec = _RE_DECRETO_MOTIVO.search(enc["motivo"])
+    if m_dec:
+        anio_dec = m_dec.group(2)
+        if len(anio_dec) == 2:
+            anio_dec = f"20{anio_dec}"
+        clave = f"{int(m_dec.group(1))}/{anio_dec}"
+        entry = next((d for d in registro["decretos"] if d.get("clave") == clave), None)
+        if entry is None:
+            print(f"[WARN] {CINTURON}.bloqueo_sostenido: acta {id_acta} de Diputados vota el "
+                  f"decreto {clave} que el registro no conoce (¿decreto simple fuera de la "
+                  f"26.122? ¿el Senado aún no lo trató?) — pendiente de triage manual")
+            return False, f"decreto {clave} desconocido para el registro"
+        ya = any(x.get("camara") == "Diputados" and x.get("fecha") == enc["fecha"]
+                 for x in entry.get("rechazos", []) + entry.get("sostenimientos", []))
+        if ya:
+            return True, f"{clave}: votación ya reflejada en el registro"
+        if "APRUEBA" in motivo_u or "VALIDEZ" in motivo_u:
+            print(f"[WARN] {CINTURON}.bloqueo_sostenido: acta {id_acta} de Diputados sobre el "
+                  f"decreto {clave} parece un dictamen de APROBACIÓN (dirección de la moción "
+                  f"ambigua) — pendiente de triage manual: {enc['motivo'][:140]}")
+            return False, f"decreto {clave}: posible dictamen de aprobación"
+        # moción estándar de la bicameral: se vota el RECHAZO del decreto
+        if enc["resultado"] == "AFIRMATIVO":
+            entry["rechazos"].append({"fecha": enc["fecha"], "camara": "Diputados",
+                                      "acta": str(id_acta), "votos": enc["votos_txt"]})
+            return True, f"{clave}: RECHAZO de Diputados ({enc['votos_txt']})"
+        entry.setdefault("sostenimientos", []).append({
+            "fecha": enc["fecha"], "camara": "Diputados", "acta": str(id_acta),
+            "votos": enc["votos_txt"], "tipo": "rechazo_fracasado"})
+        return True, f"{clave}: rechazo FRACASADO en Diputados ({enc['votos_txt']}) — decreto en pie"
+
+    # ── insistencia de veto, formato 2025+: la ley en el motivo ───────────
+    # "INSISTENCIA PROYECTO DE LEY 27.791." (actas 5735/5737/5762/5766) —
+    # asociación directa, sin CKAN. El resultado impreso ya incorpora la
+    # regla de los 2/3 (la 27.791 salió NEGATIVO con 160-83, 65,8% > mitad
+    # pero < 2/3).
+    m_ley = _RE_PROYECTO_LEY.search(enc["motivo"])
+    if "INSISTENCIA" in motivo_u and m_ley:
+        ley = f"{m_ley.group(1)}.{m_ley.group(2)}"
+        veto = next((v for v in registro["vetos"] if v.get("proyecto") == ley), None)
+        if veto is None:
+            print(f"[WARN] {CINTURON}.bloqueo_sostenido: acta {id_acta} insiste la ley {ley} "
+                  f"pero el registro no tiene ese veto — pendiente de triage manual")
+            return False, f"insistencia sobre veto no registrado ({ley})"
+        if any(iv.get("camara") == "Diputados" and iv.get("fecha") == enc["fecha"]
+               for iv in veto.get("insistencias_votadas", [])):
+            return True, f"{ley}: insistencia ya reflejada en el registro"
+        resultado = "insistio_camara" if enc["resultado"] == "AFIRMATIVO" else "insistencia_rechazada"
+        veto.setdefault("insistencias_votadas", []).append({
+            "fecha": enc["fecha"], "camara": "Diputados", "resultado": resultado,
+            "fuente": f"acta {id_acta} votaciones.hcdn.gob.ar ({enc['resultado']}, "
+                      f"{enc['votos_txt']})"})
+        legible = "la cámara INSISTIÓ" if resultado == "insistio_camara" else "insistencia rechazada (veto sostenido)"
+        return True, f"{ley}: {legible} ({enc['votos_txt']})"
+
+    # ── insistencia de veto, formato 2024: solo el expediente del mensaje ─
+    # Actas 5354/5400: motivo "EXPTE. 15-PE-2024" a secas, mayoría 2/3 — se
+    # mapea a la ley vetada vía el mensaje del PE en el CKAN. RESTRINGIDO a
+    # 2024 a propósito: desde 2025 este formato es el de las habilitaciones
+    # (ya excluidas por palabra clave), así que un expediente pelado con 2/3
+    # en 2025+ es un formato inesperado y queda pendiente, no se adivina.
+    m_pe = _RE_EXPTE_PE_MOTIVO.search(enc["motivo"])
+    if m_pe and "tercios" in enc["mayoria"].lower() and "MOCION" not in motivo_u \
+            and "MOCIÓN" not in motivo_u:
+        if enc["fecha"] >= "2025-01-01":
+            print(f"[WARN] {CINTURON}.bloqueo_sostenido: acta {id_acta} ({enc['fecha']}) con "
+                  f"2/3 sobre {m_pe.group(0)} sin palabra clave — formato inesperado, "
+                  f"pendiente de triage manual: {enc['motivo'][:120]}")
+            return False, f"2/3 sobre {m_pe.group(0)} sin palabra clave (formato inesperado)"
+        leyes = _mensaje_pe_a_leyes(int(m_pe.group(1)), m_pe.group(2))
+        if leyes is None:
+            print(f"[WARN] {CINTURON}.bloqueo_sostenido: acta {id_acta} (2/3 sobre "
+                  f"{m_pe.group(0)}) sin fila en el CKAN — pendiente de triage manual")
+            return False, f"expediente {m_pe.group(0)} sin fila en el CKAN"
+        if not leyes:
+            return True, None   # 2/3 sobre un expediente PE que no es mensaje de veto
+        if len(leyes) > 1:
+            print(f"[WARN] {CINTURON}.bloqueo_sostenido: acta {id_acta} — el mensaje "
+                  f"{m_pe.group(0)} observa varias leyes ({', '.join(leyes)}), no se puede "
+                  f"atribuir la insistencia sola — pendiente de triage manual")
+            return False, f"mensaje multiproyecto ({', '.join(leyes)})"
+        ley = leyes[0]
+        veto = next((v for v in registro["vetos"] if v.get("proyecto") == ley), None)
+        if veto is None:
+            print(f"[WARN] {CINTURON}.bloqueo_sostenido: acta {id_acta} insiste la ley {ley} "
+                  f"pero el registro no tiene ese veto — pendiente de triage manual")
+            return False, f"insistencia sobre veto no registrado ({ley})"
+        if any(iv.get("camara") == "Diputados" and iv.get("fecha") == enc["fecha"]
+               for iv in veto.get("insistencias_votadas", [])):
+            return True, f"{ley}: insistencia ya reflejada en el registro"
+        resultado = "insistio_camara" if enc["resultado"] == "AFIRMATIVO" else "insistencia_rechazada"
+        veto.setdefault("insistencias_votadas", []).append({
+            "fecha": enc["fecha"], "camara": "Diputados", "resultado": resultado,
+            "fuente": f"acta {id_acta} votaciones.hcdn.gob.ar ({enc['resultado']}, "
+                      f"{enc['votos_txt']})"})
+        legible = "la cámara INSISTIÓ" if resultado == "insistio_camara" else "insistencia rechazada (veto sostenido)"
+        return True, f"{ley}: {legible} ({enc['votos_txt']})"
+
+    return True, None
+
+
+def _bloqueo_clasificar_diputados(registro: dict) -> None:
+    """Clasificación incremental de las actas de Diputados: procesa en orden
+    ascendente los ids del caché de cohesión posteriores al watermark, más
+    los pendientes de corridas anteriores. Persiste el registro cada 25 actas
+    (el backfill inicial camina ~430 PDFs a 0,3s c/u y no debe perder el
+    progreso si se corta — mismo criterio crash-safe que
+    _acta_diputados_cacheada). Un fallo transitorio corta el walk con aviso:
+    el watermark queda en el último id resuelto y mañana se retoma."""
+    session = _hcdn_votaciones_session()
+    cache = _cargar_cache_cohesion_diputados()
+    estado = registro.setdefault(
+        "actas_diputados_bloqueo", {"clasificadas_hasta_id": 0, "pendientes": {}})
+    pendientes = estado.setdefault("pendientes", {})
+    notas = estado.setdefault("notas", {})
+    watermark = int(estado.get("clasificadas_hasta_id") or 0)
+    fechas_cache = {int(k): (v.get("fecha") or "") for k, v in cache.items()
+                    if str(k).isdigit() and isinstance(v, dict)}
+    nuevos = sorted(i for i in fechas_cache if i > watermark)
+    retries = sorted(int(i) for i in pendientes if str(i).isdigit())
+    procesadas = 0
+    try:
+        for id_acta in retries + nuevos:
+            es_nuevo = id_acta > watermark
+            if es_nuevo and fechas_cache.get(id_acta, "") < _BLOQUEO_ERA_DESDE:
+                watermark = id_acta   # anterior a la gestión: ni se descarga
+                continue
+            try:
+                resuelta, nota = _bloqueo_clasificar_acta_diputados(session, registro, id_acta)
+            except Exception as e:
+                # transitorio (PDF inaccesible, CKAN caído): cortar acá — el
+                # watermark queda en el último id resuelto y mañana se retoma
+                print(f"  [WARN] bloqueo_sostenido: {e} — el walk corta acá y reintenta mañana")
+                break
+            if resuelta:
+                pendientes.pop(str(id_acta), None)
+                if nota:
+                    notas[str(id_acta)] = nota
+            else:
+                pendientes[str(id_acta)] = nota or "pendiente de triage manual"
+            if es_nuevo:
+                watermark = id_acta
+            procesadas += 1
+            if procesadas % 25 == 0:
+                estado["clasificadas_hasta_id"] = watermark
+                _guardar_derrotas_registro(registro)
+    finally:
+        estado["clasificadas_hasta_id"] = watermark
+
+
+def _actas_senado_insistencias(session: requests.Session, anio: int):
+    """[{id, fecha, titulo}] de las actas del Senado del año cuyo título es
+    una INSISTENCIA de veto (palabra "insistencia", excluyendo las
+    habilitaciones de tratamiento sobre tablas — que son la moción procesal
+    previa, no la insistencia misma). Mismo POST/parseo que
+    _actas_senado_26122. None si el request falló."""
+    r = _paced_post(session, SENADO_BASE, "/votaciones/actas",
+                    data={"busqueda_actas[anio]": str(anio)})
+    if r is None:
+        return None
+    soup = BeautifulSoup(r.text, "html.parser")
+    actas, vistos = [], set()
+    for fila in soup.select("tr"):
+        link = fila.find("a", href=_RE_DETALLE_ACTA_SENADO)
+        span_fecha = fila.find("span", style=lambda s: s and _RE_DISPLAY_NONE.search(s))
+        if link is None or span_fecha is None:
+            continue
+        m = _RE_DETALLE_ACTA_SENADO.search(link["href"])
+        if not m:
+            continue
+        id_acta = m.group(1)
+        try:
+            fecha = datetime.strptime(span_fecha.get_text(strip=True), "%Y%m%d")
+        except ValueError:
+            continue
+        if fecha.year != anio or id_acta in vistos:
+            continue
+        titulo = re.sub(r"\s+", " ", fila.get_text(" ", strip=True))
+        titulo = titulo.split("Ver Expedientes")[0].strip()
+        t = titulo.lower()
+        if not re.search(r"\binsistencia\b", t) or "sobre tablas" in t or "habilitaci" in t:
+            continue
+        vistos.add(id_acta)
+        actas.append({"id": id_acta, "fecha": fecha, "titulo": titulo})
+    return actas
+
+
+def _bloqueo_detectar_insistencias_senado(registro: dict) -> None:
+    """Detecta insistencias de veto votadas en el recinto del Senado (desde
+    2024, backfill inherente: las actas ya vistas quedan en
+    actas_senado_insistencia_vistas y no se re-piden). Insistió = afirmativos
+    ≥ 2/3 de los votos emitidos (art. 83 CN). Un título sin número de ley
+    matcheable avisa en cada corrida hasta resolverse a mano en la semilla
+    (caso real 27.790 Bahía Blanca). Muta `registro`; el caller persiste."""
+    session = _hcdn_votaciones_session()
+    vistos = registro.setdefault("actas_senado_insistencia_vistas", {})
+    for anio in range(2024, date.today().year + 1):
+        actas = _actas_senado_insistencias(session, anio)
+        if actas is None:
+            raise ValueError(f"listado de actas del Senado {anio} inaccesible")
+        for acta in actas:
+            if acta["id"] in vistos:
+                continue
+            m = _RE_PROYECTO_LEY.search(acta["titulo"])
+            if not m:
+                # no se marca vista: el aviso se repite cada corrida hasta que
+                # alguien la resuelva a mano (mismo criterio que las 26.122
+                # sin número de decreto legible)
+                print(f"[WARN] {CINTURON}.bloqueo_sostenido: acta {acta['id']} del Senado es "
+                      f"una insistencia sin número de ley legible — revisar a mano: "
+                      f"{acta['titulo'][:140]}")
+                continue
+            ley = f"{m.group(1)}.{m.group(2)}"
+            veto = next((v for v in registro["vetos"] if v.get("proyecto") == ley), None)
+            if veto is None:
+                print(f"[WARN] {CINTURON}.bloqueo_sostenido: acta {acta['id']} del Senado "
+                      f"insiste la ley {ley} pero el registro no tiene ese veto — revisar a mano")
+                continue
+            r = _paced_get(session, SENADO_BASE, f"/votaciones/detalleActa/{acta['id']}")
+            if r is None:
+                raise ValueError(f"detalleActa {acta['id']} del Senado inaccesible")
+            filas = _parsear_acta(r.text)
+            afirm = sum(1 for f in filas if f["voto"] == "AFIRMATIVO")
+            neg = sum(1 for f in filas if f["voto"] == "NEGATIVO")
+            if afirm == 0 and neg == 0:
+                vistos[acta["id"]] = f"{ley}: votación sin votos registrados (anulada/rehecha) — sin efecto"
+                continue
+            fecha = acta["fecha"].strftime("%Y-%m-%d")
+            if not any(iv.get("camara") == "Senado" and iv.get("fecha") == fecha
+                       for iv in veto.get("insistencias_votadas", [])):
+                resultado = "insistio_camara" if afirm >= 2 * neg else "insistencia_rechazada"
+                veto.setdefault("insistencias_votadas", []).append({
+                    "fecha": fecha, "camara": "Senado", "resultado": resultado,
+                    "fuente": f"acta {acta['id']} senado.gob.ar ({afirm}-{neg})"})
+            vistos[acta["id"]] = f"{ley}: insistencia votada ({afirm}-{neg})"
+
+
+def _bloqueo_desafios(registro: dict) -> list[dict]:
+    """Normas DESAFIADAS en el recinto, una fila por norma:
+    [{nombre, fecha_desafio, fecha_caida | None}] ascendente por desafío.
+    Veto: desafiado desde su primera insistencia votada (o desde la
+    insistencia completa, si el registro no tiene la votación — defensivo);
+    caído en la insistencia completa. Decreto: desafiado desde su primera
+    votación en el recinto (rechazo o sostenimiento); caído cuando rechaza
+    la SEGUNDA cámara distinta (ley 26.122, art. 24 — el rechazo de una sola
+    cámara deja la norma en pie, caso real DNU 70/2023)."""
+    out = []
+    for v in registro.get("vetos", []):
+        fechas = [iv["fecha"] for iv in v.get("insistencias_votadas", []) if iv.get("fecha")]
+        if v.get("insistencia_completa"):
+            fechas.append(v["insistencia_completa"])
+        if not fechas:
+            continue
+        out.append({"nombre": f"ley {v['proyecto']}", "fecha_desafio": min(fechas),
+                    "fecha_caida": v.get("insistencia_completa")})
+    for d in registro.get("decretos", []):
+        fechas = ([rz["fecha"] for rz in d.get("rechazos", []) if rz.get("fecha")]
+                  + [s["fecha"] for s in d.get("sostenimientos", []) if s.get("fecha")])
+        if not fechas:
+            continue
+        caida, camaras = None, set()
+        for rz in sorted(d.get("rechazos", []), key=lambda r: r.get("fecha") or ""):
+            if not rz.get("fecha"):
+                continue
+            camaras.add(rz.get("camara"))
+            if len(camaras) >= 2:
+                caida = rz["fecha"]
+                break
+        out.append({"nombre": d.get("etiqueta") or d.get("clave", "?"),
+                    "fecha_desafio": min(fechas), "fecha_caida": caida})
+    return sorted(out, key=lambda e: e["fecha_desafio"])
+
+
+def _bloqueo_tasa_12m(desafios: list, referencia: date):
+    """(pct_sostenidas, n_desafiadas, n_caidas, ultimo_desafio) en la ventana
+    de los 12 meses calendario que terminan en el mes de `referencia` —
+    misma ventana que _derrotas_conteo_12m, así card y serie cuentan igual.
+    La caída se evalúa AL CIERRE de `referencia` (estado histórico
+    reproducible: un punto ya publicado no cambia porque la norma cayera
+    después). None si no hubo desafíos en la ventana (sin denominador no hay
+    tasa — el motor renormaliza)."""
+    meses = referencia.year * 12 + (referencia.month - 1)
+    desde = meses - 11
+    ym_desde = f"{desde // 12}-{desde % 12 + 1:02d}"
+    ym_hasta = f"{referencia.year}-{referencia.month:02d}"
+    corte = referencia.isoformat()
+    en_ventana = [e for e in desafios if ym_desde <= e["fecha_desafio"][:7] <= ym_hasta]
+    if not en_ventana:
+        return None
+    caidas = sum(1 for e in en_ventana if e["fecha_caida"] and e["fecha_caida"] <= corte)
+    n = len(en_ventana)
+    return (round((n - caidas) / n * 100.0, 1), n, caidas,
+            max(e["fecha_desafio"] for e in en_ventana))
+
+
+def fetch_bloqueo_sostenido() -> dict | None:
+    """
+    % de normas propias desafiadas en el recinto (insistencias de veto
+    votadas + validez/rechazo de decretos bajo la ley 26.122) que el
+    Ejecutivo mantuvo en pie, últimos 12 meses calendario. Mayor = mejor:
+    es la capacidad de bloqueo (el tercio del art. 83 CN + la vigencia de
+    los decretos), el recurso de poder central de un Ejecutivo sin mayoría.
+
+    Corre DESPUÉS de fetch_derrotas_legislativas (que actualiza vetos,
+    insistencias completas y rechazos del Senado en el registro compartido)
+    y de fetch_cohesion_bloque (cuyo walk deja las actas nuevas de Diputados
+    en el caché permanente que este clasificador usa como universo de ids).
+    La clasificación de Diputados persiste su progreso de forma incremental
+    (watermark) aunque la corrida falle después; un fallo en el listado del
+    Senado degrada la card al caché del snapshot anterior, sin corromper el
+    registro.
+    """
+    try:
+        registro = _cargar_derrotas_registro()
+        if registro is None:
+            raise ValueError(f"registro de eventos ausente o ilegible ({DERROTAS_EVENTOS_PATH})")
+        try:
+            _bloqueo_clasificar_diputados(registro)
+            _bloqueo_detectar_insistencias_senado(registro)
+        finally:
+            # el progreso de clasificación ya hecho es conocimiento válido
+            # (cada acta clasificada es un hecho inmutable): se persiste
+            # aunque una etapa posterior haya fallado
+            _guardar_derrotas_registro(registro)
+
+        desafios = _bloqueo_desafios(registro)
+        tasa = _bloqueo_tasa_12m(desafios, date.today())
+        if tasa is None:
+            raise ValueError("sin desafíos votados en la ventana de 12 meses (sin denominador no hay tasa)")
+        pct, n, caidas, ultimo = tasa
+        pendientes = registro.get("actas_diputados_bloqueo", {}).get("pendientes", {})
+        return {
+            "valor": pct,
+            "desafiadas_12m": n,
+            "caidas_12m": caidas,
+            "sostenidas_12m": n - caidas,
+            "ultimo_desafio": ultimo,
+            "pendientes_triage": len(pendientes),
+            "detalle_txt": (f"{n - caidas} de {n} normas desafiadas en el recinto siguen en pie "
+                            f"(vetos con insistencia votada + decretos votados bajo la ley 26.122, "
+                            f"últimos 12 meses)"),
+            "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
+            "fuente": ("Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) "
+                       "— elaboración CIGOB"),
+            "fecha_dato": str(date.today()),
+            "desactualizado": False,
+        }
+
+    except Exception as e:
+        _warn("bloqueo_sostenido", str(e))
+        return None
+
+
 # ── Rotación del gabinete (registro curado + detector de alerta InfoLeg) ─────
 #
 # Modelo semiautomático, mismo patrón que privatizaciones (ITCG) y
@@ -3029,6 +3556,18 @@ def main() -> None:
         frescos["cohesion_bloque"] = compuesto_cohesion
         if dip_ok and sen_ok:
             frescos_count += 1
+
+    # bloqueo_sostenido corre DESPUÉS de cohesión a propósito (ADR-0069): su
+    # clasificador usa como universo de ids el caché de actas de Diputados
+    # que el walk de cohesión acaba de refrescar, y el registro de eventos
+    # que fetch_derrotas_legislativas (en la lista de arriba) ya actualizó.
+    resultado_bloqueo = fetch_bloqueo_sostenido()
+    if _resultado_utilizable("bloqueo_sostenido", resultado_bloqueo):
+        frescos["bloqueo_sostenido"] = resultado_bloqueo
+        frescos_count += 1
+    elif "bloqueo_sostenido" in indicadores_anteriores:
+        frescos["bloqueo_sostenido"] = {**indicadores_anteriores["bloqueo_sostenido"],
+                                        "desactualizado": True}
 
     # alineamiento_senadores_prov comparte el mismo contrato de retorno que
     # cohesion_bloque_senado (misma sesión/descubrimiento de actas de Senado):

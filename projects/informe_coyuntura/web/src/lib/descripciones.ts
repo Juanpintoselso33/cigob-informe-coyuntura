@@ -159,6 +159,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Es la medida más directa del balance de fuerzas entre el Ejecutivo y el Congreso: cada insistencia o rechazo en el recinto es una derrota política difícil de revertir. Cero derrotas indican control de la agenda (o ausencia de confrontación); un conteo alto marca un Congreso capaz de imponerse.",
     frecuencia: "Continua (12m)", tipo: "Conteo (12m)",
   },
+  bloqueo_sostenido: {
+    que: "De todas las normas del Poder Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses —leyes vetadas cuya insistencia se votó y decretos sometidos al control de la ley 26.122—, qué porcentaje sigue en pie: vetos que el Congreso no logró revertir con los dos tercios que exige la Constitución y decretos que conservan su vigencia porque ninguna cámara (o solo una) los rechazó.",
+    aporta: "Es la cara ganada del pulso legislativo, la que el conteo de derrotas no registra: un gobierno sin mayoría propia gobierna sosteniendo sus vetos con un tercio de una cámara y manteniendo vivos sus decretos. Sostener todo lo desafiado indica un bloqueo firme; una tasa baja marca que el Congreso encontró los votos para voltear normas del Ejecutivo. Como mira 12 meses hacia atrás, una crisis reciente pesa en el indicador durante un año.",
+    frecuencia: "Continua (12m)", tipo: "Nivel (%)",
+  },
 
   // ── Vida cotidiana (el bolsillo y la calle) ─────────────────────
   brecha_salario_cbt: {

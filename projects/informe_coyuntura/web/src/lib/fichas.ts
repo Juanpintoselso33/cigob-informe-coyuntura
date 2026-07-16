@@ -826,7 +826,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo. Estas anclas están ancladas a la práctica histórica 2011-2024 (cuatro presidencias distintas): en promedio, una de cada tres leyes sancionadas tuvo un DNU — ratio ≈0,3.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto a la eficacia legislativa, las sesiones caídas por quórum y las derrotas legislativas.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto a la eficacia legislativa, las sesiones caídas por quórum, las derrotas legislativas y el bloqueo sostenido.",
     ],
     limitaciones: [
       "Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.",
@@ -934,7 +934,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Los umbrales se calibraron contra series históricas de otras gestiones (proporción de proyectos del Ejecutivo que se convirtieron en ley), no contra el rango de esta gestión.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 30% junto al ratio DNU, las sesiones caídas por quórum y las derrotas legislativas.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto al ratio DNU, las sesiones caídas por quórum, las derrotas legislativas y el bloqueo sostenido.",
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
@@ -1113,7 +1113,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa y las derrotas legislativas.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 15% junto al ratio DNU, la eficacia legislativa, las derrotas legislativas y el bloqueo sostenido.",
     ],
     limitaciones: [
       "Las sesiones desactivadas antes de la apertura formal no aparecen en el registro oficial: el indicador subestima el bloqueo.",
@@ -1159,7 +1159,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los umbrales se calibraron contra la serie mensual reconstruida completa del indicador (32 meses, diciembre de 2023 en adelante, con cada evento verificado contra la fuente primaria): el período cubre desde meses sin ninguna derrota hasta el pico de ocho derrotas en doce meses tras la ola de rechazos e insistencias de agosto-octubre de 2025. Las dos bandas más bajas quedan deliberadamente por encima de todo lo observado: son el margen para escenarios de confrontación más intensos que los ya vistos.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto al ratio DNU, la eficacia legislativa y las sesiones caídas por quórum. Menos derrotas = puntaje más alto.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa, las sesiones caídas por quórum y el bloqueo sostenido — su contracara: éste cuenta las normas caídas, aquél acredita las sostenidas. Menos derrotas = puntaje más alto.",
     ],
     limitaciones: [
       "Es un indicador de eventos raros con ventana móvil: el valor puede saltar varios enteros de un mes al siguiente, tanto cuando ocurre una tanda de derrotas como —en espejo— doce meses después, cuando esa tanda sale de la ventana. El movimiento de salida es mecánico (aritmética de la ventana), no una mejora política nueva; el detalle de la card publica la composición del conteo para leerlo con contexto.",
@@ -1172,6 +1172,52 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "Los eventos consumados son inmutables (una insistencia no se des-insiste; un rechazo no se des-vota). Los vetos con insistencia incompleta se re-verifican en cada corrida: media insistencia pendiente no caduca y puede completarse en cualquier momento — si eso ocurre, el evento nuevo se fecha en el mes en que se complete, sin reescribir el histórico.",
     cambios: [
       { fecha: "2026-07-09", cambio: "Incorporado al cinturón político: las insistencias de 2025 fueron las primeras que revirtieron vetos presidenciales desde 2003, y ningún otro indicador del cinturón capturaba ese pulso ni los rechazos de decretos en el recinto. Serie mensual completa desde diciembre de 2023, reconstruida evento por evento contra fuente primaria." },
+    ],
+  },
+
+  bloqueo_sostenido: {
+    tipo: "indicador",
+    id: "bloqueo_sostenido",
+    cinturon: "politica",
+    rezago: "Las cámaras publican sus actas de votación a los días de cada sesión; el clasificador incorpora las actas nuevas en la corrida nocturna siguiente. La caída de un veto se registra con la publicación de la ley insistida en el Boletín Oficial, dos a tres semanas después del voto de la segunda cámara.",
+    fuente: {
+      organismo: "Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia)",
+      operacion: "Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia)",
+      url: "https://votaciones.hcdn.gob.ar",
+      acceso: "Automático: cada acta de Diputados se clasifica una única vez leyendo su encabezado (una insistencia de veto se reconoce por el número de ley en el motivo o —en el formato de 2024— por la mayoría de dos tercios sobre el mensaje del Ejecutivo, mapeado a la ley vetada en los datos abiertos de la Cámara; una votación de decreto, por el número de decreto en el motivo; las habilitaciones de tratamiento, que son la moción procesal previa, se excluyen por palabra clave); en el Senado se filtran los títulos de insistencia del listado anual de actas. Los casos ambiguos quedan en una cola de revisión visible en cada corrida — nunca se adivina la dirección de una moción. El registro de eventos es versionado y compartido con el indicador de derrotas legislativas.",
+    },
+    transformaciones: [
+      "Una norma queda DESAFIADA desde su primera votación en el recinto, gane quien gane: la insistencia de una ley vetada (art. 83 de la Constitución) o el control de un decreto bajo la ley 26.122.",
+      "Sigue EN PIE mientras la insistencia no se complete en ambas cámaras (el veto se sostiene con un tercio de una sola) y mientras el decreto no sea rechazado por las dos (el rechazo de una sola cámara no lo deroga, como al DNU 70/2023).",
+      "El indicador es el porcentaje de normas desafiadas en los últimos 12 meses calendario que seguían en pie al cierre del mes: cada punto histórico evalúa el estado a esa fecha, así que una caída posterior no reescribe los meses ya publicados.",
+      "Los vetos sin insistencia votada y los decretos que ninguna cámara trató no entran al denominador: sin desafío no hay prueba del bloqueo.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≥ 90", puntaje: 100 },
+        { banda: "75 – 90", puntaje: 85 },
+        { banda: "50 – 75", puntaje: 60 },
+        { banda: "25 – 50", puntaje: 35 },
+        { banda: "< 25", puntaje: 10 },
+      ],
+      puntos: [[95, 100], [82.5, 85], [62.5, 60], [37.5, 35], [20, 10]],
+      unidadCorta: "% en pie",
+    },
+    incidenciaTexto: [
+      "Los umbrales usan una referencia externa, no el rango propio del período: entre 2003 y 2025 el Congreso no logró revertir ningún veto presidencial —ni siquiera frente a los gobiernos en minoría—, así que sostener el 90% o más de lo desafiado es el dominio histórico normal del bloqueo; por debajo del 25%, el Ejecutivo perdió la llave del tercio. El período cubierto recorre casi todo el rango: 100% en el primer semestre de 2024, 75% tras la caída del decreto de fondos reservados, 33% tras la ola de insistencias y derogaciones de agosto-octubre de 2025, y el mínimo en 2026, cuando la ventana móvil todavía carga esa ola pero los desafíos sostenidos más viejos ya salieron de ella.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto a la eficacia parlamentaria, el ratio DNU, las derrotas legislativas y las sesiones caídas por quórum. Es la contracara de las derrotas: aquéllas cuentan las normas caídas en términos absolutos; éste acredita también las sostenidas. Más es mejor.",
+    ],
+    limitaciones: [
+      "La ventana de 12 meses retiene las caídas durante un año: la recuperación del bloqueo después de una crisis aparece con rezago mecánico, incluso si el Congreso nuevo dejó de desafiar normas (los desafíos viejos salen de la ventana doce meses después, no antes).",
+      "Un período sin desafíos votados no genera dato (sin denominador no hay tasa): el indicador queda fuera ese mes y los pesos de su dimensión se renormalizan — ausencia de desafíos puede ser dominio de agenda o simple falta de confrontación, y el indicador no distingue entre ambas.",
+      "Con pocos desafíos en ventana la tasa se mueve a saltos grandes (un desafío sobre cuatro son 25 puntos): es un indicador de eventos raros, como las derrotas legislativas.",
+      "La moción estándar de la comisión bicameral sobre un decreto es su rechazo; el caso raro de un dictamen de aprobación (una vez en el período: el acuerdo con el FMI) se detecta por el texto del motivo y queda para clasificación manual — la dirección de una moción ambigua nunca se adivina.",
+      "El universo de actas de Diputados es el que releva el caché del proyecto: un acta publicada hoy se clasifica en la corrida nocturna siguiente.",
+    ],
+    faltantes: "Si las actas o InfoLeg fallan, se usa el último valor en caché marcado como desactualizado; la clasificación ya hecha queda persistida (cada acta se clasifica una única vez en la vida del proyecto), así que una caída de fuente solo retrasa la detección de votaciones nuevas.",
+    revisiones: "Las votaciones consumadas son inmutables. Los vetos con media insistencia pendiente se re-verifican en cada corrida (no caducan): si la segunda cámara completa la insistencia, la norma pasa a caída desde ese mes en adelante — los puntos históricos ya publicados no se reescriben, porque cada uno evalúa el estado al cierre de su propio mes.",
+    cambios: [
+      { fecha: "2026-07-16", cambio: "Incorporado al cinturón político como la cara ganada del pulso legislativo: los vetos sostenidos de septiembre-octubre de 2024 y la supervivencia del DNU 70/2023 no puntuaban en ningún indicador (el conteo de derrotas solo registra las normas caídas). Serie mensual desde marzo de 2024 (primer desafío votado del período), reconstruida evento por evento contra las actas de ambas cámaras." },
     ],
   },
 
