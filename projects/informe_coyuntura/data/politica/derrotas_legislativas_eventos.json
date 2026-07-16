@@ -1,13 +1,13 @@
 {
   "_meta": {
-    "descripcion": "Registro versionado de derrotas legislativas del Poder Ejecutivo (indicador derrotas_legislativas del ITCP): vetos insistidos por ambas cámaras (art. 83 CN) y decretos (DNU/delegados) rechazados en el recinto bajo la ley 26.122. Semilla verificada a mano contra InfoLeg, actas del Senado y actas PDF de Diputados (investigación 2026-07-09); politica.fetch_derrotas_legislativas() lo actualiza de forma incremental en cada corrida.",
-    "regla_conteo": "Cada norma cuenta UNA sola vez, fechada en el mes en que la derrota se consuma: para una ley vetada, la insistencia de la segunda cámara (proxy automático: publicación de la ley en el B.O.); para un decreto, el primer rechazo en el recinto de una cámara. El rechazo de una sola cámara no deroga el decreto (ley 26.122, art. 24) pero cuenta como derrota política consumada.",
+    "descripcion": "Registro versionado de eventos legislativos del Poder Ejecutivo en el recinto. Alimenta DOS indicadores del ITCP: derrotas_legislativas (vetos insistidos por ambas cámaras, art. 83 CN, y decretos DNU/delegados rechazados bajo la ley 26.122) y bloqueo_sostenido (ADR-0069: tasa de normas desafiadas que siguen en pie — usa además insistencias_votadas de cada veto y sostenimientos de cada decreto). Semilla verificada a mano contra InfoLeg, actas del Senado y actas PDF de Diputados (investigación 2026-07-09; desafíos 2026-07-16); politica.fetch_derrotas_legislativas() y politica.fetch_bloqueo_sostenido() lo actualizan de forma incremental en cada corrida.",
+    "regla_conteo": "derrotas_legislativas: cada norma cuenta UNA sola vez, fechada en el mes en que la derrota se consuma: para una ley vetada, la insistencia de la segunda cámara (proxy automático: publicación de la ley en el B.O.); para un decreto, el primer rechazo en el recinto de una cámara. El rechazo de una sola cámara no deroga el decreto (ley 26.122, art. 24) pero cuenta como derrota política consumada. bloqueo_sostenido: una norma queda DESAFIADA desde su primera votación en el recinto (insistencia de veto o validez/rechazo de decreto, gane quien gane) y CAÍDA cuando la derrota se consuma para ambas cámaras (insistencia completa / rechazo de la segunda cámara).",
     "fuentes": [
       "servicios.infoleg.gob.ar — decretos de observación total/parcial y leyes promulgadas por insistencia",
       "senado.gob.ar/votaciones — actas con la fórmula 'en los términos de la ley 26.122' (tallies contados del detalleActa)",
       "votaciones.hcdn.gob.ar/pdf/acta/{id} — actas de Diputados (solo semilla histórica: la detección automática de decretos usa el Senado)"
     ],
-    "actualizado": "2026-07-15"
+    "actualizado": "2026-07-16"
   },
   "vetos": [
     {
@@ -30,7 +30,15 @@
       "tipo": "total",
       "insistencia_completa": null,
       "fuente_insistencia": null,
-      "detalle": "Diputados rechazó la insistencia el 2024-09-11 (no alcanzó 2/3) — veto sostenido."
+      "detalle": "Diputados rechazó la insistencia el 2024-09-11 (no alcanzó 2/3) — veto sostenido.",
+      "insistencias_votadas": [
+        {
+          "fecha": "2024-09-11",
+          "camara": "Diputados",
+          "resultado": "insistencia_rechazada",
+          "fuente": "acta 5354 votaciones.hcdn.gob.ar (NEGATIVO, 153 afirmativos - 87 negativos - 8 abst.)"
+        }
+      ]
     },
     {
       "proyecto": "27.757",
@@ -41,7 +49,15 @@
       "tipo": "total",
       "insistencia_completa": null,
       "fuente_insistencia": null,
-      "detalle": "Diputados rechazó la insistencia el 2024-10-09 (no alcanzó 2/3) — veto sostenido."
+      "detalle": "Diputados rechazó la insistencia el 2024-10-09 (no alcanzó 2/3) — veto sostenido.",
+      "insistencias_votadas": [
+        {
+          "fecha": "2024-10-09",
+          "camara": "Diputados",
+          "resultado": "insistencia_rechazada",
+          "fuente": "acta 5400 votaciones.hcdn.gob.ar (NEGATIVO, 160 afirmativos - 84 negativos - 5 abst.)"
+        }
+      ]
     },
     {
       "proyecto": "27.790",
@@ -52,6 +68,14 @@
       "tipo": "total",
       "insistencia_completa": null,
       "fuente_insistencia": null,
+      "insistencias_votadas": [
+        {
+          "fecha": "2025-07-10",
+          "camara": "Senado",
+          "resultado": "insistio_camara",
+          "fuente": "acta 2559 senado.gob.ar (51-0) — semilla manual 2026-07-16: el título del acta no trae número de ley, la detección automática no puede matchearlo"
+        }
+      ],
       "detalle": "Senado insistió el 2025-07-10 (51-0); Diputados nunca lo trató — insistencia inconclusa, sin plazo de caducidad: puede completarse en cualquier momento (por eso se sigue verificando en cada corrida)."
     },
     {
@@ -63,7 +87,15 @@
       "tipo": "total",
       "insistencia_completa": null,
       "fuente_insistencia": null,
-      "detalle": "Diputados rechazó la insistencia el 2025-08-20 (160-83, a 2 votos de los 2/3) — veto sostenido."
+      "detalle": "Diputados rechazó la insistencia el 2025-08-20 (160-83, a 2 votos de los 2/3) — veto sostenido.",
+      "insistencias_votadas": [
+        {
+          "fecha": "2025-08-20",
+          "camara": "Diputados",
+          "resultado": "insistencia_rechazada",
+          "fuente": "acta 5737 votaciones.hcdn.gob.ar (NEGATIVO, 160 afirmativos - 83 negativos - 6 abst.)"
+        }
+      ]
     },
     {
       "proyecto": "27.792",
@@ -85,7 +117,21 @@
       "tipo": "total",
       "insistencia_completa": "2025-09-04",
       "fuente_insistencia": "voto de la segunda cámara (Senado 63-7, tras Diputados 172-73-2 el 2025-08-20); ley publicada en el B.O. el 2025-09-22",
-      "detalle": "INSISTIDO — primera insistencia exitosa sobre un veto presidencial desde 2003."
+      "detalle": "INSISTIDO — primera insistencia exitosa sobre un veto presidencial desde 2003.",
+      "insistencias_votadas": [
+        {
+          "fecha": "2025-08-20",
+          "camara": "Diputados",
+          "resultado": "insistio_camara",
+          "fuente": "acta 5735 votaciones.hcdn.gob.ar (AFIRMATIVO, 172 afirmativos - 73 negativos - 2 abst.)"
+        },
+        {
+          "fecha": "2025-09-04",
+          "camara": "Senado",
+          "resultado": "insistio_camara",
+          "fuente": "acta 2576 senado.gob.ar (62-7)"
+        }
+      ]
     },
     {
       "proyecto": "27.795",
@@ -96,7 +142,21 @@
       "tipo": "total",
       "insistencia_completa": "2025-10-02",
       "fuente_insistencia": "voto de la segunda cámara (Senado, tras Diputados el 2025-09-17); ley publicada en el B.O. el 2025-10-21",
-      "detalle": "INSISTIDO."
+      "detalle": "INSISTIDO.",
+      "insistencias_votadas": [
+        {
+          "fecha": "2025-09-17",
+          "camara": "Diputados",
+          "resultado": "insistio_camara",
+          "fuente": "acta 5766 votaciones.hcdn.gob.ar (AFIRMATIVO, 174 afirmativos - 67 negativos - 2 abst.)"
+        },
+        {
+          "fecha": "2025-10-02",
+          "camara": "Senado",
+          "resultado": "insistio_camara",
+          "fuente": "acta 2598 senado.gob.ar (57-7)"
+        }
+      ]
     },
     {
       "proyecto": "27.796",
@@ -107,7 +167,21 @@
       "tipo": "total",
       "insistencia_completa": "2025-10-02",
       "fuente_insistencia": "voto de la segunda cámara (Senado, tras Diputados el 2025-09-17); ley publicada en el B.O. el 2025-10-21",
-      "detalle": "INSISTIDO."
+      "detalle": "INSISTIDO.",
+      "insistencias_votadas": [
+        {
+          "fecha": "2025-09-17",
+          "camara": "Diputados",
+          "resultado": "insistio_camara",
+          "fuente": "acta 5762 votaciones.hcdn.gob.ar (AFIRMATIVO, 181 afirmativos - 60 negativos - 1 abst.)"
+        },
+        {
+          "fecha": "2025-10-02",
+          "camara": "Senado",
+          "resultado": "insistio_camara",
+          "fuente": "acta 2597 senado.gob.ar (58-7)"
+        }
+      ]
     },
     {
       "proyecto": "27.794",
@@ -118,7 +192,15 @@
       "tipo": "total",
       "insistencia_completa": null,
       "fuente_insistencia": null,
-      "detalle": "Senado insistió el 2025-09-18; Diputados nunca lo trató — insistencia inconclusa, sin plazo de caducidad: puede completarse en cualquier momento (por eso se sigue verificando en cada corrida)."
+      "detalle": "Senado insistió el 2025-09-18; Diputados nunca lo trató — insistencia inconclusa, sin plazo de caducidad: puede completarse en cualquier momento (por eso se sigue verificando en cada corrida).",
+      "insistencias_votadas": [
+        {
+          "fecha": "2025-09-18",
+          "camara": "Senado",
+          "resultado": "insistio_camara",
+          "fuente": "acta 2582 senado.gob.ar (58-9)"
+        }
+      ]
     }
   ],
   "decretos": [
@@ -168,6 +250,16 @@
       "tema": "Acuerdo con el FMI (Facilidades Extendidas)",
       "publicado_bo": "2025-03-11",
       "rechazos": [],
+      "sostenimientos": [
+        {
+          "fecha": "2025-03-19",
+          "camara": "Diputados",
+          "acta": "5608",
+          "votos": "129 afirmativos - 108 negativos - 6 abst.",
+          "tipo": "aprobacion",
+          "fuente": "semilla manual 2026-07-16: el motivo del acta ('O. D. 759 - DNU 179/2025, QUE APRUEBA...') dispara la heurística de revisión manual del clasificador (dirección de la moción ambigua)"
+        }
+      ],
       "estado": "ratificado",
       "detalle": "Aprobado por Diputados el 2025-03-19 (129-108-6): con la aprobación de una cámara queda firme bajo la ley 26.122. No es una derrota — se registra para dejar constancia del único decreto aprobado en el recinto."
     },
@@ -282,6 +374,31 @@
       "detalle": "Derogado por ambas cámaras; statu quo restituido por Decreto 627/2025."
     }
   ],
+  "actas_senado_insistencia_vistas": {
+    "2559": "27.790 (Bahía Blanca): insistencia del Senado 51-0 — resuelta a mano en la semilla (el título no trae número de ley)",
+    "2598": "27.795: insistencia votada (57-7)",
+    "2576": "27.793: insistencia votada (62-7)",
+    "2582": "27.794: insistencia votada (58-9)",
+    "2597": "27.796: insistencia votada (58-7)"
+  },
+  "actas_diputados_bloqueo": {
+    "clasificadas_hasta_id": 5959,
+    "pendientes": {},
+    "notas": {
+      "5354": "27.756: insistencia rechazada (veto sostenido) (153 afirmativos - 87 negativos - 8 abst.)",
+      "5400": "27.757: insistencia rechazada (veto sostenido) (160 afirmativos - 84 negativos - 5 abst.)",
+      "5608": "179/2025: votación ya reflejada en el registro",
+      "5715": "462/2025: votación ya reflejada en el registro",
+      "5716": "345/2025: votación ya reflejada en el registro",
+      "5717": "351/2025: votación ya reflejada en el registro",
+      "5718": "340/2025: votación ya reflejada en el registro",
+      "5719": "461/2025: votación ya reflejada en el registro",
+      "5735": "27.793: la cámara INSISTIÓ (172 afirmativos - 73 negativos - 2 abst.)",
+      "5737": "27.791: insistencia rechazada (veto sostenido) (160 afirmativos - 83 negativos - 6 abst.)",
+      "5762": "27.796: la cámara INSISTIÓ (181 afirmativos - 60 negativos - 1 abst.)",
+      "5766": "27.795: la cámara INSISTIÓ (174 afirmativos - 67 negativos - 2 abst.)"
+    }
+  },
   "actas_senado_vistas": {
     "2440": "70/2023: votación anulada/rehecha (67 votos sin sentido registrado) — sin efecto",
     "2441": "70/2023: RECHAZO (42-25) — primer rechazo en recinto del DNU 70/23",

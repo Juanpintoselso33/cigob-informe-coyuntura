@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-15 18:06:06"
-score_global: 2.7
+generado: "2026-07-16 11:18:19"
+score_global: 2.8
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 2.7/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 2.8/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
@@ -36,24 +36,25 @@ schema_version: "1.2.0"
 | base_monetaria | 9.12 | % mensual nominal | 2026-07-08 | fresco |
 | tc_mayorista | 2.94 | % mensual | 2026-07-14 | fresco |
 
-### 🟢 Politica — score 3.0/10 (estable)
+### 🟡 Politica — score 3.4/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 3.1 | Puntos porcentuales | 2026-06-10 | fresco |
-| ratio_dnu | 2.19 | DNUs por ley | 2026-07-15 | fresco |
+| ratio_dnu | 2.238 | DNUs por ley | 2026-07-16 | fresco |
 | conflictividad_nacional | -23.2 | % vs 2023 | 2026-06-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | fresco |
-| iaf_transferencias | 0.8 | % interanual real | 2026-07-15 | fresco |
-| eficacia_legislativa | 17.6 | % de proyectos | 2026-07-15 | fresco |
-| veto_quorum | 0.0 | % de sesiones | 2026-07-15 | fresco |
-| comisiones_caidas | 97.7 | % de proyectos | 2026-07-15 | fresco |
-| adhesion_reformas_provincial | 66.7 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-07-15 | fresco |
-| derrotas_legislativas | 8 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-07-15 | fresco |
-| rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-07-15 | fresco |
+| iaf_transferencias | 0.8 | % interanual real | 2026-07-16 | fresco |
+| eficacia_legislativa | 12.5 | % de proyectos | 2026-07-16 | fresco |
+| veto_quorum | 0.0 | % de sesiones | 2026-07-16 | fresco |
+| comisiones_caidas | 97.7 | % de proyectos | 2026-07-16 | fresco |
+| adhesion_reformas_provincial | 66.7 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-07-16 | fresco |
+| derrotas_legislativas | 8 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-07-16 | fresco |
+| rotacion_gabinete | 7 | salidas de rango ministerial (acum. 12 meses) | 2026-07-16 | fresco |
 | protestas_caba | 294 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-06-01 | fresco |
 | cohesion_bloque | 99.7 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-06-24 | fresco |
+| bloqueo_sostenido | 20.0 | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-07-16 | fresco |
 | alineamiento_senadores_prov | 68.3 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-06-04 | fresco |
 
 ### 🟢 Vida Cotidiana — score 2.7/10 (estable)
@@ -99,4 +100,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-15 18:06:06 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-16 11:18:19 — schema 1.2.0*

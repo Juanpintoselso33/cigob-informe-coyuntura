@@ -108,7 +108,7 @@ fecha,indicador,valor,unidad,fuente
 2020-12-01,iaf_transferencias,-3.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2019-12-01,iaf_transferencias,-1.4,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2018-12-01,iaf_transferencias,6.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2026-07-01,eficacia_legislativa,17.6,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-07-01,eficacia_legislativa,12.5,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2026-06-01,eficacia_legislativa,22.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2026-05-01,eficacia_legislativa,15.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
 2026-04-01,eficacia_legislativa,19.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
@@ -265,6 +265,34 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
 2024-01-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
 2023-12-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
+2026-06-30,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-05-31,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-04-30,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-03-31,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-02-28,bloqueo_sostenido,33.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-01-31,bloqueo_sostenido,33.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-12-31,bloqueo_sostenido,33.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-11-30,bloqueo_sostenido,33.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-10-31,bloqueo_sostenido,33.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-09-30,bloqueo_sostenido,53.8,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-08-31,bloqueo_sostenido,54.5,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-07-31,bloqueo_sostenido,80.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-06-30,bloqueo_sostenido,75.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-05-31,bloqueo_sostenido,75.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-04-30,bloqueo_sostenido,75.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-03-31,bloqueo_sostenido,75.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-02-28,bloqueo_sostenido,75.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-01-31,bloqueo_sostenido,75.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-12-31,bloqueo_sostenido,75.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-11-30,bloqueo_sostenido,75.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-10-31,bloqueo_sostenido,75.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-09-30,bloqueo_sostenido,66.7,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-08-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-07-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-06-30,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-05-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-04-30,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-03-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-06-30,alineamiento_senadores_prov,70.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
 2026-05-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
 2026-04-30,alineamiento_senadores_prov,47.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)

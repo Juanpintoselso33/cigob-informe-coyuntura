@@ -1,44 +1,51 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-15T16:19:24.919607",
-  "score": 3.0,
+  "generated_at": "2026-07-16T11:17:16.600297",
+  "score": 3.4,
   "itcp": {
-    "valor": 69.9,
+    "valor": 66.4,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.3,
-        "puntaje": 52.5,
+        "puntaje": 41.0,
         "indicadores": {
           "ratio_dnu": {
-            "peso": 0.25,
+            "peso": 0.2,
             "puntaje_banda": 10.0,
             "puntaje_aplicado": 10.0,
-            "valor": 2.19,
-            "peso_efectivo": 0.075
+            "valor": 2.238,
+            "peso_efectivo": 0.06
           },
           "eficacia_legislativa": {
-            "peso": 0.3,
-            "puntaje_banda": 55.2,
-            "puntaje_aplicado": 55.2,
-            "valor": 17.6,
-            "peso_efectivo": 0.09
+            "peso": 0.25,
+            "puntaje_banda": 45.0,
+            "puntaje_aplicado": 45.0,
+            "valor": 12.5,
+            "peso_efectivo": 0.075
           },
           "veto_quorum": {
-            "peso": 0.2,
+            "peso": 0.15,
             "puntaje_banda": 100.0,
             "puntaje_aplicado": 100.0,
             "valor": 0.0,
-            "peso_efectivo": 0.06
+            "peso_efectivo": 0.045
           },
           "derrotas_legislativas": {
-            "peso": 0.25,
+            "peso": 0.2,
             "puntaje_banda": 53.6,
             "puntaje_aplicado": 53.6,
             "valor": 8.0,
-            "peso_efectivo": 0.075
+            "peso_efectivo": 0.06
+          },
+          "bloqueo_sostenido": {
+            "peso": 0.2,
+            "puntaje_banda": 10.0,
+            "puntaje_aplicado": 10.0,
+            "valor": 20.0,
+            "peso_efectivo": 0.06
           }
         },
         "peso_efectivo": 0.3
@@ -137,19 +144,19 @@
       "peso_efectivo": 0.1
     },
     "ratio_dnu": {
-      "valor": 2.19,
-      "dnu_count": 46,
+      "valor": 2.238,
+      "dnu_count": 47,
       "leyes_count": 21,
       "ventana_dias": 365,
       "unidad": "DNUs por ley",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-07-15",
+      "fecha_dato": "2026-07-16",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 10.0,
       "puntaje_banda": 10.0,
-      "peso_efectivo": 0.075
+      "peso_efectivo": 0.06
     },
     "conflictividad_nacional": {
       "valor": -23.2,
@@ -186,7 +193,7 @@
       "ipc_aplicado_pct": 41.9,
       "unidad": "% interanual real",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-      "fecha_dato": "2026-07-15",
+      "fecha_dato": "2026-07-16",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
@@ -195,21 +202,21 @@
       "peso_efectivo": 0.1
     },
     "eficacia_legislativa": {
-      "valor": 17.6,
-      "aprobados_n": 3,
-      "enviados_n": 17,
-      "cohorte_desde": "2024-07-15",
-      "cohorte_hasta": "2025-07-15",
+      "valor": 12.5,
+      "aprobados_n": 2,
+      "enviados_n": 16,
+      "cohorte_desde": "2024-07-16",
+      "cohorte_hasta": "2025-07-16",
       "dias_madurado_min": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-      "fecha_dato": "2026-07-15",
+      "fecha_dato": "2026-07-16",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 55.2,
-      "puntaje_banda": 55.2,
-      "peso_efectivo": 0.09
+      "puntaje_itcp": 45.0,
+      "puntaje_banda": 45.0,
+      "peso_efectivo": 0.075
     },
     "veto_quorum": {
       "valor": 0.0,
@@ -218,13 +225,13 @@
       "periodo_id": "HCDN144",
       "unidad": "% de sesiones",
       "fuente": "datos.hcdn.gob.ar CKAN — sesiones — período 144",
-      "fecha_dato": "2026-07-15",
+      "fecha_dato": "2026-07-16",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 100.0,
       "puntaje_banda": 100.0,
-      "peso_efectivo": 0.06
+      "peso_efectivo": 0.045
     },
     "comisiones_caidas": {
       "valor": 97.7,
@@ -234,7 +241,7 @@
       "ventana_dias": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-07-15",
+      "fecha_dato": "2026-07-16",
       "desactualizado": false,
       "en_indice": false
     },
@@ -242,7 +249,7 @@
       "valor": 66.7,
       "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
       "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-      "fecha_dato": "2026-07-15",
+      "fecha_dato": "2026-07-16",
       "n_provincias": 16,
       "desactualizado": false,
       "en_indice": true,
@@ -260,19 +267,19 @@
       "detalle_txt": "3 vetos insistidos por el Congreso + 5 decretos rechazados en el recinto en los últimos 12 meses",
       "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-      "fecha_dato": "2026-07-15",
+      "fecha_dato": "2026-07-16",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 53.6,
       "puntaje_banda": 53.6,
-      "peso_efectivo": 0.075
+      "peso_efectivo": 0.06
     },
     "rotacion_gabinete": {
       "valor": 7,
       "unidad": "salidas de rango ministerial (acum. 12 meses)",
       "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
-      "fecha_dato": "2026-07-15",
+      "fecha_dato": "2026-07-16",
       "desactualizado": false,
       "salidas_politicas": 5,
       "salidas_estructurales": 2,
@@ -303,14 +310,14 @@
           "valor": 99.9,
           "fecha_dato": "2026-06-24",
           "n_actas": 33,
-          "corrida_exitosa_en": "2026-07-15",
+          "corrida_exitosa_en": "2026-07-16",
           "desactualizado": false
         },
         "senado": {
           "valor": 99.4,
           "fecha_dato": "2026-06-04",
           "n_actas": 18,
-          "corrida_exitosa_en": "2026-07-15",
+          "corrida_exitosa_en": "2026-07-16",
           "desactualizado": false
         }
       },
@@ -320,13 +327,31 @@
       "puntaje_banda": 93.3,
       "peso_efectivo": 0.2
     },
+    "bloqueo_sostenido": {
+      "valor": 20.0,
+      "desafiadas_12m": 10,
+      "caidas_12m": 8,
+      "sostenidas_12m": 2,
+      "ultimo_desafio": "2025-09-18",
+      "pendientes_triage": 0,
+      "detalle_txt": "2 de 10 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
+      "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
+      "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
+      "fecha_dato": "2026-07-16",
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 10.0,
+      "puntaje_banda": 10.0,
+      "peso_efectivo": 0.06
+    },
     "alineamiento_senadores_prov": {
       "valor": 68.3,
       "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
       "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
       "fecha_dato": "2026-06-04",
       "n_provincias": 24,
-      "corrida_exitosa_en": "2026-07-15",
+      "corrida_exitosa_en": "2026-07-16",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
