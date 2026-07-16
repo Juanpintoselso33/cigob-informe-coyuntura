@@ -248,9 +248,28 @@ ITCP_SERIES = [
     "derrotas_legislativas", "iaf_transferencias",
     "alineamiento_senadores_prov", "adhesion_reformas_provincial",
     "cohesion_bloque", "conflictividad_nacional",
+    "bloqueo_sostenido",   # ADR-0069 (2026-07-16): tasa de normas desafiadas
+    # en pie, 12m — serie desde mar-2024 (primer desafío votado: DNU 70/2023
+    # en el Senado); antes el motor renormaliza, igual que con veto_quorum.
     # comisiones_caidas salió del índice (ADR-0064) — su serie sigue
     # existiendo como seguimiento interno pero no entra a la reconstrucción
 ]
+
+# MÁSCARA DE ERA para eficacia_legislativa en la reconstrucción (ADR-0070,
+# 2026-07-16): la cohorte madura del indicador (expedientes PE publicados
+# 12-24 meses antes del mes evaluado) recién es 100% de la gestión actual
+# cuando t−730d ≥ 10-dic-2023, o sea desde DIC-2025. Antes de eso el
+# indicador mide la cartera de la gestión ANTERIOR muriendo con el cambio de
+# congreso (todo 2024: expedientes 2022-2023 de Fernández; el 74→26 de
+# puntaje reconstruido en 2024 era ese artefacto, no capital de esta
+# gestión). El criterio es A PRIORI —composición de la cohorte, la misma
+# doctrina que excluye dic-2023 de toda la reconstrucción (ver docstring de
+# construir_serie_itcp)— y NO una calibración contra el benchmark: los meses
+# de cohorte mixta (dic-2024→nov-2025) también se excluyen porque siguen
+# ponderados mayormente por expedientes pre-gestión. Solo afecta la serie
+# reconstruida de validación; la card publicada no se toca (hoy su cohorte
+# ya es 100% de esta gestión).
+EFICACIA_COHORTE_100PCT_MILEI_DESDE = "2025-12"
 
 
 def construir_serie_itcp() -> dict:
@@ -299,7 +318,16 @@ def construir_serie_itcp() -> dict:
     (transferencias de todo 2023 vs 2022; cuando se decidió también pesaba
     protestas_caba, hoy fuera del índice). El punto resultante era un salto
     de composición, no de política, y metía ruido justo en el arranque de
-    todas las correlaciones."""
+    todas las correlaciones.
+
+    MÁSCARA DE ERA PARA EFICACIA (2026-07-16, ADR-0070): la misma doctrina,
+    aplicada por componente — eficacia_legislativa se excluye de la
+    reconstrucción hasta nov-2025 inclusive porque su cohorte madura
+    (12-24m) recién es 100% de esta gestión desde dic-2025 (ver la
+    constante EFICACIA_COHORTE_100PCT_MILEI_DESDE arriba). Y desde ADR-0069
+    entra bloqueo_sostenido (tasa de normas desafiadas en pie), que le da a
+    la dimensión "poder legislativo" una pata que sí mide 2024: los vetos
+    sostenidos de sep/oct-2024 y la supervivencia del DNU 70."""
     series = json.loads(SERIES.read_text(encoding="utf-8"))
     m = lambda k: _mensual(series.get(k) or [])
     directos = {k: m(k) for k in ITCP_SERIES}
@@ -314,6 +342,8 @@ def construir_serie_itcp() -> dict:
     out = {}
     for ym in _meses("2024-01", ult):
         valores = {k: v.get(ym) for k, v in directos.items()}
+        if ym < EFICACIA_COHORTE_100PCT_MILEI_DESDE:
+            valores["eficacia_legislativa"] = None   # máscara de era (ADR-0070)
         r = itcp.calcular_itcp(valores)
         if not r:
             continue

@@ -59,3 +59,39 @@ def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
         "emae_ia": None,
         "tcrm": None,
     }]
+
+
+def test_reconstruccion_itcp_mascara_de_era_para_eficacia(monkeypatch, tmp_path):
+    # ADR-0070: eficacia_legislativa se excluye de la reconstrucción hasta
+    # nov-2025 inclusive (cohorte madura 12-24m 100% de la era actual recién
+    # desde dic-2025); desde dic-2025 entra con su valor
+    snapshot = tmp_path / "series.json"
+    snapshot.write_text(json.dumps({
+        "eficacia_legislativa": [
+            {"fecha": "2025-11-01", "valor": 30.0},
+            {"fecha": "2025-12-01", "valor": 25.0},
+        ],
+        "votometro_ventaja_lla": [
+            {"fecha": "2025-11-01", "valor": 5.0},
+            {"fecha": "2025-12-01", "valor": 6.0},
+        ],
+    }), encoding="utf-8")
+    monkeypatch.setattr(validacion_externa, "SERIES", snapshot)
+    recibidos = {}
+
+    def calcular(valores):
+        if all(v is None for v in valores.values()):
+            return None   # como el motor real: sin ningún indicador no hay índice
+        recibidos[len(recibidos)] = dict(valores)
+        return {"valor": 50.0, "dimensiones": {"x": {"peso": 1.0}}}
+
+    monkeypatch.setattr(validacion_externa.itcp, "calcular_itcp", calcular)
+
+    serie = validacion_externa.construir_serie_itcp()
+
+    assert set(serie) == {"2025-11", "2025-12"}
+    por_mes = {"2025-11": recibidos[0], "2025-12": recibidos[1]}
+    assert por_mes["2025-11"]["eficacia_legislativa"] is None   # enmascarada
+    assert por_mes["2025-12"]["eficacia_legislativa"] == 25.0   # cohorte 100% era
+    # bloqueo_sostenido integra la reconstrucción (ADR-0069)
+    assert "bloqueo_sostenido" in por_mes["2025-12"]
