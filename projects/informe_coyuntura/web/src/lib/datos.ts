@@ -466,6 +466,37 @@ export function badgeEstado(ind: Indicador): "Automático" | "Carga manual" | "E
   return "Automático";
 }
 
+// ── Período del dato para el chip de la card ─────────────────────────────
+// Reemplaza al rótulo "Automático" (que no informaba nada al lector): el chip
+// muestra a qué período corresponde el dato. Mensuales → "jun 2026";
+// trimestrales EPH → "1T 2026" (fecha_dato = inicio del trimestre relevado);
+// anuales → el año del dato. Para los indicadores de ventana móvil viva
+// (ratio_dnu, derrotas, cepo, etc.) fecha_dato es la fecha de la corrida y el
+// mes corriente ES el período correcto ("dato al día"). Dos excepciones con
+// fecha de corrida pero dato anual: iaf_transferencias (variación dic-dic del
+// último año calendario completo — el año viene del campo `periodo` del
+// colector, "2025 vs 2024") y veto_quorum (período legislativo en curso =
+// año calendario de la corrida).
+const MESES_CORTOS = ["ene", "feb", "mar", "abr", "may", "jun",
+                      "jul", "ago", "sep", "oct", "nov", "dic"];
+const PERIODO_TRIMESTRAL = new Set(["informalidad", "pluriempleo"]);
+const PERIODO_ANUAL = new Set(["veto_quorum", "protocolo_antipiquetes"]);
+
+export function periodoDato(key: string, ind: Indicador): string {
+  const f = String(ind.fecha_dato ?? "");
+  const anio = parseInt(f.slice(0, 4), 10);
+  if (!anio) return "—";
+  if (key === "iaf_transferencias") {
+    const p = String(ind.periodo ?? "");
+    return /^\d{4}/.test(p) ? p.slice(0, 4) : String(anio - 1);
+  }
+  if (PERIODO_ANUAL.has(key)) return String(anio);
+  const mes = parseInt(f.slice(5, 7), 10);
+  if (!mes) return String(anio);
+  if (PERIODO_TRIMESTRAL.has(key)) return `${Math.floor((mes - 1) / 3) + 1}T ${anio}`;
+  return `${MESES_CORTOS[mes - 1]} ${anio}`;
+}
+
 // ── Helpers para las páginas de detalle por cinturón ──────────────────
 export type CinturonMeta = (typeof CINTURONES)[number];
 

@@ -1,5 +1,5 @@
 ---
-import { presentacion, label, visualDe, badgeEstado, series, formatValor } from "../lib/datos.ts";
+import { presentacion, label, visualDe, badgeEstado, periodoDato, series, formatValor } from "../lib/datos.ts";
 import { DESCRIPCIONES } from "../lib/descripciones.ts";
 import { chartPath } from "../lib/sparkline.ts";
 
@@ -8,6 +8,13 @@ const pres = presentacion(ikey, ind);
 const vis = visualDe(ikey, ind);
 const badge = badgeEstado(ind);
 const badgeCls = badge === "Automático" ? "auto" : badge === "Carga manual" ? "manual" : "estim";
+// El chip muestra el período del dato en vez del rótulo "Automático" (que no
+// informaba nada); manual/estimación conservan su rótulo — ahí el origen ES
+// la información, y la fecha ya la aporta aclaracion() en el modal.
+const chip = badge === "Automático" ? periodoDato(ikey, ind) : badge;
+const chipTitle = badge === "Automático"
+  ? `Actualización automática · dato a ${ind.fecha_dato}`
+  : undefined;
 const desc = DESCRIPCIONES[ikey]?.que ?? "";
 
 // Cuando el visual es una barra de avance (gestión), el número grande es el
@@ -26,7 +33,7 @@ const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) 
 <article class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable"]} data-indicador={ikey} data-cinturon={slug}>
   <div class="cg-tile-head">
     <span class="cg-tile-name">{label(ikey)}</span>
-    <span class:list={["cg-tile-badge", badgeCls]}>{badge}</span>
+    <span class:list={["cg-tile-badge", badgeCls]} title={chipTitle}>{chip}</span>
   </div>
   {desc && <p class="cg-tile-desc">{desc}</p>}
   <div class="cg-tile-value">

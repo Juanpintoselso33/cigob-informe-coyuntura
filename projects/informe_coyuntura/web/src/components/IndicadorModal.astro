@@ -1,5 +1,5 @@
 ---
-import { informe, series, label, presentacion, formatValor, UNIDADES_LARGAS, UNIDADES_SERIE, CINTURONES, BARRA_0_100, CONTEXTO_DURO_META } from "../lib/datos.ts";
+import { informe, series, label, presentacion, formatValor, periodoDato, UNIDADES_LARGAS, UNIDADES_SERIE, CINTURONES, BARRA_0_100, CONTEXTO_DURO_META } from "../lib/datos.ts";
 import { DESCRIPCIONES, DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import { FORMULAS } from "../lib/formulas.ts";
 
@@ -121,6 +121,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       unidadLarga: UNIDADES_LARGAS[ikey] ?? ind.unidad ?? "—",
       frecuencia: d.frecuencia, tipo: d.tipo,
       fuente: ind.fuente ?? "", fecha: ind.fecha_dato ?? "", estado,
+      periodo: periodoDato(ikey, ind),
       aporteScore: ind.aporte_score ?? null,
       aporteFormula: ind.aporte_formula ?? null,
       aporteNota: ind.aporte_nota ?? null,
@@ -365,7 +366,9 @@ const dimsJson = JSON.stringify(dims);
         celda("Unidad", d.unidadLarga || d.tipo || "—") +
         celda("Dimensión", d.dimTxt || "—") +
         celda("Frecuencia", d.frecuencia || "—") +
-        celda("Actualización", `${d.fecha || "—"} · ${d.estado}`) +
+        celda("Actualización", d.estado === "Automático"
+          ? `${d.periodo || "—"} · dato al ${d.fecha || "—"}`
+          : `${d.fecha || "—"} · ${d.estado}`) +
         celda("Fuente", fuenteCorta, d.fuente);
       mostrarFormula(d.formula, d.formulaLeyenda);
 
