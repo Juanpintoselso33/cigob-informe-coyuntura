@@ -1556,7 +1556,6 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Adopción financiera = fondos de cese o asistencia laboral registrados en la CNV sobre 10 (adopción plena, calibración provisoria). Hoy: cero fondos — dato duro, no faltante.",
       "Cobertura = menciones del Fondo de Asistencia Laboral en el Boletín Oficial desde marzo de 2026, sobre 420 (plena). La calibración se ancla en el ritmo de la negociación colectiva: el Ministerio de Trabajo homologa unos 2.000 convenios y acuerdos por año, así que 420 menciones equivalen a un año donde una de cada cinco homologaciones incorpora el instrumento.",
-      "La consulta anterior contaba la frase «fondo de cese laboral» desde diciembre de 2023, pero ese nombre designa desde 1980 al régimen de la construcción (Ley 22.250): las menciones previas a la reforma (7-8 por año) eran indistinguibles de las posteriores. El corte en marzo de 2026 y el nombre nuevo del instrumento eliminan esa contaminación.",
       "El tercer componente del diseño institucional (litigiosidad diferencial por sector) no tiene fuente pública: los pesos se renormalizan sobre lo disponible.",
     ],
     anclas: {
@@ -1611,9 +1610,9 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-15, 100], [-10, 85], [0, 65], [12.5, 40], [20, 10]],
       unidadCorta: "% (12m vs 12m)",
     },
-    dobleUso: "Es el «resultado» que complementa al «instrumento» (Fondo de Cese) dentro de la dimensión de reforma laboral.",
+    dobleUso: "Es el «resultado» que complementa al «instrumento» (Fondo de Asistencia Laboral) dentro de la dimensión de reforma laboral.",
     limitaciones: [
-      "Aproximación declarada: son juicios del sistema de riesgos del trabajo, no el canal indemnizatorio que el Fondo de Cese reemplaza — pero es la única serie nacional mensual pública.",
+      "Aproximación declarada: son juicios del sistema de riesgos del trabajo, no el canal indemnizatorio que el Fondo de Asistencia Laboral reemplaza — pero es la única serie nacional mensual pública.",
       "La ventana de 12 contra 12 meses reacciona lento a los quiebres.",
     ],
     faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",

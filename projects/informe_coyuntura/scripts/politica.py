@@ -1005,7 +1005,7 @@ def fetch_veto_quorum() -> dict | None:
             "total_n":      total_n,
             "periodo_id":   periodo_prefix,
             "unidad":       "% de sesiones",
-            "fuente":       f"datos.hcdn.gob.ar CKAN — sesiones — período {periodo_num}",
+            "fuente":       f"Cámara de Diputados (datos abiertos) — sesiones, período {periodo_num}",
             "fecha_dato":   str(date.today()),
             "desactualizado": False,
         }
@@ -1689,7 +1689,7 @@ def fetch_cohesion_bloque(anio: int | None = None, dias_ventana: int = 90) -> di
     return {
         "valor": round(sum(r for _, r in detalle) / len(detalle), 1) if detalle else None,
         "unidad": "% cohesión (índice de Rice), promedio actas divididas últimos 90 días",
-        "fuente": "Votaciones nominales Cámara de Diputados — elaboración CIGOB (scraping directo)",
+        "fuente": "Votaciones nominales de la Cámara de Diputados — elaboración CIGOB",
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(detalle),
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
@@ -1791,7 +1791,7 @@ def fetch_cohesion_bloque_senado(anio: int | None = None, dias_ventana: int = 90
     return {
         "valor": round(sum(indices) / len(indices), 1) if indices else None,
         "unidad": "% cohesión (índice de Rice, Senado), promedio actas divididas últimos 90 días",
-        "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+        "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_actas": len(indices),
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
@@ -1937,7 +1937,7 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
         return {
             "valor": None,
             "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
-            "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+            "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
             "fecha_dato": None,
             "n_provincias": 0,
             "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
@@ -1949,7 +1949,7 @@ def fetch_alineamiento_senadores_prov(anio: int | None = None, dias_ventana: int
     return {
         "valor": valor,
         "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
-        "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+        "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
         "fecha_dato": fecha_max.strftime("%Y-%m-%d") if fecha_max else None,
         "n_provincias": len(acumulado),
         "corrida_exitosa_en": datetime.now().strftime("%Y-%m-%d"),
@@ -3386,7 +3386,7 @@ def componer_cohesion_bloque(dip: dict | None, sen: dict | None) -> dict | None:
         "valor": valor,
         "unidad": ("% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, "
                    "promedio actas divididas últimos 90 días)"),
-        "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)",
+        "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
         "fecha_dato": max(fechas) if fechas else None,
         "n_actas": sum(e.get("n_actas") or 0 for e in con_dato.values()),
         # desactualizado solo si TODAS las cámaras que aportan están

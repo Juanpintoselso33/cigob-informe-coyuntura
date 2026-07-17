@@ -436,8 +436,9 @@ const robChartData = rob?.hist && indice ? {
           fuente pública estructurada y queda fuera. Las <strong>privatizaciones</strong> avanzan
           por <strong>etapas verificables</strong> (0 = sin definir → 4 = operación cerrada) sobre
           la cartera habilitada por la Ley Bases, no por conteo de anuncios. La{" "}
-          <strong>reforma laboral</strong> sigue el <strong>Fondo de Cese</strong> (el propio
-          decreto 847/2024 lo presenta como la herramienta central contra la litigiosidad). La{" "}
+          <strong>reforma laboral</strong> sigue el <strong>Fondo de Asistencia Laboral</strong> (creado
+          por la Ley de Modernización Laboral 27.802, que el Gobierno presenta como su herramienta central
+          contra la litigiosidad). La{" "}
           <strong>asistencia directa</strong> mide la desintermediación del gasto social (TDPS) y
           el <strong>orden público</strong>, la reducción de cortes en CABA vs. 2023 — con su
           validez judicial restablecida: la Cámara revocó en marzo de 2026 la nulidad de primera
@@ -501,10 +502,10 @@ const robChartData = rob?.hist && indice ? {
         Ningún índice compuesto es inocente: depende de qué pesos se eligieron y de la
         precisión de las fuentes. Este ejercicio mide cuánto importa eso acá: el{" "}
         {indice.sigla} se recalcula <strong>{rob.n_draws.toLocaleString("es-AR")} veces</strong>,
-        perturbando al azar en cada corrida los pesos de dimensiones e indicadores
+        perturbando al azar en cada repetición los pesos de dimensiones e indicadores
         (hasta ±20% de su valor) y las mediciones de entrada (hasta ±5% del ancho entre
         sus umbrales de puntuación, para que el ruido sea proporcional a lo que de verdad
-        puede mover un puntaje). El azar usa una semilla fija: el ejercicio es reproducible.
+        puede mover un puntaje). El ejercicio es reproducible: el azar parte siempre del mismo punto.
       </p>
       <dl class="cg-modal-ficha">
         <div><dt>Valor publicado</dt><dd>{coma(indice.data.valor)}</dd></div>

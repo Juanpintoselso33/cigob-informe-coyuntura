@@ -188,16 +188,37 @@ def fusionar_historico(series, store):
 
 _LOCAL_PATH = re.compile(r"^[A-Za-z]:[\\/]|[\\/]Users[\\/]|\\\\")
 
+# Jerga técnica que no debe llegar al chip de fuente público (el lector no
+# necesita saber que la fuente es un portal CKAN ni que el dato se obtiene por
+# scraping). Se normaliza al publicar: es el punto único: aunque el colector
+# guarde la jerga en el caché, el snapshot sale limpio.
+_FUENTE_JERGA = [
+    (re.compile(r"\s*\(scraping directo\)", re.IGNORECASE), ""),
+    (re.compile(r"\s+CKAN\b", re.IGNORECASE), ""),
+    (re.compile(r"\bscraping\b", re.IGNORECASE), "relevamiento"),
+]
+
+
+def _limpiar_jerga_fuente(fuente: str) -> str:
+    for pat, repl in _FUENTE_JERGA:
+        fuente = pat.sub(repl, fuente)
+    return re.sub(r"\s{2,}", " ", fuente).strip()
+
 
 def sanitizar_fuentes(informe):
-    """Reemplaza rutas locales del filesystem en los campos `fuente` para no
-    filtrar paths del equipo en el snapshot publico ni en la lista de fuentes."""
+    """Normaliza los campos `fuente` para el snapshot público: reemplaza rutas
+    locales del filesystem (no filtrar paths del equipo) y quita la jerga
+    técnica de plataforma (CKAN, scraping) que no aporta al lector."""
     for cint in informe["cinturones"].values():
         for key, ind in cint["indicadores"].items():
             fuente = ind.get("fuente")
-            if isinstance(fuente, str) and _LOCAL_PATH.search(fuente):
+            if not isinstance(fuente, str):
+                continue
+            if _LOCAL_PATH.search(fuente):
                 ind["fuente"] = ("Votómetro CIGOB" if "votometro" in key.lower()
                                  else "Elaboración propia — CIGOB")
+            else:
+                ind["fuente"] = _limpiar_jerga_fuente(fuente)
     return informe
 
 

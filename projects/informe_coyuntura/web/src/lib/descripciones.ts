@@ -329,7 +329,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   litigiosidad_laboral: {
     que: "Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.",
-    aporta: "Es el RESULTADO que la reforma laboral persigue: enfriar la industria del juicio. Complementa al Fondo de Cese (que mide la adopción del instrumento): si el instrumento no avanza pero la litigiosidad se enfría igual, la dimensión lo refleja. Proxy por juicios ART — la única serie nacional mensual pública.",
+    aporta: "Es el RESULTADO que la reforma laboral persigue: enfriar la industria del juicio. Complementa al Fondo de Asistencia Laboral (que mide la adopción del instrumento): si el instrumento no avanza pero la litigiosidad se enfría igual, la dimensión lo refleja. Proxy por juicios ART — la única serie nacional mensual pública.",
     frecuencia: "Mensual (~3 meses de rezago)", tipo: "Variación 12m",
   },
   alertas_manifestacion: {
@@ -357,7 +357,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCG
   reformas_economicas: "El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.",
   reforma_estado: "El achicamiento del Estado en cuatro medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real, masa salarial real y reestructuración de organismos.",
-  reforma_laboral: "Instrumento y resultado: la adopción del Fondo de Cese (el reemplazo del canal indemnizatorio) y la litigiosidad laboral (la industria del juicio que la reforma promete enfriar).",
+  reforma_laboral: "Instrumento y resultado: la adopción del Fondo de Asistencia Laboral (el reemplazo del canal indemnizatorio) y la litigiosidad laboral (la industria del juicio que la reforma promete enfriar).",
   privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.",
   social_orden: "La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud.",
   // ITVC

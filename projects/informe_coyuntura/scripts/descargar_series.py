@@ -1095,9 +1095,9 @@ POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
     ("ratio_dnu", "DNUs por ley (12m móviles)", "InfoLeg", fetch_ratio_dnu_serie),
-    ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_eficacia_serie),
-    ("veto_quorum", "% sesiones fracasadas (por período)", "datos.hcdn.gob.ar CKAN", fetch_veto_quorum_serie),
-    ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "datos.hcdn.gob.ar CKAN", fetch_comisiones_serie),
+    ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_eficacia_serie),
+    ("veto_quorum", "% sesiones fracasadas (por período)", "Cámara de Diputados (datos abiertos)", fetch_veto_quorum_serie),
+    ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_comisiones_serie),
     ("derrotas_legislativas", "derrotas del Ejecutivo en el recinto (12m móviles)",
      "InfoLeg + actas del Senado — elaboración CIGOB",
      fetch_derrotas_legislativas_mensual),
@@ -1112,7 +1112,7 @@ POLITICA_DERIVADAS = [
     # 65/35 — la card del Senado dejó de existir como indicador propio, así
     # que su serie separada se purga del CSV en la primera corrida sin merge.
     ("cohesion_bloque", "% cohesión (índice de Rice bicameral 65/35)",
-     "Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)",
+     "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
      fetch_cohesion_bloque_compuesta_mensual),
     ("adhesion_reformas_provincial", "% de jurisdicciones (sobre 24) adheridas al RIGI",
      "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
@@ -1131,7 +1131,7 @@ POLITICA_DERIVADAS = [
      "Centro CEPA — informes de conflictividad (elaboración CIGOB)",
      fetch_cepa_movilizacion_serie),
     ("alineamiento_senadores_prov", "% votos de senadores no-LLA alineados con LLA",
-     "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
+     "Votaciones nominales del Senado — elaboración CIGOB",
      fetch_alineamiento_senadores_prov_mensual),
     # protestas_caba NO se registra acá: ya está en GESTION_DERIVADAS
     # (fetch_protestas_serie) y build_series() en publicar.py fusiona TODOS
