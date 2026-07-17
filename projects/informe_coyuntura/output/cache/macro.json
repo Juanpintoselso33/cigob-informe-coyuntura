@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-15T12:20:49.266801",
+  "generated_at": "2026-07-17T04:00:14.866493",
   "score": 4.3,
   "itcm": {
     "valor": 57.2,
@@ -28,9 +28,9 @@
           },
           "idm": {
             "peso": 0.25,
-            "puntaje_banda": 36.0,
-            "puntaje_aplicado": 36.0,
-            "valor": 6.38,
+            "puntaje_banda": 36.1,
+            "puntaje_aplicado": 36.1,
+            "valor": 6.37,
             "peso_efectivo": 0.065
           },
           "presion_dolarizacion": {
@@ -112,13 +112,13 @@
       "competitividad_externa": {
         "nombre": "Competitividad externa",
         "peso": 0.11,
-        "puntaje": 47.6,
+        "puntaje": 47.5,
         "indicadores": {
           "tcrm": {
             "peso": 1.0,
-            "puntaje_banda": 47.6,
-            "puntaje_aplicado": 47.6,
-            "valor": 85.04,
+            "puntaje_banda": 47.5,
+            "puntaje_aplicado": 47.5,
+            "valor": 84.98,
             "peso_efectivo": 0.11
           }
         },
@@ -208,10 +208,10 @@
       "peso_efectivo": 0.064
     },
     "badlar": {
-      "valor": 20.0,
+      "valor": 21.88,
       "unidad": "% anual",
       "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
-      "fecha_dato": "2026-07-13",
+      "fecha_dato": "2026-07-15",
       "desactualizado": false,
       "en_indice": false
     },
@@ -264,15 +264,15 @@
       "peso_efectivo": 0.144
     },
     "tcrm": {
-      "valor": 85.04,
+      "valor": 84.98,
       "unidad": "Índice (base dic-2015=100)",
       "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "competitividad_externa",
-      "puntaje_itcm": 47.6,
-      "puntaje_banda": 47.6,
+      "puntaje_itcm": 47.5,
+      "puntaje_banda": 47.5,
       "peso_efectivo": 0.11
     },
     "rem_ipc_12m": {
@@ -290,17 +290,17 @@
       "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.69% mensual, en la misma escala que el IPC."
     },
     "idm": {
-      "valor": 6.38,
+      "valor": 6.37,
       "unidad": "pp (brecha i.a. real)",
       "fuente": "BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; M2 privado transaccional var. 197) + IPC INDEC",
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "m3_real_ia": -2.52,
-      "m2_real_ia": -8.9,
+      "m2_real_ia": -8.89,
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
-      "puntaje_itcm": 36.0,
-      "puntaje_banda": 36.0,
+      "puntaje_itcm": 36.1,
+      "puntaje_banda": 36.1,
       "peso_efectivo": 0.065
     },
     "presion_dolarizacion": {
@@ -365,7 +365,7 @@
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "nominal_ia": 44.2,
-      "detalle_txt": "nominal 44,2% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-06) — al 2026-07-08 (provisorio, no puntúa): 8,4% real con deflactor de 2026-06",
+      "detalle_txt": "nominal 44,2% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-06) — al 2026-07-14 (provisorio, no puntúa): 6,5% real con deflactor de 2026-06",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 53.0,
@@ -373,26 +373,26 @@
       "peso_efectivo": 0.024
     },
     "prestamos_privados": {
-      "valor": 5.14,
+      "valor": 3.72,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — préstamos al sector privado (API monetarias)",
-      "fecha_dato": "2026-07-08",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 9.12,
+      "valor": 3.8,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — base monetaria (API monetarias)",
-      "fecha_dato": "2026-07-08",
+      "fecha_dato": "2026-07-14",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 2.94,
+      "valor": 1.74,
       "unidad": "% mensual",
       "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
-      "fecha_dato": "2026-07-14",
+      "fecha_dato": "2026-07-16",
       "desactualizado": false,
       "en_indice": false
     }
