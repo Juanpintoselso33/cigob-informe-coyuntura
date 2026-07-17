@@ -59,7 +59,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   idm: {
     que: "Índice de Desequilibrio Monetario: compara cuánto crece la oferta amplia de pesos del sector privado (M3 privado) con cuánto crece su demanda transaccional (M2 privado), ambos en términos reales e interanuales. El M2 transaccional incluye el circulante en poder del público, las cuentas corrientes privadas en pesos y las cajas de ahorro privadas en pesos; excluye los depósitos a la vista remunerados de personas jurídicas.",
-    aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala un excedente monetario que puede presionar sobre los precios y la brecha cambiaria; una negativa indica una remonetización traccionada por la demanda real de dinero.",
+    aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala excedente monetario que puede presionar precios y brecha cambiaria; una negativa, remonetización traccionada por demanda real de dinero.",
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
   presion_dolarizacion: {
@@ -125,8 +125,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (12m)", tipo: "Nivel (%)",
   },
   cohesion_bloque: {
-    que: "Qué tan pareja o dispareja vota puertas adentro el bloque propio de LLA, en las votaciones nominales divididas de los últimos 90 días de las dos cámaras: por acta, resta los votos a favor menos los votos en contra, en valor absoluto, sobre el total de votos que emitió el bloque. El indicador pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso se reparte sobre la otra.",
-    aporta: "Mide la cohesión interna del oficialismo en el Congreso — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente —, clave para sostener vetos y aprobar leyes. La composición por cámara se publica en el detalle.",
+    que: "Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones divididas de los últimos 90 días de ambas cámaras. Pondera Diputados 65% y Senado 35%; si una cámara no tiene actas divididas en la ventana, el peso pasa a la otra.",
+    aporta: "Mide la cohesión interna del oficialismo en el Congreso, clave para sostener vetos y aprobar leyes. La composición por cámara se publica en el detalle.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   rotacion_gabinete: {
@@ -155,13 +155,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (12m)", tipo: "Nivel (%)",
   },
   derrotas_legislativas: {
-    que: "Cuántas veces en los últimos 12 meses el Congreso le volteó una norma al Poder Ejecutivo en el recinto. Cuenta dos tipos de derrota consumada: leyes vetadas por el Presidente que ambas cámaras insistieron con dos tercios de los votos (la ley se promulga pese al veto, como fija la Constitución) y decretos —de necesidad y urgencia o delegados— rechazados por al menos una cámara bajo el procedimiento de control de la ley 26.122. Cada norma cuenta una sola vez, en el mes en que la derrota se consuma.",
-    aporta: "Es la medida más directa del balance de fuerzas entre el Ejecutivo y el Congreso: cada insistencia o rechazo en el recinto es una derrota política difícil de revertir. Cero derrotas indican control de la agenda (o ausencia de confrontación); un conteo alto marca un Congreso capaz de imponerse.",
+    que: "Cuántas veces en los últimos 12 meses el Congreso le volteó una norma al Ejecutivo en el recinto: leyes vetadas que ambas cámaras insistieron con dos tercios, y decretos rechazados por al menos una cámara bajo la ley 26.122. Cada norma cuenta una vez.",
+    aporta: "Es la medida más directa del balance de fuerzas entre el Ejecutivo y el Congreso. Cero derrotas indican control de la agenda (o falta de confrontación); un conteo alto, un Congreso capaz de imponerse.",
     frecuencia: "Continua (12m)", tipo: "Conteo (12m)",
   },
   bloqueo_sostenido: {
-    que: "De todas las normas del Poder Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses —leyes vetadas cuya insistencia se votó y decretos sometidos al control de la ley 26.122—, qué porcentaje sigue en pie: vetos que el Congreso no logró revertir con los dos tercios que exige la Constitución y decretos que conservan su vigencia porque ninguna cámara (o solo una) los rechazó.",
-    aporta: "Es la cara ganada del pulso legislativo, la que el conteo de derrotas no registra: un gobierno sin mayoría propia gobierna sosteniendo sus vetos con un tercio de una cámara y manteniendo vivos sus decretos. Sostener todo lo desafiado indica un bloqueo firme; una tasa baja marca que el Congreso encontró los votos para voltear normas del Ejecutivo. Como mira 12 meses hacia atrás, una crisis reciente pesa en el indicador durante un año.",
+    que: "De las normas del Ejecutivo que el Congreso desafió en el recinto en los últimos 12 meses (vetos cuya insistencia se votó y decretos sometidos a la ley 26.122), qué porcentaje sigue en pie.",
+    aporta: "Es la cara ganada del pulso legislativo que el conteo de derrotas no registra: un gobierno sin mayoría gobierna sosteniendo sus vetos con un tercio de una cámara. Una tasa alta indica bloqueo firme; una baja, un Congreso capaz de voltear sus normas. Al mirar 12 meses atrás, una crisis reciente pesa durante un año.",
     frecuencia: "Continua (12m)", tipo: "Nivel (%)",
   },
 
@@ -247,7 +247,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   indice_intencion_migratoria: {
     que: "Cuánto se busca en internet sobre emigrar de Argentina (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\").",
-    aporta: "Es una señal más estructural que sentimiento digital: no mide urgencia económica del momento, sino gente que dejó de creer en un cambio dentro del país. Nunca debería leerse sola — es un proxy de atención, no de flujo migratorio real; por eso su card la acompaña con la migración efectiva hacia los destinos principales, como contraste.",
+    aporta: "Es una señal más estructural que el sentimiento digital: no mide urgencia del momento, sino gente que dejó de creer en un cambio dentro del país. Es un proxy de atención, no de flujo migratorio real; por eso su card lo acompaña con la migración efectiva hacia los destinos principales, como contraste.",
     frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
 
@@ -278,8 +278,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   rigi_inversiones: {
-    que: "Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total del pipeline (aprobados + en evaluación).",
-    aporta: "Mide si el régimen convierte las promesas en inversión ratificada. Se toma de la plataforma oficial del Ministerio de Economía (proyectos aprobados y en evaluación, con monto y empleos); la ficha muestra el conteo de proyectos y los montos en USD. La evolución histórica grafica la inversión aprobada acumulada (US$ M), reconstruida con la fecha de sanción de cada resolución en el Boletín Oficial.",
+    que: "Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada: el monto aprobado por resolución sobre el total de la cartera (aprobados + en evaluación).",
+    aporta: "Mide si el régimen convierte las promesas en inversión ratificada, con la plataforma oficial del Ministerio de Economía. La evolución histórica grafica la inversión aprobada acumulada en dólares.",
     frecuencia: "Continua (plataforma oficial)", tipo: "Avance de reforma",
   },
   desregulacion_normativa: {
@@ -289,7 +289,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   apertura_comercial: {
     que: "La alícuota efectiva del comercio exterior: cuántos impuestos (derechos de importación + exportación, ARCA) paga en promedio cada dólar de intercambio (expo+impo del ICA). 0% = comercio libre de fricción arancelaria; 15% o más = cierre de hecho.",
-    aporta: "No mide cuántos dólares entran o salen (eso puede ser una buena cosecha): mide si el Estado desmantela la fricción impositiva que encarece el comercio. La brecha cambiaria puntúa aparte (en su propio indicador) — hasta jul-2026 este índice la incluía y la contaba dos veces (corregido).",
+    aporta: "No mide cuántos dólares entran o salen (eso puede ser una buena cosecha): mide si el Estado desmantela la fricción impositiva que encarece el comercio. La brecha cambiaria puntúa aparte, en su propio indicador.",
     frecuencia: "Mensual", tipo: "Nivel (%)",
   },
   credito_privado: {
@@ -309,12 +309,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   asistencia_directa: {
     que: "La Tasa de Desintermediación de Planes Sociales (TDPS): qué porcentaje del devengado de Volver al Trabajo y Acompañamiento Social se paga directo al beneficiario (partida 5.1.4, ayudas sociales a personas) sobre el total transferido, según la ejecución presupuestaria real.",
-    aporta: "Verifica contra el presupuesto — no contra el anuncio — que el Decreto 198/2024 eliminó la intermediación de las Unidades de Gestión: en 2023 el Potenciar Trabajo transfería ~$17.000M vía organizaciones y cooperativas; hoy el 100% va directo a personas. Ojo: desintermediar y recortar son dos cosas distintas — esto mide solo la primera.",
-    frecuencia: "Mensual (devengado SIDIF)", tipo: "Avance de reforma",
+    aporta: "Verifica contra el presupuesto —no contra el anuncio— que el Decreto 198/2024 eliminó la intermediación de las Unidades de Gestión: en 2023 buena parte de la ayuda pasaba por organizaciones y cooperativas; hoy va directo a las personas. Desintermediar y recortar son cosas distintas: esto mide solo lo primero.",
+    frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   fal_modernizacion_laboral: {
-    que: "El avance del Fondo de Asistencia Laboral, el mecanismo para financiar las indemnizaciones por despido que creó la Ley de Modernización Laboral (Ley 27.802, marzo de 2026; reglamentada por el Decreto 408/2026): construcción normativa y dinero efectivamente puesto en fondos registrados ante la CNV.",
-    aporta: "Es el indicador bisagra de la reforma laboral: el propio Gobierno lo presenta como la herramienta central contra la litigiosidad. La cobertura se mide con las menciones del instrumento en el Boletín Oficial desde la publicación de la ley (calibración: 420 menciones = adopción plena, equivalente a un año donde una de cada cinco homologaciones lo incorpora); la adopción financiera, con los fondos registrados en la CNV. El régimen recién entra en vigencia el 1 de noviembre de 2026, así que hasta entonces el valor cercano a cero mide el andamiaje normativo —no puede haber aportes ni fondos antes de esa fecha— y es el dato, no una falla de medición.",
+    que: "El avance del Fondo de Asistencia Laboral, el mecanismo para financiar las indemnizaciones por despido que creó la Ley de Modernización Laboral (Ley 27.802, marzo de 2026): construcción normativa y dinero puesto en fondos registrados ante la CNV.",
+    aporta: "Es el indicador bisagra de la reforma laboral: el Gobierno lo presenta como su herramienta central contra la litigiosidad. El régimen recién entra en vigencia el 1 de noviembre de 2026, así que hasta entonces el valor cercano a cero mide el andamiaje normativo —no puede haber aportes antes de esa fecha— y es el dato, no una falla de medición.",
     frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
   libertad_opcion_salud: {
@@ -324,8 +324,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   protocolo_antipiquetes: {
     que: "En qué porcentaje se redujeron los cortes de calle por manifestación en CABA respecto de 2023 (el distrito donde actúan las fuerzas federales y aplica el protocolo).",
-    aporta: "Mide el restablecimiento del orden público que prometió el Gobierno, donde le es atribuible. Fuente: los monitoreos públicos de Diagnóstico Político (relevamiento diario sobre más de 100 medios desde 2009), cuya definición de piquete coincide con la de la Res. 943/23. La validez del instrumento fue confirmada judicialmente: la Cámara revocó en marzo de 2026 la nulidad de primera instancia.",
-    frecuencia: "Anual (informes públicos de DP)", tipo: "Variación vs. base 2023",
+    aporta: "Mide el restablecimiento del orden público que prometió el Gobierno, donde le es atribuible. Fuente: los monitoreos de Diagnóstico Político, cuya definición de piquete coincide con la de la Resolución 943/23.",
+    frecuencia: "Anual", tipo: "Variación vs. base 2023",
   },
   litigiosidad_laboral: {
     que: "Cuánto varían los juicios laborales del sistema de riesgos del trabajo (SRT): acumulado de los últimos 12 meses contra los 12 previos.",
@@ -339,7 +339,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   protestas_caba: {
     que: "Cuántos eventos de protesta (marchas, concentraciones, disturbios) registró ACLED en la Ciudad de Buenos Aires en los últimos 12 meses, con serie semanal desde 2018.",
-    aporta: "El contraste clave del orden público: los cortes de calle se desplomaron (74% vs 2023, según Diagnóstico Político) pero los eventos de protesta NO — subieron 25%: la protesta se reconvirtió a marchas sin corte, que es exactamente lo que el protocolo buscaba. ACLED cuenta eventos con cobertura de prensa; no capta piquetes barriales chicos. Datos de ACLED (acleddata.com).",
+    aporta: "El contraste clave del orden público: los cortes de calle se desplomaron pero los eventos de protesta no, porque la protesta se reconvirtió a marchas sin corte —exactamente lo que el protocolo buscaba—. ACLED cuenta eventos con cobertura de prensa; no capta piquetes barriales chicos.",
     frecuencia: "Semanal (ACLED)", tipo: "Conteo (12 meses)",
   },
 };
@@ -358,7 +358,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   reformas_economicas: "El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa.",
   reforma_estado: "El achicamiento del Estado en cuatro medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real, masa salarial real y reestructuración de organismos.",
   reforma_laboral: "Instrumento y resultado: la adopción del Fondo de Cese (el reemplazo del canal indemnizatorio) y la litigiosidad laboral (la industria del juicio que la reforma promete enfriar).",
-  privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: cartera de privatizaciones, pipeline del RIGI y concesiones viales.",
+  privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.",
   social_orden: "La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud.",
   // ITVC
   ingresos: "Si el sueldo alcanza: la brecha entre el salario y la canasta de pobreza, y cuánta gente trabaja en la informalidad.",
@@ -368,7 +368,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   confianza: "El ánimo y la seguridad de la vida diaria: confianza del consumidor (UTDT), inseguridad, consumo de carne y patentamiento de motos como termómetros de bolsillo.",
   // ITCP
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
-  poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántos proyectos quedan varados en comisión y cuántas derrotas consumadas sufre el Ejecutivo en el recinto (vetos insistidos y decretos rechazados).",
+  poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.",
   alianzas_territoriales: "El sostén federal del gobierno: las transferencias a las provincias (armonía fiscal), el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI.",
   cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza, medida en un único indicador bicameral (Diputados 65%, Senado 35%).",
   conflicto_social: "La conflictividad social que el gobierno tiene que administrar: los eventos de protesta y disturbios de todo el país registrados por ACLED, acumulados en 12 meses y comparados contra 2023, la línea de base del mandato.",

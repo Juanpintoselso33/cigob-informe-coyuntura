@@ -107,7 +107,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   rigi_inversiones: {
     latex: String.raw`\frac{\text{inversi\'on aprobada}}{\text{inversi\'on aprobada}+\text{inversi\'on en evaluaci\'on}}\times 100`,
-    leyenda: "Montos en USD de la plataforma oficial del RIGI: cuánto del pipeline ya tiene luz verde.",
+    leyenda: "Montos en USD de la plataforma oficial del RIGI: cuánto de la cartera ya tiene luz verde.",
   },
   concesiones_infraestructura: {
     latex: String.raw`\frac{\text{km de rutas adjudicados}}{\text{km del plan}}\times 100`,

@@ -323,7 +323,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "%",
   desregulacion_normativa: "%", reestructuracion_organismos: "%",
   gasto_funcionamiento: "% real", masa_salarial: "% real",
-  rigi_inversiones: "% del pipeline", privatizaciones: "%", concesiones_infraestructura: "%",
+  rigi_inversiones: "% de la cartera", privatizaciones: "%", concesiones_infraestructura: "%",
   fal_modernizacion_laboral: "índice", asistencia_directa: "%",
   protocolo_antipiquetes: "%", libertad_opcion_salud: "%",
   litigiosidad_laboral: "% i.a.", alertas_manifestacion: "alertas/mes",
@@ -376,7 +376,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",
-  reestructuracion_organismos: "% de avance", rigi_inversiones: "% de inversión aprobada / pipeline",
+  reestructuracion_organismos: "% de avance", rigi_inversiones: "% de la inversión de la cartera RIGI ya aprobada",
   desregulacion_normativa: "% de avance", apertura_comercial: "% del intercambio (alícuota efectiva)",
   gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",
   asistencia_directa: "% del gasto social sin intermediación", fal_modernizacion_laboral: "Índice 0–100",

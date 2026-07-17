@@ -148,7 +148,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Llega con rezago: al momento de cada informe, el último dato disponible puede tener entre dos y seis semanas de antigüedad. Las expectativas del REM, dentro de la misma dimensión, cubren parcialmente ese hueco.",
       "La variación de un solo mes es sensible a factores puntuales (correcciones tarifarias, estacionalidad de rubros) que no permiten distinguir el dato suelto de la tendencia.",
     ],
-    faltantes: "Si al calcular el índice el dato del mes no está publicado, el indicador queda fuera de esa corrida y los pesos de su dimensión se renormalizan entre los presentes: la ausencia no puntúa ni a favor ni en contra.",
+    faltantes: "Si al calcular el índice el dato del mes no está publicado, el indicador queda fuera de esa actualización y los pesos de su dimensión se renormalizan entre los presentes: la ausencia no puntúa ni a favor ni en contra.",
     revisiones: "El INDEC no revisa retroactivamente el IPC publicado: la serie de la fuente es definitiva. Del lado del informe, la serie se reconstruyó hacia atrás hasta julio de 2021 y todo cambio de método propio queda asentado en el historial de cambios (abajo).",
     cambios: [
       {
@@ -283,8 +283,8 @@ export const FICHAS: Record<string, Ficha> = {
       "El dato es a cierre de mes; el número diario que circula en el mercado puede diferir en algunos cientos de millones por la fecha de corte.",
       "El BCRA retira las planillas viejas de su sitio: la serie histórica propia solo llega hasta mediados de 2024 hacia atrás.",
     ],
-    faltantes: "Si la planilla no está disponible, el cálculo cae a las reservas brutas de la API menos los últimos drenajes conocidos; si todo falla, se usa el último valor en caché marcado como desactualizado y los pesos del índice se renormalizan.",
-    revisiones: "La planilla publicada no se revisa; el informe reconstruye la serie completa releyendo todas las planillas disponibles en cada corrida.",
+    faltantes: "Si la planilla no está disponible, el cálculo cae a las reservas brutas de la API menos los últimos drenajes conocidos; si todo falla, se mantiene el último valor disponible, señalado como desactualizado y los pesos del índice se renormalizan.",
+    revisiones: "La planilla publicada no se revisa; el informe reconstruye la serie completa releyendo todas las planillas disponibles en cada actualización.",
     cambios: [
       { fecha: "2026-06-26", cambio: "El indicador deja las reservas brutas del documento original y pasa a las netas «a secas», con los tres términos calculados de fuentes oficiales y escala propia." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas en lugar de escalones por banda." },
@@ -301,7 +301,7 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "Estadísticas monetarias del BCRA: BADLAR bancos privados, depósitos del sector privado y préstamos al sector privado; índice compuesto de elaboración propia",
       serie: "API de Estadísticas Monetarias del BCRA (variables 7, 100 y 117) + IPC 148.3_INIVELNAL_DICI_M_26 (datos.gob.ar)",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Principales_variables.asp",
-      acceso: "Automático: API pública del BCRA y API de series de datos.gob.ar; el índice se calcula en el pipeline.",
+      acceso: "Automático: API pública del BCRA y API de series de datos.gob.ar; el índice se calcula en el propio informe.",
     },
     transformaciones: [
       "Tres niveles mensuales: la tasa real que reciben los depositantes (precio), el crecimiento interanual real de los depósitos privados (volumen) y la holgura entre depósitos y préstamos (asignación).",
@@ -323,10 +323,10 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Queda una correlación residual entre los componentes de volumen y asignación (ambos usan los depósitos), remanente declarado del rediseño.",
       "Sin pretensión predictiva, y con la validación en contra documentada: sobre más de cien meses, el IdC no anticipa el crédito futuro. Es un descriptor del estado de las condiciones de fondeo, no un pronóstico.",
-      "Los desvíos se recalculan contra la historia completa en cada corrida: los puntos históricos pueden moverse levemente entre ediciones.",
+      "Los desvíos se recalculan contra la historia completa en cada actualización: los puntos históricos pueden moverse levemente entre ediciones.",
     ],
-    faltantes: "Si la historia disponible baja de 60 meses o falla algún insumo, se usa el último valor en caché marcado como desactualizado; sin dato, los pesos de la dimensión de financiamiento se renormalizan.",
-    revisiones: "Al redefinirse la métrica, el histórico de la versión anterior se purgó: la serie publicada es homogénea. Se regenera completa en cada corrida.",
+    faltantes: "Si la historia disponible baja de 60 meses o falla algún insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión de financiamiento se renormalizan.",
+    revisiones: "Al redefinirse la métrica, el histórico de la versión anterior se purgó: la serie publicada es homogénea. Se regenera completa en cada actualización.",
     cambios: [
       { fecha: "2026-06-26", cambio: "Nace el IdC en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -366,8 +366,8 @@ export const FICHAS: Record<string, Ficha> = {
       "El EMAE es provisorio y el INDEC lo revisa hacia atrás con cada publicación; la serie del informe absorbe esas revisiones al regenerarse.",
       "Es la única variable de su dimensión: el 11% del índice cuelga de un solo dato.",
     ],
-    faltantes: "Si el dato falta, se usa el último valor en caché marcado como desactualizado; sin dato ni caché, la dimensión de actividad queda vacía y su peso se redistribuye entre las demás.",
-    revisiones: "La fuente revisa (serie provisoria); el informe regenera la serie completa en cada corrida y puntúa siempre el último dato publicado, sin proyecciones propias.",
+    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión de actividad queda vacía y su peso se redistribuye entre las demás.",
+    revisiones: "La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original como única variable de actividad; su peso de dimensión bajó de 15% a 13% y luego a 11% al incorporarse las dimensiones de competitividad e inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -384,12 +384,12 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "ICA — Intercambio Comercial Argentino: exportaciones e importaciones totales mensuales, en millones de dólares",
       serie: "74.3_IET_0_M_16 (exportaciones) y 74.3_IIT_0_M_25 (importaciones) · API de datos.gob.ar",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-2-40",
-      acceso: "Automático: API pública de series de tiempo; el saldo se calcula en el pipeline.",
+      acceso: "Automático: API pública de series de tiempo; el saldo se calcula en el propio informe.",
     },
     transformaciones: [
       "Saldo acumulado de 12 meses: suma de exportaciones menos suma de importaciones de los últimos 12 meses comunes de ambas series.",
       "El acumulado anual elimina la estacionalidad energética y sojera.",
-      "Regla automática declarada: si hay superávit pero se explica más por una caída de importaciones que por un aumento de exportaciones (contracción de la demanda interna, no éxito exportador), el puntaje se interpola hacia un piso de 60 en proporción a cuánto domina esa caída, sin un corte brusco apenas se cruza el umbral. La justificación se genera a partir de los números de cada corrida.",
+      "Regla automática declarada: si hay superávit pero se explica más por una caída de importaciones que por un aumento de exportaciones (contracción de la demanda interna, no éxito exportador), el puntaje se interpola hacia un piso de 60 en proporción a cuánto domina esa caída, sin un corte brusco apenas se cruza el umbral. La justificación se genera a partir de los números de cada actualización.",
     ],
     anclas: {
       bandas: [
@@ -407,10 +407,10 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "El acumulado de 12 meses suaviza a costa de reactividad: un vuelco del frente comercial tarda meses en reflejarse por completo.",
       "El máximo alcanzable de la escala es 85, no 100: diseño del documento institucional.",
-      "Los datos del ICA son provisorios y se revisan; la serie regenerada por corrida los absorbe.",
+      "Los datos del ICA son provisorios y se revisan; la serie regenerada por actualización los absorbe.",
     ],
-    faltantes: "Con las series del ICA caídas, el cálculo cae a la serie de saldo directa (más rezagada y sin composición, con la regla automática muda); después, caché marcado como desactualizado y renormalización.",
-    revisiones: "La fuente revisa provisorios; el informe re-descarga la serie completa en cada corrida.",
+    faltantes: "Con las series del ICA caídas, el cálculo cae a la serie de saldo directa (más rezagada y sin composición); agotado eso, se mantiene el último valor disponible señalado como desactualizado y los pesos se renormalizan.",
+    revisiones: "La fuente revisa provisorios; el informe re-descarga la serie completa en cada actualización.",
     cambios: [
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, calculado por las series de exportaciones e importaciones del ICA (frescas a ~2 meses) en lugar de la serie de saldo directa (~14 meses de rezago), con la regla de superávit por contracción automatizada." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -429,7 +429,7 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "Recaudación tributaria total mensual, en pesos corrientes, deflactada por el IPC nacional",
       serie: "172.3_TL_RECAION_M_0_0_17 + IPC 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
       url: "https://www.argentina.gob.ar/economia/ingresos-publicos",
-      acceso: "Automático: API pública de series de tiempo; deflactación y promedio en el pipeline.",
+      acceso: "Automático: API pública de series de tiempo; deflactación y promedio en el propio informe.",
     },
     transformaciones: [
       "Variación interanual real por mes: la recaudación contra el mismo mes del año anterior, descontada la inflación.",
@@ -452,7 +452,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Es el componente más pesado del índice (14,4%): cualquier defecto acá es el que más mueve el titular.",
       "Deflactor único (IPC nacional), sin deflactor específico de la base imponible.",
     ],
-    faltantes: "Con menos de tres meses reales disponibles, se usa el último valor en caché marcado como desactualizado; sin dato, el saldo comercial pasa a explicar toda la dimensión fiscal-comercial.",
+    faltantes: "Con menos de tres meses reales disponibles, se mantiene el último valor disponible, señalado como desactualizado; sin dato, el saldo comercial pasa a explicar toda la dimensión fiscal-comercial.",
     revisiones: "La serie de recaudación no se revisa hacia atrás. Validación externa documentada: la estimación propia del mes provisorio quedó a 0,3 puntos de la de un instituto fiscal independiente.",
     cambios: [
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, entonces como variación mensual nominal." },
@@ -472,7 +472,7 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "ITCRM — Índice de Tipo de Cambio Real Multilateral (base 17-dic-2015 = 100), promedios mensuales",
       serie: "Planilla oficial ITCRMSerie.xlsx, hoja de promedios mensuales",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Indices_tipo_cambio_multilateral.asp",
-      acceso: "Automático: descarga y lectura de la planilla oficial; una sola descarga por corrida sirve al índice y a los bilaterales de contexto.",
+      acceso: "Automático: descarga y lectura de la planilla oficial; una sola descarga por actualización sirve al índice y a los bilaterales de contexto.",
     },
     transformaciones: [
       "Ninguna sobre el valor: se publica el promedio mensual oficial tal cual.",
@@ -494,8 +494,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Depende de una planilla con dirección y formato fijos: si el BCRA los cambia, el indicador cae a una serie alternativa discontinuada, marcada como desactualizada.",
       "Las bandas y el peso de la dimensión (11%) son operacionalización propia calibrada con la historia 1997-2026 — el documento institucional no los define.",
     ],
-    faltantes: "Con la planilla caída, cae a la serie histórica alternativa (discontinuada a fines de 2024, marcada desactualizada); después, caché y renormalización.",
-    revisiones: "El índice oficial no se revisa hacia atrás de forma habitual; la serie del informe se reconstruye completa de la planilla en cada corrida.",
+    faltantes: "Con la planilla caída, cae a la serie histórica alternativa (discontinuada a fines de 2024, marcada desactualizada); agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
+    revisiones: "El índice oficial no se revisa hacia atrás de forma habitual; la serie del informe se reconstruye completa de la planilla en cada actualización.",
     cambios: [
       { fecha: "2026-06-27", cambio: "La fuente pasa de la serie del INDEC (discontinuada en diciembre de 2024, con 18 meses de rezago acumulado) al ITCRM oficial del BCRA. Era un indicador de contexto." },
       { fecha: "2026-06-28", cambio: "Deja de ser contexto y entra al índice como quinta dimensión (competitividad externa)." },
@@ -537,7 +537,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La conversión a equivalente mensual supone un ritmo constante a lo largo del año esperado.",
       "La escala vigente es una decisión propia: las bandas absolutas del documento original quedaron miscalibradas para un régimen de desinflación y se reemplazaron, con el cambio documentado.",
     ],
-    faltantes: "Si el dato falta, se usa el último valor en caché marcado como desactualizado; sin dato, el IPC, el IDM y la presión de dolarización renormalizan dentro de la dimensión de estabilidad monetaria.",
+    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin dato, el IPC, el IDM y la presión de dolarización renormalizan dentro de la dimensión de estabilidad monetaria.",
     revisiones: "El REM publicado no se revisa: cada mes es un relevamiento nuevo.",
     cambios: [
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original, con bandas absolutas sobre el nivel anual." },
@@ -558,7 +558,7 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "Agregados monetarios privados: circulante en poder del público, depósitos privados, cuentas corrientes privadas en pesos, cajas de ahorro privadas en pesos y M2 transaccional privado; índice de elaboración propia",
       serie: "API de Estadísticas Monetarias del BCRA (variables 17, 100 y 197) + IPC 148.3_INIVELNAL_DICI_M_26",
       url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Principales_variables.asp",
-      acceso: "Automático: API pública del BCRA y API de series de datos.gob.ar; la brecha se calcula en el pipeline.",
+      acceso: "Automático: API pública del BCRA y API de series de datos.gob.ar; la brecha se calcula en el propio informe.",
     },
     transformaciones: [
       "M3 privado construido = circulante en poder del público + depósitos privados, a fin de mes (no existe como serie directa del BCRA).",
@@ -582,8 +582,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Las bandas están calibradas con una historia corta (fines de 2024 en adelante): desde −11 puntos en la remonetización hasta +7 en el pico de excedente.",
       "La fórmula es una reinterpretación documentada de la propuesta institucional: la versión literal (nominal contra real, mensual) tenía sesgo inflacionario y estacionalidad de aguinaldo, y se reemplazó por la versión interanual real-real.",
     ],
-    faltantes: "Si falta un insumo, se usa el último valor en caché marcado como desactualizado; sin dato, IPC, REM y presión de dolarización renormalizan dentro de la dimensión.",
-    revisiones: "Los stocks del BCRA no se revisan de forma habitual; la serie se regenera completa en cada corrida.",
+    faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, IPC, REM y presión de dolarización renormalizan dentro de la dimensión.",
+    revisiones: "Los stocks del BCRA no se revisan de forma habitual; la serie se regenera completa en cada actualización.",
     cambios: [
       { fecha: "2026-06-28", cambio: "Nace y entra al índice: la dimensión de estabilidad monetaria pasa de IPC 50% / REM 50% a IPC 40% / REM 30% / IDM 30%, en versión interanual real-real." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -634,8 +634,8 @@ export const FICHAS: Record<string, Ficha> = {
       "El indicador anterior basado en stocks de depósitos fue sustituido porque el blanqueo mediante Cuentas Especiales de Regularización de Activos (CERA) alteró contemporáneamente la serie y luego produjo efectos de base que podían invertir su lectura.",
       "La historia bajo régimen abierto todavía es corta; las anclas deberán revisarse cuando exista más evidencia posterior al cambio regulatorio.",
     ],
-    faltantes: "Si falta un mes o un insumo de la ventana, ese punto no se calcula: nunca se imputa cero ni se unen meses no contiguos. La card puede conservar el último valor válido en caché, marcado como desactualizado; el ITCM renormaliza los componentes disponibles si no existe dato utilizable.",
-    revisiones: "La serie se reconstruye desde diciembre de 2023 con las fuentes vigentes. Las revisiones de la planilla del mercado de cambios se incorporan en la siguiente corrida y se conserva el cambio de régimen de abril de 2025.",
+    faltantes: "Si falta un mes o un insumo de la ventana, ese punto no se calcula: nunca se imputa cero ni se unen meses no contiguos. La card conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el ITCM renormaliza los componentes disponibles.",
+    revisiones: "La serie se reconstruye desde diciembre de 2023 con las fuentes vigentes. Las revisiones de la planilla del mercado de cambios se incorporan en la siguiente actualización y se conserva el cambio de régimen de abril de 2025.",
     cambios: [
       { fecha: "2026-07-13", cambio: "Se incorporó una primera señal basada en stocks de depósitos como cuarto componente de estabilidad monetaria." },
       { fecha: "2026-07-14", cambio: "La señal de stocks fue sustituida por presión de dolarización de carteras sensible al régimen, para evitar las distorsiones contemporáneas y de base del CERA." },
@@ -676,7 +676,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El tercer componente (patentamientos comerciales) no tiene serie histórica pública: se acumula desde mediados de 2026 y recién tendrá comparación interanual a mediados de 2027.",
       "Las bandas anchas son calibración propia declarada: el umbral fino del documento no sobrevivía a la volatilidad del dato argentino reciente.",
     ],
-    faltantes: "Sin patentamientos, la composición renormaliza a 65/35 (situación actual); sin mes común de las otras dos fuentes, caché desactualizado y renormalización de la dimensión.",
+    faltantes: "Sin patentamientos, la composición renormaliza a 65/35 (situación actual); sin mes común de las otras dos fuentes, se mantiene el último valor disponible señalado como desactualizado y la dimensión se renormaliza.",
     revisiones: "El titular se calcula sobre un panel alineado por mes común y no se revisa; las revisiones de las fuentes se absorben al regenerar las series.",
     cambios: [
       { fecha: "2026-06-30", cambio: "Nace y entra al índice como parte de la sexta dimensión (inversión, 12%), sin el componente de patentamientos por falta de historia." },
@@ -695,7 +695,7 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "Balanza de servicios (pagos al exterior de servicios de informática) + IPI manufacturero + índice de empleo de la Encuesta de Indicadores Laborales",
       serie: "185.1_PAGO_SERVIICA_0_M_38 · 453.1_SERIE_ORIGNAL_0_0_14_46 · 50.3_ICS_0_M_12 · API de datos.gob.ar",
       url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-35-45",
-      acceso: "Automático: API pública de series de tiempo; la composición se calcula en el pipeline.",
+      acceso: "Automático: API pública de series de tiempo; la composición se calcula en el propio informe.",
     },
     transformaciones: [
       "Servicios tecnológicos: variación interanual de los pagos al exterior por software, nube e inteligencia artificial.",
@@ -719,7 +719,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Los pagos al exterior por servicios de informática son una aproximación a la digitalización, no una medición directa de inversión en capital digital.",
       "El empleo de la encuesta laboral se usa como aproximación de las horas trabajadas.",
     ],
-    faltantes: "Sin mes común de los tres insumos, se usa el último valor en caché marcado como desactualizado; sin dato, el IAI pasa a explicar toda la dimensión de inversión.",
+    faltantes: "Sin mes común de los tres insumos, se mantiene el último valor disponible, señalado como desactualizado; sin dato, el IAI pasa a explicar toda la dimensión de inversión.",
     revisiones: "Titular por panel alineado, no se revisa; las revisiones de las fuentes se absorben al regenerar las series.",
     cambios: [
       { fecha: "2026-06-30", cambio: "Nace y entra al índice (dimensión inversión, 40% interno), sin el componente de hardware y con bandas anchas propias." },
@@ -761,8 +761,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Bandas calibradas a la remonetización 2024-2026 (el crédito real llegó a crecer 90% interanual desde una base ínfima): calibración propia sobre historia corta, declarada.",
       "Agregado total: no distingue empresas de familias ni líneas de crédito.",
     ],
-    faltantes: "Sin mes común entre stock e IPC, se usa el último valor en caché marcado como desactualizado; sin dato, reservas e IdC renormalizan dentro de la dimensión de financiamiento.",
-    revisiones: "Los saldos del BCRA no se revisan de forma habitual; la serie se regenera completa (desde diciembre de 2023) en cada corrida.",
+    faltantes: "Sin mes común entre stock e IPC, se mantiene el último valor disponible, señalado como desactualizado; sin dato, reservas e IdC renormalizan dentro de la dimensión de financiamiento.",
+    revisiones: "Los saldos del BCRA no se revisan de forma habitual; la serie se regenera completa (desde diciembre de 2023) en cada actualización.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% IdC + 15% crédito." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes con IPC cerrado; el dato diario fresco queda como provisorio (antes se deflactaba el préstamo del día con un IPC de dos meses atrás)." },
@@ -796,11 +796,11 @@ export const FICHAS: Record<string, Ficha> = {
     dobleUso: "El mismo dato alimentó el indicador de clima electoral del cinturón espíritu de época entre junio y julio de 2026, hasta que ese cinturón quedó acotado a la intención migratoria como único indicador; la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.",
     limitaciones: [
       "La fuente es una curaduría propia de encuestas de terceros, no un registro oficial.",
-      "El peso por recencia se calcula contra el día de la corrida: sin encuestas nuevas, el valor deriva lentamente día a día.",
+      "El peso por recencia se calcula contra el día de la actualización: sin encuestas nuevas, el valor deriva lentamente día a día.",
       "Si pasan más de 60 días sin sondeos, el indicador se marca como desactualizado.",
     ],
-    faltantes: "Si la lectura falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
-    revisiones: "La serie mensual completa se rederiva de las encuestas en cada corrida: un sondeo cargado con retraso corrige los meses que toca. La serie evalúa la ponderación al cierre de cada mes, así que su último punto puede diferir levemente del titular, que se recalcula todos los días.",
+    faltantes: "Si la lectura falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
+    revisiones: "La serie mensual completa se rederiva de las encuestas en cada actualización: un sondeo cargado con retraso corrige los meses que toca. La serie evalúa la ponderación al cierre de cada mes, así que su último punto puede diferir levemente del titular, que se recalcula todos los días.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del capital electoral del oficialismo." },
       { fecha: "2026-06-30", cambio: "Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes." },
@@ -833,8 +833,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.",
       "El buscador no expone un listado con fecha por norma: reconstruir la serie mensual exige una consulta separada por mes, no una descarga única.",
     ],
-    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
-    revisiones: "Los conteos se reconsultan completos en cada corrida: si la fuente carga normas con retraso, el número se corrige solo.",
+    faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
+    revisiones: "Los conteos se reconsultan completos en cada actualización: si la fuente carga normas con retraso, el número se corrige solo.",
     cambios: [
       { fecha: "2026-05", cambio: "Entra al cinturón en reemplazo del índice de confianza en el gobierno (UTDT): el cinturón mide capacidad de gobernar, no popularidad." },
       { fecha: "2026-06-30", cambio: "Serie anual desde 2020 para dar contexto histórico al ratio del año en curso." },
@@ -870,9 +870,9 @@ export const FICHAS: Record<string, Ficha> = {
       "Depende de la cobertura de prensa que releva ACLED: eventos sin cobertura periodística no entran al registro.",
     ],
     faltantes: "Si la descarga semanal falla, se usa el último archivo ya guardado (el indicador se marca desactualizado si el registro queda más de 30 días atrás); sin archivo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
-    revisiones: "ACLED revisa y completa semanas recientes en cada publicación; el acumulado de 12 meses se recalcula completo desde el archivo en cada corrida y absorbe esas revisiones automáticamente.",
+    revisiones: "ACLED revisa y completa semanas recientes en cada publicación; el acumulado de 12 meses se recalcula completo desde el archivo en cada actualización y absorbe esas revisiones automáticamente.",
     cambios: [
-      { fecha: "2026-07-11", cambio: "Incorporado al cinturón político como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país (la medición anterior, basada en los informes de conflictividad de CEPA, quedó como contraste interno — su fuente publica desde fines de 2025 y su cifra acumula conflictos desde el inicio de cada año, lo que impide construir una serie mensual comparable). La historia que muestra la serie se verificó contra la cronología de prensa: caída de la protesta en 2024 tras el cambio de gestión, meseta en 2025 y reaceleración desde febrero de 2026 con el ciclo de la reforma laboral." },
+      { fecha: "2026-07-11", cambio: "Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable." },
     ],
   },
 
@@ -903,8 +903,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide el flujo fiscal hacia las provincias — una aproximación parcial a la relación política con los gobernadores.",
       "La serie cubre las transferencias automáticas (coparticipación neta, financiamiento educativo, leyes especiales y compensaciones del Consenso Fiscal); no incluye los giros discrecionales —las transferencias no automáticas—, que otros informes agregan por separado.",
     ],
-    faltantes: "Si la descarga falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
-    revisiones: "Se recalcula completo desde la fuente en cada corrida: revisiones del archivo oficial o del IPC se absorben automáticamente.",
+    faltantes: "Si la descarga falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
+    revisiones: "Se recalcula completo desde la fuente en cada actualización: revisiones del archivo oficial o del IPC se absorben automáticamente.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida de la armonía fiscal entre la Nación y las provincias." },
       { fecha: "2026-06-30", cambio: "El deflactor pasó de una proyección fija al índice IPC oficial del INDEC: la variación real publicada se corrigió de +1,8% a +7,0%." },
@@ -922,7 +922,7 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "HCDN — Cámara de Diputados de la Nación",
       operacion: "Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos",
-      serie: "API CKAN de datos.hcdn.gob.ar",
+      serie: "API portal de datos abiertos de datos.hcdn.gob.ar",
       url: "https://datos.hcdn.gob.ar",
       acceso: "Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras).",
     },
@@ -943,8 +943,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Cuenta proyectos por igual, sin ponderar su peso político.",
       "La serie histórica es reproducible: si un proyecto se sanciona después de publicado un punto de la serie, ese punto no se corrige retroactivamente (aunque el indicador vigente sí lo refleje al recorrer la fuente completa).",
     ],
-    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
-    revisiones: "La serie completa se regenera desde la fuente en cada corrida.",
+    faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
+    revisiones: "La serie completa se regenera desde la fuente en cada actualización.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida de la capacidad de convertir la agenda de gobierno en ley." },
       { fecha: "2026-06-30", cambio: "Serie mensual de ventanas móviles de 12 meses desde diciembre de 2023." },
@@ -960,12 +960,12 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "cohesion_bloque",
     cinturon: "politica",
-    rezago: "Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada corrida.",
+    rezago: "Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización.",
     fuente: {
       organismo: "Cámara de Diputados y Senado de la Nación",
       operacion: "Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días",
       url: "https://votaciones.hcdn.gob.ar",
-      acceso: "Automático: scraping directo de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista.",
+      acceso: "Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista.",
     },
     transformaciones: [
       "Para cada acta con al menos un voto a favor o en contra del bloque propio de La Libertad Avanza (se excluyen deliberadamente los bloques aliados de nombre ambiguo, para no inflar la cohesión medida con votos que no son del oficialismo propiamente dicho), calcula qué tan pareja o dispareja fue esa votación puertas adentro: resta los votos a favor menos los votos en contra, toma el valor absoluto y lo divide por el total de votos que emitió el bloque en esa acta.",
@@ -984,14 +984,12 @@ export const FICHAS: Record<string, Ficha> = {
       "Depende de que los portales públicos mantengan su estructura actual: un cambio de diseño puede interrumpir la lectura automática hasta que se ajuste.",
       "Con pocas actas divididas en la ventana de 90 días, un solo voto conflictivo mueve el promedio con fuerza.",
     ],
-    faltantes: "Si el scraping no logra llegar a uno de los portales, se conserva el último promedio calculado de esa cámara y el compuesto se arma igual; recién se marca desactualizado si ninguna cámara tuvo una corrida que llegara a su portal en más de 10 días — un receso legislativo sin actas nuevas no cuenta como desactualización.",
-    revisiones: "El promedio de los últimos 90 días se recalcula completo desde las fuentes en cada corrida; no se arrastran promedios previos.",
+    faltantes: "Si la lectura de uno de los portales falla, se conserva el último promedio calculado de esa cámara y el compuesto se arma igual; recién se marca desactualizado si ninguna cámara tuvo una actualización que llegara a su portal en más de 10 días — un receso legislativo sin actas nuevas no cuenta como desactualización.",
+    revisiones: "El promedio de los últimos 90 días se recalcula completo desde las fuentes en cada actualización; no se arrastran promedios previos.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón como estimación manual, a la espera de una fuente estructurada de votaciones vigente." },
-      { fecha: "2026-07-07", cambio: "Deja de ser una estimación manual: pasa a calcularse en forma automática con el scraping de las votaciones nominales de Diputados. Cambia también la definición — de «porcentaje alineado con la posición oficial» (no observable de forma independiente) a «qué tan pareja o dispareja es la votación interna del bloque propio», calculada acta por acta. El mismo día nace la lectura complementaria sobre el Senado, como indicador separado." },
-      { fecha: "2026-07-09", cambio: "El scraping automático de Diputados quedó bloqueado en producción entre el 07 y el 09 de julio (protección del portal contra acceso automatizado) — el indicador se sostuvo con el último dato calculado. Restablecido usando una vía de acceso directa del mismo portal, sin depender de la parte bloqueada." },
-      { fecha: "2026-07-09", cambio: "Suma una caché permanente por acta: una corrida ya no vuelve a descargar actas ya vistas, solo las nuevas desde la corrida anterior (antes de esto, reconstruir el historial completo agregaba ~53 minutos al pipeline). Habilita también la serie histórica MENSUAL del gráfico (antes: 3 puntos anuales)." },
-      { fecha: "2026-07-09", cambio: "Umbrales de puntaje de cada cámara recalibrados (antes 90/75/60/40, fórmula ad hoc nunca validada) a partir de las series mensuales reconstruidas (29 a 31 meses reales por cámara)." },
+      { fecha: "2026-07-07", cambio: "Deja de ser una estimación manual: pasa a calcularse en forma automática desde las votaciones nominales de Diputados, con una definición observable — qué tan pareja o dispareja es la votación interna del bloque propio, acta por acta." },
+      { fecha: "2026-07-09", cambio: "Serie histórica mensual del gráfico y umbrales de puntaje recalibrados contra las series reconstruidas de cada cámara (29 a 31 meses reales)." },
       { fecha: "2026-07-10", cambio: "Revisión editorial del cinturón: las dos cámaras se fusionan en este único indicador bicameral (Diputados 65%, Senado 35% — el reparto que ya tenían como indicadores separados), con umbrales recalibrados contra la serie mensual del compuesto (99,9/99,0/97,0/95,0). La serie del gráfico pasa a ser la del compuesto." },
     ],
   },
@@ -1000,12 +998,12 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "alineamiento_senadores_prov",
     cinturon: "politica",
-    rezago: "El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada corrida.",
+    rezago: "El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización.",
     fuente: {
       organismo: "Senado de la Nación",
       operacion: "Votaciones nominales del Senado — coincidencia de senadores no alineados con la posición del bloque de La Libertad Avanza, por provincia, actas de los últimos 90 días",
       url: "https://www.senado.gob.ar/votaciones/actas",
-      acceso: "Automático: scraping directo del portal público de votaciones nominales del Senado; sin carga manual.",
+      acceso: "Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual.",
     },
     transformaciones: [
       "Para cada acta, determina la posición del bloque de La Libertad Avanza (el sentido en el que votó la mayoría de sus senadores). Si el bloque queda empatado, esa acta no aporta señal.",
@@ -1024,8 +1022,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Bloque LLA chico en el Senado: pocos senadores propios hacen que su 'posición' en un acta dependa de muy pocos votos.",
       "Depende de que el portal público del Senado mantenga su estructura actual: un cambio de diseño del sitio puede interrumpir la lectura automática hasta que se ajuste.",
     ],
-    faltantes: "Si el scraping no logra llegar al sitio, se conserva el último promedio calculado en caché; recién se marca desactualizado si pasan más de 10 días sin una corrida que haya llegado al portal — un receso legislativo sin actas nuevas no cuenta como desactualización.",
-    revisiones: "El promedio de los últimos 90 días se recalcula completo desde la fuente en cada corrida; no se arrastran promedios previos.",
+    faltantes: "Si la lectura del sitio falla, se conserva el último promedio calculado; recién se marca desactualizado si pasan más de 10 días sin una actualización que haya llegado al portal — un receso legislativo sin actas nuevas no cuenta como desactualización.",
+    revisiones: "El promedio de los últimos 90 días se recalcula completo desde la fuente en cada actualización; no se arrastran promedios previos.",
     cambios: [
       { fecha: "2026-07-08", cambio: "Alta como reemplazo de \"alineamiento de gobernadores\" (indicador de carga manual, sin fuente automatizable encontrada): mide coincidencia de voto de senadores no oficialistas con la posición del bloque de gobierno, por provincia." },
       { fecha: "2026-07-09", cambio: "Umbrales de puntaje recalibrados (antes 65/45/25/10, heredados de \"alineamiento de gobernadores\" sin validar) a partir de una serie mensual propia reconstruida (29 meses reales, feb-2024 a jun-2026): nuevos cortes en 70/60/50/40." },
@@ -1036,7 +1034,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "adhesion_reformas_provincial",
     cinturon: "politica",
-    rezago: "La tabla de provincias adheridas se actualiza en el sitio oficial apenas una provincia formaliza su adhesión; el informe la relee completa en cada corrida.",
+    rezago: "La tabla de provincias adheridas se actualiza en el sitio oficial apenas una provincia formaliza su adhesión; el informe la relee completa en cada actualización.",
     fuente: {
       organismo: "Ministerio de Agricultura, Ganadería y Pesca (MAGyP)",
       operacion: "Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742)",
@@ -1057,11 +1055,11 @@ export const FICHAS: Record<string, Ficha> = {
       "Es una tabla acumulativa: una vez que una provincia adhiere no se espera que salga de la lista, así que el indicador solo sube o queda estable — no capta marchas atrás.",
       "El sitio fuente tiene una fila vacía mal formada que puede duplicar el nombre de una provincia al leer la tabla; no altera el conteo final porque cada provincia se cuenta una sola vez.",
     ],
-    faltantes: "Si la consulta al sitio falla, el indicador queda fuera de esa corrida y el puntaje del cinturón se calcula con los indicadores disponibles.",
-    revisiones: "La tabla completa se relee de la fuente en cada corrida; no se acumulan lecturas parciales.",
+    faltantes: "Si la consulta al sitio falla, el indicador queda fuera de esa actualización y el puntaje del cinturón se calcula con los indicadores disponibles.",
+    revisiones: "La tabla completa se relee de la fuente en cada actualización; no se acumulan lecturas parciales.",
     cambios: [
       { fecha: "2026-07-07", cambio: "Alta como indicador de la dimensión de alianzas territoriales: mide adhesión fiscal al RIGI, distinta del alineamiento político general que ya capta el indicador de gobernadores." },
-      { fecha: "2026-07-09", cambio: "Serie histórica MENSUAL del gráfico (antes: 1 solo punto, el valor actual). La tabla fuente no trae fecha de adhesión por provincia, así que se investigó a mano la fecha de la ley de adhesión de cada una de las 16 provincias (Boletín Oficial provincial u otra fuente oficial equivalente) — no es un scraper automático, es un dataset investigado una vez y versionado (data/politica/adhesion_reformas_provincial_fechas.json)." },
+      { fecha: "2026-07-09", cambio: "Serie histórica mensual del gráfico: la fecha de adhesión de cada provincia se documentó una por una contra el Boletín Oficial provincial (u otra fuente oficial equivalente)." },
     ],
   },
 
@@ -1103,7 +1101,7 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "HCDN — Cámara de Diputados de la Nación",
       operacion: "Dataset «sesiones» (sesiones plenarias) del portal oficial de datos abiertos",
-      serie: "API CKAN de datos.hcdn.gob.ar",
+      serie: "API portal de datos abiertos de datos.hcdn.gob.ar",
       url: "https://datos.hcdn.gob.ar",
       acceso: "Automático: API pública del portal, filtrando las sesiones de Diputados del período legislativo en curso.",
     },
@@ -1120,8 +1118,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Muestra chica: con pocas sesiones en el período, cada una mueve decenas de puntos porcentuales.",
       "No distingue el quórum frustrado por la oposición de la inasistencia propia — decisión metodológica declarada.",
     ],
-    faltantes: "Si la consulta falla, se usa el último valor en caché marcado como desactualizado; sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
-    revisiones: "El dataset se reconsulta completo en cada corrida.",
+    faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
+    revisiones: "El dataset se reconsulta completo en cada actualización.",
     cambios: [
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del bloqueo parlamentario." },
       { fecha: "2026-06-30", cambio: "Serie por período legislativo desde 2024." },
@@ -1138,7 +1136,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "InfoLeg (Ministerio de Justicia) + Senado de la Nación",
       operacion: "Base de legislación nacional (decretos de observación total o parcial y leyes promulgadas por insistencia) + actas de votación nominal del Senado (tratamientos de decretos bajo la ley 26.122)",
       url: "https://servicios.infoleg.gob.ar",
-      acceso: "Automático: búsqueda de frase exacta en el buscador oficial de InfoLeg (tres variantes de sumario que cubren todos los vetos del período, verificadas una por una) y filtrado de las actas del Senado por la fórmula «en los términos de la ley 26.122», con recuento de votos del acta para clasificar rechazo o aprobación. El registro de eventos es versionado: cada derrota queda documentada con su fecha, acta y fuente.",
+      acceso: "Automático: se buscan los vetos en el buscador oficial de InfoLeg y se filtran las actas del Senado por la fórmula «en los términos de la ley 26.122», contando los votos para clasificar rechazo o aprobación. Cada derrota queda documentada con su fecha, acta y fuente.",
     },
     transformaciones: [
       "Un veto cuenta como derrota cuando ambas cámaras insisten la ley con dos tercios de los votos y la ley se promulga pese al veto (art. 83 de la Constitución); se fecha en el mes en que la insistencia se completa.",
@@ -1158,7 +1156,7 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "derrotas 12m",
     },
     incidenciaTexto: [
-      "Los umbrales se calibraron contra la serie mensual reconstruida completa del indicador (32 meses, diciembre de 2023 en adelante, con cada evento verificado contra la fuente primaria): el período cubre desde meses sin ninguna derrota hasta el pico de ocho derrotas en doce meses tras la ola de rechazos e insistencias de agosto-octubre de 2025. Las dos bandas más bajas quedan deliberadamente por encima de todo lo observado: son el margen para escenarios de confrontación más intensos que los ya vistos.",
+      "Los umbrales se calibraron contra la serie mensual del indicador desde diciembre de 2023: el período va de meses sin ninguna derrota hasta el pico de ocho en doce meses, tras la ola de rechazos e insistencias de agosto-octubre de 2025. Las dos bandas más bajas quedan por encima de todo lo observado: son el margen para escenarios de confrontación más intensos que los ya vistos.",
       "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa, las sesiones caídas por quórum y el bloqueo sostenido — su contracara: éste cuenta las normas caídas, aquél acredita las sostenidas. Menos derrotas = puntaje más alto.",
     ],
     limitaciones: [
@@ -1168,10 +1166,10 @@ export const FICHAS: Record<string, Ficha> = {
       "Las insistencias se fechan por la publicación de la ley en el Boletín Oficial, no por el voto de la segunda cámara: una insistencia votada sobre el fin de mes puede registrarse al mes siguiente. En los tres casos reales del período ambos hechos cayeron en el mismo mes.",
       "Mide derrotas consumadas en el recinto; los amagues que no llegan a votarse (sesiones sin quórum para rechazar un decreto, insistencias que no reúnen los dos tercios) no cuentan — las sesiones fracasadas las captura, con otro método, el indicador de sesiones caídas por quórum.",
     ],
-    faltantes: "Si InfoLeg o el Senado fallan, se usa el último valor en caché marcado como desactualizado; el registro versionado de eventos preserva todo el pasado, así que una caída de fuente solo retrasa la detección de eventos nuevos. Sin caché, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
-    revisiones: "Los eventos consumados son inmutables (una insistencia no se des-insiste; un rechazo no se des-vota). Los vetos con insistencia incompleta se re-verifican en cada corrida: media insistencia pendiente no caduca y puede completarse en cualquier momento — si eso ocurre, el evento nuevo se fecha en el mes en que se complete, sin reescribir el histórico.",
+    faltantes: "Si las fuentes fallan, se mantiene el último valor disponible, señalado como desactualizado; el registro de eventos preserva todo el pasado, así que una caída de fuente solo retrasa la detección de eventos nuevos.",
+    revisiones: "Los eventos consumados son inmutables (una insistencia no se des-insiste; un rechazo no se des-vota). Los vetos con insistencia incompleta se re-verifican en cada actualización: media insistencia pendiente no caduca y puede completarse en cualquier momento — si eso ocurre, el evento nuevo se fecha en el mes en que se complete, sin reescribir el histórico.",
     cambios: [
-      { fecha: "2026-07-09", cambio: "Incorporado al cinturón político: las insistencias de 2025 fueron las primeras que revirtieron vetos presidenciales desde 2003, y ningún otro indicador del cinturón capturaba ese pulso ni los rechazos de decretos en el recinto. Serie mensual completa desde diciembre de 2023, reconstruida evento por evento contra fuente primaria." },
+      { fecha: "2026-07-09", cambio: "Incorporado al cinturón político: ningún otro indicador capturaba las insistencias de vetos ni los rechazos de decretos en el recinto. Serie mensual completa desde diciembre de 2023." },
     ],
   },
 
@@ -1179,12 +1177,12 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "bloqueo_sostenido",
     cinturon: "politica",
-    rezago: "Las cámaras publican sus actas de votación a los días de cada sesión; el clasificador incorpora las actas nuevas en la corrida nocturna siguiente. La caída de un veto se registra con la publicación de la ley insistida en el Boletín Oficial, dos a tres semanas después del voto de la segunda cámara.",
+    rezago: "Las cámaras publican sus actas de votación a los días de cada sesión; el clasificador incorpora las actas nuevas en la actualización nocturna siguiente. La caída de un veto se registra con la publicación de la ley insistida en el Boletín Oficial, dos a tres semanas después del voto de la segunda cámara.",
     fuente: {
       organismo: "Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia)",
       operacion: "Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia)",
       url: "https://votaciones.hcdn.gob.ar",
-      acceso: "Automático: cada acta de Diputados se clasifica una única vez leyendo su encabezado (una insistencia de veto se reconoce por el número de ley en el motivo o —en el formato de 2024— por la mayoría de dos tercios sobre el mensaje del Ejecutivo, mapeado a la ley vetada en los datos abiertos de la Cámara; una votación de decreto, por el número de decreto en el motivo; las habilitaciones de tratamiento, que son la moción procesal previa, se excluyen por palabra clave); en el Senado se filtran los títulos de insistencia del listado anual de actas. Los casos ambiguos quedan en una cola de revisión visible en cada corrida — nunca se adivina la dirección de una moción. El registro de eventos es versionado y compartido con el indicador de derrotas legislativas.",
+      acceso: "Automático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos se comparte con el indicador de derrotas legislativas.",
     },
     transformaciones: [
       "Una norma queda DESAFIADA desde su primera votación en el recinto, gane quien gane: la insistencia de una ley vetada (art. 83 de la Constitución) o el control de un decreto bajo la ley 26.122.",
@@ -1212,12 +1210,12 @@ export const FICHAS: Record<string, Ficha> = {
       "Un período sin desafíos votados no genera dato (sin denominador no hay tasa): el indicador queda fuera ese mes y los pesos de su dimensión se renormalizan — ausencia de desafíos puede ser dominio de agenda o simple falta de confrontación, y el indicador no distingue entre ambas.",
       "Con pocos desafíos en ventana la tasa se mueve a saltos grandes (un desafío sobre cuatro son 25 puntos): es un indicador de eventos raros, como las derrotas legislativas.",
       "La moción estándar de la comisión bicameral sobre un decreto es su rechazo; el caso raro de un dictamen de aprobación (una vez en el período: el acuerdo con el FMI) se detecta por el texto del motivo y queda para clasificación manual — la dirección de una moción ambigua nunca se adivina.",
-      "El universo de actas de Diputados es el que releva el caché del proyecto: un acta publicada hoy se clasifica en la corrida nocturna siguiente.",
+      "Las actas de Diputados se incorporan con la actualización nocturna: un acta publicada hoy se clasifica al día siguiente.",
     ],
-    faltantes: "Si las actas o InfoLeg fallan, se usa el último valor en caché marcado como desactualizado; la clasificación ya hecha queda persistida (cada acta se clasifica una única vez en la vida del proyecto), así que una caída de fuente solo retrasa la detección de votaciones nuevas.",
-    revisiones: "Las votaciones consumadas son inmutables. Los vetos con media insistencia pendiente se re-verifican en cada corrida (no caducan): si la segunda cámara completa la insistencia, la norma pasa a caída desde ese mes en adelante — los puntos históricos ya publicados no se reescriben, porque cada uno evalúa el estado al cierre de su propio mes.",
+    faltantes: "Si las actas o InfoLeg fallan, se mantiene el último valor disponible, señalado como desactualizado; el histórico ya clasificado se preserva, así que una caída de fuente solo retrasa la detección de votaciones nuevas.",
+    revisiones: "Las votaciones consumadas son inmutables. Los vetos con media insistencia pendiente se re-verifican en cada actualización (no caducan): si la segunda cámara completa la insistencia, la norma pasa a caída desde ese mes en adelante — los puntos históricos ya publicados no se reescriben, porque cada uno evalúa el estado al cierre de su propio mes.",
     cambios: [
-      { fecha: "2026-07-16", cambio: "Incorporado al cinturón político como la cara ganada del pulso legislativo: los vetos sostenidos de septiembre-octubre de 2024 y la supervivencia del DNU 70/2023 no puntuaban en ningún indicador (el conteo de derrotas solo registra las normas caídas). Serie mensual desde marzo de 2024 (primer desafío votado del período), reconstruida evento por evento contra las actas de ambas cámaras." },
+      { fecha: "2026-07-16", cambio: "Incorporado como la cara ganada del pulso legislativo: los vetos sostenidos y la supervivencia de decretos no puntuaban en ningún indicador (el conteo de derrotas solo registra las normas caídas). Serie mensual desde marzo de 2024." },
     ],
   },
 
@@ -1236,7 +1234,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Google Trends (fuente no oficial)",
       operacion: "Interés de búsqueda en Argentina de una canasta de términos de intención de emigrar (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\")",
       url: "https://trends.google.com/",
-      acceso: "Automático: consulta mensual de la canasta en ventana fija (2021 en adelante); cada descarga sana reemplaza el archivo completo — corridas con escalas distintas nunca se mezclan.",
+      acceso: "Automático: consulta mensual de la canasta en ventana fija (2021 en adelante); cada descarga sana reemplaza el archivo completo — actualizaciones con escalas distintas nunca se mezclan.",
     },
     transformaciones: [
       "La tensión es lineal en el interés de búsqueda: 0 → tensión 0 · 50 → tensión 5 · 100 → tensión 10.",
@@ -1295,7 +1293,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide el cepo por su precio (la brecha que paga quien no accede al mercado oficial), no el stock regulatorio de restricciones.",
       "El valor de la card es el spot del día; la serie usa promedios mensuales — difieren de forma inmaterial, declarado.",
     ],
-    faltantes: "Si la API falla, se usa el último valor en caché marcado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
+    faltantes: "Si la API falla, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "Cotizaciones cerradas, sin revisión; el punto del mes corriente se recalcula a diario.",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial del indicador sobre la brecha CCL/oficial minorista, en la escala de avance del cinturón anterior." },
@@ -1336,8 +1334,8 @@ export const FICHAS: Record<string, Ficha> = {
       "El «canal verde» aduanero (parte del diseño institucional original) sigue sin fuente pública estructurada y no se mide.",
       "Depende del mes común entre cinco series con rezagos distintos.",
     ],
-    faltantes: "Si falta un insumo, se usa el último valor en caché marcado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
-    revisiones: "Las series oficiales pueden revisarse; la serie propia se recalcula completa en cada corrida.",
+    faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
+    revisiones: "Las series oficiales pueden revisarse; la serie propia se recalcula completa en cada actualización.",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial como variación interanual de importaciones (aproximación de apertura)." },
       { fecha: "2026-07-02", cambio: "Pasa a un compuesto de liberalización (brecha cambiaria + alícuota) con el ITCG." },
@@ -1349,7 +1347,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "desregulacion_normativa",
     cinturon: "gestion",
-    rezago: "Sin rezago: el conteo se evalúa al día de la corrida (InfoLeg carga al ritmo del Boletín Oficial).",
+    rezago: "Sin rezago: el conteo se evalúa al día de la actualización (InfoLeg carga al ritmo del Boletín Oficial).",
     fuente: {
       organismo: "InfoLeg (Ministerio de Justicia)",
       operacion: "Conteo de normas nacionales publicadas desde diciembre de 2023 cuyo texto contiene «deroga»",
@@ -1376,8 +1374,8 @@ export const FICHAS: Record<string, Ficha> = {
       "La calibración «100 normas = plan completo» es una decisión propia declarada.",
       "El megadecreto 70/23 no está indexado como texto completo en la fuente y no aparece en el conteo: el indicador captura lo posterior.",
     ],
-    faltantes: "Con el buscador caído, cae al valor de respaldo documentado (lectura del documento institucional); después, caché y renormalización.",
-    revisiones: "El acumulado se reevalúa completo en cada corrida y puede moverse si la fuente reindexa.",
+    faltantes: "Con el buscador caído, cae al valor de respaldo documentado (lectura del documento institucional); agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
+    revisiones: "El acumulado se reevalúa completo en cada actualización y puede moverse si la fuente reindexa.",
     cambios: [
       { fecha: "2026-05", cambio: "Automatizado desde el inicio del cinturón con la misma búsqueda, en escala lineal." },
       { fecha: "2026-07-02", cambio: "Umbrales institucionales del ITCG." },
@@ -1417,8 +1415,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.",
       "Las bandas se calibraron a mano contra el recorte observado (~10-12% → banda alta).",
     ],
-    faltantes: "Con la planilla caída, se usa el último valor en caché marcado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
-    revisiones: "La fuente revisa los meses imputados en cada publicación; la serie propia se relee completa en cada corrida.",
+    faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
+    revisiones: "La fuente revisa los meses imputados en cada publicación; la serie propia se relee completa en cada actualización.",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial sobre la serie previsional trimestral, con meta de largo plazo." },
       { fecha: "2026-07-02", cambio: "Pasa a la planilla mensual de dotación APN contra diciembre de 2023, con umbrales del ITCG." },
@@ -1458,8 +1456,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Bandas calibradas a mano contra el ajuste 2024, un episodio históricamente atípico.",
       "La base caja/devengado de Hacienda está sujeta a reclasificaciones presupuestarias.",
     ],
-    faltantes: "Si falta un insumo, se usa el último valor en caché marcado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
-    revisiones: "Series revisables por el publicador; la serie propia se recalcula entera en cada corrida.",
+    faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
+    revisiones: "Series revisables por el publicador; la serie propia se recalcula entera en cada actualización.",
     cambios: [
       { fecha: "2026-07-02", cambio: "Indicador nuevo, creado con el ITCG." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -1498,8 +1496,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Base caja: el calendario de pagos puede desalinear meses.",
       "Comparte el deflactor con el gasto de funcionamiento: un error del IPC mueve a los dos a la vez.",
     ],
-    faltantes: "Si falta un insumo, se usa el último valor en caché marcado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
-    revisiones: "Series revisables por el publicador; recalculada entera en cada corrida.",
+    faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
+    revisiones: "Series revisables por el publicador; recalculada entera en cada actualización.",
     cambios: [
       { fecha: "2026-07-02", cambio: "Indicador nuevo, creado con el ITCG." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
@@ -1510,7 +1508,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "reestructuracion_organismos",
     cinturon: "gestion",
-    rezago: "Sin rezago: conteo al día de la corrida.",
+    rezago: "Sin rezago: conteo al día de la actualización.",
     fuente: {
       organismo: "InfoLeg (Ministerio de Justicia)",
       operacion: "Conteo de normas nacionales publicadas desde diciembre de 2023 cuyo texto contiene «disolución»",
@@ -1535,8 +1533,8 @@ export const FICHAS: Record<string, Ficha> = {
       "El megadecreto 70/23 no aparece en la búsqueda de texto: solo captura los actos posteriores.",
       "La calibración (18 = 40%, 45 = plan completo) es una decisión propia validada a mano y declarada.",
     ],
-    faltantes: "Con el buscador caído, se usa el último valor en caché marcado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
-    revisiones: "El acumulado se reevalúa completo en cada corrida.",
+    faltantes: "Con el buscador caído, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
+    revisiones: "El acumulado se reevalúa completo en cada actualización.",
     cambios: [
       { fecha: "2026-05", cambio: "Automatizado desde el inicio del cinturón con la misma búsqueda." },
       { fecha: "2026-07-02", cambio: "Umbrales institucionales del ITCG." },
@@ -1577,8 +1575,8 @@ export const FICHAS: Record<string, Ficha> = {
       "La cobertura por menciones en el Boletín Oficial es una aproximación: cuenta actos normativos que nombran al instrumento, no convenios homologados ni trabajadores cubiertos. El pleno de 420 menciones es una calibración provisoria anclada al ritmo de homologaciones del Ministerio de Trabajo.",
       "El régimen recién entra en vigencia el 1 de noviembre de 2026 (el decreto reglamentario de junio prorrogó el arranque): la adopción financiera —aportes y fondos registrados— no puede comenzar antes de esa fecha, así que el valor cercano a cero refleja un régimen todavía en construcción normativa, no una falla de medición.",
     ],
-    faltantes: "Si el Boletín falla, la cobertura cae a la estimación manual declarada; si el registro CNV falla, entra el valor de respaldo completo; después, caché y renormalización.",
-    revisiones: "El registro CNV se reverifica en cada corrida; la serie de menciones se reconstruye por consulta mensual.",
+    faltantes: "Si el Boletín falla, la cobertura cae a la estimación manual declarada; si el registro CNV falla, entra el valor de respaldo completo; agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
+    revisiones: "El registro CNV se reverifica en cada actualización; la serie de menciones se reconstruye por consulta mensual.",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial como carga manual de etapas implementadas." },
       { fecha: "2026-07-02", cambio: "Compuesto del documento institucional renormalizado a lo medible, con el registro CNV automático." },
@@ -1618,8 +1616,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Aproximación declarada: son juicios del sistema de riesgos del trabajo, no el canal indemnizatorio que el Fondo de Cese reemplaza — pero es la única serie nacional mensual pública.",
       "La ventana de 12 contra 12 meses reacciona lento a los quiebres.",
     ],
-    faltantes: "Con la planilla caída, se usa el último valor en caché marcado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
-    revisiones: "La fuente puede revisar meses; la planilla completa se relee en cada corrida.",
+    faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
+    revisiones: "La fuente puede revisar meses; la planilla completa se relee en cada actualización.",
     cambios: [
       { fecha: "2026-07-02", cambio: "Alta como indicador de contexto, fuera del índice." },
       { fecha: "2026-07-03", cambio: "Entra al ITCG (reforma laboral, 30% interno): es el resultado que la reforma persigue y complementa al instrumento." },
@@ -1653,10 +1651,10 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "% de avance",
     },
     limitaciones: [
-      "Es el único indicador del índice sin colector de fuente viva: la asignación de etapas es juicio del analista, con las normas citadas en el registro.",
+      "Es el único indicador del índice sin una fuente de datos en vivo: la asignación de etapas es juicio del analista, con las normas citadas en el registro.",
       "La escala 0-4 discretiza procesos continuos.",
     ],
-    faltantes: "Sin registro disponible, se usa el último valor en caché marcado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
+    faltantes: "Sin registro disponible, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "Seguimiento quincenal declarado; la serie avisa si el estado vivo no reconcilia con las transiciones fechadas.",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial como carga manual (porcentaje de empresas privatizadas)." },
@@ -1669,10 +1667,10 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "rigi_inversiones",
     cinturon: "gestion",
-    rezago: "Sin rezago: foto de la plataforma oficial al día de la corrida.",
+    rezago: "Sin rezago: foto de la plataforma oficial al día de la actualización.",
     fuente: {
       organismo: "Ministerio de Economía — plataforma oficial del RIGI",
-      operacion: "Pipeline del Régimen de Incentivo a Grandes Inversiones: inversión aprobada sobre el total del pipeline (aprobada + en evaluación)",
+      operacion: "Cartera del Régimen de Incentivo a Grandes Inversiones: inversión aprobada sobre el total de la cartera (aprobada + en evaluación)",
       serie: "Planilla pública que alimenta el mapa oficial del RIGI (pestañas de proyectos aprobados y en evaluación)",
       url: "https://www.argentina.gob.ar/economia/rigi",
       acceso: "Automático: lectura de la planilla pública de la plataforma oficial; las fechas de aprobación se toman del Boletín Oficial solo para proyectos nuevos.",
@@ -1691,18 +1689,18 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ 10", puntaje: 10 },
       ],
       puntos: [[10, 10], [17.5, 40], [32.5, 65], [50, 85], [60, 100]],
-      unidadCorta: "% del pipeline",
+      unidadCorta: "% de la cartera",
     },
     limitaciones: [
-      "No existe fuente estructurada de inversión efectivamente desembolsada: el pipeline aprobado es lo más cercano al hecho, y se declara como tal.",
+      "No existe fuente estructurada de inversión efectivamente desembolsada: la inversión aprobada es lo más cercano al hecho, y se declara como tal.",
       "El denominador salta con cada anuncio grande en evaluación: el avance puede bajar sin que nada empeore.",
-      "Depende de que la planilla oficial siga pública y con el mismo esquema (ya cambió una vez y el lector se adaptó).",
+      "Depende de que la planilla oficial siga pública y con el mismo esquema (ya cambió una vez y la lectura se adaptó).",
     ],
-    faltantes: "Con la plataforma caída, cae a una aproximación por conteo de resoluciones oficiales (marcada como desactualizada); después, caché y renormalización.",
+    faltantes: "Con la plataforma caída, cae a una aproximación por conteo de resoluciones oficiales (marcada como desactualizada); agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
     revisiones: "La plataforma se actualiza sin registro de cambios; las fechas de aprobación quedan fijadas con su norma.",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial por conteo de resoluciones (aproximación)." },
-      { fecha: "2026-06-30", cambio: "Pasa a la plataforma oficial del Ministerio de Economía: inversión aprobada sobre pipeline, con montos reales." },
+      { fecha: "2026-06-30", cambio: "Pasa a la plataforma oficial del Ministerio de Economía: inversión aprobada sobre la cartera total, con montos reales." },
       { fecha: "2026-07-02", cambio: "Umbrales institucionales del ITCG; después, puntaje interpolado entre anclas." },
     ],
   },
@@ -1711,7 +1709,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "concesiones_infraestructura",
     cinturon: "gestion",
-    rezago: "Sin rezago: estado del portal de contrataciones al día de la corrida.",
+    rezago: "Sin rezago: estado del portal de contrataciones al día de la actualización.",
     fuente: {
       organismo: "CONTRAT.AR (portal oficial de contrataciones) + Vialidad Nacional (página de la Red Federal de Concesiones)",
       operacion: "Tasa de adjudicación de la Red Federal de Concesiones, en kilómetros: km bajo concesión adjudicada sobre km totales del plan",
@@ -1738,8 +1736,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Binario por etapa: 0 o 100% de sus kilómetros.",
       "Depende de dos lecturas de páginas oficiales: un rediseño de cualquiera de las dos interrumpe el dato hasta adaptarlo.",
     ],
-    faltantes: "Con los portales caídos, cae al valor de respaldo documentado con fecha; después, caché y renormalización.",
-    revisiones: "Los kilómetros por etapa se refrescan de la página oficial en cada corrida; para las adjudicaciones manda la fecha del Boletín Oficial.",
+    faltantes: "Con los portales caídos, cae al valor de respaldo documentado con fecha; agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
+    revisiones: "Los kilómetros por etapa se refrescan de la página oficial en cada actualización; para las adjudicaciones manda la fecha del Boletín Oficial.",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial como carga manual." },
       { fecha: "2026-07-02", cambio: "Automatizado: estado por CONTRAT.AR y kilometraje por la página oficial de la Red, en km." },
@@ -1779,7 +1777,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La base 2023 ya era 98,3%: el salto normativo fue puntual y el indicador está saturado cerca del máximo desde 2024 (decisión de rediseño abierta con CIGOB).",
       "Depende de que los nombres de los programas no cambien en el presupuesto.",
     ],
-    faltantes: "Sin acceso a la API, cae al valor de respaldo documentado (el decreto de 2024); después, caché y renormalización.",
+    faltantes: "Sin acceso a la API, cae al valor de respaldo documentado (el decreto de 2024); agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
     revisiones: "El devengado del ejercicio corriente es acumulado en curso, revisable por definición; la base 2023 está congelada.",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial como carga manual (porcentaje de beneficiarios que cobra directo)." },
@@ -1820,7 +1818,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Estado judicial verificado: la nulidad de primera instancia fue revocada por la Cámara en lo Contencioso Administrativo Federal (marzo de 2026) — el protocolo es un acto válido y vigente.",
       "El registro histórico oficial de cortes del GCBA está fuera de servicio; el monitoreo propio de alertas de transporte acumula la serie que permitirá automatizar el dato.",
     ],
-    faltantes: "Cae al valor de respaldo documentado; después, caché y renormalización.",
+    faltantes: "Cae al valor de respaldo documentado; agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
     revisiones: "El registro se actualiza cuando la fuente publica el año nuevo (con aviso automático del detector).",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial como carga manual (55%, la foto 2024)." },
@@ -1860,8 +1858,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide la derivación directa de aportes, una parte de la «libertad de opción» — no toda la reforma del sistema.",
       "El contador histórico de traspasos del sitio oficial sigue fuera de servicio; este indicador lo reemplaza con otra semántica.",
     ],
-    faltantes: "Cae al valor de respaldo documentado con fecha; después, caché y renormalización.",
-    revisiones: "Las planillas anuales se releen completas en cada corrida (la fuente puede revisar meses hacia atrás).",
+    faltantes: "Cae al valor de respaldo documentado con fecha; agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
+    revisiones: "Las planillas anuales se releen completas en cada actualización (la fuente puede revisar meses hacia atrás).",
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial como carga manual: la fuente en línea estaba bloqueada." },
       { fecha: "2026-07-02", cambio: "Automatizado con los padrones oficiales de beneficiarios y usuarios." },
@@ -1902,7 +1900,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.",
     ],
     faltantes: "Si una fuente falla, se mantiene el último valor publicado (marcado como desactualizado); si el componente no calcula, los pesos del índice se renormalizan.",
-    revisiones: "Cada corrida re-descarga las series completas y adopta las revisiones de las fuentes; con canasta fresca sin salario, el par se declara provisorio.",
+    revisiones: "Cada actualización re-descarga las series completas y adopta las revisiones de las fuentes; con canasta fresca sin salario, el par se declara provisorio.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC base-100 como rebase directo del cociente, con 22,75% de peso efectivo." },
       { fecha: "2026-07-04", cambio: "Alineación estricta por mes común: antes podía mezclar el salario de un mes con la canasta de otro. Además queda como única medición del ratio ingresos/comida del índice." },
@@ -1966,7 +1964,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Un stock real creciendo puede ser acceso sano o endeudamiento por necesidad — esa distinción la aporta la mora, leída en conjunto.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componentes, la dimensión de vulnerabilidad desaparece y su peso se redistribuye.",
-    revisiones: "La planilla oficial se relee completa en cada corrida y adopta las revisiones del BCRA.",
+    revisiones: "La planilla oficial se relee completa en cada actualización y adopta las revisiones del BCRA.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC como deuda real castigada por mora, con la polaridad empírica documentada (corrección sobre el diseño original)." },
       { fecha: "2026-07-04", cambio: "Se decide no aplicarle piso de recorte: la primera prueba con piso maquillaba el deterioro y se revirtió." },
@@ -2000,7 +1998,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El corte es la cartera consolidada del sistema, con el rezago de la planilla oficial.",
     ],
     faltantes: "Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado; sin dato, el peso se renormaliza dentro de la dimensión.",
-    revisiones: "La planilla oficial se relee completa en cada corrida y adopta las revisiones del BCRA.",
+    revisiones: "La planilla oficial se relee completa en cada actualización y adopta las revisiones del BCRA.",
     cambios: [
       { fecha: "2026-07-15", cambio: "Entra al ITVC como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa." },
     ],
@@ -2031,7 +2029,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Depende del RIPTE, que cubre solo asalariados formales.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización.",
-    revisiones: "Re-descarga completa por corrida; base dinámica de la propia serie.",
+    revisiones: "Re-descarga completa por actualización; base dinámica de la propia serie.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC base-100 como nivel de regulados contra el salario (antes puntuaba por variación mensual anclada)." },
     ],
@@ -2060,7 +2058,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Fuente sectorial privada, publicada en PDF sin interfaz de datos: la lectura depende del formato del informe.",
       "La línea de base del 4º trimestre de 2023 usa la foto contemporánea de entonces, declarada; el dato revisado de la fuente difiere levemente.",
     ],
-    faltantes: "Un mes sin informe legible queda vacío en la serie y se reintenta el mes más reciente en cada corrida; el titular nunca retrocede respecto de la serie publicada.",
+    faltantes: "Un mes sin informe legible queda vacío en la serie y se reintenta el mes más reciente en cada actualización; el titular nunca retrocede respecto de la serie publicada.",
     revisiones: "Los informes procesados no se releen; si la fuente revisa, el dato nuevo entra por el informe siguiente.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC con línea de base documentada; el mismo día se reconstruyó la serie mensual real desde octubre de 2023 y pasó a rebase dinámico." },
@@ -2092,7 +2090,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La serie trimestral pública original se discontinuó en 2020; la vigente la reemplaza desde el rediseño del componente.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, la brecha salarial absorbe el peso de la dimensión.",
-    revisiones: "La encuesta se revisa; la re-descarga completa por corrida adopta las revisiones.",
+    revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC vía la serie anual disponible, invertida, con base en el año 2023." },
       { fecha: "2026-07-04", cambio: "Pasa a la serie trimestral con base exacta en el 4º trimestre de 2023 (la anual solo se actualizaba una vez al año y planchaba el componente)." },
@@ -2152,7 +2150,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Aproximación al empleo vía actividad de la construcción, no despachos de cemento reales (la serie de insumos existe aparte, como contraste).",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
-    revisiones: "Serie desestacionalizada revisable por la fuente; re-descarga completa por corrida.",
+    revisiones: "Serie desestacionalizada revisable por la fuente; re-descarga completa por actualización.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias)." },
     ],
@@ -2181,7 +2179,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Trimestral contra base de un trimestre: sesgo estacional chico aceptado.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
-    revisiones: "La encuesta se revisa; re-descarga completa por corrida.",
+    revisiones: "La encuesta se revisa; re-descarga completa por actualización.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC con rebase invertido base-100." },
     ],
@@ -2258,11 +2256,11 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Google Trends (fuente no oficial)",
       operacion: "Interés de búsqueda en Argentina de una canasta de cuatro términos de urgencia económica: inflación, precios, inseguridad y trabajo",
       url: "https://trends.google.com/",
-      acceso: "Automático: consulta mensual de la canasta en ventana fija (2021 en adelante); cada descarga sana reemplaza el archivo completo — corridas con escalas distintas nunca se mezclan.",
+      acceso: "Automático: consulta mensual de la canasta en ventana fija (2021 en adelante); cada descarga sana reemplaza el archivo completo — actualizaciones con escalas distintas nunca se mezclan.",
     },
     transformaciones: [
       "Componente del índice: la canasta mensual rebaseada de forma invertida (más búsquedas de urgencia = peor) contra el promedio del 4º trimestre de 2023.",
-      "El cociente entre valores de una misma consulta cancela la renormalización de escala de la fuente — verificado con corridas repetidas idénticas.",
+      "El cociente entre valores de una misma consulta cancela la renormalización de escala de la fuente — verificado con actualizaciones repetidas idénticas.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de confianza y seguridad (10% interno · 1,5% del ITVC): peso chico acorde a un constructo blando.",
@@ -2278,7 +2276,7 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "Reemplazo total del archivo en cada descarga sana; la fuente no revisa datos propiamente.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Declarado indicador de contexto: la ventana de tres meses no permitía línea de base 2023." },
-      { fecha: "2026-07-04", cambio: "Pasa a componente puntuable tras un banco de pruebas empírico: la canasta de ventana fija con cociente interno resultó estable entre corridas y consistente con la inflación." },
+      { fecha: "2026-07-04", cambio: "Pasa a componente puntuable tras un banco de pruebas empírico: la canasta de ventana fija con cociente interno resultó estable entre actualizaciones y consistente con la inflación." },
     ],
   },
 
@@ -2306,7 +2304,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Aproximación al consumo discrecional financiado, no al bienestar general.",
     ],
     faltantes: "Un mes que falla en la API se saltea; la card mantiene el último valor como desactualizado; sin componente, renormalización.",
-    revisiones: "La API expone el histórico completo y se reconsulta entero en cada corrida.",
+    revisiones: "La API expone el histórico completo y se reconsulta entero en cada actualización.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad." },
       { fecha: "2026-07-04", cambio: "Se aplica el techo de recorte 140 y el peso interno baja de 10% a 5%." },
@@ -2462,13 +2460,13 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     seleccion: [
       "Once indicadores puntúan en cinco dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El tablero publica solo lo que integra el índice: dos mediciones que quedaron fuera del puntaje (la rotación del gabinete y las protestas en la Ciudad de Buenos Aires) se siguen relevando como seguimiento interno, sin tile propio. Reemplaza a un promedio simple de nueve indicadores que pesaba todo por igual, sin distinguir la capacidad de gobernar de la popularidad.",
-      "Criterio de selección: fuentes públicas verificables y automatizables. Los indicadores vigentes se calculan en forma automática (la rotación del gabinete, desde un registro curado con respaldo documental en el Boletín Oficial). El alineamiento de los gobernadores —una estimación manual del analista, sin fuente pública estructurada que lo mida de forma objetiva— se retiró del índice en julio de 2026 y lo reemplazó el alineamiento de voto de los senadores por provincia; los caminos alternativos evaluados (composición legislativa por provincia, transferencias discrecionales) resultaron no ser proxies válidos de la conducta del Poder Ejecutivo provincial.",
+      "Criterio de selección: fuentes públicas verificables y automatizables. El alineamiento de los gobernadores —una estimación manual sin fuente pública estructurada— se retiró del índice en julio de 2026 y lo reemplazó el alineamiento de voto de los senadores por provincia, una conducta observable.",
       "La revisión editorial de julio de 2026 acotó el alcance del índice a la capacidad del gobierno de gestionar y avanzar su agenda —el Parlamento, las alianzas territoriales y la cohesión del oficialismo—: la rotación del gabinete y el volumen de protesta quedaron fuera del puntaje y del tablero, aunque su recolección continúa (mismo criterio que los insumos monetarios del índice macroeconómico).",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones.",
       "Juicio experto: la paramétrica admite ajustes manuales por indicador con justificación escrita y fecha de vencimiento (un ajuste vencido se ignora solo); todo ajuste activo se publica junto al índice.",
-      "Varios indicadores —la cohesión del bloque propio (hoy un único indicador bicameral: Diputados 65% y Senado 35% dentro de la misma fórmula), el alineamiento de senadores por provincia, la adhesión provincial a un régimen de inversión y las derrotas legislativas— son incorporaciones o redefiniciones de julio de 2026: sus series mensuales se reconstruyeron hacia atrás desde las fuentes (24 a 31 meses según el indicador) y sus umbrales se calibraron contra esa historia real. La excepción declarada es la adhesión provincial, cuyos umbrales no se recalibraron: la adhesión es un proceso acumulativo todavía en curso y su rango observado no es una muestra representativa.",
+      "Varios indicadores del cinturón son incorporaciones o redefiniciones de julio de 2026: sus series mensuales se reconstruyeron hacia atrás desde las fuentes y sus umbrales se calibraron contra esa historia. La excepción es la adhesión provincial, cuyos umbrales no se recalibraron porque la adhesión es un proceso acumulativo todavía en curso.",
     ],
     normalizacion: [
       "Cada indicador, en su unidad original, se convierte a un puntaje 0–100 mediante umbrales por banda, leídos como anclas de interpolación: cada banda finita ancla su puntaje en su punto medio, las abiertas en su borde; entre anclas el puntaje es lineal, en los extremos queda plano.",
@@ -2486,7 +2484,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se acompaña con el ejercicio de quitar cada componente por vez, para identificar cuál domina la lectura del mes.",
     ],
     validacion: [
-      "El ITCP se contrasta contra el EPU de Argentina (Economic Policy Uncertainty: minería de texto sobre diarios locales, la misma familia metodológica que el índice de Baker/Bloom/Davis): el índice se reconstruye mes a mes desde las series de sus componentes y se correlaciona contra el EPU — la correlación esperada es negativa (más capital político, menos incertidumbre de política en la prensa) y el resultado se publica en la sección de validación del cinturón, actualizado en cada corrida.",
+      "El ITCP se contrasta contra el EPU de Argentina (Economic Policy Uncertainty: minería de texto sobre diarios locales, la misma familia metodológica que el índice de Baker/Bloom/Davis): el índice reconstruido mes a mes se correlaciona contra el EPU, con correlación esperada negativa (más capital político, menos incertidumbre de política en la prensa). El resultado se publica en la sección de validación del cinturón.",
       "Participa además de la matriz de validación cruzada que compara los cuatro índices del informe contra sus cuatro anclas externas a la vez, publicada en la página del cinturón.",
     ],
     comunicacion: [
