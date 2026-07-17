@@ -170,7 +170,7 @@ const robChartData = rob?.hist && indice ? {
         <span class="cg-detalle-chip">Score <strong>{c.score}/10</strong></span>
         {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{indice.data.valor}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
-        <span class="cg-detalle-chip">{filas.length} indicadores</span>
+        <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>
       </div>
     </div>
   </header>

@@ -330,7 +330,7 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-06-26", cambio: "Nace el IdC en reemplazo de la tasa BADLAR dentro de la dimensión de financiamiento, como índice de ratios mensuales." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
-      { fecha: "2026-07-04", cambio: "Rediseño completo tras una auditoría interna: de ratios mes a mes (que medían la variación, no el estado, y contaban dos veces los depósitos) a niveles estandarizados contra la propia historia, publicados en desvíos estándar." },
+      { fecha: "2026-07-04", cambio: "Rediseño de la métrica: pasa de ratios mes a mes a niveles estandarizados contra la propia historia, publicados en desvíos estándar." },
     ],
   },
 
@@ -951,7 +951,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
       { fecha: "2026-07-11", cambio: "Umbrales de puntaje recalibrados contra la serie mensual real del indicador (32 meses): los anteriores describían la tasa de aprobación de un congreso teórico y dejaban el puntaje en el mínimo casi todos los meses, sin discriminar. Se documenta además que, por construcción de la ventana única de 12 meses, el techo alcanzable del porcentaje es más bajo que una tasa de aprobación de manual." },
       { fecha: "2026-07-15", cambio: "Se reemplazó la ventana compartida entre envío y sanción por una cohorte madura (proyectos con 12-24 meses de margen) — elimina el sesgo hacia abajo que la ventana compartida introducía. Los umbrales de puntaje se recalibraron contra series históricas de otras gestiones en vez de contra el rango de esta." },
-      { fecha: "2026-07-15", cambio: "Corrección de fuentes tras auditoría registro por registro: la aprobación pasó a verificarse contra el registro oficial de leyes sancionadas (el dataset de movimientos usado antes solo registra la vida del expediente en Diputados, y las sanciones definitivas del Senado quedaban invisibles — tres leyes de la cohorte vigente no se estaban contando), y las comunicaciones administrativas del Ejecutivo dejaron de contar como proyectos enviados." },
+      { fecha: "2026-07-15", cambio: "Corrección de fuentes: la aprobación pasa a verificarse contra el registro oficial de leyes sancionadas (que cubre las sanciones definitivas del Senado, antes invisibles), y las comunicaciones administrativas del Ejecutivo dejan de contar como proyectos enviados." },
       { fecha: "2026-07-15", cambio: "Se incorporaron los proyectos enviados por la Jefatura de Gabinete — la vía constitucional del Presupuesto anual, que hasta ahora quedaba fuera del conteo en ambas direcciones (ni el Presupuesto 2025 sin aprobar contaba como fracaso, ni el 2026 aprobado contaría como éxito al madurar su camada)." },
     ],
   },
@@ -1580,7 +1580,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial como carga manual de etapas implementadas." },
       { fecha: "2026-07-02", cambio: "Compuesto del documento institucional renormalizado a lo medible, con el registro CNV automático." },
       { fecha: "2026-07-03", cambio: "La litigiosidad se separa como indicador propio de la dimensión. Después, la cobertura se automatizó vía menciones del Boletín Oficial con calibración anclada." },
-      { fecha: "2026-07-15", cambio: "La cobertura pasa a contar las menciones del Fondo de Asistencia Laboral (Ley 27.802) desde marzo de 2026: la consulta anterior era indistinguible del régimen homónimo de la construcción y su serie crecía por ruido de fondo. La serie histórica se reconstruye en cero hasta la creación del régimen." },
+      { fecha: "2026-07-15", cambio: "La cobertura pasa a contar las menciones del Fondo de Asistencia Laboral (Ley 27.802) desde marzo de 2026, distinguiéndolo del régimen homónimo de la construcción. La serie histórica arranca en cero con la creación del régimen." },
     ],
   },
 
@@ -1757,7 +1757,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API oficial con credencial de acceso; la línea de base 2023 (ejercicio cerrado) se calculó una vez y quedó fijada.",
     },
     transformaciones: [
-      "TDPS = 100 × devengado en «ayudas sociales a personas» / total de transferencias de los programas; el resto del inciso es plata que llega vía terceros (las «unidades de gestión» eliminadas por decreto en 2024).",
+      "TDPS = 100 × devengado en «ayudas sociales a personas» / total de transferencias de los programas; el resto del inciso son fondos que llegan vía terceros (las «unidades de gestión» eliminadas por decreto en 2024).",
       "Línea de base 2023 (Potenciar Trabajo): 98,3% directo.",
     ],
     anclas: {
@@ -2259,7 +2259,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Componente del índice: la canasta mensual rebaseada de forma invertida (más búsquedas de urgencia = peor) contra el promedio del 4º trimestre de 2023.",
-      "El cociente entre valores de una misma consulta cancela la renormalización de escala de la fuente — verificado con actualizaciones repetidas idénticas.",
+      "El cociente entre valores de una misma consulta cancela la renormalización de escala de la fuente.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de confianza y seguridad (10% interno · 1,5% del ITVC): peso chico acorde a un constructo blando.",

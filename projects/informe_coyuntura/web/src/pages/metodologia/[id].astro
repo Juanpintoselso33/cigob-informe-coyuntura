@@ -93,7 +93,7 @@ const sinRenormalizacion = pesoNominalEsperado !== null && pesoEfectivo !== null
 // serie completa (sin la ventana de presentación) para la cobertura real
 const serie = (seriesRaw as Record<string, { fecha: string }[]>)[f.id] ?? [];
 const cobertura = serie.length
-  ? `${mesLeg(serie[0].fecha)} → ${mesLeg(serie[serie.length - 1].fecha)} (${serie.length} puntos mensuales)`
+  ? `${mesLeg(serie[0].fecha)} → ${mesLeg(serie[serie.length - 1].fecha)} (${serie.length} ${serie.length === 1 ? "punto mensual" : "puntos mensuales"})`
   : null;
 
 // ejemplo resuelto de la interpolación con el dato vigente

@@ -97,7 +97,7 @@ const totalFichas = Object.keys(FICHAS).length;
           <div class="cg-section-head">
             <p class="cg-eyebrow">Cinturón</p>
             <h2 class="cg-h2">{c.nombre}</h2>
-            <p class="cg-h2-sub">{c.sub}. {filas.length} indicadores publicados.</p>
+            <p class="cg-h2-sub">{c.sub}. {filas.length} {filas.length === 1 ? "indicador publicado" : "indicadores publicados"}.</p>
           </div>
           <div class="cg-dicc-list">
             {filas.map(({ key, ind }) => {
