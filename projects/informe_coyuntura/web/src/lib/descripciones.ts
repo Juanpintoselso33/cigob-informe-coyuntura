@@ -318,7 +318,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
   libertad_opcion_salud: {
-    que: "Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el DNU 70/23 al eliminar la triangulación obligatoria por una obra social.",
+    que: "Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como Agente del Seguro de Salud — el canal que creó el DNU 70/2023 al eliminar la triangulación obligatoria por una obra social.",
     aporta: "Mide la adopción real de la libre elección con los padrones oficiales de la SSS (RNAS y RNEMP): antes de la reforma este canal no existía; a marzo de 2026 lo usan 2,66 millones de personas en 59 prepagas inscriptas.",
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Avance de reforma",
   },

@@ -1372,7 +1372,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Es un conteo de menciones, no una auditoría del contenido derogado.",
       "La calibración «100 normas = plan completo» es una decisión propia declarada.",
-      "El megadecreto 70/23 no está indexado como texto completo en la fuente y no aparece en el conteo: el indicador captura lo posterior.",
+      "El megadecreto 70/2023 no está indexado como texto completo en la fuente y no aparece en el conteo: el indicador captura lo posterior.",
     ],
     faltantes: "Con el buscador caído, cae al valor de respaldo documentado (lectura del documento institucional); agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
     revisiones: "El acumulado se reevalúa completo en cada actualización y puede moverse si la fuente reindexa.",
@@ -1530,7 +1530,7 @@ export const FICHAS: Record<string, Ficha> = {
       unidadCorta: "% de avance",
     },
     limitaciones: [
-      "El megadecreto 70/23 no aparece en la búsqueda de texto: solo captura los actos posteriores.",
+      "El megadecreto 70/2023 no aparece en la búsqueda de texto: solo captura los actos posteriores.",
       "La calibración (18 = 40%, 45 = plan completo) es una decisión propia validada a mano y declarada.",
     ],
     faltantes: "Con el buscador caído, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
@@ -1836,7 +1836,7 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "Padrones oficiales: beneficiarios por Agente del Seguro de Salud (RNAS) y usuarios de entidades de medicina prepaga (RNEMP)",
       serie: "Planillas anuales oficiales de evolución de beneficiarios y usuarios (columnas mensuales)",
       url: "https://www.argentina.gob.ar/sssalud/estadisticas",
-      acceso: "Automático: lectura de las planillas oficiales; las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el DNU 70/23).",
+      acceso: "Automático: lectura de las planillas oficiales; las prepagas inscriptas como Agentes del Seguro se identifican por su rango de código de registro (canal creado por el DNU 70/2023).",
     },
     transformaciones: [
       "Porcentaje = beneficiarios con aportes derivados directo a prepagas inscriptas / usuarios totales de prepagas.",

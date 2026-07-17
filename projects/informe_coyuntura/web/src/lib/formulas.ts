@@ -123,7 +123,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   libertad_opcion_salud: {
     latex: String.raw`\frac{\text{usuarios con aporte directo a su prepaga}}{\text{usuarios de prepagas}}\times 100`,
-    leyenda: "Padrones oficiales de la SSS: cuántos usuarios ya derivan sus aportes directo (canal creado por el DNU 70/23), sin triangular por una obra social.",
+    leyenda: "Padrones oficiales de la SSS: cuántos usuarios ya derivan sus aportes directo (canal creado por el DNU 70/2023), sin triangular por una obra social.",
   },
 
   // ── Vida cotidiana (ITVC-B100: índices 100 = promedio 4T-2023) ──────────
