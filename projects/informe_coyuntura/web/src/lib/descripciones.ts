@@ -363,9 +363,9 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITVC
   ingresos: "Si el sueldo alcanza: la brecha entre el salario y la canasta de pobreza, y cuánta gente trabaja en la informalidad.",
   precios: "Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).",
-  vulnerabilidad: "Cuánto están endeudadas las familias: crédito real por hogar, corregido por la mora — deuda que crece con mora estable es acceso; con mora subiendo es fragilidad.",
+  vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo, en dos señales: el nivel de crédito real (acceso al financiamiento) y la mora de esa cartera (si esa deuda se puede pagar). Deuda que crece con mora estable es acceso; con mora en aumento es fragilidad.",
   empleo: "Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
-  confianza: "El ánimo y la seguridad de la vida diaria: confianza del consumidor (UTDT), inseguridad, consumo de carne y patentamiento de motos como termómetros de bolsillo.",
+  confianza: "El ánimo y la seguridad de la vida diaria: confianza del consumidor (UTDT), inseguridad, sentimiento digital, y consumo de carne y patentamiento de motos como termómetros de bolsillo.",
   // ITCP
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
   poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.",

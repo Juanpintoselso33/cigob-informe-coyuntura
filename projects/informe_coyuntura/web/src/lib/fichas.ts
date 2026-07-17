@@ -2440,6 +2440,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Versión inicial del cinturón: fórmulas de tensión ancladas por indicador, promediadas." },
       { fecha: "2026-07-03", cambio: "Nace el ITVC base 100: reemplaza el promedio de fórmulas ancladas por la evolución acumulada contra el 4º trimestre de 2023, con robustez Monte Carlo y flag de dimensión crítica publicados. Los patentamientos pasan al acumulado móvil de 12 meses por estacionalidad." },
       { fecha: "2026-07-04", cambio: "Barrido componente por componente: la victimización pasa de la serie anual de denuncias a la encuesta mensual; se elimina el doble conteo salario/comida (dos componentes correlacionaban 0,985); se aplica el techo de recorte 140 sin piso; el sentimiento digital pasa a puntuar tras un banco de pruebas empírico; y la matriz de validación cruzada queda como tercer pilar de robustez." },
+      { fecha: "2026-07-15", cambio: "La mora de las familias se separa como indicador propio de la dimensión de vulnerabilidad financiera (antes iba multiplicada dentro del endeudamiento): la deuda mide el acceso al crédito y la mora, si esa deuda se puede pagar. El índice pasa a catorce indicadores puntuables y la dimensión reparte 50/50." },
     ],
   },
 
@@ -2510,6 +2511,9 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-09", cambio: "Recalibración contra historia real: los umbrales de la cohesión de bloque (ambas cámaras), el alineamiento de senadores y las protestas se recalibran con series mensuales reconstruidas desde las fuentes (24 a 31 meses). Se publica la validación externa del índice contra el EPU de Argentina." },
       { fecha: "2026-07-09", cambio: "Se incorporan dos indicadores: las derrotas legislativas del Ejecutivo (vetos insistidos y decretos rechazados, acumulados en 12 meses) en la dimensión de poder legislativo, y la rotación del gabinete en la de cohesión interna." },
       { fecha: "2026-07-10", cambio: "Revisión editorial del cinturón: el índice se acota a la capacidad de gestionar y avanzar la agenda de gobierno. La rotación del gabinete y las protestas en la Ciudad de Buenos Aires salen del puntaje y del tablero (su recolección continúa como seguimiento interno), y la cohesión del bloque en Diputados y en el Senado se fusiona en un único indicador bicameral (Diputados 65%, Senado 35%), con umbrales recalibrados contra la serie compuesta." },
+      { fecha: "2026-07-11", cambio: "En la dimensión de conflicto social, la conflictividad nacional (eventos de protesta y disturbios de todo el país, serie mensual completa) reemplaza a la medición anterior basada en informes de conflictividad, que no permitía una serie comparable." },
+      { fecha: "2026-07-15", cambio: "Las comisiones sin sanción salen del puntaje: su fuente es ciega a las sanciones del Senado y se solapa con la eficacia legislativa corregida. Poder legislativo queda con cuatro indicadores." },
+      { fecha: "2026-07-16", cambio: "Se incorpora el bloqueo legislativo sostenido a la dimensión de poder legislativo: la contracara de las derrotas (qué porción de las normas propias desafiadas en el recinto sigue en pie). El índice pasa a once indicadores puntuables y los pesos internos de la dimensión se redistribuyen." },
     ],
   },
 };
