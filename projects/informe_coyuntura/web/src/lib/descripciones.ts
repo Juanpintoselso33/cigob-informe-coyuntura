@@ -297,6 +297,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Es el crédito REALIZADO — complementa al IdC, que mide la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.",
     frecuencia: "Diaria (BCRA)", tipo: "Variación real",
   },
+  costo_financiamiento_tesoro: {
+    que: "Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos: la tasa efectiva anual de las licitaciones del mes, descontada la inflación esperada.",
+    aporta: "Es el precio del financiamiento del Estado. Reservas, capacidad prestable y crédito miden cuánta financiación hay; esta mide cuánto cuesta conseguirla. Los dos extremos son malos: una tasa real muy negativa indica que el Tesoro coloca licuando al ahorrista, y una muy alta que la deuda crece más rápido que la economía.",
+    frecuencia: "Mensual (licitaciones)", tipo: "Tasa real",
+  },
   gasto_funcionamiento: {
     que: "Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023.",
     aporta: "La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal.",

@@ -346,11 +346,33 @@ def fetch_credito_privado_serie() -> list:
     return out
 
 
+def fetch_costo_financiamiento_tesoro_serie() -> list:
+    """Serie mensual de la tasa REAL que paga el Tesoro por colocar deuda en
+    pesos (ADR-0071): TIREA promedio ponderada de las colocaciones del mes,
+    deflactada por la inflación esperada a 12 meses del REM.
+
+    Arranca en dic-2023 (primera licitación de la gestión, la LEDE S18E4 a TEM
+    8,66%). Los meses sin colocaciones a tasa fija en pesos —enero y febrero de
+    2024, cuando todo lo emitido fue CER— quedan fuera de la serie: no se
+    inventa un dato que no existe."""
+    tirea = macro._tirea_mensual(anios=4)
+    rem = macro._rem_12m_por_mes(dias=1400)
+    out = []
+    for ym in sorted(tirea):
+        if ym < "2023-12" or ym not in rem:
+            continue
+        t = tirea[ym][0]
+        real = ((1.0 + t) / (1.0 + rem[ym] / 100.0) - 1.0) * 100.0
+        out.append([f"{ym}-01", round(real, 2)])
+    return out
+
+
 MACRO_DERIVADAS = [
     ("ipc_total", "% mensual", "INDEC (derivado del nivel del IPC)", fetch_ipc_mm_serie),
     ("emae_ia", "% i.a.", "INDEC/datos.gob.ar", fetch_emae_ia_serie),
     ("recaudacion", "% i.a. real", "INDEC (recaudación) + IPC (deflactor)", fetch_recaudacion_real_serie),
     ("credito_privado", "% i.a. real", "BCRA (préstamos privados) + IPC INDEC", fetch_credito_privado_serie),
+    ("costo_financiamiento_tesoro", "% real anual", "Sec. de Finanzas (colocaciones) + BCRA (REM)", fetch_costo_financiamiento_tesoro_serie),
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
     ("saldo_comercial_12m", "M USD (acum. 12 meses)", "INDEC — ICA (vía datos.gob.ar)", fetch_saldo_12m_serie),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),

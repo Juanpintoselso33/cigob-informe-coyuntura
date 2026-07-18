@@ -1,9 +1,9 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-17T04:00:14.866493",
-  "score": 4.3,
+  "generated_at": "2026-07-18T13:02:24.457400",
+  "score": 4.2,
   "itcm": {
-    "valor": 57.2,
+    "valor": 58.5,
     "banda": "moderadamente_apretado",
     "banda_legible": "Moderadamente apretado",
     "dimensiones": {
@@ -66,30 +66,37 @@
         "peso_efectivo": 0.24
       },
       "financiamiento": {
-        "nombre": "Capacidad de financiamiento",
+        "nombre": "Capacidad y costo del financiamiento",
         "peso": 0.16,
-        "puntaje": 45.2,
+        "puntaje": 53.6,
         "indicadores": {
           "reservas_bcra": {
-            "peso": 0.45,
+            "peso": 0.34,
             "puntaje_banda": 36.5,
             "puntaje_aplicado": 36.5,
             "valor": 4122.0,
-            "peso_efectivo": 0.072
+            "peso_efectivo": 0.0544
           },
           "idc": {
-            "peso": 0.4,
+            "peso": 0.3,
             "puntaje_banda": 52.0,
             "puntaje_aplicado": 52.0,
             "valor": -0.24,
-            "peso_efectivo": 0.064
+            "peso_efectivo": 0.048
+          },
+          "costo_financiamiento_tesoro": {
+            "peso": 0.25,
+            "puntaje_banda": 78.9,
+            "puntaje_aplicado": 78.9,
+            "valor": 8.07,
+            "peso_efectivo": 0.04
           },
           "credito_privado": {
-            "peso": 0.15,
+            "peso": 0.11,
             "puntaje_banda": 53.0,
             "puntaje_aplicado": 53.0,
             "valor": 8.0,
-            "peso_efectivo": 0.024
+            "peso_efectivo": 0.0176
           }
         },
         "peso_efectivo": 0.16
@@ -180,7 +187,7 @@
       "dimension": "financiamiento",
       "puntaje_itcm": 36.5,
       "puntaje_banda": 36.5,
-      "peso_efectivo": 0.072
+      "peso_efectivo": 0.0544
     },
     "idc": {
       "valor": -0.24,
@@ -205,13 +212,13 @@
       "dimension": "financiamiento",
       "puntaje_itcm": 52.0,
       "puntaje_banda": 52.0,
-      "peso_efectivo": 0.064
+      "peso_efectivo": 0.048
     },
     "badlar": {
-      "valor": 21.88,
+      "valor": 21.0,
       "unidad": "% anual",
       "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
-      "fecha_dato": "2026-07-15",
+      "fecha_dato": "2026-07-16",
       "desactualizado": false,
       "en_indice": false
     },
@@ -365,34 +372,50 @@
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "nominal_ia": 44.2,
-      "detalle_txt": "nominal 44,2% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-06) — al 2026-07-14 (provisorio, no puntúa): 6,5% real con deflactor de 2026-06",
+      "detalle_txt": "nominal 44,2% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-06) — al 2026-07-15 (provisorio, no puntúa): 5,4% real con deflactor de 2026-06",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 53.0,
       "puntaje_banda": 53.0,
-      "peso_efectivo": 0.024
+      "peso_efectivo": 0.0176
+    },
+    "costo_financiamiento_tesoro": {
+      "valor": 8.07,
+      "unidad": "% real anual (TIREA vs. inflación esperada REM)",
+      "fuente": "Sec. de Finanzas — colocaciones de deuda + BCRA (REM)",
+      "fecha_dato": "2026-06-01",
+      "tirea_nominal": 32.17,
+      "inflacion_esperada": 22.3,
+      "colocaciones": 1,
+      "detalle_txt": "2026-06: TIREA 32.2% en 1 colocación/es a tasa fija en pesos contra inflación esperada 22.3% → +8.1% real",
+      "desactualizado": false,
+      "en_indice": true,
+      "dimension": "financiamiento",
+      "puntaje_itcm": 78.9,
+      "puntaje_banda": 78.9,
+      "peso_efectivo": 0.04
     },
     "prestamos_privados": {
-      "valor": 3.72,
+      "valor": 2.78,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — préstamos al sector privado (API monetarias)",
-      "fecha_dato": "2026-07-14",
+      "fecha_dato": "2026-07-15",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 3.8,
+      "valor": 3.37,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — base monetaria (API monetarias)",
-      "fecha_dato": "2026-07-14",
+      "fecha_dato": "2026-07-15",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 1.74,
+      "valor": 1.36,
       "unidad": "% mensual",
       "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
-      "fecha_dato": "2026-07-16",
+      "fecha_dato": "2026-07-17",
       "desactualizado": false,
       "en_indice": false
     }

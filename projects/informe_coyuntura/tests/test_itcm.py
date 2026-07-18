@@ -44,6 +44,7 @@ EJEMPLO = {
     "reservas_bcra": 1881,         # netas: 25,0 (banda 30)
     "idc": -0.31,                  # z compuesto (σ): 49,7 (banda 60)
     "credito_privado": 26.0,       # % i.a. real: 80,0 (banda 85)
+    "costo_financiamiento_tesoro": 8.07,  # tasa real: 78,9 (U invertida, tramo 6-12)
     "emae_ia": 5.48,               # más allá de la última ancla → 100 plano
     "tcrm": 84.3,                  # ITCRM: 45,7 (banda 35)
     "iai": -4.2,                   # inversión física: 42,5 (banda 35)
@@ -56,20 +57,20 @@ def test_itcm_reproduce_ejemplo():
     dims = r["dimensiones"]
     assert dims["estabilidad_monetaria"]["puntaje"] == 64.8
     assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 68.4
-    assert dims["financiamiento"]["puntaje"] == 43.1
+    assert dims["financiamiento"]["puntaje"] == 51.9
     assert dims["actividad"]["puntaje"] == 100.0
     assert dims["competitividad_externa"]["puntaje"] == 45.7
     assert dims["inversion"]["puntaje"] == 54.7
     ind = dims["financiamiento"]["indicadores"]["credito_privado"]
-    assert ind["puntaje_banda"] == 80.0 and ind["peso"] == 0.15
+    assert ind["puntaje_banda"] == 80.0 and ind["peso"] == 0.11
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
-    assert r["valor"] == 62.8
+    assert r["valor"] == 64.2
     assert r["banda"] == "moderadamente_aflojado"
     presion = dims["estabilidad_monetaria"]["indicadores"]["presion_dolarizacion"]
     assert presion["puntaje_aplicado"] == 64.8
     assert presion["peso"] == 0.10
     assert presion["peso_efectivo"] == 0.026
-    assert itcm.tension_de_itcm(r["valor"]) == 3.7
+    assert itcm.tension_de_itcm(r["valor"]) == 3.6
     assert r["ajustes_aplicados"] == []
 
 
@@ -226,7 +227,7 @@ def test_ajuste_manual_aplicado():
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
     # fiscal = 0,6×57,3 (recaudación interpolada) + 0,4×60 (override) = 58,4
     assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 58.4
-    assert r["valor"] == 60.4
+    assert r["valor"] == 61.8
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
@@ -252,7 +253,7 @@ def test_renormalizacion_indicador_faltante():
     r = itcm.calcular_itcm(valores)
     # (63,7×0.40 + 51,7×0.25 + 64,8×0.10) / 0.75 = 59,85 → 59,8
     assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 59.8
-    assert abs(r["valor"] - 61.5) <= 0.05
+    assert abs(r["valor"] - 62.9) <= 0.05
 
 
 def test_sin_presion_dolarizacion_renormaliza_los_componentes_disponibles():
@@ -268,8 +269,8 @@ def test_renormalizacion_dimension_faltante():
     valores = dict(EJEMPLO, emae_ia=None)
     r = itcm.calcular_itcm(valores)
     assert "actividad" not in r["dimensiones"]
-    # estab=64.8 fiscal=68.4 financ=43.1 compet=45.7 inversión=54.7, sin actividad (0.11)
-    esperado = (0.26 * 64.8 + 0.24 * 68.4 + 0.16 * 43.1 + 0.11 * 45.7 + 0.12 * 54.7) / 0.89
+    # estab=64.8 fiscal=68.4 financ=51.9 compet=45.7 inversión=54.7, sin actividad (0.11)
+    esperado = (0.26 * 64.8 + 0.24 * 68.4 + 0.16 * 51.9 + 0.11 * 45.7 + 0.12 * 54.7) / 0.89
     assert abs(r["valor"] - esperado) <= 0.1
 
 

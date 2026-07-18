@@ -728,6 +728,16 @@ def _validacion_itcm(bloque):
                           "cruzada).")
         conclusion = " ".join(partes)
 
+    # El recuento de componentes se DERIVA de la composición vigente del índice:
+    # escrito a mano quedó viejo cuando entró costo_financiamiento_tesoro
+    # (decía "once de sus trece" con catorce indicadores en el ITCM).
+    _sin_serie = ("iai", "icip")          # no ingresan a la reconstrucción histórica
+    _total = sum(len(d.get("indicadores", {}))
+                 for d in bloque.get("dimensiones", {}).values())
+    _usados = _total - len(_sin_serie)
+    _componentes = (f"{_usados} de sus {_total} componentes"
+                    if _total > len(_sin_serie) else "la mayoría de sus componentes")
+
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
         "pares": [[m, serie[m], riesgo[m]] for m in comunes],
@@ -735,9 +745,9 @@ def _validacion_itcm(bloque):
         "titulo": "¿El ITCM se mueve con el precio del riesgo argentino?",
         "sub": ("El contraste natural del cinturón macro es el mercado: si la tensión "
                 "macroeconómica afloja, la Argentina debería pagar menos por su deuda. El ITCM "
-                "se reconstruye mes a mes desde las series de once de sus trece componentes "
-                "(IAI e ICIP no ingresan en esta reconstrucción histórica, ni tampoco los ajustes "
-                "del analista: el nivel puede diferir del publicado — lo que valida es su "
+                f"se reconstruye mes a mes desde las series de {_componentes} "
+                "(el IAI y el ICIP no ingresan en esta reconstrucción histórica, ni tampoco los "
+                "ajustes del analista: el nivel puede diferir del publicado — lo que valida es su "
                 "evolución) y se compara con el riesgo "
                 "país (EMBI), que no integra el índice. La correlación esperada es negativa: "
                 "más ITCM (menos tensión), menos riesgo país."),

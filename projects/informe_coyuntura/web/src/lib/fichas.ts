@@ -769,6 +769,50 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  costo_financiamiento_tesoro: {
+    tipo: "indicador",
+    id: "costo_financiamiento_tesoro",
+    cinturon: "macro",
+    rezago: "Se actualiza con cada licitación (dos por mes); el mes cierra cuando la Secretaría de Finanzas publica su planilla de colocaciones.",
+    fuente: {
+      organismo: "Secretaría de Finanzas (colocaciones de deuda) + BCRA (expectativas de inflación)",
+      operacion: "Colocaciones de letras y bonos del Tesoro en el mercado local, y expectativa de inflación a doce meses",
+      serie: "Planillas anuales de colocaciones (hojas de letras y bonos) + relevamiento de expectativas de mercado",
+      url: "https://www.argentina.gob.ar/economia/finanzas/deudapublica/colocacionesdedeuda",
+      acceso: "Automático: planilla oficial de cada año y serie de expectativas del BCRA.",
+    },
+    transformaciones: [
+      "De cada colocación se obtiene la tasa efectiva anual implícita a partir del precio de corte, la fecha de vencimiento y la forma de pago del instrumento.",
+      "Las colocaciones del mes se promedian ponderando por el monto adjudicado: una licitación chica no mueve el promedio como una grande.",
+      "Solo entran los instrumentos a tasa fija en pesos. Los ajustados por inflación, los atados al dólar y los de tasa variable quedan afuera porque su rendimiento no es comparable con el de una tasa fija.",
+      "Al promedio se le descuenta la inflación esperada a doce meses, para leer la tasa en términos reales.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ −5", puntaje: 20 },
+        { banda: "−5 – 0", puntaje: 55 },
+        { banda: "0 – 6", puntaje: 100 },
+        { banda: "6 – 12", puntaje: 75 },
+        { banda: "12 – 20", puntaje: 45 },
+        { banda: "> 20", puntaje: 15 },
+      ],
+      puntos: [[-5, 20], [-2.5, 55], [3, 100], [9, 75], [16, 45], [20, 15]],
+      unidadCorta: "% real",
+    },
+    limitaciones: [
+      "Es el único indicador del tablero cuya escala premia el punto medio y castiga los dos extremos: una tasa real muy negativa significa que el Estado se financia licuando al ahorrista, y una muy alta que la deuda crece más rápido que la economía.",
+      "Se expresa en tasa efectiva anual, no en tasa nominal anual. A tasas altas la diferencia es enorme: la letra colocada en diciembre de 2023 equivalía a 105% nominal y a 169% efectiva.",
+      "Los meses sin colocaciones a tasa fija en pesos no tienen dato: enero y febrero de 2024 quedan fuera de la serie porque todo lo emitido en esos meses se ajustaba por inflación.",
+      "El promedio mezcla plazos: un mes con colocaciones largas y otro con cortas no son estrictamente comparables cuando la curva de tasas tiene pendiente.",
+      "El deflactor es una expectativa relevada por encuesta, la misma que usa el indicador de expectativas de inflación.",
+    ],
+    faltantes: "Sin colocaciones a tasa fija en el mes se conserva el último valor disponible, señalado como desactualizado; reservas, capacidad prestable y crédito renormalizan dentro de la dimensión.",
+    revisiones: "Las planillas del año en curso se actualizan a lo largo del año; la serie se regenera completa desde diciembre de 2023 en cada actualización.",
+    cambios: [
+      { fecha: "2026-07-18", cambio: "Nace y entra al índice con el 25% de la dimensión de financiamiento, que pasa a llamarse capacidad y costo del financiamiento; los otros tres componentes se recortan en proporción. Cubre el precio del financiamiento del Estado, que la dimensión no medía." },
+    ],
+  },
+
   // ═══════════════════════════════════════════════════════════════════════
   // Política — puntúa en el ITCP (paramétrica de 5 dimensiones ponderadas,
   // jul-2026); la tensión del cinturón es (100 − ITCP) / 10

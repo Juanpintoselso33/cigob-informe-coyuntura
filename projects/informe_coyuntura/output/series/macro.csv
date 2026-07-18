@@ -1877,6 +1877,35 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,credito_privado,-29.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2024-01-01,credito_privado,-26.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2023-12-01,credito_privado,-19.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2026-06-01,costo_financiamiento_tesoro,8.07,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-05-01,costo_financiamiento_tesoro,3.26,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-04-01,costo_financiamiento_tesoro,8.93,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-03-01,costo_financiamiento_tesoro,8.78,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-02-01,costo_financiamiento_tesoro,14.03,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-01-01,costo_financiamiento_tesoro,23.97,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-12-01,costo_financiamiento_tesoro,2.67,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-11-01,costo_financiamiento_tesoro,12.95,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-10-01,costo_financiamiento_tesoro,9.74,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-09-01,costo_financiamiento_tesoro,23.17,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-08-01,costo_financiamiento_tesoro,33.51,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-07-01,costo_financiamiento_tesoro,24.9,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-06-01,costo_financiamiento_tesoro,16.46,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-05-01,costo_financiamiento_tesoro,11.35,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-04-01,costo_financiamiento_tesoro,13.0,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-03-01,costo_financiamiento_tesoro,10.71,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-02-01,costo_financiamiento_tesoro,10.49,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2025-01-01,costo_financiamiento_tesoro,6.26,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-12-01,costo_financiamiento_tesoro,10.76,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-11-01,costo_financiamiento_tesoro,7.57,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-10-01,costo_financiamiento_tesoro,15.79,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-09-01,costo_financiamiento_tesoro,9.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-08-01,costo_financiamiento_tesoro,11.67,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-07-01,costo_financiamiento_tesoro,0.94,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-06-01,costo_financiamiento_tesoro,1.05,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-05-01,costo_financiamiento_tesoro,5.35,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-04-01,costo_financiamiento_tesoro,-10.83,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2024-03-01,costo_financiamiento_tesoro,-14.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2026-07-14,base_monetaria,45312132.0,M ARS,BCRA
 2026-07-13,base_monetaria,46817025.0,M ARS,BCRA
 2026-07-08,base_monetaria,45827619.0,M ARS,BCRA

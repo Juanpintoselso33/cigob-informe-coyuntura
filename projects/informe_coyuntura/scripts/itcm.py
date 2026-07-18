@@ -136,6 +136,17 @@ BANDAS_ITCM = {
         # 75-85 apreciación marcada · ≤75 atraso severo.
         (110.0, INF, 100), (95.0, 110.0, 80), (85.0, 95.0, 60), (75.0, 85.0, 35), (-INF, 75.0, 10),
     ],
+    "costo_financiamiento_tesoro": [    # % real anual (TIREA vs. inflación esperada REM)
+        # ADR-0071. ÚNICA banda de U INVERTIDA del ITCM: los dos extremos son
+        # malos. Tasa real muy negativa = represión financiera (el Tesoro coloca
+        # licuando al ahorrista: dic-2023 dio −12,2%, y la prensa de esos días lo
+        # llamaba "licuación"); tasa real muy alta = bola de nieve, la deuda
+        # crece más rápido que la economía (ago-2025 dio +33,5%, con rollover del
+        # 61% y tasas que "duplicaban la inflación"). El óptimo es positivo y
+        # moderado, cerca del crecimiento potencial.
+        (20.0, INF, 15), (12.0, 20.0, 45), (6.0, 12.0, 75),
+        (0.0, 6.0, 100), (-5.0, 0.0, 55), (-INF, -5.0, 20),
+    ],
     "iai": [                            # IAI — Índice Anticipador de Inversión (% i.a. ponderado)
         # Inversión física (ISAC + bienes de capital importados). Más = expansión.
         # El umbral ±2% del doc no sobrevive al dato (las series i.a. de inversión
@@ -184,12 +195,20 @@ DIMENSIONES_ITCM = {
         "indicadores": {"recaudacion": 0.6, "saldo_comercial_12m": 0.4},
     },
     "financiamiento": {
-        "nombre": "Capacidad de financiamiento",
+        "nombre": "Capacidad y costo del financiamiento",
         "peso": 0.16,
         # ADR-0022: crédito privado REAL i.a. (realizado) complementa al IdC
         # (capacidad) y a las reservas — la única señal no redundante de los
         # viejos indicadores de contexto.
-        "indicadores": {"reservas_bcra": 0.45, "idc": 0.40, "credito_privado": 0.15},
+        # ADR-0071: entra el COSTO del financiamiento soberano (25%). Los otros
+        # tres se recortan proporcionalmente (45/40/15 × 0,75) para no mezclar
+        # esta decisión con el rebalanceo IdC-vs-crédito, que sigue pendiente.
+        "indicadores": {
+            "reservas_bcra": 0.34,
+            "idc": 0.30,
+            "costo_financiamiento_tesoro": 0.25,
+            "credito_privado": 0.11,
+        },
     },
     "actividad": {
         "nombre": "Actividad económica",

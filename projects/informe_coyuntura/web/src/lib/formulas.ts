@@ -47,6 +47,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\left(\frac{1+\text{crecim. nominal del cr\'edito}}{1+\text{inflaci\'on}}-1\right)\times 100`,
     leyenda: "Préstamos al sector privado (BCRA), variación interanual descontada la inflación: el crédito que efectivamente llegó, no el que infló la nominalidad.",
   },
+  costo_financiamiento_tesoro: {
+    latex: String.raw`\left(\frac{1+\text{tasa efectiva de colocaci\'on}}{1+\text{inflaci\'on esperada}}-1\right)\times 100`,
+    leyenda: "Tasa efectiva anual promedio de las licitaciones del mes, ponderada por el monto colocado, descontada la inflación esperada a doce meses.",
+  },
   emae_ia: {
     latex: String.raw`\left(\frac{\text{actividad}_{\text{hoy}}}{\text{actividad}_{\text{hace 12 m}}}-1\right)\times 100`,
     leyenda: "EMAE (INDEC): el PIB mensual, comparado contra el mismo mes del año pasado.",

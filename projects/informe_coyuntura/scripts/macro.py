@@ -33,6 +33,10 @@ BCRA_VARIABLES_BASE = "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias"
 # 116.3_TCRMA, discontinuada en dic-2024. La planilla trae prom. mensuales.
 BCRA_ITCRM_URL      = "https://www.bcra.gob.ar/Pdfs/PublicacionesEstadisticas/ITCRMSerie.xlsx"
 ITCRM_SHEET_MENSUAL = "ITCRM y bilaterales prom. mens."
+# Secretaría de Finanzas — planillas anuales con TODAS las colocaciones de deuda
+# (hojas Letras/Bonos). Los nombres de archivo cambian en cada actualización, así
+# que se resuelven leyendo los enlaces de esta página (ver _colocaciones_urls).
+FINANZAS_COLOCACIONES_URL = "https://www.argentina.gob.ar/economia/finanzas/deudapublica/colocacionesdedeuda"
 
 # INDEC — series IDs verificados en datos.gob.ar
 INDEC_IPC_ID         = "148.3_INIVELNAL_DICI_M_26"     # IPC total nacional mensual
@@ -81,6 +85,7 @@ INDICADORES_ESPERADOS = [
     "emae_ia", "saldo_comercial_12m", "recaudacion", "tcrm",
     "rem_ipc_12m", "idm", "presion_dolarizacion", "iai", "icip",
     "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
+    "costo_financiamiento_tesoro",
 ]
 
 
@@ -700,6 +705,190 @@ def fetch_recaudacion() -> dict | None:
         return None
 
 
+# ── Costo real del financiamiento del Tesoro (ADR-0071) ───────────────────────
+# Qué tasa REAL paga el Tesoro para colocar deuda en pesos en el mercado local.
+# Es el precio del financiamiento soberano, que la dimensión no medía: reservas,
+# IdC y crédito miden cantidad y condiciones de fondeo, no cuánto cuesta
+# refinanciarse. El riesgo país queda FUERA del índice a propósito (es el
+# validador externo del ITCM y su fuente no es oficial); esta serie mide la
+# curva en pesos, que es donde el Tesoro efectivamente se financia hoy.
+
+_COLOC_MEMO: dict = {}            # memo por corrida: las planillas pesan ~0,4 MB
+
+_RE_TEM_CAP = re.compile(r"capitalizable\s*([\d,\.]+)\s*%")
+_RE_FECHA_ARCH = re.compile(r"(\d{1,2})[-_](\d{1,2})[-_](\d{2,4})")
+
+
+def _norm_txt(s) -> str:
+    """Minúsculas sin acentos ni espacios repetidos (los encabezados de la
+    planilla cambian de un año a otro: 'Cupón' vs 'Cupón/Ajuste de capital')."""
+    import unicodedata
+    s = unicodedata.normalize("NFKD", str(s))
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    return re.sub(r"\s+", " ", s).strip().lower()
+
+
+def _colocaciones_urls() -> dict:
+    """{año: url} de las planillas de colocaciones de Finanzas. El nombre de
+    archivo NO es estable (cambia en cada actualización), así que se resuelve
+    leyendo los enlaces de la página. Si un año tiene varias versiones, gana la
+    de fecha más reciente en el nombre."""
+    r = requests.get(FINANZAS_COLOCACIONES_URL, timeout=40,
+                     headers={"User-Agent": "Mozilla/5.0"})
+    r.raise_for_status()
+    mejores: dict = {}
+    for href in re.findall(r'href="([^"]+\.xlsx?)"', r.text):
+        nombre = href.rsplit("/", 1)[-1]
+        m = _RE_FECHA_ARCH.search(nombre)
+        if not m:
+            continue
+        d, mth, y = (int(x) for x in m.groups())
+        if y < 100:
+            y += 2000
+        if not (2000 <= y <= 2100 and 1 <= mth <= 12 and 1 <= d <= 31):
+            continue
+        clave = (y, mth, d)
+        if y not in mejores or clave > mejores[y][0]:
+            url = href if href.startswith("http") else f"https://www.argentina.gob.ar{href}"
+            mejores[y] = (clave, url)
+    return {y: u for y, (_, u) in mejores.items()}
+
+
+def _tirea_de_fila(cup: str, emi, ven, col, precio: float) -> float | None:
+    """TIREA (tasa efectiva ANUAL) implícita de una colocación a tasa fija en
+    pesos. Dos familias: capitalizable (LECAP/BONCAP, paga 1000·(1+TEM)^n al
+    vencimiento) y a descuento / cupón cero (LEDE, paga 1000). El resto —CER,
+    dólar linked, TAMAR variable— queda afuera: su 'tasa' no es comparable."""
+    c = _norm_txt(cup)
+    m = _RE_TEM_CAP.search(c)
+    if m:
+        tem = float(m.group(1).replace(",", ".")) / 100.0
+        n = (ven.year - emi.year) * 12 + (ven.month - emi.month)
+        payoff = 1000.0 * (1.0 + tem) ** n
+    elif "a descuento" in c or "cupon cero" in c:
+        payoff = 1000.0
+    else:
+        return None
+    dias = (ven - col).days
+    if dias <= 0 or precio <= 0:
+        return None
+    tirea = (payoff / precio) ** (365.0 / dias) - 1.0
+    return tirea if 0.0 < tirea < 8.0 else None      # descarta filas corruptas
+
+
+def _tirea_mensual(anios: int = 2) -> dict:
+    """{YYYY-MM: (tirea_ponderada, monto_adjudicado, n_colocaciones)} a partir
+    de las planillas de Finanzas. Se pondera por valor efectivo adjudicado: una
+    licitación chica no debe mover el promedio como una grande."""
+    if _COLOC_MEMO:
+        return _COLOC_MEMO
+    import io, openpyxl
+    from collections import defaultdict
+    urls = _colocaciones_urls()
+    if not urls:
+        raise ValueError("no se encontraron planillas de colocaciones")
+    acc: dict = defaultdict(lambda: [0.0, 0.0, 0])
+    for y in sorted(urls)[-anios:]:
+        r = requests.get(urls[y], timeout=90, headers={"User-Agent": "Mozilla/5.0"})
+        r.raise_for_status()
+        wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
+        for hoja in ("Letras", "Bonos"):
+            if hoja not in wb.sheetnames:
+                continue
+            filas = list(wb[hoja].iter_rows(values_only=True))
+            hdr, cols = None, {}
+            for i, fila in enumerate(filas[:12]):
+                celdas = {j: _norm_txt(c) for j, c in enumerate(fila) if c is not None}
+                if not any("nombre del instrumento" in v for v in celdas.values()):
+                    continue
+                for j, v in celdas.items():
+                    if "fecha de emis" in v:            cols["emi"] = j
+                    elif v.startswith("vencimiento"):   cols["ven"] = j
+                    elif v.startswith("cup"):           cols["cup"] = j
+                    elif "moneda de origen" in v:       cols["mon"] = j
+                    elif "fecha colocacion" in v:       cols["col"] = j
+                    elif "valor efectivo" in v:         cols["ve"]  = j
+                    elif "precio de emision" in v:      cols["pre"] = j
+                hdr = i
+                break
+            if hdr is None or not {"emi", "ven", "cup", "mon", "col", "ve", "pre"} <= cols.keys():
+                continue
+            for fila in filas[hdr + 1:]:
+                if not fila or fila[0] is None:
+                    continue
+                get = lambda k: fila[cols[k]] if cols[k] < len(fila) else None
+                if get("mon") != "ARP" or not isinstance(get("cup"), str):
+                    continue
+                emi, ven, col = get("emi"), get("ven"), get("col")
+                if not all(isinstance(x, datetime) for x in (emi, ven, col)):
+                    continue
+                try:
+                    precio, ve = float(get("pre")), float(get("ve"))
+                except (TypeError, ValueError):
+                    continue
+                if ve <= 0:
+                    continue
+                tirea = _tirea_de_fila(get("cup"), emi, ven, col, precio)
+                if tirea is None:
+                    continue
+                a = acc[col.strftime("%Y-%m")]
+                a[0] += tirea * ve
+                a[1] += ve
+                a[2] += 1
+    _COLOC_MEMO.update({ym: (s / w, w, n) for ym, (s, w, n) in acc.items() if w > 0})
+    return _COLOC_MEMO
+
+
+def _rem_12m_por_mes(dias: int = 1200) -> dict:
+    """{YYYY-MM: inflación esperada 12m %} del REM (BCRA)."""
+    out = {}
+    for punto in _bcra_detalle(BCRA_REM_IPC_ID, dias=dias):
+        f = punto.get("fecha")
+        v = punto.get("valor")
+        if f and v is not None:
+            out[str(f)[:7]] = float(v)
+    return out
+
+
+def fetch_costo_financiamiento_tesoro() -> dict | None:
+    """Tasa REAL ex-ante que paga el Tesoro por colocar deuda en pesos: la TIREA
+    promedio ponderada de las colocaciones del mes, deflactada por la inflación
+    esperada a 12 meses del REM. Se publica en TIREA (tasa efectiva anual), no
+    en TNA: a tasas altas divergen mucho (dic-2023 fue 105% TNA = 169% TIREA).
+
+    Es una variable de U INVERTIDA: la tasa real muy negativa es represión
+    financiera (el Tesoro coloca licuando al ahorrista, dic-2023) y la muy alta
+    es bola de nieve (la deuda crece más rápido que la economía, ago-2025). El
+    óptimo está en positivo moderado."""
+    try:
+        tirea = _tirea_mensual()
+        rem = _rem_12m_por_mes()
+        comunes = sorted(ym for ym in tirea if ym in rem)
+        if not comunes:
+            raise ValueError("sin meses con colocaciones y REM simultáneos")
+        ym = comunes[-1]
+        t, monto, n = tirea[ym]
+        esperada = rem[ym]
+        real = ((1.0 + t) / (1.0 + esperada / 100.0) - 1.0) * 100.0
+        return {
+            "valor": round(real, 2),
+            "unidad": "% real anual (TIREA vs. inflación esperada REM)",
+            "fuente": "Sec. de Finanzas — colocaciones de deuda + BCRA (REM)",
+            "fecha_dato": f"{ym}-01",
+            "tirea_nominal": round(t * 100.0, 2),
+            "inflacion_esperada": round(esperada, 1),
+            "colocaciones": n,
+            "detalle_txt": (
+                f"{ym}: TIREA {t * 100:.1f}% en {n} colocación/es a tasa fija en pesos "
+                f"contra inflación esperada {esperada:.1f}% → {real:+.1f}% real"
+            ),
+            "desactualizado": False,
+        }
+    except Exception as e:
+        _warn("costo_financiamiento_tesoro", e)
+        return None
+
+
 _ITCRM_FILAS_MEMO: list = []      # memo por corrida: ITCRM y bilaterales salen
                                   # de la MISMA planilla (una sola descarga)
 
@@ -1248,6 +1437,7 @@ def main() -> None:
         ("iai",                fetch_iai),
         ("icip",               fetch_icip),
         ("credito_privado",    fetch_credito_privado),
+        ("costo_financiamiento_tesoro", fetch_costo_financiamiento_tesoro),
         ("prestamos_privados", fetch_prestamos_privados),
         ("base_monetaria",     fetch_base_monetaria),
         ("tc_mayorista",       fetch_tc_mayorista),

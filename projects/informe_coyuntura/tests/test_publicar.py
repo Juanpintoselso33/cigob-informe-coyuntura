@@ -232,7 +232,7 @@ def test_macro_itcm_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    assert len(en_indice) == 13, f"esperaba 13 indicadores en el índice, hay {len(en_indice)}"
+    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
     # ADR-0022: los 4 monetarios nominales quedan OCULTOS del snapshot (siguen
     # en pipeline como insumos de IdC/IDM/TCRM); su señal entra vía credito_privado.
     assert contexto == {}, f"macro no debería publicar contexto: {set(contexto)}"
@@ -263,8 +263,14 @@ def test_macro_itcm_reconcilia():
 
 def test_validacion_itcm_declara_cobertura_vigente():
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
-    sub = informe["cinturones"]["macro"]["itcm"]["validacion"]["sub"]
-    assert "once de sus trece componentes" in sub
+    itcm_bloque = informe["cinturones"]["macro"]["itcm"]
+    sub = itcm_bloque["validacion"]["sub"]
+    # El recuento se DERIVA de la composición vigente: escrito a mano quedaba
+    # viejo con cada indicador nuevo (pasó al entrar costo_financiamiento_tesoro,
+    # cuando el texto seguía diciendo "once de sus trece").
+    total = sum(len(d["indicadores"]) for d in itcm_bloque["dimensiones"].values())
+    usados = total - 2                      # IAI e ICIP no entran a la reconstrucción
+    assert f"{usados} de sus {total} componentes" in sub, sub
     assert "sin el capítulo inversión" not in sub
 
 
