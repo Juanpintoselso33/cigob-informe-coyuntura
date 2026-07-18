@@ -810,22 +810,22 @@ def _redundancia_itcm(bloque):
             f"independientes ni una sola señal repetida. Un {red['share_altos']:.0%} de los pares "
             f"se mueve muy junto (por encima de {coma(red['umbral'])}) y un "
             f"{red['share_bajos']:.0%} es prácticamente independiente. "
-            + (f"De los {n_alt} pares que superan ese umbral, {red.get('pares_no_explicados', 0)} "
-               f"acoplan indicadores de dimensiones distintas sin una razón de diseño que lo "
-               f"explique: son los que ameritan atención. Los demás, o comparten dimensión —donde "
-               f"su peso conjunto está acotado— o están acoplados a propósito, como la inflación "
-               f"medida y la esperada, que el índice cruza justamente para leer la misma magnitud "
-               f"en dos momentos. " if n_alt else
+            f"Antes de leer esos números conviene una salvedad: el período disponible son treinta "
+            f"y un meses de un único programa de estabilización, en el que la desinflación, la "
+            f"recuperación de la actividad y la consolidación fiscal avanzaron a la vez. Que los "
+            f"indicadores se muevan juntos en esa ventana refleja sobre todo el proceso "
+            f"macroeconómico, no necesariamente un defecto de construcción del índice. "
+            + (f"Hecha esa salvedad: de los {n_alt} pares que superan el umbral, "
+               f"{red.get('pares_no_explicados', 0)} acoplan indicadores de dimensiones distintas "
+               f"sin una razón de diseño que lo explique, y son los que conviene seguir. Los "
+               f"demás, o comparten dimensión —donde su peso conjunto está acotado— o están "
+               f"acoplados a propósito, como la inflación medida y la esperada, que el índice "
+               f"cruza justamente para leer la misma magnitud en dos momentos. " if n_alt else
                "Ningún par supera el umbral: no hay dos componentes que se muevan "
                "prácticamente al unísono. ")
-            + (f"La lectura correcta exige una salvedad: el período disponible son treinta y un "
-            f"meses de un único programa de estabilización, en el que la desinflación, la "
-            f"recuperación de la actividad y la consolidación fiscal avanzaron a la vez. Que "
-            f"los indicadores se muevan juntos en esa ventana refleja sobre todo el proceso "
-            f"macroeconómico, no necesariamente un defecto de construcción del índice. "
-            f"La consecuencia práctica para el lector sí es firme: cuando varias dimensiones "
-            f"coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones "
-            f"independientes del mismo resultado.")),
+            + ("La consecuencia práctica para el lector sí es firme: cuando varias dimensiones "
+               "coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones "
+               "independientes del mismo resultado.")),
     }
 
 
