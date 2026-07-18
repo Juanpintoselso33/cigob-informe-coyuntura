@@ -425,3 +425,27 @@ def test_endeudamiento_y_mora_separados():
     assert mora["valor"] == serie_mora[-1]["valor"]   # titular = último punto
     assert mora.get("en_indice"), "la mora debe puntuar en el ITVC"
     assert mora.get("indice_itvc") is not None
+
+
+def test_la_card_de_consistencia_se_publica_aunque_no_haya_pares_altos(monkeypatch, tmp_path):
+    """Bug de la auditoría de código: _redundancia_itcm hacía return si
+    pares_altos estaba vacío, así que la sección desaparecía justo cuando tenía
+    la mejor noticia para dar — 'ningún par se mueve al unísono' es un
+    resultado positivo, no la ausencia de resultado."""
+    import json as _json
+    import publicar as _pub
+
+    archivo = tmp_path / "validacion_externa.json"
+    archivo.write_text(_json.dumps({"redundancia_itcm": {
+        "umbral": 0.7, "n_indicadores": 14, "n_pares": 91,
+        "r_abs_medio": 0.21, "share_altos": 0.0, "share_bajos": 0.62,
+        "matriz": {}, "pares_altos": [], "pares_cruzados": 0,
+    }}), encoding="utf-8")
+    monkeypatch.setattr(_pub, "VALIDACION_EXTERNA_PATH", archivo)
+
+    bloque = {}
+    _pub._redundancia_itcm(bloque)
+
+    assert "redundancia" in bloque, "la card no se publicó sin pares altos"
+    assert bloque["redundancia"]["top"] == []
+    assert "Ningún par supera el umbral" in bloque["redundancia"]["conclusion"]

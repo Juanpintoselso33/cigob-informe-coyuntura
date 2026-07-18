@@ -497,11 +497,29 @@ def fetch_epu_argentina_mensual() -> dict:
 
 
 def _pearson(a: dict, b: dict) -> tuple:
+    """(r, n) sobre los meses comunes. r = None cuando la correlación no es
+    calculable, que ocurre en dos casos:
+
+      * menos de 6 meses en común (muestra insuficiente);
+      * alguna de las dos series es CONSTANTE — la correlación es indefinida
+        (varianza cero en el denominador) y `statistics.correlation` lanza
+        StatisticsError.
+
+    El segundo caso es alcanzable y no teórico: un indicador puede quedar
+    saturado en un extremo de su banda durante toda la ventana de solape, y
+    varios pasan más del 60% de los meses en un extremo. Sin esta guarda, un
+    solo par no calculable abortaba la corrida ENTERA de validación y dejaba
+    sin actualizar el snapshot publicado. Un par que no se puede calcular debe
+    reportarse como tal, no tumbar a los otros noventa.
+    """
     comunes = sorted(set(a) & set(b))
     if len(comunes) < 6:
         return None, len(comunes)
-    return round(statistics.correlation([a[m] for m in comunes],
-                                        [b[m] for m in comunes]), 3), len(comunes)
+    xs = [a[m] for m in comunes]
+    ys = [b[m] for m in comunes]
+    if len(set(xs)) < 2 or len(set(ys)) < 2:
+        return None, len(comunes)
+    return round(statistics.correlation(xs, ys), 3), len(comunes)
 
 
 def _difs(s: dict) -> dict:

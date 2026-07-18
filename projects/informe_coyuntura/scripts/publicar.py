@@ -775,7 +775,11 @@ def _redundancia_itcm(bloque):
     número se lee como defecto de construcción cuando en buena medida es el
     período: treinta y un meses de un único programa de estabilización."""
     red = _cargar_validacion().get("redundancia_itcm") or {}
-    if not red.get("pares_altos") or red.get("r_abs_medio") is None:
+    # Sin pares altos el bloque se publica IGUAL: "ningún par se mueve muy
+    # junto" es un resultado bueno y relevante, no la ausencia de resultado.
+    # La versión original hacía return y la sección desaparecía justo cuando
+    # tenía la mejor noticia para dar.
+    if red.get("r_abs_medio") is None:
         return
     coma = lambda x: str(x).replace(".", ",")
     n_alt = len(red["pares_altos"])
@@ -804,16 +808,18 @@ def _redundancia_itcm(bloque):
             f"independientes ni una sola señal repetida. Un {red['share_altos']:.0%} de los pares "
             f"se mueve muy junto (por encima de {coma(red['umbral'])}) y un "
             f"{red['share_bajos']:.0%} es prácticamente independiente. "
-            f"De los {n_alt} pares más acoplados, {red['pares_cruzados']} pertenecen a "
-            f"dimensiones distintas del índice. "
-            f"La lectura correcta exige una salvedad: el período disponible son treinta y un "
+            + (f"De los {n_alt} pares más acoplados, {red['pares_cruzados']} pertenecen a "
+               f"dimensiones distintas del índice. " if n_alt else
+               "Ningún par supera el umbral: no hay dos componentes que se muevan "
+               "prácticamente al unísono. ")
+            + (f"La lectura correcta exige una salvedad: el período disponible son treinta y un "
             f"meses de un único programa de estabilización, en el que la desinflación, la "
             f"recuperación de la actividad y la consolidación fiscal avanzaron a la vez. Que "
             f"los indicadores se muevan juntos en esa ventana refleja sobre todo el proceso "
             f"macroeconómico, no necesariamente un defecto de construcción del índice. "
             f"La consecuencia práctica para el lector sí es firme: cuando varias dimensiones "
             f"coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones "
-            f"independientes del mismo resultado."),
+            f"independientes del mismo resultado.")),
     }
 
 

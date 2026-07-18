@@ -158,3 +158,43 @@ def test_la_matriz_puntua_con_la_misma_escala_que_el_indice():
         != parametrica.puntaje_interpolado(v, itcm.BANDAS_ITCM[ind])
         for v in (25.0, 50.0, 75.0))
     assert difieren, f"{ind}: anclas y bandas dan lo mismo, el test no protege nada"
+
+
+def test_una_serie_constante_no_tumba_la_validacion():
+    """Bug encontrado por la auditoría de código: statistics.correlation lanza
+    StatisticsError si alguna serie es constante, y _pearson la llamaba sin
+    guarda. Un solo par no calculable abortaba la corrida ENTERA y dejaba sin
+    actualizar el snapshot publicado.
+
+    Es alcanzable, no teórico: _pearson exige apenas 6 meses en común, y varios
+    indicadores pasan más del 60% de los meses saturados en un extremo de su
+    banda."""
+    constante = {f"2025-{m:02d}": 10.0 for m in range(1, 9)}
+    variable = {f"2025-{m:02d}": float(m) for m in range(1, 9)}
+
+    r, n = validacion_externa._pearson(constante, variable)
+    assert r is None and n == 8, (r, n)
+
+    r, n = validacion_externa._pearson(constante, constante)
+    assert r is None and n == 8, (r, n)
+
+    # el caso normal sigue devolviendo un número
+    r, n = validacion_externa._pearson(variable, variable)
+    assert r == 1.0 and n == 8, (r, n)
+
+
+def test_la_matriz_sobrevive_a_un_componente_saturado(monkeypatch):
+    """El par no calculable se omite y los otros se calculan igual."""
+    real = validacion_externa._valores_itcm_por_mes
+
+    def con_saturado():
+        vals = real()
+        for v in vals.values():
+            if "tcrm" in v and v["tcrm"] is not None:
+                v["tcrm"] = 50.0        # nivel fijo → puntaje constante
+        return vals
+
+    monkeypatch.setattr(validacion_externa, "_valores_itcm_por_mes", con_saturado)
+    m = validacion_externa.matriz_redundancia_itcm()
+    assert m["n_pares"] > 0, "la matriz quedó vacía"
+    assert "tcrm" not in m["matriz"], "un componente constante no debería tener pares"
