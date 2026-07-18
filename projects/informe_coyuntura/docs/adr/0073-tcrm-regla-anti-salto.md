@@ -1,144 +1,142 @@
-# ADR-0073 — El TCRM alto por salto cambiario deja de puntuar como competitividad
+# ADR-0073 — Regla anti-salto para el TCRM: **RECHAZADA**
 
 | | |
 |---|---|
-| **Estado** | Aceptado |
+| **Estado** | **Rechazado** (implementado y revertido el 18-jul-2026) |
 | **Ámbito** | Cinturón macro · ITCM · dimensión Competitividad externa · `tcrm` |
 | **Fecha** | 2026-07-18 |
-| **Precedentes directos** | ADR-0056 (ajuste automático del saldo por contracción, del que esta regla copia la forma) · ADR-0021 (puntaje interpolado) |
+| **Precedentes** | ADR-0056 (regla del saldo comercial, cuya forma se copió) · ADR-0021 (puntaje interpolado) |
 | **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 5 |
+| **Revertido por** | Revisión adversarial externa del mismo día |
 
-## Contexto
+> **Este ADR documenta una decisión que se tomó y se deshizo.** Se conserva
+> porque la observación que lo motivó es intuitiva y va a volver a plantearse;
+> acá están los números que la contestan. La evidencia también está fijada en
+> `tests/test_itcm_tcrm_sin_regla_salto.py`, ejecutable, para que no dependa de
+> que alguien lea este documento.
 
-Las bandas del TCRM miran **solo el nivel**: por encima de 110 puntúan 100, el
-máximo de competitividad externa. La auditoría señaló que eso premia igual dos
-situaciones opuestas —una depreciación real gradual y sostenida, y un salto
-cambiario cuyo traspaso a precios todavía no ocurrió— cuando la segunda no es
-competitividad ganada sino una posición transitoria.
+## Lo que pedía la auditoría
 
-El caso no es hipotético, está en la propia serie:
+Que la banda superior del TCRM fuera condicional a la velocidad de la
+depreciación. El argumento: las bandas miran sólo el nivel —por encima de 110
+puntúan 100— así que **"una crisis cambiaria mejoraría el puntaje de
+competitividad mientras destruye el de estabilidad"**. El caso concreto es real:
 
-| mes | ITCRM | var. m/m | puntaje que daba la banda |
+| mes | ITCRM | var. m/m | puntaje de competitividad |
 |---|---|---|---|
-| nov-2023 | 83,2 | — | 45,5 |
+| nov-2023 | 83,2 | — | 43,0 |
 | **dic-2023** | **124,9** | **+50,1%** | **100,0** |
 | ene-2024 | 132,8 | +6,3% | 100,0 |
-| feb-2024 | 115,8 | −12,8% | 100,0 |
-| mar-2024 | 105,9 | −8,5% | 89,0 |
 | abr-2024 | 97,0 | −8,4% | 71,2 |
 
-La devaluación de diciembre de 2023 le dio al índice **tres meses de puntaje
-perfecto en competitividad externa**. Cuatro meses después el TCRM estaba en
-97,0 y la ganancia se había evaporado entera: el salto se lo comió la
-inflación, exactamente como cabía esperar. El índice registró una mejora
-máxima donde había un desequilibrio sin resolver.
+## Lo que se implementó
 
-## Decisión
+Un descuento interpolado hacia un piso de 55 puntos cuando el nivel alto se
+alcanzaba por un salto, medido como el máximo de las variaciones mensuales de
+una ventana móvil. La ventana se fijó primero en 3 meses y se extendió a 8 sobre
+evidencia de traspaso a precios en Argentina (Frank 2017-2023: 6-8 meses;
+Bertholet 2026: se estabiliza cerca del octavo). El umbral de 8% m/m se
+contrastó contra el criterio estándar de los sistemas de alerta temprana de
+crisis cambiarias (Kaminsky-Lizondo-Reinhart media+3σ, Edison media+2,5σ) y
+resultó indiferente: sobre esta serie los cuatro umbrales detectan el mismo
+único mes.
 
-Entra una regla automática que **descuenta el puntaje de banda cuando el nivel
-alto se alcanzó por un salto**, no por depreciación gradual.
+## Por qué se rechaza
 
-### Medida de abruptez
+### 1. La premisa no se sostiene: el índice ya resolvía bien el episodio
 
-El **máximo de las variaciones mensuales de los últimos ocho meses**
-(`salto_ventana`), no la variación del mes corriente. La ventana es
-indispensable: en ene-2024 el TCRM seguía en 132,8 *por el salto de diciembre*,
-pero la variación de ese mes era apenas +6,3% — mirando el mes suelto, el índice
-habría vuelto a puntuar 100 al mes siguiente del salto.
+Es el argumento decisivo. Se reconstruyó el ITCM mes a mes **sin la regla**:
 
-**Los ocho meses salen de la evidencia de traspaso a precios, no de una elección
-de forma.** La primera versión de esta regla usaba tres meses, elegidos sin
-respaldo. La literatura de *exchange rate pass-through* argentino es específica:
+| mes | ITCM | competitividad | estabilidad monetaria |
+|---|---|---|---|
+| **dic-2023** | **26,2** | 100,0 | **21,0** |
+| ene-2024 | 26,2 | 100,0 | 20,7 |
+| abr-2024 | 33,6 | 71,2 | 31,5 |
+| jun-2026 | 52,4 | 47,5 | 66,9 |
 
-- **Frank (2017-2023)** estima que el traspaso de una devaluación a los precios
-  al consumidor dura **entre seis y ocho meses**.
-- **Bertholet (2026)** encuentra que el efecto crece de forma casi monótona
-  durante todo el primer año y **recién se estabiliza alrededor del octavo mes**,
-  con un traslado acumulado por encima del 70% a los doce.
+**Diciembre de 2023 es el mes más tenso de toda la serie reconstruida.** El
+índice nunca leyó una mejora: la competitividad efectivamente saltó a 100, pero
+la estabilidad monetaria se derrumbó a 21,0 y pesa más que aquélla (26% contra
+11%), de modo que la agregación devolvió el peor registro del período.
 
-Con tres meses el descuento se soltaba en mar-2024, cuando el índice volvía a
-leer **89 puntos de competitividad** mientras la inflación todavía se estaba
-comiendo el salto de diciembre. La ventana ahora dura lo que dura el traspaso.
+Que dos dimensiones se muevan en sentidos opuestos ante una devaluación **no es
+un defecto: es para lo que sirve tener dimensiones**. Una devaluación mejora
+genuinamente la competitividad externa y destruye genuinamente la estabilidad
+monetaria. La observación de la auditoría describe correctamente el
+comportamiento de una dimensión aislada, y saca de ahí una conclusión sobre el
+índice completo que el índice completo no comete.
 
-### Umbrales
+### 2. Doble conteo con la dimensión monetaria
 
-Calibrados contra los dos casos reales del período, que acotan el umbral por
-arriba y por abajo:
+El indicador es el ITCRM del BCRA: un tipo de cambio **real**, ya deflactado por
+precios relativos. Cuando la inflación se come el salto, el ITCRM cae por
+construcción —de 124,9 a 97,0 en cuatro meses, como muestra la tabla de arriba—
+y el puntaje cae con él. El índice **sí registra** la evaporación; el reclamo
+legítimo era sobre el rezago con que la registra, no sobre que no lo hiciera.
 
-- **jul-2025: +6,6% m/m**, tras ampliarse la banda cambiaria. El TCRM pasó de
-  86,1 a 99,1 en tres meses y **se sostuvo**. Es una corrección genuina y la
-  regla no debe tocarla.
-- **dic-2023: +50,1% m/m**, que se revirtió por completo en cuatro meses.
+Y el mecanismo por el que el ITCRM cae es la inflación, que ya puntúa con el 26%
+del índice en estabilidad monetaria. La regla hacía que la **misma** inflación
+descontara además la dimensión de competitividad. Medido:
 
-El umbral se fija en **8% m/m** —arriba del caso benigno más fuerte, muy por
-debajo del salto— y la saturación en **25%**.
-
-**El umbral se verificó contra el criterio estándar de la literatura y resultó
-indiferente.** Los sistemas de alerta temprana de crisis cambiarias fijan sus
-umbrales como desvíos de la propia distribución del país: Kaminsky, Lizondo y
-Reinhart (FMI, 1998) usan media + 3σ, Edison (2002) media + 2,5σ. Aplicados a
-nuestra serie de variaciones mensuales del TCRM:
-
-| criterio | umbral | meses que detecta |
+| mes | ITCM sin la regla | con la regla |
 |---|---|---|
-| media + 2σ | +20,6% | dic-2023 |
-| media + 2,5σ (Edison) | +25,7% | dic-2023 |
-| media + 3σ (KLR) | +30,7% | dic-2023 |
-| **el adoptado** | **+8,0%** | **dic-2023** |
+| dic-2023 | 26,2 | **20,6** |
+| ene-2024 | 26,2 | **20,6** |
+| abr-2024 | 33,6 | 31,5 |
 
-Todos seleccionan **exactamente el mismo mes**: sobre esta muestra la elección
-del umbral no cambia nada. Se conserva el 8% por ser el más conservador de los
-cuatro, con la constancia de que no es un número elegido a dedo.
+La regla le restaba 5,6 puntos al mes que ya era el más tenso del registro.
 
-### Forma del descuento
+### 3. Nunca interpolaba: era un piso duro disfrazado
 
-Interpolada, sin acantilado, calcando ADR-0056:
+Con `frac = (salto − 8) / (25 − 8)` acotado a [0,1], el salto de dic-2023
+(+50,1%) daba `frac = 2,48 → 1,0`, y el puntaje resultante era **55,0 exacto en
+los siete meses**. La franja de interpolación útil (8%-25%) está vacía en la
+muestra y es rara por construcción: los saltos cambiarios argentinos o son
+chicos (<8%) o son grandes (>25%). El ADR se presentaba como "interpolada, sin
+acantilado, calcando ADR-0056" y en los hechos replicaba la patología que
+ADR-0056 había venido a curar.
 
-```
-frac    = (salto_ventana − 8) / (25 − 8),  acotado a [0, 1]
-puntaje = puntaje_banda − frac × (puntaje_banda − 55)
-```
+### 4. Fallaba en el caso que debía premiar
 
-El **piso de 55** queda apenas por debajo de los 60 puntos de la banda
-"moderadamente depreciado": un salto cambiario no se lee como buena
-competitividad ni como catástrofe, se lee como una posición todavía sin
-resolver. La regla no opina si la banda ya puntúa en el piso o por debajo (un
-salto sobre un TCRM apreciado no tiene nada que descontar).
+Se había celebrado como virtud que la regla "se apaga sola" al octavo mes. Eso
+era una propiedad del episodio dic-2023, no del mecanismo: se apagó porque el
+salto se licuó y el nivel cayó por debajo del piso. En el caso opuesto —un salto
+grande seguido de estabilización exitosa, con el TCRM sosteniéndose en 120— la
+regla castigaría a 55 durante ocho meses y **saltaría discontinuamente a 100 en
+el mes 9**: un escalón de 45 puntos sin que ocurra nada en la economía, y
+justamente en el escenario que el índice debería premiar. El máximo sobre una
+ventana no distingue "salto que se licuó" de "salto que se sostuvo", que es la
+única distinción que importaría.
 
-## Consecuencias
+### 5. Introducía dependencia de trayectoria en un índice de estado
 
-Replicada sobre los 31 meses de serie disponible, la regla se activa en
-**siete**: de dic-2023 a jun-2024, el salto y su traspaso. **Ningún otro mes se
-mueve** — incluida toda la recuperación de 2025 y el valor vigente (85,0 en
-jun-2026, puntaje 47,5, muy por debajo del piso de la regla).
+El ITCM declara medir el estado de tensión de un mes. Descontar el puntaje de
+hoy por lo que pasó hasta ocho meses atrás incorpora un pronóstico ("esto va a
+revertir") a una medida de estado, sin que el resto del sistema siga esa
+convención.
 
-La regla **se apaga sola**, que es una propiedad deseable y no un ajuste: al
-octavo mes (jul-2024) el TCRM ya había caído a 87,9, cuya banda es 54,7 —por
-debajo del piso de 55— así que el descuento deja de aplicar sin necesidad de
-soltarlo. Lo suelta el propio nivel, exactamente cuando el traspaso terminó de
-licuar el salto.
+## Qué queda en pie
 
-El ITCM publicado **no cambia hoy**: la regla es retroactivamente correctiva y
-prospectivamente protectora, no un ajuste al valor corriente.
+- **El TCRM se puntúa por su nivel y nada más.** Sin regla automática.
+- **La observación 5 de la auditoría pasa a "verificada, no requiere cambio"**,
+  con la evidencia de la sección 1 como respuesta.
+- **La alternativa de fondo sigue abierta**, y es la única línea que este
+  trabajo deja viva: KLR no puntúa el *nivel* del tipo de cambio real contra
+  bandas fijas sino su **desvío respecto de la propia tendencia**, uno de los
+  indicadores con mejor desempeño de su sistema de alerta temprana. Eso
+  atendería el problema real —el rezago con que el nivel refleja el traspaso—
+  con un solo mecanismo, sin constantes ad-hoc, sin doble conteo y sin
+  dependencia de trayectoria explícita. Es un rediseño del indicador, no un
+  ajuste, y queda como decisión editorial pendiente.
+- **La regla del saldo comercial (ADR-0056) no se toca.** Ahí el ajuste corrige
+  una ambigüedad genuina del indicador —un superávit puede venir de exportar más
+  o de importar menos, y el saldo no lo distingue—, que es un caso distinto del
+  de un indicador que ya se corrige solo.
 
-## Limitaciones declaradas
+## Lección de proceso
 
-- La regla corre sobre la **ficha viva**, no sobre la serie reconstruida que
-  usa `validacion_externa.py` — igual que el ajuste automático del saldo
-  (ADR-0056), que tampoco entra en la reconstrucción. Las correlaciones
-  externas del ITCM siguen calculándose sobre puntajes de banda sin ajustar.
-- El umbral está calibrado contra un único salto observado. Una devaluación
-  gradual pero sostenida —varios meses seguidos de +7%— pasaría por debajo del
-  radar sin activar la regla, aunque acumule un salto comparable.
-- El traspaso a precios en Argentina es **no lineal**: Bertholet (2026) lo
-  estima en torno al 80% acumulado durante expansiones contra 40% en
-  recesiones. La ventana de ocho meses es fija y no distingue el momento del
-  ciclo; en una recesión el salto tarda más en licuarse y la regla lo suelta
-  antes de tiempo.
-- **Alternativa de fondo no adoptada**: KLR no puntúa el *nivel* del tipo de
-  cambio real contra bandas fijas, sino su **desvío respecto de la propia
-  tendencia**, que es uno de los indicadores con mejor desempeño de su sistema.
-  Eso resolvería el problema de raíz en lugar de corregirlo con una regla, pero
-  implica rediseñar el indicador y queda como decisión editorial pendiente.
-- La regla penaliza el salto pero **no premia** su ausencia: un TCRM alto
-  alcanzado gradualmente sigue puntuando lo que dice la banda, sin bonus.
+La observación de la auditoría era intuitiva y sonaba correcta, y se aceptó su
+premisa sin verificarla. **La verificación costaba una consulta**: reconstruir el
+ITCM de dic-2023 y mirar si el índice había leído una mejora. No la había leído.
+Antes de construir una regla que corrige el comportamiento de un índice,
+corresponde medir primero ese comportamiento.

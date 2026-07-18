@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-18T14:37:41.032710",
+  "generated_at": "2026-07-18T15:04:32.880062",
   "score": 3.8,
   "itcm": {
     "valor": 61.8,
@@ -302,8 +302,6 @@
       "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
-      "var_mm": 0.8,
-      "salto_ventana": 0.8,
       "en_indice": true,
       "dimension": "competitividad_externa",
       "puntaje_itcm": 47.5,

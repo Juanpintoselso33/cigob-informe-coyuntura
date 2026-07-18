@@ -1045,22 +1045,13 @@ def fetch_itcrm_bilateral(pais: str) -> list:
 
 def fetch_tcrm() -> dict | None:
     try:  # BCRA ITCRM oficial (vigente, base 17-dic-2015=100)
-        serie = fetch_itcrm_serie()
-        ym, val = serie[-1]
-        # Variaciones mensuales recientes: alimentan la regla anti-salto
-        # (ADR-0073), que distingue un TCRM alto por depreciación gradual de
-        # uno alto por un salto cambiario con el traspaso a precios pendiente.
-        var_mm = [(serie[i][1] / serie[i - 1][1] - 1) * 100
-                  for i in range(max(1, len(serie) - itcm.TCRM_SALTO_VENTANA), len(serie))
-                  if serie[i - 1][1]]
+        ym, val = fetch_itcrm_serie()[-1]
         return {
             "valor": val,
             "unidad": "Índice (base dic-2015=100)",
             "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
             "fecha_dato": ym,
             "desactualizado": False,
-            "var_mm": round(var_mm[-1], 1) if var_mm else None,
-            "salto_ventana": round(max(var_mm), 1) if var_mm else None,
         }
     except Exception as e:
         _warn("tcrm (ITCRM BCRA, cae a INDEC discontinuada)", e)
@@ -1465,10 +1456,11 @@ AJUSTES_PATH = PROJECT_DIR / "data" / "macro" / "ajustes_itcm.json"
 
 def calcular_itcm_cinturon(indicadores: dict) -> dict | None:
     """ITCM 0-100 (ver scripts/itcm.py) sobre los indicadores del índice.
-    Ajustes: primero las reglas automáticas —saldo comercial por composición
-    expo/impo (ADR-0056) y TCRM por salto cambiario (ADR-0073)—, luego los
-    overrides manuales del analista vigentes para el mes corriente
-    (data/macro/ajustes_itcm.json), que pisan lo automático.
+    Ajustes: primero la regla automática del saldo comercial (composición
+    expo/impo, ADR-0056), luego los overrides manuales del analista vigentes
+    para el mes corriente (data/macro/ajustes_itcm.json), que pisan lo
+    automático. No hay regla automática para el TCRM: se probó una y se
+    descartó por doble conteo con la dimensión monetaria (ADR-0073, rechazado).
 
     El REM se puntúa por su EQUIVALENTE MENSUAL (raíz 12), no por el nivel
     anual, para bandearlo con la misma escala mensual del IPC."""
@@ -1476,9 +1468,6 @@ def calcular_itcm_cinturon(indicadores: dict) -> dict | None:
     auto_saldo = itcm.ajuste_automatico_saldo(indicadores.get("saldo_comercial_12m", {}))
     if auto_saldo:
         ajustes["saldo_comercial_12m"] = auto_saldo
-    auto_tcrm = itcm.ajuste_automatico_tcrm(indicadores.get("tcrm", {}))
-    if auto_tcrm:
-        ajustes["tcrm"] = auto_tcrm
     periodo = datetime.now().strftime("%Y-%m")
     ajustes.update(itcm.cargar_ajustes(AJUSTES_PATH, periodo))
     valores = {nombre: indicadores.get(nombre, {}).get("valor")

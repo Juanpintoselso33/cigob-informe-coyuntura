@@ -14,9 +14,10 @@ decisiones implementadas remiten a su ADR, que tiene el detalle técnico.
 | | |
 |---|---|
 | Observaciones de la auditoría | 13 indicadores + 3 brechas transversales |
-| **Implementadas** | 9 |
+| **Implementadas** | 8 |
 | **Pendientes de decisión** | 3 |
-| **Rechazadas con fundamento** | 1 |
+| **Rechazadas con fundamento** | 2 |
+| **Revertidas tras auditoría externa** | 1 |
 | Indicadores del ITCM | 13 → **16** |
 | ITCM | 57,2 → **61,8** (cambió de banda) · tensión 4,3 → **3,8** |
 | Validación externa (ITCM ↔ riesgo país) | r −0,726 → **−0,764** (mejoró) |
@@ -155,22 +156,38 @@ inicio (política arranca en ene-2024).
 
 ## Resueltas en la segunda tanda (18-jul-2026)
 
-### 5. TCRM — regla anti-salto · **ADR-0073**
+### 5. TCRM — regla anti-salto · **ADR-0073, RECHAZADA y revertida**
 
-La banda `>110 → 100` premiaba igual una depreciación gradual y un salto
-cambiario con el traspaso a precios pendiente. Caso real: dic-2023 saltó +50,1%
-m/m y puntuó 100/100 durante tres meses; cuatro meses después la ganancia se
-había evaporado entera.
+Se implementó y se revirtió el mismo día, tras auditoría externa. **La premisa
+de la observación no se sostiene.**
 
-Se implementó un descuento interpolado hacia un piso de 55, con la forma de la
-regla del saldo comercial (ADR-0056). **Revisado el mismo día contra
-literatura**: la primera versión usaba una ventana de 3 meses elegida sin
-respaldo, y se extendió a **8 meses** sobre evidencia de pass-through argentino
-(Frank 2017-2023: dura 6-8 meses; Bertholet 2026: se estabiliza al octavo). El
-umbral de 8% se contrastó contra el criterio estándar de alerta temprana de
-crisis cambiarias (KLR media+3σ, Edison media+2,5σ) y **todos detectan el mismo
-único mes**, así que se conservó. Dispara en 7 de 31 meses y **se apaga sola**
-cuando el nivel cae por debajo del piso. No mueve el ITCM de hoy.
+La auditoría decía que sin una regla "una crisis cambiaria mejoraría el puntaje
+de competitividad mientras destruye el de estabilidad". Se verificó
+reconstruyendo el ITCM de dic-2023 —el mes del salto— **sin ninguna regla**:
+marcó **26,2, el valor más tenso de toda la serie**. La competitividad
+efectivamente saltó a 100, pero la estabilidad monetaria se derrumbó a 21,0 y
+pesa más (26% contra 11%). El índice nunca leyó una mejora; la agregación ya
+resolvía bien el episodio.
+
+Peor: la regla castigaba **dos veces la misma devaluación** (el ITCRM ya es un
+tipo de cambio *real*, así que la inflación lo hace caer solo, y esa misma
+inflación ya puntúa en la dimensión monetaria), le restaba 5,6 puntos al mes que
+ya era el peor del registro, nunca interpolaba de hecho —daba 55,0 exacto en los
+siete meses— y fallaba en el caso que debía premiar: un salto que se *sostiene*
+habría dado un escalón discontinuo de 45 puntos en el mes 9.
+
+La evidencia quedó fijada en `tests/test_itcm_tcrm_sin_regla_salto.py`, no sólo
+en prosa: la observación es intuitiva y va a volver a plantearse.
+
+**Queda viva una sola línea**: puntuar el TCRM por su **desvío respecto de la
+propia tendencia** (Kaminsky-Lizondo-Reinhart) en lugar del nivel contra bandas
+fijas. Atendería el problema real —el rezago con que el nivel refleja el
+traspaso— sin doble conteo ni constantes ad-hoc, pero es un rediseño del
+indicador y queda como decisión editorial pendiente.
+
+**Lección de proceso:** se aceptó la premisa de la auditoría sin verificarla, y
+verificarla costaba una consulta. Antes de construir una regla que corrige el
+comportamiento de un índice, hay que medir primero ese comportamiento.
 
 ### 6. Rebalanceo IdC ↔ crédito · **ADR-0074**
 
@@ -216,6 +233,54 @@ avanzaron juntas. No se reponderó nada por el hallazgo — sobreajustaría a un
 período que no se repite. Lo que sí se afirma sin reservas es la advertencia al
 lector: que varias dimensiones coincidan **no son varias confirmaciones
 independientes**.
+
+---
+
+## Auditoría externa de la segunda tanda (18-jul-2026)
+
+Terminada la tanda se corrieron tres revisiones independientes: una de código
+con un modelo externo (Codex), una verificación numérica que recalculó todas las
+cifras de los ADRs desde cero, y una revisión adversarial de criterio.
+
+**Resultado principal: se revirtió ADR-0073** (ver arriba).
+
+**Errores factuales corregidos.** Ninguno afectaba lo publicado —el snapshot se
+calcula en vivo— pero sí el texto de los ADRs:
+
+- ADR-0075 informaba 13 componentes y 78 pares; al entrar el IPI el mismo día
+  pasaron a **14 y 91** (\|r\| medio 0,506). El ADR contradecía a ADR-0076.
+- ADR-0076 justificaba usar las bandas del EMAE comparando rangos de ventanas
+  distintas: los 23,5 pp del EMAE incluían el rebote post-COVID. Sobre la
+  ventana comparable el EMAE da **16,1 pp** y el IPI oscila 1,6× más.
+- ADR-0073 tenía mal una celda de contexto (nov-2023: 45,5 → **43,0**).
+
+**Bugs de código pendientes de arreglo** (encontrados por Codex, en cola):
+
+| Sev | Hallazgo |
+|---|---|
+| Alto | La matriz de redundancia puntúa `presion_dolarizacion` con las **bandas**, no con las **anclas** que usa el motor real (brecha de hasta 25 puntos). Contradice la premisa del propio ADR-0075 |
+| Medio | Las ventanas móviles nuevas (TCRM, IPI, núcleo del IPC) cuentan **observaciones, no meses calendario**: con un mes faltante, un cociente de dos meses se presenta como variación m/m |
+| Medio | `_pearson()` puede lanzar excepción con una serie constante y abortar toda la validación |
+| Bajo | `_redundancia_itcm()` no publica nada si no hay pares altos — pero cero pares sobre 0,7 es un resultado positivo y relevante |
+
+**Objeciones de criterio abiertas** (sin decidir):
+
+1. **La sensibilidad publicada asume errores independientes** (`sensibilidad.py`
+   sortea ruido por indicador). Con \|r\| medio 0,506 entre componentes, los
+   intervalos de robustez del ITCM estarían **subestimados**. Es un número ya
+   publicado que la propia tanda puso en duda.
+2. **El IPI diversifica menos de lo declarado**: el EMAE ya contiene a la
+   industria, así que la dimensión quedó ~46% manufactura; ambas fuentes son
+   INDEC; y el promedio móvil de 3 meses tiene centro de masa en t−1, con lo que
+   la frescura ganada se cancela.
+3. **La observación 10 (núcleo del IPC) fue ilustrada, no resuelta**: una regla
+   de presentación decidió una cuestión de medición, y nunca se evaluaron las
+   alternativas que no violaban esa regla (por ejemplo puntuar núcleo y general
+   con pesos dentro del componente de inflación).
+4. **Estándar de evidencia inconsistente**: n=31 se invocó como impedimento para
+   reponderar en ADR-0075 y como base suficiente para calibrar en 0073/0074/0076.
+5. **Uso asimétrico de la validación externa**: la mejora del r se usó como
+   confirmación y el deterioro por el IPI como ruido.
 
 ---
 
