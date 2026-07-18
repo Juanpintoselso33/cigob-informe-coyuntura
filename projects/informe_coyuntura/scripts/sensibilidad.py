@@ -26,6 +26,7 @@ de robustez p05-p95 y su traducción a tensión.
 Uso: python scripts/sensibilidad.py [N_draws]
 """
 import json
+import math
 import random
 import statistics
 import sys
@@ -48,6 +49,31 @@ N_DRAWS = 2000              # override por CLI en main() — no parsear argv al 
 SEMILLA = 20260703          # fija: el análisis es reproducible corrida a corrida
 RUIDO_PESO = 0.20           # pesos × U(1−r, 1+r)
 RUIDO_INSUMO = 0.05         # valores de entrada × U(1−r, 1+r), re-puntuados por interpolación
+
+# ── Error COMPARTIDO del deflactor (ADR-0078) ────────────────────────────────
+# El IPC no es un insumo más: deflacta a varios indicadores a la vez, así que su
+# error no se cancela en el promedio como sí lo hace el ruido idiosincrático de
+# cada fuente. Sortear un error independiente por indicador —lo que hacía este
+# módulo— subestima el rango de robustez.
+#
+# El signo importa y no es el mismo para todos. Si el IPC está SOBREESTIMADO:
+#   ipc_total        +1  la inflación medida es esa, y puntúa peor
+#   recaudacion      −1  deflactar de más hunde la variación real
+#   credito_privado  −1  ídem
+#   idc              −1  la BADLAR real queda más baja
+#   idm               0  compara M3 real contra M2 real: el deflactor se cancela
+# Por eso `idm` NO figura acá pese a usar el IPC: su construcción lo inmuniza.
+EXPOSICION_DEFLACTOR_ITCM = {
+    "ipc_total": +1.0,
+    "recaudacion": -1.0,
+    "credito_privado": -1.0,
+    "idc": -1.0,
+}
+# Qué fracción del error de un indicador deflactado viene del deflactor y no de
+# su propia fuente. 0 = el modelo viejo (todo idiosincrático); 1 = todo el error
+# es del deflactor. Se adopta 0,5 —mitad y mitad— porque una variación real se
+# construye con dos series de precisión comparable, la nominal y el deflactor.
+FRAC_ERROR_DEFLACTOR = 0.5
 
 INDICES = {
     "itcm": {"cinturon": "macro", "bandas": itcm.BANDAS_ITCM,
@@ -91,8 +117,14 @@ def _agregar(dims: dict) -> float:
 
 
 def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
-               bandas: dict | None, anclas: dict | None = None) -> float:
+               bandas: dict | None, anclas: dict | None = None,
+               exposicion: dict | None = None) -> float:
     anclas = anclas or {}
+    exposicion = exposicion or {}
+    # Un ÚNICO error de deflactor por corrida, compartido por todos los
+    # indicadores que lo heredan (ADR-0078). Es lo que hace que sus errores no
+    # se cancelen entre sí en la agregación.
+    shock_deflactor = rng.uniform(-RUIDO_INSUMO, RUIDO_INSUMO)
     d2 = {dk: {"peso": d["peso"], "ind": {ik: dict(i) for ik, i in d["ind"].items()}}
           for dk, d in dims.items()}
     for d in d2.values():
@@ -118,7 +150,16 @@ def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
                         if abs(a) != inf_
                     ]
                 span = (max(ancs) - min(ancs)) if ancs else abs(float(i["valor"])) or 1.0
-                v = float(i["valor"]) + rng.uniform(-RUIDO_INSUMO, RUIDO_INSUMO) * span
+                idio = rng.uniform(-RUIDO_INSUMO, RUIDO_INSUMO)
+                exp = exposicion.get(ik, 0.0)
+                if exp:
+                    # Mezcla que preserva la varianza total del ruido: la parte
+                    # compartida reemplaza a la idiosincrática, no se le suma.
+                    f = FRAC_ERROR_DEFLACTOR
+                    ruido = math.sqrt(f) * exp * shock_deflactor + math.sqrt(1 - f) * idio
+                else:
+                    ruido = idio
+                v = float(i["valor"]) + ruido * span
                 if ik in anclas:
                     i["puntaje"] = parametrica.puntaje_desde_anclas(v, anclas[ik])
                 else:
@@ -180,7 +221,8 @@ def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
 
 def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
                       n_draws: int = 1000, n_bins: int = 36,
-                      anclas: dict | None = None) -> dict:
+                      anclas: dict | None = None,
+                      exposicion: dict | None = None) -> dict:
     """Versión compacta para el snapshot publicado: rango p05-p95 del
     experimento combinado + su traducción a tensión + el componente dominante
     (mayor |Δ| del leave-one-out) + el HISTOGRAMA de la simulación (n_bins
@@ -189,7 +231,8 @@ def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
     dims = _estructura(bloque)
     rng = random.Random(SEMILLA)
     draws = [
-        _perturbar(dims, rng, pesos=True, bandas=bandas, anclas=anclas)
+        _perturbar(dims, rng, pesos=True, bandas=bandas, anclas=anclas,
+                   exposicion=exposicion)
         for _ in range(n_draws)
     ]
     qs = statistics.quantiles(draws, n=20)
@@ -221,7 +264,13 @@ def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
         "hist": hist,
         "hist_min": round(lo, 2),
         "hist_max": round(hi, 2),
-        "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo)",
+        # OJO: este texto se publica (lo valida el gate G6). Sin siglas de ADR
+        # ni jerga interna.
+        "metodo": ("pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por "
+                   "interpolación (Monte Carlo). El error del índice de precios se sortea "
+                   "una sola vez por corrida y se propaga a los indicadores que lo usan "
+                   "como deflactor, en lugar de suponer que cada uno se equivoca por su "
+                   "cuenta."),
     }
 
 

@@ -342,7 +342,11 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
             bloque["robustez"] = sensibilidad.robustez_compacta(
                 bloque, getattr(mod, f"BANDAS_{sigla}"),
                 lambda v: round((100 - v) / 10, 1),
-                anclas=getattr(mod, f"ANCLAS_{sigla}", None))
+                anclas=getattr(mod, f"ANCLAS_{sigla}", None),
+                # Solo el ITCM tiene indicadores deflactados por el IPC
+                # (ADR-0078); los demás índices no comparten deflactor.
+                exposicion=(sensibilidad.EXPOSICION_DEFLACTOR_ITCM
+                            if sigla == "ITCM" else None))
         except Exception as e:
             print(f"[WARN] robustez {sigla}: {e}")
         _marcar_dimensiones_criticas(bloque, UMBRAL_CRITICO_BANDAS)
