@@ -18,6 +18,8 @@ decisiones implementadas remiten a su ADR, que tiene el detalle técnico.
 | **Pendientes de decisión** | 3 |
 | **Rechazadas con fundamento** | 2 |
 | **Revertidas tras auditoría externa** | 1 |
+| ITCM | 57,2 → **62,2** · tensión 4,3 → **3,8** |
+| Robustez publicada | p05-p95 **60,4 – 64,0** (deflactor compartido, ADR-0078) |
 | Indicadores del ITCM | 13 → **16** |
 | ITCM | 57,2 → **61,8** (cambió de banda) · tensión 4,3 → **3,8** |
 | Validación externa (ITCM ↔ riesgo país) | r −0,726 → **−0,764** (mejoró) |
@@ -263,24 +265,41 @@ calcula en vivo— pero sí el texto de los ADRs:
 | Medio | `_pearson()` puede lanzar excepción con una serie constante y abortar toda la validación |
 | Bajo | `_redundancia_itcm()` no publica nada si no hay pares altos — pero cero pares sobre 0,7 es un resultado positivo y relevante |
 
-**Objeciones de criterio abiertas** (sin decidir):
+**Objeciones de criterio — tratadas una por una:**
 
-1. **La sensibilidad publicada asume errores independientes** (`sensibilidad.py`
-   sortea ruido por indicador). Con \|r\| medio 0,506 entre componentes, los
-   intervalos de robustez del ITCM estarían **subestimados**. Es un número ya
-   publicado que la propia tanda puso en duda.
-2. **El IPI diversifica menos de lo declarado**: el EMAE ya contiene a la
-   industria, así que la dimensión quedó ~46% manufactura; ambas fuentes son
-   INDEC; y el promedio móvil de 3 meses tiene centro de masa en t−1, con lo que
-   la frescura ganada se cancela.
-3. **La observación 10 (núcleo del IPC) fue ilustrada, no resuelta**: una regla
-   de presentación decidió una cuestión de medición, y nunca se evaluaron las
-   alternativas que no violaban esa regla (por ejemplo puntuar núcleo y general
-   con pesos dentro del componente de inflación).
-4. **Estándar de evidencia inconsistente**: n=31 se invocó como impedimento para
-   reponderar en ADR-0075 y como base suficiente para calibrar en 0073/0074/0076.
-5. **Uso asimétrico de la validación externa**: la mejora del r se usó como
-   confirmación y el deterioro por el IPI como ruido.
+1. **Sensibilidad con errores independientes → RESUELTO (ADR-0078).** La
+   objeción apuntaba bien pero con el mecanismo equivocado: ADR-0075 mide
+   correlación entre **valores**, no entre **errores de medición**. Lo que sí
+   genera error compartido es compartir una **fuente**, y ahí está el caso real
+   —el IPC deflacta a cuatro indicadores— que es la observación IV.2. Modelado
+   con signo (el IDM queda afuera: su construcción real-real cancela el
+   deflactor). El rango publicado se ensancha **9,1%**.
+2. **El IPI diversifica menos de lo declarado → RESUELTO (ADR-0079).** Las tres
+   partes eran ciertas. Peso 35% → **20%**, exposición a manufactura 46% → 34%,
+   y las tres afirmaciones infladas corregidas en el ADR, la ficha pública y el
+   código. Hallazgo nuevo del análisis: hay un **arrastre estructural de 31
+   puntos** (mediana del IPI puntúa 39,4 contra 70,9 del EMAE) que se compensa
+   con el peso y **no** recalibrando anclas, por criterio de ADR-0045.
+3. **La observación 10 fue ilustrada, no resuelta → RESUELTO (ADR-0077
+   ampliado).** La objeción de proceso se acepta: una convención de presentación
+   decidió una cuestión de medición. Evaluada ahora con datos, **la premisa
+   adversarial no se sostiene**: la brecha general−núcleo promedia +0,11 pp
+   sobre 31 meses y **cambia de signo entre años** (+0,53 en 2024, −0,10 en
+   2025, +0,19 en 2026); el general supera al núcleo en 18 de 31 meses. Y la
+   elección es inmaterial: el r contra riesgo país da −0,767 con general puro,
+   con núcleo puro y con las dos mezclas intermedias. Se conserva el general por
+   **coherencia con el REM**, que releva expectativas del nivel general y no del
+   núcleo — argumento que la versión original no había identificado.
+4. **Estándar de evidencia inconsistente** — objeción **aceptada, sin corregir
+   aún**. Sigue siendo cierto que n=31 se invocó como impedimento para
+   reponderar en ADR-0075 y como base suficiente para calibrar en otros. Queda
+   como deuda de criterio para la próxima revisión.
+5. **Uso asimétrico de la validación externa** — objeción **aceptada y corregida
+   donde aplicaba**: ADR-0076 descartaba el deterioro del r como "ruido" después
+   de haberlo usado como confirmación; el párrafo está corregido y ADR-0079
+   publica el barrido completo de pesos mostrando que el deterioro es
+   **monótono**. La métrica se pondera junto a las demás, no como criterio
+   único.
 
 ---
 

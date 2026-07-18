@@ -63,3 +63,17 @@ def test_las_bandas_del_ipi_siguen_siendo_las_del_emae():
     """No se recalibraron para cerrar la brecha: hacerlo blanquearía desempeño
     real (ADR-0045)."""
     assert itcm.BANDAS_ITCM["ipi_manufacturero"] == itcm.BANDAS_ITCM["emae_ia"]
+
+
+# ── Núcleo del IPC: por qué se puntúa el general (ADR-0077) ─────────────────
+
+def test_el_nucleo_acompana_pero_no_puntua():
+    """La dimensión monetaria puntúa el IPC general, no el núcleo, por
+    coherencia con el REM: el otro componente releva expectativas del NIVEL
+    GENERAL, así que los dos miden la misma magnitud en dos momentos. El núcleo
+    se publica como serie acompañante en el gráfico, sin banda propia."""
+    assert "ipc_nucleo" not in itcm.BANDAS_ITCM
+    del_indice = {i for d in itcm.DIMENSIONES_ITCM.values() for i in d["indicadores"]}
+    assert "ipc_nucleo" not in del_indice
+    assert "ipc_total" in itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["indicadores"]
+    assert "rem_ipc_12m" in itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["indicadores"]

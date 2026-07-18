@@ -7,6 +7,7 @@
 | **Fecha** | 2026-07-18 |
 | **Precedentes directos** | ADR-0022 / feedback de tablero (ningún cinturón publica cards de contexto) · patrón de series comparadas del TCRM |
 | **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · observación 10 |
+| **Ampliado** | 18-jul-2026, tras revisión adversarial externa: se evalúa la pregunta de medición que la versión original no había evaluado |
 
 ## Contexto
 
@@ -43,6 +44,73 @@ puntuación.
 **El núcleo no puntúa.** No entra al ITCM, no tiene bandas y no altera ningún
 peso. Es material de lectura para interpretar el indicador que sí puntúa.
 
+## La pregunta de medición, evaluada (ampliación 18-jul-2026)
+
+La revisión adversarial externa hizo una objeción de proceso que **es correcta y
+se acepta**: la versión original de este ADR razonó "la auditoría pide una serie
+de contexto → las cards de contexto están prohibidas → entonces va como curva en
+el modal → punto cerrado", y en ningún tramo evaluó la pregunta sustantiva.
+Peor: la regla invocada **no bloqueaba** las alternativas que sí resolvían el
+problema de medición —reemplazar el general por el núcleo, o puntuar los dos con
+pesos dentro del componente de inflación—, ninguna de las cuales crea una card
+de contexto. Una convención de presentación terminó decidiendo una cuestión de
+medición sin que nadie la discutiera.
+
+Evaluada ahora, con los datos.
+
+### La afirmación de sesgo sistemático no se sostiene
+
+El argumento adversarial era que el programa 2024-2026 ejecutó una recomposición
+tarifaria grande y deliberada, de modo que el índice estaría puntuando **la
+corrección de precios relativos del propio programa como inestabilidad
+monetaria**, con signo conocido. Medido sobre los 31 meses de serie común:
+
+| | brecha media (general − núcleo) | efecto medio en el puntaje |
+|---|---|---|
+| 2024 | +0,53 pp | +2,1 |
+| 2025 | **−0,10 pp** | −1,8 |
+| 2026 (6 meses) | +0,19 pp | +3,5 |
+| **período completo** | **+0,11 pp** | **+0,8** |
+
+El general supera al núcleo en **18 de 31 meses**: casi mitad y mitad. Y la
+brecha **cambia de signo** entre años. No existe el sesgo sistemático de signo
+conocido que motivaba la objeción.
+
+### La elección es inmaterial en este período
+
+Reconstruyendo el ITCM completo con cada composición:
+
+| composición | r vs riesgo país | ITCM último |
+|---|---|---|
+| general puro (vigente) | **−0,767** | 52,4 |
+| 60 general / 40 núcleo | −0,766 | 52,8 |
+| 40 general / 60 núcleo | −0,767 | 52,9 |
+| núcleo puro | −0,767 | 53,3 |
+
+La correlación externa es **indistinguible** entre las cuatro. La diferencia
+entre general puro y núcleo puro en el ITCM reconstruido es de **0,61 puntos en
+promedio** (mediana 0,50; máximo 2,80, en jun-2024).
+
+### Decisión: se conserva el IPC general, ahora por una razón
+
+Sin presión empírica, la decisión se toma por coherencia interna, y hay un
+argumento que la versión original no había identificado:
+
+**El otro componente de la dimensión es el REM, que releva expectativas del IPC
+NIVEL GENERAL** (BCRA, variable 29), no del núcleo. La dimensión está construida
+para leer la misma magnitud en dos momentos —inflación realizada e inflación
+esperada—. Puntuar núcleo realizado contra expectativas de general rompería esa
+correspondencia: los dos componentes dejarían de medir el mismo objeto.
+
+Agregar el núcleo con un peso propio tampoco se justifica: movería el índice
+medio punto y sumaría un componente más a una dimensión cuyos dos indicadores
+principales ya correlacionan 0,935 entre sí (ADR-0075).
+
+**La observación 10 queda RESUELTA, no ilustrada**: se evaluó la pregunta de
+medición, se midió, y la respuesta es conservar el general con la serie de
+núcleo visible al lado para que el lector pueda distinguir un mes de corrección
+tarifaria de uno de núcleo alta.
+
 ## Consecuencias
 
 - El modal del IPC pasa de una curva a dos. Sin cambios en el índice ni en
@@ -54,7 +122,10 @@ peso. Es material de lectura para interpretar el indicador que sí puntúa.
 - El núcleo del INDEC excluye regulados y estacionales, pero la frontera entre
   categorías es una decisión metodológica del organismo, no una propiedad
   natural de los precios.
-- Mostrar las dos curvas ayuda a interpretar, pero **no corrige** el hecho de
-  que el índice puntúa el IPC general: si el editor concluyera que el núcleo es
-  la variable relevante para puntuar estabilidad monetaria, eso sería un cambio
-  de metodología con su propio ADR, no esta decisión.
+- **La inmaterialidad medida es de este período.** Si en el futuro se ejecutara
+  una recomposición de precios relativos concentrada y grande, la brecha entre
+  general y núcleo podría abrirse de forma sostenida y esta decisión habría que
+  revisarla. La medición de arriba es el punto de partida para esa revisión.
+- El argumento de coherencia con el REM **ata la decisión a la fuente de
+  expectativas**: si el REM pasara a relevar núcleo, o si se cambiara el
+  componente de expectativas, el razonamiento habría que rehacerlo.
