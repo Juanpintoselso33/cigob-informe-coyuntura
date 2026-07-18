@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-18T13:28:47.594311",
+  "generated_at": "2026-07-18T13:50:52.898453",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -370,7 +370,7 @@
           "financiamiento": {
             "nombre": "Capacidad y costo del financiamiento",
             "peso": 0.16,
-            "puntaje": 53.6,
+            "puntaje": 53.7,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.34,
@@ -380,11 +380,11 @@
                 "peso_efectivo": 0.0544
               },
               "idc": {
-                "peso": 0.3,
+                "peso": 0.21,
                 "puntaje_banda": 52.0,
                 "puntaje_aplicado": 52.0,
                 "valor": -0.24,
-                "peso_efectivo": 0.048
+                "peso_efectivo": 0.0336
               },
               "costo_financiamiento_tesoro": {
                 "peso": 0.25,
@@ -394,11 +394,11 @@
                 "peso_efectivo": 0.04
               },
               "credito_privado": {
-                "peso": 0.11,
+                "peso": 0.2,
                 "puntaje_banda": 53.0,
                 "puntaje_aplicado": 53.0,
                 "valor": 8.0,
-                "peso_efectivo": 0.0176
+                "peso_efectivo": 0.032
               }
             },
             "peso_efectivo": 0.16

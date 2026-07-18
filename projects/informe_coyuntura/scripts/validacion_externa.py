@@ -44,6 +44,7 @@ import itcg
 import itcm
 import itcp
 import itvc
+import parametrica
 import publicar
 
 RIESGO_PAIS_URL = "https://api.argentinadatos.com/v1/finanzas/indices/riesgo-pais"
@@ -175,11 +176,11 @@ def construir_series_itvc() -> tuple:
     return itvc_full, itvc_sin_icc, icc
 
 
-def construir_serie_itcm() -> dict:
-    """Serie mensual del ITCM reconstruida desde las series de componentes
-    (mismo motor, puntaje interpolado, sin overrides del analista): todos los
-    componentes tienen serie salvo IAI/ICIP, que faltan y el motor renormaliza.
-    Reservas netas solo desde jun-2024 (límite de fuente documentado)."""
+def _valores_itcm_por_mes() -> dict:
+    """{YYYY-MM: {indicador: valor}} con los componentes del ITCM listos para
+    el motor (ventanas móviles y equivalencias ya resueltas). Lo comparten la
+    reconstrucción del índice y la matriz de redundancia interna, para que no
+    puedan divergir en qué componentes miran."""
     series = _cargar_series_itcm()
     m = lambda k: _mensual(series.get(k) or [])
     ipc_mm = m("ipc_total")               # ya publicada en % m/m (04-jul-2026)
@@ -203,20 +204,85 @@ def construir_serie_itcm() -> dict:
         af, mf = int(win[-1][:4]), int(win[-1][5:7])
         return sum(saldo[k] for k in win) if (af * 12 + mf) - (a0 * 12 + m0) == 11 else None
 
-    out = {}
-    ult = max(ipc_mm)
-    for ym in _meses("2023-12", ult):
-        valores = {
+    return {
+        ym: {
             "ipc_total": ipc_mm.get(ym),
             "rem_ipc_12m": (itcm.rem_mensual_equivalente(rem[ym])
                             if ym in rem else None),
             "saldo_comercial_12m": saldo_12m(ym),
             **{k: v.get(ym) for k, v in directos.items()},
         }
+        for ym in _meses("2023-12", max(ipc_mm))
+    }
+
+
+def construir_serie_itcm() -> dict:
+    """Serie mensual del ITCM reconstruida desde las series de componentes
+    (mismo motor, puntaje interpolado, sin overrides del analista): todos los
+    componentes tienen serie salvo IAI/ICIP, que faltan y el motor renormaliza.
+    Reservas netas solo desde jun-2024 (límite de fuente documentado)."""
+    out = {}
+    for ym, valores in _valores_itcm_por_mes().items():
         r = itcm.calcular_itcm(valores)
         if r:
             out[ym] = r["valor"]
     return out
+
+
+def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
+    """Correlación de Pearson entre los PUNTAJES mensuales de los componentes
+    del ITCM (sección IV.3 de la auditoría de jul-2026).
+
+    Se correlacionan puntajes y no valores crudos a propósito: el puntaje es lo
+    que efectivamente se promedia dentro del índice, así que es ahí donde dos
+    indicadores que se mueven juntos terminan contando dos veces el mismo ciclo.
+    Un par con |r| alto y en DIMENSIONES DISTINTAS es el caso que preocupa: el
+    índice cree estar midiendo dos cosas y mide una.
+
+    Devuelve la matriz completa más los pares que superan el umbral, ordenados
+    por |r|, para que el lector pueda ver la evidencia y no solo la conclusión.
+    """
+    por_mes = _valores_itcm_por_mes()
+    dim_de = {ind: dkey
+              for dkey, d in itcm.DIMENSIONES_ITCM.items()
+              for ind in d["indicadores"]}
+    puntajes = {}
+    for ym, valores in por_mes.items():
+        for ind, val in valores.items():
+            if val is None or ind not in itcm.BANDAS_ITCM:
+                continue
+            puntajes.setdefault(ind, {})[ym] = parametrica.puntaje_interpolado(
+                float(val), itcm.BANDAS_ITCM[ind])
+
+    inds = sorted(puntajes)
+    matriz, pares = {}, []
+    for i, a in enumerate(inds):
+        for b in inds[i + 1:]:
+            r, n = _pearson(puntajes[a], puntajes[b])
+            if r is None:
+                continue
+            matriz.setdefault(a, {})[b] = r
+            matriz.setdefault(b, {})[a] = r
+            if abs(r) >= umbral:
+                pares.append({
+                    "a": a, "b": b, "r": r, "n": n,
+                    "dimension_a": dim_de.get(a), "dimension_b": dim_de.get(b),
+                    "misma_dimension": dim_de.get(a) == dim_de.get(b),
+                })
+    pares.sort(key=lambda p: -abs(p["r"]))
+    todos = [r for i, a in enumerate(inds) for b in inds[i + 1:]
+             if (r := matriz.get(a, {}).get(b)) is not None]
+    return {
+        "umbral": umbral,
+        "n_indicadores": len(inds),
+        "n_pares": len(todos),
+        "r_abs_medio": round(statistics.mean(abs(r) for r in todos), 3) if todos else None,
+        "share_altos": round(sum(1 for r in todos if abs(r) >= umbral) / len(todos), 3) if todos else None,
+        "share_bajos": round(sum(1 for r in todos if abs(r) < 0.3) / len(todos), 3) if todos else None,
+        "matriz": matriz,
+        "pares_altos": pares,
+        "pares_cruzados": sum(1 for p in pares if not p["misma_dimension"]),
+    }
 
 
 ITCG_SERIES = [
@@ -491,6 +557,17 @@ def main():
             print(f"  {nombre}: r = {r}  (n = {n})")
     except Exception as e:
         print(f"[WARN] riesgo país no disponible: {e}")
+
+    # ── Redundancia INTERNA del ITCM (auditoría jul-2026, IV.3) ────────────
+    red = matriz_redundancia_itcm()
+    resultados["redundancia_itcm"] = red
+    print(f"\nredundancia interna ITCM: {red['n_indicadores']} indicadores, "
+          f"{red['n_pares']} pares · |r| medio {red['r_abs_medio']} · "
+          f"{red['share_altos']:.0%} sobre {red['umbral']} "
+          f"({red['pares_cruzados']} de ellos entre dimensiones distintas)")
+    for p in red["pares_altos"][:5]:
+        cruz = "" if p["misma_dimension"] else "  [dimensiones distintas]"
+        print(f"  r = {p['r']:+.3f}  {p['a']} × {p['b']}{cruz}")
 
     # ── ITCG vs ICG UTDT (confianza en el gobierno; positiva esperada) ─────
     serie_itcg = construir_serie_itcg()

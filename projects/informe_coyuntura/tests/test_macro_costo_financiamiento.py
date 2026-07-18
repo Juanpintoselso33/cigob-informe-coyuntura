@@ -104,15 +104,21 @@ def test_la_dimension_incluye_el_costo_y_suma_uno():
     assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
 
 
-def test_el_recorte_de_los_otros_tres_es_proporcional():
-    """ADR-0071: el nuevo indicador toma 25% y los otros tres se recortan
-    × 0,75 — no se aprovechó el cambio para rebalancear IdC contra crédito,
-    que es una decisión aparte."""
+def test_el_costo_toma_un_cuarto_de_la_dimension():
+    """ADR-0071: el nuevo indicador toma 25%, y reservas conserva el recorte
+    proporcional (45 × 0,75)."""
     ind = itcm.DIMENSIONES_ITCM["financiamiento"]["indicadores"]
     assert ind["costo_financiamiento_tesoro"] == 0.25
-    previos = {"reservas_bcra": 0.45, "idc": 0.40, "credito_privado": 0.15}
-    for k, antes in previos.items():
-        assert abs(ind[k] - antes * 0.75) < 0.011, (k, ind[k], antes * 0.75)
+    assert abs(ind["reservas_bcra"] - 0.45 * 0.75) < 0.011
+
+
+def test_la_capacidad_de_fondeo_no_pesa_mas_que_el_credito_realizado():
+    """ADR-0074: el IdC declara en su propia validación que NO anticipa el
+    crédito futuro; es un descriptor de condiciones, no un pronóstico. Que
+    pesara 2,7× el crédito efectivamente otorgado invertía la jerarquía."""
+    ind = itcm.DIMENSIONES_ITCM["financiamiento"]["indicadores"]
+    assert abs(ind["idc"] - ind["credito_privado"]) <= 0.01, (
+        f'idc {ind["idc"]} vs credito {ind["credito_privado"]}')
 
 
 def test_el_indicador_esta_declarado_como_esperado():

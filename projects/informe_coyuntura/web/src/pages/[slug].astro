@@ -92,6 +92,9 @@ const val = indice?.data.validacion ?? null;
 // validación propia (n < 12 meses de solape) queda afuera automáticamente
 // sin necesidad de una excepción explícita por nombre.
 const cruzRaw = indice ? ((informe as any).validacion_cruzada ?? null) : null;
+// Consistencia interna del índice: no si acierta (eso lo mide la validación
+// externa) sino cuánta información distinta aporta cada componente.
+const red = indice?.data.redundancia ?? null;
 const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice!.sigla)
   ? cruzRaw : null;
 // etiquetas cortas de las anclas externas para la matriz en mobile
@@ -387,6 +390,46 @@ const robChartData = rob?.hist && indice ? {
               </p>
               <p class="cg-h2-sub">{cruz.conclusion}</p>
               <div class="cg-det-cta">Ver el detalle →</div>
+            </div>
+          </Fragment>
+        )}
+        {red && (
+          <Fragment>
+            <div class="cg-section-head cg-val-head">
+              <p class="cg-eyebrow">Consistencia interna</p>
+              <h2 class="cg-h2">{red.titulo}</h2>
+              <p class="cg-h2-sub">{red.sub}</p>
+            </div>
+            <div class={`cg-rob cg-rob--${meta.slug} cg-red`}>
+              <div class="cg-red-stats">
+                <div class="cg-red-stat">
+                  <span class="cg-red-num">{coma(red.r_abs_medio)}</span>
+                  <span class="cg-red-lbl">correlación media entre pares</span>
+                </div>
+                <div class="cg-red-stat">
+                  <span class="cg-red-num">{Math.round(red.share_altos * 100)}%</span>
+                  <span class="cg-red-lbl">se mueven muy juntos</span>
+                </div>
+                <div class="cg-red-stat">
+                  <span class="cg-red-num">{Math.round(red.share_bajos * 100)}%</span>
+                  <span class="cg-red-lbl">prácticamente independientes</span>
+                </div>
+              </div>
+              <p class="cg-red-titulo">Los pares más acoplados</p>
+              <ul class="cg-red-pares">
+                {red.top.map(p => (
+                  <li>
+                    <span class="cg-red-par">
+                      {label(p.a)} <span class="cg-red-x">×</span> {label(p.b)}
+                      {p.cruzado && <span class="cg-red-chip">dimensiones distintas</span>}
+                    </span>
+                    {/* tres decimales fijos: si no, +0,910 se imprime "+0,91"
+                        y la columna queda despareja contra +0,935 */}
+                    <span class="cg-red-r">{(p.r > 0 ? "+" : "") + p.r.toFixed(3).replace(".", ",")}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="cg-h2-sub">{red.conclusion}</p>
             </div>
           </Fragment>
         )}

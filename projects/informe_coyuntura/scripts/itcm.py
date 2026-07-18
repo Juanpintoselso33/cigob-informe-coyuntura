@@ -218,13 +218,17 @@ DIMENSIONES_ITCM = {
         # (capacidad) y a las reservas — la única señal no redundante de los
         # viejos indicadores de contexto.
         # ADR-0071: entra el COSTO del financiamiento soberano (25%). Los otros
-        # tres se recortan proporcionalmente (45/40/15 × 0,75) para no mezclar
-        # esta decisión con el rebalanceo IdC-vs-crédito, que sigue pendiente.
+        # tres se recortaron proporcionalmente (45/40/15 × 0,75).
+        # ADR-0074: idc ≈ credito_privado. Capacidad de fondeo y crédito
+        # efectivamente otorgado miden el mismo fenómeno —uno como condición,
+        # el otro como resultado— y la validación del propio IdC muestra que no
+        # anticipa al crédito. No había razón para que la condición pesara 2,7×
+        # al resultado, así que se reparte el 41% conjunto casi en partes iguales.
         "indicadores": {
             "reservas_bcra": 0.34,
-            "idc": 0.30,
+            "idc": 0.21,
             "costo_financiamiento_tesoro": 0.25,
-            "credito_privado": 0.11,
+            "credito_privado": 0.20,
         },
     },
     "actividad": {
@@ -372,6 +376,64 @@ def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
             f"contracción de importaciones ({impo_var:+.1f}% i.a.) más que por "
             f"exportaciones ({expo_var:+.1f}% i.a.) — ajuste interpolado hacia el piso "
             f"de 60 puntos (Paramétrica CIGOB, may-2026; suavizado ADR-0056)."
+        ),
+        "origen": "automatico",
+    }
+
+
+TCRM_SALTO_UMBRAL = 8.0      # % m/m a partir del cual la suba deja de ser gradual
+TCRM_SALTO_SATURA = 25.0     # % m/m donde el descuento llega al piso
+TCRM_SALTO_PISO = 55.0       # puntaje del TCRM alto conseguido por salto puro
+
+
+def ajuste_automatico_tcrm(ind_tcrm: dict) -> dict | None:
+    """Regla anti-salto del tipo de cambio real (ADR-0073): un TCRM alto
+    conseguido por una devaluación abrupta no es competitividad ganada, es un
+    salto con el traspaso a precios todavía pendiente, y la banda —que solo
+    mira el nivel— lo premiaba igual que a una depreciación gradual.
+
+    El caso que la motiva es real: en dic-2023 el ITCRM saltó de 83,2 a 124,9
+    (+50,1% en un mes) y puntuó 100/100, el máximo de competitividad externa.
+    Cuatro meses después estaba en 97,0: la ganancia se evaporó entera. En el
+    otro extremo, jul-2025 subió +6,6% m/m tras ampliarse la banda cambiaria y
+    esa mejora sí se sostuvo — la regla no debe tocarla.
+
+    Medida de abruptez: el MÁXIMO de las variaciones mensuales de los últimos
+    tres meses (`salto_3m`). Se mira una ventana y no solo el mes corriente
+    porque el descuento tiene que sobrevivir al salto: en ene-2024 el TCRM
+    seguía en 132,8 por el salto de diciembre, y con la variación del mes solo
+    (+6,3%) habría vuelto a puntuar 100.
+
+    Entre el umbral y la saturación se interpola el puntaje de banda hacia el
+    piso, igual que en ajuste_automatico_saldo:
+      frac = (salto − 8) / (25 − 8), acotado a [0, 1]
+      puntaje = puntaje_banda − frac × (puntaje_banda − 55)
+
+    El piso de 55 queda apenas por debajo de los 60 puntos de la banda
+    "moderadamente depreciado": un salto cambiario no se lee como buena
+    competitividad ni como catástrofe, se lee como una posición todavía sin
+    resolver.
+
+    No opina si falta el dato de variación, si el salto no llega al umbral o
+    si la banda ya puntúa en el piso o por debajo.
+    """
+    valor = ind_tcrm.get("valor")
+    salto = ind_tcrm.get("salto_3m")
+    if valor is None or salto is None or salto <= TCRM_SALTO_UMBRAL:
+        return None
+    p_banda = parametrica.puntaje_interpolado(float(valor), BANDAS_ITCM["tcrm"])
+    if p_banda <= TCRM_SALTO_PISO:   # la banda ya castiga: nada que descontar
+        return None
+    frac = min(1.0, (salto - TCRM_SALTO_UMBRAL) / (TCRM_SALTO_SATURA - TCRM_SALTO_UMBRAL))
+    puntaje = round(p_banda - frac * (p_banda - TCRM_SALTO_PISO), 1)
+    return {
+        "puntaje": puntaje,
+        "justificacion": (
+            f"Regla automática: el tipo de cambio real llegó a este nivel por un salto "
+            f"de {salto:+.1f}% en un mes dentro del último trimestre, no por depreciación "
+            f"gradual. El traspaso a precios está pendiente, así que la mejora todavía no "
+            f"es competitividad sostenida — ajuste interpolado hacia el piso de "
+            f"{TCRM_SALTO_PISO:.0f} puntos."
         ),
         "origen": "automatico",
     }

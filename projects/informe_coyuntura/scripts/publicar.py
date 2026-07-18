@@ -758,6 +758,61 @@ def _validacion_itcm(bloque):
     }
 
 
+def _redundancia_itcm(bloque):
+    """Anexa al bloque ITCM la matriz de correlación ENTRE SUS PROPIOS
+    componentes (auditoría de consistencia, jul-2026).
+
+    Es una pregunta distinta de la validación externa: no si el índice acierta,
+    sino cuánta información realmente distinta aporta cada componente. Si todos
+    se mueven juntos, promediar quince indicadores no da quince lecturas
+    independientes, da una sola repetida quince veces.
+
+    El texto se emite con la salvedad muestral por delante, porque sin ella el
+    número se lee como defecto de construcción cuando en buena medida es el
+    período: treinta y un meses de un único programa de estabilización."""
+    red = _cargar_validacion().get("redundancia_itcm") or {}
+    if not red.get("pares_altos") or red.get("r_abs_medio") is None:
+        return
+    coma = lambda x: str(x).replace(".", ",")
+    n_alt = len(red["pares_altos"])
+    # Se emiten las CLAVES: las etiquetas legibles viven en el front
+    # (web/src/lib/datos.ts), que es la fuente única de nombres públicos.
+    top = [{"a": p["a"], "b": p["b"], "r": p["r"],
+            "cruzado": not p["misma_dimension"]}
+           for p in red["pares_altos"][:6]]
+
+    bloque["redundancia"] = {
+        "n_indicadores": red["n_indicadores"],
+        "n_pares": red["n_pares"],
+        "r_abs_medio": red["r_abs_medio"],
+        "share_altos": red["share_altos"],
+        "share_bajos": red["share_bajos"],
+        "umbral": red["umbral"],
+        "pares_cruzados": red["pares_cruzados"],
+        "top": top,
+        "titulo": "¿Cuánta información distinta aporta cada componente?",
+        "sub": (f"Un índice que promedia sus componentes supone que cada uno aporta algo "
+                f"que los demás no. Para comprobarlo se cruzan los puntajes mensuales de "
+                f"los {red['n_indicadores']} componentes que tienen serie histórica, "
+                f"{red['n_pares']} pares en total, y se mide cuánto se mueven juntos."),
+        "conclusion": (
+            f"La correlación media entre pares es {coma(red['r_abs_medio'])}: ni componentes "
+            f"independientes ni una sola señal repetida. Un {red['share_altos']:.0%} de los pares "
+            f"se mueve muy junto (por encima de {coma(red['umbral'])}) y un "
+            f"{red['share_bajos']:.0%} es prácticamente independiente. "
+            f"De los {n_alt} pares más acoplados, {red['pares_cruzados']} pertenecen a "
+            f"dimensiones distintas del índice. "
+            f"La lectura correcta exige una salvedad: el período disponible son treinta y un "
+            f"meses de un único programa de estabilización, en el que la desinflación, la "
+            f"recuperación de la actividad y la consolidación fiscal avanzaron a la vez. Que "
+            f"los indicadores se muevan juntos en esa ventana refleja sobre todo el proceso "
+            f"macroeconómico, no necesariamente un defecto de construcción del índice. "
+            f"La consecuencia práctica para el lector sí es firme: cuando varias dimensiones "
+            f"coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones "
+            f"independientes del mismo resultado."),
+    }
+
+
 def _validacion_cruzada(informe):
     """Matriz de validación cruzada (ADR-0031, tercer pilar de robustez): los
     cuatro índices reconstruidos contra los CUATRO contrastes externos a la
@@ -1077,6 +1132,7 @@ def aplicar_scoring(informe, series):
             _scoring_indice(c, "itcm", itcm, MACRO_CONTEXTO, _macro_input_txt)
             if c.get("itcm"):
                 _validacion_itcm(c["itcm"])
+                _redundancia_itcm(c["itcm"])
             continue
         if ckey == "gestion":
             for oculto in GESTION_OCULTOS:

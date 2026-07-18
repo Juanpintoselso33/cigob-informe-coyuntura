@@ -44,6 +44,15 @@ export interface IndiceParametrico {
                  pares: [string, number, number][]; plot: string;
                  titulo: string; sub: string; serie_label: string;
                  externa_label: string; trans_label: string; conclusion: string };
+  // Consistencia interna (auditoría de consistencia macro, jul-2026): cuánta
+  // información realmente distinta aporta cada componente del índice, medida
+  // como correlación entre los puntajes mensuales de todos los pares. Solo
+  // macro por ahora; el tipo es genérico para poder extenderlo.
+  redundancia?: { n_indicadores: number; n_pares: number; r_abs_medio: number;
+                  share_altos: number; share_bajos: number; umbral: number;
+                  pares_cruzados: number;
+                  top: { a: string; b: string; r: number; cruzado: boolean }[];
+                  titulo: string; sub: string; conclusion: string };
 }
 export interface Cinturon {
   score: number;
