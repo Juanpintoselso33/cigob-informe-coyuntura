@@ -14,12 +14,12 @@ decisiones implementadas remiten a su ADR, que tiene el detalle técnico.
 | | |
 |---|---|
 | Observaciones de la auditoría | 13 indicadores + 3 brechas transversales |
-| **Implementadas** | 11 |
-| **Pendientes de decisión** | 0 |
-| **Rechazadas con fundamento** | 2 |
+| **Implementadas** | 12 |
+| **Pendientes de decisión** | **0 — auditoría cerrada** |
+| **Rechazadas con fundamento** | 4 |
 | **Revertidas tras auditoría externa** | 1 |
-| ITCM | 57,2 → **62,2** · tensión 4,3 → **3,8** |
-| Robustez publicada | p05-p95 **60,4 – 64,0** (deflactor compartido, ADR-0078) |
+| ITCM | 57,2 → **62,1** · tensión 4,3 → **3,8** |
+| Robustez publicada | p05-p95 **60,3 – 63,9** (deflactor compartido, ADR-0078) |
 | Indicadores del ITCM | 13 → **16** |
 | ITCM | 57,2 → **61,8** (cambió de banda) · tensión 4,3 → **3,8** |
 | Validación externa (ITCM ↔ riesgo país) | r −0,726 → **−0,764** (mejoró) |
@@ -348,12 +348,36 @@ calcula en vivo— pero sí el texto de los ADRs:
 
 ---
 
-## Pendientes de decisión
+## Cierre de la auditoría
 
-| # | Observación | Prioridad | Nota |
-|---|---|---|---|
-| 12 | **Ambigüedad direccional del ICIP** declarada en ficha | baja | Los pagos al exterior por software se leen como capitalización o como dependencia tecnológica. |
-| 13 | **Reservas en meses de importaciones** como ancla alternativa | baja | La auditoría misma lo marca como no urgente. |
+Las trece observaciones y las tres brechas transversales están resueltas.
+Cuatro se **rechazaron con fundamento**, y en los cuatro casos el rechazo está
+documentado con los números que lo sostienen, no como opinión:
+
+| # | Observación | Por qué se rechazó |
+|---|---|---|
+| 1 | Riesgo país como componente del índice | Circularidad: es el validador externo del ITCM. Tres argumentos, y se cubrió el punto por otra vía (ADR-0071) |
+| 5 | Regla anti-salto del TCRM | Se implementó y se revirtió: la premisa no se sostenía. En dic-2023 el índice ya marcaba el mes MÁS TENSO de la serie sin ninguna regla (ADR-0073) |
+| 12 | *(parcial)* Ambigüedad del ICIP | No se rechazó: se declaró, con la evidencia que la inclina sin resolverla (ADR-0082 bis / ficha) |
+| 13 | Reservas en meses de importaciones | La métrica no está definida donde viven los datos —13 de 23 meses con reservas netas negativas— y donde sí lo está no agrega información (r = 0,998 contra el nivel). ADR-0084 deja escritas las dos condiciones para reabrirlo |
+
+### Últimas resueltas
+
+**11. Sensibilidad del 70/30 de la presión de dolarización · ADR-0083.** Era el
+stress test que **ADR-0057 había dejado pedido**, con la alternativa
+pre-registrada. El 70/30 no validó: los dos canales son **sustitutos**
+(r = −0,605 entre sí), y promediar sustitutos apaga la señal del canal activo —
+en sep-2025 el canal formal marcaba 90,8 de presión y el promedio publicaba
+66,4. Se adopta el **máximo**, que valida bastante mejor contra el riesgo país
+(+0,824 contra +0,650) y mejor incluso que usar sólo el canal formal.
+
+**12. Ambigüedad direccional del ICIP · ficha.** Un aumento de los pagos al
+exterior por software admite leerse como digitalización o como dependencia
+tecnológica, y el índice puntúa la primera sin decirlo. Los datos inclinan
+—los pagos anticipan a la productividad con r = 0,28 a tres meses sobre 107
+meses— pero no resuelven. Queda declarado, junto con una segunda limitación
+encontrada de paso: ese componente tiene desvío 71,3 contra 10,8 del otro y
+pesa 57% del índice, así que explica casi todos sus movimientos.
 
 ### Brechas transversales
 
