@@ -1,16 +1,16 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-07-18T16:30:57.064657",
+  "generated_at": "2026-07-18T16:48:31.973791",
   "score": 3.8,
   "itcm": {
-    "valor": 62.2,
+    "valor": 62.1,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "estabilidad_monetaria": {
         "nombre": "Estabilidad monetaria-inflacionaria",
         "peso": 0.26,
-        "puntaje": 66.5,
+        "puntaje": 66.2,
         "indicadores": {
           "ipc_total": {
             "peso": 0.4,
@@ -35,9 +35,9 @@
           },
           "presion_dolarizacion": {
             "peso": 0.1,
-            "puntaje_banda": 63.4,
-            "puntaje_aplicado": 63.4,
-            "valor": 46.61,
+            "puntaje_banda": 60.2,
+            "puntaje_aplicado": 60.2,
+            "valor": 49.82,
             "peso_efectivo": 0.026
           }
         },
@@ -337,7 +337,7 @@
       "peso_efectivo": 0.065
     },
     "presion_dolarizacion": {
-      "valor": 46.61,
+      "valor": 49.82,
       "unidad": "pts (0-100)",
       "fuente": "ArgentinaDatos (CCL + dólar cripto) + BCRA (A3500, M2 privado y Mercado de Cambios)",
       "fecha_dato": "2026-05-01",
@@ -346,13 +346,13 @@
       "metrica": 5.43,
       "ventana_meses": 3,
       "ventana_parcial": false,
-      "puntaje_itcm": 63.4,
+      "puntaje_itcm": 60.2,
       "presion_formal": 45.24,
       "presion_informal": 49.82,
       "brecha_informal": 5.98,
       "en_indice": true,
       "dimension": "estabilidad_monetaria",
-      "puntaje_banda": 63.4,
+      "puntaje_banda": 60.2,
       "peso_efectivo": 0.026
     },
     "iai": {

@@ -52,11 +52,21 @@ ANCLAS_INFORMAL = (
     (15.0, 100.0),
 )
 # Peso del canal formal (compras MULC/M2) vs. el informal (brecha cripto) al
-# combinar ambas señales en el régimen abierto (ADR-0057). El canal formal
-# sigue pesando más porque es flujo efectivamente transaccionado, no un proxy
-# de precio.
-PESO_PRESION_FORMAL = 0.7
-PESO_PRESION_INFORMAL = 0.3
+# Cómo se combinan los dos canales en el régimen abierto.
+#
+# ADR-0057 usaba un promedio 70/30 y lo declaró explícitamente como "juicio de
+# calibración, no umbrales naturales", dejando el MÁXIMO pre-registrado como
+# alternativa "si la calibración 70/30 no valida bien en el próximo stress
+# test". ADR-0083 corrió ese test y el 70/30 no validó.
+#
+# El motivo es que los dos canales son SUSTITUTOS, no complementos: con el
+# mercado abierto la demanda se va por el formal y la brecha cripto se
+# desploma —en jul y ago-2025 el cripto cotizó POR DEBAJO del oficial—, así que
+# promediarlos diluye. En sep-2025 el canal formal marcaba 90,8 de presión y el
+# promedio ponderado leía 66,4.
+#
+# El máximo lee "hay presión en algún lado", que es lo que el indicador quiere
+# medir, y valida bastante mejor contra el riesgo país (+0,824 contra +0,650).
 ANCLAS_PUNTAJE = (
     (0.0, 100.0),
     (25.0, 85.0),
@@ -173,10 +183,9 @@ def construir_serie(
             a3500_prom = sum(tc_a3500[m] for m in ventana) / len(ventana)
             brecha_informal = 100.0 * (cripto_prom / a3500_prom - 1.0)
             presion_informal = interpolar(brecha_informal, ANCLAS_INFORMAL)
-            presion = (
-                PESO_PRESION_FORMAL * presion_formal
-                + PESO_PRESION_INFORMAL * presion_informal
-            )
+            # ADR-0083: el MÁXIMO, no un promedio ponderado. Son canales
+            # sustitutos y promediarlos apaga la señal del que está activo.
+            presion = max(presion_formal, presion_informal)
         else:
             brecha_informal = None
             presion_informal = None

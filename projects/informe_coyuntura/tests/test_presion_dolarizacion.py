@@ -123,10 +123,14 @@ def test_regimen_abierto_suma_flujo_y_m2_antes_de_dividir():
     ]
 
 
-def test_regimen_abierto_combina_formal_e_informal_70_30():
-    """Con dólar cripto disponible, la presión del régimen abierto es el
-    promedio ponderado 70/30 (formal/informal) sobre la MISMA ventana que ya
-    usa el flujo formal (ADR-0057), no un promedio de brechas diarias aparte."""
+def test_regimen_abierto_toma_el_maximo_de_formal_e_informal():
+    """Con dólar cripto disponible, la presión del régimen abierto es el MÁXIMO
+    de los dos canales sobre la misma ventana que usa el flujo formal
+    (ADR-0083, que reemplaza el promedio ponderado 70/30 de ADR-0057).
+
+    El motivo: son canales SUSTITUTOS. Con el mercado abierto la demanda se va
+    por el formal y la brecha cripto se desploma, así que promediarlos apaga la
+    señal del canal que está activo."""
     meses = ("2025-04", "2025-05", "2025-06")
     m2, tc = _m2_y_tc(*meses)
     # brecha cripto/A3500 (tc=1000): 3%, 4%, 6% por mes
@@ -141,30 +145,56 @@ def test_regimen_abierto_combina_formal_e_informal_70_30():
         desde="2025-04",
     )
 
+    # En los tres meses domina el canal formal, así que la presión ES la formal
+    # y el informal queda registrado como componente sin diluirla.
     assert serie == [
         {
             "mes": "2025-04", "regimen": "flujo", "metrica": 5.0,
-            "presion": 36.67, "puntaje_itcm": 73.33,
+            "presion": 41.67, "puntaje_itcm": 68.33,
             "ventana_meses": 1, "ventana_parcial": True,
             "presion_formal": 41.67, "presion_informal": 25.0,
             "brecha_informal": 3.0,
         },
         {
             "mes": "2025-05", "regimen": "flujo", "metrica": 6.0,
-            "presion": 43.75, "puntaje_itcm": 66.25,
+            "presion": 50.0, "puntaje_itcm": 60.0,
             "ventana_meses": 2, "ventana_parcial": True,
             "presion_formal": 50.0, "presion_informal": 29.17,
             "brecha_informal": 3.5,
         },
         {
             "mes": "2025-06", "regimen": "flujo", "metrica": 8.0,
-            "presion": 54.58, "puntaje_itcm": 55.42,
+            "presion": 62.5, "puntaje_itcm": 47.5,
             "ventana_meses": 3, "ventana_parcial": False,
             "presion_formal": 62.5, "presion_informal": 36.11,
             "brecha_informal": 4.33,
         },
     ]
+    for fila in serie:
+        assert fila["presion"] == max(fila["presion_formal"], fila["presion_informal"])
 
+
+def test_el_canal_informal_manda_cuando_supera_al_formal():
+    """El caso que motiva el máximo: si la presión se muda al canal informal,
+    el indicador tiene que verla. Con el promedio 70/30, un informal de 100
+    contra un formal de 0 daba 30 —"presión baja"— cuando la mitad del mercado
+    estaba comprando dólares por afuera."""
+    meses = ("2025-04",)
+    m2, tc = _m2_y_tc(*meses)
+    serie = pdol.construir_serie(
+        brecha_ccl={},
+        demanda_neta_usd={"2025-04": 0.0},        # sin compras formales
+        m2_privado_ars=m2,
+        tc_a3500=tc,
+        cripto_mensual={"2025-04": 1200.0},       # brecha cripto 20%: máxima
+        desde="2025-04",
+    )
+    fila = serie[0]
+    assert fila["presion_formal"] == 0.0
+    assert fila["presion_informal"] == 100.0
+    assert fila["presion"] == 100.0, (
+        "con el canal formal en cero y el informal al máximo, la presión debe "
+        "ser 100 — el promedio 70/30 habría devuelto 30")
 
 def test_regimen_abierto_sin_cripto_para_toda_la_ventana_se_degrada_a_formal():
     """Si falta cripto para AL MENOS un mes de la ventana, no se mezcla nada

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-18 16:30:57"
+generado: "2026-07-18 16:48:39"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -29,7 +29,7 @@ schema_version: "1.2.0"
 | tcrm | 84.98 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
 | rem_ipc_12m | 22.3 | % anual esperado | 2026-06-30 | fresco |
 | idm | 6.37 | pp (brecha i.a. real) | 2026-06-01 | fresco |
-| presion_dolarizacion | 46.61 | pts (0-100) | 2026-05-01 | fresco |
+| presion_dolarizacion | 49.82 | pts (0-100) | 2026-05-01 | fresco |
 | iai | 0.31 | % i.a. ponderado | 2026-05-01 | fresco |
 | icip | 8.3 | % i.a. ponderado | 2026-04-01 | fresco |
 | credito_privado | 8.0 | % i.a. real | 2026-06-01 | fresco |
@@ -107,4 +107,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-07-18 16:30:57 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-18 16:48:39 — schema 1.2.0*

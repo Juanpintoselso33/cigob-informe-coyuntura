@@ -14,8 +14,8 @@ decisiones implementadas remiten a su ADR, que tiene el detalle técnico.
 | | |
 |---|---|
 | Observaciones de la auditoría | 13 indicadores + 3 brechas transversales |
-| **Implementadas** | 10 |
-| **Pendientes de decisión** | 1 |
+| **Implementadas** | 11 |
+| **Pendientes de decisión** | 0 |
 | **Rechazadas con fundamento** | 2 |
 | **Revertidas tras auditoría externa** | 1 |
 | ITCM | 57,2 → **62,2** · tensión 4,3 → **3,8** |
@@ -352,7 +352,6 @@ calcula en vivo— pero sí el texto de los ADRs:
 
 | # | Observación | Prioridad | Nota |
 |---|---|---|---|
-| 11 | **Sensibilidad del 70/30** de presión de dolarización | baja | **Ya calculado**: sobre 14 meses con ambos canales, mover a 50/50 u 85/15 cambia el puntaje hasta 20,4 puntos en el peor mes (oct-2025), que con peso efectivo 0,026 son **0,53 puntos de ITCM**. Falta decidir si se documenta o se recalibra. |
 | 12 | **Ambigüedad direccional del ICIP** declarada en ficha | baja | Los pagos al exterior por software se leen como capitalización o como dependencia tecnológica. |
 | 13 | **Reservas en meses de importaciones** como ancla alternativa | baja | La auditoría misma lo marca como no urgente. |
 

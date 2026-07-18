@@ -689,6 +689,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-13", cambio: "Se incorporó una primera señal basada en stocks de depósitos como cuarto componente de estabilidad monetaria." },
       { fecha: "2026-07-14", cambio: "La señal de stocks fue sustituida por presión de dolarización de carteras sensible al régimen, para evitar las distorsiones contemporáneas y de base del CERA." },
       { fecha: "2026-07-15", cambio: "El régimen abierto sumó un canal informal (brecha del dólar cripto contra el mayorista), combinado 70/30 con el canal formal — hasta ahora la presión del régimen abierto dependía solo de compras bancarizadas." },
+      { fecha: "2026-07-18", cambio: "Los dos canales del régimen abierto dejan de promediarse: la presión pasa a ser la mayor de las dos. Son canales sustitutos —cuando el mercado está abierto la demanda se vuelca al bancarizado y la brecha del cripto se desploma— y el promedio apagaba la señal del canal activo." },
     ],
   },
 
