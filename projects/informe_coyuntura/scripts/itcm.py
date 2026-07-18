@@ -129,6 +129,15 @@ BANDAS_ITCM = {
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],
+    "ipi_manufacturero": [              # % i.a. suavizado 3m — MISMAS bandas que el EMAE
+        # ADR-0076: se usan las bandas del EMAE a propósito. La industria oscila
+        # algo más que la actividad agregada, pero poco: sobre el período, el
+        # rango del IPI suavizado (26,0 pp) y el del EMAE (23,5 pp) son
+        # comparables. Ensancharlas "porque la industria es más cíclica" habría
+        # neutralizado justamente la señal que este indicador viene a aportar.
+        (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
+        (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
+    ],
     "tcrm": [                           # ITCRM oficial del BCRA (base 17-dic-2015=100)
         # Apreciación real = pérdida de competitividad y atraso cambiario = más tensión.
         # Bandas calibradas con la historia 1997-2026 (p10≈75, p25≈87, mediana≈106):
@@ -234,7 +243,11 @@ DIMENSIONES_ITCM = {
     "actividad": {
         "nombre": "Actividad económica",
         "peso": 0.11,
-        "indicadores": {"emae_ia": 1.0},
+        # ADR-0076: la dimensión dejó de colgar de un único dato. El EMAE sigue
+        # mandando —es la medida agregada oficial, cubre todos los sectores—
+        # y el IPI entra como segunda señal: mide sólo manufactura, pero se
+        # publica un mes antes y no siempre cuenta lo mismo.
+        "indicadores": {"emae_ia": 0.65, "ipi_manufacturero": 0.35},
     },
     "competitividad_externa": {
         "nombre": "Competitividad externa",

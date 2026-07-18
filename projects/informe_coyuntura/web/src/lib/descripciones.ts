@@ -37,6 +37,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Adelanta el ritmo del PBI: si la economía se expande o se contrae.",
     frecuencia: "Mensual", tipo: "Variación i.a.",
   },
+  ipi_manufacturero: {
+    que: "Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses.",
+    aporta: "Segunda lectura de la actividad, junto al EMAE: mide sólo la industria, pero se publica un mes antes y no siempre cuenta lo mismo que el agregado.",
+    frecuencia: "Mensual", tipo: "Variación i.a. (promedio 3 meses)",
+  },
   saldo_comercial_12m: {
     que: "El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses.",
     aporta: "Indica si el sector externo genera o drena los dólares que necesita el programa.",

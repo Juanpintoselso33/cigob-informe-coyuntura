@@ -364,13 +364,56 @@ export const FICHAS: Record<string, Ficha> = {
     dobleUso: "La misma serie se extrae también como insumo de contexto en el cinturón de vida cotidiana.",
     limitaciones: [
       "El EMAE es provisorio y el INDEC lo revisa hacia atrás con cada publicación; la serie del informe absorbe esas revisiones al regenerarse.",
-      "Es la única variable de su dimensión: el 11% del índice cuelga de un solo dato.",
+      "Comparte dimensión con el IPI manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y el 11% del índice colgaba de un solo dato.",
     ],
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión de actividad queda vacía y su peso se redistribuye entre las demás.",
     revisiones: "La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original como única variable de actividad; su peso de dimensión bajó de 15% a 13% y luego a 11% al incorporarse las dimensiones de competitividad e inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-07-18", cambio: "Deja de ser la única variable de la dimensión: pasa a pesar 65% junto al IPI manufacturero (35%)." },
+    ],
+  },
+
+  ipi_manufacturero: {
+    tipo: "indicador",
+    id: "ipi_manufacturero",
+    cinturon: "macro",
+    rezago: "El INDEC publica el IPI hacia mediados del mes siguiente al de referencia: llega aproximadamente un mes antes que el EMAE, y por eso la dimensión de actividad tiene hoy una lectura más fresca que la que tenía con el EMAE solo.",
+    fuente: {
+      organismo: "INDEC",
+      operacion: "IPI manufacturero — Índice de Producción Industrial, nivel general, serie original (base 2004 = 100)",
+      serie: "453.1_SERIE_ORIGNAL_0_0_14_46 · API de Series de Tiempo (datos.gob.ar)",
+      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-6-16",
+      acceso: "Automático: API pública de series de tiempo de datos.gob.ar.",
+    },
+    transformaciones: [
+      "Se calcula la variación interanual del nivel general contra el mismo mes del año anterior.",
+      "Se promedian los últimos tres meses de esa variación. El suavizado no es cosmético: la variación interanual del IPI original salta hasta nueve puntos porcentuales de un mes al siguiente por feriados móviles, cantidad de días hábiles y paradas de planta. El promedio de tres meses reduce el desvío de los cambios mensuales de 6,2 a 2,5 puntos sin agregar rezago apreciable.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "> 5", puntaje: 100 },
+        { banda: "3 – 5", puntaje: 80 },
+        { banda: "0 – 3", puntaje: 60 },
+        { banda: "−2 – 0", puntaje: 40 },
+        { banda: "−5 – −2", puntaje: 20 },
+        { banda: "≤ −5", puntaje: 5 },
+      ],
+      puntos: [[-5, 5], [-3.5, 20], [-1, 40], [1.5, 60], [4, 80], [5, 100]],
+      unidadCorta: "% i.a.",
+    },
+    dobleUso: "Son las mismas bandas del EMAE, deliberadamente. La industria oscila algo más que la actividad agregada, pero poco: sobre el período medido, el rango del IPI suavizado (26,0 puntos) y el del EMAE (23,5) son comparables. Ensanchar las bandas del IPI habría neutralizado justamente la señal que este indicador viene a aportar.",
+    limitaciones: [
+      "Mide sólo la industria manufacturera, alrededor de un sexto del producto: no es una medida de actividad agregada y no reemplaza al EMAE, lo acompaña.",
+      "El promedio de tres meses amortigua los cambios de nivel: un quiebre brusco tarda dos o tres meses en verse completo.",
+      "La serie es original, no desestacionalizada; la comparación interanual absorbe la estacionalidad pero no los efectos de calendario, que el suavizado atenúa sin eliminar.",
+      "El INDEC revisa el índice hacia atrás con cada publicación.",
+    ],
+    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda sólo con el EMAE y su peso se renormaliza.",
+    revisiones: "La fuente revisa la serie; el informe la regenera completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
+    cambios: [
+      { fecha: "2026-07-18", cambio: "Alta del indicador como segunda señal de actividad junto al EMAE, con 35% de la dimensión, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato." },
     ],
   },
 

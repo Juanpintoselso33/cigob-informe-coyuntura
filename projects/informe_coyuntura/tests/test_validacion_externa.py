@@ -57,6 +57,7 @@ def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
         "idc": None,
         "credito_privado": None,
         "emae_ia": None,
+        "ipi_manufacturero": None,
         "tcrm": None,
         "costo_financiamiento_tesoro": None,
         "resultado_primario": None,
@@ -97,3 +98,33 @@ def test_reconstruccion_itcp_mascara_de_era_para_eficacia(monkeypatch, tmp_path)
     assert por_mes["2025-12"]["eficacia_legislativa"] == 25.0   # cohorte 100% era
     # bloqueo_sostenido integra la reconstrucción (ADR-0069)
     assert "bloqueo_sostenido" in por_mes["2025-12"]
+
+
+# ── Guardia estructural de la reconstrucción del ITCM ────────────────────────
+
+def test_todo_indicador_del_itcm_con_serie_entra_a_la_reconstruccion():
+    """La reconstrucción histórica arma sus valores desde una lista escrita a
+    mano. Ya se coló un error por ahí: cuando entraron costo_financiamiento y
+    resultado_primario, la lista quedó vieja y la validación externa se fue
+    quedando atrás del índice EN SILENCIO — ningún gate lo detectaba, se
+    descubrió por auditoría.
+
+    Este test lo vuelve ruidoso: si un indicador del ITCM tiene serie mensual
+    publicada pero no entra a la reconstrucción, falla acá y no seis meses
+    después. Las excepciones son explícitas y hay que justificarlas.
+    """
+    import itcm
+    sin_serie = {"iai", "icip"}          # no tienen serie histórica publicada
+    del_indice = {ind for d in itcm.DIMENSIONES_ITCM.values() for ind in d["indicadores"]}
+
+    series = json.loads(validacion_externa.SERIES.read_text(encoding="utf-8"))
+    con_serie = {k for k in del_indice - sin_serie if series.get(k)}
+
+    valores = validacion_externa._valores_itcm_por_mes()
+    assert valores, "la reconstrucción no produjo ningún mes"
+    vistos = set().union(*(v.keys() for v in valores.values()))
+
+    faltan = con_serie - vistos
+    assert not faltan, (
+        f"indicadores del ITCM con serie que la reconstrucción ignora: {sorted(faltan)}. "
+        f"Agregalos en _valores_itcm_por_mes() o declaralos como excepción.")

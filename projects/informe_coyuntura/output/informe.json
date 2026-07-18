@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-18T13:50:52.898453",
+  "generated_at": "2026-07-18T14:13:40.873842",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 3.7,
+      "score": 3.8,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -75,7 +75,7 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 52.0,
           "puntaje_banda": 52.0,
-          "peso_efectivo": 0.048
+          "peso_efectivo": 0.0336
         },
         "badlar": {
           "valor": 21.0,
@@ -95,7 +95,19 @@
           "dimension": "actividad",
           "puntaje_itcm": 61.1,
           "puntaje_banda": 61.1,
-          "peso_efectivo": 0.11
+          "peso_efectivo": 0.0715
+        },
+        "ipi_manufacturero": {
+          "valor": -1.07,
+          "unidad": "% i.a. (promedio 3 meses)",
+          "fuente": "INDEC — IPI manufacturero, nivel general (vía datos.gob.ar)",
+          "fecha_dato": "2026-05-01",
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "actividad",
+          "puntaje_itcm": 39.4,
+          "puntaje_banda": 39.4,
+          "peso_efectivo": 0.0385
         },
         "saldo_comercial_12m": {
           "valor": 21221.0,
@@ -139,6 +151,8 @@
           "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
+          "var_mm": 0.8,
+          "salto_3m": 0.8,
           "en_indice": true,
           "dimension": "competitividad_externa",
           "puntaje_itcm": 47.5,
@@ -240,7 +254,7 @@
           "dimension": "financiamiento",
           "puntaje_itcm": 53.0,
           "puntaje_banda": 53.0,
-          "peso_efectivo": 0.0176
+          "peso_efectivo": 0.032
         },
         "costo_financiamiento_tesoro": {
           "valor": 8.07,
@@ -298,7 +312,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 62.7,
+        "valor": 61.8,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -406,14 +420,21 @@
           "actividad": {
             "nombre": "Actividad económica",
             "peso": 0.11,
-            "puntaje": 61.1,
+            "puntaje": 53.5,
             "indicadores": {
               "emae_ia": {
-                "peso": 1.0,
+                "peso": 0.65,
                 "puntaje_banda": 61.1,
                 "puntaje_aplicado": 61.1,
                 "valor": 1.64,
-                "peso_efectivo": 0.11
+                "peso_efectivo": 0.0715
+              },
+              "ipi_manufacturero": {
+                "peso": 0.35,
+                "puntaje_banda": 39.4,
+                "puntaje_aplicado": 39.4,
+                "valor": -1.07,
+                "peso_efectivo": 0.0385
               }
             },
             "peso_efectivo": 0.11

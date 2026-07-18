@@ -231,6 +231,8 @@ export const LABELS: Record<string, string> = {
   ipc_total: "Inflación mensual (IPC)", reservas_bcra: "Reservas netas",
   idc: "Capacidad prestable (IdC)", badlar: "Tasa BADLAR",
   emae_ia: "Actividad económica (EMAE i.a.)",
+  ipi_manufacturero: "Producción industrial (IPI i.a.)",
+  ipc_nucleo: "Inflación núcleo",
   saldo_comercial_12m: "Saldo comercial 12m", recaudacion: "Recaudación tributaria",
   tcrm: "Tipo de cambio real (TCRM)", rem_ipc_12m: "Expectativas inflación (REM 12m)",
   idm: "Desequilibrio monetario (IDM)",
@@ -309,6 +311,7 @@ export function aclaracion(b: Bucket, ind: Indicador): string | null {
 export const UNIDADES_CORTAS: Record<string, string> = {
   // macro
   ipc_total: "%", reservas_bcra: "US$ M netas", idc: "índice", badlar: "%", emae_ia: "% i.a.",
+  ipi_manufacturero: "% i.a.", ipc_nucleo: "%",
   saldo_comercial_12m: "US$ M", recaudacion: "% i.a. real", tcrm: "índice", rem_ipc_12m: "%",
   idm: "pp", presion_dolarizacion: "pts",
   iai: "% i.a.", icip: "% i.a.", credito_privado: "% i.a. real", costo_financiamiento_tesoro: "% real", resultado_primario: "% de la recaudación",
@@ -349,6 +352,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   ipc_total: "% mensual", reservas_bcra: "Millones de USD",
   idc: "Desvíos estándar vs. su historia (σ)",
   badlar: "% anual", emae_ia: "% interanual",
+  ipi_manufacturero: "% interanual (promedio 3 meses)", ipc_nucleo: "% mensual",
   saldo_comercial_12m: "Millones de USD (acum. 12 meses)",
   recaudacion: "% interanual real (promedio móvil 3 meses)",
   tcrm: "Índice (base dic-2015=100)", rem_ipc_12m: "% anual esperado",

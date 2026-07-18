@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-18 13:50:52"
+generado: "2026-07-18 14:13:40"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -13,7 +13,7 @@ schema_version: "1.2.0"
 
 ## Cinturones
 
-### 🟡 Macro — score 3.7/10 (en_tension)
+### 🟡 Macro — score 3.8/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -23,6 +23,7 @@ schema_version: "1.2.0"
 | idc | -0.24 | σ vs. su historia | 2026-06-01 | fresco |
 | badlar | 21.0 | % anual | 2026-07-16 | fresco |
 | emae_ia | 1.64 | % i.a. | 2026-04-01 | fresco |
+| ipi_manufacturero | -1.07 | % i.a. (promedio 3 meses) | 2026-05-01 | fresco |
 | saldo_comercial_12m | 21221.0 | Millones de USD (acum. 12 meses) | 2026-05-01 | fresco |
 | recaudacion | -3.16 | % i.a. real (prom. móvil 3 meses) | 2026-06-01 | fresco |
 | tcrm | 84.98 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
@@ -106,4 +107,4 @@ schema_version: "1.2.0"
 - `desactualizado:gestion:concesiones_infraestructura`
 
 ---
-*Generado por CIGOB — 2026-07-18 13:50:52 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-18 14:13:40 — schema 1.2.0*

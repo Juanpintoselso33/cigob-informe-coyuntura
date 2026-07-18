@@ -312,6 +312,24 @@ def fetch_emae_ia_serie() -> list:
     return [[f, round(v * 100, 2)] for f, v in sorted(fetch_indec("143.3_ICE_SERVIA_2004_A_25", limit=60))]
 
 
+def fetch_ipi_serie() -> list:
+    """IPI manufacturero: variación i.a. suavizada a 3 meses (ADR-0076), la
+    misma construcción que puntúa en la ficha. [[YYYY-MM-01, %]]."""
+    serie = macro._ipi_ia_por_mes()
+    return [[f"{ym}-01", v] for ym, v in sorted(serie.items()) if ym >= "2023-12"]
+
+
+def fetch_ipc_nucleo_serie() -> list:
+    """IPC núcleo nacional, % m/m derivado del nivel — acompaña al IPC general
+    en el gráfico comparado del modal (ADR-0077). No puntúa: sirve para que un
+    mes de corrección tarifaria no se confunda con uno de núcleo alta.
+    [[YYYY-MM-01, %]]."""
+    niveles = dict(sorted(fetch_indec("148.3_INUCLEONAL_DICI_M_19", limit=60)))
+    fechas = list(niveles)
+    return [[fechas[i], round((niveles[fechas[i]] / niveles[fechas[i - 1]] - 1) * 100, 2)]
+            for i in range(1, len(fechas)) if fechas[i] >= "2023-12"]
+
+
 def fetch_recaudacion_real_serie() -> list:
     """Recaudación total: variación i.a. REAL en PROMEDIO MÓVIL 3 MESES — la
     métrica del titular (ADR-0029: el interanual de un mes suelto hereda el
@@ -378,6 +396,9 @@ def fetch_resultado_primario_serie() -> list:
 MACRO_DERIVADAS = [
     ("ipc_total", "% mensual", "INDEC (derivado del nivel del IPC)", fetch_ipc_mm_serie),
     ("emae_ia", "% i.a.", "INDEC/datos.gob.ar", fetch_emae_ia_serie),
+    ("ipi_manufacturero", "% i.a. (promedio 3 meses)", "INDEC — IPI manufacturero (vía datos.gob.ar)", fetch_ipi_serie),
+    # acompaña al IPC general en el modal, no puntúa (ADR-0077)
+    ("ipc_nucleo", "% mensual", "INDEC — IPC núcleo nacional (vía datos.gob.ar)", fetch_ipc_nucleo_serie),
     ("recaudacion", "% i.a. real", "INDEC (recaudación) + IPC (deflactor)", fetch_recaudacion_real_serie),
     ("credito_privado", "% i.a. real", "BCRA (préstamos privados) + IPC INDEC", fetch_credito_privado_serie),
     ("costo_financiamiento_tesoro", "% real anual", "Sec. de Finanzas (colocaciones) + BCRA (REM)", fetch_costo_financiamiento_tesoro_serie),

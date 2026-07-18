@@ -41,6 +41,7 @@ FINANZAS_COLOCACIONES_URL = "https://www.argentina.gob.ar/economia/finanzas/deud
 # INDEC — series IDs verificados en datos.gob.ar
 INDEC_IPC_ID         = "148.3_INIVELNAL_DICI_M_26"     # IPC total nacional mensual
 INDEC_EMAE_IA_ID     = "143.3_ICE_SERVIA_2004_A_25"    # EMAE variación i.a. mensual (base 2004)
+INDEC_IPI_ID         = "453.1_SERIE_ORIGNAL_0_0_14_46"  # IPI manufacturero nivel general, serie original
 INDEC_SALDO_COM_ID   = "164.3_SOTALTAL_0_0_8"          # Saldo comercial total mensual (M USD) — FALLBACK, ~14 meses de rezago
 INDEC_EXPO_ICA_ID    = "74.3_IET_0_M_16"               # ICA exportaciones totales mensual (M USD)
 INDEC_IMPO_ICA_ID    = "74.3_IIT_0_M_25"               # ICA importaciones totales mensual (M USD)
@@ -85,7 +86,7 @@ logging.basicConfig(level=logging.WARNING, format="%(message)s")
 CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
-    "emae_ia", "saldo_comercial_12m", "recaudacion", "tcrm",
+    "emae_ia", "ipi_manufacturero", "saldo_comercial_12m", "recaudacion", "tcrm",
     "rem_ipc_12m", "idm", "presion_dolarizacion", "iai", "icip",
     "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
     "costo_financiamiento_tesoro", "resultado_primario",
@@ -609,6 +610,50 @@ def fetch_emae_ia() -> dict | None:
         }
     except Exception as e:
         _warn("emae_ia", e)
+        return None
+
+
+def _ipi_ia_por_mes() -> dict:
+    """{YYYY-MM: variación i.a. suavizada a 3 meses} del IPI manufacturero.
+
+    Se suaviza a propósito: la variación i.a. del IPI original salta ±9 pp de un
+    mes al siguiente (feriados móviles, días hábiles, paradas de planta), un
+    ruido que no dice nada sobre el estado de la industria. El promedio de tres
+    meses baja el desvío de los cambios mensuales de 6,2 a 2,5 pp sin agregar
+    rezago apreciable — la serie sigue siendo interanual, sólo deja de vibrar.
+    """
+    filas = _indec_serie(INDEC_IPI_ID, limit=5000)
+    idx = {f[:7]: v for f, v in filas if v}
+    ia = {}
+    for ym, val in idx.items():
+        anio, mes = int(ym[:4]), int(ym[5:7])
+        previo = f"{anio - 1}-{mes:02d}"
+        if idx.get(previo):
+            ia[ym] = (val / idx[previo] - 1) * 100
+    meses = sorted(ia)
+    return {m: round(sum(ia[x] for x in meses[max(0, i - 2):i + 1])
+                     / len(meses[max(0, i - 2):i + 1]), 2)
+            for i, m in enumerate(meses)}
+
+
+def fetch_ipi_manufacturero() -> dict | None:
+    """Segunda señal de actividad junto al EMAE (ADR-0076): producción
+    industrial manufacturera, variación i.a. suavizada a tres meses.
+
+    Publica un mes ANTES que el EMAE, así que además de dejar de colgar la
+    dimensión de un único dato, acorta el rezago con el que se lee actividad."""
+    try:
+        serie = _ipi_ia_por_mes()
+        ym = max(serie)
+        return {
+            "valor": serie[ym],
+            "unidad": "% i.a. (promedio 3 meses)",
+            "fuente": "INDEC — IPI manufacturero, nivel general (vía datos.gob.ar)",
+            "fecha_dato": f"{ym}-01",
+            "desactualizado": False,
+        }
+    except Exception as e:
+        _warn("ipi_manufacturero", e)
         return None
 
 
@@ -1506,6 +1551,7 @@ def main() -> None:
         ("idc",                fetch_idc),
         ("badlar",             fetch_badlar),
         ("emae_ia",            fetch_emae_ia),
+        ("ipi_manufacturero",  fetch_ipi_manufacturero),
         ("saldo_comercial_12m", fetch_saldo_comercial_12m),
         ("recaudacion",        fetch_recaudacion),
         ("tcrm",               fetch_tcrm),
