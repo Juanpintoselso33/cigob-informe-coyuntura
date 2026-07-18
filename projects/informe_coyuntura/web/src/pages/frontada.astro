@@ -6,6 +6,8 @@
 // (patrón BLUF, nunca quedan viejos). El delta "vs mes anterior" no se
 // muestra: no hay edición previa todavía (el archivo vuelve en agosto 2026).
 import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
 import { informe, CINTURONES, verdictDeCinturon, mesLegible } from "../lib/datos.ts";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -24,9 +26,10 @@ const MAP: Record<Key, { id: string; part: string; line: string }> = {
   espiritu_epoca: { id: "skin",    part: "Piel",             line: "La superficie que refleja el humor social y las ganas de quedarse o irse del país." },
 };
 
-const C:    Record<string, string> = { verde: "#16A34A", amarillo: "#D08A02", rojo: "#DC2626" };
-const INK:  Record<string, string> = { verde: "#0F7A38", amarillo: "#9A6400", rojo: "#B01B1B" };
-const SOFT: Record<string, string> = { verde: "#DCFCE7", amarillo: "#FBEDCF", rojo: "#FEE2E2" };
+// Semáforo del informe (dashboard.css :root) — mismos hex que el resto del tablero
+const C:    Record<string, string> = { verde: "#16A34A", amarillo: "#CA8A04", rojo: "#DC2626" };
+const INK:  Record<string, string> = { verde: "#0F7A38", amarillo: "#8A5D04", rojo: "#B01B1B" };
+const SOFT: Record<string, string> = { verde: "#DCFCE7", amarillo: "#FEF3C7", rojo: "#FEE2E2" };
 const LABEL:Record<string, string> = { verde: "Saludable", amarillo: "Alerta", rojo: "En crisis" };
 
 const SYS = ORDEN.map((key) => {
@@ -76,12 +79,13 @@ const fechaAct = `${gd[2]}/${gd[1]}/${gd[0]}`;
 const eyebrow = `Informe de coyuntura · CiGob · ${mesLegible(informe.period)}`;
 ---
 <Layout title="Gobernar la tensión · Informe de Coyuntura CiGob">
-  <div class="wrap">
-    <div class="shell">
-      <p class="eyebrow">{eyebrow}</p>
-      <h1>Gobernar la tensión</h1>
-      <p class="subtitle">El termómetro del proyecto de gobierno: qué sostiene, qué se resiente y adónde empieza a doler.</p>
+  <Nav />
+  <main class="cg-main frontada">
+    <header class="fr-head">
+      <p class="cg-eyebrow">{eyebrow}</p>
+      <h1 class="fr-h1">Gobernar la tensión: <em>el chequeo del cuerpo del gobierno.</em></h1>
       <p class="lead">Ningún gobierno puede cuidar todo al mismo tiempo. Este informe sigue, mes a mes, <b>qué parte del cuerpo del gobierno se fortalece y cuál se sacrifica</b> para lograrlo — leyendo la coyuntura como cinco sistemas de un mismo organismo.</p>
+    </header>
 
       <div class="clinic" id="clinic">
         <div class="stage">
@@ -169,48 +173,40 @@ const eyebrow = `Informe de coyuntura · CiGob · ${mesLegible(informe.period)}`
         <a class="btn ghost" href={`${base}/metodologia`}>Ir al anexo metodológico</a>
       </div>
 
-      <p class="foot">Actualizado el {fechaAct} · Fundación CiGob · Observatorio independiente de indicadores públicos</p>
-      <p class="credit">Silueta: <a href="https://commons.wikimedia.org/wiki/File:Human_body_silhouette.svg">M. Häggström</a> (dominio público). Órganos: <a href="https://game-icons.net">game-icons.net</a> (Lorc, Delapouite — CC BY 3.0).</p>
-    </div>
-  </div>
+      <p class="credit">Actualizado el {fechaAct}. Silueta: <a href="https://commons.wikimedia.org/wiki/File:Human_body_silhouette.svg">M. Häggström</a> (dominio público). Órganos: <a href="https://game-icons.net">game-icons.net</a> (Lorc, Delapouite — CC BY 3.0).</p>
+  </main>
+  <Footer />
 </Layout>
 
 <style>
-  .wrap{
-    --serif:'Montserrat', system-ui, sans-serif;
-    --sans:'Montserrat', system-ui, sans-serif;
-    --mono:'JetBrains Mono', ui-monospace, monospace;
-    --celeste:#4998DB; --celeste-dark:#2F6FB0; --celeste-deep:#1E5A96;
-    --celeste-soft:#CFE3F6; --celeste-tint:#EAF3FB;
-    --menta:#3E9486; --menta-dark:#2E6F65;
-    --dark:#0C1A26; --ink:#17262F; --muted:#5B6B75; --muted-soft:#93A2AC;
-    --bd:#DCE7EE; --bd-soft:#EAF0F4; --paper:#FFFFFF; --page:#F3F8FB;
-    font-family:var(--sans); color:var(--ink); background:var(--page);
-    -webkit-font-smoothing:antialiased; line-height:1.55; min-height:100vh}
-  .wrap *{box-sizing:border-box}
-  .shell{max-width:1120px; margin:0 auto; padding:34px 22px 72px}
+  /* Alineado al sistema visual del informe: usa los tokens globales de
+     dashboard.css (neutrales verdosos, radios, sombras, semáforo y los
+     colores por cinturón). Sin paleta propia. */
+  .frontada{padding-top:30px; line-height:1.55}
+  .frontada *{box-sizing:border-box}
+  .fr-head{max-width:960px; margin:0 0 30px}
+  .fr-h1{font-weight:800; font-size:clamp(30px,4.4vw,50px); line-height:1.1;
+    letter-spacing:-.02em; color:var(--dark); margin:0; text-wrap:balance}
+  .fr-h1 em{font-style:italic; color:var(--cta)}
+  .lead{font-size:16.5px; color:var(--muted); max-width:72ch; margin:16px 0 0; line-height:1.62}
+  .lead b{font-weight:700; color:var(--dark)}
 
-  .eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.15em;
-    text-transform:uppercase; color:var(--celeste-dark); margin:0 0 16px; font-weight:500}
-  .wrap h1{font-family:var(--serif); font-weight:800; font-size:clamp(42px,7.4vw,72px);
-    line-height:1.0; letter-spacing:-.018em; color:var(--dark); margin:0; text-wrap:balance}
-  .subtitle{font-family:var(--serif); font-style:italic; font-weight:500; font-size:clamp(18px,2.4vw,24px);
-    color:var(--menta); margin:14px 0 0; max-width:34ch; line-height:1.28}
-  .lead{font-size:16px; color:var(--ink); max-width:62ch; margin:20px 0 0}
-  .lead b{font-weight:600; color:var(--dark)}
-
+  /* Card principal con el mismo tratamiento que .cg-bluf: borde superior con
+     los cinco colores de cinturón. */
   .clinic{display:grid; grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
-    margin:32px 0 0; background:var(--paper); border:1px solid var(--bd); border-radius:22px;
-    overflow:hidden; box-shadow:0 3px 26px rgba(30,90,150,.07)}
-  .stage{position:relative; background:
-      radial-gradient(115% 80% at 50% 4%, #fff 0%, var(--celeste-tint) 70%, #E1EFFA 100%);
-    border-right:1px solid var(--bd-soft); display:flex; min-height:560px}
-  .stage-tag{position:absolute; top:16px; left:20px; z-index:2; font-family:var(--mono);
-    font-size:10.5px; letter-spacing:.15em; text-transform:uppercase; color:var(--celeste-dark)}
-  .figwrap{flex:1; display:flex; align-items:center; justify-content:center; padding:34px 10px 20px}
+    background:var(--paper); border:1px solid var(--bd); border-radius:var(--radius-big);
+    box-shadow:var(--shadow-card); overflow:hidden; position:relative}
+  .clinic::before{content:''; position:absolute; top:0; left:0; right:0; height:4px; z-index:3;
+    background:linear-gradient(90deg,var(--c-macro),var(--c-politica),var(--c-vida),var(--c-gestion),var(--c-humor))}
+  .stage{position:relative; display:flex; min-height:560px;
+    background:linear-gradient(180deg,#fff 0%,var(--bg-page) 100%);
+    border-right:1px solid var(--bd-soft)}
+  .stage-tag{position:absolute; top:20px; left:22px; z-index:2;
+    font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--teal)}
+  .figwrap{flex:1; display:flex; align-items:center; justify-content:center; padding:40px 10px 22px}
   .figure{width:100%; height:auto; max-height:520px; display:block; overflow:visible}
 
-  .body-base{fill:var(--celeste-soft); stroke:var(--celeste-dark); stroke-width:6; stroke-linejoin:round}
+  .body-base{fill:var(--teal-soft); stroke:var(--teal-dark); stroke-width:6; stroke-linejoin:round}
   .contour{fill:none; stroke-width:12; opacity:0; transition:opacity .4s; pointer-events:none;
     stroke-linejoin:round}
   .organ{cursor:pointer; transition:opacity .35s ease, transform .35s ease; transform-box:fill-box; transform-origin:center}
@@ -219,88 +215,95 @@ const eyebrow = `Informe de coyuntura · CiGob · ${mesLegible(informe.period)}`
   .organ .hit{fill:#000; opacity:0}
   .clinic.focusing .organ:not(.hot){opacity:.14}
   .clinic.focusing .organ.hot{transform:scale(1.06)}
-  .clinic.focusing.hot-skin .body-base{fill:var(--celeste-tint)}
+  .clinic.focusing.hot-skin .body-base{fill:#EAF3FB}
+  .scan{stroke:var(--teal); stroke-width:3; opacity:0}
 
-  .scan{stroke:var(--celeste); stroke-width:3; opacity:0}
+  .panel{padding:30px 30px 26px; display:flex; flex-direction:column}
+  .panel-head{font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--teal); margin:0 0 12px}
+  .verdict{font-weight:800; font-size:clamp(19px,1.6vw,23px); line-height:1.3;
+    letter-spacing:-.012em; color:var(--dark); margin:0 0 22px}
+  .verdict :global(.hl){background:linear-gradient(transparent 62%, var(--teal-soft) 62%); padding:0 2px}
 
-  .panel{padding:28px 28px 24px; display:flex; flex-direction:column}
-  .panel-head{font-family:var(--mono); font-size:10.5px; letter-spacing:.15em;
-    text-transform:uppercase; color:var(--muted); margin:0 0 12px}
-  .verdict{font-family:var(--serif); font-size:22px; line-height:1.32; color:var(--dark);
-    margin:0 0 22px; font-weight:600}
-  .verdict :global(.hl){background:linear-gradient(transparent 60%, var(--celeste-soft) 60%); padding:0 2px}
-
-  .diag{border:1px solid var(--bd); border-radius:15px; padding:19px 20px 17px;
-    background:var(--paper); position:relative; overflow:hidden}
-  .diag::before{content:""; position:absolute; left:0; top:0; bottom:0; width:5px; background:var(--dot)}
-  .diag-top{display:flex; align-items:baseline; gap:9px; flex-wrap:wrap; padding-left:4px}
-  .diag-part{font-family:var(--serif); font-size:27px; font-weight:700; color:var(--dark); line-height:1}
-  .diag-belt{font-size:13px; color:var(--muted); font-weight:500}
+  .diag{border:1px solid var(--bd); border-radius:var(--radius-card); padding:19px 20px 17px;
+    background:var(--paper); position:relative; overflow:hidden; box-shadow:var(--shadow-card)}
+  .diag::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--dot)}
+  .diag-top{display:flex; align-items:baseline; gap:9px; flex-wrap:wrap; padding-left:6px}
+  .diag-part{font-size:26px; font-weight:800; color:var(--dark); line-height:1; letter-spacing:-.015em}
+  .diag-belt{font-size:13px; color:var(--muted); font-weight:600}
   .diag-status{margin-left:auto; display:inline-flex; align-items:center; gap:7px;
-    font-size:12.5px; font-weight:700; padding:5px 12px; border-radius:999px;
-    color:var(--dot-ink); background:var(--dot-soft)}
+    font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+    padding:5px 12px; border-radius:999px; color:var(--dot-ink); background:var(--dot-soft)}
   .diag-status .d{width:8px; height:8px; border-radius:50%; background:var(--dot)}
   /* Altura reservada: las descripciones tienen largos distintos (el hígado
      entra en 1 línea, el resto en 2). Sin esto, cambiar de sistema achica la
      tarjeta, se acorta la fila del grid y la figura —centrada— salta. */
-  .diag-line{margin:12px 0 0; padding-left:4px; font-size:14.5px; color:var(--ink); line-height:1.5;
+  .diag-line{margin:12px 0 0; padding-left:6px; font-size:14.5px; color:var(--muted); line-height:1.5;
     min-height:3em}
-  .diag-metrics{display:flex; gap:26px; margin:16px 0 2px; padding-left:4px; align-items:flex-end}
-  .metric .n{font-family:var(--mono); font-size:27px; font-weight:700; color:var(--dark); line-height:1; font-variant-numeric:tabular-nums}
+  .diag-metrics{display:flex; gap:26px; margin:16px 0 2px; padding-left:6px; align-items:flex-end}
+  .metric .n{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:27px; font-weight:700;
+    color:var(--dark); line-height:1; font-variant-numeric:tabular-nums}
   .metric .n small{font-size:14px; color:var(--muted); font-weight:500}
-  .metric .l{font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.07em; margin-top:5px}
-  .diag-cta{display:inline-flex; align-items:center; gap:6px; margin-top:17px; padding-left:4px;
-    font-size:13.5px; font-weight:700; color:var(--menta-dark); text-decoration:none}
+  .metric .l{font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.08em; margin-top:6px}
+  .diag-cta{display:inline-flex; align-items:center; gap:6px; margin-top:17px; padding-left:6px;
+    font-size:13.5px; font-weight:800; color:var(--cta-dark); text-decoration:none}
   .diag-cta .arw{transition:transform .2s} .diag-cta:hover .arw{transform:translateX(3px)}
 
   .legend{margin:20px 0 0; border-top:1px solid var(--bd-soft); padding-top:12px}
   .lg-row{display:flex; align-items:center; gap:12px; width:100%; text-align:left;
-    padding:9px 8px; border:0; background:none; border-radius:10px; cursor:pointer; font-family:inherit; color:inherit; transition:background .15s}
-  .lg-row:hover,.lg-row:focus-visible{background:var(--celeste-tint); outline:none}
-  .lg-row.active{background:var(--celeste-tint)}
-  .lg-row.active .lg-part{color:var(--celeste-deep)}
+    padding:9px 8px; border:0; background:none; border-radius:10px; cursor:pointer;
+    font-family:inherit; color:inherit; transition:background .15s}
+  .lg-row:hover,.lg-row:focus-visible{background:var(--bg-page); outline:none}
+  .lg-row.active{background:var(--bg-page)}
+  .lg-row.active .lg-part{color:var(--teal-dark)}
   .lg-dot{width:11px; height:11px; border-radius:50%; flex:none; box-shadow:0 0 0 3px var(--d-soft)}
-  .lg-part{font-weight:600; font-size:14px; color:var(--dark)}
+  .lg-part{font-weight:700; font-size:14px; color:var(--dark)}
   .lg-belt{font-size:12px; color:var(--muted); margin-left:1px}
-  .lg-status{margin-left:auto; font-size:12px; font-weight:700; color:var(--d-ink)}
-  .lg-score{font-family:var(--mono); font-size:12.5px; color:var(--muted-soft); width:32px; text-align:right; font-variant-numeric:tabular-nums}
+  .lg-status{margin-left:auto; font-size:11px; font-weight:800; letter-spacing:.05em;
+    text-transform:uppercase; color:var(--d-ink)}
+  .lg-score{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:12.5px;
+    color:var(--muted-soft); width:34px; text-align:right; font-variant-numeric:tabular-nums}
 
   .tally{margin:14px 4px 0; font-size:12.5px; color:var(--muted); display:flex; gap:6px; flex-wrap:wrap}
-  .tally :global(b){color:var(--ink); font-weight:700} .tally :global(.sep){color:var(--muted-soft)}
+  .tally :global(b){color:var(--dark); font-weight:800} .tally :global(.sep){color:var(--muted-soft)}
 
-  .resumen{margin:30px 0 0; border-left:3px solid var(--menta); padding:2px 0 2px 20px; max-width:74ch}
-  .resumen .rh{font-family:var(--mono); font-size:10.5px; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin:0 0 10px}
-  .resumen p{margin:0; font-size:16.5px; line-height:1.6; color:var(--ink)}
-  .resumen p :global(b){font-weight:600; color:var(--dark)}
+  .resumen{margin:34px 0 0; border-left:3px solid var(--cta); padding:2px 0 2px 20px; max-width:78ch}
+  .resumen .rh{font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--teal); margin:0 0 10px}
+  .resumen p{margin:0; font-size:16.5px; line-height:1.62; color:var(--muted)}
+  .resumen p :global(b){font-weight:700; color:var(--dark)}
 
-  .ctas{display:flex; gap:12px; flex-wrap:wrap; margin:26px 0 0}
-  .btn{display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600;
-    padding:12px 21px; border-radius:12px; text-decoration:none; cursor:pointer; border:1.5px solid; transition:transform .12s, background .2s, border-color .2s}
-  .btn.primary{background:var(--celeste); border-color:var(--celeste); color:#fff}
-  .btn.primary:hover{background:var(--celeste-dark); border-color:var(--celeste-dark); transform:translateY(-1px)}
-  .btn.ghost{background:#fff; border-color:var(--bd); color:var(--ink)}
-  .btn.ghost:hover{border-color:var(--celeste); color:var(--celeste-deep); transform:translateY(-1px)}
+  .ctas{display:flex; gap:12px; flex-wrap:wrap; margin:28px 0 0}
+  .btn{display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:700;
+    padding:12px 22px; border-radius:12px; text-decoration:none; cursor:pointer;
+    border:1.5px solid; transition:transform .12s, background .2s, border-color .2s}
+  .btn.primary{background:var(--teal); border-color:var(--teal); color:#fff}
+  .btn.primary:hover{background:var(--teal-dark); border-color:var(--teal-dark); transform:translateY(-1px)}
+  .btn.ghost{background:var(--paper); border-color:var(--bd); color:var(--dark)}
+  .btn.ghost:hover{border-color:var(--teal); color:var(--teal-dark); transform:translateY(-1px)}
 
-  .foot{margin:42px 0 0; font-family:var(--mono); font-size:11px; color:var(--muted-soft); letter-spacing:.04em}
-  .credit{margin:8px 0 0; font-size:10.5px; color:var(--muted-soft)} .credit a{color:var(--muted)}
+  .credit{margin:30px 0 0; font-size:11.5px; color:var(--muted-soft); line-height:1.6}
+  .credit a{color:var(--muted)}
 
   @media (max-width:840px){
     .clinic{grid-template-columns:1fr}
     .stage{border-right:0; border-bottom:1px solid var(--bd-soft); min-height:440px}
-    .figure{max-height:410px} .verdict{font-size:19px}
+    .figure{max-height:410px}
+    .panel{padding:24px 20px 22px}
     /* en angosto las descripciones envuelven en 3 líneas: reservar una más */
     .diag-line{min-height:4.5em}
   }
   @keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.08)}28%{transform:scale(1)}42%{transform:scale(1.05)}56%{transform:scale(1)}}
   .organ.beat{animation:beat 1.7s ease-in-out infinite}
-  @media (prefers-reduced-motion:reduce){.wrap *{animation:none!important; transition:none!important}}
+  @media (prefers-reduced-motion:reduce){.frontada *{animation:none!important; transition:none!important}}
 </style>
 
 <script define:vars={{ SYS, DEFAULT }}>
   (function () {
-    var C = { verde: "#16A34A", amarillo: "#D08A02", rojo: "#DC2626" };
-    var INK = { verde: "#0F7A38", amarillo: "#9A6400", rojo: "#B01B1B" };
-    var SOFT = { verde: "#DCFCE7", amarillo: "#FBEDCF", rojo: "#FEE2E2" };
+    var C = { verde: "#16A34A", amarillo: "#CA8A04", rojo: "#DC2626" };
+    var INK = { verde: "#0F7A38", amarillo: "#8A5D04", rojo: "#B01B1B" };
+    var SOFT = { verde: "#DCFCE7", amarillo: "#FEF3C7", rojo: "#FEE2E2" };
     var LABEL = { verde: "Saludable", amarillo: "Alerta", rojo: "En crisis" };
     var byId = {}; SYS.forEach(function (s) { byId[s.id] = s; });
     var clinic = document.getElementById("clinic");
