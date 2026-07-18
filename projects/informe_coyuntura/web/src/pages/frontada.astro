@@ -240,7 +240,11 @@ const eyebrow = `Informe de coyuntura · CiGob · ${mesLegible(informe.period)}`
     font-size:12.5px; font-weight:700; padding:5px 12px; border-radius:999px;
     color:var(--dot-ink); background:var(--dot-soft)}
   .diag-status .d{width:8px; height:8px; border-radius:50%; background:var(--dot)}
-  .diag-line{margin:12px 0 0; padding-left:4px; font-size:14.5px; color:var(--ink); line-height:1.5}
+  /* Altura reservada: las descripciones tienen largos distintos (el hígado
+     entra en 1 línea, el resto en 2). Sin esto, cambiar de sistema achica la
+     tarjeta, se acorta la fila del grid y la figura —centrada— salta. */
+  .diag-line{margin:12px 0 0; padding-left:4px; font-size:14.5px; color:var(--ink); line-height:1.5;
+    min-height:3em}
   .diag-metrics{display:flex; gap:26px; margin:16px 0 2px; padding-left:4px; align-items:flex-end}
   .metric .n{font-family:var(--mono); font-size:27px; font-weight:700; color:var(--dark); line-height:1; font-variant-numeric:tabular-nums}
   .metric .n small{font-size:14px; color:var(--muted); font-weight:500}
@@ -284,6 +288,8 @@ const eyebrow = `Informe de coyuntura · CiGob · ${mesLegible(informe.period)}`
     .clinic{grid-template-columns:1fr}
     .stage{border-right:0; border-bottom:1px solid var(--bd-soft); min-height:440px}
     .figure{max-height:410px} .verdict{font-size:19px}
+    /* en angosto las descripciones envuelven en 3 líneas: reservar una más */
+    .diag-line{min-height:4.5em}
   }
   @keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.08)}28%{transform:scale(1)}42%{transform:scale(1.05)}56%{transform:scale(1)}}
   .organ.beat{animation:beat 1.7s ease-in-out infinite}
