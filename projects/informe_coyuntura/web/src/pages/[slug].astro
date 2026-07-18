@@ -24,6 +24,26 @@ const filasIndice = filas.filter(({ ind }) => ind.en_indice !== false);
 const filasContexto = filas.filter(({ ind }) => ind.en_indice === false);
 const fuentes = fuentesDeCinturon(c);
 const indice = indiceDe(c);   // ITCM / ITCG / ITVC / ITCP, o null (espíritu)
+// Los indicadores del índice se muestran AGRUPADOS por dimensión, en el mismo
+// orden en que se listan las dimensiones arriba: leer el detalle deja de ser
+// una grilla plana de quince cards y pasa a seguir la estructura del índice.
+// Dentro de cada grupo se conserva el orden de indicadoresOrdenados
+// (automatizados primero).
+const dimsDe = indice?.data.dimensiones ?? {};
+const gruposDim = Object.entries(dimsDe)
+  .map(([dkey, dim]) => ({
+    dkey,
+    nombre: dim.nombre,
+    puntaje: dim.puntaje,
+    peso: dim.peso,
+    critica: !!dim.critica,
+    filas: filasIndice.filter(({ key }) => key in (dim.indicadores ?? {})),
+  }))
+  .filter(g => g.filas.length > 0);
+// Red de seguridad: un indicador marcado en_indice pero que ninguna dimensión
+// reclama se mostraría igual, en vez de desaparecer sin que nadie se entere.
+const enAlgunGrupo = new Set(gruposDim.flatMap(g => g.filas.map(f => f.key)));
+const filasSinDimension = filasIndice.filter(({ key }) => !enAlgunGrupo.has(key));
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 // Gráfico de robustez (ADR-0019): la DISTRIBUCIÓN de la simulación Monte
@@ -225,9 +245,37 @@ const robChartData = rob?.hist && indice ? {
             : "Tocá cualquier indicador para ver qué mide, qué aporta y su evolución. Automatizados primero; carga manual y estimaciones al final."}
         </p>
       </div>
-      <div class="cg-tile-grid">
-        {filasIndice.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
-      </div>
+      {gruposDim.length > 0 ? (
+        <div class={`cg-dim-groups cg-dim-groups--${meta.slug}`} id="cg-dim-groups">
+          {gruposDim.map(g => (
+            <div class="cg-dim-group" data-grupo={g.dkey}>
+              <div class="cg-dim-group-head">
+                <h3 class="cg-dim-group-name">{g.nombre}</h3>
+                <span class="cg-dim-group-meta">
+                  <strong>{g.puntaje}</strong>{indice!.base100 ? "" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.length} {g.filas.length === 1 ? "indicador" : "indicadores"}
+                </span>
+              </div>
+              <div class="cg-tile-grid">
+                {g.filas.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+              </div>
+            </div>
+          ))}
+          {filasSinDimension.length > 0 && (
+            <div class="cg-dim-group" data-grupo="__sin_dimension">
+              <div class="cg-dim-group-head">
+                <h3 class="cg-dim-group-name">Sin dimensión asignada</h3>
+              </div>
+              <div class="cg-tile-grid">
+                {filasSinDimension.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div class="cg-tile-grid">
+          {filasIndice.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+        </div>
+      )}
     </section>
 
     {filasContexto.length > 0 && (
@@ -726,5 +774,71 @@ const robChartData = rob?.hist && indice ? {
       modal.addEventListener("click", (e) => { if (e.target === modal) cerrar(); });
       document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !modal.hasAttribute("hidden")) cerrar(); });
     }
-  </script>
+  
+  // Resaltado de indicadores por dimensión: al pasar el mouse (o enfocar con
+  // teclado) una card de dimensión se atenúan los grupos que no le pertenecen.
+  // El click FIJA el resaltado además de abrir el modal, así queda puesto
+  // cuando el modal se cierra; volver a clickear la misma dimensión lo suelta.
+  (() => {
+    const grupos = document.getElementById("cg-dim-groups");
+    if (!grupos) return;
+    const dims = document.querySelectorAll(".cg-itcm-dim[data-dimension]");
+    if (!dims.length) return;
+    let fijada = null;
+
+    const pintar = (dkey) => {
+      if (!dkey) {
+        grupos.removeAttribute("data-resalta");
+        grupos.querySelectorAll(".cg-dim-group").forEach(g => g.classList.remove("es-activo"));
+        dims.forEach(d => d.classList.remove("es-fuente"));
+        return;
+      }
+      grupos.setAttribute("data-resalta", dkey);
+      grupos.querySelectorAll(".cg-dim-group").forEach(g =>
+        g.classList.toggle("es-activo", g.dataset.grupo === dkey));
+      dims.forEach(d => d.classList.toggle("es-fuente", d.dataset.dimension === dkey));
+    };
+
+    dims.forEach(card => {
+      const dkey = card.dataset.dimension;
+      card.addEventListener("mouseenter", () => pintar(dkey));
+      card.addEventListener("focus", () => pintar(dkey));
+      card.addEventListener("mouseleave", () => pintar(fijada));
+      card.addEventListener("blur", () => pintar(fijada));
+      // El listener del modal ya vive en otro lado; acá se fija/suelta y, si
+      // el grupo quedó fuera de pantalla, se lo trae. Sin esto, hacer foco en
+      // una dimensión de abajo atenuaba todo lo visible sin nada iluminado a
+      // la vista, que se lee como si la página se hubiera roto.
+      card.addEventListener("click", () => {
+        fijada = fijada === dkey ? null : dkey;
+        pintar(fijada);
+        if (!fijada) return;
+        const grupo = grupos.querySelector(`.cg-dim-group[data-grupo="${dkey}"]`);
+        if (!grupo) return;
+        const r = grupo.getBoundingClientRect();
+        const visible = r.top >= 0 && r.top < window.innerHeight * 0.6;
+        if (!visible) grupo.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          fijada = fijada === dkey ? null : dkey;
+          pintar(fijada);
+        }
+      });
+    });
+
+    // Escape suelta el resaltado, PERO sólo si no hay un modal abierto: ahí
+    // Escape es para cerrarlo, y soltar el resaltado en el mismo golpe dejaba
+    // al lector sin el efecto justo cuando volvía a mirar los indicadores.
+    // En fase de CAPTURA: los handlers de los modales corren en burbujeo, así
+    // que si esperáramos el turno normal el modal ya estaría cerrado y siempre
+    // pareceria que no había ninguno abierto.
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape" || !fijada) return;
+      if (document.querySelector(".cg-modal:not([hidden])")) return;  // Escape es del modal
+      fijada = null;
+      pintar(null);
+    }, true);
+  })();
+</script>
 </Layout>

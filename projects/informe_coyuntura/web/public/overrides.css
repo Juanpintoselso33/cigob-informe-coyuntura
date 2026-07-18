@@ -697,3 +697,54 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   .cg-met-cta { flex-direction: column; align-items: flex-start; gap: 10px; }
   .cg-met-cta-num { font-size: 28px; }
 }
+
+/* ── Indicadores agrupados por dimensión ─────────────────────────────────── */
+.cg-dim-groups { display: flex; flex-direction: column; gap: 30px; }
+.cg-dim-group { scroll-margin-top: 80px; }
+.cg-dim-group-head {
+  display: flex; align-items: baseline; justify-content: center;
+  flex-wrap: wrap; gap: 10px; margin: 0 0 14px;
+  padding-bottom: 9px; border-bottom: 1px solid var(--bd);
+}
+.cg-dim-group-name {
+  margin: 0; font-size: 15px; font-weight: 800; color: var(--dark);
+  letter-spacing: .01em;
+}
+.cg-dim-group-meta { font-size: 12.5px; color: var(--muted); }
+.cg-dim-group-meta strong {
+  font-family: "JetBrains Mono", monospace; color: var(--dark); font-weight: 700;
+}
+
+/* Resaltado al hover/foco/click de una card de dimensión: los grupos que no
+   son se atenúan y el que sí toma el color del cinturón. La transición es
+   corta a propósito — pasar el mouse por las seis dimensiones no debe sentirse
+   como una animación. */
+.cg-dim-group { transition: opacity .18s ease; }
+.cg-dim-groups[data-resalta] .cg-dim-group { opacity: .28; }
+.cg-dim-groups[data-resalta] .cg-dim-group.es-activo { opacity: 1; }
+.cg-dim-group.es-activo .cg-dim-group-head { border-bottom-color: var(--rob-c, var(--teal)); }
+.cg-dim-group.es-activo .cg-dim-group-name { color: var(--rob-c, var(--teal)); }
+.cg-dim-group.es-activo .cg-tile {
+  border-color: var(--rob-c, var(--teal));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--rob-c, var(--teal)) 22%, transparent),
+              var(--shadow-hover);
+}
+/* La card de dimensión que originó el resaltado, marcada mientras dura */
+.cg-itcm-dim.es-fuente { box-shadow: 0 0 0 2px var(--rob-c, var(--teal)), var(--shadow-hover); }
+
+/* Color del cinturón dentro de los grupos (mismo mapeo que .cg-rob--*) */
+.cg-dim-groups--macro    { --rob-c: var(--c-macro); }
+.cg-dim-groups--politica { --rob-c: var(--c-politica); }
+.cg-dim-groups--vida     { --rob-c: var(--c-vida); }
+.cg-dim-groups--gestion  { --rob-c: var(--c-gestion); }
+.cg-dim-groups--espiritu { --rob-c: var(--c-humor); }
+
+/* Quien prefiera menos movimiento: se conserva el resaltado, se quita el fundido */
+@media (prefers-reduced-motion: reduce) {
+  .cg-dim-group { transition: none; }
+  .cg-dim-groups[data-resalta] .cg-dim-group { opacity: .55; }
+}
+@media (max-width: 640px) {
+  .cg-dim-groups { gap: 24px; }
+  .cg-dim-group-head { justify-content: flex-start; }
+}
