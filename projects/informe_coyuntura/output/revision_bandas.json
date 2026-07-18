@@ -104,24 +104,24 @@
     {
       "indice": "ITCM",
       "indicador": "idm",
-      "n": 31,
+      "n": 32,
       "piso": 10,
       "techo": 100,
       "share_piso": 0.0,
-      "share_techo": 0.355,
+      "share_techo": 0.375,
       "estado": "revisar",
-      "detalle": "35% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 31 meses"
+      "detalle": "38% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 32 meses"
     },
     {
       "indice": "ITCM",
-      "indicador": "recaudacion",
-      "n": 31,
+      "indicador": "ipc_total",
+      "n": 59,
       "piso": 10,
       "techo": 100,
-      "share_piso": 0.484,
+      "share_piso": 0.424,
       "share_techo": 0.0,
       "estado": "revisar",
-      "detalle": "48% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 31 meses"
+      "detalle": "42% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 59 meses"
     },
     {
       "indice": "ITCM",
@@ -191,6 +191,39 @@
     },
     {
       "indice": "ITCM",
+      "indicador": "emae_ia",
+      "n": 60,
+      "piso": 5,
+      "techo": 100,
+      "share_piso": 0.05,
+      "share_techo": 0.433,
+      "estado": "saturado",
+      "detalle": "43% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "iai",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.375,
+      "share_techo": 0.344,
+      "estado": "saturado",
+      "detalle": "38% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "icip",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.125,
+      "share_techo": 0.531,
+      "estado": "saturado",
+      "detalle": "53% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCM",
       "indicador": "ipi_manufacturero",
       "n": 30,
       "piso": 5,
@@ -199,6 +232,17 @@
       "share_techo": 0.2,
       "estado": "saturado",
       "detalle": "47% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "recaudacion",
+      "n": 58,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.362,
+      "share_techo": 0.017,
+      "estado": "saturado",
+      "detalle": "36% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
     },
     {
       "indice": "ITCP",
@@ -210,20 +254,6 @@
       "share_techo": 0.355,
       "estado": "saturado",
       "detalle": "35% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
-    },
-    {
-      "indice": "ITCM",
-      "indicador": "iai",
-      "n": 0,
-      "estado": "historia_corta",
-      "detalle": "0 meses: por debajo del mínimo de 18 para diagnosticar"
-    },
-    {
-      "indice": "ITCM",
-      "indicador": "icip",
-      "n": 0,
-      "estado": "historia_corta",
-      "detalle": "0 meses: por debajo del mínimo de 18 para diagnosticar"
     },
     {
       "indice": "ITCP",
@@ -296,33 +326,11 @@
     },
     {
       "indice": "ITCM",
-      "indicador": "emae_ia",
-      "n": 29,
-      "piso": 5,
-      "techo": 100,
-      "share_piso": 0.034,
-      "share_techo": 0.276,
-      "estado": "ok",
-      "detalle": "sin saturación relevante"
-    },
-    {
-      "indice": "ITCM",
       "indicador": "idc",
-      "n": 31,
+      "n": 32,
       "piso": 10,
       "techo": 100,
-      "share_piso": 0.161,
-      "share_techo": 0.0,
-      "estado": "ok",
-      "detalle": "sin saturación relevante"
-    },
-    {
-      "indice": "ITCM",
-      "indicador": "ipc_total",
-      "n": 31,
-      "piso": 10,
-      "techo": 100,
-      "share_piso": 0.161,
+      "share_piso": 0.156,
       "share_techo": 0.0,
       "estado": "ok",
       "detalle": "sin saturación relevante"
@@ -341,10 +349,10 @@
     {
       "indice": "ITCM",
       "indicador": "rem_ipc_12m",
-      "n": 31,
+      "n": 32,
       "piso": 10,
       "techo": 100,
-      "share_piso": 0.161,
+      "share_piso": 0.188,
       "share_techo": 0.0,
       "estado": "ok",
       "detalle": "sin saturación relevante"
@@ -363,22 +371,22 @@
     {
       "indice": "ITCM",
       "indicador": "saldo_comercial_12m",
-      "n": 30,
+      "n": 49,
       "piso": 10,
       "techo": 85,
       "share_piso": 0.0,
-      "share_techo": 0.333,
+      "share_techo": 0.204,
       "estado": "ok",
       "detalle": "sin saturación relevante"
     },
     {
       "indice": "ITCM",
       "indicador": "tcrm",
-      "n": 31,
+      "n": 32,
       "piso": 10,
       "techo": 100,
       "share_piso": 0.0,
-      "share_techo": 0.097,
+      "share_techo": 0.094,
       "estado": "ok",
       "detalle": "sin saturación relevante"
     },

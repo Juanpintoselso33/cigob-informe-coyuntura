@@ -52,46 +52,38 @@ SALIDA = ROOT / "output" / "revision_bandas.json"
 SATURACION_AVISO = 0.35      # 35% de los meses en un mismo extremo
 HISTORIA_MINIMA = 18         # con menos meses no se opina: la muestra manda
 
+def _escala(mod, sigla):
+    return getattr(mod, f"ESCALA_{sigla}", None) or parametrica.Escala(
+        getattr(mod, f"BANDAS_{sigla}"), getattr(mod, f"ANCLAS_{sigla}", None),
+        getattr(mod, f"TRANSFORMACIONES_{sigla}", None))
+
+
 INDICES = {
-    "ITCM": (itcm.BANDAS_ITCM, getattr(itcm, "ANCLAS_ITCM", {}), itcm.DIMENSIONES_ITCM),
-    "ITCG": (itcg.BANDAS_ITCG, getattr(itcg, "ANCLAS_ITCG", {}), itcg.DIMENSIONES_ITCG),
-    "ITCP": (itcp.BANDAS_ITCP, getattr(itcp, "ANCLAS_ITCP", {}), itcp.DIMENSIONES_ITCP),
+    "ITCM": (_escala(itcm, "ITCM"), itcm.DIMENSIONES_ITCM),
+    "ITCG": (_escala(itcg, "ITCG"), itcg.DIMENSIONES_ITCG),
+    "ITCP": (_escala(itcp, "ITCP"), itcp.DIMENSIONES_ITCP),
 }
 
 
-def _extremos(ind, bandas, anclas):
+def _extremos(ind, escala):
     """(piso, techo) de puntaje que la escala del indicador puede devolver."""
-    if ind in anclas:
-        posibles = [y for _, y in anclas[ind]]
+    if ind in escala.anclas:
+        posibles = [y for _, y in escala.anclas[ind]]
     else:
-        posibles = [b[2] for b in bandas[ind]]
+        posibles = [b[2] for b in escala.bandas[ind]]
     return min(posibles), max(posibles)
 
 
 def _valores_por_indicador(sigla: str, series: dict) -> dict:
-    """{indicador: [valores listos para puntuar]}.
+    """{indicador: [valores CRUDOS de su serie]}.
 
-    OJO con la diferencia entre lo que guarda la serie y lo que puntúa el
-    índice. El ITCM tiene un caso: `rem_ipc_12m` se publica como expectativa
-    ANUAL (24,2%) pero se puntúa por su equivalente MENSUAL (1,82%), contra
-    bandas mensuales. Puntuar el crudo daba 10 —el piso— en todos los meses, y
-    la primera versión de este diagnóstico mandaba a revisar una banda
+    Se pasan tal cual salen de la serie: si un indicador necesita
+    transformación previa (el REM se publica anual y se puntúa mensual), la
+    aplica `parametrica.puntaje_de` a partir de la tabla declarada junto a las
+    bandas (ADR-0082). Este módulo no la conoce ni tiene que conocerla — la
+    primera versión sí la conocía a medias y por eso mandó a revisar una banda
     perfectamente calibrada.
-
-    Por eso el ITCM no se lee de series.json sino de la reconstrucción de
-    validacion_externa, que ya aplica esa transformación y es la misma que
-    alimenta al índice. ITCG e ITCP pasan sus valores sin transformar, así que
-    para ellos la serie cruda es correcta.
     """
-    if sigla == "ITCM":
-        import validacion_externa
-        por_mes = validacion_externa._valores_itcm_por_mes()
-        out = {}
-        for vals in por_mes.values():
-            for ind, val in vals.items():
-                if val is not None:
-                    out.setdefault(ind, []).append(val)
-        return out
     return {ind: [p["valor"] for p in (pts or []) if p.get("valor") is not None]
             for ind, pts in series.items()}
 
@@ -99,11 +91,11 @@ def _valores_por_indicador(sigla: str, series: dict) -> dict:
 def diagnosticar() -> list:
     series = json.loads(SERIES.read_text(encoding="utf-8"))
     filas = []
-    for sigla, (bandas, anclas, dimensiones) in INDICES.items():
+    for sigla, (escala, dimensiones) in INDICES.items():
         del_indice = {i for d in dimensiones.values() for i in d["indicadores"]}
         por_indicador = _valores_por_indicador(sigla, series)
         for ind in sorted(del_indice):
-            if ind not in bandas and ind not in anclas:
+            if not escala.puntuable(ind):
                 continue
             valores = por_indicador.get(ind) or []
             if len(valores) < HISTORIA_MINIMA:
@@ -113,8 +105,8 @@ def diagnosticar() -> list:
                               f"{HISTORIA_MINIMA} para diagnosticar"})
                 continue
 
-            puntajes = [parametrica.puntaje_de(v, ind, bandas, anclas) for v in valores]
-            piso, techo = _extremos(ind, bandas, anclas)
+            puntajes = [escala.puntaje(v, ind) for v in valores]
+            piso, techo = _extremos(ind, escala)
             en_piso = sum(1 for p in puntajes if abs(p - piso) < 0.01) / len(puntajes)
             en_techo = sum(1 for p in puntajes if abs(p - techo) < 0.01) / len(puntajes)
 

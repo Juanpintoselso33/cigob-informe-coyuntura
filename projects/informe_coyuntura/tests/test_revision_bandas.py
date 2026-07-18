@@ -33,13 +33,17 @@ def test_el_diagnostico_puntua_igual_que_el_indice_publicado():
                   for d in bloque["dimensiones"].values()
                   for ik, i in d["indicadores"].items()}
 
-    valores = revision_bandas._valores_por_indicador("ITCM", {})
+    import json as _json
+    series = _json.loads((Path(__file__).parent.parent / "web" / "src" / "data"
+                          / "series.json").read_text(encoding="utf-8"))
+    valores = revision_bandas._valores_por_indicador("ITCM", series)
     comparados = 0
     for ind, serie in valores.items():
         if ind not in publicados or not serie:
             continue
         del_diagnostico = parametrica.puntaje_de(
-            serie[-1], ind, itcm.BANDAS_ITCM, itcm.ANCLAS_ITCM)
+            serie[-1], ind, itcm.BANDAS_ITCM, itcm.ANCLAS_ITCM,
+            itcm.TRANSFORMACIONES_ITCM)
         # tolerancia amplia: la reconstrucción puede terminar un mes antes que
         # la ficha viva. Lo que se busca es una divergencia de ESCALA, no de mes.
         assert abs(del_diagnostico - publicados[ind]) < 25.0, (
@@ -50,15 +54,24 @@ def test_el_diagnostico_puntua_igual_que_el_indice_publicado():
     assert comparados >= 8, f"solo se compararon {comparados} indicadores"
 
 
-def test_el_rem_no_se_puntua_con_su_valor_anual():
-    """Caso concreto del bug, pineado aparte: si alguien vuelve a leer la serie
-    cruda, el REM cae al piso y reaparece como falso positivo."""
-    valores = revision_bandas._valores_por_indicador("ITCM", {})
-    rem = valores.get("rem_ipc_12m") or []
-    assert rem, "el REM no llegó al diagnóstico"
-    assert all(v < 10 for v in rem), (
-        f"el REM llega al diagnóstico con valores anuales ({rem[-3:]}); "
-        "debería llegar como equivalente mensual")
+def test_el_rem_se_transforma_dentro_del_puntaje_y_no_antes():
+    """Caso concreto del bug que motivó ADR-0082, pineado aparte.
+
+    La serie del REM guarda el valor ANUAL y así debe llegar a quien puntúe:
+    la conversión a equivalente mensual la hace `puntaje_de` a partir de
+    TRANSFORMACIONES_ITCM. Si alguien la sacara de ahí, el valor anual se
+    puntuaría contra bandas mensuales y el indicador caería al piso siempre."""
+    assert "rem_ipc_12m" in itcm.TRANSFORMACIONES_ITCM
+
+    anual = 23.3
+    con_transformacion = parametrica.puntaje_de(
+        anual, "rem_ipc_12m", itcm.BANDAS_ITCM, itcm.ANCLAS_ITCM,
+        itcm.TRANSFORMACIONES_ITCM)
+    sin_transformacion = parametrica.puntaje_interpolado(
+        anual, itcm.BANDAS_ITCM["rem_ipc_12m"])
+
+    assert sin_transformacion == 10.0, "sin transformar, el REM cae al piso"
+    assert con_transformacion > 75.0, con_transformacion
 
 
 def test_el_diagnostico_no_recomienda_recalibrar_por_si_solo():

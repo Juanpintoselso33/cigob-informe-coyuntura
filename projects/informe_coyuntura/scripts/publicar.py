@@ -346,7 +346,8 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
                 # Solo el ITCM tiene indicadores deflactados por el IPC
                 # (ADR-0078); los demás índices no comparten deflactor.
                 exposicion=(sensibilidad.EXPOSICION_DEFLACTOR_ITCM
-                            if sigla == "ITCM" else None))
+                            if sigla == "ITCM" else None),
+                transformaciones=getattr(mod, f"TRANSFORMACIONES_{sigla}", None))
         except Exception as e:
             print(f"[WARN] robustez {sigla}: {e}")
         _marcar_dimensiones_criticas(bloque, UMBRAL_CRITICO_BANDAS)

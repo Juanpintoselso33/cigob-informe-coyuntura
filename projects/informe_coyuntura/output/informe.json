@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-18T15:59:02.079519",
+  "generated_at": "2026-07-18T16:30:57.916506",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -330,7 +330,7 @@
                 "peso": 0.25,
                 "puntaje_banda": 81.2,
                 "puntaje_aplicado": 81.2,
-                "valor": 1.6917,
+                "valor": 22.3,
                 "peso_efectivo": 0.065
               },
               "idm": {

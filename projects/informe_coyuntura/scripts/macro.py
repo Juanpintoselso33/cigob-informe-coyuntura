@@ -1474,8 +1474,10 @@ def calcular_itcm_cinturon(indicadores: dict) -> dict | None:
     automático. No hay regla automática para el TCRM: se probó una y se
     descartó por doble conteo con la dimensión monetaria (ADR-0073, rechazado).
 
-    El REM se puntúa por su EQUIVALENTE MENSUAL (raíz 12), no por el nivel
-    anual, para bandearlo con la misma escala mensual del IPC."""
+    El REM se puntúa por su EQUIVALENTE MENSUAL (raíz 12) y no por el nivel
+    anual, pero de eso se encarga el motor: la transformación está declarada
+    junto a las bandas (TRANSFORMACIONES_ITCM, ADR-0082) y acá se pasan los
+    valores crudos."""
     ajustes = {}
     auto_saldo = itcm.ajuste_automatico_saldo(indicadores.get("saldo_comercial_12m", {}))
     if auto_saldo:
@@ -1484,8 +1486,6 @@ def calcular_itcm_cinturon(indicadores: dict) -> dict | None:
     ajustes.update(itcm.cargar_ajustes(AJUSTES_PATH, periodo))
     valores = {nombre: indicadores.get(nombre, {}).get("valor")
                for nombre in itcm.BANDAS_ITCM}
-    rem = valores.get("rem_ipc_12m")
-    valores["rem_ipc_12m"] = itcm.rem_mensual_equivalente(rem) if rem is not None else None
     return itcm.calcular_itcm(valores, ajustes)
 
 

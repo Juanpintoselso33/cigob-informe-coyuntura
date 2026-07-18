@@ -21,7 +21,11 @@ import itcm
 # reservas_bcra, recaudacion, idc, idm y tcrm son los que el colector alimenta.
 # Desde el ADR-0021 el puntaje es INTERPOLADO entre las anclas de las bandas
 # (banda de referencia entre paréntesis):
-#   * rem_ipc_12m  = equivalente MENSUAL del REM (raíz 12). 1,76% → 79,8 (banda 85).
+#   * rem_ipc_12m  = expectativa ANUAL del REM, CRUDA. El motor la convierte a
+#     su equivalente mensual (raíz 12) porque así lo declara TRANSFORMACIONES_ITCM
+#     (ADR-0082): 23,3% anual → 1,76% mensual → 79,8 (banda 85). El fixture pasa
+#     el valor crudo a propósito: si pasara el mensual ya convertido, el motor lo
+#     convertiría de nuevo — que es justo el acoplamiento que ADR-0082 eliminó.
 #   * recaudacion  = variación i.a. REAL (deflactada). 1,82% → 57,3 (banda 60).
 #   * reservas_bcra= NETAS (Machado). 1.881M → 25,0 (banda 30).
 #   * idc          = IdC en z-scores (σ vs. historia, ADR-0028). −0,31 → 49,7 (banda 60).
@@ -36,7 +40,7 @@ import itcm
 # crédito 15%) actividad=100 competitividad=45,7 inversión=54,7 → ITCM=62,8.
 EJEMPLO = {
     "ipc_total": 2.58,             # interpolado 63,7 (banda 65)
-    "rem_ipc_12m": 1.76,           # equiv. mensual: 79,8 (banda 85)
+    "rem_ipc_12m": 23.3,           # ANUAL crudo → 1,76% mensual → 79,8 (banda 85)
     "idm": 4.5,                    # gap i.a. real: 51,7 (banda 60)
     "presion_dolarizacion": 45.24,   # presión de carteras 0-100: 64,8
     "recaudacion": 1.82,           # i.a. real: 57,3 (banda 60)

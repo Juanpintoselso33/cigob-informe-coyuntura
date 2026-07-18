@@ -33,12 +33,13 @@ def test_perturbacion_de_presion_repuntua_con_anclas_explicitas():
         }
     }
 
+    # ADR-0082: _perturbar recibe la ESCALA del índice —bandas, anclas y
+    # transformaciones juntas— y no las tablas por separado.
     resultado = sensibilidad._perturbar(
         dims,
         _RuidoMaximo(),
         pesos=False,
-        bandas=itcm.BANDAS_ITCM,
-        anclas=itcm.ANCLAS_ITCM,
+        escala=itcm.ESCALA_ITCM,
     )
 
     # +5% del rango crudo 0-100: 45,24 → 50,24; anclas ITCM → 59,8.

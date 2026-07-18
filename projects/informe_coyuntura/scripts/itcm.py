@@ -317,6 +317,31 @@ def rem_mensual_equivalente(rem_anual_pct: float) -> float:
     return ((1.0 + rem_anual_pct / 100.0) ** (1.0 / 12.0) - 1.0) * 100.0
 
 
+# Transformaciones que se aplican al valor ANTES de puntuarlo (ADR-0082).
+#
+# Van declaradas acá, al lado de BANDAS_ITCM y ANCLAS_ITCM, y las aplica el
+# motor. Antes cada llamador las aplicaba por su cuenta antes de invocar al
+# índice, y quien no se acordaba puntuaba el valor crudo contra la banda
+# equivocada — pasó tres veces: la reconstrucción histórica, la matriz de
+# redundancia y el diagnóstico de bandas. Con la transformación declarada junto
+# a la escala, no hay forma de puntuar sin ella.
+def rem_anual_desde_mensual(mensual_pct: float) -> float:
+    """Inversa de rem_mensual_equivalente: 1,76% mensual → 23,3% anual."""
+    return ((1.0 + mensual_pct / 100.0) ** 12 - 1.0) * 100.0
+
+
+# Cada entrada es (directa, INVERSA). La inversa no es decorativa: la
+# simulación de sensibilidad perturba el valor CRUDO, y para saber cuánto es
+# "±5% del ancho entre anclas" necesita ese ancho expresado en las unidades del
+# valor crudo, no en las de la banda. Sin ella, el ruido del REM se calculaba
+# sobre un ancho mensual y se aplicaba a un valor anual.
+TRANSFORMACIONES_ITCM = {
+    # La serie guarda la expectativa ANUAL; la banda es MENSUAL, la misma
+    # escala del IPC.
+    "rem_ipc_12m": (rem_mensual_equivalente, rem_anual_desde_mensual),
+}
+
+
 # Ponderación interna del IdC — los pesos conceptuales del doc "260626
 # aportes" se conservan; los componentes son z-scores desde el ADR-0028.
 IDC_PESOS = {"precio": 0.30, "volumen": 0.40, "asignacion": 0.30}
@@ -331,6 +356,12 @@ def indice_capacidad_prestable(precio: float, volumen: float, asignacion: float)
     return (IDC_PESOS["precio"] * precio
             + IDC_PESOS["volumen"] * volumen
             + IDC_PESOS["asignacion"] * asignacion)
+
+
+# La escala del ITCM, armada una sola vez: bandas + anclas + transformaciones.
+# Todo lo que reproduzca puntajes del índice usa ESTO y no las tablas sueltas
+# (ADR-0082).
+ESCALA_ITCM = parametrica.Escala(BANDAS_ITCM, ANCLAS_ITCM, TRANSFORMACIONES_ITCM)
 
 
 def texto_bandas(indicador: str) -> str:
@@ -373,7 +404,7 @@ def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
         return None
     if valor <= 5000:                # sin superávit relevante: la banda ya lo castiga
         return None
-    p_banda = parametrica.puntaje_de(valor, "saldo_comercial_12m", BANDAS_ITCM, ANCLAS_ITCM)
+    p_banda = ESCALA_ITCM.puntaje(valor, "saldo_comercial_12m")
     if p_banda <= 60:
         return None
     mejora_expo = max(0.0, d_expo)
@@ -415,4 +446,5 @@ def calcular_itcm(valores: dict, ajustes: dict | None = None) -> dict | None:
     return parametrica.calcular_indice(
         valores, ajustes, BANDAS_ITCM, DIMENSIONES_ITCM,
         BANDAS_INTERPRETACION, INTERPRETACION_LEGIBLE,
-        anclas_por_indicador=ANCLAS_ITCM)
+        anclas_por_indicador=ANCLAS_ITCM,
+        transformaciones_por_indicador=TRANSFORMACIONES_ITCM)

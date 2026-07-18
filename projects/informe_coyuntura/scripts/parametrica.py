@@ -133,22 +133,81 @@ def cargar_ajustes(path: Path, periodo: str) -> dict:
     }
 
 
+class Escala:
+    """Todo lo necesario para convertir un valor CRUDO en puntaje, junto.
+
+    Existe porque puntuar exige saber tres cosas —qué bandas, si hay anclas
+    explícitas, y si el valor se transforma antes— y mientras se pasaran por
+    separado, alguien olvidaba una. Pasó CUATRO veces (ADR-0082), la última
+    dentro del arreglo de la tercera: la matriz de redundancia llamaba a la
+    función correcta pero sin las transformaciones, y volvió a publicar un
+    número equivocado.
+
+    Con la escala armada una sola vez por índice, olvidarse una parte deja de
+    ser posible: no hay parámetro que omitir.
+    """
+
+    __slots__ = ("bandas", "anclas", "transformaciones")
+
+    def __init__(self, bandas: dict, anclas: dict | None = None,
+                 transformaciones: dict | None = None):
+        self.bandas = bandas or {}
+        self.anclas = anclas or {}
+        self.transformaciones = transformaciones or {}
+
+    def puntaje(self, valor, indicador: str) -> float:
+        """Puntaje 0-100 del valor crudo del indicador."""
+        return puntaje_de(valor, indicador, self.bandas, self.anclas,
+                          self.transformaciones)
+
+    def span_crudo(self, indicador: str) -> float | None:
+        """Ancho entre anclas finitas, EN LAS UNIDADES DEL VALOR CRUDO.
+
+        Lo usa la simulación de sensibilidad, que perturba el valor crudo: si
+        el indicador se transforma antes de puntuar, sus anclas están en
+        unidades de la banda y hay que traerlas con la inversa declarada."""
+        if indicador in self.anclas:
+            ancs = [float(x) for x, _ in self.anclas[indicador]]
+        elif indicador in self.bandas:
+            inf = float("inf")
+            ancs = [a for b in self.bandas[indicador] for a in b[:2] if abs(a) != inf]
+        else:
+            return None
+        t = self.transformaciones.get(indicador)
+        if isinstance(t, tuple):
+            ancs = [t[1](a) for a in ancs]
+        return (max(ancs) - min(ancs)) if ancs else None
+
+    def puntuable(self, indicador: str) -> bool:
+        return indicador in self.bandas or indicador in self.anclas
+
+
 def puntaje_de(valor, indicador: str, bandas_por_indicador: dict,
-               anclas_por_indicador: dict | None = None) -> float:
-    """Puntaje de banda de UN indicador, eligiendo la escala correcta.
+               anclas_por_indicador: dict | None = None,
+               transformaciones_por_indicador: dict | None = None) -> float:
+    """Puntaje de banda de UN indicador, a partir de su valor CRUDO.
 
-    Existe para que no haya dos lugares que decidan esto por su cuenta. Algunos
-    indicadores tienen anclas explícitas que NO coinciden con los puntos medios
-    de sus bandas —`presion_dolarizacion` es el caso: por bandas, un valor de 75
-    da 10 puntos y por anclas da 35—, así que puntuarlo con la tabla equivocada
-    devuelve un número que el índice nunca usa.
+    Único camino de "valor de la serie" a "puntaje". Resuelve las dos cosas que
+    hay que saber para puntuar, y que antes vivían separadas:
 
-    Ya pasó: la matriz de redundancia interna (ADR-0075) puntuaba por bandas
-    mientras el motor puntuaba por anclas, y contaminó las correlaciones
-    publicadas hasta que lo detectó una auditoría externa. De ahí que el motor
-    y todo lo que reproduzca sus puntajes llamen a esta función.
+      1. QUÉ ESCALA. Algunos indicadores tienen anclas explícitas que NO
+         coinciden con los puntos medios de sus bandas: `presion_dolarizacion`
+         con valor 75 da 10 puntos por bandas y 35 por anclas.
+      2. SI EL VALOR SE TRANSFORMA ANTES. `rem_ipc_12m` se publica como
+         expectativa ANUAL (24,2%) y se puntúa por su equivalente MENSUAL
+         (1,82%), contra bandas mensuales.
+
+    Las dos cosas se olvidaron en producción, tres veces entre las dos (ADR-0082
+    documenta los casos). Mientras la información necesaria para puntuar viva en
+    un lado y el acto de puntuar en otro, la próxima es cuestión de tiempo: acá
+    están juntas, y el motor pasa por esta función.
     """
     anclas_por_indicador = anclas_por_indicador or {}
+    transformaciones_por_indicador = transformaciones_por_indicador or {}
+    if indicador in transformaciones_por_indicador:
+        t = transformaciones_por_indicador[indicador]
+        directa = t[0] if isinstance(t, tuple) else t
+        valor = directa(float(valor))
     if indicador in anclas_por_indicador:
         return puntaje_desde_anclas(float(valor), anclas_por_indicador[indicador])
     return puntaje_interpolado(float(valor), bandas_por_indicador[indicador])
@@ -157,7 +216,8 @@ def puntaje_de(valor, indicador: str, bandas_por_indicador: dict,
 def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: dict,
                     dimensiones: dict, bandas_interpretacion: list,
                     interpretacion_legible: dict,
-                    anclas_por_indicador: dict | None = None) -> dict | None:
+                    anclas_por_indicador: dict | None = None,
+                    transformaciones_por_indicador: dict | None = None) -> dict | None:
     """Calcula el índice 0-100 a partir de {indicador: valor} (None se ignora).
 
     Renormaliza pesos ante faltantes: dentro de cada dimensión entre los
@@ -181,7 +241,8 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
             if valor is None:
                 continue
             p_banda = puntaje_de(
-                valor, ikey, bandas_por_indicador, anclas_por_indicador
+                valor, ikey, bandas_por_indicador, anclas_por_indicador,
+                transformaciones_por_indicador
             )
             p_aplicado = p_banda
             if ikey in ajustes:

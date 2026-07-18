@@ -117,9 +117,9 @@ def _agregar(dims: dict) -> float:
 
 
 def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
-               bandas: dict | None, anclas: dict | None = None,
+               escala: "parametrica.Escala | None",
                exposicion: dict | None = None) -> float:
-    anclas = anclas or {}
+    escala = escala or parametrica.Escala({})
     exposicion = exposicion or {}
     # Un ÚNICO error de deflactor por corrida, compartido por todos los
     # indicadores que lo heredan (ADR-0078). Es lo que hace que sus errores no
@@ -133,7 +133,7 @@ def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
         for ik, i in d["ind"].items():
             if pesos:
                 i["peso"] *= rng.uniform(1 - RUIDO_PESO, 1 + RUIDO_PESO)
-            puntuable = (bandas and ik in bandas) or ik in anclas
+            puntuable = escala.puntuable(ik)
             if puntuable and i.get("valor") is not None \
                     and i.get("banda") == i["puntaje"]:   # con override no se perturba
                 # Ruido ADITIVO: ±RUIDO_INSUMO del ancho entre anclas finitas
@@ -141,15 +141,9 @@ def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
                 # la incertidumbre de los indicadores con signo o centrados en
                 # cero (IdC en σ, IDM en pp): ±5% de un valor cercano a 0 no
                 # perturba nada.
-                if ik in anclas:
-                    ancs = [float(x) for x, _ in anclas[ik]]
-                else:
-                    inf_ = float("inf")
-                    ancs = [
-                        a for banda in bandas[ik] for a in banda[:2]
-                        if abs(a) != inf_
-                    ]
-                span = (max(ancs) - min(ancs)) if ancs else abs(float(i["valor"])) or 1.0
+                # El ancho sale de la ESCALA, ya expresado en las unidades
+                # del valor CRUDO que se perturba (ADR-0082).
+                span = escala.span_crudo(ik) or abs(float(i["valor"])) or 1.0
                 idio = rng.uniform(-RUIDO_INSUMO, RUIDO_INSUMO)
                 exp = exposicion.get(ik, 0.0)
                 if exp:
@@ -160,7 +154,7 @@ def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
                 else:
                     ruido = idio
                 v = float(i["valor"]) + ruido * span
-                i["puntaje"] = parametrica.puntaje_de(v, ik, bandas, anclas)
+                i["puntaje"] = escala.puntaje(v, ik)
     return _agregar(d2)
 
 
@@ -173,7 +167,8 @@ def _resumen(muestras: list) -> dict:
 
 def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
                     n_draws: int = N_DRAWS,
-                    anclas: dict | None = None) -> dict:
+                    anclas: dict | None = None,
+                    transformaciones: dict | None = None) -> dict:
     """Análisis completo de un bloque de índice publicado (dimensiones con
     puntajes): experimentos de pesos/bandas/combinado + leave-one-out.
     Función PURA sobre el bloque — la usa este script y también publicar.py
@@ -181,18 +176,19 @@ def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
     dims = _estructura(bloque)
     base = _agregar(dims)
     rng = random.Random(SEMILLA)
+    escala = parametrica.Escala(bandas, anclas, transformaciones) if bandas else None
 
     exp = {"pesos": [], "combinado": []}
     if bandas:
         exp["insumos"] = []
     for _ in range(n_draws):
-        exp["pesos"].append(_perturbar(dims, rng, pesos=True, bandas=None))
+        exp["pesos"].append(_perturbar(dims, rng, pesos=True, escala=None))
         if bandas:
             exp["insumos"].append(_perturbar(
-                dims, rng, pesos=False, bandas=bandas, anclas=anclas
+                dims, rng, pesos=False, escala=escala
             ))
         exp["combinado"].append(_perturbar(
-            dims, rng, pesos=True, bandas=bandas, anclas=anclas
+            dims, rng, pesos=True, escala=escala
         ))
 
     loo = {}
@@ -219,7 +215,8 @@ def analizar_bloque(bloque: dict, bandas: dict | None, tension_fn,
 def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
                       n_draws: int = 1000, n_bins: int = 36,
                       anclas: dict | None = None,
-                      exposicion: dict | None = None) -> dict:
+                      exposicion: dict | None = None,
+                      transformaciones: dict | None = None) -> dict:
     """Versión compacta para el snapshot publicado: rango p05-p95 del
     experimento combinado + su traducción a tensión + el componente dominante
     (mayor |Δ| del leave-one-out) + el HISTOGRAMA de la simulación (n_bins
@@ -227,9 +224,9 @@ def robustez_compacta(bloque: dict, bandas: dict | None, tension_fn,
     distribución de la web."""
     dims = _estructura(bloque)
     rng = random.Random(SEMILLA)
+    escala = parametrica.Escala(bandas, anclas, transformaciones) if bandas else None
     draws = [
-        _perturbar(dims, rng, pesos=True, bandas=bandas, anclas=anclas,
-                   exposicion=exposicion)
+        _perturbar(dims, rng, pesos=True, escala=escala, exposicion=exposicion)
         for _ in range(n_draws)
     ]
     qs = statistics.quantiles(draws, n=20)

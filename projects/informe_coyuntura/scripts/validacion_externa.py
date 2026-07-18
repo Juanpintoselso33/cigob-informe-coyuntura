@@ -207,8 +207,7 @@ def _valores_itcm_por_mes() -> dict:
     return {
         ym: {
             "ipc_total": ipc_mm.get(ym),
-            "rem_ipc_12m": (itcm.rem_mensual_equivalente(rem[ym])
-                            if ym in rem else None),
+            "rem_ipc_12m": rem.get(ym),   # crudo: lo transforma el motor
             "saldo_comercial_12m": saldo_12m(ym),
             **{k: v.get(ym) for k, v in directos.items()},
         }
@@ -249,13 +248,12 @@ def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
     puntajes = {}
     for ym, valores in por_mes.items():
         for ind, val in valores.items():
-            if val is None or ind not in itcm.BANDAS_ITCM:
+            if val is None or not itcm.ESCALA_ITCM.puntuable(ind):
                 continue
-            # puntaje_de y no puntaje_interpolado: presion_dolarizacion tiene
-            # anclas explícitas que no coinciden con los puntos medios de sus
-            # bandas, y puntuarla por bandas daba un número que el índice no usa.
-            puntajes.setdefault(ind, {})[ym] = parametrica.puntaje_de(
-                val, ind, itcm.BANDAS_ITCM, itcm.ANCLAS_ITCM)
+            # La ESCALA del índice, no las tablas sueltas: trae bandas,
+            # anclas y transformaciones juntas (ADR-0082). Puntuar con una
+            # parte sola ya publicó dos números equivocados.
+            puntajes.setdefault(ind, {})[ym] = itcm.ESCALA_ITCM.puntaje(val, ind)
 
     inds = sorted(puntajes)
     matriz, pares = {}, []
