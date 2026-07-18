@@ -128,3 +128,33 @@ def test_todo_indicador_del_itcm_con_serie_entra_a_la_reconstruccion():
     assert not faltan, (
         f"indicadores del ITCM con serie que la reconstrucción ignora: {sorted(faltan)}. "
         f"Agregalos en _valores_itcm_por_mes() o declaralos como excepción.")
+
+
+def test_la_matriz_puntua_con_la_misma_escala_que_el_indice():
+    """Bug encontrado por auditoría externa (18-jul-2026): la matriz de
+    redundancia puntuaba TODO por bandas, pero el motor usa anclas explícitas
+    para presion_dolarizacion, y no coinciden (valor 75 → 10 por bandas, 35 por
+    anclas). La matriz correlacionaba un puntaje que el índice nunca usa,
+    contradiciendo la premisa declarada de ADR-0075.
+
+    Este test compara, para cada indicador con anclas, el puntaje que produce
+    la matriz contra el que produce el motor.
+    """
+    import itcm
+    import parametrica
+
+    assert itcm.ANCLAS_ITCM, "sin anclas explícitas este test no prueba nada"
+    for ind, anclas in itcm.ANCLAS_ITCM.items():
+        for valor in (0.0, 25.0, 50.0, 75.0, 100.0):
+            del_motor = parametrica.puntaje_de(valor, ind, itcm.BANDAS_ITCM, itcm.ANCLAS_ITCM)
+            por_anclas = parametrica.puntaje_desde_anclas(valor, anclas)
+            assert del_motor == por_anclas, (ind, valor, del_motor, por_anclas)
+
+    # y que efectivamente difieran de las bandas: si coincidieran, el test de
+    # arriba pasaría por casualidad y no protegería nada
+    ind = next(iter(itcm.ANCLAS_ITCM))
+    difieren = any(
+        parametrica.puntaje_de(v, ind, itcm.BANDAS_ITCM, itcm.ANCLAS_ITCM)
+        != parametrica.puntaje_interpolado(v, itcm.BANDAS_ITCM[ind])
+        for v in (25.0, 50.0, 75.0))
+    assert difieren, f"{ind}: anclas y bandas dan lo mismo, el test no protege nada"

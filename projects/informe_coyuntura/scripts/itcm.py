@@ -373,7 +373,7 @@ def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
         return None
     if valor <= 5000:                # sin superávit relevante: la banda ya lo castiga
         return None
-    p_banda = parametrica.puntaje_interpolado(float(valor), BANDAS_ITCM["saldo_comercial_12m"])
+    p_banda = parametrica.puntaje_de(valor, "saldo_comercial_12m", BANDAS_ITCM, ANCLAS_ITCM)
     if p_banda <= 60:
         return None
     mejora_expo = max(0.0, d_expo)

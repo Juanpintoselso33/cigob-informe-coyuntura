@@ -251,8 +251,11 @@ def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
         for ind, val in valores.items():
             if val is None or ind not in itcm.BANDAS_ITCM:
                 continue
-            puntajes.setdefault(ind, {})[ym] = parametrica.puntaje_interpolado(
-                float(val), itcm.BANDAS_ITCM[ind])
+            # puntaje_de y no puntaje_interpolado: presion_dolarizacion tiene
+            # anclas explícitas que no coinciden con los puntos medios de sus
+            # bandas, y puntuarla por bandas daba un número que el índice no usa.
+            puntajes.setdefault(ind, {})[ym] = parametrica.puntaje_de(
+                val, ind, itcm.BANDAS_ITCM, itcm.ANCLAS_ITCM)
 
     inds = sorted(puntajes)
     matriz, pares = {}, []

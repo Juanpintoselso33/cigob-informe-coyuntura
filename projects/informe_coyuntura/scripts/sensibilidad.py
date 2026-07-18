@@ -160,10 +160,7 @@ def _perturbar(dims: dict, rng: random.Random, *, pesos: bool,
                 else:
                     ruido = idio
                 v = float(i["valor"]) + ruido * span
-                if ik in anclas:
-                    i["puntaje"] = parametrica.puntaje_desde_anclas(v, anclas[ik])
-                else:
-                    i["puntaje"] = parametrica.puntaje_interpolado(v, bandas[ik])
+                i["puntaje"] = parametrica.puntaje_de(v, ik, bandas, anclas)
     return _agregar(d2)
 
 

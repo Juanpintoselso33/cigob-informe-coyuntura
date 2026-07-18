@@ -133,6 +133,27 @@ def cargar_ajustes(path: Path, periodo: str) -> dict:
     }
 
 
+def puntaje_de(valor, indicador: str, bandas_por_indicador: dict,
+               anclas_por_indicador: dict | None = None) -> float:
+    """Puntaje de banda de UN indicador, eligiendo la escala correcta.
+
+    Existe para que no haya dos lugares que decidan esto por su cuenta. Algunos
+    indicadores tienen anclas explícitas que NO coinciden con los puntos medios
+    de sus bandas —`presion_dolarizacion` es el caso: por bandas, un valor de 75
+    da 10 puntos y por anclas da 35—, así que puntuarlo con la tabla equivocada
+    devuelve un número que el índice nunca usa.
+
+    Ya pasó: la matriz de redundancia interna (ADR-0075) puntuaba por bandas
+    mientras el motor puntuaba por anclas, y contaminó las correlaciones
+    publicadas hasta que lo detectó una auditoría externa. De ahí que el motor
+    y todo lo que reproduzca sus puntajes llamen a esta función.
+    """
+    anclas_por_indicador = anclas_por_indicador or {}
+    if indicador in anclas_por_indicador:
+        return puntaje_desde_anclas(float(valor), anclas_por_indicador[indicador])
+    return puntaje_interpolado(float(valor), bandas_por_indicador[indicador])
+
+
 def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: dict,
                     dimensiones: dict, bandas_interpretacion: list,
                     interpretacion_legible: dict,
@@ -159,14 +180,9 @@ def calcular_indice(valores: dict, ajustes: dict | None, bandas_por_indicador: d
             valor = valores.get(ikey)
             if valor is None:
                 continue
-            if ikey in anclas_por_indicador:
-                p_banda = puntaje_desde_anclas(
-                    float(valor), anclas_por_indicador[ikey]
-                )
-            else:
-                p_banda = puntaje_interpolado(
-                    float(valor), bandas_por_indicador[ikey]
-                )
+            p_banda = puntaje_de(
+                valor, ikey, bandas_por_indicador, anclas_por_indicador
+            )
             p_aplicado = p_banda
             if ikey in ajustes:
                 p_aplicado = ajustes[ikey]["puntaje"]
