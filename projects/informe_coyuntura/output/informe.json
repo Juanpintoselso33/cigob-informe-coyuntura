@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-18T13:10:01.284776",
+  "generated_at": "2026-07-18T13:28:47.594311",
   "period": "2026-07",
-  "score_global": 2.7,
+  "score_global": 2.6,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 4.2,
+      "score": 3.7,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -113,7 +113,7 @@
           "dimension": "viabilidad_fiscal_comercial",
           "puntaje_itcm": 85.0,
           "puntaje_banda": 85.0,
-          "peso_efectivo": 0.096
+          "peso_efectivo": 0.048
         },
         "recaudacion": {
           "valor": -3.16,
@@ -131,7 +131,7 @@
           "dimension": "viabilidad_fiscal_comercial",
           "puntaje_itcm": 32.1,
           "puntaje_banda": 32.1,
-          "peso_efectivo": 0.144
+          "peso_efectivo": 0.072
         },
         "tcrm": {
           "valor": 84.98,
@@ -258,6 +258,19 @@
           "puntaje_banda": 78.9,
           "peso_efectivo": 0.04
         },
+        "resultado_primario": {
+          "valor": 6.39,
+          "unidad": "% de la recaudación (acum. 12 meses)",
+          "fuente": "Sec. de Hacienda — IMIG (resultado primario) + recaudación (vía datos.gob.ar)",
+          "fecha_dato": "2026-05-01",
+          "detalle_txt": "2026-05: superávit primario de 6.4% de la recaudación acumulada de doce meses",
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "viabilidad_fiscal_comercial",
+          "puntaje_itcm": 87.9,
+          "puntaje_banda": 87.9,
+          "peso_efectivo": 0.12
+        },
         "prestamos_privados": {
           "valor": 2.78,
           "unidad": "% mensual nominal",
@@ -285,9 +298,9 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 58.5,
-        "banda": "moderadamente_apretado",
-        "banda_legible": "Moderadamente apretado",
+        "valor": 62.7,
+        "banda": "moderadamente_aflojado",
+        "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "estabilidad_monetaria": {
             "nombre": "Estabilidad monetaria-inflacionaria",
@@ -328,21 +341,28 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.24,
-            "puntaje": 53.3,
+            "puntaje": 70.6,
             "indicadores": {
+              "resultado_primario": {
+                "peso": 0.5,
+                "puntaje_banda": 87.9,
+                "puntaje_aplicado": 87.9,
+                "valor": 6.39,
+                "peso_efectivo": 0.12
+              },
               "recaudacion": {
-                "peso": 0.6,
+                "peso": 0.3,
                 "puntaje_banda": 32.1,
                 "puntaje_aplicado": 32.1,
                 "valor": -3.16,
-                "peso_efectivo": 0.144
+                "peso_efectivo": 0.072
               },
               "saldo_comercial_12m": {
-                "peso": 0.4,
+                "peso": 0.2,
                 "puntaje_banda": 85.0,
                 "puntaje_aplicado": 85.0,
                 "valor": 21221.0,
-                "peso_efectivo": 0.096
+                "peso_efectivo": 0.048
               }
             },
             "peso_efectivo": 0.24

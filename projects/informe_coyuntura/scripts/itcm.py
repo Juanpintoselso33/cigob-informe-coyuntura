@@ -136,6 +136,13 @@ BANDAS_ITCM = {
         # 75-85 apreciación marcada · ≤75 atraso severo.
         (110.0, INF, 100), (95.0, 110.0, 80), (85.0, 95.0, 60), (75.0, 85.0, 35), (-INF, 75.0, 10),
     ],
+    "resultado_primario": [             # % de la recaudación (acum. 12 meses)
+        # ADR-0072. Superávit primario del SPN sobre recaudación, ventana de 12
+        # meses. Monótona: más superávit = más sostenible. Referencias: dic-2023
+        # dio −12,0% (déficit) y el programa se estabilizó en torno a +6/+8%.
+        (8.0, INF, 100), (4.0, 8.0, 85), (0.0, 4.0, 60),
+        (-5.0, 0.0, 30), (-INF, -5.0, 10),
+    ],
     "costo_financiamiento_tesoro": [    # % real anual (TIREA vs. inflación esperada REM)
         # ADR-0071. ÚNICA banda de U INVERTIDA del ITCM: los dos extremos son
         # malos. Tasa real muy negativa = represión financiera (el Tesoro coloca
@@ -192,7 +199,17 @@ DIMENSIONES_ITCM = {
     "viabilidad_fiscal_comercial": {
         "nombre": "Viabilidad fiscal-comercial",
         "peso": 0.24,
-        "indicadores": {"recaudacion": 0.6, "saldo_comercial_12m": 0.4},
+        # ADR-0072: entra el RESULTADO primario y pasa a liderar la dimensión.
+        # La recaudación baja de 60% a 30% y se reinterpreta como lo que es —un
+        # indicador de actividad y formalidad de la base imponible—, no como la
+        # medida de la viabilidad fiscal. Composición tomada de la auditoría de
+        # consistencia (50/30/20); verificado que 45/30/25 y 40/30/30 mueven la
+        # dimensión menos de 0,3 puntos con los datos vigentes.
+        "indicadores": {
+            "resultado_primario": 0.5,
+            "recaudacion": 0.3,
+            "saldo_comercial_12m": 0.2,
+        },
     },
     "financiamiento": {
         "nombre": "Capacidad y costo del financiamiento",

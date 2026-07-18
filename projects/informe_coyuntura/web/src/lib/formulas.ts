@@ -47,6 +47,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\left(\frac{1+\text{crecim. nominal del cr\'edito}}{1+\text{inflaci\'on}}-1\right)\times 100`,
     leyenda: "Préstamos al sector privado (BCRA), variación interanual descontada la inflación: el crédito que efectivamente llegó, no el que infló la nominalidad.",
   },
+  resultado_primario: {
+    latex: String.raw`\frac{\sum_{12m}\text{resultado primario}}{\sum_{12m}\text{recaudaci\'on}}\times 100`,
+    leyenda: "Resultado primario del Estado nacional acumulado en doce meses, dividido por la recaudación del mismo período: de cada peso recaudado, cuánto sobra antes de pagar intereses.",
+  },
   costo_financiamiento_tesoro: {
     latex: String.raw`\left(\frac{1+\text{tasa efectiva de colocaci\'on}}{1+\text{inflaci\'on esperada}}-1\right)\times 100`,
     leyenda: "Tasa efectiva anual promedio de las licitaciones del mes, ponderada por el monto colocado, descontada la inflación esperada a doce meses.",

@@ -449,7 +449,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     limitaciones: [
       "El promedio trimestral mitiga pero no elimina el calendario tributario; antes del suavizado, el índice oscilaba varios puntos por puro ruido de vencimientos.",
-      "Es el componente más pesado del índice (14,4%): cualquier defecto acá es el que más mueve el titular.",
+      "Mide INGRESOS, no resultado fiscal: la recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y ninguno de los dos casos dice por sí solo si las cuentas del Estado cierran. Por eso la dimensión incorporó el resultado primario, y este indicador se lee como lo que es: una señal de actividad y formalidad de la base imponible.",
       "Deflactor único (IPC nacional), sin deflactor específico de la base imponible.",
     ],
     faltantes: "Con menos de tres meses reales disponibles, se mantiene el último valor disponible, señalado como desactualizado; sin dato, el saldo comercial pasa a explicar toda la dimensión fiscal-comercial.",
@@ -459,6 +459,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06-26", cambio: "Pasa a variación interanual real deflactada por IPC: la variación nominal confundía inflación con recaudación." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "Pasa a promedio móvil de tres meses sobre meses con IPC cerrado; el mes fresco queda como provisorio sin puntuar." },
+      { fecha: "2026-07-18", cambio: "Baja del 60% al 30% de la dimensión y se reinterpreta como indicador de actividad y formalidad de la base imponible: la viabilidad fiscal pasa a medirse con el resultado primario, que entra como componente principal." },
     ],
   },
 
@@ -766,6 +767,47 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-03", cambio: "Nace y entra al índice: rescata la única señal no redundante de los cuatro contextos nominales (que dejan de publicarse); la dimensión de financiamiento queda 45% reservas + 40% IdC + 15% crédito." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes con IPC cerrado; el dato diario fresco queda como provisorio (antes se deflactaba el préstamo del día con un IPC de dos meses atrás)." },
+    ],
+  },
+
+  resultado_primario: {
+    tipo: "indicador",
+    id: "resultado_primario",
+    cinturon: "macro",
+    rezago: "Un mes: el informe de ingresos y gastos se publica en la segunda quincena del mes siguiente.",
+    fuente: {
+      organismo: "Secretaría de Hacienda (resultado primario) + recaudación nacional",
+      operacion: "Informe mensual de ingresos y gastos del Sector Público Nacional, y recaudación tributaria total",
+      serie: "Resultado primario mensual y recaudación total mensual, ambos en millones de pesos",
+      url: "https://www.argentina.gob.ar/economia/hacienda",
+      acceso: "Automático: API de series de tiempo del Estado nacional.",
+    },
+    transformaciones: [
+      "Ambas series se acumulan en ventanas de doce meses. El resultado primario mensual es fuertemente estacional —diciembre da déficit todos los años por el aguinaldo y el cierre del ejercicio, enero da superávit alto—, así que puntuar el mes suelto marcaría un colapso fiscal cada diciembre.",
+      "El resultado acumulado se divide por la recaudación acumulada del mismo período: de cada peso que recauda el Estado, cuánto le sobra después de gastar, antes de pagar intereses.",
+      "Se normaliza contra la recaudación y no contra el producto ni contra los precios: no hay producto nominal mensual publicado, y usar el índice de precios sumaría una dependencia más a un deflactor que ya interviene en otros cuatro indicadores del índice.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ −5", puntaje: 10 },
+        { banda: "−5 – 0", puntaje: 30 },
+        { banda: "0 – 4", puntaje: 60 },
+        { banda: "4 – 8", puntaje: 85 },
+        { banda: "> 8", puntaje: 100 },
+      ],
+      puntos: [[-5, 10], [-2.5, 30], [2, 60], [6, 85], [8, 100]],
+      unidadCorta: "% de la recaudación",
+    },
+    limitaciones: [
+      "El denominador es la recaudación tributaria, no el total de ingresos del Sector Público Nacional: sirve como escala estable y comparable en el tiempo, pero no es un cociente entre magnitudes del mismo universo contable.",
+      "Es resultado primario: excluye los intereses de la deuda. Un superávit primario alto convive con déficit financiero si la carga de intereses es grande.",
+      "La ventana de doce meses suaviza la estacionalidad pero también demora en reflejar un cambio de régimen fiscal: un giro brusco tarda meses en verse completo.",
+      "No mide la calidad del ajuste: el mismo resultado puede alcanzarse recortando gasto de capital o licuando jubilaciones, y el indicador no los distingue.",
+    ],
+    faltantes: "Sin una ventana completa de doce meses se conserva el último valor disponible, señalado como desactualizado; la recaudación y el saldo comercial renormalizan dentro de la dimensión.",
+    revisiones: "Las cifras fiscales pueden revisarse en publicaciones posteriores; la serie se regenera completa desde diciembre de 2023 en cada actualización.",
+    cambios: [
+      { fecha: "2026-07-18", cambio: "Nace y entra como componente principal de la dimensión fiscal-comercial (50%), que hasta entonces medía la viabilidad fiscal por los ingresos: la recaudación baja al 30% y el saldo comercial al 20%." },
     ],
   },
 

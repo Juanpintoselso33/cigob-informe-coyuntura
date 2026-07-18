@@ -825,6 +825,36 @@ fecha,indicador,valor,unidad,fuente
 2022-08-01,saldo_comercial,-296.0,M USD,INDEC/datos.gob.ar (ICA expo−impo)
 2022-07-01,saldo_comercial,-484.0,M USD,INDEC/datos.gob.ar (ICA expo−impo)
 2022-06-01,saldo_comercial,-231.0,M USD,INDEC/datos.gob.ar (ICA expo−impo)
+2026-05-01,resultado_primario,6.39,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2026-04-01,resultado_primario,6.46,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2026-03-01,resultado_primario,6.69,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2026-02-01,resultado_primario,6.71,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2026-01-01,resultado_primario,6.68,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-12-01,resultado_primario,6.43,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-11-01,resultado_primario,7.43,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-10-01,resultado_primario,7.12,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-09-01,resultado_primario,7.21,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-08-01,resultado_primario,7.39,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-07-01,resultado_primario,7.16,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-06-01,resultado_primario,6.86,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-05-01,resultado_primario,6.88,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-04-01,resultado_primario,7.4,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-03-01,resultado_primario,7.26,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-02-01,resultado_primario,7.43,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2025-01-01,resultado_primario,7.81,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-12-01,resultado_primario,7.92,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-11-01,resultado_primario,7.82,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-10-01,resultado_primario,7.01,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-09-01,resultado_primario,6.55,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-08-01,resultado_primario,5.9,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-07-01,resultado_primario,5.38,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-06-01,resultado_primario,4.42,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-05-01,resultado_primario,3.42,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-04-01,resultado_primario,-0.02,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-03-01,resultado_primario,-1.03,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-02-01,resultado_primario,-2.78,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2024-01-01,resultado_primario,-6.09,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
+2023-12-01,resultado_primario,-12.02,% de la recaudación (12m),Sec. de Hacienda — IMIG + recaudación
 2026-05-01,reservas_bcra,4122.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
 2026-04-01,reservas_bcra,590.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
 2026-03-01,reservas_bcra,-1719.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)

@@ -229,6 +229,7 @@ export const LABELS: Record<string, string> = {
   iai: "Inversión física (IAI)", icip: "Capitalización digital (ICIP)",
   credito_privado: "Crédito privado real",
   costo_financiamiento_tesoro: "Costo real del financiamiento del Tesoro",
+  resultado_primario: "Resultado primario del Estado nacional",
   prestamos_privados: "Préstamos al sector privado", base_monetaria: "Base monetaria",
   tc_mayorista: "Tipo de cambio mayorista",
   // politica
@@ -301,7 +302,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   ipc_total: "%", reservas_bcra: "US$ M netas", idc: "índice", badlar: "%", emae_ia: "% i.a.",
   saldo_comercial_12m: "US$ M", recaudacion: "% i.a. real", tcrm: "índice", rem_ipc_12m: "%",
   idm: "pp", presion_dolarizacion: "pts",
-  iai: "% i.a.", icip: "% i.a.", credito_privado: "% i.a. real", costo_financiamiento_tesoro: "% real",
+  iai: "% i.a.", icip: "% i.a.", credito_privado: "% i.a. real", costo_financiamiento_tesoro: "% real", resultado_primario: "% de la recaudación",
   prestamos_privados: "% m/m", base_monetaria: "% m/m", tc_mayorista: "% m/m",
   // politica
   votometro_ventaja_lla: "pp", ratio_dnu: "ratio", movilizacion_cepa: "índice",
@@ -347,6 +348,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   iai: "% interanual (índice ponderado)", icip: "% interanual (índice ponderado)",
   credito_privado: "% interanual real (deflactado por IPC)",
   costo_financiamiento_tesoro: "% real anual (tasa efectiva de colocación menos inflación esperada)",
+  resultado_primario: "% de la recaudación (resultado primario acumulado 12 meses)",
   prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
   // politica
   votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",

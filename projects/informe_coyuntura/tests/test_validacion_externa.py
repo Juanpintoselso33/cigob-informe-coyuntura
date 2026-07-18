@@ -58,6 +58,8 @@ def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
         "credito_privado": None,
         "emae_ia": None,
         "tcrm": None,
+        "costo_financiamiento_tesoro": None,
+        "resultado_primario": None,
     }]
 
 

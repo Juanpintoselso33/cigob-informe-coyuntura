@@ -297,6 +297,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Es el crédito REALIZADO — complementa al IdC, que mide la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.",
     frecuencia: "Diaria (BCRA)", tipo: "Variación real",
   },
+  resultado_primario: {
+    que: "Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto, antes de los intereses de la deuda, acumulado en doce meses y medido como porcentaje de lo que recauda.",
+    aporta: "Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y en ninguno de los dos casos eso dice si las cuentas cierran. Este indicador responde esa pregunta directamente: de cada cien pesos recaudados, cuántos quedan.",
+    frecuencia: "Mensual", tipo: "Resultado fiscal",
+  },
   costo_financiamiento_tesoro: {
     que: "Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos: la tasa efectiva anual de las licitaciones del mes, descontada la inflación esperada.",
     aporta: "Es el precio del financiamiento del Estado. Reservas, capacidad prestable y crédito miden cuánta financiación hay; esta mide cuánto cuesta conseguirla. Los dos extremos son malos: una tasa real muy negativa indica que el Tesoro coloca licuando al ahorrista, y una muy alta que la deuda crece más rápido que la economía.",

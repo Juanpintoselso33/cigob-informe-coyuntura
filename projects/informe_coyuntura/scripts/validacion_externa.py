@@ -177,8 +177,8 @@ def construir_series_itvc() -> tuple:
 
 def construir_serie_itcm() -> dict:
     """Serie mensual del ITCM reconstruida desde las series de componentes
-    (mismo motor, puntaje interpolado, sin overrides del analista): 11 de los
-    13 componentes tienen serie; IAI/ICIP faltan y el motor renormaliza.
+    (mismo motor, puntaje interpolado, sin overrides del analista): todos los
+    componentes tienen serie salvo IAI/ICIP, que faltan y el motor renormaliza.
     Reservas netas solo desde jun-2024 (límite de fuente documentado)."""
     series = _cargar_series_itcm()
     m = lambda k: _mensual(series.get(k) or [])
@@ -187,7 +187,12 @@ def construir_serie_itcm() -> dict:
     saldo = m("saldo_comercial")          # M USD mensual → suma móvil 12m
     directos = {k: m(k) for k in ("idm", "presion_dolarizacion", "recaudacion",
                                   "reservas_bcra", "idc", "credito_privado",
-                                  "emae_ia", "tcrm")}
+                                  "emae_ia", "tcrm",
+                                  # ADR-0071 / ADR-0072: ambos tienen serie
+                                  # mensual desde dic-2023 y entran a la
+                                  # reconstrucción como valores directos.
+                                  "costo_financiamiento_tesoro",
+                                  "resultado_primario")}
 
     def saldo_12m(ym):
         yms = sorted(saldo)

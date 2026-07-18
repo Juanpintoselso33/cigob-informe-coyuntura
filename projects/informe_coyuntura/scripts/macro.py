@@ -45,6 +45,9 @@ INDEC_SALDO_COM_ID   = "164.3_SOTALTAL_0_0_8"          # Saldo comercial total m
 INDEC_EXPO_ICA_ID    = "74.3_IET_0_M_16"               # ICA exportaciones totales mensual (M USD)
 INDEC_IMPO_ICA_ID    = "74.3_IIT_0_M_25"               # ICA importaciones totales mensual (M USD)
 INDEC_RECAUDACION_ID = "172.3_TL_RECAION_M_0_0_17"     # Recaudación total mensual (M ARS)
+# IMIG (Informe Mensual de Ingresos y Gastos, Sec. de Hacienda): resultado
+# PRIMARIO del Sector Público Nacional, mensual en millones de pesos.
+HACIENDA_RESULTADO_PRIMARIO_ID = "452.3_RESULTADO_RIO_0_M_18_54"
 INDEC_TCRM_ID        = "116.3_TCRMA_0_M_36"            # Tipo de Cambio Real Multilateral (base 2010=100)
 
 # Capítulo Inversión — IAI (físico/tradicional) e ICIP (digital/intangible)
@@ -85,7 +88,7 @@ INDICADORES_ESPERADOS = [
     "emae_ia", "saldo_comercial_12m", "recaudacion", "tcrm",
     "rem_ipc_12m", "idm", "presion_dolarizacion", "iai", "icip",
     "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
-    "costo_financiamiento_tesoro",
+    "costo_financiamiento_tesoro", "resultado_primario",
 ]
 
 
@@ -702,6 +705,68 @@ def fetch_recaudacion() -> dict | None:
         }
     except Exception as e:
         _warn("recaudacion", e)
+        return None
+
+
+# ── Resultado primario del SPN (ADR-0072) ─────────────────────────────────────
+# La dimensión se llama "viabilidad fiscal" pero su componente principal medía
+# INGRESOS, no resultado: un gobierno puede sostener superávit con recaudación
+# cayendo (bajando el gasto, o bajando impuestos a propósito) y el índice leía
+# deterioro donde el programa registra cumplimiento. Este indicador mide el
+# resultado.
+
+def _superavit_sobre_recaudacion_12m() -> dict:
+    """{YYYY-MM: resultado primario acumulado 12m / recaudación acumulada 12m, %}.
+
+    Dos decisiones de método:
+    - **Acumulado 12 meses**: el resultado primario mensual es brutalmente
+      estacional (diciembre da déficit todos los años por aguinaldo y cierre;
+      enero, superávit alto). Puntuar el mes suelto marcaría colapso fiscal cada
+      diciembre.
+    - **Normalizado por recaudación, no por PIB ni por IPC**: no hay PIB nominal
+      mensual publicado, y deflactar por IPC sumaría un eslabón más a la cadena
+      del deflactor (ya toca recaudación, crédito, IDM e IdC). El cociente contra
+      la recaudación es adimensional y se lee solo: de cada peso que recauda el
+      Estado, cuánto le sobra después de gastar, antes de intereses."""
+    prim = {r[0][:7]: r[1] for r in _indec_serie(HACIENDA_RESULTADO_PRIMARIO_ID, limit=90)
+            if r[1] is not None}
+    rec = {r[0][:7]: r[1] for r in _indec_serie(INDEC_RECAUDACION_ID, limit=90)
+           if r[1] is not None}
+    out = {}
+    for ym in sorted(set(prim) & set(rec)):
+        ventana = [_ym_shift(ym, -k) for k in range(11, -1, -1)]
+        if not all(m in prim and m in rec for m in ventana):
+            continue                       # ventana incompleta: no se imputa
+        suma_rec = sum(rec[m] for m in ventana)
+        if suma_rec <= 0:
+            continue
+        out[ym] = sum(prim[m] for m in ventana) / suma_rec * 100.0
+    return out
+
+
+def fetch_resultado_primario() -> dict | None:
+    """Superávit (o déficit) primario del Sector Público Nacional acumulado 12
+    meses, medido como porcentaje de la recaudación del mismo período."""
+    try:
+        serie = _superavit_sobre_recaudacion_12m()
+        if not serie:
+            raise ValueError("sin ventanas de 12 meses completas")
+        ym = max(serie)
+        valor = serie[ym]
+        signo = "superávit" if valor >= 0 else "déficit"
+        return {
+            "valor": round(valor, 2),
+            "unidad": "% de la recaudación (acum. 12 meses)",
+            "fuente": "Sec. de Hacienda — IMIG (resultado primario) + recaudación (vía datos.gob.ar)",
+            "fecha_dato": f"{ym}-01",
+            "detalle_txt": (
+                f"{ym}: {signo} primario de {abs(valor):.1f}% de la recaudación "
+                f"acumulada de doce meses"
+            ),
+            "desactualizado": False,
+        }
+    except Exception as e:
+        _warn("resultado_primario", e)
         return None
 
 
@@ -1438,6 +1503,7 @@ def main() -> None:
         ("icip",               fetch_icip),
         ("credito_privado",    fetch_credito_privado),
         ("costo_financiamiento_tesoro", fetch_costo_financiamiento_tesoro),
+        ("resultado_primario",  fetch_resultado_primario),
         ("prestamos_privados", fetch_prestamos_privados),
         ("base_monetaria",     fetch_base_monetaria),
         ("tc_mayorista",       fetch_tc_mayorista),
