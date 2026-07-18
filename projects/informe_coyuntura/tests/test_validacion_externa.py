@@ -227,3 +227,37 @@ def test_los_pares_no_explicados_excluyen_los_de_diseno():
                    if not p["misma_dimension"] and not p["por_diseno"])
     assert m["pares_no_explicados"] == esperado
     assert m["pares_no_explicados"] <= m["pares_cruzados"]
+
+
+def test_la_matriz_de_redundancia_existe_para_los_tres_indices():
+    """ADR-0085: la medición dejó de ser exclusiva del ITCM."""
+    for fn in (validacion_externa.matriz_redundancia_itcm,
+               validacion_externa.matriz_redundancia_itcg,
+               validacion_externa.matriz_redundancia_itcp):
+        m = fn()
+        assert m["n_indicadores"] >= 5, (fn.__name__, m["n_indicadores"])
+        assert m["r_abs_medio"] is not None
+
+
+def test_las_diferencias_desarman_la_tendencia_compartida():
+    """El hallazgo de ADR-0085 y la razón de publicar las dos medidas.
+
+    Varios indicadores son contadores acumulados —el RIGI va de 0 a 31.192— y
+    dos series que sólo suben correlacionan cerca de 1 aunque no compartan
+    información. En primeras diferencias esa tendencia común se cancela y
+    queda el co-movimiento real, que es mucho menor.
+
+    Si este test empezara a fallar, significaría que el acoplamiento dejó de
+    ser tendencia y pasó a ser mes a mes: ahí sí habría redundancia que
+    atender, y el texto de la card estaría diciendo lo contrario."""
+    for fn in (validacion_externa.matriz_redundancia_itcm,
+               validacion_externa.matriz_redundancia_itcg,
+               validacion_externa.matriz_redundancia_itcp):
+        m = fn()
+        dif = m["diferencias"]
+        assert dif["r_abs_medio"] is not None, fn.__name__
+        assert dif["r_abs_medio"] < m["r_abs_medio"], (
+            f"{fn.__name__}: en diferencias ({dif['r_abs_medio']}) el acoplamiento "
+            f"no baja respecto de niveles ({m['r_abs_medio']}) — revisar el texto "
+            f"público, que afirma lo contrario")
+        assert dif["share_altos"] <= m["share_altos"], fn.__name__

@@ -763,33 +763,50 @@ def _validacion_itcm(bloque):
     }
 
 
-def _redundancia_itcm(bloque):
-    """Anexa al bloque ITCM la matriz de correlación ENTRE SUS PROPIOS
-    componentes (auditoría de consistencia, jul-2026).
+def _redundancia(bloque, clave_val: str):
+    """Anexa a un bloque de índice la matriz de correlación ENTRE SUS PROPIOS
+    componentes (auditoría de consistencia, jul-2026; genérica desde ADR-0085).
 
     Es una pregunta distinta de la validación externa: no si el índice acierta,
     sino cuánta información realmente distinta aporta cada componente. Si todos
     se mueven juntos, promediar quince indicadores no da quince lecturas
     independientes, da una sola repetida quince veces.
 
-    El texto se emite con la salvedad muestral por delante, porque sin ella el
-    número se lee como defecto de construcción cuando en buena medida es el
-    período: treinta y un meses de un único programa de estabilización."""
-    red = _cargar_validacion().get("redundancia_itcm") or {}
-    # Sin pares altos el bloque se publica IGUAL: "ningún par se mueve muy
-    # junto" es un resultado bueno y relevante, no la ausencia de resultado.
-    # La versión original hacía return y la sección desaparecía justo cuando
-    # tenía la mejor noticia para dar.
+    El texto se apoya en la comparación NIVELES vs PRIMERAS DIFERENCIAS, que es
+    lo que separa co-tendencia de co-movimiento: si el acoplamiento se
+    desarma al mirar los cambios mes a mes, lo que había era tendencia
+    compartida, no información repetida.
+    """
+    red = _cargar_validacion().get(clave_val) or {}
     if red.get("r_abs_medio") is None:
         return
     coma = lambda x: str(x).replace(".", ",")
-    n_alt = len(red["pares_altos"])
+    n_alt = len(red.get("pares_altos") or [])
+    dif = red.get("diferencias") or {}
     # Se emiten las CLAVES: las etiquetas legibles viven en el front
     # (web/src/lib/datos.ts), que es la fuente única de nombres públicos.
     top = [{"a": p["a"], "b": p["b"], "r": p["r"],
             "cruzado": not p["misma_dimension"],
             "por_diseno": p.get("por_diseno")}
-           for p in red["pares_altos"][:6]]
+           for p in (red.get("pares_altos") or [])[:6]]
+
+    # El hallazgo central: qué queda del acoplamiento al quitar la tendencia.
+    if dif.get("r_abs_medio") is not None:
+        veredicto = (
+            f"El dato decisivo es qué queda de ese acoplamiento al mirar los cambios "
+            f"mes a mes en vez de los niveles, que es lo que separa una tendencia "
+            f"compartida de información repetida: la correlación media cae a "
+            f"{coma(dif['r_abs_medio'])} y "
+            + (f"ningún par supera el umbral. "
+               if dif.get("share_altos") == 0 else
+               f"sólo un {dif['share_altos']:.0%} de los pares lo supera. ")
+            + f"Es decir que los componentes suben y bajan con el ciclo, pero sus "
+              f"movimientos de cada mes son en buena medida propios: lo que parecía "
+              f"redundancia es sobre todo una época en común. ")
+    else:
+        veredicto = ("No hay suficientes meses para contrastar los niveles contra los "
+                     "cambios mes a mes, que es lo que separaría una tendencia "
+                     "compartida de información repetida. ")
 
     bloque["redundancia"] = {
         "n_indicadores": red["n_indicadores"],
@@ -799,6 +816,7 @@ def _redundancia_itcm(bloque):
         "share_bajos": red["share_bajos"],
         "umbral": red["umbral"],
         "pares_cruzados": red["pares_cruzados"],
+        "diferencias": dif,
         "top": top,
         "titulo": "¿Cuánta información distinta aporta cada componente?",
         "sub": (f"Un índice que promedia sus componentes supone que cada uno aporta algo "
@@ -810,23 +828,22 @@ def _redundancia_itcm(bloque):
             f"independientes ni una sola señal repetida. Un {red['share_altos']:.0%} de los pares "
             f"se mueve muy junto (por encima de {coma(red['umbral'])}) y un "
             f"{red['share_bajos']:.0%} es prácticamente independiente. "
-            f"Antes de leer esos números conviene una salvedad: el período disponible son treinta "
-            f"y un meses de un único programa de estabilización, en el que la desinflación, la "
-            f"recuperación de la actividad y la consolidación fiscal avanzaron a la vez. Que los "
-            f"indicadores se muevan juntos en esa ventana refleja sobre todo el proceso "
-            f"macroeconómico, no necesariamente un defecto de construcción del índice. "
-            + (f"Hecha esa salvedad: de los {n_alt} pares que superan el umbral, "
-               f"{red.get('pares_no_explicados', 0)} acoplan indicadores de dimensiones distintas "
-               f"sin una razón de diseño que lo explique, y son los que conviene seguir. Los "
-               f"demás, o comparten dimensión —donde su peso conjunto está acotado— o están "
-               f"acoplados a propósito, como la inflación medida y la esperada, que el índice "
-               f"cruza justamente para leer la misma magnitud en dos momentos. " if n_alt else
+            + veredicto
+            + (f"De los {n_alt} pares que superan el umbral en niveles, "
+               f"{red.get('pares_no_explicados', 0)} acoplan indicadores de dimensiones "
+               f"distintas sin una razón de diseño que lo explique, y son los que conviene "
+               f"seguir. Los demás, o comparten dimensión —donde su peso conjunto está "
+               f"acotado— o están acoplados a propósito. " if n_alt else
                "Ningún par supera el umbral: no hay dos componentes que se muevan "
                "prácticamente al unísono. ")
-            + ("La consecuencia práctica para el lector sí es firme: cuando varias dimensiones "
-               "coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones "
-               "independientes del mismo resultado.")),
+            + ("La consecuencia práctica para el lector se mantiene: cuando varias "
+               "dimensiones coinciden en el diagnóstico, eso no debe leerse como varias "
+               "confirmaciones independientes del mismo resultado.")),
     }
+
+
+def _redundancia_itcm(bloque):
+    _redundancia(bloque, "redundancia_itcm")
 
 
 def _validacion_cruzada(informe):
@@ -1156,6 +1173,7 @@ def aplicar_scoring(informe, series):
             _scoring_indice(c, "itcg", itcg, GESTION_CONTEXTO, _gestion_input_txt)
             if c.get("itcg"):
                 _validacion_itcg(c["itcg"])
+                _redundancia(c["itcg"], "redundancia_itcg")
             continue
         if ckey == "vida_cotidiana":
             _scoring_vida_itvc(c, series)
@@ -1166,6 +1184,7 @@ def aplicar_scoring(informe, series):
             _scoring_indice(c, "itcp", itcp, POLITICA_CONTEXTO, _politica_input_txt)
             if c.get("itcp"):
                 _validacion_itcp(c["itcp"])
+                _redundancia(c["itcp"], "redundancia_itcp")
             continue
         if ckey == "espiritu_epoca":
             # sin continue: el puntuable que queda (intención migratoria)

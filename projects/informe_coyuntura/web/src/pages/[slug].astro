@@ -462,6 +462,12 @@ const robChartData = rob?.hist && indice ? {
                   <span class="cg-red-num">{Math.round(red.share_bajos * 100)}%</span>
                   <span class="cg-red-lbl">prácticamente independientes</span>
                 </div>
+                {red.diferencias?.r_abs_medio != null && (
+                  <div class="cg-red-stat cg-red-stat--clave">
+                    <span class="cg-red-num">{coma(red.diferencias.r_abs_medio)}</span>
+                    <span class="cg-red-lbl">al mirar los cambios mes a mes<br/>—sin la tendencia común—</span>
+                  </div>
+                )}
               </div>
               <p class="cg-red-titulo">Los pares más acoplados</p>
               <p class="cg-red-nota">

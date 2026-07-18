@@ -51,6 +51,8 @@ export interface IndiceParametrico {
   redundancia?: { n_indicadores: number; n_pares: number; r_abs_medio: number;
                   share_altos: number; share_bajos: number; umbral: number;
                   pares_cruzados: number;
+                  diferencias?: { n_pares: number; r_abs_medio: number | null;
+                                  share_altos: number | null };
                   top: { a: string; b: string; r: number; cruzado: boolean;
                          por_diseno?: string | null }[];
                   titulo: string; sub: string; conclusion: string };

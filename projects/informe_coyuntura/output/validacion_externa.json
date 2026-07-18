@@ -178,6 +178,11 @@
     }
   },
   "redundancia_itcm": {
+    "diferencias": {
+      "n_pares": 91,
+      "r_abs_medio": 0.182,
+      "share_altos": 0.0
+    },
     "umbral": 0.7,
     "n_indicadores": 14,
     "n_pares": 91,
@@ -630,6 +635,596 @@
     ],
     "pares_cruzados": 19,
     "pares_no_explicados": 19
+  },
+  "redundancia_itcg": {
+    "diferencias": {
+      "n_pares": 76,
+      "r_abs_medio": 0.154,
+      "share_altos": 0.039
+    },
+    "umbral": 0.7,
+    "n_indicadores": 15,
+    "n_pares": 76,
+    "r_abs_medio": 0.514,
+    "share_altos": 0.342,
+    "share_bajos": 0.25,
+    "matriz": {
+      "apertura_comercial": {
+        "cepo_mulc": 0.346,
+        "concesiones_infraestructura": 0.202,
+        "desregulacion_normativa": 0.435,
+        "gasto_funcionamiento": 0.004,
+        "libertad_opcion_salud": 0.295,
+        "litigiosidad_laboral": 0.485,
+        "masa_salarial": 0.031,
+        "privatizaciones": 0.537,
+        "protocolo_antipiquetes": 0.256,
+        "reduccion_estado": 0.395,
+        "reestructuracion_organismos": 0.553,
+        "rigi_inversiones": 0.368
+      },
+      "cepo_mulc": {
+        "apertura_comercial": 0.346,
+        "concesiones_infraestructura": 0.289,
+        "desregulacion_normativa": 0.941,
+        "gasto_funcionamiento": 0.215,
+        "libertad_opcion_salud": 0.89,
+        "litigiosidad_laboral": 0.402,
+        "masa_salarial": 0.458,
+        "privatizaciones": 0.827,
+        "protocolo_antipiquetes": 0.864,
+        "reduccion_estado": 0.752,
+        "reestructuracion_organismos": 0.806,
+        "rigi_inversiones": 0.86
+      },
+      "concesiones_infraestructura": {
+        "apertura_comercial": 0.202,
+        "cepo_mulc": 0.289,
+        "desregulacion_normativa": 0.414,
+        "gasto_funcionamiento": 0.137,
+        "masa_salarial": 0.087,
+        "privatizaciones": 0.481,
+        "protocolo_antipiquetes": 0.218,
+        "reduccion_estado": 0.119,
+        "reestructuracion_organismos": 0.487,
+        "rigi_inversiones": 0.307
+      },
+      "desregulacion_normativa": {
+        "apertura_comercial": 0.435,
+        "cepo_mulc": 0.941,
+        "concesiones_infraestructura": 0.414,
+        "gasto_funcionamiento": 0.262,
+        "libertad_opcion_salud": 0.923,
+        "litigiosidad_laboral": 0.499,
+        "masa_salarial": 0.512,
+        "privatizaciones": 0.873,
+        "protocolo_antipiquetes": 0.898,
+        "reduccion_estado": 0.817,
+        "reestructuracion_organismos": 0.854,
+        "rigi_inversiones": 0.894
+      },
+      "gasto_funcionamiento": {
+        "apertura_comercial": 0.004,
+        "cepo_mulc": 0.215,
+        "concesiones_infraestructura": 0.137,
+        "desregulacion_normativa": 0.262,
+        "libertad_opcion_salud": 0.248,
+        "litigiosidad_laboral": 0.145,
+        "masa_salarial": 0.426,
+        "privatizaciones": 0.375,
+        "protocolo_antipiquetes": 0.148,
+        "reduccion_estado": 0.147,
+        "reestructuracion_organismos": 0.401,
+        "rigi_inversiones": 0.185
+      },
+      "libertad_opcion_salud": {
+        "apertura_comercial": 0.295,
+        "cepo_mulc": 0.89,
+        "desregulacion_normativa": 0.923,
+        "gasto_funcionamiento": 0.248,
+        "litigiosidad_laboral": 0.34,
+        "masa_salarial": 0.393,
+        "privatizaciones": 0.794,
+        "protocolo_antipiquetes": 0.994,
+        "reduccion_estado": 0.708,
+        "reestructuracion_organismos": 0.758,
+        "rigi_inversiones": 0.995
+      },
+      "litigiosidad_laboral": {
+        "apertura_comercial": 0.485,
+        "cepo_mulc": 0.402,
+        "desregulacion_normativa": 0.499,
+        "gasto_funcionamiento": 0.145,
+        "libertad_opcion_salud": 0.34,
+        "masa_salarial": 0.467,
+        "privatizaciones": 0.326,
+        "protocolo_antipiquetes": 0.283,
+        "reduccion_estado": 0.794,
+        "reestructuracion_organismos": 0.32,
+        "rigi_inversiones": 0.299
+      },
+      "masa_salarial": {
+        "apertura_comercial": 0.031,
+        "cepo_mulc": 0.458,
+        "concesiones_infraestructura": 0.087,
+        "desregulacion_normativa": 0.512,
+        "gasto_funcionamiento": 0.426,
+        "libertad_opcion_salud": 0.393,
+        "litigiosidad_laboral": 0.467,
+        "privatizaciones": 0.39,
+        "protocolo_antipiquetes": 0.393,
+        "reduccion_estado": 0.536,
+        "reestructuracion_organismos": 0.374,
+        "rigi_inversiones": 0.412
+      },
+      "privatizaciones": {
+        "apertura_comercial": 0.537,
+        "cepo_mulc": 0.827,
+        "concesiones_infraestructura": 0.481,
+        "desregulacion_normativa": 0.873,
+        "gasto_funcionamiento": 0.375,
+        "libertad_opcion_salud": 0.794,
+        "litigiosidad_laboral": 0.326,
+        "masa_salarial": 0.39,
+        "protocolo_antipiquetes": 0.735,
+        "reduccion_estado": 0.539,
+        "reestructuracion_organismos": 0.993,
+        "rigi_inversiones": 0.767
+      },
+      "protocolo_antipiquetes": {
+        "apertura_comercial": 0.256,
+        "cepo_mulc": 0.864,
+        "concesiones_infraestructura": 0.218,
+        "desregulacion_normativa": 0.898,
+        "gasto_funcionamiento": 0.148,
+        "libertad_opcion_salud": 0.994,
+        "litigiosidad_laboral": 0.283,
+        "masa_salarial": 0.393,
+        "privatizaciones": 0.735,
+        "reduccion_estado": 0.795,
+        "reestructuracion_organismos": 0.703,
+        "rigi_inversiones": 1.0
+      },
+      "reduccion_estado": {
+        "apertura_comercial": 0.395,
+        "cepo_mulc": 0.752,
+        "concesiones_infraestructura": 0.119,
+        "desregulacion_normativa": 0.817,
+        "gasto_funcionamiento": 0.147,
+        "libertad_opcion_salud": 0.708,
+        "litigiosidad_laboral": 0.794,
+        "masa_salarial": 0.536,
+        "privatizaciones": 0.539,
+        "protocolo_antipiquetes": 0.795,
+        "reestructuracion_organismos": 0.514,
+        "rigi_inversiones": 0.683
+      },
+      "reestructuracion_organismos": {
+        "apertura_comercial": 0.553,
+        "cepo_mulc": 0.806,
+        "concesiones_infraestructura": 0.487,
+        "desregulacion_normativa": 0.854,
+        "gasto_funcionamiento": 0.401,
+        "libertad_opcion_salud": 0.758,
+        "litigiosidad_laboral": 0.32,
+        "masa_salarial": 0.374,
+        "privatizaciones": 0.993,
+        "protocolo_antipiquetes": 0.703,
+        "reduccion_estado": 0.514,
+        "rigi_inversiones": 0.726
+      },
+      "rigi_inversiones": {
+        "apertura_comercial": 0.368,
+        "cepo_mulc": 0.86,
+        "concesiones_infraestructura": 0.307,
+        "desregulacion_normativa": 0.894,
+        "gasto_funcionamiento": 0.185,
+        "libertad_opcion_salud": 0.995,
+        "litigiosidad_laboral": 0.299,
+        "masa_salarial": 0.412,
+        "privatizaciones": 0.767,
+        "protocolo_antipiquetes": 1.0,
+        "reduccion_estado": 0.683,
+        "reestructuracion_organismos": 0.726
+      }
+    },
+    "pares_altos": [
+      {
+        "a": "protocolo_antipiquetes",
+        "b": "rigi_inversiones",
+        "r": 1.0,
+        "n": 24,
+        "dimension_a": "social_orden",
+        "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "libertad_opcion_salud",
+        "b": "rigi_inversiones",
+        "r": 0.995,
+        "n": 23,
+        "dimension_a": "social_orden",
+        "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "libertad_opcion_salud",
+        "b": "protocolo_antipiquetes",
+        "r": 0.994,
+        "n": 27,
+        "dimension_a": "social_orden",
+        "dimension_b": "social_orden",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "privatizaciones",
+        "b": "reestructuracion_organismos",
+        "r": 0.993,
+        "n": 32,
+        "dimension_a": "privatizaciones_inversion",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "cepo_mulc",
+        "b": "desregulacion_normativa",
+        "r": 0.941,
+        "n": 32,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "reformas_economicas",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "desregulacion_normativa",
+        "b": "libertad_opcion_salud",
+        "r": 0.923,
+        "n": 28,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "social_orden",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "desregulacion_normativa",
+        "b": "protocolo_antipiquetes",
+        "r": 0.898,
+        "n": 30,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "social_orden",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "desregulacion_normativa",
+        "b": "rigi_inversiones",
+        "r": 0.894,
+        "n": 25,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "cepo_mulc",
+        "b": "libertad_opcion_salud",
+        "r": 0.89,
+        "n": 28,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "social_orden",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "desregulacion_normativa",
+        "b": "privatizaciones",
+        "r": 0.873,
+        "n": 32,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "cepo_mulc",
+        "b": "protocolo_antipiquetes",
+        "r": 0.864,
+        "n": 30,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "social_orden",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "cepo_mulc",
+        "b": "rigi_inversiones",
+        "r": 0.86,
+        "n": 25,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "desregulacion_normativa",
+        "b": "reestructuracion_organismos",
+        "r": 0.854,
+        "n": 32,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "cepo_mulc",
+        "b": "privatizaciones",
+        "r": 0.827,
+        "n": 32,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "desregulacion_normativa",
+        "b": "reduccion_estado",
+        "r": 0.817,
+        "n": 30,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "cepo_mulc",
+        "b": "reestructuracion_organismos",
+        "r": 0.806,
+        "n": 32,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "protocolo_antipiquetes",
+        "b": "reduccion_estado",
+        "r": 0.795,
+        "n": 29,
+        "dimension_a": "social_orden",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "libertad_opcion_salud",
+        "b": "privatizaciones",
+        "r": 0.794,
+        "n": 28,
+        "dimension_a": "social_orden",
+        "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "litigiosidad_laboral",
+        "b": "reduccion_estado",
+        "r": 0.794,
+        "n": 29,
+        "dimension_a": "reforma_laboral",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "privatizaciones",
+        "b": "rigi_inversiones",
+        "r": 0.767,
+        "n": 25,
+        "dimension_a": "privatizaciones_inversion",
+        "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "libertad_opcion_salud",
+        "b": "reestructuracion_organismos",
+        "r": 0.758,
+        "n": 28,
+        "dimension_a": "social_orden",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "cepo_mulc",
+        "b": "reduccion_estado",
+        "r": 0.752,
+        "n": 30,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "privatizaciones",
+        "b": "protocolo_antipiquetes",
+        "r": 0.735,
+        "n": 30,
+        "dimension_a": "privatizaciones_inversion",
+        "dimension_b": "social_orden",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "reestructuracion_organismos",
+        "b": "rigi_inversiones",
+        "r": 0.726,
+        "n": 25,
+        "dimension_a": "reforma_estado",
+        "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "libertad_opcion_salud",
+        "b": "reduccion_estado",
+        "r": 0.708,
+        "n": 28,
+        "dimension_a": "social_orden",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "protocolo_antipiquetes",
+        "b": "reestructuracion_organismos",
+        "r": 0.703,
+        "n": 30,
+        "dimension_a": "social_orden",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      }
+    ],
+    "pares_cruzados": 23,
+    "pares_no_explicados": 23
+  },
+  "redundancia_itcp": {
+    "diferencias": {
+      "n_pares": 33,
+      "r_abs_medio": 0.215,
+      "share_altos": 0.03
+    },
+    "umbral": 0.7,
+    "n_indicadores": 11,
+    "n_pares": 33,
+    "r_abs_medio": 0.371,
+    "share_altos": 0.091,
+    "share_bajos": 0.424,
+    "matriz": {
+      "adhesion_reformas_provincial": {
+        "alineamiento_senadores_prov": -0.198,
+        "bloqueo_sostenido": -0.612,
+        "cohesion_bloque": 0.087,
+        "conflictividad_nacional": 0.065,
+        "derrotas_legislativas": -0.416,
+        "ratio_dnu": 0.214,
+        "votometro_ventaja_lla": 0.374
+      },
+      "alineamiento_senadores_prov": {
+        "adhesion_reformas_provincial": -0.198,
+        "bloqueo_sostenido": 0.424,
+        "cohesion_bloque": 0.405,
+        "conflictividad_nacional": -0.474,
+        "derrotas_legislativas": 0.513,
+        "eficacia_legislativa": -0.665,
+        "ratio_dnu": 0.26,
+        "votometro_ventaja_lla": -0.129
+      },
+      "bloqueo_sostenido": {
+        "adhesion_reformas_provincial": -0.612,
+        "alineamiento_senadores_prov": 0.424,
+        "cohesion_bloque": -0.205,
+        "conflictividad_nacional": -0.478,
+        "derrotas_legislativas": 0.937,
+        "eficacia_legislativa": 0.467,
+        "ratio_dnu": 0.43,
+        "votometro_ventaja_lla": -0.17
+      },
+      "cohesion_bloque": {
+        "adhesion_reformas_provincial": 0.087,
+        "alineamiento_senadores_prov": 0.405,
+        "bloqueo_sostenido": -0.205,
+        "conflictividad_nacional": -0.435,
+        "derrotas_legislativas": -0.071,
+        "eficacia_legislativa": -0.154,
+        "ratio_dnu": -0.232,
+        "votometro_ventaja_lla": 0.35
+      },
+      "conflictividad_nacional": {
+        "adhesion_reformas_provincial": 0.065,
+        "alineamiento_senadores_prov": -0.474,
+        "bloqueo_sostenido": -0.478,
+        "cohesion_bloque": -0.435,
+        "derrotas_legislativas": -0.499,
+        "eficacia_legislativa": 0.863,
+        "ratio_dnu": -0.233,
+        "votometro_ventaja_lla": 0.057
+      },
+      "derrotas_legislativas": {
+        "adhesion_reformas_provincial": -0.416,
+        "alineamiento_senadores_prov": 0.513,
+        "bloqueo_sostenido": 0.937,
+        "cohesion_bloque": -0.071,
+        "conflictividad_nacional": -0.499,
+        "ratio_dnu": 0.621,
+        "votometro_ventaja_lla": 0.062
+      },
+      "ratio_dnu": {
+        "adhesion_reformas_provincial": 0.214,
+        "alineamiento_senadores_prov": 0.26,
+        "bloqueo_sostenido": 0.43,
+        "cohesion_bloque": -0.232,
+        "conflictividad_nacional": -0.233,
+        "derrotas_legislativas": 0.621,
+        "votometro_ventaja_lla": 0.349
+      },
+      "votometro_ventaja_lla": {
+        "adhesion_reformas_provincial": 0.374,
+        "alineamiento_senadores_prov": -0.129,
+        "bloqueo_sostenido": -0.17,
+        "cohesion_bloque": 0.35,
+        "conflictividad_nacional": 0.057,
+        "derrotas_legislativas": 0.062,
+        "eficacia_legislativa": 0.797,
+        "ratio_dnu": 0.349
+      },
+      "eficacia_legislativa": {
+        "alineamiento_senadores_prov": -0.665,
+        "bloqueo_sostenido": 0.467,
+        "cohesion_bloque": -0.154,
+        "conflictividad_nacional": 0.863,
+        "votometro_ventaja_lla": 0.797
+      }
+    },
+    "pares_altos": [
+      {
+        "a": "bloqueo_sostenido",
+        "b": "derrotas_legislativas",
+        "r": 0.937,
+        "n": 28,
+        "dimension_a": "poder_legislativo",
+        "dimension_b": "poder_legislativo",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "conflictividad_nacional",
+        "b": "eficacia_legislativa",
+        "r": 0.863,
+        "n": 7,
+        "dimension_a": "conflicto_social",
+        "dimension_b": "poder_legislativo",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "eficacia_legislativa",
+        "b": "votometro_ventaja_lla",
+        "r": 0.797,
+        "n": 7,
+        "dimension_a": "poder_legislativo",
+        "dimension_b": "imagen_voto",
+        "misma_dimension": false,
+        "por_diseno": null
+      }
+    ],
+    "pares_cruzados": 2,
+    "pares_no_explicados": 2
   },
   "serie_itcg": {
     "2023-12": 18.7,

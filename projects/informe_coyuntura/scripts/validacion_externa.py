@@ -241,9 +241,11 @@ ACOPLADOS_POR_DISENO = {
 }
 
 
-def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
+def matriz_redundancia(escala, dimensiones: dict, valores_por_mes: dict,
+                       por_diseno: dict | None = None,
+                       umbral: float = 0.7) -> dict:
     """Correlación de Pearson entre los PUNTAJES mensuales de los componentes
-    del ITCM (sección IV.3 de la auditoría de jul-2026).
+    de un índice (sección IV.3 de la auditoría de jul-2026).
 
     Se correlacionan puntajes y no valores crudos a propósito: el puntaje es lo
     que efectivamente se promedia dentro del índice, así que es ahí donde dos
@@ -251,22 +253,21 @@ def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
     Un par con |r| alto y en DIMENSIONES DISTINTAS es el caso que preocupa: el
     índice cree estar midiendo dos cosas y mide una.
 
-    Devuelve la matriz completa más los pares que superan el umbral, ordenados
-    por |r|, para que el lector pueda ver la evidencia y no solo la conclusión.
+    `por_diseno` declara los pares cuyo acoplamiento es intencional, con el
+    motivo: publicarlos junto a los demás induce a leer como defecto lo que es
+    construcción.
+
+    Genérica desde ADR-0085: la usan ITCM, ITCG e ITCP con su propia escala,
+    sus dimensiones y su reconstrucción de valores.
     """
-    por_mes = _valores_itcm_por_mes()
-    dim_de = {ind: dkey
-              for dkey, d in itcm.DIMENSIONES_ITCM.items()
-              for ind in d["indicadores"]}
+    por_diseno = por_diseno or {}
+    dim_de = {ind: dkey for dkey, d in dimensiones.items() for ind in d["indicadores"]}
     puntajes = {}
-    for ym, valores in por_mes.items():
+    for ym, valores in valores_por_mes.items():
         for ind, val in valores.items():
-            if val is None or not itcm.ESCALA_ITCM.puntuable(ind):
+            if val is None or not escala.puntuable(ind):
                 continue
-            # La ESCALA del índice, no las tablas sueltas: trae bandas,
-            # anclas y transformaciones juntas (ADR-0082). Puntuar con una
-            # parte sola ya publicó dos números equivocados.
-            puntajes.setdefault(ind, {})[ym] = itcm.ESCALA_ITCM.puntaje(val, ind)
+            puntajes.setdefault(ind, {})[ym] = escala.puntaje(val, ind)
 
     inds = sorted(puntajes)
     matriz, pares = {}, []
@@ -282,12 +283,29 @@ def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
                     "a": a, "b": b, "r": r, "n": n,
                     "dimension_a": dim_de.get(a), "dimension_b": dim_de.get(b),
                     "misma_dimension": dim_de.get(a) == dim_de.get(b),
-                    "por_diseno": ACOPLADOS_POR_DISENO.get(frozenset((a, b))),
+                    "por_diseno": por_diseno.get(frozenset((a, b))),
                 })
     pares.sort(key=lambda p: -abs(p["r"]))
     todos = [r for i, a in enumerate(inds) for b in inds[i + 1:]
              if (r := matriz.get(a, {}).get(b)) is not None]
+
+    # La MISMA matriz sobre primeras diferencias. Es el test que separa
+    # co-tendencia de co-movimiento: dos series que sólo suben correlacionan
+    # cerca de 1 aunque no compartan información, y en un índice con
+    # contadores acumulados (varios del ITCG) eso infla la redundencia
+    # aparente. Sobre diferencias, la tendencia común se cancela y queda lo
+    # que se mueve junto MES A MES, que es lo que de verdad se cuenta dos
+    # veces al promediar.
+    difs = {ind: _difs(serie) for ind, serie in puntajes.items()}
+    r_difs = [r for i, a in enumerate(inds) for b in inds[i + 1:]
+              if (r := _pearson(difs[a], difs[b])[0]) is not None]
+    dif_resumen = {
+        "n_pares": len(r_difs),
+        "r_abs_medio": round(statistics.mean(abs(r) for r in r_difs), 3) if r_difs else None,
+        "share_altos": round(sum(1 for r in r_difs if abs(r) >= umbral) / len(r_difs), 3) if r_difs else None,
+    }
     return {
+        "diferencias": dif_resumen,
         "umbral": umbral,
         "n_indicadores": len(inds),
         "n_pares": len(todos),
@@ -302,6 +320,29 @@ def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
         "pares_no_explicados": sum(1 for p in pares
                                    if not p["misma_dimension"] and not p["por_diseno"]),
     }
+
+
+def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
+    return matriz_redundancia(itcm.ESCALA_ITCM, itcm.DIMENSIONES_ITCM,
+                              _valores_itcm_por_mes(), ACOPLADOS_POR_DISENO, umbral)
+
+
+def matriz_redundancia_itcg(umbral: float = 0.7) -> dict:
+    escala = parametrica.Escala(itcg.BANDAS_ITCG,
+                                getattr(itcg, "ANCLAS_ITCG", None),
+                                getattr(itcg, "TRANSFORMACIONES_ITCG", None))
+    return matriz_redundancia(escala, itcg.DIMENSIONES_ITCG,
+                              _valores_itcg_por_mes(), ACOPLADOS_POR_DISENO, umbral)
+
+
+def matriz_redundancia_itcp(umbral: float = 0.7) -> dict:
+    escala = parametrica.Escala(itcp.BANDAS_ITCP,
+                                getattr(itcp, "ANCLAS_ITCP", None),
+                                getattr(itcp, "TRANSFORMACIONES_ITCP", None))
+    return matriz_redundancia(escala, itcp.DIMENSIONES_ITCP,
+                              _valores_itcp_por_mes(), ACOPLADOS_POR_DISENO, umbral)
+
+
 
 
 ITCG_SERIES = [
@@ -319,15 +360,23 @@ def construir_serie_itcg() -> dict:
     (mismo motor, puntaje interpolado, sin overrides del analista): 14 de los
     15 componentes tienen serie con historia; el protocolo antipiquetes recién
     acumula y el motor renormaliza."""
-    series = json.loads(SERIES.read_text(encoding="utf-8"))
-    valores_por_comp = {k: _mensual(series.get(k) or []) for k in ITCG_SERIES}
-    ult = max(max(v) for v in valores_por_comp.values() if v)
     out = {}
-    for ym in _meses("2023-12", ult):
-        r = itcg.calcular_itcg({k: v.get(ym) for k, v in valores_por_comp.items()})
+    for ym, valores in _valores_itcg_por_mes().items():
+        r = itcg.calcular_itcg(valores)
         if r:
             out[ym] = r["valor"]
     return out
+
+
+def _valores_itcg_por_mes() -> dict:
+    """{YYYY-MM: {indicador: valor crudo}} del ITCG. Lo comparten la
+    reconstrucción y la matriz de redundancia, por la misma razón que en el
+    ITCM: que no puedan divergir en qué componentes miran (ADR-0082)."""
+    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    valores_por_comp = {k: _mensual(series.get(k) or []) for k in ITCG_SERIES}
+    ult = max(max(v) for v in valores_por_comp.values() if v)
+    return {ym: {k: v.get(ym) for k, v in valores_por_comp.items()}
+            for ym in _meses("2023-12", ult)}
 
 
 # Composición post ADR-0052 (2026-07-11): conflictividad_nacional (ACLED
@@ -436,10 +485,7 @@ def construir_serie_itcp() -> dict:
     ult_completo = f"{hoy.year - 1}-12" if hoy.month == 1 else f"{hoy.year}-{hoy.month - 1:02d}"
     ult = min(ult, ult_completo)
     out = {}
-    for ym in _meses("2024-01", ult):
-        valores = {k: v.get(ym) for k, v in directos.items()}
-        if ym < EFICACIA_COHORTE_100PCT_MILEI_DESDE:
-            valores["eficacia_legislativa"] = None   # máscara de era (ADR-0070)
+    for ym, valores in _valores_itcp_por_mes(directos, ult).items():
         r = itcp.calcular_itcp(valores)
         if not r:
             continue
@@ -449,6 +495,27 @@ def construir_serie_itcp() -> dict:
                   f"({cobertura:.0%} del peso del índice con datos)")
             continue
         out[ym] = r["valor"]
+    return out
+
+
+def _valores_itcp_por_mes(directos: dict | None = None, ult: str | None = None) -> dict:
+    """{YYYY-MM: {indicador: valor crudo}} del ITCP, con la máscara de era de
+    la eficacia legislativa (ADR-0070) ya aplicada. Compartido por la
+    reconstrucción y la matriz de redundancia (ADR-0082)."""
+    if directos is None or ult is None:
+        series = json.loads(SERIES.read_text(encoding="utf-8"))
+        directos = {k: _mensual(series.get(k) or []) for k in ITCP_SERIES}
+        ult = max(max(v) for v in directos.values() if v)
+        hoy = datetime.now(timezone.utc)
+        ult_completo = (f"{hoy.year - 1}-12" if hoy.month == 1
+                        else f"{hoy.year}-{hoy.month - 1:02d}")
+        ult = min(ult, ult_completo)
+    out = {}
+    for ym in _meses("2024-01", ult):
+        valores = {k: v.get(ym) for k, v in directos.items()}
+        if ym < EFICACIA_COHORTE_100PCT_MILEI_DESDE:
+            valores["eficacia_legislativa"] = None   # máscara de era (ADR-0070)
+        out[ym] = valores
     return out
 
 
@@ -598,6 +665,17 @@ def main():
     # ── Redundancia INTERNA del ITCM (auditoría jul-2026, IV.3) ────────────
     red = matriz_redundancia_itcm()
     resultados["redundancia_itcm"] = red
+    # ADR-0085: la misma medición para gestión y política. Un fallo en una no
+    # debe tumbar la corrida entera de validación.
+    for sigla, fn in (("itcg", matriz_redundancia_itcg), ("itcp", matriz_redundancia_itcp)):
+        try:
+            otra = fn()
+            resultados[f"redundancia_{sigla}"] = otra
+            print(f"redundancia interna {sigla.upper()}: {otra['n_indicadores']} indicadores, "
+                  f"{otra['n_pares']} pares · |r| medio {otra['r_abs_medio']} niveles / "
+                  f"{otra['diferencias']['r_abs_medio']} en cambios mes a mes")
+        except Exception as e:
+            print(f"[WARN] redundancia {sigla.upper()}: {e}")
     print(f"\nredundancia interna ITCM: {red['n_indicadores']} indicadores, "
           f"{red['n_pares']} pares · |r| medio {red['r_abs_medio']} · "
           f"{red['share_altos']:.0%} sobre {red['umbral']} "
