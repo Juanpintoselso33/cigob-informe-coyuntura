@@ -1937,6 +1937,15 @@ fecha,indicador,valor,unidad,fuente
 2021-07-01,emae_ia,11.74,% i.a.,INDEC/datos.gob.ar
 2021-06-01,emae_ia,12.42,% i.a.,INDEC/datos.gob.ar
 2021-05-01,emae_ia,15.37,% i.a.,INDEC/datos.gob.ar
+2026-01-01,cuenta_corriente,-4281.1,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2025-10-01,cuenta_corriente,-7788.1,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2025-07-01,cuenta_corriente,-8004.8,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2025-04-01,cuenta_corriente,-5278.8,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2025-01-01,cuenta_corriente,676.1,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2024-10-01,cuenta_corriente,5891.4,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2024-07-01,cuenta_corriente,927.0,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2024-04-01,cuenta_corriente,-6099.5,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
+2024-01-01,cuenta_corriente,-16422.5,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2026-06-01,credito_privado,8.0,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-05-01,credito_privado,9.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-04-01,credito_privado,13.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC

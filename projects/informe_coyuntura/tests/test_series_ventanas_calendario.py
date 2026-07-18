@@ -75,3 +75,26 @@ def test_el_valor_vigente_del_ipi_no_cambio():
     """La corrección es de robustez, no de metodología: sobre la serie real,
     que no tiene huecos, el resultado tiene que ser el mismo de antes."""
     assert macro._ipi_ia_por_mes()[max(macro._ipi_ia_por_mes())] == -1.07
+
+
+# ── Cuenta corriente como acompañante del saldo comercial (ADR-0080) ────────
+
+def test_la_cuenta_corriente_acumula_cuatro_trimestres():
+    """Se acumula a 4 trimestres para ser comparable con el saldo comercial de
+    12 meses. Contra un trimestre suelto el contraste mezclaría escalas."""
+    serie = descargar_series.fetch_cuenta_corriente_serie()
+    assert len(serie) >= 8, len(serie)
+    fechas = [f for f, _ in serie]
+    assert fechas == sorted(fechas)
+    assert all(f.endswith("-01") for f in fechas)
+    # trimestral: los meses van de 3 en 3
+    meses = [int(f[5:7]) for f in fechas]
+    assert set(meses) <= {1, 4, 7, 10}, meses
+
+
+def test_la_cuenta_corriente_no_puntua():
+    """Es contexto: no tiene bandas ni entra a ninguna dimensión del ITCM."""
+    import itcm
+    assert "cuenta_corriente" not in itcm.BANDAS_ITCM
+    del_indice = {i for d in itcm.DIMENSIONES_ITCM.values() for i in d["indicadores"]}
+    assert "cuenta_corriente" not in del_indice

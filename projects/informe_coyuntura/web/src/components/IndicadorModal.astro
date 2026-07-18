@@ -307,6 +307,14 @@ const dimsJson = JSON.stringify(dims);
       // El general junto al núcleo: un mes de corrección tarifaria y uno de
       // núcleo alta dan la misma inflación general y significan lo contrario.
       ipc_total: { series: [["ipc_total", "IPC general"], ["ipc_nucleo", "Núcleo"]] },
+      // El saldo de bienes junto a la cuenta corriente: el primero puede estar
+      // en superávit mientras el país sigue drenando dólares por servicios,
+      // intereses y utilidades. La línea del cero marca la frontera.
+      saldo_comercial_12m: {
+        series: [["saldo_comercial_12m", "Saldo comercial (bienes)"],
+                 ["cuenta_corriente", "Cuenta corriente (total)"]],
+        refY: 0, refLabel: "equilibrio externo",
+      },
     };
     const baseKey = key.split(".").pop();
     const multi = MULTI[baseKey];

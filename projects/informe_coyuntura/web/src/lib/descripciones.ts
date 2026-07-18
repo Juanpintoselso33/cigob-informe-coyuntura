@@ -44,7 +44,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   saldo_comercial_12m: {
     que: "El balance entre lo que el país exporta y lo que importa, acumulado en los últimos 12 meses.",
-    aporta: "Indica si el sector externo genera o drena los dólares que necesita el programa.",
+    aporta: "Muestra si el intercambio de bienes aporta o resta dólares. No alcanza para saber si el sector externo en conjunto los genera: faltan los servicios, los intereses y las utilidades giradas, que se ven en la cuenta corriente del gráfico.",
     frecuencia: "Mensual", tipo: "Nivel (acum. 12m)",
   },
   recaudacion: {

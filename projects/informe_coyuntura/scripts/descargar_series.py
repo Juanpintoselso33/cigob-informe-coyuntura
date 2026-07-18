@@ -349,6 +349,30 @@ def fetch_ipc_nucleo_serie() -> list:
             if ym >= "2023-12"]
 
 
+CUENTA_CORRIENTE_ID = "160.2_TL_CUENNTE_0_T_22"   # INDEC, balanza de pagos, trimestral
+
+
+def fetch_cuenta_corriente_serie() -> list:
+    """Cuenta corriente de la balanza de pagos, ACUMULADA 4 TRIMESTRES (ADR-0080).
+
+    Acompaña al saldo comercial en su gráfico —no puntúa: es trimestral y llega
+    con más rezago— y existe para mostrar lo que el saldo de bienes no ve.
+
+    Se acumula a cuatro trimestres a propósito: el indicador que acompaña es el
+    saldo comercial de DOCE MESES, y compararlo contra un trimestre suelto
+    mezclaría escalas. Con las dos en base anual el contraste se lee directo.
+
+    Fuente INDEC (devengado), no el balance cambiario del BCRA (flujos
+    efectivos por el mercado de cambios): son conceptos distintos y bajo
+    restricciones cambiarias divergen mucho. La cuenta corriente propiamente
+    dicha es la del INDEC. [[YYYY-MM-01, M USD]]."""
+    trim = sorted((f[:7], v) for f, v in fetch_indec(CUENTA_CORRIENTE_ID, limit=200)
+                  if v is not None)
+    return [[f"{trim[i][0]}-01", round(sum(x[1] for x in trim[i - 3:i + 1]), 1)]
+            for i in range(3, len(trim))
+            if trim[i][0] >= "2023-12"]
+
+
 def fetch_recaudacion_real_serie() -> list:
     """Recaudación total: variación i.a. REAL en PROMEDIO MÓVIL 3 MESES — la
     métrica del titular (ADR-0029: el interanual de un mes suelto hereda el
@@ -424,6 +448,8 @@ MACRO_DERIVADAS = [
     ("resultado_primario", "% de la recaudación (12m)", "Sec. de Hacienda — IMIG + recaudación", fetch_resultado_primario_serie),
     ("saldo_comercial", "M USD", "INDEC/datos.gob.ar (ICA expo−impo)", fetch_saldo_ica),
     ("saldo_comercial_12m", "M USD (acum. 12 meses)", "INDEC — ICA (vía datos.gob.ar)", fetch_saldo_12m_serie),
+    # acompaña al saldo comercial en el modal, no puntúa (ADR-0080)
+    ("cuenta_corriente", "M USD (acum. 4 trimestres)", "INDEC — balanza de pagos (vía datos.gob.ar)", fetch_cuenta_corriente_serie),
     ("reservas_bcra", "M USD netas", "BCRA Planilla SDDS + Balance (a secas)", fetch_reservas_netas_serie),
     ("tcrm", "índice (base dic-2015)", "BCRA ITCRM", fetch_tcrm_serie),
     # bilaterales oficiales de la misma planilla (descarga memoizada): el

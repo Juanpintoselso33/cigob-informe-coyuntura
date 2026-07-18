@@ -14,8 +14,8 @@ decisiones implementadas remiten a su ADR, que tiene el detalle técnico.
 | | |
 |---|---|
 | Observaciones de la auditoría | 13 indicadores + 3 brechas transversales |
-| **Implementadas** | 8 |
-| **Pendientes de decisión** | 3 |
+| **Implementadas** | 9 |
+| **Pendientes de decisión** | 2 |
 | **Rechazadas con fundamento** | 2 |
 | **Revertidas tras auditoría externa** | 1 |
 | ITCM | 57,2 → **62,2** · tensión 4,3 → **3,8** |
@@ -236,6 +236,26 @@ período que no se repite. Lo que sí se afirma sin reservas es la advertencia a
 lector: que varias dimensiones coincidan **no son varias confirmaciones
 independientes**.
 
+### 8. Cuenta corriente como contexto del saldo comercial · **ADR-0080**
+
+**Este punto se había declarado bloqueado por falta de fuente, y esa conclusión
+era incorrecta**: se buscó en la API con términos que no devolvían resultados y
+se cerró sin insistir. La serie existe, es oficial y está vigente.
+
+Al mirarla apareció algo más grande que el pedido. Contrastadas en base anual
+comparable, el saldo comercial marca **+13.347** millones de dólares de
+superávit mientras la cuenta corriente está en **−4.281** de déficit: una brecha
+estable de ~17.600 millones anuales por servicios, intereses y utilidades
+giradas. Y el texto público del indicador afirmaba justamente lo que los datos
+desmienten — *"indica si el sector externo genera o drena los dólares que
+necesita el programa"*—, sin que ninguna de sus tres limitaciones declaradas
+mencionara la brecha de cobertura.
+
+Se hicieron tres cosas: entra la cuenta corriente del INDEC (devengada, no el
+balance cambiario del BCRA) como serie acompañante en el gráfico, acumulada a 4
+trimestres; se corrige el texto público; y se declara la limitación en la ficha
+con el número concreto. El ITCM no cambia: la cuenta corriente no puntúa.
+
 ---
 
 ## Auditoría externa de la segunda tanda (18-jul-2026)
@@ -307,7 +327,6 @@ calcula en vivo— pero sí el texto de los ADRs:
 
 | # | Observación | Prioridad | Nota |
 |---|---|---|---|
-| 8 | **Cuenta corriente** como contexto del saldo comercial | media | Trimestral: no puede puntuar, solo acompañar el gráfico. Búsqueda previa en la API de datos.gob.ar sin resultados; falta cerrar con evidencia. |
 | 9 | **Calendarizar recalibraciones** de bandas de historia corta (IDM, dolarización, crédito) | baja | Ojo con el criterio: recalibrar contra el rango observado solo si el techo es inalcanzable; si el rango es desempeño real, blanquea la señal. |
 | 11 | **Sensibilidad del 70/30** de presión de dolarización | baja | **Ya calculado**: sobre 14 meses con ambos canales, mover a 50/50 u 85/15 cambia el puntaje hasta 20,4 puntos en el peor mes (oct-2025), que con peso efectivo 0,026 son **0,53 puntos de ITCM**. Falta decidir si se documenta o se recalibra. |
 | 12 | **Ambigüedad direccional del ICIP** declarada en ficha | baja | Los pagos al exterior por software se leen como capitalización o como dependencia tecnológica. |
