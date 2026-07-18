@@ -1,0 +1,452 @@
+{
+  "umbral_saturacion": 0.35,
+  "historia_minima": 18,
+  "filas": [
+    {
+      "indice": "ITCG",
+      "indicador": "asistencia_directa",
+      "n": 39,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.974,
+      "estado": "revisar",
+      "detalle": "97% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 39 meses"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "concesiones_infraestructura",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.906,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "91% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 32 meses"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "fal_modernizacion_laboral",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 1.0,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "100% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 31 meses"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "gasto_funcionamiento",
+      "n": 29,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.379,
+      "estado": "revisar",
+      "detalle": "38% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 29 meses"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "libertad_opcion_salud",
+      "n": 28,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.464,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "46% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 28 meses"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "litigiosidad_laboral",
+      "n": 60,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.45,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "45% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 60 meses"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "masa_salarial",
+      "n": 29,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.724,
+      "estado": "revisar",
+      "detalle": "72% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 29 meses"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "privatizaciones",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.469,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "47% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 32 meses"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "reestructuracion_organismos",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.531,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "53% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 32 meses"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "idm",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.355,
+      "estado": "revisar",
+      "detalle": "35% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 31 meses"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "recaudacion",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.484,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "48% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 31 meses"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "reservas_bcra",
+      "n": 23,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.565,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "57% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 23 meses"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "derrotas_legislativas",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.419,
+      "estado": "revisar",
+      "detalle": "42% de los meses en el techo (100) y el piso (10) nunca se alcanzó en 31 meses"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "ratio_dnu",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.469,
+      "share_techo": 0.0,
+      "estado": "revisar",
+      "detalle": "47% de los meses en el piso (10) y el techo (100) nunca se alcanzó en 32 meses"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "reduccion_estado",
+      "n": 30,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.033,
+      "share_techo": 0.533,
+      "estado": "saturado",
+      "detalle": "53% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "rigi_inversiones",
+      "n": 25,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.52,
+      "share_techo": 0.48,
+      "estado": "saturado",
+      "detalle": "52% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "credito_privado",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.226,
+      "share_techo": 0.387,
+      "estado": "saturado",
+      "detalle": "39% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "ipi_manufacturero",
+      "n": 30,
+      "piso": 5,
+      "techo": 100,
+      "share_piso": 0.467,
+      "share_techo": 0.2,
+      "estado": "saturado",
+      "detalle": "47% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "cohesion_bloque",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.097,
+      "share_techo": 0.355,
+      "estado": "saturado",
+      "detalle": "35% de los meses en un extremo, pero el otro también se alcanzó: la banda discrimina poco en ese tramo y aun así está bien anclada"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "iai",
+      "n": 0,
+      "estado": "historia_corta",
+      "detalle": "0 meses: por debajo del mínimo de 18 para diagnosticar"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "icip",
+      "n": 0,
+      "estado": "historia_corta",
+      "detalle": "0 meses: por debajo del mínimo de 18 para diagnosticar"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "iaf_transferencias",
+      "n": 8,
+      "estado": "historia_corta",
+      "detalle": "8 meses: por debajo del mínimo de 18 para diagnosticar"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "veto_quorum",
+      "n": 3,
+      "estado": "historia_corta",
+      "detalle": "3 meses: por debajo del mínimo de 18 para diagnosticar"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "apertura_comercial",
+      "n": 30,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.033,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "cepo_mulc",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.281,
+      "share_techo": 0.281,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "desregulacion_normativa",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.188,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCG",
+      "indicador": "protocolo_antipiquetes",
+      "n": 30,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "costo_financiamiento_tesoro",
+      "n": 29,
+      "piso": 15,
+      "techo": 100,
+      "share_piso": 0.138,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "emae_ia",
+      "n": 29,
+      "piso": 5,
+      "techo": 100,
+      "share_piso": 0.034,
+      "share_techo": 0.276,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "idc",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.161,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "ipc_total",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.161,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "presion_dolarizacion",
+      "n": 30,
+      "piso": 10.0,
+      "techo": 100.0,
+      "share_piso": 0.067,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "rem_ipc_12m",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.161,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "resultado_primario",
+      "n": 30,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.067,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "saldo_comercial_12m",
+      "n": 30,
+      "piso": 10,
+      "techo": 85,
+      "share_piso": 0.0,
+      "share_techo": 0.333,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCM",
+      "indicador": "tcrm",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.097,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "adhesion_reformas_provincial",
+      "n": 24,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.042,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "alineamiento_senadores_prov",
+      "n": 29,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.138,
+      "share_techo": 0.207,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "bloqueo_sostenido",
+      "n": 28,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.214,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "conflictividad_nacional",
+      "n": 31,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.194,
+      "share_techo": 0.161,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "eficacia_legislativa",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.0,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    },
+    {
+      "indice": "ITCP",
+      "indicador": "votometro_ventaja_lla",
+      "n": 32,
+      "piso": 10,
+      "techo": 100,
+      "share_piso": 0.0,
+      "share_techo": 0.031,
+      "estado": "ok",
+      "detalle": "sin saturación relevante"
+    }
+  ]
+}

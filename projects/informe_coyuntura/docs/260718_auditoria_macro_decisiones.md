@@ -14,8 +14,8 @@ decisiones implementadas remiten a su ADR, que tiene el detalle técnico.
 | | |
 |---|---|
 | Observaciones de la auditoría | 13 indicadores + 3 brechas transversales |
-| **Implementadas** | 9 |
-| **Pendientes de decisión** | 2 |
+| **Implementadas** | 10 |
+| **Pendientes de decisión** | 1 |
 | **Rechazadas con fundamento** | 2 |
 | **Revertidas tras auditoría externa** | 1 |
 | ITCM | 57,2 → **62,2** · tensión 4,3 → **3,8** |
@@ -256,6 +256,31 @@ balance cambiario del BCRA) como serie acompañante en el gráfico, acumulada a 
 trimestres; se corrige el texto público; y se declara la limitación en la ficha
 con el número concreto. El ITCM no cambia: la cuenta corriente no puntúa.
 
+### 9. Calendarizar recalibraciones de bandas · **ADR-0081**
+
+El pedido era un calendario. Se reemplazó por un **diagnóstico ejecutable**
+(`scripts/revision_bandas.py`): un calendario en un documento no dice qué mirar
+ni qué cambió desde la última vez.
+
+Separa dos medidas que el criterio de ADR-0045 exige no confundir:
+**saturación** (qué fracción de meses cae en el extremo — el indicador dejó de
+discriminar) y **alcance** (si el extremo opuesto se tocó alguna vez — ahí sí
+hay sospecha de ancla inalcanzable). El estado se llama "revisar", nunca
+"recalibrar": la decisión es de una persona.
+
+Primera corrida: **ninguna banda del ITCM tiene un extremo inalcanzable**, así
+que hoy no corresponde recalibrar nada. Quedan 14 candidatas a revisión en los
+tres índices; las tres del ITCM —`reservas_bcra` 57% de los meses en el piso,
+`recaudacion` 48%, `idm` 35% en el techo— reflejan desempeño real del período.
+
+**Bug propio, encontrado y corregido en el camino:** la primera versión marcaba
+`rem_ipc_12m` con el 100% de los meses en el piso, porque puntuaba el valor
+ANUAL de la serie contra bandas MENSUALES — el índice puntúa su equivalente
+mensual. Habría mandado a revisar una banda perfecta. Mismo patrón de siempre:
+dos lugares que deben coincidir sobre cómo se puntúa un indicador. Corregido
+usando la reconstrucción compartida, con un test que compara el puntaje del
+diagnóstico contra el publicado.
+
 ---
 
 ## Auditoría externa de la segunda tanda (18-jul-2026)
@@ -327,7 +352,6 @@ calcula en vivo— pero sí el texto de los ADRs:
 
 | # | Observación | Prioridad | Nota |
 |---|---|---|---|
-| 9 | **Calendarizar recalibraciones** de bandas de historia corta (IDM, dolarización, crédito) | baja | Ojo con el criterio: recalibrar contra el rango observado solo si el techo es inalcanzable; si el rango es desempeño real, blanquea la señal. |
 | 11 | **Sensibilidad del 70/30** de presión de dolarización | baja | **Ya calculado**: sobre 14 meses con ambos canales, mover a 50/50 u 85/15 cambia el puntaje hasta 20,4 puntos en el peor mes (oct-2025), que con peso efectivo 0,026 son **0,53 puntos de ITCM**. Falta decidir si se documenta o se recalibra. |
 | 12 | **Ambigüedad direccional del ICIP** declarada en ficha | baja | Los pagos al exterior por software se leen como capitalización o como dependencia tecnológica. |
 | 13 | **Reservas en meses de importaciones** como ancla alternativa | baja | La auditoría misma lo marca como no urgente. |
