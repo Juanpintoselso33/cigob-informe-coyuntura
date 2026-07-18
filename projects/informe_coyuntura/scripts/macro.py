@@ -1051,7 +1051,7 @@ def fetch_tcrm() -> dict | None:
         # (ADR-0073), que distingue un TCRM alto por depreciación gradual de
         # uno alto por un salto cambiario con el traspaso a precios pendiente.
         var_mm = [(serie[i][1] / serie[i - 1][1] - 1) * 100
-                  for i in range(max(1, len(serie) - 3), len(serie))
+                  for i in range(max(1, len(serie) - itcm.TCRM_SALTO_VENTANA), len(serie))
                   if serie[i - 1][1]]
         return {
             "valor": val,
@@ -1060,7 +1060,7 @@ def fetch_tcrm() -> dict | None:
             "fecha_dato": ym,
             "desactualizado": False,
             "var_mm": round(var_mm[-1], 1) if var_mm else None,
-            "salto_3m": round(max(var_mm), 1) if var_mm else None,
+            "salto_ventana": round(max(var_mm), 1) if var_mm else None,
         }
     except Exception as e:
         _warn("tcrm (ITCRM BCRA, cae a INDEC discontinuada)", e)

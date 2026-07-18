@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-18T14:13:40.873842",
+  "generated_at": "2026-07-18T14:37:42.224712",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -152,7 +152,7 @@
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
           "var_mm": 0.8,
-          "salto_3m": 0.8,
+          "salto_ventana": 0.8,
           "en_indice": true,
           "dimension": "competitividad_externa",
           "puntaje_itcm": 47.5,

@@ -14,12 +14,12 @@ decisiones implementadas remiten a su ADR, que tiene el detalle técnico.
 | | |
 |---|---|
 | Observaciones de la auditoría | 13 indicadores + 3 brechas transversales |
-| **Implementadas** | 4 |
-| **Pendientes de decisión** | 8 |
+| **Implementadas** | 9 |
+| **Pendientes de decisión** | 3 |
 | **Rechazadas con fundamento** | 1 |
-| Indicadores del ITCM | 13 → **15** |
-| ITCM | 57,2 → **62,7** (cambió de banda) · tensión 4,3 → **3,7** |
-| Validación externa (ITCM ↔ riesgo país) | r −0,726 → **−0,771** (mejoró) |
+| Indicadores del ITCM | 13 → **16** |
+| ITCM | 57,2 → **61,8** (cambió de banda) · tensión 4,3 → **3,8** |
+| Validación externa (ITCM ↔ riesgo país) | r −0,726 → **−0,764** (mejoró) |
 
 **Verificación previa:** se contrastó toda la aritmética de la auditoría contra
 el snapshot vivo y **cierra exacta** (6 dimensiones 26/24/16/12/11/11 y los 13
@@ -153,17 +153,79 @@ inicio (política arranca en ene-2024).
 
 ---
 
+## Resueltas en la segunda tanda (18-jul-2026)
+
+### 5. TCRM — regla anti-salto · **ADR-0073**
+
+La banda `>110 → 100` premiaba igual una depreciación gradual y un salto
+cambiario con el traspaso a precios pendiente. Caso real: dic-2023 saltó +50,1%
+m/m y puntuó 100/100 durante tres meses; cuatro meses después la ganancia se
+había evaporado entera.
+
+Se implementó un descuento interpolado hacia un piso de 55, con la forma de la
+regla del saldo comercial (ADR-0056). **Revisado el mismo día contra
+literatura**: la primera versión usaba una ventana de 3 meses elegida sin
+respaldo, y se extendió a **8 meses** sobre evidencia de pass-through argentino
+(Frank 2017-2023: dura 6-8 meses; Bertholet 2026: se estabiliza al octavo). El
+umbral de 8% se contrastó contra el criterio estándar de alerta temprana de
+crisis cambiarias (KLR media+3σ, Edison media+2,5σ) y **todos detectan el mismo
+único mes**, así que se conservó. Dispara en 7 de 31 meses y **se apaga sola**
+cuando el nivel cae por debajo del piso. No mueve el ITCM de hoy.
+
+### 6. Rebalanceo IdC ↔ crédito · **ADR-0074**
+
+El IdC declara en su propia ficha, con más de cien meses de validación, que **no
+anticipa el crédito futuro**; sin embargo pesaba 2,7× el crédito realizado. Se
+repartió el 41% conjunto casi en partes iguales (21/20). Hoy mueve +0,014
+puntos —ambos puntúan casi igual— pero en dic-2024 la brecha era de 45 puntos y
+el reparto viejo **subrepresentaba sistemáticamente** el boom de crédito de
+2024-25.
+
+### 7. Segunda señal de actividad · **ADR-0076**
+
+Entra el **IPI manufacturero** con 35% de la dimensión (EMAE 65%), variación
+i.a. suavizada a 3 meses. Bonus no buscado: el IPI publica **un mes antes** que
+el EMAE, así que además baja el rezago que la auditoría marcaba. Las dos señales
+hoy divergen (EMAE +1,64% contra IPI −1,07%), que es exactamente el argumento de
+la auditoría. Descartados con evidencia: demanda eléctrica (series muertas en
+2015-2016) y patentamientos comerciales (el caché tiene **un** mes).
+
+Costo declarado: la correlación externa con el riesgo país baja de −0,775 a
+−0,764. Es lo esperable al sumar una señal sectorial que el mercado no pricea
+como los agregados, y está dentro del ruido de n=31.
+
+### 10. Núcleo del IPC · **ADR-0077**
+
+La recomendación literal era "serie de contexto", pero eso chocaba con la regla
+ya establecida de que **ningún cinturón publica cards de contexto**. Se resolvió
+con el patrón del TCRM: el núcleo entra como **serie acompañante en el modal**
+del IPC, dos curvas en el mismo gráfico. No puntúa, no crea card y no hace
+excepción a la regla.
+
+### IV.3 — Matriz de redundancia interna · **ADR-0075**
+
+**Se verificó primero que no estuviera cubierto**: la matriz de validación
+cruzada existente cruza los cuatro índices contra anclas externas, no los
+componentes entre sí. Son preguntas distintas.
+
+13 componentes, 78 pares, **|r| medio 0,502**, 26% por encima de 0,7 (17 de
+ellos entre dimensiones distintas) y 27% prácticamente independientes. Se
+publica **con la salvedad muestral por delante**: 31 meses de un único programa
+de estabilización, donde desinflación, recuperación y consolidación fiscal
+avanzaron juntas. No se reponderó nada por el hallazgo — sobreajustaría a un
+período que no se repite. Lo que sí se afirma sin reservas es la advertencia al
+lector: que varias dimensiones coincidan **no son varias confirmaciones
+independientes**.
+
+---
+
 ## Pendientes de decisión
 
 | # | Observación | Prioridad | Nota |
 |---|---|---|---|
-| 5 | **TCRM**: banda superior condicional a la velocidad de la depreciación (regla anti-salto) | media | Verificado: las bandas son monótonas, `>110 → 100` sin tope. Una crisis cambiaria mejoraría el puntaje de competitividad mientras destruye el de estabilidad. La solución tiene precedente en el código (regla de superávit por contracción). **La más limpia de las pendientes.** |
-| 6 | **Rebalanceo IdC ↔ crédito** dentro de la dimensión de financiamiento | media | El IdC declara en su propia ficha que *no* anticipa el crédito, y pesa 2,7× más que el crédito realizado. ADR-0071 deliberadamente NO lo tocó para no mezclar decisiones. |
-| 7 | **Segunda señal de actividad** de alta frecuencia junto al EMAE | media | El 11% de la dimensión cuelga de un solo dato con ~2 meses de rezago. Candidatos: demanda eléctrica (CAMMESA) o patentamientos (ya se acumulan para el IAI). |
-| 8 | **Cuenta corriente** como contexto del saldo comercial | media | Trimestral: no puede puntuar, solo acompañar el gráfico. |
+| 8 | **Cuenta corriente** como contexto del saldo comercial | media | Trimestral: no puede puntuar, solo acompañar el gráfico. Búsqueda previa en la API de datos.gob.ar sin resultados; falta cerrar con evidencia. |
 | 9 | **Calendarizar recalibraciones** de bandas de historia corta (IDM, dolarización, crédito) | baja | Ojo con el criterio: recalibrar contra el rango observado solo si el techo es inalcanzable; si el rango es desempeño real, blanquea la señal. |
-| 10 | **Núcleo del IPC** como serie de contexto | baja | Un mes de corrección tarifaria puntúa igual que uno de núcleo alta, y significan lo opuesto. |
-| 11 | **Sensibilidad del 70/30** de presión de dolarización a los 24 meses | baja | Peso acotado (2,6%): riesgo bajo. |
+| 11 | **Sensibilidad del 70/30** de presión de dolarización | baja | **Ya calculado**: sobre 14 meses con ambos canales, mover a 50/50 u 85/15 cambia el puntaje hasta 20,4 puntos en el peor mes (oct-2025), que con peso efectivo 0,026 son **0,53 puntos de ITCM**. Falta decidir si se documenta o se recalibra. |
 | 12 | **Ambigüedad direccional del ICIP** declarada en ficha | baja | Los pagos al exterior por software se leen como capitalización o como dependencia tecnológica. |
 | 13 | **Reservas en meses de importaciones** como ancla alternativa | baja | La auditoría misma lo marca como no urgente. |
 
@@ -172,7 +234,7 @@ inicio (política arranca en ene-2024).
 | # | Observación | Estado |
 |---|---|---|
 | IV.2 | **Propagación del IPC** como deflactor (toca 5 de los indicadores) | **Pendiente**: documentar como riesgo sistémico en la metodología general. Nota: ADR-0072 lo tuvo en cuenta y evitó sumar un sexto uso. |
-| IV.3 | **Correlación procíclica** entre dimensiones; publicar matriz | **Verificar primero**: puede estar cubierto. Ya existe una matriz de validación cruzada en el snapshot y el propio texto del ITCM remite a ella. |
+| IV.3 | **Correlación procíclica** entre dimensiones; publicar matriz | **RESUELTO** — ADR-0075 (ver arriba). |
 
 ---
 

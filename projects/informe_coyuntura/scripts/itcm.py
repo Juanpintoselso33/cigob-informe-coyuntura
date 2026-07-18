@@ -397,6 +397,7 @@ def ajuste_automatico_saldo(ind_saldo: dict) -> dict | None:
 TCRM_SALTO_UMBRAL = 8.0      # % m/m a partir del cual la suba deja de ser gradual
 TCRM_SALTO_SATURA = 25.0     # % m/m donde el descuento llega al piso
 TCRM_SALTO_PISO = 55.0       # puntaje del TCRM alto conseguido por salto puro
+TCRM_SALTO_VENTANA = 8       # meses que el descuento sobrevive al salto
 
 
 def ajuste_automatico_tcrm(ind_tcrm: dict) -> dict | None:
@@ -412,10 +413,19 @@ def ajuste_automatico_tcrm(ind_tcrm: dict) -> dict | None:
     esa mejora sí se sostuvo — la regla no debe tocarla.
 
     Medida de abruptez: el MÁXIMO de las variaciones mensuales de los últimos
-    tres meses (`salto_3m`). Se mira una ventana y no solo el mes corriente
+    OCHO meses (`salto_ventana`). Se mira una ventana y no solo el mes corriente
     porque el descuento tiene que sobrevivir al salto: en ene-2024 el TCRM
     seguía en 132,8 por el salto de diciembre, y con la variación del mes solo
     (+6,3%) habría vuelto a puntuar 100.
+
+    Los ocho meses salen de la evidencia de traspaso a precios en Argentina, no
+    de una elección de forma: Frank (2017-2023) estima que el pass-through de
+    una devaluación dura entre seis y ocho meses, y Bertholet (2026) encuentra
+    que el efecto crece de forma casi monótona durante todo el primer año y
+    recién se estabiliza alrededor del octavo mes. Una ventana más corta suelta
+    el descuento con el traspaso a mitad de camino: con tres meses, en mar-2024
+    el índice volvía a leer 89 puntos de competitividad mientras la inflación
+    todavía se estaba comiendo el salto de diciembre.
 
     Entre el umbral y la saturación se interpola el puntaje de banda hacia el
     piso, igual que en ajuste_automatico_saldo:
@@ -431,7 +441,7 @@ def ajuste_automatico_tcrm(ind_tcrm: dict) -> dict | None:
     si la banda ya puntúa en el piso o por debajo.
     """
     valor = ind_tcrm.get("valor")
-    salto = ind_tcrm.get("salto_3m")
+    salto = ind_tcrm.get("salto_ventana")
     if valor is None or salto is None or salto <= TCRM_SALTO_UMBRAL:
         return None
     p_banda = parametrica.puntaje_interpolado(float(valor), BANDAS_ITCM["tcrm"])
@@ -443,7 +453,8 @@ def ajuste_automatico_tcrm(ind_tcrm: dict) -> dict | None:
         "puntaje": puntaje,
         "justificacion": (
             f"Regla automática: el tipo de cambio real llegó a este nivel por un salto "
-            f"de {salto:+.1f}% en un mes dentro del último trimestre, no por depreciación "
+            f"de {salto:+.1f}% en un mes dentro de los últimos {TCRM_SALTO_VENTANA} meses, no por "
+            f"depreciación "
             f"gradual. El traspaso a precios está pendiente, así que la mejora todavía no "
             f"es competitividad sostenida — ajuste interpolado hacia el piso de "
             f"{TCRM_SALTO_PISO:.0f} puntos."
