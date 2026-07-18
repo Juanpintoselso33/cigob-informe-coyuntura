@@ -7,6 +7,7 @@
 | **Fecha** | 2026-07-18 |
 | **Precedentes directos** | ADR-0029 (promedio móvil contra el ruido del interanual de un mes suelto) · ADR-0021 (puntaje interpolado) |
 | **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 3 |
+| **Enmendado por** | ADR-0079 (18-jul-2026): peso 35% → 20% y corrección de tres afirmaciones de este documento |
 
 ## Contexto
 
@@ -30,8 +31,13 @@ hubiera un segundo indicador que la resolviera.
 ## Decisión
 
 Entra el **IPI manufacturero** (Índice de Producción Industrial, nivel general)
-como variación interanual **promediada a tres meses**, con **35%** de la
-dimensión; el EMAE conserva **65%**.
+como variación interanual **promediada a tres meses**.
+
+> El reparto original era 65/35. **ADR-0079 lo llevó a 80/20** el mismo día,
+> tras auditoría externa: el EMAE ya contiene a la industria, así que el 35%
+> dejaba a la dimensión con casi la mitad de su exposición en un solo sector.
+> Las secciones que siguen conservan las cifras del reparto original cuando
+> describen mediciones hechas con él.
 
 ### Por qué el promedio de tres meses
 
@@ -45,24 +51,54 @@ criterio que ADR-0029 aplicó a la recaudación.
 
 ### Por qué las mismas bandas que el EMAE
 
-Se consideró ensancharlas "porque la industria es más cíclica", y **los datos no
-lo respaldan**: sobre el período, el rango del IPI suavizado es de 26,0 puntos y
-el del EMAE de 23,5 — comparables. Ensancharlas habría neutralizado justamente
-la señal que el indicador viene a aportar. Se usan las bandas del EMAE tal cual,
-lo que además deja los dos componentes leíbles en la misma escala.
+> **Corregido tras auditoría externa (18-jul-2026).** La versión original de
+> este ADR afirmaba que ensanchar las bandas del IPI "no lo respaldan los
+> datos", porque el rango del IPI suavizado (26,0 pp) y el del EMAE (23,5 pp)
+> eran comparables. **La comparación estaba doblemente viciada**: medía el EMAE
+> sobre sesenta meses que arrancan en may-2021 e incluyen el rebote post-COVID,
+> contra treinta del IPI; y comparaba el IPI ya suavizado contra el EMAE sin
+> suavizar. Sobre la ventana comparable el rango del EMAE es **16,1 pp** contra
+> 26,0 del IPI: la industria oscila **1,6 veces más**.
 
-### Por qué 65/35 y no mitad y mitad
+Se usan igual las bandas del EMAE, por una razón distinta de la que decía el
+documento original. Lo que importa no es el rango del valor crudo sino **cuánto
+movimiento aporta cada componente a la dimensión después de pasar por las
+bandas**, que es donde el índice lo consume:
+
+| | desvío del valor | desvío del puntaje | aporte al movimiento |
+|---|---|---|---|
+| EMAE | 4,15 pp | 32,3 | 60% |
+| IPI | 7,85 pp | 39,5 | 40% |
+
+*(con el reparto 65/35 vigente al momento de la medición)*
+
+Y hay una segunda razón, más de fondo: **la brecha que producen estas bandas es
+real y hay que dejarla ver**. Con ellas, un mes **mediano** del IPI puntúa 39,4 y
+uno del EMAE 70,9 — 31 puntos — porque la industria argentina rindió peor que la
+actividad agregada durante todo el período medido. Recalibrar para cerrar esa
+brecha blanquearía desempeño real, que es exactamente lo que ADR-0045 prohíbe.
+El arrastre estructural que produce se compensa con el **peso** del indicador
+(ADR-0079), no retocando las anclas.
+
+### Por qué el EMAE manda
 
 El EMAE es la medida agregada oficial y cubre todos los sectores; el IPI mide
 sólo manufactura, alrededor de un sexto del producto. El EMAE debe seguir
-mandando. El 35% es peso suficiente para que la segunda señal se note cuando
-diverge, sin convertir la dimensión en una lectura industrial.
+mandando por amplio margen. La versión original justificaba el 35% diciendo que
+era "peso suficiente para que la segunda señal se note cuando diverge" —es
+decir, eligiendo el peso por el efecto buscado sobre el resultado y no por la
+importancia del componente, que es un criterio inválido y así lo señaló la
+auditoría externa. El reparto vigente (80/20) está en ADR-0079, fundado en la
+exposición sectorial resultante.
 
 ## Consecuencias
 
-- **Baja el rezago de la dimensión.** El IPI se publica hacia mediados del mes
-  siguiente: al momento de este cambio el IPI llegaba a **may-2026** y el EMAE
-  a **abr-2026**. La dimensión pasa a tener una lectura un mes más fresca.
+- **Baja el rezago de la dimensión, aunque menos de lo que decía la versión
+  original de este ADR.** El IPI se publica hacia mediados del mes siguiente: al
+  momento de este cambio llegaba a **may-2026** y el EMAE a **abr-2026**. Pero
+  el indicador promedia tres meses, así que su centro de masa queda en t−1: el
+  IPI de mayo informa, en el neto, sobre abril — el mismo mes del EMAE. La
+  ganancia es real pero vale un tercio de lo declarado, no un mes entero.
 - **Las dos señales divergen hoy, que es exactamente el punto.** EMAE +1,64%
   i.a. (puntaje 61,1) contra IPI −1,07% (puntaje 39,4): la actividad agregada
   crece mientras la industria se contrae. Con el EMAE solo, el índice no veía
@@ -73,13 +109,21 @@ diverge, sin convertir la dimensión en una lectura industrial.
 
 ### Efecto sobre la validación externa
 
-La correlación del ITCM con el riesgo país **baja levemente, de −0,775 a
-−0,764**. Se declara en lugar de omitirse: es el resultado esperable de sumar
-una señal sectorial que el mercado no pricea igual que los agregados, y la
-magnitud está dentro del ruido de una muestra de 31 meses. No se toma como
-argumento en contra: la validación externa mide si el índice acompaña al
-mercado, no si describe bien la economía real, y la dimensión de actividad
-existe para lo segundo.
+La correlación del ITCM con el riesgo país **baja de −0,775 a −0,764** con el
+reparto original.
+
+> **Corregido tras auditoría externa.** La versión original de este ADR
+> descartaba ese deterioro como "dentro del ruido" y argumentaba que la
+> validación externa "mide si el índice acompaña al mercado, no si describe bien
+> la economía real". El problema es que **ese mismo estadístico se había usado
+> como confirmación** cuando mejoró, en la misma tanda de trabajo. No se puede
+> tener una métrica como prueba cuando sube y como irrelevante cuando baja.
+>
+> El barrido de pesos posterior (ADR-0079) mostró además que el deterioro es
+> **monótono**: −0,775 sin IPI, −0,768 al 15%, −0,767 al 20%, −0,764 al 35%,
+> −0,760 al 50%. No hay un peso donde el IPI mejore la validación externa. Eso
+> es un argumento en contra, y así se pondera en ADR-0079 —junto a los demás, no
+> como criterio único.
 
 ## Limitaciones declaradas
 
@@ -91,5 +135,12 @@ existe para lo segundo.
   estacionalidad pero no los efectos de calendario, que el suavizado atenúa sin
   eliminar.
 - Los dos componentes de la dimensión son **medidas de actividad y correlacionan
-  entre sí**: el segundo reduce el riesgo de fuente única, no lo convierte en
-  dos lecturas independientes (ver ADR-0075).
+  entre sí**: el segundo no las convierte en dos lecturas independientes (ver
+  ADR-0075).
+- **"Reduce el riesgo de fuente única" es parcialmente falso** y la versión
+  original de este ADR lo afirmó sin matizar: el EMAE **ya contiene** a la
+  industria manufacturera (~17% del agregado), así que el IPI no agrega un
+  sector sino una segunda medición del mismo; y ambos los publica el INDEC, de
+  modo que un cambio de metodología del organismo los movería juntos. Lo que sí
+  reduce es el riesgo **operativo**: si falta o se revisa una serie, la
+  dimensión conserva lectura.

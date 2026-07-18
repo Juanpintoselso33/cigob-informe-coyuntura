@@ -39,7 +39,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   ipi_manufacturero: {
     que: "Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses.",
-    aporta: "Segunda lectura de la actividad, junto al EMAE: mide sólo la industria, pero se publica un mes antes y no siempre cuenta lo mismo que el agregado.",
+    aporta: "Segunda lectura de la actividad, junto al EMAE: mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.",
     frecuencia: "Mensual", tipo: "Variación i.a. (promedio 3 meses)",
   },
   saldo_comercial_12m: {

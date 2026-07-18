@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-18T15:04:34.021993",
+  "generated_at": "2026-07-18T15:36:00.160030",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -95,7 +95,7 @@
           "dimension": "actividad",
           "puntaje_itcm": 61.1,
           "puntaje_banda": 61.1,
-          "peso_efectivo": 0.0715
+          "peso_efectivo": 0.088
         },
         "ipi_manufacturero": {
           "valor": -1.07,
@@ -107,7 +107,7 @@
           "dimension": "actividad",
           "puntaje_itcm": 39.4,
           "puntaje_banda": 39.4,
-          "peso_efectivo": 0.0385
+          "peso_efectivo": 0.022
         },
         "saldo_comercial_12m": {
           "valor": 21221.0,
@@ -310,7 +310,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 61.8,
+        "valor": 62.2,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -418,21 +418,21 @@
           "actividad": {
             "nombre": "Actividad económica",
             "peso": 0.11,
-            "puntaje": 53.5,
+            "puntaje": 56.8,
             "indicadores": {
               "emae_ia": {
-                "peso": 0.65,
+                "peso": 0.8,
                 "puntaje_banda": 61.1,
                 "puntaje_aplicado": 61.1,
                 "valor": 1.64,
-                "peso_efectivo": 0.0715
+                "peso_efectivo": 0.088
               },
               "ipi_manufacturero": {
-                "peso": 0.35,
+                "peso": 0.2,
                 "puntaje_banda": 39.4,
                 "puntaje_aplicado": 39.4,
                 "valor": -1.07,
-                "peso_efectivo": 0.0385
+                "peso_efectivo": 0.022
               }
             },
             "peso_efectivo": 0.11

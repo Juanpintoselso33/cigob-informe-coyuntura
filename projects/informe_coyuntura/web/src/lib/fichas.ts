@@ -379,7 +379,7 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "ipi_manufacturero",
     cinturon: "macro",
-    rezago: "El INDEC publica el IPI hacia mediados del mes siguiente al de referencia: llega aproximadamente un mes antes que el EMAE, y por eso la dimensión de actividad tiene hoy una lectura más fresca que la que tenía con el EMAE solo.",
+    rezago: "El INDEC publica el IPI hacia mediados del mes siguiente al de referencia, aproximadamente un mes antes que el EMAE. La ganancia de frescura es real pero acotada: como el indicador promedia tres meses, su centro de masa queda un mes atrás del último dato, de modo que incorpora el mes más reciente con un tercio del peso en lugar de reflejarlo por completo.",
     fuente: {
       organismo: "INDEC",
       operacion: "IPI manufacturero — Índice de Producción Industrial, nivel general, serie original (base 2004 = 100)",
@@ -403,9 +403,11 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-5, 5], [-3.5, 20], [-1, 40], [1.5, 60], [4, 80], [5, 100]],
       unidadCorta: "% i.a.",
     },
-    dobleUso: "Son las mismas bandas del EMAE, deliberadamente. La industria oscila algo más que la actividad agregada, pero poco: sobre el período medido, el rango del IPI suavizado (26,0 puntos) y el del EMAE (23,5) son comparables. Ensanchar las bandas del IPI habría neutralizado justamente la señal que este indicador viene a aportar.",
+    dobleUso: "Usa las mismas bandas que el EMAE, deliberadamente y con una consecuencia que conviene declarar: sobre la historia disponible, un mes mediano del índice industrial puntúa 39 y uno del estimador de actividad agregada puntúa 71. La brecha no es un defecto de calibración sino desempeño real —la industria argentina creció menos que el conjunto de la economía durante el período—, y ensanchar las bandas para cerrarla borraría esa señal. El arrastre que produce se compensa limitando su peso dentro de la dimensión, no retocando las anclas.",
     limitaciones: [
       "Mide sólo la industria manufacturera, alrededor de un sexto del producto: no es una medida de actividad agregada y no reemplaza al EMAE, lo acompaña.",
+      "El EMAE ya incluye a la industria manufacturera, así que este indicador no aporta un sector nuevo sino una segunda medición del mismo: su función es que la dimensión no dependa de un único dato, no ampliar la cobertura.",
+      "Ambos indicadores de la dimensión los publica el INDEC. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían los dos juntos.",
       "El promedio de tres meses amortigua los cambios de nivel: un quiebre brusco tarda dos o tres meses en verse completo.",
       "La serie es original, no desestacionalizada; la comparación interanual absorbe la estacionalidad pero no los efectos de calendario, que el suavizado atenúa sin eliminar.",
       "El INDEC revisa el índice hacia atrás con cada publicación.",
@@ -413,7 +415,8 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda sólo con el EMAE y su peso se renormaliza.",
     revisiones: "La fuente revisa la serie; el informe la regenera completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
-      { fecha: "2026-07-18", cambio: "Alta del indicador como segunda señal de actividad junto al EMAE, con 35% de la dimensión, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato." },
+      { fecha: "2026-07-18", cambio: "Alta del indicador como segunda señal de actividad junto al EMAE, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato." },
+      { fecha: "2026-07-18", cambio: "Su peso baja de 35% a 20% de la dimensión: al ser la industria parte del propio estimador agregado, el reparto anterior dejaba a la dimensión con casi la mitad de su exposición en un solo sector." },
     ],
   },
 

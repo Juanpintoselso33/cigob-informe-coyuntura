@@ -130,11 +130,15 @@ BANDAS_ITCM = {
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],
     "ipi_manufacturero": [              # % i.a. suavizado 3m — MISMAS bandas que el EMAE
-        # ADR-0076: se usan las bandas del EMAE a propósito. La industria oscila
-        # algo más que la actividad agregada, pero poco: sobre el período, el
-        # rango del IPI suavizado (26,0 pp) y el del EMAE (23,5 pp) son
-        # comparables. Ensancharlas "porque la industria es más cíclica" habría
-        # neutralizado justamente la señal que este indicador viene a aportar.
+        # ADR-0076 + ADR-0079: se usan las bandas del EMAE a propósito, PERO no
+        # porque los rangos sean parecidos (no lo son: sobre la misma ventana el
+        # IPI oscila 1,6× más). Se usan porque la brecha que producen es real y
+        # hay que dejarla ver: con estas bandas un mes MEDIANO del IPI puntúa
+        # 39,4 y uno del EMAE 70,9, porque la industria argentina rindió peor
+        # que la actividad agregada durante todo el período. Recalibrar para
+        # cerrar esa brecha blanquearía desempeño real (criterio de ADR-0045).
+        # El arrastre estructural se compensa con el PESO (20%), no con las
+        # anclas.
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],
@@ -243,11 +247,13 @@ DIMENSIONES_ITCM = {
     "actividad": {
         "nombre": "Actividad económica",
         "peso": 0.11,
-        # ADR-0076: la dimensión dejó de colgar de un único dato. El EMAE sigue
-        # mandando —es la medida agregada oficial, cubre todos los sectores—
-        # y el IPI entra como segunda señal: mide sólo manufactura, pero se
-        # publica un mes antes y no siempre cuenta lo mismo.
-        "indicadores": {"emae_ia": 0.65, "ipi_manufacturero": 0.35},
+        # ADR-0076 + ADR-0079: la dimensión dejó de colgar de un único dato, pero
+        # el IPI entra como RESPALDO, no como medida principal. El EMAE ya
+        # contiene a la industria (~17% del agregado), así que subirle el peso
+        # al IPI sobre-expone la dimensión a un solo sector: al 20% la
+        # exposición total a manufactura queda en 34%, el doble de su peso
+        # natural, que es lo máximo defendible para un componente de respaldo.
+        "indicadores": {"emae_ia": 0.80, "ipi_manufacturero": 0.20},
     },
     "competitividad_externa": {
         "nombre": "Competitividad externa",
