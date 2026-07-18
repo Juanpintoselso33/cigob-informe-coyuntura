@@ -464,6 +464,14 @@
   border-radius: 999px; background: var(--bg-page); border: 1px solid var(--bd);
   font-size: 11px; color: var(--muted); white-space: nowrap;
 }
+.cg-red-chip--disenio {
+  background: var(--verde-soft, #EAF6F0); border-color: transparent; color: var(--cta);
+}
+.cg-red-nota {
+  font-size: 12.5px; color: var(--muted); line-height: 1.5;
+  margin: 10px 0 4px;
+}
+.cg-red-nota strong { color: var(--dark); font-weight: 600; }
 .cg-red-r {
   font-variant-numeric: tabular-nums; font-weight: 700;
   font-size: 15.5px; white-space: nowrap;

@@ -404,7 +404,8 @@
         "n": 31,
         "dimension_a": "estabilidad_monetaria",
         "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": true
+        "misma_dimension": true,
+        "por_diseno": "el REM es la inflación esperada: un pronóstico del IPC, en la misma dimensión y a propósito, para leer la misma magnitud en dos momentos"
       },
       {
         "a": "credito_privado",
@@ -413,7 +414,8 @@
         "n": 31,
         "dimension_a": "financiamiento",
         "dimension_b": "financiamiento",
-        "misma_dimension": true
+        "misma_dimension": true,
+        "por_diseno": "los dos se construyen sobre depósitos y préstamos del sistema bancario; la superposición está declarada desde su diseño"
       },
       {
         "a": "idc",
@@ -422,7 +424,8 @@
         "n": 31,
         "dimension_a": "financiamiento",
         "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "idc",
@@ -431,7 +434,8 @@
         "n": 31,
         "dimension_a": "financiamiento",
         "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "saldo_comercial_12m",
@@ -440,7 +444,8 @@
         "n": 30,
         "dimension_a": "viabilidad_fiscal_comercial",
         "dimension_b": "competitividad_externa",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "credito_privado",
@@ -449,7 +454,8 @@
         "n": 31,
         "dimension_a": "financiamiento",
         "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "rem_ipc_12m",
@@ -458,7 +464,8 @@
         "n": 30,
         "dimension_a": "estabilidad_monetaria",
         "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "resultado_primario",
@@ -467,7 +474,8 @@
         "n": 30,
         "dimension_a": "viabilidad_fiscal_comercial",
         "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": true
+        "misma_dimension": true,
+        "por_diseno": null
       },
       {
         "a": "idc",
@@ -476,7 +484,8 @@
         "n": 30,
         "dimension_a": "financiamiento",
         "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "credito_privado",
@@ -485,7 +494,8 @@
         "n": 31,
         "dimension_a": "financiamiento",
         "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "ipc_total",
@@ -494,7 +504,8 @@
         "n": 30,
         "dimension_a": "estabilidad_monetaria",
         "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "emae_ia",
@@ -503,7 +514,8 @@
         "n": 29,
         "dimension_a": "actividad",
         "dimension_b": "financiamiento",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "ipi_manufacturero",
@@ -512,7 +524,8 @@
         "n": 30,
         "dimension_a": "actividad",
         "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "rem_ipc_12m",
@@ -521,7 +534,8 @@
         "n": 30,
         "dimension_a": "estabilidad_monetaria",
         "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "resultado_primario",
@@ -530,7 +544,8 @@
         "n": 30,
         "dimension_a": "viabilidad_fiscal_comercial",
         "dimension_b": "competitividad_externa",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "credito_privado",
@@ -539,7 +554,8 @@
         "n": 29,
         "dimension_a": "financiamiento",
         "dimension_b": "actividad",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "credito_privado",
@@ -548,7 +564,8 @@
         "n": 30,
         "dimension_a": "financiamiento",
         "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "emae_ia",
@@ -557,7 +574,8 @@
         "n": 29,
         "dimension_a": "actividad",
         "dimension_b": "actividad",
-        "misma_dimension": true
+        "misma_dimension": true,
+        "por_diseno": null
       },
       {
         "a": "emae_ia",
@@ -566,7 +584,8 @@
         "n": 29,
         "dimension_a": "actividad",
         "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "emae_ia",
@@ -575,7 +594,8 @@
         "n": 29,
         "dimension_a": "actividad",
         "dimension_b": "estabilidad_monetaria",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "presion_dolarizacion",
@@ -584,7 +604,8 @@
         "n": 30,
         "dimension_a": "estabilidad_monetaria",
         "dimension_b": "competitividad_externa",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "idc",
@@ -593,7 +614,8 @@
         "n": 30,
         "dimension_a": "financiamiento",
         "dimension_b": "actividad",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       },
       {
         "a": "ipc_total",
@@ -602,10 +624,12 @@
         "n": 30,
         "dimension_a": "estabilidad_monetaria",
         "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": false
+        "misma_dimension": false,
+        "por_diseno": null
       }
     ],
-    "pares_cruzados": 19
+    "pares_cruzados": 19,
+    "pares_no_explicados": 19
   },
   "serie_itcg": {
     "2023-12": 18.7,

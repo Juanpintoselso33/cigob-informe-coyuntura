@@ -787,7 +787,8 @@ def _redundancia_itcm(bloque):
     # Se emiten las CLAVES: las etiquetas legibles viven en el front
     # (web/src/lib/datos.ts), que es la fuente única de nombres públicos.
     top = [{"a": p["a"], "b": p["b"], "r": p["r"],
-            "cruzado": not p["misma_dimension"]}
+            "cruzado": not p["misma_dimension"],
+            "por_diseno": p.get("por_diseno")}
            for p in red["pares_altos"][:6]]
 
     bloque["redundancia"] = {
@@ -809,8 +810,12 @@ def _redundancia_itcm(bloque):
             f"independientes ni una sola señal repetida. Un {red['share_altos']:.0%} de los pares "
             f"se mueve muy junto (por encima de {coma(red['umbral'])}) y un "
             f"{red['share_bajos']:.0%} es prácticamente independiente. "
-            + (f"De los {n_alt} pares más acoplados, {red['pares_cruzados']} pertenecen a "
-               f"dimensiones distintas del índice. " if n_alt else
+            + (f"De los {n_alt} pares que superan ese umbral, {red.get('pares_no_explicados', 0)} "
+               f"acoplan indicadores de dimensiones distintas sin una razón de diseño que lo "
+               f"explique: son los que ameritan atención. Los demás, o comparten dimensión —donde "
+               f"su peso conjunto está acotado— o están acoplados a propósito, como la inflación "
+               f"medida y la esperada, que el índice cruza justamente para leer la misma magnitud "
+               f"en dos momentos. " if n_alt else
                "Ningún par supera el umbral: no hay dos componentes que se muevan "
                "prácticamente al unísono. ")
             + (f"La lectura correcta exige una salvedad: el período disponible son treinta y un "

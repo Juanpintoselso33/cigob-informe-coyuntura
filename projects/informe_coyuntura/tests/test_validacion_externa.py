@@ -198,3 +198,32 @@ def test_la_matriz_sobrevive_a_un_componente_saturado(monkeypatch):
     m = validacion_externa.matriz_redundancia_itcm()
     assert m["n_pares"] > 0, "la matriz quedó vacía"
     assert "tcrm" not in m["matriz"], "un componente constante no debería tener pares"
+
+
+def test_los_pares_acoplados_por_diseno_estan_marcados():
+    """Los dos pares con mayor correlación del ITCM lo están POR CONSTRUCCIÓN:
+    el REM es un pronóstico del IPC, y el IdC y el crédito privado se arman
+    sobre los mismos depósitos y préstamos. Publicarlos junto a los demás
+    induce a leer como defecto lo que es diseño.
+
+    Este test verifica que sigan marcados: si alguien renombra un indicador y
+    la clave del diccionario deja de coincidir, la marca desaparecería en
+    silencio y la card volvería a encabezarse con dos falsos hallazgos."""
+    m = validacion_externa.matriz_redundancia_itcm()
+    por_diseno = {frozenset((p["a"], p["b"])) for p in m["pares_altos"] if p["por_diseno"]}
+    assert frozenset(("ipc_total", "rem_ipc_12m")) in por_diseno
+    assert frozenset(("credito_privado", "idc")) in por_diseno
+    for p in m["pares_altos"]:
+        if p["por_diseno"]:
+            assert isinstance(p["por_diseno"], str) and len(p["por_diseno"]) > 30, (
+                "el motivo del acoplamiento tiene que estar explicado, no ser un booleano")
+
+
+def test_los_pares_no_explicados_excluyen_los_de_diseno():
+    """El número que encabeza la conclusión pública: acoplados, de dimensiones
+    distintas y sin razón de diseño."""
+    m = validacion_externa.matriz_redundancia_itcm()
+    esperado = sum(1 for p in m["pares_altos"]
+                   if not p["misma_dimension"] and not p["por_diseno"])
+    assert m["pares_no_explicados"] == esperado
+    assert m["pares_no_explicados"] <= m["pares_cruzados"]

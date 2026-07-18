@@ -416,12 +416,19 @@ const robChartData = rob?.hist && indice ? {
                 </div>
               </div>
               <p class="cg-red-titulo">Los pares más acoplados</p>
+              <p class="cg-red-nota">
+                Los marcados <strong>a propósito</strong> correlacionan por diseño y no son un
+                hallazgo: el índice los cruza sabiendo que miden cosas relacionadas. Los de
+                <strong>dimensiones distintas</strong> son los que ameritan atención.
+              </p>
               <ul class="cg-red-pares">
                 {red.top.map(p => (
                   <li>
                     <span class="cg-red-par">
                       {label(p.a)} <span class="cg-red-x">×</span> {label(p.b)}
-                      {p.cruzado && <span class="cg-red-chip">dimensiones distintas</span>}
+                      {p.por_diseno
+                        ? <span class="cg-red-chip cg-red-chip--disenio" title={p.por_diseno}>acoplado a propósito</span>
+                        : p.cruzado && <span class="cg-red-chip">dimensiones distintas</span>}
                     </span>
                     {/* tres decimales fijos: si no, +0,910 se imprime "+0,91"
                         y la columna queda despareja contra +0,935 */}

@@ -228,6 +228,19 @@ def construir_serie_itcm() -> dict:
     return out
 
 
+# Pares cuyo acoplamiento es DE DISEÑO, con el motivo. No son hallazgos: que
+# correlacionen alto es la construcción funcionando, y presentarlos junto a los
+# demás induce a leer como defecto lo que es intencional.
+ACOPLADOS_POR_DISENO = {
+    frozenset(("ipc_total", "rem_ipc_12m")):
+        "el REM es la inflación esperada: un pronóstico del IPC, en la misma "
+        "dimensión y a propósito, para leer la misma magnitud en dos momentos",
+    frozenset(("credito_privado", "idc")):
+        "los dos se construyen sobre depósitos y préstamos del sistema "
+        "bancario; la superposición está declarada desde su diseño",
+}
+
+
 def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
     """Correlación de Pearson entre los PUNTAJES mensuales de los componentes
     del ITCM (sección IV.3 de la auditoría de jul-2026).
@@ -269,6 +282,7 @@ def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
                     "a": a, "b": b, "r": r, "n": n,
                     "dimension_a": dim_de.get(a), "dimension_b": dim_de.get(b),
                     "misma_dimension": dim_de.get(a) == dim_de.get(b),
+                    "por_diseno": ACOPLADOS_POR_DISENO.get(frozenset((a, b))),
                 })
     pares.sort(key=lambda p: -abs(p["r"]))
     todos = [r for i, a in enumerate(inds) for b in inds[i + 1:]
@@ -283,6 +297,10 @@ def matriz_redundancia_itcm(umbral: float = 0.7) -> dict:
         "matriz": matriz,
         "pares_altos": pares,
         "pares_cruzados": sum(1 for p in pares if not p["misma_dimension"]),
+        # El número que realmente importa: acoplados, de dimensiones distintas
+        # y sin una razón de diseño que lo explique.
+        "pares_no_explicados": sum(1 for p in pares
+                                   if not p["misma_dimension"] and not p["por_diseno"]),
     }
 
 
