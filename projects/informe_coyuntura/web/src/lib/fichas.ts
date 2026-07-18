@@ -766,12 +766,15 @@ export const FICHAS: Record<string, Ficha> = {
     dobleUso: "La operación IPI también alimenta (en su variante desestacionalizada) un componente del ITVC de vida cotidiana.",
     limitaciones: [
       "El diseño institucional incluía la importación de hardware de alta tecnología, que no es automatizable con las fuentes públicas actuales: el índice quedó con dos de tres componentes, renormalizados y declarados.",
+      "AMBIGÜEDAD DE INTERPRETACIÓN, declarada. Un aumento de los pagos al exterior por servicios de informática admite dos lecturas opuestas y el índice adopta una: puede significar que la economía se está digitalizando —incorpora software, nube e inteligencia artificial para producir mejor— o que depende de tecnología que no produce y gira divisas para conseguirla. El indicador puntúa la primera lectura: más pagos, mejor puntaje. La evidencia disponible la respalda sólo en parte. Sobre ciento siete meses, los pagos anticipan a la productividad con una correlación de 0,28 cuando se los adelanta un trimestre: una asociación real pero modesta, compatible también con que ambas variables suban juntas cuando la economía crece, sin que una cause a la otra. Quien lea el indicador debe saber que un valor alto no distingue por sí solo entre capitalización tecnológica y dependencia tecnológica.",
+      "El componente de pagos al exterior es mucho más volátil que el de productividad (desvío de 71 puntos contra 11) y pesa el 57% del índice: los movimientos del indicador los explica casi siempre esa serie, no la de productividad.",
       "Los pagos al exterior por servicios de informática son una aproximación a la digitalización, no una medición directa de inversión en capital digital.",
       "El empleo de la encuesta laboral se usa como aproximación de las horas trabajadas.",
     ],
     faltantes: "Sin mes común de los tres insumos, se mantiene el último valor disponible, señalado como desactualizado; sin dato, el IAI pasa a explicar toda la dimensión de inversión.",
     revisiones: "Titular por panel alineado, no se revisa; las revisiones de las fuentes se absorben al regenerar las series.",
     cambios: [
+      { fecha: "2026-07-18", cambio: "Se declara en la ficha la ambigüedad de interpretación del componente de pagos al exterior, que admite leerse como capitalización tecnológica o como dependencia tecnológica, junto con la evidencia que la respalda parcialmente." },
       { fecha: "2026-06-30", cambio: "Nace y entra al índice (dimensión inversión, 40% interno), sin el componente de hardware y con bandas anchas propias." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "El titular pasa al último mes común de los tres insumos." },

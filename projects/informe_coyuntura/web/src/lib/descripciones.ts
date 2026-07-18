@@ -79,7 +79,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   icip: {
     que: "Índice de Capitalización Inteligente y Productividad: mide la inversión digital/intangible —pagos al exterior por servicios de informática (software, nube, IA) y productividad laboral (IPI/empleo)— en variación interanual.",
-    aporta: "Capta el salto a la frontera tecnológica que no pasa por aduana como bien de capital. Leído junto al IAI revela la 'trampa de la madurez': un país puede invertir en ladrillos y camiones pero estancarse si no se digitaliza. Se construye con datos del INDEC (balanza de servicios + IPI/empleo).",
+    aporta: "Sigue la incorporación de tecnología que no pasa por aduana como bien de capital. Leído junto al IAI apunta a la 'trampa de la madurez': un país puede invertir en ladrillos y camiones pero estancarse si no se digitaliza. Con una advertencia declarada en la ficha: un aumento de los pagos al exterior por software admite leerse como digitalización o como dependencia tecnológica, y el indicador puntúa la primera. Se construye con datos del INDEC (balanza de servicios + IPI/empleo).",
     frecuencia: "Mensual", tipo: "Variación i.a. ponderada",
   },
   prestamos_privados: {
