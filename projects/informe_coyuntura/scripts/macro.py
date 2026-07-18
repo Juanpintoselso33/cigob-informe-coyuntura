@@ -621,19 +621,31 @@ def _ipi_ia_por_mes() -> dict:
     ruido que no dice nada sobre el estado de la industria. El promedio de tres
     meses baja el desvío de los cambios mensuales de 6,2 a 2,5 pp sin agregar
     rezago apreciable — la serie sigue siendo interanual, sólo deja de vibrar.
+
+    La ventana se arma por CALENDARIO, no por posición en la lista: si el INDEC
+    saltea un mes, ese promedio no se emite en vez de mezclar tres
+    observaciones que abarcan cuatro meses o más. Por la misma razón los dos
+    primeros meses de la serie histórica quedan afuera: no tienen tres meses
+    completos detrás y promediarlos sobre una ventana parcial daba un valor
+    calculado con menos datos que el resto, sin nada que lo señalara. Ambas
+    cosas las detectó una auditoría de código (18-jul-2026).
     """
     filas = _indec_serie(INDEC_IPI_ID, limit=5000)
     idx = {f[:7]: v for f, v in filas if v}
-    ia = {}
-    for ym, val in idx.items():
-        anio, mes = int(ym[:4]), int(ym[5:7])
-        previo = f"{anio - 1}-{mes:02d}"
-        if idx.get(previo):
-            ia[ym] = (val / idx[previo] - 1) * 100
-    meses = sorted(ia)
-    return {m: round(sum(ia[x] for x in meses[max(0, i - 2):i + 1])
-                     / len(meses[max(0, i - 2):i + 1]), 2)
-            for i, m in enumerate(meses)}
+
+    def _mes_menos(ym: str, n: int) -> str:
+        total = int(ym[:4]) * 12 + (int(ym[5:7]) - 1) - n
+        return f"{total // 12}-{total % 12 + 1:02d}"
+
+    ia = {ym: (val / idx[_mes_menos(ym, 12)] - 1) * 100
+          for ym, val in idx.items() if idx.get(_mes_menos(ym, 12))}
+
+    suavizada = {}
+    for ym in sorted(ia):
+        ventana = [ia.get(_mes_menos(ym, k)) for k in (0, 1, 2)]
+        if all(v is not None for v in ventana):     # ventana completa o nada
+            suavizada[ym] = round(sum(ventana) / 3, 2)
+    return suavizada
 
 
 def fetch_ipi_manufacturero() -> dict | None:

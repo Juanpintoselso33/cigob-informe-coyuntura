@@ -298,13 +298,33 @@ MACRO_INDEC = []
 IPC_NIVEL_ID = "148.3_INIVELNAL_DICI_M_26"
 
 
+def _mes_previo(ym: str, n: int = 1) -> str:
+    """'2026-03' → '2026-02'. Aritmética de CALENDARIO, no de posición."""
+    anio, mes = int(ym[:4]), int(ym[5:7])
+    total = anio * 12 + (mes - 1) - n
+    return f"{total // 12}-{total % 12 + 1:02d}"
+
+
+def _var_mensual(niveles: dict) -> dict:
+    """{YYYY-MM: % m/m} exigiendo que los dos meses sean CONSECUTIVOS.
+
+    La versión anterior dividía posiciones adyacentes de la lista ordenada. Con
+    la serie completa da lo mismo, pero si la fuente saltea un mes —o si se
+    acota la ventana descargada— el cociente entre dos observaciones separadas
+    por dos meses se publicaba como variación mensual, sin que nada avisara.
+    Detectado por auditoría de código (18-jul-2026)."""
+    return {
+        ym: round((v / niveles[_mes_previo(ym)] - 1) * 100, 2)
+        for ym, v in niveles.items()
+        if niveles.get(_mes_previo(ym))
+    }
+
+
 def fetch_ipc_mm_serie() -> list:
     """Inflación mensual (% m/m) derivada del nivel del IPC nacional — la
     métrica del titular. La curva de desinflación completa. [[YYYY-MM-01, %]]."""
-    niveles = dict(sorted(fetch_indec(IPC_NIVEL_ID, limit=60)))
-    fechas = list(niveles)
-    return [[fechas[i], round((niveles[fechas[i]] / niveles[fechas[i - 1]] - 1) * 100, 2)]
-            for i in range(1, len(fechas))]
+    niveles = {f[:7]: v for f, v in fetch_indec(IPC_NIVEL_ID, limit=60) if v}
+    return [[f"{ym}-01", v] for ym, v in sorted(_var_mensual(niveles).items())]
 
 
 def fetch_emae_ia_serie() -> list:
@@ -324,10 +344,9 @@ def fetch_ipc_nucleo_serie() -> list:
     en el gráfico comparado del modal (ADR-0077). No puntúa: sirve para que un
     mes de corrección tarifaria no se confunda con uno de núcleo alta.
     [[YYYY-MM-01, %]]."""
-    niveles = dict(sorted(fetch_indec("148.3_INUCLEONAL_DICI_M_19", limit=60)))
-    fechas = list(niveles)
-    return [[fechas[i], round((niveles[fechas[i]] / niveles[fechas[i - 1]] - 1) * 100, 2)]
-            for i in range(1, len(fechas)) if fechas[i] >= "2023-12"]
+    niveles = {f[:7]: v for f, v in fetch_indec("148.3_INUCLEONAL_DICI_M_19", limit=60) if v}
+    return [[f"{ym}-01", v] for ym, v in sorted(_var_mensual(niveles).items())
+            if ym >= "2023-12"]
 
 
 def fetch_recaudacion_real_serie() -> list:
