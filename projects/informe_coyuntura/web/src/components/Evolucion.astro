@@ -28,7 +28,13 @@ const trayectorias = CINTURONES
     const ahora = serie.at(-1)!.valor;
     const previo = serie.at(-2)!.valor;
     const delta = Math.round((ahora - previo) * 10) / 10;
-    return { meta, idx, serie, ahora, delta,
+    // Brecha contra el punto de partida: el índice puntúa NIVEL contra anclas
+    // fijas, así que por sí solo no responde "¿estamos mejor que en la
+    // transición?". Se calcula sobre la MISMA serie reconstruida (primer punto
+    // vs último) — comparar el reconstruido de hoy contra el publicado sería
+    // mezclar dos cosas distintas. En tensión, bajar es mejorar.
+    const deltaInicio = Math.round((ahora - serie[0].valor) * 10) / 10;
+    return { meta, idx, serie, ahora, delta, deltaInicio,
              desde: mesCorto(pares[0][0]), hasta: mesCorto(pares.at(-1)![0]) };
   })
   .filter((x): x is NonNullable<typeof x> => !!x);
@@ -37,7 +43,7 @@ const trayectorias = CINTURONES
   <div class="cg-section-head">
     <p class="cg-eyebrow">Cómo va la película</p>
     <h2 class="cg-h2">La tensión de cada cinturón, mes a mes</h2>
-    <p class="cg-h2-sub">Trayectoria de los índices de los cuatro cinturones paramétricos desde diciembre de 2023, expresada en tensión (0 = aflojado, 10 = apretado) para poder compararlos en un mismo eje. El detalle por indicador vive en cada card y en la página de cada cinturón.</p>
+    <p class="cg-h2-sub">Trayectoria de los índices de los cuatro cinturones paramétricos desde diciembre de 2023, expresada en tensión (0 = aflojado, 10 = apretado) para poder compararlos en un mismo eje. Cada card cierra con la brecha acumulada contra el punto de partida: cuánto aflojó o se apretó cada cinturón desde la transición. El detalle por indicador vive en cada card y en la página de cada cinturón.</p>
   </div>
   {trayectorias.length === 0 ? (
     <div class="cg-chart-card"><p class="cg-chart-sub">Histórico en construcción: se necesita más de un período para graficar tendencias.</p></div>
@@ -55,6 +61,10 @@ const trayectorias = CINTURONES
             <span class:list={["cg-chart-mini-delta", t.delta > 0 ? "up" : t.delta < 0 ? "down" : "flat"]}>
               {t.delta > 0 ? "+" : ""}{coma(t.delta)}
             </span>
+          </div>
+          <div class="cg-sub">
+            Desde {t.desde}: <strong>{t.deltaInicio > 0 ? "+" : ""}{coma(t.deltaInicio)}</strong>
+            {t.deltaInicio < 0 ? " de tensión (aflojó)" : t.deltaInicio > 0 ? " de tensión (se apretó)" : " de tensión"}
           </div>
         </div>
       ))}
