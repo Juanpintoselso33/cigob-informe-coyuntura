@@ -31,9 +31,9 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,votometro_ventaja_lla,12.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2024-01-01,votometro_ventaja_lla,14.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2023-12-01,votometro_ventaja_lla,16.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-01-01,veto_quorum,0.0,% sesiones fracasadas (por período),datos.hcdn.gob.ar CKAN
-2025-01-01,veto_quorum,10.0,% sesiones fracasadas (por período),datos.hcdn.gob.ar CKAN
-2024-01-01,veto_quorum,0.0,% sesiones fracasadas (por período),datos.hcdn.gob.ar CKAN
+2026-01-01,veto_quorum,0.0,% sesiones fracasadas (por período),Cámara de Diputados (datos abiertos)
+2025-01-01,veto_quorum,10.0,% sesiones fracasadas (por período),Cámara de Diputados (datos abiertos)
+2024-01-01,veto_quorum,0.0,% sesiones fracasadas (por período),Cámara de Diputados (datos abiertos)
 2026-07-01,rotacion_gabinete,7,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2026-06-01,rotacion_gabinete,7,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2026-05-01,rotacion_gabinete,6,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
@@ -66,7 +66,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
-2026-07-01,ratio_dnu,2.238,DNUs por ley (12m móviles),InfoLeg
+2026-07-01,ratio_dnu,1.92,DNUs por ley (12m móviles),InfoLeg
 2026-06-01,ratio_dnu,2.3,DNUs por ley (12m móviles),InfoLeg
 2026-05-01,ratio_dnu,4.727,DNUs por ley (12m móviles),InfoLeg
 2026-04-01,ratio_dnu,4.0,DNUs por ley (12m móviles),InfoLeg
@@ -108,38 +108,38 @@ fecha,indicador,valor,unidad,fuente
 2020-12-01,iaf_transferencias,-3.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2019-12-01,iaf_transferencias,-1.4,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2018-12-01,iaf_transferencias,6.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2026-07-01,eficacia_legislativa,12.5,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-06-01,eficacia_legislativa,22.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-05-01,eficacia_legislativa,15.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-04-01,eficacia_legislativa,19.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-03-01,eficacia_legislativa,30.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-02-01,eficacia_legislativa,28.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2026-01-01,eficacia_legislativa,25.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-12-01,eficacia_legislativa,25.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-11-01,eficacia_legislativa,28.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-10-01,eficacia_legislativa,29.2,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-09-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-08-01,eficacia_legislativa,29.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-07-01,eficacia_legislativa,31.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-06-01,eficacia_legislativa,29.6,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-05-01,eficacia_legislativa,27.6,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-04-01,eficacia_legislativa,20.6,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-03-01,eficacia_legislativa,10.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-02-01,eficacia_legislativa,13.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2025-01-01,eficacia_legislativa,13.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-12-01,eficacia_legislativa,13.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-11-01,eficacia_legislativa,10.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-10-01,eficacia_legislativa,10.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-09-01,eficacia_legislativa,7.7,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-08-01,eficacia_legislativa,21.1,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-07-01,eficacia_legislativa,25.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-06-01,eficacia_legislativa,26.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-05-01,eficacia_legislativa,26.3,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-04-01,eficacia_legislativa,36.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-03-01,eficacia_legislativa,38.1,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-02-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2024-01-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
-2023-12-01,eficacia_legislativa,36.0,% proyectos PE aprobados (12m móviles),datos.hcdn.gob.ar CKAN
+2026-07-01,eficacia_legislativa,13.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-06-01,eficacia_legislativa,22.2,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-05-01,eficacia_legislativa,15.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-04-01,eficacia_legislativa,19.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-03-01,eficacia_legislativa,30.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-02-01,eficacia_legislativa,28.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-01-01,eficacia_legislativa,25.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-12-01,eficacia_legislativa,25.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-11-01,eficacia_legislativa,28.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-10-01,eficacia_legislativa,29.2,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-09-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-08-01,eficacia_legislativa,29.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-07-01,eficacia_legislativa,31.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-06-01,eficacia_legislativa,29.6,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-05-01,eficacia_legislativa,27.6,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-04-01,eficacia_legislativa,20.6,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-03-01,eficacia_legislativa,10.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-02-01,eficacia_legislativa,13.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2025-01-01,eficacia_legislativa,13.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-12-01,eficacia_legislativa,13.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-11-01,eficacia_legislativa,10.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-10-01,eficacia_legislativa,10.7,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-09-01,eficacia_legislativa,7.7,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-08-01,eficacia_legislativa,21.1,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-07-01,eficacia_legislativa,25.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-06-01,eficacia_legislativa,26.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-05-01,eficacia_legislativa,26.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-04-01,eficacia_legislativa,36.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-03-01,eficacia_legislativa,38.1,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-02-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2024-01-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2023-12-01,eficacia_legislativa,36.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-06-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-05-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-04-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
@@ -202,69 +202,69 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,conflictividad_nacional,-0.1,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2024-01-01,conflictividad_nacional,2.7,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2023-12-01,conflictividad_nacional,0.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
-2026-07-01,comisiones_caidas,97.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2026-06-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2026-05-01,comisiones_caidas,97.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2026-04-01,comisiones_caidas,99.6,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2026-03-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2026-02-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2026-01-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-12-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-11-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-10-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-09-01,comisiones_caidas,99.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-08-01,comisiones_caidas,99.5,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-07-01,comisiones_caidas,98.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-06-01,comisiones_caidas,98.3,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-05-01,comisiones_caidas,96.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-04-01,comisiones_caidas,96.4,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-03-01,comisiones_caidas,96.4,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-02-01,comisiones_caidas,96.0,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2025-01-01,comisiones_caidas,95.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-12-01,comisiones_caidas,95.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-11-01,comisiones_caidas,95.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-10-01,comisiones_caidas,94.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-09-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-08-01,comisiones_caidas,97.7,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-07-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-06-01,comisiones_caidas,98.8,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-05-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-04-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-03-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),datos.hcdn.gob.ar CKAN
-2026-06-30,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2026-05-31,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2026-04-30,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2026-03-31,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2026-02-28,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2026-01-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-12-31,cohesion_bloque,98.6,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-11-30,cohesion_bloque,97.2,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-10-31,cohesion_bloque,94.7,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-09-30,cohesion_bloque,92.7,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-08-31,cohesion_bloque,90.3,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-07-31,cohesion_bloque,96.2,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-06-30,cohesion_bloque,97.4,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-05-31,cohesion_bloque,97.4,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-04-30,cohesion_bloque,95.7,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-03-31,cohesion_bloque,97.1,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-02-28,cohesion_bloque,97.3,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2025-01-31,cohesion_bloque,95.3,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-12-31,cohesion_bloque,95.5,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-11-30,cohesion_bloque,95.7,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-10-31,cohesion_bloque,96.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-09-30,cohesion_bloque,96.4,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-08-31,cohesion_bloque,97.2,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-07-31,cohesion_bloque,97.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-06-30,cohesion_bloque,98.3,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-05-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-04-30,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-03-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-02-29,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2024-01-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
-2023-12-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB (scraping directo)
+2026-07-01,comisiones_caidas,97.0,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2026-06-01,comisiones_caidas,97.2,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2026-05-01,comisiones_caidas,97.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2026-04-01,comisiones_caidas,99.6,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2026-03-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2026-02-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2026-01-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-12-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-11-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-10-01,comisiones_caidas,99.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-09-01,comisiones_caidas,99.7,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-08-01,comisiones_caidas,99.5,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-07-01,comisiones_caidas,98.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-06-01,comisiones_caidas,98.3,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-05-01,comisiones_caidas,96.7,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-04-01,comisiones_caidas,96.4,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-03-01,comisiones_caidas,96.4,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-02-01,comisiones_caidas,96.0,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2025-01-01,comisiones_caidas,95.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-12-01,comisiones_caidas,95.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-11-01,comisiones_caidas,95.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-10-01,comisiones_caidas,94.7,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-09-01,comisiones_caidas,97.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-08-01,comisiones_caidas,97.7,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-07-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-06-01,comisiones_caidas,98.8,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-05-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-04-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-03-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2026-06-30,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-05-31,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-04-30,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-03-31,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-02-28,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-01-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-12-31,cohesion_bloque,98.6,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-11-30,cohesion_bloque,97.2,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-10-31,cohesion_bloque,94.7,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-09-30,cohesion_bloque,92.7,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-08-31,cohesion_bloque,90.3,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-07-31,cohesion_bloque,96.2,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-06-30,cohesion_bloque,97.4,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-05-31,cohesion_bloque,97.4,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-04-30,cohesion_bloque,95.7,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-03-31,cohesion_bloque,97.1,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-02-28,cohesion_bloque,97.3,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2025-01-31,cohesion_bloque,95.3,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-12-31,cohesion_bloque,95.5,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-11-30,cohesion_bloque,95.7,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-10-31,cohesion_bloque,96.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-09-30,cohesion_bloque,96.4,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-08-31,cohesion_bloque,97.2,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-07-31,cohesion_bloque,97.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-06-30,cohesion_bloque,98.3,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-05-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-04-30,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-03-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-02-29,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2024-01-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2023-12-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-06-30,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-05-31,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-04-30,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -293,35 +293,35 @@ fecha,indicador,valor,unidad,fuente
 2024-05-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-04-30,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-03-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-06-30,alineamiento_senadores_prov,70.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2026-05-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2026-04-30,alineamiento_senadores_prov,47.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2026-03-31,alineamiento_senadores_prov,46.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2026-02-28,alineamiento_senadores_prov,42.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2026-01-31,alineamiento_senadores_prov,45.8,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-12-31,alineamiento_senadores_prov,46.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-11-30,alineamiento_senadores_prov,44.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-10-31,alineamiento_senadores_prov,36.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-09-30,alineamiento_senadores_prov,29.8,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-08-31,alineamiento_senadores_prov,19.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-07-31,alineamiento_senadores_prov,60.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-06-30,alineamiento_senadores_prov,64.5,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-05-31,alineamiento_senadores_prov,64.5,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-04-30,alineamiento_senadores_prov,50.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-03-31,alineamiento_senadores_prov,55.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-02-28,alineamiento_senadores_prov,59.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2025-01-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-12-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-11-30,alineamiento_senadores_prov,35.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-10-31,alineamiento_senadores_prov,49.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-09-30,alineamiento_senadores_prov,53.1,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-08-31,alineamiento_senadores_prov,61.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-07-31,alineamiento_senadores_prov,58.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-06-30,alineamiento_senadores_prov,57.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-05-31,alineamiento_senadores_prov,69.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-04-30,alineamiento_senadores_prov,74.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-03-31,alineamiento_senadores_prov,69.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
-2024-02-29,alineamiento_senadores_prov,100.0,% votos de senadores no-LLA alineados con LLA,Votaciones nominales Senado — elaboración CIGOB (scraping directo)
+2026-06-30,alineamiento_senadores_prov,70.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-05-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-04-30,alineamiento_senadores_prov,47.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-03-31,alineamiento_senadores_prov,46.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-02-28,alineamiento_senadores_prov,42.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-01-31,alineamiento_senadores_prov,45.8,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-12-31,alineamiento_senadores_prov,46.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-11-30,alineamiento_senadores_prov,44.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-10-31,alineamiento_senadores_prov,36.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-09-30,alineamiento_senadores_prov,29.8,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-08-31,alineamiento_senadores_prov,19.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-07-31,alineamiento_senadores_prov,60.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-06-30,alineamiento_senadores_prov,64.5,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-05-31,alineamiento_senadores_prov,64.5,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-04-30,alineamiento_senadores_prov,50.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-03-31,alineamiento_senadores_prov,55.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-02-28,alineamiento_senadores_prov,59.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2025-01-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-12-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-11-30,alineamiento_senadores_prov,35.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-10-31,alineamiento_senadores_prov,49.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-09-30,alineamiento_senadores_prov,53.1,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-08-31,alineamiento_senadores_prov,61.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-07-31,alineamiento_senadores_prov,58.4,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-06-30,alineamiento_senadores_prov,57.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-05-31,alineamiento_senadores_prov,69.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-04-30,alineamiento_senadores_prov,74.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-03-31,alineamiento_senadores_prov,69.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2024-02-29,alineamiento_senadores_prov,100.0,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-06-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
 2026-05-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
 2026-04-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"

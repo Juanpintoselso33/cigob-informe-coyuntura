@@ -14,6 +14,11 @@
       "fecha": "2026-05",
       "km": 1871.82,
       "fuente": "Resolución 706/2026 MEC (BO ~15/05/2026) — Etapa II-A: Tramo Sur-Atlántico-Acceso Sur (Concret Nor-Marcalba-Pose-Coarco) y Tramo Pampa (Construcciones Electromecánicas del Oeste)"
+    },
+    "II-B": {
+      "fecha": "2026-07",
+      "km": 2557.11,
+      "fuente": "CONTRAT.AR 504-0015-LPU25 (detectado 2026-07)"
     }
   }
 }

@@ -95,6 +95,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,tcrm,132.78,índice (base dic-2015),BCRA ITCRM
 2023-12-01,tcrm,124.88,índice (base dic-2015),BCRA ITCRM
 2023-11-01,tcrm,83.2,índice (base dic-2015),BCRA ITCRM
+2026-07-17,tc_mayorista,1480.1223,ARS/USD,BCRA
 2026-07-16,tc_mayorista,1474.7696,ARS/USD,BCRA
 2026-07-15,tc_mayorista,1475.4431,ARS/USD,BCRA
 2026-07-14,tc_mayorista,1474.7373,ARS/USD,BCRA
@@ -726,8 +727,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-06,tc_mayorista,363.55,ARS/USD,BCRA
 2023-12-05,tc_mayorista,363.025,ARS/USD,BCRA
 2023-12-04,tc_mayorista,362.525,ARS/USD,BCRA
-2023-12-01,tc_mayorista,361.025,ARS/USD,BCRA
-2023-11-30,tc_mayorista,360.525,ARS/USD,BCRA
 2026-05-01,saldo_comercial_12m,21221.0,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-04-01,saldo_comercial_12m,18324.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-03-01,saldo_comercial_12m,15825.7,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
@@ -864,6 +863,7 @@ fecha,indicador,valor,unidad,fuente
 2025-11-01,reservas_bcra,-1802.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
 2025-10-01,reservas_bcra,265.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
 2025-09-01,reservas_bcra,6117.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
+2025-08-01,reservas_bcra,5992.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
 2025-07-01,reservas_bcra,5718.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
 2025-06-01,reservas_bcra,7972.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
 2025-05-01,reservas_bcra,4472.0,M USD netas,BCRA Planilla SDDS + Balance (a secas)
@@ -909,7 +909,6 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,rem_ipc_12m,146.9,% anual,BCRA
 2024-01-31,rem_ipc_12m,183.2,% anual,BCRA
 2023-12-31,rem_ipc_12m,213.0,% anual,BCRA
-2023-11-30,rem_ipc_12m,226.7,% anual,BCRA
 2026-06-01,recaudacion,-3.16,% i.a. real,INDEC (recaudación) + IPC (deflactor)
 2026-05-01,recaudacion,-2.3,% i.a. real,INDEC (recaudación) + IPC (deflactor)
 2026-04-01,recaudacion,-6.17,% i.a. real,INDEC (recaudación) + IPC (deflactor)
@@ -968,11 +967,12 @@ fecha,indicador,valor,unidad,fuente
 2021-11-01,recaudacion,5.12,% i.a. real,INDEC (recaudación) + IPC (deflactor)
 2021-10-01,recaudacion,6.11,% i.a. real,INDEC (recaudación) + IPC (deflactor)
 2021-09-01,recaudacion,8.0,% i.a. real,INDEC (recaudación) + IPC (deflactor)
-2026-07-14,prestamos_privados,137398093.0,M ARS,BCRA
-2026-07-13,prestamos_privados,137027253.0,M ARS,BCRA
+2026-07-15,prestamos_privados,136882984.0,M ARS,BCRA
+2026-07-14,prestamos_privados,137391325.0,M ARS,BCRA
+2026-07-13,prestamos_privados,137005734.0,M ARS,BCRA
 2026-07-08,prestamos_privados,138270737.0,M ARS,BCRA
-2026-07-07,prestamos_privados,138743201.0,M ARS,BCRA
-2026-07-06,prestamos_privados,138720739.0,M ARS,BCRA
+2026-07-07,prestamos_privados,138804781.0,M ARS,BCRA
+2026-07-06,prestamos_privados,138720727.0,M ARS,BCRA
 2026-07-03,prestamos_privados,138441859.0,M ARS,BCRA
 2026-07-02,prestamos_privados,138749978.0,M ARS,BCRA
 2026-07-01,prestamos_privados,138220821.0,M ARS,BCRA
@@ -1597,8 +1597,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-06,prestamos_privados,17018156.0,M ARS,BCRA
 2023-12-05,prestamos_privados,17028704.0,M ARS,BCRA
 2023-12-04,prestamos_privados,17123779.0,M ARS,BCRA
-2023-12-01,prestamos_privados,17180712.0,M ARS,BCRA
-2023-11-30,prestamos_privados,17164802.0,M ARS,BCRA
 2026-05-01,presion_dolarizacion,49.82,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-04-01,presion_dolarizacion,49.5,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-03-01,presion_dolarizacion,50.41,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
@@ -2006,6 +2004,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.83,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-14.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-07-15,base_monetaria,45210224.0,M ARS,BCRA
 2026-07-14,base_monetaria,45312132.0,M ARS,BCRA
 2026-07-13,base_monetaria,46817025.0,M ARS,BCRA
 2026-07-08,base_monetaria,45827619.0,M ARS,BCRA
@@ -2635,8 +2634,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-06,base_monetaria,8944454.0,M ARS,BCRA
 2023-12-05,base_monetaria,8913664.0,M ARS,BCRA
 2023-12-04,base_monetaria,8457920.0,M ARS,BCRA
-2023-12-01,base_monetaria,8510332.0,M ARS,BCRA
-2023-11-30,base_monetaria,8973530.0,M ARS,BCRA
+2026-07-16,badlar,21.0,% anual,BCRA
 2026-07-15,badlar,21.875,% anual,BCRA
 2026-07-14,badlar,21.3125,% anual,BCRA
 2026-07-13,badlar,20.0,% anual,BCRA
@@ -3267,5 +3265,3 @@ fecha,indicador,valor,unidad,fuente
 2023-12-06,badlar,129.125,% anual,BCRA
 2023-12-05,badlar,129.0625,% anual,BCRA
 2023-12-04,badlar,129.625,% anual,BCRA
-2023-12-01,badlar,130.1875,% anual,BCRA
-2023-11-30,badlar,129.875,% anual,BCRA
