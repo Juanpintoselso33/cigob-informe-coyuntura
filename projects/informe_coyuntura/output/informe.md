@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-19 22:35:58"
+generado: "2026-07-19 23:16:52"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -59,6 +59,7 @@ schema_version: "1.2.0"
 | protestas_caba | 294 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-06-01 | fresco |
 | cohesion_bloque | 99.8 | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | 2026-07-16 | fresco |
 | bloqueo_sostenido | 20.0 | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-07-19 | fresco |
+| desafios_legislativos | 10.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-07-19 | fresco |
 | alineamiento_senadores_prov | 70.6 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-07-16 | fresco |
 
 ### 🟢 Vida Cotidiana — score 2.6/10 (estable)
@@ -104,4 +105,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-19 22:35:58 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-19 23:16:52 — schema 1.2.0*

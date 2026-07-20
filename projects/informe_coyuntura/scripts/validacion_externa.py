@@ -239,6 +239,12 @@ ACOPLADOS_POR_DISENO = {
     frozenset(("credito_privado", "idc")):
         "los dos se construyen sobre depósitos y préstamos del sistema "
         "bancario; la superposición está declarada desde su diseño",
+    frozenset(("desafios_legislativos", "bloqueo_sostenido")):
+        "son el denominador y la tasa de la misma razón: cuántas normas propias "
+        "desafió el Congreso, y qué proporción de ellas el Ejecutivo logró "
+        "sostener. Se los mantiene separados porque responden preguntas "
+        "distintas —cuánto lo confrontan y cuánto aguanta—, pero no son dos "
+        "confirmaciones independientes",
 }
 
 
@@ -403,17 +409,18 @@ def _valores_itcg_por_mes() -> dict:
 # protestas_caba y ahora movilizacion_cepa están fuera del índice — no
 # entran a la reconstrucción aunque sus series sigan existiendo como
 # contexto.
-ITCP_SERIES = [
-    "votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
-    "derrotas_legislativas", "iaf_transferencias",
-    "alineamiento_senadores_prov", "adhesion_reformas_provincial",
-    "cohesion_bloque", "conflictividad_nacional",
-    "bloqueo_sostenido",   # ADR-0069 (2026-07-16): tasa de normas desafiadas
-    # en pie, 12m — serie desde mar-2024 (primer desafío votado: DNU 70/2023
-    # en el Senado); antes el motor renormaliza, igual que con veto_quorum.
-    # comisiones_caidas salió del índice (ADR-0064) — su serie sigue
-    # existiendo como seguimiento interno pero no entra a la reconstrucción
-]
+# Los componentes se DERIVAN de las dimensiones del índice, no se listan a
+# mano (ADR-0082, aplicado acá el 2026-07-19). La lista escrita a mano que
+# había antes ya había divergido: seguía nombrando a derrotas_legislativas
+# —fuera del índice desde ADR-0089— y no incluía a los dos indicadores nuevos,
+# así que la matriz de redundancia publicaba pares de un índice que ya no
+# existía. Es el mismo bug que ADR-0082 fue a arreglar en el ITCM; el ITCP se
+# había quedado con su versión.
+#
+# Un componente sin serie en disco no rompe nada: queda con {} y la
+# reconstrucción renormaliza, igual que con veto_quorum antes de su primer
+# período o bloqueo_sostenido antes de mar-2024.
+ITCP_SERIES = [k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]]
 
 # MÁSCARA DE ERA para eficacia_legislativa en la reconstrucción (ADR-0070,
 # 2026-07-16): la cohorte madura del indicador (expedientes PE publicados

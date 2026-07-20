@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-19T22:35:58.340012",
+  "generated_at": "2026-07-19T23:16:52.546440",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -511,7 +511,7 @@
           "dimension": "poder_legislativo",
           "puntaje_itcp": 16.0,
           "puntaje_banda": 16.0,
-          "peso_efectivo": 0.05
+          "peso_efectivo": 0.0575
         },
         "brecha_obra_publica": {
           "valor": 0.2,
@@ -585,7 +585,7 @@
           "dimension": "poder_legislativo",
           "puntaje_itcp": 46.6,
           "puntaje_banda": 46.6,
-          "peso_efectivo": 0.0625
+          "peso_efectivo": 0.08
         },
         "veto_quorum": {
           "valor": 0.0,
@@ -638,11 +638,7 @@
           "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
           "fecha_dato": "2026-07-19",
           "desactualizado": false,
-          "en_indice": true,
-          "dimension": "poder_legislativo",
-          "puntaje_itcp": 53.6,
-          "puntaje_banda": 53.6,
-          "peso_efectivo": 0.05
+          "en_indice": false
         },
         "rotacion_gabinete": {
           "valor": 7,
@@ -712,7 +708,23 @@
           "dimension": "poder_legislativo",
           "puntaje_itcp": 10.0,
           "puntaje_banda": 10.0,
-          "peso_efectivo": 0.05
+          "peso_efectivo": 0.0375
+        },
+        "desafios_legislativos": {
+          "valor": 10.0,
+          "caidas_12m": 8,
+          "sostenidas_12m": 2,
+          "ultimo_desafio": "2025-09-18",
+          "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
+          "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
+          "fecha_dato": "2026-07-19",
+          "desactualizado": false,
+          "detalle_txt": "10 normas propias desafiadas en el recinto en los últimos 12 meses (8 cayeron, 2 siguen en pie)",
+          "en_indice": true,
+          "dimension": "poder_legislativo",
+          "puntaje_itcp": 43.6,
+          "puntaje_banda": 43.6,
+          "peso_efectivo": 0.0375
         },
         "alineamiento_senadores_prov": {
           "valor": 70.6,
@@ -731,28 +743,28 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 69.8,
+        "valor": 69.5,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
             "peso": 0.25,
-            "puntaje": 42.6,
+            "puntaje": 41.6,
             "indicadores": {
               "ratio_dnu": {
-                "peso": 0.2,
+                "peso": 0.23,
                 "puntaje_banda": 16.0,
                 "puntaje_aplicado": 16.0,
                 "valor": 1.92,
-                "peso_efectivo": 0.05
+                "peso_efectivo": 0.0575
               },
               "eficacia_legislativa": {
-                "peso": 0.25,
+                "peso": 0.32,
                 "puntaje_banda": 46.6,
                 "puntaje_aplicado": 46.6,
                 "valor": 13.3,
-                "peso_efectivo": 0.0625
+                "peso_efectivo": 0.08
               },
               "veto_quorum": {
                 "peso": 0.15,
@@ -761,19 +773,19 @@
                 "valor": 0.0,
                 "peso_efectivo": 0.0375
               },
-              "derrotas_legislativas": {
-                "peso": 0.2,
-                "puntaje_banda": 53.6,
-                "puntaje_aplicado": 53.6,
-                "valor": 8.0,
-                "peso_efectivo": 0.05
+              "desafios_legislativos": {
+                "peso": 0.15,
+                "puntaje_banda": 43.6,
+                "puntaje_aplicado": 43.6,
+                "valor": 10.0,
+                "peso_efectivo": 0.0375
               },
               "bloqueo_sostenido": {
-                "peso": 0.2,
+                "peso": 0.15,
                 "puntaje_banda": 10.0,
                 "puntaje_aplicado": 10.0,
                 "valor": 20.0,
-                "peso_efectivo": 0.05
+                "peso_efectivo": 0.0375
               }
             },
             "peso_efectivo": 0.25

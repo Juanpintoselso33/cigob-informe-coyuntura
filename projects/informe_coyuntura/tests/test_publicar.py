@@ -198,14 +198,17 @@ def test_politica_itcp_reconcilia():
     assert len(en_indice) == 12, f"esperaba 12 indicadores en el índice, hay {len(en_indice)}"
     assert "bloqueo_sostenido" in en_indice
     assert "brecha_obra_publica" in en_indice
+    # ADR-0089: derrotas sale del índice, entra desafíos en su lugar
+    assert "desafios_legislativos" in en_indice
+    assert "derrotas_legislativas" not in en_indice
     faltantes = {"votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
                  "iaf_transferencias", "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque", "conflictividad_nacional",
-                 "derrotas_legislativas"} - set(en_indice)
+                 "desafios_legislativos"} - set(en_indice)
     assert not faltantes, f"faltan indicadores que no deberían faltar: {faltantes}"
     assert contexto == {}, f"política no debería publicar contexto: {set(contexto)}"
     for oculto in ("rotacion_gabinete", "protestas_caba", "movilizacion_cepa",
-                   "comisiones_caidas", "cohesion_bloque_senado"):
+                   "comisiones_caidas", "cohesion_bloque_senado", "derrotas_legislativas"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto del snapshot"
     # El compuesto expone su composición por cámara (patrón Fondo de Cese)
     assert set(c["indicadores"]["cohesion_bloque"].get("componentes", {})) >= {"diputados"}

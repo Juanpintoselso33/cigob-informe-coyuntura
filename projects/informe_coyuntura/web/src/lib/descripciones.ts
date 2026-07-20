@@ -104,6 +104,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Mide el capital electoral del oficialismo, base de su poder de negociación.",
     frecuencia: "Continua", tipo: "Brecha (pp)",
   },
+  desafios_legislativos: {
+    que: "Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto durante los últimos doce meses: vetos presidenciales sobre los que el Congreso votó una insistencia, y decretos sometidos a votación bajo la ley 26.122.",
+    aporta: "Mide con qué frecuencia el Congreso decide dar la pelea, sin importar cómo termine. Desafiar una norma del Ejecutivo es un acto excepcional —exige mayorías especiales o un procedimiento específico—, así que un puñado al año ya indica confrontación abierta. Junto con la proporción de normas que el Gobierno logra sostener, responde las dos preguntas del pulso legislativo: cuánto lo confrontan y cuánto aguanta.",
+    frecuencia: "Continua (12m)", tipo: "Conteo",
+  },
   brecha_obra_publica: {
     que: "La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que trabajan para clientes privados. El INDEC les pregunta todos los meses si creen que su actividad va a subir o bajar en el trimestre siguiente, y publica las dos respuestas por separado. El indicador resta una de la otra y promedia los últimos doce meses.",
     aporta: "Las dos son el mismo sector: mismos costos, mismo crédito, misma economía. Lo único que las distingue es quién les paga. Por eso la diferencia entre ambas aísla lo que aporta el Estado y descarta el ciclo económico general. Cuando las que dependen de la obra pública esperan mucho peor que sus pares privadas, la fuente del problema es la política pública y no el mercado.",

@@ -140,6 +140,37 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,eficacia_legislativa,36.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-06-30,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-05-31,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-04-30,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-03-31,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-02-28,desafios_legislativos,12.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-01-31,desafios_legislativos,12.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-12-31,desafios_legislativos,12.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-11-30,desafios_legislativos,12.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-10-31,desafios_legislativos,12.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-09-30,desafios_legislativos,13.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-08-31,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-07-31,desafios_legislativos,5.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-06-30,desafios_legislativos,4.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-05-31,desafios_legislativos,4.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-04-30,desafios_legislativos,4.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-03-31,desafios_legislativos,4.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-02-28,desafios_legislativos,4.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2025-01-31,desafios_legislativos,4.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-12-31,desafios_legislativos,4.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-11-30,desafios_legislativos,4.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-10-31,desafios_legislativos,4.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-09-30,desafios_legislativos,3.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-08-31,desafios_legislativos,2.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-07-31,desafios_legislativos,1.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-06-30,desafios_legislativos,1.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-05-31,desafios_legislativos,1.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-04-30,desafios_legislativos,1.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-03-31,desafios_legislativos,1.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-02-29,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2024-01-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2023-12-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-06-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-05-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-04-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB

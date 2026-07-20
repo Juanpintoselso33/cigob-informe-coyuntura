@@ -197,6 +197,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{\text{proyectos del Ejecutivo convertidos en ley}}{\text{proyectos de ley enviados hace 12-24 meses}}\times 100`,
     leyenda: "Cohorte madura: solo cuenta proyectos de ley con al menos 12 meses de margen desde que se enviaron, sobre los datos abiertos de la Cámara de Diputados. La aprobación se verifica contra el registro oficial de leyes sancionadas — cubre las sanciones de ambas cámaras — y se mira sin tope de tiempo.",
   },
+  desafios_legislativos: {
+    latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{vetos con insistencia votada}+\text{decretos votados bajo la ley 26.122}\right)`,
+    leyenda: "Conteo de normas del Ejecutivo llevadas a votación en el recinto, cada una contada una sola vez en el mes de su primer desafío. No importa el resultado: entran tanto las que el Gobierno terminó perdiendo como las que logró sostener. Fuentes: actas de votación de Diputados y del Senado, y la base InfoLeg de legislación nacional. Menos desafíos = puntaje más alto.",
+  },
   brecha_obra_publica: {
     latex: String.raw`\frac{1}{12}\sum_{\text{\'ultimos 12 meses}}\Big[\underbrace{(\%\text{sube}-\%\text{baja})_{\text{obra p\'ublica}}}_{\text{saldo p\'ublico}}-\underbrace{(\%\text{sube}-\%\text{baja})_{\text{obra privada}}}_{\text{saldo privado}}\Big]`,
     leyenda: "Encuesta Cualitativa de la Construcción del INDEC (Cuadro 7.1): cada mes se consulta a las grandes empresas constructoras si esperan que su actividad aumente, no varíe o disminuya en los próximos tres meses, con respuestas separadas para obra pública y obra privada. El saldo de cada grupo es el porcentaje que espera subas menos el que espera bajas. La brecha es la diferencia entre ambos saldos, promediada en doce meses para quitarle ruido. Cero significa que ambos grupos esperan lo mismo; negativo, que las empresas que dependen del Estado esperan peor que sus pares privadas.",

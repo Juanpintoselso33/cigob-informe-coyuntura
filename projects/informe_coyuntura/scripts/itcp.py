@@ -83,6 +83,24 @@ BANDAS_ITCP = {
     "votometro_ventaja_lla": [           # pp gap LLA-PJ, mayor = mejor
         (15.0, INF, 100), (5.0, 15.0, 85), (-5.0, 5.0, 65), (-15.0, -5.0, 40), (-INF, -15.0, 10),
     ],
+    "desafios_legislativos": [
+        # normas propias desafiadas en el recinto (12m), MENOR = mejor. ADR-0089.
+        #
+        # Reemplaza el puntaje de derrotas_legislativas, que correlacionaba
+        # −0,984 con el bloqueo: desde mar-2025 los dos son mes a mes el mismo
+        # número (16 lecturas seguidas). No por construcción —difieren en 2024,
+        # cuando el rechazo de una sola cámara al DNU 70/2023 era derrota
+        # política sin matar la norma— sino de hecho, en el régimen actual.
+        #
+        # Anclas sobre el conteo observado (4 a 13 desafíos en 22 meses) leído
+        # contra el sentido institucional del acto: desafiar una norma del
+        # Ejecutivo en el recinto es excepcional —requiere insistencia de veto
+        # con dos tercios o el procedimiento de la ley 26.122—, así que un
+        # puñado al año ya es conflicto abierto. Hasta 2 en doce meses es el
+        # funcionamiento normal de un Congreso que no confronta; más de 12 es
+        # la ola de sep-oct 2025, el máximo del período.
+        (-INF, 2.0, 100), (2.0, 5.0, 85), (5.0, 9.0, 65), (9.0, 12.0, 40), (12.0, INF, 10),
+    ],
     "brecha_obra_publica": [
         # pp de brecha (saldo obra pública − saldo obra privada, 12m móviles),
         # mayor = mejor. ADR-0088.
@@ -413,9 +431,17 @@ DIMENSIONES_ITCP = {
         # norma"), veto_quorum sigue último por ser la medida más estrecha.
         # Antes 25/30/20/25 (2026-07-15, salida de comisiones_caidas por
         # ADR-0064; antes de eso 20/25/15/20/20, ADR-0046).
-        "indicadores": {"ratio_dnu": 0.20, "eficacia_legislativa": 0.25,
-                        "veto_quorum": 0.15, "derrotas_legislativas": 0.20,
-                        "bloqueo_sostenido": 0.20},
+        # 2026-07-19 (ADR-0089): derrotas_legislativas sale del índice y entra
+        # desafios_legislativos en su lugar. El par (derrotas, bloqueo)
+        # correlacionaba −0,984 y se llevaba el 40% de la dimensión para medir
+        # una sola cosa. El par nuevo
+        # baja a 30% combinado y el peso liberado va a las dos medidas más
+        # abarcativas; veto_quorum NO sube, porque su 0% actual dice más sobre
+        # cuántas sesiones se convocaron que sobre ausencia de conflicto.
+        # Antes 20/25/15/20/20.
+        "indicadores": {"ratio_dnu": 0.23, "eficacia_legislativa": 0.32,
+                        "veto_quorum": 0.15, "desafios_legislativos": 0.15,
+                        "bloqueo_sostenido": 0.15},
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
@@ -476,6 +502,11 @@ DIMENSIONES_ITCP = {
 # snapshot (POLITICA_OCULTOS) — el tablero solo muestra lo que integra
 # las dimensiones.
 INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cepa",
+                        # ADR-0089: su puntaje era redundante con el del
+                        # bloqueo sostenido (identidad algebraica). Se sigue
+                        # relevando y queda a la vista como dato dentro de la
+                        # card de bloqueo (caidas_12m).
+                        "derrotas_legislativas",
                         # ADR-0064: fuente ciega a sanciones del Senado (ver ADR-0062);
                         # su banda queda arriba como referencia histórica
                         "comisiones_caidas"]

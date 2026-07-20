@@ -1009,32 +1009,34 @@
   },
   "redundancia_itcp": {
     "diferencias": {
-      "n_pares": 33,
-      "r_abs_medio": 0.215,
-      "share_altos": 0.03
+      "n_pares": 43,
+      "r_abs_medio": 0.208,
+      "share_altos": 0.023
     },
     "umbral": 0.7,
-    "n_indicadores": 11,
-    "n_pares": 33,
-    "r_abs_medio": 0.371,
-    "share_altos": 0.091,
-    "share_bajos": 0.424,
+    "n_indicadores": 12,
+    "n_pares": 43,
+    "r_abs_medio": 0.384,
+    "share_altos": 0.116,
+    "share_bajos": 0.419,
     "matriz": {
       "adhesion_reformas_provincial": {
         "alineamiento_senadores_prov": -0.198,
         "bloqueo_sostenido": -0.612,
+        "brecha_obra_publica": 0.526,
         "cohesion_bloque": 0.087,
         "conflictividad_nacional": 0.065,
-        "derrotas_legislativas": -0.416,
+        "desafios_legislativos": -0.587,
         "ratio_dnu": 0.214,
         "votometro_ventaja_lla": 0.374
       },
       "alineamiento_senadores_prov": {
         "adhesion_reformas_provincial": -0.198,
         "bloqueo_sostenido": 0.424,
+        "brecha_obra_publica": -0.239,
         "cohesion_bloque": 0.405,
         "conflictividad_nacional": -0.474,
-        "derrotas_legislativas": 0.513,
+        "desafios_legislativos": 0.612,
         "eficacia_legislativa": -0.665,
         "ratio_dnu": 0.26,
         "votometro_ventaja_lla": -0.129
@@ -1042,19 +1044,32 @@
       "bloqueo_sostenido": {
         "adhesion_reformas_provincial": -0.612,
         "alineamiento_senadores_prov": 0.424,
+        "brecha_obra_publica": -0.82,
         "cohesion_bloque": -0.205,
         "conflictividad_nacional": -0.478,
-        "derrotas_legislativas": 0.937,
+        "desafios_legislativos": 0.918,
         "eficacia_legislativa": 0.467,
         "ratio_dnu": 0.43,
         "votometro_ventaja_lla": -0.17
+      },
+      "brecha_obra_publica": {
+        "adhesion_reformas_provincial": 0.526,
+        "alineamiento_senadores_prov": -0.239,
+        "bloqueo_sostenido": -0.82,
+        "cohesion_bloque": 0.49,
+        "conflictividad_nacional": 0.04,
+        "desafios_legislativos": -0.729,
+        "eficacia_legislativa": -0.194,
+        "ratio_dnu": -0.268,
+        "votometro_ventaja_lla": 0.358
       },
       "cohesion_bloque": {
         "adhesion_reformas_provincial": 0.087,
         "alineamiento_senadores_prov": 0.405,
         "bloqueo_sostenido": -0.205,
+        "brecha_obra_publica": 0.49,
         "conflictividad_nacional": -0.435,
-        "derrotas_legislativas": -0.071,
+        "desafios_legislativos": 0.029,
         "eficacia_legislativa": -0.154,
         "ratio_dnu": -0.232,
         "votometro_ventaja_lla": 0.35
@@ -1063,58 +1078,65 @@
         "adhesion_reformas_provincial": 0.065,
         "alineamiento_senadores_prov": -0.474,
         "bloqueo_sostenido": -0.478,
+        "brecha_obra_publica": 0.04,
         "cohesion_bloque": -0.435,
-        "derrotas_legislativas": -0.499,
+        "desafios_legislativos": -0.544,
         "eficacia_legislativa": 0.863,
         "ratio_dnu": -0.233,
         "votometro_ventaja_lla": 0.057
       },
-      "derrotas_legislativas": {
-        "adhesion_reformas_provincial": -0.416,
-        "alineamiento_senadores_prov": 0.513,
-        "bloqueo_sostenido": 0.937,
-        "cohesion_bloque": -0.071,
-        "conflictividad_nacional": -0.499,
-        "ratio_dnu": 0.621,
-        "votometro_ventaja_lla": 0.062
+      "desafios_legislativos": {
+        "adhesion_reformas_provincial": -0.587,
+        "alineamiento_senadores_prov": 0.612,
+        "bloqueo_sostenido": 0.918,
+        "brecha_obra_publica": -0.729,
+        "cohesion_bloque": 0.029,
+        "conflictividad_nacional": -0.544,
+        "eficacia_legislativa": -0.467,
+        "ratio_dnu": 0.466,
+        "votometro_ventaja_lla": -0.094
       },
       "ratio_dnu": {
         "adhesion_reformas_provincial": 0.214,
         "alineamiento_senadores_prov": 0.26,
         "bloqueo_sostenido": 0.43,
+        "brecha_obra_publica": -0.268,
         "cohesion_bloque": -0.232,
         "conflictividad_nacional": -0.233,
-        "derrotas_legislativas": 0.621,
+        "desafios_legislativos": 0.466,
         "votometro_ventaja_lla": 0.349
       },
       "votometro_ventaja_lla": {
         "adhesion_reformas_provincial": 0.374,
         "alineamiento_senadores_prov": -0.129,
         "bloqueo_sostenido": -0.17,
+        "brecha_obra_publica": 0.358,
         "cohesion_bloque": 0.35,
         "conflictividad_nacional": 0.057,
-        "derrotas_legislativas": 0.062,
+        "desafios_legislativos": -0.094,
         "eficacia_legislativa": 0.797,
         "ratio_dnu": 0.349
       },
       "eficacia_legislativa": {
         "alineamiento_senadores_prov": -0.665,
         "bloqueo_sostenido": 0.467,
+        "brecha_obra_publica": -0.194,
         "cohesion_bloque": -0.154,
         "conflictividad_nacional": 0.863,
+        "desafios_legislativos": -0.467,
         "votometro_ventaja_lla": 0.797
       }
     },
     "pares_altos": [
       {
         "a": "bloqueo_sostenido",
-        "b": "derrotas_legislativas",
-        "r": 0.937,
+        "b": "desafios_legislativos",
+        "r": 0.918,
         "n": 28,
         "dimension_a": "poder_legislativo",
         "dimension_b": "poder_legislativo",
         "misma_dimension": true,
-        "por_diseno": null
+        "por_diseno": "son el denominador y la tasa de la misma razón: cuántas normas propias desafió el Congreso, y qué proporción de ellas el Ejecutivo logró sostener. Se los mantiene separados porque responden preguntas distintas —cuánto lo confrontan y cuánto aguanta—, pero no son dos confirmaciones independientes"
       },
       {
         "a": "conflictividad_nacional",
@@ -1127,6 +1149,16 @@
         "por_diseno": null
       },
       {
+        "a": "bloqueo_sostenido",
+        "b": "brecha_obra_publica",
+        "r": -0.82,
+        "n": 28,
+        "dimension_a": "poder_legislativo",
+        "dimension_b": "sector_privado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "eficacia_legislativa",
         "b": "votometro_ventaja_lla",
         "r": 0.797,
@@ -1135,10 +1167,20 @@
         "dimension_b": "imagen_voto",
         "misma_dimension": false,
         "por_diseno": null
+      },
+      {
+        "a": "brecha_obra_publica",
+        "b": "desafios_legislativos",
+        "r": -0.729,
+        "n": 30,
+        "dimension_a": "sector_privado",
+        "dimension_b": "poder_legislativo",
+        "misma_dimension": false,
+        "por_diseno": null
       }
     ],
-    "pares_cruzados": 2,
-    "pares_no_explicados": 2
+    "pares_cruzados": 4,
+    "pares_no_explicados": 4
   },
   "serie_itcg": {
     "2023-12": 18.7,
@@ -1236,36 +1278,36 @@
     }
   },
   "serie_itcp": {
-    "2024-01": 75.3,
-    "2024-02": 78.3,
-    "2024-03": 79.2,
-    "2024-04": 77.9,
-    "2024-05": 76.3,
-    "2024-06": 65.2,
-    "2024-07": 61.8,
-    "2024-08": 60.9,
-    "2024-09": 58.4,
-    "2024-10": 58.2,
-    "2024-11": 49.2,
-    "2024-12": 59.5,
-    "2025-01": 68.8,
-    "2025-02": 68.2,
-    "2025-03": 68.4,
-    "2025-04": 63.4,
-    "2025-05": 75.4,
-    "2025-06": 74.6,
-    "2025-07": 69.9,
-    "2025-08": 47.0,
-    "2025-09": 43.0,
-    "2025-10": 44.4,
-    "2025-11": 57.8,
-    "2025-12": 67.7,
-    "2026-01": 73.5,
-    "2026-02": 70.2,
-    "2026-03": 72.1,
-    "2026-04": 64.4,
-    "2026-05": 67.6,
-    "2026-06": 68.7
+    "2024-01": 73.6,
+    "2024-02": 74.9,
+    "2024-03": 74.3,
+    "2024-04": 71.0,
+    "2024-05": 66.2,
+    "2024-06": 54.6,
+    "2024-07": 51.7,
+    "2024-08": 52.3,
+    "2024-09": 49.9,
+    "2024-10": 49.3,
+    "2024-11": 41.6,
+    "2024-12": 50.7,
+    "2025-01": 59.1,
+    "2025-02": 58.2,
+    "2025-03": 57.2,
+    "2025-04": 53.1,
+    "2025-05": 65.3,
+    "2025-06": 66.8,
+    "2025-07": 63.3,
+    "2025-08": 45.2,
+    "2025-09": 41.1,
+    "2025-10": 44.0,
+    "2025-11": 56.2,
+    "2025-12": 67.5,
+    "2026-01": 72.9,
+    "2026-02": 70.4,
+    "2026-03": 73.1,
+    "2026-04": 66.1,
+    "2026-05": 68.8,
+    "2026-06": 69.8
   },
   "epu_argentina_mensual": {
     "2002-11": 137.0,
@@ -1555,19 +1597,19 @@
   },
   "correlaciones_itcp": {
     "niveles (ITCP vs EPU Argentina)": {
-      "r": -0.594,
+      "r": -0.421,
       "n": 30
     },
     "primeras diferencias (ITCP vs EPU)": {
-      "r": -0.396,
+      "r": -0.428,
       "n": 29
     },
     "ITCP adelantado 1 mes vs EPU": {
-      "r": -0.504,
+      "r": -0.366,
       "n": 29
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.329,
+      "r": -0.141,
       "n": 30
     }
   },

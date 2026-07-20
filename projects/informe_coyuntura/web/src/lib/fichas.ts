@@ -946,6 +946,39 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  desafios_legislativos: {
+    tipo: "indicador",
+    id: "desafios_legislativos",
+    cinturon: "politica",
+    rezago: "Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga los vetos al ritmo del Boletín Oficial.",
+    fuente: {
+      organismo: "Cámara de Diputados · Senado de la Nación · InfoLeg",
+      operacion: "Actas de votación nominal de ambas cámaras y base de legislación nacional — normas del Poder Ejecutivo sometidas a votación en el recinto",
+      url: "https://votaciones.hcdn.gob.ar",
+      acceso: "Automático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos registrados en InfoLeg. Elaboración propia sobre fuentes oficiales.",
+    },
+    transformaciones: [
+      "Una norma cuenta como desafiada cuando el Congreso la somete a votación en el recinto: un veto presidencial sobre el que se vota una insistencia, o un decreto puesto a consideración bajo el procedimiento de la ley 26.122.",
+      "Cada norma se cuenta una sola vez, en el mes de su primer desafío, aunque después vuelva al recinto.",
+      "Se suman las de los últimos doce meses calendario. No importa el resultado: entran tanto las que el Gobierno terminó perdiendo como las que logró sostener.",
+    ],
+    incidenciaTexto: [
+      "El puntaje del índice se asigna por bandas del conteo, interpolado entre anclas: 2 desafíos o menos en doce meses → el más alto; entre 2 y 5 → alto; entre 5 y 9 → moderado; entre 9 y 12 → bajo; más de 12 → el más bajo. Las anclas parten de que desafiar una norma del Ejecutivo en el recinto es un acto excepcional, que exige mayorías especiales o un procedimiento específico: un puñado al año ya es confrontación abierta.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 15% junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y el bloqueo sostenido.",
+      "Se lee en par con el bloqueo sostenido: éste cuenta cuántas veces el Congreso da la pelea; aquél, qué proporción de esas peleas gana el Gobierno.",
+    ],
+    limitaciones: [
+      "La ventana contiene pocos eventos —entre cuatro y trece en el período disponible—, así que un solo desafío que entra o sale mueve el indicador de manera perceptible.",
+      "Cuenta el acto de desafiar, no su importancia: una norma central y una menor pesan igual.",
+      "Sigue acoplado al bloqueo sostenido, con el que comparte el registro de eventos. Son las dos caras del mismo pulso —cuánto confronta el Congreso y cuánto resiste el Gobierno— y no deben leerse como dos confirmaciones independientes.",
+    ],
+    faltantes: "Si el registro de eventos no está disponible, se mantiene el último valor, señalado como desactualizado. Un mes sin desafíos no es un dato faltante: es un cero, e indica que el Congreso no confrontó.",
+    revisiones: "El registro se reconstruye completo en cada actualización: si una fuente carga un acta con retraso, el conteo se corrige solo hacia atrás.",
+    cambios: [
+      { fecha: "2026-07-19", cambio: "Entra al índice en reemplazo de las derrotas legislativas, que medían casi exactamente lo mismo que el bloqueo sostenido: desde marzo de 2025 ambos indicadores arrojaban mes a mes el mismo número, y entre los dos se llevaban el 40% de la dimensión para responder una sola pregunta. Las derrotas se siguen relevando y quedan a la vista como dato dentro de la ficha del bloqueo." },
+    ],
+  },
+
   brecha_obra_publica: {
     tipo: "indicador",
     id: "brecha_obra_publica",

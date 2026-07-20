@@ -105,6 +105,7 @@ INDICADORES_ESPERADOS = [
     "comisiones_caidas",
     "derrotas_legislativas",
     "bloqueo_sostenido",
+    "desafios_legislativos",
     "protestas_caba",
 ]
 
@@ -3096,6 +3097,62 @@ def _bloqueo_tasa_12m(desafios: list, referencia: date):
             max(e["fecha_desafio"] for e in en_ventana))
 
 
+def fetch_desafios_legislativos() -> dict | None:
+    """
+    Cuántas normas propias del Ejecutivo fueron DESAFIADAS en el recinto en los
+    últimos 12 meses calendario (insistencias de veto votadas + decretos puestos
+    a votación bajo la ley 26.122). Menor = mejor: mide con qué frecuencia el
+    Congreso decide dar la pelea, sin importar cómo termine.
+
+    Reemplaza a `derrotas_legislativas` en el índice (ADR-0089), que salía del
+    mismo registro de eventos y correlacionaba **−0,984** con la tasa de
+    bloqueo. Desde mar-2025 los dos son, mes a mes, literalmente el mismo
+    número: 16 lecturas consecutivas en que las derrotas igualan exactamente a
+    las normas caídas del denominador del bloqueo.
+
+    No es una identidad algebraica —difieren en 12 meses de 2024— porque cuentan
+    la caída distinto: para las derrotas, que una cámara rechace un decreto ya
+    es una derrota política; para el bloqueo, la norma cae recién cuando la
+    rechaza la SEGUNDA cámara (ley 26.122, art. 24). El DNU 70/2023 es el caso
+    testigo: el Ejecutivo perdió la votación y conservó la norma. Ambas
+    lecturas son correctas, pero en el régimen actual convergieron.
+
+    El par (desafíos, tasa) es en cambio la descomposición del fenómeno en sus
+    dos preguntas —cuánto lo confrontan y cuánto aguanta— y baja el
+    acoplamiento a −0,828. No lo elimina: la ventana tiene ~10 eventos y
+    ninguna descomposición de un conjunto tan chico queda independiente.
+
+    Las derrotas se siguen relevando y quedan a la vista como dato dentro de la
+    card de bloqueo (`caidas_12m`); lo que sale es su puntaje propio.
+    """
+    try:
+        registro = _cargar_derrotas_registro()
+        if registro is None:
+            raise ValueError(f"registro de eventos ausente o ilegible ({DERROTAS_EVENTOS_PATH})")
+        # No reclasifica: corre después de fetch_bloqueo_sostenido, que ya dejó
+        # el registro actualizado. Leer y contar, nada más.
+        tasa = _bloqueo_tasa_12m(_bloqueo_desafios(registro), date.today())
+        if tasa is None:
+            raise ValueError("sin desafíos votados en la ventana de 12 meses")
+        _pct, n, caidas, ultimo = tasa
+        return {
+            "valor":          float(n),
+            "caidas_12m":     caidas,
+            "sostenidas_12m": n - caidas,
+            "ultimo_desafio": ultimo,
+            "unidad":         "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
+            "fuente":         ("Actas de votación de Diputados y Senado + InfoLeg "
+                               "(vetos e insistencias) — elaboración CIGOB"),
+            "fecha_dato":     str(date.today()),
+            "desactualizado": False,
+            "detalle_txt": (f"{n} normas propias desafiadas en el recinto en los últimos 12 meses "
+                            f"({caidas} cayeron, {n - caidas} siguen en pie)"),
+        }
+    except Exception as e:
+        _warn("desafios_legislativos", str(e))
+        return None
+
+
 def fetch_bloqueo_sostenido() -> dict | None:
     """
     % de normas propias desafiadas en el recinto (insistencias de veto
@@ -3696,6 +3753,19 @@ def main() -> None:
     elif "bloqueo_sostenido" in indicadores_anteriores:
         frescos["bloqueo_sostenido"] = {**indicadores_anteriores["bloqueo_sostenido"],
                                         "desactualizado": True}
+
+    # desafios_legislativos sale del MISMO registro y la MISMA ventana que el
+    # bloqueo (ADR-0089): corre inmediatamente después para que ambos vean el
+    # registro en idéntico estado. Son numerador y denominador de la misma
+    # razón —desafiadas y sostenidas—, así que leerlos en momentos distintos
+    # los haría inconsistentes entre sí.
+    resultado_desafios = fetch_desafios_legislativos()
+    if _resultado_utilizable("desafios_legislativos", resultado_desafios):
+        frescos["desafios_legislativos"] = resultado_desafios
+        frescos_count += 1
+    elif "desafios_legislativos" in indicadores_anteriores:
+        frescos["desafios_legislativos"] = {**indicadores_anteriores["desafios_legislativos"],
+                                            "desactualizado": True}
 
     # alineamiento_senadores_prov comparte el mismo contrato de retorno que
     # cohesion_bloque_senado (misma sesión/descubrimiento de actas de Senado):

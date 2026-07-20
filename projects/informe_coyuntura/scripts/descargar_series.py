@@ -1048,6 +1048,32 @@ def fetch_bloqueo_sostenido_mensual() -> list:
     return puntos
 
 
+def fetch_desafios_legislativos_mensual() -> list:
+    """Serie MENSUAL de desafios_legislativos (ADR-0089): conteo de normas del
+    Ejecutivo DESAFIADAS en el recinto en los 12 meses calendario que terminan
+    en cada mes, desde dic-2023.
+
+    Sale del mismo `_bloqueo_tasa_12m` que la tasa de bloqueo —posición 1 de la
+    tupla, donde la tasa es la 0— así que las dos series ven exactamente el
+    mismo conjunto de eventos y la misma ventana. Que compartan la llamada no
+    es economía de código: son el denominador y el numerador de la misma razón,
+    y calcularlos por separado los dejaría inconsistentes entre sí.
+    A diferencia de la tasa, acá el mes sin desafíos SÍ genera punto: cero
+    desafíos es información (el Congreso no confrontó), no ausencia de dato.
+    [[YYYY-MM-DD, conteo]]."""
+    registro = politica._cargar_derrotas_registro()
+    if registro is None:
+        print(f"  [WARN] desafios_legislativos: registro de eventos ausente o ilegible "
+              f"({politica.DERROTAS_EVENTOS_PATH}) -- serie omitida")
+        return []
+    desafios = politica._bloqueo_desafios(registro)
+    puntos = []
+    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
+        tasa = politica._bloqueo_tasa_12m(desafios, fin_mes)
+        puntos.append([fin_mes.strftime("%Y-%m-%d"), float(tasa[1]) if tasa else 0.0])
+    return puntos
+
+
 def fetch_rotacion_gabinete_serie() -> list:
     """Serie MENSUAL de rotacion_gabinete: salidas de rango ministerial (JGM +
     ministros) acumuladas en la ventana móvil de 12 meses que termina en cada
@@ -1192,6 +1218,9 @@ POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
     ("ratio_dnu", "DNUs por ley (12m móviles)", "InfoLeg", fetch_ratio_dnu_serie),
+    ("desafios_legislativos", "normas desafiadas en el recinto (12m)",
+     "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
+     fetch_desafios_legislativos_mensual),
     # La serie la calcula el propio colector: la card de politica.py devuelve el
     # último punto de esta misma lista, así que no pueden divergir (ADR-0088;
     # el patrón contrario causó ADR-0086 y ADR-0087 el día anterior).

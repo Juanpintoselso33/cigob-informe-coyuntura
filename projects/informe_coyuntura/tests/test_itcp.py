@@ -182,11 +182,18 @@ def test_pesos_internos_poder_legislativo_con_bloqueo():
     # (cada uno de los 4 previos cede 0.05, orden relativo conservado).
     # Antes 25/30/20/25 (ADR-0064, salida de comisiones_caidas); antes de
     # eso 20/25/15/20/20 (ADR-0046).
+    # 2026-07-19 (ADR-0089): derrotas_legislativas sale del índice —medía casi
+    # exactamente lo mismo que bloqueo_sostenido (r=-0,984; desde mar-2025, el
+    # mismo número mes a mes)— y entra desafios_legislativos. El par acoplado
+    # baja de 0.40 a 0.30 combinado; el peso liberado va a eficacia y ratio_dnu,
+    # NO a veto_quorum.
     dim = itcp.DIMENSIONES_ITCP["poder_legislativo"]
     assert dim["indicadores"] == {
-        "ratio_dnu": 0.20, "eficacia_legislativa": 0.25, "veto_quorum": 0.15,
-        "derrotas_legislativas": 0.20, "bloqueo_sostenido": 0.20,
+        "ratio_dnu": 0.23, "eficacia_legislativa": 0.32, "veto_quorum": 0.15,
+        "desafios_legislativos": 0.15, "bloqueo_sostenido": 0.15,
     }
+    acoplados = dim["indicadores"]["desafios_legislativos"] + dim["indicadores"]["bloqueo_sostenido"]
+    assert acoplados == 0.30, "el par acoplado no debería recuperar peso sin revisar ADR-0089"
     assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
 
 
@@ -255,7 +262,7 @@ def test_indicadores_contexto_declarados_y_fuera_de_las_dimensiones():
     # referencia histórica en BANDAS_ITCP, así que el override de contexto es
     # lo único que los mantiene fuera del en_indice de la card (patrón macro).
     assert set(itcp.INDICADORES_CONTEXTO) == {"rotacion_gabinete", "protestas_caba", "comisiones_caidas",
-                                              "movilizacion_cepa"}
+                                              "movilizacion_cepa", "derrotas_legislativas"}
     en_dimensiones = {k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]}
     for contexto in itcp.INDICADORES_CONTEXTO:
         assert contexto not in en_dimensiones
