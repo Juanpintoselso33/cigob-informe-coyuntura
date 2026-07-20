@@ -83,12 +83,12 @@
       "n": 29
     },
     "ITVC sin ICC adelantado 1 mes vs ICC": {
-      "r": 0.45,
+      "r": 0.536,
       "n": 29
     },
     "ICC adelantado 1 mes vs ITVC sin ICC": {
-      "r": 0.538,
-      "n": 29
+      "r": 0.383,
+      "n": 30
     }
   },
   "serie_itcm": {
@@ -638,16 +638,16 @@
   },
   "redundancia_itcg": {
     "diferencias": {
-      "n_pares": 64,
-      "r_abs_medio": 0.147,
-      "share_altos": 0.031
+      "n_pares": 70,
+      "r_abs_medio": 0.139,
+      "share_altos": 0.029
     },
     "umbral": 0.7,
     "n_indicadores": 14,
-    "n_pares": 64,
-    "r_abs_medio": 0.494,
-    "share_altos": 0.328,
-    "share_bajos": 0.266,
+    "n_pares": 70,
+    "r_abs_medio": 0.478,
+    "share_altos": 0.3,
+    "share_bajos": 0.314,
     "matriz": {
       "apertura_comercial": {
         "cepo_mulc": 0.346,
@@ -666,6 +666,7 @@
         "apertura_comercial": 0.346,
         "concesiones_infraestructura": 0.287,
         "desregulacion_normativa": 0.863,
+        "fal_modernizacion_laboral": 0.187,
         "gasto_funcionamiento": 0.215,
         "libertad_opcion_salud": 0.89,
         "litigiosidad_laboral": 0.402,
@@ -679,6 +680,7 @@
         "apertura_comercial": 0.202,
         "cepo_mulc": 0.287,
         "desregulacion_normativa": 0.295,
+        "fal_modernizacion_laboral": 0.695,
         "gasto_funcionamiento": 0.137,
         "masa_salarial": 0.087,
         "privatizaciones": 0.481,
@@ -690,6 +692,7 @@
         "apertura_comercial": 0.599,
         "cepo_mulc": 0.863,
         "concesiones_infraestructura": 0.295,
+        "fal_modernizacion_laboral": 0.205,
         "gasto_funcionamiento": 0.324,
         "libertad_opcion_salud": 0.812,
         "litigiosidad_laboral": 0.709,
@@ -754,6 +757,7 @@
         "cepo_mulc": 0.827,
         "concesiones_infraestructura": 0.481,
         "desregulacion_normativa": 0.872,
+        "fal_modernizacion_laboral": 0.295,
         "gasto_funcionamiento": 0.375,
         "libertad_opcion_salud": 0.794,
         "litigiosidad_laboral": 0.326,
@@ -767,6 +771,7 @@
         "cepo_mulc": 0.864,
         "concesiones_infraestructura": 0.218,
         "desregulacion_normativa": 0.785,
+        "fal_modernizacion_laboral": 0.152,
         "gasto_funcionamiento": 0.148,
         "libertad_opcion_salud": 0.994,
         "litigiosidad_laboral": 0.283,
@@ -793,6 +798,7 @@
         "cepo_mulc": 0.806,
         "concesiones_infraestructura": 0.487,
         "desregulacion_normativa": 0.861,
+        "fal_modernizacion_laboral": 0.292,
         "gasto_funcionamiento": 0.401,
         "libertad_opcion_salud": 0.758,
         "litigiosidad_laboral": 0.32,
@@ -800,6 +806,14 @@
         "privatizaciones": 0.993,
         "protocolo_antipiquetes": 0.703,
         "reduccion_estado": 0.514
+      },
+      "fal_modernizacion_laboral": {
+        "cepo_mulc": 0.187,
+        "concesiones_infraestructura": 0.695,
+        "desregulacion_normativa": 0.205,
+        "privatizaciones": 0.295,
+        "protocolo_antipiquetes": 0.152,
+        "reestructuracion_organismos": 0.292
       }
     },
     "pares_altos": [
@@ -1235,37 +1249,37 @@
     "pares_no_explicados": 5
   },
   "serie_itcg": {
-    "2023-12": 22.3,
-    "2024-01": 31.5,
+    "2023-12": 16.3,
+    "2024-01": 31.6,
     "2024-02": 35.6,
     "2024-03": 40.0,
-    "2024-04": 45.5,
-    "2024-05": 40.2,
-    "2024-06": 44.7,
-    "2024-07": 44.3,
-    "2024-08": 44.9,
-    "2024-09": 44.0,
-    "2024-10": 46.9,
-    "2024-11": 51.0,
-    "2024-12": 52.3,
-    "2025-01": 52.4,
-    "2025-02": 52.2,
-    "2025-03": 52.4,
-    "2025-04": 54.4,
-    "2025-05": 60.8,
-    "2025-06": 58.5,
-    "2025-07": 63.4,
-    "2025-08": 68.9,
-    "2025-09": 68.2,
-    "2025-10": 67.5,
-    "2025-11": 70.4,
-    "2025-12": 70.1,
-    "2026-01": 69.6,
-    "2026-02": 69.9,
-    "2026-03": 70.6,
+    "2024-04": 43.7,
+    "2024-05": 38.5,
+    "2024-06": 42.9,
+    "2024-07": 42.6,
+    "2024-08": 43.1,
+    "2024-09": 42.2,
+    "2024-10": 45.1,
+    "2024-11": 49.2,
+    "2024-12": 50.5,
+    "2025-01": 51.7,
+    "2025-02": 51.5,
+    "2025-03": 51.7,
+    "2025-04": 53.7,
+    "2025-05": 60.1,
+    "2025-06": 57.8,
+    "2025-07": 62.8,
+    "2025-08": 68.2,
+    "2025-09": 67.6,
+    "2025-10": 66.9,
+    "2025-11": 69.7,
+    "2025-12": 69.4,
+    "2026-01": 68.9,
+    "2026-02": 69.2,
+    "2026-03": 69.9,
     "2026-04": 67.7,
     "2026-05": 70.4,
-    "2026-06": 65.7,
+    "2026-06": 68.8,
     "2026-07": 74.8
   },
   "merval_usd_mensual": {
@@ -1305,19 +1319,19 @@
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
-      "r": 0.739,
+      "r": 0.735,
       "n": 32
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.082,
+      "r": 0.079,
       "n": 31
     },
     "niveles (ITCG vs riesgo país)": {
-      "r": -0.871,
+      "r": -0.867,
       "n": 32
     },
     "primeras diferencias (ITCG vs riesgo)": {
-      "r": -0.217,
+      "r": -0.145,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {

@@ -3027,18 +3027,18 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
-          "r_niveles": 0.739,
-          "r_diferencias": 0.082,
+          "r_niveles": 0.735,
+          "r_diferencias": 0.079,
           "n": 32,
           "pares": [
             [
               "2023-12",
-              22.3,
+              16.3,
               964.7
             ],
             [
               "2024-01",
-              31.5,
+              31.6,
               1055.4
             ],
             [
@@ -3053,122 +3053,122 @@
             ],
             [
               "2024-04",
-              45.5,
+              43.7,
               1253.4
             ],
             [
               "2024-05",
-              40.2,
+              38.5,
               1443.2
             ],
             [
               "2024-06",
-              44.7,
+              42.9,
               1240.2
             ],
             [
               "2024-07",
-              44.3,
+              42.6,
               1090.6
             ],
             [
               "2024-08",
-              44.9,
+              43.1,
               1322.5
             ],
             [
               "2024-09",
-              44.0,
+              42.2,
               1361.4
             ],
             [
               "2024-10",
-              46.9,
+              45.1,
               1555.2
             ],
             [
               "2024-11",
-              51.0,
+              49.2,
               1984.1
             ],
             [
               "2024-12",
-              52.3,
+              50.5,
               2242.3
             ],
             [
               "2025-01",
-              52.4,
+              51.7,
               2163.3
             ],
             [
               "2025-02",
-              52.2,
+              51.5,
               1829.1
             ],
             [
               "2025-03",
-              52.4,
+              51.7,
               1850.1
             ],
             [
               "2025-04",
-              54.4,
+              53.7,
               1670.2
             ],
             [
               "2025-05",
-              60.8,
+              60.1,
               1903.6
             ],
             [
               "2025-06",
-              58.5,
+              57.8,
               1673.1
             ],
             [
               "2025-07",
-              63.4,
+              62.8,
               1815.2
             ],
             [
               "2025-08",
-              68.9,
+              68.2,
               1489.0
             ],
             [
               "2025-09",
-              68.2,
+              67.6,
               1220.4
             ],
             [
               "2025-10",
-              67.5,
+              66.9,
               1975.4
             ],
             [
               "2025-11",
-              70.4,
+              69.7,
               2024.9
             ],
             [
               "2025-12",
-              70.1,
+              69.4,
               2003.1
             ],
             [
               "2026-01",
-              69.6,
+              68.9,
               2105.6
             ],
             [
               "2026-02",
-              69.9,
+              69.2,
               1795.8
             ],
             [
               "2026-03",
-              70.6,
+              69.9,
               2039.2
             ],
             [
@@ -3183,7 +3183,7 @@
             ],
             [
               "2026-06",
-              65.7,
+              68.8,
               2087.8
             ],
             [
@@ -3198,20 +3198,20 @@
           "serie_label": "ITCG (reconstrucción mensual)",
           "externa_label": "Merval en dólares",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,739 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,654) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
+          "conclusion": "Correlación 0,735 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,654) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
         },
         "redundancia": {
           "n_indicadores": 14,
-          "n_pares": 64,
-          "r_abs_medio": 0.494,
-          "share_altos": 0.328,
-          "share_bajos": 0.266,
+          "n_pares": 70,
+          "r_abs_medio": 0.478,
+          "share_altos": 0.3,
+          "share_bajos": 0.314,
           "umbral": 0.7,
           "pares_cruzados": 19,
           "diferencias": {
-            "n_pares": 64,
-            "r_abs_medio": 0.147,
-            "share_altos": 0.031
+            "n_pares": 70,
+            "r_abs_medio": 0.139,
+            "share_altos": 0.029
           },
           "top": [
             {
@@ -3258,8 +3258,8 @@
             }
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
-          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 14 componentes que tienen serie histórica, 64 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,494: ni componentes independientes ni una sola señal repetida. Un 33% de los pares se mueve muy junto (por encima de 0,7) y un 27% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,147 y sólo un 3% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 21 pares que superan el umbral en niveles, 19 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
+          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 14 componentes que tienen serie histórica, 70 pares en total, y se mide cuánto se mueven juntos.",
+          "conclusion": "La correlación media entre pares es 0,478: ni componentes independientes ni una sola señal repetida. Un 30% de los pares se mueve muy junto (por encima de 0,7) y un 31% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,139 y sólo un 3% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 21 pares que superan el umbral en niveles, 19 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "vintages": {
           "dias_promedio": 51,
@@ -3373,22 +3373,22 @@
         "riesgo": {
           "r": -0.86,
           "n": 31,
-          "rd": -0.24
+          "rd": -0.15
         },
         "merval": {
-          "r": 0.74,
+          "r": 0.73,
           "n": 32,
           "rd": 0.08
         },
         "icc": {
-          "r": 0.43,
+          "r": 0.41,
           "n": 30,
-          "rd": -0.28
+          "rd": -0.36
         },
         "epu": {
           "r": 0.45,
           "n": 30,
-          "rd": -0.01
+          "rd": -0.0
         }
       },
       {
@@ -3460,6 +3460,6 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,77 con el riesgo país, ITCG +0,74 con el Merval en dólares, ITVC +0,52 con la confianza del consumidor, ITCP -0,37 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,86 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,03 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,28, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,77 con el riesgo país, ITCG +0,73 con el Merval en dólares, ITVC +0,52 con la confianza del consumidor, ITCP -0,37 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,86 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,03 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,28, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
   }
 }

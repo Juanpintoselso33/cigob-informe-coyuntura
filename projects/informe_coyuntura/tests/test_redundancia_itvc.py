@@ -97,3 +97,27 @@ def test_lo_publicado_cubre_los_componentes_que_hoy_puntuan():
         f"la matriz publicada mide {red['n_indicadores']} componentes y el índice tiene "
         f"{len(vivos)}: falta correr validacion_externa.py"
     )
+
+
+def test_ningun_indice_publica_una_matriz_desfasada():
+    """El guard de ADR-0116, extendido a los cuatro (ADR-0117).
+
+    La revisión que lo motivó encontró que el ITCG publicaba 64 pares cuando su
+    reconstrucción da 70: no faltaban componentes —el conteo coincidía— sino que
+    la serie había crecido y más pares pasaron a tener datos. Comparar sólo el
+    número de indicadores no lo habría visto; hay que comparar los PARES.
+    """
+    import validacion_externa as ve
+
+    for sig, fn in (("itcm", ve.matriz_redundancia_itcm),
+                    ("itcg", ve.matriz_redundancia_itcg),
+                    ("itcp", ve.matriz_redundancia_itcp),
+                    ("itvc", ve.matriz_redundancia_itvc)):
+        guardada = ve.json.loads(ve.SALIDA.read_text(encoding="utf-8")).get(f"redundancia_{sig}")
+        if not guardada:
+            continue
+        viva = fn()
+        assert guardada["n_pares"] == viva["n_pares"], (
+            f"{sig}: la matriz publicada mide {guardada['n_pares']} pares y la "
+            f"reconstrucción da {viva['n_pares']}: falta correr validacion_externa.py"
+        )
