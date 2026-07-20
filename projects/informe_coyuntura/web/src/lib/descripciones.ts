@@ -131,7 +131,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   iaf_transferencias: {
     que: "Cuánto varían, en términos reales, las transferencias del Estado nacional a las provincias.",
-    aporta: "Mide la armonía —o el conflicto— fiscal con los gobernadores.",
+    aporta: "Mide el gesto fiscal de la Nación hacia las provincias: cuánto gira por encima o por debajo de lo que giraba antes, en términos reales. Es un insumo de la relación federal, no la respuesta de los gobernadores: informa lo que hace el Gobierno nacional, no cómo reaccionan las provincias.",
     frecuencia: "Anual", tipo: "Variación real",
   },
   eficacia_legislativa: {
@@ -156,7 +156,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   alineamiento_senadores_prov: {
     que: "Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición que tomó el bloque oficialista en esa misma votación, promediado entre provincias.",
-    aporta: "Mide alianzas territoriales por el comportamiento real de voto en el Senado, no por declaraciones o el alineamiento partidario formal de cada gobernador con la Nación.",
+    aporta: "Es la mejor señal automatizable disponible del respaldo territorial, y conviene leerla por lo que es: mide el voto de los senadores, no la postura del gobernador de cada provincia. Un senador no depende del gobernador de turno y puede responder a la estrategia nacional de su propio partido. Reemplaza a un indicador de alineamiento de gobernadores que quedó congelado por falta de una fuente pública que midiera directamente la posición de los ejecutivos provinciales.",
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   veto_quorum: {
@@ -395,7 +395,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
   sector_privado: "La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados. Al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga: la diferencia aísla lo que aporta la política pública y descarta el ciclo económico.",
   poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.",
-  alianzas_territoriales: "El sostén federal del gobierno: las transferencias a las provincias (armonía fiscal), el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI.",
+  alianzas_territoriales: "El sostén federal del gobierno, visto desde tres señales: las transferencias a las provincias, el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI. Conviene una precisión sobre qué mide y qué no: ninguna de las tres observa directamente la conducta de los gobernadores. La primera describe lo que hace el Gobierno nacional; la segunda, cómo votan los senadores de cada provincia; la tercera, una decisión legislativa provincial ya tomada. No se encontró una fuente pública que midiera de forma automatizable la postura de los ejecutivos provinciales, así que la dimensión se lee como respaldo territorial observado por sus efectos, no como una medición de la relación con cada gobernador.",
   cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza, medida en un único indicador bicameral (Diputados 65%, Senado 35%).",
   conflicto_social: "La conflictividad social que el gobierno tiene que administrar: los eventos de protesta y disturbios de todo el país registrados por ACLED, acumulados en 12 meses y comparados contra 2023, la línea de base del mandato.",
 };
