@@ -1608,14 +1608,15 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "La serie de dotación se publica con ~2 meses de rezago; los últimos meses aparecen imputados y se revisan.",
     fuente: {
       organismo: "INDEC + Secretaría de Transformación del Estado",
-      operacion: "Dotación de personal de la Administración Pública Nacional, empresas y sociedades (serie mensual)",
-      serie: "Planilla oficial serie_dotacion_apn.xlsx (cuadro 1, Administración pública nacional)",
+      operacion: "Dotación de personal del Estado nacional (serie mensual). La planilla abre el total en dos universos: la Administración Pública Nacional y las empresas y sociedades del Estado; este indicador usa el primero",
+      serie: "Planilla oficial serie_dotacion_apn.xlsx, cuadro 1, fila «Administración pública nacional» — que agrupa la administración centralizada, la descentralizada, la desconcentrada y otros entes, y NO incluye las empresas del Estado",
       url: "https://www.indec.gob.ar/indec/web/Institucional-Indec-empleoAPN",
       acceso: "Automático: lectura de la planilla oficial.",
     },
     transformaciones: [
       "Variación porcentual de la dotación contra la línea de base de diciembre de 2023 (231.305 agentes).",
       "A diferencia de las series previsionales, excluye provincias y municipios: es la métrica insignia de la reforma del Estado nacional.",
+      "También excluye a las empresas y sociedades del Estado, que la planilla informa por separado. Se eligió la Administración Pública Nacional porque es el universo sobre el que el Poder Ejecutivo decide directamente su planta. La elección no cambia la lectura: al mes de mayo de 2026 la Administración Pública Nacional cae 19,8%, las empresas del Estado 20,2% y el universo completo 19,9%.",
     ],
     anclas: {
       bandas: [
@@ -1631,7 +1632,8 @@ export const FICHAS: Record<string, Ficha> = {
     dobleUso: "Mide personas; el costo de la nómina lo miden por separado el gasto de funcionamiento y la masa salarial — tres patas complementarias declaradas de la misma dimensión.",
     limitaciones: [
       "Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.",
-      "Las bandas se calibraron a mano contra el recorte observado (~10-12% → banda alta).",
+      "Las bandas se calibraron a mano contra el recorte observado (~10-12% → banda alta): es una convención propia del proyecto y no una meta oficial.",
+      "Mide personas, no costo. La reducción de la planta puede convivir con un gasto salarial que no baje en la misma proporción, y por eso el cinturón sigue ambas cosas por separado.",
     ],
     faltantes: "Con la planilla caída, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "La fuente revisa los meses imputados en cada publicación; la serie propia se relee completa en cada actualización.",

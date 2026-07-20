@@ -569,22 +569,34 @@ def dotacion_apn_series() -> dict:
     if header is None:
         raise ValueError("XLSX INDEC: fila de encabezados de meses no encontrada")
 
-    fila_apn = None
-    for fila in filas:
-        primera = str(fila[0] or "").strip().lower()
-        if primera.startswith("administración pública nacional") or \
-           primera.startswith("administracion publica nacional"):
-            fila_apn = fila
-            break
+    # El cuadro 1 abre la dotación en tres filas que hay que distinguir
+    # (ADR-0097): "Total" = "Administración pública nacional" + "Empresas y
+    # sociedades". El indicador puntúa la SEGUNDA —la planta administrativa del
+    # Ejecutivo, sin las empresas del Estado— y las otras dos se leen igual para
+    # publicarlas como contexto: la revisión externa preguntó cuál de los tres
+    # universos se estaba usando, y la respuesta merece estar a la vista.
+    def _fila(*prefijos):
+        for fila in filas:
+            primera = str(fila[0] or "").strip().lower()
+            if any(primera.startswith(p) for p in prefijos):
+                return fila
+        return None
+
+    fila_apn = _fila("administración pública nacional", "administracion publica nacional")
     if fila_apn is None:
         raise ValueError("XLSX INDEC: fila 'Administración pública nacional' no encontrada")
 
-    serie = {}
-    for ym, v in zip(header, fila_apn):
-        if ym and isinstance(v, (int, float)):
-            serie[ym] = float(v)
+    def _serie_de(fila):
+        if fila is None:
+            return {}
+        return {ym: float(v) for ym, v in zip(header, fila)
+                if ym and isinstance(v, (int, float))}
+
+    serie = _serie_de(fila_apn)
     if "2023-12" not in serie:
         raise ValueError("XLSX INDEC: baseline dic-2023 ausente de la serie")
+    serie["_empresas"] = _serie_de(_fila("empresas y sociedades"))
+    serie["_total"] = _serie_de(_fila("total"))
     return serie
 
 
@@ -598,10 +610,19 @@ def fetch_reduccion_estado() -> dict | None:
     """
     try:
         serie = dotacion_apn_series()
+        empresas = serie.pop("_empresas", {})
+        total = serie.pop("_total", {})
         ult = max(serie)
         base = serie["2023-12"]
         var_pct = round((serie[ult] - base) / base * 100.0, 2)
         miles = lambda x: f"{x:,.0f}".replace(",", ".")
+
+        def _var(otra):
+            if otra.get(ult) and otra.get("2023-12"):
+                return round((otra[ult] - otra["2023-12"]) / otra["2023-12"] * 100.0, 2)
+            return None
+
+        var_empresas, var_total = _var(empresas), _var(total)
         return {
             "valor":          var_pct,
             "unidad":         "% de variación vs dic-2023 (dotación APN)",
@@ -610,8 +631,18 @@ def fetch_reduccion_estado() -> dict | None:
             "desactualizado": False,
             "dotacion_actual": round(serie[ult]),
             "dotacion_dic23":  round(base),
-            "detalle_txt": (f"{miles(serie[ult])} agentes ({ult}) vs "
-                            f"{miles(base)} en dic-2023"),
+            # Contexto declarado (ADR-0097): qué pasa si se mide el universo
+            # completo. Las tres cifras son casi idénticas, así que la elección
+            # de universo no cambia la lectura — y eso es justamente lo que
+            # conviene mostrar.
+            "var_empresas_publicas": var_empresas,
+            "var_universo_completo": var_total,
+            "detalle_txt": (
+                f"{miles(serie[ult])} agentes ({ult}) vs {miles(base)} en dic-2023"
+                + ("" if var_empresas is None or var_total is None else
+                   f" · sin contar empresas del Estado, que por su lado varían "
+                   f"{str(var_empresas).replace('.', ',')}%; el universo completo "
+                   f"varía {str(var_total).replace('.', ',')}%")),
         }
     except Exception as e:
         _warn("reduccion_estado", e)

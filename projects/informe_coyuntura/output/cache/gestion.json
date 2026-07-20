@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-20T07:40:55.452010",
+  "generated_at": "2026-07-20T07:56:56.359540",
   "score": 2.9,
   "itcg": {
     "valor": 70.9,
@@ -206,7 +206,9 @@
       "desactualizado": false,
       "dotacion_actual": 185498,
       "dotacion_dic23": 231305,
-      "detalle_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023",
+      "var_empresas_publicas": -20.24,
+      "var_universo_completo": -19.94,
+      "detalle_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023 · sin contar empresas del Estado, que por su lado varían -20,24%; el universo completo varía -19,94%",
       "en_indice": true,
       "dimension": "reforma_estado",
       "puntaje_itcg": 100.0,

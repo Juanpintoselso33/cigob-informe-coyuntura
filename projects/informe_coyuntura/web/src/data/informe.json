@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-20T07:42:59.444447",
+  "generated_at": "2026-07-20T07:56:57.168386",
   "period": "2026-07",
   "score_global": 3.3,
   "ponderacion": {
@@ -2276,7 +2276,9 @@
           "desactualizado": false,
           "dotacion_actual": 185498,
           "dotacion_dic23": 231305,
-          "detalle_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023",
+          "var_empresas_publicas": -20.24,
+          "var_universo_completo": -19.94,
+          "detalle_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023 · sin contar empresas del Estado, que por su lado varían -20,24%; el universo completo varía -19,94%",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 100.0,
@@ -2286,7 +2288,7 @@
           "aporte_formula": "Anclas ITCG: ≤-12 → 100 · -12 a -8 → 85 · -8 a -4 → 65 · -4 a 0 → 40 · >0 → 10 (puntaje interpolado entre anclas: 100.0; pesa 8,8% del ITCG)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
-          "aporte_input_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023"
+          "aporte_input_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023 · sin contar empresas del Estado, que por su lado varían -20,24%; el universo completo varía -19,94%"
         },
         "gasto_funcionamiento": {
           "valor": -24.35,
