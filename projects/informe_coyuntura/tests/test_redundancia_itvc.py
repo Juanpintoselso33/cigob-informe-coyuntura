@@ -72,3 +72,28 @@ def test_el_acoplamiento_en_niveles_no_se_publica_solo():
         "si el acoplamiento ya no cae al destendenciar, la conclusión publicada "
         "sobre «época en común» dejó de ser cierta"
     )
+
+
+def test_lo_publicado_cubre_los_componentes_que_hoy_puntuan():
+    """El guard que faltaba (ADR-0116).
+
+    La matriz y la validación externa se calculan en `validacion_externa.py` y
+    viajan al informe por su JSON. Si se incorpora un componente y no se vuelve
+    a correr ese script, el informe publica una matriz de menos componentes y
+    una correlación vieja SIN QUE NADA FALLE — pasó con ADR-0111 y ADR-0112:
+    entraron `alquiler_real` e `indice_lider` y la matriz siguió diciendo 14
+    indicadores mientras el índice ya tenía 16.
+    """
+    import json
+    from pathlib import Path
+
+    snap = Path(__file__).resolve().parents[1] / "web" / "src" / "data" / "informe.json"
+    bloque = json.loads(snap.read_text(encoding="utf-8"))["cinturones"]["vida_cotidiana"]["itvc"]
+    red = bloque.get("redundancia")
+    if not red:
+        return
+    vivos = {i for d in itvc.DIMENSIONES_ITVC.values() for i in d["indicadores"]}
+    assert red["n_indicadores"] == len(vivos), (
+        f"la matriz publicada mide {red['n_indicadores']} componentes y el índice tiene "
+        f"{len(vivos)}: falta correr validacion_externa.py"
+    )
