@@ -58,6 +58,10 @@ def build_vida(raw):
     reg = indec.get("ipc_regulados", {})
     _add(out, "peso_tarifas", round(reg.get("variacion_mensual_pct", 0), 2),
          "% m/m regulados", "INDEC — IPC precios regulados (vía datos.gob.ar)", reg.get("fecha"))
+    alq = indec.get("ipc_alquiler_gba", {})
+    _add(out, "alquiler_real", round(alq.get("variacion_mensual_pct", 0), 2),
+         "% m/m alquileres", "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)",
+         alq.get("fecha"))
     carne = ciccra.get("consumo_carne_per_capita", {})
     _add(out, "consumo_carne", carne.get("valor"),
          "kg/hab/año", "CICCRA", carne.get("fecha"))
@@ -499,6 +503,7 @@ ITVC_WINSOR_TOPE = 140.0   # techo de componentes B100 (ADR-0033) — SOLO techo
 ITVC_SERIES_REBASEADAS = {
     "itvc_alimentos":     "ipc_alimentos",
     "itvc_tarifas":       "peso_tarifas",
+    "itvc_alquiler":      "alquiler_real",
     "itvc_ipi":           "mortalidad_pymes",
     "itvc_isac":          "despacho_cemento",
     "itvc_endeudamiento": "endeudamiento_familiar",

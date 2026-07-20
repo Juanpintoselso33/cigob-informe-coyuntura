@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-20T09:16:57.881788",
+  "generated_at": "2026-07-20T17:53:26.792778",
   "period": "2026-07",
-  "score_global": 3.2,
+  "score_global": 3.3,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -1674,8 +1674,8 @@
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
     },
     "vida_cotidiana": {
-      "score": 5.9,
-      "estado": "en_tension",
+      "score": 6.1,
+      "estado": "tensionado",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "brecha_salario_cbt": {
@@ -1703,17 +1703,17 @@
           "en_indice": true,
           "dimension": "precios",
           "indice_itvc": 107.5,
-          "peso_efectivo": 0.1,
+          "peso_efectivo": 0.0875,
           "aporte_score": 3.5,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 107,5 (100 = arranque del mandato; más = mejora); pesa 10,0% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 107,5 (100 = arranque del mandato; más = mejora); pesa 8,8% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 3,5/10."
         },
         "endeudamiento_familiar": {
-          "valor": 43.65,
+          "valor": 43.25,
           "unidad": "billones de pesos (consumo)",
           "fuente": "BCRA — crédito de consumo (API) + Informe sobre Bancos",
-          "fecha_dato": "2026-07-14",
+          "fecha_dato": "2026-07-15",
           "desactualizado": false,
           "var_real_12m": -4.0,
           "en_indice": true,
@@ -1734,11 +1734,26 @@
           "en_indice": true,
           "dimension": "precios",
           "indice_itvc": 71.5,
-          "peso_efectivo": 0.15,
+          "peso_efectivo": 0.1125,
           "aporte_score": 10.0,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 71,5 (100 = arranque del mandato; más = mejora); pesa 15,0% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 71,5 (100 = arranque del mandato; más = mejora); pesa 11,2% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
           "aporte_lectura": "La tensión equivalente excede el tope de la escala (10,7) y se corta en 10: deterioro profundo contra el arranque del mandato."
+        },
+        "alquiler_real": {
+          "valor": 3.87,
+          "unidad": "% m/m alquileres",
+          "fuente": "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)",
+          "fecha_dato": "2026-06-01",
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "precios",
+          "indice_itvc": 64.3,
+          "peso_efectivo": 0.05,
+          "aporte_score": 10.0,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 64,3 (100 = arranque del mandato; más = mejora); pesa 5,0% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_nota": null,
+          "aporte_lectura": "La tensión equivalente excede el tope de la escala (12,1) y se corta en 10: deterioro profundo contra el arranque del mandato."
         },
         "consumo_carne": {
           "valor": 47.5,
@@ -1847,10 +1862,10 @@
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,6/10."
         },
         "sentimiento_digital": {
-          "valor": 6.3,
+          "valor": 5.7,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
-          "fecha_dato": "2026-07-18",
+          "fecha_dato": "2026-07-20",
           "desactualizado": false,
           "detalle_txt": "El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITVC usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.",
           "en_indice": true,
@@ -1895,12 +1910,12 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260718_1413.json",
+      "fuente_enriquecida": "vida_cotidiana_20260720_1753.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
-        "valor": 95.4,
-        "banda": "sin_cambios",
-        "banda_legible": "Sin cambios significativos vs 4T-2023",
+        "valor": 94.6,
+        "banda": "deterioro_moderado",
+        "banda_legible": "Deterioro moderado vs 4T-2023",
         "dimensiones": {
           "ingresos": {
             "nombre": "Sostenibilidad de ingresos",
@@ -1926,23 +1941,29 @@
           "precios": {
             "nombre": "Presión de precios",
             "peso": 0.25,
-            "puntaje": 85.9,
+            "puntaje": 82.7,
             "indicadores": {
               "ipc_alimentos": {
-                "peso": 0.4,
+                "peso": 0.35,
                 "puntaje_banda": 107.5,
                 "puntaje_aplicado": 107.5,
-                "peso_efectivo": 0.1
+                "peso_efectivo": 0.0875
               },
               "peso_tarifas": {
-                "peso": 0.6,
+                "peso": 0.45,
                 "puntaje_banda": 71.5,
                 "puntaje_aplicado": 71.5,
-                "peso_efectivo": 0.15
+                "peso_efectivo": 0.1125
+              },
+              "alquiler_real": {
+                "peso": 0.2,
+                "puntaje_banda": 64.3,
+                "puntaje_aplicado": 64.3,
+                "peso_efectivo": 0.05
               }
             },
             "peso_efectivo": 0.25,
-            "critica": false
+            "critica": true
           },
           "vulnerabilidad": {
             "nombre": "Vulnerabilidad financiera",
@@ -2034,57 +2055,57 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 94.0,
-          "p95": 96.9,
+          "p05": 93.1,
+          "p95": 96.2,
           "tension_rango": [
-            5.6,
-            6.2
+            5.8,
+            6.4
           ],
           "dominante": {
             "indicador": "endeudamiento_familiar",
-            "indice_sin": 89.3
+            "indice_sin": 88.5
           },
           "n_draws": 1000,
           "hist": [
-            2,
-            4,
-            3,
-            2,
-            4,
-            10,
-            8,
-            12,
-            14,
-            17,
-            25,
-            21,
-            34,
-            33,
-            57,
-            61,
-            62,
-            66,
-            62,
-            68,
-            62,
-            51,
-            40,
-            51,
-            44,
-            38,
-            46,
-            22,
-            19,
-            22,
-            17,
-            7,
-            9,
-            4,
             1,
-            2
+            0,
+            0,
+            0,
+            0,
+            1,
+            3,
+            0,
+            4,
+            7,
+            8,
+            11,
+            30,
+            26,
+            37,
+            37,
+            48,
+            60,
+            59,
+            58,
+            65,
+            68,
+            79,
+            60,
+            79,
+            59,
+            52,
+            32,
+            24,
+            26,
+            20,
+            25,
+            12,
+            4,
+            4,
+            1
           ],
-          "hist_min": 92.81,
-          "hist_max": 97.81,
+          "hist_min": 90.99,
+          "hist_max": 97.04,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
@@ -2316,8 +2337,8 @@
           "dias_promedio": 85,
           "meses_promedio": 2.8,
           "fecha_mas_vieja": "1 de enero de 2026",
-          "fecha_mas_nueva": "18 de julio de 2026",
-          "span_dias": 198,
+          "fecha_mas_nueva": "20 de julio de 2026",
+          "span_dias": 200,
           "rezagados": [
             {
               "indicador": "informalidad",
@@ -2342,7 +2363,7 @@
           ],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 18 de julio de 2026 y el más antiguo del 1 de enero de 2026: un rango de 198 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,8 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
+          "conclusion": "El dato más reciente es del 20 de julio de 2026 y el más antiguo del 1 de enero de 2026: un rango de 200 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,8 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         }
       }
     },

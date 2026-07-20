@@ -2227,6 +2227,39 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  alquiler_real: {
+    tipo: "indicador",
+    id: "alquiler_real",
+    cinturon: "vida_cotidiana",
+    rezago: "El IPC-GBA se publica a mediados del mes siguiente (~1 mes).",
+    fuente: {
+      organismo: "INDEC",
+      operacion: "Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda",
+      serie: "104.1_I2RE_2016_M_25 (alquiler) + 103.1_I2N_2016_M_19 (nivel general GBA) · API de datos.gob.ar",
+      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-5-31",
+      acceso: "Automático: API pública de series.",
+    },
+    transformaciones: [
+      "La card muestra la variación mensual del alquiler.",
+      "El componente mide el encarecimiento RELATIVO del alquiler: nivel del alquiler contra el nivel general de precios del mismo aglomerado, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, el alquiler subió más que el resto de los precios desde el arranque.",
+      "Se compara contra el índice general del Gran Buenos Aires y no contra el nacional: dividir un precio de una plaza por el índice de otra mezclaría dos mercados en el mismo cociente.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de presión de precios (20% interno · 5% del ITVC).",
+      "Entra por debajo de tarifas y alimentos porque el alquiler golpea a los hogares inquilinos —alrededor de un tercio de los urbanos— mientras los otros dos pesan sobre todos.",
+      "Es el único componente del cinturón que mide el costo de la vivienda, un gasto fijo que ningún otro captura.",
+    ],
+    limitaciones: [
+      "Sólo mide el Gran Buenos Aires: es la única apertura de alquiler que publica el INDEC, y el mercado del interior puede comportarse distinto.",
+      "Mide el alquiler que releva el IPC, que sigue contratos vigentes; los valores de los contratos nuevos pueden moverse antes.",
+      "No distingue entre hogares propietarios e inquilinos: el índice describe el precio, no cuántos lo pagan.",
+    ],
+    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización.",
+    revisiones: "Re-descarga completa por actualización; base fija en el 4º trimestre de 2023.",
+    cambios: [
+      { fecha: "2026-07-20", cambio: "Alta del indicador: la dimensión de precios no medía el costo de la vivienda." },
+    ],
+  },
   peso_tarifas: {
     tipo: "indicador",
     id: "peso_tarifas",

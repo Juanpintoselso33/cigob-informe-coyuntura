@@ -45,7 +45,14 @@ DIMENSIONES_ITVC = {
     "precios": {
         "nombre": "Presión de precios",
         "peso": 0.25,
-        "indicadores": {"ipc_alimentos": 0.40, "peso_tarifas": 0.60},
+        # ADR-0111: entra alquiler_real con 20%. Los tres son precios de la
+        # canasta cotidiana, pero el alquiler golpea a los hogares INQUILINOS
+        # —alrededor de un tercio de los urbanos— mientras tarifas y alimentos
+        # pegan en todos; por eso entra por debajo de los otros dos. Le ceden
+        # proporcionalmente, conservando el orden relativo previo (tarifas
+        # arriba de alimentos). El peso NOMINAL de la dimensión no se toca.
+        "indicadores": {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
+                        "alquiler_real": 0.20},
     },
     "vulnerabilidad": {
         "nombre": "Vulnerabilidad financiera",

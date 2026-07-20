@@ -11,6 +11,12 @@ INDEC_SERIES = {
     "ipc_alimentos":           "146.3_IALIMENNAL_DICI_M_45",   # IPC Alimentos y Bebidas no alc.
     "ipc_vivienda":            "146.3_IVIVIENNAL_DICI_M_52",   # IPC Vivienda+agua+elec+gas (tarifas)
     "ipc_regulados":           "148.3_IREGULANAL_DICI_M_22",   # IPC Regulados (tarifas directas)
+    # Alquiler (ADR-0111). Sólo existe la apertura de GBA: el IPC nacional no
+    # publica "alquiler de la vivienda" por separado. Se deflacta con el nivel
+    # general de GBA —no con el nacional— para que numerador y denominador
+    # midan la misma plaza.
+    "ipc_alquiler_gba":        "104.1_I2RE_2016_M_25",         # IPC-GBA Alquiler de la vivienda
+    "ipc_gba_general":         "103.1_I2N_2016_M_19",          # IPC-GBA Nivel General
 
     # Canasta basica (para brecha salario vs CBT)
     "cbt":                     "150.1_CSTA_BATAL_0_D_20",      # Canasta Basica Total (adulto equiv.)

@@ -208,6 +208,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.",
     frecuencia: "Mensual", tipo: "Variación (card) · nivel vs salarios (índice)",
   },
+  alquiler_real: {
+    que: "Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITVC puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.",
+    aporta: "La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.",
+    frecuencia: "Mensual", tipo: "Variación (card) · nivel relativo al IPC (índice)",
+  },
   consumo_carne: {
     que: "Cuántos kilos de carne vacuna consume por año cada habitante.",
     aporta: "Proxy histórico del bienestar alimentario y del poder de compra popular.",

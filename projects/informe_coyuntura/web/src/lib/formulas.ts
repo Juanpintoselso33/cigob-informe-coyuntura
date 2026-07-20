@@ -147,6 +147,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`100\cdot\frac{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{hoy}}}{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{4T-23}}}`,
     leyenda: "Cuántas facturas de servicios regulados paga el sueldo, contra el arranque del mandato. Debajo de 100 = las tarifas pesan más en el bolsillo que en 2023 (fin de subsidios).",
   },
+  alquiler_real: {
+    latex: String.raw`100\cdotrac{\left(	ext{IPC general}\,/\,	ext{alquiler}ight)_{	ext{hoy}}}{\left(	ext{IPC general}\,/\,	ext{alquiler}ight)_{	ext{4T-23}}}`,
+    leyenda: "Cuánto sube el alquiler comparado con el resto de los precios, contra el arranque del mandato. Debajo de 100 = el alquiler se encareció más que todo lo demás.",
+  },
   mortalidad_pymes: {
     latex: String.raw`100\cdot\frac{\text{producci\'on industrial}_{\text{hoy}}}{\text{producci\'on industrial}_{\text{4T-23}}}`,
     leyenda: "Nivel del IPI manufacturero desestacionalizado como proxy de la salud de las pymes industriales (empleadoras), 100 = 4T-2023.",

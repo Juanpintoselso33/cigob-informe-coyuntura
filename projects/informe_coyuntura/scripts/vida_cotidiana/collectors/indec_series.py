@@ -67,7 +67,8 @@ def fetch_indec() -> dict:
     results = {}
 
     # ── Precios ──────────────────────────────────────────────────────────────
-    for key in ["ipc_total", "ipc_alimentos", "ipc_vivienda", "ipc_regulados"]:
+    for key in ["ipc_total", "ipc_alimentos", "ipc_vivienda", "ipc_regulados",
+                "ipc_alquiler_gba"]:
         try:
             results[key] = _var_mensual(INDEC_SERIES[key])
             logger.info("%s OK: %s", key, results[key]["fecha"])

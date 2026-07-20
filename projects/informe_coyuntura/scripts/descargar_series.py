@@ -1499,6 +1499,34 @@ def fetch_itvc_alimentos() -> list:
     return out
 
 
+def fetch_itvc_alquiler() -> list:
+    """I_AL (ADR-0111): encarecimiento RELATIVO del alquiler — IPC-GBA alquiler
+    de la vivienda contra el nivel general de GBA, rebaseado a 4T-2023.
+    >100 = el alquiler sube MENOS que el resto de los precios; <100 = encarece
+    por encima del promedio.
+
+    Misma construcción que `fetch_itvc_alimentos`: es la pregunta de precios
+    pura, independiente del salario, para no repetir el ratio que ya mide la
+    brecha salario/CBT.
+
+    Deflactado con el nivel general de GBA y no con el nacional: la única
+    apertura de alquiler que publica INDEC es la de GBA, y dividir un precio de
+    GBA por un índice nacional mezclaría dos plazas en el mismo cociente.
+    [[YYYY-MM-01, índice]]."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import INDEC_SERIES
+    alq = _nivel_mensual(INDEC_SERIES["ipc_alquiler_gba"])
+    gen = _nivel_mensual(INDEC_SERIES["ipc_gba_general"])
+    a_base, g_base = _base_t423(alq), _base_t423(gen)
+    out = []
+    for ym in sorted(set(alq) & set(gen)):
+        if ym < "2023-10" or not alq[ym] or not gen[ym]:
+            continue
+        indice = (a_base / alq[ym]) * (gen[ym] / g_base) * 100.0
+        out.append([f"{ym}-01", round(indice, 1)])
+    return out
+
+
 def fetch_itvc_tarifas() -> list:
     """I_PT: peso de los servicios regulados en el salario (IPC Regulados nivel
     vs RIPTE), 100 = 4T-2023."""
@@ -1898,6 +1926,7 @@ def fetch_motos_serie_cached() -> list:
 VIDA_DERIVADAS += [
     ("itvc_alimentos", "índice (100 = 4T-2023)", "INDEC IPC Alimentos + IPC general (elab. CIGOB)", fetch_itvc_alimentos),
     ("itvc_tarifas", "índice (100 = 4T-2023)", "INDEC IPC Regulados + RIPTE (elab. CIGOB)", fetch_itvc_tarifas),
+    ("itvc_alquiler", "índice (100 = 4T-2023)", "INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)", fetch_itvc_alquiler),
     ("itvc_ipi", "índice (100 = 4T-2023)", "INDEC IPI desestacionalizado", fetch_itvc_ipi),
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),

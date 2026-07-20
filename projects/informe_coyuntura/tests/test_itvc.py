@@ -38,21 +38,32 @@ EJEMPLO = {
 
 
 def test_itvc_reproduce_ejemplo():
+    """El ejemplo del documento, con la salvedad de ADR-0111.
+
+    EJEMPLO es el juego de valores del doc de diseño y NO trae `alquiler_real`,
+    que entró a la dimensión de precios después. El motor renormaliza los dos
+    componentes restantes (45/35 → 56,25/43,75), así que precios da 75,3 y no
+    los 74,0 del doc: la diferencia es la renormalización funcionando, no una
+    deriva del cálculo. El resto de las dimensiones queda intacto, que es lo que
+    este test cuida.
+    """
     r = itvc.calcular_itvc(EJEMPLO)
     dims = r["dimensiones"]
     assert dims["ingresos"]["puntaje"] == 90.5
-    assert dims["precios"]["puntaje"] == 74.0
+    assert dims["precios"]["puntaje"] == 75.3
     assert dims["vulnerabilidad"]["puntaje"] == 89.0
     assert dims["empleo"]["puntaje"] == 92.3
     assert dims["confianza"]["puntaje"] == 111.0
-    assert r["valor"] == 89.6
+    assert r["valor"] == 89.9
     assert r["banda"] == "deterioro_moderado"
     assert r["ajustes_aplicados"] == []
 
 
 def test_pesos_del_documento():
-    """35/25/10/15/15 y los internos del doc; confianza enmendada por el
-    ADR-0034 (entra sentimiento_digital 10%, cede ICC 5 y motos 5)."""
+    """35/25/10/15/15 y los internos del doc, con las enmiendas declaradas:
+    ADR-0034 en confianza (entra sentimiento_digital 10%, ceden ICC y motos) y
+    ADR-0111 en precios (entra alquiler_real 20%, ceden tarifas y alimentos
+    proporcionalmente). Los pesos NOMINALES de dimensión no se tocaron nunca."""
     pesos = {k: d["peso"] for k, d in itvc.DIMENSIONES_ITVC.items()}
     assert pesos == {"ingresos": 0.35, "precios": 0.25, "vulnerabilidad": 0.10,
                      "empleo": 0.15, "confianza": 0.15}
@@ -61,7 +72,8 @@ def test_pesos_del_documento():
     assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.65, "informalidad": 0.35}
     assert d["vulnerabilidad"]["indicadores"] == {"endeudamiento_familiar": 0.5,
                                                   "mora_familias": 0.5}
-    assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.40, "peso_tarifas": 0.60}
+    assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
+                                           "alquiler_real": 0.20}
     assert d["empleo"]["indicadores"] == {"mortalidad_pymes": 0.45, "despacho_cemento": 0.40,
                                           "pluriempleo": 0.15}
     assert d["confianza"]["indicadores"] == {"icc_utdt": 0.45, "inseguridad": 0.30,
@@ -114,9 +126,10 @@ def test_ajuste_manual_del_analista():
     r = itvc.calcular_itvc(EJEMPLO, ajustes)
     assert len(r["ajustes_aplicados"]) == 1
     assert (r["ajustes_aplicados"][0]["de"], r["ajustes_aplicados"][0]["a"]) == (60.0, 80.0)
-    # precios = 0,4×95 + 0,6×80 = 86 → ITVC = 89,57 + 0,25×12 = 92,6
-    assert r["dimensiones"]["precios"]["puntaje"] == 86.0
-    assert r["valor"] == 92.6
+    # EJEMPLO no trae alquiler_real (ADR-0111), así que precios renormaliza
+    # sobre los dos componentes del doc: 0,4375×95 + 0,5625×80 = 86,6
+    assert r["dimensiones"]["precios"]["puntaje"] == 86.6
+    assert r["valor"] == 92.7
 
 
 def test_sin_datos_devuelve_none():
