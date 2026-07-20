@@ -73,6 +73,7 @@ def run_all() -> dict:
     from collectors.snic import fetch_snic
     from collectors.salud import fetch_salud
     from collectors.trends import fetch_trends
+    from collectors.utdt_nowcast_pobreza import fetch_nowcast_pobreza
 
     logger.info("Iniciando recolección — 8 fuentes...")
 
@@ -95,6 +96,7 @@ def run_all() -> dict:
         "indec":  fetch_indec(),
         "bcra":   fetch_bcra(),
         "utdt":   fetch_icc(),
+        "pobreza": fetch_nowcast_pobreza(),
         "cafam":  fetch_cafam(),
         "ciccra": fetch_ciccra(),
         "snic":   fetch_snic(),

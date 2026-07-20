@@ -85,6 +85,9 @@ def build_vida(raw):
     icc = utdt.get("icc_utdt", {})
     _add(out, "icc_utdt", round(icc.get("valor", 0), 1),
          "índice", "UTDT — Índice de Confianza del Consumidor (CIF)", icc.get("fecha"))
+    pn = (raw.get("pobreza") or {}).get("pobreza_nowcast", {})
+    _add(out, "pobreza_nowcast", pn.get("valor"),
+         "% de personas", "UTDT — Nowcast de Pobreza (González-Rozada)", pn.get("fecha"))
     il = utdt.get("indice_lider", {})
     _add(out, "indice_lider", round(il.get("valor", 0), 1),
          "índice", "UTDT — Índice Líder (CIF)", il.get("fecha"))

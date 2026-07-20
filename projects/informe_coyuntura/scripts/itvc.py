@@ -120,7 +120,9 @@ INTERPRETACION_LEGIBLE = {
 # ADR-0034: sentimiento_digital dejó de ser contexto — la serie mensual de
 # ventana fija (2021→) permite el B100 vs 4T-2023 con cociente intra-consulta,
 # inmune a la renormalización de Trends.
-INDICADORES_CONTEXTO = []
+# ADR-0113: el nowcast de pobreza se PUBLICA pero no puntúa — sus informes
+# arrancan en 2025 y no hay base 4T-2023 con la que rebasearlo.
+INDICADORES_CONTEXTO = ["pobreza_nowcast"]
 
 
 def banda_interpretacion(itvc: float) -> str:

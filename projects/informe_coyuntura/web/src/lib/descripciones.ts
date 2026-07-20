@@ -208,6 +208,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.",
     frecuencia: "Mensual", tipo: "Variación (card) · nivel vs salarios (índice)",
   },
+  pobreza_nowcast: {
+    que: "El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del INDEC, que se publica dos veces al año: es una proyección que se actualiza todos los meses.",
+    aporta: "Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Se publica como contexto: no integra el índice.",
+    frecuencia: "Mensual (semestre móvil)", tipo: "Estimación de terceros",
+  },
   indice_lider: {
     que: "Un índice que combina señales tempranas de la economía —financieras, de expectativas y de actividad— para anticipar los cambios de rumbo antes de que aparezcan en los datos corrientes. En el ITVC puntúa por su NIVEL rebaseado a 100 = 4T-2023.",
     aporta: "Es el único componente del cinturón que mira hacia adelante: todos los demás describen lo que ya ocurrió. Un índice líder que se da vuelta anticipa el punto de giro que el resto de la dimensión va a registrar meses después.",

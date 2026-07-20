@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-20T18:14:31.609268",
+  "generated_at": "2026-07-20T18:40:32.017905",
   "period": "2026-07",
   "score_global": 3.3,
   "ponderacion": {
@@ -1861,6 +1861,18 @@
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,6/10."
         },
+        "pobreza_nowcast": {
+          "valor": 31.6,
+          "unidad": "% de personas",
+          "fuente": "UTDT — Nowcast de Pobreza (González-Rozada)",
+          "fecha_dato": "2026-06-01",
+          "desactualizado": false,
+          "en_indice": false,
+          "aporte_score": null,
+          "aporte_formula": null,
+          "aporte_nota": "Indicador de contexto — no integra el ITVC (paramétrica CIGOB jul-2026) o su componente no pudo calcularse en esta corrida.",
+          "aporte_lectura": null
+        },
         "indice_lider": {
           "valor": 124.7,
           "unidad": "índice",
@@ -1925,7 +1937,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260720_1814.json",
+      "fuente_enriquecida": "vida_cotidiana_20260720_1840.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 94.7,
