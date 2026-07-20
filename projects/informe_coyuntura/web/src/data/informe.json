@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-19T23:16:52.546440",
+  "generated_at": "2026-07-20T00:02:38.855669",
   "period": "2026-07",
   "score_global": 3.2,
   "ponderacion": {
@@ -818,8 +818,8 @@
       "score_explicacion": "ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."
     },
     "politica": {
-      "score": 3.0,
-      "estado": "estable",
+      "score": 3.1,
+      "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "votometro_ventaja_lla": {
@@ -946,24 +946,24 @@
           "aporte_input_txt": null
         },
         "veto_quorum": {
-          "valor": 0.0,
-          "fracasadas_n": 0,
-          "total_n": 5,
-          "periodo_id": "HCDN144",
+          "valor": 8.3,
+          "fracasadas_n": 1,
+          "total_n": 12,
           "unidad": "% de sesiones",
-          "fuente": "Cámara de Diputados (datos abiertos) — sesiones, período 144",
+          "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
           "fecha_dato": "2026-07-19",
           "desactualizado": false,
+          "detalle_txt": "1 de 12 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
           "en_indice": true,
           "dimension": "poder_legislativo",
-          "puntaje_itcp": 100.0,
-          "puntaje_banda": 100.0,
+          "puntaje_itcp": 82.9,
+          "puntaje_banda": 82.9,
           "peso_efectivo": 0.0375,
-          "aporte_score": 0.0,
-          "aporte_formula": "Anclas ITCP: ≤5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · >30 → 10 (puntaje interpolado entre anclas: 100.0; pesa 3,8% del ITCP)",
+          "aporte_score": 1.7,
+          "aporte_formula": "Anclas ITCP: ≤5 → 100 · 5–10 → 85 · 10–20 → 65 · 20–30 → 40 · >30 → 10 (puntaje interpolado entre anclas: 82.9; pesa 3,8% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
-          "aporte_input_txt": null
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 1,7/10.",
+          "aporte_input_txt": "1 de 12 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)"
         },
         "adhesion_reformas_provincial": {
           "valor": 66.7,
@@ -1083,14 +1083,14 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 69.5,
+        "valor": 68.9,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
             "peso": 0.25,
-            "puntaje": 41.6,
+            "puntaje": 39.1,
             "indicadores": {
               "ratio_dnu": {
                 "peso": 0.23,
@@ -1108,9 +1108,9 @@
               },
               "veto_quorum": {
                 "peso": 0.15,
-                "puntaje_banda": 100.0,
-                "puntaje_aplicado": 100.0,
-                "valor": 0.0,
+                "puntaje_banda": 82.9,
+                "puntaje_aplicado": 82.9,
+                "valor": 8.3,
                 "peso_efectivo": 0.0375
               },
               "desafios_legislativos": {
@@ -1228,57 +1228,57 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 66.9,
-          "p95": 71.8,
+          "p05": 66.3,
+          "p95": 71.2,
           "tension_rango": [
-            2.8,
-            3.3
+            2.9,
+            3.4
           ],
           "dominante": {
             "indicador": "cohesion_bloque",
-            "indice_sin": 63.5
+            "indice_sin": 62.8
           },
           "n_draws": 1000,
           "hist": [
             1,
             1,
             4,
-            3,
-            8,
-            14,
-            5,
-            19,
-            16,
-            28,
-            32,
-            29,
-            36,
-            49,
-            51,
-            51,
-            45,
-            70,
-            53,
-            50,
-            55,
-            76,
-            68,
-            42,
-            35,
-            36,
-            24,
-            27,
-            19,
-            20,
-            12,
-            6,
-            6,
-            4,
             1,
-            4
+            5,
+            13,
+            9,
+            13,
+            17,
+            23,
+            35,
+            30,
+            43,
+            42,
+            55,
+            47,
+            47,
+            61,
+            59,
+            53,
+            63,
+            67,
+            69,
+            50,
+            34,
+            38,
+            23,
+            25,
+            21,
+            18,
+            10,
+            9,
+            7,
+            3,
+            2,
+            2
           ],
-          "hist_min": 65.15,
-          "hist_max": 73.35,
+          "hist_min": 64.34,
+          "hist_max": 72.83,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {

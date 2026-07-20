@@ -598,22 +598,24 @@ def fetch_eficacia_serie() -> list:
 
 
 def fetch_veto_quorum_serie() -> list:
-    """Serie ANUAL del % de sesiones de Diputados fracasadas por período
-    legislativo (período = 144 + (año − 2026); mismo criterio que el
-    indicador). [[YYYY-01-01, %]]."""
+    """Serie MENSUAL del % de sesiones legislativas de Diputados que quedaron en
+    minoría, ventana móvil de 12 meses calendario (ADR-0091).
+
+    Antes era ANUAL —un punto por período legislativo, tres puntos en total— y
+    puntuaba una tasa cuyo denominador se reseteaba cada marzo. Ahora usa la
+    misma ventana y la misma regla que la card (`politica._veto_quorum_tasa_12m`),
+    con una sola descarga de sesiones para todos los meses.
+    [[YYYY-MM-DD, %]]."""
+    try:
+        sesiones = politica._hcdn_sesiones_legislativas()
+    except Exception as e:
+        print(f"  [WARN] veto_quorum serie: {e} -- serie omitida")
+        return []
     out = []
-    for y in range(2024, date.today().year + 1):
-        periodo = f"HCDN{144 + (y - 2026)}"
-        try:
-            recs = [r for r in politica._hcdn_paginate(politica.HCDN_SESIONES_RID, q=str(y))
-                    if str(r.get("PERIODO_ID", "")).startswith(periodo)
-                    and str(r.get("SESION_CAMARA", "")).upper() == "DIPUTADOS"]
-        except Exception as e:
-            print(f"  [WARN] veto_quorum serie {y}: {e}")
-            continue
-        if recs:
-            frac = sum(1 for r in recs if "fracasada" in str(r.get("REUNION_TIPO", "")).lower())
-            out.append([f"{y}-01-01", round(frac / len(recs) * 100.0, 1)])
+    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
+        tasa = politica._veto_quorum_tasa_12m(sesiones, fin_mes)
+        if tasa is not None:
+            out.append([fin_mes.strftime("%Y-%m-%d"), tasa[0]])
     return out
 
 
@@ -1228,7 +1230,7 @@ POLITICA_DERIVADAS = [
      "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
      politica.brecha_obra_publica_serie),
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_eficacia_serie),
-    ("veto_quorum", "% sesiones fracasadas (por período)", "Cámara de Diputados (datos abiertos)", fetch_veto_quorum_serie),
+    ("veto_quorum", "% sesiones en minoría (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_comisiones_serie),
     ("derrotas_legislativas", "derrotas del Ejecutivo en el recinto (12m móviles)",
      "InfoLeg + actas del Senado — elaboración CIGOB",

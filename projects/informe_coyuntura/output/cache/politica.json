@@ -1,16 +1,16 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-19T23:06:24.077453",
-  "score": 3.0,
+  "generated_at": "2026-07-19T23:59:34.888869",
+  "score": 3.1,
   "itcp": {
-    "valor": 69.5,
+    "valor": 68.9,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.25,
-        "puntaje": 41.6,
+        "puntaje": 39.1,
         "indicadores": {
           "ratio_dnu": {
             "peso": 0.23,
@@ -28,9 +28,9 @@
           },
           "veto_quorum": {
             "peso": 0.15,
-            "puntaje_banda": 100.0,
-            "puntaje_aplicado": 100.0,
-            "valor": 0.0,
+            "puntaje_banda": 82.9,
+            "puntaje_aplicado": 82.9,
+            "valor": 8.3,
             "peso_efectivo": 0.0375
           },
           "desafios_legislativos": {
@@ -248,18 +248,18 @@
       "peso_efectivo": 0.08
     },
     "veto_quorum": {
-      "valor": 0.0,
-      "fracasadas_n": 0,
-      "total_n": 5,
-      "periodo_id": "HCDN144",
+      "valor": 8.3,
+      "fracasadas_n": 1,
+      "total_n": 12,
       "unidad": "% de sesiones",
-      "fuente": "Cámara de Diputados (datos abiertos) — sesiones, período 144",
+      "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
       "fecha_dato": "2026-07-19",
       "desactualizado": false,
+      "detalle_txt": "1 de 12 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 100.0,
-      "puntaje_banda": 100.0,
+      "puntaje_itcp": 82.9,
+      "puntaje_banda": 82.9,
       "peso_efectivo": 0.0375
     },
     "comisiones_caidas": {

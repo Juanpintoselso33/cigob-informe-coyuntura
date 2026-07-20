@@ -1314,16 +1314,17 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: API pública del portal, filtrando las sesiones de Diputados del período legislativo en curso.",
     },
     transformaciones: [
-      "Cuenta las sesiones del período legislativo en curso y cuántas figuran como fracasadas.",
-      "El indicador es sesiones fracasadas sobre sesiones convocadas.",
+      "Una sesión cuenta como caída cuando el registro oficial la clasifica «en minoría»: fue convocada, esperó —unas dos horas en promedio— y nunca llegó a constituirse, por lo que no recibió número de sesión. Las que sí se constituyen duran alrededor de doce horas y llevan número.",
+      "El denominador son las sesiones convocadas para tratar temas: las especiales, sus continuaciones y las que quedaron en minoría. Quedan afuera las informativas, la sesión preparatoria y la presentación del presupuesto, instancias donde el oficialismo no necesita reunir quórum para avanzar su agenda.",
+      "Se calcula sobre los últimos doce meses calendario, no por período legislativo. El período reiniciaba el conteo cada marzo, de modo que durante buena parte del año el indicador se apoyaba en dos o tres sesiones.",
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 15% junto al ratio DNU, la eficacia legislativa, las derrotas legislativas y el bloqueo sostenido.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 15% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y el bloqueo sostenido.",
     ],
     limitaciones: [
-      "Las sesiones desactivadas antes de la apertura formal no aparecen en el registro oficial: el indicador subestima el bloqueo.",
-      "Muestra chica: con pocas sesiones en el período, cada una mueve decenas de puntos porcentuales.",
+      "Las sesiones desactivadas antes de la convocatoria formal no aparecen en el registro oficial: el indicador subestima el bloqueo.",
+      "El denominador sigue siendo modesto —entre doce y dieciséis sesiones en la ventana—, así que cada sesión caída mueve varios puntos porcentuales. Es una mejora sobre el conteo por período legislativo, que llegó a apoyarse en cinco sesiones, pero conviene leer el indicador por su tendencia y no por su valor exacto de un mes.",
       "No distingue el quórum frustrado por la oposición de la inasistencia propia — decisión metodológica declarada.",
     ],
     faltantes: "Si la consulta falla, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y los pesos de su dimensión se renormalizan entre los presentes.",
@@ -1332,6 +1333,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del bloqueo parlamentario." },
       { fecha: "2026-06-30", cambio: "Serie por período legislativo desde 2024." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
+      { fecha: "2026-07-20", cambio: "Corrección de fondo del criterio de conteo, a partir de una revisión de los registros crudos del dataset oficial. La versión anterior identificaba las sesiones caídas buscando la palabra «fracasada» en el tipo de reunión, lo que dejaba fuera las once sesiones clasificadas «en minoría» —que son el fracaso de quórum propiamente dicho— y en cambio contaba dos sesiones informativas del artículo 71 de la Constitución que no se realizaron, un fenómeno distinto. La ventana pasó además de período legislativo a doce meses móviles, y la serie de anual a mensual." },
     ],
   },
 

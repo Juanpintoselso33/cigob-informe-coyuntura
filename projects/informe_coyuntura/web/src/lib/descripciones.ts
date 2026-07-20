@@ -160,9 +160,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (90d)", tipo: "Nivel (%)",
   },
   veto_quorum: {
-    que: "Qué porcentaje de las sesiones de Diputados se cae por falta de quórum.",
-    aporta: "Señala la capacidad de la oposición de bloquear o forzar la agenda parlamentaria.",
-    frecuencia: "Continua", tipo: "Nivel (%)",
+    que: "Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda en minoría, es decir, no reúne el quórum necesario para sesionar. Se miden los últimos doce meses.",
+    aporta: "El quórum es el primer filtro de cualquier agenda legislativa: sin él no se debate ni se vota nada. Una tasa alta indica que el oficialismo no logra reunir a la cámara, sea porque la oposición se ausenta deliberadamente o porque sus propios aliados no acompañan.",
+    frecuencia: "Mensual (12m)", tipo: "Nivel (%)",
   },
   comisiones_caidas: {
     que: "Qué porcentaje de los proyectos con dictamen de comisión nunca llega al recinto.",

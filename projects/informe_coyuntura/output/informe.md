@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-19 23:16:52"
+generado: "2026-07-20 00:02:38"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -39,7 +39,7 @@ schema_version: "1.2.0"
 | base_monetaria | 3.37 | % mensual nominal | 2026-07-15 | fresco |
 | tc_mayorista | 1.36 | % mensual | 2026-07-17 | fresco |
 
-### 🟢 Politica — score 3.0/10 (estable)
+### 🟡 Politica — score 3.1/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -51,7 +51,7 @@ schema_version: "1.2.0"
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | fresco |
 | iaf_transferencias | 0.8 | % interanual real | 2026-07-19 | fresco |
 | eficacia_legislativa | 13.3 | % de proyectos | 2026-07-19 | fresco |
-| veto_quorum | 0.0 | % de sesiones | 2026-07-19 | fresco |
+| veto_quorum | 8.3 | % de sesiones | 2026-07-19 | fresco |
 | comisiones_caidas | 97.0 | % de proyectos | 2026-07-19 | fresco |
 | adhesion_reformas_provincial | 66.7 | % de jurisdicciones (sobre 24) adheridas al RIGI | 2026-07-19 | fresco |
 | derrotas_legislativas | 8 | Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados) | 2026-07-19 | fresco |
@@ -105,4 +105,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-19 23:16:52 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-20 00:02:38 — schema 1.2.0*

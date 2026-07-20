@@ -256,7 +256,7 @@ export const LABELS: Record<string, string> = {
   eficacia_legislativa: "Eficacia parlamentaria", cohesion_bloque: "Cohesión del bloque LLA (bicameral)",
   cohesion_bloque_senado: "Cohesión del bloque LLA (Senado, fusionado)",
   rotacion_gabinete: "Rotación del gabinete",
-  gobernadores_alineamiento: "Alineamiento de gobernadores (retirado)", veto_quorum: "Sesiones caídas por quórum",
+  gobernadores_alineamiento: "Alineamiento de gobernadores (retirado)", veto_quorum: "Sesiones caídas por falta de quórum",
   alineamiento_senadores_prov: "Alineamiento de senadores por provincia",
   adhesion_reformas_provincial: "Adhesión provincial al RIGI",
   comisiones_caidas: "Comisiones sin sanción",

@@ -1093,6 +1093,69 @@ def fetch_eficacia_legislativa() -> dict | None:
 
 # ── HCDN CKAN — veto por quórum ──────────────────────────────────────────────
 
+# ── Sesiones de Diputados: qué cuenta como fracaso de quórum (ADR-0091) ──────
+# Auditoría de los registros crudos del dataset de sesiones HCDN, 2026-07-19.
+# El campo REUNION_TIPO tiene estos valores (Diputados, 2024-2026):
+#
+#   Especial                                    29   SESION_NO asignado  ·  11,8 h medianas
+#   Minoría                                     11   SESION_NO = 0 en 11/11  ·  2,0 h
+#   Informativa                                  4   SESION_NO asignado  ·   7,0 h
+#   Informativa Art. 71 CN - Citada - Fracasada  2   SESION_NO = 0  ·  0,0 h
+#   Preparatoria / Presupuesto / Homenaje        4
+#
+# "Minoría" es el fracaso de quórum: la sesión se convocó, esperó unas dos horas,
+# nunca se constituyó y no recibió número de sesión. La versión anterior de este
+# indicador buscaba la subcadena "fracasada", con lo cual (a) omitía las once
+# sesiones caídas y (b) contaba como fracaso las dos informativas del art. 71 CN
+# que no se realizaron — que duran 0,0 h y son otro fenómeno: el jefe de
+# Gabinete que no concurre, no el quórum que no se junta.
+#
+# El denominador son las sesiones convocadas para tratar temas: especiales
+# (incluidas continuación y homenaje) más las que quedaron en minoría. Quedan
+# afuera las informativas, la preparatoria y la presentación de presupuesto, que
+# no son instancias donde el oficialismo necesite juntar quórum para avanzar.
+
+def _hcdn_sesiones_legislativas() -> list[tuple[str, bool]]:
+    """[(YYYY-MM-DD, fracaso_de_quorum)] de Diputados, ascendente."""
+    out = []
+    for anio in range(2023, date.today().year + 1):
+        for r in _hcdn_paginate(HCDN_SESIONES_RID, q=str(anio)):
+            if str(r.get("SESION_CAMARA", "")).upper() != "DIPUTADOS":
+                continue
+            inicio = str(r.get("REUNION_INICIO") or "")[:10]
+            if not inicio.startswith(str(anio)):
+                continue
+            # El dataset llega con mojibake ("MinorÃ­a"): se compara sobre el
+            # prefijo sin tildes, que sobrevive a la codificación rota.
+            tipo = str(r.get("REUNION_TIPO", "")).lower()
+            es_minoria = tipo.startswith("minor")
+            if tipo.startswith("especial") or es_minoria:
+                out.append((inicio, es_minoria))
+    return sorted(set(out))
+
+
+def _veto_quorum_tasa_12m(sesiones: list, referencia: date):
+    """(pct, total, fracasadas) en los 12 meses calendario que terminan en el
+    mes de `referencia`. None si no hubo sesiones en la ventana — sin
+    denominador no hay tasa y el motor renormaliza, igual que bloqueo_sostenido.
+
+    La ventana móvil reemplaza al período legislativo (ADR-0091): con el
+    período, el denominador arrancaba en cero cada marzo y el indicador
+    publicaba puntaje máximo sobre dos o tres sesiones. Con 0 de 5 —el estado
+    del 19-jul-2026— la tasa real de fracaso podía llegar al 60% con 95% de
+    confianza, que puntúa 10; se estaba publicando 100."""
+    meses = referencia.year * 12 + (referencia.month - 1)
+    desde = meses - 11
+    ym_desde = f"{desde // 12}-{desde % 12 + 1:02d}"
+    ym_hasta = f"{referencia.year}-{referencia.month:02d}"
+    en_ventana = [f for d, f in sesiones if ym_desde <= d[:7] <= ym_hasta]
+    if not en_ventana:
+        return None
+    total = len(en_ventana)
+    fracasadas = sum(1 for f in en_ventana if f)
+    return round(fracasadas / total * 100.0, 1), total, fracasadas
+
+
 def fetch_veto_quorum() -> dict | None:
     """
     % sesiones plenarias (Diputados) frustradas por falta de quórum en el período corriente.
@@ -1107,35 +1170,21 @@ def fetch_veto_quorum() -> dict | None:
     Score: 0%→0, 15%→5, 30%+→10  (formula: valor / 3)
     """
     try:
-        periodo_num    = 144 + (date.today().year - 2026)
-        periodo_prefix = f"HCDN{periodo_num}"
-
-        # CKAN q= doesn't substring-match tokens like "HCDN144R02" → fetch by year, filter Python-side
-        year = date.today().year
-        raw_year = _hcdn_paginate(HCDN_SESIONES_RID, q=str(year))
-        periodo_recs = [
-            r for r in raw_year
-            if str(r.get("PERIODO_ID", "")).startswith(periodo_prefix)
-            and str(r.get("SESION_CAMARA", "")).upper() == "DIPUTADOS"
-        ]
-
-        fracasadas_n = sum(
-            1 for r in periodo_recs
-            if "fracasada" in str(r.get("REUNION_TIPO", "")).lower()
-        )
-        total_n = len(periodo_recs)
-
-        pct = round(fracasadas_n / total_n * 100.0, 1) if total_n > 0 else 0.0
-
+        sesiones = _hcdn_sesiones_legislativas()
+        tasa = _veto_quorum_tasa_12m(sesiones, date.today())
+        if tasa is None:
+            raise ValueError("sin sesiones legislativas en la ventana de 12 meses")
+        pct, total_n, fracasadas_n = tasa
         return {
             "valor":        pct,
             "fracasadas_n": fracasadas_n,
             "total_n":      total_n,
-            "periodo_id":   periodo_prefix,
             "unidad":       "% de sesiones",
-            "fuente":       f"Cámara de Diputados (datos abiertos) — sesiones, período {periodo_num}",
+            "fuente":       "Cámara de Diputados (datos abiertos) — sesiones",
             "fecha_dato":   str(date.today()),
             "desactualizado": False,
+            "detalle_txt": (f"{fracasadas_n} de {total_n} sesiones legislativas convocadas en los "
+                            f"últimos 12 meses quedaron en minoría (no reunieron quórum)"),
         }
 
     except Exception as e:

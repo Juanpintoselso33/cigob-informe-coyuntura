@@ -210,8 +210,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Conteos del buscador oficial de InfoLeg sobre una ventana móvil de 365 días (no el año calendario). Más de 1 = el Ejecutivo dicta más decretos de necesidad y urgencia que leyes logra sancionar el Congreso.",
   },
   veto_quorum: {
-    latex: String.raw`\frac{\text{sesiones fracasadas}}{\text{sesiones convocadas}}\times 100`,
-    leyenda: "Sesiones plenarias de Diputados del período legislativo en curso (datos abiertos HCDN). Una sesión cuenta como fracasada cuando no reúne quórum para abrir el debate.",
+    latex: String.raw`\frac{\text{sesiones en minor\'ia}_{\text{12 m}}}{\text{sesiones convocadas}_{\text{12 m}}}\times 100`,
+    leyenda: "Sesiones plenarias de Diputados de los últimos doce meses (datos abiertos HCDN). Una sesión cuenta como caída cuando el registro oficial la clasifica «en minoría»: fue convocada, esperó y nunca llegó a constituirse, de modo que no recibió número de sesión. El denominador son las sesiones convocadas para tratar temas —las especiales y las que quedaron en minoría—; quedan afuera las informativas, la preparatoria y la presentación del presupuesto, donde el oficialismo no necesita juntar quórum para avanzar su agenda.",
   },
   comisiones_caidas: {
     latex: String.raw`\frac{\text{proyectos con dictamen sin sanci\'on}_{\text{12 m}}}{\text{proyectos con dictamen}_{\text{12 m}}}\times 100`,
