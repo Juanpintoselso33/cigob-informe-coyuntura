@@ -206,8 +206,21 @@ Entra el **IPI manufacturero** con 35% de la dimensión (EMAE 65%), variación
 i.a. suavizada a 3 meses. Bonus no buscado: el IPI publica **un mes antes** que
 el EMAE, así que además baja el rezago que la auditoría marcaba. Las dos señales
 hoy divergen (EMAE +1,64% contra IPI −1,07%), que es exactamente el argumento de
-la auditoría. Descartados con evidencia: demanda eléctrica (series muertas en
-2015-2016) y patentamientos comerciales (el caché tiene **un** mes).
+la auditoría. Descartados: patentamientos comerciales (el caché tiene **un**
+mes) y demanda eléctrica.
+
+> **Corrección (18-jul-2026).** El descarte de la demanda eléctrica se apoyaba
+> en una afirmación **falsa** —"las series mueren en 2015-2016"—. Existe, es
+> mensual y llega a may-2026, con **305 puntos desde 2001**, publicada por la
+> **Secretaría de Energía y no por el INDEC**: habría atendido el riesgo de
+> organismo único que el propio ADR-0079 declara como limitación. Se mantiene
+> fuera del índice, pero por otra razón, ahora medida: salta **11,2 pp** de un
+> mes al siguiente por efecto del **clima**, un confundidor que el suavizado no
+> separa. Queda como candidata abierta, no como callejón sin salida.
+>
+> El error de método —declarar "no hay fuente" tras una búsqueda con términos
+> malos— se repitió **tres veces** en esta jornada (cuenta corriente, demanda
+> eléctrica y, antes, el mismo reflejo que el usuario ya había corregido).
 
 Costo declarado: la correlación externa con el riesgo país baja de −0,775 a
 −0,764. Es lo esperable al sumar una señal sectorial que el mercado no pricea

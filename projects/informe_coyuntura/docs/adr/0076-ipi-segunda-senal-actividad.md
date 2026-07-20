@@ -20,9 +20,43 @@ hubiera un segundo indicador que la resolviera.
 
 ### Candidatos descartados
 
-- **Demanda de energía eléctrica (CAMMESA)**: sería la señal de más alta
-  frecuencia posible, pero las series de energía disponibles en la API pública
-  **terminan en 2015-2016**. Sin fuente automatizable.
+- **Demanda de energía eléctrica**: descartada en la versión original de este
+  ADR con la afirmación de que "las series de energía disponibles en la API
+  pública terminan en 2015-2016. Sin fuente automatizable".
+
+  > **ESA AFIRMACIÓN ERA FALSA** (corregido 2026-07-18). La serie existe, es
+  > mensual y está vigente: `367.3_DEMANDA_TOTAL__13`, dataset "Demanda de
+  > electricidad", **305 puntos desde ene-2001 hasta may-2026**. La búsqueda
+  > original usó términos que no la devolvían; se dio el punto por cerrado sin
+  > insistir.
+  >
+  > La corrección importa doblemente porque el indicador tenía dos ventajas que
+  > el ADR nunca llegó a sopesar: lo publica la **Secretaría de Energía, no el
+  > INDEC** —así que habría atendido el riesgo de organismo único que este mismo
+  > ADR declara como limitación— y tiene **veinticinco años de historia**, contra
+  > los treinta meses de casi todo lo demás del índice.
+
+  **Se mantiene fuera del índice, pero por una razón distinta y medida.** Sobre
+  los meses comunes:
+
+  | | |
+  |---|---|
+  | correlación con el EMAE | +0,441 (n=60) |
+  | correlación con el IPI | **+0,020** (n=30) |
+  | salto mediano de un mes al siguiente | **11,2 pp** |
+
+  El salto mensual de 11,2 pp es **casi el doble del ruido del IPI crudo** (6,2)
+  que motivó suavizarlo, y su causa no se arregla promediando: la demanda
+  eléctrica la mueve el **clima**. Una ola de calor sube el consumo residencial
+  sin que la actividad económica cambie, y un promedio móvil suaviza la serie
+  pero no separa el componente térmico del económico. Usarla exigiría
+  desestacionalizar por temperatura, que es trabajo real y no un ajuste de
+  ventana.
+
+  La correlación de +0,02 con el IPI dice que **mide algo genuinamente distinto**,
+  que es a la vez su mayor atractivo como diversificador y la señal de que no es
+  intercambiable con lo que ya hay. **Queda como candidata abierta y evaluada**,
+  no como callejón sin salida.
 - **Patentamientos comerciales**: ya se acumulan en el proyecto como insumo del
   IAI, pero el caché tiene **un solo mes** (may-2026). Sin historia, no puede
   puntuar ni reconstruirse hacia atrás. Vuelve a ser candidato cuando el cron
@@ -144,3 +178,7 @@ reparto original.
   modo que un cambio de metodología del organismo los movería juntos. Lo que sí
   reduce es el riesgo **operativo**: si falta o se revisa una serie, la
   dimensión conserva lectura.
+  Conviene registrar que **existía una alternativa no-INDEC y no se la evaluó**
+  por un descarte mal fundado: la demanda eléctrica (ver arriba). Que su
+  descarte hoy tenga otro fundamento no borra que la decisión original se tomó
+  sin haberla considerado de verdad.
