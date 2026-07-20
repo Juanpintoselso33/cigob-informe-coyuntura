@@ -84,6 +84,19 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0069](0069-bloqueo-sostenido-indicador.md) | `bloqueo_sostenido` (ITCP, nuevo): % de normas desafiadas en el recinto (insistencias de veto votadas + decretos bajo la 26.122) que siguen en pie, 12m — la cara ganada del pulso que derrotas_legislativas no acredita (los vetos sostenidos de sep/oct-2024 y el DNU 70 vivo no puntuaban en ningún lado). Detección automática en actas de ambas cámaras (clasificador incremental con watermark en Diputados; ambiguos a cola de pendientes, nunca se adivina); anclas 90/75/50/25 con referencia externa (ninguna insistencia exitosa 2003-2025); poder_legislativo 20/25/15/20/20. Validación ITCP↔EPU −0,448→≈−0,60 junto con 0070 | Aceptado |
 | [0070](0070-eficacia-mascara-era-validacion.md) | `eficacia_legislativa` en la RECONSTRUCCIÓN de validación: se enmascara hasta nov-2025 — con cohorte madura 12-24m, todo 2024/H1-2025 mide la cartera de la gestión ANTERIOR muriendo (74→26 de puntaje reconstruido en 2024 era artefacto de transición, no capital de este gobierno); la cohorte recién es 100% de la era desde dic-2025. Criterio a priori (misma doctrina que la exclusión de dic-2023), la card no se toca. El r≈0 de 2024 vs EPU restante es divergencia real de constructos (EPU sin varianza ese año) — documentado para no re-diagnosticarlo | Aceptado |
 
+> **El índice de arriba está incompleto.** Cubre hasta 0070; los ADRs 0071 a
+> 0102 existen como archivo en este directorio pero nunca se agregaron a esta
+> tabla. Son en su mayoría las respuestas a las cuatro auditorías de julio de
+> 2026 (macro, política y las dos de gestión). Backfillearlos es trabajo
+> pendiente; mientras tanto, `ls docs/adr/` es la lista completa y confiable.
+
+| ADR | Decisión | Estado |
+|---|---|---|
+| [0103](0103-procedencia-de-las-anclas.md) | Cada ancla de los cuatro índices declara de dónde sale (`externa` · `documento` · `conceptual` · `historia_larga` · `convencion` · `sin_declarar`) y el sistema publica qué fracción del peso de cada índice descansa en anclas circulares: ITCM 83%, ITCP 61%, ITCG 51%. Respuesta al punto 3.2 de la auditoría de gestión; no corrige el sesgo, lo vuelve contable | Aceptado |
+| [0104](0104-el-out-of-sample-no-resuelve-la-circularidad.md) | Resultado NEGATIVO: aplicar las bandas de hoy a los años previos a dic-2023 no valida la circularidad — sólo 6 de 42 indicadores tienen ventana previa, y una banda circular y un cambio de régimen real producen la misma firma (la primera versión marcó `ipc_total`, `litigiosidad_laboral` y `emae_ia`, y las tres estaban bien). El script queda sin veredictos, publicando el rango crudo de cada ventana | Aceptado (negativo) |
+| [0105](0105-regla-de-anclas-nuevas.md) | Regla para anclas nuevas: orden de preferencia (externa · valor con significado propio · historia previa a dic-2023 · convención) con la búsqueda documentada aunque falle, más un TRINQUETE — `TECHOS` congela la fracción circular de cada índice y la suite falla si sube | Aceptado |
+| [0106](0106-linea-de-base-diciembre-2023.md) | El ITCM publica su punto de partida: dic-2023 = 26,3 contra 62,1 de hoy (+35,8), con la cobertura del mes de base (83%) declarada en el texto público y piso del 60% para publicar. Último punto de prioridad alta de las cuatro auditorías de julio. Sólo ITCM: en el ITCG seis de catorce componentes valen 0,0 en esa fecha por construcción y el ITCP no llega a dic-2023 | Aceptado |
+
 ## Contexto general
 
 Todas estas decisiones corresponden al **rediseño del cinturón macro (ITCM)** de

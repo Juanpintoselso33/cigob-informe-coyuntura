@@ -1971,5 +1971,15 @@
       "r": 0.467,
       "n": 97
     }
+  },
+  "linea_base_itcm": {
+    "periodo": "2023-12",
+    "valor": 26.3,
+    "cobertura": 0.826,
+    "sin_dato": [
+      "iai",
+      "icip",
+      "reservas_bcra"
+    ]
   }
 }

@@ -848,6 +848,37 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   opacity: 0.85;
 }
 
+/* ── Card de punto de partida (ADR-0106) ──────────────────────────────── */
+/* Hereda .cg-rez entera —marco, hero y tipografía— y sólo agrega el par de
+   valores base/hoy, con el mismo separador punteado que las otras dos cards
+   de robustez para que las tres se lean como una familia. */
+.cg-lb-par {
+  list-style: none;
+  margin: 0 0 1.6rem;
+  padding: 0;
+}
+.cg-lb-par li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+}
+.cg-lb-par li + li { border-top: 1px dashed var(--bd); }
+/* mismas reglas que .cg-rez-ind, sin opacidad propia: la etiqueta de la fila
+   toma el color de acento igual que en la card de rezago */
+.cg-lb-ym { font-size: 14px; line-height: 1.45; }
+.cg-lb-val {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+/* el valor de hoy es el que el lector compara contra la base: mismo tamaño,
+   más presencia, sin convertirlo en un segundo número gigante que compita
+   con el hero de la brecha */
+.cg-lb-val--hoy { opacity: 1; color: var(--cg-acento, currentColor); }
+
 @media (max-width: 30rem) {
   .cg-rez-leyenda { gap: 0.35rem 0.9rem; font-size: 0.79rem; }
 }

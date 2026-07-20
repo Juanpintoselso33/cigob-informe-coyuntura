@@ -842,6 +842,67 @@ def _redundancia(bloque, clave_val: str):
     }
 
 
+COBERTURA_MINIMA_BASE = 0.6
+
+
+def _linea_base(bloque):
+    """Anexa al ITCM su punto de partida y la distancia recorrida (ADR-0106).
+
+    La auditoría de macro observó que el índice puntúa el estado actual contra
+    anclas fijas: diciembre de 2023 y hoy se evalúan con la misma tabla. Eso es
+    correcto para medir tensión vigente, pero el objetivo declarado incluye
+    avanzar respecto de lo recibido en la transición, y esa mitad quedaba sin
+    responder. La propia auditoría marcó que no hace falta tocar el índice —es
+    un cambio de presentación— y esto es exactamente eso: el mismo número, con
+    su referencia al lado.
+
+    El valor de base viene de la reconstrucción que ya valida el índice contra
+    el riesgo país, no de un cálculo nuevo, así que no pueden divergir.
+
+    No se publica si la cobertura del mes de base no alcanza el piso: el
+    traspaso es el mes peor cubierto de toda la serie —varias series arrancan
+    con el mandato— y una base calculada sobre media docena de componentes
+    daría una distancia recorrida que parece medida y no lo está.
+    """
+    base = (_cargar_validacion().get("linea_base_itcm") or {})
+    valor_base = base.get("valor")
+    cobertura = base.get("cobertura") or 0
+    actual = bloque.get("valor")
+    if valor_base is None or actual is None:
+        return
+    if cobertura < COBERTURA_MINIMA_BASE:
+        return
+
+    brecha = actual - valor_base
+    coma = lambda x: str(x).replace(".", ",")
+    mes_base = "diciembre de 2023"
+    signo = "arriba del" if brecha >= 0 else "abajo del"
+
+    bloque["linea_base"] = {
+        "periodo": base.get("periodo"),
+        "valor": valor_base,
+        "brecha": round(brecha, 1),
+        "cobertura": cobertura,
+        # Se emiten las CLAVES: las etiquetas legibles viven en el front.
+        "sin_dato": base.get("sin_dato") or [],
+        "titulo": "¿Cuánto se avanzó desde el punto de partida?",
+        "sub": ("El índice mide la situación de cada mes contra una tabla fija, de modo "
+                "que un mes del traspaso y uno de hoy se evalúan con la misma vara. Eso "
+                "responde qué tan tensa está la macroeconomía hoy, pero no cuánto se "
+                "movió desde lo que se recibió. Reconstruido con el mismo método, el "
+                "índice del mes del traspaso funciona como referencia permanente."),
+        "conclusion": (
+            f"En {mes_base} el índice marcaba {coma(round(valor_base, 1))}. Hoy marca "
+            f"{coma(round(actual, 1))}: {coma(abs(round(brecha, 1)))} puntos {signo} "
+            f"punto de partida. "
+            + (f"La base se calcula sobre el {cobertura:.0%} del peso del índice —el resto "
+               f"de los componentes todavía no tenía serie en esa fecha—, de modo que es "
+               f"una referencia de orden de magnitud y no una medición exacta."
+               if cobertura < 0.95 else
+               "La base cubre la totalidad del peso del índice.")),
+    }
+
+
 def _rezago(bloque, rezago_meses: dict, pulso: float, estructural: float):
     """Anexa a un bloque de índice el perfil temporal de sus componentes
     (ADR-0092, prioridad 5 de la auditoría de jul-2026).
@@ -1408,6 +1469,7 @@ def aplicar_scoring(informe, series):
             if c.get("itcm"):
                 _validacion_itcm(c["itcm"])
                 _redundancia_itcm(c["itcm"])
+                _linea_base(c["itcm"])
                 _vintages(c, "itcm")
             continue
         if ckey == "gestion":

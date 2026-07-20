@@ -216,6 +216,49 @@ def _valores_itcm_por_mes() -> dict:
     }
 
 
+LINEA_BASE_YM = "2023-12"
+
+
+def linea_base_itcm(serie_itcm: dict) -> dict | None:
+    """El ITCM del mes del traspaso, con su cobertura declarada (ADR-0106).
+
+    La auditoría de macro observó que el índice puntúa el estado actual contra
+    anclas fijas, de modo que "un mes de diciembre de 2023 y un mes de hoy se
+    evalúan con la misma tabla" — correcto para medir tensión vigente, pero deja
+    sin responder la mitad de la pregunta declarada, que incluye avanzar
+    respecto de lo recibido en la transición.
+
+    El valor sale de la MISMA reconstrucción que ya se usa para validar el
+    índice contra el riesgo país, así que la línea de base y la serie publicada
+    no pueden divergir: son el mismo cálculo.
+
+    La cobertura se emite porque el mes del traspaso es justamente el que peor
+    cubierto está —varias series arrancan con el mandato— y publicar el número
+    sin decir sobre qué porción del índice se calculó lo haría parecer más firme
+    de lo que es.
+    """
+    valores = _valores_itcm_por_mes().get(LINEA_BASE_YM) or {}
+    total = con_dato = 0.0
+    sin_dato = []
+    for dim in itcm.DIMENSIONES_ITCM.values():
+        for ind, peso_ind in dim["indicadores"].items():
+            peso = dim["peso"] * peso_ind
+            total += peso
+            if valores.get(ind) is None:
+                sin_dato.append(ind)
+            else:
+                con_dato += peso
+    valor = serie_itcm.get(LINEA_BASE_YM)
+    if valor is None or not total:
+        return None
+    return {
+        "periodo": LINEA_BASE_YM,
+        "valor": valor,
+        "cobertura": round(con_dato / total, 3),
+        "sin_dato": sorted(sin_dato),
+    }
+
+
 def construir_serie_itcm() -> dict:
     """Serie mensual del ITCM reconstruida desde las series de componentes
     (mismo motor, puntaje interpolado, sin overrides del analista): todos los
@@ -794,6 +837,13 @@ def main():
     print(f"\nserie ITCM reconstruida: {len(serie_itcm)} meses "
           f"({min(serie_itcm)} → {max(serie_itcm)}) · último: {serie_itcm[max(serie_itcm)]}")
     resultados["serie_itcm"] = serie_itcm
+    base = linea_base_itcm(serie_itcm)
+    if base:
+        resultados["linea_base_itcm"] = base
+        print(f"línea de base {base['periodo']}: ITCM = {base['valor']} "
+              f"(cobertura {base['cobertura']:.0%}"
+              + (f", sin dato: {', '.join(base['sin_dato'])}" if base["sin_dato"] else "")
+              + ")")
     try:
         riesgo = fetch_riesgo_pais_mensual()
         resultados["riesgo_pais_mensual"] = riesgo

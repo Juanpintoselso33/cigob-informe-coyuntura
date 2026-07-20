@@ -128,6 +128,9 @@ const cruzRaw = indice ? ((informe as any).validacion_cruzada ?? null) : null;
 // externa) sino cuánta información distinta aporta cada componente.
 const red = indice?.data.redundancia ?? null;
 const rez = indice?.data.rezago ?? null;
+// Punto de partida: el índice del mes del traspaso, reconstruido con el mismo
+// método, para leer la distancia recorrida y no sólo el nivel de hoy.
+const lb = indice?.data.linea_base ?? null;
 const fam = indice?.data.familias ?? null;
 const vin = indice?.data.vintages ?? null;
 const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice!.sigla)
@@ -554,6 +557,34 @@ const robChartData = rob?.hist && indice ? {
                 </Fragment>
               )}
               <p class="cg-h2-sub">{rez.conclusion}</p>
+            </div>
+          </Fragment>
+        )}
+        {lb && (
+          <Fragment>
+            <div class="cg-section-head cg-val-head">
+              <p class="cg-eyebrow">Punto de partida</p>
+              <h2 class="cg-h2">{lb.titulo}</h2>
+              <p class="cg-h2-sub">{lb.sub}</p>
+            </div>
+            <div class={`cg-rob cg-rob--${meta.slug} cg-rez cg-lb`}>
+              <div class="cg-rez-hero">
+                <span class="cg-rez-num">{lb.brecha >= 0 ? "+" : "−"}{coma(Math.abs(lb.brecha))}</span>
+                <span class="cg-rez-unidad">puntos</span>
+                <span class="cg-rez-lbl">de distancia entre el índice de hoy<br/>y el del mes del traspaso</span>
+              </div>
+              <p class="cg-rez-titulo">El índice en los dos extremos</p>
+              <ul class="cg-lb-par">
+                <li>
+                  <span class="cg-lb-ym">Diciembre 2023</span>
+                  <span class="cg-lb-val">{coma(lb.valor)}</span>
+                </li>
+                <li>
+                  <span class="cg-lb-ym">Hoy</span>
+                  <span class="cg-lb-val cg-lb-val--hoy">{coma(Math.round((indice!.data.valor as number) * 10) / 10)}</span>
+                </li>
+              </ul>
+              <p class="cg-h2-sub">{lb.conclusion}</p>
             </div>
           </Fragment>
         )}

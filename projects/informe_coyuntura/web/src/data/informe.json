@@ -814,6 +814,20 @@
           "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 14 componentes que tienen serie histórica, 91 pares en total, y se mide cuánto se mueven juntos.",
           "conclusion": "La correlación media entre pares es 0,5: ni componentes independientes ni una sola señal repetida. Un 25% de los pares se mueve muy junto (por encima de 0,7) y un 26% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,182 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 23 pares que superan el umbral en niveles, 19 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
+        "linea_base": {
+          "periodo": "2023-12",
+          "valor": 26.3,
+          "brecha": 35.8,
+          "cobertura": 0.826,
+          "sin_dato": [
+            "iai",
+            "icip",
+            "reservas_bcra"
+          ],
+          "titulo": "¿Cuánto se avanzó desde el punto de partida?",
+          "sub": "El índice mide la situación de cada mes contra una tabla fija, de modo que un mes del traspaso y uno de hoy se evalúan con la misma vara. Eso responde qué tan tensa está la macroeconomía hoy, pero no cuánto se movió desde lo que se recibió. Reconstruido con el mismo método, el índice del mes del traspaso funciona como referencia permanente.",
+          "conclusion": "En diciembre de 2023 el índice marcaba 26,3. Hoy marca 62,1: 35,8 puntos arriba del punto de partida. La base se calcula sobre el 83% del peso del índice —el resto de los componentes todavía no tenía serie en esa fecha—, de modo que es una referencia de orden de magnitud y no una medición exacta."
+        },
         "vintages": {
           "dias_promedio": 64,
           "meses_promedio": 2.1,
