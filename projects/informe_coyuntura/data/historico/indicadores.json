@@ -25,6 +25,9 @@
   "bloqueo_sostenido": {
     "2026-07": 20.0
   },
+  "brecha_obra_publica": {
+    "2026-07": 0.2
+  },
   "brecha_salario_cbt": {
     "2026-06": 3.79,
     "2026-07": 3.81

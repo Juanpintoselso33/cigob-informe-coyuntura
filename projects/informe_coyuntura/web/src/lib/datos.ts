@@ -249,6 +249,7 @@ export const LABELS: Record<string, string> = {
   tc_mayorista: "Tipo de cambio mayorista",
   // politica
   votometro_ventaja_lla: "Ventaja LLA−PJ (Votómetro)", ratio_dnu: "Ratio DNU / leyes",
+  brecha_obra_publica: "Brecha de expectativas: obra pública vs. privada",
   conflictividad_nacional: "Conflictividad social (país)",
   movilizacion_cepa: "Tensión social (CEPA, interno)", iaf_transferencias: "Armonía federal (transferencias)",
   eficacia_legislativa: "Eficacia parlamentaria", cohesion_bloque: "Cohesión del bloque LLA (bicameral)",
@@ -322,6 +323,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   prestamos_privados: "% m/m", base_monetaria: "% m/m", tc_mayorista: "% m/m",
   // politica
   votometro_ventaja_lla: "pp", ratio_dnu: "ratio", movilizacion_cepa: "índice",
+  brecha_obra_publica: "pp",
   conflictividad_nacional: "% vs 2023",
   iaf_transferencias: "% real", eficacia_legislativa: "%", cohesion_bloque: "%",
   cohesion_bloque_senado: "%", rotacion_gabinete: "salidas 12m",
@@ -370,6 +372,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   prestamos_privados: "% mensual", base_monetaria: "% mensual", tc_mayorista: "% mensual",
   // politica
   votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",
+  brecha_obra_publica: "Puntos porcentuales de brecha",
   movilizacion_cepa: "Índice (0–100)",
   conflictividad_nacional: "% de variación vs 2023 (eventos de protesta y disturbios en el país, acum. 12 meses)",
   iaf_transferencias: "% interanual real",

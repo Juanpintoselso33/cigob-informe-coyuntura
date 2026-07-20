@@ -1192,6 +1192,12 @@ POLITICA_DERIVADAS = [
     ("votometro_ventaja_lla", "pp (brecha LLA−PJ)", "Votómetro CIGOB", fetch_votometro_serie),
     ("iaf_transferencias", "% i.a. real", "RON Hacienda + IPC INDEC (dic-dic)", fetch_iaf_serie),
     ("ratio_dnu", "DNUs por ley (12m móviles)", "InfoLeg", fetch_ratio_dnu_serie),
+    # La serie la calcula el propio colector: la card de politica.py devuelve el
+    # último punto de esta misma lista, así que no pueden divergir (ADR-0088;
+    # el patrón contrario causó ADR-0086 y ADR-0087 el día anterior).
+    ("brecha_obra_publica", "pp (obra pública − privada, 12m móviles)",
+     "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
+     politica.brecha_obra_publica_serie),
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_eficacia_serie),
     ("veto_quorum", "% sesiones fracasadas (por período)", "Cámara de Diputados (datos abiertos)", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_comisiones_serie),

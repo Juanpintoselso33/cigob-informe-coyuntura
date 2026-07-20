@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-19T21:51:40.569514",
+  "generated_at": "2026-07-19T22:35:58.340012",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -479,8 +479,8 @@
       }
     },
     "politica": {
-      "score": 3.2,
-      "estado": "en_tension",
+      "score": 3.0,
+      "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "votometro_ventaja_lla": {
@@ -496,7 +496,7 @@
           "dimension": "imagen_voto",
           "puntaje_itcp": 71.2,
           "puntaje_banda": 71.2,
-          "peso_efectivo": 0.1
+          "peso_efectivo": 0.08
         },
         "ratio_dnu": {
           "valor": 1.92,
@@ -511,7 +511,21 @@
           "dimension": "poder_legislativo",
           "puntaje_itcp": 16.0,
           "puntaje_banda": 16.0,
-          "peso_efectivo": 0.06
+          "peso_efectivo": 0.05
+        },
+        "brecha_obra_publica": {
+          "valor": 0.2,
+          "unidad": "pp de brecha (obra pública − privada, 12m)",
+          "fuente": "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
+          "fecha_dato": "2026-08-01",
+          "desactualizado": false,
+          "variacion_12m": 9.1,
+          "detalle_txt": "Brecha de 0,2 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
+          "en_indice": true,
+          "dimension": "sector_privado",
+          "puntaje_itcp": 75.4,
+          "puntaje_banda": 75.4,
+          "peso_efectivo": 0.15
         },
         "conflictividad_nacional": {
           "valor": -23.2,
@@ -526,7 +540,7 @@
           "dimension": "conflicto_social",
           "puntaje_itcp": 49.6,
           "puntaje_banda": 49.6,
-          "peso_efectivo": 0.15
+          "peso_efectivo": 0.12
         },
         "movilizacion_cepa": {
           "valor": 50.5,
@@ -554,7 +568,7 @@
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 76.6,
           "puntaje_banda": 76.6,
-          "peso_efectivo": 0.1
+          "peso_efectivo": 0.088
         },
         "eficacia_legislativa": {
           "valor": 13.3,
@@ -571,7 +585,7 @@
           "dimension": "poder_legislativo",
           "puntaje_itcp": 46.6,
           "puntaje_banda": 46.6,
-          "peso_efectivo": 0.075
+          "peso_efectivo": 0.0625
         },
         "veto_quorum": {
           "valor": 0.0,
@@ -586,7 +600,7 @@
           "dimension": "poder_legislativo",
           "puntaje_itcp": 100.0,
           "puntaje_banda": 100.0,
-          "peso_efectivo": 0.045
+          "peso_efectivo": 0.0375
         },
         "comisiones_caidas": {
           "valor": 97.0,
@@ -611,7 +625,7 @@
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 81.7,
           "puntaje_banda": 81.7,
-          "peso_efectivo": 0.075
+          "peso_efectivo": 0.066
         },
         "derrotas_legislativas": {
           "valor": 8,
@@ -628,7 +642,7 @@
           "dimension": "poder_legislativo",
           "puntaje_itcp": 53.6,
           "puntaje_banda": 53.6,
-          "peso_efectivo": 0.06
+          "peso_efectivo": 0.05
         },
         "rotacion_gabinete": {
           "valor": 7,
@@ -680,7 +694,7 @@
           "dimension": "cohesion_interna",
           "puntaje_itcp": 96.7,
           "puntaje_banda": 96.7,
-          "peso_efectivo": 0.2
+          "peso_efectivo": 0.18
         },
         "bloqueo_sostenido": {
           "valor": 20.0,
@@ -698,7 +712,7 @@
           "dimension": "poder_legislativo",
           "puntaje_itcp": 10.0,
           "puntaje_banda": 10.0,
-          "peso_efectivo": 0.06
+          "peso_efectivo": 0.05
         },
         "alineamiento_senadores_prov": {
           "valor": 70.6,
@@ -712,18 +726,18 @@
           "dimension": "alianzas_territoriales",
           "puntaje_itcp": 100.0,
           "puntaje_banda": 100.0,
-          "peso_efectivo": 0.075
+          "peso_efectivo": 0.066
         }
       },
       "alerta": null,
       "itcp": {
-        "valor": 68.0,
+        "valor": 69.8,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
-            "peso": 0.3,
+            "peso": 0.25,
             "puntaje": 42.6,
             "indicadores": {
               "ratio_dnu": {
@@ -731,42 +745,42 @@
                 "puntaje_banda": 16.0,
                 "puntaje_aplicado": 16.0,
                 "valor": 1.92,
-                "peso_efectivo": 0.06
+                "peso_efectivo": 0.05
               },
               "eficacia_legislativa": {
                 "peso": 0.25,
                 "puntaje_banda": 46.6,
                 "puntaje_aplicado": 46.6,
                 "valor": 13.3,
-                "peso_efectivo": 0.075
+                "peso_efectivo": 0.0625
               },
               "veto_quorum": {
                 "peso": 0.15,
                 "puntaje_banda": 100.0,
                 "puntaje_aplicado": 100.0,
                 "valor": 0.0,
-                "peso_efectivo": 0.045
+                "peso_efectivo": 0.0375
               },
               "derrotas_legislativas": {
                 "peso": 0.2,
                 "puntaje_banda": 53.6,
                 "puntaje_aplicado": 53.6,
                 "valor": 8.0,
-                "peso_efectivo": 0.06
+                "peso_efectivo": 0.05
               },
               "bloqueo_sostenido": {
                 "peso": 0.2,
                 "puntaje_banda": 10.0,
                 "puntaje_aplicado": 10.0,
                 "valor": 20.0,
-                "peso_efectivo": 0.06
+                "peso_efectivo": 0.05
               }
             },
-            "peso_efectivo": 0.3
+            "peso_efectivo": 0.25
           },
           "alianzas_territoriales": {
             "nombre": "Alianzas territoriales",
-            "peso": 0.25,
+            "peso": 0.22,
             "puntaje": 85.2,
             "indicadores": {
               "iaf_transferencias": {
@@ -774,28 +788,28 @@
                 "puntaje_banda": 76.6,
                 "puntaje_aplicado": 76.6,
                 "valor": 0.8,
-                "peso_efectivo": 0.1
+                "peso_efectivo": 0.088
               },
               "alineamiento_senadores_prov": {
                 "peso": 0.3,
                 "puntaje_banda": 100.0,
                 "puntaje_aplicado": 100.0,
                 "valor": 70.6,
-                "peso_efectivo": 0.075
+                "peso_efectivo": 0.066
               },
               "adhesion_reformas_provincial": {
                 "peso": 0.3,
                 "puntaje_banda": 81.7,
                 "puntaje_aplicado": 81.7,
                 "valor": 66.7,
-                "peso_efectivo": 0.075
+                "peso_efectivo": 0.066
               }
             },
-            "peso_efectivo": 0.25
+            "peso_efectivo": 0.22
           },
           "cohesion_interna": {
             "nombre": "Cohesión interna del oficialismo",
-            "peso": 0.2,
+            "peso": 0.18,
             "puntaje": 96.7,
             "indicadores": {
               "cohesion_bloque": {
@@ -803,14 +817,14 @@
                 "puntaje_banda": 96.7,
                 "puntaje_aplicado": 96.7,
                 "valor": 99.8,
-                "peso_efectivo": 0.2
+                "peso_efectivo": 0.18
               }
             },
-            "peso_efectivo": 0.2
+            "peso_efectivo": 0.18
           },
           "conflicto_social": {
             "nombre": "Conflicto social",
-            "peso": 0.15,
+            "peso": 0.12,
             "puntaje": 49.6,
             "indicadores": {
               "conflictividad_nacional": {
@@ -818,14 +832,14 @@
                 "puntaje_banda": 49.6,
                 "puntaje_aplicado": 49.6,
                 "valor": -23.2,
-                "peso_efectivo": 0.15
+                "peso_efectivo": 0.12
               }
             },
-            "peso_efectivo": 0.15
+            "peso_efectivo": 0.12
           },
           "imagen_voto": {
             "nombre": "Imagen y voto",
-            "peso": 0.1,
+            "peso": 0.08,
             "puntaje": 71.2,
             "indicadores": {
               "votometro_ventaja_lla": {
@@ -833,10 +847,25 @@
                 "puntaje_banda": 71.2,
                 "puntaje_aplicado": 71.2,
                 "valor": 3.1,
-                "peso_efectivo": 0.1
+                "peso_efectivo": 0.08
               }
             },
-            "peso_efectivo": 0.1
+            "peso_efectivo": 0.08
+          },
+          "sector_privado": {
+            "nombre": "Sector privado",
+            "peso": 0.15,
+            "puntaje": 75.4,
+            "indicadores": {
+              "brecha_obra_publica": {
+                "peso": 1.0,
+                "puntaje_banda": 75.4,
+                "puntaje_aplicado": 75.4,
+                "valor": 0.2,
+                "peso_efectivo": 0.15
+              }
+            },
+            "peso_efectivo": 0.15
           }
         },
         "ajustes_aplicados": []

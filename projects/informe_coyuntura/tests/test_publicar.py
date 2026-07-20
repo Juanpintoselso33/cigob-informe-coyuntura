@@ -192,8 +192,12 @@ def test_politica_itcp_reconcilia():
     # macro): se siguen relevando y cacheando, pero el tablero solo muestra
     # lo que integra las dimensiones.
     # cohesion_bloque_senado ya no existe como card (fusionado).
-    assert len(en_indice) == 11, f"esperaba 11 indicadores en el índice, hay {len(en_indice)}"
+    # ADR-0088 (2026-07-19): entra brecha_obra_publica en la dimensión nueva
+    # sector_privado — el único actor del objetivo declarado que no tenía
+    # ningún indicador propio.
+    assert len(en_indice) == 12, f"esperaba 12 indicadores en el índice, hay {len(en_indice)}"
     assert "bloqueo_sostenido" in en_indice
+    assert "brecha_obra_publica" in en_indice
     faltantes = {"votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
                  "iaf_transferencias", "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque", "conflictividad_nacional",
@@ -210,11 +214,14 @@ def test_politica_itcp_reconcilia():
     assert abs(ponderado - itcp_val) <= 0.15, f"ponderado {ponderado} != ITCP {itcp_val}"
     assert abs(c["score"] - round((100 - itcp_val) / 10, 1)) <= 0.05
 
-    # Pesos de dimensión (ADR-0036): 30/25/20/15/10.
+    # Pesos de dimensión: 30/25/20/15/10 desde ADR-0036, reponderados a
+    # 25/22/18/12/8 + 15 el 2026-07-19 (ADR-0088) al incorporarse la dimensión
+    # de sector privado. El orden relativo de las cinco originales se conserva.
     pesos = {k: d["peso"] for k, d in c["itcp"]["dimensiones"].items()}
-    assert pesos == {"poder_legislativo": 0.30, "alianzas_territoriales": 0.25,
-                     "cohesion_interna": 0.20, "conflicto_social": 0.15,
-                     "imagen_voto": 0.10}
+    assert pesos == {"poder_legislativo": 0.25, "alianzas_territoriales": 0.22,
+                     "cohesion_interna": 0.18, "conflicto_social": 0.12,
+                     "imagen_voto": 0.08, "sector_privado": 0.15}
+    assert abs(sum(pesos.values()) - 1.0) < 1e-9
 
     for k, i in en_indice.items():
         assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"

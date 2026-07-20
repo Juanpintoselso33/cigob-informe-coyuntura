@@ -929,7 +929,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre anclas: más de +15 puntos → el más alto; entre +5 y +15 → alto; entre −5 y +5 → moderado; entre −15 y −5 → bajo; −15 o menos → el más bajo.",
-      "Es el único indicador de la dimensión de imagen y voto del índice del cinturón (10% del total) — la dimensión que pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
+      "Es el único indicador de la dimensión de imagen y voto del índice del cinturón (8% del total) — la dimensión que pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
     ],
     dobleUso: "El mismo dato alimentó el indicador de clima electoral del cinturón espíritu de época entre junio y julio de 2026, hasta que ese cinturón quedó acotado a la intención migratoria como único indicador; la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.",
     limitaciones: [
@@ -943,6 +943,40 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Incorporado al cinturón político como medida del capital electoral del oficialismo." },
       { fecha: "2026-06-30", cambio: "Serie mensual reconstruida hacia atrás hasta diciembre de 2023, evaluando la misma ponderación al cierre de cada mes." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), como único indicador de la dimensión de imagen y voto — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
+    ],
+  },
+
+  brecha_obra_publica: {
+    tipo: "indicador",
+    id: "brecha_obra_publica",
+    cinturon: "politica",
+    rezago: "El INDEC publica la encuesta junto con el informe mensual de la construcción, unas semanas después del cierre del período relevado.",
+    fuente: {
+      organismo: "INDEC",
+      operacion: "Encuesta Cualitativa de la Construcción — expectativas de las empresas sobre el nivel de actividad de los próximos tres meses, con respuestas separadas para obra pública y obra privada (Cuadro 7.1)",
+      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-9-46",
+      acceso: "Automático: descarga la planilla oficial del indicador sintético de la actividad de la construcción y lee el cuadro de expectativas.",
+    },
+    transformaciones: [
+      "Para cada grupo de empresas se calcula un saldo de respuesta: el porcentaje que espera que su actividad aumente menos el porcentaje que espera que disminuya. Quienes esperan que no varíe no suman ni restan.",
+      "La brecha es el saldo de las empresas de obra pública menos el de las de obra privada. Cero significa que ambos grupos esperan lo mismo; un valor negativo, que las que dependen del Estado esperan peor que sus pares privadas.",
+      "Se promedian los últimos doce meses. La lectura mensual es volátil —salta unos seis puntos de un mes al siguiente— y el promedio móvil deja ver el movimiento de fondo sin perder capacidad de reacción.",
+      "La serie se reconstruye con el mismo cálculo desde noviembre de 2017, de modo que hay línea de base de tres gobiernos anteriores contra la cual comparar.",
+    ],
+    incidenciaTexto: [
+      "El puntaje del índice se asigna por bandas de la brecha, interpolado entre anclas: +10 puntos porcentuales o más → el más alto; entre 0 y +10 → alto; entre −10 y 0 → moderado; entre −20 y −10 → bajo; menos de −20 → el más bajo. Las anclas se fijaron en números redondos alrededor del cero, que es el valor con significado propio: brecha nula quiere decir que el Estado no es una fuente diferencial de incertidumbre para quienes trabajan para él.",
+      "Es el único indicador de la dimensión de sector privado del índice del cinturón (15% del total), incorporada en julio de 2026.",
+    ],
+    limitaciones: [
+      "Mide un solo canal de conflicto: el gasto en infraestructura. Sería ciego a una tensión con el agro, la energía o los bancos, y por eso conviene leerlo como lo que es —la relación del Gobierno con el sector que depende de la obra pública— y no como un termómetro del humor empresario en general.",
+      "Son expectativas declaradas, no decisiones tomadas. Conviene contrastarlo con el volumen de insumos de construcción efectivamente vendidos: si las expectativas se hunden y las ventas no caen, la tensión es sobre todo discursiva.",
+      "La pregunta indaga por el cambio esperado, no por el nivel. Un recorte sostenido termina normalizándose: cuando las empresas se acostumbran al presupuesto nuevo dejan de esperar caídas adicionales y la brecha vuelve a cero aunque la obra pública siga en un piso históricamente bajo.",
+      "La encuesta releva grandes empresas constructoras; las pequeñas y las regionales están subrepresentadas.",
+    ],
+    faltantes: "Si la planilla no está disponible, se mantiene el último valor, señalado como desactualizado; sin ningún valor previo, el indicador queda fuera y su dimensión no puntúa.",
+    revisiones: "El INDEC puede revisar los porcentajes de meses anteriores al ampliarse la muestra respondente. Cada actualización recalcula la serie completa desde el origen, de modo que las revisiones se incorporan solas.",
+    cambios: [
+      { fecha: "2026-07-19", cambio: "Entra al cinturón como primer indicador de la nueva dimensión de sector privado. Una revisión externa del cinturón señaló que de los tres actores que el índice se propone medir —legisladores, gobernadores y empresarios— el tercero no tenía ningún indicador propio." },
     ],
   },
 
@@ -964,7 +998,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo. Estas anclas están ancladas a la práctica histórica 2011-2024 (cuatro presidencias distintas): en promedio, una de cada tres leyes sancionadas tuvo un DNU — ratio ≈0,3.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto a la eficacia legislativa, las sesiones caídas por quórum, las derrotas legislativas y el bloqueo sostenido.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 20% junto a la eficacia legislativa, las sesiones caídas por quórum, las derrotas legislativas y el bloqueo sostenido.",
     ],
     limitaciones: [
       "Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.",
@@ -999,7 +1033,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación, interpolado entre anclas: −32% o menos → el más alto; entre −32% y −29% → alto; entre −29% y −26% → moderado; entre −26% y −15% → bajo; más de −15% → el más bajo. Los umbrales se calibraron con la serie mensual real del indicador (30 meses, dic-2023 en adelante, rango observado −34% a +3%): las cinco bandas tienen meses reales observados.",
-      "Es el único indicador de la dimensión de conflicto social del índice del cinturón (15% del total).",
+      "Es el único indicador de la dimensión de conflicto social del índice del cinturón (12% del total).",
     ],
     limitaciones: [
       "Cuenta eventos, no personas: una marcha multitudinaria y una concentración chica pesan igual — es una medida de frecuencia del conflicto, no de su masividad.",
@@ -1033,7 +1067,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas: más de +10% → el más alto; entre 0% y +10% → alto; entre −10% y 0% → moderado; entre −20% y −10% → bajo; −20% o menos → el más bajo.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (22% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI.",
     ],
     limitaciones: [
       "Granularidad anual: no capta la tensión federal dentro del año.",
@@ -1072,7 +1106,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Los umbrales se calibraron contra series históricas de otras gestiones (proporción de proyectos del Ejecutivo que se convirtieron en ley), no contra el rango de esta gestión.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 25% junto al ratio DNU, las sesiones caídas por quórum, las derrotas legislativas y el bloqueo sostenido.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 25% junto al ratio DNU, las sesiones caídas por quórum, las derrotas legislativas y el bloqueo sostenido.",
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
@@ -1113,7 +1147,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro de las dos cámaras — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
       "El puntaje del índice se asigna por bandas del compuesto, interpolado entre anclas: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 97% y 99% → moderado; entre 95% y 97% → bajo; 95% o menos → el más bajo. Los umbrales se calibraron contra la serie mensual del propio compuesto (dic-2023 en adelante, rango observado 90,3–100): las cinco bandas tienen meses reales observados.",
-      "Es el único indicador de la dimensión de cohesión interna del oficialismo del índice del cinturón (20% del total).",
+      "Es el único indicador de la dimensión de cohesión interna del oficialismo del índice del cinturón (18% del total).",
     ],
     limitaciones: [
       "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
@@ -1152,7 +1186,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Reemplaza, desde julio de 2026, a un indicador de carga manual (\"alineamiento de gobernadores\") que quedó congelado por meses sin una fuente pública estructurada para actualizarlo — dos rondas de búsqueda de fuentes automatizables no encontraron ninguna que midiera directamente la postura del Poder Ejecutivo provincial.",
       "Caveat importante: este indicador mide comportamiento de voto de SENADORES, no la postura pública del gobernador de la provincia — un senador no depende del gobernador de turno, puede responder a la estrategia nacional de su propio partido. Es la mejor señal automatizable disponible hoy, no una medición directa del Poder Ejecutivo provincial.",
       "El puntaje del índice se asigna por bandas de ese porcentaje, interpolado entre anclas: más de 70% de coincidencia → el más alto; entre 60% y 70% → alto; entre 50% y 60% → moderado; entre 40% y 50% → bajo; 40% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante).",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (22% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
     ],
     limitaciones: [
       "Proxy de comportamiento legislativo, no medición directa de la postura del gobernador (Poder Ejecutivo provincial) — ver caveat arriba.",
@@ -1186,7 +1220,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Mide adhesión a un régimen fiscal y de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia. Una provincia puede adherir al RIGI por conveniencia fiscal aun con un gobernador crítico del gobierno nacional, y a la inversa.",
       "El puntaje del índice se asigna por bandas del porcentaje adherido, interpolado entre anclas: más de 80% de jurisdicciones adheridas → el más alto; entre 60% y 80% → alto; entre 40% y 60% → moderado; entre 20% y 40% → bajo; menos de 20% → el más bajo. Los umbrales se chequearon contra la serie histórica real del indicador (24 meses, jul-2024 a jun-2026): a diferencia de otros indicadores del cinturón, no se recalibraron — la adhesión es un evento irreversible por jurisdicción, así que el rango observado hoy es el arranque de un proceso todavía en curso, no una muestra representativa contra la cual fijar anclas permanentes.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (25% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (22% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
     ],
     limitaciones: [
       "Cuenta la adhesión formal, no la inversión efectiva que esa adhesión termina generando en cada provincia.",
@@ -1249,7 +1283,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 15% junto al ratio DNU, la eficacia legislativa, las derrotas legislativas y el bloqueo sostenido.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 15% junto al ratio DNU, la eficacia legislativa, las derrotas legislativas y el bloqueo sostenido.",
     ],
     limitaciones: [
       "Las sesiones desactivadas antes de la apertura formal no aparecen en el registro oficial: el indicador subestima el bloqueo.",
@@ -1295,7 +1329,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los umbrales se calibraron contra la serie mensual del indicador desde diciembre de 2023: el período va de meses sin ninguna derrota hasta el pico de ocho en doce meses, tras la ola de rechazos e insistencias de agosto-octubre de 2025. Las dos bandas más bajas quedan por encima de todo lo observado: son el margen para escenarios de confrontación más intensos que los ya vistos.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa, las sesiones caídas por quórum y el bloqueo sostenido — su contracara: éste cuenta las normas caídas, aquél acredita las sostenidas. Menos derrotas = puntaje más alto.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 20% junto al ratio DNU, la eficacia legislativa, las sesiones caídas por quórum y el bloqueo sostenido — su contracara: éste cuenta las normas caídas, aquél acredita las sostenidas. Menos derrotas = puntaje más alto.",
     ],
     limitaciones: [
       "Es un indicador de eventos raros con ventana móvil: el valor puede saltar varios enteros de un mes al siguiente, tanto cuando ocurre una tanda de derrotas como —en espejo— doce meses después, cuando esa tanda sale de la ventana. El movimiento de salida es mecánico (aritmética de la ventana), no una mejora política nueva; el detalle de la card publica la composición del conteo para leerlo con contexto.",
@@ -1341,7 +1375,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los umbrales usan una referencia externa, no el rango propio del período: entre 2003 y 2025 el Congreso no logró revertir ningún veto presidencial —ni siquiera frente a los gobiernos en minoría—, así que sostener el 90% o más de lo desafiado es el dominio histórico normal del bloqueo; por debajo del 25%, el Ejecutivo perdió la llave del tercio. El período cubierto recorre casi todo el rango: 100% en el primer semestre de 2024, 75% tras la caída del decreto de fondos reservados, 33% tras la ola de insistencias y derogaciones de agosto-octubre de 2025, y el mínimo en 2026, cuando la ventana móvil todavía carga esa ola pero los desafíos sostenidos más viejos ya salieron de ella.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (30% del total), donde pesa 20% junto a la eficacia parlamentaria, el ratio DNU, las derrotas legislativas y las sesiones caídas por quórum. Es la contracara de las derrotas: aquéllas cuentan las normas caídas en términos absolutos; éste acredita también las sostenidas. Más es mejor.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 20% junto a la eficacia parlamentaria, el ratio DNU, las derrotas legislativas y las sesiones caídas por quórum. Es la contracara de las derrotas: aquéllas cuentan las normas caídas en términos absolutos; éste acredita también las sostenidas. Más es mejor.",
     ],
     limitaciones: [
       "La ventana de 12 meses retiene las caídas durante un año: la recuperación del bloqueo después de una crisis aparece con rezago mecánico, incluso si el Congreso nuevo dejó de desafiar normas (los desafíos viejos salen de la ventana doce meses después, no antes).",

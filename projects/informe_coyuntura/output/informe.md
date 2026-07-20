@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-19 21:51:40"
+generado: "2026-07-19 22:35:58"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -39,13 +39,14 @@ schema_version: "1.2.0"
 | base_monetaria | 3.37 | % mensual nominal | 2026-07-15 | fresco |
 | tc_mayorista | 1.36 | % mensual | 2026-07-17 | fresco |
 
-### 🟡 Politica — score 3.2/10 (en_tension)
+### 🟢 Politica — score 3.0/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | votometro_ventaja_lla | 3.1 | Puntos porcentuales | 2026-06-10 | fresco |
 | ratio_dnu | 1.92 | DNUs por ley | 2026-07-19 | fresco |
+| brecha_obra_publica | 0.2 | pp de brecha (obra pública − privada, 12m) | 2026-08-01 | fresco |
 | conflictividad_nacional | -23.2 | % vs 2023 | 2026-06-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | fresco |
 | iaf_transferencias | 0.8 | % interanual real | 2026-07-19 | fresco |
@@ -103,4 +104,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-19 21:51:40 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-19 22:35:58 — schema 1.2.0*

@@ -83,6 +83,25 @@ BANDAS_ITCP = {
     "votometro_ventaja_lla": [           # pp gap LLA-PJ, mayor = mejor
         (15.0, INF, 100), (5.0, 15.0, 85), (-5.0, 5.0, 65), (-15.0, -5.0, 40), (-INF, -15.0, 10),
     ],
+    "brecha_obra_publica": [
+        # pp de brecha (saldo obra pública − saldo obra privada, 12m móviles),
+        # mayor = mejor. ADR-0088.
+        #
+        # Anclas en números redondos alrededor del CERO, que es el punto con
+        # significado propio: brecha nula = las empresas que dependen del Estado
+        # esperan lo mismo que sus pares privadas, o sea que el gobierno no es
+        # una fuente diferencial de incertidumbre para ellas. No se calibra
+        # contra el rango observado — el criterio de ADR-0045 sólo autoriza eso
+        # cuando el extremo es matemáticamente inalcanzable, y acá no lo es: la
+        # brecha ya tocó +44,8 y −39,9 en lecturas mensuales.
+        #
+        # Contra la serie de diez años (100 puntos, nov-2017→ago-2026) las
+        # bandas discriminan bien: 2024 (−29,8, el piso de toda la serie, año
+        # del corte de obra pública) cae en el tramo de 10; 2019 (−13,2, plena
+        # recesión pero sin conflicto Estado-contratistas) cae en 40; y
+        # 2021-2023, con obra pública activa, quedan entre 65 y 85.
+        (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
+    ],
     "ratio_dnu": [
         # ADR-0058 cambió la ventana (año calendario → móvil de 365 días) SIN
         # tocar estas anclas (ADR-0059 revirtió una recalibración de un día:
@@ -376,7 +395,14 @@ BANDAS_ITCP = {
 DIMENSIONES_ITCP = {
     "poder_legislativo": {
         "nombre": "Poder legislativo",
-        "peso": 0.30,
+        # 0.30 → 0.25 (2026-07-19, ADR-0088): entra la dimensión sector_privado
+        # con 0.15 y las cinco existentes ceden proporcionalmente. Es el primer
+        # cambio de pesos ENTRE dimensiones desde ADR-0036: la auditoría externa
+        # del cinturón encontró que de los tres actores del objetivo declarado
+        # —legisladores, gobernadores, empresarios— el tercero no tenía ningún
+        # indicador, y llamó a eso "la recomendación de mayor prioridad de todo
+        # el documento". El orden relativo de las cinco se conserva intacto.
+        "peso": 0.25,
         # Pesos internos redistribuidos 2026-07-16 al entrar bloqueo_sostenido
         # (ADR-0069): cada indicador cede 0.05 y el nuevo toma 0.20 — la
         # dimensión gana la cara ganada del bloqueo (derrotas solo cuenta la
@@ -393,13 +419,13 @@ DIMENSIONES_ITCP = {
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
-        "peso": 0.25,
+        "peso": 0.22,   # 0.25 → 0.22 (ADR-0088)
         "indicadores": {"iaf_transferencias": 0.40, "alineamiento_senadores_prov": 0.30,
                         "adhesion_reformas_provincial": 0.30},
     },
     "cohesion_interna": {
         "nombre": "Cohesión interna del oficialismo",
-        "peso": 0.20,
+        "peso": 0.18,   # 0.20 → 0.18 (ADR-0088)
         # 2026-07-10 (ADR-0048): la dimensión queda en un solo indicador — el
         # compuesto bicameral (Diputados 65% + Senado 35% adentro de la
         # fórmula). rotacion_gabinete (que había entrado el 09-jul por
@@ -409,7 +435,7 @@ DIMENSIONES_ITCP = {
     },
     "conflicto_social": {
         "nombre": "Conflicto social",
-        "peso": 0.15,
+        "peso": 0.12,   # 0.15 → 0.12 (ADR-0088)
         # 2026-07-11 (ADR-0052): conflictividad_nacional (ACLED país
         # entero, 30 puntos reales) reemplaza a movilizacion_cepa (2
         # puntos, acumulado YTD no comparable, sin backfill posible), que
@@ -420,8 +446,25 @@ DIMENSIONES_ITCP = {
     },
     "imagen_voto": {
         "nombre": "Imagen y voto",
-        "peso": 0.10,
+        "peso": 0.08,   # 0.10 → 0.08 (ADR-0088)
         "indicadores": {"votometro_ventaja_lla": 1.0},
+    },
+    "sector_privado": {
+        "nombre": "Sector privado",
+        "peso": 0.15,
+        # Dimensión nueva 2026-07-19 (ADR-0088). Cierra el hueco que la
+        # auditoría externa marcó como prioridad 1: el cinturón medía en
+        # detalle al Congreso, de forma indirecta a los gobernadores y no
+        # medía en absoluto a los empresarios, que son el tercer actor del
+        # objetivo declarado.
+        #
+        # Arranca con un solo indicador y eso es una limitación real, no un
+        # diseño terminado: la brecha de obra pública mide UN canal de
+        # conflicto —el gasto en infraestructura— y sería ciega a una pelea
+        # con el agro, la energía o los bancos. Se elige igual porque es el
+        # único candidato relevado que aísla la relación con el ESTADO en vez
+        # de medir clima de negocios general (ADR-0088 lista los descartados).
+        "indicadores": {"brecha_obra_publica": 1.0},
     },
 }
 

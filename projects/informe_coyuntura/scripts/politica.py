@@ -92,6 +92,7 @@ CINTURON              = "politica"
 INDICADORES_ESPERADOS = [
     "votometro_ventaja_lla",
     "ratio_dnu",
+    "brecha_obra_publica",
     "conflictividad_nacional",
     "movilizacion_cepa",
     "iaf_transferencias",
@@ -475,6 +476,132 @@ def _infoleg_session_count(session: requests.Session, action_url: str,
     if m:
         return int(m.group(1))
     raise ValueError(f"Conteo no encontrado en InfoLeg (tipo={tipo}, texto={texto!r})")
+
+
+# ── Sector privado: brecha de expectativas obra pública vs. privada ───────────
+# INDEC publica la Encuesta Cualitativa de la Construcción dentro del ISAC. El
+# Cuadro 7.1 pregunta a las grandes empresas constructoras cómo esperan que
+# evolucione su actividad en los próximos tres meses, y —esto es lo que lo hace
+# útil acá— responde por separado para OBRA PRIVADA y OBRA PÚBLICA.
+#
+# Se puntúa la BRECHA (pública − privada), no el nivel. Las dos submuestras son
+# el mismo sector, con el mismo costo de insumos y el mismo ciclo macro: lo
+# único que las distingue es quién les paga. La diferencia entre ambas aísla el
+# componente que viene del Estado, depurado del ciclo económico.
+#
+# Que eso no es una racionalización se ve en la serie: la brecha marca 2024
+# como el peor momento de los diez años disponibles (−29,8), mientras que el
+# nivel de obra pública marca 2019 (−58,2), que fue la recesión de Macri y no un
+# conflicto entre el gobierno y sus contratistas. La brecha separa las dos cosas
+# y el nivel no (ADR-0088).
+
+ISAC_URL = "https://www.indec.gob.ar/ftp/cuadros/economia/sh_isac_{anio}.xls"
+ISAC_HOJA = "Cuadro 7.1"
+ISAC_MESES = {"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5,
+              "junio": 6, "julio": 7, "agosto": 8, "septiembre": 9,
+              "setiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12}
+ISAC_VENTANA = 12   # meses del promedio móvil
+
+
+def _isac_descargar() -> bytes:
+    """El archivo rota de nombre cada enero (`sh_isac_<año>.xls`), así que se
+    prueba el año corriente y se cae al anterior.
+
+    INDEC devuelve **HTTP 200 con HTML** cuando el archivo no existe (soft-404),
+    de modo que el status code no alcanza para saber si vino un XLS: se valida
+    el content-type."""
+    intentos = []
+    for anio in (date.today().year, date.today().year - 1):
+        url = ISAC_URL.format(anio=anio)
+        try:
+            r = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            tipo = r.headers.get("content-type", "")
+            if r.status_code == 200 and "excel" in tipo.lower():
+                return r.content
+            intentos.append(f"{anio}: HTTP {r.status_code} content-type={tipo!r}")
+        except Exception as e:
+            intentos.append(f"{anio}: {e}")
+    raise ValueError("ISAC no descargable — " + " · ".join(intentos))
+
+
+def brecha_obra_publica_serie() -> list:
+    """Serie mensual de la brecha de expectativas, promedio móvil de 12 meses.
+
+    Es la ÚNICA implementación del cálculo: la card de `fetch_brecha_obra_publica`
+    devuelve el último punto de esta misma lista. Card y serie no pueden
+    divergir porque son el mismo número, que es la propiedad que el gate G3
+    verifica y que dos bugs de esta jornada (ADR-0086/0087) violaron por tener
+    el cálculo escrito dos veces.
+
+    [[YYYY-MM-01, brecha]] ascendente."""
+    import xlrd
+
+    ws = xlrd.open_workbook(file_contents=_isac_descargar()).sheet_by_name(ISAC_HOJA)
+    # Columnas: 1/3 = privada aumentará/disminuirá · 5/7 = pública. La 4 y la 8
+    # son separadoras vacías, no datos.
+    mensual = []
+    for i in range(ws.nrows):
+        etiqueta = str(ws.cell(i, 0).value)
+        # La fila rotula la ventana completa ("Junio 2026 - agosto 2026"); el
+        # dato corresponde al mes de CIERRE, que es el segundo.
+        m = re.search(r"-\s*([a-zA-Zéí]+)\s+(\d{4})", etiqueta)
+        if not m or m.group(1).lower() not in ISAC_MESES:
+            continue
+        try:
+            priv = float(ws.cell(i, 1).value) - float(ws.cell(i, 3).value)
+            publ = float(ws.cell(i, 5).value) - float(ws.cell(i, 7).value)
+        except (ValueError, TypeError):
+            continue
+        ym = (int(m.group(2)), ISAC_MESES[m.group(1).lower()])
+        mensual.append((ym, publ - priv))
+
+    # El cuadro trae filas de notas al pie que también matchean el patrón de
+    # fecha; deduplicar por mes y ordenar deja sólo la grilla real.
+    por_mes = dict(mensual)
+    meses = sorted(por_mes)
+    if len(meses) < ISAC_VENTANA:
+        raise ValueError(f"ISAC {ISAC_HOJA}: {len(meses)} meses, se necesitan {ISAC_VENTANA}")
+
+    out = []
+    for i in range(ISAC_VENTANA - 1, len(meses)):
+        ventana = [por_mes[meses[j]] for j in range(i - ISAC_VENTANA + 1, i + 1)]
+        y, mm = meses[i]
+        out.append([f"{y}-{mm:02d}-01", round(sum(ventana) / ISAC_VENTANA, 1)])
+    return out
+
+
+def fetch_brecha_obra_publica() -> dict | None:
+    """
+    Brecha de expectativas entre empresas constructoras de obra pública y de
+    obra privada (INDEC, Encuesta Cualitativa de la Construcción, Cuadro 7.1),
+    en promedio móvil de 12 meses.
+
+    Saldo de respuesta = %"aumentará" − %"disminuirá", por submuestra; la brecha
+    es el saldo de obra pública menos el de obra privada. Más negativa = las
+    empresas que dependen del Estado esperan peor que sus pares privadas =
+    mayor tensión con el gobierno.
+
+    Dimensión: sector privado (ADR-0088).
+    """
+    try:
+        serie = brecha_obra_publica_serie()
+        fecha, valor = serie[-1]
+        anterior = serie[-13][1] if len(serie) > 13 else None
+        return {
+            "valor":          valor,
+            "unidad":         "pp de brecha (obra pública − privada, 12m)",
+            "fuente":         "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
+            "fecha_dato":     fecha,
+            "desactualizado": False,
+            "variacion_12m":  None if anterior is None else round(valor - anterior, 1),
+            "detalle_txt": (
+                f"Brecha de {str(valor).replace('.', ',')} pp entre lo que esperan las "
+                f"constructoras de obra pública y las de obra privada (promedio de 12 meses). "
+                f"Negativa = las que dependen del Estado esperan peor que sus pares privadas."),
+        }
+    except Exception as e:
+        _warn("brecha_obra_publica", str(e))
+        return None
 
 
 def fetch_ratio_dnu() -> dict | None:
@@ -3511,6 +3638,7 @@ def main() -> None:
     colectores = [
         ("votometro_ventaja_lla",         fetch_votometro),
         ("ratio_dnu",                     fetch_ratio_dnu),
+        ("brecha_obra_publica",           fetch_brecha_obra_publica),
         ("conflictividad_nacional",       fetch_conflictividad_nacional),
         ("movilizacion_cepa",             fetch_cepa_movilizacion),
         ("iaf_transferencias",            fetch_iaf_transferencias),

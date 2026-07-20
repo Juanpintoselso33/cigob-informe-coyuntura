@@ -29,10 +29,11 @@ con ±1 rezago. Salida: output/validacion_externa.json + resumen legible.
 
 Uso: python scripts/validacion_externa.py
 """
+import io
 import json
 import statistics
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import requests
@@ -619,6 +620,88 @@ def _pearson(a: dict, b: dict) -> tuple:
     return round(statistics.correlation(xs, ys), 3), len(comunes)
 
 
+HTTP_TIMEOUT = 20
+HTTP_HEADERS = {"User-Agent": "CIGOB-InformeCoyuntura/1.0"}
+
+CONSTRUYA_URL = "https://www.ieric.org.ar/wp-content/uploads/{anio}/{mes:02d}/Indice-Construya.xlsx"
+
+
+def fetch_construya_mensual() -> dict:
+    """Variación interanual mensual del Índice Construya (volumen de ventas de
+    insumos de la construcción de sus fabricantes líderes, base jun-2002 = 100).
+
+    Es la pata de CONDUCTA del contraste: mide volumen físico efectivamente
+    vendido, no expectativas declaradas.
+
+    El archivo se publica en el espejo del IERIC bajo una ruta con año y mes que
+    rota, así que se prueban los últimos meses hacia atrás."""
+    import openpyxl
+
+    hoy = date.today()
+    intentos = []
+    contenido = None
+    for atras in range(0, 6):
+        anio, mes = hoy.year, hoy.month - atras
+        while mes <= 0:
+            mes += 12
+            anio -= 1
+        url = CONSTRUYA_URL.format(anio=anio, mes=mes)
+        try:
+            r = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            tipo = r.headers.get("content-type", "")
+            if r.status_code == 200 and "spreadsheet" in tipo.lower():
+                contenido = r.content
+                break
+            intentos.append(f"{anio}-{mes:02d}: HTTP {r.status_code}")
+        except Exception as e:
+            intentos.append(f"{anio}-{mes:02d}: {e}")
+    if contenido is None:
+        raise ValueError("Construya no descargable — " + " · ".join(intentos))
+
+    ws = openpyxl.load_workbook(io.BytesIO(contenido), data_only=True)["Indice Construya"]
+    out = {}
+    for i in range(5, ws.max_row + 1):
+        fecha, var = ws.cell(i, 1).value, ws.cell(i, 3).value
+        if hasattr(fecha, "year") and isinstance(var, (int, float)):
+            # La planilla mezcla fracción (0,12) y porcentaje (12,0) según el
+            # tramo; se normaliza a porcentaje.
+            valor = float(var) * 100 if abs(float(var)) < 3 else float(var)
+            out[f"{fecha.year}-{fecha.month:02d}"] = round(valor, 2)
+    if len(out) < 24:
+        raise ValueError(f"Construya: sólo {len(out)} meses parseados")
+    return out
+
+
+def _ma12(s: dict) -> dict:
+    """Promedio móvil de 12 meses de un {YYYY-MM: valor}, para poder comparar
+    contra series que ya vienen suavizadas."""
+    meses = sorted(s)
+    return {meses[i]: round(sum(s[meses[j]] for j in range(i - 11, i + 1)) / 12, 3)
+            for i in range(11, len(meses))}
+
+
+def _serie_indicador(nombre: str) -> dict:
+    """{YYYY-MM: valor} de un indicador, leído de los CSV de `output/series/`.
+
+    No de `series.json`: ese archivo lo escribe publicar.py, que en el pipeline
+    corre DESPUÉS de este script, así que acá siempre se estaría leyendo la
+    versión del día anterior — y para un indicador recién incorporado, una que
+    todavía no lo contiene. Los CSV, en cambio, los deja descargar_series.py
+    inmediatamente antes."""
+    import csv
+
+    out = {}
+    for archivo in sorted((ROOT / "output" / "series").glob("*.csv")):
+        with archivo.open(encoding="utf-8", newline="") as fh:
+            for fila in csv.reader(fh):
+                if len(fila) >= 3 and fila[1] == nombre:
+                    try:
+                        out[fila[0][:7]] = float(fila[2])
+                    except ValueError:
+                        continue
+    return out
+
+
 def _difs(s: dict) -> dict:
     yms = sorted(s)
     return {yms[i]: round(s[yms[i]] - s[yms[i - 1]], 2) for i in range(1, len(yms))}
@@ -761,6 +844,33 @@ def main():
             print(f"  {nombre}: r = {r}  (n = {n})")
     except Exception as e:
         print(f"[WARN] EPU Argentina no disponible: {e}")
+
+    # ── brecha de obra pública vs Índice Construya (ADR-0088) ────────────────
+    # Contraste percepción/conducta: la brecha es lo que las constructoras
+    # DICEN esperar; Construya es el volumen de insumos que efectivamente se
+    # vende. Si las expectativas se hunden y el volumen no cae, la tensión es
+    # discursiva; si caen juntas, es material.
+    try:
+        construya = fetch_construya_mensual()
+        resultados["construya_var_ia_mensual"] = construya
+        brecha = _serie_indicador("brecha_obra_publica")
+        # La brecha ya viene promediada a 12 meses por construcción, así que
+        # Construya se suaviza igual antes de comparar: correlacionar una serie
+        # suavizada contra una cruda mide en buena parte la diferencia de
+        # suavizado y atenúa el resultado (r baja de 0,79 a 0,26 sólo por eso).
+        construya12 = _ma12(construya)
+        pares_c = {
+            "niveles (brecha obra pública vs Construya var. i.a., ambas 12m)": (brecha, construya12),
+            "primeras diferencias (brecha vs Construya)": (_difs(brecha), _difs(construya12)),
+        }
+        resultados["correlaciones_brecha_obra_publica"] = {}
+        print("correlaciones brecha obra pública ↔ Construya (positiva = válida):")
+        for nombre, (a, b) in pares_c.items():
+            r, n = _pearson(a, b)
+            resultados["correlaciones_brecha_obra_publica"][nombre] = {"r": r, "n": n}
+            print(f"  {nombre}: r = {r}  (n = {n})")
+    except Exception as e:
+        print(f"[WARN] Índice Construya no disponible: {e}")
 
     SALIDA.write_text(json.dumps(resultados, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n[OK] {SALIDA}")

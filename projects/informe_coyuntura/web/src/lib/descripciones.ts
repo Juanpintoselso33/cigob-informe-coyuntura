@@ -104,6 +104,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Mide el capital electoral del oficialismo, base de su poder de negociación.",
     frecuencia: "Continua", tipo: "Brecha (pp)",
   },
+  brecha_obra_publica: {
+    que: "La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que trabajan para clientes privados. El INDEC les pregunta todos los meses si creen que su actividad va a subir o bajar en el trimestre siguiente, y publica las dos respuestas por separado. El indicador resta una de la otra y promedia los últimos doce meses.",
+    aporta: "Las dos son el mismo sector: mismos costos, mismo crédito, misma economía. Lo único que las distingue es quién les paga. Por eso la diferencia entre ambas aísla lo que aporta el Estado y descarta el ciclo económico general. Cuando las que dependen de la obra pública esperan mucho peor que sus pares privadas, la fuente del problema es la política pública y no el mercado.",
+    frecuencia: "Mensual (12m)", tipo: "Brecha (pp)",
+  },
   ratio_dnu: {
     que: "Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en los últimos 12 meses.",
     aporta: "Un ratio alto indica un Ejecutivo que legisla por decreto ante un Congreso que no acompaña.",
@@ -383,6 +388,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   confianza: "El ánimo y la seguridad de la vida diaria: confianza del consumidor (UTDT), inseguridad, sentimiento digital, y consumo de carne y patentamiento de motos como termómetros de bolsillo.",
   // ITCP
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
+  sector_privado: "La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados. Al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga: la diferencia aísla lo que aporta la política pública y descarta el ciclo económico.",
   poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.",
   alianzas_territoriales: "El sostén federal del gobierno: las transferencias a las provincias (armonía fiscal), el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI.",
   cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza, medida en un único indicador bicameral (Diputados 65%, Senado 35%).",
