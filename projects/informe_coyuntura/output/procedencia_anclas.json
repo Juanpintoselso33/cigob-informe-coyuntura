@@ -3,10 +3,9 @@
     "ITCM": {
       "peso_total": 1.0,
       "categorias": {
-        "sin_declarar": 0.4534,
+        "conceptual": 0.48700000000000004,
         "convencion": 0.377,
         "documento": 0.026000000000000002,
-        "conceptual": 0.0336,
         "historia_larga": 0.11
       },
       "detalle": [
@@ -17,10 +16,52 @@
           "motivo": "«conserva los cortes institucionales» del documento de diseño"
         },
         {
+          "indicador": "ipc_total",
+          "categoria": "conceptual",
+          "peso": 0.104,
+          "motivo": "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120)"
+        },
+        {
+          "indicador": "emae_ia",
+          "categoria": "conceptual",
+          "peso": 0.088,
+          "motivo": "bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120)"
+        },
+        {
+          "indicador": "recaudacion",
+          "categoria": "conceptual",
+          "peso": 0.072,
+          "motivo": "bandas de variación real en torno al cero; los cortes además caen razonablemente en la distribución 2021-2023 (ADR-0120)"
+        },
+        {
+          "indicador": "rem_ipc_12m",
+          "categoria": "conceptual",
+          "peso": 0.065,
+          "motivo": "hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120)"
+        },
+        {
+          "indicador": "reservas_bcra",
+          "categoria": "conceptual",
+          "peso": 0.0544,
+          "motivo": "bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120)"
+        },
+        {
+          "indicador": "saldo_comercial_12m",
+          "categoria": "conceptual",
+          "peso": 0.048,
+          "motivo": "bandas en torno al equilibrio comercial (cero), techo institucional 85; consistentes con la mediana histórica (ADR-0120)"
+        },
+        {
           "indicador": "idc",
           "categoria": "conceptual",
           "peso": 0.0336,
           "motivo": "anclas en desvíos estándar: +1σ ≈ p84 · −1σ ≈ p16 (ADR-0028)"
+        },
+        {
+          "indicador": "ipi_manufacturero",
+          "categoria": "conceptual",
+          "peso": 0.022,
+          "motivo": "hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079)"
         },
         {
           "indicador": "tcrm",
@@ -63,58 +104,15 @@
           "categoria": "convencion",
           "peso": 0.032,
           "motivo": "«calibradas a la remonetización 2024-2026» (ADR-0022)"
-        },
-        {
-          "indicador": "ipc_total",
-          "categoria": "sin_declarar",
-          "peso": 0.104,
-          "motivo": "el comentario sólo dice la unidad («% mensual»)"
-        },
-        {
-          "indicador": "emae_ia",
-          "categoria": "sin_declarar",
-          "peso": 0.088,
-          "motivo": "el comentario sólo dice la unidad"
-        },
-        {
-          "indicador": "recaudacion",
-          "categoria": "sin_declarar",
-          "peso": 0.072,
-          "motivo": "el comentario sólo dice la unidad"
-        },
-        {
-          "indicador": "rem_ipc_12m",
-          "categoria": "sin_declarar",
-          "peso": 0.065,
-          "motivo": "el comentario explica la transformación a equivalente mensual, no de dónde salen los cortes"
-        },
-        {
-          "indicador": "reservas_bcra",
-          "categoria": "sin_declarar",
-          "peso": 0.0544,
-          "motivo": "el comentario sólo aclara netas vs brutas"
-        },
-        {
-          "indicador": "saldo_comercial_12m",
-          "categoria": "sin_declarar",
-          "peso": 0.048,
-          "motivo": "el comentario sólo dice la unidad"
-        },
-        {
-          "indicador": "ipi_manufacturero",
-          "categoria": "sin_declarar",
-          "peso": 0.022,
-          "motivo": "hereda las bandas del EMAE a propósito (ADR-0076/0079), que a su vez no declaran origen"
         }
       ],
       "share": {
-        "sin_declarar": 0.453,
+        "conceptual": 0.487,
         "convencion": 0.377,
         "documento": 0.026,
-        "conceptual": 0.034,
         "historia_larga": 0.11
       },
-      "share_circular": 0.83
+      "share_circular": 0.377
     },
     "ITCG": {
       "peso_total": 1.0,

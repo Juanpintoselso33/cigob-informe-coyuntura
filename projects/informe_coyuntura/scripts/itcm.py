@@ -87,11 +87,24 @@ INF = float("inf")
 # Tablas de bandas de la sección IV del documento. (low, high, puntaje).
 BANDAS_ITCM = {
     "ipc_total": [                      # % mensual
+        # Bandas NORMATIVAS, no calibradas contra la historia (ADR-0120). Los
+        # cortes son metas de estabilidad de precios: 1% m/m ≈ 12,7% anual = zona
+        # de éxito; 5% m/m ≈ 80% anual = fracaso. NO se anclan a los percentiles
+        # de la serie propia a propósito: la inflación de 2021-2023 promedió 6,1%
+        # m/m, de modo que anclarla a esa historia pondría un mes mediano
+        # pre-mandato en el peor tramo y haría parecer perfecto cualquier mes de
+        # hoy sólo porque el punto de partida era catastrófico — el blanqueo de
+        # señal que ADR-0045 prohíbe. El umbral es la referencia externa correcta.
         (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
     ],
     "rem_ipc_12m": [                    # EQUIVALENTE MENSUAL del REM (% mensual), raíz 12.
         # Valor DERIVADO en macro.py. Misma escala mensual que el IPC: pone la
         # expectativa anual en términos mensuales comparables a la inflación realizada.
+        # Comparte deliberadamente las bandas NORMATIVAS del ipc_total (ADR-0120):
+        # el REM es la inflación esperada y se juzga con la misma vara que la
+        # realizada, de modo que un mismo puntaje signifique lo mismo en los dos.
+        # No tiene historia propia previa a dic-2023 —es la serie derivada— pero
+        # hereda su criterio del IPC, no del período medido.
         (-INF, 1.0, 100), (1.0, 2.0, 85), (2.0, 3.0, 65), (3.0, 5.0, 40), (5.0, INF, 10),
     ],
     "idm": [                            # Índice de Desequilibrio Monetario (pp, brecha i.a. real)
@@ -109,14 +122,38 @@ BANDAS_ITCM = {
         (-INF, 0.0, 100), (0.0, 25.0, 85), (25.0, 50.0, 60),
         (50.0, 75.0, 35), (75.0, INF, 10),
     ],
-    "recaudacion": [                    # % var mensual
+    "recaudacion": [                    # % var mensual (i.a. real, prom. móvil 3m)
+        # Bandas de VARIACIÓN REAL en torno al cero (ADR-0120): el cero es el
+        # punto con significado propio —la recaudación empata a la inflación— y
+        # los cortes de ±5% son medio punto de crecimiento/caída real. A
+        # diferencia del IPC, acá los cortes SÍ caen razonablemente en la
+        # distribución pre-mandato (−5→p22, 0→p41, 5→p48, 10→p96 sobre 2021-2023):
+        # la banda de crecimiento nulo separa de hecho los meses buenos de los
+        # malos de la era anterior. Es una banda conceptual (anclada al cero) que
+        # además resulta consistente con la historia, no una convención del período.
         (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60), (-5.0, 0.0, 40), (-INF, -5.0, 10),
     ],
     "saldo_comercial_12m": [            # millones USD acumulado 12m
+        # Bandas en torno al EQUILIBRIO comercial (ADR-0120): el cero —comercio
+        # balanceado— es el punto con significado, y los cortes marcan superávit/
+        # déficit crecientes en miles de millones redondos. Techo institucional
+        # de 85, no 100: un superávit puede ser por contracción de importaciones
+        # (recesión), así que no se premia como óptimo pleno (regla de ADR-0056).
+        # Sobre la historia 2022-2023 los cortes centrales caen cerca de la
+        # mediana (5000→p53), de modo que la banda discrimina también fuera del
+        # período que mide — no está calibrada a él.
         (15000.0, INF, 85), (10000.0, 15000.0, 75), (5000.0, 10000.0, 60),
         (-5000.0, 5000.0, 50), (-15000.0, -5000.0, 30), (-INF, -15000.0, 10),
     ],
     "reservas_bcra": [                  # millones USD — RESERVAS NETAS (no brutas)
+        # Bandas en torno al CERO de reservas netas (ADR-0120): el cero —el BCRA
+        # ni acumula ni quema reservas propias— es el umbral con significado, y
+        # los cortes son colchones de USD en miles de millones redondos (>20 mil =
+        # holgado, negativo = posición vendida). No se ancla a la historia porque
+        # la serie propia arranca en jun-2024 (límite de la fuente de netas, no
+        # hay dato pre-mandato comparable): el criterio es el nivel de cobertura,
+        # no la distribución observada. Sería más robusto en MESES DE
+        # IMPORTACIONES —revisión pendiente, ADR-0084 rechazó una primera versión.
         (20000.0, INF, 100), (15000.0, 20000.0, 85), (10000.0, 15000.0, 70),
         (5000.0, 10000.0, 50), (0.0, 5000.0, 30), (-INF, 0.0, 10),
     ],
@@ -126,6 +163,12 @@ BANDAS_ITCM = {
         (1.0, INF, 100), (0.5, 1.0, 85), (-0.5, 0.5, 60), (-1.0, -0.5, 35), (-INF, -1.0, 10),
     ],
     "emae_ia": [                        # % variación interanual
+        # Bandas de crecimiento en torno al CERO (ADR-0120): el cero —actividad
+        # estancada i.a.— es el punto con significado, y los cortes son tasas de
+        # expansión/recesión en puntos redondos (crece >5% = fuerte, cae >5% =
+        # recesión profunda). Sobre la historia 2021-2023 el corte de crecimiento
+        # nulo cae en p26 y el de +3% en p42: la banda separa expansión de
+        # recesión también en la era anterior, no está ajustada a este período.
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],

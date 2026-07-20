@@ -66,7 +66,13 @@ CATEGORIAS = ("externa", "documento", "conceptual", "historia_larga",
 # Bajarlos cuando el número mejore es parte del trabajo: un techo que quedó
 # muy por encima del valor real deja de frenar nada.
 TECHOS = {
-    "ITCM": {"circular": 0.83, "sin_declarar": 0.453},
+    # ITCM bajó de 0,83 a 0,38 el 2026-07-20 (ADR-0120): las siete bandas
+    # sin_declarar pasaron a declarar su origen —normativo o conceptual—, y
+    # sin_declarar cayó de 0,45 a 0,00. El techo se baja para FIJAR la mejora:
+    # a partir de acá el ITCM no puede volver a subir de 0,38 sin que alguien
+    # lo firme. El 0,38 que queda es convención irreducible (idm, iai, icip,
+    # costo de financiamiento, crédito real: sin historia previa a dic-2023).
+    "ITCM": {"circular": 0.38, "sin_declarar": 0.01},
     "ITCG": {"circular": 0.51, "sin_declarar": 0.163},
     "ITCP": {"circular": 0.61, "sin_declarar": 0.206},
 }
@@ -75,16 +81,16 @@ TECHOS = {
 # auditable la clasificación: cualquiera puede ir al comentario y discutirla.
 PROCEDENCIA = {
     # ── ITCM ────────────────────────────────────────────────────────────────
-    "ipc_total": ("sin_declarar", "el comentario sólo dice la unidad («% mensual»)"),
-    "rem_ipc_12m": ("sin_declarar", "el comentario explica la transformación a equivalente mensual, no de dónde salen los cortes"),
+    "ipc_total": ("conceptual", "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120)"),
+    "rem_ipc_12m": ("conceptual", "hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120)"),
     "idm": ("convencion", "«calibrado con la historia 2024-2026»"),
     "presion_dolarizacion": ("documento", "«conserva los cortes institucionales» del documento de diseño"),
-    "recaudacion": ("sin_declarar", "el comentario sólo dice la unidad"),
-    "saldo_comercial_12m": ("sin_declarar", "el comentario sólo dice la unidad"),
-    "reservas_bcra": ("sin_declarar", "el comentario sólo aclara netas vs brutas"),
+    "recaudacion": ("conceptual", "bandas de variación real en torno al cero; los cortes además caen razonablemente en la distribución 2021-2023 (ADR-0120)"),
+    "saldo_comercial_12m": ("conceptual", "bandas en torno al equilibrio comercial (cero), techo institucional 85; consistentes con la mediana histórica (ADR-0120)"),
+    "reservas_bcra": ("conceptual", "bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120)"),
     "idc": ("conceptual", "anclas en desvíos estándar: +1σ ≈ p84 · −1σ ≈ p16 (ADR-0028)"),
-    "emae_ia": ("sin_declarar", "el comentario sólo dice la unidad"),
-    "ipi_manufacturero": ("sin_declarar", "hereda las bandas del EMAE a propósito (ADR-0076/0079), que a su vez no declaran origen"),
+    "emae_ia": ("conceptual", "bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120)"),
+    "ipi_manufacturero": ("conceptual", "hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079)"),
     "tcrm": ("historia_larga", "historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos"),
     "resultado_primario": ("convencion", "referencias dic-2023 (−12,0%) y el programa estabilizado en +6/+8% (ADR-0072)"),
     "costo_financiamiento_tesoro": ("convencion", "extremos tomados de dic-2023 (−12,2%) y ago-2025 (+33,5%) (ADR-0071)"),
