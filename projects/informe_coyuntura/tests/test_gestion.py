@@ -35,3 +35,51 @@ def test_el_store_de_concesiones_no_reintrodujo_la_etapa_preadjudicada():
     assert "II-B" not in store["etapas"], (
         "II-B volvió al store: verificar en CONTRAT.AR que esté ADJUDICADO y no "
         "PREADJUDICADO antes de aceptar el cambio (ADR-0087)")
+
+
+# ── Desregulación: sólo cuenta lo que deroga de verdad (ADR-0096) ───────────
+
+def test_solo_cuenta_derogaciones_en_la_parte_dispositiva():
+    """La mitad de lo que contaba la versión anterior no derogaba nada: la
+    búsqueda de InfoLeg matchea la palabra en los considerandos, donde la norma
+    cuenta lo que derogó OTRA. El caso testigo era una resolución de Cancillería
+    sobre un nombramiento episcopal."""
+    import gestion
+    considerando = ("VISTO... Que la Resolución ANAC N° 247 deroga en su Artículo 1° "
+                    "la mencionada Resolución ANAC N° 754/16. Por ello, EL ADMINISTRADOR "
+                    "RESUELVE: ARTÍCULO 1°.- Apruébase el procedimiento.")
+    assert gestion._DISPOSITIVA.search(considerando)
+    cuerpo = considerando[gestion._DISPOSITIVA.search(considerando).end():]
+    assert not gestion._VERBO_DEROGA.search(cuerpo), "una mención en considerandos no debe contar"
+
+    dispositivo = "Por ello, LA COMISIÓN RESUELVE: ARTÍCULO 1°.- Derógase la Ley N° 20.680."
+    cuerpo2 = dispositivo[gestion._DISPOSITIVA.search(dispositivo).end():]
+    assert gestion._VERBO_DEROGA.search(cuerpo2)
+
+
+def test_derogacion_parcial_no_cuenta_como_norma_completa():
+    """Eliminar «el punto 9) del apartado E) del artículo 20» no es comparable
+    con derogar una ley entera; se releva aparte."""
+    import gestion
+    for parcial in ("el artículo 5° BIS del Capítulo V de las NORMAS",
+                    "la Sección XI del Capítulo V del Título II",
+                    "el punto 9) del apartado E) del artículo 20",
+                    "el título VII (artículos 7° a 18) de la ley 23.905"):
+        assert gestion._PARTE_DE_NORMA.match(parcial), f"debería ser parcial: {parcial}"
+    for completa in ("la Ley N° 20.680", "las Resoluciones N° 71/2020 y N° 190/2020"):
+        assert not gestion._PARTE_DE_NORMA.match(completa), f"debería ser completa: {completa}"
+
+
+def test_el_dnu_70_2023_esta_contado():
+    """La ficha afirmaba que el DNU 70/23 no figuraba en la fuente y el auditor
+    externo lo tomó como cierto. Es falso: figura, y aporta 38 normas."""
+    import json
+    from pathlib import Path
+    store = Path(__file__).resolve().parents[1] / "data" / "gestion" / "desregulacion_normas.json"
+    if not store.exists():
+        import pytest
+        pytest.skip("caché por norma todavía no generada")
+    normas = json.loads(store.read_text(encoding="utf-8-sig"))["normas"]
+    dnu = normas.get("395521")
+    assert dnu is not None, "el DNU 70/2023 debería estar en la caché"
+    assert dnu["derogadas"] >= 30, f"el DNU 70/2023 deroga decenas de normas, no {dnu['derogadas']}"

@@ -1,0 +1,480 @@
+{
+ "_meta": {
+  "descripcion": "Análisis por norma del indicador desregulacion_normativa (ADR-0096). El texto de una norma publicada no cambia, así que cada entrada se calcula una sola vez y se conserva. Sin esta caché cada corrida bajaría 60+ documentos de InfoLeg."
+ },
+ "normas": {
+  "394108": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2023-12-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "395521": {
+   "derogadas": 38,
+   "dispositiva": true,
+   "fecha": "2023-12-01",
+   "listado": [
+    "12.507/56",
+    "12.916",
+    "13.653",
+    "14.467",
+    "14.499",
+    "14.546",
+    "1491/02",
+    "15.349/46",
+    "1654/02",
+    "17.285",
+    "18.425",
+    "18.600",
+    "18.770",
+    "18.828",
+    "18.829",
+    "18.859",
+    "18.875",
+    "18.905",
+    "19.030",
+    "19.227",
+    "19.990",
+    "21.608",
+    "22.415",
+    "23.696",
+    "25.564",
+    "25.626",
+    "25.822",
+    "26.356",
+    "26.737",
+    "26.992",
+    "26.994",
+    "27.114",
+    "27.221",
+    "27.545",
+    "27.551",
+    "311/06",
+    "634/03",
+    "6582/58"
+   ],
+   "parciales": 29
+  },
+  "395727": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2023-12-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "395978": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-01-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "396448": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2024-02-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "397635": {
+   "derogadas": 4,
+   "dispositiva": true,
+   "fecha": "2024-03-01",
+   "listado": [
+    "190/2020",
+    "275/2020",
+    "71/2020",
+    "90/2021"
+   ],
+   "parciales": 0
+  },
+  "397646": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-03-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "398625": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2024-04-01",
+   "listado": [],
+   "parciales": 3
+  },
+  "399888": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-05-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "400094": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2024-06-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "400361": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2024-06-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "400781": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-06-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "400875": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-06-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "401268": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2024-07-01",
+   "listado": [],
+   "parciales": 3
+  },
+  "403209": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-08-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "403669": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-09-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "405216": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-10-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "405256": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-10-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "405597": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-10-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "405642": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-10-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "405947": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2024-11-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "407618": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2024-12-01",
+   "listado": [],
+   "parciales": 2
+  },
+  "408248": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2025-01-01",
+   "listado": [],
+   "parciales": 2
+  },
+  "408273": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-01-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "408372": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-01-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "408566": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-01-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "409013": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2025-02-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "409027": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-02-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "409028": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-02-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "409694": {
+   "derogadas": 1,
+   "dispositiva": true,
+   "fecha": "2025-02-01",
+   "listado": [
+    "64/08"
+   ],
+   "parciales": 0
+  },
+  "409766": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-02-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "410543": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2025-03-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "410547": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-03-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "412720": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-05-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "412947": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2025-05-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "413121": {
+   "derogadas": 2,
+   "dispositiva": true,
+   "fecha": "2025-05-01",
+   "listado": [
+    "3132/2024",
+    "800/2021"
+   ],
+   "parciales": 0
+  },
+  "414151": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2025-06-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "414155": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2025-06-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "414176": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2025-06-01",
+   "listado": [],
+   "parciales": 3
+  },
+  "414639": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-07-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "415328": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2025-07-01",
+   "listado": [],
+   "parciales": 2
+  },
+  "415526": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2025-07-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "415879": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-08-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "416470": {
+   "derogadas": 1,
+   "dispositiva": true,
+   "fecha": "2025-08-01",
+   "listado": [
+    "2098/08"
+   ],
+   "parciales": 1
+  },
+  "417011": {
+   "derogadas": 1,
+   "dispositiva": true,
+   "fecha": "2025-09-01",
+   "listado": [
+    "35/20"
+   ],
+   "parciales": 0
+  },
+  "417101": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-09-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "417102": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-09-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "419824": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-11-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "420043": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2025-11-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "422533": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2026-01-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "423104": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2026-02-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "424022": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2026-03-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "424109": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2026-03-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "424396": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2026-03-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "425452": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2026-05-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "426089": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2026-05-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "426304": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2026-06-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "426494": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2026-06-01",
+   "listado": [],
+   "parciales": 0
+  },
+  "426583": {
+   "derogadas": 0,
+   "dispositiva": true,
+   "fecha": "2026-06-01",
+   "listado": [],
+   "parciales": 1
+  },
+  "426937": {
+   "derogadas": 0,
+   "dispositiva": false,
+   "fecha": "2026-06-01",
+   "listado": [],
+   "parciales": 0
+  }
+ }
+}

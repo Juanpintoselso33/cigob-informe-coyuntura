@@ -48,6 +48,7 @@ import io
 import os
 import re
 import sys
+import calendar
 import json
 import subprocess
 import requests
@@ -346,29 +347,184 @@ def fetch_apertura_comercial(brecha_pct: float | None = None) -> dict | None:
         return None
 
 
+# ── D1: desregulación — normas efectivamente derogadas (ADR-0096) ────────────
+# La versión anterior contaba las normas cuyo TEXTO COMPLETO contenía la palabra
+# "deroga", y trataba ese conteo como porcentaje de avance contra una meta
+# interna de 100 normas. Dos problemas medidos el 2026-07-20:
+#
+#   1. Cerca de la mitad de lo que contaba no derogaba nada. La búsqueda de
+#      InfoLeg matchea la palabra en cualquier parte del documento, incluidos
+#      los considerandos que mencionan la derogación hecha por OTRA norma. Entre
+#      lo contado había una resolución de Cancillería sobre un nombramiento
+#      episcopal, que menciona un decreto derogado de la Sagrada Congregación
+#      Consistorial.
+#   2. El DNU 70/23 —que deroga 38 normas completas y modifica otras 32— pesaba
+#      exactamente lo mismo que un decreto que elimina un trámite: uno.
+#
+# Ahora se cuentan NORMAS DEROGADAS, no actos derogatorios, y sólo si la
+# derogación está en la parte dispositiva. El texto de una norma publicada es
+# inmutable, así que el análisis de cada una se cachea para siempre y cada
+# corrida sólo baja las nuevas.
+
+INFOLEG_ANEXO = "https://servicios.infoleg.gob.ar/infolegInternet/anexos/{lo}-{hi}/{id}/norma.htm"
+DESREG_STORE = PROJECT_DIR / "data" / "gestion" / "desregulacion_normas.json"
+
+# Frontera entre considerandos y parte dispositiva. Todo lo que está antes es
+# relato de antecedentes: ahí "deroga" habla de lo que hizo otro.
+_DISPOSITIVA = re.compile(r"\b(RESUELVE|RESUELVEN|DECRETA|DECRETAN|DISPONE|DISPONEN)\s*:", re.I)
+# Verbo derogatorio en forma imperativa/resolutiva (no "fue derogada por").
+_VERBO_DEROGA = re.compile(r"[Dd]er[oó]g(?:ar|[uú]ese|an?se)|[Dd][eé]jan?se sin efecto", re.I)
+# Lo que se deroga va desde una ley entera hasta "el punto 9) del apartado E)
+# del artículo 20". Son objetos incommensurables, así que se separan: sólo se
+# cuentan las normas COMPLETAS y las derogaciones parciales se relevan aparte,
+# como contexto (ADR-0096). Si la cláusula empieza nombrando una parte, es
+# parcial por más que después mencione la norma a la que pertenece.
+_PARTE_DE_NORMA = re.compile(
+    r"^\s*(?:el|la|los|las)?\s*"
+    r"(art[ií]culos?|secci[oó]n|t[ií]tulos?|cap[ií]tulos?|puntos?|apartados?|incisos?|anexos?)",
+    re.I)
+# Identificador de norma: 20.680 · 20680 · 71/2020
+_ID_NORMA = re.compile(
+    r"(?:N[°ºo]?\.?\s*)((?:\d{1,2}\.\d{3}|\d{4,5})(?:/\d{2,4})?|\d{1,4}/\d{2,4})")
+_CLAUSULA_DEROGA = re.compile(r"[Dd]er[oó]g(?:ar|[uú]ese|an?se)\s*,?\s*(.{0,220})")
+
+
+def _desreg_cargar_store() -> dict:
+    if DESREG_STORE.exists():
+        try:
+            return json.loads(DESREG_STORE.read_text(encoding="utf-8-sig"))
+        except Exception:
+            pass
+    return {"_meta": {"descripcion":
+             "Análisis por norma del indicador desregulacion_normativa (ADR-0096). "
+             "El texto de una norma publicada no cambia, así que cada entrada se "
+             "calcula una sola vez y se conserva. Sin esta caché cada corrida "
+             "bajaría 60+ documentos de InfoLeg."},
+            "normas": {}}
+
+
+def _infoleg_listar_deroga(anio: int, mes: int) -> list:
+    """[(id, 'YYYY-MM-DD')] de normas del mes cuyo texto menciona 'deroga'.
+
+    Se enumera mes a mes y no de una sola vez porque el buscador no pagina de
+    forma estable; con ventanas mensuales ningún mes supera una página
+    (verificado sobre dic-2023 → jul-2026: máximo 5 resultados)."""
+    from bs4 import BeautifulSoup
+    ultimo = calendar.monthrange(anio, mes)[1]
+    session = requests.Session()
+    r_home = session.get(INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r_home.raise_for_status()
+    m = re.search(r'action="(/infolegInternet/[^"]+)"', r_home.text)
+    if not m:
+        raise ValueError("InfoLeg: no se encontró la URL del formulario")
+    url = "https://servicios.infoleg.gob.ar" + m.group(1)
+    datos = {"tipoNorma": "", "numero": "", "anioSancion": "", "dependencia": "",
+             "diaPubDesde": "01", "mesPubDesde": f"{mes:02d}", "anioPubDesde": str(anio),
+             "diaPubHasta": f"{ultimo:02d}", "mesPubHasta": f"{mes:02d}", "anioPubHasta": str(anio),
+             "texto": "deroga"}
+    r = session.post(url, data=datos, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    vistos, out = set(), []
+    for a in BeautifulSoup(r.text, "html.parser").find_all("a", href=True):
+        g = re.search(r"verNorma\.do\?(?:resaltar=true&)?id=(\d+)", a["href"])
+        if g and g.group(1) not in vistos:
+            vistos.add(g.group(1))
+            out.append((g.group(1), f"{anio}-{mes:02d}-01"))
+    return out
+
+
+def _infoleg_analizar_norma(norma_id: str) -> dict:
+    """{dispositiva, derogadas, listado} de una norma, desde su texto completo."""
+    from bs4 import BeautifulSoup
+    lo = (int(norma_id) // 5000) * 5000
+    url = INFOLEG_ANEXO.format(lo=lo, hi=lo + 4999, id=norma_id)
+    r = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
+    if r.status_code != 200:
+        raise ValueError(f"texto no disponible (HTTP {r.status_code})")
+    texto = re.sub(r"\s+", " ", BeautifulSoup(r.content, "html.parser").get_text(" ", strip=True))
+
+    corte = _DISPOSITIVA.search(texto)
+    cuerpo = texto[corte.end():] if corte else texto
+    dispositiva = bool(_VERBO_DEROGA.search(cuerpo))
+
+    completas, parciales = set(), 0
+    if dispositiva:
+        for m in _CLAUSULA_DEROGA.finditer(cuerpo):
+            fragmento = m.group(1)
+            if _PARTE_DE_NORMA.match(fragmento):
+                parciales += 1
+                continue
+            ids = set(_ID_NORMA.findall(fragmento))
+            if ids:
+                completas |= ids
+            else:
+                # deroga algo sin identificador numérico (una sección de un
+                # digesto, un régimen nombrado en prosa): cuenta como parcial
+                parciales += 1
+    return {"dispositiva": dispositiva,
+            "derogadas": len(completas),
+            "parciales": parciales,
+            "listado": sorted(completas)}
+
+
 def fetch_desregulacion_normativa() -> dict | None:
     """
-    Avance desregulatorio, proxy InfoLeg: normas publicadas desde dic-2023 que
-    contienen "deroga". Calibración: 100 normas derogantes = plan completo
-    (avance 100%); el conteo de jun-2026 (60) coincide con la lectura del doc
-    260702 (57% de normas derogadas → banda 85).
+    Normas efectivamente derogadas por el Poder Ejecutivo desde dic-2023.
+
+    Cuenta NORMAS DEROGADAS —no actos derogatorios— y sólo las derogaciones que
+    figuran en la parte dispositiva. Ver el comentario de arriba para los dos
+    defectos de la versión anterior que motivaron el cambio (ADR-0096).
+
+    El análisis por norma se cachea de forma permanente: el texto de una norma
+    publicada es inmutable, así que cada corrida sólo baja las nuevas.
     """
     try:
-        today = date.today()
-        count = _infoleg_post(
-            texto="deroga", tipo_norma="",
-            fecha_desde=("01", "12", "2023"),
-            fecha_hasta=(today.strftime("%d"), today.strftime("%m"), today.strftime("%Y")),
-        )
-        avance = round(min(100.0, float(count)), 1)
+        store = _desreg_cargar_store()
+        normas = store.setdefault("normas", {})
+
+        hoy = date.today()
+        anio, mes = 2023, 12
+        pendientes, fallos = [], 0
+        while (anio, mes) <= (hoy.year, hoy.month):
+            for norma_id, fecha in _infoleg_listar_deroga(anio, mes):
+                if norma_id not in normas:
+                    pendientes.append((norma_id, fecha))
+            mes += 1
+            if mes > 12:
+                mes, anio = 1, anio + 1
+
+        for norma_id, fecha in pendientes:
+            try:
+                analisis = _infoleg_analizar_norma(norma_id)
+            except Exception as e:
+                fallos += 1
+                print(f"  [WARN] desregulacion: norma {norma_id} ilegible ({e})")
+                continue
+            normas[norma_id] = {"fecha": fecha, **analisis}
+
+        DESREG_STORE.parent.mkdir(parents=True, exist_ok=True)
+        DESREG_STORE.write_text(json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True),
+                                encoding="utf-8")
+
+        if not normas:
+            raise ValueError("sin normas analizadas")
+        total = sum(n["derogadas"] for n in normas.values())
+        parciales = sum(n.get("parciales", 0) for n in normas.values())
+        con_derog = sum(1 for n in normas.values() if n["dispositiva"])
         return {
-            "valor":          avance,
-            "unidad":         "% de avance (proxy InfoLeg)",
-            "fuente":         INFOLEG_HOME,
-            "fecha_dato":     today.isoformat(),
-            "desactualizado": False,
-            "conteo_normas":  count,
-            "detalle_txt":    f"{count} normas con 'deroga' desde dic-2023 (100 = plan completo)",
+            "valor":            float(total),
+            "unidad":           "normas derogadas desde dic-2023",
+            "fuente":           INFOLEG_HOME,
+            "fecha_dato":       hoy.isoformat(),
+            "desactualizado":   False,
+            "actos_relevados":        len(normas),
+            "actos_derogan":          con_derog,
+            "derogaciones_parciales": parciales,
+            "normas_ilegibles":       fallos,
+            "detalle_txt": (f"{total} normas completas derogadas por {con_derog} actos con "
+                            f"derogación en su parte dispositiva, sobre {len(normas)} relevados "
+                            f"desde diciembre de 2023; además {parciales} derogaciones parciales "
+                            f"de artículos, secciones o puntos, que no se cuentan"),
         }
     except Exception as e:
         _warn("desregulacion_normativa", e)

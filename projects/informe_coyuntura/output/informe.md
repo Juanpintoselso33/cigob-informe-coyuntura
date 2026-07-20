@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-20 06:38:08"
+generado: "2026-07-20 07:42:59"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -71,14 +71,14 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
 
-### 🟢 Gestion — score 2.8/10 (estable)
+### 🟢 Gestion — score 2.9/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | cepo_mulc | 6.62 | % de brecha CCL/mayorista | 2026-07-20 | fresco |
 | apertura_comercial | 4.86 | % del intercambio (alícuota efectiva) | 2026-05-01 | fresco |
-| desregulacion_normativa | 61.0 | % de avance (proxy InfoLeg) | 2026-07-20 | fresco |
+| desregulacion_normativa | 47.0 | normas derogadas desde dic-2023 | 2026-07-20 | fresco |
 | reduccion_estado | -19.8 | % de variación vs dic-2023 (dotación APN) | 2026-05-01 | fresco |
 | gasto_funcionamiento | -24.35 | % de variación real vs 2023-05 (IMIG funcionamiento) | 2026-05-01 | fresco |
 | masa_salarial | -22.98 | % de variación real vs 2023-05 (SPN remuneraciones) | 2026-05-01 | fresco |
@@ -105,4 +105,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-20 06:38:08 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-20 07:42:59 — schema 1.2.0*

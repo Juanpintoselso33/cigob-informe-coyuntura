@@ -1,16 +1,16 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-20T04:22:06.005963",
-  "score": 2.8,
+  "generated_at": "2026-07-20T07:40:55.452010",
+  "score": 2.9,
   "itcg": {
-    "valor": 71.9,
+    "valor": 70.9,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "reformas_economicas": {
         "nombre": "Reformas económicas fundamentales",
         "peso": 0.35,
-        "puntaje": 80.5,
+        "puntaje": 77.6,
         "indicadores": {
           "cepo_mulc": {
             "peso": 0.4,
@@ -28,9 +28,9 @@
           },
           "desregulacion_normativa": {
             "peso": 0.2,
-            "puntaje_banda": 86.5,
-            "puntaje_aplicado": 86.5,
-            "valor": 61.0,
+            "puntaje_banda": 72.0,
+            "puntaje_aplicado": 72.0,
+            "valor": 47.0,
             "peso_efectivo": 0.07
           }
         },
@@ -182,17 +182,20 @@
       "peso_efectivo": 0.14
     },
     "desregulacion_normativa": {
-      "valor": 61.0,
-      "unidad": "% de avance (proxy InfoLeg)",
+      "valor": 47.0,
+      "unidad": "normas derogadas desde dic-2023",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
       "fecha_dato": "2026-07-20",
       "desactualizado": false,
-      "conteo_normas": 61,
-      "detalle_txt": "61 normas con 'deroga' desde dic-2023 (100 = plan completo)",
+      "actos_relevados": 60,
+      "actos_derogan": 24,
+      "derogaciones_parciales": 57,
+      "normas_ilegibles": 0,
+      "detalle_txt": "47 normas completas derogadas por 24 actos con derogación en su parte dispositiva, sobre 60 relevados desde diciembre de 2023; además 57 derogaciones parciales de artículos, secciones o puntos, que no se cuentan",
       "en_indice": true,
       "dimension": "reformas_economicas",
-      "puntaje_itcg": 86.5,
-      "puntaje_banda": 86.5,
+      "puntaje_itcg": 72.0,
+      "puntaje_banda": 72.0,
       "peso_efectivo": 0.07
     },
     "reduccion_estado": {

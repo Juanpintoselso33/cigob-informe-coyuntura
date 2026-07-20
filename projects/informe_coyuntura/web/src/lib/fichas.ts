@@ -1563,13 +1563,15 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "Sin rezago: el conteo se evalúa al día de la actualización (InfoLeg carga al ritmo del Boletín Oficial).",
     fuente: {
       organismo: "InfoLeg (Ministerio de Justicia)",
-      operacion: "Conteo de normas nacionales publicadas desde diciembre de 2023 cuyo texto contiene «deroga»",
+      operacion: "Normas nacionales publicadas desde diciembre de 2023 que derogan otras normas — conteo de las normas efectivamente derogadas",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/",
-      acceso: "Automático: consulta al buscador oficial de normas con rango de fechas y texto, con reintento.",
+      acceso: "Automático: se listan mes a mes las normas cuyo texto menciona una derogación y se descarga el texto completo de cada una para analizarla. El análisis se conserva: el texto de una norma publicada no cambia, de modo que cada actualización sólo procesa las nuevas.",
     },
     transformaciones: [
-      "Avance = cantidad de normas derogatorias, con calibración declarada: 100 normas = plan desregulador completo.",
-      "Cada norma cuenta una vez, sin importar cuántos artículos deroga.",
+      "De cada norma se lee sólo la parte dispositiva, es decir lo que la norma resuelve. Las menciones que aparecen en los considerandos se descartan, porque ahí la norma suele estar contando lo que derogó otra: sobre sesenta normas relevadas, veinticuatro derogan efectivamente algo y las demás sólo mencionan la palabra.",
+      "Se cuentan las normas completas que quedan sin efecto —leyes, decretos, resoluciones, disposiciones—, no los actos que las derogan. Así, el decreto de necesidad y urgencia de diciembre de 2023 aporta las treinta y ocho normas que deroga y no una sola unidad, como ocurría antes.",
+      "Las derogaciones parciales —un artículo, una sección, un punto de un reglamento— se relevan por separado y no se suman: eliminar el punto 9 de un apartado no es comparable con derogar una ley entera. Al día de hoy hay cincuenta y siete de estas derogaciones parciales.",
+      "El acumulado no baja nunca, porque una derogación no se deshace.",
     ],
     anclas: {
       bandas: [
@@ -1580,12 +1582,14 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "≤ 10", puntaje: 10 },
       ],
       puntos: [[10, 10], [20, 40], [40, 65], [60, 85], [70, 100]],
-      unidadCorta: "% de avance",
+      unidadCorta: "normas",
     },
     limitaciones: [
-      "Es un conteo de menciones, no una auditoría del contenido derogado.",
-      "La calibración «100 normas = plan completo» es una decisión propia declarada.",
-      "El megadecreto 70/2023 no está indexado como texto completo en la fuente y no aparece en el conteo: el indicador captura lo posterior.",
+      "La escala de referencia —cien normas equivalen a un plan desregulador completo— es una convención propia del proyecto y no proviene de ninguna meta oficial. Conviene leer el indicador por su evolución más que por su nivel absoluto.",
+      "El conteo trata como equivalentes normas de peso económico muy distinto: derogar una ley que regula un mercado entero cuenta igual que derogar una resolución administrativa menor.",
+      "La desregulación medida así resulta muy desigual en el tiempo: el decreto de necesidad y urgencia de diciembre de 2023 concentra treinta y ocho de las normas derogadas y el resto del mandato aporta el saldo restante en más de dos años y medio. El indicador describe correctamente esa forma, pero por eso mismo se mueve poco mes a mes.",
+      "Las derogaciones parciales quedan fuera. Como son más numerosas que las completas, el indicador subestima la actividad desregulatoria entendida en sentido amplio, y a la vez evita mezclar unidades que no son comparables.",
+      "Es un conteo normativo, no una auditoría del efecto económico de lo derogado.",
     ],
     faltantes: "Con el buscador caído, cae al valor de respaldo documentado (lectura del documento institucional); agotado eso, se mantiene el último valor disponible y los pesos se renormalizan.",
     revisiones: "El acumulado se reevalúa completo en cada actualización y puede moverse si la fuente reindexa.",
@@ -1593,6 +1597,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Automatizado desde el inicio del cinturón con la misma búsqueda, en escala lineal." },
       { fecha: "2026-07-02", cambio: "Umbrales institucionales del ITCG." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-07-20", cambio: "Cambio de unidad, a partir de una revisión externa del cinturón. El indicador contaba las normas cuyo texto mencionaba una derogación en cualquier parte del documento, y cerca de la mitad de lo contado no derogaba nada: eran normas que en sus considerandos referían la derogación hecha por otra. Ahora se lee la parte dispositiva y se cuentan las normas efectivamente derogadas. Se corrigió además una afirmación equivocada de esta misma ficha, que sostenía que el decreto de necesidad y urgencia de diciembre de 2023 no figuraba en la fuente: sí figura, y siempre estuvo contado, aunque pesaba como una sola norma pese a derogar treinta y ocho." },
     ],
   },
 

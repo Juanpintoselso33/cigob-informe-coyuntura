@@ -772,38 +772,37 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
 2024-01-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
 2023-12-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
-2026-07-01,desregulacion_normativa,61,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2026-06-01,desregulacion_normativa,60,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2026-05-01,desregulacion_normativa,56,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2026-04-01,desregulacion_normativa,54,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2026-03-01,desregulacion_normativa,54,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2026-02-01,desregulacion_normativa,51,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2026-01-01,desregulacion_normativa,50,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-12-01,desregulacion_normativa,49,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-11-01,desregulacion_normativa,49,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-10-01,desregulacion_normativa,47,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-09-01,desregulacion_normativa,47,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-08-01,desregulacion_normativa,44,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-07-01,desregulacion_normativa,42,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-06-01,desregulacion_normativa,39,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-05-01,desregulacion_normativa,36,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-04-01,desregulacion_normativa,33,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-03-01,desregulacion_normativa,33,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-02-01,desregulacion_normativa,31,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2025-01-01,desregulacion_normativa,26,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-12-01,desregulacion_normativa,22,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-11-01,desregulacion_normativa,21,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-10-01,desregulacion_normativa,20,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-09-01,desregulacion_normativa,16,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-08-01,desregulacion_normativa,15,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-07-01,desregulacion_normativa,14,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-06-01,desregulacion_normativa,13,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-05-01,desregulacion_normativa,9,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-04-01,desregulacion_normativa,8,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-03-01,desregulacion_normativa,7,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-02-01,desregulacion_normativa,5,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2024-01-01,desregulacion_normativa,4,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2023-12-01,desregulacion_normativa,3,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
+2026-06-30,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2026-05-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2026-04-30,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2026-03-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2026-02-28,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2026-01-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-12-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-11-30,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-10-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-09-30,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-08-31,desregulacion_normativa,46.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-07-31,desregulacion_normativa,45.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-06-30,desregulacion_normativa,45.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-05-31,desregulacion_normativa,45.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-04-30,desregulacion_normativa,43.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-03-31,desregulacion_normativa,43.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-02-28,desregulacion_normativa,43.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2025-01-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-12-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-11-30,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-10-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-09-30,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-08-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-07-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-06-30,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-05-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-04-30,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-03-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-02-29,desregulacion_normativa,38.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2024-01-31,desregulacion_normativa,38.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2023-12-31,desregulacion_normativa,38.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
 2026-07-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-06-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-05-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)

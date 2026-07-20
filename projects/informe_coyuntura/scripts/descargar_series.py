@@ -2425,6 +2425,37 @@ def fetch_protocolo_serie() -> list:
     return out
 
 
+def fetch_desregulacion_serie() -> list:
+    """Serie MENSUAL acumulada de normas completas derogadas desde dic-2023
+    (ADR-0096).
+
+    Se deriva de la caché por norma que arma el colector
+    (`data/gestion/desregulacion_normas.json`): sin red y sin volver a bajar
+    sesenta documentos de InfoLeg. Cada norma aporta al mes de su publicación y
+    el acumulado nunca baja, porque una derogación no se deshace.
+
+    Si la caché todavía no existe, la serie queda vacía en vez de inventar un
+    conteo: la primera corrida del colector la crea.
+    [[YYYY-MM-01, normas acumuladas]]."""
+    store_path = gestion.DESREG_STORE
+    if not store_path.exists():
+        print("  [WARN] desregulacion: sin caché por norma todavía -- serie omitida")
+        return []
+    normas = json.loads(store_path.read_text(encoding="utf-8-sig")).get("normas", {})
+    por_mes = {}
+    for datos in normas.values():
+        ym = str(datos.get("fecha", ""))[:7]
+        if ym and datos.get("derogadas"):
+            por_mes[ym] = por_mes.get(ym, 0) + int(datos["derogadas"])
+    if not por_mes:
+        return []
+    out, acum = [], 0
+    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
+        acum += por_mes.get(fin_mes.strftime("%Y-%m"), 0)
+        out.append([fin_mes.strftime("%Y-%m-%d"), float(acum)])
+    return out
+
+
 GESTION_DERIVADAS = [
     ("protocolo_antipiquetes", "% reducción de cortes CABA vs 2023 (IRPC, anual)",
      "Diagnóstico Político (monitoreos públicos)", fetch_protocolo_serie),
@@ -2434,7 +2465,8 @@ GESTION_DERIVADAS = [
     ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),
     ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)", fetch_fal_serie),
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
-    ("desregulacion_normativa", "Normas (conteo acum.)", "InfoLeg ('deroga' desde dic-2023)", lambda: fetch_infoleg_serie("deroga")),
+    ("desregulacion_normativa", "normas completas derogadas (acumulado)",
+     "InfoLeg — elaboración CIGOB", fetch_desregulacion_serie),
     # A % calibrado (45 actos = plan completo, misma escala que el titular):
     # a diferencia de desregulación (100 normas = 100%), acá conteo ≠ %.
     ("reestructuracion_organismos", "% de avance (proxy InfoLeg, 45 actos = 100%)",
