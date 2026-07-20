@@ -2250,6 +2250,38 @@
           "externa_label": "ICC (confianza del consumidor, UTDT)",
           "trans_label": "ambas series rebaseadas a 100 en el primer mes",
           "conclusion": "Correlación 0,554 en niveles y 0,309 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
+        },
+        "vintages": {
+          "dias_promedio": 85,
+          "meses_promedio": 2.8,
+          "fecha_mas_vieja": "1 de enero de 2026",
+          "fecha_mas_nueva": "18 de julio de 2026",
+          "span_dias": 198,
+          "rezagados": [
+            {
+              "indicador": "informalidad",
+              "fecha": "1 de enero de 2026",
+              "meses": 6.6
+            },
+            {
+              "indicador": "pluriempleo",
+              "fecha": "1 de enero de 2026",
+              "meses": 6.6
+            },
+            {
+              "indicador": "inseguridad",
+              "fecha": "abril de 2026",
+              "meses": 3.6
+            },
+            {
+              "indicador": "mora_familias",
+              "fecha": "abril de 2026",
+              "meses": 3.6
+            }
+          ],
+          "titulo": "¿De qué fecha es cada dato del índice?",
+          "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
+          "conclusion": "El dato más reciente es del 18 de julio de 2026 y el más antiguo del 1 de enero de 2026: un rango de 198 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 2,8 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         }
       }
     },

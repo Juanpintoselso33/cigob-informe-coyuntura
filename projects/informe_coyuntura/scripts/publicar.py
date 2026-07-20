@@ -1032,6 +1032,26 @@ def _familias(bloque, familias: dict, meta_familias: dict):
     }
 
 
+def _fecha_dato_a_date(valor):
+    """`fecha_dato` → date, aceptando el rótulo mensual además del día exacto.
+
+    No todas las fichas fechan al día: las de frecuencia mensual rotulan su dato
+    como «2026-05», que `date.fromisoformat` rechaza. Cuando el ITVC se sumó al
+    perfil de vintages, tres de sus catorce componentes venían así
+    —`consumo_carne`, `inseguridad`, `patentamiento_motos`— y el `except
+    ValueError` los descartaba EN SILENCIO: la card habría dicho que describe el
+    cinturón entero cubriendo once. Un rótulo mensual se lee como el primero de
+    ese mes, que es la lectura conservadora (la más antigua posible).
+    """
+    s = str(valor)[:10]
+    for fmt in (s, f"{s}-01" if len(s) == 7 else s):
+        try:
+            return date.fromisoformat(fmt)
+        except ValueError:
+            continue
+    return None
+
+
 def _vintages(cinturon, indice_key):
     """Anexa al bloque de índice el perfil de VINTAGES de sus componentes: de
     qué fecha es el dato de cada uno (ADR-0099).
@@ -1061,14 +1081,15 @@ def _vintages(cinturon, indice_key):
         fecha, peso = ind.get("fecha_dato"), ind.get("peso_efectivo")
         if not fecha or not peso:
             continue
-        try:
-            # Algunas fichas rotulan su ventana por el mes de CIERRE, que puede
-            # caer adelante de hoy (la encuesta del ISAC pregunta por los tres
-            # meses siguientes). Eso no es un dato del futuro: es antigüedad
-            # cero.
-            dias = max(0, (hoy - date.fromisoformat(str(fecha)[:10])).days)
-        except ValueError:
+        d_fecha = _fecha_dato_a_date(fecha)
+        if d_fecha is None:
+            print(f"  [WARN] vintages {indice_key}: {clave} tiene fecha_dato "
+                  f"ilegible ({fecha!r}) y queda fuera del perfil")
             continue
+        # Algunas fichas rotulan su ventana por el mes de CIERRE, que puede
+        # caer adelante de hoy (la encuesta del ISAC pregunta por los tres
+        # meses siguientes). Eso no es un dato del futuro: es antigüedad cero.
+        dias = max(0, (hoy - d_fecha).days)
         filas.append({"indicador": clave, "fecha": str(fecha)[:10],
                       "dias": dias, "peso": float(peso)})
     if len(filas) < 3:
@@ -1089,11 +1110,16 @@ def _vintages(cinturon, indice_key):
 
     def _en_prosa(iso):
         """'2025-12-31' → '31 de diciembre de 2025'. El texto es público y el
-        resto del informe no usa fechas en formato técnico."""
-        try:
-            d = date.fromisoformat(iso)
-        except ValueError:
+        resto del informe no usa fechas en formato técnico.
+
+        Un rótulo mensual ('2026-04') se escribe SIN día: la fuente sólo conoce
+        el mes, y decir «1 de abril» sería una precisión que el dato no tiene.
+        """
+        d = _fecha_dato_a_date(iso)
+        if d is None:
             return iso
+        if len(str(iso)) == 7:      # rótulo mensual, sin día real
+            return f"{_MESES_ES_LARGO[d.month - 1]} de {d.year}"
         return f"{d.day} de {_MESES_ES_LARGO[d.month - 1]} de {d.year}"
     bloque["vintages"] = {
         "dias_promedio": round(dias_medio),
@@ -1483,6 +1509,11 @@ def aplicar_scoring(informe, series):
             continue
         if ckey == "vida_cotidiana":
             _scoring_vida_itvc(c, series)
+            # El ITVC es el cinturón con más dispersión de vintages de los
+            # cuatro: la EPH es trimestral y sostiene dos componentes, uno de
+            # ellos en la dimensión de mayor peso. Prioridad alta de la
+            # auditoría de vida cotidiana (punto 3.2).
+            _vintages(c, "itvc")
             continue
         if ckey == "politica":
             for oculto in POLITICA_OCULTOS:
