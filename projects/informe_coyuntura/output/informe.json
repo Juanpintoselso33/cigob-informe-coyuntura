@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-20T07:56:57.168386",
+  "generated_at": "2026-07-20T08:18:17.438033",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -913,7 +913,7 @@
       "alerta": null
     },
     "gestion": {
-      "score": 2.9,
+      "score": 2.7,
       "estado": "estable",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
@@ -1017,22 +1017,27 @@
           "peso_efectivo": 0.05
         },
         "fal_modernizacion_laboral": {
-          "valor": 0.4,
-          "unidad": "Índice 0–100 (FAL: cobertura + adopción financiera)",
+          "valor": 40.2,
+          "unidad": "Índice 0–100 (FAL: construcción + vigencia + adopción)",
           "fuente": "CNV (registro FCI) + Boletín Oficial (menciones del FAL, Ley 27.802)",
           "fecha_dato": "2026-07-20",
           "desactualizado": false,
           "fci_cese_registrados": 0,
           "menciones_bo": 3,
           "componentes": {
-            "cobertura_cct": 0.7,
-            "adopcion_financiera": 0.0
+            "construccion_normativa": 100.0,
+            "vigencia_del_regimen": 0.0,
+            "adopcion_efectiva": 0.4
           },
-          "detalle_txt": "0 fondos de cese/asistencia laboral registrados en CNV · cobertura 0,7% (3 menciones del FAL en el BO desde mar-2026; 420 = plena) · litigiosidad diferencial sin fuente",
+          "hitos_cumplidos": 3,
+          "hitos_totales": 3,
+          "vigencia_desde": "2026-11-01",
+          "regimen_vigente": false,
+          "detalle_txt": "3 de 3 hitos normativos cumplidos (último: Decreto 408/2026, 2026-06-01) · el régimen entra en vigencia el 2026-11-01, hasta entonces la adopción no puede comenzar por razón legal · 0 fondos registrados en CNV · cobertura 0,7% (3 menciones del FAL en el BO desde mar-2026; 420 = plena)",
           "en_indice": true,
           "dimension": "reforma_laboral",
-          "puntaje_itcg": 10.0,
-          "puntaje_banda": 10.0,
+          "puntaje_itcg": 30.8,
+          "puntaje_banda": 30.8,
           "peso_efectivo": 0.105
         },
         "litigiosidad_laboral": {
@@ -1190,7 +1195,7 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 70.9,
+        "valor": 73.1,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -1262,13 +1267,13 @@
           "reforma_laboral": {
             "nombre": "Reforma laboral",
             "peso": 0.15,
-            "puntaje": 24.8,
+            "puntaje": 39.4,
             "indicadores": {
               "fal_modernizacion_laboral": {
                 "peso": 0.7,
-                "puntaje_banda": 10.0,
-                "puntaje_aplicado": 10.0,
-                "valor": 0.4,
+                "puntaje_banda": 30.8,
+                "puntaje_aplicado": 30.8,
+                "valor": 40.2,
                 "peso_efectivo": 0.105
               },
               "litigiosidad_laboral": {

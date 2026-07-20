@@ -42,7 +42,9 @@ EJEMPLO = {
     "gasto_funcionamiento": -18.0,      # 81,0 (banda 85)
     "masa_salarial": -15.0,             # 82,3 (banda 85)
     "reestructuracion_organismos": 40.0,  # 52,5 (borde 40/65)
-    "fal_modernizacion_laboral": 25.0,  # 57,9 (banda 65) — instrumento (70%)
+    "fal_modernizacion_laboral": 40.2,  # 30,8 — instrumento construido, sin
+    # vigencia ni adopción (escala de tres etapas, ADR-0098). Antes 25,0 sobre
+    # la escala de sólo-adopción.
     "litigiosidad_laboral": 3.6,        # 57,8 (banda 65) — resultado (30%, ADR-0023)
     "privatizaciones": 51.4,            # 71,4 (banda 65)
     "rigi_inversiones": 22.1,           # 47,7 (banda 40)
@@ -58,12 +60,12 @@ def test_itcg_reproduce_ejemplo():
     dims = r["dimensiones"]
     assert dims["reformas_economicas"]["puntaje"] == 83.4
     assert dims["reforma_estado"]["puntaje"] == 78.3
-    assert dims["reforma_laboral"]["puntaje"] == 57.9
+    assert dims["reforma_laboral"]["puntaje"] == 38.9
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
     assert dims["social_orden"]["puntaje"] == 83.6
-    assert r["valor"] == 74.5
+    assert r["valor"] == 71.7
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.5
+    assert itcg.tension_de_itcg(r["valor"]) == 2.8
     assert r["ajustes_aplicados"] == []
 
 

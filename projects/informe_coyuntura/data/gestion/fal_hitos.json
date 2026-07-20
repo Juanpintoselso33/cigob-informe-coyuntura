@@ -1,0 +1,34 @@
+{
+  "_meta": {
+    "descripcion": "Hitos normativos del Fondo de Asistencia Laboral (Ley 27.802) para el indicador fal_modernizacion_laboral en su etapa de CONSTRUCCIÓN (ADR-0098). Cada hito está fechado y respaldado por una norma publicada, verificable por número en InfoLeg — mismo patrón que concesiones_fechas.json y privatizaciones_fechas.json.",
+    "por_que": "Hasta el 1-nov-2026 el régimen no está vigente y la adopción no puede empezar por razón legal. Medir sólo adopción hacía que el indicador informara ~0 sobre 100, que se lee como fracaso de gestión cuando el Gobierno ya hizo todo lo que legalmente podía hacer. La etapa de construcción mide eso.",
+    "verificado": "2026-07-20 contra el buscador de InfoLeg, por número de norma"
+  },
+  "vigencia": {
+    "fecha": "2026-11-01",
+    "fuente": "Decreto 408/2026, art. 27 — prorrogó el arranque originalmente previsto para el 1-jun-2026"
+  },
+  "construccion": [
+    {
+      "hito": "Marco financiero para los fondos",
+      "fecha": "2025-06-23",
+      "norma": "Resolución General 1071/2025",
+      "organismo": "Comisión Nacional de Valores",
+      "fuente": "InfoLeg — Resolución GENERAL 1071/2025, CNV, publicada 23-jun-2025"
+    },
+    {
+      "hito": "Ley sancionada y publicada",
+      "fecha": "2026-03-06",
+      "norma": "Ley 27.802",
+      "organismo": "Congreso de la Nación",
+      "fuente": "InfoLeg — Ley 27802, LEY DE MODERNIZACION LABORAL, publicada 06-mar-2026"
+    },
+    {
+      "hito": "Reglamentación del Fondo de Asistencia Laboral",
+      "fecha": "2026-06-01",
+      "norma": "Decreto 408/2026",
+      "organismo": "Poder Ejecutivo Nacional",
+      "fuente": "InfoLeg — Decreto Reglamentario 408/2026, aprueba la reglamentación del Título II (Fondo de Asistencia Laboral) de la Ley 27.802, publicado 01-jun-2026"
+    }
+  ]
+}

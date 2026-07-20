@@ -84,11 +84,25 @@ BANDAS_ITCG = {
     "reestructuracion_organismos": [    # % de avance (actos de disolución/fusión vs plan)
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
-    "fal_modernizacion_laboral": [      # Índice de Avance del FAL 0-100 (compuesto, ADR-0068)
-        # Reforma opt-in por CCT: 40-60 ya sería adopción masiva; <5 = solo
-        # marco normativo sin adopción (la foto del arranque del FAL,
-        # Ley 27.802; entra en vigencia el 1-nov-2026, Dto. 408/2026 art. 27).
-        (60.0, INF, 100), (40.0, 60.0, 85), (20.0, 40.0, 65), (5.0, 20.0, 40), (-INF, 5.0, 10),
+    "fal_modernizacion_laboral": [      # Índice de Avance del FAL 0-100 (compuesto, ADR-0098)
+        # RECALIBRADO 2026-07-20 porque cambió lo que mide la escala, no para
+        # mover el puntaje: el índice pasó de medir sólo adopción a componerse
+        # de construcción normativa (40) + vigencia (20) + adopción (40). Las
+        # anclas anteriores (40-60 = "adopción masiva") describían la escala
+        # vieja y sobre la nueva habrían dado 75 a un instrumento que nadie
+        # usa todavía.
+        #
+        # Los cortes se fijan sobre los estados que la escala nueva puede
+        # tomar, no sobre el rango observado:
+        #   40  instrumento construido, régimen sin vigencia   ->  30
+        #   60  régimen vigente, adopción todavía nula          ->  65
+        #   80  vigente y con adopción real                     ->  90
+        #  100  adopción plena                                  -> 100
+        # Es exigente a propósito: sancionar y reglamentar la ley es progreso
+        # real sobre la promesa, pero mientras nada rija el efecto es cero. El
+        # 1-nov-2026, cuando el régimen entre en vigencia, el indicador sube
+        # solo de 30 a 65 sin que nadie toque nada.
+        (85.0, INF, 100), (70.0, 85.0, 85), (50.0, 70.0, 65), (35.0, 50.0, 40), (-INF, 35.0, 10),
     ],
     "privatizaciones": [                # % de avance por etapas (promedio etapa/4 de la cartera)
         # Etapas 0-4 del doc: 0 sin definir · 1 preparatoria · 2 pliegos ·

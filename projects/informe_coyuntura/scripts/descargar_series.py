@@ -2316,25 +2316,50 @@ def fetch_fal_serie() -> list:
     1980) y la adopción financiera CNV fue siempre 0 (dato duro), así que la
     serie previa a mar-2026 vale 0,0. Desde mar-2026: menciones acumuladas de
     "fondo de asistencia laboral" hasta el fin de cada mes (una consulta BO
-    por mes) → cobertura (420 = plena, calibración del colector) → índice con
-    adopción financiera = 0 histórico. Fallback al histórico acumulado si el
-    BO no responde. [[YYYY-MM-01, índice]]."""
+    por mes) → cobertura (420 = plena, calibración del colector).
+
+    Desde ADR-0098 la serie se reconstruye en la MISMA escala de tres etapas
+    que la card —construcción normativa 40, vigencia 20, adopción 40—, así que
+    los hitos normativos aparecen en el mes en que se publicó cada norma y el
+    salto de la entrada en vigencia queda fechado en nov-2026. Antes la serie
+    medía sólo adopción y por eso valía ~0 en todo su recorrido: mezclarla con
+    la card nueva habría dejado dos escalas distintas en el mismo gráfico.
+    Fallback al histórico acumulado si el BO no responde.
+    [[YYYY-MM-01, índice]]."""
     try:
+        hitos_json = json.loads(gestion.FAL_HITOS_PATH.read_text(encoding="utf-8-sig"))
+        hitos_construccion = hitos_json.get("construccion", [])
+        fecha_vigencia = (hitos_json.get("vigencia") or {}).get("fecha", "9999-12-31")
         out = []
         hoy = date.today()
         fin = hoy.replace(day=1) - timedelta(days=1)      # último mes completo
         y, m = 2023, 12
         while (y, m) <= (fin.year, fin.month):
+            ult_dia = calendar.monthrange(y, m)[1]
+            cierre = f"{y}-{m:02d}-{ult_dia:02d}"
+
+            # Etapa 1: hitos normativos ya cumplidos a esa fecha.
+            construccion = (100.0 * sum(1 for h in hitos_construccion
+                                        if h.get("fecha", "9999") <= cierre)
+                            / len(hitos_construccion)) if hitos_construccion else 0.0
+            # Etapa 2: vigencia del régimen.
+            vigencia = 100.0 if cierre >= fecha_vigencia else 0.0
+            # Etapa 3: adopción. Antes de la ley no había instrumento que
+            # adoptar; después, menciones acumuladas en el BO (la adopción
+            # financiera fue 0 en todo el histórico, dato duro del registro CNV).
             if (y, m) < (2026, 3):
-                out.append([f"{y}-{m:02d}-01", 0.0])       # régimen inexistente
+                adopcion = 0.0
             else:
-                ult_dia = calendar.monthrange(y, m)[1]
                 n = gestion._bo_conteo(gestion.FAL_BO_TEXTO,
                                        desde=gestion.FAL_BO_DESDE,
                                        hasta=f"{ult_dia:02d}/{m:02d}/{y}")
                 cobertura = min(100.0, n * 100.0 / gestion.FAL_BO_MENCIONES_PLENO)
-                indice = round((0.40 * cobertura) / 0.70, 1)  # financiera = 0 histórico
-                out.append([f"{y}-{m:02d}-01", indice])
+                adopcion = (0.40 * cobertura) / 0.70
+
+            indice = round(gestion.FAL_PESO_CONSTRUCCION * construccion
+                           + gestion.FAL_PESO_VIGENCIA * vigencia
+                           + gestion.FAL_PESO_ADOPCION * adopcion, 1)
+            out.append([f"{y}-{m:02d}-01", indice])
             m += 1
             if m > 12:
                 m, y = 1, y + 1

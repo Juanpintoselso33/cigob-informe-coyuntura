@@ -338,8 +338,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   fal_modernizacion_laboral: {
-    que: "El avance del Fondo de Asistencia Laboral, el mecanismo para financiar las indemnizaciones por despido que creó la Ley de Modernización Laboral (Ley 27.802, marzo de 2026): construcción normativa y dinero puesto en fondos registrados ante la CNV.",
-    aporta: "Es el indicador bisagra de la reforma laboral: el Gobierno lo presenta como su herramienta central contra la litigiosidad. El régimen recién entra en vigencia el 1 de noviembre de 2026, así que hasta entonces el valor cercano a cero mide el andamiaje normativo —no puede haber aportes antes de esa fecha— y es el dato, no una falla de medición.",
+    que: "El avance del Fondo de Asistencia Laboral, el mecanismo para financiar las indemnizaciones por despido que creó la Ley de Modernización Laboral (Ley 27.802, marzo de 2026). Se mide en tres etapas: la construcción normativa del instrumento, su entrada en vigencia, y la adopción efectiva una vez que el régimen empiece a regir.",
+    aporta: "Es el indicador bisagra de la reforma laboral: el Gobierno lo presenta como su herramienta central contra la litigiosidad. Medir las tres etapas por separado evita confundir el calendario legal con la gestión: el régimen recién entra en vigencia el 1 de noviembre de 2026, de modo que hasta esa fecha no puede haber aportes ni convenios que lo incorporen, por más empeño que se ponga. Lo que sí puede medirse antes es si el instrumento quedó construido, y hoy lo está: la ley se sancionó, el Poder Ejecutivo la reglamentó y la Comisión Nacional de Valores creó el marco para los fondos. El techo hasta noviembre es 60 sobre 100 — un instrumento terminado y en espera.",
     frecuencia: "Mensual", tipo: "Índice (0–100)",
   },
   libertad_opcion_salud: {

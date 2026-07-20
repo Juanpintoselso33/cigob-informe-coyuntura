@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-20 07:56:57"
+generado: "2026-07-20 08:18:17"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -71,7 +71,7 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
 
-### 🟢 Gestion — score 2.9/10 (estable)
+### 🟢 Gestion — score 2.7/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -83,7 +83,7 @@ schema_version: "1.2.0"
 | gasto_funcionamiento | -24.35 | % de variación real vs 2023-05 (IMIG funcionamiento) | 2026-05-01 | fresco |
 | masa_salarial | -22.98 | % de variación real vs 2023-05 (SPN remuneraciones) | 2026-05-01 | fresco |
 | reestructuracion_organismos | 40.0 | % de avance (proxy InfoLeg) | 2026-07-20 | fresco |
-| fal_modernizacion_laboral | 0.4 | Índice 0–100 (FAL: cobertura + adopción financiera) | 2026-07-20 | fresco |
+| fal_modernizacion_laboral | 40.2 | Índice 0–100 (FAL: construcción + vigencia + adopción) | 2026-07-20 | fresco |
 | litigiosidad_laboral | 2.8 | % variación juicios SRT (12m vs 12m previos) | 2026-04-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
 | rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-20 | fresco |
@@ -105,4 +105,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-20 07:56:57 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-20 08:18:17 — schema 1.2.0*

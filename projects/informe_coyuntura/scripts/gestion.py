@@ -829,12 +829,35 @@ def _cnv_fondos_cese() -> int:
                       for t in ("CESE", "ASISTENCIA LABORAL")))
 
 
+FAL_HITOS_PATH = PROJECT_DIR / "data" / "gestion" / "fal_hitos.json"
+
+# Pesos de las tres etapas del indicador (ADR-0098).
+FAL_PESO_CONSTRUCCION = 0.40
+FAL_PESO_VIGENCIA = 0.20
+FAL_PESO_ADOPCION = 0.40
+
+
 def fetch_fal_modernizacion_laboral() -> dict | None:
     """
-    Índice de Avance del Fondo de Asistencia Laboral (doc 260702 + ADR-0068),
-    0-100:
-      0,40·cobertura CCT + 0,30·adopción financiera + 0,30·litigiosidad dif.
-    renormalizado a lo disponible.
+    Índice de Avance del Fondo de Asistencia Laboral (Ley 27.802), 0-100, en
+    DOS ETAPAS (ADR-0098):
+
+        0,40 · construcción normativa + 0,20 · vigencia + 0,40 · adopción
+
+    La versión anterior medía sólo adopción y por eso informaba 0,4 sobre 100:
+    el régimen no entra en vigencia hasta el 1-nov-2026, de modo que ni los
+    fondos pueden registrarse ni los convenios incorporarlo. Ese cero no era
+    gestión, era el calendario legal — y en el tablero se leía como fracaso.
+
+    La construcción normativa mide lo que el Gobierno sí hizo y puede hacer
+    antes de esa fecha: sancionar la ley, reglamentarla y montar el marco
+    financiero. Son hitos fechados y respaldados por normas publicadas
+    (`fal_hitos.json`), verificables por número en InfoLeg — el mismo patrón
+    que concesiones y privatizaciones.
+
+    El techo antes de la vigencia es 60: el instrumento construido y en espera.
+    La adopción real sólo puede sumar después, y ahí el indicador vuelve a
+    medir lo que originalmente se propuso.
 
     * Adopción financiera (AUTO): FCI/fideicomisos de cese/asistencia laboral
       registrados en CNV (RG 1071/2025 + Ley 27.802). Hoy 0 — el sistema
@@ -867,20 +890,43 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
             cobertura_txt = (f"cobertura CCT ~{str(cobertura).replace('.', ',')}% (est. manual)"
                              if cobertura is not None else "")
 
-        pesos, componentes = [], {}
-        indice_num = 0.0
+        # ── Etapa 1: construcción normativa ────────────────────────────────
+        hitos = json.loads(FAL_HITOS_PATH.read_text(encoding="utf-8-sig"))
+        hoy_iso = date.today().isoformat()
+        construccion_lista = hitos.get("construccion", [])
+        cumplidos = [h for h in construccion_lista if h.get("fecha", "9999") <= hoy_iso]
+        construccion = (100.0 * len(cumplidos) / len(construccion_lista)
+                        if construccion_lista else 0.0)
+
+        # ── Etapa 2: vigencia del régimen ──────────────────────────────────
+        fecha_vigencia = (hitos.get("vigencia") or {}).get("fecha", "9999-12-31")
+        vigente = hoy_iso >= fecha_vigencia
+        vigencia = 100.0 if vigente else 0.0
+
+        # ── Etapa 3: adopción efectiva ─────────────────────────────────────
+        # Mismo compuesto de antes (cobertura + financiera), ahora acotado a su
+        # propia etapa en vez de ser todo el indicador.
+        partes, pesos_ad = [], []
         if cobertura is not None:
-            indice_num += 0.40 * float(cobertura)
-            pesos.append(0.40)
-            componentes["cobertura_cct"] = round(float(cobertura), 1)
-        indice_num += 0.30 * financiera
-        pesos.append(0.30)
-        componentes["adopcion_financiera"] = round(financiera, 1)
-        indice = round(indice_num / sum(pesos), 1)
+            partes.append(0.40 * float(cobertura))
+            pesos_ad.append(0.40)
+        partes.append(0.30 * financiera)
+        pesos_ad.append(0.30)
+        adopcion = sum(partes) / sum(pesos_ad) if pesos_ad else 0.0
+
+        indice = round(FAL_PESO_CONSTRUCCION * construccion
+                       + FAL_PESO_VIGENCIA * vigencia
+                       + FAL_PESO_ADOPCION * adopcion, 1)
+
+        componentes = {
+            "construccion_normativa": round(construccion, 1),
+            "vigencia_del_regimen": round(vigencia, 1),
+            "adopcion_efectiva": round(adopcion, 1),
+        }
 
         return {
             "valor":          indice,
-            "unidad":         "Índice 0–100 (FAL: cobertura + adopción financiera)",
+            "unidad":         "Índice 0–100 (FAL: construcción + vigencia + adopción)",
             "fuente":         ("CNV (registro FCI) + Boletín Oficial (menciones del FAL, Ley 27.802)"
                                if menciones is not None else
                                "CNV (registro FCI) + MTEySS (cobertura estimada)"),
@@ -889,9 +935,18 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
             "fci_cese_registrados": n_cese,
             "menciones_bo":   menciones,
             "componentes":    componentes,
-            "detalle_txt": (f"{n_cese} fondos de cese/asistencia laboral registrados en CNV"
-                            + (f" · {cobertura_txt}" if cobertura_txt else "")
-                            + " · litigiosidad diferencial sin fuente"),
+            "hitos_cumplidos": len(cumplidos),
+            "hitos_totales":   len(construccion_lista),
+            "vigencia_desde":  fecha_vigencia,
+            "regimen_vigente": vigente,
+            "detalle_txt": (
+                f"{len(cumplidos)} de {len(construccion_lista)} hitos normativos cumplidos"
+                + (f" (último: {cumplidos[-1]['norma']}, {cumplidos[-1]['fecha']})" if cumplidos else "")
+                + (" · régimen VIGENTE" if vigente else
+                   f" · el régimen entra en vigencia el {fecha_vigencia}, hasta entonces la "
+                   f"adopción no puede comenzar por razón legal")
+                + f" · {n_cese} fondos registrados en CNV"
+                + (f" · {cobertura_txt}" if cobertura_txt else "")),
         }
     except Exception as e:
         _warn("fal_modernizacion_laboral", e)

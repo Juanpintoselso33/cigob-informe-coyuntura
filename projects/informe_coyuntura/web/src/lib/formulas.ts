@@ -102,8 +102,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Normas con disolución de organismos desde dic-2023 (InfoLeg). Calibración validada a mano: 18 actos = 40%.",
   },
   fal_modernizacion_laboral: {
-    latex: String.raw`\frac{0{,}40\cdot\text{cobertura (menciones BO)}+0{,}30\cdot\text{fondos en CNV}}{0{,}40+0{,}30}`,
-    leyenda: "Adopción del Fondo de Asistencia Laboral (Ley 27.802): cobertura medida por menciones del instrumento en el Boletín Oficial desde la publicación de la ley en marzo de 2026 (420 = plena, un año donde una de cada cinco homologaciones lo incorpora) + fondos de cese o asistencia laboral registrados en la CNV (10 = plena). El tercer componente del diseño (litigiosidad diferencial) no tiene fuente pública y los pesos se renormalizan.",
+    latex: String.raw`0{,}40\cdot\text{construcci\'on}+0{,}20\cdot\text{vigencia}+0{,}40\cdot\text{adopci\'on}`,
+    leyenda: "Tres etapas del Fondo de Asistencia Laboral (Ley 27.802). CONSTRUCCIÓN: proporción de hitos normativos cumplidos, cada uno fechado en la norma que lo respalda —el marco de la Comisión Nacional de Valores para los fondos (junio de 2025), la ley (marzo de 2026) y su reglamentación (junio de 2026)—. VIGENCIA: cien si el régimen ya rige, cero antes; la fecha es el 1 de noviembre de 2026, fijada por el artículo 27 del decreto reglamentario. ADOPCIÓN: menciones del instrumento en el Boletín Oficial desde marzo de 2026 (420 = plena, un año donde una de cada cinco homologaciones lo incorpora) más los fondos registrados en la Comisión Nacional de Valores (10 = plena). El cuarto componente del diseño original, la litigiosidad diferencial, no tiene fuente pública y no se computa.",
   },
   litigiosidad_laboral: {
     latex: String.raw`\left(\frac{\text{juicios \'ultimos 12 meses}}{\text{juicios 12 meses anteriores}}-1\right)\times 100`,
