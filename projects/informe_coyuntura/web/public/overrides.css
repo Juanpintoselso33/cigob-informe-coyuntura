@@ -993,3 +993,45 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   white-space: nowrap;
 }
 .cg-cumplido-nota { margin-top: 1.1rem; }
+
+
+/* ── Detalle por empresa en el modal (ADR-0101) ───────────────────────── */
+.cg-modal-detalle { margin-top: 20px; }
+.cg-det-titulo {
+  margin: 0 0 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.cg-det-nota {
+  margin: 0 0 10px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.cg-det-tabla { width: 100%; border-collapse: collapse; font-size: 13px; }
+.cg-det-tabla th[scope="row"] {
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 9px 12px 9px 0;
+  vertical-align: top;
+}
+.cg-det-tabla td { padding: 9px 0; vertical-align: top; }
+.cg-det-tabla tr + tr th, .cg-det-tabla tr + tr td { border-top: 1px dashed var(--bd); }
+.cg-det-etapa {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding-right: 12px !important;
+  color: var(--muted);
+}
+.cg-det-mec { display: block; }
+.cg-det-norma {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.cg-det-sinnorma { font-style: italic; }

@@ -131,6 +131,10 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       slug: SLUG_DE[ckey] ?? ckey,
       avance: typeof ind.avance_pct === "number" ? ind.avance_pct : null,
       componentes: ind.componentes ?? null,
+      // Detalle empresa por empresa con la norma que respalda cada etapa
+      // (ADR-0101): es el único indicador cuya etapa la asigna el analista,
+      // así que el respaldo se publica para que la asignación sea auditable.
+      empresasDetalle: ind.empresas_detalle ?? null,
       valorNum: typeof ind.valor === "number" ? ind.valor : null,
       // Para indicadores que son un % sobre un total chico y contable (hoy
       // solo adhesion_reformas_provincial, 24 jurisdicciones): mostrar
@@ -195,6 +199,7 @@ const dimsJson = JSON.stringify(dims);
     <h3 class="cg-modal-title" id="cg-modal-title"></h3>
     <p class="cg-modal-desc" id="cg-modal-que"></p>
     <dl class="cg-modal-ficha" id="cg-modal-ficha"></dl>
+    <div class="cg-modal-detalle" id="cg-modal-detalle"></div>
     <div class="cg-modal-aporta" id="cg-modal-aporta"></div>
     <div class="cg-modal-formula" id="cg-modal-formula" hidden>
       <h4 class="cg-modal-h4">Cómo se construye</h4>
@@ -372,6 +377,28 @@ const dimsJson = JSON.stringify(dims);
         : (d.fuente || "—");
       const celda = (rotulo, valor, titulo) =>
         `<div><dt>${rotulo}</dt><dd${titulo ? ` title="${esc(titulo)}"` : ""}>${esc(valor)}</dd></div>`;
+      const detalleEl = document.getElementById("cg-modal-detalle");
+      if (d.empresasDetalle && d.empresasDetalle.length) {
+        const coma = (n) => String(n).replace(".", ",");
+        const filas = d.empresasDetalle.map((e) => `
+          <tr>
+            <th scope="row">${esc(e.empresa)}</th>
+            <td class="cg-det-etapa">${coma(e.etapa)}/4</td>
+            <td>
+              ${e.mecanismo ? `<span class="cg-det-mec">${esc(e.mecanismo)}</span>` : ""}
+              ${e.norma ? `<span class="cg-det-norma">${esc(e.norma)}</span>` : `<span class="cg-det-norma cg-det-sinnorma">sin norma de respaldo registrada</span>`}
+            </td>
+          </tr>`).join("");
+        detalleEl.innerHTML = `
+          <p class="cg-det-titulo">Detalle por empresa</p>
+          <p class="cg-det-nota">La etapa de cada empresa la asigna el equipo a partir de actos publicados en el Boletín Oficial. Se muestra la norma que respalda la etapa vigente para que la asignación pueda verificarse.</p>
+          <table class="cg-det-tabla"><tbody>${filas}</tbody></table>`;
+        detalleEl.style.display = "";
+      } else {
+        detalleEl.innerHTML = "";
+        detalleEl.style.display = "none";
+      }
+
       document.getElementById("cg-modal-ficha").innerHTML =
         celda("Último valor", `${d.valor} ${d.unidad}`.trim() + (d.valorAbsolutoTxt ? ` (${d.valorAbsolutoTxt})` : "")) +
         celda("Unidad", d.unidadLarga || d.tipo || "—") +

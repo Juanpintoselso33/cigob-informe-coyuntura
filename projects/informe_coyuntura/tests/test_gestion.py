@@ -83,3 +83,34 @@ def test_el_dnu_70_2023_esta_contado():
     dnu = normas.get("395521")
     assert dnu is not None, "el DNU 70/2023 debería estar en la caché"
     assert dnu["derogadas"] >= 30, f"el DNU 70/2023 deroga decenas de normas, no {dnu['derogadas']}"
+
+
+# ── Privatizaciones: la etapa de cada empresa es auditable (ADR-0101) ───────
+
+def test_privatizaciones_publica_la_norma_de_cada_etapa():
+    """Es el único indicador del cinturón cuya etapa asigna el analista, sin
+    fuente en vivo. La revisión externa lo marcó como "vulnerable a
+    cuestionamientos de sesgo si no se publica el detalle empresa por empresa
+    con su norma de respaldo". El detalle ya existía en el registro; este test
+    exige que llegue al snapshot."""
+    import json
+    from pathlib import Path
+    snap = json.loads((Path(__file__).resolve().parents[1] / "web" / "src" / "data" /
+                       "informe.json").read_text(encoding="utf-8"))
+    priv = snap["cinturones"]["gestion"]["indicadores"]["privatizaciones"]
+    detalle = priv.get("empresas_detalle")
+    assert detalle, "privatizaciones debe publicar el detalle por empresa"
+    assert len(detalle) == priv["empresas"], "el detalle debe cubrir todas las empresas"
+
+    sin_norma = [e["empresa"] for e in detalle if not e.get("norma")]
+    assert not sin_norma, f"empresas sin norma de respaldo publicada: {sin_norma}"
+
+    for e in detalle:
+        assert e.get("etapa") is not None
+        assert 0 <= float(e["etapa"]) <= 4, f"{e['empresa']}: etapa fuera de 0-4"
+        assert e.get("mecanismo"), f"{e['empresa']}: sin mecanismo declarado"
+
+    # el promedio publicado tiene que salir del detalle, no de otro lado
+    prom = sum(float(e["etapa"]) for e in detalle) / len(detalle)
+    assert abs(prom - priv["etapa_promedio"]) < 0.01
+    assert abs(round(prom / 4 * 100, 1) - priv["valor"]) < 0.05

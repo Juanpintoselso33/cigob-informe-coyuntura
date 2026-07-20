@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-20T09:10:06.666488",
+  "generated_at": "2026-07-20T09:16:56.908036",
   "score": 2.8,
   "itcg": {
     "valor": 72.5,
@@ -305,6 +305,80 @@
         "YCRT": 0.5,
         "SOFSE": 0.5
       },
+      "empresas_detalle": [
+        {
+          "empresa": "Transener",
+          "etapa": 4.0,
+          "mecanismo": "Venta de acciones (vía Citelec, controlada por Enarsa)",
+          "hito": "Venta concretada por USD 356M, consorcio Genneia-Edison Transmisión",
+          "norma": "Contrato de compraventa firmado 04-jun-2026; ENReGE Res. 130/2026 (BO 22-jun-2026) autorizó la transferencia",
+          "fecha": "2026-06"
+        },
+        {
+          "empresa": "AySA",
+          "etapa": 3.0,
+          "mecanismo": "Concesión (90% acciones, 51% a operador estratégico)",
+          "hito": "Pliegos publicados 15-may-2026; apertura de sobres prevista 27-ago-2026",
+          "norma": "Resolución ME 704/2026 (BO 15-may-2026): llamado a licitación por el 90% accionario, pliegos aprobados",
+          "fecha": "2026-05"
+        },
+        {
+          "empresa": "Corredores Viales",
+          "etapa": 3.0,
+          "mecanismo": "Concesión de obra pública por peaje (Dto. 97/2025)",
+          "hito": "Decreto 411/2026; oferta recibida para Tramo I",
+          "norma": "Resolución ST 80/2025 (BO 19-nov-2025): adjudica los Tramos Oriental y Conexión (Etapa I)",
+          "fecha": "2025-11"
+        },
+        {
+          "empresa": "Enarsa",
+          "etapa": 2.5,
+          "mecanismo": "División en unidades de negocio, concesión/venta por partes",
+          "hito": "Hidroeléctricas del Comahue adjudicadas (USD 700M); quedan termoeléctricas y gasoducto",
+          "norma": "Comahue adjudicado: Res. ME 2124/2025 (BO 29-dic-2025), USD 706,9M; posesión ene-2026. Quedan termoeléctricas y gasoducto",
+          "fecha": "2025-12"
+        },
+        {
+          "empresa": "Intercargo",
+          "etapa": 2.5,
+          "mecanismo": "Concurso público nacional/internacional",
+          "hito": "En proceso de licitación, sin cierre reportado",
+          "norma": "Resolución ME 282/2026 (BO 26-mar-2026): llamado a licitación, base USD 45,12M; apertura postergada al 25-jun-2026 (Res. 833/2026), sin adjudicación",
+          "fecha": "2026-03"
+        },
+        {
+          "empresa": "Belgrano Cargas",
+          "etapa": 1.5,
+          "mecanismo": "Fragmentación en 7 concesiones + venta de material rodante",
+          "hito": "Decreto 282/2026 (material rodante); pliego integral en revisión, sin llamado formal",
+          "norma": "Resolución ME 1049/2025 (BO 24-jul-2025): inicia el proceso, actos preparatorios; Decreto 282/2026 (BO 28-abr-2026) define la venta del material rodante — sin llamado formal",
+          "fecha": "2025-07"
+        },
+        {
+          "empresa": "Nucleoeléctrica",
+          "etapa": 1.0,
+          "mecanismo": "Venta parcial (44% en bloque + 5% PPP)",
+          "hito": "Decreto 695/24 habilitó; etapa preparatoria, sin licitación",
+          "norma": "Decreto 695/2025 (BO 30-sep-2025): autoriza la venta del 44% en bloque + 5% PPP. (La Res. ME 1751/2025, BO 06-nov-2025, inició el proceso; el analista la mantiene en etapa 1 hasta que haya llamado)",
+          "fecha": "2025-09"
+        },
+        {
+          "empresa": "YCRT",
+          "etapa": 0.5,
+          "mecanismo": "Sin definir modalidad final",
+          "hito": "Sin fechas concretas",
+          "norma": "Ley Bases 27.742 (BO 08-jul-2024), art. 9. Sin decreto de privatización; la transformación en S.A. (Dto. 115/2025, BO 24-feb-2025) es preparatoria",
+          "fecha": "2024-07"
+        },
+        {
+          "empresa": "SOFSE",
+          "etapa": 0.5,
+          "mecanismo": "Licitación de servicios, con control estatal residual",
+          "hito": "Sin fechas concretas",
+          "norma": "Ley Bases 27.742 (BO 08-jul-2024), Anexo I Privatización/Concesión. Sin decreto; conversión a S.A. (jun-2025) obligada por DNU 70/23; proceso en pausa (feb-2026)",
+          "fecha": "2024-07"
+        }
+      ],
       "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",

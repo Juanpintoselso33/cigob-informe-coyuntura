@@ -1008,6 +1008,43 @@ def fetch_litigiosidad_laboral() -> dict | None:
 
 # ── D4: Privatizaciones e inversión ───────────────────────────────────────────
 
+PRIVATIZACIONES_FECHAS_PATH = PROJECT_DIR / "data" / "gestion" / "privatizaciones_fechas.json"
+
+
+def _privatizaciones_detalle(empresas: dict) -> list:
+    """[{empresa, etapa, mecanismo, hito, norma, fecha}] ordenado por etapa.
+
+    La `norma` es la fuente de la última transición registrada que no supera la
+    etapa vigente: es el acto del Boletín Oficial que respalda dónde está hoy
+    esa empresa. Si el registro de transiciones no está disponible, el detalle
+    sale igual pero sin norma — mejor incompleto que ausente.
+    """
+    try:
+        fechas = json.loads(PRIVATIZACIONES_FECHAS_PATH.read_text(
+            encoding="utf-8-sig")).get("empresas", {})
+    except (OSError, json.JSONDecodeError):
+        fechas = {}
+
+    out = []
+    for nombre, datos in sorted(empresas.items(), key=lambda kv: -float(kv[1]["etapa"])):
+        etapa = float(datos["etapa"])
+        norma = fecha = None
+        transiciones = [t for t in fechas.get(nombre, [])
+                        if float(t.get("etapa", 0)) <= etapa]
+        if transiciones:
+            ultima = max(transiciones, key=lambda t: (float(t["etapa"]), t.get("fecha", "")))
+            norma, fecha = ultima.get("fuente"), ultima.get("fecha")
+        out.append({
+            "empresa":   nombre,
+            "etapa":     etapa,
+            "mecanismo": datos.get("mecanismo"),
+            "hito":      datos.get("hito"),
+            "norma":     norma,
+            "fecha":     fecha,
+        })
+    return out
+
+
 def fetch_privatizaciones() -> dict | None:
     """
     Avance de privatizaciones por ETAPAS verificables (doc 260702): cada
@@ -1039,6 +1076,13 @@ def fetch_privatizaciones() -> dict | None:
             # etapa por empresa → gráfico de barras del modal (0 = sin definir · 4 = cerrada)
             "componentes":    {n: float(e["etapa"]) for n, e in
                                sorted(empresas.items(), key=lambda kv: -float(kv[1]["etapa"]))},
+            # Detalle empresa por empresa CON la norma que respalda su etapa
+            # actual (ADR-0101). Es el único indicador del cinturón sin fuente
+            # en vivo —la etapa la asigna el analista— así que publicar el
+            # respaldo es lo que lo blinda frente a la objeción obvia de "¿quién
+            # decide en qué etapa está cada empresa?". El dato ya existía en el
+            # registro versionado; lo que faltaba era exponerlo.
+            "empresas_detalle": _privatizaciones_detalle(empresas),
             "detalle_txt": (f"{len(etapas)} empresas · etapa promedio "
                             f"{str(round(etapa_prom, 2)).replace('.', ',')}/4"
                             + (f" · cerradas: {', '.join(cerradas)}" if cerradas else "")),
