@@ -351,3 +351,18 @@ def test_todo_indicador_del_indice_declara_su_rezago():
     sobran = set(itcp.REZAGO_MESES_ITCP) - en_indice
     assert not sobran, f"declaran rezago pero no integran el índice: {sorted(sobran)}"
     assert all(v >= 0 for v in itcp.REZAGO_MESES_ITCP.values())
+
+
+def test_todo_indicador_del_indice_declara_su_familia():
+    """La card de lectura por partes (ADR-0094) reconstruye el índice sumando
+    las tres familias. Un indicador sin familia declarada no rompe nada: se
+    cae de la descomposición y las tres familias dejan de sumar el total."""
+    en_indice = {k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]}
+    faltan = en_indice - set(itcp.FAMILIAS_ITCP)
+    assert not faltan, f"sin familia declarada en FAMILIAS_ITCP: {sorted(faltan)}"
+    sobran = set(itcp.FAMILIAS_ITCP) - en_indice
+    assert not sobran, f"declaran familia pero no integran el índice: {sorted(sobran)}"
+    assert set(itcp.FAMILIAS_ITCP.values()) <= set(itcp.FAMILIAS_ITCP_META)
+    # las tres familias tienen que existir: si una queda vacía, la lectura por
+    # partes deja de responder la pregunta que la motivó
+    assert set(itcp.FAMILIAS_ITCP.values()) == {"tension", "capacidad", "recursos"}

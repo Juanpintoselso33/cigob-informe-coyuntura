@@ -126,6 +126,8 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,ratio_dnu,1.5,DNUs por ley (12m móviles),InfoLeg
 2024-01-01,ratio_dnu,1.353,DNUs por ley (12m móviles),InfoLeg
 2023-12-01,ratio_dnu,1.176,DNUs por ley (12m móviles),InfoLeg
+2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
+2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2025-12-01,iaf_transferencias,0.8,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2024-12-01,iaf_transferencias,-8.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2023-12-01,iaf_transferencias,-5.8,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)

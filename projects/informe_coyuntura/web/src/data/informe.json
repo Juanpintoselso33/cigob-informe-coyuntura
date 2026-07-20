@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-20T04:32:12.739576",
+  "generated_at": "2026-07-20T06:38:08.436600",
   "period": "2026-07",
   "score_global": 3.2,
   "ponderacion": {
@@ -1525,6 +1525,88 @@
           "titulo": "¿De cuándo es la foto que describe el índice?",
           "sub": "Cada indicador mira una ventana de tiempo distinta. Uno que promedia los últimos doce meses describe, en promedio, la situación de hace seis, aunque su último dato sea de ayer. Ponderando cada componente por el peso que realmente tiene en el índice, se obtiene de cuándo es la foto completa.",
           "conclusion": "El índice describe, en promedio ponderado, la situación de hace 5,8 meses. Un 39% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 17% a indicadores que describen el año anterior. La consecuencia práctica: un cambio de la coyuntura política no se ve de inmediato en el número. Los indicadores rápidos lo registran enseguida y los de ventana larga lo van incorporando durante los meses siguientes, de modo que el índice tiende a moverse después —y de forma más suave— que los hechos que lo motivan. Leerlo como una fotografía del mes en curso sobreestima su inmediatez."
+        },
+        "familias": {
+          "familias": [
+            {
+              "clave": "capacidad",
+              "nombre": "Capacidad propia",
+              "glosa": "lo que el Gobierno consigue, o cuánto sostiene",
+              "puntaje": 63.6,
+              "share": 0.355,
+              "componentes": [
+                {
+                  "indicador": "bloqueo_sostenido",
+                  "puntaje": 10.0
+                },
+                {
+                  "indicador": "ratio_dnu",
+                  "puntaje": 16.0
+                },
+                {
+                  "indicador": "eficacia_legislativa",
+                  "puntaje": 48.6
+                },
+                {
+                  "indicador": "cohesion_bloque",
+                  "puntaje": 96.7
+                }
+              ]
+            },
+            {
+              "clave": "tension",
+              "nombre": "Tensión externa",
+              "glosa": "lo que otros actores le hacen al Gobierno",
+              "puntaje": 71.3,
+              "share": 0.477,
+              "componentes": [
+                {
+                  "indicador": "desafios_legislativos",
+                  "puntaje": 43.6
+                },
+                {
+                  "indicador": "conflictividad_nacional",
+                  "puntaje": 49.6
+                },
+                {
+                  "indicador": "brecha_obra_publica",
+                  "puntaje": 75.4
+                },
+                {
+                  "indicador": "adhesion_reformas_provincial",
+                  "puntaje": 81.7
+                },
+                {
+                  "indicador": "veto_quorum",
+                  "puntaje": 82.9
+                },
+                {
+                  "indicador": "alineamiento_senadores_prov",
+                  "puntaje": 100.0
+                }
+              ]
+            },
+            {
+              "clave": "recursos",
+              "nombre": "Recursos de negociación",
+              "glosa": "con qué cuenta para negociar",
+              "puntaje": 74.0,
+              "share": 0.168,
+              "componentes": [
+                {
+                  "indicador": "votometro_ventaja_lla",
+                  "puntaje": 71.2
+                },
+                {
+                  "indicador": "iaf_transferencias",
+                  "puntaje": 76.6
+                }
+              ]
+            }
+          ],
+          "titulo": "¿Qué tipo de cosa está midiendo el índice?",
+          "sub": "El índice reúne tres preguntas distintas: cuánta presión ejercen sobre el Gobierno los demás actores, cuánto consigue el Gobierno por su cuenta, y con qué recursos cuenta para negociar. El promedio de las tres no responde ninguna por separado, así que acá se muestran abiertas. Es una separación de lectura: el índice se calcula igual y los pesos no cambian.",
+          "conclusion": "Leído por partes, lo más flojo del cinturón es «capacidad propia» (63,6) y lo más sólido, «recursos de negociación» (74,0): una diferencia de 10,4 puntos. Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
@@ -1703,10 +1785,10 @@
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,6/10."
         },
         "sentimiento_digital": {
-          "valor": 5.0,
+          "valor": 6.3,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
-          "fecha_dato": "2026-07-20",
+          "fecha_dato": "2026-07-18",
           "desactualizado": false,
           "detalle_txt": "El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITVC usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.",
           "en_indice": true,
@@ -1751,7 +1833,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260720_0422.json",
+      "fuente_enriquecida": "vida_cotidiana_20260718_1413.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 95.4,
@@ -1944,13 +2026,13 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
-          "r_niveles": 0.56,
-          "r_diferencias": 0.32,
+          "r_niveles": 0.554,
+          "r_diferencias": 0.309,
           "n": 30,
           "pares": [
             [
               "2023-12",
-              94.4,
+              94.3,
               40.4
             ],
             [
@@ -1960,7 +2042,7 @@
             ],
             [
               "2024-02",
-              89.7,
+              89.8,
               33.8
             ],
             [
@@ -1975,17 +2057,17 @@
             ],
             [
               "2024-06",
-              92.8,
+              92.9,
               36.0
             ],
             [
               "2024-07",
-              95.7,
+              95.8,
               36.3
             ],
             [
               "2024-08",
-              95.8,
+              95.9,
               43.0
             ],
             [
@@ -1995,7 +2077,7 @@
             ],
             [
               "2024-10",
-              97.7,
+              97.8,
               39.5
             ],
             [
@@ -2025,7 +2107,7 @@
             ],
             [
               "2025-04",
-              100.1,
+              100.2,
               42.4
             ],
             [
@@ -2055,7 +2137,7 @@
             ],
             [
               "2025-10",
-              102.9,
+              103.0,
               40.3
             ],
             [
@@ -2070,7 +2152,7 @@
             ],
             [
               "2026-01",
-              96.1,
+              96.0,
               47.6
             ],
             [
@@ -2080,7 +2162,7 @@
             ],
             [
               "2026-03",
-              95.5,
+              95.6,
               40.8
             ],
             [
@@ -2090,7 +2172,7 @@
             ],
             [
               "2026-05",
-              95.8,
+              95.9,
               40.5
             ],
             [
@@ -2105,7 +2187,7 @@
           "serie_label": "ITVC sin su componente de confianza",
           "externa_label": "ICC (confianza del consumidor, UTDT)",
           "trans_label": "ambas series rebaseadas a 100 en el primer mes",
-          "conclusion": "Correlación 0,56 en niveles y 0,32 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
+          "conclusion": "Correlación 0,554 en niveles y 0,309 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
         }
       }
     },
@@ -2933,9 +3015,7 @@
   },
   "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
-  "flags": [
-    "desactualizado:politica:movilizacion_cepa"
-  ],
+  "flags": [],
   "validacion_cruzada": {
     "filas": [
       {
@@ -2992,7 +3072,7 @@
         "riesgo": {
           "r": -0.63,
           "n": 30,
-          "rd": 0.01
+          "rd": 0.03
         },
         "merval": {
           "r": 0.56,
@@ -3000,14 +3080,14 @@
           "rd": -0.08
         },
         "icc": {
-          "r": 0.56,
+          "r": 0.55,
           "n": 30,
-          "rd": 0.3
+          "rd": 0.29
         },
         "epu": {
           "r": 0.45,
           "n": 29,
-          "rd": 0.36
+          "rd": 0.37
         }
       },
       {
@@ -3055,6 +3135,6 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,77 con el riesgo país, ITCG +0,75 con el Merval en dólares, ITVC +0,56 con la confianza del consumidor, ITCP -0,37 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,87 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,03 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,28, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,77 con el riesgo país, ITCG +0,75 con el Merval en dólares, ITVC +0,55 con la confianza del consumidor, ITCP -0,37 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,87 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,03 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,28, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
   }
 }

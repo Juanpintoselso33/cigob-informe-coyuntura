@@ -904,6 +904,73 @@ def _rezago(bloque, rezago_meses: dict, pulso: float, estructural: float):
     }
 
 
+def _familias(bloque, familias: dict, meta_familias: dict):
+    """Anexa a un bloque de índice su lectura descompuesta en tipos de señal
+    (ADR-0094, prioridad 2 de la auditoría de jul-2026).
+
+    La auditoría observó que el cinturón mezclaba bajo una misma etiqueta la
+    tensión que otros actores ejercen, la capacidad propia del gobierno y los
+    recursos con que negocia — tres preguntas distintas cuyo promedio no
+    responde ninguna con precisión.
+
+    La separación es de lectura y no de cálculo: el índice se computa igual y
+    los pesos no cambian. Cada familia es el promedio de los puntajes de sus
+    componentes, ponderado por peso efectivo, de modo que las tres reconstruyen
+    el índice general.
+    """
+    acc = {}
+    for dim in bloque.get("dimensiones", {}).values():
+        for k, ind in dim.get("indicadores", {}).items():
+            fam = familias.get(k)
+            peso = ind.get("peso_efectivo")
+            if not fam or not peso:
+                continue
+            a = acc.setdefault(fam, {"peso": 0.0, "suma": 0.0, "componentes": []})
+            a["peso"] += float(peso)
+            a["suma"] += float(peso) * float(ind["puntaje_banda"])
+            a["componentes"].append({"indicador": k, "puntaje": ind["puntaje_banda"]})
+    if len(acc) < 2:
+        return
+
+    familias_out = []
+    for clave, a in acc.items():
+        m = meta_familias.get(clave, {})
+        familias_out.append({
+            "clave": clave,
+            "nombre": m.get("nombre", clave),
+            "glosa": m.get("glosa", ""),
+            "puntaje": round(a["suma"] / a["peso"], 1),
+            "share": round(a["peso"], 3),
+            # ordenados de peor a mejor: el que primero conviene mirar va arriba
+            "componentes": sorted(a["componentes"], key=lambda c: c["puntaje"]),
+        })
+    familias_out.sort(key=lambda f: f["puntaje"])
+
+    peor, mejor = familias_out[0], familias_out[-1]
+    coma = lambda x: str(x).replace(".", ",")
+    brecha = round(mejor["puntaje"] - peor["puntaje"], 1)
+
+    bloque["familias"] = {
+        "familias": familias_out,
+        "titulo": "¿Qué tipo de cosa está midiendo el índice?",
+        "sub": ("El índice reúne tres preguntas distintas: cuánta presión ejercen sobre el "
+                "Gobierno los demás actores, cuánto consigue el Gobierno por su cuenta, y con "
+                "qué recursos cuenta para negociar. El promedio de las tres no responde "
+                "ninguna por separado, así que acá se muestran abiertas. Es una separación de "
+                "lectura: el índice se calcula igual y los pesos no cambian."),
+        "conclusion": (
+            f"Leído por partes, lo más flojo del cinturón es «{peor['nombre'].lower()}» "
+            f"({coma(peor['puntaje'])}) y lo más sólido, «{mejor['nombre'].lower()}» "
+            f"({coma(mejor['puntaje'])}): "
+            + (f"una diferencia de {coma(brecha)} puntos. " if brecha >= 5 else
+               "una diferencia pequeña, de modo que las tres dimensiones del problema están "
+               "hoy en un estado parecido. ")
+            + ("Importa para leer el número general, porque las tres cosas no se compensan "
+               "entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que "
+               "sus normas prosperen, y esas dos situaciones exigen respuestas distintas.")),
+    }
+
+
 def _redundancia_itcm(bloque):
     _redundancia(bloque, "redundancia_itcm")
 
@@ -1249,6 +1316,7 @@ def aplicar_scoring(informe, series):
                 _redundancia(c["itcp"], "redundancia_itcp")
                 _rezago(c["itcp"], itcp.REZAGO_MESES_ITCP,
                         itcp.REZAGO_PULSO, itcp.REZAGO_ESTRUCTURAL)
+                _familias(c["itcp"], itcp.FAMILIAS_ITCP, itcp.FAMILIAS_ITCP_META)
             continue
         if ckey == "espiritu_epoca":
             # sin continue: el puntuable que queda (intención migratoria)

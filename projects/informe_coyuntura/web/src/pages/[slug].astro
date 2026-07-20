@@ -116,6 +116,7 @@ const cruzRaw = indice ? ((informe as any).validacion_cruzada ?? null) : null;
 // externa) sino cuánta información distinta aporta cada componente.
 const red = indice?.data.redundancia ?? null;
 const rez = indice?.data.rezago ?? null;
+const fam = indice?.data.familias ?? null;
 const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice!.sigla)
   ? cruzRaw : null;
 // etiquetas cortas de las anclas externas para la matriz en mobile
@@ -533,6 +534,39 @@ const robChartData = rob?.hist && indice ? {
                 </Fragment>
               )}
               <p class="cg-h2-sub">{rez.conclusion}</p>
+            </div>
+          </Fragment>
+        )}
+        {fam && (
+          <Fragment>
+            <div class="cg-section-head cg-val-head">
+              <p class="cg-eyebrow">Lectura por partes</p>
+              <h2 class="cg-h2">{fam.titulo}</h2>
+              <p class="cg-h2-sub">{fam.sub}</p>
+            </div>
+            <div class={`cg-rob cg-rob--${meta.slug} cg-fam`}>
+              <div class="cg-fam-grid">
+                {fam.familias.map((f: any) => (
+                  <div class="cg-fam-col">
+                    <p class="cg-fam-nombre">{f.nombre}</p>
+                    <p class="cg-fam-glosa">{f.glosa}</p>
+                    <p class="cg-fam-num">{f.puntaje.toFixed(1).replace(".", ",")}</p>
+                    <div class="cg-fam-barra">
+                      <span class="cg-fam-fill" style={`width:${f.puntaje}%`}></span>
+                    </div>
+                    <p class="cg-fam-share">{Math.round(f.share * 100)}% del índice</p>
+                    <ul class="cg-fam-inds">
+                      {f.componentes.map((c: any) => (
+                        <li>
+                          <span class="cg-fam-ind">{label(c.indicador)}</span>
+                          <span class="cg-fam-pts">{c.puntaje.toFixed(1).replace(".", ",")}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <p class="cg-h2-sub">{fam.conclusion}</p>
             </div>
           </Fragment>
         )}

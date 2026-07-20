@@ -511,6 +511,47 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
                         # su banda queda arriba como referencia histórica
                         "comisiones_caidas"]
 
+# ── Qué tipo de cosa mide cada indicador (ADR-0094) ──────────────────────────
+# Prioridad 2 de la auditoría del cinturón: el índice mezclaba bajo una misma
+# etiqueta tres preguntas distintas, y eso "dificulta responder con precisión la
+# pregunta de si el gobierno puede ejecutar pese a la tensión".
+#
+# La separación es de LECTURA, no de cálculo: el ITCP se sigue computando igual
+# y los pesos no cambian. Lo que se agrega es poder leerlo descompuesto.
+#
+#   tension    — lo que OTROS actores le hacen al gobierno
+#   capacidad  — lo que el gobierno logra, o cuánto se sostiene
+#   recursos   — con qué cuenta para negociar
+FAMILIAS_ITCP = {
+    # Tensión externa: conducta de terceros.
+    "desafios_legislativos": "tension",        # el Congreso decide dar la pelea
+    "veto_quorum": "tension",                  # la cámara no se reúne
+    "conflictividad_nacional": "tension",      # la calle
+    "brecha_obra_publica": "tension",          # los empresarios que dependen del Estado
+    "alineamiento_senadores_prov": "tension",  # cómo votan los senadores provinciales
+    "adhesion_reformas_provincial": "tension", # qué deciden las legislaturas provinciales
+
+    # Capacidad propia: resultado de la acción del gobierno.
+    "eficacia_legislativa": "capacidad",       # cuánto de lo que manda se sanciona
+    "bloqueo_sostenido": "capacidad",          # cuánto aguanta de lo desafiado
+    "ratio_dnu": "capacidad",                  # cuánto depende del decreto
+    "cohesion_bloque": "capacidad",            # cuán unido vota su propio bloque
+
+    # Recursos de negociación: no son conducta de nadie, son activos.
+    "votometro_ventaja_lla": "recursos",       # capital electoral
+    "iaf_transferencias": "recursos",          # el giro fiscal como instrumento
+}
+
+FAMILIAS_ITCP_META = {
+    "tension":   {"nombre": "Tensión externa",
+                  "glosa": "lo que otros actores le hacen al Gobierno"},
+    "capacidad": {"nombre": "Capacidad propia",
+                  "glosa": "lo que el Gobierno consigue, o cuánto sostiene"},
+    "recursos":  {"nombre": "Recursos de negociación",
+                  "glosa": "con qué cuenta para negociar"},
+}
+
+
 # ── Rezago: dónde cae, en promedio, el dato que alimenta cada indicador ──────
 # (ADR-0092, prioridad 5 de la auditoría del cinturón)
 #
