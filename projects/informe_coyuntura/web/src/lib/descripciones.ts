@@ -116,7 +116,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   ratio_dnu: {
     que: "Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en los últimos 12 meses.",
-    aporta: "Un ratio alto indica un Ejecutivo que legisla por decreto ante un Congreso que no acompaña.",
+    aporta: "Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas: gobernar por decreto suele salir bien —el 95% de los decretos de necesidad y urgencia de esta gestión nunca llegó a votarse en el recinto y por lo tanto sigue vigente—, pero de los ocho que sí llegaron, seis cayeron. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.",
     frecuencia: "Continua (12m)", tipo: "Ratio",
   },
   conflictividad_nacional: {

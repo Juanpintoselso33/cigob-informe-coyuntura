@@ -1034,6 +1034,8 @@ export const FICHAS: Record<string, Ficha> = {
       "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 20% junto a la eficacia legislativa, las sesiones caídas por quórum, las derrotas legislativas y el bloqueo sostenido.",
     ],
     limitaciones: [
+      "Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.",
+      "Los datos respaldan que la dependencia sea una vulnerabilidad real y no una objeción teórica, pero también que sea latente: de los 162 decretos de necesidad y urgencia dictados desde diciembre de 2023, el 95% nunca se votó en el recinto y por lo tanto sigue vigente; de los ocho que sí se votaron, seis cayeron. El 7 de agosto de 2025 cayeron cinco en un solo día.",
       "Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.",
       "Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.",
       "El buscador no expone un listado con fecha por norma: reconstruir la serie mensual exige una consulta separada por mes, no una descarga única.",
@@ -1044,6 +1046,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Entra al cinturón en reemplazo del índice de confianza en el gobierno (UTDT): el cinturón mide capacidad de gobernar, no popularidad." },
       { fecha: "2026-06-30", cambio: "Serie anual desde 2020 para dar contexto histórico al ratio del año en curso." },
       { fecha: "2026-07-07", cambio: "Pasa a puntuar dentro del ITCP (índice paramétrico de cinco dimensiones ponderadas), en la dimensión de poder legislativo — antes el cinturón promediaba en partes iguales las tensiones de sus indicadores." },
+      { fecha: "2026-07-19", cambio: "Se explicita en la ficha qué pregunta responde el indicador y cuál es la lectura contraria, a pedido de una revisión externa del cinturón. El cálculo y las anclas no cambian. Se evaluó además incorporar un indicador separado de éxito de ejecución por decreto y se descartó con datos: como el 95% de los decretos nunca se vota, esa medida quedaría permanentemente cerca del 100% y no distinguiría nada." },
       { fecha: "2026-07-15", cambio: "El cociente pasó de acumulado del año calendario (un punto por año, reseteaba en enero) a ventana móvil de 365 días (un punto por mes, comparable mes a mes). Las anclas del puntaje NO cambiaron: siguen ancladas a la práctica histórica 2011-2024, no al rango observado bajo esta gestión." },
     ],
   },
