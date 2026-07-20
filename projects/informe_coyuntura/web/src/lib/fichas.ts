@@ -147,6 +147,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Mide el promedio nacional del nivel general: no distingue núcleo, regulados y estacionales, ni las diferencias regionales que el propio INDEC publica por separado.",
       "Llega con rezago: al momento de cada informe, el último dato disponible puede tener entre dos y seis semanas de antigüedad. Las expectativas del REM, dentro de la misma dimensión, cubren parcialmente ese hueco.",
       "La variación de un solo mes es sensible a factores puntuales (correcciones tarifarias, estacionalidad de rubros) que no permiten distinguir el dato suelto de la tendencia.",
+      "El IPC es además el deflactor de otros tres indicadores del cinturón (recaudación, crédito y tasa real del clima financiero): su peso real en el índice es mayor que su peso nominal, porque un error de medición se propagaría también a ellos. Se documenta como riesgo sistémico en la metodología general del índice.",
     ],
     faltantes: "Si al calcular el índice el dato del mes no está publicado, el indicador queda fuera de esa actualización y los pesos de su dimensión se renormalizan entre los presentes: la ausencia no puntúa ni a favor ni en contra.",
     revisiones: "El INDEC no revisa retroactivamente el IPC publicado: la serie de la fuente es definitiva. Del lado del informe, la serie se reconstruyó hacia atrás hasta julio de 2021 y todo cambio de método propio queda asentado en el historial de cambios (abajo).",
@@ -221,6 +222,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Los umbrales y pesos son institucionales, no estimados: representan el juicio del marco CIGOB. El Monte Carlo mide cuánto dependen las conclusiones de esa elección, pero no la sustituye.",
       "El estándar OCDE/JRC prevé un análisis multivariado previo (paso 4: contrastar la estructura teórica con la correlación real entre los indicadores). Ese contraste está pendiente; la validación cruzada lo aproxima por el lado de las anclas externas.",
       "La ventana de validación es corta — los meses del mandato en curso —, por lo que las correlaciones se leen como consistencia, no como prueba.",
+      "Riesgo sistémico del deflactor: el IPC no sólo es un indicador del índice, también convierte a términos reales a la recaudación, el crédito y la tasa real del clima financiero. Cerca del 24% del índice depende de que la inflación esté bien medida, de modo que un error del INDEC no movería una fuente sino tres a la vez. (El desequilibrio monetario también usa el IPC, pero compara dos series ya deflactadas y el deflactor se cancela, así que es inmune a ese error y no se cuenta acá.) No es corregible —no hay un deflactor mensual alternativo— pero implica que el índice tiene menos fuentes verdaderamente independientes de las que aparenta. El análisis de robustez lo tiene en cuenta: sortea un único error de inflación por escenario y lo propaga a los indicadores que lo heredan, en vez de tratar cada falla como si fuera de una fuente distinta.",
     ],
     cambios: [
       {
