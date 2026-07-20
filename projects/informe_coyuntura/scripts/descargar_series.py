@@ -349,6 +349,36 @@ def fetch_ipc_nucleo_serie() -> list:
             if ym >= "2023-12"]
 
 
+POBREZA_INDEC_ID = "64.2_POBLACION_NUA_0_0_34_74"   # INDEC EPH, % personas, TOTAL, semestral
+
+
+def fetch_pobreza_indec_serie() -> list:
+    """Tasa OFICIAL de pobreza (INDEC, EPH continua): % de personas bajo la
+    línea, total de aglomerados urbanos, semestral desde 2003 (ADR-0114).
+
+    Acompaña al nowcast de la UTDT en su gráfico. No puntúa: es la referencia
+    autorizada y la que da la historia larga —el nowcast sólo publica informes
+    desde 2025—, pero llega dos veces al año y con rezago.
+
+    La API entrega la proporción (0,282); se publica en puntos porcentuales
+    para que las dos curvas del gráfico compartan unidad. [[YYYY-MM-01, %]]."""
+    # la API devuelve del más nuevo al más viejo; el resto de las series del
+    # proyecto van ascendentes y los gráficos lo asumen
+    return sorted([[f"{f[:7]}-01", round(v * 100.0, 1)]
+                   for f, v in fetch_indec(POBREZA_INDEC_ID, limit=200) if v is not None])
+
+
+def fetch_pobreza_nowcast_serie() -> list:
+    """Serie del Nowcast de Pobreza de la UTDT, un punto por informe mensual
+    (ADR-0113). Recorre todos los PDF publicados, que es caro, y por eso vive
+    acá y no en el colector diario. [[YYYY-MM-01, %]]."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
+    from utdt_nowcast_pobreza import fetch_nowcast_pobreza
+    d = (fetch_nowcast_pobreza(historico=True) or {}).get("pobreza_nowcast") or {}
+    return [[f"{ym}-01", v] for ym, v in sorted((d.get("serie") or {}).items())]
+
+
 CUENTA_CORRIENTE_ID = "160.2_TL_CUENNTE_0_T_22"   # INDEC, balanza de pagos, trimestral
 
 
@@ -1357,6 +1387,14 @@ def fetch_itvc_lider() -> list:
 
 VIDA_DERIVADAS.append(
     ("itvc_lider", "índice (100 = 4T-2023)", "UTDT — Índice Líder (serie XLS)", fetch_itvc_lider)
+)
+VIDA_DERIVADAS.append(
+    ("pobreza_nowcast", "% de personas", "UTDT — Nowcast de Pobreza (informes PDF)",
+     fetch_pobreza_nowcast_serie)
+)
+VIDA_DERIVADAS.append(
+    ("pobreza_indec", "% de personas", "INDEC — EPH continua (vía datos.gob.ar)",
+     fetch_pobreza_indec_serie)
 )
 
 

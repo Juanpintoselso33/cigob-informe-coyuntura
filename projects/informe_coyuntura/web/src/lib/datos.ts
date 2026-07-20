@@ -134,9 +134,12 @@ export const informe = informeRaw as unknown as Informe;
 // recorte solo visual: los cálculos del pipeline (rebases base 4T-2023,
 // sumas móviles, validaciones) usan la historia completa de series.json.
 // Excepción documentada: protestas_caba muestra 2018→hoy porque su razón de
-// ser es comparar el nivel de protesta contra la era pre-mandato.
+// ser es comparar el nivel de protesta contra la era pre-mandato. pobreza_indec
+// va por lo mismo (ADR-0114): es semestral, y con el recorte perdía el punto de
+// julio de 2023 —la última lectura previa al traspaso— que es justamente la
+// referencia contra la que se lee la serie.
 const SERIE_DESDE = "2023-12-01";
-const SERIE_COMPLETA = new Set(["protestas_caba"]);
+const SERIE_COMPLETA = new Set(["protestas_caba", "pobreza_indec"]);
 const seriesTodas = seriesRaw as Record<string, { fecha: string; valor: number }[]>;
 export const series = Object.fromEntries(
   Object.entries(seriesTodas).map(([k, pts]) => [
@@ -235,7 +238,7 @@ export const LABELS: Record<string, string> = {
   idc: "Capacidad prestable (IdC)", badlar: "Tasa BADLAR",
   emae_ia: "Actividad económica (EMAE i.a.)",
   ipi_manufacturero: "Producción industrial (IPI i.a.)",
-  ipc_nucleo: "Inflación núcleo",
+  ipc_nucleo: "Inflación núcleo", pobreza_indec: "Pobreza (oficial, INDEC)",
   cuenta_corriente: "Cuenta corriente",
   saldo_comercial_12m: "Saldo comercial 12m", recaudacion: "Recaudación tributaria",
   tcrm: "Tipo de cambio real (TCRM)", rem_ipc_12m: "Expectativas inflación (REM 12m)",
@@ -317,7 +320,7 @@ export function aclaracion(b: Bucket, ind: Indicador): string | null {
 export const UNIDADES_CORTAS: Record<string, string> = {
   // macro
   ipc_total: "%", reservas_bcra: "US$ M netas", idc: "índice", badlar: "%", emae_ia: "% i.a.",
-  ipi_manufacturero: "% i.a.", ipc_nucleo: "%", cuenta_corriente: "US$ M",
+  ipi_manufacturero: "% i.a.", ipc_nucleo: "%", cuenta_corriente: "US$ M", pobreza_indec: "%",
   saldo_comercial_12m: "US$ M", recaudacion: "% i.a. real", tcrm: "índice", rem_ipc_12m: "%",
   idm: "pp", presion_dolarizacion: "pts",
   iai: "% i.a.", icip: "% i.a.", credito_privado: "% i.a. real", costo_financiamiento_tesoro: "% real", resultado_primario: "% de la recaudación",
@@ -361,6 +364,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   idc: "Desvíos estándar vs. su historia (σ)",
   badlar: "% anual", emae_ia: "% interanual",
   ipi_manufacturero: "% interanual (promedio 3 meses)", ipc_nucleo: "% mensual",
+  pobreza_indec: "% de personas (medición oficial semestral)",
   cuenta_corriente: "millones de dólares (acumulado 4 trimestres)",
   saldo_comercial_12m: "Millones de USD (acum. 12 meses)",
   recaudacion: "% interanual real (promedio móvil 3 meses)",

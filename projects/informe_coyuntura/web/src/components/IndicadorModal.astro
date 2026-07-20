@@ -316,6 +316,11 @@ const dimsJson = JSON.stringify(dims);
       // El general junto al núcleo: un mes de corrección tarifaria y uno de
       // núcleo alta dan la misma inflación general y significan lo contrario.
       ipc_total: { series: [["ipc_total", "IPC general"], ["ipc_nucleo", "Núcleo"]] },
+      // La estimación mensual junto a la medición oficial: el nowcast da el
+      // pulso —un punto por mes— y el INDEC la referencia autorizada y la
+      // historia larga, que al nowcast le falta (sus informes arrancan en 2025).
+      pobreza_nowcast: { series: [["pobreza_nowcast", "Estimación mensual (UTDT)"],
+                                  ["pobreza_indec", "Oficial (INDEC)"]] },
       // El saldo de bienes junto a la cuenta corriente: el primero puede estar
       // en superávit mientras el país sigue drenando dólares por servicios,
       // intereses y utilidades. La línea del cero marca la frontera.
