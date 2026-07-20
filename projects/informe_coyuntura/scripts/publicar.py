@@ -1509,6 +1509,9 @@ def aplicar_scoring(informe, series):
             continue
         if ckey == "vida_cotidiana":
             _scoring_vida_itvc(c, series)
+            # Responde la pregunta explícita de la auditoría sobre si
+            # patentamiento_motos aporta señal propia frente al ICC (ADR-0108).
+            _redundancia(c["itvc"], "redundancia_itvc")
             # El ITVC es el cinturón con más dispersión de vintages de los
             # cuatro: la EPH es trimestral y sostiene dos componentes, uno de
             # ellos en la dimensión de mayor peso. Prioridad alta de la

@@ -2251,6 +2251,67 @@
           "trans_label": "ambas series rebaseadas a 100 en el primer mes",
           "conclusion": "Correlación 0,554 en niveles y 0,309 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."
         },
+        "redundancia": {
+          "n_indicadores": 14,
+          "n_pares": 91,
+          "r_abs_medio": 0.369,
+          "share_altos": 0.132,
+          "share_bajos": 0.462,
+          "umbral": 0.7,
+          "pares_cruzados": 12,
+          "diferencias": {
+            "n_pares": 91,
+            "r_abs_medio": 0.194,
+            "share_altos": 0.0
+          },
+          "top": [
+            {
+              "a": "mora_familias",
+              "b": "patentamiento_motos",
+              "r": -0.974,
+              "cruzado": true,
+              "por_diseno": null
+            },
+            {
+              "a": "brecha_salario_cbt",
+              "b": "endeudamiento_familiar",
+              "r": 0.943,
+              "cruzado": true,
+              "por_diseno": null
+            },
+            {
+              "a": "brecha_salario_cbt",
+              "b": "ipc_alimentos",
+              "r": 0.918,
+              "cruzado": true,
+              "por_diseno": null
+            },
+            {
+              "a": "endeudamiento_familiar",
+              "b": "ipc_alimentos",
+              "r": 0.918,
+              "cruzado": true,
+              "por_diseno": null
+            },
+            {
+              "a": "ipc_alimentos",
+              "b": "sentimiento_digital",
+              "r": 0.799,
+              "cruzado": true,
+              "por_diseno": null
+            },
+            {
+              "a": "endeudamiento_familiar",
+              "b": "patentamiento_motos",
+              "r": 0.773,
+              "cruzado": true,
+              "por_diseno": null
+            }
+          ],
+          "titulo": "¿Cuánta información distinta aporta cada componente?",
+          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 14 componentes que tienen serie histórica, 91 pares en total, y se mide cuánto se mueven juntos.",
+          "conclusion": "La correlación media entre pares es 0,369: ni componentes independientes ni una sola señal repetida. Un 13% de los pares se mueve muy junto (por encima de 0,7) y un 46% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,194 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 12 pares que superan el umbral en niveles, 12 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
+        },
         "vintages": {
           "dias_promedio": 85,
           "meses_promedio": 2.8,

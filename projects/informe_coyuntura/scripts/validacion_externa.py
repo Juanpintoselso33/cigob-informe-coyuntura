@@ -147,8 +147,14 @@ def _meses(desde: str, hasta: str) -> list:
     return out
 
 
-def construir_series_itvc() -> tuple:
-    """(serie ITVC completa, serie ITVC sin ICC, serie ICC) mensuales."""
+def _indices_itvc_por_componente() -> dict:
+    """{componente: {YYYY-MM: índice base 100}} con todo ya resuelto.
+
+    Lo comparten la reconstrucción de la serie del ITVC y su matriz de
+    redundancia, para que no puedan divergir en qué componentes miran ni en
+    cómo los rebasan — el mismo motivo por el que existe
+    `_valores_itcm_por_mes`.
+    """
     series = json.loads(SERIES.read_text(encoding="utf-8"))
     indices_por_comp = {}
     for comp, (skey, invertido, anual, ya_rebaseada) in COMPONENTES.items():
@@ -159,6 +165,33 @@ def construir_series_itvc() -> tuple:
                else _rebase(vals, invertido, anual, BASES_PROPIAS.get(comp)))
         # winsorización asimétrica del ADR-0033: mismo techo que publicar
         indices_por_comp[comp] = {ym: min(v, ITVC_TECHO) for ym, v in idx.items()}
+    return indices_por_comp
+
+
+def _valores_itvc_por_mes() -> dict:
+    """{YYYY-MM: {componente: índice}} — la vista por mes de lo anterior.
+
+    Arrastra el último dato disponible de cada componente (doc IV.2.1), que es
+    lo que hace el índice publicado: sin eso, un mes cualquiera tendría sólo los
+    componentes que publicaron justo ese mes.
+    """
+    por_comp = _indices_itvc_por_componente()
+    ult = max(max(v) for v in por_comp.values() if v)
+    out = {}
+    for ym in _meses("2023-12", ult):
+        punto = {}
+        for comp, vals in por_comp.items():
+            previos = [k for k in vals if k <= ym]
+            if previos:
+                punto[comp] = vals[max(previos)]
+        out[ym] = punto
+    return out
+
+
+def construir_series_itvc() -> tuple:
+    """(serie ITVC completa, serie ITVC sin ICC, serie ICC) mensuales."""
+    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    indices_por_comp = _indices_itvc_por_componente()
     ult = max(max(v) for v in indices_por_comp.values() if v)
     itvc_full, itvc_sin_icc = {}, {}
     for ym in _meses("2023-12", ult):
@@ -383,6 +416,50 @@ def matriz_redundancia_itcg(umbral: float = 0.7) -> dict:
                                 getattr(itcg, "TRANSFORMACIONES_ITCG", None))
     return matriz_redundancia(escala, itcg.DIMENSIONES_ITCG,
                               _valores_itcg_por_mes(), ACOPLADOS_POR_DISENO, umbral)
+
+
+class _EscalaIdentidad:
+    """Adaptador para que el ITVC pueda usar la matriz de los otros tres.
+
+    Los índices por bandas convierten un valor crudo en puntaje 0-100 y es ese
+    puntaje el que se promedia. El ITVC no: sus componentes YA son índices base
+    100 = 4T-2023, y el número que se promedia es el índice mismo. Así que la
+    conversión correcta es la identidad — no una escala ausente.
+
+    Mantiene el contrato de `parametrica.Escala` (`puntuable` y `puntaje`) para
+    no tener que ramificar `matriz_redundancia`, que es genérica desde ADR-0085.
+    """
+
+    def __init__(self, componentes):
+        self._comp = set(componentes)
+
+    def puntuable(self, indicador: str) -> bool:
+        return indicador in self._comp
+
+    def puntaje(self, valor, indicador: str) -> float:
+        return float(valor)
+
+
+def matriz_redundancia_itvc(umbral: float = 0.7) -> dict:
+    """Redundancia interna del ITVC (ADR-0108).
+
+    La auditoría de vida cotidiana pidió expresamente comprobar si
+    `patentamiento_motos` «aporta señal independiente» del ICC, dado su peso
+    marginal y su ambigüedad de constructo (confianza del consumidor vs. acceso
+    al crédito prendario). Ésta es la medición que responde esa pregunta, y de
+    paso las mismas dudas sobre `consumo_carne`.
+
+    ADVERTENCIA DE LECTURA: los componentes entran winsorizados al techo de
+    ADR-0033, igual que en el índice publicado. Un componente clavado en el
+    techo pierde varianza, y sin varianza no hay correlación que calcular — su
+    fila puede salir vacía o subestimada. Es una limitación real de la medición,
+    no un resultado: hoy afecta a los cinco componentes saturados que la propia
+    auditoría señala en su punto 3.1.
+    """
+    comp = {i for d in itvc.DIMENSIONES_ITVC.values() for i in d["indicadores"]}
+    dims = {k: {"indicadores": d["indicadores"]} for k, d in itvc.DIMENSIONES_ITVC.items()}
+    return matriz_redundancia(_EscalaIdentidad(comp), dims,
+                              _valores_itvc_por_mes(), ACOPLADOS_POR_DISENO, umbral)
 
 
 def matriz_redundancia_itcp(umbral: float = 0.7) -> dict:
@@ -867,7 +944,10 @@ def main():
     resultados["redundancia_itcm"] = red
     # ADR-0085: la misma medición para gestión y política. Un fallo en una no
     # debe tumbar la corrida entera de validación.
-    for sigla, fn in (("itcg", matriz_redundancia_itcg), ("itcp", matriz_redundancia_itcp)):
+    # ADR-0108: el ITVC se suma con escala identidad (sus componentes ya son
+    # índices base 100, no puntajes de banda).
+    for sigla, fn in (("itcg", matriz_redundancia_itcg), ("itcp", matriz_redundancia_itcp),
+                      ("itvc", matriz_redundancia_itvc)):
         try:
             otra = fn()
             resultados[f"redundancia_{sigla}"] = otra
