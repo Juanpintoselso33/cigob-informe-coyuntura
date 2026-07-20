@@ -1,0 +1,315 @@
+{
+  "por_indice": {
+    "ITCM": {
+      "peso_total": 1.0,
+      "categorias": {
+        "sin_declarar": 0.4534,
+        "convencion": 0.377,
+        "documento": 0.026000000000000002,
+        "conceptual": 0.0336,
+        "historia_larga": 0.11
+      },
+      "detalle": [
+        {
+          "indicador": "presion_dolarizacion",
+          "categoria": "documento",
+          "peso": 0.026,
+          "motivo": "«conserva los cortes institucionales» del documento de diseño"
+        },
+        {
+          "indicador": "idc",
+          "categoria": "conceptual",
+          "peso": 0.0336,
+          "motivo": "anclas en desvíos estándar: +1σ ≈ p84 · −1σ ≈ p16 (ADR-0028)"
+        },
+        {
+          "indicador": "tcrm",
+          "categoria": "historia_larga",
+          "peso": 0.11,
+          "motivo": "historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos"
+        },
+        {
+          "indicador": "resultado_primario",
+          "categoria": "convencion",
+          "peso": 0.12,
+          "motivo": "referencias dic-2023 (−12,0%) y el programa estabilizado en +6/+8% (ADR-0072)"
+        },
+        {
+          "indicador": "iai",
+          "categoria": "convencion",
+          "peso": 0.072,
+          "motivo": "el umbral ±2% del documento «no sobrevive al dato»: se reemplazó por bandas calibradas a 2024-2026"
+        },
+        {
+          "indicador": "idm",
+          "categoria": "convencion",
+          "peso": 0.065,
+          "motivo": "«calibrado con la historia 2024-2026»"
+        },
+        {
+          "indicador": "icip",
+          "categoria": "convencion",
+          "peso": 0.048,
+          "motivo": "banda ensanchada por la volatilidad observada del período"
+        },
+        {
+          "indicador": "costo_financiamiento_tesoro",
+          "categoria": "convencion",
+          "peso": 0.04,
+          "motivo": "extremos tomados de dic-2023 (−12,2%) y ago-2025 (+33,5%) (ADR-0071)"
+        },
+        {
+          "indicador": "credito_privado",
+          "categoria": "convencion",
+          "peso": 0.032,
+          "motivo": "«calibradas a la remonetización 2024-2026» (ADR-0022)"
+        },
+        {
+          "indicador": "ipc_total",
+          "categoria": "sin_declarar",
+          "peso": 0.104,
+          "motivo": "el comentario sólo dice la unidad («% mensual»)"
+        },
+        {
+          "indicador": "emae_ia",
+          "categoria": "sin_declarar",
+          "peso": 0.088,
+          "motivo": "el comentario sólo dice la unidad"
+        },
+        {
+          "indicador": "recaudacion",
+          "categoria": "sin_declarar",
+          "peso": 0.072,
+          "motivo": "el comentario sólo dice la unidad"
+        },
+        {
+          "indicador": "rem_ipc_12m",
+          "categoria": "sin_declarar",
+          "peso": 0.065,
+          "motivo": "el comentario explica la transformación a equivalente mensual, no de dónde salen los cortes"
+        },
+        {
+          "indicador": "reservas_bcra",
+          "categoria": "sin_declarar",
+          "peso": 0.0544,
+          "motivo": "el comentario sólo aclara netas vs brutas"
+        },
+        {
+          "indicador": "saldo_comercial_12m",
+          "categoria": "sin_declarar",
+          "peso": 0.048,
+          "motivo": "el comentario sólo dice la unidad"
+        },
+        {
+          "indicador": "ipi_manufacturero",
+          "categoria": "sin_declarar",
+          "peso": 0.022,
+          "motivo": "hereda las bandas del EMAE a propósito (ADR-0076/0079), que a su vez no declaran origen"
+        }
+      ],
+      "share": {
+        "sin_declarar": 0.453,
+        "convencion": 0.377,
+        "documento": 0.026,
+        "conceptual": 0.034,
+        "historia_larga": 0.11
+      },
+      "share_circular": 0.83
+    },
+    "ITCG": {
+      "peso_total": 1.0,
+      "categorias": {
+        "documento": 0.33999999999999997,
+        "convencion": 0.347,
+        "sin_declarar": 0.163,
+        "conceptual": 0.105,
+        "historia_larga": 0.045
+      },
+      "detalle": [
+        {
+          "indicador": "cepo_mulc",
+          "categoria": "documento",
+          "peso": 0.14,
+          "motivo": "«brecha sostenida <10-15% = condiciones óptimas de unificación» (doc 260702)"
+        },
+        {
+          "indicador": "apertura_comercial",
+          "categoria": "documento",
+          "peso": 0.14,
+          "motivo": "anclas sobre la lineal del documento: 0% → 100 · 15% → 0 (ADR-0021)"
+        },
+        {
+          "indicador": "privatizaciones",
+          "categoria": "documento",
+          "peso": 0.06,
+          "motivo": "etapas 0-4 definidas en el documento de diseño"
+        },
+        {
+          "indicador": "fal_modernizacion_laboral",
+          "categoria": "conceptual",
+          "peso": 0.105,
+          "motivo": "cortes sobre los estados que la escala puede tomar, no sobre el rango observado (ADR-0098)"
+        },
+        {
+          "indicador": "litigiosidad_laboral",
+          "categoria": "historia_larga",
+          "peso": 0.045,
+          "motivo": "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023)"
+        },
+        {
+          "indicador": "reduccion_estado",
+          "categoria": "convencion",
+          "peso": 0.0875,
+          "motivo": "«calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85"
+        },
+        {
+          "indicador": "desregulacion_normativa",
+          "categoria": "convencion",
+          "peso": 0.07,
+          "motivo": "la meta de 100 normas = plan completo es convención propia, declarada en ADR-0096"
+        },
+        {
+          "indicador": "protocolo_antipiquetes",
+          "categoria": "convencion",
+          "peso": 0.067,
+          "motivo": "calibrada con la caída observada en CABA en 2024-2025"
+        },
+        {
+          "indicador": "gasto_funcionamiento",
+          "categoria": "convencion",
+          "peso": 0.0625,
+          "motivo": "bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico"
+        },
+        {
+          "indicador": "rigi_inversiones",
+          "categoria": "convencion",
+          "peso": 0.06,
+          "motivo": "referencia el 22,1% de jun-2026 y la composición del pipeline de ese momento"
+        },
+        {
+          "indicador": "masa_salarial",
+          "categoria": "sin_declarar",
+          "peso": 0.05,
+          "motivo": "el comentario sólo dice la unidad"
+        },
+        {
+          "indicador": "reestructuracion_organismos",
+          "categoria": "sin_declarar",
+          "peso": 0.05,
+          "motivo": "el comentario sólo dice la unidad"
+        },
+        {
+          "indicador": "libertad_opcion_salud",
+          "categoria": "sin_declarar",
+          "peso": 0.033,
+          "motivo": "el comentario sólo dice la unidad"
+        },
+        {
+          "indicador": "concesiones_infraestructura",
+          "categoria": "sin_declarar",
+          "peso": 0.03,
+          "motivo": "el comentario sólo dice la unidad"
+        }
+      ],
+      "share": {
+        "documento": 0.34,
+        "convencion": 0.347,
+        "sin_declarar": 0.163,
+        "conceptual": 0.105,
+        "historia_larga": 0.045
+      },
+      "share_circular": 0.51
+    },
+    "ITCP": {
+      "peso_total": 1.0,
+      "categorias": {
+        "externa": 0.17500000000000002,
+        "sin_declarar": 0.20550000000000002,
+        "convencion": 0.40349999999999997,
+        "conceptual": 0.216
+      },
+      "detalle": [
+        {
+          "indicador": "eficacia_legislativa",
+          "categoria": "externa",
+          "peso": 0.08,
+          "motivo": "Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061)"
+        },
+        {
+          "indicador": "ratio_dnu",
+          "categoria": "externa",
+          "peso": 0.0575,
+          "motivo": "ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059)"
+        },
+        {
+          "indicador": "bloqueo_sostenido",
+          "categoria": "externa",
+          "peso": 0.0375,
+          "motivo": "ninguna insistencia exitosa entre 2003 y 2025: ~100% histórico de sostenimiento (ADR-0069)"
+        },
+        {
+          "indicador": "brecha_obra_publica",
+          "categoria": "conceptual",
+          "peso": 0.15,
+          "motivo": "números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088)"
+        },
+        {
+          "indicador": "adhesion_reformas_provincial",
+          "categoria": "conceptual",
+          "peso": 0.066,
+          "motivo": "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"
+        },
+        {
+          "indicador": "cohesion_bloque",
+          "categoria": "convencion",
+          "peso": 0.18,
+          "motivo": "calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048)"
+        },
+        {
+          "indicador": "conflictividad_nacional",
+          "categoria": "convencion",
+          "peso": 0.12,
+          "motivo": "calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052)"
+        },
+        {
+          "indicador": "alineamiento_senadores_prov",
+          "categoria": "convencion",
+          "peso": 0.066,
+          "motivo": "recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038)"
+        },
+        {
+          "indicador": "desafios_legislativos",
+          "categoria": "convencion",
+          "peso": 0.0375,
+          "motivo": "anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089)"
+        },
+        {
+          "indicador": "iaf_transferencias",
+          "categoria": "sin_declarar",
+          "peso": 0.088,
+          "motivo": "el comentario sólo dice la unidad y la dirección"
+        },
+        {
+          "indicador": "votometro_ventaja_lla",
+          "categoria": "sin_declarar",
+          "peso": 0.08,
+          "motivo": "el comentario sólo dice la unidad"
+        },
+        {
+          "indicador": "veto_quorum",
+          "categoria": "sin_declarar",
+          "peso": 0.0375,
+          "motivo": "el comentario sólo dice la unidad y la dirección"
+        }
+      ],
+      "share": {
+        "externa": 0.175,
+        "sin_declarar": 0.206,
+        "convencion": 0.403,
+        "conceptual": 0.216
+      },
+      "share_circular": 0.609
+    }
+  },
+  "sin_clasificar": []
+}
