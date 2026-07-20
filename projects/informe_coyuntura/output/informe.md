@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-20 08:18:17"
+generado: "2026-07-20 08:58:56"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -71,7 +71,7 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
 
-### 🟢 Gestion — score 2.7/10 (estable)
+### 🟢 Gestion — score 2.8/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -105,4 +105,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-20 08:18:17 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-20 08:58:56 — schema 1.2.0*

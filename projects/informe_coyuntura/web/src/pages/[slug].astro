@@ -21,7 +21,13 @@ const filas = indicadoresOrdenados(c);
 // Los indicadores de contexto (en_indice === false) no construyen la tensión:
 // se muestran en un bloque aparte para no confundirlos con los del índice.
 const filasIndice = filas.filter(({ ind }) => ind.en_indice !== false);
-const filasContexto = filas.filter(({ ind }) => ind.en_indice === false);
+// Dentro de los que no puntúan hay dos estados distintos y conviene no
+// mezclarlos: los de CONTEXTO no miden la dimensión de su índice, mientras que
+// los CUMPLIDOS sí la miden y salieron del cálculo justamente por haber llegado
+// a su máximo y quedarse ahí. Decirle "no integra el índice" a una promesa
+// lograda invierte el sentido de la noticia.
+const filasCumplidas = filas.filter(({ ind }) => ind.en_indice === false && ind.cumplido);
+const filasContexto = filas.filter(({ ind }) => ind.en_indice === false && !ind.cumplido);
 const fuentes = fuentesDeCinturon(c);
 const indice = indiceDe(c);   // ITCM / ITCG / ITVC / ITCP, o null (espíritu)
 // Los indicadores del índice se muestran AGRUPADOS por dimensión, en el mismo
@@ -280,6 +286,27 @@ const robChartData = rob?.hist && indice ? {
         </div>
       )}
     </section>
+
+    {filasCumplidas.length > 0 && (
+      <section class="cg-section">
+        <div class="cg-section-head">
+          <p class="cg-eyebrow">Promesa cumplida</p>
+          <h2 class="cg-h2">Llegaron a su máximo y dejaron de moverse</h2>
+          <p class="cg-h2-sub">Miden lo que su dimensión se propone medir, pero <strong>alcanzaron el techo de su escala y se mantienen ahí</strong>. Salieron del cálculo del {indice?.sigla ?? "índice"} porque un valor que no puede cambiar no aporta información al promedio mensual, y sí lo infla. Se siguen publicando: que la promesa esté cumplida es parte de lo que este informe cuenta.</p>
+        </div>
+        <div class="cg-tile-grid">
+          {filasCumplidas.map(({ key, ind }) => (
+            <div class="cg-cumplido-wrap">
+              <span class="cg-cumplido-chip">Logrado desde {ind.cumplido.desde_txt ?? ind.cumplido.desde}</span>
+              <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />
+            </div>
+          ))}
+        </div>
+        {filasCumplidas.map(({ ind }) => (
+          <p class="cg-h2-sub cg-cumplido-nota">{ind.cumplido.por_que}</p>
+        ))}
+      </section>
+    )}
 
     {filasContexto.length > 0 && (
       <section class="cg-section">

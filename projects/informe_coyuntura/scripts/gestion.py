@@ -2106,6 +2106,11 @@ def anotar_indicadores(indicadores: dict, resultado: dict | None) -> None:
             ind["en_indice"] = nombre in itcg.BANDAS_ITCG  # del índice pero sin dato
             if nombre in itcg.INDICADORES_CONTEXTO:
                 ind["en_indice"] = False
+        # Las promesas cumplidas se muestran pero no puntúan (ADR-0100). Se
+        # marcan SIEMPRE, hayan entrado o no por por_indicador.
+        if nombre in itcg.INDICADORES_CUMPLIDOS:
+            ind["en_indice"] = False
+            ind["cumplido"] = dict(itcg.INDICADORES_CUMPLIDOS[nombre])
 
 
 def calcular_score(indicadores: dict) -> float:

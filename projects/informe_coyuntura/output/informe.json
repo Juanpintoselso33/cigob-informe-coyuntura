@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-20T08:18:17.438033",
+  "generated_at": "2026-07-20T08:58:56.499879",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -913,7 +913,7 @@
       "alerta": null
     },
     "gestion": {
-      "score": 2.7,
+      "score": 2.8,
       "estado": "estable",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
@@ -1132,11 +1132,12 @@
             "tdps_2023": 98.3
           },
           "detalle_txt": "Devengado 2026: $ 527.684M directo a personas (5.1.4) / $ 527.684M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
-          "en_indice": true,
-          "dimension": "social_orden",
-          "puntaje_itcg": 100.0,
-          "puntaje_banda": 100.0,
-          "peso_efectivo": 0.04
+          "en_indice": false,
+          "cumplido": {
+            "desde": "2024-04",
+            "desde_txt": "abril de 2024",
+            "por_que": "La desintermediación de los planes sociales llegó al 100% del devengado pagado directo a personas en abril de 2024 y se mantiene desde entonces, sin variación en 27 meses. La línea de base de 2023 ya era 98,3%: el margen para seguir informando algo nuevo estaba agotado desde el arranque."
+          }
         },
         "protocolo_antipiquetes": {
           "valor": 74.2,
@@ -1153,7 +1154,7 @@
           "dimension": "social_orden",
           "puntaje_itcg": 99.0,
           "puntaje_banda": 99.0,
-          "peso_efectivo": 0.04
+          "peso_efectivo": 0.067
         },
         "libertad_opcion_salud": {
           "valor": 31.8,
@@ -1169,7 +1170,7 @@
           "dimension": "social_orden",
           "puntaje_itcg": 54.8,
           "puntaje_banda": 54.8,
-          "peso_efectivo": 0.02
+          "peso_efectivo": 0.033
         },
         "alertas_manifestacion": {
           "valor": 0,
@@ -1195,7 +1196,7 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 73.1,
+        "valor": 72.5,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -1318,28 +1319,21 @@
           "social_orden": {
             "nombre": "Reforma social y orden",
             "peso": 0.1,
-            "puntaje": 90.6,
+            "puntaje": 84.4,
             "indicadores": {
-              "asistencia_directa": {
-                "peso": 0.4,
-                "puntaje_banda": 100.0,
-                "puntaje_aplicado": 100.0,
-                "valor": 100.0,
-                "peso_efectivo": 0.04
-              },
               "protocolo_antipiquetes": {
-                "peso": 0.4,
+                "peso": 0.67,
                 "puntaje_banda": 99.0,
                 "puntaje_aplicado": 99.0,
                 "valor": 74.2,
-                "peso_efectivo": 0.04
+                "peso_efectivo": 0.067
               },
               "libertad_opcion_salud": {
-                "peso": 0.2,
+                "peso": 0.33,
                 "puntaje_banda": 54.8,
                 "puntaje_aplicado": 54.8,
                 "valor": 31.8,
-                "peso_efectivo": 0.02
+                "peso_efectivo": 0.033
               }
             },
             "peso_efectivo": 0.1

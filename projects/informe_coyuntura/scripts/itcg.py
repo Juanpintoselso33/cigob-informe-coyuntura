@@ -175,8 +175,12 @@ DIMENSIONES_ITCG = {
         "nombre": "Reforma social y orden",
         "peso": 0.10,
         # Doc: "mide desintermediación, liberalización salud y orden público".
-        "indicadores": {"asistencia_directa": 0.40, "protocolo_antipiquetes": 0.40,
-                        "libertad_opcion_salud": 0.20},
+        # 2026-07-20 (ADR-0100): sale asistencia_directa, clavada en 100,0 desde
+        # abr-2024. Los dos que quedan conservan su proporción relativa
+        # (40:20 = 2:1), así que la dimensión no cambia de carácter, sólo deja
+        # de arrastrar un componente sin recorrido. Antes 40/40/20.
+        "indicadores": {"protocolo_antipiquetes": 0.67,
+                        "libertad_opcion_salud": 0.33},
     },
 }
 
@@ -211,6 +215,27 @@ INTERPRETACION_LEGIBLE = {
 # puntuar el volumen de protesta premiaría "menos marchas", que no es un
 # resultado de gestión sino un derecho ejercido.
 INDICADORES_CONTEXTO = ["alertas_manifestacion", "protestas_caba"]
+
+# ── Promesas cumplidas: no puntúan, pero se muestran (ADR-0100) ─────────────
+# Estado distinto de INDICADORES_CONTEXTO. ADR-0051 sacó del tablero los
+# indicadores que NO miden la dimensión de su índice; éstos sí la miden, y el
+# hecho de que la promesa esté cumplida es parte de lo que el informe cuenta.
+# Lo que se retira es el puntaje, no la card: un indicador clavado en su máximo
+# no aporta información al promedio mensual y sí infla la dimensión.
+#
+# `desde` es el mes en que alcanzó el máximo y dejó de moverse; se publica en
+# la card para que el lector sepa por qué no cambia.
+INDICADORES_CUMPLIDOS = {
+    "asistencia_directa": {
+        "desde": "2024-04",
+        "desde_txt": "abril de 2024",
+        "por_que": "La desintermediación de los planes sociales llegó al 100% del "
+                   "devengado pagado directo a personas en abril de 2024 y se mantiene "
+                   "desde entonces, sin variación en 27 meses. La línea de base de 2023 "
+                   "ya era 98,3%: el margen para seguir informando algo nuevo estaba "
+                   "agotado desde el arranque.",
+    },
+}
 
 
 def puntaje_banda(valor: float, bandas: list) -> int:

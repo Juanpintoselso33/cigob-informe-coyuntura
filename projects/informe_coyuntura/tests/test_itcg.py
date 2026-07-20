@@ -62,10 +62,10 @@ def test_itcg_reproduce_ejemplo():
     assert dims["reforma_estado"]["puntaje"] == 78.3
     assert dims["reforma_laboral"]["puntaje"] == 38.9
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
-    assert dims["social_orden"]["puntaje"] == 83.6
-    assert r["valor"] == 71.7
+    assert dims["social_orden"]["puntaje"] == 72.8   # sin asistencia_directa (ADR-0100)
+    assert r["valor"] == 70.6
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.8
+    assert itcg.tension_de_itcg(r["valor"]) == 2.9
     assert r["ajustes_aplicados"] == []
 
 
@@ -175,9 +175,10 @@ def test_ajuste_manual_del_analista():
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "protocolo_antipiquetes"
     assert (aj["de"], aj["a"]) == (76.6, 40)
-    # D5 = 0,4×100 + 0,4×40 + 0,2×65 = 69
-    assert r["dimensiones"]["social_orden"]["puntaje"] == 69.0
-    assert r["valor"] < 74.5
+    # D5 = 0,67×40 + 0,33×65 = 48,2 (asistencia_directa salió del cálculo por
+    # promesa cumplida, ADR-0100; antes era 0,4×100 + 0,4×40 + 0,2×65 = 69)
+    assert r["dimensiones"]["social_orden"]["puntaje"] == 48.2
+    assert r["valor"] < 70.6
 
 
 def test_sin_datos_devuelve_none():

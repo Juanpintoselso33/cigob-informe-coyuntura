@@ -296,12 +296,28 @@ def test_gestion_itcg_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    assert len(en_indice) == 15, f"esperaba 15 indicadores en el índice, hay {len(en_indice)}"
+    # ADR-0100: asistencia_directa sale del cálculo (promesa cumplida, clavada
+    # en 100,0 desde abr-2024) pero SIGUE publicándose, a diferencia de los
+    # ocultos de ADR-0051.
+    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
+    assert "asistencia_directa" not in en_indice
+    cumplida = c["indicadores"].get("asistencia_directa")
+    assert cumplida is not None, "la promesa cumplida no debe desaparecer del snapshot"
+    assert cumplida.get("cumplido", {}).get("desde") == "2024-04"
     assert "litigiosidad_laboral" in en_indice
     # ADR-0051: los 2 de contexto (alertas_manifestacion, protestas_caba)
     # quedan OCULTOS del snapshot (GESTION_OCULTOS, mismo criterio que
     # ADR-0022/0048/0049) — siguen en pipeline como seguimiento interno.
-    assert contexto == {}, f"gestión no debería publicar contexto: {set(contexto)}"
+    #
+    # ADR-0100 abre UNA excepción acotada y explícita: las promesas cumplidas
+    # no puntúan pero sí se publican, porque miden su dimensión y el hecho de
+    # estar cumplidas es parte del relato. La regla de 0051 sigue valiendo para
+    # todo lo demás: fuera de las cumplidas, no puede haber cards sin puntaje.
+    solo_contexto = {k: i for k, i in contexto.items() if not i.get("cumplido")}
+    assert solo_contexto == {}, f"gestión no debería publicar contexto: {set(solo_contexto)}"
+    for k, i in contexto.items():
+        assert i["cumplido"].get("desde"), f"{k}: promesa cumplida sin fecha de logro"
+        assert i["cumplido"].get("por_que"), f"{k}: promesa cumplida sin explicación"
     for oculto in ("alertas_manifestacion", "protestas_caba"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto del snapshot"
 
