@@ -73,8 +73,16 @@ TECHOS = {
     # lo firme. El 0,38 que queda es convención irreducible (idm, iai, icip,
     # costo de financiamiento, crédito real: sin historia previa a dic-2023).
     "ITCM": {"circular": 0.38, "sin_declarar": 0.01},
-    "ITCG": {"circular": 0.51, "sin_declarar": 0.163},
-    "ITCP": {"circular": 0.61, "sin_declarar": 0.206},
+    # ITCG y ITCP bajaron el 2026-07-20 (ADR-0121) al declarar el origen de sus
+    # bandas sin_declarar: los medidores de avance 0-100 (ITCG) y los indicadores
+    # anclados al cero (ITCP: ventaja electoral, quórum, transferencias) eran
+    # conceptuales, no convención invisible. NO se reclasificó lo que sí es
+    # convención real —reduccion_estado, gasto, rigi, cohesion_bloque, etc.
+    # quedan como están—, por eso los tres pisos convergen en ~40% y no bajan
+    # más: ése es el núcleo irreducible de indicadores que miden lo que este
+    # gobierno hizo, calibrados contra lo que se observó.
+    "ITCG": {"circular": 0.40, "sin_declarar": 0.01},
+    "ITCP": {"circular": 0.40, "sin_declarar": 0.01},
 }
 
 # indicador → (categoría, de dónde sale). El segundo campo es lo que hace
@@ -104,27 +112,27 @@ PROCEDENCIA = {
     "desregulacion_normativa": ("convencion", "la meta de 100 normas = plan completo es convención propia, declarada en ADR-0096"),
     "reduccion_estado": ("convencion", "«calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85"),
     "gasto_funcionamiento": ("convencion", "bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico"),
-    "masa_salarial": ("sin_declarar", "el comentario sólo dice la unidad"),
-    "reestructuracion_organismos": ("sin_declarar", "el comentario sólo dice la unidad"),
+    "masa_salarial": ("convencion", "gemela de gasto_funcionamiento: los cortes son grados de recorte fijados contra el ajuste 2024, sin serie previa (ADR-0121)"),
+    "reestructuracion_organismos": ("conceptual", "medidor de avance 0-100 hacia el plan de disoluciones/fusiones; el 100 es el ancla, no el rango observado (ADR-0121)"),
     "fal_modernizacion_laboral": ("conceptual", "cortes sobre los estados que la escala puede tomar, no sobre el rango observado (ADR-0098)"),
     "privatizaciones": ("documento", "etapas 0-4 definidas en el documento de diseño"),
     "rigi_inversiones": ("convencion", "referencia el 22,1% de jun-2026 y la composición del pipeline de ese momento"),
-    "concesiones_infraestructura": ("sin_declarar", "el comentario sólo dice la unidad"),
+    "concesiones_infraestructura": ("conceptual", "tasa de adjudicación km/plan; el 100 (plan adjudicado) es el ancla (ADR-0121)"),
     # asistencia_directa salió del índice por ADR-0100 (clavada en 100,0): su
     # banda sigue existiendo pero ya no pondera, así que no entra acá.
     "protocolo_antipiquetes": ("convencion", "calibrada con la caída observada en CABA en 2024-2025"),
-    "libertad_opcion_salud": ("sin_declarar", "el comentario sólo dice la unidad"),
+    "libertad_opcion_salud": ("conceptual", "% de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121)"),
     "litigiosidad_laboral": ("historia_larga", "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023)"),
 
     # ── ITCP ────────────────────────────────────────────────────────────────
-    "votometro_ventaja_lla": ("sin_declarar", "el comentario sólo dice la unidad"),
+    "votometro_ventaja_lla": ("conceptual", "ventaja electoral anclada en el cero (empate) con márgenes simétricos redondos (ADR-0121)"),
     "ratio_dnu": ("externa", "ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059)"),
     "eficacia_legislativa": ("externa", "Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061)"),
-    "veto_quorum": ("sin_declarar", "el comentario sólo dice la unidad y la dirección"),
+    "veto_quorum": ("conceptual", "tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121)"),
     "desafios_legislativos": ("convencion", "anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089)"),
     "brecha_obra_publica": ("conceptual", "números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088)"),
     "bloqueo_sostenido": ("externa", "ninguna insistencia exitosa entre 2003 y 2025: ~100% histórico de sostenimiento (ADR-0069)"),
-    "iaf_transferencias": ("sin_declarar", "el comentario sólo dice la unidad y la dirección"),
+    "iaf_transferencias": ("conceptual", "variación real anclada en el cero con cortes simétricos de 10 pp, como recaudacion/emae del ITCM (ADR-0121)"),
     "alineamiento_senadores_prov": ("convencion", "recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038)"),
     "adhesion_reformas_provincial": ("conceptual", "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"),
     "cohesion_bloque": ("convencion", "calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048)"),

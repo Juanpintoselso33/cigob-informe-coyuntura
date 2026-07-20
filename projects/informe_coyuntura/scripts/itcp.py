@@ -81,6 +81,10 @@ INF = float("inf")
 
 BANDAS_ITCP = {
     "votometro_ventaja_lla": [           # pp gap LLA-PJ, mayor = mejor
+        # CONCEPTUAL (ADR-0121): la ventaja electoral se ancla en el CERO —empate
+        # técnico entre el oficialismo y el PJ, el valor con significado propio— y
+        # los cortes son márgenes simétricos redondos (±5, ±15 pp), no el rango
+        # observado del período.
         (15.0, INF, 100), (5.0, 15.0, 85), (-5.0, 5.0, 65), (-15.0, -5.0, 40), (-INF, -15.0, 10),
     ],
     "desafios_legislativos": [
@@ -156,6 +160,10 @@ BANDAS_ITCP = {
         (50.0, INF, 100), (30.0, 50.0, 85), (15.0, 30.0, 65), (5.0, 15.0, 40), (-INF, 5.0, 10),
     ],
     "veto_quorum": [                      # % sesiones fracasadas, menor = mejor
+        # CONCEPTUAL (ADR-0121): el ancla es el CERO —ninguna sesión caída por
+        # falta de quórum, el Congreso funcionando— y los cortes son tasas de
+        # fracaso redondas (5/10/20/30%). No se calibra contra el rango observado:
+        # 0% es el ideal institucional con significado propio, no el mínimo visto.
         (-INF, 5.0, 100), (5.0, 10.0, 85), (10.0, 20.0, 65), (20.0, 30.0, 40), (30.0, INF, 10),
     ],
     "comisiones_caidas": [
@@ -195,6 +203,12 @@ BANDAS_ITCP = {
         (-INF, 1.0, 100), (1.0, 3.0, 85), (3.0, 8.0, 65), (8.0, 14.0, 40), (14.0, INF, 10),
     ],
     "iaf_transferencias": [               # % var real YoY transferencias federales, mayor = mejor
+        # CONCEPTUAL (ADR-0121): variación real interanual anclada en el CERO
+        # —transferencias a provincias mantenidas en términos reales— con cortes
+        # simétricos redondos de a 10 pp, mismo criterio que recaudacion/emae en
+        # el ITCM (ADR-0120). La serie propia es anual desde 2018 (cinco puntos
+        # previos, ADR-0065/0066): insuficiente para anclar a la historia, pero
+        # el cero no lo necesita — es un umbral con significado, no un percentil.
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
     ],
     "bloqueo_sostenido": [

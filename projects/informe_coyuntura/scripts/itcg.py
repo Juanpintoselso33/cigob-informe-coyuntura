@@ -79,9 +79,19 @@ BANDAS_ITCG = {
         (-INF, -25.0, 100), (-25.0, -15.0, 85), (-15.0, -5.0, 65), (-5.0, 0.0, 40), (0.0, INF, 10),
     ],
     "masa_salarial": [                  # % variación REAL de la masa salarial APN vs dic-2023
+        # CONVENCIÓN calibrada al período (ADR-0121): gemela de gasto_funcionamiento
+        # —misma medida de variación real del gasto en personal del SPN— y con el
+        # mismo origen: los cortes (−5/−12/−20) son grados de recorte fijados
+        # contra la magnitud del ajuste 2024, no un umbral externo. El cero es
+        # neutro (masa mantenida en términos reales), pero las bandas describen
+        # este ajuste. No es reducible: no hay serie comparable previa a dic-2023.
         (-INF, -20.0, 100), (-20.0, -12.0, 85), (-12.0, -5.0, 65), (-5.0, 0.0, 40), (0.0, INF, 10),
     ],
     "reestructuracion_organismos": [    # % de avance (actos de disolución/fusión vs plan)
+        # CONCEPTUAL (ADR-0121): medidor de avance 0-100 hacia el plan, mismo
+        # patrón que privatizaciones y fal. El 100 —plan de disoluciones/fusiones
+        # completo— es el ancla con significado, no el rango observado; los cortes
+        # son cuartos de avance en números redondos.
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
     "fal_modernizacion_laboral": [      # Índice de Avance del FAL 0-100 (compuesto, ADR-0098)
@@ -114,6 +124,10 @@ BANDAS_ITCG = {
         (60.0, INF, 100), (40.0, 60.0, 85), (25.0, 40.0, 65), (10.0, 25.0, 40), (-INF, 10.0, 10),
     ],
     "concesiones_infraestructura": [    # % corredores adjudicados / plan (tasa de adjudicación)
+        # CONCEPTUAL (ADR-0121): tasa de adjudicación 0-100 (km adjudicados sobre
+        # los km del plan de la Red Federal). El 100 —plan adjudicado por
+        # completo— es el ancla; los cortes son grados de avance redondos, no el
+        # rango observado.
         (75.0, INF, 100), (55.0, 75.0, 85), (35.0, 55.0, 65), (15.0, 35.0, 40), (-INF, 15.0, 10),
     ],
     "asistencia_directa": [             # TDPS: % del gasto social SIN intermediación (0-100)
@@ -126,6 +140,10 @@ BANDAS_ITCG = {
         (75.0, INF, 100), (50.0, 75.0, 85), (25.0, 50.0, 65), (0.0, 25.0, 40), (-INF, 0.0, 10),
     ],
     "libertad_opcion_salud": [          # % de avance de la desregulación de obras sociales
+        # CONCEPTUAL (ADR-0121): % de usuarios de prepagas que ya pueden derivar
+        # su aporte directo (desregulación del Dto. 170/2024). El 100 —libre
+        # opción plena— es el ancla; los cortes son grados de avance redondos,
+        # no calibrados al valor observado.
         (70.0, INF, 100), (50.0, 70.0, 85), (30.0, 50.0, 65), (10.0, 30.0, 40), (-INF, 10.0, 10),
     ],
     "litigiosidad_laboral": [           # juicios SRT, % 12m vs 12m previos (ADR-0023)
