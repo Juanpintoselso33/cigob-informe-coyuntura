@@ -49,11 +49,12 @@ def test_itvc_reproduce_ejemplo():
     """
     r = itvc.calcular_itvc(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["ingresos"]["puntaje"] == 90.5
+    assert dims["ingresos"]["puntaje"] == 91.3   # ADR-0115: entran carne y motos
     assert dims["precios"]["puntaje"] == 75.3
     assert dims["vulnerabilidad"]["puntaje"] == 89.0
     assert dims["empleo"]["puntaje"] == 92.3
-    assert dims["confianza"]["puntaje"] == 111.0
+    assert dims["percepcion"]["puntaje"] == 116.5   # ADR-0115: sólo ICC + Trends
+    assert dims["seguridad"]["puntaje"] == 104.0    # ADR-0115: victimización sola
     assert r["valor"] == 89.9
     assert r["banda"] == "deterioro_moderado"
     assert r["ajustes_aplicados"] == []
@@ -66,20 +67,20 @@ def test_pesos_del_documento():
     indice_lider 20%). En los dos casos los existentes ceden proporcionalmente
     y los pesos NOMINALES de dimensión no se tocaron nunca."""
     pesos = {k: d["peso"] for k, d in itvc.DIMENSIONES_ITVC.items()}
-    assert pesos == {"ingresos": 0.35, "precios": 0.25, "vulnerabilidad": 0.10,
-                     "empleo": 0.15, "confianza": 0.15}
+    assert pesos == {"ingresos": 0.3725, "precios": 0.25, "vulnerabilidad": 0.10,
+                     "empleo": 0.15, "percepcion": 0.0825, "seguridad": 0.045}
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
     d = itvc.DIMENSIONES_ITVC
-    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.65, "informalidad": 0.35}
+    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.6107, "informalidad": 0.3289,
+                                            "consumo_carne": 0.0403, "patentamiento_motos": 0.0201}
     assert d["vulnerabilidad"]["indicadores"] == {"endeudamiento_familiar": 0.5,
                                                   "mora_familias": 0.5}
     assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
                                            "alquiler_real": 0.20}
     assert d["empleo"]["indicadores"] == {"mortalidad_pymes": 0.36, "despacho_cemento": 0.32,
                                           "pluriempleo": 0.12, "indice_lider": 0.20}
-    assert d["confianza"]["indicadores"] == {"icc_utdt": 0.45, "inseguridad": 0.30,
-                                             "sentimiento_digital": 0.10,
-                                             "consumo_carne": 0.10, "patentamiento_motos": 0.05}
+    assert d["percepcion"]["indicadores"] == {"icc_utdt": 0.8182, "sentimiento_digital": 0.1818}
+    assert d["seguridad"]["indicadores"] == {"inseguridad": 1.0}
     for dim in d.values():
         assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
 
@@ -107,16 +108,19 @@ def test_escala_interpretacion():
 
 
 def test_renormalizacion_ante_faltantes():
-    """Sin carne ni motos (fuentes sin dato), confianza renormaliza entre
-    ICC (0,45), inseguridad (0,3) y sentimiento (0,1)."""
+    """Sin carne ni motos (fuentes sin dato), la dimensión que renormaliza es
+    INGRESOS: ADR-0115 los movió ahí desde la vieja dimensión de confianza.
+
+    Quedan brecha (0,6107) e informalidad (0,3289) y el motor reparte entre las
+    dos, de modo que la dimensión vuelve al valor que tenía antes de recibirlos
+    (90,5) — que es la comprobación de que la renormalización no inventa peso."""
     valores = dict(EJEMPLO)
     valores["consumo_carne"] = None
     valores["patentamiento_motos"] = None
     r = itvc.calcular_itvc(valores)
-    conf = r["dimensiones"]["confianza"]
-    assert set(conf["indicadores"]) == {"icc_utdt", "inseguridad", "sentimiento_digital"}
-    # (0,45×118 + 0,3×104 + 0,1×110) / 0,85 = 112,06 → 112,1
-    assert conf["puntaje"] == 112.1
+    ing = r["dimensiones"]["ingresos"]
+    assert set(ing["indicadores"]) == {"brecha_salario_cbt", "informalidad"}
+    assert ing["puntaje"] == 90.5
     pesos = [i["peso_efectivo"] for d in r["dimensiones"].values()
              for i in d["indicadores"].values()]
     assert abs(sum(pesos) - 1.0) <= 0.001

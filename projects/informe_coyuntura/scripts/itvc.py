@@ -38,9 +38,15 @@ INF = float("inf")
 # I_HD→inseguridad · I_CC→consumo_carne · I_PM→patentamiento_motos.
 DIMENSIONES_ITVC = {
     "ingresos": {
-        "nombre": "Sostenibilidad de ingresos",
-        "peso": 0.35,
-        "indicadores": {"brecha_salario_cbt": 0.65, "informalidad": 0.35},
+        # ADR-0115: recibe consumo_carne y patentamiento_motos, que estaban en
+        # la dimensión de percepción sin medir percepción. Sus propias fichas
+        # los definen como proxies de poder de compra, y la matriz de
+        # redundancia lo confirmó (ADR-0108): motos correlaciona −0,974 con la
+        # mora y +0,770 con el salario, y sólo +0,442 con el ICC.
+        "nombre": "Ingresos y consumo",
+        "peso": 0.3725,
+        "indicadores": {"brecha_salario_cbt": 0.6107, "informalidad": 0.3289,
+                        "consumo_carne": 0.0403, "patentamiento_motos": 0.0201},
     },
     "precios": {
         "nombre": "Presión de precios",
@@ -77,25 +83,29 @@ DIMENSIONES_ITVC = {
         "indicadores": {"mortalidad_pymes": 0.36, "despacho_cemento": 0.32,
                         "pluriempleo": 0.12, "indice_lider": 0.20},
     },
-    "confianza": {
-        # ADR-0110: se llamaba "Confianza y seguridad" y el rótulo no describía
-        # su contenido — el 15% de su peso interno (carne 10 + motos 5) mide
-        # consumo y poder de compra, no confianza ni seguridad. Las propias
-        # fichas de esos dos los definen como proxies de consumo durable y de
-        # bienestar alimentario, y la matriz de redundancia (ADR-0108) lo
-        # confirmó desde el dato: motos correlaciona con mora (−0,974),
-        # endeudamiento (+0,773) y salario (+0,770), y sólo +0,442 con el ICC.
-        # El nombre ahora enumera lo que hay adentro. Reubicarlos en otra
-        # dimensión es la opción de fondo y sigue abierta: exige rehacer los
-        # pesos nominales, que es decisión editorial (ver el ADR).
-        "nombre": "Percepción, seguridad y consumo",
-        "peso": 0.15,
-        # ADR-0034: entra sentimiento_digital (10%) — le cede el ICC (mide ánimo
-        # con encuesta, el Trends lo mide con conducta de búsqueda) y motos (el
-        # componente más eufórico del cinturón).
-        "indicadores": {"icc_utdt": 0.45, "inseguridad": 0.30,
-                        "sentimiento_digital": 0.10,
-                        "consumo_carne": 0.10, "patentamiento_motos": 0.05},
+    "percepcion": {
+        # ADR-0115. Antes se llamaba "confianza" y mezclaba tres cosas: ADR-0110
+        # arregló el rótulo, esto arregla la estructura. Quedan sólo las dos
+        # medidas de ánimo: una encuestada (ICC) y una revelada por conducta de
+        # búsqueda (Trends). Consumo se fue a `ingresos` y seguridad a su propia
+        # dimensión.
+        "nombre": "Confianza y percepción",
+        "peso": 0.0825,
+        "indicadores": {"icc_utdt": 0.8182, "sentimiento_digital": 0.1818},
+    },
+    "seguridad": {
+        # ADR-0115. Dimensión propia porque la victimización no es percepción ni
+        # consumo: es un hecho.
+        #
+        # LIMITACIÓN CONOCIDA: queda con UNA sola pata, que es el defecto que
+        # ADR-0076 corrigió en la dimensión de actividad ("el 11% del índice
+        # cuelga de un solo dato"). Acá pesa 4,5% en vez de 11%, así que la
+        # exposición es menor, pero el riesgo de fuente única es el mismo y
+        # queda declarado. Sumarle una segunda medida —percepción de
+        # inseguridad, o delito por tipo— es trabajo pendiente.
+        "nombre": "Seguridad",
+        "peso": 0.045,
+        "indicadores": {"inseguridad": 1.0},
     },
 }
 

@@ -295,8 +295,9 @@ SCORE_EXPLICACION = {
                        "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
                        "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),
     "vida_cotidiana": ("ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida "
-                       "cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, "
-                       "empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2."),
+                       "cotidiana) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, "
+                       "vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. "
+                       "La tensión del cinturón es 5 − (ITVC − 100) × 0,2."),
     "espiritu_epoca": ("Tensión (0–10) de la intención migratoria, único indicador del cinturón "
                        "(v1 provisional). Mayor = más desconexión entre el gobierno y el humor social."),
 }
@@ -664,10 +665,10 @@ def _validacion_itvc(bloque, series):
         "titulo": "¿El ITVC acompaña la percepción de la gente?",
         "sub": ("Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables "
                 "externas relacionadas que no lo componen. El ITVC se recalcula sin su componente "
-                "de confianza (el ICC pesa 7,5% del índice) para que la comparación no sea "
+                "de percepción (el ICC pesa 6,8% del índice) para que la comparación no sea "
                 "circular, y se contrasta con el ICC de UTDT — percepción del consumidor, "
                 "fuente totalmente independiente."),
-        "serie_label": "ITVC sin su componente de confianza",
+        "serie_label": "ITVC sin su componente de percepción",
         "externa_label": "ICC (confianza del consumidor, UTDT)",
         "trans_label": "ambas series rebaseadas a 100 en el primer mes",
         "conclusion": (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "

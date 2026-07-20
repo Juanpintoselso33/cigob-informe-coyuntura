@@ -1674,8 +1674,8 @@
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
     },
     "vida_cotidiana": {
-      "score": 6.1,
-      "estado": "tensionado",
+      "score": 6.0,
+      "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "brecha_salario_cbt": {
@@ -1762,7 +1762,7 @@
           "fecha_dato": "2026-05",
           "desactualizado": false,
           "en_indice": true,
-          "dimension": "confianza",
+          "dimension": "ingresos",
           "indice_itvc": 89.3,
           "peso_efectivo": 0.015,
           "aporte_score": 7.1,
@@ -1838,7 +1838,7 @@
           "desactualizado": false,
           "detalle_txt": "Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste SNIC (denuncias registradas, año 2025): 2.418.600 hechos",
           "en_indice": true,
-          "dimension": "confianza",
+          "dimension": "seguridad",
           "indice_itvc": 102.1,
           "peso_efectivo": 0.045,
           "aporte_score": 4.6,
@@ -1853,7 +1853,7 @@
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
           "en_indice": true,
-          "dimension": "confianza",
+          "dimension": "percepcion",
           "indice_itvc": 97.1,
           "peso_efectivo": 0.0675,
           "aporte_score": 5.6,
@@ -1896,7 +1896,7 @@
           "desactualizado": false,
           "detalle_txt": "El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITVC usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.",
           "en_indice": true,
-          "dimension": "confianza",
+          "dimension": "percepcion",
           "indice_itvc": 137.3,
           "peso_efectivo": 0.015,
           "aporte_score": 0.0,
@@ -1911,7 +1911,7 @@
           "fecha_dato": "2026-06",
           "desactualizado": false,
           "en_indice": true,
-          "dimension": "confianza",
+          "dimension": "ingresos",
           "indice_itvc": 140.0,
           "peso_efectivo": 0.0075,
           "aporte_score": 0.0,
@@ -1938,31 +1938,43 @@
       },
       "alerta": null,
       "fuente_enriquecida": "vida_cotidiana_20260720_1840.json",
-      "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
+      "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
-        "valor": 94.7,
+        "valor": 94.8,
         "banda": "deterioro_moderado",
         "banda_legible": "Deterioro moderado vs 4T-2023",
         "dimensiones": {
           "ingresos": {
-            "nombre": "Sostenibilidad de ingresos",
-            "peso": 0.35,
-            "puntaje": 105.0,
+            "nombre": "Ingresos y consumo",
+            "peso": 0.3725,
+            "puntaje": 105.1,
             "indicadores": {
               "brecha_salario_cbt": {
-                "peso": 0.65,
+                "peso": 0.6107,
                 "puntaje_banda": 110.8,
                 "puntaje_aplicado": 110.8,
                 "peso_efectivo": 0.2275
               },
               "informalidad": {
-                "peso": 0.35,
+                "peso": 0.3289,
                 "puntaje_banda": 94.2,
                 "puntaje_aplicado": 94.2,
                 "peso_efectivo": 0.1225
+              },
+              "consumo_carne": {
+                "peso": 0.0403,
+                "puntaje_banda": 89.3,
+                "puntaje_aplicado": 89.3,
+                "peso_efectivo": 0.015
+              },
+              "patentamiento_motos": {
+                "peso": 0.0201,
+                "puntaje_banda": 140.0,
+                "puntaje_aplicado": 140.0,
+                "peso_efectivo": 0.0075
               }
             },
-            "peso_efectivo": 0.35,
+            "peso_efectivo": 0.3725,
             "critica": false
           },
           "precios": {
@@ -2046,53 +2058,50 @@
             "peso_efectivo": 0.15,
             "critica": false
           },
-          "confianza": {
-            "nombre": "Percepción, seguridad y consumo",
-            "peso": 0.15,
-            "puntaje": 104.0,
+          "percepcion": {
+            "nombre": "Confianza y percepción",
+            "peso": 0.0825,
+            "puntaje": 104.4,
             "indicadores": {
               "icc_utdt": {
-                "peso": 0.45,
+                "peso": 0.8182,
                 "puntaje_banda": 97.1,
                 "puntaje_aplicado": 97.1,
                 "peso_efectivo": 0.0675
               },
-              "inseguridad": {
-                "peso": 0.3,
-                "puntaje_banda": 102.1,
-                "puntaje_aplicado": 102.1,
-                "peso_efectivo": 0.045
-              },
               "sentimiento_digital": {
-                "peso": 0.1,
+                "peso": 0.1818,
                 "puntaje_banda": 137.3,
                 "puntaje_aplicado": 137.3,
                 "peso_efectivo": 0.015
-              },
-              "consumo_carne": {
-                "peso": 0.1,
-                "puntaje_banda": 89.3,
-                "puntaje_aplicado": 89.3,
-                "peso_efectivo": 0.015
-              },
-              "patentamiento_motos": {
-                "peso": 0.05,
-                "puntaje_banda": 140.0,
-                "puntaje_aplicado": 140.0,
-                "peso_efectivo": 0.0075
               }
             },
-            "peso_efectivo": 0.15,
+            "peso_efectivo": 0.0825,
+            "critica": false
+          },
+          "seguridad": {
+            "nombre": "Seguridad",
+            "peso": 0.045,
+            "puntaje": 102.1,
+            "indicadores": {
+              "inseguridad": {
+                "peso": 1.0,
+                "puntaje_banda": 102.1,
+                "puntaje_aplicado": 102.1,
+                "peso_efectivo": 0.045
+              }
+            },
+            "peso_efectivo": 0.045,
             "critica": false
           }
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 93.3,
-          "p95": 96.2,
+          "p05": 93.2,
+          "p95": 96.1,
           "tension_rango": [
             5.8,
-            6.3
+            6.4
           ],
           "dominante": {
             "indicador": "endeudamiento_familiar",
@@ -2102,43 +2111,43 @@
           "hist": [
             1,
             0,
-            0,
-            1,
-            0,
-            2,
-            0,
+            3,
             4,
             4,
             3,
-            5,
             11,
-            20,
-            27,
-            30,
-            35,
-            45,
-            55,
-            73,
-            82,
-            77,
-            87,
-            88,
-            59,
-            69,
-            48,
-            43,
-            33,
-            36,
-            16,
-            10,
+            18,
             14,
-            10,
+            25,
+            28,
+            34,
+            31,
+            51,
+            50,
+            56,
+            54,
+            62,
+            65,
+            75,
+            66,
+            57,
+            73,
+            51,
+            41,
+            25,
+            31,
+            17,
+            16,
+            13,
+            2,
+            5,
             8,
-            3,
-            1
+            4,
+            0,
+            2
           ],
-          "hist_min": 91.03,
-          "hist_max": 97.26,
+          "hist_min": 91.89,
+          "hist_max": 97.33,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
@@ -2299,8 +2308,8 @@
           ],
           "plot": "rebase100",
           "titulo": "¿El ITVC acompaña la percepción de la gente?",
-          "sub": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen. El ITVC se recalcula sin su componente de confianza (el ICC pesa 7,5% del índice) para que la comparación no sea circular, y se contrasta con el ICC de UTDT — percepción del consumidor, fuente totalmente independiente.",
-          "serie_label": "ITVC sin su componente de confianza",
+          "sub": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen. El ITVC se recalcula sin su componente de percepción (el ICC pesa 6,8% del índice) para que la comparación no sea circular, y se contrasta con el ICC de UTDT — percepción del consumidor, fuente totalmente independiente.",
+          "serie_label": "ITVC sin su componente de percepción",
           "externa_label": "ICC (confianza del consumidor, UTDT)",
           "trans_label": "ambas series rebaseadas a 100 en el primer mes",
           "conclusion": "Correlación 0,554 en niveles y 0,309 en los cambios mes a mes: ni redundante (cercana a 1 diría que el índice sobra) ni desconectada (cercana a 0 diría que no capta la experiencia vivida). Las condiciones materiales y el ánimo se mueven juntos, pero miden cosas distintas."

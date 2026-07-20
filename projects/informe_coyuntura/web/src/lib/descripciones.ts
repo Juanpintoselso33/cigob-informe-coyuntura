@@ -401,11 +401,12 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.",
   social_orden: "La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud.",
   // ITVC
-  ingresos: "Si el sueldo alcanza: la brecha entre el salario y la canasta de pobreza, y cuánta gente trabaja en la informalidad.",
+  ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.",
   precios: "Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).",
   vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo, en dos señales: el nivel de crédito real (acceso al financiamiento) y la mora de esa cartera (si esa deuda se puede pagar). Deuda que crece con mora estable es acceso; con mora en aumento es fragilidad.",
   empleo: "Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
-  confianza: "El ánimo y la seguridad de la vida diaria: confianza del consumidor (UTDT), inseguridad, sentimiento digital, y consumo de carne y patentamiento de motos como termómetros de bolsillo.",
+  percepcion: "El ánimo con que se vive el momento, medido de dos maneras: preguntando (el Índice de Confianza del Consumidor de la UTDT) y observando qué busca la gente en internet.",
+  seguridad: "Qué proporción de los hogares fue víctima de un delito. No es percepción ni sensación: es el hecho, relevado por encuesta.",
   // ITCP
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
   sector_privado: "La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados. Al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga: la diferencia aísla lo que aporta la política pública y descarta el ciclo económico.",

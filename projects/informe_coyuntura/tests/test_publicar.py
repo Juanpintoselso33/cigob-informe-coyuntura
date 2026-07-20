@@ -393,10 +393,14 @@ def test_vida_itvc_reconcilia():
     esperado = round(min(10.0, max(0.0, 5.0 - (itvc_val - 100.0) * 0.2)), 1)
     assert abs(c["score"] - esperado) <= 0.05
 
-    # Los pesos de dimensión del doc 260702 llegan publicados: 35/25/10/15/15.
+    # Los pesos de dimensión llegan publicados. Ya no son los 35/25/10/15/15 del
+    # doc 260702: ADR-0115 partió la dimensión de confianza en percepción y
+    # seguridad y mudó consumo a ingresos, repartiendo los pesos nominales de
+    # modo que el peso EFECTIVO de cada indicador quedara idéntico.
     pesos = {k: d["peso"] for k, d in c["itvc"]["dimensiones"].items()}
-    assert pesos == {"ingresos": 0.35, "precios": 0.25, "vulnerabilidad": 0.10,
-                     "empleo": 0.15, "confianza": 0.15}
+    assert pesos == {"ingresos": 0.3725, "precios": 0.25, "vulnerabilidad": 0.10,
+                     "empleo": 0.15, "percepcion": 0.0825, "seguridad": 0.045}
+    assert abs(sum(pesos.values()) - 1.0) < 1e-9
 
     for k, i in en_indice.items():
         assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
