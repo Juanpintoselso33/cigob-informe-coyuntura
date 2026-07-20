@@ -64,6 +64,7 @@ COMPONENTES = {
     "ipc_alimentos":          ("itvc_alimentos", False, False, True),   # ya base-100 (ADR-0033: relativo al IPC)
     "peso_tarifas":           ("itvc_tarifas", False, False, True),
     "alquiler_real":          ("itvc_alquiler", False, False, True),  # ADR-0111
+    "indice_lider":           ("itvc_lider", False, False, True),     # ADR-0112
     "mortalidad_pymes":       ("itvc_ipi", False, False, True),
     "despacho_cemento":       ("itvc_isac", False, False, True),
     "endeudamiento_familiar": ("itvc_endeudamiento", False, False, True),

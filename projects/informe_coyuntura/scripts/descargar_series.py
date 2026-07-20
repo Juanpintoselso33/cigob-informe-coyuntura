@@ -1317,6 +1317,49 @@ VIDA_DERIVADAS.append(
 )
 
 
+def _utdt_xls(listado_url):
+    """Contenido del XLS más reciente de una página de serie histórica de la UTDT.
+
+    Todas siguen el mismo patrón —el listado enlaza el archivo por `fname`— así
+    que el scraper del ICC sirve para el resto con sólo cambiar la URL."""
+    r = requests.get(listado_url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT, verify=False)
+    r.raise_for_status()
+    fnames = sorted(set(re.findall(r'download\.php\?fname=([^"\'&]+)', r.text)))
+    if not fnames:
+        raise ValueError(f"UTDT: sin link de descarga en {listado_url}")
+    x = requests.get("https://www.utdt.edu/download.php?fname=" + fnames[0],
+                     headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 2, verify=False)
+    x.raise_for_status()
+    return x.content
+
+
+def fetch_itvc_lider() -> list:
+    """I_IL (ADR-0112): Índice Líder de la UTDT rebaseado a 4T-2023.
+
+    Es el único componente PROSPECTIVO del cinturón: está construido para
+    anticipar puntos de giro del ciclo, mientras el resto describe lo que ya
+    pasó. Se rebasea igual que los demás (100 = 4T-2023) y NO se invierte:
+    un líder más alto anticipa mejor actividad, que es mejora.
+    [[YYYY-MM-01, índice]]."""
+    import xlrd
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import UTDT_IL_LISTADO
+    wb = xlrd.open_workbook(file_contents=_utdt_xls(UTDT_IL_LISTADO))
+    ws = wb.sheets()[0]
+    crudo = {}
+    for i in range(ws.nrows):
+        fc, vc = ws.cell(i, 0), ws.cell(i, 1)
+        if fc.ctype == xlrd.XL_CELL_DATE and vc.ctype == xlrd.XL_CELL_NUMBER:
+            t = xlrd.xldate_as_tuple(fc.value, wb.datemode)
+            crudo[f"{t[0]}-{t[1]:02d}"] = vc.value
+    return _itvc_rebase(crudo)
+
+
+VIDA_DERIVADAS.append(
+    ("itvc_lider", "índice (100 = 4T-2023)", "UTDT — Índice Líder (serie XLS)", fetch_itvc_lider)
+)
+
+
 SENTIMIENTO_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "sentimiento_serie.json"
 
 

@@ -2227,6 +2227,37 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  indice_lider: {
+    tipo: "indicador",
+    id: "indice_lider",
+    cinturon: "vida_cotidiana",
+    rezago: "Se publica a fin del mes siguiente al que describe (~1 mes).",
+    fuente: {
+      organismo: "Universidad Torcuato Di Tella — Centro de Investigación en Finanzas",
+      operacion: "Índice Líder (IL)",
+      serie: "Serie histórica mensual desde 1993, planilla oficial de la UTDT",
+      url: "https://www.utdt.edu/listado_contenidos.php?id_item_menu=16461",
+      acceso: "Automático: descarga de la planilla publicada, mismo mecanismo que el ICC.",
+    },
+    transformaciones: [
+      "Se rebasea a 100 = promedio del 4º trimestre de 2023, igual que el resto de los componentes.",
+      "No se invierte: un índice líder más alto anticipa mejor actividad, que es mejora.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de prospectivas de empleo (20% interno · 3% del ITVC).",
+      "Es el único componente del cinturón que mira hacia adelante. Los otros tres de su dimensión describen lo ya ocurrido: la actividad industrial y la construcción son contemporáneas, y la subocupación llega con dos trimestres de rezago.",
+    ],
+    limitaciones: [
+      "Anticipa el ciclo económico, no el humor de los hogares: un giro del índice señala hacia dónde va la actividad, no cómo la están viviendo las familias.",
+      "Como todo índice líder, da señales falsas: puede moverse sin que el giro llegue a producirse.",
+      "Es un compuesto y no publica el detalle mensual de qué componente lo movió.",
+    ],
+    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización.",
+    revisiones: "La UTDT puede revisar meses previos al recalcular el compuesto; se re-descarga la serie completa en cada corrida.",
+    cambios: [
+      { fecha: "2026-07-20", cambio: "Alta del indicador: el cinturón no tenía ninguna medida prospectiva." },
+    ],
+  },
   alquiler_real: {
     tipo: "indicador",
     id: "alquiler_real",

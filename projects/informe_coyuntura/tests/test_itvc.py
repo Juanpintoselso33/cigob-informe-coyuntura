@@ -62,8 +62,9 @@ def test_itvc_reproduce_ejemplo():
 def test_pesos_del_documento():
     """35/25/10/15/15 y los internos del doc, con las enmiendas declaradas:
     ADR-0034 en confianza (entra sentimiento_digital 10%, ceden ICC y motos) y
-    ADR-0111 en precios (entra alquiler_real 20%, ceden tarifas y alimentos
-    proporcionalmente). Los pesos NOMINALES de dimensión no se tocaron nunca."""
+    ADR-0111 en precios (entra alquiler_real 20%) y ADR-0112 en empleo (entra
+    indice_lider 20%). En los dos casos los existentes ceden proporcionalmente
+    y los pesos NOMINALES de dimensión no se tocaron nunca."""
     pesos = {k: d["peso"] for k, d in itvc.DIMENSIONES_ITVC.items()}
     assert pesos == {"ingresos": 0.35, "precios": 0.25, "vulnerabilidad": 0.10,
                      "empleo": 0.15, "confianza": 0.15}
@@ -74,8 +75,8 @@ def test_pesos_del_documento():
                                                   "mora_familias": 0.5}
     assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
                                            "alquiler_real": 0.20}
-    assert d["empleo"]["indicadores"] == {"mortalidad_pymes": 0.45, "despacho_cemento": 0.40,
-                                          "pluriempleo": 0.15}
+    assert d["empleo"]["indicadores"] == {"mortalidad_pymes": 0.36, "despacho_cemento": 0.32,
+                                          "pluriempleo": 0.12, "indice_lider": 0.20}
     assert d["confianza"]["indicadores"] == {"icc_utdt": 0.45, "inseguridad": 0.30,
                                              "sentimiento_digital": 0.10,
                                              "consumo_carne": 0.10, "patentamiento_motos": 0.05}

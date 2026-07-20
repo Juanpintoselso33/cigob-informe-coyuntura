@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-20T17:53:26.792778",
+  "generated_at": "2026-07-20T18:14:31.609268",
   "period": "2026-07",
   "score_global": 3.3,
   "ponderacion": {
@@ -1794,9 +1794,9 @@
           "en_indice": true,
           "dimension": "empleo",
           "indice_itvc": 96.5,
-          "peso_efectivo": 0.0675,
+          "peso_efectivo": 0.054,
           "aporte_score": 5.7,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 96,5 (100 = arranque del mandato; más = mejora); pesa 6,8% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 96,5 (100 = arranque del mandato; más = mejora); pesa 5,4% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,7/10."
         },
@@ -1809,9 +1809,9 @@
           "en_indice": true,
           "dimension": "empleo",
           "indice_itvc": 85.7,
-          "peso_efectivo": 0.06,
+          "peso_efectivo": 0.048,
           "aporte_score": 7.9,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 85,7 (100 = arranque del mandato; más = mejora); pesa 6,0% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 85,7 (100 = arranque del mandato; más = mejora); pesa 4,8% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 7,9/10."
         },
@@ -1824,9 +1824,9 @@
           "en_indice": true,
           "dimension": "empleo",
           "indice_itvc": 90.7,
-          "peso_efectivo": 0.0225,
+          "peso_efectivo": 0.018,
           "aporte_score": 6.9,
-          "aporte_formula": "Índice base-100 vs 4T-2023: 90,7 (100 = arranque del mandato; más = mejora); pesa 2,2% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_formula": "Índice base-100 vs 4T-2023: 90,7 (100 = arranque del mandato; más = mejora); pesa 1,8% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 6,9/10."
         },
@@ -1861,8 +1861,23 @@
           "aporte_nota": null,
           "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 5,6/10."
         },
+        "indice_lider": {
+          "valor": 124.7,
+          "unidad": "índice",
+          "fuente": "UTDT — Índice Líder (CIF)",
+          "fecha_dato": "2026-05-01",
+          "desactualizado": false,
+          "en_indice": true,
+          "dimension": "empleo",
+          "indice_itvc": 94.8,
+          "peso_efectivo": 0.03,
+          "aporte_score": 6.0,
+          "aporte_formula": "Índice base-100 vs 4T-2023: 94,8 (100 = arranque del mandato; más = mejora); pesa 3,0% del ITVC. Tensión = 5 − (índice − 100) × 0,2.",
+          "aporte_nota": null,
+          "aporte_lectura": "En la escala del cinturón, este componente equivale a una tensión de 6,0/10."
+        },
         "sentimiento_digital": {
-          "valor": 5.7,
+          "valor": 5.6,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
           "fecha_dato": "2026-07-20",
@@ -1910,10 +1925,10 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260720_1753.json",
+      "fuente_enriquecida": "vida_cotidiana_20260720_1814.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 5 dimensiones: ingresos 35%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y seguridad 15%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
-        "valor": 94.6,
+        "valor": 94.7,
         "banda": "deterioro_moderado",
         "banda_legible": "Deterioro moderado vs 4T-2023",
         "dimensiones": {
@@ -1989,25 +2004,31 @@
           "empleo": {
             "nombre": "Prospectivas de empleo",
             "peso": 0.15,
-            "puntaje": 91.3,
+            "puntaje": 92.0,
             "indicadores": {
               "mortalidad_pymes": {
-                "peso": 0.45,
+                "peso": 0.36,
                 "puntaje_banda": 96.5,
                 "puntaje_aplicado": 96.5,
-                "peso_efectivo": 0.0675
+                "peso_efectivo": 0.054
               },
               "despacho_cemento": {
-                "peso": 0.4,
+                "peso": 0.32,
                 "puntaje_banda": 85.7,
                 "puntaje_aplicado": 85.7,
-                "peso_efectivo": 0.06
+                "peso_efectivo": 0.048
               },
               "pluriempleo": {
-                "peso": 0.15,
+                "peso": 0.12,
                 "puntaje_banda": 90.7,
                 "puntaje_aplicado": 90.7,
-                "peso_efectivo": 0.0225
+                "peso_efectivo": 0.018
+              },
+              "indice_lider": {
+                "peso": 0.2,
+                "puntaje_banda": 94.8,
+                "puntaje_aplicado": 94.8,
+                "peso_efectivo": 0.03
               }
             },
             "peso_efectivo": 0.15,
@@ -2055,57 +2076,57 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 93.1,
+          "p05": 93.3,
           "p95": 96.2,
           "tension_rango": [
             5.8,
-            6.4
+            6.3
           ],
           "dominante": {
             "indicador": "endeudamiento_familiar",
-            "indice_sin": 88.5
+            "indice_sin": 88.6
           },
           "n_draws": 1000,
           "hist": [
             1,
             0,
             0,
-            0,
-            0,
             1,
-            3,
+            0,
+            2,
             0,
             4,
-            7,
-            8,
+            4,
+            3,
+            5,
             11,
-            30,
-            26,
-            37,
-            37,
-            48,
-            60,
-            59,
-            58,
-            65,
-            68,
-            79,
-            60,
-            79,
-            59,
-            52,
-            32,
-            24,
-            26,
             20,
-            25,
-            12,
-            4,
-            4,
+            27,
+            30,
+            35,
+            45,
+            55,
+            73,
+            82,
+            77,
+            87,
+            88,
+            59,
+            69,
+            48,
+            43,
+            33,
+            36,
+            16,
+            10,
+            14,
+            10,
+            8,
+            3,
             1
           ],
-          "hist_min": 90.99,
-          "hist_max": 97.04,
+          "hist_min": 91.03,
+          "hist_max": 97.26,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {

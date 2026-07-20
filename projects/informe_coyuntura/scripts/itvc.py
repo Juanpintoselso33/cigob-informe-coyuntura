@@ -66,8 +66,16 @@ DIMENSIONES_ITVC = {
     "empleo": {
         "nombre": "Prospectivas de empleo",
         "peso": 0.15,
-        "indicadores": {"mortalidad_pymes": 0.45, "despacho_cemento": 0.40,
-                        "pluriempleo": 0.15},
+        # ADR-0112: entra indice_lider con 20%. La dimensión se llama
+        # prospectiva pero sus tres componentes describen lo que YA pasó (IPI e
+        # ISAC son contemporáneos, la subocupación llega con dos trimestres de
+        # rezago). El Índice Líder de la UTDT está construido para anticipar
+        # puntos de giro, y es el único componente del cinturón que mira
+        # adelante. Los tres existentes ceden proporcionalmente (×0,8),
+        # conservando su orden relativo. El peso NOMINAL de la dimensión no se
+        # toca.
+        "indicadores": {"mortalidad_pymes": 0.36, "despacho_cemento": 0.32,
+                        "pluriempleo": 0.12, "indice_lider": 0.20},
     },
     "confianza": {
         # ADR-0110: se llamaba "Confianza y seguridad" y el rótulo no describía

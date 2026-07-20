@@ -65,6 +65,9 @@ BCRA_VARIABLES = {
 
 # ── UTDT ─────────────────────────────────────────────────────────────────────
 UTDT_ICC_LISTADO       = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=16458"
+# Índice Líder (ADR-0112): serie histórica mensual desde 1993, misma mecánica
+# de descarga que el ICC (listado → fname del XLS más reciente).
+UTDT_IL_LISTADO        = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=16461"
 UTDT_ICC_DOWNLOAD_BASE = "https://www.utdt.edu/download.php?fname="
 
 # ── CAFAM ─────────────────────────────────────────────────────────────────────

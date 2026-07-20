@@ -147,8 +147,14 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`100\cdot\frac{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{hoy}}}{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{4T-23}}}`,
     leyenda: "Cuántas facturas de servicios regulados paga el sueldo, contra el arranque del mandato. Debajo de 100 = las tarifas pesan más en el bolsillo que en 2023 (fin de subsidios).",
   },
+  indice_lider: {
+    latex: String.raw`100\cdotrac{	ext{'Indice L'ider}_{	ext{hoy}}}{	ext{'Indice L'ider}_{	ext{4T-23}}}`,
+    leyenda: "Nivel del Índice Líder de la Universidad Torcuato Di Tella contra el arranque del mandato. Por encima de 100, las señales tempranas de la economía están mejor que en 2023.",
+  },
   alquiler_real: {
-    latex: String.raw`100\cdotrac{\left(	ext{IPC general}\,/\,	ext{alquiler}ight)_{	ext{hoy}}}{\left(	ext{IPC general}\,/\,	ext{alquiler}ight)_{	ext{4T-23}}}`,
+    latex: String.raw`100\cdotrac{\left(	ext{IPC general}\,/\,	ext{alquiler}
+ight)_{	ext{hoy}}}{\left(	ext{IPC general}\,/\,	ext{alquiler}
+ight)_{	ext{4T-23}}}`,
     leyenda: "Cuánto sube el alquiler comparado con el resto de los precios, contra el arranque del mandato. Debajo de 100 = el alquiler se encareció más que todo lo demás.",
   },
   mortalidad_pymes: {

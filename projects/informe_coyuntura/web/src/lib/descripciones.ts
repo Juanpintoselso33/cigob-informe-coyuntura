@@ -208,6 +208,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.",
     frecuencia: "Mensual", tipo: "Variación (card) · nivel vs salarios (índice)",
   },
+  indice_lider: {
+    que: "Un índice que combina señales tempranas de la economía —financieras, de expectativas y de actividad— para anticipar los cambios de rumbo antes de que aparezcan en los datos corrientes. En el ITVC puntúa por su NIVEL rebaseado a 100 = 4T-2023.",
+    aporta: "Es el único componente del cinturón que mira hacia adelante: todos los demás describen lo que ya ocurrió. Un índice líder que se da vuelta anticipa el punto de giro que el resto de la dimensión va a registrar meses después.",
+    frecuencia: "Mensual", tipo: "Nivel (índice base 100)",
+  },
   alquiler_real: {
     que: "Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITVC puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.",
     aporta: "La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.",

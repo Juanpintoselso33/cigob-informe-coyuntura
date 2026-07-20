@@ -59,10 +59,31 @@ def _parse_icc_xls(content: bytes) -> dict:
     return {"valor": ultimo_valor, "fecha": ultimo_fecha, "unidad": "Índice"}
 
 
+def _fetch_indice_lider(results: dict) -> None:
+    """Índice Líder de la UTDT (ADR-0112): mismo mecanismo de descarga que el
+    ICC, otra página de serie histórica. Un fallo acá no debe tumbar el ICC."""
+    from config import UTDT_IL_LISTADO
+    try:
+        r = requests.get(UTDT_IL_LISTADO, headers=HTTP_HEADERS,
+                         timeout=HTTP_TIMEOUT, verify=False)
+        r.raise_for_status()
+        fnames = sorted(set(re.findall(r"download\.php\?fname=([^\"'&]+)", r.text)))
+        if not fnames:
+            raise ValueError("sin link de descarga en el listado del Índice Líder")
+        x = requests.get(UTDT_ICC_DOWNLOAD_BASE + fnames[0], headers=HTTP_HEADERS,
+                         timeout=HTTP_TIMEOUT, verify=False)
+        x.raise_for_status()
+        il = _parse_icc_xls(x.content)      # mismo layout: col 0 fecha, col 1 valor
+        results["indice_lider"] = il
+        logger.info("Índice Líder UTDT OK: %s = %s", il["fecha"], il["valor"])
+    except Exception as e:
+        logger.error("Índice Líder UTDT FAIL: %s", e)
+
+
 def fetch_icc() -> dict:
     """
-    Descarga y parsea el ICC UTDT.
-    Retorna {'icc_utdt': {'valor': float, 'fecha': str, 'unidad': 'índice'}}.
+    Descarga y parsea el ICC UTDT y el Índice Líder.
+    Retorna {'icc_utdt': {...}, 'indice_lider': {...}}.
     """
     results = {}
     try:
@@ -76,4 +97,5 @@ def fetch_icc() -> dict:
         logger.info("ICC UTDT OK: %s = %s", icc["fecha"], icc["valor"])
     except Exception as e:
         logger.error("ICC UTDT FAIL: %s", e)
+    _fetch_indice_lider(results)
     return results

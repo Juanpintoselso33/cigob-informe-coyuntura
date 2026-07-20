@@ -382,10 +382,11 @@ def test_vida_itvc_reconcilia():
     itvc_val = c["itvc"]["valor"]
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
-    # 15 desde ADR-0111 (entra alquiler_real a la dimensión de precios). El
-    # conteo exacto es deliberado: es el guard que en su momento detectó a
-    # sentimiento_digital desapareciendo del snapshot sin que nada más fallara.
-    assert len(en_indice) == 15, f"esperaba 15 componentes en el índice, hay {len(en_indice)}"
+    # 16: ADR-0111 sumó alquiler_real a precios y ADR-0112 indice_lider a
+    # empleo. El conteo exacto es deliberado: es el guard que en su momento
+    # detectó a sentimiento_digital desapareciendo del snapshot sin que nada
+    # más fallara.
+    assert len(en_indice) == 16, f"esperaba 16 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

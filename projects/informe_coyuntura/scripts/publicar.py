@@ -85,6 +85,9 @@ def build_vida(raw):
     icc = utdt.get("icc_utdt", {})
     _add(out, "icc_utdt", round(icc.get("valor", 0), 1),
          "índice", "UTDT — Índice de Confianza del Consumidor (CIF)", icc.get("fecha"))
+    il = utdt.get("indice_lider", {})
+    _add(out, "indice_lider", round(il.get("valor", 0), 1),
+         "índice", "UTDT — Índice Líder (CIF)", il.get("fecha"))
     # sd puede venir {} (nunca corrió) o {"...": null} (Trends 429/timeout,
     # ver "nota" del dump crudo) -- en ambos casos _add() se llama SIEMPRE
     # (con valor=None si no hay dato) para que _carry_forward pueda
@@ -504,6 +507,7 @@ ITVC_SERIES_REBASEADAS = {
     "itvc_alimentos":     "ipc_alimentos",
     "itvc_tarifas":       "peso_tarifas",
     "itvc_alquiler":      "alquiler_real",
+    "itvc_lider":         "indice_lider",
     "itvc_ipi":           "mortalidad_pymes",
     "itvc_isac":          "despacho_cemento",
     "itvc_endeudamiento": "endeudamiento_familiar",
