@@ -720,6 +720,52 @@ def _lag(s: dict, k: int) -> dict:
     return {yms[i + k]: s[yms[i]] for i in range(len(yms) - k)} if k > 0 else s
 
 
+# ── La brecha de obra pública cambia de signo según el gobierno (ADR-0095) ───
+# Períodos presidenciales, para medir el indicador contra el EPU por separado en
+# cada uno. El hallazgo que motiva el corte: la brecha acompaña a la
+# incertidumbre de política con las dos administraciones anteriores y se INVIERTE
+# con la actual, porque el recorte de obra pública dejó de ser un síntoma de
+# gobierno en problemas para ser el programa de gobierno.
+GOBIERNOS = [
+    ("Macri (desde el inicio de la serie)", "2017-11", "2019-11"),
+    ("Alberto Fernández", "2019-12", "2023-11"),
+    ("Milei", "2023-12", "9999-99"),
+]
+
+
+def _corr_brecha_por_gobierno(epu: dict) -> dict:
+    """{gobierno: {r, n}} del PUNTAJE de la brecha contra el EPU.
+
+    Se correlaciona el puntaje y no el valor crudo porque es el puntaje lo que
+    entra al índice: si el signo se da vuelta, se da vuelta ahí."""
+    escala = parametrica.Escala(itcp.BANDAS_ITCP, getattr(itcp, "ANCLAS_ITCP", None))
+    crudo = _serie_indicador("brecha_obra_publica")
+    puntajes = {m: escala.puntaje(v, "brecha_obra_publica") for m, v in crudo.items()}
+    out = {}
+    for etiqueta, desde, hasta in GOBIERNOS:
+        tramo = {m: v for m, v in puntajes.items() if desde <= m <= hasta}
+        r, n = _pearson(tramo, epu)
+        out[etiqueta] = {"r": r, "n": n}
+    return out
+
+
+def _serie_itcp_sin(dimension: str) -> dict:
+    """Reconstrucción del ITCP dejando afuera una dimensión entera, para poder
+    publicar cuánto de la validación externa aporta o resta cada una."""
+    import copy
+    originales = itcp.DIMENSIONES_ITCP
+    recortadas = {k: v for k, v in copy.deepcopy(originales).items() if k != dimension}
+    global ITCP_SERIES
+    guardadas = ITCP_SERIES
+    itcp.DIMENSIONES_ITCP = recortadas
+    ITCP_SERIES = [k for d in recortadas.values() for k in d["indicadores"]]
+    try:
+        return construir_serie_itcp()
+    finally:
+        itcp.DIMENSIONES_ITCP = originales
+        ITCP_SERIES = guardadas
+
+
 def main():
     itvc_full, itvc_sin, icc = construir_series_itvc()
     resultados = {"_meta": {"adr": "0019 Decisión 6",
@@ -849,6 +895,27 @@ def main():
             r, n = _pearson(a, b)
             resultados["correlaciones_itcp"][nombre] = {"r": r, "n": n}
             print(f"  {nombre}: r = {r}  (n = {n})")
+
+        # Cuánto de la correlación aporta o resta la dimensión empresaria, que
+        # es la más nueva y la que el EPU no cubre (ADR-0095). Se publica el
+        # contrafáctico, no se esconde la caída.
+        try:
+            sin_priv = _serie_itcp_sin("sector_privado")
+            r_sin, n_sin = _pearson(sin_priv, epu)
+            resultados["correlaciones_itcp"]["niveles, sin la dimensión de sector privado"] = {
+                "r": r_sin, "n": n_sin}
+            print(f"  niveles SIN sector privado: r = {r_sin}  (n = {n_sin})")
+        except Exception as e:
+            print(f"  [WARN] contrafáctico sin sector privado: {e}")
+
+        try:
+            porgob = _corr_brecha_por_gobierno(epu)
+            resultados["brecha_obra_publica_por_gobierno"] = porgob
+            print("  brecha de obra pública vs EPU, por gobierno:")
+            for g, x in porgob.items():
+                print(f"    {g}: r = {x['r']}  (n = {x['n']})")
+        except Exception as e:
+            print(f"  [WARN] brecha por gobierno: {e}")
     except Exception as e:
         print(f"[WARN] EPU Argentina no disponible: {e}")
 

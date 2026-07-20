@@ -1653,6 +1653,24 @@
     "EPU adelantado 1 mes vs ITCP": {
       "r": -0.104,
       "n": 30
+    },
+    "niveles, sin la dimensión de sector privado": {
+      "r": -0.589,
+      "n": 30
+    }
+  },
+  "brecha_obra_publica_por_gobierno": {
+    "Macri (desde el inicio de la serie)": {
+      "r": -0.562,
+      "n": 21
+    },
+    "Alberto Fernández": {
+      "r": -0.643,
+      "n": 46
+    },
+    "Milei": {
+      "r": 0.326,
+      "n": 31
     }
   },
   "construya_var_ia_mensual": {

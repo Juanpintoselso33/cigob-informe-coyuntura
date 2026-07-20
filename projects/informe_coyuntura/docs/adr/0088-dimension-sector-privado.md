@@ -89,6 +89,15 @@ relativo de las cinco originales se conserva intacto.
 
 ITCP: 68,0 → **69,8** (tensión 3,0).
 
+> **Corrección (ADR-0095, 20-jul-2026).** Lo que sigue valida el INDICADOR, y
+> es correcto. Lo que este ADR no midió es el efecto de incorporarlo AL ÍNDICE:
+> el ITCP ↔ EPU cayó de −0,599 a −0,372, toda la caída atribuible a este
+> componente. La causa no es un defecto de la métrica sino que el indicador
+> **cambia de signo según el gobierno** —correcto para las dos administraciones
+> anteriores, invertido para la actual, porque el recorte de obra pública es su
+> programa y no un síntoma—. Se decidió mantenerlo puntuando y publicar el
+> hallazgo. Ver ADR-0095.
+
 ## Validación externa: percepción contra conducta
 
 El indicador es una **encuesta**: mide lo que las empresas dicen esperar. Se

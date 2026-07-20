@@ -1138,6 +1138,9 @@ def _validacion_itcp(bloque):
         return
     corr = val.get("correlaciones_itcp", {})
     niveles = corr.get("niveles (ITCP vs EPU Argentina)") or {}
+    # Contrafáctico: cuánto valdría la correlación sin la dimensión empresaria,
+    # que es la más nueva y la que este contraste no cubre. Se publica.
+    r_sin_priv = (corr.get("niveles, sin la dimensión de sector privado") or {}).get("r")
     difs = corr.get("primeras diferencias (ITCP vs EPU)") or {}
     coma = lambda x: str(x).replace(".", ",")
     r_niv, r_dif = niveles.get("r"), difs.get("r")
@@ -1163,11 +1166,31 @@ def _validacion_itcp(bloque):
         "serie_label": "ITCP (reconstrucción mensual)",
         "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
         "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
-        "conclusion": (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
-                       f"a mes: el signo negativo es el esperado, aunque más moderado que en "
-                       f"macro o gestión — coherente con un índice cuyos componentes de alianzas "
-                       f"territoriales y cohesión interna del oficialismo recién empiezan a "
-                       f"tener historia propia."),
+        "r_sin_sector_privado": r_sin_priv,
+        "por_gobierno": val.get("brecha_obra_publica_por_gobierno") or {},
+        "conclusion": (
+            f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes a mes: "
+            f"el signo negativo es el esperado, más moderado que en macro o gestión."
+            + (f" Sin la dimensión de sector privado —incorporada en julio de 2026— la "
+               f"correlación sería {coma(r_sin_priv)}, y conviene explicar la diferencia en "
+               f"lugar de omitirla. "
+               if r_sin_priv is not None else " ")
+            + "El contraste mide incertidumbre de política económica en la prensa, y no cubre "
+              "la relación del Gobierno con los empresarios: pedirle que valide una dimensión "
+              "que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, "
+              "el volumen de insumos de construcción efectivamente vendidos, contra el que "
+              "correlaciona 0,79 en niveles y 0,47 en los cambios."
+            + (" Hay además un hallazgo que conviene declarar: el indicador de expectativas de "
+               "obra pública acompaña a la incertidumbre de política durante las dos "
+               "administraciones anteriores y se invierte con la actual. La razón es "
+               "sustantiva, no estadística: para gobiernos anteriores la tensión con las "
+               "empresas que dependen del Estado era un síntoma de dificultades, mientras que "
+               "para el actual el recorte de la obra pública es el programa de gobierno, de "
+               "modo que ejecutarlo reduce la incertidumbre sobre la política económica al "
+               "mismo tiempo que tensa la relación con ese sector. El indicador mide bien la "
+               "tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno "
+               "sufre y cuándo es un precio que decide pagar."
+               if val.get("brecha_obra_publica_por_gobierno") else "")),
     }
 
 
