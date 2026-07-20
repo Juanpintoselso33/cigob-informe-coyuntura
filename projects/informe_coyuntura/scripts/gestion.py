@@ -2109,8 +2109,11 @@ def anotar_indicadores(indicadores: dict, resultado: dict | None) -> None:
         # Las promesas cumplidas se muestran pero no puntúan (ADR-0100). Se
         # marcan SIEMPRE, hayan entrado o no por por_indicador.
         if nombre in itcg.INDICADORES_CUMPLIDOS:
+            meta_cumplido = dict(itcg.INDICADORES_CUMPLIDOS[nombre])
             ind["en_indice"] = False
-            ind["cumplido"] = dict(itcg.INDICADORES_CUMPLIDOS[nombre])
+            # conserva su dimensión para poder mostrarse junto a sus pares
+            ind["dimension"] = meta_cumplido.get("dimension")
+            ind["cumplido"] = meta_cumplido
 
 
 def calcular_score(indicadores: dict) -> float:

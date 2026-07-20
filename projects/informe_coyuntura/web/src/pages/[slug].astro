@@ -43,7 +43,13 @@ const gruposDim = Object.entries(dimsDe)
     puntaje: dim.puntaje,
     peso: dim.peso,
     critica: !!dim.critica,
-    filas: filasIndice.filter(({ key }) => key in (dim.indicadores ?? {})),
+    // Las promesas cumplidas se muestran DENTRO de su dimensión aunque ya no
+    // puntúen: pertenecen ahí, y sacarlas a un bloque aparte haría parecer que
+    // miden otra cosa. Van al final del grupo, con su etiqueta.
+    filas: [
+      ...filasIndice.filter(({ key }) => key in (dim.indicadores ?? {})),
+      ...filasCumplidas.filter(({ ind }) => ind.dimension === dkey),
+    ],
   }))
   .filter(g => g.filas.length > 0);
 // Red de seguridad: un indicador marcado en_indice pero que ninguna dimensión
@@ -261,11 +267,18 @@ const robChartData = rob?.hist && indice ? {
               <div class="cg-dim-group-head">
                 <h3 class="cg-dim-group-name">{g.nombre}</h3>
                 <span class="cg-dim-group-meta">
-                  <strong>{g.puntaje}</strong>{indice!.base100 ? "" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.length} {g.filas.length === 1 ? "indicador" : "indicadores"}
+                  <strong>{g.puntaje}</strong>{indice!.base100 ? "" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.filter(f => !f.ind.cumplido).length} {g.filas.filter(f => !f.ind.cumplido).length === 1 ? "indicador" : "indicadores"}{g.filas.some(f => f.ind.cumplido) && ` + ${g.filas.filter(f => f.ind.cumplido).length} logrado`}
                 </span>
               </div>
               <div class="cg-tile-grid">
-                {g.filas.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+                {g.filas.map(({ key, ind }) => (
+                  ind.cumplido ? (
+                    <div class="cg-cumplido-wrap" title={ind.cumplido.por_que}>
+                      <span class="cg-cumplido-chip">✓ Logrado en {ind.cumplido.desde_txt ?? ind.cumplido.desde} · ya no puntúa</span>
+                      <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />
+                    </div>
+                  ) : <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />
+                ))}
               </div>
             </div>
           ))}
@@ -286,27 +299,6 @@ const robChartData = rob?.hist && indice ? {
         </div>
       )}
     </section>
-
-    {filasCumplidas.length > 0 && (
-      <section class="cg-section">
-        <div class="cg-section-head">
-          <p class="cg-eyebrow">Promesa cumplida</p>
-          <h2 class="cg-h2">Llegaron a su máximo y dejaron de moverse</h2>
-          <p class="cg-h2-sub">Miden lo que su dimensión se propone medir, pero <strong>alcanzaron el techo de su escala y se mantienen ahí</strong>. Salieron del cálculo del {indice?.sigla ?? "índice"} porque un valor que no puede cambiar no aporta información al promedio mensual, y sí lo infla. Se siguen publicando: que la promesa esté cumplida es parte de lo que este informe cuenta.</p>
-        </div>
-        <div class="cg-tile-grid">
-          {filasCumplidas.map(({ key, ind }) => (
-            <div class="cg-cumplido-wrap">
-              <span class="cg-cumplido-chip">Logrado desde {ind.cumplido.desde_txt ?? ind.cumplido.desde}</span>
-              <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />
-            </div>
-          ))}
-        </div>
-        {filasCumplidas.map(({ ind }) => (
-          <p class="cg-h2-sub cg-cumplido-nota">{ind.cumplido.por_que}</p>
-        ))}
-      </section>
-    )}
 
     {filasContexto.length > 0 && (
       <section class="cg-section">

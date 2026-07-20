@@ -88,9 +88,15 @@ La excepción es **acotada y verificada por test**: fuera de las cumplidas, sigu
 sin poder haber cards sin puntaje, y toda cumplida debe declarar su fecha de
 logro y el motivo.
 
-En el tablero aparecen bajo su propio título —"Llegaron a su máximo y dejaron de
-moverse"— con un chip que dice desde cuándo, y no bajo el de "No integran el
-índice", que invertiría el sentido de la noticia.
+**En el tablero la card se queda dentro de su dimensión**, junto a sus pares, con
+una etiqueta que dice "✓ Logrado en abril de 2024 · ya no puntúa". La primera
+versión de este ADR la mandaba a un bloque aparte al pie de la página; el editor
+lo corrigió con un argumento mejor: el indicador pertenece a esa dimensión y
+sacarlo de ahí haría parecer que mide otra cosa. Lo que cambió es que dejó de
+puntuar, no dónde va.
+
+El encabezado de la dimensión lo refleja: dice "2 indicadores + 1 logrado", para
+que el puntaje no parezca calculado sobre tres.
 
 ## Limitaciones declaradas
 

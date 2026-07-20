@@ -227,6 +227,9 @@ INDICADORES_CONTEXTO = ["alertas_manifestacion", "protestas_caba"]
 # la card para que el lector sepa por qué no cambia.
 INDICADORES_CUMPLIDOS = {
     "asistencia_directa": {
+        # La card se sigue mostrando DENTRO de su dimensión, no en un bloque
+        # aparte: pertenece ahí y lo que cambió es que dejó de puntuar.
+        "dimension": "social_orden",
         "desde": "2024-04",
         "desde_txt": "abril de 2024",
         "por_que": "La desintermediación de los planes sociales llegó al 100% del "
