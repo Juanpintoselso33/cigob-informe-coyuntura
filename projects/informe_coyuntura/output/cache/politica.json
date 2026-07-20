@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-19T04:14:47.740156",
-  "score": 3.3,
+  "generated_at": "2026-07-19T21:50:58.498655",
+  "score": 3.2,
   "itcp": {
-    "valor": 66.9,
+    "valor": 68.0,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -53,7 +53,7 @@
       "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
         "peso": 0.25,
-        "puntaje": 83.6,
+        "puntaje": 85.2,
         "indicadores": {
           "iaf_transferencias": {
             "peso": 0.4,
@@ -64,9 +64,9 @@
           },
           "alineamiento_senadores_prov": {
             "peso": 0.3,
-            "puntaje_banda": 94.9,
-            "puntaje_aplicado": 94.9,
-            "valor": 68.3,
+            "puntaje_banda": 100.0,
+            "puntaje_aplicado": 100.0,
+            "valor": 70.6,
             "peso_efectivo": 0.075
           },
           "adhesion_reformas_provincial": {
@@ -82,13 +82,13 @@
       "cohesion_interna": {
         "nombre": "Cohesión interna del oficialismo",
         "peso": 0.2,
-        "puntaje": 93.3,
+        "puntaje": 96.7,
         "indicadores": {
           "cohesion_bloque": {
             "peso": 1.0,
-            "puntaje_banda": 93.3,
-            "puntaje_aplicado": 93.3,
-            "valor": 99.7,
+            "puntaje_banda": 96.7,
+            "puntaje_aplicado": 96.7,
+            "valor": 99.8,
             "peso_efectivo": 0.2
           }
         },
@@ -267,8 +267,8 @@
       "detalle_txt": "3 vetos insistidos por el Congreso + 5 decretos rechazados en el recinto en los últimos 12 meses",
       "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-      "fecha_dato": "2026-07-17",
-      "desactualizado": true,
+      "fecha_dato": "2026-07-19",
+      "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 53.6,
@@ -299,11 +299,11 @@
       "en_indice": false
     },
     "cohesion_bloque": {
-      "valor": 99.7,
+      "valor": 99.8,
       "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
       "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
-      "fecha_dato": "2026-06-24",
-      "n_actas": 51,
+      "fecha_dato": "2026-07-16",
+      "n_actas": 57,
       "desactualizado": false,
       "componentes": {
         "diputados": {
@@ -314,17 +314,17 @@
           "desactualizado": false
         },
         "senado": {
-          "valor": 99.4,
-          "fecha_dato": "2026-06-04",
-          "n_actas": 18,
-          "corrida_exitosa_en": "2026-07-17",
+          "valor": 99.6,
+          "fecha_dato": "2026-07-16",
+          "n_actas": 24,
+          "corrida_exitosa_en": "2026-07-19",
           "desactualizado": false
         }
       },
       "en_indice": true,
       "dimension": "cohesion_interna",
-      "puntaje_itcp": 93.3,
-      "puntaje_banda": 93.3,
+      "puntaje_itcp": 96.7,
+      "puntaje_banda": 96.7,
       "peso_efectivo": 0.2
     },
     "bloqueo_sostenido": {
@@ -337,8 +337,8 @@
       "detalle_txt": "2 de 10 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
       "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-      "fecha_dato": "2026-07-17",
-      "desactualizado": true,
+      "fecha_dato": "2026-07-19",
+      "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 10.0,
@@ -346,17 +346,17 @@
       "peso_efectivo": 0.06
     },
     "alineamiento_senadores_prov": {
-      "valor": 68.3,
+      "valor": 70.6,
       "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
-      "fuente": "Votaciones nominales Senado — elaboración CIGOB (scraping directo)",
-      "fecha_dato": "2026-06-04",
+      "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
+      "fecha_dato": "2026-07-16",
       "n_provincias": 24,
-      "corrida_exitosa_en": "2026-07-17",
+      "corrida_exitosa_en": "2026-07-19",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
-      "puntaje_itcp": 94.9,
-      "puntaje_banda": 94.9,
+      "puntaje_itcp": 100.0,
+      "puntaje_banda": 100.0,
       "peso_efectivo": 0.075
     }
   }

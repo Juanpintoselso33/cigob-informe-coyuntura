@@ -102,6 +102,7 @@ jobs:
                   projects/informe_coyuntura/data/gestion/tdps_baseline_2023.json \
                   projects/informe_coyuntura/data/gestion/protestas_caba.json \
                   projects/informe_coyuntura/data/gestion/concesiones_fechas.json \
+                  projects/informe_coyuntura/data/gestion/acled_cortes.json \
                   projects/informe_coyuntura/data/vida/carne_serie.json \
                   projects/informe_coyuntura/data/vida/sentimiento_serie.json \
                   projects/informe_coyuntura/data/vida/ivi_serie.json \

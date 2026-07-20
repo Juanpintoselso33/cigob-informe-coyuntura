@@ -804,7 +804,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,desregulacion_normativa,5,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
 2024-01-01,desregulacion_normativa,4,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
 2023-12-01,desregulacion_normativa,3,Normas (conteo acum.),InfoLeg ('deroga' desde dic-2023)
-2026-07-01,concesiones_infraestructura,56.9,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
+2026-07-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-06-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-05-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-04-01,concesiones_infraestructura,8.2,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)

@@ -6,7 +6,7 @@
     "2026-07": 0.0
   },
   "alineamiento_senadores_prov": {
-    "2026-07": 68.3
+    "2026-07": 70.6
   },
   "apertura_comercial": {
     "2026-07": 4.86
@@ -38,7 +38,7 @@
   },
   "cohesion_bloque": {
     "2026-06": 78.0,
-    "2026-07": 99.7
+    "2026-07": 99.8
   },
   "cohesion_bloque_senado": {
     "2026-07": 99.4
@@ -48,7 +48,7 @@
     "2026-07": 97.7
   },
   "concesiones_infraestructura": {
-    "2026-07": 56.9
+    "2026-07": 28.7
   },
   "conflictividad_nacional": {
     "2026-07": -23.2
@@ -228,7 +228,7 @@
   },
   "sentimiento_digital": {
     "2026-06": 5.7,
-    "2026-07": 5.8
+    "2026-07": 6.3
   },
   "tc_mayorista": {
     "2026-06": 4.16,

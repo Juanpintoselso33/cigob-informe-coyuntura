@@ -1302,6 +1302,14 @@ def _etapa_de_proceso(nombre: str) -> str | None:
     return m.group(1).replace(" ", "") if m else None
 
 
+def _esta_adjudicado(estado: str) -> bool:
+    """CONTRAT.AR usa 'Preadjudicado' para la etapa previa a la adjudicación, y
+    **'ADJUDICADO' in 'PREADJUDICADO' es True** (ADR-0087). La frontera de
+    palabra distingue las dos: `\\bADJUDICADO\\b` no matchea dentro de
+    PREADJUDICADO, y sigue aceptando variantes como 'Adjudicado Parcial'."""
+    return bool(re.search(r"\bADJUDICADO\b", (estado or "").upper()))
+
+
 def fetch_concesiones_infraestructura() -> dict | None:
     """
     Tasa de adjudicación de la Red Federal de Concesiones, en KM (doc 260702:
@@ -1318,7 +1326,7 @@ def fetch_concesiones_infraestructura() -> dict | None:
         adjudicadas, detalle_p = [], []
         for proceso, nombre, estado in procesos:
             etapa = _etapa_de_proceso(nombre)
-            adjudicado = "ADJUDICADO" in estado.upper()
+            adjudicado = _esta_adjudicado(estado)
             if etapa and adjudicado and etapa in km:
                 adjudicadas.append(etapa)
             detalle_p.append(f"{etapa or proceso}: {estado}")

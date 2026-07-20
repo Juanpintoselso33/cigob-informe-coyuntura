@@ -1,0 +1,413 @@
+{
+  "_meta": {
+    "fuente": "ACLED (acleddata.com) — API de eventos, cuenta académica UBA",
+    "descargado": "2026-07-19",
+    "criterio": "cortes = notas con ('block', 'picket', 'barricad', 'roadblock', 'corte', 'piquete')",
+    "nota": "Serie de VALIDACIÓN de los anclajes DP (no puntúa). Nivel Research = eventos con ~12 meses de rezago.",
+    "dp_caba": {
+      "2023": 931,
+      "2024": 440,
+      "2025": 240
+    }
+  },
+  "anual": {
+    "2019": {
+      "eventos": 174,
+      "cortes": 14
+    },
+    "2018": {
+      "eventos": 270,
+      "cortes": 12
+    },
+    "2024": {
+      "eventos": 234,
+      "cortes": 26
+    },
+    "2023": {
+      "eventos": 239,
+      "cortes": 55
+    },
+    "2022": {
+      "eventos": 290,
+      "cortes": 55
+    },
+    "2021": {
+      "eventos": 261,
+      "cortes": 57
+    },
+    "2020": {
+      "eventos": 164,
+      "cortes": 15
+    },
+    "2025": {
+      "eventos": 143,
+      "cortes": 13
+    }
+  },
+  "mensual": {
+    "2018-01": {
+      "eventos": 21,
+      "cortes": 2
+    },
+    "2018-02": {
+      "eventos": 11,
+      "cortes": 1
+    },
+    "2018-03": {
+      "eventos": 12,
+      "cortes": 0
+    },
+    "2018-04": {
+      "eventos": 24,
+      "cortes": 3
+    },
+    "2018-05": {
+      "eventos": 22,
+      "cortes": 1
+    },
+    "2018-06": {
+      "eventos": 22,
+      "cortes": 0
+    },
+    "2018-07": {
+      "eventos": 33,
+      "cortes": 1
+    },
+    "2018-08": {
+      "eventos": 21,
+      "cortes": 0
+    },
+    "2018-09": {
+      "eventos": 34,
+      "cortes": 0
+    },
+    "2018-10": {
+      "eventos": 22,
+      "cortes": 0
+    },
+    "2018-11": {
+      "eventos": 22,
+      "cortes": 1
+    },
+    "2018-12": {
+      "eventos": 26,
+      "cortes": 3
+    },
+    "2019-01": {
+      "eventos": 20,
+      "cortes": 1
+    },
+    "2019-02": {
+      "eventos": 33,
+      "cortes": 1
+    },
+    "2019-03": {
+      "eventos": 13,
+      "cortes": 2
+    },
+    "2019-04": {
+      "eventos": 11,
+      "cortes": 0
+    },
+    "2019-05": {
+      "eventos": 9,
+      "cortes": 2
+    },
+    "2019-06": {
+      "eventos": 4,
+      "cortes": 1
+    },
+    "2019-07": {
+      "eventos": 7,
+      "cortes": 0
+    },
+    "2019-08": {
+      "eventos": 16,
+      "cortes": 1
+    },
+    "2019-09": {
+      "eventos": 17,
+      "cortes": 2
+    },
+    "2019-10": {
+      "eventos": 19,
+      "cortes": 3
+    },
+    "2019-11": {
+      "eventos": 13,
+      "cortes": 0
+    },
+    "2019-12": {
+      "eventos": 12,
+      "cortes": 1
+    },
+    "2020-01": {
+      "eventos": 9,
+      "cortes": 1
+    },
+    "2020-02": {
+      "eventos": 7,
+      "cortes": 1
+    },
+    "2020-03": {
+      "eventos": 7,
+      "cortes": 0
+    },
+    "2020-04": {
+      "eventos": 4,
+      "cortes": 1
+    },
+    "2020-05": {
+      "eventos": 13,
+      "cortes": 0
+    },
+    "2020-06": {
+      "eventos": 17,
+      "cortes": 2
+    },
+    "2020-07": {
+      "eventos": 9,
+      "cortes": 3
+    },
+    "2020-08": {
+      "eventos": 11,
+      "cortes": 0
+    },
+    "2020-09": {
+      "eventos": 23,
+      "cortes": 1
+    },
+    "2020-10": {
+      "eventos": 19,
+      "cortes": 3
+    },
+    "2020-11": {
+      "eventos": 24,
+      "cortes": 0
+    },
+    "2020-12": {
+      "eventos": 21,
+      "cortes": 3
+    },
+    "2021-01": {
+      "eventos": 9,
+      "cortes": 2
+    },
+    "2021-02": {
+      "eventos": 18,
+      "cortes": 2
+    },
+    "2021-03": {
+      "eventos": 19,
+      "cortes": 1
+    },
+    "2021-04": {
+      "eventos": 38,
+      "cortes": 17
+    },
+    "2021-05": {
+      "eventos": 18,
+      "cortes": 7
+    },
+    "2021-06": {
+      "eventos": 20,
+      "cortes": 3
+    },
+    "2021-07": {
+      "eventos": 15,
+      "cortes": 2
+    },
+    "2021-08": {
+      "eventos": 23,
+      "cortes": 4
+    },
+    "2021-09": {
+      "eventos": 26,
+      "cortes": 2
+    },
+    "2021-10": {
+      "eventos": 33,
+      "cortes": 9
+    },
+    "2021-11": {
+      "eventos": 21,
+      "cortes": 3
+    },
+    "2021-12": {
+      "eventos": 21,
+      "cortes": 5
+    },
+    "2022-01": {
+      "eventos": 15,
+      "cortes": 2
+    },
+    "2022-02": {
+      "eventos": 20,
+      "cortes": 4
+    },
+    "2022-03": {
+      "eventos": 22,
+      "cortes": 4
+    },
+    "2022-04": {
+      "eventos": 30,
+      "cortes": 4
+    },
+    "2022-05": {
+      "eventos": 22,
+      "cortes": 4
+    },
+    "2022-06": {
+      "eventos": 25,
+      "cortes": 8
+    },
+    "2022-07": {
+      "eventos": 20,
+      "cortes": 7
+    },
+    "2022-08": {
+      "eventos": 17,
+      "cortes": 4
+    },
+    "2022-09": {
+      "eventos": 33,
+      "cortes": 4
+    },
+    "2022-10": {
+      "eventos": 30,
+      "cortes": 3
+    },
+    "2022-11": {
+      "eventos": 26,
+      "cortes": 4
+    },
+    "2022-12": {
+      "eventos": 30,
+      "cortes": 7
+    },
+    "2023-01": {
+      "eventos": 11,
+      "cortes": 2
+    },
+    "2023-02": {
+      "eventos": 27,
+      "cortes": 14
+    },
+    "2023-03": {
+      "eventos": 31,
+      "cortes": 14
+    },
+    "2023-04": {
+      "eventos": 19,
+      "cortes": 6
+    },
+    "2023-05": {
+      "eventos": 15,
+      "cortes": 5
+    },
+    "2023-06": {
+      "eventos": 11,
+      "cortes": 2
+    },
+    "2023-07": {
+      "eventos": 17,
+      "cortes": 3
+    },
+    "2023-08": {
+      "eventos": 20,
+      "cortes": 1
+    },
+    "2023-09": {
+      "eventos": 26,
+      "cortes": 2
+    },
+    "2023-10": {
+      "eventos": 14,
+      "cortes": 0
+    },
+    "2023-11": {
+      "eventos": 17,
+      "cortes": 2
+    },
+    "2023-12": {
+      "eventos": 31,
+      "cortes": 4
+    },
+    "2024-01": {
+      "eventos": 14,
+      "cortes": 2
+    },
+    "2024-02": {
+      "eventos": 19,
+      "cortes": 7
+    },
+    "2024-03": {
+      "eventos": 19,
+      "cortes": 3
+    },
+    "2024-04": {
+      "eventos": 20,
+      "cortes": 1
+    },
+    "2024-05": {
+      "eventos": 21,
+      "cortes": 0
+    },
+    "2024-06": {
+      "eventos": 21,
+      "cortes": 3
+    },
+    "2024-07": {
+      "eventos": 13,
+      "cortes": 1
+    },
+    "2024-08": {
+      "eventos": 12,
+      "cortes": 1
+    },
+    "2024-09": {
+      "eventos": 17,
+      "cortes": 2
+    },
+    "2024-10": {
+      "eventos": 39,
+      "cortes": 4
+    },
+    "2024-11": {
+      "eventos": 18,
+      "cortes": 1
+    },
+    "2024-12": {
+      "eventos": 21,
+      "cortes": 1
+    },
+    "2025-01": {
+      "eventos": 14,
+      "cortes": 0
+    },
+    "2025-02": {
+      "eventos": 17,
+      "cortes": 4
+    },
+    "2025-03": {
+      "eventos": 23,
+      "cortes": 4
+    },
+    "2025-04": {
+      "eventos": 22,
+      "cortes": 1
+    },
+    "2025-05": {
+      "eventos": 14,
+      "cortes": 4
+    },
+    "2025-06": {
+      "eventos": 30,
+      "cortes": 0
+    },
+    "2025-07": {
+      "eventos": 23,
+      "cortes": 0
+    }
+  }
+}

@@ -368,12 +368,26 @@ def construir_serie_itcg() -> dict:
     return out
 
 
+# Indicadores del ITCG cuya SERIE guarda una magnitud distinta de la que
+# puntúa el índice, así que no pueden entrar a la reconstrucción histórica
+# (ADR-0086). No es lo mismo que "no tienen serie": la tienen, pero mide otra
+# cosa y puntuarla contra las bandas del indicador da un número sin sentido.
+ITCG_SERIE_NO_COMPARABLE = {
+    # La card puntúa el % de inversión aprobada sobre el pipeline (bandas
+    # 0-60+); la serie guarda el MONTO del pipeline en millones de dólares.
+    # Puntuar 31.192 contra bandas de porcentaje daba 100 en todos los meses
+    # desde ene-2025 y 10 antes: un escalón binario que no existió.
+    "rigi_inversiones": "serie en M USD vs banda en % (ADR-0086)",
+}
+
+
 def _valores_itcg_por_mes() -> dict:
     """{YYYY-MM: {indicador: valor crudo}} del ITCG. Lo comparten la
     reconstrucción y la matriz de redundancia, por la misma razón que en el
     ITCM: que no puedan divergir en qué componentes miran (ADR-0082)."""
     series = json.loads(SERIES.read_text(encoding="utf-8"))
-    valores_por_comp = {k: _mensual(series.get(k) or []) for k in ITCG_SERIES}
+    valores_por_comp = {k: _mensual(series.get(k) or [])
+                        for k in ITCG_SERIES if k not in ITCG_SERIE_NO_COMPARABLE}
     ult = max(max(v) for v in valores_por_comp.values() if v)
     return {ym: {k: v.get(ym) for k, v in valores_por_comp.items()}
             for ym in _meses("2023-12", ult)}

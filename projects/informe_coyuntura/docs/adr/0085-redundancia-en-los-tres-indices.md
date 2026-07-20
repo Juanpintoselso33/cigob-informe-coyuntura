@@ -31,9 +31,20 @@ La primera corrida sobre el **ITCG** devolvió un resultado imposible:
 Una correlación **exactamente 1,000** casi siempre es un artefacto, y lo era.
 Esos indicadores son **contadores acumulados**:
 
-- `rigi_inversiones`: 0 → 31.192
 - `libertad_opcion_salud`: 0 → 31,8
 - `protocolo_antipiquetes`: 52,7 → 74,2, monótono
+
+> **Corrección (ADR-0086, mismo día).** Los dos pares que involucran a
+> `rigi_inversiones` no eran contadores acumulados: eran un **bug**. Su serie
+> guardaba millones de dólares y sus bandas están calibradas en porcentaje, así
+> que la reconstrucción le asignaba 10 durante todo 2024 y 100 desde ene-2025 —
+> un escalón binario, que correlaciona 1,000 con cualquier otra serie monótona.
+> El indicador salió de la matriz y el par desapareció.
+>
+> La explicación original era plausible, estaba bien argumentada y era falsa.
+> Vale registrarlo: **el mecanismo correcto para el resto de los pares sirvió de
+> tapadera para uno que no lo era**. Un número imposible admitía dos causas y se
+> publicó la primera que encajaba, sin descartar la otra.
 
 **Dos series que sólo suben correlacionan cerca de 1 aunque no compartan
 ninguna información.** Es el artefacto clásico de correlacionar tendencias.
@@ -55,8 +66,11 @@ disponible y no hecho — `_difs()` ya existía en el archivo.
 | índice | niveles \|r\| | % altos | **cambios \|r\|** | **% altos** |
 |---|---|---|---|---|
 | ITCM | 0,496 | 25% | **0,182** | **0%** |
-| ITCG | 0,514 | 34% | **0,154** | **4%** |
+| ITCG | 0,492 | 31% | **0,137** | **2%** |
 | ITCP | 0,371 | 9% | **0,215** | **3%** |
+
+(Las cifras del ITCG son las posteriores a ADR-0086; la corrida original, con el
+indicador defectuoso adentro, daba 0,514 / 34% / 0,154 / 4%.)
 
 **Al quitar la tendencia común, la redundancia prácticamente desaparece.** En el
 ITCM ningún par supera el umbral.

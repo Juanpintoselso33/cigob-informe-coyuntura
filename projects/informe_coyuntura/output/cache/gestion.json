@@ -1,9 +1,9 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-19T04:16:05.227409",
-  "score": 2.7,
+  "generated_at": "2026-07-19T21:40:21.110724",
+  "score": 2.8,
   "itcg": {
-    "valor": 72.9,
+    "valor": 71.9,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -97,7 +97,7 @@
       "privatizaciones_inversion": {
         "nombre": "Privatizaciones e inversión",
         "peso": 0.15,
-        "puntaje": 62.9,
+        "puntaje": 56.5,
         "indicadores": {
           "privatizaciones": {
             "peso": 0.4,
@@ -115,9 +115,9 @@
           },
           "concesiones_infraestructura": {
             "peso": 0.2,
-            "puntaje_banda": 76.9,
-            "puntaje_aplicado": 76.9,
-            "valor": 56.9,
+            "puntaje_banda": 44.6,
+            "puntaje_aplicado": 44.6,
+            "valor": 28.7,
             "peso_efectivo": 0.03
           }
         },
@@ -327,25 +327,25 @@
       "peso_efectivo": 0.06
     },
     "concesiones_infraestructura": {
-      "valor": 56.9,
+      "valor": 28.7,
       "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
       "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
       "fecha_dato": "2026-07-19",
       "desactualizado": false,
-      "km_adjudicados": 5171,
+      "km_adjudicados": 2614,
       "km_totales": 9091,
       "procesos": 4,
       "componentes": {
         "etapa_i": 100.0,
         "etapa_ii": 100.0,
-        "etapa_ii_b": 100.0,
+        "etapa_ii_b": 0.0,
         "etapa_iii": 0.0
       },
-      "detalle_txt": "5.171 de 9.091 km adjudicados · I: Adjudicado · II-B: Preadjudicado · II: Adjudicado · III: Pendiente Acto Administrativo de Preselección",
+      "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Preadjudicado · II: Adjudicado · III: Pendiente Acto Administrativo de Preselección",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
-      "puntaje_itcg": 76.9,
-      "puntaje_banda": 76.9,
+      "puntaje_itcg": 44.6,
+      "puntaje_banda": 44.6,
       "peso_efectivo": 0.03
     },
     "asistencia_directa": {

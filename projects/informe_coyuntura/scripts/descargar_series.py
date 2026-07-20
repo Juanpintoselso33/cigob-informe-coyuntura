@@ -2200,7 +2200,7 @@ def fetch_concesiones_serie() -> list:
         hoy_ym = date.today().strftime("%Y-%m")
         for proceso, nombre, estado in gestion._contratar_procesos_rfc():
             etapa = gestion._etapa_de_proceso(nombre)
-            if etapa and "ADJUDICADO" in estado.upper() and etapa in km:
+            if etapa and gestion._esta_adjudicado(estado) and etapa in km:
                 if etapa not in etapas:
                     etapas[etapa] = {"fecha": hoy_ym, "km": km[etapa],
                                      "fuente": f"CONTRAT.AR {proceso} (detectado {hoy_ym})"}
