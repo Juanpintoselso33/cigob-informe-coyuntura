@@ -5,7 +5,7 @@ y escribe web/src/data/informe.json (con vida cotidiana enriquecido a ~13
 indicadores automaticos) y web/src/data/series.json.
 """
 import csv, glob, json, os, re, statistics, sys
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -971,6 +971,96 @@ def _familias(bloque, familias: dict, meta_familias: dict):
     }
 
 
+def _vintages(cinturon, indice_key):
+    """Anexa al bloque de índice el perfil de VINTAGES de sus componentes: de
+    qué fecha es el dato de cada uno (ADR-0099).
+
+    Es la observación 3.3 de la auditoría del cinturón de gestión: los
+    componentes llegan con rezagos de publicación muy distintos y el índice los
+    combina en un puntaje mensual, de modo que "el mes del índice es en rigor un
+    mosaico de vintages" y conviene decirlo en la presentación, no sólo en cada
+    ficha.
+
+    No hace falta declarar nada: cada card ya trae su `fecha_dato`. Eso es
+    deliberado — un diccionario paralelo se desactualiza en silencio, que es el
+    modo de falla de ADR-0082 y ADR-0089.
+
+    Distinto del rezago de ADR-0092, que mide el centroide de la VENTANA de cada
+    indicador. Acá se mide la antigüedad del DATO. Un indicador puede tener el
+    dato de ayer y describir el promedio del último año, o al revés.
+    """
+    bloque = cinturon.get(indice_key)
+    if not bloque:
+        return
+    hoy = date.today()
+    filas = []
+    for clave, ind in (cinturon.get("indicadores") or {}).items():
+        if not ind.get("en_indice"):
+            continue
+        fecha, peso = ind.get("fecha_dato"), ind.get("peso_efectivo")
+        if not fecha or not peso:
+            continue
+        try:
+            # Algunas fichas rotulan su ventana por el mes de CIERRE, que puede
+            # caer adelante de hoy (la encuesta del ISAC pregunta por los tres
+            # meses siguientes). Eso no es un dato del futuro: es antigüedad
+            # cero.
+            dias = max(0, (hoy - date.fromisoformat(str(fecha)[:10])).days)
+        except ValueError:
+            continue
+        filas.append({"indicador": clave, "fecha": str(fecha)[:10],
+                      "dias": dias, "peso": float(peso)})
+    if len(filas) < 3:
+        return
+
+    total = sum(f["peso"] for f in filas)
+    dias_medio = sum(f["dias"] * f["peso"] for f in filas) / total
+    mas_viejo = max(filas, key=lambda f: f["dias"])
+    mas_nuevo = min(filas, key=lambda f: f["dias"])
+    # los que arrastran el promedio: más de un trimestre de antigüedad
+    rezagados = sorted([f for f in filas if f["dias"] >= 90],
+                       key=lambda f: -f["dias"])
+
+    meses = lambda d: round(d / 30.44, 1)
+    coma = lambda x: str(x).replace(".", ",")
+    _MESES_ES_LARGO = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+                       "agosto", "septiembre", "octubre", "noviembre", "diciembre")
+
+    def _en_prosa(iso):
+        """'2025-12-31' → '31 de diciembre de 2025'. El texto es público y el
+        resto del informe no usa fechas en formato técnico."""
+        try:
+            d = date.fromisoformat(iso)
+        except ValueError:
+            return iso
+        return f"{d.day} de {_MESES_ES_LARGO[d.month - 1]} de {d.year}"
+    bloque["vintages"] = {
+        "dias_promedio": round(dias_medio),
+        "meses_promedio": meses(dias_medio),
+        "fecha_mas_vieja": _en_prosa(mas_viejo["fecha"]),
+        "fecha_mas_nueva": _en_prosa(mas_nuevo["fecha"]),
+        "span_dias": mas_viejo["dias"] - mas_nuevo["dias"],
+        "rezagados": [{"indicador": f["indicador"], "fecha": _en_prosa(f["fecha"]),
+                       "meses": meses(f["dias"])} for f in rezagados],
+        "titulo": "¿De qué fecha es cada dato del índice?",
+        "sub": ("Los componentes no se publican al mismo ritmo: algunos son diarios y "
+                "otros llegan con meses de demora. El índice los combina igual en un "
+                "puntaje mensual, así que el «mes» del índice es en rigor un mosaico de "
+                "datos de distintas fechas. Acá se muestra ese rango."),
+        "conclusion": (
+            f"El dato más reciente es del {_en_prosa(mas_nuevo['fecha'])} y el más antiguo "
+            f"del {_en_prosa(mas_viejo['fecha'])}: un rango de "
+            f"{mas_viejo['dias'] - mas_nuevo['dias']} días. "
+            f"Ponderando cada componente por el peso que tiene en el índice, la antigüedad "
+            f"media del dato es de {coma(meses(dias_medio))} meses."
+            + (f" Los que más la arrastran son los que se publican con mayor demora"
+               f" o cuya fuente dejó de actualizarse. "
+               if rezagados else " Ningún componente supera el trimestre de antigüedad. ")
+            + "Conviene tenerlo presente al leer el número del mes: no todos sus "
+              "componentes describen el mismo momento."),
+    }
+
+
 def _redundancia_itcm(bloque):
     _redundancia(bloque, "redundancia_itcm")
 
@@ -1318,6 +1408,7 @@ def aplicar_scoring(informe, series):
             if c.get("itcm"):
                 _validacion_itcm(c["itcm"])
                 _redundancia_itcm(c["itcm"])
+                _vintages(c, "itcm")
             continue
         if ckey == "gestion":
             for oculto in GESTION_OCULTOS:
@@ -1326,6 +1417,7 @@ def aplicar_scoring(informe, series):
             if c.get("itcg"):
                 _validacion_itcg(c["itcg"])
                 _redundancia(c["itcg"], "redundancia_itcg")
+                _vintages(c, "itcg")
             continue
         if ckey == "vida_cotidiana":
             _scoring_vida_itvc(c, series)
@@ -1340,6 +1432,7 @@ def aplicar_scoring(informe, series):
                 _rezago(c["itcp"], itcp.REZAGO_MESES_ITCP,
                         itcp.REZAGO_PULSO, itcp.REZAGO_ESTRUCTURAL)
                 _familias(c["itcp"], itcp.FAMILIAS_ITCP, itcp.FAMILIAS_ITCP_META)
+                _vintages(c, "itcp")
             continue
         if ckey == "espiritu_epoca":
             # sin continue: el puntuable que queda (intención migratoria)

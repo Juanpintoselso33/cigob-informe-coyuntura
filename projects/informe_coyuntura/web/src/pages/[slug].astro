@@ -117,6 +117,7 @@ const cruzRaw = indice ? ((informe as any).validacion_cruzada ?? null) : null;
 const red = indice?.data.redundancia ?? null;
 const rez = indice?.data.rezago ?? null;
 const fam = indice?.data.familias ?? null;
+const vin = indice?.data.vintages ?? null;
 const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice!.sigla)
   ? cruzRaw : null;
 // etiquetas cortas de las anclas externas para la matriz en mobile
@@ -567,6 +568,45 @@ const robChartData = rob?.hist && indice ? {
                 ))}
               </div>
               <p class="cg-h2-sub">{fam.conclusion}</p>
+            </div>
+          </Fragment>
+        )}
+        {vin && (
+          <Fragment>
+            <div class="cg-section-head cg-val-head">
+              <p class="cg-eyebrow">Fechas de los datos</p>
+              <h2 class="cg-h2">{vin.titulo}</h2>
+              <p class="cg-h2-sub">{vin.sub}</p>
+            </div>
+            <div class={`cg-rob cg-rob--${meta.slug} cg-vin`}>
+              <div class="cg-vin-hero">
+                <div class="cg-vin-dato">
+                  <span class="cg-vin-num">{coma(vin.meses_promedio)}</span>
+                  <span class="cg-vin-lbl">meses de antigüedad<br/>media del dato</span>
+                </div>
+                <div class="cg-vin-dato">
+                  <span class="cg-vin-num">{vin.span_dias}</span>
+                  <span class="cg-vin-lbl">días entre el dato más<br/>nuevo y el más viejo</span>
+                </div>
+                <div class="cg-vin-rango">
+                  <span class="cg-vin-rango-lbl">del</span> {vin.fecha_mas_vieja}
+                  <span class="cg-vin-rango-lbl">al</span> {vin.fecha_mas_nueva}
+                </div>
+              </div>
+              {vin.rezagados.length > 0 && (
+                <Fragment>
+                  <p class="cg-vin-titulo">Los que llegan con más demora</p>
+                  <ul class="cg-vin-lista">
+                    {vin.rezagados.map((r: any) => (
+                      <li>
+                        <span class="cg-vin-ind">{label(r.indicador)}</span>
+                        <span class="cg-vin-meses">{r.fecha} · {coma(r.meses)} meses</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Fragment>
+              )}
+              <p class="cg-h2-sub">{vin.conclusion}</p>
             </div>
           </Fragment>
         )}

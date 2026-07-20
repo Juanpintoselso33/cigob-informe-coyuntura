@@ -919,3 +919,57 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   .cg-fam-grid { gap: 22px; }
   .cg-fam-num { font-size: 30px; }
 }
+
+
+/* ── Card de vintages (ADR-0099) ──────────────────────────────────────── */
+.cg-vin-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 28px;
+  margin-bottom: 1.6rem;
+}
+.cg-vin-dato { display: flex; align-items: baseline; gap: 10px; }
+.cg-vin-num {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.cg-vin-lbl { font-size: 12.5px; line-height: 1.35; color: var(--muted); }
+.cg-vin-rango {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  padding-bottom: 2px;
+}
+.cg-vin-rango-lbl { color: var(--muted); margin: 0 4px; }
+
+.cg-vin-titulo {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin: 0 0 0.6rem;
+}
+.cg-vin-lista { list-style: none; margin: 0 0 1.6rem; padding: 0; }
+.cg-vin-lista li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+  font-size: 14px;
+}
+.cg-vin-lista li + li { border-top: 1px dashed var(--bd); }
+.cg-vin-ind { line-height: 1.45; }
+.cg-vin-meses {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--muted);
+}
+
+@media (max-width: 34rem) {
+  .cg-vin-hero { gap: 18px; }
+  .cg-vin-num { font-size: 29px; }
+}
