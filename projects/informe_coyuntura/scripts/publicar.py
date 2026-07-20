@@ -842,6 +842,68 @@ def _redundancia(bloque, clave_val: str):
     }
 
 
+def _rezago(bloque, rezago_meses: dict, pulso: float, estructural: float):
+    """Anexa a un bloque de índice el perfil temporal de sus componentes
+    (ADR-0092, prioridad 5 de la auditoría de jul-2026).
+
+    La auditoría observó que en un mismo puntaje mensual conviven indicadores
+    casi en tiempo real con otros que describen una realidad de hace uno o dos
+    años, y que al combinarse "pueden dar la sensación de que todo el índice
+    describe julio de 2026 cuando en rigor una porción relevante describe
+    2024-2025". La ficha de cada indicador ya declaraba su rezago; lo que
+    faltaba era decirlo en el informe.
+
+    Se pondera por peso EFECTIVO, que es el que el indicador tiene realmente en
+    el índice una vez renormalizado, no por su peso nominal dentro de la
+    dimensión.
+    """
+    filas = []
+    for dim in bloque.get("dimensiones", {}).values():
+        for k, ind in dim.get("indicadores", {}).items():
+            meses = rezago_meses.get(k)
+            peso = ind.get("peso_efectivo")
+            if meses is not None and peso:
+                filas.append((k, float(peso), float(meses)))
+    if not filas:
+        return
+    total = sum(p for _, p, _ in filas)
+    promedio = sum(p * m for _, p, m in filas) / total
+    share_pulso = sum(p for _, p, m in filas if m <= pulso) / total
+    share_estr = sum(p for _, p, m in filas if m >= estructural) / total
+    rezagados = [{"indicador": k, "meses": m}
+                 for k, _, m in sorted(filas, key=lambda x: -x[2]) if m >= estructural]
+
+    coma = lambda x: str(x).replace(".", ",")
+    prom_txt = coma(round(promedio, 1))
+    bloque["rezago"] = {
+        "promedio_meses": round(promedio, 1),
+        "share_pulso": round(share_pulso, 3),
+        "share_estructural": round(share_estr, 3),
+        "umbral_pulso": pulso,
+        "umbral_estructural": estructural,
+        # Se emiten las CLAVES: las etiquetas legibles viven en el front.
+        "mas_rezagados": rezagados,
+        "titulo": "¿De cuándo es la foto que describe el índice?",
+        "sub": ("Cada indicador mira una ventana de tiempo distinta. Uno que promedia "
+                "los últimos doce meses describe, en promedio, la situación de hace "
+                "seis, aunque su último dato sea de ayer. Ponderando cada componente "
+                "por el peso que realmente tiene en el índice, se obtiene de cuándo es "
+                "la foto completa."),
+        "conclusion": (
+            f"El índice describe, en promedio ponderado, la situación de hace "
+            f"{prom_txt} meses. Un {share_pulso:.0%} de su peso corresponde a "
+            f"indicadores de pulso inmediato, que reflejan las últimas semanas"
+            + (f", y un {share_estr:.0%} a indicadores que describen el año anterior. "
+               if share_estr else ". ")
+            + ("La consecuencia práctica: un cambio de la coyuntura política no se ve "
+               "de inmediato en el número. Los indicadores rápidos lo registran enseguida "
+               "y los de ventana larga lo van incorporando durante los meses siguientes, "
+               "de modo que el índice tiende a moverse después —y de forma más suave— que "
+               "los hechos que lo motivan. Leerlo como una fotografía del mes en curso "
+               "sobreestima su inmediatez.")),
+    }
+
+
 def _redundancia_itcm(bloque):
     _redundancia(bloque, "redundancia_itcm")
 
@@ -1185,6 +1247,8 @@ def aplicar_scoring(informe, series):
             if c.get("itcp"):
                 _validacion_itcp(c["itcp"])
                 _redundancia(c["itcp"], "redundancia_itcp")
+                _rezago(c["itcp"], itcp.REZAGO_MESES_ITCP,
+                        itcp.REZAGO_PULSO, itcp.REZAGO_ESTRUCTURAL)
             continue
         if ckey == "espiritu_epoca":
             # sin continue: el puntuable que queda (intención migratoria)

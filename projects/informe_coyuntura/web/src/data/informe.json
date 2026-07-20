@@ -1498,6 +1498,26 @@
           "titulo": "¿Cuánta información distinta aporta cada componente?",
           "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 12 componentes que tienen serie histórica, 43 pares en total, y se mide cuánto se mueven juntos.",
           "conclusion": "La correlación media entre pares es 0,384: ni componentes independientes ni una sola señal repetida. Un 12% de los pares se mueve muy junto (por encima de 0,7) y un 42% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,208 y sólo un 2% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 5 pares que superan el umbral en niveles, 4 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
+        },
+        "rezago": {
+          "promedio_meses": 5.8,
+          "share_pulso": 0.392,
+          "share_estructural": 0.168,
+          "umbral_pulso": 2.0,
+          "umbral_estructural": 12.0,
+          "mas_rezagados": [
+            {
+              "indicador": "eficacia_legislativa",
+              "meses": 18.0
+            },
+            {
+              "indicador": "iaf_transferencias",
+              "meses": 12.0
+            }
+          ],
+          "titulo": "¿De cuándo es la foto que describe el índice?",
+          "sub": "Cada indicador mira una ventana de tiempo distinta. Uno que promedia los últimos doce meses describe, en promedio, la situación de hace seis, aunque su último dato sea de ayer. Ponderando cada componente por el peso que realmente tiene en el índice, se obtiene de cuándo es la foto completa.",
+          "conclusion": "El índice describe, en promedio ponderado, la situación de hace 5,8 meses. Un 39% de su peso corresponde a indicadores de pulso inmediato, que reflejan las últimas semanas, y un 17% a indicadores que describen el año anterior. La consecuencia práctica: un cambio de la coyuntura política no se ve de inmediato en el número. Los indicadores rápidos lo registran enseguida y los de ventana larga lo van incorporando durante los meses siguientes, de modo que el índice tiende a moverse después —y de forma más suave— que los hechos que lo motivan. Leerlo como una fotografía del mes en curso sobreestima su inmediatez."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."

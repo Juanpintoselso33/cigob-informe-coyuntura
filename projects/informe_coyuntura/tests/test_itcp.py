@@ -339,3 +339,15 @@ def test_calcular_itcp_aplica_ajustes_con_vencimiento(tmp_path):
     ajustes = itcp.cargar_ajustes(ajustes_path, "2026-07")
     resultado = itcp.calcular_itcp({"cohesion_bloque": 95.0}, ajustes)
     assert resultado["dimensiones"]["cohesion_interna"]["indicadores"]["cohesion_bloque"]["puntaje_aplicado"] == 50
+
+
+def test_todo_indicador_del_indice_declara_su_rezago():
+    """La card de rezago pondera por peso efectivo (ADR-0092): un indicador sin
+    rezago declarado no rompe nada, simplemente desaparece del promedio y lo
+    sesga en silencio. Si entra uno nuevo, este test obliga a declararlo."""
+    en_indice = {k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]}
+    faltan = en_indice - set(itcp.REZAGO_MESES_ITCP)
+    assert not faltan, f"sin rezago declarado en REZAGO_MESES_ITCP: {sorted(faltan)}"
+    sobran = set(itcp.REZAGO_MESES_ITCP) - en_indice
+    assert not sobran, f"declaran rezago pero no integran el índice: {sorted(sobran)}"
+    assert all(v >= 0 for v in itcp.REZAGO_MESES_ITCP.values())

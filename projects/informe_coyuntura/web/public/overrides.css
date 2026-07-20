@@ -752,3 +752,102 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   .cg-dim-groups { gap: 24px; }
   .cg-dim-group-head { justify-content: flex-start; }
 }
+
+
+/* ── Card de rezago del índice (ADR-0092) ─────────────────────────────── */
+/* Misma familia que .cg-red: hereda el marco .cg-rob, cambia el contenido. */
+.cg-rez-hero {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.7rem;
+  margin-bottom: 1.6rem;
+}
+.cg-rez-num {
+  font-size: clamp(2.6rem, 8vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--cg-acento, currentColor);
+}
+.cg-rez-unidad {
+  font-size: 1.15rem;
+  font-weight: 600;
+  opacity: 0.85;
+}
+.cg-rez-lbl {
+  flex: 1 1 12rem;
+  font-size: 0.86rem;
+  line-height: 1.35;
+  opacity: 0.72;
+}
+
+/* Barra de composición: cuánto del peso es rápido, intermedio y rezagado. */
+.cg-rez-barra {
+  display: flex;
+  width: 100%;
+  height: 0.7rem;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.9rem;
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+.cg-rez-seg { display: block; height: 100%; }
+.cg-rez-seg--pulso { background: color-mix(in srgb, currentColor 62%, transparent); }
+.cg-rez-seg--medio { background: color-mix(in srgb, currentColor 32%, transparent); }
+.cg-rez-seg--estr  { background: color-mix(in srgb, currentColor 14%, transparent); }
+
+.cg-rez-leyenda {
+  list-style: none;
+  margin: 0 0 1.6rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.4rem;
+  font-size: 0.84rem;
+  opacity: 0.8;
+}
+.cg-rez-leyenda li { display: flex; align-items: center; gap: 0.45rem; }
+.cg-rez-dot {
+  width: 0.62rem;
+  height: 0.62rem;
+  border-radius: 50%;
+  flex: none;
+}
+.cg-rez-dot--pulso { background: color-mix(in srgb, currentColor 62%, transparent); }
+.cg-rez-dot--medio { background: color-mix(in srgb, currentColor 32%, transparent); }
+.cg-rez-dot--estr  { background: color-mix(in srgb, currentColor 14%, transparent); }
+
+.cg-rez-titulo {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  margin: 0 0 0.6rem;
+}
+.cg-rez-lista {
+  list-style: none;
+  margin: 0 0 1.6rem;
+  padding: 0;
+}
+.cg-rez-lista li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 0;
+}
+/* mismo separador punteado que .cg-red-pares, para que las dos cards de
+   robustez se lean como una familia y no como dos componentes distintos */
+.cg-rez-lista li + li { border-top: 1px dashed var(--bd); }
+.cg-rez-ind { font-size: 14px; line-height: 1.45; }
+.cg-rez-meses {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+
+@media (max-width: 30rem) {
+  .cg-rez-leyenda { gap: 0.35rem 0.9rem; font-size: 0.79rem; }
+}

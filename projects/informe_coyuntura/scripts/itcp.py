@@ -511,6 +511,50 @@ INDICADORES_CONTEXTO = ["rotacion_gabinete", "protestas_caba", "movilizacion_cep
                         # su banda queda arriba como referencia histórica
                         "comisiones_caidas"]
 
+# ── Rezago: dónde cae, en promedio, el dato que alimenta cada indicador ──────
+# (ADR-0092, prioridad 5 de la auditoría del cinturón)
+#
+# No es el retraso de publicación de la fuente —eso ya está en la ficha de cada
+# indicador— sino el CENTROIDE DE SU VENTANA: un indicador que promedia los
+# últimos 12 meses describe, en promedio, la situación de hace 6, aunque su
+# último dato sea de ayer. Es la distinción que la auditoría pide hacer visible:
+# "dato de julio de 2026" no es lo mismo que "situación de julio de 2026".
+#
+# Los valores se derivan del diseño de cada ventana, no se estiman:
+#   ventana móvil de N meses  -> N/2
+#   cohorte de 12 a 24 meses  -> 18
+#   stock acumulado           -> 0 (describe el estado de hoy)
+REZAGO_MESES_ITCP = {
+    # Cohorte MADURA: sólo entran los proyectos publicados hace 12-24 meses,
+    # porque antes no hubo tiempo material de sancionarlos (ADR-0061). Es el
+    # más rezagado del índice por construcción, y no hay forma de acelerarlo
+    # sin volver a introducir el sesgo que ese ADR sacó.
+    "eficacia_legislativa": 18.0,
+    # Comparación anual dic-dic: hasta 12 meses de rezago por diseño.
+    "iaf_transferencias": 12.0,
+    # Promedio móvil de 12 meses (6) más el rezago de publicación del INDEC.
+    "brecha_obra_publica": 7.5,
+    # Ventanas móviles de 12 meses / 365 días.
+    "ratio_dnu": 6.0,
+    "veto_quorum": 6.0,
+    "desafios_legislativos": 6.0,
+    "bloqueo_sostenido": 6.0,
+    "conflictividad_nacional": 6.0,
+    # Ventanas de 90 días.
+    "alineamiento_senadores_prov": 1.5,
+    "cohesion_bloque": 1.5,
+    # Encuestas ponderadas por recencia: el peso se concentra en las últimas
+    # semanas, así que el centroide efectivo es de alrededor de un mes.
+    "votometro_ventaja_lla": 1.0,
+    # Stock acumulado de adhesiones: describe el estado vigente, no un promedio.
+    "adhesion_reformas_provincial": 0.0,
+}
+
+# Umbrales de lectura de la card (meses).
+REZAGO_PULSO = 2.0          # hasta acá, "pulso inmediato"
+REZAGO_ESTRUCTURAL = 12.0   # desde acá, describe otro año
+
+
 BANDAS_INTERPRETACION = [
     (-INF, 20.0, "severamente_apretado"),
     (20.0, 40.0, "apretado"),

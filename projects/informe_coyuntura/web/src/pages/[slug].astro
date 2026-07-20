@@ -115,6 +115,7 @@ const cruzRaw = indice ? ((informe as any).validacion_cruzada ?? null) : null;
 // Consistencia interna del índice: no si acierta (eso lo mide la validación
 // externa) sino cuánta información distinta aporta cada componente.
 const red = indice?.data.redundancia ?? null;
+const rez = indice?.data.rezago ?? null;
 const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice!.sigla)
   ? cruzRaw : null;
 // etiquetas cortas de las anclas externas para la matriz en mobile
@@ -491,6 +492,47 @@ const robChartData = rob?.hist && indice ? {
                 ))}
               </ul>
               <p class="cg-h2-sub">{red.conclusion}</p>
+            </div>
+          </Fragment>
+        )}
+        {rez && (
+          <Fragment>
+            <div class="cg-section-head cg-val-head">
+              <p class="cg-eyebrow">Rezago del índice</p>
+              <h2 class="cg-h2">{rez.titulo}</h2>
+              <p class="cg-h2-sub">{rez.sub}</p>
+            </div>
+            <div class={`cg-rob cg-rob--${meta.slug} cg-rez`}>
+              <div class="cg-rez-hero">
+                <span class="cg-rez-num">{coma(rez.promedio_meses)}</span>
+                <span class="cg-rez-unidad">meses</span>
+                <span class="cg-rez-lbl">de antigüedad promedio de la foto,<br/>ponderada por el peso de cada indicador</span>
+              </div>
+              <div class="cg-rez-barra" role="img"
+                   aria-label={`${Math.round(rez.share_pulso * 100)}% del peso es pulso inmediato y ${Math.round(rez.share_estructural * 100)}% describe el año anterior`}>
+                <span class="cg-rez-seg cg-rez-seg--pulso" style={`width:${rez.share_pulso * 100}%`}></span>
+                <span class="cg-rez-seg cg-rez-seg--medio" style={`width:${(1 - rez.share_pulso - rez.share_estructural) * 100}%`}></span>
+                <span class="cg-rez-seg cg-rez-seg--estr" style={`width:${rez.share_estructural * 100}%`}></span>
+              </div>
+              <ul class="cg-rez-leyenda">
+                <li><span class="cg-rez-dot cg-rez-dot--pulso"></span>{Math.round(rez.share_pulso * 100)}% pulso inmediato — últimas semanas</li>
+                <li><span class="cg-rez-dot cg-rez-dot--medio"></span>{Math.round((1 - rez.share_pulso - rez.share_estructural) * 100)}% ventana intermedia</li>
+                <li><span class="cg-rez-dot cg-rez-dot--estr"></span>{Math.round(rez.share_estructural * 100)}% describe el año anterior</li>
+              </ul>
+              {rez.mas_rezagados.length > 0 && (
+                <Fragment>
+                  <p class="cg-rez-titulo">Los que más tiran del promedio</p>
+                  <ul class="cg-rez-lista">
+                    {rez.mas_rezagados.map((m: any) => (
+                      <li>
+                        <span class="cg-rez-ind">{label(m.indicador)}</span>
+                        <span class="cg-rez-meses">≈ {coma(m.meses)} meses</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Fragment>
+              )}
+              <p class="cg-h2-sub">{rez.conclusion}</p>
             </div>
           </Fragment>
         )}
