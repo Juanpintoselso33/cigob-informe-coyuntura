@@ -114,3 +114,28 @@ def test_privatizaciones_publica_la_norma_de_cada_etapa():
     prom = sum(float(e["etapa"]) for e in detalle) / len(detalle)
     assert abs(prom - priv["etapa_promedio"]) < 0.01
     assert abs(round(prom / 4 * 100, 1) - priv["valor"]) < 0.05
+
+
+# ── RIGI: el % puede bajar sin que nada empeore (ADR-0102) ─────────────────
+
+def test_rigi_avisa_cuando_el_porcentaje_baja_por_el_denominador():
+    """El indicador es inversión aprobada sobre el pipeline total. Cada proyecto
+    grande que entra "en evaluación" agranda el denominador, así que el % puede
+    caer aunque el capital aprobado crezca. Caso real ocurrido entre junio y
+    julio de 2026: 22,1% → 22,0% con la inversión aprobada subiendo de US$
+    27.760M a US$ 31.192M."""
+    import gestion
+    nota = gestion._rigi_nota_denominador(22.0, 31192, pct_ant=22.1, usd_ant=27760)
+    assert nota, "debería avisar: el % bajó y el capital aprobado subió"
+    assert "3.432" in nota, "debe cuantificar cuánto capital entró"
+    assert "no es un retroceso" in nota.lower()
+
+
+def test_rigi_no_avisa_cuando_el_retroceso_es_genuino():
+    """Si caen las dos cosas, es un retroceso real y no hay nada que excusar.
+    Tampoco avisa cuando el porcentaje sube."""
+    import gestion
+    assert gestion._rigi_nota_denominador(20.0, 26000, pct_ant=22.1, usd_ant=27760) is None
+    assert gestion._rigi_nota_denominador(25.0, 31192, pct_ant=22.1, usd_ant=27760) is None
+    # sin datos previos utilizables tampoco inventa un aviso
+    assert gestion._rigi_nota_denominador(22.0, 31192, pct_ant=None, usd_ant="x") is None

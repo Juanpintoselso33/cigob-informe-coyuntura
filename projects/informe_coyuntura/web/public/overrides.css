@@ -1035,3 +1035,16 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   color: var(--muted);
 }
 .cg-det-sinnorma { font-style: italic; }
+
+
+/* ── Aviso de artefacto aritmético (ADR-0102) ─────────────────────────── */
+.cg-aviso-artefacto {
+  margin: 0 0 16px;
+  padding: 11px 13px;
+  border-radius: 8px;
+  border: 1px solid var(--bd);
+  background: var(--bg-page);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.cg-aviso-artefacto strong { display: block; margin-bottom: 2px; }

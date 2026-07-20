@@ -1190,6 +1190,40 @@ def rigi_proyectos_aprobados() -> list:
     return sorted((store[n], n, d["inv"]) for n, d in proy.items() if n in store)
 
 
+def _rigi_nota_denominador(avance: float, inv_aprobada: float,
+                          pct_ant: float | None = None,
+                          usd_ant: float | None = None) -> str | None:
+    """Aviso cuando el porcentaje baja por el denominador y no por retroceso.
+
+    El indicador es inversión aprobada sobre el pipeline total (aprobada + en
+    evaluación). Cada proyecto grande que entra "en evaluación" agranda el
+    denominador, así que el porcentaje puede caer aunque el capital aprobado
+    haya crecido. Es un artefacto aritmético, no un retroceso de gestión, y la
+    revisión externa pidió explicarlo cada vez que ocurre en vez de dejarlo a
+    cargo del lector (ADR-0102).
+
+    Devuelve None si el caso no se da: la nota aparece sólo cuando hace falta.
+    Los valores previos se pueden pasar explícitamente (para poder probarla sin
+    depender del estado del caché); si no, salen del snapshot anterior.
+    """
+    if pct_ant is None or usd_ant is None:
+        anterior = (load_cache().get("indicadores") or {}).get("rigi_inversiones") or {}
+        pct_ant = anterior.get("valor")
+        usd_ant = anterior.get("inversion_aprobada_musd")
+    if not isinstance(pct_ant, (int, float)) or not isinstance(usd_ant, (int, float)):
+        return None
+    if avance >= pct_ant or inv_aprobada <= usd_ant:
+        return None
+    miles = lambda x: f"{x:,.0f}".replace(",", ".")
+    coma = lambda x: str(round(x, 1)).replace(".", ",")
+    return (f"El porcentaje bajó de {coma(pct_ant)}% a {coma(avance)}% y aun así la "
+            f"inversión aprobada CRECIÓ, de US$ {miles(usd_ant)}M a US$ {miles(inv_aprobada)}M. "
+            f"No es un retroceso: el indicador mide la porción aprobada del total, y ese total "
+            f"se agranda cada vez que se presenta un proyecto nuevo. Entraron US$ "
+            f"{miles(inv_aprobada - usd_ant)}M de inversión aprobada y, al mismo tiempo, más "
+            f"proyectos a la cola de evaluación.")
+
+
 def fetch_rigi_inversiones() -> dict | None:
     """Avance del RIGI desde la PLATAFORMA OFICIAL del Ministerio de Economía
     (jun-2026, ADR-0011): puntúa la **inversión aprobada sobre el total del
@@ -1215,6 +1249,7 @@ def fetch_rigi_inversiones() -> dict | None:
             "inversion_aprobada_musd":    round(inv_ap),
             "proyectos_evaluacion":       n_ev,
             "inversion_evaluacion_musd":  round(inv_ev),
+            "nota_denominador": _rigi_nota_denominador(avance, inv_ap),
             "detalle_txt": (f"{n_ap} proyectos aprobados (US$ {miles(inv_ap)}M) / "
                             f"{n_ev} en evaluación (US$ {miles(inv_ev)}M) → "
                             f"{str(avance).replace('.', ',')}% de la inversión total ya aprobada"),

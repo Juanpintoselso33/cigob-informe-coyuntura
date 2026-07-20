@@ -125,6 +125,10 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       aporteScore: ind.aporte_score ?? null,
       aporteFormula: ind.aporte_formula ?? null,
       aporteNota: ind.aporte_nota ?? null,
+      // Aviso de artefacto aritmético: hoy sólo el RIGI, cuyo porcentaje puede
+      // caer porque crece el denominador aunque el capital aprobado suba
+      // (ADR-0102). Aparece únicamente el mes en que el caso se da.
+      notaDenominador: ind.nota_denominador ?? null,
       aporteLectura: ind.aporte_lectura ?? null,
       aporteInputTxt: ind.aporte_input_txt ?? null,
       scoreCint: c.score, scoreExpl: c.score_explicacion ?? "",
@@ -435,7 +439,10 @@ const dimsJson = JSON.stringify(dims);
           `<h4 class="cg-modal-h4">Cómo incide en el score</h4>` +
           `<p class="cg-score-note">${esc(d.aporteNota)}</p>`;
       }
-      score.innerHTML = indiceHtml + tensionHtml;
+      const avisoHtml = d.notaDenominador
+        ? `<div class="cg-aviso-artefacto"><strong>Por qué bajó sin que nada empeorara.</strong> ${esc(d.notaDenominador)}</div>`
+        : "";
+      score.innerHTML = avisoHtml + indiceHtml + tensionHtml;
       score.style.display = score.innerHTML ? "" : "none";
 
       // Contraste de migración real (solo indice_intencion_migratoria): la
