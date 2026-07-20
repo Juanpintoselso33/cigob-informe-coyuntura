@@ -1993,7 +1993,7 @@
             "critica": false
           },
           "confianza": {
-            "nombre": "Confianza y seguridad",
+            "nombre": "Percepción, seguridad y consumo",
             "peso": 0.15,
             "puntaje": 104.0,
             "indicadores": {

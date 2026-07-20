@@ -63,7 +63,17 @@ DIMENSIONES_ITVC = {
                         "pluriempleo": 0.15},
     },
     "confianza": {
-        "nombre": "Confianza y seguridad",
+        # ADR-0110: se llamaba "Confianza y seguridad" y el rótulo no describía
+        # su contenido — el 15% de su peso interno (carne 10 + motos 5) mide
+        # consumo y poder de compra, no confianza ni seguridad. Las propias
+        # fichas de esos dos los definen como proxies de consumo durable y de
+        # bienestar alimentario, y la matriz de redundancia (ADR-0108) lo
+        # confirmó desde el dato: motos correlaciona con mora (−0,974),
+        # endeudamiento (+0,773) y salario (+0,770), y sólo +0,442 con el ICC.
+        # El nombre ahora enumera lo que hay adentro. Reubicarlos en otra
+        # dimensión es la opción de fondo y sigue abierta: exige rehacer los
+        # pesos nominales, que es decisión editorial (ver el ADR).
+        "nombre": "Percepción, seguridad y consumo",
         "peso": 0.15,
         # ADR-0034: entra sentimiento_digital (10%) — le cede el ICC (mide ánimo
         # con encuesta, el Trends lo mide con conducta de búsqueda) y motos (el
