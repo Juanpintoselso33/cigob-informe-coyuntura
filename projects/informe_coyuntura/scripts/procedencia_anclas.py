@@ -51,6 +51,26 @@ SALIDA = RAIZ / "output" / "procedencia_anclas.json"
 CATEGORIAS = ("externa", "documento", "conceptual", "historia_larga",
               "convencion", "sin_declarar")
 
+# ── El trinquete (ADR-0105) ─────────────────────────────────────────────────
+# Estado medido el 2026-07-20. La regla de anclas nuevas es un orden de
+# preferencia —externa · conceptual · historia previa · convención, en ese
+# orden— y una regla así se erosiona sola si nadie la mira: cada indicador
+# nuevo con anclas de conveniencia es defendible de a uno, y la suma no la
+# defiende nadie.
+#
+# Estos techos hacen que la suma tenga dueño. La suite falla si la fracción
+# circular de un índice SUBE, de modo que incorporar un indicador con ancla
+# circular obliga a editar este bloque a mano: deja de ser gratis y silencioso
+# y pasa a verse en el diff, que es donde se puede discutir.
+#
+# Bajarlos cuando el número mejore es parte del trabajo: un techo que quedó
+# muy por encima del valor real deja de frenar nada.
+TECHOS = {
+    "ITCM": {"circular": 0.83, "sin_declarar": 0.453},
+    "ITCG": {"circular": 0.51, "sin_declarar": 0.163},
+    "ITCP": {"circular": 0.61, "sin_declarar": 0.206},
+}
+
 # indicador → (categoría, de dónde sale). El segundo campo es lo que hace
 # auditable la clasificación: cualquiera puede ir al comentario y discutirla.
 PROCEDENCIA = {

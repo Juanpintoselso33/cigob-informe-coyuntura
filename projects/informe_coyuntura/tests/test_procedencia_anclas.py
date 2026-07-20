@@ -75,6 +75,61 @@ def test_una_ancla_externa_cita_su_fuente():
     assert not sin_fuente, f"declarados `externa` sin citar la referencia: {sin_fuente}"
 
 
+def test_la_circularidad_no_sube():
+    """El trinquete (ADR-0105): un índice no puede volverse MÁS circular.
+
+    Si esto falla, se incorporó un indicador con anclas calibradas contra el
+    período que se está midiendo, o se degradó uno existente. Eso puede estar
+    bien —a veces no hay alternativa— pero tiene que ser una decisión tomada y
+    visible, no un efecto lateral. Para eso hay que subir el techo a mano en
+    scripts/procedencia_anclas.py, y ese cambio se ve en el diff.
+    """
+    for sig, bloque in pa.informe()["por_indice"].items():
+        techo = pa.TECHOS[sig]["circular"]
+        assert bloque["share_circular"] <= techo + 0.005, (
+            f"{sig}: la fracción circular subió a {bloque['share_circular']:.1%} "
+            f"(techo {techo:.1%}). Si es deliberado, subí el techo y explicá por qué."
+        )
+
+
+def test_las_anclas_sin_declarar_no_suben():
+    """Caso aparte porque es el único que se arregla gratis.
+
+    Una convención sin alternativa externa a veces es inevitable; una convención
+    SIN DECLARAR nunca lo es — sólo hay que escribir de dónde salió. Que este
+    número suba no tiene defensa posible.
+    """
+    for sig, bloque in pa.informe()["por_indice"].items():
+        actual = bloque["share"].get("sin_declarar", 0.0)
+        techo = pa.TECHOS[sig]["sin_declarar"]
+        assert actual <= techo + 0.005, (
+            f"{sig}: anclas sin procedencia declarada subieron a {actual:.1%} "
+            f"(techo {techo:.1%}). Escribí de dónde salen las nuevas."
+        )
+
+
+def test_el_techo_sigue_a_la_mejora():
+    """Un techo muy por encima del valor real deja de frenar nada.
+
+    Si el número bajó de verdad, hay que bajar el techo en el mismo cambio: es
+    lo que convierte una mejora puntual en una que no se puede deshacer sin que
+    alguien lo note.
+    """
+    for sig, bloque in pa.informe()["por_indice"].items():
+        holgura = pa.TECHOS[sig]["circular"] - bloque["share_circular"]
+        assert holgura <= 0.05, (
+            f"{sig}: la circularidad bajó a {bloque['share_circular']:.1%} pero el "
+            f"techo sigue en {pa.TECHOS[sig]['circular']:.1%}. Bajalo para fijar la mejora."
+        )
+
+
+def test_todo_indice_tiene_techo():
+    """Un índice nuevo sin techo entraría sin límite y sin que nadie lo note."""
+    assert set(pa.informe()["por_indice"]) <= set(pa.TECHOS), (
+        f"índices sin techo declarado: {set(pa.informe()['por_indice']) - set(pa.TECHOS)}"
+    )
+
+
 def test_el_informe_reparte_todo_el_peso():
     """Las categorías tienen que sumar el 100% del peso de cada índice.
 
