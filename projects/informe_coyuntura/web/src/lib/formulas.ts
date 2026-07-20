@@ -171,15 +171,15 @@ ight)_{	ext{4T-23}}}`,
   },
   mora_familias: {
     latex: String.raw`\frac{\text{mora}_{\text{pers}}\cdot\text{saldo}_{\text{pers}}+\text{mora}_{\text{tarj}}\cdot\text{saldo}_{\text{tarj}}}{\text{saldo}_{\text{pers}}+\text{saldo}_{\text{tarj}}}`,
-    leyenda: "Porcentaje de la cartera de consumo de las familias en situación irregular (Informe sobre Bancos, BCRA), ponderando la mora de personales y tarjetas por el saldo de cada línea. En el ITVC puntúa por el nivel relativo al 4T-2023, invertido: más mora, peor.",
+    leyenda: "Porcentaje de la cartera de consumo de las familias en situación irregular (Informe sobre Bancos, BCRA), ponderando la mora de personales y tarjetas por el saldo de cada línea. En el ITVC puntúa por el nivel relativo al 4T-2023. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
   },
   pluriempleo: {
     latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4T-23}}}{\text{subocupaci\'on}_{\text{hoy}}}`,
-    leyenda: "Subocupación demandante (EPH): gente que necesita trabajar más horas. Invertido: si sube, el índice baja.",
+    leyenda: "Subocupación demandante (EPH): gente que necesita trabajar más horas. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
   },
   informalidad: {
     latex: String.raw`100\cdot\frac{\text{informalidad}_{\text{4T-23}}}{\text{informalidad}_{\text{hoy}}}`,
-    leyenda: "Asalariados sin descuento jubilatorio (EPH, trimestral). Invertido: más empleo en negro = índice más bajo. La card muestra la tasa del trimestre.",
+    leyenda: "Asalariados sin descuento jubilatorio (EPH, trimestral). En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. La card muestra la tasa del trimestre.",
   },
   consumo_carne: {
     latex: String.raw`100\cdot\frac{\text{kg de carne por habitante}_{\text{hoy}}}{\text{kg por habitante}_{\text{4T-23}}}`,
@@ -191,7 +191,7 @@ ight)_{	ext{4T-23}}}`,
   },
   inseguridad: {
     latex: String.raw`100\cdot\frac{\text{hogares v\'ictimas}_{\text{ene-24}}}{\text{hogares v\'ictimas}_{\text{hoy}}}`,
-    leyenda: "Índice de Victimización del LICIP (Universidad Di Tella): porcentaje de hogares de 40 centros urbanos que sufrió al menos un delito en los últimos 12 meses, lo haya denunciado o no — capta la cifra negra que las estadísticas de denuncias no ven. Encuesta mensual; la ventana de 12 meses absorbe la estacionalidad. Base declarada: enero 2024, la primera medición tras la reanudación de la encuesta (suspendida 2020-2023) — su ventana de 12 meses cubre mayormente el año previo al mandato. Invertido: más victimización = índice más bajo. Contraste: los hechos denunciados del SNIC, en la ficha.",
+    leyenda: "Índice de Victimización del LICIP (Universidad Di Tella): porcentaje de hogares de 40 centros urbanos que sufrió al menos un delito en los últimos 12 meses, lo haya denunciado o no — capta la cifra negra que las estadísticas de denuncias no ven. Encuesta mensual; la ventana de 12 meses absorbe la estacionalidad. Base declarada: enero 2024, la primera medición tras la reanudación de la encuesta (suspendida 2020-2023) — su ventana de 12 meses cubre mayormente el año previo al mandato. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. Contraste: los hechos denunciados del SNIC, en la ficha.",
   },
   icc_utdt: {
     latex: String.raw`100\cdot\frac{\text{confianza del consumidor}_{\text{hoy}}}{\text{confianza}_{\text{4T-23}}}`,
@@ -199,7 +199,7 @@ ight)_{	ext{4T-23}}}`,
   },
   sentimiento_digital: {
     latex: String.raw`100\cdot\frac{\text{inter\'es de b\'usqueda}_{\text{4T-23}}}{\text{inter\'es de b\'usqueda}_{\text{hoy}}}`,
-    leyenda: "Canasta de búsquedas en Google sobre inflación, precios, inseguridad y trabajo (promedio mensual, ventana fija desde 2021). La escala de Google Trends es relativa a la ventana consultada, pero el cociente entre dos meses de la misma consulta no depende de esa escala — eso permite compararlo contra el 4T-2023. Invertido: más búsquedas de urgencia económica = índice más bajo. Validación: correlación +0,76 con la inflación mensual. El titular de la card es el pulso de los últimos 3 meses, en tiempo real.",
+    leyenda: "Canasta de búsquedas en Google sobre inflación, precios, inseguridad y trabajo (promedio mensual, ventana fija desde 2021). La escala de Google Trends es relativa a la ventana consultada, pero el cociente entre dos meses de la misma consulta no depende de esa escala — eso permite compararlo contra el 4T-2023. Más búsquedas de urgencia económica = peor. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. Validación: correlación +0,76 con la inflación mensual. El titular de la card es el pulso de los últimos 3 meses, en tiempo real.",
   },
 
   // ── Política ─────────────────────────────────────────────────────────────

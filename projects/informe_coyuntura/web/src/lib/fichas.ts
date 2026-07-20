@@ -2341,7 +2341,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Pertenece a la dimensión de confianza y seguridad (10% interno · 1,5% del ITVC).",
     ],
     limitaciones: [
-      "Consumo «aparente» (producción menos exportaciones), no medición de hogares; la sustitución por pollo o cerdo no se captura.",
+      "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: entre diciembre de 2023 y hoy el consumo de carne vacuna cayó un 10%, pero el de cerdo subió un 12% y el de pollo se mantuvo, de modo que el consumo total de las tres carnes cayó apenas un 3%. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,5%) y acompaña, no lidera.",
       "Fuente sectorial privada, publicada en PDF sin interfaz de datos: la lectura depende del formato del informe.",
       "La línea de base del 4º trimestre de 2023 usa la foto contemporánea de entonces, declarada; el dato revisado de la fuente difiere levemente.",
     ],
