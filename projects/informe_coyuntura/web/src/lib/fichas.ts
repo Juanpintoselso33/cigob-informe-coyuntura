@@ -2675,7 +2675,7 @@ export const FICHAS: Record<string, Ficha> = {
     nombreLargo: "Índice de Tensión del Cinturón de Vida Cotidiana",
     base100: true,
     cinturon: "vida_cotidiana",
-    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada de la vida cotidiana; menos de 100 = deterioro. Trece componentes en cinco dimensiones.",
+    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada de la vida cotidiana; menos de 100 = deterioro. Dieciséis componentes en seis dimensiones.",
     marcoConceptual: [
       "El cinturón de vida cotidiana mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, endeudamiento de las familias, empleo y el clima de confianza y seguridad.",
       "El marco proviene del documento institucional del ITVC en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. A diferencia del ITCM y el ITCG, no usa tablas de umbrales: mide la evolución acumulada contra una línea de base común — el arranque del mandato.",
@@ -2693,10 +2693,13 @@ export const FICHAS: Record<string, Ficha> = {
       "Cada componente es un índice continuo rebaseado a 100 = promedio del 4º trimestre de 2023 (o su base declarada). No hay bandas ni anclas: la normalización es el rebase, y las transformaciones por componente (acumulados móviles, deflactación, relativos al IPC general) están documentadas en cada ficha.",
     ],
     agregacion: {
-      latex: String.raw`\text{ITVC}=\sum_{\text{5 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{componentes}}\text{peso}_{\text{interno}}\times\min(\text{componente},140)\Big)`,
-      leyenda: "Promedio ponderado en dos niveles (35% ingresos · 25% precios · 10% vulnerabilidad financiera · 15% empleo · 15% confianza y seguridad), con el techo de recorte declarado.",
+      latex: String.raw`\text{ITVC}=\sum_{\text{6 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{componentes}}\text{peso}_{\text{interno}}\times\min(\text{componente},140)\Big)`,
+      leyenda: "Promedio ponderado en dos niveles (37% ingresos y consumo · 25% precios · 15% empleo · 10% vulnerabilidad financiera · 8% confianza y percepción · 5% seguridad), con el techo de recorte declarado.",
       parrafos: [
         "La agregación es compensatoria y el flag de dimensión crítica lo declara cuando una dimensión cae por debajo del umbral: hoy la vulnerabilidad financiera (endeudamiento con mora) está marcada crítica y domina la lectura del índice.",
+        "El índice y la tensión son DOS ESCALAS DISTINTAS y conviene no confundirlas. El índice suma niveles: cada componente vale lo que vale contra su base de 2023, y esos números se promedian. La tensión es una lectura del resultado —5 − (índice − 100) × 0,2, recortada al rango 0-10— pensada para ponerlo en la misma vara que los otros cinturones. La tensión que aparece en la ficha de cada componente aplica esa misma fórmula a ese componente solo, y sirve para leerlo, no para calcular: al índice entra el nivel, nunca la tensión.",
+        "Eso explica algo que sorprende: varios componentes muestran una tensión de 0 o de 10 a la vez. No es que midan lo mismo — es que la escala 0-10 se corta ahí, y su tensión sin recortar seguiría subiendo o bajando. Cada ficha publica ese valor sin recortar junto al recortado, para que el techo no esconda la diferencia.",
+        "Hay además un segundo recorte, éste sí sobre el número que entra al índice: ningún componente puede superar 140 (un salto puntual de uno solo no compra compensación ilimitada en el promedio). Hoy afecta al endeudamiento de consumo y al patentamiento de motos. Su efecto está medido: quita 1,9 puntos al índice en total, 0,1 de ellos por el recorte de motos.",
       ],
     },
     robustez: [

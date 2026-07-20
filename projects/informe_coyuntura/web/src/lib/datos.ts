@@ -103,7 +103,7 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
     descripcion: "Índice de seguimiento base 100 (paramétrica CIGOB, jul-2026): cada componente " +
       "se rebasea a 100 = promedio del 4º trimestre de 2023 (el arranque del mandato). " +
       "Más de 100 = mejora acumulada de la vida cotidiana; menos de 100 = deterioro. " +
-      "Pondera cinco dimensiones; la tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
+      "Pondera seis dimensiones; la tensión del cinturón es 5 − (ITVC − 100) × 0,2 — una lectura del resultado, no lo que se promedia.",
     data: c.itvc,
   };
   if (c.itcp) return {
