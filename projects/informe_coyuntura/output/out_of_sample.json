@@ -1,0 +1,337 @@
+{
+  "corte": "2023-12",
+  "evaluados": [
+    {
+      "indicador": "ipc_total",
+      "indice": "ITCM",
+      "procedencia": "sin_declarar",
+      "fuera_de_muestra": {
+        "n": 28,
+        "media": 19.4,
+        "desvio": 17.6,
+        "saturado": 0.714,
+        "crudo_min": 2.47,
+        "crudo_max": 12.81,
+        "crudo_media": 6.42
+      },
+      "dentro_de_muestra": {
+        "n": 31,
+        "media": 52.6,
+        "desvio": 23.5,
+        "saturado": 0.161,
+        "crudo_min": 1.5,
+        "crudo_max": 25.47,
+        "crudo_media": 4.87
+      },
+      "señal": "mirar",
+      "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
+    },
+    {
+      "indicador": "litigiosidad_laboral",
+      "indice": "ITCG",
+      "procedencia": "historia_larga",
+      "fuera_de_muestra": {
+        "n": 31,
+        "media": 13.3,
+        "desvio": 6.8,
+        "saturado": 0.806,
+        "crudo_min": 14.4,
+        "crudo_max": 80.0,
+        "crudo_media": 39.22
+      },
+      "dentro_de_muestra": {
+        "n": 29,
+        "media": 50.7,
+        "desvio": 14.4,
+        "saturado": 0.103,
+        "crudo_min": 1.0,
+        "crudo_max": 24.7,
+        "crudo_media": 6.68
+      },
+      "señal": "mirar",
+      "lectura": "se aplasta fuera del período que la calibró — comparar los rangos crudos: ¿el período anterior fue realmente extremo, o la banda no lo alcanza?"
+    },
+    {
+      "indicador": "brecha_obra_publica",
+      "indice": "ITCP",
+      "procedencia": "conceptual",
+      "fuera_de_muestra": {
+        "n": 67,
+        "media": 75.4,
+        "desvio": 20.1,
+        "saturado": 0.224,
+        "crudo_min": -14.3,
+        "crudo_max": 19.4,
+        "crudo_media": 0.72
+      },
+      "dentro_de_muestra": {
+        "n": 33,
+        "media": 46.4,
+        "desvio": 29.8,
+        "saturado": 0.333,
+        "crudo_min": -29.8,
+        "crudo_max": 3.3,
+        "crudo_media": -11.33
+      },
+      "señal": "sin señal",
+      "lectura": "discrimina en ambas ventanas"
+    },
+    {
+      "indicador": "emae_ia",
+      "indice": "ITCM",
+      "procedencia": "sin_declarar",
+      "fuera_de_muestra": {
+        "n": 31,
+        "media": 74.8,
+        "desvio": 32.7,
+        "saturado": 0.677,
+        "crudo_min": -6.61,
+        "crudo_max": 15.37,
+        "crudo_media": 4.66
+      },
+      "dentro_de_muestra": {
+        "n": 29,
+        "media": 60.9,
+        "desvio": 31.7,
+        "saturado": 0.31,
+        "crudo_min": -8.17,
+        "crudo_max": 7.93,
+        "crudo_media": 1.45
+      },
+      "señal": "sin señal",
+      "lectura": "discrimina en ambas ventanas"
+    },
+    {
+      "indicador": "recaudacion",
+      "indice": "ITCM",
+      "procedencia": "sin_declarar",
+      "fuera_de_muestra": {
+        "n": 27,
+        "media": 53.6,
+        "desvio": 31.2,
+        "saturado": 0.296,
+        "crudo_min": -9.87,
+        "crudo_max": 10.79,
+        "crudo_media": 1.7
+      },
+      "dentro_de_muestra": {
+        "n": 31,
+        "media": 29.0,
+        "desvio": 24.0,
+        "saturado": 0.548,
+        "crudo_min": -12.31,
+        "crudo_max": 8.23,
+        "crudo_media": -4.02
+      },
+      "señal": "sin señal",
+      "lectura": "discrimina en ambas ventanas"
+    },
+    {
+      "indicador": "saldo_comercial_12m",
+      "indice": "ITCM",
+      "procedencia": "sin_declarar",
+      "fuera_de_muestra": {
+        "n": 19,
+        "media": 54.8,
+        "desvio": 9.2,
+        "saturado": 0.0,
+        "crudo_min": -6841.0,
+        "crudo_max": 12286.0,
+        "crudo_media": 3382.54
+      },
+      "dentro_de_muestra": {
+        "n": 30,
+        "media": 70.9,
+        "desvio": 15.0,
+        "saturado": 0.333,
+        "crudo_min": -6925.0,
+        "crudo_max": 21221.0,
+        "crudo_media": 10697.69
+      },
+      "señal": "sin señal",
+      "lectura": "discrimina en ambas ventanas"
+    }
+  ],
+  "no_evaluables": [
+    {
+      "indicador": "adhesion_reformas_provincial",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "alineamiento_senadores_prov",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "apertura_comercial",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "bloqueo_sostenido",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "cepo_mulc",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "cohesion_bloque",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "concesiones_infraestructura",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "conflictividad_nacional",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "costo_financiamiento_tesoro",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "credito_privado",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "desafios_legislativos",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "desregulacion_normativa",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "eficacia_legislativa",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "fal_modernizacion_laboral",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "gasto_funcionamiento",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "iaf_transferencias",
+      "n_fuera": 5,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "iai",
+      "n_fuera": 2,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "icip",
+      "n_fuera": 3,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "idc",
+      "n_fuera": 1,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "idm",
+      "n_fuera": 1,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "ipi_manufacturero",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "libertad_opcion_salud",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "masa_salarial",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "presion_dolarizacion",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "privatizaciones",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "protocolo_antipiquetes",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "ratio_dnu",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "reduccion_estado",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "reestructuracion_organismos",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "rem_ipc_12m",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "reservas_bcra",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "resultado_primario",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "rigi_inversiones",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "tcrm",
+      "n_fuera": 1,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "veto_quorum",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    },
+    {
+      "indicador": "votometro_ventaja_lla",
+      "n_fuera": 0,
+      "motivo": "sin ventana fuera de muestra utilizable"
+    }
+  ]
+}
