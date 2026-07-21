@@ -303,6 +303,114 @@
         "convencion": 0.403
       },
       "share_circular": 0.403
+    },
+    "ITVC": {
+      "peso_total": 1.0000000000000002,
+      "categorias": {
+        "conceptual": 1.0000000000000002
+      },
+      "detalle": [
+        {
+          "indicador": "brecha_salario_cbt",
+          "categoria": "conceptual",
+          "peso": 0.2275,
+          "motivo": "rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123)"
+        },
+        {
+          "indicador": "informalidad",
+          "categoria": "conceptual",
+          "peso": 0.1225,
+          "motivo": "rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123)"
+        },
+        {
+          "indicador": "peso_tarifas",
+          "categoria": "conceptual",
+          "peso": 0.1125,
+          "motivo": "nivel de regulados vs salario rebaseado a 4T-2023; ancla en fecha fija"
+        },
+        {
+          "indicador": "ipc_alimentos",
+          "categoria": "conceptual",
+          "peso": 0.0875,
+          "motivo": "encarecimiento relativo rebaseado a 4T-2023 (ADR-0033); ancla en fecha fija"
+        },
+        {
+          "indicador": "icc_utdt",
+          "categoria": "conceptual",
+          "peso": 0.0675,
+          "motivo": "ICC rebaseado a 4T-2023; ancla en fecha fija"
+        },
+        {
+          "indicador": "mortalidad_pymes",
+          "categoria": "conceptual",
+          "peso": 0.054,
+          "motivo": "nivel del IPI desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"
+        },
+        {
+          "indicador": "alquiler_real",
+          "categoria": "conceptual",
+          "peso": 0.05,
+          "motivo": "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"
+        },
+        {
+          "indicador": "endeudamiento_familiar",
+          "categoria": "conceptual",
+          "peso": 0.05,
+          "motivo": "stock real rebaseado a 4T-2023; el tope conceptual de 140 (base+40, ADR-0033) le recorta el extremo, no lo calibra"
+        },
+        {
+          "indicador": "mora_familias",
+          "categoria": "conceptual",
+          "peso": 0.05,
+          "motivo": "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"
+        },
+        {
+          "indicador": "despacho_cemento",
+          "categoria": "conceptual",
+          "peso": 0.048,
+          "motivo": "nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"
+        },
+        {
+          "indicador": "inseguridad",
+          "categoria": "conceptual",
+          "peso": 0.045,
+          "motivo": "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"
+        },
+        {
+          "indicador": "indice_lider",
+          "categoria": "conceptual",
+          "peso": 0.03,
+          "motivo": "Índice Líder UTDT rebaseado a 4T-2023 (ADR-0112); ancla en fecha fija"
+        },
+        {
+          "indicador": "pluriempleo",
+          "categoria": "conceptual",
+          "peso": 0.018,
+          "motivo": "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"
+        },
+        {
+          "indicador": "consumo_carne",
+          "categoria": "conceptual",
+          "peso": 0.015,
+          "motivo": "consumo per cápita rebaseado a 4T-2023; ancla en fecha fija"
+        },
+        {
+          "indicador": "sentimiento_digital",
+          "categoria": "conceptual",
+          "peso": 0.015,
+          "motivo": "canasta de búsquedas rebaseada a 4T-2023, invertida (ADR-0034); ancla en fecha fija"
+        },
+        {
+          "indicador": "patentamiento_motos",
+          "categoria": "conceptual",
+          "peso": 0.0075,
+          "motivo": "móvil 12m rebaseado a 4T-2023 (ADR-0024); el tope conceptual de 140 le recorta el boom, no lo calibra"
+        }
+      ],
+      "share": {
+        "conceptual": 1.0
+      },
+      "share_circular": 0.0
     }
   },
   "sin_clasificar": []

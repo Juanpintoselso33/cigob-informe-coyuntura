@@ -127,6 +127,11 @@ def analizar():
 
     filas, descartados = [], []
     for ind, sig in sorted(indice_de.items()):
+        # El ITVC entró al registro de circularidad (ADR-0123) pero no tiene
+        # bandas, y este test aplica las bandas de hoy a los datos previos: no
+        # le corresponde. Se lo excluye acá, no en el registro.
+        if sig not in ESCALAS:
+            continue
         escala = ESCALAS[sig]
         if not escala.puntuable(ind):
             continue

@@ -4,7 +4,7 @@
     {
       "indicador": "ipc_total",
       "indice": "ITCM",
-      "procedencia": "sin_declarar",
+      "procedencia": "conceptual",
       "fuera_de_muestra": {
         "n": 28,
         "media": 19.4,
@@ -79,7 +79,7 @@
     {
       "indicador": "emae_ia",
       "indice": "ITCM",
-      "procedencia": "sin_declarar",
+      "procedencia": "conceptual",
       "fuera_de_muestra": {
         "n": 31,
         "media": 74.8,
@@ -104,7 +104,7 @@
     {
       "indicador": "recaudacion",
       "indice": "ITCM",
-      "procedencia": "sin_declarar",
+      "procedencia": "conceptual",
       "fuera_de_muestra": {
         "n": 27,
         "media": 53.6,
@@ -129,7 +129,7 @@
     {
       "indicador": "saldo_comercial_12m",
       "indice": "ITCM",
-      "procedencia": "sin_declarar",
+      "procedencia": "conceptual",
       "fuera_de_muestra": {
         "n": 19,
         "media": 54.8,

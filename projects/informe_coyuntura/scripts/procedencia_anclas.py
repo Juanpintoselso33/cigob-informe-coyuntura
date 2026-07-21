@@ -10,6 +10,8 @@ Este archivo es esa distinción, ejecutable. No elimina el sesgo —con 36 de 42
 indicadores sin historia previa a dic-2023, la calibración interna es
 irreducible— pero lo vuelve CONTABLE: cuánto del peso de cada índice descansa en
 anclas que sólo pueden validarse contra el período que se está midiendo.
+Cubre los cuatro índices: los tres por bandas (ITCM/ITCG/ITCP) y el ITVC
+base-100, que se clasifica por su ancla de rebase (ADR-0123).
 
 LAS CATEGORÍAS, de menor a mayor riesgo:
 
@@ -28,7 +30,7 @@ LAS CATEGORÍAS, de menor a mayor riesgo:
                   convención invisible.
 
 CÓMO SE LLENÓ: leyendo, uno por uno, los comentarios de BANDAS_* en itcm.py,
-itcg.py e itcp.py. Es una clasificación de CRITERIO y una primera pasada — el
+itcg.py e itcp.py, y las bases de rebase de itvc.py. Es una clasificación de CRITERIO y una primera pasada — el
 editor debería revisarla, sobre todo los casos marcados `convencion`, que son
 los que la auditoría pide vigilar.
 
@@ -44,6 +46,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 import itcm
 import itcg
 import itcp
+import itvc
 
 RAIZ = Path(__file__).resolve().parents[1]
 SALIDA = RAIZ / "output" / "procedencia_anclas.json"
@@ -83,6 +86,12 @@ TECHOS = {
     # gobierno hizo, calibrados contra lo que se observó.
     "ITCG": {"circular": 0.40, "sin_declarar": 0.01},
     "ITCP": {"circular": 0.40, "sin_declarar": 0.01},
+    # ITVC entró al registro el 2026-07-20 (ADR-0123) con 0% circular: al no
+    # tener bandas —cada componente se mide como distancia a la fecha fija
+    # 4T-2023— no hay cortes que calibrar contra el período. Techo en 0,01: si
+    # algún día un componente del ITVC pasara a anclarse al rango observado,
+    # tiene que verse.
+    "ITVC": {"circular": 0.01, "sin_declarar": 0.01},
 }
 
 # indicador → (categoría, de dónde sale). El segundo campo es lo que hace
@@ -137,13 +146,43 @@ PROCEDENCIA = {
     "adhesion_reformas_provincial": ("conceptual", "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"),
     "cohesion_bloque": ("convencion", "calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048)"),
     "conflictividad_nacional": ("convencion", "calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052)"),
+
+    # ── ITVC (ADR-0123) ──────────────────────────────────────────────────────
+    # El ITVC no tiene bandas: cada componente se rebasea a 100 = 4T-2023 y el
+    # índice promedia esos niveles. El ancla de TODOS es una FECHA FIJA (el
+    # arranque del mandato), no un rango observado, así que no hay dónde
+    # calibrar contra el período — son conceptuales por construcción. Es el
+    # único índice sin una sola ancla de convención. La winsorización a 140
+    # (base +40, ADR-0033) es un tope conceptual redondo, no calibrado al
+    # boom observado; toca a dos componentes y se anota en su motivo.
+    "brecha_salario_cbt": ("conceptual", "rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123)"),
+    "informalidad": ("conceptual", "rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123)"),
+    "ipc_alimentos": ("conceptual", "encarecimiento relativo rebaseado a 4T-2023 (ADR-0033); ancla en fecha fija"),
+    "peso_tarifas": ("conceptual", "nivel de regulados vs salario rebaseado a 4T-2023; ancla en fecha fija"),
+    "alquiler_real": ("conceptual", "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"),
+    "endeudamiento_familiar": ("conceptual", "stock real rebaseado a 4T-2023; el tope conceptual de 140 (base+40, ADR-0033) le recorta el extremo, no lo calibra"),
+    "mora_familias": ("conceptual", "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"),
+    "mortalidad_pymes": ("conceptual", "nivel del IPI desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"),
+    "despacho_cemento": ("conceptual", "nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"),
+    "pluriempleo": ("conceptual", "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"),
+    "indice_lider": ("conceptual", "Índice Líder UTDT rebaseado a 4T-2023 (ADR-0112); ancla en fecha fija"),
+    "icc_utdt": ("conceptual", "ICC rebaseado a 4T-2023; ancla en fecha fija"),
+    "sentimiento_digital": ("conceptual", "canasta de búsquedas rebaseada a 4T-2023, invertida (ADR-0034); ancla en fecha fija"),
+    "consumo_carne": ("conceptual", "consumo per cápita rebaseado a 4T-2023; ancla en fecha fija"),
+    "patentamiento_motos": ("conceptual", "móvil 12m rebaseado a 4T-2023 (ADR-0024); el tope conceptual de 140 le recorta el boom, no lo calibra"),
+    "inseguridad": ("conceptual", "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"),
 }
 
 
 def _indicadores_del_indice():
-    """{indicador: (sigla, peso_efectivo_nominal)} de los que PUNTÚAN hoy."""
+    """{indicador: (sigla, peso_efectivo_nominal)} de los que PUNTÚAN hoy.
+
+    El ITVC entra igual que los otros tres pese a no tener bandas: su
+    DIMENSIONES_ITVC tiene la misma forma (peso de dimensión × peso interno) y
+    sus componentes se clasifican por su ancla de rebase, no por cortes de banda
+    (ADR-0123)."""
     out = {}
-    for mod, sig in ((itcm, "ITCM"), (itcg, "ITCG"), (itcp, "ITCP")):
+    for mod, sig in ((itcm, "ITCM"), (itcg, "ITCG"), (itcp, "ITCP"), (itvc, "ITVC")):
         dims = getattr(mod, f"DIMENSIONES_{sig}")
         for dim in dims.values():
             peso_dim = dim["peso"]
