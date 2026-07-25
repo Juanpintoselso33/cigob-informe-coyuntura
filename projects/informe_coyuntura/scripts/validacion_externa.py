@@ -92,12 +92,21 @@ def _mensual(serie: list) -> dict:
     return {p["fecha"][:7]: p["valor"] for p in serie}
 
 
-def _cargar_series_itcm() -> dict:
+def cargar_series() -> dict:
     """Combina el snapshot publicado con los CSV locales recién descargados.
 
-    La validación corre antes que publicar.py: los CSV deben prevalecer para que
-    una serie nueva o actualizada entre en la reconstrucción sin perder puntos
-    históricos que todavía solo existan en el snapshot acumulado.
+    **Único punto de lectura de series de este módulo.** La validación corre
+    ANTES que publicar.py en el pipeline, así que `series.json` todavía es el
+    del día anterior: los CSV que acaba de escribir descargar_series.py tienen
+    que prevalecer, y el snapshot sólo aporta los puntos históricos que ya no
+    estén en los CSV.
+
+    Hasta 2026-07-25 sólo la reconstrucción del ITCM pasaba por acá y el resto
+    leía `series.json` crudo. Eso hacía que la matriz de redundancia se
+    calculara con las series de ayer y que el test que la compara contra una
+    reconstrucción viva fallara en el cron casi todas las noches
+    ("la matriz publicada mide 70 pares y la reconstrucción da 62"), con la
+    falla apareciendo recién en pytest, tres pasos después del cálculo.
     """
     acumuladas = json.loads(SERIES.read_text(encoding="utf-8"))
     for clave, puntos_frescos in publicar.build_series().items():
@@ -105,6 +114,11 @@ def _cargar_series_itcm() -> dict:
         por_fecha.update({p["fecha"]: p for p in puntos_frescos})
         acumuladas[clave] = [por_fecha[fecha] for fecha in sorted(por_fecha)]
     return acumuladas
+
+
+def _cargar_series_itcm() -> dict:
+    """Alias histórico de `cargar_series` (los tests lo monkeypatchean)."""
+    return cargar_series()
 
 
 def _movil12(vals: dict) -> dict:
@@ -157,7 +171,7 @@ def _indices_itvc_por_componente() -> dict:
     cómo los rebasan — el mismo motivo por el que existe
     `_valores_itcm_por_mes`.
     """
-    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    series = cargar_series()
     indices_por_comp = {}
     for comp, (skey, invertido, anual, ya_rebaseada) in COMPONENTES.items():
         vals = _mensual(series.get(skey) or [])
@@ -192,7 +206,7 @@ def _valores_itvc_por_mes() -> dict:
 
 def construir_series_itvc() -> tuple:
     """(serie ITVC completa, serie ITVC sin ICC, serie ICC) mensuales."""
-    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    series = cargar_series()
     indices_por_comp = _indices_itvc_por_componente()
     ult = max(max(v) for v in indices_por_comp.values() if v)
     itvc_full, itvc_sin_icc = {}, {}
@@ -514,7 +528,7 @@ def _valores_itcg_por_mes() -> dict:
     """{YYYY-MM: {indicador: valor crudo}} del ITCG. Lo comparten la
     reconstrucción y la matriz de redundancia, por la misma razón que en el
     ITCM: que no puedan divergir en qué componentes miran (ADR-0082)."""
-    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    series = cargar_series()
     valores_por_comp = {k: _mensual(series.get(k) or [])
                         for k in ITCG_SERIES if k not in ITCG_SERIE_NO_COMPARABLE}
     ult = max(max(v) for v in valores_por_comp.values() if v)
@@ -617,7 +631,7 @@ def construir_serie_itcp() -> dict:
     entra bloqueo_sostenido (tasa de normas desafiadas en pie), que le da a
     la dimensión "poder legislativo" una pata que sí mide 2024: los vetos
     sostenidos de sep/oct-2024 y la supervivencia del DNU 70."""
-    series = json.loads(SERIES.read_text(encoding="utf-8"))
+    series = cargar_series()
     m = lambda k: _mensual(series.get(k) or [])
     directos = {k: m(k) for k in ITCP_SERIES}
     ult = max(max(v) for v in directos.values() if v)
@@ -647,7 +661,7 @@ def _valores_itcp_por_mes(directos: dict | None = None, ult: str | None = None) 
     la eficacia legislativa (ADR-0070) ya aplicada. Compartido por la
     reconstrucción y la matriz de redundancia (ADR-0082)."""
     if directos is None or ult is None:
-        series = json.loads(SERIES.read_text(encoding="utf-8"))
+        series = cargar_series()
         directos = {k: _mensual(series.get(k) or []) for k in ITCP_SERIES}
         ult = max(max(v) for v in directos.values() if v)
         hoy = datetime.now(timezone.utc)
@@ -971,7 +985,7 @@ def main():
     print(f"\nserie ITCG reconstruida: {len(serie_itcg)} meses "
           f"({min(serie_itcg)} → {max(serie_itcg)}) · último: {serie_itcg[max(serie_itcg)]}")
     resultados["serie_itcg"] = serie_itcg
-    series_json = json.loads(SERIES.read_text(encoding="utf-8"))
+    series_json = cargar_series()
     icg = _mensual(series_json.get("icg_utdt") or [])
     riesgo = resultados.get("riesgo_pais_mensual") or {}
     pares_g = {}

@@ -81,6 +81,11 @@ def test_reconstruccion_itcp_mascara_de_era_para_eficacia(monkeypatch, tmp_path)
         ],
     }), encoding="utf-8")
     monkeypatch.setattr(validacion_externa, "SERIES", snapshot)
+    # Desde 2026-07-25 la carga de series FUSIONA el snapshot con los CSV
+    # locales (ver validacion_externa.cargar_series). Aislar sólo SERIES ya no
+    # alcanza: sin esto el test lee los CSV reales del repo y ve todos los
+    # meses del mandato en vez de los dos que declara.
+    monkeypatch.setattr(validacion_externa.publicar, "build_series", lambda: {})
     recibidos = {}
 
     def calcular(valores):
