@@ -51,6 +51,30 @@ INDEC_RECAUDACION_ID = "172.3_TL_RECAION_M_0_0_17"     # Recaudación total mens
 HACIENDA_RESULTADO_PRIMARIO_ID = "452.3_RESULTADO_RIO_0_M_18_54"
 INDEC_TCRM_ID        = "116.3_TCRMA_0_M_36"            # Tipo de Cambio Real Multilateral (base 2010=100)
 
+# EMAE — apertura sectorial, base 2004 (dataset "Estimador Mensual de Actividad
+# Económica (EMAE). Apertura Sectorial"). Son los 15 SECTORES de actividad; el
+# dataset trae una 16ª serie, "Subsidios netos" (11.3_IF_2004_M_25), que NO se
+# incluye porque es un componente de la agregación (impuestos netos de
+# subsidios), no una actividad económica. Publican el mismo mes que el EMAE
+# agregado, así que la difusión no agrega rezago (ADR-0124).
+INDEC_EMAE_SECTORES = {
+    "11.3_ISOM_2004_M_39":  "Agricultura, ganadería, caza y silvicultura",
+    "11.3_VIPAA_2004_M_5":  "Pesca",
+    "11.3_ISD_2004_M_26":   "Explotación de minas y canteras",
+    "11.3_VMASD_2004_M_23": "Industria manufacturera",
+    "11.3_ITC_2004_M_21":   "Electricidad, gas y agua",
+    "11.3_VMATC_2004_M_12": "Construcción",
+    "11.3_AGCS_2004_M_41":  "Comercio mayorista, minorista y reparaciones",
+    "11.3_P_2004_M_20":     "Hoteles y restaurantes",
+    "11.3_EMC_2004_M_25":   "Transporte, almacenamiento y comunicaciones",
+    "11.3_IM_2004_M_25":    "Intermediación financiera",
+    "11.3_SEGA_2004_M_48":  "Inmobiliarias, empresariales y alquiler",
+    "11.3_C_2004_M_60":     "Administración pública, defensa y seguridad social",
+    "11.3_CMMR_2004_M_10":  "Enseñanza",
+    "11.3_HR_2004_M_24":    "Servicios sociales (salud)",
+    "11.3_TAC_2004_M_60":   "Servicios comunitarios",
+}
+
 # Capítulo Inversión — IAI (físico/tradicional) e ICIP (digital/intangible)
 INDEC_ISAC_NIVEL_ID  = "33.2_ISAC_NIVELRAL_0_M_18_63"  # ISAC nivel general (índice 2004=100) → i.a.
 INDEC_BK_IMPO_ID     = "74.3_IIBCA_0_M_32"             # Importación de bienes de capital (M USD) → i.a.
@@ -86,7 +110,8 @@ logging.basicConfig(level=logging.WARNING, format="%(message)s")
 CINTURON = "macro"
 INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
-    "emae_ia", "ipi_manufacturero", "saldo_comercial_12m", "recaudacion", "tcrm",
+    "emae_ia", "emae_difusion", "ipi_manufacturero", "saldo_comercial_12m",
+    "recaudacion", "tcrm",
     "rem_ipc_12m", "idm", "presion_dolarizacion", "iai", "icip",
     "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
     "costo_financiamiento_tesoro", "resultado_primario",
@@ -610,6 +635,108 @@ def fetch_emae_ia() -> dict | None:
         }
     except Exception as e:
         _warn("emae_ia", e)
+        return None
+
+
+def _emae_sectores_niveles(limit: int = 300) -> dict:
+    """{id_serie: {YYYY-MM: nivel}} de los 15 sectores del EMAE.
+
+    UNA sola llamada con los 15 ids (la API los acepta separados por coma): 15
+    requests sueltos serían 15 golpes a datos.gob.ar por corrida.
+
+    El orden de las columnas se lee del `meta` de la respuesta, NO del orden en
+    que se pidieron. Hoy la API los devuelve alineados, pero nada del contrato
+    lo garantiza, y un desalineo silencioso asignaría la variación de un sector
+    a otro sin que ningún gate lo note.
+    """
+    ids = list(INDEC_EMAE_SECTORES)
+    params = {"ids": ",".join(ids), "format": "json", "limit": limit, "sort": "desc"}
+    r = requests.get(INDEC_SERIES_BASE, params=params,
+                     headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    payload = r.json()
+
+    columnas = [m["field"]["id"] for m in payload["meta"] if "field" in m]
+    if sorted(columnas) != sorted(ids):
+        raise ValueError(
+            f"la API devolvió {len(columnas)} series y se pidieron {len(ids)}")
+
+    niveles = {sid: {} for sid in columnas}
+    for fila in payload["data"]:
+        ym = fila[0][:7]
+        for sid, val in zip(columnas, fila[1:]):
+            if val is not None:
+                niveles[sid][ym] = float(val)
+    return niveles
+
+
+def _emae_difusion_por_mes(limit: int = 300) -> tuple[dict, dict]:
+    """Difusión sectorial del EMAE, mes a mes.
+
+    Devuelve ({YYYY-MM: % de sectores creciendo i.a.},
+              {YYYY-MM: {nombre_sector: % i.a.}}).
+
+    La comparación es INTERANUAL y por CALENDARIO (mismo mes del año anterior),
+    no por posición en la lista: las series son originales, sin desestacionalizar,
+    así que el interanual es la única variación que no arrastra estacionalidad.
+    Un mes sólo se emite si los 15 sectores tienen dato — una difusión calculada
+    sobre 12 sectores no es comparable con una calculada sobre 15.
+    """
+    niveles = _emae_sectores_niveles(limit=limit)
+    meses = sorted(set().union(*(set(s) for s in niveles.values())))
+
+    difusion, detalle = {}, {}
+    for ym in meses:
+        previo = f"{int(ym[:4]) - 1}{ym[4:]}"
+        variaciones = {}
+        for sid, serie in niveles.items():
+            if ym in serie and previo in serie and serie[previo]:
+                variaciones[INDEC_EMAE_SECTORES[sid]] = round(
+                    (serie[ym] / serie[previo] - 1) * 100, 2)
+        if len(variaciones) != len(INDEC_EMAE_SECTORES):
+            continue
+        crecen = sum(1 for v in variaciones.values() if v > 0)
+        difusion[ym] = round(crecen / len(variaciones) * 100, 2)
+        detalle[ym] = variaciones
+    return difusion, detalle
+
+
+def fetch_emae_difusion() -> dict | None:
+    """% de los 15 sectores del EMAE que crecen interanualmente (ADR-0124).
+
+    Responde lo que el agregado no puede: si el crecimiento es generalizado o
+    está concentrado en pocos sectores. En may-2026 el EMAE marca +0,2% i.a.
+    —prácticamente nada— mientras 8 de 15 sectores crecen, traccionados por
+    minas y canteras (+15,7%) y energía (+8,0%), con la industria en −5,6% y
+    el comercio en −4,3%.
+    """
+    try:
+        difusion, detalle = _emae_difusion_por_mes(limit=30)
+        ym = max(difusion)
+        variaciones = detalle[ym]
+        crecen = sorted((v, n) for n, v in variaciones.items() if v > 0)
+        caen = sorted((v, n) for n, v in variaciones.items() if v <= 0)
+        return {
+            "valor": difusion[ym],
+            "unidad": "% de sectores en crecimiento i.a.",
+            "fuente": "INDEC — EMAE apertura sectorial (vía datos.gob.ar)",
+            "fecha_dato": f"{ym}-01",
+            "desactualizado": False,
+            "sectores_totales": len(variaciones),
+            "sectores_crecen": len(crecen),
+            "sectores_por_variacion": [
+                {"sector": n, "var_ia": v} for v, n in sorted(
+                    ((v, n) for n, v in variaciones.items()), reverse=True)
+            ],
+            "detalle_txt": (
+                f"{len(crecen)} de {len(variaciones)} sectores crecen"
+                + (f" · lidera {crecen[-1][1]} ({str(crecen[-1][0]).replace('.', ',')}%)"
+                   if crecen else "")
+                + (f" · el que más cae es {caen[0][1]} "
+                   f"({str(caen[0][0]).replace('.', ',')}%)" if caen else "")),
+        }
+    except Exception as e:
+        _warn("emae_difusion", e)
         return None
 
 
@@ -1552,6 +1679,7 @@ def main() -> None:
         ("idc",                fetch_idc),
         ("badlar",             fetch_badlar),
         ("emae_ia",            fetch_emae_ia),
+        ("emae_difusion",      fetch_emae_difusion),
         ("ipi_manufacturero",  fetch_ipi_manufacturero),
         ("saldo_comercial_12m", fetch_saldo_comercial_12m),
         ("recaudacion",        fetch_recaudacion),

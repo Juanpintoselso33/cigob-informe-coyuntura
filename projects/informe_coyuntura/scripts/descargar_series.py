@@ -332,6 +332,18 @@ def fetch_emae_ia_serie() -> list:
     return [[f, round(v * 100, 2)] for f, v in sorted(fetch_indec("143.3_ICE_SERVIA_2004_A_25", limit=60))]
 
 
+def fetch_emae_difusion_serie() -> list:
+    """Difusión sectorial del EMAE: % de los 15 sectores que crecen i.a.
+
+    Misma construcción que puntúa en la ficha (macro._emae_difusion_por_mes),
+    reconstruida desde dic-2023. La serie completa arranca en 2005 —los
+    sectores publican desde 2004 y el interanual necesita 12 meses— así que el
+    backfill del mandato está cubierto de punta a punta, sin huecos.
+    [[YYYY-MM-01, %]]."""
+    difusion, _ = macro._emae_difusion_por_mes(limit=5000)
+    return [[f"{ym}-01", v] for ym, v in sorted(difusion.items()) if ym >= "2023-12"]
+
+
 def fetch_ipi_serie() -> list:
     """IPI manufacturero: variación i.a. suavizada a 3 meses (ADR-0076), la
     misma construcción que puntúa en la ficha. [[YYYY-MM-01, %]]."""
@@ -469,6 +481,8 @@ def fetch_resultado_primario_serie() -> list:
 MACRO_DERIVADAS = [
     ("ipc_total", "% mensual", "INDEC (derivado del nivel del IPC)", fetch_ipc_mm_serie),
     ("emae_ia", "% i.a.", "INDEC/datos.gob.ar", fetch_emae_ia_serie),
+    ("emae_difusion", "% de sectores en crecimiento i.a.",
+     "INDEC — EMAE apertura sectorial (vía datos.gob.ar)", fetch_emae_difusion_serie),
     ("ipi_manufacturero", "% i.a. (promedio 3 meses)", "INDEC — IPI manufacturero (vía datos.gob.ar)", fetch_ipi_serie),
     # acompaña al IPC general en el modal, no puntúa (ADR-0077)
     ("ipc_nucleo", "% mensual", "INDEC — IPC núcleo nacional (vía datos.gob.ar)", fetch_ipc_nucleo_serie),

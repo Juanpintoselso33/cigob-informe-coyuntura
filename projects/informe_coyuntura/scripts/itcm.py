@@ -172,6 +172,27 @@ BANDAS_ITCM = {
         (5.0, INF, 100), (3.0, 5.0, 80), (0.0, 3.0, 60),
         (-2.0, 0.0, 40), (-5.0, -2.0, 20), (-INF, -5.0, 5),
     ],
+    "emae_difusion": [                  # % de los 15 sectores del EMAE que crecen i.a.
+        # Cortes por CANTIDAD DE SECTORES, no por porcentaje redondo: con 15
+        # sectores el indicador sólo puede tomar 16 valores (múltiplos de 6,67),
+        # así que los límites se ponen en el hueco entre dos valores alcanzables
+        # (30 = entre 4 y 5 sectores, 50 = entre 7 y 8, 70 = entre 10 y 11,
+        # 90 = entre 13 y 14). Cada banda es una lectura entera:
+        #   14-15 → crecimiento generalizado · 11-13 → mayoría amplia
+        #   8-10  → mayoría ajustada         · 5-7   → minoría creciendo
+        #   0-4   → contracción generalizada
+        #
+        # NO se ancla en el 50% "de manual" (la línea de los índices de difusión
+        # tipo ISM): sobre 257 meses de historia argentina la MEDIANA es 73,3 y
+        # la mitad de los meses tiene 12 o más sectores creciendo. Un corte en 50
+        # habría dado puntaje alto a la mitad inferior de la distribución. Los
+        # cortes elegidos reparten 21/33/23/16/6% sobre la historia completa y
+        # 23/34/22/14/7% pre-mandato: las CINCO bandas pobladas con datos reales
+        # (criterio ADR-0042 — nace discriminando, no hay que recalibrarlo
+        # después). En el mandato actual reparte 3/30/33/33/0%.
+        (90.0, INF, 100), (70.0, 90.0, 80), (50.0, 70.0, 60),
+        (30.0, 50.0, 35), (-INF, 30.0, 10),
+    ],
     "ipi_manufacturero": [              # % i.a. suavizado 3m — MISMAS bandas que el EMAE
         # ADR-0076 + ADR-0079: se usan las bandas del EMAE a propósito, PERO no
         # porque los rangos sean parecidos (no lo son: sobre la misma ventana el
@@ -296,7 +317,15 @@ DIMENSIONES_ITCM = {
         # al IPI sobre-expone la dimensión a un solo sector: al 20% la
         # exposición total a manufactura queda en 34%, el doble de su peso
         # natural, que es lo máximo defendible para un componente de respaldo.
-        "indicadores": {"emae_ia": 0.80, "ipi_manufacturero": 0.20},
+        #
+        # ADR-0124 (2026-07-25): entra emae_difusion con 0,20, tomado ENTERO del
+        # peso del EMAE agregado (0,80 → 0,60). La composición por FUENTE de la
+        # dimensión no cambia —el EMAE sigue aportando el 80% y el IPI el 20%—,
+        # lo que cambia es que ese 80% pasa a leerse en dos registros: cuánto
+        # crece la actividad (nivel) y en cuántos sectores crece (amplitud). El
+        # IPI no se toca: sigue siendo el único respaldo de fuente distinta.
+        "indicadores": {"emae_ia": 0.60, "emae_difusion": 0.20,
+                        "ipi_manufacturero": 0.20},
     },
     "competitividad_externa": {
         "nombre": "Competitividad externa",

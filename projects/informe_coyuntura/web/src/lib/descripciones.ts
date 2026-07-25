@@ -37,6 +37,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Adelanta el ritmo del PBI: si la economía se expande o se contrae.",
     frecuencia: "Mensual", tipo: "Variación i.a.",
   },
+  emae_difusion: {
+    que: "De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás.",
+    aporta: "Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El EMAE informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.",
+    frecuencia: "Mensual", tipo: "Índice de difusión",
+  },
   ipi_manufacturero: {
     que: "Cuánto produce la industria manufacturera respecto de un año atrás, promediado en tres meses.",
     aporta: "Segunda lectura de la actividad, junto al EMAE: mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.",

@@ -374,6 +374,48 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original como única variable de actividad; su peso de dimensión bajó de 15% a 13% y luego a 11% al incorporarse las dimensiones de competitividad e inversión." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-18", cambio: "Deja de ser la única variable de la dimensión: pasa a pesar 65% junto al IPI manufacturero (35%)." },
+      { fecha: "2026-07-25", cambio: "Su peso dentro de la dimensión baja de 80% a 60% al incorporarse la amplitud del crecimiento, que lee la misma fuente en su apertura por sectores." },
+    ],
+  },
+
+  emae_difusion: {
+    tipo: "indicador",
+    id: "emae_difusion",
+    cinturon: "macro",
+    rezago: "Se publica junto con el EMAE agregado, hacia fines del segundo mes siguiente al de referencia (~2 meses). La apertura sectorial sale el mismo día que el nivel general, de modo que este indicador no agrega rezago sobre el que ya tiene la dimensión.",
+    fuente: {
+      organismo: "INDEC",
+      operacion: "EMAE — Estimador Mensual de Actividad Económica, apertura sectorial (índices por sector, base 2004)",
+      serie: "15 series del dataset 11.3 · API de Series de Tiempo (datos.gob.ar)",
+      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-9-48",
+      acceso: "Automático: API pública de series de tiempo de datos.gob.ar, en una única consulta con las quince series.",
+    },
+    transformaciones: [
+      "Para cada uno de los quince sectores se calcula la variación contra el mismo mes del año anterior, sobre el índice original.",
+      "Se cuenta cuántos sectores tienen variación positiva y se expresa como porcentaje del total.",
+      "Un mes sólo se publica si los quince sectores tienen dato: una difusión calculada sobre doce sectores no sería comparable con una calculada sobre quince.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "> 90 (14-15 sectores)", puntaje: 100 },
+        { banda: "70 – 90 (11-13 sectores)", puntaje: 80 },
+        { banda: "50 – 70 (8-10 sectores)", puntaje: 60 },
+        { banda: "30 – 50 (5-7 sectores)", puntaje: 35 },
+        { banda: "≤ 30 (0-4 sectores)", puntaje: 10 },
+      ],
+      puntos: [[30, 10], [40, 35], [60, 60], [80, 80], [90, 100]],
+      unidadCorta: "% sectores",
+    },
+    limitaciones: [
+      "Todos los sectores pesan igual: un mes en que crece la pesca cuenta lo mismo que uno en que crece la industria manufacturera, que es varias veces mayor. Ponderar por participación daría una lectura distinta y exigiría una fuente adicional de estructura sectorial.",
+      "Sólo mira el signo de la variación, no su magnitud: un sector que crece 0,1% y otro que crece 15% cuentan igual. Es lo que hace al indicador robusto —no lo mueve un valor extremo— y a la vez lo que le impide distinguir un crecimiento débil de uno fuerte, que es lo que mide el EMAE agregado.",
+      "Comparte fuente con el EMAE agregado, con el que correlaciona 0,84 en niveles a lo largo de 257 meses. Aporta señal propia sobre todo cuando el agregado está cerca de cero: en mayo de 2026 la actividad varió 0,2% y la difusión mostró que sólo ocho de quince sectores crecían.",
+      "Los sectores del EMAE son quince categorías amplias; una de ellas, la industria manufacturera, agrupa por sí sola actividades muy distintas entre sí.",
+    ],
+    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros dos indicadores de la dimensión.",
+    revisiones: "El INDEC revisa las series sectoriales hacia atrás junto con el EMAE agregado; el informe regenera la serie completa en cada actualización, de modo que una revisión puede cambiar retroactivamente el conteo de un mes ya publicado.",
+    cambios: [
+      { fecha: "2026-07-25", cambio: "Entra al índice con 20% de la dimensión de actividad, tomado del peso del EMAE agregado. La serie se reconstruyó completa desde 2005." },
     ],
   },
 

@@ -237,6 +237,7 @@ export const LABELS: Record<string, string> = {
   ipc_total: "Inflación mensual (IPC)", reservas_bcra: "Reservas netas",
   idc: "Capacidad prestable (IdC)", badlar: "Tasa BADLAR",
   emae_ia: "Actividad económica (EMAE i.a.)",
+  emae_difusion: "Amplitud del crecimiento (sectores en alza)",
   ipi_manufacturero: "Producción industrial (IPI i.a.)",
   ipc_nucleo: "Inflación núcleo", pobreza_indec: "Pobreza (oficial, INDEC)",
   cuenta_corriente: "Cuenta corriente",
@@ -320,6 +321,7 @@ export function aclaracion(b: Bucket, ind: Indicador): string | null {
 export const UNIDADES_CORTAS: Record<string, string> = {
   // macro
   ipc_total: "%", reservas_bcra: "US$ M netas", idc: "índice", badlar: "%", emae_ia: "% i.a.",
+  emae_difusion: "% sectores",
   ipi_manufacturero: "% i.a.", ipc_nucleo: "%", cuenta_corriente: "US$ M", pobreza_indec: "%",
   saldo_comercial_12m: "US$ M", recaudacion: "% i.a. real", tcrm: "índice", rem_ipc_12m: "%",
   idm: "pp", presion_dolarizacion: "pts",
@@ -363,6 +365,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   ipc_total: "% mensual", reservas_bcra: "Millones de USD",
   idc: "Desvíos estándar vs. su historia (σ)",
   badlar: "% anual", emae_ia: "% interanual",
+  emae_difusion: "% de los 15 sectores del EMAE que crecen interanualmente",
   ipi_manufacturero: "% interanual (promedio 3 meses)", ipc_nucleo: "% mensual",
   pobreza_indec: "% de personas (medición oficial semestral)",
   cuenta_corriente: "millones de dólares (acumulado 4 trimestres)",

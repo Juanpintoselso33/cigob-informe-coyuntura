@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-20 18:40:32"
+generado: "2026-07-25 16:04:26"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -13,31 +13,32 @@ schema_version: "1.2.0"
 
 ## Cinturones
 
-### 🟡 Macro — score 3.8/10 (en_tension)
+### 🟡 Macro — score 3.9/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ipc_total | 1.89 | % mensual | 2026-06-01 | fresco |
-| reservas_bcra | 4122.0 | Millones de USD | 2026-05-31 | fresco |
+| reservas_bcra | 4885.0 | Millones de USD | 2026-06-30 | fresco |
 | idc | -0.24 | σ vs. su historia | 2026-06-01 | fresco |
-| badlar | 21.0 | % anual | 2026-07-16 | fresco |
-| emae_ia | 1.64 | % i.a. | 2026-04-01 | fresco |
+| badlar | 22.19 | % anual | 2026-07-23 | fresco |
+| emae_ia | 0.24 | % i.a. | 2026-05-01 | fresco |
+| emae_difusion | 53.33 | % de sectores en crecimiento i.a. | 2026-05-01 | fresco |
 | ipi_manufacturero | -1.07 | % i.a. (promedio 3 meses) | 2026-05-01 | fresco |
-| saldo_comercial_12m | 21221.0 | Millones de USD (acum. 12 meses) | 2026-05-01 | fresco |
+| saldo_comercial_12m | 22481.0 | Millones de USD (acum. 12 meses) | 2026-06-01 | fresco |
 | recaudacion | -3.16 | % i.a. real (prom. móvil 3 meses) | 2026-06-01 | fresco |
-| tcrm | 84.98 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
+| tcrm | 84.97 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
 | rem_ipc_12m | 22.3 | % anual esperado | 2026-06-30 | fresco |
-| idm | 6.37 | pp (brecha i.a. real) | 2026-06-01 | fresco |
+| idm | 6.23 | pp (brecha i.a. real) | 2026-06-01 | fresco |
 | presion_dolarizacion | 49.82 | pts (0-100) | 2026-05-01 | fresco |
 | iai | 0.31 | % i.a. ponderado | 2026-05-01 | fresco |
 | icip | 8.3 | % i.a. ponderado | 2026-04-01 | fresco |
-| credito_privado | 8.0 | % i.a. real | 2026-06-01 | fresco |
+| credito_privado | 7.7 | % i.a. real | 2026-06-01 | fresco |
 | costo_financiamiento_tesoro | 8.07 | % real anual (TIREA vs. inflación esperada REM) | 2026-06-01 | fresco |
-| resultado_primario | 6.39 | % de la recaudación (acum. 12 meses) | 2026-05-01 | fresco |
-| prestamos_privados | 2.78 | % mensual nominal | 2026-07-15 | fresco |
-| base_monetaria | 3.37 | % mensual nominal | 2026-07-15 | fresco |
-| tc_mayorista | 1.36 | % mensual | 2026-07-17 | fresco |
+| resultado_primario | 5.55 | % de la recaudación (acum. 12 meses) | 2026-06-01 | fresco |
+| prestamos_privados | 1.34 | % mensual nominal | 2026-07-22 | fresco |
+| base_monetaria | 3.59 | % mensual nominal | 2026-07-22 | fresco |
+| tc_mayorista | 1.33 | % mensual | 2026-07-24 | fresco |
 
 ### 🟡 Politica — score 3.1/10 (en_tension)
 *Riesgo de barbarismo: político*
@@ -105,4 +106,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-20 18:40:32 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-25 16:04:26 — schema 1.2.0*

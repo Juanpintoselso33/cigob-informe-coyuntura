@@ -22,8 +22,15 @@ def _dim():
 
 
 def test_el_emae_manda_por_amplio_margen():
+    """Desde ADR-0124 el EMAE aporta dos indicadores —nivel (emae_ia) y amplitud
+    (emae_difusion)—, así que el criterio se verifica sobre la FAMILIA EMAE y no
+    sobre emae_ia solo: lo que ADR-0079 protege es que la dimensión no quede
+    dominada por la única fuente que mide un solo sector."""
     ind = _dim()
-    assert ind["emae_ia"] > 3 * ind["ipi_manufacturero"], ind
+    emae = ind["emae_ia"] + ind.get("emae_difusion", 0.0)
+    assert emae > 3 * ind["ipi_manufacturero"], ind
+    # y el nivel sigue siendo la lectura principal dentro de la familia
+    assert ind["emae_ia"] > ind.get("emae_difusion", 0.0), ind
 
 
 def test_la_exposicion_a_manufactura_no_pasa_del_doble_de_su_peso_natural():
