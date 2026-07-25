@@ -201,8 +201,24 @@ DIMENSIONES_ITCG = {
         # ADR-0023: instrumento (Fondo de Cese, adopción) + resultado
         # (litigiosidad SRT enfriándose) — antes la dimensión descansaba en
         # un único indicador.
-        "indicadores": {"fal_modernizacion_laboral": 0.70,
-                        "litigiosidad_laboral": 0.30},
+        #
+        # ADR-0128 (2026-07-25): pasa de 70/30 a 50/50 a propuesta de la
+        # revisión externa del cinturón. El argumento es conceptual y no un
+        # ajuste de resultado: el par que la dimensión mide es instrumento y
+        # resultado, y no hay razón para que el instrumento pese 2,3 veces al
+        # resultado. Al contrario — un fondo bien construido que nadie use no
+        # es una reforma laboral, y la litigiosidad es lo único que dice si
+        # algo cambió en los hechos.
+        #
+        # HONESTIDAD SOBRE EL EFECTO: el cambio MEJORA el puntaje. La
+        # litigiosidad puntúa 59,4 y el FAL 30,8, así que subirle el peso al
+        # primero sube la dimensión de 39,4 a 45,1 y el ITCG de 71,7 a 72,5.
+        # No se puede invocar "el efecto es neutro" como defensa. La
+        # justificación es únicamente conceptual —instrumento y resultado
+        # pesan igual— y viene de una revisión externa, no de mirar el número.
+        # Queda escrito acá y en la ficha para que se pueda discutir.
+        "indicadores": {"fal_modernizacion_laboral": 0.50,
+                        "litigiosidad_laboral": 0.50},
     },
     "privatizaciones_inversion": {
         "nombre": "Privatizaciones e inversión",

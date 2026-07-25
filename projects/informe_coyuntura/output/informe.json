@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-25T18:34:32.881642",
+  "generated_at": "2026-07-25T19:10:43.114357",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -1087,7 +1087,10 @@
           "dotacion_dic23": 231305,
           "var_empresas_publicas": -20.24,
           "var_universo_completo": -19.94,
-          "detalle_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023 · sin contar empresas del Estado, que por su lado varían -20,24%; el universo completo varía -19,94%",
+          "var_fuerzas_seguridad": -15.24,
+          "var_planta_civil": -19.0,
+          "fecha_desglose_fuerzas": "2026-02",
+          "detalle_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023 · sin contar empresas del Estado, que por su lado varían -20,24%; el universo completo varía -19,94% · incluye fuerzas armadas y de seguridad, que son ~10% de la dotación y se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02)",
           "en_indice": true,
           "dimension": "reforma_estado",
           "puntaje_itcg": 100.0,
@@ -1156,7 +1159,7 @@
           "dimension": "reforma_laboral",
           "puntaje_itcg": 30.8,
           "puntaje_banda": 30.8,
-          "peso_efectivo": 0.105
+          "peso_efectivo": 0.075
         },
         "litigiosidad_laboral": {
           "valor": 2.8,
@@ -1170,7 +1173,7 @@
           "dimension": "reforma_laboral",
           "puntaje_itcg": 59.4,
           "puntaje_banda": 59.4,
-          "peso_efectivo": 0.045
+          "peso_efectivo": 0.075
         },
         "privatizaciones": {
           "valor": 51.4,
@@ -1373,8 +1376,8 @@
           "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
           "fecha_dato": "2026-07-25",
           "desactualizado": false,
-          "dias_muestreados_mes": 20,
-          "detalle_txt": "0 alertas en 20 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+          "dias_muestreados_mes": 24,
+          "detalle_txt": "0 alertas en 24 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
           "en_indice": false
         },
         "protestas_caba": {
@@ -1391,7 +1394,7 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 71.7,
+        "valor": 72.5,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -1463,21 +1466,21 @@
           "reforma_laboral": {
             "nombre": "Reforma laboral",
             "peso": 0.15,
-            "puntaje": 39.4,
+            "puntaje": 45.1,
             "indicadores": {
               "fal_modernizacion_laboral": {
-                "peso": 0.7,
+                "peso": 0.5,
                 "puntaje_banda": 30.8,
                 "puntaje_aplicado": 30.8,
                 "valor": 40.2,
-                "peso_efectivo": 0.105
+                "peso_efectivo": 0.075
               },
               "litigiosidad_laboral": {
-                "peso": 0.3,
+                "peso": 0.5,
                 "puntaje_banda": 59.4,
                 "puntaje_aplicado": 59.4,
                 "valor": 2.8,
-                "peso_efectivo": 0.045
+                "peso_efectivo": 0.075
               }
             },
             "peso_efectivo": 0.15

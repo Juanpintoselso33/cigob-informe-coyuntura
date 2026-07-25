@@ -769,7 +769,47 @@ def dotacion_apn_series() -> dict:
         raise ValueError("XLSX INDEC: baseline dic-2023 ausente de la serie")
     serie["_empresas"] = _serie_de(_fila("empresas y sociedades"))
     serie["_total"] = _serie_de(_fila("total"))
+    serie["_fuerzas"] = _dotacion_fuerzas(wb)
     return serie
+
+
+# Las siete entidades de fuerzas armadas y de seguridad que informan al padrón
+# (ADR-0128). Están DENTRO de la dotación APN que puntúa el indicador, cosa que
+# la revisión externa preguntó y que no estaba escrita en ningún lado.
+_ENTES_FUERZAS = ("estado mayor", "gendarmería nacional", "gendarmeria nacional",
+                  "prefectura naval", "policía de seguridad aerop",
+                  "policia de seguridad aerop")
+
+
+def _dotacion_fuerzas(wb) -> dict:
+    """{YYYY-MM: dotación de fuerzas armadas y de seguridad} desde la hoja de
+    detalle por entidad.
+
+    Se publica como CONTEXTO, no se descuenta: las fuerzas son parte del Estado
+    y sacarlas del denominador sería una decisión editorial que hay que
+    justificar aparte. Lo que hace falta es que se vea.
+
+    La hoja de detalle va uno o dos meses ATRÁS del cuadro principal, así que
+    esta serie termina antes que la del indicador — por eso se publica con su
+    propia fecha y no se fuerza a coincidir.
+    """
+    hoja = next((s for s in wb.sheetnames if s.strip().lower() == "detalle2"), None)
+    if hoja is None:
+        return {}
+    filas = list(wb[hoja].iter_rows(values_only=True))
+    if len(filas) < 4:
+        return {}
+    meses = {j: ym for j, c in enumerate(filas[2])
+             if (ym := _parse_ym_celda(c))}
+    out = {}
+    for f in filas[3:]:
+        entidad = str(f[1] or "").strip().lower()
+        if not any(k in entidad for k in _ENTES_FUERZAS):
+            continue
+        for j, ym in meses.items():
+            if j < len(f) and isinstance(f[j], (int, float)):
+                out[ym] = out.get(ym, 0.0) + float(f[j])
+    return out
 
 
 def fetch_reduccion_estado() -> dict | None:
@@ -784,6 +824,7 @@ def fetch_reduccion_estado() -> dict | None:
         serie = dotacion_apn_series()
         empresas = serie.pop("_empresas", {})
         total = serie.pop("_total", {})
+        fuerzas = serie.pop("_fuerzas", {})
         ult = max(serie)
         base = serie["2023-12"]
         var_pct = round((serie[ult] - base) / base * 100.0, 2)
@@ -795,6 +836,23 @@ def fetch_reduccion_estado() -> dict | None:
             return None
 
         var_empresas, var_total = _var(empresas), _var(total)
+
+        # Fuerzas armadas y de seguridad (ADR-0128): están DENTRO del número
+        # que puntúa. Su hoja de detalle va uno o dos meses atrás del cuadro
+        # principal, así que se compara en el último mes que ambas tienen —
+        # comparar meses distintos daría una planta civil inventada.
+        var_fuerzas = var_civil = fecha_fuerzas = None
+        comunes = sorted(set(serie) & set(fuerzas))
+        if comunes and "2023-12" in fuerzas:
+            fu = comunes[-1]
+            fecha_fuerzas = fu
+            var_fuerzas = round(
+                (fuerzas[fu] - fuerzas["2023-12"]) / fuerzas["2023-12"] * 100.0, 2)
+            civ_b = serie["2023-12"] - fuerzas["2023-12"]
+            civ_u = serie[fu] - fuerzas[fu]
+            if civ_b:
+                var_civil = round((civ_u - civ_b) / civ_b * 100.0, 2)
+
         return {
             "valor":          var_pct,
             "unidad":         "% de variación vs dic-2023 (dotación APN)",
@@ -809,12 +867,24 @@ def fetch_reduccion_estado() -> dict | None:
             # conviene mostrar.
             "var_empresas_publicas": var_empresas,
             "var_universo_completo": var_total,
+            # ADR-0128: la revisión externa preguntó si el denominador incluye
+            # fuerzas armadas y de seguridad. Sí las incluye —siete entes, ~10%
+            # de la dotación— y se publica cuánto cambia la lectura sin ellas.
+            "var_fuerzas_seguridad": var_fuerzas,
+            "var_planta_civil": var_civil,
+            "fecha_desglose_fuerzas": fecha_fuerzas,
             "detalle_txt": (
                 f"{miles(serie[ult])} agentes ({ult}) vs {miles(base)} en dic-2023"
                 + ("" if var_empresas is None or var_total is None else
                    f" · sin contar empresas del Estado, que por su lado varían "
                    f"{str(var_empresas).replace('.', ',')}%; el universo completo "
-                   f"varía {str(var_total).replace('.', ',')}%")),
+                   f"varía {str(var_total).replace('.', ',')}%")
+                + ("" if var_civil is None else
+                   f" · incluye fuerzas armadas y de seguridad, que son ~10% de la "
+                   f"dotación y se redujeron menos "
+                   f"({str(var_fuerzas).replace('.', ',')}%): sin ellas, la planta "
+                   f"civil varía {str(var_civil).replace('.', ',')}% "
+                   f"(a {fecha_fuerzas})")),
         }
     except Exception as e:
         _warn("reduccion_estado", e)

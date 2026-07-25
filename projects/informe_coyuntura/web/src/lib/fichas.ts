@@ -1710,6 +1710,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Variación porcentual de la dotación contra la línea de base de diciembre de 2023 (231.305 agentes).",
       "A diferencia de las series previsionales, excluye provincias y municipios: es la métrica insignia de la reforma del Estado nacional.",
       "También excluye a las empresas y sociedades del Estado, que la planilla informa por separado. Se eligió la Administración Pública Nacional porque es el universo sobre el que el Poder Ejecutivo decide directamente su planta. La elección no cambia la lectura: al mes de mayo de 2026 la Administración Pública Nacional cae 19,8%, las empresas del Estado 20,2% y el universo completo 19,9%.",
+      "Sí incluye a las fuerzas armadas y de seguridad. Siete entidades informan su dotación dentro de la Administración Pública Nacional: los estados mayores del Ejército, la Armada, la Fuerza Aérea y el Estado Mayor Conjunto, más Gendarmería, Prefectura y la Policía de Seguridad Aeroportuaria. Representan alrededor del diez por ciento del total y se redujeron menos que el resto, de modo que su presencia atenúa levemente el ajuste medido: a febrero de 2026 el conjunto cae 18,6% y la planta civil sola 19,0%. No se las descuenta —son parte del Estado y sostener sus dotaciones también es una decisión de gobierno—, pero el desglose se publica en la card para que cada lector pueda hacer la cuenta que prefiera.",
     ],
     anclas: {
       bandas: [
@@ -1898,6 +1899,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-02", cambio: "Compuesto del documento institucional renormalizado a lo medible, con el registro CNV automático." },
       { fecha: "2026-07-03", cambio: "La litigiosidad se separa como indicador propio de la dimensión. Después, la cobertura se automatizó vía menciones del Boletín Oficial con calibración anclada." },
       { fecha: "2026-07-15", cambio: "La cobertura pasa a contar las menciones del Fondo de Asistencia Laboral (Ley 27.802) desde marzo de 2026, distinguiéndolo del régimen homónimo de la construcción. La serie histórica arranca en cero con la creación del régimen." },
+      { fecha: "2026-07-25", cambio: "Su peso dentro de la dimensión baja del setenta al cincuenta por ciento, a propuesta de una revisión externa: la dimensión mide un instrumento y su resultado, y no había razón para que el instrumento pesara más del doble que el resultado. El cambio mejora el puntaje de la dimensión, porque la litigiosidad venía puntuando más alto que el fondo; se deja dicho para que la decisión pueda discutirse por su argumento y no por su efecto." },
     ],
   },
 

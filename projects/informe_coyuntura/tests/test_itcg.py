@@ -31,7 +31,7 @@ import gestion
 #   * gasto_funcionamiento −18% real → 81,0 · masa_salarial −15% real → 82,3.
 #   * reestructuracion_organismos 40% → 52,5 (borde de banda: promedio 40/65).
 #   * fal_modernizacion_laboral 25 → 57,9 · litigiosidad +3,6% → 57,8
-#     (laboral = 0,7·57,9 + 0,3·57,8 = 57,9 — ADR-0023).
+#     (ADR-0023 lo repartía 0,7/0,3; ADR-0128 lo pasó a 0,5/0,5).
 #   * privatizaciones 51,4% → 71,4 (banda 65).
 #   * rigi_inversiones 22,1% → 47,7 (banda 40).
 #   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
@@ -64,10 +64,12 @@ def test_itcg_reproduce_ejemplo():
     dims = r["dimensiones"]
     assert dims["reformas_economicas"]["puntaje"] == 83.4
     assert dims["reforma_estado"]["puntaje"] == 78.3
-    assert dims["reforma_laboral"]["puntaje"] == 38.9
+    # 38,9 → 44,3 con el reparto 50/50 de ADR-0128: la litigiosidad puntúa más
+    # que el FAL, así que igualar los pesos sube la dimensión.
+    assert dims["reforma_laboral"]["puntaje"] == 44.3
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
     assert dims["social_orden"]["puntaje"] == 72.8   # sin asistencia_directa (ADR-0100)
-    assert r["valor"] == 70.6
+    assert r["valor"] == 71.4          # 70,6 → 71,4 por ADR-0128 (laboral 50/50)
     assert r["banda"] == "moderadamente_aflojado"
     assert itcg.tension_de_itcg(r["valor"]) == 2.9
     assert r["ajustes_aplicados"] == []
