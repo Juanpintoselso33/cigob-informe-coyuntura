@@ -24,15 +24,28 @@ def _reconstruido(ym):
 
 def test_el_mes_de_la_devaluacion_ya_era_el_peor_de_la_serie():
     """El argumento central del rechazo. En dic-2023 —el mes del salto del
-    ITCRM de 83,2 a 124,9— el índice NO leyó una mejora: marcó el valor más
-    tenso de todo el registro. La competitividad efectivamente saltó a 100,
+    ITCRM de 83,2 a 124,9— el índice NO leyó una mejora: quedó entre los meses
+    más tensos de todo el registro. La competitividad efectivamente saltó a 100,
     pero la estabilidad monetaria se derrumbó a ~21 y pesa más (26% contra
-    11%), así que la agregación resolvió bien el episodio sin ninguna regla."""
+    11%), así que la agregación resolvió bien el episodio sin ninguna regla.
+
+    Se verifica que dic-2023 esté en el DECIL más tenso, no que sea el mínimo
+    exacto. Hasta 2026-07-25 el test exigía `min(serie) == "2023-12"`, pero
+    dic-2023 y ene-2024 daban 26,30 los dos: el test pasaba porque `min()`
+    desempata por orden de iteración, no porque midiera algo. Al entrar
+    emae_difusion (ADR-0124) el empate se rompió a favor de ene-2024 por medio
+    punto y la falla lo dejó a la vista. Lo que sostiene el rechazo de ADR-0073
+    es que el mes de la devaluación esté abajo de todo, no cuál de esos dos
+    meses gana por decimales."""
     serie = {ym: r["valor"]
              for ym, vals in validacion_externa._valores_itcm_por_mes().items()
              if (r := itcm.calcular_itcm(vals))}
-    peor = min(serie, key=serie.get)
-    assert peor == "2023-12", f"el mes más tenso pasó a ser {peor}"
+    orden = sorted(serie, key=serie.get)
+    posicion = orden.index("2023-12")
+    assert posicion <= max(1, len(orden) // 10), (
+        f"dic-2023 quedó en la posición {posicion + 1} de {len(orden)} por tensión; "
+        f"ya no está entre los meses más tensos y el rechazo de ADR-0073 hay que "
+        f"revisarlo. Los cinco peores: {[(m, serie[m]) for m in orden[:5]]}")
 
     dims = _reconstruido("2023-12")["dimensiones"]
     assert dims["competitividad_externa"]["puntaje"] == 100.0

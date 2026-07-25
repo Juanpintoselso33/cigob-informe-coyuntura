@@ -318,9 +318,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (plataforma oficial)", tipo: "Avance de reforma",
   },
   desregulacion_normativa: {
-    que: "Cuántas normas completas quedaron derogadas desde diciembre de 2023: leyes, decretos, resoluciones y disposiciones que dejaron de existir. No cuenta los actos derogatorios sino las normas efectivamente eliminadas, de modo que un decreto que deroga cuarenta leyes pesa cuarenta veces más que uno que deroga una.",
-    aporta: "Muestra el tamaño real de la desregulación y también su forma en el tiempo, que resulta muy desigual: el decreto de necesidad y urgencia de diciembre de 2023 concentra la enorme mayoría del total, y el resto del mandato avanza a un ritmo mucho más lento. Quedan fuera del conteo las derogaciones parciales —un artículo, una sección, un punto de un reglamento—, que se relevan aparte porque no son comparables con la eliminación de una norma entera.",
-    frecuencia: "Mensual", tipo: "Conteo acumulado",
+    que: "Cuántas normas de desregulación acumula el Gobierno desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado.",
+    aporta: "Mide el avance del programa desregulador con la cifra del organismo que lo conduce, en lugar de una reconstrucción propia. Muestra además su forma en el tiempo, que es muy desigual: apenas cuarenta y nueve normas hasta julio de 2024, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La card publica también las normas anteriores y los artículos que esas medidas modificaron o eliminaron.",
+    frecuencia: "Mensual", tipo: "Conteo acumulado oficial",
   },
   apertura_comercial: {
     que: "La alícuota efectiva del comercio exterior: cuántos impuestos (derechos de importación + exportación, ARCA) paga en promedio cada dólar de intercambio (expo+impo del ICA). 0% = comercio libre de fricción arancelaria; 15% o más = cierre de hecho.",

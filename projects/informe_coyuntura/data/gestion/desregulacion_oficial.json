@@ -1,0 +1,101 @@
+{
+ "backfill_grafico": {
+  "2023-12": 4,
+  "2024-01": 9,
+  "2024-02": 14,
+  "2024-03": 17,
+  "2024-04": 26,
+  "2024-05": 30,
+  "2024-06": 35,
+  "2024-07": 49,
+  "2024-08": 74,
+  "2024-09": 99,
+  "2024-10": 123,
+  "2024-11": 151,
+  "2024-12": 186,
+  "2025-01": 211,
+  "2025-02": 240,
+  "2025-03": 261,
+  "2025-04": 282,
+  "2025-05": 310,
+  "2025-06": 346,
+  "2025-07": 399,
+  "2025-08": 421,
+  "2025-09": 439,
+  "2025-10": 452,
+  "2025-11": 463,
+  "2025-12": 474,
+  "2026-01": 495,
+  "2026-02": 512,
+  "2026-03": 544,
+  "2026-04": 584
+ },
+ "informes": {
+  "informe_analisis_de_la_desregulacion_implementada_abril.pdf": {
+   "articulos": 15251,
+   "normas": 584,
+   "normas_afectadas": 2545,
+   "periodo": "2026-04"
+  },
+  "informe_analisis_de_la_desregulacion_implementada_agos.pdf": {
+   "articulos": 8935,
+   "normas": 418,
+   "normas_afectadas": 1246,
+   "periodo": "2025-08"
+  },
+  "informe_analisis_de_la_desregulacion_implementada_diciembre_enero.pdf": {
+   "articulos": 14392,
+   "normas": 494,
+   "normas_afectadas": 2418,
+   "periodo": "2026-01"
+  },
+  "informe_analisis_de_la_desregulacion_implementada_febrero.pdf": {
+   "articulos": 14553,
+   "normas": 511,
+   "normas_afectadas": 2443,
+   "periodo": "2026-02"
+  },
+  "informe_analisis_de_la_desregulacion_implementada_junio_1.pdf": {
+   "articulos": 16178,
+   "normas": 689,
+   "normas_afectadas": 2699,
+   "periodo": "2026-06"
+  },
+  "informe_analisis_de_la_desregulacion_implementada_marzo.pdf": {
+   "articulos": 15144,
+   "normas": 543,
+   "normas_afectadas": 2519,
+   "periodo": "2026-03"
+  },
+  "informe_analisis_de_la_desregulacion_implementada_mayo_2026.pdf": {
+   "articulos": 15507,
+   "normas": 636,
+   "normas_afectadas": 2589,
+   "periodo": "2026-05"
+  },
+  "informe_analisis_de_la_desregulacion_implementada_noviembre_0.pdf": {
+   "articulos": 13474,
+   "normas": 463,
+   "normas_afectadas": 2335,
+   "periodo": "2025-11"
+  },
+  "informe_analisis_de_la_desregulacion_implementada_octubre.pdf": {
+   "articulos": 12357,
+   "normas": 451,
+   "normas_afectadas": 2104,
+   "periodo": "2025-10"
+  },
+  "informe_analisis_de_la_desregulacion_implementada_septiembre.pdf": {
+   "articulos": 9612,
+   "normas": 437,
+   "normas_afectadas": 1306,
+   "periodo": "2025-09"
+  },
+  "informe_analsisi_de_la_desregulacion_implementada_julio.pdf": {
+   "articulos": 8090,
+   "normas": 396,
+   "normas_afectadas": 1157,
+   "periodo": "2025-07"
+  }
+ }
+}

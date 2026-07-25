@@ -369,6 +369,25 @@ def fetch_apertura_comercial(brecha_pct: float | None = None) -> dict | None:
 INFOLEG_ANEXO = "https://servicios.infoleg.gob.ar/infolegInternet/anexos/{lo}-{hi}/{id}/norma.htm"
 DESREG_STORE = PROJECT_DIR / "data" / "gestion" / "desregulacion_normas.json"
 
+# ── Fuente oficial del indicador desde ADR-0125 ──────────────────────────────
+# Ministerio de Desregulación y Transformación del Estado, informe mensual
+# "Análisis de la desregulación implementada" (Unidad de Evaluación de Impacto).
+# Cuenta normas de desregulación acumuladas desde el 10-dic-2023.
+#
+# Los nombres de archivo son IRREGULARES (_junio, _junio_1, _mayo_2026, _agos,
+# _diciembre_enero, y un typo oficial en "analsisi"), así que los enlaces se
+# resuelven leyendo la página — mismo patrón que las colocaciones de deuda en
+# macro.py. Nunca construir la URL a mano.
+DESREG_OFICIAL_PAGINA = "https://www.argentina.gob.ar/desregulacion/desregulacion-en-numeros"
+DESREG_OFICIAL_STORE  = PROJECT_DIR / "data" / "gestion" / "desregulacion_oficial.json"
+
+# El informe de abril-2026 es el último del formato con "Figura 1. Cantidad de
+# normas de desregulación acumuladas": un gráfico de barras MENSUAL desde
+# dic-2023. De ahí sale el backfill (ADR-0125). Es un documento publicado e
+# inmutable, así que el resultado se cachea de forma permanente.
+DESREG_INFORME_BACKFILL = "informe_analisis_de_la_desregulacion_implementada_abril.pdf"
+DESREG_BACKFILL_DESDE   = "2023-12"
+
 # Frontera entre considerandos y parte dispositiva. Todo lo que está antes es
 # relato de antecedentes: ahí "deroga" habla de lo que hizo otro.
 _DISPOSITIVA = re.compile(r"\b(RESUELVE|RESUELVEN|DECRETA|DECRETAN|DISPONE|DISPONEN)\s*:", re.I)
@@ -467,64 +486,217 @@ def _infoleg_analizar_norma(norma_id: str) -> dict:
             "listado": sorted(completas)}
 
 
-def fetch_desregulacion_normativa() -> dict | None:
+_DESREG_MESES = {"enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5,
+                 "junio": 6, "julio": 7, "agosto": 8, "septiembre": 9,
+                 "setiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12}
+
+
+def _mes_previo_ym(ym: str) -> str:
+    """'2026-01' → '2025-12'. Aritmética de calendario, no de posición."""
+    total = int(ym[:4]) * 12 + (int(ym[5:7]) - 1) - 1
+    return f"{total // 12}-{total % 12 + 1:02d}"
+
+
+def _desreg_oficial_store() -> dict:
+    if DESREG_OFICIAL_STORE.exists():
+        try:
+            return json.loads(DESREG_OFICIAL_STORE.read_text(encoding="utf-8-sig"))
+        except Exception:
+            pass
+    return {}
+
+
+def _desreg_guardar_store(store: dict) -> None:
+    DESREG_OFICIAL_STORE.parent.mkdir(parents=True, exist_ok=True)
+    DESREG_OFICIAL_STORE.write_text(
+        json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+
+
+def _desreg_informes_publicados() -> dict:
+    """{nombre_archivo: url} de los informes enlazados hoy en la página oficial."""
+    r = requests.get(DESREG_OFICIAL_PAGINA, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    out = {}
+    for href in set(re.findall(r'href="([^"]*\.pdf[^"]*)"', r.text, re.I)):
+        url = href if href.startswith("http") else "https://www.argentina.gob.ar" + href
+        out[url.rsplit("/", 1)[-1]] = url
+    return out
+
+
+def _desreg_leer_informe(url: str) -> dict | None:
+    """Período y cifras de portada de un informe. Cubre los DOS formatos.
+
+    Hasta abr-2026 las cifras venían en prosa ("se registran N normas de
+    desregulación que eliminan o modifican M normativas anteriores... un total
+    de A artículos"); desde may-2026 vienen como fichas sueltas de portada.
     """
-    Normas efectivamente derogadas por el Poder Ejecutivo desde dic-2023.
+    from pypdf import PdfReader
 
-    Cuenta NORMAS DEROGADAS —no actos derogatorios— y sólo las derogaciones que
-    figuran en la parte dispositiva. Ver el comentario de arriba para los dos
-    defectos de la versión anterior que motivaron el cambio (ADR-0096).
+    blob = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT).content
+    texto = "\n".join((p.extract_text() or "") for p in PdfReader(io.BytesIO(blob)).pages)
+    plano = re.sub(r"[ \t\n]+", " ", texto)
 
-    El análisis por norma se cachea de forma permanente: el texto de una norma
-    publicada es inmutable, así que cada corrida sólo baja las nuevas.
+    # El período sale de la FECHA DE CORTE ("al 31 de octubre de 2025"), no del
+    # mes de portada: hay informes cuya portada dice "JUNIO 2025" pero cuyo
+    # corte es el 4 de julio. Cuando el corte cae en los primeros días del mes,
+    # el informe cubre hasta el cierre del mes ANTERIOR y se le asigna ése.
+    meses = "|".join(_DESREG_MESES)
+    corte = re.search(r"al\s+(\d{1,2})\s+de\s+(" + meses + r")\s+de\s+(20\d\d)",
+                      plano, re.I)
+    if corte:
+        dia, anio = int(corte.group(1)), int(corte.group(3))
+        mes = _DESREG_MESES[corte.group(2).lower()]
+        if dia <= 7:
+            mes -= 1
+            if mes == 0:
+                mes, anio = 12, anio - 1
+        periodo = f"{anio}-{mes:02d}"
+    else:
+        m = re.search(r"\b(" + meses + r")\s+(?:de\s+)?(20\d\d)\b", plano, re.I)
+        if not m:
+            return None
+        periodo = f"{m.group(2)}-{_DESREG_MESES[m.group(1).lower()]:02d}"
+
+    def n(s):
+        return int(s.replace(".", ""))
+
+    prosa = re.search(
+        r"se registran\s+([\d\.]+)\s+normas de desregulaci[oó]n\s+que\s+eliminan o "
+        r"modifican\s+([\d\.]+)\s+normativas anteriores.{0,80}?total de\s+([\d\.]+)\s+art",
+        plano, re.I | re.S)
+    if prosa:
+        normas, modif, arts = (n(prosa.group(i)) for i in (1, 2, 3))
+    else:
+        def cap(pat):
+            mm = re.search(pat + r"\s*([\d\.]+)", plano, re.I)
+            return n(mm.group(1)) if mm else None
+        normas = cap(r"Normas de desregulaci[oó]n")
+        modif  = cap(r"Normas modi[fﬁ]cadas o eliminadas")
+        arts   = cap(r"Art[ií]culos modi[fﬁ]cados o eliminados")
+        if not (normas and modif and arts):
+            return None
+    return {"periodo": periodo, "normas": normas,
+            "normas_afectadas": modif, "articulos": arts}
+
+
+def _desreg_backfill_grafico(url: str, ancla: int) -> dict:
+    """Serie mensual desde dic-2023, medida sobre las barras de la Figura 1.
+
+    El PDF trae las etiquetas del gráfico convertidas a curvas, así que el
+    texto no se puede extraer — pero las barras son rectángulos vectoriales y
+    su altura es proporcional al valor. Se calibra con el titular del propio
+    informe, que es la última barra.
+
+    Es una reconstrucción por geometría y hay que tratarla como tal: el test
+    `test_gestion_desregulacion` la contrasta contra los titulares de los otros
+    informes, que son independientes del gráfico (ADR-0125).
     """
-    try:
-        store = _desreg_cargar_store()
-        normas = store.setdefault("normas", {})
+    from collections import Counter
 
-        hoy = date.today()
-        anio, mes = 2023, 12
-        pendientes, fallos = [], 0
-        while (anio, mes) <= (hoy.year, hoy.month):
-            for norma_id, fecha in _infoleg_listar_deroga(anio, mes):
-                if norma_id not in normas:
-                    pendientes.append((norma_id, fecha))
+    import fitz
+
+    blob = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT).content
+    doc = fitz.open(stream=blob, filetype="pdf")
+    for pagina in doc:
+        txt = pagina.get_text() or ""
+        if not (re.search(r"Figura 1", txt, re.I) and re.search(r"acumulad", txt, re.I)):
+            continue
+        rects = [it[1] for d in pagina.get_drawings() for it in d["items"]
+                 if it[0] == "re" and it[1].height > 1 and 3 < it[1].width < 60]
+        if not rects:
+            continue
+        base = Counter(round(r.y1, 1) for r in rects).most_common(1)[0][0]
+        barras = sorted((r for r in rects if abs(r.y1 - base) < 1.5 and r.height > 1.0),
+                        key=lambda r: r.x0)
+        if len(barras) < 12:
+            continue
+        escala = ancla / (base - barras[-1].y0)
+        anio, mes = int(DESREG_BACKFILL_DESDE[:4]), int(DESREG_BACKFILL_DESDE[5:7])
+        serie = {}
+        for r in barras:
+            serie[f"{anio}-{mes:02d}"] = round((base - r.y0) * escala)
             mes += 1
             if mes > 12:
-                mes, anio = 1, anio + 1
+                anio, mes = anio + 1, 1
+        return serie
+    raise ValueError("no se encontró la Figura 1 en el informe de backfill")
 
-        for norma_id, fecha in pendientes:
-            try:
-                analisis = _infoleg_analizar_norma(norma_id)
-            except Exception as e:
-                fallos += 1
-                print(f"  [WARN] desregulacion: norma {norma_id} ilegible ({e})")
-                continue
-            normas[norma_id] = {"fecha": fecha, **analisis}
 
-        DESREG_STORE.parent.mkdir(parents=True, exist_ok=True)
-        DESREG_STORE.write_text(json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True),
-                                encoding="utf-8")
+def desregulacion_oficial_serie() -> dict:
+    """{YYYY-MM: normas de desregulación acumuladas} desde dic-2023.
 
-        if not normas:
-            raise ValueError("sin normas analizadas")
-        total = sum(n["derogadas"] for n in normas.values())
-        parciales = sum(n.get("parciales", 0) for n in normas.values())
-        con_derog = sum(1 for n in normas.values() if n["dispositiva"])
+    Backfill desde el gráfico del informe de abril-2026 + el titular de cada
+    informe posterior. Todo se cachea: los informes publicados son inmutables.
+    """
+    store = _desreg_oficial_store()
+    informes = store.setdefault("informes", {})
+    disponibles = _desreg_informes_publicados()
+
+    for nombre, url in sorted(disponibles.items()):
+        if nombre in informes:
+            continue
+        datos = _desreg_leer_informe(url)
+        if datos:
+            informes[nombre] = datos
+
+    por_periodo = {d["periodo"]: d for d in informes.values()}
+
+    backfill = store.get("backfill_grafico")
+    if not backfill:
+        url = disponibles.get(DESREG_INFORME_BACKFILL)
+        ancla = por_periodo.get("2026-04", {}).get("normas")
+        if url and ancla:
+            backfill = _desreg_backfill_grafico(url, ancla)
+            store["backfill_grafico"] = backfill
+    backfill = backfill or {}
+
+    _desreg_guardar_store(store)
+
+    serie = dict(backfill)
+    for periodo, d in por_periodo.items():
+        # el titular manda sobre el gráfico donde ambos existen: es el número
+        # que el ministerio publicó en texto para ese mes
+        if periodo > max(backfill, default=""):
+            serie[periodo] = d["normas"]
+    return dict(sorted(serie.items()))
+
+
+def fetch_desregulacion_normativa() -> dict | None:
+    """Normas de desregulación acumuladas desde el 10-dic-2023, según el
+    Ministerio de Desregulación y Transformación del Estado (ADR-0125).
+
+    Reemplaza al conteo propio sobre InfoLeg (ADR-0096). Lo que se gana es que
+    el número deja de ser una construcción nuestra y pasa a ser el que publica
+    el organismo responsable, verificable en su informe mensual. Lo que se
+    pierde está declarado en la ficha: es el Gobierno midiendo su propio
+    programa, y el criterio de qué norma cuenta como "de desregulación" es suyo.
+    """
+    try:
+        serie = desregulacion_oficial_serie()
+        if not serie:
+            raise ValueError("sin informes oficiales legibles")
+        periodo = max(serie)
+        store = _desreg_oficial_store()
+        ultimo = next((d for d in store.get("informes", {}).values()
+                       if d["periodo"] == periodo), {})
+        previo = serie.get(_mes_previo_ym(periodo))
         return {
-            "valor":            float(total),
-            "unidad":           "normas derogadas desde dic-2023",
-            "fuente":           INFOLEG_HOME,
-            "fecha_dato":       hoy.isoformat(),
-            "desactualizado":   False,
-            "actos_relevados":        len(normas),
-            "actos_derogan":          con_derog,
-            "derogaciones_parciales": parciales,
-            "normas_ilegibles":       fallos,
-            "detalle_txt": (f"{total} normas completas derogadas por {con_derog} actos con "
-                            f"derogación en su parte dispositiva, sobre {len(normas)} relevados "
-                            f"desde diciembre de 2023; además {parciales} derogaciones parciales "
-                            f"de artículos, secciones o puntos, que no se cuentan"),
+            "valor":          float(serie[periodo]),
+            "unidad":         "normas de desregulación acumuladas desde dic-2023",
+            "fuente":         "Ministerio de Desregulación y Transformación del Estado — "
+                              "Análisis de la desregulación implementada (informe mensual)",
+            "fecha_dato":     f"{periodo}-01",
+            "desactualizado": False,
+            "normas_afectadas": ultimo.get("normas_afectadas"),
+            "articulos_afectados": ultimo.get("articulos"),
+            "alta_del_mes":   None if previo is None else serie[periodo] - previo,
+            "detalle_txt": (
+                f"{serie[periodo]} normas de desregulación acumuladas desde el 10 de "
+                f"diciembre de 2023"
+                + ("" if previo is None else f" ({serie[periodo] - previo:+d} en el mes)")
+                + ("" if not ultimo.get("normas_afectadas") else
+                   f" · modificaron o eliminaron {ultimo['normas_afectadas']} normas "
+                   f"anteriores y {ultimo.get('articulos')} artículos")),
         }
     except Exception as e:
         _warn("desregulacion_normativa", e)

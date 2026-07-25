@@ -119,7 +119,7 @@ PROCEDENCIA = {
     # ── ITCG ────────────────────────────────────────────────────────────────
     "cepo_mulc": ("documento", "«brecha sostenida <10-15% = condiciones óptimas de unificación» (doc 260702)"),
     "apertura_comercial": ("documento", "anclas sobre la lineal del documento: 0% → 100 · 15% → 0 (ADR-0021)"),
-    "desregulacion_normativa": ("convencion", "la meta de 100 normas = plan completo es convención propia, declarada en ADR-0096"),
+    "desregulacion_normativa": ("convencion", "el conteo pasa a ser OFICIAL (informe mensual del Min. de Desregulación) pero la vara NO: el organismo no publica meta, así que los cortes 100/300/600/1200 los ponemos nosotros — misma limitación que declaraba ADR-0096, con otra fuente para el número (ADR-0125)"),
     "reduccion_estado": ("convencion", "«calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85"),
     "gasto_funcionamiento": ("convencion", "bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico"),
     "masa_salarial": ("convencion", "gemela de gasto_funcionamiento: los cortes son grados de recorte fijados contra el ajuste 2024, sin serie previa (ADR-0121)"),

@@ -242,7 +242,8 @@ def test_macro_itcm_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    assert len(en_indice) == 16, f"esperaba 16 indicadores en el índice, hay {len(en_indice)}"
+    # 17 desde 2026-07-25 (ADR-0124: entra emae_difusion a la dimensión actividad).
+    assert len(en_indice) == 17, f"esperaba 17 indicadores en el índice, hay {len(en_indice)}"
     # ADR-0022: los 4 monetarios nominales quedan OCULTOS del snapshot (siguen
     # en pipeline como insumos de IdC/IDM/TCRM); su señal entra vía credito_privado.
     assert contexto == {}, f"macro no debería publicar contexto: {set(contexto)}"

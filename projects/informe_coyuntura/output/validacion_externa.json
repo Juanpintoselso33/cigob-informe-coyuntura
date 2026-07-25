@@ -92,44 +92,43 @@
     }
   },
   "serie_itcm": {
-    "2023-12": 26.3,
-    "2024-01": 26.3,
-    "2024-02": 33.0,
-    "2024-03": 32.9,
-    "2024-04": 33.9,
-    "2024-05": 52.0,
-    "2024-06": 44.8,
-    "2024-07": 51.5,
-    "2024-08": 48.5,
-    "2024-09": 53.2,
-    "2024-10": 56.8,
-    "2024-11": 61.8,
-    "2024-12": 70.4,
-    "2025-01": 75.1,
-    "2025-02": 75.1,
-    "2025-03": 72.1,
-    "2025-04": 75.0,
-    "2025-05": 74.7,
-    "2025-06": 71.1,
-    "2025-07": 67.1,
-    "2025-08": 68.3,
-    "2025-09": 67.2,
-    "2025-10": 63.0,
-    "2025-11": 58.5,
-    "2025-12": 60.8,
-    "2026-01": 55.5,
-    "2026-02": 52.8,
-    "2026-03": 58.1,
+    "2023-12": 27.4,
+    "2024-01": 26.9,
+    "2024-02": 33.5,
+    "2024-03": 33.2,
+    "2024-04": 34.4,
+    "2024-05": 51.2,
+    "2024-06": 44.9,
+    "2024-07": 51.7,
+    "2024-08": 48.9,
+    "2024-09": 52.9,
+    "2024-10": 56.9,
+    "2024-11": 62.1,
+    "2024-12": 69.8,
+    "2025-01": 74.4,
+    "2025-02": 74.4,
+    "2025-03": 71.5,
+    "2025-04": 74.4,
+    "2025-05": 74.2,
+    "2025-06": 70.6,
+    "2025-07": 66.7,
+    "2025-08": 68.2,
+    "2025-09": 67.6,
+    "2025-10": 63.8,
+    "2025-11": 59.2,
+    "2025-12": 61.2,
+    "2026-01": 55.8,
+    "2026-02": 53.4,
+    "2026-03": 58.5,
     "2026-04": 56.4,
-    "2026-05": 62.4,
+    "2026-05": 62.5,
     "2026-06": 61.9
   },
   "linea_base_itcm": {
     "periodo": "2023-12",
-    "valor": 26.3,
-    "cobertura": 0.804,
+    "valor": 27.4,
+    "cobertura": 0.826,
     "sin_dato": [
-      "emae_difusion",
       "iai",
       "icip",
       "reservas_bcra"
@@ -172,37 +171,38 @@
   },
   "correlaciones_itcm": {
     "niveles (ITCM vs riesgo país)": {
-      "r": -0.794,
+      "r": -0.8,
       "n": 31
     },
     "primeras diferencias (ITCM vs riesgo)": {
-      "r": -0.081,
+      "r": -0.073,
       "n": 30
     },
     "ITCM adelantado 1 mes vs riesgo": {
-      "r": -0.759,
+      "r": -0.767,
       "n": 30
     },
     "riesgo adelantado 1 mes vs ITCM": {
-      "r": -0.833,
+      "r": -0.836,
       "n": 31
     }
   },
   "redundancia_itcm": {
     "diferencias": {
-      "n_pares": 91,
-      "r_abs_medio": 0.181,
+      "n_pares": 105,
+      "r_abs_medio": 0.176,
       "share_altos": 0.0
     },
     "umbral": 0.7,
-    "n_indicadores": 14,
-    "n_pares": 91,
-    "r_abs_medio": 0.494,
-    "share_altos": 0.253,
-    "share_bajos": 0.275,
+    "n_indicadores": 15,
+    "n_pares": 105,
+    "r_abs_medio": 0.488,
+    "share_altos": 0.238,
+    "share_bajos": 0.276,
     "matriz": {
       "costo_financiamiento_tesoro": {
         "credito_privado": -0.027,
+        "emae_difusion": -0.032,
         "emae_ia": 0.178,
         "idc": 0.111,
         "idm": 0.176,
@@ -218,6 +218,7 @@
       },
       "credito_privado": {
         "costo_financiamiento_tesoro": -0.027,
+        "emae_difusion": 0.753,
         "emae_ia": 0.8,
         "idc": 0.912,
         "idm": -0.19,
@@ -231,9 +232,26 @@
         "saldo_comercial_12m": 0.65,
         "tcrm": -0.543
       },
+      "emae_difusion": {
+        "costo_financiamiento_tesoro": -0.032,
+        "credito_privado": 0.753,
+        "emae_ia": 0.791,
+        "idc": 0.657,
+        "idm": -0.4,
+        "ipc_total": 0.623,
+        "ipi_manufacturero": 0.554,
+        "presion_dolarizacion": -0.0,
+        "recaudacion": 0.444,
+        "rem_ipc_12m": 0.679,
+        "reservas_bcra": 0.294,
+        "resultado_primario": 0.465,
+        "saldo_comercial_12m": 0.352,
+        "tcrm": -0.273
+      },
       "emae_ia": {
         "costo_financiamiento_tesoro": 0.178,
         "credito_privado": 0.8,
+        "emae_difusion": 0.791,
         "idc": 0.833,
         "idm": 0.001,
         "ipc_total": 0.732,
@@ -249,6 +267,7 @@
       "idc": {
         "costo_financiamiento_tesoro": 0.111,
         "credito_privado": 0.912,
+        "emae_difusion": 0.657,
         "emae_ia": 0.833,
         "idm": -0.072,
         "ipc_total": 0.91,
@@ -264,6 +283,7 @@
       "idm": {
         "costo_financiamiento_tesoro": 0.176,
         "credito_privado": -0.19,
+        "emae_difusion": -0.4,
         "emae_ia": 0.001,
         "idc": -0.072,
         "ipc_total": -0.244,
@@ -279,6 +299,7 @@
       "ipc_total": {
         "costo_financiamiento_tesoro": 0.133,
         "credito_privado": 0.858,
+        "emae_difusion": 0.623,
         "emae_ia": 0.732,
         "idc": 0.91,
         "idm": -0.244,
@@ -294,6 +315,7 @@
       "ipi_manufacturero": {
         "costo_financiamiento_tesoro": -0.022,
         "credito_privado": 0.671,
+        "emae_difusion": 0.554,
         "emae_ia": 0.766,
         "idc": 0.74,
         "idm": 0.233,
@@ -309,6 +331,7 @@
       "presion_dolarizacion": {
         "costo_financiamiento_tesoro": 0.438,
         "credito_privado": 0.201,
+        "emae_difusion": -0.0,
         "emae_ia": 0.412,
         "idc": 0.263,
         "idm": 0.373,
@@ -324,6 +347,7 @@
       "recaudacion": {
         "costo_financiamiento_tesoro": 0.088,
         "credito_privado": 0.564,
+        "emae_difusion": 0.444,
         "emae_ia": 0.679,
         "idc": 0.653,
         "idm": 0.34,
@@ -339,6 +363,7 @@
       "rem_ipc_12m": {
         "costo_financiamiento_tesoro": 0.2,
         "credito_privado": 0.906,
+        "emae_difusion": 0.679,
         "emae_ia": 0.743,
         "idc": 0.911,
         "idm": -0.292,
@@ -354,6 +379,7 @@
       "reservas_bcra": {
         "costo_financiamiento_tesoro": -0.431,
         "credito_privado": 0.278,
+        "emae_difusion": 0.294,
         "emae_ia": 0.338,
         "idc": 0.586,
         "idm": -0.195,
@@ -369,6 +395,7 @@
       "resultado_primario": {
         "costo_financiamiento_tesoro": 0.336,
         "credito_privado": 0.791,
+        "emae_difusion": 0.465,
         "emae_ia": 0.691,
         "idc": 0.866,
         "idm": 0.001,
@@ -384,6 +411,7 @@
       "saldo_comercial_12m": {
         "costo_financiamiento_tesoro": 0.476,
         "credito_privado": 0.65,
+        "emae_difusion": 0.352,
         "emae_ia": 0.591,
         "idc": 0.689,
         "idm": 0.003,
@@ -399,6 +427,7 @@
       "tcrm": {
         "costo_financiamiento_tesoro": -0.552,
         "credito_privado": -0.543,
+        "emae_difusion": -0.273,
         "emae_ia": -0.641,
         "idc": -0.66,
         "idm": -0.28,
@@ -584,6 +613,16 @@
         "por_diseno": null
       },
       {
+        "a": "emae_difusion",
+        "b": "emae_ia",
+        "r": 0.791,
+        "n": 30,
+        "dimension_a": "actividad",
+        "dimension_b": "actividad",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
         "a": "emae_ia",
         "b": "ipi_manufacturero",
         "r": 0.766,
@@ -591,6 +630,16 @@
         "dimension_a": "actividad",
         "dimension_b": "actividad",
         "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
+        "a": "credito_privado",
+        "b": "emae_difusion",
+        "r": 0.753,
+        "n": 30,
+        "dimension_a": "financiamiento",
+        "dimension_b": "actividad",
+        "misma_dimension": false,
         "por_diseno": null
       },
       {
@@ -644,92 +693,105 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 19,
-    "pares_no_explicados": 19
+    "pares_cruzados": 20,
+    "pares_no_explicados": 20
   },
   "redundancia_itcg": {
     "diferencias": {
-      "n_pares": 70,
-      "r_abs_medio": 0.139,
-      "share_altos": 0.029
+      "n_pares": 73,
+      "r_abs_medio": 0.133,
+      "share_altos": 0.014
     },
     "umbral": 0.7,
     "n_indicadores": 14,
-    "n_pares": 70,
-    "r_abs_medio": 0.478,
-    "share_altos": 0.3,
-    "share_bajos": 0.314,
+    "n_pares": 73,
+    "r_abs_medio": 0.466,
+    "share_altos": 0.274,
+    "share_bajos": 0.342,
     "matriz": {
       "apertura_comercial": {
-        "cepo_mulc": 0.346,
-        "concesiones_infraestructura": 0.202,
-        "desregulacion_normativa": 0.599,
-        "gasto_funcionamiento": 0.004,
+        "cepo_mulc": 0.355,
+        "concesiones_infraestructura": 0.207,
+        "desregulacion_normativa": 0.445,
+        "fal_modernizacion_laboral": 0.086,
+        "gasto_funcionamiento": 0.017,
         "libertad_opcion_salud": 0.295,
         "litigiosidad_laboral": 0.485,
-        "masa_salarial": 0.031,
-        "privatizaciones": 0.537,
-        "protocolo_antipiquetes": 0.256,
+        "masa_salarial": 0.038,
+        "privatizaciones": 0.538,
+        "protocolo_antipiquetes": 0.265,
         "reduccion_estado": 0.395,
         "reestructuracion_organismos": 0.553
       },
       "cepo_mulc": {
-        "apertura_comercial": 0.346,
-        "concesiones_infraestructura": 0.287,
-        "desregulacion_normativa": 0.863,
+        "apertura_comercial": 0.355,
+        "concesiones_infraestructura": 0.285,
+        "desregulacion_normativa": 0.947,
         "fal_modernizacion_laboral": 0.187,
-        "gasto_funcionamiento": 0.215,
+        "gasto_funcionamiento": 0.239,
         "libertad_opcion_salud": 0.89,
         "litigiosidad_laboral": 0.402,
-        "masa_salarial": 0.458,
-        "privatizaciones": 0.827,
+        "masa_salarial": 0.464,
+        "privatizaciones": 0.826,
         "protocolo_antipiquetes": 0.864,
         "reduccion_estado": 0.752,
-        "reestructuracion_organismos": 0.806
+        "reestructuracion_organismos": 0.805
       },
       "concesiones_infraestructura": {
-        "apertura_comercial": 0.202,
-        "cepo_mulc": 0.287,
-        "desregulacion_normativa": 0.295,
+        "apertura_comercial": 0.207,
+        "cepo_mulc": 0.285,
+        "desregulacion_normativa": 0.383,
         "fal_modernizacion_laboral": 0.695,
-        "gasto_funcionamiento": 0.137,
-        "masa_salarial": 0.087,
+        "gasto_funcionamiento": 0.212,
+        "masa_salarial": 0.12,
         "privatizaciones": 0.481,
         "protocolo_antipiquetes": 0.218,
         "reduccion_estado": 0.119,
         "reestructuracion_organismos": 0.487
       },
       "desregulacion_normativa": {
-        "apertura_comercial": 0.599,
-        "cepo_mulc": 0.863,
-        "concesiones_infraestructura": 0.295,
-        "fal_modernizacion_laboral": 0.205,
-        "gasto_funcionamiento": 0.324,
-        "libertad_opcion_salud": 0.812,
-        "litigiosidad_laboral": 0.709,
-        "masa_salarial": 0.511,
-        "privatizaciones": 0.872,
-        "protocolo_antipiquetes": 0.785,
-        "reduccion_estado": 0.811,
-        "reestructuracion_organismos": 0.861
+        "apertura_comercial": 0.445,
+        "cepo_mulc": 0.947,
+        "concesiones_infraestructura": 0.383,
+        "fal_modernizacion_laboral": 0.278,
+        "gasto_funcionamiento": 0.269,
+        "libertad_opcion_salud": 0.953,
+        "litigiosidad_laboral": 0.392,
+        "masa_salarial": 0.458,
+        "privatizaciones": 0.914,
+        "protocolo_antipiquetes": 0.913,
+        "reduccion_estado": 0.73,
+        "reestructuracion_organismos": 0.895
+      },
+      "fal_modernizacion_laboral": {
+        "apertura_comercial": 0.086,
+        "cepo_mulc": 0.187,
+        "concesiones_infraestructura": 0.695,
+        "desregulacion_normativa": 0.278,
+        "gasto_funcionamiento": 0.166,
+        "masa_salarial": 0.083,
+        "privatizaciones": 0.295,
+        "protocolo_antipiquetes": 0.152,
+        "reestructuracion_organismos": 0.292
       },
       "gasto_funcionamiento": {
-        "apertura_comercial": 0.004,
-        "cepo_mulc": 0.215,
-        "concesiones_infraestructura": 0.137,
-        "desregulacion_normativa": 0.324,
+        "apertura_comercial": 0.017,
+        "cepo_mulc": 0.239,
+        "concesiones_infraestructura": 0.212,
+        "desregulacion_normativa": 0.269,
+        "fal_modernizacion_laboral": 0.166,
         "libertad_opcion_salud": 0.248,
         "litigiosidad_laboral": 0.145,
-        "masa_salarial": 0.426,
-        "privatizaciones": 0.375,
-        "protocolo_antipiquetes": 0.148,
+        "masa_salarial": 0.433,
+        "privatizaciones": 0.403,
+        "protocolo_antipiquetes": 0.169,
         "reduccion_estado": 0.147,
-        "reestructuracion_organismos": 0.401
+        "reestructuracion_organismos": 0.426
       },
       "libertad_opcion_salud": {
         "apertura_comercial": 0.295,
         "cepo_mulc": 0.89,
-        "desregulacion_normativa": 0.812,
+        "desregulacion_normativa": 0.953,
         "gasto_funcionamiento": 0.248,
         "litigiosidad_laboral": 0.34,
         "masa_salarial": 0.393,
@@ -741,7 +803,7 @@
       "litigiosidad_laboral": {
         "apertura_comercial": 0.485,
         "cepo_mulc": 0.402,
-        "desregulacion_normativa": 0.709,
+        "desregulacion_normativa": 0.392,
         "gasto_funcionamiento": 0.145,
         "libertad_opcion_salud": 0.34,
         "masa_salarial": 0.467,
@@ -751,42 +813,43 @@
         "reestructuracion_organismos": 0.32
       },
       "masa_salarial": {
-        "apertura_comercial": 0.031,
-        "cepo_mulc": 0.458,
-        "concesiones_infraestructura": 0.087,
-        "desregulacion_normativa": 0.511,
-        "gasto_funcionamiento": 0.426,
+        "apertura_comercial": 0.038,
+        "cepo_mulc": 0.464,
+        "concesiones_infraestructura": 0.12,
+        "desregulacion_normativa": 0.458,
+        "fal_modernizacion_laboral": 0.083,
+        "gasto_funcionamiento": 0.433,
         "libertad_opcion_salud": 0.393,
         "litigiosidad_laboral": 0.467,
-        "privatizaciones": 0.39,
-        "protocolo_antipiquetes": 0.393,
+        "privatizaciones": 0.396,
+        "protocolo_antipiquetes": 0.4,
         "reduccion_estado": 0.536,
-        "reestructuracion_organismos": 0.374
+        "reestructuracion_organismos": 0.381
       },
       "privatizaciones": {
-        "apertura_comercial": 0.537,
-        "cepo_mulc": 0.827,
+        "apertura_comercial": 0.538,
+        "cepo_mulc": 0.826,
         "concesiones_infraestructura": 0.481,
-        "desregulacion_normativa": 0.872,
+        "desregulacion_normativa": 0.914,
         "fal_modernizacion_laboral": 0.295,
-        "gasto_funcionamiento": 0.375,
+        "gasto_funcionamiento": 0.403,
         "libertad_opcion_salud": 0.794,
         "litigiosidad_laboral": 0.326,
-        "masa_salarial": 0.39,
+        "masa_salarial": 0.396,
         "protocolo_antipiquetes": 0.735,
         "reduccion_estado": 0.539,
         "reestructuracion_organismos": 0.993
       },
       "protocolo_antipiquetes": {
-        "apertura_comercial": 0.256,
+        "apertura_comercial": 0.265,
         "cepo_mulc": 0.864,
         "concesiones_infraestructura": 0.218,
-        "desregulacion_normativa": 0.785,
+        "desregulacion_normativa": 0.913,
         "fal_modernizacion_laboral": 0.152,
-        "gasto_funcionamiento": 0.148,
+        "gasto_funcionamiento": 0.169,
         "libertad_opcion_salud": 0.994,
         "litigiosidad_laboral": 0.283,
-        "masa_salarial": 0.393,
+        "masa_salarial": 0.4,
         "privatizaciones": 0.735,
         "reduccion_estado": 0.795,
         "reestructuracion_organismos": 0.703
@@ -795,7 +858,7 @@
         "apertura_comercial": 0.395,
         "cepo_mulc": 0.752,
         "concesiones_infraestructura": 0.119,
-        "desregulacion_normativa": 0.811,
+        "desregulacion_normativa": 0.73,
         "gasto_funcionamiento": 0.147,
         "libertad_opcion_salud": 0.708,
         "litigiosidad_laboral": 0.794,
@@ -806,25 +869,17 @@
       },
       "reestructuracion_organismos": {
         "apertura_comercial": 0.553,
-        "cepo_mulc": 0.806,
+        "cepo_mulc": 0.805,
         "concesiones_infraestructura": 0.487,
-        "desregulacion_normativa": 0.861,
+        "desregulacion_normativa": 0.895,
         "fal_modernizacion_laboral": 0.292,
-        "gasto_funcionamiento": 0.401,
+        "gasto_funcionamiento": 0.426,
         "libertad_opcion_salud": 0.758,
         "litigiosidad_laboral": 0.32,
-        "masa_salarial": 0.374,
+        "masa_salarial": 0.381,
         "privatizaciones": 0.993,
         "protocolo_antipiquetes": 0.703,
         "reduccion_estado": 0.514
-      },
-      "fal_modernizacion_laboral": {
-        "cepo_mulc": 0.187,
-        "concesiones_infraestructura": 0.695,
-        "desregulacion_normativa": 0.205,
-        "privatizaciones": 0.295,
-        "protocolo_antipiquetes": 0.152,
-        "reestructuracion_organismos": 0.292
       }
     },
     "pares_altos": [
@@ -849,9 +904,9 @@
         "por_diseno": null
       },
       {
-        "a": "cepo_mulc",
+        "a": "desregulacion_normativa",
         "b": "libertad_opcion_salud",
-        "r": 0.89,
+        "r": 0.953,
         "n": 28,
         "dimension_a": "reformas_economicas",
         "dimension_b": "social_orden",
@@ -859,12 +914,52 @@
         "por_diseno": null
       },
       {
+        "a": "cepo_mulc",
+        "b": "desregulacion_normativa",
+        "r": 0.947,
+        "n": 31,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "reformas_economicas",
+        "misma_dimension": true,
+        "por_diseno": null
+      },
+      {
         "a": "desregulacion_normativa",
         "b": "privatizaciones",
-        "r": 0.872,
+        "r": 0.914,
         "n": 31,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "desregulacion_normativa",
+        "b": "protocolo_antipiquetes",
+        "r": 0.913,
+        "n": 30,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "social_orden",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "desregulacion_normativa",
+        "b": "reestructuracion_organismos",
+        "r": 0.895,
+        "n": 31,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "cepo_mulc",
+        "b": "libertad_opcion_salud",
+        "r": 0.89,
+        "n": 28,
+        "dimension_a": "reformas_economicas",
+        "dimension_b": "social_orden",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -880,28 +975,8 @@
       },
       {
         "a": "cepo_mulc",
-        "b": "desregulacion_normativa",
-        "r": 0.863,
-        "n": 31,
-        "dimension_a": "reformas_economicas",
-        "dimension_b": "reformas_economicas",
-        "misma_dimension": true,
-        "por_diseno": null
-      },
-      {
-        "a": "desregulacion_normativa",
-        "b": "reestructuracion_organismos",
-        "r": 0.861,
-        "n": 31,
-        "dimension_a": "reformas_economicas",
-        "dimension_b": "reforma_estado",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "cepo_mulc",
         "b": "privatizaciones",
-        "r": 0.827,
+        "r": 0.826,
         "n": 32,
         "dimension_a": "reformas_economicas",
         "dimension_b": "privatizaciones_inversion",
@@ -909,29 +984,9 @@
         "por_diseno": null
       },
       {
-        "a": "desregulacion_normativa",
-        "b": "libertad_opcion_salud",
-        "r": 0.812,
-        "n": 28,
-        "dimension_a": "reformas_economicas",
-        "dimension_b": "social_orden",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "desregulacion_normativa",
-        "b": "reduccion_estado",
-        "r": 0.811,
-        "n": 30,
-        "dimension_a": "reformas_economicas",
-        "dimension_b": "reforma_estado",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "cepo_mulc",
         "b": "reestructuracion_organismos",
-        "r": 0.806,
+        "r": 0.805,
         "n": 32,
         "dimension_a": "reformas_economicas",
         "dimension_b": "reforma_estado",
@@ -969,16 +1024,6 @@
         "por_diseno": null
       },
       {
-        "a": "desregulacion_normativa",
-        "b": "protocolo_antipiquetes",
-        "r": 0.785,
-        "n": 30,
-        "dimension_a": "reformas_economicas",
-        "dimension_b": "social_orden",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "libertad_opcion_salud",
         "b": "reestructuracion_organismos",
         "r": 0.758,
@@ -1010,11 +1055,11 @@
       },
       {
         "a": "desregulacion_normativa",
-        "b": "litigiosidad_laboral",
-        "r": 0.709,
-        "n": 29,
+        "b": "reduccion_estado",
+        "r": 0.73,
+        "n": 30,
         "dimension_a": "reformas_economicas",
-        "dimension_b": "reforma_laboral",
+        "dimension_b": "reforma_estado",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1039,8 +1084,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 19,
-    "pares_no_explicados": 19
+    "pares_cruzados": 18,
+    "pares_no_explicados": 18
   },
   "redundancia_itcp": {
     "diferencias": {
@@ -1721,38 +1766,38 @@
     "pares_no_explicados": 15
   },
   "serie_itcg": {
-    "2023-12": 16.3,
-    "2024-01": 31.6,
-    "2024-02": 35.6,
-    "2024-03": 40.0,
-    "2024-04": 43.7,
-    "2024-05": 38.5,
-    "2024-06": 42.9,
-    "2024-07": 42.6,
-    "2024-08": 43.1,
-    "2024-09": 42.2,
-    "2024-10": 45.1,
-    "2024-11": 49.2,
-    "2024-12": 50.5,
-    "2025-01": 51.7,
-    "2025-02": 51.5,
-    "2025-03": 51.7,
-    "2025-04": 53.7,
-    "2025-05": 60.1,
-    "2025-06": 57.8,
-    "2025-07": 62.8,
-    "2025-08": 68.2,
-    "2025-09": 67.6,
-    "2025-10": 66.9,
-    "2025-11": 69.7,
-    "2025-12": 69.4,
-    "2026-01": 68.9,
-    "2026-02": 69.2,
-    "2026-03": 69.9,
-    "2026-04": 67.7,
-    "2026-05": 70.4,
-    "2026-06": 68.8,
-    "2026-07": 74.8
+    "2023-12": 12.7,
+    "2024-01": 27.9,
+    "2024-02": 31.9,
+    "2024-03": 36.0,
+    "2024-04": 39.8,
+    "2024-05": 34.5,
+    "2024-06": 38.9,
+    "2024-07": 38.6,
+    "2024-08": 39.1,
+    "2024-09": 38.2,
+    "2024-10": 41.5,
+    "2024-11": 46.1,
+    "2024-12": 48.0,
+    "2025-01": 49.5,
+    "2025-02": 49.4,
+    "2025-03": 49.8,
+    "2025-04": 52.0,
+    "2025-05": 58.5,
+    "2025-06": 56.4,
+    "2025-07": 61.7,
+    "2025-08": 67.2,
+    "2025-09": 66.7,
+    "2025-10": 66.1,
+    "2025-11": 68.9,
+    "2025-12": 68.7,
+    "2026-01": 68.3,
+    "2026-02": 68.6,
+    "2026-03": 69.5,
+    "2026-04": 67.4,
+    "2026-05": 70.3,
+    "2026-06": 72.6,
+    "2026-07": 74.3
   },
   "merval_usd_mensual": {
     "2023-11": 918.3,
@@ -1791,27 +1836,27 @@
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
-      "r": 0.738,
+      "r": 0.744,
       "n": 32
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.087,
+      "r": 0.094,
       "n": 31
     },
     "niveles (ITCG vs riesgo país)": {
-      "r": -0.867,
+      "r": -0.872,
       "n": 32
     },
     "primeras diferencias (ITCG vs riesgo)": {
-      "r": -0.144,
+      "r": -0.161,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {
-      "r": -0.67,
+      "r": -0.673,
       "n": 31
     },
     "primeras diferencias (ITCG vs ICG)": {
-      "r": -0.025,
+      "r": 0.008,
       "n": 30
     }
   },

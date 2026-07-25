@@ -86,8 +86,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Recaudación por derechos de exportación + importación (ARCA, en USD) sobre el intercambio total (ICA): cuántos centavos de impuesto paga cada dólar comerciado. 0% = libre comercio.",
   },
   desregulacion_normativa: {
-    latex: String.raw`\sum_{\text{desde dic-2023}}\text{normas completas derogadas}`,
-    leyenda: "Se relevan en InfoLeg todas las normas publicadas desde diciembre de 2023 que mencionan una derogación, se descarta la mención que aparece sólo en los considerandos —donde la norma habla de lo que derogó otra— y de la parte dispositiva se cuentan las normas completas que quedan sin efecto. Las derogaciones parciales de un artículo, una sección o un punto se relevan por separado y no entran en el conteo. La escala de referencia es una convención propia del proyecto: cien normas equivalen a un plan desregulador completo.",
+    latex: String.raw`\text{normas de desregulaci\'on acumuladas desde el 10-dic-2023}`,
+    leyenda: "Es el conteo que publica el propio Ministerio de Desregulación y Transformación del Estado en su informe mensual: cuántas normas dictadas desde el 10 de diciembre de 2023 eliminan o modifican regulaciones anteriores. No es una elaboración del proyecto sino la cifra oficial del organismo responsable del programa, verificable en el informe. La escala de referencia sí es una convención propia: el ministerio publica el conteo pero no declara ninguna meta, de modo que el punto en que la desregulación se considera un plan completo lo fija el proyecto.",
   },
   reduccion_estado: {
     latex: String.raw`\left(\frac{\text{empleados del Estado}_{\text{hoy}}}{\text{empleados del Estado}_{\text{dic-23}}}-1\right)\times 100`,

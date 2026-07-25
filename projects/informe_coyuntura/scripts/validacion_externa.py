@@ -224,7 +224,7 @@ def _valores_itcm_por_mes() -> dict:
     saldo = m("saldo_comercial")          # M USD mensual → suma móvil 12m
     directos = {k: m(k) for k in ("idm", "presion_dolarizacion", "recaudacion",
                                   "reservas_bcra", "idc", "credito_privado",
-                                  "emae_ia", "ipi_manufacturero", "tcrm",
+                                  "emae_ia", "emae_difusion", "ipi_manufacturero", "tcrm",
                                   # ADR-0071 / ADR-0072: ambos tienen serie
                                   # mensual desde dic-2023 y entran a la
                                   # reconstrucción como valores directos.

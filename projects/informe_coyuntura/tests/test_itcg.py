@@ -22,7 +22,11 @@ import gestion
 #   * cepo_mulc 4,91% → 100 (plano bajo la primera ancla).
 #   * apertura_comercial = ALÍCUOTA efectiva 4,86% → 67,6 (la lineal del doc:
 #     0% → 100 · 15% → 0; la brecha salió del compuesto — ADR-0021).
-#   * desregulacion_normativa 57% → 82,0 (banda 85).
+#   * desregulacion_normativa 846 normas → 82,0. ADR-0125 cambió la unidad (de
+#     «% de avance» al conteo oficial de normas acumuladas), así que el insumo
+#     del ejemplo se expresa en la unidad nueva CONSERVANDO su puntaje: lo que
+#     este test fija es el ITCG que produce la combinación de puntajes del
+#     documento, no el valor crudo de cada indicador.
 #   * reduccion_estado −10,5% vs dic-2023 → 88,8 (banda 85).
 #   * gasto_funcionamiento −18% real → 81,0 · masa_salarial −15% real → 82,3.
 #   * reestructuracion_organismos 40% → 52,5 (borde de banda: promedio 40/65).
@@ -37,7 +41,7 @@ import gestion
 EJEMPLO = {
     "cepo_mulc": 4.91,                  # 100 (plano bajo la primera ancla)
     "apertura_comercial": 4.86,         # alícuota efectiva % → 67,6
-    "desregulacion_normativa": 57.0,    # 82,0 (banda 85)
+    "desregulacion_normativa": 846.0,   # 82,0 — normas acumuladas (ADR-0125)
     "reduccion_estado": -10.5,          # 88,8 (banda 85)
     "gasto_funcionamiento": -18.0,      # 81,0 (banda 85)
     "masa_salarial": -15.0,             # 82,3 (banda 85)
@@ -123,9 +127,11 @@ def test_bordes_de_banda():
     assert itcg.puntaje_banda(-14.99, b["litigiosidad_laboral"]) == 85
     assert itcg.puntaje_banda(20.01, b["litigiosidad_laboral"]) == 10
     assert parametrica.puntaje_interpolado(3.6, b["litigiosidad_laboral"]) == 57.8
-    # Desregulación: 57% → 85 (ejemplo explícito del doc).
-    assert itcg.puntaje_banda(57.0, b["desregulacion_normativa"]) == 85
-    assert itcg.puntaje_banda(50.0, b["desregulacion_normativa"]) == 65
+    # Desregulación: conteo oficial de normas acumuladas (ADR-0125).
+    assert itcg.puntaje_banda(689.0, b["desregulacion_normativa"]) == 85
+    assert itcg.puntaje_banda(600.0, b["desregulacion_normativa"]) == 60
+    assert itcg.puntaje_banda(1200.01, b["desregulacion_normativa"]) == 100
+    assert itcg.puntaje_banda(99.0, b["desregulacion_normativa"]) == 10
     # Dotación APN: reducción fuerte = menos tensión; dotación creciendo = 10.
     assert itcg.puntaje_banda(-12.0, b["reduccion_estado"]) == 100
     assert itcg.puntaje_banda(-11.99, b["reduccion_estado"]) == 85

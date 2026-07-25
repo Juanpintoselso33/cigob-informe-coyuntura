@@ -57,6 +57,7 @@ def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
         "idc": None,
         "credito_privado": None,
         "emae_ia": None,
+        "emae_difusion": None,          # ADR-0124
         "ipi_manufacturero": None,
         "tcrm": None,
         "costo_financiamiento_tesoro": None,

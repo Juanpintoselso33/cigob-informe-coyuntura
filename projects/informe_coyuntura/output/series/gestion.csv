@@ -1,4 +1,5 @@
 fecha,indicador,valor,unidad,fuente
+2026-07-01,rigi_inversiones,35714,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-06-01,rigi_inversiones,31192,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-05-01,rigi_inversiones,27760,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2026-03-01,rigi_inversiones,26446,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
@@ -116,7 +117,7 @@ fecha,indicador,valor,unidad,fuente
 2024-03-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2024-02-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
 2024-01-01,protocolo_antipiquetes,52.7,"% reducción de cortes CABA vs 2023 (IRPC, anual)",Diagnóstico Político (monitoreos públicos)
-2026-06-01,protestas_caba,24,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
+2026-06-01,protestas_caba,25,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-05-01,protestas_caba,34,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-04-01,protestas_caba,27,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
 2026-03-01,protestas_caba,23,eventos de protesta/mes (CABA),ACLED — agregado semanal (acleddata.com)
@@ -251,6 +252,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2024-01-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
 2023-12-01,privatizaciones,0.0,"% avance (etapas 0-4, cartera Ley Bases)",BO — hitos fechados (elab. CIGOB)
+2026-06-01,masa_salarial,-32.37,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-05-01,masa_salarial,-22.98,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-04-01,masa_salarial,-23.62,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
 2026-03-01,masa_salarial,-31.55,% real vs mismo mes 2023,Sec. Hacienda AIF + IPC INDEC
@@ -712,6 +714,7 @@ fecha,indicador,valor,unidad,fuente
 2002-01-01,icg_utdt,1.357,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2001-12-01,icg_utdt,0.757,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
 2001-11-01,icg_utdt,1.036,índice 0-5 (confianza en el gobierno),"UTDT (ICG, serie XLS)"
+2026-06-01,gasto_funcionamiento,-31.37,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-05-01,gasto_funcionamiento,-24.35,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-04-01,gasto_funcionamiento,-14.47,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
 2026-03-01,gasto_funcionamiento,-33.77,% real vs mismo mes 2023,Sec. Hacienda IMIG + IPC INDEC
@@ -772,37 +775,37 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
 2024-01-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
 2023-12-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
-2026-06-30,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2026-05-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2026-04-30,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2026-03-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2026-02-28,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2026-01-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-12-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-11-30,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-10-31,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-09-30,desregulacion_normativa,47.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-08-31,desregulacion_normativa,46.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-07-31,desregulacion_normativa,45.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-06-30,desregulacion_normativa,45.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-05-31,desregulacion_normativa,45.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-04-30,desregulacion_normativa,43.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-03-31,desregulacion_normativa,43.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-02-28,desregulacion_normativa,43.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2025-01-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-12-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-11-30,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-10-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-09-30,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-08-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-07-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-06-30,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-05-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-04-30,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-03-31,desregulacion_normativa,42.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-02-29,desregulacion_normativa,38.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2024-01-31,desregulacion_normativa,38.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
-2023-12-31,desregulacion_normativa,38.0,normas completas derogadas (acumulado),InfoLeg — elaboración CIGOB
+2026-06-01,desregulacion_normativa,689.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2026-05-01,desregulacion_normativa,636.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2026-04-01,desregulacion_normativa,584.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2026-03-01,desregulacion_normativa,544.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2026-02-01,desregulacion_normativa,512.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2026-01-01,desregulacion_normativa,495.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-12-01,desregulacion_normativa,474.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-11-01,desregulacion_normativa,463.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-10-01,desregulacion_normativa,452.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-09-01,desregulacion_normativa,439.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-08-01,desregulacion_normativa,421.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-07-01,desregulacion_normativa,399.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-06-01,desregulacion_normativa,346.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-05-01,desregulacion_normativa,310.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-04-01,desregulacion_normativa,282.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-03-01,desregulacion_normativa,261.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-02-01,desregulacion_normativa,240.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2025-01-01,desregulacion_normativa,211.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-12-01,desregulacion_normativa,186.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-11-01,desregulacion_normativa,151.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-10-01,desregulacion_normativa,123.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-09-01,desregulacion_normativa,99.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-08-01,desregulacion_normativa,74.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-07-01,desregulacion_normativa,49.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-06-01,desregulacion_normativa,35.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-05-01,desregulacion_normativa,30.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-04-01,desregulacion_normativa,26.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-03-01,desregulacion_normativa,17.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-02-01,desregulacion_normativa,14.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2024-01-01,desregulacion_normativa,9.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2023-12-01,desregulacion_normativa,4.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
 2026-07-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-06-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-05-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
@@ -835,7 +838,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
-2026-07-01,cepo_mulc,5.68,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2026-07-01,cepo_mulc,5.83,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-06-01,cepo_mulc,4.65,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-05-01,cepo_mulc,6.35,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-04-01,cepo_mulc,7.02,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
@@ -906,7 +909,8 @@ fecha,indicador,valor,unidad,fuente
 2023-03-01,asistencia_directa,95.7,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
 2023-02-01,asistencia_directa,95.1,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
 2023-01-01,asistencia_directa,99.0,% TDPS (directo a personas / transferencias),API Presupuesto Abierto (SIDIF)
-2026-05-01,apertura_comercial,4.86,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-06-01,apertura_comercial,6.18,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
+2026-05-01,apertura_comercial,4.81,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
 2026-04-01,apertura_comercial,5.57,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
 2026-03-01,apertura_comercial,4.86,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500
 2026-02-01,apertura_comercial,5.6,% alícuota efectiva del comercio exterior,ARCA (DEX+DIM) + INDEC ICA + BCRA A3500

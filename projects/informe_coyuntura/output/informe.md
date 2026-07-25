@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-25 16:04:26"
+generado: "2026-07-25 17:03:35"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -77,23 +77,23 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 6.62 | % de brecha CCL/mayorista | 2026-07-20 | fresco |
-| apertura_comercial | 4.86 | % del intercambio (alícuota efectiva) | 2026-05-01 | fresco |
-| desregulacion_normativa | 47.0 | normas derogadas desde dic-2023 | 2026-07-20 | fresco |
+| cepo_mulc | 6.6 | % de brecha CCL/mayorista | 2026-07-25 | fresco |
+| apertura_comercial | 6.18 | % del intercambio (alícuota efectiva) | 2026-06-01 | fresco |
+| desregulacion_normativa | 689.0 | normas de desregulación acumuladas desde dic-2023 | 2026-06-01 | fresco |
 | reduccion_estado | -19.8 | % de variación vs dic-2023 (dotación APN) | 2026-05-01 | fresco |
-| gasto_funcionamiento | -24.35 | % de variación real vs 2023-05 (IMIG funcionamiento) | 2026-05-01 | fresco |
-| masa_salarial | -22.98 | % de variación real vs 2023-05 (SPN remuneraciones) | 2026-05-01 | fresco |
-| reestructuracion_organismos | 40.0 | % de avance (proxy InfoLeg) | 2026-07-20 | fresco |
-| fal_modernizacion_laboral | 40.2 | Índice 0–100 (FAL: construcción + vigencia + adopción) | 2026-07-20 | fresco |
+| gasto_funcionamiento | -31.37 | % de variación real vs 2023-06 (IMIG funcionamiento) | 2026-06-01 | fresco |
+| masa_salarial | -32.37 | % de variación real vs 2023-06 (SPN remuneraciones) | 2026-06-01 | fresco |
+| reestructuracion_organismos | 40.0 | % de avance (proxy InfoLeg) | 2026-07-25 | fresco |
+| fal_modernizacion_laboral | 40.2 | Índice 0–100 (FAL: construcción + vigencia + adopción) | 2026-07-25 | fresco |
 | litigiosidad_laboral | 2.8 | % variación juicios SRT (12m vs 12m previos) | 2026-04-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
-| rigi_inversiones | 22.0 | % de inversión aprobada sobre el pipeline | 2026-07-20 | fresco |
-| concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-07-20 | fresco |
-| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-07-20 | fresco |
+| rigi_inversiones | 24.2 | % de inversión aprobada sobre el pipeline | 2026-07-25 | fresco |
+| concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-07-25 | fresco |
+| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-07-25 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 31.8 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-03-01 | fresco |
-| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-20 | fresco |
-| protestas_caba | 294 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-06-01 | fresco |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-07-25 | fresco |
+| protestas_caba | 295 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-06-01 | fresco |
 
 ### 🟢 Espiritu Epoca — score 0.6/10 (estable)
 *Riesgo de barbarismo: político*
@@ -106,4 +106,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-25 16:04:26 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-25 17:03:35 — schema 1.2.0*

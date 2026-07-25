@@ -2118,7 +2118,12 @@ def fetch_infoleg_serie(texto: str) -> list:
 def fetch_reduccion_serie() -> list:
     """Serie de la variación % de la dotación APN vs dic-2023 (misma fórmula y
     fuente que el indicador: XLSX mensual del INDEC). [[YYYY-MM-01, var%]]."""
-    serie = gestion.dotacion_apn_series()          # {YYYY-MM: dotación}
+    # dotacion_apn_series() devuelve también METADATOS bajo claves con guion
+    # bajo (`_empresas`, `_total`, ADR-0097) cuyo valor es un dict, no un
+    # número. El colector los saca con .pop(); acá hay que filtrarlos igual o
+    # la resta revienta con "unsupported operand type(s) for -: 'dict'".
+    serie = {ym: v for ym, v in gestion.dotacion_apn_series().items()
+             if not ym.startswith("_")}
     base = serie["2023-12"]
     return [[f"{ym}-01", round((v - base) / base * 100, 2)]
             for ym, v in sorted(serie.items()) if ym >= "2023-12"]
@@ -2575,33 +2580,24 @@ def fetch_protocolo_serie() -> list:
 
 
 def fetch_desregulacion_serie() -> list:
-    """Serie MENSUAL acumulada de normas completas derogadas desde dic-2023
-    (ADR-0096).
+    """Serie MENSUAL de normas de desregulación acumuladas desde dic-2023,
+    según el Ministerio de Desregulación (ADR-0125).
 
-    Se deriva de la caché por norma que arma el colector
-    (`data/gestion/desregulacion_normas.json`): sin red y sin volver a bajar
-    sesenta documentos de InfoLeg. Cada norma aporta al mes de su publicación y
-    el acumulado nunca baja, porque una derogación no se deshace.
+    Misma construcción que puntúa en la ficha
+    (`gestion.desregulacion_oficial_serie`): el backfill sale del gráfico del
+    informe de abril-2026 y los meses posteriores del titular de cada informe.
+    Todo cacheado en `data/gestion/desregulacion_oficial.json`.
 
-    Si la caché todavía no existe, la serie queda vacía en vez de inventar un
-    conteo: la primera corrida del colector la crea.
+    Reemplaza a la serie derivada de la caché por norma de InfoLeg (ADR-0096),
+    que medía otra cosa —normas completas derogadas, 47 al cierre— y no es
+    empalmable con ésta: mezclarlas dejaría dos escalas en el mismo gráfico.
     [[YYYY-MM-01, normas acumuladas]]."""
-    store_path = gestion.DESREG_STORE
-    if not store_path.exists():
-        print("  [WARN] desregulacion: sin caché por norma todavía -- serie omitida")
+    try:
+        serie = gestion.desregulacion_oficial_serie()
+    except Exception as e:
+        print(f"  [WARN] desregulacion: fuente oficial ilegible ({e}) -- serie omitida")
         return []
-    normas = json.loads(store_path.read_text(encoding="utf-8-sig")).get("normas", {})
-    por_mes = {}
-    for datos in normas.values():
-        ym = str(datos.get("fecha", ""))[:7]
-        if ym and datos.get("derogadas"):
-            por_mes[ym] = por_mes.get(ym, 0) + int(datos["derogadas"])
-    if not por_mes:
-        return []
-    out, acum = [], 0
-    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
-        acum += por_mes.get(fin_mes.strftime("%Y-%m"), 0)
-        out.append([fin_mes.strftime("%Y-%m-%d"), float(acum)])
+    out = [[f"{ym}-01", float(v)] for ym, v in sorted(serie.items())]
     return out
 
 
@@ -2614,8 +2610,9 @@ GESTION_DERIVADAS = [
     ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),
     ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)", fetch_fal_serie),
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
-    ("desregulacion_normativa", "normas completas derogadas (acumulado)",
-     "InfoLeg — elaboración CIGOB", fetch_desregulacion_serie),
+    ("desregulacion_normativa", "normas de desregulación acumuladas desde dic-2023",
+     "Min. de Desregulación y Transformación del Estado — informe mensual",
+     fetch_desregulacion_serie),
     # A % calibrado (45 actos = plan completo, misma escala que el titular):
     # a diferencia de desregulación (100 normas = 100%), acá conteo ≠ %.
     ("reestructuracion_organismos", "% de avance (proxy InfoLeg, 45 actos = 100%)",
