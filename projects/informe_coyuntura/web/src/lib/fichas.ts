@@ -378,6 +378,49 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  cobertura_judicial: {
+    tipo: "indicador",
+    id: "cobertura_judicial",
+    cinturon: "politica",
+    rezago: "El padrón de magistrados se publica con actualizaciones irregulares, en general de uno a dos meses. Los registros de designaciones y renuncias se actualizan con más frecuencia, de modo que la serie incorpora los movimientos posteriores a la última foto del padrón.",
+    fuente: {
+      organismo: "Ministerio de Justicia",
+      operacion: "Padrón de magistrados de la Justicia Federal y Nacional (con marca de cargo vacante), más los registros de designaciones y de renuncias de magistrados",
+      serie: "Tres datasets en CSV del portal datos.jus.gob.ar",
+      url: "https://datos.jus.gob.ar/dataset/magistrados-de-la-justicia-federal-y-de-la-justicia-nacional",
+      acceso: "Automático: los tres archivos se resuelven por la interfaz del portal de datos abiertos. El nombre de cada archivo incluye su fecha de publicación y cambia en cada actualización, de modo que se busca el recurso vigente en lugar de construir la dirección a mano.",
+    },
+    transformaciones: [
+      "Se consideran únicamente los cargos de juez en órganos habilitados: los tribunales creados por ley pero todavía no puestos en funcionamiento no forman parte del denominador, porque no hay nada que cubrir.",
+      "Un cargo marcado como vacante cuenta como no cubierto aunque tenga subrogante a cargo. La subrogancia se publica aparte, en el detalle de la card.",
+      "Hay una excepción, y la fuente la distingue bien: un puñado de cargos tiene juez designado que está de licencia, con un subrogante a cargo mientras tanto. Ese cargo no figura como vacante, porque el juez existe y el cargo es suyo, aunque quien firme sea el subrogante. Al cinco de junio de 2026 son seis casos.",
+      "La serie mensual se reconstruye desde el padrón: hacia atrás, cada designación posterior indica un cargo que antes estaba vacante y cada renuncia posterior uno que antes estaba cubierto; hacia adelante, la operación se invierte. Los registros de designaciones y renuncias incluyen fiscales y defensores, que se descartan porque el padrón que fija el nivel es sólo de jueces.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "> 90", puntaje: 100 },
+        { banda: "80 – 90", puntaje: 85 },
+        { banda: "70 – 80", puntaje: 65 },
+        { banda: "60 – 70", puntaje: 40 },
+        { banda: "≤ 60", puntaje: 10 },
+      ],
+      puntos: [[60, 10], [65, 40], [75, 65], [85, 85], [90, 100]],
+      unidadCorta: "% cubierto",
+    },
+    limitaciones: [
+      "Mide la capacidad de integrar el Poder Judicial, no su comportamiento. No dice nada sobre cómo falla la Justicia, con qué velocidad resuelve ni en qué sentido lo hace.",
+      "El total de cargos se mantiene constante a lo largo de la serie reconstruida. La creación o habilitación de tribunales nuevos en el período movería el denominador y no está incorporada, de modo que la reconstrucción es más confiable cerca de la fecha del padrón que en su extremo inicial.",
+      "Las subrogancias se descuentan por completo, lo que es una decisión metodológica discutible: un juzgado con subrogante funciona, aunque de forma precaria. La composición se publica para que el lector pueda hacer la lectura contraria.",
+      "En el período reconstruido la cobertura se movió entre el sesenta y cuatro y el setenta y tres por ciento, de modo que sólo dos de las cinco bandas están pobladas. Las bandas superiores describen situaciones que la justicia argentina no alcanzó en estos años; no se bajaron los umbrales para poblarlas, porque eso convertiría un desempeño bajo en un puntaje alto.",
+      "Los traslados de jueces entre tribunales no se procesan como eventos propios: un traslado deja una vacante y cubre otra, y en el agregado se compensan, pero puede introducir diferencias de un cargo en meses puntuales.",
+    ],
+    faltantes: "Si los archivos no se pueden leer, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión del Poder Judicial queda vacía y su peso se redistribuye entre las demás.",
+    revisiones: "Cada actualización del padrón vuelve a anclar la serie completa, de modo que los valores pasados pueden ajustarse levemente cuando el Ministerio publica una foto nueva.",
+    cambios: [
+      { fecha: "2026-07-25", cambio: "Entra al índice como único indicador de la dimensión nueva del Poder Judicial, con el quince por ciento del cinturón. La serie se reconstruyó completa desde diciembre de 2023." },
+    ],
+  },
+
   emae_difusion: {
     tipo: "indicador",
     id: "emae_difusion",

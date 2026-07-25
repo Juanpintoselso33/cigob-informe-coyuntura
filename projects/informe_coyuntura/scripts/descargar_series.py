@@ -1267,6 +1267,13 @@ POLITICA_DERIVADAS = [
     ("desafios_legislativos", "normas desafiadas en el recinto (12m)",
      "Actas de Diputados y Senado + InfoLeg — elaboración CIGOB",
      fetch_desafios_legislativos_mensual),
+    # La serie sale del MISMO cálculo que la card (politica.cobertura_judicial_serie):
+    # el padrón ancla el nivel y los registros de designaciones y renuncias lo
+    # mueven mes a mes, así que card y serie no pueden divergir (ADR-0126).
+    ("cobertura_judicial", "% de cargos de juez con juez designado",
+     "Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)",
+     lambda: [[f"{ym}-01", v]
+              for ym, v in sorted(politica.cobertura_judicial_serie()[0].items())]),
     # La serie la calcula el propio colector: la card de politica.py devuelve el
     # último punto de esta misma lista, así que no pueden divergir (ADR-0088;
     # el patrón contrario causó ADR-0086 y ADR-0087 el día anterior).

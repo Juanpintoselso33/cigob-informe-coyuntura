@@ -195,7 +195,9 @@ def test_politica_itcp_reconcilia():
     # ADR-0088 (2026-07-19): entra brecha_obra_publica en la dimensión nueva
     # sector_privado — el único actor del objetivo declarado que no tenía
     # ningún indicador propio.
-    assert len(en_indice) == 12, f"esperaba 12 indicadores en el índice, hay {len(en_indice)}"
+    # 13 desde 2026-07-25 (ADR-0126: entra cobertura_judicial con la dimensión
+    # nueva del Poder Judicial, el otro actor de veto que no se medía).
+    assert len(en_indice) == 13, f"esperaba 13 indicadores en el índice, hay {len(en_indice)}"
     assert "bloqueo_sostenido" in en_indice
     assert "brecha_obra_publica" in en_indice
     # ADR-0089: derrotas sale del índice, entra desafíos en su lugar
@@ -218,12 +220,15 @@ def test_politica_itcp_reconcilia():
     assert abs(c["score"] - round((100 - itcp_val) / 10, 1)) <= 0.05
 
     # Pesos de dimensión: 30/25/20/15/10 desde ADR-0036, reponderados a
-    # 25/22/18/12/8 + 15 el 2026-07-19 (ADR-0088) al incorporarse la dimensión
-    # de sector privado. El orden relativo de las cinco originales se conserva.
+    # 25/22/18/12/8 + 15 el 2026-07-19 (ADR-0088) al incorporarse el sector
+    # privado, y a 21/19/15/10/7 + 13 + 15 el 2026-07-25 (ADR-0126) al
+    # incorporarse el Poder Judicial. En los dos casos las dimensiones previas
+    # cedieron PROPORCIONALMENTE, de modo que su orden relativo se conserva.
     pesos = {k: d["peso"] for k, d in c["itcp"]["dimensiones"].items()}
-    assert pesos == {"poder_legislativo": 0.25, "alianzas_territoriales": 0.22,
-                     "cohesion_interna": 0.18, "conflicto_social": 0.12,
-                     "imagen_voto": 0.08, "sector_privado": 0.15}
+    assert pesos == {"poder_legislativo": 0.21, "alianzas_territoriales": 0.19,
+                     "cohesion_interna": 0.15, "conflicto_social": 0.10,
+                     "imagen_voto": 0.07, "sector_privado": 0.13,
+                     "poder_judicial": 0.15}
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
 
     for k, i in en_indice.items():

@@ -245,7 +245,7 @@ def test_dimension_cohesion_interna_es_solo_el_compuesto():
     # ENTRE dimensiones (ADR-0036) no se tocan.
     dim = itcp.DIMENSIONES_ITCP["cohesion_interna"]
     assert dim["indicadores"] == {"cohesion_bloque": 1.0}
-    assert dim["peso"] == 0.18   # 0.20 → 0.18 al entrar sector_privado (ADR-0088)
+    assert dim["peso"] == 0.15   # 0.20 → 0.18 (ADR-0088) → 0.15 (ADR-0126)
 
 
 def test_dimension_conflicto_social_sin_protestas():
@@ -254,7 +254,7 @@ def test_dimension_conflicto_social_sin_protestas():
     # conflictividad_nacional (ACLED país entero) queda sola en la dimensión.
     dim = itcp.DIMENSIONES_ITCP["conflicto_social"]
     assert dim["indicadores"] == {"conflictividad_nacional": 1.0}
-    assert dim["peso"] == 0.12   # 0.15 → 0.12 al entrar sector_privado (ADR-0088)
+    assert dim["peso"] == 0.10   # 0.15 → 0.12 (ADR-0088) → 0.10 (ADR-0126)
 
 
 def test_indicadores_contexto_declarados_y_fuera_de_las_dimensiones():

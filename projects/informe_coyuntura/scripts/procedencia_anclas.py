@@ -85,7 +85,11 @@ TECHOS = {
     # más: ése es el núcleo irreducible de indicadores que miden lo que este
     # gobierno hizo, calibrados contra lo que se observó.
     "ITCG": {"circular": 0.40, "sin_declarar": 0.01},
-    "ITCP": {"circular": 0.40, "sin_declarar": 0.01},
+    # ITCP baja a 0,34 el 2026-07-25 (ADR-0126): entra cobertura_judicial con
+    # ancla CONCEPTUAL —niveles de cobertura de un cuerpo, no el rango 64-73%
+    # observado— y diluye la proporción circular del índice. El techo se baja
+    # para fijar la mejora, igual que se hizo con el ITCM en ADR-0120.
+    "ITCP": {"circular": 0.34, "sin_declarar": 0.01},
     # ITVC entró al registro el 2026-07-20 (ADR-0123) con 0% circular: al no
     # tener bandas —cada componente se mide como distancia a la fecha fija
     # 4T-2023— no hay cortes que calibrar contra el período. Techo en 0,01: si
@@ -107,6 +111,7 @@ PROCEDENCIA = {
     "reservas_bcra": ("conceptual", "bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120)"),
     "idc": ("conceptual", "anclas en desvíos estándar: +1σ ≈ p84 · −1σ ≈ p16 (ADR-0028)"),
     "emae_ia": ("conceptual", "bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120)"),
+    "cobertura_judicial": ("conceptual", "niveles redondos de cobertura de un cuerpo (>90 completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica), explícitamente NO calibrados contra el rango observado 64-73%, que es desempeño real y bajo (ADR-0126)"),
     "emae_difusion": ("conceptual", "cortes por CANTIDAD DE SECTORES (14-15 generalizado · 11-13 mayoría amplia · 8-10 ajustada · 5-7 minoría · 0-4 contracción), puestos en el hueco entre valores alcanzables; explícitamente NO se ancló en el 50% de manual porque la mediana histórica argentina es 73,3% (ADR-0124)"),
     "ipi_manufacturero": ("conceptual", "hereda las bandas del EMAE a propósito para dejar ver la brecha industria-actividad, con cita a ADR-0045 (ADR-0076/0079)"),
     "tcrm": ("historia_larga", "historia 1997-2026: p10≈75, p25≈87, mediana≈106 — 29 años, cinco gobiernos"),

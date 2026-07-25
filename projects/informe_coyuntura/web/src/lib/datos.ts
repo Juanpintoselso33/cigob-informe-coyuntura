@@ -283,6 +283,7 @@ export const LABELS: Record<string, string> = {
   cepo_mulc: "Brecha cambiaria (cepo)", privatizaciones: "Privatizaciones (etapas)",
   concesiones_infraestructura: "Concesiones viales", reduccion_estado: "Dotación del Estado (APN)",
   reestructuracion_organismos: "Reestructuración de organismos", rigi_inversiones: "Inversiones RIGI",
+  cobertura_judicial: "Cobertura de cargos judiciales",
   desregulacion_normativa: "Desregulación normativa", apertura_comercial: "Apertura comercial (alícuota)",
   gasto_funcionamiento: "Gasto de funcionamiento", masa_salarial: "Masa salarial pública",
   asistencia_directa: "Asistencia directa (TDPS)", fal_modernizacion_laboral: "Fondo de Asistencia Laboral",
@@ -348,6 +349,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   clima_electoral: "pp", indice_intencion_migratoria: "pts",
   // gestion (insumos del ITCG)
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "%",
+  cobertura_judicial: "% cubierto",
   desregulacion_normativa: "normas", reestructuracion_organismos: "%",
   gasto_funcionamiento: "% real", masa_salarial: "% real",
   rigi_inversiones: "% de la cartera", privatizaciones: "%", concesiones_infraestructura: "%",
@@ -412,6 +414,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",
   reestructuracion_organismos: "% de avance", rigi_inversiones: "% de la inversión de la cartera RIGI ya aprobada",
+  cobertura_judicial: "% de cargos de juez habilitados con juez designado",
   desregulacion_normativa: "Normas de desregulación acumuladas desde dic-2023", apertura_comercial: "% del intercambio (alícuota efectiva)",
   gasto_funcionamiento: "% de variación real vs 2023", masa_salarial: "% de variación real vs 2023",
   asistencia_directa: "% del gasto social sin intermediación", fal_modernizacion_laboral: "Índice 0–100",

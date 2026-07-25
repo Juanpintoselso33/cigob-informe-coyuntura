@@ -37,6 +37,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Adelanta el ritmo del PBI: si la economía se expande o se contrae.",
     frecuencia: "Mensual", tipo: "Variación i.a.",
   },
+  cobertura_judicial: {
+    que: "Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene juez designado. Un cargo cubierto por un subrogante cuenta como vacante, porque la subrogancia es transitoria y no reemplaza a un juez nombrado para ese tribunal.",
+    aporta: "Mide una capacidad que el Gobierno no ejerce solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura del Poder Judicial es un termómetro de la negociación política, no de la gestión administrativa. La serie muestra un desgaste sostenido durante más de dos años —las renuncias siguieron y las designaciones se detuvieron— seguido de una recuperación abrupta cuando el Senado aprobó un conjunto de pliegos en junio de 2026.",
+    frecuencia: "Mensual", tipo: "% de cobertura",
+  },
   emae_difusion: {
     que: "De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás.",
     aporta: "Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El EMAE informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.",
@@ -415,6 +420,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCP
   imagen_voto: "La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo.",
   sector_privado: "La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados. Al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga: la diferencia aísla lo que aporta la política pública y descarta el ciclo económico.",
+  poder_judicial: "La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. No es una decisión que el Gobierno tome solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura de los tribunales es un termómetro de la negociación política. La dimensión mide por ahora la capacidad de nombrar, no el comportamiento de la Justicia.",
   poder_legislativo: "La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.",
   alianzas_territoriales: "El sostén federal del gobierno, visto desde tres señales: las transferencias a las provincias, el alineamiento de los senadores no oficialistas con la posición del bloque de gobierno, y la adhesión provincial al RIGI. Conviene una precisión sobre qué mide y qué no: ninguna de las tres observa directamente la conducta de los gobernadores. La primera describe lo que hace el Gobierno nacional; la segunda, cómo votan los senadores de cada provincia; la tercera, una decisión legislativa provincial ya tomada. No se encontró una fuente pública que midiera de forma automatizable la postura de los ejecutivos provinciales, así que la dimensión se lee como respaldo territorial observado por sus efectos, no como una medición de la relación con cada gobernador.",
   cohesion_interna: "Qué tan unido está el oficialismo puertas adentro: la disciplina de voto del bloque propio de La Libertad Avanza, medida en un único indicador bicameral (Diputados 65%, Senado 35%).",

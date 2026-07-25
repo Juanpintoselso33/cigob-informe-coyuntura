@@ -87,6 +87,22 @@ BANDAS_ITCP = {
         # observado del período.
         (15.0, INF, 100), (5.0, 15.0, 85), (-5.0, 5.0, 65), (-15.0, -5.0, 40), (-INF, -15.0, 10),
     ],
+    "cobertura_judicial": [              # % de cargos de juez con juez designado
+        # CONCEPTUAL (ADR-0126): los cortes son niveles redondos de cobertura de
+        # un cuerpo, con lectura propia y sin referencia al rango observado —
+        # >90 banca completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria
+        # · ≤60 crítica. NO se calibraron contra el período: hacerlo habría
+        # anclado la escala a un tramo (64-73%) que es desempeño real y bajo,
+        # y eso es exactamente lo que ADR-0045 prohíbe.
+        #
+        # Consecuencia asumida: en los 32 meses reconstruidos sólo se pueblan
+        # dos bandas (60-70 y 70-80). No es un defecto de calibración sino el
+        # hallazgo — la cobertura de la justicia argentina no estuvo cerca de
+        # 80% en todo el período. El puntaje interpolado igual discrimina en
+        # todo el recorrido (34,5 en el piso de may-2026 a 59,4 en dic-2023).
+        (90.0, INF, 100), (80.0, 90.0, 85), (70.0, 80.0, 65),
+        (60.0, 70.0, 40), (-INF, 60.0, 10),
+    ],
     "desafios_legislativos": [
         # normas propias desafiadas en el recinto (12m), MENOR = mejor. ADR-0089.
         #
@@ -434,7 +450,7 @@ DIMENSIONES_ITCP = {
         # —legisladores, gobernadores, empresarios— el tercero no tenía ningún
         # indicador, y llamó a eso "la recomendación de mayor prioridad de todo
         # el documento". El orden relativo de las cinco se conserva intacto.
-        "peso": 0.25,
+        "peso": 0.21,   # 0.25 → 0.21 (ADR-0126)
         # Pesos internos redistribuidos 2026-07-16 al entrar bloqueo_sostenido
         # (ADR-0069): cada indicador cede 0.05 y el nuevo toma 0.20 — la
         # dimensión gana la cara ganada del bloqueo (derrotas solo cuenta la
@@ -459,13 +475,13 @@ DIMENSIONES_ITCP = {
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
-        "peso": 0.22,   # 0.25 → 0.22 (ADR-0088)
+        "peso": 0.19,   # 0.25 → 0.22 (ADR-0088) → 0.19 (ADR-0126)
         "indicadores": {"iaf_transferencias": 0.40, "alineamiento_senadores_prov": 0.30,
                         "adhesion_reformas_provincial": 0.30},
     },
     "cohesion_interna": {
         "nombre": "Cohesión interna del oficialismo",
-        "peso": 0.18,   # 0.20 → 0.18 (ADR-0088)
+        "peso": 0.15,   # 0.20 → 0.18 (ADR-0088) → 0.15 (ADR-0126)
         # 2026-07-10 (ADR-0048): la dimensión queda en un solo indicador — el
         # compuesto bicameral (Diputados 65% + Senado 35% adentro de la
         # fórmula). rotacion_gabinete (que había entrado el 09-jul por
@@ -475,7 +491,7 @@ DIMENSIONES_ITCP = {
     },
     "conflicto_social": {
         "nombre": "Conflicto social",
-        "peso": 0.12,   # 0.15 → 0.12 (ADR-0088)
+        "peso": 0.10,   # 0.15 → 0.12 (ADR-0088) → 0.10 (ADR-0126)
         # 2026-07-11 (ADR-0052): conflictividad_nacional (ACLED país
         # entero, 30 puntos reales) reemplaza a movilizacion_cepa (2
         # puntos, acumulado YTD no comparable, sin backfill posible), que
@@ -486,12 +502,34 @@ DIMENSIONES_ITCP = {
     },
     "imagen_voto": {
         "nombre": "Imagen y voto",
-        "peso": 0.08,   # 0.10 → 0.08 (ADR-0088)
+        "peso": 0.07,   # 0.10 → 0.08 (ADR-0088) → 0.07 (ADR-0126)
         "indicadores": {"votometro_ventaja_lla": 1.0},
+    },
+    "poder_judicial": {
+        "nombre": "Poder judicial",
+        "peso": 0.15,
+        # Dimensión nueva 2026-07-25 (ADR-0126), a partir del aporte externo
+        # sobre el cinturón político. Cierra el mismo tipo de hueco que ADR-0088
+        # cerró con el sector privado: el índice medía en detalle al Congreso y
+        # a los gobernadores y no medía en absoluto al Poder Judicial, que es un
+        # actor de veto de primer orden sobre la agenda del Gobierno.
+        #
+        # Entra con 0,15 —igual que sector_privado— y las seis dimensiones
+        # existentes ceden PROPORCIONALMENTE (×0,85), de modo que el orden
+        # relativo entre ellas no se toca. Es el segundo cambio de pesos entre
+        # dimensiones desde ADR-0036 y sigue el precedente de ADR-0088.
+        #
+        # Arranca con un solo indicador y eso es una limitación real, no un
+        # diseño terminado: la cobertura de cargos mide la CAPACIDAD de integrar
+        # el Poder Judicial, no su comportamiento (cautelares contra el Estado,
+        # velocidad de resolución, criterio jurisprudencial). El aporte externo
+        # propone cinco indicadores más para este bloque; todos dependen de un
+        # protocolo de codificación de contenido que todavía no existe.
+        "indicadores": {"cobertura_judicial": 1.0},
     },
     "sector_privado": {
         "nombre": "Sector privado",
-        "peso": 0.15,
+        "peso": 0.13,   # 0.15 → 0.13 (ADR-0126)
         # Dimensión nueva 2026-07-19 (ADR-0088). Cierra el hueco que la
         # auditoría externa marcó como prioridad 1: el cinturón medía en
         # detalle al Congreso, de forma indirecta a los gobernadores y no
@@ -550,6 +588,9 @@ FAMILIAS_ITCP = {
     "bloqueo_sostenido": "capacidad",          # cuánto aguanta de lo desafiado
     "ratio_dnu": "capacidad",                  # cuánto depende del decreto
     "cohesion_bloque": "capacidad",            # cuán unido vota su propio bloque
+    # Cubrir cargos de juez EXIGE acuerdo del Senado: no es conducta de un
+    # tercero sino resultado de lo que el Gobierno consigue negociar (ADR-0126).
+    "cobertura_judicial": "capacidad",
 
     # Recursos de negociación: no son conducta de nadie, son activos.
     "votometro_ventaja_lla": "recursos",       # capital electoral
@@ -589,6 +630,10 @@ REZAGO_MESES_ITCP = {
     "iaf_transferencias": 12.0,
     # Promedio móvil de 12 meses (6) más el rezago de publicación del INDEC.
     "brecha_obra_publica": 7.5,
+    # El padrón se publica con ~1-2 meses de rezago, pero la serie se corrige
+    # con los registros de designaciones y renuncias, que están al día: el
+    # rezago efectivo del último punto es el de esos registros (ADR-0126).
+    "cobertura_judicial": 1.0,
     # Ventanas móviles de 12 meses / 365 días.
     "ratio_dnu": 6.0,
     "veto_quorum": 6.0,

@@ -107,7 +107,22 @@ INDICADORES_ESPERADOS = [
     "bloqueo_sostenido",
     "desafios_legislativos",
     "protestas_caba",
+    "cobertura_judicial",
 ]
+
+# ── Poder judicial (ADR-0126) ────────────────────────────────────────────────
+# Padrón de cargos de juez con marca de vacante + registros de designaciones y
+# renuncias, los tres en datos.jus.gob.ar (Ministerio de Justicia), formato CSV.
+#
+# El aporte externo proponía scrapear el archivo de "Concursos" del Consejo de
+# la Magistratura. No hace falta: estos datasets ya publican el padrón completo
+# con `cargo_vacante` SI/NO, que es la magnitud que el indicador necesita, y en
+# CSV estructurado en vez de HTML. El scraper del Consejo queda como opción para
+# los OTROS indicadores del bloque, que sí requieren datos de concursos.
+JUS_API           = "https://datos.jus.gob.ar/api/3/action/package_search"
+JUS_PADRON_Q      = "Magistrados de la Justicia Federal y de la Justicia Nacional"
+JUS_DESIGNACIONES_Q = "Designaciones de magistrados de la Justicia Federal"
+JUS_RENUNCIAS_Q   = "Renuncias de magistrados de la Justicia Federal"
 
 STALE_MANUAL_DAYS    = 45
 STALE_VOTOMETRO_DAYS = 60
@@ -1268,6 +1283,149 @@ def fetch_comisiones_caidas() -> dict | None:
 
     except Exception as e:
         _warn("comisiones_caidas", str(e))
+        return None
+
+
+# ── Poder judicial — cobertura de cargos de juez (ADR-0126) ──────────────────
+
+def _jus_csv(consulta: str) -> list[dict]:
+    """Filas del primer recurso CSV del dataset que matchea `consulta`.
+
+    La URL del CSV lleva la fecha de actualización en el nombre
+    (`...-jueces-20260605.csv`) y cambia con cada publicación, así que se
+    resuelve por API y NUNCA se arma a mano — mismo criterio que los informes
+    de desregulación (ADR-0125).
+    """
+    import csv
+
+    r = requests.get(JUS_API, params={"q": consulta, "rows": 5},
+                     headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    for paquete in r.json()["result"]["results"]:
+        if not paquete["title"].lower().startswith(consulta.split(" de ")[0].lower()):
+            continue
+        for recurso in paquete.get("resources", []):
+            if recurso.get("format", "").upper() != "CSV":
+                continue
+            rr = requests.get(recurso["url"], headers=HTTP_HEADERS, timeout=60)
+            rr.raise_for_status()
+            texto = rr.content.decode("utf-8-sig", "replace")
+            return list(csv.DictReader(io.StringIO(texto)))
+    raise ValueError(f"sin recurso CSV para '{consulta}'")
+
+
+def _jus_fechas(filas: list[dict], campo: str, tipo: str = "Juez") -> list[str]:
+    """Fechas ISO de los eventos de `tipo` (los registros mezclan jueces,
+    fiscales y defensores; el padrón que ancla la serie es sólo de jueces)."""
+    out = []
+    for f in filas:
+        if f.get("cargo_tipo") != tipo:
+            continue
+        v = (f.get(campo) or "").strip()
+        if len(v) >= 10 and v[:2] == "20":
+            out.append(v[:10])
+    return sorted(out)
+
+
+def cobertura_judicial_serie() -> tuple[dict, dict]:
+    """({YYYY-MM: % de cargos con juez designado}, metadatos del padrón).
+
+    El padrón es una FOTO fechada, no una serie. La serie se reconstruye
+    moviéndose desde esa foto con los registros de designaciones y renuncias:
+
+        hacia atrás   vacantes(t) = vacantes(P) + designaciones(t,P] − renuncias(t,P]
+        hacia adelante vacantes(t) = vacantes(P) − designaciones(P,t] + renuncias(P,t]
+
+    Importa el orden: entre t y P cada designación cubrió una vacante y cada
+    renuncia creó una, así que hacia atrás los signos se invierten.
+    """
+    padron = _jus_csv(JUS_PADRON_Q)
+    habilitados = [f for f in padron
+                   if (f.get("organo_habilitado") or "").strip().upper() == "SI"]
+    if not habilitados:
+        raise ValueError("padrón sin cargos habilitados")
+    total = len(habilitados)
+    vac_p = sum(1 for f in habilitados
+                if (f.get("cargo_vacante") or "").strip().upper() == "SI")
+
+    # fecha del padrón: la más reciente de las juras registradas no sirve
+    # (quedan viejas), así que se toma del nombre del recurso vía su dataset.
+    fecha_padron = _jus_fecha_padron()
+
+    desig = _jus_fechas(_jus_csv(JUS_DESIGNACIONES_Q), "fecha_desginacion")
+    renun = _jus_fechas(_jus_csv(JUS_RENUNCIAS_Q), "fecha_renuncia")
+
+    hoy = date.today().isoformat()
+    serie, ym = {}, "2023-12"
+    while ym <= hoy[:7]:
+        ultimo_dia = calendar.monthrange(int(ym[:4]), int(ym[5:7]))[1]
+        corte = min(f"{ym}-{ultimo_dia:02d}", hoy)
+        if corte <= fecha_padron:
+            vac = (vac_p
+                   + sum(1 for x in desig if corte < x <= fecha_padron)
+                   - sum(1 for x in renun if corte < x <= fecha_padron))
+        else:
+            vac = (vac_p
+                   - sum(1 for x in desig if fecha_padron < x <= corte)
+                   + sum(1 for x in renun if fecha_padron < x <= corte))
+        serie[ym] = round(100.0 * (total - vac) / total, 2)
+        anio, mes = int(ym[:4]), int(ym[5:7]) + 1
+        ym = f"{anio + 1}-01" if mes == 13 else f"{anio}-{mes:02d}"
+
+    cobertura = {c: sum(1 for f in habilitados if f.get("cargo_cobertura") == c)
+                 for c in ("Titular", "Subrogante", "Sin subrogante designado")}
+    return serie, {"total_cargos": total, "vacantes_padron": vac_p,
+                   "fecha_padron": fecha_padron, "composicion": cobertura}
+
+
+def _jus_fecha_padron() -> str:
+    """Fecha de corte del padrón, leída del nombre del recurso
+    (`...-jueces-20260605.csv`)."""
+    r = requests.get(JUS_API, params={"q": JUS_PADRON_Q, "rows": 5},
+                     headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    for paquete in r.json()["result"]["results"]:
+        for recurso in paquete.get("resources", []):
+            m = re.search(r"(20\d{2})(\d{2})(\d{2})\.csv", recurso.get("url", ""))
+            if m:
+                return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+    raise ValueError("no se pudo leer la fecha del padrón")
+
+
+def fetch_cobertura_judicial() -> dict | None:
+    """% de cargos de juez habilitados que tienen juez designado (ADR-0126).
+
+    Mide la capacidad del Gobierno de completar el Poder Judicial, que exige
+    acuerdo del Senado: es una capacidad NEGOCIADA, no una decisión propia, y
+    por eso pertenece a este cinturón y no al de gestión.
+    """
+    try:
+        serie, meta = cobertura_judicial_serie()
+        ym = max(serie)
+        comp = meta["composicion"]
+        titular = comp.get("Titular", 0)
+        subrog = comp.get("Subrogante", 0)
+        sin_nadie = comp.get("Sin subrogante designado", 0)
+        return {
+            "valor":          serie[ym],
+            "unidad":         "% de cargos de juez con juez designado",
+            "fuente":         "Ministerio de Justicia — padrón de magistrados, "
+                              "designaciones y renuncias (datos.jus.gob.ar)",
+            "fecha_dato":     f"{ym}-01",
+            "desactualizado": False,
+            "cargos_totales":  meta["total_cargos"],
+            "cargos_titular":  titular,
+            "cargos_subrogante": subrog,
+            "cargos_sin_cubrir": sin_nadie,
+            "fecha_padron":   meta["fecha_padron"],
+            "detalle_txt": (
+                f"{titular} de {meta['total_cargos']} cargos de juez habilitados "
+                f"tienen titular designado · {subrog} funcionan con subrogante y "
+                f"{sin_nadie} están sin cubrir (padrón al {meta['fecha_padron']}; "
+                f"la serie incorpora designaciones y renuncias posteriores)"),
+        }
+    except Exception as e:
+        _warn("cobertura_judicial", e)
         return None
 
 
@@ -3815,6 +3973,14 @@ def main() -> None:
     elif "desafios_legislativos" in indicadores_anteriores:
         frescos["desafios_legislativos"] = {**indicadores_anteriores["desafios_legislativos"],
                                             "desactualizado": True}
+
+    resultado_judicial = fetch_cobertura_judicial()
+    if _resultado_utilizable("cobertura_judicial", resultado_judicial):
+        frescos["cobertura_judicial"] = resultado_judicial
+        frescos_count += 1
+    elif "cobertura_judicial" in indicadores_anteriores:
+        frescos["cobertura_judicial"] = {**indicadores_anteriores["cobertura_judicial"],
+                                         "desactualizado": True}
 
     # alineamiento_senadores_prov comparte el mismo contrato de retorno que
     # cohesion_bloque_senado (misma sesión/descubrimiento de actas de Senado):

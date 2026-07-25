@@ -1,6 +1,6 @@
 fecha,indicador,valor,unidad,fuente
-2026-07-01,votometro_ventaja_lla,3.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-06-01,votometro_ventaja_lla,3.1,pp (brecha LLA−PJ),Votómetro CIGOB
+2026-07-01,votometro_ventaja_lla,4.0,pp (brecha LLA−PJ),Votómetro CIGOB
+2026-06-01,votometro_ventaja_lla,4.0,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-05-01,votometro_ventaja_lla,4.5,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-04-01,votometro_ventaja_lla,6.9,pp (brecha LLA−PJ),Votómetro CIGOB
 2026-03-01,votometro_ventaja_lla,13.3,pp (brecha LLA−PJ),Votómetro CIGOB
@@ -94,7 +94,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
-2026-07-01,ratio_dnu,1.92,DNUs por ley (12m móviles),InfoLeg
+2026-07-01,ratio_dnu,1.88,DNUs por ley (12m móviles),InfoLeg
 2026-06-01,ratio_dnu,2.3,DNUs por ley (12m móviles),InfoLeg
 2026-05-01,ratio_dnu,4.727,DNUs por ley (12m móviles),InfoLeg
 2026-04-01,ratio_dnu,4.0,DNUs por ley (12m móviles),InfoLeg
@@ -230,7 +230,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2024-01-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2023-12-31,derrotas_legislativas,0,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
-2026-06-01,conflictividad_nacional,-23.2,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
+2026-06-01,conflictividad_nacional,-23.0,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-05-01,conflictividad_nacional,-21.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-04-01,conflictividad_nacional,-26.4,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
 2026-03-01,conflictividad_nacional,-31.9,% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles),ACLED — agregado semanal por provincia (elaboración CIGOB)
@@ -324,6 +324,38 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2024-01-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2023-12-31,cohesion_bloque,100.0,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-07-01,cobertura_judicial,69.95,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2026-06-01,cobertura_judicial,70.16,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2026-05-01,cobertura_judicial,64.08,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2026-04-01,cobertura_judicial,64.19,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2026-03-01,cobertura_judicial,64.4,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2026-02-01,cobertura_judicial,64.92,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2026-01-01,cobertura_judicial,65.13,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-12-01,cobertura_judicial,65.24,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-11-01,cobertura_judicial,66.07,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-10-01,cobertura_judicial,67.12,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-09-01,cobertura_judicial,67.64,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-08-01,cobertura_judicial,68.38,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-07-01,cobertura_judicial,68.69,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-06-01,cobertura_judicial,68.9,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-05-01,cobertura_judicial,69.11,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-04-01,cobertura_judicial,69.42,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-03-01,cobertura_judicial,70.16,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-02-01,cobertura_judicial,70.47,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2025-01-01,cobertura_judicial,70.47,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-12-01,cobertura_judicial,70.68,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-11-01,cobertura_judicial,70.99,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-10-01,cobertura_judicial,71.1,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-09-01,cobertura_judicial,71.1,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-08-01,cobertura_judicial,71.1,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-07-01,cobertura_judicial,71.41,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-06-01,cobertura_judicial,71.41,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-05-01,cobertura_judicial,71.73,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-04-01,cobertura_judicial,71.83,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-03-01,cobertura_judicial,71.94,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-02-01,cobertura_judicial,72.25,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2024-01-01,cobertura_judicial,72.67,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
+2023-12-01,cobertura_judicial,72.77,% de cargos de juez con juez designado,"Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)"
 2026-08-01,brecha_obra_publica,0.2,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2026-07-01,brecha_obra_publica,2.3,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2026-06-01,brecha_obra_publica,2.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
