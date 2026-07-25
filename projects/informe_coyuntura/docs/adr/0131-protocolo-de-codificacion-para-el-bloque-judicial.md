@@ -57,6 +57,54 @@ distingue las dos cosas, y en este universo la segunda acepción domina.
 que alguien lea los resultados.** Ya no es un accidente: es el comportamiento
 esperable, y el diseño tiene que asumirlo desde el principio.
 
+## Primera pasada de codificación: dos hallazgos que cambian el diseño
+
+Se bajó el sumario completo de los 14 casos y se los clasificó uno por uno.
+Dos cosas aparecieron que no se veían desde el conteo.
+
+### El conteo se movería en la dirección equivocada
+
+La consulta devuelve **casos donde el Ejecutivo GANÓ**, mezclados con los que
+perdió:
+
+| caso | qué pasó realmente | ¿es un veto? |
+|---|---|---|
+| DNU 70/23, acción declarativa (dic-2023) | **rechazada** por falta de legitimación | **no — la norma sobrevivió** |
+| DNU 669/2019, declarado inconstitucional de oficio por la Cámara del Trabajo | la Corte **revocó** esa declaración | **no — y además es de otro gobierno** |
+| Decreto 6754/43, tacha de inconstitucionalidad | **extemporánea**, rechazada | no — decreto de 1943 |
+| Decreto 6754/43, mismo planteo | **improcedente** | no |
+| DNU 70/23, amparo de afiliado a prepaga | busca la declaración | candidato |
+| Decreto 759/2025, amparo del Consejo Interuniversitario | busca la declaración | candidato |
+
+**Contar los 14 como "vetos de constitucionalidad" habría sumado como golpes al
+Gobierno tres casos en los que el Gobierno ganó y dos sobre un decreto de 1943.**
+Un indicador así se movería al revés: más litigios ganados subirían la tensión.
+
+La distinción que hay que codificar no es "¿aparece la palabra?" sino
+**"¿el tribunal declaró la inconstitucionalidad, o rechazó el planteo?"** —y esa
+lectura no la hace una expresión regular.
+
+### SAIJ tiene un tesauro controlado, y es mejor filtro que el texto
+
+Cada documento trae `descriptores` con rutas jerárquicas de vocabulario
+controlado:
+
+```
+Derecho constitucional/control de constitucionalidad/inconstitucionalidad/
+    declaración de inconstitucionalidad/acción de inconstitucionalidad
+Derecho administrativo/acto administrativo/acto administrativo de alcance
+    general/reglamentos/decreto de necesidad y urgencia
+Derecho procesal/recursos/improcedencia del recurso
+```
+
+**La rama del tesauro separa el control de constitucionalidad del remedio
+procesal mucho mejor que el texto libre.** La consulta definitiva debe filtrar
+por descriptor, no por frase, y el registro debe guardar la ruta como evidencia
+de por qué el caso entró.
+
+Los documentos traen además `jurisdiccion` (NACIONAL / FEDERAL / LOCAL) y
+`tipo-tribunal`, que permiten excluir lo provincial sin leerlo.
+
 ## Decisión: el protocolo
 
 Ningún indicador del bloque judicial o económico entra al índice sin cumplir
@@ -67,14 +115,23 @@ de un número que depende de quién armó el informe ese mes.
 no se ajusta mes a mes. Cambiarla es un cambio de metodología con ADR propio,
 como cualquier recalibración de bandas.
 
-**2. Reglas de inclusión explícitas, redactadas antes de ver los datos.** Para
-el veto de constitucionalidad serían, como mínimo:
-- la resolución **declara** la inconstitucionalidad, no la discute ni la rechaza;
-- la norma impugnada es **nacional** y **del Poder Ejecutivo** (decreto, DNU,
-  resolución ministerial), no una ley provincial ni un arancel profesional;
-- se excluye el "recurso de inconstitucionalidad" como remedio procesal;
-- se cuenta por **norma impugnada**, no por sentencia: tres fallos contra el
-  mismo DNU son un veto, no tres.
+**2. Reglas de inclusión explícitas.** Para el veto de constitucionalidad, las
+que surgieron de leer los 14 casos:
+- **el tribunal DECLARA la inconstitucionalidad.** Un planteo rechazado, una
+  acción sin legitimación o una declaración revocada por instancia superior
+  **no cuentan** — en esos casos la norma sobrevivió y el Ejecutivo ganó;
+- la norma impugnada es **nacional**, **del Poder Ejecutivo** y **de este
+  mandato**: se excluye por fecha de la norma, no de la sentencia (apareció un
+  decreto de 1943 y un DNU de 2019);
+- **filtro por descriptor del tesauro**, no por frase: la rama
+  `control de constitucionalidad/declaración de inconstitucionalidad` es el
+  universo; `Derecho procesal/recursos/...` queda afuera;
+- se descarta lo provincial por el campo `jurisdiccion`;
+- se cuenta por **norma impugnada, no por sentencia**: tres fallos contra el
+  mismo DNU son un veto, no tres;
+- **la instancia importa**: una declaración de primera instancia apelada no es
+  lo mismo que una firme. Se registra el estado y se decide editorialmente si
+  se cuenta al declararse o al quedar firme.
 
 **3. Doble codificación con chequeo de concordancia.** Dos personas clasifican
 el mismo universo por separado y se mide el acuerdo (Cohen's kappa o
