@@ -32,6 +32,10 @@ INDEC_SERIES = {
     "informalidad_trimestral": "52.2_ASDJ_0_0_37",             # Asalariados sin desc. jubil. (TRIMESTRAL, 2011→) — métrica del ITVC
     "informalidad_anual":      "52.1_ASDJ_0_0_37",             # variante anual: respaldo
     "subocupacion_demandante": "47.2_ECTSDT_0_T_47",           # Proxy pluriempleo (trimestral)
+    # Empleo registrado privado (ADR-0130): asalariados del sector privado
+    # declarados al SIPA, miles de personas, MENSUAL. Único componente de la
+    # dimensión que mide empleo; los otros cuatro son proxies.
+    "empleo_registrado":       "151.1_AARIADODAD_2012_M_31",
 
     # Actividad / Construccion
     "isac":                    "33.2_ISAC_SIN_EDAD_0_M_23_56",

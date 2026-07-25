@@ -392,7 +392,9 @@ def test_vida_itvc_reconcilia():
     # empleo. El conteo exacto es deliberado: es el guard que en su momento
     # detectó a sentimiento_digital desapareciendo del snapshot sin que nada
     # más fallara.
-    assert len(en_indice) == 16, f"esperaba 16 componentes en el índice, hay {len(en_indice)}"
+    # 17 desde 2026-07-25 (ADR-0130: entra empleo_registrado, el único
+    # componente de la dimensión de empleo que mide empleo).
+    assert len(en_indice) == 17, f"esperaba 17 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

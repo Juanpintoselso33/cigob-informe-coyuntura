@@ -59,6 +59,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\left(\frac{\text{actividad}_{\text{hoy}}}{\text{actividad}_{\text{hace 12 m}}}-1\right)\times 100`,
     leyenda: "EMAE (INDEC): el PIB mensual, comparado contra el mismo mes del año pasado.",
   },
+  empleo_registrado: {
+    latex: String.raw`\frac{\text{asalariados privados registrados}_{\text{hoy}}}{\text{promedio 4T-2023}}\times 100`,
+    leyenda: "Asalariados del sector privado declarados al Sistema Integrado Previsional Argentino, en miles de personas. La card muestra el nivel; el índice del cinturón lo expresa contra el promedio del último trimestre de 2023, como el resto de los componentes. Por encima de 100 hay más empleo registrado que en la línea de base; por debajo, menos. Se usa la serie con estacionalidad porque la comparación es contra una base fija de tres meses y no contra el mes anterior.",
+  },
   cobertura_judicial: {
     latex: String.raw`\frac{\text{cargos con juez designado}}{\text{cargos de juez habilitados}}\times 100`,
     leyenda: "Padrón de magistrados del Ministerio de Justicia: de los cargos de juez de la justicia federal y nacional que están habilitados, qué porcentaje tiene juez designado. Los cargos vacantes se cuentan como no cubiertos aunque haya un subrogante a cargo, porque un subrogante es una solución transitoria y no un juez designado para ese tribunal. La serie mensual se reconstruye moviendo el padrón hacia atrás y hacia adelante con los registros oficiales de designaciones y renuncias.",

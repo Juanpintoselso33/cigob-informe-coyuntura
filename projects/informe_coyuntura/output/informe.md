@@ -1,7 +1,7 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-25 19:38:00"
-score_global: 2.6
+generado: "2026-07-25 20:22:23"
+score_global: 2.7
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-07
 
-**Score global:** 2.6/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 2.7/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
@@ -64,14 +64,14 @@ schema_version: "1.2.0"
 | cobertura_judicial | 69.95 | % de cargos de juez con juez designado | 2026-07-01 | fresco |
 | alineamiento_senadores_prov | 70.6 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-07-16 | fresco |
 
-### 🟢 Vida Cotidiana — score 2.6/10 (estable)
+### 🟢 Vida Cotidiana — score 2.9/10 (estable)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | ipc_total | 1.89 | % mensual | 2026-06-01 | fresco |
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
-| icc_utdt | 42.48 | índice | 2026-06-01 | fresco |
+| icc_utdt | 39.83 | índice | 2026-07-01 | fresco |
 
 ### 🟢 Gestion — score 2.8/10 (estable)
 *Riesgo de barbarismo: gerencial*
@@ -107,4 +107,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-25 19:38:00 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-25 20:22:23 — schema 1.2.0*

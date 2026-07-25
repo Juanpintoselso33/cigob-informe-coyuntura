@@ -132,7 +132,12 @@ def fetch_indec() -> dict:
         }
 
     # ── Empleo y mercado laboral ──────────────────────────────────────────────
-    for key in ["desocupacion", "empleo", "subocupacion_demandante"]:
+    # OJO: esta lista es una WHITELIST. Agregar una serie a INDEC_SERIES en
+    # config.py NO alcanza para que el colector la emita — hay que sumar la
+    # clave acá. (Costó una corrida en falso al incorporar empleo_registrado:
+    # la card salía sin valor y el gate fallaba con G1, lejos de la causa.)
+    for key in ["desocupacion", "empleo", "subocupacion_demandante",
+                "empleo_registrado"]:
         try:
             results[key] = _ultimo(INDEC_SERIES[key])
             logger.info("%s OK: %s", key, results[key]["valor"])

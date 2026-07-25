@@ -35,6 +35,10 @@ MAX_DIAS_DEFAULT = 110
 MAX_DIAS = {
     # trimestrales EPH (fecha = inicio del trimestre, publica ~70d después del cierre)
     "informalidad": 280, "pluriempleo": 280,
+    # SIPA: son declaraciones de las empresas que se consolidan y se revisan,
+    # con ~3 meses de rezago estructural (ADR-0130). 150 días deja margen sobre
+    # ese ritmo sin dejar de avisar si la fuente se muere de verdad.
+    "empleo_registrado": 150,
     # fuentes con rezago estructural largo
     "protocolo_antipiquetes": 430,      # DP publica monitoreos esporádicos
     "litigiosidad_laboral": 220,        # SRT

@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-25T19:38:00.646230",
+  "generated_at": "2026-07-25T20:22:23.885732",
   "period": "2026-07",
-  "score_global": 2.6,
+  "score_global": 2.7,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -1003,7 +1003,7 @@
       }
     },
     "vida_cotidiana": {
-      "score": 2.6,
+      "score": 2.9,
       "estado": "estable",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -1022,10 +1022,10 @@
           "desactualizado": false
         },
         "icc_utdt": {
-          "valor": 42.48,
+          "valor": 39.83,
           "unidad": "índice",
           "fuente": "https://www.utdt.edu/listado_contenidos.php?id_item_menu=16458",
-          "fecha_dato": "2026-06-01",
+          "fecha_dato": "2026-07-01",
           "desactualizado": false
         }
       },

@@ -80,8 +80,21 @@ DIMENSIONES_ITVC = {
         # adelante. Los tres existentes ceden proporcionalmente (×0,8),
         # conservando su orden relativo. El peso NOMINAL de la dimensión no se
         # toca.
-        "indicadores": {"mortalidad_pymes": 0.36, "despacho_cemento": 0.32,
-                        "pluriempleo": 0.12, "indice_lider": 0.20},
+        #
+        # ADR-0130 (2026-07-25): entra `empleo_registrado` con 35% y pasa a ser
+        # el componente principal. La dimensión se llamaba "empleo" y NINGUNO de
+        # sus cuatro componentes medía empleo: mortalidad_pymes es un proxy de
+        # producción (IPI), despacho_cemento uno de construcción (ISAC),
+        # pluriempleo mide cuántos tienen más de un trabajo y el líder anticipa
+        # giros. El dato directo —asalariados registrados del sector privado,
+        # SIPA, mensual— existía y no se estaba usando.
+        #
+        # Los cuatro existentes ceden proporcionalmente (×0,65) y conservan su
+        # orden relativo, mismo procedimiento que ADR-0112. El peso NOMINAL de
+        # la dimensión no se toca.
+        "indicadores": {"empleo_registrado": 0.35, "mortalidad_pymes": 0.23,
+                        "despacho_cemento": 0.21, "indice_lider": 0.13,
+                        "pluriempleo": 0.08},
     },
     "percepcion": {
         # ADR-0115. Antes se llamaba "confianza" y mezclaba tres cosas: ADR-0110

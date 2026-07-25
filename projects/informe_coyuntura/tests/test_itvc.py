@@ -52,7 +52,10 @@ def test_itvc_reproduce_ejemplo():
     assert dims["ingresos"]["puntaje"] == 91.3   # ADR-0115: entran carne y motos
     assert dims["precios"]["puntaje"] == 75.3
     assert dims["vulnerabilidad"]["puntaje"] == 89.0
-    assert dims["empleo"]["puntaje"] == 92.3
+    # 92,3 → 92,2 al entrar empleo_registrado (ADR-0130): el EJEMPLO no lo
+    # declara, así que la dimensión renormaliza sobre los cuatro proxies con
+    # sus pesos nuevos, que no son exactamente proporcionales por redondeo.
+    assert dims["empleo"]["puntaje"] == 92.2
     assert dims["percepcion"]["puntaje"] == 116.5   # ADR-0115: sólo ICC + Trends
     assert dims["seguridad"]["puntaje"] == 104.0    # ADR-0115: victimización sola
     assert r["valor"] == 89.9
@@ -77,8 +80,10 @@ def test_pesos_del_documento():
                                                   "mora_familias": 0.5}
     assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
                                            "alquiler_real": 0.20}
-    assert d["empleo"]["indicadores"] == {"mortalidad_pymes": 0.36, "despacho_cemento": 0.32,
-                                          "pluriempleo": 0.12, "indice_lider": 0.20}
+    # ADR-0130: entra empleo_registrado con 0,35 y los cuatro proxies ceden ×0,65
+    assert d["empleo"]["indicadores"] == {"empleo_registrado": 0.35,
+                                          "mortalidad_pymes": 0.23, "despacho_cemento": 0.21,
+                                          "indice_lider": 0.13, "pluriempleo": 0.08}
     assert d["percepcion"]["indicadores"] == {"icc_utdt": 0.8182, "sentimiento_digital": 0.1818}
     assert d["seguridad"]["indicadores"] == {"inseguridad": 1.0}
     for dim in d.values():

@@ -378,6 +378,36 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  empleo_registrado: {
+    tipo: "indicador",
+    id: "empleo_registrado",
+    cinturon: "vida_cotidiana",
+    rezago: "Los datos del Sistema Integrado Previsional se publican con alrededor de tres meses de rezago: son declaraciones de las empresas que se consolidan y se revisan.",
+    fuente: {
+      organismo: "Ministerio de Capital Humano — Sistema Integrado Previsional Argentino (SIPA)",
+      operacion: "Trabajadores registrados según modalidad ocupacional principal — asalariados del sector privado, en miles de personas",
+      serie: "151.1_AARIADODAD_2012_M_31 · API de Series de Tiempo (datos.gob.ar)",
+      url: "https://www.argentina.gob.ar/trabajo/estadisticas",
+      acceso: "Automático: API pública de series de tiempo.",
+    },
+    transformaciones: [
+      "La card publica el nivel en miles de puestos; el índice del cinturón lo expresa en base 100 contra el promedio del último trimestre de 2023, la misma línea de base que el resto de los componentes.",
+      "Se usa la serie con estacionalidad, no la desestacionalizada, porque la comparación es contra una base fija de tres meses y no contra el mes anterior: la estacionalidad de la base y la del mes corriente se compensan.",
+      "No se invierte: más empleo registrado es mejor, de modo que el índice sube cuando la situación mejora.",
+    ],
+    limitaciones: [
+      "Cuenta puestos registrados, no personas ocupadas. Un trabajador con dos empleos registrados cuenta dos veces, y todo el empleo no registrado —alrededor de un tercio del total en la Argentina— queda afuera por definición.",
+      "Sólo mira al sector privado. El empleo público se publica por separado y no entra: la dimensión describe las condiciones del mercado de trabajo que enfrenta un hogar, y el tamaño del Estado ya se mide en el cinturón de gestión. Sumarlo acá haría que una reducción de la planta estatal empeorara este cinturón al mismo tiempo que mejora el otro, con el mismo dato.",
+      "Las declaraciones se revisan hacia atrás durante varios meses, de modo que los últimos puntos de la serie pueden moverse.",
+      "Un puesto registrado no dice nada sobre el salario que paga: el indicador no captura si el empleo que queda está mejor o peor remunerado que el que se perdió.",
+    ],
+    faltantes: "Si falta el dato, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros cuatro componentes de la dimensión.",
+    revisiones: "La fuente revisa sus series al consolidar declaraciones; el informe regenera la serie completa en cada actualización.",
+    cambios: [
+      { fecha: "2026-07-25", cambio: "Entra al índice como componente principal de la dimensión de empleo, con el treinta y cinco por ciento. Hasta entonces la dimensión se llamaba así pero ninguno de sus cuatro componentes medía empleo: eran indicadores de producción, de construcción, de pluriempleo y un índice líder." },
+    ],
+  },
+
   cobertura_judicial: {
     tipo: "indicador",
     id: "cobertura_judicial",

@@ -1523,6 +1523,14 @@ VIDA_DERIVADAS.append(
 VIDA_DERIVADAS += [
     ("informalidad", "%", "INDEC EPH (52.2, trimestral)", lambda: fetch_indec_x100("52.2_ASDJ_0_0_37")),
     ("pluriempleo", "%", "INDEC EPH (47.2, trimestral)", lambda: fetch_indec_x100("47.2_ECTSDT_0_T_47")),
+    # Empleo registrado privado (ADR-0130): asalariados del sector privado
+    # declarados al SIPA, miles de personas, mensual. El rebase B100 contra el
+    # 4T-2023 lo hace publicar.py, igual que el resto de los componentes.
+    ("empleo_registrado", "miles de puestos",
+     "Min. de Capital Humano — SIPA (vía datos.gob.ar)",
+     lambda: [[f, round(v, 1)] for f, v in
+              sorted(fetch_indec("151.1_AARIADODAD_2012_M_31", limit=200))
+              if f >= "2023-10"]),
 ]
 
 

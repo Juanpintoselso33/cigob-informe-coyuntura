@@ -78,6 +78,10 @@ def build_vida(raw):
     sub = indec.get("subocupacion_demandante", {})
     _add(out, "pluriempleo", round(sub.get("valor", 0) * 100, 1),
          "%", "INDEC EPH", sub.get("fecha"))
+    emp = indec.get("empleo_registrado", {})
+    _add(out, "empleo_registrado", emp.get("valor"),
+         "miles de puestos", "Min. de Capital Humano — SIPA (vía datos.gob.ar)",
+         emp.get("fecha"))
     seg = snic.get("inseguridad_snic", {})
     _add(out, "inseguridad", seg.get("total_hechos"),
          "hechos/año", "SNIC — Ministerio de Seguridad (calidad UNODC grado A)",
@@ -580,6 +584,10 @@ def _itvc_indices(vida_ind, series):
     idx["mora_familias"] = _itvc_rebase_de_serie(series, "mora_familias", invertido=True)
     idx["icc_utdt"] = _itvc_rebase_de_serie(series, "icc_utdt")
     idx["pluriempleo"] = _itvc_rebase_de_serie(series, "pluriempleo", invertido=True)
+    # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.
+    # Es el único componente de la dimensión que mide empleo de verdad; los
+    # otros cuatro son proxies (producción, construcción, pluriempleo, líder).
+    idx["empleo_registrado"] = _itvc_rebase_de_serie(series, "empleo_registrado")
     # Informalidad TRIMESTRAL (52.2_ASDJ, barrido vida 2/13): la 303.1 murió en
     # 2020 pero la 52.2 sigue viva — base = 4T-2023 exacto (punto 2023-10),
     # invertida (menos informalidad = mejora). Reemplaza la excepción anual.

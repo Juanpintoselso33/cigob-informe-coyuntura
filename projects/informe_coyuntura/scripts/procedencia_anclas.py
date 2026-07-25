@@ -172,6 +172,7 @@ PROCEDENCIA = {
     "despacho_cemento": ("conceptual", "nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"),
     "pluriempleo": ("conceptual", "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"),
     "indice_lider": ("conceptual", "Índice Líder UTDT rebaseado a 4T-2023 (ADR-0112); ancla en fecha fija"),
+    "empleo_registrado": ("conceptual", "asalariados privados registrados (SIPA) rebaseados a 4T-2023, sin invertir (ADR-0130); ancla en fecha fija"),
     "icc_utdt": ("conceptual", "ICC rebaseado a 4T-2023; ancla en fecha fija"),
     "sentimiento_digital": ("conceptual", "canasta de búsquedas rebaseada a 4T-2023, invertida (ADR-0034); ancla en fecha fija"),
     "consumo_carne": ("conceptual", "consumo per cápita rebaseado a 4T-2023; ancla en fecha fija"),

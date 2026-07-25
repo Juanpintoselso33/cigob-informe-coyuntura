@@ -37,6 +37,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Adelanta el ritmo del PBI: si la economía se expande o se contrae.",
     frecuencia: "Mensual", tipo: "Variación i.a.",
   },
+  empleo_registrado: {
+    que: "Cuántos asalariados del sector privado están registrados ante la seguridad social. Es el dato que las empresas declaran mes a mes, no una estimación de encuesta.",
+    aporta: "Es la única medida directa de empleo del cinturón. Los otros componentes de la dimensión describen actividad —producción industrial, construcción— o anticipan giros, pero ninguno cuenta puestos de trabajo. Desde diciembre de 2023 el sector privado registrado perdió alrededor de doscientos cincuenta mil puestos, y la caída interanual no se interrumpió en ningún mes desde agosto de 2025.",
+    frecuencia: "Mensual", tipo: "Nivel (miles de puestos)",
+  },
   cobertura_judicial: {
     que: "Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene juez designado. Un cargo cubierto por un subrogante cuenta como vacante, porque la subrogancia es transitoria y no reemplaza a un juez nombrado para ese tribunal.",
     aporta: "Mide una capacidad que el Gobierno no ejerce solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura del Poder Judicial es un termómetro de la negociación política, no de la gestión administrativa. La serie muestra un desgaste sostenido durante más de dos años —las renuncias siguieron y las designaciones se detuvieron— seguido de una recuperación abrupta cuando el Senado aprobó un conjunto de pliegos en junio de 2026.",
