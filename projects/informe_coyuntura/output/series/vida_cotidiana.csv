@@ -288,6 +288,7 @@ fecha,indicador,valor,unidad,fuente
 2022-09-01,mortalidad_pymes,-1.28,% m/m (IPI desest.),INDEC — IPI desestacionalizado
 2022-08-01,mortalidad_pymes,-3.08,% m/m (IPI desest.),INDEC — IPI desestacionalizado
 2022-07-01,mortalidad_pymes,0.07,% m/m (IPI desest.),INDEC — IPI desestacionalizado
+2026-05-01,mora_familias,14.52,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2026-04-01,mora_familias,13.65,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2026-03-01,mora_familias,13.09,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
 2026-02-01,mora_familias,12.69,% de cartera irregular (familias),BCRA — Informe sobre Bancos (personales + tarjetas)
