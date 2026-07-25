@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-25T19:22:55.726157",
+  "generated_at": "2026-07-25T19:38:00.646230",
   "period": "2026-07",
   "score_global": 3.3,
   "ponderacion": {
@@ -2815,7 +2815,93 @@
               "fecha": "2024-07"
             }
           ],
-          "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener",
+          "novedades_pendientes": {
+            "425373": {
+              "coincidencia": "sujeta a privatización",
+              "empresa": "Corredores Viales",
+              "periodo": "2026-05",
+              "titulo": "Decreto DNU 314 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425373"
+            },
+            "425431": {
+              "coincidencia": "sujeta a privatización",
+              "empresa": "Belgrano Cargas",
+              "periodo": "2026-05",
+              "titulo": "Resolución 549 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425431"
+            },
+            "425531": {
+              "coincidencia": "sujeta a privatización",
+              "empresa": "Corredores Viales",
+              "periodo": "2026-05",
+              "titulo": "Resolución 555 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425531"
+            },
+            "425593": {
+              "coincidencia": "adjudica",
+              "empresa": "Belgrano Cargas",
+              "periodo": "2026-05",
+              "titulo": "Resolución 2012 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425593"
+            },
+            "425686": {
+              "coincidencia": "sujeta a privatización",
+              "empresa": "Corredores Viales",
+              "periodo": "2026-05",
+              "titulo": "Resolución 607 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425686"
+            },
+            "425821": {
+              "coincidencia": "sujeta a privatización",
+              "empresa": "Corredores Viales",
+              "periodo": "2026-05",
+              "titulo": "Resolución 703 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425821"
+            },
+            "425822": {
+              "coincidencia": "sujeta a privatización",
+              "empresa": "AySA",
+              "periodo": "2026-05",
+              "titulo": "Resolución 704 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425822"
+            },
+            "425904": {
+              "coincidencia": "sujeta a privatización",
+              "empresa": "Intercargo",
+              "periodo": "2026-05",
+              "titulo": "Resolución 707 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=425904"
+            },
+            "426121": {
+              "coincidencia": "pliego",
+              "empresa": "Enarsa",
+              "periodo": "2026-05",
+              "titulo": "Resolución 81 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426121"
+            },
+            "426242": {
+              "coincidencia": "licitación pública",
+              "empresa": "Enarsa",
+              "periodo": "2026-05",
+              "titulo": "Resolución 717 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426242"
+            },
+            "426510": {
+              "coincidencia": "sujeta a privatización",
+              "empresa": "Intercargo",
+              "periodo": "2026-06",
+              "titulo": "Resolución 833 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426510"
+            },
+            "426795": {
+              "coincidencia": "adjudica",
+              "empresa": "Belgrano Cargas",
+              "periodo": "2026-06",
+              "titulo": "Resolución 136 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426795"
+            }
+          },
+          "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener · 12 norma(s) nueva(s) del Boletín Oficial sin revisar",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
           "puntaje_itcg": 71.4,
@@ -2825,7 +2911,7 @@
           "aporte_formula": "Anclas ITCG: >75 → 100 · 55–75 → 85 · 35–55 → 65 · 15–35 → 40 · ≤15 → 10 (puntaje interpolado entre anclas: 71.4; pesa 6,0% del ITCG)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 2,9/10.",
-          "aporte_input_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener"
+          "aporte_input_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener · 12 norma(s) nueva(s) del Boletín Oficial sin revisar"
         },
         "rigi_inversiones": {
           "valor": 24.2,

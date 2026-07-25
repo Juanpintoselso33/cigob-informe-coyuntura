@@ -422,16 +422,16 @@ def _desreg_cargar_store() -> dict:
             "normas": {}}
 
 
-def _infoleg_listar_deroga(anio: int, mes: int) -> list:
-    """[(id, 'YYYY-MM-DD')] de normas del mes cuyo texto menciona 'deroga'.
+def _infoleg_buscar_mes(texto: str, anio: int, mes: int, session=None) -> list:
+    """[(id, titulo)] de normas publicadas en ese mes cuyo texto contiene `texto`.
 
     Se enumera mes a mes y no de una sola vez porque el buscador no pagina de
     forma estable; con ventanas mensuales ningún mes supera una página
     (verificado sobre dic-2023 → jul-2026: máximo 5 resultados)."""
     from bs4 import BeautifulSoup
     ultimo = calendar.monthrange(anio, mes)[1]
-    session = requests.Session()
-    r_home = session.get(INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    ses = session or requests.Session()
+    r_home = ses.get(INFOLEG_HOME, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r_home.raise_for_status()
     m = re.search(r'action="(/infolegInternet/[^"]+)"', r_home.text)
     if not m:
@@ -439,17 +439,26 @@ def _infoleg_listar_deroga(anio: int, mes: int) -> list:
     url = "https://servicios.infoleg.gob.ar" + m.group(1)
     datos = {"tipoNorma": "", "numero": "", "anioSancion": "", "dependencia": "",
              "diaPubDesde": "01", "mesPubDesde": f"{mes:02d}", "anioPubDesde": str(anio),
-             "diaPubHasta": f"{ultimo:02d}", "mesPubHasta": f"{mes:02d}", "anioPubHasta": str(anio),
-             "texto": "deroga"}
-    r = session.post(url, data=datos, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+             "diaPubHasta": f"{ultimo:02d}", "mesPubHasta": f"{mes:02d}",
+             "anioPubHasta": str(anio), "texto": texto}
+    r = ses.post(url, data=datos, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
-    vistos, out = set(), []
+    vistos, out = [], set()
     for a in BeautifulSoup(r.text, "html.parser").find_all("a", href=True):
         g = re.search(r"verNorma\.do\?(?:resaltar=true&)?id=(\d+)", a["href"])
-        if g and g.group(1) not in vistos:
-            vistos.add(g.group(1))
-            out.append((g.group(1), f"{anio}-{mes:02d}-01"))
-    return out
+        if g and g.group(1) not in out:
+            out.add(g.group(1))
+            # el enlace trae el tipo y el número partidos por tabulaciones y
+            # saltos; sin colapsar, el título sale ilegible
+            titulo = re.sub(r"\s+", " ", a.get_text(" ", strip=True)).strip()
+            vistos.append((g.group(1), titulo[:180]))
+    return vistos
+
+
+def _infoleg_listar_deroga(anio: int, mes: int) -> list:
+    """[(id, 'YYYY-MM-DD')] de normas del mes cuyo texto menciona 'deroga'."""
+    return [(nid, f"{anio}-{mes:02d}-01")
+            for nid, _titulo in _infoleg_buscar_mes("deroga", anio, mes)]
 
 
 def _infoleg_analizar_norma(norma_id: str) -> dict:
@@ -1287,6 +1296,127 @@ def _privatizaciones_detalle(empresas: dict) -> list:
     return out
 
 
+PRIVATIZACIONES_NOVEDADES_PATH = (PROJECT_DIR / "data" / "gestion"
+                                  / "privatizaciones_novedades.json")
+
+# Términos de búsqueda por empresa. La clave es el nombre del registro; el
+# valor, cómo aparece la empresa nombrada en el Boletín Oficial. Se busca por
+# el término MÁS DISTINTIVO: "AySA" trae poco ruido, "SOFSE" nada, pero
+# "Corredores Viales" hay que buscarlo entero o matchea cualquier obra vial.
+PRIVATIZACIONES_TERMINOS = {
+    "AySA": "Agua y Saneamientos Argentinos",
+    "Transener": "Transener",
+    "Enarsa": "Energía Argentina",
+    "Intercargo": "Intercargo",
+    "Corredores Viales": "Corredores Viales",
+    "Belgrano Cargas": "Belgrano Cargas",
+    "Nucleoeléctrica": "Nucleoeléctrica",
+    "YCRT": "Yacimientos Carboníferos Río Turbio",
+    "SOFSE": "Operadora Ferroviaria",
+}
+
+
+# Una norma que sólo NOMBRA a la empresa no es una novedad del proceso: el BO
+# la menciona todo el tiempo en trámites de rutina (designaciones, licencias,
+# tarifas). Se exige además un verbo del proceso privatizador. Sin este filtro
+# la primera corrida devolvió 180 "novedades" en tres meses, que es exactamente
+# el ruido que haría que el analista dejara de mirar la lista.
+_PRIVAT_PROCESO = re.compile(
+    r"privatiza|desestatiza|transferencia\s+accionar|venta\s+de\s+(?:las\s+)?acciones|"
+    r"paquete\s+accionar|pliego|licitaci[oó]n\s+p[uú]blica|adjudica|"
+    r"concurso\s+p[uú]blico|sujeta\s+a\s+privatizaci[oó]n|programa\s+de\s+propiedad",
+    re.I)
+
+
+def _infoleg_texto(norma_id: str) -> str:
+    """Texto plano de una norma. Vacío si no está disponible."""
+    from bs4 import BeautifulSoup
+    lo = (int(norma_id) // 5000) * 5000
+    url = INFOLEG_ANEXO.format(lo=lo, hi=lo + 4999, id=norma_id)
+    try:
+        r = requests.get(url, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
+        if r.status_code != 200:
+            return ""
+        return re.sub(r"\s+", " ",
+                      BeautifulSoup(r.content, "html.parser").get_text(" ", strip=True))
+    except Exception:
+        return ""
+
+
+def detectar_novedades_privatizaciones(meses_atras: int = 3) -> dict:
+    """Normas nuevas del Boletín Oficial que nombran a cada empresa privatizable.
+
+    NO clasifica ni mueve etapas: sólo avisa. La asignación de etapa es criterio
+    del analista y ADR-0101 documenta un caso —Nucleoeléctrica— donde el equipo
+    deliberadamente se mantuvo por debajo de lo que la norma habilitaba.
+    Automatizar esa decisión borraría un juicio que hoy está publicado y se
+    puede discutir; lo que sí hay que automatizar es que no se escape una norma.
+
+    Se revisan los últimos `meses_atras` meses y se marcan como PENDIENTES las
+    normas cuyo id todavía no figura en el registro de novedades revisadas. Cada
+    id revisado queda anotado, así que una norma se avisa una sola vez.
+    """
+    try:
+        store = json.loads(PRIVATIZACIONES_NOVEDADES_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        store = {}
+    revisadas = store.setdefault("revisadas", {})
+    pendientes = store.setdefault("pendientes", {})
+
+    hoy = date.today()
+    ventana = []
+    anio, mes = hoy.year, hoy.month
+    for _ in range(max(1, meses_atras)):
+        ventana.append((anio, mes))
+        mes -= 1
+        if mes == 0:
+            anio, mes = anio - 1, 12
+
+    session = requests.Session()
+    nuevas = 0
+    for empresa, termino in PRIVATIZACIONES_TERMINOS.items():
+        for anio_v, mes_v in ventana:
+            clave_mes = f"{empresa}|{anio_v}-{mes_v:02d}"
+            try:
+                hallazgos = _infoleg_buscar_mes(termino, anio_v, mes_v, session=session)
+            except Exception as e:
+                print(f"  [WARN] privatizaciones/novedades {clave_mes}: {e}")
+                continue
+            for norma_id, titulo in hallazgos:
+                if norma_id in revisadas:
+                    continue
+                # el texto de una norma publicada es inmutable: se evalúa una
+                # sola vez y el veredicto queda cacheado, pase o no el filtro
+                texto = _infoleg_texto(norma_id)
+                m = _PRIVAT_PROCESO.search(texto)
+                revisadas[norma_id] = {"empresa": empresa,
+                                       "periodo": f"{anio_v}-{mes_v:02d}",
+                                       "del_proceso": bool(m)}
+                if not m:
+                    continue
+                pendientes[norma_id] = {
+                    "empresa": empresa,
+                    "periodo": f"{anio_v}-{mes_v:02d}",
+                    "titulo": titulo,
+                    "coincidencia": m.group(0).lower(),
+                    "url": f"https://servicios.infoleg.gob.ar/infolegInternet/"
+                           f"verNorma.do?id={norma_id}",
+                }
+                nuevas += 1
+
+    store["_meta"] = {
+        "descripcion": ("Normas del BO que nombran empresas privatizables. Detección "
+                        "automática; la etapa la sigue asignando el analista (ADR-0129). "
+                        "Sacar de 'pendientes' lo ya revisado."),
+        "ultima_corrida": hoy.isoformat(),
+        "nuevas_en_la_corrida": nuevas,
+    }
+    PRIVATIZACIONES_NOVEDADES_PATH.parent.mkdir(parents=True, exist_ok=True)
+    PRIVATIZACIONES_NOVEDADES_PATH.write_text(
+        json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True), encoding="utf-8")
+    return store
+
+
 def fetch_privatizaciones() -> dict | None:
     """
     Avance de privatizaciones por ETAPAS verificables (doc 260702): cada
@@ -1307,6 +1437,16 @@ def fetch_privatizaciones() -> dict | None:
         etapa_prom = sum(etapas) / len(etapas)
         avance = round(etapa_prom / 4.0 * 100.0, 1)
         cerradas = [n for n, e in empresas.items() if float(e["etapa"]) >= 4]
+
+        # Detector de novedades (ADR-0129). No debe poder tumbar el indicador:
+        # si InfoLeg no responde, el avance se publica igual y la lista queda
+        # vacía — lo que se pierde es un aviso, no el dato.
+        try:
+            novedades = detectar_novedades_privatizaciones().get("pendientes", {})
+        except Exception as e:
+            print(f"  [WARN] privatizaciones: detector de novedades no corrió ({e})")
+            novedades = {}
+
         return {
             "valor":          avance,
             "unidad":         "% de avance (etapas 0-4, cartera Ley Bases)",
@@ -1325,9 +1465,15 @@ def fetch_privatizaciones() -> dict | None:
             # decide en qué etapa está cada empresa?". El dato ya existía en el
             # registro versionado; lo que faltaba era exponerlo.
             "empresas_detalle": _privatizaciones_detalle(empresas),
+            # ADR-0129: normas del BO que nombran a una privatizable y hablan
+            # del proceso, todavía sin revisar por el analista. NO mueven la
+            # etapa; sólo avisan para que no se escape ninguna.
+            "novedades_pendientes": novedades,
             "detalle_txt": (f"{len(etapas)} empresas · etapa promedio "
                             f"{str(round(etapa_prom, 2)).replace('.', ',')}/4"
-                            + (f" · cerradas: {', '.join(cerradas)}" if cerradas else "")),
+                            + (f" · cerradas: {', '.join(cerradas)}" if cerradas else "")
+                            + (f" · {len(novedades)} norma(s) nueva(s) del Boletín "
+                               f"Oficial sin revisar" if novedades else "")),
         }
     except Exception as e:
         _warn("privatizaciones", e)

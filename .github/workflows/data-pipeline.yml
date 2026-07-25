@@ -105,6 +105,7 @@ jobs:
                   projects/informe_coyuntura/data/gestion/acled_cortes.json \
                   projects/informe_coyuntura/data/gestion/desregulacion_normas.json \
                   projects/informe_coyuntura/data/gestion/desregulacion_oficial.json \
+                  projects/informe_coyuntura/data/gestion/privatizaciones_novedades.json \
                   projects/informe_coyuntura/data/gestion/fal_hitos.json \
                   projects/informe_coyuntura/data/vida/carne_serie.json \
                   projects/informe_coyuntura/data/vida/sentimiento_serie.json \
