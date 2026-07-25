@@ -33,8 +33,8 @@
     "2026-02": 95.7,
     "2026-03": 94.4,
     "2026-04": 94.3,
-    "2026-05": 94.4,
-    "2026-06": 95.1
+    "2026-05": 94.3,
+    "2026-06": 95.0
   },
   "serie_itvc_sin_icc": {
     "2023-12": 94.6,
@@ -66,12 +66,12 @@
     "2026-02": 96.9,
     "2026-03": 95.9,
     "2026-04": 96.5,
-    "2026-05": 95.7,
-    "2026-06": 97.8
+    "2026-05": 95.6,
+    "2026-06": 97.7
   },
   "correlaciones": {
     "niveles (ITVC sin ICC vs ICC)": {
-      "r": 0.525,
+      "r": 0.524,
       "n": 30
     },
     "niveles (ITVC completo vs ICC — con circularidad 7,5%)": {
@@ -79,7 +79,7 @@
       "n": 30
     },
     "primeras diferencias (sin ICC)": {
-      "r": 0.147,
+      "r": 0.145,
       "n": 29
     },
     "ITVC sin ICC adelantado 1 mes vs ICC": {
@@ -87,7 +87,7 @@
       "n": 29
     },
     "ICC adelantado 1 mes vs ITVC sin ICC": {
-      "r": 0.383,
+      "r": 0.384,
       "n": 30
     }
   },
@@ -97,32 +97,32 @@
     "2024-02": 33.5,
     "2024-03": 33.2,
     "2024-04": 34.4,
-    "2024-05": 51.2,
-    "2024-06": 44.9,
-    "2024-07": 51.7,
+    "2024-05": 54.5,
+    "2024-06": 49.2,
+    "2024-07": 55.0,
     "2024-08": 48.9,
     "2024-09": 52.9,
     "2024-10": 56.9,
-    "2024-11": 62.1,
-    "2024-12": 69.8,
-    "2025-01": 74.4,
-    "2025-02": 74.4,
-    "2025-03": 71.5,
-    "2025-04": 74.4,
-    "2025-05": 74.2,
-    "2025-06": 70.6,
-    "2025-07": 66.7,
-    "2025-08": 68.2,
-    "2025-09": 67.6,
-    "2025-10": 63.8,
+    "2024-11": 61.3,
+    "2024-12": 68.3,
+    "2025-01": 74.6,
+    "2025-02": 74.1,
+    "2025-03": 70.7,
+    "2025-04": 72.1,
+    "2025-05": 71.4,
+    "2025-06": 68.1,
+    "2025-07": 65.1,
+    "2025-08": 64.4,
+    "2025-09": 65.0,
+    "2025-10": 63.7,
     "2025-11": 59.2,
-    "2025-12": 61.2,
-    "2026-01": 55.8,
-    "2026-02": 53.4,
-    "2026-03": 58.5,
-    "2026-04": 56.4,
-    "2026-05": 62.5,
-    "2026-06": 61.9
+    "2025-12": 63.1,
+    "2026-01": 58.6,
+    "2026-02": 57.0,
+    "2026-03": 61.7,
+    "2026-04": 59.7,
+    "2026-05": 64.7,
+    "2026-06": 64.8
   },
   "linea_base_itcm": {
     "periodo": "2023-12",
@@ -171,34 +171,34 @@
   },
   "correlaciones_itcm": {
     "niveles (ITCM vs riesgo país)": {
-      "r": -0.8,
+      "r": -0.836,
       "n": 31
     },
     "primeras diferencias (ITCM vs riesgo)": {
-      "r": -0.073,
+      "r": -0.056,
       "n": 30
     },
     "ITCM adelantado 1 mes vs riesgo": {
-      "r": -0.767,
+      "r": -0.794,
       "n": 30
     },
     "riesgo adelantado 1 mes vs ITCM": {
-      "r": -0.836,
+      "r": -0.877,
       "n": 31
     }
   },
   "redundancia_itcm": {
     "diferencias": {
       "n_pares": 105,
-      "r_abs_medio": 0.176,
+      "r_abs_medio": 0.18,
       "share_altos": 0.0
     },
     "umbral": 0.7,
     "n_indicadores": 15,
     "n_pares": 105,
-    "r_abs_medio": 0.488,
-    "share_altos": 0.238,
-    "share_bajos": 0.276,
+    "r_abs_medio": 0.466,
+    "share_altos": 0.229,
+    "share_bajos": 0.343,
     "matriz": {
       "costo_financiamiento_tesoro": {
         "credito_privado": -0.027,
@@ -209,7 +209,7 @@
         "ipc_total": 0.133,
         "ipi_manufacturero": -0.022,
         "presion_dolarizacion": 0.438,
-        "recaudacion": 0.088,
+        "recaudacion": 0.607,
         "rem_ipc_12m": 0.2,
         "reservas_bcra": -0.431,
         "resultado_primario": 0.336,
@@ -225,7 +225,7 @@
         "ipc_total": 0.858,
         "ipi_manufacturero": 0.671,
         "presion_dolarizacion": 0.201,
-        "recaudacion": 0.564,
+        "recaudacion": 0.059,
         "rem_ipc_12m": 0.906,
         "reservas_bcra": 0.278,
         "resultado_primario": 0.791,
@@ -241,7 +241,7 @@
         "ipc_total": 0.623,
         "ipi_manufacturero": 0.554,
         "presion_dolarizacion": -0.0,
-        "recaudacion": 0.444,
+        "recaudacion": 0.068,
         "rem_ipc_12m": 0.679,
         "reservas_bcra": 0.294,
         "resultado_primario": 0.465,
@@ -257,7 +257,7 @@
         "ipc_total": 0.732,
         "ipi_manufacturero": 0.766,
         "presion_dolarizacion": 0.412,
-        "recaudacion": 0.679,
+        "recaudacion": 0.32,
         "rem_ipc_12m": 0.743,
         "reservas_bcra": 0.338,
         "resultado_primario": 0.691,
@@ -273,7 +273,7 @@
         "ipc_total": 0.91,
         "ipi_manufacturero": 0.74,
         "presion_dolarizacion": 0.263,
-        "recaudacion": 0.653,
+        "recaudacion": 0.251,
         "rem_ipc_12m": 0.911,
         "reservas_bcra": 0.586,
         "resultado_primario": 0.866,
@@ -289,7 +289,7 @@
         "ipc_total": -0.244,
         "ipi_manufacturero": 0.233,
         "presion_dolarizacion": 0.373,
-        "recaudacion": 0.34,
+        "recaudacion": 0.108,
         "rem_ipc_12m": -0.292,
         "reservas_bcra": -0.195,
         "resultado_primario": 0.001,
@@ -305,7 +305,7 @@
         "idm": -0.244,
         "ipi_manufacturero": 0.602,
         "presion_dolarizacion": 0.196,
-        "recaudacion": 0.458,
+        "recaudacion": 0.148,
         "rem_ipc_12m": 0.935,
         "reservas_bcra": 0.645,
         "resultado_primario": 0.842,
@@ -321,7 +321,7 @@
         "idm": 0.233,
         "ipc_total": 0.602,
         "presion_dolarizacion": 0.315,
-        "recaudacion": 0.831,
+        "recaudacion": 0.223,
         "rem_ipc_12m": 0.546,
         "reservas_bcra": 0.524,
         "resultado_primario": 0.464,
@@ -337,7 +337,7 @@
         "idm": 0.373,
         "ipc_total": 0.196,
         "ipi_manufacturero": 0.315,
-        "recaudacion": 0.418,
+        "recaudacion": 0.645,
         "rem_ipc_12m": 0.258,
         "reservas_bcra": -0.428,
         "resultado_primario": 0.446,
@@ -345,20 +345,20 @@
         "tcrm": -0.751
       },
       "recaudacion": {
-        "costo_financiamiento_tesoro": 0.088,
-        "credito_privado": 0.564,
-        "emae_difusion": 0.444,
-        "emae_ia": 0.679,
-        "idc": 0.653,
-        "idm": 0.34,
-        "ipc_total": 0.458,
-        "ipi_manufacturero": 0.831,
-        "presion_dolarizacion": 0.418,
-        "rem_ipc_12m": 0.447,
-        "reservas_bcra": 0.317,
-        "resultado_primario": 0.448,
-        "saldo_comercial_12m": 0.433,
-        "tcrm": -0.593
+        "costo_financiamiento_tesoro": 0.607,
+        "credito_privado": 0.059,
+        "emae_difusion": 0.068,
+        "emae_ia": 0.32,
+        "idc": 0.251,
+        "idm": 0.108,
+        "ipc_total": 0.148,
+        "ipi_manufacturero": 0.223,
+        "presion_dolarizacion": 0.645,
+        "rem_ipc_12m": 0.27,
+        "reservas_bcra": -0.275,
+        "resultado_primario": 0.335,
+        "saldo_comercial_12m": 0.499,
+        "tcrm": -0.568
       },
       "rem_ipc_12m": {
         "costo_financiamiento_tesoro": 0.2,
@@ -370,7 +370,7 @@
         "ipc_total": 0.935,
         "ipi_manufacturero": 0.546,
         "presion_dolarizacion": 0.258,
-        "recaudacion": 0.447,
+        "recaudacion": 0.27,
         "reservas_bcra": 0.365,
         "resultado_primario": 0.901,
         "saldo_comercial_12m": 0.822,
@@ -386,7 +386,7 @@
         "ipc_total": 0.645,
         "ipi_manufacturero": 0.524,
         "presion_dolarizacion": -0.428,
-        "recaudacion": 0.317,
+        "recaudacion": -0.275,
         "rem_ipc_12m": 0.365,
         "resultado_primario": 0.05,
         "saldo_comercial_12m": -0.33,
@@ -402,7 +402,7 @@
         "ipc_total": 0.842,
         "ipi_manufacturero": 0.464,
         "presion_dolarizacion": 0.446,
-        "recaudacion": 0.448,
+        "recaudacion": 0.335,
         "rem_ipc_12m": 0.901,
         "reservas_bcra": 0.05,
         "saldo_comercial_12m": 0.883,
@@ -418,7 +418,7 @@
         "ipc_total": 0.721,
         "ipi_manufacturero": 0.391,
         "presion_dolarizacion": 0.607,
-        "recaudacion": 0.433,
+        "recaudacion": 0.499,
         "rem_ipc_12m": 0.822,
         "reservas_bcra": -0.33,
         "resultado_primario": 0.883,
@@ -434,7 +434,7 @@
         "ipc_total": -0.626,
         "ipi_manufacturero": -0.548,
         "presion_dolarizacion": -0.751,
-        "recaudacion": -0.593,
+        "recaudacion": -0.568,
         "rem_ipc_12m": -0.668,
         "reservas_bcra": 0.161,
         "resultado_primario": -0.808,
@@ -563,16 +563,6 @@
         "por_diseno": null
       },
       {
-        "a": "ipi_manufacturero",
-        "b": "recaudacion",
-        "r": 0.831,
-        "n": 30,
-        "dimension_a": "actividad",
-        "dimension_b": "viabilidad_fiscal_comercial",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "rem_ipc_12m",
         "b": "saldo_comercial_12m",
         "r": 0.822,
@@ -693,8 +683,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 20,
-    "pares_no_explicados": 20
+    "pares_cruzados": 19,
+    "pares_no_explicados": 19
   },
   "redundancia_itcg": {
     "diferencias": {
@@ -1351,7 +1341,7 @@
   "redundancia_itvc": {
     "diferencias": {
       "n_pares": 120,
-      "r_abs_medio": 0.202,
+      "r_abs_medio": 0.203,
       "share_altos": 0.0
     },
     "umbral": 0.7,
@@ -1388,7 +1378,7 @@
         "informalidad": -0.574,
         "inseguridad": 0.078,
         "ipc_alimentos": 0.918,
-        "mora_familias": -0.729,
+        "mora_familias": -0.728,
         "mortalidad_pymes": 0.522,
         "patentamiento_motos": 0.77,
         "peso_tarifas": -0.077,
@@ -1405,7 +1395,7 @@
         "informalidad": 0.104,
         "inseguridad": -0.16,
         "ipc_alimentos": -0.004,
-        "mora_familias": -0.098,
+        "mora_familias": -0.097,
         "mortalidad_pymes": 0.252,
         "patentamiento_motos": 0.204,
         "peso_tarifas": 0.728,
@@ -1422,7 +1412,7 @@
         "informalidad": -0.353,
         "inseguridad": -0.257,
         "ipc_alimentos": 0.267,
-        "mora_familias": -0.424,
+        "mora_familias": -0.426,
         "mortalidad_pymes": 0.51,
         "patentamiento_motos": 0.524,
         "peso_tarifas": 0.43,
@@ -1456,7 +1446,7 @@
         "informalidad": -0.346,
         "inseguridad": 0.042,
         "ipc_alimentos": 0.624,
-        "mora_familias": -0.361,
+        "mora_familias": -0.36,
         "mortalidad_pymes": 0.477,
         "patentamiento_motos": 0.442,
         "peso_tarifas": -0.025,
@@ -1473,7 +1463,7 @@
         "informalidad": -0.291,
         "inseguridad": -0.19,
         "ipc_alimentos": 0.574,
-        "mora_familias": -0.274,
+        "mora_familias": -0.273,
         "mortalidad_pymes": 0.642,
         "patentamiento_motos": 0.411,
         "peso_tarifas": 0.304,
@@ -1490,7 +1480,7 @@
         "indice_lider": -0.291,
         "inseguridad": 0.258,
         "ipc_alimentos": -0.418,
-        "mora_familias": 0.708,
+        "mora_familias": 0.709,
         "mortalidad_pymes": -0.235,
         "patentamiento_motos": -0.674,
         "peso_tarifas": 0.361,
@@ -1507,7 +1497,7 @@
         "indice_lider": -0.19,
         "informalidad": 0.258,
         "ipc_alimentos": 0.047,
-        "mora_familias": -0.17,
+        "mora_familias": -0.168,
         "mortalidad_pymes": -0.445,
         "patentamiento_motos": 0.081,
         "peso_tarifas": 0.132,
@@ -1533,18 +1523,18 @@
       },
       "mora_familias": {
         "alquiler_real": 0.624,
-        "brecha_salario_cbt": -0.729,
-        "consumo_carne": -0.098,
-        "despacho_cemento": -0.424,
+        "brecha_salario_cbt": -0.728,
+        "consumo_carne": -0.097,
+        "despacho_cemento": -0.426,
         "endeudamiento_familiar": -0.672,
-        "icc_utdt": -0.361,
-        "indice_lider": -0.274,
-        "informalidad": 0.708,
-        "inseguridad": -0.17,
+        "icc_utdt": -0.36,
+        "indice_lider": -0.273,
+        "informalidad": 0.709,
+        "inseguridad": -0.168,
         "ipc_alimentos": -0.547,
         "mortalidad_pymes": -0.03,
         "patentamiento_motos": -0.974,
-        "peso_tarifas": 0.168,
+        "peso_tarifas": 0.17,
         "pluriempleo": 0.072,
         "sentimiento_digital": -0.541
       },
@@ -1593,7 +1583,7 @@
         "informalidad": 0.361,
         "inseguridad": 0.132,
         "ipc_alimentos": -0.284,
-        "mora_familias": 0.168,
+        "mora_familias": 0.17,
         "mortalidad_pymes": 0.035,
         "patentamiento_motos": -0.105,
         "pluriempleo": 0.441,
@@ -1758,7 +1748,7 @@
       {
         "a": "brecha_salario_cbt",
         "b": "mora_familias",
-        "r": -0.729,
+        "r": -0.728,
         "n": 31,
         "dimension_a": "ingresos",
         "dimension_b": "vulnerabilidad",
@@ -1798,7 +1788,7 @@
       {
         "a": "informalidad",
         "b": "mora_familias",
-        "r": 0.708,
+        "r": 0.709,
         "n": 31,
         "dimension_a": "ingresos",
         "dimension_b": "vulnerabilidad",

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-25T17:46:47.876312",
+  "generated_at": "2026-07-25T18:34:32.881642",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -16,7 +16,7 @@
   },
   "cinturones": {
     "macro": {
-      "score": 3.9,
+      "score": 3.7,
       "estado": "en_tension",
       "barbarismo_riesgo": "tecnocrático",
       "indicadores": {
@@ -205,21 +205,23 @@
           "peso_efectivo": 0.048
         },
         "recaudacion": {
-          "valor": -3.16,
+          "valor": 3.3,
           "unidad": "% i.a. real (prom. móvil 3 meses)",
-          "fuente": "Sec. Hacienda — recaudación total (vía datos.gob.ar)",
+          "fuente": "Sec. Hacienda — recaudación DGI, impuestos internos (vía datos.gob.ar)",
           "fecha_dato": "2026-06-01",
           "meses": {
-            "2026-04": -3.9,
-            "2026-05": 1.82,
-            "2026-06": -7.39
+            "2026-04": 0.92,
+            "2026-05": 12.79,
+            "2026-06": -3.81
           },
-          "detalle_txt": "Promedio de 2026-04: -3.9% · 2026-05: +1.8% · 2026-06: -7.4%",
+          "recaudacion_total_real": -3.16,
+          "recaudacion_aduana_real": -20.93,
+          "detalle_txt": "Promedio de 2026-04: +0.9% · 2026-05: +12.8% · 2026-06: -3.8% · la recaudación total en la misma ventana varía -3.2% y la aduanera -20.9%",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "viabilidad_fiscal_comercial",
-          "puntaje_itcm": 32.1,
-          "puntaje_banda": 32.1,
+          "puntaje_itcm": 63.2,
+          "puntaje_banda": 63.2,
           "peso_efectivo": 0.072
         },
         "tcrm": {
@@ -387,7 +389,7 @@
       },
       "alerta": null,
       "itcm": {
-        "valor": 60.7,
+        "valor": 63.0,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -430,7 +432,7 @@
           "viabilidad_fiscal_comercial": {
             "nombre": "Viabilidad fiscal-comercial",
             "peso": 0.24,
-            "puntaje": 67.7,
+            "puntaje": 77.1,
             "indicadores": {
               "resultado_primario": {
                 "peso": 0.5,
@@ -441,9 +443,9 @@
               },
               "recaudacion": {
                 "peso": 0.3,
-                "puntaje_banda": 32.1,
-                "puntaje_aplicado": 32.1,
-                "valor": -3.16,
+                "puntaje_banda": 63.2,
+                "puntaje_aplicado": 63.2,
+                "valor": 3.3,
                 "peso_efectivo": 0.072
               },
               "saldo_comercial_12m": {

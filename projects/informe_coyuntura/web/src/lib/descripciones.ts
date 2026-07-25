@@ -58,8 +58,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel (acum. 12m)",
   },
   recaudacion: {
-    que: "Cuánto recauda el Estado en impuestos medido en términos reales: la variación contra el mismo mes del año anterior, descontada la inflación y promediada sobre los últimos tres meses para filtrar el calendario tributario.",
-    aporta: "Aísla la recuperación genuina de los ingresos del efecto inflacionario y del ruido de los vencimientos impositivos: mide la tendencia fiscal de verdad, no el mes suelto.",
+    que: "Cuánto recauda el Estado en impuestos internos —el IVA doméstico, Ganancias, créditos y débitos— medido en términos reales: la variación contra el mismo mes del año anterior, descontada la inflación y promediada sobre los últimos tres meses para filtrar el calendario tributario. Deja afuera la recaudación aduanera y los aportes a la seguridad social, que se publican como contexto.",
+    aporta: "Mide el tamaño de la base imponible y el nivel de actividad, no la caja del Estado. Por eso excluye la aduana: cuando el Gobierno baja retenciones, la recaudación total cae porque así se decidió, y contar esa caída como deterioro sería puntuar como fracaso el cumplimiento de una promesa. Lo que este indicador sigue es si hay más o menos economía formal para gravar.",
     frecuencia: "Mensual", tipo: "Variación i.a. real (prom. 3 meses)",
   },
   tcrm: {

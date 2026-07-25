@@ -416,10 +416,12 @@ def fetch_cuenta_corriente_serie() -> list:
 
 
 def fetch_recaudacion_real_serie() -> list:
-    """Recaudación total: variación i.a. REAL en PROMEDIO MÓVIL 3 MESES — la
+    """Recaudación DGI: variación i.a. REAL en PROMEDIO MÓVIL 3 MESES — la
     métrica del titular (ADR-0029: el interanual de un mes suelto hereda el
-    calendario tributario). [[YYYY-MM-01, %]]."""
-    nominal = {f[:7]: v for f, v in fetch_indec("172.3_TL_RECAION_M_0_0_17", limit=72)}
+    calendario tributario; ADR-0127: DGI y no total, porque el indicador mide
+    la base imponible y no la caja). La serie usa la MISMA constante que la
+    card para que no puedan divergir. [[YYYY-MM-01, %]]."""
+    nominal = {f[:7]: v for f, v in fetch_indec(macro.INDEC_RECAUDACION_ID, limit=72)}
     ipc = {f[:7]: v for f, v in fetch_indec(IPC_NIVEL_ID, limit=72)}
     real = {}
     for ym in sorted(nominal):
@@ -486,7 +488,7 @@ MACRO_DERIVADAS = [
     ("ipi_manufacturero", "% i.a. (promedio 3 meses)", "INDEC — IPI manufacturero (vía datos.gob.ar)", fetch_ipi_serie),
     # acompaña al IPC general en el modal, no puntúa (ADR-0077)
     ("ipc_nucleo", "% mensual", "INDEC — IPC núcleo nacional (vía datos.gob.ar)", fetch_ipc_nucleo_serie),
-    ("recaudacion", "% i.a. real", "INDEC (recaudación) + IPC (deflactor)", fetch_recaudacion_real_serie),
+    ("recaudacion", "% i.a. real", "Sec. Hacienda (recaudación DGI) + IPC (deflactor)", fetch_recaudacion_real_serie),
     ("credito_privado", "% i.a. real", "BCRA (préstamos privados) + IPC INDEC", fetch_credito_privado_serie),
     ("costo_financiamiento_tesoro", "% real anual", "Sec. de Finanzas (colocaciones) + BCRA (REM)", fetch_costo_financiamiento_tesoro_serie),
     ("resultado_primario", "% de la recaudación (12m)", "Sec. de Hacienda — IMIG + recaudación", fetch_resultado_primario_serie),

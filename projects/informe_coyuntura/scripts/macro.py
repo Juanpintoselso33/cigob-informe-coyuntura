@@ -45,7 +45,17 @@ INDEC_IPI_ID         = "453.1_SERIE_ORIGNAL_0_0_14_46"  # IPI manufacturero nive
 INDEC_SALDO_COM_ID   = "164.3_SOTALTAL_0_0_8"          # Saldo comercial total mensual (M USD) — FALLBACK, ~14 meses de rezago
 INDEC_EXPO_ICA_ID    = "74.3_IET_0_M_16"               # ICA exportaciones totales mensual (M USD)
 INDEC_IMPO_ICA_ID    = "74.3_IIT_0_M_25"               # ICA importaciones totales mensual (M USD)
-INDEC_RECAUDACION_ID = "172.3_TL_RECAION_M_0_0_17"     # Recaudación total mensual (M ARS)
+# Recaudación DGI mensual (M ARS): impuestos INTERNOS —IVA doméstico, Ganancias,
+# créditos y débitos, internos—, sin aduana ni seguridad social (ADR-0127).
+# Reemplaza a la recaudación TOTAL (172.3_TL_RECAION_M_0_0_17, que sigue abajo
+# como referencia) porque el indicador mide la base imponible y la actividad
+# (ADR-0072), y el total mezcla eso con la decisión política sobre el comercio
+# exterior: en 2026 la aduana cae 15-37% real por el recorte de retenciones
+# mientras la base doméstica está plana. La descomposición cierra exacta:
+# DGI + DGA + Seguridad Social = total.
+INDEC_RECAUDACION_ID = "172.3_SOTAL_DDGI_M_0_0_12"     # Recaudación DGI mensual (M ARS)
+INDEC_RECAUDACION_TOTAL_ID = "172.3_TL_RECAION_M_0_0_17"  # total — contexto de la card
+INDEC_RECAUDACION_DGA_ID   = "172.3_SOTAL_DDGA_M_0_0_12"  # aduana — contexto de la card
 # IMIG (Informe Mensual de Ingresos y Gastos, Sec. de Hacienda): resultado
 # PRIMARIO del Sector Público Nacional, mensual en millones de pesos.
 HACIENDA_RESULTADO_PRIMARIO_ID = "452.3_RESULTADO_RIO_0_M_18_54"
@@ -845,25 +855,37 @@ def fetch_saldo_comercial_12m() -> dict | None:
         return None
 
 
+def _real_ia_pm3(nom: dict, ipc: dict) -> dict:
+    """{YYYY-MM: % i.a. real} de una serie nominal deflactada por IPC."""
+    out = {}
+    for ym in sorted(nom):
+        prev = _ym_shift(ym, -12)
+        if ym in ipc and prev in nom and prev in ipc and nom[prev] and ipc[prev]:
+            out[ym] = ((nom[ym] / nom[prev]) / (ipc[ym] / ipc[prev]) - 1.0) * 100.0
+    return out
+
+
 def fetch_recaudacion() -> dict | None:
-    """Variación INTERANUAL REAL de la recaudación, PROMEDIO MÓVIL 3 MESES
-    sobre meses con IPC cerrado (ADR-0029). El interanual de un solo mes
+    """Variación INTERANUAL REAL de la recaudación DGI, PROMEDIO MÓVIL 3 MESES
+    sobre meses con IPC cerrado (ADR-0029 + ADR-0127).
+
+    Mide la recaudación de impuestos INTERNOS —IVA doméstico, Ganancias,
+    créditos y débitos— y no el total. El indicador no mide viabilidad fiscal
+    sino la base imponible y la actividad (ADR-0072), y el total mezcla eso con
+    la decisión política sobre el comercio exterior: bajar retenciones hunde la
+    recaudación aduanera sin que se haya deteriorado nada de la economía real.
+
+    El promedio móvil de 3 meses es de ADR-0029: el interanual de un solo mes
     hereda el calendario tributario (vencimientos de Ganancias, anticipos,
-    bases raras del año previo) y, con 14,4% del ITCM, hacía oscilar el índice
-    ±7 puntos por ruido — la lectura de tendencia de los analistas fiscales
-    (IARAF/OPC) es el promedio trimestral del interanual real. El mes más
-    fresco (nominal publicado, IPC todavía no) queda como contexto provisorio
-    en el detalle, sin puntuar."""
+    bases raras del año previo) y hacía oscilar el índice ±7 puntos por ruido.
+    El mes más fresco (nominal publicado, IPC todavía no) queda como contexto
+    provisorio en el detalle, sin puntuar."""
     try:
         nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_RECAUDACION_ID, limit=30)
                if r[1] is not None}
         ipc = {r[0][:7]: r[1] for r in _indec_serie(INDEC_IPC_ID, limit=30)
                if r[1] is not None}
-        real = {}
-        for ym in sorted(nom):
-            prev = _ym_shift(ym, -12)
-            if ym in ipc and prev in nom and prev in ipc:
-                real[ym] = ((nom[ym] / nom[prev]) / (ipc[ym] / ipc[prev]) - 1.0) * 100.0
+        real = _real_ia_pm3(nom, ipc)
         cerrados = sorted(real)[-3:]
         if len(cerrados) < 3:
             raise ValueError("recaudación: menos de 3 meses reales con IPC cerrado")
@@ -878,13 +900,38 @@ def fetch_recaudacion() -> dict | None:
             prov = ((nom[ult_nom] / nom[_ym_shift(ult_nom, -12)]) / ia_ipc - 1.0) * 100.0
             fresco = (f" — {ult_nom} (provisorio, no puntúa): {prov:+.1f}% con "
                       f"deflactor de {ult_ipc}")
+        # Contexto publicado (ADR-0127): el total y la aduana en la misma
+        # métrica. La brecha entre DGI y total es el efecto de la política
+        # tributaria sobre el comercio exterior, y mostrarla es lo que evita
+        # que el cambio de serie parezca un recorte conveniente.
+        contexto = {}
+        for clave, sid in (("total", INDEC_RECAUDACION_TOTAL_ID),
+                           ("aduana", INDEC_RECAUDACION_DGA_ID)):
+            try:
+                otra = {r[0][:7]: r[1] for r in _indec_serie(sid, limit=30)
+                        if r[1] is not None}
+                serie_otra = _real_ia_pm3(otra, ipc)
+                if all(ym in serie_otra for ym in cerrados):
+                    contexto[clave] = round(fmean(serie_otra[ym] for ym in cerrados), 2)
+            except Exception:
+                pass
+
+        comparado = ""
+        if "total" in contexto:
+            comparado = (f" · la recaudación total en la misma ventana varía "
+                         f"{contexto['total']:+.1f}%")
+            if "aduana" in contexto:
+                comparado += f" y la aduanera {contexto['aduana']:+.1f}%"
         return {
             "valor": round(valor, 2),
             "unidad": "% i.a. real (prom. móvil 3 meses)",
-            "fuente": "Sec. Hacienda — recaudación total (vía datos.gob.ar)",
+            "fuente": "Sec. Hacienda — recaudación DGI, impuestos internos "
+                      "(vía datos.gob.ar)",
             "fecha_dato": f"{cerrados[-1]}-01",
             "meses": {ym: round(real[ym], 2) for ym in cerrados},
-            "detalle_txt": f"Promedio de {detalle}{fresco}",
+            "recaudacion_total_real": contexto.get("total"),
+            "recaudacion_aduana_real": contexto.get("aduana"),
+            "detalle_txt": f"Promedio de {detalle}{fresco}{comparado}",
             "desactualizado": False,
         }
     except Exception as e:
@@ -914,7 +961,12 @@ def _superavit_sobre_recaudacion_12m() -> dict:
       Estado, cuánto le sobra después de gastar, antes de intereses."""
     prim = {r[0][:7]: r[1] for r in _indec_serie(HACIENDA_RESULTADO_PRIMARIO_ID, limit=90)
             if r[1] is not None}
-    rec = {r[0][:7]: r[1] for r in _indec_serie(INDEC_RECAUDACION_ID, limit=90)
+    # TOTAL explícito, no la constante del indicador de recaudación: acá el
+    # denominador es "de cada peso que recauda el Estado", que incluye aduana y
+    # seguridad social. Cuando ADR-0127 apuntó `recaudacion` a la DGI, esta
+    # línea compartía la constante y el resultado primario habría pasado a
+    # medirse contra una base 40% más chica sin que nada avisara.
+    rec = {r[0][:7]: r[1] for r in _indec_serie(INDEC_RECAUDACION_TOTAL_ID, limit=90)
            if r[1] is not None}
     out = {}
     for ym in sorted(set(prim) & set(rec)):

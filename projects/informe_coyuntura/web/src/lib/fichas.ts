@@ -561,12 +561,13 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "La recaudación del mes se publica en los primeros días del mes siguiente, pero el indicador espera el IPC que la deflacta: el mes más fresco se muestra como provisorio y no puntúa.",
     fuente: {
       organismo: "Secretaría de Hacienda (dato primario de ARCA); deflactor: INDEC",
-      operacion: "Recaudación tributaria total mensual, en pesos corrientes, deflactada por el IPC nacional",
-      serie: "172.3_TL_RECAION_M_0_0_17 + IPC 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
+      operacion: "Recaudación mensual de la Dirección General Impositiva (impuestos internos), en pesos corrientes, deflactada por el IPC nacional",
+      serie: "172.3_SOTAL_DDGI_M_0_0_12 + IPC 148.3_INIVELNAL_DICI_M_26 · API de datos.gob.ar",
       url: "https://www.argentina.gob.ar/economia/ingresos-publicos",
-      acceso: "Automático: API pública de series de tiempo; deflactación y promedio en el propio informe.",
+      acceso: "Automático: API pública de series de tiempo; deflactación y promedio en el propio informe. La recaudación total y la aduanera se descargan también, para publicarlas como contexto de la card.",
     },
     transformaciones: [
+      "Se mide la recaudación de la Dirección General Impositiva —el IVA doméstico, Ganancias, créditos y débitos, internos— y no la total. Quedan afuera la recaudación aduanera y los aportes a la seguridad social. La apertura oficial es exacta: las tres partes suman el total.",
       "Variación interanual real por mes: la recaudación contra el mismo mes del año anterior, descontada la inflación.",
       "Promedio móvil de los últimos tres meses con IPC cerrado, para filtrar el calendario tributario (vencimientos, anticipos).",
       "El mes más fresco se publica solo como contexto, con deflactor provisorio, sin puntuar.",
@@ -584,8 +585,11 @@ export const FICHAS: Record<string, Ficha> = {
     },
     limitaciones: [
       "El promedio trimestral mitiga pero no elimina el calendario tributario; antes del suavizado, el índice oscilaba varios puntos por puro ruido de vencimientos.",
-      "Mide INGRESOS, no resultado fiscal: la recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y ninguno de los dos casos dice por sí solo si las cuentas del Estado cierran. Por eso la dimensión incorporó el resultado primario, y este indicador se lee como lo que es: una señal de actividad y formalidad de la base imponible.",
+      "Mide INGRESOS, no resultado fiscal: ni siquiera midiendo sólo los impuestos internos la recaudación dice por sí sola si las cuentas del Estado cierran. Por eso la dimensión incorporó el resultado primario, y este indicador se lee como lo que es: una señal de actividad y formalidad de la base imponible.",
+      "Excluir la aduana resuelve el caso más grande de política tributaria contaminando la lectura, pero no todos: la propia DGI contiene impuestos cuyas alícuotas y mínimos cambiaron en el período, de modo que el indicador tampoco es neutral respecto de las decisiones del Gobierno. Una medición a legislación constante exigiría modelar cada cambio impositivo y no es reproducible de forma automática.",
+      "Los aportes a la seguridad social también son base imponible doméstica y quedan afuera. Siguen su propia dinámica —cayeron en términos reales desde fines de 2025— y mezclarlos habría sumado el mercado laboral a un indicador que quiere medir actividad y formalidad.",
       "Deflactor único (IPC nacional), sin deflactor específico de la base imponible.",
+      "En la distribución previa al mandato (2021-2023) esta serie nunca cayó más de cinco por ciento real, de modo que la banda más baja no tiene respaldo en esa muestra; describe una situación posible, no una observada.",
     ],
     faltantes: "Con menos de tres meses reales disponibles, se mantiene el último valor disponible, señalado como desactualizado; sin dato, el saldo comercial pasa a explicar toda la dimensión fiscal-comercial.",
     revisiones: "La serie de recaudación no se revisa hacia atrás. Validación externa documentada: la estimación propia del mes provisorio quedó a 0,3 puntos de la de un instituto fiscal independiente.",
@@ -595,6 +599,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-07-04", cambio: "Pasa a promedio móvil de tres meses sobre meses con IPC cerrado; el mes fresco queda como provisorio sin puntuar." },
       { fecha: "2026-07-18", cambio: "Baja del 60% al 30% de la dimensión y se reinterpreta como indicador de actividad y formalidad de la base imponible: la viabilidad fiscal pasa a medirse con el resultado primario, que entra como componente principal." },
+      { fecha: "2026-07-25", cambio: "Pasa a medir la recaudación de impuestos internos en lugar de la total, a pedido del editor. Con el total, el indicador venía castigando el recorte de retenciones: durante 2026 la recaudación aduanera cayó entre quince y treinta y siete por ciento real mientras la base imponible doméstica se mantenía estable, de modo que el índice leía como deterioro económico lo que era una decisión de política tributaria. Las bandas no se tocaron: la unidad sigue siendo la variación real y el cero sigue siendo el punto de referencia." },
     ],
   },
 

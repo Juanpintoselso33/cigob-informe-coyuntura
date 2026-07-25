@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-25 17:46:47"
+generado: "2026-07-25 18:34:32"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -13,7 +13,7 @@ schema_version: "1.2.0"
 
 ## Cinturones
 
-### 🟡 Macro — score 3.9/10 (en_tension)
+### 🟡 Macro — score 3.7/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -26,7 +26,7 @@ schema_version: "1.2.0"
 | emae_difusion | 53.33 | % de sectores en crecimiento i.a. | 2026-05-01 | fresco |
 | ipi_manufacturero | -1.07 | % i.a. (promedio 3 meses) | 2026-05-01 | fresco |
 | saldo_comercial_12m | 22481.0 | Millones de USD (acum. 12 meses) | 2026-06-01 | fresco |
-| recaudacion | -3.16 | % i.a. real (prom. móvil 3 meses) | 2026-06-01 | fresco |
+| recaudacion | 3.3 | % i.a. real (prom. móvil 3 meses) | 2026-06-01 | fresco |
 | tcrm | 84.97 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
 | rem_ipc_12m | 22.3 | % anual esperado | 2026-06-30 | fresco |
 | idm | 6.23 | pp (brecha i.a. real) | 2026-06-01 | fresco |
@@ -107,4 +107,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-25 17:46:47 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-25 18:34:32 — schema 1.2.0*

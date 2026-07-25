@@ -122,7 +122,14 @@ BANDAS_ITCM = {
         (-INF, 0.0, 100), (0.0, 25.0, 85), (25.0, 50.0, 60),
         (50.0, 75.0, 35), (75.0, INF, 10),
     ],
-    "recaudacion": [                    # % var mensual (i.a. real, prom. móvil 3m)
+    "recaudacion": [                    # % var DGI (i.a. real, prom. móvil 3m)
+        # ADR-0127 cambió la SERIE (total → DGI) y NO tocó estas bandas: la
+        # unidad sigue siendo variación real interanual y el cero sigue siendo
+        # el punto con significado. Recalibrarlas al cambiar de fuente habría
+        # sido indistinguible de mover el número. Chequeado contra la
+        # distribución pre-mandato de la nueva serie (2021-2023, n=35): mediana
+        # +4,5%, y los cortes caen en p0/p14/p57/p80 — el corte de −5% no se
+        # toca en esa muestra, lo que se declara en la ficha.
         # Bandas de VARIACIÓN REAL en torno al cero (ADR-0120): el cero es el
         # punto con significado propio —la recaudación empata a la inflación— y
         # los cortes de ±5% son medio punto de crecimiento/caída real. A
