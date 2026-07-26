@@ -1,0 +1,116 @@
+{
+ "_meta": {
+  "descripcion": "Universo relevado para el indicador 'Parálisis de denuncias' (bloque judicial del ITCP, aporte externo de Pablo). PRIMERA PASADA. No alimenta ningún índice todavía.",
+  "fecha_relevamiento": "2026-07-26",
+  "fuente": "Consejo de la Magistratura de la Nación — categoría 'comisiones' del sitio institucional; cada sesión se publica como una nota fechada y numerada",
+  "cobertura": "356 posts únicos, 36 páginas recorridas HASTA AGOTAR la categoría (la 37 devuelve 404). Rango 13-sep-2019 a 15-jul-2026.",
+  "estado": "fuente validada y serie calculada; falta decidir la métrica y su orientación"
+ },
+
+ "fuentes_descartadas": [
+  {
+   "fuente": "Registro Público de Denuncias contra Magistrados/as",
+   "url": "consejomagistratura.gov.ar/index.php/registro-publico-de-denuncias-presentadas-contra-magistrados-y-magistradas/",
+   "motivo": "NO es el registro general de denuncias: es específicamente el de 'Situaciones Vinculadas a Violencia de Género' (Resolución 8/2021). Mide ese fenómeno, no el control disciplinario en general. El nombre abreviado del enlace induce a error y por eso queda anotado."
+  },
+  {
+   "fuente": "Actas de sesión en PDF",
+   "motivo": "Los PDFs de la sección son normativa institucional (reglamentos, digesto, resoluciones), no actas. El aporte externo suponía actas parseables; no se publican como tales."
+  }
+ ],
+
+ "advertencia_de_comparabilidad": "HASTA JULIO DE 2022 EXISTIÓ UNA SOLA COMISIÓN 'DE DISCIPLINA Y ACUSACIÓN'; desde entonces son dos comisiones separadas, cada una con su propia numeración arrancando de nuevo. Las sesiones anteriores a jul-2022 (numeradas 3, 4, 7, 8, 9 bajo el slug 'disciplina-y-acusacion') NO son comparables con las posteriores y quedan fuera de todo conteo.",
+
+ "validacion_de_la_fuente": "LA NUMERACIÓN SECUENCIAL ES LA QUE VALIDA LA COBERTURA. Si el Consejo sesionara sin publicar la nota, el número siguiente delataría el hueco. Desde la separación la numeración NO tiene saltos: Disciplina va 2→9 completa y Acusación 1→15 con un solo número sin identificar (el 7, que muy probablemente sea el post sin numerar del 20-dic-2023, 'sesionaron el plenario y la comisión de acusación'). Es decir: la publicación de sesiones ordinarias está completa, y los huecos largos del calendario son huecos REALES, no fallas de publicación. Sin esta propiedad la fuente no serviría, porque es un blog institucional y no un registro.",
+
+ "sesiones_ordinarias": {
+  "_criterio": "sesiones numeradas de cada comisión desde la separación de jul-2022. Las notas sin número (sesiones conjuntas, extraordinarias, audiencias testimoniales) se listan aparte y no entran en el conteo, salvo el 20-dic-2023 según se explica arriba.",
+  "disciplina": [
+   {"fecha": "2022-07-15", "n": 2},
+   {"fecha": "2022-08-25", "n": 3},
+   {"fecha": "2024-05-23", "n": 4},
+   {"fecha": "2024-08-27", "n": 5},
+   {"fecha": "2025-05-27", "n": 6},
+   {"fecha": "2025-07-03", "n": 7},
+   {"fecha": "2026-04-08", "n": 8},
+   {"fecha": "2026-06-03", "n": 9}
+  ],
+  "acusacion": [
+   {"fecha": "2022-07-13", "n": 1},
+   {"fecha": "2022-09-08", "n": 2},
+   {"fecha": "2022-09-27", "n": 3},
+   {"fecha": "2022-10-11", "n": 4},
+   {"fecha": "2022-11-01", "n": 5},
+   {"fecha": "2023-09-20", "n": 6},
+   {"fecha": "2023-12-20", "n": 7, "supuesto": "post sin numerar ('sesionaron el plenario y la comisión de acusación'); se le asigna el 7 porque es el único número faltante de la secuencia y la fecha encaja. Quitarlo mueve la serie en 1 sesión entre dic-2023 y dic-2024."}
+  ],
+  "acusacion_continuacion": [
+   {"fecha": "2024-06-05", "n": 8},
+   {"fecha": "2024-10-09", "n": 9},
+   {"fecha": "2024-11-26", "n": 10},
+   {"fecha": "2025-05-29", "n": 11},
+   {"fecha": "2025-09-17", "n": 12},
+   {"fecha": "2025-12-17", "n": 13},
+   {"fecha": "2026-02-25", "n": 14},
+   {"fecha": "2026-07-15", "n": 15}
+  ]
+ },
+
+ "sesiones_sin_numerar": [
+  {"fecha": "2022-09-28", "detalle": "sesión extraordinaria de la Comisión de Disciplina"},
+  {"fecha": "2024-02-28", "detalle": "sesión de la Comisión de Disciplina y sorteo de jurados"},
+  {"fecha": "2024-10-15", "detalle": "continuación de la Comisión de Acusación"},
+  {"fecha": "2025-11-19", "detalle": "sesión conjunta de Disciplina con la Comisión de Administración"},
+  {"fecha": "2026-03-10", "detalle": "audiencia testimonial de la Comisión de Acusación"}
+ ],
+
+ "acciones_concretas": {
+  "_criterio": "notas donde la comisión no sólo sesiona sino que resuelve avanzar contra un magistrado. Es un fenómeno DISTINTO del de sesionar y conviene no mezclarlo.",
+  "eventos": [
+   {"fecha": "2025-06-19", "tipo": "propone al plenario abrir proceso de remoción"},
+   {"fecha": "2025-08-06", "tipo": "propone al plenario abrir proceso de remoción"},
+   {"fecha": "2026-03-17", "tipo": "propone al plenario acusar a jueces"},
+   {"fecha": "2026-05-28", "tipo": "propone al plenario iniciar proceso de remoción"}
+  ]
+ },
+
+ "huecos_entre_sesiones": {
+  "disciplina": {"promedio_meses": 6.7, "maximo_meses": 20.9,
+   "mayores": ["20,9m ago-2022 → may-2024", "9,2m jul-2025 → abr-2026", "9,0m ago-2024 → may-2025"]},
+  "acusacion": {"promedio_meses": 3.4, "maximo_meses": 10.6,
+   "mayores": ["10,6m nov-2022 → sep-2023", "6,0m nov-2024 → may-2025", "5,5m dic-2023 → jun-2024"]}
+ },
+
+ "serie_12m": {
+  "_definicion": "sesiones ordinarias de ambas comisiones en los 12 meses previos, mensual",
+  "rango": "2 a 7", "promedio": 4.7,
+  "puntos": {
+   "2023-12": 2, "2024-01": 2, "2024-02": 2, "2024-03": 2, "2024-04": 2,
+   "2024-05": 3, "2024-06": 4, "2024-07": 4, "2024-08": 5, "2024-09": 4,
+   "2024-10": 5, "2024-11": 6, "2024-12": 5, "2025-01": 5, "2025-02": 5,
+   "2025-03": 5, "2025-04": 5, "2025-05": 6, "2025-06": 5, "2025-07": 6,
+   "2025-08": 5, "2025-09": 6, "2025-10": 5, "2025-11": 4, "2025-12": 5,
+   "2026-01": 5, "2026-02": 6, "2026-03": 6, "2026-04": 7, "2026-05": 5,
+   "2026-06": 6, "2026-07": 6
+  }
+ },
+
+ "hallazgos": [
+  "LA PARÁLISIS EXISTE Y ES GRANDE, PERO ES ANTERIOR AL PERÍODO QUE MIDE EL INFORME. El peor tramo de la serie es dic-2023 a abr-2024, con 2 sesiones en 12 meses, y refleja el vacío de 2022-2023: la Comisión de Disciplina no tuvo una sola sesión ordinaria entre ago-2022 y may-2024, veintiún meses. De ahí en más la actividad SUBE y se estabiliza en 5-7 sesiones anuales. Medido así, el control disciplinario funciona hoy bastante mejor que al inicio de la gestión.",
+  "ESTO VA EN CONTRA DE LA HIPÓTESIS DEL APORTE EXTERNO, que esperaba parálisis creciente. Se documenta tal cual, igual que se hizo con brecha_obra_publica en ADR-0095: el dato manda sobre la expectativa.",
+  "LAS DOS COMISIONES SE COMPORTAN DISTINTO y no conviene promediarlas sin decirlo. Acusación sesiona cada 3,4 meses en promedio y produce acciones concretas; Disciplina cada 6,7 meses y no publicó ninguna acción. Si el indicador busca 'parálisis', Disciplina sola es la señal fuerte; si busca 'control efectivo', hay que mirar las acciones de Acusación.",
+  "LA SERIE NACE DISCRIMINANDO (ADR-0042): rango 2-7, se mueve mes a mes, y hay historia hasta jul-2022 para calibrar bandas sin inventarlas.",
+  "SIGUE SIENDO UN BLOG, NO UN REGISTRO. Lo que hace usable la fuente es la numeración secuencial sin saltos, no la promesa institucional de publicar. Si el Consejo cambiara el esquema de numeración, el indicador pierde su control de cobertura y hay que revisarlo."
+ ],
+
+ "decision_pendiente": {
+  "_nota": "es editorial y hay que tomarla ANTES de construir el colector, para no elegir la métrica mirando qué puntaje da (ADR-0045).",
+  "que_medir": {
+   "a": "sesiones de ambas comisiones en 12m — la serie ya calculada arriba; estable y con buen rango",
+   "b": "meses desde la última sesión de Disciplina — mide parálisis más directo y es más volátil",
+   "c": "acciones concretas en 12m — mide control efectivo, no mera reunión; son 4 eventos en 20 meses, o sea un indicador de evento como el veto de constitucionalidad"
+  },
+  "orientacion": "MÁS DELICADO QUE LA MÉTRICA. Hay que definir qué significa, para el ITCP, que las comisiones de control sesionen más. No es obvio que más control disciplinario sea 'mejor' ni 'peor' para la capacidad política del gobierno, y ponerle signo sin resolver eso sería arbitrario.",
+  "costo_de_incorporarlo": "el ITCP quedó cerrado con auditoría externa 7/7 el 20-jul-2026, con 6 dimensiones y 12 indicadores puntuando. Sumar uno obliga a reponderar y a rehacer la validación externa contra EPU."
+ }
+}
