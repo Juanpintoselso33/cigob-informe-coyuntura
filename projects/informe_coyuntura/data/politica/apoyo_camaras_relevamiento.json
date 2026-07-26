@@ -1,0 +1,40 @@
+{
+ "_meta": {
+  "descripcion": "Relevamiento de fuente para el indicador 'Apoyo Público' (cámaras empresarias) del aporte externo al cinturón político. ADR-0136. No alimenta ningún índice.",
+  "fecha_relevamiento": "2026-07-26",
+  "protocolo": "ADR-0131"
+ },
+ "camaras_probadas": [
+  {"camara": "UIA", "seccion": "https://www.uia.org.ar/comunicaciones/noticias/ y /prensa/", "estado": "existe"},
+  {"camara": "CAC", "seccion": "https://www.cac.com.ar/noticias", "estado": "existe, pero el contenido es agenda institucional (visitas, webinars, paritarias), no postura"},
+  {"camara": "CAME", "seccion": "https://www.redcame.org.ar/novedades", "estado": "existe, con IDs correlativos en la URL; contenido dominado por servicios al socio (escalas de convenio, rondas de negocios)"},
+  {"camara": "AEA", "seccion": "https://www.aeanet.net/prensa.html", "estado": "existe"},
+  {"camara": "ADEBA", "seccion": "https://www.adeba.com.ar/category/comunicados/", "estado": "existe y es el mejor caso: categoría de comunicados separada de noticias"},
+  {"camara": "SRA", "seccion": "ruralarg.org.ar", "estado": "ConnectionError en las dos pruebas; no se pudo evaluar"},
+  {"camara": "AmCham", "seccion": "amchamar.com.ar", "estado": "SSLError; no se pudo evaluar"},
+  {"camara": "COPAL", "seccion": "https://www.copal.org.ar/novedades/ + /feed/", "estado": "existe, RSS con 10 items"}
+ ],
+ "advertencia_de_metodo": "El primer intento adivinó rutas (/novedades/, /feed/) y devolvió 404 en casi todas. Eso NO es evidencia de que no haya fuente: leyendo las home aparecieron las secciones reales en 5 de 8 cámaras. Mismo error que el registrado en feedback_no_declarar_fuente_inexistente.",
+ "hallazgo_1_el_rss_no_sirve": "El RSS de ADEBA trae 21 items y los 21 son 'Síntesis normativa MBA' — un boletín regulatorio automático diario. Los comunicados institucionales quedan sepultados y no aparecen ni uno solo en el feed. Cualquier colector basado en RSS mediría el boletín, no la postura.",
+ "hallazgo_2_la_postura_si_es_codificable": {
+  "nota": "los títulos de los comunicados son explícitos, mucho más de lo esperado para lenguaje corporativo",
+  "ejemplos_apoyo": [
+   "ADEBA CONSIDERA POSITIVAS LAS MEDIDAS ANUNCIADAS POR EL GOBIERNO",
+   "ADEBA expresa su apoyo a la iniciativa de la Jefatura de Gabinete sobre la publicación de tasas municipales",
+   "ADEBA resalta la importancia del acuerdo alcanzado con el FMI"
+  ],
+  "ejemplos_critica": [
+   "Bancos advierten sobre el impacto negativo de los cambios en las SGR aprobados en el Congreso",
+   "Tasas municipales exorbitantes gravan los créditos y ponen en riesgo las sucursales",
+   "Ingresos brutos y altas tasas municipales limitan el acceso a los servicios financieros"
+  ],
+  "ejemplos_ruido": [
+   "ADEBA lamenta el fallecimiento de Su Santidad el Papa Francisco",
+   "Los bancos adhieren al asueto del 24 y 31 de diciembre",
+   "ADEBA le da la bienvenida al Banco BICE"
+  ]
+ },
+ "hallazgo_3_el_destinatario_cambia": "ES EL PROBLEMA QUE HUNDE EL INDICADOR TAL COMO ESTÁ PROPUESTO. De los tres ejemplos de crítica, DOS apuntan a municipios y UNO al Congreso: ninguno al Poder Ejecutivo nacional. Un indicador de 'apoyo público al Gobierno' que cuente comunicados críticos sin codificar a quién critican mediría otra cosa. Es la misma clase de error de ADR-0091 (veto_quorum) y ADR-0068 (fondo de cese): contar lo que no es.",
+ "hallazgo_4_volumen": "La categoría comunicados de ADEBA tiene 2 páginas de paginación, del orden de 24 a 48 piezas en TODA su historia, de las cuales una parte es ruido y otra apunta a destinatarios que no son el Gobierno nacional. Quedan unas pocas por año.",
+ "costo_recurrente": "A diferencia del veto de constitucionalidad (ADR-0131), donde la codificación es una pasada sobre un universo cerrado, acá la clasificación de postura habría que rehacerla TODOS LOS MESES, con doble codificación y kappa ≥ 0,70 según el protocolo. Es trabajo humano permanente de dos personas, no un costo de arranque."
+}
