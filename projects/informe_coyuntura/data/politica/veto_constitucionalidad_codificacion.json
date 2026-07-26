@@ -26,7 +26,9 @@
  "hallazgos_estructurales": [
   "EL UNIVERSO TIENE DUPLICADOS. Los casos 16 y 17 son el mismo sumario repetido, y los casos 4, 8 y 10 son tres sumarios del MISMO expediente (CELS contra el decreto 193/24). Contar documentos habría inflado el conteo ~2,4 veces sobre esos expedientes. Por eso la regla de contar por norma impugnada no es un refinamiento: es indispensable.",
   "LA MAYORÍA DE LOS CASOS SON DERROTAS DE QUIEN IMPUGNA, NO DEL GOBIERNO. De 17 documentos, 6 son rechazos expresos de acciones contra el DNU 70/2023 o contra el decreto 193/24. Un conteo crudo los habría sumado como vetos al Ejecutivo, moviendo el indicador exactamente al revés.",
-  "LA VENTANA POR FECHA DE SENTENCIA NO ALCANZA. Aparecen impugnaciones a normas de 1943 (decreto 6754/43) y de 2018-2019 (DNU 756/2018, DNU 669/2019) porque la SENTENCIA cae en la ventana. Hay que filtrar por la fecha de la NORMA."
+  "LA VENTANA POR FECHA DE SENTENCIA NO ALCANZA. Aparecen impugnaciones a normas de 1943 (decreto 6754/43) y de 2018-2019 (DNU 756/2018, DNU 669/2019) porque la SENTENCIA cae en la ventana. Hay que filtrar por la fecha de la NORMA.",
+  "EL TEXTO DEL SUMARIO VIENE TRUNCADO DESDE LA API, no por recorte nuestro: SAIJ devuelve el resumen abreviado y corta justo antes del resultado en varios casos. Codificar leyendo sólo el campo de texto es imposible para una parte del universo.",
+  "LOS DESCRIPTORES RESUELVEN LO QUE EL TEXTO TRUNCADO NO. Dos de los tres casos dudosos se cerraron por la ausencia de cualquier rama 'control de constitucionalidad' en su tesauro: donde la inconstitucionalidad es sólo un pedido de la parte y no la materia resuelta, SAIJ no la indexa como tal. Esto confirma que la consulta definitiva debe filtrar por DESCRIPTOR y no por frase."
  ],
 
  "casos": [
@@ -52,15 +54,14 @@
   {"n": 10, "fecha": "2024-09-09", "jurisdiccion": "FEDERAL", "norma": "Decreto 193/2024",
    "pasada_1": "excluir", "motivo": "inscripción registral en cumplimiento de acordadas CSJN. Mismo expediente que 4 y 8"},
   {"n": 11, "fecha": "2024-04-24", "jurisdiccion": "NACIONAL", "norma": "decreto de desregulación de medicina prepaga",
-   "pasada_1": "dudoso", "motivo": "aumentos de cuota de cobertura médica; el sumario describe lo que la actora solicita y no informa el resultado",
-   "nota_para_pasada_2": "identificar la norma exacta y el resultado"},
+   "pasada_1": "excluir", "motivo": "RESUELTO por descriptores: el sumario no tiene NINGUNA rama de 'control de constitucionalidad'. Sus descriptores son acción de amparo, aumento de cuota, cobertura médica y restitución de sumas — es un caso de derecho civil/salud donde la inconstitucionalidad aparece sólo como pedido de la actora, no como materia resuelta"},
   {"n": 12, "fecha": "2024-04-05", "jurisdiccion": "LOCAL", "norma": null,
    "pasada_1": "excluir", "motivo": "materia laboral provincial; el fallo dice expresamente que la declaración es INNECESARIA"},
   {"n": 13, "fecha": "2024-04-23", "jurisdiccion": "LOCAL", "norma": null,
    "pasada_1": "excluir", "motivo": "recurso de inconstitucionalidad como remedio procesal provincial (subrogancia del juez)"},
   {"n": 14, "fecha": "2024-05-15", "jurisdiccion": "NACIONAL", "norma": "DNU 70/2023 (art. 80 LCT)",
-   "pasada_1": "dudoso", "motivo": "tribunal laboral frente a la supresión del certificado de trabajo por el DNU; el sumario se corta en 'El decreto aludido es...' — probablemente lo declara inaplicable, pero hay que leer el fallo",
-   "nota_para_pasada_2": "caso potencialmente relevante: sería un tribunal desaplicando el DNU 70/23 en materia laboral"},
+   "pasada_1": "excluir", "motivo": "RESUELTO por descriptores: no tiene ninguna rama de control de constitucionalidad. Sus descriptores son confirmación de sentencia, despido y entrega del certificado de trabajo — el DNU aparece como argumento de la demandada, no como norma cuya validez se resuelve",
+   "nota_para_pasada_2": "revisar igual: el sumario se corta en 'El decreto aludido es...' y el fallo podría desaplicarlo sin que SAIJ lo haya indexado como control de constitucionalidad"},
   {"n": 15, "fecha": "2024-04-16", "jurisdiccion": "LOCAL", "norma": "ley provincial",
    "pasada_1": "excluir", "motivo": "norma provincial, no del Ejecutivo nacional"},
   {"n": 16, "fecha": "2024-04-16", "jurisdiccion": "LOCAL", "norma": null,
@@ -71,9 +72,10 @@
 
  "resultado_pasada_1": {
   "incluir": 1,
-  "dudoso": 3,
-  "excluir": 13,
+  "dudoso": 1,
+  "excluir": 15,
   "normas_distintas_incluidas": ["Resolución Min. Salud 3132/2024"],
-  "lectura": "Sobre 17 documentos, UNO clasifica sin ambigüedad como veto de constitucionalidad a una norma del Ejecutivo nacional de este mandato. Tres requieren leer el fallo completo. Trece se excluyen, y seis de ellos son casos en los que el Gobierno GANÓ."
+  "lectura": "Sobre 17 documentos, UNO clasifica como veto de constitucionalidad a una norma del Ejecutivo nacional de este mandato. Queda UN dudoso real (caso 2: tiene la rama de control de constitucionalidad en el tesauro pero el texto se corta antes del resultado). Quince se excluyen, y seis de ellos son casos en los que el Gobierno GANÓ.",
+  "implicancia_para_el_indicador": "Con un caso claro en treinta y un meses, el veto de constitucionalidad NO da una serie mensual: es un indicador de EVENTO, tal como el aporte externo lo anticipó ('tratar como evento, no serie continua'). Eso obliga a decidir antes de construirlo si el ITCP puede incorporar un indicador que pasa la mayoría de los meses sin novedad, o si conviene agregarlo con otros del bloque en un índice de presión judicial."
  }
 }

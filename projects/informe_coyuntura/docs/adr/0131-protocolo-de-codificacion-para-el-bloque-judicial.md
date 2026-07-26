@@ -158,8 +158,8 @@ motivo. **Falta la pasada 2 y la medición de concordancia.**
 | | |
 |---|---|
 | incluir | **1** |
-| dudoso (hay que leer el fallo) | 3 |
-| excluir | 13 |
+| dudoso real | 1 |
+| excluir | 15 |
 
 **El único caso claro** es la Resolución 3132/2024 del Ministerio de Salud, que
 un tribunal federal declaró reglamentación irrazonable de la ley 27.350 por
@@ -179,6 +179,29 @@ los habría sumado como vetos al Ejecutivo.
 **3. Filtrar por fecha de sentencia no alcanza.** Aparecen impugnaciones al
 decreto 6754/**1943**, al DNU 756/**2018** y al DNU 669/**2019** porque la
 sentencia cae en la ventana. **Hay que filtrar por la fecha de la NORMA.**
+
+**4. El texto del sumario viene truncado desde la propia API.** SAIJ devuelve el
+resumen abreviado y corta justo antes del resultado en varios casos. Codificar
+leyendo sólo el campo de texto es imposible para una parte del universo.
+
+**5. Los descriptores resuelven lo que el texto truncado no.** Dos de los tres
+casos que habían quedado dudosos se cerraron por **la ausencia de cualquier rama
+`control de constitucionalidad` en su tesauro**: donde la inconstitucionalidad
+es sólo un pedido de la parte y no la materia resuelta, SAIJ no la indexa como
+tal. Es la confirmación práctica de que la consulta definitiva debe filtrar por
+descriptor y no por frase.
+
+### Consecuencia de diseño: es un indicador de EVENTO
+
+**Un caso claro en treinta y un meses no da una serie mensual.** El aporte
+externo lo había anticipado —*"tratar como evento, no serie continua"*— y la
+codificación lo confirma con datos.
+
+Eso hay que decidirlo **antes** de construirlo: si el ITCP puede incorporar un
+indicador que pasa la mayoría de los meses sin novedad, o si conviene agregarlo
+con los otros del bloque en un índice de presión judicial. Un indicador que
+marca cero casi siempre y salta una vez al año no se comporta como los demás del
+índice, y agregarlo sin resolver esto le metería ruido a la dimensión.
 
 ### La decisión de codificación que la pasada 2 tiene que resolver
 
