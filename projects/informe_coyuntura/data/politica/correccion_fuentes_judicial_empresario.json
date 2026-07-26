@@ -62,6 +62,69 @@
     "maximo_secretaria": "juicios originarios"
    },
    "nota": "la fuente advierte 'marcada asimetría positiva entre la media y la mediana' en todas las secretarías: hay casos de larga duración que levantan el promedio. Usar mediana."
+  },
+  "serie_historica_completa": {
+   "_fuente": "renders estáticos publicados de los tableros de Tableau del CSJN (public.tableau.com/static/images/Re/Resueltos2024/Resueltos/1.png) + Anuario 2025 en PDF",
+   "_como_se_obtuvo": "los tableros no se pueden consultar por API (allow_summary=false, sesión vizql de un solo uso), pero Tableau Public publica un PNG renderizado de cada hoja, con las etiquetas de datos visibles. Se leyeron de ahí.",
+   "_validacion": "los 12 años cierran EXACTO: el saldo que la fuente enuncia por separado es igual a ingresos menos resueltos en todos los años, sin una sola discrepancia. La lectura del gráfico queda verificada aritméticamente.",
+   "ingresos": {
+    "2014": 16783,
+    "2015": 16023,
+    "2016": 15719,
+    "2017": 14800,
+    "2018": 28037,
+    "2019": 23665,
+    "2020": 15308,
+    "2021": 24956,
+    "2022": 31344,
+    "2023": 32233,
+    "2024": 45678,
+    "2025": 58424
+   },
+   "resueltos": {
+    "2014": 23803,
+    "2015": 17708,
+    "2016": 13272,
+    "2017": 9583,
+    "2018": 7278,
+    "2019": 26608,
+    "2020": 11090,
+    "2021": 19545,
+    "2022": 20427,
+    "2023": 16889,
+    "2024": 19056,
+    "2025": 26524
+   },
+   "saldo": {
+    "2014": -7020,
+    "2015": -1685,
+    "2016": 2447,
+    "2017": 5217,
+    "2018": 20759,
+    "2019": -2943,
+    "2020": 4218,
+    "2021": 5411,
+    "2022": 10917,
+    "2023": 15344,
+    "2024": 26622,
+    "2025": 31900
+   },
+   "tasa_resolucion_pct": {
+    "2014": 141.8,
+    "2015": 110.5,
+    "2016": 84.4,
+    "2017": 64.8,
+    "2018": 26.0,
+    "2019": 112.4,
+    "2020": 72.4,
+    "2021": 78.3,
+    "2022": 65.2,
+    "2023": 52.4,
+    "2024": 41.7,
+    "2025": 45.4
+   },
+   "lectura": "la tasa de resolución (resueltos sobre ingresos) va de 141,8% en 2014 —cuando la Corte descargaba atraso— a 45,4% en 2025. Rango x5,5 sobre 12 años. Hoy resuelve menos de la mitad de lo que le entra.",
+   "salvedad": "el 26,0% de 2018 es atípico y lo explica un salto de ingresos del +89,4% ese año, no un colapso de la producción. Los valores por encima de 100% (2014, 2015, 2019) son años de descarga de atraso."
   }
  },
  "apoyo_publico": {
@@ -105,5 +168,11 @@
    "ademas": "la clasificación es de INGRESOS (quién presenta), no de resultados por parte. Para 'éxito' haría falta el cruce presentante × resultado, que no está publicado en el PDF.",
    "bloqueo_cautelar": "sigue sin dar: 'Admite/Rechaza medida cautelar' junto con Nulidad suman 0,42% de los resueltos de 2025, del orden de 110 casos. Y la CSJN no es donde se frenan las políticas — eso pasa en primera instancia y en Cámaras, que es justamente lo que no tiene censo público."
   }
+ },
+ "bloqueo_cautelar_scw_pjn": {
+  "hallazgo": "el Sistema de Consulta Web del PJN (scw.pjn.gov.ar) SÍ permite exactamente la consulta que hace falta: búsqueda POR PARTE, con selector de jurisdicción (29, incluida CAF - Cámara Nacional de Apelaciones en lo Contencioso Administrativo Federal) y selector de ROL de la parte (41 opciones, incluida DEMANDADO). O sea: 'Estado Nacional como demandado en el fuero contencioso administrativo federal' es una consulta válida del sistema.",
+  "por_que_no_se_usa": "CADA CONSULTA ESTÁ PROTEGIDA POR CAPTCHA. Al enviar la búsqueda el sistema responde 'Se debe completar el campo verificador para poder realizar la consulta'. No se resuelven CAPTCHAs: es el operador declarando explícitamente que no admite consulta automatizada.",
+  "estatus": "cerrado por decisión del PJN, no por inexistencia de la fuente. Es una distinción importante: si el PJN habilitara una API o publicara el datastore, el indicador se construye al día siguiente.",
+  "via_alternativa_no_agotada": "pedido formal de acceso a la información pública al PJN o al Consejo de la Magistratura. No sirve para un indicador de actualización periódica, pero sí para una nota metodológica o un informe puntual."
  }
 }

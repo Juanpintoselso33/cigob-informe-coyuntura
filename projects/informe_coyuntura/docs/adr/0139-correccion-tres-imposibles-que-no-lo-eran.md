@@ -69,6 +69,31 @@ iba de 453 (Previsional) a 2.689.
   positiva entre la media y la mediana» en todas las secretarías: hay casos de
   larga duración que levantan el promedio por encima del valor central.
 
+### Y hay serie histórica completa: los tableros publican un PNG renderizado
+
+Los tableros no se pueden consultar por API. Pero **Tableau Public publica un
+render estático de cada hoja**, con las etiquetas de datos visibles
+(`public.tableau.com/static/images/Re/Resueltos2024/Resueltos/1.png`). De ahí
+sale la serie 2014-2024, y el Anuario 2025 completa el último año.
+
+**La lectura queda verificada aritméticamente**: los 12 años cierran exacto — el
+saldo que la fuente enuncia por separado es igual a ingresos menos resueltos, sin
+una sola discrepancia.
+
+| año | 2014 | 2016 | 2018 | 2020 | 2022 | 2023 | 2024 | 2025 |
+|---|---|---|---|---|---|---|---|---|
+| ingresos | 16.783 | 15.719 | 28.037 | 15.308 | 31.344 | 32.233 | 45.678 | 58.424 |
+| resueltos | 23.803 | 13.272 | 7.278 | 11.090 | 20.427 | 16.889 | 19.056 | 26.524 |
+| **tasa de resolución** | **141,8%** | 84,4% | 26,0% | 72,4% | 65,2% | 52,4% | **41,7%** | **45,4%** |
+
+De 141,8% en 2014 —cuando la Corte descargaba atraso— a **45,4% en 2025**: hoy
+resuelve menos de la mitad de lo que le entra. Rango ×5,5 sobre 12 años, muy por
+encima del backfill mínimo a dic-2023 que pide el proyecto.
+
+Salvedad honesta: el 26,0% de 2018 es atípico y lo explica un salto de ingresos
+del +89,4% ese año, no un colapso de la producción; y los valores por encima de
+100% (2014, 2015, 2019) son años de descarga de atraso.
+
 ## Apoyo público: era viable, con otra cámara
 
 ADR-0136 lo rechazó porque «el destinatario cambia»: de tres críticas de ADEBA,
@@ -140,10 +165,35 @@ laborales** (manufacturas 3,31%, transporte de pasajeros 2,41%). No son las
 grandes compañías litigando contra el Estado. A eso se suma que la clasificación
 es de **ingresos** (quién presenta), no de resultados por parte.
 
-**Bloqueo Cautelar tampoco da**: «Admite/Rechaza medida cautelar» suman con
-Nulidad el 0,42% de los resueltos de 2025, del orden de 110 casos. Y la CSJN no
-es donde se frenan las políticas — eso ocurre en primera instancia y en Cámaras,
-que es exactamente lo que no tiene censo público.
+### Bloqueo cautelar: la consulta existe y está cerrada con CAPTCHA
+
+En la CSJN, «Admite/Rechaza medida cautelar» suman con Nulidad el 0,42% de los
+resueltos de 2025 —del orden de 110 casos—, y además la Corte no es donde se
+frenan las políticas: eso ocurre en primera instancia y en Cámaras.
+
+ADR-0138 afirmó que eso «no tiene censo público». **Es falso, y hacía falta
+verificarlo.** El Sistema de Consulta Web del PJN (`scw.pjn.gov.ar`) permite
+exactamente la consulta que el indicador necesita:
+
+- búsqueda **por parte**, no sólo por número de expediente;
+- selector de **jurisdicción** entre 29, incluida **CAF — Cámara Nacional de
+  Apelaciones en lo Contencioso Administrativo Federal**;
+- selector de **rol** de la parte entre 41, incluido **DEMANDADO**.
+
+O sea: *«Estado Nacional como demandado en el fuero contencioso administrativo
+federal»* es una consulta válida del sistema.
+
+**Pero cada consulta está protegida por CAPTCHA.** Al enviar la búsqueda el
+sistema responde «Se debe completar el campo verificador para poder realizar la
+consulta». Ahí se detiene el trabajo: no se resuelven CAPTCHAs, y además es el
+operador declarando de forma explícita que no admite consulta automatizada.
+
+La distinción importa. El indicador **no está cerrado porque la fuente no
+exista**, sino porque el PJN decidió no abrirla a consulta automática. Si
+habilitara una API o publicara el datastore, se construye al día siguiente.
+Queda además una vía no agotada: **pedido formal de acceso a la información
+pública**, que no sirve para un indicador de actualización periódica pero sí
+para una nota metodológica o un informe puntual.
 
 ## Decisión
 
