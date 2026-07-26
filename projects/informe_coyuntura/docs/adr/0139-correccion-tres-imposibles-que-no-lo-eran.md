@@ -53,14 +53,21 @@ rechazados por inadmisibles—: de 730 a 844 días en un año, **+15,6%**. Y el
 stock de pendientes casi se triplicó desde 2022 (10.917 → 31.900).
 
 Hay además **duración por secretaría de radicación**, incluida la N°4
-Contencioso Administrativo, que es donde se litiga contra el Estado.
+Contencioso Administrativo, que es donde se litiga contra el Estado. El rango en
+2025 va de **542 días** (Penal Especial) a **2.082 días** (juicios originarios,
+cinco años y ocho meses, coherente con que tramitan en instancia única); en 2024
+iba de 453 (Previsional) a 2.689.
 
-**Limitaciones reales**, que sí corresponde declarar: la cadencia es anual con un
-informe de primer semestre —ya existe el de 2026, así que en la práctica es
-semestral—, y es la CSJN sola, no todo el fuero federal. Lo segundo es
-defendible (es donde terminan las causas políticamente sensibles) pero hay que
-decirlo. Los cortes finos por secretaría están en tableros de Tableau que
-requieren sesión con JavaScript; los agregados están en el PDF y alcanzan.
+**Limitaciones reales**, que sí corresponde declarar:
+
+- La cadencia es anual con un informe de primer semestre —ya existe el de 2026,
+  así que en la práctica es semestral—. Para un tablero mensual es lento, pero no
+  más que otros indicadores del informe.
+- Es la CSJN sola, no todo el fuero federal. Es defendible (es donde terminan las
+  causas políticamente sensibles) pero hay que decirlo.
+- **Usar mediana, no promedio.** La propia fuente advierte «marcada asimetría
+  positiva entre la media y la mediana» en todas las secretarías: hay casos de
+  larga duración que levantan el promedio por encima del valor central.
 
 ## Apoyo público: era viable, con otra cámara
 
@@ -102,23 +109,56 @@ ADR-0138 los rechazó por «sin campo de partes ni de resultado». Eso era ciert
 - **Tipos de resolución** que incluyen explícitamente **«Admite Medida Cautelar»
   y «Rechaza medida cautelar»** (con Nulidad suman 0,42% de los resueltos 2025).
 
-**No quedan establecidos como construibles**: la tabulación cruzada
-(empresa × resultado, cautelar × año) no está en el PDF sino en los tableros de
-Tableau con filtros, y extraerla requiere sesión con JavaScript. Eso es trabajo
-pendiente, no un imposible. Y hay que ser honesto con la escala: 0,42% de los
-resueltos son del orden de 110 casos al año — poco, pero es un **censo** del
-tribunal, no la muestra curada de SAIJ.
+### Se fue a buscar el cruce a Tableau, y el resultado cierra el punto
+
+Los tableros están publicados con `allow_view_underlying=false` y
+`allow_summary=false` —el CSJN deshabilitó la descarga de datos— y la sesión de
+vizql es de un solo uso: se consume al cargar la página y todo reintento
+devuelve HTTP 410. Lo que sí quedó legible es **la estructura del libro**, que
+confirma qué datos existen: «Duraciones Totales», «Duración por Secretarías»,
+«Recursos resueltos según presentante», «Subtipos de presentantes», «Recursos
+admitidos según materia y tipo de recurso».
+
+No hizo falta insistir, porque el PDF trae lo mismo en prosa **y alcanza para
+decidir que Éxito Corporativo no va** — ahora por una razón de fondo y con
+datos, no por falta de campos.
+
+Presentantes de los casos ingresados en 2025:
+
+| categoría | % |
+|---|---|
+| Gobiernos, Organismos y Dependencias Públicas | 59,12% (ANSES = 93,03% de la categoría) |
+| Personas físicas | 24,16% |
+| **Empresas** | **7,02%** (ART = 79,39% de la categoría) |
+| Otras organizaciones | 0,30% |
+| sin dato | 9,39% |
+
+**El campo de partes existe; lo que no existe es la población que el indicador
+supone.** «Empresas» ante la CSJN son 7% de los ingresos, y dentro de ese 7% casi
+cuatro quintos son **Aseguradoras de Riesgos del Trabajo apelando fallos
+laborales** (manufacturas 3,31%, transporte de pasajeros 2,41%). No son las
+grandes compañías litigando contra el Estado. A eso se suma que la clasificación
+es de **ingresos** (quién presenta), no de resultados por parte.
+
+**Bloqueo Cautelar tampoco da**: «Admite/Rechaza medida cautelar» suman con
+Nulidad el 0,42% de los resueltos de 2025, del orden de 110 casos. Y la CSJN no
+es donde se frenan las políticas — eso ocurre en primera instancia y en Cámaras,
+que es exactamente lo que no tiene censo público.
 
 ## Decisión
 
 1. **Se revierten los veredictos de ADR-0136 y ADR-0138** en los términos de
-   arriba. `velocidad_de_resolucion` y `apoyo_publico` pasan a **construibles**;
-   `exito_corporativo` y `bloqueo_cautelar` pasan de «imposibles» a **pendientes
-   de extracción**.
-2. **No se incorpora todavía ninguno**, por la misma razón que ADR-0134/0135/0137:
+   arriba. `velocidad_de_resolucion` y `apoyo_publico` pasan a **construibles**.
+2. **`exito_corporativo` y `bloqueo_cautelar` siguen sin ir, pero por otra
+   razón.** El rechazo de ADR-0138 («no hay campo de partes ni de resultado»)
+   era falso. El motivo real es que la población no es la que el indicador
+   supone: «Empresas» ante la CSJN son 7% de los ingresos y cuatro quintos de
+   ellas son ART. La diferencia importa: un negativo por falta de campo se cae
+   apenas alguien encuentra el campo; éste se sostiene con datos.
+3. **No se incorpora todavía ninguno**, por la misma razón que ADR-0134/0135/0137:
    falta la decisión editorial de orientación y el ITCP está cerrado con
    auditoría 7/7.
-3. Evidencia versionada en
+4. Evidencia versionada en
    `data/politica/correccion_fuentes_judicial_empresario.json`.
 
 ## Consecuencias, y la regla que hay que respetar
