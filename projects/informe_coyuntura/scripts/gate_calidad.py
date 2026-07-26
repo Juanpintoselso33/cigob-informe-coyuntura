@@ -184,17 +184,41 @@ def main() -> int:
             if m:
                 fallas.append(f"G6 {ruta}: {nombre} en texto público («{m.group(0)}»)")
 
+    # ── Bloqueantes vs. no bloqueantes (ADR-0133) ────────────────────────────
+    # Una fuente que se atrasa NO puede impedir que se publique todo lo demás.
+    # El indicador ya queda marcado `desactualizado`, publicar.py hace
+    # carry-forward del último valor bueno y el tablero lo muestra como viejo:
+    # el lector no se entera de nada falso. Bloquear la publicación entera por
+    # eso deja al informe SIN ACTUALIZAR NADA, que es peor que mostrar un
+    # indicador viejo señalado como viejo.
+    #
+    # Lo que sí bloquea es la INCONSISTENCIA: un indicador sin valor (G1), una
+    # card que no coincide con su serie (G3) o jerga interna en texto público
+    # (G6). Ahí el snapshot afirma algo que no es cierto, y eso no se publica.
+    bloqueantes = [f_ for f_ in fallas if not f_.startswith("G2 ")]
+    demorados = [f_ for f_ in fallas if f_.startswith("G2 ")]
+
     print(f"Gate de calidad — {hoy.isoformat()}")
     for a in avisos:
         print(f"  [AVISO] {a}")
-    for f_ in fallas:
+    for f_ in demorados:
+        print(f"  [DEMORA] {f_}")
+    for f_ in bloqueantes:
         print(f"  [FALLA] {f_}")
+
+    n_ind = sum(len(c.get("indicadores", {})) for c in inf["cinturones"].values())
     if not fallas:
-        n_ind = sum(len(c.get("indicadores", {})) for c in inf["cinturones"].values())
         print(f"  [OK] {n_ind} indicadores en {len(inf['cinturones'])} cinturones: "
               f"estructura, frescura, invariante serie-titular y editorial limpios")
         return 0
-    print(f"  → {len(fallas)} falla(s). El snapshot NO debe publicarse.")
+    if not bloqueantes:
+        print(f"  → {len(demorados)} fuente(s) demorada(s), ninguna falla de "
+              f"integridad. El snapshot SE PUBLICA: los indicadores atrasados "
+              f"van marcados como desactualizados.")
+        return 0
+    print(f"  → {len(bloqueantes)} falla(s) de integridad. El snapshot NO debe "
+          f"publicarse." + (f" (+{len(demorados)} fuente(s) demorada(s))"
+                            if demorados else ""))
     return 0 if warn_only else 1
 
 

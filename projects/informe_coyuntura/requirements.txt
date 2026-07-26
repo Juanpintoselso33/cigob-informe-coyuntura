@@ -3,5 +3,8 @@ xlrd==1.2.0           # Para leer .xls OLE2 (UTDT ICC). NO usar xlrd>=2.0 (no so
 openpyxl>=3.1         # Para leer .xlsx (ITCRM oficial del BCRA, planilla ITCRMSerie)
 beautifulsoup4>=4.12
 pdfplumber>=0.10.0
+pypdf>=4.0            # Informes del Min. de Desregulación (texto de portada, ADR-0125)
+pymupdf>=1.24         # Figura 1 de esos informes: las barras son vectoriales y se
+                      # miden con page.get_drawings() — de ahí sale el backfill
 pytrends>=4.9.2
 pytest>=8.0           # gates G4-G5 del pipeline nocturno (reconciliación + robustez)

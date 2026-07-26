@@ -58,15 +58,38 @@ jobs:
           ACLED_UBA_PASSWORD: ${{ secrets.ACLED_UBA_PASSWORD }}
         run: |
           set +e
-          python scripts/macro.py;               echo "::notice::macro exit=$?"
-          python scripts/politica.py;            echo "::notice::politica exit=$?"
-          python scripts/gestion.py;             echo "::notice::gestion exit=$?"
-          python scripts/vida_cotidiana/main.py; echo "::notice::vida_main exit=$?"
-          python scripts/vida_cotidiana.py;      echo "::notice::vida_cache exit=$?"
-          python scripts/espiritu_epoca.py;      echo "::notice::espiritu exit=$?"
-          python scripts/descargar_series.py;    echo "::notice::series exit=$?"
-          python scripts/validacion_externa.py;   echo "::notice::validacion exit=$?"
-          python scripts/generar_informe.py;     echo "::notice::generar exit=$?"
+          # Los colectores usan sus exit codes como DATO, no como error:
+          #   0 = todo fresco · 1 = mixto fresco/caché · 2 = todo caché
+          # Una fuente caída es normal y no debe cortar la corrida.
+          #
+          # Pero un código >2 NO es una condición de datos: es un crash del
+          # script (ADR-0133). Pasó el 26-jul-2026 con un ModuleNotFoundError
+          # de pypdf: el colector reventaba, la serie quedaba vacía y la falla
+          # aparecía TRES PASOS DESPUÉS como una discrepancia de matriz
+          # incomprensible. Se distingue una cosa de la otra y se avisa fuerte.
+          crashes=0
+          correr() {
+            python "$1"; local c=$?
+            echo "::notice::$2 exit=$c"
+            if [ $c -gt 2 ]; then
+              echo "::error::$2 CRASHEÓ (exit $c) — no es una fuente caída, es el script"
+              crashes=$((crashes+1))
+            fi
+          }
+          correr scripts/macro.py               macro
+          correr scripts/politica.py            politica
+          correr scripts/gestion.py             gestion
+          correr scripts/vida_cotidiana/main.py vida_main
+          correr scripts/vida_cotidiana.py      vida_cache
+          correr scripts/espiritu_epoca.py      espiritu
+          correr scripts/descargar_series.py    series
+          correr scripts/validacion_externa.py  validacion
+          correr scripts/generar_informe.py     generar
+          if [ $crashes -gt 0 ]; then
+            echo "::error::$crashes script(s) crashearon. Se corta acá para que la"
+            echo "::error::causa quede a la vista y no se publique un snapshot mutilado."
+            exit 1
+          fi
           true
 
       - name: Generar snapshot web
@@ -75,10 +98,13 @@ jobs:
       - name: Regenerar sensibilidad ampliada
         run: python scripts/sensibilidad.py
 
-      # Gates de calidad: si el snapshot está roto (estructura, frescura,
-      # invariante serie↔titular, jerga interna) o una reconciliación
-      # paramétrica no cierra, el run se corta ACÁ y producción sigue
-      # sirviendo el snapshot anterior, que ya pasó su gate.
+      # Gates de calidad. Desde ADR-0133 el gate distingue:
+      #   * INTEGRIDAD (G1 campos faltantes · G3 card≠serie · G6 jerga interna)
+      #     → corta. El snapshot afirmaría algo que no es cierto.
+      #   * DEMORA (G2 una fuente atrasada) → NO corta. El indicador ya va
+      #     marcado como desactualizado y publicar.py hace carry-forward; dejar
+      #     todo el informe sin actualizar por una fuente lenta es peor que
+      #     mostrar un dato viejo señalado como viejo.
       - name: Gate de calidad del snapshot (G1-G3, G6)
         run: python scripts/gate_calidad.py
 
