@@ -1,0 +1,46 @@
+{
+ "_meta": {
+  "descripcion": "Relevamiento de fuente para los indicadores 'Bloqueo Cautelar' y 'Judicialización' del aporte externo al cinturón político (ADR-0135). No alimenta ningún índice.",
+  "fecha_relevamiento": "2026-07-26",
+  "protocolo": "ADR-0131"
+ },
+ "consulta_verificada": {
+  "endpoint": "GET https://www.saij.gob.ar/busqueda",
+  "parametros": {"r": "(texto:\"medida cautelar\" AND fecha-rango:[AAAA0101 TO AAAA1231])",
+                 "f": "Jurisdicción", "o": 0, "p": 1},
+  "conteo": "categoriesResultList → faceta 'Jurisdicción' → facetChildren; se suman 'Federal' y 'Nacional'",
+  "correccion_a_adr_0131": "el ADR-0131 dice que el total sale de la faceta 'Total' → facetHits. Es el HIJO 'total' (minúscula) el que trae el número; el padre siempre da 0. Además totalSearchResults NO es el total: viene topeado por el pageSize."
+ },
+ "facetas_disponibles": {
+  "sirven": ["Total", "Tipo de Documento/Jurisprudencia", "Jurisdicción", "Fecha"],
+  "no_existen": ["Descriptores", "Descriptor", "Materia"],
+  "vacias": ["Tribunal"],
+  "consecuencia": "NO se puede contar por término del tesauro controlado, aunque cada documento lo traiga en su abstract. Sólo hay texto libre. La faceta Jurisdicción sí resuelve la contaminación provincial que arruinó el caso del veto (ADR-0131)."
+ },
+ "serie_densidad_cautelar_federal_nacional": {
+  "_definicion": "sumarios con 'medida cautelar' sobre el total de sumarios, ambos restringidos a jurisdicción Federal + Nacional",
+  "unidad": "porcentaje",
+  "puntos": {"2016": 0.56, "2017": 0.61, "2018": 1.03, "2019": 0.91, "2020": 1.53,
+             "2021": 1.60, "2022": 1.52, "2023": 1.51, "2024": 1.95, "2025": 1.71,
+             "2026": 1.78},
+  "crudos": {"2016": [49, 8716], "2017": [55, 9025], "2018": [115, 11143],
+             "2019": [117, 12837], "2020": [186, 12186], "2021": [237, 14838],
+             "2022": [152, 10027], "2023": [139, 9215], "2024": [233, 11962],
+             "2025": [215, 12575], "2026": [85, 4784]},
+  "nota_2026": "año incompleto, pero al ser un cociente el numerador y el denominador se recortan juntos y el punto sigue siendo comparable"
+ },
+ "numerador_contra_el_estado": {
+  "_definicion": "sumarios con 'medida cautelar' Y 'estado nacional', Federal + Nacional",
+  "puntos": {"2016": 6, "2017": 11, "2018": 3, "2019": 9, "2020": 12, "2021": 8,
+             "2022": 12, "2023": 7, "2024": 25, "2025": 22, "2026": 13},
+  "veredicto": "demasiado fino para un indicador: entre 3 y 25 documentos por año sobre una base curada, donde un solo documento mueve la serie varios puntos porcentuales"
+ },
+ "por_que_el_conteo_crudo_no_sirve": "El conteo sin normalizar de 'medida cautelar' en SAIJ va de 69 (2016) a 350 (2021). Las cautelares no se quintuplicaron: lo que cambió es cuánto sumarió SAIJ ese año. SAIJ publica sumarios CURADOS, no el universo de sentencias. Cualquier indicador que cuente documentos de SAIJ sin dividir por la cobertura del año mide productividad editorial.",
+ "fuentes_alternativas_probadas": [
+  {"fuente": "sjconsulta.csjn.gov.ar (Sumarios de Fallos de la CSJN)", "resultado": "el endpoint de búsqueda devuelve HTTP 500"},
+  {"fuente": "scw.pjn.gov.ar (Consulta Web de Causas del PJN)", "resultado": "responde, pero exige número de causa o parte: no es enumerable y no da un universo"},
+  {"fuente": "cij.gov.ar", "resultado": "página de novedades con 41 enlaces a fallos y 4 fechas; es un servicio de prensa, no un censo consultable"},
+  {"fuente": "datos.jus.gob.ar", "resultado": "no hay dataset de cautelares. 'Causas no penales' es de poderes judiciales PROVINCIALES; el único que menciona cautelares es 'Bienes secuestrados y decomisados'"}
+ ],
+ "limitacion_no_resuelta": "La normalización divide el VOLUMEN editorial de SAIJ, pero no un eventual cambio en su MEZCLA (si SAIJ empezara a sumariar proporcionalmente más fallos procesales, la densidad subiría sin que cambiara el fenómeno). No hay forma de descartarlo con los datos del propio SAIJ; haría falta un contraste externo."
+}

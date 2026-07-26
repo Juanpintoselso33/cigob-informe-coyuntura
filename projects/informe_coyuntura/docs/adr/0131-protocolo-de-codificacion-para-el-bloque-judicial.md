@@ -256,8 +256,15 @@ GET https://www.saij.gob.ar/busqueda
 ```
 
 Devuelve JSON con `searchResults.documentResultList`; cada documento trae su
-`uuid`, su `friendly-url` y un `documentAbstract` con el sumario. El conteo
-total sale de `categoriesResultList` → faceta `Total` → `facetHits`.
+`uuid`, su `friendly-url` y un `documentAbstract` con el sumario.
+
+> **Corregido por ADR-0135.** Este anexo decía que el conteo total sale de
+> `categoriesResultList` → faceta `Total` → `facetHits`. Es **el hijo `total`**
+> (en minúscula) el que trae el número: el padre `Total` siempre devuelve 0.
+> Y `totalSearchResults` **no** es el total — viene topeado por el `pageSize`,
+> así que una consulta con `p=5` informa 5 aunque haya miles. Siguiendo el
+> anexo tal como estaba se obtienen ceros en todas las consultas y se concluye,
+> falsamente, que la fuente no sirve.
 
 Queda escrito para que quien retome el punto no vuelva a averiguar si SAIJ se
 puede consultar: **se puede, y ese nunca fue el problema.**
