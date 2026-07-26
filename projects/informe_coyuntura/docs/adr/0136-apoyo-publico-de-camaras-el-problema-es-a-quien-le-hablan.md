@@ -6,6 +6,14 @@
 - **Relacionados**: ADR-0131 (protocolo), ADR-0088 (`sector_privado`),
   ADR-0091 y ADR-0068 (contar lo que no es), ADR-0134 y ADR-0135
 
+> **⚠️ CORREGIDO POR ADR-0139.** El veredicto de este ADR («no se construye») **es
+> incorrecto**. El razonamiento del destinatario era válido para ADEBA y se
+> generalizó mal: ADEBA es una asociación de bancos cuyo feed es un boletín
+> regulatorio, y elegirla como «mejor caso» fue un error no verificado. **AEA
+> publica 46 comunicados fechados (2020-2026) que son postura explícita al
+> Gobierno nacional**, y la serie se valida por el quiebre de régimen. Además,
+> SRA no era inalcanzable: cambió de dominio a `sra.ar`. Leer ADR-0139.
+
 ## Contexto
 
 El aporte externo propone **Apoyo Público**: medir si las cámaras empresarias

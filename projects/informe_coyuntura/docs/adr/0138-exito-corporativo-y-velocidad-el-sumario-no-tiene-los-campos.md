@@ -5,6 +5,15 @@
 - **Ámbito**: cinturón político (ITCP), bloque judicial
 - **Relacionados**: ADR-0135 (cautelares: no hay censo de causas), ADR-0131
 
+> **⚠️ CORREGIDO POR ADR-0139.** «Velocidad de Resolución es estructuralmente
+> imposible» **es falso**. El Anuario de la Oficina de Estadísticas de la CSJN
+> tiene una sección «Duración de los casos resueltos» definida como días corridos
+> entre la fecha de presentación y la del fallo. Este ADR lo pasó por alto porque
+> miró `/transparencia/datos-estadisticos` y no abrió el enlace «Datos abiertos»
+> que estaba en el menú de esa misma página. La premisa del rechazo de Éxito
+> Corporativo (sin partes ni resultado) también era falsa fuera de SAIJ. Leer
+> ADR-0139.
+
 ## Contexto
 
 Cierra los dos últimos indicadores judiciales del aporte externo:

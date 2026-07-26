@@ -1,0 +1,58 @@
+{
+ "_meta": {
+  "descripcion": "CORRECCIÓN de ADR-0136 y ADR-0138. Tres indicadores declarados inviables o imposibles resultaron tener fuente. Ver ADR-0139.",
+  "fecha": "2026-07-26",
+  "motivo": "el editor señaló que se estaba declarando 'imposible' sin agotar la búsqueda. Tenía razón."
+ },
+
+ "que_se_habia_pasado_por_alto": [
+  "El menú del sitio del CSJN, en la MISMA página que ya se había descargado, decía 'Datos abiertos' y no se siguió el enlace. Apunta a datos.csjn.gov.ar y a /transparencia/datos-estadisticos.",
+  "SRA se dio por 'no evaluable' por ConnectionError contra ruralarg.org.ar. El dominio CAMBIÓ: es sra.ar. El sitio responde perfectamente.",
+  "Se eligió ADEBA como 'mejor caso' de cámara empresaria porque tenía una categoría 'comunicados'. Es el PEOR caso: es una asociación de bancos cuyo feed es un boletín regulatorio diario. AEA, la asociación empresaria de referencia, publica exclusivamente comunicados de postura."
+ ],
+
+ "velocidad_de_resolucion": {
+  "veredicto_anterior": "estructuralmente imposible: no existe fecha de inicio de causa en ninguna fuente consultable",
+  "veredicto_corregido": "CONSTRUIBLE con fuente oficial",
+  "fuente": "Oficina de Estadísticas de la CSJN — Anuario Estadístico, sobre el sistema de gestión judicial Lex 100",
+  "url": "https://www.csjn.gov.ar/transparencia/datos-estadisticos",
+  "definicion_de_la_fuente": "'La duración total de cada caso resuelto ha sido calculada considerando la cantidad de días corridos entre la fecha de presentación del caso ante la CSJN y la fecha del fallo que puso fin a su tramitación' — o sea exactamente las dos fechas que se habían declarado inexistentes",
+  "datos": {
+   "2024": {"casos_resueltos": 19056, "duracion_promedio_dias": 599, "mediana_dias": 385,
+            "admitidos_promedio": 730, "admitidos_mediana": 511,
+            "inadmisibilidad_promedio": 548, "inadmisibilidad_mediana": 324},
+   "2025": {"casos_resueltos": 26524, "duracion_promedio_dias": 609, "mediana_dias": 364,
+            "admitidos_promedio": 844, "admitidos_mediana": 571,
+            "inadmisibilidad_promedio": 545, "inadmisibilidad_mediana": 295}
+  },
+  "stock_pendientes": {"2022": 10917, "2023": 15344, "2024": 26622, "2025": 31900},
+  "señal": "la duración de los casos ADMITIDOS —los resueltos sobre el fondo, no los rechazados por inadmisibles— pasó de 730 a 844 días entre 2024 y 2025, +15,6%. La mediana subió de 511 a 571. Y el stock de pendientes casi se triplicó desde 2022.",
+  "desagregacion_disponible": "hay duración POR SECRETARÍA DE RADICACIÓN, incluida la N°4 Contencioso Administrativo (1.515 ingresos en 2025), que es donde se litiga contra el Estado",
+  "limitaciones_reales": [
+   "cadencia ANUAL (anuario) más un informe de primer semestre — existe ya 1er_Semestre2026, así que es semestral en la práctica. Para un tablero mensual es lento, pero no más que otros indicadores del informe.",
+   "es la CSJN sola, no todo el fuero federal. Defendible —es donde terminan las causas políticamente sensibles— pero hay que declararlo.",
+   "los números finos por secretaría están en tableros de Tableau que requieren sesión con JavaScript; los agregados están en el PDF y alcanzan para arrancar."
+  ]
+ },
+
+ "apoyo_publico": {
+  "veredicto_anterior": "no viable: el destinatario cambia (críticas a municipios y al Congreso, no al Ejecutivo) y el volumen es fino",
+  "veredicto_corregido": "VIABLE. El veredicto anterior generalizaba desde ADEBA, que era la cámara equivocada.",
+  "fuente": "AEA — Asociación Empresaria Argentina, sección Prensa (aeanet.net/prensa.html)",
+  "volumen": "46 comunicados fechados entre 2020-03-21 y 2026-03-31, de 3 a 11 por año, cada uno con su PDF de texto completo",
+  "por_que_sirve": "los comunicados son POSTURA EXPLÍCITA y apuntan al GOBIERNO NACIONAL, no a municipios. El problema de destinatario que hundía a ADEBA no aplica.",
+  "validacion_por_quiebre_de_regimen": "la serie se valida sola: el tono se invierte exactamente en el cambio de gobierno. Bajo la gestión anterior domina la crítica ('AEA rechaza la intervención de Vicentin', 'Alerta empresaria por la intención del Gobierno de subir la presión fiscal', 'Más impuestos = Menos inversiones y empleo', 'Señales Negativas', 'Otra señal negativa'); desde nov-2023 domina el apoyo ('AEA Felicita al Presidente electo', 'Una oportunidad histórica', 'El Pacto de Mayo: Un paso muy positivo', 'Satisfacción de la AEA por el acuerdo con el FMI').",
+  "la_codificacion_es_facil": "'Señales Negativas' contra 'Un paso muy positivo' no exige juicio sutil. La objeción sobre lenguaje corporativo diplomático no se sostiene con esta fuente.",
+  "lo_que_sigue_en_pie_de_la_objecion_anterior": "el costo recurrente: hay que codificar postura mes a mes con doble codificación. Eso no cambió. Pero con 3 a 11 piezas por año es un costo chico, no el trabajo permanente que se describió.",
+  "cámaras_a_sumar": ["UIA (comunicaciones/noticias, responde)", "SRA (sra.ar, responde)", "CAMARCO (camarco.org.ar, 208KB con Noticias y Circulares)"]
+ },
+
+ "exito_corporativo_y_bloqueo_cautelar": {
+  "veredicto_anterior": "imposibles: sin campo de partes ni de resultado",
+  "veredicto_corregido": "la PREMISA del rechazo era falsa. No están establecidos como construibles, pero ya no son 'imposibles'.",
+  "partes": "el Anuario de la CSJN clasifica los presentantes en cuatro categorías: Gobiernos/Organismos y Dependencias Públicas (ANSES es el 93,03%, siguen AFIP, Caja de Retiros de las FFAA y gobiernos provinciales), EMPRESAS (ART 79,39%, manufacturas 3,31%, transporte terrestre de pasajeros 2,41%), una tercera de personas jurídicas y personas físicas",
+  "resultado": "entre los tipos de resolución publicados figuran explícitamente 'Admite Medida Cautelar' y 'Rechaza medida cautelar' (junto con Nulidad suman 0,42% de los resueltos de 2025)",
+  "lo_que_falta": "la tabulación cruzada (empresa × resultado, o cautelar × año) no está en el PDF; está en los tableros de Tableau con filtros. Extraerla requiere sesión con JavaScript — es trabajo pendiente, no un imposible.",
+  "salvedad_honesta": "0,42% de los resueltos de la CSJN es del orden de 110 casos al año. Es poco, pero es un CENSO del tribunal, no la muestra curada de SAIJ."
+ }
+}
