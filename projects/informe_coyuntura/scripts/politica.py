@@ -85,6 +85,7 @@ AJUSTES_ITCP_PATH = PROJECT_DIR / "data" / "politica" / "ajustes_itcp.json"
 DERROTAS_EVENTOS_PATH = PROJECT_DIR / "data" / "politica" / "derrotas_legislativas_eventos.json"
 GABINETE_SALIDAS_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_salidas.json"
 GABINETE_DECRETOS_CACHE_PATH = PROJECT_DIR / "data" / "politica" / "gabinete_decretos_cache.json"
+CSJN_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "csjn_novedades.json"
 VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
 VOTOMETRO_HTML = PROJECT_DIR / "data" / "politica" / "votometro_fallback.html"  # fallback local
 
@@ -1325,6 +1326,148 @@ def _jus_fechas(filas: list[dict], campo: str, tipo: str = "Juez") -> list[str]:
         if len(v) >= 10 and v[:2] == "20":
             out.append(v[:10])
     return sorted(out)
+
+
+# ── Detector de novedades judiciales de la CSJN (ADR-0140) ──────────────────
+# Qué es y qué NO es: es un AVISO, no un contador. El endpoint abierto de la
+# Secretaría de Jurisprudencia devuelve como máximo 10 registros por consulta y
+# no pagina (verificado: jtStartIndex/jtPageSize, start/length y pagina no hacen
+# efecto), así que con él no se puede construir una serie. Lo que sí puede es
+# garantizar que no se escape un fallo relevante entre corrida y corrida. Mismo
+# patrón que el detector de privatizaciones de ADR-0129: elimina el riesgo de
+# omisión, no el juicio del analista.
+#
+# El buscador COMPLETO (fallos 1994-2026, con la casilla «Sentencias que
+# declaran Inconstitucionalidad», búsqueda por partes y sentido del
+# pronunciamiento) está detrás de CAPTCHA y no se toca. Ver ADR-0140 y el mapa
+# de acceso en data/politica/csjn_jurisprudencia_mapa_de_acceso.json.
+CSJN_SJ_BASE = "https://sjconsulta.csjn.gov.ar/sjconsulta"
+
+# Términos que se barren. No pretenden ser exhaustivos: son las puertas de
+# entrada a los tres fenómenos que el aporte externo pidió seguir.
+CSJN_TERMINOS = (
+    "inconstitucionalidad",
+    "medida cautelar",
+    "estado nacional",
+    "amparo",
+)
+
+# El Estado como parte en la carátula. Deliberadamente amplio: un detector que
+# sobre-avisa cuesta un vistazo del analista; uno que sub-avisa pierde el fallo
+# y nadie se entera. Las formas salen de carátulas reales del propio endpoint
+# ("EN-M ECONOMIA Y OTRO c/ BUNGE ARGENTINA SA", "SANTA CRUZ, PROVINCIA DE c/
+# ESTADO NACIONAL", "BAEZ, CARMEN ALICIA c/ SECRETARIA NACIONAL...").
+_CSJN_ESTADO = re.compile(
+    r"\bEN\s*-|\bE\.\s?N\.|ESTADO\s+NACIONAL|PODER\s+EJECUTIVO|"
+    r"\bANSES\b|\bAFIP\b|\bARCA\b|\bDGI\b|\bDGA\b|"
+    r"MINISTERIO\s+DE|SECRETARIA\s+(?:DE|NACIONAL)|ADMINISTRACION\s+FEDERAL",
+    re.I,
+)
+
+
+def _csjn_sesion() -> requests.Session:
+    """Sesión con la cookie que el endpoint JSON exige (la entrega el GET previo)."""
+    s = requests.Session()
+    s.headers.update({**HTTP_HEADERS, "X-Requested-With": "XMLHttpRequest",
+                      "Referer": f"{CSJN_SJ_BASE}/novedades/consulta.html"})
+    s.get(f"{CSJN_SJ_BASE}/novedades/consulta.html", timeout=HTTP_TIMEOUT)
+    return s
+
+
+def _csjn_buscar(texto: str, session: requests.Session) -> list[dict]:
+    """Consulta el módulo de novedades. Devuelve a lo sumo 10 registros."""
+    r = session.post(f"{CSJN_SJ_BASE}/novedades/buscar.html",
+                     data={"texto": texto}, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    payload = r.json()
+    if payload.get("Result") != "OK":
+        raise ValueError(f"CSJN respondió {payload.get('Result')}: "
+                         f"{str(payload.get('Message'))[:80]}")
+    return payload.get("Records") or []
+
+
+def _csjn_fuero(identificador: str) -> str:
+    """Prefijo del expediente: CAF = Contencioso Administrativo Federal, etc."""
+    partes = (identificador or "").strip().split()
+    return partes[0] if partes else ""
+
+
+def detectar_novedades_judiciales(terminos: tuple[str, ...] = CSJN_TERMINOS) -> dict:
+    """Fallos nuevos de la CSJN que declaran inconstitucionalidad o tienen al
+    Estado como parte.
+
+    NO puntúa, NO produce serie y NO alimenta ningún índice: el endpoint abierto
+    topea en 10 registros por consulta (ADR-0140). Cada `idAnalisis` se evalúa
+    una sola vez y queda anotado en `revisadas`; los que pasan el filtro van a
+    `pendientes` para que el analista los lea. Sacar de `pendientes` lo revisado.
+    """
+    try:
+        store = json.loads(CSJN_NOVEDADES_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        store = {}
+    revisadas = store.setdefault("revisadas", {})
+    pendientes = store.setdefault("pendientes", {})
+
+    session = _csjn_sesion()
+    nuevas, vistos = 0, 0
+    for termino in terminos:
+        try:
+            registros = _csjn_buscar(termino, session)
+        except Exception as e:
+            print(f"  [WARN] csjn/novedades '{termino}': {e}")
+            continue
+        for reg in registros:
+            vistos += 1
+            id_analisis = str(reg.get("idAnalisis") or "").strip()
+            if not id_analisis or id_analisis in revisadas:
+                continue
+            caratula = (reg.get("caratula") or "").strip()
+            inconstitucional = reg.get("inconstitucional") is True
+            estado_parte = bool(_CSJN_ESTADO.search(caratula))
+            # el fallo publicado es inmutable: se evalúa una vez y el veredicto
+            # queda cacheado, pase o no el filtro
+            revisadas[id_analisis] = {"fecha": reg.get("fecha", ""),
+                                      "termino": termino,
+                                      "marcado": inconstitucional or estado_parte}
+            if not (inconstitucional or estado_parte):
+                continue
+            motivos = []
+            if inconstitucional:
+                motivos.append("declara inconstitucionalidad")
+            if estado_parte:
+                motivos.append("el Estado es parte")
+            pendientes[id_analisis] = {
+                "fecha": reg.get("fecha", ""),
+                "fuero": _csjn_fuero(reg.get("identificadorExpediente", "")),
+                "expediente": reg.get("identificadorExpediente", ""),
+                "caratula": caratula,
+                "materia": reg.get("materia", ""),
+                "titulo": (reg.get("titulo") or "")[:300],
+                "inconstitucional": inconstitucional,
+                "sentencia_arbitraria": reg.get("sentenciaArbitraria") is True,
+                "motivos": motivos,
+                "url": f"{CSJN_SJ_BASE}/fallos/getSintesisAnalisis.html"
+                       f"?idAnalisis={id_analisis}",
+            }
+            nuevas += 1
+
+    store["_meta"] = {
+        "descripcion": ("Fallos de la CSJN que declaran inconstitucionalidad o "
+                        "tienen al Estado como parte. Detección automática; la "
+                        "lectura y la clasificación las hace el analista "
+                        "(ADR-0140). NO es un contador: el endpoint abierto "
+                        "topea en 10 registros por consulta y no pagina. Sacar "
+                        "de 'pendientes' lo ya revisado."),
+        "fuente": f"{CSJN_SJ_BASE}/novedades/buscar.html",
+        "ultima_corrida": date.today().isoformat(),
+        "registros_vistos_en_la_corrida": vistos,
+        "nuevas_en_la_corrida": nuevas,
+    }
+    CSJN_NOVEDADES_PATH.parent.mkdir(parents=True, exist_ok=True)
+    CSJN_NOVEDADES_PATH.write_text(
+        json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True),
+        encoding="utf-8")
+    return store
 
 
 def cobertura_judicial_serie() -> tuple[dict, dict]:
@@ -3981,6 +4124,18 @@ def main() -> None:
     elif "cobertura_judicial" in indicadores_anteriores:
         frescos["cobertura_judicial"] = {**indicadores_anteriores["cobertura_judicial"],
                                          "desactualizado": True}
+
+    # Detector de novedades judiciales (ADR-0140). No produce indicador ni
+    # entra en `frescos`: sólo actualiza el registro de fallos a revisar. Va
+    # envuelto porque no debe poder tumbar el colector — si la CSJN no
+    # responde, lo que se pierde es un aviso, no un dato del índice.
+    try:
+        pendientes = detectar_novedades_judiciales().get("pendientes", {})
+        if pendientes:
+            print(f"  [i] CSJN: {len(pendientes)} fallo(s) pendientes de revisar "
+                  f"→ data/politica/csjn_novedades.json")
+    except Exception as e:
+        print(f"  [WARN] detector de novedades judiciales no corrió ({e})")
 
     # alineamiento_senadores_prov comparte el mismo contrato de retorno que
     # cohesion_bloque_senado (misma sesión/descubrimiento de actas de Senado):

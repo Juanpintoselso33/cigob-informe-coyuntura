@@ -1,0 +1,418 @@
+{
+ "_meta": {
+  "descripcion": "Fallos de la CSJN que declaran inconstitucionalidad o tienen al Estado como parte. Detección automática; la lectura y la clasificación las hace el analista (ADR-0140). NO es un contador: el endpoint abierto topea en 10 registros por consulta y no pagina. Sacar de 'pendientes' lo ya revisado.",
+  "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
+  "nuevas_en_la_corrida": 17,
+  "registros_vistos_en_la_corrida": 40,
+  "ultima_corrida": "2026-07-26"
+ },
+ "pendientes": {
+  "818689": {
+   "caratula": "COMUNIDAD TOBA NAM QOM c/ ESTADO NACIONAL Y OTROS s/AMPARO",
+   "expediente": "FRE 006231/2014/CS002",
+   "fecha": "04/11/2025",
+   "fuero": "FRE",
+   "inconstitucional": false,
+   "materia": "AMBIENTAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Instalación de planta de dióxido de uranio y procedimiento de consulta a las comunidades indígenas",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=818689"
+  },
+  "820564": {
+   "caratula": "Recurso Queja Nº 1 - Incidente Nº 1 - BAEZ, CARMEN ALICIA c/ SECRETARIA NACIONAL DE LA NIÑEZ ADOLESCENCIA Y FAMILIA (SENNAF) Y OTROS s/INC DE MEDIDA CAUTELAR",
+   "expediente": "FRE 000060/2025/1/1/RH001",
+   "fecha": "11/12/2025",
+   "fuero": "FRE",
+   "inconstitucional": false,
+   "materia": "RECURSO EXTRAORDINARIO",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Resolución denegatoria del recurso extraordinario sin previo traslado",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=820564"
+  },
+  "821249": {
+   "caratula": "SANTA CRUZ, PROVINCIA DE c/ ESTADO NACIONAL s/COBRO DE PESOS",
+   "expediente": "CSJ 893/2024",
+   "fecha": "11/12/2025",
+   "fuero": "CSJ",
+   "inconstitucional": false,
+   "materia": "COMPETENCIA - PROCESAL - TRIBUTARIO/ADUANERO",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Medidas cautelares: exigencia de que se evidencien fehacientemente las razones que las justifiquen",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=821249"
+  },
+  "823737": {
+   "caratula": "Recurso Queja Nº 1 - Incidente Nº 2 - PILARBUS SA Y OTROS c/ EN-M TRANSPORTE DE LA NACION-RESOL 270/08 s/INC APELACION",
+   "expediente": "CAF 020065/2021/2/1/RH005",
+   "fecha": "05/03/2026",
+   "fuero": "CAF",
+   "inconstitucional": false,
+   "materia": "ADMINISTRATIVO",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": true,
+   "titulo": "Distribución de las compensaciones tarifarias - Ejercicio de potestades propias de una autoridad nacional",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=823737"
+  },
+  "824163": {
+   "caratula": "NOE, NESTOR c/ ANSES Y OTRO s/AMPARO LEY 16.986",
+   "expediente": "FMZ 010707/2015/CS001",
+   "fecha": "17/03/2026",
+   "fuero": "FMZ",
+   "inconstitucional": false,
+   "materia": "PREVISIONAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": true,
+   "titulo": "Arbitraria denegatoria de un beneficio jubilatorio",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=824163"
+  },
+  "824306": {
+   "caratula": "Incidente Nº 3 - ACTOR: FUNDACION BANCO DE BOSQUES PARA EL MANEJO SUSTENTABLE DE LOS RECURSOS NATURALES DEMANDADO: EN - PEN - M PLANIFICACION FEDERAL, INVERSION P Y S Y OTROS s/INC APELACION",
+   "expediente": "CAF 084273/2016/3/CS001",
+   "fecha": "12/03/2026",
+   "fuero": "CAF",
+   "inconstitucional": false,
+   "materia": "AMBIENTAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Procedimiento de evaluación de impacto ambiental y medida cautelar",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=824306"
+  },
+  "824806": {
+   "caratula": "Recurso Queja Nº 2 - BODEREAU, FEDERICO ALFONSO c/ ANSES s/REAJUSTE DE HABERES",
+   "expediente": "FCB 033020143/2008/2/RH001",
+   "fecha": "26/03/2026",
+   "fuero": "FCB",
+   "inconstitucional": false,
+   "materia": "PROCESAL - RECURSO EXTRAORDINARIO",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Denegatoria del recurso extraordinario sin el acuerdo de los integrantes del tribunal colegiado",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=824806"
+  },
+  "825002": {
+   "caratula": "Recurso Queja Nº 1 - Recurso Queja Nº 1 - ASOCIACION GREMIAL DE COMPUTACION c/ PODER EJECUTIVO NACIONAL s/ACCION DECLARATIVA",
+   "expediente": "CNT 031762/2021/1/1/RH002",
+   "fecha": "31/03/2026",
+   "fuero": "CNT",
+   "inconstitucional": false,
+   "materia": "COMPETENCIA - LABORAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Naturaleza federal de las medidas de fomento nacional",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=825002"
+  },
+  "825972": {
+   "caratula": "Recurso Queja Nº 4 - ROMERO JUAN ANTONIO Y OTROS c/ EN-Mº ECONOMIA-  s/PROCESO DE CONOCIMIENTO",
+   "expediente": "CAF 006883/2008/4/RH003",
+   "fecha": "23/04/2026",
+   "fuero": "CAF",
+   "inconstitucional": false,
+   "materia": "HONORARIOS",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Honorarios de abogados: base regulatoria expresada en moneda extranjera",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=825972"
+  },
+  "826249": {
+   "caratula": "TORRES ABAD, CARMEN c/ EN-JGM s/HABEAS DATA",
+   "expediente": "CAF 049482/2016/CS001",
+   "fecha": "30/04/2026",
+   "fuero": "CAF",
+   "inconstitucional": true,
+   "materia": "ADMINISTRATIVO - CONSTITUCIONAL",
+   "motivos": [
+    "declara inconstitucionalidad",
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Transferencia de datos entre dos entes estatales: derechos a la privacidad y a la autodeterminación informativa",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=826249"
+  },
+  "826627": {
+   "caratula": "FORMOSA, PROVINCIA DE c/ ESTADO NACIONAL s/ACCION DECLARATIVA DE INCONSTITUCIONALIDAD",
+   "expediente": "CSJ 1817/2019",
+   "fecha": "07/05/2026",
+   "fuero": "CSJ",
+   "inconstitucional": false,
+   "materia": "PROCESAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Falta de acreditación de un interés jurídico inmediato o directo: inexistencia de \"caso\" o \"causa\"",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=826627"
+  },
+  "826838": {
+   "caratula": "Recurso Queja Nº 1 - RINCON BRAVO, GERARDO c/ ESTADO NACIONAL - DIRECCION NACIONAL DE MIGRACIONES s/RECURSO DIRECTO A JUZGADO",
+   "expediente": "FCB 042923/2022/1/RH001",
+   "fecha": "14/05/2026",
+   "fuero": "FCB",
+   "inconstitucional": false,
+   "materia": "PROCESAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Nulidad de actuaciones realizadas sin la participación de la Dirección Nacional de Migraciones",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=826838"
+  },
+  "827106": {
+   "caratula": "ADMINISTRACION GENERAL DE PUERTOS SE c/ PROVINCIA DE BUENOS AIRES - MINISTERIO DE PRODUCCION DE LA PROVINCIA DE BUENOS AIRES Y OTRO s/PROCESO DE CONOCIMIENTO",
+   "expediente": "CAF 017825/2020/CS001",
+   "fecha": "14/05/2026",
+   "fuero": "CAF",
+   "inconstitucional": false,
+   "materia": "COMPETENCIA - TRIBUTARIO/ADUANERO",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Competencia originaria de la Corte en razón de las personas",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=827106"
+  },
+  "828468": {
+   "caratula": "Recurso Queja Nº 1 - CONSEJO INTERUNIVERSITARIO NACIONAL Y OTROS c/ EN - PEN - DTO 759/25 s/AMPARO LEY 16.986",
+   "expediente": "CAF 039475/2025/1/1/RH001",
+   "fecha": "04/06/2026",
+   "fuero": "CAF",
+   "inconstitucional": false,
+   "materia": "PROCESAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Ley de Financiamiento de la Educación Universitaria y recusación de jueces docentes",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=828468"
+  },
+  "829504": {
+   "caratula": "JUSTO JUAN JOSE c/ ANSES s/AMPAROS Y SUMARISIMOS",
+   "expediente": "CSS 018538/2023/CS001",
+   "fecha": "02/07/2026",
+   "fuero": "CSS",
+   "inconstitucional": true,
+   "materia": "PREVISIONAL",
+   "motivos": [
+    "declara inconstitucionalidad",
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Excesos en las facultades reglamentarias",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=829504"
+  },
+  "829619": {
+   "caratula": "Recurso Queja Nº 1 - GIMENEZ, LOURDES SOLEDAD (POR LA REPR. INVOCADA) c/ ANSES s/AMPARO LEY 16.986",
+   "expediente": "FPA 005882/2023/1/RH001",
+   "fecha": "07/07/2026",
+   "fuero": "FPA",
+   "inconstitucional": false,
+   "materia": "PREVISIONAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": true,
+   "titulo": "Beneficios de la seguridad social: acción de amparo y excesivo rigor formal",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=829619"
+  },
+  "830107": {
+   "caratula": "Recurso Queja Nº 1 - EN-M ECONOMIA Y OTRO c/ BUNGE ARGENTINA SA s/INHIBITORIA",
+   "expediente": "CAF 024580/2022/1/RH001",
+   "fecha": "07/07/2026",
+   "fuero": "CAF",
+   "inconstitucional": false,
+   "materia": "ADMINISTRATIVO - COMPETENCIA - TRIBUTARIO/ADUANERO",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Cuestionamiento de la validez de un decreto nacional: competencia de la justicia federal con asiento en las provincias",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830107"
+  }
+ },
+ "revisadas": {
+  "818689": {
+   "fecha": "04/11/2025",
+   "marcado": true,
+   "termino": "medida cautelar"
+  },
+  "820333": {
+   "fecha": "27/11/2025",
+   "marcado": false,
+   "termino": "medida cautelar"
+  },
+  "820564": {
+   "fecha": "11/12/2025",
+   "marcado": true,
+   "termino": "medida cautelar"
+  },
+  "820591": {
+   "fecha": "18/12/2025",
+   "marcado": false,
+   "termino": "medida cautelar"
+  },
+  "820919": {
+   "fecha": "04/12/2025",
+   "marcado": false,
+   "termino": "medida cautelar"
+  },
+  "821249": {
+   "fecha": "11/12/2025",
+   "marcado": true,
+   "termino": "medida cautelar"
+  },
+  "822119": {
+   "fecha": "10/02/2026",
+   "marcado": false,
+   "termino": "amparo"
+  },
+  "823737": {
+   "fecha": "05/03/2026",
+   "marcado": true,
+   "termino": "medida cautelar"
+  },
+  "823966": {
+   "fecha": "31/03/2026",
+   "marcado": false,
+   "termino": "estado nacional"
+  },
+  "824163": {
+   "fecha": "17/03/2026",
+   "marcado": true,
+   "termino": "amparo"
+  },
+  "824306": {
+   "fecha": "12/03/2026",
+   "marcado": true,
+   "termino": "medida cautelar"
+  },
+  "824806": {
+   "fecha": "26/03/2026",
+   "marcado": true,
+   "termino": "estado nacional"
+  },
+  "825002": {
+   "fecha": "31/03/2026",
+   "marcado": true,
+   "termino": "estado nacional"
+  },
+  "825972": {
+   "fecha": "23/04/2026",
+   "marcado": true,
+   "termino": "estado nacional"
+  },
+  "826185": {
+   "fecha": "23/04/2026",
+   "marcado": false,
+   "termino": "medida cautelar"
+  },
+  "826249": {
+   "fecha": "30/04/2026",
+   "marcado": true,
+   "termino": "inconstitucionalidad"
+  },
+  "826627": {
+   "fecha": "07/05/2026",
+   "marcado": true,
+   "termino": "inconstitucionalidad"
+  },
+  "826838": {
+   "fecha": "14/05/2026",
+   "marcado": true,
+   "termino": "estado nacional"
+  },
+  "827106": {
+   "fecha": "14/05/2026",
+   "marcado": true,
+   "termino": "estado nacional"
+  },
+  "827184": {
+   "fecha": "14/05/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "827869": {
+   "fecha": "04/06/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "828065": {
+   "fecha": "11/06/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "828177": {
+   "fecha": "11/06/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "828468": {
+   "fecha": "04/06/2026",
+   "marcado": true,
+   "termino": "inconstitucionalidad"
+  },
+  "828517": {
+   "fecha": "11/06/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "829196": {
+   "fecha": "25/06/2026",
+   "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "829227": {
+   "fecha": "02/07/2026",
+   "marcado": false,
+   "termino": "amparo"
+  },
+  "829504": {
+   "fecha": "02/07/2026",
+   "marcado": true,
+   "termino": "amparo"
+  },
+  "829619": {
+   "fecha": "07/07/2026",
+   "marcado": true,
+   "termino": "amparo"
+  },
+  "829902": {
+   "fecha": "07/07/2026",
+   "marcado": false,
+   "termino": "medida cautelar"
+  },
+  "829907": {
+   "fecha": "02/07/2026",
+   "marcado": false,
+   "termino": "estado nacional"
+  },
+  "830079": {
+   "fecha": "07/07/2026",
+   "marcado": false,
+   "termino": "amparo"
+  },
+  "830107": {
+   "fecha": "07/07/2026",
+   "marcado": true,
+   "termino": "inconstitucionalidad"
+  }
+ }
+}
