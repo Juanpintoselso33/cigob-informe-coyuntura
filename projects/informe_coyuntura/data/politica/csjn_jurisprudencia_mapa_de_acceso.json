@@ -1,0 +1,63 @@
+{
+ "_meta": {
+  "descripcion": "Mapa de acceso a la jurisprudencia de la CSJN para los indicadores bloqueados del bloque judicial (veto de constitucionalidad, bloqueo cautelar, éxito corporativo). ADR-0140.",
+  "fecha": "2026-07-26",
+  "origen": "el editor pidió buscar alternativas en vez de aceptar el cierre"
+ },
+
+ "hallazgo_principal": "EL MODELO DE DATOS DE LA CSJN CONTIENE EXACTAMENTE LO QUE LOS TRES INDICADORES NECESITAN. Lo que está limitado es el acceso público, no la existencia del dato. Es una conclusión distinta de 'no hay fuente' y apunta a un desbloqueo concreto.",
+
+ "el_cij_murio": {
+  "hecho": "el Centro de Información Judicial fue creado por Acordada 17/2006 y DISUELTO por la Acordada 10/2025, que convierte el sitio en un repositorio histórico congelado.",
+  "consecuencia": "cualquier indicador construido sobre el CIJ se corta. Queda descartado como fuente viva.",
+  "sucesor_declarado": "el propio archivo dice que 'los fallos de los tribunales Federales y Nacionales se publican en este sitio web' y enlaza a sj.csjn.gov.ar"
+ },
+
+ "sjconsulta_fallos_completos": {
+  "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/consulta.html",
+  "cobertura": "FALLOS COMPLETOS 1994-2026, actualizado al 07/07/2026",
+  "campos_del_formulario_que_importan": {
+   "inconstitucional": "casilla 'Sentencias que declaran Inconstitucionalidad' — ES EL VETO DE CONSTITUCIONALIDAD COMO CAMPO CONTROLADO",
+   "arbitraria": "casilla de sentencia arbitraria",
+   "partes": "búsqueda por partes del juicio",
+   "sentidoPronunciamiento": "el SENTIDO del fallo, o sea el resultado",
+   "camara": "selector de cámara",
+   "jurisdiccion": "selector de jurisdicción",
+   "tipoRecurso": "tipo de recurso",
+   "fechaDesde/fechaHasta": "rango de fechas"
+  },
+  "bloqueo": "el formulario lleva g-recaptcha-response y el POST sin token devuelve HTTP 500. Gate aplicado.",
+  "importancia": "aunque no se pueda automatizar, esto PRUEBA que 'sentencia que declara inconstitucionalidad' está oficialmente operacionalizado como atributo controlado del fallo. ADR-0131 concluyó que el indicador no podía ser un conteo porque la búsqueda de texto en SAIJ contaba lo que no era. El problema era la BÚSQUEDA DE TEXTO, no el concepto: la CSJN lo tiene como campo."
+ },
+
+ "endpoint_json_sin_captcha": {
+  "url": "POST https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
+  "requisitos": "tomar sesión con un GET previo a /novedades/consulta.html; header X-Requested-With: XMLHttpRequest; parámetro 'texto'",
+  "formato": "jTable — {Result, Records, TotalRecordCount, Message}",
+  "campos_por_registro": ["idAnalisis","identificadorExpediente (con prefijo de fuero: CAF, CSJ, CCF, FRE)",
+   "fecha","caratula (CON LAS PARTES)","materia","materiaSecretaria","titulo","cabecilla (síntesis)",
+   "inconstitucional (BOOLEANO)","sentenciaArbitraria (BOOLEANO)","analisisPublico","htmlRelevancia"],
+  "ejemplos_reales": [
+   "CAF 024580/2022 · 07/07/2026 · 'EN-M ECONOMIA Y OTRO c/ BUNGE ARGENTINA SA s/INHIBITORIA' · ADMINISTRATIVO-COMPETENCIA-TRIBUTARIO/ADUANERO",
+   "CAF 020065/2021 · 05/03/2026 · 'PILARBUS SA Y OTROS c/ EN-M TRANSPORTE...'",
+   "CSJ 893/2024 · 11/12/2025 · 'SANTA CRUZ, PROVINCIA DE c/ ESTADO NACIONAL s/COBRO DE PESOS'"
+  ],
+  "LIMITE": "devuelve como máximo 10 registros y TotalRecordCount siempre informa 10. Es el módulo de NOVEDADES (últimos destacados), no un buscador del corpus. La búsqueda por texto sí discrimina (consultas distintas devuelven fallos distintos), pero no se puede contar ni paginar: se probaron jtStartIndex/jtPageSize, start/length y pagina, sin efecto."
+ },
+
+ "endpoints_de_detalle": {
+  "sintesis": "GET /sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=N",
+  "sumarios": "GET /sjconsulta/sumarios/getSumariosHoldingByAnalisis.html?idAnalisis=N",
+  "funcionan": "sí, sin captcha, para los idAnalisis que expone el feed; devuelven JSON rico con analisisDocumental, competencia y 'voces' del tesauro controlado",
+  "no_son_enumerables": "IDs vecinos devuelven lista vacía (829902 funciona, 829901 no). No se pueden barrer por fuerza bruta."
+ },
+
+ "scw_pjn": {
+  "que_permite": "búsqueda POR PARTE con selector de jurisdicción (29, incluida CAF) y de ROL (41, incluido DEMANDADO)",
+  "bloqueo": "CAPTCHA en cada consulta: 'Se debe completar el campo verificador para poder realizar la consulta'"
+ },
+
+ "conclusion": "Tres puertas y las tres cerradas del mismo modo: el buscador completo de fallos por CAPTCHA, el de causas del PJN por CAPTCHA, y el JSON abierto por un tope de 10 registros. No es que el dato no exista ni que esté mal modelado — está modelado mejor de lo que suponíamos. Está deliberadamente limitado al consumo humano.",
+
+ "desbloqueo_concreto": "un pedido de acceso a la información pública a la CSJN puede ser MUY preciso ahora que se conoce el modelo: 'cantidad de fallos con el atributo inconstitucional=true por año, 1994-2026' o 'exposición del resultado del buscador de fallos en formato JSON'. Eso es pedible porque el campo ya existe y el organismo ya lo calcula."
+}
