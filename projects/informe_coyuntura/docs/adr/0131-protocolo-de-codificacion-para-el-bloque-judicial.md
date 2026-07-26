@@ -149,6 +149,45 @@ ADR-0129: la consulta corre sola y marca casos nuevos como pendientes; la
 clasificación la hace una persona. Automatizar el paso 2 sería reemplazar un
 criterio publicado por una regla escondida en una expresión regular.
 
+## Primera pasada hecha: `veto_constitucionalidad_codificacion.json`
+
+La pasada 1 está completa sobre el universo de 17 documentos y versionada en
+`data/politica/veto_constitucionalidad_codificacion.json`, caso por caso con su
+motivo. **Falta la pasada 2 y la medición de concordancia.**
+
+| | |
+|---|---|
+| incluir | **1** |
+| dudoso (hay que leer el fallo) | 3 |
+| excluir | 13 |
+
+**El único caso claro** es la Resolución 3132/2024 del Ministerio de Salud, que
+un tribunal federal declaró reglamentación irrazonable de la ley 27.350 por
+exigir diplomatura para prescribir cannabis medicinal.
+
+### Tres hallazgos estructurales de la codificación
+
+**1. El universo tiene duplicados.** Los casos 16 y 17 son el mismo sumario
+repetido, y 4, 8 y 10 son tres sumarios del **mismo expediente** (CELS contra el
+decreto 193/24). Contar documentos habría inflado esos expedientes ~2,4 veces.
+La regla de contar por norma impugnada no es un refinamiento: es indispensable.
+
+**2. Seis de los 17 son derrotas de quien impugna, no del Gobierno.** Rechazos
+expresos de acciones contra el DNU 70/2023 y el decreto 193/24. Un conteo crudo
+los habría sumado como vetos al Ejecutivo.
+
+**3. Filtrar por fecha de sentencia no alcanza.** Aparecen impugnaciones al
+decreto 6754/**1943**, al DNU 756/**2018** y al DNU 669/**2019** porque la
+sentencia cae en la ventana. **Hay que filtrar por la fecha de la NORMA.**
+
+### La decisión de codificación que la pasada 2 tiene que resolver
+
+En el único caso incluido el tribunal habla de **"reglamentación irrazonable"**,
+no de inconstitucionalidad. ¿Cuenta? Es la elección más consecuente del set: con
+el criterio amplio el indicador captura el control de legalidad completo; con el
+estricto, se queda casi sin casos. **No la resuelve un codificador solo, y es
+exactamente para eso que el protocolo pide dos.**
+
 ## Qué habilita esto
 
 Los **ocho indicadores pendientes** —cinco judiciales y tres del bloque
