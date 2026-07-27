@@ -1,0 +1,324 @@
+{
+ "_meta": {
+  "comunicados_vistos": 46,
+  "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. NO puntúa: el indicador no se publica hasta que haya segunda pasada con kappa ≥ 0,70. Sacar de 'pendientes' lo ya codificado.",
+  "fuentes": {
+   "AEA": "https://www.aeanet.net/prensa.html",
+   "UIA": "https://www.uia.org.ar/prensa/{id}/"
+  },
+  "nuevos_en_la_corrida": 0,
+  "ultima_corrida": "2026-07-27"
+ },
+ "pendientes": {},
+ "revisadas": {
+  "AEA|2020-03-21-union-y-responsabilidad-ante-el-desafio-": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2020-06-09-aea-rechaza-la-intervencion-de-vicentin": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2020-07-21-dialogo-entre-la-aea-y-la-cgt": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2020-08-04-un-paso-muy-importante": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2020-09-05-instituciones-para-el-desarrollo": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2020-09-30-la-aea-se-reunion-con-miguel-a-pesce-pre": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2020-11-19-aporte-solidario-y-extraordinario": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2021-03-07-apoyo-empresario-tras-el-embate-oficial-": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2021-03-07-jaime-campos-para-que-la-economia-crezca": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2021-03-09-potenciar-al-sector-privado-clave-para-e": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2021-05-18-exportar-es-vital-para-crecer": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2021-05-19-ministerio-publico-evitar-un-grave-retro": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2021-10-20-comunicado-de-aea-sobre-control-de-preci": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2021-12-21-aea-celebro-su-asamblea-anual": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2021-12-23-alerta-empresaria-por-la-intencion-del-g": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2021-12-23-los-empresarios-ante-el-nuevo-consenso-f": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2022-01-28-una-decision-muy-relevante": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2022-01-31-la-corte-suprema-pilar-de-la-republica": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2022-04-20-jaime-campos-presidente-de-la-aea-hace-1": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2022-04-20-mas-impuestos-menos-inversiones-y-empleo": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2022-06-07-aea-celebra-sus-20-anos": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2022-09-02-la-aea-repudia-el-atentado-a-cristina-fe": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2022-12-23-la-constitucion-debe-respetarse": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-01-19-la-corte-suprema-pilar-de-la-republica": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-03-08-aea-incorporo-nuevos-socios-y-celebro-su": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-04-01-senales-negativas": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-05-11-aea-se-reunio-con-horacio-rodriguez-larr": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-06-06-aea-se-reunio-con-esteban-bullrich": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-07-15-aea-se-reunio-con-patricia-bullrich": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-07-22-otra-senal-negativa": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-07-25-mas-impuestos-no-es-el-camino": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-09-09-el-sector-privado-es-clave-para-el-desar": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-11-19-aea-felicita-al-presidente-electo-javier": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2023-12-21-una-oportunidad-historica": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2024-02-03-un-paso-muy-importante": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2024-03-04-el-pacto-de-mayo-un-paso-muy-positivo": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2024-07-16-encuentro-de-aea-con-el-jefe-de-gabinete": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2024-12-17-aea-recibio-al-ministro-luis-caputo": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2025-04-13-satisfaccion-de-la-aea-por-el-acuerdo-co": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2025-05-13-encuentro-de-aea-con-el-gobernador-de-ne": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2025-07-15-encuentro-de-aea-con-el-gobernador-de-ca": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2025-09-10-la-empresa-privada-un-motor-para-el-desa": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2025-12-17-aea-recibio-al-presidente-del-bcra-lic-s": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2026-02-22-jaime-campos-presidente-de-la-asociacion": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2026-03-03-comunicado-aea": {
+   "origen": "codificacion ADR-0148"
+  },
+  "AEA|2026-03-31-nuevo-presidente-de-aea": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4073": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4074": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4075": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4077": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4078": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4079": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4080": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4081": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4084": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4085": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4086": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4089": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4093": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4097": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4100": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4101": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4102": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4103": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4106": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4109": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4110": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4111": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4112": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4113": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4116": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4118": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4121": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4123": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4125": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4126": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4131": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4133": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4143": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4144": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4147": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4158": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4160": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4163": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4166": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4220": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4221": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4222": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4223": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4224": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4225": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4226": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4227": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4228": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4229": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4231": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4232": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4233": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4236": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4237": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4238": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4239": {
+   "origen": "codificacion ADR-0148"
+  },
+  "UIA|4244": {
+   "origen": "codificacion ADR-0148"
+  }
+ }
+}

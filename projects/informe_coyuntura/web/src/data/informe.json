@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-27T04:37:56.344570",
+  "generated_at": "2026-07-26T21:40:34.166721",
   "period": "2026-07",
   "score_global": 3.2,
   "ponderacion": {
@@ -965,23 +965,23 @@
           "aporte_input_txt": null
         },
         "ratio_dnu": {
-          "valor": 1.84,
-          "dnu_count": 46,
+          "valor": 1.88,
+          "dnu_count": 47,
           "leyes_count": 25,
           "ventana_dias": 365,
           "unidad": "DNUs por ley",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-25",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
-          "puntaje_itcp": 22.0,
-          "puntaje_banda": 22.0,
+          "puntaje_itcp": 19.0,
+          "puntaje_banda": 19.0,
           "peso_efectivo": 0.0483,
-          "aporte_score": 7.8,
-          "aporte_formula": "Anclas ITCP: ≤0,3 → 100 · 0,3–0,7 → 85 · 0,7–1,2 → 65 · 1,2–2 → 40 · >2 → 10 (puntaje interpolado entre anclas: 22.0; pesa 4,8% del ITCP)",
+          "aporte_score": 8.1,
+          "aporte_formula": "Anclas ITCP: ≤0,3 → 100 · 0,3–0,7 → 85 · 0,7–1,2 → 65 · 1,2–2 → 40 · >2 → 10 (puntaje interpolado entre anclas: 19.0; pesa 4,8% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 7,8/10.",
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 8,1/10.",
           "aporte_input_txt": null
         },
         "brecha_obra_publica": {
@@ -1032,7 +1032,7 @@
           "ipc_aplicado_pct": 41.9,
           "unidad": "% interanual real",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-25",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -1049,12 +1049,12 @@
           "valor": 14.3,
           "aprobados_n": 2,
           "enviados_n": 14,
-          "cohorte_desde": "2024-07-27",
-          "cohorte_hasta": "2025-07-27",
+          "cohorte_desde": "2024-07-25",
+          "cohorte_hasta": "2025-07-25",
           "dias_madurado_min": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-25",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -1073,7 +1073,7 @@
           "total_n": 12,
           "unidad": "% de sesiones",
           "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-25",
           "desactualizado": false,
           "detalle_txt": "1 de 12 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
           "en_indice": true,
@@ -1091,7 +1091,7 @@
           "valor": 66.7,
           "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
           "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-25",
           "n_provincias": 16,
           "desactualizado": false,
           "en_indice": true,
@@ -1117,14 +1117,14 @@
               "valor": 99.9,
               "fecha_dato": "2026-06-24",
               "n_actas": 33,
-              "corrida_exitosa_en": "2026-07-27",
+              "corrida_exitosa_en": "2026-07-25",
               "desactualizado": false
             },
             "senado": {
               "valor": 99.6,
               "fecha_dato": "2026-07-16",
               "n_actas": 24,
-              "corrida_exitosa_en": "2026-07-27",
+              "corrida_exitosa_en": "2026-07-25",
               "desactualizado": false
             }
           },
@@ -1149,7 +1149,7 @@
           "detalle_txt": "2 de 10 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
           "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
           "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-25",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -1169,7 +1169,7 @@
           "ultimo_desafio": "2025-09-18",
           "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
           "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-25",
           "desactualizado": false,
           "detalle_txt": "10 normas propias desafiadas en el recinto en los últimos 12 meses (8 cayeron, 2 siguen en pie)",
           "en_indice": true,
@@ -1207,12 +1207,12 @@
           "aporte_input_txt": "604 de 955 cargos de juez habilitados tienen titular designado · 282 funcionan con subrogante y 69 están sin cubrir (padrón al 2026-06-05; la serie incorpora designaciones y renuncias posteriores)"
         },
         "alineamiento_senadores_prov": {
-          "valor": 70.2,
+          "valor": 70.6,
           "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
           "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
           "fecha_dato": "2026-07-16",
           "n_provincias": 24,
-          "corrida_exitosa_en": "2026-07-27",
+          "corrida_exitosa_en": "2026-07-25",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -1228,20 +1228,20 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 67.0,
+        "valor": 66.8,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
             "peso": 0.21,
-            "puntaje": 41.1,
+            "puntaje": 40.4,
             "indicadores": {
               "ratio_dnu": {
                 "peso": 0.23,
-                "puntaje_banda": 22.0,
-                "puntaje_aplicado": 22.0,
-                "valor": 1.84,
+                "puntaje_banda": 19.0,
+                "puntaje_aplicado": 19.0,
+                "valor": 1.88,
                 "peso_efectivo": 0.0483
               },
               "eficacia_legislativa": {
@@ -1292,7 +1292,7 @@
                 "peso": 0.3,
                 "puntaje_banda": 100.0,
                 "puntaje_aplicado": 100.0,
-                "valor": 70.2,
+                "valor": 70.6,
                 "peso_efectivo": 0.057
               },
               "adhesion_reformas_provincial": {
@@ -1389,15 +1389,15 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 64.7,
-          "p95": 68.9,
+          "p05": 64.6,
+          "p95": 68.8,
           "tension_rango": [
             3.1,
             3.5
           ],
           "dominante": {
             "indicador": "cohesion_bloque",
-            "indice_sin": 61.7
+            "indice_sin": 61.6
           },
           "n_draws": 1000,
           "hist": [
@@ -1406,40 +1406,40 @@
             0,
             2,
             0,
-            6,
-            5,
-            12,
-            13,
-            14,
-            30,
-            28,
-            36,
-            38,
-            65,
-            62,
-            67,
-            67,
-            70,
-            67,
-            74,
-            72,
-            49,
-            50,
-            39,
-            43,
-            24,
-            23,
-            11,
-            9,
-            10,
             5,
             4,
-            2,
+            13,
+            10,
+            14,
+            30,
+            27,
+            37,
+            34,
+            62,
+            62,
+            69,
+            67,
+            68,
+            69,
+            78,
+            66,
+            56,
+            47,
+            41,
+            46,
+            25,
+            24,
+            9,
+            10,
+            10,
+            5,
+            5,
             1,
-            1
+            1,
+            2
           ],
-          "hist_min": 62.39,
-          "hist_max": 70.88,
+          "hist_min": 62.2,
+          "hist_max": 70.78,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
@@ -1708,7 +1708,7 @@
               "clave": "capacidad",
               "nombre": "Capacidad propia",
               "glosa": "lo que el Gobierno consigue, o cuánto sostiene",
-              "puntaje": 60.4,
+              "puntaje": 60.1,
               "share": 0.447,
               "componentes": [
                 {
@@ -1717,7 +1717,7 @@
                 },
                 {
                   "indicador": "ratio_dnu",
-                  "puntaje": 22.0
+                  "puntaje": 19.0
                 },
                 {
                   "indicador": "eficacia_legislativa",
@@ -1786,18 +1786,18 @@
           ],
           "titulo": "¿Qué tipo de cosa está midiendo el índice?",
           "sub": "El índice reúne tres preguntas distintas: cuánta presión ejercen sobre el Gobierno los demás actores, cuánto consigue el Gobierno por su cuenta, y con qué recursos cuenta para negociar. El promedio de las tres no responde ninguna por separado, así que acá se muestran abiertas. Es una separación de lectura: el índice se calcula igual y los pesos no cambian.",
-          "conclusion": "Leído por partes, lo más flojo del cinturón es «capacidad propia» (60,4) y lo más sólido, «recursos de negociación» (74,9): una diferencia de 14,5 puntos. Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas."
+          "conclusion": "Leído por partes, lo más flojo del cinturón es «capacidad propia» (60,1) y lo más sólido, «recursos de negociación» (74,9): una diferencia de 14,8 puntos. Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas."
         },
         "vintages": {
-          "dias_promedio": 14,
+          "dias_promedio": 15,
           "meses_promedio": 0.5,
           "fecha_mas_vieja": "1 de junio de 2026",
-          "fecha_mas_nueva": "27 de julio de 2026",
+          "fecha_mas_nueva": "1 de agosto de 2026",
           "span_dias": 56,
           "rezagados": [],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 27 de julio de 2026 y el más antiguo del 1 de junio de 2026: un rango de 56 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 0,5 meses. Ningún componente supera el trimestre de antigüedad. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
+          "conclusion": "El dato más reciente es del 1 de agosto de 2026 y el más antiguo del 1 de junio de 2026: un rango de 56 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 0,5 meses. Ningún componente supera el trimestre de antigüedad. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
@@ -2081,7 +2081,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260727_0426.json",
+      "fuente_enriquecida": "vida_cotidiana_20260725_2020.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 94.5,
@@ -2573,7 +2573,7 @@
           "valor": 6.6,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reformas_economicas",
@@ -2690,7 +2690,7 @@
           "valor": 40.0,
           "unidad": "% de avance (proxy InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "conteo_normas": 18,
           "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -2709,7 +2709,7 @@
           "valor": 100.0,
           "unidad": "Índice 0–100 (actos fundamentales del FAL: ley + reglamentación)",
           "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 (normas publicadas)",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "actos": [
             {
@@ -2957,7 +2957,7 @@
           "valor": 24.2,
           "unidad": "% de inversión aprobada sobre el pipeline",
           "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "proyectos_aprobados": 18,
           "inversion_aprobada_musd": 35714,
@@ -2980,7 +2980,7 @@
           "valor": 28.7,
           "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
           "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "km_adjudicados": 2614,
           "km_totales": 9091,
@@ -3007,7 +3007,7 @@
           "valor": 100.0,
           "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
           "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "ejercicio": 2026,
           "componentes": {
@@ -3441,7 +3441,7 @@
             ],
             [
               "2026-07",
-              74.0,
+              74.3,
               2087.7
             ]
           ],
@@ -3518,8 +3518,8 @@
           "dias_promedio": 55,
           "meses_promedio": 1.8,
           "fecha_mas_vieja": "31 de diciembre de 2025",
-          "fecha_mas_nueva": "27 de julio de 2026",
-          "span_dias": 208,
+          "fecha_mas_nueva": "26 de julio de 2026",
+          "span_dias": 207,
           "rezagados": [
             {
               "indicador": "protocolo_antipiquetes",
@@ -3539,7 +3539,7 @@
           ],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 27 de julio de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 208 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 1,8 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
+          "conclusion": "El dato más reciente es del 26 de julio de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 207 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 1,8 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         }
       },
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
@@ -3593,9 +3593,7 @@
   },
   "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
-  "flags": [
-    "desactualizado:espiritu_epoca:sentimiento_digital"
-  ],
+  "flags": [],
   "validacion_cruzada": {
     "filas": [
       {

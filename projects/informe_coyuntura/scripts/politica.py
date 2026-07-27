@@ -65,6 +65,7 @@ import urllib3
 import pdfplumber
 import gestion  # reutiliza el fetcher ACLED ya construido para protestas_caba (ADR-0017)
 import itcp
+from html import unescape
 from bs4 import BeautifulSoup
 from datetime import datetime, date, timedelta
 from pathlib import Path
@@ -1326,6 +1327,174 @@ def _jus_fechas(filas: list[dict], campo: str, tipo: str = "Juez") -> list[str]:
         if len(v) >= 10 and v[:2] == "20":
             out.append(v[:10])
     return sorted(out)
+
+
+# ── Detector de novedades de postura empresaria (ADR-0149) ──────────────────
+# Vigila las dos cámaras del registro de ADR-0148 y marca los comunicados
+# nuevos como pendientes de codificar. NO puntúa y NO toca el ITCP: la postura
+# la asigna una persona, y hasta que no haya segunda pasada con kappa ≥ 0,70 el
+# indicador no se publica. Lo que esto evita es que el registro se quede viejo
+# entre tanto — sin vigilancia, 103 comunicados codificados a mano dejan de
+# servir apenas la cámara publica el siguiente.
+#
+# Mismo patrón que ADR-0129 (privatizaciones) y ADR-0141 (fallos de la CSJN):
+# automatiza la omisión, no el juicio.
+APOYO_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_empresario_novedades.json"
+APOYO_CODIFICACION_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_empresario_codificacion.json"
+
+# UIA sirve cada comunicado en /prensa/{id}/ SIN JavaScript, con id secuencial
+# (el listado sí es una app, por eso se recorre por id y no por el índice).
+# OJO: /comunicaciones/noticias/ es OTRA sección y está dominada por informes
+# del CEU — es el mismo patrón que hundió a ADEBA, ver ADR-0148.
+UIA_PRENSA_URL = "https://www.uia.org.ar/prensa/{}/"
+UIA_MARGEN_IDS = 60          # cuántos ids por encima del último conocido se sondean
+AEA_PRENSA_URL = "https://www.aeanet.net/prensa.html"
+
+_MESES_AEA = {m: i for i, m in enumerate(
+    ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
+     "agosto", "septiembre", "octubre", "noviembre", "diciembre"], 1)}
+
+
+def _limpio(html: str) -> str:
+    return unescape(re.sub(r"<[^>]+>|\s+", " ", html)).strip()
+
+
+def _uia_comunicado(id_: int, session: requests.Session) -> dict | None:
+    """Un comunicado de UIA por id. None si ese id no es de la sección prensa."""
+    r = session.get(UIA_PRENSA_URL.format(id_), timeout=HTTP_TIMEOUT)
+    if r.status_code != 200:
+        return None
+    plano = _limpio(re.sub(r"<script.*?</script>|<style.*?</style>", " ",
+                           r.text, flags=re.S | re.I))
+    fecha = re.search(r"(\d{2})/(\d{2})/(20\d{2})", plano)
+    titulo = re.search(r"<title>(.*?)\s*\|", r.text, re.S)
+    if not (fecha and titulo):
+        return None
+    return {"camara": "UIA", "id": str(id_),
+            "fecha": f"{fecha.group(3)}-{fecha.group(2)}-{fecha.group(1)}",
+            "titulo": _limpio(titulo.group(1)),
+            "url": UIA_PRENSA_URL.format(id_)}
+
+
+def _aea_comunicados(session: requests.Session) -> list[dict]:
+    """Comunicados de AEA. La fecha vive en un bloque `post-meta` POSTERIOR al
+    título, así que se parte por ahí en vez de buscar hacia adelante."""
+    r = session.get(AEA_PRENSA_URL, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    html = r.text
+    if "Ã" in html:                      # el sitio declara latin-1 y sirve utf-8
+        html = html.encode("latin1", "ignore").decode("utf-8", "ignore")
+    salida, partes = [], re.split(r'<div class="post-meta">', html)
+    for i in range(len(partes) - 1):
+        titulos = re.findall(r"<h2[^>]*>(.*?)</h2>", partes[i], re.S)
+        fecha = re.search(r"(\d{1,2})\s+de\s+(\w+)\s+de\s+(20\d{2})",
+                          partes[i + 1][:400], re.I)
+        if not (titulos and fecha):
+            continue
+        mes = _MESES_AEA.get(fecha.group(2).lower())
+        titulo = _limpio(titulos[-1])
+        if not mes or len(titulo) < 8:
+            continue
+        iso = f"{fecha.group(3)}-{mes:02d}-{int(fecha.group(1)):02d}"
+        salida.append({"camara": "AEA", "id": _apoyo_clave_aea(iso, titulo),
+                       "fecha": iso, "titulo": titulo, "url": AEA_PRENSA_URL})
+    return salida
+
+
+def _apoyo_clave_aea(fecha_iso: str, titulo: str) -> str:
+    """AEA no numera sus comunicados y publica más de uno el mismo día, así que
+    la fecha sola no identifica: la clave lleva además el título normalizado."""
+    slug = re.sub(r"[^a-z0-9]+", "-",
+                  unicodedata.normalize("NFKD", titulo.lower())
+                  .encode("ascii", "ignore").decode()).strip("-")
+    return f"{fecha_iso}-{slug[:40]}"
+
+
+def _apoyo_ya_codificados() -> set[str]:
+    """Claves del registro de ADR-0148, para no re-avisar lo ya clasificado."""
+    try:
+        d = json.loads(APOYO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        return set()
+    claves = set()
+    for c in d.get("casos", []):
+        cam = c.get("camara", "AEA")
+        if cam == "UIA":
+            claves.add(f"UIA|{c.get('id')}")
+        else:
+            claves.add(f"AEA|{_apoyo_clave_aea(c['fecha'], c.get('titulo', ''))}")
+    return claves
+
+
+def detectar_novedades_empresarias() -> dict:
+    """Comunicados nuevos de UIA y AEA, pendientes de codificar.
+
+    NO puntúa ni alimenta el ITCP (ADR-0149). Cada comunicado se avisa una sola
+    vez: los ya codificados en `apoyo_empresario_codificacion.json` entran como
+    revisados de arranque, y los nuevos quedan en `pendientes` hasta que alguien
+    los saque.
+    """
+    try:
+        store = json.loads(APOYO_NOVEDADES_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        store = {}
+    revisadas = store.setdefault("revisadas", {})
+    pendientes = store.setdefault("pendientes", {})
+    for clave in _apoyo_ya_codificados():
+        revisadas.setdefault(clave, {"origen": "codificacion ADR-0148"})
+
+    session = requests.Session()
+    session.headers.update(HTTP_HEADERS)
+    nuevas, vistos = 0, 0
+
+    def anotar(c: dict) -> None:
+        nonlocal nuevas, vistos
+        vistos += 1
+        clave = f"{c['camara']}|{c['id']}"
+        if clave in revisadas:
+            return
+        revisadas[clave] = {"fecha": c["fecha"], "titulo": c["titulo"][:160]}
+        pendientes[clave] = {**c, "postura": None, "destinatario": None,
+                             "nota": "sin codificar — ver apoyo_empresario_reglas.json"}
+        nuevas += 1
+
+    # UIA: se sondea hacia arriba desde el último id conocido. Los ids se
+    # comparten con otras secciones del sitio, así que la mayoría dará None.
+    ids_uia = [int(k.split("|")[1]) for k in revisadas
+               if k.startswith("UIA|") and k.split("|")[1].isdigit()]
+    desde = (max(ids_uia) + 1) if ids_uia else 4240
+    for id_ in range(desde, desde + UIA_MARGEN_IDS):
+        try:
+            c = _uia_comunicado(id_, session)
+        except Exception as e:
+            print(f"  [WARN] apoyo/UIA id={id_}: {e}")
+            continue
+        if c:
+            anotar(c)
+
+    try:
+        for c in _aea_comunicados(session):
+            anotar(c)
+    except Exception as e:
+        print(f"  [WARN] apoyo/AEA: {e}")
+
+    store["_meta"] = {
+        "descripcion": ("Comunicados nuevos de UIA y AEA pendientes de codificar "
+                        "(ADR-0149). Detección automática; la postura y el "
+                        "destinatario los asigna una persona con las reglas de "
+                        "apoyo_empresario_reglas.json. NO puntúa: el indicador no "
+                        "se publica hasta que haya segunda pasada con kappa ≥ 0,70. "
+                        "Sacar de 'pendientes' lo ya codificado."),
+        "fuentes": {"UIA": UIA_PRENSA_URL.format("{id}"), "AEA": AEA_PRENSA_URL},
+        "ultima_corrida": date.today().isoformat(),
+        "comunicados_vistos": vistos,
+        "nuevos_en_la_corrida": nuevas,
+    }
+    APOYO_NOVEDADES_PATH.parent.mkdir(parents=True, exist_ok=True)
+    APOYO_NOVEDADES_PATH.write_text(
+        json.dumps(store, indent=1, ensure_ascii=False, sort_keys=True),
+        encoding="utf-8")
+    return store
 
 
 # ── Detector de novedades judiciales de la CSJN (ADR-0140) ──────────────────
@@ -4136,6 +4305,16 @@ def main() -> None:
                   f"→ data/politica/csjn_novedades.json")
     except Exception as e:
         print(f"  [WARN] detector de novedades judiciales no corrió ({e})")
+
+    # Detector de postura empresaria (ADR-0149). Tampoco produce indicador: sólo
+    # evita que el registro codificado a mano se quede viejo entre corridas.
+    try:
+        pend = detectar_novedades_empresarias().get("pendientes", {})
+        if pend:
+            print(f"  [i] cámaras: {len(pend)} comunicado(s) sin codificar "
+                  f"→ data/politica/apoyo_empresario_novedades.json")
+    except Exception as e:
+        print(f"  [WARN] detector de postura empresaria no corrió ({e})")
 
     # alineamiento_senadores_prov comparte el mismo contrato de retorno que
     # cohesion_bloque_senado (misma sesión/descubrimiento de actas de Senado):
