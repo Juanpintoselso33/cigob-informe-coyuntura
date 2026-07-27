@@ -71,21 +71,36 @@ citable, UIA es más frecuente.**
    comunicado del G6 sobre el marco laboral como dirigido al Congreso— y son
    justamente los que el segundo codificador tiene que mirar.
 
-## Lo que queda disponible si hace falta más volumen
+## Las ocho cámaras quedan evaluadas: AEA + UIA es el techo
 
-- **CAMARCO: verificada y descartada** (27-jul). No tiene sección de prensa ni
-  de comunicados —`/prensa/` y `/comunicados/` dan 404— y su `/noticias/` son
-  trece piezas de prensa institucional y servicios: «Flash CAMARCO», «90 años
-  construyendo un legado», «Vacaciones de invierno en UOCRA Cultura», cursos, y
-  el boletín «Indicador CAMARCO». Lo único institucional son circulares
-  administrativas a socios. Mismo patrón que CAC, CAME y el feed de ADEBA.
-- **SRA: sin verificar.** `sra.ar/comunicacion` es una app con JavaScript y la
-  extensión de navegador no estaba disponible al intentarlo. Es la que más
-  podría aportar —las retenciones son el tema del campo con este gobierno— así
-  que conviene retomarla.
-- **Los comunicados del G6** aparecen en el feed de UIA y son la señal más fuerte
-  disponible —las seis cámaras principales hablando juntas—; hoy se codifican
-  como un comunicado más de UIA y podrían merecer tratamiento propio.
+Cerrado el 27-jul. De las ocho del relevamiento original, **dos sirven, cuatro no
+publican postura y dos no son relevables**:
+
+| | veredicto |
+|---|---|
+| **AEA** · **UIA** | **sirven** — son el corpus |
+| ADEBA | el feed son 21 «Síntesis normativa»: boletín regulatorio diario |
+| CAC | agenda institucional (visitas, webinars, paritarias) |
+| CAME | servicios al socio (escalas de convenio, rondas de negocios) |
+| CAMARCO | sin sección de prensa ni comunicados; `/noticias/` son 13 piezas institucionales y de servicios |
+| COPAL | **feed muerto desde 2022**, con tres entradas tituladas «Prueba» |
+| **SRA** | **`robots.txt`: «Bloqueo completo para bots — Disallow: /»** |
+| **AmCham** | «AmCham Connect»: plataforma de socios detrás de login |
+
+Las dos últimas merecen distinguirse del resto, porque **no es que no se pueda:
+es que no corresponde.**
+
+- **SRA** declara en su `robots.txt` que ningún bot debe recorrer el sitio. Es la
+  política del operador, no una barrera técnica, y se respeta. Si alguna vez
+  hiciera falta, la vía es pedírselo a la entidad.
+- **AmCham** movió su dominio: `amchamar.com.ar` está muerto y `amcham.com.ar` es
+  hoy una SPA de networking para socios cuyo JS sólo expone
+  `apiv2.amcham.com.ar/api/cognito/`. No hay prensa pública, y el contenido de
+  socios está detrás de autenticación — ahí no se entra. No resuelve ningún
+  dominio institucional alternativo.
+
+**Conclusión: el corpus AEA + UIA es el máximo alcanzable sin pedirle datos a una
+entidad.** Y alcanza: la métrica funciona con `n` de 2 a 8 por ventana.
 
 ## Nota sobre el costo, que ADR-0136 sobreestimó
 

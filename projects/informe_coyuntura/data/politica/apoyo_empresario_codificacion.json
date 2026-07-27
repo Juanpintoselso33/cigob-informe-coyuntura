@@ -24,21 +24,22 @@
    "estado": "PENDIENTE Y AHORA OBLIGATORIA: la métrica funciona, así que la codificación pasa a incidir"
   },
   "camaras_evaluadas": {
-   "sirven": [
-    "AEA — sección Prensa, comunicados de postura",
-    "UIA — sección PRENSA (no Noticias, que es del CEU)"
-   ],
-   "no_sirven": [
-    "ADEBA — el feed son 21 «Síntesis normativa», boletín regulatorio diario",
-    "CAC — agenda institucional (visitas, webinars, paritarias)",
-    "CAME — servicios al socio (escalas de convenio, rondas de negocios)",
-    "CAMARCO — prensa institucional y servicios; sin sección de comunicados"
-   ],
-   "sin_verificar": [
-    "SRA — app con JS, requiere navegador",
-    "AmCham — SSLError persistente",
-    "COPAL — no re-evaluada tras el relevamiento inicial"
-   ]
+   "_fecha_cierre": "2026-07-27 — las ocho cámaras del relevamiento original quedan evaluadas",
+   "sirven": {
+    "AEA": "aeanet.net/prensa.html — 46 comunicados de postura, 2020-2026",
+    "UIA": "uia.org.ar/prensa/{id}/ — 57 desde dic-2023; ids secuenciales servidos sin JS. OJO: /comunicaciones/noticias/ es OTRA sección, dominada por informes del CEU"
+   },
+   "no_sirven": {
+    "ADEBA": "el feed son 21 «Síntesis normativa», boletín regulatorio diario; los comunicados quedan sepultados",
+    "CAC": "agenda institucional — visitas, webinars, firmas de paritarias",
+    "CAME": "servicios al socio — escalas de convenio, rondas de negocios",
+    "CAMARCO": "sin sección de prensa ni comunicados (/prensa/ y /comunicados/ dan 404); /noticias/ son 13 piezas institucionales y de servicios; lo único institucional son circulares administrativas a socios",
+    "COPAL": "feed MUERTO desde 2022, con tres entradas tituladas «Prueba»; el resto son aniversarios y días internacionales"
+   },
+   "no_relevables": {
+    "SRA": "robots.txt del sitio: «Bloqueo completo para bots — User-agent: * / Disallow: /». NO es una falla técnica: es la política declarada del operador y se respeta. Si alguna vez se necesita, la vía es pedírselo a la entidad.",
+    "AmCham": "amcham.com.ar es «AmCham Connect», plataforma de networking para socios (SPA React) detrás de autenticación Cognito — su JS sólo expone apiv2.amcham.com.ar/api/cognito/. NO tiene sección de prensa pública. El dominio viejo amchamar.com.ar está muerto y no resuelve ningún dominio institucional alternativo (amchamargentina, amcham.org.ar, institucional.amcham)."
+   }
   }
  },
  "resultado": {
@@ -70,7 +71,7 @@
   "meses_n1": 0
  },
  "hallazgo": "LA INDUSTRIA CRITICA Y EL GRAN EMPRESARIADO APOYA. UIA se pronuncia contra tarifas, presión tributaria, competencia importada y el cierre de Fate; AEA celebra el acuerdo con el FMI y el Pacto de Mayo. Son electorados distintos y el indicador los captura. El saldo agregado es negativo casi todo el período, toca +0,33 en feb-2026 y vuelve a −0,71.",
- "pendiente": "CAMARCO: VERIFICADA Y DESCARTADA (2026-07-27). No tiene sección de prensa ni de comunicados —/prensa/ y /comunicados/ dan 404— y su /noticias/ son 13 piezas de prensa institucional y servicios: «Flash CAMARCO», «90 años construyendo un legado», «Vacaciones de invierno en UOCRA Cultura», «Cursos NFPA», más el boletín «Indicador CAMARCO». Lo único institucional son circulares administrativas a socios en /institucional/circulares/, que no son postura pública. Mismo patrón que CAC, CAME y el feed de ADEBA. SRA: SIN VERIFICAR — sra.ar/comunicacion es una app con JavaScript y la extensión de navegador no estaba disponible al intentarlo. Es la que más podría aportar (retenciones es EL tema del campo con este gobierno), así que conviene retomarla.",
+ "pendiente": "NINGUNA cámara queda sin evaluar. De las ocho del relevamiento original, dos sirven (AEA y UIA, ya en el corpus), cuatro no publican postura y dos no son relevables — SRA porque su robots.txt lo prohíbe y AmCham porque su contenido está detrás de login de socios. El corpus de AEA + UIA es el máximo alcanzable sin pedirle datos a una entidad.",
  "serie_12m": {
   "2023-12": {
    "n": 3,
