@@ -2550,20 +2550,21 @@ def fetch_protocolo_serie() -> list:
 
 
 def fetch_desregulacion_serie() -> list:
-    """Serie MENSUAL de normas de desregulación acumuladas desde dic-2023,
-    según el Ministerio de Desregulación (ADR-0125).
+    """Serie MENSUAL de ARTÍCULOS modificados o eliminados, acumulados desde
+    dic-2023, según el Ministerio de Desregulación (ADR-0125 / ADR-0143).
 
     Misma construcción que puntúa en la ficha
     (`gestion.desregulacion_oficial_serie`): el backfill sale del gráfico del
     informe de abril-2026 y los meses posteriores del titular de cada informe.
     Todo cacheado en `data/gestion/desregulacion_oficial.json`.
 
-    Reemplaza a la serie derivada de la caché por norma de InfoLeg (ADR-0096),
-    que medía otra cosa —normas completas derogadas, 47 al cierre— y no es
-    empalmable con ésta: mezclarlas dejaría dos escalas en el mismo gráfico.
-    [[YYYY-MM-01, normas acumuladas]]."""
+    Desde ADR-0143 la unidad son ARTÍCULOS y no normas: el backfill sale de la
+    Figura 5 del informe de abril-2026 ("evolución acumulada" de artículos), no
+    de la Figura 1. Las dos series existen y no son empalmables — mezclarlas
+    dejaría dos escalas en el mismo gráfico.
+    [[YYYY-MM-01, artículos acumulados]]."""
     try:
-        serie = gestion.desregulacion_oficial_serie()
+        serie = gestion.desregulacion_oficial_serie("articulos")
     except Exception as e:
         print(f"  [WARN] desregulacion: fuente oficial ilegible ({e}) -- serie omitida")
         return []
@@ -2580,7 +2581,7 @@ GESTION_DERIVADAS = [
     ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),
     ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)", fetch_fal_serie),
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
-    ("desregulacion_normativa", "normas de desregulación acumuladas desde dic-2023",
+    ("desregulacion_normativa", "artículos modificados o eliminados, acumulados desde dic-2023",
      "Min. de Desregulación y Transformación del Estado — informe mensual",
      fetch_desregulacion_serie),
     # A % calibrado (45 actos = plan completo, misma escala que el titular):

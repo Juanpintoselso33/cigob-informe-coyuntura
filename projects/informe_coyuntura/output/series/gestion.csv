@@ -775,37 +775,37 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
 2024-01-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
 2023-12-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
-2026-06-01,desregulacion_normativa,689.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2026-05-01,desregulacion_normativa,636.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2026-04-01,desregulacion_normativa,584.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2026-03-01,desregulacion_normativa,544.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2026-02-01,desregulacion_normativa,512.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2026-01-01,desregulacion_normativa,495.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-12-01,desregulacion_normativa,474.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-11-01,desregulacion_normativa,463.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-10-01,desregulacion_normativa,452.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-09-01,desregulacion_normativa,439.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-08-01,desregulacion_normativa,421.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-07-01,desregulacion_normativa,399.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-06-01,desregulacion_normativa,346.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-05-01,desregulacion_normativa,310.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-04-01,desregulacion_normativa,282.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-03-01,desregulacion_normativa,261.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-02-01,desregulacion_normativa,240.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2025-01-01,desregulacion_normativa,211.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-12-01,desregulacion_normativa,186.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-11-01,desregulacion_normativa,151.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-10-01,desregulacion_normativa,123.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-09-01,desregulacion_normativa,99.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-08-01,desregulacion_normativa,74.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-07-01,desregulacion_normativa,49.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-06-01,desregulacion_normativa,35.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-05-01,desregulacion_normativa,30.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-04-01,desregulacion_normativa,26.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-03-01,desregulacion_normativa,17.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-02-01,desregulacion_normativa,14.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2024-01-01,desregulacion_normativa,9.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
-2023-12-01,desregulacion_normativa,4.0,normas de desregulación acumuladas desde dic-2023,Min. de Desregulación y Transformación del Estado — informe mensual
+2026-06-01,desregulacion_normativa,16178.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-05-01,desregulacion_normativa,15507.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-04-01,desregulacion_normativa,15251.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-03-01,desregulacion_normativa,15144.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-02-01,desregulacion_normativa,14572.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2026-01-01,desregulacion_normativa,14392.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-12-01,desregulacion_normativa,14149.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-11-01,desregulacion_normativa,13475.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-10-01,desregulacion_normativa,12361.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-09-01,desregulacion_normativa,9645.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-08-01,desregulacion_normativa,8892.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-07-01,desregulacion_normativa,8092.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-06-01,desregulacion_normativa,6958.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-05-01,desregulacion_normativa,6428.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-04-01,desregulacion_normativa,5743.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-03-01,desregulacion_normativa,5543.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-02-01,desregulacion_normativa,5083.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2025-01-01,desregulacion_normativa,4525.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-12-01,desregulacion_normativa,4077.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-11-01,desregulacion_normativa,3875.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-10-01,desregulacion_normativa,3226.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-09-01,desregulacion_normativa,3081.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-08-01,desregulacion_normativa,2639.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-07-01,desregulacion_normativa,2437.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-06-01,desregulacion_normativa,2149.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-05-01,desregulacion_normativa,2003.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-04-01,desregulacion_normativa,1974.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-03-01,desregulacion_normativa,1660.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-02-01,desregulacion_normativa,1660.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2024-01-01,desregulacion_normativa,1555.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
+2023-12-01,desregulacion_normativa,1150.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-07-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-06-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2026-05-01,concesiones_infraestructura,28.7,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)

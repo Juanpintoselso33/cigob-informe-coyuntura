@@ -64,30 +64,35 @@ BANDAS_ITCG = {
         # exactos en esa recta, así el puntaje interpolado la reproduce.
         (-INF, 1.0, 100), (1.0, 3.5, 85), (3.5, 7.0, 65), (7.0, 11.0, 40), (11.0, INF, 10),
     ],
-    "desregulacion_normativa": [        # normas de desregulación acumuladas desde dic-2023
-        # ADR-0125: la fuente pasa a ser el informe mensual del Ministerio de
-        # Desregulación y la unidad deja de ser un % de avance sobre una escala
-        # propia (100 normas = plan completo) para ser el CONTEO OFICIAL.
+    "desregulacion_normativa": [        # artículos modificados o eliminados, acumulados desde dic-2023
+        # ADR-0143: la unidad pasa de NORMAS a ARTÍCULOS. El propio informe del
+        # Ministerio publica los tres números (689 normas · 2.699 normas
+        # afectadas · 16.178 artículos) y hasta ahora usábamos el primero. La
+        # revisión externa señaló el problema del conteo de normas —"se cuentan
+        # por igual normas como si fueran equivalentes, y de hecho no lo son"—
+        # y los artículos son la respuesta: un decreto que borra 500 artículos
+        # y una resolución que borra uno dejan de pesar igual.
         #
         # La escala sigue siendo CONVENCIÓN NUESTRA y conviene no disimularlo:
         # el ministerio publica el conteo pero NO publica ninguna meta, así que
-        # el "plan completo" lo seguimos poniendo nosotros. Es la misma
-        # limitación que ADR-0096 dejó declarada; cambió la procedencia del
-        # número, no la de la vara.
+        # el "plan completo" lo seguimos poniendo nosotros. Lo que cambió es la
+        # unidad, no la procedencia de la vara. Se descartó dividir por el stock
+        # regulatorio (SAIJ: 16.825 normas nacionales vigentes de alcance
+        # general) porque los universos NO son conmensurables: el numerador del
+        # Ministerio incluye resoluciones y ese denominador son sólo leyes y
+        # decretos. Verificado leyendo los informes, no supuesto.
         #
-        # Los cortes son múltiplos redondos que cubren la trayectoria real del
-        # programa (4 normas en dic-2023 → 689 en jun-2026) sin saturar hoy:
-        # con 689 el puntaje es 73,3, casi el mismo 72,0 que daba la métrica
-        # anterior — la fuente cambió, el resultado no, que es lo que ADR-0045
-        # pide para no mover un número recalibrando.
+        # Los cortes son múltiplos redondos que cubren la trayectoria real
+        # (1.150 artículos en dic-2023 → 16.178 en jun-2026) y la reparten
+        # 4/8/11/8 sobre los 31 puntos de la serie. Con 16.178 el puntaje es
+        # 71,3, casi el mismo 73,3 que daba el conteo de normas — la unidad
+        # cambió, el resultado no, que es lo que ADR-0045 pide.
         #
-        # Reparto sobre los 31 puntos reales de la serie: 10/7/12/2/0. El tramo
-        # superior está vacío A PROPÓSITO (el programa está a mitad de camino).
-        # REVISAR cuando el acumulado pase de 1.000: al ritmo de 2026 (+50/mes)
-        # eso ocurre alrededor de mediados de 2027 y el indicador empieza a
-        # aplanarse contra el techo.
-        (1200.0, INF, 100), (600.0, 1200.0, 85), (300.0, 600.0, 60),
-        (100.0, 300.0, 35), (-INF, 100.0, 10),
+        # El tramo superior está vacío A PROPÓSITO (el programa está a mitad de
+        # camino). REVISAR cuando el acumulado pase de 24.000: al ritmo de 2026
+        # (~360 artículos/mes) eso ocurre hacia fines de 2027.
+        (30000.0, INF, 100), (15000.0, 30000.0, 85), (7000.0, 15000.0, 60),
+        (2500.0, 7000.0, 35), (-INF, 2500.0, 10),
     ],
     "reduccion_estado": [               # % variación dotación APN vs dic-2023 (− = reducción)
         # Calibrado con el dato real: la APN civil recortó ~10-12% desde

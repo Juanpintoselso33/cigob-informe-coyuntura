@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-26 20:53:29"
+generado: "2026-07-26 21:40:34"
 score_global: 2.5
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -80,7 +80,7 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | cepo_mulc | 6.6 | % de brecha CCL/mayorista | 2026-07-26 | fresco |
 | apertura_comercial | 6.18 | % del intercambio (alícuota efectiva) | 2026-06-01 | fresco |
-| desregulacion_normativa | 689.0 | normas de desregulación acumuladas desde dic-2023 | 2026-06-01 | fresco |
+| desregulacion_normativa | 16178.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-06-01 | fresco |
 | reduccion_estado | -19.8 | % de variación vs dic-2023 (dotación APN) | 2026-05-01 | fresco |
 | gasto_funcionamiento | -31.37 | % de variación real vs 2023-06 (IMIG funcionamiento) | 2026-06-01 | fresco |
 | masa_salarial | -32.37 | % de variación real vs 2023-06 (SPN remuneraciones) | 2026-06-01 | fresco |
@@ -107,4 +107,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-26 20:53:29 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-26 21:40:34 — schema 1.2.0*

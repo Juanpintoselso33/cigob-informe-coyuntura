@@ -22,7 +22,8 @@ import gestion
 #   * cepo_mulc 4,91% → 100 (plano bajo la primera ancla).
 #   * apertura_comercial = ALÍCUOTA efectiva 4,86% → 67,6 (la lineal del doc:
 #     0% → 100 · 15% → 0; la brecha salió del compuesto — ADR-0021).
-#   * desregulacion_normativa 846 normas → 82,0. ADR-0125 cambió la unidad (de
+#   * desregulacion_normativa 16.178 artículos → 71,3 (ADR-0143; antes 846
+#     normas → 82,0). ADR-0125 ya había cambiado la unidad (de
 #     «% de avance» al conteo oficial de normas acumuladas), así que el insumo
 #     del ejemplo se expresa en la unidad nueva CONSERVANDO su puntaje: lo que
 #     este test fija es el ITCG que produce la combinación de puntajes del
@@ -38,11 +39,13 @@ import gestion
 #   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
 #     protocolo 52% → 76,6 (banda 85) · libertad_opcion_salud 40% → 65 (ancla).
 # Dimensiones: económicas=83,4 estado=78,3 laboral=57,9 privatizaciones=58,1
-# social=83,6 → ITCG = 74,5.
+# social=83,6 → ITCG = 75,9.
 EJEMPLO = {
     "cepo_mulc": 4.91,                  # 100 (plano bajo la primera ancla)
     "apertura_comercial": 4.86,         # alícuota efectiva % → 67,6
-    "desregulacion_normativa": 846.0,   # 82,0 — normas acumuladas (ADR-0125)
+    "desregulacion_normativa": 16178.0,  # 71,3 — ARTÍCULOS modificados o
+    # eliminados, acumulados (ADR-0143). Antes 846 normas → 82,0: cambió la
+    # unidad, no la fuente.
     "reduccion_estado": -10.5,          # 88,8 (banda 85)
     "gasto_funcionamiento": -18.0,      # 81,0 (banda 85)
     "masa_salarial": -15.0,             # 82,3 (banda 85)
@@ -64,7 +67,9 @@ EJEMPLO = {
 def test_itcg_reproduce_ejemplo():
     r = itcg.calcular_itcg(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["reformas_economicas"]["puntaje"] == 83.4
+    # 83,4 → 81,3 (ADR-0143: la desregulación pasa de normas a artículos y el
+    # puntaje del indicador baja de 82,0 a 71,3 — misma trayectoria, otra unidad)
+    assert dims["reformas_economicas"]["puntaje"] == 81.3
     assert dims["reforma_estado"]["puntaje"] == 78.3
     # 38,9 → 44,3 (ADR-0128, reparto 50/50) → 78,9 (ADR-0142, el FAL pasa a
     # medir sus dos actos fundamentales y salta de 30,8 a 100). El segundo
@@ -72,9 +77,9 @@ def test_itcg_reproduce_ejemplo():
     assert dims["reforma_laboral"]["puntaje"] == 78.9
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
     assert dims["social_orden"]["puntaje"] == 72.8   # sin asistencia_directa (ADR-0100)
-    assert r["valor"] == 76.6          # 70,6 → 71,4 (ADR-0128) → 76,6 (ADR-0142)
+    assert r["valor"] == 75.9          # 71,4 (ADR-0128) → 76,6 (0142) → 75,9 (0143)
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.3
+    assert itcg.tension_de_itcg(r["valor"]) == 2.4
     assert r["ajustes_aplicados"] == []
 
 
@@ -132,11 +137,11 @@ def test_bordes_de_banda():
     assert itcg.puntaje_banda(-14.99, b["litigiosidad_laboral"]) == 85
     assert itcg.puntaje_banda(20.01, b["litigiosidad_laboral"]) == 10
     assert parametrica.puntaje_interpolado(3.6, b["litigiosidad_laboral"]) == 57.8
-    # Desregulación: conteo oficial de normas acumuladas (ADR-0125).
-    assert itcg.puntaje_banda(689.0, b["desregulacion_normativa"]) == 85
-    assert itcg.puntaje_banda(600.0, b["desregulacion_normativa"]) == 60
-    assert itcg.puntaje_banda(1200.01, b["desregulacion_normativa"]) == 100
-    assert itcg.puntaje_banda(99.0, b["desregulacion_normativa"]) == 10
+    # Desregulación = artículos acumulados (ADR-0143), no normas (ADR-0125).
+    assert itcg.puntaje_banda(16178.0, b["desregulacion_normativa"]) == 85
+    assert itcg.puntaje_banda(15000.0, b["desregulacion_normativa"]) == 60
+    assert itcg.puntaje_banda(30000.01, b["desregulacion_normativa"]) == 100
+    assert itcg.puntaje_banda(2499.0, b["desregulacion_normativa"]) == 10
     # Dotación APN: reducción fuerte = menos tensión; dotación creciendo = 10.
     assert itcg.puntaje_banda(-12.0, b["reduccion_estado"]) == 100
     assert itcg.puntaje_banda(-11.99, b["reduccion_estado"]) == 85

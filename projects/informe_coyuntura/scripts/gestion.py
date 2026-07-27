@@ -588,17 +588,25 @@ def _desreg_leer_informe(url: str) -> dict | None:
             "normas_afectadas": modif, "articulos": arts}
 
 
-def _desreg_backfill_grafico(url: str, ancla: int) -> dict:
-    """Serie mensual desde dic-2023, medida sobre las barras de la Figura 1.
+def _desreg_backfill_grafico(url: str, ancla: int, figura: str = "Figura 1") -> dict:
+    """Serie mensual desde dic-2023, medida sobre las barras de un gráfico
+    acumulado del informe.
 
     El PDF trae las etiquetas del gráfico convertidas a curvas, así que el
     texto no se puede extraer — pero las barras son rectángulos vectoriales y
     su altura es proporcional al valor. Se calibra con el titular del propio
     informe, que es la última barra.
 
+    `figura` elige cuál: la **Figura 1** son las normas de desregulación
+    acumuladas (ADR-0125) y la **Figura 5**, los artículos modificados o
+    eliminados acumulados (ADR-0143). En la página de la Figura 5 conviven dos
+    gráficos —la 4 es la misma variable POR MES, no acumulada—, así que entre
+    los grupos de barras de la página se toma el que es monótono creciente y
+    tiene más barras.
+
     Es una reconstrucción por geometría y hay que tratarla como tal: el test
     `test_gestion_desregulacion` la contrasta contra los titulares de los otros
-    informes, que son independientes del gráfico (ADR-0125).
+    informes, que son independientes del gráfico.
     """
     from collections import Counter
 
@@ -608,35 +616,54 @@ def _desreg_backfill_grafico(url: str, ancla: int) -> dict:
     doc = fitz.open(stream=blob, filetype="pdf")
     for pagina in doc:
         txt = pagina.get_text() or ""
-        if not (re.search(r"Figura 1", txt, re.I) and re.search(r"acumulad", txt, re.I)):
+        if not (re.search(figura, txt, re.I) and re.search(r"acumulad", txt, re.I)):
             continue
         rects = [it[1] for d in pagina.get_drawings() for it in d["items"]
                  if it[0] == "re" and it[1].height > 1 and 3 < it[1].width < 60]
         if not rects:
             continue
-        base = Counter(round(r.y1, 1) for r in rects).most_common(1)[0][0]
-        barras = sorted((r for r in rects if abs(r.y1 - base) < 1.5 and r.height > 1.0),
-                        key=lambda r: r.x0)
-        if len(barras) < 12:
+        # una página puede traer más de un gráfico: se prueban todas las bases
+        # y se elige el grupo acumulado (monótono) con más barras
+        mejor = []
+        for base, _ in Counter(round(r.y1, 1) for r in rects).most_common(4):
+            barras = sorted((r for r in rects if abs(r.y1 - base) < 1.5 and r.height > 1.0),
+                            key=lambda r: r.x0)
+            alturas = [r.height for r in barras]
+            monotona = all(b >= a - 0.5 for a, b in zip(alturas, alturas[1:]))
+            if monotona and len(barras) > len(mejor):
+                mejor, base_ok = barras, base
+        if len(mejor) < 12:
             continue
-        escala = ancla / (base - barras[-1].y0)
+        escala = ancla / (base_ok - mejor[-1].y0)
         anio, mes = int(DESREG_BACKFILL_DESDE[:4]), int(DESREG_BACKFILL_DESDE[5:7])
         serie = {}
-        for r in barras:
-            serie[f"{anio}-{mes:02d}"] = round((base - r.y0) * escala)
+        for r in mejor:
+            serie[f"{anio}-{mes:02d}"] = round((base_ok - r.y0) * escala)
             mes += 1
             if mes > 12:
                 anio, mes = anio + 1, 1
         return serie
-    raise ValueError("no se encontró la Figura 1 en el informe de backfill")
+    raise ValueError(f"no se encontró la {figura} en el informe de backfill")
 
 
-def desregulacion_oficial_serie() -> dict:
-    """{YYYY-MM: normas de desregulación acumuladas} desde dic-2023.
+#: métrica → (clave del informe, clave del backfill en el store, figura del PDF)
+DESREG_METRICAS = {
+    "normas":    ("normas",    "backfill_grafico",   "Figura 1"),
+    "articulos": ("articulos", "backfill_articulos", "Figura 5"),
+}
+
+
+def desregulacion_oficial_serie(metrica: str = "articulos") -> dict:
+    """{YYYY-MM: acumulado} desde dic-2023, según los informes del Ministerio.
+
+    `metrica` elige qué se cuenta: **artículos** modificados o eliminados (lo
+    que puntúa desde ADR-0143) o **normas** de desregulación (lo que puntuaba
+    antes, hoy contexto de la card).
 
     Backfill desde el gráfico del informe de abril-2026 + el titular de cada
     informe posterior. Todo se cachea: los informes publicados son inmutables.
     """
+    clave_informe, clave_store, figura = DESREG_METRICAS[metrica]
     store = _desreg_oficial_store()
     informes = store.setdefault("informes", {})
     disponibles = _desreg_informes_publicados()
@@ -650,13 +677,13 @@ def desregulacion_oficial_serie() -> dict:
 
     por_periodo = {d["periodo"]: d for d in informes.values()}
 
-    backfill = store.get("backfill_grafico")
+    backfill = store.get(clave_store)
     if not backfill:
         url = disponibles.get(DESREG_INFORME_BACKFILL)
-        ancla = por_periodo.get("2026-04", {}).get("normas")
+        ancla = por_periodo.get("2026-04", {}).get(clave_informe)
         if url and ancla:
-            backfill = _desreg_backfill_grafico(url, ancla)
-            store["backfill_grafico"] = backfill
+            backfill = _desreg_backfill_grafico(url, ancla, figura)
+            store[clave_store] = backfill
     backfill = backfill or {}
 
     _desreg_guardar_store(store)
@@ -665,8 +692,8 @@ def desregulacion_oficial_serie() -> dict:
     for periodo, d in por_periodo.items():
         # el titular manda sobre el gráfico donde ambos existen: es el número
         # que el ministerio publicó en texto para ese mes
-        if periodo > max(backfill, default=""):
-            serie[periodo] = d["normas"]
+        if periodo > max(backfill, default="") and d.get(clave_informe):
+            serie[periodo] = d[clave_informe]
     return dict(sorted(serie.items()))
 
 
@@ -681,7 +708,7 @@ def fetch_desregulacion_normativa() -> dict | None:
     programa, y el criterio de qué norma cuenta como "de desregulación" es suyo.
     """
     try:
-        serie = desregulacion_oficial_serie()
+        serie = desregulacion_oficial_serie("articulos")
         if not serie:
             raise ValueError("sin informes oficiales legibles")
         periodo = max(serie)
@@ -691,21 +718,25 @@ def fetch_desregulacion_normativa() -> dict | None:
         previo = serie.get(_mes_previo_ym(periodo))
         return {
             "valor":          float(serie[periodo]),
-            "unidad":         "normas de desregulación acumuladas desde dic-2023",
+            "unidad":         "artículos de normas modificados o eliminados, "
+                              "acumulados desde dic-2023",
             "fuente":         "Ministerio de Desregulación y Transformación del Estado — "
                               "Análisis de la desregulación implementada (informe mensual)",
             "fecha_dato":     f"{periodo}-01",
             "desactualizado": False,
+            # contexto de la card: los otros dos números del mismo informe
+            "normas_desregulacion": ultimo.get("normas"),
             "normas_afectadas": ultimo.get("normas_afectadas"),
-            "articulos_afectados": ultimo.get("articulos"),
             "alta_del_mes":   None if previo is None else serie[periodo] - previo,
             "detalle_txt": (
-                f"{serie[periodo]} normas de desregulación acumuladas desde el 10 de "
-                f"diciembre de 2023"
-                + ("" if previo is None else f" ({serie[periodo] - previo:+d} en el mes)")
-                + ("" if not ultimo.get("normas_afectadas") else
-                   f" · modificaron o eliminaron {ultimo['normas_afectadas']} normas "
-                   f"anteriores y {ultimo.get('articulos')} artículos")),
+                f"{serie[periodo]:,} artículos modificados o eliminados desde el 10 de "
+                f"diciembre de 2023".replace(",", ".")
+                + ("" if previo is None else
+                   f" ({serie[periodo] - previo:+d} en el mes)")
+                + ("" if not ultimo.get("normas") else
+                   f" · los produjeron {ultimo['normas']} normas de desregulación, "
+                   f"que modificaron o eliminaron {ultimo.get('normas_afectadas')} "
+                   f"normas anteriores")),
         }
     except Exception as e:
         _warn("desregulacion_normativa", e)

@@ -328,8 +328,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (plataforma oficial)", tipo: "Avance de reforma",
   },
   desregulacion_normativa: {
-    que: "Cuántas normas de desregulación acumula el Gobierno desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado.",
-    aporta: "Mide el avance del programa desregulador con la cifra del organismo que lo conduce, en lugar de una reconstrucción propia. Muestra además su forma en el tiempo, que es muy desigual: apenas cuarenta y nueve normas hasta julio de 2024, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La card publica también las normas anteriores y los artículos que esas medidas modificaron o eliminaron.",
+    que: "Cuántos artículos de normas quedaron modificados o eliminados por el programa desregulador desde el 10 de diciembre de 2023, según el conteo oficial del Ministerio de Desregulación y Transformación del Estado.",
+    aporta: "Mide el volumen de texto regulatorio efectivamente removido, no la cantidad de actos administrativos firmados. La diferencia importa: un decreto que reescribe quinientos artículos y una resolución que toca uno pesan igual si se cuentan normas, y muy distinto si se cuentan artículos. Muestra además la forma del programa en el tiempo, que es muy desigual: un arranque acotado, un salto marcado a partir de la Ley Bases y la creación del ministerio, y una aceleración durante 2026. La card publica también las otras dos cifras del mismo informe: cuántas normas de desregulación se dictaron y cuántas normas anteriores alcanzaron.",
     frecuencia: "Mensual", tipo: "Conteo acumulado oficial",
   },
   apertura_comercial: {

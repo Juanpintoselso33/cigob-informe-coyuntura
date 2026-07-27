@@ -93,21 +93,48 @@ def test_la_serie_no_tiene_huecos():
         assert gestion._mes_previo_ym(b) == a, f"hueco entre {a} y {b}"
 
 
-def test_el_backfill_coincide_con_las_cifras_de_portada():
+@pytest.mark.parametrize("clave_store,clave_informe,tolerancia", [
+    ("backfill_articulos", "articulos", 50),   # lo que PUNTÚA (ADR-0143)
+    ("backfill_grafico", "normas", 5),          # contexto de la card
+])
+def test_el_backfill_coincide_con_las_cifras_de_portada(clave_store, clave_informe,
+                                                        tolerancia):
     """La reconstrucción se mide sobre el gráfico; las cifras de portada de los
     otros informes son independientes de él. Si esta comparación se rompe, o
-    cambió el gráfico o se rompió la medición de las barras."""
+    cambió el gráfico o se rompió la medición de las barras.
+
+    Se validan las DOS series. La de artículos es la que puntúa desde ADR-0143
+    y por eso no puede quedar sin guardia; la de normas sigue en la card como
+    contexto. La tolerancia va en unidades de cada escala: 50 artículos sobre
+    una serie que supera los 16.000 es la misma exigencia relativa que 5 normas
+    sobre 689."""
     store = _store()
-    backfill = store.get("backfill_grafico", {})
+    backfill = store.get(clave_store, {})
     if not backfill:
-        pytest.skip("sin backfill cacheado")
+        pytest.skip(f"sin {clave_store} cacheado")
     errores = []
     for datos in store.get("informes", {}).values():
         p = datos["periodo"]
-        if p in backfill:
-            errores.append(abs(backfill[p] - datos["normas"]))
+        if p in backfill and datos.get(clave_informe):
+            errores.append(abs(backfill[p] - datos[clave_informe]))
     assert errores, "ningún informe se solapa con el backfill"
-    assert max(errores) <= 5, f"el backfill se despegó de los titulares: {errores}"
+    assert max(errores) <= tolerancia, (
+        f"el backfill de {clave_informe} se despegó de los titulares: {errores}")
+
+
+def test_lo_que_puntua_son_articulos_no_normas():
+    """La objeción que resolvió ADR-0143: contar normas trata igual a un decreto
+    que reescribe 500 artículos y a una resolución que toca uno."""
+    r = gestion.fetch_desregulacion_normativa()
+    assert "artículos" in r["unidad"], r["unidad"]
+    articulos = gestion.desregulacion_oficial_serie("articulos")
+    normas = gestion.desregulacion_oficial_serie("normas")
+    ultimo = max(articulos)
+    assert r["valor"] == float(articulos[ultimo])
+    assert articulos[ultimo] > normas[max(normas)] * 10, (
+        "los artículos deberían ser un orden de magnitud mayores que las normas")
+    # las dos cifras de contexto siguen viajando en la card
+    assert r["normas_desregulacion"] and r["normas_afectadas"]
 
 
 # ── Bandas ──────────────────────────────────────────────────────────────────

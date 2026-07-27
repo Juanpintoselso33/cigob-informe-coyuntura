@@ -94,8 +94,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Recaudación por derechos de exportación + importación (ARCA, en USD) sobre el intercambio total (ICA): cuántos centavos de impuesto paga cada dólar comerciado. 0% = libre comercio.",
   },
   desregulacion_normativa: {
-    latex: String.raw`\text{normas de desregulaci\'on acumuladas desde el 10-dic-2023}`,
-    leyenda: "Es el conteo que publica el propio Ministerio de Desregulación y Transformación del Estado en su informe mensual: cuántas normas dictadas desde el 10 de diciembre de 2023 eliminan o modifican regulaciones anteriores. No es una elaboración del proyecto sino la cifra oficial del organismo responsable del programa, verificable en el informe. La escala de referencia sí es una convención propia: el ministerio publica el conteo pero no declara ninguna meta, de modo que el punto en que la desregulación se considera un plan completo lo fija el proyecto.",
+    latex: String.raw`\text{art\'iculos modificados o eliminados, acumulados desde el 10-dic-2023}`,
+    leyenda: "Es una de las tres cifras que publica el Ministerio de Desregulación y Transformación del Estado en su informe mensual: cuántos artículos de normas anteriores quedaron modificados o eliminados por el programa desde el 10 de diciembre de 2023. Se eligió el recuento de artículos y no el de normas porque las normas no son equivalentes entre sí: un decreto que reescribe quinientos artículos y una resolución que toca uno cuentan igual si se cuentan normas, y muy distinto si se cuentan artículos. La cifra es oficial y verificable en el informe; la escala de referencia, en cambio, es una convención propia, porque el ministerio publica el recuento pero no declara ninguna meta.",
   },
   reduccion_estado: {
     latex: String.raw`\left(\frac{\text{empleados del Estado}_{\text{hoy}}}{\text{empleados del Estado}_{\text{dic-23}}}-1\right)\times 100`,
