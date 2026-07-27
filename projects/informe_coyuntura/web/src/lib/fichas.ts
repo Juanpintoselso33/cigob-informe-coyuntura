@@ -445,7 +445,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Los traslados de jueces entre tribunales no se procesan como eventos propios: un traslado deja una vacante y cubre otra, y en el agregado se compensan, pero puede introducir diferencias de un cargo en meses puntuales.",
     ],
     faltantes: "Si los archivos no se pueden leer, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión del Poder Judicial queda vacía y su peso se redistribuye entre las demás.",
-    revisiones: "Cada actualización del padrón vuelve a anclar la serie completa, de modo que los valores pasados pueden ajustarse levemente cuando el Ministerio publica una foto nueva.",
+    revisiones: "Cada actualización del padrón vuelve a anclar la serie completa, de modo que los valores pasados pueden ajustarse levemente cuando el Ministerio publica una foto nueva. El salto de junio de 2026 fue contrastado contra una fuente independiente: el archivo de concursos del propio Consejo de la Magistratura, que no registra ninguna entrevista entre octubre de 2024 y mayo de 2026 y concentra siete concursos con entrevistas personales entre junio y julio de 2026. Las dos fuentes marcan el mismo quiebre en el mismo mes, sin compartir método: además de aprobarse pliegos en el Senado, la maquinaria de selección volvió a moverse.",
     cambios: [
       { fecha: "2026-07-25", cambio: "Entra al índice como único indicador de la dimensión nueva del Poder Judicial, con el quince por ciento del cinturón. La serie se reconstruyó completa desde diciembre de 2023." },
     ],
