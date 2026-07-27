@@ -439,15 +439,15 @@ def test_dimensiones_criticas_marcadas():
             assert "critica" in d, f"{clave}.{dk}: sin flag critica"
             assert d["critica"] == (d["puntaje"] < umbral), \
                 f"{clave}.{dk}: critica={d['critica']} con puntaje {d['puntaje']} (umbral {umbral})"
-    # reforma_laboral salió de "crítica" el 2026-07-20 (ADR-0098) sin que
-    # cambiara la realidad: el FAL pasó a medirse en tres etapas y su puntaje
-    # subió de 10 a 30,8, con lo que la dimensión quedó en ~39 y por encima del
-    # umbral de 30. Sigue siendo la más floja del ITCG por amplio margen — las
-    # otras cuatro van de 58 a 83— pero el umbral no se mueve para conservar
-    # una marca (mismo criterio que ADR-0045 con las anclas).
+    # reforma_laboral salió de "crítica" el 2026-07-20 (ADR-0098) y volvió a
+    # subir el 2026-07-26 (ADR-0142), en los dos casos SIN QUE CAMBIARA LA
+    # REALIDAD: primero el FAL pasó a medirse en tres etapas (10 → 30,8) y
+    # después a medir sus dos actos fundamentales (30,8 → 100), con lo que la
+    # dimensión fue de ~39 a 79,7. El umbral de 30 no se movió en ninguno de
+    # los dos casos —mismo criterio que ADR-0045 con las anclas—: lo que se
+    # movió fue el indicador, por decisión editorial y declarada.
     laboral = informe["cinturones"]["gestion"]["itcg"]["dimensiones"]["reforma_laboral"]
     assert not laboral["critica"], "reforma_laboral no debería estar marcada crítica con la escala nueva"
-    assert laboral["puntaje"] < 50, "sigue siendo la dimensión más floja del ITCG"
     assert informe["cinturones"]["vida_cotidiana"]["itvc"]["dimensiones"]["vulnerabilidad"]["critica"]
 
 

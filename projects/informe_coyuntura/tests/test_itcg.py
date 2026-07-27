@@ -30,8 +30,9 @@ import gestion
 #   * reduccion_estado −10,5% vs dic-2023 → 88,8 (banda 85).
 #   * gasto_funcionamiento −18% real → 81,0 · masa_salarial −15% real → 82,3.
 #   * reestructuracion_organismos 40% → 52,5 (borde de banda: promedio 40/65).
-#   * fal_modernizacion_laboral 25 → 57,9 · litigiosidad +3,6% → 57,8
-#     (ADR-0023 lo repartía 0,7/0,3; ADR-0128 lo pasó a 0,5/0,5).
+#   * fal_modernizacion_laboral 100 → 100 (dos actos fundamentales, ADR-0142)
+#     · litigiosidad +3,6% → 57,8 (ADR-0023 lo repartía 0,7/0,3; ADR-0128 lo
+#     pasó a 0,5/0,5).
 #   * privatizaciones 51,4% → 71,4 (banda 65).
 #   * rigi_inversiones 22,1% → 47,7 (banda 40).
 #   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
@@ -46,9 +47,10 @@ EJEMPLO = {
     "gasto_funcionamiento": -18.0,      # 81,0 (banda 85)
     "masa_salarial": -15.0,             # 82,3 (banda 85)
     "reestructuracion_organismos": 40.0,  # 52,5 (borde 40/65)
-    "fal_modernizacion_laboral": 40.2,  # 30,8 — instrumento construido, sin
-    # vigencia ni adopción (escala de tres etapas, ADR-0098). Antes 25,0 sobre
-    # la escala de sólo-adopción.
+    "fal_modernizacion_laboral": 100.0,  # 100 — los DOS actos fundamentales
+    # cumplidos: Ley 27.802 (mar-2026) + Decreto 408/2026 (jun-2026). ADR-0142.
+    # La escala vieja de tres etapas (ADR-0098) daba 40,2 → 30,8; la nueva sólo
+    # puede tomar 0, 50 o 100 y ya está en el techo.
     "litigiosidad_laboral": 3.6,        # 57,8 (banda 65) — resultado (30%, ADR-0023)
     "privatizaciones": 51.4,            # 71,4 (banda 65)
     "rigi_inversiones": 22.1,           # 47,7 (banda 40)
@@ -64,14 +66,15 @@ def test_itcg_reproduce_ejemplo():
     dims = r["dimensiones"]
     assert dims["reformas_economicas"]["puntaje"] == 83.4
     assert dims["reforma_estado"]["puntaje"] == 78.3
-    # 38,9 → 44,3 con el reparto 50/50 de ADR-0128: la litigiosidad puntúa más
-    # que el FAL, así que igualar los pesos sube la dimensión.
-    assert dims["reforma_laboral"]["puntaje"] == 44.3
+    # 38,9 → 44,3 (ADR-0128, reparto 50/50) → 78,9 (ADR-0142, el FAL pasa a
+    # medir sus dos actos fundamentales y salta de 30,8 a 100). El segundo
+    # salto es editorial y no empírico: está declarado en el ADR y en la ficha.
+    assert dims["reforma_laboral"]["puntaje"] == 78.9
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
     assert dims["social_orden"]["puntaje"] == 72.8   # sin asistencia_directa (ADR-0100)
-    assert r["valor"] == 71.4          # 70,6 → 71,4 por ADR-0128 (laboral 50/50)
+    assert r["valor"] == 76.6          # 70,6 → 71,4 (ADR-0128) → 76,6 (ADR-0142)
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.9
+    assert itcg.tension_de_itcg(r["valor"]) == 2.3
     assert r["ajustes_aplicados"] == []
 
 
@@ -186,7 +189,10 @@ def test_ajuste_manual_del_analista():
     # D5 = 0,67×40 + 0,33×65 = 48,2 (asistencia_directa salió del cálculo por
     # promesa cumplida, ADR-0100; antes era 0,4×100 + 0,4×40 + 0,2×65 = 69)
     assert r["dimensiones"]["social_orden"]["puntaje"] == 48.2
-    assert r["valor"] < 70.6
+    # lo que se protege es que el override BAJE el índice, no un número fijo:
+    # atado a un valor absoluto se rompía con cada recalibración ajena (pasó
+    # con ADR-0142, que subió la línea de base de 71,4 a 76,6).
+    assert r["valor"] < itcg.calcular_itcg(EJEMPLO)["valor"]
 
 
 def test_sin_datos_devuelve_none():

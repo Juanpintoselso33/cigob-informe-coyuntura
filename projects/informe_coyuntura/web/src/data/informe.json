@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-25T20:22:23.885732",
+  "generated_at": "2026-07-26T20:53:29.513834",
   "period": "2026-07",
-  "score_global": 3.3,
+  "score_global": 3.2,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -2565,7 +2565,7 @@
       }
     },
     "gestion": {
-      "score": 2.8,
+      "score": 2.2,
       "estado": "estable",
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
@@ -2573,7 +2573,7 @@
           "valor": 6.6,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-07-25",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reformas_economicas",
@@ -2690,7 +2690,7 @@
           "valor": 40.0,
           "unidad": "% de avance (proxy InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-25",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "conteo_normas": 18,
           "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -2706,33 +2706,42 @@
           "aporte_input_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)"
         },
         "fal_modernizacion_laboral": {
-          "valor": 40.2,
-          "unidad": "Índice 0–100 (FAL: construcción + vigencia + adopción)",
-          "fuente": "CNV (registro FCI) + Boletín Oficial (menciones del FAL, Ley 27.802)",
-          "fecha_dato": "2026-07-25",
+          "valor": 100.0,
+          "unidad": "Índice 0–100 (actos fundamentales del FAL: ley + reglamentación)",
+          "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 (normas publicadas)",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
+          "actos": [
+            {
+              "norma": "Ley 27.802",
+              "descripcion": "Congreso de la Nación — Ley de Modernización Laboral que instaura el FAL",
+              "fecha": "2026-03-06",
+              "cumplido": true
+            },
+            {
+              "norma": "Decreto 408/2026",
+              "descripcion": "Poder Ejecutivo Nacional — reglamentación del Título II (FAL)",
+              "fecha": "2026-06-01",
+              "cumplido": true
+            }
+          ],
+          "actos_cumplidos": 2,
+          "actos_totales": 2,
           "fci_cese_registrados": 0,
           "menciones_bo": 3,
-          "componentes": {
-            "construccion_normativa": 100.0,
-            "vigencia_del_regimen": 0.0,
-            "adopcion_efectiva": 0.4
-          },
-          "hitos_cumplidos": 3,
-          "hitos_totales": 3,
           "vigencia_desde": "2026-11-01",
           "regimen_vigente": false,
-          "detalle_txt": "3 de 3 hitos normativos cumplidos (último: Decreto 408/2026, 2026-06-01) · el régimen entra en vigencia el 2026-11-01, hasta entonces la adopción no puede comenzar por razón legal · 0 fondos registrados en CNV · cobertura 0,7% (3 menciones del FAL en el BO desde mar-2026; 420 = plena)",
+          "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV · 3 menciones del FAL en el BO desde mar-2026",
           "en_indice": true,
           "dimension": "reforma_laboral",
-          "puntaje_itcg": 30.8,
-          "puntaje_banda": 30.8,
+          "puntaje_itcg": 100.0,
+          "puntaje_banda": 100.0,
           "peso_efectivo": 0.075,
-          "aporte_score": 6.9,
-          "aporte_formula": "Anclas ITCG: >85 → 100 · 70–85 → 85 · 50–70 → 65 · 35–50 → 40 · ≤35 → 10 (puntaje interpolado entre anclas: 30.8; pesa 7,5% del ITCG)",
+          "aporte_score": 0.0,
+          "aporte_formula": "Anclas ITCG: >75 → 100 · 25–75 → 50 · ≤25 → 10 (puntaje interpolado entre anclas: 100.0; pesa 7,5% del ITCG)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCG, este indicador equivale a una tensión de 6,9/10.",
-          "aporte_input_txt": "3 de 3 hitos normativos cumplidos (último: Decreto 408/2026, 2026-06-01) · el régimen entra en vigencia el 2026-11-01, hasta entonces la adopción no puede comenzar por razón legal · 0 fondos registrados en CNV · cobertura 0,7% (3 menciones del FAL en el BO desde mar-2026; 420 = plena)"
+          "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
+          "aporte_input_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV · 3 menciones del FAL en el BO desde mar-2026"
         },
         "litigiosidad_laboral": {
           "valor": 2.8,
@@ -2948,7 +2957,7 @@
           "valor": 24.2,
           "unidad": "% de inversión aprobada sobre el pipeline",
           "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-          "fecha_dato": "2026-07-25",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "proyectos_aprobados": 18,
           "inversion_aprobada_musd": 35714,
@@ -2971,7 +2980,7 @@
           "valor": 28.7,
           "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
           "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-          "fecha_dato": "2026-07-25",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "km_adjudicados": 2614,
           "km_totales": 9091,
@@ -2998,7 +3007,7 @@
           "valor": 100.0,
           "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
           "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-          "fecha_dato": "2026-07-25",
+          "fecha_dato": "2026-07-26",
           "desactualizado": false,
           "ejercicio": 2026,
           "componentes": {
@@ -3067,7 +3076,7 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 72.5,
+        "valor": 77.7,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -3141,13 +3150,13 @@
           "reforma_laboral": {
             "nombre": "Reforma laboral",
             "peso": 0.15,
-            "puntaje": 45.1,
+            "puntaje": 79.7,
             "indicadores": {
               "fal_modernizacion_laboral": {
                 "peso": 0.5,
-                "puntaje_banda": 30.8,
-                "puntaje_aplicado": 30.8,
-                "valor": 40.2,
+                "puntaje_banda": 100.0,
+                "puntaje_aplicado": 100.0,
+                "valor": 100.0,
                 "peso_efectivo": 0.075
               },
               "litigiosidad_laboral": {
@@ -3217,62 +3226,62 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 70.3,
-          "p95": 74.4,
+          "p05": 76.0,
+          "p95": 79.3,
           "tension_rango": [
-            2.6,
-            3.0
+            2.1,
+            2.4
           ],
           "dominante": {
             "indicador": "cepo_mulc",
-            "indice_sin": 68.8
+            "indice_sin": 74.0
           },
           "n_draws": 1000,
           "hist": [
             1,
+            0,
+            2,
             1,
-            0,
-            0,
-            3,
-            10,
-            11,
-            12,
-            20,
-            26,
-            27,
-            30,
-            55,
-            45,
-            67,
-            70,
-            60,
-            84,
-            83,
-            71,
-            61,
-            58,
-            61,
-            43,
-            33,
-            17,
-            12,
-            11,
-            11,
-            6,
             5,
+            3,
+            5,
+            12,
+            13,
+            19,
+            31,
+            31,
+            33,
+            52,
+            62,
+            63,
+            54,
+            62,
+            58,
+            79,
+            69,
+            68,
+            53,
+            55,
+            38,
+            38,
+            26,
+            22,
+            16,
+            9,
+            8,
             4,
-            0,
-            1,
-            0,
+            3,
+            2,
+            2,
             1
           ],
-          "hist_min": 68.36,
-          "hist_max": 76.69,
+          "hist_min": 74.3,
+          "hist_max": 80.79,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
-          "r_niveles": 0.745,
-          "r_diferencias": 0.091,
+          "r_niveles": 0.747,
+          "r_diferencias": 0.116,
           "n": 32,
           "pares": [
             [
@@ -3412,28 +3421,28 @@
             ],
             [
               "2026-03",
-              70.9,
+              73.9,
               2039.2
             ],
             [
               "2026-04",
-              68.9,
+              71.9,
               1916.1
             ],
             [
               "2026-05",
-              70.3,
+              76.3,
               2131.0
             ],
             [
               "2026-06",
-              72.6,
+              83.0,
               2087.8
             ],
             [
               "2026-07",
               74.3,
-              2088.9
+              2087.7
             ]
           ],
           "plot": "minmax",
@@ -3442,20 +3451,20 @@
           "serie_label": "ITCG (reconstrucción mensual)",
           "externa_label": "Merval en dólares",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,745 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,669) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
+          "conclusion": "Correlación 0,747 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (-0,695) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
         },
         "redundancia": {
           "n_indicadores": 14,
-          "n_pares": 73,
-          "r_abs_medio": 0.466,
-          "share_altos": 0.274,
-          "share_bajos": 0.342,
+          "n_pares": 76,
+          "r_abs_medio": 0.472,
+          "share_altos": 0.276,
+          "share_bajos": 0.316,
           "umbral": 0.7,
-          "pares_cruzados": 18,
+          "pares_cruzados": 19,
           "diferencias": {
-            "n_pares": 73,
-            "r_abs_medio": 0.133,
-            "share_altos": 0.014
+            "n_pares": 76,
+            "r_abs_medio": 0.128,
+            "share_altos": 0.013
           },
           "top": [
             {
@@ -3502,15 +3511,15 @@
             }
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
-          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 14 componentes que tienen serie histórica, 73 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,466: ni componentes independientes ni una sola señal repetida. Un 27% de los pares se mueve muy junto (por encima de 0,7) y un 34% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,133 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 20 pares que superan el umbral en niveles, 18 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
+          "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 14 componentes que tienen serie histórica, 76 pares en total, y se mide cuánto se mueven juntos.",
+          "conclusion": "La correlación media entre pares es 0,472: ni componentes independientes ni una sola señal repetida. Un 28% de los pares se mueve muy junto (por encima de 0,7) y un 32% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,128 y sólo un 1% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 21 pares que superan el umbral en niveles, 19 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "vintages": {
-          "dias_promedio": 55,
+          "dias_promedio": 54,
           "meses_promedio": 1.8,
           "fecha_mas_vieja": "31 de diciembre de 2025",
-          "fecha_mas_nueva": "25 de julio de 2026",
-          "span_dias": 206,
+          "fecha_mas_nueva": "26 de julio de 2026",
+          "span_dias": 207,
           "rezagados": [
             {
               "indicador": "protocolo_antipiquetes",
@@ -3530,7 +3539,7 @@
           ],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 25 de julio de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 206 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 1,8 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
+          "conclusion": "El dato más reciente es del 26 de julio de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 207 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 1,8 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         }
       },
       "score_explicacion": "ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."
@@ -3615,24 +3624,24 @@
         "indice": "ITCG",
         "propio": "merval",
         "riesgo": {
-          "r": -0.87,
+          "r": -0.86,
           "n": 31,
-          "rd": -0.18
+          "rd": -0.15
         },
         "merval": {
-          "r": 0.74,
+          "r": 0.75,
           "n": 32,
-          "rd": 0.09
+          "rd": 0.12
         },
         "icc": {
-          "r": 0.4,
+          "r": 0.37,
           "n": 31,
-          "rd": -0.35
+          "rd": -0.23
         },
         "epu": {
-          "r": 0.44,
+          "r": 0.42,
           "n": 30,
-          "rd": 0.02
+          "rd": 0.04
         }
       },
       {
@@ -3704,6 +3713,6 @@
     ],
     "titulo": "¿Cada índice mide lo suyo?",
     "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,84 con el riesgo país, ITCG +0,74 con el Merval en dólares, ITVC +0,52 con la confianza del consumidor, ITCP -0,41 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,87 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,1 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,28, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM -0,84 con el riesgo país, ITCG +0,75 con el Merval en dólares, ITVC +0,52 con la confianza del consumidor, ITCP -0,41 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. Las celdas cruzadas son del mismo orden en más de un caso (la gestión también correlaciona -0,86 con el riesgo país): en una muestra de ~30 meses en la que toda la economía y la política se movieron juntas, la matriz separa parcialmente — se declara como límite, no se esconde. La celda que más preguntas genera — ITCP +0,1 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,28, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
   }
 }

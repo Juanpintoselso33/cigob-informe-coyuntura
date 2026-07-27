@@ -115,25 +115,28 @@ BANDAS_ITCG = {
         # son cuartos de avance en números redondos.
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
-    "fal_modernizacion_laboral": [      # Índice de Avance del FAL 0-100 (compuesto, ADR-0098)
-        # RECALIBRADO 2026-07-20 porque cambió lo que mide la escala, no para
-        # mover el puntaje: el índice pasó de medir sólo adopción a componerse
-        # de construcción normativa (40) + vigencia (20) + adopción (40). Las
-        # anclas anteriores (40-60 = "adopción masiva") describían la escala
-        # vieja y sobre la nueva habrían dado 75 a un instrumento que nadie
-        # usa todavía.
+    "fal_modernizacion_laboral": [      # Actos fundamentales del FAL (ADR-0142)
+        # RECALIBRADO 2026-07-26 porque cambió lo que mide la escala. El
+        # indicador dejó de ser el compuesto de ADR-0098 (construcción 40 +
+        # vigencia 20 + adopción 40, escala continua 0-100) y pasa a medir los
+        # DOS ACTOS FUNDAMENTALES que ponen en pie al Fondo, 50 cada uno. La
+        # escala nueva sólo puede tomar TRES valores y las bandas describen
+        # exactamente esos tres, con los cortes en los huecos:
+        #     0  ningún acto: el Fondo no existe             ->  10
+        #    50  sancionado pero sin reglamentar             ->  50
+        #   100  ley + reglamentación: bases completas       -> 100
         #
-        # Los cortes se fijan sobre los estados que la escala nueva puede
-        # tomar, no sobre el rango observado:
-        #   40  instrumento construido, régimen sin vigencia   ->  30
-        #   60  régimen vigente, adopción todavía nula          ->  65
-        #   80  vigente y con adopción real                     ->  90
-        #  100  adopción plena                                  -> 100
-        # Es exigente a propósito: sancionar y reglamentar la ley es progreso
-        # real sobre la promesa, pero mientras nada rija el efecto es cero. El
-        # 1-nov-2026, cuando el régimen entre en vigencia, el indicador sube
-        # solo de 30 a 65 sin que nadie toque nada.
-        (85.0, INF, 100), (70.0, 85.0, 85), (50.0, 70.0, 65), (35.0, 50.0, 40), (-INF, 35.0, 10),
+        # HONESTIDAD SOBRE EL EFECTO: con los dos actos cumplidos el puntaje
+        # pasa de 30,8 a 100 y el ITCG sube 5,2 puntos. El cambio MEJORA el
+        # número y la justificación es editorial (la revisión externa sostiene
+        # que sancionar y reglamentar agota la promesa hasta la vigencia), no
+        # empírica. ADR-0098 sostenía lo contrario. Queda escrito para que se
+        # pueda discutir.
+        #
+        # Y EL INDICADOR YA NO DISCRIMINA: los dos actos ocurrieron y no se
+        # deshacen, así que queda fijo en 100 para siempre. Va contra ADR-0042
+        # y se publica igual por decisión del editor. Ver ADR-0142.
+        (75.0, INF, 100), (25.0, 75.0, 50), (-INF, 25.0, 10),
     ],
     "privatizaciones": [                # % de avance por etapas (promedio etapa/4 de la cartera)
         # Etapas 0-4 del doc: 0 sin definir · 1 preparatoria · 2 pliegos ·

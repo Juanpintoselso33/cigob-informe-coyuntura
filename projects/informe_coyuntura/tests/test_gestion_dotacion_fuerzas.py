@@ -97,9 +97,16 @@ def test_el_fal_y_la_litigiosidad_pesan_igual():
 
 
 def test_la_dimension_laboral_sigue_siendo_la_mas_floja():
-    """Guardia heredada de ADR-0098: el cambio de pesos mejora el puntaje, pero
-    no al punto de que la reforma laboral deje de ser el punto débil del ITCG.
-    Si esto falla, hay que mirar si mejoró la realidad o si se aflojó la vara."""
+    """Guardia heredada de ADR-0098. DISPARÓ el 2026-07-26 y funcionó: ADR-0142
+    llevó al FAL de 30,8 a 100 puntos y la dimensión dejó de ser la más floja
+    del ITCG (45,1 → 79,7). La respuesta a "¿mejoró la realidad o se aflojó la
+    vara?" es la segunda, y fue una decisión editorial declarada — no cambió
+    ningún hecho del mundo entre el 25 y el 26 de julio.
+
+    Lo que la guardia protege ahora es lo único que sigue en pie: la
+    litigiosidad laboral, que es el RESULTADO de la reforma y no su
+    instrumento, sigue por debajo de 60. Si algún día el FAL vuelve a ser un
+    indicador vivo, esta guardia debería volver a mirar la dimensión."""
     import json
     cache = Path(__file__).parent.parent / "output" / "cache" / "gestion.json"
     if not cache.exists():
@@ -109,6 +116,12 @@ def test_la_dimension_laboral_sigue_siendo_la_mas_floja():
                if isinstance(v, dict)}
     r = itcg.calcular_itcg(valores)
     puntajes = {k: d["puntaje"] for k, d in r["dimensiones"].items()}
-    laboral = puntajes["reforma_laboral"]
-    assert laboral < 50.0, f"reforma_laboral subió a {laboral}"
-    assert laboral == min(puntajes.values()), puntajes
+    import parametrica
+    litigiosidad = parametrica.puntaje_de(
+        valores["litigiosidad_laboral"], "litigiosidad_laboral", itcg.BANDAS_ITCG)
+    assert litigiosidad < 60.0, (
+        f"la litigiosidad subió a {litigiosidad}: la industria del juicio se "
+        f"habría enfriado de verdad, y eso hay que mirarlo, no dar por bueno")
+    # el FAL ya no discrimina (ADR-0142): quedó fijo en su techo
+    assert puntajes["reforma_laboral"] > litigiosidad, (
+        "la dimensión debería estar sostenida por el FAL en 100")

@@ -2454,88 +2454,41 @@ def fetch_privatizaciones_serie() -> list:
 
 
 def fetch_fal_serie() -> list:
-    """Serie mensual del índice FAL reconstruida desde el BOLETÍN OFICIAL
-    (ADR-0068): el régimen medible nace con la Ley 27.802 (publicada
-    mar-2026; Dto. 408/2026 reglamentó el Fondo de Asistencia Laboral) —
-    antes, el instrumento de la Ley Bases no era separable del ruido del BO
-    (el régimen de la construcción se llama "fondo de cese laboral" desde
-    1980) y la adopción financiera CNV fue siempre 0 (dato duro), así que la
-    serie previa a mar-2026 vale 0,0. Desde mar-2026: menciones acumuladas de
-    "fondo de asistencia laboral" hasta el fin de cada mes (una consulta BO
-    por mes) → cobertura (420 = plena, calibración del colector).
+    """Serie mensual del avance del FAL por sus DOS ACTOS FUNDAMENTALES.
 
-    Desde ADR-0098 la serie se reconstruye en la MISMA escala de tres etapas
-    que la card —construcción normativa 40, vigencia 20, adopción 40—, así que
-    los hitos normativos aparecen en el mes en que se publicó cada norma y el
-    salto de la entrada en vigencia queda fechado en nov-2026. Antes la serie
-    medía sólo adopción y por eso valía ~0 en todo su recorrido: mezclarla con
-    la card nueva habría dejado dos escalas distintas en el mismo gráfico.
-    Fallback al histórico acumulado si el BO no responde.
+    Desde ADR-0142 la serie se reconstruye en la MISMA escala que la card: 50
+    puntos por cada acto cumplido a fin de cada mes, leídos de `fal_hitos.json`
+    (norma publicada y fechada, verificable por número en InfoLeg).
+
+        0    hasta feb-2026    ni ley ni reglamentación
+        50   desde mar-2026    Ley 27.802 sancionada (06-mar-2026)
+        100  desde jun-2026    Decreto 408/2026 reglamenta (01-jun-2026)
+
+    Es una escalera de tres peldaños y no se mueve más: los dos actos ocurrieron
+    y no se deshacen. La limitación está documentada en ADR-0142 — se publica
+    así por decisión editorial, sabiendo que el indicador dejó de discriminar.
+
+    No requiere red: sale del registro de hitos.
     [[YYYY-MM-01, índice]]."""
-    try:
-        hitos_json = json.loads(gestion.FAL_HITOS_PATH.read_text(encoding="utf-8-sig"))
-        hitos_construccion = hitos_json.get("construccion", [])
-        fecha_vigencia = (hitos_json.get("vigencia") or {}).get("fecha", "9999-12-31")
-        out = []
-        hoy = date.today()
-        fin = hoy.replace(day=1) - timedelta(days=1)      # último mes completo
-        y, m = 2023, 12
-        while (y, m) <= (fin.year, fin.month):
-            ult_dia = calendar.monthrange(y, m)[1]
-            cierre = f"{y}-{m:02d}-{ult_dia:02d}"
+    hitos_json = json.loads(gestion.FAL_HITOS_PATH.read_text(encoding="utf-8-sig"))
+    por_norma = {h.get("norma"): h for h in hitos_json.get("construccion", [])}
+    fechas_actos = [(por_norma.get(norma) or {}).get("fecha")
+                    for norma, _ in gestion.FAL_ACTOS_FUNDAMENTALES]
+    total = len(gestion.FAL_ACTOS_FUNDAMENTALES)
 
-            # Etapa 1: hitos normativos ya cumplidos a esa fecha.
-            construccion = (100.0 * sum(1 for h in hitos_construccion
-                                        if h.get("fecha", "9999") <= cierre)
-                            / len(hitos_construccion)) if hitos_construccion else 0.0
-            # Etapa 2: vigencia del régimen.
-            vigencia = 100.0 if cierre >= fecha_vigencia else 0.0
-            # Etapa 3: adopción. Antes de la ley no había instrumento que
-            # adoptar; después, menciones acumuladas en el BO (la adopción
-            # financiera fue 0 en todo el histórico, dato duro del registro CNV).
-            if (y, m) < (2026, 3):
-                adopcion = 0.0
-            else:
-                n = gestion._bo_conteo(gestion.FAL_BO_TEXTO,
-                                       desde=gestion.FAL_BO_DESDE,
-                                       hasta=f"{ult_dia:02d}/{m:02d}/{y}")
-                cobertura = min(100.0, n * 100.0 / gestion.FAL_BO_MENCIONES_PLENO)
-                adopcion = (0.40 * cobertura) / 0.70
-
-            indice = round(gestion.FAL_PESO_CONSTRUCCION * construccion
-                           + gestion.FAL_PESO_VIGENCIA * vigencia
-                           + gestion.FAL_PESO_ADOPCION * adopcion, 1)
-            out.append([f"{y}-{m:02d}-01", indice])
-            m += 1
-            if m > 12:
-                m, y = 1, y + 1
-        if len(out) >= 12:
-            return out
-    except Exception as e:
-        print(f"  [WARN] fal serie BO (fallback histórico): {e}")
-    hist_path = Path(__file__).resolve().parents[1] / "data" / "historico" / "indicadores.json"
-    try:
-        hist = json.loads(hist_path.read_text(encoding="utf-8-sig")).get(
-            "fal_modernizacion_laboral", {})
-    except (OSError, json.JSONDecodeError):
-        hist = {}
-    live = gestion.fetch_fal_modernizacion_laboral()
-    hoy_ym = date.today().strftime("%Y-%m")
-    if live and live.get("valor") is not None:
-        hist[hoy_ym] = float(live["valor"])
     out = []
+    hoy = date.today()
+    fin = hoy.replace(day=1) - timedelta(days=1)          # último mes completo
     y, m = 2023, 12
-    while (y, m) <= (int(hoy_ym[:4]), int(hoy_ym[5:])):
-        ym = f"{y}-{m:02d}"
-        out.append([f"{ym}-01", hist[ym] if ym in hist else 0.0])
+    while (y, m) <= (fin.year, fin.month):
+        ult_dia = calendar.monthrange(y, m)[1]
+        cierre = f"{y}-{m:02d}-{ult_dia:02d}"
+        cumplidos = sum(1 for f in fechas_actos if f and f <= cierre)
+        out.append([f"{y}-{m:02d}-01", round(100.0 * cumplidos / total, 1)])
         m += 1
         if m > 12:
-            m = 1; y += 1
+            m, y = 1, y + 1
     return out
-
-
-UTDT_ICG_LISTADO = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=28756"
-UTDT_ICG_REFERER = "https://www.utdt.edu/ver_contenido.php?id_contenido=1351&id_item_menu=2970"
 
 
 def fetch_icg_serie() -> list:

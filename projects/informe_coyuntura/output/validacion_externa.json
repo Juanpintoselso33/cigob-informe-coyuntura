@@ -690,22 +690,22 @@
   },
   "redundancia_itcg": {
     "diferencias": {
-      "n_pares": 73,
-      "r_abs_medio": 0.133,
-      "share_altos": 0.014
+      "n_pares": 76,
+      "r_abs_medio": 0.128,
+      "share_altos": 0.013
     },
     "umbral": 0.7,
     "n_indicadores": 14,
-    "n_pares": 73,
-    "r_abs_medio": 0.466,
-    "share_altos": 0.274,
-    "share_bajos": 0.342,
+    "n_pares": 76,
+    "r_abs_medio": 0.472,
+    "share_altos": 0.276,
+    "share_bajos": 0.316,
     "matriz": {
       "apertura_comercial": {
         "cepo_mulc": 0.355,
         "concesiones_infraestructura": 0.207,
         "desregulacion_normativa": 0.445,
-        "fal_modernizacion_laboral": 0.086,
+        "fal_modernizacion_laboral": 0.269,
         "gasto_funcionamiento": 0.017,
         "libertad_opcion_salud": 0.295,
         "litigiosidad_laboral": 0.485,
@@ -719,7 +719,7 @@
         "apertura_comercial": 0.355,
         "concesiones_infraestructura": 0.285,
         "desregulacion_normativa": 0.947,
-        "fal_modernizacion_laboral": 0.187,
+        "fal_modernizacion_laboral": 0.323,
         "gasto_funcionamiento": 0.239,
         "libertad_opcion_salud": 0.89,
         "litigiosidad_laboral": 0.402,
@@ -733,7 +733,7 @@
         "apertura_comercial": 0.207,
         "cepo_mulc": 0.285,
         "desregulacion_normativa": 0.383,
-        "fal_modernizacion_laboral": 0.695,
+        "fal_modernizacion_laboral": 0.795,
         "gasto_funcionamiento": 0.212,
         "masa_salarial": 0.12,
         "privatizaciones": 0.481,
@@ -745,7 +745,7 @@
         "apertura_comercial": 0.445,
         "cepo_mulc": 0.947,
         "concesiones_infraestructura": 0.383,
-        "fal_modernizacion_laboral": 0.278,
+        "fal_modernizacion_laboral": 0.486,
         "gasto_funcionamiento": 0.269,
         "libertad_opcion_salud": 0.953,
         "litigiosidad_laboral": 0.392,
@@ -756,22 +756,25 @@
         "reestructuracion_organismos": 0.895
       },
       "fal_modernizacion_laboral": {
-        "apertura_comercial": 0.086,
-        "cepo_mulc": 0.187,
-        "concesiones_infraestructura": 0.695,
-        "desregulacion_normativa": 0.278,
-        "gasto_funcionamiento": 0.166,
-        "masa_salarial": 0.083,
-        "privatizaciones": 0.295,
-        "protocolo_antipiquetes": 0.152,
-        "reestructuracion_organismos": 0.292
+        "apertura_comercial": 0.269,
+        "cepo_mulc": 0.323,
+        "concesiones_infraestructura": 0.795,
+        "desregulacion_normativa": 0.486,
+        "gasto_funcionamiento": 0.121,
+        "libertad_opcion_salud": 0.209,
+        "litigiosidad_laboral": 0.149,
+        "masa_salarial": 0.161,
+        "privatizaciones": 0.532,
+        "protocolo_antipiquetes": 0.293,
+        "reduccion_estado": 0.213,
+        "reestructuracion_organismos": 0.542
       },
       "gasto_funcionamiento": {
         "apertura_comercial": 0.017,
         "cepo_mulc": 0.239,
         "concesiones_infraestructura": 0.212,
         "desregulacion_normativa": 0.269,
-        "fal_modernizacion_laboral": 0.166,
+        "fal_modernizacion_laboral": 0.121,
         "libertad_opcion_salud": 0.248,
         "litigiosidad_laboral": 0.145,
         "masa_salarial": 0.433,
@@ -784,6 +787,7 @@
         "apertura_comercial": 0.295,
         "cepo_mulc": 0.89,
         "desregulacion_normativa": 0.953,
+        "fal_modernizacion_laboral": 0.209,
         "gasto_funcionamiento": 0.248,
         "litigiosidad_laboral": 0.34,
         "masa_salarial": 0.393,
@@ -796,6 +800,7 @@
         "apertura_comercial": 0.485,
         "cepo_mulc": 0.402,
         "desregulacion_normativa": 0.392,
+        "fal_modernizacion_laboral": 0.149,
         "gasto_funcionamiento": 0.145,
         "libertad_opcion_salud": 0.34,
         "masa_salarial": 0.467,
@@ -809,7 +814,7 @@
         "cepo_mulc": 0.464,
         "concesiones_infraestructura": 0.12,
         "desregulacion_normativa": 0.458,
-        "fal_modernizacion_laboral": 0.083,
+        "fal_modernizacion_laboral": 0.161,
         "gasto_funcionamiento": 0.433,
         "libertad_opcion_salud": 0.393,
         "litigiosidad_laboral": 0.467,
@@ -823,7 +828,7 @@
         "cepo_mulc": 0.826,
         "concesiones_infraestructura": 0.481,
         "desregulacion_normativa": 0.914,
-        "fal_modernizacion_laboral": 0.295,
+        "fal_modernizacion_laboral": 0.532,
         "gasto_funcionamiento": 0.403,
         "libertad_opcion_salud": 0.794,
         "litigiosidad_laboral": 0.326,
@@ -837,7 +842,7 @@
         "cepo_mulc": 0.864,
         "concesiones_infraestructura": 0.218,
         "desregulacion_normativa": 0.913,
-        "fal_modernizacion_laboral": 0.152,
+        "fal_modernizacion_laboral": 0.293,
         "gasto_funcionamiento": 0.169,
         "libertad_opcion_salud": 0.994,
         "litigiosidad_laboral": 0.283,
@@ -851,6 +856,7 @@
         "cepo_mulc": 0.752,
         "concesiones_infraestructura": 0.119,
         "desregulacion_normativa": 0.73,
+        "fal_modernizacion_laboral": 0.213,
         "gasto_funcionamiento": 0.147,
         "libertad_opcion_salud": 0.708,
         "litigiosidad_laboral": 0.794,
@@ -864,7 +870,7 @@
         "cepo_mulc": 0.805,
         "concesiones_infraestructura": 0.487,
         "desregulacion_normativa": 0.895,
-        "fal_modernizacion_laboral": 0.292,
+        "fal_modernizacion_laboral": 0.542,
         "gasto_funcionamiento": 0.426,
         "libertad_opcion_salud": 0.758,
         "litigiosidad_laboral": 0.32,
@@ -986,6 +992,16 @@
         "por_diseno": null
       },
       {
+        "a": "concesiones_infraestructura",
+        "b": "fal_modernizacion_laboral",
+        "r": 0.795,
+        "n": 31,
+        "dimension_a": "privatizaciones_inversion",
+        "dimension_b": "reforma_laboral",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "protocolo_antipiquetes",
         "b": "reduccion_estado",
         "r": 0.795,
@@ -1076,8 +1092,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 18,
-    "pares_no_explicados": 18
+    "pares_cruzados": 19,
+    "pares_no_explicados": 19
   },
   "redundancia_itcp": {
     "diferencias": {
@@ -1873,10 +1889,10 @@
     "2025-12": 70.1,
     "2026-01": 69.7,
     "2026-02": 70.1,
-    "2026-03": 70.9,
-    "2026-04": 68.9,
-    "2026-05": 70.3,
-    "2026-06": 72.6,
+    "2026-03": 73.9,
+    "2026-04": 71.9,
+    "2026-05": 76.3,
+    "2026-06": 83.0,
     "2026-07": 74.3
   },
   "merval_usd_mensual": {
@@ -1912,31 +1928,31 @@
     "2026-04": 1916.1,
     "2026-05": 2131.0,
     "2026-06": 2087.8,
-    "2026-07": 2088.9
+    "2026-07": 2087.7
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
-      "r": 0.745,
+      "r": 0.747,
       "n": 32
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.091,
+      "r": 0.116,
       "n": 31
     },
     "niveles (ITCG vs riesgo país)": {
-      "r": -0.874,
+      "r": -0.87,
       "n": 32
     },
     "primeras diferencias (ITCG vs riesgo)": {
-      "r": -0.177,
+      "r": -0.14,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {
-      "r": -0.669,
+      "r": -0.695,
       "n": 31
     },
     "primeras diferencias (ITCG vs ICG)": {
-      "r": 0.016,
+      "r": 0.031,
       "n": 30
     }
   },
