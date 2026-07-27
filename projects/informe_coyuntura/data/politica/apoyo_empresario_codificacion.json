@@ -1,8 +1,12 @@
 {
  "_meta": {
-  "descripcion": "Codificación de postura de AEA hacia el Ejecutivo nacional. PRIMERA PASADA (ADR-0145). Reglas en apoyo_empresario_reglas.json, escritas antes de codificar. NO alimenta ningún índice: la métrica FALLÓ y el ADR explica por qué.",
+  "descripcion": "Codificación de postura empresaria hacia el Ejecutivo nacional, AEA + UIA. PRIMERA PASADA (ADR-0148). Reglas en apoyo_empresario_reglas.json. Sumar UIA resolvió el problema de volumen que hizo fracasar la versión sólo-AEA (ADR-0145).",
   "fecha": "2026-07-26",
   "protocolo": "ADR-0131",
+  "camaras": {
+   "AEA": "aeanet.net/prensa.html — 46 comunicados 2020-2026",
+   "UIA": "uia.org.ar/prensa/{id}/ — IDs secuenciales servidos sin JS; 57 comunicados desde dic-2023"
+  },
   "codificadores": {
    "pasada_1": {
     "quien": "asistente",
@@ -17,33 +21,39 @@
   "concordancia": {
    "kappa": null,
    "umbral_minimo": 0.7,
-   "estado": "no se pidió: la métrica falló antes"
+   "estado": "PENDIENTE Y AHORA OBLIGATORIA: la métrica funciona, así que la codificación pasa a incidir"
   }
  },
- "resultado_pasada_1": {
-  "total": 46,
+ "resultado": {
+  "total": 103,
+  "por_camara": {
+   "AEA": 46,
+   "UIA": 57
+  },
   "postura": {
-   "neutro": 28,
-   "critica": 12,
-   "apoyo": 5,
+   "neutro": 67,
+   "critica": 28,
+   "apoyo": 7,
    "dudoso": 1
   },
   "destinatario": {
-   "externo_o_propio": 19,
-   "ejecutivo_nacional": 18,
-   "congreso": 3,
-   "provincias_municipios": 4,
-   "judicial": 2
+   "externo_o_propio": 51,
+   "ejecutivo_nacional": 35,
+   "congreso": 6,
+   "provincias_municipios": 8,
+   "judicial": 3
   },
-  "computables": 13,
-  "computables_bajo_este_gobierno": 2
+  "computables_desde_dic2023": 16,
+  "n_por_ventana": {
+   "min": 2,
+   "max": 8,
+   "promedio": 5.0
+  },
+  "meses_vacios": 0,
+  "meses_n1": 0
  },
- "por_que_no_funciona": "20 de los 32 meses de la serie dan exactamente +1,00 y en TODOS n=1: el 'saldo de postura' es un solo comunicado dentro de la ventana, o sea el eco de lo último que dijeron. Los últimos cuatro meses están vacíos. AEA se pronunció sobre el Ejecutivo nacional 13 veces en seis años y sólo 2 bajo este gobierno: el fenómeno es demasiado infrecuente para una serie mensual.",
- "reglas_que_mordieron": [
-  "'AEA Felicita al Presidente electo Javier Milei' quedó NEUTRO por la regla escrita de antemano (una felicitación electoral no comenta una medida). Sin esa regla habría entrado como apoyo.",
-  "'Un paso muy importante' (Ley Bases aprobada en Diputados) quedó con destinatario CONGRESO por la regla de 'dónde se resuelve el asunto', no Ejecutivo. Es el apoyo más visible del período y no computa.",
-  "El consenso fiscal de dic-2021 quedó como PROVINCIAS por gravar Ingresos Brutos: es el mismo error que hundió a ADEBA en ADR-0136, evitado acá porque el eje destinatario es obligatorio."
- ],
+ "hallazgo": "LA INDUSTRIA CRITICA Y EL GRAN EMPRESARIADO APOYA. UIA se pronuncia contra tarifas, presión tributaria, competencia importada y el cierre de Fate; AEA celebra el acuerdo con el FMI y el Pacto de Mayo. Son electorados distintos y el indicador los captura. El saldo agregado es negativo casi todo el período, toca +0,33 en feb-2026 y vuelve a −0,71.",
+ "pendiente": "CAMARCO tiene 13 posts fechados en /noticias/ y no se sumó; SRA (sra.ar) es una app con JS y requiere navegador. Sumarlas subiría más el n.",
  "serie_12m": {
   "2023-12": {
    "n": 3,
@@ -70,172 +80,172 @@
    "saldo": -0.5
   },
   "2024-04": {
-   "n": 3,
+   "n": 5,
    "apoyo": 1,
-   "critica": 2,
-   "saldo": -0.33
+   "critica": 4,
+   "saldo": -0.6
   },
   "2024-05": {
-   "n": 3,
+   "n": 5,
    "apoyo": 1,
-   "critica": 2,
-   "saldo": -0.33
+   "critica": 4,
+   "saldo": -0.6
   },
   "2024-06": {
+   "n": 5,
+   "apoyo": 1,
+   "critica": 4,
+   "saldo": -0.6
+  },
+  "2024-07": {
    "n": 3,
    "apoyo": 1,
    "critica": 2,
-   "saldo": -0.33
-  },
-  "2024-07": {
-   "n": 1,
-   "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "saldo": -0.333
   },
   "2024-08": {
-   "n": 1,
+   "n": 4,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 3,
+   "saldo": -0.5
   },
   "2024-09": {
-   "n": 1,
+   "n": 4,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 3,
+   "saldo": -0.5
   },
   "2024-10": {
-   "n": 1,
+   "n": 5,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 4,
+   "saldo": -0.6
   },
   "2024-11": {
-   "n": 1,
+   "n": 5,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 4,
+   "saldo": -0.6
   },
   "2024-12": {
-   "n": 1,
+   "n": 6,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 5,
+   "saldo": -0.667
   },
   "2025-01": {
-   "n": 1,
+   "n": 7,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 6,
+   "saldo": -0.714
   },
   "2025-02": {
-   "n": 1,
+   "n": 8,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 7,
+   "saldo": -0.75
   },
   "2025-03": {
-   "n": 0,
+   "n": 7,
    "apoyo": 0,
-   "critica": 0,
-   "saldo": null
+   "critica": 7,
+   "saldo": -1.0
   },
   "2025-04": {
-   "n": 1,
+   "n": 6,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 5,
+   "saldo": -0.667
   },
   "2025-05": {
-   "n": 1,
+   "n": 6,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 5,
+   "saldo": -0.667
   },
   "2025-06": {
-   "n": 1,
+   "n": 6,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 5,
+   "saldo": -0.667
   },
   "2025-07": {
-   "n": 1,
+   "n": 6,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 5,
+   "saldo": -0.667
   },
   "2025-08": {
-   "n": 1,
+   "n": 5,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 4,
+   "saldo": -0.6
   },
   "2025-09": {
-   "n": 1,
+   "n": 5,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 4,
+   "saldo": -0.6
   },
   "2025-10": {
-   "n": 1,
+   "n": 4,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 3,
+   "saldo": -0.5
   },
   "2025-11": {
-   "n": 1,
+   "n": 4,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 3,
+   "saldo": -0.5
   },
   "2025-12": {
-   "n": 1,
+   "n": 3,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 2,
+   "saldo": -0.333
   },
   "2026-01": {
-   "n": 1,
+   "n": 2,
    "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "critica": 1,
+   "saldo": 0.0
   },
   "2026-02": {
-   "n": 1,
-   "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "n": 3,
+   "apoyo": 2,
+   "critica": 1,
+   "saldo": 0.333
   },
   "2026-03": {
-   "n": 1,
-   "apoyo": 1,
-   "critica": 0,
-   "saldo": 1.0
+   "n": 6,
+   "apoyo": 2,
+   "critica": 4,
+   "saldo": -0.333
   },
   "2026-04": {
-   "n": 0,
-   "apoyo": 0,
-   "critica": 0,
-   "saldo": null
+   "n": 7,
+   "apoyo": 1,
+   "critica": 6,
+   "saldo": -0.714
   },
   "2026-05": {
-   "n": 0,
-   "apoyo": 0,
-   "critica": 0,
-   "saldo": null
+   "n": 7,
+   "apoyo": 1,
+   "critica": 6,
+   "saldo": -0.714
   },
   "2026-06": {
-   "n": 0,
-   "apoyo": 0,
-   "critica": 0,
-   "saldo": null
+   "n": 7,
+   "apoyo": 1,
+   "critica": 6,
+   "saldo": -0.714
   },
   "2026-07": {
-   "n": 0,
-   "apoyo": 0,
-   "critica": 0,
-   "saldo": null
+   "n": 7,
+   "apoyo": 1,
+   "critica": 6,
+   "saldo": -0.714
   }
  },
  "casos": [
@@ -246,7 +256,8 @@
    "pdf": "https://secureservercdn.net/72.167.241.134/t5o.c73.myftpupload.com/wp-content/uploads/2020/06/responsabilidad.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "llamado a la unidad ante la pandemia; no comenta una medida"
+   "motivo": "llamado a la unidad ante la pandemia; no comenta una medida",
+   "camara": "AEA"
   },
   {
    "fecha": "2020-06-09",
@@ -255,7 +266,8 @@
    "pdf": "https://secureservercdn.net/72.167.241.134/t5o.c73.myftpupload.com/wp-content/uploads/2020/06/vicentin.pdf",
    "postura": "critica",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "rechaza la intervención de Vicentin, decidida por decreto del PEN"
+   "motivo": "rechaza la intervención de Vicentin, decidida por decreto del PEN",
+   "camara": "AEA"
   },
   {
    "fecha": "2020-07-21",
@@ -264,7 +276,8 @@
    "pdf": "https://www.aeanet.net/prensa/Dialogo_CGT_AEA_prensa.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "encuentro con la CGT"
+   "motivo": "encuentro con la CGT",
+   "camara": "AEA"
   },
   {
    "fecha": "2020-08-04",
@@ -273,7 +286,8 @@
    "pdf": "https://www.aeanet.net/assets/images/Un_paso_importante.pdf",
    "postura": "apoyo",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "'felicita al gobierno' por cerrar la negociación con acreedores"
+   "motivo": "'felicita al gobierno' por cerrar la negociación con acreedores",
+   "camara": "AEA"
   },
   {
    "fecha": "2020-09-05",
@@ -282,7 +296,8 @@
    "pdf": "https://www.aeanet.net/assets/images/Instituciones_para_el_desarrollo.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "documento doctrinario sobre instituciones y desarrollo"
+   "motivo": "documento doctrinario sobre instituciones y desarrollo",
+   "camara": "AEA"
   },
   {
    "fecha": "2020-09-30",
@@ -291,7 +306,8 @@
    "pdf": "https://www.aeanet.net/assets/images/Comunicado_de_AEA_30_9.pdf",
    "postura": "neutro",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "reunión con el presidente del BCRA; el hecho es el encuentro"
+   "motivo": "reunión con el presidente del BCRA; el hecho es el encuentro",
+   "camara": "AEA"
   },
   {
    "fecha": "2020-11-19",
@@ -300,7 +316,8 @@
    "pdf": "https://www.aeanet.net/assets/images/Comunicado_AEA_19_11.pdf",
    "postura": "critica",
    "destinatario": "congreso",
-   "motivo": "desacuerdo con el proyecto de Aporte Solidario, con media sanción"
+   "motivo": "desacuerdo con el proyecto de Aporte Solidario, con media sanción",
+   "camara": "AEA"
   },
   {
    "fecha": "2021-03-07",
@@ -309,7 +326,8 @@
    "pdf": null,
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "entrevista del presidente de AEA sobre consensos"
+   "motivo": "entrevista del presidente de AEA sobre consensos",
+   "camara": "AEA"
   },
   {
    "fecha": "2021-03-07",
@@ -318,7 +336,8 @@
    "pdf": null,
    "postura": "critica",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "'tras el embate oficial': responde al discurso presidencial contra la Justicia"
+   "motivo": "'tras el embate oficial': responde al discurso presidencial contra la Justicia",
+   "camara": "AEA"
   },
   {
    "fecha": "2021-03-09",
@@ -327,7 +346,8 @@
    "pdf": null,
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "documento doctrinario sobre el rol del sector privado"
+   "motivo": "documento doctrinario sobre el rol del sector privado",
+   "camara": "AEA"
   },
   {
    "fecha": "2021-05-18",
@@ -336,7 +356,8 @@
    "pdf": "https://www.aeanet.net/prensa/Exportar%20es%20vital%20para%20crecer.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "documento doctrinario sobre exportaciones"
+   "motivo": "documento doctrinario sobre exportaciones",
+   "camara": "AEA"
   },
   {
    "fecha": "2021-05-19",
@@ -345,7 +366,8 @@
    "pdf": "https://www.aeanet.net/prensa/Proyecto%20de%20modificaci%C3%B3n%20del%20Ministerio%20P%C3%BAblico.pdf",
    "postura": "critica",
    "destinatario": "congreso",
-   "motivo": "proyecto de reforma del Ministerio Público en trámite legislativo"
+   "motivo": "proyecto de reforma del Ministerio Público en trámite legislativo",
+   "camara": "AEA"
   },
   {
    "fecha": "2021-10-20",
@@ -354,7 +376,8 @@
    "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_20_10_2021.pdf",
    "postura": "critica",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "resolución de la Secretaría de Comercio sobre precios máximos"
+   "motivo": "resolución de la Secretaría de Comercio sobre precios máximos",
+   "camara": "AEA"
   },
   {
    "fecha": "2021-12-21",
@@ -363,7 +386,8 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_Nota_de_Pr nsa_21_Diciembre.pdf.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "asamblea anual de la entidad"
+   "motivo": "asamblea anual de la entidad",
+   "camara": "AEA"
   },
   {
    "fecha": "2021-12-23",
@@ -372,7 +396,8 @@
    "pdf": null,
    "postura": "critica",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "alerta por la intención del Gobierno de subir la presión fiscal"
+   "motivo": "alerta por la intención del Gobierno de subir la presión fiscal",
+   "camara": "AEA"
   },
   {
    "fecha": "2021-12-23",
@@ -381,7 +406,8 @@
    "pdf": null,
    "postura": "critica",
    "destinatario": "provincias_municipios",
-   "motivo": "consenso fiscal: suba de Ingresos Brutos, tributo provincial"
+   "motivo": "consenso fiscal: suba de Ingresos Brutos, tributo provincial",
+   "camara": "AEA"
   },
   {
    "fecha": "2022-01-28",
@@ -390,7 +416,8 @@
    "pdf": "https://www.aeanet.net/prensa/28_01.pdf",
    "postura": "apoyo",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "satisfacción por el acuerdo con el FMI firmado por el Gobierno"
+   "motivo": "satisfacción por el acuerdo con el FMI firmado por el Gobierno",
+   "camara": "AEA"
   },
   {
    "fecha": "2022-01-31",
@@ -399,7 +426,8 @@
    "pdf": "https://www.aeanet.net/prensa/La_Corte_Suprema_Pilar%20de%20la%20Rep%C3%BAblica.pdf",
    "postura": "neutro",
    "destinatario": "judicial",
-   "motivo": "defensa institucional de la Corte Suprema"
+   "motivo": "defensa institucional de la Corte Suprema",
+   "camara": "AEA"
   },
   {
    "fecha": "2022-04-20",
@@ -408,7 +436,8 @@
    "pdf": "https://www.aeanet.net/prensa/prensa_20_4.pdf",
    "postura": "critica",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "responde al aumento de la presión tributaria"
+   "motivo": "responde al aumento de la presión tributaria",
+   "camara": "AEA"
   },
   {
    "fecha": "2022-04-20",
@@ -417,7 +446,8 @@
    "pdf": null,
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "entrevista radial sobre el estancamiento de la economía"
+   "motivo": "entrevista radial sobre el estancamiento de la economía",
+   "camara": "AEA"
   },
   {
    "fecha": "2022-06-07",
@@ -426,7 +456,8 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_Aniversario_2022.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "aniversario de la entidad"
+   "motivo": "aniversario de la entidad",
+   "camara": "AEA"
   },
   {
    "fecha": "2022-09-02",
@@ -435,7 +466,8 @@
    "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_Repudio.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "repudio al atentado contra la Vicepresidenta"
+   "motivo": "repudio al atentado contra la Vicepresidenta",
+   "camara": "AEA"
   },
   {
    "fecha": "2022-12-23",
@@ -444,7 +476,8 @@
    "pdf": "https://www.aeanet.net/prensa/La_Constitución_debe_respetarse_23_12_22.pdf",
    "postura": "critica",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "el PEN pretende no cumplir un fallo de la Corte Suprema"
+   "motivo": "el PEN pretende no cumplir un fallo de la Corte Suprema",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-01-19",
@@ -453,7 +486,8 @@
    "pdf": "https://www.aeanet.net/prensa/La_Corte_Suprema_Pilar_19_01_23.pdf",
    "postura": "neutro",
    "destinatario": "judicial",
-   "motivo": "defensa institucional del Estado de Derecho y la Corte"
+   "motivo": "defensa institucional del Estado de Derecho y la Corte",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-03-08",
@@ -462,7 +496,8 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_Nota_de_Prensa_8_Marzo_2023.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "asamblea e incorporación de socios"
+   "motivo": "asamblea e incorporación de socios",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-04-01",
@@ -471,7 +506,8 @@
    "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_Señales_Negativas _1_04_23.pdf",
    "postura": "critica",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "'Señales Negativas' sobre el trato al sector privado"
+   "motivo": "'Señales Negativas' sobre el trato al sector privado",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-05-11",
@@ -480,7 +516,8 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_se_reunió_con_Horacio_Rodríguez_Larreta_11_de_Mayo_2023.pdf",
    "postura": "neutro",
    "destinatario": "provincias_municipios",
-   "motivo": "reunión con el Jefe de Gobierno porteño"
+   "motivo": "reunión con el Jefe de Gobierno porteño",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-06-06",
@@ -489,7 +526,8 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_se_reunió_con_Esteban_Bullrich _6_de_Junio_2023.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "reunión con un ex senador"
+   "motivo": "reunión con un ex senador",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-07-15",
@@ -498,7 +536,8 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_se_reunió_con_Patricia_Bullrich_15_de_Junio_2023.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "reunión con una precandidata presidencial"
+   "motivo": "reunión con una precandidata presidencial",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-07-22",
@@ -507,7 +546,8 @@
    "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_Otra_Señal_Negativa_22_07_23.pdf",
    "postura": "critica",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "Resolución 5391/23 de AFIP, organismo del PEN"
+   "motivo": "Resolución 5391/23 de AFIP, organismo del PEN",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-07-25",
@@ -516,7 +556,8 @@
    "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_Más_impuestos_no_es_el_camino_25_07_23.pdf",
    "postura": "critica",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "'el Poder Ejecutivo ha vuelto a incrementar la presión tributaria'"
+   "motivo": "'el Poder Ejecutivo ha vuelto a incrementar la presión tributaria'",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-09-09",
@@ -525,7 +566,8 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_El sector_privado_es_clave_para_el_desarrollo_9_de_Septiembre_2023.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "documento doctrinario sobre el sector privado"
+   "motivo": "documento doctrinario sobre el sector privado",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-11-19",
@@ -534,7 +576,8 @@
    "pdf": "https://www.aeanet.net/prensa/Felicitaciones_al_Presidente_electo_20_11_23.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "felicitación por el resultado electoral; regla explícita: no comenta una medida"
+   "motivo": "felicitación por el resultado electoral; regla explícita: no comenta una medida",
+   "camara": "AEA"
   },
   {
    "fecha": "2023-12-21",
@@ -543,7 +586,8 @@
    "pdf": "https://www.aeanet.net/prensa/Una_oportunidad_histórica_21_Diciembre_2023.pdf",
    "postura": "dudoso",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "respalda el rumbo del gobierno entrante pero no una medida concreta: expectativa, no postura sobre un acto"
+   "motivo": "respalda el rumbo del gobierno entrante pero no una medida concreta: expectativa, no postura sobre un acto",
+   "camara": "AEA"
   },
   {
    "fecha": "2024-02-03",
@@ -552,7 +596,8 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_Un_paso_muy_importante_3_2_2024.pdf",
    "postura": "apoyo",
    "destinatario": "congreso",
-   "motivo": "aprobación en general de la Ley Bases POR DIPUTADOS; regla: se codifica donde se resuelve el asunto"
+   "motivo": "aprobación en general de la Ley Bases POR DIPUTADOS; regla: se codifica donde se resuelve el asunto",
+   "camara": "AEA"
   },
   {
    "fecha": "2024-03-04",
@@ -561,7 +606,134 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_El_Pacto_de_Mayo_Un_paso_muy_positivo.pdf",
    "postura": "apoyo",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "el Pacto de Mayo es una iniciativa presidencial"
+   "motivo": "el Pacto de Mayo es una iniciativa presidencial",
+   "camara": "AEA"
+  },
+  {
+   "id": 4073,
+   "fecha": "2024-04-05",
+   "titulo": "Encuentro con el secretario ejecutivo de la CEPAL",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4074,
+   "fecha": "2024-04-05",
+   "titulo": "Jorge Macri en la UIA",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "provincias_municipios"
+  },
+  {
+   "id": 4075,
+   "fecha": "2024-04-05",
+   "titulo": "La UIA valora el fallo en contra de la multiplicación excesiva de intereses en las indemnizaciones",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "apoyo",
+   "destinatario": "judicial"
+  },
+  {
+   "id": 4077,
+   "fecha": "2024-04-05",
+   "titulo": "Caída del mercado interno y aumentos en los costos de producción",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4078,
+   "fecha": "2024-04-10",
+   "titulo": "Los saldos a favor de ingresos brutos ya superan los 500 millones por empresa",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "provincias_municipios"
+  },
+  {
+   "id": 4079,
+   "fecha": "2024-04-12",
+   "titulo": "Se presentó el nuevo Departamento Minero",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4080,
+   "fecha": "2024-04-12",
+   "titulo": "Encuentro con diputados de Hacemos Coalición Federal",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "congreso"
+  },
+  {
+   "id": 4081,
+   "fecha": "2024-04-17",
+   "titulo": "La UIA busca oportunidades comerciales junto a la FIESP en Brasil",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4084,
+   "fecha": "2024-04-24",
+   "titulo": "La UIA recibió a diputados de la UCR",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "congreso"
+  },
+  {
+   "id": 4085,
+   "fecha": "2024-04-26",
+   "titulo": "Pedido de implementación de políticas para sostener la actividad",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4086,
+   "fecha": "2024-05-03",
+   "titulo": "Potencial productivo en Argentina: celulosa y papel",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4089,
+   "fecha": "2024-05-24",
+   "titulo": "La UIA realizó su consejo general en Mendoza",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4093,
+   "fecha": "2024-07-02",
+   "titulo": "La UIA recibió a los principales integrantes del gabinete económico",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4097,
+   "fecha": "2024-07-11",
+   "titulo": "Transición empresarial hacia la economía baja en carbono",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
   },
   {
    "fecha": "2024-07-16",
@@ -570,7 +742,143 @@
    "pdf": "https://www.aeanet.net/prensa/Encuentro_de_AEA_con_el_Jefe_de_Gabinete_Guillermo_Francos_16_de_julio.pdf",
    "postura": "neutro",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "encuentro con el Jefe de Gabinete"
+   "motivo": "encuentro con el Jefe de Gabinete",
+   "camara": "AEA"
+  },
+  {
+   "id": 4100,
+   "fecha": "2024-07-19",
+   "titulo": "Transporte y logística: La importancia de avanzar hacia nuevos modelos de digitalización.",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4101,
+   "fecha": "2024-07-31",
+   "titulo": "Horacio Marín y autoridades de YPF visitaron la UIA",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4102,
+   "fecha": "2024-08-08",
+   "titulo": "Nueva plataforma legislativa para los industriales",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4103,
+   "fecha": "2024-08-13",
+   "titulo": "Innovación e Inteligencia Artificial: el impacto en las cadenas de valor",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4106,
+   "fecha": "2024-08-21",
+   "titulo": "Alerta sobre los aumentos de tarifas que afectan los costos logísticos y la competitividad",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4109,
+   "fecha": "2024-08-22",
+   "titulo": "Transformación digital productiva: nuevo convenio entre la Universidad Austral y la Unión Industrial Argentina",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4110,
+   "fecha": "2024-08-23",
+   "titulo": "Consumos problemáticos en la industria: charla con Gastón Pauls y La Casa de la Cultura de la Calle",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4111,
+   "fecha": "2024-08-29",
+   "titulo": "El modelo ITS italiano en Argentina: una oportunidad para formar técnicos calificados para la industria",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4112,
+   "fecha": "2024-09-03",
+   "titulo": "Día de la Industria",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4113,
+   "fecha": "2024-09-04",
+   "titulo": "Cumbre Federal de Logística",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4116,
+   "fecha": "2024-10-09",
+   "titulo": "Mesa redonda con empresarios argentinos e italianos",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4118,
+   "fecha": "2024-10-16",
+   "titulo": "Costo argentino: elementos clave para lograr competitividad",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4121,
+   "fecha": "2024-11-15",
+   "titulo": "XXXIII Reunión de Organizaciones Empresariales Iberoamericanas OIE-CEIB",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4123,
+   "fecha": "2024-11-29",
+   "titulo": "30° Conferencia Industrial",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4125,
+   "fecha": "2024-12-10",
+   "titulo": "Presión tributaria, saldos a favor y problemas de competitividad",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
   },
   {
    "fecha": "2024-12-17",
@@ -579,7 +887,53 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_recibió_al_Mtro_Caputo_17_Diciembre_2024.pdf",
    "postura": "neutro",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "almuerzo con el ministro de Economía"
+   "motivo": "almuerzo con el ministro de Economía",
+   "camara": "AEA"
+  },
+  {
+   "id": 4126,
+   "fecha": "2024-12-17",
+   "titulo": "La CAIC entregó el Premio a la Productora del Año 2024 en la sede de la UIA",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4131,
+   "fecha": "2025-01-22",
+   "titulo": "Medidas antidumping: clave para equilibrar la competitividad industrial",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4133,
+   "fecha": "2025-02-25",
+   "titulo": "Retorno de la política industrial",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4143,
+   "fecha": "2025-04-04",
+   "titulo": "La competitividad portuaria como eje para el desarrollo industrial",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4144,
+   "fecha": "2025-04-10",
+   "titulo": "Summit Industria Inteligente y Sustentable: impulsamos las agendas de innovación, tecnología y eficiencia productiva",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
   },
   {
    "fecha": "2025-04-13",
@@ -588,7 +942,17 @@
    "pdf": "https://www.aeanet.net/prensa/Satisfacción_de_AEA_por_Acuerdo_FMI_11_4_2025.pdf",
    "postura": "apoyo",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "acuerdo con el FMI; regla explícita: se valora la decisión del Gobierno de firmarlo"
+   "motivo": "acuerdo con el FMI; regla explícita: se valora la decisión del Gobierno de firmarlo",
+   "camara": "AEA"
+  },
+  {
+   "id": 4147,
+   "fecha": "2025-04-30",
+   "titulo": "Martín Rappallini asumió como presidente de la UIA",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
   },
   {
    "fecha": "2025-05-13",
@@ -597,7 +961,8 @@
    "pdf": "https://www.aeanet.net/prensa/Encuentro_AEA_Gob_Nequen_Figueroa.pdf",
    "postura": "neutro",
    "destinatario": "provincias_municipios",
-   "motivo": "encuentro con el gobernador de Neuquén"
+   "motivo": "encuentro con el gobernador de Neuquén",
+   "camara": "AEA"
   },
   {
    "fecha": "2025-07-15",
@@ -606,7 +971,26 @@
    "pdf": "https://www.aeanet.net/prensa/Encuentro_AEA_GobCatamarca_Raul Jalil.pdf",
    "postura": "neutro",
    "destinatario": "provincias_municipios",
-   "motivo": "encuentro con el gobernador de Catamarca"
+   "motivo": "encuentro con el gobernador de Catamarca",
+   "camara": "AEA"
+  },
+  {
+   "id": 4158,
+   "fecha": "2025-08-20",
+   "titulo": "Las empresas industriales pagan en promedio 7,4 tasas municipales",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "provincias_municipios"
+  },
+  {
+   "id": 4160,
+   "fecha": "2025-09-09",
+   "titulo": "En el Día de la Industria, presentamos el Decálogo del Nuevo Contrato Productivo",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
   },
   {
    "fecha": "2025-09-10",
@@ -615,7 +999,26 @@
    "pdf": null,
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "documento doctrinario sobre la empresa privada"
+   "motivo": "documento doctrinario sobre la empresa privada",
+   "camara": "AEA"
+  },
+  {
+   "id": 4163,
+   "fecha": "2025-09-30",
+   "titulo": "Participamos de las Mesas de Diálogo Interdisciplinarias para el Desarrollo de la Vía Navegable Troncal",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4166,
+   "fecha": "2025-11-03",
+   "titulo": "PREMIO INDUSTRIA INSPIRA",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
   },
   {
    "fecha": "2025-12-17",
@@ -624,7 +1027,17 @@
    "pdf": "https://www.aeanet.net/prensa/AEA_recibio_Pte_BCRA.pdf",
    "postura": "neutro",
    "destinatario": "ejecutivo_nacional",
-   "motivo": "almuerzo con el presidente del BCRA"
+   "motivo": "almuerzo con el presidente del BCRA",
+   "camara": "AEA"
+  },
+  {
+   "id": 4220,
+   "fecha": "2026-02-18",
+   "titulo": "La UIA lamenta profundamente el cierre de Fate",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
   },
   {
    "fecha": "2026-02-22",
@@ -633,7 +1046,26 @@
    "pdf": null,
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "documento doctrinario del presidente de la entidad"
+   "motivo": "documento doctrinario del presidente de la entidad",
+   "camara": "AEA"
+  },
+  {
+   "id": 4221,
+   "fecha": "2026-02-27",
+   "titulo": "Las entidades que representan a los usuarios de la Vía Navegable Troncal celebran un nuevo hito en el proceso de concesión",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4222,
+   "fecha": "2026-02-28",
+   "titulo": "Comunicado del Grupo de los Seis (G6) ante la aprobación del nuevo marco normativo laboral",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "congreso"
   },
   {
    "fecha": "2026-03-03",
@@ -642,7 +1074,62 @@
    "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_3_03_26.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "documento doctrinario sobre el papel de la empresa privada"
+   "motivo": "documento doctrinario sobre el papel de la empresa privada",
+   "camara": "AEA"
+  },
+  {
+   "id": 4229,
+   "fecha": "2026-03-03",
+   "titulo": "SIN INDUSTRIA NO HAY NACIÓN (Carlos Pellegrini, Presidente de la Nación y fundador de la UIA)",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4228,
+   "fecha": "2026-03-04",
+   "titulo": "María Laura Bermúdez es la nueva directora ejecutiva de la UIA",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4226,
+   "fecha": "2026-03-11",
+   "titulo": "Comunicado de la Unión Industrial Argentina",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4223,
+   "fecha": "2026-03-17",
+   "titulo": "Preocupación en la Junta Directiva de la UIA",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4227,
+   "fecha": "2026-03-17",
+   "titulo": "La UIA y Accenture relanzan el Centro de Industria X y presentan el primer diagnóstico nacional de IA",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4232,
+   "fecha": "2026-03-17",
+   "titulo": "La UIA presentó herramientas para le medición de la huella de carbono en PyMEs",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
   },
   {
    "fecha": "2026-03-31",
@@ -651,7 +1138,89 @@
    "pdf": "https://www.aeanet.net/prensa/Nuevo_Presidente_de_AEA_31_Marzo_2026.pdf",
    "postura": "neutro",
    "destinatario": "externo_o_propio",
-   "motivo": "cambio de autoridades de la entidad"
+   "motivo": "cambio de autoridades de la entidad",
+   "camara": "AEA"
+  },
+  {
+   "id": 4224,
+   "fecha": "2026-03-31",
+   "titulo": "La UIA llama a preservar la vigencia de la Ley de Modernización Laboral",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4225,
+   "fecha": "2026-04-01",
+   "titulo": "COMUNICADO DEL G6",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4231,
+   "fecha": "2026-04-08",
+   "titulo": "COMUNICADO DEL G6: reunión con el embajador de Estados Unidos",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4233,
+   "fecha": "2026-04-15",
+   "titulo": "La industria impulsa el bitrén para bajar costos logísticos",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4236,
+   "fecha": "2026-04-23",
+   "titulo": "El Mercosur y Confindustria avanzan en una agenda común de integración productiva",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4237,
+   "fecha": "2026-04-28",
+   "titulo": "La UIA lanza la primera edición del \"Curso de Fortalecimiento Industrial\"",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
+  },
+  {
+   "id": 4238,
+   "fecha": "2026-04-28",
+   "titulo": "La UIA expresó su preocupación sobre la provisión de gas",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional"
+  },
+  {
+   "id": 4239,
+   "fecha": "2026-05-06",
+   "titulo": "La UIA viajó a Córdoba",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "provincias_municipios"
+  },
+  {
+   "id": 4244,
+   "fecha": "2026-06-05",
+   "titulo": "Informe Especial",
+   "texto": "a e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energía Relaciones Parlamentarias Comisiones Género y Diversidad CEU Institucional Novedades Documentos Contacto Soluciones UIA Ruta X Institucional ¿Qué es la UIA? Autoridades y Organización Socios --> ESP ENG POR --> Comunicaciones Noticias Prensa Publicaciones Biblioteca Audiovisual Eventos Departamentos Ambiente y Desarrollo Sustentable Desarrollo Científico Tecnológico PYMI y Desarrollo Regional Comercio y Negociaciones Internacionales Educación, Tecnología e Innovación Productiva Transporte y Logística Política Social Política Tributaria Energia Relaciones Parlamentarias Comisiones Género y Diversidad",
+   "camara": "UIA",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio"
   }
  ]
 }

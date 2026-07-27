@@ -6,6 +6,14 @@
 - **Relacionados**: ADR-0131 (protocolo), ADR-0139 (AEA como fuente), ADR-0136
   (por qué ADEBA no servía), ADR-0088 (`sector_privado`)
 
+
+> **⚠️ CORREGIDO POR ADR-0148.** La conclusión de este ADR («no sirve») fue
+> revertida al hacer lo que él mismo señalaba como único camino: **sumar
+> cámaras**. Con UIA —57 comunicados desde dic-2023, en `uia.org.ar/prensa/{id}/`—
+> los computables pasan de 2 a 16, los meses con `n=1` de 20 a **cero** y los
+> meses vacíos de 5 a **cero**. El método de este ADR fue correcto; lo que
+> faltaba era volumen. Leer ADR-0148.
+
 ## Qué se hizo
 
 Se construyó el indicador **Apoyo Público** de la revisión externa, siguiendo el

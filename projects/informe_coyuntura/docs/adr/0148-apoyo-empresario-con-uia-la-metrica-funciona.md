@@ -1,0 +1,87 @@
+# ADR-0148 — Apoyo empresario: con UIA, la métrica funciona
+
+- **Estado**: Aceptado
+- **Fecha**: 2026-07-26
+- **Ámbito**: cinturón político (ITCP) · dimensión `sector_privado`
+- **Reabre y corrige**: ADR-0145 (la versión sólo-AEA, descartada)
+- **Relacionados**: ADR-0131 (protocolo), ADR-0139 (AEA como fuente), ADR-0088
+
+## Qué cambió
+
+ADR-0145 descartó el indicador con un diagnóstico preciso: la fuente era buena,
+las reglas aguantaron, la codificación funcionó, **falló la frecuencia del
+fenómeno** — AEA se pronunció sobre el Ejecutivo nacional 13 veces en seis años.
+Y dejó escrito el único camino: **sumar cámaras**.
+
+Se sumó una. Alcanzó.
+
+## La fuente que faltaba
+
+**UIA publica en `uia.org.ar/prensa/{id}/`, con IDs secuenciales y páginas
+servidas sin JavaScript** — fecha y título en el HTML. El listado sí es una app
+con JS, pero las notas individuales no, así que el corpus se recorre por ID.
+
+Ojo con la sección equivocada: **UIA/Noticias está dominado por informes del
+CEU** (indicadores laborales, boletines estadísticos), el mismo patrón que hundió
+a ADEBA. Los comunicados de postura están en **UIA/Prensa**, que es otra sección.
+
+Barrido del rango de IDs: **57 comunicados desde dic-2023**, contra 46 de AEA en
+seis años.
+
+## El resultado
+
+103 comunicados codificados con las **mismas reglas**, sin tocarlas
+(`apoyo_empresario_reglas.json`, escritas antes de ver los datos de AEA y
+aplicadas tal cual a UIA):
+
+| | sólo AEA (ADR-0145) | AEA + UIA |
+|---|---|---|
+| computables desde dic-2023 | 2 | **16** |
+| meses con la ventana vacía | 5 de 32 | **0** |
+| meses con `n = 1` | **20 de 32** | **0** |
+| `n` por ventana | casi siempre 1 | **2 a 8, promedio 5** |
+
+Y la serie **tiene forma**: −1,00 en dic-2023 · −0,75 en feb-2025 · **+0,33 en
+feb-2026** · −0,71 hoy. Ya no es el eco del último comunicado.
+
+## El hallazgo que le da sentido
+
+**La industria critica y el gran empresariado apoya.**
+
+UIA se pronuncia contra los aumentos de tarifas, la presión tributaria, la
+competencia importada y el cierre de Fate. AEA celebra el acuerdo con el FMI y el
+Pacto de Mayo. Son dos electorados distintos dentro del mismo sector, y el
+indicador los captura en vez de promediarlos a ciegas.
+
+Eso también explica por qué el saldo agregado es negativo casi todo el período
+pese a que el relato dominante es de apoyo empresario al Gobierno: **AEA es más
+citable, UIA es más frecuente.**
+
+## Decisión
+
+1. **El indicador queda habilitado para construirse**, y ADR-0145 queda corregido
+   en su conclusión —no en su método, que fue el correcto: se descartó por los
+   números y el camino de salida quedó escrito.
+2. **NO se incorpora todavía al ITCP.** Falta la **segunda pasada de codificación
+   con otro codificador** y kappa ≥ 0,70, y ahora es **más** necesaria que antes:
+   mientras la métrica no servía, el kappa era un trámite sobre algo descartado;
+   ahora la codificación incide sobre un número que se publicaría.
+3. La codificación de UIA de esta pasada se apoyó mucho en títulos. Varios casos
+   son discutibles —«Retorno de la política industrial» como crítica, o el
+   comunicado del G6 sobre el marco laboral como dirigido al Congreso— y son
+   justamente los que el segundo codificador tiene que mirar.
+
+## Lo que queda disponible si hace falta más volumen
+
+- **CAMARCO**: 13 posts fechados en `/noticias/`, scrapeable sin navegador.
+- **SRA** (`sra.ar/comunicacion`): app con JavaScript, requiere navegador.
+- **Los comunicados del G6** aparecen en el feed de UIA y son la señal más fuerte
+  disponible —las seis cámaras principales hablando juntas—; hoy se codifican
+  como un comunicado más de UIA y podrían merecer tratamiento propio.
+
+## Nota sobre el costo, que ADR-0136 sobreestimó
+
+ADR-0136 rechazó el indicador en parte por «trabajo permanente de dos personas».
+Con 103 comunicados en seis años y ~20 por año entre las dos cámaras, la
+codificación mensual es de unas dos piezas por mes. Sigue siendo trabajo humano
+recurrente, pero no del orden que se declaró.
