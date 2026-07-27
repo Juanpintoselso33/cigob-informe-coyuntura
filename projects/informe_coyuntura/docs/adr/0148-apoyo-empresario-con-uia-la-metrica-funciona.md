@@ -73,8 +73,16 @@ citable, UIA es más frecuente.**
 
 ## Lo que queda disponible si hace falta más volumen
 
-- **CAMARCO**: 13 posts fechados en `/noticias/`, scrapeable sin navegador.
-- **SRA** (`sra.ar/comunicacion`): app con JavaScript, requiere navegador.
+- **CAMARCO: verificada y descartada** (27-jul). No tiene sección de prensa ni
+  de comunicados —`/prensa/` y `/comunicados/` dan 404— y su `/noticias/` son
+  trece piezas de prensa institucional y servicios: «Flash CAMARCO», «90 años
+  construyendo un legado», «Vacaciones de invierno en UOCRA Cultura», cursos, y
+  el boletín «Indicador CAMARCO». Lo único institucional son circulares
+  administrativas a socios. Mismo patrón que CAC, CAME y el feed de ADEBA.
+- **SRA: sin verificar.** `sra.ar/comunicacion` es una app con JavaScript y la
+  extensión de navegador no estaba disponible al intentarlo. Es la que más
+  podría aportar —las retenciones son el tema del campo con este gobierno— así
+  que conviene retomarla.
 - **Los comunicados del G6** aparecen en el feed de UIA y son la señal más fuerte
   disponible —las seis cámaras principales hablando juntas—; hoy se codifican
   como un comunicado más de UIA y podrían merecer tratamiento propio.

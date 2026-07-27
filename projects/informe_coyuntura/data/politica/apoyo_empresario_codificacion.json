@@ -22,6 +22,23 @@
    "kappa": null,
    "umbral_minimo": 0.7,
    "estado": "PENDIENTE Y AHORA OBLIGATORIA: la métrica funciona, así que la codificación pasa a incidir"
+  },
+  "camaras_evaluadas": {
+   "sirven": [
+    "AEA — sección Prensa, comunicados de postura",
+    "UIA — sección PRENSA (no Noticias, que es del CEU)"
+   ],
+   "no_sirven": [
+    "ADEBA — el feed son 21 «Síntesis normativa», boletín regulatorio diario",
+    "CAC — agenda institucional (visitas, webinars, paritarias)",
+    "CAME — servicios al socio (escalas de convenio, rondas de negocios)",
+    "CAMARCO — prensa institucional y servicios; sin sección de comunicados"
+   ],
+   "sin_verificar": [
+    "SRA — app con JS, requiere navegador",
+    "AmCham — SSLError persistente",
+    "COPAL — no re-evaluada tras el relevamiento inicial"
+   ]
   }
  },
  "resultado": {
@@ -53,7 +70,7 @@
   "meses_n1": 0
  },
  "hallazgo": "LA INDUSTRIA CRITICA Y EL GRAN EMPRESARIADO APOYA. UIA se pronuncia contra tarifas, presión tributaria, competencia importada y el cierre de Fate; AEA celebra el acuerdo con el FMI y el Pacto de Mayo. Son electorados distintos y el indicador los captura. El saldo agregado es negativo casi todo el período, toca +0,33 en feb-2026 y vuelve a −0,71.",
- "pendiente": "CAMARCO tiene 13 posts fechados en /noticias/ y no se sumó; SRA (sra.ar) es una app con JS y requiere navegador. Sumarlas subiría más el n.",
+ "pendiente": "CAMARCO: VERIFICADA Y DESCARTADA (2026-07-27). No tiene sección de prensa ni de comunicados —/prensa/ y /comunicados/ dan 404— y su /noticias/ son 13 piezas de prensa institucional y servicios: «Flash CAMARCO», «90 años construyendo un legado», «Vacaciones de invierno en UOCRA Cultura», «Cursos NFPA», más el boletín «Indicador CAMARCO». Lo único institucional son circulares administrativas a socios en /institucional/circulares/, que no son postura pública. Mismo patrón que CAC, CAME y el feed de ADEBA. SRA: SIN VERIFICAR — sra.ar/comunicacion es una app con JavaScript y la extensión de navegador no estaba disponible al intentarlo. Es la que más podría aportar (retenciones es EL tema del campo con este gobierno), así que conviene retomarla.",
  "serie_12m": {
   "2023-12": {
    "n": 3,
