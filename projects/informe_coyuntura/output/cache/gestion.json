@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-26T21:40:12.092281",
+  "generated_at": "2026-07-27T04:25:03.401279",
   "score": 2.2,
   "itcg": {
     "valor": 77.6,
@@ -153,7 +153,7 @@
       "valor": 6.6,
       "unidad": "% de brecha CCL/mayorista",
       "fuente": "https://dolarapi.com/v1/dolares",
-      "fecha_dato": "2026-07-26",
+      "fecha_dato": "2026-07-27",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "reformas_economicas",
@@ -240,7 +240,7 @@
       "valor": 40.0,
       "unidad": "% de avance (proxy InfoLeg)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-07-26",
+      "fecha_dato": "2026-07-27",
       "desactualizado": false,
       "conteo_normas": 18,
       "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -254,7 +254,7 @@
       "valor": 100.0,
       "unidad": "Índice 0–100 (actos fundamentales del FAL: ley + reglamentación)",
       "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 (normas publicadas)",
-      "fecha_dato": "2026-07-26",
+      "fecha_dato": "2026-07-27",
       "desactualizado": false,
       "actos": [
         {
@@ -487,7 +487,7 @@
       "valor": 24.2,
       "unidad": "% de inversión aprobada sobre el pipeline",
       "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-      "fecha_dato": "2026-07-26",
+      "fecha_dato": "2026-07-27",
       "desactualizado": false,
       "proyectos_aprobados": 18,
       "inversion_aprobada_musd": 35714,
@@ -505,7 +505,7 @@
       "valor": 28.7,
       "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
       "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-      "fecha_dato": "2026-07-26",
+      "fecha_dato": "2026-07-27",
       "desactualizado": false,
       "km_adjudicados": 2614,
       "km_totales": 9091,
@@ -527,7 +527,7 @@
       "valor": 100.0,
       "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
       "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-      "fecha_dato": "2026-07-26",
+      "fecha_dato": "2026-07-27",
       "desactualizado": false,
       "ejercicio": 2026,
       "componentes": {
@@ -582,10 +582,10 @@
       "valor": 0,
       "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
       "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-      "fecha_dato": "2026-07-26",
+      "fecha_dato": "2026-07-27",
       "desactualizado": false,
-      "dias_muestreados_mes": 25,
-      "detalle_txt": "0 alertas en 25 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+      "dias_muestreados_mes": 26,
+      "detalle_txt": "0 alertas en 26 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
       "en_indice": false
     },
     "protestas_caba": {
