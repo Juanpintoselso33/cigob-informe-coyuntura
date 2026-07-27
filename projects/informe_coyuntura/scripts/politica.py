@@ -95,6 +95,7 @@ INDICADORES_ESPERADOS = [
     "votometro_ventaja_lla",
     "ratio_dnu",
     "brecha_obra_publica",
+    "apoyo_empresario",
     "conflictividad_nacional",
     "movilizacion_cepa",
     "iaf_transferencias",
@@ -1359,6 +1360,25 @@ def _limpio(html: str) -> str:
     return unescape(re.sub(r"<[^>]+>|\s+", " ", html)).strip()
 
 
+def _uia_cuerpo(html: str) -> str:
+    """El comunicado vive en `<div class="nota--body">`.
+
+    Sacarlo NO es un detalle de presentación: sin cuerpo, quien codifica sólo
+    tiene el título, y títulos como «Comunicado de la Unión Industrial
+    Argentina» no dicen nada. La primera versión de este scraper barría el HTML
+    entero y se quedaba con el menú de navegación, idéntico en las 57 notas —
+    error que ningún test veía y que sólo apareció cuando dos codificadores
+    ciegos, por separado, avisaron que los textos venían todos iguales
+    (ADR-0150).
+    """
+    m = re.search(r'class="nota--body"(.*?)(?:class="nota--tags"|</section>|<footer)',
+                  html, re.S | re.I)
+    if not m:
+        return ""
+    parrafos = re.findall(r"<p[^>]*>(.*?)</p>", m.group(1), re.S) or [m.group(1)]
+    return _limpio(" ".join(parrafos))
+
+
 def _uia_comunicado(id_: int, session: requests.Session) -> dict | None:
     """Un comunicado de UIA por id. None si ese id no es de la sección prensa."""
     r = session.get(UIA_PRENSA_URL.format(id_), timeout=HTTP_TIMEOUT)
@@ -1373,6 +1393,7 @@ def _uia_comunicado(id_: int, session: requests.Session) -> dict | None:
     return {"camara": "UIA", "id": str(id_),
             "fecha": f"{fecha.group(3)}-{fecha.group(2)}-{fecha.group(1)}",
             "titulo": _limpio(titulo.group(1)),
+            "texto": _uia_cuerpo(r.text)[:1800],
             "url": UIA_PRENSA_URL.format(id_)}
 
 
@@ -1424,6 +1445,115 @@ def _apoyo_ya_codificados() -> set[str]:
         else:
             claves.add(f"AEA|{_apoyo_clave_aea(c['fecha'], c.get('titulo', ''))}")
     return claves
+
+
+APOYO_DESDE = "2023-12"        # arranque del período (asunción Milei)
+
+
+def apoyo_empresario_serie() -> list:
+    """Saldo de postura empresaria hacia el Ejecutivo nacional, ventana móvil
+    de 12 meses: (apoyos − críticas) / (apoyos + críticas).
+
+    Es la ÚNICA implementación del cálculo: `fetch_apoyo_empresario` devuelve el
+    último punto de esta misma lista, así que card y serie no pueden divergir
+    (misma disciplina que `brecha_obra_publica_serie`; escribir la cuenta dos
+    veces causó ADR-0086 y ADR-0087).
+
+    Sólo cuentan los comunicados con destinatario `ejecutivo_nacional` y postura
+    `apoyo` o `critica`: un neutro no toma posición y un dudoso no se pudo
+    determinar, así que ninguno de los dos entra (reglas v2, ADR-0150). Un mes
+    sin comunicados computables NO se rellena con cero — cero significa
+    equilibrio entre apoyo y crítica, que es una afirmación distinta de «no se
+    pronunció» — así que ese mes simplemente no tiene punto.
+
+    [[YYYY-MM-01, saldo]] ascendente, saldo en [−1, +1].
+    """
+    d = json.loads(APOYO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
+    comp = [(c["fecha"], c["postura"]) for c in d["casos"]
+            if c["destinatario"] == "ejecutivo_nacional"
+            and c["postura"] in ("apoyo", "critica")]
+    if not comp:
+        raise ValueError("apoyo_empresario: el registro no tiene casos computables")
+
+    y, m = map(int, APOYO_DESDE.split("-"))
+    hoy = date.today()
+    out = []
+    while (y, m) <= (hoy.year, hoy.month):
+        ini, fin = f"{y - 1:04d}-{m:02d}-01", f"{y:04d}-{m:02d}-31"
+        v = [p for f, p in comp if ini <= f <= fin]
+        a, c = v.count("apoyo"), v.count("critica")
+        if a + c:
+            out.append([f"{y:04d}-{m:02d}-01", round((a - c) / (a + c), 3)])
+        m += 1
+        if m == 13:
+            y, m = y + 1, 1
+    return out
+
+
+def _apoyo_pendientes() -> int:
+    """Cuántos comunicados detectados esperan codificación humana (ADR-0149).
+
+    Este indicador es el único del cinturón cuyo dato lo actualiza una PERSONA,
+    no el cron: si nadie codifica, la serie se congela sin que falle nada. Por
+    eso el número va a la card, a la vista."""
+    try:
+        store = json.loads(APOYO_NOVEDADES_PATH.read_text(encoding="utf-8-sig"))
+        return len(store.get("pendientes", {}))
+    except (OSError, json.JSONDecodeError):
+        return 0
+
+
+def fetch_apoyo_empresario() -> dict | None:
+    """
+    Postura pública de AEA y UIA hacia el Ejecutivo nacional, saldo en ventana
+    móvil de 12 meses (ADR-0150).
+
+    Más negativo = las dos cámaras empresarias de referencia critican más de lo
+    que apoyan = mayor tensión con el sector privado organizado.
+
+    Fuente: comunicados institucionales fechados de aeanet.net/prensa.html y
+    uia.org.ar/prensa/, codificados a mano con el protocolo de ADR-0131 —
+    dos codificadores ciegos entre sí, kappa 1,000 (postura) y 0,955
+    (destinatario), desacuerdos adjudicados por el autor del manual.
+
+    Dimensión: sector privado (ADR-0088).
+    """
+    try:
+        serie = apoyo_empresario_serie()
+        fecha, valor = serie[-1]
+        anterior = serie[-13][1] if len(serie) > 13 else None
+        d = json.loads(APOYO_CODIFICACION_PATH.read_text(encoding="utf-8-sig"))
+        comp = [c for c in d["casos"]
+                if c["destinatario"] == "ejecutivo_nacional"
+                and c["postura"] in ("apoyo", "critica")
+                and c["fecha"] >= f"{int(fecha[:4]) - 1}{fecha[4:7]}-01"]
+        apoyos = sum(1 for c in comp if c["postura"] == "apoyo")
+        pend = _apoyo_pendientes()
+        return {
+            "valor":          valor,
+            "unidad":         "saldo de postura (−1 a +1, 12m móviles)",
+            # Sin número de ADR: este string se publica (G6).
+            "fuente":         "Comunicados de AEA y UIA — codificación CIGOB",
+            "fecha_dato":     fecha,
+            "desactualizado": False,
+            "variacion_12m":  None if anterior is None else round(valor - anterior, 3),
+            "comunicados_ventana": len(comp),
+            "apoyos_ventana":      apoyos,
+            "criticas_ventana":    len(comp) - apoyos,
+            "pendientes_de_codificar": pend,
+            "detalle_txt": (
+                f"En los últimos doce meses AEA y UIA se pronunciaron {len(comp)} veces "
+                f"sobre medidas del Gobierno nacional: {apoyos} de apoyo y "
+                f"{len(comp) - apoyos} de crítica. Saldo "
+                # signo menos tipográfico, como en la unidad y en las anclas
+                f"{str(valor).replace('-', '−').replace('.', ',')} en una escala de "
+                f"−1 (todo crítica) a +1 (todo apoyo)."
+                + (f" Hay {pend} comunicado{'s' if pend != 1 else ''} detectado"
+                   f"{'s' if pend != 1 else ''} sin codificar." if pend else "")),
+        }
+    except Exception as e:
+        _warn("apoyo_empresario", str(e))
+        return None
 
 
 def detectar_novedades_empresarias() -> dict:
@@ -4215,6 +4345,7 @@ def main() -> None:
         ("votometro_ventaja_lla",         fetch_votometro),
         ("ratio_dnu",                     fetch_ratio_dnu),
         ("brecha_obra_publica",           fetch_brecha_obra_publica),
+        ("apoyo_empresario",              fetch_apoyo_empresario),
         ("conflictividad_nacional",       fetch_conflictividad_nacional),
         ("movilizacion_cepa",             fetch_cepa_movilizacion),
         ("iaf_transferencias",            fetch_iaf_transferencias),

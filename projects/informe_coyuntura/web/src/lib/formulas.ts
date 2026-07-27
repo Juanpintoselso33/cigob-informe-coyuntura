@@ -227,6 +227,10 @@ ight)_{	ext{4T-23}}}`,
     latex: String.raw`\frac{1}{12}\sum_{\text{\'ultimos 12 meses}}\Big[\underbrace{(\%\text{sube}-\%\text{baja})_{\text{obra p\'ublica}}}_{\text{saldo p\'ublico}}-\underbrace{(\%\text{sube}-\%\text{baja})_{\text{obra privada}}}_{\text{saldo privado}}\Big]`,
     leyenda: "Encuesta Cualitativa de la Construcción del INDEC (Cuadro 7.1): cada mes se consulta a las grandes empresas constructoras si esperan que su actividad aumente, no varíe o disminuya en los próximos tres meses, con respuestas separadas para obra pública y obra privada. El saldo de cada grupo es el porcentaje que espera subas menos el que espera bajas. La brecha es la diferencia entre ambos saldos, promediada en doce meses para quitarle ruido. Cero significa que ambos grupos esperan lo mismo; negativo, que las empresas que dependen del Estado esperan peor que sus pares privadas.",
   },
+  apoyo_empresario: {
+    latex: String.raw`\frac{\text{apoyos}_{\text{12 m}}-\text{cr\'iticas}_{\text{12 m}}}{\text{apoyos}_{\text{12 m}}+\text{cr\'iticas}_{\text{12 m}}}`,
+    leyenda: "Comunicados institucionales fechados de la Asociación Empresaria Argentina (AEA) y la Unión Industrial Argentina (UIA). Cada comunicado se clasifica a mano en dos ejes: si respalda o critica lo que comenta, y a quién le habla. Sólo entran al cálculo los que se pronuncian sobre una medida del Gobierno nacional: los que informan una reunión, un acto o un cambio de autoridades no toman posición y quedan afuera, igual que los dirigidos al Congreso, a una provincia o a la Justicia. El resultado va de −1, si en doce meses todo fue crítica, a +1 si todo fue apoyo; cero significa que las cámaras apoyaron tanto como criticaron.",
+  },
   ratio_dnu: {
     latex: String.raw`\frac{\text{DNU dictados, \'ultimos 365 d\'ias}}{\text{leyes sancionadas, \'ultimos 365 d\'ias}}`,
     leyenda: "Conteos del buscador oficial de InfoLeg sobre una ventana móvil de 365 días (no el año calendario). Más de 1 = el Ejecutivo dicta más decretos de necesidad y urgencia que leyes logra sancionar el Congreso.",

@@ -484,6 +484,38 @@ fecha,indicador,valor,unidad,fuente
 2024-05-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-04-30,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-03-31,bloqueo_sostenido,100.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-07-01,apoyo_empresario,-0.667,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-06-01,apoyo_empresario,-0.667,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-05-01,apoyo_empresario,-0.667,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-04-01,apoyo_empresario,-0.5,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-03-01,apoyo_empresario,-0.429,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-02-01,apoyo_empresario,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-01-01,apoyo_empresario,0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-12-01,apoyo_empresario,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-11-01,apoyo_empresario,0.0,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-10-01,apoyo_empresario,-0.2,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-09-01,apoyo_empresario,-0.2,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-08-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-07-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-06-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-05-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-04-01,apoyo_empresario,-0.5,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-03-01,apoyo_empresario,-0.429,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-02-01,apoyo_empresario,-0.429,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2025-01-01,apoyo_empresario,-0.429,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-12-01,apoyo_empresario,-0.429,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-11-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-10-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-09-01,apoyo_empresario,-0.2,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-08-01,apoyo_empresario,-0.2,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-07-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-06-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-05-01,apoyo_empresario,-0.333,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-04-01,apoyo_empresario,-0.429,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-03-01,apoyo_empresario,-0.2,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-02-01,apoyo_empresario,-0.5,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2024-01-01,apoyo_empresario,-0.5,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2023-12-01,apoyo_empresario,-0.6,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2026-06-30,alineamiento_senadores_prov,70.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-05-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-04-30,alineamiento_senadores_prov,47.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB

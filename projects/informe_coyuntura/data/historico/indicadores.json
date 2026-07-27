@@ -6,13 +6,16 @@
     "2026-07": 0.0
   },
   "alineamiento_senadores_prov": {
-    "2026-07": 70.2
+    "2026-07": 70.6
   },
   "alquiler_real": {
     "2026-07": 3.87
   },
   "apertura_comercial": {
     "2026-07": 6.18
+  },
+  "apoyo_empresario": {
+    "2026-07": -0.667
   },
   "asistencia_directa": {
     "2026-07": 100.0

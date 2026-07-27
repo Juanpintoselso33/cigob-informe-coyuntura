@@ -140,6 +140,25 @@ BANDAS_ITCP = {
         # 2021-2023, con obra pública activa, quedan entre 65 y 85.
         (10.0, INF, 100), (0.0, 10.0, 85), (-10.0, 0.0, 65), (-20.0, -10.0, 40), (-INF, -20.0, 10),
     ],
+    "apoyo_empresario": [
+        # Saldo de postura de AEA y UIA hacia el Ejecutivo nacional, 12m
+        # móviles: (apoyos − críticas) / (apoyos + críticas). Mayor = mejor.
+        # ADR-0150.
+        #
+        # Las anclas parten el rango TEÓRICO del indicador (−1 a +1) en cinco
+        # tramos iguales de 0,4, centrados en el CERO, que es el punto con
+        # significado propio: saldo nulo = las cámaras apoyan tanto como
+        # critican, o sea que el Gobierno no tiene ni respaldo ni
+        # enfrentamiento netos del empresariado organizado.
+        #
+        # No se calibran contra el rango observado. ADR-0045 sólo autoriza eso
+        # cuando el extremo es matemáticamente inalcanzable, y acá no lo es:
+        # ±1 es «los pronunciamientos de doce meses todos en el mismo sentido»,
+        # que con n≈6 por ventana ocurre sin nada extraordinario. Que la serie
+        # de 32 meses se mueva entre −0,667 y +0,333 sin tocar los extremos es
+        # desempeño real, no un techo de construcción.
+        (0.6, INF, 100), (0.2, 0.6, 85), (-0.2, 0.2, 65), (-0.6, -0.2, 40), (-INF, -0.6, 10),
+    ],
     "ratio_dnu": [
         # ADR-0058 cambió la ventana (año calendario → móvil de 365 días) SIN
         # tocar estas anclas (ADR-0059 revirtió una recalibración de un día:
@@ -536,13 +555,25 @@ DIMENSIONES_ITCP = {
         # medía en absoluto a los empresarios, que son el tercer actor del
         # objetivo declarado.
         #
-        # Arranca con un solo indicador y eso es una limitación real, no un
-        # diseño terminado: la brecha de obra pública mide UN canal de
-        # conflicto —el gasto en infraestructura— y sería ciega a una pelea
-        # con el agro, la energía o los bancos. Se elige igual porque es el
-        # único candidato relevado que aísla la relación con el ESTADO en vez
-        # de medir clima de negocios general (ADR-0088 lista los descartados).
-        "indicadores": {"brecha_obra_publica": 1.0},
+        # 2026-07-27 (ADR-0150): entra `apoyo_empresario` y la dimensión deja
+        # de tener un solo indicador. ADR-0088 había dejado escrito que uno
+        # solo "es una limitación real, no un diseño terminado": la brecha de
+        # obra pública mide UN canal de conflicto —el gasto en
+        # infraestructura— y es ciega a una pelea con el agro, la energía o
+        # los bancos.
+        #
+        # 50/50 porque miden cosas distintas y ninguna domina a la otra:
+        #   brecha_obra_publica  es una medida REVELADA (lo que las empresas
+        #     esperan, dato duro del INDEC validado contra Construya r=+0,79),
+        #     pero de un solo sector;
+        #   apoyo_empresario     es una medida DECLARADA (lo que las cámaras
+        #     dicen por escrito y con firma), directa sobre la relación con el
+        #     Ejecutivo y sobre cualquier tema, pero de sólo dos cámaras y con
+        #     codificación humana en el medio.
+        # Revelada vs. declarada, angosta vs. ancha: el empate es el reparto
+        # honesto. El peso se fijó antes de mirar su efecto sobre el ITCP,
+        # como exige ADR-0045.
+        "indicadores": {"brecha_obra_publica": 0.5, "apoyo_empresario": 0.5},
     },
 }
 
@@ -580,6 +611,7 @@ FAMILIAS_ITCP = {
     "veto_quorum": "tension",                  # la cámara no se reúne
     "conflictividad_nacional": "tension",      # la calle
     "brecha_obra_publica": "tension",          # los empresarios que dependen del Estado
+    "apoyo_empresario": "tension",             # lo que las cámaras dicen del Gobierno
     "alineamiento_senadores_prov": "tension",  # cómo votan los senadores provinciales
     "adhesion_reformas_provincial": "tension", # qué deciden las legislaturas provinciales
 
@@ -630,6 +662,10 @@ REZAGO_MESES_ITCP = {
     "iaf_transferencias": 12.0,
     # Promedio móvil de 12 meses (6) más el rezago de publicación del INDEC.
     "brecha_obra_publica": 7.5,
+    # Ventana móvil de 12 meses sobre comunicados fechados: el rezago de
+    # publicación es cero (salen el día que la cámara los emite), así que queda
+    # sólo el centroide de la ventana.
+    "apoyo_empresario": 6.0,
     # El padrón se publica con ~1-2 meses de rezago, pero la serie se corrige
     # con los registros de designaciones y renuncias, que están al día: el
     # rezago efectivo del último punto es el de esos registros (ADR-0126).

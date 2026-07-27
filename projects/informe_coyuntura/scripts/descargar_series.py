@@ -1282,6 +1282,10 @@ POLITICA_DERIVADAS = [
     ("brecha_obra_publica", "pp (obra pública − privada, 12m móviles)",
      "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
      politica.brecha_obra_publica_serie),
+    # Mismo patrón: la card es el último punto de esta lista (ADR-0150).
+    ("apoyo_empresario", "saldo de postura (−1 a +1, 12m móviles)",
+     "Comunicados de AEA y UIA — codificación CIGOB",
+     politica.apoyo_empresario_serie),
     ("eficacia_legislativa", "% proyectos PE aprobados (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_eficacia_serie),
     ("veto_quorum", "% sesiones en minoría (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_veto_quorum_serie),
     ("comisiones_caidas", "% con dictamen sin sanción (12m móviles)", "Cámara de Diputados (datos abiertos)", fetch_comisiones_serie),

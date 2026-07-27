@@ -84,15 +84,35 @@ def test_una_camara_caida_no_tumba_la_otra(entorno, monkeypatch):
     assert "UIA|4241" in store["pendientes"]
 
 
-def test_no_alimenta_ningun_indice(entorno, monkeypatch):
-    """Garantía de ADR-0149: es un aviso. El indicador no se publica hasta que
-    haya segunda pasada con kappa ≥ 0,70."""
+def test_el_detector_avisa_pero_no_clasifica(entorno, monkeypatch):
+    """El detector sigue siendo un AVISO: detecta y deja pendiente, la postura
+    la asigna una persona. Lo que cambió con ADR-0150 es que el indicador que
+    alimenta ya se publica (antes este test verificaba que NO estuviera en
+    itcp.py); el reparto detección-automática / clasificación-humana no."""
     monkeypatch.setattr(politica, "_uia_comunicado", lambda i, s: None)
     store = politica.detectar_novedades_empresarias()
     assert "valor" not in store and "serie" not in store
-    assert "NO puntúa" in store["_meta"]["descripcion"]
-    assert "apoyo_empresario" not in (RAIZ / "scripts" / "itcp.py").read_text(
-        encoding="utf-8"), "el detector no puede entrar al ITCP"
+    itcp = (RAIZ / "scripts" / "itcp.py").read_text(encoding="utf-8")
+    assert '"apoyo_empresario"' in itcp, "ADR-0150: ahora sí integra el índice"
+
+
+def test_el_aviso_trae_el_texto_del_comunicado(monkeypatch):
+    """La causa raíz de ADR-0150: sin cuerpo, quien codifica sólo tiene el
+    título, y títulos como «Comunicado de la UIA» no dicen nada. El scraper
+    viejo devolvía el menú de navegación del sitio."""
+    html = ('<html><head><title>Comunicado de la UIA | UIA</title></head>'
+            '<nav>Institucional Novedades Documentos Contacto</nav>'
+            '<span>11/03/2026</span>'
+            '<div class="nota--body"><p>Expresamos nuestro profundo malestar.</p>'
+            '<p>Miles de empresas atraviesan un momento difícil.</p></div>'
+            '<div class="nota--tags">tags</div></html>')
+
+    class R:
+        status_code, text = 200, html
+    monkeypatch.setattr(politica, "HTTP_TIMEOUT", 1)
+    c = politica._uia_comunicado(4226, type("S", (), {"get": lambda *a, **k: R()})())
+    assert "malestar" in c["texto"] and "momento difícil" in c["texto"]
+    assert "Institucional Novedades" not in c["texto"], "volvió a leer el menú"
 
 
 def test_el_store_esta_en_el_git_add_del_cron():

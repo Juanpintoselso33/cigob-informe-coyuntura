@@ -139,6 +139,34 @@ Krippendorff's alpha). **Por debajo de 0,70 las reglas no sirven y hay que
 reescribirlas, no promediar.** Los desacuerdos se resuelven en una tercera
 lectura y el criterio se agrega a las reglas.
 
+> **Corregido por ADR-0150.** Este punto se aplicó como «la segunda pasada la
+> tiene que hacer otra persona» — es decir, midiendo la pasada de **quien
+> escribió el manual** contra la de un tercero. Eso confunde dos cosas
+> distintas: que las reglas sean ambiguas, y que el autor codifique distinto de
+> lo que escribió. Medido de las dos formas sobre el mismo corpus, el autor daba
+> κ 0,73/0,65 contra cada tercero mientras los dos terceros daban **0,925/0,953
+> entre sí**: el desviado era el autor, y el diseño viejo lo registraba como
+> «reglas flojas».
+>
+> **Diseño correcto: dos codificadores independientes ciegos entre sí codifican
+> el universo completo, el kappa se mide ENTRE ELLOS, y quien escribió el manual
+> no codifica — adjudica** los desacuerdos una vez medido el número. Es el
+> estándar de análisis de contenido y rige para todo el proyecto.
+>
+> Dos cosas más que salieron de aplicarlo:
+> - **Un codificador independiente no tiene que ser humano.** Un agente al que
+>   se le dan sólo las reglas y el universo crudo, sin ver la otra pasada,
+>   cumple la condición que el kappa testea. Pero si ambos son agentes del mismo
+>   modelo base, comparten priores y concuerdan más de lo que concordarían dos
+>   personas de formación distinta: el número acredita que **el manual es
+>   unívoco**, no que cualquier par de lectores llegaría a lo mismo. Esa
+>   salvedad se declara junto al kappa, en el ADR y en la ficha pública.
+> - **La segunda pasada sirve para más que el kappa.** En ADR-0150 lo que
+>   encontró no fue un desacuerdo de criterio sino un bug: más de medio corpus
+>   se había codificado sobre un texto que era el menú de navegación del sitio.
+>   Ojos que no armaron el material ven cosas que ninguna verificación
+>   automática mira.
+
 **4. Registro versionado, no conteo opaco.** El resultado vive en un archivo
 como `privatizaciones_fechas.json` o `gabinete_salidas.json`: cada caso con su
 identificador de SAIJ, su fecha, la norma impugnada y la decisión de

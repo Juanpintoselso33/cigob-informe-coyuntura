@@ -717,7 +717,7 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.355,
-        "concesiones_infraestructura": 0.285,
+        "concesiones_infraestructura": 0.284,
         "desregulacion_normativa": 0.921,
         "fal_modernizacion_laboral": 0.323,
         "gasto_funcionamiento": 0.239,
@@ -727,11 +727,11 @@
         "privatizaciones": 0.826,
         "protocolo_antipiquetes": 0.864,
         "reduccion_estado": 0.752,
-        "reestructuracion_organismos": 0.805
+        "reestructuracion_organismos": 0.804
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.207,
-        "cepo_mulc": 0.285,
+        "cepo_mulc": 0.284,
         "desregulacion_normativa": 0.369,
         "fal_modernizacion_laboral": 0.795,
         "gasto_funcionamiento": 0.212,
@@ -867,7 +867,7 @@
       },
       "reestructuracion_organismos": {
         "apertura_comercial": 0.553,
-        "cepo_mulc": 0.805,
+        "cepo_mulc": 0.804,
         "concesiones_infraestructura": 0.487,
         "desregulacion_normativa": 0.92,
         "fal_modernizacion_laboral": 0.542,
@@ -984,7 +984,7 @@
       {
         "a": "cepo_mulc",
         "b": "reestructuracion_organismos",
-        "r": 0.805,
+        "r": 0.804,
         "n": 32,
         "dimension_a": "reformas_economicas",
         "dimension_b": "reforma_estado",
@@ -1097,19 +1097,20 @@
   },
   "redundancia_itcp": {
     "diferencias": {
-      "n_pares": 64,
-      "r_abs_medio": 0.188,
-      "share_altos": 0.031
+      "n_pares": 76,
+      "r_abs_medio": 0.175,
+      "share_altos": 0.026
     },
     "umbral": 0.7,
-    "n_indicadores": 13,
-    "n_pares": 64,
-    "r_abs_medio": 0.397,
-    "share_altos": 0.141,
-    "share_bajos": 0.406,
+    "n_indicadores": 14,
+    "n_pares": 76,
+    "r_abs_medio": 0.372,
+    "share_altos": 0.118,
+    "share_bajos": 0.461,
     "matriz": {
       "adhesion_reformas_provincial": {
         "alineamiento_senadores_prov": -0.198,
+        "apoyo_empresario": -0.094,
         "bloqueo_sostenido": -0.612,
         "brecha_obra_publica": 0.526,
         "cobertura_judicial": -0.518,
@@ -1122,6 +1123,7 @@
       },
       "alineamiento_senadores_prov": {
         "adhesion_reformas_provincial": -0.198,
+        "apoyo_empresario": -0.482,
         "bloqueo_sostenido": 0.424,
         "brecha_obra_publica": -0.239,
         "cobertura_judicial": 0.429,
@@ -1133,9 +1135,24 @@
         "veto_quorum": 0.25,
         "votometro_ventaja_lla": -0.12
       },
+      "apoyo_empresario": {
+        "adhesion_reformas_provincial": -0.094,
+        "alineamiento_senadores_prov": -0.482,
+        "bloqueo_sostenido": 0.018,
+        "brecha_obra_publica": 0.038,
+        "cobertura_judicial": -0.166,
+        "cohesion_bloque": -0.155,
+        "conflictividad_nacional": 0.462,
+        "desafios_legislativos": -0.297,
+        "eficacia_legislativa": 0.608,
+        "ratio_dnu": -0.287,
+        "veto_quorum": -0.129,
+        "votometro_ventaja_lla": 0.17
+      },
       "bloqueo_sostenido": {
         "adhesion_reformas_provincial": -0.612,
         "alineamiento_senadores_prov": 0.424,
+        "apoyo_empresario": 0.018,
         "brecha_obra_publica": -0.82,
         "cobertura_judicial": 0.869,
         "cohesion_bloque": -0.205,
@@ -1149,6 +1166,7 @@
       "brecha_obra_publica": {
         "adhesion_reformas_provincial": 0.526,
         "alineamiento_senadores_prov": -0.239,
+        "apoyo_empresario": 0.038,
         "bloqueo_sostenido": -0.82,
         "cobertura_judicial": -0.662,
         "cohesion_bloque": 0.49,
@@ -1162,6 +1180,7 @@
       "cobertura_judicial": {
         "adhesion_reformas_provincial": -0.518,
         "alineamiento_senadores_prov": 0.429,
+        "apoyo_empresario": -0.166,
         "bloqueo_sostenido": 0.869,
         "brecha_obra_publica": -0.662,
         "cohesion_bloque": -0.16,
@@ -1175,6 +1194,7 @@
       "cohesion_bloque": {
         "adhesion_reformas_provincial": 0.087,
         "alineamiento_senadores_prov": 0.405,
+        "apoyo_empresario": -0.155,
         "bloqueo_sostenido": -0.205,
         "brecha_obra_publica": 0.49,
         "cobertura_judicial": -0.16,
@@ -1188,6 +1208,7 @@
       "conflictividad_nacional": {
         "adhesion_reformas_provincial": 0.064,
         "alineamiento_senadores_prov": -0.474,
+        "apoyo_empresario": 0.462,
         "bloqueo_sostenido": -0.477,
         "brecha_obra_publica": 0.039,
         "cobertura_judicial": -0.545,
@@ -1201,6 +1222,7 @@
       "desafios_legislativos": {
         "adhesion_reformas_provincial": -0.587,
         "alineamiento_senadores_prov": 0.612,
+        "apoyo_empresario": -0.297,
         "bloqueo_sostenido": 0.918,
         "brecha_obra_publica": -0.729,
         "cobertura_judicial": 0.845,
@@ -1214,6 +1236,7 @@
       "ratio_dnu": {
         "adhesion_reformas_provincial": 0.214,
         "alineamiento_senadores_prov": 0.26,
+        "apoyo_empresario": -0.287,
         "bloqueo_sostenido": 0.43,
         "brecha_obra_publica": -0.268,
         "cobertura_judicial": 0.433,
@@ -1226,6 +1249,7 @@
       "veto_quorum": {
         "adhesion_reformas_provincial": -0.142,
         "alineamiento_senadores_prov": 0.25,
+        "apoyo_empresario": -0.129,
         "bloqueo_sostenido": -0.308,
         "brecha_obra_publica": 0.517,
         "cobertura_judicial": -0.15,
@@ -1239,6 +1263,7 @@
       "votometro_ventaja_lla": {
         "adhesion_reformas_provincial": 0.385,
         "alineamiento_senadores_prov": -0.12,
+        "apoyo_empresario": 0.17,
         "bloqueo_sostenido": -0.187,
         "brecha_obra_publica": 0.373,
         "cobertura_judicial": -0.194,
@@ -1251,6 +1276,7 @@
       },
       "eficacia_legislativa": {
         "alineamiento_senadores_prov": -0.665,
+        "apoyo_empresario": 0.608,
         "bloqueo_sostenido": 0.467,
         "brecha_obra_publica": -0.194,
         "cobertura_judicial": 0.221,
@@ -1893,7 +1919,7 @@
     "2026-04": 72.0,
     "2026-05": 76.3,
     "2026-06": 82.9,
-    "2026-07": 74.3
+    "2026-07": 74.0
   },
   "merval_usd_mensual": {
     "2023-11": 918.3,
@@ -1928,7 +1954,7 @@
     "2026-04": 1916.1,
     "2026-05": 2131.0,
     "2026-06": 2087.8,
-    "2026-07": 2087.7
+    "2026-07": 2096.8
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
@@ -1936,7 +1962,7 @@
       "n": 32
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.123,
+      "r": 0.12,
       "n": 31
     },
     "niveles (ITCG vs riesgo país)": {
@@ -1944,7 +1970,7 @@
       "n": 32
     },
     "primeras diferencias (ITCG vs riesgo)": {
-      "r": -0.138,
+      "r": -0.137,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {
@@ -1957,36 +1983,36 @@
     }
   },
   "serie_itcp": {
-    "2024-01": 71.0,
-    "2024-02": 74.6,
-    "2024-03": 72.2,
-    "2024-04": 68.8,
-    "2024-05": 65.1,
-    "2024-06": 55.3,
-    "2024-07": 52.6,
-    "2024-08": 52.4,
-    "2024-09": 51.1,
-    "2024-10": 50.3,
-    "2024-11": 41.5,
-    "2024-12": 49.0,
-    "2025-01": 55.1,
-    "2025-02": 55.1,
-    "2025-03": 54.1,
-    "2025-04": 50.7,
-    "2025-05": 60.5,
-    "2025-06": 61.8,
-    "2025-07": 58.8,
-    "2025-08": 44.3,
-    "2025-09": 41.5,
-    "2025-10": 44.2,
-    "2025-11": 56.7,
-    "2025-12": 64.7,
-    "2026-01": 67.1,
-    "2026-02": 66.8,
-    "2026-03": 69.0,
-    "2026-04": 63.1,
-    "2026-05": 66.0,
-    "2026-06": 69.0
+    "2024-01": 67.2,
+    "2024-02": 71.9,
+    "2024-03": 72.0,
+    "2024-04": 68.3,
+    "2024-05": 66.4,
+    "2024-06": 57.6,
+    "2024-07": 54.8,
+    "2024-08": 55.2,
+    "2024-09": 53.9,
+    "2024-10": 52.5,
+    "2024-11": 43.8,
+    "2024-12": 50.7,
+    "2025-01": 56.8,
+    "2025-02": 56.8,
+    "2025-03": 55.7,
+    "2025-04": 51.6,
+    "2025-05": 61.8,
+    "2025-06": 62.1,
+    "2025-07": 58.7,
+    "2025-08": 43.6,
+    "2025-09": 40.9,
+    "2025-10": 43.2,
+    "2025-11": 56.2,
+    "2025-12": 63.9,
+    "2026-01": 67.3,
+    "2026-02": 65.8,
+    "2026-03": 66.1,
+    "2026-04": 59.4,
+    "2026-05": 61.4,
+    "2026-06": 64.4
   },
   "epu_argentina_mensual": {
     "2002-11": 137.0,
@@ -2276,19 +2302,19 @@
   },
   "correlaciones_itcp": {
     "niveles (ITCP vs EPU Argentina)": {
-      "r": -0.406,
+      "r": -0.514,
       "n": 30
     },
     "primeras diferencias (ITCP vs EPU)": {
-      "r": -0.389,
+      "r": -0.421,
       "n": 29
     },
     "ITCP adelantado 1 mes vs EPU": {
-      "r": -0.382,
+      "r": -0.471,
       "n": 29
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.134,
+      "r": -0.212,
       "n": 30
     },
     "niveles, sin la dimensión de sector privado": {

@@ -197,8 +197,12 @@ def test_politica_itcp_reconcilia():
     # ningún indicador propio.
     # 13 desde 2026-07-25 (ADR-0126: entra cobertura_judicial con la dimensión
     # nueva del Poder Judicial, el otro actor de veto que no se medía).
-    assert len(en_indice) == 13, f"esperaba 13 indicadores en el índice, hay {len(en_indice)}"
+    # 14 desde 2026-07-27 (ADR-0150): entra apoyo_empresario y sector_privado
+    # deja de tener un solo indicador — lo que ADR-0088 había dejado anotado
+    # como pendiente al crear la dimensión.
+    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
     assert "bloqueo_sostenido" in en_indice
+    assert "apoyo_empresario" in en_indice
     assert "brecha_obra_publica" in en_indice
     # ADR-0089: derrotas sale del índice, entra desafíos en su lugar
     assert "desafios_legislativos" in en_indice

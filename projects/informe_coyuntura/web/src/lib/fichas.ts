@@ -1120,7 +1120,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la brecha, interpolado entre anclas: +10 puntos porcentuales o más → el más alto; entre 0 y +10 → alto; entre −10 y 0 → moderado; entre −20 y −10 → bajo; menos de −20 → el más bajo. Las anclas se fijaron en números redondos alrededor del cero, que es el valor con significado propio: brecha nula quiere decir que el Estado no es una fuente diferencial de incertidumbre para quienes trabajan para él.",
-      "Es el único indicador de la dimensión de sector privado del índice del cinturón (15% del total), incorporada en julio de 2026.",
+      "Pesa la mitad de la dimensión de sector privado del índice del cinturón (13% del total), incorporada en julio de 2026. La otra mitad es la postura pública de las cámaras empresarias.",
     ],
     limitaciones: [
       "El comportamiento del indicador depende del gobierno que se mida, y conviene saberlo antes de leerlo. Contrastado contra el índice de incertidumbre de política económica, acompaña esa incertidumbre durante las dos administraciones anteriores —correlación de −0,56 con Macri y de −0,64 con Alberto Fernández, el signo esperado— y se invierte con la actual, donde da +0,33. La razón es sustantiva y no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno. Ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El caso más claro es 2024: el indicador marcó el peor valor de sus diez años de serie durante el año en que se sancionó la Ley Bases y la incertidumbre de política tocó su nivel más bajo del período.",
@@ -1135,6 +1135,43 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-19", cambio: "Entra al cinturón como primer indicador de la nueva dimensión de sector privado. Una revisión externa del cinturón señaló que de los tres actores que el índice se propone medir —legisladores, gobernadores y empresarios— el tercero no tenía ningún indicador propio." },
       { fecha: "2026-07-20", cambio: "Al revisar el efecto de la incorporación sobre la validación externa del índice apareció que este indicador se comporta de manera distinta según el gobierno: acompaña a la incertidumbre de política económica con las dos administraciones anteriores y se invierte con la actual. Se decidió mantenerlo puntuando y publicar el hallazgo, en lugar de retirarlo o de reducir su peso para que el número diera mejor. La explicación completa quedó en las limitaciones de esta ficha." },
+    ],
+  },
+
+  apoyo_empresario: {
+    tipo: "indicador",
+    id: "apoyo_empresario",
+    cinturon: "politica",
+    rezago: "Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona.",
+    fuente: {
+      organismo: "Asociación Empresaria Argentina (AEA) y Unión Industrial Argentina (UIA)",
+      operacion: "Comunicados institucionales fechados de las secciones de prensa de ambas entidades",
+      url: "https://www.uia.org.ar/prensa/",
+      acceso: "Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona.",
+    },
+    transformaciones: [
+      "Cada comunicado se clasifica en dos ejes, con reglas escritas antes de mirar el material: qué dice sobre lo que comenta —respalda, critica o no toma posición— y a quién le habla, que puede ser el Gobierno nacional, el Congreso, una provincia o municipio, la Justicia, o un asunto externo o de la propia entidad.",
+      "Sólo entran al cálculo los comunicados dirigidos al Gobierno nacional que respaldan o critican. Los que informan una reunión, un acto institucional, un cambio de autoridades o una condolencia no toman posición y quedan afuera aunque hablen del Gobierno, y también quedan afuera los dirigidos a los otros poderes.",
+      "El indicador es el saldo de los últimos doce meses: apoyos menos críticas, dividido por el total. Va de −1, si todo fue crítica, a +1 si todo fue apoyo.",
+      "Un mes sin ningún comunicado que se pronuncie sobre el Gobierno nacional queda sin valor y no se rellena con cero: cero significa que las cámaras apoyaron tanto como criticaron, que es una afirmación distinta de que no se pronunciaron. En los treinta y dos meses de serie no ocurrió: el mínimo es de tres pronunciamientos por ventana y el promedio, de casi seis.",
+    ],
+    incidenciaTexto: [
+      "El puntaje del índice se asigna por bandas del saldo, interpolado entre anclas: +0,6 o más → el más alto; entre +0,2 y +0,6 → alto; entre −0,2 y +0,2 → moderado; entre −0,6 y −0,2 → bajo; menos de −0,6 → el más bajo. Las anclas parten en cinco tramos iguales el rango teórico del indicador y se centran en el cero, que es el valor con significado propio: saldo nulo quiere decir que el Gobierno no tiene ni respaldo ni enfrentamiento netos del empresariado organizado.",
+      "Pesa la mitad de la dimensión de sector privado del índice del cinturón (13% del total). La otra mitad es la brecha de expectativas entre obra pública y obra privada. El reparto es parejo porque miden cosas distintas y ninguna domina a la otra: la brecha es una medida revelada —lo que las empresas esperan, con dato duro del INDEC— pero de un solo sector; ésta es una medida declarada —lo que las cámaras dicen y firman— directa sobre la relación con el Gobierno y sobre cualquier tema, pero de sólo dos entidades.",
+    ],
+    limitaciones: [
+      "Mide lo que una asociación decidió declarar en público, no el humor del empresariado ni la opinión de sus asociados. Una cámara puede callar por conveniencia, y ese silencio no aparece en ninguna parte del indicador.",
+      "Son dos entidades. Se revisaron ocho cámaras y sólo estas dos publican comunicados de postura de manera sostenida: el resto publica agenda institucional, servicios al socio o boletines regulatorios, y dos no tienen contenido accesible. Eso deja fuera al agro y a la banca, que en el país tienen conflictos propios con el Estado.",
+      "La clasificación la hace una persona, y por eso el indicador no puede actualizarse solo. Un proceso diario avisa cuando hay comunicados nuevos, pero si nadie los clasifica la serie se congela sin que nada falle: por eso la cantidad de pendientes se muestra en la ficha del indicador.",
+      "Para verificar que las reglas de clasificación no dejan lugar a la interpretación, dos codificadores independientes clasificaron por separado los ciento tres comunicados sin ver el trabajo del otro: coincidieron en el cien por ciento de las posturas y en el noventa y siete por ciento de los destinatarios, y el conjunto de comunicados que entran al cálculo resultó idéntico. Cabe una advertencia sobre esa prueba: ambos codificadores son sistemas de inteligencia artificial del mismo tipo, que comparten criterios previos y por lo tanto coinciden más de lo que coincidirían dos personas de formación distinta. La prueba acredita que el manual es unívoco, no que cualquier par de lectores llegaría al mismo número.",
+      "La ventana de doce meses hace que el indicador describa, en promedio, la situación de seis meses atrás. Un giro brusco en la relación —como el de marzo de 2026— tarda en verse completo.",
+      "Los comunicados de AEA se leen de archivos PDF cuyo texto se extrae con un corte en los primeros párrafos. En los comunicados que abren con un rodeo y recién después fijan posición, esa extracción puede dejar afuera el pasaje decisivo.",
+    ],
+    faltantes: "Si los sitios de las cámaras no responden, el indicador no cambia: se calcula sobre el registro ya clasificado, que está guardado. Lo que se pierde es el aviso de comunicados nuevos.",
+    revisiones: "El registro de clasificación está versionado caso por caso: cualquier corrección queda a la vista con su fecha y recalcula la serie completa desde el origen.",
+    cambios: [
+      { fecha: "2026-07-27", cambio: "Entra al cinturón como segundo indicador de la dimensión de sector privado, que hasta ahora tenía uno solo. Una revisión externa había señalado que los empresarios eran el actor peor medido del cinturón." },
+      { fecha: "2026-07-27", cambio: "Al verificar la clasificación con dos codificadores independientes se descubrió que los cincuenta y siete comunicados de la Unión Industrial se habían leído sin su texto: el proceso de descarga se quedaba con el menú de navegación del sitio y esos casos se habían clasificado sólo por el título. Se corrigió la descarga y se rehízo la clasificación completa sobre el texto real, descartando la primera. El hallazgo no vino de ninguna verificación automática sino de que los dos codificadores, por separado, avisaron que los textos venían todos iguales." },
     ],
   },
 

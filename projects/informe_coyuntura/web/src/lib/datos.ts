@@ -254,6 +254,7 @@ export const LABELS: Record<string, string> = {
   // politica
   votometro_ventaja_lla: "Ventaja LLA−PJ (Votómetro)", ratio_dnu: "Ratio DNU / leyes",
   brecha_obra_publica: "Brecha de expectativas: obra pública vs. privada",
+  apoyo_empresario: "Postura pública de las cámaras empresarias",
   desafios_legislativos: "Normas desafiadas en el recinto",
   conflictividad_nacional: "Conflictividad social (país)",
   movilizacion_cepa: "Tensión social (CEPA, interno)", iaf_transferencias: "Armonía federal (transferencias)",
@@ -332,6 +333,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // politica
   votometro_ventaja_lla: "pp", ratio_dnu: "ratio", movilizacion_cepa: "índice",
   brecha_obra_publica: "pp",
+  apoyo_empresario: "saldo",
   desafios_legislativos: "normas",
   conflictividad_nacional: "% vs 2023",
   iaf_transferencias: "% real", eficacia_legislativa: "%", cohesion_bloque: "%",
@@ -386,6 +388,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   // politica
   votometro_ventaja_lla: "Puntos porcentuales", ratio_dnu: "DNUs por ley",
   brecha_obra_publica: "Puntos porcentuales de brecha",
+  apoyo_empresario: "Saldo de apoyos y críticas (−1 a +1)",
   desafios_legislativos: "Normas desafiadas (12 meses)",
   movilizacion_cepa: "Índice (0–100)",
   conflictividad_nacional: "% de variación vs 2023 (eventos de protesta y disturbios en el país, acum. 12 meses)",

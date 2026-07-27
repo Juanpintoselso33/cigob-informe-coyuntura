@@ -146,6 +146,7 @@ PROCEDENCIA = {
     "veto_quorum": ("conceptual", "tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121)"),
     "desafios_legislativos": ("convencion", "anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089)"),
     "brecha_obra_publica": ("conceptual", "números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088)"),
+    "apoyo_empresario": ("conceptual", "el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150)"),
     "bloqueo_sostenido": ("externa", "ninguna insistencia exitosa entre 2003 y 2025: ~100% histórico de sostenimiento (ADR-0069)"),
     "iaf_transferencias": ("conceptual", "variación real anclada en el cero con cortes simétricos de 10 pp, como recaudacion/emae del ITCM (ADR-0121)"),
     "alineamiento_senadores_prov": ("convencion", "recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038)"),
