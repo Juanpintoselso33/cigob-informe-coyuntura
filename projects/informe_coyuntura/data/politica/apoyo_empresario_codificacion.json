@@ -1,0 +1,657 @@
+{
+ "_meta": {
+  "descripcion": "Codificación de postura de AEA hacia el Ejecutivo nacional. PRIMERA PASADA (ADR-0145). Reglas en apoyo_empresario_reglas.json, escritas antes de codificar. NO alimenta ningún índice: la métrica FALLÓ y el ADR explica por qué.",
+  "fecha": "2026-07-26",
+  "protocolo": "ADR-0131",
+  "codificadores": {
+   "pasada_1": {
+    "quien": "asistente",
+    "fecha": "2026-07-26",
+    "completa": true
+   },
+   "pasada_2": {
+    "quien": null,
+    "completa": false
+   }
+  },
+  "concordancia": {
+   "kappa": null,
+   "umbral_minimo": 0.7,
+   "estado": "no se pidió: la métrica falló antes"
+  }
+ },
+ "resultado_pasada_1": {
+  "total": 46,
+  "postura": {
+   "neutro": 28,
+   "critica": 12,
+   "apoyo": 5,
+   "dudoso": 1
+  },
+  "destinatario": {
+   "externo_o_propio": 19,
+   "ejecutivo_nacional": 18,
+   "congreso": 3,
+   "provincias_municipios": 4,
+   "judicial": 2
+  },
+  "computables": 13,
+  "computables_bajo_este_gobierno": 2
+ },
+ "por_que_no_funciona": "20 de los 32 meses de la serie dan exactamente +1,00 y en TODOS n=1: el 'saldo de postura' es un solo comunicado dentro de la ventana, o sea el eco de lo último que dijeron. Los últimos cuatro meses están vacíos. AEA se pronunció sobre el Ejecutivo nacional 13 veces en seis años y sólo 2 bajo este gobierno: el fenómeno es demasiado infrecuente para una serie mensual.",
+ "reglas_que_mordieron": [
+  "'AEA Felicita al Presidente electo Javier Milei' quedó NEUTRO por la regla escrita de antemano (una felicitación electoral no comenta una medida). Sin esa regla habría entrado como apoyo.",
+  "'Un paso muy importante' (Ley Bases aprobada en Diputados) quedó con destinatario CONGRESO por la regla de 'dónde se resuelve el asunto', no Ejecutivo. Es el apoyo más visible del período y no computa.",
+  "El consenso fiscal de dic-2021 quedó como PROVINCIAS por gravar Ingresos Brutos: es el mismo error que hundió a ADEBA en ADR-0136, evitado acá porque el eje destinatario es obligatorio."
+ ],
+ "serie_12m": {
+  "2023-12": {
+   "n": 3,
+   "apoyo": 0,
+   "critica": 3,
+   "saldo": -1.0
+  },
+  "2024-01": {
+   "n": 3,
+   "apoyo": 0,
+   "critica": 3,
+   "saldo": -1.0
+  },
+  "2024-02": {
+   "n": 3,
+   "apoyo": 0,
+   "critica": 3,
+   "saldo": -1.0
+  },
+  "2024-03": {
+   "n": 4,
+   "apoyo": 1,
+   "critica": 3,
+   "saldo": -0.5
+  },
+  "2024-04": {
+   "n": 3,
+   "apoyo": 1,
+   "critica": 2,
+   "saldo": -0.33
+  },
+  "2024-05": {
+   "n": 3,
+   "apoyo": 1,
+   "critica": 2,
+   "saldo": -0.33
+  },
+  "2024-06": {
+   "n": 3,
+   "apoyo": 1,
+   "critica": 2,
+   "saldo": -0.33
+  },
+  "2024-07": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2024-08": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2024-09": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2024-10": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2024-11": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2024-12": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-01": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-02": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-03": {
+   "n": 0,
+   "apoyo": 0,
+   "critica": 0,
+   "saldo": null
+  },
+  "2025-04": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-05": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-06": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-07": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-08": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-09": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-10": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-11": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2025-12": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2026-01": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2026-02": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2026-03": {
+   "n": 1,
+   "apoyo": 1,
+   "critica": 0,
+   "saldo": 1.0
+  },
+  "2026-04": {
+   "n": 0,
+   "apoyo": 0,
+   "critica": 0,
+   "saldo": null
+  },
+  "2026-05": {
+   "n": 0,
+   "apoyo": 0,
+   "critica": 0,
+   "saldo": null
+  },
+  "2026-06": {
+   "n": 0,
+   "apoyo": 0,
+   "critica": 0,
+   "saldo": null
+  },
+  "2026-07": {
+   "n": 0,
+   "apoyo": 0,
+   "critica": 0,
+   "saldo": null
+  }
+ },
+ "casos": [
+  {
+   "fecha": "2020-03-21",
+   "titulo": "Unión y responsabilidad ante el desafío del momento",
+   "texto": "Ante este desafío que se nos presenta en torno a la pandemia del Covid- 19, es imprescindible la unidad de los argentinos y el pleno acatamiento de las disposiciones y normas sanitarias emitidas por las autoridades. Vemos con gran satisfacción que todo el arco político liderado por el Presidente de la Nación y la participación de las demás autoridades nacionales, provinciales y municipales, priorice la búsqueda de consensos, en conjunto con los sindicatos, empresarios y organizaciones de la sociedad civil, y que para todo ello, se tenga en cuenta la opinión de expertos reconocidos. Los empresarios somos conscientes de los grandes desafíos que asumimos en estas circunstancias. Debemos mantene",
+   "pdf": "https://secureservercdn.net/72.167.241.134/t5o.c73.myftpupload.com/wp-content/uploads/2020/06/responsabilidad.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "llamado a la unidad ante la pandemia; no comenta una medida"
+  },
+  {
+   "fecha": "2020-06-09",
+   "titulo": "AEA rechaza la intervención de Vicentin",
+   "texto": "Esta decisión no ha respetado un principio básico de la seguridad jurídica por cuanto no es facultad del Poder Ejecutivo intervenir una empresa que se encuentra en concurso de acreedores. Este hecho es grave puesto que la seguridad jurídica es un atributo central que proporciona la confianza imprescindible para que se lleven a cabo las inversiones productivas que imperiosamente requiere nuestro país. La estatización de una empresa que opera en un sector definidamente exportador es un grave error que debe subsanarse. En efecto, es al sector privado al que le corresponde asumir la responsabilidad de controlar, dirigir, y administrar a las empresas en la Argentina.",
+   "pdf": "https://secureservercdn.net/72.167.241.134/t5o.c73.myftpupload.com/wp-content/uploads/2020/06/vicentin.pdf",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "rechaza la intervención de Vicentin, decidida por decreto del PEN"
+  },
+  {
+   "fecha": "2020-07-21",
+   "titulo": "Diálogo entre la AEA y la CGT.",
+   "texto": "En el día de hoy se llevó a cabo un encuentro entre los integrantes del Consejo Directivo de la Confederación General del Trabajo (CGT) y los miembros de la Comisión Directiva de la Asociación Empresaria Argentina (AEA).  Ambas instituciones, la CGT, representando a los trabajadores, y la AEA, integrada por los directivos de las principales empresas del país, coincidieron en profundizar el diálogo entre ellas y con otros sectores de la sociedad, de modo de avanzar en la formulación de consensos básicos, que den lugar en el tiempo a la implementación de políticas específicas.  Ello se hace aún más urgente en vista a la crítica situación económica y al esfuerzo enorme que implicará mantener en",
+   "pdf": "https://www.aeanet.net/prensa/Dialogo_CGT_AEA_prensa.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "encuentro con la CGT"
+  },
+  {
+   "fecha": "2020-08-04",
+   "titulo": "Un paso muy importante",
+   "texto": "La AEA manifiesta su gran satisfacción y felicita al gobierno por haber concluido la muy compleja negociación con los acreedores externos. Esta decisión contribuirá a que las empresas puedan cumplir su papel en el proceso de recuperación económica de nuestro país. En efecto, es la red de empresas pequeñas, medianas y grandes, que constituyen cadenas de valor, las que hacen posible la producción, el empleo y la generación de exportaciones desde Argentina. Desde la AEA destacamos que esta es una oportunidad para avanzar en el diálogo entre los diferentes sectores de la sociedad, de modo de arribar a consensos básicos para un desarrollo económico y social sostenible.",
+   "pdf": "https://www.aeanet.net/assets/images/Un_paso_importante.pdf",
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "'felicita al gobierno' por cerrar la negociación con acreedores"
+  },
+  {
+   "fecha": "2020-09-05",
+   "titulo": "Instituciones para el desarrollo",
+   "texto": "Argentina necesita imperiosamente crecer y desarrollarse en forma sostenida. El camino más eficaz para generar empleos, ingresos y reducir la pobreza es la movilización plena de las energías del sector privado, es decir, permitir y estimular tanto a individuos como a pequeñas, medianas y grandes empresas a emprender, a desarrollar nuevos proyectos, a invertir, a innovar y a conquistar mercados externos. La condición necesaria para ello es contar con instituciones fuertes en el marco de la Constitución; asegurar la plena vigencia de la República; la división de poderes; una justicia verdaderamente independiente y la libertad de prensa. Para llevar a cabo eficazmente la tarea de volver a poner",
+   "pdf": "https://www.aeanet.net/assets/images/Instituciones_para_el_desarrollo.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "documento doctrinario sobre instituciones y desarrollo"
+  },
+  {
+   "fecha": "2020-09-30",
+   "titulo": "La AEA se reunión con Miguel A. Pesce, Presidente del Banco Central.",
+   "texto": "El presidente del Banco Central de la República Argentina, Miguel Ángel Pesce, mantuvo un encuentro con empresarios miembros de la Asociación Empresaria Argentina- AEA. Durante el encuentro realizado en la víspera, se trataron una serie de temas vinculados con la política monetaria que lleva a cabo el BCRA, la necesidad de hacer un esfuerzo significativo para desarrollar el mercado de capitales en el país, y la extrema importancia de que la Argentina acreciente sus exportaciones de bienes y servicios de modo de contar con las divisas que garanticen el crecimiento. También desde la Presidencia del Banco se explicaron las recientes medidas referidas al pago de las obligaciones externas de las ",
+   "pdf": "https://www.aeanet.net/assets/images/Comunicado_de_AEA_30_9.pdf",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "reunión con el presidente del BCRA; el hecho es el encuentro"
+  },
+  {
+   "fecha": "2020-11-19",
+   "titulo": "Aporte Solidario y Extraordinario",
+   "texto": "La Asociación Empresaria Argentina (AEA) hace saber de su total desacuerdo con el proyecto de Ley “Aporte Solidario y Extraordinario…” que obtuvo media sanción en la Cámara de Diputados. El proyecto genera un profundo desaliento en la comunidad empresaria por cuanto representa una medida que descapitaliza a las empresas y restringe fuertemente su capacidad para producir, invertir y sostener empleos formales. El proyecto afecta la propiedad privada al determinar la superposición del nuevo gravamen sobre otros ya existentes como el de Bienes Personales. Incrementa así muy significativamente la ya elevada carga tributaria que soporta el sector formal de la economía a tal punto que puede llegar ",
+   "pdf": "https://www.aeanet.net/assets/images/Comunicado_AEA_19_11.pdf",
+   "postura": "critica",
+   "destinatario": "congreso",
+   "motivo": "desacuerdo con el proyecto de Aporte Solidario, con media sanción"
+  },
+  {
+   "fecha": "2021-03-07",
+   "titulo": "Jaime Campos: “Para que la economía crezca primero tenemos que alcanzar consensos básicos y definir a dónde queremos ir”",
+   "texto": "El titular de la Asociación Empresaria Argentina resalta que la dirigencia política y empresaria tiene que ponerse de acuerdo y establecer reglas claras para poner iniciar un proceso de recuperación. “Nos parece fundamental que, entre todos los argentinos, reconozcamos que venimos de muchas décadas de muy mala performance económica. Este es un dato duro que tenemos que reconocer con toda claridad. No es sólo en comparación con los países desarrollados, sino con buena parte de los países de América latina”, dice Jaime Campos, presidente de la Asociación Empresaria Argentina (AEA). En las compañías que conforman esa entidad creen que “para revertir esta realidad, hay que hacer un esfuerzo muy ",
+   "pdf": null,
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "entrevista del presidente de AEA sobre consensos"
+  },
+  {
+   "fecha": "2021-03-07",
+   "titulo": "Apoyo empresario tras el embate oficial. “Sin una Justicia independiente es imposible crecer”, según AEA",
+   "texto": "El presidente de la Asociación Empresaria Argentina llamó a respetar las instituciones, luego del discurso presidencial y de las críticas de Cristina Kirchner al Poder Judicial. Por desconfianza a la exposición pública o por temor a represalias sobre sus compañías, los dueños de las empresas argentinas suelen esquivar los micrófonos. Pero siempre tienen una voz. Jaime Campos, presidente de la Asociación Empresaria Argentina (AEA), habla en nombre de los hombres más poderosos del país, entre los que están Paolo Rocca (Techint), Luis Pagani (Arcor), Carlos Miguens (Grupo Miguens), Alfredo Coto (Coto), Héctor Magnetto (Clarín), Sebastián Bagó (Laboratorios Bagó), Cristiano Rattazzi (FCA), Enriq",
+   "pdf": null,
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "'tras el embate oficial': responde al discurso presidencial contra la Justicia"
+  },
+  {
+   "fecha": "2021-03-09",
+   "titulo": "Potenciar al sector privado:Clave para el desarrollo",
+   "texto": "Nuestro país viene de muchas décadas de muy mala performance económica. Circunstancia que no ha ocurrido en la mayoría de los demás países de la región. Como resultado tenemos un estancamiento en el ingreso por habitante y la pobreza ha aumentado muy significativamente. Para revertir esta realidad es necesario que entre todos trabajemos para establecer ciertos consensos básicos que permitan poner a la Argentina en la senda del desarrollo económico y social sustentable. En este sentido creemos que la clave es brindarle a los emprendedores, así como a las pequeñas, medianas y grandes empresas, señales claras en cuanto que se hará todo lo posible para favorecer la movilización de las energías y",
+   "pdf": null,
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "documento doctrinario sobre el rol del sector privado"
+  },
+  {
+   "fecha": "2021-05-18",
+   "titulo": "Exportar es vital para crecer",
+   "texto": "El futuro argentino depende vitalmente de las exportaciones. Sólo exportando más saldremos del estancamiento y nos encaminaremos hacia el desarrollo. Restringir las exportaciones de carne vacuna es una decisión muy negativa que nos aleja de dicho objetivo. Afectará a toda la cadena de valor de dicha actividad distribuida en diversas regiones de nuestro país, nos hará perder valiosas divisas, y desalentará inversiones y la generación de empleo en el sector. Pondrá también en riesgo el acceso a mercados en el exterior que con tanto esfuerzo se ha logrado abastecer. Además, por ser una actividad fuertemente identificada con la Argentina representará una señal muy negativa para la concreción de ",
+   "pdf": "https://www.aeanet.net/prensa/Exportar%20es%20vital%20para%20crecer.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "documento doctrinario sobre exportaciones"
+  },
+  {
+   "fecha": "2021-05-19",
+   "titulo": "Ministerio Público: evitar un grave retroceso institucional",
+   "texto": "El proyecto de modificación de las normas que reglamentan el funcionamiento del Ministerio Público, de aprobarse en el Congreso Nacional, tendría un efecto muy negativo sobre una de las instituciones centrales de la República y, por consiguiente, sobre la marcha de la economía de nuestro país. El Ministerio Público es un órgano clave en la administración de justicia. Las modificaciones que se proponen debilitan enormemente la independencia del Procurador General y de la actuación de los fiscales, en particular cuando corresponda poner límites a posibles abusos de poder por parte de la autoridad política. Las inversiones que se requieren para retomar la senda del crecimiento necesitan de un m",
+   "pdf": "https://www.aeanet.net/prensa/Proyecto%20de%20modificaci%C3%B3n%20del%20Ministerio%20P%C3%BAblico.pdf",
+   "postura": "critica",
+   "destinatario": "congreso",
+   "motivo": "proyecto de reforma del Ministerio Público en trámite legislativo"
+  },
+  {
+   "fecha": "2021-10-20",
+   "titulo": "Comunicado de AEA sobre Control de Precios",
+   "texto": "La reciente resolución de la Secretaría de Comercio Interior respecto de la fijación de precios máximos es una medida muy negativa para el funcionamiento habitual de las empresas establecidas en nuestro país. La experiencia de Argentina y mundial es muy elocuente en cuanto a que los congelamientos de precios no resuelven el problema de la inflación. Esta medida, al alterar significativamente la previsibilidad necesaria, desalienta la realización de inversiones productivas y la generación de nuevos empleos por parte del sector privado, que es el actor central del desarrollo económico y social.",
+   "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_20_10_2021.pdf",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "resolución de la Secretaría de Comercio sobre precios máximos"
+  },
+  {
+   "fecha": "2021-12-21",
+   "titulo": "AEA celebró su Asamblea anual",
+   "texto": "La Asociación Empresaria Argentina -AEA- celebró hoy su Asamblea Anual seguida de un almuerzo de fin de año. En la Asamblea, Jaime Campos fue reelecto de manera unánime como Presidente de la institución por un nuevo período. También se reeligieron en sus cargos Luis A. Pagani y Cristiano Rattazzi como Vicepresidentes, Alberto Grimoldi como Secretario, Enrique Cristofani como Tesorero, y Eduardo Elsztain, Norberto Morita, Alejandro Bulgheroni y María Luisa Macchiavelo como Vocales. Se designó también a Luis Perez Companc como Vicepresidente. También se reeligieron como Revisores de Cuenta titular y suplente a los Sres. Santiago Mignone y Amadeo Vázquez respectivamente. De tal forma, la nueva ",
+   "pdf": "https://www.aeanet.net/prensa/AEA_Nota_de_Pr nsa_21_Diciembre.pdf.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "asamblea anual de la entidad"
+  },
+  {
+   "fecha": "2021-12-23",
+   "titulo": "Alerta empresaria por la intención del Gobierno de subir la presión fiscal al sector privado",
+   "texto": "Afirman que la posibilidad de aumentar Ingresos Brutos, gravar a la herencia, y las nuevas alzas en las alícuotas de Bienes Personales, entre otras iniciativas, impactará en la inversión y en la generación de empleo Algunas iniciativas que incluía el proyecto de presupuesto 2022 -que finalmente naufragó en el Congreso-, la suba de alícuotas de Bienes Personales y, ahora, el pacto fiscal que impulsa el Gobierno hacen sonar las alarmas en las empresas. Para los hombres de negocios, la carga tributaria sobre el sector privado es muy alta en la Argentina y desincentiva la inversión, el crecimiento y la generación de empleo; la mayor presión fiscal, indicaron, alienta la informalidad. Por otro la",
+   "pdf": null,
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "alerta por la intención del Gobierno de subir la presión fiscal"
+  },
+  {
+   "fecha": "2021-12-23",
+   "titulo": "Los empresarios ante el nuevo consenso fiscal Jaime Campos: “Subir impuestos es muy malo para la economía, genera más evasión”",
+   "texto": "El presidente de la Asociación Empresaria Argentina sostiene que la suba de alícuotas máximas de Ingresos Brutos a casi todas las actividades y la posible creación de nuevos tributos impactan “muy negativamente” sobre la inversión y el empleo. Argentina ya tiene 177 impuestos y la presión fiscal más alta de la región. Tras el Presupuesto fallido, la reacción del Gobierno fue salir a buscar un nuevo Consenso Fiscal con las provincias. La iniciativa posibilita crear nuevos impuestos, como por ejemplo, el de la herencia y también recurrir a las alícuotas máximas de ingresos brutos o elevar las que rigen en las transferencias de inmuebles y autos, además de gravar el comercio electrónico. Era de",
+   "pdf": null,
+   "postura": "critica",
+   "destinatario": "provincias_municipios",
+   "motivo": "consenso fiscal: suba de Ingresos Brutos, tributo provincial"
+  },
+  {
+   "fecha": "2022-01-28",
+   "titulo": "Una decisión muy relevante",
+   "texto": "La Asociación Empresaria Argentina -AEA- expresa su satisfacción por el acuerdo alcanzado con el Fondo Monetario Internacional. Ello significa un paso muy importante e indispensable para el desarrollo económico y social del país. En efecto, el cumplimiento de los compromisos y el acceso al financiamiento nacional e internacional representan factores decisivos para que el sector privado pueda desplegar todo su potencial en materia de crecimiento económico, creación de empleo y generación de divisas para el desarrollo.",
+   "pdf": "https://www.aeanet.net/prensa/28_01.pdf",
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "satisfacción por el acuerdo con el FMI firmado por el Gobierno"
+  },
+  {
+   "fecha": "2022-01-31",
+   "titulo": "La corte suprema: Pilar de la República",
+   "texto": "La Asociación Empresaria Argentina –AEA– subraya la extrema relevancia de respetar plenamente a la Corte Suprema de Justicia de la Nación y a sus autoridades como titulares de uno de los tres Poderes establecidos en la Constitución Nacional y pilares de la República. El reconocimiento a la dignidad de la Justicia y en particular de la Corte Suprema y sus autoridades, es la base de la convivencia civilizada y un requisito institucional indispensable para encaminar a nuestro país en la senda del desarrollo económico y social sostenido.",
+   "pdf": "https://www.aeanet.net/prensa/La_Corte_Suprema_Pilar%20de%20la%20Rep%C3%BAblica.pdf",
+   "postura": "neutro",
+   "destinatario": "judicial",
+   "motivo": "defensa institucional de la Corte Suprema"
+  },
+  {
+   "fecha": "2022-04-20",
+   "titulo": "Más impuestos = Menos inversiones y empleo",
+   "texto": "Argentina debe volver a retomar la senda del desarrollo económico y social sostenible. Para ello resulta esencial generar las condiciones para que las pequeñas, medianas y grandes empresas puedan concretar inversiones que generen empleo y hagan crecer la producción y las exportaciones. La creación de nuevos impuestos -como el recientemente anunciado “impuesto a la renta inesperada”- va en la dirección opuesta a lo señalado. En Argentina ya están en vigencia 165 impuestos y la carga tributaria sobre el sector formal de la economía es muy elevada y ha crecido fuertemente en los últimos 20 años, superando holgadamente el promedio de la región. Con menos impuestos generaremos más inversiones y e",
+   "pdf": "https://www.aeanet.net/prensa/prensa_20_4.pdf",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "responde al aumento de la presión tributaria"
+  },
+  {
+   "fecha": "2022-04-20",
+   "titulo": "Jaime Campos, presidente de la AEA: “Hace 15 años que la Argentina está estancada”",
+   "texto": "El presidente de la Asociación Empresaria Argentina (AEA), Jaime Campos, charló con Eduardo Feinmann en “Alguien tiene que decirlo” sobre la implementación del nuevo impuesto a la “renta inesperada” y la falta de inversión en el país. Jaime Campos, presidente de la Asociación Empresaria Argentina (AEA), charló con Eduardo Feinmann en “Alguien tiene que decirlo” sobre la implementación del nuevo impuesto a la “renta inesperada” y la falta de inversión en el país. “En Argentina hay 165 impuestos. ¿Otro impuesto más es necesario? Un impuesto más significa que uno envía un mensaje a toda la gente que empezar a hacer actividades económicas en Argentina va a ser cada vez más difícil”, comenzó dici",
+   "pdf": null,
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "entrevista radial sobre el estancamiento de la economía"
+  },
+  {
+   "fecha": "2022-06-07",
+   "titulo": "AEA celebra sus 20 años",
+   "texto": "En un evento que reunió a la dirigencia empresarial del país, la Asociación Empresaria Argentina remarcó la necesidad de respetar las instituciones democráticas y promover la iniciativa privada para generar empleo y lograr un desarrollo sostenido para el país. Buenos Aires, 7 de junio de 2020. Como parte de la celebración por su 20 aniversario, la Asociación Empresaria Argentina (AEA) tuvo hoy su Jornada anual en el Sheraton Park Tower de Buenos Aires, en la que se reunieron empresarios, líderes políticos, periodistas, economistas y otros invitados especiales. Tras las palabras de apertura del Presidente de AEA, Jaime Campos, el evento, titulado “El Sector Privado es el factor clave para el ",
+   "pdf": "https://www.aeanet.net/prensa/AEA_Aniversario_2022.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "aniversario de la entidad"
+  },
+  {
+   "fecha": "2022-09-02",
+   "titulo": "La AEA repudia el atentado a Cristina Fernández de Kirchner",
+   "texto": "La Asociación Empresaria Argentina (AEA) manifiesta su repudio absoluto al atentado que sufriera la Vicepresidenta de la Nación. Y su total rechazo a todo hecho de violencia. Todos en nuestro querido país debemos trabajar para consolidar la paz y promover la convivencia.",
+   "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_Repudio.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "repudio al atentado contra la Vicepresidenta"
+  },
+  {
+   "fecha": "2022-12-23",
+   "titulo": "La Constitución debe respetarse",
+   "texto": "La Asociación Empresaria Argentina, AEA, subraya la extrema gravedad que supone que el Poder Ejecutivo pretenda no cumplir un fallo de la Corte Suprema de Justicia de la Nación. La República se construye sólo sobre el respeto a la institucionalidad establecida en nuestra Constitución Nacional.",
+   "pdf": "https://www.aeanet.net/prensa/La_Constitución_debe_respetarse_23_12_22.pdf",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "el PEN pretende no cumplir un fallo de la Corte Suprema"
+  },
+  {
+   "fecha": "2023-01-19",
+   "titulo": "La Corte Suprema: Pilar de la República",
+   "texto": "La Asociación Empresaria Argentina – AEA - sostiene una vez mas la imperiosa necesidad de que en nuestro país se acate plenamente el Estado de Derecho y la División de Poderes que establece la Constitución Nacional. En tal sentido, y en las actuales circunstancias, se vuelve imperativo subrayar el respeto a la independencia del Poder Judicial y a las autoridades y sentencias de la Corte Suprema de Justicia de la Nación. Iniciar un proceso de juicio político a los miembros de la CSJN por no compartir el contenido de sus sentencias, altera muy negativamente tanto la esencia del pacto constituyente sobre el que se edifica nuestra convivencia, como las perspectivas de crecimiento, de inversiones",
+   "pdf": "https://www.aeanet.net/prensa/La_Corte_Suprema_Pilar_19_01_23.pdf",
+   "postura": "neutro",
+   "destinatario": "judicial",
+   "motivo": "defensa institucional del Estado de Derecho y la Corte"
+  },
+  {
+   "fecha": "2023-03-08",
+   "titulo": "AEA Incorporó nuevos socios y celebró su asamblea",
+   "texto": "Los empresarios miembros de la Asociación Empresaria Argentina -AEA- se reunieron hoy en un Encuentro Interno. Se celebró, en primer lugar, la incorporación de los siguientes empresarios como nuevos miembros de AEA (se adjuntan referencias): Claudia Álvarez Argüelles – Presidente y Ceo de Hoteles Álvarez Argüelles. Pierpaolo Barbieri – Fundador y Ceo de Ualá. Martín Castelli – Presidente de Blue Star Group. Enrique Duhau – Presidente de Administración Enrique Duhau. Ignacio Lartirigoyen – Cofundador y Presidente de Lartirigoyen & Cía. El ingreso a la Asociación de estos empresarios fortalece el perfil de la AEA en cuanto entidad representativa del empresariado, y representa un aporte importa",
+   "pdf": "https://www.aeanet.net/prensa/AEA_Nota_de_Prensa_8_Marzo_2023.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "asamblea e incorporación de socios"
+  },
+  {
+   "fecha": "2023-04-01",
+   "titulo": "Señales Negativas",
+   "texto": "En momentos en que es indispensable que desde la política se brinden señales orientadas a promover el papel del sector privado, lamentablemente debemos destacar un par de ellas que van en sentido contrario. Es muy negativa la reciente decisión de la AFIP (RG 5339) mediante la cual se vuelve a incrementar la ya muy alta presión tributaria sobre el sector formal al encarecérsele el abastecimiento de bienes y equipamiento importado. Ello implica una carga pública adicional sobre las empresas. Otra señal desacertada es que se haya responsabilizado a directivos de empresas -como ha sido el caso de EDESUR- de situaciones que son consecuencia del incumplimiento de los marcos regulatorios que limita",
+   "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_Señales_Negativas _1_04_23.pdf",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "'Señales Negativas' sobre el trato al sector privado"
+  },
+  {
+   "fecha": "2023-05-11",
+   "titulo": "AEA se reunió con Horacio Rodríguez Larreta",
+   "texto": "En el día de ayer empresarios integrantes de la Asociación Empresaria Argentina –AEA- se reunieron con Horacio Rodríguez Larreta, Jefe de Gobierno de la Ciudad de Buenos Aires y precandidato a Presidente. En la oportunidad Horacio Rodríguez Larreta destacó que “El cambio que tenemos que llevar adelante en el país tiene que ser profundo y sostenerse en el tiempo. Hay que estabilizar la economía primero que nada y hacer las reformas estructurales que el país necesita para volver a generar trabajo”. También, señaló que “Juntos por el Cambio está más unido que nunca. En una interna es normal que haya discusiones, pero la unidad está fuera de toda discusión. La gente va a elegir al candidato, y a",
+   "pdf": "https://www.aeanet.net/prensa/AEA_se_reunió_con_Horacio_Rodríguez_Larreta_11_de_Mayo_2023.pdf",
+   "postura": "neutro",
+   "destinatario": "provincias_municipios",
+   "motivo": "reunión con el Jefe de Gobierno porteño"
+  },
+  {
+   "fecha": "2023-06-06",
+   "titulo": "AEA se reunió con Esteban Bullrich",
+   "texto": "En el día de hoy empresarios integrantes de la Asociación Empresaria Argentina –AEA- se reunieron con el Ex – Senador Esteban Bullrich. En la oportunidad Bullrich hizo la presentación de su propuesta sintetizada en “Los 12 puntos del Nuevo Acuerdo para la Concordia Nacional\". Desde la AEA, su Presidente Jaime Campos agradeció la visita del Ex Senador y destacó la importancia de los 12 puntos. Sin duda profundizar la construcción de consensos contribuirá al desarrollo económico y social de la Argentina. Campos destacó también que los puntos propuestos para el Acuerdo son compartidos desde la AEA. En la oportunidad, se coincidió en la necesidad de respetar las Instituciones de la República con",
+   "pdf": "https://www.aeanet.net/prensa/AEA_se_reunió_con_Esteban_Bullrich _6_de_Junio_2023.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "reunión con un ex senador"
+  },
+  {
+   "fecha": "2023-07-15",
+   "titulo": "AEA se reunió con Patricia Bullrich",
+   "texto": "En el marco de un programa de reuniones con precandidatos, en el día de ayer empresarios integrantes de la Asociación Empresaria Argentina -AEA- se reunieron con Patricia Bullrich precandidata a Presidente. En la oportunidad Patricia Bullrich destacó que: \"Creemos en un capitalismo de reglas, en la seguridad jurídica, que la actividad privada tiene que ser mucho más importante que la pública, creemos en las empresas grandes, medianas y pequeñas. Necesitamos tener un país que despliegue sus capacidades de inversión, que defienda lo privado. Hay que desarmar la trampa de las leyes que traban la producción\". También, hizo saber que “Se necesita orden en la economía, ordenamiento de los precios,",
+   "pdf": "https://www.aeanet.net/prensa/AEA_se_reunió_con_Patricia_Bullrich_15_de_Junio_2023.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "reunión con una precandidata presidencial"
+  },
+  {
+   "fecha": "2023-07-22",
+   "titulo": "Otra señal negativa",
+   "texto": "Nuestro país necesita con urgencia que se adopten medidas para reducir la muy alta presión tributaria sobre el sector formal de la economía. Lamentablemente, la Resolución 5391/23 de la AFIP mediante la cual se dispone que un conjunto de empresas deban pagar un anticipo del Impuesto a las Ganancias, va en la dirección contraria. En efecto, esta decisión vuelve a incrementar la carga tributaria, ya que las empresas se verán obligadas a abonar un nuevo anticipo, con el agravante de que este tributo se pagará por ganancias no realizadas. Adicionalmente, la medida afectará el capital de trabajo de las empresas y generará una pérdida financiera. Argentina necesita imperiosamente retomar el crecim",
+   "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_Otra_Señal_Negativa_22_07_23.pdf",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "Resolución 5391/23 de AFIP, organismo del PEN"
+  },
+  {
+   "fecha": "2023-07-25",
+   "titulo": "Más impuestos no es el camino",
+   "texto": "El Poder Ejecutivo ha vuelto a incrementar la presión tributaria. Esta vez con medidas que impactan sobre la competitividad de las exportaciones y generan costos retroactivos sobre importaciones ya pautadas. Esta decisión, que implica la creación discrecional de nuevos impuestos omitiendo la participación del Congreso Nacional, genera enorme preocupación en el mundo empresario. Reiteramos una vez más que el sector formal de la economía soporta una presión fiscal altísima, y es urgente trabajar para reducirla. Solo así se generarán las condiciones para un desarrollo económico y social sustentable.",
+   "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_Más_impuestos_no_es_el_camino_25_07_23.pdf",
+   "postura": "critica",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "'el Poder Ejecutivo ha vuelto a incrementar la presión tributaria'"
+  },
+  {
+   "fecha": "2023-09-09",
+   "titulo": "El sector privado es clave para el desarrollo",
+   "texto": "Los empresarios miembros de la Asociación Empresaria Argentina (AEA) comparten con la sociedad este documento que expresa la convicción central de la entidad: “El desarrollo económico y social de la Argentina depende de que puedan movilizarse plenamente las potencialidades y energías del sector privado.” El documento destaca las principales condiciones necesarias para movilizar las vastas capacidades productivas del sector privado argentino, y hacer posible así un desarrollo económico y social sustentable. Son las empresas las que, a pesar de los altibajos de la economía, han invertido en el país durante décadas. Son las empresas las principales generadoras de empleo para los argentinos. Son",
+   "pdf": "https://www.aeanet.net/prensa/AEA_El sector_privado_es_clave_para_el_desarrollo_9_de_Septiembre_2023.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "documento doctrinario sobre el sector privado"
+  },
+  {
+   "fecha": "2023-11-19",
+   "titulo": "AEA Felicita al Presidente electo Javier Milei",
+   "texto": "Con gran satisfacción destacamos que hoy, una vez más, la democracia se ha visto consolidada en nuestro país. Felicitamos al Presidente electo Javier Milei, y le deseamos el mayor de los éxitos en poner a la Argentina en la senda del desarrollo económico y social, para lo cual los empresarios adelantamos nuestra voluntad de contribuir a que ello ocurra.",
+   "pdf": "https://www.aeanet.net/prensa/Felicitaciones_al_Presidente_electo_20_11_23.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "felicitación por el resultado electoral; regla explícita: no comenta una medida"
+  },
+  {
+   "fecha": "2023-12-21",
+   "titulo": "Una oportunidad histórica",
+   "texto": "El inicio del nuevo gobierno genera la esperanza de que nuestro país pueda revertir un largo período caracterizado por el estancamiento económico, altísimas tasas de inflación, y un muy significativo aumento de la pobreza. Acertadamente, el gobierno del Presidente Javier Milei ha puesto foco en dos puntos centrales que explican ese muy mal desempeño: el tamaño excesivo del Estado en relación con el PBI, y las consecuencias muy negativas que han tenido por largas décadas los déficits en las cuentas públicas. También valoramos muy especialmente, que el gobierno se disponga a tomar medidas que permitan el más pleno desarrollo del sector privado, sometido por años a injerencias estatales indebid",
+   "pdf": "https://www.aeanet.net/prensa/Una_oportunidad_histórica_21_Diciembre_2023.pdf",
+   "postura": "dudoso",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "respalda el rumbo del gobierno entrante pero no una medida concreta: expectativa, no postura sobre un acto"
+  },
+  {
+   "fecha": "2024-02-03",
+   "titulo": "Un paso muy importante",
+   "texto": "La aprobación en general por parte de la Cámara de Diputados del Proyecto de Ley de Bases y Puntos de Partida para la Libertad de los Argentinos, representa un paso muy importante. Esta decisión adoptada en el marco de las instituciones que integran nuestra Constitución Nacional contribuye a despejar la incertidumbre ya que, como lo hemos afirmado reiteradamente, es el sistema representativo republicano y federal de gobierno el fundamento central de nuestra vida política y social y el factor crucial para el desempeño del sector privado. En efecto, en Argentina es imprescindible generar las condiciones que promuevan las decisiones de inversión y hagan posible la plena movilización de las capa",
+   "pdf": "https://www.aeanet.net/prensa/AEA_Un_paso_muy_importante_3_2_2024.pdf",
+   "postura": "apoyo",
+   "destinatario": "congreso",
+   "motivo": "aprobación en general de la Ley Bases POR DIPUTADOS; regla: se codifica donde se resuelve el asunto"
+  },
+  {
+   "fecha": "2024-03-04",
+   "titulo": "El Pacto de Mayo: Un paso muy positivo",
+   "texto": "La decisión de avanzar con un Pacto que busque abordar cuestiones que han obstaculizado por años el desarrollo de nuestro país representa una decisión de gran relevancia. En efecto, por largo tiempo Argentina ha visto limitada su capacidad de crecer, de generar empleo y de posibilitar una mejora sustancial en el nivel de vida de su población, por restricciones emanadas de sus recurrentes crisis fiscales. La propuesta del Pacto de establecer un acuerdo de fondo sobre el equilibrio fiscal y sobre la necesidad de reducir el elevado gasto público, es por demás pertinente y urgente. Lo mismo puede decirse – como lo hemos venido señalando repetidamente desde la AEA – de la necesidad de llevar a ca",
+   "pdf": "https://www.aeanet.net/prensa/AEA_El_Pacto_de_Mayo_Un_paso_muy_positivo.pdf",
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "el Pacto de Mayo es una iniciativa presidencial"
+  },
+  {
+   "fecha": "2024-07-16",
+   "titulo": "Encuentro de AEA con el Jefe de gabinete Dr. Guillermo Francos",
+   "texto": "En el día de hoy se realizó un encuentro entre el Jefe de Gabinete de Ministros de la Nación, Dr. Guillermo Francos y empresarios miembros de la Asociación Empresaria Argentina -AEA- Desde la AEA se destacaron durante la reunión las amplias coincidencias con los contenidos del Pacto de Mayo. Específicamente, respecto a la inviolabilidad de la propiedad privada, a asegurar el equilibrio fiscal, la reducción del gasto público, la reducción de la muy alta presión tributaria, la necesidad de avanzar en una reforma previsional, y en una actualización de las normas laborales. También se coincidió en la necesidad de priorizar la educación inicial, primaria y secundaria, en redefinir el modelo actua",
+   "pdf": "https://www.aeanet.net/prensa/Encuentro_de_AEA_con_el_Jefe_de_Gabinete_Guillermo_Francos_16_de_julio.pdf",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "encuentro con el Jefe de Gabinete"
+  },
+  {
+   "fecha": "2024-12-17",
+   "titulo": "AEA Recibió al ministro Luis Caputo",
+   "texto": "La Asociación Empresaria Argentina -AEA- recibió al Ministro de Economía Luis Caputo como invitado de honor en su almuerzo de fin de año. En la oportunidad Jaime Campos, Presidente de AEA, le expresó al Ministro el reconocimiento de la entidad por los resultados exitosos que ha tenido su gestión en este primer año de gobierno. Señaló que desde la AEA se comparte plenamente la fuerte convicción de las autoridades de avanzar decididamente en la reducción del peso del Estado sobre la sociedad civil, ya que ello es un prerrequisito imprescindible para echar las bases de un crecimiento basado en el protagonismo del sector privado. En tal sentido, destacó como muy positivas las políticas orientada",
+   "pdf": "https://www.aeanet.net/prensa/AEA_recibió_al_Mtro_Caputo_17_Diciembre_2024.pdf",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "almuerzo con el ministro de Economía"
+  },
+  {
+   "fecha": "2025-04-13",
+   "titulo": "Satisfacción de la AEA por el acuerdo con el FMI",
+   "texto": "Para la AEA la suscripción del Acuerdo con el FMI es un hecho muy trascendente ya que contribuirá a generar las condiciones para dinamizar la actividad económica, aumentar la previsibilidad y promover las inversiones productivas. La decisión de ir en camino a la eliminación total de las restricciones cambiarias, así como el mantenimiento del superávit fiscal, la disminución de la emisión monetaria, la baja del gasto público y la reducción de la presión tributaria, contribuirán significativamente a la movilización de la actividad empresaria.",
+   "pdf": "https://www.aeanet.net/prensa/Satisfacción_de_AEA_por_Acuerdo_FMI_11_4_2025.pdf",
+   "postura": "apoyo",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "acuerdo con el FMI; regla explícita: se valora la decisión del Gobierno de firmarlo"
+  },
+  {
+   "fecha": "2025-05-13",
+   "titulo": "Encuentro de AEA con el Gobernador de Neuquén, Rolando Figueroa",
+   "texto": "En el marco de un Ciclo de Encuentros con Gobernadores de todo el país, el día de hoy se realizó una reunión entre empresarios miembros de AEA y el Gobernador de la Provincia de Neuquén, Cdor. Rolando Figueroa. Desde la AEA, su Presidente Jaime Campos, destacó la relevancia del sector privado como el actor central del desarrollo y subrayó la significación del diálogo entre los sectores público y privado. Señaló también, como muy positivas las políticas orientadas a favorecer la competividad del sector privado en diversas áreas y, en especial, en todo lo que signifique reducir significativamente la presión tributaria. “Estamos convencidos de que ahora para la Argentina le va a ir bien a Neuqu",
+   "pdf": "https://www.aeanet.net/prensa/Encuentro_AEA_Gob_Nequen_Figueroa.pdf",
+   "postura": "neutro",
+   "destinatario": "provincias_municipios",
+   "motivo": "encuentro con el gobernador de Neuquén"
+  },
+  {
+   "fecha": "2025-07-15",
+   "titulo": "Encuentro de AEA con el Gobernador de Catamarca, Raúl Jalil",
+   "texto": "En el marco de un Ciclo de Encuentros con Gobernadores de todo el país, el día de hoy se realizó una reunión entre empresarios miembros de AEA y el Gobernador de la Provincia de Catamarca, Raúl Jalil. Desde la AEA, su Presidente Jaime Campos, destacó la contribución decisiva del sector privado al desarrollo económico y social del país, y la necesidad de fortalecer las condiciones para el crecimiento de la inversión privada en las provincias argentínas. Subrayó en tal sentido la importancia de trabajar para que se vaya reduciendo la significativa presión tributaria existente, y de ese modo se dé lugar a un aumento en la competitividad con la que operan las empresas en el país. Por su parte el",
+   "pdf": "https://www.aeanet.net/prensa/Encuentro_AEA_GobCatamarca_Raul Jalil.pdf",
+   "postura": "neutro",
+   "destinatario": "provincias_municipios",
+   "motivo": "encuentro con el gobernador de Catamarca"
+  },
+  {
+   "fecha": "2025-09-10",
+   "titulo": "La empresa privada, un motor para el desarrollo",
+   "texto": "Las empresas privadas constituyen el actor central en el proceso de desarrollo económico y social de un país. Es por ello que cuando dichas empresas encuentran un ambiente que favorece su accionar, toda la sociedad en la que operan ve incrementados significativamente su nivel y calidad de vida. ¿Qué se requiere entonces, y específicamente en el caso de nuestro país, para generar las condiciones que permitan la movilización de las energías de la empresa privada? En el entendimiento que dichas energías se traducen en realidades muy concretas como la incorporación de innovaciones, en la creación de millones de empleos, en la obtención de las divisas necesarias para el crecimiento, y en la gener",
+   "pdf": null,
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "documento doctrinario sobre la empresa privada"
+  },
+  {
+   "fecha": "2025-12-17",
+   "titulo": "AEA Recibió al Presidente del BCRA, Lic. Santiago Bausili.",
+   "texto": "La Asociación Empresaria Argentina -AEA- recibió al Presidente del BCRA, Lic. Santiago Bausili como invitado de honor en su almuerzo de fin de año En la oportunidad Jaime Campos, Presidente de AEA, empezó por reconocer y destacar el éxito del Gobierno nacional en cuanto a reducir significativamente la tasa de inflación. Señaló además, que desde la Asociación se comparte plenamente el énfasis del Gobierno en cuanto a reducir el peso del Estado sobre la economía, en terminar con el déficit fiscal así como en relación a los esfuerzos para reducir la muy alta presión tributaria. En esta nueva etapa habrá que avanzar en un conjunto de políticas orientadas a favorecer la competitividad de la econo",
+   "pdf": "https://www.aeanet.net/prensa/AEA_recibio_Pte_BCRA.pdf",
+   "postura": "neutro",
+   "destinatario": "ejecutivo_nacional",
+   "motivo": "almuerzo con el presidente del BCRA"
+  },
+  {
+   "fecha": "2026-02-22",
+   "titulo": "Jaime Campos – Presidente de la Asociación Empresaria Argentina– AEA",
+   "texto": "En los países libres y modernos el desarrollo económico y social está ligado, entre otras cosas, al aporte que realizan las empresas privadas. Son ellas las responsables de la producción de la mayor parte de los bienes y servicios, de la generación de empleo, de las exportaciones, así como de contribuir a sostener mediante el pago de impuestos el funcionamiento del Estado. La contribución de las empresas privadas se ve vigorizada cuando desde su seno emergen y se expanden aquellas que suelen denominarse empresas líderes. Las empresas líderes se caracterizan por invertir permanentemente de forma de incrementar su competitividad. También por hacer de la innovación parte central de su cultura, ",
+   "pdf": null,
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "documento doctrinario del presidente de la entidad"
+  },
+  {
+   "fecha": "2026-03-03",
+   "titulo": "Comunicado AEA",
+   "texto": "Desde AEA siempre hemos destacado el papel central que desempeñan las empresas privadas en el desarrollo económico y social de las sociedades modernas. Son las empresas privadas las principales responsables de la producción de la mayor parte de los bienes y servicios, de la generación de empleo, de las exportaciones, así como de contribuir a sostener mediante el pago de impuestos el funcionamiento del Estado. Para que dichas empresas puedan desempeñar plenamente su rol, es necesario seguir avanzando en el proceso de estabilización de la economía que permita generar las condiciones para el crecimiento sostenido. Equilibrar las cuentas públicas, evitar la emisión monetaria espuria, reducir pau",
+   "pdf": "https://www.aeanet.net/prensa/Comunicado_AEA_3_03_26.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "documento doctrinario sobre el papel de la empresa privada"
+  },
+  {
+   "fecha": "2026-03-31",
+   "titulo": "Nuevo presidente de AEA",
+   "texto": "En el día de hoy los socios de la AEA llevaron a cabo su Asamblea Anual en la que se eligió por unanimidad como nuevo Presidente a Alejandro Lastra. Los presentes agradecieron especialmente a Jaime Campos por tantos años al frente de la institución y destacaron la gran gestión realizada. Se subrayó el excelente trabajo de traspaso de gestión. Se reeligieron por un nuevo período Luis A. Pagani y Luis Perez Companc; como Vicepresidentes; y Eduardo Elsztain, Alejandro Bulgheroni, María Luisa Macchiavello y Cristiano Ratazzi como Vocales. También se reeligió a Alberto Grimoldi como Secretario. En la oportunidad Alejandro Lastra dijo que: “Es un honor y un privilegio ser el nuevo Presidente de AE",
+   "pdf": "https://www.aeanet.net/prensa/Nuevo_Presidente_de_AEA_31_Marzo_2026.pdf",
+   "postura": "neutro",
+   "destinatario": "externo_o_propio",
+   "motivo": "cambio de autoridades de la entidad"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "_meta": {
+  "descripcion": "Reglas de inclusión y codificación del indicador Apoyo Público (postura empresaria). Escritas ANTES de codificar, como exige ADR-0131. No se tocan una vez que la codificación empezó: si una regla resulta mal planteada se registra el problema y se rehace la pasada entera.",
+  "fecha": "2026-07-26",
+  "protocolo": "ADR-0131",
+  "fuente": "AEA — Asociación Empresaria Argentina, sección Prensa (aeanet.net/prensa.html)",
+  "por_que_aea": "es la asociación empresaria de referencia y publica exclusivamente comunicados de postura, a diferencia de ADEBA —cuyo feed es un boletín regulatorio diario— o de CAC y CAME, que publican agenda institucional y servicios al socio (ADR-0136 y ADR-0139)."
+ },
+
+ "unidad_de_analisis": "un comunicado publicado en la sección Prensa de AEA, con su fecha. Cada uno se codifica una sola vez.",
+
+ "eje_1_postura": {
+  "_definicion": "qué dice el comunicado sobre la medida, la decisión o el hecho que comenta",
+  "apoyo": "respalda, celebra, valora positivamente o expresa satisfacción. Incluye felicitaciones institucionales por una decisión de política.",
+  "critica": "advierte, alerta, rechaza, califica de negativo o pide reversión.",
+  "neutro": "no toma posición sobre una medida: informa una reunión, un encuentro, un cambio de autoridades propias, una condolencia o un acto institucional."
+ },
+
+ "eje_2_destinatario": {
+  "_definicion": "a quién le habla el comunicado. ES OBLIGATORIO CODIFICARLO: el error que hundió a ADEBA (ADR-0136) fue contar como crítica al Gobierno una crítica a municipios, que en los hechos ALINEABA a la cámara con el Gobierno nacional.",
+  "ejecutivo_nacional": "Presidente, ministerios, organismos del PEN, o una política del Gobierno nacional.",
+  "congreso": "el Poder Legislativo nacional o una ley sancionada.",
+  "provincias_municipios": "gobernadores, intendentes, tributos o normas subnacionales.",
+  "judicial": "el Poder Judicial, la Corte Suprema o el Ministerio Público.",
+  "externo_o_propio": "organismos internacionales, otros países, o asuntos internos de la propia cámara."
+ },
+
+ "regla_de_conteo": "SÓLO cuentan los comunicados cuyo destinatario es ejecutivo_nacional. Los demás se codifican y se archivan, pero no entran en el indicador. Un comunicado neutro tampoco cuenta, aunque su destinatario sea el Ejecutivo.",
+
+ "metrica": {
+  "definicion": "saldo de postura en ventana móvil de 12 meses: (apoyos − críticas) / (apoyos + críticas), sobre los comunicados dirigidos al Ejecutivo nacional.",
+  "rango": "−1 (todo crítica) a +1 (todo apoyo)",
+  "sin_comunicados": "si en la ventana no hay ningún comunicado computable, el indicador queda sin valor ese mes y NO se rellena con cero: cero significaría equilibrio entre apoyo y crítica, que es una afirmación distinta de 'no se pronunció'."
+ },
+
+ "casos_limite_resueltos_de_antemano": [
+  "Una felicitación por un resultado electoral es NEUTRO, no apoyo: no comenta una medida de gobierno.",
+  "Un comunicado que critica un proyecto del Congreso impulsado por el Ejecutivo se codifica con destinatario CONGRESO, porque es el ámbito donde se decide. La regla es dónde se resuelve el asunto, no quién lo originó.",
+  "Un comunicado que valora un acuerdo con un organismo internacional firmado por el Gobierno es APOYO al ejecutivo_nacional: lo que se valora es la decisión del Gobierno de firmarlo.",
+  "Una reunión con un funcionario es NEUTRO aunque el texto tenga tono elogioso: el hecho reportado es el encuentro, no una postura sobre una medida.",
+  "Si un comunicado mezcla apoyo a una medida y crítica a otra, se codifica por la que da título al comunicado; si el título no resuelve, se marca DUDOSO para la segunda pasada."
+ ],
+
+ "concordancia": {
+  "pasadas_requeridas": 2,
+  "codificadores_distintos": true,
+  "kappa_minimo": 0.70,
+  "nota": "la segunda pasada la tiene que hacer otra persona. El punto del kappa es que no sea el mismo criterio dos veces."
+ },
+
+ "lo_que_este_indicador_NO_dice": "no mide el humor del empresariado en general ni la opinión de sus asociados: mide qué dijo públicamente, por escrito y con firma institucional, una asociación. Una cámara puede callar por conveniencia y eso no aparece."
+}
