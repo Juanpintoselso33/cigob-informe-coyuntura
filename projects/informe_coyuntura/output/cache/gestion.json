@@ -1,22 +1,22 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-27T04:25:03.401279",
-  "score": 2.2,
+  "generated_at": "2026-07-28T04:09:54.675898",
+  "score": 2.3,
   "itcg": {
-    "valor": 77.6,
+    "valor": 77.4,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "reformas_economicas": {
         "nombre": "Reformas económicas fundamentales",
         "peso": 0.35,
-        "puntaje": 73.9,
+        "puntaje": 73.4,
         "indicadores": {
           "cepo_mulc": {
             "peso": 0.4,
-            "puntaje_banda": 90.4,
-            "puntaje_aplicado": 90.4,
-            "valor": 6.6,
+            "puntaje_banda": 89.0,
+            "puntaje_aplicado": 89.0,
+            "valor": 6.83,
             "peso_efectivo": 0.14
           },
           "apertura_comercial": {
@@ -97,7 +97,7 @@
       "privatizaciones_inversion": {
         "nombre": "Privatizaciones e inversión",
         "peso": 0.15,
-        "puntaje": 58.0,
+        "puntaje": 57.9,
         "indicadores": {
           "privatizaciones": {
             "peso": 0.4,
@@ -108,9 +108,9 @@
           },
           "rigi_inversiones": {
             "peso": 0.4,
-            "puntaje_banda": 51.2,
-            "puntaje_aplicado": 51.2,
-            "valor": 24.2,
+            "puntaje_banda": 51.0,
+            "puntaje_aplicado": 51.0,
+            "valor": 24.1,
             "peso_efectivo": 0.06
           },
           "concesiones_infraestructura": {
@@ -150,15 +150,15 @@
   },
   "indicadores": {
     "cepo_mulc": {
-      "valor": 6.6,
+      "valor": 6.83,
       "unidad": "% de brecha CCL/mayorista",
       "fuente": "https://dolarapi.com/v1/dolares",
-      "fecha_dato": "2026-07-27",
+      "fecha_dato": "2026-07-28",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "reformas_economicas",
-      "puntaje_itcg": 90.4,
-      "puntaje_banda": 90.4,
+      "puntaje_itcg": 89.0,
+      "puntaje_banda": 89.0,
       "peso_efectivo": 0.14
     },
     "apertura_comercial": {
@@ -240,7 +240,7 @@
       "valor": 40.0,
       "unidad": "% de avance (proxy InfoLeg)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-07-27",
+      "fecha_dato": "2026-07-28",
       "desactualizado": false,
       "conteo_normas": 18,
       "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -254,7 +254,7 @@
       "valor": 100.0,
       "unidad": "Índice 0–100 (actos fundamentales del FAL: ley + reglamentación)",
       "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 (normas publicadas)",
-      "fecha_dato": "2026-07-27",
+      "fecha_dato": "2026-07-28",
       "desactualizado": false,
       "actos": [
         {
@@ -484,28 +484,28 @@
       "peso_efectivo": 0.06
     },
     "rigi_inversiones": {
-      "valor": 24.2,
+      "valor": 24.1,
       "unidad": "% de inversión aprobada sobre el pipeline",
       "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-      "fecha_dato": "2026-07-27",
+      "fecha_dato": "2026-07-28",
       "desactualizado": false,
       "proyectos_aprobados": 18,
       "inversion_aprobada_musd": 35714,
-      "proyectos_evaluacion": 24,
-      "inversion_evaluacion_musd": 111982,
+      "proyectos_evaluacion": 25,
+      "inversion_evaluacion_musd": 112210,
       "nota_denominador": null,
-      "detalle_txt": "18 proyectos aprobados (US$ 35.714M) / 24 en evaluación (US$ 111.982M) → 24,2% de la inversión total ya aprobada",
+      "detalle_txt": "18 proyectos aprobados (US$ 35.714M) / 25 en evaluación (US$ 112.210M) → 24,1% de la inversión total ya aprobada",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
-      "puntaje_itcg": 51.2,
-      "puntaje_banda": 51.2,
+      "puntaje_itcg": 51.0,
+      "puntaje_banda": 51.0,
       "peso_efectivo": 0.06
     },
     "concesiones_infraestructura": {
       "valor": 28.7,
       "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
       "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-      "fecha_dato": "2026-07-27",
+      "fecha_dato": "2026-07-28",
       "desactualizado": false,
       "km_adjudicados": 2614,
       "km_totales": 9091,
@@ -527,7 +527,7 @@
       "valor": 100.0,
       "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
       "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-      "fecha_dato": "2026-07-27",
+      "fecha_dato": "2026-07-28",
       "desactualizado": false,
       "ejercicio": 2026,
       "componentes": {
@@ -582,10 +582,10 @@
       "valor": 0,
       "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
       "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-      "fecha_dato": "2026-07-27",
+      "fecha_dato": "2026-07-28",
       "desactualizado": false,
-      "dias_muestreados_mes": 26,
-      "detalle_txt": "0 alertas en 26 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+      "dias_muestreados_mes": 27,
+      "detalle_txt": "0 alertas en 27 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
       "en_indice": false
     },
     "protestas_caba": {

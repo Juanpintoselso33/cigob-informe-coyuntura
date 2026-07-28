@@ -874,8 +874,8 @@ fecha,indicador,valor,unidad,fuente
 2021-08-01,icc_utdt,37.8,índice,"UTDT (ICC, serie XLS)"
 2021-07-01,icc_utdt,39.2,índice,"UTDT (ICC, serie XLS)"
 2021-06-01,icc_utdt,35.6,índice,"UTDT (ICC, serie XLS)"
-2026-07-01,endeudamiento_familiar,43.81,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2026-06-01,endeudamiento_familiar,46.43,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-07-01,endeudamiento_familiar,43.93,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-06-01,endeudamiento_familiar,46.42,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-05-01,endeudamiento_familiar,45.92,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-04-01,endeudamiento_familiar,45.51,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-03-01,endeudamiento_familiar,44.79,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
