@@ -94,7 +94,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
-2026-07-01,ratio_dnu,1.84,DNUs por ley (12m móviles),InfoLeg
+2026-07-01,ratio_dnu,1.88,DNUs por ley (12m móviles),InfoLeg
 2026-06-01,ratio_dnu,2.3,DNUs por ley (12m móviles),InfoLeg
 2026-05-01,ratio_dnu,4.727,DNUs por ley (12m móviles),InfoLeg
 2026-04-01,ratio_dnu,4.0,DNUs por ley (12m móviles),InfoLeg
