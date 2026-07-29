@@ -1390,6 +1390,46 @@ def _utdt_xls(listado_url):
     return x.content
 
 
+def _utdt_niveles(listado_url) -> dict:
+    """{YYYY-MM: nivel} del XLS de una serie histórica de la UTDT.
+
+    Todas las planillas comparten el layout (col 0 fecha, col 1 valor), así que
+    el parseo va una sola vez: había tres copias del mismo loop en este archivo
+    y de ahí salían las divergencias entre la card y su serie."""
+    import xlrd
+    wb = xlrd.open_workbook(file_contents=_utdt_xls(listado_url))
+    ws = wb.sheets()[0]
+    out = {}
+    for i in range(ws.nrows):
+        fc, vc = ws.cell(i, 0), ws.cell(i, 1)
+        if fc.ctype == xlrd.XL_CELL_DATE and vc.ctype == xlrd.XL_CELL_NUMBER:
+            t = xlrd.xldate_as_tuple(fc.value, wb.datemode)
+            out[f"{t[0]}-{t[1]:02d}"] = vc.value
+    return out
+
+
+def fetch_indice_lider_serie(meses: int = 60) -> list:
+    """NIVEL del Índice Líder de la UTDT — el mismo número que publica la card.
+
+    Segundo caso del mismo defecto que `alquiler_real` (auditoría de UI
+    29-jul-2026): la card puntúa —13% de la dimensión empleo del ITVC— y su
+    serie tenía un solo punto porque nunca se registró acá. El componente
+    rebaseado (`itvc_lider`) sí tenía historia, pero es otra escala: 100 =
+    4T-2023, no el nivel que muestra la card.
+
+    Redondeo a 1 decimal, igual que la card en publicar.py, para que G3 cierre.
+
+    Acotada a `meses` como la del ICC: el XLS de la UTDT arranca en 1993 y son
+    402 puntos. No es que sobre historia, es que la sparkline de la card
+    comprime 33 años y el movimiento reciente —lo que la card informa— queda
+    invisible. 60 meses quedan muy por encima del piso de dic-2023.
+    [[YYYY-MM-01, índice]]."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import UTDT_IL_LISTADO
+    niveles = sorted(_utdt_niveles(UTDT_IL_LISTADO).items())
+    return [[f"{ym}-01", round(v, 1)] for ym, v in niveles][-meses:]
+
+
 def fetch_itvc_lider() -> list:
     """I_IL (ADR-0112): Índice Líder de la UTDT rebaseado a 4T-2023.
 
@@ -1398,22 +1438,17 @@ def fetch_itvc_lider() -> list:
     pasó. Se rebasea igual que los demás (100 = 4T-2023) y NO se invierte:
     un líder más alto anticipa mejor actividad, que es mejora.
     [[YYYY-MM-01, índice]]."""
-    import xlrd
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     from config import UTDT_IL_LISTADO
-    wb = xlrd.open_workbook(file_contents=_utdt_xls(UTDT_IL_LISTADO))
-    ws = wb.sheets()[0]
-    crudo = {}
-    for i in range(ws.nrows):
-        fc, vc = ws.cell(i, 0), ws.cell(i, 1)
-        if fc.ctype == xlrd.XL_CELL_DATE and vc.ctype == xlrd.XL_CELL_NUMBER:
-            t = xlrd.xldate_as_tuple(fc.value, wb.datemode)
-            crudo[f"{t[0]}-{t[1]:02d}"] = vc.value
-    return _itvc_rebase(crudo)
+    return _itvc_rebase(_utdt_niveles(UTDT_IL_LISTADO))
 
 
 VIDA_DERIVADAS.append(
     ("itvc_lider", "índice (100 = 4T-2023)", "UTDT — Índice Líder (serie XLS)", fetch_itvc_lider)
+)
+# Unidad y fuente COPIADAS de la card (publicar.py)
+VIDA_DERIVADAS.append(
+    ("indice_lider", "índice", "UTDT — Índice Líder (CIF)", fetch_indice_lider_serie)
 )
 VIDA_DERIVADAS.append(
     ("pobreza_nowcast", "% de personas", "UTDT — Nowcast de Pobreza (informes PDF)",
@@ -1613,6 +1648,32 @@ def fetch_itvc_alimentos() -> list:
         indice = (a_base / alim[ym]) * (gen[ym] / g_base) * 100.0
         out.append([f"{ym}-01", round(indice, 1)])
     return out
+
+
+def fetch_alquiler_real_serie() -> list:
+    """% m/m del IPC-GBA «alquiler de la vivienda» — la misma cuenta que la card.
+
+    La card era la ÚNICA de las 25 de la home sin sparkline, y no era un problema
+    de UI: `alquiler_real` nunca se registró acá, así que su serie tenía un solo
+    punto —el valor del día— cuando la regla del proyecto pide backfill desde
+    dic-2023 (auditoría de UI 29-jul-2026). El componente del ITVC
+    (`itvc_alquiler`) sí tenía historia, pero **mide otra cosa**: encarecimiento
+    relativo al nivel general de GBA, no la variación mensual del alquiler. No
+    son intercambiables.
+
+    Se deriva del NIVEL con `_var_mensual`, que exige meses CONSECUTIVOS, en vez
+    de dividir posiciones adyacentes de la lista descargada: si INDEC saltea un
+    mes, el cociente entre dos observaciones separadas por dos meses se
+    publicaría como variación mensual sin que nada avise (el mismo error que
+    corrigió la auditoría del 18-jul-2026).
+
+    Misma fórmula y mismo redondeo que la card, para que G3 cierre:
+    `(idx_t / idx_{t-1} − 1) × 100` a dos decimales.
+    [[YYYY-MM-01, % m/m]]."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from config import INDEC_SERIES
+    niveles = _nivel_mensual(INDEC_SERIES["ipc_alquiler_gba"])
+    return [[f"{ym}-01", v] for ym, v in sorted(_var_mensual(niveles).items())]
 
 
 def fetch_itvc_alquiler() -> list:
@@ -2043,6 +2104,12 @@ VIDA_DERIVADAS += [
     ("itvc_alimentos", "índice (100 = 4T-2023)", "INDEC IPC Alimentos + IPC general (elab. CIGOB)", fetch_itvc_alimentos),
     ("itvc_tarifas", "índice (100 = 4T-2023)", "INDEC IPC Regulados + RIPTE (elab. CIGOB)", fetch_itvc_tarifas),
     ("itvc_alquiler", "índice (100 = 4T-2023)", "INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)", fetch_itvc_alquiler),
+    # La card de alquiler, con historia. Va acá y no en el literal de
+    # VIDA_DERIVADAS de más arriba porque ese se evalúa antes de que existan
+    # estas funciones. Unidad y fuente COPIADAS de la card (publicar.py): si
+    # divergen, la ficha pública dice una cosa y el CSV de la serie otra.
+    ("alquiler_real", "% m/m alquileres",
+     "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)", fetch_alquiler_real_serie),
     ("itvc_ipi", "índice (100 = 4T-2023)", "INDEC IPI desestacionalizado", fetch_itvc_ipi),
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
