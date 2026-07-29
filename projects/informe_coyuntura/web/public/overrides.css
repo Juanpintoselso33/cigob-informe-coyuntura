@@ -94,6 +94,14 @@
 .cg-tile-badge.estim  { background: var(--bg-page);       color: var(--muted); }
 .cg-tile-desc { margin: 0; font-size: 11.5px; line-height: 1.45; color: var(--muted);
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+/* En una sola columna, 2 líneas son ~10 palabras y la descripción se corta
+   justo donde empezaba a decir algo: "Cuántas de las 24 jurisdicciones del país
+   (23 provincias y la Ciudad de Buenos Aires) figuran…". En desktop las tiles
+   van en grilla y el clamp de 2 mantiene las alturas parejas; en una columna esa
+   razón no aplica, así que se afloja a 4. Sigue acotado: no es quitar el clamp. */
+@media (max-width: 560px) {
+  .cg-tile-desc { -webkit-line-clamp: 4; }
+}
 .cg-tile-value { display: flex; align-items: baseline; gap: 6px; margin-top: 2px; }
 .cg-tile-num { font-family: 'JetBrains Mono', monospace; font-size: 23px; font-weight: 700; color: var(--dark); line-height: 1; }
 .cg-tile-unit { font-size: 12px; color: var(--muted); font-weight: 500; }
@@ -220,7 +228,14 @@
   .cg-ind-sparkline { flex-basis: 46px; }
   .cg-ind-value { font-size: 12px; gap: 5px; }
   .cg-ind-value .cg-ind-unit { font-size: 10px; }
-  .cg-hero-stats { grid-template-columns: 1fr; }
+  /* Se mantiene el 2x2 también acá. Esta regla decía `1fr` desde que se
+     escribió, pero nunca corrió: el contenedor era flex e ignoraba
+     grid-template-columns, así que nadie vio la diferencia entre una y dos
+     columnas a este ancho. Con el contenedor ya en grid, `1fr` dejaría las 4
+     cards apiladas justo en el ancho más común de teléfono (390px = iPhone
+     12-15), que es el problema que la auditoría marcó: una pantalla entera
+     para cuatro datos. Verificado sin desborde a 390px. */
+  .cg-hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   /* filas con chips nowrap: en teléfonos angostos pueden envolver */
   .cg-rob-head { flex-wrap: wrap; }
   .cg-rob-head span:last-child { white-space: normal; }
@@ -1003,6 +1018,16 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 @media (max-width: 34rem) {
   .cg-vin-hero { gap: 18px; }
   .cg-vin-num { font-size: 29px; }
+  /* ÚNICA fuente de scroll horizontal del sitio en mobile (auditoría 29-jul-2026:
+     /gestion/ daba scrollWidth 395 contra un viewport de 390). El culpable es
+     este li: `justify-content: space-between` con el nombre del indicador a la
+     izquierda y `.cg-vin-meses` a la derecha en `white-space: nowrap` — y la
+     fecha larga ("31 de diciembre de 2025 · 6,9 meses") no puede encogerse ni
+     cortarse, así que empuja el li fuera del viewport. Se apila en vez de
+     sacarle el nowrap: mantiene la fecha entera en una línea, que es lo que el
+     nowrap protege (mismo problema que el comentario de la matriz sobre el
+     escalado de fuente de Android partiendo "30 meses"). */
+  .cg-vin-lista li { flex-direction: column; align-items: flex-start; gap: 2px; }
 }
 
 

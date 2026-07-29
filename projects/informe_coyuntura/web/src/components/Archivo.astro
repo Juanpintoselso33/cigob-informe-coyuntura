@@ -1,5 +1,5 @@
 ---
-import { informe, cinturonesRojos, mesLegible } from "../lib/datos.ts";
+import { informe, cinturonesRojos, mesLegible, num } from "../lib/datos.ts";
 const rojos = cinturonesRojos(informe);
 ---
 <section class="cg-section" id="archivo">
@@ -11,7 +11,7 @@ const rojos = cinturonesRojos(informe);
   <div class="cg-archive">
     <article class="cg-archive-card current">
       <div class="cg-archive-period">{mesLegible(informe.period)}</div>
-      <div class="cg-archive-bluf">Resumen editorial pendiente. Score global {informe.score_global}/10, riesgo dominante {informe.barbarismo_activo}.</div>
+      <div class="cg-archive-bluf">Resumen editorial pendiente. Score global {num(informe.score_global)}/10, riesgo dominante {informe.barbarismo_activo}.</div>
       <div class="cg-archive-foot">
         <span class:list={["cg-archive-score", `rojos-${rojos}`]}>{rojos} en rojo</span>
       </div>

@@ -182,7 +182,15 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     margin: 0 auto 24px;
 }
 .cg-hero-stats > * { flex: 1 1 170px; max-width: 240px; }
-@media (max-width: 720px) { .cg-hero-stats { grid-template-columns: repeat(2, 1fr); } }
+/* El 2x2 de mobile era CSS MUERTO: el contenedor es flex y la regla seteaba
+   grid-template-columns, que flex ignora — las 4 cards caían una por fila y se
+   comían una pantalla entera para cuatro datos (auditoría mobile 29-jul-2026).
+   A partir de acá el contenedor SÍ es grid en ese breakpoint, y hay que
+   neutralizar el flex-basis de 170px de los hijos o vuelve a desbordar. */
+@media (max-width: 720px) {
+    .cg-hero-stats { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .cg-hero-stats > * { flex: none; max-width: none; }
+}
 .cg-hero-stat {
     background: var(--paper);
     border: 1px solid var(--bd);
@@ -350,6 +358,17 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     transition: opacity .15s, transform .15s;
 }
 .cg-genoma-seg:hover, .cg-genoma-seg:focus-visible { opacity: 1; transform: scaleY(1.35); }
+/* Área táctil, no cambio visual: el tramo mide 9px de alto y el pie de la barra
+   invita a "tocá un tramo" — 9px es la mitad de un dedo. El ::after la extiende
+   a ~45px sin mover un pixel del diseño ni del layout. Sólo en punteros
+   gruesos: en desktop el hover de 9px con mouse ya funciona y agrandar el área
+   dispararía el tooltip desde lejos. Arriba hay 12px de margen y el título (no
+   interactivo) y abajo el pie de la barra (tampoco), así que no le roba el tap
+   a nada; las filas de indicador quedan más abajo. */
+@media (pointer: coarse) {
+    .cg-genoma-seg { position: relative; }
+    .cg-genoma-seg::after { content: ""; position: absolute; left: 0; right: 0; top: -18px; bottom: -18px; }
+}
 .cg-genoma-seg:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .cg-genoma-seg.sem-verde    { background: var(--verde); }
 .cg-genoma-seg.sem-amarillo { background: var(--amarillo); }

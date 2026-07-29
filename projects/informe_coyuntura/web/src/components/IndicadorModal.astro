@@ -246,9 +246,21 @@ const dimsJson = JSON.stringify(dims);
   const INFO = JSON.parse(document.getElementById("cg-info-data").textContent);
   const SERIES = JSON.parse(document.getElementById("cg-series-data").textContent);
   const modal = document.getElementById("cg-modal");
-  const nf = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 2 });
-  const nfPct = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 1 });
+  // Mismo criterio que num() en datos.ts: coma decimal y menos TIPOGRÁFICO
+  // (U+2212), no el guion. Se envuelve el formateador en vez de tocar los ~6
+  // call-sites, y el CSV descargable no pasa por acá (usa p.valor crudo, que
+  // tiene que quedar parseable).
+  const _nf = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 2 });
+  const _nfPct = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 1 });
+  const nf = { format: (n) => _nf.format(n).replace("-", "−") };
+  const nfPct = { format: (n) => _nfPct.format(n).replace("-", "−") };
   const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  // La ficha mezclaba dos formatos en el MISMO campo: "jun 2026 · dato al
+  // 2026-06-01" — mes legible al lado de un ISO. El resto del sitio usa
+  // dd/mm/aaaa (ver el pie del hero), así que la fecha del dato también.
+  const fechaLegible = (iso) => /^\d{4}-\d{2}-\d{2}$/.test(iso || "")
+    ? `${iso.slice(8, 10)}/${iso.slice(5, 7)}/${iso.slice(0, 4)}`
+    : (iso || "—");
   const pctIndice = (n) => `${nfPct.format(n * 100)}%`;
   function incidenciaIndiceHtml(meta) {
     if (!meta || typeof meta.pesoEfectivo !== "number") return "";
@@ -414,8 +426,8 @@ const dimsJson = JSON.stringify(dims);
         celda("Dimensión", d.dimTxt || "—") +
         celda("Frecuencia", d.frecuencia || "—") +
         celda("Actualización", d.estado === "Automático"
-          ? `${d.periodo || "—"} · dato al ${d.fecha || "—"}`
-          : `${d.fecha || "—"} · ${d.estado}`) +
+          ? `${d.periodo || "—"} · dato al ${fechaLegible(d.fecha)}`
+          : `${fechaLegible(d.fecha)} · ${d.estado}`) +
         celda("Fuente", fuenteCorta, d.fuente);
       mostrarFormula(d.formula, d.formulaLeyenda);
 

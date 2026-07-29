@@ -1,12 +1,11 @@
 ---
-import { informe, CINTURONES, peorDimension, indicadoresRezagados } from "../lib/datos.ts";
+import { informe, CINTURONES, peorDimension, indicadoresRezagados, num } from "../lib/datos.ts";
 
 // "Qué vigilar este mes": watchlist GENERADA del tablero (sin placeholder
 // editorial en producción, hallazgo de la revisión adversarial 2026-07-11).
 // No son recomendaciones prescriptivas — eso requiere firma editorial y se
 // suma con cada edición —: son las dimensiones que más tensión aportan hoy,
 // comparadas en tensión equivalente entre índices (bandas vs base-100).
-const coma = (n: number) => String(n).replace(".", ",");
 const candidatas = CINTURONES
   .map(m => ({ meta: m, c: informe.cinturones[m.key] }))
   .filter(x => x.c)
@@ -32,7 +31,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           </p>
           <div class="cg-rec-meta">
             <span class:list={["cg-rec-pill", pill]}>{pillTxt}</span>
-            <span>{coma(dim.puntaje)}{dim.base100 ? "" : "/100"} · pesa {Math.round(dim.peso * 100)}% de su índice{dim.critica ? " · dimensión crítica" : ""}</span>
+            <span>{num(dim.puntaje)}{dim.base100 ? "" : "/100"} · pesa {Math.round(dim.peso * 100)}% de su índice{dim.critica ? " · dimensión crítica" : ""}</span>
           </div>
         </li>
       );

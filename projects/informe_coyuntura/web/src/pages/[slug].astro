@@ -6,7 +6,7 @@ import IndicadorTile from "../components/IndicadorTile.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import {
   informe, CINTURONES, verdictDeCinturon, indicadoresOrdenados,
-  fuentesDeCinturon, cap, indiceDe, label,
+  fuentesDeCinturon, cap, indiceDe, label, num,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -63,7 +63,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 // área suave en el color del cinturón, franja p05-p95 resaltada, línea del
 // valor publicado y — para índices base-100 — la línea de referencia del 100.
 const rob = indice?.data.robustez ?? null;
-const coma = (v: number) => String(v).replace(".", ",");
 let robSvg: {
   W: number; H: number; base: number; area: string; line: string;
   x05: number; x95: number; xval: number; x100: number | null;
@@ -208,8 +207,8 @@ const robChartData = rob?.hist && indice ? {
       <p class="cg-hero-lead cg-detalle-lead">{meta.sub}.</p>
       <div class="cg-detalle-meta">
         <span class:list={["cg-verdict", verdict]}><span class="cg-verdict-dot"></span>{verdictLabel}</span>
-        <span class="cg-detalle-chip">Score <strong>{c.score}/10</strong></span>
-        {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{indice.data.valor}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
+        <span class="cg-detalle-chip">Score <strong>{num(c.score)}/10</strong></span>
+        {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>
       </div>
@@ -220,7 +219,7 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section">
         <div class="cg-section-head">
           <p class="cg-eyebrow">Índice paramétrico</p>
-          <h2 class="cg-h2">{indice.sigla}: {indice.data.valor}{indice.base100 ? " (base 100 = 4T-2023)" : "/100"} — {indice.data.banda_legible}</h2>
+          <h2 class="cg-h2">{indice.sigla}: {num(indice.data.valor as number)}{indice.base100 ? " (base 100 = 4T-2023)" : "/100"} — {indice.data.banda_legible}</h2>
           <p class="cg-h2-sub">{indice.descripcion}</p>
         </div>
         <div class="cg-itcm-dims">
@@ -230,9 +229,9 @@ const robChartData = rob?.hist && indice ? {
                  role="button" tabindex="0" aria-label={`Ver la composición de ${dim.nombre}`}>
               <div class="cg-itcm-dim-head">
                 <span class="cg-itcm-dim-name">{dim.nombre}</span>
-                <span class="cg-itcm-dim-val"><strong>{dim.puntaje}</strong>{indice.base100 ? "" : "/100"} · pesa {Math.round(dim.peso * 100)}%</span>
+                <span class="cg-itcm-dim-val"><strong>{num(dim.puntaje)}</strong>{indice.base100 ? "" : "/100"} · pesa {Math.round(dim.peso * 100)}%</span>
               </div>
-              <div class="cg-bar" role="img" aria-label={`${dim.puntaje} de 100`}>
+              <div class="cg-bar" role="img" aria-label={`${num(dim.puntaje)} de 100`}>
                 <div class="cg-bar-fill" style={`width:${Math.min(100, dim.puntaje)}%`}></div>
               </div>
               {dim.critica && (
@@ -270,7 +269,7 @@ const robChartData = rob?.hist && indice ? {
               <div class="cg-dim-group-head">
                 <h3 class="cg-dim-group-name">{g.nombre}</h3>
                 <span class="cg-dim-group-meta">
-                  <strong>{g.puntaje}</strong>{indice!.base100 ? "" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.filter(f => !f.ind.cumplido).length} {g.filas.filter(f => !f.ind.cumplido).length === 1 ? "indicador" : "indicadores"}{g.filas.some(f => f.ind.cumplido) && ` + ${g.filas.filter(f => f.ind.cumplido).length} logrado`}
+                  <strong>{num(g.puntaje)}</strong>{indice!.base100 ? "" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.filter(f => !f.ind.cumplido).length} {g.filas.filter(f => !f.ind.cumplido).length === 1 ? "indicador" : "indicadores"}{g.filas.some(f => f.ind.cumplido) && ` + ${g.filas.filter(f => f.ind.cumplido).length} logrado`}
                 </span>
               </div>
               <div class="cg-tile-grid">
@@ -332,10 +331,10 @@ const robChartData = rob?.hist && indice ? {
              aria-label="Ver el detalle del análisis de robustez">
           <div class="cg-rob-head">
             <span>Distribución simulada del {indice.sigla}</span>
-            <span>90% de los casos: <strong>{coma(rob.p05)} – {coma(rob.p95)}</strong></span>
+            <span>90% de los casos: <strong>{num(rob.p05)} – {num(rob.p95)}</strong></span>
           </div>
           <svg class="cg-rob-svg" viewBox={`0 0 ${robSvg.W} ${robSvg.H}`} role="img"
-               aria-label={`Distribución simulada del ${indice.sigla}: entre ${coma(rob.p05)} y ${coma(rob.p95)} en el 90% de los escenarios`}>
+               aria-label={`Distribución simulada del ${indice.sigla}: entre ${num(rob.p05)} y ${num(rob.p95)} en el 90% de los escenarios`}>
             <defs>
               <clipPath id="rob-clip">
                 <rect x={robSvg.x05} y="0" width={robSvg.x95 - robSvg.x05} height={robSvg.H} />
@@ -355,17 +354,17 @@ const robChartData = rob?.hist && indice ? {
                   stroke="var(--bd)" stroke-width="1" />
           </svg>
           <div class="cg-rob-ticks">
-            <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x05)}%`}>{coma(rob.p05)}</span>
-            <span class="cg-rob-tick cg-rob-tick--val" style={`left:${robSvg.pct(robSvg.xval)}%`}>{coma(indice.data.valor)}</span>
-            <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x95)}%`}>{coma(rob.p95)}</span>
+            <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x05)}%`}>{num(rob.p05)}</span>
+            <span class="cg-rob-tick cg-rob-tick--val" style={`left:${robSvg.pct(robSvg.xval)}%`}>{num(indice.data.valor)}</span>
+            <span class="cg-rob-tick" style={`left:${robSvg.pct(robSvg.x95)}%`}>{num(rob.p95)}</span>
             {robSvg.x100 !== null && (
               <span class="cg-rob-tick cg-rob-tick--ext" style={`left:${robSvg.pct(robSvg.x100)}%`}>100 = 4T-23</span>
             )}
           </div>
           <p class="cg-h2-sub">
-            El {indice.sigla} queda entre <strong>{coma(rob.p05)}</strong> y{" "}
-            <strong>{coma(rob.p95)}</strong> en el 90% de los casos (tensión{" "}
-            {coma(rob.tension_rango[0])}–{coma(rob.tension_rango[1])}): la lectura del
+            El {indice.sigla} queda entre <strong>{num(rob.p05)}</strong> y{" "}
+            <strong>{num(rob.p95)}</strong> en el 90% de los casos (tensión{" "}
+            {num(rob.tension_rango[0])}–{num(rob.tension_rango[1])}): la lectura del
             cinturón no depende de la ponderación exacta ni del error de medición de las fuentes.
             {robBajoBase && (
               <Fragment>
@@ -387,7 +386,7 @@ const robChartData = rob?.hist && indice ? {
                  aria-label="Ver el detalle de la validación externa">
               <div class="cg-rob-head">
                 <span>El {indice.sigla} y su contraste externo, mes a mes</span>
-                <span>correlación <strong>{coma(val.r_niveles)}</strong> · {val.n} meses</span>
+                <span>correlación <strong>{num(val.r_niveles)}</strong> · {val.n} meses</span>
               </div>
               <svg class="cg-rob-svg" viewBox={`0 0 ${valSvg.W} ${valSvg.H}`} role="img"
                    aria-label={`Evolución comparada: ${val.serie_label} y ${val.externa_label}`}>
@@ -448,7 +447,7 @@ const robChartData = rob?.hist && indice ? {
                       {cruz.externas.map(e => (
                         // sin espacios entre el número y el span: el salto de línea
                         // quedaba como espacio final y descentraba el número ~6px
-                        <td class:list={[f.propio === e[0] && "es-propio"]}>{(f[e[0]].r > 0 ? "+" : "") + coma(f[e[0]].r)}<span class="cg-cruz-n">{typeof f[e[0]].rd === "number" ? `Δ ${(f[e[0]].rd > 0 ? "+" : "") + coma(f[e[0]].rd)} · ` : ""}{f[e[0]].n} meses</span></td>
+                        <td class:list={[f.propio === e[0] && "es-propio"]}>{(f[e[0]].r > 0 ? "+" : "") + num(f[e[0]].r)}<span class="cg-cruz-n">{typeof f[e[0]].rd === "number" ? `Δ ${(f[e[0]].rd > 0 ? "+" : "") + num(f[e[0]].rd)} · ` : ""}{f[e[0]].n} meses</span></td>
                       ))}
                     </tr>
                   ))}
@@ -476,7 +475,7 @@ const robChartData = rob?.hist && indice ? {
             <div class={`cg-rob cg-rob--${meta.slug} cg-red`}>
               <div class="cg-red-stats">
                 <div class="cg-red-stat">
-                  <span class="cg-red-num">{coma(red.r_abs_medio)}</span>
+                  <span class="cg-red-num">{num(red.r_abs_medio)}</span>
                   <span class="cg-red-lbl">correlación media entre pares</span>
                 </div>
                 <div class="cg-red-stat">
@@ -489,7 +488,7 @@ const robChartData = rob?.hist && indice ? {
                 </div>
                 {red.diferencias?.r_abs_medio != null && (
                   <div class="cg-red-stat cg-red-stat--clave">
-                    <span class="cg-red-num">{coma(red.diferencias.r_abs_medio)}</span>
+                    <span class="cg-red-num">{num(red.diferencias.r_abs_medio)}</span>
                     <span class="cg-red-lbl">al mirar los cambios mes a mes<br/>—sin la tendencia común—</span>
                   </div>
                 )}
@@ -528,7 +527,7 @@ const robChartData = rob?.hist && indice ? {
             </div>
             <div class={`cg-rob cg-rob--${meta.slug} cg-rez`}>
               <div class="cg-rez-hero">
-                <span class="cg-rez-num">{coma(rez.promedio_meses)}</span>
+                <span class="cg-rez-num">{num(rez.promedio_meses)}</span>
                 <span class="cg-rez-unidad">meses</span>
                 <span class="cg-rez-lbl">de antigüedad promedio de la foto,<br/>ponderada por el peso de cada indicador</span>
               </div>
@@ -550,7 +549,7 @@ const robChartData = rob?.hist && indice ? {
                     {rez.mas_rezagados.map((m: any) => (
                       <li>
                         <span class="cg-rez-ind">{label(m.indicador)}</span>
-                        <span class="cg-rez-meses">≈ {coma(m.meses)} meses</span>
+                        <span class="cg-rez-meses">≈ {num(m.meses)} meses</span>
                       </li>
                     ))}
                   </ul>
@@ -569,7 +568,7 @@ const robChartData = rob?.hist && indice ? {
             </div>
             <div class={`cg-rob cg-rob--${meta.slug} cg-rez cg-lb`}>
               <div class="cg-rez-hero">
-                <span class="cg-rez-num">{lb.brecha >= 0 ? "+" : "−"}{coma(Math.abs(lb.brecha))}</span>
+                <span class="cg-rez-num">{lb.brecha >= 0 ? "+" : "−"}{num(Math.abs(lb.brecha))}</span>
                 <span class="cg-rez-unidad">puntos</span>
                 <span class="cg-rez-lbl">de distancia entre el índice de hoy<br/>y el del mes del traspaso</span>
               </div>
@@ -577,11 +576,11 @@ const robChartData = rob?.hist && indice ? {
               <ul class="cg-lb-par">
                 <li>
                   <span class="cg-lb-ym">Diciembre 2023</span>
-                  <span class="cg-lb-val">{coma(lb.valor)}</span>
+                  <span class="cg-lb-val">{num(lb.valor)}</span>
                 </li>
                 <li>
                   <span class="cg-lb-ym">Hoy</span>
-                  <span class="cg-lb-val cg-lb-val--hoy">{coma(Math.round((indice!.data.valor as number) * 10) / 10)}</span>
+                  <span class="cg-lb-val cg-lb-val--hoy">{num(Math.round((indice!.data.valor as number) * 10) / 10)}</span>
                 </li>
               </ul>
               <p class="cg-h2-sub">{lb.conclusion}</p>
@@ -631,7 +630,7 @@ const robChartData = rob?.hist && indice ? {
             <div class={`cg-rob cg-rob--${meta.slug} cg-vin`}>
               <div class="cg-vin-hero">
                 <div class="cg-vin-dato">
-                  <span class="cg-vin-num">{coma(vin.meses_promedio)}</span>
+                  <span class="cg-vin-num">{num(vin.meses_promedio)}</span>
                   <span class="cg-vin-lbl">meses de antigüedad<br/>media del dato</span>
                 </div>
                 <div class="cg-vin-dato">
@@ -650,7 +649,7 @@ const robChartData = rob?.hist && indice ? {
                     {vin.rezagados.map((r: any) => (
                       <li>
                         <span class="cg-vin-ind">{label(r.indicador)}</span>
-                        <span class="cg-vin-meses">{r.fecha} · {coma(r.meses)} meses</span>
+                        <span class="cg-vin-meses">{r.fecha} · {num(r.meses)} meses</span>
                       </li>
                     ))}
                   </ul>
@@ -686,7 +685,7 @@ const robChartData = rob?.hist && indice ? {
           victimización (LICIP-UTDT) con base en enero de 2024 — la encuesta estuvo suspendida
           entre 2020 y 2023 y no existe medición del 4º trimestre de 2023; el registro de
           denuncias (SNIC) queda como contraste. El{" "}
-          <strong>score {c.score}/10</strong> deriva del <strong>ITVC {c.itvc?.valor}</strong>:
+          <strong>score {num(c.score)}/10</strong> deriva del <strong>ITVC {num(c.itvc?.valor)}</strong>:
           tensión = 5 − (ITVC − 100) × 0,2.
         </p>
       </section>
@@ -712,8 +711,8 @@ const robChartData = rob?.hist && indice ? {
           <strong>asistencia directa</strong> mide la desintermediación del gasto social (TDPS) y
           el <strong>orden público</strong>, la reducción de cortes en CABA vs. 2023 — con su
           validez judicial restablecida: la Cámara revocó en marzo de 2026 la nulidad de primera
-          instancia. El <strong>score {c.score}/10</strong> y el{" "}
-          <strong>ITCG {c.itcg?.valor}/100</strong> son la misma medición en dos escalas:
+          instancia. El <strong>score {num(c.score)}/10</strong> y el{" "}
+          <strong>ITCG {num(c.itcg?.valor)}/100</strong> son la misma medición en dos escalas:
           tensión = (100 − ITCG) / 10.
         </p>
       </section>
@@ -744,8 +743,8 @@ const robChartData = rob?.hist && indice ? {
           sus umbrales se calibraron a la volatilidad real de las series, no al ±2% teórico.
           Cada indicador se puntúa por <strong>interpolación entre las anclas</strong> de su
           tabla de umbrales (sin escalones de banda: dos valores casi iguales reciben
-          puntajes casi iguales). El <strong>score {c.score}/10</strong> y
-          el <strong>ITCM {c.itcm?.valor}/100</strong> son la misma medición en dos escalas:
+          puntajes casi iguales). El <strong>score {num(c.score)}/10</strong> y
+          el <strong>ITCM {num(c.itcm?.valor)}/100</strong> son la misma medición en dos escalas:
           tensión = (100 − ITCM) / 10; la escala 0–10 permite comparar macro con los otros
           cuatro cinturones y componer el score global.
         </p>
@@ -778,10 +777,10 @@ const robChartData = rob?.hist && indice ? {
         puede mover un puntaje). El ejercicio es reproducible: el azar parte siempre del mismo punto.
       </p>
       <dl class="cg-modal-ficha">
-        <div><dt>Valor publicado</dt><dd>{coma(indice.data.valor)}</dd></div>
-        <div><dt>90% de los casos</dt><dd>{coma(rob.p05)} – {coma(rob.p95)}</dd></div>
-        <div><dt>Amplitud</dt><dd>{coma(robAmplitud!)} puntos</dd></div>
-        <div><dt>En tensión (0-10)</dt><dd>{coma(rob.tension_rango[0])} – {coma(rob.tension_rango[1])}</dd></div>
+        <div><dt>Valor publicado</dt><dd>{num(indice.data.valor)}</dd></div>
+        <div><dt>90% de los casos</dt><dd>{num(rob.p05)} – {num(rob.p95)}</dd></div>
+        <div><dt>Amplitud</dt><dd>{num(robAmplitud!)} puntos</dd></div>
+        <div><dt>En tensión (0-10)</dt><dd>{num(rob.tension_rango[0])} – {num(rob.tension_rango[1])}</dd></div>
       </dl>
       <p class="cg-modal-h4">La distribución de los {rob.n_draws.toLocaleString("es-AR")} escenarios</p>
       <div id="cg-det-rob-chart" data-sigla={indice.sigla}></div>
@@ -795,8 +794,8 @@ const robChartData = rob?.hist && indice ? {
           <p class="cg-modal-desc">
             <strong>{domLabel}</strong> es el indicador que más arrastra el resultado: si se
             lo quitara del índice (repartiendo su peso entre los demás), el {indice.sigla}{" "}
-            sería <strong>{coma(rob.dominante.indice_sin)}</strong> —{" "}
-            {domDelta! > 0 ? "una mejora" : "un deterioro"} de {coma(Math.abs(domDelta!))} puntos.
+            sería <strong>{num(rob.dominante.indice_sin)}</strong> —{" "}
+            {domDelta! > 0 ? "una mejora" : "un deterioro"} de {num(Math.abs(domDelta!))} puntos.
             Que un solo componente explique una diferencia así no invalida el índice, pero es
             la señal a vigilar: su dato manda sobre la lectura del mes.
           </p>
@@ -823,8 +822,8 @@ const robChartData = rob?.hist && indice ? {
         juntas — sin ser idénticas.
       </p>
       <dl class="cg-modal-ficha">
-        <div><dt>Correlación (niveles)</dt><dd>{coma(val.r_niveles)}</dd></div>
-        <div><dt>Cambios mes a mes</dt><dd>{coma(val.r_diferencias)}</dd></div>
+        <div><dt>Correlación (niveles)</dt><dd>{num(val.r_niveles)}</dd></div>
+        <div><dt>Cambios mes a mes</dt><dd>{num(val.r_diferencias)}</dd></div>
         <div><dt>Muestra</dt><dd>{val.n} meses</dd></div>
       </dl>
       <p class="cg-modal-h4">Las dos series, en sus valores reales</p>

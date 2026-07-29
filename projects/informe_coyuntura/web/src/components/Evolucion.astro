@@ -1,5 +1,5 @@
 ---
-import { informe, CINTURONES, indiceDe, tensionDeDimension } from "../lib/datos.ts";
+import { informe, CINTURONES, indiceDe, tensionDeDimension, num } from "../lib/datos.ts";
 
 // "Cómo va la película" DE VERDAD (revisión estructural 2026-07-11): antes
 // esta sección repetía en grande 10 indicadores que ya están en las cards
@@ -11,7 +11,6 @@ import { informe, CINTURONES, indiceDe, tensionDeDimension } from "../lib/datos.
 // La reconstrucción viene de la validación externa (pares del snapshot):
 // series de componentes SIN ajustes del analista — el nivel puede diferir
 // del publicado; lo que vale es la evolución (caveat declarado abajo).
-const coma = (n: number) => String(n).replace(".", ",");
 const MES_ABREV = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
 const mesCorto = (ym: string) => `${MES_ABREV[+ym.slice(5, 7) - 1]}-${ym.slice(0, 4)}`;
 
@@ -57,13 +56,13 @@ const trayectorias = CINTURONES
                data-evo-slug={t.meta.slug} data-evo-unidad="tensión /10"
                data-evo-serie={JSON.stringify(t.serie)}></div>
           <div class="cg-chart-mini-foot">
-            <div class="cg-chart-mini-now">{coma(t.ahora)}</div>
+            <div class="cg-chart-mini-now">{num(t.ahora)}</div>
             <span class:list={["cg-chart-mini-delta", t.delta > 0 ? "up" : t.delta < 0 ? "down" : "flat"]}>
-              {t.delta > 0 ? "+" : ""}{coma(t.delta)}
+              {t.delta > 0 ? "+" : ""}{num(t.delta)}
             </span>
           </div>
           <div class="cg-sub">
-            Desde {t.desde}: <strong>{t.deltaInicio > 0 ? "+" : ""}{coma(t.deltaInicio)}</strong>
+            Desde {t.desde}: <strong>{t.deltaInicio > 0 ? "+" : ""}{num(t.deltaInicio)}</strong>
             {t.deltaInicio < 0 ? " de tensión (aflojó)" : t.deltaInicio > 0 ? " de tensión (se apretó)" : " de tensión"}
           </div>
         </div>

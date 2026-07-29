@@ -300,9 +300,27 @@ export function label(key: string): string {
 // Formato de valor: números con separador es-AR; strings tal cual; null → "—"
 const NF = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 2 });
 const NF_COMPACT = new Intl.NumberFormat("es-AR", { notation: "compact", maximumFractionDigits: 1 });
+
+// ÚNICO formateador de números para pantalla. Antes cada componente tenía su
+// propio `coma = n => String(n).replace(".", ",")` —cinco copias— y en los
+// lugares donde el número se interpolaba crudo salía con punto: la auditoría
+// mobile del 29-jul-2026 encontró el MISMO valor escrito de las dos formas en
+// una sola página (`3,2` en la bajada y `3.2` en la card del hero, `47,4` y
+// `47.4`, `96.7/100` junto a `96,7`), y `/metodologia/` con punto en todo.
+// Dos reglas, las dos son convención del proyecto:
+//   · separador decimal es-AR (coma)
+//   · menos tipográfico U+2212, no el guion U+002D — igual que las unidades y
+//     las anclas que escribe el pipeline (ver politica.py)
+// NO usar para el CSV descargable ni para valores que van a `style`/`width`:
+// ahí el número tiene que quedar parseable.
+export function num(valor: number | null | undefined): string {
+  if (valor === null || valor === undefined || Number.isNaN(valor)) return "—";
+  return NF.format(valor).replace("-", "−");
+}
+
 export function formatValor(valor: unknown): string {
   if (valor === null || valor === undefined) return "—";
-  if (typeof valor === "number") return NF.format(valor);
+  if (typeof valor === "number") return num(valor);
   return String(valor);
 }
 

@@ -1,5 +1,5 @@
 ---
-import { verdictDeCinturon, indicadoresOrdenados, cap, indiceDe, semaforoDimension, peorDimension } from "../lib/datos.ts";
+import { verdictDeCinturon, indicadoresOrdenados, cap, indiceDe, semaforoDimension, peorDimension, num } from "../lib/datos.ts";
 import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import IndicadorRow from "./IndicadorRow.astro";
 const { slug, nombre, sub, cinturon } = Astro.props;
@@ -24,7 +24,6 @@ const pesoPct = (d: any) => Math.round((d.peso_efectivo ?? d.peso) * 100);
 // lectura rápida — el texto siempre visible responde "qué explica la
 // tensión" sin hover ni modal, y cubre también la lectura sin color).
 const peor = peorDimension(cinturon);
-const comaTxt = (n: number) => String(n).replace(".", ",");
 ---
 <article class:list={["cg-cint", `cg-cint--${slug}`]}>
   <div class="cg-cint-head">
@@ -46,16 +45,16 @@ const comaTxt = (n: number) => String(n).replace(".", ",");
               class:list={["cg-genoma-seg", `sem-${semaforoDimension(dim.puntaje, !!indice.base100)}`, "cg-dim--clickable", { "is-critica": dim.critica }]}
               data-dimension={dkey} data-cinturon={slug}
               style={`flex-grow:${pesoPct(dim)};`}
-              aria-label={`${dim.nombre}: puntaje ${dim.puntaje}, pesa ${pesoPct(dim)}% del índice — tocá para ver qué mide`}></button>
+              aria-label={`${dim.nombre}: puntaje ${num(dim.puntaje)}, pesa ${pesoPct(dim)}% del índice — tocá para ver qué mide`}></button>
             <span class="cg-genoma-tip" aria-hidden="true">
-              <span class="cg-genoma-tip-head">{dim.nombre} · <strong>{dim.puntaje}{indice.base100 ? "" : "/100"}</strong> · pesa {pesoPct(dim)}%{dim.critica ? " · dimensión crítica" : ""}</span>
+              <span class="cg-genoma-tip-head">{dim.nombre} · <strong>{num(dim.puntaje)}{indice.base100 ? "" : "/100"}</strong> · pesa {pesoPct(dim)}%{dim.critica ? " · dimensión crítica" : ""}</span>
               {DIM_DESCRIPCIONES[dkey] && <span class="cg-genoma-tip-desc">{DIM_DESCRIPCIONES[dkey]}</span>}
               <span class="cg-genoma-tip-cta">Tocá para ver la composición completa</span>
             </span>
           </>
         ))}
       </div>
-      <div class="cg-genoma-cap">{dims.length} dimensiones (ancho = peso){peor ? ` · mayor tensión: ${peor.nombre.toLowerCase()} (${comaTxt(peor.puntaje)}${peor.base100 ? "" : "/100"})` : ""} · tocá un tramo</div>
+      <div class="cg-genoma-cap">{dims.length} dimensiones (ancho = peso){peor ? ` · mayor tensión: ${peor.nombre.toLowerCase()} (${num(peor.puntaje)}${peor.base100 ? "" : "/100"})` : ""} · tocá un tramo</div>
     </>
   )}
   {!indice && (
@@ -65,7 +64,10 @@ const comaTxt = (n: number) => String(n).replace(".", ",");
     {visibles.map(({ key, ind, bucket }) => <IndicadorRow ikey={key} ind={ind} bucket={bucket} slug={slug} />)}
   </ul>
   <div class="cg-cint-foot">
-    <span>Score <strong>{cinturon.score}/10</strong> · {cap(cinturon.barbarismo_riesgo)}</span>
-    <a href={href} class="cg-cint-ver">{ocultos > 0 ? `+${ocultos} · ver detalle` : "Ver detalle"} →</a>
+    <span>Score <strong>{num(cinturon.score)}/10</strong> · {cap(cinturon.barbarismo_riesgo)}</span>
+    {/* El enlace decía "ver detalle" en minúscula cuando había ocultos y "Ver
+        detalle" cuando no: la card de espíritu de época (sin ocultos) quedaba
+        distinta de las otras cuatro. El contador va aparte del rótulo. */}
+    <a href={href} class="cg-cint-ver">{ocultos > 0 ? `+${ocultos} · ` : ""}Ver detalle →</a>
   </div>
 </article>

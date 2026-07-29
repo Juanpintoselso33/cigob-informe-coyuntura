@@ -1,11 +1,10 @@
 ---
-import { informe, cap, mesLegible, CINTURONES, verdictDeCinturon, peorDimension } from "../lib/datos.ts";
+import { informe, cap, mesLegible, CINTURONES, verdictDeCinturon, peorDimension, num } from "../lib/datos.ts";
 
 // Síntesis AUTOMÁTICA del tablero (sin placeholder editorial en producción):
 // se arma de los mismos datos del snapshot, así nunca queda vieja ni vacía.
 // La lectura editorial firmada del equipo se suma con cada edición mensual;
 // mientras no exista, esta síntesis es honesta sobre su origen (ver nota).
-const coma = (n: number) => String(n).replace(".", ",");
 const estados = CINTURONES.map(m => ({ meta: m, c: informe.cinturones[m.key] }))
   .filter(x => x.c);
 const porVerdict = (v: string) => estados.filter(x => verdictDeCinturon(x.c.estado) === v);
@@ -26,7 +25,7 @@ const frases: string[] = [];
 if (rojos.length > 0) {
   frases.push(`${cap(nombres(rojos))} ${rojos.length === 1 ? "está" : "están"} en zona crítica`);
 }
-frases.push(`Con una tensión global de ${coma(informe.score_global)}/10, ${masTenso.meta.nombre.toLowerCase()} es el cinturón más exigido del tablero (${coma(masTenso.c.score)}/10)`);
+frases.push(`Con una tensión global de ${num(informe.score_global)}/10, ${masTenso.meta.nombre.toLowerCase()} es el cinturón más exigido del tablero (${num(masTenso.c.score)}/10)`);
 if (amarillos.length > 0 && !amarillos.includes(masTenso)) {
   frases.push(`${nombres(amarillos)} ${amarillos.length === 1 ? "opera" : "operan"} en tensión`);
 } else if (amarillos.length > 1) {
@@ -37,7 +36,7 @@ if (verdes.length > 0) {
 }
 const fraseEstados = frases.join("; ") + ".";
 const fraseFoco = foco
-  ? `La mayor presión puntual del mes está en ${foco.dim.nombre.toLowerCase()} (${coma(foco.dim.puntaje)}${foco.dim.base100 ? "" : "/100"}), la dimensión que más tensión aporta al índice de ${foco.meta.nombre.toLowerCase()}.`
+  ? `La mayor presión puntual del mes está en ${foco.dim.nombre.toLowerCase()} (${num(foco.dim.puntaje)}${foco.dim.base100 ? "" : "/100"}), la dimensión que más tensión aporta al índice de ${foco.meta.nombre.toLowerCase()}.`
   : "";
 ---
 <section class="cg-section cg-bluf" id="snapshot">

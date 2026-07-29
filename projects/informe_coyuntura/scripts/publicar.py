@@ -24,6 +24,23 @@ import itvc                                           # pesos y rebase del ITVC 
 import sensibilidad                                   # rango de robustez (ADR-0019)
 
 
+def coma(x) -> str:
+    """Número para texto PÚBLICO: coma decimal es-AR y menos tipográfico (U+2212).
+
+    Había trece copias de `coma = lambda x: str(x).replace(".", ",")` en este
+    archivo, todas sin el signo menos — y por eso las conclusiones de validación
+    salían con guion («ITCM -0,84 con el riesgo país») mientras las unidades y
+    las anclas que escribe el pipeline usan «−». Lo encontró la auditoría de UI
+    del 29-jul-2026, que vio los dos signos en la misma página.
+
+    Sólo se convierte el menos INICIAL, a propósito: el guion interno de una
+    fecha o de un rango («2026-06-01», «1997-2026») no es un signo menos y
+    convertirlo rompería el texto.
+    """
+    s = str(x).replace(".", ",")
+    return ("−" + s[1:]) if s.startswith("-") else s
+
+
 def _add(out, key, valor, unidad, fuente, fecha, **extra):
     d = {"valor": valor, "unidad": unidad, "fuente": fuente,
          "fecha_dato": fecha, "desactualizado": False}
@@ -408,7 +425,6 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
 def _macro_input_txt(ikey, ind):
     """'Valor usado' que muestra el modal: la descomposición del número que
     realmente se puntúa (no siempre coincide con el valor mostrado)."""
-    coma = lambda x: str(x).replace(".", ",")    # decimal es-AR, sin tocar el resto
     if ikey == "rem_ipc_12m" and ind.get("equivalente_mensual") is not None:
         return (f"equiv. mensual {coma(ind['equivalente_mensual'])}% "
                 f"(raíz-12 del {coma(ind.get('valor'))}% anual)")
@@ -457,7 +473,6 @@ def _macro_input_txt(ikey, ind):
 def _gestion_input_txt(ikey, ind):
     """'Valor usado' del modal para gestión: la descomposición del número que
     puntúa (compuestos como el ILCE o el Fondo de Cese exponen componentes)."""
-    coma = lambda x: str(x).replace(".", ",")
     if ind.get("detalle_txt"):                       # detalle rico (ej. RIGI oficial)
         return ind["detalle_txt"]
     if ikey == "fal_modernizacion_laboral" and ind.get("componentes"):
@@ -475,7 +490,6 @@ def _politica_input_txt(ikey, ind):
     puntúa (protestas_caba puntúa sobre la variación vs. 2023, no el conteo
     crudo de eventos; adhesion_reformas_provincial expone la cuenta de
     provincias detrás del %)."""
-    coma = lambda x: str(x).replace(".", ",")
     if ind.get("detalle_txt"):                       # detalle rico (ej. protestas_caba, ACLED)
         return ind["detalle_txt"]
     if ikey == "adhesion_reformas_provincial" and ind.get("n_provincias") is not None:
@@ -664,7 +678,6 @@ def _validacion_itvc(bloque, series):
     corr = val.get("correlaciones", {})
     niveles = corr.get("niveles (ITVC sin ICC vs ICC)") or {}
     difs = corr.get("primeras diferencias (sin ICC)") or {}
-    coma = lambda x: str(x).replace(".", ",")
     r_niv, r_dif = niveles.get("r"), difs.get("r")
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
@@ -706,7 +719,6 @@ def _validacion_itcm(bloque):
     corr = val.get("correlaciones_itcm", {})
     niveles = corr.get("niveles (ITCM vs riesgo país)") or {}
     difs = corr.get("primeras diferencias (ITCM vs riesgo)") or {}
-    coma = lambda x: str(x).replace(".", ",")
     r_niv, r_dif = niveles.get("r"), difs.get("r")
 
     def _r(a, b):
@@ -801,7 +813,6 @@ def _redundancia(bloque, clave_val: str):
     red = _cargar_validacion().get(clave_val) or {}
     if red.get("r_abs_medio") is None:
         return
-    coma = lambda x: str(x).replace(".", ",")
     n_alt = len(red.get("pares_altos") or [])
     dif = red.get("diferencias") or {}
     # Se emiten las CLAVES: las etiquetas legibles viven en el front
@@ -895,7 +906,6 @@ def _linea_base(bloque):
         return
 
     brecha = actual - valor_base
-    coma = lambda x: str(x).replace(".", ",")
     mes_base = "diciembre de 2023"
     signo = "arriba del" if brecha >= 0 else "abajo del"
 
@@ -955,7 +965,6 @@ def _rezago(bloque, rezago_meses: dict, pulso: float, estructural: float):
     rezagados = [{"indicador": k, "meses": m}
                  for k, _, m in sorted(filas, key=lambda x: -x[2]) if m >= estructural]
 
-    coma = lambda x: str(x).replace(".", ",")
     prom_txt = coma(round(promedio, 1))
     bloque["rezago"] = {
         "promedio_meses": round(promedio, 1),
@@ -1029,7 +1038,6 @@ def _familias(bloque, familias: dict, meta_familias: dict):
     familias_out.sort(key=lambda f: f["puntaje"])
 
     peor, mejor = familias_out[0], familias_out[-1]
-    coma = lambda x: str(x).replace(".", ",")
     brecha = round(mejor["puntaje"] - peor["puntaje"], 1)
 
     bloque["familias"] = {
@@ -1125,7 +1133,6 @@ def _vintages(cinturon, indice_key):
                        key=lambda f: -f["dias"])
 
     meses = lambda d: round(d / 30.44, 1)
-    coma = lambda x: str(x).replace(".", ",")
     _MESES_ES_LARGO = ("enero", "febrero", "marzo", "abril", "mayo", "junio", "julio",
                        "agosto", "septiembre", "octubre", "noviembre", "diciembre")
 
@@ -1292,7 +1299,6 @@ def _validacion_itcg(bloque):
     niveles = corr.get("niveles (ITCG vs Merval USD)") or {}
     difs = corr.get("primeras diferencias (ITCG vs Merval USD)") or {}
     icg_niv = (corr.get("niveles (ITCG vs ICG)") or {}).get("r")
-    coma = lambda x: str(x).replace(".", ",")
     r_niv, r_dif = niveles.get("r"), difs.get("r")
     icg_txt = ""
     if icg_niv is not None:
@@ -1340,7 +1346,6 @@ def _validacion_itcp(bloque):
     # que es la más nueva y la que este contraste no cubre. Se publica.
     r_sin_priv = (corr.get("niveles, sin la dimensión de sector privado") or {}).get("r")
     difs = corr.get("primeras diferencias (ITCP vs EPU)") or {}
-    coma = lambda x: str(x).replace(".", ",")
     r_niv, r_dif = niveles.get("r"), difs.get("r")
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
@@ -1421,7 +1426,6 @@ def _scoring_vida_itvc(c, series):
             for ikey, info in dim["indicadores"].items():
                 por_ind[ikey] = (dkey, info)
     en_itvc = {k for d in itvc.DIMENSIONES_ITVC.values() for k in d["indicadores"]}
-    coma = lambda x: str(x).replace(".", ",")
     for ikey, ind in c["indicadores"].items():
         aporte = formula = nota = lectura = None
         if ikey in por_ind:
