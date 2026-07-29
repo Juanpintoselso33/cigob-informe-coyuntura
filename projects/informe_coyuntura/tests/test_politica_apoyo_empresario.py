@@ -52,14 +52,26 @@ def test_la_concordancia_alcanza_el_umbral():
     assert c["estado"] == "ALCANZADA"
 
 
-def test_las_dos_pasadas_coinciden_en_lo_que_puntua():
-    """Los desacuerdos entre codificadores sólo importan si cambian el conjunto
-    computable. Verificado contra la segunda pasada guardada caso por caso."""
+def test_ningun_caso_entra_al_conteo_sin_pasar_por_la_adjudicacion():
+    """Este test antes exigía que las dos pasadas coincidieran EXACTAMENTE en el
+    conjunto computable. Era una propiedad del corpus viejo —codificado sobre
+    textos truncados, donde casi todo caía en «neutro» y quedaba poco sobre lo
+    que discrepar—, no una garantía del método: con el texto completo aparecen
+    desacuerdos que sí tocan lo que puntúa, y exigir que no existan presionaría
+    a codificar para que el test pase.
+
+    La garantía que corresponde es otra: que ninguno de esos casos entre al
+    conteo por omisión. Si las dos pasadas difieren en si un caso computa, tiene
+    que estar marcado `adjudicado`, o sea resuelto a mano por el autor del
+    manual (ADR-0131)."""
     comp = lambda p, d: d == "ejecutivo_nacional" and p in ("apoyo", "critica")
-    uno = {i for i, c in enumerate(CASOS) if comp(c["postura"], c["destinatario"])}
-    dos = {i for i, c in enumerate(CASOS)
-           if comp(c["pasada_2"]["postura"], c["pasada_2"]["destinatario"])}
-    assert uno == dos, f"difieren: {uno ^ dos}"
+    for c in CASOS:
+        difieren = (comp(c["postura"], c["destinatario"])
+                    != comp(c["pasada_2"]["postura"], c["pasada_2"]["destinatario"]))
+        if difieren:
+            assert c["concordancia"] == "adjudicado", (
+                f"{c['fecha']} {c['camara']}: las dos pasadas difieren en si el caso "
+                f"cuenta y nadie lo adjudicó")
 
 
 def test_solo_cuentan_los_dirigidos_al_ejecutivo_con_postura():

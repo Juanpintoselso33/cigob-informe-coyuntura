@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-27T14:39:01.168262",
+  "generated_at": "2026-07-29T16:02:30.260571",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -53,19 +53,19 @@
           "peso_efectivo": 0.0544
         },
         "idc": {
-          "valor": -0.24,
+          "valor": -0.25,
           "unidad": "σ vs. su historia",
           "fuente": "BCRA — BADLAR (var. 7), depósitos privados (var. 100) y préstamos privados (var. 117) + IPC INDEC",
           "fecha_dato": "2026-06-01",
           "componentes": {
             "precio": 0.43,
             "volumen": -0.13,
-            "asignacion": -1.06
+            "asignacion": -1.09
           },
           "niveles": {
             "tasa_real_pp": -0.29,
             "dep_real_ia_pct": -1.4,
-            "holgura_pct": 19.0
+            "holgura_pct": 18.3
           },
           "ventana": "2017-12 → 2026-06 (103 meses)",
           "badlar_real_mensual": -0.29,
@@ -73,15 +73,15 @@
           "desactualizado": false,
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 52.0,
-          "puntaje_banda": 52.0,
+          "puntaje_itcm": 51.7,
+          "puntaje_banda": 51.7,
           "peso_efectivo": 0.0336
         },
         "badlar": {
-          "valor": 22.19,
+          "valor": 20.94,
           "unidad": "% anual",
           "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
-          "fecha_dato": "2026-07-23",
+          "fecha_dato": "2026-07-27",
           "desactualizado": false,
           "en_indice": false
         },
@@ -251,13 +251,13 @@
           "nota_scoring": "Puntuado por su equivalente mensual (raíz 12): 1.69% mensual, en la misma escala que el IPC."
         },
         "idm": {
-          "valor": 6.23,
+          "valor": 6.24,
           "unidad": "pp (brecha i.a. real)",
           "fuente": "BCRA (M3 privado = circulante var. 17 + depósitos privados var. 100; M2 privado transaccional var. 197) + IPC INDEC",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "m3_real_ia": -2.63,
-          "m2_real_ia": -8.85,
+          "m3_real_ia": -2.61,
+          "m2_real_ia": -8.86,
           "en_indice": true,
           "dimension": "estabilidad_monetaria",
           "puntaje_itcm": 37.2,
@@ -320,17 +320,17 @@
           "peso_efectivo": 0.048
         },
         "credito_privado": {
-          "valor": 7.7,
+          "valor": 8.3,
           "unidad": "% i.a. real",
           "fuente": "BCRA (préstamos al sector privado, var. 26) + IPC INDEC",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
-          "nominal_ia": 43.9,
-          "detalle_txt": "nominal 43,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-06) — al 2026-07-22 (provisorio, no puntúa): 4,6% real con deflactor de 2026-06",
+          "nominal_ia": 44.7,
+          "detalle_txt": "nominal 44,7% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-06) — al 2026-07-24 (provisorio, no puntúa): 5,3% real con deflactor de 2026-06",
           "en_indice": true,
           "dimension": "financiamiento",
-          "puntaje_itcm": 52.4,
-          "puntaje_banda": 52.4,
+          "puntaje_itcm": 53.6,
+          "puntaje_banda": 53.6,
           "peso_efectivo": 0.032
         },
         "costo_financiamiento_tesoro": {
@@ -363,26 +363,26 @@
           "peso_efectivo": 0.12
         },
         "prestamos_privados": {
-          "valor": 1.34,
+          "valor": 2.06,
           "unidad": "% mensual nominal",
           "fuente": "BCRA — préstamos al sector privado (API monetarias)",
-          "fecha_dato": "2026-07-22",
+          "fecha_dato": "2026-07-24",
           "desactualizado": false,
           "en_indice": false
         },
         "base_monetaria": {
-          "valor": 3.59,
+          "valor": 5.32,
           "unidad": "% mensual nominal",
           "fuente": "BCRA — base monetaria (API monetarias)",
-          "fecha_dato": "2026-07-22",
+          "fecha_dato": "2026-07-24",
           "desactualizado": false,
           "en_indice": false
         },
         "tc_mayorista": {
-          "valor": 1.33,
+          "valor": 1.13,
           "unidad": "% mensual",
           "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
-          "fecha_dato": "2026-07-24",
+          "fecha_dato": "2026-07-28",
           "desactualizado": false,
           "en_indice": false
         }
@@ -416,7 +416,7 @@
                 "peso": 0.25,
                 "puntaje_banda": 37.2,
                 "puntaje_aplicado": 37.2,
-                "valor": 6.23,
+                "valor": 6.24,
                 "peso_efectivo": 0.065
               },
               "presion_dolarizacion": {
@@ -461,7 +461,7 @@
           "financiamiento": {
             "nombre": "Capacidad y costo del financiamiento",
             "peso": 0.16,
-            "puntaje": 54.6,
+            "puntaje": 54.7,
             "indicadores": {
               "reservas_bcra": {
                 "peso": 0.34,
@@ -472,9 +472,9 @@
               },
               "idc": {
                 "peso": 0.21,
-                "puntaje_banda": 52.0,
-                "puntaje_aplicado": 52.0,
-                "valor": -0.24,
+                "puntaje_banda": 51.7,
+                "puntaje_aplicado": 51.7,
+                "valor": -0.25,
                 "peso_efectivo": 0.0336
               },
               "costo_financiamiento_tesoro": {
@@ -486,9 +486,9 @@
               },
               "credito_privado": {
                 "peso": 0.2,
-                "puntaje_banda": 52.4,
-                "puntaje_aplicado": 52.4,
-                "valor": 7.7,
+                "puntaje_banda": 53.6,
+                "puntaje_aplicado": 53.6,
+                "valor": 8.3,
                 "peso_efectivo": 0.032
               }
             },
@@ -565,7 +565,7 @@
       }
     },
     "politica": {
-      "score": 3.7,
+      "score": 3.6,
       "estado": "en_tension",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -585,18 +585,18 @@
           "peso_efectivo": 0.07
         },
         "ratio_dnu": {
-          "valor": 1.84,
-          "dnu_count": 46,
+          "valor": 1.88,
+          "dnu_count": 47,
           "leyes_count": 25,
           "ventana_dias": 365,
           "unidad": "DNUs por ley",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
-          "puntaje_itcp": 22.0,
-          "puntaje_banda": 22.0,
+          "puntaje_itcp": 19.0,
+          "puntaje_banda": 19.0,
           "peso_efectivo": 0.0483
         },
         "brecha_obra_publica": {
@@ -614,21 +614,21 @@
           "peso_efectivo": 0.065
         },
         "apoyo_empresario": {
-          "valor": -0.667,
+          "valor": -0.429,
           "unidad": "saldo de postura (−1 a +1, 12m móviles)",
           "fuente": "Comunicados de AEA y UIA — codificación CIGOB",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
-          "variacion_12m": -0.334,
-          "comunicados_ventana": 6,
-          "apoyos_ventana": 1,
+          "variacion_12m": -0.629,
+          "comunicados_ventana": 7,
+          "apoyos_ventana": 2,
           "criticas_ventana": 5,
           "pendientes_de_codificar": 0,
-          "detalle_txt": "En los últimos doce meses AEA y UIA se pronunciaron 6 veces sobre medidas del Gobierno nacional: 1 de apoyo y 5 de crítica. Saldo −0,667 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
+          "detalle_txt": "En los últimos doce meses AEA y UIA se pronunciaron 7 veces sobre medidas del Gobierno nacional: 2 de apoyo y 5 de crítica. Saldo −0,429 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
           "en_indice": true,
           "dimension": "sector_privado",
-          "puntaje_itcp": 10.0,
-          "puntaje_banda": 10.0,
+          "puntaje_itcp": 35.7,
+          "puntaje_banda": 35.7,
           "peso_efectivo": 0.065
         },
         "conflictividad_nacional": {
@@ -666,7 +666,7 @@
           "ipc_aplicado_pct": 41.9,
           "unidad": "% interanual real",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -678,12 +678,12 @@
           "valor": 14.3,
           "aprobados_n": 2,
           "enviados_n": 14,
-          "cohorte_desde": "2024-07-27",
-          "cohorte_hasta": "2025-07-27",
+          "cohorte_desde": "2024-07-29",
+          "cohorte_hasta": "2025-07-29",
           "dias_madurado_min": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -697,7 +697,7 @@
           "total_n": 12,
           "unidad": "% de sesiones",
           "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "detalle_txt": "1 de 12 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
           "en_indice": true,
@@ -714,7 +714,7 @@
           "ventana_dias": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "en_indice": false
         },
@@ -722,7 +722,7 @@
           "valor": 66.7,
           "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
           "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "n_provincias": 16,
           "desactualizado": false,
           "en_indice": true,
@@ -740,7 +740,7 @@
           "detalle_txt": "3 vetos insistidos por el Congreso + 5 decretos rechazados en el recinto en los últimos 12 meses",
           "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
           "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "en_indice": false
         },
@@ -748,7 +748,7 @@
           "valor": 7,
           "unidad": "salidas de rango ministerial (acum. 12 meses)",
           "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "salidas_politicas": 5,
           "salidas_estructurales": 2,
@@ -779,14 +779,14 @@
               "valor": 99.9,
               "fecha_dato": "2026-06-24",
               "n_actas": 33,
-              "corrida_exitosa_en": "2026-07-27",
+              "corrida_exitosa_en": "2026-07-29",
               "desactualizado": false
             },
             "senado": {
               "valor": 99.6,
               "fecha_dato": "2026-07-16",
               "n_actas": 24,
-              "corrida_exitosa_en": "2026-07-27",
+              "corrida_exitosa_en": "2026-07-29",
               "desactualizado": false
             }
           },
@@ -806,7 +806,7 @@
           "detalle_txt": "2 de 10 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
           "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
           "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -821,7 +821,7 @@
           "ultimo_desafio": "2025-09-18",
           "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
           "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "detalle_txt": "10 normas propias desafiadas en el recinto en los últimos 12 meses (8 cayeron, 2 siguen en pie)",
           "en_indice": true,
@@ -854,7 +854,7 @@
           "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
           "fecha_dato": "2026-07-16",
           "n_provincias": 24,
-          "corrida_exitosa_en": "2026-07-27",
+          "corrida_exitosa_en": "2026-07-29",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -865,20 +865,20 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 62.7,
+        "valor": 64.3,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
             "peso": 0.21,
-            "puntaje": 41.1,
+            "puntaje": 40.4,
             "indicadores": {
               "ratio_dnu": {
                 "peso": 0.23,
-                "puntaje_banda": 22.0,
-                "puntaje_aplicado": 22.0,
-                "valor": 1.84,
+                "puntaje_banda": 19.0,
+                "puntaje_aplicado": 19.0,
+                "valor": 1.88,
                 "peso_efectivo": 0.0483
               },
               "eficacia_legislativa": {
@@ -1004,7 +1004,7 @@
           "sector_privado": {
             "nombre": "Sector privado",
             "peso": 0.13,
-            "puntaje": 42.7,
+            "puntaje": 55.6,
             "indicadores": {
               "brecha_obra_publica": {
                 "peso": 0.5,
@@ -1015,9 +1015,9 @@
               },
               "apoyo_empresario": {
                 "peso": 0.5,
-                "puntaje_banda": 10.0,
-                "puntaje_aplicado": 10.0,
-                "valor": -0.667,
+                "puntaje_banda": 35.7,
+                "puntaje_aplicado": 35.7,
+                "valor": -0.429,
                 "peso_efectivo": 0.065
               }
             },
@@ -1062,15 +1062,15 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 6.6,
+          "valor": 6.39,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 90.4,
-          "puntaje_banda": 90.4,
+          "puntaje_itcg": 91.7,
+          "puntaje_banda": 91.7,
           "peso_efectivo": 0.14
         },
         "apertura_comercial": {
@@ -1152,7 +1152,7 @@
           "valor": 40.0,
           "unidad": "% de avance (proxy InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "conteo_normas": 18,
           "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -1166,7 +1166,7 @@
           "valor": 100.0,
           "unidad": "Índice 0–100 (actos fundamentales del FAL: ley + reglamentación)",
           "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 (normas publicadas)",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "actos": [
             {
@@ -1396,28 +1396,28 @@
           "peso_efectivo": 0.06
         },
         "rigi_inversiones": {
-          "valor": 24.2,
+          "valor": 24.6,
           "unidad": "% de inversión aprobada sobre el pipeline",
           "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
-          "proyectos_aprobados": 18,
-          "inversion_aprobada_musd": 35714,
+          "proyectos_aprobados": 19,
+          "inversion_aprobada_musd": 36424,
           "proyectos_evaluacion": 24,
-          "inversion_evaluacion_musd": 111982,
+          "inversion_evaluacion_musd": 111500,
           "nota_denominador": null,
-          "detalle_txt": "18 proyectos aprobados (US$ 35.714M) / 24 en evaluación (US$ 111.982M) → 24,2% de la inversión total ya aprobada",
+          "detalle_txt": "19 proyectos aprobados (US$ 36.424M) / 24 en evaluación (US$ 111.500M) → 24,6% de la inversión total ya aprobada",
           "en_indice": true,
           "dimension": "privatizaciones_inversion",
-          "puntaje_itcg": 51.2,
-          "puntaje_banda": 51.2,
+          "puntaje_itcg": 51.8,
+          "puntaje_banda": 51.8,
           "peso_efectivo": 0.06
         },
         "concesiones_infraestructura": {
           "valor": 28.7,
           "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
           "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "km_adjudicados": 2614,
           "km_totales": 9091,
@@ -1439,7 +1439,7 @@
           "valor": 100.0,
           "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
           "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
           "ejercicio": 2026,
           "componentes": {
@@ -1494,10 +1494,10 @@
           "valor": 0,
           "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
           "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-          "fecha_dato": "2026-07-27",
+          "fecha_dato": "2026-07-29",
           "desactualizado": false,
-          "dias_muestreados_mes": 26,
-          "detalle_txt": "0 alertas en 26 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+          "dias_muestreados_mes": 28,
+          "detalle_txt": "0 alertas en 28 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
           "en_indice": false
         },
         "protestas_caba": {
@@ -1514,20 +1514,20 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 77.6,
+        "valor": 77.8,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "reformas_economicas": {
             "nombre": "Reformas económicas fundamentales",
             "peso": 0.35,
-            "puntaje": 73.9,
+            "puntaje": 74.5,
             "indicadores": {
               "cepo_mulc": {
                 "peso": 0.4,
-                "puntaje_banda": 90.4,
-                "puntaje_aplicado": 90.4,
-                "valor": 6.6,
+                "puntaje_banda": 91.7,
+                "puntaje_aplicado": 91.7,
+                "valor": 6.39,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -1608,7 +1608,7 @@
           "privatizaciones_inversion": {
             "nombre": "Privatizaciones e inversión",
             "peso": 0.15,
-            "puntaje": 58.0,
+            "puntaje": 58.2,
             "indicadores": {
               "privatizaciones": {
                 "peso": 0.4,
@@ -1619,9 +1619,9 @@
               },
               "rigi_inversiones": {
                 "peso": 0.4,
-                "puntaje_banda": 51.2,
-                "puntaje_aplicado": 51.2,
-                "valor": 24.2,
+                "puntaje_banda": 51.8,
+                "puntaje_aplicado": 51.8,
+                "valor": 24.6,
                 "peso_efectivo": 0.06
               },
               "concesiones_infraestructura": {
@@ -1673,11 +1673,11 @@
           "desactualizado": false
         },
         "sentimiento_digital": {
-          "valor": 7.3,
+          "valor": 7.8,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-07-25",
-          "desactualizado": true
+          "fecha_dato": "2026-07-29",
+          "desactualizado": false
         },
         "clima_electoral": {
           "valor": 4.0,
@@ -1725,7 +1725,5 @@
   },
   "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
-  "flags": [
-    "desactualizado:espiritu_epoca:sentimiento_digital"
-  ]
+  "flags": []
 }

@@ -1,22 +1,22 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-29T04:11:28.738885",
+  "generated_at": "2026-07-29T15:53:51.777084",
   "score": 2.2,
   "itcg": {
-    "valor": 77.6,
+    "valor": 77.8,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "reformas_economicas": {
         "nombre": "Reformas económicas fundamentales",
         "peso": 0.35,
-        "puntaje": 74.1,
+        "puntaje": 74.5,
         "indicadores": {
           "cepo_mulc": {
             "peso": 0.4,
-            "puntaje_banda": 90.8,
-            "puntaje_aplicado": 90.8,
-            "valor": 6.54,
+            "puntaje_banda": 91.7,
+            "puntaje_aplicado": 91.7,
+            "valor": 6.39,
             "peso_efectivo": 0.14
           },
           "apertura_comercial": {
@@ -97,7 +97,7 @@
       "privatizaciones_inversion": {
         "nombre": "Privatizaciones e inversión",
         "peso": 0.15,
-        "puntaje": 57.9,
+        "puntaje": 58.2,
         "indicadores": {
           "privatizaciones": {
             "peso": 0.4,
@@ -108,9 +108,9 @@
           },
           "rigi_inversiones": {
             "peso": 0.4,
-            "puntaje_banda": 51.0,
-            "puntaje_aplicado": 51.0,
-            "valor": 24.1,
+            "puntaje_banda": 51.8,
+            "puntaje_aplicado": 51.8,
+            "valor": 24.6,
             "peso_efectivo": 0.06
           },
           "concesiones_infraestructura": {
@@ -150,15 +150,15 @@
   },
   "indicadores": {
     "cepo_mulc": {
-      "valor": 6.54,
+      "valor": 6.39,
       "unidad": "% de brecha CCL/mayorista",
       "fuente": "https://dolarapi.com/v1/dolares",
       "fecha_dato": "2026-07-29",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "reformas_economicas",
-      "puntaje_itcg": 90.8,
-      "puntaje_banda": 90.8,
+      "puntaje_itcg": 91.7,
+      "puntaje_banda": 91.7,
       "peso_efectivo": 0.14
     },
     "apertura_comercial": {
@@ -484,21 +484,21 @@
       "peso_efectivo": 0.06
     },
     "rigi_inversiones": {
-      "valor": 24.1,
+      "valor": 24.6,
       "unidad": "% de inversión aprobada sobre el pipeline",
       "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
       "fecha_dato": "2026-07-29",
       "desactualizado": false,
-      "proyectos_aprobados": 18,
-      "inversion_aprobada_musd": 35714,
-      "proyectos_evaluacion": 25,
-      "inversion_evaluacion_musd": 112210,
+      "proyectos_aprobados": 19,
+      "inversion_aprobada_musd": 36424,
+      "proyectos_evaluacion": 24,
+      "inversion_evaluacion_musd": 111500,
       "nota_denominador": null,
-      "detalle_txt": "18 proyectos aprobados (US$ 35.714M) / 25 en evaluación (US$ 112.210M) → 24,1% de la inversión total ya aprobada",
+      "detalle_txt": "19 proyectos aprobados (US$ 36.424M) / 24 en evaluación (US$ 111.500M) → 24,6% de la inversión total ya aprobada",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
-      "puntaje_itcg": 51.0,
-      "puntaje_banda": 51.0,
+      "puntaje_itcg": 51.8,
+      "puntaje_banda": 51.8,
       "peso_efectivo": 0.06
     },
     "concesiones_infraestructura": {

@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-29T04:08:29.449820",
-  "score": 3.7,
+  "generated_at": "2026-07-29T15:52:13.255656",
+  "score": 3.6,
   "itcp": {
-    "valor": 62.6,
+    "valor": 64.3,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -142,7 +142,7 @@
       "sector_privado": {
         "nombre": "Sector privado",
         "peso": 0.13,
-        "puntaje": 42.7,
+        "puntaje": 55.6,
         "indicadores": {
           "brecha_obra_publica": {
             "peso": 0.5,
@@ -153,9 +153,9 @@
           },
           "apoyo_empresario": {
             "peso": 0.5,
-            "puntaje_banda": 10.0,
-            "puntaje_aplicado": 10.0,
-            "valor": -0.667,
+            "puntaje_banda": 35.7,
+            "puntaje_aplicado": 35.7,
+            "valor": -0.429,
             "peso_efectivo": 0.065
           }
         },
@@ -210,21 +210,21 @@
       "peso_efectivo": 0.065
     },
     "apoyo_empresario": {
-      "valor": -0.667,
+      "valor": -0.429,
       "unidad": "saldo de postura (−1 a +1, 12m móviles)",
       "fuente": "Comunicados de AEA y UIA — codificación CIGOB",
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
-      "variacion_12m": -0.334,
-      "comunicados_ventana": 6,
-      "apoyos_ventana": 1,
+      "variacion_12m": -0.629,
+      "comunicados_ventana": 7,
+      "apoyos_ventana": 2,
       "criticas_ventana": 5,
       "pendientes_de_codificar": 0,
-      "detalle_txt": "En los últimos doce meses AEA y UIA se pronunciaron 6 veces sobre medidas del Gobierno nacional: 1 de apoyo y 5 de crítica. Saldo −0,667 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
+      "detalle_txt": "En los últimos doce meses AEA y UIA se pronunciaron 7 veces sobre medidas del Gobierno nacional: 2 de apoyo y 5 de crítica. Saldo −0,429 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
       "en_indice": true,
       "dimension": "sector_privado",
-      "puntaje_itcp": 10.0,
-      "puntaje_banda": 10.0,
+      "puntaje_itcp": 35.7,
+      "puntaje_banda": 35.7,
       "peso_efectivo": 0.065
     },
     "conflictividad_nacional": {

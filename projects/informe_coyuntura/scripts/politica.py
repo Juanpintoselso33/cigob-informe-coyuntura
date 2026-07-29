@@ -1380,7 +1380,15 @@ def _uia_cuerpo(html: str) -> str:
 
 
 def _uia_comunicado(id_: int, session: requests.Session) -> dict | None:
-    """Un comunicado de UIA por id. None si ese id no es de la sección prensa."""
+    """Un comunicado de UIA por id. None si ese id no es de la sección prensa.
+
+    El cuerpo va COMPLETO, sin tope de caracteres. La versión anterior cortaba
+    en 1800 y eso truncaba 37 de los 57 comunicados a mitad de palabra: el
+    pasaje que fija postura suele venir al final (la cita del dirigente, el
+    «por lo expuesto»), así que quien codifica leía la crónica y se perdía la
+    posición. Mismo defecto que el de `_uia_cuerpo`, y con el mismo síntoma:
+    ningún test lo veía porque el texto truncado sigue siendo texto válido.
+    """
     r = session.get(UIA_PRENSA_URL.format(id_), timeout=HTTP_TIMEOUT)
     if r.status_code != 200:
         return None
@@ -1393,7 +1401,7 @@ def _uia_comunicado(id_: int, session: requests.Session) -> dict | None:
     return {"camara": "UIA", "id": str(id_),
             "fecha": f"{fecha.group(3)}-{fecha.group(2)}-{fecha.group(1)}",
             "titulo": _limpio(titulo.group(1)),
-            "texto": _uia_cuerpo(r.text)[:1800],
+            "texto": _uia_cuerpo(r.text),
             "url": UIA_PRENSA_URL.format(id_)}
 
 
