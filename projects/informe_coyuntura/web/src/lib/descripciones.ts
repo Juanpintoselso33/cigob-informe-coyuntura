@@ -369,7 +369,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   asistencia_directa: {
     que: "La Tasa de Desintermediación de Planes Sociales (TDPS): qué porcentaje del devengado de Volver al Trabajo y Acompañamiento Social se paga directo al beneficiario (partida 5.1.4, ayudas sociales a personas) sobre el total transferido, según la ejecución presupuestaria real.",
-    aporta: "Verifica contra el presupuesto —no contra el anuncio— que el Decreto 198/2024 eliminó la intermediación de las Unidades de Gestión: en 2023 buena parte de la ayuda pasaba por organizaciones y cooperativas; hoy va directo a las personas. Desintermediar y recortar son cosas distintas: esto mide solo lo primero.",
+    aporta: "Verifica contra el presupuesto —no contra el anuncio— que el Decreto 198/2024 eliminó la intermediación de las Unidades de Gestión: en 2023 buena parte de la ayuda pasaba por organizaciones y cooperativas y el giro fue hacia el pago directo a las personas. Desintermediar y recortar son cosas distintas: esto mide solo lo primero.",
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   fal_modernizacion_laboral: {

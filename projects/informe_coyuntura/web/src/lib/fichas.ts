@@ -834,7 +834,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Variación interanual de cada componente al mes común.",
-      "Promedio ponderado: hoy construcción 65% + bienes de capital 35%; cuando los patentamientos comerciales acumulen 13 meses de historia propia, la composición pasa sola a 55/30/15.",
+      "Promedio ponderado de construcción y bienes de capital. La composición está prevista para cambiar sola: cuando los patentamientos de vehículos comerciales acumulen trece meses de historia propia entran como tercer componente y los dos actuales ceden peso. Los porcentajes vigentes se leen en la tabla de composición, que se recalcula con cada actualización.",
     ],
     anclas: {
       bandas: [
@@ -2443,7 +2443,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Pertenece a la dimensión de ingresos y consumo (3,02% interno · 1,12% del ITVC).",
     ],
     limitaciones: [
-      "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: entre diciembre de 2023 y hoy el consumo de carne vacuna cayó un 10%, pero el de cerdo subió un 12% y el de pollo se mantuvo, de modo que el consumo total de las tres carnes cayó apenas un 3%. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,5%) y acompaña, no lidera.",
+      "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: la caída del consumo de carne vacuna se compensa en buena medida con el aumento del de cerdo y la estabilidad del de pollo, de modo que el consumo total de las tres carnes cae mucho menos que el de vacuna sola. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,5%) y acompaña, no lidera.",
       "Fuente sectorial privada, publicada en PDF sin interfaz de datos: la lectura depende del formato del informe.",
       "La línea de base del 4º trimestre de 2023 usa la foto contemporánea de entonces, declarada; el dato revisado de la fuente difiere levemente.",
     ],
@@ -2750,7 +2750,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     seleccion: [
       "Quince indicadores puntúan en cinco dimensiones (la tabla de composición muestra la estructura vigente con los puntajes de hoy). El tablero solo muestra lo que integra el índice: dos series complementarias de conflictividad (alertas de manifestación y eventos de protesta) se siguen relevando como seguimiento interno, sin publicarse ni puntuar.",
-      "Criterio de selección: fuentes públicas verificables y automatizables. Hoy el cinturón es 100% automático: el único registro curado a mano (privatizaciones) cita la norma del Boletín Oficial detrás de cada estado.",
+      "Criterio de selección: fuentes públicas verificables y automatizables. El cinturón es íntegramente automático: el único registro curado a mano (privatizaciones) cita la norma del Boletín Oficial detrás de cada estado.",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y luego entre dimensiones si una queda vacía.",
@@ -2832,10 +2832,10 @@ export const FICHAS: Record<string, Ficha> = {
       latex: String.raw`\text{ITVC}=\sum_{\text{6 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{componentes}}\text{peso}_{\text{interno}}\times\min(\text{componente},140)\Big)`,
       leyenda: "Promedio ponderado en dos niveles (37% ingresos y consumo · 25% precios · 15% empleo · 10% vulnerabilidad financiera · 8% confianza y percepción · 5% seguridad), con el techo de recorte declarado.",
       parrafos: [
-        "La agregación es compensatoria y el flag de dimensión crítica lo declara cuando una dimensión cae por debajo del umbral: hoy la vulnerabilidad financiera (endeudamiento con mora) está marcada crítica y domina la lectura del índice.",
+        "La agregación es compensatoria y el flag de dimensión crítica lo declara cuando una dimensión cae por debajo del umbral. Cuáles están marcadas se lee en la tabla de composición, que se recalcula con cada actualización: nombrarlas acá dejaría el texto viejo al mes siguiente.",
         "El índice y la tensión son DOS ESCALAS DISTINTAS y conviene no confundirlas. El índice suma niveles: cada componente vale lo que vale contra su base de 2023, y esos números se promedian. La tensión es una lectura del resultado —5 − (índice − 100) × 0,2, recortada al rango 0-10— pensada para ponerlo en la misma vara que los otros cinturones. La tensión que aparece en la ficha de cada componente aplica esa misma fórmula a ese componente solo, y sirve para leerlo, no para calcular: al índice entra el nivel, nunca la tensión.",
         "Eso explica algo que sorprende: varios componentes muestran una tensión de 0 o de 10 a la vez. No es que midan lo mismo — es que la escala 0-10 se corta ahí, y su tensión sin recortar seguiría subiendo o bajando. Cada ficha publica ese valor sin recortar junto al recortado, para que el techo no esconda la diferencia.",
-        "Hay además un segundo recorte, éste sí sobre el número que entra al índice: ningún componente puede superar 140 (un salto puntual de uno solo no compra compensación ilimitada en el promedio). Hoy afecta al endeudamiento de consumo y al patentamiento de motos. Su efecto está medido: quita 1,9 puntos al índice en total, 0,1 de ellos por el recorte de motos.",
+        "Hay además un segundo recorte, éste sí sobre el número que entra al índice: ningún componente puede superar 140 (un salto puntual de uno solo no compra compensación ilimitada en el promedio). El recorte es sólo hacia arriba: las caídas no se recortan, se señalizan con el flag de dimensión crítica. Qué componentes están recortados y cuánto resta el recorte se publica en la ficha de cada uno y en la tabla de composición, porque cambia mes a mes",
       ],
     },
     robustez: [
