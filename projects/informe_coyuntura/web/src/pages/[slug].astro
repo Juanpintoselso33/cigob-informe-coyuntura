@@ -385,14 +385,8 @@ const robChartData = rob?.hist && indice ? {
             <div class={`cg-rob cg-rob--${meta.slug} cg-val`} data-det="val" role="button" tabindex="0"
                  aria-label="Ver el detalle de la validación externa">
               <div class="cg-rob-head">
-                <span>{val.panel
-                  ? `El ${indice.sigla} contra un panel de estadísticas externas`
-                  : `El ${indice.sigla} y su contraste externo, mes a mes`}</span>
-                {val.panel ? (
-                  <span>{val.panel.perfil.length} estadísticas · brecha <strong>{(val.panel.diferencias.brecha > 0 ? "+" : "") + num(val.panel.diferencias.brecha)}</strong></span>
-                ) : (
-                  <span>correlación <strong>{num(val.r_niveles)}</strong> · {val.n} meses</span>
-                )}
+                <span>El {indice.sigla} y su contraste externo, mes a mes</span>
+                <span>correlación <strong>{num(val.r_niveles)}</strong> · {val.n} meses</span>
               </div>
               <svg class="cg-rob-svg" viewBox={`0 0 ${valSvg.W} ${valSvg.H}`} role="img"
                    aria-label={`Evolución comparada: ${val.serie_label} y ${val.externa_label}`}>
@@ -418,28 +412,8 @@ const robChartData = rob?.hist && indice ? {
               <p class="cg-val-leyenda">
                 <span class="cg-val-chip cg-val-chip--indice">{val.serie_label}</span>
                 <span class="cg-val-chip cg-val-chip--externa">{val.externa_label}</span>
-                <span class="cg-val-chip-nota">{val.trans_label}{val.panel ? " · el gráfico muestra una de las estadísticas del panel" : ""}</span>
+                <span class="cg-val-chip-nota">{val.trans_label}</span>
               </p>
-              {val.panel && (
-                <table class="cg-cruz-tabla cg-panel-tabla">
-                  <thead>
-                    <tr>
-                      <th scope="col">estadística externa <span class="cg-panel-leyenda">— en verde, las de su terreno</span></th>
-                      <th scope="col">niveles</th>
-                      <th scope="col">mes a mes</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[...val.panel.perfil].sort((a, b) => Number(b.propia) - Number(a.propia)).map(f => (
-                      <tr>
-                        <th scope="row" class:list={[f.propia && "es-propio"]}>{f.etiqueta}</th>
-                        <td class:list={[f.propia && "es-propio"]}>{(f.r_niveles > 0 ? "+" : "") + num(f.r_niveles)}</td>
-                        <td class:list={[f.propia && "es-propio"]}>{typeof f.r_diferencias === "number" ? (f.r_diferencias > 0 ? "+" : "") + num(f.r_diferencias) : "—"}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              )}
               <p class="cg-h2-sub">{val.conclusion}</p>
               <div class="cg-det-cta">Ver el detalle →</div>
             </div>
