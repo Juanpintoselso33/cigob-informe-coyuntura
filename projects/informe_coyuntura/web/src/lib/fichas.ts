@@ -260,7 +260,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "BCRA",
       operacion: "Planilla SDDS «Reservas internacionales y liquidez en moneda extranjera» + Balance Consolidado del BCRA (depósitos del Tesoro en dólares)",
       serie: "Planilla mensual temp{MM}{AA}.pdf + balbcrhis.xls (Balance Consolidado)",
-      url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Planilla_reservas.asp",
+      url: "https://www.bcra.gob.ar/reservas-internacionales-y-base-monetaria/",
       acceso: "Automático: se leen la planilla oficial del mes y el Balance Consolidado; el resultado se valida contra las reservas brutas de la API de estadísticas.",
     },
     transformaciones: [
@@ -417,7 +417,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Ministerio de Justicia",
       operacion: "Padrón de magistrados de la Justicia Federal y Nacional (con marca de cargo vacante), más los registros de designaciones y de renuncias de magistrados",
       serie: "Tres datasets en CSV del portal datos.jus.gob.ar",
-      url: "https://datos.jus.gob.ar/dataset/magistrados-de-la-justicia-federal-y-de-la-justicia-nacional",
+      url: "https://datos.jus.gob.ar/dataset/magistrados-justicia-federal-y-de-la-justicia-nacional",
       acceso: "Automático: los tres archivos se resuelven por la interfaz del portal de datos abiertos. El nombre de cada archivo incluye su fecha de publicación y cambia en cada actualización, de modo que se busca el recurso vigente en lugar de construir la dirección a mano.",
     },
     transformaciones: [
@@ -593,7 +593,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Secretaría de Hacienda (dato primario de ARCA) y Comisión Arbitral del Convenio Multilateral; deflactor: INDEC",
       operacion: "Recaudación mensual de la Dirección General Impositiva (impuestos internos) más la de los sistemas de la Comisión Arbitral —Ingresos Brutos de los contribuyentes de Convenio Multilateral y sus regímenes de retención—, en pesos corrientes, llevadas a pesos constantes con el índice de precios",
       serie: "172.3_SOTAL_DDGI_M_0_0_12 + IPC 148.3_INIVELNAL_DICI_M_26 (API de datos.gob.ar) + gacetilla mensual de recaudación de la Comisión Arbitral",
-      url: "https://www.argentina.gob.ar/economia/ingresos-publicos",
+      url: "https://www.afip.gob.ar/institucional/estudios/",
       acceso: "Automático. La parte nacional sale de la interfaz pública de series de tiempo. La provincial se lee de la gacetilla mensual en PDF: los nombres de archivo no siguen un patrón fijo, así que se recorre el listado publicado en lugar de construir la dirección, y cada informe se procesa una sola vez y queda guardado.",
     },
     transformaciones: [
@@ -775,7 +775,7 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "ArgentinaDatos (dólar CCL y dólar cripto) + BCRA",
       operacion: "Cotización CCL, dólar cripto, tipo de cambio mayorista, M2 transaccional privado y compras netas de divisas de personas humanas sin fines específicos",
-      url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/mercado_de_cambios.asp",
+      url: "https://www.bcra.gob.ar/estadisticas-estandarizadas-sobre-la-evolucion-del-mercado-de-cambios/",
       acceso: "Automático: API diaria de ArgentinaDatos, API monetaria del BCRA y planilla acumulativa del mercado de cambios.",
     },
     transformaciones: [
@@ -957,7 +957,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Secretaría de Hacienda (resultado primario) + recaudación nacional",
       operacion: "Informe mensual de ingresos y gastos del Sector Público Nacional, y recaudación tributaria total",
       serie: "Resultado primario mensual y recaudación total mensual, ambos en millones de pesos",
-      url: "https://www.argentina.gob.ar/economia/hacienda",
+      url: "https://www.argentina.gob.ar/economia/sechacienda",
       acceso: "Automático: API de series de tiempo del Estado nacional.",
     },
     transformaciones: [
@@ -1511,7 +1511,7 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "InfoLeg (Ministerio de Justicia) + Senado de la Nación",
       operacion: "Base de legislación nacional (decretos de observación total o parcial y leyes promulgadas por insistencia) + actas de votación nominal del Senado (tratamientos de decretos bajo la ley 26.122)",
-      url: "https://servicios.infoleg.gob.ar",
+      url: "https://servicios.infoleg.gob.ar/infolegInternet/",
       acceso: "Automático: se buscan los vetos en el buscador oficial de InfoLeg y se filtran las actas del Senado por la fórmula «en los términos de la ley 26.122», contando los votos para clasificar rechazo o aprobación. Cada derrota queda documentada con su fecha, acta y fuente.",
     },
     transformaciones: [
@@ -1687,7 +1687,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "ARCA (recaudación de derechos) + INDEC (intercambio comercial) + BCRA (tipo de cambio)",
       operacion: "Alícuota efectiva del comercio exterior: derechos de exportación e importación recaudados sobre el intercambio total",
       serie: "142.3_DEREC_2001_M_20 y _26 (derechos) · 74.3_IET_0_M_16 y 74.3_IIT_0_M_25 (ICA) · API BCRA (A3500 promedio)",
-      url: "https://www.argentina.gob.ar/economia/ingresos-publicos",
+      url: "https://www.afip.gob.ar/institucional/estudios/",
       acceso: "Automático: APIs públicas de series de tiempo y del BCRA.",
     },
     transformaciones: [
@@ -2335,7 +2335,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "BCRA",
       operacion: "Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas",
       serie: "InfBanc_Anexo.xlsx, hoja de calidad de cartera por líneas",
-      url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Informe_mensual_sobre_bancos.asp",
+      url: "https://www.bcra.gob.ar/publicaciones-e-investigaciones/informe-sobre-bancos/",
       acceso: "Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual.",
     },
     transformaciones: [
@@ -2463,7 +2463,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial)",
       operacion: "Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste",
       serie: "Informes mensuales del nowcast desde enero de 2025 + serie semestral oficial del INDEC desde 2003",
-      url: "https://www.utdt.edu/",
+      url: "https://www.utdt.edu/profesores/mrozada/pobreza",
       acceso: "Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo.",
     },
     transformaciones: [
@@ -2616,7 +2616,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Universidad Torcuato Di Tella — LICIP (métrica) + Ministerio de Seguridad — SNIC (contraste)",
       operacion: "IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no",
       serie: "Informes mensuales del IVI (LICIP-UTDT) + serie anual del SNIC como contraste",
-      url: "https://www.utdt.edu/ver_contenido.php?id_contenido=1626&id_item_menu=2964",
+      url: "https://www.utdt.edu/ver_contenido.php?id_contenido=912&id_item_menu=1967",
       acceso: "Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste.",
     },
     transformaciones: [
@@ -2647,7 +2647,7 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "Universidad Torcuato Di Tella — Centro de Investigación en Finanzas",
       operacion: "ICC — Índice de Confianza del Consumidor, serie histórica nacional",
-      url: "https://www.utdt.edu/ver_contenido.php?id_contenido=2575&id_item_menu=4972",
+      url: "https://www.utdt.edu/ver_contenido.php?id_contenido=8513&id_item_menu=16458",
       acceso: "Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa.",
     },
     transformaciones: [
@@ -2711,7 +2711,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "CAFAM — Cámara Argentina de Fabricantes de Motovehículos",
       operacion: "Patentamientos mensuales de motovehículos, total país",
       serie: "API pública de patentamientos de CAFAM (histórico mensual por provincia)",
-      url: "https://www.cafam.org.ar/",
+      url: "https://cafam.org.ar/",
       acceso: "Automático: API pública sin credenciales; la serie histórica se consulta mes a mes desde fines de 2022.",
     },
     transformaciones: [
