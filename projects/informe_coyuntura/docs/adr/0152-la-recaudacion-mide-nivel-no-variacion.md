@@ -88,6 +88,16 @@ SIFERE solo da la misma independencia que el total, y la composición es estable
 en tres años (SIFERE 45,9%→42,6%, SIRCREB 27,7%→28,5%, SIRCAR 14,2%→14,5%).
 SIRCUPA pesa 0,3%→1,2%: no puede mover el agregado.
 
+**Ese control responde por la CORRELACIÓN, no por el nivel, y hay que hacer los
+dos.** Un régimen que se incorpora sesga un nivel hacia arriba por razones no
+económicas, que es una pregunta distinta de si contamina el co-movimiento.
+Control específico: se reconstruyó el indicador usando sólo los sistemas
+presentes en toda la ventana (SIRCUPA aparece recién en el último trimestre de
+2023) y se comparó trayectoria contra trayectoria. La brecha es de **0,20 puntos
+en el peor caso** —jun-2026 da 88,2 con todo y 88,0 sin los nuevos— y la deriva
+acumulada del período es de 0,20 puntos. El sesgo existe y es despreciable, pero
+está medido y no supuesto.
+
 ## Decisión
 
 1. `recaudacion` mide el **nivel de base imponible real desestacionalizada**,
