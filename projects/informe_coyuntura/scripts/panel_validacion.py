@@ -34,6 +34,7 @@ invertida, que es por donde se colaba el ajuste.
 """
 
 import factor_comun
+import regresion_validacion
 
 # familia conceptual de cada estadística del panel. Ninguna es componente de
 # ninguno de los cuatro índices — se verifica en un test.
@@ -210,6 +211,22 @@ def _factor(indice: str, serie: dict, panel: dict) -> dict | None:
         "mejor_sola_niveles": mejor_niv,
         "mejor_sola_diferencias": mejor_dif,
     }
+    # ¿Cuánto de la correlación en NIVELES es sólo la tendencia del período?
+    # (ADR-0162). Es la pregunta que la correlación no responde y que en estos
+    # treinta meses argentinos importa más que en ningún otro lado: casi todas
+    # las series se movieron para el mismo lado, así que un r alto en niveles
+    # puede ser eso y nada más. Se corre sobre niveles a propósito — diferenciar
+    # ya le quita la tendencia, así que ahí la pregunta no tiene sentido.
+    # Se guardan los NÚMEROS, no la redacción: el texto se arma al publicar
+    # (`lectura_factor_detalle`). Si viniera escrito de acá, corregir una frase
+    # obligaría a re-correr `validacion_externa`, que sale a la red — es la
+    # misma convención que ya sigue el resto del panel, y romperla costó
+    # publicar una versión vieja del texto.
+    serie_factor = {p[0]: p[2] for p in niv["pares"]}
+    aporte = regresion_validacion.aporte_sobre_tendencia(serie, serie_factor)
+    if aporte.get("suficiente"):
+        salida["aporte_sobre_tendencia"] = aporte
+
     salida["plano"] = plano_del_veredicto(salida)
     salida["pares_grafico"] = dif["pares"] if salida["plano"] == "diferencias" else niv["pares"]
     return salida
@@ -354,6 +371,15 @@ def lectura_factor_detalle(p: dict) -> list:
             tope + f" El compuesto queda por debajo. Se publica igual porque es lo que el "
                    f"contraste enseña: lo que las {f['n_series']} comparten es un ciclo más "
                    f"ancho que el que el índice sigue, y una de ellas sola lo capta mejor.")
+    # La prueba que separa explicar de acompañar (ADR-0162). Va al final porque
+    # es la que califica todo lo anterior: un r alto en niveles que no sobrevive
+    # a descontarle la tendencia del período no dice lo que parece decir.
+    aporte = f.get("aporte_sobre_tendencia")
+    if aporte:
+        reg = regresion_validacion.lectura(
+            aporte, "positivo" if (f.get("r_niveles") or 0) > 0 else "negativo")
+        if reg:
+            partes.append(reg)
     return partes
 
 

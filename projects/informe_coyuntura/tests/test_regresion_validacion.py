@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Tests de la regresión de validación (ADR-0161), sin red.
+"""Tests de la regresión de validación (ADR-0162), sin red.
 
 Una regresión mal resuelta es peor que no tenerla: publica un número con aire de
 autoridad. Por eso se verifica contra casos de respuesta CONOCIDA —ajuste
@@ -86,12 +86,21 @@ def test_el_texto_declara_cuando_el_indice_no_aporta():
     assert "no porque confirme" in txt
 
 
-def test_el_texto_marca_el_signo_contrario():
+def test_el_texto_marca_cuando_el_coeficiente_contradice_a_la_correlacion():
+    """No es una expectativa a priori —la orientación del factor la fija su carga
+    dominante— sino coherencia: si la correlación publicada es positiva y el
+    coeficiente sale negativo, quitada la tendencia se mueven al revés."""
     r = {"suficiente": True, "n": 30, "r2_tendencia": 0.6, "r2_con_indice": 0.8,
          "aporte": 0.2, "signo": "negativo", "coef": -0.5}
-    txt = rv.lectura(r, esperado="positivo")
-    assert "signo CONTRARIO" in txt
-    assert "no valida" in txt
+    txt = rv.lectura(r, "positivo")
+    assert "lado contrario" in txt
+    assert "Se declara" in txt
+
+
+def test_sin_signo_de_referencia_no_inventa_una_advertencia():
+    r = {"suficiente": True, "n": 30, "r2_tendencia": 0.6, "r2_con_indice": 0.8,
+         "aporte": 0.2, "signo": "negativo", "coef": -0.5}
+    assert "lado contrario" not in rv.lectura(r)
 
 
 def test_la_colinealidad_exacta_se_declara_como_tal():
@@ -109,3 +118,12 @@ def test_un_aporte_real_no_se_marca_como_colineal():
     r = rv.aporte_sobre_tendencia(_serie([100 + c for c in ciclo]),
                                   _serie([50 + 0.5 * i + 2 * c for i, c in enumerate(ciclo)]))
     assert r["colineal"] is False
+
+
+def test_un_aporte_chico_no_se_redondea_a_cero_exacto():
+    """Decir «0 puntos porcentuales» cuando son 0,4 es una afirmación más fuerte
+    que la real."""
+    r = {"suficiente": True, "n": 30, "r2_tendencia": 0.466, "r2_con_indice": 0.470,
+         "aporte": 0.004, "signo": "positivo", "coef": 0.01}
+    txt = rv.lectura(r)
+    assert "0,4 puntos porcentuales" in txt, txt

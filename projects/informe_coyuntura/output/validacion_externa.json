@@ -3740,6 +3740,16 @@
         "r_diferencias": 0.478,
         "mejor_sola_niveles": 0.364,
         "mejor_sola_diferencias": 0.406,
+        "aporte_sobre_tendencia": {
+          "n": 29,
+          "suficiente": true,
+          "colineal": false,
+          "r2_tendencia": 0.008,
+          "r2_con_indice": 0.009,
+          "aporte": 0.001,
+          "signo": "positivo",
+          "coef": 0.0087
+        },
         "plano": "diferencias",
         "pares_grafico": [
           [
@@ -4194,6 +4204,16 @@
         "r_diferencias": -0.015,
         "mejor_sola_niveles": 0.747,
         "mejor_sola_diferencias": 0.276,
+        "aporte_sobre_tendencia": {
+          "n": 30,
+          "suficiente": true,
+          "colineal": false,
+          "r2_tendencia": 0.466,
+          "r2_con_indice": 0.47,
+          "aporte": 0.004,
+          "signo": "positivo",
+          "coef": 0.0218
+        },
         "plano": "niveles",
         "pares_grafico": [
           [
@@ -4656,6 +4676,16 @@
         "r_diferencias": 0.493,
         "mejor_sola_niveles": 0.493,
         "mejor_sola_diferencias": 0.42,
+        "aporte_sobre_tendencia": {
+          "n": 30,
+          "suficiente": true,
+          "colineal": false,
+          "r2_tendencia": 0.226,
+          "r2_con_indice": 0.476,
+          "aporte": 0.25,
+          "signo": "positivo",
+          "coef": 0.0776
+        },
         "plano": "niveles",
         "pares_grafico": [
           [

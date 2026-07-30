@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-30T18:01:30.466422",
+  "generated_at": "2026-07-30T19:38:29.311434",
   "period": "2026-07",
   "score_global": 3.4,
   "ponderacion": {
@@ -1974,6 +1974,16 @@
               "r_diferencias": 0.493,
               "mejor_sola_niveles": 0.493,
               "mejor_sola_diferencias": 0.42,
+              "aporte_sobre_tendencia": {
+                "n": 30,
+                "suficiente": true,
+                "colineal": false,
+                "r2_tendencia": 0.226,
+                "r2_con_indice": 0.476,
+                "aporte": 0.25,
+                "signo": "positivo",
+                "coef": 0.0776
+              },
               "plano": "niveles",
               "pares_grafico": [
                 [
@@ -2131,7 +2141,8 @@
                 "Para no depender de una sola estadística, las 3 del terreno propio del índice se resumen en su factor común: el primer componente principal, el mismo método con el que la Reserva Federal de Chicago arma su índice de actividad a partir de 85 series. El factor recoge 51,5% de lo que las 3 tienen en común, y pesa más en confianza en el gobierno.",
                 "El cálculo determina por su cuenta que incertidumbre de política (EPU) entra con signo invertido: no se declaró a mano. Es lo que hace que la comparación no se pueda acomodar — quien elige los signos de un promedio ya vio los resultados.",
                 "Las cargas se estiman con las estadísticas externas solas: el índice no participa del cálculo del factor, sólo se compara contra él una vez armado.",
-                "La mejor de las 3 por separado llega a 0,493 en niveles y 0,42 en los cambios. El compuesto le gana a todas en los dos planos: lo que las estadísticas comparten —y no una en particular— es lo que el índice sigue."
+                "La mejor de las 3 por separado llega a 0,493 en niveles y 0,42 en los cambios. El compuesto le gana a todas en los dos planos: lo que las estadísticas comparten —y no una en particular— es lo que el índice sigue.",
+                "Queda una prueba más, la que separa explicar de acompañar: una simple tendencia temporal ya da cuenta del 23% de lo que hace el contraste externo, porque en estos años casi todo se movió en la misma dirección. Sumar el índice lleva ese poder explicativo al 48%: aporta 25 puntos porcentuales por encima de la tendencia. Es la parte del vínculo que no se explica sola con el paso del tiempo."
               ]
             }
           }
@@ -3256,6 +3267,16 @@
               "r_diferencias": 0.478,
               "mejor_sola_niveles": 0.364,
               "mejor_sola_diferencias": 0.406,
+              "aporte_sobre_tendencia": {
+                "n": 29,
+                "suficiente": true,
+                "colineal": false,
+                "r2_tendencia": 0.008,
+                "r2_con_indice": 0.009,
+                "aporte": 0.001,
+                "signo": "positivo",
+                "coef": 0.0087
+              },
               "plano": "diferencias",
               "pares_grafico": [
                 [
@@ -3403,7 +3424,8 @@
                 "Para no depender de una sola estadística, las 4 del terreno propio del índice se resumen en su factor común: el primer componente principal, el mismo método con el que la Reserva Federal de Chicago arma su índice de actividad a partir de 85 series. El factor recoge 37,2% de lo que las 4 tienen en común, y pesa más en electricidad consumida por los hogares.",
                 "El cálculo determina por su cuenta que viajes en transporte público entra con signo invertido: no se declaró a mano. Es lo que hace que la comparación no se pueda acomodar — quien elige los signos de un promedio ya vio los resultados.",
                 "Las cargas se estiman con las estadísticas externas solas: el índice no participa del cálculo del factor, sólo se compara contra él una vez armado.",
-                "La mejor de las 4 por separado llega a 0,364 en niveles y 0,406 en los cambios. El compuesto le gana a todas en los cambios mes a mes, que es la prueba exigente: la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas. En niveles queda por debajo, y conviene decir por qué: este índice se movió muy poco en términos netos —sus componentes se compensan entre sí— mientras que las estadísticas del contraste tienen tendencia propia. Comparar niveles de una serie casi plana contra series que suben o bajan no dice demasiado en ninguna dirección."
+                "La mejor de las 4 por separado llega a 0,364 en niveles y 0,406 en los cambios. El compuesto le gana a todas en los cambios mes a mes, que es la prueba exigente: la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas. En niveles queda por debajo, y conviene decir por qué: este índice se movió muy poco en términos netos —sus componentes se compensan entre sí— mientras que las estadísticas del contraste tienen tendencia propia. Comparar niveles de una serie casi plana contra series que suben o bajan no dice demasiado en ninguna dirección.",
+                "Queda una prueba más, la que separa explicar de acompañar: una simple tendencia temporal ya da cuenta del 0,8% de lo que hace el contraste externo, porque en estos años casi todo se movió en la misma dirección. Sumar el índice a esa tendencia no agrega prácticamente nada (0,1 puntos porcentuales): en este período el índice no explica el contraste más allá de lo que explica el paso del tiempo. Se publica porque es el resultado, no porque confirme."
               ]
             }
           }
@@ -5206,6 +5228,16 @@
               "r_diferencias": -0.015,
               "mejor_sola_niveles": 0.747,
               "mejor_sola_diferencias": 0.276,
+              "aporte_sobre_tendencia": {
+                "n": 30,
+                "suficiente": true,
+                "colineal": false,
+                "r2_tendencia": 0.466,
+                "r2_con_indice": 0.47,
+                "aporte": 0.004,
+                "signo": "positivo",
+                "coef": 0.0218
+              },
               "plano": "niveles",
               "pares_grafico": [
                 [
@@ -5363,7 +5395,8 @@
                 "Para no depender de una sola estadística, las 4 del terreno propio del índice se resumen en su factor común: el primer componente principal, el mismo método con el que la Reserva Federal de Chicago arma su índice de actividad a partir de 85 series. El factor recoge 47,0% de lo que las 4 tienen en común, y pesa más en financiamiento externo a empresas.",
                 "El cálculo determina por su cuenta que inversión directa de no residentes y inversión de cartera de no residentes entra con signo invertido: no se declaró a mano. Es lo que hace que la comparación no se pueda acomodar — quien elige los signos de un promedio ya vio los resultados.",
                 "Las cargas se estiman con las estadísticas externas solas: el índice no participa del cálculo del factor, sólo se compara contra él una vez armado.",
-                "La mejor de las 4 por separado llega a 0,747 en niveles y 0,276 en los cambios. El compuesto queda por debajo. Se publica igual porque es lo que el contraste enseña: lo que las 4 comparten es un ciclo más ancho que el que el índice sigue, y una de ellas sola lo capta mejor."
+                "La mejor de las 4 por separado llega a 0,747 en niveles y 0,276 en los cambios. El compuesto queda por debajo. Se publica igual porque es lo que el contraste enseña: lo que las 4 comparten es un ciclo más ancho que el que el índice sigue, y una de ellas sola lo capta mejor.",
+                "Queda una prueba más, la que separa explicar de acompañar: una simple tendencia temporal ya da cuenta del 47% de lo que hace el contraste externo, porque en estos años casi todo se movió en la misma dirección. Sumar el índice a esa tendencia no agrega prácticamente nada (0,4 puntos porcentuales): en este período el índice no explica el contraste más allá de lo que explica el paso del tiempo. Se publica porque es el resultado, no porque confirme."
               ]
             }
           }

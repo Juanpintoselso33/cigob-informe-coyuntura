@@ -222,3 +222,29 @@ def test_el_grafico_del_plano_de_cambios_tiene_un_punto_menos():
     f = pv.perfil("itvc", base, _panel_consumo(base))["factor"]
     assert f["plano"] == "niveles"
     assert f["pares_grafico"] == f["pares"]
+
+
+_CON_REGRESION = {"factor": dict(_GANA["factor"], aporte_sobre_tendencia={
+    "suficiente": True, "n": 30, "r2_tendencia": 0.466, "r2_con_indice": 0.470,
+    "aporte": 0.004, "signo": "positivo", "coef": 0.01})}
+
+
+def test_el_detalle_incluye_la_prueba_contra_la_tendencia():
+    """Es la que califica a todas las demás: un r alto en niveles que no
+    sobrevive a descontarle la tendencia del período no dice lo que parece."""
+    parrafos = pv.lectura_factor_detalle(_CON_REGRESION)
+    assert "separa explicar de acompañar" in parrafos[-1], "va al final, califica lo anterior"
+    assert "0,4 puntos porcentuales" in parrafos[-1]
+
+
+def test_el_texto_de_la_regresion_se_arma_al_publicar_y_no_viene_guardado():
+    """El panel guarda NÚMEROS, no redacción: si viniera escrita del JSON
+    intermedio, corregir una frase obligaría a re-correr un script de red — y
+    mientras tanto se publica la versión vieja. Pasó."""
+    f = _CON_REGRESION["factor"]["aporte_sobre_tendencia"]
+    assert "lectura" not in f
+    assert pv.lectura_factor_detalle(_CON_REGRESION)[-1]
+
+
+def test_sin_regresion_el_detalle_no_se_rompe():
+    assert "separa explicar de acompañar" not in " ".join(pv.lectura_factor_detalle(_GANA))

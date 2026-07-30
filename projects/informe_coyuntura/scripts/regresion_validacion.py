@@ -102,12 +102,26 @@ def aporte_sobre_tendencia(indice: dict, externa: dict, min_meses: int = 18) -> 
     }
 
 
-def lectura(r: dict, esperado: str = "positivo") -> str:
-    """Texto público del aporte incremental."""
+def lectura(r: dict, signo_correlacion: str | None = None) -> str:
+    """Texto público del aporte incremental.
+
+    `signo_correlacion` no es una expectativa a priori sino un CHEQUEO DE
+    COHERENCIA: cuando el contraste es el factor común, su orientación la fija
+    la carga dominante, así que no hay un signo esperado de antemano. Lo que sí
+    tiene que pasar es que el coeficiente de la regresión apunte para el mismo
+    lado que la correlación ya publicada; si no, hay algo que mirar.
+    """
     if not r.get("suficiente"):
         return ""
     coma = lambda x: str(x).replace(".", ",").replace("-", "−")
-    pct = lambda v: coma(round(100 * v))
+
+    def pct(v):
+        """Un decimal cuando el valor es chico: redondear 0,4 a «0» lo hace
+        parecer un cero exacto, que es una afirmación más fuerte que la real."""
+        p = 100 * v
+        return coma(round(p, 1) if abs(p) < 10 else round(p))
+
+    esperado = signo_correlacion
     base = (f"Queda una prueba más, la que separa explicar de acompañar: una simple tendencia "
             f"temporal ya da cuenta del {pct(r['r2_tendencia'])}% de lo que hace el contraste "
             f"externo, porque en estos años casi todo se movió en la misma dirección. ")
@@ -120,12 +134,12 @@ def lectura(r: dict, esperado: str = "positivo") -> str:
                        f"({pct(r['aporte'])} puntos porcentuales): en este período el índice no "
                        f"explica el contraste más allá de lo que explica el paso del tiempo. Se "
                        f"publica porque es el resultado, no porque confirme.")
-    calidad = "signo esperado" if r["signo"] == esperado else "signo CONTRARIO al esperado"
     extra = (f"Sumar el índice lleva ese poder explicativo al {pct(r['r2_con_indice'])}%: aporta "
-             f"{pct(r['aporte'])} puntos porcentuales por encima de la tendencia, con el "
-             f"{calidad}.")
-    if r["signo"] != esperado:
-        extra += (" Un aporte con el signo cambiado no valida: indica que el índice y el "
-                  "contraste se mueven en direcciones opuestas una vez quitada la tendencia, y "
-                  "hay que mirarlo.")
+             f"{pct(r['aporte'])} puntos porcentuales por encima de la tendencia. Es la parte "
+             f"del vínculo que no se explica sola con el paso del tiempo.")
+    if esperado and r["signo"] != esperado:
+        extra += (" El coeficiente apunta para el lado contrario que la correlación publicada: "
+                  "quitada la tendencia, el índice y el contraste se mueven en direcciones "
+                  "opuestas. Se declara porque es exactamente lo que esta prueba existe para "
+                  "detectar.")
     return base + extra
