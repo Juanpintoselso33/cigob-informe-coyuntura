@@ -136,79 +136,6 @@
       "reservas_bcra"
     ]
   },
-  "riesgo_pais_mensual": {
-    "2023-11": 2327.0,
-    "2023-12": 1892.0,
-    "2024-01": 1942.0,
-    "2024-02": 1845.0,
-    "2024-03": 1557.0,
-    "2024-04": 1276.0,
-    "2024-05": 1300.0,
-    "2024-06": 1447.0,
-    "2024-07": 1531.0,
-    "2024-08": 1530.0,
-    "2024-09": 1382.0,
-    "2024-10": 1103.0,
-    "2024-11": 810.0,
-    "2024-12": 694.0,
-    "2025-01": 611.0,
-    "2025-02": 698.0,
-    "2025-03": 754.0,
-    "2025-04": 799.0,
-    "2025-05": 684.0,
-    "2025-06": 688.0,
-    "2025-07": 728.0,
-    "2025-08": 758.0,
-    "2025-09": 1090.0,
-    "2025-10": 989.0,
-    "2025-11": 630.0,
-    "2025-12": 601.0,
-    "2026-01": 550.0,
-    "2026-02": 521.0,
-    "2026-03": 587.0,
-    "2026-04": 562.0,
-    "2026-05": 521.0,
-    "2026-06": 455.0,
-    "2026-07": 416.0
-  },
-  "correlaciones_itcm": {
-    "niveles (ITCM vs riesgo país)": {
-      "r": -0.819,
-      "n": 31
-    },
-    "primeras diferencias (ITCM vs riesgo)": {
-      "r": -0.083,
-      "n": 30
-    },
-    "ITCM adelantado 1 mes vs riesgo": {
-      "r": -0.795,
-      "n": 30
-    },
-    "riesgo adelantado 1 mes vs ITCM": {
-      "r": -0.851,
-      "n": 31
-    },
-    "niveles (ITCM vs índice líder)": {
-      "r": 0.698,
-      "n": 31
-    },
-    "primeras diferencias (ITCM vs líder)": {
-      "r": 0.419,
-      "n": 30
-    },
-    "líder adelantado 1 mes vs ITCM": {
-      "r": 0.394,
-      "n": 31
-    },
-    "líder adelantado 3 meses vs ITCM": {
-      "r": -0.166,
-      "n": 31
-    },
-    "ITCM adelantado 1 mes vs líder": {
-      "r": 0.74,
-      "n": 30
-    }
-  },
   "indice_lider_mensual": {
     "2026-06": 125.6,
     "2026-05": 124.7,
@@ -270,6 +197,28 @@
     "2021-09": 130.8,
     "2021-08": 128.8,
     "2021-07": 128.6
+  },
+  "correlaciones_itcm": {
+    "niveles (ITCM vs índice líder)": {
+      "r": 0.698,
+      "n": 31
+    },
+    "primeras diferencias (ITCM vs líder)": {
+      "r": 0.419,
+      "n": 30
+    },
+    "líder adelantado 1 mes vs ITCM": {
+      "r": 0.394,
+      "n": 31
+    },
+    "líder adelantado 3 meses vs ITCM": {
+      "r": -0.166,
+      "n": 31
+    },
+    "ITCM adelantado 1 mes vs líder": {
+      "r": 0.74,
+      "n": 30
+    }
   },
   "redundancia_itcm": {
     "diferencias": {
@@ -2011,14 +1960,6 @@
     },
     "primeras diferencias (ITCG vs Merval USD)": {
       "r": 0.135,
-      "n": 31
-    },
-    "niveles (ITCG vs riesgo país)": {
-      "r": -0.868,
-      "n": 32
-    },
-    "primeras diferencias (ITCG vs riesgo)": {
-      "r": -0.139,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {

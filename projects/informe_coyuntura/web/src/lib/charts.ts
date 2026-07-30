@@ -193,7 +193,7 @@ export function dualTimeChart(el: HTMLElement, a: { nombre: string; puntos: Punt
              axisBorder: { show: false }, axisTicks: { show: false } },
     yaxis: [
       { seriesName: a.nombre, labels: { formatter: fmt(a), style: { colors: color, fontSize: "11px" } } },
-      // ejeBInvertido: para pares de correlación NEGATIVA (ej. riesgo país) el
+      // ejeBInvertido: para pares de correlación NEGATIVA el
       // eje de la externa se invierte — las curvas co-mueven visualmente como
       // en la tarjeta, pero el tooltip muestra el valor real.
       { seriesName: b.nombre, opposite: true, reversed: !!opts.ejeBInvertido,

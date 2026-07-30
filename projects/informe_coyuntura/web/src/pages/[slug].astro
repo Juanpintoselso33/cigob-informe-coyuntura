@@ -148,7 +148,7 @@ if (val && val.pares.length >= 12) {
   // Dos modos de escala (definidos por publicar según el par):
   //   rebase100    → ambas series a 100 en el primer mes (vida: escalas afines)
   //   minmax_inv   → externa INVERTIDA y ambas normalizadas al rango del
-  //                  período (macro: el riesgo país en pb no comparte escala)
+  //                  período (las dos series no comparten escala)
   let serieA: number[], serieB: number[];
   if (val.plot === "minmax_inv" || val.plot === "minmax") {
     const norm = (s: number[]) => {

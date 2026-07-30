@@ -214,3 +214,38 @@ Queda anotado como pendiente editorial: si el criterio del proyecto para elegir
 ancla es «la que valida en diferencias» o «la que más correlaciona en niveles».
 Acá se eligió la primera por decisión del editor; son criterios distintos y
 llevan a anclas distintas.
+
+## Enmienda 2 (2026-07-30): el riesgo país se retira por completo del informe
+
+La enmienda anterior dejó el EMBI como **quinta columna** de la matriz cruzada,
+argumentando que ahí seguía aportando poder discriminante. El editor lo cortó:
+el reemplazo es total.
+
+Retirado de todas las superficies:
+
+- **matriz de validación cruzada**: vuelve a ser 4×4 (actividad, Merval, ICC,
+  EPU), un contraste propio por índice. Se elimina `_nota_itcp_riesgo`, que
+  comentaba la celda ITCP×riesgo y quedaba muerta.
+- **conclusión de la sección de macro**: ya no explica el cambio nombrando el
+  ancla anterior. En su lugar dice el criterio, que es lo que hay que poder
+  auditar: se le pide al ancla que el co-movimiento aguante **mes a mes**, porque
+  es la parte que no se explica por la tendencia común del período.
+- **ficha `/metodologia/itcm`**: mismo cambio, criterio en vez de historia.
+- **sección de metodología del home**: listaba «riesgo país (ITCM)» entre las
+  anclas. Además afirmaba que «la matriz cruzada verifica que cada uno
+  correlacione más con su ancla propia», que **hoy es falso en 2 de los 4** — se
+  reescribió para decir que la matriz lo compara y que el resultado se declara.
+- **cálculo**: se eliminan `fetch_riesgo_pais_mensual`, `RIESGO_PAIS_URL`, el
+  bloque de correlaciones ITCM×riesgo y el cruzado ITCG×riesgo. Ya no se pide la
+  serie: una dependencia de red menos.
+
+Efecto medible de sacar la columna: la prueba discriminante pasa de fallar en
+**3 de 4** índices a fallar en **2**. El ITCG deja de estar superado, porque el
+que lo superaba era el propio riesgo país (−0,87 contra su +0,75 propio). Siguen
+fallando el ITCM (+0,75 Merval contra +0,70 propio) y el ITVC (+0,50 actividad
+contra +0,34 propio).
+
+Lo único que se conserva es la mención en **docstrings del código y en estos
+ADR**, que son el registro de por qué el ancla es la que es. Si eso también
+tuviera que irse, sería borrar el motivo de una decisión de metodología, que es
+lo contrario de lo que estos documentos existen para hacer.

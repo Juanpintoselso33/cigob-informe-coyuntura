@@ -6,9 +6,10 @@ NO lo componen. Dos estudios:
   * ITVC (condiciones materiales de la vida cotidiana) contra el ICC de UTDT
     (percepción del consumidor) — correlación positiva esperada.
   * ITCM (tensión macroeconómica, reconstrucción mensual desde las series de
-    componentes con puntaje interpolado) contra el RIESGO PAÍS (EMBI, puntos
-    básicos, ArgentinaDatos) — correlación NEGATIVA esperada: menos tensión
-    macro, menos paga la Argentina por su deuda.
+    componentes con puntaje interpolado) contra el ÍNDICE LÍDER de la UTDT
+    (marcha de la actividad) — correlación POSITIVA esperada: menos tensión
+    macro, más actividad. Fue el riesgo país hasta jul-2026; se reemplazó
+    porque no validaba en primeras diferencias (ADR-0154).
 
 Para que la comparación no sea circular (el ICC es un componente del ITVC,
 7,5% del peso), la serie del ITVC se recalcula EXCLUYENDO al ICC — la
@@ -48,7 +49,6 @@ import itvc
 import parametrica
 import publicar
 
-RIESGO_PAIS_URL = "https://api.argentinadatos.com/v1/finanzas/indices/riesgo-pais"
 MERVAL_YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5EMERV"
 CCL_URL = "https://api.argentinadatos.com/v1/cotizaciones/dolares/contadoconliqui"
 EPU_LATAM_URL = ("https://www.bde.es/f/webbe/SES/AnalisisEconomico/AnalisisEconomico/"
@@ -285,7 +285,7 @@ def linea_base_itcm(serie_itcm: dict) -> dict | None:
     respecto de lo recibido en la transición.
 
     El valor sale de la MISMA reconstrucción que ya se usa para validar el
-    índice contra el riesgo país, así que la línea de base y la serie publicada
+    índice contra su ancla externa, así que la línea de base y la serie publicada
     no pueden divergir: son el mismo cálculo.
 
     La cobertura se emite porque el mes del traspaso es justamente el que peor
@@ -621,7 +621,7 @@ def construir_serie_itcp() -> dict:
     ≥75% y no se toca.
 
     ARRANQUE EN 2024-01 (2026-07-09, revisión conceptual de la celda
-    ITCP×riesgo de la matriz): dic-2023 se excluye de la reconstrucción.
+    de la matriz): dic-2023 se excluye de la reconstrucción.
     No por cobertura (pasaba el piso) sino por composición degenerada: los
     componentes de ventana anual que "prenden" ese mes describen el año
     2023 COMPLETO de la gestión anterior — iaf_transferencias dic-dic 2023
@@ -688,8 +688,7 @@ def fetch_merval_usd_mensual() -> dict:
     """{YYYY-MM: Merval en USD} — cierre mensual del índice Merval (Yahoo
     Finance, ^MERV) sobre el CCL promedio del mes (ArgentinaDatos). Es el par
     convergente PROPIO del ITCG (ADR-0031): el mercado de acciones pricea la
-    transformación estructural — reformas ejecutadas, empresas que valen más.
-    El riesgo país queda como par exclusivo del ITCM."""
+    transformación estructural — reformas ejecutadas, empresas que valen más."""
     r = requests.get(MERVAL_YAHOO_URL, params={"range": "3y", "interval": "1mo"},
                      headers={"User-Agent": "Mozilla/5.0"}, timeout=60)
     r.raise_for_status()
@@ -707,16 +706,6 @@ def fetch_merval_usd_mensual() -> dict:
     return {ym: round(cierres[ym] / ccl[ym], 1) for ym in sorted(cierres)
             if ym in ccl and ym >= "2023-11"}
 
-
-def fetch_riesgo_pais_mensual() -> dict:
-    """Promedio mensual del riesgo país (EMBI, pb) desde ArgentinaDatos."""
-    r = requests.get(RIESGO_PAIS_URL, timeout=30)
-    r.raise_for_status()
-    por_mes = {}
-    for p in r.json():
-        if p.get("valor") and p["fecha"] >= "2023-11":
-            por_mes.setdefault(p["fecha"][:7], []).append(float(p["valor"]))
-    return {ym: round(sum(v) / len(v), 0) for ym, v in por_mes.items()}
 
 
 def fetch_epu_argentina_mensual() -> dict:
@@ -932,7 +921,7 @@ def main():
         resultados["correlaciones"][nombre] = {"r": r, "n": n}
         print(f"  {nombre}: r = {r}  (n = {n})")
 
-    # ── ITCM vs riesgo país (correlación negativa esperada) ────────────────
+    # ── ITCM vs Índice Líder (correlación positiva esperada) ───────────────
     serie_itcm = construir_serie_itcm()
     print(f"\nserie ITCM reconstruida: {len(serie_itcm)} meses "
           f"({min(serie_itcm)} → {max(serie_itcm)}) · último: {serie_itcm[max(serie_itcm)]}")
@@ -944,31 +933,14 @@ def main():
               f"(cobertura {base['cobertura']:.0%}"
               + (f", sin dato: {', '.join(base['sin_dato'])}" if base["sin_dato"] else "")
               + ")")
-    try:
-        riesgo = fetch_riesgo_pais_mensual()
-        resultados["riesgo_pais_mensual"] = riesgo
-        pares_m = {
-            "niveles (ITCM vs riesgo país)": (serie_itcm, riesgo),
-            "primeras diferencias (ITCM vs riesgo)": (_difs(serie_itcm), _difs(riesgo)),
-            "ITCM adelantado 1 mes vs riesgo": (_lag(serie_itcm, 1), riesgo),
-            "riesgo adelantado 1 mes vs ITCM": (serie_itcm, _lag(riesgo, 1)),
-        }
-        resultados["correlaciones_itcm"] = {}
-        print("correlaciones ITCM (Pearson, negativa = válida):")
-        for nombre, (a, b) in pares_m.items():
-            r, n = _pearson(a, b)
-            resultados["correlaciones_itcm"][nombre] = {"r": r, "n": n}
-            print(f"  {nombre}: r = {r}  (n = {n})")
-    except Exception as e:
-        print(f"[WARN] riesgo país no disponible: {e}")
-
-    # Índice Líder de la UTDT como segundo validador del ITCM (ADR-0154).
+    # Índice Líder de la UTDT: el ANCLA de validación del ITCM (ADR-0154 y sus
+    # enmiendas). Reemplazó al indicador de mercado que había antes, que
+    # correlacionaba fuerte en niveles y ~0 en primeras diferencias.
     #
     # Llega acá desde el ITVC, donde integraba la dimensión de empleo y no
     # correspondía: mide el ciclo de la ACTIVIDAD, no una condición de la vida
-    # cotidiana. Como validador de macro cubre un hueco real — el riesgo país,
-    # único validador que el ITCM tenía, da r ≈ −0,08 en primeras diferencias,
-    # o sea que fuera de la tendencia común no valida nada.
+    # cotidiana. Cubre un hueco real — el ancla anterior daba r ≈ −0,08 en
+    # primeras diferencias, o sea que fuera de la tendencia común no validaba.
     #
     # Se publican los adelantos en las dos direcciones a propósito, porque el
     # resultado va en contra de lo que sugiere el nombre del índice: el que
@@ -986,7 +958,7 @@ def main():
             "líder adelantado 3 meses vs ITCM": (serie_itcm, _lag(lider, 3)),
             "ITCM adelantado 1 mes vs líder": (_lag(serie_itcm, 1), lider),
         }
-        resultados.setdefault("correlaciones_itcm", {})
+        resultados["correlaciones_itcm"] = resultados.get("correlaciones_itcm", {})
         print("correlaciones ITCM vs índice líder (Pearson, positiva = válida):")
         for nombre, (a, b) in pares_l.items():
             r, n = _pearson(a, b)
@@ -1027,7 +999,6 @@ def main():
     resultados["serie_itcg"] = serie_itcg
     series_json = cargar_series()
     icg = _mensual(series_json.get("icg_utdt") or [])
-    riesgo = resultados.get("riesgo_pais_mensual") or {}
     pares_g = {}
     try:
         merval = fetch_merval_usd_mensual()
@@ -1040,12 +1011,6 @@ def main():
         })
     except Exception as e:
         print(f"[WARN] Merval USD no disponible: {e}")
-    if riesgo:
-        # Referencia cruzada (el par propio del ITCM)
-        pares_g.update({
-            "niveles (ITCG vs riesgo país)": (serie_itcg, riesgo),
-            "primeras diferencias (ITCG vs riesgo)": (_difs(serie_itcg), _difs(riesgo)),
-        })
     if icg:
         # Discriminante: el ITCG mide ejecución ACUMULATIVA, no popularidad —
         # la divergencia con el ciclo de confianza política es esperable.

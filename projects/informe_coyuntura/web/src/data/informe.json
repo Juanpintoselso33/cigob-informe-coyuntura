@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-30T04:49:25.303903",
+  "generated_at": "2026-07-30T10:49:36.278206",
   "period": "2026-07",
   "score_global": 3.4,
   "ponderacion": {
@@ -836,7 +836,7 @@
           "serie_label": "ITCM (reconstrucción mensual)",
           "externa_label": "Índice Líder (UTDT)",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,698 en niveles y 0,419 en los cambios mes a mes: cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace también en el corto plazo, no sólo en la tendencia del período. El contraste anterior del cinturón era el precio del riesgo argentino (EMBI), que da −0,819 en niveles pero −0,083 en los saltos de un mes: cuenta la misma historia de fondo, no el mismo mes. Por eso el ancla pasó a ser la actividad, que es el contraste que sobrevive cuando se descuenta la tendencia común. El riesgo país se sigue publicando en la matriz de validación cruzada. Medida en ventanas de seis meses, la relación con el mercado reaparece con fuerza (−0,57): es una asociación de media frecuencia, no un resultado nulo. Un punto que conviene no leer al revés: el ajuste mejora cuando se adelanta el ITCM (0,74) y empeora cuando se adelanta el índice externo (0,394). Pese a su nombre, acá funciona como validación del mismo mes y no como alerta temprana."
+          "conclusion": "Correlación 0,698 en niveles y 0,419 en los cambios mes a mes: cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace también en el corto plazo, no sólo en la tendencia del período. Que el co-movimiento aguante mes a mes es lo que se le pide a un ancla externa: es la parte que no se explica por la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Un punto que conviene no leer al revés: el ajuste mejora cuando se adelanta el ITCM (0,74) y empeora cuando se adelanta el índice externo (0,394). Pese a su nombre, acá funciona como validación del mismo mes y no como alerta temprana."
         },
         "redundancia": {
           "n_indicadores": 15,

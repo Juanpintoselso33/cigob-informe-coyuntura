@@ -29,7 +29,7 @@ def coma(x) -> str:
 
     Había trece copias de `coma = lambda x: str(x).replace(".", ",")` en este
     archivo, todas sin el signo menos — y por eso las conclusiones de validación
-    salían con guion («ITCM -0,84 con el riesgo país») mientras las unidades y
+    salían con guion («ITCP -0,49 con la incertidumbre») mientras las unidades y
     las anclas que escribe el pipeline usan «−». Lo encontró la auditoría de UI
     del 29-jul-2026, que vio los dos signos en la misma página.
 
@@ -705,19 +705,18 @@ def _validacion_itcm(bloque):
     (reconstruida desde las series de componentes) contra el ÍNDICE LÍDER de la
     UTDT — correlación positiva esperada.
 
-    El ancla era el riesgo país (EMBI) y se cambió por el líder: el EMBI
-    validaba en niveles y en ventanas semestrales pero daba ~0 en los saltos de
-    un mes, que es la prueba exigente (la que no se puede satisfacer con la
-    tendencia común del período). El líder mantiene el co-movimiento mes a mes.
-    El EMBI sigue publicándose como contraste secundario en la conclusión y como
-    columna de la matriz cruzada, donde aporta poder discriminante.
+    Fue el riesgo país hasta jul-2026. Se cambió porque validaba en niveles y en
+    ventanas semestrales pero daba ~0 en los saltos de un mes, que es la prueba
+    exigente — la que no se puede satisfacer con la tendencia común del período.
+    El líder mantiene el co-movimiento mes a mes. Por decisión del editor el
+    cambio es un REEMPLAZO: el indicador de mercado no se calcula ni se nombra
+    más en ninguna parte del informe (ADR-0154 y sus enmiendas).
 
     Cada afirmación extra se emite solo si su número la respalda en la corrida.
     """
     val = _cargar_validacion()
     serie = val.get("serie_itcm") or {}
     lider = val.get("indice_lider_mensual") or {}
-    riesgo = val.get("riesgo_pais_mensual") or {}
     comunes = sorted(set(serie) & set(lider))
     if len(comunes) < 12:
         return
@@ -729,36 +728,18 @@ def _validacion_itcm(bloque):
         return
     lider_ade = (corr.get("líder adelantado 1 mes vs ITCM") or {}).get("r")
     itcm_ade = (corr.get("ITCM adelantado 1 mes vs líder") or {}).get("r")
-    emb_niv = (corr.get("niveles (ITCM vs riesgo país)") or {}).get("r")
-    emb_dif = (corr.get("primeras diferencias (ITCM vs riesgo)") or {}).get("r")
-
-    def _r(a, b):
-        ms = sorted(set(a) & set(b))
-        if len(ms) < 12:
-            return None
-        return round(statistics.correlation([a[m] for m in ms], [b[m] for m in ms]), 2)
-
-    def _difs_k(s, k=1):
-        ms = sorted(s)
-        return {ms[i]: s[ms[i]] - s[ms[i - k]] for i in range(k, len(ms))}
-
     partes = [f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes a mes: "
               f"cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace "
               f"también en el corto plazo, no sólo en la tendencia del período."]
 
-    # Por qué este contraste y no el precio del riesgo, que era el anterior.
-    if emb_niv is not None and emb_dif is not None and abs(emb_dif) < abs(r_dif):
-        partes.append(f"El contraste anterior del cinturón era el precio del riesgo argentino "
-                      f"(EMBI), que da {coma(emb_niv)} en niveles pero {coma(emb_dif)} en los "
-                      f"saltos de un mes: cuenta la misma historia de fondo, no el mismo mes. "
-                      f"Por eso el ancla pasó a ser la actividad, que es el contraste que "
-                      f"sobrevive cuando se descuenta la tendencia común. El riesgo país se "
-                      f"sigue publicando en la matriz de validación cruzada.")
-        r_riesgo_6m = _r(_difs_k(serie, 6), _difs_k(riesgo, 6)) if riesgo else None
-        if r_riesgo_6m is not None and r_riesgo_6m <= -0.4:
-            partes.append(f"Medida en ventanas de seis meses, la relación con el mercado "
-                          f"reaparece con fuerza ({coma(r_riesgo_6m)}): es una asociación de "
-                          f"media frecuencia, no un resultado nulo.")
+    # Que la correlación aguante en los cambios mes a mes es lo que distingue a
+    # este contraste del que había antes, así que se dice — y sólo si el número
+    # lo sostiene.
+    if abs(r_dif) >= 0.3:
+        partes.append("Que el co-movimiento aguante mes a mes es lo que se le pide a un "
+                      "ancla externa: es la parte que no se explica por la tendencia común "
+                      "del período, que en estos años arrastró a casi todas las series "
+                      "argentinas en la misma dirección.")
 
     # La lectura del adelanto va en contra de lo que sugiere el nombre del índice
     # externo, así que se publica explícita — y sólo si los números la sostienen.
@@ -889,8 +870,9 @@ def _linea_base(bloque):
     un cambio de presentación— y esto es exactamente eso: el mismo número, con
     su referencia al lado.
 
-    El valor de base viene de la reconstrucción que ya valida el índice contra
-    el riesgo país, no de un cálculo nuevo, así que no pueden divergir.
+    El valor de base viene de la misma reconstrucción con la que el índice se
+    valida contra su ancla externa, no de un cálculo nuevo, así que no pueden
+    divergir.
 
     No se publica si la cobertura del mes de base no alcanza el piso: el
     traspaso es el mes peor cubierto de toda la serie —varias series arrancan
@@ -1185,9 +1167,10 @@ def _validacion_cruzada(informe):
     """Matriz de validación cruzada (ADR-0031, tercer pilar de robustez): los
     cuatro índices reconstruidos contra los CUATRO contrastes externos a la
     vez. Validez convergente + discriminante: cada índice debe correlacionar
-    más fuerte con su par teórico (ITCM/ITCG ↔ riesgo país · ITVC ↔ ICC ·
-    ITCP ↔ EPU Argentina) que con el contraste ajeno — la prueba de que no
-    miden "todo junto"."""
+    más fuerte con su par teórico (ITCM ↔ actividad · ITCG ↔ Merval ·
+    ITVC ↔ ICC · ITCP ↔ EPU Argentina) que con el contraste ajeno — la prueba
+    de que no miden "todo junto". Hoy no se cumple en todos, y la conclusión lo
+    declara con el detalle derivado de los números."""
     try:
         bloques = {
             "ITCM": informe["cinturones"]["macro"]["itcm"]["validacion"]["pares"],
@@ -1198,12 +1181,10 @@ def _validacion_cruzada(informe):
     except (KeyError, TypeError):
         return
     indices = {k: {p[0]: p[1] for p in v} for k, v in bloques.items()}
-    # El riesgo país (EMBI) YA NO ESTÁ en la matriz: el ancla de validación del
-    # cinturón macro pasó a ser el Índice Líder y el cambio es un REEMPLAZO, no
-    # una suma — decisión del editor. La matriz vuelve a ser 4×4, un contraste
-    # propio por índice. El EMBI se sigue calculando en validacion_externa.py y
-    # se menciona en la conclusión de la sección de macro, que es donde explica
-    # POR QUÉ se cambió el ancla; no vuelve a entrar acá.
+    # El indicador de mercado que era el ancla de macro YA NO EXISTE en el
+    # informe: se reemplazó por el Índice Líder y el reemplazo es total, no una
+    # suma — decisión del editor. La matriz es 4×4, un contraste propio por
+    # índice.
     externas = {"lider": {p[0]: p[2] for p in bloques["ITCM"]},
                 "merval": {p[0]: p[2] for p in bloques["ITCG"]},
                 "icc": {p[0]: p[2] for p in bloques["ITVC"]},
@@ -1229,7 +1210,7 @@ def _validacion_cruzada(informe):
             # rd: correlación de los cambios mes a mes — la prueba exigente,
             # inmune a la tendencia común del período (los niveles pueden
             # inflar una correlación espuria O enmascarar/invertir el signo
-            # de un co-movimiento genuino, como la celda ITCP×riesgo).
+            # de un co-movimiento genuino).
             rd, _ = _r(_difs(indices[ik]), _difs(ext))
             fila[ek] = {"r": r, "n": n, "rd": rd}
         filas.append(fila)
@@ -1243,9 +1224,8 @@ def _validacion_cruzada(informe):
     # escrito a mano; eso quedó corto cuando el ancla de macro pasó a ser la
     # actividad y su par propio quedó por debajo de dos ajenos. La frase se
     # recalcula en cada corrida para que no pueda sobreafirmar.
-    ETIQ = dict(externas_labels := {"lider": "la actividad", "riesgo": "el riesgo país",
-                                    "merval": "el Merval", "icc": "la confianza del consumidor",
-                                    "epu": "la incertidumbre de política"})
+    ETIQ = {"lider": "la actividad", "merval": "el Merval",
+            "icc": "la confianza del consumidor", "epu": "la incertidumbre de política"}
     superados = []
     for f in filas:
         propio = abs(f[f["propio"]]["r"])
@@ -1296,8 +1276,7 @@ def _validacion_cruzada(informe):
 def _validacion_itcg(bloque):
     """Anexa al bloque ITCG su validación externa CONTRA SU PAR PROPIO
     (ADR-0031): el Merval en dólares — el mercado de acciones pricea la
-    transformación estructural (convergente, positiva esperada). El riesgo
-    país queda como par exclusivo del ITCM (se cruzan en la matriz). El
+    transformación estructural (convergente, positiva esperada). El
     contraste con el ICG UTDT sigue como hallazgo DISCRIMINANTE en la
     conclusión: la ejecución se acumula, la popularidad cicla."""
     val = _cargar_validacion()
