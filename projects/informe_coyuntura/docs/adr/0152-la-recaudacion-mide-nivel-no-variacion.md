@@ -119,14 +119,6 @@ es un deterioro nuevo de la economía: es que la métrica anterior informaba
 crecimiento contra una base deprimida mientras el nivel seguía bien por debajo
 del punto de partida.
 
-## Consecuencias
-
-- La serie **arranca en ene-2022** (54 puntos) contra 2023-03 de la anterior, y
-  gana resolución mensual.
-- **Dos propiedades incómodas que van declaradas en la ficha, no escondidas**:
-  el indicador es más nervioso (jun-2026 cae 9,5 puntos contra may-2026, con
-  3-4 observaciones por mes calendario todavía), y **revisa el pasado**, porque
-  los factores estacionales se recalculan al acumular meses.
 ## Corroboración externa: la descomposición de la OPC
 
 La Oficina de Presupuesto del Congreso publica en su Monitor de Recaudación
