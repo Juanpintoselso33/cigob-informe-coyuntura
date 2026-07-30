@@ -95,6 +95,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,tcrm,132.78,índice (base dic-2015),BCRA ITCRM
 2023-12-01,tcrm,124.88,índice (base dic-2015),BCRA ITCRM
 2023-11-01,tcrm,83.2,índice (base dic-2015),BCRA ITCRM
+2026-07-29,tc_mayorista,1496.3521,ARS/USD,BCRA
 2026-07-28,tc_mayorista,1499.8387,ARS/USD,BCRA
 2026-07-27,tc_mayorista,1498.5117,ARS/USD,BCRA
 2026-07-24,tc_mayorista,1494.3744,ARS/USD,BCRA
@@ -728,7 +729,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-15,tc_mayorista,801.075,ARS/USD,BCRA
 2023-12-14,tc_mayorista,800.525,ARS/USD,BCRA
 2023-12-13,tc_mayorista,799.975,ARS/USD,BCRA
-2023-12-12,tc_mayorista,366.5,ARS/USD,BCRA
 2026-06-01,saldo_comercial_12m,22481.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-05-01,saldo_comercial_12m,21166.7,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-04-01,saldo_comercial_12m,18324.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
@@ -913,77 +913,82 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,rem_ipc_12m,146.9,% anual,BCRA
 2024-01-31,rem_ipc_12m,183.2,% anual,BCRA
 2023-12-31,rem_ipc_12m,213.0,% anual,BCRA
-2026-06-01,recaudacion,88.2,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-05-01,recaudacion,97.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-04-01,recaudacion,95.4,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-03-01,recaudacion,92.0,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-02-01,recaudacion,96.1,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-01-01,recaudacion,100.0,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-12-01,recaudacion,95.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-11-01,recaudacion,91.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-10-01,recaudacion,91.0,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-09-01,recaudacion,88.4,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-08-01,recaudacion,92.0,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-07-01,recaudacion,92.8,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-06-01,recaudacion,91.6,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-05-01,recaudacion,88.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-04-01,recaudacion,94.3,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-03-01,recaudacion,92.3,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-02-01,recaudacion,96.6,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2025-01-01,recaudacion,99.3,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-12-01,recaudacion,92.1,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-11-01,recaudacion,98.0,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-10-01,recaudacion,92.9,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-09-01,recaudacion,101.5,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-08-01,recaudacion,95.9,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-07-01,recaudacion,93.1,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-06-01,recaudacion,98.4,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-05-01,recaudacion,114.9,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-04-01,recaudacion,94.4,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-03-01,recaudacion,96.2,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-02-01,recaudacion,95.8,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2024-01-01,recaudacion,92.2,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-12-01,recaudacion,94.5,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-11-01,recaudacion,100.3,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-10-01,recaudacion,105.2,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-09-01,recaudacion,105.1,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-08-01,recaudacion,109.4,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-07-01,recaudacion,107.0,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-06-01,recaudacion,105.0,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-05-01,recaudacion,91.8,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-04-01,recaudacion,109.1,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-03-01,recaudacion,110.8,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-02-01,recaudacion,107.5,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2023-01-01,recaudacion,109.1,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-12-01,recaudacion,113.5,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-11-01,recaudacion,106.2,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-10-01,recaudacion,107.8,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-09-01,recaudacion,102.6,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-08-01,recaudacion,100.6,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-07-01,recaudacion,105.6,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-06-01,recaudacion,106.4,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-05-01,recaudacion,94.3,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-04-01,recaudacion,109.8,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-03-01,recaudacion,99.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-02-01,recaudacion,101.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2022-01-01,recaudacion,101.9,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-07-24,prestamos_privados,139135379.0,M ARS,BCRA
-2026-07-23,prestamos_privados,138568329.0,M ARS,BCRA
-2026-07-22,prestamos_privados,137910521.0,M ARS,BCRA
-2026-07-21,prestamos_privados,137632509.0,M ARS,BCRA
-2026-07-20,prestamos_privados,137220695.0,M ARS,BCRA
-2026-07-17,prestamos_privados,136814001.0,M ARS,BCRA
-2026-07-16,prestamos_privados,136870230.0,M ARS,BCRA
-2026-07-15,prestamos_privados,136972577.0,M ARS,BCRA
-2026-07-14,prestamos_privados,137328446.0,M ARS,BCRA
-2026-07-13,prestamos_privados,137277459.0,M ARS,BCRA
-2026-07-08,prestamos_privados,138346089.0,M ARS,BCRA
-2026-07-07,prestamos_privados,138316812.0,M ARS,BCRA
-2026-07-06,prestamos_privados,138728406.0,M ARS,BCRA
-2026-07-03,prestamos_privados,138445810.0,M ARS,BCRA
+2026-06-01,recaudacion,3.3,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2026-05-01,recaudacion,4.36,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2026-04-01,recaudacion,0.08,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2026-03-01,recaudacion,-0.23,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2026-02-01,recaudacion,1.07,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2026-01-01,recaudacion,-1.54,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-12-01,recaudacion,-3.08,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-11-01,recaudacion,-9.53,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-10-01,recaudacion,-8.96,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-09-01,recaudacion,-7.78,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-08-01,recaudacion,-4.9,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-07-01,recaudacion,-11.43,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-06-01,recaudacion,-10.13,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-05-01,recaudacion,-7.89,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-04-01,recaudacion,2.0,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-03-01,recaudacion,5.51,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-02-01,recaudacion,5.31,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2025-01-01,recaudacion,4.44,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-12-01,recaudacion,-2.89,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-11-01,recaudacion,-2.56,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-10-01,recaudacion,-6.84,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-09-01,recaudacion,-7.71,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-08-01,recaudacion,-9.41,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-07-01,recaudacion,5.16,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-06-01,recaudacion,3.75,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-05-01,recaudacion,0.14,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-04-01,recaudacion,-15.5,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-03-01,recaudacion,-16.71,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-02-01,recaudacion,-17.81,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2024-01-01,recaudacion,-15.92,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-12-01,recaudacion,-11.68,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-11-01,recaudacion,-4.97,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-10-01,recaudacion,0.68,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-09-01,recaudacion,2.39,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-08-01,recaudacion,1.02,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-07-01,recaudacion,-3.24,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-06-01,recaudacion,-3.92,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-05-01,recaudacion,0.61,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-04-01,recaudacion,3.74,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-03-01,recaudacion,6.63,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-02-01,recaudacion,4.66,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2023-01-01,recaudacion,6.42,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-12-01,recaudacion,8.68,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-11-01,recaudacion,9.07,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-10-01,recaudacion,4.49,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-09-01,recaudacion,6.24,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-08-01,recaudacion,11.31,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-07-01,recaudacion,18.14,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-06-01,recaudacion,13.72,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-05-01,recaudacion,6.45,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-04-01,recaudacion,1.88,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-03-01,recaudacion,1.5,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-02-01,recaudacion,4.5,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2022-01-01,recaudacion,2.53,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2021-12-01,recaudacion,0.17,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2021-11-01,recaudacion,-1.95,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2021-10-01,recaudacion,-0.79,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2021-09-01,recaudacion,0.53,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
+2026-07-27,prestamos_privados,139454462.0,M ARS,BCRA
+2026-07-24,prestamos_privados,139140685.0,M ARS,BCRA
+2026-07-23,prestamos_privados,138663317.0,M ARS,BCRA
+2026-07-22,prestamos_privados,137912040.0,M ARS,BCRA
+2026-07-21,prestamos_privados,137705487.0,M ARS,BCRA
+2026-07-20,prestamos_privados,137224552.0,M ARS,BCRA
+2026-07-17,prestamos_privados,136816690.0,M ARS,BCRA
+2026-07-16,prestamos_privados,136874701.0,M ARS,BCRA
+2026-07-15,prestamos_privados,136975873.0,M ARS,BCRA
+2026-07-14,prestamos_privados,137331849.0,M ARS,BCRA
+2026-07-13,prestamos_privados,137280879.0,M ARS,BCRA
+2026-07-08,prestamos_privados,138349569.0,M ARS,BCRA
+2026-07-07,prestamos_privados,138321143.0,M ARS,BCRA
+2026-07-06,prestamos_privados,138732739.0,M ARS,BCRA
+2026-07-03,prestamos_privados,138450918.0,M ARS,BCRA
 2026-07-02,prestamos_privados,138754288.0,M ARS,BCRA
 2026-07-01,prestamos_privados,138226414.0,M ARS,BCRA
-2026-06-30,prestamos_privados,138986096.0,M ARS,BCRA
+2026-06-30,prestamos_privados,138968741.0,M ARS,BCRA
 2026-06-29,prestamos_privados,137521945.0,M ARS,BCRA
 2026-06-26,prestamos_privados,136333156.0,M ARS,BCRA
 2026-06-25,prestamos_privados,135918137.0,M ARS,BCRA
@@ -1244,25 +1249,25 @@ fecha,indicador,valor,unidad,fuente
 2025-06-03,prestamos_privados,90891332.0,M ARS,BCRA
 2025-06-02,prestamos_privados,90591029.0,M ARS,BCRA
 2025-05-30,prestamos_privados,91068472.0,M ARS,BCRA
-2025-05-29,prestamos_privados,90733532.0,M ARS,BCRA
-2025-05-28,prestamos_privados,90139236.0,M ARS,BCRA
-2025-05-27,prestamos_privados,89533651.0,M ARS,BCRA
-2025-05-26,prestamos_privados,88863693.0,M ARS,BCRA
-2025-05-23,prestamos_privados,88262316.0,M ARS,BCRA
-2025-05-22,prestamos_privados,88060730.0,M ARS,BCRA
-2025-05-21,prestamos_privados,87561867.0,M ARS,BCRA
-2025-05-20,prestamos_privados,87299018.0,M ARS,BCRA
-2025-05-19,prestamos_privados,86691178.0,M ARS,BCRA
-2025-05-16,prestamos_privados,86449411.0,M ARS,BCRA
-2025-05-15,prestamos_privados,85979427.0,M ARS,BCRA
-2025-05-14,prestamos_privados,85454771.0,M ARS,BCRA
-2025-05-13,prestamos_privados,85482160.0,M ARS,BCRA
-2025-05-12,prestamos_privados,85020465.0,M ARS,BCRA
-2025-05-09,prestamos_privados,85050395.0,M ARS,BCRA
-2025-05-08,prestamos_privados,85265407.0,M ARS,BCRA
-2025-05-07,prestamos_privados,85854422.0,M ARS,BCRA
-2025-05-06,prestamos_privados,86963971.0,M ARS,BCRA
-2025-05-05,prestamos_privados,86732643.0,M ARS,BCRA
+2025-05-29,prestamos_privados,90769248.0,M ARS,BCRA
+2025-05-28,prestamos_privados,90174882.0,M ARS,BCRA
+2025-05-27,prestamos_privados,89568095.0,M ARS,BCRA
+2025-05-26,prestamos_privados,88896180.0,M ARS,BCRA
+2025-05-23,prestamos_privados,88291148.0,M ARS,BCRA
+2025-05-22,prestamos_privados,88088594.0,M ARS,BCRA
+2025-05-21,prestamos_privados,87585551.0,M ARS,BCRA
+2025-05-20,prestamos_privados,87321502.0,M ARS,BCRA
+2025-05-19,prestamos_privados,86712239.0,M ARS,BCRA
+2025-05-16,prestamos_privados,86466528.0,M ARS,BCRA
+2025-05-15,prestamos_privados,85991769.0,M ARS,BCRA
+2025-05-14,prestamos_privados,85462399.0,M ARS,BCRA
+2025-05-13,prestamos_privados,85487717.0,M ARS,BCRA
+2025-05-12,prestamos_privados,85025969.0,M ARS,BCRA
+2025-05-09,prestamos_privados,85052968.0,M ARS,BCRA
+2025-05-08,prestamos_privados,85267014.0,M ARS,BCRA
+2025-05-07,prestamos_privados,85856357.0,M ARS,BCRA
+2025-05-06,prestamos_privados,86966665.0,M ARS,BCRA
+2025-05-05,prestamos_privados,86733180.0,M ARS,BCRA
 2025-04-30,prestamos_privados,85889244.0,M ARS,BCRA
 2025-04-29,prestamos_privados,85984414.0,M ARS,BCRA
 2025-04-28,prestamos_privados,85231635.0,M ARS,BCRA
@@ -1598,7 +1603,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-15,prestamos_privados,18168969.0,M ARS,BCRA
 2023-12-14,prestamos_privados,18090284.0,M ARS,BCRA
 2023-12-13,prestamos_privados,18267434.0,M ARS,BCRA
-2023-12-12,prestamos_privados,16999683.0,M ARS,BCRA
 2026-05-01,presion_dolarizacion,49.82,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-04-01,presion_dolarizacion,49.5,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-03-01,presion_dolarizacion,50.41,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
@@ -2036,6 +2040,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.83,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-14.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-07-27,base_monetaria,46324059.0,M ARS,BCRA
 2026-07-24,base_monetaria,46087590.0,M ARS,BCRA
 2026-07-23,base_monetaria,45813184.0,M ARS,BCRA
 2026-07-22,base_monetaria,45839793.0,M ARS,BCRA
@@ -2667,7 +2672,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-15,base_monetaria,9032404.0,M ARS,BCRA
 2023-12-14,base_monetaria,8839974.0,M ARS,BCRA
 2023-12-13,base_monetaria,8854100.0,M ARS,BCRA
-2023-12-12,base_monetaria,9927997.0,M ARS,BCRA
+2026-07-28,badlar,22.0,% anual,BCRA
 2026-07-27,badlar,20.9375,% anual,BCRA
 2026-07-24,badlar,22.0,% anual,BCRA
 2026-07-23,badlar,22.1875,% anual,BCRA
@@ -3300,4 +3305,3 @@ fecha,indicador,valor,unidad,fuente
 2023-12-15,badlar,128.25,% anual,BCRA
 2023-12-14,badlar,127.875,% anual,BCRA
 2023-12-13,badlar,129.25,% anual,BCRA
-2023-12-12,badlar,129.75,% anual,BCRA
