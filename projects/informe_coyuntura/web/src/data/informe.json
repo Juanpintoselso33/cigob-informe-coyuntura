@@ -2563,7 +2563,7 @@
           ],
           "plot": "rebase100",
           "titulo": "¿El ITVC acompaña lo que la gente puede comprar?",
-          "sub": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen. El ITVC se reconstruye mes a mes desde las series de sus componentes y se contrasta con las ventas en supermercados a precios constantes (serie desestacionalizada del INDEC), que no integran el índice. Las dos se leen contra el mismo punto de partida, el último trimestre de 2023. La correlación esperada es positiva.",
+          "sub": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen. Este cinturón no tiene una única serie de referencia, así que se compara contra un panel de estadísticas externas y se mira si acompaña más a las de su propio terreno que a las ajenas. El gráfico muestra una de ellas —el consumo en supermercados a precios constantes— y la tabla, el panel completo.",
           "serie_label": "ITVC (reconstrucción mensual)",
           "externa_label": "consumo en supermercados (precios constantes)",
           "trans_label": "ambas series con base 100 en el cuarto trimestre de 2023",

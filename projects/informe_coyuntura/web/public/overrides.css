@@ -1104,3 +1104,18 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   line-height: 1.5;
 }
 .cg-aviso-artefacto strong { display: block; margin-bottom: 2px; }
+
+/* Panel de validación externa (ADR-0159): la tabla convive con un gráfico y una
+   conclusión larga en la misma sección, así que va compacta. Sin esto ocupaba
+   más alto que el propio gráfico. */
+.cg-panel-tabla th, .cg-panel-tabla td { padding: 7px 12px; font-size: 14px; }
+.cg-panel-tabla tbody th { text-align: left; font-weight: 600; }
+.cg-panel-tabla thead th:first-child { text-align: left; }
+.cg-panel-tabla th.es-propio { background: var(--verde-soft); border-radius: 10px 0 0 10px; }
+.cg-panel-tabla td.es-propio { border-radius: 0; }
+.cg-panel-tabla td.es-propio:last-child { border-radius: 0 10px 10px 0; }
+.cg-panel-leyenda { font-weight: 400; text-transform: none; letter-spacing: 0; opacity: .7; }
+@media (max-width: 560px) {
+  .cg-panel-tabla th, .cg-panel-tabla td { padding: 6px 6px; font-size: 12.5px; }
+  .cg-panel-leyenda { display: none; }
+}

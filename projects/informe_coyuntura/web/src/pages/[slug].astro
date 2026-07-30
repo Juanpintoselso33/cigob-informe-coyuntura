@@ -389,7 +389,7 @@ const robChartData = rob?.hist && indice ? {
                   ? `El ${indice.sigla} contra un panel de estadísticas externas`
                   : `El ${indice.sigla} y su contraste externo, mes a mes`}</span>
                 {val.panel ? (
-                  <span>panel de <strong>{val.panel.perfil.length}</strong> estadísticas · propio <strong>{num(val.panel.diferencias.convergente)}</strong> vs ajeno <strong>{num(val.panel.diferencias.discriminante)}</strong> en cambios mes a mes</span>
+                  <span>{val.panel.perfil.length} estadísticas · brecha <strong>{(val.panel.diferencias.brecha > 0 ? "+" : "") + num(val.panel.diferencias.brecha)}</strong></span>
                 ) : (
                   <span>correlación <strong>{num(val.r_niveles)}</strong> · {val.n} meses</span>
                 )}
@@ -424,17 +424,17 @@ const robChartData = rob?.hist && indice ? {
                 <table class="cg-cruz-tabla cg-panel-tabla">
                   <thead>
                     <tr>
-                      <th scope="col">estadística externa</th>
+                      <th scope="col">estadística externa <span class="cg-panel-leyenda">— en verde, las de su terreno</span></th>
                       <th scope="col">niveles</th>
                       <th scope="col">mes a mes</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {val.panel.perfil.map(f => (
-                      <tr class:list={[f.propia && "es-propio"]}>
-                        <th scope="row">{f.etiqueta}{f.propia && <span class="cg-cruz-este"> (su terreno)</span>}</th>
-                        <td>{(f.r_niveles > 0 ? "+" : "") + num(f.r_niveles)}</td>
-                        <td>{typeof f.r_diferencias === "number" ? (f.r_diferencias > 0 ? "+" : "") + num(f.r_diferencias) : "—"}</td>
+                    {[...val.panel.perfil].sort((a, b) => Number(b.propia) - Number(a.propia)).map(f => (
+                      <tr>
+                        <th scope="row" class:list={[f.propia && "es-propio"]}>{f.etiqueta}</th>
+                        <td class:list={[f.propia && "es-propio"]}>{(f.r_niveles > 0 ? "+" : "") + num(f.r_niveles)}</td>
+                        <td class:list={[f.propia && "es-propio"]}>{typeof f.r_diferencias === "number" ? (f.r_diferencias > 0 ? "+" : "") + num(f.r_diferencias) : "—"}</td>
                       </tr>
                     ))}
                   </tbody>
