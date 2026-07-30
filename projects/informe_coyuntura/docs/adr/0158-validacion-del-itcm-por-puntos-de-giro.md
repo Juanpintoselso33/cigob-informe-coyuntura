@@ -1,0 +1,99 @@
+# ADR-0158 — El ITCM se valida por puntos de giro, no sólo por correlación
+
+- **Estado**: Aceptado
+- **Fecha**: 2026-07-30
+- **Ámbito**: validación externa del ITCM; módulo `scripts/puntos_de_giro.py`
+- **Relacionados**: ADR-0154 (el líder pasa a ancla del ITCM), ADR-0155 (ancla
+  del ITVC), ADR-0019 D6 (validación externa), ADR-0031 (matriz cruzada)
+
+## Contexto
+
+El editor no quedó conforme con la validación externa y señaló el problema de
+fondo: **validar un compuesto de seis dimensiones contra UNA variable es comparar
+peras con manzanas.** Tenía razón, y al investigar cómo lo resuelven índices
+similares apareció algo que cambia el encuadre.
+
+## Lo que hacen otros
+
+**Handbook OCDE/JRC, paso 9** (el que este proyecto ya cita): correlacionar con
+otros indicadores publicados —en plural— *y* «identificar vínculos mediante
+regresiones». Nuestra implementación se había quedado con un par y un Pearson.
+
+**Guías UNECE/ONU sobre indicadores compuestos (2019)** — parten la familia en
+dos, y es la distinción que nos faltaba:
+
+> «Los indicadores compuestos **económicos** normalmente tienen una serie de
+> referencia, mientras que los **socioeconómicos** normalmente no la tienen.»
+
+Y para los que no la tienen (§6.61): compararlos con **varias** estadísticas
+relacionadas, y «las diferencias respecto de esas estadísticas **deben
+explicarse** cuando el indicador se publica».
+
+**Sistema de indicadores líderes de la OCDE**: hay una serie de referencia
+designada y la validación **no es por correlación** sino por **puntos de giro**
+—Bry-Boschan, adelanto, señales falsas—, con un criterio comparativo hacia
+adentro: un compuesto debe dar menos señales falsas que cualquiera de sus
+componentes.
+
+**Precedente del caso incómodo**: el índice de situación de vida del SCP
+holandés —el que las guías citan como práctica de referencia— valida su índice
+objetivo contra medidas subjetivas de felicidad y **publica que explica apenas el
+4% de su variación**. Relación débil, publicada como resultado.
+
+## Decisión
+
+Los cuatro cinturones no son el mismo tipo de objeto y no les corresponde el
+mismo régimen:
+
+- el **ITCM** es un compuesto económico y sí puede tener serie de referencia →
+  **este ADR** le agrega validación por puntos de giro;
+- el **ITVC/ITCG/ITCP** son socioeconómicos → panel de estadísticas relacionadas
+  con las diferencias explicadas, que queda como trabajo siguiente.
+
+`scripts/puntos_de_giro.py` implementa Bry-Boschan simplificado: ciclo como
+desviación de una media móvil centrada, extremos locales, y **alternancia +
+duración mínima de fase iteradas hasta converger**.
+
+## Dos cosas que hubo que hacer bien, y que la primera versión hizo mal
+
+**1. La alternancia y la fase mínima tienen que converger juntas.** El primer
+prototipo aplicaba la alternancia una vez y después el filtro de duración, que la
+volvía a romper: producía secuencias valle-valle y pico-pico-pico, y con ellas un
+«adelanto medio» calculado sobre giros que no eran giros. Por eso `alternan()` es
+parte de la interfaz y se afirma en cada test.
+
+**2. Los giros cerca de los extremos no se pueden confirmar.** Ahí la tendencia
+se estima con una ventana incompleta. Sin tratarlo, una serie **monótona**
+—sin ciclo alguno— devolvía giros: artefactos de amplitud ~0 nacidos de la
+asimetría del borde. Se agregó amplitud mínima relativa y, sobre todo, la marca
+de **provisorio**, que es como el sistema de la OCDE trata los giros recientes.
+
+## Resultado, con lo que NO se puede afirmar por delante
+
+| | |
+|---|---|
+| concordancia de fase ITCM ↔ actividad | **73%** de 30 meses (azar = 50%) |
+| giros del ITCM desde dic-2023 | 3 (valle ene-2024 · pico ene-2025 · valle feb-2026) |
+| de ésos, **provisorios** | **2** |
+| confirmados | **1** |
+
+**El adelanto no se puede estimar todavía**: un promedio sobre un giro confirmado
+no es un promedio, y así se publica. La concordancia sí es utilizable hoy porque
+usa los 30 meses y no sólo los giros.
+
+Esto es además una mejora sobre lo que había: el par Pearson en niveles daba
++0,698 y no permitía distinguir co-movimiento de tendencia compartida. La
+concordancia de fase es inmune a eso por construcción.
+
+## Consecuencias
+
+- La sección de macro publica la concordancia y **declara por qué no publica el
+  adelanto**. Cuando entren meses, los provisorios se confirman solos y el texto
+  pasa a informarlo — la condición está en el código, no en un recordatorio.
+- La ventana es de 13 meses y la fase mínima de 5. El sistema original usa 75
+  meses de media móvil; con series de ~30 eso es imposible. Es la adaptación a la
+  muestra que hay y está declarada en el módulo.
+- **Queda pendiente** el test que la OCDE usa como criterio de éxito: que el
+  compuesto dé menos señales falsas que cualquiera de sus componentes. Es
+  computable con lo que ya hay y no requiere ninguna serie externa nueva.
+- **Queda pendiente** el régimen socioeconómico para los otros tres cinturones.

@@ -1018,6 +1018,20 @@ def main():
             "ITCM adelantado 1 mes vs líder": (_lag(serie_itcm, 1), lider),
         }
         resultados["correlaciones_itcm"] = resultados.get("correlaciones_itcm", {})
+        # Puntos de giro: el régimen que corresponde a un compuesto ECONÓMICO
+        # con serie de referencia (ADR-0158). La correlación de Pearson sobre
+        # niveles, con muestra corta y tendencia común, dice poco; lo que se
+        # valida acá es si el ciclo del índice gira cuando gira el de la
+        # referencia, y con cuánto adelanto.
+        import puntos_de_giro as pdg
+        resultados["giros_itcm"] = pdg.analisis(serie_itcm, lider)
+        g = resultados["giros_itcm"]
+        print("puntos de giro ITCM vs índice líder:")
+        print(f"  concordancia de fase: {g['concordancia']}  (n = {g['n_meses']} meses)")
+        print(f"  giros del ITCM: {len(g['giros'])} · provisorios: {g['provisorios']}"
+              f" · apareados y confirmados: {g['apareados']}")
+        if g["desfase_medio"] is not None:
+            print(f"  desfase medio (sólo confirmados): {g['desfase_medio']:+} meses")
         print("correlaciones ITCM vs índice líder (Pearson, positiva = válida):")
         for nombre, (a, b) in pares_l.items():
             r, n = _pearson(a, b)

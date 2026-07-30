@@ -773,6 +773,29 @@ def _validacion_itcm(bloque):
                       f"adelanta el ITCM ({coma(itcm_ade)}) y empeora cuando se adelanta el "
                       f"índice externo ({coma(lider_ade)}). Pese a su nombre, acá funciona como "
                       f"validación del mismo mes y no como alerta temprana.")
+    # Puntos de giro (ADR-0158): el régimen de validación que corresponde a un
+    # compuesto económico con serie de referencia. Se publica la concordancia,
+    # que usa todos los meses, y NO el desfase medio cuando está calculado sobre
+    # uno o dos giros confirmados — un promedio de n=1 no es un promedio.
+    g = val.get("giros_itcm") or {}
+    if g.get("concordancia") is not None:
+        conf = len(g.get("giros") or []) - g.get("provisorios", 0)
+        partes.append(f"Además del co-movimiento, se mira si los dos ciclos giran juntos, que es "
+                      f"la prueba que usan los sistemas de indicadores líderes: el índice y la "
+                      f"actividad están en la misma fase —las dos subiendo o las dos bajando— en "
+                      f"el {coma(round(g['concordancia'] * 100))}% de los {g['n_meses']} meses "
+                      f"comparados, contra el 50% que daría el azar.")
+        if conf < 2:
+            partes.append(f"El adelanto todavía no se puede estimar: de los "
+                          f"{len(g['giros'])} cambios de dirección que el índice registra desde "
+                          f"2023, sólo {conf} está lo bastante lejos de los extremos de la serie "
+                          f"como para darse por confirmado. Los cercanos al último dato se "
+                          f"mueven cuando entran meses nuevos, así que se declaran provisorios "
+                          f"en lugar de promediarlos.")
+        elif g.get("desfase_medio") is not None:
+            partes.append(f"Los cambios de dirección confirmados llegan {coma(abs(g['desfase_medio']))} "
+                          f"meses {'antes' if g['desfase_medio'] > 0 else 'después'} que los de la "
+                          f"actividad.")
     conclusion = " ".join(partes)
 
     # El recuento de componentes se DERIVA de la composición vigente del índice:

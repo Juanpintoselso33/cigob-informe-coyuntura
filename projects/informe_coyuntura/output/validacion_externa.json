@@ -339,6 +339,84 @@
       "n": 30
     }
   },
+  "giros_itcm": {
+    "giros": [
+      {
+        "mes": "2024-01",
+        "tipo": "valle",
+        "amplitud": -11.78,
+        "provisorio": true
+      },
+      {
+        "mes": "2025-01",
+        "tipo": "pico",
+        "amplitud": 8.48,
+        "provisorio": false
+      },
+      {
+        "mes": "2026-02",
+        "tipo": "valle",
+        "amplitud": -5.87,
+        "provisorio": true
+      }
+    ],
+    "giros_referencia": [
+      {
+        "mes": "2021-08",
+        "tipo": "valle"
+      },
+      {
+        "mes": "2022-03",
+        "tipo": "pico"
+      },
+      {
+        "mes": "2022-11",
+        "tipo": "valle"
+      },
+      {
+        "mes": "2023-08",
+        "tipo": "pico"
+      },
+      {
+        "mes": "2024-03",
+        "tipo": "valle"
+      },
+      {
+        "mes": "2025-02",
+        "tipo": "pico"
+      },
+      {
+        "mes": "2025-09",
+        "tipo": "valle"
+      }
+    ],
+    "concordancia": 0.733,
+    "n_meses": 30,
+    "pares": [
+      {
+        "mes": "2024-01",
+        "tipo": "valle",
+        "referencia": "2024-03",
+        "desfase": 2
+      },
+      {
+        "mes": "2025-01",
+        "tipo": "pico",
+        "referencia": "2025-02",
+        "desfase": 1
+      },
+      {
+        "mes": "2026-02",
+        "tipo": "valle",
+        "referencia": "2025-09",
+        "desfase": -5
+      }
+    ],
+    "desfase_medio": 1.0,
+    "apareados": 1,
+    "provisorios": 2,
+    "sin_par": 0
+  },
   "redundancia_itcm": {
     "diferencias": {
       "n_pares": 105,
@@ -2070,15 +2148,15 @@
     "2026-04": 1916.1,
     "2026-05": 2131.0,
     "2026-06": 2087.8,
-    "2026-07": 2052.6
+    "2026-07": 2097.5
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
-      "r": 0.746,
+      "r": 0.747,
       "n": 32
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.135,
+      "r": 0.119,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {
