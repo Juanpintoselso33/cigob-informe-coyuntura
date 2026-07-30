@@ -694,7 +694,7 @@ def _validacion_itvc(bloque, series):
         return
     icc_niv = (corr.get("discriminante: ITVC sin ICC vs ICC (niveles)") or {}).get("r")
 
-    partes = [f"Contra el consumo en supermercados solo —una de las tres— la correlación es "
+    partes = [f"Contra el consumo en supermercados solo —una sola del panel— la correlación es "
               f"{coma(r_niv)} en niveles"
               + (f" y {coma(r_dif)} en los cambios mes a mes" if r_dif is not None else "")
               + ": cuando las condiciones materiales mejoran respecto del arranque del "
@@ -718,10 +718,11 @@ def _validacion_itvc(bloque, series):
                 "externas relacionadas que no lo componen. Este cinturón no tiene una única "
                 "serie de referencia, así que se compara contra un panel de estadísticas "
                 "externas y se mira si acompaña más a las de su propio terreno que a las "
-                "ajenas. El gráfico compara el índice contra el factor común de las tres "
-                "estadísticas de su terreno: lo que las tres comparten, en vez de una sola. "
-                "El detalle —las cargas de cada una y el panel completo— está en la ficha "
-                "metodológica."),
+                "ajenas. El gráfico compara el índice contra el factor común de las "
+                "estadísticas de su terreno que miden volúmenes consumidos por los hogares "
+                "—luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de "
+                "una sola. El detalle —las cargas de cada una y el panel completo— está en la "
+                "ficha metodológica."),
         "serie_label": "ITVC (reconstrucción mensual)",
         "externa_label": "consumo en supermercados (precios constantes)",
         "trans_label": "ambas series con base 100 en el cuarto trimestre de 2023",

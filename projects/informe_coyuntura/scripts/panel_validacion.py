@@ -42,6 +42,12 @@ FAMILIA = {
     "consumo_supermercados": "itvc",
     "consumo_mayoristas": "itvc",
     "consumo_shoppings": "itvc",
+    # vida material de los hogares medida en VOLÚMENES FÍSICOS (ADR-0163):
+    # cuánta luz y gas consumen, cuánto se mueven, cuánto combustible cargan
+    "electricidad_residencial": "itvc",
+    "gas_residencial": "itvc",
+    "transporte_pasajeros": "itvc",
+    "ventas_naftas": "itvc",
     # valor de las empresas: lo que el capital paga por la transformación
     "merval_usd": "itcg",
     # política: incertidumbre, capital político y expectativa electoral
@@ -57,11 +63,42 @@ ETIQUETAS = {
     "consumo_supermercados": "consumo en supermercados",
     "consumo_mayoristas": "consumo en autoservicios mayoristas",
     "consumo_shoppings": "consumo en centros de compras",
+    "electricidad_residencial": "electricidad consumida por los hogares",
+    "gas_residencial": "gas consumido por los hogares",
+    "transporte_pasajeros": "viajes en transporte público",
+    "ventas_naftas": "naftas vendidas en el mercado interno",
     "merval_usd": "Merval en dólares",
     "epu_argentina": "incertidumbre de política (EPU)",
     "icg_utdt": "confianza en el gobierno",
     "clima_electoral": "clima electoral",
     "indice_lider": "marcha de la actividad",
+}
+
+# QUÉ ESTADÍSTICAS ARMAN EL FACTOR de cada índice (ADR-0163). No es «las de su
+# familia» sin más: dentro de una familia puede haber tipos de medición que no
+# se pueden mezclar, porque entonces el factor termina capturando el método de
+# medición en vez del fenómeno.
+#
+# ITVC → los cuatro VOLÚMENES FÍSICOS, y no las tres ventas de comercio. El
+# criterio es el mismo que dejó afuera a los índices salariales: no compartir
+# insumo con un componente del índice. Las ventas «a precios constantes» se
+# deflactan con índices de precios del INDEC, y `ipc_alimentos` es componente
+# del ITVC; un volumen físico no necesita deflactor. Se suma una razón de
+# concepto: los autoservicios mayoristas abastecen también a revendedores y los
+# centros de compras son gasto discrecional, así que ninguno de los dos es
+# «cómo vive el hogar promedio».
+#
+# HONESTIDAD SOBRE EL ORDEN EN QUE PASÓ: el criterio es independiente del
+# resultado y ya se venía aplicando, pero se lo aplicó DESPUÉS de medir el panel
+# ancho. Eso no lo invalida y tampoco lo convierte en un hallazgo confirmado: la
+# prueba real son los meses que vienen, con el corte ya fijado acá.
+#
+# Las tres de comercio siguen en el panel y en la familia del ITVC: se publican
+# sus correlaciones, sólo que no arman el factor.
+FACTOR = {
+    "itvc": ["electricidad_residencial", "gas_residencial",
+             "transporte_pasajeros", "ventas_naftas"],
+    "itcp": ["epu_argentina", "icg_utdt", "clima_electoral"],
 }
 
 
@@ -135,16 +172,20 @@ def _factor(indice: str, serie: dict, panel: dict) -> dict | None:
     individual, que se guarda al lado para que el lector pueda ver si el
     compuesto aporta o si sólo diluye.
     """
-    propias = {k: v for k, v in panel.items() if FAMILIA.get(k) == indice and v}
+    claves = FACTOR.get(indice) or []
+    propias = {k: panel[k] for k in claves if panel.get(k)}
     niv = factor_comun.contraste(serie, propias)
     if niv is None:
         return None
     dif = factor_comun.contraste(serie, propias, en_diferencias=True)
-    mejor_niv = max((abs(f["r_niveles"]) for f in _filas_propias(indice, serie, propias)),
-                    default=None)
-    mejor_dif = max((abs(f["r_diferencias"]) for f in _filas_propias(indice, serie, propias)
+    # la referencia es la mejor estadística individual DEL FACTOR, no de toda la
+    # familia: si se comparara contra la mejor de la familia entera, el
+    # compuesto competiría contra una serie que ni siquiera lo integra
+    filas = _filas_propias(indice, serie, propias)
+    mejor_niv = max((abs(f["r_niveles"]) for f in filas), default=None)
+    mejor_dif = max((abs(f["r_diferencias"]) for f in filas
                      if f["r_diferencias"] is not None), default=None)
-    return {
+    salida = {
         "cargas": niv["cargas"],
         "etiquetas": {k: ETIQUETAS.get(k, k) for k in niv["cargas"]},
         "varianza_explicada": niv["varianza_explicada"],
@@ -156,6 +197,30 @@ def _factor(indice: str, serie: dict, panel: dict) -> dict | None:
         "mejor_sola_niveles": mejor_niv,
         "mejor_sola_diferencias": mejor_dif,
     }
+    salida["plano"] = plano_del_veredicto(salida)
+    salida["pares_grafico"] = dif["pares"] if salida["plano"] == "diferencias" else niv["pares"]
+    return salida
+
+
+def _gana(r, mejor) -> bool:
+    return r is not None and mejor is not None and abs(r) > mejor
+
+
+def plano_del_veredicto(f: dict) -> str:
+    """En qué plano se apoya el veredicto, y por lo tanto cuál hay que graficar.
+
+    Un índice casi plano contra series con tendencia propia da ~0 en niveles.
+    Dibujar ese plano mientras el encabezado informa el resultado de los cambios
+    mes a mes deja un gráfico que contradice a su propio titular — el defecto
+    que ya se corrigió una vez y que acá volvería por otra puerta.
+
+    Por defecto se grafican los NIVELES: son más legibles y es el plano habitual.
+    Se pasa a los cambios sólo cuando el veredicto descansa exclusivamente ahí.
+    """
+    if _gana(f.get("r_diferencias"), f.get("mejor_sola_diferencias")) \
+            and not _gana(f.get("r_niveles"), f.get("mejor_sola_niveles")):
+        return "diferencias"
+    return "niveles"
 
 
 def _filas_propias(indice: str, serie: dict, propias: dict) -> list:
@@ -183,14 +248,28 @@ def lectura_factor(p: dict) -> str:
     f = p.get("factor")
     if not f or f["r_niveles"] is None:
         return ""
-    gana = f.get("mejor_sola_niveles") is not None and abs(f["r_niveles"]) > f["mejor_sola_niveles"]
-    cierre = ("más que cualquiera de ellas por separado"
-              if gana else "menos que la mejor de ellas por separado")
     return (f"Contra el factor común de las {f['n_series']} estadísticas de su terreno —lo que "
             f"comparten, no una sola— el índice acompaña con {_coma(f['r_niveles'])} en niveles"
             + (f" y {_coma(f['r_diferencias'])} en los cambios mes a mes"
                if f["r_diferencias"] is not None else "")
-            + f": {cierre}.")
+            + f": {_veredicto(f)}.")
+
+
+def _veredicto(f: dict) -> str:
+    """Si el compuesto le gana o no a la mejor estadística individual, en cada
+    plano. Manda el de los cambios mes a mes: en una muestra de treinta meses
+    casi todas las series argentinas comparten la tendencia del período, así que
+    ganar en niveles se consigue con mucho menos."""
+    niv = _gana(f.get("r_niveles"), f.get("mejor_sola_niveles"))
+    dif = _gana(f.get("r_diferencias"), f.get("mejor_sola_diferencias"))
+    if niv and dif:
+        return "más que cualquiera de ellas por separado, en los dos planos"
+    if dif:
+        return ("en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por "
+                "separado")
+    if niv:
+        return "más que cualquiera de ellas por separado en niveles, pero no en los cambios"
+    return "menos que la mejor de ellas por separado"
 
 
 def lectura_factor_detalle(p: dict) -> list:
@@ -230,21 +309,38 @@ def lectura_factor_detalle(p: dict) -> list:
         "cálculo del factor, sólo se compara contra él una vez armado.")
 
     mejor_n, mejor_d = f.get("mejor_sola_niveles"), f.get("mejor_sola_diferencias")
-    if mejor_n is not None:
-        if abs(f["r_niveles"]) > mejor_n:
-            partes.append(
-                f"El compuesto acompaña al índice más que cualquiera de las {f['n_series']} por "
-                f"separado, que llegan como máximo a {_coma(round(mejor_n, 3))} en niveles y "
-                f"{_coma(round(mejor_d, 3))} en los cambios: lo que las tres comparten —y no una "
-                f"en particular— es lo que el índice sigue.")
-        else:
-            partes.append(
-                f"El compuesto queda por debajo de la mejor de las {f['n_series']} por separado, "
-                f"que llega a {_coma(round(mejor_n, 3))} en niveles. Se publica igual porque es "
-                f"lo que el contraste enseña: lo que las {f['n_series']} comparten es un ciclo "
-                f"más ancho que el que el índice sigue, y una de ellas sola lo capta mejor. Es un "
-                f"límite del panel disponible —corto y de un solo tipo de fuente— antes que un "
-                f"veredicto sobre el índice.")
+    if mejor_n is None:
+        return partes
+    gana_dif = (f.get("r_diferencias") is not None and mejor_d is not None
+                and abs(f["r_diferencias"]) > mejor_d)
+    gana_niv = abs(f["r_niveles"]) > mejor_n
+    tope = (f"La mejor de las {f['n_series']} por separado llega a "
+            f"{_coma(round(mejor_n, 3))} en niveles"
+            + (f" y {_coma(round(mejor_d, 3))} en los cambios" if mejor_d is not None else "")
+            + ".")
+    if gana_dif and gana_niv:
+        partes.append(tope + " El compuesto le gana a todas en los dos planos: lo que las "
+                             "estadísticas comparten —y no una en particular— es lo que el "
+                             "índice sigue.")
+    elif gana_dif:
+        partes.append(
+            tope + " El compuesto le gana a todas en los cambios mes a mes, que es la prueba "
+                   "exigente: la que no se puede satisfacer con la tendencia que en estos años "
+                   "arrastró a casi todas las series argentinas. En niveles queda por debajo, y "
+                   "conviene decir por qué: este índice se movió muy poco en términos netos "
+                   "—sus componentes se compensan entre sí— mientras que las estadísticas del "
+                   "contraste tienen tendencia propia. Comparar niveles de una serie casi plana "
+                   "contra series que suben o bajan no dice demasiado en ninguna dirección.")
+    elif gana_niv:
+        partes.append(
+            tope + " El compuesto le gana en niveles pero no en los cambios mes a mes, que es "
+                   "la prueba exigente: descontada la tendencia común del período, la ventaja "
+                   "se pierde.")
+    else:
+        partes.append(
+            tope + f" El compuesto queda por debajo. Se publica igual porque es lo que el "
+                   f"contraste enseña: lo que las {f['n_series']} comparten es un ciclo más "
+                   f"ancho que el que el índice sigue, y una de ellas sola lo capta mejor.")
     return partes
 
 

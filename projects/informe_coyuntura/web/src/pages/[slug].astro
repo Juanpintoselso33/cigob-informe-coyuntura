@@ -148,11 +148,16 @@ let valSvg: {
 // un número que no se corresponde con la curva que tiene debajo es peor que no
 // publicarlo. El factor es un puntaje estandarizado —cruza el cero—, así que se
 // fuerza la escala por rango; rebase100 dividiría por un valor cercano a cero.
-const vplot = val?.panel?.factor?.pares
-  ? { pares: val.panel.factor.pares, plot: "minmax",
-      serie_label: val.serie_label,
-      externa_label: `factor común de ${val.panel.factor.n_series} estadísticas de su terreno`,
-      trans_label: "series normalizadas al rango del período" }
+const vplot = val?.panel?.factor?.pares_grafico
+  ? { pares: val.panel.factor.pares_grafico, plot: "minmax",
+      serie_label: val.panel.factor.plano === "diferencias"
+        ? `${indice?.sigla ?? "índice"} — variación mes a mes`
+        : val.serie_label,
+      externa_label: `factor común de ${val.panel.factor.n_series} estadísticas de su terreno`
+        + (val.panel.factor.plano === "diferencias" ? " — variación mes a mes" : ""),
+      trans_label: val.panel.factor.plano === "diferencias"
+        ? "se grafica el cambio de cada mes contra el anterior, que es el plano donde se compara"
+        : "series normalizadas al rango del período" }
   : val;
 if (vplot && vplot.pares.length >= 12) {
   const W = 1120, H = 200, base = H - 26, top = 16, padx = 16;
@@ -399,7 +404,10 @@ const robChartData = rob?.hist && indice ? {
                 <span>El {indice.sigla} y su contraste externo, mes a mes</span>
                 {val.panel?.factor ? (
                   <span>contra el factor común de {val.panel.factor.n_series} estadísticas ·
-                    <strong> {num(val.panel.factor.r_niveles)}</strong> · {val.panel.factor.n} meses</span>
+                    <strong> {num(val.panel.factor.r_niveles)}</strong> en niveles
+                    {typeof val.panel.factor.r_diferencias === "number" && (
+                      <Fragment> · <strong>{num(val.panel.factor.r_diferencias)}</strong> mes a mes</Fragment>
+                    )} · {val.panel.factor.n} meses</span>
                 ) : (
                   <span>correlación <strong>{num(val.r_niveles)}</strong> · {val.n} meses</span>
                 )}

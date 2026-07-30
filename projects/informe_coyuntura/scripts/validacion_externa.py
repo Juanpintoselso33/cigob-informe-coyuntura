@@ -65,6 +65,18 @@ CONSUMO_SUPER_ID = "455.1_VENTAS_PREADA_0_M_44_44"
 # Los otros dos canales de consumo, para el panel del ITVC (ADR-0159).
 CONSUMO_MAYORISTAS_ID = "456.1_VENTAS_PREADA_0_M_44_40"
 CONSUMO_SHOPPINGS_ID = "458.1_VENTAS_TOTADA_0_M_52_56"
+
+# Volúmenes FÍSICOS consumidos por los hogares (ADR-0163). Entran al panel del
+# ITVC como contraste externo y son los que arman su factor común: al medirse en
+# unidades físicas no llevan deflactor, así que no comparten insumo con
+# `ipc_alimentos`, que sí es componente del índice. Traen estacionalidad fuerte
+# y se ajustan antes de entrar (ver `desestacionalizar.py`).
+CONSUMO_FISICO_IDS = {
+    "electricidad_residencial": "367.3_DEMANDA_REIAL__19",   # CAMMESA
+    "gas_residencial": "364.3_RESIDENCIAIAL__11",            # Secretaría de Energía
+    "transporte_pasajeros": "302.3_TRANSP_PASSAJ_0_S_29",    # INDEC
+    "ventas_naftas": "38.3_N_1994_M_6",                      # Secretaría de Energía
+}
 SERIES_API = "https://apis.datos.gob.ar/series/api/series"
 MERVAL_YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5EMERV"
 CCL_URL = "https://api.argentinadatos.com/v1/cotizaciones/dolares/contadoconliqui"
@@ -1261,6 +1273,25 @@ def main():
                            ("consumo_shoppings", CONSUMO_SHOPPINGS_ID)):
             try:
                 panel[clave] = _rebase_4t23(_serie_datos_gob(sid))
+            except Exception as e:
+                print(f"[WARN] panel: {clave} no disponible: {e}")
+        # Volúmenes físicos del hogar: se desestacionalizan ANTES de entrar. Sin
+        # eso, el primer componente del panel sería la estación del año y no la
+        # condición material de los hogares. Se informa la amplitud estacional
+        # antes y después para que se vea que el ajuste hizo algo — y cuánto
+        # queda sin explicar, que en el gas no es poco.
+        import desestacionalizar as _des
+        for clave, sid in CONSUMO_FISICO_IDS.items():
+            try:
+                cruda = _serie_datos_gob(sid)
+                antes = _des.amplitud_estacional(cruda)
+                ajustada = _des.desestacionalizar(cruda)
+                panel[clave] = _rebase_4t23(ajustada)
+                resultados.setdefault("estacionalidad_panel", {})[clave] = {
+                    "antes_pct": antes,
+                    "despues_pct": _des.amplitud_estacional(ajustada),
+                    "n_meses": len(cruda),
+                }
             except Exception as e:
                 print(f"[WARN] panel: {clave} no disponible: {e}")
         indices = {"itvc": itvc_full, "itcg": serie_itcg, "itcp": serie_itcp}

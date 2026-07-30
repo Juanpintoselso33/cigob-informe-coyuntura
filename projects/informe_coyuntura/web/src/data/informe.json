@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-30T15:50:47.726755",
+  "generated_at": "2026-07-30T17:40:38.841314",
   "period": "2026-07",
   "score_global": 3.4,
   "ponderacion": {
@@ -1668,7 +1668,7 @@
               "n": 31
             }
           },
-          "conclusion": "Contra el factor común de las 3 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,523 en niveles y 0,493 en los cambios mes a mes: más que cualquiera de ellas por separado. Contra el EPU solo —una de las tres— la correlación es −0,493 en niveles y −0,397 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,616, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, el volumen de insumos de construcción efectivamente vendidos, contra el que correlaciona 0,79 en niveles y 0,47 en los cambios. Hay además un hallazgo que conviene declarar: el indicador de expectativas de obra pública acompaña a la incertidumbre de política durante las dos administraciones anteriores y se invierte con la actual. La razón es sustantiva, no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno, de modo que ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El indicador mide bien la tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar. Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,41 y a las 5 ajenas con 0,23. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,367 con lo propio contra 0,167 con lo ajeno.",
+          "conclusion": "Contra el factor común de las 3 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,523 en niveles y 0,493 en los cambios mes a mes: más que cualquiera de ellas por separado, en los dos planos. Contra el EPU solo —una de las tres— la correlación es −0,493 en niveles y −0,397 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,616, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, el volumen de insumos de construcción efectivamente vendidos, contra el que correlaciona 0,79 en niveles y 0,47 en los cambios. Hay además un hallazgo que conviene declarar: el indicador de expectativas de obra pública acompaña a la incertidumbre de política durante las dos administraciones anteriores y se invierte con la actual. La razón es sustantiva, no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno, de modo que ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El indicador mide bien la tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar. Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,41 y a las 9 ajenas con 0,263. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,367 con lo propio contra 0,17 con lo ajeno.",
           "panel": {
             "perfil": [
               {
@@ -1704,12 +1704,28 @@
                 "n": 29
               },
               {
+                "estadistica": "electricidad_residencial",
+                "etiqueta": "electricidad consumida por los hogares",
+                "propia": false,
+                "r_niveles": 0.512,
+                "r_diferencias": 0.3,
+                "n": 30
+              },
+              {
                 "estadistica": "epu_argentina",
                 "etiqueta": "incertidumbre de política (EPU)",
                 "propia": true,
                 "r_niveles": -0.493,
                 "r_diferencias": -0.397,
                 "n": 30
+              },
+              {
+                "estadistica": "gas_residencial",
+                "etiqueta": "gas consumido por los hogares",
+                "propia": false,
+                "r_niveles": 0.179,
+                "r_diferencias": -0.001,
+                "n": 29
               },
               {
                 "estadistica": "icg_utdt",
@@ -1734,20 +1750,36 @@
                 "r_niveles": -0.086,
                 "r_diferencias": 0.239,
                 "n": 30
+              },
+              {
+                "estadistica": "transporte_pasajeros",
+                "etiqueta": "viajes en transporte público",
+                "propia": false,
+                "r_niveles": -0.087,
+                "r_diferencias": -0.207,
+                "n": 28
+              },
+              {
+                "estadistica": "ventas_naftas",
+                "etiqueta": "naftas vendidas en el mercado interno",
+                "propia": false,
+                "r_niveles": -0.441,
+                "r_diferencias": -0.183,
+                "n": 30
               }
             ],
             "niveles": {
               "convergente": 0.41,
-              "discriminante": 0.23,
-              "brecha": 0.18
+              "discriminante": 0.263,
+              "brecha": 0.147
             },
             "diferencias": {
               "convergente": 0.367,
-              "discriminante": 0.167,
-              "brecha": 0.2
+              "discriminante": 0.17,
+              "brecha": 0.197
             },
             "n_propias": 3,
-            "n_ajenas": 5,
+            "n_ajenas": 9,
             "factor": {
               "cargas": {
                 "clima_electoral": 0.487,
@@ -1918,11 +1950,164 @@
               "r_diferencias": 0.493,
               "mejor_sola_niveles": 0.493,
               "mejor_sola_diferencias": 0.42,
+              "plano": "niveles",
+              "pares_grafico": [
+                [
+                  "2024-01",
+                  66.0,
+                  1.766
+                ],
+                [
+                  "2024-02",
+                  71.0,
+                  1.378
+                ],
+                [
+                  "2024-03",
+                  71.4,
+                  0.873
+                ],
+                [
+                  "2024-04",
+                  68.3,
+                  0.073
+                ],
+                [
+                  "2024-05",
+                  66.4,
+                  0.977
+                ],
+                [
+                  "2024-06",
+                  57.6,
+                  -0.141
+                ],
+                [
+                  "2024-07",
+                  54.8,
+                  -0.404
+                ],
+                [
+                  "2024-08",
+                  55.2,
+                  0.378
+                ],
+                [
+                  "2024-09",
+                  54.7,
+                  -1.045
+                ],
+                [
+                  "2024-10",
+                  53.9,
+                  -0.399
+                ],
+                [
+                  "2024-11",
+                  45.1,
+                  0.66
+                ],
+                [
+                  "2024-12",
+                  52.0,
+                  0.434
+                ],
+                [
+                  "2025-01",
+                  58.1,
+                  1.001
+                ],
+                [
+                  "2025-02",
+                  58.1,
+                  1.094
+                ],
+                [
+                  "2025-03",
+                  57.1,
+                  0.381
+                ],
+                [
+                  "2025-04",
+                  53.7,
+                  -0.249
+                ],
+                [
+                  "2025-05",
+                  63.8,
+                  0.788
+                ],
+                [
+                  "2025-06",
+                  64.1,
+                  0.298
+                ],
+                [
+                  "2025-07",
+                  60.7,
+                  0.293
+                ],
+                [
+                  "2025-08",
+                  45.6,
+                  -0.933
+                ],
+                [
+                  "2025-09",
+                  43.5,
+                  -3.742
+                ],
+                [
+                  "2025-10",
+                  45.1,
+                  -2.329
+                ],
+                [
+                  "2025-11",
+                  57.3,
+                  -0.335
+                ],
+                [
+                  "2025-12",
+                  65.0,
+                  0.085
+                ],
+                [
+                  "2026-01",
+                  68.5,
+                  1.079
+                ],
+                [
+                  "2026-02",
+                  66.8,
+                  0.839
+                ],
+                [
+                  "2026-03",
+                  67.4,
+                  0.534
+                ],
+                [
+                  "2026-04",
+                  61.0,
+                  -1.451
+                ],
+                [
+                  "2026-05",
+                  63.0,
+                  -1.9
+                ],
+                [
+                  "2026-06",
+                  66.1,
+                  -1.934
+                ]
+              ],
               "detalle": [
                 "Para no depender de una sola estadística, las 3 del terreno propio del índice se resumen en su factor común: el primer componente principal, el mismo método con el que la Reserva Federal de Chicago arma su índice de actividad a partir de 85 series. El factor recoge 51,5% de lo que las 3 tienen en común, y pesa más en confianza en el gobierno.",
                 "El cálculo determina por su cuenta que incertidumbre de política (EPU) entra con signo invertido: no se declaró a mano. Es lo que hace que la comparación no se pueda acomodar — quien elige los signos de un promedio ya vio los resultados.",
                 "Las cargas se estiman con las estadísticas externas solas: el índice no participa del cálculo del factor, sólo se compara contra él una vez armado.",
-                "El compuesto acompaña al índice más que cualquiera de las 3 por separado, que llegan como máximo a 0,493 en niveles y 0,42 en los cambios: lo que las tres comparten —y no una en particular— es lo que el índice sigue."
+                "La mejor de las 3 por separado llega a 0,493 en niveles y 0,42 en los cambios. El compuesto le gana a todas en los dos planos: lo que las estadísticas comparten —y no una en particular— es lo que el índice sigue."
               ]
             }
           }
@@ -2740,11 +2925,11 @@
           ],
           "plot": "rebase100",
           "titulo": "¿El ITVC acompaña lo que la gente puede comprar?",
-          "sub": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen. Este cinturón no tiene una única serie de referencia, así que se compara contra un panel de estadísticas externas y se mira si acompaña más a las de su propio terreno que a las ajenas. El gráfico compara el índice contra el factor común de las tres estadísticas de su terreno: lo que las tres comparten, en vez de una sola. El detalle —las cargas de cada una y el panel completo— está en la ficha metodológica.",
+          "sub": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen. Este cinturón no tiene una única serie de referencia, así que se compara contra un panel de estadísticas externas y se mira si acompaña más a las de su propio terreno que a las ajenas. El gráfico compara el índice contra el factor común de las estadísticas de su terreno que miden volúmenes consumidos por los hogares —luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de una sola. El detalle —las cargas de cada una y el panel completo— está en la ficha metodológica.",
           "serie_label": "ITVC (reconstrucción mensual)",
           "externa_label": "consumo en supermercados (precios constantes)",
           "trans_label": "ambas series con base 100 en el cuarto trimestre de 2023",
-          "conclusion": "Contra el factor común de las 3 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,211 en niveles y 0,029 en los cambios mes a mes: menos que la mejor de ellas por separado. Contra el consumo en supermercados solo —una de las tres— la correlación es 0,596 en niveles y 0,246 en los cambios mes a mes: cuando las condiciones materiales mejoran respecto del arranque del mandato, la gente efectivamente compra más en términos reales. El ánimo, en cambio, acompaña menos: contra la confianza del consumidor (ICC de UTDT) la correlación es 0,337. No es una falla del índice sino un resultado — en estos años la confianza se movió con más independencia de las condiciones materiales que las condiciones entre sí. Se publica porque distingue: este cinturón mide lo que le pasa a los hogares, no lo que opinan. Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,342 y a las 5 ajenas con 0,253. En los cambios mes a mes la separación no se sostiene: 0,152 con lo propio contra 0,292 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto.",
+          "conclusion": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,043 en niveles y 0,478 en los cambios mes a mes: en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por separado. Contra el consumo en supermercados solo —una sola del panel— la correlación es 0,596 en niveles y 0,246 en los cambios mes a mes: cuando las condiciones materiales mejoran respecto del arranque del mandato, la gente efectivamente compra más en términos reales. El ánimo, en cambio, acompaña menos: contra la confianza del consumidor (ICC de UTDT) la correlación es 0,337. No es una falla del índice sino un resultado — en estos años la confianza se movió con más independencia de las condiciones materiales que las condiciones entre sí. Se publica porque distingue: este cinturón mide lo que le pasa a los hogares, no lo que opinan. Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 7 estadísticas de su propio terreno con 0,249 y a las 5 ajenas con 0,253. En los cambios mes a mes la separación no se sostiene: 0,246 con lo propio contra 0,292 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto.",
           "panel": {
             "perfil": [
               {
@@ -2780,12 +2965,28 @@
                 "n": 30
               },
               {
+                "estadistica": "electricidad_residencial",
+                "etiqueta": "electricidad consumida por los hogares",
+                "propia": true,
+                "r_niveles": -0.144,
+                "r_diferencias": 0.359,
+                "n": 31
+              },
+              {
                 "estadistica": "epu_argentina",
                 "etiqueta": "incertidumbre de política (EPU)",
                 "propia": false,
                 "r_niveles": 0.186,
                 "r_diferencias": 0.355,
                 "n": 31
+              },
+              {
+                "estadistica": "gas_residencial",
+                "etiqueta": "gas consumido por los hogares",
+                "propia": true,
+                "r_niveles": -0.205,
+                "r_diferencias": 0.261,
+                "n": 30
               },
               {
                 "estadistica": "icg_utdt",
@@ -2808,196 +3009,353 @@
                 "etiqueta": "Merval en dólares",
                 "propia": false,
                 "r_niveles": 0.177,
-                "r_diferencias": 0.06,
+                "r_diferencias": 0.061,
                 "n": 32
+              },
+              {
+                "estadistica": "transporte_pasajeros",
+                "etiqueta": "viajes en transporte público",
+                "propia": true,
+                "r_niveles": -0.001,
+                "r_diferencias": 0.243,
+                "n": 29
+              },
+              {
+                "estadistica": "ventas_naftas",
+                "etiqueta": "naftas vendidas en el mercado interno",
+                "propia": true,
+                "r_niveles": 0.364,
+                "r_diferencias": 0.406,
+                "n": 31
               }
             ],
             "niveles": {
-              "convergente": 0.342,
+              "convergente": 0.249,
               "discriminante": 0.253,
-              "brecha": 0.089
+              "brecha": -0.004
             },
             "diferencias": {
-              "convergente": 0.152,
+              "convergente": 0.246,
               "discriminante": 0.292,
-              "brecha": -0.14
+              "brecha": -0.046
             },
-            "n_propias": 3,
+            "n_propias": 7,
             "n_ajenas": 5,
             "factor": {
               "cargas": {
-                "consumo_mayoristas": 0.667,
-                "consumo_shoppings": 0.234,
-                "consumo_supermercados": 0.707
+                "electricidad_residencial": 0.724,
+                "gas_residencial": 0.163,
+                "transporte_pasajeros": -0.072,
+                "ventas_naftas": 0.666
               },
               "etiquetas": {
-                "consumo_mayoristas": "consumo en autoservicios mayoristas",
-                "consumo_shoppings": "consumo en centros de compras",
-                "consumo_supermercados": "consumo en supermercados"
+                "electricidad_residencial": "electricidad consumida por los hogares",
+                "gas_residencial": "gas consumido por los hogares",
+                "transporte_pasajeros": "viajes en transporte público",
+                "ventas_naftas": "naftas vendidas en el mercado interno"
               },
-              "varianza_explicada": 59.2,
-              "n_series": 3,
-              "n": 30,
+              "varianza_explicada": 37.2,
+              "n_series": 4,
+              "n": 29,
               "pares": [
                 [
                   "2023-12",
                   95.6,
-                  -1.129
+                  1.018
                 ],
                 [
                   "2024-01",
                   92.4,
-                  -1.262
+                  1.22
                 ],
                 [
                   "2024-02",
                   91.5,
-                  -1.705
+                  2.399
                 ],
                 [
                   "2024-03",
                   90.6,
-                  -1.513
+                  1.398
                 ],
                 [
                   "2024-04",
                   91.8,
-                  -1.654
+                  1.006
                 ],
                 [
                   "2024-05",
                   92.8,
-                  -1.496
+                  2.759
                 ],
                 [
                   "2024-06",
                   92.3,
-                  -1.385
+                  0.176
                 ],
                 [
                   "2024-07",
                   94.3,
-                  -1.214
+                  1.753
                 ],
                 [
                   "2024-08",
                   95.0,
-                  -1.141
+                  1.456
                 ],
                 [
                   "2024-09",
                   93.7,
-                  -1.086
+                  0.172
                 ],
                 [
                   "2024-10",
                   96.2,
-                  -1.104
+                  1.015
                 ],
                 [
                   "2024-11",
                   97.5,
-                  -0.846
+                  1.493
                 ],
                 [
                   "2024-12",
                   97.3,
-                  -1.95
+                  0.563
                 ],
                 [
                   "2025-01",
                   98.1,
-                  -1.632
+                  1.747
                 ],
                 [
                   "2025-02",
                   98.9,
-                  -1.526
+                  2.317
                 ],
                 [
                   "2025-03",
                   96.1,
-                  -0.962
+                  1.447
                 ],
                 [
                   "2025-04",
                   95.9,
-                  -1.292
+                  1.009
                 ],
                 [
                   "2025-05",
                   94.4,
-                  -1.451
+                  1.016
                 ],
                 [
                   "2025-06",
                   96.4,
-                  -1.586
+                  2.189
                 ],
                 [
                   "2025-07",
                   97.9,
-                  -1.815
+                  1.51
                 ],
                 [
                   "2025-08",
                   94.9,
-                  -1.792
+                  1.156
                 ],
                 [
                   "2025-09",
                   96.1,
-                  -2.06
+                  1.239
                 ],
                 [
                   "2025-10",
                   96.4,
-                  -1.58
+                  1.153
                 ],
                 [
                   "2025-11",
                   94.9,
-                  -1.869
+                  1.305
                 ],
                 [
                   "2025-12",
                   94.7,
-                  -1.731
+                  2.262
                 ],
                 [
                   "2026-01",
                   92.6,
-                  -1.891
+                  1.452
                 ],
                 [
                   "2026-02",
                   92.3,
-                  -1.914
+                  1.428
                 ],
                 [
                   "2026-03",
                   91.6,
-                  -1.953
+                  1.454
                 ],
                 [
                   "2026-04",
                   91.2,
+                  1.6
+                ]
+              ],
+              "r_niveles": 0.043,
+              "r_diferencias": 0.478,
+              "mejor_sola_niveles": 0.364,
+              "mejor_sola_diferencias": 0.406,
+              "plano": "diferencias",
+              "pares_grafico": [
+                [
+                  "2024-01",
+                  -3.2,
+                  -0.34
+                ],
+                [
+                  "2024-02",
+                  -0.9,
+                  -0.069
+                ],
+                [
+                  "2024-03",
+                  -0.9,
+                  -0.623
+                ],
+                [
+                  "2024-04",
+                  1.2,
+                  1.255
+                ],
+                [
+                  "2024-05",
+                  1.0,
+                  0.945
+                ],
+                [
+                  "2024-06",
+                  -0.5,
                   -1.935
                 ],
                 [
-                  "2026-05",
-                  91.1,
-                  -1.67
+                  "2024-07",
+                  2.0,
+                  1.329
+                ],
+                [
+                  "2024-08",
+                  0.7,
+                  -0.489
+                ],
+                [
+                  "2024-09",
+                  -1.3,
+                  -1.061
+                ],
+                [
+                  "2024-10",
+                  2.5,
+                  0.858
+                ],
+                [
+                  "2024-11",
+                  1.3,
+                  0.299
+                ],
+                [
+                  "2024-12",
+                  -0.2,
+                  -1.269
+                ],
+                [
+                  "2025-01",
+                  0.8,
+                  0.203
+                ],
+                [
+                  "2025-02",
+                  0.8,
+                  0.273
+                ],
+                [
+                  "2025-03",
+                  -2.8,
+                  -0.171
+                ],
+                [
+                  "2025-04",
+                  -0.2,
+                  1.634
+                ],
+                [
+                  "2025-05",
+                  -1.5,
+                  -0.278
+                ],
+                [
+                  "2025-06",
+                  2.0,
+                  -0.004
+                ],
+                [
+                  "2025-07",
+                  1.5,
+                  -0.111
+                ],
+                [
+                  "2025-08",
+                  -3.0,
+                  -0.862
+                ],
+                [
+                  "2025-09",
+                  1.2,
+                  0.26
+                ],
+                [
+                  "2025-10",
+                  0.3,
+                  -0.033
+                ],
+                [
+                  "2025-11",
+                  -1.5,
+                  -0.895
+                ],
+                [
+                  "2025-12",
+                  -0.2,
+                  0.104
+                ],
+                [
+                  "2026-01",
+                  -2.1,
+                  -0.58
+                ],
+                [
+                  "2026-02",
+                  -0.3,
+                  -0.476
+                ],
+                [
+                  "2026-03",
+                  -0.7,
+                  0.787
+                ],
+                [
+                  "2026-04",
+                  -0.4,
+                  1.281
                 ]
               ],
-              "r_niveles": 0.211,
-              "r_diferencias": 0.029,
-              "mejor_sola_niveles": 0.596,
-              "mejor_sola_diferencias": 0.246,
               "detalle": [
-                "Para no depender de una sola estadística, las 3 del terreno propio del índice se resumen en su factor común: el primer componente principal, el mismo método con el que la Reserva Federal de Chicago arma su índice de actividad a partir de 85 series. El factor recoge 59,2% de lo que las 3 tienen en común, y pesa más en consumo en supermercados.",
+                "Para no depender de una sola estadística, las 4 del terreno propio del índice se resumen en su factor común: el primer componente principal, el mismo método con el que la Reserva Federal de Chicago arma su índice de actividad a partir de 85 series. El factor recoge 37,2% de lo que las 4 tienen en común, y pesa más en electricidad consumida por los hogares.",
+                "El cálculo determina por su cuenta que viajes en transporte público entra con signo invertido: no se declaró a mano. Es lo que hace que la comparación no se pueda acomodar — quien elige los signos de un promedio ya vio los resultados.",
                 "Las cargas se estiman con las estadísticas externas solas: el índice no participa del cálculo del factor, sólo se compara contra él una vez armado.",
-                "El compuesto queda por debajo de la mejor de las 3 por separado, que llega a 0,596 en niveles. Se publica igual porque es lo que el contraste enseña: lo que las 3 comparten es un ciclo más ancho que el que el índice sigue, y una de ellas sola lo capta mejor. Es un límite del panel disponible —corto y de un solo tipo de fuente— antes que un veredicto sobre el índice."
+                "La mejor de las 4 por separado llega a 0,364 en niveles y 0,406 en los cambios. El compuesto le gana a todas en los cambios mes a mes, que es la prueba exigente: la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas. En niveles queda por debajo, y conviene decir por qué: este índice se movió muy poco en términos netos —sus componentes se compensan entre sí— mientras que las estadísticas del contraste tienen tendencia propia. Comparar niveles de una serie casi plana contra series que suben o bajan no dice demasiado en ninguna dirección."
               ]
             }
           }
@@ -4321,8 +4679,8 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
-          "r_niveles": 0.748,
-          "r_diferencias": 0.118,
+          "r_niveles": 0.747,
+          "r_diferencias": 0.119,
           "n": 32,
           "pares": [
             [
@@ -4483,7 +4841,7 @@
             [
               "2026-07",
               74.0,
-              2102.0
+              2098.2
             ]
           ],
           "plot": "minmax",
@@ -4492,7 +4850,7 @@
           "serie_label": "ITCG (reconstrucción mensual)",
           "externa_label": "Merval en dólares",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,748 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (−0,695) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad. Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a la única estadística de su propio terreno con 0,748 y a las 7 ajenas con 0,434. En los cambios mes a mes la separación no se sostiene: 0,118 con lo propio contra 0,159 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto.",
+          "conclusion": "Correlación 0,747 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (−0,695) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad. Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a la única estadística de su propio terreno con 0,747 y a las 11 ajenas con 0,367. En los cambios mes a mes la separación no se sostiene: 0,119 con lo propio contra 0,172 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto.",
           "panel": {
             "perfil": [
               {
@@ -4528,12 +4886,28 @@
                 "n": 30
               },
               {
+                "estadistica": "electricidad_residencial",
+                "etiqueta": "electricidad consumida por los hogares",
+                "propia": false,
+                "r_niveles": 0.056,
+                "r_diferencias": -0.177,
+                "n": 31
+              },
+              {
                 "estadistica": "epu_argentina",
                 "etiqueta": "incertidumbre de política (EPU)",
                 "propia": false,
                 "r_niveles": 0.254,
                 "r_diferencias": -0.18,
                 "n": 31
+              },
+              {
+                "estadistica": "gas_residencial",
+                "etiqueta": "gas consumido por los hogares",
+                "propia": false,
+                "r_niveles": -0.001,
+                "r_diferencias": -0.288,
+                "n": 30
               },
               {
                 "estadistica": "icg_utdt",
@@ -4555,23 +4929,39 @@
                 "estadistica": "merval_usd",
                 "etiqueta": "Merval en dólares",
                 "propia": true,
-                "r_niveles": 0.748,
-                "r_diferencias": 0.118,
+                "r_niveles": 0.747,
+                "r_diferencias": 0.119,
                 "n": 32
+              },
+              {
+                "estadistica": "transporte_pasajeros",
+                "etiqueta": "viajes en transporte público",
+                "propia": false,
+                "r_niveles": -0.464,
+                "r_diferencias": -0.062,
+                "n": 29
+              },
+              {
+                "estadistica": "ventas_naftas",
+                "etiqueta": "naftas vendidas en el mercado interno",
+                "propia": false,
+                "r_niveles": 0.48,
+                "r_diferencias": -0.251,
+                "n": 31
               }
             ],
             "niveles": {
-              "convergente": 0.748,
-              "discriminante": 0.434,
-              "brecha": 0.314
+              "convergente": 0.747,
+              "discriminante": 0.367,
+              "brecha": 0.38
             },
             "diferencias": {
-              "convergente": 0.118,
-              "discriminante": 0.159,
-              "brecha": -0.041
+              "convergente": 0.119,
+              "discriminante": 0.172,
+              "brecha": -0.053
             },
             "n_propias": 1,
-            "n_ajenas": 7
+            "n_ajenas": 11
           }
         },
         "redundancia": {
