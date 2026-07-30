@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-29T15:52:13.255656",
+  "generated_at": "2026-07-29T22:58:02.576852",
   "score": 3.6,
   "itcp": {
     "valor": 64.3,
@@ -262,7 +262,7 @@
       "ipc_aplicado_pct": 41.9,
       "unidad": "% interanual real",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-      "fecha_dato": "2026-07-29",
+      "fecha_dato": "2025-12-31",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",

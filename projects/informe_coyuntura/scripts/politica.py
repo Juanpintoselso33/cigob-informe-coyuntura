@@ -960,7 +960,14 @@ def fetch_iaf_transferencias() -> dict | None:
             "ipc_aplicado_pct": round(ipc * 100.0, 1),
             "unidad": "% interanual real",
             "fuente": RON_CSV_URL,
-            "fecha_dato": str(date.today()),
+            # La fecha del DATO es el cierre del año de referencia, no la de la
+            # corrida. Antes acá iba `date.today()`: la card se mostraba fresca
+            # todos los días mientras comparaba dos años calendario cerrados —en
+            # julio de 2026 estaba informando 2025 contra 2024— y G2 no podía
+            # avisar nada porque la fecha declaraba hoy. Con la fecha real, el
+            # rezago queda a la vista y su tolerancia se declara en
+            # gate_calidad.MAX_DIAS, que es donde va el criterio por indicador.
+            "fecha_dato": f"{year_ref}-12-31",
             "desactualizado": False,
         }
 

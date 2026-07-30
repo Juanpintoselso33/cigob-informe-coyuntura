@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-29 22:18:38"
+generado: "2026-07-29 22:58:51"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -51,7 +51,7 @@ schema_version: "1.2.0"
 | apoyo_empresario | -0.429 | saldo de postura (−1 a +1, 12m móviles) | 2026-07-01 | fresco |
 | conflictividad_nacional | -23.0 | % vs 2023 | 2026-06-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | fresco |
-| iaf_transferencias | 0.8 | % interanual real | 2026-07-29 | fresco |
+| iaf_transferencias | 0.8 | % interanual real | 2025-12-31 | fresco |
 | eficacia_legislativa | 14.3 | % de proyectos | 2026-07-29 | fresco |
 | veto_quorum | 8.3 | % de sesiones | 2026-07-29 | fresco |
 | comisiones_caidas | 97.0 | % de proyectos | 2026-07-29 | fresco |
@@ -108,4 +108,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-29 22:18:38 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-29 22:58:51 — schema 1.2.0*

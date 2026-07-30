@@ -40,6 +40,14 @@ MAX_DIAS = {
     # ese ritmo sin dejar de avisar si la fuente se muere de verdad.
     "empleo_registrado": 150,
     # fuentes con rezago estructural largo
+    # ANUAL: la serie RON de Hacienda es por año calendario ejecutado y el
+    # archivo del año nuevo aparece bien entrado el año siguiente. La fecha del
+    # dato es el cierre del año de referencia (31-dic), así que el rezago crece
+    # todo el año hasta que se publica el archivo siguiente: 560 días cubre ese
+    # ciclo completo sin dejar de avisar si la fuente se muere de verdad. Hasta
+    # el 29-jul-2026 la card declaraba `date.today()` y este tope no existía
+    # porque el indicador se mostraba fresco siempre.
+    "iaf_transferencias": 560,
     "protocolo_antipiquetes": 430,      # DP publica monitoreos esporádicos
     "litigiosidad_laboral": 220,        # SRT
     "libertad_opcion_salud": 220,       # SSS

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-29T22:18:38.946093",
+  "generated_at": "2026-07-29T22:58:51.583284",
   "period": "2026-07",
   "score_global": 3.3,
   "ponderacion": {
@@ -1049,7 +1049,7 @@
           "ipc_aplicado_pct": 41.9,
           "unidad": "% interanual real",
           "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2025-12-31",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -1817,15 +1817,21 @@
           "conclusion": "Leído por partes, lo más flojo del cinturón es «capacidad propia» (60,1) y lo más sólido, «recursos de negociación» (74,9): una diferencia de 14,8 puntos. Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas."
         },
         "vintages": {
-          "dias_promedio": 17,
-          "meses_promedio": 0.6,
-          "fecha_mas_vieja": "1 de junio de 2026",
+          "dias_promedio": 33,
+          "meses_promedio": 1.1,
+          "fecha_mas_vieja": "31 de diciembre de 2025",
           "fecha_mas_nueva": "29 de julio de 2026",
-          "span_dias": 58,
-          "rezagados": [],
+          "span_dias": 210,
+          "rezagados": [
+            {
+              "indicador": "iaf_transferencias",
+              "fecha": "31 de diciembre de 2025",
+              "meses": 6.9
+            }
+          ],
           "titulo": "¿De qué fecha es cada dato del índice?",
           "sub": "Los componentes no se publican al mismo ritmo: algunos son diarios y otros llegan con meses de demora. El índice los combina igual en un puntaje mensual, así que el «mes» del índice es en rigor un mosaico de datos de distintas fechas. Acá se muestra ese rango.",
-          "conclusion": "El dato más reciente es del 29 de julio de 2026 y el más antiguo del 1 de junio de 2026: un rango de 58 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 0,6 meses. Ningún componente supera el trimestre de antigüedad. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
+          "conclusion": "El dato más reciente es del 29 de julio de 2026 y el más antiguo del 31 de diciembre de 2025: un rango de 210 días. Ponderando cada componente por el peso que tiene en el índice, la antigüedad media del dato es de 1,1 meses. Los que más la arrastran son los que se publican con mayor demora o cuya fuente dejó de actualizarse. Conviene tenerlo presente al leer el número del mes: no todos sus componentes describen el mismo momento."
         }
       },
       "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
