@@ -136,7 +136,7 @@ fecha,indicador,valor,unidad,fuente
 2020-12-01,iaf_transferencias,-3.2,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2019-12-01,iaf_transferencias,-1.4,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2018-12-01,iaf_transferencias,6.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
-2026-07-01,eficacia_legislativa,14.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-07-01,eficacia_legislativa,13.3,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-06-01,eficacia_legislativa,22.2,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-05-01,eficacia_legislativa,15.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2026-04-01,eficacia_legislativa,19.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
