@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-30T01:55:47.737724",
+  "generated_at": "2026-07-30T04:49:25.303903",
   "period": "2026-07",
   "score_global": 2.6,
   "ponderacion": {
@@ -585,7 +585,7 @@
           "ventana_dias": 365,
           "unidad": "DNUs por ley",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -598,7 +598,7 @@
           "unidad": "pp de brecha (obra pública − privada, 12m)",
           "fuente": "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
           "fecha_dato": "2026-08-01",
-          "desactualizado": false,
+          "desactualizado": true,
           "variacion_12m": 9.1,
           "detalle_txt": "Brecha de 0,2 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
           "en_indice": true,
@@ -669,20 +669,20 @@
           "peso_efectivo": 0.076
         },
         "eficacia_legislativa": {
-          "valor": 14.3,
+          "valor": 13.3,
           "aprobados_n": 2,
-          "enviados_n": 14,
-          "cohorte_desde": "2024-07-29",
-          "cohorte_hasta": "2025-07-29",
+          "enviados_n": 15,
+          "cohorte_desde": "2024-07-30",
+          "cohorte_hasta": "2025-07-30",
           "dias_madurado_min": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
-          "puntaje_itcp": 48.6,
-          "puntaje_banda": 48.6,
+          "puntaje_itcp": 46.6,
+          "puntaje_banda": 46.6,
           "peso_efectivo": 0.0672
         },
         "veto_quorum": {
@@ -691,7 +691,7 @@
           "total_n": 12,
           "unidad": "% de sesiones",
           "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "detalle_txt": "1 de 12 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
           "en_indice": true,
@@ -708,7 +708,7 @@
           "ventana_dias": 365,
           "unidad": "% de proyectos",
           "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "en_indice": false
         },
@@ -716,7 +716,7 @@
           "valor": 66.7,
           "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
           "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "n_provincias": 16,
           "desactualizado": false,
           "en_indice": true,
@@ -734,7 +734,7 @@
           "detalle_txt": "3 vetos insistidos por el Congreso + 5 decretos rechazados en el recinto en los últimos 12 meses",
           "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
           "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "en_indice": false
         },
@@ -742,7 +742,7 @@
           "valor": 7,
           "unidad": "salidas de rango ministerial (acum. 12 meses)",
           "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "salidas_politicas": 5,
           "salidas_estructurales": 2,
@@ -773,14 +773,14 @@
               "valor": 99.9,
               "fecha_dato": "2026-06-24",
               "n_actas": 33,
-              "corrida_exitosa_en": "2026-07-29",
+              "corrida_exitosa_en": "2026-07-30",
               "desactualizado": false
             },
             "senado": {
               "valor": 99.6,
               "fecha_dato": "2026-07-16",
               "n_actas": 24,
-              "corrida_exitosa_en": "2026-07-29",
+              "corrida_exitosa_en": "2026-07-30",
               "desactualizado": false
             }
           },
@@ -800,7 +800,7 @@
           "detalle_txt": "2 de 10 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
           "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
           "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "poder_legislativo",
@@ -815,7 +815,7 @@
           "ultimo_desafio": "2025-09-18",
           "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
           "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "detalle_txt": "10 normas propias desafiadas en el recinto en los últimos 12 meses (8 cayeron, 2 siguen en pie)",
           "en_indice": true,
@@ -848,7 +848,7 @@
           "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
           "fecha_dato": "2026-07-16",
           "n_provincias": 24,
-          "corrida_exitosa_en": "2026-07-29",
+          "corrida_exitosa_en": "2026-07-30",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "alianzas_territoriales",
@@ -859,14 +859,14 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 64.3,
+        "valor": 64.1,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "poder_legislativo": {
             "nombre": "Poder legislativo",
             "peso": 0.21,
-            "puntaje": 40.4,
+            "puntaje": 39.8,
             "indicadores": {
               "ratio_dnu": {
                 "peso": 0.23,
@@ -877,9 +877,9 @@
               },
               "eficacia_legislativa": {
                 "peso": 0.32,
-                "puntaje_banda": 48.6,
-                "puntaje_aplicado": 48.6,
-                "valor": 14.3,
+                "puntaje_banda": 46.6,
+                "puntaje_aplicado": 46.6,
+                "valor": 13.3,
                 "peso_efectivo": 0.0672
               },
               "veto_quorum": {
@@ -1056,15 +1056,15 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 6.39,
+          "valor": 6.02,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 91.7,
-          "puntaje_banda": 91.7,
+          "puntaje_itcg": 93.9,
+          "puntaje_banda": 93.9,
           "peso_efectivo": 0.14
         },
         "apertura_comercial": {
@@ -1146,7 +1146,7 @@
           "valor": 40.0,
           "unidad": "% de avance (proxy InfoLeg)",
           "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "conteo_normas": 18,
           "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -1160,7 +1160,7 @@
           "valor": 100.0,
           "unidad": "Índice 0–100 (actos fundamentales del FAL: ley + reglamentación)",
           "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 (normas publicadas)",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "actos": [
             {
@@ -1393,7 +1393,7 @@
           "valor": 24.6,
           "unidad": "% de inversión aprobada sobre el pipeline",
           "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "proyectos_aprobados": 19,
           "inversion_aprobada_musd": 36424,
@@ -1411,7 +1411,7 @@
           "valor": 28.7,
           "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
           "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "km_adjudicados": 2614,
           "km_totales": 9091,
@@ -1433,7 +1433,7 @@
           "valor": 100.0,
           "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
           "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
           "ejercicio": 2026,
           "componentes": {
@@ -1488,10 +1488,10 @@
           "valor": 0,
           "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
           "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false,
-          "dias_muestreados_mes": 28,
-          "detalle_txt": "0 alertas en 28 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+          "dias_muestreados_mes": 29,
+          "detalle_txt": "0 alertas en 29 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
           "en_indice": false
         },
         "protestas_caba": {
@@ -1508,20 +1508,20 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 77.8,
+        "valor": 78.1,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "reformas_economicas": {
             "nombre": "Reformas económicas fundamentales",
             "peso": 0.35,
-            "puntaje": 74.5,
+            "puntaje": 75.3,
             "indicadores": {
               "cepo_mulc": {
                 "peso": 0.4,
-                "puntaje_banda": 91.7,
-                "puntaje_aplicado": 91.7,
-                "valor": 6.39,
+                "puntaje_banda": 93.9,
+                "puntaje_aplicado": 93.9,
+                "valor": 6.02,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -1667,10 +1667,10 @@
           "desactualizado": false
         },
         "sentimiento_digital": {
-          "valor": 7.8,
+          "valor": 7.7,
           "unidad": "interés 0–100",
           "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-07-29",
+          "fecha_dato": "2026-07-30",
           "desactualizado": false
         },
         "clima_electoral": {
@@ -1719,5 +1719,7 @@
   },
   "barbarismo_activo": "tecnocrático",
   "alerta_multicinturon": false,
-  "flags": []
+  "flags": [
+    "desactualizado:politica:brecha_obra_publica"
+  ]
 }

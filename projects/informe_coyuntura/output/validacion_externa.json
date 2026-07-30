@@ -7,69 +7,69 @@
     "2023-12": 95.6,
     "2024-01": 92.4,
     "2024-02": 91.5,
-    "2024-03": 90.5,
-    "2024-04": 91.7,
+    "2024-03": 90.6,
+    "2024-04": 91.8,
     "2024-05": 92.8,
-    "2024-06": 92.2,
-    "2024-07": 94.2,
+    "2024-06": 92.3,
+    "2024-07": 94.3,
     "2024-08": 95.0,
-    "2024-09": 93.6,
+    "2024-09": 93.7,
     "2024-10": 96.2,
-    "2024-11": 97.4,
+    "2024-11": 97.5,
     "2024-12": 97.3,
-    "2025-01": 98.0,
+    "2025-01": 98.1,
     "2025-02": 98.9,
     "2025-03": 96.1,
     "2025-04": 95.9,
-    "2025-05": 94.3,
-    "2025-06": 96.3,
-    "2025-07": 97.8,
-    "2025-08": 94.8,
+    "2025-05": 94.4,
+    "2025-06": 96.4,
+    "2025-07": 97.9,
+    "2025-08": 94.9,
     "2025-09": 96.1,
-    "2025-10": 96.3,
-    "2025-11": 94.8,
+    "2025-10": 96.4,
+    "2025-11": 94.9,
     "2025-12": 94.7,
-    "2026-01": 92.5,
+    "2026-01": 92.6,
     "2026-02": 92.3,
     "2026-03": 91.6,
     "2026-04": 91.2,
-    "2026-05": 91.0,
-    "2026-06": 90.9,
-    "2026-07": 90.5
+    "2026-05": 91.1,
+    "2026-06": 91.0,
+    "2026-07": 90.6
   },
   "serie_itvc_sin_icc": {
-    "2023-12": 95.5,
-    "2024-01": 93.4,
+    "2023-12": 95.6,
+    "2024-01": 93.6,
     "2024-02": 92.9,
-    "2024-03": 92.2,
-    "2024-04": 92.3,
-    "2024-05": 92.4,
-    "2024-06": 94.2,
-    "2024-07": 96.9,
-    "2024-08": 95.8,
-    "2024-09": 95.3,
-    "2024-10": 97.9,
-    "2024-11": 98.3,
-    "2024-12": 99.0,
-    "2025-01": 98.3,
+    "2024-03": 92.5,
+    "2024-04": 92.7,
+    "2024-05": 92.3,
+    "2024-06": 94.4,
+    "2024-07": 97.2,
+    "2024-08": 96.0,
+    "2024-09": 95.8,
+    "2024-10": 98.1,
+    "2024-11": 98.5,
+    "2024-12": 99.1,
+    "2025-01": 98.8,
     "2025-02": 99.8,
-    "2025-03": 97.6,
+    "2025-03": 97.8,
     "2025-04": 97.2,
-    "2025-05": 95.0,
-    "2025-06": 97.8,
-    "2025-07": 98.5,
-    "2025-08": 96.8,
-    "2025-09": 98.2,
-    "2025-10": 98.4,
-    "2025-11": 96.8,
-    "2025-12": 95.8,
-    "2026-01": 92.9,
-    "2026-02": 93.3,
-    "2026-03": 93.1,
-    "2026-04": 93.0,
-    "2026-05": 92.1,
-    "2026-06": 93.3,
-    "2026-07": 93.3
+    "2025-05": 95.1,
+    "2025-06": 97.9,
+    "2025-07": 98.7,
+    "2025-08": 97.3,
+    "2025-09": 98.3,
+    "2025-10": 98.8,
+    "2025-11": 97.4,
+    "2025-12": 96.1,
+    "2026-01": 93.3,
+    "2026-02": 93.7,
+    "2026-03": 93.2,
+    "2026-04": 93.3,
+    "2026-05": 92.3,
+    "2026-06": 93.8,
+    "2026-07": 93.8
   },
   "correlaciones": {
     "niveles (ITVC sin ICC vs ICC)": {
@@ -77,19 +77,19 @@
       "n": 31
     },
     "niveles (ITVC completo vs ICC — con circularidad 7,5%)": {
-      "r": 0.458,
+      "r": 0.459,
       "n": 31
     },
     "primeras diferencias (sin ICC)": {
-      "r": 0.167,
+      "r": 0.106,
       "n": 30
     },
     "ITVC sin ICC adelantado 1 mes vs ICC": {
-      "r": 0.381,
+      "r": 0.401,
       "n": 30
     },
     "ICC adelantado 1 mes vs ITVC sin ICC": {
-      "r": 0.184,
+      "r": 0.195,
       "n": 31
     }
   },
@@ -799,7 +799,7 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.355,
-        "concesiones_infraestructura": 0.283,
+        "concesiones_infraestructura": 0.284,
         "desregulacion_normativa": 0.921,
         "fal_modernizacion_laboral": 0.323,
         "gasto_funcionamiento": 0.239,
@@ -813,7 +813,7 @@
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.207,
-        "cepo_mulc": 0.283,
+        "cepo_mulc": 0.284,
         "desregulacion_normativa": 0.369,
         "fal_modernizacion_laboral": 0.795,
         "gasto_funcionamiento": 0.212,
@@ -1477,7 +1477,7 @@
   "redundancia_itvc": {
     "diferencias": {
       "n_pares": 120,
-      "r_abs_medio": 0.185,
+      "r_abs_medio": 0.188,
       "share_altos": 0.0
     },
     "umbral": 0.7,
@@ -1485,7 +1485,7 @@
     "n_pares": 120,
     "r_abs_medio": 0.391,
     "share_altos": 0.142,
-    "share_bajos": 0.408,
+    "share_bajos": 0.417,
     "matriz": {
       "alquiler_real": {
         "brecha_salario_cbt": -0.892,
@@ -1502,7 +1502,7 @@
         "peso_tarifas": 0.454,
         "pluriempleo": 0.388,
         "pobreza_nowcast": -0.657,
-        "sentimiento_digital": -0.768
+        "sentimiento_digital": -0.762
       },
       "brecha_salario_cbt": {
         "alquiler_real": -0.892,
@@ -1519,7 +1519,7 @@
         "peso_tarifas": -0.094,
         "pluriempleo": -0.167,
         "pobreza_nowcast": 0.15,
-        "sentimiento_digital": 0.744
+        "sentimiento_digital": 0.723
       },
       "consumo_carne": {
         "alquiler_real": 0.187,
@@ -1536,7 +1536,7 @@
         "peso_tarifas": 0.718,
         "pluriempleo": 0.442,
         "pobreza_nowcast": -0.397,
-        "sentimiento_digital": -0.017
+        "sentimiento_digital": -0.069
       },
       "despacho_cemento": {
         "alquiler_real": -0.274,
@@ -1553,7 +1553,7 @@
         "peso_tarifas": 0.357,
         "pluriempleo": 0.248,
         "pobreza_nowcast": 0.369,
-        "sentimiento_digital": 0.326
+        "sentimiento_digital": 0.289
       },
       "empleo_registrado": {
         "alquiler_real": 0.765,
@@ -1570,7 +1570,7 @@
         "peso_tarifas": 0.635,
         "pluriempleo": 0.51,
         "pobreza_nowcast": -0.821,
-        "sentimiento_digital": -0.629
+        "sentimiento_digital": -0.653
       },
       "icc_utdt": {
         "alquiler_real": -0.624,
@@ -1587,7 +1587,7 @@
         "peso_tarifas": -0.012,
         "pluriempleo": -0.086,
         "pobreza_nowcast": -0.259,
-        "sentimiento_digital": 0.402
+        "sentimiento_digital": 0.373
       },
       "informalidad": {
         "alquiler_real": 0.658,
@@ -1621,7 +1621,7 @@
         "peso_tarifas": 0.16,
         "pluriempleo": -0.195,
         "pobreza_nowcast": 0.217,
-        "sentimiento_digital": 0.031
+        "sentimiento_digital": 0.045
       },
       "ipc_alimentos": {
         "alquiler_real": -0.913,
@@ -1638,7 +1638,7 @@
         "peso_tarifas": -0.298,
         "pluriempleo": -0.196,
         "pobreza_nowcast": -0.04,
-        "sentimiento_digital": 0.782
+        "sentimiento_digital": 0.774
       },
       "mora_familias": {
         "alquiler_real": 0.636,
@@ -1655,7 +1655,7 @@
         "peso_tarifas": 0.215,
         "pluriempleo": 0.066,
         "pobreza_nowcast": -0.897,
-        "sentimiento_digital": -0.552
+        "sentimiento_digital": -0.571
       },
       "mortalidad_pymes": {
         "alquiler_real": -0.504,
@@ -1672,7 +1672,7 @@
         "peso_tarifas": 0.031,
         "pluriempleo": -0.004,
         "pobreza_nowcast": -0.497,
-        "sentimiento_digital": 0.43
+        "sentimiento_digital": 0.38
       },
       "patentamiento_motos": {
         "alquiler_real": -0.652,
@@ -1689,7 +1689,7 @@
         "peso_tarifas": -0.151,
         "pluriempleo": 0.056,
         "pobreza_nowcast": 0.892,
-        "sentimiento_digital": 0.578
+        "sentimiento_digital": 0.592
       },
       "peso_tarifas": {
         "alquiler_real": 0.454,
@@ -1706,7 +1706,7 @@
         "patentamiento_motos": -0.151,
         "pluriempleo": 0.426,
         "pobreza_nowcast": -0.411,
-        "sentimiento_digital": -0.35
+        "sentimiento_digital": -0.389
       },
       "pluriempleo": {
         "alquiler_real": 0.388,
@@ -1723,7 +1723,7 @@
         "patentamiento_motos": 0.056,
         "peso_tarifas": 0.426,
         "pobreza_nowcast": -0.306,
-        "sentimiento_digital": -0.212
+        "sentimiento_digital": -0.22
       },
       "pobreza_nowcast": {
         "alquiler_real": -0.657,
@@ -1740,24 +1740,24 @@
         "patentamiento_motos": 0.892,
         "peso_tarifas": -0.411,
         "pluriempleo": -0.306,
-        "sentimiento_digital": 0.158
+        "sentimiento_digital": 0.2
       },
       "sentimiento_digital": {
-        "alquiler_real": -0.768,
-        "brecha_salario_cbt": 0.744,
-        "consumo_carne": -0.017,
-        "despacho_cemento": 0.326,
-        "empleo_registrado": -0.629,
-        "icc_utdt": 0.402,
+        "alquiler_real": -0.762,
+        "brecha_salario_cbt": 0.723,
+        "consumo_carne": -0.069,
+        "despacho_cemento": 0.289,
+        "empleo_registrado": -0.653,
+        "icc_utdt": 0.373,
         "informalidad": -0.414,
-        "inseguridad": 0.031,
-        "ipc_alimentos": 0.782,
-        "mora_familias": -0.552,
-        "mortalidad_pymes": 0.43,
-        "patentamiento_motos": 0.578,
-        "peso_tarifas": -0.35,
-        "pluriempleo": -0.212,
-        "pobreza_nowcast": 0.158
+        "inseguridad": 0.045,
+        "ipc_alimentos": 0.774,
+        "mora_familias": -0.571,
+        "mortalidad_pymes": 0.38,
+        "patentamiento_motos": 0.592,
+        "peso_tarifas": -0.389,
+        "pluriempleo": -0.22,
+        "pobreza_nowcast": 0.2
       }
     },
     "pares_altos": [
@@ -1834,7 +1834,7 @@
       {
         "a": "ipc_alimentos",
         "b": "sentimiento_digital",
-        "r": 0.782,
+        "r": 0.774,
         "n": 32,
         "dimension_a": "precios",
         "dimension_b": "percepcion",
@@ -1848,16 +1848,6 @@
         "n": 32,
         "dimension_a": "empleo",
         "dimension_b": "vulnerabilidad",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "alquiler_real",
-        "b": "sentimiento_digital",
-        "r": -0.768,
-        "n": 32,
-        "dimension_a": "precios",
-        "dimension_b": "percepcion",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1882,22 +1872,22 @@
         "por_diseno": null
       },
       {
+        "a": "alquiler_real",
+        "b": "sentimiento_digital",
+        "r": -0.762,
+        "n": 32,
+        "dimension_a": "precios",
+        "dimension_b": "percepcion",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "empleo_registrado",
         "b": "informalidad",
         "r": 0.745,
         "n": 32,
         "dimension_a": "empleo",
         "dimension_b": "ingresos",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "brecha_salario_cbt",
-        "b": "sentimiento_digital",
-        "r": 0.744,
-        "n": 32,
-        "dimension_a": "ingresos",
-        "dimension_b": "percepcion",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1918,6 +1908,16 @@
         "n": 32,
         "dimension_a": "ingresos",
         "dimension_b": "vulnerabilidad",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "brecha_salario_cbt",
+        "b": "sentimiento_digital",
+        "r": 0.723,
+        "n": 32,
+        "dimension_a": "ingresos",
+        "dimension_b": "percepcion",
         "misma_dimension": false,
         "por_diseno": null
       },

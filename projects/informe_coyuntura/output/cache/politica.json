@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-30T04:06:05.142698",
+  "generated_at": "2026-07-30T04:37:30.456951",
   "score": 3.6,
   "itcp": {
     "valor": 64.1,
@@ -200,7 +200,7 @@
       "unidad": "pp de brecha (obra pública − privada, 12m)",
       "fuente": "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
       "fecha_dato": "2026-08-01",
-      "desactualizado": false,
+      "desactualizado": true,
       "variacion_12m": 9.1,
       "detalle_txt": "Brecha de 0,2 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
       "en_indice": true,
@@ -262,7 +262,7 @@
       "ipc_aplicado_pct": 41.9,
       "unidad": "% interanual real",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2025-12-31",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
