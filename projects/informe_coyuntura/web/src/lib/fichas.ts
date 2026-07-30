@@ -1451,8 +1451,18 @@ export const FICHAS: Record<string, Ficha> = {
     transformaciones: [
       "Porcentaje de gobernadores con posición pública de acompañamiento al programa nacional (acuerdos fiscales, apoyo a reformas), evaluado por el analista.",
     ],
+    anclas: {
+      bandas: [
+        { banda: "> 65", puntaje: 100 },
+        { banda: "45 – 65", puntaje: 85 },
+        { banda: "25 – 45", puntaje: 65 },
+        { banda: "10 – 25", puntaje: 40 },
+        { banda: "≤ 10", puntaje: 10 },
+      ],
+      unidadCorta: "% alineados",
+    },
     incidenciaTexto: [
-      "La tensión crece cuando el apoyo se retira: 80% alineado → tensión 0 · 40% → 5 · 0% → 10.",
+      "La tensión crece cuando el apoyo se retira, por las bandas de la tabla y no de forma lineal: con 80% de gobernadores alineados la tensión es 0, con 40% es 3,0 y con 0% llega a 9,0 — el tramo más bajo puntúa 10 sobre 100, no cero, porque perder a todos los gobernadores no agota la capacidad de gobierno.",
       "El score del cinturón es el promedio simple de las tensiones de los indicadores disponibles.",
     ],
     limitaciones: [
