@@ -2,6 +2,9 @@
 import { sparkline } from "../lib/sparkline.ts";
 import { series } from "../lib/datos.ts";
 const { indicador, estado = "verde", w = 60, h = 22 } = Astro.props;
+// La ventana de display la aplica sparkline() (ver VENTANA_SPARK): acá se pasa
+// la serie completa a propósito, para que este camino y el de IndicadorTile
+// muestren el mismo período sin tener que acordarse de recortar en los dos.
 const serie = series[indicador] ?? [];
 const sp = sparkline(serie, w, h);
 ---

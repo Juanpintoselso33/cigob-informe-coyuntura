@@ -2307,7 +2307,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El componente del índice mide el encarecimiento RELATIVO de la comida: el nivel de alimentos contra el nivel general de precios, rebaseado a 100 = 4º trimestre de 2023. Por encima de 100, la comida sube menos que el resto de los precios.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios (40% interno · 10% del ITVC).",
+      "Pertenece a la dimensión de presión de precios (35% interno · 8,75% del ITVC).",
       "La comparación contra el IPC general evita contar dos veces el ratio salario/comida, que ya mide la brecha con la canasta.",
     ],
     limitaciones: [
@@ -2404,13 +2404,15 @@ export const FICHAS: Record<string, Ficha> = {
       "No se invierte: un índice líder más alto anticipa mejor actividad, que es mejora.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (20% interno · 3% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (13% interno · 1,95% del ITVC).",
       "Es el único componente del cinturón que mira hacia adelante. Los otros tres de su dimensión describen lo ya ocurrido: la actividad industrial y la construcción son contemporáneas, y la subocupación llega con dos trimestres de rezago.",
     ],
     limitaciones: [
       "Anticipa el ciclo económico, no el humor de los hogares: un giro del índice señala hacia dónde va la actividad, no cómo la están viviendo las familias.",
       "Como todo índice líder, da señales falsas: puede moverse sin que el giro llegue a producirse.",
       "Es un compuesto y no publica el detalle mensual de qué componente lo movió.",
+      "El NIVEL no es comparable entre décadas: la serie deriva hacia arriba a lo largo de su historia —promedia 79,9 entre 1993 y 2001 contra 133,8 entre 2008 y 2015—, así que ubicar el valor de hoy en un percentil de los treinta y tres años compararía regímenes distintos del mismo índice. Por eso el cinturón puntúa el índice rebaseado al cuarto trimestre de 2023 y no el nivel.",
+      "Referencias de la serie completa (1993-2026), para leer el nivel con escala: máximo 150,4 en febrero de 2018 y mínimo 64,5 en noviembre de 2001.",
     ],
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización.",
     revisiones: "La UTDT puede revisar meses previos al recalcular el compuesto; se re-descarga la serie completa en cada corrida.",
@@ -2468,7 +2470,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El componente mide el peso de los servicios regulados en el salario: nivel de regulados contra nivel del RIPTE, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, las tarifas subieron más que los salarios desde el arranque.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios (60% interno · 15% del ITVC).",
+      "Pertenece a la dimensión de presión de precios (45% interno · 11,25% del ITVC).",
       "Captura el efecto de la quita de subsidios que el IPC general diluye.",
     ],
     limitaciones: [
@@ -2498,7 +2500,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el consumo rebaseado a 100 = promedio del 4º trimestre de 2023 (menos carne = deterioro).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de confianza y seguridad (10% interno · 1,5% del ITVC).",
+      "Pertenece a la dimensión de ingresos y consumo (4% interno · 1,5% del ITVC).",
     ],
     limitaciones: [
       "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: entre diciembre de 2023 y hoy el consumo de carne vacuna cayó un 10%, pero el de cerdo subió un 12% y el de pollo se mantuvo, de modo que el consumo total de las tres carnes cayó apenas un 3%. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,5%) y acompaña, no lidera.",
@@ -2529,7 +2531,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos informalidad = mejora) contra el trimestre del arranque del mandato (4º trimestre de 2023).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de sostenibilidad de ingresos (35% interno · 12,25% del ITVC).",
+      "Pertenece a la dimensión de ingresos y consumo (32,9% interno · 12,25% del ITVC).",
     ],
     limitaciones: [
       "Solo asalariados: no captura la informalidad cuentapropista.",
@@ -2561,7 +2563,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se usa la serie desestacionalizada porque la original mostraba variaciones de hasta ±20% mensual de puro calendario.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (45% interno · 6,75% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (23% interno · 3,45% del ITVC).",
     ],
     limitaciones: [
       "Es una aproximación declarada: mide producción industrial agregada, no mortandad de empresas — el nombre del indicador promete más de lo que la fuente da.",
@@ -2591,7 +2593,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La serie original tiene un desplome estacional en diciembre que contaminaría la base: por eso la desestacionalizada.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (40% interno · 6% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (21% interno · 3,15% del ITVC).",
     ],
     limitaciones: [
       "Aproximación al empleo vía actividad de la construcción, no despachos de cemento reales (la serie de insumos existe aparte, como contraste).",
@@ -2619,7 +2621,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (15% interno · 2,25% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (8% interno · 1,2% del ITVC).",
     ],
     limitaciones: [
       "Aproximación declarada: mide gente que trabaja poco y busca más, no la tenencia de múltiples empleos.",
@@ -2649,7 +2651,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La ventana de 12 meses de la pregunta desestacionaliza por construcción.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de confianza y seguridad (30% interno · 4,5% del ITVC).",
+      "Es el único indicador de la dimensión de seguridad, así que se lleva su peso entero: 4,5% del ITVC.",
     ],
     limitaciones: [
       "La encuesta estuvo suspendida entre 2020 y 2023: la base de enero de 2024 es una aproximación declarada del arranque (su ventana de 12 meses cubre mayormente el año previo).",
@@ -2679,7 +2681,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el ICC rebaseado a 100 = promedio del 4º trimestre de 2023 (más confianza = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de confianza y seguridad (45% interno · 6,75% del ITVC).",
+      "Pertenece a la dimensión de confianza y percepción (81,8% interno · 6,75% del ITVC).",
     ],
     dobleUso: "Doble función declarada: (1) componente del ITVC; (2) ancla de la validación externa del ITVC — para no ser circular, en ese estudio el índice se recalcula sin este componente. Hasta julio de 2026 puntuó además en el cinturón espíritu de época, que desde entonces quedó acotado a la intención migratoria; esa lectura se sigue registrando como seguimiento interno.",
     limitaciones: [
@@ -2710,7 +2712,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El cociente entre valores de una misma consulta cancela la renormalización de escala de la fuente.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de confianza y seguridad (10% interno · 1,5% del ITVC): peso chico acorde a un constructo blando.",
+      "Pertenece a la dimensión de confianza y percepción (18,2% interno · 1,5% del ITVC): peso chico acorde a un constructo blando.",
       "La card muestra el pulso de tres meses; el puntaje usa la canasta mensual de ventana fija — doble registro declarado.",
     ],
     dobleUso: "Hasta julio de 2026 integró además el cinturón espíritu de época con fórmula de tensión propia; ese cinturón quedó acotado a la intención migratoria y la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.",
@@ -2744,7 +2746,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Recorte declarado: el componente se acota al techo de 140 — un boom puntual no compra compensación ilimitada dentro del índice; el valor crudo queda declarado en el detalle.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de confianza y seguridad (5% interno · 0,75% del ITVC): el peso más chico del índice.",
+      "Pertenece a la dimensión de ingresos y consumo (2% interno · 0,75% del ITVC): el peso más chico del índice.",
     ],
     limitaciones: [
       "Es el componente más eufórico del cinturón (muy por encima de su base): motivo del techo de recorte y de la baja de peso.",
