@@ -127,10 +127,49 @@ del punto de partida.
   el indicador es más nervioso (jun-2026 cae 9,5 puntos contra may-2026, con
   3-4 observaciones por mes calendario todavía), y **revisa el pasado**, porque
   los factores estacionales se recalculan al acumular meses.
-- Queda pendiente lo que el pedido original llamaba «recaudación diaria»: no se
-  encontró serie diaria publicada. Verificado en el catálogo nacional (sólo
-  mensual, trimestral y anual), en los informes de ARCA y en la página de
-  Recaudación de Hacienda. La coparticipación **sí** se transfiere a diario por
-  ley, pero se publica agregada por mes. Sin abrir todavía: las descargas del
-  Monitor de Recaudación Tributaria Nacional de la OPC, que además publica
-  variación real por determinante de la base imponible.
+## Corroboración externa: la descomposición de la OPC
+
+La Oficina de Presupuesto del Congreso publica en su Monitor de Recaudación
+Tributaria Nacional la **variación real por principal determinante de la base
+imponible**, que es una lectura independiente de lo mismo que mide este
+indicador. Para jun-2026, variación real interanual:
+
+| determinante | jun-2026 | ene-jun 2026 |
+|---|---|---|
+| Actividad | **−0,1%** | **−2,0%** |
+| Masa salarial | −0,4% | −4,0% |
+| Comercio exterior | −19,0% | −31,2% |
+| Total | −4,5% | −4,8% |
+
+Dos cosas quedan corroboradas por una fuente que no es la nuestra:
+
+1. **La métrica anterior daba una lectura optimista.** Informaba +3,3%
+   («creciendo») mientras la OPC ve los determinantes domésticos planos o
+   negativos. El nivel en 88,2 es consistente con esa descomposición; la
+   variación interanual no lo era.
+2. **Excluir la aduana era correcto** (ADR-0127): comercio exterior −31,2% en el
+   semestre contra actividad −2,0%. La brecha es el recorte de retenciones, no
+   deterioro de la economía real.
+
+## Consecuencias
+
+- La serie **arranca en ene-2022** (54 puntos) contra 2023-03 de la anterior, y
+  gana resolución mensual.
+- **Dos propiedades incómodas que van declaradas en la ficha, no escondidas**:
+  el indicador es más nervioso (jun-2026 cae 9,5 puntos contra may-2026, con
+  3-4 observaciones por mes calendario todavía), y **revisa el pasado**, porque
+  los factores estacionales se recalculan al acumular meses.
+- **«Recaudación diaria»: no existe como serie publicada.** El pedido original
+  la incluía y el relevamiento se cierra en negativo, con las consultas hechas
+  para que nadie repita el camino: catálogo nacional de series (sólo mensual,
+  trimestral y anual para «Principales subgrupos de recaudación tributaria»);
+  informes de ARCA (mensual, trimestral, anual); página de Recaudación de
+  Hacienda (XLSX mensuales desde 1997); y el Monitor de la OPC, que también es
+  mensual. La coparticipación **sí** se transfiere a diario por ley 23.548, pero
+  se publica agregada por mes — la serie RON que ya usa `iaf_transferencias`.
+  Si alguna vez aparece, el indicador la aprovecha sin cambiar de métrica: el
+  nivel desestacionalizado admite mayor frecuencia, la interanual no lo hacía
+  igual de bien.
+- **El Monitor de la OPC se publica como IMÁGENES** (`MRT_MM_AAAA_PageN.jpg`),
+  sin planilla ni PDF con texto. Automatizarlo exigiría leer de píxeles, así que
+  por ahora la corroboración de arriba se hizo a mano y queda fechada.
