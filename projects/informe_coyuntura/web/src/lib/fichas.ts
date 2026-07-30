@@ -1459,6 +1459,7 @@ export const FICHAS: Record<string, Ficha> = {
         { banda: "10 – 25", puntaje: 40 },
         { banda: "≤ 10", puntaje: 10 },
       ],
+      puntos: [[0, 10], [10, 40], [25, 65], [45, 85], [65, 100]],
       unidadCorta: "% alineados",
     },
     incidenciaTexto: [

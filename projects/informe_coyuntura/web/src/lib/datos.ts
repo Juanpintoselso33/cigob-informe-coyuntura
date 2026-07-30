@@ -43,7 +43,14 @@ export interface IndiceParametrico {
   validacion?: { r_niveles: number; r_diferencias: number; n: number;
                  pares: [string, number, number][]; plot: string;
                  titulo: string; sub: string; serie_label: string;
-                 externa_label: string; trans_label: string; conclusion: string };
+                 externa_label: string; trans_label: string; conclusion: string;
+                 // Panel de estadísticas externas (ADR-0159): sólo en los cinturones
+                 // socioeconómicos, que no tienen serie de referencia única.
+                 panel?: { perfil: { estadistica: string; etiqueta: string; propia: boolean;
+                                     r_niveles: number; r_diferencias: number | null; n: number }[];
+                           niveles: { convergente: number; discriminante: number; brecha: number };
+                           diferencias: { convergente: number; discriminante: number; brecha: number };
+                           n_propias: number; n_ajenas: number } };
   // Consistencia interna (auditoría de consistencia macro, jul-2026): cuánta
   // información realmente distinta aporta cada componente del índice, medida
   // como correlación entre los puntajes mensuales de todos los pares. Solo
