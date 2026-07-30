@@ -1414,14 +1414,16 @@ def _validacion_cruzada(informe):
                      ["epu", "Incertidumbre de política (EPU Argentina)"]],
         "titulo": "¿Cada índice mide lo suyo?",
         "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro "
-                "contrastes externos a la vez — cada uno tiene el propio: la macroeconomía "
+                "contrastes externos a la vez. Cada uno tiene el propio: la macroeconomía "
                 "(ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de "
                 "las empresas en dólares, la vida cotidiana (ITVC) con el consumo medido en "
                 "supermercados, la política (ITCP) con la incertidumbre de política que mide la "
                 "prensa (EPU Argentina). Si cada índice mide su propio terreno, debería "
                 "correlacionar con su par natural al menos tanto como con los ajenos. Es la "
                 "prueba clásica de que un indicador no mide \"todo junto\"."),
-        "conclusion": (f"Los cuatro pares propios dan el signo esperado: ITCM "
+        # La primera oración es la que va sola en la card (ADR-0165): corta y con
+        # el veredicto. El detalle par por par queda para el desarrollo.
+        "conclusion": (f"Los cuatro pares propios dan el signo esperado. ITCM "
                        f"{fmt(f_itcm['lider']['r'])} con la actividad, ITCG "
                        f"{fmt(f_itcg['merval']['r'])} con el Merval en dólares, ITVC "
                        f"{fmt(f_itvc['consumo']['r'])} con el consumo medido, ITCP "
