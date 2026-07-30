@@ -1142,3 +1142,17 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   .cg-rob-head span:first-child { max-width: 100%; }
   .cg-rob-head span:last-child { white-space: normal; }
 }
+
+/* Desplegable del análisis completo en las cards sin modal (ADR-0165).
+   La card muestra una oración; el resto se abre acá. Nativo <details>: sin JS y
+   sin depender de la plomería de modales, que sólo tienen tres secciones. */
+.cg-mas { margin-top: 2px; }
+.cg-mas > summary {
+  cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700; color: var(--teal); padding: 2px 0;
+}
+.cg-mas > summary::-webkit-details-marker { display: none; }
+.cg-mas > summary::after { content: "▾"; font-size: 11px; transition: transform .15s; }
+.cg-mas[open] > summary::after { transform: rotate(180deg); }
+.cg-mas > summary:hover { text-decoration: underline; }
+.cg-mas > p { margin-top: 8px; }

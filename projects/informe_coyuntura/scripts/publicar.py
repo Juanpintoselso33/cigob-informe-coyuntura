@@ -1871,6 +1871,13 @@ def main():
     store = acumular_historico(informe)
     series = fusionar_historico(series, store)
 
+    # Resumen de card para toda sección con conclusión (ADR-0165). Va acá, al
+    # final y de una sola pasada, en vez de en cada constructor: una sección
+    # nueva queda cubierta sin que nadie tenga que acordarse. No recorta la
+    # conclusión — la deja intacta para el modal y el desplegable.
+    import resumir
+    resumir.anotar(informe)
+
     (DATA / "informe.json").write_text(
         json.dumps(informe, ensure_ascii=False, indent=2), encoding="utf-8")
     (DATA / "series.json").write_text(
