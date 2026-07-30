@@ -796,6 +796,19 @@ def _validacion_itcm(bloque):
             partes.append(f"Los cambios de dirección confirmados llegan {coma(abs(g['desfase_medio']))} "
                           f"meses {'antes' if g['desfase_medio'] > 0 else 'después'} que los de la "
                           f"actividad.")
+    # ¿El índice agrega algo sobre mirar sus partes? (ADR-0158)
+    s = val.get("senales_itcm") or {}
+    if s.get("evaluables") and s.get("compuesto"):
+        tot = s["compuesto"]["total"]
+        partes.append(f"Queda una pregunta más, que es la que justifica construir un índice en "
+                      f"vez de mirar los indicadores sueltos: ¿se equivoca menos el conjunto que "
+                      f"cada una de sus partes? Contando los cambios de dirección que cada serie "
+                      f"marca sin que la actividad los acompañe, y los que la actividad marca sin "
+                      f"que la serie los registre, "
+                      + ("el índice no acumula ninguno" if tot == 0
+                         else f"el índice acumula {coma(tot)}")
+                      + f"; de sus {s['evaluables']} componentes medidos, {s['peores']} se "
+                      f"equivocan más, {s['iguales']} empatan y {s['mejores']} lo superan.")
     conclusion = " ".join(partes)
 
     # El recuento de componentes se DERIVA de la composición vigente del índice:

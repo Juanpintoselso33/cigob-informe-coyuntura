@@ -417,6 +417,111 @@
     "provisorios": 2,
     "sin_par": 0
   },
+  "senales_itcm": {
+    "compuesto": {
+      "falsas": 0,
+      "perdidos": 0,
+      "n_giros": 3,
+      "n_giros_ref": 3,
+      "total": 0
+    },
+    "componentes": [
+      {
+        "componente": "ipi_manufacturero",
+        "falsas": 0,
+        "perdidos": 0,
+        "total": 0
+      },
+      {
+        "componente": "saldo_comercial_12m",
+        "falsas": 0,
+        "perdidos": 0,
+        "total": 0
+      },
+      {
+        "componente": "costo_financiamiento_tesoro",
+        "falsas": 1,
+        "perdidos": 0,
+        "total": 1
+      },
+      {
+        "componente": "idc",
+        "falsas": 0,
+        "perdidos": 1,
+        "total": 1
+      },
+      {
+        "componente": "ipc_total",
+        "falsas": 0,
+        "perdidos": 1,
+        "total": 1
+      },
+      {
+        "componente": "reservas_bcra",
+        "falsas": 0,
+        "perdidos": 1,
+        "total": 1
+      },
+      {
+        "componente": "rem_ipc_12m",
+        "falsas": 0,
+        "perdidos": 2,
+        "total": 2
+      },
+      {
+        "componente": "emae_difusion",
+        "falsas": 1,
+        "perdidos": 2,
+        "total": 3
+      },
+      {
+        "componente": "emae_ia",
+        "falsas": 1,
+        "perdidos": 2,
+        "total": 3
+      },
+      {
+        "componente": "idm",
+        "falsas": 3,
+        "perdidos": 0,
+        "total": 3
+      },
+      {
+        "componente": "credito_privado",
+        "falsas": 2,
+        "perdidos": 2,
+        "total": 4
+      },
+      {
+        "componente": "recaudacion",
+        "falsas": 1,
+        "perdidos": 3,
+        "total": 4
+      },
+      {
+        "componente": "resultado_primario",
+        "falsas": 1,
+        "perdidos": 3,
+        "total": 4
+      },
+      {
+        "componente": "tcrm",
+        "falsas": 3,
+        "perdidos": 2,
+        "total": 5
+      },
+      {
+        "componente": "presion_dolarizacion",
+        "falsas": 3,
+        "perdidos": 3,
+        "total": 6
+      }
+    ],
+    "evaluables": 15,
+    "peores": 13,
+    "iguales": 2,
+    "mejores": 0
+  },
   "redundancia_itcm": {
     "diferencias": {
       "n_pares": 105,
@@ -2148,7 +2253,7 @@
     "2026-04": 1916.1,
     "2026-05": 2131.0,
     "2026-06": 2087.8,
-    "2026-07": 2097.5
+    "2026-07": 2094.4
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
@@ -2156,7 +2261,7 @@
       "n": 32
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.119,
+      "r": 0.12,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {

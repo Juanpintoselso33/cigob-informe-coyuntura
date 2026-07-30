@@ -1025,11 +1025,25 @@ def main():
         # referencia, y con cuánto adelanto.
         import puntos_de_giro as pdg
         resultados["giros_itcm"] = pdg.analisis(serie_itcm, lider)
+        # ¿el compuesto yerra menos que cada una de sus partes? Es el criterio
+        # con el que la OCDE justifica usar un compuesto y no los sueltos.
+        _por_mes = _valores_itcm_por_mes()
+        _comp = {}
+        for _mes, _vals in _por_mes.items():
+            for _c, _v in _vals.items():
+                if _v is not None:
+                    _comp.setdefault(_c, {})[_mes] = _v
+        resultados["senales_itcm"] = pdg.compuesto_vs_componentes(serie_itcm, _comp, lider)
         g = resultados["giros_itcm"]
         print("puntos de giro ITCM vs índice líder:")
         print(f"  concordancia de fase: {g['concordancia']}  (n = {g['n_meses']} meses)")
         print(f"  giros del ITCM: {len(g['giros'])} · provisorios: {g['provisorios']}"
               f" · apareados y confirmados: {g['apareados']}")
+        s = resultados["senales_itcm"]
+        if s.get("evaluables"):
+            print(f"  señales falsas/perdidas — compuesto: {s['compuesto']['total']} · "
+                  f"componentes peores: {s['peores']}, iguales: {s['iguales']}, "
+                  f"mejores: {s['mejores']} (de {s['evaluables']})")
         if g["desfase_medio"] is not None:
             print(f"  desfase medio (sólo confirmados): {g['desfase_medio']:+} meses")
         print("correlaciones ITCM vs índice líder (Pearson, positiva = válida):")

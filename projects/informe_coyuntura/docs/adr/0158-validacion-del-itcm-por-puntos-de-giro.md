@@ -93,7 +93,46 @@ concordancia de fase es inmune a eso por construcción.
 - La ventana es de 13 meses y la fase mínima de 5. El sistema original usa 75
   meses de media móvil; con series de ~30 eso es imposible. Es la adaptación a la
   muestra que hay y está declarada en el módulo.
-- **Queda pendiente** el test que la OCDE usa como criterio de éxito: que el
-  compuesto dé menos señales falsas que cualquiera de sus componentes. Es
-  computable con lo que ya hay y no requiere ninguna serie externa nueva.
+- El test que la OCDE usa como criterio de éxito quedó **implementado en el
+  mismo día** (ver abajo).
 - **Queda pendiente** el régimen socioeconómico para los otros tres cinturones.
+
+## Adenda (mismo día): el compuesto contra sus componentes
+
+Era el pendiente declarado arriba, y es la pregunta que justifica construir un
+índice en vez de mirar los indicadores sueltos. El criterio de la OCDE: el
+compuesto debe dar **menos señales falsas y menos giros perdidos** que cualquiera
+de sus partes.
+
+- **señal falsa** = la serie gira y la referencia no lo hace cerca;
+- **giro perdido** = la referencia gira y la serie no lo acompaña.
+
+Resultado sobre el ITCM, contra el ciclo de la actividad:
+
+| | señales falsas | giros perdidos | total |
+|---|---|---|---|
+| **ITCM (compuesto)** | **0** | **0** | **0** |
+| `ipi_manufacturero` | 0 | 0 | 0 |
+| `saldo_comercial_12m` | 0 | 0 | 0 |
+| `costo_financiamiento_tesoro` | 1 | 0 | 1 |
+| `idc` · `ipc_total` · `reservas_bcra` | 0 | 1 | 1 |
+| … | | | |
+| `presion_dolarizacion` | 3 | 3 | 6 |
+
+De los **15 componentes** con historia suficiente: **13 se equivocan más, 2
+empatan y ninguno lo supera.** El índice hace lo que un compuesto debe hacer.
+
+Dos salvedades que van con el número:
+
+- con 3 giros en la ventana, «cero y cero» es un resultado alcanzable por una
+  muestra corta tanto como por un buen índice. Por eso se publica junto con el
+  conteo de giros, no solo;
+- la referencia es el Índice Líder, que es a su vez un compuesto de señales de
+  actividad, así que los componentes de la dimensión de actividad (`emae_ia`,
+  `ipi_manufacturero`) le quedan cerca por construcción. Que igual no lo superen
+  es lo que da fuerza al resultado.
+
+Un detalle de implementación que un test cuida: los giros de la referencia
+**fuera del solape** no se cuentan como perdidos. Contarlos castigaría a un
+indicador por no haber existido todavía, y con series que arrancan en fechas
+distintas eso habría producido un ranking falso.

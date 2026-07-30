@@ -202,3 +202,66 @@ def analisis(serie: dict, referencia: dict, ventana: int = 13,
         "provisorios": len(prov),
         "sin_par": sum(1 for _, _, fb, _ in pares if fb is None),
     }
+
+
+def señales(serie: dict, referencia: dict, ventana_par: int = 6,
+            ventana: int = 13, fase_min: int = 5) -> dict:
+    """Señales falsas y giros perdidos de una serie contra su referencia.
+
+    · falsa   = la serie gira y la referencia no lo hace cerca;
+    · perdido = la referencia gira y la serie no lo acompaña.
+
+    Ambas se cuentan sólo dentro del solape de las dos series: un giro de la
+    referencia en meses donde la serie ni existe no es un giro perdido.
+    """
+    meses = sorted(set(serie) & set(referencia))
+    if len(meses) < 12:
+        return {"falsas": None, "perdidos": None, "n_giros": 0, "n_giros_ref": 0}
+    lo, hi = meses[0], meses[-1]
+    g_a = [g for g in giros(ciclo(serie, ventana), fase_min) if lo <= g[0] <= hi]
+    g_b = [g for g in giros(ciclo(referencia, ventana), fase_min) if lo <= g[0] <= hi]
+    pares = aparear(g_a, g_b, ventana_par)
+    apareados = {fb for _, _, fb, _ in pares if fb}
+    return {
+        "falsas": sum(1 for _, _, fb, _ in pares if fb is None),
+        "perdidos": sum(1 for f, _, _ in g_b if f not in apareados),
+        "n_giros": len(g_a),
+        "n_giros_ref": len(g_b),
+    }
+
+
+def compuesto_vs_componentes(compuesto: dict, componentes: dict,
+                             referencia: dict, min_meses: int = 20) -> dict:
+    """¿El compuesto yerra menos que cada uno de sus componentes?
+
+    Es el criterio con el que el sistema de la OCDE justifica usar un compuesto
+    en lugar de mirar los indicadores sueltos: debe dar menos señales falsas y
+    menos giros perdidos que cualquiera de sus partes. Si un componente lo
+    iguala o lo supera, el compuesto no está agregando nada sobre ése.
+    """
+    base = señales(compuesto, referencia)
+    if base["falsas"] is None:
+        return {"evaluables": 0}
+    total_base = base["falsas"] + base["perdidos"]
+    detalle, peores, iguales, mejores = [], 0, 0, 0
+    for nombre, serie in sorted(componentes.items()):
+        if len(serie) < min_meses:
+            continue
+        s = señales(serie, referencia)
+        if s["falsas"] is None:
+            continue
+        total = s["falsas"] + s["perdidos"]
+        detalle.append({"componente": nombre, "falsas": s["falsas"],
+                        "perdidos": s["perdidos"], "total": total})
+        if total > total_base:
+            peores += 1
+        elif total == total_base:
+            iguales += 1
+        else:
+            mejores += 1
+    return {
+        "compuesto": {**base, "total": total_base},
+        "componentes": sorted(detalle, key=lambda d: d["total"]),
+        "evaluables": len(detalle),
+        "peores": peores, "iguales": iguales, "mejores": mejores,
+    }

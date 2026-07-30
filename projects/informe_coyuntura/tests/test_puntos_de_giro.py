@@ -95,3 +95,41 @@ def test_sin_par_se_declara_en_vez_de_omitirse():
     assert r["apareados"] == 0
     assert r["sin_par"] == len(r["giros"]) > 0
     assert r["desfase_medio"] is None
+
+
+def test_una_serie_igual_a_la_referencia_no_tiene_señales_falsas():
+    vals = [10, 8, 6, 4, 2, 0, 2, 4, 6, 8, 10, 12, 10, 8, 6, 4, 2, 0]
+    s = _serie(vals)
+    r = pg.señales(s, s)
+    assert r["falsas"] == 0 and r["perdidos"] == 0
+
+
+def test_una_serie_sin_ciclo_pierde_los_giros_de_la_referencia():
+    ref = _serie([10, 8, 6, 4, 2, 0, 2, 4, 6, 8, 10, 12, 10, 8, 6, 4, 2, 0])
+    plana = _serie(list(range(18)))          # monótona: sin giros propios
+    r = pg.señales(plana, ref)
+    assert r["falsas"] == 0, "una serie sin giros no puede dar señales falsas"
+    assert r["perdidos"] == r["n_giros_ref"] > 0
+
+
+def test_los_giros_fuera_del_solape_no_cuentan_como_perdidos():
+    """Un giro de la referencia en meses donde el indicador ni existe no es un
+    giro perdido: sería castigar al indicador por no haber nacido."""
+    vals = [10, 8, 6, 4, 2, 0, 2, 4, 6, 8, 10, 12, 10, 8, 6, 4, 2, 0]
+    ref = _serie(vals + vals)                       # 36 meses, dos ciclos
+    corta = {m: v for m, v in _serie(vals).items()}  # sólo los primeros 18
+    r = pg.señales(corta, ref)
+    assert r["n_giros_ref"] <= 3, r
+
+
+def test_el_compuesto_se_compara_contra_cada_componente():
+    ref = _serie([10, 8, 6, 4, 2, 0, 2, 4, 6, 8, 10, 12, 10, 8, 6, 4, 2, 0,
+                  2, 4, 6, 8, 10, 12])
+    comp = dict(ref)                                  # compuesto perfecto
+    componentes = {"bueno": dict(ref),
+                   "ruidoso": _serie([5, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9,
+                                      1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9])}
+    r = pg.compuesto_vs_componentes(comp, componentes, ref, min_meses=12)
+    assert r["evaluables"] == 2
+    assert r["compuesto"]["total"] == 0
+    assert r["mejores"] == 0, "nada puede ser mejor que cero errores"
