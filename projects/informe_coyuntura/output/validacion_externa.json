@@ -2253,7 +2253,7 @@
     "2026-04": 1916.1,
     "2026-05": 2131.0,
     "2026-06": 2087.8,
-    "2026-07": 2094.4
+    "2026-07": 2097.4
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
@@ -2261,7 +2261,7 @@
       "n": 32
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.12,
+      "r": 0.119,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {
@@ -2914,6 +2914,254 @@
     "primeras diferencias (brecha vs Construya)": {
       "r": 0.467,
       "n": 97
+    }
+  },
+  "panel_validacion": {
+    "itvc": {
+      "indice": "itvc",
+      "perfil": [
+        {
+          "estadistica": "clima_electoral",
+          "etiqueta": "clima electoral",
+          "propia": false,
+          "r_niveles": -0.008,
+          "r_diferencias": 0.157,
+          "n": 32
+        },
+        {
+          "estadistica": "consumo_mayoristas",
+          "etiqueta": "consumo en autoservicios mayoristas",
+          "propia": true,
+          "r_niveles": -0.114,
+          "r_diferencias": -0.071,
+          "n": 30
+        },
+        {
+          "estadistica": "consumo_shoppings",
+          "etiqueta": "consumo en centros de compras",
+          "propia": true,
+          "r_niveles": 0.316,
+          "r_diferencias": -0.138,
+          "n": 30
+        },
+        {
+          "estadistica": "consumo_supermercados",
+          "etiqueta": "consumo en supermercados",
+          "propia": true,
+          "r_niveles": 0.596,
+          "r_diferencias": 0.246,
+          "n": 30
+        },
+        {
+          "estadistica": "epu_argentina",
+          "etiqueta": "incertidumbre de política (EPU)",
+          "propia": false,
+          "r_niveles": 0.186,
+          "r_diferencias": 0.355,
+          "n": 31
+        },
+        {
+          "estadistica": "icg_utdt",
+          "etiqueta": "confianza en el gobierno",
+          "propia": false,
+          "r_niveles": 0.279,
+          "r_diferencias": 0.38,
+          "n": 31
+        },
+        {
+          "estadistica": "indice_lider",
+          "etiqueta": "marcha de la actividad",
+          "propia": false,
+          "r_niveles": 0.617,
+          "r_diferencias": 0.506,
+          "n": 31
+        },
+        {
+          "estadistica": "merval_usd",
+          "etiqueta": "Merval en dólares",
+          "propia": false,
+          "r_niveles": 0.177,
+          "r_diferencias": 0.061,
+          "n": 32
+        }
+      ],
+      "n_propias": 3,
+      "n_ajenas": 5,
+      "niveles": {
+        "convergente": 0.342,
+        "discriminante": 0.253,
+        "brecha": 0.089
+      },
+      "diferencias": {
+        "convergente": 0.152,
+        "discriminante": 0.292,
+        "brecha": -0.14
+      },
+      "lectura": "Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 de su propio terreno con 0,342 y a las 5 ajenas con 0,253. En los cambios mes a mes la separación NO se sostiene: 0,152 con lo propio contra 0,292 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+    },
+    "itcg": {
+      "indice": "itcg",
+      "perfil": [
+        {
+          "estadistica": "clima_electoral",
+          "etiqueta": "clima electoral",
+          "propia": false,
+          "r_niveles": -0.202,
+          "r_diferencias": -0.195,
+          "n": 32
+        },
+        {
+          "estadistica": "consumo_mayoristas",
+          "etiqueta": "consumo en autoservicios mayoristas",
+          "propia": false,
+          "r_niveles": -0.823,
+          "r_diferencias": -0.012,
+          "n": 30
+        },
+        {
+          "estadistica": "consumo_shoppings",
+          "etiqueta": "consumo en centros de compras",
+          "propia": false,
+          "r_niveles": 0.489,
+          "r_diferencias": 0.026,
+          "n": 30
+        },
+        {
+          "estadistica": "consumo_supermercados",
+          "etiqueta": "consumo en supermercados",
+          "propia": false,
+          "r_niveles": 0.252,
+          "r_diferencias": -0.349,
+          "n": 30
+        },
+        {
+          "estadistica": "epu_argentina",
+          "etiqueta": "incertidumbre de política (EPU)",
+          "propia": false,
+          "r_niveles": 0.254,
+          "r_diferencias": -0.18,
+          "n": 31
+        },
+        {
+          "estadistica": "icg_utdt",
+          "etiqueta": "confianza en el gobierno",
+          "propia": false,
+          "r_niveles": -0.695,
+          "r_diferencias": 0.023,
+          "n": 31
+        },
+        {
+          "estadistica": "indice_lider",
+          "etiqueta": "marcha de la actividad",
+          "propia": false,
+          "r_niveles": 0.322,
+          "r_diferencias": -0.328,
+          "n": 31
+        },
+        {
+          "estadistica": "merval_usd",
+          "etiqueta": "Merval en dólares",
+          "propia": true,
+          "r_niveles": 0.747,
+          "r_diferencias": 0.119,
+          "n": 32
+        }
+      ],
+      "n_propias": 1,
+      "n_ajenas": 7,
+      "niveles": {
+        "convergente": 0.747,
+        "discriminante": 0.434,
+        "brecha": 0.313
+      },
+      "diferencias": {
+        "convergente": 0.119,
+        "discriminante": 0.159,
+        "brecha": -0.04
+      },
+      "lectura": "Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 1 de su propio terreno con 0,747 y a las 7 ajenas con 0,434. En los cambios mes a mes la separación NO se sostiene: 0,119 con lo propio contra 0,159 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+    },
+    "itcp": {
+      "indice": "itcp",
+      "perfil": [
+        {
+          "estadistica": "clima_electoral",
+          "etiqueta": "clima electoral",
+          "propia": true,
+          "r_niveles": 0.493,
+          "r_diferencias": 0.285,
+          "n": 30
+        },
+        {
+          "estadistica": "consumo_mayoristas",
+          "etiqueta": "consumo en autoservicios mayoristas",
+          "propia": false,
+          "r_niveles": 0.016,
+          "r_diferencias": -0.221,
+          "n": 29
+        },
+        {
+          "estadistica": "consumo_shoppings",
+          "etiqueta": "consumo en centros de compras",
+          "propia": false,
+          "r_niveles": -0.406,
+          "r_diferencias": -0.108,
+          "n": 29
+        },
+        {
+          "estadistica": "consumo_supermercados",
+          "etiqueta": "consumo en supermercados",
+          "propia": false,
+          "r_niveles": -0.376,
+          "r_diferencias": -0.208,
+          "n": 29
+        },
+        {
+          "estadistica": "epu_argentina",
+          "etiqueta": "incertidumbre de política (EPU)",
+          "propia": true,
+          "r_niveles": -0.493,
+          "r_diferencias": -0.397,
+          "n": 30
+        },
+        {
+          "estadistica": "icg_utdt",
+          "etiqueta": "confianza en el gobierno",
+          "propia": true,
+          "r_niveles": 0.245,
+          "r_diferencias": 0.42,
+          "n": 30
+        },
+        {
+          "estadistica": "indice_lider",
+          "etiqueta": "marcha de la actividad",
+          "propia": false,
+          "r_niveles": -0.268,
+          "r_diferencias": 0.06,
+          "n": 30
+        },
+        {
+          "estadistica": "merval_usd",
+          "etiqueta": "Merval en dólares",
+          "propia": false,
+          "r_niveles": -0.086,
+          "r_diferencias": 0.239,
+          "n": 30
+        }
+      ],
+      "n_propias": 3,
+      "n_ajenas": 5,
+      "niveles": {
+        "convergente": 0.41,
+        "discriminante": 0.23,
+        "brecha": 0.18
+      },
+      "diferencias": {
+        "convergente": 0.367,
+        "discriminante": 0.167,
+        "brecha": 0.2
+      },
+      "lectura": "Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 de su propio terreno con 0,41 y a las 5 ajenas con 0,23. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,367 con lo propio contra 0,167 con lo ajeno."
     }
   }
 }

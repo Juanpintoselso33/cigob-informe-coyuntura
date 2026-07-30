@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-30T13:58:06.277703",
+  "generated_at": "2026-07-30T14:30:31.960973",
   "period": "2026-07",
   "score_global": 3.4,
   "ponderacion": {
@@ -1668,7 +1668,87 @@
               "n": 31
             }
           },
-          "conclusion": "Correlación −0,493 en niveles y −0,397 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,616, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, el volumen de insumos de construcción efectivamente vendidos, contra el que correlaciona 0,79 en niveles y 0,47 en los cambios. Hay además un hallazgo que conviene declarar: el indicador de expectativas de obra pública acompaña a la incertidumbre de política durante las dos administraciones anteriores y se invierte con la actual. La razón es sustantiva, no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno, de modo que ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El indicador mide bien la tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar."
+          "conclusion": "Correlación −0,493 en niveles y −0,397 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,616, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, el volumen de insumos de construcción efectivamente vendidos, contra el que correlaciona 0,79 en niveles y 0,47 en los cambios. Hay además un hallazgo que conviene declarar: el indicador de expectativas de obra pública acompaña a la incertidumbre de política durante las dos administraciones anteriores y se invierte con la actual. La razón es sustantiva, no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno, de modo que ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El indicador mide bien la tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar. Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,41 y a las 5 ajenas con 0,23. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,367 con lo propio contra 0,167 con lo ajeno.",
+          "panel": {
+            "perfil": [
+              {
+                "estadistica": "clima_electoral",
+                "etiqueta": "clima electoral",
+                "propia": true,
+                "r_niveles": 0.493,
+                "r_diferencias": 0.285,
+                "n": 30
+              },
+              {
+                "estadistica": "consumo_mayoristas",
+                "etiqueta": "consumo en autoservicios mayoristas",
+                "propia": false,
+                "r_niveles": 0.016,
+                "r_diferencias": -0.221,
+                "n": 29
+              },
+              {
+                "estadistica": "consumo_shoppings",
+                "etiqueta": "consumo en centros de compras",
+                "propia": false,
+                "r_niveles": -0.406,
+                "r_diferencias": -0.108,
+                "n": 29
+              },
+              {
+                "estadistica": "consumo_supermercados",
+                "etiqueta": "consumo en supermercados",
+                "propia": false,
+                "r_niveles": -0.376,
+                "r_diferencias": -0.208,
+                "n": 29
+              },
+              {
+                "estadistica": "epu_argentina",
+                "etiqueta": "incertidumbre de política (EPU)",
+                "propia": true,
+                "r_niveles": -0.493,
+                "r_diferencias": -0.397,
+                "n": 30
+              },
+              {
+                "estadistica": "icg_utdt",
+                "etiqueta": "confianza en el gobierno",
+                "propia": true,
+                "r_niveles": 0.245,
+                "r_diferencias": 0.42,
+                "n": 30
+              },
+              {
+                "estadistica": "indice_lider",
+                "etiqueta": "marcha de la actividad",
+                "propia": false,
+                "r_niveles": -0.268,
+                "r_diferencias": 0.06,
+                "n": 30
+              },
+              {
+                "estadistica": "merval_usd",
+                "etiqueta": "Merval en dólares",
+                "propia": false,
+                "r_niveles": -0.086,
+                "r_diferencias": 0.239,
+                "n": 30
+              }
+            ],
+            "niveles": {
+              "convergente": 0.41,
+              "discriminante": 0.23,
+              "brecha": 0.18
+            },
+            "diferencias": {
+              "convergente": 0.367,
+              "discriminante": 0.167,
+              "brecha": 0.2
+            },
+            "n_propias": 3,
+            "n_ajenas": 5
+          }
         },
         "redundancia": {
           "n_indicadores": 14,
@@ -2487,7 +2567,87 @@
           "serie_label": "ITVC (reconstrucción mensual)",
           "externa_label": "consumo en supermercados (precios constantes)",
           "trans_label": "ambas series con base 100 en el cuarto trimestre de 2023",
-          "conclusion": "Correlación 0,596 en niveles y 0,246 en los cambios mes a mes: cuando las condiciones materiales mejoran respecto del arranque del mandato, la gente efectivamente compra más en términos reales. El ánimo, en cambio, acompaña menos: contra la confianza del consumidor (ICC de UTDT) la correlación es 0,337. No es una falla del índice sino un resultado — en estos años la confianza se movió con más independencia de las condiciones materiales que las condiciones entre sí. Se publica porque distingue: este cinturón mide lo que le pasa a los hogares, no lo que opinan."
+          "conclusion": "Correlación 0,596 en niveles y 0,246 en los cambios mes a mes: cuando las condiciones materiales mejoran respecto del arranque del mandato, la gente efectivamente compra más en términos reales. El ánimo, en cambio, acompaña menos: contra la confianza del consumidor (ICC de UTDT) la correlación es 0,337. No es una falla del índice sino un resultado — en estos años la confianza se movió con más independencia de las condiciones materiales que las condiciones entre sí. Se publica porque distingue: este cinturón mide lo que le pasa a los hogares, no lo que opinan. Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,342 y a las 5 ajenas con 0,253. En los cambios mes a mes la separación no se sostiene: 0,152 con lo propio contra 0,292 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto.",
+          "panel": {
+            "perfil": [
+              {
+                "estadistica": "clima_electoral",
+                "etiqueta": "clima electoral",
+                "propia": false,
+                "r_niveles": -0.008,
+                "r_diferencias": 0.157,
+                "n": 32
+              },
+              {
+                "estadistica": "consumo_mayoristas",
+                "etiqueta": "consumo en autoservicios mayoristas",
+                "propia": true,
+                "r_niveles": -0.114,
+                "r_diferencias": -0.071,
+                "n": 30
+              },
+              {
+                "estadistica": "consumo_shoppings",
+                "etiqueta": "consumo en centros de compras",
+                "propia": true,
+                "r_niveles": 0.316,
+                "r_diferencias": -0.138,
+                "n": 30
+              },
+              {
+                "estadistica": "consumo_supermercados",
+                "etiqueta": "consumo en supermercados",
+                "propia": true,
+                "r_niveles": 0.596,
+                "r_diferencias": 0.246,
+                "n": 30
+              },
+              {
+                "estadistica": "epu_argentina",
+                "etiqueta": "incertidumbre de política (EPU)",
+                "propia": false,
+                "r_niveles": 0.186,
+                "r_diferencias": 0.355,
+                "n": 31
+              },
+              {
+                "estadistica": "icg_utdt",
+                "etiqueta": "confianza en el gobierno",
+                "propia": false,
+                "r_niveles": 0.279,
+                "r_diferencias": 0.38,
+                "n": 31
+              },
+              {
+                "estadistica": "indice_lider",
+                "etiqueta": "marcha de la actividad",
+                "propia": false,
+                "r_niveles": 0.617,
+                "r_diferencias": 0.506,
+                "n": 31
+              },
+              {
+                "estadistica": "merval_usd",
+                "etiqueta": "Merval en dólares",
+                "propia": false,
+                "r_niveles": 0.177,
+                "r_diferencias": 0.061,
+                "n": 32
+              }
+            ],
+            "niveles": {
+              "convergente": 0.342,
+              "discriminante": 0.253,
+              "brecha": 0.089
+            },
+            "diferencias": {
+              "convergente": 0.152,
+              "discriminante": 0.292,
+              "brecha": -0.14
+            },
+            "n_propias": 3,
+            "n_ajenas": 5
+          }
         },
         "redundancia": {
           "n_indicadores": 16,
@@ -3326,7 +3486,7 @@
         },
         "validacion": {
           "r_niveles": 0.747,
-          "r_diferencias": 0.12,
+          "r_diferencias": 0.119,
           "n": 32,
           "pares": [
             [
@@ -3487,7 +3647,7 @@
             [
               "2026-07",
               74.0,
-              2094.4
+              2097.4
             ]
           ],
           "plot": "minmax",
@@ -3496,7 +3656,87 @@
           "serie_label": "ITCG (reconstrucción mensual)",
           "externa_label": "Merval en dólares",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Correlación 0,747 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (−0,695) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad."
+          "conclusion": "Correlación 0,747 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (−0,695) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad. Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a la única estadística de su propio terreno con 0,747 y a las 7 ajenas con 0,434. En los cambios mes a mes la separación no se sostiene: 0,119 con lo propio contra 0,159 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto.",
+          "panel": {
+            "perfil": [
+              {
+                "estadistica": "clima_electoral",
+                "etiqueta": "clima electoral",
+                "propia": false,
+                "r_niveles": -0.202,
+                "r_diferencias": -0.195,
+                "n": 32
+              },
+              {
+                "estadistica": "consumo_mayoristas",
+                "etiqueta": "consumo en autoservicios mayoristas",
+                "propia": false,
+                "r_niveles": -0.823,
+                "r_diferencias": -0.012,
+                "n": 30
+              },
+              {
+                "estadistica": "consumo_shoppings",
+                "etiqueta": "consumo en centros de compras",
+                "propia": false,
+                "r_niveles": 0.489,
+                "r_diferencias": 0.026,
+                "n": 30
+              },
+              {
+                "estadistica": "consumo_supermercados",
+                "etiqueta": "consumo en supermercados",
+                "propia": false,
+                "r_niveles": 0.252,
+                "r_diferencias": -0.349,
+                "n": 30
+              },
+              {
+                "estadistica": "epu_argentina",
+                "etiqueta": "incertidumbre de política (EPU)",
+                "propia": false,
+                "r_niveles": 0.254,
+                "r_diferencias": -0.18,
+                "n": 31
+              },
+              {
+                "estadistica": "icg_utdt",
+                "etiqueta": "confianza en el gobierno",
+                "propia": false,
+                "r_niveles": -0.695,
+                "r_diferencias": 0.023,
+                "n": 31
+              },
+              {
+                "estadistica": "indice_lider",
+                "etiqueta": "marcha de la actividad",
+                "propia": false,
+                "r_niveles": 0.322,
+                "r_diferencias": -0.328,
+                "n": 31
+              },
+              {
+                "estadistica": "merval_usd",
+                "etiqueta": "Merval en dólares",
+                "propia": true,
+                "r_niveles": 0.747,
+                "r_diferencias": 0.119,
+                "n": 32
+              }
+            ],
+            "niveles": {
+              "convergente": 0.747,
+              "discriminante": 0.434,
+              "brecha": 0.313
+            },
+            "diferencias": {
+              "convergente": 0.119,
+              "discriminante": 0.159,
+              "brecha": -0.04
+            },
+            "n_propias": 1,
+            "n_ajenas": 7
+          }
         },
         "redundancia": {
           "n_indicadores": 14,

@@ -839,6 +839,36 @@ def _validacion_itcm(bloque):
         "conclusion": conclusion,
     }
 
+def _panel_socioeconomico(bloque, sigla: str):
+    """Anexa a un bloque el perfil contra el PANEL de estadísticas externas.
+
+    Los compuestos socioeconómicos no tienen serie de referencia (ADR-0159): se
+    comparan contra varias y las diferencias se explican. Se agrega a la
+    conclusión de la sección de validación, que es donde el lector ya está
+    mirando el contraste — no como sección aparte.
+    """
+    if not bloque or not bloque.get("validacion"):
+        return
+    panel = (_cargar_validacion().get("panel_validacion") or {}).get(sigla) or {}
+    if not panel:
+        return
+    # el texto se arma ACÁ y no se lee del JSON intermedio: si viniera guardado,
+    # corregir una redacción obligaría a re-correr validacion_externa, que sale
+    # a la red. Los números sí vienen calculados de allá.
+    import panel_validacion as pnl
+    texto = pnl.lectura(panel)
+    if not texto:
+        return
+    bloque["validacion"]["panel"] = {
+        "perfil": panel["perfil"],
+        "niveles": panel["niveles"],
+        "diferencias": panel["diferencias"],
+        "n_propias": panel["n_propias"],
+        "n_ajenas": panel["n_ajenas"],
+    }
+    bloque["validacion"]["conclusion"] += " " + texto
+
+
 def _redundancia(bloque, clave_val: str):
     """Anexa a un bloque de índice la matriz de correlación ENTRE SUS PROPIOS
     componentes (auditoría de consistencia, jul-2026; genérica desde ADR-0085).
@@ -1590,6 +1620,7 @@ def aplicar_scoring(informe, series):
             _scoring_indice(c, "itcg", itcg, GESTION_CONTEXTO, _gestion_input_txt)
             if c.get("itcg"):
                 _validacion_itcg(c["itcg"])
+                _panel_socioeconomico(c["itcg"], "itcg")
                 _redundancia(c["itcg"], "redundancia_itcg")
                 _vintages(c, "itcg")
             continue
@@ -1599,6 +1630,7 @@ def aplicar_scoring(informe, series):
             _scoring_vida_itvc(c, series)
             # Responde la pregunta explícita de la auditoría sobre si
             # patentamiento_motos aporta señal propia frente al ICC (ADR-0108).
+            _panel_socioeconomico(c["itvc"], "itvc")
             _redundancia(c["itvc"], "redundancia_itvc")
             # El ITVC es el cinturón con más dispersión de vintages de los
             # cuatro: la EPH es trimestral y sostiene dos componentes, uno de
@@ -1612,6 +1644,7 @@ def aplicar_scoring(informe, series):
             _scoring_indice(c, "itcp", itcp, POLITICA_CONTEXTO, _politica_input_txt)
             if c.get("itcp"):
                 _validacion_itcp(c["itcp"])
+                _panel_socioeconomico(c["itcp"], "itcp")
                 _redundancia(c["itcp"], "redundancia_itcp")
                 _rezago(c["itcp"], itcp.REZAGO_MESES_ITCP,
                         itcp.REZAGO_PULSO, itcp.REZAGO_ESTRUCTURAL)

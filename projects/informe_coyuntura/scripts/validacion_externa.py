@@ -62,6 +62,9 @@ import publicar
 # el atraso INVIERTE el signo de la correlación (−0,514 con media móvil contra
 # +0,563 con la desestacionalizada del organismo). Usar la que publica el INDEC.
 CONSUMO_SUPER_ID = "455.1_VENTAS_PREADA_0_M_44_44"
+# Los otros dos canales de consumo, para el panel del ITVC (ADR-0159).
+CONSUMO_MAYORISTAS_ID = "456.1_VENTAS_PREADA_0_M_44_40"
+CONSUMO_SHOPPINGS_ID = "458.1_VENTAS_TOTADA_0_M_52_56"
 SERIES_API = "https://apis.datos.gob.ar/series/api/series"
 MERVAL_YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5EMERV"
 CCL_URL = "https://api.argentinadatos.com/v1/cotizaciones/dolares/contadoconliqui"
@@ -698,6 +701,22 @@ def _valores_itcp_por_mes(directos: dict | None = None, ult: str | None = None) 
     return out
 
 
+def _serie_datos_gob(sid: str) -> dict:
+    """{YYYY-MM: valor} de una serie de datos.gob.ar."""
+    r = requests.get(SERIES_API, params={"ids": sid, "limit": 5000,
+                                         "format": "json"}, timeout=60)
+    r.raise_for_status()
+    return {f[:7]: float(v) for f, v in r.json()["data"] if v is not None}
+
+
+def _rebase_4t23(serie: dict) -> dict:
+    base = [serie[m] for m in BASE_MESES if m in serie]
+    if len(base) < len(BASE_MESES):
+        raise ValueError("falta algún mes del 4T-2023 para la base")
+    prom = sum(base) / len(base)
+    return {m: round(100.0 * v / prom, 2) for m, v in serie.items()}
+
+
 def fetch_consumo_supermercados_mensual() -> dict:
     """{YYYY-MM: índice base 100 = 4T-2023} del consumo medido en supermercados.
 
@@ -716,10 +735,7 @@ def fetch_consumo_supermercados_mensual() -> dict:
     supermercados. No ve el comercio informal, y el traslado de compras al canal
     mayorista/discounter —que correlaciona NEGATIVO (−0,16)— no entra acá.
     """
-    r = requests.get(SERIES_API, params={"ids": CONSUMO_SUPER_ID, "limit": 5000,
-                                        "format": "json"}, timeout=60)
-    r.raise_for_status()
-    serie = {f[:7]: float(v) for f, v in r.json()["data"] if v is not None}
+    serie = _serie_datos_gob(CONSUMO_SUPER_ID)
     base = [serie[m] for m in BASE_MESES if m in serie]
     if len(base) < len(BASE_MESES):
         raise ValueError("consumo: falta algún mes del 4T-2023 para la base")
@@ -1183,6 +1199,44 @@ def main():
             print(f"  {nombre}: r = {r}  (n = {n})")
     except Exception as e:
         print(f"[WARN] Índice Construya no disponible: {e}")
+
+    # ── Panel de validación socioeconómica (ADR-0159) ──────────────────────
+    # El ITVC/ITCG/ITCP no tienen serie de referencia: se comparan contra VARIAS
+    # estadísticas relacionadas y las diferencias se explican. El ITCM tiene su
+    # propio régimen (puntos de giro, ADR-0158) y no entra acá.
+    try:
+        import panel_validacion as pnl
+        series_json = cargar_series()
+        panel = {
+            "consumo_supermercados": resultados.get("consumo_supermercados_mensual") or {},
+            "merval_usd": resultados.get("merval_usd_mensual") or {},
+            "epu_argentina": resultados.get("epu_argentina_mensual") or {},
+            "indice_lider": resultados.get("indice_lider_mensual") or {},
+            "icg_utdt": _mensual(series_json.get("icg_utdt") or []),
+            "clima_electoral": _mensual(series_json.get("clima_electoral") or []),
+        }
+        for clave, sid in (("consumo_mayoristas", CONSUMO_MAYORISTAS_ID),
+                           ("consumo_shoppings", CONSUMO_SHOPPINGS_ID)):
+            try:
+                panel[clave] = _rebase_4t23(_serie_datos_gob(sid))
+            except Exception as e:
+                print(f"[WARN] panel: {clave} no disponible: {e}")
+        indices = {"itvc": itvc_full, "itcg": serie_itcg, "itcp": serie_itcp}
+        resultados["panel_validacion"] = {}
+        print("")
+        print("panel de validación socioeconómica:")
+        for sig, serie in indices.items():
+            if not serie:
+                continue
+            perf = pnl.perfil(sig, serie, panel)
+            perf["lectura"] = pnl.lectura(perf)
+            resultados["panel_validacion"][sig] = perf
+            n, d = perf["niveles"], perf["diferencias"]
+            print(f"  {sig.upper()}: propias {perf['n_propias']} · ajenas {perf['n_ajenas']}"
+                  f" · niveles {n['convergente']}/{n['discriminante']} (brecha {n['brecha']})"
+                  f" · difs {d['convergente']}/{d['discriminante']} (brecha {d['brecha']})")
+    except Exception as e:
+        print(f"[WARN] panel de validación no disponible: {e}")
 
     SALIDA.write_text(json.dumps(resultados, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n[OK] {SALIDA}")
