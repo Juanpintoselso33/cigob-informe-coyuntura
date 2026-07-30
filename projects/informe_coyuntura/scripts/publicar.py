@@ -529,10 +529,8 @@ ITVC_SERIES_REBASEADAS = {
     "itvc_alimentos":     "ipc_alimentos",
     "itvc_tarifas":       "peso_tarifas",
     "itvc_alquiler":      "alquiler_real",
-    "itvc_lider":         "indice_lider",
     "itvc_ipi":           "mortalidad_pymes",
     "itvc_isac":          "despacho_cemento",
-    "itvc_endeudamiento": "endeudamiento_familiar",
     "itvc_pobreza":       "pobreza_nowcast",
 }
 
@@ -594,14 +592,15 @@ def _itvc_indices(vida_ind, series):
     # Rebase directo desde las series oficiales existentes
     idx["brecha_salario_cbt"] = _itvc_rebase_de_serie(series, "brecha_salario_cbt")
     # Mora del crédito familiar (ADR-0067): % de cartera irregular, invertido
-    # (más mora = peor). Compañera de endeudamiento_familiar en Vulnerabilidad
-    # desde que el factor mora salió del compuesto I_EC.
+    # (más mora = peor). Desde ADR-0154 sostiene sola la dimensión de
+    # vulnerabilidad: endeudamiento_familiar salió del índice.
     idx["mora_familias"] = _itvc_rebase_de_serie(series, "mora_familias", invertido=True)
     idx["icc_utdt"] = _itvc_rebase_de_serie(series, "icc_utdt")
     idx["pluriempleo"] = _itvc_rebase_de_serie(series, "pluriempleo", invertido=True)
     # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.
     # Es el único componente de la dimensión que mide empleo de verdad; los
-    # otros cuatro son proxies (producción, construcción, pluriempleo, líder).
+    # otros tres son proxies (producción, construcción, pluriempleo) — el
+    # líder salió del cinturón en ADR-0154.
     idx["empleo_registrado"] = _itvc_rebase_de_serie(series, "empleo_registrado")
     # Informalidad TRIMESTRAL (52.2_ASDJ, barrido vida 2/13): la 303.1 murió en
     # 2020 pero la 52.2 sigue viva — base = 4T-2023 exacto (punto 2023-10),
@@ -1508,6 +1507,16 @@ ESPIRITU_OCULTOS = {"icc_utdt", "sentimiento_digital", "clima_electoral"}
 # puntuar documentadas en itcg.INDICADORES_CONTEXTO).
 GESTION_OCULTOS = set(itcg.INDICADORES_CONTEXTO)
 
+# Indicadores de vida cotidiana OCULTOS del snapshot (ADR-0154, mismo criterio
+# que ADR-0022): la revisión editorial los sacó del ITVC y el tablero solo
+# muestra lo que integra las dimensiones. Series y colector siguen corriendo —
+# `indice_lider` además pasó a ser el validador externo del ITCM, así que su
+# serie es un insumo vivo de validacion_externa.py.
+#
+# Es el quinto cinturón en tener lista de ocultos, y con eso los cinco usan el
+# mismo patrón: entra al índice o se oculta. No hay cards de contexto (ADR-0153).
+VIDA_OCULTOS = {"endeudamiento_familiar", "indice_lider"}
+
 
 def aplicar_scoring(informe, series):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo
@@ -1534,6 +1543,8 @@ def aplicar_scoring(informe, series):
                 _vintages(c, "itcg")
             continue
         if ckey == "vida_cotidiana":
+            for oculto in VIDA_OCULTOS:
+                c["indicadores"].pop(oculto, None)
             _scoring_vida_itvc(c, series)
             # Responde la pregunta explícita de la auditoría sobre si
             # patentamiento_motos aporta señal propia frente al ICC (ADR-0108).

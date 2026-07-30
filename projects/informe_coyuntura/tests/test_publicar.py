@@ -400,7 +400,8 @@ def test_vida_itvc_reconcilia():
     # componente de la dimensión de empleo que mide empleo).
     # 18 desde 2026-07-30 (ADR-0153: entra pobreza_nowcast a la dimensión de
     # ingresos; era una card visible que no puntuaba, patrón dado de baja).
-    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
+    # 16 el mismo día (ADR-0154: salen endeudamiento_familiar e indice_lider).
+    assert len(en_indice) == 16, f"esperaba 16 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"
@@ -457,22 +458,32 @@ def test_dimensiones_criticas_marcadas():
     assert informe["cinturones"]["vida_cotidiana"]["itvc"]["dimensiones"]["vulnerabilidad"]["critica"]
 
 
-def test_endeudamiento_y_mora_separados():
-    """Vulnerabilidad (D3 del ITVC, ADR-0067): endeudamiento puntúa el stock
-    REAL puro (serie itvc_endeudamiento, ya sin el factor mora) y la mora es
-    un indicador propio cuya card ES el último punto de su serie (sintetizada
-    en publicar, sin colector)."""
+def test_la_mora_sostiene_sola_la_vulnerabilidad():
+    """Vulnerabilidad (D3 del ITVC) después de ADR-0154.
+
+    ADR-0067 había separado la mora del compuesto I_EC y las dejó 50/50 con el
+    endeudamiento, declarando el reparto como provisorio. ADR-0154 saca el
+    endeudamiento —redundante (+0,943 con la brecha salarial), clavado en el
+    techo de winsorización y de signo equívoco, porque leía el crecimiento de la
+    deuda real como acceso al crédito— y la mora queda sola.
+
+    Este test cuida las dos mitades: que el endeudamiento NO se publique como
+    card (patrón de ocultos, no card de contexto) y que la mora siga siendo la
+    card cuyo titular ES el último punto de su serie.
+    """
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
     series = json.loads((DATA / "series.json").read_text(encoding="utf-8"))
     vida = informe["cinturones"]["vida_cotidiana"]["indicadores"]
-    end = vida["endeudamiento_familiar"]
-    assert end.get("indice_itvc") is not None, "endeudamiento sin índice ITVC"
-    serie = series.get("itvc_endeudamiento") or []
-    assert serie, "falta la serie itvc_endeudamiento"
-    # el stock real puro puede superar el techo de winsorización (ADR-0033):
-    # el índice publicado es el crudo acotado a 140
-    esperado = min(serie[-1]["valor"], 140.0)
-    assert abs(end["indice_itvc"] - esperado) <= 0.15
+
+    assert "endeudamiento_familiar" not in vida, (
+        "endeudamiento salió del ITVC: va a los ocultos del snapshot, no se "
+        "publica como card sin puntuar"
+    )
+    assert "indice_lider" not in vida, "el índice líder también salió (ADR-0154)"
+    # la serie sigue viva: es seguimiento interno, y la del líder además es
+    # insumo del validador externo del ITCM
+    assert series.get("itvc_endeudamiento"), "la serie de endeudamiento no debe borrarse"
+    assert series.get("indice_lider"), "la serie del líder es insumo de validacion_externa"
 
     mora = vida.get("mora_familias")
     assert mora, "falta la card de mora_familias"
@@ -482,6 +493,11 @@ def test_endeudamiento_y_mora_separados():
     assert mora.get("en_indice"), "la mora debe puntuar en el ITVC"
     assert mora.get("indice_itvc") is not None
 
+    dim = informe["cinturones"]["vida_cotidiana"]["itvc"]["dimensiones"]["vulnerabilidad"]
+    assert set(dim["indicadores"]) == {"mora_familias"}
+    assert dim["indicadores"]["mora_familias"]["peso"] == 1.0
+    # el puntaje de la dimensión ES el índice de la mora, sin promedio que lo suavice
+    assert abs(dim["puntaje"] - dim["indicadores"]["mora_familias"]["puntaje_aplicado"]) <= 0.05
 
 def test_la_card_de_consistencia_se_publica_aunque_no_haya_pares_altos(monkeypatch, tmp_path):
     """Bug de la auditoría de código: _redundancia_itcm hacía return si

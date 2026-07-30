@@ -401,7 +401,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Las declaraciones se revisan hacia atrás durante varios meses, de modo que los últimos puntos de la serie pueden moverse.",
       "Un puesto registrado no dice nada sobre el salario que paga: el indicador no captura si el empleo que queda está mejor o peor remunerado que el que se perdió.",
     ],
-    faltantes: "Si falta el dato, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros cuatro componentes de la dimensión.",
+    faltantes: "Si falta el dato, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros tres componentes de la dimensión.",
     revisiones: "La fuente revisa sus series al consolidar declaraciones; el informe regenera la serie completa en cada actualización.",
     cambios: [
       { fecha: "2026-07-25", cambio: "Entra al índice como componente principal de la dimensión de empleo, con el treinta y cinco por ciento. Hasta entonces la dimensión se llamaba así pero ninguno de sus cuatro componentes medía empleo: eran indicadores de producción, de construcción, de pluriempleo y un índice líder." },
@@ -2326,39 +2326,6 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
-  endeudamiento_familiar: {
-    tipo: "indicador",
-    id: "endeudamiento_familiar",
-    cinturon: "vida_cotidiana",
-    rezago: "La card (stock de crédito) casi no tiene rezago; el componente del índice usa el anexo del Informe sobre Bancos, ~2 meses atrás.",
-    fuente: {
-      organismo: "BCRA",
-      operacion: "Card: préstamos personales + tarjetas de crédito (estadísticas monetarias). Componente: saldos y mora de las familias del anexo del Informe sobre Bancos",
-      serie: "API de Estadísticas Monetarias (variables 114 y 115) + anexo del Informe sobre Bancos (planilla de calidad de cartera, sección Familias)",
-      url: "https://www.bcra.gob.ar/PublicacionesEstadisticas/Informe_mensual_sobre_bancos.asp",
-      acceso: "Automático: API pública para el stock y lectura de la planilla oficial para deuda real y mora.",
-    },
-    transformaciones: [
-      "El componente es la deuda de consumo de las familias deflactada por IPC, como índice contra su nivel del 4º trimestre de 2023: mide el acceso de los hogares al financiamiento como stock real puro.",
-      "La calidad de esa cartera —si la deuda se puede pagar— se mide por separado en la mora de las familias, su compañera en la dimensión: mantener la mora también acá la contaría dos veces.",
-      "Sin piso de recorte deliberadamente: la crisis no se maquilla — se señaliza.",
-    ],
-    incidenciaTexto: [
-      "Integra la dimensión de vulnerabilidad financiera (10% del ITVC), donde pesa 50% junto a la mora de las familias.",
-    ],
-    limitaciones: [
-      "Card y componente miden cortes distintos de la misma realidad (stock vivo contra cartera bancaria consolidada).",
-      "Un stock real creciendo puede ser acceso sano o endeudamiento por necesidad — esa distinción la aporta la mora, leída en conjunto.",
-    ],
-    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componentes, la dimensión de vulnerabilidad desaparece y su peso se redistribuye.",
-    revisiones: "La planilla oficial se relee completa en cada actualización y adopta las revisiones del BCRA.",
-    cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC como deuda real castigada por mora, con la polaridad empírica documentada (corrección sobre el diseño original)." },
-      { fecha: "2026-07-04", cambio: "Se decide no aplicarle piso de recorte: la primera prueba con piso maquillaba el deterioro y se revirtió." },
-      { fecha: "2026-07-15", cambio: "La mora salió del componente a un indicador propio de la misma dimensión: el endeudamiento quedó como stock real puro (acceso al crédito) y la mora como señal de estrés de pago — el compuesto multiplicativo penalizaba dos veces el mismo fenómeno dentro de un solo número." },
-    ],
-  },
-
   mora_familias: {
     tipo: "indicador",
     id: "mora_familias",
@@ -2377,53 +2344,21 @@ export const FICHAS: Record<string, Ficha> = {
       "Sin piso de recorte, igual que el resto de los componentes: el deterioro no se maquilla.",
     ],
     incidenciaTexto: [
-      "Integra la dimensión de vulnerabilidad financiera (10% del ITVC), donde pesa 50% junto al endeudamiento de consumo: la deuda mide el acceso al crédito, la mora mide si esa deuda se puede pagar.",
+      "Es el único componente de la dimensión de vulnerabilidad financiera, así que aporta el 10% del ITVC por sí solo.",
+      "Acompañaba al endeudamiento de consumo al 50% cada uno. El endeudamiento dejó de integrar el índice porque leía el crecimiento de la deuda real como mayor acceso al crédito, y con la morosidad multiplicada por más de cinco en el mismo período esa lectura compensaba justo la señal que la dimensión existe para dar.",
     ],
     limitaciones: [
       "La mora de las familias se multiplicó por varias veces desde la base 4T-2023: el componente concentra buena parte del arrastre del índice, y así se publica.",
       "Cubre el crédito bancario regulado: no ve el endeudamiento no bancario (fintech, cadenas de consumo, prestamistas informales), donde el estrés suele ser mayor.",
       "El corte es la cartera consolidada del sistema, con el rezago de la planilla oficial.",
     ],
-    faltantes: "Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado; sin dato, el peso se renormaliza dentro de la dimensión.",
+    faltantes: "Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado. Es el único componente de su dimensión, así que no hay con qué renormalizar dentro de ella: si se quedara sin dato, la dimensión entera no se calcula y su diez por ciento se reparte entre las otras cinco. Ese es el costo de haber dejado la dimensión con un solo indicador, y queda declarado.",
     revisiones: "La planilla oficial se relee completa en cada actualización y adopta las revisiones del BCRA.",
     cambios: [
       { fecha: "2026-07-15", cambio: "Entra al ITVC como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa." },
     ],
   },
 
-  indice_lider: {
-    tipo: "indicador",
-    id: "indice_lider",
-    cinturon: "vida_cotidiana",
-    rezago: "Se publica a fin del mes siguiente al que describe (~1 mes).",
-    fuente: {
-      organismo: "Universidad Torcuato Di Tella — Centro de Investigación en Finanzas",
-      operacion: "Índice Líder (IL)",
-      serie: "Serie histórica mensual desde 1993, planilla oficial de la UTDT",
-      url: "https://www.utdt.edu/listado_contenidos.php?id_item_menu=16461",
-      acceso: "Automático: descarga de la planilla publicada, mismo mecanismo que el ICC.",
-    },
-    transformaciones: [
-      "Se rebasea a 100 = promedio del 4º trimestre de 2023, igual que el resto de los componentes.",
-      "No se invierte: un índice líder más alto anticipa mejor actividad, que es mejora.",
-    ],
-    incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (13% interno · 1,95% del ITVC).",
-      "Es el único componente del cinturón que mira hacia adelante. Los otros tres de su dimensión describen lo ya ocurrido: la actividad industrial y la construcción son contemporáneas, y la subocupación llega con dos trimestres de rezago.",
-    ],
-    limitaciones: [
-      "Anticipa el ciclo económico, no el humor de los hogares: un giro del índice señala hacia dónde va la actividad, no cómo la están viviendo las familias.",
-      "Como todo índice líder, da señales falsas: puede moverse sin que el giro llegue a producirse.",
-      "Es un compuesto y no publica el detalle mensual de qué componente lo movió.",
-      "El NIVEL no es comparable entre décadas: la serie deriva hacia arriba a lo largo de su historia —promedia 79,9 entre 1993 y 2001 contra 133,8 entre 2008 y 2015—, así que ubicar el valor de hoy en un percentil de los treinta y tres años compararía regímenes distintos del mismo índice. Por eso el cinturón puntúa el índice rebaseado al cuarto trimestre de 2023 y no el nivel.",
-      "Referencias de la serie completa (1993-2026), para leer el nivel con escala: máximo 150,4 en febrero de 2018 y mínimo 64,5 en noviembre de 2001.",
-    ],
-    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización.",
-    revisiones: "La UTDT puede revisar meses previos al recalcular el compuesto; se re-descarga la serie completa en cada corrida.",
-    cambios: [
-      { fecha: "2026-07-20", cambio: "Alta del indicador: el cinturón no tenía ninguna medida prospectiva." },
-    ],
-  },
   alquiler_real: {
     tipo: "indicador",
     id: "alquiler_real",
@@ -2601,7 +2536,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se usa la serie desestacionalizada porque la original mostraba variaciones de hasta ±20% mensual de puro calendario.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (23% interno · 3,45% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (26,44% interno · 3,97% del ITVC).",
     ],
     limitaciones: [
       "Es una aproximación declarada: mide producción industrial agregada, no mortandad de empresas — el nombre del indicador promete más de lo que la fuente da.",
@@ -2631,7 +2566,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La serie original tiene un desplome estacional en diciembre que contaminaría la base: por eso la desestacionalizada.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (21% interno · 3,15% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (24,14% interno · 3,62% del ITVC).",
     ],
     limitaciones: [
       "Aproximación al empleo vía actividad de la construcción, no despachos de cemento reales (la serie de insumos existe aparte, como contraste).",
@@ -2659,7 +2594,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (8% interno · 1,2% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (9,19% interno · 1,38% del ITVC).",
     ],
     limitaciones: [
       "Aproximación declarada: mide gente que trabaja poco y busca más, no la tenencia de múltiples empleos.",

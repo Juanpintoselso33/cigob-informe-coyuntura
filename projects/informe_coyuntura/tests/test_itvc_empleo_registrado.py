@@ -19,8 +19,11 @@ def test_la_dimension_empleo_mide_empleo():
 
 
 def test_es_el_componente_principal():
+    """0,35 nominal de ADR-0130 → 0,4023 cuando ADR-0154 saca al índice líder y
+    los cuatro que quedan absorben proporcionalmente (÷0,87). Sigue siendo el
+    principal, que es lo que este test cuida."""
     ind = _dim()
-    assert ind["empleo_registrado"] == max(ind.values()) == 0.35
+    assert ind["empleo_registrado"] == max(ind.values()) == 0.4023
 
 
 def test_los_pesos_suman_uno():
@@ -28,11 +31,14 @@ def test_los_pesos_suman_uno():
 
 
 def test_los_proxies_conservan_su_orden_relativo():
-    """ADR-0130 los hace ceder PROPORCIONALMENTE (×0,65). Reordenarlos es otra
-    decisión y necesita su propio ADR."""
+    """ADR-0130 los hace ceder PROPORCIONALMENTE (×0,65) y ADR-0154 los hace
+    ABSORBER proporcionalmente (÷0,87) al salir el índice líder. Las dos
+    operaciones preservan el orden; reordenarlos es otra decisión y necesita su
+    propio ADR."""
     ind = _dim()
+    assert "indice_lider" not in ind, "ADR-0154 lo sacó del cinturón"
     valores = [ind[k] for k in ("mortalidad_pymes", "despacho_cemento",
-                                "indice_lider", "pluriempleo")]
+                                "pluriempleo")]
     assert valores == sorted(valores, reverse=True), ind
 
 

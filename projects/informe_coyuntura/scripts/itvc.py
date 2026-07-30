@@ -100,11 +100,33 @@ DIMENSIONES_ITVC = {
     "vulnerabilidad": {
         "nombre": "Vulnerabilidad financiera",
         "peso": 0.10,
-        # ADR-0067: la mora sale del compuesto multiplicativo I_EC y puntúa
-        # como indicador propio — endeudamiento queda como stock REAL puro
-        # (acceso al crédito) y la mora como señal de estrés de pago. 50/50
-        # provisorio, sujeto a revisión editorial (misma nota que ADR-0064).
-        "indicadores": {"endeudamiento_familiar": 0.5, "mora_familias": 0.5},
+        # ADR-0154: SALE `endeudamiento_familiar` y la dimensión queda apoyada
+        # en la mora sola. ADR-0067 había dejado el 50/50 declarado como
+        # "provisorio, sujeto a revisión editorial"; ésta es esa revisión.
+        #
+        # Se va por tres motivos, y el tercero es el que decide:
+        #
+        # 1. Es redundante. Participa en 6 de los 24 pares altos del cinturón y
+        #    su tope es r = +0,943 contra `brecha_salario_cbt`, que es el
+        #    componente MÁS PESADO del índice (17,06%). También +0,919 con
+        #    alimentos y −0,858 con alquiler.
+        # 2. Es el único componente clavado en el techo de winsorización: índice
+        #    crudo 171,5 recortado a 140.
+        # 3. Y el signo es equívoco. El índice NO está invertido: mide el stock
+        #    real de crédito de consumo de familias y lee que crezca como
+        #    "acceso al crédito" (así lo dice el fetcher). Con la deuda real
+        #    +71,5% sobre la base y la mora multiplicada por 5,6 en el mismo
+        #    período, esa lectura no se sostiene: no es más acceso, es consumo
+        #    financiado con crédito que no se paga. Y el efecto sobre el tablero
+        #    era concreto — el componente en 140 promediaba contra la mora en
+        #    17,2 y dejaba la dimensión en 78,6, o sea que TAPABA la señal que
+        #    la dimensión existe para dar.
+        #
+        # Precedente de dimensión con un solo indicador: `seguridad`. El peso
+        # NOMINAL de la dimensión no se toca, como en toda alta o baja previa —
+        # bajarlo acá porque el ITVC cae sería mover un peso para que el número
+        # quede mejor, prohibido por ADR-0045.
+        "indicadores": {"mora_familias": 1.0},
     },
     "empleo": {
         "nombre": "Prospectivas de empleo",
@@ -129,9 +151,25 @@ DIMENSIONES_ITVC = {
         # Los cuatro existentes ceden proporcionalmente (×0,65) y conservan su
         # orden relativo, mismo procedimiento que ADR-0112. El peso NOMINAL de
         # la dimensión no se toca.
-        "indicadores": {"empleo_registrado": 0.35, "mortalidad_pymes": 0.23,
-                        "despacho_cemento": 0.21, "indice_lider": 0.13,
-                        "pluriempleo": 0.08},
+        #
+        # ADR-0154: SALE `indice_lider`, y por un motivo distinto al de
+        # `endeudamiento_familiar` — el líder NO es redundante (participa en 2
+        # de los 24 pares altos, y uno de los dos es justamente con
+        # endeudamiento, que se va en el mismo cambio). Se va porque mide otra
+        # cosa: es un índice de ciclo macroeconómico construido para anticipar
+        # puntos de giro de la ACTIVIDAD, no una condición de la vida cotidiana
+        # de los hogares. Era el argumento de ADR-0112 para incorporarlo —"el
+        # único componente que mira adelante"— y sigue siendo cierto; lo que
+        # cambió es que mirar adelante no lo vuelve parte de este cinturón.
+        #
+        # No se descarta: pasa a VALIDADOR EXTERNO del ITCM, que es donde su
+        # naturaleza encaja, y ahí funciona mejor que el validador que macro
+        # tenía (ver ADR-0154 y `correlaciones_itcm`).
+        #
+        # Los cuatro que quedan ABSORBEN proporcionalmente (÷0,87), regla
+        # simétrica de la de las altas, conservando el orden relativo.
+        "indicadores": {"empleo_registrado": 0.4023, "mortalidad_pymes": 0.2644,
+                        "despacho_cemento": 0.2414, "pluriempleo": 0.0919},
     },
     "percepcion": {
         # ADR-0115. Antes se llamaba "confianza" y mezclaba tres cosas: ADR-0110

@@ -59,15 +59,18 @@ SERIES = ROOT / "web" / "src" / "data" / "series.json"
 SALIDA = ROOT / "output" / "validacion_externa.json"
 BASE_MESES = ("2023-10", "2023-11", "2023-12")
 
-# componente → (clave de serie, invertido, anual)
+# componente → (clave de serie, invertido, anual, ya_es_indice)
+# ADR-0154 saca `indice_lider` y `endeudamiento_familiar`: dejaron de integrar
+# el ITVC, así que la reconstrucción histórica y la matriz de redundancia no
+# pueden seguir midiéndolos — medirían una composición que el índice ya no
+# publica. El líder no desaparece del script: pasó a validador externo del
+# ITCM, más abajo.
 COMPONENTES = {
     "ipc_alimentos":          ("itvc_alimentos", False, False, True),   # ya base-100 (ADR-0033: relativo al IPC)
     "peso_tarifas":           ("itvc_tarifas", False, False, True),
     "alquiler_real":          ("itvc_alquiler", False, False, True),  # ADR-0111
-    "indice_lider":           ("itvc_lider", False, False, True),     # ADR-0112
     "mortalidad_pymes":       ("itvc_ipi", False, False, True),
     "despacho_cemento":       ("itvc_isac", False, False, True),
-    "endeudamiento_familiar": ("itvc_endeudamiento", False, False, True),
     "pobreza_nowcast":        ("itvc_pobreza", False, False, True),   # ADR-0153
     "mora_familias":          ("mora_familias", True, False, False),   # ADR-0067 (2026-07-15):
     # separada del compuesto de endeudamiento; nivel B100 vs 4T-2023 INVERTIDO
@@ -958,6 +961,39 @@ def main():
             print(f"  {nombre}: r = {r}  (n = {n})")
     except Exception as e:
         print(f"[WARN] riesgo país no disponible: {e}")
+
+    # Índice Líder de la UTDT como segundo validador del ITCM (ADR-0154).
+    #
+    # Llega acá desde el ITVC, donde integraba la dimensión de empleo y no
+    # correspondía: mide el ciclo de la ACTIVIDAD, no una condición de la vida
+    # cotidiana. Como validador de macro cubre un hueco real — el riesgo país,
+    # único validador que el ITCM tenía, da r ≈ −0,08 en primeras diferencias,
+    # o sea que fuera de la tendencia común no valida nada.
+    #
+    # Se publican los adelantos en las dos direcciones a propósito, porque el
+    # resultado va en contra de lo que sugiere el nombre del índice: el que
+    # adelanta es el ITCM, no el líder. La lectura correcta se documenta en el
+    # ADR y no se puede afirmar «el líder anticipa al ITCM».
+    try:
+        lider = _serie_indicador("indice_lider")
+        if not lider:
+            raise ValueError("la serie indice_lider no está en output/series/")
+        resultados["indice_lider_mensual"] = lider
+        pares_l = {
+            "niveles (ITCM vs índice líder)": (serie_itcm, lider),
+            "primeras diferencias (ITCM vs líder)": (_difs(serie_itcm), _difs(lider)),
+            "líder adelantado 1 mes vs ITCM": (serie_itcm, _lag(lider, 1)),
+            "líder adelantado 3 meses vs ITCM": (serie_itcm, _lag(lider, 3)),
+            "ITCM adelantado 1 mes vs líder": (_lag(serie_itcm, 1), lider),
+        }
+        resultados.setdefault("correlaciones_itcm", {})
+        print("correlaciones ITCM vs índice líder (Pearson, positiva = válida):")
+        for nombre, (a, b) in pares_l.items():
+            r, n = _pearson(a, b)
+            resultados["correlaciones_itcm"][nombre] = {"r": r, "n": n}
+            print(f"  {nombre}: r = {r}  (n = {n})")
+    except Exception as e:
+        print(f"[WARN] índice líder no disponible: {e}")
 
     # ── Redundancia INTERNA del ITCM (auditoría jul-2026, IV.3) ────────────
     red = matriz_redundancia_itcm()
