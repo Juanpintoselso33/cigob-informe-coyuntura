@@ -64,22 +64,44 @@ FAMILIA = {
     "indice_lider": "itcm",
 }
 
+# Nombre público de cada estadística. En mayúscula inicial —son nombres de
+# estadísticas, no descripciones— y con su ORGANISMO al lado: sin la fuente, el
+# lector no tiene forma de saber qué se está usando de validador ni de ir a
+# chequearlo, que es justamente lo que esta sección promete.
 ETIQUETAS = {
-    "consumo_supermercados": "consumo en supermercados",
-    "consumo_mayoristas": "consumo en autoservicios mayoristas",
-    "consumo_shoppings": "consumo en centros de compras",
-    "electricidad_residencial": "electricidad consumida por los hogares",
-    "gas_residencial": "gas consumido por los hogares",
-    "transporte_pasajeros": "viajes en transporte público",
-    "ventas_naftas": "naftas vendidas en el mercado interno",
+    "consumo_supermercados": "Ventas en supermercados",
+    "consumo_mayoristas": "Ventas en autoservicios mayoristas",
+    "consumo_shoppings": "Ventas en centros de compras",
+    "electricidad_residencial": "Demanda eléctrica residencial",
+    "gas_residencial": "Consumo residencial de gas",
+    "transporte_pasajeros": "Pasajeros en transporte público",
+    "ventas_naftas": "Ventas de naftas",
     "merval_usd": "Merval en dólares",
-    "inversion_directa_externa": "inversión directa de no residentes",
-    "inversion_portafolio_externa": "inversión de cartera de no residentes",
-    "financiamiento_externo_privado": "financiamiento externo a empresas",
-    "epu_argentina": "incertidumbre de política (EPU)",
-    "icg_utdt": "confianza en el gobierno",
-    "clima_electoral": "clima electoral",
-    "indice_lider": "marcha de la actividad",
+    "inversion_directa_externa": "Inversión directa de no residentes",
+    "inversion_portafolio_externa": "Inversión de cartera de no residentes",
+    "financiamiento_externo_privado": "Financiamiento externo a empresas",
+    "epu_argentina": "Incertidumbre de política (EPU)",
+    "icg_utdt": "Confianza en el Gobierno (ICG)",
+    "clima_electoral": "Clima electoral",
+    "indice_lider": "Índice Líder de actividad",
+}
+
+FUENTES = {
+    "consumo_supermercados": "INDEC",
+    "consumo_mayoristas": "INDEC",
+    "consumo_shoppings": "INDEC",
+    "electricidad_residencial": "CAMMESA",
+    "gas_residencial": "Sec. de Energía",
+    "transporte_pasajeros": "INDEC",
+    "ventas_naftas": "Sec. de Energía",
+    "merval_usd": "BYMA / CCL",
+    "inversion_directa_externa": "BCRA",
+    "inversion_portafolio_externa": "BCRA",
+    "financiamiento_externo_privado": "BCRA",
+    "epu_argentina": "Banco de España / SECMCA",
+    "icg_utdt": "UTDT",
+    "clima_electoral": "Votómetro",
+    "indice_lider": "UTDT",
 }
 
 # QUÉ ESTADÍSTICAS ARMAN EL FACTOR de cada índice (ADR-0163). No es «las de su
@@ -149,8 +171,8 @@ def perfil(indice: str, serie: dict, panel: dict) -> dict:
             continue
         propia = FAMILIA.get(clave) == indice
         filas.append({"estadistica": clave, "etiqueta": ETIQUETAS.get(clave, clave),
-                      "propia": propia, "r_niveles": r_niv,
-                      "r_diferencias": r_dif, "n": n})
+                      "fuente": FUENTES.get(clave, ""), "propia": propia,
+                      "r_niveles": r_niv, "r_diferencias": r_dif, "n": n})
         (conv_n if propia else disc_n).append(abs(r_niv))
         if r_dif is not None:
             (conv_d if propia else disc_d).append(abs(r_dif))
@@ -202,6 +224,7 @@ def _factor(indice: str, serie: dict, panel: dict) -> dict | None:
     salida = {
         "cargas": niv["cargas"],
         "etiquetas": {k: ETIQUETAS.get(k, k) for k in niv["cargas"]},
+        "fuentes": {k: FUENTES.get(k, "") for k in niv["cargas"]},
         "varianza_explicada": niv["varianza_explicada"],
         "n_series": niv["n_series"],
         "n": niv["n"],
@@ -303,77 +326,48 @@ def _veredicto(f: dict) -> str:
 
 
 def lectura_factor_detalle(p: dict) -> list:
-    """El desarrollo del factor, para la ficha metodológica, en párrafos.
+    """El desarrollo del factor para la ficha, en DOS párrafos: qué es y qué dio.
 
-    Devuelve una LISTA y no un bloque: son cuatro ideas distintas —qué es el
-    factor, qué signo dedujo, por qué no es circular, y si le gana a la mejor
-    sola— y en un solo párrafo quedan siete líneas seguidas que nadie lee.
-
-    Todo se deriva de las cargas: cuál serie entra invertida, cuál pesa más y si
-    el compuesto le gana o no a la mejor estadística sola. Nada de eso se escribe
-    a mano — si se escribiera, cambiaría de mes a mes y quedaría viejo.
+    Era de cinco y sobraban tres. Lo que explicaba cómo funciona el método —que
+    los signos los fija el cálculo, que el índice no participa— pasó a `NOTA_FACTOR`,
+    una línea al pie de la tabla de cargas: ahí se lee al lado de los números que
+    describe, en vez de ser un párrafo que hay que atravesar para llegar a ellos.
     """
     f = p.get("factor")
     if not f or f["r_niveles"] is None:
         return []
-    etq, cargas = f["etiquetas"], f["cargas"]
-    pesada = max(cargas, key=lambda k: abs(cargas[k]))
-    invertidas = [etq[k] for k in sorted(cargas) if cargas[k] < 0]
-
     partes = [
-        f"Para no depender de una sola estadística, las {f['n_series']} del terreno propio del "
-        f"índice se resumen en su factor común: el primer componente principal, el mismo método "
-        f"con el que la Reserva Federal de Chicago arma su índice de actividad a partir de 85 "
-        f"series. El factor recoge {_coma(f['varianza_explicada'])}% de lo que las "
-        f"{f['n_series']} tienen en común, y pesa más en {etq[pesada]}."
+        f"El contraste no es una estadística sola sino el factor común de las "
+        f"{f['n_series']}: su primer componente principal, el método con el que la Reserva "
+        f"Federal de Chicago arma su índice de actividad. Recoge {_coma(f['varianza_explicada'])}% "
+        f"de lo que las {f['n_series']} tienen en común."
     ]
-    if invertidas:
-        cual = invertidas[0] if len(invertidas) == 1 else " y ".join(
-            [", ".join(invertidas[:-1]), invertidas[-1]])
-        partes.append(
-            f"El cálculo determina por su cuenta que {cual} entra con signo invertido: no se "
-            f"declaró a mano. Es lo que hace que la comparación no se pueda acomodar — quien "
-            f"elige los signos de un promedio ya vio los resultados.")
-    partes.append(
-        "Las cargas se estiman con las estadísticas externas solas: el índice no participa del "
-        "cálculo del factor, sólo se compara contra él una vez armado.")
-
     mejor_n, mejor_d = f.get("mejor_sola_niveles"), f.get("mejor_sola_diferencias")
-    if mejor_n is None:
-        return partes
-    gana_dif = (f.get("r_diferencias") is not None and mejor_d is not None
-                and abs(f["r_diferencias"]) > mejor_d)
-    gana_niv = abs(f["r_niveles"]) > mejor_n
-    tope = (f"La mejor de las {f['n_series']} por separado llega a "
-            f"{_coma(round(mejor_n, 3))} en niveles"
-            + (f" y {_coma(round(mejor_d, 3))} en los cambios" if mejor_d is not None else "")
-            + ".")
-    if gana_dif and gana_niv:
-        partes.append(tope + " El compuesto le gana a todas en los dos planos: lo que las "
-                             "estadísticas comparten —y no una en particular— es lo que el "
-                             "índice sigue.")
-    elif gana_dif:
-        partes.append(
-            tope + " El compuesto le gana a todas en los cambios mes a mes, que es la prueba "
-                   "exigente: la que no se puede satisfacer con la tendencia que en estos años "
-                   "arrastró a casi todas las series argentinas. En niveles queda por debajo, y "
-                   "conviene decir por qué: este índice se movió muy poco en términos netos "
-                   "—sus componentes se compensan entre sí— mientras que las estadísticas del "
-                   "contraste tienen tendencia propia. Comparar niveles de una serie casi plana "
-                   "contra series que suben o bajan no dice demasiado en ninguna dirección.")
-    elif gana_niv:
-        partes.append(
-            tope + " El compuesto le gana en niveles pero no en los cambios mes a mes, que es "
-                   "la prueba exigente: descontada la tendencia común del período, la ventaja "
-                   "se pierde.")
-    else:
-        partes.append(
-            tope + f" El compuesto queda por debajo. Se publica igual porque es lo que el "
-                   f"contraste enseña: lo que las {f['n_series']} comparten es un ciclo más "
-                   f"ancho que el que el índice sigue, y una de ellas sola lo capta mejor.")
-    # La prueba que separa explicar de acompañar (ADR-0162). Va al final porque
-    # es la que califica todo lo anterior: un r alto en niveles que no sobrevive
-    # a descontarle la tendencia del período no dice lo que parece decir.
+    if mejor_n is not None:
+        gana_dif = (f.get("r_diferencias") is not None and mejor_d is not None
+                    and abs(f["r_diferencias"]) > mejor_d)
+        gana_niv = abs(f["r_niveles"]) > mejor_n
+        tope = (f"La mejor de las {f['n_series']} por separado llega a "
+                f"{_coma(round(mejor_n, 3))} en niveles"
+                + (f" y {_coma(round(mejor_d, 3))} en los cambios" if mejor_d is not None else "")
+                + ". ")
+        if gana_dif and gana_niv:
+            partes.append(tope + "El compuesto le gana a todas en los dos planos: lo que las "
+                                 "estadísticas comparten —y no una en particular— es lo que el "
+                                 "índice sigue.")
+        elif gana_dif:
+            partes.append(
+                tope + "El compuesto le gana a todas en los cambios mes a mes, que es la prueba "
+                       "exigente. En niveles queda por debajo porque este índice se movió muy "
+                       "poco en términos netos —sus componentes se compensan— mientras que las "
+                       "estadísticas del contraste tienen tendencia propia.")
+        elif gana_niv:
+            partes.append(tope + "El compuesto le gana en niveles pero no en los cambios mes a "
+                                 "mes, que es la prueba exigente.")
+        else:
+            partes.append(tope + "El compuesto queda por debajo, y se publica igual: lo que las "
+                                 "estadísticas comparten es un ciclo más ancho que el que el "
+                                 "índice sigue.")
     aporte = f.get("aporte_sobre_tendencia")
     if aporte:
         reg = regresion_validacion.lectura(
@@ -381,6 +375,14 @@ def lectura_factor_detalle(p: dict) -> list:
         if reg:
             partes.append(reg)
     return partes
+
+
+# Va al pie de la tabla de cargas, no como párrafo: describe los números que
+# tiene al lado. Es fijo porque describe el método, no el resultado del mes.
+NOTA_FACTOR = ("El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que "
+               "se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas "
+               "externas únicamente —el índice no participa—, y por eso el contraste no se puede "
+               "acomodar.")
 
 
 def lectura(p: dict) -> str:

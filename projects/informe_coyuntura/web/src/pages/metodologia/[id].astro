@@ -424,8 +424,9 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
               <table class="cg-cruz-tabla cg-panel-tabla">
                 <thead>
                   <tr>
-                    <th scope="col">estadística</th>
-                    <th scope="col">carga en el factor</th>
+                    <th scope="col">Estadística</th>
+                    <th scope="col">Fuente</th>
+                    <th scope="col">Peso en el factor</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -434,30 +435,37 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
                     .map(([k, c]) => (
                       <tr>
                         <th scope="row">{val.panel.factor.etiquetas[k] ?? k}</th>
+                        <td class="cg-panel-fuente">{val.panel.factor.fuentes?.[k] ?? ""}</td>
                         <td>{(c > 0 ? "+" : "") + num(c)}</td>
                       </tr>
                     ))}
                 </tbody>
               </table>
+              {val.panel.nota_factor && (
+                <p class="cg-panel-nota">{val.panel.nota_factor}</p>
+              )}
             </Fragment>
           )}
           {val?.panel && (
             <Fragment>
+              {val.panel.lectura && <p class="cg-ficha-p">{val.panel.lectura}</p>}
               <p class="cg-ficha-p">Perfil completo contra el panel de estadísticas externas.
                 En verde, las del terreno propio del índice; se espera que acompañe más a
                 ésas que a las ajenas, sobre todo en los cambios mes a mes.</p>
               <table class="cg-cruz-tabla cg-panel-tabla">
                 <thead>
                   <tr>
-                    <th scope="col">estadística externa</th>
-                    <th scope="col">niveles</th>
-                    <th scope="col">mes a mes</th>
+                    <th scope="col">Estadística externa</th>
+                    <th scope="col">Fuente</th>
+                    <th scope="col">Niveles</th>
+                    <th scope="col">Mes a mes</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[...val.panel.perfil].sort((a, b) => Number(b.propia) - Number(a.propia)).map(f => (
                     <tr>
                       <th scope="row" class:list={[f.propia && "es-propio"]}>{f.etiqueta}</th>
+                      <td class:list={["cg-panel-fuente", f.propia && "es-propio"]}>{f.fuente ?? ""}</td>
                       <td class:list={[f.propia && "es-propio"]}>{(f.r_niveles > 0 ? "+" : "") + num(f.r_niveles)}</td>
                       <td class:list={[f.propia && "es-propio"]}>{typeof f.r_diferencias === "number" ? (f.r_diferencias > 0 ? "+" : "") + num(f.r_diferencias) : "—"}</td>
                     </tr>

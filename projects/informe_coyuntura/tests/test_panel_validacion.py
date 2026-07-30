@@ -122,7 +122,9 @@ def test_el_factor_deduce_solo_que_una_serie_va_invertida():
     f = pv.perfil("itvc", base, _panel_consumo(base))["factor"]
     assert f["cargas"]["transporte_pasajeros"] < 0
     assert f["cargas"]["electricidad_residencial"] > 0
-    assert any("signo invertido" in x for x in pv.lectura_factor_detalle({"factor": f}))
+    # que el signo lo decida el cálculo se explica en la nota al pie de la tabla
+    # de cargas, no en un párrafo aparte
+    assert "carga negativa sola" in pv.NOTA_FACTOR
 
 
 def test_una_familia_de_una_sola_estadistica_no_recibe_factor():
@@ -162,16 +164,24 @@ def test_ganar_solo_en_los_cambios_se_declara_y_se_explica_el_nivel():
     assert "la prueba exigente" in linea and "más que cualquiera" in linea
 
 
-def test_el_detalle_declara_que_el_indice_no_entra_al_calculo():
+def test_se_declara_que_el_indice_no_entra_al_calculo():
     """Es la propiedad que separa esto de un promedio con signos elegidos a
     mano; si no se dice, el lector no tiene cómo saber que no se acomodó."""
-    assert any("no participa del cálculo" in x for x in pv.lectura_factor_detalle(_GANA))
+    assert "el índice no participa" in pv.NOTA_FACTOR
 
 
-def test_el_detalle_viene_en_parrafos_y_ninguno_es_un_muro():
+def test_el_detalle_es_corto():
+    """Eran cinco párrafos y sobraban tres. El método se explica al pie de la
+    tabla que describe; el detalle dice qué es el contraste y qué dio."""
     parrafos = pv.lectura_factor_detalle(_GANA)
-    assert len(parrafos) >= 3
+    assert 2 <= len(parrafos) <= 3, parrafos
+    assert sum(len(x) for x in parrafos) < 1000, sum(len(x) for x in parrafos)
     assert all(len(x) < 420 for x in parrafos), [len(x) for x in parrafos]
+
+
+def test_la_nota_del_factor_no_lleva_numeros_del_mes():
+    """Describe el método, no el resultado: si trajera cifras, caducaría sola."""
+    assert not any(c.isdigit() for c in pv.NOTA_FACTOR), pv.NOTA_FACTOR
 
 
 def test_la_linea_del_tablero_es_corta_y_dice_el_veredicto():

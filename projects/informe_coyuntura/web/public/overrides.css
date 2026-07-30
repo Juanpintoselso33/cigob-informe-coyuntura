@@ -1120,3 +1120,25 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   .cg-panel-tabla th, .cg-panel-tabla td { padding: 6px 6px; font-size: 12.5px; }
   .cg-panel-leyenda { display: none; }
 }
+
+/* Fuente de cada estadística del panel: dato de referencia, no protagonista —
+   pero tiene que estar, porque sin organismo el lector no sabe qué se usó de
+   validador ni puede ir a chequearlo. */
+.cg-panel-fuente { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.cg-panel-nota {
+  margin: -8px 0 22px; font-size: 13.5px; line-height: 1.55; color: var(--muted);
+  max-width: 68ch;
+}
+@media (max-width: 560px) { .cg-panel-fuente { font-size: 11.5px; } }
+
+/* Encabezado de las cards de gráfico en pantallas angostas.
+   Era una fila flex con `flex-wrap: wrap` sólo por debajo de 400px, así que a
+   420px el título se comprimía en una columna de dos palabras por línea y la
+   cifra de la derecha se salía de la pantalla, cortada. Estas cards se angostan
+   mucho antes de los 400px: el corte va en 720 y apilado, que garantiza una
+   línea completa para el título y otra para el número. */
+@media (max-width: 720px) {
+  .cg-rob-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .cg-rob-head span:first-child { max-width: 100%; }
+  .cg-rob-head span:last-child { white-space: normal; }
+}

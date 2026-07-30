@@ -153,7 +153,8 @@ const vplot = val?.panel?.factor?.pares_grafico
       serie_label: val.panel.factor.plano === "diferencias"
         ? `${indice?.sigla ?? "índice"} — variación mes a mes`
         : val.serie_label,
-      externa_label: `factor común de ${val.panel.factor.n_series} estadísticas de su terreno`
+      externa_label: `Factor común: ${Object.keys(val.panel.factor.cargas)
+          .map(k => val.panel.factor.etiquetas[k] ?? k).join(" · ")}`
         + (val.panel.factor.plano === "diferencias" ? " — variación mes a mes" : ""),
       trans_label: val.panel.factor.plano === "diferencias"
         ? "se grafica el cambio de cada mes contra el anterior, que es el plano donde se compara"

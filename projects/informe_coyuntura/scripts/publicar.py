@@ -864,6 +864,11 @@ def _panel_socioeconomico(bloque, sigla: str):
     if not texto:
         return
     bloque["validacion"]["panel"] = {
+        # La prosa del panel (convergente vs discriminante) va SÓLO a la ficha
+        # metodológica: ahí la acompaña la tabla que dice lo mismo con números,
+        # y en el tablero era medio kilo de texto antes de llegar al gráfico.
+        "lectura": texto,
+        "nota_factor": pnl.NOTA_FACTOR,
         "perfil": panel["perfil"],
         "niveles": panel["niveles"],
         "diferencias": panel["diferencias"],
@@ -884,7 +889,6 @@ def _panel_socioeconomico(bloque, sigla: str):
         # comparación que el lector no tiene a la vista.
         bloque["validacion"]["conclusion"] = (
             pnl.lectura_factor(panel) + " " + bloque["validacion"]["conclusion"])
-    bloque["validacion"]["conclusion"] += " " + texto
 
 
 def _dispersion_itvc(bloque):
@@ -1515,14 +1519,7 @@ def _validacion_itcp(bloque):
                 "se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento "
                 "de senadores por provincia, adhesión provincial al RIGI), así que la reconstrucción de los "
                 "meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la "
-                "protesta social — límite que se declara, no se esconde. El EPU es una de las "
-                "tres estadísticas del terreno propio de este cinturón, junto con la confianza "
-                "en el gobierno y el clima electoral, y el gráfico compara el índice contra el "
-                "factor común de las tres: lo que comparten, en vez de una sola. Contra el EPU "
-                "por separado la correlación esperada es negativa —más capital político, menos "
-                "incertidumbre de política en la prensa—; contra el factor el signo lo fija el "
-                "propio cálculo, que es lo que evita elegirlo a mano. El detalle está en la "
-                "ficha metodológica."),
+                "protesta social — límite que se declara, no se esconde."),
         "serie_label": "ITCP (reconstrucción mensual)",
         "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
         "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",

@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-30 19:38:29"
+generado: "2026-07-30 19:51:51"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -112,4 +112,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:brecha_obra_publica`
 
 ---
-*Generado por CIGOB — 2026-07-30 19:38:29 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-30 19:51:51 — schema 1.2.0*
