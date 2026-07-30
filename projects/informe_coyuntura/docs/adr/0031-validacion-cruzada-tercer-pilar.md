@@ -8,6 +8,21 @@
 
 ## Contexto
 
+> **ACTUALIZADO (30-jul-2026, ADR-0154 y sus enmiendas).** La matriz sigue
+> siendo el tercer pilar, pero su composición cambió dos veces desde acá:
+> creció a 4×4 al entrar el ITCP, y el **riesgo país se retiró por completo**
+> —del par propio del ITCM, que ahora es el Índice Líder, y de la matriz
+> entera—. Con eso la observación del editor que motivó esta sección (que
+> reutilizar el riesgo país para ITCM e ITCG debilitaba el discriminante) queda
+> resuelta por vía distinta: ya no hay contraste compartido entre dos índices.
+>
+> Y hay un resultado que este ADR no anticipaba y que hoy se publica: **la
+> diagonal NO es la más fuerte en todos los casos** (2 de 4 índices
+> correlacionan más con un contraste ajeno que con el propio). No se corrige
+> moviendo nada: la conclusión de la matriz lo declara, derivado de los
+> números en cada corrida.
+
+
 La batería de robustez tenía dos pilares: (1) sensibilidad interna Monte
 Carlo (¿el número depende de nuestras elecciones?) y (2) validación externa
 convergente (¿acompaña a un contraste independiente?), con un hallazgo

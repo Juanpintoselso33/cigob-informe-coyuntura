@@ -665,40 +665,65 @@ def _cargar_validacion():
 
 
 def _validacion_itvc(bloque, series):
-    """Anexa al bloque ITVC la validación externa (ADR-0019 D6): la serie
-    mensual del ITVC recalculado SIN su componente ICC (para no ser circular)
-    junto a la serie del ICC UTDT, con las correlaciones del estudio
-    (scripts/validacion_externa.py — correr ese script actualiza el insumo)."""
+    """Anexa al bloque ITVC su validación externa: el índice contra el CONSUMO
+    medido (ventas en supermercados a precios constantes, serie
+    desestacionalizada del INDEC) — correlación positiva esperada.
+
+    Fue el ICC de UTDT hasta jul-2026 (ADR-0155). Se cambió por dos razones que
+    se miden: el ICC ES un componente del ITVC (6,75%), lo que obligaba a
+    publicar un índice artificial «sin ICC» para no ser circular; y un tercio del
+    peso del índice correlaciona NEGATIVO contra el ICC, porque en el período la
+    confianza subió mientras alquiler, pobreza, mora e informalidad empeoraban.
+    El consumo no compone el índice y ajusta mejor.
+
+    El ICC no se descarta: queda como contraste DISCRIMINANTE en la conclusión —
+    mide si la percepción sigue a las condiciones materiales, y el hallazgo es
+    que en estos años lo hizo flojo.
+    """
     val = _cargar_validacion()
-    sin_icc = val.get("serie_itvc_sin_icc") or {}
-    icc = {p["fecha"][:7]: p["valor"] for p in (series.get("icc_utdt") or [])}
-    comunes = sorted(set(sin_icc) & set(icc))
+    itvc_serie = val.get("serie_itvc") or {}
+    consumo = val.get("consumo_supermercados_mensual") or {}
+    comunes = sorted(set(itvc_serie) & set(consumo))
     if len(comunes) < 12:
         return
     corr = val.get("correlaciones", {})
-    niveles = corr.get("niveles (ITVC sin ICC vs ICC)") or {}
-    difs = corr.get("primeras diferencias (sin ICC)") or {}
+    niveles = corr.get("niveles (ITVC vs consumo)") or {}
+    difs = corr.get("primeras diferencias (ITVC vs consumo)") or {}
     r_niv, r_dif = niveles.get("r"), difs.get("r")
+    if r_niv is None:
+        return
+    icc_niv = (corr.get("discriminante: ITVC sin ICC vs ICC (niveles)") or {}).get("r")
+
+    partes = [f"Correlación {coma(r_niv)} en niveles"
+              + (f" y {coma(r_dif)} en los cambios mes a mes" if r_dif is not None else "")
+              + ": cuando las condiciones materiales mejoran respecto del arranque del "
+                "mandato, la gente efectivamente compra más en términos reales."]
+    # El contraste discriminante: percepción contra condiciones. Se emite sólo si
+    # el número lo sostiene, y con la lectura puesta — un r bajo acá NO es una
+    # falla del índice, es el hallazgo.
+    if icc_niv is not None and icc_niv < r_niv:
+        partes.append(f"El ánimo, en cambio, acompaña menos: contra la confianza del consumidor "
+                      f"(ICC de UTDT) la correlación es {coma(icc_niv)}. No es una falla del "
+                      f"índice sino un resultado — en estos años la confianza se movió con más "
+                      f"independencia de las condiciones materiales que las condiciones entre sí. "
+                      f"Se publica porque distingue: este cinturón mide lo que le pasa a los "
+                      f"hogares, no lo que opinan.")
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
-        "pares": [[m, sin_icc[m], icc[m]] for m in comunes],
+        "pares": [[m, itvc_serie[m], consumo[m]] for m in comunes],
         "plot": "rebase100",
-        "titulo": "¿El ITVC acompaña la percepción de la gente?",
+        "titulo": "¿El ITVC acompaña lo que la gente puede comprar?",
         "sub": ("Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables "
-                "externas relacionadas que no lo componen. El ITVC se recalcula sin su componente "
-                "de percepción (el ICC pesa 6,8% del índice) para que la comparación no sea "
-                "circular, y se contrasta con el ICC de UTDT — percepción del consumidor, "
-                "fuente totalmente independiente."),
-        "serie_label": "ITVC sin su componente de percepción",
-        "externa_label": "ICC (confianza del consumidor, UTDT)",
-        "trans_label": "ambas series rebaseadas a 100 en el primer mes",
-        "conclusion": (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
-                       f"a mes: ni redundante (cercana a 1 diría que el índice sobra) ni "
-                       f"desconectada (cercana a 0 diría que no capta la experiencia vivida). "
-                       f"Las condiciones materiales y el ánimo se mueven juntos, pero miden "
-                       f"cosas distintas."),
+                "externas relacionadas que no lo componen. El ITVC se reconstruye mes a mes "
+                "desde las series de sus componentes y se contrasta con las ventas en "
+                "supermercados a precios constantes (serie desestacionalizada del INDEC), que no "
+                "integran el índice. Las dos se leen contra el mismo punto de partida, el último "
+                "trimestre de 2023. La correlación esperada es positiva."),
+        "serie_label": "ITVC (reconstrucción mensual)",
+        "externa_label": "consumo en supermercados (precios constantes)",
+        "trans_label": "ambas series con base 100 en el cuarto trimestre de 2023",
+        "conclusion": " ".join(partes),
     }
-
 
 def _validacion_itcm(bloque):
     """Anexa al bloque ITCM su validación externa: la serie mensual del índice
@@ -1168,7 +1193,7 @@ def _validacion_cruzada(informe):
     cuatro índices reconstruidos contra los CUATRO contrastes externos a la
     vez. Validez convergente + discriminante: cada índice debe correlacionar
     más fuerte con su par teórico (ITCM ↔ actividad · ITCG ↔ Merval ·
-    ITVC ↔ ICC · ITCP ↔ EPU Argentina) que con el contraste ajeno — la prueba
+    ITVC ↔ consumo · ITCP ↔ EPU Argentina) que con el contraste ajeno — la prueba
     de que no miden "todo junto". Hoy no se cumple en todos, y la conclusión lo
     declara con el detalle derivado de los números."""
     try:
@@ -1187,7 +1212,7 @@ def _validacion_cruzada(informe):
     # índice.
     externas = {"lider": {p[0]: p[2] for p in bloques["ITCM"]},
                 "merval": {p[0]: p[2] for p in bloques["ITCG"]},
-                "icc": {p[0]: p[2] for p in bloques["ITVC"]},
+                "consumo": {p[0]: p[2] for p in bloques["ITVC"]},
                 "epu": {p[0]: p[2] for p in bloques["ITCP"]}}
 
     def _r(a, b):
@@ -1201,7 +1226,7 @@ def _validacion_cruzada(informe):
         ms = sorted(s)
         return {ms[i]: s[ms[i]] - s[ms[i - 1]] for i in range(1, len(ms))}
 
-    PAR_PROPIO = {"ITCM": "lider", "ITCG": "merval", "ITVC": "icc", "ITCP": "epu"}
+    PAR_PROPIO = {"ITCM": "lider", "ITCG": "merval", "ITVC": "consumo", "ITCP": "epu"}
     filas = []
     for ik in ("ITCM", "ITCG", "ITVC", "ITCP"):
         fila = {"indice": ik, "propio": PAR_PROPIO[ik]}
@@ -1225,7 +1250,7 @@ def _validacion_cruzada(informe):
     # actividad y su par propio quedó por debajo de dos ajenos. La frase se
     # recalcula en cada corrida para que no pueda sobreafirmar.
     ETIQ = {"lider": "la actividad", "merval": "el Merval",
-            "icc": "la confianza del consumidor", "epu": "la incertidumbre de política"}
+            "consumo": "el consumo medido", "epu": "la incertidumbre de política"}
     superados = []
     for f in filas:
         propio = abs(f[f["propio"]]["r"])
@@ -1249,21 +1274,21 @@ def _validacion_cruzada(informe):
     informe["validacion_cruzada"] = {
         "filas": filas,
         "externas": [["lider", "Actividad (Índice Líder UTDT)"], ["merval", "Merval en USD"],
-                     ["icc", "Confianza del consumidor (ICC UTDT)"],
+                     ["consumo", "Consumo en supermercados (precios constantes)"],
                      ["epu", "Incertidumbre de política (EPU Argentina)"]],
         "titulo": "¿Cada índice mide lo suyo?",
         "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro "
                 "contrastes externos a la vez — cada uno tiene el propio: la macroeconomía "
                 "(ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de "
-                "las empresas en dólares, la vida cotidiana (ITVC) con la confianza del "
-                "consumidor, la política (ITCP) con la incertidumbre de política que mide la "
+                "las empresas en dólares, la vida cotidiana (ITVC) con el consumo medido en "
+                "supermercados, la política (ITCP) con la incertidumbre de política que mide la "
                 "prensa (EPU Argentina). Si cada índice mide su propio terreno, debería "
                 "correlacionar con su par natural al menos tanto como con los ajenos. Es la "
                 "prueba clásica de que un indicador no mide \"todo junto\"."),
         "conclusion": (f"Los cuatro pares propios dan el signo esperado: ITCM "
                        f"{fmt(f_itcm['lider']['r'])} con la actividad, ITCG "
                        f"{fmt(f_itcg['merval']['r'])} con el Merval en dólares, ITVC "
-                       f"{fmt(f_itvc['icc']['r'])} con la confianza del consumidor, ITCP "
+                       f"{fmt(f_itvc['consumo']['r'])} con el consumo medido, ITCP "
                        f"{fmt(f_itcp['epu']['r'])} con la incertidumbre de política — este último "
                        f"más moderado que los otros tres, coherente con un índice con varios "
                        f"componentes recién automatizados y con historia corta. "

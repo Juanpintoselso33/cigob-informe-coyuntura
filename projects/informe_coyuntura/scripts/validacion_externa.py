@@ -3,8 +3,13 @@
 Paso 9 del Handbook JRC/OCDE ("links to other variables"): si el índice mide
 lo que dice medir, debería co-moverse con variables externas relacionadas que
 NO lo componen. Dos estudios:
-  * ITVC (condiciones materiales de la vida cotidiana) contra el ICC de UTDT
-    (percepción del consumidor) — correlación positiva esperada.
+  * ITVC (condiciones materiales de la vida cotidiana) contra el CONSUMO medido:
+    ventas en supermercados a precios constantes, serie desestacionalizada del
+    INDEC — correlación positiva esperada. Fue el ICC de UTDT hasta jul-2026;
+    se reemplazó porque el ICC ES un componente del ITVC (6,75%), lo que
+    obligaba a publicar un índice artificial «sin ICC», y porque un tercio del
+    peso del ITVC correlaciona NEGATIVO contra él (ADR-0155). El ICC queda como
+    contraste DISCRIMINANTE: mide si la percepción sigue a las condiciones.
   * ITCM (tensión macroeconómica, reconstrucción mensual desde las series de
     componentes con puntaje interpolado) contra el ÍNDICE LÍDER de la UTDT
     (marcha de la actividad) — correlación POSITIVA esperada: menos tensión
@@ -49,6 +54,15 @@ import itvc
 import parametrica
 import publicar
 
+# Ventas en supermercados a precios constantes, SERIE DESESTACIONALIZADA del
+# INDEC (vía datos.gob.ar). Es el ancla del ITVC desde ADR-0155.
+#
+# Ojo con la variante: la serie ORIGINAL tiene una estacionalidad enorme y
+# suavizarla con una media móvil de 12 meses la atrasa medio año — probado, y
+# el atraso INVIERTE el signo de la correlación (−0,514 con media móvil contra
+# +0,563 con la desestacionalizada del organismo). Usar la que publica el INDEC.
+CONSUMO_SUPER_ID = "455.1_VENTAS_PREADA_0_M_44_44"
+SERIES_API = "https://apis.datos.gob.ar/series/api/series"
 MERVAL_YAHOO_URL = "https://query1.finance.yahoo.com/v8/finance/chart/%5EMERV"
 CCL_URL = "https://api.argentinadatos.com/v1/cotizaciones/dolares/contadoconliqui"
 EPU_LATAM_URL = ("https://www.bde.es/f/webbe/SES/AnalisisEconomico/AnalisisEconomico/"
@@ -684,6 +698,35 @@ def _valores_itcp_por_mes(directos: dict | None = None, ult: str | None = None) 
     return out
 
 
+def fetch_consumo_supermercados_mensual() -> dict:
+    """{YYYY-MM: índice base 100 = 4T-2023} del consumo medido en supermercados.
+
+    Ancla del ITVC (ADR-0155). Ventas a precios constantes, serie
+    desestacionalizada del INDEC, rebaseada al mismo 4T-2023 que usan los
+    componentes del índice para que las dos series se lean en la misma escala.
+
+    Por qué ésta y no el ICC: el ICC es un COMPONENTE del ITVC (6,75%), así que
+    validar contra él exigía publicar un índice artificial «sin ICC»; y en el
+    período medido un tercio del peso del ITVC correlaciona negativo contra el
+    ICC, porque la confianza subió mientras alquiler, pobreza, mora e
+    informalidad empeoraban. El consumo medido no compone el índice y da +0,563
+    en niveles contra +0,337 del ICC.
+
+    Lo que NO cubre, y va declarado en la ficha: comercio registrado de
+    supermercados. No ve el comercio informal, y el traslado de compras al canal
+    mayorista/discounter —que correlaciona NEGATIVO (−0,16)— no entra acá.
+    """
+    r = requests.get(SERIES_API, params={"ids": CONSUMO_SUPER_ID, "limit": 5000,
+                                        "format": "json"}, timeout=60)
+    r.raise_for_status()
+    serie = {f[:7]: float(v) for f, v in r.json()["data"] if v is not None}
+    base = [serie[m] for m in BASE_MESES if m in serie]
+    if len(base) < len(BASE_MESES):
+        raise ValueError("consumo: falta algún mes del 4T-2023 para la base")
+    prom = sum(base) / len(base)
+    return {m: round(100.0 * v / prom, 2) for m, v in serie.items()}
+
+
 def fetch_merval_usd_mensual() -> dict:
     """{YYYY-MM: Merval en USD} — cierre mensual del índice Merval (Yahoo
     Finance, ^MERV) sobre el CCL promedio del mes (ArgentinaDatos). Es el par
@@ -907,13 +950,29 @@ def main():
     resultados["serie_itvc"] = itvc_full
     resultados["serie_itvc_sin_icc"] = itvc_sin
 
-    pares = {
-        "niveles (ITVC sin ICC vs ICC)": (itvc_sin, icc),
-        "niveles (ITVC completo vs ICC — con circularidad 7,5%)": (itvc_full, icc),
-        "primeras diferencias (sin ICC)": (_difs(itvc_sin), _difs(icc)),
-        "ITVC sin ICC adelantado 1 mes vs ICC": (_lag(itvc_sin, 1), icc),
-        "ICC adelantado 1 mes vs ITVC sin ICC": (itvc_sin, _lag(icc, 1)),
-    }
+    # Ancla: el consumo medido. NO compone el índice, así que la comparación usa
+    # el ITVC COMPLETO —el que efectivamente se publica— y no una variante.
+    try:
+        consumo = fetch_consumo_supermercados_mensual()
+        resultados["consumo_supermercados_mensual"] = consumo
+    except Exception as e:
+        print(f"[WARN] consumo de supermercados no disponible: {e}")
+        consumo = {}
+    pares = {}
+    if consumo:
+        pares.update({
+            "niveles (ITVC vs consumo)": (itvc_full, consumo),
+            "primeras diferencias (ITVC vs consumo)": (_difs(itvc_full), _difs(consumo)),
+            "ITVC adelantado 1 mes vs consumo": (_lag(itvc_full, 1), consumo),
+            "consumo adelantado 1 mes vs ITVC": (itvc_full, _lag(consumo, 1)),
+        })
+    # El ICC queda como contraste DISCRIMINANTE, no como ancla: mide si la
+    # percepción sigue a las condiciones materiales. Sigue necesitando la
+    # variante sin ICC, porque el ICC sí compone el índice.
+    pares.update({
+        "discriminante: ITVC sin ICC vs ICC (niveles)": (itvc_sin, icc),
+        "discriminante: ITVC sin ICC vs ICC (diferencias)": (_difs(itvc_sin), _difs(icc)),
+    })
     resultados["correlaciones"] = {}
     print("\ncorrelaciones (Pearson):")
     for nombre, (a, b) in pares.items():

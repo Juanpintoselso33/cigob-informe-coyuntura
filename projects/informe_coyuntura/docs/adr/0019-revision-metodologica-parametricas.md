@@ -215,6 +215,16 @@ bloque Monte Carlo), con el gráfico de co-movimiento y las correlaciones;
 `publicar._validacion_*` embebe el estudio en el snapshot — correr
 `validacion_externa.py` lo actualiza.
 
+> **ACTUALIZADO (30-jul-2026, ADR-0154 y sus enmiendas).** El ancla del ITCM
+> **ya no es el riesgo país**: pasó a ser el Índice Líder de la UTDT, y el
+> reemplazo es total — el riesgo país no se calcula ni se nombra más en el
+> informe. El motivo está medido: acompañaba al índice en niveles (−0,82) pero
+> daba **−0,08 en primeras diferencias**, o sea que fuera de la tendencia común
+> del período no validaba nada. Lo que sigue vigente de esta sección es el
+> DISEÑO —reconstruir el índice mes a mes y contrastarlo contra una variable
+> externa que no lo compone— y el criterio que de acá salió. Los números de
+> abajo son los de julio de 2026 y se conservan como registro de la decisión.
+
 **Ampliación (03-jul-2026): ITCM ↔ riesgo país.** El estudio reconstruye
 también la serie mensual del ITCM (10 de 12 componentes tienen serie; sin
 capítulo inversión ni overrides — el nivel difiere del publicado, valida la
