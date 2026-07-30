@@ -1200,6 +1200,48 @@ def main():
     except Exception as e:
         print(f"[WARN] Índice Construya no disponible: {e}")
 
+    # ── Dispersión de los componentes del ITVC (ADR-0160) ──────────────────
+    # El índice casi no se mueve porque sus componentes se compensan. El neto
+    # solo, sin la dispersión al lado, dice "sin cambios" donde el dato dice
+    # "no cambió en neto pero se recompuso fuerte por dentro".
+    try:
+        import statistics as _st
+        _por_mes = _valores_itvc_por_mes()
+        _serie_disp = {}
+        for _mes in sorted(_por_mes):
+            _vals = {c: v for c, v in _por_mes[_mes].items() if v is not None}
+            if len(_vals) < 8:
+                continue
+            _r = itvc.calcular_itvc(dict(_vals))
+            if not _r:
+                continue
+            _lo = min(_vals, key=_vals.get)
+            _hi = max(_vals, key=_vals.get)
+            _serie_disp[_mes] = {
+                "itvc": _r["valor"],
+                "rango": round(_vals[_hi] - _vals[_lo], 1),
+                "desvio": round(_st.pstdev(_vals.values()), 1),
+                "min": {"componente": _lo, "valor": round(_vals[_lo], 1)},
+                "max": {"componente": _hi, "valor": round(_vals[_hi], 1)},
+                "n": len(_vals),
+            }
+        if _serie_disp:
+            _ms = sorted(_serie_disp)
+            _pri, _ult = _serie_disp[_ms[0]], _serie_disp[_ms[-1]]
+            resultados["dispersion_itvc"] = {
+                "serie": _serie_disp,
+                "primero": {"mes": _ms[0], **_pri},
+                "ultimo": {"mes": _ms[-1], **_ult},
+                "movimiento_neto": round(abs(_ult["itvc"] - _pri["itvc"]), 1),
+            }
+            print("")
+            print("dispersión de los componentes del ITVC:")
+            print(f"  rango {_pri['rango']} ({_ms[0]}) → {_ult['rango']} ({_ms[-1]})"
+                  f" · desvío {_pri['desvio']} → {_ult['desvio']}"
+                  f" · movimiento NETO del índice: {resultados['dispersion_itvc']['movimiento_neto']}")
+    except Exception as e:
+        print(f"[WARN] dispersión del ITVC no disponible: {e}")
+
     # ── Panel de validación socioeconómica (ADR-0159) ──────────────────────
     # El ITVC/ITCG/ITCP no tienen serie de referencia: se comparan contra VARIAS
     # estadísticas relacionadas y las diferencias se explican. El ITCM tiene su

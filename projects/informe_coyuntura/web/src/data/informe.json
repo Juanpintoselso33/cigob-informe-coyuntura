@@ -2708,7 +2708,490 @@
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
           "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 16 componentes que tienen serie histórica, 120 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,391: ni componentes independientes ni una sola señal repetida. Un 14% de los pares se mueve muy junto (por encima de 0,7) y un 42% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,188 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 17 pares que superan el umbral en niveles, 14 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
+          "conclusion": "La correlación media entre pares es 0,391: ni componentes independientes ni una sola señal repetida. Un 14% de los pares se mueve muy junto (por encima de 0,7) y un 42% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,188 y ningún par supera el umbral. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 17 pares que superan el umbral en niveles, 14 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado. Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve tan poco: sus componentes se compensan. Al arranque del período iban de 87,8 a 107,7 —un rango de 19,9 puntos— y en el último mes van de 17,2 a 140,0, un rango de 122,8. El índice, en cambio, se movió 5,0 puntos netos en todo el período. El promedio dice que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como otras empeoraron, y hoy están seis veces más separadas entre sí que al principio."
+        },
+        "dispersion": {
+          "serie": {
+            "2023-12": {
+              "itvc": 95.6,
+              "rango": 19.9,
+              "desvio": 5.1,
+              "min": {
+                "componente": "brecha_salario_cbt",
+                "valor": 87.8
+              },
+              "max": {
+                "componente": "alquiler_real",
+                "valor": 107.7
+              },
+              "n": 14
+            },
+            "2024-01": {
+              "itvc": 92.4,
+              "rango": 43.1,
+              "desvio": 10.4,
+              "min": {
+                "componente": "icc_utdt",
+                "valor": 74.7
+              },
+              "max": {
+                "componente": "alquiler_real",
+                "valor": 117.8
+              },
+              "n": 15
+            },
+            "2024-02": {
+              "itvc": 91.5,
+              "rango": 33.7,
+              "desvio": 10.8,
+              "min": {
+                "componente": "despacho_cemento",
+                "valor": 76.4
+              },
+              "max": {
+                "componente": "alquiler_real",
+                "valor": 110.1
+              },
+              "n": 15
+            },
+            "2024-03": {
+              "itvc": 90.6,
+              "rango": 50.6,
+              "desvio": 13.6,
+              "min": {
+                "componente": "despacho_cemento",
+                "valor": 66.1
+              },
+              "max": {
+                "componente": "inseguridad",
+                "valor": 116.7
+              },
+              "n": 15
+            },
+            "2024-04": {
+              "itvc": 91.8,
+              "rango": 64.0,
+              "desvio": 14.4,
+              "min": {
+                "componente": "despacho_cemento",
+                "valor": 66.0
+              },
+              "max": {
+                "componente": "inseguridad",
+                "valor": 130.0
+              },
+              "n": 15
+            },
+            "2024-05": {
+              "itvc": 92.8,
+              "rango": 56.2,
+              "desvio": 12.6,
+              "min": {
+                "componente": "despacho_cemento",
+                "valor": 71.5
+              },
+              "max": {
+                "componente": "inseguridad",
+                "valor": 127.7
+              },
+              "n": 15
+            },
+            "2024-06": {
+              "itvc": 92.3,
+              "rango": 40.4,
+              "desvio": 11.9,
+              "min": {
+                "componente": "despacho_cemento",
+                "valor": 73.7
+              },
+              "max": {
+                "componente": "sentimiento_digital",
+                "valor": 114.1
+              },
+              "n": 15
+            },
+            "2024-07": {
+              "itvc": 94.3,
+              "rango": 50.9,
+              "desvio": 13.6,
+              "min": {
+                "componente": "peso_tarifas",
+                "valor": 75.5
+              },
+              "max": {
+                "componente": "sentimiento_digital",
+                "valor": 126.4
+              },
+              "n": 15
+            },
+            "2024-08": {
+              "itvc": 95.0,
+              "rango": 43.7,
+              "desvio": 12.1,
+              "min": {
+                "componente": "peso_tarifas",
+                "valor": 74.0
+              },
+              "max": {
+                "componente": "inseguridad",
+                "valor": 117.7
+              },
+              "n": 15
+            },
+            "2024-09": {
+              "itvc": 93.7,
+              "rango": 44.9,
+              "desvio": 11.6,
+              "min": {
+                "componente": "peso_tarifas",
+                "valor": 73.8
+              },
+              "max": {
+                "componente": "sentimiento_digital",
+                "valor": 118.7
+              },
+              "n": 15
+            },
+            "2024-10": {
+              "itvc": 96.2,
+              "rango": 44.5,
+              "desvio": 12.2,
+              "min": {
+                "componente": "alquiler_real",
+                "valor": 74.2
+              },
+              "max": {
+                "componente": "sentimiento_digital",
+                "valor": 118.7
+              },
+              "n": 15
+            },
+            "2024-11": {
+              "itvc": 97.5,
+              "rango": 44.0,
+              "desvio": 12.0,
+              "min": {
+                "componente": "alquiler_real",
+                "valor": 72.9
+              },
+              "max": {
+                "componente": "sentimiento_digital",
+                "valor": 116.9
+              },
+              "n": 15
+            },
+            "2024-12": {
+              "itvc": 97.3,
+              "rango": 51.4,
+              "desvio": 13.1,
+              "min": {
+                "componente": "alquiler_real",
+                "valor": 71.0
+              },
+              "max": {
+                "componente": "sentimiento_digital",
+                "valor": 122.4
+              },
+              "n": 15
+            },
+            "2025-01": {
+              "itvc": 98.1,
+              "rango": 42.5,
+              "desvio": 12.7,
+              "min": {
+                "componente": "alquiler_real",
+                "valor": 70.9
+              },
+              "max": {
+                "componente": "sentimiento_digital",
+                "valor": 113.4
+              },
+              "n": 16
+            },
+            "2025-02": {
+              "itvc": 98.9,
+              "rango": 46.6,
+              "desvio": 14.0,
+              "min": {
+                "componente": "alquiler_real",
+                "valor": 70.3
+              },
+              "max": {
+                "componente": "sentimiento_digital",
+                "valor": 116.9
+              },
+              "n": 16
+            },
+            "2025-03": {
+              "itvc": 96.1,
+              "rango": 52.8,
+              "desvio": 14.9,
+              "min": {
+                "componente": "alquiler_real",
+                "valor": 70.8
+              },
+              "max": {
+                "componente": "sentimiento_digital",
+                "valor": 123.6
+              },
+              "n": 16
+            },
+            "2025-04": {
+              "itvc": 95.9,
+              "rango": 55.0,
+              "desvio": 15.8,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 64.3
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 119.3
+              },
+              "n": 16
+            },
+            "2025-05": {
+              "itvc": 94.4,
+              "rango": 70.7,
+              "desvio": 17.6,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 51.5
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 122.2
+              },
+              "n": 16
+            },
+            "2025-06": {
+              "itvc": 96.4,
+              "rango": 82.7,
+              "desvio": 21.4,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 44.2
+              },
+              "max": {
+                "componente": "pobreza_nowcast",
+                "valor": 126.9
+              },
+              "n": 16
+            },
+            "2025-07": {
+              "itvc": 97.9,
+              "rango": 88.9,
+              "desvio": 23.2,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 40.0
+              },
+              "max": {
+                "componente": "pobreza_nowcast",
+                "valor": 128.9
+              },
+              "n": 16
+            },
+            "2025-08": {
+              "itvc": 94.9,
+              "rango": 95.3,
+              "desvio": 23.5,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 33.6
+              },
+              "max": {
+                "componente": "pobreza_nowcast",
+                "valor": 128.9
+              },
+              "n": 16
+            },
+            "2025-09": {
+              "itvc": 96.1,
+              "rango": 101.9,
+              "desvio": 25.8,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 30.3
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 132.2
+              },
+              "n": 16
+            },
+            "2025-10": {
+              "itvc": 96.4,
+              "rango": 111.5,
+              "desvio": 27.6,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 28.5
+              },
+              "max": {
+                "componente": "inseguridad",
+                "valor": 140.0
+              },
+              "n": 16
+            },
+            "2025-11": {
+              "itvc": 94.9,
+              "rango": 115.2,
+              "desvio": 28.2,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 24.8
+              },
+              "max": {
+                "componente": "inseguridad",
+                "valor": 140.0
+              },
+              "n": 16
+            },
+            "2025-12": {
+              "itvc": 94.7,
+              "rango": 114.6,
+              "desvio": 27.4,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 23.6
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 138.2
+              },
+              "n": 16
+            },
+            "2026-01": {
+              "itvc": 92.6,
+              "rango": 119.3,
+              "desvio": 26.8,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 20.7
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 140.0
+              },
+              "n": 16
+            },
+            "2026-02": {
+              "itvc": 92.3,
+              "rango": 120.4,
+              "desvio": 27.3,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 19.6
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 140.0
+              },
+              "n": 16
+            },
+            "2026-03": {
+              "itvc": 91.6,
+              "rango": 121.0,
+              "desvio": 27.4,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 19.0
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 140.0
+              },
+              "n": 16
+            },
+            "2026-04": {
+              "itvc": 91.2,
+              "rango": 121.7,
+              "desvio": 27.8,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 18.3
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 140.0
+              },
+              "n": 16
+            },
+            "2026-05": {
+              "itvc": 91.1,
+              "rango": 122.8,
+              "desvio": 27.3,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 17.2
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 140.0
+              },
+              "n": 16
+            },
+            "2026-06": {
+              "itvc": 91.0,
+              "rango": 122.8,
+              "desvio": 28.5,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 17.2
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 140.0
+              },
+              "n": 16
+            },
+            "2026-07": {
+              "itvc": 90.6,
+              "rango": 122.8,
+              "desvio": 28.5,
+              "min": {
+                "componente": "mora_familias",
+                "valor": 17.2
+              },
+              "max": {
+                "componente": "patentamiento_motos",
+                "valor": 140.0
+              },
+              "n": 16
+            }
+          },
+          "primero": {
+            "mes": "2023-12",
+            "itvc": 95.6,
+            "rango": 19.9,
+            "desvio": 5.1,
+            "min": {
+              "componente": "brecha_salario_cbt",
+              "valor": 87.8
+            },
+            "max": {
+              "componente": "alquiler_real",
+              "valor": 107.7
+            },
+            "n": 14
+          },
+          "ultimo": {
+            "mes": "2026-07",
+            "itvc": 90.6,
+            "rango": 122.8,
+            "desvio": 28.5,
+            "min": {
+              "componente": "mora_familias",
+              "valor": 17.2
+            },
+            "max": {
+              "componente": "patentamiento_motos",
+              "valor": 140.0
+            },
+            "n": 16
+          },
+          "movimiento_neto": 5.0
         },
         "vintages": {
           "dias_promedio": 90,

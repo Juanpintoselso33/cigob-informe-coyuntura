@@ -869,6 +869,54 @@ def _panel_socioeconomico(bloque, sigla: str):
     bloque["validacion"]["conclusion"] += " " + texto
 
 
+def _dispersion_itvc(bloque):
+    """Anexa al ITVC la dispersión de sus componentes (ADR-0160).
+
+    El índice se mueve muy poco —5 puntos netos en 32 meses— porque sus
+    componentes se compensan entre sí. Publicar el neto solo dice «sin cambios»
+    donde el dato dice «no cambió en neto pero se recompuso fuerte por dentro».
+
+    Va dentro de la sección de consistencia interna, que es donde el lector ya
+    está mirando cómo se relacionan los componentes: la dispersión explica el
+    resultado de esa misma sección — si se separaron tanto es porque no repiten.
+
+    La prosa NO nombra componentes: en este archivo se emiten las claves y las
+    etiquetas legibles viven en el front. Los nombres van en el campo de datos.
+    """
+    if not bloque or not bloque.get("redundancia"):
+        return
+    d = _cargar_validacion().get("dispersion_itvc") or {}
+    if not d.get("ultimo") or not d.get("primero"):
+        return
+    pri, ult = d["primero"], d["ultimo"]
+    bloque["dispersion"] = d
+    bloque["redundancia"]["conclusion"] += (
+        f" Hay un dato que conviene leer junto a éste, porque explica por qué el índice se mueve "
+        f"tan poco: sus componentes se compensan. Al arranque del período iban de "
+        f"{coma(pri['min']['valor'])} a {coma(pri['max']['valor'])} —un rango de "
+        f"{coma(pri['rango'])} puntos— y en el último mes van de {coma(ult['min']['valor'])} a "
+        f"{coma(ult['max']['valor'])}, un rango de {coma(ult['rango'])}. El índice, en cambio, se "
+        f"movió {coma(d['movimiento_neto'])} puntos netos en todo el período. El promedio dice "
+        f"que las condiciones materiales no cambiaron mucho en conjunto, y es cierto; lo que el "
+        f"número solo no muestra es que por dentro se recompusieron: unas mejoraron tanto como "
+        f"otras empeoraron{_veces_mas_separadas(pri, ult)}."
+    )
+
+
+def _veces_mas_separadas(pri, ult) -> str:
+    """«N veces más separadas» DERIVADO, no escrito a mano (ADR-0156): es una
+    afirmación sobre el estado de hoy y caduca sola."""
+    if not pri.get("rango"):
+        return ""
+    veces = ult["rango"] / pri["rango"]
+    if veces < 1.5:
+        return ""
+    palabra = {2: "dos", 3: "tres", 4: "cuatro", 5: "cinco", 6: "seis", 7: "siete",
+               8: "ocho", 9: "nueve", 10: "diez"}.get(round(veces))
+    cuanto = palabra + " veces" if palabra else f"{coma(round(veces, 1))} veces"
+    return f", y hoy están {cuanto} más separadas entre sí que al principio"
+
+
 def _redundancia(bloque, clave_val: str):
     """Anexa a un bloque de índice la matriz de correlación ENTRE SUS PROPIOS
     componentes (auditoría de consistencia, jul-2026; genérica desde ADR-0085).
@@ -1632,6 +1680,7 @@ def aplicar_scoring(informe, series):
             # patentamiento_motos aporta señal propia frente al ICC (ADR-0108).
             _panel_socioeconomico(c["itvc"], "itvc")
             _redundancia(c["itvc"], "redundancia_itvc")
+            _dispersion_itvc(c["itvc"])
             # El ITVC es el cinturón con más dispersión de vintages de los
             # cuatro: la EPH es trimestral y sostiene dos componentes, uno de
             # ellos en la dimensión de mayor peso. Prioridad alta de la
