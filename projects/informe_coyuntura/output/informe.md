@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-29 16:02:30"
+generado: "2026-07-29 22:18:38"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -13,7 +13,7 @@ schema_version: "1.2.0"
 
 ## Cinturones
 
-### 🟡 Macro — score 3.7/10 (en_tension)
+### 🟡 Macro — score 3.9/10 (en_tension)
 *Riesgo de barbarismo: tecnocrático*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -21,12 +21,12 @@ schema_version: "1.2.0"
 | ipc_total | 1.89 | % mensual | 2026-06-01 | fresco |
 | reservas_bcra | 4885.0 | Millones de USD | 2026-06-30 | fresco |
 | idc | -0.25 | σ vs. su historia | 2026-06-01 | fresco |
-| badlar | 20.94 | % anual | 2026-07-27 | fresco |
+| badlar | 22.0 | % anual | 2026-07-28 | fresco |
 | emae_ia | 0.24 | % i.a. | 2026-05-01 | fresco |
 | emae_difusion | 53.33 | % de sectores en crecimiento i.a. | 2026-05-01 | fresco |
 | ipi_manufacturero | -1.07 | % i.a. (promedio 3 meses) | 2026-05-01 | fresco |
 | saldo_comercial_12m | 22481.0 | Millones de USD (acum. 12 meses) | 2026-06-01 | fresco |
-| recaudacion | 3.3 | % i.a. real (prom. móvil 3 meses) | 2026-06-01 | fresco |
+| recaudacion | 88.2 | índice (100 = 4T-2023) | 2026-06-01 | fresco |
 | tcrm | 84.97 | Índice (base dic-2015=100) | 2026-06-01 | fresco |
 | rem_ipc_12m | 22.3 | % anual esperado | 2026-06-30 | fresco |
 | idm | 6.24 | pp (brecha i.a. real) | 2026-06-01 | fresco |
@@ -36,9 +36,9 @@ schema_version: "1.2.0"
 | credito_privado | 8.3 | % i.a. real | 2026-06-01 | fresco |
 | costo_financiamiento_tesoro | 8.07 | % real anual (TIREA vs. inflación esperada REM) | 2026-06-01 | fresco |
 | resultado_primario | 5.55 | % de la recaudación (acum. 12 meses) | 2026-06-01 | fresco |
-| prestamos_privados | 2.06 | % mensual nominal | 2026-07-24 | fresco |
-| base_monetaria | 5.32 | % mensual nominal | 2026-07-24 | fresco |
-| tc_mayorista | 1.13 | % mensual | 2026-07-28 | fresco |
+| prestamos_privados | 1.41 | % mensual nominal | 2026-07-27 | fresco |
+| base_monetaria | 3.05 | % mensual nominal | 2026-07-27 | fresco |
+| tc_mayorista | 0.58 | % mensual | 2026-07-29 | fresco |
 
 ### 🟡 Politica — score 3.6/10 (en_tension)
 *Riesgo de barbarismo: político*
@@ -108,4 +108,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-29 16:02:30 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-29 22:18:38 — schema 1.2.0*

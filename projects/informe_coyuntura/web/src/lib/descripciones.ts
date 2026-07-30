@@ -63,9 +63,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Nivel (acum. 12m)",
   },
   recaudacion: {
-    que: "Cuánto recauda el Estado en impuestos internos —el IVA doméstico, Ganancias, créditos y débitos— medido en términos reales: la variación contra el mismo mes del año anterior, descontada la inflación y promediada sobre los últimos tres meses para filtrar el calendario tributario. Deja afuera la recaudación aduanera y los aportes a la seguridad social, que se publican como contexto.",
-    aporta: "Mide el tamaño de la base imponible y el nivel de actividad, no la caja del Estado. Por eso excluye la aduana: cuando el Gobierno baja retenciones, la recaudación total cae porque así se decidió, y contar esa caída como deterioro sería puntuar como fracaso el cumplimiento de una promesa. Lo que este indicador sigue es si hay más o menos economía formal para gravar.",
-    frecuencia: "Mensual", tipo: "Variación i.a. real (prom. 3 meses)",
+    que: "Cuánta economía formal hay para gravar, medida en pesos constantes y comparada contra el cuarto trimestre de 2023, que vale 100. Suma los impuestos internos de la Nación —IVA doméstico, Ganancias, créditos y débitos— y el Impuesto sobre los Ingresos Brutos de las empresas que operan en varias provincias, con sus regímenes de retención. Se corrige la estacionalidad del calendario tributario, que concentra la recaudación en mayo y junio.",
+    aporta: "Mide el tamaño de la base imponible y el nivel de actividad, no la caja del Estado. Por eso excluye la aduana: cuando el Gobierno baja retenciones, la recaudación total cae porque así se decidió, y contar esa caída como deterioro sería puntuar como fracaso el cumplimiento de una promesa. Un nivel por debajo de 100 dice que hay menos economía formal para gravar que en la transición, con independencia de cómo venga la comparación contra el año anterior.",
+    frecuencia: "Mensual", tipo: "Índice de base imponible real (100 = 4T-2023)",
   },
   tcrm: {
     que: "Si el peso está caro o barato frente a los socios comerciales, en términos reales (competitividad cambiaria). Mide la dimensión de competitividad externa del índice.",

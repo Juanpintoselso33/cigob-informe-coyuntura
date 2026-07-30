@@ -1,8 +1,10 @@
-"""Tests del cambio de recaudación total → DGI (ADR-0127)."""
+"""Tests del indicador de recaudación: fuente DGI (ADR-0127) y métrica de NIVEL
+de base imponible real desestacionalizada, nación + provincias (ADR-0152)."""
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+REPO = Path(__file__).parent.parent
+sys.path.insert(0, str(REPO / "scripts"))
 import itcm
 import macro
 import parametrica
@@ -36,20 +38,40 @@ def test_el_resultado_primario_se_mide_contra_la_recaudacion_TOTAL():
         "de recaudación: su denominador cambiaría al cambiar de serie esa card")
 
 
-def test_las_bandas_no_se_recalibraron():
-    """ADR-0127 cambió la SERIE y no las bandas: misma unidad (% real i.a.) y
-    mismo punto de referencia (el cero). Si alguien las mueve, que sea con un
-    ADR propio y no de arrastre."""
+def test_las_bandas_son_pasos_de_diez_sobre_la_base_de_la_transicion():
+    """ADR-0152 rehizo las bandas porque la métrica dejó de ser una variación.
+
+    Hasta el 29-jul-2026 este test afirmaba lo contrario —que las bandas NO se
+    habían tocado al cambiar de serie en ADR-0127, con el cero de la variación
+    como punto de referencia— y era correcto mientras la unidad fuera «% real
+    interanual». Al pasar a NIVEL de base imponible real con 100 = 4T-2023 esas
+    bandas no eran traducibles: el punto con significado de un nivel base-100 es
+    el 100, no el 0. Los cortes son pasos de diez puntos de la base real de la
+    transición, grilla conceptual y no ajuste a lo observado (ADR-0045).
+
+    Si alguien las mueve, que sea con un ADR propio y no de arrastre.
+    """
     assert itcm.BANDAS_ITCM["recaudacion"] == [
-        (10.0, float("inf"), 100), (5.0, 10.0, 80), (0.0, 5.0, 60),
-        (-5.0, 0.0, 40), (float("-inf"), -5.0, 10),
+        (110.0, float("inf"), 100), (100.0, 110.0, 85), (90.0, 100.0, 60),
+        (80.0, 90.0, 35), (float("-inf"), 80.0, 10),
     ]
 
 
-def test_el_cero_sigue_siendo_el_punto_de_corte_relevante():
-    """Crecer o no crecer en términos reales separa dos bandas."""
-    assert parametrica.puntaje_banda(0.01, itcm.BANDAS_ITCM["recaudacion"]) == 60
-    assert parametrica.puntaje_banda(0.0, itcm.BANDAS_ITCM["recaudacion"]) == 40
+def test_el_cien_es_el_punto_de_corte_relevante():
+    """Igualar o no la base imponible real de la transición separa dos bandas."""
+    assert parametrica.puntaje_banda(100.01, itcm.BANDAS_ITCM["recaudacion"]) == 85
+    assert parametrica.puntaje_banda(99.99, itcm.BANDAS_ITCM["recaudacion"]) == 60
+
+
+def test_la_metrica_es_un_nivel_y_no_una_variacion():
+    """Guarda contra volver a una variación sin tocar las bandas: un valor
+    plausible como variación (+3%) caería en la banda más baja del nivel, y un
+    nivel plausible (95) sería un crecimiento absurdo como variación. Los dos
+    dominios son incompatibles, así que la unidad publicada tiene que decirlo."""
+    assert parametrica.puntaje_banda(3.0, itcm.BANDAS_ITCM["recaudacion"]) == 10
+    unidades = Path(REPO / "web/src/lib/datos.ts").read_text(encoding="utf-8")
+    assert "recaudacion: \"base 100\"" in unidades, (
+        "la unidad corta de la web tiene que declarar que es un nivel base-100")
 
 
 def test_la_serie_y_la_card_comparten_la_constante():

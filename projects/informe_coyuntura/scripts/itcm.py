@@ -122,23 +122,27 @@ BANDAS_ITCM = {
         (-INF, 0.0, 100), (0.0, 25.0, 85), (25.0, 50.0, 60),
         (50.0, 75.0, 35), (75.0, INF, 10),
     ],
-    "recaudacion": [                    # % var DGI (i.a. real, prom. móvil 3m)
-        # ADR-0127 cambió la SERIE (total → DGI) y NO tocó estas bandas: la
-        # unidad sigue siendo variación real interanual y el cero sigue siendo
-        # el punto con significado. Recalibrarlas al cambiar de fuente habría
-        # sido indistinguible de mover el número. Chequeado contra la
-        # distribución pre-mandato de la nueva serie (2021-2023, n=35): mediana
-        # +4,5%, y los cortes caen en p0/p14/p57/p80 — el corte de −5% no se
-        # toca en esa muestra, lo que se declara en la ficha.
-        # Bandas de VARIACIÓN REAL en torno al cero (ADR-0120): el cero es el
-        # punto con significado propio —la recaudación empata a la inflación— y
-        # los cortes de ±5% son medio punto de crecimiento/caída real. A
-        # diferencia del IPC, acá los cortes SÍ caen razonablemente en la
-        # distribución pre-mandato (−5→p22, 0→p41, 5→p48, 10→p96 sobre 2021-2023):
-        # la banda de crecimiento nulo separa de hecho los meses buenos de los
-        # malos de la era anterior. Es una banda conceptual (anclada al cero) que
-        # además resulta consistente con la historia, no una convención del período.
-        (10.0, INF, 100), (5.0, 10.0, 80), (0.0, 5.0, 60), (-5.0, 0.0, 40), (-INF, -5.0, 10),
+    "recaudacion": [                    # índice de base imponible real (100 = 4T-2023)
+        # ANCLAS NUEVAS (ADR-0152). La métrica dejó de ser variación interanual y
+        # pasó a ser NIVEL real desestacionalizado con base 100 = 4T-2023, así que
+        # las bandas viejas no se traducen: estaban ancladas al cero de una
+        # variación, y el punto con significado de un nivel base-100 es el 100 —
+        # la misma base imponible real que en la transición.
+        #
+        # Los cortes son pasos de 10 PUNTOS de esa base, unidad redonda y
+        # conceptual: 10% de la base imponible real de la transición. Se fijaron
+        # sobre esa grilla y no sobre la distribución observada; declarado acá
+        # porque ADR-0045 sólo autoriza calibrar contra lo observado cuando el
+        # extremo es inalcanzable, y no es el caso (la serie llegó a 114,9 en
+        # may-2024 y a 88,2 en jun-2026, o sea que toca dos tramos por arriba y
+        # uno por abajo del 100 sin forzar nada).
+        #
+        # Dónde cae la serie con estas anclas (31 meses desde dic-2023): puntajes
+        # de 43 a 100, mediana del índice 94,4. El puntaje INTERPOLA entre anclas
+        # (ADR-0021), así que la concentración de meses en el tramo 90-100 no
+        # aplana la señal — dentro de ese tramo el puntaje se mueve entre 60 y 85.
+        (110.0, INF, 100), (100.0, 110.0, 85), (90.0, 100.0, 60),
+        (80.0, 90.0, 35), (-INF, 80.0, 10),
     ],
     "saldo_comercial_12m": [            # millones USD acumulado 12m
         # Bandas en torno al EQUILIBRIO comercial (ADR-0120): el cero —comercio

@@ -14,6 +14,7 @@ from pathlib import Path
 from statistics import fmean, pstdev
 
 sys.path.insert(0, str(Path(__file__).parent))
+import comarb
 import itcm
 import presion_dolarizacion
 
@@ -866,72 +867,64 @@ def _real_ia_pm3(nom: dict, ipc: dict) -> dict:
 
 
 def fetch_recaudacion() -> dict | None:
-    """Variación INTERANUAL REAL de la recaudación DGI, PROMEDIO MÓVIL 3 MESES
-    sobre meses con IPC cerrado (ADR-0029 + ADR-0127).
+    """Base imponible REAL desestacionalizada: 100 = promedio del 4T-2023.
 
-    Mide la recaudación de impuestos INTERNOS —IVA doméstico, Ganancias,
-    créditos y débitos— y no el total. El indicador no mide viabilidad fiscal
-    sino la base imponible y la actividad (ADR-0072), y el total mezcla eso con
-    la decisión política sobre el comercio exterior: bajar retenciones hunde la
-    recaudación aduanera sin que se haya deteriorado nada de la economía real.
+    Suma la recaudación de impuestos INTERNOS de la Nación —IVA doméstico,
+    Ganancias, créditos y débitos, no el total (ADR-0127)— y la de los sistemas
+    de la Comisión Arbitral, que es el Impuesto sobre los Ingresos Brutos de los
+    contribuyentes de Convenio Multilateral más los regímenes de retención
+    provinciales. El indicador no mide viabilidad fiscal sino la base imponible y
+    la actividad (ADR-0072): dejar la aduana afuera evita confundir eso con la
+    decisión política sobre el comercio exterior, y sumar lo provincial cubre una
+    porción de la base que la serie nacional no ve.
 
-    El promedio móvil de 3 meses es de ADR-0029: el interanual de un solo mes
-    hereda el calendario tributario (vencimientos de Ganancias, anticipos,
-    bases raras del año previo) y hacía oscilar el índice ±7 puntos por ruido.
-    El mes más fresco (nominal publicado, IPC todavía no) queda como contexto
-    provisorio en el detalle, sin puntuar."""
+    Hasta el 29-jul-2026 la métrica era la variación interanual real con promedio
+    móvil de 3 meses (ADR-0029). Se cambia porque teniendo el dato MENSUAL la
+    interanual desperdicia resolución y arrastra la base de hace un año: con el
+    dato de junio de 2026 informaba +3,3% —«creciendo», contra un 2025 deprimido—
+    mientras el nivel real dice 88,2, es decir 11,8% POR DEBAJO de la transición.
+    Las dos son ciertas y la segunda es la que importa para un índice de tensión.
+
+    El valor es el ÚLTIMO PUNTO de la misma serie que publica
+    `descargar_series.fetch_recaudacion_real_serie`, calculada por
+    `comarb.base_imponible_real_sa` — una sola implementación, así que card y
+    serie no pueden divergir (G3 por construcción, como `apoyo_empresario`)."""
     try:
-        nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_RECAUDACION_ID, limit=30)
+        nom = {r[0][:7]: r[1] for r in _indec_serie(INDEC_RECAUDACION_ID,
+                                                    limit=comarb.LIMITE_MESES)
                if r[1] is not None}
-        ipc = {r[0][:7]: r[1] for r in _indec_serie(INDEC_IPC_ID, limit=30)
+        ipc = {r[0][:7]: r[1] for r in _indec_serie(INDEC_IPC_ID,
+                                                    limit=comarb.LIMITE_MESES)
                if r[1] is not None}
-        real = _real_ia_pm3(nom, ipc)
-        cerrados = sorted(real)[-3:]
-        if len(cerrados) < 3:
-            raise ValueError("recaudación: menos de 3 meses reales con IPC cerrado")
-        valor = fmean(real[ym] for ym in cerrados)
-        detalle = " · ".join(f"{ym}: {real[ym]:+.1f}%" for ym in cerrados)
-        # mes fresco (solo nominal): deflactor provisorio = i.a. del último IPC
-        ult_nom, ult_ipc = max(nom), max(ipc)
-        fresco = ""
-        if ult_nom > cerrados[-1] and _ym_shift(ult_nom, -12) in nom \
-                and _ym_shift(ult_ipc, -12) in ipc:
-            ia_ipc = ipc[ult_ipc] / ipc[_ym_shift(ult_ipc, -12)]
-            prov = ((nom[ult_nom] / nom[_ym_shift(ult_nom, -12)]) / ia_ipc - 1.0) * 100.0
-            fresco = (f" — {ult_nom} (provisorio, no puntúa): {prov:+.1f}% con "
-                      f"deflactor de {ult_ipc}")
-        # Contexto publicado (ADR-0127): el total y la aduana en la misma
-        # métrica. La brecha entre DGI y total es el efecto de la política
-        # tributaria sobre el comercio exterior, y mostrarla es lo que evita
-        # que el cambio de serie parezca un recorte conveniente.
-        contexto = {}
-        for clave, sid in (("total", INDEC_RECAUDACION_TOTAL_ID),
-                           ("aduana", INDEC_RECAUDACION_DGA_ID)):
-            try:
-                otra = {r[0][:7]: r[1] for r in _indec_serie(sid, limit=30)
-                        if r[1] is not None}
-                serie_otra = _real_ia_pm3(otra, ipc)
-                if all(ym in serie_otra for ym in cerrados):
-                    contexto[clave] = round(fmean(serie_otra[ym] for ym in cerrados), 2)
-            except Exception:
-                pass
+        serie = comarb.base_imponible_real_sa(nom, ipc)
+        if not serie:
+            raise ValueError("recaudación: sin ventana suficiente para desestacionalizar")
+        ultimo = max(serie)
+        valor = serie[ultimo]
 
-        comparado = ""
-        if "total" in contexto:
-            comparado = (f" · la recaudación total en la misma ventana varía "
-                         f"{contexto['total']:+.1f}%")
-            if "aduana" in contexto:
-                comparado += f" y la aduanera {contexto['aduana']:+.1f}%"
+        prov = comarb.niveles_cacheados()
+        aporte_prov = (100 * prov[ultimo] / (nom[ultimo] + prov[ultimo])
+                       if ultimo in prov and ultimo in nom else None)
+        # Texto público: coma decimal es-AR, igual que el resto del informe.
+        cm = lambda x: f"{x:.1f}".replace(".", ",")
+        previos = sorted(serie)[-4:-1]
+        detalle = (f"La base imponible real está en {cm(valor)} sobre una base de 100 "
+                   f"en el cuarto trimestre de 2023, es decir "
+                   + (f"{cm(100 - valor)}% por debajo" if valor < 100
+                      else f"{cm(valor - 100)}% por encima") + ". "
+                   + "Meses previos: "
+                   + " · ".join(f"{ym}: {cm(serie[ym])}" for ym in previos) + ".")
+        if aporte_prov is not None:
+            detalle += (f" Los impuestos provinciales del Convenio Multilateral aportan "
+                        f"{cm(aporte_prov)}% de la base medida.")
         return {
-            "valor": round(valor, 2),
-            "unidad": "% i.a. real (prom. móvil 3 meses)",
-            "fuente": "Sec. Hacienda — recaudación DGI, impuestos internos "
-                      "(vía datos.gob.ar)",
-            "fecha_dato": f"{cerrados[-1]}-01",
-            "meses": {ym: round(real[ym], 2) for ym in cerrados},
-            "recaudacion_total_real": contexto.get("total"),
-            "recaudacion_aduana_real": contexto.get("aduana"),
-            "detalle_txt": f"Promedio de {detalle}{fresco}{comparado}",
+            "valor": valor,
+            "unidad": "índice (100 = 4T-2023)",
+            "fuente": "Sec. Hacienda — recaudación DGI (vía datos.gob.ar) + "
+                      "Comisión Arbitral del Convenio Multilateral",
+            "fecha_dato": f"{ultimo}-01",
+            "aporte_provincial_pct": None if aporte_prov is None else round(aporte_prov, 1),
+            "detalle_txt": detalle,
             "desactualizado": False,
         }
     except Exception as e:

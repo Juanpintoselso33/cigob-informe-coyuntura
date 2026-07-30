@@ -26,7 +26,8 @@ import itcm
 #     (ADR-0082): 23,3% anual → 1,76% mensual → 79,8 (banda 85). El fixture pasa
 #     el valor crudo a propósito: si pasara el mensual ya convertido, el motor lo
 #     convertiría de nuevo — que es justo el acoplamiento que ADR-0082 eliminó.
-#   * recaudacion  = variación i.a. REAL (deflactada). 1,82% → 57,3 (banda 60).
+#   * recaudacion  = NIVEL de base imponible real desestacionalizada, 100 = 4T-2023
+#     (ADR-0152, antes era variación i.a. real). 94,4 → 58,5 (banda 60).
 #   * reservas_bcra= NETAS (Machado). 1.881M → 25,0 (banda 30).
 #   * idc          = IdC en z-scores (σ vs. historia, ADR-0028). −0,31 → 49,7 (banda 60).
 #   * idm          = Índice de Desequilibrio Monetario. 4,5 pp → 51,7 (banda 60).
@@ -43,7 +44,9 @@ EJEMPLO = {
     "rem_ipc_12m": 23.3,           # ANUAL crudo → 1,76% mensual → 79,8 (banda 85)
     "idm": 4.5,                    # gap i.a. real: 51,7 (banda 60)
     "presion_dolarizacion": 45.24,   # presión de carteras 0-100: 64,8
-    "recaudacion": 1.82,           # i.a. real: 57,3 (banda 60)
+    # ADR-0152: dejó de ser variación i.a. y pasó a NIVEL de base imponible real
+    # desestacionalizada (100 = 4T-2023). 94,4 es la mediana de la serie observada.
+    "recaudacion": 94.4,
     "resultado_primario": 6.39,    # superávit sobre recaudación 12m: 87,9 (banda 85)
     "saldo_comercial_12m": 17125,  # más allá de la última ancla → 85 plano
     "reservas_bcra": 1881,         # netas: 25,0 (banda 30)
@@ -61,7 +64,7 @@ def test_itcm_reproduce_ejemplo():
     r = itcm.calcular_itcm(EJEMPLO)
     dims = r["dimensiones"]
     assert dims["estabilidad_monetaria"]["puntaje"] == 64.8
-    assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 78.1
+    assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 78.5
     assert dims["financiamiento"]["puntaje"] == 54.7
     assert dims["actividad"]["puntaje"] == 100.0
     assert dims["competitividad_externa"]["puntaje"] == 45.7
@@ -69,7 +72,7 @@ def test_itcm_reproduce_ejemplo():
     ind = dims["financiamiento"]["indicadores"]["credito_privado"]
     assert ind["puntaje_banda"] == 80.0 and ind["peso"] == 0.20
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
-    assert r["valor"] == 66.9
+    assert r["valor"] == 67.0
     assert r["banda"] == "moderadamente_aflojado"
     presion = dims["estabilidad_monetaria"]["indicadores"]["presion_dolarizacion"]
     assert presion["puntaje_aplicado"] == 64.8
@@ -165,7 +168,12 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(5.01, b["ipc_total"]) == 10
     assert itcm.puntaje_banda(5.0, b["emae_ia"]) == 80     # >5 estricto para 100
     assert itcm.puntaje_banda(-5.0, b["emae_ia"]) == 5
-    assert itcm.puntaje_banda(10.0, b["recaudacion"]) == 80
+    # ADR-0152: la recaudación es un NIVEL base-100, no una variación. El borde
+    # relevante es el 100 —igualar la base imponible real de la transición—, y un
+    # valor que antes era una variación buena (+10%) hoy cae en la banda más baja.
+    assert itcm.puntaje_banda(100.0, b["recaudacion"]) == 60
+    assert itcm.puntaje_banda(100.01, b["recaudacion"]) == 85
+    assert itcm.puntaje_banda(10.0, b["recaudacion"]) == 10
     # REM: la banda opera sobre el EQUIVALENTE MENSUAL (misma escala que el IPC)
     assert itcm.puntaje_banda(1.76, b["rem_ipc_12m"]) == 85
     assert itcm.puntaje_banda(2.0, b["rem_ipc_12m"]) == 85
@@ -230,9 +238,9 @@ def test_ajuste_manual_aplicado():
     ajustes = {"saldo_comercial_12m": {
         "puntaje": 60, "justificacion": "Superávit por contracción de importaciones"}}
     r = itcm.calcular_itcm(EJEMPLO, ajustes)
-    # fiscal = 0,5×87,9 (resultado primario) + 0,3×57,3 (recaudación) + 0,2×60 (override) = 73,1
-    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 73.1
-    assert r["valor"] == 65.7
+    # fiscal = 0,5×87,9 (resultado primario) + 0,3×58,5 (recaudación) + 0,2×60 (override) = 73,5
+    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 73.5
+    assert r["valor"] == 65.8
     assert len(r["ajustes_aplicados"]) == 1
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "saldo_comercial_12m" and aj["de"] == 85.0 and aj["a"] == 60
@@ -258,7 +266,7 @@ def test_renormalizacion_indicador_faltante():
     r = itcm.calcular_itcm(valores)
     # (63,7×0.40 + 51,7×0.25 + 64,8×0.10) / 0.75 = 59,85 → 59,8
     assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 59.8
-    assert abs(r["valor"] - 65.6) <= 0.05
+    assert abs(r["valor"] - 65.7) <= 0.05
 
 
 def test_sin_presion_dolarizacion_renormaliza_los_componentes_disponibles():
@@ -274,8 +282,8 @@ def test_renormalizacion_dimension_faltante():
     valores = dict(EJEMPLO, emae_ia=None)
     r = itcm.calcular_itcm(valores)
     assert "actividad" not in r["dimensiones"]
-    # estab=64.8 fiscal=78.1 financ=54.7 compet=45.7 inversión=54.7, sin actividad (0.11)
-    esperado = (0.26 * 64.8 + 0.24 * 78.1 + 0.16 * 54.7 + 0.11 * 45.7 + 0.12 * 54.7) / 0.89
+    # estab=64.8 fiscal=78.5 financ=54.7 compet=45.7 inversión=54.7, sin actividad (0.11)
+    esperado = (0.26 * 64.8 + 0.24 * 78.5 + 0.16 * 54.7 + 0.11 * 45.7 + 0.12 * 54.7) / 0.89
     assert abs(r["valor"] - esperado) <= 0.1
 
 
@@ -305,8 +313,8 @@ def test_ajuste_automatico_saldo_por_contraccion():
     assert aj is not None and aj["puntaje"] == 67.1 and aj["origen"] == "automatico"
     assert "contracción de importaciones" in aj["justificacion"]
     r = itcm.calcular_itcm(dict(EJEMPLO), {"saldo_comercial_12m": aj})
-    # fiscal = 0,5×87,9 (resultado primario) + 0,3×57,3 (recaudación) + 0,2×67,1 (ajuste) = 74,6
-    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 74.6
+    # fiscal = 0,5×87,9 (resultado primario) + 0,3×58,5 (recaudación) + 0,2×67,1 (ajuste) = 74,9
+    assert r["dimensiones"]["viabilidad_fiscal_comercial"]["puntaje"] == 74.9
     assert r["ajustes_aplicados"][0]["origen"] == "automatico"
 
 

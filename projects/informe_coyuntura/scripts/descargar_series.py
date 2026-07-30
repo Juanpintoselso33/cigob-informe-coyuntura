@@ -16,6 +16,7 @@ from datetime import datetime, timedelta, date
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import comarb    # recaudación provincial (Convenio Multilateral) + el cálculo de la base imponible
 import macro     # reutiliza el parser SDDS y las constantes del balance (reservas netas)
 import gestion   # reutiliza el lector del sheet oficial del RIGI + fechas del BO
 import politica  # reutiliza la reconstrucción histórica del Votómetro
@@ -416,21 +417,22 @@ def fetch_cuenta_corriente_serie() -> list:
 
 
 def fetch_recaudacion_real_serie() -> list:
-    """Recaudación DGI: variación i.a. REAL en PROMEDIO MÓVIL 3 MESES — la
-    métrica del titular (ADR-0029: el interanual de un mes suelto hereda el
-    calendario tributario; ADR-0127: DGI y no total, porque el indicador mide
-    la base imponible y no la caja). La serie usa la MISMA constante que la
-    card para que no puedan divergir. [[YYYY-MM-01, %]]."""
-    nominal = {f[:7]: v for f, v in fetch_indec(macro.INDEC_RECAUDACION_ID, limit=72)}
-    ipc = {f[:7]: v for f, v in fetch_indec(IPC_NIVEL_ID, limit=72)}
-    real = {}
-    for ym in sorted(nominal):
-        prev = f"{int(ym[:4]) - 1}{ym[4:]}"
-        if prev in nominal and ym in ipc and prev in ipc:
-            real[ym] = ((nominal[ym] / nominal[prev]) * (ipc[prev] / ipc[ym]) - 1) * 100
-    yms = sorted(real)
-    return [[f"{yms[i]}-01", round(sum(real[y] for y in yms[i - 2:i + 1]) / 3, 2)]
-            for i in range(2, len(yms))]
+    """Base imponible REAL desestacionalizada, 100 = 4T-2023 (nacional DGI +
+    provincial COMARB).
+
+    Reemplaza a la variación interanual con promedio móvil 3 meses que usaba el
+    indicador hasta el 29-jul-2026. El cálculo vive en `comarb`, no acá, porque
+    la card lo necesita idéntico: los factores estacionales dependen de la
+    ventana, así que dos implementaciones —o dos ventanas— divergirían y G3
+    fallaría. Misma disciplina que `apoyo_empresario_serie`.
+    [[YYYY-MM-01, índice]]."""
+    nominal = {f[:7]: v for f, v in fetch_indec(macro.INDEC_RECAUDACION_ID,
+                                                limit=comarb.LIMITE_MESES) if v}
+    ipc = {f[:7]: v for f, v in fetch_indec(IPC_NIVEL_ID, limit=comarb.LIMITE_MESES) if v}
+    serie = comarb.base_imponible_real_sa(nominal, ipc)
+    if not serie:
+        raise ValueError("recaudación: sin ventana suficiente para desestacionalizar")
+    return [[f"{ym}-01", v] for ym, v in sorted(serie.items())]
 def fetch_credito_privado_serie() -> list:
     """Serie mensual de la variación i.a. REAL de los préstamos al sector
     privado (BCRA var. 26 fin de mes, deflactada por el IPC nivel) — la misma

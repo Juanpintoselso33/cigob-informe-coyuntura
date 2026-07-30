@@ -192,6 +192,83 @@ def niveles_cacheados() -> dict:
     return out
 
 
+BASE_TRIM = ("2023-10", "2023-11", "2023-12")   # 4T-2023, misma base que el ITVC
+VENTANA_MINIMA = 36                             # meses para estimar 12 factores
+# Ventana única para la card y para la serie. NO cambiar en un solo lado: los
+# factores estacionales se estiman sobre la muestra, así que dos ventanas
+# distintas dan dos series distintas y el gate G3 (card ≠ serie) falla.
+LIMITE_MESES = 80
+
+
+def base_imponible_real_sa(nacional: dict, ipc: dict) -> dict:
+    """Base imponible REAL desestacionalizada, 100 = promedio del 4T-2023.
+
+    Nacional (DGI) + provincial (sistemas COMARB) sumados en NIVEL, deflactados
+    por IPC y desestacionalizados. Es el reemplazo de la variación interanual que
+    usaba el indicador hasta el 29-jul-2026, y el motivo del cambio es que
+    teniendo el dato mensual la interanual desperdicia resolución: compara contra
+    un mes de hace un año en vez de decir cuánto de la base real de la transición
+    queda hoy. Con el dato de junio de 2026: la interanual informaba +3,3%
+    («creciendo») contra un 2025 deprimido, mientras el nivel dice 88,2, o sea
+    11,8% POR DEBAJO de la transición. Las dos son ciertas; para un índice de
+    tensión la segunda es la que informa.
+
+    Desestacionalización por cociente sobre media móvil centrada de 12 meses
+    (ratio-to-moving-average, 2x12), promediando los factores por mes calendario
+    y normalizándolos a promedio 1 para no inventar nivel. Hace falta: el nivel
+    real crudo tiene 30,5 puntos de amplitud entre el mes calendario más alto y
+    el más bajo —mayo 1,182 y junio 1,119 por vencimientos y aguinaldo, marzo
+    0,861— y sin corregir eso el indicador mediría el calendario tributario. Ya
+    corregido, la estacionalidad residual baja a 3,1 puntos.
+
+    Dos propiedades que van declaradas en la ficha, no escondidas:
+      · es más NERVIOSA que la interanual (junio 2026 cae 9,5 puntos contra mayo);
+        con 3-4 observaciones por mes calendario un mes todavía mueve su factor;
+      · REVISA el pasado: los factores se re-estiman al acumular meses, así que
+        puntos anteriores pueden cambiar algo.
+
+    Los dos callers —la card en macro.py y la serie en descargar_series.py— tienen
+    que pasar la MISMA ventana de meses: los factores estacionales dependen de la
+    muestra, así que ventanas distintas darían números distintos y G3 fallaría.
+    Por eso ambos usan `LIMITE_MESES`.
+
+    [[YYYY-MM: índice]] — vacío si no hay ventana suficiente o falta la base.
+    """
+    prov = niveles_cacheados()
+    comb = {k: nacional[k] + prov[k]
+            for k in sorted(set(nacional) & set(prov) & set(ipc))
+            if nacional[k] and prov[k]}
+    if len(comb) < VENTANA_MINIMA or not all(m in comb for m in BASE_TRIM):
+        return {}
+
+    ipc_ancla = ipc[max(comb)]
+    real = {k: v * ipc_ancla / ipc[k] for k, v in comb.items()}
+
+    # tendencia: media móvil centrada 2x12
+    ks = sorted(real)
+    tendencia = {}
+    for i in range(6, len(ks) - 6):
+        a = sum(real[x] for x in ks[i - 6:i + 6]) / 12
+        b = sum(real[x] for x in ks[i - 5:i + 7]) / 12
+        tendencia[ks[i]] = (a + b) / 2
+    if not tendencia:
+        return {}
+
+    brutos: dict[str, list] = {}
+    for k, t in tendencia.items():
+        if t:
+            brutos.setdefault(k[5:7], []).append(real[k] / t)
+    if len(brutos) < 12:                       # sin los 12 meses no se corrige nada
+        return {}
+    factor = {m: sum(v) / len(v) for m, v in brutos.items()}
+    promedio = sum(factor.values()) / len(factor)
+    factor = {m: f / promedio for m, f in factor.items()}
+
+    sa = {k: v / factor[k[5:7]] for k, v in real.items()}
+    base = sum(sa[m] for m in BASE_TRIM) / len(BASE_TRIM)
+    return {k: round(100 * v / base, 1) for k, v in sa.items()} if base else {}
+
+
 if __name__ == "__main__":
     import urllib3
     urllib3.disable_warnings()
