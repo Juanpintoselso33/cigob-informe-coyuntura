@@ -3661,11 +3661,6 @@
           "n": 31,
           "rd": 0.42
         },
-        "riesgo": {
-          "r": -0.82,
-          "n": 31,
-          "rd": -0.08
-        },
         "merval": {
           "r": 0.75,
           "n": 31,
@@ -3689,11 +3684,6 @@
           "r": 0.32,
           "n": 31,
           "rd": -0.33
-        },
-        "riesgo": {
-          "r": -0.87,
-          "n": 32,
-          "rd": -0.14
         },
         "merval": {
           "r": 0.75,
@@ -3719,11 +3709,6 @@
           "n": 30,
           "rd": 0.2
         },
-        "riesgo": {
-          "r": -0.14,
-          "n": 31,
-          "rd": 0.13
-        },
         "merval": {
           "r": 0.17,
           "n": 31,
@@ -3748,11 +3733,6 @@
           "n": 30,
           "rd": 0.06
         },
-        "riesgo": {
-          "r": 0.07,
-          "n": 30,
-          "rd": -0.31
-        },
         "merval": {
           "r": -0.09,
           "n": 30,
@@ -3776,10 +3756,6 @@
         "Actividad (Índice Líder UTDT)"
       ],
       [
-        "riesgo",
-        "Riesgo país (EMBI)"
-      ],
-      [
         "merval",
         "Merval en USD"
       ],
@@ -3793,7 +3769,7 @@
       ]
     ],
     "titulo": "¿Cada índice mide lo suyo?",
-    "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra todos los contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). El precio del riesgo argentino se conserva como quinta columna: fue el ancla del cinturón macro y sigue informando, aunque su co-movimiento sea de baja frecuencia. Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM +0,7 con la actividad, ITCG +0,75 con el Merval en dólares, ITVC +0,34 con la confianza del consumidor, ITCP -0,49 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 3 de los 4 índices la correlación más fuerte no es con su par propio (ITCM correlaciona -0,82 con el riesgo país contra +0,7 con su propio par; ITCG correlaciona -0,87 con el riesgo país contra +0,75 con su propio par; ITVC correlaciona +0,5 con la actividad contra +0,34 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente. La celda que más preguntas genera — ITCP +0,07 con el riesgo país, el único cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los cambios mes a mes da -0,31, el signo esperado. Las tendencias de fondo divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el capital político quedó debajo de su luna de miel de 2024 — que el índice registre ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que esta matriz verifica."
+    "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez — cada uno tiene el propio: la macroeconomía (ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de las empresas en dólares, la vida cotidiana (ITVC) con la confianza del consumidor, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
+    "conclusion": "Los cuatro pares propios dan el signo esperado: ITCM +0,7 con la actividad, ITCG +0,75 con el Merval en dólares, ITVC +0,34 con la confianza del consumidor, ITCP -0,49 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 4 índices la correlación más fuerte no es con su par propio (ITCM correlaciona +0,75 con el Merval contra +0,7 con su propio par; ITVC correlaciona +0,5 con la actividad contra +0,34 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente."
   }
 }

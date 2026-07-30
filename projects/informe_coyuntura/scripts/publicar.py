@@ -1198,18 +1198,16 @@ def _validacion_cruzada(informe):
     except (KeyError, TypeError):
         return
     indices = {k: {p[0]: p[1] for p in v} for k, v in bloques.items()}
-    # El riesgo país NO se deriva de los pares del ITCM: desde que el ancla de
-    # macro es el Índice Líder, esa columna traería el líder con la etiqueta del
-    # EMBI. Se lee de su propia serie, y el EMBI se conserva en la matriz porque
-    # es donde aporta poder discriminante (la nota del ITCP depende de él).
-    val_cruz = _cargar_validacion()
+    # El riesgo país (EMBI) YA NO ESTÁ en la matriz: el ancla de validación del
+    # cinturón macro pasó a ser el Índice Líder y el cambio es un REEMPLAZO, no
+    # una suma — decisión del editor. La matriz vuelve a ser 4×4, un contraste
+    # propio por índice. El EMBI se sigue calculando en validacion_externa.py y
+    # se menciona en la conclusión de la sección de macro, que es donde explica
+    # POR QUÉ se cambió el ancla; no vuelve a entrar acá.
     externas = {"lider": {p[0]: p[2] for p in bloques["ITCM"]},
-                "riesgo": val_cruz.get("riesgo_pais_mensual") or {},
                 "merval": {p[0]: p[2] for p in bloques["ITCG"]},
                 "icc": {p[0]: p[2] for p in bloques["ITVC"]},
                 "epu": {p[0]: p[2] for p in bloques["ITCP"]}}
-    if not externas["riesgo"]:
-        return
 
     def _r(a, b):
         comunes = sorted(set(a) & set(b))
@@ -1270,20 +1268,16 @@ def _validacion_cruzada(informe):
                          "es la prueba de que cada índice mide su terreno y no «todo junto».")
     informe["validacion_cruzada"] = {
         "filas": filas,
-        "externas": [["lider", "Actividad (Índice Líder UTDT)"],
-                     ["riesgo", "Riesgo país (EMBI)"], ["merval", "Merval en USD"],
+        "externas": [["lider", "Actividad (Índice Líder UTDT)"], ["merval", "Merval en USD"],
                      ["icc", "Confianza del consumidor (ICC UTDT)"],
                      ["epu", "Incertidumbre de política (EPU Argentina)"]],
         "titulo": "¿Cada índice mide lo suyo?",
-        "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra todos los "
+        "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro "
                 "contrastes externos a la vez — cada uno tiene el propio: la macroeconomía "
                 "(ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de "
                 "las empresas en dólares, la vida cotidiana (ITVC) con la confianza del "
                 "consumidor, la política (ITCP) con la incertidumbre de política que mide la "
-                "prensa (EPU Argentina). El precio del riesgo argentino se conserva como quinta "
-                "columna: fue el ancla del cinturón macro y sigue informando, aunque su "
-                "co-movimiento sea de baja frecuencia. Si cada índice mide su propio terreno, "
-                "debería "
+                "prensa (EPU Argentina). Si cada índice mide su propio terreno, debería "
                 "correlacionar con su par natural al menos tanto como con los ajenos. Es la "
                 "prueba clásica de que un indicador no mide \"todo junto\"."),
         "conclusion": (f"Los cuatro pares propios dan el signo esperado: ITCM "
@@ -1293,31 +1287,10 @@ def _validacion_cruzada(informe):
                        f"{fmt(f_itcp['epu']['r'])} con la incertidumbre de política — este último "
                        f"más moderado que los otros tres, coherente con un índice con varios "
                        f"componentes recién automatizados y con historia corta. "
-                       + discriminante
-                       + _nota_itcp_riesgo(f_itcp)),
+                       + discriminante),
     }
 
 
-def _nota_itcp_riesgo(f_itcp):
-    """Oración extra de la conclusión de la matriz para la celda ITCP×riesgo
-    país cuando su signo de NIVELES es positivo (contraintuitivo a primera
-    vista) pero el de los cambios mes a mes es negativo (el esperado). Es el
-    caso clásico de dos tendencias que divergen de fondo: el riesgo país cayó
-    por el ancla macro mientras el capital político de 2025-2026 quedó debajo
-    de la luna de miel de 2024 — el intercambio de problemas del marco, no un
-    defecto de medición. Solo se emite cuando los datos muestran exactamente
-    ese patrón; si el patrón cambia, la oración desaparece sola."""
-    r, rd = f_itcp["riesgo"]["r"], f_itcp["riesgo"].get("rd")
-    fmt = lambda x: ("+" if x > 0 else "") + str(x).replace(".", ",")
-    if r is None or rd is None or not (r > 0 and rd < 0):
-        return ""
-    return (f" La celda que más preguntas genera — ITCP {fmt(r)} con el riesgo país, el único "
-            f"cruce con el signo cambiado — es un efecto de niveles, no de co-movimiento: en los "
-            f"cambios mes a mes da {fmt(rd)}, el signo esperado. Las tendencias de fondo "
-            f"divergieron de verdad: el riesgo país cayó por el ancla macroeconómica mientras el "
-            f"capital político quedó debajo de su luna de miel de 2024 — que el índice registre "
-            f"ese intercambio de problemas en lugar de copiar al mercado es precisamente lo que "
-            f"esta matriz verifica.")
 
 
 def _validacion_itcg(bloque):
