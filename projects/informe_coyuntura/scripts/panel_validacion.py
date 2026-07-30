@@ -48,8 +48,12 @@ FAMILIA = {
     "gas_residencial": "itvc",
     "transporte_pasajeros": "itvc",
     "ventas_naftas": "itvc",
-    # valor de las empresas: lo que el capital paga por la transformación
+    # respuesta del capital privado al programa: cuánto vale lo que ya está
+    # instalado en el país y cuánto capital de afuera decide entrar (ADR-0164)
     "merval_usd": "itcg",
+    "inversion_directa_externa": "itcg",
+    "inversion_portafolio_externa": "itcg",
+    "financiamiento_externo_privado": "itcg",
     # política: incertidumbre, capital político y expectativa electoral
     "epu_argentina": "itcp",
     "icg_utdt": "itcp",
@@ -68,6 +72,9 @@ ETIQUETAS = {
     "transporte_pasajeros": "viajes en transporte público",
     "ventas_naftas": "naftas vendidas en el mercado interno",
     "merval_usd": "Merval en dólares",
+    "inversion_directa_externa": "inversión directa de no residentes",
+    "inversion_portafolio_externa": "inversión de cartera de no residentes",
+    "financiamiento_externo_privado": "financiamiento externo a empresas",
     "epu_argentina": "incertidumbre de política (EPU)",
     "icg_utdt": "confianza en el gobierno",
     "clima_electoral": "clima electoral",
@@ -95,10 +102,16 @@ ETIQUETAS = {
 #
 # Las tres de comercio siguen en el panel y en la familia del ITVC: se publican
 # sus correlaciones, sólo que no arman el factor.
+# ITCG → las cuatro de la respuesta del capital privado (ADR-0164). Acá el
+# factor NO le gana a la mejor estadística sola y se publica igual: es el mismo
+# criterio con el que se publicó el caso negativo del ITVC antes de resolverlo.
+# Elegir el subconjunto que diera mejor sería justamente lo prohibido.
 FACTOR = {
     "itvc": ["electricidad_residencial", "gas_residencial",
              "transporte_pasajeros", "ventas_naftas"],
     "itcp": ["epu_argentina", "icg_utdt", "clima_electoral"],
+    "itcg": ["merval_usd", "inversion_directa_externa",
+             "inversion_portafolio_externa", "financiamiento_externo_privado"],
 }
 
 

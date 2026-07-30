@@ -71,6 +71,24 @@ CONSUMO_SHOPPINGS_ID = "458.1_VENTAS_TOTADA_0_M_52_56"
 # unidades físicas no llevan deflactor, así que no comparten insumo con
 # `ipc_alimentos`, que sí es componente del índice. Traen estacionalidad fuerte
 # y se ajustan antes de entrar (ver `desestacionalizar.py`).
+# Respuesta del capital privado al programa de transformación (ADR-0164), para
+# la familia del ITCG, que tenía UNA sola estadística propia. Cuenta Capital y
+# Financiera Cambiaria del BCRA, mensual desde 2003.
+#
+# Se usan SUBCUENTAS DE NO RESIDENTES y no el total: el total de la cuenta
+# equivale a la variación de reservas, y `reservas_bcra` es componente del ITCM.
+# Por la misma regla queda afuera «formación de activos externos», que sale del
+# mismo balance cambiario que `presion_dolarizacion` (también componente).
+#
+# Son FLUJOS en millones de dólares que cruzan el cero: no se rebasean a 100
+# —dividir por un promedio cercano a cero no significa nada— y no hace falta,
+# porque la correlación es invariante a la escala y el factor estandariza.
+CAPITAL_PRIVADO_IDS = {
+    "inversion_directa_externa": "182.1_C_K_FINANCTES_0_M_51",
+    "inversion_portafolio_externa": "182.1_C_K_FINC_CTES_0_M_50",
+    "financiamiento_externo_privado": "182.1_C_K_FINC_CRED_0_M_52",
+}
+
 CONSUMO_FISICO_IDS = {
     "electricidad_residencial": "367.3_DEMANDA_REIAL__19",   # CAMMESA
     "gas_residencial": "364.3_RESIDENCIAIAL__11",            # Secretaría de Energía
@@ -1287,6 +1305,25 @@ def main():
                 antes = _des.amplitud_estacional(cruda)
                 ajustada = _des.desestacionalizar(cruda)
                 panel[clave] = _rebase_4t23(ajustada)
+                resultados.setdefault("estacionalidad_panel", {})[clave] = {
+                    "antes_pct": antes,
+                    "despues_pct": _des.amplitud_estacional(ajustada),
+                    "n_meses": len(cruda),
+                }
+            except Exception as e:
+                print(f"[WARN] panel: {clave} no disponible: {e}")
+        # Flujos de capital privado: se desestacionalizan pero NO se rebasean
+        # (cruzan el cero). Deliberadamente NO se acumulan a 12 meses: un flujo
+        # acumulado queda casi monótono y correlaciona ~0,96 contra cualquier
+        # índice que también suba, que es la trampa que ADR-0159 ya documentó
+        # con `indice_salarios_publico`. Medido acá: acumulando 12 meses el
+        # financiamiento externo daba 0,962 en niveles y 0,038 mes a mes.
+        for clave, sid in CAPITAL_PRIVADO_IDS.items():
+            try:
+                cruda = _serie_datos_gob(sid)
+                antes = _des.amplitud_estacional(cruda)
+                ajustada = _des.desestacionalizar(cruda)
+                panel[clave] = ajustada
                 resultados.setdefault("estacionalidad_panel", {})[clave] = {
                     "antes_pct": antes,
                     "despues_pct": _des.amplitud_estacional(ajustada),

@@ -3419,6 +3419,21 @@
       "antes_pct": 17.7,
       "despues_pct": 0.0,
       "n_meses": 390
+    },
+    "inversion_directa_externa": {
+      "antes_pct": 49.1,
+      "despues_pct": 0.1,
+      "n_meses": 281
+    },
+    "inversion_portafolio_externa": {
+      "antes_pct": 138.9,
+      "despues_pct": 8.0,
+      "n_meses": 281
+    },
+    "financiamiento_externo_privado": {
+      "antes_pct": 115.8,
+      "despues_pct": 13.5,
+      "n_meses": 281
     }
   },
   "panel_validacion": {
@@ -3474,6 +3489,14 @@
           "n": 31
         },
         {
+          "estadistica": "financiamiento_externo_privado",
+          "etiqueta": "financiamiento externo a empresas",
+          "propia": false,
+          "r_niveles": 0.138,
+          "r_diferencias": -0.191,
+          "n": 30
+        },
+        {
           "estadistica": "gas_residencial",
           "etiqueta": "gas consumido por los hogares",
           "propia": true,
@@ -3496,6 +3519,22 @@
           "r_niveles": 0.617,
           "r_diferencias": 0.506,
           "n": 31
+        },
+        {
+          "estadistica": "inversion_directa_externa",
+          "etiqueta": "inversión directa de no residentes",
+          "propia": false,
+          "r_niveles": -0.32,
+          "r_diferencias": -0.288,
+          "n": 30
+        },
+        {
+          "estadistica": "inversion_portafolio_externa",
+          "etiqueta": "inversión de cartera de no residentes",
+          "propia": false,
+          "r_niveles": 0.125,
+          "r_diferencias": 0.147,
+          "n": 30
         },
         {
           "estadistica": "merval_usd",
@@ -3523,16 +3562,16 @@
         }
       ],
       "n_propias": 7,
-      "n_ajenas": 5,
+      "n_ajenas": 8,
       "niveles": {
         "convergente": 0.249,
-        "discriminante": 0.253,
-        "brecha": -0.004
+        "discriminante": 0.231,
+        "brecha": 0.018
       },
       "diferencias": {
         "convergente": 0.246,
-        "discriminante": 0.292,
-        "brecha": -0.046
+        "discriminante": 0.261,
+        "brecha": -0.015
       },
       "factor": {
         "cargas": {
@@ -3845,7 +3884,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 7 estadísticas de su propio terreno con 0,249 y a las 5 ajenas con 0,253. En los cambios mes a mes la separación no se sostiene: 0,246 con lo propio contra 0,292 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 7 estadísticas de su propio terreno con 0,249 y a las 8 ajenas con 0,231. En los cambios mes a mes la separación no se sostiene: 0,246 con lo propio contra 0,261 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
     "itcg": {
       "indice": "itcg",
@@ -3899,6 +3938,14 @@
           "n": 31
         },
         {
+          "estadistica": "financiamiento_externo_privado",
+          "etiqueta": "financiamiento externo a empresas",
+          "propia": true,
+          "r_niveles": 0.64,
+          "r_diferencias": 0.276,
+          "n": 30
+        },
+        {
           "estadistica": "gas_residencial",
           "etiqueta": "gas consumido por los hogares",
           "propia": false,
@@ -3921,6 +3968,22 @@
           "r_niveles": 0.322,
           "r_diferencias": -0.328,
           "n": 31
+        },
+        {
+          "estadistica": "inversion_directa_externa",
+          "etiqueta": "inversión directa de no residentes",
+          "propia": true,
+          "r_niveles": -0.076,
+          "r_diferencias": 0.005,
+          "n": 30
+        },
+        {
+          "estadistica": "inversion_portafolio_externa",
+          "etiqueta": "inversión de cartera de no residentes",
+          "propia": true,
+          "r_niveles": 0.141,
+          "r_diferencias": -0.095,
+          "n": 30
         },
         {
           "estadistica": "merval_usd",
@@ -3947,19 +4010,345 @@
           "n": 31
         }
       ],
-      "n_propias": 1,
+      "n_propias": 4,
       "n_ajenas": 11,
       "niveles": {
-        "convergente": 0.747,
+        "convergente": 0.401,
         "discriminante": 0.367,
-        "brecha": 0.38
+        "brecha": 0.034
       },
       "diferencias": {
-        "convergente": 0.119,
+        "convergente": 0.124,
         "discriminante": 0.172,
-        "brecha": -0.053
+        "brecha": -0.048
       },
-      "lectura": "Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a la única estadística de su propio terreno con 0,747 y a las 11 ajenas con 0,367. En los cambios mes a mes la separación no se sostiene: 0,119 con lo propio contra 0,172 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+      "factor": {
+        "cargas": {
+          "financiamiento_externo_privado": 0.671,
+          "inversion_directa_externa": -0.352,
+          "inversion_portafolio_externa": -0.007,
+          "merval_usd": 0.653
+        },
+        "etiquetas": {
+          "financiamiento_externo_privado": "financiamiento externo a empresas",
+          "inversion_directa_externa": "inversión directa de no residentes",
+          "inversion_portafolio_externa": "inversión de cartera de no residentes",
+          "merval_usd": "Merval en dólares"
+        },
+        "varianza_explicada": 47.0,
+        "n_series": 4,
+        "n": 30,
+        "pares": [
+          [
+            "2023-12",
+            12.7,
+            -2.356
+          ],
+          [
+            "2024-01",
+            27.9,
+            -1.483
+          ],
+          [
+            "2024-02",
+            31.9,
+            -2.193
+          ],
+          [
+            "2024-03",
+            37.0,
+            -1.025
+          ],
+          [
+            "2024-04",
+            41.0,
+            -0.999
+          ],
+          [
+            "2024-05",
+            35.8,
+            -1.022
+          ],
+          [
+            "2024-06",
+            40.5,
+            -1.414
+          ],
+          [
+            "2024-07",
+            40.1,
+            -1.598
+          ],
+          [
+            "2024-08",
+            40.8,
+            -1.106
+          ],
+          [
+            "2024-09",
+            40.1,
+            -0.915
+          ],
+          [
+            "2024-10",
+            43.0,
+            -0.259
+          ],
+          [
+            "2024-11",
+            47.6,
+            0.188
+          ],
+          [
+            "2024-12",
+            49.1,
+            3.294
+          ],
+          [
+            "2025-01",
+            50.5,
+            1.919
+          ],
+          [
+            "2025-02",
+            50.6,
+            2.032
+          ],
+          [
+            "2025-03",
+            50.9,
+            -0.102
+          ],
+          [
+            "2025-04",
+            53.0,
+            0.432
+          ],
+          [
+            "2025-05",
+            59.5,
+            0.338
+          ],
+          [
+            "2025-06",
+            57.2,
+            -0.042
+          ],
+          [
+            "2025-07",
+            62.5,
+            0.104
+          ],
+          [
+            "2025-08",
+            68.2,
+            0.004
+          ],
+          [
+            "2025-09",
+            67.7,
+            0.187
+          ],
+          [
+            "2025-10",
+            67.7,
+            0.019
+          ],
+          [
+            "2025-11",
+            70.7,
+            0.389
+          ],
+          [
+            "2025-12",
+            70.5,
+            1.322
+          ],
+          [
+            "2026-01",
+            70.0,
+            1.935
+          ],
+          [
+            "2026-02",
+            70.4,
+            0.221
+          ],
+          [
+            "2026-03",
+            74.2,
+            1.329
+          ],
+          [
+            "2026-04",
+            72.0,
+            0.707
+          ],
+          [
+            "2026-05",
+            76.3,
+            2.159
+          ]
+        ],
+        "r_niveles": 0.678,
+        "r_diferencias": -0.015,
+        "mejor_sola_niveles": 0.747,
+        "mejor_sola_diferencias": 0.276,
+        "plano": "niveles",
+        "pares_grafico": [
+          [
+            "2023-12",
+            12.7,
+            -2.356
+          ],
+          [
+            "2024-01",
+            27.9,
+            -1.483
+          ],
+          [
+            "2024-02",
+            31.9,
+            -2.193
+          ],
+          [
+            "2024-03",
+            37.0,
+            -1.025
+          ],
+          [
+            "2024-04",
+            41.0,
+            -0.999
+          ],
+          [
+            "2024-05",
+            35.8,
+            -1.022
+          ],
+          [
+            "2024-06",
+            40.5,
+            -1.414
+          ],
+          [
+            "2024-07",
+            40.1,
+            -1.598
+          ],
+          [
+            "2024-08",
+            40.8,
+            -1.106
+          ],
+          [
+            "2024-09",
+            40.1,
+            -0.915
+          ],
+          [
+            "2024-10",
+            43.0,
+            -0.259
+          ],
+          [
+            "2024-11",
+            47.6,
+            0.188
+          ],
+          [
+            "2024-12",
+            49.1,
+            3.294
+          ],
+          [
+            "2025-01",
+            50.5,
+            1.919
+          ],
+          [
+            "2025-02",
+            50.6,
+            2.032
+          ],
+          [
+            "2025-03",
+            50.9,
+            -0.102
+          ],
+          [
+            "2025-04",
+            53.0,
+            0.432
+          ],
+          [
+            "2025-05",
+            59.5,
+            0.338
+          ],
+          [
+            "2025-06",
+            57.2,
+            -0.042
+          ],
+          [
+            "2025-07",
+            62.5,
+            0.104
+          ],
+          [
+            "2025-08",
+            68.2,
+            0.004
+          ],
+          [
+            "2025-09",
+            67.7,
+            0.187
+          ],
+          [
+            "2025-10",
+            67.7,
+            0.019
+          ],
+          [
+            "2025-11",
+            70.7,
+            0.389
+          ],
+          [
+            "2025-12",
+            70.5,
+            1.322
+          ],
+          [
+            "2026-01",
+            70.0,
+            1.935
+          ],
+          [
+            "2026-02",
+            70.4,
+            0.221
+          ],
+          [
+            "2026-03",
+            74.2,
+            1.329
+          ],
+          [
+            "2026-04",
+            72.0,
+            0.707
+          ],
+          [
+            "2026-05",
+            76.3,
+            2.159
+          ]
+        ]
+      },
+      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,401 y a las 11 ajenas con 0,367. En los cambios mes a mes la separación no se sostiene: 0,124 con lo propio contra 0,172 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
     "itcp": {
       "indice": "itcp",
@@ -4013,6 +4402,14 @@
           "n": 30
         },
         {
+          "estadistica": "financiamiento_externo_privado",
+          "etiqueta": "financiamiento externo a empresas",
+          "propia": false,
+          "r_niveles": 0.014,
+          "r_diferencias": 0.26,
+          "n": 29
+        },
+        {
           "estadistica": "gas_residencial",
           "etiqueta": "gas consumido por los hogares",
           "propia": false,
@@ -4035,6 +4432,22 @@
           "r_niveles": -0.268,
           "r_diferencias": 0.06,
           "n": 30
+        },
+        {
+          "estadistica": "inversion_directa_externa",
+          "etiqueta": "inversión directa de no residentes",
+          "propia": false,
+          "r_niveles": 0.228,
+          "r_diferencias": 0.111,
+          "n": 29
+        },
+        {
+          "estadistica": "inversion_portafolio_externa",
+          "etiqueta": "inversión de cartera de no residentes",
+          "propia": false,
+          "r_niveles": -0.311,
+          "r_diferencias": -0.237,
+          "n": 29
         },
         {
           "estadistica": "merval_usd",
@@ -4062,16 +4475,16 @@
         }
       ],
       "n_propias": 3,
-      "n_ajenas": 9,
+      "n_ajenas": 12,
       "niveles": {
         "convergente": 0.41,
-        "discriminante": 0.263,
-        "brecha": 0.147
+        "discriminante": 0.244,
+        "brecha": 0.166
       },
       "diferencias": {
         "convergente": 0.367,
-        "discriminante": 0.17,
-        "brecha": 0.197
+        "discriminante": 0.178,
+        "brecha": 0.189
       },
       "factor": {
         "cargas": {
@@ -4397,7 +4810,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 12 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,41 y a las 9 ajenas con 0,263. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,367 con lo propio contra 0,17 con lo ajeno."
+      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,41 y a las 12 ajenas con 0,244. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,367 con lo propio contra 0,178 con lo ajeno."
     }
   }
 }

@@ -1464,11 +1464,16 @@ def _validacion_itcg(bloque):
                 "componentes (sin los ajustes del analista: el nivel puede diferir del publicado "
                 "— lo que valida es su evolución) y se compara con el índice Merval medido en "
                 "dólares (cierre mensual sobre el contado con liquidación), que no integra el "
-                "índice. La correlación esperada es positiva."),
+                "índice. El Merval es una de las cuatro estadísticas del terreno propio de este "
+                "cinturón —las otras tres miden cuánto capital de afuera decide entrar: "
+                "inversión directa, inversión de cartera y financiamiento a empresas— y el "
+                "gráfico compara el índice contra el factor común de las cuatro. El detalle "
+                "está en la ficha metodológica."),
         "serie_label": "ITCG (reconstrucción mensual)",
         "externa_label": "Merval en dólares",
         "trans_label": "series normalizadas al rango del período",
-        "conclusion": (f"Correlación {coma(r_niv)} en niveles: cuando la ejecución de reformas "
+        "conclusion": (f"Contra el Merval solo —una de las cuatro— la correlación es "
+                       f"{coma(r_niv)} en niveles: cuando la ejecución de reformas "
                        f"avanza, el mercado revaloriza a las empresas argentinas.{icg_txt}"),
     }
 
