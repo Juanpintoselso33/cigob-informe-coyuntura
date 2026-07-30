@@ -1,0 +1,51 @@
+{
+ "_meta": {
+  "descripcion": "Causas ingresadas, resueltas y saldo de la Corte Suprema, 2014-2024. El dato SÓLO existe como imagen: los tableros de la CSJN están publicados con la descarga de datos deshabilitada (allow_view_underlying=false) y la sesión de vizql es de un solo uso, así que lo único legible es el render estático que Tableau Public publica de cada hoja.",
+  "fuente": "https://public.tableau.com/static/images/Re/Resueltos2024/Resueltos/1.png",
+  "tablero": "Casos Resueltos CSJN 2024 — Oficina de Estadísticas de la CSJN (Tableau Public)",
+  "leido_por": "modelo de visión sobre el PNG estático; la lectura NO está automatizada porque el OCR no sirve para este artefacto (easyocr reconoció 2 de 36 etiquetas de dato, con confianzas de 0,32 y 0,52: lee bien los rótulos del eje y falla en los números, que van en negrita, en color y encima de la curva)",
+  "fecha_lectura": "2026-07-29",
+  "unidad": "causas por año",
+  "controles": "los verifica tests/test_lectura_pixeles.py en cada corrida de CI. El fuerte es la identidad contable saldo = ingresos − resueltos, que la fuente enuncia por separado: si un dígito se leyó mal, no cierra.",
+  "relacionado": "ADR-0139 (de acá salió la tasa de resolución que reabrió velocidad_de_resolucion). El chequeo aritmético se había hecho a mano una vez; este store lo vuelve permanente."
+ },
+ "ingresos": {
+  "2014": 16783,
+  "2015": 16023,
+  "2016": 15719,
+  "2017": 14800,
+  "2018": 28037,
+  "2019": 23665,
+  "2020": 15308,
+  "2021": 24956,
+  "2022": 31344,
+  "2023": 32233,
+  "2024": 45678
+ },
+ "resueltos": {
+  "2014": 23803,
+  "2015": 17708,
+  "2016": 13272,
+  "2017": 9583,
+  "2018": 7278,
+  "2019": 26608,
+  "2020": 11090,
+  "2021": 19545,
+  "2022": 20427,
+  "2023": 16889,
+  "2024": 19056
+ },
+ "saldo": {
+  "2014": -7020,
+  "2015": -1685,
+  "2016": 2447,
+  "2017": 5217,
+  "2018": 20759,
+  "2019": -2943,
+  "2020": 4218,
+  "2021": 5411,
+  "2022": 10917,
+  "2023": 15344,
+  "2024": 26622
+ }
+}
