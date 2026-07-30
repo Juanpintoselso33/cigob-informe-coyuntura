@@ -144,9 +144,10 @@ antes de escribir la conclusión.
    cinco usan el mismo patrón (ADR-0153: no hay cards de contexto).
 2. Vulnerabilidad financiera = `mora_familias` al 100%. Prospectivas de empleo
    renormaliza sobre los cuatro que quedan.
-3. El **Índice Líder pasa a validador externo del ITCM**, con los cinco pares
-   publicados —incluidos los adelantos en las dos direcciones— para que la
-   lectura no pueda invertirse.
+3. El **Índice Líder REEMPLAZA al riesgo país (EMBI) como ancla de validación
+   externa del ITCM** — ver la enmienda de abajo. Se publican los cinco pares,
+   incluidos los adelantos en las dos direcciones, para que la lectura no pueda
+   invertirse.
 
 ## Consecuencias
 
@@ -169,3 +170,47 @@ antes de escribir la conclusión.
   renormalización: si la planilla del BCRA falla, vulnerabilidad se queda sin
   dato y su 10% se reparte entre las otras cinco. Antes el endeudamiento la
   cubría. Es el costo de la decisión y va declarado en la ficha de la mora.
+
+## Enmienda (2026-07-30, mismo día): el líder REEMPLAZA al EMBI, no lo acompaña
+
+La primera implementación entendió mal la decisión del editor y sumó el líder
+como **segundo** contraste del ITCM, dejando al EMBI como ancla graficada. La
+decisión era **cambiar la fuente de validación**: el ancla del cinturón macro es
+el líder y el EMBI pasa a segundo plano.
+
+Corregido: la sección de validación de macro grafica ITCM contra el líder
+(correlación positiva esperada), y el EMBI se reporta en la conclusión —con su
+−0,819 en niveles y su −0,083 mes a mes— como explicación de por qué se cambió.
+En la matriz de validación cruzada el par propio del ITCM pasa a ser la
+actividad, y el EMBI se conserva como **quinta columna** porque sigue aportando
+poder discriminante (la nota publicada sobre la celda ITCP×riesgo depende de él).
+
+Detalle de implementación que hay que recordar si se vuelve a mover un ancla: la
+matriz cruzada **derivaba sus series externas de los pares graficados de cada
+cinturón**. Con el ancla cambiada, la columna «riesgo país» habría traído los
+valores del líder bajo la etiqueta del EMBI, sin fallar nada. Ahora el riesgo
+país se lee de su propia serie (`riesgo_pais_mensual`).
+
+### El costo del cambio, medido: el ITCM deja de pasar su prueba discriminante
+
+Con el EMBI como par propio, la correlación más fuerte del ITCM era con su
+propio par. Con el líder, no:
+
+| índice | par propio | mayor correlación ajena |
+|---|---|---|
+| ITCM | +0,70 (actividad) | **−0,82 riesgo país**, +0,75 Merval |
+| ITCG | +0,75 (Merval) | **−0,87 riesgo país** (ya fallaba antes) |
+| ITVC | +0,34 (ICC) | **+0,51 actividad** (falla nueva, por la columna nueva) |
+| ITCP | −0,49 (EPU) | −0,27 actividad — el único que pasa |
+
+O sea: el líder es el contraste que valida **mes a mes** (+0,419 contra −0,083
+del EMBI), y a la vez **no** es el correlato más fuerte del ITCM en niveles. Las
+dos cosas son ciertas y las dos se publican. La frase de la matriz que antes
+decía que las celdas cruzadas eran «del mismo orden en más de un caso» —con un
+ejemplo escrito a mano— pasa a **derivarse de los números en cada corrida**, para
+que no pueda sobreafirmar separación que la muestra no da.
+
+Queda anotado como pendiente editorial: si el criterio del proyecto para elegir
+ancla es «la que valida en diferencias» o «la que más correlaciona en niveles».
+Acá se eligió la primera por decisión del editor; son criterios distintos y
+llevan a anclas distintas.

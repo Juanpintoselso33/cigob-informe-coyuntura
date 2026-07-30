@@ -702,24 +702,35 @@ def _validacion_itvc(bloque, series):
 
 def _validacion_itcm(bloque):
     """Anexa al bloque ITCM su validación externa: la serie mensual del índice
-    (reconstruida por el estudio desde las series de componentes) contra el
-    riesgo país (EMBI) — correlación negativa esperada.
+    (reconstruida desde las series de componentes) contra el ÍNDICE LÍDER de la
+    UTDT — correlación positiva esperada.
 
-    La conclusión distingue FRECUENCIAS (revisión 2026-07-09, disparada por la
-    matriz con Δ): la asociación ITCM↔riesgo es fuerte en niveles y en ventanas
-    semestrales pero nula en los saltos de un mes — el mercado reacciona en el
-    día y el índice publica con el rezago y el suavizado de sus fuentes. Cada
-    afirmación extra se emite solo si su número la respalda en la corrida."""
+    El ancla era el riesgo país (EMBI) y se cambió por el líder: el EMBI
+    validaba en niveles y en ventanas semestrales pero daba ~0 en los saltos de
+    un mes, que es la prueba exigente (la que no se puede satisfacer con la
+    tendencia común del período). El líder mantiene el co-movimiento mes a mes.
+    El EMBI sigue publicándose como contraste secundario en la conclusión y como
+    columna de la matriz cruzada, donde aporta poder discriminante.
+
+    Cada afirmación extra se emite solo si su número la respalda en la corrida.
+    """
     val = _cargar_validacion()
     serie = val.get("serie_itcm") or {}
+    lider = val.get("indice_lider_mensual") or {}
     riesgo = val.get("riesgo_pais_mensual") or {}
-    comunes = sorted(set(serie) & set(riesgo))
+    comunes = sorted(set(serie) & set(lider))
     if len(comunes) < 12:
         return
     corr = val.get("correlaciones_itcm", {})
-    niveles = corr.get("niveles (ITCM vs riesgo país)") or {}
-    difs = corr.get("primeras diferencias (ITCM vs riesgo)") or {}
+    niveles = corr.get("niveles (ITCM vs índice líder)") or {}
+    difs = corr.get("primeras diferencias (ITCM vs líder)") or {}
     r_niv, r_dif = niveles.get("r"), difs.get("r")
+    if r_niv is None or r_dif is None:
+        return
+    lider_ade = (corr.get("líder adelantado 1 mes vs ITCM") or {}).get("r")
+    itcm_ade = (corr.get("ITCM adelantado 1 mes vs líder") or {}).get("r")
+    emb_niv = (corr.get("niveles (ITCM vs riesgo país)") or {}).get("r")
+    emb_dif = (corr.get("primeras diferencias (ITCM vs riesgo)") or {}).get("r")
 
     def _r(a, b):
         ms = sorted(set(a) & set(b))
@@ -731,70 +742,32 @@ def _validacion_itcm(bloque):
         ms = sorted(s)
         return {ms[i]: s[ms[i]] - s[ms[i - k]] for i in range(k, len(ms))}
 
-    def _adelantada(s, k=1):
-        ms = sorted(s)
-        return {ms[i + k]: s[ms[i]] for i in range(len(ms) - k)}
+    partes = [f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes a mes: "
+              f"cuando la tensión macroeconómica afloja, la actividad acompaña — y lo hace "
+              f"también en el corto plazo, no sólo en la tendencia del período."]
 
-    # cambios acumulados en 6 meses (la media frecuencia) y salto del riesgo
-    # de un mes contra el salto del índice del mes SIGUIENTE (¿quién lidera?)
-    r_6m = _r(_difs_k(serie, 6), _difs_k(riesgo, 6))
-    r_lidera_mercado = _r(_difs_k(serie), _adelantada(_difs_k(riesgo)))
-    serie_itcp = val.get("serie_itcp") or {}
-    r_riesgo_politica = _r(_difs_k(serie_itcp), _difs_k(riesgo)) if serie_itcp else None
+    # Por qué este contraste y no el precio del riesgo, que era el anterior.
+    if emb_niv is not None and emb_dif is not None and abs(emb_dif) < abs(r_dif):
+        partes.append(f"El contraste anterior del cinturón era el precio del riesgo argentino "
+                      f"(EMBI), que da {coma(emb_niv)} en niveles pero {coma(emb_dif)} en los "
+                      f"saltos de un mes: cuenta la misma historia de fondo, no el mismo mes. "
+                      f"Por eso el ancla pasó a ser la actividad, que es el contraste que "
+                      f"sobrevive cuando se descuenta la tendencia común. El riesgo país se "
+                      f"sigue publicando en la matriz de validación cruzada.")
+        r_riesgo_6m = _r(_difs_k(serie, 6), _difs_k(riesgo, 6)) if riesgo else None
+        if r_riesgo_6m is not None and r_riesgo_6m <= -0.4:
+            partes.append(f"Medida en ventanas de seis meses, la relación con el mercado "
+                          f"reaparece con fuerza ({coma(r_riesgo_6m)}): es una asociación de "
+                          f"media frecuencia, no un resultado nulo.")
 
-    if r_dif is not None and r_dif <= -0.3:
-        conclusion = (f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes "
-                      f"a mes: el signo negativo es exactamente el esperado — cuando el índice "
-                      f"sube (la macro afloja), el mercado cobra menos por el riesgo argentino.")
-    else:
-        partes = [(f"Correlación {coma(r_niv)} en niveles pero {coma(r_dif)} en los saltos de un "
-                   f"mes: la asociación con el mercado es real aunque de baja frecuencia — el "
-                   f"índice y el riesgo país cuentan la misma historia de fondo, no el mismo mes.")]
-        if r_6m is not None and r_6m <= -0.4:
-            partes.append(f"Medida en ventanas de seis meses, la relación reaparece con fuerza "
-                          f"({coma(r_6m)}).")
-        if r_lidera_mercado is not None and r_lidera_mercado <= -0.3:
-            partes.append(f"El orden temporal es el esperable: el mercado reacciona en el día y "
-                          f"el ITCM — que publica con el rezago y el suavizado de sus fuentes — "
-                          f"registra el mismo movimiento un mes después ({coma(r_lidera_mercado)} "
-                          f"entre el salto del riesgo de un mes y el del índice del mes "
-                          f"siguiente): el índice describe la macro, no anticipa al mercado.")
-        if r_riesgo_politica is not None and r_riesgo_politica <= -0.15:
-            partes.append("Los sobresaltos de un mes del riesgo país, además, suelen ser "
-                          "políticos antes que macroeconómicos: co-mueven con la reconstrucción "
-                          "del cinturón político, no con ésta (ver la matriz de validación "
-                          "cruzada).")
-        conclusion = " ".join(partes)
-
-    # SEGUNDO contraste: el Índice Líder de la UTDT. Se publica en la conclusión
-    # y no como gráfico aparte, igual que el ICG en el cinturón de gestión: la
-    # sección dibuja un solo par de series.
-    #
-    # Es el que cierra la debilidad del riesgo país. Y las dos frases sobre el
-    # adelanto se emiten sólo si los números las respaldan, porque la lectura
-    # intuitiva del nombre «líder» es la contraria a lo que da la medición.
-    lider_niv = (corr.get("niveles (ITCM vs índice líder)") or {}).get("r")
-    lider_dif = (corr.get("primeras diferencias (ITCM vs líder)") or {}).get("r")
-    lider_ade = (corr.get("líder adelantado 1 mes vs ITCM") or {}).get("r")
-    itcm_ade = (corr.get("ITCM adelantado 1 mes vs líder") or {}).get("r")
-    if lider_niv is not None and lider_dif is not None:
-        extra = [f"Un segundo contraste, independiente del mercado, confirma el cinturón por "
-                 f"donde el riesgo país es más débil: el Índice Líder de la Universidad Torcuato "
-                 f"Di Tella —que resume la marcha de la actividad— acompaña al ITCM con "
-                 f"{coma(lider_niv)} en niveles y {coma(lider_dif)} en los cambios mes a mes."]
-        if r_dif is not None and abs(r_dif) < abs(lider_dif):
-            extra.append(f"Ese segundo número es el que importa: mide el co-movimiento una vez "
-                         f"descontada la tendencia común del período, y es donde la comparación "
-                         f"con el mercado se queda en {coma(r_dif)}. La actividad real sigue al "
-                         f"índice mes a mes; el precio del riesgo, sólo en el fondo.")
-        if (itcm_ade is not None and lider_ade is not None
-                and itcm_ade > lider_niv > lider_ade):
-            extra.append(f"El orden temporal, en cambio, va al revés de lo que sugiere el nombre "
-                         f"del índice externo: el ajuste mejora cuando se adelanta el ITCM "
-                         f"({coma(itcm_ade)}) y empeora cuando se adelanta el líder "
-                         f"({coma(lider_ade)}). Sirve para validar el mismo mes, no como alerta "
-                         f"temprana.")
-        conclusion = conclusion + " " + " ".join(extra)
+    # La lectura del adelanto va en contra de lo que sugiere el nombre del índice
+    # externo, así que se publica explícita — y sólo si los números la sostienen.
+    if (itcm_ade is not None and lider_ade is not None and itcm_ade > r_niv > lider_ade):
+        partes.append(f"Un punto que conviene no leer al revés: el ajuste mejora cuando se "
+                      f"adelanta el ITCM ({coma(itcm_ade)}) y empeora cuando se adelanta el "
+                      f"índice externo ({coma(lider_ade)}). Pese a su nombre, acá funciona como "
+                      f"validación del mismo mes y no como alerta temprana.")
+    conclusion = " ".join(partes)
 
     # El recuento de componentes se DERIVA de la composición vigente del índice:
     # escrito a mano quedó viejo cuando entró costo_financiamiento_tesoro
@@ -808,23 +781,21 @@ def _validacion_itcm(bloque):
 
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
-        "pares": [[m, serie[m], riesgo[m]] for m in comunes],
-        "plot": "minmax_inv",
-        "titulo": "¿El ITCM se mueve con el precio del riesgo argentino?",
-        "sub": ("El contraste natural del cinturón macro es el mercado: si la tensión "
-                "macroeconómica afloja, la Argentina debería pagar menos por su deuda. El ITCM "
-                f"se reconstruye mes a mes desde las series de {_componentes} "
+        "pares": [[m, serie[m], lider[m]] for m in comunes],
+        "plot": "minmax",
+        "titulo": "¿El ITCM se mueve con la marcha de la actividad?",
+        "sub": ("El contraste del cinturón macro es el Índice Líder de la Universidad Torcuato "
+                "Di Tella, que resume la marcha de la actividad económica y no integra el "
+                f"índice. El ITCM se reconstruye mes a mes desde las series de {_componentes} "
                 "(el IAI y el ICIP no ingresan en esta reconstrucción histórica, ni tampoco los "
-                "ajustes del analista: el nivel puede diferir del publicado — lo que valida es su "
-                "evolución) y se compara con el riesgo "
-                "país (EMBI), que no integra el índice. La correlación esperada es negativa: "
-                "más ITCM (menos tensión), menos riesgo país."),
+                "ajustes del analista: el nivel puede diferir del publicado — lo que valida es "
+                "su evolución). La correlación esperada es positiva: menos tensión "
+                "macroeconómica, más actividad."),
         "serie_label": "ITCM (reconstrucción mensual)",
-        "externa_label": "riesgo país (EMBI, invertido)",
-        "trans_label": "series normalizadas al rango del período; el riesgo país se muestra invertido",
+        "externa_label": "Índice Líder (UTDT)",
+        "trans_label": "series normalizadas al rango del período",
         "conclusion": conclusion,
     }
-
 
 def _redundancia(bloque, clave_val: str):
     """Anexa a un bloque de índice la matriz de correlación ENTRE SUS PROPIOS
@@ -1227,10 +1198,18 @@ def _validacion_cruzada(informe):
     except (KeyError, TypeError):
         return
     indices = {k: {p[0]: p[1] for p in v} for k, v in bloques.items()}
-    externas = {"riesgo": {p[0]: p[2] for p in bloques["ITCM"]},
+    # El riesgo país NO se deriva de los pares del ITCM: desde que el ancla de
+    # macro es el Índice Líder, esa columna traería el líder con la etiqueta del
+    # EMBI. Se lee de su propia serie, y el EMBI se conserva en la matriz porque
+    # es donde aporta poder discriminante (la nota del ITCP depende de él).
+    val_cruz = _cargar_validacion()
+    externas = {"lider": {p[0]: p[2] for p in bloques["ITCM"]},
+                "riesgo": val_cruz.get("riesgo_pais_mensual") or {},
                 "merval": {p[0]: p[2] for p in bloques["ITCG"]},
                 "icc": {p[0]: p[2] for p in bloques["ITVC"]},
                 "epu": {p[0]: p[2] for p in bloques["ITCP"]}}
+    if not externas["riesgo"]:
+        return
 
     def _r(a, b):
         comunes = sorted(set(a) & set(b))
@@ -1243,7 +1222,7 @@ def _validacion_cruzada(informe):
         ms = sorted(s)
         return {ms[i]: s[ms[i]] - s[ms[i - 1]] for i in range(1, len(ms))}
 
-    PAR_PROPIO = {"ITCM": "riesgo", "ITCG": "merval", "ITVC": "icc", "ITCP": "epu"}
+    PAR_PROPIO = {"ITCM": "lider", "ITCG": "merval", "ITVC": "icc", "ITCP": "epu"}
     filas = []
     for ik in ("ITCM", "ITCG", "ITVC", "ITCP"):
         fila = {"indice": ik, "propio": PAR_PROPIO[ik]}
@@ -1260,32 +1239,61 @@ def _validacion_cruzada(informe):
         return
     fmt = lambda r: ("+" if r > 0 else "") + str(r).replace(".", ",")
     f_itcm, f_itcg, f_itvc, f_itcp = filas
+
+    # El poder discriminante se DERIVA, no se afirma. Antes el texto decía que
+    # las celdas cruzadas eran "del mismo orden en más de un caso" con un ejemplo
+    # escrito a mano; eso quedó corto cuando el ancla de macro pasó a ser la
+    # actividad y su par propio quedó por debajo de dos ajenos. La frase se
+    # recalcula en cada corrida para que no pueda sobreafirmar.
+    ETIQ = dict(externas_labels := {"lider": "la actividad", "riesgo": "el riesgo país",
+                                    "merval": "el Merval", "icc": "la confianza del consumidor",
+                                    "epu": "la incertidumbre de política"})
+    superados = []
+    for f in filas:
+        propio = abs(f[f["propio"]]["r"])
+        ajenas = {k: abs(f[k]["r"]) for k in externas if k != f["propio"]}
+        mayor = max(ajenas, key=ajenas.get)
+        if ajenas[mayor] > propio:
+            superados.append((f["indice"], ETIQ[mayor], f[mayor]["r"], f[f["propio"]]["r"]))
+    if superados:
+        detalle = "; ".join(f"{ik} correlaciona {fmt(r_aj)} con {lbl} contra {fmt(r_pr)} con su "
+                            f"propio par" for ik, lbl, r_aj, r_pr in superados)
+        discriminante = (f"La separación es parcial, y se declara: en {len(superados)} de los "
+                         f"{len(filas)} índices la correlación más fuerte no es con su par propio "
+                         f"({detalle}). En una muestra de unos treinta meses en la que toda la "
+                         f"economía y la política se movieron juntas, los contrastes externos "
+                         f"comparten buena parte de la tendencia del período, así que el nivel no "
+                         f"alcanza para separarlos; los cambios mes a mes que acompañan a cada "
+                         f"celda son la lectura más exigente.")
+    else:
+        discriminante = ("En los cuatro casos la correlación más fuerte es con el par propio, que "
+                         "es la prueba de que cada índice mide su terreno y no «todo junto».")
     informe["validacion_cruzada"] = {
         "filas": filas,
-        "externas": [["riesgo", "Riesgo país (EMBI)"], ["merval", "Merval en USD"],
+        "externas": [["lider", "Actividad (Índice Líder UTDT)"],
+                     ["riesgo", "Riesgo país (EMBI)"], ["merval", "Merval en USD"],
                      ["icc", "Confianza del consumidor (ICC UTDT)"],
                      ["epu", "Incertidumbre de política (EPU Argentina)"]],
         "titulo": "¿Cada índice mide lo suyo?",
-        "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro "
+        "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra todos los "
                 "contrastes externos a la vez — cada uno tiene el propio: la macroeconomía "
-                "(ITCM) con el precio del riesgo argentino, la gestión (ITCG) con el valor de "
+                "(ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de "
                 "las empresas en dólares, la vida cotidiana (ITVC) con la confianza del "
                 "consumidor, la política (ITCP) con la incertidumbre de política que mide la "
-                "prensa (EPU Argentina). Si cada índice mide su propio terreno, debería "
+                "prensa (EPU Argentina). El precio del riesgo argentino se conserva como quinta "
+                "columna: fue el ancla del cinturón macro y sigue informando, aunque su "
+                "co-movimiento sea de baja frecuencia. Si cada índice mide su propio terreno, "
+                "debería "
                 "correlacionar con su par natural al menos tanto como con los ajenos. Es la "
                 "prueba clásica de que un indicador no mide \"todo junto\"."),
         "conclusion": (f"Los cuatro pares propios dan el signo esperado: ITCM "
-                       f"{fmt(f_itcm['riesgo']['r'])} con el riesgo país, ITCG "
+                       f"{fmt(f_itcm['lider']['r'])} con la actividad, ITCG "
                        f"{fmt(f_itcg['merval']['r'])} con el Merval en dólares, ITVC "
                        f"{fmt(f_itvc['icc']['r'])} con la confianza del consumidor, ITCP "
                        f"{fmt(f_itcp['epu']['r'])} con la incertidumbre de política — este último "
                        f"más moderado que los otros tres, coherente con un índice con varios "
-                       f"componentes recién automatizados y con historia corta. Las celdas "
-                       f"cruzadas son del mismo orden en más de un caso (la gestión también "
-                       f"correlaciona {fmt(f_itcg['riesgo']['r'])} con el riesgo país): en una "
-                       f"muestra de ~30 meses en la que toda la economía y la política se "
-                       f"movieron juntas, la matriz separa parcialmente — se declara como "
-                       f"límite, no se esconde."
+                       f"componentes recién automatizados y con historia corta. "
+                       + discriminante
                        + _nota_itcp_riesgo(f_itcp)),
     }
 
