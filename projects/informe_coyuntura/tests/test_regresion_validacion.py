@@ -92,3 +92,20 @@ def test_el_texto_marca_el_signo_contrario():
     txt = rv.lectura(r, esperado="positivo")
     assert "signo CONTRARIO" in txt
     assert "no valida" in txt
+
+
+def test_la_colinealidad_exacta_se_declara_como_tal():
+    """Un índice que es una función lineal exacta del tiempo deja el sistema
+    singular. Eso no es falta de datos —el caso tiene respuesta— y hay que poder
+    distinguirlo de un aporte nulo estimado."""
+    r = rv.aporte_sobre_tendencia(_serie([100 + i for i in range(30)]),
+                                  _serie([50 + 0.5 * i for i in range(30)]))
+    assert r["colineal"] is True
+    assert "no es más que esa misma tendencia" in rv.lectura(r)
+
+
+def test_un_aporte_real_no_se_marca_como_colineal():
+    ciclo = [(-1) ** i * 5 for i in range(30)]
+    r = rv.aporte_sobre_tendencia(_serie([100 + c for c in ciclo]),
+                                  _serie([50 + 0.5 * i + 2 * c for i, c in enumerate(ciclo)]))
+    assert r["colineal"] is False

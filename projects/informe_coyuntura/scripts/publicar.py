@@ -694,7 +694,8 @@ def _validacion_itvc(bloque, series):
         return
     icc_niv = (corr.get("discriminante: ITVC sin ICC vs ICC (niveles)") or {}).get("r")
 
-    partes = [f"Correlación {coma(r_niv)} en niveles"
+    partes = [f"Contra el consumo en supermercados solo —una de las tres— la correlación es "
+              f"{coma(r_niv)} en niveles"
               + (f" y {coma(r_dif)} en los cambios mes a mes" if r_dif is not None else "")
               + ": cuando las condiciones materiales mejoran respecto del arranque del "
                 "mandato, la gente efectivamente compra más en términos reales."]
@@ -717,8 +718,10 @@ def _validacion_itvc(bloque, series):
                 "externas relacionadas que no lo componen. Este cinturón no tiene una única "
                 "serie de referencia, así que se compara contra un panel de estadísticas "
                 "externas y se mira si acompaña más a las de su propio terreno que a las "
-                "ajenas. El gráfico muestra una de ellas —el consumo en supermercados a "
-                "precios constantes— y la tabla, el panel completo."),
+                "ajenas. El gráfico compara el índice contra el factor común de las tres "
+                "estadísticas de su terreno: lo que las tres comparten, en vez de una sola. "
+                "El detalle —las cargas de cada una y el panel completo— está en la ficha "
+                "metodológica."),
         "serie_label": "ITVC (reconstrucción mensual)",
         "externa_label": "consumo en supermercados (precios constantes)",
         "trans_label": "ambas series con base 100 en el cuarto trimestre de 2023",
@@ -866,6 +869,20 @@ def _panel_socioeconomico(bloque, sigla: str):
         "n_propias": panel["n_propias"],
         "n_ajenas": panel["n_ajenas"],
     }
+    # El factor común (ADR-0161) va PRIMERO —es el contraste contra las tres
+    # estadísticas juntas, no contra una— pero sólo con una línea: el desarrollo
+    # queda en `detalle`, que la ficha metodológica muestra y el tablero no. La
+    # conclusión del tablero ya es larga y sumarle cuatro oraciones la arruina.
+    factor = panel.get("factor")
+    if factor:
+        bloque["validacion"]["panel"]["factor"] = dict(
+            factor, detalle=pnl.lectura_factor_detalle(panel))
+        # ADELANTE de la conclusión, no atrás: cuando hay factor, es el factor lo
+        # que el gráfico dibuja y lo que el titular informa. Si el texto siguiera
+        # abriendo con el par suelto, la primera oración describiría una
+        # comparación que el lector no tiene a la vista.
+        bloque["validacion"]["conclusion"] = (
+            pnl.lectura_factor(panel) + " " + bloque["validacion"]["conclusion"])
     bloque["validacion"]["conclusion"] += " " + texto
 
 
@@ -1492,17 +1509,23 @@ def _validacion_itcp(bloque):
                 "se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento "
                 "de senadores por provincia, adhesión provincial al RIGI), así que la reconstrucción de los "
                 "meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la "
-                "protesta social — límite que se declara, no se esconde. La correlación esperada "
-                "es negativa: más capital político (menos tensión), menos incertidumbre de "
-                "política en la prensa."),
+                "protesta social — límite que se declara, no se esconde. El EPU es una de las "
+                "tres estadísticas del terreno propio de este cinturón, junto con la confianza "
+                "en el gobierno y el clima electoral, y el gráfico compara el índice contra el "
+                "factor común de las tres: lo que comparten, en vez de una sola. Contra el EPU "
+                "por separado la correlación esperada es negativa —más capital político, menos "
+                "incertidumbre de política en la prensa—; contra el factor el signo lo fija el "
+                "propio cálculo, que es lo que evita elegirlo a mano. El detalle está en la "
+                "ficha metodológica."),
         "serie_label": "ITCP (reconstrucción mensual)",
         "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
         "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
         "r_sin_sector_privado": r_sin_priv,
         "por_gobierno": val.get("brecha_obra_publica_por_gobierno") or {},
         "conclusion": (
-            f"Correlación {coma(r_niv)} en niveles y {coma(r_dif)} en los cambios mes a mes: "
-            f"el signo negativo es el esperado, más moderado que en macro o gestión."
+            f"Contra el EPU solo —una de las tres— la correlación es {coma(r_niv)} en niveles y "
+            f"{coma(r_dif)} en los cambios mes a mes: el signo negativo es el esperado, más "
+            f"moderado que en macro o gestión."
             + (f" Sin la dimensión de sector privado —incorporada en julio de 2026— la "
                f"correlación sería {coma(r_sin_priv)}, y conviene explicar la diferencia en "
                f"lugar de omitirla. "

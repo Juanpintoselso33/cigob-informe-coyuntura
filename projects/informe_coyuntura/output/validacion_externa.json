@@ -2253,15 +2253,15 @@
     "2026-04": 1916.1,
     "2026-05": 2131.0,
     "2026-06": 2087.8,
-    "2026-07": 2097.4
+    "2026-07": 2102.0
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
-      "r": 0.747,
+      "r": 0.748,
       "n": 32
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.119,
+      "r": 0.118,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {
@@ -3464,7 +3464,7 @@
           "etiqueta": "Merval en dólares",
           "propia": false,
           "r_niveles": 0.177,
-          "r_diferencias": 0.061,
+          "r_diferencias": 0.06,
           "n": 32
         }
       ],
@@ -3479,6 +3479,177 @@
         "convergente": 0.152,
         "discriminante": 0.292,
         "brecha": -0.14
+      },
+      "factor": {
+        "cargas": {
+          "consumo_mayoristas": 0.667,
+          "consumo_shoppings": 0.234,
+          "consumo_supermercados": 0.707
+        },
+        "etiquetas": {
+          "consumo_mayoristas": "consumo en autoservicios mayoristas",
+          "consumo_shoppings": "consumo en centros de compras",
+          "consumo_supermercados": "consumo en supermercados"
+        },
+        "varianza_explicada": 59.2,
+        "n_series": 3,
+        "n": 30,
+        "pares": [
+          [
+            "2023-12",
+            95.6,
+            -1.129
+          ],
+          [
+            "2024-01",
+            92.4,
+            -1.262
+          ],
+          [
+            "2024-02",
+            91.5,
+            -1.705
+          ],
+          [
+            "2024-03",
+            90.6,
+            -1.513
+          ],
+          [
+            "2024-04",
+            91.8,
+            -1.654
+          ],
+          [
+            "2024-05",
+            92.8,
+            -1.496
+          ],
+          [
+            "2024-06",
+            92.3,
+            -1.385
+          ],
+          [
+            "2024-07",
+            94.3,
+            -1.214
+          ],
+          [
+            "2024-08",
+            95.0,
+            -1.141
+          ],
+          [
+            "2024-09",
+            93.7,
+            -1.086
+          ],
+          [
+            "2024-10",
+            96.2,
+            -1.104
+          ],
+          [
+            "2024-11",
+            97.5,
+            -0.846
+          ],
+          [
+            "2024-12",
+            97.3,
+            -1.95
+          ],
+          [
+            "2025-01",
+            98.1,
+            -1.632
+          ],
+          [
+            "2025-02",
+            98.9,
+            -1.526
+          ],
+          [
+            "2025-03",
+            96.1,
+            -0.962
+          ],
+          [
+            "2025-04",
+            95.9,
+            -1.292
+          ],
+          [
+            "2025-05",
+            94.4,
+            -1.451
+          ],
+          [
+            "2025-06",
+            96.4,
+            -1.586
+          ],
+          [
+            "2025-07",
+            97.9,
+            -1.815
+          ],
+          [
+            "2025-08",
+            94.9,
+            -1.792
+          ],
+          [
+            "2025-09",
+            96.1,
+            -2.06
+          ],
+          [
+            "2025-10",
+            96.4,
+            -1.58
+          ],
+          [
+            "2025-11",
+            94.9,
+            -1.869
+          ],
+          [
+            "2025-12",
+            94.7,
+            -1.731
+          ],
+          [
+            "2026-01",
+            92.6,
+            -1.891
+          ],
+          [
+            "2026-02",
+            92.3,
+            -1.914
+          ],
+          [
+            "2026-03",
+            91.6,
+            -1.953
+          ],
+          [
+            "2026-04",
+            91.2,
+            -1.935
+          ],
+          [
+            "2026-05",
+            91.1,
+            -1.67
+          ]
+        ],
+        "r_niveles": 0.211,
+        "r_diferencias": 0.029,
+        "mejor_sola_niveles": 0.596,
+        "mejor_sola_diferencias": 0.246
       },
       "lectura": "Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,342 y a las 5 ajenas con 0,253. En los cambios mes a mes la separación no se sostiene: 0,152 con lo propio contra 0,292 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
@@ -3545,24 +3716,24 @@
           "estadistica": "merval_usd",
           "etiqueta": "Merval en dólares",
           "propia": true,
-          "r_niveles": 0.747,
-          "r_diferencias": 0.119,
+          "r_niveles": 0.748,
+          "r_diferencias": 0.118,
           "n": 32
         }
       ],
       "n_propias": 1,
       "n_ajenas": 7,
       "niveles": {
-        "convergente": 0.747,
+        "convergente": 0.748,
         "discriminante": 0.434,
-        "brecha": 0.313
+        "brecha": 0.314
       },
       "diferencias": {
-        "convergente": 0.119,
+        "convergente": 0.118,
         "discriminante": 0.159,
-        "brecha": -0.04
+        "brecha": -0.041
       },
-      "lectura": "Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a la única estadística de su propio terreno con 0,747 y a las 7 ajenas con 0,434. En los cambios mes a mes la separación no se sostiene: 0,119 con lo propio contra 0,159 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+      "lectura": "Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a la única estadística de su propio terreno con 0,748 y a las 7 ajenas con 0,434. En los cambios mes a mes la separación no se sostiene: 0,118 con lo propio contra 0,159 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
     "itcp": {
       "indice": "itcp",
@@ -3643,6 +3814,177 @@
         "convergente": 0.367,
         "discriminante": 0.167,
         "brecha": 0.2
+      },
+      "factor": {
+        "cargas": {
+          "clima_electoral": 0.487,
+          "epu_argentina": -0.511,
+          "icg_utdt": 0.709
+        },
+        "etiquetas": {
+          "clima_electoral": "clima electoral",
+          "epu_argentina": "incertidumbre de política (EPU)",
+          "icg_utdt": "confianza en el gobierno"
+        },
+        "varianza_explicada": 51.5,
+        "n_series": 3,
+        "n": 30,
+        "pares": [
+          [
+            "2024-01",
+            66.0,
+            1.766
+          ],
+          [
+            "2024-02",
+            71.0,
+            1.378
+          ],
+          [
+            "2024-03",
+            71.4,
+            0.873
+          ],
+          [
+            "2024-04",
+            68.3,
+            0.073
+          ],
+          [
+            "2024-05",
+            66.4,
+            0.977
+          ],
+          [
+            "2024-06",
+            57.6,
+            -0.141
+          ],
+          [
+            "2024-07",
+            54.8,
+            -0.404
+          ],
+          [
+            "2024-08",
+            55.2,
+            0.378
+          ],
+          [
+            "2024-09",
+            54.7,
+            -1.045
+          ],
+          [
+            "2024-10",
+            53.9,
+            -0.399
+          ],
+          [
+            "2024-11",
+            45.1,
+            0.66
+          ],
+          [
+            "2024-12",
+            52.0,
+            0.434
+          ],
+          [
+            "2025-01",
+            58.1,
+            1.001
+          ],
+          [
+            "2025-02",
+            58.1,
+            1.094
+          ],
+          [
+            "2025-03",
+            57.1,
+            0.381
+          ],
+          [
+            "2025-04",
+            53.7,
+            -0.249
+          ],
+          [
+            "2025-05",
+            63.8,
+            0.788
+          ],
+          [
+            "2025-06",
+            64.1,
+            0.298
+          ],
+          [
+            "2025-07",
+            60.7,
+            0.293
+          ],
+          [
+            "2025-08",
+            45.6,
+            -0.933
+          ],
+          [
+            "2025-09",
+            43.5,
+            -3.742
+          ],
+          [
+            "2025-10",
+            45.1,
+            -2.329
+          ],
+          [
+            "2025-11",
+            57.3,
+            -0.335
+          ],
+          [
+            "2025-12",
+            65.0,
+            0.085
+          ],
+          [
+            "2026-01",
+            68.5,
+            1.079
+          ],
+          [
+            "2026-02",
+            66.8,
+            0.839
+          ],
+          [
+            "2026-03",
+            67.4,
+            0.534
+          ],
+          [
+            "2026-04",
+            61.0,
+            -1.451
+          ],
+          [
+            "2026-05",
+            63.0,
+            -1.9
+          ],
+          [
+            "2026-06",
+            66.1,
+            -1.934
+          ]
+        ],
+        "r_niveles": 0.523,
+        "r_diferencias": 0.493,
+        "mejor_sola_niveles": 0.493,
+        "mejor_sola_diferencias": 0.42
       },
       "lectura": "Contra un panel de 8 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,41 y a las 5 ajenas con 0,23. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,367 con lo propio contra 0,167 con lo ajeno."
     }

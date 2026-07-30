@@ -1277,6 +1277,13 @@ def main():
             print(f"  {sig.upper()}: propias {perf['n_propias']} · ajenas {perf['n_ajenas']}"
                   f" · niveles {n['convergente']}/{n['discriminante']} (brecha {n['brecha']})"
                   f" · difs {d['convergente']}/{d['discriminante']} (brecha {d['brecha']})")
+            f = perf.get("factor")
+            if f:
+                print(f"    factor común ({f['n_series']} series, explica "
+                      f"{f['varianza_explicada']}%): niveles {f['r_niveles']}"
+                      f" · difs {f['r_diferencias']}"
+                      f" · mejor sola {f['mejor_sola_niveles']}/{f['mejor_sola_diferencias']}"
+                      f" · cargas {f['cargas']}")
     except Exception as e:
         print(f"[WARN] panel de validación no disponible: {e}")
 

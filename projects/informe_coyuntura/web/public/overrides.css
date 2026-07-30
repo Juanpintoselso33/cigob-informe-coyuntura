@@ -1108,6 +1108,7 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 /* Panel de validación externa (ADR-0159): la tabla convive con un gráfico y una
    conclusión larga en la misma sección, así que va compacta. Sin esto ocupaba
    más alto que el propio gráfico. */
+.cg-panel-tabla { margin-block: 14px 20px; }
 .cg-panel-tabla th, .cg-panel-tabla td { padding: 7px 12px; font-size: 14px; }
 .cg-panel-tabla tbody th { text-align: left; font-weight: 600; }
 .cg-panel-tabla thead th:first-child { text-align: left; }

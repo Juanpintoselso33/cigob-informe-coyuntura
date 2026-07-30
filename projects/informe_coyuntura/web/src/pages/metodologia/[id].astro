@@ -418,6 +418,29 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
             <h2 class="cg-h2">Validación contra anclas externas</h2>
           </div>
           {fx.validacion.map(p => <p class="cg-ficha-p">{p}</p>)}
+          {val?.panel?.factor && (
+            <Fragment>
+              {val.panel.factor.detalle.map(p => <p class="cg-ficha-p">{p}</p>)}
+              <table class="cg-cruz-tabla cg-panel-tabla">
+                <thead>
+                  <tr>
+                    <th scope="col">estadística</th>
+                    <th scope="col">carga en el factor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(val.panel.factor.cargas)
+                    .sort((a, b) => Math.abs(b[1]) - Math.abs(a[1]))
+                    .map(([k, c]) => (
+                      <tr>
+                        <th scope="row">{val.panel.factor.etiquetas[k] ?? k}</th>
+                        <td>{(c > 0 ? "+" : "") + num(c)}</td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </Fragment>
+          )}
           {val?.panel && (
             <Fragment>
               <p class="cg-ficha-p">Perfil completo contra el panel de estadísticas externas.
@@ -445,7 +468,9 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
           )}
           {val && (
             <div class="cg-ficha-callout">
-              <strong>Edición vigente.</strong> Correlación en niveles con el ancla externa: r = {coma(val.r_niveles, 2)} ({val.n} meses).
+              <strong>Edición vigente.</strong> {val.panel?.factor
+                ? `Correlación en niveles contra el factor común de las ${val.panel.factor.n_series} estadísticas de su terreno: r = ${coma(val.panel.factor.r_niveles, 2)} (${val.panel.factor.n} meses).`
+                : `Correlación en niveles con el ancla externa: r = ${coma(val.r_niveles, 2)} (${val.n} meses).`}
               El detalle — niveles vs. cambios mes a mes, y la matriz cruzada de los cuatro índices — se publica en la <a href={`${base}/${slug}/`}>página del cinturón</a>.
             </div>
           )}

@@ -81,6 +81,87 @@ def test_el_texto_publico_usa_coma_decimal_y_menos_tipografico():
     assert "0,75" in txt and "0.75" not in txt
 
 
+def _panel_consumo(base):
+    """Las tres estadísticas de la familia del ITVC, la única con tres."""
+    return {"consumo_supermercados": dict(base),
+            "consumo_mayoristas": {k: v * 1.4 + 2 for k, v in base.items()},
+            "consumo_shoppings": {k: -v for k, v in base.items()},
+            "merval_usd": _serie([5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13])}
+
+
+def test_una_familia_de_tres_o_mas_recibe_su_factor_comun():
+    base = _serie([1, 3, 2, 5, 4, 7, 6, 9, 8, 11, 10, 13, 12, 15, 14, 17])
+    p = pv.perfil("itvc", base, _panel_consumo(base))
+    f = p["factor"]
+    assert f["n_series"] == 3
+    assert set(f["cargas"]) == {"consumo_supermercados", "consumo_mayoristas",
+                                "consumo_shoppings"}
+    # el Merval es ajeno: no puede entrar al factor propio del ITVC
+    assert "merval_usd" not in f["cargas"]
+
+
+def test_el_factor_deduce_solo_que_una_serie_va_invertida():
+    """Lo que antes había que declarar a mano —y era por donde entraba el
+    ajuste— lo resuelve la carga: shoppings es el espejo de las otras dos."""
+    base = _serie([1, 3, 2, 5, 4, 7, 6, 9, 8, 11, 10, 13, 12, 15, 14, 17])
+    f = pv.perfil("itvc", base, _panel_consumo(base))["factor"]
+    assert f["cargas"]["consumo_shoppings"] < 0
+    assert f["cargas"]["consumo_supermercados"] > 0
+    assert any("signo invertido" in x for x in pv.lectura_factor_detalle({"factor": f}))
+
+
+def test_una_familia_de_una_sola_estadistica_no_recibe_factor():
+    """Con menos de tres no hay factor que estimar, y el ITCG tiene una sola."""
+    base = _serie([1, 3, 2, 5, 4, 7, 6, 9, 8, 11, 10, 13, 12, 15, 14, 17])
+    p = pv.perfil("itcg", base, _panel_consumo(base))
+    assert "factor" not in p
+    assert pv.lectura_factor(p) == "" and pv.lectura_factor_detalle(p) == []
+
+
+_GANA = {"factor": {"cargas": {"a": 0.7, "b": 0.5}, "etiquetas": {"a": "una", "b": "otra"},
+                    "varianza_explicada": 60.0, "n_series": 3, "n": 30,
+                    "r_niveles": 0.523, "r_diferencias": 0.493,
+                    "mejor_sola_niveles": 0.493, "mejor_sola_diferencias": 0.42}}
+_PIERDE = {"factor": dict(_GANA["factor"], r_niveles=0.211, mejor_sola_niveles=0.596,
+                          mejor_sola_diferencias=0.246)}
+
+
+def test_el_detalle_del_factor_dice_si_le_gana_o_no_a_la_mejor_sola():
+    assert any("más que cualquiera" in x for x in pv.lectura_factor_detalle(_GANA))
+    txt = " ".join(pv.lectura_factor_detalle(_PIERDE))
+    assert "queda por debajo" in txt and "0,596" in txt
+
+
+def test_el_detalle_declara_que_el_indice_no_entra_al_calculo():
+    """Es la propiedad que separa esto de un promedio con signos elegidos a
+    mano; si no se dice, el lector no tiene cómo saber que no se acomodó."""
+    assert any("no participa del cálculo" in x for x in pv.lectura_factor_detalle(_GANA))
+
+
+def test_el_detalle_viene_en_parrafos_y_ninguno_es_un_muro():
+    parrafos = pv.lectura_factor_detalle(_GANA)
+    assert len(parrafos) >= 3
+    assert all(len(x) < 420 for x in parrafos), [len(x) for x in parrafos]
+
+
+def test_la_linea_del_tablero_es_corta_y_dice_el_veredicto():
+    """El desarrollo va a la ficha: si volviera al tablero, la conclusión —que
+    ya es larga— se vuelve ilegible."""
+    for p, esperado in ((_GANA, "más que cualquiera"), (_PIERDE, "menos que la mejor")):
+        linea = pv.lectura_factor(p)
+        assert esperado in linea
+        assert len(linea) < 260, linea
+        assert len(linea) < len(" ".join(pv.lectura_factor_detalle(p)))
+
+
+def test_el_texto_publico_no_lleva_marcas_de_markdown():
+    """Los dos textos van a campos que se renderizan planos: un ** queda a la
+    vista como dos asteriscos."""
+    for p in (_GANA, _PIERDE):
+        for txt in [pv.lectura_factor(p)] + pv.lectura_factor_detalle(p):
+            assert "**" not in txt and "__" not in txt
+
+
 def test_el_texto_concuerda_en_numero_cuando_hay_una_sola_propia():
     """«acompaña a las 1 de su propio terreno» es agramatical, y con un panel
     corto el caso n=1 es el normal, no el raro."""

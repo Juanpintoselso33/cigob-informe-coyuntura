@@ -143,38 +143,49 @@ let valSvg: {
   lineaIndice: string; lineaExterna: string;
   ticks: { x: number; label: string }[]; y100: number | null;
 } | null = null;
-if (val && val.pares.length >= 12) {
+// Cuando hay factor común (ADR-0161) el gráfico muestra ESE contraste y no una
+// estadística suelta: el titular de la sección informa el r contra el factor, y
+// un número que no se corresponde con la curva que tiene debajo es peor que no
+// publicarlo. El factor es un puntaje estandarizado —cruza el cero—, así que se
+// fuerza la escala por rango; rebase100 dividiría por un valor cercano a cero.
+const vplot = val?.panel?.factor?.pares
+  ? { pares: val.panel.factor.pares, plot: "minmax",
+      serie_label: val.serie_label,
+      externa_label: `factor común de ${val.panel.factor.n_series} estadísticas de su terreno`,
+      trans_label: "series normalizadas al rango del período" }
+  : val;
+if (vplot && vplot.pares.length >= 12) {
   const W = 1120, H = 200, base = H - 26, top = 16, padx = 16;
   // Dos modos de escala (definidos por publicar según el par):
   //   rebase100    → ambas series a 100 en el primer mes (vida: escalas afines)
   //   minmax_inv   → externa INVERTIDA y ambas normalizadas al rango del
   //                  período (las dos series no comparten escala)
   let serieA: number[], serieB: number[];
-  if (val.plot === "minmax_inv" || val.plot === "minmax") {
+  if (vplot.plot === "minmax_inv" || vplot.plot === "minmax") {
     const norm = (s: number[]) => {
       const lo = Math.min(...s), hi = Math.max(...s);
       return s.map(v => ((v - lo) / (hi - lo || 1)) * 100);
     };
-    serieA = norm(val.pares.map(p => p[1]));
-    serieB = norm(val.pares.map(p => (val.plot === "minmax_inv" ? -p[2] : p[2])));
+    serieA = norm(vplot.pares.map(p => p[1]));
+    serieB = norm(vplot.pares.map(p => (vplot.plot === "minmax_inv" ? -p[2] : p[2])));
   } else {
-    const p0 = val.pares[0];
-    serieA = val.pares.map(p => (p[1] / p0[1]) * 100);
-    serieB = val.pares.map(p => (p[2] / p0[2]) * 100);
+    const p0 = vplot.pares[0];
+    serieA = vplot.pares.map(p => (p[1] / p0[1]) * 100);
+    serieB = vplot.pares.map(p => (p[2] / p0[2]) * 100);
   }
   const todos = [...serieA, ...serieB];
   const y0 = Math.min(...todos) - 3, y1 = Math.max(...todos) + 3;
-  const VX = (i: number) => padx + (i / (val.pares.length - 1)) * (W - padx * 2);
+  const VX = (i: number) => padx + (i / (vplot.pares.length - 1)) * (W - padx * 2);
   const VY = (v: number) => base - ((v - y0) / (y1 - y0)) * (base - top);
   const trazo = (s: number[]) =>
     "M" + s.map((v, i) => `${VX(i).toFixed(1)},${VY(v).toFixed(1)}`).join(" L");
   valSvg = {
     W, H, base, top,
     lineaIndice: trazo(serieA), lineaExterna: trazo(serieB),
-    ticks: val.pares.map((p, i) => ({ ym: p[0], i }))
+    ticks: vplot.pares.map((p, i) => ({ ym: p[0], i }))
       .filter(t => t.ym.endsWith("-01"))
       .map(t => ({ x: VX(t.i), label: t.ym.slice(0, 4) })),
-    y100: val.plot === "rebase100" ? VY(100) : null,
+    y100: vplot.plot === "rebase100" ? VY(100) : null,
   };
 }
 
@@ -386,7 +397,12 @@ const robChartData = rob?.hist && indice ? {
                  aria-label="Ver el detalle de la validación externa">
               <div class="cg-rob-head">
                 <span>El {indice.sigla} y su contraste externo, mes a mes</span>
-                <span>correlación <strong>{num(val.r_niveles)}</strong> · {val.n} meses</span>
+                {val.panel?.factor ? (
+                  <span>contra el factor común de {val.panel.factor.n_series} estadísticas ·
+                    <strong> {num(val.panel.factor.r_niveles)}</strong> · {val.panel.factor.n} meses</span>
+                ) : (
+                  <span>correlación <strong>{num(val.r_niveles)}</strong> · {val.n} meses</span>
+                )}
               </div>
               <svg class="cg-rob-svg" viewBox={`0 0 ${valSvg.W} ${valSvg.H}`} role="img"
                    aria-label={`Evolución comparada: ${val.serie_label} y ${val.externa_label}`}>
@@ -410,9 +426,9 @@ const robChartData = rob?.hist && indice ? {
                       stroke="var(--bd)" stroke-width="1" />
               </svg>
               <p class="cg-val-leyenda">
-                <span class="cg-val-chip cg-val-chip--indice">{val.serie_label}</span>
-                <span class="cg-val-chip cg-val-chip--externa">{val.externa_label}</span>
-                <span class="cg-val-chip-nota">{val.trans_label}</span>
+                <span class="cg-val-chip cg-val-chip--indice">{vplot.serie_label}</span>
+                <span class="cg-val-chip cg-val-chip--externa">{vplot.externa_label}</span>
+                <span class="cg-val-chip-nota">{vplot.trans_label}</span>
               </p>
               <p class="cg-h2-sub">{val.conclusion}</p>
               <div class="cg-det-cta">Ver el detalle →</div>

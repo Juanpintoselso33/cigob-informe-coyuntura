@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Vínculos por regresión (ADR-0161) — el paso 9 del handbook, completo.
+"""Vínculos por regresión (ADR-0162) — el paso 9 del handbook, completo.
 
 El paso 9 del handbook OCDE/JRC pide correlacionar con otros indicadores **y**
 «identificar vínculos mediante regresiones». Lo primero ya está (ADR-0155, 0159);
@@ -78,12 +78,22 @@ def aporte_sobre_tendencia(indice: dict, externa: dict, min_meses: int = 18) -> 
     x = [indice[m] for m in meses]
     y = [externa[m] for m in meses]
     _, r2_tend = ols(y, [t])
-    coef, r2_full = ols(y, [t, x])
-    if r2_tend is None or r2_full is None:
+    if r2_tend is None:
         return {"n": n, "suficiente": False}
+    coef, r2_full = ols(y, [t, x])
+    if r2_full is None:
+        # El modelo completo sale singular cuando el índice es una función lineal
+        # exacta del tiempo. Eso NO es falta de datos: es el caso que motiva la
+        # prueba, y la respuesta es que el índice no agrega nada a la tendencia.
+        # Devolver «insuficiente» acá haría que la función se callara justo
+        # cuando el resultado importa.
+        return {"n": n, "suficiente": True, "colineal": True,
+                "r2_tendencia": r2_tend, "r2_con_indice": r2_tend,
+                "aporte": 0.0, "signo": "nulo", "coef": 0.0}
     return {
         "n": n,
         "suficiente": True,
+        "colineal": False,
         "r2_tendencia": r2_tend,
         "r2_con_indice": r2_full,
         "aporte": round(r2_full - r2_tend, 3),
@@ -101,6 +111,10 @@ def lectura(r: dict, esperado: str = "positivo") -> str:
     base = (f"Queda una prueba más, la que separa explicar de acompañar: una simple tendencia "
             f"temporal ya da cuenta del {pct(r['r2_tendencia'])}% de lo que hace el contraste "
             f"externo, porque en estos años casi todo se movió en la misma dirección. ")
+    if r.get("colineal"):
+        return base + ("El índice, en este período, no es más que esa misma tendencia: no se "
+                       "distingue de ella, así que no hay nada que pueda agregarle. Se publica "
+                       "porque es el resultado, no porque confirme.")
     if r["aporte"] <= 0.02:
         return base + (f"Sumar el índice a esa tendencia no agrega prácticamente nada "
                        f"({pct(r['aporte'])} puntos porcentuales): en este período el índice no "

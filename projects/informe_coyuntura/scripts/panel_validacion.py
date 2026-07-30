@@ -24,7 +24,16 @@ LAS FAMILIAS SE FIJAN ACÁ, POR CONCEPTO, y antes de mirar ningún resultado. Es
 la parte que no puede decidirse mirando los números: si se asignara la familia
 según con quién correlaciona mejor, la prueba se volvería circular y siempre
 daría bien.
+
+Y CUANDO LA FAMILIA TIENE TRES O MÁS, además del perfil se calcula su **factor
+común** —el primer componente principal, como arma la Reserva Federal de Chicago
+el CFNAI (ADR-0161, `factor_comun.py`)— y el índice se contrasta contra ese
+factor en vez de contra una estadística suelta. Las cargas del factor deciden
+solas el signo y el peso de cada serie; no hay que declarar a mano cuál va
+invertida, que es por donde se colaba el ajuste.
 """
+
+import factor_comun
 
 # familia conceptual de cada estadística del panel. Ninguna es componente de
 # ninguno de los cuatro índices — se verifica en un test.
@@ -103,7 +112,7 @@ def perfil(indice: str, serie: dict, panel: dict) -> dict:
 
     cn, dn = _media(conv_n), _media(disc_n)
     cd, dd = _media(conv_d), _media(disc_d)
-    return {
+    salida = {
         "indice": indice,
         "perfil": filas,
         "n_propias": len(conv_n),
@@ -111,6 +120,132 @@ def perfil(indice: str, serie: dict, panel: dict) -> dict:
         "niveles": {"convergente": cn, "discriminante": dn, "brecha": _brecha(cn, dn)},
         "diferencias": {"convergente": cd, "discriminante": dd, "brecha": _brecha(cd, dd)},
     }
+    factor = _factor(indice, serie, panel)
+    if factor:
+        salida["factor"] = factor
+    return salida
+
+
+def _factor(indice: str, serie: dict, panel: dict) -> dict | None:
+    """Contraste contra el factor común de la familia propia del índice.
+
+    Reemplaza al contraste contra una sola estadística cuando la familia tiene
+    tres o más: en vez de elegir una faceta, se compara contra lo que las tres
+    comparten. La comparación de referencia es la de mejor estadística
+    individual, que se guarda al lado para que el lector pueda ver si el
+    compuesto aporta o si sólo diluye.
+    """
+    propias = {k: v for k, v in panel.items() if FAMILIA.get(k) == indice and v}
+    niv = factor_comun.contraste(serie, propias)
+    if niv is None:
+        return None
+    dif = factor_comun.contraste(serie, propias, en_diferencias=True)
+    mejor_niv = max((abs(f["r_niveles"]) for f in _filas_propias(indice, serie, propias)),
+                    default=None)
+    mejor_dif = max((abs(f["r_diferencias"]) for f in _filas_propias(indice, serie, propias)
+                     if f["r_diferencias"] is not None), default=None)
+    return {
+        "cargas": niv["cargas"],
+        "etiquetas": {k: ETIQUETAS.get(k, k) for k in niv["cargas"]},
+        "varianza_explicada": niv["varianza_explicada"],
+        "n_series": niv["n_series"],
+        "n": niv["n"],
+        "pares": niv["pares"],
+        "r_niveles": niv["r"],
+        "r_diferencias": dif["r"] if dif else None,
+        "mejor_sola_niveles": mejor_niv,
+        "mejor_sola_diferencias": mejor_dif,
+    }
+
+
+def _filas_propias(indice: str, serie: dict, propias: dict) -> list:
+    filas = []
+    for clave, ext in sorted(propias.items()):
+        r_niv, n = _pearson(serie, ext)
+        if r_niv is None:
+            continue
+        r_dif, _ = _pearson(_difs(serie), _difs(ext))
+        filas.append({"estadistica": clave, "r_niveles": r_niv, "r_diferencias": r_dif, "n": n})
+    return filas
+
+
+def _coma(x) -> str:
+    return str(x).replace(".", ",").replace("-", "−")
+
+
+def lectura_factor(p: dict) -> str:
+    """Una línea para el tablero: contra qué se compara y con cuánto acompaña.
+
+    Corta a propósito. El desarrollo —cargas, varianza, signos— va en la ficha
+    metodológica: en el tablero la conclusión ya es larga y agregarle cuatro
+    oraciones más la vuelve ilegible.
+    """
+    f = p.get("factor")
+    if not f or f["r_niveles"] is None:
+        return ""
+    gana = f.get("mejor_sola_niveles") is not None and abs(f["r_niveles"]) > f["mejor_sola_niveles"]
+    cierre = ("más que cualquiera de ellas por separado"
+              if gana else "menos que la mejor de ellas por separado")
+    return (f"Contra el factor común de las {f['n_series']} estadísticas de su terreno —lo que "
+            f"comparten, no una sola— el índice acompaña con {_coma(f['r_niveles'])} en niveles"
+            + (f" y {_coma(f['r_diferencias'])} en los cambios mes a mes"
+               if f["r_diferencias"] is not None else "")
+            + f": {cierre}.")
+
+
+def lectura_factor_detalle(p: dict) -> list:
+    """El desarrollo del factor, para la ficha metodológica, en párrafos.
+
+    Devuelve una LISTA y no un bloque: son cuatro ideas distintas —qué es el
+    factor, qué signo dedujo, por qué no es circular, y si le gana a la mejor
+    sola— y en un solo párrafo quedan siete líneas seguidas que nadie lee.
+
+    Todo se deriva de las cargas: cuál serie entra invertida, cuál pesa más y si
+    el compuesto le gana o no a la mejor estadística sola. Nada de eso se escribe
+    a mano — si se escribiera, cambiaría de mes a mes y quedaría viejo.
+    """
+    f = p.get("factor")
+    if not f or f["r_niveles"] is None:
+        return []
+    etq, cargas = f["etiquetas"], f["cargas"]
+    pesada = max(cargas, key=lambda k: abs(cargas[k]))
+    invertidas = [etq[k] for k in sorted(cargas) if cargas[k] < 0]
+
+    partes = [
+        f"Para no depender de una sola estadística, las {f['n_series']} del terreno propio del "
+        f"índice se resumen en su factor común: el primer componente principal, el mismo método "
+        f"con el que la Reserva Federal de Chicago arma su índice de actividad a partir de 85 "
+        f"series. El factor recoge {_coma(f['varianza_explicada'])}% de lo que las "
+        f"{f['n_series']} tienen en común, y pesa más en {etq[pesada]}."
+    ]
+    if invertidas:
+        cual = invertidas[0] if len(invertidas) == 1 else " y ".join(
+            [", ".join(invertidas[:-1]), invertidas[-1]])
+        partes.append(
+            f"El cálculo determina por su cuenta que {cual} entra con signo invertido: no se "
+            f"declaró a mano. Es lo que hace que la comparación no se pueda acomodar — quien "
+            f"elige los signos de un promedio ya vio los resultados.")
+    partes.append(
+        "Las cargas se estiman con las estadísticas externas solas: el índice no participa del "
+        "cálculo del factor, sólo se compara contra él una vez armado.")
+
+    mejor_n, mejor_d = f.get("mejor_sola_niveles"), f.get("mejor_sola_diferencias")
+    if mejor_n is not None:
+        if abs(f["r_niveles"]) > mejor_n:
+            partes.append(
+                f"El compuesto acompaña al índice más que cualquiera de las {f['n_series']} por "
+                f"separado, que llegan como máximo a {_coma(round(mejor_n, 3))} en niveles y "
+                f"{_coma(round(mejor_d, 3))} en los cambios: lo que las tres comparten —y no una "
+                f"en particular— es lo que el índice sigue.")
+        else:
+            partes.append(
+                f"El compuesto queda por debajo de la mejor de las {f['n_series']} por separado, "
+                f"que llega a {_coma(round(mejor_n, 3))} en niveles. Se publica igual porque es "
+                f"lo que el contraste enseña: lo que las {f['n_series']} comparten es un ciclo "
+                f"más ancho que el que el índice sigue, y una de ellas sola lo capta mejor. Es un "
+                f"límite del panel disponible —corto y de un solo tipo de fuente— antes que un "
+                f"veredicto sobre el índice.")
+    return partes
 
 
 def lectura(p: dict) -> str:
@@ -120,7 +255,7 @@ def lectura(p: dict) -> str:
     dif, niv = p["diferencias"], p["niveles"]
     if dif["brecha"] is None:
         return ""
-    coma = lambda x: str(x).replace(".", ",").replace("-", "−")
+    coma = _coma
     propias = ("la única estadística de su propio terreno" if p["n_propias"] == 1
                else f"las {p['n_propias']} estadísticas de su propio terreno")
     ajenas = ("la única ajena" if p["n_ajenas"] == 1 else f"las {p['n_ajenas']} ajenas")
