@@ -164,6 +164,7 @@ PROCEDENCIA = {
     # boom observado; toca a dos componentes y se anota en su motivo.
     "brecha_salario_cbt": ("conceptual", "rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123)"),
     "informalidad": ("conceptual", "rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123)"),
+    "pobreza_nowcast": ("conceptual", "rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha"),
     "ipc_alimentos": ("conceptual", "encarecimiento relativo rebaseado a 4T-2023 (ADR-0033); ancla en fecha fija"),
     "peso_tarifas": ("conceptual", "nivel de regulados vs salario rebaseado a 4T-2023; ancla en fecha fija"),
     "alquiler_real": ("conceptual", "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"),

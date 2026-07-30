@@ -37,12 +37,100 @@ _RE_SEMESTRE = re.compile(r"Semestre\s+(\w+)\s+(\d{4})\s*-\s*(\w+)\s+(\d{4})")
 _RE_TASA = re.compile(r"tasa de pobreza de\s+([\d.,]+)\s*por ciento")
 _RE_IC = re.compile(r"confianza entre\s*\[\s*([\d.,]+)\s*%\s*,\s*([\d.,]+)\s*%\s*\]")
 
+# Cada informe nombra su semestre DOS veces y a veces las dos no coinciden
+# (ADR-0153): el título de RESULTADOS y el enunciado que trae la tasa. Las dos
+# las escribe el autor a mano y cualquiera de las dos puede quedar del mes
+# anterior — se verificó en los dos sentidos sobre los 18 informes publicados:
+#
+#   · 16-jun-2026: título «Noviembre 2025 - Abril 2026», enunciado «diciembre
+#     2025 - mayo 2026». Vale el enunciado (el gráfico del propio informe rotula
+#     ese 29,6 como Dic25May26).
+#   · 13-nov-2025: título «Mayo 2025 - Octubre 2025», enunciado «abril 2025 -
+#     septiembre 2025». Vale el título — el informe del mes anterior ya había
+#     estimado abril-septiembre.
+#
+# Por eso NO se prefiere una fuente sobre la otra: se toma el semestre MÁS
+# NUEVO de los dos. Lo que queda viejo es siempre el mes anterior, nunca el
+# siguiente, así que la desactualización sólo puede apuntar hacia atrás. Con esa
+# regla los 18 informes dan 18 meses consecutivos, sin huecos ni duplicados;
+# fechando por el título solo se perdía mayo-2026 y se pisaba abril, y por el
+# enunciado solo se perdía octubre-2025.
+_RE_RESULTADO_MESES = re.compile(
+    r"tasa de pobreza de\s+([\d.,]+)\s*por\s+ciento\s+para el semestre\s+"
+    r"([^\s\d]+)\s+(\d{4})\s*-\s*([^\s\d]+)\s+(\d{4})", re.IGNORECASE)
+# Variante del informe que cierra un semestre calendario: «31,6 por ciento para
+# el primer semestre calendario de 2026» — y «del 2025», que también aparece.
+_RE_RESULTADO_CALENDARIO = re.compile(
+    r"tasa de pobreza de\s+([\d.,]+)\s*por\s+ciento\s+para el\s+(primer|segundo)\s+"
+    r"semestre\s+calendario\s+de[l]?\s+(\d{4})", re.IGNORECASE)
+
+_MESES_NORM = {m.lower(): i for m, i in _MESES.items()}
+
 
 def _listar_informes() -> list:
     """fnames de los PDF publicados, del más viejo al más nuevo."""
     r = requests.get(NOWCAST_PAGINA, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT, verify=False)
     r.raise_for_status()
     return sorted(set(re.findall(r"/download\.php\?fname=(_\d+\.pdf)", r.text)))
+
+
+def _num(s: str) -> float:
+    return float(s.replace(",", "."))
+
+
+def _semestre(mes_ini: str, ini: str, mes_fin: str, fin: str) -> tuple[str, str] | None:
+    """(periodo, semestre) de un par de meses nombrados.
+
+    Se fecha por el FIN del semestre estimado: es el mes más reciente que el dato
+    describe, y así ordena junto al resto de las series.
+    """
+    n_fin = _MESES_NORM.get(mes_fin.lower())
+    if not n_fin:
+        return None
+    return (f"{fin}-{n_fin:02d}",
+            f"{mes_ini.capitalize()} {ini} - {mes_fin.capitalize()} {fin}")
+
+
+def _resultado(texto: str) -> tuple[float, str, str] | None:
+    """(tasa, periodo, semestre) del informe, o None si no se puede leer.
+
+    El período es el más nuevo entre el que declara el título y el que declara el
+    enunciado de la tasa; ver el comentario de los regex para por qué no se
+    prefiere uno de los dos.
+    """
+    tasa = _RE_TASA.search(texto)
+    if not tasa:
+        return None
+
+    candidatos = []
+    m = _RE_RESULTADO_MESES.search(texto)
+    if m:
+        # la tasa del enunciado es la del semestre estimado; más abajo los
+        # informes traen otra, la del mismo semestre del año anterior
+        sem = _semestre(m.group(2), m.group(3), m.group(4), m.group(5))
+        if sem:
+            candidatos.append(sem)
+            tasa = m
+    c = _RE_RESULTADO_CALENDARIO.search(texto)
+    if c:
+        mes_fin = 6 if c.group(2).lower() == "primer" else 12
+        anio = c.group(3)
+        candidatos.append((f"{anio}-{mes_fin:02d}",
+                           f"{'Enero' if mes_fin == 6 else 'Julio'} {anio} - "
+                           f"{'Junio' if mes_fin == 6 else 'Diciembre'} {anio}"))
+        tasa = c
+    t = _RE_SEMESTRE.search(texto)
+    if t:
+        sem = _semestre(t.group(1), t.group(2), t.group(3), t.group(4))
+        if sem:
+            candidatos.append(sem)
+    if not candidatos:
+        return None
+    periodo, semestre = max(candidatos)
+    if len({p for p, _ in candidatos}) > 1:
+        logger.warning("nowcast: el informe declara más de un semestre %s — se toma "
+                       "el más nuevo (%s)", sorted({p for p, _ in candidatos}), periodo)
+    return (_num(tasa.group(1)), periodo, semestre)
 
 
 def _leer_informe(fname: str) -> dict | None:
@@ -58,20 +146,28 @@ def _leer_informe(fname: str) -> dict | None:
     x.raise_for_status()
     with pdfplumber.open(io.BytesIO(x.content)) as pdf:
         texto = "\n".join((p.extract_text() or "") for p in pdf.pages[:3])
-    sem, tasa = _RE_SEMESTRE.search(texto), _RE_TASA.search(texto)
-    if not (sem and tasa):
+    res = _resultado(texto)
+    if res is None:
         return None
     ic = _RE_IC.search(texto)
-    num = lambda s: float(s.replace(",", "."))
     return {
-        # se fecha por el FIN del semestre estimado: es el mes más reciente que
-        # el dato describe, y así ordena junto al resto de las series
-        "periodo": f"{sem.group(4)}-{_MESES[sem.group(3)]:02d}",
-        "semestre": f"{sem.group(1)} {sem.group(2)} - {sem.group(3)} {sem.group(4)}",
-        "valor": num(tasa.group(1)),
-        "ic_inf": num(ic.group(1)) if ic else None,
-        "ic_sup": num(ic.group(2)) if ic else None,
+        "periodo": res[1],
+        "semestre": res[2],
+        "valor": res[0],
+        "ic_inf": _num(ic.group(1)) if ic else None,
+        "ic_sup": _num(ic.group(2)) if ic else None,
     }
+
+
+def _huecos(serie: dict) -> list:
+    """Meses ausentes entre el primero y el último período de la serie."""
+    if len(serie) < 2:
+        return []
+    n_de = lambda p: int(p[:4]) * 12 + int(p[5:7])
+    p_de = lambda n: f"{(n - 1) // 12}-{(n - 1) % 12 + 1:02d}"
+    presentes = {n_de(p) for p in serie}
+    return [p_de(n) for n in range(min(presentes) + 1, max(presentes))
+            if n not in presentes]
 
 
 def fetch_nowcast_pobreza(historico: bool = False) -> dict:
@@ -104,6 +200,15 @@ def fetch_nowcast_pobreza(historico: bool = False) -> dict:
             ultimo["serie"] = serie
             ultimo["informes_leidos"] = len(serie)
             ultimo["informes_publicados"] = len(informes)
+            ultimo["huecos"] = _huecos(serie)
+            if ultimo["huecos"]:
+                # El autor publica un informe por mes y cada uno corre el
+                # semestre móvil un mes: un hueco NO es un mes sin publicar, es
+                # un informe mal fechado (ADR-0153). Vale como control porque el
+                # síntoma es el mismo que el del bug que se corrigió.
+                logger.warning("nowcast: la serie tiene huecos en %s — probable "
+                               "informe mal fechado, no un mes sin publicar",
+                               ultimo["huecos"])
         results["pobreza_nowcast"] = {
             **ultimo,
             "fecha": f"{ultimo['periodo']}-01",

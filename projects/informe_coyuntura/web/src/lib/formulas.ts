@@ -31,6 +31,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{\left(\text{DGI}_{m}+\text{IIBB}_{m}\right)/\text{IPC}_{m}}{\text{factor estacional}_{\text{mes}}}\div\overline{\left(\text{4T-2023}\right)}\times 100`,
     leyenda: "Recaudación de impuestos internos de la Nación (DGI) más la de los sistemas de la Comisión Arbitral —Ingresos Brutos de los contribuyentes de Convenio Multilateral y sus regímenes de retención—, sumadas en nivel, llevadas a pesos constantes con el IPC y divididas por el promedio del cuarto trimestre de 2023, que vale 100. Se mide la DGI y no el total porque el indicador sigue la base imponible y la actividad, y el total incluye la aduana, cuya caída en estos años responde a la decisión de bajar retenciones y no a un deterioro de la economía. El factor estacional corrige el calendario tributario, que concentra la recaudación en mayo y junio y la deprime en marzo: se calcula como el cociente entre cada mes y la tendencia de doce meses centrada, promediado por mes calendario. Antes se publicaba la variación contra el mismo mes del año anterior; se cambió porque teniendo el dato mensual esa comparación arrastra la base de hace un año y puede informar crecimiento mientras el nivel sigue por debajo del punto de partida.",
   },
+  pobreza_nowcast: {
+    latex: String.raw`\frac{\text{pobreza}_{\text{2do sem. 2023}}}{\text{pobreza}_{\text{este mes}}}\times 100`,
+    leyenda: "Pobreza rebaseada al segundo semestre de 2023, que vale 100, e invertida: la base va arriba porque más pobreza es peor, así que por encima de 100 hay menos pobreza que en la transición. El nivel de cada mes es la estimación mensual de la Universidad Torcuato Di Tella; la base es la medición oficial del INDEC, porque la estimación mensual empieza en enero de 2025 y no alcanza el período base. Las dos fuentes no coinciden exactamente y el desvío está declarado en las limitaciones de la ficha.",
+  },
   saldo_comercial_12m: {
     latex: String.raw`\sum_{\text{\'ultimos 12 meses}}\left(\text{exportaciones}-\text{importaciones}\right)`,
     leyenda: "Acumulado de 12 meses del intercambio de bienes (ICA, INDEC), en millones de USD.",

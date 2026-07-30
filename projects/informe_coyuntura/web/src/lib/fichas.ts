@@ -2278,7 +2278,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023 (más canastas = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de sostenibilidad de ingresos y es el componente más pesado del ITVC (22,75% efectivo).",
+      "Pertenece a la dimensión de ingresos y consumo y sigue siendo el componente más pesado del ITVC (17,06% efectivo).",
       "El ITVC promedia sus componentes base-100 por dimensión: por encima de 100, la brecha acumula mejora contra el arranque del mandato.",
     ],
     limitaciones: [
@@ -2504,7 +2504,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el consumo rebaseado a 100 = promedio del 4º trimestre de 2023 (menos carne = deterioro).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (4% interno · 1,5% del ITVC).",
+      "Pertenece a la dimensión de ingresos y consumo (3,02% interno · 1,12% del ITVC).",
     ],
     limitaciones: [
       "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: entre diciembre de 2023 y hoy el consumo de carne vacuna cayó un 10%, pero el de cerdo subió un 12% y el de pollo se mantuvo, de modo que el consumo total de las tres carnes cayó apenas un 3%. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,5%) y acompaña, no lidera.",
@@ -2516,6 +2516,40 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITVC con línea de base documentada; el mismo día se reconstruyó la serie mensual real desde octubre de 2023 y pasó a rebase dinámico." },
       { fecha: "2026-07-06", cambio: "El titular queda protegido contra retrocesos: si la lectura en vivo devuelve un informe más viejo que el ya publicado en la serie (falla transitoria de la fuente), se mantiene el último punto de la serie." },
+    ],
+  },
+
+  pobreza_nowcast: {
+    tipo: "indicador",
+    id: "pobreza_nowcast",
+    cinturon: "vida_cotidiana",
+    rezago: "El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del INDEC llega dos veces al año y con más demora.",
+    fuente: {
+      organismo: "Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial)",
+      operacion: "Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste",
+      serie: "Informes mensuales del nowcast desde enero de 2025 + serie semestral oficial del INDEC desde 2003",
+      url: "https://www.utdt.edu/",
+      acceso: "Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo.",
+    },
+    transformaciones: [
+      "Se rebasea a 100 = la pobreza del segundo semestre de 2023, que es el semestre que contiene al cuarto trimestre, igual que el resto de los componentes del cinturón.",
+      "Se invierte, como los otros componentes que se leen al revés: más pobreza es peor, así que la base va arriba en el cociente y por encima de 100 significa MENOS pobreza que en la transición.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de ingresos y consumo (25% interno · 9,31% del ITVC).",
+      "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
+    ],
+    limitaciones: [
+      "La base y el nivel salen de DOS fuentes distintas, y no coinciden. El nivel es la estimación mensual de la universidad, que empieza en enero de 2025 y por eso no llega al período que sirve de base; la base es la medición oficial. En los tres semestres en que las dos se superponen, la estimación mensual queda 2,3 puntos por debajo de la oficial, luego medio punto por debajo, y después 2 puntos por ENCIMA: no es una diferencia con signo constante que se pueda corregir. Sobre una base de 40,1 puntos eso implica hasta un 5,7% de error, que se traslada a todos los valores del componente. Se acepta porque la alternativa —usar sólo la medición semestral— renuncia al dato mensual.",
+      "El indicador se lee contra la transición, no contra un óptimo: la pobreza del segundo semestre de 2023 fue muy alta, así que superar 100 no significa una situación buena sino mejor que ese punto de partida.",
+      "Es una estimación, no una medición: proyecta la pobreza a partir de ingresos y precios entre encuesta y encuesta. La referencia autorizada sigue siendo la del INDEC.",
+      "No distingue intensidad: dos hogares apenas por debajo de la línea y dos muy por debajo cuentan igual.",
+    ],
+    faltantes: "Si un mes no publica informe, el componente mantiene el último valor disponible y el cinturón renormaliza los pesos de su dimensión.",
+    revisiones: "La universidad puede revisar meses previos al recalcular su modelo, y el INDEC actualiza la línea de pobreza; se re-descarga la serie completa en cada corrida. Cada informe declara dos veces a qué semestre corresponde —en el título y en el texto— y las dos leyendas se escriben a mano, así que a veces una de ellas quedó del mes anterior; se toma la más reciente de las dos y se verifica que la serie no quede con meses faltantes, porque la publicación es mensual y un mes ausente indicaría una leyenda mal puesta antes que un informe no publicado.",
+    cambios: [
+      { fecha: "2026-07-16", cambio: "Alta como estimación mensual publicada junto a la medición oficial, sin integrar el índice." },
+      { fecha: "2026-07-30", cambio: "Entra al índice con 25% de la dimensión de ingresos y consumo. Hasta entonces era una card visible que no puntuaba, una categoría que el equipo dio de baja: un indicador integra las dimensiones de su índice o no se publica. Se decidió que corresponde a este cinturón y no al macroeconómico, porque las dimensiones de aquel son condiciones de la economía y la pobreza es el resultado social que este cinturón ya mide. Los cuatro componentes previos de la dimensión cedieron peso proporcionalmente y conservan su orden relativo." },
     ],
   },
 
@@ -2535,7 +2569,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos informalidad = mejora) contra el trimestre del arranque del mandato (4º trimestre de 2023).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (32,9% interno · 12,25% del ITVC).",
+      "Pertenece a la dimensión de ingresos y consumo (24,67% interno · 9,19% del ITVC).",
     ],
     limitaciones: [
       "Solo asalariados: no captura la informalidad cuentapropista.",
@@ -2750,7 +2784,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Recorte declarado: el componente se acota al techo de 140 — un boom puntual no compra compensación ilimitada dentro del índice; el valor crudo queda declarado en el detalle.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (2% interno · 0,75% del ITVC): el peso más chico del índice.",
+      "Pertenece a la dimensión de ingresos y consumo (1,51% interno · 0,56% del ITVC): el peso más chico del índice.",
     ],
     limitaciones: [
       "Es el componente más eufórico del cinturón (muy por encima de su base): motivo del techo de recorte y de la baja de peso.",

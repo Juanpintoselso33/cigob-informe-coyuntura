@@ -74,8 +74,12 @@ def test_pesos_del_documento():
                      "empleo": 0.15, "percepcion": 0.0825, "seguridad": 0.045}
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
     d = itvc.DIMENSIONES_ITVC
-    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.6107, "informalidad": 0.3289,
-                                            "consumo_carne": 0.0403, "patentamiento_motos": 0.0201}
+    # ADR-0153: entra pobreza_nowcast con 25% y los cuatro previos ceden ×0,75
+    # conservando su orden relativo.
+    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.4580, "informalidad": 0.2467,
+                                            "pobreza_nowcast": 0.25,
+                                            "consumo_carne": 0.0302, "patentamiento_motos": 0.0151}
+    assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
     assert d["vulnerabilidad"]["indicadores"] == {"endeudamiento_familiar": 0.5,
                                                   "mora_familias": 0.5}
     assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
@@ -88,6 +92,21 @@ def test_pesos_del_documento():
     assert d["seguridad"]["indicadores"] == {"inseguridad": 1.0}
     for dim in d.values():
         assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
+
+
+def test_no_hay_cards_de_contexto():
+    """La categoría «card visible que no puntúa» está dada de baja (ADR-0153).
+
+    El editor la prohibió expresamente: un indicador entra al índice o va a los
+    ocultos del snapshot (patrón `*_OCULTOS`, ADR-0022). Este guard existe
+    porque el camino de vuelta es de una línea —agregar un nombre a la lista— y
+    porque mientras `pobreza_nowcast` estuvo ahí, `publicar.py` le estampaba la
+    nota de contexto sin que nada fallara.
+    """
+    assert itvc.INDICADORES_CONTEXTO == [], (
+        f"{itvc.INDICADORES_CONTEXTO} volvería a publicarse como card de contexto: "
+        f"si no puntúa va a los ocultos de publicar.py, no acá"
+    )
 
 
 def test_tension_lineal_por_escala_del_doc():

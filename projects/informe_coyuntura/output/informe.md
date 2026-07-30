@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-29 22:58:51"
+generado: "2026-07-30 01:15:52"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -108,4 +108,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-29 22:58:51 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-30 01:15:52 — schema 1.2.0*

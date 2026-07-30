@@ -533,6 +533,7 @@ ITVC_SERIES_REBASEADAS = {
     "itvc_ipi":           "mortalidad_pymes",
     "itvc_isac":          "despacho_cemento",
     "itvc_endeudamiento": "endeudamiento_familiar",
+    "itvc_pobreza":       "pobreza_nowcast",
 }
 
 

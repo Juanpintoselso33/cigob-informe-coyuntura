@@ -45,8 +45,45 @@ DIMENSIONES_ITVC = {
         # mora y +0,770 con el salario, y sólo +0,442 con el ICC.
         "nombre": "Ingresos y consumo",
         "peso": 0.3725,
-        "indicadores": {"brecha_salario_cbt": 0.6107, "informalidad": 0.3289,
-                        "consumo_carne": 0.0403, "patentamiento_motos": 0.0201},
+        # ADR-0153: entra `pobreza_nowcast` con 25%. Hasta el 30-jul-2026 era una
+        # card VISIBLE que no puntuaba, o sea el patrón de "contexto" que el
+        # editor dio de baja: no había tercera opción entre entrar al índice e ir
+        # a los ocultos.
+        #
+        # Entra acá y no en macro porque las seis dimensiones del ITCM son
+        # condiciones de la economía (estabilidad monetaria, viabilidad fiscal,
+        # financiamiento, actividad, competitividad, inversión) y la pobreza no
+        # es ninguna: es el resultado social que este cinturón ya mide.
+        #
+        # EL PESO, fijado antes de mirar el efecto: la pobreza cubre lo que el
+        # indicador de salario NO puede ver. `brecha_salario_cbt` compara salario
+        # REGISTRADO contra canasta, así que sólo alcanza al empleo formal;
+        # pobreza cuenta personas, incluidos los hogares informales y los que no
+        # viven de un salario. Esa población es del orden de la que mide
+        # `informalidad` (32,9% de la dimensión), así que el peso va en esa banda
+        # y por debajo del ancla salarial. 25% es el número redondo de la banda.
+        # Los cuatro previos ceden proporcionalmente (×0,75) y conservan su orden.
+        #
+        # NO es redundante con la brecha salarial, y está medido: r = +0,150 en
+        # la matriz publicada (n = 19). Era el solapamiento que había que
+        # descartar —los dos comparan ingreso contra canasta— y no aparece.
+        #
+        # Pero la matriz señala otra cosa que este razonamiento no anticipaba, y
+        # queda anotada acá y no sólo en el ADR: en NIVELES la pobreza pasa el
+        # umbral de 0,7 con cuatro componentes de otras dimensiones —mora
+        # (−0,897), motos (+0,892), empleo registrado (−0,821) e índice líder
+        # (−0,748)—. No es una anomalía suya: el cinturón entero muestra 24 pares
+        # altos en niveles y ninguno al destendenciar (r medio 0,413 → 0,199), y
+        # eso ya está documentado como época en común (ADR-0108). Lo que sí es
+        # propio de la pobreza es que sus pares se miden sobre 19 meses y no 32,
+        # así que son los menos asentados de la matriz.
+        #
+        # Por eso entra a ESTA dimensión, donde el solapamiento queda explícito y
+        # los pesos lo absorben, y no como dimensión aparte fingiendo
+        # independencia.
+        "indicadores": {"brecha_salario_cbt": 0.4580, "informalidad": 0.2467,
+                        "pobreza_nowcast": 0.25,
+                        "consumo_carne": 0.0302, "patentamiento_motos": 0.0151},
     },
     "precios": {
         "nombre": "Presión de precios",
@@ -139,13 +176,20 @@ INTERPRETACION_LEGIBLE = {
     "mejora_sustancial":    "Mejora sustancial vs 4T-2023",
 }
 
-# Indicadores del cinturón que se publican pero no integran el índice.
-# ADR-0034: sentimiento_digital dejó de ser contexto — la serie mensual de
-# ventana fija (2021→) permite el B100 vs 4T-2023 con cociente intra-consulta,
-# inmune a la renormalización de Trends.
-# ADR-0113: el nowcast de pobreza se PUBLICA pero no puntúa — sus informes
-# arrancan en 2025 y no hay base 4T-2023 con la que rebasearlo.
-INDICADORES_CONTEXTO = ["pobreza_nowcast"]
+# VACÍA, y tiene que quedar vacía (ADR-0153).
+#
+# Era la lista de indicadores que el cinturón publicaba como card VISIBLE sin
+# puntuar. Esa categoría —"card de contexto"— está DADA DE BAJA por decisión
+# del editor: un indicador o entra al índice, o va a los ocultos del snapshot
+# (el patrón de ADR-0022 / `*_OCULTOS` en publicar.py). No hay tercera opción,
+# y por eso esto no se vuelve a poblar.
+#
+# Historia de los dos que estuvieron acá: sentimiento_digital salió al
+# incorporarse al índice (ADR-0034) y pobreza_nowcast al entrar a la dimensión
+# de ingresos (ADR-0153, que descarta ADR-0113 — el motivo de entonces era que
+# el nowcast arranca en 2025 y no llega a la base 4T-2023; se resolvió tomando
+# la base de la serie oficial del INDEC y declarando el desvío del empalme).
+INDICADORES_CONTEXTO: list[str] = []
 
 
 def banda_interpretacion(itvc: float) -> str:
