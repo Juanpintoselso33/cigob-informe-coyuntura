@@ -766,6 +766,36 @@ def _validacion_itcm(bloque):
                           "cruzada).")
         conclusion = " ".join(partes)
 
+    # SEGUNDO contraste: el Índice Líder de la UTDT. Se publica en la conclusión
+    # y no como gráfico aparte, igual que el ICG en el cinturón de gestión: la
+    # sección dibuja un solo par de series.
+    #
+    # Es el que cierra la debilidad del riesgo país. Y las dos frases sobre el
+    # adelanto se emiten sólo si los números las respaldan, porque la lectura
+    # intuitiva del nombre «líder» es la contraria a lo que da la medición.
+    lider_niv = (corr.get("niveles (ITCM vs índice líder)") or {}).get("r")
+    lider_dif = (corr.get("primeras diferencias (ITCM vs líder)") or {}).get("r")
+    lider_ade = (corr.get("líder adelantado 1 mes vs ITCM") or {}).get("r")
+    itcm_ade = (corr.get("ITCM adelantado 1 mes vs líder") or {}).get("r")
+    if lider_niv is not None and lider_dif is not None:
+        extra = [f"Un segundo contraste, independiente del mercado, confirma el cinturón por "
+                 f"donde el riesgo país es más débil: el Índice Líder de la Universidad Torcuato "
+                 f"Di Tella —que resume la marcha de la actividad— acompaña al ITCM con "
+                 f"{coma(lider_niv)} en niveles y {coma(lider_dif)} en los cambios mes a mes."]
+        if r_dif is not None and abs(r_dif) < abs(lider_dif):
+            extra.append(f"Ese segundo número es el que importa: mide el co-movimiento una vez "
+                         f"descontada la tendencia común del período, y es donde la comparación "
+                         f"con el mercado se queda en {coma(r_dif)}. La actividad real sigue al "
+                         f"índice mes a mes; el precio del riesgo, sólo en el fondo.")
+        if (itcm_ade is not None and lider_ade is not None
+                and itcm_ade > lider_niv > lider_ade):
+            extra.append(f"El orden temporal, en cambio, va al revés de lo que sugiere el nombre "
+                         f"del índice externo: el ajuste mejora cuando se adelanta el ITCM "
+                         f"({coma(itcm_ade)}) y empeora cuando se adelanta el líder "
+                         f"({coma(lider_ade)}). Sirve para validar el mismo mes, no como alerta "
+                         f"temprana.")
+        conclusion = conclusion + " " + " ".join(extra)
+
     # El recuento de componentes se DERIVA de la composición vigente del índice:
     # escrito a mano quedó viejo cuando entró costo_financiamiento_tesoro
     # (decía "once de sus trece" con catorce indicadores en el ITCM).
