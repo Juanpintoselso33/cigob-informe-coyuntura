@@ -46,7 +46,7 @@ _El ADR original no registró opciones alternativas._
 Con esto se cierra el único gap que la auditoría metodológica del día había
 dejado abierto.
 
-## Más información
+## Decisión
 
 ### Cómo se clasifica un índice sin bandas
 
@@ -74,6 +74,8 @@ calibrado contra el boom observado —el 166,7 de motos es lo que el techo
 techo institucional de 85 del saldo comercial en el ITCM (ADR-0120). Se anota en
 el motivo de los dos componentes que toca (endeudamiento y motos), no como
 circularidad.
+
+## Más información
 
 ### Lo que "0% circular" NO quiere decir
 

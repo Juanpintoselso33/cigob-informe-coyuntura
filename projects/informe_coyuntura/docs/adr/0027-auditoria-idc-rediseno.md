@@ -94,7 +94,7 @@ robustez publicada.
   esta ADR como descargo público de sus límites. Riesgo: no resiste una
   auditoría metodológica externa si el informe gana visibilidad.
 
-## Más información
+## Decisión
 
 ### Consecuencias mientras esté abierto
 

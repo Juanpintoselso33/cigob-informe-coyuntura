@@ -30,19 +30,7 @@ ADR-0085 para los otros tres índices; faltaba el ITVC.
 
 _El ADR original no registró opciones alternativas._
 
-## Más información
-
-### Limitaciones
-
-Los componentes entran **winsorizados** al techo de ADR-0033, igual que en el
-índice publicado. Un componente clavado en el techo pierde varianza, y sin
-varianza la correlación queda subestimada. Hoy `endeudamiento_familiar` está en
-el techo **19 de 31 meses**, de modo que sus correlaciones —incluida la única
-que sobrevive— son un piso, no una medición limpia.
-
-Esto conecta con el hallazgo 3.1 de la auditoría, todavía abierto: la saturación
-de escala no sólo aplana la lectura pública, también degrada las mediciones de
-robustez que se hacen sobre ella.
+## Decisión
 
 ### Cómo entra un índice sin bandas
 
@@ -99,3 +87,17 @@ común. Los casos más extremos:
 dimensiones distintas —Sostenibilidad de ingresos (22,75% efectivo) y
 Vulnerabilidad financiera (5%)— y la auditoría no lo señaló. Es el par que
 conviene seguir, no los de motos.
+
+## Más información
+
+### Limitaciones
+
+Los componentes entran **winsorizados** al techo de ADR-0033, igual que en el
+índice publicado. Un componente clavado en el techo pierde varianza, y sin
+varianza la correlación queda subestimada. Hoy `endeudamiento_familiar` está en
+el techo **19 de 31 meses**, de modo que sus correlaciones —incluida la única
+que sobrevive— son un piso, no una medición limpia.
+
+Esto conecta con el hallazgo 3.1 de la auditoría, todavía abierto: la saturación
+de escala no sólo aplana la lectura pública, también degrada las mediciones de
+robustez que se hacen sobre ella.

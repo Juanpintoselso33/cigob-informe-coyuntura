@@ -42,7 +42,7 @@ _El ADR original no registró opciones alternativas._
   que es el valor que tenía antes de recibirlos. Es la comprobación de que la
   renormalización no inventa peso.
 
-## Más información
+## Decisión
 
 ### La estructura nueva
 
@@ -96,6 +96,8 @@ agregar**, y seis dimensiones acumulan ese redondeo distinto que cinco.
 No se corrigió el motor. Ese redondeo es una decisión de diseño que afecta a los
 cuatro índices por igual, y tocarlo movería todos los números publicados por una
 razón que no tiene que ver con esta reorganización.
+
+## Más información
 
 ### Limitación conocida: una dimensión de una sola pata
 

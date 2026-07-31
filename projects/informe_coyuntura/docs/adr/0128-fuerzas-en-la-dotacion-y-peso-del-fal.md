@@ -15,23 +15,7 @@ Cierra los dos pendientes del aporte de gestión que no se habían resuelto.
 
 ---
 
-## Opciones consideradas
-
-_El ADR original no registró opciones alternativas._
-
-## Más información
-
-### Limitaciones
-
-- El desglose de fuerzas **no se incorpora a la serie histórica**, sólo a la
-  card: la hoja de detalle no cubre todo el período con la misma consistencia
-  que el cuadro principal.
-- Las siete entidades se identifican **por nombre**. Si el INDEC renombra una,
-  el desglose la pierde en silencio y el total publicado no cambiaría — el
-  contexto quedaría subestimado sin que nada avise.
-- El peso 50/50 es **una convención igual que el 70/30 anterior**. Ninguno de
-  los dos sale de un documento de diseño; lo que cambia es que ahora hay un
-  argumento escrito a favor del reparto elegido.
+## Contexto y planteo del problema
 
 ### 1. El denominador de la dotación APN incluye a las fuerzas
 
@@ -52,6 +36,8 @@ sus informantes:
 No estaba escrito en ninguna parte. La pregunta era pertinente y la respuesta
 tenía que estar publicada.
 
+## Factores de decisión
+
 ### Cuánto cambia la lectura
 
 | | dic-2023 | feb-2026 | variación |
@@ -62,6 +48,12 @@ tenía que estar publicada.
 
 Las fuerzas son **~10% de la dotación** y se redujeron menos que el resto, de
 modo que incluirlas **subestima el ajuste de la planta civil en 0,37 pp**.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
 
 ### Decisión
 
@@ -114,6 +106,8 @@ para que se pueda discutir en esos términos y no en otros.
 **La dimensión sigue siendo la más floja del ITCG** —las otras cuatro van de 58
 a 83— y sigue por debajo del umbral de 50 que el test conserva desde ADR-0098.
 
+## Pros y contras de las opciones
+
 ### Lo que NO se tomó de la propuesta
 
 El aporte proponía además abrir el FAL en dos medidores de 25% cada uno: la Ley
@@ -124,3 +118,17 @@ que incluyen los dos que el aporte menciona más el marco financiero de la CNV.
 Reemplazarlo por dos hitos sería perder resolución.
 
 ---
+
+## Más información
+
+### Limitaciones
+
+- El desglose de fuerzas **no se incorpora a la serie histórica**, sólo a la
+  card: la hoja de detalle no cubre todo el período con la misma consistencia
+  que el cuadro principal.
+- Las siete entidades se identifican **por nombre**. Si el INDEC renombra una,
+  el desglose la pierde en silencio y el total publicado no cambiaría — el
+  contexto quedaría subestimado sin que nada avise.
+- El peso 50/50 es **una convención igual que el 70/30 anterior**. Ninguno de
+  los dos sale de un documento de diseño; lo que cambia es que ahora hay un
+  argumento escrito a favor del reparto elegido.

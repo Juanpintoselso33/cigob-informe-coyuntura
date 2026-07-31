@@ -21,37 +21,7 @@ La auditoría señaló tres ausencias frente al objetivo declarado del cinturón
 Se relevaron las tres contra la API de series de datos.gob.ar. Las consultas
 quedan registradas para que el resultado sea auditable.
 
-## Opciones consideradas
-
-_El ADR original no registró opciones alternativas._
-
-### Consecuencias
-
-- Alta completa: config, serie (`itvc_alquiler`, 33 puntos desde oct-2023),
-  colector, dimensión, mapeo de publicación, y los cinco archivos web
-  (label, unidades corta y larga, descripción, fórmula, ficha).
-- Tres tests cambiaron de número esperado y **cada uno dice por qué**: el
-  ejemplo del documento renormaliza precios sobre dos componentes porque no
-  trae el tercero, y el guard de conteo pasa de 14 a 15 — el mismo guard que
-  detectó a `sentimiento_digital` desapareciendo del snapshot.
-- El ITVC pasa a 15 componentes y el tablero a 59 indicadores.
-
-## Más información
-
-### Alquiler: entra
-
-**Serie**: `104.1_I2RE_2016_M_25` — IPC-GBA, alquiler de la vivienda, mensual
-desde abr-2016. Deflactada por `103.1_I2N_2016_M_19` (nivel general de GBA).
-
-Construcción idéntica a `ipc_alimentos` (ADR-0033): encarecimiento **relativo**,
-no nominal, rebaseado a 100 = 4T-2023. Es la pregunta de precios pura,
-independiente del salario, para no repetir el ratio que ya mide la brecha
-salario/CBT.
-
-**El resultado es contundente: 107,7 en dic-2023 → 64,3 en jun-2026.** El
-alquiler subió alrededor de un 55% más que el resto de los precios del
-aglomerado, en caída monótona durante todo el mandato. Ningún componente del
-cinturón capturaba eso.
+## Factores de decisión
 
 ### Que aporta señal propia está medido, no supuesto
 
@@ -69,6 +39,38 @@ Ninguna supera el umbral de 0,7 al destendenciar. La más alta (−0,557 con
 alimentos, ambos precios) es comparable al mayor acoplamiento **ya existente**
 dentro del cinturón (+0,512 entre salario y endeudamiento).
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+### Consecuencias
+
+- Alta completa: config, serie (`itvc_alquiler`, 33 puntos desde oct-2023),
+  colector, dimensión, mapeo de publicación, y los cinco archivos web
+  (label, unidades corta y larga, descripción, fórmula, ficha).
+- Tres tests cambiaron de número esperado y **cada uno dice por qué**: el
+  ejemplo del documento renormaliza precios sobre dos componentes porque no
+  trae el tercero, y el guard de conteo pasa de 14 a 15 — el mismo guard que
+  detectó a `sentimiento_digital` desapareciendo del snapshot.
+- El ITVC pasa a 15 componentes y el tablero a 59 indicadores.
+
+## Decisión
+
+### Alquiler: entra
+
+**Serie**: `104.1_I2RE_2016_M_25` — IPC-GBA, alquiler de la vivienda, mensual
+desde abr-2016. Deflactada por `103.1_I2N_2016_M_19` (nivel general de GBA).
+
+Construcción idéntica a `ipc_alimentos` (ADR-0033): encarecimiento **relativo**,
+no nominal, rebaseado a 100 = 4T-2023. Es la pregunta de precios pura,
+independiente del salario, para no repetir el ratio que ya mide la brecha
+salario/CBT.
+
+**El resultado es contundente: 107,7 en dic-2023 → 64,3 en jun-2026.** El
+alquiler subió alrededor de un 55% más que el resto de los precios del
+aglomerado, en caída monótona durante todo el mandato. Ningún componente del
+cinturón capturaba eso.
+
 ### Peso
 
 Entra a **Presión de precios con 20%**: tarifas 45 · alimentos 35 · alquiler 20.
@@ -81,19 +83,6 @@ pesan sobre todos**, y por eso entra por debajo de los otros dos, que ceden
 proporcionalmente conservando su orden relativo.
 
 **ITVC 95,4 → 94,6 · tensión 5,9 → 6,1.**
-
-### Limitación
-
-**Sólo mide el Gran Buenos Aires.** Es la única apertura de alquiler que publica
-INDEC: cinco consultas distintas —"IPC nacional alquiler de la vivienda",
-"alquiler vivienda nacional índice precios", "IPC aperturas vivienda alquiler",
-"alquiler efectivo vivienda", "locación vivienda índice"— devuelven, fuera de la
-serie de GBA y su gemela trimestral, sólo actividad inmobiliaria, empleo del
-sector y deflactores implícitos del VAB. Ninguno es el costo de alquilar.
-
-Por eso se deflacta con el nivel general **de GBA** y no con el nacional:
-dividir un precio de una plaza por el índice de otra mezclaría dos mercados en
-el mismo cociente.
 
 ### Pobreza: no entra, y el hueco es menor de lo que parece
 
@@ -129,3 +118,18 @@ El ICC de la UTDT se desagrega por situación personal / macro / bienes durables
 y por región, **no** por presente vs. futuro, así que no ofrece el corte de
 expectativas que la auditoría imaginaba. La ausencia de una medida prospectiva
 es real y queda declarada.
+
+## Más información
+
+### Limitación
+
+**Sólo mide el Gran Buenos Aires.** Es la única apertura de alquiler que publica
+INDEC: cinco consultas distintas —"IPC nacional alquiler de la vivienda",
+"alquiler vivienda nacional índice precios", "IPC aperturas vivienda alquiler",
+"alquiler efectivo vivienda", "locación vivienda índice"— devuelven, fuera de la
+serie de GBA y su gemela trimestral, sólo actividad inmobiliaria, empleo del
+sector y deflactores implícitos del VAB. Ninguno es el costo de alquilar.
+
+Por eso se deflacta con el nivel general **de GBA** y no con el nacional:
+dividir un precio de una plaza por el índice de otra mezclaría dos mercados en
+el mismo cociente.

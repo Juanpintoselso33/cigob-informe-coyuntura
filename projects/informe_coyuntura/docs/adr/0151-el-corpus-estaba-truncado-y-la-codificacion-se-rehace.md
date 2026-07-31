@@ -78,7 +78,7 @@ _El ADR original no registró opciones alternativas._
 - El registro versionado en `data/politica/apoyo_empresario_codificacion.json`
   reemplaza por completo al de ADR-0150, que se descarta entero.
 
-## Más información
+## Decisión
 
 ### La segunda pasada, completa
 

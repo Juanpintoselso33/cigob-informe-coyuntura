@@ -12,31 +12,7 @@ ambito: 'Todo indicador que se incorpore a un índice paramétrico'
 | **Cierra** | El punto 3.2 de la auditoría de gestión (circularidad) |
 | **Continúa** | ADR-0103 (procedencia), ADR-0104 (por qué no se puede validar hacia atrás) |
 
-## Opciones consideradas
-
-_El ADR original no registró opciones alternativas._
-
-## Más información
-
-### Limitaciones
-
-**No baja el stock heredado.** Los techos de hoy son altos porque el proyecto
-es lo que es: 30 de 42 indicadores no existían antes de dic-2023. La regla
-gobierna el flujo, no el stock. Bajarlo es el trabajo que ADR-0103 dejó
-listado, en este orden:
-
-1. Los cinco indicadores con historia previa desaprovechada
-   (`iaf_transferencias` desde dic-2018, `ipc_total`, `recaudacion`, `emae_ia`,
-   `saldo_comercial_12m`): se puede anclar contra gobiernos anteriores y hoy no
-   se hace.
-2. Las siete bandas `sin_declarar` del ITCM: no requieren recalibrar nada, sólo
-   escribir de dónde salieron — y si no se puede reconstruir, decirlo.
-
-**No convierte una convención en algo mejor de lo que es.** Si tras buscar en
-serio no aparece referencia externa, la respuesta correcta es calibrar contra lo
-observado y declararlo `convencion`, no forzar una externa endeble para que el
-número del trinquete quede lindo. Mover un peso para que un test dé mejor está
-prohibido por ADR-0045, y esto es el mismo vicio con otra cara.
+## Contexto y planteo del problema
 
 ### Por qué hace falta
 
@@ -49,6 +25,12 @@ banda mal puesta de un cambio de régimen real.
 Queda entonces un solo lugar donde la circularidad se puede *evitar* en vez de
 medirse: el momento en que se define un ancla nueva. Ahí todavía se puede elegir
 el criterio **antes** de mirar el dato.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
 
 ### La regla
 
@@ -109,3 +91,25 @@ deshacer sin que alguien lo note.
 Los tres disparan de verdad — se verificó degradando `ratio_dnu` de `externa` a
 `convencion` (ITCP 60,9% → 66,6%, falla) y a `sin_declarar` (20,6% → 26,3%,
 falla). Un trinquete que nunca se probó no se sabe si frena.
+
+## Más información
+
+### Limitaciones
+
+**No baja el stock heredado.** Los techos de hoy son altos porque el proyecto
+es lo que es: 30 de 42 indicadores no existían antes de dic-2023. La regla
+gobierna el flujo, no el stock. Bajarlo es el trabajo que ADR-0103 dejó
+listado, en este orden:
+
+1. Los cinco indicadores con historia previa desaprovechada
+   (`iaf_transferencias` desde dic-2018, `ipc_total`, `recaudacion`, `emae_ia`,
+   `saldo_comercial_12m`): se puede anclar contra gobiernos anteriores y hoy no
+   se hace.
+2. Las siete bandas `sin_declarar` del ITCM: no requieren recalibrar nada, sólo
+   escribir de dónde salieron — y si no se puede reconstruir, decirlo.
+
+**No convierte una convención en algo mejor de lo que es.** Si tras buscar en
+serio no aparece referencia externa, la respuesta correcta es calibrar contra lo
+observado y declararlo `convencion`, no forzar una externa endeble para que el
+número del trinquete quede lindo. Mover un peso para que un test dé mejor está
+prohibido por ADR-0045, y esto es el mismo vicio con otra cara.

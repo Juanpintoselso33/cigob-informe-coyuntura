@@ -13,6 +13,19 @@ ambito: 'cinturón político (ITCP) · `sector_privado` · herramienta interna'
 - **Relacionados**: ADR-0148 (el registro que esto protege), ADR-0129 y ADR-0141
   (mismo patrón), ADR-0131 (protocolo de codificación)
 
+## Contexto y planteo del problema
+
+### Por qué, y por qué ahora
+
+ADR-0148 dejó el indicador de postura empresaria funcionando, con **103
+comunicados de AEA y UIA codificados a mano**. Falta la segunda pasada con otro
+codificador para publicarlo.
+
+El problema es el intervalo: **sin vigilancia, ese registro se queda viejo apenas
+una cámara publica el siguiente comunicado.** Si pasan semanas hasta que alguien
+haga el kappa, lo codificado ya no cubre el período y el trabajo se pierde justo
+cuando la métrica empezaba a servir.
+
 ## Opciones consideradas
 
 _El ADR original no registró opciones alternativas._
@@ -30,18 +43,7 @@ _El ADR original no registró opciones alternativas._
   Este detector no la reemplaza — la hace posible sin que el registro envejezca
   mientras tanto.
 
-## Más información
-
-### Por qué, y por qué ahora
-
-ADR-0148 dejó el indicador de postura empresaria funcionando, con **103
-comunicados de AEA y UIA codificados a mano**. Falta la segunda pasada con otro
-codificador para publicarlo.
-
-El problema es el intervalo: **sin vigilancia, ese registro se queda viejo apenas
-una cámara publica el siguiente comunicado.** Si pasan semanas hasta que alguien
-haga el kappa, lo codificado ya no cubre el período y el trabajo se pierde justo
-cuando la métrica empezaba a servir.
+## Decisión
 
 ### Qué hace
 
@@ -59,15 +61,6 @@ comunicados nuevos como **pendientes de codificar** en
 Los 103 ya codificados entran como **revisados de arranque**, leídos del propio
 registro de ADR-0148, así que no se re-avisan.
 
-### Lo que NO hace
-
-- **No clasifica.** La postura y el destinatario los asigna una persona con las
-  reglas de `apoyo_empresario_reglas.json`. Automatizar eso sería exactamente lo
-  que ADR-0131 prohíbe.
-- **No puntúa ni entra al ITCP.** Hay un test que además verifica que
-  `apoyo_empresario` no aparezca en `itcp.py`, para que nadie lo conecte por
-  descuido cuando ya nadie recuerde por qué.
-
 ### Un detalle que hubiera roto el detector en silencio
 
 **AEA no numera sus comunicados y publica más de uno el mismo día.** Con la fecha
@@ -84,3 +77,14 @@ contra el registro real: si la construcción de claves se desalinea, falla.
 porque todo está codificado. Un detector que devuelve cero puede estar andando o
 estar roto en silencio, así que se verificó aparte: el parser de UIA lee bien 3
 de 3 ids conocidos y el barrido arranca en 4245 desde el último conocido (4244).
+
+## Más información
+
+### Lo que NO hace
+
+- **No clasifica.** La postura y el destinatario los asigna una persona con las
+  reglas de `apoyo_empresario_reglas.json`. Automatizar eso sería exactamente lo
+  que ADR-0131 prohíbe.
+- **No puntúa ni entra al ITCP.** Hay un test que además verifica que
+  `apoyo_empresario` no aparezca en `itcp.py`, para que nadie lo conecte por
+  descuido cuando ya nadie recuerde por qué.

@@ -17,7 +17,7 @@ origen: 'Auditoría de Vida Cotidiana, recomendaciones de baja prioridad'
 
 _El ADR original no registró opciones alternativas._
 
-## Más información
+## Decisión
 
 ### 1. Consumo de carne: la limitación es real y ahora tiene número
 

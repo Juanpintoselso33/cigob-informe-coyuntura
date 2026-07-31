@@ -31,36 +31,7 @@ Es correcto y se verifica en la estructura: las cinco dimensiones cubrían
 Congreso (30%), gobernadores por proxy (25%), el propio oficialismo (20%), la
 calle (15%) y el electorado (10%). Los empresarios, 0%.
 
-## Opciones consideradas
-
-_El ADR original no registró opciones alternativas._
-
-## Más información
-
-### Limitaciones
-
-- **Es un solo canal de conflicto.** Mide la relación con el sector que depende
-  de la obra pública. Sería ciego a una pelea con el agro, la energía o los
-  bancos. La dimensión arranca con un único indicador y eso es una limitación
-  real, no un diseño terminado.
-- **La pregunta indaga por el cambio esperado, no por el nivel.** Un recorte
-  sostenido termina normalizándose: cuando las empresas se acostumbran al
-  presupuesto nuevo dejan de esperar caídas adicionales y la brecha vuelve a
-  cero aunque la obra pública siga en un piso históricamente bajo. Es
-  probablemente lo que explica el +0,2 actual frente al −29,8 de 2024, y por eso
-  el contraste con Construya no es opcional.
-- **Releva grandes empresas**; las pequeñas y regionales están subrepresentadas.
-
-### El indicador elegido
-
-**Brecha de expectativas entre constructoras de obra pública y de obra privada**
-(INDEC, Encuesta Cualitativa de la Construcción, Cuadro 7.1), en promedio móvil
-de 12 meses.
-
-Cada mes el INDEC pregunta a las grandes empresas constructoras si esperan que
-su actividad suba, no varíe o baje en el trimestre siguiente, **y publica las
-respuestas por separado para obra pública y obra privada**. El saldo de cada
-grupo es `%sube − %baja`; el indicador es la diferencia entre ambos saldos.
+## Factores de decisión
 
 ### Por qué la brecha y no el nivel
 
@@ -84,6 +55,23 @@ La brecha marca **2024** como el peor momento para las empresas que dependen del
 Estado. El nivel marca **2019**, que fue la recesión de Macri y no un conflicto
 entre el gobierno y sus contratistas. La brecha separa las dos cosas; el nivel
 las confunde. Ése es el argumento entero.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+### El indicador elegido
+
+**Brecha de expectativas entre constructoras de obra pública y de obra privada**
+(INDEC, Encuesta Cualitativa de la Construcción, Cuadro 7.1), en promedio móvil
+de 12 meses.
+
+Cada mes el INDEC pregunta a las grandes empresas constructoras si esperan que
+su actividad suba, no varíe o baje en el trimestre siguiente, **y publica las
+respuestas por separado para obra pública y obra privada**. El saldo de cada
+grupo es `%sube − %baja`; el indicador es la diferencia entre ambos saldos.
 
 ### Bandas
 
@@ -161,6 +149,8 @@ anterior (ADR-0086 y ADR-0087) por tener el cálculo escrito dos veces.
 *después*, de modo que un indicador recién incorporado habría dado n=0 el primer
 día.
 
+## Pros y contras de las opciones
+
 ### Candidatos descartados
 
 Se relevaron ~15 organismos. Las consultas quedan registradas para que el
@@ -183,3 +173,19 @@ Dos negativos de la primera pasada resultaron **mal fundados** y se corrigieron
 antes de cerrar: Vistage (se había dado por inexistente y existe) y SRA (se
 había afirmado un bloqueo por `robots.txt` que no es tal). Se dejan anotados
 porque el punto de esta tabla es que sea refutable.
+
+## Más información
+
+### Limitaciones
+
+- **Es un solo canal de conflicto.** Mide la relación con el sector que depende
+  de la obra pública. Sería ciego a una pelea con el agro, la energía o los
+  bancos. La dimensión arranca con un único indicador y eso es una limitación
+  real, no un diseño terminado.
+- **La pregunta indaga por el cambio esperado, no por el nivel.** Un recorte
+  sostenido termina normalizándose: cuando las empresas se acostumbran al
+  presupuesto nuevo dejan de esperar caídas adicionales y la brecha vuelve a
+  cero aunque la obra pública siga en un piso históricamente bajo. Es
+  probablemente lo que explica el +0,2 actual frente al −29,8 de 2024, y por eso
+  el contraste con Construya no es opcional.
+- **Releva grandes empresas**; las pequeñas y regionales están subrepresentadas.

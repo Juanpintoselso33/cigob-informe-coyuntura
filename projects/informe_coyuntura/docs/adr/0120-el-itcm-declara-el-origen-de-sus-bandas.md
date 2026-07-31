@@ -28,6 +28,28 @@ pendiente y fue explícito sobre qué clase de trabajo era:
 
 Este ADR hace exactamente eso. **Ningún ancla se movió; el ITCM sigue en 62,1.**
 
+### Lo que se descubrió al escribir el origen
+
+Cuatro de las siete bandas tienen serie propia anterior a dic-2023
+(`ipc_total`, `emae_ia`, `recaudacion`, `saldo_comercial_12m`), así que la
+pregunta natural era: ¿anclarlas a esa historia? Se midió dónde cae cada corte
+en la distribución pre-mandato, y la respuesta **no es la misma para todas**:
+
+- **`ipc_total` NO se ancla a su historia, y hacerlo sería un error.** La
+  inflación de 2021-2023 promedió 6,1% m/m, de modo que anclar a esos
+  percentiles pondría un mes mediano pre-mandato en el peor tramo y haría parecer
+  perfecto cualquier mes de hoy —el 1,9% actual saltaría de 77 a ~100 puntos—
+  sólo porque el punto de partida era catastrófico. Es el blanqueo de señal que
+  ADR-0045 prohíbe. Sus bandas son **normativas**: metas de estabilidad de
+  precios (1% m/m ≈ 12,7% anual = éxito; 5% ≈ 80% anual = fracaso).
+
+- **`recaudacion`, `emae_ia`, `saldo_comercial_12m` son conceptuales, ancladas
+  al CERO** (empate con la inflación / actividad estancada / comercio
+  balanceado), y **además resultan consistentes con la historia**: sus cortes
+  centrales caen cerca de la mediana pre-mandato (recaudación 0%→p41, EMAE
+  0%→p26, saldo 5000→p53). Discriminan también en la era anterior, no están
+  ajustadas a este período.
+
 ## Opciones consideradas
 
 _El ADR original no registró opciones alternativas._
@@ -56,29 +78,7 @@ dato disponible impone.
   qué el candidato natural —riesgo país— no puede entrar sin romper la
   validación.
 
-## Más información
-
-### Lo que se descubrió al escribir el origen
-
-Cuatro de las siete bandas tienen serie propia anterior a dic-2023
-(`ipc_total`, `emae_ia`, `recaudacion`, `saldo_comercial_12m`), así que la
-pregunta natural era: ¿anclarlas a esa historia? Se midió dónde cae cada corte
-en la distribución pre-mandato, y la respuesta **no es la misma para todas**:
-
-- **`ipc_total` NO se ancla a su historia, y hacerlo sería un error.** La
-  inflación de 2021-2023 promedió 6,1% m/m, de modo que anclar a esos
-  percentiles pondría un mes mediano pre-mandato en el peor tramo y haría parecer
-  perfecto cualquier mes de hoy —el 1,9% actual saltaría de 77 a ~100 puntos—
-  sólo porque el punto de partida era catastrófico. Es el blanqueo de señal que
-  ADR-0045 prohíbe. Sus bandas son **normativas**: metas de estabilidad de
-  precios (1% m/m ≈ 12,7% anual = éxito; 5% ≈ 80% anual = fracaso).
-
-- **`recaudacion`, `emae_ia`, `saldo_comercial_12m` son conceptuales, ancladas
-  al CERO** (empate con la inflación / actividad estancada / comercio
-  balanceado), y **además resultan consistentes con la historia**: sus cortes
-  centrales caen cerca de la mediana pre-mandato (recaudación 0%→p41, EMAE
-  0%→p26, saldo 5000→p53). Discriminan también en la era anterior, no están
-  ajustadas a este período.
+## Decisión
 
 ### La reclasificación
 

@@ -47,37 +47,7 @@ efectivamente removido** en lugar de cantidad de actos administrativos firmados:
 un decreto que reescribe quinientos artículos y una resolución que toca uno
 dejan de pesar igual. Es exactamente la objeción de la revisión externa.
 
-### Se descartó el ratio contra el stock regulatorio, por incommensurabilidad
-
-Antes de recalibrar se buscó eliminar la convención del techo dividiendo por el
-stock de regulación vigente. **El denominador existe**: la faceta `Estado de
-Vigencia` de SAIJ da **16.825 normas nacionales vigentes de alcance general**
-(11.261 decretos + 5.564 leyes).
-
-**Pero los universos no son conmensurables, y se verificó leyendo, no
-suponiendo.** El informe de julio-2025 dice «396 normas de desregulación que
-eliminan o modifican 1.157 **normativas anteriores**», y los ejemplos del
-informe de junio-2026 incluyen la Resolución 197/2026 del INPI derogando la
-**Resolución** INPI 283/2015. O sea: el numerador del Ministerio **incluye
-resoluciones**, y ese denominador de SAIJ **son sólo leyes y decretos**. El
-cociente habría dividido peras por manzanas. Queda registrado para que nadie
-repita el intento.
-
-## Opciones consideradas
-
-_El ADR original no registró opciones alternativas._
-
-### Consecuencias
-
-- El store `desregulacion_oficial.json` gana la clave `backfill_articulos`
-  junto a `backfill_grafico`. Las dos series se conservan: la de normas sigue
-  alimentando el contexto de la card.
-- La limitación de fondo **no desaparece**: contar artículos corrige la
-  equivalencia entre normas de peso muy distinto, pero un artículo que libera un
-  mercado sigue contando igual que uno que ajusta una definición. Está declarado
-  en la ficha.
-
-## Más información
+## Factores de decisión
 
 ### La serie: existe desde dic-2023 y está validada
 
@@ -95,6 +65,22 @@ normas que ya estaba en producción.
 
 Serie resultante: **1.150 artículos (dic-2023) → 16.178 (jun-2026)**, 31 puntos,
 rango ×14.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+### Consecuencias
+
+- El store `desregulacion_oficial.json` gana la clave `backfill_articulos`
+  junto a `backfill_grafico`. Las dos series se conservan: la de normas sigue
+  alimentando el contexto de la card.
+- La limitación de fondo **no desaparece**: contar artículos corrige la
+  equivalencia entre normas de peso muy distinto, pero un artículo que libera un
+  mercado sigue contando igual que uno que ajusta una definición. Está declarado
+  en la ficha.
+
+## Decisión
 
 ### Bandas
 
@@ -129,3 +115,21 @@ artículos/mes) eso ocurre hacia fines de 2027.
   backfill de normas, que ya no puntúa. Ahora está parametrizado y valida las
   dos series, con tolerancia proporcional a cada escala. Se agregó
   `test_lo_que_puntua_son_articulos_no_normas`.
+
+## Pros y contras de las opciones
+
+### Se descartó el ratio contra el stock regulatorio, por incommensurabilidad
+
+Antes de recalibrar se buscó eliminar la convención del techo dividiendo por el
+stock de regulación vigente. **El denominador existe**: la faceta `Estado de
+Vigencia` de SAIJ da **16.825 normas nacionales vigentes de alcance general**
+(11.261 decretos + 5.564 leyes).
+
+**Pero los universos no son conmensurables, y se verificó leyendo, no
+suponiendo.** El informe de julio-2025 dice «396 normas de desregulación que
+eliminan o modifican 1.157 **normativas anteriores**», y los ejemplos del
+informe de junio-2026 incluyen la Resolución 197/2026 del INPI derogando la
+**Resolución** INPI 283/2015. O sea: el numerador del Ministerio **incluye
+resoluciones**, y ese denominador de SAIJ **son sólo leyes y decretos**. El
+cociente habría dividido peras por manzanas. Queda registrado para que nadie
+repita el intento.

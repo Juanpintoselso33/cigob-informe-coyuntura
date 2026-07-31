@@ -10,18 +10,7 @@ origen: 'El cron falló tres noches seguidas; planteo del editor'
 
 # ADR-0133 — Una fuente demorada no puede tirar abajo el pipeline
 
-## Opciones consideradas
-
-_El ADR original no registró opciones alternativas._
-
-### Confirmación
-
-`test_gate_bloqueante_vs_demora.py` verifica que G2 quede fuera de los
-bloqueantes y que una demora sola devuelva 0. **Si alguien vuelve a meter la
-frescura entre las fallas que cortan, el pipeline entero vuelve a caerse porque
-una fuente publicó tarde, y el test lo marca antes.**
-
-## Más información
+## Contexto y planteo del problema
 
 ### Lo que pasó
 
@@ -44,6 +33,19 @@ Un error de dependencia se presentó como una discrepancia de matriz. Es el peor
 tipo de síntoma: no apunta a la causa y manda a investigar al lugar equivocado
 —cosa que efectivamente pasó la noche anterior, cuando diagnostiqué el problema
 de la matriz sin ver que abajo había un crash.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+### Confirmación
+
+`test_gate_bloqueante_vs_demora.py` verifica que G2 quede fuera de los
+bloqueantes y que una demora sola devuelva 0. **Si alguien vuelve a meter la
+frescura entre las fallas que cortan, el pipeline entero vuelve a caerse porque
+una fuente publicó tarde, y el test lo marca antes.**
+
+## Decisión
 
 ### Tres cambios
 
@@ -83,6 +85,8 @@ Los colectores usan sus exit codes como información, no como error:
 **Un código mayor a 2 no es una condición de datos: es un crash.** Ahora se
 distinguen: el paso emite `::error::` señalando qué script se cayó y corta ahí
 mismo, en vez de dejar que el efecto aparezca disfrazado tres pasos más abajo.
+
+## Más información
 
 ### Lo que esto NO arregla
 

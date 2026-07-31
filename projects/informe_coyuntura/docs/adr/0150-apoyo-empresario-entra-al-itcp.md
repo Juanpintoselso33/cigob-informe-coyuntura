@@ -16,50 +16,7 @@ ambito: 'cinturón político (ITCP) · dimensión `sector_privado`'
   ADR-0088 (la dimensión), ADR-0145 (el negativo que el usuario hizo revisar),
   ADR-0045 (no recalibrar para que dé mejor)
 
-## Opciones consideradas
-
-_El ADR original no registró opciones alternativas._
-
-### Consecuencias
-
-Dos codificadores ciegos nuevos (C y D), corpus con el texto real, reglas v2:
-
-| eje | acuerdo | **kappa** |
-|---|---|---|
-| postura | 100,0 % | **1,000** |
-| destinatario | 97,1 % | **0,955** |
-
-Tres desacuerdos en 103 casos, los tres de `destinatario` sobre casos `neutro`.
-**El conjunto computable es idéntico en las dos pasadas: 31 casos, cero
-desacuerdo** — que es lo único que mueve el indicador. Los tres se adjudican a
-`externo_o_propio`: son reportes de evento institucional (aniversario de AEA,
-una cumbre del CFI, la Conferencia Industrial) y la regla manda
-`externo_o_propio` cuando el texto habla de la cámara o su sector sin
-interpelar a un poder.
-
-**Advertencia sobre ese kappa, que va también a la ficha pública:** los dos
-codificadores son agentes de IA del mismo modelo base. Son genuinamente
-independientes —ninguno vio el trabajo del otro— pero comparten priores y
-concuerdan más de lo que concordarían dos personas de formación distinta. El
-número acredita que **el manual es unívoco**, no que cualquier par de lectores
-humanos llegaría a lo mismo. Un κ de 1,000 en un eje de cuatro categorías sobre
-103 casos debería leerse con esa salvedad puesta.
-
-- **`_uia_comunicado` extrae el cuerpo** desde `nota--body` y lo guarda en el
-  aviso: el detector de ADR-0149 ahora entrega material para codificar, no sólo
-  un título. Era la causa raíz.
-- **La serie se calcula una sola vez**, en `politica.apoyo_empresario_serie()`;
-  la card devuelve su último punto y `serie_12m` sale del registro. Card y serie
-  no pueden divergir, que es lo que verifica G3 (ADR-0086/0087).
-- **La card publica cuántos comunicados quedan sin codificar.** Es el único
-  indicador del cinturón cuyo dato lo actualiza una persona: si nadie codifica,
-  la serie se congela sin que falle nada. El número a la vista es la única
-  defensa contra eso.
-- El test de ADR-0149 que verificaba que `apoyo_empresario` **no** estuviera en
-  `itcp.py` se da vuelta: ahora verifica que esté, con bandas y peso.
-- **La primera pasada (ADR-0148) queda descartada por completo**, no corregida.
-
-## Más información
+## Contexto y planteo del problema
 
 ### Lo que se buscaba y lo que apareció
 
@@ -118,6 +75,51 @@ independientes ciegos entre sí codifican el corpus completo, el kappa se mide
 **entre ellos**, y quien escribió el manual **no codifica: adjudica** los
 desacuerdos una vez medido el número. Esto corrige el anexo de ADR-0131 para
 todo el proyecto.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+### Consecuencias
+
+Dos codificadores ciegos nuevos (C y D), corpus con el texto real, reglas v2:
+
+| eje | acuerdo | **kappa** |
+|---|---|---|
+| postura | 100,0 % | **1,000** |
+| destinatario | 97,1 % | **0,955** |
+
+Tres desacuerdos en 103 casos, los tres de `destinatario` sobre casos `neutro`.
+**El conjunto computable es idéntico en las dos pasadas: 31 casos, cero
+desacuerdo** — que es lo único que mueve el indicador. Los tres se adjudican a
+`externo_o_propio`: son reportes de evento institucional (aniversario de AEA,
+una cumbre del CFI, la Conferencia Industrial) y la regla manda
+`externo_o_propio` cuando el texto habla de la cámara o su sector sin
+interpelar a un poder.
+
+**Advertencia sobre ese kappa, que va también a la ficha pública:** los dos
+codificadores son agentes de IA del mismo modelo base. Son genuinamente
+independientes —ninguno vio el trabajo del otro— pero comparten priores y
+concuerdan más de lo que concordarían dos personas de formación distinta. El
+número acredita que **el manual es unívoco**, no que cualquier par de lectores
+humanos llegaría a lo mismo. Un κ de 1,000 en un eje de cuatro categorías sobre
+103 casos debería leerse con esa salvedad puesta.
+
+- **`_uia_comunicado` extrae el cuerpo** desde `nota--body` y lo guarda en el
+  aviso: el detector de ADR-0149 ahora entrega material para codificar, no sólo
+  un título. Era la causa raíz.
+- **La serie se calcula una sola vez**, en `politica.apoyo_empresario_serie()`;
+  la card devuelve su último punto y `serie_12m` sale del registro. Card y serie
+  no pueden divergir, que es lo que verifica G3 (ADR-0086/0087).
+- **La card publica cuántos comunicados quedan sin codificar.** Es el único
+  indicador del cinturón cuyo dato lo actualiza una persona: si nadie codifica,
+  la serie se congela sin que falle nada. El número a la vista es la única
+  defensa contra eso.
+- El test de ADR-0149 que verificaba que `apoyo_empresario` **no** estuviera en
+  `itcp.py` se da vuelta: ahora verifica que esté, con bandas y peso.
+- **La primera pasada (ADR-0148) queda descartada por completo**, no corregida.
+
+## Decisión
 
 ### Reglas v2
 
@@ -178,6 +180,8 @@ Revelada vs. declarada, angosta vs. ancha: el empate es el reparto honesto.
 
 Familia `tension` (conducta de un tercero hacia el Gobierno) y rezago 6,0 meses
 (centroide de la ventana; la fuente no tiene rezago de publicación).
+
+## Más información
 
 ### Lo que queda pendiente
 

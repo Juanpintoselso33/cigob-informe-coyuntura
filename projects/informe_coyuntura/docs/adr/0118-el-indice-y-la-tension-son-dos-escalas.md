@@ -27,7 +27,7 @@ haciendo falta.
 
 _El ADR original no registró opciones alternativas._
 
-## Más información
+## Decisión
 
 ### La nota
 

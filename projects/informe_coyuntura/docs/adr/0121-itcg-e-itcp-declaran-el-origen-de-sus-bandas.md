@@ -39,7 +39,7 @@ _El ADR original no registró opciones alternativas._
   fuentes de comparación entre gobiernos que en su mayoría no existen — es un
   límite del dominio, no una tarea pendiente.
 
-## Más información
+## Decisión
 
 ### La disciplina, distinta a la del ITCM
 

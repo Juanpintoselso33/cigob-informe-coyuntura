@@ -31,7 +31,7 @@ no cuenta, el indicador mide cero en treinta y un meses.
 
 _El ADR original no registró opciones alternativas._
 
-## Más información
+## Decisión
 
 ### Resolución: sí cuenta
 
@@ -81,6 +81,8 @@ sumario— y refuerza que el criterio se apoye en los descriptores.
 permite recuperar un caso puntual. La primera pasada **no guardó identificadores**
 y hubo que reconstruir el universo entero para volver a dos casos. Ya está
 anotado en el registro y los dos casos revisados llevan su número.
+
+## Más información
 
 ### Lo que esto NO resuelve
 
