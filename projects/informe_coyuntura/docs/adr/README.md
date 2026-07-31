@@ -157,7 +157,6 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0149](0149-detector-de-postura-empresaria.md) | Detector de postura empresaria | `sector_privado`, `apoyo_empresario` | vigente |
 | [0150](0150-apoyo-empresario-entra-al-itcp.md) | Apoyo empresario entra al ITCP, y el bug que lo encontró | `sector_privado`, `apoyo_empresario` | vigente |
 | [0151](0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) | El corpus estaba truncado: `apoyo_empresario` se recodifica entero | `sector_privado`, `apoyo_empresario` | vigente |
-| [0159](0159-validacion-por-panel-para-los-socioeconomicos.md) | Validación por panel para los compuestos socioeconómicos |  | vigente |
 | [0161](0161-el-contraste-externo-es-un-factor-comun-no-una-variable.md) | El contraste externo es un factor común, no una variable suelta |  | vigente |
 | [0166](0166-regla-de-orientacion-para-indicadores-de-control.md) | La orientación de un indicador sale de la pregunta que responde |  | vigente |
 
@@ -247,5 +246,6 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0133](0133-una-fuente-demorada-no-tira-abajo-el-pipeline.md) | Una fuente demorada no puede tirar abajo el pipeline |  | vigente |
 | [0156](0156-el-texto-publico-no-afirma-el-estado-de-hoy.md) | El texto público no afirma el estado de hoy |  | vigente |
 | [0157](0157-guard-de-anclas-de-banda.md) | Guard de anclas de banda, y un mapeo público que estaba mal |  | vigente |
+| [0159](0159-validacion-por-panel-para-los-socioeconomicos.md) | Validación por panel para los compuestos socioeconómicos |  | vigente |
 | [0162](0162-aporte-del-indice-por-encima-de-la-tendencia.md) | Aporte del índice por encima de la tendencia (regresión) |  | vigente |
 | [0165](0165-una-oracion-por-card-el-desarrollo-aparte.md) | Una oración por card, el desarrollo a un click |  | vigente |

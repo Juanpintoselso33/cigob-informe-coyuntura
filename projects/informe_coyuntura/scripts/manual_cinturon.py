@@ -55,7 +55,9 @@ FAMILIA_LEGIBLE = {
 RE_PEND = re.compile(
     r"(\bqueda\s+pendiente|\bpendiente[s]?\s+(?:de\s+decisi|editorial)"
     r"|decisi[oó]n\s+editorial\s+(?:pendiente|abierta)|no se incorpora todav"
-    r"|\bSUSPENDIDA\b|queda abierta como decisi|queda como candidata)",
+    # «SUSPENDIDA» a secas matcheaba «la encuesta, suspendida 2020-2023»:
+    # tiene que ser la decisión la que queda suspendida, no la fuente.
+    r"|queda\s+SUSPENDIDA|queda abierta como decisi|queda como candidata)",
     re.I,
 )
 

@@ -281,12 +281,10 @@ histórica.
 
 ## Decisiones abiertas
 
-6 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
+5 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
 
 > La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
 
-- **[ADR-0032](../adr/0032-inseguridad-ivi-mensual.md)** — Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT)
-  <br>encuesta (suspendida 2020-2023, verificado en el archivo de informes: los
 - **[ADR-0110](../adr/0110-percepcion-seguridad-y-consumo.md)** — La dimensión se llama por lo que tiene adentro
   <br>**Queda abierta como decisión editorial**, con el costo ya medido para que se
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0115. Verificar antes de tratarlo como abierto.
@@ -297,6 +295,7 @@ histórica.
   <br>Queda anotado como pendiente editorial: si el criterio del proyecto para elegir
 - **[ADR-0155](../adr/0155-el-ancla-del-itvc-pasa-a-ser-el-consumo-medido.md)** — El ancla de validación del ITVC pasa a ser el consumo medido
   <br>lo que prohíbe ADR-0045. Lo que sí falta —y se anota como pendiente editorial— es
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0160. Verificar antes de tratarlo como abierto.
 - **[ADR-0160](../adr/0160-la-dispersion-del-itvc-se-publica-junto-al-neto.md)** — La dispersión del ITVC se publica junto al neto
   <br>- Queda como pendiente editorial si la dispersión merece su propio gráfico: hoy
 

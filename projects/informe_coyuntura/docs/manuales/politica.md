@@ -278,7 +278,7 @@ histórica.
 
 ## Decisiones abiertas
 
-11 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
+10 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
 
 > La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
 
@@ -307,15 +307,12 @@ histórica.
 - **[ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md)** — Apoyo empresario: con UIA, la métrica funciona
   <br>2. **NO se incorpora todavía al ITCP.** Falta la **segunda pasada de codificación
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0150. Verificar antes de tratarlo como abierto.
-- **[ADR-0159](../adr/0159-validacion-por-panel-para-los-socioeconomicos.md)** — Validación por panel para los compuestos socioeconómicos
-  <br>- **Queda pendiente**: el paso 9 del handbook pide además «identificar vínculos
-  <br>⚠️ Puede estar resuelto: lo tocó ADR-0162. Verificar antes de tratarlo como abierto.
 - **[ADR-0166](../adr/0166-regla-de-orientacion-para-indicadores-de-control.md)** — La orientación de un indicador sale de la pregunta que responde
   <br>dice explícitamente: *"No se incorpora todavía ninguno, por la misma razón que
 
 ## Todos los ADR vigentes de este cinturón
 
-59 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+58 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -373,6 +370,5 @@ histórica.
 - [0149](../adr/0149-detector-de-postura-empresaria.md) — Detector de postura empresaria
 - [0150](../adr/0150-apoyo-empresario-entra-al-itcp.md) — Apoyo empresario entra al ITCP, y el bug que lo encontró
 - [0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) — El corpus estaba truncado: `apoyo_empresario` se recodifica entero
-- [0159](../adr/0159-validacion-por-panel-para-los-socioeconomicos.md) — Validación por panel para los compuestos socioeconómicos
 - [0161](../adr/0161-el-contraste-externo-es-un-factor-comun-no-una-variable.md) — El contraste externo es un factor común, no una variable suelta
 - [0166](../adr/0166-regla-de-orientacion-para-indicadores-de-control.md) — La orientación de un indicador sale de la pregunta que responde

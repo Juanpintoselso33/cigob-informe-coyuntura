@@ -298,6 +298,7 @@ histórica.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0121. Verificar antes de tratarlo como abierto.
 - **[ADR-0158](../adr/0158-validacion-del-itcm-por-puntos-de-giro.md)** — El ITCM se valida por puntos de giro, no sólo por correlación
   <br>- **Queda pendiente** el régimen socioeconómico para los otros tres cinturones.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0159. Verificar antes de tratarlo como abierto.
 
 ## Todos los ADR vigentes de este cinturón
 
