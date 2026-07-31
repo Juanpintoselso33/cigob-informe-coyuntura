@@ -49,7 +49,11 @@ backup/
 # ------------------------------------------------------------
 # Claude Code
 .claude/
-CLAUDE.md
+# CLAUDE.md SÍ se versiona: es la guía operativa canónica del repo y
+# documenta convenciones de las que depende el trabajo (formato de los ADR,
+# cómo publicar sin esperar al cron, qué NO stagear por OneDrive). Su propio
+# encabezado dice "checked into the codebase"; hasta 2026-07-31 estaba acá y
+# eso era falso, así que cada máquina tenía su propia versión.
 CLAUDE.local.md
 # BMAD Method y artefactos de planificación
 .bmad-core/
