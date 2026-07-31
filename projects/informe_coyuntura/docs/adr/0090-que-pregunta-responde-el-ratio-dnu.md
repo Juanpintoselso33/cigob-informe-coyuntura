@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-19
 cinturon: 'politica'
 indicadores: [ratio_dnu]
+relacionado: ['0166']
 ambito: 'ITCP · `ratio_dnu` · ficha pública'
 origen: 'Auditoría externa del cinturón político, prioridad 4'
 ---

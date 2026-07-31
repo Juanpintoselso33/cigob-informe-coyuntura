@@ -5,6 +5,8 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'politica'
 archivos: ['publicar._familias']
+relacionado: ['0166']
+cerrado_por: ['0132']
 ambito: 'ITCP · card pública "Lectura por partes" · `publicar._familias`'
 origen: 'Auditoría externa del cinturón político, prioridad 2'
 ---

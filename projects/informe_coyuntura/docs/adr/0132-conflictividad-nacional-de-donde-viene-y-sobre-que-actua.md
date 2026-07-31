@@ -7,6 +7,7 @@ fecha: 2026-07-25
 cinturon: 'politica'
 indicadores: [conflictividad_nacional, conflicto_social]
 complementa: ['0052']
+cierra: ['0094']
 ambito: 'ITCP · `conflictividad_nacional` · dimensión `conflicto_social`'
 origen: 'Pendiente editorial abierto desde ADR-0052'
 ---

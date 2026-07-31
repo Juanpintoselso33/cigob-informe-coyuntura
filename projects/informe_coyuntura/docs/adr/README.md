@@ -64,12 +64,12 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0005](0005-reservas-netas-a-secas.md) | Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal | `reservas_bcra` | vigente |
 | [0008](0008-tcrm-itcrm-bcra.md) | El TCRM usa el ITCRM oficial del BCRA, no la serie discontinuada de INDEC |  | vigente |
 | [0009](0009-idm-y-tcrm-en-el-itcm.md) | Índice de Desequilibrio Monetario (real-real i.a.) y el TCRM como 5ª dimensión del ITCM |  | vigente |
-| [0010](0010-capitulo-inversion-iai-icip.md) | Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM |  | vigente |
+| [0010](0010-capitulo-inversion-iai-icip.md) | Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM | `iai`, `icip` | vigente |
 | [0022](0022-credito-real-y-contexto-oculto.md) | Crédito privado real al ITCM; los monetarios nominales quedan ocultos |  | vigente |
 | [0027](0027-auditoria-idc-rediseno.md) | Auditoría adversarial del IdC: hallazgos y opciones de rediseño | `idc` | vigente |
 | [0028](0028-idc-z-scores.md) | IdC rediseñado: z-scores de nivel contra la propia historia | `idc` | vigente |
 | [0029](0029-recaudacion-promedio-movil-3m.md) | Recaudación real: promedio móvil de 3 meses sobre IPC cerrado | `recaudacion` | vigente |
-| [0053](0053-transparencia-y-agregados-monetarios-idm.md) | Transparencia y agregados monetarios del IDM |  | vigente |
+| [0053](0053-transparencia-y-agregados-monetarios-idm.md) | Transparencia y agregados monetarios del IDM | `idm` | vigente |
 | [0054](0054-dolarizacion-depositos-itcm.md) | Dolarización de depósitos como indicador del ITCM |  | superado por [0055](0055-presion-dolarizacion-carteras-itcm.md) |
 | [0055](0055-presion-dolarizacion-carteras-itcm.md) | Presión de dolarización de carteras sensible al régimen cambiario |  | vigente |
 | [0056](0056-suavizado-ajuste-automatico-saldo-comercial.md) | Suavizado del ajuste automático de saldo comercial por composición expo/impo | `saldo_comercial_12m` | vigente |
@@ -107,7 +107,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0041](0041-cohesion-bloque-diputados-cache-permanente-y-serie-mensual.md) | cohesion_bloque (Diputados): caché permanente por acta y serie mensual real | `fetch_cohesion_bloque_diputados_actas_anio`, `fetch_cohesion_bloque`, `fetch_cohesion_bloque_diputados_mensual` | vigente |
 | [0042](0042-cohesion-bloque-diputados-recalibracion-bandas.md) | cohesion_bloque (Diputados): recalibración de bandas ITCP con backfill mensual real |  | vigente |
 | [0043](0043-protestas-caba-recalibracion-bandas.md) | protestas_caba: recalibración de bandas ITCP con la serie ACLED ya existente |  | vigente |
-| [0044](0044-adhesion-reformas-provincial-serie-mensual.md) | adhesion_reformas_provincial: serie mensual real vía investigación manual de fechas provinciales | `fetch_adhesion_reformas_provincial_serie` | vigente |
+| [0044](0044-adhesion-reformas-provincial-serie-mensual.md) | adhesion_reformas_provincial: serie mensual real vía investigación manual de fechas provinciales | `fetch_adhesion_reformas_provincial_serie`, `adhesion_reformas_provincial` | vigente |
 | [0045](0045-comisiones-caidas-recalibracion-bandas.md) | comisiones_caidas: recalibración de bandas ITCP (saturación en espejo) |  | vigente |
 | [0046](0046-derrotas-legislativas-itcp.md) | `derrotas_legislativas`: nuevo indicador del ITCP (vetos insistidos + decretos rechazados, fusionados) | `fetch_derrotas_legislativas`, `fetch_derrotas_legislativas_mensual` | vigente |
 | [0047](0047-rotacion-gabinete-itcp.md) | rotacion_gabinete: la rotación ministerial entra al ITCP (pata ejecutiva de cohesión interna) | `fetch_rotacion_gabinete`, `cohesion_interna`, `fetch_rotacion_gabinete_serie` | vigente |
@@ -159,6 +159,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0151](0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) | El corpus estaba truncado: `apoyo_empresario` se recodifica entero | `sector_privado`, `apoyo_empresario` | vigente |
 | [0159](0159-validacion-por-panel-para-los-socioeconomicos.md) | Validación por panel para los compuestos socioeconómicos |  | vigente |
 | [0161](0161-el-contraste-externo-es-un-factor-comun-no-una-variable.md) | El contraste externo es un factor común, no una variable suelta |  | vigente |
+| [0166](0166-regla-de-orientacion-para-indicadores-de-control.md) | La orientación de un indicador sale de la pregunta que responde |  | vigente |
 
 ### Gestión (ITCG)
 
@@ -172,9 +173,9 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0016](0016-concesiones-contratar-salud-sss.md) | Concesiones vía CONTRAT.AR + opción en salud vía padrones SSS (últimos manuales automatizados) |  | vigente |
 | [0017](0017-protestas-acled.md) | Protestas en CABA vía ACLED (contexto): la protesta no bajó, los cortes sí |  | superado por [0051](0051-gestion-contexto-oculto.md) |
 | [0019](0019-revision-metodologica-parametricas.md) | Revisión metodológica de las tres paramétricas (ITCM · ITCG · ITVC) |  | parcial |
-| [0021](0021-interpolacion-y-apertura-sin-brecha.md) | Puntaje interpolado en ITCM/ITCG y apertura comercial sin brecha |  | vigente |
+| [0021](0021-interpolacion-y-apertura-sin-brecha.md) | Puntaje interpolado en ITCM/ITCG y apertura comercial sin brecha | `apertura_comercial` | vigente |
 | [0023](0023-litigiosidad-al-itcg.md) | Litigiosidad SRT al ITCG; protestas y alertas siguen de contexto |  | vigente |
-| [0025](0025-protocolo-diagnostico-politico.md) | Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2) |  | vigente |
+| [0025](0025-protocolo-diagnostico-politico.md) | Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2) | `protocolo_antipiquetes` | vigente |
 | [0026](0026-irpc-mensual-gdelt.md) | Mensualización del IRPC: forma GDELT calibrada a anclajes DP |  | rechazado |
 | [0031](0031-validacion-cruzada-tercer-pilar.md) | Tercer pilar de robustez: validación cruzada (matriz discriminante) |  | vigente |
 | [0051](0051-gestion-contexto-oculto.md) | Gestión: las cards de contexto salen del tablero (regla pareja en los 5 cinturones) |  | vigente |

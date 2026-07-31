@@ -6,6 +6,7 @@ nota_estado: 'Aceptado, **implementado y publicado** (cableado 2026-07-30)'
 fecha: 2026-07-30
 cinturon: 'transversal'
 archivos: ['scripts/regresion_validacion.py']
+cierra: ['0159']
 ambito: '`scripts/regresion_validacion.py`'
 ---
 

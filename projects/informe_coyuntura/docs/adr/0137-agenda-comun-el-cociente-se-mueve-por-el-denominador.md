@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-26
 cinturon: 'politica'
 indicadores: [poder_legislativo]
+cerrado_por: ['0166']
 ambito: 'cinturón político (ITCP), dimensión `poder_legislativo`'
 ---
 

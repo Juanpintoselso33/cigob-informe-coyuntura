@@ -6,6 +6,7 @@ fecha: 2026-07-26
 cinturon: 'politica'
 indicadores: [sector_privado]
 corrige: ['0136']
+cerrado_por: ['0166']
 ambito: 'cinturón político (ITCP), bloque judicial y `sector_privado`'
 origen: 'el editor señaló que se estaba declarando «imposible» sin agotar la'
 ---

@@ -289,6 +289,8 @@ histórica.
 
 3 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
 
+> La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
+
 - **[ADR-0076](../adr/0076-ipi-segunda-senal-actividad.md)** — La dimensión de actividad deja de colgar de un único dato
   <br>intercambiable con lo que ya hay. **Queda como candidata abierta y evaluada**,
 - **[ADR-0120](../adr/0120-el-itcm-declara-el-origen-de-sus-bandas.md)** — El ITCM declara el origen de sus bandas, y baja del 83% al 38% de circularidad

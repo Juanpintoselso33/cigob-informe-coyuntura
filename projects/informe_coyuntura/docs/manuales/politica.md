@@ -278,23 +278,30 @@ histórica.
 
 ## Decisiones abiertas
 
-10 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
+11 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
+
+> La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
 
 - **[ADR-0094](../adr/0094-lectura-por-partes-del-itcp.md)** — El ITCP se puede leer por partes: tensión, capacidad y recursos
   <br>como decisión editorial pendiente.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0132. Verificar antes de tratarlo como abierto.
 - **[ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md)** — Conflictividad nacional: de dónde viene y sobre qué actúa
   <br>quedó anotado como pendiente editorial si el indicador **corresponde al cinturón
 - **[ADR-0134](../adr/0134-paralisis-de-denuncias-la-fuente-sirve-y-el-dato-contradice-la-hipotesis.md)** — Parálisis de denuncias: la fuente sirve, y el dato contradice la hipótesis
   <br>2. **No se incorpora todavía ningún indicador al ITCP.** Faltan dos decisiones
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166. Verificar antes de tratarlo como abierto.
 - **[ADR-0135](../adr/0135-cautelares-judicializacion-si-bloqueo-no.md)** — Cautelares: judicialización sí, bloqueo cautelar no
   <br>- **Judicialización: viable** — queda como candidata construible. La densidad cautelar normalizada en jurisdicción Federal + Nacional nace discriminando: rango ×3,5, historia desde 2016 para calibrar 
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166. Verificar antes de tratarlo como abierto.
 - **[ADR-0136](../adr/0136-apoyo-publico-de-camaras-el-problema-es-a-quien-le-hablan.md)** — Apoyo público de las cámaras: el problema es a quién le hablan
   <br>- Queda pendiente y explícito que **SRA y AmCham no se pudieron evaluar** por
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0139. Verificar antes de tratarlo como abierto.
 - **[ADR-0137](../adr/0137-agenda-comun-el-cociente-se-mueve-por-el-denominador.md)** — Agenda común: el cociente se mueve por el denominador
   <br>3. **Queda pendiente la decisión editorial de orientación**, igual que en
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166. Verificar antes de tratarlo como abierto.
 - **[ADR-0139](../adr/0139-correccion-tres-imposibles-que-no-lo-eran.md)** — Corrección: tres "imposibles" que no lo eran
   <br>3. **No se incorpora todavía ninguno**, por la misma razón que ADR-0134/0135/0137:
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166. Verificar antes de tratarlo como abierto.
 - **[ADR-0147](../adr/0147-el-universo-de-un-caso-era-un-artefacto.md)** — El universo de un caso era un artefacto de la consulta
   <br>- **Suspender la decisión editorial pendiente, no responderla** — elegida: no tiene sentido decidir si el ITCP admite un indicador de evento antes de saber cuántos eventos hay.
 - **[ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md)** — Apoyo empresario: con UIA, la métrica funciona
@@ -302,10 +309,13 @@ histórica.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0150. Verificar antes de tratarlo como abierto.
 - **[ADR-0159](../adr/0159-validacion-por-panel-para-los-socioeconomicos.md)** — Validación por panel para los compuestos socioeconómicos
   <br>- **Queda pendiente**: el paso 9 del handbook pide además «identificar vínculos
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0162. Verificar antes de tratarlo como abierto.
+- **[ADR-0166](../adr/0166-regla-de-orientacion-para-indicadores-de-control.md)** — La orientación de un indicador sale de la pregunta que responde
+  <br>dice explícitamente: *"No se incorpora todavía ninguno, por la misma razón que
 
 ## Todos los ADR vigentes de este cinturón
 
-58 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+59 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -365,3 +375,4 @@ histórica.
 - [0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) — El corpus estaba truncado: `apoyo_empresario` se recodifica entero
 - [0159](../adr/0159-validacion-por-panel-para-los-socioeconomicos.md) — Validación por panel para los compuestos socioeconómicos
 - [0161](../adr/0161-el-contraste-externo-es-un-factor-comun-no-una-variable.md) — El contraste externo es un factor común, no una variable suelta
+- [0166](../adr/0166-regla-de-orientacion-para-indicadores-de-control.md) — La orientación de un indicador sale de la pregunta que responde

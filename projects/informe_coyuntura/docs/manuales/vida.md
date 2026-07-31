@@ -283,6 +283,8 @@ histórica.
 
 6 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
 
+> La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
+
 - **[ADR-0032](../adr/0032-inseguridad-ivi-mensual.md)** — Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT)
   <br>encuesta (suspendida 2020-2023, verificado en el archivo de informes: los
 - **[ADR-0110](../adr/0110-percepcion-seguridad-y-consumo.md)** — La dimensión se llama por lo que tiene adentro

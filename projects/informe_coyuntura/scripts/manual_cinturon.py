@@ -91,12 +91,22 @@ def cargar_adrs(cinturon: str) -> tuple[dict, list, list]:
         # desde…'` describe de dónde SALIÓ el ADR, no algo que deje abierto.
         cuerpo = re.sub(r"\A---\n.*?\n---\n", "",
                         p.read_text(encoding="utf-8"), flags=re.S)
-        for ln in cuerpo.splitlines():
+        lineas = cuerpo.splitlines()
+        for n_ln, ln in enumerate(lineas):
             if ln.startswith("#") or not ln.strip():
                 continue
-            # «Resuelve: la decisión editorial abierta en ADR-0131» la cierra,
-            # no la abre.
-            if re.search(r"\b(resuelve|resuelto|cierra)\b", ln, re.I):
+            # «Se resolvió con evidencia» cierra el pendiente, no lo abre. El
+            # texto viene envuelto a 78 columnas, así que esa frase puede caer
+            # varios renglones más abajo: se mira el PÁRRAFO entero, no una
+            # ventana de N líneas, que es un número mágico que siempre queda
+            # corto (con 3 se escapaba ADR-0132, que la tiene en el cuarto).
+            parrafo = []
+            for siguiente in lineas[n_ln:]:
+                if not siguiente.strip():
+                    break
+                parrafo.append(siguiente)
+            if re.search(r"\b(resuel\w+|resolvi[oó]|cierra)\b",
+                         " ".join(parrafo), re.I):
                 continue
             if RE_PEND.search(ln):
                 # ¿Algún ADR posterior ya lo tocó? Sale de las relaciones
@@ -285,7 +295,12 @@ def generar(cinturon: str) -> Path:
     if abiertas:
         L += [f"{len(abiertas)} ADR vigentes de este cinturón declaran algo pendiente "
               "de decisión editorial. No son trabajo técnico: son llamadas que sólo "
-              "puede hacer el editor.", ""]
+              "puede hacer el editor.", "",
+              "> La detección lee la prosa, así que **sobre-reporta a propósito**: si "
+              "un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue "
+              "apareciendo acá. Se prefiere ese error al contrario —perder una "
+              "decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las "
+              "relaciones declaradas entre ADR, no de adivinar sobre el texto.", ""]
         for i, tit, f, ln, cerradores in abiertas:
             L += [f"- **[ADR-{i}](../adr/{f})** — {tit}", f"  <br>{ln[:200]}"]
             if cerradores:

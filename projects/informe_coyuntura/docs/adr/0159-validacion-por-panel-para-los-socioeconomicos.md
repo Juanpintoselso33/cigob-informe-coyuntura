@@ -4,6 +4,7 @@ id: '0159'
 estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'politica'
+cerrado_por: ['0162']
 ambito: 'validación externa del ITVC, ITCG e ITCP; módulo'
 ---
 
