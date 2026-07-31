@@ -3,6 +3,7 @@ madr: 4
 id: '0105'
 estado: 'aceptado'
 fecha: 2026-07-20
+cinturon: 'transversal'
 continua: ['0103']
 ambito: 'Todo indicador que se incorpore a un índice paramétrico'
 ---

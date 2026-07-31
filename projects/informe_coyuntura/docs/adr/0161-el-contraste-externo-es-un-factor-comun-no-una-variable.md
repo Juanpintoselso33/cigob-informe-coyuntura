@@ -31,7 +31,8 @@ según quién lo arme no es una validación, es un ajuste.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Primer componente principal del panel de la familia** — elegida: se adopta el método establecido en vez de inventar uno.
+- **Construir un compuesto eligiendo signos y pesos a mano** — descartada: dejaría esas decisiones en manos de quien ya vio los números. Con el factor común, las cargas fijan signo y peso solas.
 
 ## Decisión
 

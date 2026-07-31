@@ -23,7 +23,8 @@ ambito: 'cinturón político (ITCP) · dimensión `sector_privado`'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Conservar la fuente y buscarle otra métrica** — elegida: no falló la fuente.
+- **Publicar la métrica de apoyo empresario sólo con AEA** — descartada por sus propios números, en vez de sostenerse porque ya estaba construida.
 
 ## Decisión
 

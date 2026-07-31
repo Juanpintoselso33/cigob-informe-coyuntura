@@ -23,7 +23,8 @@ La recomendación pedía señalizarlo **en el informe, no sólo en la ficha**.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Declarar el rezago en una card del propio índice** — elegida.
+- **Separar el índice en dos lecturas**, una de pulso inmediato y otra estructural, que era lo que ofrecía la auditoría — descartada: publicar tres números donde hoy hay uno, a semanas del lanzamiento, obliga a rehacer la lectura editorial entera y cambia qué significa el número principal.
 
 ## Decisión
 

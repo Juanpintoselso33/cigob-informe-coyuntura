@@ -33,7 +33,9 @@ vale 1,92 y puntúa **16 sobre 100**: no es un detalle de matiz.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Mantener el ratio DNU tal como está** — elegida: revisada la objeción, el indicador responde la pregunta que el índice necesita.
+- **Agregar un indicador de supervivencia de los DNU** — se descarta: como el 95,1% de los DNU nunca se vota, quedaría permanentemente entre 95 y 100. Sin varianza, no distinguiría ningún estado del mundo de ningún otro.
+- **Revertir el peso 0,23** — se evaluó y se decidió mantenerlo, ahora con fundamento.
 
 ## Decisión
 

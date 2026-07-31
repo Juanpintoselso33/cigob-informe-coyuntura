@@ -22,7 +22,8 @@ similares apareció algo que cambia el encuadre.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Validar el ITCM también por puntos de giro** — elegida, siguiendo el criterio de la OCDE: el compuesto debe dar menos señales falsas y menos giros perdidos que cualquiera de sus componentes sueltos.
+- **Validar sólo por correlación** — insuficiente: no dice si el compuesto aporta algo por encima de mirar los indicadores por separado.
 
 ## Decisión
 

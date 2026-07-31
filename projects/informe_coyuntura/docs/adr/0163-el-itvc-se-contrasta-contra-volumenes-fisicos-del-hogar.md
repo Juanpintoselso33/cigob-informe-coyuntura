@@ -27,7 +27,10 @@ solo tipo de fuente, el factor mide el ciclo de esa fuente.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Las cuatro series de volumen físico** — elegida.
+- **Cualquier índice salarial** — descartado: `brecha_salario_cbt` *es* RIPTE/CBT, así que el RIPTE sería el índice validándose contra una parte de sí mismo.
+- **Consumo de carne y patentamiento** — afuera por la misma regla.
+- **Las tres series de comercio** — descartadas por insumo compartido: las ventas «a precios constantes» se deflactan con el mismo índice.
 
 ## Decisión
 

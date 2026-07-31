@@ -68,7 +68,8 @@ rango ×14.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Medir la desregulación en artículos** — elegida.
+- **Ratio contra el stock regulatorio** — descartado por incommensurabilidad; el desarrollo está en «Pros y contras de las opciones».
 
 ### Consecuencias
 

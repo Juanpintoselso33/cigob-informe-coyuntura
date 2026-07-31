@@ -3,6 +3,7 @@ madr: 4
 id: '0003'
 estado: 'aceptado'
 fecha: 2026-06-26
+cinturon: 'macro'
 indicadores: [recaudacion]
 modificado_por: ['0127']
 ambito: 'Dimensión Viabilidad fiscal-comercial · indicador `recaudacion`'

@@ -27,7 +27,8 @@ Se resolvió con evidencia en vez de con criterio a secas.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Dejar `conflictividad_nacional` en el ITCP** — elegida, y resuelta con evidencia en vez de con criterio a secas.
+- **Moverlo a vida cotidiana** — descartada: dejaría al ITCP sin ninguna medida de presión de calle. El cinturón mediría Congreso, gobernadores, empresarios y Justicia, y quedaría ciego al único actor que no pasa por una institución.
 
 ## Decisión
 

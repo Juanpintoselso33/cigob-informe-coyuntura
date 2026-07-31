@@ -24,7 +24,8 @@ origen: 'Auditoría externa del cinturón de gestión (doc 2), punto 3.8'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Sacar la promesa cumplida del conjunto de indicadores de contexto** — elegida.
+- **El segundo camino que proponía la auditoría** — evaluado y no hecho; el motivo está detallado en el cuerpo del ADR.
 
 ## Decisión
 

@@ -4,6 +4,7 @@ id: '0004'
 estado: 'superado'
 nota_estado: 'SUPERSEDIDO por el [ADR-0028](0028-idc-z-scores.md) el 2026-07-04 (los ratios mensuales pasaron a z-scores de nivel; los tres conceptos y pesos se conservan)'
 fecha: 2026-06-26
+cinturon: 'macro'
 indicadores: [idc]
 superado_por: ['0028']
 ambito: 'Dimensión Capacidad de financiamiento · indicador `idc`'

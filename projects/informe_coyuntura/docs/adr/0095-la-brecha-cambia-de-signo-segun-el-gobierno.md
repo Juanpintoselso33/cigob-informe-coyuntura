@@ -80,7 +80,9 @@ cuando el Gobierno estaba en su mejor momento.**
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Mantener `brecha_obra_publica` puntuando al 15%** y publicar el contrafáctico — elegida.
+- **Cambiar de métrica** — descartada antes de tocar nada: los tres candidatos disponibles en la misma fuente fallan igual sobre 2024-2026.
+- **Reducirle el peso** — descartada por método: mover un peso para que un test dé mejor es exactamente lo que ADR-0045 prohíbe hacer con las anclas, y la prohibición vale igual acá.
 
 ## Decisión
 

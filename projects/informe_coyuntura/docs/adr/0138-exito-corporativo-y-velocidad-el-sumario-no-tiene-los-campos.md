@@ -76,7 +76,8 @@ Las consecuencias son directas:
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **No incorporar éxito corporativo ni velocidad** por esta vía — elegida: el sumario no trae los campos necesarios.
+- **Pedido de acceso a la información pública al Consejo de la Magistratura** — no se descarta: el Consejo publica solicitudes de acceso y nada impide pedir la estadística de causas del fuero. Es una vía con plazos y sin garantía, y queda anotada como camino abierto.
 
 ## Decisión
 

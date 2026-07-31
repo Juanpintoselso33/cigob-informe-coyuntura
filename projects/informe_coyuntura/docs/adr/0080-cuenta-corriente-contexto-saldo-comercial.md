@@ -24,7 +24,8 @@ existe, es oficial y está vigente.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Cuenta corriente del INDEC**, en base devengada — elegida.
+- **Cuenta Corriente Cambiaria del BCRA**, mensual y más fresca — evaluada y descartada: mide los dólares que efectivamente pasaron por el mercado de cambios, no las transacciones devengadas. Son conceptos distintos y bajo restricciones cambiarias divergen mucho.
 
 ## Decisión
 

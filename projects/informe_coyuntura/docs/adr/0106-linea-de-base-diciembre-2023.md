@@ -32,7 +32,8 @@ de julio.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Publicar el punto de partida sólo en el ITCM** — elegida.
+- **Extenderlo a los otros cinturones** — se evaluó y no corresponde: en el ITCG la reconstrucción llega a diciembre de 2023 y daría una brecha espuria.
 
 ## Decisión
 

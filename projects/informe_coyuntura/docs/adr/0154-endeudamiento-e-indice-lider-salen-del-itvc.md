@@ -26,7 +26,9 @@ porque el argumento que sirve para uno no sirve para el otro.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Sacar endeudamiento e Índice Líder del ITVC** — elegida.
+- **Que el Índice Líder integre el ITVC**, como fijaba ADR-0112 — descartada.
+- **El reparto 50/50 de ADR-0067** — descartado; ya estaba declarado provisorio.
 
 ## Decisión
 

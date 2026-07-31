@@ -27,7 +27,8 @@ Tenía razón, y el argumento es fuerte por dos lados.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Medir la recaudación por su nivel, sumando los impuestos** — elegida.
+- **Seguir midiéndola por variación interanual** — descartada: diluye el dato mensual.
 
 ## Decisión
 

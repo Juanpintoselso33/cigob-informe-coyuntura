@@ -69,7 +69,8 @@ hubiera un segundo indicador que la resolviera.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Incorporar el IPI como segunda señal de actividad** — elegida.
+- **Demanda de energía eléctrica** — descartada en la versión original de este ADR con la afirmación de que las series disponibles en la API pública terminan en 2015-2016 y no había fuente automatizable.
 
 ## Decisión
 

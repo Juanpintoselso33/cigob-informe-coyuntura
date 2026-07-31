@@ -28,7 +28,8 @@ a resolver, no un detalle de implementación.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **La pobreza entra al ITVC y puntúa** — elegida.
+- **Dejarla publicada sin puntuar**, como en ADR-0113 — descartada: ese estado no era una opción de diseño, sino la categoría «indicador de contexto» que el editor dio de baja expresamente, y dejarla viva era el problema de fondo.
 
 ## Decisión
 

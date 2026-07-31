@@ -22,7 +22,8 @@ revisar la validación externa. Las dos cosas resultaron ciertas y separadas.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **El consumo medido como ancla de validación del ITVC** — elegida.
+- **El ICC como ancla** — desplazado, pero explícitamente **no descartado**: queda como contraste discriminante. Mide si la percepción sigue a las condiciones, y el hallazgo publicable es que en estos años lo hizo flojo.
 
 ## Decisión
 

@@ -3,6 +3,7 @@ madr: 4
 id: '0030'
 estado: 'aceptado'
 fecha: 2026-07-04
+cinturon: 'transversal'
 relacionado: ['0054', '0055']
 ambito: 'Criterio de FAMILIA para todo indicador compuesto o deflactado cuyas fuentes publican con rezagos distintos (IdC, recaudación, IAI, ICIP — y los que se sumen)'
 ---
@@ -36,7 +37,8 @@ mayo) y que además diferían del último punto de su serie.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Puntuar el mes común a todos los componentes**, con el dato fresco publicado aparte como provisorio — elegida.
+- **Mezclar meses de distinta frescura en el mismo puntaje** — descartada: los titulares ganarían hasta un mes de frescura, pero a cambio habría que revisar números ya publicados. Con el mes común nunca se revisan y siempre igualan a su serie.
 
 ## Decisión
 

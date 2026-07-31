@@ -17,7 +17,9 @@ origen: 'Aporte externo sobre el cinturón político (doc 260724), recomendació
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Filtrar la consulta a SAIJ por descriptor** — elegida.
+- **Filtrar por frase** — descartada: cuando la inconstitucionalidad es sólo un pedido de la parte y no la materia resuelta, SAIJ no la indexa como tal.
+- **Contar por sentencia** — descartada: se cuenta por norma impugnada, porque tres fallos contra el mismo DNU son un veto y no tres.
 
 ## Decisión
 

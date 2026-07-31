@@ -4,6 +4,7 @@ id: '0002'
 estado: 'aceptado'
 nota_estado: 'Aceptado (supersede la brecha vs run-rate del commit `8dd8bc0`)'
 fecha: 2026-06-26
+cinturon: 'macro'
 indicadores: [rem_ipc_12m]
 ambito: 'Dimensión Estabilidad monetaria · indicador `rem_ipc_12m`'
 commit: '`1016e97`'

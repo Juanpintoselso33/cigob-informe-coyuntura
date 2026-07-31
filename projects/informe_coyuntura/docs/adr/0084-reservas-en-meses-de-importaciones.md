@@ -13,7 +13,8 @@ origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), observaci
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Dejar las reservas como están** — elegida.
+- **Medirlas en meses de importaciones** — **rechazada**; el ADR deja registrada la condición bajo la cual correspondería revisar el rechazo.
 
 ## Decisión
 

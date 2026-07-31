@@ -21,7 +21,8 @@ un B100 contra el 4T-2023.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Serie mensual de ventana fija** (2021→hoy, canasta de las 4 keywords, mes en curso descartado por incompleto), B100 contra 4T-2023 invertido — elegida.
+- **La keyword «Inflación en Argentina» como índice** — descartada: las visitas colapsaron 6× desde el pánico de dic-2023, con lo que funciona como detector de eventos y no como índice.
 
 ## Decisión
 

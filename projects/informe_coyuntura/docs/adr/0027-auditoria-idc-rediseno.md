@@ -4,6 +4,7 @@ id: '0027'
 estado: 'aceptado'
 nota_estado: 'RESUELTO el 2026-07-04 — el editor eligió la opción (a); implementada en el [ADR-0028](0028-idc-z-scores.md)'
 fecha: 2026-07-04
+cinturon: 'macro'
 indicadores: [idc]
 ambito: 'Dimensión Capacidad de financiamiento · indicador `idc` (ADR-0004, ADR-0022)'
 ---

@@ -37,7 +37,8 @@ tres razones:
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Costo de financiamiento del Tesoro** — elegida.
+- **Riesgo país (EMBI) como componente**, que era lo que recomendaba la auditoría — descartado por las tres razones que detalla el contexto.
 
 ## Decisión
 

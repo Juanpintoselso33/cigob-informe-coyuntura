@@ -16,7 +16,9 @@ ambito: 'cinturón político (ITCP) · dimensión `sector_privado`'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Incorporar UIA junto a AEA** — elegida: con UIA la métrica funciona.
+- **La versión sólo-AEA de ADR-0145** — descartada por los números. Su método fue el correcto y el camino de salida quedó escrito.
+- **Incorporarlo ya al ITCP** — todavía no: falta la segunda pasada de codificación.
 
 ## Decisión
 

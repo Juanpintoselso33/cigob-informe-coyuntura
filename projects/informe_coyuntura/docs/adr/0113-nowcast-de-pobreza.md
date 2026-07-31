@@ -17,7 +17,8 @@ origen: 'Auditoría de Vida Cotidiana, punto 3.6 (pobreza/indigencia)'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Publicar la pobreza con la única fuente mensual que existe** — elegida.
+- **Mantener la exclusión que había fijado ADR-0111** — descartada: de sus dos argumentos, el primero sigue en pie, pero el segundo era una rendición temprana.
 
 ## Decisión
 

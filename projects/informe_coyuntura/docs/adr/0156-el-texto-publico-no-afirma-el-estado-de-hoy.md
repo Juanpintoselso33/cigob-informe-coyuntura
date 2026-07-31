@@ -3,6 +3,7 @@ madr: 4
 id: '0156'
 estado: 'aceptado'
 fecha: 2026-07-30
+cinturon: 'transversal'
 archivos: ['web/src/lib/fichas.ts', 'descripciones.ts']
 ambito: 'capa de texto público (`web/src/lib/fichas.ts`, `descripciones.ts`,'
 ---

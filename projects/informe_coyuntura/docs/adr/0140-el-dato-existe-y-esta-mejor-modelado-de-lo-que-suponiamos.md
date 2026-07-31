@@ -16,7 +16,8 @@ origen: 'el editor pidió buscar alternativas en lugar de aceptar el cierre.'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **`sj.csjn.gov.ar`** — elegida: es el sucesor que señala el propio archivo.
+- **El CIJ** — descartado como fuente viva: está congelado, y cualquier indicador construido sobre él se corta.
 
 ## Decisión
 

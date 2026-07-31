@@ -28,7 +28,8 @@ Decisión editorial del usuario: hacer la reorganización.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Partir la dimensión de percepción en tres** — elegida. Los pesos nominales no se eligieron: se derivaron de conservar exactamente el peso efectivo que ya tenía cada indicador.
+- **Dejar la victimización mezclada con el ánimo** — es justamente el problema que este ADR viene a resolver.
 
 ### Consecuencias
 

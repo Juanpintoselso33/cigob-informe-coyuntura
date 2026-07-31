@@ -27,7 +27,8 @@ el indicador del ITCG hasta la fecha de vigencia.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Medir el FAL en tres etapas** (construcción, vigencia y aplicación) — elegida.
+- **La otra alternativa que ofrecía la auditoría** — descartada: habría dejado la dimensión de reforma laboral apoyada sólo en la litigiosidad, y con eso se pierde el par instrumento/resultado que la propia auditoría destaca.
 
 ## Decisión
 

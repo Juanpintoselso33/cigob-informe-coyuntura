@@ -4,6 +4,7 @@ id: '0104'
 estado: 'aceptado'
 nota_estado: 'Aceptado (resultado negativo)'
 fecha: 2026-07-20
+cinturon: 'transversal'
 archivos: ['scripts/out_of_sample.py']
 continua: ['0103']
 ambito: 'Validación del método · `scripts/out_of_sample.py`'

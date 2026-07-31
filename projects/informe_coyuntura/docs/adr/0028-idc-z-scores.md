@@ -4,6 +4,7 @@ id: '0028'
 estado: 'aceptado'
 nota_estado: 'Aceptado (supersede al ADR-0004; resuelve el ADR-0027 vía su opción a)'
 fecha: 2026-07-04
+cinturon: 'macro'
 indicadores: [idc]
 supersede: ['0004']
 relacionado: ['0074']

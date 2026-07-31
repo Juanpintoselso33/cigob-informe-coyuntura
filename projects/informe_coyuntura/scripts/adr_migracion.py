@@ -15,9 +15,11 @@ contenido de los ADR, así que una cifra alterada al reescribir pasaría
 inadvertida. La huella es el único control que lo detecta.
 
 Uso:
-    python scripts/adr_migracion.py huella    > docs/adr/_huellas.json
-    python scripts/adr_migracion.py verificar   docs/adr/_huellas.json
-    python scripts/adr_migracion.py cosechar  > docs/adr/_metadatos.json
+    python scripts/adr_migracion.py huella --git 5390885 > /tmp/base.json
+    python scripts/adr_migracion.py verificar /tmp/base.json
+
+`5390885` es el último commit anterior a la migración a MADR. La base se
+reconstruye desde ahí cuando haga falta, así que no queda versionada.
 """
 
 from __future__ import annotations
@@ -283,8 +285,8 @@ def _archivos() -> list[Path]:
     return sorted(p for p in ADR_DIR.glob("[0-9]*.md"))
 
 
-def _texto_en_head(p: Path) -> str | None:
-    """Contenido del archivo tal como está commiteado en HEAD."""
+def _texto_en_head(p: Path, ref: str = "HEAD") -> str | None:
+    """Contenido del archivo tal como está commiteado en `ref`."""
     raiz = Path(
         subprocess.run(
             ["git", "rev-parse", "--show-toplevel"],
@@ -293,7 +295,7 @@ def _texto_en_head(p: Path) -> str | None:
     )
     rel = p.resolve().relative_to(raiz).as_posix()
     r = subprocess.run(
-        ["git", "show", f"HEAD:{rel}"],
+        ["git", "show", f"{ref}:{rel}"],
         capture_output=True, cwd=raiz,
     )
     if r.returncode != 0:
@@ -301,17 +303,23 @@ def _texto_en_head(p: Path) -> str | None:
     return r.stdout.decode("utf-8")
 
 
-def cmd_huella(desde_git: bool = False) -> None:
+def cmd_huella(desde_git: bool = False, ref: str = "HEAD") -> None:
     """Congela la línea de base.
 
-    Con --git lee la versión commiteada en HEAD en vez del árbol de
-    trabajo: así la base es siempre el estado previo a la migración y el
-    comando se puede volver a correr aunque ya haya ADR reescritos sin
-    commitear.
+    Con --git lee la versión commiteada en vez del árbol de trabajo, y
+    admite un commit: así la base se reconstruye cuando haga falta en vez
+    de quedar versionada para siempre.
+
+        python scripts/adr_migracion.py huella --git 5390885 > /tmp/base.json
+        python scripts/adr_migracion.py verificar /tmp/base.json
+
+    `5390885` es el último commit anterior a la migración a MADR: contra él
+    se comprueba que ninguna cifra, identificador ni referencia cruzada de
+    los ADR originales se haya perdido por el camino.
     """
     salida = {}
     for p in _archivos():
-        texto = _texto_en_head(p) if desde_git else p.read_text(encoding="utf-8")
+        texto = _texto_en_head(p, ref) if desde_git else p.read_text(encoding="utf-8")
         if texto is None:
             print(f"aviso: {p.name} no está en HEAD, se omite", file=sys.stderr)
             continue
@@ -405,7 +413,8 @@ def main() -> int:
         return 2
     cmd = sys.argv[1]
     if cmd == "huella":
-        cmd_huella(desde_git="--git" in sys.argv)
+        args = [a for a in sys.argv[2:] if not a.startswith("--")]
+        cmd_huella(desde_git="--git" in sys.argv, ref=args[0] if args else "HEAD")
         return 0
     if cmd == "cosechar":
         cmd_cosechar()

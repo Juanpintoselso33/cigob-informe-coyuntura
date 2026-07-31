@@ -17,7 +17,8 @@ origen: 'el editor señaló que se estaba declarando «imposible» sin agotar la
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Reabrir cada fuente con la consulta correcta** — elegida.
+- **Mantener los tres veredictos negativos previos** — descartada: los tres «imposibles» no lo eran. El rechazo de ADR-0138 («no hay campo de partes ni de resultado») era falso; el motivo real era otro.
 
 ## Decisión
 

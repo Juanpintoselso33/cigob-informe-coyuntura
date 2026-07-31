@@ -4,6 +4,7 @@ id: '0026'
 estado: 'rechazado'
 nota_estado: 'RECHAZADO por ahora (fuente operativamente inviable; ver'
 fecha: 2026-07-03
+cinturon: 'gestion'
 ---
 
 # ADR-0026 — Mensualización del IRPC: forma GDELT calibrada a anclajes DP
@@ -24,7 +25,8 @@ global automáticamente).
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Esperar a la suscripción DP** para mensualizar el IRPC — camino elegido.
+- **Forma GDELT calibrada a anclajes DP** — **rechazada** en este ADR. GDELT era la única fuente mensual automática y gratuita candidata, con el mismo enfoque epistemológico que DP (ambas cuentan desde noticias), pero no alcanza.
 
 ## Decisión
 

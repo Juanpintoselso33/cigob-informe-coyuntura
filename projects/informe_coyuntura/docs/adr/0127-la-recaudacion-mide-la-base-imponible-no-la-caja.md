@@ -45,7 +45,8 @@ imponible.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Medir la recaudación por su nivel de base imponible** — elegida.
+- **El ratio recaudación/gasto**, que era la propuesta original del editor — descartado; el motivo queda registrado en el cuerpo del ADR.
 
 ## Decisión
 

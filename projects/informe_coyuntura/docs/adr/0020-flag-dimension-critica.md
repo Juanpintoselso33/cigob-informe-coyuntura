@@ -4,6 +4,7 @@ id: '0020'
 estado: 'aceptado'
 nota_estado: 'aceptada (resuelve la Decisión 2 del ADR-0019 por la opción b)'
 fecha: 2026-07-03
+cinturon: 'transversal'
 ---
 
 # ADR-0020 — Flag de dimensión crítica: la compensabilidad se señaliza, no se corrige

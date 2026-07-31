@@ -78,7 +78,8 @@ todo el proyecto.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Reglas v2 de codificación** — elegida.
+- **La primera pasada de ADR-0148** — queda descartada por completo, no corregida.
 
 ### Consecuencias
 

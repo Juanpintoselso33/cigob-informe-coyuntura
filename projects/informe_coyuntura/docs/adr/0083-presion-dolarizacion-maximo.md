@@ -33,7 +33,8 @@ Este ADR es ese test. El 70/30 no validó.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Máximo de los dos canales** — elegida: es lo que se quiere medir.
+- **Promedio de los dos canales** — descartada: sólo describe bien los meses en que los dos canales coinciden.
 
 ## Decisión
 

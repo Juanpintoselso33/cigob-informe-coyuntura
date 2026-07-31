@@ -58,7 +58,8 @@ las confunde. Ése es el argumento entero.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Brecha de obra pública** como indicador de la dimensión de sector privado — elegida.
+- **~15 organismos relevados** como fuentes alternativas — descartados. Las consultas quedan registradas en «Pros y contras de las opciones» para no repetir la búsqueda.
 
 ## Decisión
 

@@ -50,7 +50,8 @@ forma permanente**, unos 11 puntos.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Bajar el peso del IPI de 35% a 20%**, tratándolo como respaldo y no como medida principal — elegida.
+- **Recalibrar las anclas del IPI** para que un mes típico puntúe cerca de la mitad — descartada por criterio establecido en ADR-0045: las anclas se recalibran cuando el techo o el piso son matemáticamente inalcanzables, nunca cuando el rango observado es desempeño real.
 
 ## Decisión
 

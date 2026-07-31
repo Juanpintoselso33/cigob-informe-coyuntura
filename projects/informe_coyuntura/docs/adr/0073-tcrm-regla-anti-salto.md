@@ -23,7 +23,8 @@ origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección 
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Regla anti-salto para el TCRM**, copiando la forma de la regla del saldo comercial de ADR-0056 — **rechazada**.
+- **Puntuar el desvío del TCRM respecto de su propia tendencia** (enfoque KLR) en vez del nivel contra bandas fijas — queda abierta: es la única línea que este trabajo deja viva.
 
 ## Decisión
 

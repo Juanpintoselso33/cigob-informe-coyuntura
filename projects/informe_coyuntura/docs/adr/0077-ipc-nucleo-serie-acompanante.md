@@ -96,7 +96,8 @@ tarifaria de uno de núcleo alta.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Conservar el IPC general como serie puntuada, con el núcleo visible al lado** — elegida: la observación queda resuelta, no ilustrada. Se evaluó la pregunta de medición, se midió, y la respuesta fue conservar el general para que el lector pueda distinguir un mes de corrección puntual.
+- **Puntuar el núcleo en lugar del general** — evaluada y descartada.
 
 ## Decisión
 

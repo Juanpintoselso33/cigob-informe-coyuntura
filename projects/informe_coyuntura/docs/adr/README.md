@@ -4,10 +4,41 @@ Registro de las **decisiones de diseño y metodología** del proyecto. Cada ADR
 documenta una decisión, su contexto, las opciones que se consideraron (incluidas
 las descartadas, para no volver a investigarlas) y sus consecuencias.
 
-Formato de cada ADR: **Estado · Contexto · Decisión · Opciones consideradas · Consecuencias**.
+## Formato
 
-Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
-*supersede* al anterior (y se actualiza el estado del viejo), no se reescribe.
+Los ADR siguen **MADR v4** en castellano. Cada archivo abre con frontmatter YAML
+legible por máquina y sigue con este esqueleto de secciones:
+
+    ## Contexto y planteo del problema
+    ## Factores de decisión          (opcional)
+    ## Opciones consideradas
+    ## Decisión
+    ### Consecuencias
+    ### Confirmación                 (el test o gate que la comprueba)
+    ## Pros y contras de las opciones (opcional)
+    ## Más información               (precedentes, limitaciones, lo demás)
+
+En el frontmatter, `estado` usa un vocabulario cerrado —`aceptado`,
+`rechazado`, `superado`, `parcial`, `propuesto`— y el matiz va en
+`nota_estado`. **Los identificadores de ADR van siempre entre comillas**
+(`id: '0012'`, `relacionado: ['0036']`): sin comillas, YAML 1.1 los lee como
+octal y la referencia cambia de destino en silencio.
+
+Los números de ADR son identificadores estables: se citan más de 1.300 veces
+desde `scripts/`, `tests/`, la web y artefactos generados. **No se renumeran.**
+
+## Herramientas
+
+    python scripts/adr_coherencia.py    # cierra relaciones y regenera este índice
+    python -m pytest tests/test_adr_format.py
+
+`adr_coherencia.py` escribe el reverso de cada relación —si 0061 supersede a
+0050, 0050 declara `superado_por: ['0061']`— y regenera el índice de abajo.
+El índice **no se edita a mano**; el test comprueba que coincida con los
+archivos.
+
+Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
+*supersede* al anterior, no se reescribe el viejo.
 
 ## Índice
 
@@ -19,10 +50,16 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 
 | # | Decisión | Indicadores | Estado |
 |---|---|---|---|
+| [0002](0002-rem-equivalente-mensual.md) | El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto | `rem_ipc_12m` | vigente |
+| [0003](0003-recaudacion-interanual-real.md) | La recaudación se mide en variación interanual REAL (deflactada) | `recaudacion` | vigente |
+| [0004](0004-financiamiento-indice-capacidad-prestable.md) | La dimensión de financiamiento usa el Índice de Capacidad Prestable (IdC) | `idc` | superado por [0028](0028-idc-z-scores.md) |
+| [0005](0005-reservas-netas-a-secas.md) | Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal | `reservas_bcra` | vigente |
 | [0008](0008-tcrm-itcrm-bcra.md) | El TCRM usa el ITCRM oficial del BCRA, no la serie discontinuada de INDEC |  | vigente |
 | [0009](0009-idm-y-tcrm-en-el-itcm.md) | Índice de Desequilibrio Monetario (real-real i.a.) y el TCRM como 5ª dimensión del ITCM |  | vigente |
 | [0010](0010-capitulo-inversion-iai-icip.md) | Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM |  | vigente |
 | [0022](0022-credito-real-y-contexto-oculto.md) | Crédito privado real al ITCM; los monetarios nominales quedan ocultos |  | vigente |
+| [0027](0027-auditoria-idc-rediseno.md) | Auditoría adversarial del IdC: hallazgos y opciones de rediseño | `idc` | vigente |
+| [0028](0028-idc-z-scores.md) | IdC rediseñado: z-scores de nivel contra la propia historia | `idc` | vigente |
 | [0029](0029-recaudacion-promedio-movil-3m.md) | Recaudación real: promedio móvil de 3 meses sobre IPC cerrado | `recaudacion` | vigente |
 | [0053](0053-transparencia-y-agregados-monetarios-idm.md) | Transparencia y agregados monetarios del IDM |  | vigente |
 | [0054](0054-dolarizacion-depositos-itcm.md) | Dolarización de depósitos como indicador del ITCM |  | superado por [0055](0055-presion-dolarizacion-carteras-itcm.md) |
@@ -129,6 +166,8 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0019](0019-revision-metodologica-parametricas.md) | Revisión metodológica de las tres paramétricas (ITCM · ITCG · ITVC) |  | parcial |
 | [0021](0021-interpolacion-y-apertura-sin-brecha.md) | Puntaje interpolado en ITCM/ITCG y apertura comercial sin brecha |  | vigente |
 | [0023](0023-litigiosidad-al-itcg.md) | Litigiosidad SRT al ITCG; protestas y alertas siguen de contexto |  | vigente |
+| [0025](0025-protocolo-diagnostico-politico.md) | Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2) |  | vigente |
+| [0026](0026-irpc-mensual-gdelt.md) | Mensualización del IRPC: forma GDELT calibrada a anclajes DP |  | rechazado |
 | [0031](0031-validacion-cruzada-tercer-pilar.md) | Tercer pilar de robustez: validación cruzada (matriz discriminante) |  | vigente |
 | [0051](0051-gestion-contexto-oculto.md) | Gestión: las cards de contexto salen del tablero (regla pareja en los 5 cinturones) |  | vigente |
 | [0068](0068-fal-regimen-ley-27802.md) | fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 | `fal_modernizacion_laboral` | vigente |
@@ -152,6 +191,7 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | # | Decisión | Indicadores | Estado |
 |---|---|---|---|
 | [0018](0018-itvc-parametrica-vida-cotidiana.md) | ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana |  | vigente |
+| [0024](0024-motos-movil-12m-estacionalidad.md) | Motos por acumulado móvil de 12 meses (auditoría de estacionalidad) |  | vigente |
 | [0032](0032-inseguridad-ivi-mensual.md) | Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT) | `inseguridad` | vigente |
 | [0033](0033-itvc-doble-conteo-y-winsorizacion.md) | ITVC: doble conteo salario/comida eliminado y winsorización asimétrica | `ipc_alimentos` | vigente |
 | [0034](0034-sentimiento-digital-puntuable.md) | Sentimiento digital: de contexto a componente del ITVC | `sentimiento_digital` | vigente |
@@ -188,23 +228,8 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | # | Decisión | Indicadores | Estado |
 |---|---|---|---|
 | [0001](0001-datos-calculados-no-hardcodeados.md) | Todos los indicadores se calculan de datos oficiales; nunca valores hardcodeados |  | vigente |
-| [0165](0165-una-oracion-por-card-el-desarrollo-aparte.md) | Una oración por card, el desarrollo a un click |  | vigente |
-
-### Sin cinturón declarado
-
-| # | Decisión | Indicadores | Estado |
-|---|---|---|---|
-| [0002](0002-rem-equivalente-mensual.md) | El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto | `rem_ipc_12m` | vigente |
-| [0003](0003-recaudacion-interanual-real.md) | La recaudación se mide en variación interanual REAL (deflactada) | `recaudacion` | vigente |
-| [0004](0004-financiamiento-indice-capacidad-prestable.md) | La dimensión de financiamiento usa el Índice de Capacidad Prestable (IdC) | `idc` | superado por [0028](0028-idc-z-scores.md) |
-| [0005](0005-reservas-netas-a-secas.md) | Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal | `reservas_bcra` | vigente |
 | [0007](0007-fichas-explican-concepto-no-fuente.md) | Las fichas de indicador explican QUÉ MIDE, no de dónde sale el dato |  | vigente |
 | [0020](0020-flag-dimension-critica.md) | Flag de dimensión crítica: la compensabilidad se señaliza, no se corrige |  | vigente |
-| [0024](0024-motos-movil-12m-estacionalidad.md) | Motos por acumulado móvil de 12 meses (auditoría de estacionalidad) |  | vigente |
-| [0025](0025-protocolo-diagnostico-politico.md) | Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2) |  | vigente |
-| [0026](0026-irpc-mensual-gdelt.md) | Mensualización del IRPC: forma GDELT calibrada a anclajes DP |  | rechazado |
-| [0027](0027-auditoria-idc-rediseno.md) | Auditoría adversarial del IdC: hallazgos y opciones de rediseño | `idc` | vigente |
-| [0028](0028-idc-z-scores.md) | IdC rediseñado: z-scores de nivel contra la propia historia | `idc` | vigente |
 | [0030](0030-borde-irregular-mes-comun.md) | Borde irregular: mes común puntuado + dato fresco provisorio |  | vigente |
 | [0081](0081-revision-de-bandas.md) | Las recalibraciones no se calendarizan: se detectan |  | vigente |
 | [0103](0103-procedencia-de-las-anclas.md) | Cada ancla declara de dónde sale, y el sesgo se vuelve contable |  | vigente |
@@ -214,3 +239,4 @@ Los ADR son inmutables: si una decisión se revierte, se crea un ADR nuevo que
 | [0156](0156-el-texto-publico-no-afirma-el-estado-de-hoy.md) | El texto público no afirma el estado de hoy |  | vigente |
 | [0157](0157-guard-de-anclas-de-banda.md) | Guard de anclas de banda, y un mapeo público que estaba mal |  | vigente |
 | [0162](0162-aporte-del-indice-por-encima-de-la-tendencia.md) | Aporte del índice por encima de la tendencia (regresión) |  | vigente |
+| [0165](0165-una-oracion-por-card-el-desarrollo-aparte.md) | Una oración por card, el desarrollo a un click |  | vigente |

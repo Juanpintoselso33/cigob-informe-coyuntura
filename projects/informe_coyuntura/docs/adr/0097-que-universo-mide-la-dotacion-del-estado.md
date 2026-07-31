@@ -24,7 +24,8 @@ La observación es exacta: la ficha decía las dos cosas en campos contiguos.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **APN como universo de la dotación** — elegida: es el universo sobre el que opera la promesa de achicar el Estado nacional.
+- **El total del sector público** — no se puntúa, pero se publica junto al tercero: publicar los otros dos cierra la objeción en vez de sólo responderla, y deja verificar que la elección es indiferente.
 
 ## Decisión
 

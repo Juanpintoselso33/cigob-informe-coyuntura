@@ -3,6 +3,7 @@ madr: 4
 id: '0081'
 estado: 'aceptado'
 fecha: 2026-07-18
+cinturon: 'transversal'
 archivos: ['scripts/revision_bandas.py']
 relacionado: ['0021', '0045']
 ambito: 'Todas las paramétricas · `scripts/revision_bandas.py` (nuevo)'
@@ -24,7 +25,8 @@ cuáles bandas mirar ni por qué. Se reemplaza por un diagnóstico ejecutable.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Disparar la revisión por diagnóstico**: junto con la revisión editorial del informe y ante cualquier alta o cambio de metodología de un indicador — elegida.
+- **Calendarizar las recalibraciones** en una fecha fija — descartada.
 
 ## Decisión
 

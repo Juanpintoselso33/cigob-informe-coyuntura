@@ -63,7 +63,7 @@ igual, sin que ninguno tuviera que adivinar.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Rehacer la codificación entera sobre el corpus completo** — elegida: reemplaza por completo a la de ADR-0150, que se descarta entero.
 
 ### Consecuencias
 

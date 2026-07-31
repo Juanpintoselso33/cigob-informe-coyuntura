@@ -3,6 +3,7 @@ madr: 4
 id: '0007'
 estado: 'aceptado'
 fecha: 2026-06-27
+cinturon: 'transversal'
 parametros: ['UNIDADES_LARGAS']
 archivos: ['descripciones.ts', 'datos.ts', 'IndicadorModal.astro', 'IndicadorTile.astro', 'overrides.css']
 relacionado: ['0053']
