@@ -1961,15 +1961,16 @@ def fetch_produccion_legislativa() -> dict | None:
 def fetch_judicializacion() -> dict | None:
     """Densidad cautelar en jurisdicción Federal + Nacional (ADR-0135/0168).
 
-    Lee el relevamiento versionado. La consulta a SAIJ quedó verificada y
-    documentada en `cautelares_saij_relevamiento.json`; automatizar el refresco
-    anual es trabajo pendiente y está declarado en el ADR.
+    EN VIVO contra SAIJ (ADR-0170). El relevamiento versionado queda como
+    contraste: la consulta automatizada lo reproduce exacto en 10 de sus 11
+    años, y el único que difiere es el año en curso, donde el vivo es el fresco.
     """
     try:
-        s = _leer_store(CAUTELARES_PATH)["serie_densidad_cautelar_federal_nacional"]
-        puntos = s["puntos"]
+        puntos = judicializacion_serie()
         anio = max(puntos)
-        crudo = s.get("crudos", {}).get(anio, [None, None])
+        rango = f"fecha-rango:[{anio}0101 TO {anio}1231]"
+        crudo = [_saij_federal_y_nacional(f'(texto:"medida cautelar" AND {rango})'),
+                 _saij_federal_y_nacional(f"({rango})")]
         return {
             "valor": puntos[anio],
             "unidad": "% de sumarios con medida cautelar",
@@ -2020,14 +2021,14 @@ def fetch_velocidad_resolucion() -> dict | None:
 def fetch_paralisis_denuncias() -> dict | None:
     """Sesiones de las comisiones de Acusación y Disciplina en 12m (ADR-0134/0168).
 
-    Lee el relevamiento versionado del archivo de notas del Consejo. Mide AMBAS
+    EN VIVO contra la API del sitio del Consejo (ADR-0170). Mide AMBAS
     comisiones: Disciplina sola tiene 8 sesiones en cuatro años, o sea un
     indicador de evento, que es la clase que ADR-0147 dejó suspendida.
     """
     try:
-        s = _leer_store(DENUNCIAS_PATH)["serie_12m"]
-        puntos = s["puntos"]
+        puntos = paralisis_denuncias_serie()
         ym = max(puntos)
+        s = _leer_store(DENUNCIAS_PATH)["serie_12m"]
         return {
             "valor": puntos[ym],
             "unidad": "sesiones de las comisiones de control (12m)",
@@ -2036,12 +2037,114 @@ def fetch_paralisis_denuncias() -> dict | None:
             "desactualizado": False,
             "detalle_txt": (
                 f"{puntos[ym]} sesiones ordinarias de las comisiones de Acusación y "
-                f"Disciplina en los últimos 12 meses (rango de la serie: {s['rango']}, "
-                f"promedio {s['promedio']})."),
+                f"Disciplina en los últimos 12 meses (rango de la serie: "
+                f"{min(puntos.values())} a {max(puntos.values())}, promedio "
+                f"{round(sum(puntos.values())/len(puntos), 1)})."),
         }
     except Exception as e:
         _warn("paralisis_denuncias", e)
         return None
+
+
+
+# ── Automatización de las dos fuentes judiciales (ADR-0170) ──────────────────
+
+SAIJ_BUSQUEDA = "https://www.saij.gob.ar/busqueda"
+CONSEJO_WP    = "https://consejomagistratura.gov.ar/index.php/wp-json/wp/v2"
+CONSEJO_CATS  = {"acusacion": 129, "disciplina": 130}
+_RE_SESION    = re.compile(
+    r"sesion[oó]?-?(?:la|las)?-?comisi[oó]n-de-(acusacion|disciplina)-(\d+)")
+
+
+def _saij_federal_y_nacional(consulta: str) -> int:
+    """Suma de sumarios en jurisdicción Federal + Nacional para una consulta.
+
+    El conteo sale de la faceta 'Jurisdicción' de `categoriesResultList`, no de
+    `totalSearchResults`, que viene topeado por el pageSize — la corrección que
+    el relevamiento de ADR-0135 le hizo a ADR-0131.
+    """
+    r = requests.get(SAIJ_BUSQUEDA,
+                     params={"o": 0, "p": 1, "f": "Jurisdicción", "r": consulta},
+                     headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    cats = r.json()["searchResults"]["categoriesResultList"]
+    hijos = {c["facetName"]: c["facetHits"] for c in cats[0]["facetChildren"]}
+    return hijos.get("Federal", 0) + hijos.get("Nacional", 0)
+
+
+def judicializacion_serie() -> dict[str, float]:
+    """Densidad cautelar anual: % de sumarios con 'medida cautelar' sobre el
+    total, ambos en jurisdicción Federal + Nacional (ADR-0135).
+
+    EN VIVO contra SAIJ. Se publica la proporción y no el conteo porque el
+    volumen que la base publica varía por razones editoriales: el conteo crudo
+    va de 69 (2016) a 350 (2021) sin que las cautelares se hayan quintuplicado.
+    """
+    serie: dict[str, float] = {}
+    for anio in range(2016, date.today().year + 1):
+        rango = f"fecha-rango:[{anio}0101 TO {anio}1231]"
+        num = _saij_federal_y_nacional(f'(texto:"medida cautelar" AND {rango})')
+        den = _saij_federal_y_nacional(f"({rango})")
+        if den:
+            serie[str(anio)] = round(100.0 * num / den, 2)
+    if not serie:
+        raise ValueError("SAIJ no devolvió ningún año con denominador")
+    return serie
+
+
+def _consejo_sesiones() -> list[tuple[str, str, int]]:
+    """(fecha, comisión, número de sesión) de las notas del Consejo.
+
+    La numeración secuencial es lo que valida la cobertura: si el Consejo
+    sesionara sin publicar la nota, el número siguiente delataría el hueco.
+    """
+    out: list[tuple[str, str, int]] = []
+    for comision, cat in CONSEJO_CATS.items():
+        pagina = 1
+        while True:
+            r = requests.get(f"{CONSEJO_WP}/posts",
+                             params={"categories": cat, "per_page": 100,
+                                     "page": pagina, "_fields": "date,slug"},
+                             headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
+            if r.status_code != 200:
+                break
+            lote = r.json()
+            if not lote:
+                break
+            for p in lote:
+                m = _RE_SESION.search(p.get("slug", ""))
+                if m:
+                    out.append((p["date"][:10], m.group(1), int(m.group(2))))
+            if len(lote) < 100:
+                break
+            pagina += 1
+    if not out:
+        raise ValueError("el archivo del Consejo no devolvió sesiones numeradas")
+    return out
+
+
+def paralisis_denuncias_serie() -> dict[str, int]:
+    """Sesiones de Acusación y Disciplina en la ventana móvil de 12 meses.
+
+    EN VIVO contra la API del sitio del Consejo. Se suman las dos comisiones:
+    cada una por separado sesiona pocas veces al año —Disciplina, ocho veces en
+    cuatro años— y una serie sobre una sola quedaría dominada por el ruido de
+    un evento aislado (ADR-0168).
+    """
+    fechas = sorted(f for f, _, _ in _consejo_sesiones())
+    serie: dict[str, int] = {}
+    cur, hoy = date(2023, 12, 1), date.today()
+    while cur <= hoy:
+        # Ventana de 12 meses CALENDARIO terminada en el mes informado: desde
+        # el primer día de once meses atrás hasta el último del mes corriente.
+        # Cerrarla el día 1 dejaba afuera las sesiones del propio mes, que es
+        # lo que producía diferencias de ±1 contra el relevamiento manual.
+        ini = date(cur.year - 1, cur.month, 1)
+        sig = date(cur.year + (cur.month // 12), (cur.month % 12) + 1, 1)
+        serie[f"{cur.year}-{cur.month:02d}"] = sum(
+            1 for f in fechas if ini.isoformat() <= f < sig.isoformat())
+        cur = sig
+    return serie
 
 # ── Colectores manuales ───────────────────────────────────────────────────────
 

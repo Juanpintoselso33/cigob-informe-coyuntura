@@ -171,29 +171,29 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2024-01-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
 2023-12-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
-2026-07-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2026-07-01,paralisis_denuncias,7,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-06-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
-2026-05-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2026-05-01,paralisis_denuncias,7,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-04-01,paralisis_denuncias,7,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-03-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-02-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-01-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2025-12-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
-2025-11-01,paralisis_denuncias,4,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
-2025-10-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-11-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-10-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2025-09-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
-2025-08-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-08-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2025-07-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
-2025-06-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
-2025-05-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-06-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-05-01,paralisis_denuncias,7,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2025-04-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2025-03-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2025-02-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2025-01-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
-2024-12-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-12-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2024-11-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2024-10-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
-2024-09-01,paralisis_denuncias,4,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-09-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2024-08-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2024-07-01,paralisis_denuncias,4,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2024-06-01,paralisis_denuncias,4,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
@@ -205,7 +205,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,paralisis_denuncias,2,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
-2026-01-01,judicializacion,1.78,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2026-01-01,judicializacion,1.65,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2025-01-01,judicializacion,1.71,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2024-01-01,judicializacion,1.95,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2023-01-01,judicializacion,1.51,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia

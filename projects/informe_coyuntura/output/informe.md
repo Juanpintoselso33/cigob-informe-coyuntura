@@ -1,6 +1,6 @@
 ---
 periodo: "2026-07"
-generado: "2026-07-31 11:58:22"
+generado: "2026-07-31 12:13:26"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -63,9 +63,9 @@ schema_version: "1.2.0"
 | bloqueo_sostenido | 20.0 | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-07-31 | fresco |
 | desafios_legislativos | 10.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-07-31 | fresco |
 | produccion_legislativa | 28 | leyes sancionadas (12m) | 2026-07-01 | fresco |
-| judicializacion | 1.78 | % de sumarios con medida cautelar | 2026-01-01 | fresco |
+| judicializacion | 1.65 | % de sumarios con medida cautelar | 2026-01-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
-| paralisis_denuncias | 6 | sesiones de las comisiones de control (12m) | 2026-07-01 | fresco |
+| paralisis_denuncias | 7 | sesiones de las comisiones de control (12m) | 2026-07-01 | fresco |
 | cobertura_judicial | 69.95 | % de cargos de juez con juez designado | 2026-07-01 | fresco |
 | alineamiento_senadores_prov | 70.6 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-07-16 | fresco |
 
@@ -112,4 +112,4 @@ schema_version: "1.2.0"
 | indice_intencion_migratoria | 5.6 | interés 0–100 (canasta mensual) | 2026-06-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-07-31 11:58:22 — schema 1.2.0*
+*Generado por CIGOB — 2026-07-31 12:13:26 — schema 1.2.0*

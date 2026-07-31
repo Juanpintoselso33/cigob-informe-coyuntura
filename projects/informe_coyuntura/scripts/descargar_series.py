@@ -1313,16 +1313,15 @@ POLITICA_DERIVADAS = [
               for ym, v in sorted(politica.produccion_legislativa_serie().items())]),
     ("paralisis_denuncias", "sesiones de las comisiones de control (12m móviles)",
      "Consejo de la Magistratura — archivo de notas de las comisiones",
-     lambda: [[f"{ym}-01", v] for ym, v in sorted(
-         politica._leer_store(politica.DENUNCIAS_PATH)["serie_12m"]["puntos"].items())]),
+     lambda: [[f"{ym}-01", v]
+              for ym, v in sorted(politica.paralisis_denuncias_serie().items())]),
     # Las dos anuales se publican con el punto en enero del año que describen:
     # el rezago declarado en REZAGO_MESES_ITCP (9 y 12 meses) es el que avisa
     # que estas dos no son pulso de hoy (ADR-0092).
     ("judicializacion", "% de sumarios con medida cautelar (Federal + Nacional)",
      "SAIJ — buscador de jurisprudencia",
-     lambda: [[f"{a}-01-01", v] for a, v in sorted(
-         politica._leer_store(politica.CAUTELARES_PATH)
-         ["serie_densidad_cautelar_federal_nacional"]["puntos"].items())]),
+     lambda: [[f"{a}-01-01", v]
+              for a, v in sorted(politica.judicializacion_serie().items())]),
     ("velocidad_resolucion", "% de expedientes resueltos sobre ingresados",
      "CSJN — anuario estadístico",
      lambda: [[f"{a}-12-31", v] for a, v in sorted(

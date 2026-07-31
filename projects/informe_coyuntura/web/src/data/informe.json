@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-07-31T11:58:22.815072",
+  "generated_at": "2026-07-31T12:13:26.680546",
   "period": "2026-07",
   "score_global": 3.4,
   "ponderacion": {
@@ -1256,22 +1256,22 @@
           "aporte_input_txt": "28 leyes sancionadas en los últimos 12 meses. El promedio histórico del dataset (2008-2025, cuatro presidencias) es de 74 leyes por año."
         },
         "judicializacion": {
-          "valor": 1.78,
+          "valor": 1.65,
           "unidad": "% de sumarios con medida cautelar",
           "fuente": "SAIJ — buscador de jurisprudencia (Federal + Nacional)",
           "fecha_dato": "2026-01-01",
           "desactualizado": false,
-          "detalle_txt": "85 de 4784 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
+          "detalle_txt": "90 de 5449 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
           "en_indice": true,
           "dimension": "poder_judicial",
-          "puntaje_itcp": 41.2,
-          "puntaje_banda": 41.2,
+          "puntaje_itcp": 49.4,
+          "puntaje_banda": 49.4,
           "peso_efectivo": 0.03,
-          "aporte_score": 5.9,
-          "aporte_formula": "Anclas ITCP: ≤0,8 → 100 · 0,8–1,2 → 85 · 1,2–1,6 → 65 · 1,6–2 → 40 · >2 → 10 (puntaje interpolado entre anclas: 41.2; pesa 3,0% del ITCP)",
+          "aporte_score": 5.1,
+          "aporte_formula": "Anclas ITCP: ≤0,8 → 100 · 0,8–1,2 → 85 · 1,2–1,6 → 65 · 1,6–2 → 40 · >2 → 10 (puntaje interpolado entre anclas: 49.4; pesa 3,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 5,9/10.",
-          "aporte_input_txt": "85 de 4784 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales."
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 5,1/10.",
+          "aporte_input_txt": "90 de 5449 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales."
         },
         "velocidad_resolucion": {
           "valor": 45.4,
@@ -1292,22 +1292,22 @@
           "aporte_input_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula."
         },
         "paralisis_denuncias": {
-          "valor": 6,
+          "valor": 7,
           "unidad": "sesiones de las comisiones de control (12m)",
           "fuente": "Consejo de la Magistratura — archivo de notas de las comisiones",
           "fecha_dato": "2026-07-01",
           "desactualizado": false,
-          "detalle_txt": "6 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 4.7).",
+          "detalle_txt": "7 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 5.0).",
           "en_indice": true,
           "dimension": "poder_judicial",
-          "puntaje_itcp": 55.0,
-          "puntaje_banda": 55.0,
+          "puntaje_itcp": 45.0,
+          "puntaje_banda": 45.0,
           "peso_efectivo": 0.03,
-          "aporte_score": 4.5,
-          "aporte_formula": "Anclas ITCP: ≤2 → 100 · 2–4 → 85 · 4–6 → 65 · 6–9 → 40 · >9 → 10 (puntaje interpolado entre anclas: 55.0; pesa 3,0% del ITCP)",
+          "aporte_score": 5.5,
+          "aporte_formula": "Anclas ITCP: ≤2 → 100 · 2–4 → 85 · 4–6 → 65 · 6–9 → 40 · >9 → 10 (puntaje interpolado entre anclas: 45.0; pesa 3,0% del ITCP)",
           "aporte_nota": null,
-          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 4,5/10.",
-          "aporte_input_txt": "6 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 4.7)."
+          "aporte_lectura": "Leído solo en la escala del ITCP, este indicador equivale a una tensión de 5,5/10.",
+          "aporte_input_txt": "7 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 5.0)."
         },
         "cobertura_judicial": {
           "valor": 69.95,
@@ -1354,7 +1354,7 @@
       },
       "alerta": null,
       "itcp": {
-        "valor": 65.1,
+        "valor": 65.0,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
@@ -1490,7 +1490,7 @@
           "poder_judicial": {
             "nombre": "Poder judicial",
             "peso": 0.15,
-            "puntaje": 59.1,
+            "puntaje": 58.8,
             "indicadores": {
               "cobertura_judicial": {
                 "peso": 0.4,
@@ -1501,9 +1501,9 @@
               },
               "judicializacion": {
                 "peso": 0.2,
-                "puntaje_banda": 41.2,
-                "puntaje_aplicado": 41.2,
-                "valor": 1.78,
+                "puntaje_banda": 49.4,
+                "puntaje_aplicado": 49.4,
+                "valor": 1.65,
                 "peso_efectivo": 0.03
               },
               "velocidad_resolucion": {
@@ -1515,9 +1515,9 @@
               },
               "paralisis_denuncias": {
                 "peso": 0.2,
-                "puntaje_banda": 55.0,
-                "puntaje_aplicado": 55.0,
-                "valor": 6.0,
+                "puntaje_banda": 45.0,
+                "puntaje_aplicado": 45.0,
+                "valor": 7.0,
                 "peso_efectivo": 0.03
               }
             },
@@ -1558,54 +1558,54 @@
           ],
           "dominante": {
             "indicador": "cohesion_bloque",
-            "indice_sin": 59.5
+            "indice_sin": 59.4
           },
           "n_draws": 1000,
           "hist": [
-            1,
-            1,
+            2,
             0,
-            1,
+            0,
+            2,
             3,
-            5,
-            9,
-            16,
-            19,
-            19,
-            26,
-            25,
+            7,
+            11,
+            15,
+            18,
+            20,
+            27,
+            24,
             39,
-            49,
-            64,
             56,
+            60,
+            64,
+            55,
+            79,
             61,
-            77,
             70,
-            66,
-            65,
             62,
-            53,
-            46,
-            44,
-            33,
+            60,
+            57,
+            47,
+            41,
+            31,
+            23,
             22,
-            21,
             16,
-            10,
-            12,
-            5,
-            1,
-            1,
+            11,
+            7,
+            6,
+            0,
+            2,
             1,
             1
           ],
-          "hist_min": 60.63,
-          "hist_max": 68.9,
+          "hist_min": 60.65,
+          "hist_max": 68.85,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
-          "r_niveles": -0.466,
-          "r_diferencias": -0.405,
+          "r_niveles": -0.465,
+          "r_diferencias": -0.378,
           "n": 30,
           "pares": [
             [
@@ -1650,7 +1650,7 @@
             ],
             [
               "2024-09",
-              55.5,
+              55.0,
               73.0
             ],
             [
@@ -1665,7 +1665,7 @@
             ],
             [
               "2024-12",
-              53.1,
+              52.7,
               85.5
             ],
             [
@@ -1690,12 +1690,12 @@
             ],
             [
               "2025-05",
-              64.6,
+              64.1,
               79.2
             ],
             [
               "2025-06",
-              65.6,
+              65.1,
               91.8
             ],
             [
@@ -1705,7 +1705,7 @@
             ],
             [
               "2025-08",
-              47.9,
+              47.4,
               101.2
             ],
             [
@@ -1715,12 +1715,12 @@
             ],
             [
               "2025-10",
-              47.8,
+              47.3,
               145.8
             ],
             [
               "2025-11",
-              58.2,
+              57.7,
               116.4
             ],
             [
@@ -1750,7 +1750,7 @@
             ],
             [
               "2026-05",
-              63.7,
+              62.7,
               95.2
             ],
             [
@@ -1765,7 +1765,7 @@
           "serie_label": "ITCP (reconstrucción mensual)",
           "externa_label": "EPU Argentina (incertidumbre de política, invertido)",
           "trans_label": "series normalizadas al rango del período; el EPU se muestra invertido",
-          "r_sin_sector_privado": -0.6,
+          "r_sin_sector_privado": -0.597,
           "por_gobierno": {
             "Macri (desde el inicio de la serie)": {
               "r": -0.562,
@@ -1780,9 +1780,9 @@
               "n": 31
             }
           },
-          "conclusion": "Contra el factor común de las 3 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,515 en niveles y 0,447 en los cambios mes a mes: en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por separado. Contra el EPU solo —una de las tres— la correlación es −0,466 en niveles y −0,405 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,6, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, el volumen de insumos de construcción efectivamente vendidos, contra el que correlaciona 0,79 en niveles y 0,47 en los cambios. Hay además un hallazgo que conviene declarar: el indicador de expectativas de obra pública acompaña a la incertidumbre de política durante las dos administraciones anteriores y se invierte con la actual. La razón es sustantiva, no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno, de modo que ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El indicador mide bien la tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar.",
+          "conclusion": "Contra el factor común de las 3 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,523 en niveles y 0,452 en los cambios mes a mes: en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por separado. Contra el EPU solo —una de las tres— la correlación es −0,465 en niveles y −0,378 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,597, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, el volumen de insumos de construcción efectivamente vendidos, contra el que correlaciona 0,79 en niveles y 0,47 en los cambios. Hay además un hallazgo que conviene declarar: el indicador de expectativas de obra pública acompaña a la incertidumbre de política durante las dos administraciones anteriores y se invierte con la actual. La razón es sustantiva, no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno, de modo que ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El indicador mide bien la tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar.",
           "panel": {
-            "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,406 y a las 12 ajenas con 0,238. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,336 con lo propio contra 0,176 con lo ajeno.",
+            "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,412 y a las 12 ajenas con 0,24. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,338 con lo propio contra 0,174 con lo ajeno.",
             "nota_factor": "El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas externas únicamente —el índice no participa—, y por eso el contraste no se puede acomodar.",
             "perfil": [
               {
@@ -1790,8 +1790,8 @@
                 "etiqueta": "Clima electoral",
                 "fuente": "Votómetro",
                 "propia": true,
-                "r_niveles": 0.519,
-                "r_diferencias": 0.263,
+                "r_niveles": 0.525,
+                "r_diferencias": 0.279,
                 "n": 30
               },
               {
@@ -1799,8 +1799,8 @@
                 "etiqueta": "Ventas en autoservicios mayoristas",
                 "fuente": "INDEC",
                 "propia": false,
-                "r_niveles": -0.015,
-                "r_diferencias": -0.224,
+                "r_niveles": -0.007,
+                "r_diferencias": -0.227,
                 "n": 29
               },
               {
@@ -1809,7 +1809,7 @@
                 "fuente": "INDEC",
                 "propia": false,
                 "r_niveles": -0.439,
-                "r_diferencias": -0.128,
+                "r_diferencias": -0.126,
                 "n": 29
               },
               {
@@ -1817,8 +1817,8 @@
                 "etiqueta": "Ventas en supermercados",
                 "fuente": "INDEC",
                 "propia": false,
-                "r_niveles": -0.353,
-                "r_diferencias": -0.174,
+                "r_niveles": -0.359,
+                "r_diferencias": -0.177,
                 "n": 29
               },
               {
@@ -1826,8 +1826,8 @@
                 "etiqueta": "Demanda eléctrica residencial",
                 "fuente": "CAMMESA",
                 "propia": false,
-                "r_niveles": 0.516,
-                "r_diferencias": 0.297,
+                "r_niveles": 0.518,
+                "r_diferencias": 0.303,
                 "n": 30
               },
               {
@@ -1835,8 +1835,8 @@
                 "etiqueta": "Incertidumbre de política (EPU)",
                 "fuente": "Banco de España / SECMCA",
                 "propia": true,
-                "r_niveles": -0.466,
-                "r_diferencias": -0.405,
+                "r_niveles": -0.465,
+                "r_diferencias": -0.378,
                 "n": 30
               },
               {
@@ -1844,8 +1844,8 @@
                 "etiqueta": "Financiamiento externo a empresas",
                 "fuente": "BCRA",
                 "propia": false,
-                "r_niveles": 0.032,
-                "r_diferencias": 0.276,
+                "r_niveles": 0.027,
+                "r_diferencias": 0.268,
                 "n": 29
               },
               {
@@ -1853,8 +1853,8 @@
                 "etiqueta": "Consumo residencial de gas",
                 "fuente": "Sec. de Energía",
                 "propia": false,
-                "r_niveles": 0.165,
-                "r_diferencias": -0.009,
+                "r_niveles": 0.158,
+                "r_diferencias": -0.016,
                 "n": 29
               },
               {
@@ -1862,8 +1862,8 @@
                 "etiqueta": "Confianza en el Gobierno (ICG)",
                 "fuente": "UTDT",
                 "propia": true,
-                "r_niveles": 0.233,
-                "r_diferencias": 0.34,
+                "r_niveles": 0.245,
+                "r_diferencias": 0.356,
                 "n": 30
               },
               {
@@ -1871,8 +1871,8 @@
                 "etiqueta": "Índice Líder de actividad",
                 "fuente": "UTDT",
                 "propia": false,
-                "r_niveles": -0.249,
-                "r_diferencias": 0.062,
+                "r_niveles": -0.254,
+                "r_diferencias": 0.063,
                 "n": 30
               },
               {
@@ -1880,8 +1880,8 @@
                 "etiqueta": "Inversión directa de no residentes",
                 "fuente": "BCRA",
                 "propia": false,
-                "r_niveles": 0.208,
-                "r_diferencias": 0.101,
+                "r_niveles": 0.213,
+                "r_diferencias": 0.105,
                 "n": 29
               },
               {
@@ -1889,8 +1889,8 @@
                 "etiqueta": "Inversión de cartera de no residentes",
                 "fuente": "BCRA",
                 "propia": false,
-                "r_niveles": -0.277,
-                "r_diferencias": -0.186,
+                "r_niveles": -0.283,
+                "r_diferencias": -0.198,
                 "n": 29
               },
               {
@@ -1898,8 +1898,8 @@
                 "etiqueta": "Merval en dólares",
                 "fuente": "BYMA / CCL",
                 "propia": false,
-                "r_niveles": -0.077,
-                "r_diferencias": 0.245,
+                "r_niveles": -0.087,
+                "r_diferencias": 0.227,
                 "n": 30
               },
               {
@@ -1907,8 +1907,8 @@
                 "etiqueta": "Pasajeros en transporte público",
                 "fuente": "INDEC",
                 "propia": false,
-                "r_niveles": -0.099,
-                "r_diferencias": -0.202,
+                "r_niveles": -0.097,
+                "r_diferencias": -0.192,
                 "n": 28
               },
               {
@@ -1916,20 +1916,20 @@
                 "etiqueta": "Ventas de naftas",
                 "fuente": "Sec. de Energía",
                 "propia": false,
-                "r_niveles": -0.424,
-                "r_diferencias": -0.204,
+                "r_niveles": -0.432,
+                "r_diferencias": -0.192,
                 "n": 30
               }
             ],
             "niveles": {
-              "convergente": 0.406,
-              "discriminante": 0.238,
-              "brecha": 0.168
+              "convergente": 0.412,
+              "discriminante": 0.24,
+              "brecha": 0.172
             },
             "diferencias": {
-              "convergente": 0.336,
-              "discriminante": 0.176,
-              "brecha": 0.16
+              "convergente": 0.338,
+              "discriminante": 0.174,
+              "brecha": 0.164
             },
             "n_propias": 3,
             "n_ajenas": 12,
@@ -1995,7 +1995,7 @@
                 ],
                 [
                   "2024-09",
-                  55.5,
+                  55.0,
                   -1.045
                 ],
                 [
@@ -2010,7 +2010,7 @@
                 ],
                 [
                   "2024-12",
-                  53.1,
+                  52.7,
                   0.434
                 ],
                 [
@@ -2035,12 +2035,12 @@
                 ],
                 [
                   "2025-05",
-                  64.6,
+                  64.1,
                   0.788
                 ],
                 [
                   "2025-06",
-                  65.6,
+                  65.1,
                   0.298
                 ],
                 [
@@ -2050,7 +2050,7 @@
                 ],
                 [
                   "2025-08",
-                  47.9,
+                  47.4,
                   -0.933
                 ],
                 [
@@ -2060,12 +2060,12 @@
                 ],
                 [
                   "2025-10",
-                  47.8,
+                  47.3,
                   -2.329
                 ],
                 [
                   "2025-11",
-                  58.2,
+                  57.7,
                   -0.335
                 ],
                 [
@@ -2095,7 +2095,7 @@
                 ],
                 [
                   "2026-05",
-                  63.7,
+                  62.7,
                   -1.9
                 ],
                 [
@@ -2104,19 +2104,19 @@
                   -1.934
                 ]
               ],
-              "r_niveles": 0.515,
-              "r_diferencias": 0.447,
-              "mejor_sola_niveles": 0.519,
-              "mejor_sola_diferencias": 0.405,
+              "r_niveles": 0.523,
+              "r_diferencias": 0.452,
+              "mejor_sola_niveles": 0.525,
+              "mejor_sola_diferencias": 0.378,
               "aporte_sobre_tendencia": {
                 "n": 30,
                 "suficiente": true,
                 "colineal": false,
                 "r2_tendencia": 0.226,
-                "r2_con_indice": 0.47,
-                "aporte": 0.244,
+                "r2_con_indice": 0.475,
+                "aporte": 0.249,
                 "signo": "positivo",
-                "coef": 0.0802
+                "coef": 0.0804
               },
               "plano": "diferencias",
               "pares_grafico": [
@@ -2157,12 +2157,12 @@
                 ],
                 [
                   "2024-09",
-                  1.9,
+                  1.4,
                   -1.677
                 ],
                 [
                   "2024-10",
-                  -0.7,
+                  -0.2,
                   1.019
                 ],
                 [
@@ -2172,12 +2172,12 @@
                 ],
                 [
                   "2024-12",
-                  7.2,
+                  6.8,
                   -0.154
                 ],
                 [
                   "2025-01",
-                  6.1,
+                  6.5,
                   1.288
                 ],
                 [
@@ -2197,7 +2197,7 @@
                 ],
                 [
                   "2025-05",
-                  9.7,
+                  9.2,
                   1.13
                 ],
                 [
@@ -2207,22 +2207,22 @@
                 ],
                 [
                   "2025-07",
-                  -4.0,
+                  -3.5,
                   0.105
                 ],
                 [
                   "2025-08",
-                  -13.7,
+                  -14.2,
                   -1.317
                 ],
                 [
                   "2025-09",
-                  -2.4,
+                  -1.9,
                   -2.981
                 ],
                 [
                   "2025-10",
-                  2.3,
+                  1.8,
                   1.7
                 ],
                 [
@@ -2232,7 +2232,7 @@
                 ],
                 [
                   "2025-12",
-                  7.1,
+                  7.6,
                   1.078
                 ],
                 [
@@ -2257,38 +2257,38 @@
                 ],
                 [
                   "2026-05",
-                  3.1,
+                  2.1,
                   -0.6
                 ],
                 [
                   "2026-06",
-                  2.0,
+                  3.0,
                   0.144
                 ]
               ],
               "detalle": [
                 "El contraste no es una estadística sola sino el factor común de las 3: su primer componente principal, el método con el que la Reserva Federal de Chicago arma su índice de actividad. Recoge 51,5% de lo que las 3 tienen en común.",
-                "La mejor de las 3 por separado llega a 0,519 en niveles y 0,405 en los cambios. El compuesto le gana a todas en los cambios mes a mes, que es la prueba exigente. En niveles queda por debajo porque este índice se movió muy poco en términos netos —sus componentes se compensan— mientras que las estadísticas del contraste tienen tendencia propia.",
-                "Queda una prueba más, la que separa explicar de acompañar: una simple tendencia temporal ya da cuenta del 23% de lo que hace el contraste externo, porque en estos años casi todo se movió en la misma dirección. Sumar el índice lleva ese poder explicativo al 47%: aporta 24 puntos porcentuales por encima de la tendencia. Es la parte del vínculo que no se explica sola con el paso del tiempo."
+                "La mejor de las 3 por separado llega a 0,525 en niveles y 0,378 en los cambios. El compuesto le gana a todas en los cambios mes a mes, que es la prueba exigente. En niveles queda por debajo porque este índice se movió muy poco en términos netos —sus componentes se compensan— mientras que las estadísticas del contraste tienen tendencia propia.",
+                "Queda una prueba más, la que separa explicar de acompañar: una simple tendencia temporal ya da cuenta del 23% de lo que hace el contraste externo, porque en estos años casi todo se movió en la misma dirección. Sumar el índice lleva ese poder explicativo al 48%: aporta 25 puntos porcentuales por encima de la tendencia. Es la parte del vínculo que no se explica sola con el paso del tiempo."
               ]
             }
           },
-          "resumen": "Contra el factor común de las 3 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,515 en niveles y 0,447 en los cambios mes a mes: en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por separado.",
-          "detalle_texto": "Contra el EPU solo —una de las tres— la correlación es −0,466 en niveles y −0,405 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,6, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, el volumen de insumos de construcción efectivamente vendidos, contra el que correlaciona 0,79 en niveles y 0,47 en los cambios. Hay además un hallazgo que conviene declarar: el indicador de expectativas de obra pública acompaña a la incertidumbre de política durante las dos administraciones anteriores y se invierte con la actual. La razón es sustantiva, no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno, de modo que ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El indicador mide bien la tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar.",
+          "resumen": "Contra el factor común de las 3 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,523 en niveles y 0,452 en los cambios mes a mes: en los cambios mes a mes —la prueba exigente— más que cualquiera de ellas por separado.",
+          "detalle_texto": "Contra el EPU solo —una de las tres— la correlación es −0,465 en niveles y −0,378 en los cambios mes a mes: el signo negativo es el esperado, más moderado que en macro o gestión. Sin la dimensión de sector privado —incorporada en julio de 2026— la correlación sería −0,597, y conviene explicar la diferencia en lugar de omitirla. El contraste mide incertidumbre de política económica en la prensa, y no cubre la relación del Gobierno con los empresarios: pedirle que valide una dimensión que no abarca es pedirle lo que no mide. Esa dimensión tiene su propio contraste, el volumen de insumos de construcción efectivamente vendidos, contra el que correlaciona 0,79 en niveles y 0,47 en los cambios. Hay además un hallazgo que conviene declarar: el indicador de expectativas de obra pública acompaña a la incertidumbre de política durante las dos administraciones anteriores y se invierte con la actual. La razón es sustantiva, no estadística: para gobiernos anteriores la tensión con las empresas que dependen del Estado era un síntoma de dificultades, mientras que para el actual el recorte de la obra pública es el programa de gobierno, de modo que ejecutarlo reduce la incertidumbre sobre la política económica al mismo tiempo que tensa la relación con ese sector. El indicador mide bien la tensión; lo que no distingue es cuándo esa tensión es un costo que el Gobierno sufre y cuándo es un precio que decide pagar.",
           "sub_resumen": "El contraste natural del cinturón político no es un precio de mercado sino la lectura pública de la política misma: el EPU (Economic Policy Uncertainty) de Argentina mide, con minería de texto sobre diarios locales (Banco de España y SECMCA, la misma familia metodológica que el índice de Baker/Bloom/Davis), cuánto se habla de incertidumbre alrededor del gobierno y sus políticas.",
           "sub_detalle": "El ITCP se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución); varios de los once componentes tienen historia corta o recién se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento de senadores por provincia, adhesión provincial al RIGI), así que la reconstrucción de los meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la protesta social — límite que se declara, no se esconde."
         },
         "redundancia": {
           "n_indicadores": 16,
           "n_pares": 103,
-          "r_abs_medio": 0.389,
-          "share_altos": 0.117,
-          "share_bajos": 0.388,
+          "r_abs_medio": 0.398,
+          "share_altos": 0.126,
+          "share_bajos": 0.379,
           "umbral": 0.7,
-          "pares_cruzados": 8,
+          "pares_cruzados": 9,
           "diferencias": {
             "n_pares": 103,
-            "r_abs_medio": 0.193,
+            "r_abs_medio": 0.191,
             "share_altos": 0.019
           },
           "top": [
@@ -2337,9 +2337,9 @@
           ],
           "titulo": "¿Cuánta información distinta aporta cada componente?",
           "sub": "Un índice que promedia sus componentes supone que cada uno aporta algo que los demás no. Para comprobarlo se cruzan los puntajes mensuales de los 16 componentes que tienen serie histórica, 103 pares en total, y se mide cuánto se mueven juntos.",
-          "conclusion": "La correlación media entre pares es 0,389: ni componentes independientes ni una sola señal repetida. Un 12% de los pares se mueve muy junto (por encima de 0,7) y un 39% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,193 y sólo un 2% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 12 pares que superan el umbral en niveles, 8 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
-          "resumen": "La correlación media entre pares es 0,389: ni componentes independientes ni una sola señal repetida. Un 12% de los pares se mueve muy junto (por encima de 0,7) y un 39% es prácticamente independiente.",
-          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,193 y sólo un 2% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 12 pares que superan el umbral en niveles, 8 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
+          "conclusion": "La correlación media entre pares es 0,398: ni componentes independientes ni una sola señal repetida. Un 13% de los pares se mueve muy junto (por encima de 0,7) y un 38% es prácticamente independiente. El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,191 y sólo un 2% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 13 pares que superan el umbral en niveles, 9 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado.",
+          "resumen": "La correlación media entre pares es 0,398: ni componentes independientes ni una sola señal repetida. Un 13% de los pares se mueve muy junto (por encima de 0,7) y un 38% es prácticamente independiente.",
+          "detalle_texto": "El dato decisivo es qué queda de ese acoplamiento al mirar los cambios mes a mes en vez de los niveles, que es lo que separa una tendencia compartida de información repetida: la correlación media cae a 0,191 y sólo un 2% de los pares lo supera. Es decir que los componentes suben y bajan con el ciclo, pero sus movimientos de cada mes son en buena medida propios: lo que parecía redundancia es sobre todo una época en común. De los 13 pares que superan el umbral en niveles, 9 acoplan indicadores de dimensiones distintas sin una razón de diseño que lo explique, y son los que conviene seguir. Los demás, o comparten dimensión —donde su peso conjunto está acotado— o están acoplados a propósito. La consecuencia práctica para el lector se mantiene: cuando varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias confirmaciones independientes del mismo resultado."
         },
         "rezago": {
           "promedio_meses": 5.3,
@@ -2375,7 +2375,7 @@
               "clave": "tension",
               "nombre": "Tensión externa",
               "glosa": "lo que otros actores le hacen al Gobierno",
-              "puntaje": 63.3,
+              "puntaje": 63.2,
               "share": 0.52,
               "componentes": [
                 {
@@ -2387,20 +2387,20 @@
                   "puntaje": 40.8
                 },
                 {
-                  "indicador": "judicializacion",
-                  "puntaje": 41.2
-                },
-                {
                   "indicador": "desafios_legislativos",
                   "puntaje": 43.6
+                },
+                {
+                  "indicador": "paralisis_denuncias",
+                  "puntaje": 45.0
                 },
                 {
                   "indicador": "conflictividad_nacional",
                   "puntaje": 48.9
                 },
                 {
-                  "indicador": "paralisis_denuncias",
-                  "puntaje": 55.0
+                  "indicador": "judicializacion",
+                  "puntaje": 49.4
                 },
                 {
                   "indicador": "brecha_obra_publica",
@@ -2473,8 +2473,8 @@
           ],
           "titulo": "¿Qué tipo de cosa está midiendo el índice?",
           "sub": "El índice reúne tres preguntas distintas: cuánta presión ejercen sobre el Gobierno los demás actores, cuánto consigue el Gobierno por su cuenta, y con qué recursos cuenta para negociar. El promedio de las tres no responde ninguna por separado, así que acá se muestran abiertas. Es una separación de lectura: el índice se calcula igual y los pesos no cambian.",
-          "conclusion": "Leído por partes, lo más flojo del cinturón es «tensión externa» (63,3) y lo más sólido, «recursos de negociación» (74,9): una diferencia de 11,6 puntos. Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas.",
-          "resumen": "Leído por partes, lo más flojo del cinturón es «tensión externa» (63,3) y lo más sólido, «recursos de negociación» (74,9): una diferencia de 11,6 puntos.",
+          "conclusion": "Leído por partes, lo más flojo del cinturón es «tensión externa» (63,2) y lo más sólido, «recursos de negociación» (74,9): una diferencia de 11,7 puntos. Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas.",
+          "resumen": "Leído por partes, lo más flojo del cinturón es «tensión externa» (63,2) y lo más sólido, «recursos de negociación» (74,9): una diferencia de 11,7 puntos.",
           "detalle_texto": "Importa para leer el número general, porque las tres cosas no se compensan entre sí: un Gobierno puede tener con qué negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones exigen respuestas distintas.",
           "sub_resumen": "El índice reúne tres preguntas distintas: cuánta presión ejercen sobre el Gobierno los demás actores, cuánto consigue el Gobierno por su cuenta, y con qué recursos cuenta para negociar.",
           "sub_detalle": "El promedio de las tres no responde ninguna por separado, así que acá se muestran abiertas. Es una separación de lectura: el índice se calcula igual y los pesos no cambian."
@@ -3255,7 +3255,7 @@
                 "etiqueta": "Merval en dólares",
                 "fuente": "BYMA / CCL",
                 "propia": false,
-                "r_niveles": 0.177,
+                "r_niveles": 0.175,
                 "r_diferencias": 0.06,
                 "n": 32
               },
@@ -4952,7 +4952,7 @@
         },
         "validacion": {
           "r_niveles": 0.748,
-          "r_diferencias": 0.117,
+          "r_diferencias": 0.113,
           "n": 32,
           "pares": [
             [
@@ -5113,7 +5113,7 @@
             [
               "2026-07",
               74.0,
-              2104.8
+              2114.2
             ]
           ],
           "plot": "minmax",
@@ -5124,7 +5124,7 @@
           "trans_label": "series normalizadas al rango del período",
           "conclusion": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,678 en niveles y −0,015 en los cambios mes a mes: menos que la mejor de ellas por separado. Contra el Merval solo —una de las cuatro— la correlación es 0,748 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: la confianza en el gobierno (ICG UTDT) diverge del ITCG (−0,695) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad.",
           "panel": {
-            "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,401 y a las 11 ajenas con 0,367. En los cambios mes a mes la separación no se sostiene: 0,123 con lo propio contra 0,172 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto.",
+            "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,401 y a las 11 ajenas con 0,367. En los cambios mes a mes la separación no se sostiene: 0,122 con lo propio contra 0,172 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto.",
             "nota_factor": "El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas externas únicamente —el índice no participa—, y por eso el contraste no se puede acomodar.",
             "perfil": [
               {
@@ -5241,7 +5241,7 @@
                 "fuente": "BYMA / CCL",
                 "propia": true,
                 "r_niveles": 0.748,
-                "r_diferencias": 0.117,
+                "r_diferencias": 0.113,
                 "n": 32
               },
               {
@@ -5269,9 +5269,9 @@
               "brecha": 0.034
             },
             "diferencias": {
-              "convergente": 0.123,
+              "convergente": 0.122,
               "discriminante": 0.172,
-              "brecha": -0.049
+              "brecha": -0.05
             },
             "n_propias": 4,
             "n_ajenas": 11,
@@ -5815,7 +5815,7 @@
         "merval": {
           "r": 0.75,
           "n": 32,
-          "rd": 0.12
+          "rd": 0.11
         },
         "consumo": {
           "r": 0.25,
@@ -5861,19 +5861,19 @@
           "rd": 0.06
         },
         "merval": {
-          "r": -0.08,
+          "r": -0.09,
           "n": 30,
-          "rd": 0.25
+          "rd": 0.23
         },
         "consumo": {
-          "r": -0.35,
+          "r": -0.36,
           "n": 29,
-          "rd": -0.17
+          "rd": -0.18
         },
         "epu": {
           "r": -0.47,
           "n": 30,
-          "rd": -0.4
+          "rd": -0.38
         }
       }
     ],

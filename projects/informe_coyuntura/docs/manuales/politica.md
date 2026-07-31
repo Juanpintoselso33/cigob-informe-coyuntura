@@ -257,7 +257,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 0.8 → 100 · 0.8–1.2 → 85 · 1.2–1.6 → 65 · 1.6–2 → 40 · > 2 → 10
 
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0170](../adr/0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) Judicialización y parálisis de denuncias pasan a fuente viva
 
 #### Velocidad de resolución de la Corte
 
@@ -287,7 +287,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 2 → 100 · 2–4 → 85 · 4–6 → 65 · 6–9 → 40 · > 9 → 10
 
-**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP · [ADR-0170](../adr/0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) Judicialización y parálisis de denuncias pasan a fuente viva
 
 ### Dimensión `sector_privado` (13%)
 
@@ -373,7 +373,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-59 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+60 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -434,3 +434,4 @@ histórica.
 - [0161](../adr/0161-el-contraste-externo-es-un-factor-comun-no-una-variable.md) — El contraste externo es un factor común, no una variable suelta
 - [0166](../adr/0166-regla-de-orientacion-para-indicadores-de-control.md) — La orientación de un indicador sale de la pregunta que responde
 - [0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) — Los cuatro indicadores desbloqueados entran al ITCP
+- [0170](../adr/0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) — Judicialización y parálisis de denuncias pasan a fuente viva

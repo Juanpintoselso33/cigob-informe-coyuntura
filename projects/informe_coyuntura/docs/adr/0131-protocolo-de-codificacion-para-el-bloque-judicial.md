@@ -6,7 +6,7 @@ nota_estado: 'Aceptado (define el procedimiento; ningún indicador entra al índ
 fecha: 2026-07-25
 cinturon: 'politica'
 complementa: ['0126']
-relacionado: ['0166']
+relacionado: ['0166', '0170']
 corregido_por: ['0140']
 ambito: 'ITCP · bloque judicial y bloque económico · 8 indicadores pendientes'
 origen: 'Aporte externo sobre el cinturón político (doc 260724), recomendación 1'
