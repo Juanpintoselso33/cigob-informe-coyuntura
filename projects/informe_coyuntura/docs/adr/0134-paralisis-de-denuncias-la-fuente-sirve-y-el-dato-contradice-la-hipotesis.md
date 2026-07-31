@@ -1,13 +1,19 @@
+---
+madr: 4
+id: '0134'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+ambito: 'cinturón político (ITCP), bloque judicial'
+---
+
 # ADR-0134 — Parálisis de denuncias: la fuente sirve, y el dato contradice la hipótesis
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP), bloque judicial
 - **Relacionados**: ADR-0131 (protocolo de codificación del bloque judicial),
   ADR-0042 (nacer discriminando), ADR-0045 (no recalibrar para que dé mejor),
   ADR-0095 (publicar el resultado incómodo)
 
-## Contexto
+## Contexto y planteo del problema
 
 El aporte externo al cinturón político propone un indicador de **parálisis de
 denuncias**: medir si el mecanismo de control disciplinario de los jueces —las
@@ -15,8 +21,6 @@ comisiones de Disciplina y de Acusación del Consejo de la Magistratura— está
 funcionando o está trabado. Este ADR aplica el protocolo de ADR-0131: primero
 encontrar la fuente, después construir el universo, después leerlo, y recién
 entonces discutir la métrica.
-
-## Lo que se encontró
 
 ### La fuente que parecía obvia no es la correcta
 
@@ -57,8 +61,6 @@ Las sesiones previas (numeradas 3, 4, 7, 8 y 9 bajo el slug
 fuera de todo conteo. Contarlas juntas habría inflado la historia temprana y
 producido exactamente la conclusión contraria a la verdadera.
 
-## El hallazgo
-
 La parálisis **existe y es grande**, pero es **anterior al período que mide el
 informe**:
 
@@ -80,6 +82,10 @@ corresponde al período de crisis de composición del Consejo de 2022-2023.
 creciente. Se documenta tal cual, por el mismo criterio de ADR-0095: el dato
 manda sobre la expectativa, y un indicador que se elige o se orienta según el
 resultado que produce no es un indicador.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -104,7 +110,7 @@ resultado que produce no es un indicador.
    cada 6,7 meses y no publicó ninguna. Si el indicador busca parálisis,
    Disciplina sola es la señal fuerte.
 
-## Consecuencias
+### Consecuencias
 
 - El indicador **nacería discriminando** (ADR-0042): rango 2-7, movimiento mes
   a mes, y hay historia desde jul-2022 para calibrar bandas con datos reales en

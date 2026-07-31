@@ -1,14 +1,20 @@
+---
+madr: 4
+id: '0089'
+estado: 'aceptado'
+fecha: 2026-07-19
+cinturon: 'politica'
+indicadores: [poder_legislativo, desafios_legislativos, derrotas_legislativas]
+modifica: ['0069']
+ambito: 'ITCP · dimensión `poder_legislativo` · `desafios_legislativos` · `derrotas_legislativas`'
+origen: 'Auditoría externa del cinturón político, prioridad 3'
+---
+
 # ADR-0089 — Desafíos legislativos en lugar de derrotas legislativas
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCP · dimensión `poder_legislativo` · `desafios_legislativos` · `derrotas_legislativas` |
-| **Fecha** | 2026-07-19 |
 | **Modifica** | ADR-0069 (entrada de `bloqueo_sostenido` y pesos internos) |
-| **Origen** | Auditoría externa del cinturón político, prioridad 3 |
 
-## El problema
+## Contexto y planteo del problema
 
 La auditoría señaló que `derrotas_legislativas` y `bloqueo_sostenido` comparten
 el registro de eventos y el universo de normas desafiadas, y que tenerlos como
@@ -42,6 +48,10 @@ el régimen posterior convergieron.
 Se deja registrado porque es el mismo error que ADR-0086 documentó doce horas
 antes: un mecanismo plausible, bien argumentado, que encaja con los números
 visibles y es falso. La redundancia era real; la explicación, no.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -97,22 +107,7 @@ En primeras diferencias el par queda en **0,411**: sigue acoplado, pero la mayor
 parte del 0,918 de niveles es tendencia compartida. Queda declarado en
 `ACOPLADOS_POR_DISENO` con ese motivo escrito.
 
-## Un hallazgo colateral: la lista escrita a mano del ITCP
-
-Al regenerar la matriz apareció que seguía publicando **11 indicadores y el par
-viejo**. La causa: `validacion_externa.ITCP_SERIES` era una **lista escrita a
-mano** que ya había divergido del índice —nombraba a `derrotas_legislativas` y
-no incluía a los dos indicadores nuevos.
-
-Es exactamente el bug que ADR-0082 fue a erradicar en el ITCM; el ITCP se había
-quedado con su versión. Ahora se **deriva de `itcp.DIMENSIONES_ITCP`** y no
-puede divergir.
-
-Vale como recordatorio: ADR-0082 arregló *una instancia* del patrón y declaró el
-principio, pero no barrió el resto del archivo buscando las otras. La instancia
-sobreviviente esperó tres días y volvió a fallar igual.
-
-## Consecuencias
+### Consecuencias
 
 - ITCP: 12 indicadores en la matriz, 43 pares, \|r\| medio 0,384 en niveles y
   **0,208 en cambios** (2,3% de pares altos).
@@ -126,7 +121,9 @@ sobreviviente esperó tres días y volvió a fallar igual.
   el caso que la medición sobre primeras diferencias de ADR-0085 existe para
   distinguir.
 
-## Limitaciones declaradas
+## Más información
+
+### Limitaciones
 
 - La ventana tiene entre 4 y 13 eventos. **Ninguna descomposición de un conjunto
   tan chico queda estadísticamente independiente**, y este ADR no pretende
@@ -135,3 +132,18 @@ sobreviviente esperó tres días y volvió a fallar igual.
   y una menor pesan igual.
 - `derrotas_legislativas` conserva su banda en `BANDAS_ITCP` como referencia
   histórica, igual que `comisiones_caidas` y `gobernadores_alineamiento`.
+
+### Un hallazgo colateral: la lista escrita a mano del ITCP
+
+Al regenerar la matriz apareció que seguía publicando **11 indicadores y el par
+viejo**. La causa: `validacion_externa.ITCP_SERIES` era una **lista escrita a
+mano** que ya había divergido del índice —nombraba a `derrotas_legislativas` y
+no incluía a los dos indicadores nuevos.
+
+Es exactamente el bug que ADR-0082 fue a erradicar en el ITCM; el ITCP se había
+quedado con su versión. Ahora se **deriva de `itcp.DIMENSIONES_ITCP`** y no
+puede divergir.
+
+Vale como recordatorio: ADR-0082 arregló *una instancia* del patrón y declaró el
+principio, pero no barrió el resto del archivo buscando las otras. La instancia
+sobreviviente esperó tres días y volvió a fallar igual.

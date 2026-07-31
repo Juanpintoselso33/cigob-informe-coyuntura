@@ -1,13 +1,19 @@
+---
+madr: 4
+id: '0160'
+estado: 'aceptado'
+fecha: 2026-07-30
+cinturon: 'vida'
+ambito: 'cinturón vida cotidiana, sección de consistencia interna'
+---
+
 # ADR-0160 — La dispersión del ITVC se publica junto al neto
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-30
-- **Ámbito**: cinturón vida cotidiana, sección de consistencia interna
 - **Relacionados**: ADR-0159 (validación por panel, donde se midió la chatura),
   ADR-0108 (matriz de redundancia), ADR-0018/0024 (escala base-100),
   ADR-0156 (el texto público dice el método, el número se deriva)
 
-## Contexto
+## Contexto y planteo del problema
 
 Al revisar por qué «el ITVC casi no se mueve» (ADR-0159) quedó medido que **no es
 que los insumos estén planos: es que se compensan**. Si todos los componentes se
@@ -16,19 +22,9 @@ cancela el 78%. El pendiente que quedó anotado fue publicar esa dispersión al
 lado del neto, porque **el promedio solo dice «sin cambios» donde el dato dice
 «no cambió en neto pero se recompuso fuerte por dentro»**.
 
-## Lo que muestra el número
+## Opciones consideradas
 
-| | arranque (dic-2023) | último mes | |
-|---|---|---|---|
-| componente más bajo | 87,8 | **17,2** | |
-| componente más alto | 107,7 | **140,0** | |
-| **rango** | **19,9** | **122,8** | ×6,2 |
-| desvío estándar | 5,1 | 28,5 | ×5,6 |
-| **movimiento NETO del índice** | | | **5,0 puntos** |
-
-En treinta y dos meses el índice se movió cinco puntos y sus componentes pasaron
-de estar agrupados en veinte puntos a estar repartidos en ciento veintitrés. Esa
-es la recomposición que el neto esconde, y ahora se publica.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -49,7 +45,7 @@ Dos decisiones de implementación:
   sobre el estado de hoy y caduca sola — exactamente la clase de frase que
   ADR-0156 obliga a computar. Si el cociente baja de 1,5 la frase desaparece.
 
-## Consecuencias
+### Consecuencias
 
 - El cinturón deja de comunicar «sin cambios» a secas. La chatura del índice pasa
   de ser un defecto aparente a ser un hallazgo explicado.
@@ -59,3 +55,19 @@ Dos decisiones de implementación:
 - Queda como pendiente editorial si la dispersión merece su propio gráfico: hoy
   viaja como texto y datos dentro de una sección existente, sin componente web
   nuevo.
+
+## Más información
+
+### Lo que muestra el número
+
+| | arranque (dic-2023) | último mes | |
+|---|---|---|---|
+| componente más bajo | 87,8 | **17,2** | |
+| componente más alto | 107,7 | **140,0** | |
+| **rango** | **19,9** | **122,8** | ×6,2 |
+| desvío estándar | 5,1 | 28,5 | ×5,6 |
+| **movimiento NETO del índice** | | | **5,0 puntos** |
+
+En treinta y dos meses el índice se movió cinco puntos y sus componentes pasaron
+de estar agrupados en veinte puntos a estar repartidos en ciento veintitrés. Esa
+es la recomposición que el neto esconde, y ahora se publica.

@@ -1,12 +1,16 @@
+---
+madr: 4
+id: '0014'
+estado: 'aceptado'
+fecha: 2026-07-02
+cinturon: 'gestion'
+archivos: ['scripts/gestion.py', 'scripts/piquetes_poll.py', '.github/workflows/piquetes-poll.yml', 'data/gestion/piquetes_alertas.json']
+ambito: '`scripts/gestion.py` · `scripts/piquetes_poll.py` · `.github/workflows/piquetes-poll.yml` · `data/gestion/piquetes_alertas.json`'
+---
+
 # ADR-0014 — Piquetes: poller GTFS-RT acumulativo (el registro de cortes del GCBA está muerto)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-02 |
-| **Ámbito** | `scripts/gestion.py` · `scripts/piquetes_poll.py` · `.github/workflows/piquetes-poll.yml` · `data/gestion/piquetes_alertas.json` |
-
-## Contexto
+## Contexto y planteo del problema
 
 El ADR-0013 dejó `protocolo_antipiquetes` como carga manual y documentó el
 camino de automatización: la API Transporte GCBA con su endpoint histórico
@@ -24,6 +28,16 @@ credenciales ya emitidas (registro 2026-07-02) se hizo la prueba decisiva:
   `cause=5 (DEMONSTRATION)`, y los textos describen la disrupción.
 - `/datos/movilidad/transito` (conteo vehicular por sensores, mensual desde
   feb-2020) está vivo pero mide flujo, no cortes.
+
+## Opciones consideradas
+
+- **Poller de `/transito/v1/cortes`** (plan B del ADR-0013): muerto junto con
+  `/eventos`.
+- **Puntuar las alertas GTFS-RT ya mismo**: sin baseline 2023 ni historia, un
+  conteo de dos días no es bandeable; entraría ruido puro al índice.
+- **Sheet de Vialidad Nacional** (cortes de rutas nacionales, sin key): mide
+  otra jurisdicción (rutas, mayormente clima/obras) y también es snapshot sin
+  histórico; se descarta para CABA.
 
 ## Decisión
 
@@ -49,17 +63,7 @@ base dic-2023.
   (secrets de GitHub Actions) con fallback a `.env` local gitignored, parseado
   sin dependencias nuevas.
 
-## Opciones descartadas
-
-- **Poller de `/transito/v1/cortes`** (plan B del ADR-0013): muerto junto con
-  `/eventos`.
-- **Puntuar las alertas GTFS-RT ya mismo**: sin baseline 2023 ni historia, un
-  conteo de dos días no es bandeable; entraría ruido puro al índice.
-- **Sheet de Vialidad Nacional** (cortes de rutas nacionales, sin key): mide
-  otra jurisdicción (rutas, mayormente clima/obras) y también es snapshot sin
-  histórico; se descarta para CABA.
-
-## Consecuencias
+### Consecuencias
 
 - La serie de manifestaciones **arranca el 2026-07-02** y madura sola: cuando
   tenga ~12 meses podrá bandearse (variación i.a. propia) y reemplazar la

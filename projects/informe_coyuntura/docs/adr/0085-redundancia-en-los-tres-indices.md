@@ -1,14 +1,21 @@
+---
+madr: 4
+id: '0085'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'politica'
+archivos: ['validacion_externa.matriz_redundancia']
+corregido_por: ['0086']
+extendido_por: ['0108']
+ambito: 'ITCM · ITCG · ITCP · `validacion_externa.matriz_redundancia` · card pública "Consistencia interna"'
+origen: 'Pedido editorial de extender la card a los demás cinturones'
+---
+
 # ADR-0085 — La redundancia interna se mide en los tres índices, y en cambios además de niveles
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCM · ITCG · ITCP · `validacion_externa.matriz_redundancia` · card pública "Consistencia interna" |
-| **Fecha** | 2026-07-18 |
 | **Amplía** | ADR-0075 (matriz de redundancia, sólo ITCM) |
-| **Origen** | Pedido editorial de extender la card a los demás cinturones |
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0075 publicó la matriz de redundancia sólo para el ITCM, dejando anotado
 que "extender la medición a los otros tres índices no requiere cambios de
@@ -18,38 +25,9 @@ El ITVC queda afuera: es un índice base-100 continuo, sin bandas ni puntajes de
 componente, así que la pregunta "cuánto se parecen los puntajes" no aplica en
 los mismos términos.
 
-## El problema que apareció al extenderla
+## Opciones consideradas
 
-La primera corrida sobre el **ITCG** devolvió un resultado imposible:
-
-| par | r | n |
-|---|---|---|
-| protocolo antipiquetes × RIGI inversiones | **+1,000** | 24 |
-| libertad de opción de salud × RIGI | +0,995 | 23 |
-| privatizaciones × reestructuración de organismos | +0,993 | 32 |
-
-Una correlación **exactamente 1,000** casi siempre es un artefacto, y lo era.
-Esos indicadores son **contadores acumulados**:
-
-- `libertad_opcion_salud`: 0 → 31,8
-- `protocolo_antipiquetes`: 52,7 → 74,2, monótono
-
-> **Corrección (ADR-0086, mismo día).** Los dos pares que involucran a
-> `rigi_inversiones` no eran contadores acumulados: eran un **bug**. Su serie
-> guardaba millones de dólares y sus bandas están calibradas en porcentaje, así
-> que la reconstrucción le asignaba 10 durante todo 2024 y 100 desde ene-2025 —
-> un escalón binario, que correlaciona 1,000 con cualquier otra serie monótona.
-> El indicador salió de la matriz y el par desapareció.
->
-> La explicación original era plausible, estaba bien argumentada y era falsa.
-> Vale registrarlo: **el mecanismo correcto para el resto de los pares sirvió de
-> tapadera para uno que no lo era**. Un número imposible admitía dos causas y se
-> publicó la primera que encajaba, sin descartar la otra.
-
-**Dos series que sólo suben correlacionan cerca de 1 aunque no compartan
-ninguna información.** Es el artefacto clásico de correlacionar tendencias.
-Publicar "34% de los pares se mueven muy juntos" en gestión habría presentado
-como redundancia lo que era, sobre todo, el paso del tiempo.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -90,7 +68,7 @@ dimensiones coinciden en el diagnóstico, eso no son varias confirmaciones
 independientes**. Que el acoplamiento sea tendencia y no información repetida
 explica *por qué* ocurre, no lo vuelve inocuo para leer el índice.
 
-## Consecuencias
+### Consecuencias
 
 - `matriz_redundancia()` es genérica: recibe escala, dimensiones y valores por
   mes. Las tres variantes por índice son envoltorios de tres líneas.
@@ -102,7 +80,9 @@ explica *por qué* ocurre, no lo vuelve inocuo para leer el índice.
 - **Política es el índice más sano de los tres**: \|r\| medio 0,371 en niveles y
   sólo 9% de pares acoplados, contra 25-34% de macro y gestión.
 
-## Limitaciones declaradas
+## Más información
+
+### Limitaciones
 
 - Las primeras diferencias son más ruidosas que los niveles: con 24-32 meses,
   las correlaciones de cambios tienen intervalos amplios y se publican como
@@ -112,3 +92,36 @@ explica *por qué* ocurre, no lo vuelve inocuo para leer el índice.
   sigue sin poder distinguirlos en ese tramo.
 - El ITVC no se mide. Su equivalente sería correlacionar los índices base-100 de
   sus componentes, que es una pregunta parecida pero no la misma.
+
+### El problema que apareció al extenderla
+
+La primera corrida sobre el **ITCG** devolvió un resultado imposible:
+
+| par | r | n |
+|---|---|---|
+| protocolo antipiquetes × RIGI inversiones | **+1,000** | 24 |
+| libertad de opción de salud × RIGI | +0,995 | 23 |
+| privatizaciones × reestructuración de organismos | +0,993 | 32 |
+
+Una correlación **exactamente 1,000** casi siempre es un artefacto, y lo era.
+Esos indicadores son **contadores acumulados**:
+
+- `libertad_opcion_salud`: 0 → 31,8
+- `protocolo_antipiquetes`: 52,7 → 74,2, monótono
+
+> **Corrección (ADR-0086, mismo día).** Los dos pares que involucran a
+> `rigi_inversiones` no eran contadores acumulados: eran un **bug**. Su serie
+> guardaba millones de dólares y sus bandas están calibradas en porcentaje, así
+> que la reconstrucción le asignaba 10 durante todo 2024 y 100 desde ene-2025 —
+> un escalón binario, que correlaciona 1,000 con cualquier otra serie monótona.
+> El indicador salió de la matriz y el par desapareció.
+>
+> La explicación original era plausible, estaba bien argumentada y era falsa.
+> Vale registrarlo: **el mecanismo correcto para el resto de los pares sirvió de
+> tapadera para uno que no lo era**. Un número imposible admitía dos causas y se
+> publicó la primera que encajaba, sin descartar la otra.
+
+**Dos series que sólo suben correlacionan cerca de 1 aunque no compartan
+ninguna información.** Es el artefacto clásico de correlacionar tendencias.
+Publicar "34% de los pares se mueven muy juntos" en gestión habría presentado
+como redundancia lo que era, sobre todo, el paso del tiempo.

@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0116'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'vida'
+archivos: ['tests/test_redundancia_itvc.py']
+continuado_por: ['0117']
+ambito: 'ITVC · matriz de redundancia · validación externa · `tests/test_redundancia_itvc.py`'
+origen: 'Pregunta del usuario: "¿recalculaste todo en la sección de robustez?"'
+---
+
 # ADR-0116 — La sección de robustez del ITVC estaba vieja, y ahora avisa
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · matriz de redundancia · validación externa · `tests/test_redundancia_itvc.py` |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Pregunta del usuario: "¿recalculaste todo en la sección de robustez?" |
-
-## El hallazgo
+## Contexto y planteo del problema
 
 No. Tres altas seguidas —`alquiler_real` (ADR-0111), `indice_lider` (ADR-0112) y
 la reorganización de dimensiones (ADR-0115)— se publicaron **sin volver a correr
@@ -27,25 +32,9 @@ La matriz además clasificaba los pares con el mapeo de dimensiones anterior, de
 modo que `alquiler_real ↔ ipc_alimentos` figuraba como cruce entre dimensiones
 cuando hoy comparten la de precios.
 
-## A quién atribuirlo
+## Opciones consideradas
 
-Reconstruyendo el estado previo a cada cambio, la correlación en niveles sin
-`alquiler_real` ni `indice_lider` da **0,554 exacto**: el número que estaba
-publicado. **La deriva viene de ADR-0111, no de la reorganización de hoy** —que
-es demostrablemente neutral, su ponderado exacto se mueve 0,0009.
-
-Es decir: el informe mostró una validación vieja durante las tres altas.
-
-## Lo que falla en el proceso, no en el cálculo
-
-`CLAUDE.md` ya dice que hay que correr `validacion_externa.py` cuando se agrega
-o cambia un indicador de una paramétrica, y explica por qué con un caso
-verificado: en julio, tras tres recalibraciones y dos series nuevas del ITCP, el
-r publicado contra el EPU siguió siendo el de la mañana.
-
-**La regla existía y se salteó igual, tres veces seguidas.** Una regla escrita
-que depende de acordarse no es una defensa: la primera vez que se olvida, nada
-falla y el número viejo se publica como si fuera nuevo.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -58,7 +47,29 @@ Se verificó que dispara: forzando el valor a 14 —el estado stale real— el t
 falla con "la matriz publicada mide 14 componentes y el índice tiene 16: falta
 correr validacion_externa.py". Un guard que nunca se probó no se sabe si frena.
 
-## Lo que el guard no cubre
+## Más información
+
+### A quién atribuirlo
+
+Reconstruyendo el estado previo a cada cambio, la correlación en niveles sin
+`alquiler_real` ni `indice_lider` da **0,554 exacto**: el número que estaba
+publicado. **La deriva viene de ADR-0111, no de la reorganización de hoy** —que
+es demostrablemente neutral, su ponderado exacto se mueve 0,0009.
+
+Es decir: el informe mostró una validación vieja durante las tres altas.
+
+### Lo que falla en el proceso, no en el cálculo
+
+`CLAUDE.md` ya dice que hay que correr `validacion_externa.py` cuando se agrega
+o cambia un indicador de una paramétrica, y explica por qué con un caso
+verificado: en julio, tras tres recalibraciones y dos series nuevas del ITCP, el
+r publicado contra el EPU siguió siendo el de la mañana.
+
+**La regla existía y se salteó igual, tres veces seguidas.** Una regla escrita
+que depende de acordarse no es una defensa: la primera vez que se olvida, nada
+falla y el número viejo se publica como si fuera nuevo.
+
+### Lo que el guard no cubre
 
 Detecta que **faltan componentes**, que es la forma más común de esta falla.
 **No detecta una correlación vieja** si el conjunto de componentes no cambió —
@@ -69,7 +80,7 @@ datos de red.
 Queda declarado como límite: este guard atrapa la desactualización estructural,
 no la numérica.
 
-## Números corregidos
+### Números corregidos
 
 | | |
 |---|---|

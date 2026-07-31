@@ -1,12 +1,17 @@
+---
+madr: 4
+id: '0012'
+estado: 'aceptado'
+fecha: 2026-06-30
+cinturon: 'politica'
+archivos: ['scripts/descargar_series.py', 'scripts/politica.py', 'scripts/publicar.py', 'docs/backfill-series.md']
+relacionado: ['0054', '0055']
+ambito: '`scripts/descargar_series.py` · `scripts/politica.py` · `scripts/publicar.py` · `docs/backfill-series.md`'
+---
+
 # ADR-0012 — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-06-30 |
-| **Ámbito** | `scripts/descargar_series.py` · `scripts/politica.py` · `scripts/publicar.py` · `docs/backfill-series.md` |
-
-## Contexto
+## Contexto y planteo del problema
 
 Muchos indicadores de política, vida, espíritu y los "avances" de gestión solo tenían
 **un punto** (el valor del mes), así que el modal los mostraba como gauge y no se veía
@@ -16,6 +21,10 @@ la serie mes a mes, pero tarda años en ser útil. Para varios indicadores, en c
 
 `docs/backfill-series.md` audita, indicador por indicador, qué se puede reconstruir,
 desde qué fuente y con qué factibilidad.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -34,20 +43,7 @@ punto de la serie reconstruida debe coincidir con el valor live** (verificado un
 - **`iaf_transferencias`**: variación real i.a. anual (RON Hacienda) deflactada por IPC
   (ver abajo). 9 puntos anuales (2017-2025).
 
-## De-hardcode del deflactor IPC (`iaf_transferencias`)
-
-Al reconstruir `iaf_transferencias` se descubrió que el colector deflactaba con
-`IPC_ANUAL` **hardcodeado** (`{2024: 1,1706, 2025: 0,383}`) y que el valor 2025 era una
-**proyección vieja**: el dic-dic **real** de INDEC es 0,315 (el 2024 hardcodeado sí
-coincidía). Eso violaba el principio del proyecto —*calcular desde la fuente oficial,
-nunca hardcodear*— y descuadraba el dato.
-
-Se agregó `politica._ipc_dicdic_indec()`, que deriva el IPC dic-dic por año del **índice
-oficial INDEC** (serie 148.3, base dic-2016). El colector lo usa con fallback a
-`IPC_ANUAL` solo si la API falla. La serie histórica usa el mismo IPC, así que card y
-serie quedan consistentes.
-
-## Consecuencias
+### Consecuencias
 
 - 6 indicadores pasan de gauge (1 punto) a línea + tabla + CSV; la trayectoria real queda
   visible (p. ej. la ventaja LLA−PJ: +16 post-elección → +3 → +13 → +5).
@@ -60,3 +56,18 @@ serie quedan consistentes.
 - **Pendiente:** `sentimiento_digital` (Trends) e `icc_utdt` (UTDT) son el próximo lote;
   el resto del roadmap está en `docs/backfill-series.md`. Los bloqueados (sin dato
   histórico) siguen acumulando hacia adelante.
+
+## Más información
+
+### De-hardcode del deflactor IPC (`iaf_transferencias`)
+
+Al reconstruir `iaf_transferencias` se descubrió que el colector deflactaba con
+`IPC_ANUAL` **hardcodeado** (`{2024: 1,1706, 2025: 0,383}`) y que el valor 2025 era una
+**proyección vieja**: el dic-dic **real** de INDEC es 0,315 (el 2024 hardcodeado sí
+coincidía). Eso violaba el principio del proyecto —*calcular desde la fuente oficial,
+nunca hardcodear*— y descuadraba el dato.
+
+Se agregó `politica._ipc_dicdic_indec()`, que deriva el IPC dic-dic por año del **índice
+oficial INDEC** (serie 148.3, base dic-2016). El colector lo usa con fallback a
+`IPC_ANUAL` solo si la API falla. La serie histórica usa el mismo IPC, así que card y
+serie quedan consistentes.

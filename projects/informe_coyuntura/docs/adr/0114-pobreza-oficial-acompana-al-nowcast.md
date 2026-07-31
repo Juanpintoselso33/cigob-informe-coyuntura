@@ -1,14 +1,20 @@
+---
+madr: 4
+id: '0114'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'vida'
+indicadores: [pobreza_nowcast, pobreza_indec]
+continua: ['0113']
+ambito: 'ITVC · `pobreza_nowcast` · serie acompañante `pobreza_indec`'
+---
+
 # ADR-0114 — La pobreza oficial acompaña al nowcast en el mismo gráfico
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · `pobreza_nowcast` · serie acompañante `pobreza_indec` |
-| **Fecha** | 2026-07-20 |
 | **Continúa** | ADR-0113 (alta del nowcast como contexto) |
 | **Sigue el patrón de** | ADR-0077 (`ipc_nucleo`) · ADR-0080 (`cuenta_corriente`) |
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0113 incorporó el Nowcast de Pobreza de la UTDT y dejó anotado lo que le
 falta: **historia**. Sus informes publicados arrancan en 2025, de modo que la
@@ -23,6 +29,10 @@ ya tiene un patrón para este caso: **serie acompañante**, la misma solución d
 ADR-0077 (el IPC núcleo junto al general) y ADR-0080 (la cuenta corriente junto
 al saldo comercial).
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 `pobreza_indec` (`64.2_POBLACION_NUA_0_0_34_74`, INDEC EPH continua, total de
@@ -36,7 +46,19 @@ oficial ni siquiera tiene card propia.
 La API entrega la proporción (0,282); se publica en puntos porcentuales para que
 las dos curvas compartan unidad en el mismo eje.
 
-## El recorte de la ventana la habría vaciado de sentido
+### Consecuencias
+
+- La serie oficial se ordena ascendente en el colector: la API la devuelve del
+  más nuevo al más viejo y el resto del proyecto asume el orden contrario.
+- El nowcast aporta 17 puntos mensuales (2025-01 → 2026-06) y el oficial 28
+  semestrales (2003-07 → 2026-01).
+- Que las dos curvas no coincidan exactamente es esperable y es parte de lo que
+  la card muestra: una proyecta un semestre móvil, la otra mide semestres
+  calendario cerrados.
+
+## Más información
+
+### El recorte de la ventana la habría vaciado de sentido
 
 Los gráficos del informe recortan las series a diciembre de 2023, que es la
 ventana del mandato. Aplicado a una serie **semestral**, ese recorte se lleva
@@ -56,13 +78,3 @@ El arco que ahora se ve:
 | jul-2024 (pico) | **52,9%** |
 | ene-2026 (último oficial) | **28,2%** |
 | ene-jun 2026 (nowcast) | **31,6%** |
-
-## Consecuencias
-
-- La serie oficial se ordena ascendente en el colector: la API la devuelve del
-  más nuevo al más viejo y el resto del proyecto asume el orden contrario.
-- El nowcast aporta 17 puntos mensuales (2025-01 → 2026-06) y el oficial 28
-  semestrales (2003-07 → 2026-01).
-- Que las dos curvas no coincidan exactamente es esperable y es parte de lo que
-  la card muestra: una proyecta un semestre móvil, la otra mide semestres
-  calendario cerrados.

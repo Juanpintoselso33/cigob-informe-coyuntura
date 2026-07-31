@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0007'
+estado: 'aceptado'
+fecha: 2026-06-27
+parametros: ['UNIDADES_LARGAS']
+archivos: ['descripciones.ts', 'datos.ts', 'IndicadorModal.astro', 'IndicadorTile.astro', 'overrides.css']
+relacionado: ['0053']
+ambito: 'Web · `descripciones.ts` · `datos.ts` (`UNIDADES_LARGAS`) · `IndicadorModal.astro` · `IndicadorTile.astro` · `overrides.css` · colectores'
+commit: '`6c1a7fb` (fichas); ampliación unidades/fuente/tile el mismo día'
+---
+
 # ADR-0007 — Las fichas de indicador explican QUÉ MIDE, no de dónde sale el dato
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-06-27 |
-| **Ámbito** | Web · `descripciones.ts` · `datos.ts` (`UNIDADES_LARGAS`) · `IndicadorModal.astro` · `IndicadorTile.astro` · `overrides.css` · colectores |
-| **Commit** | `6c1a7fb` (fichas); ampliación unidades/fuente/tile el mismo día |
-
-## Contexto
+## Contexto y planteo del problema
 
 El modal de cada indicador muestra varios campos: el **"qué es"** y **"qué aporta"**
 (de `descripciones.ts`), más **Fuente**, **Frecuencia**, **Tipo de dato** y, cuando
@@ -19,6 +24,15 @@ caso más flagrante era reservas netas: *"neto estricto de la planilla SDDS +
 depósitos del Tesoro + Bopreal a 12m, todo de datos oficiales (planilla SDDS y
 balance del BCRA)"* — eso es plumbing, no concepto. El usuario lo marcó: *"explica
 el cálculo, no el scraping"*.
+
+## Opciones consideradas
+
+- **Dejar la fuente/mecánica en el "qué es"** (statu quo). Rechazada: duplica el
+  campo Fuente y "Cómo se calcula", y enturbia el concepto con plumbing.
+- **Quitar también las aclaraciones de proxy.** Rechazada: el proxy es información
+  conceptual (no es lo mismo medir algo directo que aproximarlo); ocultarlo
+  engañaría al lector.
+- **"Qué es" = solo concepto; el resto en sus campos.** Elegida.
 
 ## Decisión
 
@@ -59,16 +73,7 @@ El mismo principio (sin plumbing en lo visible) se aplica a los demás campos de
   en el modal. Así una ficha conceptual no estira la card. Las descripciones se
   mantienen concisas (1–2 líneas).
 
-## Opciones consideradas
-
-- **Dejar la fuente/mecánica en el "qué es"** (statu quo). Rechazada: duplica el
-  campo Fuente y "Cómo se calcula", y enturbia el concepto con plumbing.
-- **Quitar también las aclaraciones de proxy.** Rechazada: el proxy es información
-  conceptual (no es lo mismo medir algo directo que aproximarlo); ocultarlo
-  engañaría al lector.
-- **"Qué es" = solo concepto; el resto en sus campos.** Elegida.
-
-## Consecuencias
+### Consecuencias
 
 - Pasada completa sobre las 32 fichas (commit `6c1a7fb`): se sacaron los tags de
   fuente del "qué es" (INDEC, CEPA, CICCRA, CAFAM, UTDT, InfoLeg, RIPTE/CBT, etc.)

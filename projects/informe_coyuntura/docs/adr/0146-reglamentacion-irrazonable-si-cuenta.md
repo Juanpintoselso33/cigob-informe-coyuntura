@@ -1,12 +1,20 @@
+---
+madr: 4
+id: '0146'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+ambito: 'cinturón político (ITCP) · bloque judicial · regla de codificación'
+---
+
 # ADR-0146 — «Reglamentación irrazonable» sí cuenta como veto de constitucionalidad
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP) · bloque judicial · regla de codificación
 - **Resuelve**: la decisión editorial abierta en ADR-0131, marcada allí como
   «la decisión de codificación más importante del set»
 
-## La pregunta
+## Contexto y planteo del problema
+
+### La pregunta
 
 La primera pasada sobre los 17 documentos del universo dejó **un dudoso**: un
 fallo federal de nov-2024 que anula la Resolución 3132/2024 del Ministerio de
@@ -19,7 +27,13 @@ declaración expresa de inconstitucionalidad?
 No es una pregunta menor: **es el único caso incluido de todo el universo.** Si
 no cuenta, el indicador mide cero en treinta y un meses.
 
-## Resolución: sí cuenta
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Más información
+
+### Resolución: sí cuenta
 
 **1. El propio SAIJ lo indexó como control de constitucionalidad.** Los
 descriptores del fallo son «Reglamentación de la ley, control de razonabilidad,
@@ -41,7 +55,7 @@ tribunales argentinos invalidan reglamentos del Ejecutivo.** Exigir la fórmula
 norma del Ejecutivo nacional de este mandato fue invalidada por un tribunal. Qué
 artículo invocó el juez para hacerlo es doctrina, no fenómeno.
 
-## La misma regla resuelve el otro caso, en sentido contrario
+### La misma regla resuelve el otro caso, en sentido contrario
 
 El segundo pendiente —un fallo de may-2024 sobre el art. 80 LCT donde la
 demandada invocó el DNU 70/2023— **se mantiene excluido**, porque sus
@@ -53,7 +67,7 @@ discrimina y no es un racional armado para llegar a un resultado.
 
 Universo final de la primera pasada: **1 incluir · 16 excluir · 0 dudosos.**
 
-## Dos hallazgos de la revisión que hay que registrar
+### Dos hallazgos de la revisión que hay que registrar
 
 **Los sumarios de SAIJ están truncados en el origen.** Los dos casos revisados
 cortan a mitad de oración a los ~248 caracteres («…es una reglamentación
@@ -68,7 +82,7 @@ permite recuperar un caso puntual. La primera pasada **no guardó identificadore
 y hubo que reconstruir el universo entero para volver a dos casos. Ya está
 anotado en el registro y los dos casos revisados llevan su número.
 
-## Lo que esto NO resuelve
+### Lo que esto NO resuelve
 
 Sigue abierta la otra decisión: **con un caso en treinta y un meses, ¿el ITCP
 puede alojar un indicador de evento** que pasa la mayoría de los meses sin

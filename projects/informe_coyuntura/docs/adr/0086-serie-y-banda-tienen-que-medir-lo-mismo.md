@@ -1,14 +1,21 @@
+---
+madr: 4
+id: '0086'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'gestion'
+indicadores: [rigi_inversiones, validacion_externa]
+corrige: ['0085']
+relacionado: ['0087']
+ambito: '`rigi_inversiones` · reconstrucción histórica del ITCG · `validacion_externa`'
+---
+
 # ADR-0086 — La serie de un indicador tiene que medir lo mismo que puntúa su banda
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | `rigi_inversiones` · reconstrucción histórica del ITCG · `validacion_externa` |
-| **Fecha** | 2026-07-18 |
 | **Corrige** | ADR-0085 (atribuyó la correlación +1,000 del ITCG a una causa equivocada) |
 | **Familia** | ADR-0082 (quinto caso del mismo error) |
 
-## El hecho
+## Contexto y planteo del problema
 
 La serie de `rigi_inversiones` guardaba el pipeline de inversiones en
 **millones de dólares** —31.192 en el último punto—, mientras las bandas del
@@ -28,34 +35,9 @@ En la práctica, la serie del ITCG venía viendo esto:
 Un **escalón binario** entre el piso y el techo, que no ocurrió: el indicador
 real se movió dentro de un rango estrecho y bajo.
 
-## Por qué pasó desapercibido
+## Opciones consideradas
 
-Porque la divergencia estaba **declarada** — como excepción del gate G3:
-
-> `"rigi_inversiones": "card = % de la meta; serie = monto acumulado en M USD"`
-
-La excepción es legítima **para lo que el G3 vigila**, que es la frescura de la
-card contra el último punto de su serie. Lo que nadie advirtió es que esa misma
-serie alimenta otra cosa: la reconstrucción histórica del índice. Una excepción
-correcta en un consumidor se volvió un error silencioso en el otro.
-
-Es la forma general del problema y conviene nombrarla: **declarar una
-divergencia no la resuelve, sólo la documenta para un lector**. Si hay dos
-consumidores del mismo dato, la excepción tiene que evaluarse contra los dos.
-
-## Impacto medido
-
-| | |
-|---|---|
-| desvío máximo de la serie reconstruida del ITCG | **5,4 puntos** |
-| desvío medio | 1,44 puntos |
-| ITCG ↔ Merval USD (niveles) | 0,766 → **0,748** |
-| pares "altos" de la matriz publicada que involucraban al indicador | **6 de 26** |
-
-Y el hallazgo más incómodo: **el par de correlación +1,000 que ADR-0085 explicó
-como artefacto de contadores acumulados era, en realidad, este bug.** La
-explicación publicada era plausible, estaba bien argumentada y era falsa. Al
-quitar el indicador, el par desaparece.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -90,7 +72,7 @@ diferencias chicas y legítimas. Lo que se busca es una diferencia de
 **magnitud**, que es de otro orden. Un segundo test exige que la exclusión siga
 declarada con su motivo, para que borrarla no sea silencioso.
 
-## Consecuencias
+### Consecuencias
 
 - ITCG: 14 indicadores en la matriz, 64 pares, \|r\| medio 0,492 en niveles y
   **0,137 en cambios** (1,6% de pares altos, contra el 4% que publicaba ADR-0085).
@@ -101,9 +83,40 @@ declarada con su motivo, para que borrarla no sea silencioso.
   —medir también sobre primeras diferencias— era correcta y de hecho es lo que
   habría que haber mirado antes de explicar el +1,000.
 
-## Limitación declarada
+## Más información
+
+### Limitaciones
 
 La serie del pipeline RIGI en dólares **no se reconstruye como porcentaje hacia
 atrás**. Podría hacerse (el denominador está en la misma fuente), y hasta que se
 haga el ITCG tiene 13 componentes con historia comparable en lugar de 14. Se
 deja anotado como deuda, no como imposibilidad.
+
+### Por qué pasó desapercibido
+
+Porque la divergencia estaba **declarada** — como excepción del gate G3:
+
+> `"rigi_inversiones": "card = % de la meta; serie = monto acumulado en M USD"`
+
+La excepción es legítima **para lo que el G3 vigila**, que es la frescura de la
+card contra el último punto de su serie. Lo que nadie advirtió es que esa misma
+serie alimenta otra cosa: la reconstrucción histórica del índice. Una excepción
+correcta en un consumidor se volvió un error silencioso en el otro.
+
+Es la forma general del problema y conviene nombrarla: **declarar una
+divergencia no la resuelve, sólo la documenta para un lector**. Si hay dos
+consumidores del mismo dato, la excepción tiene que evaluarse contra los dos.
+
+### Impacto medido
+
+| | |
+|---|---|
+| desvío máximo de la serie reconstruida del ITCG | **5,4 puntos** |
+| desvío medio | 1,44 puntos |
+| ITCG ↔ Merval USD (niveles) | 0,766 → **0,748** |
+| pares "altos" de la matriz publicada que involucraban al indicador | **6 de 26** |
+
+Y el hallazgo más incómodo: **el par de correlación +1,000 que ADR-0085 explicó
+como artefacto de contadores acumulados era, en realidad, este bug.** La
+explicación publicada era plausible, estaba bien argumentada y era falsa. Al
+quitar el indicador, el par desaparece.

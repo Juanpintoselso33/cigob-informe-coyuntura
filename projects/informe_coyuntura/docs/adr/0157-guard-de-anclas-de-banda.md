@@ -1,12 +1,18 @@
+---
+madr: 4
+id: '0157'
+estado: 'aceptado'
+fecha: 2026-07-30
+archivos: ['web/src/lib/fichas.ts']
+ambito: 'capa de texto público (`web/src/lib/fichas.ts`) + guard nuevo'
+---
+
 # ADR-0157 — Guard de anclas de banda, y un mapeo público que estaba mal
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-30
-- **Ámbito**: capa de texto público (`web/src/lib/fichas.ts`) + guard nuevo
 - **Relacionados**: ADR-0156 (misma familia: texto público que caduca), el guard
   de pesos (`test_fichas_pesos.py`), ADR-0021 (puntaje interpolado)
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0156 cerró la deixis temporal y dejó declarado lo que NO cubría: **las anclas
 de banda seguían sin guard**. El editor preguntó por qué. No había motivo, sólo
@@ -15,6 +21,10 @@ que no estaba hecho.
 Es la misma clase de problema que los pesos, y con el mismo riesgo: este proyecto
 recalibra anclas seguido —hay ADRs enteros dedicados a eso (0050, 0058/0059,
 0061, 0063)— y el texto público que las publica se edita a mano.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -39,7 +49,18 @@ Dos detalles de diseño:
   formato de `fichas.ts` y el parseo deja de encontrar bandas, los otros tres
   pasarían vacíos.
 
-## El guard encontró un error público en su primera corrida
+### Consecuencias
+
+- 48 indicadores con bandas y ficha quedan cruzados contra el motor en cada
+  corrida de tests.
+- Los 5 sin ficha son los ocultos del snapshot, que por diseño no la tienen.
+- **Lo que sigue sin guard**, y se declara: los pesos de dimensión citados en
+  prosa («la dimensión pesa 25% del total»), que `test_fichas_pesos.py` excluye a
+  propósito porque son otra afirmación. Es la tercera pieza de la familia.
+
+## Más información
+
+### El guard encontró un error público en su primera corrida
 
 `gobernadores_alineamiento` no publicaba sus bandas, y en su lugar la ficha
 afirmaba un mapeo **lineal** que el motor no usa:
@@ -63,12 +84,3 @@ publicaba una escala que llegaba a un extremo que el indicador no puede alcanzar
 
 Corregido: la ficha ahora publica las bandas reales y describe el mapeo como lo
 que es —por tramos, no lineal—, con el motivo del piso.
-
-## Consecuencias
-
-- 48 indicadores con bandas y ficha quedan cruzados contra el motor en cada
-  corrida de tests.
-- Los 5 sin ficha son los ocultos del snapshot, que por diseño no la tienen.
-- **Lo que sigue sin guard**, y se declara: los pesos de dimensión citados en
-  prosa («la dimensión pesa 25% del total»), que `test_fichas_pesos.py` excluye a
-  propósito porque son otra afirmación. Es la tercera pieza de la familia.

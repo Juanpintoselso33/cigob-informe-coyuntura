@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0058'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'politica'
+indicadores: [ratio_dnu, poder_legislativo]
+relacionado: ['0036', '0045', '0052', '0060']
+superado_parcialmente_por: ['0059']
+ambito: 'Cinturón política · ITCP · `ratio_dnu` · dimensión `poder_legislativo`'
+---
+
 # ADR-0058 — ratio_dnu: ventana móvil de 365 días (reemplaza al acumulado del año calendario)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-15 |
-| **Ámbito** | Cinturón política · ITCP · `ratio_dnu` · dimensión `poder_legislativo` |
-| **Precedentes directos** | ADR-0036 (incorpora ratio_dnu a la paramétrica) · ADR-0052 (mismo defecto, corregido en `movilizacion_cepa` sacándolo del tablero) · ADR-0045 (recalibración de bandas por saturación, mismo procedimiento) |
-
-## Contexto
+## Contexto y planteo del problema
 
 `ratio_dnu` (DNUs dictados / leyes sancionadas, InfoLeg) se calculaba desde
 ADR-0036 como un **acumulado del año calendario en curso**: `count(DNUs,
@@ -34,6 +39,13 @@ en vez de "desde el 1° de enero" es el mismo mecanismo, no una fuente nueva.
 Es además la norma en su propia dimensión: `eficacia_legislativa` y
 `comisiones_caidas` ya usan ventana móvil de 365 días sobre la misma familia
 de fuentes públicas (HCDN CKAN); `ratio_dnu` era la excepción.
+
+## Opciones consideradas
+
+- Sacar `ratio_dnu` del tablero, como `movilizacion_cepa`
+- Dejarlo como acumulado YTD
+- Recalibrar las anclas sin cambiar la ventana
+- Mantener las anclas viejas post-cambio de ventana
 
 ## Decisión
 
@@ -90,7 +102,23 @@ Anclas nuevas (menor = mejor, tramos extremos abiertos):
 
 Todas las bandas quedan pobladas con la serie real.
 
-## Opciones consideradas
+### Consecuencias
+
+- `ratio_dnu` deja de resetear en enero: cada corrida mensual produce un
+  valor propio, comparable con el mes anterior.
+- La serie histórica (`output/series/politica.csv`) pasa de 7 puntos anuales
+  a ~32 puntos mensuales tras la regeneración con este ADR.
+- El puntaje del indicador cambia materialmente para prácticamente toda la
+  serie histórica (antes clavado en 10-40 casi siempre; ahora discrimina
+  sobre el rango real) — efecto de metodología, no de coyuntura. La
+  dimensión `poder_legislativo` y el ITCP se regeneran en la misma corrida
+  scoped (`descargar_series.py --cinturon politica` + `validacion_externa.py`
+  + `generar_informe.py` + `publicar.py` + `gate_calidad.py` + pytest).
+- `_infoleg_session_count` cambia de firma (`year: int` → `desde: date,
+  hasta: date`); no tiene otros llamadores fuera de `politica.py` y
+  `descargar_series.py` (verificado).
+
+## Pros y contras de las opciones
 
 ### Sacar `ratio_dnu` del tablero, como `movilizacion_cepa`
 
@@ -119,7 +147,13 @@ Rechazada: habría dejado 31/32 meses reales en las dos bandas del piso, la
 misma saturación que ADR-0045 corrigió para `comisiones_caidas` — cambiar la
 ventana sin recalibrar solo desplaza el problema, no lo resuelve.
 
-## Limitaciones
+## Más información
+
+### Precedentes directos
+
+ADR-0036 (incorpora ratio_dnu a la paramétrica) · ADR-0052 (mismo defecto, corregido en `movilizacion_cepa` sacándolo del tablero) · ADR-0045 (recalibración de bandas por saturación, mismo procedimiento)
+
+### Limitaciones
 
 - Las anclas 1,5/2,0/3,0/4,5 son calibración contra la serie observada (32
   meses), no un umbral institucional — deben someterse al mismo stress test
@@ -130,19 +164,3 @@ ventana sin recalibrar solo desplaza el problema, no lo resuelve.
   indicador como su serie histórica hasta adaptarse.
 - Identificar DNU por la frase "necesidad y urgencia" sigue siendo una
   aproximación (limitación heredada, no introducida por este ADR).
-
-## Consecuencias
-
-- `ratio_dnu` deja de resetear en enero: cada corrida mensual produce un
-  valor propio, comparable con el mes anterior.
-- La serie histórica (`output/series/politica.csv`) pasa de 7 puntos anuales
-  a ~32 puntos mensuales tras la regeneración con este ADR.
-- El puntaje del indicador cambia materialmente para prácticamente toda la
-  serie histórica (antes clavado en 10-40 casi siempre; ahora discrimina
-  sobre el rango real) — efecto de metodología, no de coyuntura. La
-  dimensión `poder_legislativo` y el ITCP se regeneran en la misma corrida
-  scoped (`descargar_series.py --cinturon politica` + `validacion_externa.py`
-  + `generar_informe.py` + `publicar.py` + `gate_calidad.py` + pytest).
-- `_infoleg_session_count` cambia de firma (`year: int` → `desde: date,
-  hasta: date`); no tiene otros llamadores fuera de `politica.py` y
-  `descargar_series.py` (verificado).

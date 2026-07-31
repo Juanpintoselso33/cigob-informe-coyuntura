@@ -1,14 +1,18 @@
+---
+madr: 4
+id: '0074'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'macro'
+indicadores: [idc, credito_privado]
+relacionado: ['0022', '0028', '0071']
+ambito: 'Cinturón macro · ITCM · dimensión Capacidad y costo del financiamiento · `idc` · `credito_privado`'
+origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 4'
+---
+
 # ADR-0074 — El crédito otorgado deja de pesar un tercio de la capacidad de prestar
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón macro · ITCM · dimensión Capacidad y costo del financiamiento · `idc` · `credito_privado` |
-| **Fecha** | 2026-07-18 |
-| **Precedentes directos** | ADR-0022 (crédito privado real como señal no redundante) · ADR-0028 (construcción del IdC) · ADR-0071 (entrada del costo de financiamiento, que dejó este rebalanceo explícitamente pendiente) |
-| **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 4 |
-
-## Contexto
+## Contexto y planteo del problema
 
 La dimensión repartía así sus cuatro componentes: reservas 34%, **IdC 30%**,
 costo del financiamiento 25%, **crédito privado 11%**. La capacidad de prestar
@@ -27,6 +31,10 @@ dos miradas del mismo fenómeno —el financiamiento bancario al sector privado�
 una por el lado de la condición y otra por el del resultado, sin evidencia de
 que una mande sobre la otra.
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 Repartir el 41% conjunto casi en partes iguales:
@@ -41,7 +49,7 @@ Repartir el 41% conjunto casi en partes iguales:
 Reservas y costo quedan intactos: la decisión es entre esos dos componentes,
 no una redistribución de toda la dimensión.
 
-## Consecuencias
+### Consecuencias
 
 **Hoy no mueve nada: +0,014 puntos de ITCM.** El IdC puntúa 52,0 y el crédito
 53,0 — con los dos casi empatados, el reparto entre ellos es indiferente. El
@@ -63,7 +71,13 @@ condiciones de fondeo se mantenían en torno a lo típico— el reparto viejo
 **subrepresentaba sistemáticamente el hecho realizado** y sobrerrepresentaba la
 condición. El índice leía menos expansión crediticia de la que hubo.
 
-## Limitaciones declaradas
+## Más información
+
+### Precedentes directos
+
+ADR-0022 (crédito privado real como señal no redundante) · ADR-0028 (construcción del IdC) · ADR-0071 (entrada del costo de financiamiento, que dejó este rebalanceo explícitamente pendiente)
+
+### Limitaciones
 
 - Los dos indicadores siguen midiendo el mismo fenómeno desde ángulos
   distintos: su correlación no es cero y el 41% conjunto tiene algo de

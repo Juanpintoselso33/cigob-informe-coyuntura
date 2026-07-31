@@ -1,13 +1,20 @@
+---
+madr: 4
+id: '0061'
+estado: 'aceptado'
+nota_estado: 'Aceptado · supersede ADR-0050'
+fecha: 2026-07-15
+cinturon: 'politica'
+indicadores: [eficacia_legislativa, poder_legislativo]
+supersede: ['0050']
+relacionado: ['0045', '0059', '0070']
+complementado_por: ['0062', '0063']
+ambito: 'Cinturón política · ITCP · `eficacia_legislativa` · dimensión `poder_legislativo`'
+---
+
 # ADR-0061 — eficacia_legislativa: cohorte madura en vez de ventana compartida, anclas contra benchmark histórico externo
 
-| | |
-|---|---|
-| **Estado** | Aceptado · supersede ADR-0050 |
-| **Ámbito** | Cinturón política · ITCP · `eficacia_legislativa` · dimensión `poder_legislativo` |
-| **Fecha** | 2026-07-15 |
-| **Precedentes directos** | ADR-0050 (superado) · ADR-0059 (mismo criterio de benchmark externo, aplicado hoy mismo a ratio_dnu) · ADR-0045 (recalibración válida de comisiones_caidas, patrón que ADR-0050 invocó sin verificar) |
-
-## Contexto
+## Contexto y planteo del problema
 
 `eficacia_legislativa` mide % de proyectos del Poder Ejecutivo aprobados.
 ADR-0050 diagnosticó correctamente un defecto real en la métrica original:
@@ -37,6 +44,12 @@ Con un trámite típico histórico de 63-112 días, un proyecto publicado en
 cualquiera de los primeros ~9-10 meses de una ventana de 12 meses tiene
 margen de sobra para completarse — el sesgo de ventana compartida de
 ADR-0050 era real, pero mucho menor al que esa ADR asumió sin verificar.
+
+## Opciones consideradas
+
+- Mantener la ventana compartida y solo re-recalibrar sus anclas
+- Anclas calibradas contra el rango observado de esta gestión (patrón ADR-0050/ADR-0058)
+- Mantener la cohorte pero fijar las anclas antiguas 5/15/35/55 (pre-ADR-0050)
 
 ## Decisión
 
@@ -91,7 +104,28 @@ Directorio Legislativo estuvo, en materia de éxito legislativo del
 Ejecutivo, tan por debajo del resto como esta gestión** — eso es
 exactamente lo que el indicador debe mostrar.
 
-## Opciones consideradas
+### Consecuencias
+
+- `fetch_eficacia_legislativa()` y `fetch_eficacia_serie()` cambian de
+  fórmula (cohorte madura, no ventana compartida) — nuevos campos
+  `cohorte_desde`/`cohorte_hasta`/`dias_madurado_min` en el indicador
+  publicado, reemplazan a `ventana_dias` (que describía la semántica vieja).
+- `BANDAS_ITCP["eficacia_legislativa"]` cambia de 1/3/5/7 a 50/30/15/5,
+  ancladas al benchmark histórico externo de Directorio Legislativo.
+- El puntaje de `eficacia_legislativa` para el valor vigente cambia
+  materialmente — la dimensión `poder_legislativo` y el ITCP se regeneran
+  en la misma corrida scoped, con el fix de ADR-0060 (generar_informe.py ya
+  recalcula desde el crudo, no hace falta re-correr el colector solo por
+  el cambio de anclas — sí hace falta correrlo porque también cambió la
+  FÓRMULA del indicador, que si depende de red).
+- Nuevos tests: `tests/test_politica_cohesion.py` (cohorte madura,
+  proyecto demasiado reciente excluido) y
+  `tests/test_descargar_series_eficacia.py` (reproducibilidad histórica).
+- ADR-0050 queda superado; se conserva como registro de la decisión
+  anterior (diagnóstico del sesgo estructural correcto, magnitud de la
+  recalibración incorrecta por falta de benchmark externo).
+
+## Pros y contras de las opciones
 
 ### Mantener la ventana compartida y solo re-recalibrar sus anclas
 
@@ -121,7 +155,13 @@ pre-paramétrica, nunca validadas". Se prefirió derivar anclas nuevas
 directamente de los tramos reales de Directorio Legislativo en vez de
 reflotar un número sin trazabilidad.
 
-## Limitaciones
+## Más información
+
+### Precedentes directos
+
+ADR-0050 (superado) · ADR-0059 (mismo criterio de benchmark externo, aplicado hoy mismo a ratio_dnu) · ADR-0045 (recalibración válida de comisiones_caidas, patrón que ADR-0050 invocó sin verificar)
+
+### Limitaciones
 
 - Las anclas (50/30/15/5) son una **estimación razonada** a partir de los
   tramos de Directorio Legislativo, no una calibración estadística
@@ -138,24 +178,3 @@ reflotar un número sin trazabilidad.
   ya publicado no se revisa retroactivamente (ver diseño de
   `fetch_eficacia_serie`), así que la serie es reproducible pero
   conservadora respecto del "éxito eventual" total de cada cohorte.
-
-## Consecuencias
-
-- `fetch_eficacia_legislativa()` y `fetch_eficacia_serie()` cambian de
-  fórmula (cohorte madura, no ventana compartida) — nuevos campos
-  `cohorte_desde`/`cohorte_hasta`/`dias_madurado_min` en el indicador
-  publicado, reemplazan a `ventana_dias` (que describía la semántica vieja).
-- `BANDAS_ITCP["eficacia_legislativa"]` cambia de 1/3/5/7 a 50/30/15/5,
-  ancladas al benchmark histórico externo de Directorio Legislativo.
-- El puntaje de `eficacia_legislativa` para el valor vigente cambia
-  materialmente — la dimensión `poder_legislativo` y el ITCP se regeneran
-  en la misma corrida scoped, con el fix de ADR-0060 (generar_informe.py ya
-  recalcula desde el crudo, no hace falta re-correr el colector solo por
-  el cambio de anclas — sí hace falta correrlo porque también cambió la
-  FÓRMULA del indicador, que si depende de red).
-- Nuevos tests: `tests/test_politica_cohesion.py` (cohorte madura,
-  proyecto demasiado reciente excluido) y
-  `tests/test_descargar_series_eficacia.py` (reproducibilidad histórica).
-- ADR-0050 queda superado; se conserva como registro de la decisión
-  anterior (diagnóstico del sesgo estructural correcto, magnitud de la
-  recalibración incorrecta por falta de benchmark externo).

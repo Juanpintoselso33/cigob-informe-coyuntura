@@ -1,15 +1,20 @@
+---
+madr: 4
+id: '0077'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'macro'
+indicadores: [ipc_total, ipc_nucleo]
+relacionado: ['0022', '0080']
+ambito: 'Cinturón macro · `ipc_total` · serie acompañante `ipc_nucleo`'
+origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · observación 10'
+---
+
 # ADR-0077 — El IPC general se lee junto al núcleo
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón macro · `ipc_total` · serie acompañante `ipc_nucleo` |
-| **Fecha** | 2026-07-18 |
-| **Precedentes directos** | ADR-0022 / feedback de tablero (ningún cinturón publica cards de contexto) · patrón de series comparadas del TCRM |
-| **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · observación 10 |
 | **Ampliado** | 18-jul-2026, tras revisión adversarial externa: se evalúa la pregunta de medición que la versión original no había evaluado |
 
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría señaló que **un mes de corrección tarifaria y uno de núcleo alta
 puntúan igual y significan lo opuesto**: el IPC general mezcla precios
@@ -22,29 +27,7 @@ cinturón publica cards de contexto** — un indicador que no integra su índice
 oculta, se sigue recolectando pero no se muestra. Agregar una card de núcleo
 habría sido la excepción a una regla que costó trabajo emparejar.
 
-## Decisión
-
-El núcleo entra como **serie acompañante dentro del modal del IPC**, no como
-card propia: al abrir el indicador de inflación, el gráfico muestra **dos
-curvas, general y núcleo**, sobre el mismo eje.
-
-Es el patrón que el tablero ya usa para el TCRM, donde el multilateral se
-grafica junto a los bilaterales de Brasil y Estados Unidos tal como lo presenta
-el propio BCRA. Resuelve la observación —el lector puede ver si un mes de
-inflación alta fue tarifas o núcleo— sin crear una card de contexto ni tocar la
-puntuación.
-
-- Fuente: INDEC, IPC Núcleo Nacional (base dic-2016), serie
-  `148.3_INUCLEONAL_DICI_M_19`.
-- Transformación: variación mensual derivada del nivel, la misma construcción
-  que ya se usa para `ipc_total`, de modo que las dos curvas sean comparables
-  punto a punto.
-- Serie de **31 puntos desde dic-2023**.
-
-**El núcleo no puntúa.** No entra al ITCM, no tiene bandas y no altera ningún
-peso. Es material de lectura para interpretar el indicador que sí puntúa.
-
-## La pregunta de medición, evaluada (ampliación 18-jul-2026)
+### La pregunta de medición, evaluada (ampliación 18-jul-2026)
 
 La revisión adversarial externa hizo una objeción de proceso que **es correcta y
 se acepta**: la versión original de este ADR razonó "la auditoría pide una serie
@@ -111,13 +94,45 @@ medición, se midió, y la respuesta es conservar el general con la serie de
 núcleo visible al lado para que el lector pueda distinguir un mes de corrección
 tarifaria de uno de núcleo alta.
 
-## Consecuencias
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+El núcleo entra como **serie acompañante dentro del modal del IPC**, no como
+card propia: al abrir el indicador de inflación, el gráfico muestra **dos
+curvas, general y núcleo**, sobre el mismo eje.
+
+Es el patrón que el tablero ya usa para el TCRM, donde el multilateral se
+grafica junto a los bilaterales de Brasil y Estados Unidos tal como lo presenta
+el propio BCRA. Resuelve la observación —el lector puede ver si un mes de
+inflación alta fue tarifas o núcleo— sin crear una card de contexto ni tocar la
+puntuación.
+
+- Fuente: INDEC, IPC Núcleo Nacional (base dic-2016), serie
+  `148.3_INUCLEONAL_DICI_M_19`.
+- Transformación: variación mensual derivada del nivel, la misma construcción
+  que ya se usa para `ipc_total`, de modo que las dos curvas sean comparables
+  punto a punto.
+- Serie de **31 puntos desde dic-2023**.
+
+**El núcleo no puntúa.** No entra al ITCM, no tiene bandas y no altera ningún
+peso. Es material de lectura para interpretar el indicador que sí puntúa.
+
+### Consecuencias
 
 - El modal del IPC pasa de una curva a dos. Sin cambios en el índice ni en
   ninguna ficha de puntuación.
 - La regla de "sin cards de contexto" queda intacta.
 
-## Limitaciones declaradas
+## Más información
+
+### Precedentes directos
+
+ADR-0022 / feedback de tablero (ningún cinturón publica cards de contexto) · patrón de series comparadas del TCRM
+
+### Limitaciones
 
 - El núcleo del INDEC excluye regulados y estacionales, pero la frontera entre
   categorías es una decisión metodológica del organismo, no una propiedad

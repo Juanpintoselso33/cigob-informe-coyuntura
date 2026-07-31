@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0126'
+estado: 'aceptado'
+fecha: 2026-07-25
+cinturon: 'politica'
+indicadores: [poder_judicial, cobertura_judicial]
+complementado_por: ['0131']
+ambito: 'ITCP · dimensión `poder_judicial` (nueva) · `cobertura_judicial` (nuevo) · pesos entre dimensiones · banda · serie'
+origen: 'Aporte externo sobre el cinturón político (doc 260724), decisión del editor'
+---
+
 # ADR-0126 — El ITCP abre la dimensión del Poder Judicial
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCP · dimensión `poder_judicial` (nueva) · `cobertura_judicial` (nuevo) · pesos entre dimensiones · banda · serie |
-| **Fecha** | 2026-07-25 |
-| **Origen** | Aporte externo sobre el cinturón político (doc 260724), decisión del editor |
-
-## El planteo
+## Contexto y planteo del problema
 
 El aporte externo propuso ampliar el cinturón con dos bloques —Poder Judicial y
 Poder Económico— y listó nueve indicadores candidatos con su nivel de
@@ -19,33 +24,9 @@ en detalle al Congreso, de forma indirecta a los gobernadores, y no medía en
 absoluto al Poder Judicial**, que es un actor de veto de primer orden sobre la
 agenda de un gobierno.
 
-## Por dónde se empieza
+## Opciones consideradas
 
-De los seis indicadores judiciales propuestos, **cinco dependen de un protocolo
-de codificación de contenido que todavía no existe** —clasificar un fallo como
-favorable o adverso, decidir qué causa es "sensible"—. El propio aporte lo
-señala como su recomendación principal. Publicarlos sin ese protocolo dejaría el
-puntaje colgado del criterio de quien arme el informe cada mes.
-
-**Tasa de Cobertura de Vacantes es el único que es un conteo y no un juicio**, y
-por eso es el que entra.
-
-## La fuente que el aporte no tenía
-
-El aporte proponía scrapear el archivo de "Concursos" del Consejo de la
-Magistratura y adjuntaba un piloto de parser validado offline. **No hace falta.**
-
-El Ministerio de Justicia publica en `datos.jus.gob.ar`, en CSV estructurado:
-
-| dataset | filas | qué aporta |
-|---|---|---|
-| Magistrados de la Justicia Federal y Nacional | 1.002 | padrón de cargos con `cargo_vacante` SI/NO |
-| Designaciones de magistrados | 3.509 | eventos fechados desde 1976 |
-| Renuncias de magistrados | 1.676 | eventos fechados |
-
-El padrón trae exactamente la magnitud que el indicador necesita, sin scraping y
-sin HTML. **El scraper del Consejo sigue siendo útil para los otros cinco
-indicadores del bloque**, que sí necesitan datos de concursos.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -89,7 +70,55 @@ el precedente de ADR-0088.
 **ITCP 69,0 → 66,6** (tensión 3,1 → 3,3). El Poder Judicial entra como la
 dimensión más floja del cinturón.
 
-## La serie: 32 puntos, dic-2023 → jul-2026
+## Más información
+
+### Limitaciones
+
+- **Un solo indicador, y mide capacidad, no comportamiento.** Cobertura de
+  cargos no dice nada sobre cómo falla la Justicia, con qué velocidad resuelve
+  ni en qué sentido. Los cinco indicadores que faltan cubren eso y todos
+  esperan el protocolo de codificación.
+- **El total de cargos se mantiene constante** en la reconstrucción. Habilitar
+  tribunales nuevos movería el denominador; la serie es más confiable cerca de
+  la fecha del padrón que en su extremo inicial.
+- **Descontar las subrogancias por completo es discutible**: un juzgado con
+  subrogante funciona, aunque precariamente. Por eso la composición se publica.
+- **Los traslados no se procesan como evento propio.** Un traslado deja una
+  vacante y cubre otra y en el agregado se compensan, pero puede introducir
+  diferencias de un cargo en meses puntuales.
+- La reconstrucción hacia atrás **no se validó contra una foto histórica del
+  padrón**, porque no hay ninguna publicada. Las juras del padrón vigente no
+  sirven de contraste: ninguna es posterior a dic-2023.
+
+### Por dónde se empieza
+
+De los seis indicadores judiciales propuestos, **cinco dependen de un protocolo
+de codificación de contenido que todavía no existe** —clasificar un fallo como
+favorable o adverso, decidir qué causa es "sensible"—. El propio aporte lo
+señala como su recomendación principal. Publicarlos sin ese protocolo dejaría el
+puntaje colgado del criterio de quien arme el informe cada mes.
+
+**Tasa de Cobertura de Vacantes es el único que es un conteo y no un juicio**, y
+por eso es el que entra.
+
+### La fuente que el aporte no tenía
+
+El aporte proponía scrapear el archivo de "Concursos" del Consejo de la
+Magistratura y adjuntaba un piloto de parser validado offline. **No hace falta.**
+
+El Ministerio de Justicia publica en `datos.jus.gob.ar`, en CSV estructurado:
+
+| dataset | filas | qué aporta |
+|---|---|---|
+| Magistrados de la Justicia Federal y Nacional | 1.002 | padrón de cargos con `cargo_vacante` SI/NO |
+| Designaciones de magistrados | 3.509 | eventos fechados desde 1976 |
+| Renuncias de magistrados | 1.676 | eventos fechados |
+
+El padrón trae exactamente la magnitud que el indicador necesita, sin scraping y
+sin HTML. **El scraper del Consejo sigue siendo útil para los otros cinco
+indicadores del bloque**, que sí necesitan datos de concursos.
+
+### La serie: 32 puntos, dic-2023 → jul-2026
 
 El padrón es una **foto fechada**, no una serie. Se reconstruye moviéndose desde
 esa foto con los registros de designaciones y renuncias:
@@ -119,7 +148,7 @@ publica el Ministerio hoy —61,8% sobre el total, 63,9% sobre habilitados— es
 desactualizada respecto de la realidad. La serie lo corrige con los registros de
 designaciones, que sí están al día.
 
-## Las anclas
+### Las anclas
 
 Cortes conceptuales por nivel de cobertura de un cuerpo: **>90 completa · 80-90
 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica**.
@@ -133,21 +162,3 @@ que ADR-0045 prohíbe.
 
 El puntaje interpolado igual discrimina en todo el recorrido: **34,5 en el piso
 de may-2026 y 59,4 en dic-2023**, 25 puntos de amplitud.
-
-## Limitaciones declaradas
-
-- **Un solo indicador, y mide capacidad, no comportamiento.** Cobertura de
-  cargos no dice nada sobre cómo falla la Justicia, con qué velocidad resuelve
-  ni en qué sentido. Los cinco indicadores que faltan cubren eso y todos
-  esperan el protocolo de codificación.
-- **El total de cargos se mantiene constante** en la reconstrucción. Habilitar
-  tribunales nuevos movería el denominador; la serie es más confiable cerca de
-  la fecha del padrón que en su extremo inicial.
-- **Descontar las subrogancias por completo es discutible**: un juzgado con
-  subrogante funciona, aunque precariamente. Por eso la composición se publica.
-- **Los traslados no se procesan como evento propio.** Un traslado deja una
-  vacante y cubre otra y en el agregado se compensan, pero puede introducir
-  diferencias de un cargo en meses puntuales.
-- La reconstrucción hacia atrás **no se validó contra una foto histórica del
-  padrón**, porque no hay ninguna publicada. Las juras del padrón vigente no
-  sirven de contraste: ninguna es posterior a dic-2023.

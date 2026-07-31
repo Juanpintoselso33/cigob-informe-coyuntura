@@ -1,12 +1,16 @@
+---
+madr: 4
+id: '0011'
+estado: 'aceptado'
+fecha: 2026-06-30
+cinturon: 'gestion'
+archivos: ['scripts/gestion.py', 'scripts/publicar.py', 'descripciones.ts']
+ambito: '`scripts/gestion.py` · `scripts/publicar.py` · web (`descripciones.ts`)'
+---
+
 # ADR-0011 — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-06-30 |
-| **Ámbito** | `scripts/gestion.py` · `scripts/publicar.py` · web (`descripciones.ts`) |
-
-## Contexto
+## Contexto y planteo del problema
 
 El indicador `rigi_inversiones` (cinturón gestión) medía el avance del Régimen de
 Incentivo a Grandes Inversiones contando **Resoluciones de InfoLeg** con el texto
@@ -21,6 +25,10 @@ Sheet público** que se puede leer sin autenticación (gviz CSV): pestaña `data
 (una fila por proyecto aprobado, con provincia, empresa, sector e inversión) y
 pestaña `evaluacion` (agregados de los proyectos en evaluación). El sheet se mantiene
 actualizado (al lanzamiento: 16 proyectos / US$ 29.892M; a fin de junio: 17 / US$ 31.192M).
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -40,16 +48,7 @@ Reemplazar el proxy de InfoLeg por la **plataforma oficial** como fuente primari
 - **Fallback:** si el sheet no responde, cae al conteo "VPU" de InfoLeg, marcado
   `desactualizado=True`.
 
-## Por qué NO el conteo directo de proyectos
-
-Pasar el avance a "17 proyectos = 17%" haría **saltar la tensión de 6,9 a 8,3 por puro
-cambio de medición**, no por la realidad (el mismo trap mecánico que se evitó en otros
-indicadores). Un ratio real lo evita. Se descartó también `proyectos aprobados /
-presentados` (17/41 = 41,5%) por estar dominado por los proyectos chicos; la versión
-ponderada por monto es más fiel al fenómeno económico. (Decisión del usuario vía
-AskUserQuestion: puntúa la inversión, se muestran los proyectos.)
-
-## Consecuencias
+### Consecuencias
 
 - `rigi_inversiones`: avance 31% → **22,1%**, tensión 6,9 → **7,8**. Gestión 5,8 → 5,9.
 - Dato **oficial, estructurado y en vivo** (continuo), en vez de un proxy de conteo de
@@ -62,3 +61,14 @@ AskUserQuestion: puntúa la inversión, se muestran los proyectos.)
   **fecha de sanción** de la Resolución de cada proyecto (BO/normativa argentina.gob.ar),
   cacheada en `data/gestion/rigi_fechas.json` (se fetchea el BO solo para proyectos
   nuevos). 17 proyectos: US$ 211M (ene-2025) → US$ 31.192M (jun-2026).
+
+## Más información
+
+### Por qué NO el conteo directo de proyectos
+
+Pasar el avance a "17 proyectos = 17%" haría **saltar la tensión de 6,9 a 8,3 por puro
+cambio de medición**, no por la realidad (el mismo trap mecánico que se evitó en otros
+indicadores). Un ratio real lo evita. Se descartó también `proyectos aprobados /
+presentados` (17/41 = 41,5%) por estar dominado por los proyectos chicos; la versión
+ponderada por monto es más fiel al fenómeno económico. (Decisión del usuario vía
+AskUserQuestion: puntúa la inversión, se muestran los proyectos.)

@@ -1,13 +1,19 @@
+---
+madr: 4
+id: '0063'
+estado: 'aceptado'
+nota_estado: 'Aceptado · complementa ADR-0061/0062'
+fecha: 2026-07-15
+cinturon: 'politica'
+indicadores: [eficacia_legislativa]
+complementa: ['0061']
+continua: ['0062']
+ambito: 'Cinturón política · ITCP · `eficacia_legislativa`'
+---
+
 # ADR-0063 — eficacia_legislativa: los expedientes JGM (Jefatura de Gabinete) son del Ejecutivo — el Presupuesto era invisible
 
-| | |
-|---|---|
-| **Estado** | Aceptado · complementa ADR-0061/0062 |
-| **Ámbito** | Cinturón política · ITCP · `eficacia_legislativa` |
-| **Fecha** | 2026-07-15 |
-| **Precedentes directos** | ADR-0062 (fuente leyes-sancionadas, mismo día) |
-
-## Contexto
+## Contexto y planteo del problema
 
 Continuación de la auditoría de ADR-0062 (pregunta del usuario: "¿qué pasa
 con los que se aprobaron en menos de 12 meses?"). Al trazar las leyes de
@@ -34,6 +40,10 @@ El resto de los registros JGM (~630) son remisiones de decisiones
 administrativas (`TIPO: MENSAJE`) que el filtro de TIPO de ADR-0062 ya
 excluye correctamente.
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 `_RE_PE_EXP` pasa de `\d+-PE-\d{4}` a `\d+-(?:PE|JGM)-\d{4}`, y los fetch
@@ -45,7 +55,7 @@ Efecto en la cohorte vigente: el Presupuesto 2025 entra como fracaso —
 **3/17 = 17,6%** (antes 18,8%). Cuando la camada de sep-2025 madure, el
 Presupuesto 2026 entrará como éxito.
 
-## Consecuencias
+### Consecuencias
 
 - El indicador deja de ignorar la ley anual políticamente más pesada.
 - La serie histórica se regenera: cada punto suma el Presupuesto de su
@@ -58,3 +68,9 @@ Presupuesto 2026 entrará como éxito.
   (trade-off de la cohorte madura, ADR-0061). Si el ritmo legislativo del
   nuevo Congreso se sostiene, el indicador lo mostrará entre sep-2026 y
   feb-2027.
+
+## Más información
+
+### Precedentes directos
+
+ADR-0062 (fuente leyes-sancionadas, mismo día)

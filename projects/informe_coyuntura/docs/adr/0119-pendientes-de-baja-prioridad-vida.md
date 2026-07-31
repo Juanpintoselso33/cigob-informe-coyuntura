@@ -1,14 +1,25 @@
+---
+madr: 4
+id: '0119'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'vida'
+indicadores: [consumo_carne]
+ambito: 'ITVC · fichas públicas de `consumo_carne` y de los indicadores invertidos'
+origen: 'Auditoría de Vida Cotidiana, recomendaciones de baja prioridad'
+---
+
 # ADR-0119 — Los tres pendientes de baja prioridad del cinturón de vida
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · fichas públicas de `consumo_carne` y de los indicadores invertidos |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría de Vida Cotidiana, recomendaciones de baja prioridad |
 | **Cierra** | las 11 recomendaciones de la auditoría |
 
-## 1. Consumo de carne: la limitación es real y ahora tiene número
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Más información
+
+### 1. Consumo de carne: la limitación es real y ahora tiene número
 
 La auditoría dudaba de que la carne vacuna —consumo aparente— siguiera midiendo
 bienestar alimentario sin captar la sustitución hacia pollo y cerdo. Se
@@ -34,7 +45,7 @@ acompaña, así que el costo de esa distorsión es acotado.
 Se declara en la ficha con los números, que es lo que la auditoría pedía: la
 card ya decía "la sustitución no se captura" en abstracto; ahora dice cuánto.
 
-## 2. Notación de las fórmulas invertidas
+### 2. Notación de las fórmulas invertidas
 
 Cinco componentes son "al revés" (más mora, más informalidad, más subocupación,
 más victimización, más búsquedas de urgencia = peor). Su LaTeX pone la base de
@@ -47,7 +58,7 @@ para que, igual que en el resto, **por encima de 100 signifique mejora** —si h
 hay menos que en 2023, el cociente supera 100—. `mora_familias`, que además no
 declaraba estar invertida en su leyenda, ahora lo hace.
 
-## 3. Identificadores legado: no se renombran, y está bien
+### 3. Identificadores legado: no se renombran, y está bien
 
 `despacho_cemento` es en realidad el ISAC de construcción y `mortalidad_pymes`
 el IPI industrial. La auditoría pedía sanearlos **"en una futura migración de
@@ -60,7 +71,7 @@ tocaría las series, los CSV históricos, el snapshot y los mapeos, con riesgo
 real y cero ganancia para quien lee. Se deja, que es la decisión que la propia
 auditoría condicionaba a una migración mayor.
 
-## Estado de la auditoría
+### Estado de la auditoría
 
 Con esto, las **11 recomendaciones** quedan resueltas o declaradas: 4 de alta
 prioridad, 4 de media, 3 de baja. Ninguna abierta.

@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0101'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'gestion'
+indicadores: [privatizaciones]
+complementado_por: ['0129']
+ambito: 'ITCG · `privatizaciones` · modal del indicador'
+origen: 'Auditoría externa del cinturón de gestión (doc 2), punto 3.5'
+---
+
 # ADR-0101 — Privatizaciones publica la norma que respalda cada etapa
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCG · `privatizaciones` · modal del indicador |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría externa del cinturón de gestión (doc 2), punto 3.5 |
-
-## El planteo
+## Contexto y planteo del problema
 
 > "Es el **único indicador del set sin fuente en vivo** — depende de juicio del
 > analista de CIGOB sobre en qué etapa está cada empresa. Esto no lo invalida,
@@ -20,16 +25,9 @@ verificables "es apropiado porque evita que un anuncio cuente como avance — s�
 cuenta lo que tiene norma de respaldo en el Boletín Oficial. Es el criterio
 correcto para «promesa cumplida» vs. «promesa anunciada»".
 
-## El detalle existía; lo que faltaba era publicarlo
+## Opciones consideradas
 
-`data/gestion/privatizaciones_fechas.json` registra **cada transición de etapa
-con el acto del Boletín Oficial que la respalda**. La card publicaba la etapa de
-cada empresa —un número— pero no el mecanismo, el hito ni la norma.
-
-Es decir: el trabajo de fundamentación estaba hecho y quedaba puertas adentro,
-exactamente el mismo patrón que ADR-0093 encontró en la dimensión federal y
-ADR-0096 en la ficha de desregulación. **Tercera vez en dos días que la
-información que blindaba un indicador existía y vivía donde nadie la lee.**
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -65,7 +63,7 @@ también se muestra **cuándo el analista decidió ser más conservador que la
 norma**. Un lector que discrepe puede discutir el criterio concreto en vez de
 sospechar del número.
 
-## Guardia
+### Confirmación
 
 `test_privatizaciones_publica_la_norma_de_cada_etapa` exige que el detalle
 llegue al snapshot, que cubra a todas las empresas, que **ninguna quede sin
@@ -73,7 +71,9 @@ norma publicada**, que las etapas estén en 0-4 y que el promedio publicado se
 reproduzca desde el detalle. Si mañana se agrega una empresa sin respaldo
 documental, el pipeline se detiene.
 
-## Lo que este ADR no resuelve
+## Más información
+
+### Limitaciones
 
 - **Sigue sin haber fuente en vivo.** La etapa se asigna a mano y el registro se
   actualiza a mano. Lo que cambia es que ahora es auditable, no automático.
@@ -83,3 +83,14 @@ documental, el pipeline se detiene.
 - Las etapas intermedias (0,5 · 1,5 · 2,5) expresan situaciones a mitad de
   camino y **su asignación es de criterio**. Están respaldadas por norma, pero la
   decisión de llamar "2,5" a un proceso parcialmente adjudicado es del equipo.
+
+### El detalle existía; lo que faltaba era publicarlo
+
+`data/gestion/privatizaciones_fechas.json` registra **cada transición de etapa
+con el acto del Boletín Oficial que la respalda**. La card publicaba la etapa de
+cada empresa —un número— pero no el mecanismo, el hito ni la norma.
+
+Es decir: el trabajo de fundamentación estaba hecho y quedaba puertas adentro,
+exactamente el mismo patrón que ADR-0093 encontró en la dimensión federal y
+ADR-0096 en la ficha de desregulación. **Tercera vez en dos días que la
+información que blindaba un indicador existía y vivía donde nadie la lee.**

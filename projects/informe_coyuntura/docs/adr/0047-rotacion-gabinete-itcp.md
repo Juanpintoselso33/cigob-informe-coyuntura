@@ -1,12 +1,17 @@
+---
+madr: 4
+id: '0047'
+estado: 'aceptado'
+fecha: 2026-07-09
+cinturon: 'politica'
+indicadores: [fetch_rotacion_gabinete, cohesion_interna, fetch_rotacion_gabinete_serie]
+archivos: ['data/politica/gabinete_salidas.json', 'data/politica/gabinete_decretos_cache.json', 'scripts/politica.py', _detectar_salidas_gabinete_infoleg, 'scripts/itcp.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', '.github/workflows/data-pipeline.yml', 'tests/test_itcp.py', 'tests/test_descargar_series_rotacion.py']
+ambito: '`data/politica/gabinete_salidas.json` (nuevo, registro curado) · `data/politica/gabinete_decretos_cache.json` (nuevo, caché del detector) · `scripts/politica.py` (`fetch_rotacion_gabinete`, `_detectar_salidas_gabinete_infoleg`) · `scripts/itcp.py` (banda nueva + reponderación de `cohesion_interna`) · `scripts/descargar_series.py` (`fetch_rotacion_gabinete_serie`) · `scripts/validacion_externa.py` (ITCP_SERIES) · `.github/workflows/data-pipeline.yml` (git add) · capa web (datos/descripciones/formulas/fichas) · `tests/test_itcp.py`, `tests/test_descargar_series_rotacion.py`'
+---
+
 # ADR-0047 — rotacion_gabinete: la rotación ministerial entra al ITCP (pata ejecutiva de cohesión interna)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-09 |
-| **Ámbito** | `data/politica/gabinete_salidas.json` (nuevo, registro curado) · `data/politica/gabinete_decretos_cache.json` (nuevo, caché del detector) · `scripts/politica.py` (`fetch_rotacion_gabinete`, `_detectar_salidas_gabinete_infoleg`) · `scripts/itcp.py` (banda nueva + reponderación de `cohesion_interna`) · `scripts/descargar_series.py` (`fetch_rotacion_gabinete_serie`) · `scripts/validacion_externa.py` (ITCP_SERIES) · `.github/workflows/data-pipeline.yml` (git add) · capa web (datos/descripciones/formulas/fichas) · `tests/test_itcp.py`, `tests/test_descargar_series_rotacion.py` |
-
-## Contexto
+## Contexto y planteo del problema
 
 La dimensión "cohesión interna del oficialismo" (20% del ITCP, ADR-0036) era
 100% legislativa: `cohesion_bloque` (Diputados, 65%) y
@@ -29,6 +34,32 @@ decreto de aceptación de renuncia del BO, más 2 movimientos laterales
 reestructuraciones de la Ley de Ministerios (el número de carteras fue
 10→9→8→9→10→9). El mismo estudio prototipó un detector automático contra el
 buscador de InfoLeg con recall 11/11 sobre los 32 meses.
+
+## Opciones consideradas
+
+- **Detector 100% automático, sin curaduría** — descartada: contaría los
+  laterales (jun-2026 daría 2 salidas en vez de 1), fecharía por publicación
+  en BO (dos meses corridos de desfase en el borde) y no sabe clasificar
+  política vs. estructural. El costo real de la curaduría es bajísimo
+  (~4 salidas/año, cada una con semanas de cobertura mediática).
+- **Tasa de rotación (salidas 12m / cargos vigentes)** — descartada como
+  métrica principal: el denominador cambió 4 veces por decisiones del propio
+  gobierno; una fusión de ministerios subiría la tasa sin que haya más
+  salidas — mete adentro de la métrica la reestructuración que se quiso
+  separar. La forma de la curva es casi idéntica a la del conteo.
+- **Antigüedad promedio del gabinete** — descartada: inercial por
+  construcción (sube sola un mes por mes en calma), mezcla la señal de
+  crisis con el paso del tiempo y su caída depende de la antigüedad del
+  saliente (la eyección de un ministro nuevo casi no la mueve: Catalán).
+- **Incluir las secretarías de Presidencia con rango ministerial** —
+  descartada (ver universo); quedan documentadas en el registro y sumarlas
+  no cambia la forma de la curva (acentúa los mismos picos).
+- **Excluir el recambio post-electoral de la serie** — descartada (ver
+  polaridad): más grados de libertad del analista, menos declarabilidad.
+- **API REST de InfoLeg (datos.gob.ar)** como vía del detector — descartada:
+  hoy exige token (`{"error":"missing_token"}`); el buscador web funciona
+  sin credenciales con la misma mecánica de sesión ya usada por `ratio_dnu`
+  y `desregulacion_normativa`.
 
 ## Decisión
 
@@ -151,33 +182,7 @@ ADR-0036 intactos):
 El par legislativo conserva su ratio interno 65/35 ≈ 45/25; la pata
 ejecutiva entra con 30%.
 
-## Opciones consideradas
-
-- **Detector 100% automático, sin curaduría** — descartada: contaría los
-  laterales (jun-2026 daría 2 salidas en vez de 1), fecharía por publicación
-  en BO (dos meses corridos de desfase en el borde) y no sabe clasificar
-  política vs. estructural. El costo real de la curaduría es bajísimo
-  (~4 salidas/año, cada una con semanas de cobertura mediática).
-- **Tasa de rotación (salidas 12m / cargos vigentes)** — descartada como
-  métrica principal: el denominador cambió 4 veces por decisiones del propio
-  gobierno; una fusión de ministerios subiría la tasa sin que haya más
-  salidas — mete adentro de la métrica la reestructuración que se quiso
-  separar. La forma de la curva es casi idéntica a la del conteo.
-- **Antigüedad promedio del gabinete** — descartada: inercial por
-  construcción (sube sola un mes por mes en calma), mezcla la señal de
-  crisis con el paso del tiempo y su caída depende de la antigüedad del
-  saliente (la eyección de un ministro nuevo casi no la mueve: Catalán).
-- **Incluir las secretarías de Presidencia con rango ministerial** —
-  descartada (ver universo); quedan documentadas en el registro y sumarlas
-  no cambia la forma de la curva (acentúa los mismos picos).
-- **Excluir el recambio post-electoral de la serie** — descartada (ver
-  polaridad): más grados de libertad del analista, menos declarabilidad.
-- **API REST de InfoLeg (datos.gob.ar)** como vía del detector — descartada:
-  hoy exige token (`{"error":"missing_token"}`); el buscador web funciona
-  sin credenciales con la misma mecánica de sesión ya usada por `ratio_dnu`
-  y `desregulacion_normativa`.
-
-## Consecuencias
+### Consecuencias
 
 - La dimensión "cohesión interna" deja de ser unidimensional-legislativa:
   dos patas (Congreso 70% / Ejecutivo 30%). Los pesos entre dimensiones no

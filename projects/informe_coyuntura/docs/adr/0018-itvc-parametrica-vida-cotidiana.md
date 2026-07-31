@@ -1,10 +1,16 @@
+---
+madr: 4
+id: '0018'
+estado: 'aceptado'
+fecha: 2026-07-03
+cinturon: 'vida'
+relacionado: ['0067']
+origen: 'doc "ITVC — versión base 100" (Fundación CIGOB, 260702, `docs/260702 vida cotidiana finakl.docx`)'
+---
+
 # ADR-0018 — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 
-- **Fecha:** 2026-07-03
-- **Estado:** aceptada
-- **Origen:** doc "ITVC — versión base 100" (Fundación CIGOB, 260702, `docs/260702 vida cotidiana finakl.docx`)
-
-## Contexto
+## Contexto y planteo del problema
 
 Vida cotidiana se puntuaba con fórmulas de tensión ancladas por indicador
 (SCORING en `publicar.py`) promediadas en partes iguales. El doc 260702
@@ -13,6 +19,10 @@ nivel absoluto "bueno/malo" sino la **mejora o deterioro acumulado desde el
 arranque del mandato**. Mantiene las 5 dimensiones, los 12 indicadores y los
 pesos del diseño original (35/25/10/15/15); cambia solo el método de
 puntuación.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -49,7 +59,20 @@ puntuación.
    mora estable = acceso al crédito (sube); con mora disparada =
    sobreendeudamiento por necesidad (cae).
 
-## Mapeo componente → indicador
+### Consecuencias
+
+- Con datos de jul-2026: **ITVC = 92,0 → deterioro moderado → tensión 6,6**
+  (antes 3,5 con el promedio de fórmulas ancladas). El driver dominante es
+  I_EC = 31,7 (mora de familias ×5,5 desde la base); lo compensan ingresos
+  107,4 y motos 175,9. El score global sube ~0,8 puntos.
+- `recomputar_vida_y_global()` ya no promedia aportes: el score de vida sale
+  del ITVC y el global se repondera igual que antes.
+- Tests: `tests/test_itvc.py` (módulo) + reconciliación publicada en
+  `tests/test_publicar.py`.
+
+## Más información
+
+### Mapeo componente → indicador
 
 | Doc | Clave | Índice | Fuente de la base |
 |---|---|---|---|
@@ -69,7 +92,7 @@ puntuación.
 Contexto (no puntúa): `sentimiento_digital` (ventana Trends de 3 meses, sin
 línea base 2023 posible).
 
-## Excepciones y limitaciones declaradas
+### Excepciones y limitaciones declaradas
 
 - **Informalidad**: la serie trimestral pública (303.1) murió en 1T-2020; se
   usa la ANUAL (52.1) con base = año 2023 — actualiza una vez al año.
@@ -86,18 +109,7 @@ línea base 2023 posible).
   mora por línea, volver transitoriamente a deuda real sin corrección y
   declararlo (doc IV.2.3).
 
-## Consecuencias
-
-- Con datos de jul-2026: **ITVC = 92,0 → deterioro moderado → tensión 6,6**
-  (antes 3,5 con el promedio de fórmulas ancladas). El driver dominante es
-  I_EC = 31,7 (mora de familias ×5,5 desde la base); lo compensan ingresos
-  107,4 y motos 175,9. El score global sube ~0,8 puntos.
-- `recomputar_vida_y_global()` ya no promedia aportes: el score de vida sale
-  del ITVC y el global se repondera igual que antes.
-- Tests: `tests/test_itvc.py` (módulo) + reconciliación publicada en
-  `tests/test_publicar.py`.
-
-## Addendum — sweep del mismo día (2026-07-03)
+### Addendum — sweep del mismo día (2026-07-03)
 
 - **SNIC revivido**: el CSV oficial cambió a separador `;` (por eso el parser
   del colector estaba muerto desde 2026); ahora se detecta el separador. Trae

@@ -1,14 +1,19 @@
+---
+madr: 4
+id: '0053'
+estado: 'aceptado'
+fecha: 2026-07-13
+cinturon: 'macro'
+archivos: ['IndicadorModal.astro', 'metodologia/[id].astro', 'descripciones.ts', 'fichas.ts']
+relacionado: ['0007', '0009', '0051', '0054', '0055']
+ambito: 'IDM del ITCM · web (`IndicadorModal.astro`, `metodologia/[id].astro`, `descripciones.ts`, `fichas.ts`) · tests de display'
+---
+
 # ADR-0053 — Transparencia y agregados monetarios del IDM
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-13 |
-| **Ámbito** | IDM del ITCM · web (`IndicadorModal.astro`, `metodologia/[id].astro`, `descripciones.ts`, `fichas.ts`) · tests de display |
-| **Precedentes directos** | ADR-0007 (fichas conceptuales) · ADR-0009 (metodología del IDM) · ADR-0051 (sin cards de contexto) |
 | **Expediente** | `docs/bmad-output/implementation-artifacts/investigations/agregados-monetarios-itcm-investigation.md` |
 
-## Contexto
+## Contexto y planteo del problema
 
 Una revisión editorial del IDM planteó tres cuestiones:
 
@@ -77,6 +82,16 @@ El backtest comparó 30 observaciones mensuales entre diciembre de 2023 y mayo d
 La sustitución, por lo tanto, no sería una ampliación neutral. Cambiaría el
 constructo desde una comparación pesos/pesos a otra entre liquidez bimonetaria y
 demanda transaccional exclusivamente en pesos.
+
+## Opciones consideradas
+
+- Incorporar M3* directamente al IDM
+- Publicar M3* como card de contexto
+- Mostrar sólo pesos nominales
+- Usar `aporte_score` como contribución al ITCM
+- Hardcodear 30%, 26%, 7,8% y el aporte actual
+- Extraer un helper común de ponderaciones
+- Mantener la presentación fragmentada
 
 ## Decisión
 
@@ -155,7 +170,26 @@ tensión equivalente sobre 10 y se presenta separado, con una aclaración expres
 - La ausencia de un valor no se convierte en cero: las líneas que no puedan
   derivarse se omiten.
 
-## Opciones consideradas
+### Consecuencias
+
+- El IDM conserva exactamente su valor, puntaje, serie, bandas y peso efectivo.
+- La definición del M2 queda alineada con la metodología oficial de la variable
+  BCRA 197.
+- El lector puede reconciliar en una sola vista la incidencia del indicador en el
+  ITCM.
+- Los ajustes del analista y las renormalizaciones por faltantes quedan reflejados
+  mediante `puntaje_aplicado` y `peso_efectivo`.
+- `aporte_score` permanece disponible, pero inequívocamente separado del aporte
+  aritmético.
+- La presentación genérica beneficia también a ITCG, ITCP e ITVC, respetando la
+  semántica base 100 de este último.
+- Existe una pequeña duplicación deliberada de la derivación entre el modal y la
+  ficha metodológica; se cubre con tests de contrato de la capa pública.
+- No se ejecutan colectores ni se regeneran `informe.json`, `series.json` o
+  salidas históricas porque esta decisión no modifica datos ni metodología.
+- Este ADR complementa ADR-0007 y ADR-0009; no los reemplaza ni altera.
+
+## Pros y contras de las opciones
 
 ### Incorporar M3* directamente al IDM
 
@@ -198,21 +232,8 @@ regresiones estáticas.
 Rechazada. Obliga al lector a reconstruir la ponderación entre distintas
 pantallas y facilita confundir tensión equivalente con aporte aritmético.
 
-## Consecuencias
+## Más información
 
-- El IDM conserva exactamente su valor, puntaje, serie, bandas y peso efectivo.
-- La definición del M2 queda alineada con la metodología oficial de la variable
-  BCRA 197.
-- El lector puede reconciliar en una sola vista la incidencia del indicador en el
-  ITCM.
-- Los ajustes del analista y las renormalizaciones por faltantes quedan reflejados
-  mediante `puntaje_aplicado` y `peso_efectivo`.
-- `aporte_score` permanece disponible, pero inequívocamente separado del aporte
-  aritmético.
-- La presentación genérica beneficia también a ITCG, ITCP e ITVC, respetando la
-  semántica base 100 de este último.
-- Existe una pequeña duplicación deliberada de la derivación entre el modal y la
-  ficha metodológica; se cubre con tests de contrato de la capa pública.
-- No se ejecutan colectores ni se regeneran `informe.json`, `series.json` o
-  salidas históricas porque esta decisión no modifica datos ni metodología.
-- Este ADR complementa ADR-0007 y ADR-0009; no los reemplaza ni altera.
+### Precedentes directos
+
+ADR-0007 (fichas conceptuales) · ADR-0009 (metodología del IDM) · ADR-0051 (sin cards de contexto)

@@ -1,12 +1,19 @@
+---
+madr: 4
+id: '0137'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+indicadores: [poder_legislativo]
+ambito: 'cinturón político (ITCP), dimensión `poder_legislativo`'
+---
+
 # ADR-0137 — Agenda común: el cociente se mueve por el denominador
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP), dimensión `poder_legislativo`
 - **Relacionados**: ADR-0131 (protocolo), ADR-0061/0062/0063 (`eficacia_legislativa`),
   ADR-0095 (publicar el resultado incómodo), ADR-0042
 
-## Contexto
+## Contexto y planteo del problema
 
 El aporte externo propone **Agenda Común**: cuánto comparten el Ejecutivo y el
 Congreso la agenda legislativa. ADR-0131 lo listó como pendiente y anotó que lo
@@ -17,26 +24,6 @@ Ese diagnóstico era evitable. No hace falta atribuir causa-efecto si en lugar d
 preguntar «¿el Congreso trata esto *porque* el Gobierno lo propuso?» se pregunta
 **«de lo que el Congreso efectivamente sancionó, ¿cuánto nació en el
 Ejecutivo?»**. Eso es composición, no causalidad, y se mide con un campo.
-
-## La fuente
-
-El dataset `leyes-sancionadas` del CKAN de HCDN —el mismo portal que el proyecto
-ya usa para `eficacia_legislativa`— trae 1.340 leyes con `EXPEDIENTE_INICIAL` y
-`SANCION_DEFINITIVA`. **La letra del expediente codifica el origen** (formato
-`NNNN-X-AAAA`):
-
-| código | S | D | PE | JGM | sin parsear |
-|---|---|---|---|---|---|
-| leyes | 666 | 498 | 161 | 15 | **0** |
-
-Cero registros sin parsear sobre 1.340. Historia hasta 2008.
-
-> **Detalle operativo que cuesta tiempo**: hay dos recursos (CSV y JSON) y el del
-> JSON devuelve **404** en `datastore_search`. Hay que resolver el `resource_id`
-> por `package_show` tomando el que tiene `datastore_active`, y paginar de a 500
-> como hace `_hcdn_paginate`.
-
-## Lo que se encontró
 
 Porcentaje de leyes sancionadas cuyo expediente inicial nace en el Ejecutivo,
 ventana móvil de 12 meses:
@@ -71,6 +58,10 @@ los funde en uno solo, atribuyéndole al numerador un movimiento del denominador
 Se suma el ruido: en la ventana más flaca (15 leyes) **una sola ley mueve la
 serie 6,7 puntos porcentuales**.
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 1. **La fuente queda validada y la serie versionada** en
@@ -88,7 +79,7 @@ serie 6,7 puntos porcentuales**.
    del Gobierno que su participación en la producción legislativa suba cuando lo
    que la hace subir es que el Congreso produce menos.
 
-## Consecuencias
+### Consecuencias
 
 - Se corrige el diagnóstico de ADR-0131: el obstáculo **no era** la atribución
   causa-efecto. Reformulando la pregunta de causalidad a composición, el
@@ -101,3 +92,23 @@ serie 6,7 puntos porcentuales**.
 - Si se construye, `validacion_externa.py` necesita el indicador en
   `ITCP_SERIES` en el mismo cambio — el checklist que ya falló dos veces
   (`bloqueo_sostenido` y `mora_familias`).
+
+## Más información
+
+### La fuente
+
+El dataset `leyes-sancionadas` del CKAN de HCDN —el mismo portal que el proyecto
+ya usa para `eficacia_legislativa`— trae 1.340 leyes con `EXPEDIENTE_INICIAL` y
+`SANCION_DEFINITIVA`. **La letra del expediente codifica el origen** (formato
+`NNNN-X-AAAA`):
+
+| código | S | D | PE | JGM | sin parsear |
+|---|---|---|---|---|---|
+| leyes | 666 | 498 | 161 | 15 | **0** |
+
+Cero registros sin parsear sobre 1.340. Historia hasta 2008.
+
+> **Detalle operativo que cuesta tiempo**: hay dos recursos (CSV y JSON) y el del
+> JSON devuelve **404** en `datastore_search`. Hay que resolver el `resource_id`
+> por `package_show` tomando el que tiene `datastore_active`, y paginar de a 500
+> como hace `_hcdn_paginate`.

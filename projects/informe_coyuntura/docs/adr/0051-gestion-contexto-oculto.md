@@ -1,13 +1,20 @@
+---
+madr: 4
+id: '0051'
+estado: 'aceptado'
+fecha: 2026-07-11
+cinturon: 'gestion'
+archivos: ['scripts/publicar.py', 'web/src/lib/fichas.ts', 'tests/test_publicar.py']
+supersede: ['0017']
+relacionado: ['0053']
+ambito: '`scripts/publicar.py` · `web/src/lib/fichas.ts` · `tests/test_publicar.py`'
+---
+
 # ADR-0051 — Gestión: las cards de contexto salen del tablero (regla pareja en los 5 cinturones)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-11 |
-| **Ámbito** | `scripts/publicar.py` · `web/src/lib/fichas.ts` · `tests/test_publicar.py` |
 | **Precedente directo** | ADR-0022 (`MACRO_OCULTOS`), ADR-0048 (`POLITICA_OCULTOS` + regla editorial), ADR-0049 (`ESPIRITU_OCULTOS`) — supersede la parte de VISIBILIDAD de ADR-0017/0023 (que las declararon contexto visible) |
 
-## Contexto
+## Contexto y planteo del problema
 
 La regla editorial confirmada el 10-jul (ADR-0048) es que **el tablero solo
 muestra lo que integra las dimensiones del índice**. Se aplicó a macro
@@ -22,6 +29,16 @@ bajo el bloque "No integran el índice":
 
 El usuario lo marcó el 2026-07-11 al ver el tablero de gestión: los
 indicadores que no integran las dimensiones no deben aparecer.
+
+## Opciones consideradas
+
+- **Que puntúen para poder mostrarlos**: descartado — la razón por la que no
+  puntúan es de fondo (ADR-0017: el volumen de protesta es un derecho
+  ejercido, no un resultado de gestión), no un pendiente técnico.
+- **Dejar el bloque de contexto visible solo en gestión**: descartado — era
+  exactamente la inconsistencia señalada; la excepción no tenía una razón
+  editorial distinta a la que ya se rechazó en política (ADR-0048, donde el
+  editor descartó el patrón "cards de contexto visibles, estilo gestión").
 
 ## Decisión
 
@@ -40,17 +57,7 @@ seguimiento interno en lugar de la card.
 Con esto, los 5 cinturones quedan bajo la misma regla: **ningún cinturón
 publica cards de contexto** — todo lo visible puntúa en su índice o score.
 
-## Opciones descartadas
-
-- **Que puntúen para poder mostrarlos**: descartado — la razón por la que no
-  puntúan es de fondo (ADR-0017: el volumen de protesta es un derecho
-  ejercido, no un resultado de gestión), no un pendiente técnico.
-- **Dejar el bloque de contexto visible solo en gestión**: descartado — era
-  exactamente la inconsistencia señalada; la excepción no tenía una razón
-  editorial distinta a la que ya se rechazó en política (ADR-0048, donde el
-  editor descartó el patrón "cards de contexto visibles, estilo gestión").
-
-## Consecuencias
+### Consecuencias
 
 - El score del cinturón NO cambia (el contexto nunca puntuó); gestión pasa de
   17 tiles a 15.

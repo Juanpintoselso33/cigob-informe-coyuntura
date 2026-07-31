@@ -1,13 +1,19 @@
+---
+madr: 4
+id: '0161'
+estado: 'aceptado'
+fecha: 2026-07-30
+cinturon: 'politica'
+ambito: 'validación externa del ITVC y el ITCP; módulo'
+---
+
 # ADR-0161 — El contraste externo es un factor común, no una variable suelta
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-30
-- **Ámbito**: validación externa del ITVC y el ITCP; módulo
-  `scripts/factor_comun.py`, integrado en `scripts/panel_validacion.py`
+`scripts/factor_comun.py`, integrado en `scripts/panel_validacion.py`
 - **Relacionados**: ADR-0159 (el panel, que esto encabeza), ADR-0158 (el régimen
   del ITCM), ADR-0045 (no mover pesos para que un test dé mejor)
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0159 respondió a la objeción de "peras con manzanas" comparando cada índice
 contra un panel de estadísticas. Quedó viva la parte más incómoda: **lo que el
@@ -22,6 +28,10 @@ los resultados. En la primera prueba a mano el autor de este cambio se equivocó
 de signo en el EPU y midió el compuesto como peor de lo que era; corregirlo lo
 volvió mejor. Un procedimiento donde equivocarse mejora o empeora el resultado
 según quién lo arme no es una validación, es un ajuste.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -63,7 +73,21 @@ Decisiones de implementación:
   queda una línea; las cargas, la varianza explicada y la comparación contra la
   mejor estadística sola se publican en `/metodologia/<índice>`.
 
-## Resultado, incluido el que no confirma
+### Consecuencias
+
+- El tablero deja de contrastar contra una variable en los dos cinturones que
+  tienen tres o más estadísticas propias.
+- Queda declarada la limitación que ordena el trabajo siguiente: **el ITCG
+  necesita más estadísticas de su familia** (hoy tiene una y no puede tener
+  factor), y **el ITVC necesita estadísticas que no sean todas ventas
+  minoristas**. Con un panel de un solo tipo de fuente, el factor mide el ciclo
+  de esa fuente.
+- No se toca ningún peso ni ninguna ancla para mejorar estos números: hacerlo
+  sería exactamente lo que ADR-0045 prohíbe.
+
+## Más información
+
+### Resultado, incluido el que no confirma
 
 | índice | factor (niveles / mes a mes) | mejor estadística sola | varianza explicada |
 |---|---|---|---|
@@ -86,15 +110,3 @@ y de un solo tipo de fuente— antes que un veredicto sobre el índice.
 
 Publicar el caso que falla es el mismo criterio de ADR-0159: el estándar pide
 explicar las diferencias, no informar sólo las que confirman.
-
-## Consecuencias
-
-- El tablero deja de contrastar contra una variable en los dos cinturones que
-  tienen tres o más estadísticas propias.
-- Queda declarada la limitación que ordena el trabajo siguiente: **el ITCG
-  necesita más estadísticas de su familia** (hoy tiene una y no puede tener
-  factor), y **el ITVC necesita estadísticas que no sean todas ventas
-  minoristas**. Con un panel de un solo tipo de fuente, el factor mide el ciclo
-  de esa fuente.
-- No se toca ningún peso ni ninguna ancla para mejorar estos números: hacerlo
-  sería exactamente lo que ADR-0045 prohíbe.

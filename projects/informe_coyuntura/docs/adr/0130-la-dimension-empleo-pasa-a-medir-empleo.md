@@ -1,23 +1,21 @@
+---
+madr: 4
+id: '0130'
+estado: 'aceptado'
+fecha: 2026-07-25
+cinturon: 'vida'
+indicadores: [empleo_registrado, empleo]
+complementa: ['0112']
+relacionado: ['0127']
+ambito: 'ITVC · `empleo_registrado` (nuevo) · dimensión `empleo` · serie'
+origen: 'Hallazgo al separar la recaudación por componente (ADR-0127)'
+---
+
 # ADR-0130 — La dimensión de empleo pasa a medir empleo
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · `empleo_registrado` (nuevo) · dimensión `empleo` · serie |
-| **Fecha** | 2026-07-25 |
 | **Complementa** | ADR-0112 (entrada del índice líder) |
-| **Origen** | Hallazgo al separar la recaudación por componente (ADR-0127) |
 
-## Cómo apareció
-
-Al pasar la recaudación a DGI (ADR-0127) quedó afuera la seguridad social, y se
-anotó como limitación que esa parte "sigue su propia dinámica —cae en términos
-reales desde fines de 2025— y vale la pena mirarla aparte".
-
-Al ir a mirarla apareció algo más grande: **existe el dato directo de empleo
-registrado, mensual y publicado, y el cinturón no lo usaba.**
-
-## El problema
+## Contexto y planteo del problema
 
 La dimensión se llama **empleo** y ninguno de sus cuatro componentes medía
 empleo:
@@ -31,6 +29,10 @@ empleo:
 
 Los cuatro son razonables como señales de contexto laboral. Ninguno cuenta
 puestos de trabajo.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -63,32 +65,9 @@ que ADR-0112. El peso **nominal de la dimensión no se toca** (15% del ITVC).
 | indice_lider | 0,20 | 0,13 |
 | pluriempleo | 0,12 | 0,08 |
 
-## Por qué el sector privado y no el total
+## Más información
 
-El empleo público se publica por separado y no entra. La dimensión describe las
-condiciones del mercado de trabajo que enfrenta un hogar; el tamaño del Estado
-ya se mide —y se puntúa— en el cinturón de gestión (`reduccion_estado`).
-Sumarlo acá haría que una reducción de la planta estatal **empeorara el cinturón
-de vida cotidiana al mismo tiempo que mejora el de gestión, con el mismo dato**.
-
-## Por qué la serie CON estacionalidad
-
-La comparación es contra una base fija de tres meses (4T-2023), no contra el
-mes anterior: la estacionalidad de la base y la del mes corriente se compensan.
-Mismo criterio que el resto de los componentes B100 del cinturón.
-
-## La trampa que costó una corrida en falso
-
-`scripts/vida_cotidiana/collectors/indec_series.py` tiene una **whitelist
-explícita por sección**: agregar una serie a `INDEC_SERIES` en `config.py` no
-alcanza para que el colector la emita, hay que sumar la clave al bucle
-correspondiente.
-
-En el primer intento se hizo sólo lo primero. El resultado fue una card sin
-valor y un `G1 sin valor` en el gate — un síntoma que no apunta para nada a la
-causa. Queda un comentario en el bucle para que el próximo no pierda el rato.
-
-## Limitaciones declaradas
+### Limitaciones
 
 - **Cuenta puestos, no personas.** Un trabajador con dos empleos registrados
   cuenta dos veces.
@@ -102,3 +81,37 @@ causa. Queda un comentario en el bucle para que el próximo no pierda el rato.
 - Los otros cuatro componentes **siguen adentro y siguen siendo proxies**. La
   dimensión mejora, no queda resuelta: sigue llamándose "prospectivas de
   empleo" y sólo uno de sus cinco componentes mira hacia adelante.
+
+### Cómo apareció
+
+Al pasar la recaudación a DGI (ADR-0127) quedó afuera la seguridad social, y se
+anotó como limitación que esa parte "sigue su propia dinámica —cae en términos
+reales desde fines de 2025— y vale la pena mirarla aparte".
+
+Al ir a mirarla apareció algo más grande: **existe el dato directo de empleo
+registrado, mensual y publicado, y el cinturón no lo usaba.**
+
+### Por qué el sector privado y no el total
+
+El empleo público se publica por separado y no entra. La dimensión describe las
+condiciones del mercado de trabajo que enfrenta un hogar; el tamaño del Estado
+ya se mide —y se puntúa— en el cinturón de gestión (`reduccion_estado`).
+Sumarlo acá haría que una reducción de la planta estatal **empeorara el cinturón
+de vida cotidiana al mismo tiempo que mejora el de gestión, con el mismo dato**.
+
+### Por qué la serie CON estacionalidad
+
+La comparación es contra una base fija de tres meses (4T-2023), no contra el
+mes anterior: la estacionalidad de la base y la del mes corriente se compensan.
+Mismo criterio que el resto de los componentes B100 del cinturón.
+
+### La trampa que costó una corrida en falso
+
+`scripts/vida_cotidiana/collectors/indec_series.py` tiene una **whitelist
+explícita por sección**: agregar una serie a `INDEC_SERIES` en `config.py` no
+alcanza para que el colector la emita, hay que sumar la clave al bucle
+correspondiente.
+
+En el primer intento se hizo sólo lo primero. El resultado fue una card sin
+valor y un `G1 sin valor` en el gate — un síntoma que no apunta para nada a la
+causa. Queda un comentario en el bucle para que el próximo no pierda el rato.

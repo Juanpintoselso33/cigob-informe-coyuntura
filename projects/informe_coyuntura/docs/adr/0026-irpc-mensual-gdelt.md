@@ -1,11 +1,17 @@
+---
+madr: 4
+id: '0026'
+estado: 'rechazado'
+nota_estado: 'RECHAZADO por ahora (fuente operativamente inviable; ver'
+fecha: 2026-07-03
+---
+
 # ADR-0026 — Mensualización del IRPC: forma GDELT calibrada a anclajes DP
 
-- **Fecha:** 2026-07-03
-- **Estado:** RECHAZADO por ahora (fuente operativamente inviable; ver
-  Resultados). La mensualización queda por la vía DP (suscripción, gestión
+Resultados). La mensualización queda por la vía DP (suscripción, gestión
   CIGOB) y por el GTFS-RT propio al madurar.
 
-## Contexto
+## Contexto y planteo del problema
 
 El ADR-0025 automatizó el protocolo antipiquetes con los anclajes ANUALES
 públicos de Diagnóstico Político. El editor exige granularidad mensual como
@@ -16,7 +22,13 @@ mensual automática y gratuita candidata es GDELT (base global de noticias,
 medios — DP releva 100+ medios argentinos a mano; GDELT indexa la prensa
 global automáticamente).
 
-## Decisión (condicional)
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+### Decisión (condicional)
 
 **Híbrido forma × ancla:** el volumen mensual de cobertura de piquetes en
 GDELT aporta la FORMA de la curva; los anclajes anuales de DP aportan el
@@ -31,7 +43,9 @@ reproducir la caída medida por DP (nacional 1 / 0,73 / 0,47 · CABA 1 / 0,47 /
 0,26) con el mismo orden y magnitud comparable. Si la señal es ruido, este
 ADR se rechaza y la mensualización espera a la suscripción DP.
 
-## Resultados de la validación (03-jul-2026)
+### Consecuencias
+
+### Resultados de la validación (03-jul-2026)
 
 **UNUSABLE.** La GDELT DOC 2.0 API aplicó throttling persistente (HTTP 429)
 desde nuestro entorno incluso con pausas de 10 s entre requests y backoffs de
@@ -43,7 +57,7 @@ cero es señal de bloqueo/indexación, no de realidad. No se pudo validar la
 forma mensual, y una fuente que estrangula así no puede sostener un pipeline
 nocturno.
 
-## Condiciones de reapertura
+### Condiciones de reapertura
 
 - Probar desde la IP de los runners de CI (GitHub Actions): el throttling
   puede ser por IP/entorno.
@@ -52,8 +66,6 @@ nocturno.
 - Si CIGOB consigue la suscripción DP, este ADR queda obsoleto: los anclajes
   mensuales reales de DP entran directo al colector del ADR-0025 sin cambiar
   la métrica.
-
-## Consecuencias
 
 El IRPC queda con granularidad ANUAL (anclajes públicos DP, ADR-0025) hasta
 que la suscripción DP o una GDELT operativa habiliten la mensualización. La

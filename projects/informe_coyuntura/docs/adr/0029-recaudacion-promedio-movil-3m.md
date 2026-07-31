@@ -1,13 +1,19 @@
+---
+madr: 4
+id: '0029'
+estado: 'aceptado'
+fecha: 2026-07-04
+cinturon: 'macro'
+indicadores: [recaudacion]
+relacionado: ['0072', '0076']
+ambito: 'Indicador `recaudacion` (60% de Viabilidad fiscal-comercial = 14,4% del ITCM — el componente más pesado del índice)'
+---
+
 # ADR-0029 — Recaudación real: promedio móvil de 3 meses sobre IPC cerrado
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-04 |
-| **Ámbito** | Indicador `recaudacion` (60% de Viabilidad fiscal-comercial = 14,4% del ITCM — el componente más pesado del índice) |
 | **Disparador** | Barrido uno-por-uno de macro (6/12) |
 
-## Contexto
+## Contexto y planteo del problema
 
 El indicador puntuaba la variación i.a. real de UN solo mes. Dos problemas:
 
@@ -20,7 +26,9 @@ El indicador puntuaba la variación i.a. real de UN solo mes. Dos problemas:
    con el IPC interanual de mayo (el de junio no está publicado) — en
    desinflación exagera el negativo ~0,5 pp.
 
-## Prácticas de referencia relevadas
+## Factores de decisión
+
+### Prácticas de referencia relevadas
 
 - **IARAF / OPC / CPCE** (los analistas fiscales de referencia): la lectura
   de tendencia se grafica como "variación interanual real del promedio móvil
@@ -33,6 +41,10 @@ El indicador puntuaba la variación i.a. real de UN solo mes. Dos problemas:
   pipeline y los coeficientes cambian con cada dato nuevo).
 - **Handbook JRC/OCDE** (canon del ADR-0019): los insumos ruidosos se tratan
   antes de agregar, documentando la elección.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -57,7 +69,7 @@ valor = promedio de los últimos 3 meses cerrados de:
 - Validación externa del ITCM: la reconstrucción usa la serie publicada, así
   que adopta la métrica suavizada automáticamente.
 
-## Consecuencias
+### Consecuencias
 
 - Con los datos del 04-jul-2026: mar −4,8 · abr −3,9 · may +1,8 → **−2,3%**
   (antes: −7,14 del junio provisorio). Puntaje 10 (piso) → **~33**. ITCM

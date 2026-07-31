@@ -1,12 +1,18 @@
+---
+madr: 4
+id: '0046'
+estado: 'aceptado'
+fecha: 2026-07-09
+cinturon: 'politica'
+indicadores: [fetch_derrotas_legislativas, fetch_derrotas_legislativas_mensual]
+archivos: ['scripts/politica.py', 'data/politica/derrotas_legislativas_eventos.json', 'scripts/itcp.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'scripts/gate_calidad.py', '.github/workflows/data-pipeline.yml', 'datos.ts', 'descripciones.ts', 'formulas.ts', 'fichas.ts', 'tests/test_itcp.py', 'tests/test_politica_derrotas.py']
+relacionado: ['0069']
+ambito: '`scripts/politica.py` (`fetch_derrotas_legislativas` y helpers) · `data/politica/derrotas_legislativas_eventos.json` (registro versionado, semilla verificada a mano) · `scripts/itcp.py` (banda nueva + pesos internos de poder_legislativo) · `scripts/descargar_series.py` (`fetch_derrotas_legislativas_mensual`) · `scripts/validacion_externa.py` (ITCP_SERIES) · `scripts/gate_calidad.py` (excepción G3) · `.github/workflows/data-pipeline.yml` (git add del registro) · web (`datos.ts`/`descripciones.ts`/`formulas.ts`/`fichas.ts`) · `tests/test_itcp.py` · `tests/test_politica_derrotas.py`'
+---
+
 # ADR-0046 — `derrotas_legislativas`: nuevo indicador del ITCP (vetos insistidos + decretos rechazados, fusionados)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-09 |
-| **Ámbito** | `scripts/politica.py` (`fetch_derrotas_legislativas` y helpers) · `data/politica/derrotas_legislativas_eventos.json` (registro versionado, semilla verificada a mano) · `scripts/itcp.py` (banda nueva + pesos internos de poder_legislativo) · `scripts/descargar_series.py` (`fetch_derrotas_legislativas_mensual`) · `scripts/validacion_externa.py` (ITCP_SERIES) · `scripts/gate_calidad.py` (excepción G3) · `.github/workflows/data-pipeline.yml` (git add del registro) · web (`datos.ts`/`descripciones.ts`/`formulas.ts`/`fichas.ts`) · `tests/test_itcp.py` · `tests/test_politica_derrotas.py` |
-
-## Contexto
+## Contexto y planteo del problema
 
 Las insistencias de septiembre-octubre de 2025 (leyes 27.793, 27.795 y
 27.796) fueron las **primeras que revirtieron vetos presidenciales desde
@@ -37,6 +43,41 @@ mandato y probaron en vivo la extracción automática:
   sola a los falsos amigos: mociones de orden, el decreto simple 681/25,
   la reforma trunca de la propia 26.122). En esas actas se vota la
   **validez** del decreto: gana NEGATIVO = rechazo (verificado en los 8).
+
+## Opciones consideradas
+
+- **"% de vetos sostenidos" como indicador standalone** (la métrica
+  candidata de la investigación de vetos) — descartada al fusionar: con
+  n=1-3 vetos en ventana un solo evento movía 33-100 pp (denominador
+  chico), y la ventana se vacía por completo si pasa un año sin vetos
+  (valor clavado en 100 con flag). El conteo absoluto fusionado elimina
+  el denominador y reparte los eventos raros entre dos familias.
+- **"DNUs caídos" como indicador mensual autónomo** — NO-GO con datos
+  reales: la serie "% de decretos rechazados / DNUs dictados 12m" cambia
+  3 veces de numerador en 32 meses y tiene la señal invertida en 2026
+  (el % *empeora* solo porque el denominador —DNUs dictados— se achica,
+  justo cuando el control real del Congreso desapareció: cero
+  tratamientos en recinto en 2026). Además el denominador automatizable
+  (full-text InfoLeg) sobrecuenta ~50% contra los conteos académicos.
+- **Contar por votación de cámara en vez de por norma** (cada rechazo o
+  insistencia de cada cámara suma; serie 0→3→pico 16) — descartada: el
+  rechazo de la segunda cámara es la misma derrota política que la
+  primera consumó (contarlo dos veces duplica el mismo hecho), y la
+  fecha del evento queda mejor definida por la consumación. La
+  definición por norma también deja el registro alineado con la lectura
+  editorial de la card ("N vetos insistidos + M decretos rechazados").
+- **Detectar los rechazos de Diputados vía los PDFs de actas
+  (ADR-0040)** además del Senado — pospuesta: exigiría extender la caché
+  permanente por acta para guardar títulos y caminar ids con agujeros
+  404; el costo no se justifica hoy porque el Senado terminó votando
+  todos los decretos politicamente relevantes del período (la fecha se
+  correría ~2 semanas en el peor caso real) y la semilla histórica ya
+  tiene las fechas exactas de Diputados. Queda como refinamiento posible
+  post-lanzamiento, documentado como limitación en la ficha.
+- **Ventana de 24 meses** para suavizar los cliffs — descartada por
+  inconsistencia con el estilo 12m del resto del cinturón; el cliff es
+  una propiedad del fenómeno (eventos raros) y se declara en la ficha en
+  vez de disimularse con fórmula.
 
 ## Decisión
 
@@ -90,42 +131,7 @@ rechazo en recinto). Menor = mejor.
   anclaje que votometro/cohesión, pero con saltos enteros en vez de
   décimas).
 
-## Opciones consideradas
-
-- **"% de vetos sostenidos" como indicador standalone** (la métrica
-  candidata de la investigación de vetos) — descartada al fusionar: con
-  n=1-3 vetos en ventana un solo evento movía 33-100 pp (denominador
-  chico), y la ventana se vacía por completo si pasa un año sin vetos
-  (valor clavado en 100 con flag). El conteo absoluto fusionado elimina
-  el denominador y reparte los eventos raros entre dos familias.
-- **"DNUs caídos" como indicador mensual autónomo** — NO-GO con datos
-  reales: la serie "% de decretos rechazados / DNUs dictados 12m" cambia
-  3 veces de numerador en 32 meses y tiene la señal invertida en 2026
-  (el % *empeora* solo porque el denominador —DNUs dictados— se achica,
-  justo cuando el control real del Congreso desapareció: cero
-  tratamientos en recinto en 2026). Además el denominador automatizable
-  (full-text InfoLeg) sobrecuenta ~50% contra los conteos académicos.
-- **Contar por votación de cámara en vez de por norma** (cada rechazo o
-  insistencia de cada cámara suma; serie 0→3→pico 16) — descartada: el
-  rechazo de la segunda cámara es la misma derrota política que la
-  primera consumó (contarlo dos veces duplica el mismo hecho), y la
-  fecha del evento queda mejor definida por la consumación. La
-  definición por norma también deja el registro alineado con la lectura
-  editorial de la card ("N vetos insistidos + M decretos rechazados").
-- **Detectar los rechazos de Diputados vía los PDFs de actas
-  (ADR-0040)** además del Senado — pospuesta: exigiría extender la caché
-  permanente por acta para guardar títulos y caminar ids con agujeros
-  404; el costo no se justifica hoy porque el Senado terminó votando
-  todos los decretos politicamente relevantes del período (la fecha se
-  correría ~2 semanas en el peor caso real) y la semilla histórica ya
-  tiene las fechas exactas de Diputados. Queda como refinamiento posible
-  post-lanzamiento, documentado como limitación en la ficha.
-- **Ventana de 24 meses** para suavizar los cliffs — descartada por
-  inconsistencia con el estilo 12m del resto del cinturón; el cliff es
-  una propiedad del fenómeno (eventos raros) y se declara en la ficha en
-  vez de disimularse con fórmula.
-
-## Consecuencias
+### Consecuencias
 
 - El ITCP gana su 13.ª banda activa y "poder legislativo" pasa de 4 a 5
   indicadores. Efecto material HOY (simulado contra el caché vigente del

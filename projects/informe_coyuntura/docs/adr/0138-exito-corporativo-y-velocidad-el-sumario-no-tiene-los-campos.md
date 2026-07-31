@@ -1,8 +1,14 @@
+---
+madr: 4
+id: '0138'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+ambito: 'cinturón político (ITCP), bloque judicial'
+---
+
 # ADR-0138 — Éxito corporativo y velocidad: el sumario no tiene los campos
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP), bloque judicial
 - **Relacionados**: ADR-0135 (cautelares: no hay censo de causas), ADR-0131
 
 > **⚠️ CORREGIDO POR ADR-0139.** «Velocidad de Resolución es estructuralmente
@@ -14,7 +20,7 @@
 > Corporativo (sin partes ni resultado) también era falsa fuera de SAIJ. Leer
 > ADR-0139.
 
-## Contexto
+## Contexto y planteo del problema
 
 Cierra los dos últimos indicadores judiciales del aporte externo:
 
@@ -27,8 +33,6 @@ Cierra los dos últimos indicadores judiciales del aporte externo:
 Los dos dependen del universo de causas que ADR-0135 ya evaluó. Este ADR agrega
 lo que faltaba verificar: **qué campos trae realmente un documento de SAIJ**, y
 si hay estadística de duración publicada en otro lado.
-
-## Lo que se encontró
 
 ### El sumario de SAIJ no tiene los campos que hacen falta
 
@@ -70,6 +74,10 @@ Las consecuencias son directas:
 - Búsquedas por «duración», «tiempo resolución», «pendientes tribunales» y
   «expedientes duración» en ambos portales: nada más.
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 **No se construye ninguno de los dos.** Se registra el negativo con las consultas
@@ -87,7 +95,7 @@ ya en el índice), uno quedó relevado y a la espera de decisión editorial
 (judicialización, ADR-0135) y tres no se pueden con las fuentes disponibles
 (veto de constitucionalidad —ADR-0131—, bloqueo cautelar y estos dos).
 
-## Consecuencias
+### Consecuencias
 
 - **Lo que destrabaría a los tres es lo mismo**: un censo de causas del fuero
   contencioso administrativo federal con carátula, fechas de inicio y de

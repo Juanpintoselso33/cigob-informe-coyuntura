@@ -1,12 +1,16 @@
+---
+madr: 4
+id: '0010'
+estado: 'aceptado'
+fecha: 2026-06-30
+cinturon: 'macro'
+archivos: ['scripts/itcm.py', 'scripts/macro.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'data/macro/patentamientos_comerciales.json', 'tests/']
+ambito: '`scripts/itcm.py` · `scripts/macro.py` · `scripts/descargar_series.py` · `scripts/publicar.py` · `data/macro/patentamientos_comerciales.json` · `tests/` · web'
+---
+
 # ADR-0010 — Capítulo Inversión: IAI (físico) e ICIP (digital) como 6ª dimensión del ITCM
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-06-30 |
-| **Ámbito** | `scripts/itcm.py` · `scripts/macro.py` · `scripts/descargar_series.py` · `scripts/publicar.py` · `data/macro/patentamientos_comerciales.json` · `tests/` · web |
-
-## Contexto
+## Contexto y planteo del problema
 
 Dos documentos proponen incorporar un capítulo de **inversión** al ITCM:
 - **IAI — Índice Anticipador de Inversión** (`260629`): inversión física/tradicional =
@@ -16,6 +20,15 @@ Dos documentos proponen incorporar un capítulo de **inversión** al ITCM:
   servicios tech/IA (0,40) + hardware hi-tech NCM (0,30) + productividad laboral
   (0,30). Pensado como lectura dual junto al IAI (la "trampa de la madurez":
   invertir en ladrillos sin digitalizarse).
+
+## Opciones consideradas
+
+- **±2% literal del doc.** Rechazada: no sobrevive a la volatilidad del dato.
+- **Suavizar componentes (MA 3m)** o **medir relativo al EMAE.** Consideradas; el
+  usuario eligió bandas anchas sobre el i.a. crudo (las bandas ya clampean el ruido).
+- **Proxies gruesos** (total automotores; capítulo 85 NCM). Rechazados: diluyen lo que
+  cada índice mide y el NCM está viejo.
+- **Suscribir SIOMAA / extraer microdata NCM.** Pospuesto (costo/licencia indefinidos).
 
 ## Decisión
 
@@ -39,7 +52,20 @@ variaciones interanuales. Las 5 dimensiones previas se recortan en proporción
 3. **ICIP sin hardware hi-tech.** Renormalizado a servicios tech 0,57 / productividad
    0,43 (esta última = IPI/empleo, con empleo de la EIL como proxy de "horas").
 
-## Fuentes que NO existen como serie (investigadas a fondo)
+### Consecuencias
+
+- Macro **ITCM 65,0 → 63,3** (Moderadamente aflojado), **tensión 3,5 → 3,7**: la
+  inversión física en contracción (IAI −4,2 → 35) agrega tensión; la digital la modera
+  (ICIP +8,2 → 80). La divergencia física-vs-digital queda expuesta en el tablero.
+- `data/macro/patentamientos_comerciales.json` se versiona y crece una fila por mes
+  (la serie se completará sola ~mediados de 2027).
+- Doble descarga del CSV DNRPA (~5 MB) por corrida de `macro.py`.
+- Sparklines de IAI e ICIP (18 puntos, sin patentamientos). Tests pineados: 11
+  indicadores en el índice; fixture EJEMPLO con iai/icip → ITCM 63,3.
+
+## Más información
+
+### Fuentes que NO existen como serie (investigadas a fondo)
 
 El usuario pidió priorizar las fuentes difíciles; se comprobó que **no son
 automatizables**, y no por esfuerzo sino por cómo se publica (o no) el dato:
@@ -57,7 +83,7 @@ automatizables**, y no por esfuerzo sino por cómo se publica (o no) el dato:
   posiciones a 8 dígitos solo viven en microdata bulk de Aduana, sin serie. → Se omite;
   el ICIP queda con sus 2 componentes disponibles.
 
-## Fuentes operativas (validadas)
+### Fuentes operativas (validadas)
 
 | Componente | Serie | Hoy (i.a.) |
 |---|---|---|
@@ -65,23 +91,3 @@ automatizables**, y no por esfuerzo sino por cómo se publica (o no) el dato:
 | Bienes de capital importados | INDEC ICA `74.3_IIBCA` (USD, i.a.) | −6,8% |
 | Servicios tech | INDEC balanza `185.1_PAGO_SERVIICA` (i.a.) | +15,6% |
 | Productividad | INDEC `453.1` IPI / `50.3` empleo EIL (i.a. del cociente) | −1,6% |
-
-## Opciones consideradas
-
-- **±2% literal del doc.** Rechazada: no sobrevive a la volatilidad del dato.
-- **Suavizar componentes (MA 3m)** o **medir relativo al EMAE.** Consideradas; el
-  usuario eligió bandas anchas sobre el i.a. crudo (las bandas ya clampean el ruido).
-- **Proxies gruesos** (total automotores; capítulo 85 NCM). Rechazados: diluyen lo que
-  cada índice mide y el NCM está viejo.
-- **Suscribir SIOMAA / extraer microdata NCM.** Pospuesto (costo/licencia indefinidos).
-
-## Consecuencias
-
-- Macro **ITCM 65,0 → 63,3** (Moderadamente aflojado), **tensión 3,5 → 3,7**: la
-  inversión física en contracción (IAI −4,2 → 35) agrega tensión; la digital la modera
-  (ICIP +8,2 → 80). La divergencia física-vs-digital queda expuesta en el tablero.
-- `data/macro/patentamientos_comerciales.json` se versiona y crece una fila por mes
-  (la serie se completará sola ~mediados de 2027).
-- Doble descarga del CSV DNRPA (~5 MB) por corrida de `macro.py`.
-- Sparklines de IAI e ICIP (18 puntos, sin patentamientos). Tests pineados: 11
-  indicadores en el índice; fixture EJEMPLO con iai/icip → ITCM 63,3.

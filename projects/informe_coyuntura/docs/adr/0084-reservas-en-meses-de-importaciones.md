@@ -1,24 +1,23 @@
+---
+madr: 4
+id: '0084'
+estado: 'rechazado'
+fecha: 2026-07-18
+cinturon: 'macro'
+indicadores: [reservas_bcra]
+ambito: 'Cinturón macro · ITCM · `reservas_bcra`'
+origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), observación 13 — marcada por la propia auditoría como no urgente'
+---
+
 # ADR-0084 — Reservas en meses de importaciones: **RECHAZADO**, con la condición para revisarlo
 
-| | |
-|---|---|
-| **Estado** | **Rechazado** |
-| **Ámbito** | Cinturón macro · ITCM · `reservas_bcra` |
-| **Fecha** | 2026-07-18 |
-| **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), observación 13 — marcada por la propia auditoría como no urgente |
+## Opciones consideradas
 
-## Lo que se proponía
+_El ADR original no registró opciones alternativas._
 
-Reemplazar las anclas de `reservas_bcra`, hoy en millones de dólares absolutos
-(>20.000 → 100 · 15.000-20.000 → 85 · … · <0 → 10), por la métrica
-internacional estándar de adecuación: **meses de importaciones cubiertos**, con
-el umbral clásico de tres meses.
+## Decisión
 
-La preocupación de fondo es legítima: un umbral en dólares absolutos no se
-ajusta al tamaño de la economía ni a sus necesidades de importación. Veinte mil
-millones significan cosas distintas según cuánto importe el país por mes.
-
-## Por qué se rechaza
+### Por qué se rechaza
 
 ### 1. La métrica no está definida donde viven los datos
 
@@ -48,7 +47,20 @@ prácticamente un **reescalado monótono**: no reordena los meses ni cambia qué
 tramo de la banda ocupa cada uno. La normalización no aporta discriminación que
 el nivel no tenga ya.
 
-## Cuándo habría que revisarlo
+## Más información
+
+### Lo que se proponía
+
+Reemplazar las anclas de `reservas_bcra`, hoy en millones de dólares absolutos
+(>20.000 → 100 · 15.000-20.000 → 85 · … · <0 → 10), por la métrica
+internacional estándar de adecuación: **meses de importaciones cubiertos**, con
+el umbral clásico de tres meses.
+
+La preocupación de fondo es legítima: un umbral en dólares absolutos no se
+ajusta al tamaño de la economía ni a sus necesidades de importación. Veinte mil
+millones significan cosas distintas según cuánto importe el país por mes.
+
+### Cuándo habría que revisarlo
 
 El rechazo es sobre **el período disponible**, no sobre la idea. La objeción de
 fondo —que un umbral absoluto envejece si cambia la escala del comercio
@@ -63,7 +75,7 @@ Corresponde reabrir esta decisión si se cumple alguna de estas dos condiciones:
    normalización dejaría de ser un reescalado y empezaría a reordenar meses,
    que es cuando aportaría algo.
 
-## Nota sobre un problema vecino, que este cambio no resolvía
+### Nota sobre un problema vecino, que este cambio no resolvía
 
 El diagnóstico de bandas (ADR-0081) marca `reservas_bcra` como candidata a
 revisión por otro motivo: **57% de los meses en el piso y el techo nunca

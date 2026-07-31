@@ -1,14 +1,19 @@
+---
+madr: 4
+id: '0090'
+estado: 'aceptado'
+fecha: 2026-07-19
+cinturon: 'politica'
+indicadores: [ratio_dnu]
+ambito: 'ITCP · `ratio_dnu` · ficha pública'
+origen: 'Auditoría externa del cinturón político, prioridad 4'
+---
+
 # ADR-0090 — Qué pregunta responde el ratio DNU (y por qué no se agrega "éxito por decreto")
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCP · `ratio_dnu` · ficha pública |
-| **Fecha** | 2026-07-19 |
 | **Confirma** | ADR-0058 / ADR-0059 (ventana móvil y anclas, sin cambios) |
-| **Origen** | Auditoría externa del cinturón político, prioridad 4 |
 
-## El planteo
+## Contexto y planteo del problema
 
 La auditoría observó que el indicador sólo admite una lectura:
 
@@ -26,7 +31,31 @@ indicador estuviera respondiendo la segunda pregunta mientras el índice pregunt
 la primera, estaría restando puntaje por el motivo equivocado. Hoy `ratio_dnu`
 vale 1,92 y puntúa **16 sobre 100**: no es un detalle de matiz.
 
-## Los datos
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+**Se mantiene la dirección del indicador y sus anclas.** Lo que cambia es el
+texto público, que ahora dice explícitamente qué pregunta responde.
+
+El razonamiento, que hasta ahora era implícito: el ratio mide **dependencia del
+decreto**, no éxito de la ejecución. Se elige esa lectura porque el cinturón
+mide capacidad *sostenible* de gobernar, y una norma dictada por decreto es
+reversible por el Congreso y por los tribunales de un modo en que la ley no lo
+es. La dependencia es una **vulnerabilidad latente**: permanece dormida mientras
+el Congreso no active el procedimiento de la ley 26.122, y se cobra de golpe
+cuando lo activa. El 7 de agosto de 2025 cayeron cinco decretos en un día.
+
+Los datos sostienen las dos mitades de esa frase a la vez, y por eso se publican
+ambas: gobernar por decreto **funciona** (95% nunca se vota) **y** es **frágil**
+cuando se lo pone a prueba (6 de 8 caen). Presentar sólo una de las dos sería
+sesgar.
+
+## Más información
+
+### Los datos
 
 Se midieron las dos cosas que la discusión requería y que nadie había medido:
 
@@ -49,25 +78,7 @@ Y qué pasó con los ocho que sí se votaron:
 
 **6 de 8 cayeron.**
 
-## Decisión
-
-**Se mantiene la dirección del indicador y sus anclas.** Lo que cambia es el
-texto público, que ahora dice explícitamente qué pregunta responde.
-
-El razonamiento, que hasta ahora era implícito: el ratio mide **dependencia del
-decreto**, no éxito de la ejecución. Se elige esa lectura porque el cinturón
-mide capacidad *sostenible* de gobernar, y una norma dictada por decreto es
-reversible por el Congreso y por los tribunales de un modo en que la ley no lo
-es. La dependencia es una **vulnerabilidad latente**: permanece dormida mientras
-el Congreso no active el procedimiento de la ley 26.122, y se cobra de golpe
-cuando lo activa. El 7 de agosto de 2025 cayeron cinco decretos en un día.
-
-Los datos sostienen las dos mitades de esa frase a la vez, y por eso se publican
-ambas: gobernar por decreto **funciona** (95% nunca se vota) **y** es **frágil**
-cuando se lo pone a prueba (6 de 8 caen). Presentar sólo una de las dos sería
-sesgar.
-
-## Lo que se rechaza, con evidencia
+### Lo que se rechaza, con evidencia
 
 La auditoría sugería además "considerar si el cinturón necesita una variable
 separada de *éxito de ejecución por decreto* (cuántos DNU sobreviven y se
@@ -89,7 +100,7 @@ Vale notar que la parte de la pregunta que **sí** tiene poder discriminante ya
 está medida: `bloqueo_sostenido` es exactamente "de las normas que el Congreso
 puso a prueba, cuántas siguen en pie".
 
-## Coherencia con la jornada
+### Coherencia con la jornada
 
 En ADR-0089, unas horas antes, `ratio_dnu` había subido de 0,20 a 0,23 dentro de
 la dimensión. Subirle peso a un indicador cuya interpretación estaba bajo
@@ -97,7 +108,7 @@ revisión fue apresurado. Se evaluó revertirlo y **se decidió mantener el 0,23
 ahora sí con fundamento: revisada la objeción, el indicador responde la pregunta
 que el índice necesita.
 
-## Limitación que queda en pie
+### Limitación que queda en pie
 
 El indicador no distingue un DNU central de uno administrativo: los 162 pesan
 igual. Un gobierno podría bajar el ratio dictando menos decretos irrelevantes

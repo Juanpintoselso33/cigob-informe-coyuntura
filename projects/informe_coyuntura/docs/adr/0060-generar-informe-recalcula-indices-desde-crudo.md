@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0060'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'politica'
+archivos: ['scripts/generar_informe.py', 'scripts/politica.py']
+relacionado: ['0058']
+ambito: '`scripts/generar_informe.py` · `scripts/politica.py` (refactor) · pipeline completo (4 cinturones)'
+---
+
 # ADR-0060 — generar_informe.py recalcula ITCM/ITCG/ITCP desde los valores crudos, no confía en el caché del colector
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | `scripts/generar_informe.py` · `scripts/politica.py` (refactor) · pipeline completo (4 cinturones) |
-| **Fecha** | 2026-07-15 |
-| **Precedentes directos** | ADR-0058/0059 (ratio_dnu — el bug se descubrió corrigiendo esas anclas) |
-
-## Contexto
+## Contexto y planteo del problema
 
 Al corregir `BANDAS_ITCP["ratio_dnu"]` (ADR-0059) y correr
 `python scripts/generar_informe.py`, el puntaje publicado de `ratio_dnu`
@@ -58,6 +62,12 @@ HCDN/etc.) solo para re-puntuar una fórmula que no necesitaba ningún dato
 nuevo — caro, lento, y frágil (cualquier fuente caída ese día degrada
 indicadores a "desactualizado" sin necesidad).
 
+## Opciones consideradas
+
+- Arreglar solo `politica.py` (recordar re-correr el colector)
+- Recalcular en `publicar.py` en vez de `generar_informe.py`
+- Agregar un test que fuerce recalcular y comparar contra el caché
+
 ## Decisión
 
 ### 1. Extraer el cálculo del ITCP a una función reutilizable
@@ -92,7 +102,23 @@ Verificado empíricamente: cambiar una banda de `itcp.py` y correr
 propaga el cambio a `output/informe.json` y a `web/src/data/informe.json`
 por igual.
 
-## Opciones consideradas
+### Consecuencias
+
+- Un cambio en `itcm.py`/`itcg.py`/`itcp.py` (bandas, pesos, ajustes) se
+  refleja correctamente con solo `generar_informe.py` + `publicar.py` —
+  ya no hace falta re-correr el colector (con su costo de red) para
+  re-puntuar con datos que ya estaban frescos en caché.
+- `politica.py` gana `calcular_itcp_cinturon()` como función de módulo,
+  igual que `macro.py`/`gestion.py` — API interna más simétrica entre los
+  3 cinturones paramétricos.
+- Nuevo archivo `tests/test_generar_informe.py` (5 tests) — antes no
+  existía ningún test de `generar_informe.py`.
+- La corrección de ratio_dnu de ADR-0059, que ya se había publicado
+  re-corriendo `politica.py` manualmente, queda ahora protegida
+  estructuralmente: el próximo cambio de bandas no requerirá ese paso
+  extra ni arriesgará quedar stale si alguien lo olvida.
+
+## Pros y contras de las opciones
 
 ### Arreglar solo `politica.py` (recordar re-correr el colector)
 
@@ -122,7 +148,13 @@ código vuelve a leer del caché por comodidad. Se agregó igual
 cinturones sin paramétrica no tocados, `None` conserva el score cacheado)
 como red de contención adicional.
 
-## Limitaciones
+## Más información
+
+### Precedentes directos
+
+ADR-0058/0059 (ratio_dnu — el bug se descubrió corrigiendo esas anclas)
+
+### Limitaciones
 
 - El recálculo depende de que `cache["indicadores"]` tenga los mismos
   valores crudos con los que se calculó `cache["itcm"/"itcg"/"itcp"]`
@@ -138,19 +170,3 @@ como red de contención adicional.
   `generar_informe.py`. Si algún día alguno de los dos deja de leer desde
   ahí (lee directo del caché del colector, por ejemplo), la staleness
   reaparecería en ese punto específico.
-
-## Consecuencias
-
-- Un cambio en `itcm.py`/`itcg.py`/`itcp.py` (bandas, pesos, ajustes) se
-  refleja correctamente con solo `generar_informe.py` + `publicar.py` —
-  ya no hace falta re-correr el colector (con su costo de red) para
-  re-puntuar con datos que ya estaban frescos en caché.
-- `politica.py` gana `calcular_itcp_cinturon()` como función de módulo,
-  igual que `macro.py`/`gestion.py` — API interna más simétrica entre los
-  3 cinturones paramétricos.
-- Nuevo archivo `tests/test_generar_informe.py` (5 tests) — antes no
-  existía ningún test de `generar_informe.py`.
-- La corrección de ratio_dnu de ADR-0059, que ya se había publicado
-  re-corriendo `politica.py` manualmente, queda ahora protegida
-  estructuralmente: el próximo cambio de bandas no requerirá ese paso
-  extra ni arriesgará quedar stale si alguien lo olvida.

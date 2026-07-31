@@ -1,12 +1,17 @@
+---
+madr: 4
+id: '0044'
+estado: 'aceptado'
+fecha: 2026-07-09
+cinturon: 'politica'
+indicadores: [fetch_adhesion_reformas_provincial_serie]
+archivos: ['data/politica/adhesion_reformas_provincial_fechas.json', 'scripts/politica.py', _provincias_adheridas_rigi, 'scripts/descargar_series.py', 'scripts/itcp.py', 'tests/test_descargar_series_adhesion.py']
+ambito: '`data/politica/adhesion_reformas_provincial_fechas.json` (nuevo) · `scripts/politica.py` (`_provincias_adheridas_rigi` factorizada) · `scripts/descargar_series.py` (`fetch_adhesion_reformas_provincial_serie` reescrita) · `scripts/itcp.py` (comentario de banda, sin cambio de anclas) · `tests/test_descargar_series_adhesion.py`'
+---
+
 # ADR-0044 — adhesion_reformas_provincial: serie mensual real vía investigación manual de fechas provinciales
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-09 |
-| **Ámbito** | `data/politica/adhesion_reformas_provincial_fechas.json` (nuevo) · `scripts/politica.py` (`_provincias_adheridas_rigi` factorizada) · `scripts/descargar_series.py` (`fetch_adhesion_reformas_provincial_serie` reescrita) · `scripts/itcp.py` (comentario de banda, sin cambio de anclas) · `tests/test_descargar_series_adhesion.py` |
-
-## Contexto
+## Contexto y planteo del problema
 
 `adhesion_reformas_provincial` (% de provincias, sobre 24, adheridas
 formalmente al RIGI — Título VII, Ley 27.742) era la última banda del ITCP
@@ -23,6 +28,23 @@ provincia adhirió con su propia ley, sancionada por su propia legislatura y
 publicada en su propio Boletín Oficial — 16 fuentes provinciales distintas,
 sin scraper genérico posible. La única vía real es investigar cada una a
 mano.
+
+## Opciones consideradas
+
+- **Dejar el punto único, sin serie histórica** (statu quo) — descartada
+  por la regla de proyecto de no sentarse sobre gaps sin datos cuando
+  investigarlos es viable, y por ser la única banda del ITCP que seguía en
+  ese estado.
+- **Recalibrar las anclas junto con la serie**, mismo patrón que las otras
+  4 de hoy — descartada explícitamente: ver razonamiento del "trinquete" en
+  la Decisión. Recalibrar ahora ancla las bandas a un punto de partida que
+  quedaría obsoleto apenas sigan adhiriendo provincias.
+- **Scraper genérico contra las 16 fuentes provinciales** — descartada por
+  desproporcionada: 16 sitios con estructuras completamente distintas, sin
+  patrón común reutilizable (a diferencia de HCDN/Senado, que sí comparten
+  la misma plataforma de votaciones). Investigación manual, una vez, es más
+  barata que mantener 16 parsers distintos para un dataset que crece a lo
+  sumo un puñado de eventos por año.
 
 ## Decisión
 
@@ -64,24 +86,7 @@ bajar), así que el rango de hoy es el arranque de un proceso todavía en
 curso, no una muestra representativa de su rango final contra la cual
 calibrar anclas permanentes.
 
-## Opciones consideradas
-
-- **Dejar el punto único, sin serie histórica** (statu quo) — descartada
-  por la regla de proyecto de no sentarse sobre gaps sin datos cuando
-  investigarlos es viable, y por ser la única banda del ITCP que seguía en
-  ese estado.
-- **Recalibrar las anclas junto con la serie**, mismo patrón que las otras
-  4 de hoy — descartada explícitamente: ver razonamiento del "trinquete" en
-  la Decisión. Recalibrar ahora ancla las bandas a un punto de partida que
-  quedaría obsoleto apenas sigan adhiriendo provincias.
-- **Scraper genérico contra las 16 fuentes provinciales** — descartada por
-  desproporcionada: 16 sitios con estructuras completamente distintas, sin
-  patrón común reutilizable (a diferencia de HCDN/Senado, que sí comparten
-  la misma plataforma de votaciones). Investigación manual, una vez, es más
-  barata que mantener 16 parsers distintos para un dataset que crece a lo
-  sumo un puñado de eventos por año.
-
-## Consecuencias
+### Consecuencias
 
 - `adhesion_reformas_provincial` tiene resolución mensual real (24 puntos)
   en vez de 1 punto — misma familia de fix que los otros 3 indicadores de

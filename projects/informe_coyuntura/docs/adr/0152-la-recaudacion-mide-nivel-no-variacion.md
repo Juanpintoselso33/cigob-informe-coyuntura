@@ -1,15 +1,21 @@
+---
+madr: 4
+id: '0152'
+estado: 'aceptado'
+fecha: 2026-07-29
+cinturon: 'macro'
+ambito: 'cinturón macro (ITCM), dimensión viabilidad fiscal-comercial'
+---
+
 # ADR-0152 — La recaudación pasa a medir NIVEL, y suma los impuestos provinciales
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-29
-- **Ámbito**: cinturón macro (ITCM), dimensión viabilidad fiscal-comercial
 - **Reemplaza la métrica de**: ADR-0029 (promedio móvil 3 meses sobre la
   interanual) y mantiene la decisión de fuente de ADR-0127 (DGI, no total)
 - **Relacionados**: ADR-0045 (cuándo se puede calibrar contra lo observado),
   ADR-0021 (puntaje interpolado), ADR-0072 (el indicador mide base imponible,
   no caja)
 
-## Contexto
+## Contexto y planteo del problema
 
 Dos pedidos del editor sobre el mismo indicador: sumar los impuestos
 provinciales de la Comisión Arbitral, y subir la frecuencia. Al relevar la
@@ -19,7 +25,55 @@ justifica.**
 
 Tenía razón, y el argumento es fuerte por dos lados.
 
-## 1. La interanual desperdiciaba el dato y arrastraba la base
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+1. `recaudacion` mide el **nivel de base imponible real desestacionalizada**,
+   nacional (DGI) + provincial (COMARB) sumados en nivel, con **100 = promedio
+   del 4T-2023**. Unidad publicada: `índice (100 = 4T-2023)`.
+2. **Bandas nuevas**, porque las anteriores no eran traducibles: estaban
+   ancladas al cero de una variación y el punto con significado de un nivel
+   base-100 es el 100. Los cortes son pasos de diez puntos de esa base —unidad
+   redonda y conceptual—: ≥110 → 100 · 100-110 → 85 · 90-100 → 60 · 80-90 → 35
+   · <80 → 10. Fijadas sobre esa grilla y **no** sobre la distribución
+   observada; ADR-0045 sólo autoriza calibrar contra lo observado si el extremo
+   es inalcanzable, y no es el caso (la serie recorre 88,2 a 114,9).
+3. **Una sola implementación del cálculo**, en `comarb.base_imponible_real_sa`.
+   La card devuelve el último punto de la misma serie que publica
+   `descargar_series`, así que no pueden divergir — G3 por construcción, misma
+   disciplina que `apoyo_empresario`. Las dos usan `comarb.LIMITE_MESES`: los
+   factores estacionales dependen de la ventana, así que dos ventanas distintas
+   producirían dos series distintas.
+
+### Consecuencias
+
+- La serie **arranca en ene-2022** (54 puntos) contra 2023-03 de la anterior, y
+  gana resolución mensual.
+- **Dos propiedades incómodas que van declaradas en la ficha, no escondidas**:
+  el indicador es más nervioso (jun-2026 cae 9,5 puntos contra may-2026, con
+  3-4 observaciones por mes calendario todavía), y **revisa el pasado**, porque
+  los factores estacionales se recalculan al acumular meses.
+- **«Recaudación diaria»: no existe como serie publicada.** El pedido original
+  la incluía y el relevamiento se cierra en negativo, con las consultas hechas
+  para que nadie repita el camino: catálogo nacional de series (sólo mensual,
+  trimestral y anual para «Principales subgrupos de recaudación tributaria»);
+  informes de ARCA (mensual, trimestral, anual); página de Recaudación de
+  Hacienda (XLSX mensuales desde 1997); y el Monitor de la OPC, que también es
+  mensual. La coparticipación **sí** se transfiere a diario por ley 23.548, pero
+  se publica agregada por mes — la serie RON que ya usa `iaf_transferencias`.
+  Si alguna vez aparece, el indicador la aprovecha sin cambiar de métrica: el
+  nivel desestacionalizado admite mayor frecuencia, la interanual no lo hacía
+  igual de bien.
+- **El Monitor de la OPC se publica como IMÁGENES** (`MRT_MM_AAAA_PageN.jpg`),
+  sin planilla ni PDF con texto. Automatizarlo exigiría leer de píxeles, así que
+  por ahora la corroboración de arriba se hizo a mano y queda fechada.
+
+## Más información
+
+### 1. La interanual desperdiciaba el dato y arrastraba la base
 
 La métrica anterior era la variación real contra el mismo mes del año anterior,
 promediada sobre tres meses. Con el dato de junio de 2026 informaba **+3,3%**
@@ -36,7 +90,7 @@ cada punto.** Por eso el relevamiento de la fuente provincial incluyó
 reconstruir 2022 — trabajo que un nivel rebaseado no habría necesitado, porque
 le basta la base oct-dic 2023.
 
-## 2. El nivel crudo no servía, y la corrección estacional sí
+### 2. El nivel crudo no servía, y la corrección estacional sí
 
 El nivel mensual crudo tiene **30,5 puntos** de amplitud entre el mes calendario
 más alto y el más bajo: mayo (factor 1,182) y junio (1,119) concentran
@@ -63,7 +117,7 @@ La elegida gana en discriminación (rango 26,8 contra 18,0, criterio de ADR-0042
 **y** conserva la resolución mensual. El promedio móvil de 12 meses fue
 descartado por lo mismo que la interanual: vuelve a diluir el dato mensual.
 
-## 3. Lo provincial agrega información propia
+### 3. Lo provincial agrega información propia
 
 La fuente es la gacetilla mensual de la Comisión Arbitral: SIFERE, SIRCREB,
 SIRCAR, SIRTAC, SIRPEI y SIRCUPA. **No es recaudación provincial total** —cada
@@ -98,26 +152,7 @@ en el peor caso** —jun-2026 da 88,2 con todo y 88,0 sin los nuevos— y la der
 acumulada del período es de 0,20 puntos. El sesgo existe y es despreciable, pero
 está medido y no supuesto.
 
-## Decisión
-
-1. `recaudacion` mide el **nivel de base imponible real desestacionalizada**,
-   nacional (DGI) + provincial (COMARB) sumados en nivel, con **100 = promedio
-   del 4T-2023**. Unidad publicada: `índice (100 = 4T-2023)`.
-2. **Bandas nuevas**, porque las anteriores no eran traducibles: estaban
-   ancladas al cero de una variación y el punto con significado de un nivel
-   base-100 es el 100. Los cortes son pasos de diez puntos de esa base —unidad
-   redonda y conceptual—: ≥110 → 100 · 100-110 → 85 · 90-100 → 60 · 80-90 → 35
-   · <80 → 10. Fijadas sobre esa grilla y **no** sobre la distribución
-   observada; ADR-0045 sólo autoriza calibrar contra lo observado si el extremo
-   es inalcanzable, y no es el caso (la serie recorre 88,2 a 114,9).
-3. **Una sola implementación del cálculo**, en `comarb.base_imponible_real_sa`.
-   La card devuelve el último punto de la misma serie que publica
-   `descargar_series`, así que no pueden divergir — G3 por construcción, misma
-   disciplina que `apoyo_empresario`. Las dos usan `comarb.LIMITE_MESES`: los
-   factores estacionales dependen de la ventana, así que dos ventanas distintas
-   producirían dos series distintas.
-
-## Efecto
+### Efecto
 
 | | valor | puntaje |
 |---|---|---|
@@ -129,7 +164,7 @@ es un deterioro nuevo de la economía: es que la métrica anterior informaba
 crecimiento contra una base deprimida mientras el nivel seguía bien por debajo
 del punto de partida.
 
-## Corroboración externa: la descomposición de la OPC
+### Corroboración externa: la descomposición de la OPC
 
 La Oficina de Presupuesto del Congreso publica en su Monitor de Recaudación
 Tributaria Nacional la **variación real por principal determinante de la base
@@ -152,26 +187,3 @@ Dos cosas quedan corroboradas por una fuente que no es la nuestra:
 2. **Excluir la aduana era correcto** (ADR-0127): comercio exterior −31,2% en el
    semestre contra actividad −2,0%. La brecha es el recorte de retenciones, no
    deterioro de la economía real.
-
-## Consecuencias
-
-- La serie **arranca en ene-2022** (54 puntos) contra 2023-03 de la anterior, y
-  gana resolución mensual.
-- **Dos propiedades incómodas que van declaradas en la ficha, no escondidas**:
-  el indicador es más nervioso (jun-2026 cae 9,5 puntos contra may-2026, con
-  3-4 observaciones por mes calendario todavía), y **revisa el pasado**, porque
-  los factores estacionales se recalculan al acumular meses.
-- **«Recaudación diaria»: no existe como serie publicada.** El pedido original
-  la incluía y el relevamiento se cierra en negativo, con las consultas hechas
-  para que nadie repita el camino: catálogo nacional de series (sólo mensual,
-  trimestral y anual para «Principales subgrupos de recaudación tributaria»);
-  informes de ARCA (mensual, trimestral, anual); página de Recaudación de
-  Hacienda (XLSX mensuales desde 1997); y el Monitor de la OPC, que también es
-  mensual. La coparticipación **sí** se transfiere a diario por ley 23.548, pero
-  se publica agregada por mes — la serie RON que ya usa `iaf_transferencias`.
-  Si alguna vez aparece, el indicador la aprovecha sin cambiar de métrica: el
-  nivel desestacionalizado admite mayor frecuencia, la interanual no lo hacía
-  igual de bien.
-- **El Monitor de la OPC se publica como IMÁGENES** (`MRT_MM_AAAA_PageN.jpg`),
-  sin planilla ni PDF con texto. Automatizarlo exigiría leer de píxeles, así que
-  por ahora la corroboración de arriba se hizo a mano y queda fechada.

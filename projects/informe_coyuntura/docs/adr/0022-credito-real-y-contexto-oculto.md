@@ -1,9 +1,16 @@
+---
+madr: 4
+id: '0022'
+estado: 'aceptado'
+nota_estado: 'aceptada (decisión del editor)'
+fecha: 2026-07-03
+cinturon: 'macro'
+relacionado: ['0071', '0074', '0077']
+---
+
 # ADR-0022 — Crédito privado real al ITCM; los monetarios nominales quedan ocultos
 
-- **Fecha:** 2026-07-03
-- **Estado:** aceptada (decisión del editor)
-
-## Contexto
+## Contexto y planteo del problema
 
 El cinturón macro publicaba cuatro indicadores de contexto (BADLAR, préstamos
 privados, base monetaria, TC mayorista) que no integraban el ITCM. El editor
@@ -14,6 +21,15 @@ monetaria está superada por el IDM (M3 vs M2 real); el TC nominal es el TCRM
 en su versión sin deflactar. Incluirlos directo habría reintroducido el doble
 conteo recién eliminado (ADR-0021) y el sesgo nominal ya corregido dos veces
 en las revisiones del ITCM.
+
+## Opciones consideradas
+
+- *Incluirlos directo con bandas propias*: doble conteo con IdC/IDM/TCRM +
+  puntuar niveles nominales sin ancla honesta. Descartada.
+- *Panel visual "termómetro monetario" sin puntuar*: cosmética; no responde
+  al pedido de que cuenten. Descartada (rehabilitable si se extraña la vista).
+- *Eliminarlos de la pipeline*: perdería los insumos de los componentes
+  derivados y la trazabilidad. Descartada explícitamente por el editor.
 
 ## Decisión
 
@@ -33,16 +49,7 @@ en las revisiones del ITCM.
    pero la web ya no los muestra como tiles. La sección "No integran el
    índice" de macro desaparece (queda vacía).
 
-## Opciones consideradas
-
-- *Incluirlos directo con bandas propias*: doble conteo con IdC/IDM/TCRM +
-  puntuar niveles nominales sin ancla honesta. Descartada.
-- *Panel visual "termómetro monetario" sin puntuar*: cosmética; no responde
-  al pedido de que cuenten. Descartada (rehabilitable si se extraña la vista).
-- *Eliminarlos de la pipeline*: perdería los insumos de los componentes
-  derivados y la trazabilidad. Descartada explícitamente por el editor.
-
-## Consecuencias
+### Consecuencias
 
 - Estado 2026-07-03: crédito real **+8,1% i.a.** (la remonetización se enfría
   fuerte — información que el índice antes no veía) → puntaje 53,2 →

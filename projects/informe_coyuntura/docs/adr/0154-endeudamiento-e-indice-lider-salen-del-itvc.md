@@ -1,9 +1,15 @@
+---
+madr: 4
+id: '0154'
+estado: 'aceptado'
+fecha: 2026-07-30
+cinturon: 'vida'
+ambito: 'cinturón vida cotidiana (ITVC-B100), dimensiones vulnerabilidad'
+---
+
 # ADR-0154 — Endeudamiento e Índice Líder salen del ITVC; el líder pasa a validar el ITCM
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-30
-- **Ámbito**: cinturón vida cotidiana (ITVC-B100), dimensiones vulnerabilidad
-  financiera y prospectivas de empleo; validación externa del ITCM
+financiera y prospectivas de empleo; validación externa del ITCM
 - **Descarta**: ADR-0112 (el líder integra el ITVC) y el reparto 50/50 de
   ADR-0067, que estaba declarado provisorio
 - **Relacionados**: ADR-0022 y ADR-0153 (patrón `*_OCULTOS`, no hay cards de
@@ -11,14 +17,55 @@
   un número quede mejor), ADR-0020 (flag de dimensión crítica), ADR-0033 (techo
   de winsorización)
 
-## Contexto
+## Contexto y planteo del problema
 
 Apunte del editor: «pobreza, endeudamiento e índice líder se va (este último
 probar como validador de macro)». La pobreza se resolvió en ADR-0153. Acá van
 los otros dos, que **se van por motivos distintos** — conviene no mezclarlos,
 porque el argumento que sirve para uno no sirve para el otro.
 
-## 1. `endeudamiento_familiar`: redundante, en el techo, y de signo equívoco
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+1. `endeudamiento_familiar` e `indice_lider` **salen del ITVC** y van a
+   `VIDA_OCULTOS`: se siguen relevando y sus series se siguen publicando, pero no
+   son cards. Es el quinto cinturón en tener lista de ocultos, con lo que los
+   cinco usan el mismo patrón (ADR-0153: no hay cards de contexto).
+2. Vulnerabilidad financiera = `mora_familias` al 100%. Prospectivas de empleo
+   renormaliza sobre los cuatro que quedan.
+3. El **Índice Líder REEMPLAZA al riesgo país (EMBI) como ancla de validación
+   externa del ITCM** — ver la enmienda de abajo. Se publican los cinco pares,
+   incluidos los adelantos en las dos direcciones, para que la lectura no pueda
+   invertirse.
+
+### Consecuencias
+
+- **ITVC 96,4 → 90,2** y tensión del cinturón **5,7 → 7,0**. La banda pasa de
+  «sin cambios» a **deterioro moderado**, que es un cambio de titular del
+  tablero público. Casi todo el movimiento (−6,1 de −6,2) es la dimensión de
+  vulnerabilidad, que pasa de 78,6 a **17,2** al quedar apoyada en la mora sola.
+- **Eso no es deterioro nuevo**: la mora ya estaba en 17,2 y el número anterior
+  la promediaba con un componente en el techo. El cinturón venía informando
+  «sin cambios» sobre una morosidad casi seis veces la de la transición.
+- La dimensión sigue marcada como **crítica** (ADR-0020), que es el mecanismo
+  previsto para señalizar una caída sin recortarla: el techo de winsorización es
+  sólo hacia arriba.
+- El ITVC queda con **16 componentes** puntuando y la matriz de redundancia con
+  120 pares, 17 altos.
+- Las dos fichas metodológicas se dan de baja, siguiendo el patrón de los
+  ocultos ya existentes (`badlar`, `protestas_caba`, `rotacion_gabinete`): sin
+  ficha, con rótulo y con entrada en `formulas`/`descripciones`.
+- Queda **una dimensión con un solo componente** y sin margen de
+  renormalización: si la planilla del BCRA falla, vulnerabilidad se queda sin
+  dato y su 10% se reparte entre las otras cinco. Antes el endeudamiento la
+  cubría. Es el costo de la decisión y va declarado en la ficha de la mora.
+
+## Más información
+
+### 1. `endeudamiento_familiar`: redundante, en el techo, y de signo equívoco
 
 Los tres motivos, en orden de peso creciente:
 
@@ -50,7 +97,7 @@ indicador: `seguridad`. El peso **nominal** de la dimensión no se toca —bajar
 porque el ITVC cae sería mover un peso para que el número quede mejor, prohibido
 por ADR-0045.
 
-## 2. `indice_lider`: no es redundante, mide otra cosa
+### 2. `indice_lider`: no es redundante, mide otra cosa
 
 Acá el argumento empírico **no** aplica y hay que decirlo: el líder participa en
 apenas **2 de los 24 pares altos**, y uno de los dos es justamente con
@@ -74,7 +121,7 @@ conservan su orden relativo:
 | `indice_lider` | 0,13 | — | — |
 | `pluriempleo` | 0,08 | 0,0919 | 1,38% |
 
-## 3. El líder como validador del ITCM: funciona, y cubre un hueco real
+### 3. El líder como validador del ITCM: funciona, y cubre un hueco real
 
 Lo que el editor pidió probar. Resultado, sobre 31 meses:
 
@@ -101,7 +148,7 @@ pueda invertir: sirve como validación **contemporánea**, no como alerta
 temprana. Escribir «el líder anticipa al ITCM» sería falso, y era la frase que
 salía sola.
 
-## 4. Lo incómodo: la validación del ITVC baja mucho, y el número honesto es el nuevo
+### 4. Lo incómodo: la validación del ITVC baja mucho, y el número honesto es el nuevo
 
 El ITVC↔ICC cae de **+0,558 a +0,337** sin ICC (y de +0,674 a +0,458 completo).
 Es una caída grande y no se resuelve con una explicación cómoda, así que se
@@ -136,42 +183,7 @@ es el mismo argumento —«baja pero se justifica»— que en ADR-0153 resultó 
 racionalización sobre un dato mal fechado. Por eso acá se midió la atribución
 antes de escribir la conclusión.
 
-## Decisión
-
-1. `endeudamiento_familiar` e `indice_lider` **salen del ITVC** y van a
-   `VIDA_OCULTOS`: se siguen relevando y sus series se siguen publicando, pero no
-   son cards. Es el quinto cinturón en tener lista de ocultos, con lo que los
-   cinco usan el mismo patrón (ADR-0153: no hay cards de contexto).
-2. Vulnerabilidad financiera = `mora_familias` al 100%. Prospectivas de empleo
-   renormaliza sobre los cuatro que quedan.
-3. El **Índice Líder REEMPLAZA al riesgo país (EMBI) como ancla de validación
-   externa del ITCM** — ver la enmienda de abajo. Se publican los cinco pares,
-   incluidos los adelantos en las dos direcciones, para que la lectura no pueda
-   invertirse.
-
-## Consecuencias
-
-- **ITVC 96,4 → 90,2** y tensión del cinturón **5,7 → 7,0**. La banda pasa de
-  «sin cambios» a **deterioro moderado**, que es un cambio de titular del
-  tablero público. Casi todo el movimiento (−6,1 de −6,2) es la dimensión de
-  vulnerabilidad, que pasa de 78,6 a **17,2** al quedar apoyada en la mora sola.
-- **Eso no es deterioro nuevo**: la mora ya estaba en 17,2 y el número anterior
-  la promediaba con un componente en el techo. El cinturón venía informando
-  «sin cambios» sobre una morosidad casi seis veces la de la transición.
-- La dimensión sigue marcada como **crítica** (ADR-0020), que es el mecanismo
-  previsto para señalizar una caída sin recortarla: el techo de winsorización es
-  sólo hacia arriba.
-- El ITVC queda con **16 componentes** puntuando y la matriz de redundancia con
-  120 pares, 17 altos.
-- Las dos fichas metodológicas se dan de baja, siguiendo el patrón de los
-  ocultos ya existentes (`badlar`, `protestas_caba`, `rotacion_gabinete`): sin
-  ficha, con rótulo y con entrada en `formulas`/`descripciones`.
-- Queda **una dimensión con un solo componente** y sin margen de
-  renormalización: si la planilla del BCRA falla, vulnerabilidad se queda sin
-  dato y su 10% se reparte entre las otras cinco. Antes el endeudamiento la
-  cubría. Es el costo de la decisión y va declarado en la ficha de la mora.
-
-## Enmienda (2026-07-30, mismo día): el líder REEMPLAZA al EMBI, no lo acompaña
+### Enmienda (2026-07-30, mismo día): el líder REEMPLAZA al EMBI, no lo acompaña
 
 La primera implementación entendió mal la decisión del editor y sumó el líder
 como **segundo** contraste del ITCM, dejando al EMBI como ancla graficada. La
@@ -215,7 +227,7 @@ ancla es «la que valida en diferencias» o «la que más correlaciona en nivele
 Acá se eligió la primera por decisión del editor; son criterios distintos y
 llevan a anclas distintas.
 
-## Enmienda 2 (2026-07-30): el riesgo país se retira por completo del informe
+### Enmienda 2 (2026-07-30): el riesgo país se retira por completo del informe
 
 La enmienda anterior dejó el EMBI como **quinta columna** de la matriz cruzada,
 argumentando que ahí seguía aportando poder discriminante. El editor lo cortó:

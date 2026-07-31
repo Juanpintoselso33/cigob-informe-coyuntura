@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0032'
+estado: 'aceptado'
+fecha: 2026-07-04
+cinturon: 'vida'
+indicadores: [inseguridad]
+ambito: 'Indicador `inseguridad` (30% de Confianza = 4,5% del ITVC)'
+---
+
 # ADR-0032 — Inseguridad: del SNIC anual al IVI mensual (LICIP-UTDT)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-04 |
-| **Ámbito** | Indicador `inseguridad` (30% de Confianza = 4,5% del ITVC) |
 | **Disparador** | Barrido vida 10/13: el editor exigió investigar granularidad mejor que la anual |
 
-## Contexto
+## Contexto y planteo del problema
 
 `inseguridad` puntuaba con el SNIC: total anual de hechos delictivos
 denunciados (un dato por año, publicado en junio). La investigación de
@@ -20,6 +25,10 @@ Rutas investigadas y descartadas: bases SAT del Ministerio (mensuales pero
 publicadas en tandas anuales cada diciembre, un año detrás del consolidado,
 solo subconjuntos de delitos); fuentes jurisdiccionales mensuales (CABA:
 cambia el alcance nacional); SNIC mensual (no existe).
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -40,7 +49,17 @@ cambia el alcance nacional); SNIC mensual (no existe).
    informes de 2020, 2025 y 2026) y acumula. Backfill completo hecho:
    31 informes procesados, ene-2024 → abr-2026 continuos.
 
-## Ventajas del constructo
+### Consecuencias
+
+- Card: 2.418.600 hechos/año (2025) → **28,0% de hogares víctimas
+  (abr-2026)**; B100 100,7 → **102,1**; ITVC 91,4 → 91,5.
+- El indicador gana el gráfico mensual (28 meses desde el mandato) y pierde
+  la excepción de frecuencia anual del doc.
+- La divergencia IVI↑ / SNIC↓ queda visible y explicada en la ficha.
+
+## Más información
+
+### Ventajas del constructo
 
 - **Mide lo que la gente sufre, no lo que denuncia** — para un cinturón de
   vida cotidiana es el constructo correcto (la tasa de denuncia es baja y
@@ -49,17 +68,9 @@ cambia el alcance nacional); SNIC mensual (no existe).
 - Sin estacionalidad por construcción (ventana móvil de 12 meses).
 - Fuente académica de la misma familia que ya puntúa en el cinturón (UTDT).
 
-## Declarables
+### Declarables
 
 - Error muestral ±3% mensual (~1.000 hogares); la ventana 12m suaviza.
 - Cobertura: 40 centros urbanos (no rural).
 - Base ene-2024 en lugar del 4T-2023 del doc — declarada en la fórmula
   publicada y en este ADR.
-
-## Consecuencias
-
-- Card: 2.418.600 hechos/año (2025) → **28,0% de hogares víctimas
-  (abr-2026)**; B100 100,7 → **102,1**; ITVC 91,4 → 91,5.
-- El indicador gana el gráfico mensual (28 meses desde el mandato) y pierde
-  la excepción de frecuencia anual del doc.
-- La divergencia IVI↑ / SNIC↓ queda visible y explicada en la ficha.

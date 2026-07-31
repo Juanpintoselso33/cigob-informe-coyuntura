@@ -1,12 +1,17 @@
+---
+madr: 4
+id: '0009'
+estado: 'aceptado'
+fecha: 2026-06-28
+cinturon: 'macro'
+archivos: ['scripts/itcm.py', 'scripts/macro.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'tests/', 'datos.ts', 'descripciones.ts', '[slug].astro', 'Hero.astro']
+relacionado: ['0053', '0054']
+ambito: '`scripts/itcm.py` · `scripts/macro.py` · `scripts/descargar_series.py` · `scripts/publicar.py` · `tests/` · web (`datos.ts`, `descripciones.ts`, `[slug].astro`, `Hero.astro`)'
+---
+
 # ADR-0009 — Índice de Desequilibrio Monetario (real-real i.a.) y el TCRM como 5ª dimensión del ITCM
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-06-28 |
-| **Ámbito** | `scripts/itcm.py` · `scripts/macro.py` · `scripts/descargar_series.py` · `scripts/publicar.py` · `tests/` · web (`datos.ts`, `descripciones.ts`, `[slug].astro`, `Hero.astro`) |
-
-## Contexto
+## Contexto y planteo del problema
 
 Sobre el cinturón macro llegaron cuatro correcciones (doc `250627 INDICE DE
 DESEQUILIBRIO MONETARIO.docx` + notas del analista):
@@ -25,6 +30,15 @@ presentación.
 
 La propuesta del doc define el IDM como **ΔM3 privado (nominal) − ΔM2 privado real**,
 mensual, con un semáforo de dos colores (≤0 verde, >0 rojo).
+
+## Opciones consideradas
+
+- **IDM literal (nominal-real, m/m).** Rechazada: rojo permanente + estacional.
+- **IDM real-real mensual.** Rechazada: corrige el sesgo pero no la estacionalidad.
+- **IDM real-real interanual.** Elegida.
+- **TCRM dentro de fiscal-comercial** vs. **nueva dimensión.** Se eligió dimensión
+  propia (decisión del usuario): el frente cambiario es conceptualmente distinto
+  del comercial y merece peso explícito.
 
 ## Decisión
 
@@ -57,7 +71,7 @@ actividad **0,13** · competitividad **0,12**. Estos números son operacionaliza
 propia (el doc solo definió las cuatro originales); pisables vía
 `data/macro/ajustes_itcm.json`.
 
-## Por qué se rechaza la fórmula literal del IDM
+### Por qué se rechaza la fórmula literal del IDM
 
 Validada contra datos reales (oct-2024 → may-2026), la fórmula nominal-real
 mensual tiene dos defectos fatales:
@@ -73,16 +87,7 @@ La versión real-real interanual elimina ambos (sin sesgo de inflación, sin
 estacionalidad) y respeta la **intención** del doc: medir oferta amplia de pesos
 vs. demanda real. Decisión del usuario vía AskUserQuestion explícito.
 
-## Opciones consideradas
-
-- **IDM literal (nominal-real, m/m).** Rechazada: rojo permanente + estacional.
-- **IDM real-real mensual.** Rechazada: corrige el sesgo pero no la estacionalidad.
-- **IDM real-real interanual.** Elegida.
-- **TCRM dentro de fiscal-comercial** vs. **nueva dimensión.** Se eligió dimensión
-  propia (decisión del usuario): el frente cambiario es conceptualmente distinto
-  del comercial y merece peso explícito.
-
-## Consecuencias
+### Consecuencias
 
 - Macro **ITCM 71,2 → 65,0** (Moderadamente aflojado), **tensión 2,9 → 3,5**: el
   índice ahora capta la apreciación real (TCRM 84,3 → banda 35) y el excedente

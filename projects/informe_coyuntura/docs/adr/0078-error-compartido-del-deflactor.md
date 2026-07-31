@@ -1,14 +1,18 @@
+---
+madr: 4
+id: '0078'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'macro'
+archivos: ['scripts/sensibilidad.py']
+relacionado: ['0019', '0031', '0075']
+ambito: 'Todas las paramétricas · `scripts/sensibilidad.py` · rango de robustez publicado del ITCM'
+origen: 'Revisión adversarial externa (18-jul-2026) + observación IV.2 de la auditoría de consistencia macro'
+---
+
 # ADR-0078 — El error del deflactor deja de tratarse como independiente
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Todas las paramétricas · `scripts/sensibilidad.py` · rango de robustez publicado del ITCM |
-| **Fecha** | 2026-07-18 |
-| **Precedentes directos** | ADR-0019 (análisis de sensibilidad, paso 7 del Handbook JRC/OCDE) · ADR-0031 (ruido aditivo scale-free) · ADR-0075 (matriz de redundancia interna) |
-| **Origen** | Revisión adversarial externa (18-jul-2026) + observación IV.2 de la auditoría de consistencia macro |
-
-## Contexto
+## Contexto y planteo del problema
 
 La simulación de Monte Carlo que produce el rango de robustez publicado
 perturbaba **cada indicador con un sorteo independiente**
@@ -32,6 +36,10 @@ Lo que sí genera error compartido es **compartir una fuente**. Y ahí hay un ca
 concreto, que es justamente la observación **IV.2** de la auditoría: el IPC se
 usa como deflactor en varios indicadores a la vez. Si el IPC está mal medido,
 todos ellos se equivocan **al mismo tiempo y de forma coordinada**.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -68,7 +76,7 @@ es el punto de partida neutral. La mezcla preserva la varianza total del ruido
 ruido_i = √f · exposición_i · shock_deflactor + √(1−f) · idiosincrático_i
 ```
 
-## Consecuencias
+### Consecuencias
 
 Sobre el rango de robustez publicado del ITCM, con 1.000 y con 20.000 corridas
 (resultado idéntico, no es ruido de simulación):
@@ -98,7 +106,13 @@ IV.2 pedía documentar la propagación del IPC como riesgo sistémico. Queda
 **modelada** en la incertidumbre publicada, no sólo declarada en prosa, que es
 un cumplimiento más fuerte del pedido. La observación puede cerrarse.
 
-## Limitaciones declaradas
+## Más información
+
+### Precedentes directos
+
+ADR-0019 (análisis de sensibilidad, paso 7 del Handbook JRC/OCDE) · ADR-0031 (ruido aditivo scale-free) · ADR-0075 (matriz de redundancia interna)
+
+### Limitaciones
 
 - El 50% es una elección razonada, no una estimación. Con 30% el ensanche sería
   menor y con 100% mayor; el orden de magnitud no cambia (entre +10% y +28% de

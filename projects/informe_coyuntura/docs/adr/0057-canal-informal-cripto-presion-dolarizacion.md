@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0057'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'macro'
+indicadores: [presion_dolarizacion]
+relacionado: ['0055', '0083']
+ambito: 'Cinturón macro · ITCM · `presion_dolarizacion` · régimen abierto (desde abr-2025)'
+---
+
 # ADR-0057 — Canal informal (dólar cripto) en la presión de dolarización
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-15 |
-| **Ámbito** | Cinturón macro · ITCM · `presion_dolarizacion` · régimen abierto (desde abr-2025) |
-| **Precedentes directos** | ADR-0055 (presión de dolarización por régimen, no supersedida — este ADR la extiende) |
-
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0055 mide la presión de dolarización de carteras con un observable
 distinto por régimen cambiario: brecha CCL/A3500 antes de abril de 2025
@@ -46,6 +50,13 @@ tendencia ascendente. Esa brecha no depende de ninguna restricción de acceso
 retención de Ganancias/Bienes Personales que aplica a la compra bancaria,
 anonimato, practicidad). Es una demanda de dolarización real que el canal
 formal, por construcción, no puede ver.
+
+## Opciones consideradas
+
+- Usar la brecha CCL o blue en vez de cripto para el canal informal
+- Reemplazar el canal formal por el informal en vez de combinarlos
+- Ponderación 50/50 o usar el máximo de las dos señales
+- Sumar el canal informal también al régimen restringido (pre-abril-2025)
 
 ## Decisión
 
@@ -102,7 +113,23 @@ igual que `saldo_comercial_12m` expone su composición expo/impo — para que
 la ficha y cualquier auditoría del snapshot puedan mostrar de dónde sale el
 número, no solo el resultado combinado.
 
-## Opciones consideradas
+### Consecuencias
+
+- `presion_dolarizacion` dentro del régimen abierto deja de ser 100% formal:
+  ahora es 70% formal / 30% informal cuando hay dato de dólar cripto para la
+  ventana completa, y 100% formal cuando no lo hay.
+- El régimen restringido (pre-abril-2025) no cambia.
+- Nuevos campos de transparencia (`presion_formal`, `presion_informal`,
+  `brecha_informal`) en la serie y en el indicador publicado.
+- La serie histórica del régimen abierto (mayo-2025 en adelante) cambia al
+  regenerarse el pipeline, porque ahora incorpora el canal informal donde hay
+  dato; los resultados coyunturales y la validación externa deben provenir de
+  esa regeneración, este ADR no fija cifras vigentes.
+- ADR-0055 no queda superado: su estructura de dos regímenes y la fórmula del
+  régimen restringido siguen vigentes tal cual; este ADR solo extiende el
+  régimen abierto con un segundo componente.
+
+## Pros y contras de las opciones
 
 ### Usar la brecha CCL o blue en vez de cripto para el canal informal
 
@@ -132,7 +159,13 @@ Rechazada. Es un período cerrado y ya resuelto por ADR-0055 con CCL/A3500;
 además, en ese tramo la brecha cripto es tan extrema (90%-174% en 2023) que
 introduce ruido de escala distinta sin aportar nada que el CCL no capture ya.
 
-## Limitaciones
+## Más información
+
+### Precedentes directos
+
+ADR-0055 (presión de dolarización por régimen, no supersedida — este ADR la extiende)
+
+### Limitaciones
 
 - ArgentinaDatos no es el organismo oficial del mercado cripto (no existe
   tal organismo); es una serie pública y reproducible, pero de un mercado sin
@@ -145,19 +178,3 @@ introduce ruido de escala distinta sin aportar nada que el CCL no capture ya.
   parcial, solo amplía la cobertura respecto del 100% formal anterior.
 - La ventana de transición de abril/mayo de 2025 (1 y 2 meses) hereda la
   misma menor suavización que ya declaraba ADR-0055 para el flujo formal.
-
-## Consecuencias
-
-- `presion_dolarizacion` dentro del régimen abierto deja de ser 100% formal:
-  ahora es 70% formal / 30% informal cuando hay dato de dólar cripto para la
-  ventana completa, y 100% formal cuando no lo hay.
-- El régimen restringido (pre-abril-2025) no cambia.
-- Nuevos campos de transparencia (`presion_formal`, `presion_informal`,
-  `brecha_informal`) en la serie y en el indicador publicado.
-- La serie histórica del régimen abierto (mayo-2025 en adelante) cambia al
-  regenerarse el pipeline, porque ahora incorpora el canal informal donde hay
-  dato; los resultados coyunturales y la validación externa deben provenir de
-  esa regeneración, este ADR no fija cifras vigentes.
-- ADR-0055 no queda superado: su estructura de dos regímenes y la fórmula del
-  régimen restringido siguen vigentes tal cual; este ADR solo extiende el
-  régimen abierto con un segundo componente.

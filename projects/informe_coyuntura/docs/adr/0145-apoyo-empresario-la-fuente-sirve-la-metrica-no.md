@@ -1,11 +1,18 @@
+---
+madr: 4
+id: '0145'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+indicadores: [sector_privado]
+corregido_por: ['0148']
+ambito: 'cinturón político (ITCP) · dimensión `sector_privado`'
+---
+
 # ADR-0145 — Apoyo empresario: la fuente sirve, la métrica no
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP) · dimensión `sector_privado`
 - **Relacionados**: ADR-0131 (protocolo), ADR-0139 (AEA como fuente), ADR-0136
   (por qué ADEBA no servía), ADR-0088 (`sector_privado`)
-
 
 > **⚠️ CORREGIDO POR ADR-0148.** La conclusión de este ADR («no sirve») fue
 > revertida al hacer lo que él mismo señalaba como único camino: **sumar
@@ -14,17 +21,24 @@
 > meses vacíos de 5 a **cero**. El método de este ADR fue correcto; lo que
 > faltaba era volumen. Leer ADR-0148.
 
-## Qué se hizo
+## Opciones consideradas
 
-Se construyó el indicador **Apoyo Público** de la revisión externa, siguiendo el
-protocolo de ADR-0131 en orden: **reglas de inclusión escritas antes de ver los
-datos**, universo relevado, primera pasada de codificación completa, métrica
-calculada. Recién entonces se evaluó si servía.
+_El ADR original no registró opciones alternativas._
 
-**No sirve**, y conviene decir con precisión por qué: no falló la fuente, ni las
-reglas, ni la codificación. Falló la **frecuencia del fenómeno**.
+## Decisión
 
-## El resultado
+1. **No se incorpora al ITCP.** `sector_privado` sigue con
+   `brecha_obra_publica` como único indicador.
+2. **La fuente y el registro quedan versionados** —`apoyo_empresario_reglas.json`
+   y `apoyo_empresario_codificacion.json`, con los 46 casos, su codificación y
+   su motivo—, porque son reutilizables y porque el negativo tiene que ser
+   auditable.
+3. **No se pidió la segunda pasada.** El kappa habría medido la concordancia de
+   una métrica que ya se sabe inservible; hacerle gastar el tiempo a otra persona
+   para eso no se justifica. Si el punto se retoma con más cámaras, la segunda
+   pasada vuelve a ser obligatoria.
+
+### Consecuencias
 
 46 comunicados de AEA entre mar-2020 y mar-2026, codificados en dos ejes
 —postura y destinatario— como exige ADR-0136:
@@ -51,7 +65,19 @@ La serie de saldo en ventana de 12 meses lo muestra sin ambigüedad:
 Un indicador cuyo valor lo decide la presencia o ausencia de un solo documento
 no mide postura empresaria: mide el calendario de publicación de una entidad.
 
-## Las reglas mordieron, y ése era el punto
+## Más información
+
+### Qué se hizo
+
+Se construyó el indicador **Apoyo Público** de la revisión externa, siguiendo el
+protocolo de ADR-0131 en orden: **reglas de inclusión escritas antes de ver los
+datos**, universo relevado, primera pasada de codificación completa, métrica
+calculada. Recién entonces se evaluó si servía.
+
+**No sirve**, y conviene decir con precisión por qué: no falló la fuente, ni las
+reglas, ni la codificación. Falló la **frecuencia del fenómeno**.
+
+### Las reglas mordieron, y ése era el punto
 
 Tres casos donde la regla escrita de antemano contradijo la expectativa. Se
 registran porque son la prueba de que el protocolo sirve:
@@ -70,20 +96,7 @@ registran porque son la prueba de que el protocolo sirve:
 Sin esas tres reglas el indicador habría «funcionado» mucho mejor y habría estado
 midiendo otra cosa.
 
-## Decisión
-
-1. **No se incorpora al ITCP.** `sector_privado` sigue con
-   `brecha_obra_publica` como único indicador.
-2. **La fuente y el registro quedan versionados** —`apoyo_empresario_reglas.json`
-   y `apoyo_empresario_codificacion.json`, con los 46 casos, su codificación y
-   su motivo—, porque son reutilizables y porque el negativo tiene que ser
-   auditable.
-3. **No se pidió la segunda pasada.** El kappa habría medido la concordancia de
-   una métrica que ya se sabe inservible; hacerle gastar el tiempo a otra persona
-   para eso no se justifica. Si el punto se retoma con más cámaras, la segunda
-   pasada vuelve a ser obligatoria.
-
-## El único camino que queda, y lo que cuesta
+### El único camino que queda, y lo que cuesta
 
 **Sumar cámaras.** UIA, CAMARCO y SRA tienen secciones de prensa vivas (ADR-0139;
 SRA está en `sra.ar`, no en el dominio viejo). Con cuatro o cinco entidades el
@@ -96,7 +109,7 @@ cámara con su segunda pasada correspondiente. **No se hace ahora**, y queda dic
 que el resultado tampoco está garantizado — puede que el conjunto siga siendo
 demasiado infrecuente.
 
-## Lo que este ADR deja probado, más allá del indicador
+### Lo que este ADR deja probado, más allá del indicador
 
 Que el protocolo de ADR-0131 funciona como control y no como trámite: escribir
 las reglas antes evitó tres decisiones que habrían inflado el indicador, y la

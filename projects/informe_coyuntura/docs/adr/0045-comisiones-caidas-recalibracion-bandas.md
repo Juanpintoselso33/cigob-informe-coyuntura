@@ -1,12 +1,18 @@
+---
+madr: 4
+id: '0045'
+estado: 'aceptado'
+fecha: 2026-07-09
+cinturon: 'politica'
+parametros: ['BANDAS_ITCP["comisiones_caidas"]']
+archivos: ['scripts/itcp.py', 'tests/test_itcp.py', 'web/src/lib/fichas.ts', 'scripts/gate_calidad.py']
+relacionado: ['0058', '0059', '0061', '0064', '0081']
+ambito: '`scripts/itcp.py` (`BANDAS_ITCP["comisiones_caidas"]`) · `tests/test_itcp.py` · `web/src/lib/fichas.ts` · `scripts/gate_calidad.py` (excepción G3 de votometro_ventaja_lla, hallazgo menor de la misma auditoría)'
+---
+
 # ADR-0045 — comisiones_caidas: recalibración de bandas ITCP (saturación en espejo)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-09 |
-| **Ámbito** | `scripts/itcp.py` (`BANDAS_ITCP["comisiones_caidas"]`) · `tests/test_itcp.py` · `web/src/lib/fichas.ts` · `scripts/gate_calidad.py` (excepción G3 de votometro_ventaja_lla, hallazgo menor de la misma auditoría) |
-
-## Contexto
+## Contexto y planteo del problema
 
 Quinta y última recalibración de la tanda del 2026-07-09, encontrada por la
 auditoría adversarial indicador-por-indicador del cinturón político (todas
@@ -30,6 +36,19 @@ saturación como limitación conocida ("el indicador satura en el tope y
 pierde capacidad de discriminar la coyuntura") — estaba diagnosticada,
 nunca accionada.
 
+## Opciones consideradas
+
+- **Dejar las anclas del doc** ("es la operacionalización institucional") —
+  descartada: ADR-0036 ya estableció que la operacionalización del ITCP es
+  editorial (el doc describe dimensiones, no fija anclas validadas), y la
+  regla de proyecto (lanzamiento agosto 2026) prohíbe sentarse sobre
+  bandas que se saben rotas. Cuatro precedentes idénticos el mismo día.
+- **Cambiar la métrica en vez de las anclas** (p.ej. medir solo dictámenes
+  con ≥6 meses de antigüedad, eliminando el sesgo de ventana) — descartada
+  por ahora: cambia la definición pública del indicador a semanas del
+  lanzamiento; las anclas recalibradas logran la discriminación sin tocar
+  la semántica. Queda como mejora posible post-lanzamiento.
+
 ## Decisión
 
 Anclas nuevas: **96 / 97 / 98 / 99** (menor = mejor, tramos extremos
@@ -52,20 +71,7 @@ nueva a mitad de mes los separa más). Excepción G3 agregada con el mismo
 fundamento documentado que cohesion_bloque/cohesion_bloque_senado/
 alineamiento_senadores_prov.
 
-## Opciones consideradas
-
-- **Dejar las anclas del doc** ("es la operacionalización institucional") —
-  descartada: ADR-0036 ya estableció que la operacionalización del ITCP es
-  editorial (el doc describe dimensiones, no fija anclas validadas), y la
-  regla de proyecto (lanzamiento agosto 2026) prohíbe sentarse sobre
-  bandas que se saben rotas. Cuatro precedentes idénticos el mismo día.
-- **Cambiar la métrica en vez de las anclas** (p.ej. medir solo dictámenes
-  con ≥6 meses de antigüedad, eliminando el sesgo de ventana) — descartada
-  por ahora: cambia la definición pública del indicador a semanas del
-  lanzamiento; las anclas recalibradas logran la discriminación sin tocar
-  la semántica. Queda como mejora posible post-lanzamiento.
-
-## Consecuencias
+### Consecuencias
 
 - Los 5 indicadores con banda propia del ITCP recalibrados o validados hoy
   quedan todos discriminando sobre rangos reales: alineamiento (ADR-0038),

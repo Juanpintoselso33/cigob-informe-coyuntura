@@ -1,20 +1,69 @@
+---
+madr: 4
+id: '0155'
+estado: 'aceptado'
+fecha: 2026-07-30
+cinturon: 'vida'
+ambito: 'validación externa del ITVC + matriz de validación cruzada'
+---
+
 # ADR-0155 — El ancla de validación del ITVC pasa a ser el consumo medido
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-30
-- **Ámbito**: validación externa del ITVC + matriz de validación cruzada
 - **Descarta**: la decisión 6 de ADR-0019 en lo que refiere al ancla del ITVC
   (ITVC ↔ ICC), y con ella la variante publicada «ITVC sin ICC»
 - **Relacionados**: ADR-0031 (matriz cruzada), ADR-0154 (mismo cambio en el ITCM,
   con el criterio que se aplica acá), ADR-0108 (redundancia interna),
   ADR-0045 (no mover nada para que un número quede mejor)
 
-## Contexto
+## Contexto y planteo del problema
 
 El editor observó que **el ITVC casi no se mueve** y de ahí salió que había que
 revisar la validación externa. Las dos cosas resultaron ciertas y separadas.
 
-## 1. Cuánto se mueve, y por qué
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+El ancla del ITVC pasa a ser el **consumo medido**: ventas en supermercados a
+precios constantes, **serie desestacionalizada del INDEC**
+(`455.1_VENTAS_PREADA_0_M_44_44`, vía datos.gob.ar), rebaseada al mismo 4T-2023
+que usan los componentes.
+
+| | niveles | diferencias |
+|---|---|---|
+| ICC (ancla anterior, sobre el ITVC sin ICC) | +0,337 | +0,106 |
+| **consumo (ancla nueva, sobre el ITVC completo)** | **+0,596** | **+0,246** |
+
+Mejor en las dos, **sin circularidad** —así que la comparación usa el índice que
+efectivamente se publica— y el +0,246 en diferencias pasa a ser el segundo más
+alto del proyecto después del líder contra el ITCM.
+
+El ICC **no se descarta**: queda como contraste **discriminante** en la
+conclusión. Es lo que en realidad es —mide si la percepción sigue a las
+condiciones— y el hallazgo publicable es que en estos años lo hizo flojo. Un r
+más bajo ahí no es una falla, es el resultado.
+
+En la matriz cruzada el par propio del ITVC pasa a ser el consumo.
+
+### Consecuencias
+
+- Desaparece del tablero la variante «ITVC sin su componente de percepción»: la
+  serie graficada es el ITVC completo.
+- El ancla cubre **comercio registrado de supermercados**. No ve el comercio
+  informal. Declarado en la ficha.
+- El canal **mayorista/discounter correlaciona negativo** (−0,16), y sumarlo al
+  ancla empeora el ajuste (+0,12 el combinado). La lectura probable es que
+  comprar ahí es señal de ajuste y no de holgura, así que el canal se mueve
+  contra las condiciones. **Se deja como hipótesis, no como conclusión**: no se
+  midió más allá de la correlación.
+- Una dependencia de red nueva (datos.gob.ar, ya usada por el resto del
+  pipeline), y ninguna de más: el ICC ya se descargaba porque es componente.
+
+## Más información
+
+### 1. Cuánto se mueve, y por qué
 
 Sobre la reconstrucción de 32 meses, contra los otros tres índices:
 
@@ -59,7 +108,7 @@ publicar la **dispersión** de los componentes al lado del neto: hoy el tablero
 dice «sin cambios» donde el dato dice «no cambió en neto, pero se recompuso
 fuerte por dentro».
 
-## 2. Lo que sí estaba mal era el ancla
+### 2. Lo que sí estaba mal era el ancla
 
 **Corrección de un error propio, primero.** En el análisis dije que un índice
 chato «no puede correlacionar fuerte con nada». Es falso: la correlación de
@@ -91,30 +140,7 @@ Sumado a eso, el ICC tenía un problema de diseño: **es un componente del ITVC*
 (6,75%), y por eso había que publicar un «ITVC sin ICC» —un número que no es el
 que se publica en el tablero— sólo para que la comparación no fuera circular.
 
-## Decisión
-
-El ancla del ITVC pasa a ser el **consumo medido**: ventas en supermercados a
-precios constantes, **serie desestacionalizada del INDEC**
-(`455.1_VENTAS_PREADA_0_M_44_44`, vía datos.gob.ar), rebaseada al mismo 4T-2023
-que usan los componentes.
-
-| | niveles | diferencias |
-|---|---|---|
-| ICC (ancla anterior, sobre el ITVC sin ICC) | +0,337 | +0,106 |
-| **consumo (ancla nueva, sobre el ITVC completo)** | **+0,596** | **+0,246** |
-
-Mejor en las dos, **sin circularidad** —así que la comparación usa el índice que
-efectivamente se publica— y el +0,246 en diferencias pasa a ser el segundo más
-alto del proyecto después del líder contra el ITCM.
-
-El ICC **no se descarta**: queda como contraste **discriminante** en la
-conclusión. Es lo que en realidad es —mide si la percepción sigue a las
-condiciones— y el hallazgo publicable es que en estos años lo hizo flojo. Un r
-más bajo ahí no es una falla, es el resultado.
-
-En la matriz cruzada el par propio del ITVC pasa a ser el consumo.
-
-## Trampa de método, para no repetirla
+### Trampa de método, para no repetirla
 
 La primera medición dio el ancla con **signo negativo** (−0,514) y estuve a punto
 de reportar como hallazgo grave que «el ITVC subió mientras el consumo se
@@ -126,17 +152,3 @@ ese mismo tramo da **+0,859**.
 La regla que queda: **si hay que suavizar una serie para compararla, usar la
 desestacionalizada de la fuente antes que una media móvil propia** — y si no
 existe, medir el rezago que introduce el suavizado antes de interpretar el signo.
-
-## Consecuencias
-
-- Desaparece del tablero la variante «ITVC sin su componente de percepción»: la
-  serie graficada es el ITVC completo.
-- El ancla cubre **comercio registrado de supermercados**. No ve el comercio
-  informal. Declarado en la ficha.
-- El canal **mayorista/discounter correlaciona negativo** (−0,16), y sumarlo al
-  ancla empeora el ajuste (+0,12 el combinado). La lectura probable es que
-  comprar ahí es señal de ajuste y no de holgura, así que el canal se mueve
-  contra las condiciones. **Se deja como hipótesis, no como conclusión**: no se
-  midió más allá de la correlación.
-- Una dependencia de red nueva (datos.gob.ar, ya usada por el resto del
-  pipeline), y ninguna de más: el ICC ya se descargaba porque es componente.

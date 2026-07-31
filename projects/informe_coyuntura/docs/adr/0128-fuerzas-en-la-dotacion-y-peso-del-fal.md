@@ -1,17 +1,39 @@
-# ADR-0128 — Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión
+---
+madr: 4
+id: '0128'
+estado: 'aceptado'
+fecha: 2026-07-25
+cinturon: 'gestion'
+indicadores: [reduccion_estado, reforma_laboral]
+ambito: 'ITCG · `reduccion_estado` (contexto) · dimensión `reforma_laboral` (pesos)'
+origen: 'Aporte externo sobre el cinturón de gestión (doc 260723), puntos 2 y 4'
+---
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCG · `reduccion_estado` (contexto) · dimensión `reforma_laboral` (pesos) |
-| **Fecha** | 2026-07-25 |
-| **Origen** | Aporte externo sobre el cinturón de gestión (doc 260723), puntos 2 y 4 |
+# ADR-0128 — Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión
 
 Cierra los dos pendientes del aporte de gestión que no se habían resuelto.
 
 ---
 
-## 1. El denominador de la dotación APN incluye a las fuerzas
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Más información
+
+### Limitaciones
+
+- El desglose de fuerzas **no se incorpora a la serie histórica**, sólo a la
+  card: la hoja de detalle no cubre todo el período con la misma consistencia
+  que el cuadro principal.
+- Las siete entidades se identifican **por nombre**. Si el INDEC renombra una,
+  el desglose la pierde en silencio y el total publicado no cambiaría — el
+  contexto quedaría subestimado sin que nada avise.
+- El peso 50/50 es **una convención igual que el 70/30 anterior**. Ninguno de
+  los dos sale de un documento de diseño; lo que cambia es que ahora hay un
+  argumento escrito a favor del reparto elegido.
+
+### 1. El denominador de la dotación APN incluye a las fuerzas
 
 > "Habría que confirmar que el denominador de APN a achicar no incluye fuerzas
 > armadas y de seguridad."
@@ -58,7 +80,7 @@ meses distintos produciría una planta civil inventada.
 
 ---
 
-## 2. El FAL pasa a pesar la mitad de su dimensión
+### 2. El FAL pasa a pesar la mitad de su dimensión
 
 > "Cambiar el valor de los indicadores, y tomar un 50% para el FAL y otro 50%
 > para Litigiosidad."
@@ -102,15 +124,3 @@ que incluyen los dos que el aporte menciona más el marco financiero de la CNV.
 Reemplazarlo por dos hitos sería perder resolución.
 
 ---
-
-## Limitaciones declaradas
-
-- El desglose de fuerzas **no se incorpora a la serie histórica**, sólo a la
-  card: la hoja de detalle no cubre todo el período con la misma consistencia
-  que el cuadro principal.
-- Las siete entidades se identifican **por nombre**. Si el INDEC renombra una,
-  el desglose la pierde en silencio y el total publicado no cambiaría — el
-  contexto quedaría subestimado sin que nada avise.
-- El peso 50/50 es **una convención igual que el 70/30 anterior**. Ninguno de
-  los dos sale de un documento de diseño; lo que cambia es que ahora hay un
-  argumento escrito a favor del reparto elegido.

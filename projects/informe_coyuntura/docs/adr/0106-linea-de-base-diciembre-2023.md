@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0106'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'macro'
+archivos: ['publicar._linea_base', 'validacion_externa.linea_base_itcm']
+ambito: 'ITCM · card pública "Punto de partida" · `publicar._linea_base` · `validacion_externa.linea_base_itcm`'
+origen: 'Auditoría de consistencia del cinturón macro, sección IV.1 (prioridad alta)'
+---
+
 # ADR-0106 — El ITCM publica su punto de partida
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCM · card pública "Punto de partida" · `publicar._linea_base` · `validacion_externa.linea_base_itcm` |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría de consistencia del cinturón macro, sección IV.1 (prioridad alta) |
-
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría de macro señaló una brecha entre lo que el índice mide y lo que el
 producto promete:
@@ -26,6 +30,10 @@ promesa."*
 Era el último punto de prioridad alta sin implementar de las cuatro auditorías
 de julio.
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 El bloque del ITCM publica una card con el índice de **diciembre de 2023**, el
@@ -43,7 +51,22 @@ que ya se usaba para validar el índice contra el riesgo país
 número distinto del que el propio informe usa para validarse, y no habría forma
 de saber cuál está bien. El test lo ata: base y serie tienen que coincidir.
 
-## La cobertura se publica junto al número
+### Consecuencias
+
+- `linea_base_itcm` se persiste en `output/validacion_externa.json` junto a la
+  serie, con su cobertura y la lista de componentes sin dato — calculada, no
+  escrita a mano, para que no quede vieja cuando una serie gane historia.
+- La card hereda entera la familia visual de las cards de robustez del ITCP
+  (marco, hero, rótulo en versalita, separador punteado). Se comparó por
+  captura contra la card de rezago antes de publicar.
+- `tests/test_linea_base.py` (5 casos) cubre lo que puede pudrirse en silencio:
+  que base y reconstrucción no diverjan, que el piso de cobertura frene, que el
+  número del texto público sea el mismo que el del dato, y que el texto no tenga
+  siglas internas ni números de ADR.
+
+## Más información
+
+### La cobertura se publica junto al número
 
 Diciembre de 2023 es **el mes peor cubierto de toda la serie**: varias series
 arrancan con el mandato. La base se calcula sobre el **83% del peso** del
@@ -60,7 +83,7 @@ con 79% de cobertura, da 61,4 contra 62,1 del índice publicado — **0,7 puntos
 La diferencia grande que aparecía en junio (52,4 vs 62,1) no era un problema de
 método sino de cobertura: ese mes todavía tiene la mitad del índice sin dato.
 
-## Por qué sólo el ITCM
+### Por qué sólo el ITCM
 
 Se evaluó extenderlo a los otros cinturones y **no corresponde**:
 
@@ -78,20 +101,7 @@ El ITCM es distinto porque sus componentes son variables macro que en diciembre
 de 2023 tenían valores reales y malos: su 26,3 mide una situación, no un
 contador en cero.
 
-## Consecuencias
-
-- `linea_base_itcm` se persiste en `output/validacion_externa.json` junto a la
-  serie, con su cobertura y la lista de componentes sin dato — calculada, no
-  escrita a mano, para que no quede vieja cuando una serie gane historia.
-- La card hereda entera la familia visual de las cards de robustez del ITCP
-  (marco, hero, rótulo en versalita, separador punteado). Se comparó por
-  captura contra la card de rezago antes de publicar.
-- `tests/test_linea_base.py` (5 casos) cubre lo que puede pudrirse en silencio:
-  que base y reconstrucción no diverjan, que el piso de cobertura frene, que el
-  número del texto público sea el mismo que el del dato, y que el texto no tenga
-  siglas internas ni números de ADR.
-
-## Lo que esta card no dice
+### Lo que esta card no dice
 
 No dice que la mejora sea atribuible al gobierno, ni que 35,8 puntos sean
 "mucho". Dice dónde estaba el índice al inicio del mandato y dónde está hoy,

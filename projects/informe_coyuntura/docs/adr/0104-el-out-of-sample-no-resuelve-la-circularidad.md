@@ -1,13 +1,37 @@
+---
+madr: 4
+id: '0104'
+estado: 'aceptado'
+nota_estado: 'Aceptado (resultado negativo)'
+fecha: 2026-07-20
+archivos: ['scripts/out_of_sample.py']
+continua: ['0103']
+ambito: 'Validación del método · `scripts/out_of_sample.py`'
+---
+
 # ADR-0104 — El out-of-sample no puede resolver la circularidad, y por qué
 
-| | |
-|---|---|
-| **Estado** | Aceptado (resultado negativo) |
-| **Ámbito** | Validación del método · `scripts/out_of_sample.py` |
-| **Fecha** | 2026-07-20 |
 | **Continúa** | ADR-0103 (procedencia de las anclas) |
 
-## Qué se intentó
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+`scripts/out_of_sample.py` se conserva, pero **no emite veredictos**. Marca
+candidatos (`mirar` / `sin señal`) y publica al lado el **rango crudo de cada
+ventana**, que es el dato que permite decidir cuál de las dos causas está
+operando. La decisión queda en quien lee, que es donde puede estar.
+
+`brecha_obra_publica` funciona como **control positivo** del método: 100 meses
+de serie y anclas que ADR-0088 declara explícitamente no calibradas contra el
+rango observado. Sale `sin señal`, como debe. Si algún día dispara, lo primero
+a sospechar es el test.
+
+## Más información
+
+### Qué se intentó
 
 ADR-0103 dejó medido que entre el 51% y el 83% del peso de cada índice descansa
 en anclas calibradas contra el período que se está midiendo. El paso natural
@@ -19,7 +43,7 @@ separando meses buenos de malos en cualquier período.
 El intento falló por dos razones independientes. Las dos importan más que el
 resultado que se buscaba.
 
-## Razón 1 — No hay contra qué medir
+### Razón 1 — No hay contra qué medir
 
 Sólo 6 de los 42 indicadores tienen una ventana previa utilizable (≥12 puntos
 anteriores a dic-2023). En peso:
@@ -40,7 +64,7 @@ desde dic-2018 pero es **anual** (cinco puntos previos), y `tcrm` declara
 calibrarse con la historia 1997-2026 pero esa serie vive en el BCRA y no en el
 repositorio — la afirmación es plausible y no verificable localmente.
 
-## Razón 2 — La prueba no distingue lo que dice distinguir
+### Razón 2 — La prueba no distingue lo que dice distinguir
 
 Ésta es la razón de fondo, y se descubrió porque la primera versión del script
 **dio un resultado falso**.
@@ -66,19 +90,7 @@ exactamente lo que ADR-0045 ya obliga a verificar antes de recalibrar contra el
 rango observado. El out-of-sample no aporta un atajo a ese juicio: lo replica
 con menos información.
 
-## Decisión
-
-`scripts/out_of_sample.py` se conserva, pero **no emite veredictos**. Marca
-candidatos (`mirar` / `sin señal`) y publica al lado el **rango crudo de cada
-ventana**, que es el dato que permite decidir cuál de las dos causas está
-operando. La decisión queda en quien lee, que es donde puede estar.
-
-`brecha_obra_publica` funciona como **control positivo** del método: 100 meses
-de serie y anclas que ADR-0088 declara explícitamente no calibradas contra el
-rango observado. Sale `sin señal`, como debe. Si algún día dispara, lo primero
-a sospechar es el test.
-
-## Consecuencia para la pregunta original
+### Consecuencia para la pregunta original
 
 **La circularidad señalada por la auditoría no se puede resolver empíricamente
 con los datos disponibles.** No es una limitación del esfuerzo puesto: es que

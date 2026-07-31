@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0070'
+estado: 'aceptado'
+fecha: 2026-07-16
+cinturon: 'politica'
+indicadores: [eficacia_legislativa]
+archivos: ['validacion_externa.py']
+relacionado: ['0061', '0069']
+ambito: 'Validación externa del ITCP (`validacion_externa.py`) · `eficacia_legislativa` (solo la serie reconstruida; la card no se toca)'
+---
+
 # ADR-0070 — máscara de era para eficacia_legislativa en la reconstrucción del ITCP
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Validación externa del ITCP (`validacion_externa.py`) · `eficacia_legislativa` (solo la serie reconstruida; la card no se toca) |
-| **Fecha** | 2026-07-16 |
-| **Precedentes directos** | ADR-0061 (cohorte madura 12-24m) · la exclusión de dic-2023 de la reconstrucción (2026-07-09, documentada en el docstring de `construir_serie_itcp`) · ADR-0069 (mismo diagnóstico, la pata constructiva) |
-
-## Contexto
+## Contexto y planteo del problema
 
 La revisión de la correlación ITCP↔EPU (2026-07-16) localizó el descalce en
 2024: r=−0,03 en ese año contra −0,74 en 2025. Al descomponer la
@@ -28,6 +33,12 @@ hay recomposición que correlacione contra una serie sin varianza), la
 madurez corta reintroduce el sesgo que ADR-0061 eliminó, y cambiar la
 metodología de la card duplicaría su valor actual sin revisión editorial.
 
+## Opciones consideradas
+
+- Rediseñar el indicador (madurez 4m / cohorte acumulada desde dic-2023)
+- No hacer nada (documentar y dejar la serie como estaba)
+- Enmascarar solo los meses de cohorte 100% pre-gestión (ene→nov-2024)
+
 ## Decisión
 
 En `construir_serie_itcp` (solo la reconstrucción de validación),
@@ -44,7 +55,25 @@ ponderados mayormente por expedientes pre-gestión, aunque un corte más laxo
 diera una correlación parecida. La card publicada no cambia: su cohorte
 actual ya es 100% de esta gestión.
 
-## Opciones consideradas
+### Consecuencias
+
+- La reconstrucción del ITCP usa eficacia solo desde dic-2025 (7 de los ~30
+  meses); antes, la dimensión Poder legislativo se reparte entre ratio_dnu,
+  derrotas, veto_quorum y — desde ADR-0069 — bloqueo_sostenido, que sí
+  miden 2024.
+- La correlación publicada ITCP↔EPU mejora por remoción de artefacto (no
+  por recalibración): el registro del cambio queda en este ADR y el
+  docstring de `construir_serie_itcp`.
+- El r anual de 2024 sigue ≈0 y está bien que así sea: el EPU no tuvo
+  varianza ese año (la incertidumbre de política económica en prensa se
+  planchó con la desinflación mientras el capital legislativo se erosionaba
+  — divergencia real de constructos, documentada acá para no re-diagnosticarla
+  como bug).
+- Pendiente declarado: mostrar al editor junto con ADR-0069; si algún día
+  se rediseña la cohorte del indicador (variante acumulada), esta máscara
+  se vuelve innecesaria y se retira.
+
+## Pros y contras de las opciones
 
 ### Rediseñar el indicador (madurez 4m / cohorte acumulada desde dic-2023)
 
@@ -70,20 +99,8 @@ Rechazada: deja adentro los meses de cohorte mixta, que siguen dominados
 por expedientes de la gestión anterior; el corte "100% de la era" es el
 único punto no arbitrario de la transición.
 
-## Consecuencias
+## Más información
 
-- La reconstrucción del ITCP usa eficacia solo desde dic-2025 (7 de los ~30
-  meses); antes, la dimensión Poder legislativo se reparte entre ratio_dnu,
-  derrotas, veto_quorum y — desde ADR-0069 — bloqueo_sostenido, que sí
-  miden 2024.
-- La correlación publicada ITCP↔EPU mejora por remoción de artefacto (no
-  por recalibración): el registro del cambio queda en este ADR y el
-  docstring de `construir_serie_itcp`.
-- El r anual de 2024 sigue ≈0 y está bien que así sea: el EPU no tuvo
-  varianza ese año (la incertidumbre de política económica en prensa se
-  planchó con la desinflación mientras el capital legislativo se erosionaba
-  — divergencia real de constructos, documentada acá para no re-diagnosticarla
-  como bug).
-- Pendiente declarado: mostrar al editor junto con ADR-0069; si algún día
-  se rediseña la cohorte del indicador (variante acumulada), esta máscara
-  se vuelve innecesaria y se retira.
+### Precedentes directos
+
+ADR-0061 (cohorte madura 12-24m) · la exclusión de dic-2023 de la reconstrucción (2026-07-09, documentada en el docstring de `construir_serie_itcp`) · ADR-0069 (mismo diagnóstico, la pata constructiva)

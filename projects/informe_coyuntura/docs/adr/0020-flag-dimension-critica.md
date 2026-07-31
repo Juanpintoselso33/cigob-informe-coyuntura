@@ -1,9 +1,14 @@
+---
+madr: 4
+id: '0020'
+estado: 'aceptado'
+nota_estado: 'aceptada (resuelve la Decisión 2 del ADR-0019 por la opción b)'
+fecha: 2026-07-03
+---
+
 # ADR-0020 — Flag de dimensión crítica: la compensabilidad se señaliza, no se corrige
 
-- **Fecha:** 2026-07-03
-- **Estado:** aceptada (resuelve la Decisión 2 del ADR-0019 por la opción b)
-
-## Contexto
+## Contexto y planteo del problema
 
 Las tres paramétricas agregan dimensiones con **promedio ponderado lineal**,
 que implica sustituibilidad perfecta: un colapso en una dimensión queda
@@ -14,6 +19,18 @@ reforma laboral (10/100 — cero materialización del Fondo de Cese) queda tapad
 por el componente cambiario (~90); en el ITVC el colapso crediticio
 (vulnerabilidad 31,7 — mora de familias ×5,5) queda amortiguado por motos e
 ingresos.
+
+## Opciones consideradas
+
+- **(a) Status quo silencioso**: dejar la lineal sin señal. Descartada: es el
+  punto débil comunicacional exacto que un lector crítico ataca ("el índice
+  esconde el colapso crediticio detrás de las motos").
+- **(b) Flag visible (elegida)**: fórmula intacta, compensación explícita.
+  Costo cero sobre las series y la comparabilidad.
+- **(c) Media geométrica** (IDH 2010): castiga desequilibrios pero cambia
+  todos los valores publicados, rompe la comparabilidad y complica la
+  comunicación ("¿por qué bajó si nada empeoró?"). Queda disponible como
+  evolución futura si CIGOB la adopta en el doc — este flag no la bloquea.
 
 ## Decisión
 
@@ -33,19 +50,7 @@ compensa" en la card de la dimensión.
 El flag se recalcula en cada corrida de `publicar.py` (pineado en
 `tests/test_publicar.py::test_dimensiones_criticas_marcadas`).
 
-## Opciones consideradas
-
-- **(a) Status quo silencioso**: dejar la lineal sin señal. Descartada: es el
-  punto débil comunicacional exacto que un lector crítico ataca ("el índice
-  esconde el colapso crediticio detrás de las motos").
-- **(b) Flag visible (elegida)**: fórmula intacta, compensación explícita.
-  Costo cero sobre las series y la comparabilidad.
-- **(c) Media geométrica** (IDH 2010): castiga desequilibrios pero cambia
-  todos los valores publicados, rompe la comparabilidad y complica la
-  comunicación ("¿por qué bajó si nada empeoró?"). Queda disponible como
-  evolución futura si CIGOB la adopta en el doc — este flag no la bloquea.
-
-## Consecuencias
+### Consecuencias
 
 - Hoy quedan señaladas: **reforma laboral (10/100)** en el ITCG y
   **vulnerabilidad financiera (31,7)** en el ITVC. El ITCM no tiene

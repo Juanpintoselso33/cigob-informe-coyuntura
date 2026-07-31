@@ -1,12 +1,18 @@
+---
+madr: 4
+id: '0073'
+estado: 'rechazado'
+nota_estado: '**Rechazado** (implementado y revertido el 18-jul-2026)'
+fecha: 2026-07-18
+cinturon: 'macro'
+indicadores: [tcrm]
+ambito: 'Cinturón macro · ITCM · dimensión Competitividad externa · `tcrm`'
+origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 5'
+---
+
 # ADR-0073 — Regla anti-salto para el TCRM: **RECHAZADA**
 
-| | |
-|---|---|
-| **Estado** | **Rechazado** (implementado y revertido el 18-jul-2026) |
-| **Ámbito** | Cinturón macro · ITCM · dimensión Competitividad externa · `tcrm` |
-| **Fecha** | 2026-07-18 |
 | **Precedentes** | ADR-0056 (regla del saldo comercial, cuya forma se copió) · ADR-0021 (puntaje interpolado) |
-| **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 5 |
 | **Revertido por** | Revisión adversarial externa del mismo día |
 
 > **Este ADR documenta una decisión que se tomó y se deshizo.** Se conserva
@@ -15,21 +21,13 @@
 > `tests/test_itcm_tcrm_sin_regla_salto.py`, ejecutable, para que no dependa de
 > que alguien lea este documento.
 
-## Lo que pedía la auditoría
+## Opciones consideradas
 
-Que la banda superior del TCRM fuera condicional a la velocidad de la
-depreciación. El argumento: las bandas miran sólo el nivel —por encima de 110
-puntúan 100— así que **"una crisis cambiaria mejoraría el puntaje de
-competitividad mientras destruye el de estabilidad"**. El caso concreto es real:
+_El ADR original no registró opciones alternativas._
 
-| mes | ITCRM | var. m/m | puntaje de competitividad |
-|---|---|---|---|
-| nov-2023 | 83,2 | — | 43,0 |
-| **dic-2023** | **124,9** | **+50,1%** | **100,0** |
-| ene-2024 | 132,8 | +6,3% | 100,0 |
-| abr-2024 | 97,0 | −8,4% | 71,2 |
+## Decisión
 
-## Lo que se implementó
+### Lo que se implementó
 
 Un descuento interpolado hacia un piso de 55 puntos cuando el nivel alto se
 alcanzaba por un salto, medido como el máximo de las variaciones mensuales de
@@ -41,7 +39,7 @@ crisis cambiarias (Kaminsky-Lizondo-Reinhart media+3σ, Edison media+2,5σ) y
 resultó indiferente: sobre esta serie los cuatro umbrales detectan el mismo
 único mes.
 
-## Por qué se rechaza
+### Por qué se rechaza
 
 ### 1. La premisa no se sostiene: el índice ya resolvía bien el episodio
 
@@ -115,7 +113,23 @@ hoy por lo que pasó hasta ocho meses atrás incorpora un pronóstico ("esto va 
 revertir") a una medida de estado, sin que el resto del sistema siga esa
 convención.
 
-## Qué queda en pie
+## Más información
+
+### Lo que pedía la auditoría
+
+Que la banda superior del TCRM fuera condicional a la velocidad de la
+depreciación. El argumento: las bandas miran sólo el nivel —por encima de 110
+puntúan 100— así que **"una crisis cambiaria mejoraría el puntaje de
+competitividad mientras destruye el de estabilidad"**. El caso concreto es real:
+
+| mes | ITCRM | var. m/m | puntaje de competitividad |
+|---|---|---|---|
+| nov-2023 | 83,2 | — | 43,0 |
+| **dic-2023** | **124,9** | **+50,1%** | **100,0** |
+| ene-2024 | 132,8 | +6,3% | 100,0 |
+| abr-2024 | 97,0 | −8,4% | 71,2 |
+
+### Qué queda en pie
 
 - **El TCRM se puntúa por su nivel y nada más.** Sin regla automática.
 - **La observación 5 de la auditoría pasa a "verificada, no requiere cambio"**,
@@ -133,7 +147,7 @@ convención.
   o de importar menos, y el saldo no lo distingue—, que es un caso distinto del
   de un indicador que ya se corrige solo.
 
-## Lección de proceso
+### Lección de proceso
 
 La observación de la auditoría era intuitiva y sonaba correcta, y se aceptó su
 premisa sin verificarla. **La verificación costaba una consulta**: reconstruir el

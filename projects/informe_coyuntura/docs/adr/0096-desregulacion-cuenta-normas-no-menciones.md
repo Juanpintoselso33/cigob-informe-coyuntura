@@ -1,67 +1,20 @@
+---
+madr: 4
+id: '0096'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'gestion'
+indicadores: [desregulacion_normativa]
+modificado_por: ['0125']
+ambito: 'ITCG · `desregulacion_normativa` · serie · caché por norma'
+origen: 'Auditoría externa del cinturón de gestión (doc 1), prioridad alta'
+---
+
 # ADR-0096 — Desregulación: contar normas derogadas, no menciones de una palabra
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCG · `desregulacion_normativa` · serie · caché por norma |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría externa del cinturón de gestión (doc 1), prioridad alta |
+## Opciones consideradas
 
-## Lo que decía la auditoría
-
-> "El DNU 70/23 —el megadecreto de desregulación de diciembre de 2023,
-> probablemente el acto normativo individual más significativo de todo el
-> programa desregulador— **queda fuera del conteo porque no está indexado como
-> texto completo en InfoLeg**. Esto es un problema serio de validez de
-> constructo."
-
-Era su recomendación de prioridad más alta.
-
-## La premisa era falsa, y el error era nuestro
-
-**El DNU 70/2023 sí está indexado y siempre estuvo contado.** La consulta actual
-lo devuelve:
-
-```
-Decreto DNU 70/2023 · PEN · 21-dic-2023
-BASES PARA LA RECONSTRUCCION DE LA ECONOMIA ARGENTINA
-```
-
-Lo importante no es que la auditoría se equivocara, sino **de dónde sacó el
-dato**: de nuestra propia ficha metodológica, que afirmaba textualmente que "el
-megadecreto 70/2023 no está indexado como texto completo en la fuente y no
-aparece en el conteo". El auditor leyó la documentación, la creyó —es lo
-correcto— y construyó sobre ella su recomendación principal.
-
-Una limitación mal declarada no es un exceso de prudencia: **es información
-falsa que se propaga a quien la lee**, y en este caso costó la prioridad más
-alta de una auditoría externa.
-
-## Los problemas reales
-
-Al ir a verificar la premisa aparecieron tres, ninguno de los cuales era el
-enunciado.
-
-**1. Cerca de la mitad de lo contado no derogaba nada.** La búsqueda de InfoLeg
-matchea la palabra "deroga" en cualquier parte del documento, incluidos los
-considerandos, donde una norma suele relatar lo que derogó *otra*. De 60 normas
-relevadas, **sólo 24 derogan algo en su parte dispositiva**. Entre las contadas
-había una resolución de Cancillería sobre un nombramiento episcopal, que
-menciona un decreto derogado de la Sagrada Congregación Consistorial.
-
-Es la misma familia de error que ADR-0068 (la consulta "fondo de cese laboral"
-contaba el régimen homónimo de la construcción) y que ADR-0091 (`veto_quorum`
-contaba como fracaso de quórum las informativas del art. 71 CN). **Tercer caso
-de una búsqueda de texto completo sobre una base legal que cuenta lo que no es.**
-
-**2. El DNU 70/23 pesaba uno.** Sí estaba contado, pero como una unidad, igual
-que un decreto que elimina un trámite. Deroga **38 normas completas** y modifica
-parcialmente otras 30.
-
-**3. Los objetos derogados son incommensurables.** Lo que se deroga va desde una
-ley entera hasta "el punto 9) del apartado E) del artículo 20 de la Sección II
-del Capítulo I del Título V de las NORMAS". Contar "normas derogadas" sin
-distinguir sería tan arbitrario como contar actos.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -109,17 +62,9 @@ desregulación es un proceso lineal y gradual, cuando en los hechos tuvo un pico
 inicial muy grande"— aunque a partir de una premisa equivocada. La intuición era
 correcta; el mecanismo, no.
 
-## Caché
+## Más información
 
-El análisis por norma vive en `data/gestion/desregulacion_normas.json` y es
-**permanente**: el texto de una norma publicada es inmutable, así que cada
-corrida sólo procesa las nuevas. Sin la caché, cada actualización bajaría 60+
-documentos de InfoLeg.
-
-Se agregó al `git add` del workflow nocturno **en el mismo cambio** — un caché
-que no se commitea no sobrevive al cron y se reconstruye entero cada noche.
-
-## Limitaciones declaradas
+### Limitaciones
 
 - **La escala sigue siendo una convención propia**: 100 normas = plan completo.
   No proviene de ninguna meta oficial. Es el punto 3.2 de la auditoría y este
@@ -134,3 +79,69 @@ que no se commitea no sobrevive al cron y se reconstruye entero cada noche.
   mes**. Describe bien el fenómeno y por eso mismo aporta poca variación al
   índice — el mismo problema de rango dinámico que la segunda auditoría señala
   para TDPS y el FAL.
+
+### Lo que decía la auditoría
+
+> "El DNU 70/23 —el megadecreto de desregulación de diciembre de 2023,
+> probablemente el acto normativo individual más significativo de todo el
+> programa desregulador— **queda fuera del conteo porque no está indexado como
+> texto completo en InfoLeg**. Esto es un problema serio de validez de
+> constructo."
+
+Era su recomendación de prioridad más alta.
+
+### La premisa era falsa, y el error era nuestro
+
+**El DNU 70/2023 sí está indexado y siempre estuvo contado.** La consulta actual
+lo devuelve:
+
+```
+Decreto DNU 70/2023 · PEN · 21-dic-2023
+BASES PARA LA RECONSTRUCCION DE LA ECONOMIA ARGENTINA
+```
+
+Lo importante no es que la auditoría se equivocara, sino **de dónde sacó el
+dato**: de nuestra propia ficha metodológica, que afirmaba textualmente que "el
+megadecreto 70/2023 no está indexado como texto completo en la fuente y no
+aparece en el conteo". El auditor leyó la documentación, la creyó —es lo
+correcto— y construyó sobre ella su recomendación principal.
+
+Una limitación mal declarada no es un exceso de prudencia: **es información
+falsa que se propaga a quien la lee**, y en este caso costó la prioridad más
+alta de una auditoría externa.
+
+### Los problemas reales
+
+Al ir a verificar la premisa aparecieron tres, ninguno de los cuales era el
+enunciado.
+
+**1. Cerca de la mitad de lo contado no derogaba nada.** La búsqueda de InfoLeg
+matchea la palabra "deroga" en cualquier parte del documento, incluidos los
+considerandos, donde una norma suele relatar lo que derogó *otra*. De 60 normas
+relevadas, **sólo 24 derogan algo en su parte dispositiva**. Entre las contadas
+había una resolución de Cancillería sobre un nombramiento episcopal, que
+menciona un decreto derogado de la Sagrada Congregación Consistorial.
+
+Es la misma familia de error que ADR-0068 (la consulta "fondo de cese laboral"
+contaba el régimen homónimo de la construcción) y que ADR-0091 (`veto_quorum`
+contaba como fracaso de quórum las informativas del art. 71 CN). **Tercer caso
+de una búsqueda de texto completo sobre una base legal que cuenta lo que no es.**
+
+**2. El DNU 70/23 pesaba uno.** Sí estaba contado, pero como una unidad, igual
+que un decreto que elimina un trámite. Deroga **38 normas completas** y modifica
+parcialmente otras 30.
+
+**3. Los objetos derogados son incommensurables.** Lo que se deroga va desde una
+ley entera hasta "el punto 9) del apartado E) del artículo 20 de la Sección II
+del Capítulo I del Título V de las NORMAS". Contar "normas derogadas" sin
+distinguir sería tan arbitrario como contar actos.
+
+### Caché
+
+El análisis por norma vive en `data/gestion/desregulacion_normas.json` y es
+**permanente**: el texto de una norma publicada es inmutable, así que cada
+corrida sólo procesa las nuevas. Sin la caché, cada actualización bajaría 60+
+documentos de InfoLeg.
+
+Se agregó al `git add` del workflow nocturno **en el mismo cambio** — un caché
+que no se commitea no sobrevive al cron y se reconstruye entero cada noche.

@@ -1,8 +1,16 @@
+---
+madr: 4
+id: '0136'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+indicadores: [sector_privado]
+corregido_por: ['0139']
+ambito: 'cinturón político (ITCP), dimensión `sector_privado`'
+---
+
 # ADR-0136 — Apoyo público de las cámaras: el problema es a quién le hablan
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP), dimensión `sector_privado`
 - **Relacionados**: ADR-0131 (protocolo), ADR-0088 (`sector_privado`),
   ADR-0091 y ADR-0068 (contar lo que no es), ADR-0134 y ADR-0135
 
@@ -14,26 +22,13 @@
 > Gobierno nacional**, y la serie se valida por el quiebre de régimen. Además,
 > SRA no era inalcanzable: cambió de dominio a `sra.ar`. Leer ADR-0139.
 
-## Contexto
+## Contexto y planteo del problema
 
 El aporte externo propone **Apoyo Público**: medir si las cámaras empresarias
 respaldan o critican públicamente al Gobierno. ADR-0131 lo listó como pendiente
 con fuente «RSS de cámaras empresarias» y lo que faltaba era «scraper + esquema
 de postura». Se relevaron ocho cámaras: UIA, CAC, CAME, AEA, ADEBA, SRA, AmCham
 y COPAL.
-
-## Nota de método, primero
-
-El primer intento **adivinó rutas** (`/novedades/`, `/feed/`) y devolvió 404 en
-casi todas. Eso no es evidencia de que no haya fuente. Leyendo las home
-aparecieron las secciones reales en **cinco de ocho** cámaras. Queda anotado
-porque es exactamente el error registrado en `feedback_no_declarar_fuente_inexistente`:
-un negativo obtenido por adivinar URLs se documenta como hecho y cierra el punto.
-
-SRA (ConnectionError) y AmCham (SSLError) no se pudieron evaluar. Se dice, no se
-las da por inexistentes.
-
-## Lo que se encontró
 
 ### El RSS no sirve, y era la fuente que proponía el aporte
 
@@ -83,6 +78,10 @@ asueto del 24 y 31 de diciembre», bienvenidas a nuevos bancos socios) y otra
 apunta a destinatarios que no son el Ejecutivo nacional. Quedan unas pocas por
 año, en la cámara que resultó ser el mejor caso de las ocho.
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 **No se construye el indicador tal como está propuesto.** No por falta de
@@ -100,7 +99,7 @@ razones acumuladas:
    universo cerrado, acá habría que reclasificar **todos los meses**, con doble
    codificación y kappa ≥ 0,70. Es trabajo permanente de dos personas.
 
-## Consecuencias
+### Consecuencias
 
 - La dimensión `sector_privado` sigue con `brecha_obra_publica` como único
   indicador (ADR-0088).
@@ -111,3 +110,16 @@ razones acumuladas:
 - Relevamiento versionado en `data/politica/apoyo_camaras_relevamiento.json`,
   con las ocho cámaras, sus secciones reales y los ejemplos de cada categoría,
   para que el negativo sea auditable.
+
+## Más información
+
+### Nota de método, primero
+
+El primer intento **adivinó rutas** (`/novedades/`, `/feed/`) y devolvió 404 en
+casi todas. Eso no es evidencia de que no haya fuente. Leyendo las home
+aparecieron las secciones reales en **cinco de ocho** cámaras. Queda anotado
+porque es exactamente el error registrado en `feedback_no_declarar_fuente_inexistente`:
+un negativo obtenido por adivinar URLs se documenta como hecho y cierra el punto.
+
+SRA (ConnectionError) y AmCham (SSLError) no se pudieron evaluar. Se dice, no se
+las da por inexistentes.

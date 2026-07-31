@@ -1,14 +1,18 @@
+---
+madr: 4
+id: '0075'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'macro'
+archivos: ['scripts/validacion_externa.py', 'scripts/publicar.py']
+relacionado: ['0019', '0021', '0031', '0078']
+ambito: 'Cinturón macro · ITCM · validación · `scripts/validacion_externa.py` · `scripts/publicar.py` · página del cinturón'
+origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección IV.3'
+---
+
 # ADR-0075 — Se publica cuánta información distinta aporta cada componente del ITCM
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón macro · ITCM · validación · `scripts/validacion_externa.py` · `scripts/publicar.py` · página del cinturón |
-| **Fecha** | 2026-07-18 |
-| **Precedentes directos** | ADR-0019 (validación externa) · ADR-0031 (matriz de validación cruzada) · ADR-0021 (puntaje interpolado) |
-| **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección IV.3 |
-
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría pidió medir y publicar la **correlación entre los componentes del
 propio índice**, por el riesgo de prociclicidad: si actividad, recaudación,
@@ -21,6 +25,10 @@ de validación cruzada (ADR-0031), pero cruza **los cuatro índices contra
 anclas externas** —riesgo país, Merval, ICC, EPU—. Es una pregunta distinta:
 aquélla mide si el índice acierta, ésta mide si sus partes dicen cosas
 distintas.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -40,7 +48,7 @@ compartida con la reconstrucción histórica del índice, para que las dos no
 puedan divergir en qué componentes miran — el modo exacto en que ya se había
 colado un error antes (lista de componentes escrita a mano).
 
-## Resultado
+### Consecuencias
 
 Trece componentes con serie histórica, **78 pares**:
 
@@ -61,7 +69,31 @@ Los más acoplados:
 | capacidad prestable × IPC | +0,910 | **dimensiones distintas** |
 | saldo comercial × tipo de cambio real | −0,908 | **dimensiones distintas** |
 
-## Interpretación
+- El bloque se publica en la página del cinturón macro, con los números, los
+  pares concretos y la salvedad muestral por delante.
+- No se cambia ninguna ponderación por este hallazgo. Reponderar contra
+  correlaciones estimadas sobre un único episodio macroeconómico sería
+  sobreajustar a un período que no se repite.
+- El tipo del snapshot quedó genérico: extender la medición a los otros tres
+  índices no requiere cambios de estructura.
+
+## Más información
+
+### Precedentes directos
+
+ADR-0019 (validación externa) · ADR-0031 (matriz de validación cruzada) · ADR-0021 (puntaje interpolado)
+
+### Limitaciones
+
+- n = 29-31 meses según el par. Con esa muestra, las correlaciones tienen
+  intervalos de confianza amplios y no se publican como estimaciones precisas.
+- Correlación de Pearson sobre niveles de puntaje: no distingue asociación
+  contemporánea de tendencia común, que es justamente la ambigüedad del
+  período.
+- El IAI y el ICIP no tienen serie histórica y quedan fuera de la matriz, igual
+  que en la reconstrucción del índice.
+
+### Interpretación
 
 El hallazgo **no se publica como defecto de construcción**, porque la evidencia
 no alcanza para afirmarlo. El período disponible son treinta y un meses de un
@@ -80,23 +112,3 @@ Lo que **sí** se afirma sin reservas es la consecuencia para el lector: cuando
 varias dimensiones coinciden en el diagnóstico, eso no debe leerse como varias
 confirmaciones independientes del mismo resultado. Esa advertencia va en el
 texto público.
-
-## Consecuencias
-
-- El bloque se publica en la página del cinturón macro, con los números, los
-  pares concretos y la salvedad muestral por delante.
-- No se cambia ninguna ponderación por este hallazgo. Reponderar contra
-  correlaciones estimadas sobre un único episodio macroeconómico sería
-  sobreajustar a un período que no se repite.
-- El tipo del snapshot quedó genérico: extender la medición a los otros tres
-  índices no requiere cambios de estructura.
-
-## Limitaciones declaradas
-
-- n = 29-31 meses según el par. Con esa muestra, las correlaciones tienen
-  intervalos de confianza amplios y no se publican como estimaciones precisas.
-- Correlación de Pearson sobre niveles de puntaje: no distingue asociación
-  contemporánea de tendencia común, que es justamente la ambigüedad del
-  período.
-- El IAI y el ICIP no tienen serie histórica y quedan fuera de la matriz, igual
-  que en la reconstrucción del índice.

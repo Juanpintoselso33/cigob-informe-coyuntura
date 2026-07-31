@@ -1,14 +1,20 @@
+---
+madr: 4
+id: '0095'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'politica'
+indicadores: [brecha_obra_publica]
+corrige: ['0088']
+ambito: 'ITCP · `brecha_obra_publica` · validación externa'
+origen: 'Observación del editor: "quedó descalzadísimo de su contraste externo"'
+---
+
 # ADR-0095 — La brecha de obra pública cambia de signo según el gobierno
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCP · `brecha_obra_publica` · validación externa |
-| **Fecha** | 2026-07-20 |
 | **Corrige** | ADR-0088 (afirmó que la validación del indicador era sólida sin haber mirado el efecto sobre el índice) |
-| **Origen** | Observación del editor: "quedó descalzadísimo de su contraste externo" |
 
-## El hecho
+## Contexto y planteo del problema
 
 Cerrada la auditoría del cinturón, el editor observó que el ITCP había quedado
 desalineado de su validación externa. Tenía razón:
@@ -22,8 +28,6 @@ Un tercio de la validez convergente, perdido. **`validacion_externa.py` corrió
 después de cada cambio, pero nadie miró el resultado** — el mismo defecto que la
 auditoría macro había marcado como "uso asimétrico de la validación externa":
 se la invoca cuando confirma y se la ignora cuando incomoda.
-
-## Diagnóstico
 
 Un leave-one-out sobre la reconstrucción aisló la causa de inmediato:
 
@@ -47,8 +51,6 @@ candidatos disponibles en la misma fuente fallan igual sobre 2024-2026:
 | brecha de expectativas (el elegido) | +0,304 |
 | atrasos en la cadena de pagos, obra pública | +0,499 |
 | atrasos, brecha pública − privada | +0,488 |
-
-## El hallazgo
 
 La pregunta de fondo —¿la tensión con un sector que depende del gasto público
 resta capital político, o lo demuestra?— se contestó con los 100 meses de serie
@@ -76,6 +78,10 @@ años de serie, y puntuó 10 sobre 100. Fue el año de la Ley Bases, con el EPU 
 su nivel más bajo del período. **El indicador dijo "tensión máxima" exactamente
 cuando el Gobierno estaba en su mejor momento.**
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 **El indicador se mantiene puntuando con su 15%, y el hallazgo se publica.**
@@ -101,7 +107,9 @@ Lo que se publica:
   (`validacion_externa._corr_brecha_por_gobierno`), no como una cuenta de una
   sola vez: si el patrón cambia, el informe se entera.
 
-## Lo que este ADR admite sobre el anterior
+## Más información
+
+### Lo que este ADR admite sobre el anterior
 
 ADR-0088 presentó la validación del indicador contra el Índice Construya
 (+0,79 en niveles, +0,47 en diferencias) como evidencia de solidez, y lo es —
@@ -112,7 +120,7 @@ la primera como si respondiera las dos.
 La validación externa del índice debería revisarse en cualquier cambio de
 composición, no sólo cuando se cambia una banda. Queda como práctica.
 
-## Limitación que queda abierta
+### Limitación que queda abierta
 
 El índice puntúa esta tensión **como costo**. Los datos de este período sugieren
 que para este gobierno es un precio deliberado, y el indicador no distingue una

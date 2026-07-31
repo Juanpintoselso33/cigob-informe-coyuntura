@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0094'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'politica'
+archivos: ['publicar._familias']
+ambito: 'ITCP · card pública "Lectura por partes" · `publicar._familias`'
+origen: 'Auditoría externa del cinturón político, prioridad 2'
+---
+
 # ADR-0094 — El ITCP se puede leer por partes: tensión, capacidad y recursos
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCP · card pública "Lectura por partes" · `publicar._familias` |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría externa del cinturón político, prioridad 2 |
-
-## El planteo
+## Contexto y planteo del problema
 
 > "Separar explícitamente, **en la narrativa del informe (no necesariamente en
 > el cálculo)**, qué indicadores miden tensión externa (oposición, gobernadores,
@@ -23,7 +27,60 @@ sentido de capacidad de gobernar— y al encuadre de la auditoría —la tensió
 legisladores, gobernadores y empresarios ejercen—. Un promedio único de las tres
 cosas no responde ninguna con precisión.
 
-## La clasificación
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+Se publica una card, **"Lectura por partes"**, tercera de la familia de
+robustez junto a "Consistencia interna" (ADR-0085) y "Rezago del índice"
+(ADR-0092). Muestra las tres familias con su puntaje, su peso y sus componentes
+ordenados de peor a mejor —el que primero conviene mirar va arriba—, más la
+conclusión en prosa.
+
+**La separación es de lectura, no de cálculo**, tal como la auditoría lo
+planteó: el ITCP se computa igual, los pesos no cambian y ninguna banda se
+toca. Se agrega poder leerlo abierto.
+
+El cálculo vive en el pipeline: las tres familias son promedios ponderados por
+**peso efectivo**, de modo que reconstruyen el índice general y siguen siendo
+ciertas cuando los pesos cambien.
+
+La conclusión publicada cierra con lo que importa:
+
+> Las tres cosas no se compensan entre sí: un Gobierno puede tener con qué
+> negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones
+> exigen respuestas distintas.
+
+### Confirmación
+
+`test_todo_indicador_del_indice_declara_su_familia` exige que `FAMILIAS_ITCP`
+cubra exactamente a los indicadores del índice, en los dos sentidos, y que las
+tres familias existan. Sin eso, un indicador nuevo se caería de la
+descomposición y las familias dejarían de sumar el total sin que nada avise.
+Es la tercera guardia de esta forma —tras ADR-0092 y la de ADR-0089— y responde
+al mismo modo de falla: un diccionario paralelo al índice que se desactualiza en
+silencio.
+
+## Más información
+
+### Limitaciones
+
+- **La clasificación es interpretativa.** Ningún indicador trae escrito a qué
+  familia pertenece; las asignaciones dudosas están justificadas arriba, pero
+  otro criterio razonable podría mover `veto_quorum` o `adhesion_reformas_provincial`.
+  Por eso la card publica los componentes de cada familia: el lector puede
+  reagrupar mentalmente si no comparte el corte.
+- **Sólo el ITCP.** El mecanismo es genérico, pero la tríada tensión/capacidad/
+  recursos es propia de un cinturón que mide capital político. Los otros índices
+  necesitarían su propia partición, si es que la tienen.
+- La auditoría dejó abierta una pregunta que este ADR **no** resuelve: si
+  `conflictividad_nacional` —que mide a la sociedad civil, un actor distinto de
+  los tres del objetivo declarado— corresponde a este cinturón o a otro. Queda
+  como decisión editorial pendiente.
+
+### La clasificación
 
 Los doce indicadores del índice se reparten en tres familias, declaradas en
 `itcp.FAMILIAS_ITCP` con el motivo de cada asignación:
@@ -54,7 +111,7 @@ Dos asignaciones merecen justificarse porque no son obvias:
   Con la salvedad ya declarada de que el indicador no distingue el quórum
   frustrado por la oposición del que falla por inasistencia propia.
 
-## Lo que muestra
+### Lo que muestra
 
 | familia | puntaje | peso en el índice |
 |---|---|---|
@@ -71,50 +128,3 @@ Y adentro de capacidad propia el contraste es más filoso todavía: cohesión de
 bloque **96,7** contra ratio DNU **16,0** y bloqueo sostenido **10,0**. Un
 oficialismo internamente unido y a la vez institucionalmente débil — dos hechos
 que el promedio de la dimensión mezcla en un solo número.
-
-## Decisión
-
-Se publica una card, **"Lectura por partes"**, tercera de la familia de
-robustez junto a "Consistencia interna" (ADR-0085) y "Rezago del índice"
-(ADR-0092). Muestra las tres familias con su puntaje, su peso y sus componentes
-ordenados de peor a mejor —el que primero conviene mirar va arriba—, más la
-conclusión en prosa.
-
-**La separación es de lectura, no de cálculo**, tal como la auditoría lo
-planteó: el ITCP se computa igual, los pesos no cambian y ninguna banda se
-toca. Se agrega poder leerlo abierto.
-
-El cálculo vive en el pipeline: las tres familias son promedios ponderados por
-**peso efectivo**, de modo que reconstruyen el índice general y siguen siendo
-ciertas cuando los pesos cambien.
-
-La conclusión publicada cierra con lo que importa:
-
-> Las tres cosas no se compensan entre sí: un Gobierno puede tener con qué
-> negociar y aun así no lograr que sus normas prosperen, y esas dos situaciones
-> exigen respuestas distintas.
-
-## Guardia
-
-`test_todo_indicador_del_indice_declara_su_familia` exige que `FAMILIAS_ITCP`
-cubra exactamente a los indicadores del índice, en los dos sentidos, y que las
-tres familias existan. Sin eso, un indicador nuevo se caería de la
-descomposición y las familias dejarían de sumar el total sin que nada avise.
-Es la tercera guardia de esta forma —tras ADR-0092 y la de ADR-0089— y responde
-al mismo modo de falla: un diccionario paralelo al índice que se desactualiza en
-silencio.
-
-## Limitaciones declaradas
-
-- **La clasificación es interpretativa.** Ningún indicador trae escrito a qué
-  familia pertenece; las asignaciones dudosas están justificadas arriba, pero
-  otro criterio razonable podría mover `veto_quorum` o `adhesion_reformas_provincial`.
-  Por eso la card publica los componentes de cada familia: el lector puede
-  reagrupar mentalmente si no comparte el corte.
-- **Sólo el ITCP.** El mecanismo es genérico, pero la tríada tensión/capacidad/
-  recursos es propia de un cinturón que mide capital político. Los otros índices
-  necesitarían su propia partición, si es que la tienen.
-- La auditoría dejó abierta una pregunta que este ADR **no** resuelve: si
-  `conflictividad_nacional` —que mide a la sociedad civil, un actor distinto de
-  los tres del objetivo declarado— corresponde a este cinturón o a otro. Queda
-  como decisión editorial pendiente.

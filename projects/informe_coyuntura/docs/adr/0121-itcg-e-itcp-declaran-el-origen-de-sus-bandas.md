@@ -1,21 +1,47 @@
+---
+madr: 4
+id: '0121'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'politica'
+archivos: ['procedencia_anclas.py']
+continua: ['0120']
+cierra: ['0103']
+ambito: 'ITCG · ITCP · comentarios de bandas · `procedencia_anclas.py` · trinquete'
+---
+
 # ADR-0121 — El ITCG y el ITCP declaran el origen de sus bandas; los tres convergen en ~40%
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCG · ITCP · comentarios de bandas · `procedencia_anclas.py` · trinquete |
-| **Fecha** | 2026-07-20 |
 | **Cierra** | El backlog de circularidad de ADR-0103 en los tres índices con `sin_declarar` |
 | **Continúa** | ADR-0120 (lo mismo en el ITCM) |
 | **Bajo** | ADR-0045 (no recalibrar para blanquear) · ADR-0105 (trinquete) |
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0120 cerró el ITCM (83% → 38%) escribiendo el origen de sus siete bandas
 `sin_declarar`. Quedaban las de gestión (4) y política (3). Ningún ancla se
 movió: **ITCG sigue en 72,5 e ITCP en 69,0.**
 
-## La disciplina, distinta a la del ITCM
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+### Consecuencias
+
+- Único cambio de código: comentarios en `BANDAS_ITCG`/`BANDAS_ITCP` y la
+  reclasificación en `procedencia_anclas.py`. Cero cambios de puntaje —
+  verificado: ITCG 72,5 e ITCP 69,0 antes y después.
+- El backlog de circularidad de ADR-0103 queda cerrado en su totalidad: no hay
+  una sola banda `sin_declarar` en ningún índice.
+- Lo que no se resolvió, y no se resuelve escribiendo comentarios: ninguno de
+  los cuatro índices tiene cobertura fuerte de anclas **externas**. El ITCP es
+  el único con algo (18%: ACIJ, Directorio Legislativo). Subir eso exige
+  fuentes de comparación entre gobiernos que en su mayoría no existen — es un
+  límite del dominio, no una tarea pendiente.
+
+## Más información
+
+### La disciplina, distinta a la del ITCM
 
 En el ITCM las siete `sin_declarar` resultaron ser todas bandas normativas o
 conceptuales mal etiquetadas, así que la circularidad cayó parejo. **Acá no se
@@ -51,7 +77,7 @@ Tampoco se tocaron las que ya eran convención y lo son de verdad:
 `conflictividad_nacional`, `alineamiento_senadores_prov`, `desafios_legislativos`
 (ITCP). Sus comentarios ya declaraban que se calibraron contra lo observado.
 
-## Resultado: los tres convergen, y el piso tiene sentido
+### Resultado: los tres convergen, y el piso tiene sentido
 
 | índice | circular antes | ahora | sin declarar |
 |---|---|---|---|
@@ -67,22 +93,9 @@ observó, porque no existían antes de dic-2023 y no hay contra qué otra cosa
 anclarlos. Es la circularidad que ADR-0103 llamó "irreducible", ahora medida y
 declarada en vez de invisible.
 
-## El trinquete, otra vez
+### El trinquete, otra vez
 
 Bajar los dos disparó `test_el_techo_sigue_a_la_mejora`. Los techos pasan a 0,40
 (ITCG e ITCP) y 0,01 de `sin_declarar` en los dos. Con esto los cuatro índices
 —los tres de acá más el ITVC— tienen su circularidad medida, declarada y con
 techo que impide que vuelva a subir sin firma.
-
-## Consecuencias
-
-- Único cambio de código: comentarios en `BANDAS_ITCG`/`BANDAS_ITCP` y la
-  reclasificación en `procedencia_anclas.py`. Cero cambios de puntaje —
-  verificado: ITCG 72,5 e ITCP 69,0 antes y después.
-- El backlog de circularidad de ADR-0103 queda cerrado en su totalidad: no hay
-  una sola banda `sin_declarar` en ningún índice.
-- Lo que no se resolvió, y no se resuelve escribiendo comentarios: ninguno de
-  los cuatro índices tiene cobertura fuerte de anclas **externas**. El ITCP es
-  el único con algo (18%: ACIJ, Directorio Legislativo). Subir eso exige
-  fuentes de comparación entre gobiernos que en su mayoría no existen — es un
-  límite del dominio, no una tarea pendiente.

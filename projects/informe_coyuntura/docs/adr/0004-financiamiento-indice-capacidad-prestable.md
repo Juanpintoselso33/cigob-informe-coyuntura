@@ -1,19 +1,34 @@
+---
+madr: 4
+id: '0004'
+estado: 'superado'
+nota_estado: 'SUPERSEDIDO por el [ADR-0028](0028-idc-z-scores.md) el 2026-07-04 (los ratios mensuales pasaron a z-scores de nivel; los tres conceptos y pesos se conservan)'
+fecha: 2026-06-26
+indicadores: [idc]
+superado_por: ['0028']
+ambito: 'Dimensión Capacidad de financiamiento · indicador `idc`'
+commit: '`1016e97`'
+---
+
 # ADR-0004 — La dimensión de financiamiento usa el Índice de Capacidad Prestable (IdC)
 
-| | |
-|---|---|
-| **Estado** | SUPERSEDIDO por el [ADR-0028](0028-idc-z-scores.md) el 2026-07-04 (los ratios mensuales pasaron a z-scores de nivel; los tres conceptos y pesos se conservan) |
-| **Fecha** | 2026-06-26 |
-| **Ámbito** | Dimensión Capacidad de financiamiento · indicador `idc` |
-| **Commit** | `1016e97` |
-
-## Contexto
+## Contexto y planteo del problema
 
 La Paramétrica original puntuaba la mitad de la dimensión de financiamiento con la
 **tasa BADLAR** en nivel. Problema: la BADLAR alta en términos nominales sólo
 refleja la inflación residual, no la (des)confianza en el crédito; castigaba al
 cinturón por tener tasas nominales altas. El documento `260626 aportes` propone
 reemplazarla por un **Índice de Capacidad Prestable (IdC)** de tres componentes.
+
+## Opciones consideradas
+
+- **BADLAR en nivel** (original). Rechazada: castiga la nominalidad, no mide confianza.
+- **Spread de intermediación** (activa adelantos − pasiva depósitos). Implementado
+  primero (`8dd8bc0`) y **descartado**: mejoraba sobre la BADLAR pero el doc `260626`
+  trae el IdC, más completo (precio + volumen + asignación).
+- **IdC con Asignación = nivel `1−R`** (literal del doc). Rechazada: rompe el semáforo.
+- **IdC con Asignación = ratio mensual de holgura.** Elegida: coherente con el
+  semáforo y reproduce el caso de mayo del doc.
 
 ## Decisión
 
@@ -41,17 +56,7 @@ como el **ratio mensual de holgura** `(1−R_t)/(1−R_{t-1})`, que sí deja el 
 ~1,0 y **reproduce el "amarillo" de mayo 2026** que el propio documento describe
 como caso de referencia. La desviación está documentada en el código.
 
-## Opciones consideradas
-
-- **BADLAR en nivel** (original). Rechazada: castiga la nominalidad, no mide confianza.
-- **Spread de intermediación** (activa adelantos − pasiva depósitos). Implementado
-  primero (`8dd8bc0`) y **descartado**: mejoraba sobre la BADLAR pero el doc `260626`
-  trae el IdC, más completo (precio + volumen + asignación).
-- **IdC con Asignación = nivel `1−R`** (literal del doc). Rechazada: rompe el semáforo.
-- **IdC con Asignación = ratio mensual de holgura.** Elegida: coherente con el
-  semáforo y reproduce el caso de mayo del doc.
-
-## Consecuencias
+### Consecuencias
 
 - Insumos BCRA: depósitos privados = var 100, préstamos privados = var 117 (NO usar
   104/26: dan ratio > 1, imposible).

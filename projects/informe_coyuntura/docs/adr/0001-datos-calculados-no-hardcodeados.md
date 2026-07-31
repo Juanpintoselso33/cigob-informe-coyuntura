@@ -1,12 +1,15 @@
+---
+madr: 4
+id: '0001'
+estado: 'aceptado'
+fecha: 2026-06-26
+cinturon: 'transversal'
+ambito: 'Transversal a todo el informe (principio rector)'
+---
+
 # ADR-0001 — Todos los indicadores se calculan de datos oficiales; nunca valores hardcodeados
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-06-26 |
-| **Ámbito** | Transversal a todo el informe (principio rector) |
-
-## Contexto
+## Contexto y planteo del problema
 
 El informe debe ser **reproducible y defendible**: cualquier número que publica
 tiene que poder rastrearse hasta un dato oficial y recalcularse solo cada día/mes.
@@ -18,6 +21,15 @@ hardcodeado:
 - se desactualiza en silencio (nadie lo refresca y nadie se entera),
 - rompe la trazabilidad (no se sabe de dónde salió ni cuándo se tocó),
 - y vuelve frágil al pipeline diario (un dato congelado contamina el score).
+
+## Opciones consideradas
+
+- **Calibración con constante documentada** (ej. sumar −2.500 para alinear las
+  reservas al consenso). Rechazada: aunque esté documentada, es un número a mano
+  que se desactualiza y rompe la trazabilidad.
+- **Config con componentes nombrados** (ej. Bopreal y Tesoro cargados a mano).
+  Rechazada por la misma razón: nombrarlo no lo hace automático.
+- **Aceptar el principio sin excepción.** Elegida.
 
 ## Decisión
 
@@ -36,16 +48,7 @@ Corolarios:
 - Cualquier término que se lea de un config como *fallback* debe ser solo eso:
   un respaldo ante caída de la fuente primaria, nunca la fuente primaria.
 
-## Opciones consideradas
-
-- **Calibración con constante documentada** (ej. sumar −2.500 para alinear las
-  reservas al consenso). Rechazada: aunque esté documentada, es un número a mano
-  que se desactualiza y rompe la trazabilidad.
-- **Config con componentes nombrados** (ej. Bopreal y Tesoro cargados a mano).
-  Rechazada por la misma razón: nombrarlo no lo hace automático.
-- **Aceptar el principio sin excepción.** Elegida.
-
-## Consecuencias
+### Consecuencias
 
 - A veces el número "perfecto" del mercado no es 100% reproducible de datos; en
   ese caso se acepta el número que **sí** es calculable y se documenta la

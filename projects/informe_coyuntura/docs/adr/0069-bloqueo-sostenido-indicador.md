@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0069'
+estado: 'aceptado'
+fecha: 2026-07-16
+cinturon: 'politica'
+indicadores: [bloqueo_sostenido]
+relacionado: ['0021', '0046', '0062', '0070']
+modificado_por: ['0089']
+ambito: 'Cinturón política · ITCP · dimensión Poder legislativo · `bloqueo_sostenido` (nuevo)'
+---
+
 # ADR-0069 — bloqueo_sostenido: la cara ganada del pulso legislativo entra al ITCP
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón política · ITCP · dimensión Poder legislativo · `bloqueo_sostenido` (nuevo) |
-| **Fecha** | 2026-07-16 |
-| **Precedentes directos** | ADR-0046 (derrotas_legislativas y su registro de eventos) · ADR-0062 (numerador desde fuentes que ven ambas cámaras) · ADR-0021 (puntaje interpolado, tramos extremos abiertos) |
-
-## Contexto
+## Contexto y planteo del problema
 
 La revisión de la validación externa del ITCP (correlación con el EPU
 Argentina) mostró que la reconstrucción histórica del índice cae 32 puntos a
@@ -30,6 +35,13 @@ El costo empírico del hueco: la dimensión no tenía ninguna pata que midiera
 2024 a favor, y la correlación ITCP↔EPU por año daba r=−0,03 en 2024 contra
 −0,74 en 2025 (con el agravante de que `eficacia_legislativa` en 2024 medía
 la cohorte de la gestión anterior, ver ADR-0070).
+
+## Opciones consideradas
+
+- Arreglar solo eficacia_legislativa (madurez 4m / cohorte acumulada de la gestión)
+- ICG UTDT (confianza en el gobierno) como indicador del ITCP
+- Contar solo vetos sostenidos (sin decretos)
+- Ventana más corta (6m) para acelerar la recuperación post-crisis
 
 ## Decisión
 
@@ -93,18 +105,25 @@ la cohorte de la gestión anterior, ver ADR-0070).
    Provisorio, sujeto a revisión editorial CIGOB (mismo compromiso que
    ADR-0052/0064/0067).
 
-## Efecto en la validación externa (declarado)
+### Consecuencias
 
-Con la serie reconstruida del indicador dentro del motor (y junto con la
-máscara de era de ADR-0070), la correlación de niveles ITCP↔EPU pasa de
-−0,448 a ≈−0,60 (n=30): el indicador levanta el H2-2024 reconstruido con
-señal real (+3 a +4 puntos: los vetos sostenidos ocurrieron) y profundiza
-el pozo de sep-2025 justo cuando el EPU pica a 183. El r anual de 2024
-sigue ≈0 — eso es del lado del EPU (serie plana en 2024, desvío 10 sobre
-media 85, sin varianza que correlacionar) y ninguna recomposición del
-índice lo puede arreglar; queda documentado para no perseguirlo como bug.
+- El ITCP pasa de 10 a **11 indicadores puntuables**; el tablero publica la
+  card y la serie (desde mar-2024, primer desafío votado — antes el motor
+  renormaliza, igual que veto_quorum entre períodos).
+- El valor actual de la card (~20%: 2 de 10 normas desafiadas en pie en la
+  ventana ago-2025→jul-2026) puntúa 10 y BAJA el ITCP publicado hoy — no es
+  un bug: la ventana de 12m todavía contiene la ola de sep-oct 2025, y el
+  indicador de derrotas ya carga la misma memoria (valor 8). Ambos
+  descargan juntos hacia oct-2026.
+- La detección de Diputados mejora de paso la cobertura declarada de
+  derrotas_legislativas (los rechazos de decretos votados primero en
+  Diputados ahora se detectan sin esperar al Senado), sin cambiar su regla
+  de conteo.
+- Pendiente declarado: mostrar el indicador, sus anclas y el reparto de
+  pesos al editor CIGOB en la próxima revisión editorial, junto con
+  ADR-0070 (y los ya comprometidos 0052/0064).
 
-## Opciones consideradas
+## Pros y contras de las opciones
 
 ### Arreglar solo eficacia_legislativa (madurez 4m / cohorte acumulada de la gestión)
 
@@ -133,20 +152,19 @@ Descartado por ahora: rompería la consistencia con derrotas_legislativas
 indicador de eventos raros. El rezago de recuperación queda declarado en la
 ficha como limitación; revisable si el editor lo pide.
 
-## Consecuencias
+## Más información
 
-- El ITCP pasa de 10 a **11 indicadores puntuables**; el tablero publica la
-  card y la serie (desde mar-2024, primer desafío votado — antes el motor
-  renormaliza, igual que veto_quorum entre períodos).
-- El valor actual de la card (~20%: 2 de 10 normas desafiadas en pie en la
-  ventana ago-2025→jul-2026) puntúa 10 y BAJA el ITCP publicado hoy — no es
-  un bug: la ventana de 12m todavía contiene la ola de sep-oct 2025, y el
-  indicador de derrotas ya carga la misma memoria (valor 8). Ambos
-  descargan juntos hacia oct-2026.
-- La detección de Diputados mejora de paso la cobertura declarada de
-  derrotas_legislativas (los rechazos de decretos votados primero en
-  Diputados ahora se detectan sin esperar al Senado), sin cambiar su regla
-  de conteo.
-- Pendiente declarado: mostrar el indicador, sus anclas y el reparto de
-  pesos al editor CIGOB en la próxima revisión editorial, junto con
-  ADR-0070 (y los ya comprometidos 0052/0064).
+### Precedentes directos
+
+ADR-0046 (derrotas_legislativas y su registro de eventos) · ADR-0062 (numerador desde fuentes que ven ambas cámaras) · ADR-0021 (puntaje interpolado, tramos extremos abiertos)
+
+### Efecto en la validación externa (declarado)
+
+Con la serie reconstruida del indicador dentro del motor (y junto con la
+máscara de era de ADR-0070), la correlación de niveles ITCP↔EPU pasa de
+−0,448 a ≈−0,60 (n=30): el indicador levanta el H2-2024 reconstruido con
+señal real (+3 a +4 puntos: los vetos sostenidos ocurrieron) y profundiza
+el pozo de sep-2025 justo cuando el EPU pica a 183. El r anual de 2024
+sigue ≈0 — eso es del lado del EPU (serie plana en 2024, desvío 10 sobre
+media 85, sin varianza que correlacionar) y ninguna recomposición del
+índice lo puede arreglar; queda documentado para no perseguirlo como bug.

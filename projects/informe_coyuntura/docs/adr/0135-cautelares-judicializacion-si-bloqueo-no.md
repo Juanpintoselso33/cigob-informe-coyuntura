@@ -1,12 +1,18 @@
+---
+madr: 4
+id: '0135'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+ambito: 'cinturón político (ITCP), bloque judicial'
+---
+
 # ADR-0135 — Cautelares: judicialización sí, bloqueo cautelar no
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP), bloque judicial
 - **Relacionados**: ADR-0131 (protocolo del bloque judicial, y **corrección** a su
   anexo), ADR-0042 (nacer discriminando), ADR-0134 (parálisis de denuncias)
 
-## Contexto
+## Contexto y planteo del problema
 
 El aporte externo propone dos indicadores que ADR-0131 dejó pendientes y anotó
 como «CSJN/Cámaras (sin API)», señalando que **comparten el universo de causas**:
@@ -19,17 +25,6 @@ como «CSJN/Cámaras (sin API)», señalando que **comparten el universo de caus
 Ese «sin API» era una anotación mía sin verificar a fondo. Este ADR la reemplaza
 por un relevamiento hecho: se probaron SAIJ, la consulta de sumarios de la CSJN,
 el sistema de consulta de causas del PJN, el CIJ y datos.jus.gob.ar.
-
-## Corrección al anexo de ADR-0131
-
-El anexo dice que el conteo total sale de la faceta `Total` → `facetHits`. **Es
-el hijo `total` en minúscula el que trae el número; el padre siempre devuelve 0.**
-Y `totalSearchResults` **no** es el total: viene topeado por el `pageSize`, así
-que una consulta con `p=5` informa 5 aunque haya miles. Quien lea el anexo tal
-como estaba obtiene ceros en todo y concluye que la fuente no sirve. Corregido
-acá y en `data/politica/cautelares_saij_relevamiento.json`.
-
-## Lo que se encontró
 
 ### El conteo crudo mide a SAIJ, no a la Justicia
 
@@ -87,6 +82,10 @@ forma de identificar al Estado como demandado con precisión.
 - **`datos.jus.gob.ar`**: no hay dataset de cautelares. «Causas no penales» es de
   poderes judiciales **provinciales**.
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 1. **Judicialización: viable.** La densidad cautelar normalizada en jurisdicción
@@ -103,7 +102,7 @@ forma de identificar al Estado como demandado con precisión.
    con auditoría 7/7 el 20-jul-2026 — sumar un indicador obliga a reponderar y a
    rehacer la validación contra el EPU.
 
-## Consecuencias
+### Consecuencias
 
 - Se cae el supuesto del aporte externo de que ambos indicadores **comparten
   infraestructura**: comparten fuente, pero uno es construible y el otro no. No
@@ -117,3 +116,14 @@ forma de identificar al Estado como demandado con precisión.
   con la consulta exacta, las facetas que existen y las que no, las series y las
   cuatro fuentes alternativas probadas con su resultado — para que el negativo
   sea auditable y nadie repita el camino.
+
+## Más información
+
+### Corrección al anexo de ADR-0131
+
+El anexo dice que el conteo total sale de la faceta `Total` → `facetHits`. **Es
+el hijo `total` en minúscula el que trae el número; el padre siempre devuelve 0.**
+Y `totalSearchResults` **no** es el total: viene topeado por el `pageSize`, así
+que una consulta con `p=5` informa 5 aunque haya miles. Quien lea el anexo tal
+como estaba obtiene ceros en todo y concluye que la fuente no sirve. Corregido
+acá y en `data/politica/cautelares_saij_relevamiento.json`.

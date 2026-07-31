@@ -1,14 +1,20 @@
+---
+madr: 4
+id: '0107'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'vida'
+archivos: ['publicar._vintages', 'publicar._fecha_dato_a_date']
+extiende: ['0099']
+ambito: 'ITVC · card pública "Fechas de los datos" · `publicar._vintages` · `publicar._fecha_dato_a_date` (nuevo)'
+origen: 'Auditoría metodológica del cinturón Vida Cotidiana, punto 3.2 (prioridad alta)'
+---
+
 # ADR-0107 — El cinturón de vida cotidiana declara de cuándo es cada dato
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · card pública "Fechas de los datos" · `publicar._vintages` · `publicar._fecha_dato_a_date` (nuevo) |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría metodológica del cinturón Vida Cotidiana, punto 3.2 (prioridad alta) |
 | **Extiende** | ADR-0099 (la card, creada para ITCM/ITCG/ITCP) |
 
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría de vida cotidiana señaló que la lectura "hoy" del cinturón combina
 datos de entre enero y julio de 2026 sin una vista consolidada:
@@ -26,13 +32,36 @@ nominal del cinturón (35%)**.
 La card que resuelve esto ya existía desde ADR-0099. Nunca se le había puesto al
 ITVC.
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 `_vintages(c, "itvc")`. El resultado publicado: **2,8 meses** de antigüedad
 media ponderada y **198 días** entre el dato más nuevo y el más viejo, con
 informalidad y subocupación a 6,6 meses encabezando la lista.
 
-## El bug que apareció al conectarla
+### Consecuencias
+
+- `tests/test_vintages_itvc.py` (4 casos). El que importa es el tercero: recorre
+  **los cuatro índices** y falla si algún componente que puntúa tiene una fecha
+  que el perfil no puede leer. Es el guard que faltaba — una card que cubre
+  menos de lo que dice es peor que no tenerla.
+- ITCM, ITCG e ITCP no cambian de valor: ninguno tenía fechas mensuales, que es
+  por lo que el defecto no había aparecido antes.
+
+## Más información
+
+### Limitaciones
+
+La auditoría trae cuatro hallazgos de prioridad alta y éste es uno. Quedan
+abiertos, en orden de peso: la **saturación de la escala de tensión** (cinco de
+catorce componentes contra el techo o el piso), la **taxonomía de la dimensión
+"Confianza y seguridad"** y los **vacíos temáticos** (pobreza, alquileres,
+expectativas). Los tres exigen decisión editorial, no sólo implementación.
+
+### El bug que apareció al conectarla
 
 Conectarla no era una línea. `_vintages` parseaba `fecha_dato` con
 `date.fromisoformat` dentro de un `try/except ValueError: continue`, y **tres de
@@ -51,26 +80,9 @@ el rótulo mensual como el primero de ese mes —la lectura conservadora, la má
 antigua posible— y lo que sigue siendo ilegible ahora **avisa por consola** en
 vez de desaparecer.
 
-## Precisión en el texto público
+### Precisión en el texto público
 
 Un rótulo mensual se escribe **sin día**: "abril de 2026", no "1 de abril de
 2026". La fuente sólo conoce el mes, y agregar un día es una precisión que el
 dato no tiene. Antes de este cambio la card habría mezclado "1 de enero de 2026"
 con `2026-04` crudo en la misma lista.
-
-## Consecuencias
-
-- `tests/test_vintages_itvc.py` (4 casos). El que importa es el tercero: recorre
-  **los cuatro índices** y falla si algún componente que puntúa tiene una fecha
-  que el perfil no puede leer. Es el guard que faltaba — una card que cubre
-  menos de lo que dice es peor que no tenerla.
-- ITCM, ITCG e ITCP no cambian de valor: ninguno tenía fechas mensuales, que es
-  por lo que el defecto no había aparecido antes.
-
-## Lo que este ADR no resuelve
-
-La auditoría trae cuatro hallazgos de prioridad alta y éste es uno. Quedan
-abiertos, en orden de peso: la **saturación de la escala de tensión** (cinco de
-catorce componentes contra el techo o el piso), la **taxonomía de la dimensión
-"Confianza y seguridad"** y los **vacíos temáticos** (pobreza, alquileres,
-expectativas). Los tres exigen decisión editorial, no sólo implementación.

@@ -1,14 +1,18 @@
+---
+madr: 4
+id: '0072'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'macro'
+indicadores: [resultado_primario, recaudacion]
+relacionado: ['0021', '0029', '0056']
+ambito: 'Cinturón macro · ITCM · dimensión Viabilidad fiscal-comercial · `resultado_primario` (nuevo) · `recaudacion` (reinterpretada)'
+origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 2 — señalada como "el problema central del sistema"'
+---
+
 # ADR-0072 — resultado_primario: la dimensión fiscal pasa a medir resultado, no ingresos
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón macro · ITCM · dimensión Viabilidad fiscal-comercial · `resultado_primario` (nuevo) · `recaudacion` (reinterpretada) |
-| **Fecha** | 2026-07-18 |
-| **Precedentes directos** | ADR-0029 (recaudación como promedio móvil del i.a. real) · ADR-0056 (ajuste automático del saldo por contracción) · ADR-0021 (puntaje interpolado) |
-| **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 2 — señalada como "el problema central del sistema" |
-
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría marcó la inconsistencia más seria del índice: **la dimensión se
 llamaba "viabilidad fiscal" pero su componente principal medía INGRESOS, no
@@ -25,6 +29,10 @@ Al momento de la auditoría el dato era **−3,16% i.a. real, puntaje 32,1: el p
 de los quince indicadores del cinturón**, arrastrando el índice sin que se
 pudiera saber, desde el índice, si eso reflejaba fragilidad fiscal o alivio
 tributario.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -88,7 +96,7 @@ La recaudación **no sale del índice**: se reinterpreta como lo que realmente e
 un indicador de actividad y formalidad de la base imponible, y su ficha lo
 declara. Su peso efectivo baja de 14,4% —el mayor del índice— a 7,2%.
 
-## Consecuencias
+### Consecuencias
 
 - ITCM 58,5 → **62,7**. El cinturón **cambia de banda**: de "moderadamente
   apretado" a "moderadamente aflojado". Tensión 4,2 → **3,7**.
@@ -100,7 +108,13 @@ declara. Su peso efectivo baja de 14,4% —el mayor del índice— a 7,2%.
   del peso y con su rol declarado en la ficha.
 - Serie de **30 puntos desde dic-2023**.
 
-## Limitaciones declaradas
+## Más información
+
+### Precedentes directos
+
+ADR-0029 (recaudación como promedio móvil del i.a. real) · ADR-0056 (ajuste automático del saldo por contracción) · ADR-0021 (puntaje interpolado)
+
+### Limitaciones
 
 - El denominador es recaudación tributaria, no ingresos totales del SPN: sirve
   como escala estable, pero no es un cociente entre magnitudes del mismo

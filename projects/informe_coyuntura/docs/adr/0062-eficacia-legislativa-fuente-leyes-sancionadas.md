@@ -1,13 +1,21 @@
+---
+madr: 4
+id: '0062'
+estado: 'superado'
+nota_estado: 'Aceptado · complementa ADR-0061'
+fecha: 2026-07-15
+cinturon: 'politica'
+indicadores: [eficacia_legislativa]
+complementa: ['0061']
+relacionado: ['0050', '0064', '0068', '0069']
+superado_por: ['0061']
+continuado_por: ['0063']
+ambito: 'Cinturón política · ITCP · `eficacia_legislativa` · fuentes HCDN CKAN'
+---
+
 # ADR-0062 — eficacia_legislativa: numerador desde leyes-sancionadas (la sanción del Senado era invisible) y denominador sin comunicaciones administrativas
 
-| | |
-|---|---|
-| **Estado** | Aceptado · complementa ADR-0061 |
-| **Ámbito** | Cinturón política · ITCP · `eficacia_legislativa` · fuentes HCDN CKAN |
-| **Fecha** | 2026-07-15 |
-| **Precedentes directos** | ADR-0061 (cohorte madura, mismo día — su métrica hereda este fix) · ADR-0050 (superado por 0061; sus datos también estaban afectados por este bug) |
-
-## Contexto
+## Contexto y planteo del problema
 
 Tras el rediseño de cohorte madura (ADR-0061), el valor publicado seguía en
 0,0% (0/20). Auditoría pedida explícitamente por el usuario ("me sigue
@@ -57,6 +65,11 @@ Cohorte vigente: publicado **0,0% (0/20)** → real **18,8% (3/16)**. Toda la
 serie histórica (y los datos con que ADR-0050 recalibró en su momento, y el
 backfill de ADR-0061 de hoy) estaban afectados por los mismos dos bugs.
 
+## Opciones consideradas
+
+- Inferir la sanción desde movimientos ("PASA A SENADO" + algo más)
+- Cruzar contra InfoLeg en vez del CKAN de HCDN
+
 ## Decisión
 
 ### 1. Numerador: dataset oficial `leyes-sancionadas` de HCDN
@@ -84,7 +97,24 @@ sanciones definitivas, la heurística de filtrado de medias sanciones por
 texto de movimiento (auditoría 2026-07-09) queda sin objeto y se borra junto
 con sus tests, reemplazados por tests del cruce con leyes-sancionadas.
 
-## Opciones consideradas
+### Consecuencias
+
+- `eficacia_legislativa` pasa de 0,0% (0/20) a **18,8% (3/16)** en la
+  cohorte vigente → puntaje ITCP ≈57,6 (banda 5-15/15-30 interpolada) en
+  vez del piso 10. Las anclas de ADR-0061 (50/30/15/5, benchmark
+  Directorio Legislativo) no cambian: ahora la métrica es genuinamente
+  comparable contra ellas.
+- La serie histórica completa se regenera con las dos correcciones.
+- Dos lecciones de método quedan registradas: (a) cuando un valor "parece
+  imposible", auditar los registros crudos uno por uno contra una fuente
+  independiente — la metodología puede estar bien razonada sobre datos mal
+  contados (ADR-0061 arregló la ventana sobre un numerador roto); (b) un
+  dataset "movimientos" de UNA cámara nunca puede ser fuente de verdad
+  sobre resultados bicamerales.
+- `fetch_eficacia_legislativa()` y `fetch_eficacia_serie()` dejan de
+  consultar `movimientos-de-proyectos`; consultan `leyes-sancionadas`.
+
+## Pros y contras de las opciones
 
 ### Inferir la sanción desde movimientos ("PASA A SENADO" + algo más)
 
@@ -100,7 +130,13 @@ estructurada (habría que parsear texto norma por norma); `leyes-sancionadas`
 trae el `PROYECTO_ID` exacto del mismo portal y con la misma sesión de
 descarga que ya usamos.
 
-## Pendiente declarado
+## Más información
+
+### Precedentes directos
+
+ADR-0061 (cohorte madura, mismo día — su métrica hereda este fix) · ADR-0050 (superado por 0061; sus datos también estaban afectados por este bug)
+
+### Pendiente declarado
 
 `comisiones_caidas` usa el mismo `q="SANCION"` sobre movimientos para
 detectar "llegó al recinto" (`politica.py::fetch_comisiones_caidas` y su
@@ -110,7 +146,7 @@ comparte la fuente con el defecto documentado acá. **Queda flaggeado para
 auditoría propia** — no se cambia en este ADR para no alterar dos
 indicadores en el mismo movimiento sin revisión editorial.
 
-## Anexo — auditoría de profundidad (mismo día, pedida por el usuario)
+### Anexo — auditoría de profundidad (mismo día, pedida por el usuario)
 
 Tras el fix, el usuario pidió verificar si 18,8% seguía siendo bajo por otro
 error. Resultados de la auditoría exhaustiva:
@@ -147,20 +183,3 @@ era. La ventana 12-24 meses queda como está. Limitación simétrica declarada:
 un trámite que supere los 24 meses nunca llega a contarse dentro de su
 cohorte (hasta ahora solo pasó con proyectos heredados de la gestión
 anterior, p.ej. 27.740: 1.358 días).
-
-## Consecuencias
-
-- `eficacia_legislativa` pasa de 0,0% (0/20) a **18,8% (3/16)** en la
-  cohorte vigente → puntaje ITCP ≈57,6 (banda 5-15/15-30 interpolada) en
-  vez del piso 10. Las anclas de ADR-0061 (50/30/15/5, benchmark
-  Directorio Legislativo) no cambian: ahora la métrica es genuinamente
-  comparable contra ellas.
-- La serie histórica completa se regenera con las dos correcciones.
-- Dos lecciones de método quedan registradas: (a) cuando un valor "parece
-  imposible", auditar los registros crudos uno por uno contra una fuente
-  independiente — la metodología puede estar bien razonada sobre datos mal
-  contados (ADR-0061 arregló la ventana sobre un numerador roto); (b) un
-  dataset "movimientos" de UNA cámara nunca puede ser fuente de verdad
-  sobre resultados bicamerales.
-- `fetch_eficacia_legislativa()` y `fetch_eficacia_serie()` dejan de
-  consultar `movimientos-de-proyectos`; consultan `leyes-sancionadas`.

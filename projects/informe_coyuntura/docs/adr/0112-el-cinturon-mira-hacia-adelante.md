@@ -1,14 +1,27 @@
+---
+madr: 4
+id: '0112'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'vida'
+indicadores: [empleo, indice_lider, itvc_lider]
+corrige: ['0111']
+complementado_por: ['0130']
+ambito: 'ITVC · dimensión `empleo` · `indice_lider` (nuevo) · serie `itvc_lider`'
+origen: 'Auditoría de Vida Cotidiana, punto 3.6 (expectativas a futuro)'
+---
+
 # ADR-0112 — El cinturón incorpora su primera medida prospectiva
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · dimensión `empleo` · `indice_lider` (nuevo) · serie `itvc_lider` |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría de Vida Cotidiana, punto 3.6 (expectativas a futuro) |
 | **Corrige** | ADR-0111, que declaró la ausencia irresoluble |
 
-## Qué corrige de ADR-0111
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+### Qué corrige de ADR-0111
 
 ADR-0111 cerró el frente de expectativas así: *"las únicas series vivas son de
 inflación esperada y terminan en 2026-01 — seis meses de rezago"*.
@@ -23,7 +36,26 @@ Es exactamente el modo de falla que el proyecto ya tiene documentado: declarar
 un negativo tras una consulta, cuando la fuente existía con otro nombre o en
 otro lugar.
 
-## Por qué la inflación esperada tampoco entra
+### Consecuencias
+
+- El scraper de la UTDT se generalizó: `_utdt_xls(listado_url)` sirve para
+  cualquiera de sus páginas de serie histórica, que comparten el mismo patrón.
+  El colector trae ICC e Índice Líder, y un fallo del segundo no tumba al
+  primero.
+- El ITVC pasa a **16 componentes** y el tablero a **60 indicadores**.
+
+## Más información
+
+### Limitaciones
+
+- **Anticipa el ciclo económico, no el humor de los hogares.** Un giro señala
+  hacia dónde va la actividad, no cómo la están viviendo las familias. Es la
+  aproximación disponible a "expectativas", no la medida ideal.
+- **Como todo índice líder, da señales falsas**: puede moverse sin que el giro
+  se produzca.
+- Es un compuesto y no publica el detalle mensual de qué lo movió.
+
+### Por qué la inflación esperada tampoco entra
 
 Corregido el dato, el indicador **sigue sin poder entrar al ITVC**, pero por una
 razón distinta y verificable: **su rango dinámico no cabe en la escala.**
@@ -37,7 +69,7 @@ además arrastra la winsorización agregada.
 Una variable que mejoró 78% no entra en un índice base-100 diseñado para
 movimientos de ±40%. Ninguna reexpresión monótona lo arregla.
 
-## Lo que sí entra: el Índice Líder
+### Lo que sí entra: el Índice Líder
 
 **UTDT — Índice Líder (IL)**, mensual desde enero de 1993, último dato mayo de
 2026. Es un compuesto de señales tempranas construido para **anticipar puntos de
@@ -69,16 +101,7 @@ cinco dimensiones queda intacta, igual que en ADR-0111.
 está muy cerca del promedio de su dimensión; lo que aporta no es nivel sino
 capacidad de anticipar.
 
-## Limitaciones declaradas
-
-- **Anticipa el ciclo económico, no el humor de los hogares.** Un giro señala
-  hacia dónde va la actividad, no cómo la están viviendo las familias. Es la
-  aproximación disponible a "expectativas", no la medida ideal.
-- **Como todo índice líder, da señales falsas**: puede moverse sin que el giro
-  se produzca.
-- Es un compuesto y no publica el detalle mensual de qué lo movió.
-
-## Otras fuentes relevadas
+### Otras fuentes relevadas
 
 La UTDT publica además el **Índice de Confianza en el Gobierno (ICG)** y el
 **Índice de la Confianza en la Justicia (ICJ)**. Ninguno tiene página de serie
@@ -89,11 +112,3 @@ cinturón de espíritu de época si alguna vez publica su serie.
 El ICC de la UTDT **no** se desagrega en presente vs. futuro: sus subíndices son
 situación personal, situación macro y bienes durables. El corte de expectativas
 que la auditoría imaginaba no existe en esa fuente.
-
-## Consecuencias
-
-- El scraper de la UTDT se generalizó: `_utdt_xls(listado_url)` sirve para
-  cualquiera de sus páginas de serie histórica, que comparten el mismo patrón.
-  El colector trae ICC e Índice Líder, y un fallo del segundo no tumba al
-  primero.
-- El ITVC pasa a **16 componentes** y el tablero a **60 indicadores**.

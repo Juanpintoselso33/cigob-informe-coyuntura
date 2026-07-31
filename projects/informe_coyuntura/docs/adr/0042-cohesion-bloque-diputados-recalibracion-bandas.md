@@ -1,12 +1,17 @@
+---
+madr: 4
+id: '0042'
+estado: 'aceptado'
+fecha: 2026-07-09
+cinturon: 'politica'
+parametros: ['BANDAS_ITCP["cohesion_bloque"]']
+archivos: ['scripts/itcp.py', 'tests/test_itcp.py']
+ambito: '`scripts/itcp.py` (`BANDAS_ITCP["cohesion_bloque"]`) · `tests/test_itcp.py`'
+---
+
 # ADR-0042 — cohesion_bloque (Diputados): recalibración de bandas ITCP con backfill mensual real
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-09 |
-| **Ámbito** | `scripts/itcp.py` (`BANDAS_ITCP["cohesion_bloque"]`) · `tests/test_itcp.py` |
-
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0041 (mismo día) construyó la serie mensual real de `cohesion_bloque`
 (Diputados): 31 puntos, dic-2023 a jun-2026, ventana rolling de 90 días,
@@ -30,6 +35,19 @@ Regla del proyecto (lanzamiento público agosto 2026): no esperar más datos
 sobre un gap PROVISIONAL cuando ya hay serie real disponible — recalibrar
 ahora.
 
+## Opciones consideradas
+
+- **Copiar las anclas de `cohesion_bloque_senado` (95/90/85/80)** —
+  descartada: esas anclas se calibraron contra un rango de 22,2 puntos
+  (77,8–100,0); aplicadas al rango de Diputados (96,7–100,0, apenas 3,3
+  puntos) seguirían saturando en la enorme mayoría de los meses, mismo
+  problema que se está corrigiendo, solo con un número distinto.
+- **Forzar 5 bandas equidistribuidas (~6 puntos cada una)** — descartada:
+  con 14/31 meses en el valor idéntico 100,0, no existe ningún corte que
+  logre eso; los cortes 99,9/99,0/98,0/97,0 son los números redondos que
+  mejor separan la porción no empatada de la serie (96,7–99,9, 17 puntos
+  distintos) sin inventar bandas vacías.
+
 ## Decisión
 
 Anclas nuevas: **99,9 / 99,0 / 98,0 / 97,0** (antes 90/75/60/40),
@@ -48,20 +66,7 @@ Tramos extremos siguen ABIERTOS (`INF`/`-INF`) — mismo criterio ya
 documentado en ADR-0038/0039: un tramo superior finito desplazaría la
 saturación al punto medio del motor interpolado en vez de resolverla.
 
-## Opciones consideradas
-
-- **Copiar las anclas de `cohesion_bloque_senado` (95/90/85/80)** —
-  descartada: esas anclas se calibraron contra un rango de 22,2 puntos
-  (77,8–100,0); aplicadas al rango de Diputados (96,7–100,0, apenas 3,3
-  puntos) seguirían saturando en la enorme mayoría de los meses, mismo
-  problema que se está corrigiendo, solo con un número distinto.
-- **Forzar 5 bandas equidistribuidas (~6 puntos cada una)** — descartada:
-  con 14/31 meses en el valor idéntico 100,0, no existe ningún corte que
-  logre eso; los cortes 99,9/99,0/98,0/97,0 son los números redondos que
-  mejor separan la porción no empatada de la serie (96,7–99,9, 17 puntos
-  distintos) sin inventar bandas vacías.
-
-## Consecuencias
+### Consecuencias
 
 - `cohesion_bloque` sale del estado PROVISIONAL con datos propios, mismo
   camino que `alineamiento_senadores_prov` (ADR-0038) y

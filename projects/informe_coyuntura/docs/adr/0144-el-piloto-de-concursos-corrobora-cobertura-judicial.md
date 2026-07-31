@@ -1,12 +1,37 @@
+---
+madr: 4
+id: '0144'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+indicadores: [cobertura_judicial]
+ambito: 'cinturón político (ITCP) · `cobertura_judicial` · validación'
+origen: 'piloto propuesto por la revisión externa del cinturón político'
+---
+
 # ADR-0144 — El piloto de concursos corrobora la cobertura judicial
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP) · `cobertura_judicial` · validación
 - **Relacionados**: ADR-0126 (`cobertura_judicial`), ADR-0134 (archivo del Consejo)
-- **Origen**: piloto propuesto por la revisión externa del cinturón político
 
-## Qué era y por qué faltaba
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+1. **No se crea un indicador nuevo.** Con 32 posts en cuatro años y un hueco de
+   veinte meses, el archivo no sostiene una serie mensual. Lo que aporta es
+   corroboración, y eso es exactamente lo que le faltaba a un indicador de fuente
+   única.
+2. **El relevamiento queda versionado** en
+   `data/politica/concursos_consejo_relevamiento.json`, con los 32 posts, sus
+   números de concurso y sus URLs.
+3. **La corroboración se declara en la ficha de `cobertura_judicial`**: que el
+   quiebre de junio de 2026 aparece también en una fuente independiente.
+
+## Más información
+
+### Qué era y por qué faltaba
 
 La revisión externa del cinturón político incluía un piloto técnico:
 
@@ -22,7 +47,7 @@ de `datos.jus.gob.ar`, con reconstrucción por designaciones y renuncias
 (ADR-0126)—, así que el piloto quedó sin correr. **Correrlo era lo que faltaba,
 y valía la pena.**
 
-## Lo que devolvió
+### Lo que devolvió
 
 Categoría `concursos` del sitio del Consejo, recorrida hasta agotarla: **4
 páginas, 32 posts**, del 9-may-2022 al 7-jul-2026. **29 de 32 traen número de
@@ -39,7 +64,7 @@ Y aparece un hecho que no estaba buscado:
 siguiente del 4-jun-2026. Después, siete concursos con entrevistas personales
 concentrados entre junio y julio de 2026 (481, 511, 508, 471, 497, 457, 464).
 
-## Por qué esto importa: corrobora un indicador de fuente única
+### Por qué esto importa: corrobora un indicador de fuente única
 
 `cobertura_judicial` es de **fuente única**. El archivo de concursos es del
 Consejo de la Magistratura, no comparte ni fuente ni método con el padrón del
@@ -56,19 +81,7 @@ también se reactivó después de veinte meses sin publicar una entrevista. Son 
 cosas distintas —el flujo de selección y el stock de cargos cubiertos— y las dos
 se movieron a la vez.
 
-## Decisión
-
-1. **No se crea un indicador nuevo.** Con 32 posts en cuatro años y un hueco de
-   veinte meses, el archivo no sostiene una serie mensual. Lo que aporta es
-   corroboración, y eso es exactamente lo que le faltaba a un indicador de fuente
-   única.
-2. **El relevamiento queda versionado** en
-   `data/politica/concursos_consejo_relevamiento.json`, con los 32 posts, sus
-   números de concurso y sus URLs.
-3. **La corroboración se declara en la ficha de `cobertura_judicial`**: que el
-   quiebre de junio de 2026 aparece también en una fuente independiente.
-
-## Salvedad, y en qué se diferencia de ADR-0134
+### Salvedad, y en qué se diferencia de ADR-0134
 
 La ausencia de posts en 2025 **puede ser falta de actividad o falta de
 publicación**, y acá —a diferencia del archivo de comisiones de ADR-0134— **no

@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0103'
+estado: 'aceptado'
+fecha: 2026-07-20
+archivos: ['scripts/procedencia_anclas.py']
+continuado_por: ['0104', '0105', '0123']
+cerrado_por: ['0120', '0121']
+ambito: 'Los cuatro índices paramétricos · `scripts/procedencia_anclas.py`'
+origen: 'Auditoría del cinturón de gestión, punto 3.2 (circularidad de las bandas)'
+---
+
 # ADR-0103 — Cada ancla declara de dónde sale, y el sesgo se vuelve contable
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Los cuatro índices paramétricos · `scripts/procedencia_anclas.py` |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría del cinturón de gestión, punto 3.2 (circularidad de las bandas) |
-
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría planteó un riesgo que no es un bug de ningún indicador en
 particular sino una propiedad del método entero:
@@ -22,6 +27,10 @@ El reclamo es correcto y el proyecto ya lo había tropezado varias veces por
 separado —ADR-0045 fijó cuándo se puede recalibrar contra el rango observado,
 ADR-0059 revirtió una recalibración que blanqueaba señal real— pero nunca se
 había medido **cuánto** del puntaje descansa en anclas de cada tipo.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -40,7 +49,7 @@ calcula qué fracción del peso de cada índice viene de cada tipo de ancla.
 Las dos últimas son las que la auditoría señala. Su suma es el número que el
 script publica como **riesgo de circularidad**.
 
-## El resultado
+### Consecuencias
 
 | índice | circular | externa | detalle |
 |---|---|---|---|
@@ -85,22 +94,6 @@ septiembre y noviembre de 2023: uno a tres meses no alcanzan para anclar nada.)
 Ahí la circularidad no es una limitación del dato disponible — es que nadie
 escribió el criterio. Es la lista de trabajo concreta que sale de este ADR.
 
-## Lo que este ADR NO hace
-
-**No corrige el sesgo, lo vuelve contable.** Para los 30 indicadores sin
-historia previa, calibrar contra el período medido es en buena medida
-irreducible. La respuesta honesta no es declarar externas unas anclas que no lo
-son, sino publicar cuánto del puntaje descansa en cada tipo y dejar que el
-lector lo pondere.
-
-**La clasificación es una primera pasada y es de criterio.** Se llenó leyendo
-uno por uno los comentarios de `BANDAS_*`. Los casos `convencion` son los que
-conviene que el editor revise: algunos pueden ser reclasificables si se
-encuentra la referencia externa que falta, y ése es justamente el trabajo que
-el registro habilita.
-
-## Consecuencias
-
 - `tests/test_procedencia_anclas.py` (46 casos) impide que el registro se
   desactualice: un indicador nuevo sin procedencia declarada rompe la suite. El
   test espejo —declarar algo que ya no puntúa— disparó en la primera corrida con
@@ -113,3 +106,19 @@ el registro habilita.
   gobiernos anteriores y hoy no se hace; (b) las **7** bandas `sin_declarar` del
   ITCM, que no requieren recalibrar nada — requieren escribir de dónde salieron,
   y si no se puede reconstruir, decirlo.
+
+## Más información
+
+### Limitaciones
+
+**No corrige el sesgo, lo vuelve contable.** Para los 30 indicadores sin
+historia previa, calibrar contra el período medido es en buena medida
+irreducible. La respuesta honesta no es declarar externas unas anclas que no lo
+son, sino publicar cuánto del puntaje descansa en cada tipo y dejar que el
+lector lo pondere.
+
+**La clasificación es una primera pasada y es de criterio.** Se llenó leyendo
+uno por uno los comentarios de `BANDAS_*`. Los casos `convencion` son los que
+conviene que el editor revise: algunos pueden ser reclasificables si se
+encuentra la referencia externa que falta, y ése es justamente el trabajo que
+el registro habilita.

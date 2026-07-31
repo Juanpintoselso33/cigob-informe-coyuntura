@@ -1,12 +1,18 @@
+---
+madr: 4
+id: '0041'
+estado: 'aceptado'
+fecha: 2026-07-09
+cinturon: 'politica'
+indicadores: [fetch_cohesion_bloque_diputados_actas_anio, fetch_cohesion_bloque, fetch_cohesion_bloque_diputados_mensual, cohesion_bloque]
+parametros: ['POLITICA_DERIVADAS']
+archivos: ['scripts/politica.py', _acta_diputados_cacheada, '_cargar/_guardar_cache_cohesion_diputados', _descubrir_actas_diputados_pdf, 'scripts/descargar_series.py', _actas_cohesion_diputados_cacheadas, 'tests/test_politica_cohesion.py', 'tests/test_descargar_series_cohesion.py']
+ambito: '`scripts/politica.py` (`_acta_diputados_cacheada`, `_cargar/_guardar_cache_cohesion_diputados`, `fetch_cohesion_bloque_diputados_actas_anio` reescrito, `fetch_cohesion_bloque` reescrito, `_descubrir_actas_diputados_pdf` eliminada) · `scripts/descargar_series.py` (`_actas_cohesion_diputados_cacheadas`, `fetch_cohesion_bloque_diputados_mensual`, `cohesion_bloque` vuelve a `POLITICA_DERIVADAS`) · `tests/test_politica_cohesion.py` · `tests/test_descargar_series_cohesion.py`'
+---
+
 # ADR-0041 — cohesion_bloque (Diputados): caché permanente por acta y serie mensual real
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-09 |
-| **Ámbito** | `scripts/politica.py` (`_acta_diputados_cacheada`, `_cargar/_guardar_cache_cohesion_diputados`, `fetch_cohesion_bloque_diputados_actas_anio` reescrito, `fetch_cohesion_bloque` reescrito, `_descubrir_actas_diputados_pdf` eliminada) · `scripts/descargar_series.py` (`_actas_cohesion_diputados_cacheadas`, `fetch_cohesion_bloque_diputados_mensual`, `cohesion_bloque` vuelve a `POLITICA_DERIVADAS`) · `tests/test_politica_cohesion.py` · `tests/test_descargar_series_cohesion.py` |
-
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0040 (2026-07-09, mismo día) desbloqueó `cohesion_bloque` (Diputados)
 vía el endpoint PDF directo, pero dejó dos deudas explícitas en su sección
@@ -30,6 +36,19 @@ pasado (ej. 2023, con el walk arrancando en actas de 2026) topaba con 5
 actas "de año equivocado" de entrada y cortaba antes de llegar siquiera a
 2023. El único test existente (`anio == año del id_maximo`) no ejercitaba
 ese camino y no lo detectó.
+
+## Opciones consideradas
+
+- **Dejar `cohesion_bloque` fuera de `POLITICA_DERIVADAS` indefinidamente**
+  (mantener el estado post-ADR-0040) — descartada: el usuario señaló
+  explícitamente que el chart mostraba solo 3 puntos anuales y que el
+  próximo paso lógico, ahora que existe la caché, es tener resolución
+  mensual real como los otros dos indicadores de la misma familia.
+- **Cachear solo las actas CON señal** (como se había escrito en un primer
+  borrador de `_acta_diputados_cacheada`) — descartada: una corrida
+  repetida seguiría re-descargando cualquier acta sin señal cada vez,
+  contradiciendo el pedido explícito de que "la próxima corrida solo baje
+  lo no cacheado".
 
 ## Decisión
 
@@ -95,20 +114,7 @@ las etiquetas y textos de `cohesion_bloque` vs. `cohesion_bloque_senado`
 (`datos.ts`, `descripciones.ts`, `fichas.ts`) — la card de Diputados no
 tenía calificador de cámara mientras la de Senado sí decía "(Senado)".
 
-## Opciones consideradas
-
-- **Dejar `cohesion_bloque` fuera de `POLITICA_DERIVADAS` indefinidamente**
-  (mantener el estado post-ADR-0040) — descartada: el usuario señaló
-  explícitamente que el chart mostraba solo 3 puntos anuales y que el
-  próximo paso lógico, ahora que existe la caché, es tener resolución
-  mensual real como los otros dos indicadores de la misma familia.
-- **Cachear solo las actas CON señal** (como se había escrito en un primer
-  borrador de `_acta_diputados_cacheada`) — descartada: una corrida
-  repetida seguiría re-descargando cualquier acta sin señal cada vez,
-  contradiciendo el pedido explícito de que "la próxima corrida solo baje
-  lo no cacheado".
-
-## Consecuencias
+### Consecuencias
 
 - `cohesion_bloque` tiene ahora resolución mensual real en el chart web
   (esperado: ~29-31 puntos, feb-2024 a jun-2026, mismo rango que Senado/

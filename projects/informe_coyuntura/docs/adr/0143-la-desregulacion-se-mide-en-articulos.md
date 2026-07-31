@@ -1,12 +1,22 @@
+---
+madr: 4
+id: '0143'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'gestion'
+indicadores: [desregulacion_normativa]
+modifica: ['0125']
+ambito: 'ITCG · `desregulacion_normativa` · bandas · serie · card · ficha'
+origen: 'revisión externa del cinturón de gestión (23-jul-2026)'
+---
+
 # ADR-0143 — La desregulación se mide en artículos, no en normas
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: ITCG · `desregulacion_normativa` · bandas · serie · card · ficha
 - **Modifica**: ADR-0125 (la fuente sigue siendo la misma; cambia la unidad)
-- **Origen**: revisión externa del cinturón de gestión (23-jul-2026)
 
-## El planteo, y por qué la propuesta literal no iba
+## Contexto y planteo del problema
+
+### El planteo, y por qué la propuesta literal no iba
 
 La revisión externa propuso fijar el techo de la banda en **300 normas**. No se
 tomó: el programa lleva **689** y suma unas 36 por mes, así que ese ancla habría
@@ -22,7 +32,7 @@ asociada:
 
 **Eso sí se resuelve, y con un dato que el propio Ministerio ya publica.**
 
-## Lo que se encontró leyendo los informes
+### Lo que se encontró leyendo los informes
 
 El informe mensual publica **tres** cifras, no una:
 
@@ -53,7 +63,23 @@ resoluciones**, y ese denominador de SAIJ **son sólo leyes y decretos**. El
 cociente habría dividido peras por manzanas. Queda registrado para que nadie
 repita el intento.
 
-## La serie: existe desde dic-2023 y está validada
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+### Consecuencias
+
+- El store `desregulacion_oficial.json` gana la clave `backfill_articulos`
+  junto a `backfill_grafico`. Las dos series se conservan: la de normas sigue
+  alimentando el contexto de la card.
+- La limitación de fondo **no desaparece**: contar artículos corrige la
+  equivalencia entre normas de peso muy distinto, pero un artículo que libera un
+  mercado sigue contando igual que uno que ajusta una definición. Está declarado
+  en la ficha.
+
+## Más información
+
+### La serie: existe desde dic-2023 y está validada
 
 Los informes en prosa (hasta abr-2026) traen una **Figura 5**, «evolución
 acumulada» de artículos, con una barra por mes desde dic-2023 — la misma técnica
@@ -70,7 +96,7 @@ normas que ya estaba en producción.
 Serie resultante: **1.150 artículos (dic-2023) → 16.178 (jun-2026)**, 31 puntos,
 rango ×14.
 
-## Bandas
+### Bandas
 
 ```
 (30000, INF, 100) · (15000, 30000, 85) · (7000, 15000, 60)
@@ -90,7 +116,7 @@ comentario de las bandas, en la fórmula pública y en la ficha.
 REVISAR cuando el acumulado pase de 24.000: al ritmo de 2026 (~360
 artículos/mes) eso ocurre hacia fines de 2027.
 
-## Lo implementado
+### Lo implementado
 
 - `gestion.py`: `_desreg_backfill_grafico(url, ancla, figura)` parametrizado, con
   selección del grupo de barras monótono más largo; `desregulacion_oficial_serie(metrica)`
@@ -103,13 +129,3 @@ artículos/mes) eso ocurre hacia fines de 2027.
   backfill de normas, que ya no puntúa. Ahora está parametrizado y valida las
   dos series, con tolerancia proporcional a cada escala. Se agregó
   `test_lo_que_puntua_son_articulos_no_normas`.
-
-## Consecuencias
-
-- El store `desregulacion_oficial.json` gana la clave `backfill_articulos`
-  junto a `backfill_grafico`. Las dos series se conservan: la de normas sigue
-  alimentando el contexto de la card.
-- La limitación de fondo **no desaparece**: contar artículos corrige la
-  equivalencia entre normas de peso muy distinto, pero un artículo que libera un
-  mercado sigue contando igual que uno que ajusta una definición. Está declarado
-  en la ficha.

@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0097'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'gestion'
+indicadores: [reduccion_estado]
+ambito: 'ITCG · `reduccion_estado` · ficha pública'
+origen: 'Auditoría externa del cinturón de gestión (doc 1), prioridad alta'
+---
+
 # ADR-0097 — Qué universo mide la dotación del Estado
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCG · `reduccion_estado` · ficha pública |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría externa del cinturón de gestión (doc 1), prioridad alta |
-
-## El planteo
+## Contexto y planteo del problema
 
 > "El título y la definición dicen «Administración Pública Nacional», pero el
 > campo «Operación estadística» menciona una fuente que incluye «Administración
@@ -18,7 +22,37 @@
 
 La observación es exacta: la ficha decía las dos cosas en campos contiguos.
 
-## La respuesta
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+1. **Se corrige la ficha** para que diga exactamente qué fila se usa y qué
+   agrupa, en lugar del nombre del dataset completo.
+2. **El colector publica los tres números.** No alcanza con aclarar cuál se
+   usa: publicar los otros dos cierra la objeción en vez de sólo responderla, y
+   permite a cualquiera verificar que la elección es indiferente.
+3. **El indicador no cambia**: sigue puntuando APN, que es el universo sobre el
+   que el Ejecutivo decide directamente su planta. Ni el valor, ni las bandas,
+   ni el ITCG se mueven.
+
+## Más información
+
+### Limitaciones
+
+### Limitaciones que quedan declaradas
+
+- **Las bandas siguen siendo una convención propia** (~10-12% → banda alta), no
+  una meta oficial. Es el punto 3.2 de la misma auditoría; este ADR no lo
+  resuelve, lo deja escrito con esas palabras en la ficha.
+- **Mide personas, no costo.** La planta puede bajar sin que el gasto salarial
+  baje en la misma proporción; por eso el cinturón sigue las dos cosas por
+  separado (`reduccion_estado` y `masa_salarial`), un diseño que la propia
+  auditoría destaca como buena práctica.
+- Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.
+
+### La respuesta
 
 El cuadro 1 de la planilla del INDEC abre la dotación así:
 
@@ -37,7 +71,7 @@ sin empresas del Estado**. El título y la definición eran correctos; lo
 incorrecto era el campo "Operación estadística", que había copiado el nombre
 completo del dataset en lugar de la serie efectivamente utilizada.
 
-## Y la ambigüedad no tenía consecuencia
+### Y la ambigüedad no tenía consecuencia
 
 Medidos contra dic-2023, los tres universos dan prácticamente lo mismo:
 
@@ -51,18 +85,7 @@ Medidos contra dic-2023, los tres universos dan prácticamente lo mismo:
 que la auditoría temía resultan ser el mismo relato: el ajuste de planta fue
 parejo entre la administración y las empresas.
 
-## Decisión
-
-1. **Se corrige la ficha** para que diga exactamente qué fila se usa y qué
-   agrupa, en lugar del nombre del dataset completo.
-2. **El colector publica los tres números.** No alcanza con aclarar cuál se
-   usa: publicar los otros dos cierra la objeción en vez de sólo responderla, y
-   permite a cualquiera verificar que la elección es indiferente.
-3. **El indicador no cambia**: sigue puntuando APN, que es el universo sobre el
-   que el Ejecutivo decide directamente su planta. Ni el valor, ni las bandas,
-   ni el ITCG se mueven.
-
-## Por qué se elige APN y no el total
+### Por qué se elige APN y no el total
 
 Porque la promesa que el indicador opera —achicar el Estado nacional, reducir
 ministerios y planta pública— es sobre la estructura administrativa. Las
@@ -72,14 +95,3 @@ decisiones que no son las mismas que reducir la planta de un ministerio.
 
 Que ambos universos hayan caído casi idéntico en este período es un dato del
 período, no una razón para fusionarlos.
-
-## Limitaciones que quedan declaradas
-
-- **Las bandas siguen siendo una convención propia** (~10-12% → banda alta), no
-  una meta oficial. Es el punto 3.2 de la misma auditoría; este ADR no lo
-  resuelve, lo deja escrito con esas palabras en la ficha.
-- **Mide personas, no costo.** La planta puede bajar sin que el gasto salarial
-  baje en la misma proporción; por eso el cinturón sigue las dos cosas por
-  separado (`reduccion_estado` y `masa_salarial`), un diseño que la propia
-  auditoría destaca como buena práctica.
-- Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.

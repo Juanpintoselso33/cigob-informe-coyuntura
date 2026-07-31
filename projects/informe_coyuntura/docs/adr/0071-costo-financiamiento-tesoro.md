@@ -1,14 +1,18 @@
+---
+madr: 4
+id: '0071'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'macro'
+indicadores: [costo_financiamiento_tesoro]
+relacionado: ['0019', '0021', '0022', '0074']
+ambito: 'Cinturón macro · ITCM · dimensión Financiamiento · `costo_financiamiento_tesoro` (nuevo)'
+origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 3'
+---
+
 # ADR-0071 — costo_financiamiento_tesoro: el precio del financiamiento soberano entra al ITCM
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón macro · ITCM · dimensión Financiamiento · `costo_financiamiento_tesoro` (nuevo) |
-| **Fecha** | 2026-07-18 |
-| **Precedentes directos** | ADR-0022 (crédito privado real y composición 45/40/15 de la dimensión) · ADR-0021 (puntaje interpolado entre anclas) · ADR-0019 (validación externa del ITCM contra el riesgo país) |
-| **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 3 |
-
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría marcó un hueco de consistencia: **la dimensión se llamaba
 "Capacidad de financiamiento" y no incluía el precio del financiamiento
@@ -30,6 +34,10 @@ tres razones:
 3. **Es político antes que macro.** La propia conclusión publicada del ITCM
    dice que los saltos mensuales del riesgo país *"co-mueven con la
    reconstrucción del cinturón político, no con ésta"*.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -87,7 +95,29 @@ crédito: ese rebalanceo es otra recomendación de la auditoría y se decide
 aparte, para no mezclar dos decisiones en un mismo cambio. Peso efectivo del
 nuevo indicador: 4,0% del ITCM.
 
-## Validación contra prensa contemporánea
+### Consecuencias
+
+- ITCM 57,2 → **58,5**; tensión 4,3 → **4,2**. La dimensión de financiamiento
+  sube de 45,2 a **53,6**: antes leía "financiamiento débil" sin ver que el
+  Tesoro hoy se financia a tasa real sana (+8,1%).
+- Serie de **29 puntos desde dic-2023**. Enero y febrero de 2024 no tienen dato
+  (todo lo emitido fue CER) y se declaran como faltantes: no se imputa.
+- El indicador **no lleva polaridad** en el gráfico. Pintar medio gráfico de
+  verde y medio de rojo afirmaría que "más es mejor", que es lo contrario de lo
+  que mide.
+- Se publica en **TIREA, no en TNA**. A tasas altas divergen mucho (dic-2023:
+  105% nominal contra 169% efectiva) y un lector que compare contra un diario
+  necesita saberlo; queda declarado en la ficha.
+- El riesgo país **sigue afuera del índice y sigue siendo el validador
+  externo**, sin cambios.
+
+## Más información
+
+### Precedentes directos
+
+ADR-0022 (crédito privado real y composición 45/40/15 de la dimensión) · ADR-0021 (puntaje interpolado entre anclas) · ADR-0019 (validación externa del ITCM contra el riesgo país)
+
+### Validación contra prensa contemporánea
 
 Se verificaron los dos extremos de la serie reconstruida contra la cobertura
 de esos días:
@@ -111,23 +141,7 @@ ponderado de 61,4% es consistente con un máximo de 69,2% en el tramo corto.
 La trayectoria coincide con la medición de Equilibra sobre las TEM de las
 Lecap cortas (2,7% jun → 3,3% jul → 3,9% ago).
 
-## Consecuencias
-
-- ITCM 57,2 → **58,5**; tensión 4,3 → **4,2**. La dimensión de financiamiento
-  sube de 45,2 a **53,6**: antes leía "financiamiento débil" sin ver que el
-  Tesoro hoy se financia a tasa real sana (+8,1%).
-- Serie de **29 puntos desde dic-2023**. Enero y febrero de 2024 no tienen dato
-  (todo lo emitido fue CER) y se declaran como faltantes: no se imputa.
-- El indicador **no lleva polaridad** en el gráfico. Pintar medio gráfico de
-  verde y medio de rojo afirmaría que "más es mejor", que es lo contrario de lo
-  que mide.
-- Se publica en **TIREA, no en TNA**. A tasas altas divergen mucho (dic-2023:
-  105% nominal contra 169% efectiva) y un lector que compare contra un diario
-  necesita saberlo; queda declarado en la ficha.
-- El riesgo país **sigue afuera del índice y sigue siendo el validador
-  externo**, sin cambios.
-
-## Alternativas descartadas
+### Alternativas descartadas
 
 - **Riesgo país como componente** — las tres razones del contexto.
 - **Spread del Tesoro contra BADLAR/TAMAR** — se implementó y se midió: oscila

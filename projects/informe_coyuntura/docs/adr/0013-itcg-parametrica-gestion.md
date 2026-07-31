@@ -1,12 +1,19 @@
+---
+madr: 4
+id: '0013'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0021'
+fecha: 2026-07-02
+cinturon: 'gestion'
+archivos: ['scripts/itcg.py', 'scripts/gestion.py', 'scripts/parametrica.py', 'scripts/publicar.py', 'scripts/descargar_series.py', 'data/gestion/*']
+relacionado: ['0068']
+superado_por: ['0021']
+ambito: '`scripts/itcg.py` · `scripts/gestion.py` · `scripts/parametrica.py` · `scripts/publicar.py` · `scripts/descargar_series.py` · `data/gestion/*` · web'
+---
+
 # ADR-0013 — ITCG: el cinturón de gestión se puntúa con la paramétrica de 5 dimensiones (doc 260702)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-02 |
-| **Ámbito** | `scripts/itcg.py` · `scripts/gestion.py` · `scripts/parametrica.py` · `scripts/publicar.py` · `scripts/descargar_series.py` · `data/gestion/*` · web |
-
-## Contexto
+## Contexto y planteo del problema
 
 El cinturón de gestión se puntuaba con un **promedio simple** de las tensiones de
 12 indicadores heterogéneos (6 auto, 6 manuales), sin ponderación entre reformas
@@ -14,6 +21,17 @@ ni bandas explícitas. El documento CIGOB **"260702 AJUSTE PARAMETRICA GESTIÓN"
 define una fórmula paramétrica análoga al ITCM de macro: **cinco dimensiones**
 con pesos 35/25/15/15/10 (reformas económicas, reforma del Estado, reforma
 laboral, privatizaciones e inversión, reforma social y orden).
+
+## Opciones consideradas
+
+- **IED neta / inversión pública como indicadores del ISPPI (D4)**: las series
+  existen y están verificadas (`160.2_CFIN_PASINTAL_0_T_57`,
+  `372.9_GTOS_CAP_I017__36_13`), pero la fórmula ISPPI completa del doc exige
+  la tasa de desembolso RIGI, que no es pública. Se pospone a una tanda futura
+  (los IDs quedan documentados acá).
+- **Heritage ILE como indicador de desregulación**: es anual y de fuente
+  privada extranjera; queda como referencia de contraste, no puntúa.
+- **Contar el ejemplo del doc como calibración**: descartado (punto 2).
 
 ## Decisión
 
@@ -113,18 +131,7 @@ Todas las fuentes citadas fueron **verificadas con llamadas HTTP reales**
    bandearse; el detalle rico queda en `detalle_txt`. El parser de la pestaña
    `evaluacion` se hizo robusto al cambio de formato de jul-2026.
 
-## Opciones descartadas
-
-- **IED neta / inversión pública como indicadores del ISPPI (D4)**: las series
-  existen y están verificadas (`160.2_CFIN_PASINTAL_0_T_57`,
-  `372.9_GTOS_CAP_I017__36_13`), pero la fórmula ISPPI completa del doc exige
-  la tasa de desembolso RIGI, que no es pública. Se pospone a una tanda futura
-  (los IDs quedan documentados acá).
-- **Heritage ILE como indicador de desregulación**: es anual y de fuente
-  privada extranjera; queda como referencia de contraste, no puntúa.
-- **Contar el ejemplo del doc como calibración**: descartado (punto 2).
-
-## Consecuencias
+### Consecuencias
 
 - Gestión pasa de score 5,9 (promedio simple, con proxies desactualizados) a
   **ITCG 68,5 → tensión 3,1**, con lectura por dimensión: económicas 85 y

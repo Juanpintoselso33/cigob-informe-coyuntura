@@ -1,12 +1,19 @@
+---
+madr: 4
+id: '0037'
+estado: 'superado'
+nota_estado: '**Superado por [ADR-0040](0040-cohesion-bloque-diputados-desbloqueo-pdf.md)** (2026-07-09) — el bloqueo de la SPA sigue vigente (no se intentó evadirlo), pero se encontró una vía de acceso alternativa legítima (endpoint PDF directo, sin anti-bot) que no requirió ninguna de las opciones "a evaluar" de este ADR. El diagnóstico y los hallazgos de abajo siguen siendo válidos para la SPA específicamente.'
+fecha: 2026-07-07
+cinturon: 'politica'
+indicadores: [indice_rice, es_bloque_lla, fetch_cohesion_bloque]
+archivos: ['scripts/politica.py', _hcdn_votaciones_session, _hcdn_votaciones_get, _descubrir_actas, _url_acta, _parsear_acta, _cohesion_desactualizada, 'data/politica/manuales.json', 'scripts/descargar_series.py']
+superado_por: ['0040']
+ambito: '`scripts/politica.py` (`indice_rice`, `es_bloque_lla`, `_hcdn_votaciones_session`, `_hcdn_votaciones_get`, `_descubrir_actas`, `_url_acta`, `_parsear_acta`, `fetch_cohesion_bloque`, `_cohesion_desactualizada`) · `data/politica/manuales.json` · `scripts/descargar_series.py`'
+---
+
 # ADR-0037 — cohesion_bloque: scraping directo implementado y correcto, pero bloqueado en producción por detección de bots de HCDN
 
-| | |
-|---|---|
-| **Estado** | **Superado por [ADR-0040](0040-cohesion-bloque-diputados-desbloqueo-pdf.md)** (2026-07-09) — el bloqueo de la SPA sigue vigente (no se intentó evadirlo), pero se encontró una vía de acceso alternativa legítima (endpoint PDF directo, sin anti-bot) que no requirió ninguna de las opciones "a evaluar" de este ADR. El diagnóstico y los hallazgos de abajo siguen siendo válidos para la SPA específicamente. |
-| **Fecha** | 2026-07-07 |
-| **Ámbito** | `scripts/politica.py` (`indice_rice`, `es_bloque_lla`, `_hcdn_votaciones_session`, `_hcdn_votaciones_get`, `_descubrir_actas`, `_url_acta`, `_parsear_acta`, `fetch_cohesion_bloque`, `_cohesion_desactualizada`) · `data/politica/manuales.json` · `scripts/descargar_series.py` |
-
-## Contexto
+## Contexto y planteo del problema
 
 `cohesion_bloque` era manual (78%, congelado desde 2026-05-23). Una investigación previa
 (workflow de 33 agentes) encontró que el blocker documentado ("requiere headless browser") era
@@ -14,7 +21,36 @@ falso a esa fecha: `votaciones.hcdn.gob.ar` era HTML server-rendered, scrapeable
 browser. Se decidió automatizar con scraping directo propio (no depender de `Como_voto`, un
 repo de terceros sin licencia formal).
 
-## Qué se construyó (correcto y ya mergeado)
+## Opciones consideradas
+
+- **Headless browser (Playwright) como solución**: probado y descartado — el sitio bloquea
+  clientes automatizados categóricamente, con o sin ejecución de JS.
+- **Depender de Como_voto como fuente**: descartado — está en el mismo problema, solo que no
+  lo sabe (falla silenciosa).
+- **Técnicas de evasión de la detección anti-bot** (proxies residenciales, rotación de
+  fingerprint, resolución de CAPTCHA): descartado por decisión editorial — fuera del estilo del
+  proyecto y de los términos de uso del sitio.
+
+## Decisión
+
+Mergear el código de automatización tal cual (Tareas 1-10 del plan) — es correcto, testeado,
+y degrada con gracia al cache/valor anterior sin marcar falsamente `desactualizado` cuando el
+sitio está inaccesible (Tarea 7). El indicador queda con el mecanismo de automatización listo
+pero **sin datos reales fluyendo** hasta que se resuelva el acceso — no se intenta ningún
+bypass del muro anti-bot (proxies, CAPTCHA-solving, rotación de IP): son técnicas que violan
+los términos de uso del sitio y no son el estilo de este proyecto.
+
+### Consecuencias
+
+- `cohesion_bloque` publica desde cache/último valor conocido indefinidamente hasta que se
+  resuelva el acceso — riesgo real de un indicador "congelado" por un período largo, pero
+  preferible a fabricar un dato o a depender de una fuente derivada igualmente bloqueada.
+- Documentado explícitamente para que una futura sesión no vuelva a probar requests directos ni
+  headless browser sin saber que ya se intentaron y fallaron por esta razón específica.
+
+## Más información
+
+### Qué se construyó (correcto y ya mergeado)
 
 Sesión HTTP con pacing (0.3s, sesión única, evita el WAF F5 por ráfagas) + descubrimiento de
 actas por año + parsing de la tabla nominal + índice de Rice de cohesión + guard de frescura
@@ -27,7 +63,7 @@ corregidos en el camino:
   anidado en `<span>`, columna vacía) — el fixture original (por analogía con Senado) estaba
   mal; corregido contra HTML real archivado (Wayback Machine, snapshot 2026-01-15).
 
-## Hallazgo que bloquea la Tarea 11 (validación en producción)
+### Hallazgo que bloquea la Tarea 11 (validación en producción)
 
 Verificado en vivo desde un runner real de GitHub Actions (no bloqueado por IP, a diferencia
 del sandbox de desarrollo):
@@ -48,16 +84,7 @@ del sandbox de desarrollo):
    propio workflow diario sigue en verde sin que nadie lo note — mismo patrón de falla
    silenciosa que ya documentó este proyecto con CICCRA (commit `2ec13f5`).
 
-## Decisión
-
-Mergear el código de automatización tal cual (Tareas 1-10 del plan) — es correcto, testeado,
-y degrada con gracia al cache/valor anterior sin marcar falsamente `desactualizado` cuando el
-sitio está inaccesible (Tarea 7). El indicador queda con el mecanismo de automatización listo
-pero **sin datos reales fluyendo** hasta que se resuelva el acceso — no se intenta ningún
-bypass del muro anti-bot (proxies, CAPTCHA-solving, rotación de IP): son técnicas que violan
-los términos de uso del sitio y no son el estilo de este proyecto.
-
-## Caminos a evaluar en una revisión futura (ninguno intentado todavía)
+### Caminos a evaluar en una revisión futura (ninguno intentado todavía)
 
 1. **Gestión institucional directa con HCDN** (mencionado como opción en la investigación
    original) — pedir acceso a datos abiertos de votaciones nominales vigentes, o un dataset
@@ -70,21 +97,3 @@ los términos de uso del sitio y no son el estilo de este proyecto.
    julio-2026 no).
 4. **`cohesion_bloque_senado`** (plan ITCP, ADR-0036) es una vía independiente — Senado es un
    sitio distinto sin evidencia de este mismo bloqueo — no depende de que esto se resuelva.
-
-## Opciones descartadas
-
-- **Headless browser (Playwright) como solución**: probado y descartado — el sitio bloquea
-  clientes automatizados categóricamente, con o sin ejecución de JS.
-- **Depender de Como_voto como fuente**: descartado — está en el mismo problema, solo que no
-  lo sabe (falla silenciosa).
-- **Técnicas de evasión de la detección anti-bot** (proxies residenciales, rotación de
-  fingerprint, resolución de CAPTCHA): descartado por decisión editorial — fuera del estilo del
-  proyecto y de los términos de uso del sitio.
-
-## Consecuencias
-
-- `cohesion_bloque` publica desde cache/último valor conocido indefinidamente hasta que se
-  resuelva el acceso — riesgo real de un indicador "congelado" por un período largo, pero
-  preferible a fabricar un dato o a depender de una fuente derivada igualmente bloqueada.
-- Documentado explícitamente para que una futura sesión no vuelva a probar requests directos ni
-  headless browser sin saber que ya se intentaron y fallaron por esta razón específica.

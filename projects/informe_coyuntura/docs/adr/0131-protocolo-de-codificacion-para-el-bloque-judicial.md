@@ -1,111 +1,27 @@
+---
+madr: 4
+id: '0131'
+estado: 'aceptado'
+nota_estado: 'Aceptado (define el procedimiento; ningún indicador entra al índice todavía)'
+fecha: 2026-07-25
+cinturon: 'politica'
+complementa: ['0126']
+corregido_por: ['0140']
+ambito: 'ITCP · bloque judicial y bloque económico · 8 indicadores pendientes'
+origen: 'Aporte externo sobre el cinturón político (doc 260724), recomendación 1'
+---
+
 # ADR-0131 — SAIJ es automatizable, contar no: el protocolo de codificación
 
-| | |
-|---|---|
-| **Estado** | Aceptado (define el procedimiento; ningún indicador entra al índice todavía) |
-| **Ámbito** | ITCP · bloque judicial y bloque económico · 8 indicadores pendientes |
-| **Fecha** | 2026-07-25 |
 | **Complementa** | ADR-0126 (dimensión judicial, primer indicador) |
-| **Origen** | Aporte externo sobre el cinturón político (doc 260724), recomendación 1 |
 
-## Qué se verificó
+## Opciones consideradas
 
-El aporte marcaba **Veto de Constitucionalidad** como automatización **Alta**:
-*"SAIJ — buscador de jurisprudencia. Motor de búsqueda con metadatos
-consultable; tratar como evento, no serie continua"*.
+_El ADR original no registró opciones alternativas._
 
-**La parte de infraestructura es correcta y quedó comprobada.** El endpoint
-`https://www.saij.gob.ar/busqueda` devuelve JSON, acepta sintaxis de campo
-(`texto:`, `fecha-rango:[AAAAMMDD TO AAAAMMDD]`), facetas por tipo de documento
-y paginación. No hace falta scrapear HTML.
+## Decisión
 
-| consulta | resultados |
-|---|---|
-| `texto:inconstitucionalidad` (jurisprudencia) | 21.560 |
-| `texto:"declara la inconstitucionalidad"` | 643 |
-| `texto:"inconstitucionalidad del decreto"` | 122 |
-| ídem + `fecha-rango:[20231210 TO 20261231]` | **14** |
-
-## Por qué el indicador NO entra al índice
-
-Se leyeron los 14. **La mayoría no es el fenómeno.**
-
-| sumario | ¿es un veto de constitucionalidad al Ejecutivo nacional? |
-|---|---|
-| Acción declarativa contra el DNU "Bases para la reconstrucción de la economía" | **sí** |
-| Confirmación de sentencia, personal militar, DNU | **sí** |
-| "Recurso de inconstitucionalidad, recurso de queja, pagaré, intereses moratorios" | no — remedio procesal provincial |
-| "Recurso de inconstitucionalidad, Superior Tribunal de Justicia, subrogancia del juez" | no — cuestión provincial interna |
-| "AFIP DGI" | no |
-| "Declaración de inconstitucionalidad, honorarios" | no — arancel profesional |
-
-El problema de fondo: **"recurso de inconstitucionalidad" es un remedio
-procesal de los códigos provinciales y no tiene nada que ver con declarar
-inconstitucional una norma del Ejecutivo nacional.** La búsqueda de texto no
-distingue las dos cosas, y en este universo la segunda acepción domina.
-
-### Es la cuarta vez, y conviene decirlo así
-
-| ADR | qué contaba de más |
-|---|---|
-| 0068 | "fondo de cese laboral" traía el régimen homónimo de la construcción |
-| 0091 | `veto_quorum` contaba como fracaso de quórum las informativas del art. 71 CN |
-| 0096 | "deroga" matcheaba considerandos donde la norma relata lo que derogó *otra* |
-| **0131** | **"inconstitucionalidad" trae el recurso procesal provincial** |
-
-**Una búsqueda de texto completo sobre una base legal cuenta lo que no es, salvo
-que alguien lea los resultados.** Ya no es un accidente: es el comportamiento
-esperable, y el diseño tiene que asumirlo desde el principio.
-
-## Primera pasada de codificación: dos hallazgos que cambian el diseño
-
-Se bajó el sumario completo de los 14 casos y se los clasificó uno por uno.
-Dos cosas aparecieron que no se veían desde el conteo.
-
-### El conteo se movería en la dirección equivocada
-
-La consulta devuelve **casos donde el Ejecutivo GANÓ**, mezclados con los que
-perdió:
-
-| caso | qué pasó realmente | ¿es un veto? |
-|---|---|---|
-| DNU 70/23, acción declarativa (dic-2023) | **rechazada** por falta de legitimación | **no — la norma sobrevivió** |
-| DNU 669/2019, declarado inconstitucional de oficio por la Cámara del Trabajo | la Corte **revocó** esa declaración | **no — y además es de otro gobierno** |
-| Decreto 6754/43, tacha de inconstitucionalidad | **extemporánea**, rechazada | no — decreto de 1943 |
-| Decreto 6754/43, mismo planteo | **improcedente** | no |
-| DNU 70/23, amparo de afiliado a prepaga | busca la declaración | candidato |
-| Decreto 759/2025, amparo del Consejo Interuniversitario | busca la declaración | candidato |
-
-**Contar los 14 como "vetos de constitucionalidad" habría sumado como golpes al
-Gobierno tres casos en los que el Gobierno ganó y dos sobre un decreto de 1943.**
-Un indicador así se movería al revés: más litigios ganados subirían la tensión.
-
-La distinción que hay que codificar no es "¿aparece la palabra?" sino
-**"¿el tribunal declaró la inconstitucionalidad, o rechazó el planteo?"** —y esa
-lectura no la hace una expresión regular.
-
-### SAIJ tiene un tesauro controlado, y es mejor filtro que el texto
-
-Cada documento trae `descriptores` con rutas jerárquicas de vocabulario
-controlado:
-
-```
-Derecho constitucional/control de constitucionalidad/inconstitucionalidad/
-    declaración de inconstitucionalidad/acción de inconstitucionalidad
-Derecho administrativo/acto administrativo/acto administrativo de alcance
-    general/reglamentos/decreto de necesidad y urgencia
-Derecho procesal/recursos/improcedencia del recurso
-```
-
-**La rama del tesauro separa el control de constitucionalidad del remedio
-procesal mucho mejor que el texto libre.** La consulta definitiva debe filtrar
-por descriptor, no por frase, y el registro debe guardar la ruta como evidencia
-de por qué el caso entró.
-
-Los documentos traen además `jurisdiccion` (NACIONAL / FEDERAL / LOCAL) y
-`tipo-tribunal`, que permiten excluir lo provincial sin leerlo.
-
-## Decisión: el protocolo
+### Decisión: el protocolo
 
 Ningún indicador del bloque judicial o económico entra al índice sin cumplir
 estos cinco puntos. No es burocracia — es lo que separa un indicador auditable
@@ -177,7 +93,117 @@ ADR-0129: la consulta corre sola y marca casos nuevos como pendientes; la
 clasificación la hace una persona. Automatizar el paso 2 sería reemplazar un
 criterio publicado por una regla escondida en una expresión regular.
 
-## Primera pasada hecha: `veto_constitucionalidad_codificacion.json`
+## Más información
+
+### Limitaciones
+
+- **No incorpora ningún indicador.** El bloque judicial sigue con uno solo
+  (`cobertura_judicial`, ADR-0126) y el económico con uno solo
+  (`brecha_obra_publica`, ADR-0088).
+- **No escribe las reglas de inclusión de cada indicador**, sólo exige que
+  existan y fija el estándar de concordancia.
+- **No resuelve** que la doble codificación necesita dos personas. Es un costo
+  real del diseño y no hay forma de automatizarlo sin perder lo que lo hace
+  auditable.
+
+### Qué se verificó
+
+El aporte marcaba **Veto de Constitucionalidad** como automatización **Alta**:
+*"SAIJ — buscador de jurisprudencia. Motor de búsqueda con metadatos
+consultable; tratar como evento, no serie continua"*.
+
+**La parte de infraestructura es correcta y quedó comprobada.** El endpoint
+`https://www.saij.gob.ar/busqueda` devuelve JSON, acepta sintaxis de campo
+(`texto:`, `fecha-rango:[AAAAMMDD TO AAAAMMDD]`), facetas por tipo de documento
+y paginación. No hace falta scrapear HTML.
+
+| consulta | resultados |
+|---|---|
+| `texto:inconstitucionalidad` (jurisprudencia) | 21.560 |
+| `texto:"declara la inconstitucionalidad"` | 643 |
+| `texto:"inconstitucionalidad del decreto"` | 122 |
+| ídem + `fecha-rango:[20231210 TO 20261231]` | **14** |
+
+### Por qué el indicador NO entra al índice
+
+Se leyeron los 14. **La mayoría no es el fenómeno.**
+
+| sumario | ¿es un veto de constitucionalidad al Ejecutivo nacional? |
+|---|---|
+| Acción declarativa contra el DNU "Bases para la reconstrucción de la economía" | **sí** |
+| Confirmación de sentencia, personal militar, DNU | **sí** |
+| "Recurso de inconstitucionalidad, recurso de queja, pagaré, intereses moratorios" | no — remedio procesal provincial |
+| "Recurso de inconstitucionalidad, Superior Tribunal de Justicia, subrogancia del juez" | no — cuestión provincial interna |
+| "AFIP DGI" | no |
+| "Declaración de inconstitucionalidad, honorarios" | no — arancel profesional |
+
+El problema de fondo: **"recurso de inconstitucionalidad" es un remedio
+procesal de los códigos provinciales y no tiene nada que ver con declarar
+inconstitucional una norma del Ejecutivo nacional.** La búsqueda de texto no
+distingue las dos cosas, y en este universo la segunda acepción domina.
+
+### Es la cuarta vez, y conviene decirlo así
+
+| ADR | qué contaba de más |
+|---|---|
+| 0068 | "fondo de cese laboral" traía el régimen homónimo de la construcción |
+| 0091 | `veto_quorum` contaba como fracaso de quórum las informativas del art. 71 CN |
+| 0096 | "deroga" matcheaba considerandos donde la norma relata lo que derogó *otra* |
+| **0131** | **"inconstitucionalidad" trae el recurso procesal provincial** |
+
+**Una búsqueda de texto completo sobre una base legal cuenta lo que no es, salvo
+que alguien lea los resultados.** Ya no es un accidente: es el comportamiento
+esperable, y el diseño tiene que asumirlo desde el principio.
+
+### Primera pasada de codificación: dos hallazgos que cambian el diseño
+
+Se bajó el sumario completo de los 14 casos y se los clasificó uno por uno.
+Dos cosas aparecieron que no se veían desde el conteo.
+
+### El conteo se movería en la dirección equivocada
+
+La consulta devuelve **casos donde el Ejecutivo GANÓ**, mezclados con los que
+perdió:
+
+| caso | qué pasó realmente | ¿es un veto? |
+|---|---|---|
+| DNU 70/23, acción declarativa (dic-2023) | **rechazada** por falta de legitimación | **no — la norma sobrevivió** |
+| DNU 669/2019, declarado inconstitucional de oficio por la Cámara del Trabajo | la Corte **revocó** esa declaración | **no — y además es de otro gobierno** |
+| Decreto 6754/43, tacha de inconstitucionalidad | **extemporánea**, rechazada | no — decreto de 1943 |
+| Decreto 6754/43, mismo planteo | **improcedente** | no |
+| DNU 70/23, amparo de afiliado a prepaga | busca la declaración | candidato |
+| Decreto 759/2025, amparo del Consejo Interuniversitario | busca la declaración | candidato |
+
+**Contar los 14 como "vetos de constitucionalidad" habría sumado como golpes al
+Gobierno tres casos en los que el Gobierno ganó y dos sobre un decreto de 1943.**
+Un indicador así se movería al revés: más litigios ganados subirían la tensión.
+
+La distinción que hay que codificar no es "¿aparece la palabra?" sino
+**"¿el tribunal declaró la inconstitucionalidad, o rechazó el planteo?"** —y esa
+lectura no la hace una expresión regular.
+
+### SAIJ tiene un tesauro controlado, y es mejor filtro que el texto
+
+Cada documento trae `descriptores` con rutas jerárquicas de vocabulario
+controlado:
+
+```
+Derecho constitucional/control de constitucionalidad/inconstitucionalidad/
+    declaración de inconstitucionalidad/acción de inconstitucionalidad
+Derecho administrativo/acto administrativo/acto administrativo de alcance
+    general/reglamentos/decreto de necesidad y urgencia
+Derecho procesal/recursos/improcedencia del recurso
+```
+
+**La rama del tesauro separa el control de constitucionalidad del remedio
+procesal mucho mejor que el texto libre.** La consulta definitiva debe filtrar
+por descriptor, no por frase, y el registro debe guardar la ruta como evidencia
+de por qué el caso entró.
+
+Los documentos traen además `jurisdiccion` (NACIONAL / FEDERAL / LOCAL) y
+`tipo-tribunal`, que permiten excluir lo provincial sin leerlo.
+
+### Primera pasada hecha: `veto_constitucionalidad_codificacion.json`
 
 La pasada 1 está completa sobre el universo de 17 documentos y versionada en
 `data/politica/veto_constitucionalidad_codificacion.json`, caso por caso con su
@@ -239,7 +265,7 @@ el criterio amplio el indicador captura el control de legalidad completo; con el
 estricto, se queda casi sin casos. **No la resuelve un codificador solo, y es
 exactamente para eso que el protocolo pide dos.**
 
-## Qué habilita esto
+### Qué habilita esto
 
 Los **ocho indicadores pendientes** —cinco judiciales y tres del bloque
 económico— comparten el mismo cuello de botella. Con el protocolo definido,
@@ -262,18 +288,7 @@ coincide, con la salvedad de este ADR: **primero el protocolo, después el
 scraper.** Un scraper que produce datos que no se pueden clasificar no produce
 nada.
 
-## Lo que este ADR NO hace
-
-- **No incorpora ningún indicador.** El bloque judicial sigue con uno solo
-  (`cobertura_judicial`, ADR-0126) y el económico con uno solo
-  (`brecha_obra_publica`, ADR-0088).
-- **No escribe las reglas de inclusión de cada indicador**, sólo exige que
-  existan y fija el estándar de concordancia.
-- **No resuelve** que la doble codificación necesita dos personas. Es un costo
-  real del diseño y no hay forma de automatizarlo sin perder lo que lo hace
-  auditable.
-
-## Anexo: la consulta que quedó verificada
+### Anexo: la consulta que quedó verificada
 
 ```
 GET https://www.saij.gob.ar/busqueda

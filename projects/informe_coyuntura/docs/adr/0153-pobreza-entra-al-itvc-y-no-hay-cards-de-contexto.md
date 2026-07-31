@@ -1,15 +1,21 @@
+---
+madr: 4
+id: '0153'
+estado: 'aceptado'
+fecha: 2026-07-30
+cinturon: 'vida'
+ambito: 'cinturón vida cotidiana (ITVC-B100), dimensión ingresos y consumo;'
+---
+
 # ADR-0153 — La pobreza entra al ITVC, y la categoría «card de contexto» queda cerrada
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-30
-- **Ámbito**: cinturón vida cotidiana (ITVC-B100), dimensión ingresos y consumo;
-  y una regla transversal de publicación
+y una regla transversal de publicación
 - **Descarta**: ADR-0113 (el nowcast se publica pero no puntúa)
 - **Relacionados**: ADR-0022 y ADR-0051 (patrón `*_OCULTOS`), ADR-0115 (qué mide
   la dimensión de ingresos), ADR-0018/0024/0067 (base 100 = 4T-2023), ADR-0045
   (cuándo se puede calibrar contra lo observado)
 
-## Contexto
+## Contexto y planteo del problema
 
 El editor venía con una lista de indicadores a mover entre cinturones. Sobre la
 pobreza no tenía decidido el destino («no sé a dónde iba, ¿a macro?, ¿en algún
@@ -20,7 +26,53 @@ estado no era una opción de diseño: es la categoría «indicador de contexto»
 el editor **dio de baja expresamente**, y dejarla viva era el problema de fondo
 a resolver, no un detalle de implementación.
 
-## 1. La categoría «card de contexto» está cerrada, y ahora hay un guard
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+1. `pobreza_nowcast` **integra el ITVC** con 25% de la dimensión de ingresos y
+   consumo. `itvc.INDICADORES_CONTEXTO` queda vacía, con guard.
+2. La serie `itvc_pobreza` se registra rebaseada e invertida contra el 2º
+   semestre de 2023 del INDEC, con el desvío del empalme declarado en la ficha.
+3. El fechado del nowcast sale del enunciado de resultados, no del título.
+
+### Consecuencias
+
+- **ITVC 94,4 → 96,4** y tensión del cinturón **6,1 → 5,7**. La dimensión de
+  ingresos pasa de **105,1 a 110,5**, porque el componente que entra vale 126,9:
+  la pobreza cayó mucho respecto del 2º semestre de 2023, que fue un pico. El
+  índice mejora, y hay que decir con qué criterio se aceptó: el peso se fijó
+  antes de ver este número.
+- La lectura contra la transición y no contra un óptimo queda explícita en la
+  ficha: superar 100 no significa una situación buena, significa mejor que un
+  punto de partida muy malo.
+- Peso efectivo de la pobreza en el ITVC: **9,31%**.
+- Validación externa ITVC↔ICC: **sube**. Medido sobre los mismos datos, sacando y
+  poniendo el componente: **0,526 → 0,558** sin ICC y **0,647 → 0,674** completo
+  (n = 31 en los cuatro).
+
+  Esto **corrige una lectura anterior**. Antes de arreglar el fechado de la
+  sección 5, la misma comparación daba que la validación **bajaba**, y ya estaba
+  escrita la explicación de por qué era aceptable que bajara —el ICC es
+  expectacional y la pobreza es material, la anti-fase ya documentada—. Era una
+  racionalización sobre un dato malo: con abril en su valor y mayo en su lugar, el
+  componente mejora el ajuste contra el ICC. Se deja anotado porque el argumento
+  «baja pero se justifica» es exactamente el que hay que desconfiar cuando todavía
+  no se auditó el insumo.
+
+  Que suba no autoriza a tocar nada tampoco: mover un peso para que un r mejore
+  está prohibido por ADR-0045, y el peso ya estaba fijado antes de mirar.
+- El componente arranca en enero de 2025: los meses anteriores del ITVC no lo
+  incluyen y la dimensión renormaliza. La comparación de un ITVC de 2024 contra
+  uno de 2026 mide, en esa fracción, composiciones distintas.
+- Si un mes no publica informe, el componente mantiene el último valor y la
+  dimensión renormaliza.
+
+## Más información
+
+### 1. La categoría «card de contexto» está cerrada, y ahora hay un guard
 
 La regla queda escrita sin ambigüedad: **un indicador entra al índice de su
 cinturón, o va a los ocultos del snapshot** (patrón `*_OCULTOS`, ADR-0022 y
@@ -34,7 +86,7 @@ línea, y mientras `pobreza_nowcast` estuvo ahí, `publicar.py` le estampaba
 que ningún gate se quejara. El guard vale más que la limpieza puntual: el que
 falla la próxima vez es el test, no el editor leyendo el tablero.
 
-## 2. Por qué vida cotidiana y no macro
+### 2. Por qué vida cotidiana y no macro
 
 Las seis dimensiones del ITCM son **condiciones de la economía** —estabilidad
 monetaria, viabilidad fiscal-comercial, financiamiento, actividad,
@@ -43,7 +95,7 @@ competitividad, inversión— y la pobreza no es ninguna de ellas: es el
 macro habría obligado a abrir una séptima dimensión de naturaleza distinta a las
 otras seis.
 
-## 3. El peso: 25% de la dimensión, fijado antes de mirar el efecto
+### 3. El peso: 25% de la dimensión, fijado antes de mirar el efecto
 
 El razonamiento se escribió en el código **antes** de calcular el impacto sobre
 el índice, que es la única forma de que el peso no sea un ajuste al resultado
@@ -101,7 +153,7 @@ lectura en diferencias es la que el proyecto ya decidió que viaja con el númer
 Por eso entra a **esta** dimensión, donde el solapamiento queda explícito y los
 pesos lo absorben, y no como dimensión aparte fingiendo independencia.
 
-## 4. El empalme de dos fuentes, y su costo declarado
+### 4. El empalme de dos fuentes, y su costo declarado
 
 El nowcast mensual de la UTDT **arranca en enero de 2025** y no llega al período
 base, así que el rebase toma la base de la **serie oficial del INDEC**:
@@ -137,7 +189,7 @@ la base propia del nowcast; si la tuviera, el empalme desaparece. No se intentó
 acá porque exige mantener un websocket (ver el docstring del colector), no porque
 se haya comprobado que no está.
 
-## 5. Un bug de fechado que apareció al RENDERIZAR el informe
+### 5. Un bug de fechado que apareció al RENDERIZAR el informe
 
 Buscando si el nowcast llegaba a 2023 apareció otra cosa. La serie tenía **un
 hueco en mayo de 2026** y el primer reflejo era «la fuente no publicó ese mes».
@@ -190,43 +242,3 @@ veía: no hay test que compare un PDF contra su propio gráfico, y el hueco de u
 mes en una serie de 18 puntos no disparaba ningún gate. Apareció al **renderizar
 el PDF y mirarlo** — la misma disciplina que ya está anotada para no cerrar
 negativos apurado.
-
-## Decisión
-
-1. `pobreza_nowcast` **integra el ITVC** con 25% de la dimensión de ingresos y
-   consumo. `itvc.INDICADORES_CONTEXTO` queda vacía, con guard.
-2. La serie `itvc_pobreza` se registra rebaseada e invertida contra el 2º
-   semestre de 2023 del INDEC, con el desvío del empalme declarado en la ficha.
-3. El fechado del nowcast sale del enunciado de resultados, no del título.
-
-## Consecuencias
-
-- **ITVC 94,4 → 96,4** y tensión del cinturón **6,1 → 5,7**. La dimensión de
-  ingresos pasa de **105,1 a 110,5**, porque el componente que entra vale 126,9:
-  la pobreza cayó mucho respecto del 2º semestre de 2023, que fue un pico. El
-  índice mejora, y hay que decir con qué criterio se aceptó: el peso se fijó
-  antes de ver este número.
-- La lectura contra la transición y no contra un óptimo queda explícita en la
-  ficha: superar 100 no significa una situación buena, significa mejor que un
-  punto de partida muy malo.
-- Peso efectivo de la pobreza en el ITVC: **9,31%**.
-- Validación externa ITVC↔ICC: **sube**. Medido sobre los mismos datos, sacando y
-  poniendo el componente: **0,526 → 0,558** sin ICC y **0,647 → 0,674** completo
-  (n = 31 en los cuatro).
-
-  Esto **corrige una lectura anterior**. Antes de arreglar el fechado de la
-  sección 5, la misma comparación daba que la validación **bajaba**, y ya estaba
-  escrita la explicación de por qué era aceptable que bajara —el ICC es
-  expectacional y la pobreza es material, la anti-fase ya documentada—. Era una
-  racionalización sobre un dato malo: con abril en su valor y mayo en su lugar, el
-  componente mejora el ajuste contra el ICC. Se deja anotado porque el argumento
-  «baja pero se justifica» es exactamente el que hay que desconfiar cuando todavía
-  no se auditó el insumo.
-
-  Que suba no autoriza a tocar nada tampoco: mover un peso para que un r mejore
-  está prohibido por ADR-0045, y el peso ya estaba fijado antes de mirar.
-- El componente arranca en enero de 2025: los meses anteriores del ITVC no lo
-  incluyen y la dimensión renormaliza. La comparación de un ITVC de 2024 contra
-  uno de 2026 mide, en esa fracción, composiciones distintas.
-- Si un mes no publica informe, el componente mantiene el último valor y la
-  dimensión renormaliza.

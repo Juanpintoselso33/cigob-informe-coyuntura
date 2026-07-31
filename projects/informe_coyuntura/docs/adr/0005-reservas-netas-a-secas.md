@@ -1,13 +1,16 @@
+---
+madr: 4
+id: '0005'
+estado: 'aceptado'
+fecha: 2026-06-26
+indicadores: [reservas_bcra]
+ambito: 'Dimensión Capacidad de financiamiento · indicador `reservas_bcra`'
+commit: '`3f17e5a` (final; saga: `9204e86` → `1b7d1b9` → `59af7db` → `6e28f83` → `3f17e5a`)'
+---
+
 # ADR-0005 — Reservas: netas "a secas" calculadas de la planilla SDDS + Tesoro + Bopreal
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-06-26 |
-| **Ámbito** | Dimensión Capacidad de financiamiento · indicador `reservas_bcra` |
-| **Commit** | `3f17e5a` (final; saga: `9204e86` → `1b7d1b9` → `59af7db` → `6e28f83` → `3f17e5a`) |
-
-## Contexto
+## Contexto y planteo del problema
 
 La Paramétrica original usaba las **reservas brutas** (~48k → banda 70). El
 documento `260626 aportes` indica usar las **netas**, con una escala propia. Pero
@@ -19,6 +22,28 @@ extranjera, **excluyendo** los depósitos del Tesoro y los vencimientos de Bopre
 
 El desafío (ver ADR-0001): calcularlo **de datos oficiales, sin hardcodear**. El
 BCRA no expone las netas ni sus componentes en la API de Monetarias.
+
+## Opciones consideradas
+
+### Opciones consideradas (incluye callejones sin salida — NO re-investigar)
+
+- **Reservas brutas** (original). Rechazada: el doc pide netas; las brutas ocultan la deuda en ME.
+- **Brutas (API) − pasivos de un config a mano.** Rechazada (ADR-0001): pasivos hardcodeados.
+- **Balance Consolidado del BCRA (`balbcrhis.xls`) como única fuente.** Daba +6.376
+  (banda 50), ~2,5k por encima del consenso. Descartada como número de scoring: el
+  balance está en pesos, agrupa swap+repos+OOII en "y otros" y define los encajes
+  distinto al mercado. (Se conserva para el término del Tesoro: col "Dep. gobierno en ME".)
+- **Calibración con constante −2.500** para alinear el balance al consenso.
+  Rechazada (ADR-0001): constante hardcodeada.
+- **Exclusiones (Bopreal+Tesoro) cargadas a mano en un config.** Rechazada (ADR-0001).
+- **`din2_ser.txt` (series diarias de reservas y pasivos).** Descartada: son pasivos
+  **monetarios** (base, letras, pases) en pesos, no los pasivos en ME para netas.
+- **Scrapear el Bopreal del Boletín Oficial.** Resultó innecesario: el Bopreal a 12m
+  ya está en la planilla SDDS (bucket de vencimiento 3m-1año de la Sección II.1).
+- **SDDS estricto (sin sumar Tesoro/Bopreal).** Da −1.605 (banda 10): correcto y
+  100% automático, pero es la definición estricta/FMI-ish, no el número de mercado.
+- **SDDS estricto + Tesoro + Bopreal (todo de datos).** Elegida: reproduce la banda
+  del mercado y cumple ADR-0001.
 
 ## Decisión
 
@@ -56,27 +81,7 @@ Prueba de que el bucket "3m-1año" **es** el Bopreal: valía ~130 en marzo y **s
 a ~2.670 en abril**, justo cuando la Serie 1B del Bopreal entró a la ventana de 12
 meses (30/04/2026).
 
-## Opciones consideradas (incluye callejones sin salida — NO re-investigar)
-
-- **Reservas brutas** (original). Rechazada: el doc pide netas; las brutas ocultan la deuda en ME.
-- **Brutas (API) − pasivos de un config a mano.** Rechazada (ADR-0001): pasivos hardcodeados.
-- **Balance Consolidado del BCRA (`balbcrhis.xls`) como única fuente.** Daba +6.376
-  (banda 50), ~2,5k por encima del consenso. Descartada como número de scoring: el
-  balance está en pesos, agrupa swap+repos+OOII en "y otros" y define los encajes
-  distinto al mercado. (Se conserva para el término del Tesoro: col "Dep. gobierno en ME".)
-- **Calibración con constante −2.500** para alinear el balance al consenso.
-  Rechazada (ADR-0001): constante hardcodeada.
-- **Exclusiones (Bopreal+Tesoro) cargadas a mano en un config.** Rechazada (ADR-0001).
-- **`din2_ser.txt` (series diarias de reservas y pasivos).** Descartada: son pasivos
-  **monetarios** (base, letras, pases) en pesos, no los pasivos en ME para netas.
-- **Scrapear el Bopreal del Boletín Oficial.** Resultó innecesario: el Bopreal a 12m
-  ya está en la planilla SDDS (bucket de vencimiento 3m-1año de la Sección II.1).
-- **SDDS estricto (sin sumar Tesoro/Bopreal).** Da −1.605 (banda 10): correcto y
-  100% automático, pero es la definición estricta/FMI-ish, no el número de mercado.
-- **SDDS estricto + Tesoro + Bopreal (todo de datos).** Elegida: reproduce la banda
-  del mercado y cumple ADR-0001.
-
-## Consecuencias
+### Consecuencias
 
 - Dos fuentes oficiales (planilla SDDS en PDF + balance en XLS), cada una con su
   fallback: el Tesoro se omite si el balance no baja; el SDDS cae a

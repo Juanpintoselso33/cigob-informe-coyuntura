@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0066'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'politica'
+indicadores: [iaf_transferencias]
+relacionado: ['0065']
+ambito: 'Cinturón política · ITCP · `iaf_transferencias`'
+---
+
 # ADR-0066 — iaf_transferencias: el CSV RON incluye la porción del Tesoro Nacional y la ANSES — se filtra a provincias
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón política · ITCP · `iaf_transferencias` |
-| **Fecha** | 2026-07-15 |
-| **Precedentes directos** | ADR-0065 (deflactor promedio, mismo día — este ADR completa esa auditoría con el chequeo de NIVEL) |
-
-## Contexto
+## Contexto y planteo del problema
 
 Chequeo externo pedido por el usuario tras ADR-0065. La validación de la
 VARIACIÓN había cerrado, pero el chequeo de **nivel** no: nuestro total 2025
@@ -58,13 +62,17 @@ de la porción nacional (la mezcla de impuestos que van al Tesoro/ANSES
 creció menos que la que va a provincias). En años con cambios en el reparto
 la distorsión era mayor (2019: +51,4% provincias vs +43,1% total).
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 `RON_NO_PROVINCIA = {"tesoro nacional", "seguridad social", "fondo a.t.n."}`
 se excluye de la suma en `fetch_iaf_transferencias()` y `fetch_iaf_serie()`.
 La serie histórica se regenera con el alcance corregido.
 
-## Consecuencias
+### Consecuencias
 
 - Variación real 2025: −0,8% → **+0,8%** (nominal +43,0%, deflactor promedio
   41,9%) — entre el 0% de la coparticipación pura y el +1,6% del agregado
@@ -75,3 +83,9 @@ La serie histórica se regenera con el alcance corregido.
   eficacia ×2, iaf ×2): el chequeo de nivel contra fuentes independientes
   queda incorporado como paso obligado de cualquier auditoría de indicador —
   una variación puede cerrar de casualidad con un alcance mal definido.
+
+## Más información
+
+### Precedentes directos
+
+ADR-0065 (deflactor promedio, mismo día — este ADR completa esa auditoría con el chequeo de NIVEL)

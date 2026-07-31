@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0109'
+estado: 'aceptado'
+nota_estado: 'Aceptado (observación verificada, sin cambio de método)'
+fecha: 2026-07-20
+cinturon: 'vida'
+archivos: ['itvc.tension_de_itvc']
+ambito: 'ITVC · `itvc.tension_de_itvc` · presentación por componente'
+origen: 'Auditoría de Vida Cotidiana, punto 3.1 y recomendación 1 (prioridad alta)'
+---
+
 # ADR-0109 — Saturación de la escala de tensión: verificada, no requiere cambio
 
-| | |
-|---|---|
-| **Estado** | Aceptado (observación verificada, sin cambio de método) |
-| **Ámbito** | ITVC · `itvc.tension_de_itvc` · presentación por componente |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría de Vida Cotidiana, punto 3.1 y recomendación 1 (prioridad alta) |
-
-## La observación
+## Contexto y planteo del problema
 
 La auditoría marcó como su recomendación de mayor prioridad "desaturar la escala
 de tensión". Cinco de los catorce componentes operan contra el techo o el piso
@@ -24,7 +29,21 @@ La saturación es real: `mora_familias` da tensión cruda 21,3 y `peso_tarifas`
 10,7 contra un techo de 10; `endeudamiento_familiar`, `patentamiento_motos` y
 `sentimiento_digital` dan −3,0, −3,0 y −2,5 contra un piso de 0.
 
-## Por qué no requiere cambio
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+- La escala de tensión **no se toca**.
+- La recomendación 1 de la auditoría pasa a **"verificada, no requiere cambio"**,
+  con la evidencia de arriba como respuesta.
+- Queda anotado el efecto de la winsorización como el recorte que sí merece
+  seguimiento.
+
+## Más información
+
+### Por qué no requiere cambio
 
 **La conclusión no se sostiene: la aguja sí se mueve.**
 
@@ -59,7 +78,7 @@ existe en el cálculo. Es la doctrina de ADR-0045 aplicada a la inversa: no se
 mueve un parámetro para que un número quede mejor, tampoco cuando lo pide una
 auditoría.
 
-## Lo que la verificación sí encontró
+### Lo que la verificación sí encontró
 
 Hay un recorte que **sí** entra al índice, y es otro: la **winsorización al
 techo de 140** (ADR-0033). Su efecto agregado nunca se había medido:
@@ -78,11 +97,3 @@ efecto crece si más componentes se van al techo.
 Se conecta con ADR-0108: `endeudamiento_familiar` está en el techo 19 de 31
 meses, lo que además degrada su medición de redundancia. Si algún día conviene
 revisar un recorte del ITVC, es éste y no la escala de tensión.
-
-## Decisión
-
-- La escala de tensión **no se toca**.
-- La recomendación 1 de la auditoría pasa a **"verificada, no requiere cambio"**,
-  con la evidencia de arriba como respuesta.
-- Queda anotado el efecto de la winsorización como el recorte que sí merece
-  seguimiento.

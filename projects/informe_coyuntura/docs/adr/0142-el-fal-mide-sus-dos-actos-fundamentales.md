@@ -1,13 +1,20 @@
+---
+madr: 4
+id: '0142'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'gestion'
+indicadores: [fal_modernizacion_laboral]
+ambito: 'ITCG · `fal_modernizacion_laboral` · bandas · serie · card · ficha'
+origen: 'revisión externa del cinturón de gestión (documento del 23-jul-2026)'
+---
+
 # ADR-0142 — El FAL mide sus dos actos fundamentales
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: ITCG · `fal_modernizacion_laboral` · bandas · serie · card · ficha
 - **Reemplaza**: ADR-0098 (índice compuesto en tres etapas)
-- **Origen**: revisión externa del cinturón de gestión (documento del 23-jul-2026)
   + **decisión editorial explícita** del 26-jul-2026
 
-## El planteo
+## Contexto y planteo del problema
 
 El documento de revisión propone:
 
@@ -22,45 +29,13 @@ El documento de revisión propone:
 El 50/50 con litigiosidad ya se implementó en ADR-0128. Lo que faltaba —y es lo
 que hace este ADR— es la **subdivisión del FAL en los dos actos**.
 
-## El desacuerdo, que conviene dejar escrito
+## Opciones consideradas
 
-ADR-0098 (20-jul-2026, tres días antes del documento) atacó el mismo problema y
-llegó a otra respuesta: compuso el índice como `0,40 · construcción + 0,20 ·
-vigencia + 0,40 · adopción`, con los dos actos incluidos entre los hitos de
-construcción, y **topeó el puntaje en 30 hasta noviembre**, con este argumento
-textual:
+_El ADR original no registró opciones alternativas._
 
-> "Es exigente a propósito: sancionar y reglamentar la ley es progreso real sobre
-> la promesa, pero mientras nada rija el efecto es cero."
+## Decisión
 
-La revisión externa sostiene lo contrario: que sancionar y reglamentar **agota**
-lo que el Gobierno podía cumplir hasta la vigencia. Las dos lecturas son
-defendibles. **Ganó la segunda, por decisión editorial.**
-
-## Efecto, sin maquillaje
-
-| | antes (ADR-0098) | ahora |
-|---|---|---|
-| valor del indicador | 40,2 | **100** |
-| puntaje | 30,8 | **100** |
-| dimensión `reforma_laboral` | 45,1 | **79,7** |
-| ITCG | — | **+5,2 puntos** |
-
-**El cambio mejora el número y la justificación es editorial, no empírica.** No
-se puede invocar neutralidad como defensa, igual que en ADR-0128. Queda escrito
-acá, en el comentario de las bandas y en la ficha pública.
-
-## El costo, que es serio
-
-Los dos actos ya ocurrieron y **no se pueden deshacer**. El indicador queda
-**fijo en 100** y ningún hecho futuro lo mueve: ni la entrada en vigencia del
-1-nov-2026, ni que el Fondo se use o no se use.
-
-Es decir: **deja de discriminar**, contra ADR-0042. La escala sólo puede tomar
-tres valores (0 / 50 / 100) y ya está en el último. Se publica así sabiendo esto,
-y obliga a rediseñar el indicador cuando el régimen entre en vigencia.
-
-## Lo que se implementó
+### Lo que se implementó
 
 - **`gestion.py`**: `fetch_fal_modernizacion_laboral()` calcula
   `100 × actos_cumplidos / 2` leyendo `fal_hitos.json`. Los dos actos se
@@ -80,7 +55,7 @@ y obliga a rediseñar el indicador cuando el régimen entre en vigencia.
   compuesto de ADR-0098 no vuelva a colarse en el cálculo; otro, que la
   limitación esté declarada **en el texto público** y no sólo en este ADR.
 
-## Consecuencias
+### Consecuencias
 
 - La ficha pública dice explícitamente que el indicador «dice que las bases
   quedaron puestas, no que el Fondo funcione», y que el valor queda fijo en cien.
@@ -90,3 +65,43 @@ y obliga a rediseñar el indicador cuando el régimen entre en vigencia.
   (`bloqueo_sostenido` y `mora_familias`).
 - **Pendiente con fecha**: el 1-nov-2026, cuando el régimen entre en vigencia,
   hay que rediseñar el indicador. Hoy no tiene forma de reflejar ese hecho.
+
+## Más información
+
+### El desacuerdo, que conviene dejar escrito
+
+ADR-0098 (20-jul-2026, tres días antes del documento) atacó el mismo problema y
+llegó a otra respuesta: compuso el índice como `0,40 · construcción + 0,20 ·
+vigencia + 0,40 · adopción`, con los dos actos incluidos entre los hitos de
+construcción, y **topeó el puntaje en 30 hasta noviembre**, con este argumento
+textual:
+
+> "Es exigente a propósito: sancionar y reglamentar la ley es progreso real sobre
+> la promesa, pero mientras nada rija el efecto es cero."
+
+La revisión externa sostiene lo contrario: que sancionar y reglamentar **agota**
+lo que el Gobierno podía cumplir hasta la vigencia. Las dos lecturas son
+defendibles. **Ganó la segunda, por decisión editorial.**
+
+### Efecto, sin maquillaje
+
+| | antes (ADR-0098) | ahora |
+|---|---|---|
+| valor del indicador | 40,2 | **100** |
+| puntaje | 30,8 | **100** |
+| dimensión `reforma_laboral` | 45,1 | **79,7** |
+| ITCG | — | **+5,2 puntos** |
+
+**El cambio mejora el número y la justificación es editorial, no empírica.** No
+se puede invocar neutralidad como defensa, igual que en ADR-0128. Queda escrito
+acá, en el comentario de las bandas y en la ficha pública.
+
+### El costo, que es serio
+
+Los dos actos ya ocurrieron y **no se pueden deshacer**. El indicador queda
+**fijo en 100** y ningún hecho futuro lo mueve: ni la entrada en vigencia del
+1-nov-2026, ni que el Fondo se use o no se use.
+
+Es decir: **deja de discriminar**, contra ADR-0042. La escala sólo puede tomar
+tres valores (0 / 50 / 100) y ya está en el último. Se publica así sabiendo esto,
+y obliga a rediseñar el indicador cuando el régimen entre en vigencia.

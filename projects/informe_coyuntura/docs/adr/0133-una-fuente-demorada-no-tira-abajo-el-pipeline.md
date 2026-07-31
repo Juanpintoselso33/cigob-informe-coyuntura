@@ -1,13 +1,29 @@
+---
+madr: 4
+id: '0133'
+estado: 'aceptado'
+fecha: 2026-07-26
+archivos: ['gate_calidad.py', 'data-pipeline.yml', 'requirements.txt']
+ambito: '`gate_calidad.py` · `data-pipeline.yml` · `requirements.txt`'
+origen: 'El cron falló tres noches seguidas; planteo del editor'
+---
+
 # ADR-0133 — Una fuente demorada no puede tirar abajo el pipeline
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | `gate_calidad.py` · `data-pipeline.yml` · `requirements.txt` |
-| **Fecha** | 2026-07-26 |
-| **Origen** | El cron falló tres noches seguidas; planteo del editor |
+## Opciones consideradas
 
-## Lo que pasó
+_El ADR original no registró opciones alternativas._
+
+### Confirmación
+
+`test_gate_bloqueante_vs_demora.py` verifica que G2 quede fuera de los
+bloqueantes y que una demora sola devuelva 0. **Si alguien vuelve a meter la
+frescura entre las fallas que cortan, el pipeline entero vuelve a caerse porque
+una fuente publicó tarde, y el test lo marca antes.**
+
+## Más información
+
+### Lo que pasó
 
 El pipeline nocturno venía fallando **tres noches seguidas** (24, 25 y 26 de
 julio). Cada vez, la falla aparecía en el paso de pytest y **el commit del
@@ -29,7 +45,7 @@ tipo de síntoma: no apunta a la causa y manda a investigar al lugar equivocado
 —cosa que efectivamente pasó la noche anterior, cuando diagnostiqué el problema
 de la matriz sin ver que abajo había un crash.
 
-## Tres cambios
+### Tres cambios
 
 ### 1. Las dependencias que faltaban
 
@@ -68,7 +84,7 @@ Los colectores usan sus exit codes como información, no como error:
 distinguen: el paso emite `::error::` señalando qué script se cayó y corta ahí
 mismo, en vez de dejar que el efecto aparezca disfrazado tres pasos más abajo.
 
-## Lo que esto NO arregla
+### Lo que esto NO arregla
 
 - **No hace resiliente al colector.** Si `gestion.py` crashea, se sigue
   perdiendo la actualización de todo ese cinturón. Lo que cambia es que ahora se
@@ -77,10 +93,3 @@ mismo, en vez de dejar que el efecto aparezca disfrazado tres pasos más abajo.
   dos que faltaban hoy; no se auditó si hay otras usadas sólo en local.
 - **El gate sigue siendo binario por indicador.** Un indicador o pasa o no; no
   hay grados.
-
-## Guardia
-
-`test_gate_bloqueante_vs_demora.py` verifica que G2 quede fuera de los
-bloqueantes y que una demora sola devuelva 0. **Si alguien vuelve a meter la
-frescura entre las fallas que cortan, el pipeline entero vuelve a caerse porque
-una fuente publicó tarde, y el test lo marca antes.**

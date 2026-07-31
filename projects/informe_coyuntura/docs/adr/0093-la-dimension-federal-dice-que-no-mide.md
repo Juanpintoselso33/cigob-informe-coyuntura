@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0093'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'politica'
+indicadores: [alianzas_territoriales, alineamiento_senadores_prov, iaf_transferencias]
+ambito: 'ITCP · dimensión `alianzas_territoriales` · textos públicos de `alineamiento_senadores_prov` e `iaf_transferencias`'
+origen: 'Auditoría externa del cinturón político, prioridad 7'
+---
+
 # ADR-0093 — La dimensión federal declara lo que no mide
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCP · dimensión `alianzas_territoriales` · textos públicos de `alineamiento_senadores_prov` e `iaf_transferencias` |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría externa del cinturón político, prioridad 7 |
-
-## El planteo
+## Contexto y planteo del problema
 
 > "Ajustar el nombre o la descripción pública de 'Alineamiento de senadores por
 > provincia' para que no se lea como una medición directa de gobernadores, algo
@@ -25,7 +29,7 @@ metodológica ya decía exactamente lo que había que decir:
 El hueco era de **alcance**: la ficha lo declaraba y la presentación del
 cinturón —la descripción que se ve en el modal, sin entrar a la metodología— no.
 
-## Lo que se encontró al revisarlo
+### Lo que se encontró al revisarlo
 
 El problema aparecía en tres textos, no en uno.
 
@@ -51,6 +55,10 @@ que la Nación hace, no cómo responden las provincias.
 lo que tienen en común: **ninguno observa directamente al ejecutivo
 provincial.**
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 Se reescriben los tres textos. La dimensión conserva su nombre —"Alianzas
@@ -71,7 +79,9 @@ Renombrarla obligaría a tocar fichas y tests sin ganar precisión.
 **No se cambian el cálculo, las bandas ni los pesos.** Este ADR es enteramente
 de texto público.
 
-## Por qué importa más de lo que parece
+## Más información
+
+### Por qué importa más de lo que parece
 
 Es la observación más barata de toda la auditoría y la que mejor ilustra un modo
 de falla propio de un proyecto con buena documentación: **la salvedad existía,
@@ -80,7 +90,7 @@ que abre la card y no entra a la ficha se llevaba la impresión de que el índic
 mide la relación con los gobernadores. La documentación exhaustiva no sustituye
 a que el texto de primera lectura sea exacto.
 
-## Limitación que queda declarada, no resuelta
+### Limitación que queda declarada, no resuelta
 
 Sigue sin haber fuente automatizable de la postura de los ejecutivos
 provinciales — dos rondas de búsqueda documentadas en la ficha del indicador. La

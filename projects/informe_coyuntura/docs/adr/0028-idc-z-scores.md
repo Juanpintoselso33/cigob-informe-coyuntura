@@ -1,12 +1,18 @@
+---
+madr: 4
+id: '0028'
+estado: 'aceptado'
+nota_estado: 'Aceptado (supersede al ADR-0004; resuelve el ADR-0027 vía su opción a)'
+fecha: 2026-07-04
+indicadores: [idc]
+supersede: ['0004']
+relacionado: ['0074']
+ambito: 'Dimensión Capacidad de financiamiento · indicador `idc`'
+---
+
 # ADR-0028 — IdC rediseñado: z-scores de nivel contra la propia historia
 
-| | |
-|---|---|
-| **Estado** | Aceptado (supersede al ADR-0004; resuelve el ADR-0027 vía su opción a) |
-| **Fecha** | 2026-07-04 |
-| **Ámbito** | Dimensión Capacidad de financiamiento · indicador `idc` |
-
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría adversarial del ADR-0027 encontró defectos estructurales en el IdC
 del doc `260626 aportes` (ratios mensuales t/t−1): doble conteo de los depósitos
@@ -14,6 +20,10 @@ del doc `260626 aportes` (ratios mensuales t/t−1): doble conteo de los depósi
 premio a la desaceleración del crédito, medición de derivada y no de estado, sin
 estandarización de varianzas ni tratamiento estacional. El editor eligió la
 opción (a): rediseño tipo FCI simplificado.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -40,20 +50,7 @@ z          = (nivel − media histórica) / desvío histórico
 - Implementación: `macro._idc_base_mensual()` (niveles) + `_idc_z_series()`
   (estandarización) — fórmula única para el indicador vivo y la serie del modal.
 
-## Cómo resuelve cada hallazgo del ADR-0027
-
-| Hallazgo | Resolución |
-|---|---|
-| Doble conteo de depósitos | volumen = interanual, asignación = nivel del ratio: un salto mensual de depósitos ya no infla dos ratios m/m a la vez (correlación residual declarada) |
-| Asignación explota con R→1 | es un nivel acotado (1−R), sin división por (1−R_prev) |
-| Premia la desaceleración | mide el margen COMO ESTADO: la holgura baja cuando el crédito ya creció (jun-2026: −1,18 σ, el boom consumió el margen) — coherente con `credito_privado`, no opuesto |
-| Derivada, no estado | los tres componentes son niveles contra la distribución histórica, como los FCI de referencia |
-| Sin estandarización | z-scores: cada componente pesa lo que dice su peso, no su varianza |
-| Estacionalidad | la interanual de depósitos absorbe aguinaldos/cosecha; tasa real y holgura no tienen estacionalidad relevante |
-| Deflactor rezagado | el mes publicado cierra con su propio IPC |
-| Anclas mágicas | anclas = percentiles de la muestra (documentados) |
-
-## Consecuencias
+### Consecuencias
 
 - **El valor cambia de escala y de lectura**: jun-2026 pasó de 1,0608 (verde,
   puntaje 100) a **−0,31 σ (amarillo, puntaje ~50)** con fecha may-2026. La
@@ -77,3 +74,18 @@ z          = (nivel − media histórica) / desvío histórico
   descriptor de ESTADO de las condiciones de fondeo (que es lo que su ficha
   dice), sin claim predictivo; la validación operativa del capítulo
   financiamiento es la del ITCM agregado (riesgo país, ADR-0031).
+
+## Más información
+
+### Cómo resuelve cada hallazgo del ADR-0027
+
+| Hallazgo | Resolución |
+|---|---|
+| Doble conteo de depósitos | volumen = interanual, asignación = nivel del ratio: un salto mensual de depósitos ya no infla dos ratios m/m a la vez (correlación residual declarada) |
+| Asignación explota con R→1 | es un nivel acotado (1−R), sin división por (1−R_prev) |
+| Premia la desaceleración | mide el margen COMO ESTADO: la holgura baja cuando el crédito ya creció (jun-2026: −1,18 σ, el boom consumió el margen) — coherente con `credito_privado`, no opuesto |
+| Derivada, no estado | los tres componentes son niveles contra la distribución histórica, como los FCI de referencia |
+| Sin estandarización | z-scores: cada componente pesa lo que dice su peso, no su varianza |
+| Estacionalidad | la interanual de depósitos absorbe aguinaldos/cosecha; tasa real y holgura no tienen estacionalidad relevante |
+| Deflactor rezagado | el mes publicado cierra con su propio IPC |
+| Anclas mágicas | anclas = percentiles de la muestra (documentados) |

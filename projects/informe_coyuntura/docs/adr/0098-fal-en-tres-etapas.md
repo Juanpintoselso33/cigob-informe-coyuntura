@@ -1,14 +1,21 @@
+---
+madr: 4
+id: '0098'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'gestion'
+indicadores: [fal_modernizacion_laboral]
+archivos: ['fal_hitos.json']
+modifica: ['0068']
+ambito: 'ITCG · `fal_modernizacion_laboral` · banda · serie · `fal_hitos.json`'
+origen: 'Auditoría externa del cinturón de gestión (doc 2), prioridad alta'
+---
+
 # ADR-0098 — El FAL se mide en tres etapas: construcción, vigencia y adopción
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCG · `fal_modernizacion_laboral` · banda · serie · `fal_hitos.json` |
-| **Fecha** | 2026-07-20 |
 | **Modifica** | ADR-0068 (régimen del FAL, Ley 27.802) |
-| **Origen** | Auditoría externa del cinturón de gestión (doc 2), prioridad alta |
 
-## El planteo
+## Contexto y planteo del problema
 
 > "FAL estructuralmente cerca de cero hasta noviembre de 2026 **por diseño
 > legal, no por falta de gestión**. Está honestamente declarado en la ficha,
@@ -18,23 +25,9 @@
 La auditoría proponía como mínimo una nota mensual y, como alternativa, excluir
 el indicador del ITCG hasta la fecha de vigencia.
 
-## El problema era más grande que la nota
+## Opciones consideradas
 
-El indicador valía **0,4 sobre 100**, y sus dos componentes estaban en cero por
-la misma razón:
-
-| componente | valor | por qué |
-|---|---|---|
-| cobertura en convenios | 0,7% (3 menciones de 420) | la ley es de mar-2026 |
-| adopción financiera | 0,0% (0 fondos en CNV) | el régimen no rige hasta nov-2026 |
-
-Sacar el componente financiero —lo que sugería la auditoría— habría llevado el
-indicador de 0,4 a 0,7: nada.
-
-El diagnóstico de fondo: **el indicador medía la adopción de un instrumento que
-legalmente todavía no puede adoptarse.** No medía gestión, medía el calendario.
-Y en el tablero, un 0,4 sobre 100 se lee como fracaso absoluto justo cuando el
-Gobierno hizo todo lo que estaba a su alcance.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -107,25 +100,9 @@ publicación de una norma:
 Mezclar la serie vieja (sólo adopción, ~0 en todo su recorrido) con la card
 nueva habría dejado dos escalas distintas en el mismo gráfico.
 
-## Consecuencia que conviene mirar
+## Más información
 
-**La dimensión de reforma laboral deja de estar marcada como crítica**: pasa de
-24,8 a 39,4 y el umbral de ADR-0020 es 30. No cambió la realidad, cambió la
-medición.
-
-Sigue siendo **la dimensión más floja del ITCG por amplio margen** —las otras
-cuatro van de 58 a 83— y así queda asentado en el test, que ahora verifica que
-esté por debajo de 50. El umbral no se movió para conservar la marca.
-
-## Por qué no se excluyó del índice
-
-Era la otra alternativa que ofrecía la auditoría. Se descartó porque habría
-dejado la dimensión de reforma laboral apoyada sólo en la litigiosidad, y con
-eso se pierde el par **instrumento/resultado** que la propia auditoría destaca
-como buena práctica del diseño: el FAL es el medio, la litigiosidad es el fin.
-Medir la construcción del medio es preferible a no medirlo.
-
-## Limitaciones declaradas
+### Limitaciones
 
 - **Dar crédito por construir el instrumento es discutible**: un gobierno podría
   sancionar y reglamentar una ley que después nadie use. Por eso construcción y
@@ -136,3 +113,39 @@ Medir la construcción del medio es preferible a no medirlo.
   intermedios que no tengan norma que los respalde.
 - El pleno de 420 menciones del Boletín Oficial sigue siendo una **calibración
   provisoria** anclada al ritmo de homologaciones del Ministerio de Trabajo.
+
+### El problema era más grande que la nota
+
+El indicador valía **0,4 sobre 100**, y sus dos componentes estaban en cero por
+la misma razón:
+
+| componente | valor | por qué |
+|---|---|---|
+| cobertura en convenios | 0,7% (3 menciones de 420) | la ley es de mar-2026 |
+| adopción financiera | 0,0% (0 fondos en CNV) | el régimen no rige hasta nov-2026 |
+
+Sacar el componente financiero —lo que sugería la auditoría— habría llevado el
+indicador de 0,4 a 0,7: nada.
+
+El diagnóstico de fondo: **el indicador medía la adopción de un instrumento que
+legalmente todavía no puede adoptarse.** No medía gestión, medía el calendario.
+Y en el tablero, un 0,4 sobre 100 se lee como fracaso absoluto justo cuando el
+Gobierno hizo todo lo que estaba a su alcance.
+
+### Consecuencia que conviene mirar
+
+**La dimensión de reforma laboral deja de estar marcada como crítica**: pasa de
+24,8 a 39,4 y el umbral de ADR-0020 es 30. No cambió la realidad, cambió la
+medición.
+
+Sigue siendo **la dimensión más floja del ITCG por amplio margen** —las otras
+cuatro van de 58 a 83— y así queda asentado en el test, que ahora verifica que
+esté por debajo de 50. El umbral no se movió para conservar la marca.
+
+### Por qué no se excluyó del índice
+
+Era la otra alternativa que ofrecía la auditoría. Se descartó porque habría
+dejado la dimensión de reforma laboral apoyada sólo en la litigiosidad, y con
+eso se pierde el par **instrumento/resultado** que la propia auditoría destaca
+como buena práctica del diseño: el FAL es el medio, la litigiosidad es el fin.
+Medir la construcción del medio es preferible a no medirlo.

@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0067'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'vida'
+indicadores: [endeudamiento_familiar, mora_familias]
+relacionado: ['0018', '0033']
+ambito: 'Cinturón vida cotidiana · ITVC · dimensión Vulnerabilidad financiera · `endeudamiento_familiar` · `mora_familias` (nuevo)'
+---
+
 # ADR-0067 — la mora de las familias sale del compuesto de endeudamiento y puntúa como indicador propio del ITVC
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón vida cotidiana · ITVC · dimensión Vulnerabilidad financiera · `endeudamiento_familiar` · `mora_familias` (nuevo) |
-| **Fecha** | 2026-07-15 |
-| **Precedentes directos** | ADR-0018 (I_EC original: deuda real × mora) · ADR-0033 (disciplina anti-doble-conteo del ITVC) |
-
-## Contexto
+## Contexto y planteo del problema
 
 Pedido editorial del usuario: "hay que poner la mora como un indicador solo
 en la vida cotidiana". Hasta ahora la mora vivía **adentro** del componente
@@ -25,6 +29,12 @@ penaliza con la **interacción** de ambos deterioros, no con su promedio, así
 que un solo componente concentraba un castigo compuesto difícil de leer
 (31,7 puntos, la dimensión entera en crítico, sin poder distinguir cuánto
 era deuda y cuánto mora).
+
+## Opciones consideradas
+
+- Mora como card visible sin puntuar (contexto)
+- Mantener el compuesto Y agregar la mora como indicador
+- Repartir 65/35 u otro peso asimétrico
 
 ## Decisión
 
@@ -45,18 +55,18 @@ era deuda y cuánto mora).
    compromiso que ADR-0052/0064): la deuda mide acceso al financiamiento,
    la mora mide si esa deuda se paga.
 
-## Efecto en la agregación (declarado)
+### Consecuencias
 
-El paso de producto a promedio ponderado **sube la dimensión** cuando ambos
-componentes están deprimidos: el producto 100×R×M castiga la interacción;
-el promedio (R+M)/2 no. La dimensión Vulnerabilidad deja de valer ~31,7 (el
-compuesto) y pasa a valer el promedio de deuda-real-pura y mora-invertida.
-No es maquillaje: es el mismo criterio lineal del resto del ITVC (todas las
-demás dimensiones promedian componentes), y el deterioro de la mora queda
-ahora VISIBLE como card propia en vez de enterrado en un factor. El flag de
-dimensión crítica (ADR-0020) sigue evaluándose sobre el resultado.
+- El ITVC pasa de 13 a **14 indicadores puntuables**; Vulnerabilidad tiene
+  ahora dos componentes con renormalización ante faltantes.
+- El ITVC sube por el cambio de agregación (producto → promedio) — efecto
+  metodológico documentado acá, no mejora de coyuntura.
+- La ficha del endeudamiento pierde la "polaridad empírica" (ya no la
+  necesita: cada señal tiene la suya) y la mora gana ficha propia.
+- Pendiente declarado: mostrar el cambio al editor CIGOB en la próxima
+  revisión editorial del cinturón, junto con el peso 50/50.
 
-## Opciones consideradas
+## Pros y contras de las opciones
 
 ### Mora como card visible sin puntuar (contexto)
 
@@ -73,13 +83,19 @@ exactamente el defecto que ADR-0033 eliminó entre brecha y alimentos.
 Descartado por ahora: sin un criterio externo que justifique la asimetría,
 50/50 es el reparto menos arbitrario. Queda para la revisión editorial.
 
-## Consecuencias
+## Más información
 
-- El ITVC pasa de 13 a **14 indicadores puntuables**; Vulnerabilidad tiene
-  ahora dos componentes con renormalización ante faltantes.
-- El ITVC sube por el cambio de agregación (producto → promedio) — efecto
-  metodológico documentado acá, no mejora de coyuntura.
-- La ficha del endeudamiento pierde la "polaridad empírica" (ya no la
-  necesita: cada señal tiene la suya) y la mora gana ficha propia.
-- Pendiente declarado: mostrar el cambio al editor CIGOB en la próxima
-  revisión editorial del cinturón, junto con el peso 50/50.
+### Precedentes directos
+
+ADR-0018 (I_EC original: deuda real × mora) · ADR-0033 (disciplina anti-doble-conteo del ITVC)
+
+### Efecto en la agregación (declarado)
+
+El paso de producto a promedio ponderado **sube la dimensión** cuando ambos
+componentes están deprimidos: el producto 100×R×M castiga la interacción;
+el promedio (R+M)/2 no. La dimensión Vulnerabilidad deja de valer ~31,7 (el
+compuesto) y pasa a valer el promedio de deuda-real-pura y mora-invertida.
+No es maquillaje: es el mismo criterio lineal del resto del ITVC (todas las
+demás dimensiones promedian componentes), y el deterioro de la mora queda
+ahora VISIBLE como card propia en vez de enterrado en un factor. El flag de
+dimensión crítica (ADR-0020) sigue evaluándose sobre el resultado.

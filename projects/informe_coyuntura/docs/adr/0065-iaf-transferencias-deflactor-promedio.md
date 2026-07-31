@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0065'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'politica'
+indicadores: [iaf_transferencias]
+archivos: ['_ipc_promedio_indec()']
+relacionado: ['0059', '0066']
+ambito: 'Cinturón política · ITCP · `iaf_transferencias` · `_ipc_promedio_indec()`'
+---
+
 # ADR-0065 — iaf_transferencias: deflactor promedio anual (el dic-dic subdeflactaba sumas anuales)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón política · ITCP · `iaf_transferencias` · `_ipc_promedio_indec()` |
-| **Fecha** | 2026-07-15 |
-| **Precedentes directos** | ADR-0059/0062 (mismo método: validar el dato publicado contra fuentes externas independientes) |
-
-## Contexto
+## Contexto y planteo del problema
 
 Auditoría pedida por el usuario sobre la card "Armonía federal
 (transferencias)". Su hipótesis inicial —que el punto fechado en diciembre
@@ -46,6 +51,10 @@ diciembre), la punta subdeflacta y sobreestima el crecimiento real. Para
 2025: dic-dic 31,5% vs promedio ≈40% — cuatro a cinco puntos reales de
 diferencia.
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 1. `_ipc_dicdic_indec()` se reemplaza por `_ipc_promedio_indec()`: inflación
@@ -60,7 +69,7 @@ diferencia.
    serie (diciembre = año cerrado, ejecutado, no presupuesto) y la
    limitación de alcance de la serie RON.
 
-## Consecuencias
+### Consecuencias
 
 - La variación real 2025 pasa de +7,0% a ≈0% (consistente con el +1,6-2,7%
   externo, dado que RON excluye las compensaciones que más crecieron).
@@ -73,3 +82,9 @@ diferencia.
   eficacia/ADR-0062): cuando el dato publicado difiere de los análisis de
   referencia, la causa suele ser reproducible y la validación externa la
   encuentra.
+
+## Más información
+
+### Precedentes directos
+
+ADR-0059/0062 (mismo método: validar el dato publicado contra fuentes externas independientes)

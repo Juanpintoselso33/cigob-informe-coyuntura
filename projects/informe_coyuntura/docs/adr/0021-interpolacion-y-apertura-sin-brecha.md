@@ -1,11 +1,20 @@
+---
+madr: 4
+id: '0021'
+estado: 'aceptado'
+nota_estado: 'aceptada (decisión del editor; ejecuta las Decisiones 3 y 4b del ADR-0019)'
+fecha: 2026-07-03
+cinturon: 'gestion'
+supersede: ['0013']
+relacionado: ['0054', '0055', '0056', '0069', '0071', '0072', '0075', '0076', '0081']
+---
+
 # ADR-0021 — Puntaje interpolado en ITCM/ITCG y apertura comercial sin brecha
 
-- **Fecha:** 2026-07-03
-- **Estado:** aceptada (decisión del editor; ejecuta las Decisiones 3 y 4b del ADR-0019)
 - **Supersede:** el puntaje escalonado por banda de ADR-0013 (el motor) y el
   ILCE compuesto de la tanda ITCG (el indicador apertura_comercial)
 
-## Contexto
+## Contexto y planteo del problema
 
 El ADR-0019 midió dos defectos de diseño y este ADR los ejecuta juntos, en un
 solo cambio de método, porque sus efectos sobre el titular se compensan casi
@@ -24,6 +33,15 @@ exactamente (≈ +3 por interpolación, ≈ −2,5 por sacar la brecha del ILCE)
    40% de la dimensión) y de nuevo al 50% dentro del ILCE de apertura
    comercial (40% de la dimensión) — peso efectivo ~60% de la dimensión
    (~21% del índice), diluyendo la alícuota arancelaria a ~7%.
+
+## Opciones consideradas
+
+- *Solo declarar el doble conteo* (ADR-0019 4a): transparente pero deja la
+  distorsión de pesos. Descartada al decidir el cambio de método.
+- *Sacar cepo_mulc y dejar el ILCE*: escondía la reforma insignia dentro de
+  un compuesto; el doc le da nombre y peso propio. Descartada.
+- *Histéresis en las bandas*: mitigaba el parpadeo pero no el truncamiento ni
+  la incertidumbre; menos limpio que interpolar. Descartada.
 
 ## Decisión
 
@@ -54,16 +72,7 @@ simular: el experimento de "salto de banda" del análisis de robustez se
 reemplaza por **ruido de insumos ±5%** re-puntuado por la escala interpolada
 (los componentes con override del analista no se perturban).
 
-## Opciones consideradas
-
-- *Solo declarar el doble conteo* (ADR-0019 4a): transparente pero deja la
-  distorsión de pesos. Descartada al decidir el cambio de método.
-- *Sacar cepo_mulc y dejar el ILCE*: escondía la reforma insignia dentro de
-  un compuesto; el doc le da nombre y peso propio. Descartada.
-- *Histéresis en las bandas*: mitigaba el parpadeo pero no el truncamiento ni
-  la incertidumbre; menos limpio que interpolar. Descartada.
-
-## Consecuencias
+### Consecuencias
 
 - Valores publicados al cambiar el método (2026-07-03): **ITCM 51,7 → 54,7**
   (tensión 4,8 → 4,5) · **ITCG 68,5 → 69,8** (tensión 3,1 → 3,0; interpolación

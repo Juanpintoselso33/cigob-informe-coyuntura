@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0102'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'gestion'
+indicadores: [rigi_inversiones]
+ambito: 'ITCG · `rigi_inversiones` · modal del indicador'
+origen: 'Auditoría externa del cinturón de gestión (doc 2), punto 3.6'
+---
+
 # ADR-0102 — El RIGI avisa cuando su porcentaje baja por el denominador
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCG · `rigi_inversiones` · modal del indicador |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría externa del cinturón de gestión (doc 2), punto 3.6 |
-
-## El planteo
+## Contexto y planteo del problema
 
 > "El punto más delicado, ya señalado en la propia ficha, es que **el
 > denominador es móvil**: cada vez que se anuncia un proyecto grande «en
@@ -18,20 +22,9 @@
 > "Recomendación: acompañar siempre el % con el monto absoluto aprobado en USD
 > (que sí es monótono creciente)."
 
-## Lo que ya estaba resuelto
+## Opciones consideradas
 
-Dos cosas de la recomendación ya existían y conviene decirlo antes de agregar
-nada:
-
-- **El monto absoluto ya se publicaba** en el detalle de la card: "17 proyectos
-  aprobados (US$ 31.192M) / 25 en evaluación (US$ 110.883M) → 22,0%".
-- **El gráfico del modal ya usa el monto, no el porcentaje.** `UNIDADES_SERIE`
-  tiene un override explícito —`rigi_inversiones: "US$ M aprobados"`— con el
-  comentario "card = % del pipeline; serie = inversión aprobada acumulada". Se
-  verificó antes de tocarlo, en lugar de asumir que estaba mal.
-
-Lo que faltaba no era el dato: era **la explicación en el momento en que hace
-falta**.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -57,14 +50,16 @@ permanente, y dejaría de informar precisamente cuando el retroceso fuera real.
 Tampoco aparece cuando el porcentaje sube, ni cuando no hay lectura anterior
 utilizable.
 
-## Consecuencias
+### Consecuencias
 
 - Tres tests cubren los cuatro casos: artefacto, retroceso genuino, mejora y
   ausencia de datos previos.
 - La función acepta los valores previos como parámetros para poder probarse sin
   depender del estado del caché; si no se pasan, los toma del snapshot anterior.
 
-## Limitaciones declaradas
+## Más información
+
+### Limitaciones
 
 - **El aviso compara contra la lectura anterior**, no contra un máximo
   histórico. Una caída sostenida a lo largo de varios meses, cada uno con
@@ -75,3 +70,18 @@ utilizable.
   peor que uno que no atrae ninguno. El aviso lo explica; no lo corrige.
   Cambiarlo exigiría decidir qué es "el total" de una cartera abierta, que es una
   pregunta sin respuesta obvia.
+
+### Lo que ya estaba resuelto
+
+Dos cosas de la recomendación ya existían y conviene decirlo antes de agregar
+nada:
+
+- **El monto absoluto ya se publicaba** en el detalle de la card: "17 proyectos
+  aprobados (US$ 31.192M) / 25 en evaluación (US$ 110.883M) → 22,0%".
+- **El gráfico del modal ya usa el monto, no el porcentaje.** `UNIDADES_SERIE`
+  tiene un override explícito —`rigi_inversiones: "US$ M aprobados"`— con el
+  comentario "card = % del pipeline; serie = inversión aprobada acumulada". Se
+  verificó antes de tocarlo, en lugar de asumir que estaba mal.
+
+Lo que faltaba no era el dato: era **la explicación en el momento en que hace
+falta**.

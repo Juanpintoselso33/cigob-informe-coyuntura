@@ -1,17 +1,29 @@
+---
+madr: 4
+id: '0164'
+estado: 'aceptado'
+nota_estado: 'Aceptado, **con resultado negativo publicado**'
+fecha: 2026-07-30
+cinturon: 'gestion'
+parametros: ['CAPITAL_PRIVADO_IDS']
+ambito: 'panel y factor común del ITCG; `CAPITAL_PRIVADO_IDS` en'
+---
+
 # ADR-0164 — Familia del ITCG: la respuesta del capital privado
 
-- **Estado**: Aceptado, **con resultado negativo publicado**
-- **Fecha**: 2026-07-30
-- **Ámbito**: panel y factor común del ITCG; `CAPITAL_PRIVADO_IDS` en
-  `validacion_externa.py`, `FAMILIA`/`FACTOR` en `panel_validacion.py`
+`validacion_externa.py`, `FAMILIA`/`FACTOR` en `panel_validacion.py`
 - **Relacionados**: ADR-0163 (el mismo trabajo para el ITVC), ADR-0161 (el
   factor común), ADR-0159 (el panel, y el caso del +0,97 espurio)
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0163 dejó anotado el pendiente: **el ITCG era el único cinturón con una sola
 estadística de su terreno** (el Merval en dólares), así que no podía tener factor
 común y su promedio «convergente» era un número solo disfrazado de promedio.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -54,7 +66,16 @@ para no volver a buscarlo:
   nada. Publicar ese 0,96 habría sido el mejor número de todo el informe y el más
   vacío.
 
-## Resultado — negativo, y se publica
+### Consecuencias
+
+- Los cuatro cinturones con paramétrica tienen ahora factor común: ITCM por su
+  propio régimen de puntos de giro (ADR-0158), ITCP y ITVC validando, ITCG no.
+- Queda declarado en la página del cinturón y en su ficha que el compuesto mide
+  peor que el Merval solo.
+
+## Más información
+
+### Resultado — negativo, y se publica
 
 | | niveles | mes a mes |
 |---|---|---|
@@ -79,10 +100,3 @@ operaciones grandes y discretas, así que un mes cualquiera lo define una
 transacción, no el estado de fondo. Eso los vuelve malos insumos para un factor
 mensual. Si se confirma, la salida es buscar estadísticas de estado continuo, no
 recortar el subconjunto hasta que dé bien.
-
-## Consecuencias
-
-- Los cuatro cinturones con paramétrica tienen ahora factor común: ITCM por su
-  propio régimen de puntos de giro (ADR-0158), ITCP y ITVC validando, ITCG no.
-- Queda declarado en la página del cinturón y en su ficha que el compuesto mide
-  peor que el Merval solo.

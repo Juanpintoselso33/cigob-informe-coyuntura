@@ -1,13 +1,20 @@
+---
+madr: 4
+id: '0036'
+estado: 'aceptado'
+fecha: 2026-07-07
+cinturon: 'politica'
+archivos: ['scripts/itcp.py', 'scripts/politica.py', 'scripts/parametrica.py', 'scripts/descargar_series.py', 'data/politica/*', 'tests/test_itcp.py']
+relacionado: ['0058', '0059']
+modificado_por: ['0088']
+ambito: '`scripts/itcp.py` (nuevo) · `scripts/politica.py` · `scripts/parametrica.py` · `scripts/descargar_series.py` · `data/politica/*` · `tests/test_itcp.py` · web'
+---
+
 # ADR-0036 — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-07 |
-| **Ámbito** | `scripts/itcp.py` (nuevo) · `scripts/politica.py` · `scripts/parametrica.py` · `scripts/descargar_series.py` · `data/politica/*` · `tests/test_itcp.py` · web |
 | **Precedente directo** | ADR-0013 (ITCG), ADR-0018 (ITVC), ADR-0021 (interpolación), ADR-0017 (`protestas_caba`/ACLED), ADR-0037 (`cohesion_bloque` — scraping implementado pero bloqueado en producción) |
 
-## Contexto
+## Contexto y planteo del problema
 
 El cinturón de política se puntuaba con un **promedio simple** de fórmulas lineales ad
 hoc por indicador (`calcular_score()` en `politica.py`), sin ponderación entre
@@ -26,6 +33,24 @@ detección anti-bot del sitio — el indicador sigue publicando desde cache hast
 resuelva el acceso. Este ADR no depende de que ese bloqueo se resuelva: cubre la
 paramétrica que consume `cohesion_bloque` (automatizado o no) junto con 3 indicadores
 nuevos.
+
+## Opciones consideradas
+
+- **Compactar `poder_legislativo` en un indicador compuesto** (los 4 indicadores hoy
+  planos: `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `comisiones_caidas`) —
+  a diferencia del Fondo de Cese que ADR-0013 sí compactó en ITCG, acá no hay un
+  documento que imponga esa fórmula agregada. Se mantiene desagregado por simplicidad
+  y transparencia: cada indicador se lee y audita por separado.
+- **Usar composición del Senado por provincia o transferencias de Presupuesto Abierto
+  (ATN) como proxy directo de `gobernadores_alineamiento`** — construct-invalid: la
+  composición del Senado mide bancas legislativas, no conducta del Poder Ejecutivo
+  provincial; Presupuesto Abierto no tiene columna de corte provincial confirmada y el
+  organismo correcto para ATN es Interior, no Economía. Ya investigado y descartado
+  explícitamente el 2026-07-07, documentado en
+  `data/politica/manuales.json._meta.pendiente_automatizacion` para no repetir la
+  investigación sin saber que ya se hizo. (La adhesión al RIGI sí se automatiza, pero
+  como indicador nuevo y distinto — `adhesion_reformas_provincial` — que mide adhesión
+  fiscal puntual, no alineamiento político general.)
 
 ## Decisión
 
@@ -120,25 +145,7 @@ y su camino de automatización pendiente documentado en
 investigados y descartados (ver Opciones descartadas) para que no se re-evalúen sin
 saber que ya se probaron.
 
-## Opciones descartadas
-
-- **Compactar `poder_legislativo` en un indicador compuesto** (los 4 indicadores hoy
-  planos: `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `comisiones_caidas`) —
-  a diferencia del Fondo de Cese que ADR-0013 sí compactó en ITCG, acá no hay un
-  documento que imponga esa fórmula agregada. Se mantiene desagregado por simplicidad
-  y transparencia: cada indicador se lee y audita por separado.
-- **Usar composición del Senado por provincia o transferencias de Presupuesto Abierto
-  (ATN) como proxy directo de `gobernadores_alineamiento`** — construct-invalid: la
-  composición del Senado mide bancas legislativas, no conducta del Poder Ejecutivo
-  provincial; Presupuesto Abierto no tiene columna de corte provincial confirmada y el
-  organismo correcto para ATN es Interior, no Economía. Ya investigado y descartado
-  explícitamente el 2026-07-07, documentado en
-  `data/politica/manuales.json._meta.pendiente_automatizacion` para no repetir la
-  investigación sin saber que ya se hizo. (La adhesión al RIGI sí se automatiza, pero
-  como indicador nuevo y distinto — `adhesion_reformas_provincial` — que mide adhesión
-  fiscal puntual, no alineamiento político general.)
-
-## Consecuencias
+### Consecuencias
 
 - El ITCP en la corrida real del 07-jul puntúa **64,7 → banda "moderadamente
   aflojado"**, tensión (100−64,7)/10 = **3,5** — cambio de metodología respecto del

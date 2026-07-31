@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0056'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'macro'
+indicadores: [saldo_comercial_12m]
+relacionado: ['0019', '0021', '0072', '0080']
+ambito: 'Cinturón macro · ITCM · `saldo_comercial_12m` · Subcomponente D'
+---
+
 # ADR-0056 — Suavizado del ajuste automático de saldo comercial por composición expo/impo
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-15 |
-| **Ámbito** | Cinturón macro · ITCM · `saldo_comercial_12m` · Subcomponente D |
-| **Precedentes directos** | ADR-0019 (estudio sombra: los escalones duplicaban la incertidumbre) · ADR-0021 (interpolación sin acantilados) |
-
-## Contexto
+## Contexto y planteo del problema
 
 El "Subcomponente D" de la Paramétrica CIGOB (mayo 2026) advierte que un
 superávit comercial puede reflejar una contracción de la demanda interna
@@ -41,6 +45,13 @@ patrón para 2026 — superávit comercial histórico con caída de importacione
 bienes de capital e insumos por demanda interna débil, bajo el marco
 "superávit defensivo" (por contracción) vs. "superávit ofensivo" (por
 productividad/diversificación exportadora).
+
+## Opciones consideradas
+
+- Mantener el force-a-60 binario
+- Recalibrar el piso en función de la intensidad de `impo_var_ia`
+- Cambiar el indicador titular a una razón de cobertura (X/M) en vez del
+- Usar una matriz insumo-producto para el "contenido importado" de las
 
 ## Decisión
 
@@ -92,7 +103,27 @@ pasan a usar `parametrica.puntaje_interpolado`, el mismo que
 en el contexto: casos con puntaje interpolado >60 pero escalonado =60 ahora sí
 se evalúan.
 
-## Opciones consideradas
+### Consecuencias
+
+- `ajuste_automatico_saldo` deja de devolver siempre 60 cuando se activa: el
+  puntaje depende de `share_impo` y de `p_banda`, con 60 como piso del caso
+  límite (`share_impo = 1,0`).
+- Casos límite que antes no activaban la regla (puntaje interpolado >60 con
+  puntaje escalonado =60) ahora sí se evalúan y pueden aplicar el piso.
+- El dato vigente al momento de este ADR (jun-2026, cache `output/cache/macro.json`:
+  `impo_delta_12m = +5193`, importaciones creciendo) no dispara la regla ni
+  antes ni después del cambio — no hace falta republicar para reflejar esta
+  decisión en el snapshot actual.
+- `test_ajuste_automatico_saldo_por_contraccion` se actualiza al nuevo valor
+  interpolado (67,1 en vez de 60 para el caso de ejemplo del documento, cuyo
+  `share_impo` es 85,7% — no 100%); se agrega
+  `test_ajuste_automatico_saldo_interpolado` cubriendo 60%, 80% y 100% de
+  `share_impo`.
+- El piso de 60 puntos del documento fuente se conserva exactamente como caso
+  límite; ningún caso queda peor puntuado que antes (la interpolación solo
+  suaviza el camino hacia el mismo piso, nunca lo perfora).
+
+## Pros y contras de las opciones
 
 ### Mantener el force-a-60 binario
 
@@ -126,22 +157,8 @@ exige datos (matrices insumo-producto actualizadas) que el proyecto no
 descarga ni mantiene; desproporcionado para un ajuste de un solo
 subcomponente.
 
-## Consecuencias
+## Más información
 
-- `ajuste_automatico_saldo` deja de devolver siempre 60 cuando se activa: el
-  puntaje depende de `share_impo` y de `p_banda`, con 60 como piso del caso
-  límite (`share_impo = 1,0`).
-- Casos límite que antes no activaban la regla (puntaje interpolado >60 con
-  puntaje escalonado =60) ahora sí se evalúan y pueden aplicar el piso.
-- El dato vigente al momento de este ADR (jun-2026, cache `output/cache/macro.json`:
-  `impo_delta_12m = +5193`, importaciones creciendo) no dispara la regla ni
-  antes ni después del cambio — no hace falta republicar para reflejar esta
-  decisión en el snapshot actual.
-- `test_ajuste_automatico_saldo_por_contraccion` se actualiza al nuevo valor
-  interpolado (67,1 en vez de 60 para el caso de ejemplo del documento, cuyo
-  `share_impo` es 85,7% — no 100%); se agrega
-  `test_ajuste_automatico_saldo_interpolado` cubriendo 60%, 80% y 100% de
-  `share_impo`.
-- El piso de 60 puntos del documento fuente se conserva exactamente como caso
-  límite; ningún caso queda peor puntuado que antes (la interpolación solo
-  suaviza el camino hacia el mismo piso, nunca lo perfora).
+### Precedentes directos
+
+ADR-0019 (estudio sombra: los escalones duplicaban la incertidumbre) · ADR-0021 (interpolación sin acantilados)

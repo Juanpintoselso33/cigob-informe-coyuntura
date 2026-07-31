@@ -1,13 +1,19 @@
+---
+madr: 4
+id: '0087'
+estado: 'aceptado'
+fecha: 2026-07-19
+cinturon: 'gestion'
+indicadores: [concesiones_infraestructura]
+archivos: ['gestion.py', 'descargar_series.py']
+relacionado: ['0086']
+ambito: '`concesiones_infraestructura` · ITCG · `gestion.py` · `descargar_series.py`'
+origen: 'Lo encontró el test generalizado que introdujo ADR-0086, en su primera corrida'
+---
+
 # ADR-0087 — "Preadjudicado" contiene "Adjudicado"
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | `concesiones_infraestructura` · ITCG · `gestion.py` · `descargar_series.py` |
-| **Fecha** | 2026-07-19 |
-| **Origen** | Lo encontró el test generalizado que introdujo ADR-0086, en su primera corrida |
-
-## El hecho
+## Contexto y planteo del problema
 
 El indicador mide qué porcentaje de los kilómetros de la Red Federal de
 Concesiones ya fue adjudicado. Una etapa contaba como adjudicada así:
@@ -32,19 +38,9 @@ El error entró en julio de 2026, cuando la etapa II-B pasó a preadjudicada.
 Hasta entonces el chequeo era correcto por casualidad: ninguna etapa había
 estado en ese estado.
 
-## Cómo apareció
+## Opciones consideradas
 
-No lo encontró el gate ni una revisión: lo encontró **el test que ADR-0086
-acababa de generalizar a los tres índices**, en su primera corrida. El test
-compara el puntaje del último punto de cada serie contra el puntaje publicado y
-avisa si difieren en más de 20 puntos. Acá diferían en 32,3.
-
-Vale registrar la secuencia, porque es el argumento a favor de escribir la
-guardia y no sólo arreglar el caso: la guardia se escribió para un bug de
-magnitudes en gestión (ADR-0086), y **su primer hallazgo fue un bug distinto,
-de otra causa, en el mismo cinturón**. El G3 también lo marcaba, pero como
-"card ≠ serie", que es el síntoma que produce cualquier desincronización y que
-uno tiende a leer como frescura.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -83,7 +79,7 @@ Dos, en `tests/test_gestion.py`:
 2. Que II-B **no** esté en el store. Si vuelve, el test obliga a verificar en el
    portal que esté adjudicada antes de aceptar el cambio.
 
-## Consecuencias
+### Consecuencias
 
 - `concesiones_infraestructura`: 56,9% → **28,7%**, puntaje 76,9 → 44,6.
 - La serie histórica corrige su último punto (jul-2026): 56,9 → 28,7. Los meses
@@ -92,7 +88,23 @@ Dos, en `tests/test_gestion.py`:
   proceso aparecía pasada la mitad; con 28,7% está por debajo de un tercio, y lo
   que hay adjudicado son las etapas I y II-A.
 
-## Limitación que el episodio deja a la vista
+## Más información
+
+### Cómo apareció
+
+No lo encontró el gate ni una revisión: lo encontró **el test que ADR-0086
+acababa de generalizar a los tres índices**, en su primera corrida. El test
+compara el puntaje del último punto de cada serie contra el puntaje publicado y
+avisa si difieren en más de 20 puntos. Acá diferían en 32,3.
+
+Vale registrar la secuencia, porque es el argumento a favor de escribir la
+guardia y no sólo arreglar el caso: la guardia se escribió para un bug de
+magnitudes en gestión (ADR-0086), y **su primer hallazgo fue un bug distinto,
+de otra causa, en el mismo cinturón**. El G3 también lo marcaba, pero como
+"card ≠ serie", que es el síntoma que produce cualquier desincronización y que
+uno tiende a leer como frescura.
+
+### Limitación que el episodio deja a la vista
 
 El indicador cuenta una etapa como **todo o nada**, y ya estaba anotado en el
 código que "las etapas II-B y III adjudican por renglones — refinamiento

@@ -1,14 +1,27 @@
+---
+madr: 4
+id: '0113'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'vida'
+indicadores: [pobreza_nowcast, utdt_nowcast_pobreza]
+corrige: ['0111']
+continuado_por: ['0114']
+ambito: 'ITVC · `pobreza_nowcast` (contexto) · colector `utdt_nowcast_pobreza`'
+origen: 'Auditoría de Vida Cotidiana, punto 3.6 (pobreza/indigencia)'
+---
+
 # ADR-0113 — La pobreza se publica, con la única fuente mensual que existe
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · `pobreza_nowcast` (contexto) · colector `utdt_nowcast_pobreza` |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría de Vida Cotidiana, punto 3.6 (pobreza/indigencia) |
 | **Corrige** | ADR-0111, que cerró el punto sin buscar lo suficiente |
 
-## Qué corrige de ADR-0111
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+### Qué corrige de ADR-0111
 
 ADR-0111 descartó la pobreza con dos argumentos. El primero sigue en pie; el
 segundo era una rendición temprana:
@@ -29,7 +42,20 @@ Encontrarla exigió cinco pasos —notas de prensa, perfil de RPubs (congelado e
 2021), un enlace acortado de X, la página del autor en la UTDT— y ADR-0111 se
 detuvo en el primero.
 
-## De dónde sale el dato
+### Consecuencias
+
+- El colector baja **sólo el informe más reciente** en la corrida diaria. Con
+  `historico=True` recorre los 23 publicados y arma la serie; se reservó para
+  `descargar_series` porque son ~20 MB de PDFs.
+- Los informes viejos tienen otro layout y no parsean: `_leer_informe` devuelve
+  `None` en vez de propagar, para que eso no impida leer los recientes. De 23
+  publicados, 18 parsean hoy.
+- El tablero pasa a **61 indicadores**. El ITVC no cambia: sigue en 94,7 con sus
+  16 componentes.
+
+## Más información
+
+### De dónde sale el dato
 
 `https://www.utdt.edu/profesores/mrozada/pobreza` lista los informes en PDF, uno
 por mes. El `fname` de cada uno es un timestamp, así que el mayor es el más
@@ -43,7 +69,7 @@ citable.
 Del informe se extraen el semestre, la tasa y el intervalo de confianza al 95%.
 Hoy: **31,6% para enero-junio de 2026, IC [30,1% – 33,0%]**.
 
-## Se publica como CONTEXTO, no puntúa
+### Se publica como CONTEXTO, no puntúa
 
 Tres razones, en orden de peso:
 
@@ -60,18 +86,7 @@ Como card de contexto conserva lo que la auditoría buscaba —la variable de ma
 carga simbólica del cinturón, visible y actualizada— sin forzar la escala ni
 duplicar señal en el puntaje.
 
-## Consecuencias
-
-- El colector baja **sólo el informe más reciente** en la corrida diaria. Con
-  `historico=True` recorre los 23 publicados y arma la serie; se reservó para
-  `descargar_series` porque son ~20 MB de PDFs.
-- Los informes viejos tienen otro layout y no parsean: `_leer_informe` devuelve
-  `None` en vez de propagar, para que eso no impida leer los recientes. De 23
-  publicados, 18 parsean hoy.
-- El tablero pasa a **61 indicadores**. El ITVC no cambia: sigue en 94,7 con sus
-  16 componentes.
-
-## Lo que queda afuera
+### Lo que queda afuera
 
 La **tasa oficial del INDEC** (`64.2_POBLACION_NUA_0_0_34_74`, semestral,
 nacional, desde 2003) es la referencia autorizada y tiene la historia larga que

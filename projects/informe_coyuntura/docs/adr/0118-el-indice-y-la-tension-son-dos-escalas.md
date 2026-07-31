@@ -1,13 +1,16 @@
+---
+madr: 4
+id: '0118'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'vida'
+ambito: 'ITVC · ficha metodológica del índice · descripción pública'
+origen: 'Auditoría de Vida Cotidiana, punto 3.3 y recomendación de prioridad media'
+---
+
 # ADR-0118 — El índice y la tensión son dos escalas, y ahora se dice dónde
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · ficha metodológica del índice · descripción pública |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría de Vida Cotidiana, punto 3.3 y recomendación de prioridad media |
-
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría observó que el cinturón corre **dos sistemas de puntuación en
 paralelo** sin explicarlo en ningún lado:
@@ -20,7 +23,13 @@ Y pidió documentarlo **en una nota única, no repetida en cada ficha**, más
 evaluar si el recorte a nivel de componente en el patentamiento de motos sigue
 haciendo falta.
 
-## La nota
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Más información
+
+### La nota
 
 Va en la ficha metodológica del índice (`/metodologia/itvc`), sección de
 agregación, que es el único lugar donde el lector busca cómo se arma el número.
@@ -36,7 +45,7 @@ Dice tres cosas:
 3. **El segundo recorte, el que sí entra al índice**: ningún componente supera
    140. Hoy afecta al endeudamiento de consumo y al patentamiento de motos.
 
-## El recorte de motos: se mantiene, y ahora está medido
+### El recorte de motos: se mantiene, y ahora está medido
 
 La auditoría lo llamaba "redundante para el lector" porque *"no cambia el
 resultado final"*. Medido, **cambia 0,10 puntos de ITVC** (94,8 con tope contra
@@ -50,7 +59,7 @@ aplicada a todos los componentes por igual**. Sacarlo sólo para uno la volverí
 una excepción sin criterio. Su costo total —1,9 puntos de índice, de los cuales
 0,1 son de motos— quedó medido en ADR-0109 y ahora está publicado en la ficha.
 
-## De paso, tres números viejos
+### De paso, tres números viejos
 
 La ficha del índice todavía decía **"Trece componentes en cinco dimensiones"** y
 su fórmula sumaba sobre 5. Con las altas de ADR-0111/0112 y la reorganización de

@@ -1,12 +1,15 @@
+---
+madr: 4
+id: '0030'
+estado: 'aceptado'
+fecha: 2026-07-04
+relacionado: ['0054', '0055']
+ambito: 'Criterio de FAMILIA para todo indicador compuesto o deflactado cuyas fuentes publican con rezagos distintos (IdC, recaudación, IAI, ICIP — y los que se sumen)'
+---
+
 # ADR-0030 — Borde irregular: mes común puntuado + dato fresco provisorio
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-04 |
-| **Ámbito** | Criterio de FAMILIA para todo indicador compuesto o deflactado cuyas fuentes publican con rezagos distintos (IdC, recaudación, IAI, ICIP — y los que se sumen) |
-
-## Contexto
+## Contexto y planteo del problema
 
 Varias fuentes publican asincrónicamente (el "ragged edge" de la literatura de
 nowcasting): el ICA sale ~2 semanas antes que el ISAC, la recaudación ~10 días
@@ -16,7 +19,9 @@ declararlo (IAI: ISAC de abril + BK de mayo etiquetado "mayo"; recaudación:
 nominal de junio deflactado con IPC de mayo; IdC: stocks de junio con IPC de
 mayo) y que además diferían del último punto de su serie.
 
-## Prácticas de referencia relevadas
+## Factores de decisión
+
+### Prácticas de referencia relevadas
 
 - **Conference Board LEI**: los componentes no publicados se ESTIMAN con un
   modelo autorregresivo; el índice sale con datos reales+estimados y SE REVISA
@@ -28,6 +33,10 @@ mayo) y que además diferían del último punto de su serie.
 - **Panel balanceado**: truncar "a la fecha del componente menos oportuno" es
   el paso base incluso dentro de esos modelos, y lo que publican las oficinas
   estadísticas para índices oficiales.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -46,7 +55,7 @@ de familia:
 
 Aplicado a: IdC (ADR-0028), recaudación (ADR-0029), IAI e ICIP (este ADR).
 
-## Consecuencias
+### Consecuencias
 
 - Los titulares pierden hasta un mes de frescura contra la alternativa de
   mezclar; a cambio, nunca se revisan y siempre igualan a su serie.

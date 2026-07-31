@@ -1,14 +1,20 @@
+---
+madr: 4
+id: '0156'
+estado: 'aceptado'
+fecha: 2026-07-30
+archivos: ['web/src/lib/fichas.ts', 'descripciones.ts']
+ambito: 'capa de texto público (`web/src/lib/fichas.ts`, `descripciones.ts`,'
+---
+
 # ADR-0156 — El texto público no afirma el estado de hoy
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-30
-- **Ámbito**: capa de texto público (`web/src/lib/fichas.ts`, `descripciones.ts`,
-  componentes con prosa) + guard nuevo
+componentes con prosa) + guard nuevo
 - **Relacionados**: ADR-0154 y ADR-0155 (los cambios que dejaron el texto viejo y
   destaparon el patrón), el guard de pesos de fichas (`test_fichas_pesos.py`),
   ADR-0119 (registro público sin jerga)
 
-## Contexto
+## Contexto y planteo del problema
 
 Observación del editor, después de encontrar una afirmación falsa en la sección de
 metodología: **el problema es la cantidad de texto coyuntural, escrito a mano,
@@ -25,16 +31,9 @@ Al barrer la capa entera aparecieron **13 frases con deixis temporal** en fichas
 nombraban `endeudamiento_familiar` como componente vigente del ITVC cuando había
 salido del índice unas horas antes.
 
-## El diagnóstico separa dos cosas que parecían una
+## Opciones consideradas
 
-Del barrido salieron **62 frases con números** fuera del changelog. La mayoría
-**no es el problema**: son anclas de bandas («más de 50% → el más alto»), pesos
-estructurales («pesa 15% junto a…»), el período base, números de ley. Son
-metodología, no coyuntura, y los pesos además ya tienen su propio guard.
-
-El problema es más chico y más específico: **las frases que fechan una afirmación
-en el presente.** Son las que expiran sin que nadie las edite, porque no hay nada
-que las contradiga hasta que alguien las lee.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -54,7 +53,33 @@ Reescritas con ese criterio:
 | `itcg.seleccion` | «**Hoy** el cinturón es 100% automático» | afirmación verificable que puede expirar |
 | `descripciones` (asistencia directa) | «en 2023 pasaba por organizaciones; **hoy** va directo» | afirmación de estado, reescrita como el giro que hubo |
 
-## El guard: no prohíbe la deixis, obliga a declararla
+### Consecuencias
+
+- La capa de texto queda con menos afirmaciones que mantener, y las que quedan
+  están declaradas.
+- **Lo que este guard NO cubre, y se dice**: los 62 números estructurales
+  (bandas, pesos, base) siguen a mano. Los pesos tienen guard propio; las anclas
+  de bandas no, y una recalibración puede dejar el texto viejo. Es la próxima
+  pieza de la misma familia.
+- Tampoco cubre las afirmaciones de estado **sin** deixis, del tipo «la matriz
+  verifica que…», que fue el caso original. Ésa se arregló a mano en ADR-0155 y
+  hoy el texto de la matriz **se deriva de los números en cada corrida**, que es
+  la solución de fondo: cuando una afirmación se puede computar, se computa.
+
+## Más información
+
+### El diagnóstico separa dos cosas que parecían una
+
+Del barrido salieron **62 frases con números** fuera del changelog. La mayoría
+**no es el problema**: son anclas de bandas («más de 50% → el más alto»), pesos
+estructurales («pesa 15% junto a…»), el período base, números de ley. Son
+metodología, no coyuntura, y los pesos además ya tienen su propio guard.
+
+El problema es más chico y más específico: **las frases que fechan una afirmación
+en el presente.** Son las que expiran sin que nadie las edite, porque no hay nada
+que las contradiga hasta que alguien las lee.
+
+### El guard: no prohíbe la deixis, obliga a declararla
 
 `tests/test_texto_publico_no_caduca.py`. Cada aparición de «hoy»,
 «actualmente», «por ahora» y compañía en la prosa pública tiene que estar en un
@@ -78,16 +103,3 @@ Tres detalles del diseño del test, todos por experiencia previa de este repo:
 - **tiene un test de que el test mira algo**, contra el falso verde: si el parseo
   de `fichas.ts` se rompe y no encuentra ninguna cadena, los otros tres pasarían
   vacíos. Verificado además al revés, inyectando una frase: el guard la marca.
-
-## Consecuencias
-
-- La capa de texto queda con menos afirmaciones que mantener, y las que quedan
-  están declaradas.
-- **Lo que este guard NO cubre, y se dice**: los 62 números estructurales
-  (bandas, pesos, base) siguen a mano. Los pesos tienen guard propio; las anclas
-  de bandas no, y una recalibración puede dejar el texto viejo. Es la próxima
-  pieza de la misma familia.
-- Tampoco cubre las afirmaciones de estado **sin** deixis, del tipo «la matriz
-  verifica que…», que fue el caso original. Ésa se arregló a mano en ADR-0155 y
-  hoy el texto de la matriz **se deriva de los números en cada corrida**, que es
-  la solución de fondo: cuando una afirmación se puede computar, se computa.

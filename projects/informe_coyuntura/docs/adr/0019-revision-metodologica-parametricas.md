@@ -1,10 +1,17 @@
+---
+madr: 4
+id: '0019'
+estado: 'parcial'
+nota_estado: 'parcialmente aceptada (decisión 1 aceptada e implementada; 2-6 pendientes de decisión del editor)'
+fecha: 2026-07-03
+cinturon: 'gestion'
+relacionado: ['0056', '0071', '0075', '0078']
+origen: 'contraste metodológico contra la literatura de índices compuestos, pedido por el editor'
+---
+
 # ADR-0019 — Revisión metodológica de las tres paramétricas (ITCM · ITCG · ITVC)
 
-- **Fecha:** 2026-07-03
-- **Estado:** parcialmente aceptada (decisión 1 aceptada e implementada; 2-6 pendientes de decisión del editor)
-- **Origen:** contraste metodológico contra la literatura de índices compuestos, pedido por el editor
-
-## Contexto
+## Contexto y planteo del problema
 
 Las tres paramétricas se contrastaron contra el canon metodológico de índices
 compuestos: el **Handbook on Constructing Composite Indicators** (OCDE/JRC
@@ -35,7 +42,13 @@ directo de ITCM/ITCG).
 **Lo que la revisión encontró** son seis brechas típicas de índices jóvenes,
 que se documentan acá como decisiones separadas.
 
-## Decisión 1 — Análisis de sensibilidad y robustez (ACEPTADA, implementada)
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+### Decisión 1 — Análisis de sensibilidad y robustez (ACEPTADA, implementada)
 
 **Problema.** El paso 7 del Handbook JRC ("la radiografía del índice") es
 requisito, no opcional: sin él no se sabe cuánto del valor publicado es señal
@@ -61,7 +74,7 @@ reporta junto al valor puntual ("ITCG 68,5 · robustez 65-72"). Pendiente
 operativo: decidir si el rango se publica en la nota metodológica de la web
 (recomendado) o queda como control interno.
 
-## Decisión 2 — Compensabilidad entre dimensiones (RESUELTA → ADR-0020, opción b)
+### Decisión 2 — Compensabilidad entre dimensiones (RESUELTA → ADR-0020, opción b)
 
 **Problema.** Las tres paramétricas agregan con promedio ponderado **lineal**
 ⇒ sustituibilidad perfecta: un colapso en una dimensión se compensa con
@@ -83,7 +96,7 @@ queda tapada por el componente cambiario (~90); en el ITVC el boom de motos
 
 **Recomendación:** (b). Costo bajo, no rompe series, hace visible el problema.
 
-## Decisión 3 — Efectos escalón de las bandas en ITCM/ITCG (RESUELTA → ADR-0021, opción b)
+### Decisión 3 — Efectos escalón de las bandas en ITCM/ITCG (RESUELTA → ADR-0021, opción b)
 
 **Problema.** La discretización pierde información y crea acantilados: dos
 valores casi iguales a ambos lados de un umbral difieren 15-25 puntos de
@@ -126,7 +139,7 @@ overrides respetados) sobre los valores crudos publicados en el snapshot:
   actualizar los tests pineados. Detalle completo por indicador en
   `output/interpolacion_sombra.json`.
 
-## Decisión 4 — Doble conteo de la brecha cambiaria en el ITCG (RESUELTA → ADR-0021, opción b)
+### Decisión 4 — Doble conteo de la brecha cambiaria en el ITCG (RESUELTA → ADR-0021, opción b)
 
 **Problema.** El Handbook exige tratar la correlación entre componentes.
 `cepo_mulc` (brecha CCL/mayorista) es un indicador del ITCG **y** el ILCE de
@@ -148,7 +161,7 @@ inherente al diseño y basta declararlo.)
 
 **Recomendación:** (a) ya, (b) para la próxima revisión del doc con CIGOB.
 
-## Decisión 5 — Concentración del ITVC en un solo dato (PENDIENTE)
+### Decisión 5 — Concentración del ITVC en un solo dato (PENDIENTE)
 
 **Problema.** La dimensión vulnerabilidad financiera (10% del ITVC) es UN
 componente (I_EC), que hoy resta ~7 puntos del índice él solo. Una revisión
@@ -165,7 +178,7 @@ cuantifica la exposición en cada corrida.
 
 **Recomendación:** (a) ahora; explorar la fuente de (b) sin apuro.
 
-## Decisión 7 — TDPS saturado: indicador de asistencia sin información marginal (PENDIENTE, requiere CIGOB)
+### Decisión 7 — TDPS saturado: indicador de asistencia sin información marginal (PENDIENTE, requiere CIGOB)
 
 **Problema (detectado en la revisión uno-por-uno del 03-jul-2026).** El TDPS
 mide el % del devengado pagado directo a personas (partida 5.1.4 / total de
@@ -187,7 +200,7 @@ c) Reasignar su peso dentro de reforma social y orden (protocolo/salud) y
 
 Sin urgencia: no distorsiona (aporta un 100 legítimo), solo desaprovecha peso.
 
-## Decisión 6 — Validación externa (RESUELTA — implementada, resultados favorables)
+### Decisión 6 — Validación externa (RESUELTA — implementada, resultados favorables)
 
 **Problema.** Paso 9 del JRC: correlacionar el índice con variables externas
 relacionadas. (Corrección respecto de la primera redacción de este ADR: el
@@ -251,7 +264,7 @@ mensual desde las series de 14 de 15 componentes. Dos contrastes:
 Las TRES paramétricas quedan validadas externamente: ITVC↔ICC +0,52 ·
 ITCM↔EMBI −0,73 · ITCG↔EMBI −0,86 (con discriminante ICG documentado).
 
-## Consecuencias
+### Consecuencias
 
 - La Decisión 1 corre desde hoy (`scripts/sensibilidad.py`); el resto queda
   explícitamente ABIERTO para decisión del editor/CIGOB — este ADR es el

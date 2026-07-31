@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0055'
+estado: 'aceptado'
+nota_estado: 'Aceptado · supersede ADR-0054'
+fecha: 2026-07-14
+cinturon: 'macro'
+supersede: ['0054']
+relacionado: ['0006', '0012', '0021', '0030', '0053', '0057']
+ambito: 'Cinturón macro · ITCM · fuentes cambiarias BCRA/ArgentinaDatos · series históricas · validación externa'
+---
+
 # ADR-0055 — Presión de dolarización de carteras sensible al régimen cambiario
 
-| | |
-|---|---|
-| **Estado** | Aceptado · supersede ADR-0054 |
-| **Fecha** | 2026-07-14 |
-| **Ámbito** | Cinturón macro · ITCM · fuentes cambiarias BCRA/ArgentinaDatos · series históricas · validación externa |
-| **Precedentes directos** | ADR-0006 (brecha CCL/mayorista) · ADR-0012 (backfill) · ADR-0021 (interpolación) · ADR-0030 (meses comparables) · ADR-0053 (agregados monetarios) · ADR-0054 (dolarización de depósitos) |
-
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0054 incorporó al ITCM una brecha entre el crecimiento interanual de los
 depósitos privados en dólares y el crecimiento interanual real de los depósitos
@@ -38,6 +43,15 @@ hogares por dolarizar sus carteras o, en términos equivalentes, por reducir su
 exposición al peso. Ningún observable único lo representa de manera válida bajo
 todos los regímenes. La medición debe usar el indicador observable más cercano
 en cada marco institucional y traducir ambos a una escala común.
+
+## Opciones consideradas
+
+- Mantener la formulación anual de stocks de ADR-0054
+- Usar una formulación semestral de stocks
+- Usar la brecha CCL/A3500 durante toda la serie
+- Usar compras netas durante toda la serie
+- Usar como benchmark operativo “compras en efectivo más cobertura” del BCRA
+- Empalmar los dos observables sin una escala latente común
 
 ## Decisión
 
@@ -223,7 +237,24 @@ La diferencia de constructo y de tratamiento temporal justifica conservar ambos,
 pero no los vuelve estadísticamente independientes durante el tramo restringido.
 Los análisis de sensibilidad y la lectura editorial deben considerar ese límite.
 
-## Opciones consideradas
+### Consecuencias
+
+- ADR-0054 deja de describir la metodología vigente y queda superado por este
+  ADR; se conserva como registro de la decisión anterior.
+- El ITCM mantiene trece indicadores puntuables y el peso total de sus seis
+  dimensiones.
+- La dimensión de estabilidad monetaria conserva cuatro componentes y el nuevo
+  indicador mantiene 10% interno, equivalente a 2,6% nominal del ITCM.
+- CERA deja de dominar el indicador mediante crecimientos de stocks
+  contemporáneos o efectos de base.
+- La serie publicada identifica explícitamente el régimen, la métrica de origen,
+  la longitud de la ventana y si la transición es parcial.
+- El backfill desde diciembre de 2023 combina dos observables bajo una escala
+  común declarada, sin ocultar el quiebre de abril de 2025.
+- Los resultados coyunturales, la sensibilidad y la validación externa deben
+  provenir de una regeneración del pipeline; este ADR no fija cifras vigentes.
+
+## Pros y contras de las opciones
 
 ### Mantener la formulación anual de stocks de ADR-0054
 
@@ -266,7 +297,13 @@ la misma unidad. Presentarlos como una serie física continua ocultaría el camb
 de medición. Las dos transformaciones a presión y luego a puntaje hacen explícito
 el puente metodológico.
 
-## Limitaciones
+## Más información
+
+### Precedentes directos
+
+ADR-0006 (brecha CCL/mayorista) · ADR-0012 (backfill) · ADR-0021 (interpolación) · ADR-0030 (meses comparables) · ADR-0053 (agregados monetarios) · ADR-0054 (dolarización de depósitos)
+
+### Limitaciones
 
 - La presión es un constructo latente y la continuidad entre regímenes es
   metodológica, no una identidad estadística entre observables.
@@ -283,20 +320,3 @@ el puente metodológico.
 - Abril y mayo de 2025 tienen ventanas de uno y dos meses y, por lo tanto, menor
   suavización que los períodos posteriores.
 - Durante el régimen restringido existe solapamiento histórico con `cepo_mulc`.
-
-## Consecuencias
-
-- ADR-0054 deja de describir la metodología vigente y queda superado por este
-  ADR; se conserva como registro de la decisión anterior.
-- El ITCM mantiene trece indicadores puntuables y el peso total de sus seis
-  dimensiones.
-- La dimensión de estabilidad monetaria conserva cuatro componentes y el nuevo
-  indicador mantiene 10% interno, equivalente a 2,6% nominal del ITCM.
-- CERA deja de dominar el indicador mediante crecimientos de stocks
-  contemporáneos o efectos de base.
-- La serie publicada identifica explícitamente el régimen, la métrica de origen,
-  la longitud de la ventana y si la transición es parcial.
-- El backfill desde diciembre de 2023 combina dos observables bajo una escala
-  común declarada, sin ocultar el quiebre de abril de 2025.
-- Los resultados coyunturales, la sensibilidad y la validación externa deben
-  provenir de una regeneración del pipeline; este ADR no fija cifras vigentes.

@@ -1,13 +1,19 @@
+---
+madr: 4
+id: '0059'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'politica'
+indice: 'ITCP'
+indicadores: [ratio_dnu]
+parametros: ['BANDAS_ITCP']
+supersede_parcialmente: ['0058']
+relacionado: ['0036', '0038', '0045', '0052', '0061', '0065']
+---
+
 # ADR-0059 — ratio_dnu: se revierte la recalibración de anclas de ADR-0058
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-15 |
-| **Ámbito** | Cinturón política · ITCP · `ratio_dnu` · `BANDAS_ITCP` |
-| **Precedentes directos** | ADR-0058 (ventana móvil, parcialmente revertido por este ADR) · ADR-0045 (patrón de recalibración que este ADR determina que NO aplica acá) |
-
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0058 (mismo día) cambió `ratio_dnu` de acumulado del año calendario a
 ventana móvil de 365 días, y en el mismo commit recalibró
@@ -23,6 +29,11 @@ estamos haciendo algo mal"*, en referencia al puntaje resultante (73,3 sobre
 100, tensión baja) para un ratio de 2,19 (46 DNU / 21 leyes, últimos 365
 días).
 
+La pregunta a resolver es si ese puntaje bajo delata un error de medición
+que hay que corregir, o una señal real que el indicador debe mostrar.
+
+## Factores de decisión
+
 **Los conteos verificados contra fuentes externas independientes son
 correctos.** Comparación con estudios y relevamientos periodísticos:
 
@@ -37,30 +48,40 @@ Los conteos son del orden correcto: no hay evidencia de un error de conteo
 en el scraper de InfoLeg. **El problema está en la recalibración de
 anclas**, no en los datos.
 
-ADR-0045 recalibró `comisiones_caidas` porque el defecto era **estructural,
-no sustantivo**: un proyecto con dictamen reciente casi nunca alcanza a
-sancionarse dentro de su propia ventana de 12 meses — es una imposibilidad
-matemática de la construcción de la métrica, no una señal real de mal
-desempeño. Corregir esas anclas no borra ninguna información real.
+El precedente invocado no aplica. ADR-0045 recalibró `comisiones_caidas`
+porque el defecto era **estructural, no sustantivo**: un proyecto con
+dictamen reciente casi nunca alcanza a sancionarse dentro de su propia
+ventana de 12 meses — es una imposibilidad matemática de la construcción de
+la métrica, no una señal real de mal desempeño. Corregir esas anclas no
+borra ninguna información real.
 
 `ratio_dnu` es distinto. El rango elevado observado (nunca por debajo de
 1,176 en 32 meses reales) **no es un artefacto de la ventana móvil — es una
 señal sustantiva real**: este gobierno, con este Congreso, efectivamente
 gobierna con una dependencia del decreto muy superior a la práctica
-histórica. Un informe de ACIJ ("De la excepción a la regla", 2011-2024,
-comparando el segundo mandato de CFK, Macri, Alberto Fernández y el primer
-año de Milei) encontró que, sumadas las cuatro presidencias, hubo 344 DNU
-sobre 1.058 leyes sancionadas — **ratio ≈0,325, "cada 3 leyes, 1 DNU"**. Ese
-número es casi exactamente el corte de 0,3 que ADR-0036 fijó para el puntaje
-máximo del indicador: no era un umbral arbitrario del documento, estaba
-ya ancorado —aunque sin cita explícita— a una práctica institucional real
-de más de una década y cuatro gobiernos distintos.
+histórica.
+
+El ancla original tiene respaldo externo. Un informe de ACIJ ("De la
+excepción a la regla", 2011-2024, comparando el segundo mandato de CFK,
+Macri, Alberto Fernández y el primer año de Milei) encontró que, sumadas
+las cuatro presidencias, hubo 344 DNU sobre 1.058 leyes sancionadas —
+**ratio ≈0,325, "cada 3 leyes, 1 DNU"**. Ese número es casi exactamente el
+corte de 0,3 que ADR-0036 fijó para el puntaje máximo del indicador: no era
+un umbral arbitrario del documento, estaba ya ancorado —aunque sin cita
+explícita— a una práctica institucional real de más de una década y cuatro
+gobiernos distintos.
 
 Recalibrar las anclas contra el rango observado bajo esta única
 administración, como hizo ADR-0058, equivale a redefinir "buena práctica
 institucional" como "lo mejor que este gobierno ha logrado" — que es
 precisamente la señal que el indicador existe para medir, no un defecto de
 medición a corregir.
+
+## Opciones consideradas
+
+- **Revertir la recalibración** y volver a 0,3/0,7/1,2/2,0 — elegida.
+- **Mantener la recalibración de ADR-0058** (dejar 1,5/2,0/3,0/4,5).
+- **Punto medio**: recalibrar solo el piso, manteniendo el techo en 0,3.
 
 ## Decisión
 
@@ -94,7 +115,24 @@ borra la señal en vez de corregir un defecto de medición. La diferencia se
 verifica con un benchmark externo e independiente (otra fuente, otro
 período, otro gobierno), no solo con la propia serie del indicador.
 
-## Opciones consideradas
+### Consecuencias
+
+- `BANDAS_ITCP["ratio_dnu"]` vuelve a 0,3/0,7/1,2/2,0.
+- El puntaje de `ratio_dnu` para el valor vigente (2,19) pasa de 73,3
+  (con la recalibración de ADR-0058) a un puntaje bajo, consistente con
+  estar muy por encima del benchmark histórico — la dimensión
+  `poder_legislativo` y el ITCP se regeneran en la misma corrida scoped.
+- Este ADR deja un criterio explícito y reusable para futuras
+  recalibraciones de anclas: distinguir defecto estructural (recalibrar)
+  de desempeño real capturado por la métrica (no recalibrar), verificado
+  contra un benchmark externo independiente de la propia serie.
+
+### Confirmación
+
+`tests/test_itcp.py::test_banda_low_exclusivo_high_inclusivo` vuelve a
+usar 0,3/0,30001 como en el estado previo a ADR-0058.
+
+## Pros y contras de las opciones
 
 ### Mantener la recalibración de ADR-0058 (dejar 1,5/2,0/3,0/4,5)
 
@@ -113,7 +151,9 @@ que lo sostenga sería tan arbitrario como la recalibración que se revierte.
 Queda abierto si en el futuro aparece un benchmark específico para el
 extremo superior del ratio.
 
-## Limitaciones
+## Más información
+
+### Limitaciones
 
 - El benchmark de ACIJ (0,325) es un promedio de cuatro presidencias con
   estilos de gobierno muy distintos entre 2011 y 2024, no un óptimo
@@ -125,17 +165,3 @@ extremo superior del ratio.
   un defecto a corregir: refleja que la dependencia del decreto de esta
   gestión está muy por encima de la práctica histórica, que es exactamente
   lo que el indicador debe mostrar.
-
-## Consecuencias
-
-- `BANDAS_ITCP["ratio_dnu"]` vuelve a 0,3/0,7/1,2/2,0.
-- El puntaje de `ratio_dnu` para el valor vigente (2,19) pasa de 73,3
-  (con la recalibración de ADR-0058) a un puntaje bajo, consistente con
-  estar muy por encima del benchmark histórico — la dimensión
-  `poder_legislativo` y el ITCP se regeneran en la misma corrida scoped.
-- Este ADR deja un criterio explícito y reusable para futuras
-  recalibraciones de anclas: distinguir defecto estructural (recalibrar)
-  de desempeño real capturado por la métrica (no recalibrar), verificado
-  contra un benchmark externo independiente de la propia serie.
-- `tests/test_itcp.py::test_banda_low_exclusivo_high_inclusivo` vuelve a
-  usar 0,3/0,30001 como en el estado previo a ADR-0058.

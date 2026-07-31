@@ -1,14 +1,17 @@
+---
+madr: 4
+id: '0081'
+estado: 'aceptado'
+fecha: 2026-07-18
+archivos: ['scripts/revision_bandas.py']
+relacionado: ['0021', '0045']
+ambito: 'Todas las paramétricas · `scripts/revision_bandas.py` (nuevo)'
+origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), observación 9'
+---
+
 # ADR-0081 — Las recalibraciones no se calendarizan: se detectan
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Todas las paramétricas · `scripts/revision_bandas.py` (nuevo) |
-| **Fecha** | 2026-07-18 |
-| **Precedentes directos** | **ADR-0045** (cuándo se recalibra una banda y cuándo no) · ADR-0021 (puntaje interpolado) |
-| **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), observación 9 |
-
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría pidió **"calendarizar las recalibraciones de bandas de historia
 corta"**, señalando al IDM, la presión de dolarización y el crédito privado:
@@ -19,7 +22,48 @@ El pedido es razonable pero **un calendario en un documento no funciona**: nadie
 lo lee, no sabe qué cambió desde la última vez, y llegado el momento no dice
 cuáles bandas mirar ni por qué. Se reemplaza por un diagnóstico ejecutable.
 
-## El criterio, que es lo primero
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+Entra `scripts/revision_bandas.py`, que recorre los indicadores puntuables de
+ITCM, ITCG e ITCP y clasifica cada banda en cuatro estados: `revisar`,
+`saturado` (discrimina poco pero está bien anclada), `historia_corta` (menos de
+18 meses: no se opina) y `ok`. Escribe `output/revision_bandas.json`.
+
+Umbrales: **35%** de saturación para avisar, **18 meses** de historia mínima.
+Están puestos holgados a propósito — el costo de un falso positivo es leer una
+ficha, el de un falso negativo es una banda mal calibrada durante años sin que
+nadie se entere.
+
+### Cadencia
+
+En vez de una fecha en el calendario, el disparador es el propio diagnóstico:
+se corre **junto con la revisión editorial del informe** y ante cualquier alta o
+cambio de metodología de un indicador. La lista de candidatas viene con el
+diagnóstico, así que la revisión empieza sabiendo qué mirar.
+
+## Más información
+
+### Precedentes directos
+
+**ADR-0045** (cuándo se recalibra una banda y cuándo no) · ADR-0021 (puntaje interpolado)
+
+### Limitaciones
+
+- El diagnóstico mira **saturación y alcance**, no la forma de la distribución
+  en el medio. Una banda con anclas mal espaciadas en el tramo central no
+  aparece.
+- La historia disponible sigue siendo corta para varios indicadores. Que un
+  extremo no se haya alcanzado en 23 meses dice bastante menos que si no se
+  alcanzó en 60.
+- El ITVC queda afuera: es un índice base-100 continuo, sin bandas que
+  recalibrar.
+- Los indicadores sin serie histórica (IAI, ICIP) no se pueden diagnosticar.
+
+### El criterio, que es lo primero
 
 ADR-0045 ya fijó cuándo se recalibra una banda, y es tajante: **sólo si su techo
 o su piso son inalcanzables**. Nunca porque el rango observado quede corto. Si
@@ -41,26 +85,7 @@ alcanzado**. Y aun así el resultado se llama **"revisar"**, nunca
 "recalibrar": sólo una persona que conozca el indicador puede decir si el
 extremo es inalcanzable por construcción o si el período no dio para tanto.
 
-## Decisión
-
-Entra `scripts/revision_bandas.py`, que recorre los indicadores puntuables de
-ITCM, ITCG e ITCP y clasifica cada banda en cuatro estados: `revisar`,
-`saturado` (discrimina poco pero está bien anclada), `historia_corta` (menos de
-18 meses: no se opina) y `ok`. Escribe `output/revision_bandas.json`.
-
-Umbrales: **35%** de saturación para avisar, **18 meses** de historia mínima.
-Están puestos holgados a propósito — el costo de un falso positivo es leer una
-ficha, el de un falso negativo es una banda mal calibrada durante años sin que
-nadie se entere.
-
-### Cadencia
-
-En vez de una fecha en el calendario, el disparador es el propio diagnóstico:
-se corre **junto con la revisión editorial del informe** y ante cualquier alta o
-cambio de metodología de un indicador. La lista de candidatas viene con el
-diagnóstico, así que la revisión empieza sabiendo qué mirar.
-
-## Resultado de la primera corrida
+### Resultado de la primera corrida
 
 **Ninguna banda del ITCM tiene un extremo inalcanzable**: todas se tocan al
 menos de un lado. Bajo el criterio de ADR-0045, hoy **no corresponde recalibrar
@@ -78,7 +103,7 @@ naturaleza). Las tres del ITCM:
 
 Ninguna se toca en esta tanda: las tres reflejan desempeño real del período.
 
-## Un bug propio, que justifica el test que lo acompaña
+### Un bug propio, que justifica el test que lo acompaña
 
 La primera versión de este diagnóstico **marcaba `rem_ipc_12m` con el 100% de
 los meses en el piso** y lo mandaba a revisar. Era falso: la serie del REM
@@ -94,15 +119,3 @@ aplica la transformación— y viene con un test que compara el puntaje del
 diagnóstico contra el `puntaje_banda` publicado para cada indicador del ITCM.
 
 ITCG e ITCP no transforman sus valores antes de puntuar: se verificó.
-
-## Limitaciones declaradas
-
-- El diagnóstico mira **saturación y alcance**, no la forma de la distribución
-  en el medio. Una banda con anclas mal espaciadas en el tramo central no
-  aparece.
-- La historia disponible sigue siendo corta para varios indicadores. Que un
-  extremo no se haya alcanzado en 23 meses dice bastante menos que si no se
-  alcanzó en 60.
-- El ITVC queda afuera: es un índice base-100 continuo, sin bandas que
-  recalibrar.
-- Los indicadores sin serie histórica (IAI, ICIP) no se pueden diagnosticar.

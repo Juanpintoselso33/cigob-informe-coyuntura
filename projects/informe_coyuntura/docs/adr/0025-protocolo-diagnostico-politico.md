@@ -1,10 +1,16 @@
+---
+madr: 4
+id: '0025'
+estado: 'aceptado'
+nota_estado: 'aceptada (revisión uno-por-uno de gestión; mandato del editor:'
+fecha: 2026-07-03
+---
+
 # ADR-0025 — Protocolo antipiquetes automatizado con Diagnóstico Político (y corrección 55 → 74,2)
 
-- **Fecha:** 2026-07-03
-- **Estado:** aceptada (revisión uno-por-uno de gestión; mandato del editor:
-  "el objetivo es conseguir los datos, seguir buscando hasta encontrar")
+"el objetivo es conseguir los datos, seguir buscando hasta encontrar")
 
-## Contexto
+## Contexto y planteo del problema
 
 El protocolo antipiquetes era el único indicador manual de gestión (55%,
 "estimado"). La barrida de fuentes automáticas descartó: registro GCBA
@@ -16,6 +22,10 @@ propio doc CIGOB cita — publica sus monitoreos de piquetes (relevamiento
 diario sobre 100+ medios desde 2009) con los agregados anuales ABIERTOS en su
 web y replicados por la prensa (Chequeado, La Nación). Su definición de
 piquete coincide con la de la Res. 943/23.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -34,7 +44,9 @@ piquete coincide con la de la Res. 943/23.
    (interpolado); dimensión social y orden 82,6 → 87,8; **ITCG +0,5**.
 3. El histórico del valor viejo se purgó (regla ADR-0012 de recalibración).
 
-## Limitaciones declaradas
+## Más información
+
+### Limitaciones
 
 - Granularidad ANUAL (los reportes mensuales por distrito de DP son por
   suscripción — info@diagnosticopolitico.com.ar; si CIGOB se suscribe, el

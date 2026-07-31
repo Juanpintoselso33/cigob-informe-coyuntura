@@ -1,13 +1,17 @@
+---
+madr: 4
+id: '0092'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'politica'
+archivos: ['publicar._rezago']
+ambito: 'ITCP · card pública "Rezago del índice" · `publicar._rezago`'
+origen: 'Auditoría externa del cinturón político, prioridad 5'
+---
+
 # ADR-0092 — El informe declara de cuándo es la foto que muestra
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCP · card pública "Rezago del índice" · `publicar._rezago` |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría externa del cinturón político, prioridad 5 |
-
-## El planteo
+## Contexto y planteo del problema
 
 > "Conviven en el mismo cinturón indicadores casi en tiempo real con otros que
 > describen una realidad de hace uno o dos años. Ambos casos están bien
@@ -17,35 +21,9 @@
 
 La recomendación pedía señalizarlo **en el informe, no sólo en la ficha**.
 
-## Lo que se midió
+## Opciones consideradas
 
-El rezago relevante no es el retraso de publicación de la fuente —eso ya estaba
-en cada ficha— sino el **centroide de la ventana**: un indicador que promedia
-los últimos doce meses describe, en promedio, la situación de hace seis, aunque
-su último dato sea de ayer.
-
-Los valores se derivan del diseño de cada ventana; no se estiman:
-
-| ventana | centroide |
-|---|---|
-| móvil de N meses | N/2 |
-| cohorte de 12 a 24 meses | 18 |
-| stock acumulado | 0 (describe el estado vigente) |
-
-Ponderando por **peso efectivo** —el que el indicador tiene realmente en el
-índice una vez renormalizado, no su peso nominal dentro de la dimensión—:
-
-| | |
-|---|---|
-| **rezago promedio ponderado del ITCP** | **5,8 meses** |
-| peso en pulso inmediato (≤ 2 meses) | 39% |
-| peso en ventana intermedia | 44% |
-| peso estructural (≥ 12 meses) | **17%** |
-
-Los dos que tiran del promedio son `eficacia_legislativa` (18 meses, por la
-cohorte madura que ADR-0061 introdujo a propósito para sacar un sesgo) e
-`iaf_transferencias` (12 meses, por su comparación anual dic-dic). Ninguno de
-los dos es corregible sin romper lo que los hace correctos.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -76,7 +54,7 @@ señalado —que el lector no confunda "dato de julio" con "situación de julio"
 sin ese costo. Queda anotada como opción disponible si el rezago promedio
 crece.
 
-## Guardia
+### Confirmación
 
 `test_todo_indicador_del_indice_declara_su_rezago` exige que
 `REZAGO_MESES_ITCP` cubra exactamente a los indicadores que integran las
@@ -85,7 +63,39 @@ promedio y lo sesgaría en silencio hacia abajo: es la misma familia de error qu
 ADR-0082 —una lista escrita a mano que diverge del índice— y que volvió a
 aparecer en ADR-0089 tres días después de declararla erradicada.
 
-## Alcance y limitaciones
+## Más información
+
+### Lo que se midió
+
+El rezago relevante no es el retraso de publicación de la fuente —eso ya estaba
+en cada ficha— sino el **centroide de la ventana**: un indicador que promedia
+los últimos doce meses describe, en promedio, la situación de hace seis, aunque
+su último dato sea de ayer.
+
+Los valores se derivan del diseño de cada ventana; no se estiman:
+
+| ventana | centroide |
+|---|---|
+| móvil de N meses | N/2 |
+| cohorte de 12 a 24 meses | 18 |
+| stock acumulado | 0 (describe el estado vigente) |
+
+Ponderando por **peso efectivo** —el que el indicador tiene realmente en el
+índice una vez renormalizado, no su peso nominal dentro de la dimensión—:
+
+| | |
+|---|---|
+| **rezago promedio ponderado del ITCP** | **5,8 meses** |
+| peso en pulso inmediato (≤ 2 meses) | 39% |
+| peso en ventana intermedia | 44% |
+| peso estructural (≥ 12 meses) | **17%** |
+
+Los dos que tiran del promedio son `eficacia_legislativa` (18 meses, por la
+cohorte madura que ADR-0061 introdujo a propósito para sacar un sesgo) e
+`iaf_transferencias` (12 meses, por su comparación anual dic-dic). Ninguno de
+los dos es corregible sin romper lo que los hace correctos.
+
+### Alcance y limitaciones
 
 - **Sólo el ITCP.** El mecanismo es genérico y extenderlo a los otros índices
   cuesta declarar el diccionario de rezagos de sus componentes; no se hizo acá

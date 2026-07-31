@@ -1,13 +1,21 @@
+---
+madr: 4
+id: '0050'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0061'
+fecha: 2026-07-11
+cinturon: 'politica'
+archivos: ['scripts/itcp.py', 'scripts/politica.py', 'web/src/lib/fichas.ts']
+relacionado: ['0062']
+superado_por: ['0061']
+ambito: '`scripts/itcp.py` · `scripts/politica.py` (docstring) · `web/src/lib/fichas.ts`'
+---
+
 # ADR-0050 — `eficacia_legislativa`: recalibración de bandas contra la serie real (truncamiento estructural de la ventana única)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-11 |
-| **Ámbito** | `scripts/itcp.py` · `scripts/politica.py` (docstring) · `web/src/lib/fichas.ts` |
 | **Precedente directo** | ADR-0045 (`comisiones_caidas`, misma patología), ADR-0038/0039/0042 (recalibraciones con backfill real), ADR-0021 (interpolación, tramos extremos abiertos) |
 
-## Contexto
+## Contexto y planteo del problema
 
 `eficacia_legislativa` (% de proyectos del PE aprobados, ventana móvil 365
 días, datos abiertos HCDN) puntuaba con anclas 5/15/35/55 heredadas de la
@@ -35,6 +43,23 @@ viejas. Es la misma patología, en espejo, que ADR-0045 documentó para
 `comisiones_caidas` (un dictamen reciente casi nunca se sanciona dentro de
 su propia ventana). Las anclas viejas describían la tasa de aprobación de
 un congreso de manual, no esta métrica.
+
+## Opciones consideradas
+
+- **Dejar las anclas viejas como señal editorial** ("el piso ES la
+  noticia: el gobierno no aprueba leyes"): descartado — el nivel absoluto
+  lo comunica el `valor` de la card (4,3%, 1 de 23); el puntaje del índice
+  necesita discriminar entre los regímenes reales del período (0% ≠ 4% ≠
+  8%), que es exactamente el argumento que ganó en ADR-0045. Además el
+  techo 35-55% es inalcanzable por construcción de la métrica, no por
+  debilidad política: mantenerlo no es exigencia editorial, es un error de
+  escala.
+- **Rediseñar la métrica para eliminar el truncamiento** (p. ej. cohortes:
+  % de proyectos enviados hace 12-24 meses ya sancionados): fuera de
+  alcance — cambia la definición del indicador publicado y la serie
+  entera; la recalibración resuelve el problema de scoring sin tocar la
+  semántica de la card. Queda como candidato si una revisión editorial
+  futura pide medir "tasa de éxito final" en vez de "eficacia en ventana".
 
 ## Decisión
 
@@ -64,24 +89,7 @@ banda.
   la misma realidad política con distinto denominador; un borde ahí
   convierte ruido de denominador en cambios de banda.
 
-## Opciones descartadas
-
-- **Dejar las anclas viejas como señal editorial** ("el piso ES la
-  noticia: el gobierno no aprueba leyes"): descartado — el nivel absoluto
-  lo comunica el `valor` de la card (4,3%, 1 de 23); el puntaje del índice
-  necesita discriminar entre los regímenes reales del período (0% ≠ 4% ≠
-  8%), que es exactamente el argumento que ganó en ADR-0045. Además el
-  techo 35-55% es inalcanzable por construcción de la métrica, no por
-  debilidad política: mantenerlo no es exigencia editorial, es un error de
-  escala.
-- **Rediseñar la métrica para eliminar el truncamiento** (p. ej. cohortes:
-  % de proyectos enviados hace 12-24 meses ya sancionados): fuera de
-  alcance — cambia la definición del indicador publicado y la serie
-  entera; la recalibración resuelve el problema de scoring sin tocar la
-  semántica de la card. Queda como candidato si una revisión editorial
-  futura pide medir "tasa de éxito final" en vez de "eficacia en ventana".
-
-## Consecuencias
+### Consecuencias
 
 - Con el valor vigente (4,3%): puntaje 10,0 → ~65 interpolado; la dimensión
   poder legislativo 48,8 → **63,3**; **ITCP 72,9 → 77,2** (tensión 2,7 →

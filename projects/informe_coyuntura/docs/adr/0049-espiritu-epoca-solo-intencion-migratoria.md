@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0049'
+estado: 'aceptado'
+fecha: 2026-07-11
+cinturon: 'espiritu'
+archivos: ['scripts/espiritu_epoca.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts', 'web/src/components/Evolucion.astro', 'tests/*']
+ambito: '`scripts/espiritu_epoca.py` · `scripts/publicar.py` · `web/src/lib/fichas.ts` · `web/src/components/Evolucion.astro` · `tests/*`'
+---
+
 # ADR-0049 — Espíritu de época: la intención migratoria queda como único indicador del cinturón
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-11 |
-| **Ámbito** | `scripts/espiritu_epoca.py` · `scripts/publicar.py` · `web/src/lib/fichas.ts` · `web/src/components/Evolucion.astro` · `tests/*` |
 | **Precedente directo** | ADR-0035 (`indice_intencion_migratoria` + Componente B), ADR-0022 (`MACRO_OCULTOS`), ADR-0048 (`POLITICA_OCULTOS`, regla "el tablero solo muestra lo que integra el índice") |
 
-## Contexto
+## Contexto y planteo del problema
 
 El cinturón espíritu de época nació (jun-2026) como v1 provisional con tres
 proxies que no eran mediciones propias sino **segundas lecturas de cards que
@@ -27,6 +32,22 @@ indicador que mide el constructo del cinturón + tres duplicaciones declaradas
 
 El 2026-07-11 el usuario definió el alcance: **el único indicador del
 cinturón, por ahora, es la tendencia migratoria**.
+
+## Opciones consideradas
+
+- **Eliminar los 3 proxies del colector**: descartado — el costo de seguir
+  cacheándolos es cero (son lecturas de outputs que el pipeline ya extrae,
+  sin fetch propio) y conservan valor como seguimiento interno del humor
+  social; además el patrón oculto ya está establecido y probado dos veces.
+- **Dejarlos como cards de contexto visibles sin puntuar** (estilo
+  `alertas_manifestacion` en gestión): descartado — la regla editorial
+  confirmada el 10-jul (ADR-0048) es que el tablero solo muestra lo que
+  integra el índice, y acá ni siquiera son mediciones propias del cinturón
+  sino duplicados exactos de cards visibles en otros dos tableros.
+- **Esperar la paramétrica formal del cinturón para tocar su composición**:
+  descartado — con lanzamiento en agosto de 2026, publicar tres duplicaciones
+  que inflan/diluyen el score del quinto cinturón es peor que un cinturón
+  chico y honesto de un indicador declaradamente provisional.
 
 ## Decisión
 
@@ -65,23 +86,7 @@ card de política — lo que desaparece es la segunda lectura, no el dato.
   `descripciones.ts`/`formulas.ts` (precedente `rotacion_gabinete`: entradas
   inertes, no renderizan sin card).
 
-## Opciones descartadas
-
-- **Eliminar los 3 proxies del colector**: descartado — el costo de seguir
-  cacheándolos es cero (son lecturas de outputs que el pipeline ya extrae,
-  sin fetch propio) y conservan valor como seguimiento interno del humor
-  social; además el patrón oculto ya está establecido y probado dos veces.
-- **Dejarlos como cards de contexto visibles sin puntuar** (estilo
-  `alertas_manifestacion` en gestión): descartado — la regla editorial
-  confirmada el 10-jul (ADR-0048) es que el tablero solo muestra lo que
-  integra el índice, y acá ni siquiera son mediciones propias del cinturón
-  sino duplicados exactos de cards visibles en otros dos tableros.
-- **Esperar la paramétrica formal del cinturón para tocar su composición**:
-  descartado — con lanzamiento en agosto de 2026, publicar tres duplicaciones
-  que inflan/diluyen el score del quinto cinturón es peor que un cinturón
-  chico y honesto de un indicador declaradamente provisional.
-
-## Consecuencias
+### Consecuencias
 
 - **El score del cinturón baja**: con los valores del 11-jul, de 2,5
   (promedio de icc 5,8 · sentimiento 0,6 · clima 3,2 · migración 0,6) a

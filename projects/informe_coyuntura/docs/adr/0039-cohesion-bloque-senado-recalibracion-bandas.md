@@ -1,12 +1,18 @@
+---
+madr: 4
+id: '0039'
+estado: 'aceptado'
+fecha: 2026-07-09
+cinturon: 'politica'
+indicadores: [fetch_cohesion_bloque_senado_actas_anio, fetch_cohesion_bloque_senado_mensual]
+parametros: ['BANDAS_ITCP["cohesion_bloque_senado"]', 'G3_EXCEPCIONES']
+archivos: ['scripts/itcp.py', 'scripts/politica.py', _agregar_cohesion_ventana, 'scripts/descargar_series.py', _actas_cohesion_senado_cacheadas, 'scripts/gate_calidad.py', 'data/politica/cohesion_bloque_senado_actas.json', 'tests/test_itcp.py', 'tests/test_politica_cohesion.py', 'tests/test_descargar_series_cohesion.py']
+ambito: '`scripts/itcp.py` (`BANDAS_ITCP["cohesion_bloque_senado"]`) · `scripts/politica.py` (`fetch_cohesion_bloque_senado_actas_anio`, `_agregar_cohesion_ventana`) · `scripts/descargar_series.py` (`_actas_cohesion_senado_cacheadas`, `fetch_cohesion_bloque_senado_mensual`) · `scripts/gate_calidad.py` (`G3_EXCEPCIONES`) · `data/politica/cohesion_bloque_senado_actas.json` · `tests/test_itcp.py`, `tests/test_politica_cohesion.py`, `tests/test_descargar_series_cohesion.py`'
+---
+
 # ADR-0039 — cohesion_bloque_senado: recalibración de anclas ITCP con backfill mensual real
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-09 |
-| **Ámbito** | `scripts/itcp.py` (`BANDAS_ITCP["cohesion_bloque_senado"]`) · `scripts/politica.py` (`fetch_cohesion_bloque_senado_actas_anio`, `_agregar_cohesion_ventana`) · `scripts/descargar_series.py` (`_actas_cohesion_senado_cacheadas`, `fetch_cohesion_bloque_senado_mensual`) · `scripts/gate_calidad.py` (`G3_EXCEPCIONES`) · `data/politica/cohesion_bloque_senado_actas.json` · `tests/test_itcp.py`, `tests/test_politica_cohesion.py`, `tests/test_descargar_series_cohesion.py` |
-
-## Contexto
+## Contexto y planteo del problema
 
 Mismo hallazgo que ADR-0038, en un indicador con mayor impacto en el índice.
 `cohesion_bloque_senado` (alta 2026-07-07) heredó las anclas de banda de
@@ -23,28 +29,19 @@ tocar las anclas): con la card live en 99,4%, el indicador publicaba
 "0,0/10 de tensión" — la banda superior abierta `(90, ∞, 100)` aplana
 cualquier valor por encima de 90 a puntaje pleno.
 
-## Backfill
+## Opciones consideradas
 
-Reusando la infraestructura de ADR-0038 (mismo patrón: detalle crudo por
-acta factorizado del fetch live, agregador puro por ventana, caché anual
-persistente, derivación de un punto por fin de mes) — `politica.py`/
-`descargar_series.py` ganaron el mismo trío de funciones para cohesión:
-`fetch_cohesion_bloque_senado_actas_anio`, `_agregar_cohesion_ventana`,
-`_actas_cohesion_senado_cacheadas`/`fetch_cohesion_bloque_senado_mensual`.
-
-Backfill real corrido 2026-07-09: ~280 actas del Senado (22 en 2023, 89 en
-2024, 89 en 2025, 80 en 2026 a la fecha) → **29 puntos mensuales reales,
-feb-2024→jun-2026**.
-
-## Distribución real observada
-
-Rango 77,8–100,0 · media 94,4 · mediana 93,1 · p25 92,2 · p75 99,8.
-
-Con las anclas viejas (90/75/60/40): el techo `>90→100` saturaba en **25 de
-29 meses (86%)** — la inmensa mayoría del tiempo, no un caso de borde. Los
-pisos `60–75→65` y `40–60→40` nunca se tocaron (0/29): el mínimo real
-observado es 77,8% (ago-2025), muy por encima del "moderado"/"bajo" que
-suponían esas bandas.
+- **Mantener las anclas de Diputados también para el Senado** — descartada:
+  es exactamente el problema que este ADR corrige; las dos cámaras tienen
+  bloques de tamaño y dinámica muy distintos (el propio texto público del
+  indicador ya lo advierte: "un bloque chico hace que un solo voto
+  disidente mueva el promedio con más fuerza").
+- **Recalibrar también `cohesion_bloque` (Diputados) por simetría** —
+  descartada: no tiene serie real propia (bloqueado desde ADR-0037), 
+  recalibrar sin datos sería inventar anclas, no derivarlas.
+- **Rellenar la banda vacía (80–85) con una ancla intermedia inventada** —
+  descartada: sin un punto real ahí, cualquier número sería arbitrario; se
+  deja el hueco explícito en vez de fingir precisión.
 
 ## Decisión
 
@@ -71,21 +68,7 @@ real observado, 99,4 es genuinamente parte del 20% superior de la
 distribución) — pero un valor típico de la franja 90–95% (ej. sep-2024,
 92,8%), que antes saturaba en 100, ahora puntúa 86,8.
 
-## Opciones consideradas
-
-- **Mantener las anclas de Diputados también para el Senado** — descartada:
-  es exactamente el problema que este ADR corrige; las dos cámaras tienen
-  bloques de tamaño y dinámica muy distintos (el propio texto público del
-  indicador ya lo advierte: "un bloque chico hace que un solo voto
-  disidente mueva el promedio con más fuerza").
-- **Recalibrar también `cohesion_bloque` (Diputados) por simetría** —
-  descartada: no tiene serie real propia (bloqueado desde ADR-0037), 
-  recalibrar sin datos sería inventar anclas, no derivarlas.
-- **Rellenar la banda vacía (80–85) con una ancla intermedia inventada** —
-  descartada: sin un punto real ahí, cualquier número sería arbitrario; se
-  deja el hueco explícito en vez de fingir precisión.
-
-## Consecuencias
+### Consecuencias
 
 - Segunda banda del ITCP en salir del estado PROVISIONAL con datos propios
   (después de `alineamiento_senadores_prov`, ADR-0038) — mismo precedente:
@@ -100,3 +83,28 @@ distribución) — pero un valor típico de la franja 90–95% (ej. sep-2024,
 - `scripts/gate_calidad.py::G3_EXCEPCIONES` suma `cohesion_bloque_senado`
   (mismo motivo que `alineamiento_senadores_prov`: card y serie usan ambas
   ventana de 90 días, pero ancladas a fechas distintas — hoy vs. fin de mes).
+
+## Más información
+
+### Backfill
+
+Reusando la infraestructura de ADR-0038 (mismo patrón: detalle crudo por
+acta factorizado del fetch live, agregador puro por ventana, caché anual
+persistente, derivación de un punto por fin de mes) — `politica.py`/
+`descargar_series.py` ganaron el mismo trío de funciones para cohesión:
+`fetch_cohesion_bloque_senado_actas_anio`, `_agregar_cohesion_ventana`,
+`_actas_cohesion_senado_cacheadas`/`fetch_cohesion_bloque_senado_mensual`.
+
+Backfill real corrido 2026-07-09: ~280 actas del Senado (22 en 2023, 89 en
+2024, 89 en 2025, 80 en 2026 a la fecha) → **29 puntos mensuales reales,
+feb-2024→jun-2026**.
+
+### Distribución real observada
+
+Rango 77,8–100,0 · media 94,4 · mediana 93,1 · p25 92,2 · p75 99,8.
+
+Con las anclas viejas (90/75/60/40): el techo `>90→100` saturaba en **25 de
+29 meses (86%)** — la inmensa mayoría del tiempo, no un caso de borde. Los
+pisos `60–75→65` y `40–60→40` nunca se tocaron (0/29): el mínimo real
+observado es 77,8% (ago-2025), muy por encima del "moderado"/"bajo" que
+suponían esas bandas.

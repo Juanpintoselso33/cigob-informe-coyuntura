@@ -1,11 +1,18 @@
+---
+madr: 4
+id: '0162'
+estado: 'aceptado'
+nota_estado: 'Aceptado, **implementado y publicado** (cableado 2026-07-30)'
+fecha: 2026-07-30
+archivos: ['scripts/regresion_validacion.py']
+ambito: '`scripts/regresion_validacion.py`'
+---
+
 # ADR-0162 — Aporte del índice por encima de la tendencia (regresión)
 
-- **Estado**: Aceptado, **implementado y publicado** (cableado 2026-07-30)
-- **Fecha**: 2026-07-30
-- **Ámbito**: `scripts/regresion_validacion.py`
 - **Relacionados**: ADR-0159 (lo dejó como pendiente explícito), ADR-0161
 
-## Contexto
+## Contexto y planteo del problema
 
 El paso 9 del handbook OCDE/JRC pide correlacionar con otros indicadores **y**
 "identificar vínculos mediante regresiones". Lo primero está (ADR-0155, 0159,
@@ -13,6 +20,10 @@ El paso 9 del handbook OCDE/JRC pide correlacionar con otros indicadores **y**
 todas las mediciones de este proyecto — **en estos años casi todas las series
 argentinas comparten la tendencia del período**, así que una correlación alta en
 niveles puede ser sólo eso.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -39,18 +50,7 @@ distingue de la tendencia. El defecto quedó **commiteado con su test en rojo** 
 se detectó recién al correr la suite completa; el test estaba bien y la
 implementación mal.
 
-## Dónde se aplica
-
-Sobre el **factor común** de cada cinturón que lo tiene (ADR-0161/0163/0164), en
-**niveles**: diferenciar ya le quita la tendencia, así que en ese plano la
-pregunta no tiene sentido. El texto va al final del detalle de la ficha
-metodológica, porque califica a todo lo anterior.
-
-El signo no se declara a priori —la orientación del factor la fija su carga
-dominante— sino que se usa como **chequeo de coherencia**: el coeficiente tiene
-que apuntar para el mismo lado que la correlación ya publicada, y si no, se dice.
-
-## Resultado
+### Consecuencias
 
 | | tendencia sola | + el índice | **aporte** |
 |---|---|---|---|
@@ -73,7 +73,20 @@ informe.
 movió 5 puntos netos en 32 meses, así que en niveles no hay nada que explicar.
 Su validación vive en el mes a mes (+0,478, ADR-0163).
 
-## Detalle de presentación
+## Más información
+
+### Dónde se aplica
+
+Sobre el **factor común** de cada cinturón que lo tiene (ADR-0161/0163/0164), en
+**niveles**: diferenciar ya le quita la tendencia, así que en ese plano la
+pregunta no tiene sentido. El texto va al final del detalle de la ficha
+metodológica, porque califica a todo lo anterior.
+
+El signo no se declara a priori —la orientación del factor la fija su carga
+dominante— sino que se usa como **chequeo de coherencia**: el coeficiente tiene
+que apuntar para el mismo lado que la correlación ya publicada, y si no, se dice.
+
+### Detalle de presentación
 
 Un aporte de 0,4 puntos porcentuales se mostraba como «0» por redondeo, que es
 una afirmación más fuerte que la real. Por debajo de 10 puntos se muestra un

@@ -1,14 +1,44 @@
+---
+madr: 4
+id: '0105'
+estado: 'aceptado'
+fecha: 2026-07-20
+continua: ['0103']
+ambito: 'Todo indicador que se incorpore a un índice paramétrico'
+---
+
 # ADR-0105 — Regla para las anclas nuevas, con trinquete
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Todo indicador que se incorpore a un índice paramétrico |
-| **Fecha** | 2026-07-20 |
 | **Cierra** | El punto 3.2 de la auditoría de gestión (circularidad) |
 | **Continúa** | ADR-0103 (procedencia), ADR-0104 (por qué no se puede validar hacia atrás) |
 
-## Por qué hace falta
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Más información
+
+### Limitaciones
+
+**No baja el stock heredado.** Los techos de hoy son altos porque el proyecto
+es lo que es: 30 de 42 indicadores no existían antes de dic-2023. La regla
+gobierna el flujo, no el stock. Bajarlo es el trabajo que ADR-0103 dejó
+listado, en este orden:
+
+1. Los cinco indicadores con historia previa desaprovechada
+   (`iaf_transferencias` desde dic-2018, `ipc_total`, `recaudacion`, `emae_ia`,
+   `saldo_comercial_12m`): se puede anclar contra gobiernos anteriores y hoy no
+   se hace.
+2. Las siete bandas `sin_declarar` del ITCM: no requieren recalibrar nada, sólo
+   escribir de dónde salieron — y si no se puede reconstruir, decirlo.
+
+**No convierte una convención en algo mejor de lo que es.** Si tras buscar en
+serio no aparece referencia externa, la respuesta correcta es calibrar contra lo
+observado y declararlo `convencion`, no forzar una externa endeble para que el
+número del trinquete quede lindo. Mover un peso para que un test dé mejor está
+prohibido por ADR-0045, y esto es el mismo vicio con otra cara.
+
+### Por qué hace falta
 
 ADR-0103 midió cuánta de la puntuación descansa en anclas calibradas contra el
 período que se está midiendo: entre 51% y 83% según el índice. ADR-0104
@@ -20,7 +50,7 @@ Queda entonces un solo lugar donde la circularidad se puede *evitar* en vez de
 medirse: el momento en que se define un ancla nueva. Ahí todavía se puede elegir
 el criterio **antes** de mirar el dato.
 
-## La regla
+### La regla
 
 Al incorporar un indicador puntuable, las anclas se justifican en este orden, y
 **se usa la primera opción viable**:
@@ -47,7 +77,7 @@ La procedencia elegida se declara en `PROCEDENCIA` de
 `scripts/procedencia_anclas.py`. Eso ya es obligatorio: sin entrada, la suite
 falla (ADR-0103).
 
-## El trinquete
+### El trinquete
 
 Una regla de orden de preferencia se erosiona sola. Cada indicador nuevo con
 anclas de conveniencia es defendible **de a uno**; lo que nadie defiende es la
@@ -79,23 +109,3 @@ deshacer sin que alguien lo note.
 Los tres disparan de verdad — se verificó degradando `ratio_dnu` de `externa` a
 `convencion` (ITCP 60,9% → 66,6%, falla) y a `sin_declarar` (20,6% → 26,3%,
 falla). Un trinquete que nunca se probó no se sabe si frena.
-
-## Lo que esta regla no hace
-
-**No baja el stock heredado.** Los techos de hoy son altos porque el proyecto
-es lo que es: 30 de 42 indicadores no existían antes de dic-2023. La regla
-gobierna el flujo, no el stock. Bajarlo es el trabajo que ADR-0103 dejó
-listado, en este orden:
-
-1. Los cinco indicadores con historia previa desaprovechada
-   (`iaf_transferencias` desde dic-2018, `ipc_total`, `recaudacion`, `emae_ia`,
-   `saldo_comercial_12m`): se puede anclar contra gobiernos anteriores y hoy no
-   se hace.
-2. Las siete bandas `sin_declarar` del ITCM: no requieren recalibrar nada, sólo
-   escribir de dónde salieron — y si no se puede reconstruir, decirlo.
-
-**No convierte una convención en algo mejor de lo que es.** Si tras buscar en
-serio no aparece referencia externa, la respuesta correcta es calibrar contra lo
-observado y declararlo `convencion`, no forzar una externa endeble para que el
-número del trinquete quede lindo. Mover un peso para que un test dé mejor está
-prohibido por ADR-0045, y esto es el mismo vicio con otra cara.

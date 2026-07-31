@@ -1,12 +1,16 @@
+---
+madr: 4
+id: '0008'
+estado: 'aceptado'
+fecha: 2026-06-27
+cinturon: 'macro'
+archivos: ['scripts/macro.py', 'scripts/descargar_series.py', 'requirements.txt', 'datos.ts']
+ambito: '`scripts/macro.py` · `scripts/descargar_series.py` · `requirements.txt` · `datos.ts`'
+---
+
 # ADR-0008 — El TCRM usa el ITCRM oficial del BCRA, no la serie discontinuada de INDEC
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-06-27 |
-| **Ámbito** | `scripts/macro.py` · `scripts/descargar_series.py` · `requirements.txt` · `datos.ts` |
-
-## Contexto
+## Contexto y planteo del problema
 
 El tipo de cambio real multilateral (`tcrm`) es un indicador de **contexto** del
 cinturón macro (no puntúa en el ITCM). Se tomaba de la serie de INDEC en
@@ -17,6 +21,17 @@ su último punto es diciembre de 2024** (verificado contra la API: dic-24 = 79,8
 no hay puntos posteriores). El indicador mostraba un valor de 18 meses de
 antigüedad marcado, además, como actualizado — contradiciendo la regla de datos
 frescos ([[0001-datos-calculados-no-hardcodeados]]).
+
+## Opciones consideradas
+
+- **Mantener la serie de INDEC.** Rechazada: discontinuada, dato congelado en
+  dic-2024.
+- **Buscar otra serie en datos.gob.ar.** Rechazada: la búsqueda no devolvió una
+  serie de TCRM vigente; INDEC dejó de publicarla.
+- **ITCRM del BCRA vía API de Monetarias v4.0.** No disponible: la API solo expone
+  tipos de cambio nominales (minorista, mayorista, valuación contable), no el ITCRM.
+- **Planilla `ITCRMSerie.xlsx` del BCRA.** Elegida: es la fuente oficial y vigente
+  del ITCRM, accesible y automatizable.
 
 ## Decisión
 
@@ -34,18 +49,7 @@ que el BCRA mantiene vigente y publica a diario, **de ahora en adelante**.
   es contexto, no tiene bandas ni puntúa, así que el cambio de base no afecta
   ningún score. La unidad mostrada se actualizó a "Índice (base dic-2015=100)".
 
-## Opciones consideradas
-
-- **Mantener la serie de INDEC.** Rechazada: discontinuada, dato congelado en
-  dic-2024.
-- **Buscar otra serie en datos.gob.ar.** Rechazada: la búsqueda no devolvió una
-  serie de TCRM vigente; INDEC dejó de publicarla.
-- **ITCRM del BCRA vía API de Monetarias v4.0.** No disponible: la API solo expone
-  tipos de cambio nominales (minorista, mayorista, valuación contable), no el ITCRM.
-- **Planilla `ITCRMSerie.xlsx` del BCRA.** Elegida: es la fuente oficial y vigente
-  del ITCRM, accesible y automatizable.
-
-## Consecuencias
+### Consecuencias
 
 - `tcrm` vuelve a ser fresco (mismo vintage mensual que IPC/reservas/REM).
 - Nueva dependencia `openpyxl` (lectura de `.xlsx`) en `requirements.txt`; el CI la

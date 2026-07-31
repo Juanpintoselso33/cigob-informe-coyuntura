@@ -1,14 +1,21 @@
+---
+madr: 4
+id: '0127'
+estado: 'aceptado'
+fecha: 2026-07-25
+cinturon: 'macro'
+indicadores: [recaudacion, resultado_primario]
+modifica: ['0003']
+relacionado: ['0130']
+ambito: 'ITCM · `recaudacion` · serie · card · `resultado_primario` (denominador)'
+origen: 'Planteo del editor'
+---
+
 # ADR-0127 — La recaudación mide la base imponible, no la caja: pasa a DGI
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITCM · `recaudacion` · serie · card · `resultado_primario` (denominador) |
-| **Fecha** | 2026-07-25 |
 | **Modifica** | ADR-0003 (recaudación interanual real), ADR-0072 (reinterpretación del indicador) |
-| **Origen** | Planteo del editor |
 
-## El planteo
+## Contexto y planteo del problema
 
 > "El indicador de la recaudación te dice si recauda más o menos en términos
 > reales, pero si la política es bajar impuestos, se estaría castigando la baja
@@ -36,17 +43,9 @@ resultado primario— y le bajó el peso de 60% a 30%. Este ADR termina ese
 movimiento: si el indicador mide la base imponible, tiene que medir la base
 imponible.
 
-## Lo que se descartó
+## Opciones consideradas
 
-**El ratio recaudación/gasto**, que era la propuesta original del editor. Es
-prácticamente una transformación monótona del resultado primario
-(`recaudación/gasto ≈ 1 + resultado/gasto`), y **`resultado_primario` ya lidera
-la misma dimensión con el 50%**. Habría medido dos veces lo mismo y eliminado
-la única señal de base imponible del ITCM.
-
-**Medir a legislación constante** sería lo correcto en teoría y exige modelar
-cada cambio de alícuota, mínimo y régimen. No es reproducible de forma
-automática y quedaría colgado del criterio de quien lo arme.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -62,7 +61,35 @@ brecha entre DGI y total *es* el efecto de la política tributaria sobre el
 comercio exterior, y mostrarla es lo que evita que el cambio de serie parezca
 un recorte conveniente.
 
-## Las bandas NO se tocaron
+## Más información
+
+### Limitaciones
+
+- **Excluir la aduana resuelve el caso más grande, no todos.** La propia DGI
+  contiene impuestos cuyas alícuotas y mínimos cambiaron en el período: el
+  indicador tampoco es neutral respecto de las decisiones del Gobierno.
+- **La seguridad social también es base imponible doméstica y queda afuera.**
+  Sigue su propia dinámica —cae en términos reales desde fines de 2025, señal
+  del mercado laboral registrado— y mezclarla habría metido empleo en un
+  indicador de actividad y formalidad. Vale la pena mirarla aparte.
+- **La banda inferior no tiene respaldo en la muestra pre-mandato**: la DGI
+  nunca cayó más de 5% real en 2021-2023. Describe una situación posible, no
+  una observada.
+- Deflactor único (IPC nacional), con el riesgo sistémico que declara ADR-0122.
+
+### Lo que se descartó
+
+**El ratio recaudación/gasto**, que era la propuesta original del editor. Es
+prácticamente una transformación monótona del resultado primario
+(`recaudación/gasto ≈ 1 + resultado/gasto`), y **`resultado_primario` ya lidera
+la misma dimensión con el 50%**. Habría medido dos veces lo mismo y eliminado
+la única señal de base imponible del ITCM.
+
+**Medir a legislación constante** sería lo correcto en teoría y exige modelar
+cada cambio de alícuota, mínimo y régimen. No es reproducible de forma
+automática y quedaría colgado del criterio de quien lo arme.
+
+### Las bandas NO se tocaron
 
 La unidad sigue siendo variación real interanual y el cero sigue siendo el
 punto con significado. Recalibrarlas al cambiar de fuente habría sido
@@ -71,7 +98,7 @@ indistinguible de mover el número (ADR-0045).
 Chequeadas contra la distribución pre-mandato de la serie nueva (2021-2023,
 n=35): mediana +4,5%, cortes en p0 / p14 / p57 / p80. Sirven.
 
-## Por qué esto no es acomodar el número
+### Por qué esto no es acomodar el número
 
 Es la objeción obvia —cambiar la serie justo donde el total da mal— y el dato
 la contesta. Con las mismas bandas, el puntaje de la DGI contra el del total:
@@ -92,7 +119,7 @@ la contesta. Con las mismas bandas, el puntaje de la DGI contra el del total:
 hasta 45 puntos. El cambio no favorece sistemáticamente a nadie: mide otra
 cosa, y esa otra cosa a veces es peor y a veces mejor.
 
-## El bug que casi se cuela
+### El bug que casi se cuela
 
 `INDEC_RECAUDACION_ID` no lo usaba sólo el indicador: **`resultado_primario` lo
 usaba como DENOMINADOR** ("% de la recaudación"). Apuntar la constante a la DGI
@@ -103,17 +130,3 @@ Es la misma familia de error que ADR-0097 dejó en `fetch_reduccion_serie`: un
 productor cambia y un consumidor que compartía la referencia se rompe sin que
 nada avise. `resultado_primario` pasa a apuntar explícitamente a
 `INDEC_RECAUDACION_TOTAL_ID`, con el comentario que explica por qué.
-
-## Limitaciones declaradas
-
-- **Excluir la aduana resuelve el caso más grande, no todos.** La propia DGI
-  contiene impuestos cuyas alícuotas y mínimos cambiaron en el período: el
-  indicador tampoco es neutral respecto de las decisiones del Gobierno.
-- **La seguridad social también es base imponible doméstica y queda afuera.**
-  Sigue su propia dinámica —cae en términos reales desde fines de 2025, señal
-  del mercado laboral registrado— y mezclarla habría metido empleo en un
-  indicador de actividad y formalidad. Vale la pena mirarla aparte.
-- **La banda inferior no tiene respaldo en la muestra pre-mandato**: la DGI
-  nunca cayó más de 5% real en 2021-2023. Describe una situación posible, no
-  una observada.
-- Deflactor único (IPC nacional), con el riesgo sistémico que declara ADR-0122.

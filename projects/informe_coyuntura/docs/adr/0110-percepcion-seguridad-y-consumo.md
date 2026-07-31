@@ -1,14 +1,20 @@
+---
+madr: 4
+id: '0110'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'vida'
+indicadores: [confianza]
+continuado_por: ['0115']
+ambito: 'ITVC · dimensión `confianza` · rótulo público'
+origen: 'Auditoría de Vida Cotidiana, punto 3.4 y recomendación 3 (prioridad alta)'
+---
+
 # ADR-0110 — La dimensión se llama por lo que tiene adentro
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · dimensión `confianza` · rótulo público |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría de Vida Cotidiana, punto 3.4 y recomendación 3 (prioridad alta) |
 | **Apoyado en** | ADR-0108 (matriz de redundancia del ITVC) |
 
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría observó que la dimensión agrupaba cinco indicadores de naturaleza
 distinta bajo una etiqueta que no describe a dos de ellos:
@@ -22,7 +28,31 @@ distinta bajo una etiqueta que no describe a dos de ellos:
 No es una objeción menor de nomenclatura: **el 15% del peso interno de la
 dimensión** (carne 10 + motos 5) mide algo distinto de lo que el rótulo anuncia.
 
-## La evidencia
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+La dimensión pasa a llamarse **"Percepción, seguridad y consumo"**. El nombre
+enumera lo que hay adentro: percepción encuestada (ICC) y revelada por conducta
+de búsqueda (sentimiento digital), seguridad (victimización), y consumo
+(carne, motos).
+
+Nada más cambia: mismos componentes, mismos pesos internos, mismo peso nominal
+del 15%. **El ITVC queda en 95,4**, idéntico.
+
+### Consecuencias
+
+- El rótulo vive en un solo lugar (`itvc.DIMENSIONES_ITVC`) y la web lo lee del
+  dato, así que el cambio no se puede desincronizar entre el cálculo y la
+  presentación.
+- Un rótulo honesto no reemplaza a la reorganización: la dimensión sigue
+  mezclando tres conceptos. Lo que cambia es que ahora lo dice.
+
+## Más información
+
+### La evidencia
 
 ADR-0108 lo confirmó desde el dato, no desde el concepto. `patentamiento_motos`
 correlaciona:
@@ -37,17 +67,7 @@ correlaciona:
 Acopla con el bloque de poder adquisitivo, no con el de percepción. La objeción
 conceptual de la auditoría tiene respaldo empírico.
 
-## Decisión
-
-La dimensión pasa a llamarse **"Percepción, seguridad y consumo"**. El nombre
-enumera lo que hay adentro: percepción encuestada (ICC) y revelada por conducta
-de búsqueda (sentimiento digital), seguridad (victimización), y consumo
-(carne, motos).
-
-Nada más cambia: mismos componentes, mismos pesos internos, mismo peso nominal
-del 15%. **El ITVC queda en 95,4**, idéntico.
-
-## Por qué no la reorganización
+### Por qué no la reorganización
 
 La auditoría planteaba dos caminos y este ADR toma el primero. El segundo
 —partir en "Confianza y percepción" + "Seguridad" y mudar carne y motos a
@@ -67,11 +87,3 @@ dimensión crítica, a semanas del lanzamiento.
 
 **Queda abierta como decisión editorial**, con el costo ya medido para que se
 pueda tomar sin rehacer este análisis.
-
-## Consecuencias
-
-- El rótulo vive en un solo lugar (`itvc.DIMENSIONES_ITVC`) y la web lo lee del
-  dato, así que el cambio no se puede desincronizar entre el cálculo y la
-  presentación.
-- Un rótulo honesto no reemplaza a la reorganización: la dimensión sigue
-  mezclando tres conceptos. Lo que cambia es que ahora lo dice.

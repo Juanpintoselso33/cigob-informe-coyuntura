@@ -1,13 +1,21 @@
+---
+madr: 4
+id: '0033'
+estado: 'aceptado'
+fecha: 2026-07-04
+cinturon: 'vida'
+indicadores: [ipc_alimentos]
+relacionado: ['0067']
+ambito: 'ITVC-B100: métrica de `ipc_alimentos` + tratamiento de outliers de componentes'
+---
+
 # ADR-0033 — ITVC: doble conteo salario/comida eliminado y winsorización asimétrica
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-04 |
-| **Ámbito** | ITVC-B100: métrica de `ipc_alimentos` + tratamiento de outliers de componentes |
 | **Disparador** | Cierre del barrido vida 13/13: el editor pidió revisar las dimensiones ("me parece raro") |
 
-## Problema 1 — Un tercio del índice contaba dos veces lo mismo
+## Contexto y planteo del problema
+
+### Problema 1 — Un tercio del índice contaba dos veces lo mismo
 
 La correlación entre la brecha salario/CBT (22,75% del ITVC, dimensión
 Ingresos) y el poder de compra de alimentos (10%, dimensión Precios) era
@@ -31,7 +39,7 @@ Valor al cierre: **106,9** — la comida subió *menos* que el IPC general desde
 el 4T-2023 (alivio relativo). Con la métrica vieja marcaba 106,3 de puro eco
 de la brecha; ahora el parecido numérico es casualidad con significado propio.
 
-## Problema 2 — Un boom puntual compraba compensación ilimitada
+### Problema 2 — Un boom puntual compraba compensación ilimitada
 
 Motos patentadas marcaba **166,7** (+67% vs base): en la agregación lineal,
 un solo componente eufórico compensa caídas de varios. El Handbook JRC de
@@ -48,13 +56,11 @@ a la agregación.
   recortan: se señalizan (flag de dimensión crítica, ADR-0020) y arrastran
   el promedio como deben.
 
-## Dimensiones >100: correcto, no bug
+## Opciones consideradas
 
-Ingresos 105,9 y Confianza 102,1 quedan sobre 100 legítimamente: el B100 mide
-mejora/deterioro vs el arranque del mandato, y esas dimensiones están mejor
-que el 4T-2023. Lo anómalo era el 166,7 — resuelto con el techo.
+_El ADR original no registró opciones alternativas._
 
-## Consecuencias
+### Consecuencias
 
 - ITVC 91,5 → **90,5** (tensión 6,7 → 6,9): −1,0 de honestidad metodológica
   (sin el eco de la brecha en Precios y sin el excedente del boom de motos).
@@ -64,3 +70,11 @@ que el 4T-2023. Lo anómalo era el 166,7 — resuelto con el techo.
   cemento + subocupación; la informalidad vive en Ingresos), "Confianza y
   seguridad" mezcla ánimo/delito/consumo, y la brecha sola pesa 22,75%.
   Cambios de taxonomía y pesos exceden el mandato del barrido.
+
+## Más información
+
+### Dimensiones >100: correcto, no bug
+
+Ingresos 105,9 y Confianza 102,1 quedan sobre 100 legítimamente: el B100 mide
+mejora/deterioro vs el arranque del mandato, y esas dimensiones están mejor
+que el 4T-2023. Lo anómalo era el 166,7 — resuelto con el techo.

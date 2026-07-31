@@ -1,13 +1,20 @@
+---
+madr: 4
+id: '0052'
+estado: 'aceptado'
+fecha: 2026-07-11
+cinturon: 'politica'
+archivos: ['scripts/gestion.py', 'scripts/politica.py', 'scripts/itcp.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'web/src/lib/*', 'tests/*']
+relacionado: ['0058', '0059']
+complementado_por: ['0132']
+ambito: '`scripts/gestion.py` · `scripts/politica.py` · `scripts/itcp.py` · `scripts/descargar_series.py` · `scripts/validacion_externa.py` · `web/src/lib/*` · `tests/*`'
+---
+
 # ADR-0052 — Conflicto social del ITCP: `conflictividad_nacional` (ACLED país entero) reemplaza a `movilizacion_cepa`
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-11 |
-| **Ámbito** | `scripts/gestion.py` · `scripts/politica.py` · `scripts/itcp.py` · `scripts/descargar_series.py` · `scripts/validacion_externa.py` · `web/src/lib/*` · `tests/*` |
 | **Precedente directo** | ADR-0048 (revisión editorial: `protestas_caba` fuera del cinturón, la dimensión quedó en CEPA sola), ADR-0017 (infraestructura ACLED), ADR-0022/0048 (patrón contexto oculto), ADR-0042 (criterio "nace discriminando") |
 
-## Contexto
+## Contexto y planteo del problema
 
 Tras ADR-0048 la dimensión conflicto_social (15% del ITCP) quedó sostenida
 por un único indicador, `movilizacion_cepa`, con dos defectos verificados en
@@ -35,6 +42,23 @@ el nivel Open de la cuenta UBA. Las gacetillas mensuales de la Secretaría
 de Trabajo (existen al menos hasta jun-2025) quedan anotadas como posible
 pata futura — notas de prensa con encuadre oficial, sin archivo estructurado
 confirmado.
+
+## Opciones consideradas
+
+- **Disolver la dimensión** (lectura amplia de ADR-0048, redistribuir el 15%):
+  descartada — el ITCP quedaría con 4 de las 5 dimensiones Matus del marco
+  publicado a un mes del lanzamiento, y el índice subiría por tercera vez en
+  la semana (72,9 → 77,2 → 79,5) removiendo una dimensión que mide tensión
+  real. Sigue siendo el candidato si CIGOB formaliza el encuadre "solo
+  parlamentario".
+- **Arreglar CEPA en vez de reemplazarlo**: no hay arreglo — el defecto es
+  de la fuente (sin historia publicada) y de la métrica (acumulado YTD).
+- **Anclas 2/4/6/8 alternativas (−33/−30/−25/−15 u otras)**: la variante
+  elegida es la única con todos los cortes en huecos reales de la
+  distribución; otras partían el clúster central por ruido.
+- **Filtrar solo conflicto laboral/sindical en ACLED** (actor = gremios):
+  imposible hoy — requiere la API por evento, bloqueada en nivel Open (403).
+  Condición de reapertura: upgrade de la cuenta académica.
 
 ## Decisión
 
@@ -102,24 +126,7 @@ del indicador nacional. Su ficha se retira de /metodologia (los ocultos no
 tienen ficha — precedente rotación/badlar); banda de referencia en
 `BANDAS_ITCP`. **No se borra nada.**
 
-## Opciones descartadas
-
-- **Disolver la dimensión** (lectura amplia de ADR-0048, redistribuir el 15%):
-  descartada — el ITCP quedaría con 4 de las 5 dimensiones Matus del marco
-  publicado a un mes del lanzamiento, y el índice subiría por tercera vez en
-  la semana (72,9 → 77,2 → 79,5) removiendo una dimensión que mide tensión
-  real. Sigue siendo el candidato si CIGOB formaliza el encuadre "solo
-  parlamentario".
-- **Arreglar CEPA en vez de reemplazarlo**: no hay arreglo — el defecto es
-  de la fuente (sin historia publicada) y de la métrica (acumulado YTD).
-- **Anclas 2/4/6/8 alternativas (−33/−30/−25/−15 u otras)**: la variante
-  elegida es la única con todos los cortes en huecos reales de la
-  distribución; otras partían el clúster central por ruido.
-- **Filtrar solo conflicto laboral/sindical en ACLED** (actor = gremios):
-  imposible hoy — requiere la API por evento, bloqueada en nivel Open (403).
-  Condición de reapertura: upgrade de la cuenta académica.
-
-## Consecuencias
+### Consecuencias
 
 - Con los valores del 11-jul: `conflictividad_nacional` = −21,4% (2.048
   eventos en 12m a may-2026 vs 2.605 en 2023) → puntaje interpolado 43,2;

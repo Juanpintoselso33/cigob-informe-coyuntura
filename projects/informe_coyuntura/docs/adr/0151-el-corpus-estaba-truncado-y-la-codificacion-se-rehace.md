@@ -1,21 +1,27 @@
+---
+madr: 4
+id: '0151'
+estado: 'aceptado'
+fecha: 2026-07-29
+cinturon: 'politica'
+indicadores: [sector_privado]
+corrige: ['0150']
+ambito: 'cinturón político (ITCP), dimensión `sector_privado`'
+---
+
 # ADR-0151 — El corpus estaba truncado: `apoyo_empresario` se recodifica entero
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-29
-- **Ámbito**: cinturón político (ITCP), dimensión `sector_privado`
 - **Corrige**: ADR-0150 (que dejó el truncamiento anotado como pendiente menor)
 - **Relacionados**: ADR-0131 (protocolo de codificación), ADR-0148 (descartado),
   ADR-0088 (dimensión `sector_privado`)
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0150 cerró el indicador dejando anotado un pendiente: «el texto de AEA sigue
 cortado en 700 caracteres en origen, porque viene de extraer PDFs. En
 comunicados que abren con un rodeo puede quedar afuera el pasaje que fija
 posición». Se lo trató como una prolijidad pendiente. Al ir a arreglarlo resultó
 ser más grande y con efecto sobre el número publicado.
-
-## Lo que se encontró
 
 ### 1. El truncamiento no era sólo de AEA, y el de UIA estaba en el código
 
@@ -55,7 +61,26 @@ caracteres de los cuales ninguno es cuerpo: es el menú del sitio. La UIA no
 publicó texto. Queda marcado `sin_cuerpo` y los dos codificadores lo trataron
 igual, sin que ninguno tuviera que adivinar.
 
-## La segunda pasada, completa
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+### Consecuencias
+
+- **Un tope de caracteres en un extractor que alimenta codificación humana es un
+  sesgo silencioso, no un detalle de tamaño.** El texto truncado sigue siendo
+  texto válido: ningún gate, ningún test y ninguna inspección de estructura lo
+  ve. Lo detectó el pendiente anotado en un ADR, no la maquinaria de control.
+- Es el **segundo defecto del mismo extractor** encontrado por la vía de
+  codificar de nuevo (el primero, el menú de navegación, está en ADR-0150). La
+  doble codificación ciega está funcionando como auditoría de datos además de
+  como medida de confiabilidad.
+- El registro versionado en `data/politica/apoyo_empresario_codificacion.json`
+  reemplaza por completo al de ADR-0150, que se descarta entero.
+
+## Más información
+
+### La segunda pasada, completa
 
 Dos codificadores ciegos entre sí sobre el corpus con texto completo, el autor
 del manual adjudica y no codifica (diseño de ADR-0150).
@@ -87,7 +112,7 @@ tributaria en pasajes que caían después del corte.
    reclamo**, no con quién se reunió la cámara.
 3. **Diagnóstico estructural** que no identifica una medida concreta → `neutro`.
 
-## Efecto sobre el indicador
+### Efecto sobre el indicador
 
 | | antes | ahora |
 |---|---|---|
@@ -101,7 +126,7 @@ El indicador dejaba de estar en el piso de la escala. La variación a 12 meses s
 hace **más negativa** porque la ventana de comparación de hace un año también se
 recodificó y ahí aparecieron apoyos que el texto truncado no mostraba.
 
-## Lo que NO cambió, y por qué importa
+### Lo que NO cambió, y por qué importa
 
 Al detectar el truncamiento se identificó `2024-12-17 — AEA recibió al ministro
 Caputo` como una miscodificación segura: el texto se cortaba justo en «destacó
@@ -122,7 +147,7 @@ coincidieron es el autor del manual recodificando, que es exactamente lo que el
 diseño de ADR-0150 vino a evitar. Queda anotado como el primer caso a mirar si
 alguna vez se rehace la pasada.
 
-## Lo que se corrigió en código
+### Lo que se corrigió en código
 
 - `politica.py`, `_uia_comunicado`: se saca el tope de 1800 caracteres.
 - `tests/test_politica_apoyo_empresario.py`: el test que exigía que las dos
@@ -132,16 +157,3 @@ alguna vez se rehace la pasada.
   garantía que sí corresponde —y que el test ahora verifica— es que **si las dos
   pasadas difieren en si un caso cuenta, el caso está marcado `adjudicado`**:
   nada entra al conteo por omisión.
-
-## Consecuencias
-
-- **Un tope de caracteres en un extractor que alimenta codificación humana es un
-  sesgo silencioso, no un detalle de tamaño.** El texto truncado sigue siendo
-  texto válido: ningún gate, ningún test y ninguna inspección de estructura lo
-  ve. Lo detectó el pendiente anotado en un ADR, no la maquinaria de control.
-- Es el **segundo defecto del mismo extractor** encontrado por la vía de
-  codificar de nuevo (el primero, el menú de navegación, está en ADR-0150). La
-  doble codificación ciega está funcionando como auditoría de datos además de
-  como medida de confiabilidad.
-- El registro versionado en `data/politica/apoyo_empresario_codificacion.json`
-  reemplaza por completo al de ADR-0150, que se descarta entero.

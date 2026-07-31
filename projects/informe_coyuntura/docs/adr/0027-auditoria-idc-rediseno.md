@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0027'
+estado: 'aceptado'
+nota_estado: 'RESUELTO el 2026-07-04 — el editor eligió la opción (a); implementada en el [ADR-0028](0028-idc-z-scores.md)'
+fecha: 2026-07-04
+indicadores: [idc]
+ambito: 'Dimensión Capacidad de financiamiento · indicador `idc` (ADR-0004, ADR-0022)'
+---
+
 # ADR-0027 — Auditoría adversarial del IdC: hallazgos y opciones de rediseño
 
-| | |
-|---|---|
-| **Estado** | RESUELTO el 2026-07-04 — el editor eligió la opción (a); implementada en el [ADR-0028](0028-idc-z-scores.md) |
-| **Fecha** | 2026-07-04 |
-| **Ámbito** | Dimensión Capacidad de financiamiento · indicador `idc` (ADR-0004, ADR-0022) |
 | **Disparador** | Barrido uno-por-uno de macro (indicador 3/12): el editor pidió revisión adversarial contra la literatura de índices comparables |
 
-## Contexto
+## Contexto y planteo del problema
 
 El IdC (ADR-0004, doc `260626 aportes`) puntúa el 40% de la dimensión de
 financiamiento (6,4% del ITCM):
@@ -27,7 +32,7 @@ por impacto en PIB vía modelo macro), **Bloomberg FCI** (promedio de z-scores),
 y el uso del concepto "capacidad prestable" del propio BCRA (regulatorio, no
 compuesto).
 
-## Hallazgos de la auditoría (04-jul-2026)
+### Hallazgos de la auditoría (04-jul-2026)
 
 1. **Leyenda pública contradecía el signo de la fórmula** — decía "si el dinero
    está barato…" cuando `Precio` premia la tasa real POSITIVA (incentivo del
@@ -67,7 +72,9 @@ datos 100% oficiales diarios (BCRA var. 7/100/117 + IPC); puntaje interpolado;
 peso efectivo bajo (6,4% del ITCM); volatilidad capturada por la simulación de
 robustez publicada.
 
-## Opciones de rediseño (a decidir con CIGOB)
+## Opciones consideradas
+
+### Opciones de rediseño (a decidir con CIGOB)
 
 - **(a) Rediseño tipo FCI simplificado** — 3 z-scores de NIVEL contra la propia
   historia: tasa real (nivel), crédito privado real (tendencia interanual, ya
@@ -87,7 +94,9 @@ robustez publicada.
   esta ADR como descargo público de sus límites. Riesgo: no resiste una
   auditoría metodológica externa si el informe gana visibilidad.
 
-## Consecuencias mientras esté abierto
+## Más información
+
+### Consecuencias mientras esté abierto
 
 - La leyenda y las llaves de la fórmula ya no contradicen el cálculo (hallazgo 1
   cerrado).

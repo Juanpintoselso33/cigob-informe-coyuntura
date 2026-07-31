@@ -1,15 +1,20 @@
+---
+madr: 4
+id: '0079'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'macro'
+indicadores: [ipi_manufacturero, emae_ia]
+ambito: 'Cinturón macro · ITCM · dimensión Actividad económica · `ipi_manufacturero` · `emae_ia`'
+origen: 'Revisión adversarial externa (18-jul-2026)'
+---
+
 # ADR-0079 — El IPI baja de 35% a 20%: es respaldo, no medida principal
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón macro · ITCM · dimensión Actividad económica · `ipi_manufacturero` · `emae_ia` |
-| **Fecha** | 2026-07-18 |
 | **Enmienda a** | ADR-0076 (alta del IPI, mismo día) |
 | **Precedentes** | ADR-0045 (no recalibrar anclas cuando el rango bajo es desempeño real) · ADR-0075 (redundancia interna) |
-| **Origen** | Revisión adversarial externa (18-jul-2026) |
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0076 incorporó el IPI manufacturero a la dimensión de actividad con **35%**,
 para resolver que el 11% del índice colgara de un único dato. La revisión
@@ -42,6 +47,10 @@ Es el hallazgo nuevo de esta revisión. Con **las mismas bandas**, un mes
 que la actividad agregada durante todo el período disponible. El IPI al 35% no
 sólo agregaba una segunda lectura: **arrastraba la dimensión hacia abajo de
 forma permanente**, unos 11 puntos.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -87,7 +96,7 @@ debe superar aproximadamente el doble de su peso natural en la economía**
 (17% → 34%). Es el máximo defendible para un componente cuya función es
 respaldo.
 
-## Consecuencias
+### Consecuencias
 
 - Dimensión de actividad **53,5 → 56,8**. **ITCM 61,8 → 62,2**, sin cambio de
   banda.
@@ -113,7 +122,9 @@ respaldo.
 Las tres quedaron corregidas en ADR-0076, en la ficha metodológica pública y en
 los comentarios del código.
 
-## Limitaciones declaradas
+## Más información
+
+### Limitaciones
 
 - El 20% surge de un criterio defendible (no más del doble de la exposición
   natural), no de una optimización. Un criterio distinto daría 15% o 25%; el

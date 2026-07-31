@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0068'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'gestion'
+indicadores: [fal_modernizacion_laboral]
+relacionado: ['0013', '0062']
+modificado_por: ['0098']
+ambito: 'Cinturón gestión · ITCG · `fal_modernizacion_laboral`'
+---
+
 # ADR-0068 — fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón gestión · ITCG · `fal_modernizacion_laboral` |
-| **Fecha** | 2026-07-15 |
-| **Precedentes directos** | ADR-0013/0023 (diseño del compuesto y separación de litigiosidad); método de auditoría de datos crudos de ADR-0062/0065/0066 |
-
-## Contexto
+## Contexto y planteo del problema
 
 Auditoría de la serie pedida por el usuario ("investiguemos los valores de la
 serie / velocidad de crecimiento"). La serie publicada crecía monótona de 0,1
@@ -74,6 +79,10 @@ impreciso — la adopción financiera está diferida por norma); (b) el nombre
 "Fondo de Cese Laboral" de la construcción rige desde 2001, no 1980 (el
 régimen es de 1980; el argumento de contaminación se sostiene igual).
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 1. **Cobertura re-apuntada al régimen vigente**: menciones BO de
@@ -99,7 +108,7 @@ régimen es de 1980; el argumento de contaminación se sostiene igual).
    en la banda inferior (≤5 → 10); el puntaje del indicador apenas se mueve
    y el diseño de anclas (40-60 = adopción masiva) sigue vigente.
 
-## Consecuencias
+### Consecuencias
 
 - El valor publicado pasa de 2,9 a **0,4** y la serie deja de mostrar un
   crecimiento que no existió. La lectura honesta queda expuesta: régimen
@@ -117,3 +126,9 @@ régimen es de 1980; el argumento de contaminación se sostiene igual).
 - Queda pendiente (mejor fuente): serie del MTEySS de convenios homologados
   con cláusula FAL — reemplazaría al proxy de menciones y permitiría anclar
   el pleno en cobertura real de trabajadores.
+
+## Más información
+
+### Precedentes directos
+
+ADR-0013/0023 (diseño del compuesto y separación de litigiosidad); método de auditoría de datos crudos de ADR-0062/0065/0066

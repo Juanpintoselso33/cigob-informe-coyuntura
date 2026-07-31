@@ -1,12 +1,17 @@
+---
+madr: 4
+id: '0035'
+estado: 'aceptado'
+nota_estado: 'Aceptado e implementado — Componente A y Componente B, 2026-07-10'
+fecha: '2026-07-07 (propuesto) · 2026-07-10 (decidido e implementado, misma sesión)'
+cinturon: 'espiritu'
+archivos: ['scripts/vida_cotidiana/collectors/trends.py', 'scripts/espiritu_epoca.py', 'scripts/descargar_series.py', 'data/vida/intencion_migratoria_serie.json', 'data/vida/componente_b_migracion.json', 'data-pipeline.yml']
+ambito: '`scripts/vida_cotidiana/collectors/trends.py` (fetch compartido Componente A) · `scripts/espiritu_epoca.py` · `scripts/descargar_series.py` (Componente A y B) · `data/vida/intencion_migratoria_serie.json` · `data/vida/componente_b_migracion.json` (nuevo) · `data-pipeline.yml` · ficha metodológica'
+---
+
 # ADR-0035 — Índice de intención migratoria: 4º indicador de espíritu_epoca
 
-| | |
-|---|---|
-| **Estado** | Aceptado e implementado — Componente A y Componente B, 2026-07-10 |
-| **Fecha** | 2026-07-07 (propuesto) · 2026-07-10 (decidido e implementado, misma sesión) |
-| **Ámbito** | `scripts/vida_cotidiana/collectors/trends.py` (fetch compartido Componente A) · `scripts/espiritu_epoca.py` · `scripts/descargar_series.py` (Componente A y B) · `data/vida/intencion_migratoria_serie.json` · `data/vida/componente_b_migracion.json` (nuevo) · `data-pipeline.yml` · ficha metodológica |
-
-## Contexto
+## Contexto y planteo del problema
 
 El usuario acercó una guía (`guia_google_trends_indice_emigracion.md`, fuera del repo) para un
 "Componente A — Índice de Expectativa de Futuro" del cinturón espíritu de época: mide intención
@@ -24,7 +29,9 @@ nada, evita rate-limits y doble parseo"):
   automatizado, ADR-0034).
 - `clima_electoral` — ventaja LLA−PJ del Votómetro, leído de política.
 
-## Análisis (esta conversación)
+## Factores de decisión
+
+### Análisis (esta conversación)
 
 **No es redundante con `sentimiento_digital`.** Miden constructos distintos: `sentimiento_digital`
 es ansiedad económica/seguridad del momento (reactivo al ciclo); intención migratoria es un
@@ -57,7 +64,21 @@ siempre contra un "Componente B" de datos duros (fuga real de investigadores CON
 de ciudadanía/visa reales). Coincide con el patrón ya establecido en el proyecto de no confiar
 en un proxy de búsqueda aislado.
 
-## Decisión (2026-07-10)
+## Opciones consideradas
+
+- **Seguir la guía tal cual (proceso manual mensual)**: descartado — contradice ADR-0001 y el
+  patrón ya automatizado de Trends en este mismo repo.
+- **Espejar el patrón dual exacto de `sentimiento_digital`** (card nightly + serie separada):
+  descartado — no resuelve el pedido de evitar llamadas repetidas a Trends para meses ya
+  registrados; la fuente única mensual gateada por frescura cumple el mismo rol con menos
+  exposición a rate-limit.
+- **Sumar Componente B en esta misma iteración**: evaluado inicialmente como fuera de alcance
+  (mezclaría dos fuentes de datos totalmente distintas en un mismo cambio) — revertido ese
+  mismo día a pedido del usuario; ver "Implementación de Componente B" más abajo.
+
+## Decisión
+
+### Decisión (2026-07-10)
 
 1. **Alcance de tandas**: se implementa el Componente A **completo** de la guía — las 5 tandas
    (intención, ciudadanías, trabajo/visas, destinos, diagnóstico de causa) + desglose regional +
@@ -157,7 +178,7 @@ en un proxy de búsqueda aislado.
    `espiritu_epoca.py` y `descargar_series.py` llaman a la misma función: el que corra primero
    esa noche hace el fetch real si hace falta, el otro reutiliza el store ya fresco.
 
-## Consecuencias
+### Consecuencias
 
 - `INDICADORES_ESPERADOS` de `espiritu_epoca.py` pasa a 4 (`icc_utdt`, `sentimiento_digital`,
   `clima_electoral`, `indice_intencion_migratoria`); `calcular_score()` suma una línea
@@ -176,19 +197,9 @@ en un proxy de búsqueda aislado.
   argentina`. Tandas 2-4 (contexto): ciudadanías, trabajo/visas, destinos — ver implementación
   para el detalle exacto de keywords.
 
-## Opciones descartadas
+## Más información
 
-- **Seguir la guía tal cual (proceso manual mensual)**: descartado — contradice ADR-0001 y el
-  patrón ya automatizado de Trends en este mismo repo.
-- **Espejar el patrón dual exacto de `sentimiento_digital`** (card nightly + serie separada):
-  descartado — no resuelve el pedido de evitar llamadas repetidas a Trends para meses ya
-  registrados; la fuente única mensual gateada por frescura cumple el mismo rol con menos
-  exposición a rate-limit.
-- **Sumar Componente B en esta misma iteración**: evaluado inicialmente como fuera de alcance
-  (mezclaría dos fuentes de datos totalmente distintas en un mismo cambio) — revertido ese
-  mismo día a pedido del usuario; ver "Implementación de Componente B" más abajo.
-
-## Implementación de Componente B (2026-07-10, misma sesión)
+### Implementación de Componente B (2026-07-10, misma sesión)
 
 **Qué se guarda y dónde.** Un store nuevo, `data/vida/componente_b_migracion.json`, con las
 6 fuentes evaluadas (5 verificadas + reintento fallido de una 6ª), cada una con su cadencia

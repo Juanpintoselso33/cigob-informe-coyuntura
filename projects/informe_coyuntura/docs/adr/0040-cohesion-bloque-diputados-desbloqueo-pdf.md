@@ -1,12 +1,17 @@
+---
+madr: 4
+id: '0040'
+estado: 'aceptado'
+fecha: 2026-07-09
+cinturon: 'politica'
+indicadores: [fetch_cohesion_bloque_diputados_actas_anio, fetch_cohesion_bloque]
+archivos: ['scripts/politica.py', _parsear_acta_diputados_pdf, _diputados_acta_fecha, _diputados_acta_pdf, _diputados_acta_id_maximo, _descubrir_actas_diputados_pdf, 'tests/test_politica_cohesion.py', 'tests/fixtures/acta_diputados_5959.pdf']
+ambito: '`scripts/politica.py` (`_parsear_acta_diputados_pdf`, `_diputados_acta_fecha`, `_diputados_acta_pdf`, `_diputados_acta_id_maximo`, `_descubrir_actas_diputados_pdf`, `fetch_cohesion_bloque_diputados_actas_anio`, `fetch_cohesion_bloque` reescrito) · `tests/test_politica_cohesion.py` · `tests/fixtures/acta_diputados_5959.pdf`'
+---
+
 # ADR-0040 — cohesion_bloque (Diputados): desbloqueado vía endpoint PDF directo, sin evadir el anti-bot de la SPA
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-09 |
-| **Ámbito** | `scripts/politica.py` (`_parsear_acta_diputados_pdf`, `_diputados_acta_fecha`, `_diputados_acta_pdf`, `_diputados_acta_id_maximo`, `_descubrir_actas_diputados_pdf`, `fetch_cohesion_bloque_diputados_actas_anio`, `fetch_cohesion_bloque` reescrito) · `tests/test_politica_cohesion.py` · `tests/fixtures/acta_diputados_5959.pdf` |
-
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0037 (2026-07-07) documentó que `cohesion_bloque` (Diputados) tiene el
 scraper implementado y correcto pero **bloqueado en producción**: la SPA de
@@ -24,21 +29,18 @@ protección: HTTP 200 directo, sin JavaScript, sin bloqueo, con una petición
 GET común. Es una ruta de acceso pública y legítima del mismo sitio, no un
 bypass — el hallazgo fue "hay otra puerta", no "cómo forzar esta puerta".
 
-## Verificación en vivo (2026-07-09, antes de escribir código)
+## Opciones consideradas
 
-- `GET /pdf/acta/5959` → 200, `application/pdf`, 96KB. Confirmado con
-  `curl` simple (sin sesión especial, sin headers de evasión) y con varios
-  ids más (5900, 5955-5959) — ninguno bloqueado.
-- El PDF trae la tabla nominal completa: apellido y nombre, bloque
-  político, distrito, voto — mismo contenido que la SPA bloqueada.
-- Los ids son un contador GLOBAL secuencial correlacionado con fecha
-  (verificado: ids 5955-5959 = 5 votaciones de la sesión del 24-jun-2026;
-  id 5900 = 08-abr-2026; ids >5959 dan 404 porque no hay sesión desde
-  entonces). No hay un listado público id↔fecha para este endpoint.
-- Señal pasiva de que la SPA en sí sigue bloqueada (no se re-probó
-  activamente): el scraper de terceros Como_voto, que depende de esa SPA,
-  sigue exactamente igual de congelado que en la fecha del ADR-0037 (último
-  commit a `diputados.json`: 2026-05-21, sin cambios desde entonces).
+- **Evadir el anti-bot de la SPA** (proxies, fingerprint, CAPTCHA) —
+  rechazada explícitamente, dos veces, en esta sesión. No es lo que hace
+  este ADR.
+- **Reusar el listado `_descubrir_actas` (SPA) solo para ids, y el PDF solo
+  para contenido** — descartada: la SPA sigue devolviendo el shell sin JS,
+  no expone ningún id ahí tampoco.
+- **Buscar un listado id↔fecha en otro endpoint del mismo dominio** — no
+  investigado a fondo por tiempo; si existe, simplificaría
+  `_descubrir_actas_diputados_pdf` (hoy paga una descarga completa por
+  fecha). Queda anotado como mejora futura, no bloqueante.
 
 ## Decisión
 
@@ -75,20 +77,7 @@ Las funciones viejas basadas en la SPA (`_descubrir_actas`, `_url_acta`,
 `_parsear_acta`) quedan en el código, sin borrar, marcadas como dormidas —
 `_parsear_acta` sigue viva de todos modos porque Senado la usa.
 
-## Opciones consideradas
-
-- **Evadir el anti-bot de la SPA** (proxies, fingerprint, CAPTCHA) —
-  rechazada explícitamente, dos veces, en esta sesión. No es lo que hace
-  este ADR.
-- **Reusar el listado `_descubrir_actas` (SPA) solo para ids, y el PDF solo
-  para contenido** — descartada: la SPA sigue devolviendo el shell sin JS,
-  no expone ningún id ahí tampoco.
-- **Buscar un listado id↔fecha en otro endpoint del mismo dominio** — no
-  investigado a fondo por tiempo; si existe, simplificaría
-  `_descubrir_actas_diputados_pdf` (hoy paga una descarga completa por
-  fecha). Queda anotado como mejora futura, no bloqueante.
-
-## Consecuencias
+### Consecuencias
 
 - `cohesion_bloque` deja de estar en None permanente y vuelve a pesar de
   verdad en la dimensión "cohesión interna" del ITCP (65% de esa dimensión,
@@ -122,3 +111,21 @@ Las funciones viejas basadas en la SPA (`_descubrir_actas`, `_url_acta`,
   `_url_acta`/`_parsear_acta` (SPA, dormidas) quedan como referencia de lo
   ya investigado, y el ADR-0037 sigue documentando por qué ese camino
   estaba bloqueado.
+
+## Más información
+
+### Verificación en vivo (2026-07-09, antes de escribir código)
+
+- `GET /pdf/acta/5959` → 200, `application/pdf`, 96KB. Confirmado con
+  `curl` simple (sin sesión especial, sin headers de evasión) y con varios
+  ids más (5900, 5955-5959) — ninguno bloqueado.
+- El PDF trae la tabla nominal completa: apellido y nombre, bloque
+  político, distrito, voto — mismo contenido que la SPA bloqueada.
+- Los ids son un contador GLOBAL secuencial correlacionado con fecha
+  (verificado: ids 5955-5959 = 5 votaciones de la sesión del 24-jun-2026;
+  id 5900 = 08-abr-2026; ids >5959 dan 404 porque no hay sesión desde
+  entonces). No hay un listado público id↔fecha para este endpoint.
+- Señal pasiva de que la SPA en sí sigue bloqueada (no se re-probó
+  activamente): el scraper de terceros Como_voto, que depende de esa SPA,
+  sigue exactamente igual de congelado que en la fecha del ADR-0037 (último
+  commit a `diputados.json`: 2026-05-21, sin cambios desde entonces).

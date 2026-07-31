@@ -1,14 +1,20 @@
+---
+madr: 4
+id: '0048'
+estado: 'aceptado'
+fecha: 2026-07-10
+cinturon: 'politica'
+archivos: ['scripts/itcp.py', 'scripts/politica.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'scripts/publicar.py', 'scripts/gate_calidad.py', 'web/src/lib/*', 'tests/*']
+relacionado: ['0064']
+ambito: '`scripts/itcp.py` · `scripts/politica.py` · `scripts/descargar_series.py` · `scripts/validacion_externa.py` · `scripts/publicar.py` · `scripts/gate_calidad.py` · `web/src/lib/*` · `tests/*`'
+---
+
 # ADR-0048 — Revisión editorial del cinturón política: rotación y protestas a contexto, cohesión fusionada en un compuesto bicameral
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-10 |
-| **Ámbito** | `scripts/itcp.py` · `scripts/politica.py` · `scripts/descargar_series.py` · `scripts/validacion_externa.py` · `scripts/publicar.py` · `scripts/gate_calidad.py` · `web/src/lib/*` · `tests/*` |
 | **Precedente directo** | ADR-0036 (paramétrica ITCP), ADR-0046 (`derrotas_legislativas`), ADR-0047 (`rotacion_gabinete`), ADR-0039/0041/0042 (series y bandas de cohesión por cámara) |
 | **Fuente** | Documento de revisión CIGOB "260710 REVISIÓN CINTURÓN POLITICA.docx" |
 
-## Contexto
+## Contexto y planteo del problema
 
 El 2026-07-10 el revisor de CIGOB entregó la primera revisión editorial del
 cinturón política ya implementado. Redefine el alcance del índice: *"mide la
@@ -32,6 +38,26 @@ No menciona 4 indicadores que sí puntúan (`votometro_ventaja_lla`,
 `ratio_dnu`, `movilizacion_cepa`, `iaf_transferencias`). Consultado, el editor
 confirmó que la lista **no es exhaustiva** — los no mencionados se mantienen.
 Esta es la **lectura mínima** de la revisión: solo se implementa lo explícito.
+
+## Opciones consideradas
+
+- **Lectura amplia de la revisión** (volar también conflicto social e
+  imagen/voto, que no encajan en el encuadre parlamentario del revisor):
+  descartada por confirmación del editor — su lista no era exhaustiva; los 4
+  indicadores no mencionados se mantienen.
+- **Borrar los colectores/series de rotación y protestas**: descartado — la
+  revisión dice "no pertinente EN ESTE CINTURÓN", no "no medirlo". El costo
+  de mantenerlos es cero (protestas ya corre para gestión; rotación es un
+  registro curado) y la card de contexto conserva la lectura complementaria.
+- **Clave nueva para el compuesto** (`cohesion_bloque_lla`): descartado — el
+  precedente de ADR-0036 ya redefinió `cohesion_bloque` conservando la clave
+  (manual→Rice), el guard `_es_cohesion_legado` cubre la migración de cache,
+  y la clave nueva duplicaba churn en labels/fichas/series sin ganancia. La
+  serie del CSV se regenera completa con la fórmula compuesta, así que
+  card↔serie quedan consistentes (G3).
+- **Promediar las dos cámaras 50/50 dentro del compuesto**: descartado — el
+  65/35 preserva la ponderación relativa vigente y aprobada; un 50/50 habría
+  sido un cambio de pesos encubierto además de la fusión.
 
 ## Decisión
 
@@ -91,27 +117,7 @@ tienen ficha — precedente badlar).
 **11 indicadores puntúan; 2 quedan como seguimiento interno no publicado**
 (antes: 14 puntuaban y se publicaban).
 
-## Opciones descartadas
-
-- **Lectura amplia de la revisión** (volar también conflicto social e
-  imagen/voto, que no encajan en el encuadre parlamentario del revisor):
-  descartada por confirmación del editor — su lista no era exhaustiva; los 4
-  indicadores no mencionados se mantienen.
-- **Borrar los colectores/series de rotación y protestas**: descartado — la
-  revisión dice "no pertinente EN ESTE CINTURÓN", no "no medirlo". El costo
-  de mantenerlos es cero (protestas ya corre para gestión; rotación es un
-  registro curado) y la card de contexto conserva la lectura complementaria.
-- **Clave nueva para el compuesto** (`cohesion_bloque_lla`): descartado — el
-  precedente de ADR-0036 ya redefinió `cohesion_bloque` conservando la clave
-  (manual→Rice), el guard `_es_cohesion_legado` cubre la migración de cache,
-  y la clave nueva duplicaba churn en labels/fichas/series sin ganancia. La
-  serie del CSV se regenera completa con la fórmula compuesta, así que
-  card↔serie quedan consistentes (G3).
-- **Promediar las dos cámaras 50/50 dentro del compuesto**: descartado — el
-  65/35 preserva la ponderación relativa vigente y aprobada; un 50/50 habría
-  sido un cambio de pesos encubierto además de la fusión.
-
-## Consecuencias
+### Consecuencias
 
 - **El ITCP sube**: salen del scoring dos indicadores que puntuaban 10/100
   (rotación en crisis abierta con 7 salidas 12m; protestas +25,4% vs 2023) y

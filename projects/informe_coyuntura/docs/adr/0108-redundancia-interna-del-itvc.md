@@ -1,14 +1,20 @@
+---
+madr: 4
+id: '0108'
+estado: 'aceptado'
+fecha: 2026-07-20
+cinturon: 'vida'
+archivos: ['validacion_externa.matriz_redundancia_itvc', '_EscalaIdentidad']
+extiende: ['0085']
+ambito: 'ITVC · card pública "Consistencia interna" · `validacion_externa.matriz_redundancia_itvc` · `_EscalaIdentidad` (nuevo)'
+origen: 'Auditoría de Vida Cotidiana, puntos 3.7 y 5 (prioridad media)'
+---
+
 # ADR-0108 — La redundancia interna se mide también en el ITVC
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | ITVC · card pública "Consistencia interna" · `validacion_externa.matriz_redundancia_itvc` · `_EscalaIdentidad` (nuevo) |
-| **Fecha** | 2026-07-20 |
-| **Origen** | Auditoría de Vida Cotidiana, puntos 3.7 y 5 (prioridad media) |
 | **Extiende** | ADR-0085 (la matriz, generalizada a ITCM/ITCG/ITCP) |
 
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría pidió dos validaciones empíricas concretas:
 
@@ -20,7 +26,25 @@ La auditoría pidió dos validaciones empíricas concretas:
 Y lo mismo para `consumo_carne`. La medición que responde eso ya existía desde
 ADR-0085 para los otros tres índices; faltaba el ITVC.
 
-## Cómo entra un índice sin bandas
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Más información
+
+### Limitaciones
+
+Los componentes entran **winsorizados** al techo de ADR-0033, igual que en el
+índice publicado. Un componente clavado en el techo pierde varianza, y sin
+varianza la correlación queda subestimada. Hoy `endeudamiento_familiar` está en
+el techo **19 de 31 meses**, de modo que sus correlaciones —incluida la única
+que sobrevive— son un piso, no una medición limpia.
+
+Esto conecta con el hallazgo 3.1 de la auditoría, todavía abierto: la saturación
+de escala no sólo aplana la lectura pública, también degrada las mediciones de
+robustez que se hacen sobre ella.
+
+### Cómo entra un índice sin bandas
 
 Los otros tres convierten un valor crudo en puntaje 0-100 y correlacionan ese
 puntaje, porque es el número que se promedia. El ITVC no tiene bandas: sus
@@ -37,7 +61,7 @@ ahora comparten la reconstrucción de la serie y la matriz — mismo motivo que
 `_valores_itcm_por_mes`: si cada una armara los suyos, con el tiempo la matriz
 mediría una composición distinta de la publicada y nadie lo notaría.
 
-## Lo que respondió
+### Lo que respondió
 
 **La hipótesis de la auditoría no se confirma.**
 
@@ -57,7 +81,7 @@ dato— el punto 3.4 de la misma auditoría, que propone reubicar motos y carne
 fuera de "Confianza y seguridad" porque miden consumo y poder de compra. La
 decisión de taxonomía sigue siendo editorial; ahora tiene evidencia.
 
-## La lectura que importa es la de diferencias
+### La lectura que importa es la de diferencias
 
 En niveles el ITVC muestra **12 pares sobre el umbral de 91**; en cambios mes a
 mes, **ninguno**, con el |r| medio cayendo de 0,369 a 0,194. Es la lección de
@@ -75,15 +99,3 @@ común. Los casos más extremos:
 dimensiones distintas —Sostenibilidad de ingresos (22,75% efectivo) y
 Vulnerabilidad financiera (5%)— y la auditoría no lo señaló. Es el par que
 conviene seguir, no los de motos.
-
-## Limitación declarada
-
-Los componentes entran **winsorizados** al techo de ADR-0033, igual que en el
-índice publicado. Un componente clavado en el techo pierde varianza, y sin
-varianza la correlación queda subestimada. Hoy `endeudamiento_familiar` está en
-el techo **19 de 31 meses**, de modo que sus correlaciones —incluida la única
-que sobrevive— son un piso, no una medición limpia.
-
-Esto conecta con el hallazgo 3.1 de la auditoría, todavía abierto: la saturación
-de escala no sólo aplana la lectura pública, también degrada las mediciones de
-robustez que se hacen sobre ella.

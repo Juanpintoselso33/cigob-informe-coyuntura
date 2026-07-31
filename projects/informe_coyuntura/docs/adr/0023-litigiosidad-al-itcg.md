@@ -1,10 +1,17 @@
+---
+madr: 4
+id: '0023'
+estado: 'aceptado'
+nota_estado: 'aceptada (decisión del editor: revisar si los contextos de'
+fecha: 2026-07-03
+cinturon: 'gestion'
+---
+
 # ADR-0023 — Litigiosidad SRT al ITCG; protestas y alertas siguen de contexto
 
-- **Fecha:** 2026-07-03
-- **Estado:** aceptada (decisión del editor: revisar si los contextos de
-  gestión merecían entrar al índice, espejo del ADR-0022 en macro)
+gestión merecían entrar al índice, espejo del ADR-0022 en macro)
 
-## Contexto
+## Contexto y planteo del problema
 
 Gestión publicaba 3 indicadores de contexto. A diferencia de macro (donde los
 4 eran insumos de componentes ya puntuados), acá cada uno tenía una razón
@@ -26,6 +33,10 @@ distinta — y una sola sobrevivió al análisis:
    jul-2026, sin baseline 2023: no hay nada que bandear. Es el candidato a
    automatizar protocolo_antipiquetes cuando madure (ADR-0014).
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 **litigiosidad_laboral entra a la dimensión reforma laboral con 30%**
@@ -35,7 +46,7 @@ Caída sostenida de juicios = canal judicial desactivándose. Como proxy usa
 los juicios ART (única serie nacional mensual pública), no el canal
 indemnizatorio de despidos que el Fondo reemplaza — la ficha lo declara.
 
-## Consecuencias
+### Consecuencias
 
 - Estado 2026-07-03: litigiosidad +3,6% → 57,8 interpolado. Dimensión laboral
   10,0 → **24,3** (el 10 del Fondo de Cese ya no monopoliza la dimensión:

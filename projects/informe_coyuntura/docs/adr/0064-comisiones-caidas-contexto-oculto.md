@@ -1,13 +1,19 @@
+---
+madr: 4
+id: '0064'
+estado: 'aceptado'
+fecha: 2026-07-15
+cinturon: 'politica'
+indicadores: [poder_legislativo]
+parametros: ['INDICADORES_CONTEXTO']
+archivos: ['publicar.py']
+relacionado: ['0045', '0048', '0062']
+ambito: 'Cinturón política · ITCP · dimensión `poder_legislativo` · `publicar.py` (oculto vía `INDICADORES_CONTEXTO`)'
+---
+
 # ADR-0064 — comisiones_caidas sale del ITCP a seguimiento interno (fuente ciega a las sanciones del Senado)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón política · ITCP · dimensión `poder_legislativo` · `publicar.py` (oculto vía `INDICADORES_CONTEXTO`) |
-| **Fecha** | 2026-07-15 |
-| **Precedentes directos** | ADR-0062 (documentó el defecto de la fuente y dejó este indicador flaggeado) · ADR-0048/0051/0052 (patrón de contexto oculto) · ADR-0045 (su recalibración, ahora entendida como compensación de un numerador roto) |
-
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0062 demostró que el dataset `movimientos-de-proyectos` de HCDN solo
 registra la vida del expediente **en Diputados**: una sanción definitiva que
@@ -28,6 +34,11 @@ arrastraba dos debilidades ya documentadas:
   ADR-0061/0062/0063 mide el embudo proyecto→ley con fuente correcta
   (leyes-sancionadas) y cohorte madura.
 
+## Opciones consideradas
+
+- Repararlo (sanción vía leyes-sancionadas, como eficacia)
+- Dejarlo puntuando hasta la próxima revisión editorial
+
 ## Decisión
 
 1. `comisiones_caidas` pasa a `itcp.INDICADORES_CONTEXTO` → deja de puntuar
@@ -46,7 +57,20 @@ arrastraba dos debilidades ya documentadas:
    histórica no incluye contexto) y su ficha se retira de la web (patrón de
    los ocultos: sin ficha; labels y descripciones internas se conservan).
 
-## Opciones consideradas
+### Consecuencias
+
+- El ITCP queda con **10 indicadores puntuables** y 4 de contexto oculto
+  (`rotacion_gabinete`, `protestas_caba`, `movilizacion_cepa`,
+  `comisiones_caidas`).
+- `poder_legislativo` queda 25/30/20/25 (ratio_dnu/eficacia/veto_quorum/
+  derrotas).
+- El ITCP y su reconstrucción histórica se regeneran en la corrida scoped;
+  el efecto directo es quitar un componente que aportaba puntajes medios
+  (~55-60 interpolado) con 6% del índice.
+- Pendiente declarado: mostrar el cambio al editor CIGOB en la próxima
+  revisión editorial del cinturón (mismo compromiso que ADR-0052).
+
+## Pros y contras de las opciones
 
 ### Repararlo (sanción vía leyes-sancionadas, como eficacia)
 
@@ -62,15 +86,8 @@ Descartada: publicar un indicador cuyo numerador se sabe roto (mismo
 defecto demostrado en ADR-0062) contradice la regla de no sentarse sobre
 métricas sabidas defectuosas antes del lanzamiento (precedente ADR-0045).
 
-## Consecuencias
+## Más información
 
-- El ITCP queda con **10 indicadores puntuables** y 4 de contexto oculto
-  (`rotacion_gabinete`, `protestas_caba`, `movilizacion_cepa`,
-  `comisiones_caidas`).
-- `poder_legislativo` queda 25/30/20/25 (ratio_dnu/eficacia/veto_quorum/
-  derrotas).
-- El ITCP y su reconstrucción histórica se regeneran en la corrida scoped;
-  el efecto directo es quitar un componente que aportaba puntajes medios
-  (~55-60 interpolado) con 6% del índice.
-- Pendiente declarado: mostrar el cambio al editor CIGOB en la próxima
-  revisión editorial del cinturón (mismo compromiso que ADR-0052).
+### Precedentes directos
+
+ADR-0062 (documentó el defecto de la fuente y dejó este indicador flaggeado) · ADR-0048/0051/0052 (patrón de contexto oculto) · ADR-0045 (su recalibración, ahora entendida como compensación de un numerador roto)

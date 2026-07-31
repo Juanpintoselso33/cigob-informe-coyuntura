@@ -1,15 +1,20 @@
+---
+madr: 4
+id: '0076'
+estado: 'aceptado'
+fecha: 2026-07-18
+cinturon: 'macro'
+indicadores: [ipi_manufacturero, emae_ia]
+relacionado: ['0021', '0029']
+ambito: 'Cinturón macro · ITCM · dimensión Actividad económica · `ipi_manufacturero` (nuevo) · `emae_ia`'
+origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 3'
+---
+
 # ADR-0076 — La dimensión de actividad deja de colgar de un único dato
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Ámbito** | Cinturón macro · ITCM · dimensión Actividad económica · `ipi_manufacturero` (nuevo) · `emae_ia` |
-| **Fecha** | 2026-07-18 |
-| **Precedentes directos** | ADR-0029 (promedio móvil contra el ruido del interanual de un mes suelto) · ADR-0021 (puntaje interpolado) |
-| **Origen** | Auditoría de consistencia del cinturón macro (17-jul-2026), sección III · dimensión 3 |
 | **Enmendado por** | ADR-0079 (18-jul-2026): peso 35% → 20% y corrección de tres afirmaciones de este documento |
 
-## Contexto
+## Contexto y planteo del problema
 
 La dimensión de actividad pesaba 11% del ITCM y tenía **un solo componente**,
 el EMAE, con peso 1,0. La auditoría lo marcó como riesgo de fuente única
@@ -61,6 +66,10 @@ hubiera un segundo indicador que la resolviera.
   IAI, pero el caché tiene **un solo mes** (may-2026). Sin historia, no puede
   puntuar ni reconstruirse hacia atrás. Vuelve a ser candidato cuando el cron
   acumule suficientes meses.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -125,7 +134,7 @@ importancia del componente, que es un criterio inválido y así lo señaló la
 auditoría externa. El reparto vigente (80/20) está en ADR-0079, fundado en la
 exposición sectorial resultante.
 
-## Consecuencias
+### Consecuencias
 
 - **Baja el rezago de la dimensión, aunque menos de lo que decía la versión
   original de este ADR.** El IPI se publica hacia mediados del mes siguiente: al
@@ -159,7 +168,13 @@ reparto original.
 > es un argumento en contra, y así se pondera en ADR-0079 —junto a los demás, no
 > como criterio único.
 
-## Limitaciones declaradas
+## Más información
+
+### Precedentes directos
+
+ADR-0029 (promedio móvil contra el ruido del interanual de un mes suelto) · ADR-0021 (puntaje interpolado)
+
+### Limitaciones
 
 - El IPI mide sólo la industria manufacturera: acompaña al EMAE, no lo
   reemplaza.

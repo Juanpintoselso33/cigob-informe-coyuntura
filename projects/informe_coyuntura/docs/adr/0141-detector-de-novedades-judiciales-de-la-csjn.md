@@ -1,12 +1,18 @@
+---
+madr: 4
+id: '0141'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+ambito: 'cinturón político (ITCP), bloque judicial — herramienta interna'
+---
+
 # ADR-0141 — Detector de novedades judiciales de la CSJN
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP), bloque judicial — herramienta interna
 - **Relacionados**: ADR-0140 (mapa de acceso), ADR-0129 (mismo patrón,
   privatizaciones), ADR-0131 (protocolo de codificación)
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0140 dejó establecido que el modelo de datos de la CSJN contiene lo que los
 indicadores judiciales necesitan, que el buscador completo está detrás de CAPTCHA
@@ -15,6 +21,10 @@ fuero, fecha, materia y los booleanos `inconstitucional` y `sentenciaArbitraria`
 
 Ese endpoint **topea en 10 registros por consulta y no pagina**. No sirve para
 contar. Sirve para no perderse un fallo.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -43,30 +53,7 @@ endpoint.
 Corre al final de `politica.py`, **envuelto en `try`**: si la CSJN no responde,
 lo que se pierde es un aviso, no un dato del índice.
 
-## Lo que este ADR explícitamente NO hace
-
-- **No crea un indicador ni una serie, y no puede.** Con 10 registros por
-  consulta cualquier conteo estaría mal. Hay un test dedicado
-  (`test_no_alimenta_ningun_indice`) que además verifica que `csjn_novedades` no
-  aparezca en `itcp.py`, para que nadie lo conecte al índice por descuido más
-  adelante.
-- **No clasifica.** Marcar «el Estado es parte» no dice si el fallo frenó una
-  política, ni a favor de quién. Eso es lectura, y ADR-0131 fijó cómo hacerla
-  (reglas escritas, doble codificación, kappa ≥ 0,70).
-- **No resuelve CAPTCHAs** ni busca rodeos al buscador completo.
-
-## Primera corrida
-
-40 registros vistos sobre los cuatro términos, 33 fallos únicos, **17 marcados**:
-7 en CAF (Contencioso Administrativo Federal), 2 en CSJ, el resto repartido entre
-fueros federales del interior. **Dos declaran inconstitucionalidad**, uno de
-ellos «TORRES ABAD, CARMEN c/ EN-JGM s/HABEAS DATA» — exactamente el fenómeno que
-el aporte externo llamó *veto de constitucionalidad*.
-
-El filtro discrimina: no marcó «G. B., R. c/ OSDE s/AMPARO DE SALUD», que es un
-amparo entre privados.
-
-## Consecuencias
+### Consecuencias
 
 - `data/politica/csjn_novedades.json` entra al `git add` de
   `data-pipeline.yml` **en este mismo cambio**, con un test que lo verifica
@@ -79,3 +66,28 @@ amparo entre privados.
   arranca de cero.
 - Seis tests nuevos en `tests/test_politica_csjn_detector.py`, todos con sesión
   falsa: no tocan la red.
+
+## Más información
+
+### Lo que este ADR explícitamente NO hace
+
+- **No crea un indicador ni una serie, y no puede.** Con 10 registros por
+  consulta cualquier conteo estaría mal. Hay un test dedicado
+  (`test_no_alimenta_ningun_indice`) que además verifica que `csjn_novedades` no
+  aparezca en `itcp.py`, para que nadie lo conecte al índice por descuido más
+  adelante.
+- **No clasifica.** Marcar «el Estado es parte» no dice si el fallo frenó una
+  política, ni a favor de quién. Eso es lectura, y ADR-0131 fijó cómo hacerla
+  (reglas escritas, doble codificación, kappa ≥ 0,70).
+- **No resuelve CAPTCHAs** ni busca rodeos al buscador completo.
+
+### Primera corrida
+
+40 registros vistos sobre los cuatro términos, 33 fallos únicos, **17 marcados**:
+7 en CAF (Contencioso Administrativo Federal), 2 en CSJ, el resto repartido entre
+fueros federales del interior. **Dos declaran inconstitucionalidad**, uno de
+ellos «TORRES ABAD, CARMEN c/ EN-JGM s/HABEAS DATA» — exactamente el fenómeno que
+el aporte externo llamó *veto de constitucionalidad*.
+
+El filtro discrimina: no marcó «G. B., R. c/ OSDE s/AMPARO DE SALUD», que es un
+amparo entre privados.

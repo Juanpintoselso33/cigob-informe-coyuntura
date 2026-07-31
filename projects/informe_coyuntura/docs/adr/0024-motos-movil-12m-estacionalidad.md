@@ -1,9 +1,13 @@
+---
+madr: 4
+id: '0024'
+estado: 'aceptado'
+fecha: 2026-07-03
+---
+
 # ADR-0024 — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
 
-- **Fecha:** 2026-07-03
-- **Estado:** aceptada
-
-## Contexto
+## Contexto y planteo del problema
 
 Pregunta del editor: ¿hay series que habría que desestacionalizar? La
 auditoría concluyó que el diseño ya cubre la estacionalidad **por
@@ -26,6 +30,10 @@ Exposiciones menores aceptadas (no se tocan): pluriempleo/informalidad (EPH
 trimestral vs base fija — sesgo chico), brecha salario/CBT y alimentos (leve
 estacionalidad de la canasta; el doc diseñó estos componentes en niveles).
 
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
 ## Decisión
 
 El componente motos del ITVC se rebasea por **acumulado móvil de 12 meses**:
@@ -38,7 +46,7 @@ rebase simple y luego al baseline documentado (cadena de fallbacks
 existente). La card del indicador sigue mostrando el flujo mensual crudo
 (el dato real); solo cambia la transformación con que entra al índice.
 
-## Consecuencias
+### Consecuencias
 
 - Estado 2026-07-03: motos 175,9 → **166,7** · dimensión confianza 105,3 →
   104,4 · **ITVC 92,1 → 92,0** (tensión 6,6 sin cambio). El componente deja

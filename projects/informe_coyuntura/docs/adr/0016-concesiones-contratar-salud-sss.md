@@ -1,12 +1,16 @@
+---
+madr: 4
+id: '0016'
+estado: 'aceptado'
+fecha: 2026-07-02
+cinturon: 'gestion'
+archivos: ['scripts/gestion.py', 'scripts/descargar_series.py']
+ambito: '`scripts/gestion.py` · `scripts/descargar_series.py` · web'
+---
+
 # ADR-0016 — Concesiones vía CONTRAT.AR + opción en salud vía padrones SSS (últimos manuales automatizados)
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-02 |
-| **Ámbito** | `scripts/gestion.py` · `scripts/descargar_series.py` · web |
-
-## Contexto
+## Contexto y planteo del problema
 
 Tras los ADR-0013/0014/0015 quedaban tres indicadores manuales en gestión:
 `concesiones_infraestructura` (35% estimado), `libertad_opcion_salud` (40%
@@ -14,7 +18,13 @@ estimado, SSS bloqueada desde may-2026) y `protocolo_antipiquetes`. Se
 verificó con llamadas reales qué fuentes existen hoy para los dos primeros
 (el tercero ya tiene su reemplazo acumulándose, ADR-0014).
 
-## Decisión 1 — Concesiones: tasa de adjudicación en KM desde CONTRAT.AR
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+### Decisión 1 — Concesiones: tasa de adjudicación en KM desde CONTRAT.AR
 
 La Red Federal de Concesiones se licita por **CONTRAT.AR** (UOC 504,
 Subsecretaría de Gestión Administrativa de Infraestructura, MEC) y su
@@ -39,7 +49,7 @@ oficial de la RFC en argentina.gob.ar.
   obra pública; la búsqueda del Boletín Oficial bloquea la automatización
   (302 a /error/show).
 
-## Decisión 2 — Opción en salud: derivación directa desde los padrones SSS
+### Decisión 2 — Opción en salud: derivación directa desde los padrones SSS
 
 **Hallazgo nuevo (no existía o no se encontró en may-2026):** la SSS publica
 en `argentina.gob.ar/sssalud/estadisticas` XLSX con **URL estable por año**,
@@ -62,7 +72,20 @@ directo, sin triangulación** por obra social.
   (fingerprinting back-end) y el padrón CKAN (congelado en 2019). Ya no
   hacen falta.
 
-## Complementos de la misma tanda
+### Consecuencias
+
+- Gestión queda con **15 colectores automáticos de 16 indicadores**; el único
+  manual es `protocolo_antipiquetes` (su reemplazo se acumula solo,
+  ADR-0014). El día empezó con 6 de 12.
+- Continuidad de score: ambos indicadores caen en la misma banda que sus
+  estimaciones manuales (ITCG sin salto por cambio de medición).
+- **Riesgos**: CONTRAT.AR es ASP.NET WebForms (rediseño rompería el POST);
+  la página RFC ya mudó de URL una vez; los XLSX de la SSS podrían cambiar
+  de layout. Todos caen al fallback manual visible como "Carga manual".
+
+## Más información
+
+### Complementos de la misma tanda
 
 - **Serie mensual real del TDPS** (`descargar_series.fetch_tdps_serie`, API
   Presupuesto Abierto): 39 puntos 2023→2026 (Potenciar ~95-99% → sucesores
@@ -73,14 +96,3 @@ directo, sin triangulación** por obra social.
   apertura_comercial, asistencia_directa, fal_modernizacion_laboral,
   privatizaciones, concesiones, libertad_opcion_salud) — mezclaban la
   métrica vieja con la nueva en el mismo gráfico.
-
-## Consecuencias
-
-- Gestión queda con **15 colectores automáticos de 16 indicadores**; el único
-  manual es `protocolo_antipiquetes` (su reemplazo se acumula solo,
-  ADR-0014). El día empezó con 6 de 12.
-- Continuidad de score: ambos indicadores caen en la misma banda que sus
-  estimaciones manuales (ITCG sin salto por cambio de medición).
-- **Riesgos**: CONTRAT.AR es ASP.NET WebForms (rediseño rompería el POST);
-  la página RFC ya mudó de URL una vez; los XLSX de la SSS podrían cambiar
-  de layout. Todos caen al fallback manual visible como "Carga manual".

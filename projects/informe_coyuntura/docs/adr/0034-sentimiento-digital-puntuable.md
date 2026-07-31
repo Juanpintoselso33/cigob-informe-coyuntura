@@ -1,32 +1,27 @@
+---
+madr: 4
+id: '0034'
+estado: 'aceptado'
+fecha: 2026-07-04
+cinturon: 'vida'
+indicadores: [sentimiento_digital]
+ambito: '`sentimiento_digital` (10% de Confianza = 1,5% del ITVC) + pesos internos de Confianza'
+---
+
 # ADR-0034 — Sentimiento digital: de contexto a componente del ITVC
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-04 |
-| **Ámbito** | `sentimiento_digital` (10% de Confianza = 1,5% del ITVC) + pesos internos de Confianza |
 | **Disparador** | El editor pidió probar alternativas empíricamente ("a ver si alguna funciona") |
 
-## Contexto
+## Contexto y planteo del problema
 
 `sentimiento_digital` (interés de búsqueda en Google sobre inflación, precios,
 inseguridad y trabajo) era contexto: la escala de Trends es relativa a la
 ventana consultada y se renormaliza en cada corrida, lo que parecía impedir
 un B100 contra el 4T-2023.
 
-## El banco de pruebas (04-jul-2026)
+## Opciones consideradas
 
-| Variante | B100 | Estabilidad | r vs IPC m/m |
-|---|---|---|---|
-| pytrends ventana fija oct-23→hoy (semanal→mensual) | 143,9 | 3 corridas idénticas (amplitud 0,0) | — |
-| **pytrends 2021→hoy (mensual nativo)** | 138,1 | ✓ | **+0,76** |
-| Wikipedia pageviews (conteos absolutos) | 573 | perfecta | +0,62 |
-
-**El cociente intra-consulta cancela la renormalización**: base y valor
-actual salen de la MISMA respuesta, así que el B100 no depende de la escala.
-Verificado empíricamente (amplitud 0,0 entre corridas). Wikipedia quedó
-descartada: las visitas a "Inflación en Argentina" colapsaron 6× desde el
-pánico de dic-2023 — detector de eventos, no índice.
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -45,7 +40,30 @@ pánico de dic-2023 — detector de eventos, no índice.
    espíritu de época (que comparte el indicador) no se toca: su barrido lo
    revisará.
 
-## Validez y límites declarados
+### Consecuencias
+
+- ITVC 90,5 → **90,7** · Confianza 102,1 → 103,8 · 13/13 indicadores puntúan
+  (cero contexto en vida).
+- Bonus del mismo push: verdes/rojos con polaridad en las series de vida que
+  cruzan el cero (IPI m/m, endeudamiento) — paridad visual con macro.
+
+## Más información
+
+### El banco de pruebas (04-jul-2026)
+
+| Variante | B100 | Estabilidad | r vs IPC m/m |
+|---|---|---|---|
+| pytrends ventana fija oct-23→hoy (semanal→mensual) | 143,9 | 3 corridas idénticas (amplitud 0,0) | — |
+| **pytrends 2021→hoy (mensual nativo)** | 138,1 | ✓ | **+0,76** |
+| Wikipedia pageviews (conteos absolutos) | 573 | perfecta | +0,62 |
+
+**El cociente intra-consulta cancela la renormalización**: base y valor
+actual salen de la MISMA respuesta, así que el B100 no depende de la escala.
+Verificado empíricamente (amplitud 0,0 entre corridas). Wikipedia quedó
+descartada: las visitas a "Inflación en Argentina" colapsaron 6× desde el
+pánico de dic-2023 — detector de eventos, no índice.
+
+### Validez y límites declarados
 
 - r = +0,76 con la inflación mensual — la validación de constructo más alta
   del cinturón (la gente googlea "inflación" cuando los precios queman).
@@ -55,10 +73,3 @@ pánico de dic-2023 — detector de eventos, no índice.
 - B100 hoy: 135,9 (la urgencia digital es ~26% menor que en el pánico del
   4T-2023) — bajo el techo de winsorización de 140 (ADR-0033), que lo acota
   si algún día la euforia lo pasa.
-
-## Consecuencias
-
-- ITVC 90,5 → **90,7** · Confianza 102,1 → 103,8 · 13/13 indicadores puntúan
-  (cero contexto en vida).
-- Bonus del mismo push: verdes/rojos con polaridad en las series de vida que
-  cruzan el cero (IPI m/m, endeudamiento) — paridad visual con macro.

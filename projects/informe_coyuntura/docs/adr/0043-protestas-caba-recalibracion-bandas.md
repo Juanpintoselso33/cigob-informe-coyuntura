@@ -1,12 +1,17 @@
+---
+madr: 4
+id: '0043'
+estado: 'aceptado'
+fecha: 2026-07-09
+cinturon: 'politica'
+parametros: ['BANDAS_ITCP["protestas_caba"]']
+archivos: ['scripts/itcp.py', 'tests/test_itcp.py']
+ambito: '`scripts/itcp.py` (`BANDAS_ITCP["protestas_caba"]`) · `tests/test_itcp.py`'
+---
+
 # ADR-0043 — protestas_caba: recalibración de bandas ITCP con la serie ACLED ya existente
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-09 |
-| **Ámbito** | `scripts/itcp.py` (`BANDAS_ITCP["protestas_caba"]`) · `tests/test_itcp.py` |
-
-## Contexto
+## Contexto y planteo del problema
 
 De los cinco indicadores del ITCP con banda propia, dos seguían
 PROVISIONALES (ver ADR-0036): `adhesion_reformas_provincial` y
@@ -33,6 +38,19 @@ otros cuatro indicadores recalibrados hoy, sino un aplanamiento en el medio
 de la escala: las anclas eran demasiado anchas (±30 y ±10) para un rango
 real que nunca superó ±25,4.
 
+## Opciones consideradas
+
+- **Dejar las anclas simétricas (±X) pero angostarlas** (ej. ±20/±7) — se
+  descartó a favor de anclas asimétricas basadas en los cuantiles reales:
+  la distribución observada no es simétrica (cola más larga hacia valores
+  positivos, reflejando el aumento de protesta en 2025-2026), forzar
+  simetría hubiera repetido el mismo error de origen (anclas elegidas por
+  estética en vez de por datos).
+- **Esperar más meses de recorrido antes de recalibrar** — descartada por
+  la misma regla de proyecto que las otras cuatro recalibraciones de hoy
+  (lanzamiento público agosto 2026, no sentarse sobre gaps PROVISIONAL
+  cuando ya hay datos suficientes).
+
 ## Decisión
 
 Anclas nuevas: **−6,0 / −3,0 / 0,0 / 10,0** (antes −30/−10/10/30),
@@ -47,20 +65,7 @@ ningún backfill nuevo ni scraping adicional — toda la información ya
 estaba en disco, solo hacía falta aplicarle la fórmula de puntuación que
 ya usa el valor live.
 
-## Opciones consideradas
-
-- **Dejar las anclas simétricas (±X) pero angostarlas** (ej. ±20/±7) — se
-  descartó a favor de anclas asimétricas basadas en los cuantiles reales:
-  la distribución observada no es simétrica (cola más larga hacia valores
-  positivos, reflejando el aumento de protesta en 2025-2026), forzar
-  simetría hubiera repetido el mismo error de origen (anclas elegidas por
-  estética en vez de por datos).
-- **Esperar más meses de recorrido antes de recalibrar** — descartada por
-  la misma regla de proyecto que las otras cuatro recalibraciones de hoy
-  (lanzamiento público agosto 2026, no sentarse sobre gaps PROVISIONAL
-  cuando ya hay datos suficientes).
-
-## Consecuencias
+### Consecuencias
 
 - `protestas_caba` sale de PROVISIONAL. De los cinco indicadores con banda
   propia del ITCP, solo `adhesion_reformas_provincial` sigue sin

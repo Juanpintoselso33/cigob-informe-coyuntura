@@ -1,13 +1,43 @@
+---
+madr: 4
+id: '0139'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+indicadores: [sector_privado]
+corrige: ['0136']
+ambito: 'cinturón político (ITCP), bloque judicial y `sector_privado`'
+origen: 'el editor señaló que se estaba declarando «imposible» sin agotar la'
+---
+
 # ADR-0139 — Corrección: tres "imposibles" que no lo eran
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP), bloque judicial y `sector_privado`
 - **Corrige**: ADR-0136 (apoyo público), ADR-0138 (éxito corporativo y velocidad)
-- **Origen**: el editor señaló que se estaba declarando «imposible» sin agotar la
   búsqueda. Tenía razón, y es la segunda vez que pasa lo mismo.
 
-## Lo que se había pasado por alto
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+1. **Se revierten los veredictos de ADR-0136 y ADR-0138** en los términos de
+   arriba. `velocidad_de_resolucion` y `apoyo_publico` pasan a **construibles**.
+2. **`exito_corporativo` y `bloqueo_cautelar` siguen sin ir, pero por otra
+   razón.** El rechazo de ADR-0138 («no hay campo de partes ni de resultado»)
+   era falso. El motivo real es que la población no es la que el indicador
+   supone: «Empresas» ante la CSJN son 7% de los ingresos y cuatro quintos de
+   ellas son ART. La diferencia importa: un negativo por falta de campo se cae
+   apenas alguien encuentra el campo; éste se sostiene con datos.
+3. **No se incorpora todavía ninguno**, por la misma razón que ADR-0134/0135/0137:
+   falta la decisión editorial de orientación y el ITCP está cerrado con
+   auditoría 7/7.
+4. Evidencia versionada en
+   `data/politica/correccion_fuentes_judicial_empresario.json`.
+
+## Más información
+
+### Lo que se había pasado por alto
 
 Tres omisiones concretas, todas evitables:
 
@@ -25,7 +55,7 @@ Tres omisiones concretas, todas evitables:
    feed es un boletín regulatorio diario. **AEA**, la asociación empresaria de
    referencia, publica exclusivamente comunicados de postura.
 
-## Velocidad de resolución: era construible
+### Velocidad de resolución: era construible
 
 ADR-0138 dijo «estructuralmente imposible: hay una sola fecha, la de la
 sentencia, y una duración necesita dos». La Oficina de Estadísticas de la CSJN
@@ -94,7 +124,7 @@ Salvedad honesta: el 26,0% de 2018 es atípico y lo explica un salto de ingresos
 del +89,4% ese año, no un colapso de la producción; y los valores por encima de
 100% (2014, 2015, 2019) son años de descarga de atraso.
 
-## Apoyo público: era viable, con otra cámara
+### Apoyo público: era viable, con otra cámara
 
 ADR-0136 lo rechazó porque «el destinatario cambia»: de tres críticas de ADEBA,
 dos apuntaban a municipios y una al Congreso. El razonamiento era correcto **para
@@ -122,7 +152,7 @@ De la objeción anterior **sobrevive una parte**: el costo es recurrente, hay qu
 codificar mes a mes con doble codificación. Pero con 3 a 11 piezas por año es un
 costo chico, no el trabajo permanente de dos personas que se describió.
 
-## Éxito corporativo y bloqueo cautelar: la premisa del rechazo era falsa
+### Éxito corporativo y bloqueo cautelar: la premisa del rechazo era falsa
 
 ADR-0138 los rechazó por «sin campo de partes ni de resultado». Eso era cierto
 **de SAIJ**, no del universo disponible. El Anuario de la CSJN clasifica:
@@ -195,23 +225,7 @@ Queda además una vía no agotada: **pedido formal de acceso a la información
 pública**, que no sirve para un indicador de actualización periódica pero sí
 para una nota metodológica o un informe puntual.
 
-## Decisión
-
-1. **Se revierten los veredictos de ADR-0136 y ADR-0138** en los términos de
-   arriba. `velocidad_de_resolucion` y `apoyo_publico` pasan a **construibles**.
-2. **`exito_corporativo` y `bloqueo_cautelar` siguen sin ir, pero por otra
-   razón.** El rechazo de ADR-0138 («no hay campo de partes ni de resultado»)
-   era falso. El motivo real es que la población no es la que el indicador
-   supone: «Empresas» ante la CSJN son 7% de los ingresos y cuatro quintos de
-   ellas son ART. La diferencia importa: un negativo por falta de campo se cae
-   apenas alguien encuentra el campo; éste se sostiene con datos.
-3. **No se incorpora todavía ninguno**, por la misma razón que ADR-0134/0135/0137:
-   falta la decisión editorial de orientación y el ITCP está cerrado con
-   auditoría 7/7.
-4. Evidencia versionada en
-   `data/politica/correccion_fuentes_judicial_empresario.json`.
-
-## Consecuencias, y la regla que hay que respetar
+### Consecuencias, y la regla que hay que respetar
 
 Es el **segundo** incidente del mismo tipo (el primero está en
 `feedback_no_declarar_fuente_inexistente`, con tres casos). El patrón no es

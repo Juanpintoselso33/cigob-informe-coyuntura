@@ -1,14 +1,21 @@
+---
+madr: 4
+id: '0163'
+estado: 'aceptado'
+fecha: 2026-07-30
+cinturon: 'vida'
+archivos: ['scripts/desestacionalizar.py']
+ambito: 'panel y factor común del ITVC; `scripts/desestacionalizar.py`,'
+---
+
 # ADR-0163 — El ITVC se contrasta contra volúmenes físicos consumidos por los hogares
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-30
-- **Ámbito**: panel y factor común del ITVC; `scripts/desestacionalizar.py`,
-  `panel_validacion.FACTOR`, nuevas series en `validacion_externa.py`
+`panel_validacion.FACTOR`, nuevas series en `validacion_externa.py`
 - **Relacionados**: ADR-0161 (el factor común), ADR-0159 (el panel), ADR-0160
   (el ITVC casi no se mueve en neto), ADR-0045 (no mover nada para que un test
   dé mejor)
 
-## Contexto
+## Contexto y planteo del problema
 
 ADR-0161 dejó el ITVC como el caso que **no** funcionaba: su factor común daba
 +0,211 en niveles y +0,029 en los cambios, por debajo de lo que lograba el
@@ -17,6 +24,10 @@ partida de esta decisión: **las tres estadísticas de su familia eran tres
 variantes de venta minorista**, y lo que tres canales de comercio comparten es el
 ciclo del comercio, no la condición material de los hogares. Con un panel de un
 solo tipo de fuente, el factor mide el ciclo de esa fuente.
+
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
 
 ## Decisión
 
@@ -94,7 +105,7 @@ contradice a su propio titular — el mismo defecto que ADR-0161 corrigió por o
 puerta. `plano_del_veredicto()` elige: niveles por defecto (más legibles), cambios
 sólo cuando el veredicto descansa exclusivamente ahí.
 
-## Resultado
+### Consecuencias
 
 | | niveles | mes a mes |
 |---|---|---|
@@ -118,8 +129,6 @@ Las cargas: electricidad 0,724 · naftas 0,666 · gas 0,163 · transporte −0,0
 transporte queda con carga casi nula, que es el comportamiento esperado del
 método con una serie mayormente idiosincrásica: se la baja de peso en vez de
 dejar que cancele señal ajena.
-
-## Consecuencias
 
 - El ITVC deja de ser el caso que falla y pasa a validar en el plano exigente.
 - El ITCG sigue sin factor: tiene **una sola** estadística de su familia. Es

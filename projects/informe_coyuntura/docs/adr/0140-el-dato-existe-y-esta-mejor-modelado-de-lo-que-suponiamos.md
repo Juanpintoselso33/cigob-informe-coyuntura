@@ -1,20 +1,66 @@
+---
+madr: 4
+id: '0140'
+estado: 'aceptado'
+fecha: 2026-07-26
+cinturon: 'politica'
+corrige: ['0131']
+ambito: 'cinturón político (ITCP), bloque judicial'
+origen: 'el editor pidió buscar alternativas en lugar de aceptar el cierre.'
+---
+
 # ADR-0140 — El dato existe y está mejor modelado de lo que suponíamos
 
-- **Estado**: Aceptado
-- **Fecha**: 2026-07-26
-- **Ámbito**: cinturón político (ITCP), bloque judicial
 - **Corrige el encuadre de**: ADR-0131 (veto de constitucionalidad), ADR-0135 y
   ADR-0138 (bloqueo cautelar, éxito corporativo), ADR-0139
-- **Origen**: el editor pidió buscar alternativas en lugar de aceptar el cierre.
 
-## Resumen
+## Opciones consideradas
+
+_El ADR original no registró opciones alternativas._
+
+## Decisión
+
+1. **No se construye ningún indicador de conteo todavía.** Tres puertas, las tres
+   cerradas del mismo modo: el buscador de fallos por CAPTCHA, el de causas del
+   PJN por CAPTCHA, y el JSON abierto por un tope de 10 registros. No se resuelven
+   CAPTCHAs ni se buscan rodeos: es el organismo diciendo que el acceso es para
+   consumo humano.
+2. **Se corrige el encuadre.** El estado de los tres indicadores no es «no hay
+   fuente» ni «el dato no existe» sino **«el dato existe, está bien modelado y el
+   acceso está limitado»**. La diferencia es operativa, no retórica: cambia qué
+   hay que hacer para destrabarlos.
+3. **Queda planteado un pedido de acceso a la información pública que ahora puede
+   ser preciso**, porque se conoce el modelo: *cantidad de fallos con el atributo
+   `inconstitucional = true` por año, 1994-2026*, o *exposición del resultado del
+   buscador de fallos en formato JSON*. Es pedible justamente porque el campo ya
+   existe y el organismo ya lo calcula — no se le pide que construya nada.
+4. **Hay algo construible ya**: un **detector** sobre el endpoint JSON abierto,
+   que vigile las novedades y marque las que traen `inconstitucional = true` o
+   carátula con el Estado como parte. No es un contador y no puede serlo con 10
+   registros, pero es el mismo patrón de ADR-0129 (privatizaciones): elimina el
+   riesgo de omisión y deja la clasificación al analista.
+
+### Consecuencias
+
+- **`sjconsulta` no estaba roto.** ADR-0138 lo dio por caído con un HTTP 500 sobre
+  `buscar.html`, que es el destino del POST, no la página de consulta. Tercera vez
+  que un negativo sale de una URL adivinada — ya está en
+  `feedback_no_declarar_fuente_inexistente` y se refuerza acá.
+- **El CIJ hay que sacarlo de cualquier plan futuro**: está disuelto.
+- Mapa de acceso completo, con endpoints, parámetros, campos y límites
+  verificados, en `data/politica/csjn_jurisprudencia_mapa_de_acceso.json`, para
+  que quien retome esto no vuelva a recorrer el camino.
+
+## Más información
+
+### Resumen
 
 **El modelo de datos de la CSJN contiene exactamente lo que los tres indicadores
 bloqueados necesitan.** Lo que está limitado es el acceso público, no la
 existencia ni la calidad del dato. Es una conclusión distinta de «no hay fuente»
 y apunta a un desbloqueo concreto y pedible.
 
-## El CIJ murió, y eso hay que saberlo
+### El CIJ murió, y eso hay que saberlo
 
 El Centro de Información Judicial fue creado por Acordada 17/2006 y **disuelto
 por la Acordada 10/2025**, que convierte el sitio en un repositorio histórico
@@ -26,7 +72,7 @@ De paso: ADR-0138 probó `sjconsulta.csjn.gov.ar/sjconsulta/consultaSumarios/`
 estaba roto. La ruta es **`consulta.html`**; `buscar.html` es el destino del POST.
 Otro negativo por una URL adivinada.
 
-## Lo que sí está publicado
+### Lo que sí está publicado
 
 ### El buscador de fallos completos tiene el campo exacto
 
@@ -84,36 +130,3 @@ buscador del corpus. La búsqueda por texto discrimina —consultas distintas tr
 fallos distintos— pero no se puede contar ni paginar: se probaron
 `jtStartIndex`/`jtPageSize`, `start`/`length` y `pagina`, sin efecto. Los IDs
 tampoco se pueden barrer: 829902 responde y 829901 devuelve lista vacía.
-
-## Decisión
-
-1. **No se construye ningún indicador de conteo todavía.** Tres puertas, las tres
-   cerradas del mismo modo: el buscador de fallos por CAPTCHA, el de causas del
-   PJN por CAPTCHA, y el JSON abierto por un tope de 10 registros. No se resuelven
-   CAPTCHAs ni se buscan rodeos: es el organismo diciendo que el acceso es para
-   consumo humano.
-2. **Se corrige el encuadre.** El estado de los tres indicadores no es «no hay
-   fuente» ni «el dato no existe» sino **«el dato existe, está bien modelado y el
-   acceso está limitado»**. La diferencia es operativa, no retórica: cambia qué
-   hay que hacer para destrabarlos.
-3. **Queda planteado un pedido de acceso a la información pública que ahora puede
-   ser preciso**, porque se conoce el modelo: *cantidad de fallos con el atributo
-   `inconstitucional = true` por año, 1994-2026*, o *exposición del resultado del
-   buscador de fallos en formato JSON*. Es pedible justamente porque el campo ya
-   existe y el organismo ya lo calcula — no se le pide que construya nada.
-4. **Hay algo construible ya**: un **detector** sobre el endpoint JSON abierto,
-   que vigile las novedades y marque las que traen `inconstitucional = true` o
-   carátula con el Estado como parte. No es un contador y no puede serlo con 10
-   registros, pero es el mismo patrón de ADR-0129 (privatizaciones): elimina el
-   riesgo de omisión y deja la clasificación al analista.
-
-## Consecuencias
-
-- **`sjconsulta` no estaba roto.** ADR-0138 lo dio por caído con un HTTP 500 sobre
-  `buscar.html`, que es el destino del POST, no la página de consulta. Tercera vez
-  que un negativo sale de una URL adivinada — ya está en
-  `feedback_no_declarar_fuente_inexistente` y se refuerza acá.
-- **El CIJ hay que sacarlo de cualquier plan futuro**: está disuelto.
-- Mapa de acceso completo, con endpoints, parámetros, campos y límites
-  verificados, en `data/politica/csjn_jurisprudencia_mapa_de_acceso.json`, para
-  que quien retome esto no vuelva a recorrer el camino.

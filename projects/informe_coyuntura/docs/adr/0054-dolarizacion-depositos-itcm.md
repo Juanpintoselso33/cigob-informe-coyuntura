@@ -1,13 +1,18 @@
+---
+madr: 4
+id: '0054'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0055'
+fecha: 2026-07-13
+cinturon: 'macro'
+relacionado: ['0009', '0012', '0021', '0030', '0053']
+superado_por: ['0055']
+ambito: 'Cinturón macro · ITCM · colector BCRA/INDEC · series históricas · validación externa · web metodológica'
+---
+
 # ADR-0054 — Dolarización de depósitos como indicador del ITCM
 
-| | |
-|---|---|
-| **Estado** | Aceptado |
-| **Fecha** | 2026-07-13 |
-| **Ámbito** | Cinturón macro · ITCM · colector BCRA/INDEC · series históricas · validación externa · web metodológica |
-| **Precedentes directos** | ADR-0009 (IDM y TCRM) · ADR-0012 (backfill) · ADR-0021 (interpolación) · ADR-0030 (último mes común) · ADR-0053 (auditoría de agregados monetarios) |
-
-## Contexto
+## Contexto y planteo del problema
 
 La auditoría documentada en ADR-0053 rechazó reemplazar el M3 privado en pesos
 del IDM por un M3 ampliado con depósitos en dólares. Esa sustitución mezclaba
@@ -19,6 +24,15 @@ La señal económica subyacente sí es relevante para el cinturón macro: la
 preferencia relativa por depósitos en moneda extranjera frente a depósitos en
 pesos. Para medirla sin alterar el constructo del IDM se requiere un indicador
 independiente, con unidad, serie, bandas y ponderación propias.
+
+## Opciones consideradas
+
+- Reemplazar el IDM por M3 ampliado
+- Publicar la señal sólo como contexto
+- Medir una participación de depósitos en dólares sobre el total convertido a pesos
+- Reconstruir depósitos USD mediante BCRA 104 / BCRA 84
+- Corregir o recortar el período CERA
+- Mantener los pesos 40/30/30 y agregar el indicador por fuera de la dimensión
 
 ## Decisión
 
@@ -176,7 +190,26 @@ El CSV de series macro se versiona también en el commit nocturno. De ese modo, 
 backfill que alimenta el snapshot público conserva su fuente auditable entre
 corridas del pipeline.
 
-## Opciones consideradas
+### Consecuencias
+
+- El ITCM pasa de 12 a 13 indicadores puntuables; el colector macro conserva cuatro
+  insumos internos ocultos adicionales.
+- El IDM mantiene su fórmula pesos/pesos y deja de cargar con una señal económica
+  conceptualmente distinta.
+- La preferencia relativa por depósitos en dólares queda medida sin contaminación
+  directa de valuación cambiaria.
+- La dimensión de estabilidad monetaria gana una cuarta señal con peso acotado de
+  2,6% efectivo del ITCM.
+- La card y la ficha publican valor, componentes, fórmula, puntaje, peso interno,
+  peso efectivo y aporte aritmético.
+- La serie conserva el episodio CERA como quiebre visible y auditable.
+- El último mes publicado queda condicionado a la disponibilidad conjunta de BCRA
+  e IPC, por lo que puede rezagarse respecto de otros indicadores mensuales.
+- El pipeline nocturno versiona `output/series/*.csv`, evitando que el snapshot y
+  su fuente histórica queden desincronizados.
+- La decisión complementa ADR-0009 y ADR-0053; no los reemplaza.
+
+## Pros y contras de las opciones
 
 ### Reemplazar el IDM por M3 ampliado
 
@@ -209,21 +242,8 @@ ocultaría un cambio real del stock. Se conserva el dato y se declara el quiebre
 Rechazada. Los pesos internos deben sumar 100% y todo indicador puntuable debe
 tener una incidencia explícita y reconciliable.
 
-## Consecuencias
+## Más información
 
-- El ITCM pasa de 12 a 13 indicadores puntuables; el colector macro conserva cuatro
-  insumos internos ocultos adicionales.
-- El IDM mantiene su fórmula pesos/pesos y deja de cargar con una señal económica
-  conceptualmente distinta.
-- La preferencia relativa por depósitos en dólares queda medida sin contaminación
-  directa de valuación cambiaria.
-- La dimensión de estabilidad monetaria gana una cuarta señal con peso acotado de
-  2,6% efectivo del ITCM.
-- La card y la ficha publican valor, componentes, fórmula, puntaje, peso interno,
-  peso efectivo y aporte aritmético.
-- La serie conserva el episodio CERA como quiebre visible y auditable.
-- El último mes publicado queda condicionado a la disponibilidad conjunta de BCRA
-  e IPC, por lo que puede rezagarse respecto de otros indicadores mensuales.
-- El pipeline nocturno versiona `output/series/*.csv`, evitando que el snapshot y
-  su fuente histórica queden desincronizados.
-- La decisión complementa ADR-0009 y ADR-0053; no los reemplaza.
+### Precedentes directos
+
+ADR-0009 (IDM y TCRM) · ADR-0012 (backfill) · ADR-0021 (interpolación) · ADR-0030 (último mes común) · ADR-0053 (auditoría de agregados monetarios)
