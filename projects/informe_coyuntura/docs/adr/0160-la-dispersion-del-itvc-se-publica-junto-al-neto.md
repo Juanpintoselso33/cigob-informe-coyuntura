@@ -24,7 +24,8 @@ lado del neto, porque **el promedio solo dice «sin cambios» donde el dato dice
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Anexar la dispersión a la sección de consistencia interna** — elegida: es donde el lector ya está mirando cómo se relacionan los componentes, y donde la dispersión explica el resultado de esa misma sección.
+- **Publicarla como sección aparte** — descartada.
 
 ## Decisión
 

@@ -57,7 +57,8 @@ provincial.**
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Reescribir los tres textos declarando lo que la dimensión no mide** — elegida.
+- **Renombrar la dimensión** — descartada: conserva el nombre «Alianzas territoriales» y agrega la precisión que faltaba.
 
 ## Decisión
 

@@ -85,7 +85,8 @@ resultado que produce no es un indicador.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Validar la fuente y versionar el universo** —356 notas relevadas, con huecos calculados y serie mensual completa— elegida.
+- **Incorporar ya un indicador al ITCP** — no: faltan dos decisiones editoriales que no corresponde tomar acá.
 
 ## Decisión
 

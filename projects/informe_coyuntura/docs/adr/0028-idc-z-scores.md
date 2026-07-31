@@ -24,7 +24,8 @@ opción (a): rediseño tipo FCI simplificado.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Z-scores de nivel contra la propia historia** (ventana expansiva, ~102 meses), conservando los tres conceptos y los pesos del documento de CIGOB (precio 30 / volumen 40 / asignación 30) — elegida.
+- **La construcción anterior del IdC** — descartada tras la auditoría adversarial de ADR-0027.
 
 ## Decisión
 

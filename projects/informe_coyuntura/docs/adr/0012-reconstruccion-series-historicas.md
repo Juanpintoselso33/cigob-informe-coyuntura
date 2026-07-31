@@ -24,7 +24,8 @@ desde qué fuente y con qué factibilidad.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Reconstruir sólo los indicadores de alta factibilidad**, computando la misma métrica que muestra la card — elegida, con la regla de oro de que el último punto de la serie reconstruida coincida con el valor live.
+- **Los de baja factibilidad** quedan fuera de esta reconstrucción: no tienen histórico computable con la misma métrica.
 
 ## Decisión
 

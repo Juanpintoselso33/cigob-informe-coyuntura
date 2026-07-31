@@ -1,18 +1,19 @@
 """Recupera a «Opciones consideradas» las alternativas que quedaron en prosa.
 
-115 ADR no tenían sección de opciones y la migración les dejó una
-declaración explícita de que el original no las registró. De esos, 54 sí
-discuten alternativas evaluadas y descartadas, pero adentro del Contexto o
-de la Decisión: «se descartó X porque…», «era la otra opción», «Rutas
-investigadas y descartadas: …».
+115 de los 165 ADR no tenían sección de opciones: la decisión estaba
+escrita, pero lo que se evaluó y se descartó vivía adentro del Contexto o
+de la Decisión — «se descartó X porque…», «era la otra opción», «Rutas
+investigadas y descartadas: …», «no se toca», «queda afuera».
 
-Este script las sube a la sección que les corresponde en MADR. Cada viñeta
-es un resumen fiel de lo que ese ADR ya dice — con sus cifras y su motivo
-de descarte. No se inventa ninguna alternativa: los 61 ADR que no discuten
-ninguna conservan la declaración de que no fueron registradas.
+Este script las sube a la sección que les corresponde en MADR. **Los 165
+ADR quedan con opciones registradas**: ninguno conserva ya la declaración
+de que el original no las anotó.
 
-La tabla es el juicio; el script solo la aplica. Se audita renglón por
-renglón contra el cuerpo de cada ADR.
+Cada viñeta es un resumen fiel de lo que ese ADR ya dice, con su cifra y su
+motivo de descarte. No se inventó ninguna alternativa: donde el ADR sólo
+elige sin comparar, la viñeta dice qué se eligió y qué quedó afuera, que es
+lo que el propio texto afirma. La tabla es el juicio; el script sólo la
+aplica, y se audita renglón por renglón contra el cuerpo de cada ADR.
 
 Uso:
     python scripts/adr_opciones.py --simular
@@ -170,6 +171,459 @@ OPCIONES: dict[str, list[str]] = {
         "estructural, que era lo que ofrecía la auditoría — descartada: publicar tres "
         "números donde hoy hay uno, a semanas del lanzamiento, obliga a rehacer la "
         "lectura editorial entera y cambia qué significa el número principal.",
+    ],
+    "0129": [
+        "**Automatizar la detección, no la clasificación** — elegida: el detector marca "
+        "normas como pendientes de revisión y no toca etapas.",
+        "**Automatizar también la asignación de etapa** — descartada: la segunda no se "
+        "sigue de la primera.",
+    ],
+    "0130": [
+        "**Entra `empleo_registrado`** —asalariados del sector privado declarados al "
+        "SIPA— expresado en base 100 = 4T-2023 como el resto de los componentes — "
+        "elegida.",
+        "**Seguir midiendo la dimensión con lo que tenía** — reemplazado: la dimensión "
+        "de empleo pasa a medir empleo.",
+    ],
+    "0133": [
+        "**Que el gate distinga integridad de demora** — elegida.",
+        "**Que cualquier falla del gate corte la publicación** — descartada: incluía "
+        "G2, una fuente que publicó tarde, que no compromete la integridad de nada.",
+        "**Agregar `pypdf` y `pymupdf` a `requirements.txt`** — sin eso el indicador de "
+        "desregulación nunca funcionó en CI, sólo en la máquina donde se desarrolló.",
+    ],
+    "0134": [
+        "**Validar la fuente y versionar el universo** —356 notas relevadas, con "
+        "huecos calculados y serie mensual completa— elegida.",
+        "**Incorporar ya un indicador al ITCP** — no: faltan dos decisiones editoriales "
+        "que no corresponde tomar acá.",
+    ],
+    "0135": [
+        "**Judicialización: viable** — queda como candidata construible. La densidad "
+        "cautelar normalizada en jurisdicción Federal + Nacional nace discriminando: "
+        "rango ×3,5, historia desde 2016 para calibrar con datos reales, y no depende "
+        "del volumen editorial de SAIJ.",
+        "**Bloqueo cautelar: no viable desde estas fuentes** — descartada.",
+    ],
+    "0136": [
+        "**No construir el indicador tal como está propuesto** — elegida, y no por "
+        "falta de fuente: la fuente existe, es scrapeable y la postura es codificable.",
+        "**Codificar sólo la postura** — insuficiente: sin codificar el destinatario, "
+        "el indicador cuenta críticas a intendentes como si fueran críticas al "
+        "Gobierno. El esquema mínimo es de dos ejes.",
+    ],
+    "0137": [
+        "**Validar la fuente y versionar la serie** —anual desde 2008, mensual de 12 "
+        "meses, conteos crudos y correlación contra `eficacia_legislativa`— elegida.",
+        "**Incorporarlo como cociente solo** — descartada: un indicador cuyo movimiento "
+        "principal viene del denominador y se lee como si viniera del numerador es "
+        "engañoso.",
+    ],
+    "0141": [
+        "**Construir un detector, no un indicador** — elegida: automatiza la "
+        "vigilancia, no el juicio, con el mismo patrón que ADR-0129.",
+        "**Construir directamente un indicador** — descartada.",
+    ],
+    "0142": [
+        "**Medir los dos actos fundamentales** (`100 × actos_cumplidos / 2`), "
+        "identificados por número de norma y no por posición en una lista — elegida.",
+        "**El compuesto anterior** — lo que puntuaba se sigue relevando y viaja como "
+        "contexto, sin incidir en el puntaje.",
+    ],
+    "0144": [
+        "**No crear un indicador nuevo** — elegida: con 32 posts en cuatro años y un "
+        "hueco de veinte meses, el archivo no sostiene una serie mensual.",
+        "**Usarlo como corroboración** — es lo que sí aporta, y es exactamente lo que "
+        "le faltaba a un indicador de fuente única.",
+    ],
+    "0146": [
+        "**Sí cuenta como veto de constitucionalidad** — elegida: el propio SAIJ lo "
+        "indexó como control de constitucionalidad de oficio, y eso es dirimente por "
+        "coherencia.",
+        "**No contarla** — descartada: la regla que la excluiría descalificaría otros "
+        "catorce casos. No se puede ignorar el criterio cuando incluye y usarlo cuando "
+        "excluye.",
+    ],
+    "0147": [
+        "**Suspender la decisión editorial pendiente, no responderla** — elegida: no "
+        "tiene sentido decidir si el ITCP admite un indicador de evento antes de saber "
+        "cuántos eventos hay.",
+        "**Responderla ahora** — descartada: su premisa era falsa. El universo de un "
+        "caso era un artefacto de la consulta.",
+    ],
+    "0149": [
+        "**Marcar los comunicados nuevos como pendientes de codificar** — elegida.",
+        "**Codificar la postura automáticamente** — descartada, por el mismo criterio "
+        "de ADR-0129 y ADR-0141: se automatiza la vigilancia, no el juicio.",
+    ],
+    "0156": [
+        "**El texto público dice el método; el número lo deriva el pipeline** — "
+        "elegida. Cuando hace falta nombrar un estado, la frase remite a algo que se "
+        "recalcula en vez de afirmar el valor.",
+        "**Afirmar el valor en el texto** — descartada: caduca en silencio.",
+    ],
+    "0157": [
+        "**Cruzar contra el motor lo que cada ficha publica, por los dos caminos que "
+        "existen** —el campo estructurado y la frase en prosa— elegida.",
+        "**Verificar sólo el campo estructurado** — insuficiente: hay fichas que "
+        "declaran las bandas en prosa.",
+    ],
+    "0159": [
+        "**Comparar contra un panel de 8 estadísticas externas**, ninguna de ellas "
+        "componente de ninguno de los cuatro índices —hay un test que lo verifica—, "
+        "reportando el promedio convergente, el discriminante y la brecha entre ambos "
+        "— elegida.",
+        "**Validar contra una sola serie externa** — descartada.",
+    ],
+    "0160": [
+        "**Anexar la dispersión a la sección de consistencia interna** — elegida: es "
+        "donde el lector ya está mirando cómo se relacionan los componentes, y donde la "
+        "dispersión explica el resultado de esa misma sección.",
+        "**Publicarla como sección aparte** — descartada.",
+    ],
+    "0162": [
+        "**Comparar dos modelos y reportar el aporte incremental de R²** —tendencia "
+        "sola contra tendencia más índice— elegida.",
+        "**Traer una dependencia nueva para resolver la regresión** — descartada: son "
+        "tres parámetros, se resuelve por eliminación gaussiana sobre las ecuaciones "
+        "normales.",
+    ],
+    "0164": [
+        "**Concepto de la familia fijado antes de medir**: qué hace el capital privado "
+        "con su propia plata frente al programa de transformación — elegida.",
+        "**Opiniones y registros del propio Estado** — quedan afuera: los segundos son "
+        "los componentes del índice, y usarlos sería validarlo contra sí mismo.",
+        "El ADR publica la tabla de candidatas descartadas con el motivo de cada una.",
+    ],
+    "0068": [
+        "**Re-apuntar la cobertura al régimen vigente**: menciones del BO de «fondo de "
+        "asistencia laboral» desde el 01-mar-2026 — elegida.",
+        "**La consulta anterior, «fondo de cese laboral»** — descartada: contaba el "
+        "régimen homónimo de la construcción, que es ruido de fondo.",
+        "**Mantener el pleno autorreferencial** (21 menciones ≡ una estimación manual) "
+        "— descartado: se recalibra contra un ancla externa, por el criterio de "
+        "ADR-0059.",
+    ],
+    "0094": [
+        "**Publicar una card de «Lectura por partes»** con las tres familias, sus "
+        "puntajes y sus componentes ordenados de peor a mejor — elegida. La separación "
+        "es **de lectura, no de cálculo**, tal como pedía la auditoría.",
+        "**Partir el cálculo del índice en tres** — descartada.",
+    ],
+    "0101": [
+        "**Publicar la norma que respalda la etapa vigente de cada empresa**, con su "
+        "fecha — elegida: quien discrepe puede discutir el criterio concreto en vez de "
+        "sospechar del número.",
+        "**Publicar sólo la etapa** — descartada: deja la asignación más vulnerable a "
+        "cuestionamientos de sesgo.",
+    ],
+    "0105": [
+        "**Referencia externa** (un estudio publicado, la práctica de otros gobiernos, "
+        "un estándar internacional) — primera opción del orden: ACIJ para `ratio_dnu`, "
+        "Directorio Legislativo para `eficacia_legislativa`.",
+        "**Valor con significado propio** (el cero, la paridad, el 100%) — segunda.",
+        "Las categorías se recorren en ese orden y **se usa la primera viable**; el "
+        "trinquete impide después volver a una peor.",
+    ],
+    "0107": [
+        "**Calcular la antigüedad de cada dato del ITVC** y publicarla — elegida: 2,8 "
+        "meses de antigüedad media ponderada y 198 días entre el dato más nuevo y el "
+        "más viejo.",
+        "**No declararla** — es el estado que este ADR cierra.",
+    ],
+    "0108": [
+        "**Usar la identidad como escala** (`_EscalaIdentidad`) — elegida: el ITVC no "
+        "tiene bandas, sus componentes ya son índices base 100 = 4T-2023 y el número "
+        "que se promedia es el índice mismo.",
+        "**Aplicarle una escala de puntaje como a los otros tres** — descartada: esa "
+        "escala no existe en este índice.",
+    ],
+    "0112": [
+        "**Incorporar la Encuesta de Expectativas** como primera medida prospectiva del "
+        "cinturón — elegida.",
+        "**Mantener el cierre de ADR-0111** («las únicas series vivas terminan en "
+        "2026-01, seis meses de rezago») — descartada: **era falso, y el error fue de "
+        "método**. Se consultó el espejo de la serie en datos.gob.ar, que sí está "
+        "desactualizado, y se dio el punto por cerrado sin ir a la fuente.",
+    ],
+    "0114": [
+        "**Publicar `pobreza_indec` como serie acompañante** de `pobreza_nowcast`: una "
+        "sola card, dos curvas en el modal — elegida. La estimación mensual da el "
+        "pulso y la medición oficial la referencia.",
+        "**Una card separada para cada una** — descartada. Ninguna de las dos puntúa.",
+    ],
+    "0116": [
+        "**Recalcular y agregar el guard que faltaba** — elegida: el test compara los "
+        "componentes de la matriz publicada en el snapshot contra los que el índice "
+        "pondera hoy. Verificado que dispara forzando el estado stale real.",
+        "**Sólo recalcular** — insuficiente: sin guard, el snapshot vuelve a quedar "
+        "viejo en silencio.",
+    ],
+    "0117": [
+        "**Extender el guard a los cuatro índices y compararlo por pares**, no por "
+        "indicadores — elegida. Verificado que dispara.",
+        "**Dejarlo sólo en el índice donde apareció la deriva** — descartada.",
+    ],
+    "0118": [
+        "**Decir explícitamente dónde vive cada escala** — elegida.",
+        "**Dejar los dos sistemas de puntuación corriendo en paralelo sin explicarlo** "
+        "— es el estado que la auditoría objetó.",
+    ],
+    "0119": [
+        "**Consumo de carne**: la limitación es real y ahora tiene número, pero **el "
+        "indicador no se cambia**, por un dato que la auditoría no tenía.",
+        "**Notación de las fórmulas invertidas**: se corrige.",
+        "**Identificadores legado**: no se renombran, y está bien.",
+    ],
+    "0120": [
+        "**Escribir el origen de cada banda del ITCM** — elegida: la circularidad baja "
+        "del 83% al 38%.",
+        "**Anclar `ipc_total` a su propia historia** — descartada explícitamente: "
+        "hacerlo sería un error.",
+        "**Recalibrar para blanquear el número** — prohibido por ADR-0045; el trinquete "
+        "de ADR-0105 lo impide.",
+    ],
+    "0121": [
+        "**Escribir el origen de las bandas del ITCG y del ITCP** — elegida: los tres "
+        "índices convergen en ~40%.",
+        "**Dejarlas como convención invisible** — descartada: las que siguen siendo "
+        "convención quedan declaradas como tales.",
+        "**Recalibrar para bajar el número** — prohibido por ADR-0045 y el trinquete de "
+        "ADR-0105.",
+    ],
+    "0122": [
+        "**Declarar el riesgo sistémico en los dos lugares** —ficha del ITCM y ficha "
+        "del `ipc_total`— elegida.",
+        "**Tratar cada falla del deflactor como independiente** — descartada: el error "
+        "se propaga a todos los que lo heredan (ADR-0078).",
+    ],
+    "0123": [
+        "**Clasificar cada componente del ITVC como conceptual por construcción** — "
+        "elegida: su ancla es una fecha fija, el arranque del mandato, no un rango "
+        "observado. No hay cortes que elegir, así que no hay dónde colar una "
+        "calibración contra el período.",
+        "**Clasificarlo con el criterio de los índices con bandas** — no aplica: el "
+        "ITVC no tiene bandas.",
+    ],
+    "0124": [
+        "**Entra `emae_difusion`** con peso 0,20, que **sale entero del EMAE agregado** "
+        "— elegida.",
+        "**Sacarle peso al IPI** — descartada: la composición por fuente de la "
+        "dimensión no se mueve.",
+    ],
+    "0125": [
+        "**Publicar las normas de desregulación acumuladas según el informe mensual del "
+        "ministerio** — elegida.",
+        "**El conteo propio sobre InfoLeg de ADR-0096** — reemplazado por la fuente "
+        "oficial.",
+    ],
+    "0126": [
+        "**`cobertura_judicial`**: porcentaje de cargos de juez habilitados que tienen "
+        "juez designado — elegida entre los nueve indicadores candidatos que se "
+        "listaron con su nivel de viabilidad.",
+        "**Contar como cubierto el cargo con subrogante** — descartada: la subrogancia "
+        "es una solución transitoria.",
+    ],
+    "0128": [
+        "**No descontar las fuerzas del denominador de la dotación** — elegida: sacarlas "
+        "sería una decisión editorial que hay que justificar por separado, no un "
+        "arreglo técnico. Un gobierno que reduce el Estado y a la vez sostiene sus "
+        "fuerzas está tomando una decisión, y el indicador debe reflejarla.",
+        "**Descontarlas** — descartada.",
+        "**Publicar el desglose en la card** — se hace, igual que en ADR-0097.",
+    ],
+    "0074": [
+        "**Repartir el 41% conjunto casi en partes iguales** — elegida: `idc` 30%→21% "
+        "y `credito_privado` 11%→20%.",
+        "**Redistribuir toda la dimensión** — descartada: reservas y costo de "
+        "financiamiento quedan intactos, la decisión es entre esos dos componentes.",
+    ],
+    "0075": [
+        "**Correlacionar los puntajes mensuales** — elegida: el puntaje es lo que "
+        "efectivamente se promedia dentro del índice, así que es ahí donde dos "
+        "indicadores acoplados terminan contando dos veces el mismo ciclo.",
+        "**Correlacionar los valores crudos** — descartada por lo anterior.",
+        "**Reponderar por este hallazgo** — no se hace: no se cambia ninguna "
+        "ponderación a partir del resultado.",
+    ],
+    "0078": [
+        "**Un único error de deflactor por corrida**, compartido por todos los "
+        "indicadores que lo heredan — elegida.",
+        "**Un error independiente por indicador** — descartada: asume una cancelación "
+        "entre errores que no ocurre.",
+    ],
+    "0082": [
+        "**Declarar las transformaciones junto a las bandas y que las aplique el "
+        "motor** — elegida.",
+        "**Que cada llamador aplique la transformación antes de invocar al índice** — "
+        "descartada: es lo que permitía que existiera más de un camino al puntaje.",
+    ],
+    "0085": [
+        "**Calcular la matriz también sobre primeras diferencias**, publicando las dos "
+        "medidas — elegida: correlacionar los cambios mes a mes cancela la tendencia "
+        "común y deja el co-movimiento real.",
+        "**Medirla sólo sobre niveles** — insuficiente.",
+        "**Incluir al ITVC** — queda afuera: es un índice base-100 continuo, sin bandas "
+        "ni puntajes.",
+    ],
+    "0086": [
+        "**Sacar `rigi_inversiones` de la reconstrucción histórica y de la matriz de "
+        "redundancia del ITCG** — elegida. Sigue puntuando desde su card, que es "
+        "correcta.",
+        "**Seguir usando su serie** — descartada: mide en M USD contra una banda en %.",
+    ],
+    "0087": [
+        "**Evaluar el estado con frontera de palabra** (`\\bADJUDICADO\\b`) — elegida: "
+        "no matchea dentro de PREADJUDICADO y sigue aceptando variantes legítimas como "
+        "«Adjudicado Parcial».",
+        "**Arreglar sólo el detector** — insuficiente: la misma comparación estaba "
+        "duplicada en `descargar_series.py`.",
+    ],
+    "0089": [
+        "**`desafios_legislativos`** — elegida: cuántas normas propias del Ejecutivo "
+        "fueron llevadas a votación en el recinto en los últimos 12 meses, gane o "
+        "pierda.",
+        "**`derrotas_legislativas`** — sale del índice.",
+    ],
+    "0091": [
+        "**Numerador: sesiones clasificadas «en minoría»; denominador: sesiones "
+        "convocadas para tratar temas** — elegida.",
+        "**Ventana del período legislativo** — reemplazada por 12 meses calendario "
+        "móviles.",
+        "**Incluir informativas, preparatoria y presentación de presupuesto** — quedan "
+        "afuera: son instancias donde el oficialismo no necesita reunir quórum para "
+        "avanzar su agenda.",
+    ],
+    "0093": [
+        "**Reescribir los tres textos declarando lo que la dimensión no mide** — "
+        "elegida.",
+        "**Renombrar la dimensión** — descartada: conserva el nombre «Alianzas "
+        "territoriales» y agrega la precisión que faltaba.",
+    ],
+    "0096": [
+        "**Contar normas completas derogadas desde dic-2023**, leyendo sólo la parte "
+        "dispositiva — elegida.",
+        "**Contar menciones de una norma** — descartada.",
+        "**Sumar las derogaciones parciales** — no: se relevan aparte y no se suman.",
+    ],
+    "0099": [
+        "**Calcular la card desde `fecha_dato`, ponderado por `peso_efectivo`** — "
+        "elegida.",
+        "**Declarar las fechas a mano en un diccionario paralelo** — descartada "
+        "deliberadamente: se desactualiza en silencio.",
+    ],
+    "0102": [
+        "**Emitir `nota_denominador` sólo cuando el caso se da** — elegida: el "
+        "porcentaje bajó respecto de la lectura anterior *y* la inversión aprobada "
+        "subió.",
+        "**Avisar siempre** — descartada.",
+    ],
+    "0103": [
+        "**Clasificar las anclas por procedencia** y publicar qué fracción del peso de "
+        "cada índice viene de cada tipo — elegida.",
+        "**Dejar el origen de las anclas sin declarar** — es justamente el estado que "
+        "este ADR cierra.",
+    ],
+    "0104": [
+        "**Conservar `out_of_sample.py` pero sin que emita veredictos** — elegida: "
+        "marca candidatos (`mirar` / `sin señal`) y publica al lado el rango crudo de "
+        "cada ventana, que es el dato que permite decidir.",
+        "**Que emita un veredicto** — descartada: el out-of-sample no puede resolver la "
+        "circularidad.",
+    ],
+    "0109": [
+        "**No tocar la escala de tensión** — elegida: la recomendación de la auditoría "
+        "pasa a «verificada, no requiere cambio».",
+        "**Recalibrar la escala** — descartada por la evidencia medida.",
+    ],
+    "0110": [
+        "**Renombrar la dimensión a «Percepción, seguridad y consumo»** — elegida: el "
+        "nombre enumera lo que hay adentro.",
+        "**Cambiar componentes o pesos** — no: mismos componentes, mismos pesos "
+        "internos y mismo peso nominal del 15%; el ITVC queda idéntico.",
+    ],
+    "0111": [
+        "**El costo del alquiler entra** — elegida: IPC-GBA de alquiler deflactado por "
+        "el nivel general, encarecimiento relativo rebaseado a 100 = 4T-2023, con la "
+        "misma construcción que `ipc_alimentos`.",
+        "**Pobreza** — no entra.",
+        "**Expectativas** — no entran.",
+    ],
+    "0012": [
+        "**Reconstruir sólo los indicadores de alta factibilidad**, computando la misma "
+        "métrica que muestra la card — elegida, con la regla de oro de que el último "
+        "punto de la serie reconstruida coincida con el valor live.",
+        "**Los de baja factibilidad** quedan fuera de esta reconstrucción: no tienen "
+        "histórico computable con la misma métrica.",
+    ],
+    "0017": [
+        "**`protestas_caba` como indicador de contexto**, que no puntúa — elegida.",
+        "**Que puntúe dentro del ITCG** — no: entra como contexto.",
+        "**`protocolo_antipiquetes`** sigue manual hasta que su serie madure.",
+    ],
+    "0018": [
+        "**Rebase a 100 = promedio del 4T-2023** — elegida.",
+        "**Diciembre puntual como base** — descartada: el promedio del trimestre "
+        "amortigua el traspaso a precios de la devaluación de fin de 2023.",
+        "**Bases constantes** — descartadas salvo carne, delitos y el fallback de "
+        "motos: se calculan dinámicamente de la propia serie (ADR-0001).",
+    ],
+    "0019": [
+        "Las alternativas se evalúan decisión por decisión contra el canon de índices "
+        "compuestos: el *Handbook on Constructing Composite Indicators* (OCDE/JRC "
+        "2008), la crítica de Ravallion a los *mashup indices* y la reforma del IDH "
+        "2010. Cada una queda resuelta —o derivada a su propio ADR— en la sección "
+        "Decisión.",
+    ],
+    "0023": [
+        "**`litigiosidad_laboral` entra al índice** — elegida: de los tres indicadores "
+        "de contexto de gestión, era el único que lo merecía.",
+        "**`protestas_caba` y `alertas_manifestacion`** — siguen como contexto; no "
+        "entran al ITCG.",
+    ],
+    "0024": [
+        "**Acumulado móvil de 12 meses para motos** — elegida.",
+        "**Desestacionalizar las series** — evaluado y no hace falta en casi todos los "
+        "componentes: el diseño ya cubre la estacionalidad por construcción, vía "
+        "comparaciones interanuales, acumulados de 12 meses y ventanas móviles.",
+    ],
+    "0025": [
+        "**Colector automático** con el IRPC (1 − cortes CABA del último año / cortes "
+        "CABA 2023) y anclajes anuales curados y fechados — elegida.",
+        "**Seguir con carga manual** — reemplazada por el colector.",
+    ],
+    "0028": [
+        "**Z-scores de nivel contra la propia historia** (ventana expansiva, ~102 "
+        "meses), conservando los tres conceptos y los pesos del documento de CIGOB "
+        "(precio 30 / volumen 40 / asignación 30) — elegida.",
+        "**La construcción anterior del IdC** — descartada tras la auditoría "
+        "adversarial de ADR-0027.",
+    ],
+    "0033": [
+        "**`ipc_alimentos` puntúa el encarecimiento RELATIVO de la comida** (IPC "
+        "alimentos contra IPC general, sin RIPTE) — elegida: responde la pregunta de "
+        "precios pura.",
+        "**La métrica anterior, con RIPTE** — descartada: compartía numerador y "
+        "denominador con la brecha, que es el doble conteo que este ADR elimina.",
+        "**Winsorización asimétrica, techo 140 y sin piso** — elegida frente a no "
+        "winsorizar.",
+    ],
+    "0063": [
+        "**Aceptar `PE` y `JGM` como siglas de expediente del Ejecutivo** — elegida.",
+        "**Sólo `PE`** — insuficiente: dejaba afuera los expedientes de Jefatura de "
+        "Gabinete, entre ellos el Presupuesto.",
+    ],
+    "0065": [
+        "**Deflactar por la inflación promedio anual del IPC de INDEC** — elegida.",
+        "**Deflactor dic-dic** — descartado: subdeflacta.",
+        "**El fallback hardcodeado `IPC_ANUAL`** — eliminado, por ser de un tipo "
+        "incompatible con el deflactor nuevo.",
+    ],
+    "0066": [
+        "**Excluir Tesoro Nacional, seguridad social y Fondo ATN de la suma** — "
+        "elegida.",
+        "**Sumar el CSV RON completo** — descartada: incluye la porción del Tesoro "
+        "Nacional, que no es transferencia a provincias.",
     ],
     "0026": [
         "**Esperar a la suscripción DP** para mensualizar el IRPC — camino elegido.",

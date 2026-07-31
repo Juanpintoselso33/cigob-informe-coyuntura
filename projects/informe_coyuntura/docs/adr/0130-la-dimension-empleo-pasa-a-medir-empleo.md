@@ -32,7 +32,8 @@ puestos de trabajo.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Entra `empleo_registrado`** —asalariados del sector privado declarados al SIPA— expresado en base 100 = 4T-2023 como el resto de los componentes — elegida.
+- **Seguir midiendo la dimensión con lo que tenía** — reemplazado: la dimensión de empleo pasa a medir empleo.
 
 ## Decisión
 

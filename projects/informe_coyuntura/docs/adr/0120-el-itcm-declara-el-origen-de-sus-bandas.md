@@ -52,7 +52,9 @@ en la distribución pre-mandato, y la respuesta **no es la misma para todas**:
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Escribir el origen de cada banda del ITCM** — elegida: la circularidad baja del 83% al 38%.
+- **Anclar `ipc_total` a su propia historia** — descartada explícitamente: hacerlo sería un error.
+- **Recalibrar para blanquear el número** — prohibido por ADR-0045; el trinquete de ADR-0105 lo impide.
 
 ### Consecuencias
 

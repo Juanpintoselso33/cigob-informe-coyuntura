@@ -60,7 +60,8 @@ serie 6,7 puntos porcentuales**.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Validar la fuente y versionar la serie** —anual desde 2008, mensual de 12 meses, conteos crudos y correlación contra `eficacia_legislativa`— elegida.
+- **Incorporarlo como cociente solo** — descartada: un indicador cuyo movimiento principal viene del denominador y se lee como si viniera del numerador es engañoso.
 
 ## Decisión
 

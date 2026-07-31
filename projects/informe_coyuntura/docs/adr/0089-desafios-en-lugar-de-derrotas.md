@@ -51,7 +51,8 @@ visibles y es falso. La redundancia era real; la explicación, no.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **`desafios_legislativos`** — elegida: cuántas normas propias del Ejecutivo fueron llevadas a votación en el recinto en los últimos 12 meses, gane o pierda.
+- **`derrotas_legislativas`** — sale del índice.
 
 ## Decisión
 

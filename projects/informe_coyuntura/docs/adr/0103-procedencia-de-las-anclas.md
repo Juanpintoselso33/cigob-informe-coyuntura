@@ -31,7 +31,8 @@ había medido **cuánto** del puntaje descansa en anclas de cada tipo.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Clasificar las anclas por procedencia** y publicar qué fracción del peso de cada índice viene de cada tipo — elegida.
+- **Dejar el origen de las anclas sin declarar** — es justamente el estado que este ADR cierra.
 
 ## Decisión
 

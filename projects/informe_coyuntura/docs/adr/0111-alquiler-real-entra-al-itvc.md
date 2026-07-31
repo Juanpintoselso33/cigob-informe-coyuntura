@@ -41,7 +41,9 @@ dentro del cinturón (+0,512 entre salario y endeudamiento).
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **El costo del alquiler entra** — elegida: IPC-GBA de alquiler deflactado por el nivel general, encarecimiento relativo rebaseado a 100 = 4T-2023, con la misma construcción que `ipc_alimentos`.
+- **Pobreza** — no entra.
+- **Expectativas** — no entran.
 
 ### Consecuencias
 

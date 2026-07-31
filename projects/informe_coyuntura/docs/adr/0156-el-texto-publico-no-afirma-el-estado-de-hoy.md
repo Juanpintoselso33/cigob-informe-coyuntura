@@ -34,7 +34,8 @@ salido del índice unas horas antes.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **El texto público dice el método; el número lo deriva el pipeline** — elegida. Cuando hace falta nombrar un estado, la frase remite a algo que se recalcula en vez de afirmar el valor.
+- **Afirmar el valor en el texto** — descartada: caduca en silencio.
 
 ## Decisión
 

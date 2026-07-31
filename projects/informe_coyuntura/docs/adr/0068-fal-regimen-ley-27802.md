@@ -81,7 +81,9 @@ régimen es de 1980; el argumento de contaminación se sostiene igual).
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Re-apuntar la cobertura al régimen vigente**: menciones del BO de «fondo de asistencia laboral» desde el 01-mar-2026 — elegida.
+- **La consulta anterior, «fondo de cese laboral»** — descartada: contaba el régimen homónimo de la construcción, que es ruido de fondo.
+- **Mantener el pleno autorreferencial** (21 menciones ≡ una estimación manual) — descartado: se recalibra contra un ancla externa, por el criterio de ADR-0059.
 
 ## Decisión
 

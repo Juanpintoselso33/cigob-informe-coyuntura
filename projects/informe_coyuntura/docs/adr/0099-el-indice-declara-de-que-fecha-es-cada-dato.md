@@ -26,7 +26,8 @@ mayo a julio de 2026 según el indicador»".
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Calcular la card desde `fecha_dato`, ponderado por `peso_efectivo`** — elegida.
+- **Declarar las fechas a mano en un diccionario paralelo** — descartada deliberadamente: se desactualiza en silencio.
 
 ## Decisión
 

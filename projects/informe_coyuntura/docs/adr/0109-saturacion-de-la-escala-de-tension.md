@@ -31,7 +31,8 @@ La saturación es real: `mora_familias` da tensión cruda 21,3 y `peso_tarifas`
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **No tocar la escala de tensión** — elegida: la recomendación de la auditoría pasa a «verificada, no requiere cambio».
+- **Recalibrar la escala** — descartada por la evidencia medida.
 
 ## Decisión
 

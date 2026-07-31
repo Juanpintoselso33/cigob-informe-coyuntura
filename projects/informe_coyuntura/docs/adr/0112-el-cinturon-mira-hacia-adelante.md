@@ -17,7 +17,8 @@ origen: 'Auditoría de Vida Cotidiana, punto 3.6 (expectativas a futuro)'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Incorporar la Encuesta de Expectativas** como primera medida prospectiva del cinturón — elegida.
+- **Mantener el cierre de ADR-0111** («las únicas series vivas terminan en 2026-01, seis meses de rezago») — descartada: **era falso, y el error fue de método**. Se consultó el espejo de la serie en datos.gob.ar, que sí está desactualizado, y se dio el punto por cerrado sin ir a la fuente.
 
 ## Decisión
 

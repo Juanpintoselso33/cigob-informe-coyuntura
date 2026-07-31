@@ -39,7 +39,8 @@ todos ellos se equivocan **al mismo tiempo y de forma coordinada**.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Un único error de deflactor por corrida**, compartido por todos los indicadores que lo heredan — elegida.
+- **Un error independiente por indicador** — descartada: asume una cancelación entre errores que no ocurre.
 
 ## Decisión
 

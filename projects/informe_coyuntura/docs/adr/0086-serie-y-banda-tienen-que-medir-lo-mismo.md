@@ -37,7 +37,8 @@ real se movió dentro de un rango estrecho y bajo.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Sacar `rigi_inversiones` de la reconstrucción histórica y de la matriz de redundancia del ITCG** — elegida. Sigue puntuando desde su card, que es correcta.
+- **Seguir usando su serie** — descartada: mide en M USD contra una banda en %.
 
 ## Decisión
 

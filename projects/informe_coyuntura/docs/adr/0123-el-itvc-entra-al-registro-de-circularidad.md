@@ -28,7 +28,8 @@ registro no le aplicaba tal como estaba escrito.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Clasificar cada componente del ITVC como conceptual por construcción** — elegida: su ancla es una fecha fija, el arranque del mandato, no un rango observado. No hay cortes que elegir, así que no hay dónde colar una calibración contra el período.
+- **Clasificarlo con el criterio de los índices con bandas** — no aplica: el ITVC no tiene bandas.
 
 ### Consecuencias
 

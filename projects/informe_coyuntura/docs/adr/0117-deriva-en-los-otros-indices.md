@@ -15,7 +15,8 @@ ambito: 'ITCM · ITCG · ITCP · `tests/test_redundancia_itvc.py`'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Extender el guard a los cuatro índices y compararlo por pares**, no por indicadores — elegida. Verificado que dispara.
+- **Dejarlo sólo en el índice donde apareció la deriva** — descartada.
 
 ## Decisión
 

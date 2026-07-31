@@ -16,7 +16,8 @@ ambito: 'Validación del método · `scripts/out_of_sample.py`'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Conservar `out_of_sample.py` pero sin que emita veredictos** — elegida: marca candidatos (`mirar` / `sin señal`) y publica al lado el rango crudo de cada ventana, que es el dato que permite decidir.
+- **Que emita un veredicto** — descartada: el out-of-sample no puede resolver la circularidad.
 
 ## Decisión
 

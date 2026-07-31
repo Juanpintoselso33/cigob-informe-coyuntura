@@ -22,7 +22,9 @@ puntuación.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Rebase a 100 = promedio del 4T-2023** — elegida.
+- **Diciembre puntual como base** — descartada: el promedio del trimestre amortigua el traspaso a precios de la devaluación de fin de 2023.
+- **Bases constantes** — descartadas salvo carne, delitos y el fallback de motos: se calculan dinámicamente de la propia serie (ADR-0001).
 
 ## Decisión
 

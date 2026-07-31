@@ -33,7 +33,8 @@ que una mande sobre la otra.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Repartir el 41% conjunto casi en partes iguales** — elegida: `idc` 30%→21% y `credito_privado` 11%→20%.
+- **Redistribuir toda la dimensión** — descartada: reservas y costo de financiamiento quedan intactos, la decisión es entre esos dos componentes.
 
 ## Decisión
 

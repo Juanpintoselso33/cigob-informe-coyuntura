@@ -34,7 +34,8 @@ cifra de portada de los informes de mayo y junio.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Publicar las normas de desregulación acumuladas según el informe mensual del ministerio** — elegida.
+- **El conteo propio sobre InfoLeg de ADR-0096** — reemplazado por la fuente oficial.
 
 ## Decisión
 

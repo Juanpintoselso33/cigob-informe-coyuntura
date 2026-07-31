@@ -30,7 +30,8 @@ dimensión** (carne 10 + motos 5) mide algo distinto de lo que el rótulo anunci
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Renombrar la dimensión a «Percepción, seguridad y consumo»** — elegida: el nombre enumera lo que hay adentro.
+- **Cambiar componentes o pesos** — no: mismos componentes, mismos pesos internos y mismo peso nominal del 15%; el ITVC queda idéntico.
 
 ## Decisión
 

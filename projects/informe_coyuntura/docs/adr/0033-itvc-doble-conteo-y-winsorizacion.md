@@ -34,7 +34,9 @@ a la agregación.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **`ipc_alimentos` puntúa el encarecimiento RELATIVO de la comida** (IPC alimentos contra IPC general, sin RIPTE) — elegida: responde la pregunta de precios pura.
+- **La métrica anterior, con RIPTE** — descartada: compartía numerador y denominador con la brecha, que es el doble conteo que este ADR elimina.
+- **Winsorización asimétrica, techo 140 y sin piso** — elegida frente a no winsorizar.
 
 ### Consecuencias
 

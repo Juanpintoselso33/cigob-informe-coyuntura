@@ -31,7 +31,8 @@ que hace este ADR— es la **subdivisión del FAL en los dos actos**.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Medir los dos actos fundamentales** (`100 × actos_cumplidos / 2`), identificados por número de norma y no por posición en una lista — elegida.
+- **El compuesto anterior** — lo que puntuaba se sigue relevando y viaja como contexto, sin incidir en el puntaje.
 
 ## Decisión
 

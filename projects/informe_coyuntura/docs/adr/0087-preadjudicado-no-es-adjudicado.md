@@ -40,7 +40,8 @@ estado en ese estado.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Evaluar el estado con frontera de palabra** (`\bADJUDICADO\b`) — elegida: no matchea dentro de PREADJUDICADO y sigue aceptando variantes legítimas como «Adjudicado Parcial».
+- **Arreglar sólo el detector** — insuficiente: la misma comparación estaba duplicada en `descargar_series.py`.
 
 ## Decisión
 

@@ -24,7 +24,9 @@ movió: **ITCG sigue en 72,5 e ITCP en 69,0.**
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Escribir el origen de las bandas del ITCG y del ITCP** — elegida: los tres índices convergen en ~40%.
+- **Dejarlas como convención invisible** — descartada: las que siguen siendo convención quedan declaradas como tales.
+- **Recalibrar para bajar el número** — prohibido por ADR-0045 y el trinquete de ADR-0105.
 
 ### Consecuencias
 

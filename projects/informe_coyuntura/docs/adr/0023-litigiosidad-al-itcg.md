@@ -35,7 +35,8 @@ distinta — y una sola sobrevivió al análisis:
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **`litigiosidad_laboral` entra al índice** — elegida: de los tres indicadores de contexto de gestión, era el único que lo merecía.
+- **`protestas_caba` y `alertas_manifestacion`** — siguen como contexto; no entran al ITCG.
 
 ## Decisión
 

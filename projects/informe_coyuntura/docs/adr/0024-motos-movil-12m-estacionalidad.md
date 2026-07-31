@@ -33,7 +33,8 @@ estacionalidad de la canasta; el doc diseñó estos componentes en niveles).
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Acumulado móvil de 12 meses para motos** — elegida.
+- **Desestacionalizar las series** — evaluado y no hace falta en casi todos los componentes: el diseño ya cubre la estacionalidad por construcción, vía comparaciones interanuales, acumulados de 12 meses y ventanas móviles.
 
 ## Decisión
 

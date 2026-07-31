@@ -64,7 +64,8 @@ la distorsión era mayor (2019: +51,4% provincias vs +43,1% total).
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Excluir Tesoro Nacional, seguridad social y Fondo ATN de la suma** — elegida.
+- **Sumar el CSV RON completo** — descartada: incluye la porción del Tesoro Nacional, que no es transferencia a provincias.
 
 ## Decisión
 

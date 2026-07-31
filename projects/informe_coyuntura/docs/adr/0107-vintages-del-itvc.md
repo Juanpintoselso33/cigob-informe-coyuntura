@@ -34,7 +34,8 @@ ITVC.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Calcular la antigüedad de cada dato del ITVC** y publicarla — elegida: 2,8 meses de antigüedad media ponderada y 198 días entre el dato más nuevo y el más viejo.
+- **No declararla** — es el estado que este ADR cierra.
 
 ## Decisión
 

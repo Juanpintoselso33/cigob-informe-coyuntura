@@ -37,7 +37,9 @@ de la matriz sin ver que abajo había un crash.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Que el gate distinga integridad de demora** — elegida.
+- **Que cualquier falla del gate corte la publicación** — descartada: incluía G2, una fuente que publicó tarde, que no compromete la integridad de nada.
+- **Agregar `pypdf` y `pymupdf` a `requirements.txt`** — sin eso el indicador de desregulación nunca funcionó en CI, sólo en la máquina donde se desarrolló.
 
 ### Confirmación
 

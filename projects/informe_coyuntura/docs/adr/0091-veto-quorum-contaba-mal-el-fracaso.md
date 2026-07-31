@@ -24,7 +24,9 @@ fondo era otro y más grave.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Numerador: sesiones clasificadas «en minoría»; denominador: sesiones convocadas para tratar temas** — elegida.
+- **Ventana del período legislativo** — reemplazada por 12 meses calendario móviles.
+- **Incluir informativas, preparatoria y presentación de presupuesto** — quedan afuera: son instancias donde el oficialismo no necesita reunir quórum para avanzar su agenda.
 
 ## Decisión
 

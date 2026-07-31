@@ -27,7 +27,8 @@ correcto para «promesa cumplida» vs. «promesa anunciada»".
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Publicar la norma que respalda la etapa vigente de cada empresa**, con su fecha — elegida: quien discrepe puede discutir el criterio concreto en vez de sospechar del número.
+- **Publicar sólo la etapa** — descartada: deja la asignación más vulnerable a cuestionamientos de sesgo.
 
 ## Decisión
 

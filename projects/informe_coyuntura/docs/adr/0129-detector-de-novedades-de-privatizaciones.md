@@ -26,7 +26,8 @@ segunda no se sigue de la primera.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Automatizar la detección, no la clasificación** — elegida: el detector marca normas como pendientes de revisión y no toca etapas.
+- **Automatizar también la asignación de etapa** — descartada: la segunda no se sigue de la primera.
 
 ## Decisión
 

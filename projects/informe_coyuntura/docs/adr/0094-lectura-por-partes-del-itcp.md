@@ -29,7 +29,8 @@ cosas no responde ninguna con precisión.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Publicar una card de «Lectura por partes»** con las tres familias, sus puntajes y sus componentes ordenados de peor a mejor — elegida. La separación es **de lectura, no de cálculo**, tal como pedía la auditoría.
+- **Partir el cálculo del índice en tres** — descartada.
 
 ## Decisión
 

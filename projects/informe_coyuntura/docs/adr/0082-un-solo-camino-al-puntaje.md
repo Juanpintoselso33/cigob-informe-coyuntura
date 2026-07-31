@@ -15,7 +15,8 @@ origen: 'El mismo bug, cuatro veces en una jornada'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Declarar las transformaciones junto a las bandas y que las aplique el motor** — elegida.
+- **Que cada llamador aplique la transformación antes de invocar al índice** — descartada: es lo que permitía que existiera más de un camino al puntaje.
 
 ## Decisión
 

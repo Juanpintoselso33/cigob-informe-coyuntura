@@ -28,7 +28,9 @@ distintas.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Correlacionar los puntajes mensuales** — elegida: el puntaje es lo que efectivamente se promedia dentro del índice, así que es ahí donde dos indicadores acoplados terminan contando dos veces el mismo ciclo.
+- **Correlacionar los valores crudos** — descartada por lo anterior.
+- **Reponderar por este hallazgo** — no se hace: no se cambia ninguna ponderación a partir del resultado.
 
 ## Decisión
 

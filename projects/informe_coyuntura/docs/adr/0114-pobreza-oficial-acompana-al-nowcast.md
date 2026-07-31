@@ -31,7 +31,8 @@ al saldo comercial).
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Publicar `pobreza_indec` como serie acompañante** de `pobreza_nowcast`: una sola card, dos curvas en el modal — elegida. La estimación mensual da el pulso y la medición oficial la referencia.
+- **Una card separada para cada una** — descartada. Ninguna de las dos puntúa.
 
 ## Decisión
 

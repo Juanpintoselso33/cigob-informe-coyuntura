@@ -26,7 +26,8 @@ piquete coincide con la de la Res. 943/23.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Colector automático** con el IRPC (1 − cortes CABA del último año / cortes CABA 2023) y anclajes anuales curados y fechados — elegida.
+- **Seguir con carga manual** — reemplazada por el colector.
 
 ## Decisión
 

@@ -42,7 +42,8 @@ excluye correctamente.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Aceptar `PE` y `JGM` como siglas de expediente del Ejecutivo** — elegida.
+- **Sólo `PE`** — insuficiente: dejaba afuera los expedientes de Jefatura de Gabinete, entre ellos el Presupuesto.
 
 ## Decisión
 

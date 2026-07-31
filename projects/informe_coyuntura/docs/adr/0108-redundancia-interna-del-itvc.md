@@ -28,7 +28,8 @@ ADR-0085 para los otros tres índices; faltaba el ITVC.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Usar la identidad como escala** (`_EscalaIdentidad`) — elegida: el ITVC no tiene bandas, sus componentes ya son índices base 100 = 4T-2023 y el número que se promedia es el índice mismo.
+- **Aplicarle una escala de puntaje como a los otros tres** — descartada: esa escala no existe en este índice.
 
 ## Decisión
 

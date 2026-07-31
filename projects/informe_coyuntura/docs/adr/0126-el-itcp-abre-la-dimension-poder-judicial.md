@@ -26,7 +26,8 @@ agenda de un gobierno.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **`cobertura_judicial`**: porcentaje de cargos de juez habilitados que tienen juez designado — elegida entre los nueve indicadores candidatos que se listaron con su nivel de viabilidad.
+- **Contar como cubierto el cargo con subrogante** — descartada: la subrogancia es una solución transitoria.
 
 ## Decisión
 

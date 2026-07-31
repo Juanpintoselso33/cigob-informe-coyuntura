@@ -27,7 +27,8 @@ Al revisarlo aparecieron dos cosas.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Declarar el riesgo sistémico en los dos lugares** —ficha del ITCM y ficha del `ipc_total`— elegida.
+- **Tratar cada falla del deflactor como independiente** — descartada: el error se propaga a todos los que lo heredan (ADR-0078).
 
 ## Decisión
 

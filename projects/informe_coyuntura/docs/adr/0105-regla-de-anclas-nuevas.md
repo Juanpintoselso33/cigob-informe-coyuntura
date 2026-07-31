@@ -29,7 +29,9 @@ el criterio **antes** de mirar el dato.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Referencia externa** (un estudio publicado, la práctica de otros gobiernos, un estándar internacional) — primera opción del orden: ACIJ para `ratio_dnu`, Directorio Legislativo para `eficacia_legislativa`.
+- **Valor con significado propio** (el cero, la paridad, el 100%) — segunda.
+- Las categorías se recorren en ese orden y **se usa la primera viable**; el trinquete impide después volver a una peor.
 
 ## Decisión
 

@@ -23,7 +23,9 @@ común y su promedio «convergente» era un número solo disfrazado de promedio.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Concepto de la familia fijado antes de medir**: qué hace el capital privado con su propia plata frente al programa de transformación — elegida.
+- **Opiniones y registros del propio Estado** — quedan afuera: los segundos son los componentes del índice, y usarlos sería validarlo contra sí mismo.
+- El ADR publica la tabla de candidatas descartadas con el motivo de cada una.
 
 ## Decisión
 

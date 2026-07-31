@@ -44,7 +44,7 @@ que se documentan acá como decisiones separadas.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- Las alternativas se evalúan decisión por decisión contra el canon de índices compuestos: el *Handbook on Constructing Composite Indicators* (OCDE/JRC 2008), la crítica de Ravallion a los *mashup indices* y la reforma del IDH 2010. Cada una queda resuelta —o derivada a su propio ADR— en la sección Decisión.
 
 ## Decisión
 

@@ -24,7 +24,8 @@ contar. Sirve para no perderse un fallo.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Construir un detector, no un indicador** — elegida: automatiza la vigilancia, no el juicio, con el mismo patrón que ADR-0129.
+- **Construir directamente un indicador** — descartada.
 
 ## Decisión
 

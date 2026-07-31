@@ -25,7 +25,8 @@ artefacto de cómo se armó el universo.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Suspender la decisión editorial pendiente, no responderla** — elegida: no tiene sentido decidir si el ITCP admite un indicador de evento antes de saber cuántos eventos hay.
+- **Responderla ahora** — descartada: su premisa era falsa. El universo de un caso era un artefacto de la consulta.
 
 ## Decisión
 

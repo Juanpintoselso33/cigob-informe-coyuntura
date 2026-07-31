@@ -24,7 +24,8 @@ niveles puede ser sólo eso.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Comparar dos modelos y reportar el aporte incremental de R²** —tendencia sola contra tendencia más índice— elegida.
+- **Traer una dependencia nueva para resolver la regresión** — descartada: son tres parámetros, se resuelve por eliminación gaussiana sobre las ecuaciones normales.
 
 ## Decisión
 

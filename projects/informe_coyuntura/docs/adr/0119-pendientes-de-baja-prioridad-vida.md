@@ -15,7 +15,9 @@ origen: 'Auditoría de Vida Cotidiana, recomendaciones de baja prioridad'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Consumo de carne**: la limitación es real y ahora tiene número, pero **el indicador no se cambia**, por un dato que la auditoría no tenía.
+- **Notación de las fórmulas invertidas**: se corrige.
+- **Identificadores legado**: no se renombran, y está bien.
 
 ## Decisión
 

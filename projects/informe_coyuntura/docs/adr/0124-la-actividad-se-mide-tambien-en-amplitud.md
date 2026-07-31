@@ -21,7 +21,8 @@ expresar, porque devuelve un solo número.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Entra `emae_difusion`** con peso 0,20, que **sale entero del EMAE agregado** — elegida.
+- **Sacarle peso al IPI** — descartada: la composición por fuente de la dimensión no se mueve.
 
 ## Decisión
 

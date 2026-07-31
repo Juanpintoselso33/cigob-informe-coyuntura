@@ -29,7 +29,8 @@ no cuenta, el indicador mide cero en treinta y un meses.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Sí cuenta como veto de constitucionalidad** — elegida: el propio SAIJ lo indexó como control de constitucionalidad de oficio, y eso es dirimente por coherencia.
+- **No contarla** — descartada: la regla que la excluiría descalificaría otros catorce casos. No se puede ignorar el criterio cuando incluye y usarlo cuando excluye.
 
 ## Decisión
 

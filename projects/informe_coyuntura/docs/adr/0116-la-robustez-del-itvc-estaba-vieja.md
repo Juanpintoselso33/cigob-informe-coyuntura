@@ -34,7 +34,8 @@ cuando hoy comparten la de precios.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Recalcular y agregar el guard que faltaba** — elegida: el test compara los componentes de la matriz publicada en el snapshot contra los que el índice pondera hoy. Verificado que dispara forzando el estado stale real.
+- **Sólo recalcular** — insuficiente: sin guard, el snapshot vuelve a quedar viejo en silencio.
 
 ## Decisión
 

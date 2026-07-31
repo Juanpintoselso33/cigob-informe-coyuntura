@@ -53,7 +53,9 @@ diferencia.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Deflactar por la inflación promedio anual del IPC de INDEC** — elegida.
+- **Deflactor dic-dic** — descartado: subdeflacta.
+- **El fallback hardcodeado `IPC_ANUAL`** — eliminado, por ser de un tipo incompatible con el deflactor nuevo.
 
 ## Decisión
 

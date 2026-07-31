@@ -15,7 +15,8 @@ origen: 'piloto propuesto por la revisión externa del cinturón político'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **No crear un indicador nuevo** — elegida: con 32 posts en cuatro años y un hueco de veinte meses, el archivo no sostiene una serie mensual.
+- **Usarlo como corroboración** — es lo que sí aporta, y es exactamente lo que le faltaba a un indicador de fuente única.
 
 ## Decisión
 

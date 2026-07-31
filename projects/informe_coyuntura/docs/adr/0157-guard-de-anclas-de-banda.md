@@ -25,7 +25,8 @@ recalibra anclas seguido —hay ADRs enteros dedicados a eso (0050, 0058/0059,
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Cruzar contra el motor lo que cada ficha publica, por los dos caminos que existen** —el campo estructurado y la frase en prosa— elegida.
+- **Verificar sólo el campo estructurado** — insuficiente: hay fichas que declaran las bandas en prosa.
 
 ## Decisión
 

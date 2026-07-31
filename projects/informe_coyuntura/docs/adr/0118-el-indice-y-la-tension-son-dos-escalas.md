@@ -25,7 +25,8 @@ haciendo falta.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Decir explícitamente dónde vive cada escala** — elegida.
+- **Dejar los dos sistemas de puntuación corriendo en paralelo sin explicarlo** — es el estado que la auditoría objetó.
 
 ## Decisión
 

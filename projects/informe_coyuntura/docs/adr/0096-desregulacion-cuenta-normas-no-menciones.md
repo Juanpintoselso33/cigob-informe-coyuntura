@@ -14,7 +14,9 @@ origen: 'Auditoría externa del cinturón de gestión (doc 1), prioridad alta'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Contar normas completas derogadas desde dic-2023**, leyendo sólo la parte dispositiva — elegida.
+- **Contar menciones de una norma** — descartada.
+- **Sumar las derogaciones parciales** — no: se relevan aparte y no se suman.
 
 ## Decisión
 

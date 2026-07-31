@@ -26,7 +26,8 @@ el ITCG y el ITCP son de esa familia.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Comparar contra un panel de 8 estadísticas externas**, ninguna de ellas componente de ninguno de los cuatro índices —hay un test que lo verifica—, reportando el promedio convergente, el discriminante y la brecha entre ambos — elegida.
+- **Validar contra una sola serie externa** — descartada.
 
 ## Decisión
 

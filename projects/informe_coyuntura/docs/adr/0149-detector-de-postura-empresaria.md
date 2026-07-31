@@ -28,7 +28,8 @@ cuando la métrica empezaba a servir.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Marcar los comunicados nuevos como pendientes de codificar** — elegida.
+- **Codificar la postura automáticamente** — descartada, por el mismo criterio de ADR-0129 y ADR-0141: se automatiza la vigilancia, no el juicio.
 
 ### Consecuencias
 

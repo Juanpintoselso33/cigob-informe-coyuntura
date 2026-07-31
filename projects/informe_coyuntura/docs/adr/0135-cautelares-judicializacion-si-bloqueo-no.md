@@ -84,7 +84,8 @@ forma de identificar al Estado como demandado con precisión.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Judicialización: viable** — queda como candidata construible. La densidad cautelar normalizada en jurisdicción Federal + Nacional nace discriminando: rango ×3,5, historia desde 2016 para calibrar con datos reales, y no depende del volumen editorial de SAIJ.
+- **Bloqueo cautelar: no viable desde estas fuentes** — descartada.
 
 ## Decisión
 

@@ -22,7 +22,9 @@ Argentina desde 2018, actualización semanal, uso permitido con atribución.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **`protestas_caba` como indicador de contexto**, que no puntúa — elegida.
+- **Que puntúe dentro del ITCG** — no: entra como contexto.
+- **`protocolo_antipiquetes`** sigue manual hasta que su serie madure.
 
 ## Decisión
 

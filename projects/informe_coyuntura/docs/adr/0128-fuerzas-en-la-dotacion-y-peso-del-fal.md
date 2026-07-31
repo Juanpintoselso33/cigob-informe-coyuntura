@@ -51,7 +51,9 @@ modo que incluirlas **subestima el ajuste de la planta civil en 0,37 pp**.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **No descontar las fuerzas del denominador de la dotación** — elegida: sacarlas sería una decisión editorial que hay que justificar por separado, no un arreglo técnico. Un gobierno que reduce el Estado y a la vez sostiene sus fuerzas está tomando una decisión, y el indicador debe reflejarla.
+- **Descontarlas** — descartada.
+- **Publicar el desglose en la card** — se hace, igual que en ADR-0097.
 
 ## Decisión
 

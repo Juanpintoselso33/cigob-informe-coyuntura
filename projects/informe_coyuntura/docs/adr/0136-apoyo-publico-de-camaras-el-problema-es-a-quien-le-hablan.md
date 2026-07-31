@@ -80,7 +80,8 @@ año, en la cámara que resultó ser el mejor caso de las ocho.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **No construir el indicador tal como está propuesto** — elegida, y no por falta de fuente: la fuente existe, es scrapeable y la postura es codificable.
+- **Codificar sólo la postura** — insuficiente: sin codificar el destinatario, el indicador cuenta críticas a intendentes como si fueran críticas al Gobierno. El esquema mínimo es de dos ejes.
 
 ## Decisión
 

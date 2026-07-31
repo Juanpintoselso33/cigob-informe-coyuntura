@@ -27,7 +27,9 @@ los mismos términos.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Calcular la matriz también sobre primeras diferencias**, publicando las dos medidas — elegida: correlacionar los cambios mes a mes cancela la tendencia común y deja el co-movimiento real.
+- **Medirla sólo sobre niveles** — insuficiente.
+- **Incluir al ITVC** — queda afuera: es un índice base-100 continuo, sin bandas ni puntajes.
 
 ## Decisión
 

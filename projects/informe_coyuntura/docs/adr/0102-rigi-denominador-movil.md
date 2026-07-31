@@ -24,7 +24,8 @@ origen: 'Auditoría externa del cinturón de gestión (doc 2), punto 3.6'
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Emitir `nota_denominador` sólo cuando el caso se da** — elegida: el porcentaje bajó respecto de la lectura anterior *y* la inversión aprobada subió.
+- **Avisar siempre** — descartada.
 
 ## Decisión
 
