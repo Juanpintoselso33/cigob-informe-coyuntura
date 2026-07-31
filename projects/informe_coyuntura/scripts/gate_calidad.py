@@ -48,6 +48,17 @@ MAX_DIAS = {
     # el 29-jul-2026 la card declaraba `date.today()` y este tope no existía
     # porque el indicador se mostraba fresco siempre.
     "iaf_transferencias": 560,
+    # ANUALES del bloque judicial (ADR-0168). Sin tope propio, un indicador
+    # anual queda marcado como desactualizado siempre, que es exactamente el
+    # falso positivo que ADR-0133 separó de una falla de integridad.
+    # velocidad_resolucion: el anuario del año N sale bien entrado N+1, y la
+    # fecha del dato es el cierre del año de referencia — mismo ciclo que
+    # iaf_transferencias.
+    "velocidad_resolucion": 560,
+    # judicializacion: el punto del año en curso se recalcula en cada corrida y
+    # se fecha al 1-ene de ese año, así que el rezago crece hasta 365 días antes
+    # de que aparezca el punto siguiente. 430 cubre el ciclo con margen.
+    "judicializacion": 430,
     "protocolo_antipiquetes": 430,      # DP publica monitoreos esporádicos
     "litigiosidad_laboral": 220,        # SRT
     "libertad_opcion_salud": 220,       # SSS

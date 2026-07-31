@@ -31,6 +31,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,votometro_ventaja_lla,12.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2024-01-01,votometro_ventaja_lla,14.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2023-12-01,votometro_ventaja_lla,16.1,pp (brecha LLA−PJ),Votómetro CIGOB
+2026-07-31,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
 2026-06-30,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
 2026-05-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
 2026-04-30,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
@@ -62,6 +63,18 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
+2025-12-31,velocidad_resolucion,45.4,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2024-12-31,velocidad_resolucion,41.7,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2023-12-31,velocidad_resolucion,52.4,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2022-12-31,velocidad_resolucion,65.2,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2021-12-31,velocidad_resolucion,78.3,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2020-12-31,velocidad_resolucion,72.4,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2019-12-31,velocidad_resolucion,112.4,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2018-12-31,velocidad_resolucion,26.0,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2017-12-31,velocidad_resolucion,64.8,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2016-12-31,velocidad_resolucion,84.4,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2015-12-31,velocidad_resolucion,110.5,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
+2014-12-31,velocidad_resolucion,141.8,% de expedientes resueltos sobre ingresados,CSJN — anuario estadístico
 2026-07-01,rotacion_gabinete,7,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2026-06-01,rotacion_gabinete,7,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2026-05-01,rotacion_gabinete,6,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
@@ -94,7 +107,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
-2026-07-01,ratio_dnu,1.88,DNUs por ley (12m móviles),InfoLeg
+2026-07-01,ratio_dnu,1.92,DNUs por ley (12m móviles),InfoLeg
 2026-06-01,ratio_dnu,2.3,DNUs por ley (12m móviles),InfoLeg
 2026-05-01,ratio_dnu,4.727,DNUs por ley (12m móviles),InfoLeg
 2026-04-01,ratio_dnu,4.0,DNUs por ley (12m móviles),InfoLeg
@@ -126,8 +139,83 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,ratio_dnu,1.5,DNUs por ley (12m móviles),InfoLeg
 2024-01-01,ratio_dnu,1.353,DNUs por ley (12m móviles),InfoLeg
 2023-12-01,ratio_dnu,1.176,DNUs por ley (12m móviles),InfoLeg
+2026-07-01,produccion_legislativa,28,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-06-01,produccion_legislativa,24,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-05-01,produccion_legislativa,18,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-04-01,produccion_legislativa,17,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-03-01,produccion_legislativa,16,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-02-01,produccion_legislativa,17,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-01-01,produccion_legislativa,17,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-12-01,produccion_legislativa,15,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-11-01,produccion_legislativa,15,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-10-01,produccion_legislativa,37,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-09-01,produccion_legislativa,39,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-08-01,produccion_legislativa,47,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-07-01,produccion_legislativa,45,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-06-01,produccion_legislativa,46,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-05-01,produccion_legislativa,43,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-04-01,produccion_legislativa,45,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-03-01,produccion_legislativa,46,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-02-01,produccion_legislativa,42,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2025-01-01,produccion_legislativa,42,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-12-01,produccion_legislativa,42,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-11-01,produccion_legislativa,42,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-10-01,produccion_legislativa,45,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-09-01,produccion_legislativa,32,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-08-01,produccion_legislativa,21,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-07-01,produccion_legislativa,25,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-06-01,produccion_legislativa,23,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-05-01,produccion_legislativa,23,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-04-01,produccion_legislativa,31,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-03-01,produccion_legislativa,32,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-02-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2024-01-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2023-12-01,produccion_legislativa,34,leyes sancionadas (12m móviles),Cámara de Diputados — dataset de leyes sancionadas
+2026-07-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2026-06-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2026-05-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2026-04-01,paralisis_denuncias,7,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2026-03-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2026-02-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2026-01-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-12-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-11-01,paralisis_denuncias,4,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-10-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-09-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-08-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-07-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-06-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-05-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-04-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-03-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-02-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2025-01-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-12-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-11-01,paralisis_denuncias,6,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-10-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-09-01,paralisis_denuncias,4,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-08-01,paralisis_denuncias,5,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-07-01,paralisis_denuncias,4,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-06-01,paralisis_denuncias,4,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-05-01,paralisis_denuncias,3,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-04-01,paralisis_denuncias,2,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-03-01,paralisis_denuncias,2,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-02-01,paralisis_denuncias,2,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2024-01-01,paralisis_denuncias,2,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
+2023-12-01,paralisis_denuncias,2,sesiones de las comisiones de control (12m móviles),Consejo de la Magistratura — archivo de notas de las comisiones
 2026-06-09,movilizacion_cepa,50.5,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
 2026-04-09,movilizacion_cepa,46.0,Índice de conflictividad social (0-100),Centro CEPA — informes de conflictividad (elaboración CIGOB)
+2026-01-01,judicializacion,1.78,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2025-01-01,judicializacion,1.71,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2024-01-01,judicializacion,1.95,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2023-01-01,judicializacion,1.51,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2022-01-01,judicializacion,1.52,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2021-01-01,judicializacion,1.6,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2020-01-01,judicializacion,1.53,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2019-01-01,judicializacion,0.91,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2018-01-01,judicializacion,1.03,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2017-01-01,judicializacion,0.61,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
+2016-01-01,judicializacion,0.56,% de sumarios con medida cautelar (Federal + Nacional),SAIJ — buscador de jurisprudencia
 2025-12-01,iaf_transferencias,0.8,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2024-12-01,iaf_transferencias,-8.3,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
 2023-12-01,iaf_transferencias,-5.8,% i.a. real,RON Hacienda + IPC INDEC (dic-dic)
@@ -168,6 +256,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,eficacia_legislativa,36.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
+2026-07-31,desafios_legislativos,10.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-06-30,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-05-31,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-04-30,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -199,6 +288,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-01-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2023-12-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-07-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-06-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-05-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-04-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
@@ -293,6 +383,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
+2026-07-31,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-06-30,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-05-31,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-04-30,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
@@ -456,6 +547,7 @@ fecha,indicador,valor,unidad,fuente
 2018-01-01,brecha_obra_publica,11.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2017-12-01,brecha_obra_publica,14.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2017-11-01,brecha_obra_publica,19.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
+2026-07-31,bloqueo_sostenido,20.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-06-30,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-05-31,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-04-30,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -516,6 +608,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,apoyo_empresario,-0.6,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2024-01-01,apoyo_empresario,-0.6,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2023-12-01,apoyo_empresario,-0.667,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
+2026-07-31,alineamiento_senadores_prov,70.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-06-30,alineamiento_senadores_prov,70.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-05-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-04-30,alineamiento_senadores_prov,47.9,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
@@ -545,6 +638,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-30,alineamiento_senadores_prov,74.7,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2024-03-31,alineamiento_senadores_prov,69.3,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2024-02-29,alineamiento_senadores_prov,100.0,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-07-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
 2026-06-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
 2026-05-31,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"
 2026-04-30,adhesion_reformas_provincial,66.7,% de jurisdicciones (sobre 24) adheridas al RIGI,"Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca"

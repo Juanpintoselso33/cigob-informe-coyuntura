@@ -1325,7 +1325,7 @@ POLITICA_DERIVADAS = [
          ["serie_densidad_cautelar_federal_nacional"]["puntos"].items())]),
     ("velocidad_resolucion", "% de expedientes resueltos sobre ingresados",
      "CSJN — anuario estadístico",
-     lambda: [[f"{a}-01-01", v] for a, v in sorted(
+     lambda: [[f"{a}-12-31", v] for a, v in sorted(
          politica._leer_store(politica.CSJN_FUENTES_PATH)["velocidad_de_resolucion"]
          ["serie_historica_completa"]["tasa_resolucion_pct"].items())]),
     ("cobertura_judicial", "% de cargos de juez con juez designado",

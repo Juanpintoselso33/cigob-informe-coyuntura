@@ -164,6 +164,9 @@
   "ipi_manufacturero": {
     "2026-07": -1.07
   },
+  "judicializacion": {
+    "2026-07": 1.78
+  },
   "libertad_opcion_salud": {
     "2026-07": 31.8
   },
@@ -183,6 +186,9 @@
   "movilizacion_cepa": {
     "2026-06": 50.5,
     "2026-07": 50.5
+  },
+  "paralisis_denuncias": {
+    "2026-07": 6.0
   },
   "patentamiento_motos": {
     "2026-06": 69740.0,
@@ -209,6 +215,9 @@
   "privatizaciones": {
     "2026-07": 51.4
   },
+  "produccion_legislativa": {
+    "2026-07": 28.0
+  },
   "protestas_caba": {
     "2026-07": 301.0
   },
@@ -217,7 +226,7 @@
   },
   "ratio_dnu": {
     "2026-06": 1.5,
-    "2026-07": 1.88
+    "2026-07": 1.92
   },
   "recaudacion": {
     "2026-06": 1.82,
@@ -264,6 +273,9 @@
   "tcrm": {
     "2026-06": 84.31,
     "2026-07": 84.97
+  },
+  "velocidad_resolucion": {
+    "2026-07": 45.4
   },
   "veto_quorum": {
     "2026-06": 0.0,

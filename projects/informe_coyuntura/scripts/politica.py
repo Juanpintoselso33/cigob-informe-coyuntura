@@ -2002,7 +2002,9 @@ def fetch_velocidad_resolucion() -> dict | None:
             "valor": tasas[anio],
             "unidad": "% de expedientes resueltos sobre ingresados",
             "fuente": "CSJN — anuario estadístico (sistema de gestión judicial)",
-            "fecha_dato": f"{anio}-01-01",
+            # Cierre del año de referencia, como iaf_transferencias: el dato
+            # describe el año completo, no su primer día.
+            "fecha_dato": f"{anio}-12-31",
             "desactualizado": False,
             "detalle_txt": (
                 f"En {anio} la Corte resolvió {h['resueltos'][anio]:,} expedientes "

@@ -200,7 +200,14 @@ def test_politica_itcp_reconcilia():
     # 14 desde 2026-07-27 (ADR-0150): entra apoyo_empresario y sector_privado
     # deja de tener un solo indicador — lo que ADR-0088 había dejado anotado
     # como pendiente al crear la dimensión.
-    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
+    # 18 desde 2026-07-31 (ADR-0168): entran los cuatro que ADR-0166 desbloqueó
+    # al fijar la orientación — produccion_legislativa al bloque legislativo y
+    # judicializacion, velocidad_resolucion y paralisis_denuncias al judicial,
+    # que deja de colgar de un solo dato.
+    assert len(en_indice) == 18, f"esperaba 18 indicadores en el índice, hay {len(en_indice)}"
+    for _nuevo in ("produccion_legislativa", "judicializacion",
+                   "velocidad_resolucion", "paralisis_denuncias"):
+        assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"
     assert "bloqueo_sostenido" in en_indice
     assert "apoyo_empresario" in en_indice
     assert "brecha_obra_publica" in en_indice

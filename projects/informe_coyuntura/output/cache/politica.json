@@ -1,50 +1,57 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-07-30T04:37:30.456951",
-  "score": 3.6,
+  "generated_at": "2026-07-31T11:41:54.317075",
+  "score": 3.5,
   "itcp": {
-    "valor": 64.1,
+    "valor": 65.1,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.21,
-        "puntaje": 39.8,
+        "puntaje": 39.5,
         "indicadores": {
           "ratio_dnu": {
-            "peso": 0.23,
-            "puntaje_banda": 19.0,
-            "puntaje_aplicado": 19.0,
-            "valor": 1.88,
-            "peso_efectivo": 0.0483
+            "peso": 0.2,
+            "puntaje_banda": 16.0,
+            "puntaje_aplicado": 16.0,
+            "valor": 1.92,
+            "peso_efectivo": 0.042
           },
           "eficacia_legislativa": {
-            "peso": 0.32,
+            "peso": 0.27,
             "puntaje_banda": 46.6,
             "puntaje_aplicado": 46.6,
             "valor": 13.3,
-            "peso_efectivo": 0.0672
+            "peso_efectivo": 0.0567
           },
           "veto_quorum": {
-            "peso": 0.15,
+            "peso": 0.13,
             "puntaje_banda": 82.9,
             "puntaje_aplicado": 82.9,
             "valor": 8.3,
-            "peso_efectivo": 0.0315
+            "peso_efectivo": 0.0273
           },
           "desafios_legislativos": {
-            "peso": 0.15,
+            "peso": 0.13,
             "puntaje_banda": 43.6,
             "puntaje_aplicado": 43.6,
             "valor": 10.0,
-            "peso_efectivo": 0.0315
+            "peso_efectivo": 0.0273
           },
           "bloqueo_sostenido": {
-            "peso": 0.15,
+            "peso": 0.12,
             "puntaje_banda": 10.0,
             "puntaje_aplicado": 10.0,
             "valor": 20.0,
+            "peso_efectivo": 0.0252
+          },
+          "produccion_legislativa": {
+            "peso": 0.15,
+            "puntaje_banda": 40.8,
+            "puntaje_aplicado": 40.8,
+            "valor": 28.0,
             "peso_efectivo": 0.0315
           }
         },
@@ -127,14 +134,35 @@
       "poder_judicial": {
         "nombre": "Poder judicial",
         "peso": 0.15,
-        "puntaje": 52.4,
+        "puntaje": 59.1,
         "indicadores": {
           "cobertura_judicial": {
-            "peso": 1.0,
+            "peso": 0.4,
             "puntaje_banda": 52.4,
             "puntaje_aplicado": 52.4,
             "valor": 69.95,
-            "peso_efectivo": 0.15
+            "peso_efectivo": 0.06
+          },
+          "judicializacion": {
+            "peso": 0.2,
+            "puntaje_banda": 41.2,
+            "puntaje_aplicado": 41.2,
+            "valor": 1.78,
+            "peso_efectivo": 0.03
+          },
+          "velocidad_resolucion": {
+            "peso": 0.2,
+            "puntaje_banda": 94.6,
+            "puntaje_aplicado": 94.6,
+            "valor": 45.4,
+            "peso_efectivo": 0.03
+          },
+          "paralisis_denuncias": {
+            "peso": 0.2,
+            "puntaje_banda": 55.0,
+            "puntaje_aplicado": 55.0,
+            "valor": 6.0,
+            "peso_efectivo": 0.03
           }
         },
         "peso_efectivo": 0.15
@@ -181,26 +209,26 @@
       "peso_efectivo": 0.07
     },
     "ratio_dnu": {
-      "valor": 1.88,
-      "dnu_count": 47,
+      "valor": 1.92,
+      "dnu_count": 48,
       "leyes_count": 25,
       "ventana_dias": 365,
       "unidad": "DNUs por ley",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-07-31",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 19.0,
-      "puntaje_banda": 19.0,
-      "peso_efectivo": 0.0483
+      "puntaje_itcp": 16.0,
+      "puntaje_banda": 16.0,
+      "peso_efectivo": 0.042
     },
     "brecha_obra_publica": {
       "valor": 0.2,
       "unidad": "pp de brecha (obra pública − privada, 12m)",
       "fuente": "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
       "fecha_dato": "2026-08-01",
-      "desactualizado": true,
+      "desactualizado": false,
       "variacion_12m": 9.1,
       "detalle_txt": "Brecha de 0,2 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
       "en_indice": true,
@@ -274,18 +302,18 @@
       "valor": 13.3,
       "aprobados_n": 2,
       "enviados_n": 15,
-      "cohorte_desde": "2024-07-30",
-      "cohorte_hasta": "2025-07-30",
+      "cohorte_desde": "2024-07-31",
+      "cohorte_hasta": "2025-07-31",
       "dias_madurado_min": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-07-31",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 46.6,
       "puntaje_banda": 46.6,
-      "peso_efectivo": 0.0672
+      "peso_efectivo": 0.0567
     },
     "veto_quorum": {
       "valor": 8.3,
@@ -293,14 +321,14 @@
       "total_n": 12,
       "unidad": "% de sesiones",
       "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-07-31",
       "desactualizado": false,
       "detalle_txt": "1 de 12 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 82.9,
       "puntaje_banda": 82.9,
-      "peso_efectivo": 0.0315
+      "peso_efectivo": 0.0273
     },
     "comisiones_caidas": {
       "valor": 97.0,
@@ -310,7 +338,7 @@
       "ventana_dias": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-07-31",
       "desactualizado": false,
       "en_indice": false
     },
@@ -318,7 +346,7 @@
       "valor": 66.7,
       "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
       "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-07-31",
       "n_provincias": 16,
       "desactualizado": false,
       "en_indice": true,
@@ -336,7 +364,7 @@
       "detalle_txt": "3 vetos insistidos por el Congreso + 5 decretos rechazados en el recinto en los últimos 12 meses",
       "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-07-31",
       "desactualizado": false,
       "en_indice": false
     },
@@ -344,7 +372,7 @@
       "valor": 7,
       "unidad": "salidas de rango ministerial (acum. 12 meses)",
       "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-07-31",
       "desactualizado": false,
       "salidas_politicas": 5,
       "salidas_estructurales": 2,
@@ -375,14 +403,14 @@
           "valor": 99.9,
           "fecha_dato": "2026-06-24",
           "n_actas": 33,
-          "corrida_exitosa_en": "2026-07-30",
+          "corrida_exitosa_en": "2026-07-31",
           "desactualizado": false
         },
         "senado": {
           "valor": 99.6,
           "fecha_dato": "2026-07-16",
           "n_actas": 24,
-          "corrida_exitosa_en": "2026-07-30",
+          "corrida_exitosa_en": "2026-07-31",
           "desactualizado": false
         }
       },
@@ -402,13 +430,13 @@
       "detalle_txt": "2 de 10 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
       "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-07-31",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 10.0,
       "puntaje_banda": 10.0,
-      "peso_efectivo": 0.0315
+      "peso_efectivo": 0.0252
     },
     "desafios_legislativos": {
       "valor": 10.0,
@@ -417,14 +445,66 @@
       "ultimo_desafio": "2025-09-18",
       "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-07-31",
       "desactualizado": false,
       "detalle_txt": "10 normas propias desafiadas en el recinto en los últimos 12 meses (8 cayeron, 2 siguen en pie)",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 43.6,
       "puntaje_banda": 43.6,
+      "peso_efectivo": 0.0273
+    },
+    "produccion_legislativa": {
+      "valor": 28,
+      "unidad": "leyes sancionadas (12m)",
+      "fuente": "Cámara de Diputados — dataset de leyes sancionadas",
+      "fecha_dato": "2026-07-01",
+      "desactualizado": false,
+      "detalle_txt": "28 leyes sancionadas en los últimos 12 meses. El promedio histórico del dataset (2008-2025, cuatro presidencias) es de 74 leyes por año.",
+      "en_indice": true,
+      "dimension": "poder_legislativo",
+      "puntaje_itcp": 40.8,
+      "puntaje_banda": 40.8,
       "peso_efectivo": 0.0315
+    },
+    "judicializacion": {
+      "valor": 1.78,
+      "unidad": "% de sumarios con medida cautelar",
+      "fuente": "SAIJ — buscador de jurisprudencia (Federal + Nacional)",
+      "fecha_dato": "2026-01-01",
+      "desactualizado": false,
+      "detalle_txt": "85 de 4784 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
+      "en_indice": true,
+      "dimension": "poder_judicial",
+      "puntaje_itcp": 41.2,
+      "puntaje_banda": 41.2,
+      "peso_efectivo": 0.03
+    },
+    "velocidad_resolucion": {
+      "valor": 45.4,
+      "unidad": "% de expedientes resueltos sobre ingresados",
+      "fuente": "CSJN — anuario estadístico (sistema de gestión judicial)",
+      "fecha_dato": "2025-12-31",
+      "desactualizado": false,
+      "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
+      "en_indice": true,
+      "dimension": "poder_judicial",
+      "puntaje_itcp": 94.6,
+      "puntaje_banda": 94.6,
+      "peso_efectivo": 0.03
+    },
+    "paralisis_denuncias": {
+      "valor": 6,
+      "unidad": "sesiones de las comisiones de control (12m)",
+      "fuente": "Consejo de la Magistratura — archivo de notas de las comisiones",
+      "fecha_dato": "2026-07-01",
+      "desactualizado": false,
+      "detalle_txt": "6 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 4.7).",
+      "en_indice": true,
+      "dimension": "poder_judicial",
+      "puntaje_itcp": 55.0,
+      "puntaje_banda": 55.0,
+      "peso_efectivo": 0.03
     },
     "cobertura_judicial": {
       "valor": 69.95,
@@ -442,7 +522,7 @@
       "dimension": "poder_judicial",
       "puntaje_itcp": 52.4,
       "puntaje_banda": 52.4,
-      "peso_efectivo": 0.15
+      "peso_efectivo": 0.06
     },
     "alineamiento_senadores_prov": {
       "valor": 70.6,
@@ -450,7 +530,7 @@
       "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
       "fecha_dato": "2026-07-16",
       "n_provincias": 24,
-      "corrida_exitosa_en": "2026-07-30",
+      "corrida_exitosa_en": "2026-07-31",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
