@@ -32,7 +32,8 @@ tributario.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Resultado primario como cociente contra la recaudación** — elegida.
+- **Deflactar por IPC** — era la otra opción y se descartó por la razón que la propia auditoría plantea en su sección IV.2: el IPC ya deflacta recaudación, crédito, IDM y la tasa real del IdC, y sumarle un quinto uso concentraría todavía más el riesgo de una fuente única.
 
 ## Decisión
 

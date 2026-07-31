@@ -20,7 +20,10 @@ verificó con llamadas reales qué fuentes existen hoy para los dos primeros
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Scraping de la tasa de adjudicación en CONTRAT.AR** — elegida.
+- **Datos abiertos de CONTRAT.AR (CKAN)** — descartada: congelados en mar-2023 (verificado: 482 procesos, máximo 2023-03-16).
+- **OCDS de obra pública** — no existe.
+- **Búsqueda del Boletín Oficial** — descartada: bloquea la automatización (302 a `/error/show`).
 
 ## Decisión
 

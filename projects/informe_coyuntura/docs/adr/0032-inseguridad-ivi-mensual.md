@@ -28,7 +28,10 @@ cambia el alcance nacional); SNIC mensual (no existe).
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **IVI mensual** — elegida.
+- **Bases SAT del Ministerio** — descartadas: mensuales, pero publicadas en tandas anuales cada diciembre, un año detrás del consolidado y solo con subconjuntos de delitos.
+- **Fuentes jurisdiccionales mensuales (CABA)** — descartadas: cambian el alcance nacional de la métrica.
+- **SNIC mensual** — no existe.
 
 ## Decisión
 

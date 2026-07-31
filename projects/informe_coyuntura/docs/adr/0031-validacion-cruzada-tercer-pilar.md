@@ -35,7 +35,8 @@ tercera dimensión.
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Validación cruzada contra benchmarks externos contemporáneos** — elegida.
+- **Validación predictiva (lead-lag)** — probada y descartada como claim: la correlación del ITCG con el riesgo país es máxima en el mes contemporáneo (−0,86) y decae con el adelanto; la del ITCM mejora apenas a 5 meses (−0,755 contra −0,731), indistinguible con n=25.
 
 ## Decisión
 

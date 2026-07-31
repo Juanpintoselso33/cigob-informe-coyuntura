@@ -44,7 +44,8 @@ El indicador puntuaba la variación i.a. real de UN solo mes. Dos problemas:
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Promedio móvil de 3 meses sobre IPC cerrado** — elegida.
+- **X-13-ARIMA con regresores de calendario y tendencia-ciclo** — el óptimo técnico, descartado acá porque introduce un modelo estimado: rompe la reproducibilidad simple del pipeline y sus coeficientes cambian con cada dato nuevo.
 
 ## Decisión
 

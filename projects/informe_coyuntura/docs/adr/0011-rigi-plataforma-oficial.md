@@ -28,7 +28,9 @@ actualizado (al lanzamiento: 16 proyectos / US$ 29.892M; a fin de junio: 17 / US
 
 ## Opciones consideradas
 
-_El ADR original no registró opciones alternativas._
+- **Plataforma oficial del RIGI** (Google Sheet de Economía): dato oficial, estructurado y en vivo — elegida.
+- **Proxy por conteo de normas de InfoLeg**, con calibración manual — descartada: no da cifras concretas de inversión ni de proyectos.
+- **Ratio `proyectos aprobados / presentados`** (17/41 = 41,5%) — descartado por estar dominado por los proyectos chicos; la versión ponderada por monto es más fiel al fenómeno económico.
 
 ## Decisión
 
