@@ -41,6 +41,11 @@ CINTURONES = {
     "vida": ("itvc", "ITVC", "Vida cotidiana"),
 }
 
+# ADR que define la paramétrica del cinturón. Los indicadores que no tienen
+# ADR propio se definieron ahí, y decirlo con número es más útil que decir
+# «el ADR fundacional».
+FUNDACIONAL = {"politica": "0036", "gestion": "0013", "vida": "0018"}
+
 FAMILIA_LEGIBLE = {
     "tension": "tensión externa",
     "capacidad": "capacidad propia",
@@ -129,6 +134,35 @@ def cargar_procedencia(indice: str) -> dict:
             for r in detalle}
 
 
+def cargar_ocultos(cinturon: str) -> set[str]:
+    """Indicadores que se relevan y se cachean pero no se publican.
+
+    La lista vive en `publicar.py`, no en el módulo del índice: derivarla de
+    «tiene banda pero no está en ninguna dimensión» deja afuera a los que
+    nunca tuvieron banda (`badlar`, `indice_lider`) y a los que salieron del
+    tablero por decisión editorial.
+    """
+    import ast
+    nombre = {"macro": "MACRO_OCULTOS", "politica": "POLITICA_OCULTOS",
+              "gestion": "GESTION_OCULTOS", "vida": "VIDA_OCULTOS"}[cinturon]
+    src = (RAIZ / "scripts" / "publicar.py").read_text(encoding="utf-8")
+    m = re.search(rf"^{nombre}\s*=\s*(.+)$", src, re.M)
+    if not m:
+        return set()
+    expr = m.group(1).strip()
+    # Forma A: literal — {"badlar", "prestamos_privados", ...}
+    try:
+        return set(ast.literal_eval(expr))
+    except (ValueError, SyntaxError):
+        pass
+    # Forma B: set(itcg.INDICADORES_CONTEXTO)
+    ref = re.match(r"set\((\w+)\.(\w+)\)", expr)
+    if ref:
+        mod = importlib.import_module(ref.group(1))
+        return set(getattr(mod, ref.group(2), []))
+    return set()
+
+
 def bandas_legibles(mod, indicador: str) -> str:
     bandas = getattr(mod, f"BANDAS_{mod.__name__.upper()}", {}).get(indicador)
     if not bandas:
@@ -180,6 +214,20 @@ def generar(cinturon: str) -> Path:
                  ", ".join(f"`{i}`" for i in inds) + " |")
     L += ["", f"Suma de pesos: {sum(d['peso'] for d in dimensiones.values()):.0%}.", ""]
 
+    if not bandas_todas:
+        L += [
+            "## Cómo puntúa este cinturón", "",
+            "A diferencia de los índices por bandas, acá **no hay tabla de cortes**:",
+            "cada componente ya es un índice base 100 = 4T-2023 (ADR-0018), y el",
+            "número que se promedia es el índice mismo. La conversión a puntaje es",
+            "la **identidad**, no una escala ausente (ADR-0108).",
+            "",
+            "Por eso el cinturón no tiene anclas que calibrar contra el período: su",
+            "ancla es una fecha fija, el arranque del mandato, así que no hay cortes",
+            "donde colar una calibración (ADR-0123).",
+            "",
+        ]
+
     # --- indicadores
     L += ["## Qué mide cada indicador", ""]
     for dim, d in dimensiones.items():
@@ -202,19 +250,26 @@ def generar(cinturon: str) -> Path:
                              f"`{cat}`" + (f" — {motivo}" if motivo else "")))
             L += ["| | |", "|---|---|"]
             L += [f"| {k} | {v} |" for k, v in fila]
-            L += ["", f"**Bandas**: {bandas_legibles(mod, ind)}", ""]
+            b = bandas_legibles(mod, ind)
+            L += ["", (f"**Bandas**: {b}" if b != "—" else
+                       "**Escala**: sin bandas — ver «Cómo puntúa este "
+                       "cinturón» arriba."), ""]
             adrs = por_ind.get(ind, [])
             if adrs:
                 L.append("**Lo gobiernan**: " + " · ".join(
                     f"[ADR-{i}](../adr/{f}) {t}" for i, t, f in adrs))
             else:
-                L.append("**Lo gobiernan**: sin ADR propio — se define en el ADR "
-                         "fundacional del cinturón.")
+                fund = FUNDACIONAL.get(cinturon)
+                L.append(
+                    "**Lo gobiernan**: sin ADR propio — se definió con la "
+                    + (f"paramétrica del cinturón (ADR-{fund})." if fund
+                       else "paramétrica del cinturón.")
+                )
             L += [""]
 
     # --- contexto
-    fuera = sorted(set(bandas_todas) - {i for d in dimensiones.values()
-                                        for i in d["indicadores"]})
+    puntuables = {i for d in dimensiones.values() for i in d["indicadores"]}
+    fuera = sorted((set(bandas_todas) | cargar_ocultos(cinturon)) - puntuables)
     if fuera:
         L += ["## Se releva y no puntúa", "",
               "Estos indicadores se siguen scrapeando y cacheando, pero están fuera",
@@ -255,6 +310,23 @@ def generar(cinturon: str) -> Path:
     return destino
 
 
+def indice_manuales() -> Path:
+    """README de docs/manuales/, para que la carpeta se explique sola."""
+    L = ["# Manuales metodológicos vigentes", "",
+         "> Generados por `scripts/manual_cinturon.py`. No editar a mano.", "",
+         "Qué mide hoy cada cinturón, con qué pesos, con qué anclas y qué",
+         "decisiones siguen abiertas. Para saber **por qué** se decidió algo y",
+         "cuándo, el registro histórico está en [docs/adr/](../adr/README.md).",
+         "", "| Cinturón | Índice | Manual |", "|---|---|---|"]
+    for c, (_, indice, legible) in CINTURONES.items():
+        if (SALIDA / f"{c}.md").exists():
+            L.append(f"| {legible} | `{indice}` | [{c}.md]({c}.md) |")
+    L += ["", "Regenerar: `python scripts/manual_cinturon.py --todos`", ""]
+    d = SALIDA / "README.md"
+    d.write_text("\n".join(L), encoding="utf-8", newline="\n")
+    return d
+
+
 def main() -> int:
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     objetivos = list(CINTURONES) if "--todos" in sys.argv else args
@@ -267,6 +339,7 @@ def main() -> int:
             return 2
         d = generar(c)
         print(f"{d.relative_to(RAIZ)}  ({len(d.read_text(encoding='utf-8').split())} palabras)")
+    print(indice_manuales().relative_to(RAIZ))
     return 0
 
 

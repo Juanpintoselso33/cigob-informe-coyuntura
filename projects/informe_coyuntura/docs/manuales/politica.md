@@ -156,7 +156,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤ 20 → 10
 
-**Lo gobiernan**: sin ADR propio — se define en el ADR fundacional del cinturón.
+**Lo gobiernan**: [ADR-0044](../adr/0044-adhesion-reformas-provincial-serie-mensual.md) adhesion_reformas_provincial: serie mensual real vía investigación manual de fechas provinciales
 
 ### Dimensión `cohesion_interna` (15%)
 
@@ -210,7 +210,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 15 → 100 · 5–15 → 85 · -5–5 → 65 · -15–-5 → 40 · ≤ -15 → 10
 
-**Lo gobiernan**: sin ADR propio — se define en el ADR fundacional del cinturón.
+**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0036).
 
 ### Dimensión `poder_judicial` (15%)
 

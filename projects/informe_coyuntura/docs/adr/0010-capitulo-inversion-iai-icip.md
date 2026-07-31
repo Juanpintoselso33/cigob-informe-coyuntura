@@ -4,6 +4,7 @@ id: '0010'
 estado: 'aceptado'
 fecha: 2026-06-30
 cinturon: 'macro'
+indicadores: [iai, icip]
 archivos: ['scripts/itcm.py', 'scripts/macro.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'data/macro/patentamientos_comerciales.json', 'tests/']
 ambito: '`scripts/itcm.py` · `scripts/macro.py` · `scripts/descargar_series.py` · `scripts/publicar.py` · `data/macro/patentamientos_comerciales.json` · `tests/` · web'
 ---

@@ -4,6 +4,14 @@ Registro de las **decisiones de diseño y metodología** del proyecto. Cada ADR
 documenta una decisión, su contexto, las opciones que se consideraron (incluidas
 las descartadas, para no volver a investigarlas) y sus consecuencias.
 
+## ¿Buscás qué rige hoy?
+
+Este registro responde **por qué** se decidió cada cosa y **cuándo**: son 165
+documentos y no se leen de corrido. Para saber qué mide cada cinturón hoy —con
+qué pesos, con qué anclas y qué decisiones siguen abiertas— están los
+**[manuales metodológicos](../manuales/README.md)**, que se generan de este
+registro y del código que corre.
+
 ## Formato
 
 Los ADR siguen **MADR v4** en castellano. Cada archivo abre con frontmatter YAML

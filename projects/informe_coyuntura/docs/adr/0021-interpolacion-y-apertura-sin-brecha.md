@@ -5,6 +5,7 @@ estado: 'aceptado'
 nota_estado: 'aceptada (decisión del editor; ejecuta las Decisiones 3 y 4b del ADR-0019)'
 fecha: 2026-07-03
 cinturon: 'gestion'
+indicadores: [apertura_comercial]
 supersede: ['0013']
 relacionado: ['0054', '0055', '0056', '0069', '0071', '0072', '0075', '0076', '0081']
 ---

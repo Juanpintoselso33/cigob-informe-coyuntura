@@ -4,7 +4,7 @@ id: '0044'
 estado: 'aceptado'
 fecha: 2026-07-09
 cinturon: 'politica'
-indicadores: [fetch_adhesion_reformas_provincial_serie]
+indicadores: [fetch_adhesion_reformas_provincial_serie, adhesion_reformas_provincial]
 archivos: ['data/politica/adhesion_reformas_provincial_fechas.json', 'scripts/politica.py', _provincias_adheridas_rigi, 'scripts/descargar_series.py', 'scripts/itcp.py', 'tests/test_descargar_series_adhesion.py']
 ambito: '`data/politica/adhesion_reformas_provincial_fechas.json` (nuevo) · `scripts/politica.py` (`_provincias_adheridas_rigi` factorizada) · `scripts/descargar_series.py` (`fetch_adhesion_reformas_provincial_serie` reescrita) · `scripts/itcp.py` (comentario de banda, sin cambio de anclas) · `tests/test_descargar_series_adhesion.py`'
 ---
