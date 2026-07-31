@@ -528,3 +528,32 @@ def test_la_card_de_consistencia_se_publica_aunque_no_haya_pares_altos(monkeypat
     assert "redundancia" in bloque, "la card no se publicó sin pares altos"
     assert bloque["redundancia"]["top"] == []
     assert "Ningún par supera el umbral" in bloque["redundancia"]["conclusion"]
+
+
+def test_familias_no_ordenan_empates():
+    """La card de lectura por partes llegó a afirmar que «lo más flojo del
+    cinturón es tensión externa (63,2)» con capacidad propia en 63,5: tres
+    décimas presentadas como hallazgo (ADR-0171). El guard que existía comparaba
+    el peor contra el MEJOR —brecha 11,7, pasaba— y no veía el empate de abajo.
+    """
+    snap = json.loads((ROOT / "web" / "src" / "data" / "informe.json").read_text(encoding="utf-8"))
+    for ckey, cin in snap.get("cinturones", {}).items():
+        for bloque in cin.values():
+            if not isinstance(bloque, dict):
+                continue
+            fam = bloque.get("familias")
+            if not fam or len(fam.get("familias", [])) < 3:
+                continue
+            orden = sorted(fam["familias"], key=lambda f: f["puntaje"])
+            hueco = round(orden[1]["puntaje"] - orden[0]["puntaje"], 1)
+            texto = fam.get("conclusion", "")
+            if hueco < 2.0:
+                assert "empatad" in texto, (
+                    f"{ckey}: las dos familias más flojas difieren {hueco} puntos "
+                    f"({orden[0]['nombre']} {orden[0]['puntaje']} vs "
+                    f"{orden[1]['nombre']} {orden[1]['puntaje']}) y la card las ordena: "
+                    f"«{texto[:120]}…»")
+            else:
+                assert "lo más flojo" in texto, (
+                    f"{ckey}: hay una diferencia real de {hueco} puntos y la card "
+                    "no la nombra")

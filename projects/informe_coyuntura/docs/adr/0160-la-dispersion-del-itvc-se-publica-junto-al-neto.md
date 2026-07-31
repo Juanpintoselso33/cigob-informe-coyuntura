@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'vida'
 cierra: ['0155']
+relacionado: ['0171']
 ambito: 'cinturón vida cotidiana, sección de consistencia interna'
 ---
 

@@ -344,7 +344,7 @@ histórica.
 
 - **[ADR-0094](../adr/0094-lectura-por-partes-del-itcp.md)** — El ITCP se puede leer por partes: tensión, capacidad y recursos
   <br>como decisión editorial pendiente.
-  <br>⚠️ Puede estar resuelto: lo tocó ADR-0132. Verificar antes de tratarlo como abierto.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0132, ADR-0171. Verificar antes de tratarlo como abierto.
 - **[ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md)** — Conflictividad nacional: de dónde viene y sobre qué actúa
   <br>quedó anotado como pendiente editorial si el indicador **corresponde al cinturón
 - **[ADR-0134](../adr/0134-paralisis-de-denuncias-la-fuente-sirve-y-el-dato-contradice-la-hipotesis.md)** — Parálisis de denuncias: la fuente sirve, y el dato contradice la hipótesis
@@ -373,7 +373,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-60 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+61 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -435,3 +435,4 @@ histórica.
 - [0166](../adr/0166-regla-de-orientacion-para-indicadores-de-control.md) — La orientación de un indicador sale de la pregunta que responde
 - [0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) — Los cuatro indicadores desbloqueados entran al ITCP
 - [0170](../adr/0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) — Judicialización y parálisis de denuncias pasan a fuente viva
+- [0171](../adr/0171-la-lectura-por-partes-no-ordena-empates.md) — La lectura por partes no ordena empates

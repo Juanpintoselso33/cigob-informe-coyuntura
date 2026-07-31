@@ -9,7 +9,7 @@ indicadores: [produccion_legislativa, judicializacion, velocidad_resolucion, par
 archivos: ['scripts/itcp.py', 'scripts/politica.py', 'scripts/procedencia_anclas.py', 'web/src/lib/fichas.ts']
 corrige: ['0166']
 cierra: ['0134', '0135', '0137', '0139']
-relacionado: ['0045', '0048', '0090', '0094', '0105', '0126', '0147']
+relacionado: ['0045', '0048', '0090', '0094', '0105', '0126', '0147', '0171']
 continuado_por: ['0169', '0170']
 ambito: 'Cinturón político (ITCP) · dimensiones `poder_judicial` y `poder_legislativo`'
 origen: 'Implementación de los cuatro indicadores que ADR-0166 desbloqueó al fijar la orientación'

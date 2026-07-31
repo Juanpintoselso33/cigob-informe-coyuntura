@@ -1183,6 +1183,14 @@ def _familias(bloque, familias: dict, meta_familias: dict):
 
     peor, mejor = familias_out[0], familias_out[-1]
     brecha = round(mejor["puntaje"] - peor["puntaje"], 1)
+    # Distancia entre las DOS más flojas. El guard de `brecha` compara el peor
+    # contra el mejor, así que no ve un empate abajo: con tensión 63,2 y
+    # capacidad 63,5 la card llegó a nombrar a una "lo más flojo del cinturón"
+    # por 0,3 puntos, mientras la brecha contra recursos daba 11,7 y pasaba el
+    # umbral (ADR-0171). Ordenar dos números indistinguibles y publicarlo como
+    # hallazgo es leer ruido.
+    empate_abajo = (len(familias_out) > 2 and
+                    round(familias_out[1]["puntaje"] - peor["puntaje"], 1) < 2.0)
 
     bloque["familias"] = {
         "familias": familias_out,
@@ -1191,11 +1199,19 @@ def _familias(bloque, familias: dict, meta_familias: dict):
                 "Gobierno los demás actores, cuánto consigue el Gobierno por su cuenta, y con "
                 "qué recursos cuenta para negociar. El promedio de las tres no responde "
                 "ninguna por separado, así que acá se muestran abiertas. Es una separación de "
-                "lectura: el índice se calcula igual y los pesos no cambian."),
+                "lectura: el índice se calcula igual y los pesos no cambian. Cada familia "
+                "muestra qué porción del índice carga, porque ese reparto se mueve cuando "
+                "entran o salen indicadores y explica parte de lo que cambia entre lecturas."),
         "conclusion": (
-            f"Leído por partes, lo más flojo del cinturón es «{peor['nombre'].lower()}» "
-            f"({coma(peor['puntaje'])}) y lo más sólido, «{mejor['nombre'].lower()}» "
-            f"({coma(mejor['puntaje'])}): "
+            (f"Leído por partes, las dos partes más flojas del cinturón "
+             f"—«{peor['nombre'].lower()}» ({coma(peor['puntaje'])}) y "
+             f"«{familias_out[1]['nombre'].lower()}» ({coma(familias_out[1]['puntaje'])})— "
+             f"están hoy empatadas, y la más sólida es «{mejor['nombre'].lower()}» "
+             f"({coma(mejor['puntaje'])}): "
+             if empate_abajo else
+             f"Leído por partes, lo más flojo del cinturón es «{peor['nombre'].lower()}» "
+             f"({coma(peor['puntaje'])}) y lo más sólido, «{mejor['nombre'].lower()}» "
+             f"({coma(mejor['puntaje'])}): ")
             + (f"una diferencia de {coma(brecha)} puntos. " if brecha >= 5 else
                "una diferencia pequeña, de modo que las tres dimensiones del problema están "
                "hoy en un estado parecido. ")
