@@ -293,6 +293,7 @@ histórica.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0112, ADR-0113. Verificar antes de tratarlo como abierto.
 - **[ADR-0154](../adr/0154-endeudamiento-e-indice-lider-salen-del-itvc.md)** — Endeudamiento e Índice Líder salen del ITVC; el líder pasa a validar el ITCM
   <br>Queda anotado como pendiente editorial: si el criterio del proyecto para elegir
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0167. Verificar antes de tratarlo como abierto.
 - **[ADR-0155](../adr/0155-el-ancla-del-itvc-pasa-a-ser-el-consumo-medido.md)** — El ancla de validación del ITVC pasa a ser el consumo medido
   <br>lo que prohíbe ADR-0045. Lo que sí falta —y se anota como pendiente editorial— es
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0160. Verificar antes de tratarlo como abierto.

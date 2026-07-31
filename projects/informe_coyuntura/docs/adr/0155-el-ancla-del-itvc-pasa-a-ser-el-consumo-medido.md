@@ -4,6 +4,7 @@ id: '0155'
 estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'vida'
+relacionado: ['0167']
 cerrado_por: ['0160']
 ambito: 'validación externa del ITVC + matriz de validación cruzada'
 ---

@@ -249,3 +249,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0159](0159-validacion-por-panel-para-los-socioeconomicos.md) | Validación por panel para los compuestos socioeconómicos |  | vigente |
 | [0162](0162-aporte-del-indice-por-encima-de-la-tendencia.md) | Aporte del índice por encima de la tendencia (regresión) |  | vigente |
 | [0165](0165-una-oracion-por-card-el-desarrollo-aparte.md) | Una oración por card, el desarrollo a un click |  | vigente |
+| [0167](0167-el-ancla-de-validacion-se-elige-en-diferencias.md) | El ancla de validación se elige por diferencias, no por niveles |  | vigente |
