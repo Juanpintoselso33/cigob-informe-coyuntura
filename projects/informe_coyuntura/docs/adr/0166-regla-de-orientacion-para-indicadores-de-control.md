@@ -7,6 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 cierra: ['0134', '0135', '0137', '0139']
 relacionado: ['0090', '0094', '0131']
+corregido_por: ['0168']
 ambito: 'Cinturón político (ITCP) · regla de orientación para indicadores de control institucional'
 origen: 'Al revisar una por una las decisiones editoriales abiertas del cinturón, cuatro resultaron ser la misma'
 ---

@@ -47,6 +47,26 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Mide una capacidad que el Gobierno no ejerce solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura del Poder Judicial es un termómetro de la negociación política, no de la gestión administrativa. La serie muestra un desgaste sostenido durante más de dos años —las renuncias siguieron y las designaciones se detuvieron— seguido de una recuperación abrupta cuando el Senado aprobó un conjunto de pliegos en junio de 2026.",
     frecuencia: "Mensual", tipo: "% de cobertura",
   },
+  produccion_legislativa: {
+    que: "Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir de quién nació cada proyecto.",
+    aporta: "Mide la actividad legislativa por su volumen, que es el número que efectivamente se mueve. La participación del Ejecutivo en esa producción es notablemente estable —entre cinco y diez leyes por ventana en todo el período—, de modo que cuando su porcentaje sube, lo que cambió no fue el Ejecutivo sino el Congreso, que sancionó menos. Medir el total evita leer una parálisis legislativa como un avance del Gobierno.",
+    frecuencia: "Mensual", tipo: "Conteo en ventana móvil",
+  },
+  judicializacion: {
+    que: "Qué porcentaje de los fallos publicados en jurisdicción federal y nacional involucra una medida cautelar.",
+    aporta: "Mide cuánto de la agenda se dirime en tribunales por la vía de la suspensión, que es el instrumento con el que una decisión del Ejecutivo se frena antes de discutirse en el fondo. Se publica como proporción y no como conteo porque el número de fallos publicados depende del volumen editorial de la base de jurisprudencia: el conteo crudo se quintuplica entre 2016 y 2021 sin que las cautelares se hayan quintuplicado.",
+    frecuencia: "Anual", tipo: "% de fallos",
+  },
+  velocidad_resolucion: {
+    que: "Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan.",
+    aporta: "Distingue una Corte que se pone al día de una que acumula. Por encima de cien resuelve más de lo que recibe y descarga atraso; por debajo, el atraso crece. Importa para este cinturón porque una causa que tarda años en resolverse deja en pie, mientras tanto, lo que se discute.",
+    frecuencia: "Anual", tipo: "% resuelto sobre ingresado",
+  },
+  paralisis_denuncias: {
+    que: "Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces: Acusación y Disciplina.",
+    aporta: "Mide si el mecanismo de control disciplinario de los jueces está funcionando o está detenido. Se cuentan las sesiones de ambas comisiones y no las de una sola porque el conjunto da una serie estable y comparable mes a mes, mientras que cada comisión por separado sesiona pocas veces al año.",
+    frecuencia: "Mensual", tipo: "Conteo en ventana móvil",
+  },
   emae_difusion: {
     que: "De los quince sectores en que el INDEC divide la actividad económica, cuántos crecen respecto de un año atrás.",
     aporta: "Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El EMAE informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.",

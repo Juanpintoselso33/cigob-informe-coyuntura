@@ -452,6 +452,163 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
+  produccion_legislativa: {
+    tipo: "indicador",
+    id: "produccion_legislativa",
+    cinturon: "politica",
+    rezago: "El dataset se actualiza con la sanción de cada ley, de modo que el rezago es el de la carga en el portal de datos abiertos: en general unas semanas.",
+    fuente: {
+      organismo: "Cámara de Diputados de la Nación",
+      operacion: "Dataset de leyes sancionadas, con el expediente inicial y la fecha de sanción definitiva de cada una",
+      serie: "Recurso del portal de datos abiertos, consultado por su interfaz de datos",
+      url: "https://datos.hcdn.gob.ar/dataset/leyes-sancionadas",
+      acceso: "Automático: el mismo portal que el proyecto ya consulta para la eficacia parlamentaria.",
+    },
+    transformaciones: [
+      "Se cuentan las leyes con sanción definitiva dentro de la ventana de doce meses que termina en el mes informado. La ventana es móvil y no calendaria, para que cada mes sea comparable con el anterior sin el salto de enero.",
+      "No se distingue de dónde nació cada proyecto. La composición por origen se publica aparte, en el detalle de la card, porque es una lectura y no el puntaje.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "> 74", puntaje: 100 },
+        { banda: "50 – 74", puntaje: 85 },
+        { banda: "35 – 50", puntaje: 65 },
+        { banda: "20 – 35", puntaje: 40 },
+        { banda: "≤ 20", puntaje: 10 },
+      ],
+      puntos: [[20, 10], [30, 40], [42, 65], [60, 85], [74, 100]],
+      unidadCorta: "leyes (12m)",
+    },
+    limitaciones: [
+      "Cuenta leyes, no su importancia. Una ley de presupuesto y una que declara una fecha conmemorativa pesan igual.",
+      "El promedio histórico con el que se compara incluye años de mayorías muy distintas. No es un óptimo normativo: es la referencia disponible más ancha, de dieciocho años y cuatro presidencias.",
+      "La ventana móvil de doce meses suaviza pero también demora: un cambio de ritmo tarda meses en verse completo.",
+    ],
+    faltantes: "Si el portal no responde, se mantiene el último valor disponible, señalado como desactualizado.",
+    revisiones: "El dataset puede incorporar leyes con retraso, de modo que los últimos meses de la serie pueden ajustarse levemente hacia arriba.",
+    cambios: [
+      { fecha: "2026-07-31", cambio: "Entra al índice. Se decidió medir el total de leyes sancionadas y no la proporción de origen del Ejecutivo, porque esa proporción se mueve por el denominador: el numerador es estable entre cinco y diez leyes en todo el período." },
+    ],
+  },
+
+  judicializacion: {
+    tipo: "indicador",
+    id: "judicializacion",
+    cinturon: "politica",
+    rezago: "La base indexa los fallos con demora variable y el punto es anual, de modo que el dato describe un año que ya cerró.",
+    fuente: {
+      organismo: "Sistema Argentino de Información Jurídica (SAIJ)",
+      operacion: "Buscador de jurisprudencia, restringido por jurisdicción",
+      serie: "Conteo de sumarios por año, con y sin el término de búsqueda",
+      url: "https://www.saij.gob.ar/busqueda",
+      acceso: "Automático: la consulta y el modo de leer los totales quedaron verificados y documentados.",
+    },
+    transformaciones: [
+      "El numerador y el denominador se restringen ambos a jurisdicción federal y nacional. Sin ese filtro, los fallos provinciales contaminan el conteo.",
+      "Se publica la proporción y no el conteo. El conteo crudo depende de cuánto publica la base cada año, que varía por razones editoriales y no jurídicas.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ 0,8", puntaje: 100 },
+        { banda: "0,8 – 1,2", puntaje: 85 },
+        { banda: "1,2 – 1,6", puntaje: 65 },
+        { banda: "1,6 – 2,0", puntaje: 40 },
+        { banda: "> 2,0", puntaje: 10 },
+      ],
+      puntos: [[0.8, 100], [1.0, 85], [1.4, 65], [1.8, 40], [2.0, 10]],
+      unidadCorta: "% de sumarios",
+    },
+    limitaciones: [
+      "La proporción corrige el volumen de publicación de la base, pero no un eventual cambio en su mezcla: si la base empezara a publicar sistemáticamente más fallos de un fuero que de otro, el indicador lo leería como un cambio en la judicialización.",
+      "Mide cautelares en general, no cautelares contra el Estado nacional. Distinguir el demandado exige leer cada fallo, y el buscador no permite filtrar por eso.",
+      "Es anual. No sirve para leer el pulso de un mes.",
+    ],
+    faltantes: "Si la base no responde, se mantiene el último valor disponible, señalado como desactualizado.",
+    revisiones: "El punto del año en curso se recalcula en cada corrida, porque la base sigue indexando fallos de ese año. Al ser un cociente, el numerador y el denominador se recortan juntos y el punto sigue siendo comparable.",
+    cambios: [
+      { fecha: "2026-07-31", cambio: "Entra al índice como uno de los tres indicadores de comportamiento del Poder Judicial." },
+    ],
+  },
+
+  velocidad_resolucion: {
+    tipo: "indicador",
+    id: "velocidad_resolucion",
+    cinturon: "politica",
+    rezago: "El anuario se publica con el año cerrado, de modo que el dato describe el año anterior.",
+    fuente: {
+      organismo: "Corte Suprema de Justicia de la Nación",
+      operacion: "Anuario estadístico, sobre su sistema de gestión judicial",
+      serie: "Expedientes ingresados y resueltos por año",
+      url: "https://www.csjn.gov.ar/estadisticas",
+      acceso: "Los tableros interactivos no admiten consulta automática, pero la Corte publica una versión estática de cada hoja con las etiquetas de datos visibles, y el anuario en documento.",
+    },
+    transformaciones: [
+      "Se divide lo resuelto sobre lo ingresado en cada año. Cien por ciento es el punto donde la Corte resuelve exactamente lo que le entra.",
+      "Los doce años de la serie se validaron aritméticamente: el saldo que la fuente informa por separado coincide de forma exacta con ingresos menos resueltos en todos los años, sin una sola discrepancia.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ 40", puntaje: 100 },
+        { banda: "40 – 70", puntaje: 85 },
+        { banda: "70 – 100", puntaje: 65 },
+        { banda: "100 – 130", puntaje: 40 },
+        { banda: "> 130", puntaje: 10 },
+      ],
+      puntos: [[40, 100], [55, 85], [85, 65], [115, 40], [130, 10]],
+      unidadCorta: "% resuelto",
+    },
+    limitaciones: [
+      "El signo de este indicador es deliberado y conviene decirlo: una Corte más lenta le da más puntaje al Gobierno. El cinturón mide capacidad de gobernar sin fricción, no salud institucional, y una causa que tarda años deja en pie mientras tanto lo que se discute.",
+      "Cuenta expedientes, no su peso. Una causa que define una política y una queja de trámite cuentan igual.",
+      "Los años por encima de cien por ciento son años de descarga de atraso acumulado, no de mayor productividad instantánea.",
+      "Es anual. No sirve para leer el pulso de un mes.",
+    ],
+    faltantes: "Si el anuario no está disponible, se mantiene el último valor publicado, señalado como desactualizado.",
+    revisiones: "La fuente puede corregir cifras de años anteriores al publicar el anuario siguiente.",
+    cambios: [
+      { fecha: "2026-07-31", cambio: "Entra al índice. El veredicto anterior lo daba por imposible por falta de fecha de inicio de causa; la corrección encontró que el anuario publica ingresos y resueltos por año, que es lo que el indicador necesita." },
+    ],
+  },
+
+  paralisis_denuncias: {
+    tipo: "indicador",
+    id: "paralisis_denuncias",
+    cinturon: "politica",
+    rezago: "Depende de cuándo el Consejo publica la nota de cada sesión, en general dentro de las semanas siguientes.",
+    fuente: {
+      organismo: "Consejo de la Magistratura de la Nación",
+      operacion: "Archivo de notas de prensa de las comisiones de Acusación y de Disciplina",
+      serie: "Sesiones numeradas de cada comisión desde su separación, en 2022",
+      url: "https://www.consejomagistratura.gov.ar",
+      acceso: "Automático sobre el archivo público de notas.",
+    },
+    transformaciones: [
+      "Se cuentan las sesiones numeradas de ambas comisiones en la ventana móvil de doce meses. Las notas sin número —sesiones conjuntas, extraordinarias y audiencias testimoniales— se relevan aparte y no entran en el conteo.",
+      "Se suman las dos comisiones. Cada una por separado sesiona pocas veces al año, y una serie construida sobre una sola quedaría dominada por el ruido de un evento aislado.",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ 2", puntaje: 100 },
+        { banda: "2 – 4", puntaje: 85 },
+        { banda: "4 – 6", puntaje: 65 },
+        { banda: "6 – 9", puntaje: 40 },
+        { banda: "> 9", puntaje: 10 },
+      ],
+      puntos: [[2, 100], [3, 85], [5, 65], [7, 40], [9, 10]],
+      unidadCorta: "sesiones (12m)",
+    },
+    limitaciones: [
+      "Cuenta que la comisión se reúna, no que resuelva. Las decisiones concretas contra un magistrado son un fenómeno distinto y mucho más raro —cuatro en veinte meses— y no entran en este conteo.",
+      "Las dos comisiones se comportan distinto: una sesiona con más frecuencia y produce acciones, la otra sesiona menos y no publicó ninguna. El indicador las suma, de modo que no distingue cuál de las dos se movió.",
+      "Depende de que el Consejo publique la nota de cada sesión. Una sesión sin nota es invisible para el indicador.",
+    ],
+    faltantes: "Si el archivo no se puede leer, se mantiene el último valor disponible, señalado como desactualizado.",
+    revisiones: "Una nota publicada con retraso puede sumar una sesión a meses ya informados.",
+    cambios: [
+      { fecha: "2026-07-31", cambio: "Entra al índice midiendo las sesiones de ambas comisiones. Se descartó medir sólo la comisión de Disciplina: tiene ocho sesiones en cuatro años, lo que la convierte en un indicador de eventos aislados y no en una serie." },
+    ],
+  },
+
   emae_difusion: {
     tipo: "indicador",
     id: "emae_difusion",

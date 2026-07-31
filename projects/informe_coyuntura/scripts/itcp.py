@@ -103,6 +103,62 @@ BANDAS_ITCP = {
         (90.0, INF, 100), (80.0, 90.0, 85), (70.0, 80.0, 65),
         (60.0, 70.0, 40), (-INF, 60.0, 10),
     ],
+    "produccion_legislativa": [      # leyes sancionadas en 12m, MAYOR = mejor
+        # EXTERNA (ADR-0168, criterio de ADR-0105): el techo es el **promedio
+        # histórico de 74,4 leyes por año** de los 18 años completos que trae el
+        # dataset de HCDN (2008-2025, 1.340 leyes, cuatro presidencias). No es
+        # el rango observado bajo esta administración —15 a 47— sino una
+        # referencia ajena al período medido, que es lo que ADR-0045 exige.
+        #
+        # Mide el DENOMINADOR de la agenda común, no el cociente. ADR-0137
+        # midió que el cociente se mueve por abajo: el numerador —leyes de
+        # origen Ejecutivo— es estable entre 5 y 10 en todo el período, y lo
+        # que se derrumbó fue la producción propia del Congreso. Puntuar el
+        # cociente publicaría "el Ejecutivo domina la agenda" exactamente
+        # cuando lo que pasó es que el Congreso dejó de sancionar. El cociente
+        # sobrevive en el modal como lectura de composición.
+        (74.0, INF, 100), (50.0, 74.0, 85), (35.0, 50.0, 65),
+        (20.0, 35.0, 40), (-INF, 20.0, 10),
+    ],
+    "judicializacion": [             # densidad cautelar %, MENOR = mejor
+        # HISTORIA LARGA (ADR-0168): el techo es el **0,78% promedio de
+        # 2016-2019**, dos gobiernos anteriores al medido, contra 1,66% del
+        # promedio 2020-2026. El quiebre estructural está en la serie y las
+        # anclas se apoyan en el tramo previo, no en el actual.
+        #
+        # Serie anual: sumarios con "medida cautelar" sobre el total, ambos
+        # restringidos a jurisdicción Federal + Nacional (ADR-0135). La
+        # normalización es lo que la vuelve usable — el conteo crudo va de 69 a
+        # 350 y eso es volumen editorial de SAIJ, no cautelares.
+        (-INF, 0.8, 100), (0.8, 1.2, 85), (1.2, 1.6, 65),
+        (1.6, 2.0, 40), (2.0, INF, 10),
+    ],
+    "velocidad_resolucion": [        # tasa resueltos/ingresos %, MENOR = mejor
+        # VALOR CON SIGNIFICADO PROPIO (ADR-0168, segundo escalón de ADR-0105):
+        # el 100% es el punto donde la Corte resuelve exactamente lo que le
+        # entra — no acumula atraso ni lo descarga. Los cortes son márgenes
+        # redondos alrededor de ese valor, no el rango observado (26 a 142).
+        #
+        # OJO CON EL SIGNO, y está asumido: una Corte más lenta le da MÁS
+        # puntaje al Gobierno, porque el ITCP mide capacidad de gobernar sin
+        # fricción (ADR-0048), no salud institucional. Es la misma incomodidad
+        # que ADR-0090 resolvió para ratio_dnu y por la misma vía: el signo
+        # sale de la pregunta declarada, no de si el resultado agrada.
+        (-INF, 40.0, 100), (40.0, 70.0, 85), (70.0, 100.0, 65),
+        (100.0, 130.0, 40), (130.0, INF, 10),
+    ],
+    "paralisis_denuncias": [         # sesiones de las 2 comisiones en 12m, MENOR = mejor
+        # CONCEPTUAL (ADR-0168): cortes redondos sobre sesiones por año de dos
+        # comisiones —una por semestre cada una, una por trimestre, una por
+        # bimestre— no calibrados contra el rango observado (2 a 7).
+        #
+        # Mide sesiones de AMBAS comisiones, no de Disciplina sola: ADR-0166
+        # había derivado lo segundo, y los datos crudos lo desmienten —
+        # Disciplina tiene 8 sesiones en cuatro años, o sea un indicador de
+        # evento, que es justamente la clase que ADR-0147 dejó suspendida.
+        (-INF, 2.0, 100), (2.0, 4.0, 85), (4.0, 6.0, 65),
+        (6.0, 9.0, 40), (9.0, INF, 10),
+    ],
     "desafios_legislativos": [
         # normas propias desafiadas en el recinto (12m), MENOR = mejor. ADR-0089.
         #
@@ -488,9 +544,17 @@ DIMENSIONES_ITCP = {
         # abarcativas; veto_quorum NO sube, porque su 0% actual dice más sobre
         # cuántas sesiones se convocaron que sobre ausencia de conflicto.
         # Antes 20/25/15/20/20.
-        "indicadores": {"ratio_dnu": 0.23, "eficacia_legislativa": 0.32,
-                        "veto_quorum": 0.15, "desafios_legislativos": 0.15,
-                        "bloqueo_sostenido": 0.15},
+        # 2026-07-31 (ADR-0168): entra `produccion_legislativa` con 0.15 y los
+        # cinco existentes ceden proporcionalmente (×0.85), de modo que el orden
+        # relativo entre ellos no se toca — mismo procedimiento que usó ADR-0069
+        # al entrar bloqueo_sostenido. Mide el DENOMINADOR de la agenda común:
+        # cuántas leyes sanciona el Congreso, que es el número que efectivamente
+        # se mueve (15 a 47), no el cociente, que sube cuando el Congreso
+        # produce menos y admite dos lecturas opuestas (ADR-0137).
+        "indicadores": {"ratio_dnu": 0.20, "eficacia_legislativa": 0.27,
+                        "veto_quorum": 0.13, "desafios_legislativos": 0.13,
+                        "bloqueo_sostenido": 0.12,
+                        "produccion_legislativa": 0.15},
     },
     "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
@@ -544,7 +608,22 @@ DIMENSIONES_ITCP = {
         # velocidad de resolución, criterio jurisprudencial). El aporte externo
         # propone cinco indicadores más para este bloque; todos dependen de un
         # protocolo de codificación de contenido que todavía no existe.
-        "indicadores": {"cobertura_judicial": 1.0},
+        # 2026-07-31 (ADR-0168): la dimensión deja de tener un solo indicador.
+        # ADR-0126 había dejado escrito que uno solo "es una limitación real, no
+        # un diseño terminado": la cobertura mide la CAPACIDAD de integrar el
+        # Poder Judicial, no su COMPORTAMIENTO. Entran los tres que ADR-0135 y
+        # ADR-0139 dejaron construibles y ADR-0166 desbloqueó al fijar la
+        # orientación.
+        #
+        # cobertura_judicial conserva el peso mayor (0.40) por ser el único
+        # mensual y el de menor rezago (1 mes contra 6-18 de los otros tres);
+        # los tres nuevos entran parejos en 0.20, sin razón para ordenarlos
+        # entre sí — mismo criterio que ADR-0074 usó al repartir la dimensión
+        # de financiamiento.
+        "indicadores": {"cobertura_judicial": 0.40,
+                        "judicializacion": 0.20,
+                        "velocidad_resolucion": 0.20,
+                        "paralisis_denuncias": 0.20},
     },
     "sector_privado": {
         "nombre": "Sector privado",
@@ -614,6 +693,13 @@ FAMILIAS_ITCP = {
     "apoyo_empresario": "tension",             # lo que las cámaras dicen del Gobierno
     "alineamiento_senadores_prov": "tension",  # cómo votan los senadores provinciales
     "adhesion_reformas_provincial": "tension", # qué deciden las legislaturas provinciales
+    # ADR-0168: los cuatro entran por la regla de ADR-0166 — responden "cuánto
+    # lo confrontan las otras instituciones", no "cuánta actividad despliega el
+    # Gobierno", y de ahí sale el signo.
+    "produccion_legislativa": "tension",       # cuánto sanciona el Congreso por su cuenta
+    "judicializacion": "tension",              # cuánto se le frena la agenda por vía judicial
+    "velocidad_resolucion": "tension",         # cuán rápido resuelve el sistema judicial
+    "paralisis_denuncias": "tension",          # si el control disciplinario está activo
 
     # Capacidad propia: resultado de la acción del gobierno.
     "eficacia_legislativa": "capacidad",       # cuánto de lo que manda se sanciona
@@ -653,6 +739,18 @@ FAMILIAS_ITCP_META = {
 #   cohorte de 12 a 24 meses  -> 18
 #   stock acumulado           -> 0 (describe el estado de hoy)
 REZAGO_MESES_ITCP = {
+    # ADR-0168. Los dos judiciales anuales son, por lejos, los más rezagados
+    # del índice: la Corte publica su anuario con el año cerrado y SAIJ indexa
+    # con demora. Se declara alto a propósito — la card de rezago (ADR-0092)
+    # tiene que mostrar que este bloque describe otro año, no el pulso de hoy.
+    "velocidad_resolucion": 12.0,
+    "judicializacion": 9.0,
+    # Ventana móvil de 12 meses sobre sesiones ya publicadas en el archivo del
+    # Consejo: el rezago es el de la publicación de la nota, no el de la ventana.
+    "paralisis_denuncias": 2.0,
+    # Ventana móvil de 12 meses sobre el dataset de leyes sancionadas de HCDN,
+    # que se actualiza con la sanción: el rezago es el de la carga en el CKAN.
+    "produccion_legislativa": 1.5,
     # Cohorte MADURA: sólo entran los proyectos publicados hace 12-24 meses,
     # porque antes no hubo tiempo material de sancionarlos (ADR-0061). Es el
     # más rezagado del índice por construcción, y no hay forma de acelerarlo

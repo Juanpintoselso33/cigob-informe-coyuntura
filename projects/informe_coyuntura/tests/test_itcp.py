@@ -187,13 +187,19 @@ def test_pesos_internos_poder_legislativo_con_bloqueo():
     # mismo número mes a mes)— y entra desafios_legislativos. El par acoplado
     # baja de 0.40 a 0.30 combinado; el peso liberado va a eficacia y ratio_dnu,
     # NO a veto_quorum.
+    # 2026-07-31 (ADR-0168): entra produccion_legislativa con 0.15 y los cinco
+    # existentes ceden proporcionalmente (×0.85). El orden relativo se conserva:
+    # eficacia sigue primera, ratio_dnu segunda, los tres restantes parejos.
     dim = itcp.DIMENSIONES_ITCP["poder_legislativo"]
     assert dim["indicadores"] == {
-        "ratio_dnu": 0.23, "eficacia_legislativa": 0.32, "veto_quorum": 0.15,
-        "desafios_legislativos": 0.15, "bloqueo_sostenido": 0.15,
+        "ratio_dnu": 0.20, "eficacia_legislativa": 0.27, "veto_quorum": 0.13,
+        "desafios_legislativos": 0.13, "bloqueo_sostenido": 0.12,
+        "produccion_legislativa": 0.15,
     }
     acoplados = dim["indicadores"]["desafios_legislativos"] + dim["indicadores"]["bloqueo_sostenido"]
-    assert acoplados == 0.30, "el par acoplado no debería recuperar peso sin revisar ADR-0089"
+    assert acoplados <= 0.30, "el par acoplado no debería recuperar peso sin revisar ADR-0089"
+    assert dim["indicadores"]["eficacia_legislativa"] > dim["indicadores"]["ratio_dnu"], (
+        "eficacia tiene que seguir primera: es la medida más abarcativa (ADR-0061)")
     assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9
 
 

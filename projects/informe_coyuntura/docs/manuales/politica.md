@@ -14,12 +14,12 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `poder_legislativo` | 21% | `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `desafios_legislativos`, `bloqueo_sostenido` |
+| `poder_legislativo` | 21% | `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `desafios_legislativos`, `bloqueo_sostenido`, `produccion_legislativa` |
 | `alianzas_territoriales` | 19% | `iaf_transferencias`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
 | `cohesion_interna` | 15% | `cohesion_bloque` |
 | `conflicto_social` | 10% | `conflictividad_nacional` |
 | `imagen_voto` | 7% | `votometro_ventaja_lla` |
-| `poder_judicial` | 15% | `cobertura_judicial` |
+| `poder_judicial` | 15% | `cobertura_judicial`, `judicializacion`, `velocidad_resolucion`, `paralisis_denuncias` |
 | `sector_privado` | 13% | `brecha_obra_publica`, `apoyo_empresario` |
 
 Suma de pesos: 100%.
@@ -34,8 +34,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 23% |
-| Peso efectivo en el índice | **4.8%** |
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **4.2%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `externa` — ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059) |
@@ -50,8 +50,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 32% |
-| Peso efectivo en el índice | **6.7%** |
+| Peso dentro de la dimensión | 27% |
+| Peso efectivo en el índice | **5.7%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 18 meses |
 | Procedencia del ancla | `externa` — Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061) |
@@ -66,8 +66,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.1%** |
+| Peso dentro de la dimensión | 13% |
+| Peso efectivo en el índice | **2.7%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `conceptual` — tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121) |
@@ -82,8 +82,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.1%** |
+| Peso dentro de la dimensión | 13% |
+| Peso efectivo en el índice | **2.7%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `convencion` — anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089) |
@@ -98,8 +98,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 15% |
-| Peso efectivo en el índice | **3.1%** |
+| Peso dentro de la dimensión | 12% |
+| Peso efectivo en el índice | **2.5%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `externa` — ninguna insistencia exitosa entre 2003 y 2025: ~100% histórico de sostenimiento (ADR-0069) |
@@ -107,6 +107,21 @@ Suma de pesos: 100%.
 **Bandas**: > 90 → 100 · 75–90 → 85 · 50–75 → 60 · 25–50 → 35 · ≤ 25 → 10
 
 **Lo gobiernan**: [ADR-0069](../adr/0069-bloqueo-sostenido-indicador.md) bloqueo_sostenido: la cara ganada del pulso legislativo entra al ITCP
+
+#### Producción legislativa del Congreso
+
+`produccion_legislativa`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 15% |
+| Peso efectivo en el índice | **3.1%** |
+| Familia de lectura | tensión externa |
+| Rezago declarado | 1.5 meses |
+
+**Bandas**: > 74 → 100 · 50–74 → 85 · 35–50 → 65 · 20–35 → 40 · ≤ 20 → 10
+
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP
 
 ### Dimensión `alianzas_territoriales` (19%)
 
@@ -220,14 +235,59 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **15.0%** |
+| Peso dentro de la dimensión | 40% |
+| Peso efectivo en el índice | **6.0%** |
 | Familia de lectura | capacidad propia |
 | Rezago declarado | 1 meses |
 
 **Bandas**: > 90 → 100 · 80–90 → 85 · 70–80 → 65 · 60–70 → 40 · ≤ 60 → 10
 
 **Lo gobiernan**: [ADR-0126](../adr/0126-el-itcp-abre-la-dimension-poder-judicial.md) El ITCP abre la dimensión del Poder Judicial · [ADR-0144](../adr/0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) El piloto de concursos corrobora la cobertura judicial
+
+#### Judicialización de la agenda
+
+`judicializacion`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **3.0%** |
+| Familia de lectura | tensión externa |
+| Rezago declarado | 9 meses |
+
+**Bandas**: ≤ 0.8 → 100 · 0.8–1.2 → 85 · 1.2–1.6 → 65 · 1.6–2 → 40 · > 2 → 10
+
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP
+
+#### Velocidad de resolución de la Corte
+
+`velocidad_resolucion`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **3.0%** |
+| Familia de lectura | tensión externa |
+| Rezago declarado | 12 meses |
+
+**Bandas**: ≤ 40 → 100 · 40–70 → 85 · 70–100 → 65 · 100–130 → 40 · > 130 → 10
+
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP
+
+#### Actividad de las comisiones de control
+
+`paralisis_denuncias`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **3.0%** |
+| Familia de lectura | tensión externa |
+| Rezago declarado | 2 meses |
+
+**Bandas**: ≤ 2 → 100 · 2–4 → 85 · 4–6 → 65 · 6–9 → 40 · > 9 → 10
+
+**Lo gobiernan**: [ADR-0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) Los cuatro indicadores desbloqueados entran al ITCP
 
 ### Dimensión `sector_privado` (13%)
 
@@ -289,19 +349,19 @@ histórica.
   <br>quedó anotado como pendiente editorial si el indicador **corresponde al cinturón
 - **[ADR-0134](../adr/0134-paralisis-de-denuncias-la-fuente-sirve-y-el-dato-contradice-la-hipotesis.md)** — Parálisis de denuncias: la fuente sirve, y el dato contradice la hipótesis
   <br>2. **No se incorpora todavía ningún indicador al ITCP.** Faltan dos decisiones
-  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166. Verificar antes de tratarlo como abierto.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166, ADR-0168. Verificar antes de tratarlo como abierto.
 - **[ADR-0135](../adr/0135-cautelares-judicializacion-si-bloqueo-no.md)** — Cautelares: judicialización sí, bloqueo cautelar no
   <br>- **Judicialización: viable** — queda como candidata construible. La densidad cautelar normalizada en jurisdicción Federal + Nacional nace discriminando: rango ×3,5, historia desde 2016 para calibrar 
-  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166. Verificar antes de tratarlo como abierto.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166, ADR-0168. Verificar antes de tratarlo como abierto.
 - **[ADR-0136](../adr/0136-apoyo-publico-de-camaras-el-problema-es-a-quien-le-hablan.md)** — Apoyo público de las cámaras: el problema es a quién le hablan
   <br>- Queda pendiente y explícito que **SRA y AmCham no se pudieron evaluar** por
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0139. Verificar antes de tratarlo como abierto.
 - **[ADR-0137](../adr/0137-agenda-comun-el-cociente-se-mueve-por-el-denominador.md)** — Agenda común: el cociente se mueve por el denominador
   <br>3. **Queda pendiente la decisión editorial de orientación**, igual que en
-  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166. Verificar antes de tratarlo como abierto.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166, ADR-0168. Verificar antes de tratarlo como abierto.
 - **[ADR-0139](../adr/0139-correccion-tres-imposibles-que-no-lo-eran.md)** — Corrección: tres "imposibles" que no lo eran
   <br>3. **No se incorpora todavía ninguno**, por la misma razón que ADR-0134/0135/0137:
-  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166. Verificar antes de tratarlo como abierto.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0166, ADR-0168. Verificar antes de tratarlo como abierto.
 - **[ADR-0147](../adr/0147-el-universo-de-un-caso-era-un-artefacto.md)** — El universo de un caso era un artefacto de la consulta
   <br>- **Suspender la decisión editorial pendiente, no responderla** — elegida: no tiene sentido decidir si el ITCP admite un indicador de evento antes de saber cuántos eventos hay.
 - **[ADR-0148](../adr/0148-apoyo-empresario-con-uia-la-metrica-funciona.md)** — Apoyo empresario: con UIA, la métrica funciona
@@ -309,10 +369,11 @@ histórica.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0150. Verificar antes de tratarlo como abierto.
 - **[ADR-0166](../adr/0166-regla-de-orientacion-para-indicadores-de-control.md)** — La orientación de un indicador sale de la pregunta que responde
   <br>dice explícitamente: *"No se incorpora todavía ninguno, por la misma razón que
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0168. Verificar antes de tratarlo como abierto.
 
 ## Todos los ADR vigentes de este cinturón
 
-58 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+59 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -372,3 +433,4 @@ histórica.
 - [0151](../adr/0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) — El corpus estaba truncado: `apoyo_empresario` se recodifica entero
 - [0161](../adr/0161-el-contraste-externo-es-un-factor-comun-no-una-variable.md) — El contraste externo es un factor común, no una variable suelta
 - [0166](../adr/0166-regla-de-orientacion-para-indicadores-de-control.md) — La orientación de un indicador sale de la pregunta que responde
+- [0168](../adr/0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) — Los cuatro indicadores desbloqueados entran al ITCP

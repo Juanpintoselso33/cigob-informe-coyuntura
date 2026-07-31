@@ -1303,6 +1303,31 @@ POLITICA_DERIVADAS = [
     # La serie sale del MISMO cálculo que la card (politica.cobertura_judicial_serie):
     # el padrón ancla el nivel y los registros de designaciones y renuncias lo
     # mueven mes a mes, así que card y serie no pueden divergir (ADR-0126).
+    # ADR-0168. Las cuatro salen del MISMO origen que su card, así que card y
+    # serie no pueden divergir (el patrón contrario causó ADR-0086 y ADR-0087).
+    # produccion_legislativa la recalcula el colector contra HCDN; las otras
+    # tres leen el relevamiento versionado, que es también lo que lee la card.
+    ("produccion_legislativa", "leyes sancionadas (12m móviles)",
+     "Cámara de Diputados — dataset de leyes sancionadas",
+     lambda: [[f"{ym}-01", v]
+              for ym, v in sorted(politica.produccion_legislativa_serie().items())]),
+    ("paralisis_denuncias", "sesiones de las comisiones de control (12m móviles)",
+     "Consejo de la Magistratura — archivo de notas de las comisiones",
+     lambda: [[f"{ym}-01", v] for ym, v in sorted(
+         politica._leer_store(politica.DENUNCIAS_PATH)["serie_12m"]["puntos"].items())]),
+    # Las dos anuales se publican con el punto en enero del año que describen:
+    # el rezago declarado en REZAGO_MESES_ITCP (9 y 12 meses) es el que avisa
+    # que estas dos no son pulso de hoy (ADR-0092).
+    ("judicializacion", "% de sumarios con medida cautelar (Federal + Nacional)",
+     "SAIJ — buscador de jurisprudencia",
+     lambda: [[f"{a}-01-01", v] for a, v in sorted(
+         politica._leer_store(politica.CAUTELARES_PATH)
+         ["serie_densidad_cautelar_federal_nacional"]["puntos"].items())]),
+    ("velocidad_resolucion", "% de expedientes resueltos sobre ingresados",
+     "CSJN — anuario estadístico",
+     lambda: [[f"{a}-01-01", v] for a, v in sorted(
+         politica._leer_store(politica.CSJN_FUENTES_PATH)["velocidad_de_resolucion"]
+         ["serie_historica_completa"]["tasa_resolucion_pct"].items())]),
     ("cobertura_judicial", "% de cargos de juez con juez designado",
      "Ministerio de Justicia — padrón, designaciones y renuncias (datos.jus.gob.ar)",
      lambda: [[f"{ym}-01", v]

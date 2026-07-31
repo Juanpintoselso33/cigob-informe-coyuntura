@@ -159,6 +159,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0151](0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) | El corpus estaba truncado: `apoyo_empresario` se recodifica entero | `sector_privado`, `apoyo_empresario` | vigente |
 | [0161](0161-el-contraste-externo-es-un-factor-comun-no-una-variable.md) | El contraste externo es un factor común, no una variable suelta |  | vigente |
 | [0166](0166-regla-de-orientacion-para-indicadores-de-control.md) | La orientación de un indicador sale de la pregunta que responde |  | vigente |
+| [0168](0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) | Los cuatro indicadores desbloqueados entran al ITCP | `produccion_legislativa`, `judicializacion`, `velocidad_resolucion` | vigente |
 
 ### Gestión (ITCG)
 

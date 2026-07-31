@@ -14,10 +14,21 @@ BANDAS = itcp.BANDAS_ITCP["cobertura_judicial"]
 
 # ── Dimensión y pesos ───────────────────────────────────────────────────────
 
-def test_la_dimension_existe_con_su_indicador():
+def test_la_dimension_existe_con_sus_indicadores():
+    """ADR-0126 abrió la dimensión con un solo indicador y dejó escrito que eso
+    era «una limitación real, no un diseño terminado»: la cobertura mide la
+    CAPACIDAD de integrar el Poder Judicial, no su COMPORTAMIENTO. ADR-0168 la
+    cierra sumando los tres que medían comportamiento."""
     d = itcp.DIMENSIONES_ITCP["poder_judicial"]
     assert d["peso"] == 0.15
-    assert d["indicadores"] == {"cobertura_judicial": 1.0}
+    assert d["indicadores"] == {
+        "cobertura_judicial": 0.40, "judicializacion": 0.20,
+        "velocidad_resolucion": 0.20, "paralisis_denuncias": 0.20,
+    }
+    assert abs(sum(d["indicadores"].values()) - 1.0) < 1e-9
+    assert d["indicadores"]["cobertura_judicial"] > 0.20, (
+        "cobertura_judicial lleva el peso mayor por ser el único mensual y el "
+        "de menor rezago (1 mes contra 2-12 de los otros tres)")
 
 
 def test_los_pesos_entre_dimensiones_suman_uno():

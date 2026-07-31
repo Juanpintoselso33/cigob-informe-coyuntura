@@ -4,7 +4,7 @@ id: '0134'
 estado: 'aceptado'
 fecha: 2026-07-26
 cinturon: 'politica'
-cerrado_por: ['0166']
+cerrado_por: ['0166', '0168']
 ambito: 'cinturón político (ITCP), bloque judicial'
 ---
 

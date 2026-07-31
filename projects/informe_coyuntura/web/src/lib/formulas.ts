@@ -71,6 +71,22 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{\text{cargos con juez designado}}{\text{cargos de juez habilitados}}\times 100`,
     leyenda: "Padrón de magistrados del Ministerio de Justicia: de los cargos de juez de la justicia federal y nacional que están habilitados, qué porcentaje tiene juez designado. Los cargos vacantes se cuentan como no cubiertos aunque haya un subrogante a cargo, porque un subrogante es una solución transitoria y no un juez designado para ese tribunal. La serie mensual se reconstruye moviendo el padrón hacia atrás y hacia adelante con los registros oficiales de designaciones y renuncias.",
   },
+  produccion_legislativa: {
+    latex: String.raw`\text{leyes sancionadas en los \'ultimos 12 meses}`,
+    leyenda: "Dataset oficial de leyes sancionadas de la Cámara de Diputados: se cuentan las leyes con sanción definitiva en la ventana de doce meses que termina en el mes informado. El promedio histórico de los dieciocho años completos que trae el dataset —desde 2008, con cuatro presidencias— es de setenta y cuatro leyes por año, y ése es el valor con el que se compara, no el rango de estos años.",
+  },
+  judicializacion: {
+    latex: String.raw`\frac{\text{sumarios con medida cautelar}}{\text{total de sumarios}}\times 100`,
+    leyenda: "Base de jurisprudencia SAIJ, restringida a jurisdicción federal y nacional en el numerador y en el denominador. La proporción es lo que vuelve comparables años distintos: el conteo sin normalizar pasa de sesenta y nueve fallos en 2016 a trescientos cincuenta en 2021, y eso mide cuánto publica la base, no cuántas cautelares hubo.",
+  },
+  velocidad_resolucion: {
+    latex: String.raw`\frac{\text{expedientes resueltos en el a\~no}}{\text{expedientes ingresados en el a\~no}}\times 100`,
+    leyenda: "Anuario estadístico de la Corte Suprema, sobre su sistema de gestión judicial. Cien por ciento significa que la Corte resuelve exactamente lo que le entra: por encima descarga atraso acumulado, por debajo lo acumula. Los doce años de la serie cierran de forma exacta contra el saldo que la propia fuente informa por separado.",
+  },
+  paralisis_denuncias: {
+    latex: String.raw`\text{sesiones de Acusaci\'on y Disciplina en 12 meses}`,
+    leyenda: "Archivo de notas del Consejo de la Magistratura: se cuentan las sesiones numeradas de las comisiones de Acusación y de Disciplina en la ventana de doce meses. Las notas sin número —sesiones conjuntas, extraordinarias y audiencias testimoniales— se relevan aparte y no entran en el conteo.",
+  },
   emae_difusion: {
     latex: String.raw`\frac{\text{sectores que crecen i.a.}}{15\ \text{sectores}}\times 100`,
     leyenda: "EMAE por sector (INDEC): se compara cada uno de los quince sectores contra el mismo mes del año anterior y se cuenta cuántos crecen. 15 de 15 = todos los sectores en alza; 8 de 15 = poco más de la mitad. Se compara contra el año anterior y no contra el mes previo porque las series son originales, sin desestacionalizar. Limitación declarada: todos los sectores cuentan igual, sin ponderar por su tamaño en la economía — un mes en que crece la pesca cuenta lo mismo que uno en que crece la industria.",

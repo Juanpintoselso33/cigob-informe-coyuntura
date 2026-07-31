@@ -1886,6 +1886,161 @@ def fetch_cobertura_judicial() -> dict | None:
         return None
 
 
+
+
+# ── Bloque judicial y producción legislativa (ADR-0168) ──────────────────────
+#
+# Los cuatro indicadores que ADR-0166 desbloqueó al fijar la orientación. Tres
+# leen el relevamiento ya versionado y uno consulta la fuente en vivo; cuál es
+# cuál está declarado en cada colector, porque un store curado que nunca se
+# refresca es un indicador viejo sin que ningún gate lo note.
+
+CAUTELARES_PATH  = PROJECT_DIR / "data" / "politica" / "cautelares_saij_relevamiento.json"
+DENUNCIAS_PATH   = PROJECT_DIR / "data" / "politica" / "denuncias_comisiones_universo.json"
+CSJN_FUENTES_PATH = PROJECT_DIR / "data" / "politica" / "correccion_fuentes_judicial_empresario.json"
+
+
+def _leer_store(path) -> dict:
+    with open(path, encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def produccion_legislativa_serie() -> dict[str, int]:
+    """Leyes con sanción definitiva en la ventana móvil de 12 meses, por mes.
+
+    EN VIVO contra el CKAN de HCDN, el mismo recurso que ya usa
+    eficacia_legislativa (ADR-0062). Se cuenta el TOTAL, sin mirar de dónde
+    nace el expediente: el cociente de origen se mueve por el denominador
+    (ADR-0137) y por eso lo que puntúa es este número (ADR-0168).
+    """
+    filas = _hcdn_paginate(HCDN_LEYES_SANC_RID)
+    fechas: list[str] = []
+    for r in filas:
+        f = str(r.get("SANCION_DEFINITIVA", ""))[:10]
+        if len(f) == 10 and f[:4].isdigit():
+            fechas.append(f)
+    if not fechas:
+        raise ValueError("leyes-sancionadas sin fechas de sanción parseables")
+
+    fechas.sort()
+    desde = date(2023, 12, 1)
+    hoy = date.today()
+    serie: dict[str, int] = {}
+    cur = desde
+    while cur <= hoy:
+        fin = cur
+        ini = date(fin.year - 1, fin.month, 1)
+        n = sum(1 for f in fechas if ini.isoformat() <= f <= fin.isoformat())
+        serie[f"{fin.year}-{fin.month:02d}"] = n
+        cur = date(cur.year + (cur.month // 12), (cur.month % 12) + 1, 1)
+    return serie
+
+
+def fetch_produccion_legislativa() -> dict | None:
+    """Cuántas leyes sanciona el Congreso en 12 meses (ADR-0168)."""
+    try:
+        serie = produccion_legislativa_serie()
+        ym = max(serie)
+        valor = serie[ym]
+        return {
+            "valor": valor,
+            "unidad": "leyes sancionadas (12m)",
+            "fuente": "Cámara de Diputados — dataset de leyes sancionadas",
+            "fecha_dato": f"{ym}-01",
+            "desactualizado": False,
+            "detalle_txt": (
+                f"{valor} leyes sancionadas en los últimos 12 meses. El promedio "
+                f"histórico del dataset (2008-2025, cuatro presidencias) es de 74 "
+                f"leyes por año."),
+        }
+    except Exception as e:
+        _warn("produccion_legislativa", e)
+        return None
+
+
+def fetch_judicializacion() -> dict | None:
+    """Densidad cautelar en jurisdicción Federal + Nacional (ADR-0135/0168).
+
+    Lee el relevamiento versionado. La consulta a SAIJ quedó verificada y
+    documentada en `cautelares_saij_relevamiento.json`; automatizar el refresco
+    anual es trabajo pendiente y está declarado en el ADR.
+    """
+    try:
+        s = _leer_store(CAUTELARES_PATH)["serie_densidad_cautelar_federal_nacional"]
+        puntos = s["puntos"]
+        anio = max(puntos)
+        crudo = s.get("crudos", {}).get(anio, [None, None])
+        return {
+            "valor": puntos[anio],
+            "unidad": "% de sumarios con medida cautelar",
+            "fuente": "SAIJ — buscador de jurisprudencia (Federal + Nacional)",
+            "fecha_dato": f"{anio}-01-01",
+            "desactualizado": False,
+            "detalle_txt": (
+                f"{crudo[0]} de {crudo[1]} sumarios de jurisdicción federal y "
+                f"nacional publicados en {anio} mencionan una medida cautelar. "
+                f"Se publica la proporción y no el conteo porque el volumen que "
+                f"la base publica varía por razones editoriales."),
+        }
+    except Exception as e:
+        _warn("judicializacion", e)
+        return None
+
+
+def fetch_velocidad_resolucion() -> dict | None:
+    """Expedientes resueltos sobre ingresados en la CSJN (ADR-0139/0168).
+
+    Lee el relevamiento versionado. La fuente son los tableros estáticos y el
+    anuario de la Corte, que no admiten consulta automática (ADR-0140): el
+    refresco es anual y manual, y está declarado.
+    """
+    try:
+        h = _leer_store(CSJN_FUENTES_PATH)["velocidad_de_resolucion"]["serie_historica_completa"]
+        tasas = h["tasa_resolucion_pct"]
+        anio = max(tasas)
+        return {
+            "valor": tasas[anio],
+            "unidad": "% de expedientes resueltos sobre ingresados",
+            "fuente": "CSJN — anuario estadístico (sistema de gestión judicial)",
+            "fecha_dato": f"{anio}-01-01",
+            "desactualizado": False,
+            "detalle_txt": (
+                f"En {anio} la Corte resolvió {h['resueltos'][anio]:,} expedientes "
+                f"sobre {h['ingresos'][anio]:,} ingresados. Por encima de 100% "
+                f"descarga atraso; por debajo lo acumula."
+            ).replace(",", "."),
+        }
+    except Exception as e:
+        _warn("velocidad_resolucion", e)
+        return None
+
+
+def fetch_paralisis_denuncias() -> dict | None:
+    """Sesiones de las comisiones de Acusación y Disciplina en 12m (ADR-0134/0168).
+
+    Lee el relevamiento versionado del archivo de notas del Consejo. Mide AMBAS
+    comisiones: Disciplina sola tiene 8 sesiones en cuatro años, o sea un
+    indicador de evento, que es la clase que ADR-0147 dejó suspendida.
+    """
+    try:
+        s = _leer_store(DENUNCIAS_PATH)["serie_12m"]
+        puntos = s["puntos"]
+        ym = max(puntos)
+        return {
+            "valor": puntos[ym],
+            "unidad": "sesiones de las comisiones de control (12m)",
+            "fuente": "Consejo de la Magistratura — archivo de notas de las comisiones",
+            "fecha_dato": f"{ym}-01",
+            "desactualizado": False,
+            "detalle_txt": (
+                f"{puntos[ym]} sesiones ordinarias de las comisiones de Acusación y "
+                f"Disciplina en los últimos 12 meses (rango de la serie: {s['rango']}, "
+                f"promedio {s['promedio']})."),
+        }
+    except Exception as e:
+        _warn("paralisis_denuncias", e)
+        return None
+
 # ── Colectores manuales ───────────────────────────────────────────────────────
 
 def load_manuales() -> dict:
@@ -4431,6 +4586,18 @@ def main() -> None:
     elif "desafios_legislativos" in indicadores_anteriores:
         frescos["desafios_legislativos"] = {**indicadores_anteriores["desafios_legislativos"],
                                             "desactualizado": True}
+
+    # ADR-0168: los tres de comportamiento judicial + la producción legislativa.
+    for _clave, _fn in (("produccion_legislativa", fetch_produccion_legislativa),
+                        ("judicializacion", fetch_judicializacion),
+                        ("velocidad_resolucion", fetch_velocidad_resolucion),
+                        ("paralisis_denuncias", fetch_paralisis_denuncias)):
+        _res = _fn()
+        if _resultado_utilizable(_clave, _res):
+            frescos[_clave] = _res
+            frescos_count += 1
+        elif _clave in indicadores_anteriores:
+            frescos[_clave] = {**indicadores_anteriores[_clave], "desactualizado": True}
 
     resultado_judicial = fetch_cobertura_judicial()
     if _resultado_utilizable("cobertura_judicial", resultado_judicial):
