@@ -6,7 +6,7 @@ fecha: 2026-07-18
 cinturon: 'gestion'
 indicadores: [rigi_inversiones, validacion_externa]
 corrige: ['0085']
-relacionado: ['0087']
+relacionado: ['0087', '0169']
 ambito: '`rigi_inversiones` · reconstrucción histórica del ITCG · `validacion_externa`'
 ---
 

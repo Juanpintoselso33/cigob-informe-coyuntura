@@ -6,7 +6,7 @@ fecha: 2026-07-31
 cinturon: 'transversal'
 archivos: ['scripts/validacion_externa.py']
 cierra: ['0154']
-relacionado: ['0045', '0155', '0158', '0159', '0161', '0162']
+relacionado: ['0045', '0155', '0158', '0159', '0161', '0162', '0169']
 ambito: 'Validación externa de los cuatro índices · criterio de elección del ancla'
 origen: 'Al recorrer las decisiones editoriales abiertas de vida y macro, ésta era la única que fijaba una regla general'
 ---

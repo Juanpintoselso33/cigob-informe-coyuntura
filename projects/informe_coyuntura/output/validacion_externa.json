@@ -1435,7 +1435,7 @@
       "share_altos": 0.019
     },
     "umbral": 0.7,
-    "n_indicadores": 18,
+    "n_indicadores": 16,
     "n_pares": 103,
     "r_abs_medio": 0.389,
     "share_altos": 0.117,
@@ -2331,15 +2331,15 @@
     "2026-04": 1916.1,
     "2026-05": 2131.0,
     "2026-06": 2087.8,
-    "2026-07": 2088.5
+    "2026-07": 2104.8
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
-      "r": 0.747,
+      "r": 0.748,
       "n": 32
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.122,
+      "r": 0.117,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {
@@ -2352,7 +2352,7 @@
     }
   },
   "serie_itcp": {
-    "2024-01": 65.7,
+    "2024-01": 66.8,
     "2024-02": 71.8,
     "2024-03": 72.2,
     "2024-04": 69.4,
@@ -2364,7 +2364,7 @@
     "2024-10": 54.8,
     "2024-11": 45.9,
     "2024-12": 53.1,
-    "2025-01": 60.0,
+    "2025-01": 59.2,
     "2025-02": 59.2,
     "2025-03": 58.3,
     "2025-04": 54.9,
@@ -2376,7 +2376,7 @@
     "2025-10": 47.8,
     "2025-11": 58.2,
     "2025-12": 65.3,
-    "2026-01": 68.5,
+    "2026-01": 68.7,
     "2026-02": 66.6,
     "2026-03": 67.2,
     "2026-04": 60.6,
@@ -2671,23 +2671,23 @@
   },
   "correlaciones_itcp": {
     "niveles (ITCP vs EPU Argentina)": {
-      "r": -0.468,
+      "r": -0.466,
       "n": 30
     },
     "primeras diferencias (ITCP vs EPU)": {
-      "r": -0.399,
+      "r": -0.405,
       "n": 29
     },
     "ITCP adelantado 1 mes vs EPU": {
-      "r": -0.409,
+      "r": -0.407,
       "n": 29
     },
     "EPU adelantado 1 mes vs ITCP": {
-      "r": -0.198,
+      "r": -0.188,
       "n": 30
     },
     "niveles, sin la dimensión de sector privado": {
-      "r": -0.603,
+      "r": -0.6,
       "n": 30
     }
   },
@@ -3631,8 +3631,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": 0.179,
-          "r_diferencias": 0.061,
+          "r_niveles": 0.177,
+          "r_diferencias": 0.06,
           "n": 32
         },
         {
@@ -3658,8 +3658,8 @@
       "n_ajenas": 8,
       "niveles": {
         "convergente": 0.249,
-        "discriminante": 0.232,
-        "brecha": 0.017
+        "discriminante": 0.231,
+        "brecha": 0.018
       },
       "diferencias": {
         "convergente": 0.246,
@@ -3993,7 +3993,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 7 estadísticas de su propio terreno con 0,249 y a las 8 ajenas con 0,232. En los cambios mes a mes la separación no se sostiene: 0,246 con lo propio contra 0,261 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 7 estadísticas de su propio terreno con 0,249 y a las 8 ajenas con 0,231. En los cambios mes a mes la separación no se sostiene: 0,246 con lo propio contra 0,261 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
     "itcg": {
       "indice": "itcg",
@@ -4111,8 +4111,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": true,
-          "r_niveles": 0.747,
-          "r_diferencias": 0.122,
+          "r_niveles": 0.748,
+          "r_diferencias": 0.117,
           "n": 32
         },
         {
@@ -4142,9 +4142,9 @@
         "brecha": 0.034
       },
       "diferencias": {
-        "convergente": 0.124,
+        "convergente": 0.123,
         "discriminante": 0.172,
-        "brecha": -0.048
+        "brecha": -0.049
       },
       "factor": {
         "cargas": {
@@ -4322,7 +4322,7 @@
         ],
         "r_niveles": 0.678,
         "r_diferencias": -0.015,
-        "mejor_sola_niveles": 0.747,
+        "mejor_sola_niveles": 0.748,
         "mejor_sola_diferencias": 0.276,
         "aporte_sobre_tendencia": {
           "n": 30,
@@ -4488,7 +4488,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,401 y a las 11 ajenas con 0,367. En los cambios mes a mes la separación no se sostiene: 0,124 con lo propio contra 0,172 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,401 y a las 11 ajenas con 0,367. En los cambios mes a mes la separación no se sostiene: 0,123 con lo propio contra 0,172 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
     "itcp": {
       "indice": "itcp",
@@ -4498,8 +4498,8 @@
           "etiqueta": "Clima electoral",
           "fuente": "Votómetro",
           "propia": true,
-          "r_niveles": 0.51,
-          "r_diferencias": 0.258,
+          "r_niveles": 0.519,
+          "r_diferencias": 0.263,
           "n": 30
         },
         {
@@ -4507,8 +4507,8 @@
           "etiqueta": "Ventas en autoservicios mayoristas",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.027,
-          "r_diferencias": -0.232,
+          "r_niveles": -0.015,
+          "r_diferencias": -0.224,
           "n": 29
         },
         {
@@ -4516,8 +4516,8 @@
           "etiqueta": "Ventas en centros de compras",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.426,
-          "r_diferencias": -0.118,
+          "r_niveles": -0.439,
+          "r_diferencias": -0.128,
           "n": 29
         },
         {
@@ -4525,8 +4525,8 @@
           "etiqueta": "Ventas en supermercados",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.345,
-          "r_diferencias": -0.167,
+          "r_niveles": -0.353,
+          "r_diferencias": -0.174,
           "n": 29
         },
         {
@@ -4534,8 +4534,8 @@
           "etiqueta": "Demanda eléctrica residencial",
           "fuente": "CAMMESA",
           "propia": false,
-          "r_niveles": 0.52,
-          "r_diferencias": 0.309,
+          "r_niveles": 0.516,
+          "r_diferencias": 0.297,
           "n": 30
         },
         {
@@ -4543,8 +4543,8 @@
           "etiqueta": "Incertidumbre de política (EPU)",
           "fuente": "Banco de España / SECMCA",
           "propia": true,
-          "r_niveles": -0.468,
-          "r_diferencias": -0.399,
+          "r_niveles": -0.466,
+          "r_diferencias": -0.405,
           "n": 30
         },
         {
@@ -4552,8 +4552,8 @@
           "etiqueta": "Financiamiento externo a empresas",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": 0.039,
-          "r_diferencias": 0.26,
+          "r_niveles": 0.032,
+          "r_diferencias": 0.276,
           "n": 29
         },
         {
@@ -4561,8 +4561,8 @@
           "etiqueta": "Consumo residencial de gas",
           "fuente": "Sec. de Energía",
           "propia": false,
-          "r_niveles": 0.166,
-          "r_diferencias": -0.015,
+          "r_niveles": 0.165,
+          "r_diferencias": -0.009,
           "n": 29
         },
         {
@@ -4570,8 +4570,8 @@
           "etiqueta": "Confianza en el Gobierno (ICG)",
           "fuente": "UTDT",
           "propia": true,
-          "r_niveles": 0.232,
-          "r_diferencias": 0.336,
+          "r_niveles": 0.233,
+          "r_diferencias": 0.34,
           "n": 30
         },
         {
@@ -4579,8 +4579,8 @@
           "etiqueta": "Índice Líder de actividad",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.246,
-          "r_diferencias": 0.046,
+          "r_niveles": -0.249,
+          "r_diferencias": 0.062,
           "n": 30
         },
         {
@@ -4588,8 +4588,8 @@
           "etiqueta": "Inversión directa de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": 0.205,
-          "r_diferencias": 0.115,
+          "r_niveles": 0.208,
+          "r_diferencias": 0.101,
           "n": 29
         },
         {
@@ -4597,8 +4597,8 @@
           "etiqueta": "Inversión de cartera de no residentes",
           "fuente": "BCRA",
           "propia": false,
-          "r_niveles": -0.278,
-          "r_diferencias": -0.183,
+          "r_niveles": -0.277,
+          "r_diferencias": -0.186,
           "n": 29
         },
         {
@@ -4606,8 +4606,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": -0.066,
-          "r_diferencias": 0.239,
+          "r_niveles": -0.077,
+          "r_diferencias": 0.245,
           "n": 30
         },
         {
@@ -4615,8 +4615,8 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.104,
-          "r_diferencias": -0.211,
+          "r_niveles": -0.099,
+          "r_diferencias": -0.202,
           "n": 28
         },
         {
@@ -4624,22 +4624,22 @@
           "etiqueta": "Ventas de naftas",
           "fuente": "Sec. de Energía",
           "propia": false,
-          "r_niveles": -0.421,
-          "r_diferencias": -0.195,
+          "r_niveles": -0.424,
+          "r_diferencias": -0.204,
           "n": 30
         }
       ],
       "n_propias": 3,
       "n_ajenas": 12,
       "niveles": {
-        "convergente": 0.403,
-        "discriminante": 0.237,
-        "brecha": 0.166
+        "convergente": 0.406,
+        "discriminante": 0.238,
+        "brecha": 0.168
       },
       "diferencias": {
-        "convergente": 0.331,
-        "discriminante": 0.174,
-        "brecha": 0.157
+        "convergente": 0.336,
+        "discriminante": 0.176,
+        "brecha": 0.16
       },
       "factor": {
         "cargas": {
@@ -4663,7 +4663,7 @@
         "pares": [
           [
             "2024-01",
-            65.7,
+            66.8,
             1.766
           ],
           [
@@ -4723,7 +4723,7 @@
           ],
           [
             "2025-01",
-            60.0,
+            59.2,
             1.001
           ],
           [
@@ -4783,7 +4783,7 @@
           ],
           [
             "2026-01",
-            68.5,
+            68.7,
             1.079
           ],
           [
@@ -4812,175 +4812,170 @@
             -1.934
           ]
         ],
-        "r_niveles": 0.512,
-        "r_diferencias": 0.44,
-        "mejor_sola_niveles": 0.51,
-        "mejor_sola_diferencias": 0.399,
+        "r_niveles": 0.515,
+        "r_diferencias": 0.447,
+        "mejor_sola_niveles": 0.519,
+        "mejor_sola_diferencias": 0.405,
         "aporte_sobre_tendencia": {
           "n": 30,
           "suficiente": true,
           "colineal": false,
           "r2_tendencia": 0.226,
-          "r2_con_indice": 0.471,
-          "aporte": 0.245,
+          "r2_con_indice": 0.47,
+          "aporte": 0.244,
           "signo": "positivo",
-          "coef": 0.0806
+          "coef": 0.0802
         },
-        "plano": "niveles",
+        "plano": "diferencias",
         "pares_grafico": [
           [
-            "2024-01",
-            65.7,
-            1.766
-          ],
-          [
             "2024-02",
-            71.8,
-            1.378
+            5.0,
+            -0.473
           ],
           [
             "2024-03",
-            72.2,
-            0.873
+            0.4,
+            -0.904
           ],
           [
             "2024-04",
-            69.4,
-            0.073
+            -2.8,
+            -0.788
           ],
           [
             "2024-05",
-            66.0,
-            0.977
+            -3.4,
+            1.384
           ],
           [
             "2024-06",
-            56.6,
-            -0.141
+            -9.4,
+            -1.019
           ],
           [
             "2024-07",
-            54.2,
-            -0.404
+            -2.4,
+            -0.344
           ],
           [
             "2024-08",
-            53.6,
-            0.378
+            -0.6,
+            0.832
           ],
           [
             "2024-09",
-            55.5,
-            -1.045
+            1.9,
+            -1.677
           ],
           [
             "2024-10",
-            54.8,
-            -0.399
+            -0.7,
+            1.019
           ],
           [
             "2024-11",
-            45.9,
-            0.66
+            -8.9,
+            1.569
           ],
           [
             "2024-12",
-            53.1,
-            0.434
+            7.2,
+            -0.154
           ],
           [
             "2025-01",
-            60.0,
-            1.001
+            6.1,
+            1.288
           ],
           [
             "2025-02",
-            59.2,
-            1.094
+            0.0,
+            0.565
           ],
           [
             "2025-03",
-            58.3,
-            0.381
+            -0.9,
+            -0.561
           ],
           [
             "2025-04",
-            54.9,
-            -0.249
+            -3.4,
+            -0.319
           ],
           [
             "2025-05",
-            64.6,
-            0.788
+            9.7,
+            1.13
           ],
           [
             "2025-06",
-            65.6,
-            0.298
+            1.0,
+            -0.173
           ],
           [
             "2025-07",
-            61.6,
-            0.293
+            -4.0,
+            0.105
           ],
           [
             "2025-08",
-            47.9,
-            -0.933
+            -13.7,
+            -1.317
           ],
           [
             "2025-09",
-            45.5,
-            -3.742
+            -2.4,
+            -2.981
           ],
           [
             "2025-10",
-            47.8,
-            -2.329
+            2.3,
+            1.7
           ],
           [
             "2025-11",
-            58.2,
-            -0.335
+            10.4,
+            2.44
           ],
           [
             "2025-12",
-            65.3,
-            0.085
+            7.1,
+            1.078
           ],
           [
             "2026-01",
-            68.5,
-            1.079
+            3.4,
+            1.382
           ],
           [
             "2026-02",
-            66.6,
-            0.839
+            -2.1,
+            -0.066
           ],
           [
             "2026-03",
-            67.2,
-            0.534
+            0.6,
+            -0.068
           ],
           [
             "2026-04",
-            60.6,
-            -1.451
+            -6.6,
+            -2.792
           ],
           [
             "2026-05",
-            63.7,
-            -1.9
+            3.1,
+            -0.6
           ],
           [
             "2026-06",
-            65.7,
-            -1.934
+            2.0,
+            0.144
           ]
         ]
       },
-      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,403 y a las 12 ajenas con 0,237. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,331 con lo propio contra 0,174 con lo ajeno."
+      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 3 estadísticas de su propio terreno con 0,406 y a las 12 ajenas con 0,238. En los cambios mes a mes —la prueba exigente, la que no se puede satisfacer con la tendencia que en estos años arrastró a casi todas las series argentinas— la separación se mantiene: 0,336 con lo propio contra 0,176 con lo ajeno."
     }
   }
 }

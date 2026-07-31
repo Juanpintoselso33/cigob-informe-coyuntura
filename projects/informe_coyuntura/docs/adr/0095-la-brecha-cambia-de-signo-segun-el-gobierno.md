@@ -6,6 +6,7 @@ fecha: 2026-07-20
 cinturon: 'politica'
 indicadores: [brecha_obra_publica]
 corrige: ['0088']
+relacionado: ['0169']
 ambito: 'ITCP · `brecha_obra_publica` · validación externa'
 origen: 'Observación del editor: "quedó descalzadísimo de su contraste externo"'
 ---

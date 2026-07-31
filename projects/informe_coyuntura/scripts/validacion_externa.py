@@ -610,7 +610,23 @@ def _valores_itcg_por_mes() -> dict:
 # Un componente sin serie en disco no rompe nada: queda con {} y la
 # reconstrucción renormaliza, igual que con veto_quorum antes de su primer
 # período o bloqueo_sostenido antes de mar-2024.
-ITCP_SERIES = [k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]]
+# Indicadores del ITCP cuya SERIE es ANUAL y por eso no puede entrar a la
+# reconstrucción mensual (ADR-0169). Mismo criterio que ITCG_SERIE_NO_COMPARABLE
+# (ADR-0086): la serie existe y el indicador puntúa bien desde su card, pero
+# interpolada a mensual aporta once ceros y un salto por año — en primeras
+# diferencias eso es ruido con forma de escalón, no señal.
+#
+# Medido el 31-jul-2026 con el contrafáctico de ADR-0095: sacar estos dos de la
+# reconstrucción mejora el ITCP↔EPU en diferencias de −0,366 a −0,405, MÁS que
+# sacar los cuatro indicadores nuevos juntos (−0,402). En niveles el efecto es
+# el contrario y por eso hay que mirar las dos métricas.
+ITCP_SERIE_ANUAL = {
+    "judicializacion": "serie anual (SAIJ), un punto por año — ADR-0169",
+    "velocidad_resolucion": "serie anual (anuario CSJN), un punto por año — ADR-0169",
+}
+
+ITCP_SERIES = [k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores"]
+               if k not in ITCP_SERIE_ANUAL]
 
 # MÁSCARA DE ERA para eficacia_legislativa en la reconstrucción (ADR-0070,
 # 2026-07-16): la cohorte madura del indicador (expedientes PE publicados
@@ -979,7 +995,8 @@ def _serie_itcp_sin(dimension: str) -> dict:
     global ITCP_SERIES
     guardadas = ITCP_SERIES
     itcp.DIMENSIONES_ITCP = recortadas
-    ITCP_SERIES = [k for d in recortadas.values() for k in d["indicadores"]]
+    ITCP_SERIES = [k for d in recortadas.values() for k in d["indicadores"]
+                   if k not in ITCP_SERIE_ANUAL]
     try:
         return construir_serie_itcp()
     finally:
