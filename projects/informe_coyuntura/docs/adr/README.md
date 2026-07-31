@@ -142,13 +142,13 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0140](0140-el-dato-existe-y-esta-mejor-modelado-de-lo-que-suponiamos.md) | El dato existe y está mejor modelado de lo que suponíamos |  | vigente |
 | [0141](0141-detector-de-novedades-judiciales-de-la-csjn.md) | Detector de novedades judiciales de la CSJN |  | vigente |
 | [0144](0144-el-piloto-de-concursos-corrobora-cobertura-judicial.md) | El piloto de concursos corrobora la cobertura judicial | `cobertura_judicial` | vigente |
-| [0145](0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) | Apoyo empresario: la fuente sirve, la métrica no | `sector_privado` | vigente |
+| [0145](0145-apoyo-empresario-la-fuente-sirve-la-metrica-no.md) | Apoyo empresario: la fuente sirve, la métrica no | `sector_privado`, `apoyo_empresario` | vigente |
 | [0146](0146-reglamentacion-irrazonable-si-cuenta.md) | «Reglamentación irrazonable» sí cuenta como veto de constitucionalidad |  | vigente |
 | [0147](0147-el-universo-de-un-caso-era-un-artefacto.md) | El universo de un caso era un artefacto de la consulta |  | vigente |
-| [0148](0148-apoyo-empresario-con-uia-la-metrica-funciona.md) | Apoyo empresario: con UIA, la métrica funciona | `sector_privado` | vigente |
-| [0149](0149-detector-de-postura-empresaria.md) | Detector de postura empresaria | `sector_privado` | vigente |
-| [0150](0150-apoyo-empresario-entra-al-itcp.md) | Apoyo empresario entra al ITCP, y el bug que lo encontró | `sector_privado` | vigente |
-| [0151](0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) | El corpus estaba truncado: `apoyo_empresario` se recodifica entero | `sector_privado` | vigente |
+| [0148](0148-apoyo-empresario-con-uia-la-metrica-funciona.md) | Apoyo empresario: con UIA, la métrica funciona | `sector_privado`, `apoyo_empresario` | vigente |
+| [0149](0149-detector-de-postura-empresaria.md) | Detector de postura empresaria | `sector_privado`, `apoyo_empresario` | vigente |
+| [0150](0150-apoyo-empresario-entra-al-itcp.md) | Apoyo empresario entra al ITCP, y el bug que lo encontró | `sector_privado`, `apoyo_empresario` | vigente |
+| [0151](0151-el-corpus-estaba-truncado-y-la-codificacion-se-rehace.md) | El corpus estaba truncado: `apoyo_empresario` se recodifica entero | `sector_privado`, `apoyo_empresario` | vigente |
 | [0159](0159-validacion-por-panel-para-los-socioeconomicos.md) | Validación por panel para los compuestos socioeconómicos |  | vigente |
 | [0161](0161-el-contraste-externo-es-un-factor-comun-no-una-variable.md) | El contraste externo es un factor común, no una variable suelta |  | vigente |
 

@@ -4,7 +4,8 @@ id: '0150'
 estado: 'aceptado'
 fecha: 2026-07-27
 cinturon: 'politica'
-indicadores: [sector_privado]
+indicadores: [sector_privado, apoyo_empresario]
+corrige: ['0148']
 corregido_por: ['0151']
 ambito: 'cinturón político (ITCP) · dimensión `sector_privado`'
 ---
