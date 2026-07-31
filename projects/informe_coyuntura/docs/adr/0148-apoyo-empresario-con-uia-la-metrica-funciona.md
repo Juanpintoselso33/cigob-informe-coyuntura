@@ -14,6 +14,21 @@ ambito: 'cinturón político (ITCP) · dimensión `sector_privado`'
 - **Reabre y corrige**: ADR-0145 (la versión sólo-AEA, descartada)
 - **Relacionados**: ADR-0131 (protocolo), ADR-0139 (AEA como fuente), ADR-0088
 
+## Contexto y planteo del problema
+
+### La fuente que faltaba
+
+**UIA publica en `uia.org.ar/prensa/{id}/`, con IDs secuenciales y páginas
+servidas sin JavaScript** — fecha y título en el HTML. El listado sí es una app
+con JS, pero las notas individuales no, así que el corpus se recorre por ID.
+
+Ojo con la sección equivocada: **UIA/Noticias está dominado por informes del
+CEU** (indicadores laborales, boletines estadísticos), el mismo patrón que hundió
+a ADEBA. Los comunicados de postura están en **UIA/Prensa**, que es otra sección.
+
+Barrido del rango de IDs: **57 comunicados desde dic-2023**, contra 46 de AEA en
+seis años.
+
 ## Opciones consideradas
 
 - **Incorporar UIA junto a AEA** — elegida: con UIA la métrica funciona.
@@ -60,19 +75,6 @@ fenómeno** — AEA se pronunció sobre el Ejecutivo nacional 13 veces en seis a
 Y dejó escrito el único camino: **sumar cámaras**.
 
 Se sumó una. Alcanzó.
-
-### La fuente que faltaba
-
-**UIA publica en `uia.org.ar/prensa/{id}/`, con IDs secuenciales y páginas
-servidas sin JavaScript** — fecha y título en el HTML. El listado sí es una app
-con JS, pero las notas individuales no, así que el corpus se recorre por ID.
-
-Ojo con la sección equivocada: **UIA/Noticias está dominado por informes del
-CEU** (indicadores laborales, boletines estadísticos), el mismo patrón que hundió
-a ADEBA. Los comunicados de postura están en **UIA/Prensa**, que es otra sección.
-
-Barrido del rango de IDs: **57 comunicados desde dic-2023**, contra 46 de AEA en
-seis años.
 
 ### El hallazgo que le da sentido
 

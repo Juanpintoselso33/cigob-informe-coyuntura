@@ -41,6 +41,18 @@ ORDEN = [CONTEXTO, FACTORES, OPCIONES, DECISION, PROS, MAS]
 
 # {id: {título de la sección H3: destino}}
 UBICACION: dict[str, dict[str, str]] = {
+    # Segunda pasada: 15 ADR habían quedado sin «Contexto y planteo del
+    # problema» porque su encuadre estaba bajo un título propio («Qué se
+    # intentó», «Lo que se había pasado por alto», «Qué corrige de ADR-0111»).
+    "0096": {"Lo que decía la auditoría": "contexto"},
+    "0104": {"Qué se intentó": "contexto"},
+    "0112": {"Qué corrige de ADR-0111": "contexto"},
+    "0113": {"Qué corrige de ADR-0111": "contexto"},
+    "0117": {"Qué se revisó": "contexto"},
+    "0139": {"Lo que se había pasado por alto": "contexto"},
+    "0144": {"Qué era y por qué faltaba": "contexto"},
+    "0148": {"La fuente que faltaba": "contexto"},
+
     "0027": {
         "Consecuencias mientras esté abierto": "consecuencias",
     },

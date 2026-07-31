@@ -15,6 +15,26 @@ origen: 'Aporte externo sobre el cinturón político (doc 260724), recomendació
 
 | **Complementa** | ADR-0126 (dimensión judicial, primer indicador) |
 
+## Contexto y planteo del problema
+
+### Qué se verificó
+
+El aporte marcaba **Veto de Constitucionalidad** como automatización **Alta**:
+*"SAIJ — buscador de jurisprudencia. Motor de búsqueda con metadatos
+consultable; tratar como evento, no serie continua"*.
+
+**La parte de infraestructura es correcta y quedó comprobada.** El endpoint
+`https://www.saij.gob.ar/busqueda` devuelve JSON, acepta sintaxis de campo
+(`texto:`, `fecha-rango:[AAAAMMDD TO AAAAMMDD]`), facetas por tipo de documento
+y paginación. No hace falta scrapear HTML.
+
+| consulta | resultados |
+|---|---|
+| `texto:inconstitucionalidad` (jurisprudencia) | 21.560 |
+| `texto:"declara la inconstitucionalidad"` | 643 |
+| `texto:"inconstitucionalidad del decreto"` | 122 |
+| ídem + `fecha-rango:[20231210 TO 20261231]` | **14** |
+
 ## Opciones consideradas
 
 - **Filtrar la consulta a SAIJ por descriptor** — elegida.
@@ -107,24 +127,6 @@ criterio publicado por una regla escondida en una expresión regular.
 - **No resuelve** que la doble codificación necesita dos personas. Es un costo
   real del diseño y no hay forma de automatizarlo sin perder lo que lo hace
   auditable.
-
-### Qué se verificó
-
-El aporte marcaba **Veto de Constitucionalidad** como automatización **Alta**:
-*"SAIJ — buscador de jurisprudencia. Motor de búsqueda con metadatos
-consultable; tratar como evento, no serie continua"*.
-
-**La parte de infraestructura es correcta y quedó comprobada.** El endpoint
-`https://www.saij.gob.ar/busqueda` devuelve JSON, acepta sintaxis de campo
-(`texto:`, `fecha-rango:[AAAAMMDD TO AAAAMMDD]`), facetas por tipo de documento
-y paginación. No hace falta scrapear HTML.
-
-| consulta | resultados |
-|---|---|
-| `texto:inconstitucionalidad` (jurisprudencia) | 21.560 |
-| `texto:"declara la inconstitucionalidad"` | 643 |
-| `texto:"inconstitucionalidad del decreto"` | 122 |
-| ídem + `fecha-rango:[20231210 TO 20261231]` | **14** |
 
 ### Por qué el indicador NO entra al índice
 

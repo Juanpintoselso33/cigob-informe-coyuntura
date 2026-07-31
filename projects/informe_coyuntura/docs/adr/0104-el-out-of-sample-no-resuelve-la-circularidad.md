@@ -14,6 +14,20 @@ ambito: 'Validación del método · `scripts/out_of_sample.py`'
 
 | **Continúa** | ADR-0103 (procedencia de las anclas) |
 
+## Contexto y planteo del problema
+
+### Qué se intentó
+
+ADR-0103 dejó medido que entre el 51% y el 83% del peso de cada índice descansa
+en anclas calibradas contra el período que se está midiendo. El paso natural
+era ponerlas a prueba: **aplicar las bandas de hoy a los años anteriores a
+dic-2023 y ver si siguen discriminando**. Una banda dibujada alrededor del rango
+2024-2026 debería aplastarse fuera de él; una que mide algo real debería seguir
+separando meses buenos de malos en cualquier período.
+
+El intento falló por dos razones independientes. Las dos importan más que el
+resultado que se buscaba.
+
 ## Opciones consideradas
 
 - **Conservar `out_of_sample.py` pero sin que emita veredictos** — elegida: marca candidatos (`mirar` / `sin señal`) y publica al lado el rango crudo de cada ventana, que es el dato que permite decidir.
@@ -32,18 +46,6 @@ rango observado. Sale `sin señal`, como debe. Si algún día dispara, lo primer
 a sospechar es el test.
 
 ## Más información
-
-### Qué se intentó
-
-ADR-0103 dejó medido que entre el 51% y el 83% del peso de cada índice descansa
-en anclas calibradas contra el período que se está midiendo. El paso natural
-era ponerlas a prueba: **aplicar las bandas de hoy a los años anteriores a
-dic-2023 y ver si siguen discriminando**. Una banda dibujada alrededor del rango
-2024-2026 debería aplastarse fuera de él; una que mide algo real debería seguir
-separando meses buenos de malos en cualquier período.
-
-El intento falló por dos razones independientes. Las dos importan más que el
-resultado que se buscaba.
 
 ### Razón 1 — No hay contra qué medir
 

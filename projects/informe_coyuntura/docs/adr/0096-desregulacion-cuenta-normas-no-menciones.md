@@ -12,6 +12,18 @@ origen: 'Auditoría externa del cinturón de gestión (doc 1), prioridad alta'
 
 # ADR-0096 — Desregulación: contar normas derogadas, no menciones de una palabra
 
+## Contexto y planteo del problema
+
+### Lo que decía la auditoría
+
+> "El DNU 70/23 —el megadecreto de desregulación de diciembre de 2023,
+> probablemente el acto normativo individual más significativo de todo el
+> programa desregulador— **queda fuera del conteo porque no está indexado como
+> texto completo en InfoLeg**. Esto es un problema serio de validez de
+> constructo."
+
+Era su recomendación de prioridad más alta.
+
 ## Opciones consideradas
 
 - **Contar normas completas derogadas desde dic-2023**, leyendo sólo la parte dispositiva — elegida.
@@ -81,16 +93,6 @@ correcta; el mecanismo, no.
   mes**. Describe bien el fenómeno y por eso mismo aporta poca variación al
   índice — el mismo problema de rango dinámico que la segunda auditoría señala
   para TDPS y el FAL.
-
-### Lo que decía la auditoría
-
-> "El DNU 70/23 —el megadecreto de desregulación de diciembre de 2023,
-> probablemente el acto normativo individual más significativo de todo el
-> programa desregulador— **queda fuera del conteo porque no está indexado como
-> texto completo en InfoLeg**. Esto es un problema serio de validez de
-> constructo."
-
-Era su recomendación de prioridad más alta.
 
 ### La premisa era falsa, y el error era nuestro
 

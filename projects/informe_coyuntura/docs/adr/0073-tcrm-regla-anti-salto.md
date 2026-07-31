@@ -21,6 +21,22 @@ origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), sección 
 > `tests/test_itcm_tcrm_sin_regla_salto.py`, ejecutable, para que no dependa de
 > que alguien lea este documento.
 
+## Contexto y planteo del problema
+
+### Lo que pedía la auditoría
+
+Que la banda superior del TCRM fuera condicional a la velocidad de la
+depreciación. El argumento: las bandas miran sólo el nivel —por encima de 110
+puntúan 100— así que **"una crisis cambiaria mejoraría el puntaje de
+competitividad mientras destruye el de estabilidad"**. El caso concreto es real:
+
+| mes | ITCRM | var. m/m | puntaje de competitividad |
+|---|---|---|---|
+| nov-2023 | 83,2 | — | 43,0 |
+| **dic-2023** | **124,9** | **+50,1%** | **100,0** |
+| ene-2024 | 132,8 | +6,3% | 100,0 |
+| abr-2024 | 97,0 | −8,4% | 71,2 |
+
 ## Opciones consideradas
 
 - **Regla anti-salto para el TCRM**, copiando la forma de la regla del saldo comercial de ADR-0056 — **rechazada**.
@@ -115,20 +131,6 @@ revertir") a una medida de estado, sin que el resto del sistema siga esa
 convención.
 
 ## Más información
-
-### Lo que pedía la auditoría
-
-Que la banda superior del TCRM fuera condicional a la velocidad de la
-depreciación. El argumento: las bandas miran sólo el nivel —por encima de 110
-puntúan 100— así que **"una crisis cambiaria mejoraría el puntaje de
-competitividad mientras destruye el de estabilidad"**. El caso concreto es real:
-
-| mes | ITCRM | var. m/m | puntaje de competitividad |
-|---|---|---|---|
-| nov-2023 | 83,2 | — | 43,0 |
-| **dic-2023** | **124,9** | **+50,1%** | **100,0** |
-| ene-2024 | 132,8 | +6,3% | 100,0 |
-| abr-2024 | 97,0 | −8,4% | 71,2 |
 
 ### Qué queda en pie
 

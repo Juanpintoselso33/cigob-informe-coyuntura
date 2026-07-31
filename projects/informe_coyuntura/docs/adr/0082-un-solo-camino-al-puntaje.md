@@ -13,6 +13,37 @@ origen: 'El mismo bug, cuatro veces en una jornada'
 
 | **Precedentes** | ADR-0021 (puntaje interpolado) · ADR-0028 (anclas explícitas de la presión de dolarización) |
 
+## Contexto y planteo del problema
+
+### El problema, en su forma general
+
+Puntuar un indicador exige saber **tres cosas**:
+
+1. **Qué bandas** le corresponden.
+2. **Si tiene anclas explícitas** que no coinciden con los puntos medios de esas
+   bandas (`presion_dolarizacion`: valor 75 → 10 puntos por bandas, 35 por
+   anclas).
+3. **Si el valor se transforma antes** de puntuarse (`rem_ipc_12m` se publica
+   como expectativa anual y se puntúa por su equivalente mensual).
+
+Las tres vivían en lugares distintos y se pasaban por separado. **Nada obligaba
+a que quien puntúa las tuviera todas.**
+
+### Los cuatro casos
+
+| # | Dónde | Qué faltó | Consecuencia |
+|---|---|---|---|
+| 1 | Reconstrucción histórica del ITCM | la lista de componentes, escrita a mano | Los indicadores nuevos no entraban: la validación externa se quedó atrás del índice **en silencio** |
+| 2 | Matriz de redundancia (ADR-0075) | las **anclas** | Correlaciones publicadas sobre un puntaje que el índice nunca usa. Hasta 25 puntos de diferencia |
+| 3 | Diagnóstico de bandas (ADR-0081) | la **transformación** | Mandaba a revisar una banda perfectamente calibrada: el REM anual puntuado contra bandas mensuales caía al piso siempre |
+| 4 | La misma matriz, al arreglar el caso 3 | las **transformaciones**, otra vez | Llamaba a la función correcta **olvidando un argumento**. El \|r\| medio publicado pasó de 0,513 a 0,493 |
+
+**El caso 4 ocurrió minutos después del 3, dentro de su propio arreglo.** Eso
+descarta el descuido como explicación: el problema es la forma de la API.
+
+Ninguno de los cuatro rompió nada. Los cuatro devolvieron un número plausible y
+equivocado, y tres llegaron a publicarse.
+
 ## Opciones consideradas
 
 - **Declarar las transformaciones junto a las bandas y que las aplique el motor** — elegida.
@@ -74,35 +105,6 @@ crudo publicado de cada indicador del ITCM y reproduce su `puntaje_banda`
   se declara sólo la directa, `span_crudo` devuelve el ancho sin convertir —
   correcto para los indicadores sin transformación, silenciosamente estrecho
   para uno mal declarado.
-
-### El problema, en su forma general
-
-Puntuar un indicador exige saber **tres cosas**:
-
-1. **Qué bandas** le corresponden.
-2. **Si tiene anclas explícitas** que no coinciden con los puntos medios de esas
-   bandas (`presion_dolarizacion`: valor 75 → 10 puntos por bandas, 35 por
-   anclas).
-3. **Si el valor se transforma antes** de puntuarse (`rem_ipc_12m` se publica
-   como expectativa anual y se puntúa por su equivalente mensual).
-
-Las tres vivían en lugares distintos y se pasaban por separado. **Nada obligaba
-a que quien puntúa las tuviera todas.**
-
-### Los cuatro casos
-
-| # | Dónde | Qué faltó | Consecuencia |
-|---|---|---|---|
-| 1 | Reconstrucción histórica del ITCM | la lista de componentes, escrita a mano | Los indicadores nuevos no entraban: la validación externa se quedó atrás del índice **en silencio** |
-| 2 | Matriz de redundancia (ADR-0075) | las **anclas** | Correlaciones publicadas sobre un puntaje que el índice nunca usa. Hasta 25 puntos de diferencia |
-| 3 | Diagnóstico de bandas (ADR-0081) | la **transformación** | Mandaba a revisar una banda perfectamente calibrada: el REM anual puntuado contra bandas mensuales caía al piso siempre |
-| 4 | La misma matriz, al arreglar el caso 3 | las **transformaciones**, otra vez | Llamaba a la función correcta **olvidando un argumento**. El \|r\| medio publicado pasó de 0,513 a 0,493 |
-
-**El caso 4 ocurrió minutos después del 3, dentro de su propio arreglo.** Eso
-descarta el descuido como explicación: el problema es la forma de la API.
-
-Ninguno de los cuatro rompió nada. Los cuatro devolvieron un número plausible y
-equivocado, y tres llegaron a publicarse.
 
 ### Por qué no alcanzaba con "prestar más atención"
 

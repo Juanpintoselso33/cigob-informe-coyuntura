@@ -13,6 +13,13 @@ origen: 'Auditoría de Vida Cotidiana, recomendaciones de baja prioridad'
 
 | **Cierra** | las 11 recomendaciones de la auditoría |
 
+## Contexto y planteo del problema
+
+La auditoría del cinturón de vida cotidiana dejó tres recomendaciones de baja
+prioridad sin resolver: el consumo de carne como medida de bienestar
+alimentario, la notación de las fórmulas invertidas y los identificadores
+legado. Este ADR las trata una por una y con eso cierra las 11 recomendaciones.
+
 ## Opciones consideradas
 
 - **Consumo de carne**: la limitación es real y ahora tiene número, pero **el indicador no se cambia**, por un dato que la auditoría no tenía.

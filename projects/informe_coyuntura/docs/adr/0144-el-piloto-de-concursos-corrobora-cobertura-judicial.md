@@ -13,6 +13,24 @@ origen: 'piloto propuesto por la revisión externa del cinturón político'
 
 - **Relacionados**: ADR-0126 (`cobertura_judicial`), ADR-0134 (archivo del Consejo)
 
+## Contexto y planteo del problema
+
+### Qué era y por qué faltaba
+
+La revisión externa del cinturón político incluía un piloto técnico:
+
+> "se validó un piloto de scraper contra el archivo de «Concursos» del Consejo
+> de la Magistratura, que extrae fecha, número de concurso, tribunal mencionado
+> y URL de cada entrada de forma automática. El script no pudo ejecutarse en
+> vivo desde este entorno por restricción de red del sandbox (no incluye
+> dominios .gov.ar), pero su lógica de parseo fue validada offline contra HTML
+> real del sitio. Queda listo para correr en el entorno de CIGOB."
+
+`cobertura_judicial` terminó saliendo por otro camino —el padrón de magistrados
+de `datos.jus.gob.ar`, con reconstrucción por designaciones y renuncias
+(ADR-0126)—, así que el piloto quedó sin correr. **Correrlo era lo que faltaba,
+y valía la pena.**
+
 ## Opciones consideradas
 
 - **No crear un indicador nuevo** — elegida: con 32 posts en cuatro años y un hueco de veinte meses, el archivo no sostiene una serie mensual.
@@ -31,22 +49,6 @@ origen: 'piloto propuesto por la revisión externa del cinturón político'
    quiebre de junio de 2026 aparece también en una fuente independiente.
 
 ## Más información
-
-### Qué era y por qué faltaba
-
-La revisión externa del cinturón político incluía un piloto técnico:
-
-> "se validó un piloto de scraper contra el archivo de «Concursos» del Consejo
-> de la Magistratura, que extrae fecha, número de concurso, tribunal mencionado
-> y URL de cada entrada de forma automática. El script no pudo ejecutarse en
-> vivo desde este entorno por restricción de red del sandbox (no incluye
-> dominios .gov.ar), pero su lógica de parseo fue validada offline contra HTML
-> real del sitio. Queda listo para correr en el entorno de CIGOB."
-
-`cobertura_judicial` terminó saliendo por otro camino —el padrón de magistrados
-de `datos.jus.gob.ar`, con reconstrucción por designaciones y renuncias
-(ADR-0126)—, así que el piloto quedó sin correr. **Correrlo era lo que faltaba,
-y valía la pena.**
 
 ### Lo que devolvió
 

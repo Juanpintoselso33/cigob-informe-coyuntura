@@ -15,6 +15,26 @@ origen: 'el editor señaló que se estaba declarando «imposible» sin agotar la
 - **Corrige**: ADR-0136 (apoyo público), ADR-0138 (éxito corporativo y velocidad)
   búsqueda. Tenía razón, y es la segunda vez que pasa lo mismo.
 
+## Contexto y planteo del problema
+
+### Lo que se había pasado por alto
+
+Tres omisiones concretas, todas evitables:
+
+1. **El menú del sitio del CSJN, en la misma página que ya se había descargado,
+   decía «Datos abiertos», y no se siguió el enlace.** Apunta a
+   `datos.csjn.gov.ar` y a `/transparencia/datos-estadisticos`. ADR-0138 concluyó
+   «no hay estadística de duración publicada» mirando esa página y contando que
+   no tenía archivos descargables, sin abrir el enlace que sí los tenía.
+2. **SRA se dio por «no evaluable» por `ConnectionError`.** El dominio cambió:
+   `ruralarg.org.ar` está muerto, la Sociedad Rural está en `sra.ar` y responde
+   perfectamente. Un error de conexión contra una URL adivinada se registró como
+   si fuera una propiedad de la fuente.
+3. **Se eligió ADEBA como «mejor caso» de cámara empresaria** porque tenía una
+   categoría `comunicados`. Es el peor caso: es una asociación de bancos cuyo
+   feed es un boletín regulatorio diario. **AEA**, la asociación empresaria de
+   referencia, publica exclusivamente comunicados de postura.
+
 ## Opciones consideradas
 
 - **Reabrir cada fuente con la consulta correcta** — elegida.
@@ -37,24 +57,6 @@ origen: 'el editor señaló que se estaba declarando «imposible» sin agotar la
    `data/politica/correccion_fuentes_judicial_empresario.json`.
 
 ## Más información
-
-### Lo que se había pasado por alto
-
-Tres omisiones concretas, todas evitables:
-
-1. **El menú del sitio del CSJN, en la misma página que ya se había descargado,
-   decía «Datos abiertos», y no se siguió el enlace.** Apunta a
-   `datos.csjn.gov.ar` y a `/transparencia/datos-estadisticos`. ADR-0138 concluyó
-   «no hay estadística de duración publicada» mirando esa página y contando que
-   no tenía archivos descargables, sin abrir el enlace que sí los tenía.
-2. **SRA se dio por «no evaluable» por `ConnectionError`.** El dominio cambió:
-   `ruralarg.org.ar` está muerto, la Sociedad Rural está en `sra.ar` y responde
-   perfectamente. Un error de conexión contra una URL adivinada se registró como
-   si fuera una propiedad de la fuente.
-3. **Se eligió ADEBA como «mejor caso» de cámara empresaria** porque tenía una
-   categoría `comunicados`. Es el peor caso: es una asociación de bancos cuyo
-   feed es un boletín regulatorio diario. **AEA**, la asociación empresaria de
-   referencia, publica exclusivamente comunicados de postura.
 
 ### Velocidad de resolución: era construible
 

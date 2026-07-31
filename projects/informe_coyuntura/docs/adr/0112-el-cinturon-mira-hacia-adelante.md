@@ -15,12 +15,7 @@ origen: 'Auditoría de Vida Cotidiana, punto 3.6 (expectativas a futuro)'
 
 | **Corrige** | ADR-0111, que declaró la ausencia irresoluble |
 
-## Opciones consideradas
-
-- **Incorporar la Encuesta de Expectativas** como primera medida prospectiva del cinturón — elegida.
-- **Mantener el cierre de ADR-0111** («las únicas series vivas terminan en 2026-01, seis meses de rezago») — descartada: **era falso, y el error fue de método**. Se consultó el espejo de la serie en datos.gob.ar, que sí está desactualizado, y se dio el punto por cerrado sin ir a la fuente.
-
-## Decisión
+## Contexto y planteo del problema
 
 ### Qué corrige de ADR-0111
 
@@ -36,6 +31,13 @@ como el resto del cinturón—, con serie propia desde agosto de 2006.
 Es exactamente el modo de falla que el proyecto ya tiene documentado: declarar
 un negativo tras una consulta, cuando la fuente existía con otro nombre o en
 otro lugar.
+
+## Opciones consideradas
+
+- **Incorporar la Encuesta de Expectativas** como primera medida prospectiva del cinturón — elegida.
+- **Mantener el cierre de ADR-0111** («las únicas series vivas terminan en 2026-01, seis meses de rezago») — descartada: **era falso, y el error fue de método**. Se consultó el espejo de la serie en datos.gob.ar, que sí está desactualizado, y se dio el punto por cerrado sin ir a la fuente.
+
+## Decisión
 
 ### Consecuencias
 

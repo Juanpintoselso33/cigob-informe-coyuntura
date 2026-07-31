@@ -21,6 +21,18 @@ ambito: 'cinturón político (ITCP) · dimensión `sector_privado`'
 > meses vacíos de 5 a **cero**. El método de este ADR fue correcto; lo que
 > faltaba era volumen. Leer ADR-0148.
 
+## Contexto y planteo del problema
+
+### Qué se hizo
+
+Se construyó el indicador **Apoyo Público** de la revisión externa, siguiendo el
+protocolo de ADR-0131 en orden: **reglas de inclusión escritas antes de ver los
+datos**, universo relevado, primera pasada de codificación completa, métrica
+calculada. Recién entonces se evaluó si servía.
+
+**No sirve**, y conviene decir con precisión por qué: no falló la fuente, ni las
+reglas, ni la codificación. Falló la **frecuencia del fenómeno**.
+
 ## Opciones consideradas
 
 - **Conservar la fuente y buscarle otra métrica** — elegida: no falló la fuente.
@@ -67,16 +79,6 @@ Un indicador cuyo valor lo decide la presencia o ausencia de un solo documento
 no mide postura empresaria: mide el calendario de publicación de una entidad.
 
 ## Más información
-
-### Qué se hizo
-
-Se construyó el indicador **Apoyo Público** de la revisión externa, siguiendo el
-protocolo de ADR-0131 en orden: **reglas de inclusión escritas antes de ver los
-datos**, universo relevado, primera pasada de codificación completa, métrica
-calculada. Recién entonces se evaluó si servía.
-
-**No sirve**, y conviene decir con precisión por qué: no falló la fuente, ni las
-reglas, ni la codificación. Falló la **frecuencia del fenómeno**.
 
 ### Las reglas mordieron, y ése era el punto
 

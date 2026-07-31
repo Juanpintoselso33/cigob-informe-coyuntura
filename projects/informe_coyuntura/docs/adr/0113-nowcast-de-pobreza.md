@@ -15,12 +15,7 @@ origen: 'Auditoría de Vida Cotidiana, punto 3.6 (pobreza/indigencia)'
 
 | **Corrige** | ADR-0111, que cerró el punto sin buscar lo suficiente |
 
-## Opciones consideradas
-
-- **Publicar la pobreza con la única fuente mensual que existe** — elegida.
-- **Mantener la exclusión que había fijado ADR-0111** — descartada: de sus dos argumentos, el primero sigue en pie, pero el segundo era una rendición temprana.
-
-## Decisión
+## Contexto y planteo del problema
 
 ### Qué corrige de ADR-0111
 
@@ -42,6 +37,13 @@ del país, y es la que sigue la prensa.
 Encontrarla exigió cinco pasos —notas de prensa, perfil de RPubs (congelado en
 2021), un enlace acortado de X, la página del autor en la UTDT— y ADR-0111 se
 detuvo en el primero.
+
+## Opciones consideradas
+
+- **Publicar la pobreza con la única fuente mensual que existe** — elegida.
+- **Mantener la exclusión que había fijado ADR-0111** — descartada: de sus dos argumentos, el primero sigue en pie, pero el segundo era una rendición temprana.
+
+## Decisión
 
 ### Consecuencias
 

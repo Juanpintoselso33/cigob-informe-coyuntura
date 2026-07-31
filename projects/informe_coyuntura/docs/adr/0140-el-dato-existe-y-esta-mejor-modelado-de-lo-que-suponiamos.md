@@ -14,6 +14,15 @@ origen: 'el editor pidió buscar alternativas en lugar de aceptar el cierre.'
 - **Corrige el encuadre de**: ADR-0131 (veto de constitucionalidad), ADR-0135 y
   ADR-0138 (bloqueo cautelar, éxito corporativo), ADR-0139
 
+## Contexto y planteo del problema
+
+### Resumen
+
+**El modelo de datos de la CSJN contiene exactamente lo que los tres indicadores
+bloqueados necesitan.** Lo que está limitado es el acceso público, no la
+existencia ni la calidad del dato. Es una conclusión distinta de «no hay fuente»
+y apunta a un desbloqueo concreto y pedible.
+
 ## Opciones consideradas
 
 - **`sj.csjn.gov.ar`** — elegida: es el sucesor que señala el propio archivo.
@@ -53,13 +62,6 @@ origen: 'el editor pidió buscar alternativas en lugar de aceptar el cierre.'
   que quien retome esto no vuelva a recorrer el camino.
 
 ## Más información
-
-### Resumen
-
-**El modelo de datos de la CSJN contiene exactamente lo que los tres indicadores
-bloqueados necesitan.** Lo que está limitado es el acceso público, no la
-existencia ni la calidad del dato. Es una conclusión distinta de «no hay fuente»
-y apunta a un desbloqueo concreto y pedible.
 
 ### El CIJ murió, y eso hay que saberlo
 

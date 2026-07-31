@@ -13,6 +13,20 @@ ambito: 'ITCM · ITCG · ITCP · `tests/test_redundancia_itvc.py`'
 
 | **Continúa** | ADR-0116 (la robustez del ITVC estaba vieja) |
 
+## Contexto y planteo del problema
+
+### Qué se revisó
+
+ADR-0116 encontró la sección de robustez del ITVC desactualizada. La pregunta
+siguiente era obvia: **¿los otros tres también?** Se comparó, para cada uno, la
+serie reconstruida y la matriz de redundancia publicadas contra un recálculo.
+
+| índice | serie | matriz | veredicto |
+|---|---|---|---|
+| ITCM | 0 meses difieren | 91 pares, coincide | **fresco** |
+| **ITCG** | **27 de 32 meses difieren** | **64 pares publicados vs 70 reales** | **deriva** |
+| ITCP | 0 meses difieren | 53 pares, coincide | **fresco** |
+
 ## Opciones consideradas
 
 - **Extender el guard a los cuatro índices y compararlo por pares**, no por indicadores — elegida. Verificado que dispara.
@@ -28,18 +42,6 @@ Estado final: las cuatro series y las cuatro matrices coinciden con su
 recálculo, 0 meses de diferencia en las cuatro.
 
 ## Más información
-
-### Qué se revisó
-
-ADR-0116 encontró la sección de robustez del ITVC desactualizada. La pregunta
-siguiente era obvia: **¿los otros tres también?** Se comparó, para cada uno, la
-serie reconstruida y la matriz de redundancia publicadas contra un recálculo.
-
-| índice | serie | matriz | veredicto |
-|---|---|---|---|
-| ITCM | 0 meses difieren | 91 pares, coincide | **fresco** |
-| **ITCG** | **27 de 32 meses difieren** | **64 pares publicados vs 70 reales** | **deriva** |
-| ITCP | 0 meses difieren | 53 pares, coincide | **fresco** |
 
 ### El ITCG
 

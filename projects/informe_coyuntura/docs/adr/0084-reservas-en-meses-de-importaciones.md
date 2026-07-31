@@ -11,6 +11,19 @@ origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), observaci
 
 # ADR-0084 — Reservas en meses de importaciones: **RECHAZADO**, con la condición para revisarlo
 
+## Contexto y planteo del problema
+
+### Lo que se proponía
+
+Reemplazar las anclas de `reservas_bcra`, hoy en millones de dólares absolutos
+(>20.000 → 100 · 15.000-20.000 → 85 · … · <0 → 10), por la métrica
+internacional estándar de adecuación: **meses de importaciones cubiertos**, con
+el umbral clásico de tres meses.
+
+La preocupación de fondo es legítima: un umbral en dólares absolutos no se
+ajusta al tamaño de la economía ni a sus necesidades de importación. Veinte mil
+millones significan cosas distintas según cuánto importe el país por mes.
+
 ## Opciones consideradas
 
 - **Dejar las reservas como están** — elegida.
@@ -49,17 +62,6 @@ tramo de la banda ocupa cada uno. La normalización no aporta discriminación qu
 el nivel no tenga ya.
 
 ## Más información
-
-### Lo que se proponía
-
-Reemplazar las anclas de `reservas_bcra`, hoy en millones de dólares absolutos
-(>20.000 → 100 · 15.000-20.000 → 85 · … · <0 → 10), por la métrica
-internacional estándar de adecuación: **meses de importaciones cubiertos**, con
-el umbral clásico de tres meses.
-
-La preocupación de fondo es legítima: un umbral en dólares absolutos no se
-ajusta al tamaño de la economía ni a sus necesidades de importación. Veinte mil
-millones significan cosas distintas según cuánto importe el país por mes.
 
 ### Cuándo habría que revisarlo
 
