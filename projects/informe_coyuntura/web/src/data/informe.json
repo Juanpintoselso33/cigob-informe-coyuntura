@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-05T14:06:58.454813",
+  "generated_at": "2026-08-05T15:17:09.721757",
   "period": "2026-08",
   "score_global": 3.3,
   "ponderacion": {
@@ -2767,7 +2767,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260805_1346.json",
+      "fuente_enriquecida": "vida_cotidiana_20260805_1459.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 90.3,
@@ -4246,18 +4246,18 @@
       "barbarismo_riesgo": "gerencial",
       "indicadores": {
         "cepo_mulc": {
-          "valor": 5.36,
+          "valor": 5.4,
           "unidad": "% de brecha CCL/mayorista",
           "fuente": "https://dolarapi.com/v1/dolares",
           "fecha_dato": "2026-08-05",
           "desactualizado": false,
           "en_indice": true,
           "dimension": "reformas_economicas",
-          "puntaje_itcg": 97.8,
-          "puntaje_banda": 97.8,
+          "puntaje_itcg": 97.6,
+          "puntaje_banda": 97.6,
           "peso_efectivo": 0.14,
           "aporte_score": 0.2,
-          "aporte_formula": "Anclas ITCG: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 97.8; pesa 14,0% del ITCG)",
+          "aporte_formula": "Anclas ITCG: ≤5 → 100 · 5–10 → 85 · 10–15 → 65 · 15–25 → 40 · >25 → 10 (puntaje interpolado entre anclas: 97.6; pesa 14,0% del ITCG)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,2/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
           "aporte_input_txt": null
@@ -4404,10 +4404,10 @@
           "actos_cumplidos": 2,
           "actos_totales": 2,
           "fci_cese_registrados": 0,
-          "menciones_bo": 3,
+          "menciones_bo": null,
           "vigencia_desde": "2026-11-01",
           "regimen_vigente": false,
-          "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV · 3 menciones del FAL en el BO desde mar-2026",
+          "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 100.0,
@@ -4417,7 +4417,7 @@
           "aporte_formula": "Anclas ITCG: >75 → 100 · 25–75 → 50 · ≤25 → 10 (puntaje interpolado entre anclas: 100.0; pesa 7,5% del ITCG)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
-          "aporte_input_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV · 3 menciones del FAL en el BO desde mar-2026"
+          "aporte_input_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV"
         },
         "litigiosidad_laboral": {
           "valor": 2.8,
@@ -4794,20 +4794,20 @@
       },
       "alerta": null,
       "itcg": {
-        "valor": 79.4,
+        "valor": 79.3,
         "banda": "moderadamente_aflojado",
         "banda_legible": "Moderadamente aflojado",
         "dimensiones": {
           "reformas_economicas": {
             "nombre": "Reformas económicas fundamentales",
             "peso": 0.35,
-            "puntaje": 76.9,
+            "puntaje": 76.8,
             "indicadores": {
               "cepo_mulc": {
                 "peso": 0.4,
-                "puntaje_banda": 97.8,
-                "puntaje_aplicado": 97.8,
-                "valor": 5.36,
+                "puntaje_banda": 97.6,
+                "puntaje_aplicado": 97.6,
+                "valor": 5.4,
                 "peso_efectivo": 0.14
               },
               "apertura_comercial": {
@@ -4945,7 +4945,7 @@
         "ajustes_aplicados": [],
         "robustez": {
           "p05": 77.6,
-          "p95": 80.8,
+          "p95": 80.7,
           "tension_rango": [
             1.9,
             2.2
@@ -4959,41 +4959,41 @@
             1,
             1,
             1,
-            2,
-            5,
-            6,
-            5,
+            3,
+            4,
             7,
-            22,
-            15,
+            4,
+            8,
+            20,
+            20,
             31,
-            25,
-            51,
-            64,
-            61,
-            59,
-            66,
-            68,
-            70,
-            72,
-            70,
-            65,
+            21,
+            57,
+            62,
+            60,
+            58,
+            69,
+            63,
+            76,
+            63,
             73,
-            35,
+            66,
+            73,
+            36,
+            27,
             29,
-            29,
-            22,
-            15,
-            9,
+            23,
+            17,
+            6,
             8,
             6,
             2,
             3,
             0,
-            0,
-            2
+            1,
+            1
           ],
-          "hist_min": 76.0,
+          "hist_min": 75.98,
           "hist_max": 82.39,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
@@ -5165,7 +5165,7 @@
             [
               "2026-08",
               75.2,
-              2021.6
+              2021.3
             ]
           ],
           "plot": "minmax",

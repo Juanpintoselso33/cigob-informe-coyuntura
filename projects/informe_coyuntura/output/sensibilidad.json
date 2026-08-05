@@ -58,12 +58,12 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.4,
-    "valor_recomputado": 79.4,
+    "valor_publicado": 79.3,
+    "valor_recomputado": 79.3,
     "experimentos": {
       "pesos": {
-        "media": 79.4,
-        "p05": 78.1,
+        "media": 79.3,
+        "p05": 78.0,
         "p95": 80.6,
         "desvio": 0.78
       },
@@ -75,25 +75,25 @@
       },
       "insumos": {
         "media": 79.2,
-        "p05": 78.3,
+        "p05": 78.2,
         "p95": 80.2,
-        "desvio": 0.57
+        "desvio": 0.58
       }
     },
     "leave_one_out": {
       "cepo_mulc": 74.5,
-      "apertura_comercial": 83.6,
-      "fal_modernizacion_laboral": 76.3,
+      "apertura_comercial": 83.5,
       "litigiosidad_laboral": 82.4,
+      "fal_modernizacion_laboral": 76.3,
       "protocolo_antipiquetes": 76.4,
       "reestructuracion_organismos": 81.7,
       "libertad_opcion_salud": 80.8,
       "reduccion_estado": 78.1,
+      "gasto_funcionamiento": 78.5,
       "privatizaciones": 78.5,
-      "gasto_funcionamiento": 78.6,
-      "concesiones_infraestructura": 80.1,
-      "masa_salarial": 78.8,
-      "desregulacion_normativa": 79.9,
+      "concesiones_infraestructura": 80.0,
+      "masa_salarial": 78.7,
+      "desregulacion_normativa": 79.8,
       "rigi_inversiones": 79.3
     },
     "tension": {

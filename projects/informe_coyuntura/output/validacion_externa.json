@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-05T14:06:47.344590",
+    "generated_at": "2026-08-05T15:16:47.612930",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -2366,7 +2366,7 @@
     "2026-05": 2131.0,
     "2026-06": 2087.8,
     "2026-07": 2090.0,
-    "2026-08": 2021.6
+    "2026-08": 2021.3
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
@@ -3554,63 +3554,78 @@
   "panel_anclas": {
     "consumo_supermercados": {
       "ultimo": "2026-05",
-      "n": 113
+      "n": 113,
+      "avanzo": "2026-08-05"
     },
     "consumo_mayoristas": {
       "ultimo": "2026-05",
-      "n": 113
+      "n": 113,
+      "avanzo": "2026-08-05"
     },
     "consumo_shoppings": {
       "ultimo": "2026-05",
-      "n": 113
+      "n": 113,
+      "avanzo": "2026-08-05"
     },
     "electricidad_residencial": {
       "ultimo": "2026-06",
-      "n": 258
+      "n": 258,
+      "avanzo": "2026-08-05"
     },
     "gas_residencial": {
       "ultimo": "2026-05",
-      "n": 365
+      "n": 365,
+      "avanzo": "2026-08-05"
     },
     "transporte_pasajeros": {
       "ultimo": "2026-04",
-      "n": 172
+      "n": 172,
+      "avanzo": "2026-08-05"
     },
     "ventas_naftas": {
       "ultimo": "2026-06",
-      "n": 390
+      "n": 390,
+      "avanzo": "2026-08-05"
     },
     "merval_usd": {
       "ultimo": "2026-08",
-      "n": 34
+      "n": 34,
+      "avanzo": "2026-08-05"
     },
     "inversion_directa_externa": {
       "ultimo": "2026-05",
-      "n": 281
+      "n": 281,
+      "avanzo": "2026-08-05"
     },
     "inversion_portafolio_externa": {
       "ultimo": "2026-05",
-      "n": 281
+      "n": 281,
+      "avanzo": "2026-08-05"
     },
     "financiamiento_externo_privado": {
       "ultimo": "2026-05",
-      "n": 281
+      "n": 281,
+      "avanzo": "2026-08-05"
     },
     "epu_argentina": {
       "ultimo": "2026-07",
-      "n": 285
+      "n": 285,
+      "avanzo": "2026-08-05"
     },
     "icg_utdt": {
       "ultimo": "2026-06",
-      "n": 296
+      "n": 296,
+      "avanzo": "2026-08-05"
     },
     "clima_electoral": {
       "ultimo": "2026-08",
-      "n": 33
+      "n": 33,
+      "avanzo": "2026-08-05"
     },
     "indice_lider": {
       "ultimo": "2026-06",
-      "n": 60
+      "n": 60,
+      "avanzo": "2026-08-05"
     }
   },
   "panel_validacion": {
