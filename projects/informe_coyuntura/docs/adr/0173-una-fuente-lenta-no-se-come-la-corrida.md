@@ -7,7 +7,7 @@ cinturon: 'transversal'
 indice: 'todos'
 archivos: ['scripts/descargar_series.py', '.github/workflows/data-pipeline.yml']
 continua: ['0133']
-relacionado: ['0172']
+relacionado: ['0172', '0174']
 ambito: 'Pipeline nocturno · presupuesto de tiempo y preservación de series'
 origen: 'Dos corridas del 5-ago-2026 murieron por timeout del job con las series a medio bajar; al diseñar el arreglo apareció que un fetcher caído borraba su serie del CSV'
 ---

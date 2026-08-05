@@ -167,8 +167,25 @@ def main() -> int:
                 if isinstance(ult, (int, float)):
                     tol = max(0.11, abs(v) * G3_TOLERANCIA_REL.get(ik, 0.01))
                     if abs(ult - v) > tol:
-                        fallas.append(f"G3 {ck}/{ik}: serie[-1]={ult} ≠ card={v} "
-                                      f"(tolerancia {round(tol, 3)})")
+                        # G3 verifica que una card FRESCA coincida con su serie.
+                        # Si la card viene de carry-forward, es por definición un
+                        # valor de otro momento y la discrepancia es el
+                        # carry-forward funcionando, no una desincronización: la
+                        # fuente falló de un lado (la card) y del otro no. Pasó
+                        # el 5-ago-2026 con espiritu_epoca/indice_intencion_
+                        # migratoria — Trends rate-limiteó la card (5,6 viejo) y
+                        # la serie bajó fresca (7,0)— y bloqueó la publicación de
+                        # los CINCO cinturones por una condición que G2 ya estaba
+                        # reportando como [DEMORA]. Se avisa igual, para que no
+                        # desaparezca del log, pero el dueño de la frescura es G2
+                        # (ADR-0174, y el mismo criterio de ADR-0133: una fuente
+                        # demorada no tira abajo el pipeline).
+                        if i.get("desactualizado"):
+                            avisos.append(f"G3 {ck}/{ik}: serie[-1]={ult} ≠ card={v}, pero la "
+                                          f"card está en carry-forward — lo vigila G2")
+                        else:
+                            fallas.append(f"G3 {ck}/{ik}: serie[-1]={ult} ≠ card={v} "
+                                          f"(tolerancia {round(tol, 3)})")
             # G3b — los exentos de reconciliación no quedan sin NINGÚN control:
             # su card y su serie difieren por semántica/anclaje (motivo
             # documentado arriba), pero la serie igual tiene que seguir viva.

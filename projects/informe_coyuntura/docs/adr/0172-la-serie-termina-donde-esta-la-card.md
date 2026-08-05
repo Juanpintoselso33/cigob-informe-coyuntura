@@ -7,7 +7,7 @@ cinturon: 'politica'
 indice: 'ITCP'
 archivos: ['scripts/descargar_series.py', 'scripts/gate_calidad.py']
 continua: ['0091']
-relacionado: ['0089', '0133', '0173']
+relacionado: ['0089', '0133', '0173', '0174']
 ambito: 'Series de ventana móvil · invariante G3 card↔serie'
 origen: 'El gate G3 cortó la publicación cuatro noches seguidas por veto_quorum; al ir a declararlo excepción aparecieron otros siete indicadores perdonados por la misma causa'
 ---
