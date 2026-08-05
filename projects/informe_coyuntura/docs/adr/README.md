@@ -255,3 +255,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0165](0165-una-oracion-por-card-el-desarrollo-aparte.md) | Una oración por card, el desarrollo a un click |  | vigente |
 | [0167](0167-el-ancla-de-validacion-se-elige-en-diferencias.md) | El ancla de validación se elige por diferencias, no por niveles |  | vigente |
 | [0169](0169-una-serie-anual-no-entra-a-una-reconstruccion-mensual.md) | Una serie anual no entra a una reconstrucción mensual | `judicializacion`, `velocidad_resolucion` | vigente |
+| [0173](0173-una-fuente-lenta-no-se-come-la-corrida.md) | Una fuente lenta no se come la corrida |  | vigente |

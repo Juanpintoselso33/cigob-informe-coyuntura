@@ -77,24 +77,40 @@ jobs:
           # de pypdf: el colector reventaba, la serie quedaba vacía y la falla
           # aparecía TRES PASOS DESPUÉS como una discrepancia de matriz
           # incomprensible. Se distingue una cosa de la otra y se avisa fuerte.
+          # Tercer argumento: presupuesto de tiempo del script (ADR-0173). Una
+          # fuente LENTA no tenía ninguna defensa: se comía el presupuesto del
+          # job entero y dejaba sin correr al gate, los tests y el commit. El
+          # 5-ago-2026 dos corridas murieron así con Trends haciendo backoff.
+          # Agotarlo es una condición de FUENTE, no un crash: se mapea a 2
+          # ("todo caché"), que es el código que el pipeline ya sabe leer.
+          #
+          # descargar_series.py va con presupuesto holgado A PROPÓSITO: escribe
+          # un CSV por cinturón a medida que los termina, así que matarlo desde
+          # afuera deja unos frescos y otros de ayer (el falso G3 de CLAUDE.md).
+          # Su defensa real es el presupuesto POR INDICADOR que tiene adentro;
+          # esto es sólo el último recurso.
           crashes=0
           correr() {
-            python "$1"; local c=$?
+            timeout --signal=TERM --kill-after=60s "${3:-10m}" python "$1"; local c=$?
+            if [ $c -eq 124 ] || [ $c -eq 137 ]; then
+              echo "::warning::$2 agotó su presupuesto de ${3:-10m} — se sigue con caché"
+              c=2
+            fi
             echo "::notice::$2 exit=$c"
             if [ $c -gt 2 ]; then
               echo "::error::$2 CRASHEÓ (exit $c) — no es una fuente caída, es el script"
               crashes=$((crashes+1))
             fi
           }
-          correr scripts/macro.py               macro
-          correr scripts/politica.py            politica
-          correr scripts/gestion.py             gestion
-          correr scripts/vida_cotidiana/main.py vida_main
-          correr scripts/vida_cotidiana.py      vida_cache
-          correr scripts/espiritu_epoca.py      espiritu
-          correr scripts/descargar_series.py    series
-          correr scripts/validacion_externa.py  validacion
-          correr scripts/generar_informe.py     generar
+          correr scripts/macro.py               macro       8m
+          correr scripts/politica.py            politica    10m
+          correr scripts/gestion.py             gestion     12m
+          correr scripts/vida_cotidiana/main.py vida_main   8m
+          correr scripts/vida_cotidiana.py      vida_cache  5m
+          correr scripts/espiritu_epoca.py      espiritu    8m
+          correr scripts/descargar_series.py    series      25m
+          correr scripts/validacion_externa.py  validacion  5m
+          correr scripts/generar_informe.py     generar     5m
           if [ $crashes -gt 0 ]; then
             echo "::error::$crashes script(s) crashearon. Se corta acá para que la"
             echo "::error::causa quede a la vista y no se publique un snapshot mutilado."
@@ -165,7 +181,23 @@ jobs:
             echo "::notice::Sin cambios en datos — no se commitea."
           else
             git commit -m "data(informe): actualización diaria automática"
-            git push
+            # Rebase y reintento: la corrida dura ~30 min y cualquier push a
+            # main en esa ventana rechaza el nuestro por no-fast-forward. Pasó
+            # el 5-ago-2026: colectores, gate y tests en verde, todo el trabajo
+            # hecho, y el snapshot se perdió en la última línea por un push de
+            # otra cosa. CLAUDE.md ya le exige `git pull --rebase` a las
+            # personas; el workflow no se lo exigía a sí mismo.
+            empujado=0
+            for intento in 1 2 3; do
+              if git push; then empujado=1; break; fi
+              echo "::warning::push rechazado (intento $intento) — rebase y reintento"
+              git pull --rebase --autostash || break
+              sleep $((intento * 5))
+            done
+            if [ "$empujado" != "1" ]; then
+              echo "::error::No se pudo publicar el snapshot tras 3 intentos."
+              exit 1
+            fi
           fi
 
       # ── Aviso de falla ────────────────────────────────────────────────────

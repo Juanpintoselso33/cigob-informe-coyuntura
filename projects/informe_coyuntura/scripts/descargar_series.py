@@ -9,9 +9,11 @@ import io
 import json
 import re
 import time
+import signal
 import calendar
 import requests
 import urllib3
+from contextlib import contextmanager
 from datetime import datetime, timedelta, date
 from pathlib import Path
 
@@ -34,6 +36,75 @@ BCRA_BASE    = "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias"
 INDICADORES_SUSTITUIDOS = {
     "presion_dolarizacion": {"dolarizacion_depositos"},
 }
+
+# ── Presupuesto de tiempo por indicador (ADR-0173) ────────────────────────────
+# El pipeline no tenía ninguna defensa contra una fuente LENTA. Las que fallan
+# están cubiertas hace rato (exit codes como dato, ADR-0133, carry-forward);
+# una que tarda se comía el presupuesto entero del job y dejaba sin correr al
+# gate, a los tests y al commit. El 5-ago-2026 dos corridas murieron así, con
+# Trends haciendo backoff: 30 y 45 minutos, cero publicado.
+#
+# El presupuesto va acá y no en el workflow a propósito. `write_csv` escribe UN
+# CSV POR CINTURÓN a medida que los termina, así que matar el script desde
+# afuera deja unos cinturones frescos y otros de ayer — cards nuevas contra
+# series viejas, que es el falso G3 documentado en CLAUDE.md (2026-07-09). Por
+# indicador, en cambio, el corte cae dentro del try/except que ya existe y sólo
+# ese indicador conserva sus filas previas.
+PRESUPUESTO_INDICADOR_DEFAULT = 300      # 5 min: holgado para una fuente sana
+PRESUPUESTO_INDICADOR = {
+    # Caminan actas de a una desde el id más reciente: son lentas por diseño,
+    # no por estar colgadas.
+    "cohesion_bloque": 900,
+    "alineamiento_senadores_prov": 900,
+    "veto_quorum": 600,
+    "comisiones_caidas": 600,
+    # Arma la canasta de Trends por tandas, que es justo lo que rate-limitea.
+    "sentimiento_digital": 600,
+}
+
+
+class TiempoAgotado(Exception):
+    """Un indicador agotó su presupuesto. Es una condición de FUENTE (lenta),
+    no un error del script: se trata igual que una fuente caída."""
+
+
+@contextmanager
+def presupuesto(segundos: int):
+    """Corta el bloque a los `segundos`. Usa SIGALRM, que interrumpe el código
+    bloqueado de verdad; un timeout por hilo no puede matar al worker y lo
+    dejaría corriendo, que es exactamente lo que se quiere evitar.
+
+    Sin SIGALRM (Windows, donde se desarrolla) no hay presupuesto y el bloque
+    corre entero: el pipeline corre en ubuntu-latest, que es donde importa."""
+    if segundos <= 0 or not hasattr(signal, "SIGALRM"):
+        yield
+        return
+
+    def _vencido(_signum, _frame):
+        raise TiempoAgotado(f"presupuesto de {segundos}s agotado")
+
+    previo = signal.signal(signal.SIGALRM, _vencido)
+    signal.alarm(segundos)
+    try:
+        yield
+    finally:
+        signal.alarm(0)
+        signal.signal(signal.SIGALRM, previo)
+
+
+def _filas_previas(cinturon: str, indicadores: set) -> list:
+    """Filas que el CSV del cinturón ya tenía para `indicadores`.
+
+    Sin esto, un fetcher caído no aporta filas y la escritura completa
+    (merge=False) borra esa serie del CSV entero: el indicador desaparece del
+    gráfico en silencio en vez de conservar su último valor bueno. Es la misma
+    forma del bug de sentimiento_digital que documenta CLAUDE.md, del otro lado
+    del pipeline."""
+    path = OUTPUT_DIR / f"{cinturon}.csv"
+    if not path.exists() or not indicadores:
+        return []
+    with open(path, newline="", encoding="utf-8-sig") as f:
+        return [r for r in list(csv.reader(f))[1:] if len(r) > 1 and r[1] in indicadores]
 
 
 def fetch_indec(series_id: str, limit: int = 48) -> list:
@@ -240,39 +311,54 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
     sección "Publishing data 'now'", y el hallazgo de gate_calidad G3 del
     2026-07-09)."""
     rows = []
+    fallidos = set()
+
+    def _correr(nombre, unidad, fuente, fetch):
+        """Corre un fetcher con su presupuesto y acumula filas. Devuelve True si
+        aportó datos; si no, deja el nombre en `fallidos` para que sus filas
+        previas se arrastren en vez de borrarse."""
+        try:
+            with presupuesto(PRESUPUESTO_INDICADOR.get(nombre, PRESUPUESTO_INDICADOR_DEFAULT)):
+                data = fetch()
+            for fecha, valor in data:
+                rows.append([fecha, nombre, valor, unidad, fuente])
+            print(f"  [OK] {nombre}: {len(data)} puntos  ({data[-1][0]} → {data[0][0]})")
+            return True
+        except TiempoAgotado as e:
+            fallidos.add(nombre)
+            print(f"  [LENTO] {nombre}: {e} -- se conservan las filas anteriores")
+        except Exception as e:
+            fallidos.add(nombre)
+            print(f"  [ERR] {nombre}: {e} -- se conservan las filas anteriores")
+        return False
 
     for nombre, unidad, fuente, fetch_fn in derivadas:
         if solo_indicador and nombre != solo_indicador:
             continue
-        try:
-            data = fetch_fn()
-            for fecha, valor in data:
-                rows.append([fecha, nombre, valor, unidad, fuente])
-            print(f"  [OK] {nombre}: {len(data)} puntos  ({data[-1][0]} → {data[0][0]})")
-        except Exception as e:
-            print(f"  [ERR] {nombre}: {e}")
+        _correr(nombre, unidad, fuente, fetch_fn)
 
     for sid, nombre, unidad, fuente in indec_series:
         if solo_indicador and nombre != solo_indicador:
             continue
-        try:
-            data = fetch_indec(sid)
-            for fecha, valor in data:
-                rows.append([fecha, nombre, valor, unidad, fuente])
-            print(f"  [OK] {nombre}: {len(data)} puntos  ({data[-1][0]} → {data[0][0]})")
-        except Exception as e:
-            print(f"  [ERR] {nombre}: {e}")
+        _correr(nombre, unidad, fuente, lambda sid=sid: fetch_indec(sid))
 
     for var_id, nombre, unidad, fuente in bcra_vars:
         if solo_indicador and nombre != solo_indicador:
             continue
-        try:
-            data = fetch_bcra(var_id)
-            for fecha, valor in data:
-                rows.append([fecha, nombre, valor, unidad, fuente])
-            print(f"  [OK] {nombre}: {len(data)} puntos  ({data[-1][0]} → {data[0][0]})")
-        except Exception as e:
-            print(f"  [ERR] {nombre}: {e}")
+        _correr(nombre, unidad, fuente, lambda var_id=var_id: fetch_bcra(var_id))
+
+    # Un indicador que no pudo bajarse conserva lo que ya tenía. Antes no
+    # aportaba filas y la escritura completa lo borraba del CSV: la serie
+    # desaparecía del gráfico sin que nada avisara.
+    if fallidos:
+        previas = _filas_previas(cinturon, fallidos)
+        rows += previas
+        conservados = sorted({r[1] for r in previas})
+        perdidos = sorted(fallidos - set(conservados))
+        if conservados:
+            print(f"  [CARRY] {len(previas)} filas conservadas de: {', '.join(conservados)}")
+        if perdidos:
+            print(f"  [AVISO] sin filas previas para: {', '.join(perdidos)} -- quedan sin serie")
 
     rows.sort(key=lambda x: (x[1], x[0]), reverse=True)
     eliminados = (
