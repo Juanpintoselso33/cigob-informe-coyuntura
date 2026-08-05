@@ -17,10 +17,19 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 30   # cota dura: pytrends/scrapers pueden colgar en rate-limit.
+    timeout-minutes: 45   # cota dura: pytrends/scrapers pueden colgar en rate-limit.
                           # 20 quedó al ras (corridas reales de 19m32s/20m2s) y el
                           # probeo terminal de id_maximo de Diputados (margen de
                           # huecos 450, una vez por día vía store) suma ~2-3 min.
+                          # 30 también quedó al ras, y de la peor manera: estaba
+                          # calibrado contra corridas que MORÍAN en el gate a los
+                          # 27 min (1-4 de agosto, veto_quorum). Con el gate
+                          # pasando hay que sumarle tests + commit, y la corrida
+                          # del 5-ago se comió los 30 min completos con las series
+                          # todavía a medio bajar (Trends rate-limiteando con
+                          # backoff desde 01:20). El techo no lo pone una fuente
+                          # colgada sino la suma real: colectores ~14 min +
+                          # descargar_series ~16 min + gate/tests/commit ~3 min.
     defaults:
       run:
         working-directory: projects/informe_coyuntura
