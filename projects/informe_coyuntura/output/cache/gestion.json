@@ -1,6 +1,6 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-08-05T12:22:53.286895",
+  "generated_at": "2026-08-05T13:09:02.779016",
   "score": 2.1,
   "itcg": {
     "valor": 79.4,
@@ -273,10 +273,10 @@
       "actos_cumplidos": 2,
       "actos_totales": 2,
       "fci_cese_registrados": 0,
-      "menciones_bo": null,
+      "menciones_bo": 3,
       "vigencia_desde": "2026-11-01",
       "regimen_vigente": false,
-      "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV",
+      "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV · 3 menciones del FAL en el BO desde mar-2026",
       "en_indice": true,
       "dimension": "reforma_laboral",
       "puntaje_itcg": 100.0,
