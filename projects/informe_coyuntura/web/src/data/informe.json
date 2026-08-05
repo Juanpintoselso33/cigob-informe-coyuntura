@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-05T13:28:05.415692",
+  "generated_at": "2026-08-05T14:06:58.454813",
   "period": "2026-08",
   "score_global": 3.3,
   "ponderacion": {
@@ -2767,7 +2767,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260805_1310.json",
+      "fuente_enriquecida": "vida_cotidiana_20260805_1346.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 90.3,
