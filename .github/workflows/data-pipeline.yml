@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write   # commitear el snapshot + caches de vuelta a main
+  issues: write     # abrir/actualizar el issue de aviso cuando la corrida falla
 
 jobs:
   run:
@@ -166,3 +167,56 @@ jobs:
             git commit -m "data(informe): actualización diaria automática"
             git push
           fi
+
+      # ── Aviso de falla ────────────────────────────────────────────────────
+      # El pipeline estuvo cortado del 1 al 4 de agosto de 2026 —cuatro noches
+      # seguidas, siempre la misma falla de G3— y nadie se enteró: el workflow
+      # no tenía un solo `if: failure()`. Lo detectó una persona preguntando por
+      # qué la web mostraba datos viejos, cuatro días después. Del 21 al 26 de
+      # julio había pasado lo mismo: seis noches.
+      #
+      # `continue-on-error` es deliberado: el aviso NUNCA puede cambiar el
+      # resultado del job ni tapar la falla real. Si GitHub no deja abrir el
+      # issue, se pierde el aviso, no el diagnóstico.
+      - name: Avisar que la corrida falló
+        if: failure()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          # Los pasos ya corridos tienen conclusión aunque el job siga abierto,
+          # así que se puede nombrar el culpable en el aviso mismo. Sin esto el
+          # issue diría sólo "falló" y habría que entrar a leer el log igual.
+          pasos=$(gh api "repos/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}/jobs" \
+                    --jq '.jobs[].steps[] | select(.conclusion=="failure") | "- " + .name' 2>/dev/null || true)
+          [ -z "$pasos" ] && pasos="- (no se pudo determinar el paso)"
+          # printf y no un string multilínea: dentro del bloque YAML las líneas
+          # de continuación arrastran la indentación y markdown las renderiza
+          # como bloque de código.
+          cuerpo=$(printf 'La corrida del %s falló.\n\n**Pasos que fallaron:**\n%s\n\n%s\n\nEl snapshot **no se publicó**: producción sigue sirviendo el anterior.\nEste issue se cierra solo cuando una corrida vuelva a terminar bien.\n' \
+                     "$(date -u '+%Y-%m-%d %H:%M UTC')" "$pasos" "$RUN_URL")
+          gh label create pipeline-caido --color B60205 \
+            --description "El pipeline nocturno terminó en falla" 2>/dev/null || true
+          n=$(gh issue list --state open --label pipeline-caido --limit 1 \
+                --json number --jq '.[0].number // empty')
+          if [ -n "$n" ]; then
+            gh issue comment "$n" --body "$cuerpo"
+          else
+            gh issue create --title "El pipeline nocturno está fallando" \
+              --label pipeline-caido --body "$cuerpo"
+          fi
+
+      # El aviso se apaga solo. Un issue que hay que cerrar a mano se vuelve
+      # ruido y deja de leerse, que es la forma lenta de volver al silencio.
+      - name: Cerrar el aviso si la corrida salió bien
+        if: success()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          for n in $(gh issue list --state open --label pipeline-caido \
+                       --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Resuelto: la corrida terminó bien y publicó. $RUN_URL"
+          done

@@ -74,19 +74,26 @@ G3_EXCEPCIONES = {
     "sentimiento_digital": "card = pulso 3m en tiempo real; serie = canasta mensual ventana fija (ADR-0034)",
     "rigi_inversiones": "card = % de la meta; serie = monto acumulado en M USD",
     "protestas_caba": "card = eventos acumulados 12m; serie = eventos semanales",
-    "alineamiento_senadores_prov": "ambos usan ventana móvil de 90 días, pero anclada a fechas distintas: card = hoy; serie = fin de cada mes (fetch_alineamiento_senadores_prov_mensual, 2026-07-09). ADR-0172 le puso a la serie el punto anclado a HOY, igual que a la familia de Diputados, así que en principio ya coinciden — pero acá el anclaje del punto de hoy es a medianoche (`datetime(fin_mes.year, ...)`) y el de la card es la hora de la corrida: un acta votada ESE MISMO DÍA los separa. Queda perdonado hasta que una corrida real confirme que coinciden; entonces sale, como salieron los cuatro de Diputados (2026-08-05)",
-    "cohesion_bloque": "mismo caso que alineamiento_senadores_prov: card y serie usan ventana móvil de 90 días anclada a fechas distintas (card = hoy; serie = fin de cada mes). Desde 2026-07-10 ambos son el COMPUESTO bicameral 65/35 (fetch_cohesion_bloque_compuesta_mensual) — la asimetría de anclaje se hereda de las dos cámaras: un acta dividida a mitad de mes los separa más que la tolerancia. ADR-0172 le puso el punto de HOY a las dos series de cámara que arman el compuesto, así que en principio ya coincide con la card — pero el compuesto cruza dos series por fecha y basta con que una cámara no tenga punto de hoy para que el par vuelva a separarse. Mismo criterio que alineamiento_senadores_prov: queda perdonado hasta que una corrida real lo confirme (2026-08-05)",
-    "votometro_ventaja_lla": "misma familia de anclaje: card = ponderación de encuestas evaluada HOY (recencia exp(-0,015·días) desde hoy); serie = el mismo cálculo evaluado al cierre de cada mes (votometro_serie_mensual). Hoy difieren 0,1pp (5,3 vs 5,2) y pasan por tolerancia de casualidad — una encuesta nueva a mitad de mes los separa más (auditoría 2026-07-09)",
-    # derrotas_legislativas, bloqueo_sostenido, desafios_legislativos y
-    # veto_quorum estuvieron acá hasta el 5-ago-2026. Ya no: ADR-0172 les puso
-    # a las series un punto final anclado a HOY, así que card y serie miran la
-    # MISMA ventana y coinciden por construcción, sin tolerancia. Volvieron a
-    # estar bajo vigilancia de G3, que es de lo que nunca deberían haber salido:
-    # el waiver tapaba una contradicción real (desafios_legislativos publicaba
-    # 3 en el titular y 10 en el último punto del gráfico, 90 contra 43,6 de
-    # puntaje) y hacía falta un test distinto, en otro paso del pipeline, para
-    # que se viera.
-    "cepo_mulc": "misma familia de anclaje que votometro/derrotas: card = brecha CCL/mayorista viva (fetch del día); serie = foto mensual fechada al día 1. La brecha oscila ±30% m/m, así que la deriva intramensual supera cualquier tolerancia razonable de forma recurrente, no por bug — la tolerancia especial del 10% que tenía antes acá falló el 16-jul-2026 (11,5%) y ese mismo día el par pasaba por 0,02 de margen: era un parche que iba a fallar todos los meses volátiles. La frescura de la serie la sigue vigilando G3b (2026-07-16)",
+    "cepo_mulc": "card = brecha CCL/mayorista SPOT del día; serie = brecha entre el PROMEDIO MENSUAL del CCL y el promedio mensual del A3500 (fetch_brecha_serie). No es un problema de anclaje sino de estadístico: un promedio mensual no puede igualar un spot diario en una serie que oscila ±30% m/m, y acercar las anclas no lo arreglaría. La tolerancia especial del 10% que hubo acá falló el 16-jul-2026 (11,5%) y ese mismo día el par pasaba por 0,02 de margen: era un parche que iba a fallar todos los meses volátiles. La frescura de la serie la sigue vigilando G3b (reclasificado 2026-08-05: hasta ADR-0172 estaba anotado como 'misma familia de anclaje que votometro/derrotas', que era un diagnóstico equivocado)",
+    # Acá vivía la FAMILIA DE ANCLAJE: siete indicadores perdonados porque la
+    # card evaluaba su ventana en date.today() y la serie a fin de mes cerrado.
+    # Ya no queda ninguno. ADR-0172 les puso a las series un punto final
+    # anclado a HOY, así que card y serie miran la MISMA ventana y coinciden
+    # por construcción, sin tolerancia:
+    #
+    #   veto_quorum 10,0=10,0 · derrotas_legislativas 3=3
+    #   bloqueo_sostenido 33,3=33,3 · desafios_legislativos 3,0=3,0
+    #   alineamiento_senadores_prov 70,6=70,6 · cohesion_bloque 99,8=99,8
+    #   votometro_ventaja_lla 4,0=4,0
+    #
+    # Los siete volvieron a estar bajo vigilancia de G3, que es de lo que nunca
+    # deberían haber salido: el waiver tapaba una contradicción real
+    # (desafios_legislativos publicaba 3 en el titular y 10 en el último punto
+    # del gráfico, 90 contra 43,6 de puntaje) y hacía falta un test distinto,
+    # en otro paso del pipeline, para que se viera.
+    #
+    # Si algún día vuelve a aparecer un par card/serie que no coincide por
+    # anclaje, la salida NO es agregarlo acá: es alinear las anclas.
 }
 # tolerancia relativa por indicador (default 1% o 0,11 absoluto, redondeos)
 G3_TOLERANCIA_REL = {}   # (cepo_mulc tuvo 0.10 acá hasta 2026-07-16 — hoy es excepción G3)

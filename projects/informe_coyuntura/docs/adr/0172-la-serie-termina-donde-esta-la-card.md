@@ -95,11 +95,10 @@ Optan por él los siete llamadores de la familia: `veto_quorum`,
 `fetch_adhesion_reformas_provincial_serie` queda como estaba: su card no se
 ancla a hoy.
 
-### 2. Salen cuatro excepciones de G3
+### 2. La familia de anclaje desaparece de las excepciones de G3
 
-`veto_quorum`, `derrotas_legislativas`, `bloqueo_sostenido` y
-`desafios_legislativos` vuelven a estar bajo vigilancia de G3. Verificado contra
-datos vivos: card y serie coinciden **exactas**, no dentro de tolerancia.
+Los **siete** indicadores vuelven a estar bajo vigilancia de G3. Verificado
+contra datos vivos: card y serie coinciden **exactas**, no dentro de tolerancia.
 
 | Indicador | card | serie[-1] |
 |---|---:|---:|
@@ -107,6 +106,28 @@ datos vivos: card y serie coinciden **exactas**, no dentro de tolerancia.
 | `derrotas_legislativas` | 3 | 3 |
 | `bloqueo_sostenido` | 33,3 | 33,3 |
 | `veto_quorum` | 10,0 | 10,0 |
+| `alineamiento_senadores_prov` | 70,6 | 70,6 |
+| `cohesion_bloque` (compuesto) | 99,8 | 99,8 |
+| `votometro_ventaja_lla` | 4,0 | 4,0 |
+
+`cohesion_bloque` y `alineamiento_senadores_prov` no necesitaban más que el
+punto de hoy: sus cards **ya anclaban a medianoche**
+(`datetime(hoy.year, hoy.month, hoy.day)`), con un comentario en `politica.py`
+que dice que se hizo exactamente para no dejar un borde inconsistente entre
+card y serie. `votometro_ventaja_lla` tampoco pasa por `_fines_de_mes` y no hizo
+falta tocarlo: `votometro_serie_mensual` ya evalúa el mes en curso en
+`asof = min(fin_de_mes, hoy)`, y su cálculo es el mismo que el de la card
+—mismo `fecha_max`, mismo cutoff, mismo `exp(−0,015·días)` desde hoy—. Su waiver
+era defensivo por una diferencia de 0,1pp que es redondeo y ya caía dentro de la
+tolerancia.
+
+### 3. `cepo_mulc` se queda, pero reclasificado
+
+Es el único que sigue perdonado y **no pertenece a esta familia**: la card es el
+spot del día y la serie el promedio mensual del CCL sobre el promedio mensual
+del A3500. Son estadísticos distintos, no anclas distintas, y alinear anclas no
+lo arreglaría. Estaba anotado como "misma familia de anclaje que
+votometro/derrotas", que era un diagnóstico equivocado.
 
 ### Consecuencias
 
@@ -127,17 +148,15 @@ que es el que detectó la contradicción.
 
 ### Limitaciones
 
-- **`cohesion_bloque` y `alineamiento_senadores_prov` siguen perdonados.** Se les
-  cambió el anclaje igual que al resto, pero no pude verificarlos contra datos
-  vivos y quedan con waiver hasta que una corrida real lo confirme. Hay un motivo
-  concreto para no darlos por hechos: el punto de hoy se ancla a medianoche
-  (`datetime(fin_mes.year, fin_mes.month, fin_mes.day)`) y la card usa la hora de
-  la corrida, así que un acta votada ese mismo día los separa. `cohesion_bloque`
-  suma que el compuesto bicameral cruza dos series por fecha y basta con que una
-  cámara no tenga punto de hoy.
-- **`votometro_ventaja_lla` y `cepo_mulc` no se tocaron.** No pasan por
-  `_fines_de_mes`: sus series se arman por otro camino. La causa raíz es la
-  misma y la solución debería serlo, pero requiere trabajo aparte.
+- El último punto de cada serie es **móvil**: se recalcula en cada corrida y su
+  fecha es la del día. Dos snapshots consecutivos tienen un último punto
+  distinto, con fechas separadas por días y no por meses. Es el precio de que el
+  gráfico termine donde está el titular.
+- `votometro_ventaja_lla` queda bajo G3 apoyado en que la diferencia
+  card↔serie es sólo de redondeo (dos `round(..., 1)` sobre el mismo cálculo) y
+  cae dentro de la tolerancia de 0,11. No coinciden *por construcción* como los
+  otros seis: si alguna vez el redondeo cayera justo en el borde, G3 lo marcaría.
+  Preferimos ese falso positivo eventual al waiver permanente.
 - Este ADR alinea las anclas; **no reduce la volatilidad de fin de ventana**. Un
   indicador con eventos concentrados en un mes va a seguir dando saltos grandes
   cuando ese mes salga de la ventana. La diferencia es que ahora el salto se ve
