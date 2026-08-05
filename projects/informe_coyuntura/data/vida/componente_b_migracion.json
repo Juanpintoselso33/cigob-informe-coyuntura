@@ -188,7 +188,8 @@
       "2026-02": 35,
       "2026-01": 15,
       "2026-03": 40,
-      "2026-04": 25
+      "2026-04": 25,
+      "2026-05": 30
     }
   },
   "espana_nacionalidad": {
@@ -246,7 +247,6 @@
     }
   },
   "_meta": {
-    "actualizado": "2026-07-10",
     "fuentes": {
       "eeuu_niv": "US State Dept — NIV Issuances by Nationality (mensual)",
       "eeuu_iv": "US State Dept — IV Issuances by FSC or Place of Birth (mensual)",
@@ -254,6 +254,7 @@
       "espana_nacionalidad": "INE — Adquisiciones de Nacionalidad Española de Residentes (anual)",
       "italia_aire": "ISTAT/AIRE — Acquisizioni di cittadinanza (anual)",
       "chile_residencia": "SERMIG (ex-DEM) — Residencias Definitivas Resueltas (anual)"
-    }
+    },
+    "actualizado": "2026-07-10"
   }
 }

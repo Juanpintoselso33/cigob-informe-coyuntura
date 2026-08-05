@@ -198,6 +198,7 @@ fecha,indicador,valor,unidad,fuente
 2022-10-01,peso_tarifas,7.41,% m/m regulados,INDEC serie 148.3
 2022-09-01,peso_tarifas,4.55,% m/m regulados,INDEC serie 148.3
 2022-08-01,peso_tarifas,6.29,% m/m regulados,INDEC serie 148.3
+2026-07-01,patentamiento_motos,72433,unidades/mes,CAFAM API (histórico mensual)
 2026-06-01,patentamiento_motos,69273,unidades/mes,CAFAM API (histórico mensual)
 2026-05-01,patentamiento_motos,69753,unidades/mes,CAFAM API (histórico mensual)
 2026-04-01,patentamiento_motos,81981,unidades/mes,CAFAM API (histórico mensual)
@@ -953,8 +954,8 @@ fecha,indicador,valor,unidad,fuente
 2021-08-01,icc_utdt,37.8,índice,"UTDT (ICC, serie XLS)"
 2021-07-01,icc_utdt,39.2,índice,"UTDT (ICC, serie XLS)"
 2021-06-01,icc_utdt,35.6,índice,"UTDT (ICC, serie XLS)"
-2026-07-01,endeudamiento_familiar,44.46,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2026-06-01,endeudamiento_familiar,47.17,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-07-01,endeudamiento_familiar,46.26,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-06-01,endeudamiento_familiar,47.21,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-05-01,endeudamiento_familiar,45.93,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-04-01,endeudamiento_familiar,45.51,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-03-01,endeudamiento_familiar,44.79,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)

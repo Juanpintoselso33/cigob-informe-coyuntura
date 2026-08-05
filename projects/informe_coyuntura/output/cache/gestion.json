@@ -1,22 +1,22 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-07-30T04:39:30.720101",
-  "score": 2.2,
+  "generated_at": "2026-08-05T11:35:37.522152",
+  "score": 2.1,
   "itcg": {
-    "valor": 78.1,
+    "valor": 79.4,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "reformas_economicas": {
         "nombre": "Reformas económicas fundamentales",
         "peso": 0.35,
-        "puntaje": 75.3,
+        "puntaje": 76.9,
         "indicadores": {
           "cepo_mulc": {
             "peso": 0.4,
-            "puntaje_banda": 93.9,
-            "puntaje_aplicado": 93.9,
-            "valor": 6.02,
+            "puntaje_banda": 97.8,
+            "puntaje_aplicado": 97.8,
+            "valor": 5.36,
             "peso_efectivo": 0.14
           },
           "apertura_comercial": {
@@ -45,7 +45,7 @@
             "peso": 0.35,
             "puntaje_banda": 100.0,
             "puntaje_aplicado": 100.0,
-            "valor": -19.8,
+            "valor": -20.36,
             "peso_efectivo": 0.0875
           },
           "gasto_funcionamiento": {
@@ -97,7 +97,7 @@
       "privatizaciones_inversion": {
         "nombre": "Privatizaciones e inversión",
         "peso": 0.15,
-        "puntaje": 58.2,
+        "puntaje": 62.9,
         "indicadores": {
           "privatizaciones": {
             "peso": 0.4,
@@ -108,9 +108,9 @@
           },
           "rigi_inversiones": {
             "peso": 0.4,
-            "puntaje_banda": 51.8,
-            "puntaje_aplicado": 51.8,
-            "valor": 24.6,
+            "puntaje_banda": 63.5,
+            "puntaje_aplicado": 63.5,
+            "valor": 31.6,
             "peso_efectivo": 0.06
           },
           "concesiones_infraestructura": {
@@ -150,15 +150,15 @@
   },
   "indicadores": {
     "cepo_mulc": {
-      "valor": 6.02,
+      "valor": 5.36,
       "unidad": "% de brecha CCL/mayorista",
       "fuente": "https://dolarapi.com/v1/dolares",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-08-05",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "reformas_economicas",
-      "puntaje_itcg": 93.9,
-      "puntaje_banda": 93.9,
+      "puntaje_itcg": 97.8,
+      "puntaje_banda": 97.8,
       "peso_efectivo": 0.14
     },
     "apertura_comercial": {
@@ -191,19 +191,19 @@
       "peso_efectivo": 0.07
     },
     "reduccion_estado": {
-      "valor": -19.8,
+      "valor": -20.36,
       "unidad": "% de variación vs dic-2023 (dotación APN)",
       "fuente": "INDEC — Dotación de personal de la APN (mensual)",
-      "fecha_dato": "2026-05-01",
+      "fecha_dato": "2026-06-01",
       "desactualizado": false,
-      "dotacion_actual": 185498,
+      "dotacion_actual": 184202,
       "dotacion_dic23": 231305,
-      "var_empresas_publicas": -20.24,
-      "var_universo_completo": -19.94,
+      "var_empresas_publicas": -20.58,
+      "var_universo_completo": -20.43,
       "var_fuerzas_seguridad": -15.24,
       "var_planta_civil": -19.0,
       "fecha_desglose_fuerzas": "2026-02",
-      "detalle_txt": "185.498 agentes (2026-05) vs 231.305 en dic-2023 · sin contar empresas del Estado, que por su lado varían -20,24%; el universo completo varía -19,94% · incluye fuerzas armadas y de seguridad, que son ~10% de la dotación y se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02)",
+      "detalle_txt": "184.202 agentes (2026-06) vs 231.305 en dic-2023 · sin contar empresas del Estado, que por su lado varían -20,58%; el universo completo varía -20,43% · incluye fuerzas armadas y de seguridad, que son ~10% de la dotación y se redujeron menos (-15,24%): sin ellas, la planta civil varía -19,0% (a 2026-02)",
       "en_indice": true,
       "dimension": "reforma_estado",
       "puntaje_itcg": 100.0,
@@ -240,7 +240,7 @@
       "valor": 40.0,
       "unidad": "% de avance (proxy InfoLeg)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-08-05",
       "desactualizado": false,
       "conteo_normas": 18,
       "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -254,7 +254,7 @@
       "valor": 100.0,
       "unidad": "Índice 0–100 (actos fundamentales del FAL: ley + reglamentación)",
       "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 (normas publicadas)",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-08-05",
       "desactualizado": false,
       "actos": [
         {
@@ -474,9 +474,51 @@
           "periodo": "2026-06",
           "titulo": "Resolución 136 / 2026",
           "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426795"
+        },
+        "428273": {
+          "empresa": "Intercargo",
+          "periodo": "2026-07",
+          "titulo": "Resolución 1148 / 2026",
+          "coincidencia": "sujeta a privatización",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428273"
+        },
+        "428126": {
+          "empresa": "Corredores Viales",
+          "periodo": "2026-07",
+          "titulo": "Disposición 215 / 2026",
+          "coincidencia": "privatiza",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428126"
+        },
+        "428457": {
+          "empresa": "Belgrano Cargas",
+          "periodo": "2026-07",
+          "titulo": "Resolución 190 / 2026",
+          "coincidencia": "adjudica",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428457"
+        },
+        "427566": {
+          "empresa": "Belgrano Cargas",
+          "periodo": "2026-07",
+          "titulo": "Decreto DNU 585 / 2026",
+          "coincidencia": "adjudica",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427566"
+        },
+        "427319": {
+          "empresa": "Belgrano Cargas",
+          "periodo": "2026-07",
+          "titulo": "Resolución 199 / 2026",
+          "coincidencia": "pliego",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427319"
+        },
+        "427661": {
+          "empresa": "YCRT",
+          "periodo": "2026-07",
+          "titulo": "Decreto 590 / 2026",
+          "coincidencia": "concurso público",
+          "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427661"
         }
       },
-      "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener · 12 norma(s) nueva(s) del Boletín Oficial sin revisar",
+      "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener · 18 norma(s) nueva(s) del Boletín Oficial sin revisar",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
       "puntaje_itcg": 71.4,
@@ -484,28 +526,28 @@
       "peso_efectivo": 0.06
     },
     "rigi_inversiones": {
-      "valor": 24.6,
+      "valor": 31.6,
       "unidad": "% de inversión aprobada sobre el pipeline",
       "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-08-05",
       "desactualizado": false,
-      "proyectos_aprobados": 19,
-      "inversion_aprobada_musd": 36424,
-      "proyectos_evaluacion": 24,
-      "inversion_evaluacion_musd": 111500,
+      "proyectos_aprobados": 21,
+      "inversion_aprobada_musd": 46708,
+      "proyectos_evaluacion": 22,
+      "inversion_evaluacion_musd": 101241,
       "nota_denominador": null,
-      "detalle_txt": "19 proyectos aprobados (US$ 36.424M) / 24 en evaluación (US$ 111.500M) → 24,6% de la inversión total ya aprobada",
+      "detalle_txt": "21 proyectos aprobados (US$ 46.708M) / 22 en evaluación (US$ 101.241M) → 31,6% de la inversión total ya aprobada",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
-      "puntaje_itcg": 51.8,
-      "puntaje_banda": 51.8,
+      "puntaje_itcg": 63.5,
+      "puntaje_banda": 63.5,
       "peso_efectivo": 0.06
     },
     "concesiones_infraestructura": {
       "valor": 28.7,
       "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
       "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-08-05",
       "desactualizado": false,
       "km_adjudicados": 2614,
       "km_totales": 9091,
@@ -516,7 +558,7 @@
         "etapa_ii_b": 0.0,
         "etapa_iii": 0.0
       },
-      "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Disponible Para Adjudicar · II: Adjudicado · III: En Apertura 2º Etapa",
+      "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Disponible Para Adjudicar · II: Adjudicado · III: Preadjudicado",
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
       "puntaje_itcg": 44.6,
@@ -527,15 +569,15 @@
       "valor": 100.0,
       "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
       "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-08-05",
       "desactualizado": false,
       "ejercicio": 2026,
       "componentes": {
-        "directo_musd": 527684,
+        "directo_musd": 542901,
         "intermediado_musd": 0,
         "tdps_2023": 98.3
       },
-      "detalle_txt": "Devengado 2026: $ 527.684M directo a personas (5.1.4) / $ 527.684M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
+      "detalle_txt": "Devengado 2026: $ 542.901M directo a personas (5.1.4) / $ 542.901M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)",
       "en_indice": false,
       "dimension": "social_orden",
       "cumplido": {
@@ -582,10 +624,10 @@
       "valor": 0,
       "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
       "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-      "fecha_dato": "2026-07-30",
+      "fecha_dato": "2026-08-05",
       "desactualizado": false,
-      "dias_muestreados_mes": 29,
-      "detalle_txt": "0 alertas en 29 días muestreados de 2026-07 · acumula desde 2026-07-02 (sin baseline 2023)",
+      "dias_muestreados_mes": 5,
+      "detalle_txt": "0 alertas en 5 días muestreados de 2026-08 · acumula desde 2026-07-02 (sin baseline 2023)",
       "en_indice": false
     },
     "protestas_caba": {

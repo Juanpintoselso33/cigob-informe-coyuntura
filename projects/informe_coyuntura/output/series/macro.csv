@@ -1,100 +1,105 @@
 fecha,indicador,valor,unidad,fuente
-2026-06-01,tcrm_bilateral_eeuu,92.91,índice (base dic-2015),BCRA ITCRM
-2026-05-01,tcrm_bilateral_eeuu,91.36,índice (base dic-2015),BCRA ITCRM
-2026-04-01,tcrm_bilateral_eeuu,91.99,índice (base dic-2015),BCRA ITCRM
-2026-03-01,tcrm_bilateral_eeuu,94.92,índice (base dic-2015),BCRA ITCRM
-2026-02-01,tcrm_bilateral_eeuu,98.15,índice (base dic-2015),BCRA ITCRM
-2026-01-01,tcrm_bilateral_eeuu,103.77,índice (base dic-2015),BCRA ITCRM
-2025-12-01,tcrm_bilateral_eeuu,106.29,índice (base dic-2015),BCRA ITCRM
-2025-11-01,tcrm_bilateral_eeuu,107.6,índice (base dic-2015),BCRA ITCRM
-2025-10-01,tcrm_bilateral_eeuu,110.74,índice (base dic-2015),BCRA ITCRM
-2025-09-01,tcrm_bilateral_eeuu,110.03,índice (base dic-2015),BCRA ITCRM
-2025-08-01,tcrm_bilateral_eeuu,106.0,índice (base dic-2015),BCRA ITCRM
-2025-07-01,tcrm_bilateral_eeuu,102.85,índice (base dic-2015),BCRA ITCRM
-2025-06-01,tcrm_bilateral_eeuu,97.14,índice (base dic-2015),BCRA ITCRM
-2025-05-01,tcrm_bilateral_eeuu,95.99,índice (base dic-2015),BCRA ITCRM
-2025-04-01,tcrm_bilateral_eeuu,95.36,índice (base dic-2015),BCRA ITCRM
-2025-03-01,tcrm_bilateral_eeuu,93.82,índice (base dic-2015),BCRA ITCRM
-2025-02-01,tcrm_bilateral_eeuu,95.62,índice (base dic-2015),BCRA ITCRM
-2025-01-01,tcrm_bilateral_eeuu,96.11,índice (base dic-2015),BCRA ITCRM
-2024-12-01,tcrm_bilateral_eeuu,96.12,índice (base dic-2015),BCRA ITCRM
-2024-11-01,tcrm_bilateral_eeuu,96.3,índice (base dic-2015),BCRA ITCRM
-2024-10-01,tcrm_bilateral_eeuu,96.52,índice (base dic-2015),BCRA ITCRM
-2024-09-01,tcrm_bilateral_eeuu,97.28,índice (base dic-2015),BCRA ITCRM
-2024-08-01,tcrm_bilateral_eeuu,98.78,índice (base dic-2015),BCRA ITCRM
-2024-07-01,tcrm_bilateral_eeuu,100.59,índice (base dic-2015),BCRA ITCRM
-2024-06-01,tcrm_bilateral_eeuu,102.6,índice (base dic-2015),BCRA ITCRM
-2024-05-01,tcrm_bilateral_eeuu,104.94,índice (base dic-2015),BCRA ITCRM
-2024-04-01,tcrm_bilateral_eeuu,109.31,índice (base dic-2015),BCRA ITCRM
-2024-03-01,tcrm_bilateral_eeuu,117.34,índice (base dic-2015),BCRA ITCRM
-2024-02-01,tcrm_bilateral_eeuu,128.4,índice (base dic-2015),BCRA ITCRM
-2024-01-01,tcrm_bilateral_eeuu,146.58,índice (base dic-2015),BCRA ITCRM
-2023-12-01,tcrm_bilateral_eeuu,137.41,índice (base dic-2015),BCRA ITCRM
-2023-11-01,tcrm_bilateral_eeuu,92.33,índice (base dic-2015),BCRA ITCRM
-2026-06-01,tcrm_bilateral_brasil,86.0,índice (base dic-2015),BCRA ITCRM
-2026-05-01,tcrm_bilateral_brasil,86.65,índice (base dic-2015),BCRA ITCRM
-2026-04-01,tcrm_bilateral_brasil,86.31,índice (base dic-2015),BCRA ITCRM
-2026-03-01,tcrm_bilateral_brasil,85.52,índice (base dic-2015),BCRA ITCRM
-2026-02-01,tcrm_bilateral_brasil,88.92,índice (base dic-2015),BCRA ITCRM
-2026-01-01,tcrm_bilateral_brasil,91.26,índice (base dic-2015),BCRA ITCRM
-2025-12-01,tcrm_bilateral_brasil,91.33,índice (base dic-2015),BCRA ITCRM
-2025-11-01,tcrm_bilateral_brasil,94.62,índice (base dic-2015),BCRA ITCRM
-2025-10-01,tcrm_bilateral_brasil,96.53,índice (base dic-2015),BCRA ITCRM
-2025-09-01,tcrm_bilateral_brasil,96.25,índice (base dic-2015),BCRA ITCRM
-2025-08-01,tcrm_bilateral_brasil,91.36,índice (base dic-2015),BCRA ITCRM
-2025-07-01,tcrm_bilateral_brasil,87.54,índice (base dic-2015),BCRA ITCRM
-2025-06-01,tcrm_bilateral_brasil,82.45,índice (base dic-2015),BCRA ITCRM
-2025-05-01,tcrm_bilateral_brasil,79.59,índice (base dic-2015),BCRA ITCRM
-2025-04-01,tcrm_bilateral_brasil,77.31,índice (base dic-2015),BCRA ITCRM
-2025-03-01,tcrm_bilateral_brasil,76.09,índice (base dic-2015),BCRA ITCRM
-2025-02-01,tcrm_bilateral_brasil,76.97,índice (base dic-2015),BCRA ITCRM
-2025-01-01,tcrm_bilateral_brasil,73.6,índice (base dic-2015),BCRA ITCRM
-2024-12-01,tcrm_bilateral_brasil,72.77,índice (base dic-2015),BCRA ITCRM
-2024-11-01,tcrm_bilateral_brasil,76.36,índice (base dic-2015),BCRA ITCRM
-2024-10-01,tcrm_bilateral_brasil,79.08,índice (base dic-2015),BCRA ITCRM
-2024-09-01,tcrm_bilateral_brasil,80.69,índice (base dic-2015),BCRA ITCRM
-2024-08-01,tcrm_bilateral_brasil,81.66,índice (base dic-2015),BCRA ITCRM
-2024-07-01,tcrm_bilateral_brasil,83.34,índice (base dic-2015),BCRA ITCRM
-2024-06-01,tcrm_bilateral_brasil,87.18,índice (base dic-2015),BCRA ITCRM
-2024-05-01,tcrm_bilateral_brasil,93.29,índice (base dic-2015),BCRA ITCRM
-2024-04-01,tcrm_bilateral_brasil,97.23,índice (base dic-2015),BCRA ITCRM
-2024-03-01,tcrm_bilateral_brasil,107.37,índice (base dic-2015),BCRA ITCRM
-2024-02-01,tcrm_bilateral_brasil,117.73,índice (base dic-2015),BCRA ITCRM
-2024-01-01,tcrm_bilateral_brasil,135.58,índice (base dic-2015),BCRA ITCRM
-2023-12-01,tcrm_bilateral_brasil,127.36,índice (base dic-2015),BCRA ITCRM
-2023-11-01,tcrm_bilateral_brasil,85.14,índice (base dic-2015),BCRA ITCRM
-2026-06-01,tcrm,84.97,índice (base dic-2015),BCRA ITCRM
-2026-05-01,tcrm,84.32,índice (base dic-2015),BCRA ITCRM
-2026-04-01,tcrm,84.67,índice (base dic-2015),BCRA ITCRM
-2026-03-01,tcrm,86.23,índice (base dic-2015),BCRA ITCRM
-2026-02-01,tcrm,90.09,índice (base dic-2015),BCRA ITCRM
-2026-01-01,tcrm,93.54,índice (base dic-2015),BCRA ITCRM
-2025-12-01,tcrm,94.68,índice (base dic-2015),BCRA ITCRM
-2025-11-01,tcrm,96.01,índice (base dic-2015),BCRA ITCRM
-2025-10-01,tcrm,98.9,índice (base dic-2015),BCRA ITCRM
-2025-09-01,tcrm,99.1,índice (base dic-2015),BCRA ITCRM
-2025-08-01,tcrm,95.05,índice (base dic-2015),BCRA ITCRM
-2025-07-01,tcrm,91.78,índice (base dic-2015),BCRA ITCRM
-2025-06-01,tcrm,86.13,índice (base dic-2015),BCRA ITCRM
-2025-05-01,tcrm,83.9,índice (base dic-2015),BCRA ITCRM
-2025-04-01,tcrm,82.33,índice (base dic-2015),BCRA ITCRM
-2025-03-01,tcrm,80.5,índice (base dic-2015),BCRA ITCRM
-2025-02-01,tcrm,81.04,índice (base dic-2015),BCRA ITCRM
-2025-01-01,tcrm,79.7,índice (base dic-2015),BCRA ITCRM
-2024-12-01,tcrm,79.79,índice (base dic-2015),BCRA ITCRM
-2024-11-01,tcrm,81.75,índice (base dic-2015),BCRA ITCRM
-2024-10-01,tcrm,84.05,índice (base dic-2015),BCRA ITCRM
-2024-09-01,tcrm,86.05,índice (base dic-2015),BCRA ITCRM
-2024-08-01,tcrm,87.16,índice (base dic-2015),BCRA ITCRM
-2024-07-01,tcrm,87.88,índice (base dic-2015),BCRA ITCRM
-2024-06-01,tcrm,89.9,índice (base dic-2015),BCRA ITCRM
-2024-05-01,tcrm,93.43,índice (base dic-2015),BCRA ITCRM
-2024-04-01,tcrm,97.03,índice (base dic-2015),BCRA ITCRM
-2024-03-01,tcrm,105.88,índice (base dic-2015),BCRA ITCRM
-2024-02-01,tcrm,115.75,índice (base dic-2015),BCRA ITCRM
-2024-01-01,tcrm,132.78,índice (base dic-2015),BCRA ITCRM
-2023-12-01,tcrm,124.88,índice (base dic-2015),BCRA ITCRM
-2023-11-01,tcrm,83.2,índice (base dic-2015),BCRA ITCRM
+2026-07-01,tcrm_bilateral_eeuu,93.33,índice (base dic-2015),BCRA ITCRM
+2026-06-01,tcrm_bilateral_eeuu,92.88,índice (base dic-2015),BCRA ITCRM
+2026-05-01,tcrm_bilateral_eeuu,91.33,índice (base dic-2015),BCRA ITCRM
+2026-04-01,tcrm_bilateral_eeuu,91.97,índice (base dic-2015),BCRA ITCRM
+2026-03-01,tcrm_bilateral_eeuu,94.89,índice (base dic-2015),BCRA ITCRM
+2026-02-01,tcrm_bilateral_eeuu,98.11,índice (base dic-2015),BCRA ITCRM
+2026-01-01,tcrm_bilateral_eeuu,103.74,índice (base dic-2015),BCRA ITCRM
+2025-12-01,tcrm_bilateral_eeuu,106.26,índice (base dic-2015),BCRA ITCRM
+2025-11-01,tcrm_bilateral_eeuu,107.57,índice (base dic-2015),BCRA ITCRM
+2025-10-01,tcrm_bilateral_eeuu,110.71,índice (base dic-2015),BCRA ITCRM
+2025-09-01,tcrm_bilateral_eeuu,110.0,índice (base dic-2015),BCRA ITCRM
+2025-08-01,tcrm_bilateral_eeuu,105.97,índice (base dic-2015),BCRA ITCRM
+2025-07-01,tcrm_bilateral_eeuu,102.82,índice (base dic-2015),BCRA ITCRM
+2025-06-01,tcrm_bilateral_eeuu,97.11,índice (base dic-2015),BCRA ITCRM
+2025-05-01,tcrm_bilateral_eeuu,95.96,índice (base dic-2015),BCRA ITCRM
+2025-04-01,tcrm_bilateral_eeuu,95.33,índice (base dic-2015),BCRA ITCRM
+2025-03-01,tcrm_bilateral_eeuu,93.79,índice (base dic-2015),BCRA ITCRM
+2025-02-01,tcrm_bilateral_eeuu,95.59,índice (base dic-2015),BCRA ITCRM
+2025-01-01,tcrm_bilateral_eeuu,96.08,índice (base dic-2015),BCRA ITCRM
+2024-12-01,tcrm_bilateral_eeuu,96.09,índice (base dic-2015),BCRA ITCRM
+2024-11-01,tcrm_bilateral_eeuu,96.27,índice (base dic-2015),BCRA ITCRM
+2024-10-01,tcrm_bilateral_eeuu,96.49,índice (base dic-2015),BCRA ITCRM
+2024-09-01,tcrm_bilateral_eeuu,97.25,índice (base dic-2015),BCRA ITCRM
+2024-08-01,tcrm_bilateral_eeuu,98.75,índice (base dic-2015),BCRA ITCRM
+2024-07-01,tcrm_bilateral_eeuu,100.56,índice (base dic-2015),BCRA ITCRM
+2024-06-01,tcrm_bilateral_eeuu,102.57,índice (base dic-2015),BCRA ITCRM
+2024-05-01,tcrm_bilateral_eeuu,104.91,índice (base dic-2015),BCRA ITCRM
+2024-04-01,tcrm_bilateral_eeuu,109.27,índice (base dic-2015),BCRA ITCRM
+2024-03-01,tcrm_bilateral_eeuu,117.3,índice (base dic-2015),BCRA ITCRM
+2024-02-01,tcrm_bilateral_eeuu,128.36,índice (base dic-2015),BCRA ITCRM
+2024-01-01,tcrm_bilateral_eeuu,146.53,índice (base dic-2015),BCRA ITCRM
+2023-12-01,tcrm_bilateral_eeuu,137.4,índice (base dic-2015),BCRA ITCRM
+2026-07-01,tcrm_bilateral_brasil,86.99,índice (base dic-2015),BCRA ITCRM
+2026-06-01,tcrm_bilateral_brasil,86.16,índice (base dic-2015),BCRA ITCRM
+2026-05-01,tcrm_bilateral_brasil,86.81,índice (base dic-2015),BCRA ITCRM
+2026-04-01,tcrm_bilateral_brasil,86.48,índice (base dic-2015),BCRA ITCRM
+2026-03-01,tcrm_bilateral_brasil,85.69,índice (base dic-2015),BCRA ITCRM
+2026-02-01,tcrm_bilateral_brasil,89.09,índice (base dic-2015),BCRA ITCRM
+2026-01-01,tcrm_bilateral_brasil,91.44,índice (base dic-2015),BCRA ITCRM
+2025-12-01,tcrm_bilateral_brasil,91.51,índice (base dic-2015),BCRA ITCRM
+2025-11-01,tcrm_bilateral_brasil,94.8,índice (base dic-2015),BCRA ITCRM
+2025-10-01,tcrm_bilateral_brasil,96.71,índice (base dic-2015),BCRA ITCRM
+2025-09-01,tcrm_bilateral_brasil,96.43,índice (base dic-2015),BCRA ITCRM
+2025-08-01,tcrm_bilateral_brasil,91.53,índice (base dic-2015),BCRA ITCRM
+2025-07-01,tcrm_bilateral_brasil,87.71,índice (base dic-2015),BCRA ITCRM
+2025-06-01,tcrm_bilateral_brasil,82.61,índice (base dic-2015),BCRA ITCRM
+2025-05-01,tcrm_bilateral_brasil,79.74,índice (base dic-2015),BCRA ITCRM
+2025-04-01,tcrm_bilateral_brasil,77.45,índice (base dic-2015),BCRA ITCRM
+2025-03-01,tcrm_bilateral_brasil,76.23,índice (base dic-2015),BCRA ITCRM
+2025-02-01,tcrm_bilateral_brasil,77.12,índice (base dic-2015),BCRA ITCRM
+2025-01-01,tcrm_bilateral_brasil,73.74,índice (base dic-2015),BCRA ITCRM
+2024-12-01,tcrm_bilateral_brasil,72.91,índice (base dic-2015),BCRA ITCRM
+2024-11-01,tcrm_bilateral_brasil,76.51,índice (base dic-2015),BCRA ITCRM
+2024-10-01,tcrm_bilateral_brasil,79.23,índice (base dic-2015),BCRA ITCRM
+2024-09-01,tcrm_bilateral_brasil,80.84,índice (base dic-2015),BCRA ITCRM
+2024-08-01,tcrm_bilateral_brasil,81.82,índice (base dic-2015),BCRA ITCRM
+2024-07-01,tcrm_bilateral_brasil,83.5,índice (base dic-2015),BCRA ITCRM
+2024-06-01,tcrm_bilateral_brasil,87.35,índice (base dic-2015),BCRA ITCRM
+2024-05-01,tcrm_bilateral_brasil,93.47,índice (base dic-2015),BCRA ITCRM
+2024-04-01,tcrm_bilateral_brasil,97.41,índice (base dic-2015),BCRA ITCRM
+2024-03-01,tcrm_bilateral_brasil,107.57,índice (base dic-2015),BCRA ITCRM
+2024-02-01,tcrm_bilateral_brasil,117.96,índice (base dic-2015),BCRA ITCRM
+2024-01-01,tcrm_bilateral_brasil,135.84,índice (base dic-2015),BCRA ITCRM
+2023-12-01,tcrm_bilateral_brasil,127.57,índice (base dic-2015),BCRA ITCRM
+2026-07-01,tcrm,85.93,índice (base dic-2015),BCRA ITCRM
+2026-06-01,tcrm,85.27,índice (base dic-2015),BCRA ITCRM
+2026-05-01,tcrm,84.61,índice (base dic-2015),BCRA ITCRM
+2026-04-01,tcrm,84.96,índice (base dic-2015),BCRA ITCRM
+2026-03-01,tcrm,86.53,índice (base dic-2015),BCRA ITCRM
+2026-02-01,tcrm,90.4,índice (base dic-2015),BCRA ITCRM
+2026-01-01,tcrm,93.86,índice (base dic-2015),BCRA ITCRM
+2025-12-01,tcrm,95.01,índice (base dic-2015),BCRA ITCRM
+2025-11-01,tcrm,96.34,índice (base dic-2015),BCRA ITCRM
+2025-10-01,tcrm,99.24,índice (base dic-2015),BCRA ITCRM
+2025-09-01,tcrm,99.44,índice (base dic-2015),BCRA ITCRM
+2025-08-01,tcrm,95.38,índice (base dic-2015),BCRA ITCRM
+2025-07-01,tcrm,92.09,índice (base dic-2015),BCRA ITCRM
+2025-06-01,tcrm,86.42,índice (base dic-2015),BCRA ITCRM
+2025-05-01,tcrm,84.19,índice (base dic-2015),BCRA ITCRM
+2025-04-01,tcrm,82.62,índice (base dic-2015),BCRA ITCRM
+2025-03-01,tcrm,80.78,índice (base dic-2015),BCRA ITCRM
+2025-02-01,tcrm,81.32,índice (base dic-2015),BCRA ITCRM
+2025-01-01,tcrm,79.98,índice (base dic-2015),BCRA ITCRM
+2024-12-01,tcrm,80.07,índice (base dic-2015),BCRA ITCRM
+2024-11-01,tcrm,82.03,índice (base dic-2015),BCRA ITCRM
+2024-10-01,tcrm,84.34,índice (base dic-2015),BCRA ITCRM
+2024-09-01,tcrm,86.34,índice (base dic-2015),BCRA ITCRM
+2024-08-01,tcrm,87.46,índice (base dic-2015),BCRA ITCRM
+2024-07-01,tcrm,88.18,índice (base dic-2015),BCRA ITCRM
+2024-06-01,tcrm,90.21,índice (base dic-2015),BCRA ITCRM
+2024-05-01,tcrm,93.75,índice (base dic-2015),BCRA ITCRM
+2024-04-01,tcrm,97.36,índice (base dic-2015),BCRA ITCRM
+2024-03-01,tcrm,106.24,índice (base dic-2015),BCRA ITCRM
+2024-02-01,tcrm,116.15,índice (base dic-2015),BCRA ITCRM
+2024-01-01,tcrm,133.24,índice (base dic-2015),BCRA ITCRM
+2023-12-01,tcrm,125.38,índice (base dic-2015),BCRA ITCRM
+2023-11-01,tcrm,83.51,índice (base dic-2015),BCRA ITCRM
+2026-08-04,tc_mayorista,1496.4509,ARS/USD,BCRA
+2026-08-03,tc_mayorista,1493.4428,ARS/USD,BCRA
+2026-07-31,tc_mayorista,1488.4531,ARS/USD,BCRA
+2026-07-30,tc_mayorista,1490.8431,ARS/USD,BCRA
 2026-07-29,tc_mayorista,1496.3521,ARS/USD,BCRA
 2026-07-28,tc_mayorista,1499.8387,ARS/USD,BCRA
 2026-07-27,tc_mayorista,1498.5117,ARS/USD,BCRA
@@ -725,10 +730,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-21,tc_mayorista,804.225,ARS/USD,BCRA
 2023-12-20,tc_mayorista,803.725,ARS/USD,BCRA
 2023-12-19,tc_mayorista,803.175,ARS/USD,BCRA
-2023-12-18,tc_mayorista,802.625,ARS/USD,BCRA
-2023-12-15,tc_mayorista,801.075,ARS/USD,BCRA
-2023-12-14,tc_mayorista,800.525,ARS/USD,BCRA
-2023-12-13,tc_mayorista,799.975,ARS/USD,BCRA
 2026-06-01,saldo_comercial_12m,22481.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-05-01,saldo_comercial_12m,21166.7,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-04-01,saldo_comercial_12m,18324.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
@@ -967,14 +968,18 @@ fecha,indicador,valor,unidad,fuente
 2022-03-01,recaudacion,99.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-02-01,recaudacion,101.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-01-01,recaudacion,101.9,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-07-27,prestamos_privados,139454462.0,M ARS,BCRA
-2026-07-24,prestamos_privados,139140685.0,M ARS,BCRA
-2026-07-23,prestamos_privados,138663317.0,M ARS,BCRA
-2026-07-22,prestamos_privados,137912040.0,M ARS,BCRA
-2026-07-21,prestamos_privados,137705487.0,M ARS,BCRA
-2026-07-20,prestamos_privados,137224552.0,M ARS,BCRA
-2026-07-17,prestamos_privados,136816690.0,M ARS,BCRA
-2026-07-16,prestamos_privados,136874701.0,M ARS,BCRA
+2026-07-31,prestamos_privados,141079443.0,M ARS,BCRA
+2026-07-30,prestamos_privados,141100320.0,M ARS,BCRA
+2026-07-29,prestamos_privados,140611381.0,M ARS,BCRA
+2026-07-28,prestamos_privados,140404711.0,M ARS,BCRA
+2026-07-27,prestamos_privados,140169222.0,M ARS,BCRA
+2026-07-24,prestamos_privados,139269752.0,M ARS,BCRA
+2026-07-23,prestamos_privados,138699342.0,M ARS,BCRA
+2026-07-22,prestamos_privados,137994859.0,M ARS,BCRA
+2026-07-21,prestamos_privados,137726703.0,M ARS,BCRA
+2026-07-20,prestamos_privados,137226184.0,M ARS,BCRA
+2026-07-17,prestamos_privados,136818579.0,M ARS,BCRA
+2026-07-16,prestamos_privados,136876077.0,M ARS,BCRA
 2026-07-15,prestamos_privados,136975873.0,M ARS,BCRA
 2026-07-14,prestamos_privados,137331849.0,M ARS,BCRA
 2026-07-13,prestamos_privados,137280879.0,M ARS,BCRA
@@ -984,7 +989,7 @@ fecha,indicador,valor,unidad,fuente
 2026-07-03,prestamos_privados,138450918.0,M ARS,BCRA
 2026-07-02,prestamos_privados,138754288.0,M ARS,BCRA
 2026-07-01,prestamos_privados,138226414.0,M ARS,BCRA
-2026-06-30,prestamos_privados,138968741.0,M ARS,BCRA
+2026-06-30,prestamos_privados,139145495.0,M ARS,BCRA
 2026-06-29,prestamos_privados,137521945.0,M ARS,BCRA
 2026-06-26,prestamos_privados,136333156.0,M ARS,BCRA
 2026-06-25,prestamos_privados,135918137.0,M ARS,BCRA
@@ -1005,7 +1010,7 @@ fecha,indicador,valor,unidad,fuente
 2026-06-03,prestamos_privados,132390785.0,M ARS,BCRA
 2026-06-02,prestamos_privados,132821888.0,M ARS,BCRA
 2026-06-01,prestamos_privados,132601161.0,M ARS,BCRA
-2026-05-29,prestamos_privados,132863077.0,M ARS,BCRA
+2026-05-29,prestamos_privados,132863000.0,M ARS,BCRA
 2026-05-28,prestamos_privados,132505263.0,M ARS,BCRA
 2026-05-27,prestamos_privados,131835085.0,M ARS,BCRA
 2026-05-26,prestamos_privados,131126865.0,M ARS,BCRA
@@ -1064,7 +1069,7 @@ fecha,indicador,valor,unidad,fuente
 2026-03-04,prestamos_privados,121680353.0,M ARS,BCRA
 2026-03-03,prestamos_privados,121832161.0,M ARS,BCRA
 2026-03-02,prestamos_privados,121598239.0,M ARS,BCRA
-2026-02-27,prestamos_privados,122221170.0,M ARS,BCRA
+2026-02-27,prestamos_privados,122385053.0,M ARS,BCRA
 2026-02-26,prestamos_privados,122261604.0,M ARS,BCRA
 2026-02-25,prestamos_privados,121279651.0,M ARS,BCRA
 2026-02-24,prestamos_privados,120929021.0,M ARS,BCRA
@@ -1082,169 +1087,169 @@ fecha,indicador,valor,unidad,fuente
 2026-02-04,prestamos_privados,120709835.0,M ARS,BCRA
 2026-02-03,prestamos_privados,121248676.0,M ARS,BCRA
 2026-02-02,prestamos_privados,121225425.0,M ARS,BCRA
-2026-01-30,prestamos_privados,121439573.0,M ARS,BCRA
-2026-01-29,prestamos_privados,120971715.0,M ARS,BCRA
-2026-01-28,prestamos_privados,120507426.0,M ARS,BCRA
-2026-01-27,prestamos_privados,120204781.0,M ARS,BCRA
-2026-01-26,prestamos_privados,119936491.0,M ARS,BCRA
-2026-01-23,prestamos_privados,119110450.0,M ARS,BCRA
-2026-01-22,prestamos_privados,118582255.0,M ARS,BCRA
-2026-01-21,prestamos_privados,118550976.0,M ARS,BCRA
-2026-01-20,prestamos_privados,118569794.0,M ARS,BCRA
-2026-01-19,prestamos_privados,117796192.0,M ARS,BCRA
-2026-01-16,prestamos_privados,117518453.0,M ARS,BCRA
-2026-01-15,prestamos_privados,117560480.0,M ARS,BCRA
-2026-01-14,prestamos_privados,117463573.0,M ARS,BCRA
-2026-01-13,prestamos_privados,118030056.0,M ARS,BCRA
-2026-01-12,prestamos_privados,118201898.0,M ARS,BCRA
-2026-01-09,prestamos_privados,118244857.0,M ARS,BCRA
-2026-01-08,prestamos_privados,118042652.0,M ARS,BCRA
-2026-01-07,prestamos_privados,118788639.0,M ARS,BCRA
-2026-01-06,prestamos_privados,119543267.0,M ARS,BCRA
-2026-01-05,prestamos_privados,119166343.0,M ARS,BCRA
-2026-01-02,prestamos_privados,118991529.0,M ARS,BCRA
-2025-12-30,prestamos_privados,118896990.0,M ARS,BCRA
-2025-12-29,prestamos_privados,118552160.0,M ARS,BCRA
-2025-12-26,prestamos_privados,117354780.0,M ARS,BCRA
-2025-12-23,prestamos_privados,116920875.0,M ARS,BCRA
-2025-12-22,prestamos_privados,116238081.0,M ARS,BCRA
-2025-12-19,prestamos_privados,116026134.0,M ARS,BCRA
-2025-12-18,prestamos_privados,115518901.0,M ARS,BCRA
-2025-12-17,prestamos_privados,114919543.0,M ARS,BCRA
-2025-12-16,prestamos_privados,114475562.0,M ARS,BCRA
-2025-12-15,prestamos_privados,113684739.0,M ARS,BCRA
-2025-12-12,prestamos_privados,113374549.0,M ARS,BCRA
-2025-12-11,prestamos_privados,113183939.0,M ARS,BCRA
-2025-12-10,prestamos_privados,113948806.0,M ARS,BCRA
-2025-12-09,prestamos_privados,113375708.0,M ARS,BCRA
-2025-12-05,prestamos_privados,113445330.0,M ARS,BCRA
-2025-12-04,prestamos_privados,113803601.0,M ARS,BCRA
-2025-12-03,prestamos_privados,114092671.0,M ARS,BCRA
-2025-12-02,prestamos_privados,114447223.0,M ARS,BCRA
-2025-12-01,prestamos_privados,114320870.0,M ARS,BCRA
-2025-11-28,prestamos_privados,114665222.0,M ARS,BCRA
-2025-11-27,prestamos_privados,114010526.0,M ARS,BCRA
-2025-11-26,prestamos_privados,113713696.0,M ARS,BCRA
-2025-11-25,prestamos_privados,112625037.0,M ARS,BCRA
-2025-11-20,prestamos_privados,111468379.0,M ARS,BCRA
-2025-11-19,prestamos_privados,110785019.0,M ARS,BCRA
-2025-11-18,prestamos_privados,110507679.0,M ARS,BCRA
-2025-11-17,prestamos_privados,110283497.0,M ARS,BCRA
-2025-11-14,prestamos_privados,109829057.0,M ARS,BCRA
-2025-11-13,prestamos_privados,109717577.0,M ARS,BCRA
-2025-11-12,prestamos_privados,109688430.0,M ARS,BCRA
-2025-11-11,prestamos_privados,110201279.0,M ARS,BCRA
-2025-11-10,prestamos_privados,110096163.0,M ARS,BCRA
-2025-11-07,prestamos_privados,109800820.0,M ARS,BCRA
-2025-11-05,prestamos_privados,110810304.0,M ARS,BCRA
-2025-11-04,prestamos_privados,112030714.0,M ARS,BCRA
-2025-11-03,prestamos_privados,111921101.0,M ARS,BCRA
+2026-01-30,prestamos_privados,121439539.0,M ARS,BCRA
+2026-01-29,prestamos_privados,120996964.0,M ARS,BCRA
+2026-01-28,prestamos_privados,120531315.0,M ARS,BCRA
+2026-01-27,prestamos_privados,120227159.0,M ARS,BCRA
+2026-01-26,prestamos_privados,119958087.0,M ARS,BCRA
+2026-01-23,prestamos_privados,119126421.0,M ARS,BCRA
+2026-01-22,prestamos_privados,118595825.0,M ARS,BCRA
+2026-01-21,prestamos_privados,118562684.0,M ARS,BCRA
+2026-01-20,prestamos_privados,118577395.0,M ARS,BCRA
+2026-01-19,prestamos_privados,117796673.0,M ARS,BCRA
+2026-01-16,prestamos_privados,117514948.0,M ARS,BCRA
+2026-01-15,prestamos_privados,117553730.0,M ARS,BCRA
+2026-01-14,prestamos_privados,117453960.0,M ARS,BCRA
+2026-01-13,prestamos_privados,118018411.0,M ARS,BCRA
+2026-01-12,prestamos_privados,118187398.0,M ARS,BCRA
+2026-01-09,prestamos_privados,118226034.0,M ARS,BCRA
+2026-01-08,prestamos_privados,118022409.0,M ARS,BCRA
+2026-01-07,prestamos_privados,118765903.0,M ARS,BCRA
+2026-01-06,prestamos_privados,119517578.0,M ARS,BCRA
+2026-01-05,prestamos_privados,119161831.0,M ARS,BCRA
+2026-01-02,prestamos_privados,118994919.0,M ARS,BCRA
+2025-12-30,prestamos_privados,118896951.0,M ARS,BCRA
+2025-12-29,prestamos_privados,118565907.0,M ARS,BCRA
+2025-12-26,prestamos_privados,117366195.0,M ARS,BCRA
+2025-12-23,prestamos_privados,116924082.0,M ARS,BCRA
+2025-12-22,prestamos_privados,116244172.0,M ARS,BCRA
+2025-12-19,prestamos_privados,116025992.0,M ARS,BCRA
+2025-12-18,prestamos_privados,115517539.0,M ARS,BCRA
+2025-12-17,prestamos_privados,114912501.0,M ARS,BCRA
+2025-12-16,prestamos_privados,114462259.0,M ARS,BCRA
+2025-12-15,prestamos_privados,113665427.0,M ARS,BCRA
+2025-12-12,prestamos_privados,113355237.0,M ARS,BCRA
+2025-12-11,prestamos_privados,113164934.0,M ARS,BCRA
+2025-12-10,prestamos_privados,113928142.0,M ARS,BCRA
+2025-12-09,prestamos_privados,113354026.0,M ARS,BCRA
+2025-12-05,prestamos_privados,113419681.0,M ARS,BCRA
+2025-12-04,prestamos_privados,113777858.0,M ARS,BCRA
+2025-12-03,prestamos_privados,114064342.0,M ARS,BCRA
+2025-12-02,prestamos_privados,114443447.0,M ARS,BCRA
+2025-12-01,prestamos_privados,114325133.0,M ARS,BCRA
+2025-11-28,prestamos_privados,114807259.0,M ARS,BCRA
+2025-11-27,prestamos_privados,114011021.0,M ARS,BCRA
+2025-11-26,prestamos_privados,113715686.0,M ARS,BCRA
+2025-11-25,prestamos_privados,112625681.0,M ARS,BCRA
+2025-11-20,prestamos_privados,111464171.0,M ARS,BCRA
+2025-11-19,prestamos_privados,110780602.0,M ARS,BCRA
+2025-11-18,prestamos_privados,110501840.0,M ARS,BCRA
+2025-11-17,prestamos_privados,110275398.0,M ARS,BCRA
+2025-11-14,prestamos_privados,109812405.0,M ARS,BCRA
+2025-11-13,prestamos_privados,109701121.0,M ARS,BCRA
+2025-11-12,prestamos_privados,109671367.0,M ARS,BCRA
+2025-11-11,prestamos_privados,110183616.0,M ARS,BCRA
+2025-11-10,prestamos_privados,110077366.0,M ARS,BCRA
+2025-11-07,prestamos_privados,109776153.0,M ARS,BCRA
+2025-11-05,prestamos_privados,110782706.0,M ARS,BCRA
+2025-11-04,prestamos_privados,112001500.0,M ARS,BCRA
+2025-11-03,prestamos_privados,111915532.0,M ARS,BCRA
 2025-10-31,prestamos_privados,111937688.0,M ARS,BCRA
-2025-10-30,prestamos_privados,111572777.0,M ARS,BCRA
-2025-10-29,prestamos_privados,111478438.0,M ARS,BCRA
-2025-10-28,prestamos_privados,112012417.0,M ARS,BCRA
-2025-10-27,prestamos_privados,110017674.0,M ARS,BCRA
-2025-10-24,prestamos_privados,111435562.0,M ARS,BCRA
-2025-10-23,prestamos_privados,110951238.0,M ARS,BCRA
-2025-10-22,prestamos_privados,110654823.0,M ARS,BCRA
-2025-10-21,prestamos_privados,110368941.0,M ARS,BCRA
-2025-10-20,prestamos_privados,109487632.0,M ARS,BCRA
-2025-10-17,prestamos_privados,108764024.0,M ARS,BCRA
-2025-10-16,prestamos_privados,107767508.0,M ARS,BCRA
-2025-10-15,prestamos_privados,107684220.0,M ARS,BCRA
-2025-10-14,prestamos_privados,108148594.0,M ARS,BCRA
-2025-10-13,prestamos_privados,107735259.0,M ARS,BCRA
-2025-10-09,prestamos_privados,110211768.0,M ARS,BCRA
-2025-10-08,prestamos_privados,109750456.0,M ARS,BCRA
-2025-10-07,prestamos_privados,110139905.0,M ARS,BCRA
-2025-10-06,prestamos_privados,109892648.0,M ARS,BCRA
-2025-10-03,prestamos_privados,110138162.0,M ARS,BCRA
-2025-10-02,prestamos_privados,109896781.0,M ARS,BCRA
-2025-10-01,prestamos_privados,109879488.0,M ARS,BCRA
-2025-09-30,prestamos_privados,108617743.0,M ARS,BCRA
-2025-09-29,prestamos_privados,107545604.0,M ARS,BCRA
-2025-09-26,prestamos_privados,106340875.0,M ARS,BCRA
-2025-09-25,prestamos_privados,106058124.0,M ARS,BCRA
-2025-09-24,prestamos_privados,106068181.0,M ARS,BCRA
-2025-09-23,prestamos_privados,106065766.0,M ARS,BCRA
-2025-09-22,prestamos_privados,106989326.0,M ARS,BCRA
-2025-09-19,prestamos_privados,107432129.0,M ARS,BCRA
-2025-09-18,prestamos_privados,107132744.0,M ARS,BCRA
-2025-09-17,prestamos_privados,106818973.0,M ARS,BCRA
-2025-09-16,prestamos_privados,106531361.0,M ARS,BCRA
-2025-09-15,prestamos_privados,106111567.0,M ARS,BCRA
-2025-09-12,prestamos_privados,105463570.0,M ARS,BCRA
-2025-09-11,prestamos_privados,105016458.0,M ARS,BCRA
-2025-09-10,prestamos_privados,104853286.0,M ARS,BCRA
-2025-09-09,prestamos_privados,105048268.0,M ARS,BCRA
-2025-09-08,prestamos_privados,105144659.0,M ARS,BCRA
-2025-09-05,prestamos_privados,104408650.0,M ARS,BCRA
-2025-09-04,prestamos_privados,104463665.0,M ARS,BCRA
-2025-09-03,prestamos_privados,104886710.0,M ARS,BCRA
-2025-09-02,prestamos_privados,105558855.0,M ARS,BCRA
-2025-09-01,prestamos_privados,105426728.0,M ARS,BCRA
-2025-08-29,prestamos_privados,105098423.0,M ARS,BCRA
-2025-08-28,prestamos_privados,104965061.0,M ARS,BCRA
-2025-08-27,prestamos_privados,104675330.0,M ARS,BCRA
-2025-08-26,prestamos_privados,104299767.0,M ARS,BCRA
-2025-08-25,prestamos_privados,104225990.0,M ARS,BCRA
-2025-08-22,prestamos_privados,103251441.0,M ARS,BCRA
-2025-08-21,prestamos_privados,102714712.0,M ARS,BCRA
-2025-08-20,prestamos_privados,102148852.0,M ARS,BCRA
-2025-08-19,prestamos_privados,101930182.0,M ARS,BCRA
-2025-08-18,prestamos_privados,101368502.0,M ARS,BCRA
-2025-08-14,prestamos_privados,100973434.0,M ARS,BCRA
-2025-08-13,prestamos_privados,101232672.0,M ARS,BCRA
-2025-08-12,prestamos_privados,101304288.0,M ARS,BCRA
-2025-08-11,prestamos_privados,100769374.0,M ARS,BCRA
-2025-08-08,prestamos_privados,100769197.0,M ARS,BCRA
-2025-08-07,prestamos_privados,101256776.0,M ARS,BCRA
-2025-08-06,prestamos_privados,101773275.0,M ARS,BCRA
-2025-08-05,prestamos_privados,102409075.0,M ARS,BCRA
-2025-08-04,prestamos_privados,102601253.0,M ARS,BCRA
-2025-08-01,prestamos_privados,102864856.0,M ARS,BCRA
+2025-10-30,prestamos_privados,111582822.0,M ARS,BCRA
+2025-10-29,prestamos_privados,111488436.0,M ARS,BCRA
+2025-10-28,prestamos_privados,112023239.0,M ARS,BCRA
+2025-10-27,prestamos_privados,110026649.0,M ARS,BCRA
+2025-10-24,prestamos_privados,111440128.0,M ARS,BCRA
+2025-10-23,prestamos_privados,110951388.0,M ARS,BCRA
+2025-10-22,prestamos_privados,110651702.0,M ARS,BCRA
+2025-10-21,prestamos_privados,110365815.0,M ARS,BCRA
+2025-10-20,prestamos_privados,109485341.0,M ARS,BCRA
+2025-10-17,prestamos_privados,108757130.0,M ARS,BCRA
+2025-10-16,prestamos_privados,107751583.0,M ARS,BCRA
+2025-10-15,prestamos_privados,107668281.0,M ARS,BCRA
+2025-10-14,prestamos_privados,108131534.0,M ARS,BCRA
+2025-10-13,prestamos_privados,107716599.0,M ARS,BCRA
+2025-10-09,prestamos_privados,110189158.0,M ARS,BCRA
+2025-10-08,prestamos_privados,109728322.0,M ARS,BCRA
+2025-10-07,prestamos_privados,110115032.0,M ARS,BCRA
+2025-10-06,prestamos_privados,109868073.0,M ARS,BCRA
+2025-10-03,prestamos_privados,110109582.0,M ARS,BCRA
+2025-10-02,prestamos_privados,109868485.0,M ARS,BCRA
+2025-10-01,prestamos_privados,109872443.0,M ARS,BCRA
+2025-09-30,prestamos_privados,108615943.0,M ARS,BCRA
+2025-09-29,prestamos_privados,107553199.0,M ARS,BCRA
+2025-09-26,prestamos_privados,106343949.0,M ARS,BCRA
+2025-09-25,prestamos_privados,106061197.0,M ARS,BCRA
+2025-09-24,prestamos_privados,106069701.0,M ARS,BCRA
+2025-09-23,prestamos_privados,106066655.0,M ARS,BCRA
+2025-09-22,prestamos_privados,106989405.0,M ARS,BCRA
+2025-09-19,prestamos_privados,107427097.0,M ARS,BCRA
+2025-09-18,prestamos_privados,107126352.0,M ARS,BCRA
+2025-09-17,prestamos_privados,106812576.0,M ARS,BCRA
+2025-09-16,prestamos_privados,106518678.0,M ARS,BCRA
+2025-09-15,prestamos_privados,106097446.0,M ARS,BCRA
+2025-09-12,prestamos_privados,105446734.0,M ARS,BCRA
+2025-09-11,prestamos_privados,104999542.0,M ARS,BCRA
+2025-09-10,prestamos_privados,104836073.0,M ARS,BCRA
+2025-09-09,prestamos_privados,105030322.0,M ARS,BCRA
+2025-09-08,prestamos_privados,105124920.0,M ARS,BCRA
+2025-09-05,prestamos_privados,104385586.0,M ARS,BCRA
+2025-09-04,prestamos_privados,104441689.0,M ARS,BCRA
+2025-09-03,prestamos_privados,104861708.0,M ARS,BCRA
+2025-09-02,prestamos_privados,105536927.0,M ARS,BCRA
+2025-09-01,prestamos_privados,105422133.0,M ARS,BCRA
+2025-08-29,prestamos_privados,105098380.0,M ARS,BCRA
+2025-08-28,prestamos_privados,104973602.0,M ARS,BCRA
+2025-08-27,prestamos_privados,104684841.0,M ARS,BCRA
+2025-08-26,prestamos_privados,104307443.0,M ARS,BCRA
+2025-08-25,prestamos_privados,104231960.0,M ARS,BCRA
+2025-08-22,prestamos_privados,103255997.0,M ARS,BCRA
+2025-08-21,prestamos_privados,102717949.0,M ARS,BCRA
+2025-08-20,prestamos_privados,102148058.0,M ARS,BCRA
+2025-08-19,prestamos_privados,101927578.0,M ARS,BCRA
+2025-08-18,prestamos_privados,101361770.0,M ARS,BCRA
+2025-08-14,prestamos_privados,100957096.0,M ARS,BCRA
+2025-08-13,prestamos_privados,101215603.0,M ARS,BCRA
+2025-08-12,prestamos_privados,101287254.0,M ARS,BCRA
+2025-08-11,prestamos_privados,100751808.0,M ARS,BCRA
+2025-08-08,prestamos_privados,100748509.0,M ARS,BCRA
+2025-08-07,prestamos_privados,101235324.0,M ARS,BCRA
+2025-08-06,prestamos_privados,101752870.0,M ARS,BCRA
+2025-08-05,prestamos_privados,102387340.0,M ARS,BCRA
+2025-08-04,prestamos_privados,102574718.0,M ARS,BCRA
+2025-08-01,prestamos_privados,102856308.0,M ARS,BCRA
 2025-07-31,prestamos_privados,102500050.0,M ARS,BCRA
-2025-07-30,prestamos_privados,101364213.0,M ARS,BCRA
-2025-07-29,prestamos_privados,100953422.0,M ARS,BCRA
-2025-07-28,prestamos_privados,100380905.0,M ARS,BCRA
-2025-07-25,prestamos_privados,99793168.0,M ARS,BCRA
-2025-07-24,prestamos_privados,98971258.0,M ARS,BCRA
-2025-07-23,prestamos_privados,98644661.0,M ARS,BCRA
-2025-07-22,prestamos_privados,98596008.0,M ARS,BCRA
-2025-07-21,prestamos_privados,98525383.0,M ARS,BCRA
-2025-07-18,prestamos_privados,98197429.0,M ARS,BCRA
-2025-07-17,prestamos_privados,97555097.0,M ARS,BCRA
-2025-07-16,prestamos_privados,97298040.0,M ARS,BCRA
-2025-07-15,prestamos_privados,97270866.0,M ARS,BCRA
-2025-07-14,prestamos_privados,96643630.0,M ARS,BCRA
-2025-07-11,prestamos_privados,96204639.0,M ARS,BCRA
-2025-07-10,prestamos_privados,95921626.0,M ARS,BCRA
-2025-07-08,prestamos_privados,95555407.0,M ARS,BCRA
-2025-07-07,prestamos_privados,95901084.0,M ARS,BCRA
-2025-07-04,prestamos_privados,95773388.0,M ARS,BCRA
-2025-07-03,prestamos_privados,95491398.0,M ARS,BCRA
-2025-07-02,prestamos_privados,95921955.0,M ARS,BCRA
-2025-07-01,prestamos_privados,95774764.0,M ARS,BCRA
-2025-06-30,prestamos_privados,96069962.0,M ARS,BCRA
-2025-06-27,prestamos_privados,95004425.0,M ARS,BCRA
-2025-06-26,prestamos_privados,94690371.0,M ARS,BCRA
-2025-06-25,prestamos_privados,94070588.0,M ARS,BCRA
-2025-06-24,prestamos_privados,93485983.0,M ARS,BCRA
-2025-06-23,prestamos_privados,92693604.0,M ARS,BCRA
-2025-06-19,prestamos_privados,92656755.0,M ARS,BCRA
-2025-06-18,prestamos_privados,91279130.0,M ARS,BCRA
-2025-06-17,prestamos_privados,91090714.0,M ARS,BCRA
-2025-06-13,prestamos_privados,90674228.0,M ARS,BCRA
-2025-06-12,prestamos_privados,90371874.0,M ARS,BCRA
-2025-06-11,prestamos_privados,90245034.0,M ARS,BCRA
-2025-06-10,prestamos_privados,90282008.0,M ARS,BCRA
-2025-06-09,prestamos_privados,89914600.0,M ARS,BCRA
-2025-06-06,prestamos_privados,89707228.0,M ARS,BCRA
-2025-06-05,prestamos_privados,90623392.0,M ARS,BCRA
-2025-06-04,prestamos_privados,90554081.0,M ARS,BCRA
-2025-06-03,prestamos_privados,90891332.0,M ARS,BCRA
-2025-06-02,prestamos_privados,90591029.0,M ARS,BCRA
-2025-05-30,prestamos_privados,91068472.0,M ARS,BCRA
+2025-07-30,prestamos_privados,101384355.0,M ARS,BCRA
+2025-07-29,prestamos_privados,100973564.0,M ARS,BCRA
+2025-07-28,prestamos_privados,100396825.0,M ARS,BCRA
+2025-07-25,prestamos_privados,99804987.0,M ARS,BCRA
+2025-07-24,prestamos_privados,98983077.0,M ARS,BCRA
+2025-07-23,prestamos_privados,98651885.0,M ARS,BCRA
+2025-07-22,prestamos_privados,98604498.0,M ARS,BCRA
+2025-07-21,prestamos_privados,98530789.0,M ARS,BCRA
+2025-07-18,prestamos_privados,98200877.0,M ARS,BCRA
+2025-07-17,prestamos_privados,97557165.0,M ARS,BCRA
+2025-07-16,prestamos_privados,97292839.0,M ARS,BCRA
+2025-07-15,prestamos_privados,97265665.0,M ARS,BCRA
+2025-07-14,prestamos_privados,96634379.0,M ARS,BCRA
+2025-07-11,prestamos_privados,96190023.0,M ARS,BCRA
+2025-07-10,prestamos_privados,95907200.0,M ARS,BCRA
+2025-07-08,prestamos_privados,95537738.0,M ARS,BCRA
+2025-07-07,prestamos_privados,95881157.0,M ARS,BCRA
+2025-07-04,prestamos_privados,95748424.0,M ARS,BCRA
+2025-07-03,prestamos_privados,95465826.0,M ARS,BCRA
+2025-07-02,prestamos_privados,95893976.0,M ARS,BCRA
+2025-07-01,prestamos_privados,95768948.0,M ARS,BCRA
+2025-06-30,prestamos_privados,96067961.0,M ARS,BCRA
+2025-06-27,prestamos_privados,94990276.0,M ARS,BCRA
+2025-06-26,prestamos_privados,94675701.0,M ARS,BCRA
+2025-06-25,prestamos_privados,94056113.0,M ARS,BCRA
+2025-06-24,prestamos_privados,93470081.0,M ARS,BCRA
+2025-06-23,prestamos_privados,92677837.0,M ARS,BCRA
+2025-06-19,prestamos_privados,92638381.0,M ARS,BCRA
+2025-06-18,prestamos_privados,91263768.0,M ARS,BCRA
+2025-06-17,prestamos_privados,91075514.0,M ARS,BCRA
+2025-06-13,prestamos_privados,90650833.0,M ARS,BCRA
+2025-06-12,prestamos_privados,90346912.0,M ARS,BCRA
+2025-06-11,prestamos_privados,90216514.0,M ARS,BCRA
+2025-06-10,prestamos_privados,90252879.0,M ARS,BCRA
+2025-06-09,prestamos_privados,89890746.0,M ARS,BCRA
+2025-06-06,prestamos_privados,89681106.0,M ARS,BCRA
+2025-06-05,prestamos_privados,90597489.0,M ARS,BCRA
+2025-06-04,prestamos_privados,90527423.0,M ARS,BCRA
+2025-06-03,prestamos_privados,90864600.0,M ARS,BCRA
+2025-06-02,prestamos_privados,90586642.0,M ARS,BCRA
+2025-05-30,prestamos_privados,91068458.0,M ARS,BCRA
 2025-05-29,prestamos_privados,90769248.0,M ARS,BCRA
 2025-05-28,prestamos_privados,90174882.0,M ARS,BCRA
 2025-05-27,prestamos_privados,89568095.0,M ARS,BCRA
@@ -1283,7 +1288,7 @@ fecha,indicador,valor,unidad,fuente
 2025-04-04,prestamos_privados,80051091.0,M ARS,BCRA
 2025-04-03,prestamos_privados,80164072.0,M ARS,BCRA
 2025-04-01,prestamos_privados,80627005.0,M ARS,BCRA
-2025-03-31,prestamos_privados,80020422.0,M ARS,BCRA
+2025-03-31,prestamos_privados,80066689.0,M ARS,BCRA
 2025-03-28,prestamos_privados,79975950.0,M ARS,BCRA
 2025-03-27,prestamos_privados,79388433.0,M ARS,BCRA
 2025-03-26,prestamos_privados,78767071.0,M ARS,BCRA
@@ -1301,7 +1306,7 @@ fecha,indicador,valor,unidad,fuente
 2025-03-07,prestamos_privados,75075697.0,M ARS,BCRA
 2025-03-06,prestamos_privados,75627979.0,M ARS,BCRA
 2025-03-05,prestamos_privados,75294018.0,M ARS,BCRA
-2025-02-28,prestamos_privados,74993045.0,M ARS,BCRA
+2025-02-28,prestamos_privados,75010534.0,M ARS,BCRA
 2025-02-27,prestamos_privados,75078529.0,M ARS,BCRA
 2025-02-26,prestamos_privados,74309340.0,M ARS,BCRA
 2025-02-25,prestamos_privados,73877441.0,M ARS,BCRA
@@ -1321,7 +1326,7 @@ fecha,indicador,valor,unidad,fuente
 2025-02-05,prestamos_privados,70722988.0,M ARS,BCRA
 2025-02-04,prestamos_privados,71034860.0,M ARS,BCRA
 2025-02-03,prestamos_privados,70913243.0,M ARS,BCRA
-2025-01-31,prestamos_privados,70492678.0,M ARS,BCRA
+2025-01-31,prestamos_privados,70504985.0,M ARS,BCRA
 2025-01-30,prestamos_privados,70889723.0,M ARS,BCRA
 2025-01-29,prestamos_privados,70442961.0,M ARS,BCRA
 2025-01-28,prestamos_privados,70291585.0,M ARS,BCRA
@@ -1595,10 +1600,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-21,prestamos_privados,18513812.0,M ARS,BCRA
 2023-12-20,prestamos_privados,18422351.0,M ARS,BCRA
 2023-12-19,prestamos_privados,18354808.0,M ARS,BCRA
-2023-12-18,prestamos_privados,18264436.0,M ARS,BCRA
-2023-12-15,prestamos_privados,18168969.0,M ARS,BCRA
-2023-12-14,prestamos_privados,18090284.0,M ARS,BCRA
-2023-12-13,prestamos_privados,18267434.0,M ARS,BCRA
+2026-06-01,presion_dolarizacion,45.53,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-05-01,presion_dolarizacion,49.82,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-04-01,presion_dolarizacion,49.5,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-03-01,presion_dolarizacion,50.41,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
@@ -1781,6 +1783,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,idm,4.35,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2023-12-01,idm,4.23,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2023-11-01,idm,-5.24,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
+2023-10-01,idm,3.21,pp (brecha i.a. real),BCRA (M3/M2 privado) + IPC INDEC
 2026-06-01,idc,-0.25,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-05-01,idc,-0.3,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-04-01,idc,-0.29,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
@@ -1788,7 +1791,7 @@ fecha,indicador,valor,unidad,fuente
 2026-02-01,idc,-0.27,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-01-01,idc,-0.21,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-12-01,idc,-0.1,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
-2025-11-01,idc,-0.03,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2025-11-01,idc,-0.04,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-10-01,idc,-0.03,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-09-01,idc,0.33,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2025-08-01,idc,0.38,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
@@ -1813,6 +1816,7 @@ fecha,indicador,valor,unidad,fuente
 2024-01-01,idc,-1.83,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2023-12-01,idc,-2.16,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2023-11-01,idc,-0.93,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
+2023-10-01,idc,0.09,σ vs. su historia,BCRA (BADLAR/depósitos/préstamos) + IPC INDEC
 2026-04-01,icip,8.3,% i.a. ponderado,INDEC (servicios informática + productividad)
 2026-03-01,icip,3.54,% i.a. ponderado,INDEC (servicios informática + productividad)
 2026-02-01,icip,24.55,% i.a. ponderado,INDEC (servicios informática + productividad)
@@ -1845,6 +1849,7 @@ fecha,indicador,valor,unidad,fuente
 2023-11-01,icip,-5.79,% i.a. ponderado,INDEC (servicios informática + productividad)
 2023-10-01,icip,-13.26,% i.a. ponderado,INDEC (servicios informática + productividad)
 2023-09-01,icip,-31.73,% i.a. ponderado,INDEC (servicios informática + productividad)
+2023-08-01,icip,-34.68,% i.a. ponderado,INDEC (servicios informática + productividad)
 2026-05-01,iai,0.31,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2026-04-01,iai,-3.91,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2026-03-01,iai,9.85,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
@@ -1877,6 +1882,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,iai,-19.92,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2023-11-01,iai,-8.1,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2023-10-01,iai,0.75,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
+2023-09-01,iai,-3.82,% i.a. ponderado,INDEC (ISAC + bienes de capital importados)
 2026-05-01,emae_ia,0.24,% i.a.,INDEC/datos.gob.ar
 2026-04-01,emae_ia,1.68,% i.a.,INDEC/datos.gob.ar
 2026-03-01,emae_ia,6.22,% i.a.,INDEC/datos.gob.ar
@@ -1976,22 +1982,22 @@ fecha,indicador,valor,unidad,fuente
 2024-07-01,cuenta_corriente,927.0,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2024-04-01,cuenta_corriente,-6099.5,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
 2024-01-01,cuenta_corriente,-16422.5,M USD (acum. 4 trimestres),INDEC — balanza de pagos (vía datos.gob.ar)
-2026-06-01,credito_privado,8.3,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2026-06-01,credito_privado,8.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-05-01,credito_privado,9.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-04-01,credito_privado,13.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-03-01,credito_privado,18.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2026-02-01,credito_privado,22.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2026-02-01,credito_privado,22.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2026-01-01,credito_privado,30.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2025-12-01,credito_privado,37.2,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-11-01,credito_privado,47.7,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-11-01,credito_privado,47.9,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2025-10-01,credito_privado,56.1,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2025-09-01,credito_privado,67.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2025-08-01,credito_privado,77.6,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2025-07-01,credito_privado,89.0,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-06-01,credito_privado,98.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-06-01,credito_privado,98.3,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2025-05-01,credito_privado,109.2,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2025-04-01,credito_privado,118.4,% i.a. real,BCRA (préstamos privados) + IPC INDEC
-2025-03-01,credito_privado,111.3,% i.a. real,BCRA (préstamos privados) + IPC INDEC
+2025-03-01,credito_privado,111.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2025-02-01,credito_privado,103.8,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2025-01-01,credito_privado,86.3,% i.a. real,BCRA (préstamos privados) + IPC INDEC
 2024-12-01,credito_privado,58.5,% i.a. real,BCRA (préstamos privados) + IPC INDEC
@@ -2036,6 +2042,10 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.83,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-14.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-07-31,base_monetaria,46193622.0,M ARS,BCRA
+2026-07-30,base_monetaria,45706709.0,M ARS,BCRA
+2026-07-29,base_monetaria,44055898.0,M ARS,BCRA
+2026-07-28,base_monetaria,45044437.0,M ARS,BCRA
 2026-07-27,base_monetaria,46324059.0,M ARS,BCRA
 2026-07-24,base_monetaria,46087590.0,M ARS,BCRA
 2026-07-23,base_monetaria,45813184.0,M ARS,BCRA
@@ -2664,10 +2674,10 @@ fecha,indicador,valor,unidad,fuente
 2023-12-21,base_monetaria,9167600.0,M ARS,BCRA
 2023-12-20,base_monetaria,9044980.0,M ARS,BCRA
 2023-12-19,base_monetaria,8953095.0,M ARS,BCRA
-2023-12-18,base_monetaria,8901432.0,M ARS,BCRA
-2023-12-15,base_monetaria,9032404.0,M ARS,BCRA
-2023-12-14,base_monetaria,8839974.0,M ARS,BCRA
-2023-12-13,base_monetaria,8854100.0,M ARS,BCRA
+2026-08-03,badlar,21.4375,% anual,BCRA
+2026-07-31,badlar,21.625,% anual,BCRA
+2026-07-30,badlar,21.9375,% anual,BCRA
+2026-07-29,badlar,21.25,% anual,BCRA
 2026-07-28,badlar,22.0,% anual,BCRA
 2026-07-27,badlar,20.9375,% anual,BCRA
 2026-07-24,badlar,22.0,% anual,BCRA
@@ -3297,7 +3307,3 @@ fecha,indicador,valor,unidad,fuente
 2023-12-21,badlar,109.9375,% anual,BCRA
 2023-12-20,badlar,109.75,% anual,BCRA
 2023-12-19,badlar,113.0,% anual,BCRA
-2023-12-18,badlar,129.9375,% anual,BCRA
-2023-12-15,badlar,128.25,% anual,BCRA
-2023-12-14,badlar,127.875,% anual,BCRA
-2023-12-13,badlar,129.25,% anual,BCRA
