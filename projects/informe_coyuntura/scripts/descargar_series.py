@@ -358,7 +358,15 @@ def descargar(cinturon: str, indec_series: list, bcra_vars: list, derivadas: lis
         if conservados:
             print(f"  [CARRY] {len(previas)} filas conservadas de: {', '.join(conservados)}")
         if perdidos:
-            print(f"  [AVISO] sin filas previas para: {', '.join(perdidos)} -- quedan sin serie")
+            # Ojo con lo que afirma este aviso: publicar.py arma series.json
+            # juntando TODOS los CSV de output/series, así que un indicador sin
+            # filas acá puede tener su serie igual desde otro archivo. Decir
+            # "queda sin serie" a secas manda a buscar un problema que puede no
+            # existir — pasó el 5-ago-2026 con icg_utdt, que se publicaba desde
+            # un CSV huérfano mientras su fetcher venía roto (ADR-0175).
+            print(f"  [AVISO] {', '.join(perdidos)}: falló y {cinturon}.csv no tenía filas "
+                  f"suyas -- no aporta serie por esta vía. Si tampoco viene de otro CSV, "
+                  f"el indicador queda sin serie")
 
     rows.sort(key=lambda x: (x[1], x[0]), reverse=True)
     eliminados = (
@@ -2722,6 +2730,16 @@ def fetch_fal_serie() -> list:
         if m > 12:
             m, y = 1, y + 1
     return out
+
+
+# El ICG no cuelga de `listado_contenidos.php` como el ICC (16458) o el Índice
+# Líder (16461) —por eso no aparece sondeando ids vecinos—: su ficha vive en
+# `ver_contenido.php` y la descarga en una página aparte, "Descarga de datos".
+# Estas dos constantes se usaban en fetch_icg_serie sin estar definidas en
+# ningún lado: la función levantaba NameError en cada corrida desde que se
+# escribió, así que la serie nunca se refrescó (ADR-0175).
+UTDT_ICG_LISTADO = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=28756"
+UTDT_ICG_REFERER = "https://www.utdt.edu/ver_contenido.php?id_contenido=1439&id_item_menu=2964"
 
 
 def fetch_icg_serie() -> list:
