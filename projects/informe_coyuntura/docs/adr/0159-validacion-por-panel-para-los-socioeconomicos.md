@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'transversal'
 cierra: ['0158']
-relacionado: ['0167', '0176']
+relacionado: ['0167', '0176', '0177']
 cerrado_por: ['0162']
 ambito: 'validación externa del ITVC, ITCG e ITCP; módulo'
 ---

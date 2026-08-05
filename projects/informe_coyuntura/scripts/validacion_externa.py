@@ -1006,7 +1006,14 @@ def _serie_itcp_sin(dimension: str) -> dict:
 
 def main():
     itvc_full, itvc_sin, icc = construir_series_itvc()
+    # generated_at: sin sello no había forma de notar que este archivo dejó de
+    # commitearse. El pipeline lo regeneraba cada noche, publicar.py le sacaba
+    # las correlaciones para el snapshot y después se descartaba, así que la
+    # copia versionada quedó cinco días atrás sin que nada avisara — y con ella
+    # la matriz de redundancia, que hacía fallar un test que se leyó todo ese
+    # tiempo como "staleness que resuelve la próxima corrida" (ADR-0177).
     resultados = {"_meta": {"adr": "0019 Decisión 6",
+                            "generated_at": datetime.now().isoformat(),
                             "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"}}
     print(f"serie ITVC reconstruida: {len(itvc_full)} meses "
           f"({min(itvc_full)} → {max(itvc_full)}) · último: {itvc_full[max(itvc_full)]}")

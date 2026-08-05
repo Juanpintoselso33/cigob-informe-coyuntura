@@ -259,3 +259,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0174](0174-g3-verifica-cards-frescas.md) | G3 verifica cards frescas |  | vigente |
 | [0175](0175-el-ancla-icg-vuelve-a-actualizarse.md) | El ancla ICG vuelve a actualizarse |  | vigente |
 | [0176](0176-las-anclas-de-validacion-tienen-quien-las-mire.md) | Las anclas de validación tienen quién las mire |  | vigente |
+| [0177](0177-lo-que-el-pipeline-regenera-se-commitea.md) | Lo que el pipeline regenera, se commitea |  | vigente |
