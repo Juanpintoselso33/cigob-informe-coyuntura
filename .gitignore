@@ -45,23 +45,31 @@ __pycache__/
 backup/
 
 # ------------------------------------------------------------
-# (c) CONTEXTO DE HERRAMIENTAS DE IA — no se versiona
+# (c) CONTEXTO DE HERRAMIENTAS DE IA
 # ------------------------------------------------------------
-# Claude Code
-.claude/
+# Claude Code: .claude/ SÍ se versiona desde 2026-08-05 — las skills, los
+# agents y los commands son parte del setup de trabajo del repo, y hasta
+# ahora un `git clone` en otra máquina llegaba sin nada de eso. Verificado
+# antes de versionar: no hay settings.json, .mcp.json ni credenciales
+# adentro, sólo markdown, configs y scripts.
+# Lo que sigue fuera son los archivos locales por máquina:
+.claude/settings.local.json
+.claude/*.local.json
 # CLAUDE.md SÍ se versiona: es la guía operativa canónica del repo y
 # documenta convenciones de las que depende el trabajo (formato de los ADR,
 # cómo publicar sin esperar al cron, qué NO stagear por OneDrive). Su propio
 # encabezado dice "checked into the codebase"; hasta 2026-07-31 estaba acá y
 # eso era falso, así que cada máquina tenía su propia versión.
 CLAUDE.local.md
-# BMAD Method y artefactos de planificación
+# BMAD Method: la config (_bmad/) SÍ se versiona; la salida generada no.
 .bmad-core/
 .bmad-output/
 .bmad-*/
-_bmad/
 _bmad-output/
-docs/superpowers/
+# Superpowers: los planes y specs de docs/superpowers/ y los briefs/reports
+# de .superpowers/sdd/ SÍ se versionan (son el registro de por qué se hizo
+# cada cosa). Los .diff de review no: son reproducibles con `git diff a..b`
+# y pesan 1,5 MB — ver .superpowers/sdd/.gitignore.
 # Otros asistentes
 .cursor/
 .cursorrules
@@ -73,7 +81,8 @@ docs/superpowers/
 .tabnine/
 .copilot/
 .cline/
-AGENTS.md
+# AGENTS.md SÍ se versiona: es el puntero que hace que Codex lea CLAUDE.md.
+# Ignorarlo significaba que Codex arrancaba a ciegas en cada clone nuevo.
 GEMINI.md
 .gemini/
 # MCP servers y caches

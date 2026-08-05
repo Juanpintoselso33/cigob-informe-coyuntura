@@ -1,0 +1,5 @@
+# Los briefs y reports (*.md) SÍ se versionan: son el registro de qué se
+# implementó en cada tarea, qué encontró el review y qué quedó pendiente.
+# Los diffs de review no: son reproducibles con `git diff <sha1>..<sha2>`
+# a partir de los SHA que ya están citados en los propios reports.
+*.diff

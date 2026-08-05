@@ -44,7 +44,15 @@ the operational detail, the root README is just an entry point.
 
 - Spanish for user-facing prose/docs unless the surrounding file is English.
 - Never version secrets.
-- `.claude/`, `AGENTS.md` are assistant context, not product source.
+- `.claude/`, `AGENTS.md`, `_bmad/`, `.superpowers/sdd/`, `docs/superpowers/`
+  are assistant context, not product source — but they **are versioned**
+  since 2026-08-05, so a fresh clone arrives with the working setup instead
+  of an empty `.claude/`. Treat them as setup, not as deliverables: they
+  don't need ADRs, tests, or pipeline runs. What stays ignored is anything
+  per-machine (`.claude/settings.local.json`) or regenerable
+  (`.superpowers/sdd/*.diff` — reproducible with `git diff <sha1>..<sha2>`).
+  Secrets never go in any of them; `projects/informe_coyuntura/.env` stays
+  ignored and must be copied to each machine by hand.
 - Versioned outputs (`output/`, `scripts/vida_cotidiana/data/`) are
   intentional (audit trail) — don't delete tracked ones as "generated
   noise." Reverting *uncommitted, stale/inconsistent* local regenerations
