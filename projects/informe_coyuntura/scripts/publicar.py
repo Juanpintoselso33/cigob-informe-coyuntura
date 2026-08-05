@@ -11,7 +11,16 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parents[1]          # projects/informe_coyuntura
 OUT = ROOT / "output"
-DATA = ROOT / "web" / "src" / "data"
+# CIGOB_SALIDA_WEB redirige el snapshot fuera del repo. Existe para los tests
+# (ADR-0178): `test_publicar_genera_snapshot` corría publicar.py de verdad
+# contra el árbol y dejaba web/src/data/informe.json y el histórico reescritos,
+# así que los tests POSTERIORES —los de este archivo y los de otros— leían ese
+# resultado en vez del snapshot publicado. Con el snapshot desactualizado eso
+# producía diez fallas G3 fantasma en el gate y dos tests que pasan solos y
+# fallan en conjunto. Es un escape de TEST, no una opción de operación: el
+# pipeline nunca la setea.
+DATA = Path(os.environ["CIGOB_SALIDA_WEB"]) if os.environ.get("CIGOB_SALIDA_WEB") \
+    else ROOT / "web" / "src" / "data"
 DATA.mkdir(parents=True, exist_ok=True)
 
 sys.path.insert(0, str(ROOT))
@@ -170,7 +179,12 @@ def build_series():
 # el valor actual de todos los indicadores keyed por mes; los que no tienen serie
 # oficial (política, vida sin fuente, espíritu, avances de gestión) construyen así
 # su serie temporal mes a mes.
-HISTORICO_PATH = ROOT / "data" / "historico" / "indicadores.json"
+# Se redirige junto al snapshot: acumular_historico() lo REESCRIBE en cada
+# corrida, así que sin esto un test que ejecute publicar.py deja el histórico
+# versionado modificado aunque el snapshot ya no lo esté (ADR-0178).
+HISTORICO_PATH = (Path(os.environ["CIGOB_SALIDA_WEB"]) / "indicadores.json"
+                  if os.environ.get("CIGOB_SALIDA_WEB")
+                  else ROOT / "data" / "historico" / "indicadores.json")
 
 
 def _valor_historico(ind):

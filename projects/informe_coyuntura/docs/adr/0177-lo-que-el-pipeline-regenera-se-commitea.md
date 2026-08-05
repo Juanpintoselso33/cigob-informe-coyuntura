@@ -8,6 +8,7 @@ indice: 'todos'
 archivos: ['.github/workflows/data-pipeline.yml', 'scripts/validacion_externa.py']
 continua: ['0176']
 relacionado: ['0159']
+continuado_por: ['0178']
 ambito: 'Pipeline nocturno · salidas versionadas'
 origen: 'G7 pasó en CI pero el panel_anclas nunca apareció en el archivo commiteado'
 ---

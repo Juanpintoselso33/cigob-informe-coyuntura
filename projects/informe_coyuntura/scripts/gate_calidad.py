@@ -125,6 +125,12 @@ G3B_MAX_DIAS = {
 # Topes calibrados contra el rezago REAL observado el 5-ago-2026, con margen:
 # consumo INDEC iba en 2-3 meses, EPU/ICG/Índice Líder en ~65 días, Merval y
 # clima electoral al mes en curso.
+# Días sin publicar un período NUEVO. Es el chequeo sensible: el rezago
+# absoluto de abajo mezcla el atraso inherente de la fuente con el
+# congelamiento, así que su tope tiene que ser generoso y tarda meses en
+# avisar. Todas las anclas del panel son mensuales, así que avanzar cada ~31
+# días es lo sano y 80 deja pasar dos publicaciones salteadas antes de hablar.
+G7_MAX_SIN_AVANZAR = 80
 G7_MAX_DIAS_DEFAULT = 150
 G7_MAX_DIAS = {
     "merval_usd": 45,                       # mercado, cierra todos los meses
@@ -135,6 +141,14 @@ G7_MAX_DIAS = {
     "inversion_directa_externa": 220,       # balance cambiario BCRA
     "inversion_portafolio_externa": 220,
     "financiamiento_externo_privado": 220,
+    # INDEC publica el transporte de pasajeros con ~4 meses, bastante más que
+    # los otros volúmenes físicos (electricidad y naftas van a 2). Verificado
+    # contra la fuente el 5-ago-2026: su último dato es el mismo que el
+    # nuestro, así que los 126 días de rezago son cadencia y no congelamiento.
+    # Con 150 iba a dar una demora falsa en tres semanas. Subirlo es seguro
+    # porque un congelamiento real lo agarra igual G7_MAX_SIN_AVANZAR, que
+    # descuenta el atraso estructural.
+    "transporte_pasajeros": 200,
 }
 
 # Prefijos que NO bloquean la publicación: son fuentes demoradas, no
@@ -317,6 +331,17 @@ def main() -> int:
                                   f"{rezago_ancla}d > tope {tope_ancla}d "
                                   f"({info.get('ultimo')}) — el ancla se congeló y sus "
                                   f"correlaciones se siguen publicando")
+                # Sin avanzar: descuenta el atraso inherente de la fuente y por
+                # eso avisa semanas antes que el rezago absoluto. Una corrida
+                # anterior a ADR-0178 no tiene el campo — se saltea en vez de
+                # inventar una falla de migración.
+                f_avanzo = _parse_fecha(info.get("avanzo"))
+                if f_avanzo is not None:
+                    sin_avanzar = (hoy - f_avanzo).days
+                    if sin_avanzar > G7_MAX_SIN_AVANZAR:
+                        fallas.append(f"G7-frescura {nombre}: hace {sin_avanzar}d que no "
+                                      f"publica un período nuevo (> {G7_MAX_SIN_AVANZAR}d); "
+                                      f"sigue clavada en {info.get('ultimo')}")
 
     # ── Bloqueantes vs. no bloqueantes (ADR-0133) ────────────────────────────
     # Una fuente que se atrasa NO puede impedir que se publique todo lo demás.

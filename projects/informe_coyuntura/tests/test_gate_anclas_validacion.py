@@ -56,7 +56,8 @@ def _correr(snap, val=None):
 
 
 def _todas_frescas(dias=10):
-    return {n: {"ultimo": _mes(dias), "n": 40} for n in pnl.FAMILIA}
+    hoy = date.today().isoformat()
+    return {n: {"ultimo": _mes(dias), "n": 40, "avanzo": hoy} for n in pnl.FAMILIA}
 
 
 def test_anclas_frescas_pasan(tmp_path):
@@ -105,3 +106,46 @@ def test_toda_ancla_declarada_se_verifica(tmp_path):
     cod, salida = _correr(_snapshot(tmp_path), _validacion(tmp_path, anclas))
     assert f"G7 {faltante}" in salida, salida
     assert cod != 0
+
+
+# ── Congelamiento detectado por "hace cuánto no avanza" (ADR-0178) ───────────
+
+def test_un_ancla_que_dejo_de_avanzar_se_ve_aunque_el_rezago_pase(tmp_path):
+    """El caso que el rezago absoluto NO agarra: una fuente con atraso
+    estructural grande (consumo INDEC, tope 190d) que se clava. Su rezago sigue
+    por debajo del tope durante meses; lo que la delata es que hace 200 días que
+    no publica un período nuevo."""
+    anclas = _todas_frescas()
+    anclas["consumo_supermercados"] = {
+        "ultimo": _mes(120), "n": 113,
+        "avanzo": (date.today() - timedelta(days=200)).isoformat(),
+    }
+    cod, salida = _correr(_snapshot(tmp_path), _validacion(tmp_path, anclas))
+    assert "no publica un período nuevo" in salida, salida
+    assert "consumo_supermercados" in salida
+    assert "[FALLA]" not in salida, "es una demora, no puede bloquear:\n" + salida
+    assert cod == 0
+
+
+def test_una_fuente_con_atraso_estructural_pero_que_avanza_no_molesta():
+    """El contrapunto: 120 días de rezago son normales en el consumo INDEC
+    mientras siga publicando todos los meses."""
+    import tempfile, pathlib
+    with tempfile.TemporaryDirectory() as d:
+        tmp = pathlib.Path(d)
+        anclas = _todas_frescas()
+        anclas["consumo_supermercados"] = {
+            "ultimo": _mes(120), "n": 113,
+            "avanzo": (date.today() - timedelta(days=20)).isoformat(),
+        }
+        cod, salida = _correr(_snapshot(tmp), _validacion(tmp, anclas))
+        assert "G7" not in salida, salida
+        assert cod == 0
+
+
+def test_un_registro_sin_avanzo_no_inventa_una_falla(tmp_path):
+    """Corridas anteriores a ADR-0178 no traen el campo: se saltea."""
+    anclas = {n: {"ultimo": _mes(10), "n": 40} for n in pnl.FAMILIA}
+    cod, salida = _correr(_snapshot(tmp_path), _validacion(tmp_path, anclas))
+    assert "no publica un período nuevo" not in salida, salida
+    assert cod == 0

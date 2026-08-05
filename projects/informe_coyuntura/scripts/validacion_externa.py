@@ -1365,11 +1365,35 @@ def main():
         # Se registran TODAS las declaradas en pnl.FAMILIA, incluidas las que
         # quedaron vacías: un ancla ausente tiene que ser visible como ausente,
         # no desaparecer del registro.
-        resultados["panel_anclas"] = {
-            nombre: ({"ultimo": max(panel[nombre]), "n": len(panel[nombre])}
-                     if panel.get(nombre) else None)
-            for nombre in pnl.FAMILIA
-        }
+        # `avanzo` = cuándo esta ancla publicó por última vez un período NUEVO.
+        # El rezago absoluto mezcla dos cosas distintas: el atraso INHERENTE de
+        # la fuente (INDEC publica el consumo con 3 meses) y el congelamiento.
+        # Por eso su tope tiene que ser generoso y tarda en avisar. Medir cuándo
+        # avanzó las separa: una fuente sana con 96 días de rezago estructural
+        # avanza igual todos los meses, y si deja de hacerlo se ve en semanas
+        # en vez de meses (ADR-0178).
+        previas = {}
+        if SALIDA.exists():
+            try:
+                previas = (json.loads(SALIDA.read_text(encoding="utf-8"))
+                           .get("panel_anclas") or {})
+            except Exception as e:
+                print(f"  [WARN] no se pudo leer el panel_anclas previo: {e}")
+        hoy_iso = date.today().isoformat()
+        anclas = {}
+        for nombre in pnl.FAMILIA:
+            serie = panel.get(nombre)
+            if not serie:
+                anclas[nombre] = None
+                continue
+            ultimo = max(serie)
+            prev = previas.get(nombre) or {}
+            # Si no hay registro previo, el primer avance se fecha HOY: no se
+            # puede saber cuándo avanzó de verdad y suponerlo viejo daría una
+            # falla inventada en la primera corrida.
+            avanzo = hoy_iso if prev.get("ultimo") != ultimo else (prev.get("avanzo") or hoy_iso)
+            anclas[nombre] = {"ultimo": ultimo, "n": len(serie), "avanzo": avanzo}
+        resultados["panel_anclas"] = anclas
         vacias = [k for k, v in resultados["panel_anclas"].items() if v is None]
         if vacias:
             print(f"  [WARN] anclas del panel sin datos: {', '.join(sorted(vacias))}")

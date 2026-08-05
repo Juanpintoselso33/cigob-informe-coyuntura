@@ -128,10 +128,62 @@ def test_carry_forward_restaura_sentimiento_digital_ausente_de_trends():
     assert resultado["sentimiento_digital"]["fecha_dato"] == "2026-07-08"
 
 
-def test_publicar_genera_snapshot():
-    subprocess.run([sys.executable, "scripts/publicar.py"], cwd=ROOT, check=True)
-    informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
-    series = json.loads((DATA / "series.json").read_text(encoding="utf-8"))
+def test_publicar_no_toca_el_arbol_cuando_se_le_redirige_la_salida(tmp_path):
+    """El guardián de ADR-0178: si alguien saca el redirect, esto lo caza acá y
+    no tres archivos de test más adelante como una falla incomprensible."""
+    import hashlib
+
+    vigilados = [DATA / "informe.json", DATA / "series.json",
+                 ROOT / "data" / "historico" / "indicadores.json"]
+    antes = {p: hashlib.sha256(p.read_bytes()).hexdigest()
+             for p in vigilados if p.exists()}
+    assert antes, "no hay snapshot publicado contra el cual comparar"
+
+    salida = tmp_path / "data"
+    salida.mkdir()
+    for p in vigilados:
+        if p.exists():
+            (salida / p.name).write_text(p.read_text(encoding="utf-8"), encoding="utf-8")
+
+    subprocess.run([sys.executable, "scripts/publicar.py"], cwd=ROOT, check=True,
+                   env={**os.environ, "CIGOB_SALIDA_WEB": str(salida)})
+
+    movidos = [p.name for p, h in antes.items()
+               if hashlib.sha256(p.read_bytes()).hexdigest() != h]
+    assert not movidos, (
+        f"publicar.py escribió en el árbol pese al redirect: {movidos}. "
+        f"Los tests que corran después van a leer esto en vez del snapshot "
+        f"publicado (ADR-0178).")
+    assert (salida / "informe.json").exists(), "tampoco escribió donde se le pidió"
+
+
+def test_publicar_genera_snapshot(tmp_path):
+    """Corre publicar.py de verdad, pero FUERA del árbol (ADR-0178).
+
+    Hasta el 5-ago-2026 escribía sobre web/src/data/ y data/historico/, así que
+    los tests posteriores —de este archivo y de otros— leían lo que este había
+    dejado en vez del snapshot publicado. Con el snapshot desactualizado, el
+    gate veía diez fallas G3 fantasma y test_macro_itcm_reconcilia y
+    test_puntaje_unico_camino pasaban solos y fallaban en conjunto.
+
+    El temporal se SIEMBRA con el snapshot y el histórico vigentes: publicar.py
+    los lee para el carry-forward, y con el directorio vacío el test estaría
+    ejercitando un camino (primera corrida, sin previo) que no es el real."""
+    salida = tmp_path / "data"
+    salida.mkdir()
+    for origen, destino in ((DATA / "informe.json", "informe.json"),
+                            (DATA / "series.json", "series.json"),
+                            (ROOT / "data" / "historico" / "indicadores.json",
+                             "indicadores.json")):
+        if origen.exists():
+            (salida / destino).write_text(origen.read_text(encoding="utf-8"),
+                                          encoding="utf-8")
+
+    entorno = {**os.environ, "CIGOB_SALIDA_WEB": str(salida)}
+    subprocess.run([sys.executable, "scripts/publicar.py"], cwd=ROOT,
+                   check=True, env=entorno)
+    informe = json.loads((salida / "informe.json").read_text(encoding="utf-8"))
+    series = json.loads((salida / "series.json").read_text(encoding="utf-8"))
 
     # 5 cinturones presentes
     assert set(informe["cinturones"]) == {"macro", "politica", "vida_cotidiana",
