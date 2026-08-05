@@ -1348,6 +1348,25 @@ def main():
                 }
             except Exception as e:
                 print(f"[WARN] panel: {clave} no disponible: {e}")
+        # Huella de frescura de cada ancla, para que el gate pueda vigilarlas
+        # (ADR-0176). Las series crudas del panel no se persisten —son insumo,
+        # no salida— así que sin esto no hay forma de saber desde afuera si un
+        # ancla se congeló: participa igual en el factor común, con su última
+        # observación de hace meses, y las correlaciones se publican como si
+        # nada. Le pasó al ICG de la UTDT, que estuvo congelado hasta que lo
+        # encontró un aviso lateral y no un chequeo (ADR-0175).
+        # Se registran TODAS las declaradas en pnl.FAMILIA, incluidas las que
+        # quedaron vacías: un ancla ausente tiene que ser visible como ausente,
+        # no desaparecer del registro.
+        resultados["panel_anclas"] = {
+            nombre: ({"ultimo": max(panel[nombre]), "n": len(panel[nombre])}
+                     if panel.get(nombre) else None)
+            for nombre in pnl.FAMILIA
+        }
+        vacias = [k for k, v in resultados["panel_anclas"].items() if v is None]
+        if vacias:
+            print(f"  [WARN] anclas del panel sin datos: {', '.join(sorted(vacias))}")
+
         indices = {"itvc": itvc_full, "itcg": serie_itcg, "itcp": serie_itcp}
         resultados["panel_validacion"] = {}
         print("")

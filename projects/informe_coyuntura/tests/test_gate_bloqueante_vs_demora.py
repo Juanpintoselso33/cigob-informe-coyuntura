@@ -23,13 +23,28 @@ def test_el_gate_pasa_con_el_snapshot_vigente():
 
 
 def test_la_clasificacion_esta_escrita_en_el_codigo():
-    """Lo que se protege es el CRITERIO: G2 (frescura) no bloquea, el resto sí.
-    Si alguien vuelve a meter G2 entre los bloqueantes, el pipeline entero
-    vuelve a caerse porque una fuente publicó tarde."""
+    """Lo que se protege es el CRITERIO: la frescura no bloquea, el resto sí.
+    Si alguien vuelve a meter las demoras entre los bloqueantes, el pipeline
+    entero vuelve a caerse porque una fuente publicó tarde.
+
+    Desde ADR-0176 los prefijos que no bloquean están en una constante
+    (NO_BLOQUEAN) en vez de literales en el filtro: se sumó G7-frescura, que es
+    la misma clase de condición —un ancla de validación demorada— sobre otro
+    gate. El test pasa a mirar la constante para no atarse a la sintaxis del
+    filtro, pero sigue exigiendo que G2 esté adentro."""
     fuente = GATE.read_text(encoding="utf-8")
-    assert 'not f_.startswith("G2 ")' in fuente, (
+    assert "NO_BLOQUEAN" in fuente, (
+        "el gate dejó de declarar qué prefijos no bloquean")
+    assert "startswith(NO_BLOQUEAN)" in fuente, (
         "el gate dejó de excluir las demoras de los bloqueantes")
     assert "bloqueantes" in fuente and "demorados" in fuente
+
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    import gate_calidad
+    assert "G2 " in gate_calidad.NO_BLOQUEAN, (
+        "la frescura de las cards volvió a bloquear la publicación")
+    assert "G7-frescura " in gate_calidad.NO_BLOQUEAN, (
+        "un ancla de validación demorada volvió a bloquear la publicación")
 
 
 def test_una_demora_sola_no_bloquea(tmp_path, monkeypatch):

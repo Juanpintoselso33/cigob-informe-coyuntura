@@ -19,6 +19,7 @@ G4 (reconciliación paramétrica) y G5 (robustez encierra el valor) son los
 pytest de tests/ — el workflow los corre como paso aparte.
 
 Uso: python scripts/gate_calidad.py [--warn-only] [--snapshot <dir>]
+                                    [--validacion <archivo>]
 """
 import json
 import re
@@ -29,6 +30,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = (Path(sys.argv[sys.argv.index("--snapshot") + 1])
             if "--snapshot" in sys.argv else ROOT / "web" / "src" / "data")
+# Las anclas de validación no viven en el snapshot publicado sino en la salida
+# de validacion_externa.py. Inyectable por la misma razón que SNAPSHOT: para
+# poder testear G7 sin depender de la última corrida real.
+VALIDACION = (Path(sys.argv[sys.argv.index("--validacion") + 1])
+              if "--validacion" in sys.argv
+              else ROOT / "output" / "validacion_externa.json")
 
 # ── G2: rezago máximo en días por indicador (default: mensual con margen) ──
 MAX_DIAS_DEFAULT = 110
@@ -105,6 +112,34 @@ G3_TOLERANCIA_REL = {}   # (cepo_mulc tuvo 0.10 acá hasta 2026-07-16 — hoy es
 G3B_MAX_DIAS = {
     "rigi_inversiones": 430,   # solo suma un punto cuando se aprueba un proyecto
 }
+
+# ── G7: anclas de la validación externa (ADR-0176) ────────────────────────────
+# Las series que sólo son INSUMO de validación no tenían quién las vigilara: G2
+# mira la fecha_dato de las cards y G3/G3b los pares card↔serie, y un ancla
+# externa no es indicador de ningún cinturón. El ICG de la UTDT estuvo congelado
+# —su fetcher levantaba NameError en cada corrida— y siguió entrando al factor
+# común con su última observación vieja, publicando correlaciones como si nada.
+# Lo encontró un aviso lateral que se agregó para otra cosa (ADR-0175), no un
+# chequeo.
+#
+# Topes calibrados contra el rezago REAL observado el 5-ago-2026, con margen:
+# consumo INDEC iba en 2-3 meses, EPU/ICG/Índice Líder en ~65 días, Merval y
+# clima electoral al mes en curso.
+G7_MAX_DIAS_DEFAULT = 150
+G7_MAX_DIAS = {
+    "merval_usd": 45,                       # mercado, cierra todos los meses
+    "clima_electoral": 75,                  # Votómetro, mensual propio
+    "consumo_supermercados": 190,           # INDEC, publica con 2-3 meses
+    "consumo_mayoristas": 190,
+    "consumo_shoppings": 190,
+    "inversion_directa_externa": 220,       # balance cambiario BCRA
+    "inversion_portafolio_externa": 220,
+    "financiamiento_externo_privado": 220,
+}
+
+# Prefijos que NO bloquean la publicación: son fuentes demoradas, no
+# inconsistencias del snapshot (ADR-0133).
+NO_BLOQUEAN = ("G2 ", "G7-frescura ")
 
 # ── G6: patrones de jerga interna prohibidos en texto público ──
 G6_PATRONES = [
@@ -233,6 +268,56 @@ def main() -> int:
             if m:
                 fallas.append(f"G6 {ruta}: {nombre} en texto público («{m.group(0)}»)")
 
+    # G7 — las anclas de la validación externa siguen vivas
+    ve_path = VALIDACION
+    if not ve_path.exists():
+        avisos.append("G7: sin output/validacion_externa.json — anclas no verificadas")
+    else:
+        try:
+            ve = json.loads(ve_path.read_text(encoding="utf-8"))
+        except Exception as e:
+            ve = None
+            fallas.append(f"G7: validacion_externa.json ilegible ({e})")
+        anclas = ve.get("panel_anclas") if isinstance(ve, dict) else None
+        if ve is not None and anclas is None:
+            # No se degrada a aviso: si el registro deja de escribirse, el gate
+            # se queda ciego y esa ceguera es justamente lo que hay que evitar.
+            fallas.append("G7: validacion_externa.json sin 'panel_anclas' — la "
+                          "frescura de las anclas dejó de registrarse; correr "
+                          "validacion_externa.py")
+        elif anclas is not None:
+            try:
+                sys.path.insert(0, str(Path(__file__).resolve().parent))
+                import panel_validacion as _pnl
+                declaradas = sorted(_pnl.FAMILIA)
+            except Exception as e:
+                declaradas = sorted(anclas)
+                avisos.append(f"G7: no se pudo leer el registro de anclas ({e}); se "
+                              f"verifican sólo las {len(declaradas)} registradas")
+            for nombre in declaradas:
+                info = anclas.get(nombre)
+                if not info:
+                    # BLOQUEA: el factor común se calculó sobre menos series que
+                    # las declaradas, y su varianza explicada se publica igual.
+                    fallas.append(f"G7 {nombre}: ancla declarada del panel SIN datos — "
+                                  f"el factor común se calculó sin ella")
+                    continue
+                f_ult = _parse_fecha(info.get("ultimo"))
+                if f_ult is None:
+                    fallas.append(f"G7 {nombre}: último período no parseable "
+                                  f"({info.get('ultimo')})")
+                    continue
+                rezago_ancla = (hoy - f_ult).days
+                tope_ancla = G7_MAX_DIAS.get(nombre, G7_MAX_DIAS_DEFAULT)
+                if rezago_ancla > tope_ancla:
+                    # NO bloquea: es una fuente demorada, mismo criterio que G2.
+                    # Pero queda nombrada en cada corrida, que es exactamente lo
+                    # que le faltó al ICG durante meses.
+                    fallas.append(f"G7-frescura {nombre}: último punto de hace "
+                                  f"{rezago_ancla}d > tope {tope_ancla}d "
+                                  f"({info.get('ultimo')}) — el ancla se congeló y sus "
+                                  f"correlaciones se siguen publicando")
+
     # ── Bloqueantes vs. no bloqueantes (ADR-0133) ────────────────────────────
     # Una fuente que se atrasa NO puede impedir que se publique todo lo demás.
     # El indicador ya queda marcado `desactualizado`, publicar.py hace
@@ -244,8 +329,8 @@ def main() -> int:
     # Lo que sí bloquea es la INCONSISTENCIA: un indicador sin valor (G1), una
     # card que no coincide con su serie (G3) o jerga interna en texto público
     # (G6). Ahí el snapshot afirma algo que no es cierto, y eso no se publica.
-    bloqueantes = [f_ for f_ in fallas if not f_.startswith("G2 ")]
-    demorados = [f_ for f_ in fallas if f_.startswith("G2 ")]
+    bloqueantes = [f_ for f_ in fallas if not f_.startswith(NO_BLOQUEAN)]
+    demorados = [f_ for f_ in fallas if f_.startswith(NO_BLOQUEAN)]
 
     print(f"Gate de calidad — {hoy.isoformat()}")
     for a in avisos:
@@ -258,7 +343,8 @@ def main() -> int:
     n_ind = sum(len(c.get("indicadores", {})) for c in inf["cinturones"].values())
     if not fallas:
         print(f"  [OK] {n_ind} indicadores en {len(inf['cinturones'])} cinturones: "
-              f"estructura, frescura, invariante serie-titular y editorial limpios")
+              f"estructura, frescura, invariante serie-titular, anclas de "
+              f"validación y editorial limpios")
         return 0
     if not bloqueantes:
         print(f"  → {len(demorados)} fuente(s) demorada(s), ninguna falla de "
