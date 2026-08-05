@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'politica'
 indicadores: [veto_quorum]
+continuado_por: ['0172']
 ambito: 'ITCP · `veto_quorum` · serie mensual'
 origen: 'Auditoría externa del cinturón político, prioridad 6 (techo estructural)'
 ---

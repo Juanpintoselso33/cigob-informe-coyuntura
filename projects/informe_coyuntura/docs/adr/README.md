@@ -162,6 +162,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0168](0168-los-cuatro-indicadores-desbloqueados-entran-al-itcp.md) | Los cuatro indicadores desbloqueados entran al ITCP | `produccion_legislativa`, `judicializacion`, `velocidad_resolucion` | vigente |
 | [0170](0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) | Judicialización y parálisis de denuncias pasan a fuente viva | `judicializacion`, `paralisis_denuncias` | vigente |
 | [0171](0171-la-lectura-por-partes-no-ordena-empates.md) | La lectura por partes no ordena empates |  | vigente |
+| [0172](0172-la-serie-termina-donde-esta-la-card.md) | La serie termina donde está la card |  | vigente |
 
 ### Gestión (ITCG)
 

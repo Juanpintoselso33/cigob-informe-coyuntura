@@ -6,6 +6,7 @@ fecha: 2026-07-19
 cinturon: 'politica'
 indicadores: [poder_legislativo, desafios_legislativos, derrotas_legislativas]
 modifica: ['0069']
+relacionado: ['0172']
 ambito: 'ITCP · dimensión `poder_legislativo` · `desafios_legislativos` · `derrotas_legislativas`'
 origen: 'Auditoría externa del cinturón político, prioridad 3'
 ---

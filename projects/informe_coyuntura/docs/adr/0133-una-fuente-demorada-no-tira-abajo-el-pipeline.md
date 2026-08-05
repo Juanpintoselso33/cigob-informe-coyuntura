@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-26
 cinturon: 'transversal'
 archivos: ['gate_calidad.py', 'data-pipeline.yml', 'requirements.txt']
+relacionado: ['0172']
 ambito: '`gate_calidad.py` · `data-pipeline.yml` · `requirements.txt`'
 origen: 'El cron falló tres noches seguidas; planteo del editor'
 ---

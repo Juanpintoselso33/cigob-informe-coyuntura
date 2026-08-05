@@ -689,7 +689,7 @@ def fetch_veto_quorum_serie() -> list:
         print(f"  [WARN] veto_quorum serie: {e} -- serie omitida")
         return []
     out = []
-    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
+    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today(), incluir_hoy=True):
         tasa = politica._veto_quorum_tasa_12m(sesiones, fin_mes)
         if tasa is not None:
             out.append([fin_mes.strftime("%Y-%m-%d"), tasa[0]])
@@ -840,7 +840,7 @@ def fetch_cohesion_bloque_senado_mensual(anio_inicio: int = 2023, dias_ventana: 
         return []
 
     puntos = []
-    for fin_mes in _fines_de_mes(date(anio_inicio, 12, 1), date.today()):
+    for fin_mes in _fines_de_mes(date(anio_inicio, 12, 1), date.today(), incluir_hoy=True):
         referencia = datetime(fin_mes.year, fin_mes.month, fin_mes.day)
         resultado = politica._agregar_cohesion_ventana(detalle, referencia, dias_ventana)
         if resultado:
@@ -907,7 +907,7 @@ def fetch_cohesion_bloque_diputados_mensual(anio_inicio: int = 2023, dias_ventan
         return []
 
     puntos = []
-    for fin_mes in _fines_de_mes(date(anio_inicio, 12, 1), date.today()):
+    for fin_mes in _fines_de_mes(date(anio_inicio, 12, 1), date.today(), incluir_hoy=True):
         referencia = datetime(fin_mes.year, fin_mes.month, fin_mes.day)
         resultado = politica._agregar_cohesion_ventana(detalle, referencia, dias_ventana)
         if resultado:
@@ -982,9 +982,22 @@ def _actas_alineamiento_cacheadas(anio_inicio: int) -> dict:
     return cache
 
 
-def _fines_de_mes(desde: date, hasta: date) -> list:
+def _fines_de_mes(desde: date, hasta: date, incluir_hoy: bool = False) -> list:
     """Lista de fechas de fin de mes (inclusive) entre `desde` y `hasta`,
-    redondeando `desde` al fin de SU mes."""
+    redondeando `desde` al fin de SU mes.
+
+    Con `incluir_hoy=True` agrega `hasta` como punto final cuando no es ya un
+    fin de mes. Eso es lo que alinea la serie con la card en los indicadores de
+    ventana móvil: la card evalúa su ventana en `date.today()` y la serie, sin
+    este punto, terminaba en el último mes CERRADO, mirando una ventana corrida
+    un mes. Card y serie quedaban permanentemente desfasadas y sólo coincidían
+    por casualidad los días en que las dos ventanas caían igual.
+
+    El desfase no es cosmético: `desafios_legislativos` publicaba 3 en el
+    titular (ventana sep-2025→ago-2026) contra 10 en el último punto del
+    gráfico (ago-2025→jul-2026), porque los 7 desafíos de agosto de 2025 salen
+    de la ventana todos juntos al rodar el mes. Puntúan 90 y 43,6: la página se
+    contradecía a sí misma arriba y abajo del mismo indicador (ADR-0172)."""
     puntos = []
     anio, mes = desde.year, desde.month
     while True:
@@ -993,6 +1006,8 @@ def _fines_de_mes(desde: date, hasta: date) -> list:
             break
         puntos.append(fin_mes)
         anio, mes = (anio + 1, 1) if mes == 12 else (anio, mes + 1)
+    if incluir_hoy and (not puntos or puntos[-1] != hasta):
+        puntos.append(hasta)
     return puntos
 
 
@@ -1013,7 +1028,7 @@ def fetch_alineamiento_senadores_prov_mensual(anio_inicio: int = 2023, dias_vent
         return []
 
     puntos = []
-    for fin_mes in _fines_de_mes(date(anio_inicio, 12, 1), date.today()):
+    for fin_mes in _fines_de_mes(date(anio_inicio, 12, 1), date.today(), incluir_hoy=True):
         referencia = datetime(fin_mes.year, fin_mes.month, fin_mes.day)
         resultado = politica._agregar_alineamiento_ventana(detalle, referencia, dias_ventana)
         if resultado:
@@ -1091,7 +1106,7 @@ def fetch_derrotas_legislativas_mensual() -> list:
         return []
     eventos = politica._derrotas_eventos(registro)
     puntos = []
-    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
+    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today(), incluir_hoy=True):
         total, _, _, _ = politica._derrotas_conteo_12m(eventos, fin_mes)
         puntos.append([fin_mes.strftime("%Y-%m-%d"), total])
     return puntos
@@ -1120,7 +1135,7 @@ def fetch_bloqueo_sostenido_mensual() -> list:
         return []
     desafios = politica._bloqueo_desafios(registro)
     puntos = []
-    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
+    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today(), incluir_hoy=True):
         tasa = politica._bloqueo_tasa_12m(desafios, fin_mes)
         if tasa is not None:
             puntos.append([fin_mes.strftime("%Y-%m-%d"), tasa[0]])
@@ -1147,7 +1162,7 @@ def fetch_desafios_legislativos_mensual() -> list:
         return []
     desafios = politica._bloqueo_desafios(registro)
     puntos = []
-    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today()):
+    for fin_mes in _fines_de_mes(date(2023, 12, 1), date.today(), incluir_hoy=True):
         tasa = politica._bloqueo_tasa_12m(desafios, fin_mes)
         puntos.append([fin_mes.strftime("%Y-%m-%d"), float(tasa[1]) if tasa else 0.0])
     return puntos
