@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-08-05T14:55:55.655172",
+  "generated_at": "2026-08-05T15:35:08.210487",
   "score": 3.3,
   "itcp": {
     "valor": 66.8,
@@ -278,7 +278,7 @@
       "unidad": "Índice (0–100)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
       "fecha_dato": "2026-06-09",
-      "desactualizado": false,
+      "desactualizado": true,
       "en_indice": false
     },
     "iaf_transferencias": {

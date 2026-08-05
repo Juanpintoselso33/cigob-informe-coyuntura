@@ -1,22 +1,22 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-08-05T14:58:14.892889",
+  "generated_at": "2026-08-05T15:37:00.247793",
   "score": 2.1,
   "itcg": {
-    "valor": 79.3,
+    "valor": 79.2,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "reformas_economicas": {
         "nombre": "Reformas económicas fundamentales",
         "peso": 0.35,
-        "puntaje": 76.8,
+        "puntaje": 76.5,
         "indicadores": {
           "cepo_mulc": {
             "peso": 0.4,
-            "puntaje_banda": 97.6,
-            "puntaje_aplicado": 97.6,
-            "valor": 5.4,
+            "puntaje_banda": 96.8,
+            "puntaje_aplicado": 96.8,
+            "valor": 5.53,
             "peso_efectivo": 0.14
           },
           "apertura_comercial": {
@@ -150,15 +150,15 @@
   },
   "indicadores": {
     "cepo_mulc": {
-      "valor": 5.4,
+      "valor": 5.53,
       "unidad": "% de brecha CCL/mayorista",
       "fuente": "https://dolarapi.com/v1/dolares",
       "fecha_dato": "2026-08-05",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "reformas_economicas",
-      "puntaje_itcg": 97.6,
-      "puntaje_banda": 97.6,
+      "puntaje_itcg": 96.8,
+      "puntaje_banda": 96.8,
       "peso_efectivo": 0.14
     },
     "apertura_comercial": {
@@ -273,10 +273,10 @@
       "actos_cumplidos": 2,
       "actos_totales": 2,
       "fci_cese_registrados": 0,
-      "menciones_bo": null,
+      "menciones_bo": 3,
       "vigencia_desde": "2026-11-01",
       "regimen_vigente": false,
-      "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV",
+      "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV · 3 menciones del FAL en el BO desde mar-2026",
       "en_indice": true,
       "dimension": "reforma_laboral",
       "puntaje_itcg": 100.0,
@@ -547,18 +547,10 @@
       "valor": 28.7,
       "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
       "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-      "fecha_dato": "2026-08-05",
-      "desactualizado": false,
-      "km_adjudicados": 2614,
-      "km_totales": 9091,
-      "procesos": 4,
-      "componentes": {
-        "etapa_i": 100.0,
-        "etapa_ii": 100.0,
-        "etapa_ii_b": 0.0,
-        "etapa_iii": 0.0
-      },
-      "detalle_txt": "2.614 de 9.091 km adjudicados · I: Adjudicado · II-B: Disponible Para Adjudicar · II: Adjudicado · III: Preadjudicado",
+      "fecha_dato": "2026-07-02",
+      "estado": "estimado",
+      "notas": "FALLBACK: el colector AUTO scrapea CONTRAT.AR (búsqueda 'RED FEDERAL', sin login) y el kilometraje de la página oficial de la RFC. Jul-2026: Etapas I y II-A adjudicadas (2.614 de 9.091 km = 28,7%); II-B en preselección; III con dictamen pendiente.",
+      "desactualizado": true,
       "en_indice": true,
       "dimension": "privatizaciones_inversion",
       "puntaje_itcg": 44.6,

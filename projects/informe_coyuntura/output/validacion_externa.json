@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-05T15:16:47.612930",
+    "generated_at": "2026-08-05T15:55:54.089215",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -2366,7 +2366,7 @@
     "2026-05": 2131.0,
     "2026-06": 2087.8,
     "2026-07": 2090.0,
-    "2026-08": 2021.3
+    "2026-08": 2015.4
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
@@ -2374,7 +2374,7 @@
       "n": 33
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.14,
+      "r": 0.141,
       "n": 32
     },
     "niveles (ITCG vs ICG)": {
@@ -4226,7 +4226,7 @@
           "fuente": "BYMA / CCL",
           "propia": true,
           "r_niveles": 0.754,
-          "r_diferencias": 0.14,
+          "r_diferencias": 0.141,
           "n": 33
         },
         {
