@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-05T11:54:20.160452",
+  "generated_at": "2026-08-05T12:41:44.430640",
   "period": "2026-08",
   "score_global": 3.3,
   "ponderacion": {
@@ -2678,7 +2678,7 @@
           "fuente": "UTDT — Índice de Victimización (LICIP)",
           "fecha_dato": "2026-04",
           "desactualizado": false,
-          "detalle_txt": "Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra) — contraste SNIC (denuncias registradas, año 2025): 2.418.600 hechos",
+          "detalle_txt": "Encuesta mensual de victimización en 40 centros urbanos: incluye los delitos NO denunciados (la cifra negra)",
           "en_indice": true,
           "dimension": "seguridad",
           "indice_itvc": 102.1,
@@ -2767,7 +2767,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260805_1136.json",
+      "fuente_enriquecida": "vida_cotidiana_20260805_1224.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 90.3,
@@ -4404,10 +4404,10 @@
           "actos_cumplidos": 2,
           "actos_totales": 2,
           "fci_cese_registrados": 0,
-          "menciones_bo": 3,
+          "menciones_bo": null,
           "vigencia_desde": "2026-11-01",
           "regimen_vigente": false,
-          "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV · 3 menciones del FAL en el BO desde mar-2026",
+          "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV",
           "en_indice": true,
           "dimension": "reforma_laboral",
           "puntaje_itcg": 100.0,
@@ -4417,7 +4417,7 @@
           "aporte_formula": "Anclas ITCG: >75 → 100 · 25–75 → 50 · ≤25 → 10 (puntaje interpolado entre anclas: 100.0; pesa 7,5% del ITCG)",
           "aporte_nota": null,
           "aporte_lectura": "Leído solo en la escala del ITCG, equivale a una tensión de 0,0/10: puntaje pleno o casi pleno — este frente está logrado y hoy no agrega tensión al índice.",
-          "aporte_input_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV · 3 menciones del FAL en el BO desde mar-2026"
+          "aporte_input_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV"
         },
         "litigiosidad_laboral": {
           "valor": 2.8,
@@ -4616,47 +4616,47 @@
               "titulo": "Resolución 136 / 2026",
               "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=426795"
             },
-            "428273": {
-              "empresa": "Intercargo",
-              "periodo": "2026-07",
-              "titulo": "Resolución 1148 / 2026",
-              "coincidencia": "sujeta a privatización",
-              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428273"
-            },
-            "428126": {
-              "empresa": "Corredores Viales",
-              "periodo": "2026-07",
-              "titulo": "Disposición 215 / 2026",
-              "coincidencia": "privatiza",
-              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428126"
-            },
-            "428457": {
-              "empresa": "Belgrano Cargas",
-              "periodo": "2026-07",
-              "titulo": "Resolución 190 / 2026",
-              "coincidencia": "adjudica",
-              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428457"
-            },
-            "427566": {
-              "empresa": "Belgrano Cargas",
-              "periodo": "2026-07",
-              "titulo": "Decreto DNU 585 / 2026",
-              "coincidencia": "adjudica",
-              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427566"
-            },
             "427319": {
+              "coincidencia": "pliego",
               "empresa": "Belgrano Cargas",
               "periodo": "2026-07",
               "titulo": "Resolución 199 / 2026",
-              "coincidencia": "pliego",
               "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427319"
             },
+            "427566": {
+              "coincidencia": "adjudica",
+              "empresa": "Belgrano Cargas",
+              "periodo": "2026-07",
+              "titulo": "Decreto DNU 585 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427566"
+            },
             "427661": {
+              "coincidencia": "concurso público",
               "empresa": "YCRT",
               "periodo": "2026-07",
               "titulo": "Decreto 590 / 2026",
-              "coincidencia": "concurso público",
               "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=427661"
+            },
+            "428126": {
+              "coincidencia": "privatiza",
+              "empresa": "Corredores Viales",
+              "periodo": "2026-07",
+              "titulo": "Disposición 215 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428126"
+            },
+            "428273": {
+              "coincidencia": "sujeta a privatización",
+              "empresa": "Intercargo",
+              "periodo": "2026-07",
+              "titulo": "Resolución 1148 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428273"
+            },
+            "428457": {
+              "coincidencia": "adjudica",
+              "empresa": "Belgrano Cargas",
+              "periodo": "2026-07",
+              "titulo": "Resolución 190 / 2026",
+              "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=428457"
             }
           },
           "detalle_txt": "9 empresas · etapa promedio 2,06/4 · cerradas: Transener · 18 norma(s) nueva(s) del Boletín Oficial sin revisar",
