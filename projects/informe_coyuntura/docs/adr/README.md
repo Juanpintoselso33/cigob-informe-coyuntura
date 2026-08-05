@@ -261,3 +261,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0176](0176-las-anclas-de-validacion-tienen-quien-las-mire.md) | Las anclas de validación tienen quién las mire |  | vigente |
 | [0177](0177-lo-que-el-pipeline-regenera-se-commitea.md) | Lo que el pipeline regenera, se commitea |  | vigente |
 | [0178](0178-los-tests-no-escriben-en-el-arbol.md) | Los tests no escriben en el árbol |  | vigente |
+| [0179](0179-ningun-test-escribe-en-un-archivo-versionado.md) | Ningún test escribe en un archivo versionado |  | vigente |

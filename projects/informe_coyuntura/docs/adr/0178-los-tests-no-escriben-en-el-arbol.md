@@ -8,6 +8,7 @@ indice: 'todos'
 archivos: ['scripts/publicar.py', 'scripts/gate_calidad.py', 'scripts/validacion_externa.py']
 continua: ['0177']
 relacionado: ['0176']
+continuado_por: ['0179']
 ambito: 'Suite de tests · aislamiento de salidas · sensibilidad de G7'
 origen: 'Correr la suite completa producía diez fallas G3 fantasma y dos tests que pasan solos y fallan en conjunto'
 ---
