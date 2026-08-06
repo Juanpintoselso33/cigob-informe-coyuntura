@@ -1,0 +1,7 @@
+# Informe de Coyuntura · CiGob — https://informe.cigob.org
+# El informe es material público: se permite el rastreo completo.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://informe.cigob.org/sitemap-index.xml
