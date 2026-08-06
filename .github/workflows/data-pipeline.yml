@@ -202,6 +202,30 @@ jobs:
             fi
           fi
 
+      # ── Archivo histórico en BigQuery (ADR-0180) ──────────────────────────
+      # Va DESPUÉS de los gates y del commit: a BigQuery sólo llega lo que ya
+      # se publicó. El sentido inverso no existe — el pipeline nunca lee de
+      # BigQuery, para que no pueda volverse un camino que esquive G1-G7.
+      #
+      # `continue-on-error` es deliberado, mismo criterio que el aviso de falla:
+      # publicar el informe es el camino crítico. Si BigQuery está caído o la
+      # credencial venció, se pierde una corrida del archivo, no la publicación.
+      - name: Espejar la corrida en BigQuery
+        continue-on-error: true
+        env:
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          if [ -z "$GCP_SA_KEY" ]; then
+            echo "::warning::Sin GCP_SA_KEY — se omite el espejo en BigQuery."
+            exit 0
+          fi
+          # El runner es efímero, pero igual fuera del árbol de trabajo para
+          # que ningún `git add` posterior pueda alcanzar la clave.
+          printf '%s' "$GCP_SA_KEY" > "$RUNNER_TEMP/gcp-sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/gcp-sa.json"
+          python scripts/bigquery_export.py
+          rm -f "$RUNNER_TEMP/gcp-sa.json"
+
       # ── Aviso de falla ────────────────────────────────────────────────────
       # El pipeline estuvo cortado del 1 al 4 de agosto de 2026 —cuatro noches
       # seguidas, siempre la misma falla de G3— y nadie se enteró: el workflow

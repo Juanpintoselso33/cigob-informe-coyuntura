@@ -17,11 +17,16 @@ ITCM, no sólo su valor.
     python scripts/bigquery_export.py --dry-run
 
     # subir
-    uv run --with google-cloud-bigquery python scripts/bigquery_export.py
+    python scripts/bigquery_export.py
+
+Corre como último paso del pipeline nocturno, después de los gates: a BigQuery
+sólo llega lo que ya pasó G1-G7 y los tests. Va con `continue-on-error` porque
+publicar el informe es el camino crítico y una caída de BigQuery no puede
+tumbar la corrida.
 
 Requiere GOOGLE_APPLICATION_CREDENTIALS y facturación habilitada en el proyecto:
-el sandbox de BigQuery borra las tablas a los 60 días, lo que anula el objetivo
-de tener un archivo histórico.
+el sandbox de BigQuery borra las tablas a los 60 días y rechaza DML, lo que
+anula el objetivo de tener un archivo histórico.
 """
 
 from __future__ import annotations
