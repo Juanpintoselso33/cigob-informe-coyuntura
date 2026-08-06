@@ -159,12 +159,33 @@ Mismo antipatrón que ADR-0173 documentó para los fetchers.
 
 - **Las dimensiones personalizadas no son retroactivas.** Aplican desde su
   creación; los desgloses tardan 24-48 h en poblarse.
-- **El export a BigQuery es manual.** No está cableado al pipeline nocturno:
-  eso requiere la clave del service account como secret de GitHub Actions.
-  Mientras tanto, se acumula una corrida sólo cuando alguien corre el script.
 - El navegador del equipo tiene uBlock Origin sirviendo un stub falso de Google
   Analytics: `gtag/js` responde 200 pero no sale ningún hit. La navegación
   propia no se mide.
-- La exportación nativa de GA4 y la de Search Console a BigQuery **no** están
-  habilitadas todavía. Ambas son *forward-only* y sin backfill: cada día que
-  pasa es un día de datos que no se recupera.
+- Los dos exports nativos son **forward-only y sin backfill**: lo anterior a su
+  activación no existe y no se puede recuperar.
+- El export de datos de usuario de GA4 quedó **desactivado a propósito**: genera
+  una tabla con atributos por usuario, que es más dato personal del necesario
+  para un sitio público. Los eventos ya traen el id pseudónimo para los cruces.
+
+### Los tres flujos que llenan BigQuery
+
+Todo aterriza en `cigob-analytics`, y los tres datasets están en
+**`southamerica-east1`**. No es cosmético: **BigQuery no permite joins entre
+regiones**, así que si alguno hubiera quedado en el default US, cruzar búsquedas
+con indicadores sería imposible — y la ubicación no se puede cambiar sin
+rehacer el export.
+
+| origen | dataset | frecuencia |
+| --- | --- | --- |
+| pipeline propio (`bigquery_export.py`) | `informe_coyuntura` | nocturna, tras los gates |
+| GA4 (export nativo) | `analytics_548827028` | diaria |
+| Search Console (bulk export) | `searchconsole` | diaria |
+
+Se eligió el batch diario de GA4 y **no** el streaming: el tiempo real tiene un
+cargo aparte por GB y a este volumen no aporta nada.
+
+Search Console exige, antes de configurar el export, darle a
+`search-console-data-export@system.gserviceaccount.com` los roles
+`bigquery.jobUser` y `bigquery.dataEditor` sobre el proyecto. Si ese permiso se
+quita, el export deja de escribir.
