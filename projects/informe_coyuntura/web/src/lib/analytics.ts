@@ -12,6 +12,11 @@
  * - un parámetro solo sirve en informes si además está dado de alta como
  *   dimensión personalizada en GA4 (Administrar → Definiciones personalizadas).
  *   Las de este proyecto: indicador, cinturon, dimension, estado.
+ *
+ * Ojo con `estado`: es el badge de badgeEstado() — "Automático" | "Carga
+ * manual" | "Estimación", o sea CÓMO se obtiene el dato. No confundir con el
+ * campo `estado` del cinturón en el snapshot (estable/en_tension/tensionado),
+ * que es el semáforo y no se envía a GA4.
  */
 
 type ValorParam = string | number | boolean | null | undefined;

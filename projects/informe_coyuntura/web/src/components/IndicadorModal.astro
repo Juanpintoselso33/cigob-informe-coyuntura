@@ -387,8 +387,10 @@ const dimsJson = JSON.stringify(dims);
       const d = INFO[`${cint}.${key}`] || INFO[key] || { label: key, cinturon: "", que: "", aporta: "", valor: "—", unidad: "", fuente: "", fecha: "", estado: "" };
       const serie = SERIES[key] || [];
 
-      // `estado` distingue un dato fresco de uno en carry-forward: sirve para
-      // saber si la gente está mirando indicadores con la fuente demorada.
+      // `estado` es lo que devuelve badgeEstado(): "Automático" | "Carga
+      // manual" | "Estimación". Es el MODO DE OBTENCIÓN del dato, no su
+      // frescura ni el semáforo del cinturón — hay otro campo `estado` en el
+      // snapshot (estable/en_tension/tensionado) que es cosa distinta.
       track("ver_indicador", { indicador: key, cinturon: cint || d.cinturon, estado: d.estado });
 
       document.getElementById("cg-modal-eyebrow").textContent = d.cinturon ? `Indicador · ${d.cinturon}` : "Indicador";
