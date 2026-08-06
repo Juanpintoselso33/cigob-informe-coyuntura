@@ -1,6 +1,15 @@
 ---
+import Analytics from "@vercel/analytics/astro";
+
 const { title = "Realidad Política Argentina · Observatorio CIGOB" } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // "/biblitotecario-ai/informe"
+
+// GA4 se inyecta solo si PUBLIC_GA_ID está cargada (Vercel → Settings → Environment
+// Variables). Sin la variable el sitio no pide gtag.js ni escribe cookies.
+// Se valida la forma G-XXXXXXXXXX: una variable mal cargada no debe terminar
+// interpolada dentro del <script>.
+const rawGaId = import.meta.env.PUBLIC_GA_ID?.trim();
+const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -16,8 +25,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, ""); // "/biblitotecario-ai
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" />
     <link rel="stylesheet" href={`${base}/dashboard.css`} />
     <link rel="stylesheet" href={`${base}/overrides.css`} />
+    {gaId && (
+      <Fragment>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+        <script is:inline set:html={`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${gaId}');
+        `}></script>
+      </Fragment>
+    )}
   </head>
   <body>
     <slot />
+    <Analytics />
   </body>
 </html>
