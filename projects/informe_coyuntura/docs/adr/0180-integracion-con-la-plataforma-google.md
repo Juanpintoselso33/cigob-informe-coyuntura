@@ -116,10 +116,14 @@ que limpiarlo ahí y no sólo por tabla — si no, cada tabla nueva lo hereda.
 - Se puede responder qué indicadores mira la gente, y cruzarlo con cuáles están
   desactualizados: eso da un criterio para priorizar qué colector arreglar.
 - Los pesos y la composición de cada corrida quedan consultables con SQL.
-- **La verificación de Search Console cuelga del `gtag.js`.** Se verificó por el
-  método "Google Analytics". Si se saca la etiqueta del sitio no se pierde sólo
-  la medición: se pierde la titularidad de la propiedad. Conviene sumar un
-  segundo método por DNS.
+- **La verificación de Search Console tiene dos métodos, a propósito.** Se
+  verificó primero por "Google Analytics", lo que la dejaba colgando del
+  `gtag.js`: sacar la etiqueta no costaba sólo la medición, costaba la
+  titularidad de la propiedad —y con ella los datos de búsqueda y el export a
+  BigQuery—. Se sumó `web/public/google9458216d8c787831.html`, un archivo
+  estático independiente de cualquier lógica de plantilla, que sobrevive a que
+  se toque `Layout.astro` (que es justo donde vive el gtag). **Ninguno de los
+  dos archivos se borra.**
 - Un parámetro nuevo en `analytics.ts` exige agregarlo también en
   `ga4_dimensiones.py`, o los datos se guardan y no se pueden usar.
 
@@ -164,6 +168,13 @@ Mismo antipatrón que ADR-0173 documentó para los fetchers.
   propia no se mide.
 - Los dos exports nativos son **forward-only y sin backfill**: lo anterior a su
   activación no existe y no se puede recuperar.
+- **La verificación por DNS quedó pendiente y no depende del equipo.** Es el
+  método más robusto porque sobrevive incluso a que el sitio se caiga o se mude,
+  pero el DNS de `cigob.org` está en Wix (`ns14`/`ns15.wixdns.net`) y la cuenta
+  disponible es **colaboradora** del sitio, no propietaria: Wix responde
+  "Necesitas permiso para administrar los dominios de este sitio". Hay que
+  pedirle al propietario que agregue este TXT en `informe.cigob.org`:
+  `google-site-verification=hOZhj7-L7Vg7REYSyUIEnkqXqg7YEqVRHors3uGrXaw`
 - El export de datos de usuario de GA4 quedó **desactivado a propósito**: genera
   una tabla con atributos por usuario, que es más dato personal del necesario
   para un sitio público. Los eventos ya traen el id pseudónimo para los cruces.
