@@ -988,6 +988,14 @@ const robChartData = rob?.hist && indice ? {
     <script type="application/json" id="cg-det-rob-data" set:html={JSON.stringify(robChartData)} />
   )}
   <script>
+    import { track } from "../lib/analytics.ts";
+
+    // El slug sale de la URL y no del frontmatter: este <script> lo bundlea
+    // Astro, así que no ve las props del componente. La ruta es /macro/,
+    // /politica/, etc., de modo que el pathname ES el cinturón.
+    const CINTURON = location.pathname.replace(/^\/+|\/+$/g, "") || "inicio";
+    track("ver_cinturon", { cinturon: CINTURON });
+
     const modal = document.getElementById("cg-det-modal");
     if (modal) {
       const body = document.getElementById("cg-det-body")!;
@@ -1080,6 +1088,9 @@ const robChartData = rob?.hist && indice ? {
       card.addEventListener("click", () => {
         fijada = fijada === dkey ? null : dkey;
         pintar(fijada);
+        // Solo se registra el fijado, no el soltado: lo que interesa es qué
+        // dimensión eligió mirar en detalle, no cuándo dejó de hacerlo.
+        if (fijada) track("fijar_dimension", { cinturon: CINTURON, dimension: dkey });
         if (!fijada) return;
         const grupo = grupos.querySelector(`.cg-dim-group[data-grupo="${dkey}"]`);
         if (!grupo) return;
@@ -1091,6 +1102,7 @@ const robChartData = rob?.hist && indice ? {
         if (e.key === "Enter" || e.key === " ") {
           fijada = fijada === dkey ? null : dkey;
           pintar(fijada);
+          if (fijada) track("fijar_dimension", { cinturon: CINTURON, dimension: dkey });
         }
       });
     });

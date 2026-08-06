@@ -225,6 +225,7 @@ const dimsJson = JSON.stringify(dims);
 <script type="application/json" id="cg-series-data" set:html={seriesJson}></script>
 <script type="application/json" id="cg-dims-data" set:html={dimsJson}></script>
 <script>
+  import { track } from "../lib/analytics.ts";
   // ApexCharts se carga en demanda (import dinámico) la primera vez que se abre un
   // indicador, para no pesar en la carga de página cuando nadie abre el modal.
   let CHARTS = null;
@@ -364,9 +365,10 @@ const dimsJson = JSON.stringify(dims);
 
   // Descarga de la serie del indicador abierto como CSV (fecha,valor).
   const csvBtn = document.getElementById("cg-modal-csv");
-  let serieActual = [], keyActual = "";
+  let serieActual = [], keyActual = "", cintActual = "";
   csvBtn.addEventListener("click", () => {
     if (!serieActual.length) return;
+    track("descargar_csv", { indicador: keyActual, cinturon: cintActual, puntos: serieActual.length });
     const filas = [["fecha", "valor"], ...serieActual.map(p => [p.fecha, p.valor])];
     const csv = filas.map(r => r.join(",")).join("\r\n") + "\r\n";
     const blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
@@ -384,6 +386,10 @@ const dimsJson = JSON.stringify(dims);
       const cint = li.getAttribute("data-cinturon") || "";
       const d = INFO[`${cint}.${key}`] || INFO[key] || { label: key, cinturon: "", que: "", aporta: "", valor: "—", unidad: "", fuente: "", fecha: "", estado: "" };
       const serie = SERIES[key] || [];
+
+      // `estado` distingue un dato fresco de uno en carry-forward: sirve para
+      // saber si la gente está mirando indicadores con la fuente demorada.
+      track("ver_indicador", { indicador: key, cinturon: cint || d.cinturon, estado: d.estado });
 
       document.getElementById("cg-modal-eyebrow").textContent = d.cinturon ? `Indicador · ${d.cinturon}` : "Indicador";
       document.getElementById("cg-modal-title").textContent = d.label;
@@ -486,7 +492,7 @@ const dimsJson = JSON.stringify(dims);
       const serieH = document.getElementById("cg-modal-serie-h");
       const sub = document.getElementById("cg-modal-sub");
       const table = document.getElementById("cg-modal-table");
-      serieActual = serie; keyActual = key;
+      serieActual = serie; keyActual = key; cintActual = cint || d.cinturon || "";
       const tipo = tipoChart(d, serie);
       const HEAD = { linea: "Evolución histórica", gauge_avance: "Avance de la reforma",
                      gauge_valor: "Nivel actual", gauge_tension: "Aporte de tensión",
@@ -521,6 +527,11 @@ const dimsJson = JSON.stringify(dims);
     const abrir = () => {
       const d = DIMS[`${card.getAttribute("data-cinturon")}.${card.getAttribute("data-dimension")}`];
       if (!d) return;
+      track("ver_dimension", {
+        cinturon: card.getAttribute("data-cinturon") || d.cinturon,
+        dimension: card.getAttribute("data-dimension"),
+        critica: !!d.critica,
+      });
       const uni = d.base100 ? "" : "/100";
       const aporte = +(d.peso * d.puntaje).toFixed(1);
       document.getElementById("cg-modal-eyebrow").textContent = `Dimensión · ${d.sigla} · ${d.cinturon}`;
@@ -585,7 +596,7 @@ const dimsJson = JSON.stringify(dims);
       document.getElementById("cg-modal-sub").style.display = "none";
       document.getElementById("cg-modal-table").innerHTML = "";
       csvBtn.setAttribute("hidden", "");
-      serieActual = []; keyActual = "";
+      serieActual = []; keyActual = ""; cintActual = "";
       destruirChart();
       document.getElementById("cg-modal-chart").setAttribute("hidden", "");
       modal.removeAttribute("hidden");

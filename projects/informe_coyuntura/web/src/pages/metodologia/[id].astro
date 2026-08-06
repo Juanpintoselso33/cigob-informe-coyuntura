@@ -548,7 +548,14 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
 <script>
   // KaTeX para las fórmulas de la ficha (mismo motor que el modal).
   import { renderFormula } from "../../lib/math.ts";
+  import { track } from "../../lib/analytics.ts";
+
   document.querySelectorAll<HTMLElement>(".cg-ficha-math[data-latex]").forEach(el => {
     renderFormula(el, el.dataset.latex!);
   });
+
+  // Igual que en [slug].astro: el id sale del pathname porque este <script>
+  // se bundlea y no ve el frontmatter. Ruta: /metodologia/<id>/.
+  const ID = location.pathname.replace(/^\/+|\/+$/g, "").split("/").pop() || "";
+  track("ver_ficha", { indicador: ID });
 </script>
