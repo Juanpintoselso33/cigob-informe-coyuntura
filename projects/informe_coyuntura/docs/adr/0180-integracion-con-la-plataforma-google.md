@@ -81,9 +81,9 @@ implicó tantear coordenadas y escribir en el campo equivocado.
 listar URLs que redirigen porque Search Console las reporta como error.
 
 **Warehouse.** `scripts/bigquery_export.py` espeja 20 tablas en
-`mcp-cigob.informe_coyuntura`. Las de snapshot llevan `generated_at` como clave
-de corrida y **se acumulan**: eso convierte la historia del modelo —no sólo de
-los valores— en algo consultable.
+`cigob-analytics.informe_coyuntura` (región `southamerica-east1`). Las de
+snapshot llevan `generated_at` como clave de corrida y **se acumulan**: eso
+convierte la historia del modelo —no sólo de los valores— en algo consultable.
 
 **BigQuery es aguas abajo y de una sola dirección.** Lee los artefactos ya
 publicados, después de los gates. El pipeline nunca lee de BigQuery. Es lo que
@@ -93,11 +93,23 @@ impide que se vuelva un camino paralelo capaz de esquivar los controles.
 `ga4-informe@cigob-analytics.iam.gserviceaccount.com`, con la clave fuera del
 repo. El ADC no se toca nunca.
 
-**Dos proyectos GCP, no uno.** `cigob-analytics` para la configuración de
-analytics; `mcp-cigob` para el warehouse. No fue una preferencia de diseño: la
-cuenta de facturación llegó a su **cuota de proyectos vinculables** y
-`cigob-analytics` no pudo habilitar facturación. `mcp-cigob` ya la tenía y ya
-era el proyecto de datos de CIGOB (BigQuery, Dataform, Dataplex desde mayo).
+**Un solo proyecto GCP: `cigob-analytics`.** Configuración de analytics y
+warehouse conviven ahí. Llegar a eso costó un rodeo que conviene dejar anotado
+porque se puede repetir: la cuenta de facturación `019461-23424F-0DF322` estaba
+en su **cuota de proyectos vinculables**, así que `cigob-analytics` no podía
+salir del sandbox de BigQuery —donde las tablas expiran a 60 días y no se
+permite DML— y el warehouse se armó primero en `mcp-cigob`, que sí tenía
+facturación. Se liberó un cupo desvinculando `sound-works-463815-m2` (el "My
+First Project" que crea Google: verificado sin buckets, compute, Cloud Run,
+functions, SQL, repos, service accounts ni datasets) y se movió todo.
+
+`mcp-cigob` quedó exactamente como estaba: sin el dataset y sin los roles de
+BigQuery que se le habían dado al service account.
+
+Al habilitar facturación, **BigQuery tarda unos minutos en verla**: `gcloud`
+reporta `billingEnabled: true` mientras la API sigue devolviendo 403. Además el
+`default_table_expiration` de 60 días queda pegado al **dataset**, así que hay
+que limpiarlo ahí y no sólo por tabla — si no, cada tabla nueva lo hereda.
 
 ### Consecuencias
 

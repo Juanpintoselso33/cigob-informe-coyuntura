@@ -37,7 +37,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 SNAPSHOT = RAIZ / "web" / "src" / "data" / "informe.json"
 DIR_SERIES = RAIZ / "output" / "series"
 
-PROYECTO_POR_DEFECTO = "mcp-cigob"
+PROYECTO_POR_DEFECTO = "cigob-analytics"
 DATASET_POR_DEFECTO = "informe_coyuntura"
 UBICACION = "southamerica-east1"  # São Paulo: la región más cercana a AR
 
