@@ -81,7 +81,14 @@ python scripts/publicar.py
 # 3. (opcional) previsualizar local
 cd web && npm install && npm run build && npm run preview
 # 4. commit del snapshot + push a main → GitHub Actions buildea y deploya
+# 5. espejar la corrida en el archivo histórico de BigQuery (ADR-0180)
+python scripts/bigquery_export.py
 ```
+
+El paso 5 lo hace solo el pipeline nocturno, pero **una corrida manual no**: las
+tablas de snapshot se acumulan por `generated_at`, así que lo que no se sube ese
+día se pierde del archivo y no se puede reconstruir. Es idempotente — re-correr
+la misma corrida no duplica.
 
 `scripts/publicar.py` enriquece el cinturón de vida cotidiana (3 → 13 indicadores
 desde `scripts/vida_cotidiana/data/`), agrupa las series en `series.json` y

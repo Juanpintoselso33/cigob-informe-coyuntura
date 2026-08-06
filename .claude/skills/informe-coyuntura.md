@@ -61,6 +61,8 @@ projects/informe_coyuntura/
     validacion_externa.py      ← contraste con fuentes externas (ICC, EPU, etc.)
     sensibilidad.py            ← Monte Carlo de robustez → output/sensibilidad.json
     gate_calidad.py            ← gate G3/G6 que bloquea el snapshot si algo no cierra
+    bigquery_export.py         ← espeja la corrida en BigQuery (aguas abajo, ADR-0180)
+    ga4_dimensiones.py         ← sincroniza las dimensiones personalizadas de GA4
   data/<cinturon>/
     manuales.json              ← fallback de indicadores sin fuente automatizable
     ajustes_<sigla>.json       ← overrides del analista (con vencimiento)
@@ -96,7 +98,12 @@ python scripts/generar_informe.py
 python scripts/publicar.py             # snapshot para la web
 python scripts/gate_calidad.py         # G1-G3/G6
 python -m pytest tests -q              # G4-G5 (gate_calidad pasando NO implica esto)
+python scripts/bigquery_export.py      # archivo histórico en BigQuery (ADR-0180)
 ```
+
+El export a BigQuery lo hace solo el nocturno; **una corrida manual no**. Las
+tablas de snapshot se acumulan por `generated_at`, así que la corrida que no se
+sube ese día se pierde del archivo. Es idempotente.
 
 **Y falta el último paso, que es el que importa: pushear a `main` y verificar la
 URL de producción.** Ver "Terminar el trabajo" al final de este archivo.

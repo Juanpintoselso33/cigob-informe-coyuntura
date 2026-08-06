@@ -136,6 +136,7 @@ python scripts/generar_informe.py
 python scripts/publicar.py
 python scripts/gate_calidad.py
 python -m pytest tests -q
+python scripts/bigquery_export.py                 # espeja la corrida en BigQuery (ADR-0180)
 ```
 
 `validacion_externa.py` reconstructs each index's historical series from the
@@ -182,6 +183,7 @@ python scripts/generar_informe.py
 python scripts/publicar.py
 python scripts/gate_calidad.py
 python -m pytest tests -q
+python scripts/bigquery_export.py                 # espeja la corrida en BigQuery (ADR-0180)
 ```
 
 Do not run collectors piecemeal in a way that leaves *some* cinturones
@@ -229,8 +231,16 @@ ready, the whole chain has to hold:
     code → snapshot (`web/src/data/informe.json`) → `npm run build`
          → **merged/pushed to `main`** → Vercel deploy → **production URL opened
            and the number actually read there**
+         → `bigquery_export.py` → la corrida queda en el archivo histórico
 
 Verifying a link in the middle does not authorise saying "done".
+
+**Toda corrida de datos termina en BigQuery, no en el commit.** El nocturno lo
+hace solo (último paso de `data-pipeline.yml`); **una corrida manual no**, y esa
+corrida se pierde para siempre del archivo histórico — las tablas de snapshot se
+acumulan por `generated_at`, así que lo que no se sube ese día no se puede
+reconstruir después. Si publicaste a mano, corré `bigquery_export.py`. Es
+idempotente: re-correr la misma corrida no duplica. Ver ADR-0180.
 
 - **A feature branch is invisible.** Work on a PR branch never reaches the site.
   If the user is waiting to see a change, the branch has to be merged to `main`.
@@ -292,6 +302,7 @@ python scripts/vida_cotidiana/main.py
 python scripts/espiritu_epoca.py
 python scripts/generar_informe.py
 python scripts/publicar.py       # writes web/src/data/{informe,series}.json
+python scripts/bigquery_export.py  # espeja la corrida en BigQuery (ADR-0180)
 ```
 
 Collector exit codes: `0` all fresh · `1` mixed fresh/cache · `2` all cache
