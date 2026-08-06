@@ -1,16 +1,16 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-08-05T15:35:08.210487",
+  "generated_at": "2026-08-06T04:06:20.252157",
   "score": 3.3,
   "itcp": {
-    "valor": 66.8,
+    "valor": 66.9,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "poder_legislativo": {
         "nombre": "Poder legislativo",
         "peso": 0.21,
-        "puntaje": 46.6,
+        "puntaje": 47.1,
         "indicadores": {
           "ratio_dnu": {
             "peso": 0.2,
@@ -21,9 +21,9 @@
           },
           "eficacia_legislativa": {
             "peso": 0.27,
-            "puntaje_banda": 46.6,
-            "puntaje_aplicado": 46.6,
-            "valor": 13.3,
+            "puntaje_banda": 48.6,
+            "puntaje_aplicado": 48.6,
+            "valor": 14.3,
             "peso_efectivo": 0.0567
           },
           "veto_quorum": {
@@ -215,7 +215,7 @@
       "ventana_dias": 365,
       "unidad": "DNUs por ley",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
@@ -278,7 +278,7 @@
       "unidad": "Índice (0–100)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
       "fecha_dato": "2026-06-09",
-      "desactualizado": true,
+      "desactualizado": false,
       "en_indice": false
     },
     "iaf_transferencias": {
@@ -291,7 +291,7 @@
       "unidad": "% interanual real",
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
       "fecha_dato": "2025-12-31",
-      "desactualizado": false,
+      "desactualizado": true,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 76.6,
@@ -299,20 +299,20 @@
       "peso_efectivo": 0.076
     },
     "eficacia_legislativa": {
-      "valor": 13.3,
+      "valor": 14.3,
       "aprobados_n": 2,
-      "enviados_n": 15,
-      "cohorte_desde": "2024-08-05",
-      "cohorte_hasta": "2025-08-05",
+      "enviados_n": 14,
+      "cohorte_desde": "2024-08-06",
+      "cohorte_hasta": "2025-08-06",
       "dias_madurado_min": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
-      "puntaje_itcp": 46.6,
-      "puntaje_banda": 46.6,
+      "puntaje_itcp": 48.6,
+      "puntaje_banda": 48.6,
       "peso_efectivo": 0.0567
     },
     "veto_quorum": {
@@ -321,7 +321,7 @@
       "total_n": 10,
       "unidad": "% de sesiones",
       "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "desactualizado": false,
       "detalle_txt": "1 de 10 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
       "en_indice": true,
@@ -338,7 +338,7 @@
       "ventana_dias": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "desactualizado": false,
       "en_indice": false
     },
@@ -346,7 +346,7 @@
       "valor": 66.7,
       "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
       "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "n_provincias": 16,
       "desactualizado": false,
       "en_indice": true,
@@ -364,7 +364,7 @@
       "detalle_txt": "3 vetos insistidos por el Congreso + 0 decretos rechazados en el recinto en los últimos 12 meses",
       "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "desactualizado": false,
       "en_indice": false
     },
@@ -372,7 +372,7 @@
       "valor": 7,
       "unidad": "salidas de rango ministerial (acum. 12 meses)",
       "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "desactualizado": false,
       "salidas_politicas": 5,
       "salidas_estructurales": 2,
@@ -410,7 +410,7 @@
           "valor": 99.6,
           "fecha_dato": "2026-07-16",
           "n_actas": 24,
-          "corrida_exitosa_en": "2026-08-05",
+          "corrida_exitosa_en": "2026-08-06",
           "desactualizado": false
         }
       },
@@ -430,7 +430,7 @@
       "detalle_txt": "1 de 3 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
       "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
@@ -445,7 +445,7 @@
       "ultimo_desafio": "2025-09-18",
       "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "desactualizado": false,
       "detalle_txt": "3 normas propias desafiadas en el recinto en los últimos 12 meses (2 cayeron, 1 siguen en pie)",
       "en_indice": true,
@@ -530,7 +530,7 @@
       "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
       "fecha_dato": "2026-07-16",
       "n_provincias": 24,
-      "corrida_exitosa_en": "2026-08-05",
+      "corrida_exitosa_en": "2026-08-06",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
