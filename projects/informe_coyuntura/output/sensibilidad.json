@@ -13,8 +13,8 @@
     "experimentos": {
       "pesos": {
         "media": 61.9,
-        "p05": 60.9,
-        "p95": 62.8,
+        "p05": 61.0,
+        "p95": 62.9,
         "desvio": 0.59
       },
       "combinado": {
@@ -32,22 +32,22 @@
     },
     "leave_one_out": {
       "recaudacion": 64.8,
-      "resultado_primario": 59.2,
+      "resultado_primario": 59.3,
       "idm": 64.5,
-      "ipc_total": 60.1,
+      "ipc_total": 60.2,
       "tcrm": 63.4,
-      "costo_financiamiento_tesoro": 60.6,
-      "reservas_bcra": 63.1,
+      "reservas_bcra": 63.2,
       "rem_ipc_12m": 60.7,
+      "costo_financiamiento_tesoro": 60.7,
       "iai": 62.8,
       "saldo_comercial_12m": 61.1,
-      "icip": 61.3,
-      "emae_ia": 61.6,
-      "ipi_manufacturero": 62.1,
-      "presion_dolarizacion": 62.0,
-      "idc": 62.0,
+      "icip": 61.4,
+      "ipi_manufacturero": 62.2,
+      "emae_ia": 61.7,
+      "idc": 62.1,
       "emae_difusion": 61.8,
-      "credito_privado": 61.9
+      "presion_dolarizacion": 62.0,
+      "credito_privado": 62.0
     },
     "tension": {
       "base": 3.8,
@@ -58,46 +58,46 @@
     }
   },
   "itcg": {
-    "valor_publicado": 79.4,
-    "valor_recomputado": 79.4,
+    "valor_publicado": 79.5,
+    "valor_recomputado": 79.5,
     "experimentos": {
       "pesos": {
-        "media": 79.4,
-        "p05": 78.1,
-        "p95": 80.7,
+        "media": 79.5,
+        "p05": 78.2,
+        "p95": 80.8,
         "desvio": 0.78
       },
       "combinado": {
-        "media": 79.2,
+        "media": 79.3,
         "p05": 77.7,
         "p95": 80.8,
-        "desvio": 0.96
+        "desvio": 0.94
       },
       "insumos": {
-        "media": 79.2,
-        "p05": 78.3,
+        "media": 79.3,
+        "p05": 78.4,
         "p95": 80.2,
-        "desvio": 0.56
+        "desvio": 0.54
       }
     },
     "leave_one_out": {
       "cepo_mulc": 74.5,
-      "apertura_comercial": 83.7,
-      "litigiosidad_laboral": 82.5,
-      "fal_modernizacion_laboral": 76.4,
-      "protocolo_antipiquetes": 76.4,
-      "reestructuracion_organismos": 81.8,
-      "libertad_opcion_salud": 80.9,
-      "reduccion_estado": 78.1,
-      "gasto_funcionamiento": 78.6,
-      "privatizaciones": 78.6,
-      "concesiones_infraestructura": 80.1,
-      "masa_salarial": 78.8,
-      "desregulacion_normativa": 79.9,
-      "rigi_inversiones": 79.3
+      "apertura_comercial": 83.8,
+      "litigiosidad_laboral": 82.6,
+      "fal_modernizacion_laboral": 76.5,
+      "protocolo_antipiquetes": 76.6,
+      "reestructuracion_organismos": 81.9,
+      "libertad_opcion_salud": 81.0,
+      "reduccion_estado": 78.2,
+      "gasto_funcionamiento": 78.7,
+      "privatizaciones": 78.7,
+      "concesiones_infraestructura": 80.2,
+      "masa_salarial": 78.9,
+      "desregulacion_normativa": 80.1,
+      "rigi_inversiones": 79.5
     },
     "tension": {
-      "base": 2.1,
+      "base": 2.0,
       "rango_combinado": [
         1.9,
         2.2
@@ -105,38 +105,38 @@
     }
   },
   "itvc": {
-    "valor_publicado": 90.3,
-    "valor_recomputado": 90.3,
+    "valor_publicado": 90.4,
+    "valor_recomputado": 90.4,
     "experimentos": {
       "pesos": {
         "media": 90.3,
-        "p05": 88.1,
+        "p05": 88.2,
         "p95": 92.4,
         "desvio": 1.29
       },
       "combinado": {
         "media": 90.3,
         "p05": 88.2,
-        "p95": 92.4,
+        "p95": 92.5,
         "desvio": 1.29
       }
     },
     "leave_one_out": {
       "mora_familias": 98.5,
       "ipc_alimentos": 87.0,
-      "icc_utdt": 93.5,
+      "icc_utdt": 93.7,
       "peso_tarifas": 92.6,
       "pobreza_nowcast": 88.3,
-      "informalidad": 92.3,
+      "informalidad": 92.4,
       "alquiler_real": 91.5,
       "sentimiento_digital": 89.6,
       "inseguridad": 89.8,
       "despacho_cemento": 90.7,
-      "empleo_registrado": 90.0,
+      "empleo_registrado": 90.1,
       "consumo_carne": 90.6,
-      "brecha_salario_cbt": 90.2,
       "patentamiento_motos": 90.2,
       "mortalidad_pymes": 90.2,
+      "brecha_salario_cbt": 90.3,
       "pluriempleo": 90.4
     },
     "tension": {
@@ -148,47 +148,47 @@
     }
   },
   "itcp": {
-    "valor_publicado": 66.9,
-    "valor_recomputado": 66.9,
+    "valor_publicado": 66.7,
+    "valor_recomputado": 66.7,
     "experimentos": {
       "pesos": {
-        "media": 66.9,
-        "p05": 65.3,
-        "p95": 68.4,
-        "desvio": 0.94
+        "media": 66.7,
+        "p05": 65.1,
+        "p95": 68.3,
+        "desvio": 0.95
       },
       "combinado": {
-        "media": 66.7,
-        "p05": 64.7,
-        "p95": 68.7,
-        "desvio": 1.22
+        "media": 66.5,
+        "p05": 64.5,
+        "p95": 68.6,
+        "desvio": 1.23
       },
       "insumos": {
-        "media": 66.7,
-        "p05": 65.3,
-        "p95": 68.0,
+        "media": 66.6,
+        "p05": 65.1,
+        "p95": 67.8,
         "desvio": 0.81
       }
     },
     "leave_one_out": {
-      "cohesion_bloque": 61.6,
-      "brecha_obra_publica": 64.3,
-      "apoyo_empresario": 69.4,
-      "conflictividad_nacional": 68.9,
-      "desafios_legislativos": 65.5,
-      "ratio_dnu": 68.2,
-      "velocidad_resolucion": 65.6,
-      "alineamiento_senadores_prov": 65.7,
-      "iaf_transferencias": 67.9,
-      "veto_quorum": 65.9,
-      "cobertura_judicial": 67.7,
-      "produccion_legislativa": 67.5,
-      "bloqueo_sostenido": 67.4,
-      "votometro_ventaja_lla": 66.4,
-      "judicializacion": 67.3,
-      "adhesion_reformas_provincial": 67.1,
-      "paralisis_denuncias": 67.1,
-      "eficacia_legislativa": 66.7
+      "cohesion_bloque": 61.4,
+      "apoyo_empresario": 69.3,
+      "brecha_obra_publica": 64.2,
+      "conflictividad_nacional": 68.7,
+      "ratio_dnu": 68.3,
+      "desafios_legislativos": 65.4,
+      "alineamiento_senadores_prov": 65.5,
+      "velocidad_resolucion": 65.5,
+      "iaf_transferencias": 67.8,
+      "veto_quorum": 65.7,
+      "cobertura_judicial": 67.6,
+      "bloqueo_sostenido": 67.3,
+      "produccion_legislativa": 67.3,
+      "votometro_ventaja_lla": 66.3,
+      "judicializacion": 67.1,
+      "eficacia_legislativa": 66.4,
+      "adhesion_reformas_provincial": 67.0,
+      "paralisis_denuncias": 66.9
     },
     "tension": {
       "base": 3.3,

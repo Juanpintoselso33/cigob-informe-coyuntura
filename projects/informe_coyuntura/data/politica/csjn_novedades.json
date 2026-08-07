@@ -2,9 +2,9 @@
  "_meta": {
   "descripcion": "Fallos de la CSJN que declaran inconstitucionalidad o tienen al Estado como parte. Detección automática; la lectura y la clasificación las hace el analista (ADR-0140). NO es un contador: el endpoint abierto topea en 10 registros por consulta y no pagina. Sacar de 'pendientes' lo ya revisado.",
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
-  "nuevas_en_la_corrida": 0,
+  "nuevas_en_la_corrida": 1,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-08-06"
+  "ultima_corrida": "2026-08-07"
  },
  "pendientes": {
   "818689": {
@@ -246,6 +246,20 @@
    "sentencia_arbitraria": false,
    "titulo": "Cuestionamiento de la validez de un decreto nacional: competencia de la justicia federal con asiento en las provincias",
    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830107"
+  },
+  "830418": {
+   "caratula": "Recurso Queja Nº 1 - AYUDARTE CRISTINA c/ ANSES s/REAJUSTE DE HABERES",
+   "expediente": "FTU 002294/2009/1/RH001",
+   "fecha": "06/08/2026",
+   "fuero": "FTU",
+   "inconstitucional": false,
+   "materia": "PREVISIONAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Convenio de transferencia del sistema previsional y aplicación de normas nacionales",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830418"
   }
  },
  "revisadas": {
@@ -394,6 +408,11 @@
    "marcado": true,
    "termino": "amparo"
   },
+  "829887": {
+   "fecha": "06/08/2026",
+   "marcado": false,
+   "termino": "amparo"
+  },
   "829902": {
    "fecha": "07/07/2026",
    "marcado": false,
@@ -413,6 +432,16 @@
    "fecha": "07/07/2026",
    "marcado": true,
    "termino": "inconstitucionalidad"
+  },
+  "830255": {
+   "fecha": "06/08/2026",
+   "marcado": false,
+   "termino": "medida cautelar"
+  },
+  "830418": {
+   "fecha": "06/08/2026",
+   "marcado": true,
+   "termino": "estado nacional"
   }
  }
 }

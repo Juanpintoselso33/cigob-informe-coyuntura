@@ -1,22 +1,22 @@
 {
   "cinturon": "gestion",
-  "generated_at": "2026-08-06T04:08:05.436090",
-  "score": 2.1,
+  "generated_at": "2026-08-07T04:04:29.437622",
+  "score": 2.0,
   "itcg": {
-    "valor": 79.4,
+    "valor": 79.5,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
       "reformas_economicas": {
         "nombre": "Reformas económicas fundamentales",
         "peso": 0.35,
-        "puntaje": 77.0,
+        "puntaje": 77.3,
         "indicadores": {
           "cepo_mulc": {
             "peso": 0.4,
-            "puntaje_banda": 98.1,
-            "puntaje_aplicado": 98.1,
-            "valor": 5.32,
+            "puntaje_banda": 98.9,
+            "puntaje_aplicado": 98.9,
+            "valor": 5.19,
             "peso_efectivo": 0.14
           },
           "apertura_comercial": {
@@ -150,15 +150,15 @@
   },
   "indicadores": {
     "cepo_mulc": {
-      "valor": 5.32,
+      "valor": 5.19,
       "unidad": "% de brecha CCL/mayorista",
       "fuente": "https://dolarapi.com/v1/dolares",
-      "fecha_dato": "2026-08-06",
+      "fecha_dato": "2026-08-07",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "reformas_economicas",
-      "puntaje_itcg": 98.1,
-      "puntaje_banda": 98.1,
+      "puntaje_itcg": 98.9,
+      "puntaje_banda": 98.9,
       "peso_efectivo": 0.14
     },
     "apertura_comercial": {
@@ -240,7 +240,7 @@
       "valor": 40.0,
       "unidad": "% de avance (proxy InfoLeg)",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-08-06",
+      "fecha_dato": "2026-08-07",
       "desactualizado": false,
       "conteo_normas": 18,
       "detalle_txt": "18 actos de disolución/fusión desde dic-2023 (45 = plan completo)",
@@ -254,7 +254,7 @@
       "valor": 100.0,
       "unidad": "Índice 0–100 (actos fundamentales del FAL: ley + reglamentación)",
       "fuente": "InfoLeg — Ley 27.802 y Decreto 408/2026 (normas publicadas)",
-      "fecha_dato": "2026-08-06",
+      "fecha_dato": "2026-08-07",
       "desactualizado": false,
       "actos": [
         {
@@ -273,10 +273,10 @@
       "actos_cumplidos": 2,
       "actos_totales": 2,
       "fci_cese_registrados": 0,
-      "menciones_bo": 3,
+      "menciones_bo": null,
       "vigencia_desde": "2026-11-01",
       "regimen_vigente": false,
-      "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV · 3 menciones del FAL en el BO desde mar-2026",
+      "detalle_txt": "2 de 2 actos fundamentales cumplidos (Ley 27.802 2026-03-06 · Decreto 408/2026 2026-06-01) · el régimen entra en vigencia el 2026-11-01 · contexto: 0 fondos registrados en CNV",
       "en_indice": true,
       "dimension": "reforma_laboral",
       "puntaje_itcg": 100.0,
@@ -529,7 +529,7 @@
       "valor": 31.6,
       "unidad": "% de inversión aprobada sobre el pipeline",
       "fuente": "Ministerio de Economía — Plataforma oficial RIGI",
-      "fecha_dato": "2026-08-06",
+      "fecha_dato": "2026-08-07",
       "desactualizado": false,
       "proyectos_aprobados": 21,
       "inversion_aprobada_musd": 46708,
@@ -547,7 +547,7 @@
       "valor": 28.7,
       "unidad": "% de km adjudicados / km del plan (Red Federal de Concesiones)",
       "fuente": "CONTRAT.AR (UOC 504) + página oficial RFC",
-      "fecha_dato": "2026-08-06",
+      "fecha_dato": "2026-08-07",
       "desactualizado": false,
       "km_adjudicados": 2614,
       "km_totales": 9091,
@@ -569,7 +569,7 @@
       "valor": 100.0,
       "unidad": "TDPS: % del gasto social pagado directo (sin intermediación)",
       "fuente": "API Presupuesto Abierto (SIDIF) — devengado por partida",
-      "fecha_dato": "2026-08-06",
+      "fecha_dato": "2026-08-07",
       "desactualizado": false,
       "ejercicio": 2026,
       "componentes": {
@@ -624,10 +624,10 @@
       "valor": 0,
       "unidad": "alertas de manifestación (mes corriente, GTFS-RT)",
       "fuente": "API Transporte GCBA — serviceAlerts (colectivos + subtes)",
-      "fecha_dato": "2026-08-06",
+      "fecha_dato": "2026-08-07",
       "desactualizado": false,
-      "dias_muestreados_mes": 6,
-      "detalle_txt": "0 alertas en 6 días muestreados de 2026-08 · acumula desde 2026-07-02 (sin baseline 2023)",
+      "dias_muestreados_mes": 7,
+      "detalle_txt": "0 alertas en 7 días muestreados de 2026-08 · acumula desde 2026-07-02 (sin baseline 2023)",
       "en_indice": false
     },
     "protestas_caba": {
