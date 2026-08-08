@@ -28,6 +28,8 @@
     --verde-soft:  #DCFCE7;
     --amarillo:    #CA8A04;
     --amarillo-soft: #FEF3C7;
+    --naranja:      #EA580C;
+    --naranja-soft: #FFEDD5;
     --rojo:        #DC2626;
     --rojo-soft:   #FEE2E2;
 
@@ -338,6 +340,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 }
 .cg-verdict.verde    { background: var(--verde-soft);    color: #14532D; border-color: #BBF7D0; }
 .cg-verdict.amarillo { background: var(--amarillo-soft); color: #713F12; border-color: #FDE68A; }
+.cg-verdict.naranja  { background: var(--naranja-soft); color: #7C2D12; border-color: #FED7AA; }
 .cg-verdict.rojo     { background: var(--rojo-soft);     color: #7F1D1D; border-color: #FECACA; }
 .cg-verdict-dot { width: 7px; height: 7px; border-radius: 50%; }
 .cg-verdict.verde    .cg-verdict-dot { background: var(--verde); }
@@ -372,6 +375,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-genoma-seg:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
 .cg-genoma-seg.sem-verde    { background: var(--verde); }
 .cg-genoma-seg.sem-amarillo { background: var(--amarillo); }
+.cg-genoma-seg.sem-naranja  { background: var(--naranja); }
 /* rojo con trama diagonal: señal redundante al color (lectura sin color) */
 .cg-genoma-seg.sem-rojo     {
     background: repeating-linear-gradient(45deg,
