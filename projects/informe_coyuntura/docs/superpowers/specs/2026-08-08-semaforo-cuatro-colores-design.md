@@ -130,9 +130,10 @@ sus 16 componentes cambia así:
 | despacho de cemento | 85,7 | 7,9 | 🔴 | 🟠 |
 
 Queda 5 verde · 3 amarillo · 5 naranja · 3 rojo, y **el ITVC total (90,3) pasa
-a naranja**. Tres componentes mejoran de rojo a naranja y cinco empeoran. No es
-que vida cotidiana haya empeorado: es que hasta ahora se pintaba con una vara
-dos puntos de tensión más indulgente que la del resto del informe. Si CIGOB
+a naranja**. De los 16 componentes, **6 empeoran, 2 mejoran** (los dos que
+suben de rojo a naranja) y 8 no se mueven. No es que vida cotidiana haya
+empeorado: es que hasta ahora se pintaba con una vara dos puntos de tensión más
+indulgente que la del resto del informe. Si CIGOB
 prefiere conservar la vara vieja para el ITVC, es una excepción explícita que
 hay que declarar en ADR-0181 — no algo que deba quedar por omisión.
 
@@ -180,8 +181,9 @@ y 20, y devuelve los tramos **en la unidad cruda del indicador**. Requisitos:
 - **Transformaciones.** Si el indicador declara una transformación en
   `Escala.transformaciones`, hay que aplicar la **inversa** para volver a la
   unidad cruda — el mismo camino que ya usa `span_crudo`. Sin esto,
-  `rem_ipc_12m` publicaría su umbral en equivalente mensual (1,82%) en vez de
-  anual (24,2%), que es lo que muestra la card.
+  `rem_ipc_12m` publicaría sus umbrales en equivalente mensual (el corte de
+  verde es 2,80% mensual) en vez de en la expectativa anual que muestra la card
+  (39,29%), un factor de catorce.
 - **No monotonía.** `costo_financiamiento_tesoro` (ITCM) tiene anclas
   `[(−5, 20), (−2,5, 55), (3, 100), (9, 75), (16, 45), (20, 15)]`: óptimo en el
   medio, malo en los dos extremos. Cada corte lo cruza **dos veces**, y el mapa
@@ -189,9 +191,9 @@ y 20, y devuelve los tramos **en la unidad cruda del indicador**. Requisitos:
 
   | | naranja | amarillo | **verde** | amarillo | naranja | rojo |
   |---|---|---|---|---|---|---|
-  | desde | −∞ | −3,57 | **−1,89** | 12,52 | 16,68 | 19,35 |
+  | desde | −∞ | −3,5714 | **−1,8889** | 12,5 | 16,6667 | 19,3333 |
 
-  Verde es un **intervalo cerrado** (`−1,89` a `12,52`), no un `≥` ni un `≤`; los
+  Verde es un **intervalo cerrado** (`−1,8889` a `12,5`), no un `≥` ni un `≤`; los
   partidos en dos tramos son amarillo y naranja. Del lado izquierdo nunca hay
   rojo: por debajo de −5 el puntaje satura en 20 y se queda en naranja. La
   función devuelve una lista de tramos por color, no un tramo. Es el único caso
@@ -301,8 +303,9 @@ En `tests/test_parametrica.py`:
   interpolación inversa sin depender de valores pineados, y recorrer las tablas
   y no el snapshot lo hace independiente de qué indicadores estén en el índice
   ese día.
-- El no monótono `costo_financiamiento_tesoro` devuelve **dos** tramos para cada
-  corte, y el verde es `[−1,89 ; 12,5]`.
+- El no monótono `costo_financiamiento_tesoro` cruza **dos** veces cada corte, y
+  el verde es el intervalo cerrado `[−1,8889 ; 12,5]` — un solo tramo verde,
+  dos de amarillo y dos de naranja.
 - Un indicador con transformación (`rem_ipc_12m`) devuelve el umbral en unidad
   **cruda** (anual), no en la transformada.
 - Deduplicación: ningún tramo aparece repetido cuando el corte cae en un ancla.
