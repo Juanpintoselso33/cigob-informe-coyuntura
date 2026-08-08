@@ -165,6 +165,25 @@ Otras consecuencias:
   derivaba de un número; ahora lo lee. Dos definiciones del mismo corte en dos
   lenguajes se desincronizan sin que falle nada.
 
+**HONESTIDAD SOBRE EL EFECTO: el semáforo no arregla el chip del cinturón, lo
+deja a la vista.** `verdictDeCinturon` (`web/src/lib/datos.ts`) devuelve rojo
+ramificando sobre `estado === "critico" || estado === "alerta"`, y **ninguno de
+esos dos valores lo produce nada en `scripts/`**: el vocabulario real que emite
+`_estado()` es `estable` / `en_tension` / `tensionado`. `tensionado` —el peor de
+los tres— cae en el `else` y se pinta **amarillo**. De ahí que `cinturonesRojos`
+sea estructuralmente **0**: el sitio no puede mostrar un cinturón en rojo, y el
+hero, el archivo, la metodología y el panel de tensión cuentan cero rojos
+siempre; la frase *"está en zona crítica"* del BLUF no puede dispararse nunca.
+
+Es **anterior** a este cambio y queda **fuera de alcance a propósito**: tocar
+`verdictDeCinturon` mueve el BLUF, la frontada y el conteo de rojos, que no es
+una decisión de color. Pero el semáforo lo vuelve visible en la misma página:
+vida cotidiana está hoy en `tensionado` (score 6,9), su ITVC 90,3 se pinta
+**naranja** con la regla nueva, y su chip sigue diciendo **amarillo**. Queda
+anotado acá porque este ADR pasó a ser el único documento que describe
+`verdictDeCinturon`, y una descripción que no mencione la rama muerta se lee
+como que la función anda.
+
 ### Confirmación
 
 26 tests en `tests/test_semaforo.py`, `tests/test_publicar_semaforo.py` y
@@ -269,14 +288,23 @@ autocura en la próxima corrida del colector; mientras tanto degrada a un
 paréntesis vacío, no a un crash.
 
 **`verdictDeCinturon(estado)` NO se unificó, y es deliberado.** El chip de cada
-cinturón sigue con tres colores porque no sale de la tensión: sale del `estado`
-editorial del cinturón (`estable` / `en_tension` / `alerta` / `critico`), que
-alimenta el BLUF, el panel de tensión, `cinturonesRojos` y `score_global`.
-Cambiarlo sería un cambio de índice, no de presentación — justo lo que este
-ADR se prohíbe. La clase CSS `.cg-verdict` es compartida y está indexada por
-nombre de color, no por qué concepto lo produjo, así que recibe `naranja` igual.
-**Unificar el chip del cinturón con el color de su índice queda pendiente
-declarado, no olvidado.**
+cinturón sigue con tres colores porque no sale de la tensión de un índice: sale
+del `estado` del cinturón, que `_estado()` deriva del **score 0-10 agregado del
+cinturón** contra `UMBRALES` (`scripts/publicar.py`, réplica exacta de
+`generar_informe.py`) y que vale `estable` / `en_tension` / `tensionado`. Ese
+`estado` es lo que leen el BLUF, el panel de tensión, la frontada y
+`cinturonesRojos`. Es otro concepto: una etiqueta por cinturón derivada de su
+score agregado, no el color de un indicador ni el de un índice. Unificarlos no
+sería cambiar una paleta, sería reemplazar una lectura por otra en cuatro
+componentes editoriales. La clase CSS `.cg-verdict` es compartida y está
+indexada por nombre de color, no por qué concepto lo produjo, así que recibe
+`naranja` igual. **Unificar el chip del cinturón con el color de su índice queda
+pendiente declarado, no olvidado.**
+
+El sentido de la derivación importa y es fácil de invertir al leerlo: el score
+del cinturón produce el `estado`, no al revés, y `score_global` es el promedio
+ponderado de los **scores** de los cinco cinturones (`recomputar_vida_y_global`),
+sin pasar en ningún momento por el `estado`.
 
 ### Lo que el semáforo no toca
 

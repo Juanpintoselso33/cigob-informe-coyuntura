@@ -193,9 +193,25 @@ elegir por CIGOB.
 
 Cada uno de los cinco tiene una salida "razonable" —extender verde hasta 90,
 mover el rojo del DNU a otro eje, quedarse con el % de vacantes— y ninguna es
-neutral: todas cambian el puntaje de un indicador publicado. Elegirlas sin
-preguntar sería exactamente lo que ADR-0045 prohíbe en su versión de
-calibración: mover la vara y que el número mejore por eso.
+neutral: todas cambian el puntaje de un indicador publicado, y todas se
+elegirían **después** de ver el número que producen.
+
+ADR-0105 fija el orden en que se justifica un ancla nueva: referencia externa,
+valor con significado propio, historia del indicador anterior a dic-2023, y
+sólo si las tres fallan, convención calibrada sobre el rango observado —
+declarando por qué, y con la búsqueda de las tres primeras documentada aunque
+haya dado negativo. Ninguna de las cinco salidas "razonables" pasa por ese
+orden: son la cuarta opción tomada de entrada, sobre un índice que ya se
+publica.
+
+Que las bandas del ITCP no se puedan tocar **no** es lo que se está diciendo.
+ADR-0045 recalibró una y el ITCP subió unos 3 puntos de índice; se aceptó
+porque el argumento salía de la estructura de la métrica —el piso estructural
+observado hacía inalcanzable por construcción el rango de las anclas viejas, y
+los 32 meses caían todos en la misma banda— y no del resultado, y quedó
+asentado como cambio metodológico. Ese es el estándar. Los cinco tramos del
+documento no lo alcanzan mientras no se sepa de dónde salen, y eso sólo lo
+puede decir CIGOB.
 
 ### Sobre la trazabilidad de este ADR
 
