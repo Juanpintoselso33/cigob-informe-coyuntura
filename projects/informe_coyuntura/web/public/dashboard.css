@@ -345,6 +345,7 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-verdict-dot { width: 7px; height: 7px; border-radius: 50%; }
 .cg-verdict.verde    .cg-verdict-dot { background: var(--verde); }
 .cg-verdict.amarillo .cg-verdict-dot { background: var(--amarillo); }
+.cg-verdict.naranja  .cg-verdict-dot { background: var(--naranja); }
 .cg-verdict.rojo     .cg-verdict-dot { background: var(--rojo); }
 
 /* Genoma del cinturón: un tramo por dimensión del índice (ancho = peso,

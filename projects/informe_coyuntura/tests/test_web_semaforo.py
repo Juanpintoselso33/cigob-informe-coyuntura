@@ -21,3 +21,8 @@ class TestTokensCss:
         for color in COLORES:
             assert f".cg-genoma-seg.sem-{color}" in css, f"falta .sem-{color}"
             assert f".cg-verdict.{color}" in css, f"falta .cg-verdict.{color}"
+
+    def test_los_cuatro_colores_pintan_el_punto_del_verdict(self):
+        css = CSS.read_text(encoding="utf-8")
+        for color in COLORES:
+            assert re.search(rf"\.cg-verdict\.{color}\s+\.cg-verdict-dot", css), f"falta punto de {color} en verdict"
