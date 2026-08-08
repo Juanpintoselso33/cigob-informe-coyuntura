@@ -178,8 +178,10 @@ Otras consecuencias:
 - Que ningún color publicado contradiga su propio puntaje: recalcular el color
   sobre el campo publicado da el mismo color.
 - **Que el semáforo no movió ningún número**: `itcm.valor`, `itcg.valor`,
-  `itcp.valor`, `itvc.valor` y las dimensiones son idénticos antes y después
-  de correr `publicar._semaforos()` sobre el mismo snapshot.
+  `itcp.valor`, `itvc.valor` y `score_global` son idénticos antes y después de
+  correr `publicar._semaforos()` sobre el mismo snapshot. Es invariancia
+  directa —el mismo snapshot contra sí mismo— y no una comparación contra una
+  fixture congelada, que sólo probaría "no cambió desde tal día".
 - Que los cuatro colores tienen token CSS y reglas de genoma y verdict, y que
   ningún `.ts` deriva el color de un número.
 

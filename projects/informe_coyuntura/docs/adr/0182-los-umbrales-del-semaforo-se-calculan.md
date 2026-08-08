@@ -76,9 +76,10 @@ que esto sea una función y no una tabla:
    es extremo abierto. La ficha renderiza la lista tal cual, así que soportar
    el caso raro no le cuesta nada a la web.
 2. **Aplica la inversa de la transformación declarada**, el mismo camino que ya
-   usa `span_crudo`. Sin eso, `rem_ipc_12m` publicaría su corte de verde como
-   **2,80%** —equivalente mensual, que es la unidad de sus bandas— contra una
-   card que muestra **39,29%** anual.
+   usa `span_crudo`. Las bandas de `rem_ipc_12m` están escritas en equivalente
+   **mensual**, pero la card muestra la expectativa **anual**: sin la inversa,
+   su corte de verde se publicaría como **2,80%** al lado de un valor de 22,3%,
+   cuando en la unidad de la card ese mismo corte es **39,29%**.
 3. **Fusiona tramos contiguos del mismo color.** Cuando un corte coincide con
    un ancla exacta, el valor cae en el borde de dos segmentos y los dos lo
    reportan (`apertura_comercial` devuelve `9 / 9` para el corte de 40).
