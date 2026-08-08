@@ -20,6 +20,7 @@
 - **Nunca `git add -A` ni `git add .`** en este repo (OneDrive restaura snapshots viejos encima de los buenos). Cada commit stagea archivos explícitos.
 - **Tests con el pool limitado** si se corre algo en paralelo; `pytest` de este repo es secuencial y no necesita flags.
 - **Convención de bordes del motor:** low exclusivo, high inclusivo. El semáforo la respeta: puntaje 60,0 es verde, 59,9 es amarillo.
+- **Dos conceptos de color conviven, y acá no se unifican.** `verdictDeCinturon(estado)` pinta el chip del cinturón desde su `estado` editorial (`estable` / `en_tension` / `alerta` / `critico`) y **sigue con 3 colores**: ese enum alimenta el BLUF, el panel de tensión, `cinturonesRojos` y `score_global`, así que cambiarlo sería un cambio de índice y no de presentación — justamente lo que §4.4 de la spec prohíbe. El semáforo nuevo pinta indicadores, dimensiones e índices desde la tensión, con 4 colores. `.cg-verdict` es la clase de chip compartida —está indexada por nombre de color, no por qué concepto lo produjo— y se le agrega `naranja`. Unificar el chip del cinturón con el color de su índice queda como pendiente declarado, no como olvido.
 
 ## File Structure
 
