@@ -67,18 +67,23 @@ ni el score global. Es una capa de lectura.
 
 | Color | Tensión | Índices 0-100 | ITVC base-100 |
 |---|---|---|---|
-| 🟢 Verde | ≤ 4 | puntaje ≥ 60 | índice ≥ 95 |
-| 🟡 Amarillo | ≤ 6 | 40 – 59,9 | 85 – 94,9 |
-| 🟠 Naranja | ≤ 8 | 20 – 39,9 | 75 – 84,9 |
-| 🔴 Rojo | > 8 | < 20 | < 75 |
+| 🟢 Verde | ≤ 4 | puntaje ≥ 60 | índice ≥ 105 |
+| 🟡 Amarillo | ≤ 6 | 40 – 59,9 | 95 – 104,9 |
+| 🟠 Naranja | ≤ 8 | 20 – 39,9 | 85 – 94,9 |
+| 🔴 Rojo | > 8 | < 20 | < 85 |
 
 No es una escala nueva. Los cortes 60/40/20 son **los bordes de
 `BANDAS_INTERPRETACION`**, que el informe ya publica como etiqueta de cada
 índice: verde = "moderadamente aflojado" o mejor · amarillo = "moderadamente
-apretado" · naranja = "apretado" · rojo = "severamente apretado". La derivación
-del ITVC usa su propia fórmula publicada (`tensión = 5 − (índice−100) × 0,2`).
-Y coincide con lo que `semaforoDimension()` ya hace hoy con 3 colores (verde
-≥60, rojo <40): el cambio es agregar el cuarto tramo, no mover el criterio.
+apretado" · naranja = "apretado" · rojo = "severamente apretado". Los del ITVC
+salen de despejar su propia fórmula publicada (`tensión = 5 − (índice−100) ×
+0,2`): tensión ≤4 ⟺ índice ≥105, ≤6 ⟺ ≥95, ≤8 ⟺ ≥85.
+
+**Esto corrige una inconsistencia que ya existe.** `semaforoDimension()` usa
+hoy verde ≥60 para los índices 0-100 —tensión 4— pero verde ≥95 para el ITVC
+base-100, que es **tensión 6**: el mismo color significa dos cosas distintas
+según el cinturón. Definir el corte sobre la tensión lo unifica. El costo está
+en §3.2 y no es cosmético.
 
 ### 3.1 Opciones consideradas y por qué se descartaron
 
@@ -108,6 +113,28 @@ color** a los valores de hoy, y los 6 mejoran:
 Que todos mejoren no es una virtud del criterio: es la consecuencia mecánica de
 bajar los tres cortes. Queda escrito para que se pueda discutir; revertir a A es
 cambiar tres números en una constante.
+
+**Vida cotidiana se ve peor, y ese es el precio real de unificar el criterio.**
+Al pasar el ITVC de "verde = tensión 6" a "verde = tensión 4", el reparto de
+sus 16 componentes cambia así:
+
+| Componente | Índice | Tensión | Hoy (3 colores) | Nuevo |
+|---|---|---|---|---|
+| inseguridad | 102,1 | 4,6 | 🟢 | 🟡 |
+| mortalidad de pymes | 96,5 | 5,7 | 🟢 | 🟡 |
+| empleo registrado | 96,1 | 5,8 | 🟢 | 🟡 |
+| informalidad | 94,2 | 6,2 | 🟡 | 🟠 |
+| ICC UTDT | 90,9 | 6,8 | 🟡 | 🟠 |
+| pluriempleo | 90,7 | 6,9 | 🟡 | 🟠 |
+| consumo de carne | 89,3 | 7,1 | 🔴 | 🟠 |
+| despacho de cemento | 85,7 | 7,9 | 🔴 | 🟠 |
+
+Queda 5 verde · 3 amarillo · 5 naranja · 3 rojo, y **el ITVC total (90,3) pasa
+a naranja**. Tres componentes mejoran de rojo a naranja y cinco empeoran. No es
+que vida cotidiana haya empeorado: es que hasta ahora se pintaba con una vara
+dos puntos de tensión más indulgente que la del resto del informe. Si CIGOB
+prefiere conservar la vara vieja para el ITVC, es una excepción explícita que
+hay que declarar en ADR-0181 — no algo que deba quedar por omisión.
 
 ### 3.3 Rechazado: histéresis de dos meses
 
@@ -139,6 +166,13 @@ def umbrales_en_unidad(indicador: str, escala: Escala) -> list[dict] | None: ...
 `color_de_tension` es la única fuente de verdad del corte. Todo lo demás
 —puntaje 0-100, índice base-100— llega ahí por la fórmula de tensión que ya
 existe (`tension_de_indice`, y la de `base100` para el ITVC).
+
+**Trampa de redondeo, obligatoria de evitar.** El campo `aporte_score` que ya
+publica el snapshot está **redondeado a un decimal**, y usarlo como entrada del
+color rompe el borde: un puntaje de 59,9 da tensión 4,01, que redondeada es
+4,0, que es verde — cuando 59,9 tiene que ser amarillo. El color se calcula
+siempre sobre la tensión **sin redondear**. `aporte_score` sigue publicándose
+redondeado para lectura, pero no es el insumo del color.
 
 `umbrales_en_unidad` interpola las anclas **hacia atrás** en los puntajes 60, 40
 y 20, y devuelve los tramos **en la unidad cruda del indicador**. Requisitos:
@@ -255,7 +289,11 @@ En `tests/test_parametrica.py`:
 
 - El color en el corte exacto: tensión 4,0 → verde y 4,01 → amarillo; puntaje
   60,0 → verde y 59,9 → amarillo (la convención de bordes del motor es low
-  exclusivo / high inclusivo y el semáforo la respeta).
+  exclusivo / high inclusivo y el semáforo la respeta). El caso 59,9 es el que
+  falla si alguien alimenta el color con `aporte_score` redondeado, así que es
+  el test que protege la trampa de §4.1.
+- El ITVC en sus cortes: índice 105 → verde, 104,9 → amarillo, 95 → amarillo,
+  94,9 → naranja, 85 → naranja, 84,9 → rojo.
 - **Reversibilidad**, recorriendo las tablas completas de los tres índices —57
   indicadores: 15 del ITCG, 17 del ITCM y 25 del ITCP, incluidas las bandas que
   el ITCP conserva como referencia histórica—: `puntaje_de(umbral_verde) ==
