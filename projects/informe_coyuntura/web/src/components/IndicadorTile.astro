@@ -7,7 +7,12 @@ const { ikey, ind, slug } = Astro.props;
 const pres = presentacion(ikey, ind);
 const vis = visualDe(ikey, ind);
 const badge = badgeEstado(ind);
-const color = semaforoDe(ind);
+// semaforoDe() no distingue "sin dato" de un color real (su contrato son
+// 4 colores, no 5) — por eso el gate va acá, en el render: sin bloque
+// `semaforo` publicado no hay punto, en vez de pintar uno que el indicador
+// no se ganó. Le pasa a asistencia_directa (TDPS 100%, fuera del índice por
+// saturado — ADR-0100): amarillo ahí leería "tensión media" sobre un logro.
+const color = ind.semaforo?.color ? semaforoDe(ind) : null;
 const badgeCls = badge === "Automático" ? "auto" : badge === "Carga manual" ? "manual" : "estim";
 // El chip muestra el período del dato en vez del rótulo "Automático" (que no
 // informaba nada); manual/estimación conservan su rótulo — ahí el origen ES
@@ -33,7 +38,7 @@ const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) 
 ---
 <article class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable"]} data-indicador={ikey} data-cinturon={slug}>
   <div class="cg-tile-head">
-    <span class:list={["cg-tile-dot", `sem-${color}`]} title={ind.semaforo?.por_que ?? undefined} aria-hidden="true"></span>
+    {color && <span class:list={["cg-tile-dot", `sem-${color}`]} title={ind.semaforo?.por_que ?? undefined} aria-hidden="true"></span>}
     <span class="cg-tile-name">{label(ikey)}</span>
     <span class:list={["cg-tile-badge", badgeCls]} title={chipTitle}>{chip}</span>
   </div>

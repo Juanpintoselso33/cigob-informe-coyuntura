@@ -179,9 +179,13 @@ export type ColorSemaforo = "verde" | "amarillo" | "naranja" | "rojo";
 // y se desincronizarían sin que falle nada. Hasta agosto de 2026 esta función
 // calculaba 3 colores en el cliente, con una vara distinta para el ITVC
 // base-100 (verde a tensión 6) que para los índices 0-100 (verde a tensión 4).
-// Si falta el bloque `semaforo` (p. ej. asistencia_directa, fuera del índice)
-// cae en "amarillo": ni la falsa calma de verde ni la falsa alarma de rojo
-// para un dato que simplemente no se puntúa.
+// El contrato son 4 colores, no 5: no hay "sin dato" acá adentro. Si falta el
+// bloque `semaforo` esta función devuelve "amarillo" igual, PERO eso no debe
+// leerse como que corresponde pintar amarillo — el llamador que le importa la
+// diferencia (p. ej. IndicadorTile con asistencia_directa: TDPS saturado,
+// fuera del índice, sin `semaforo`) tiene que chequear `x.semaforo?.color`
+// ANTES de llamar y decidir no pintar nada, en vez de confiar en este
+// fallback como si fuera un color real.
 export function semaforoDe(x: { semaforo?: { color?: string } } | null | undefined): ColorSemaforo {
   const c = x?.semaforo?.color;
   return c === "verde" || c === "amarillo" || c === "naranja" || c === "rojo"
