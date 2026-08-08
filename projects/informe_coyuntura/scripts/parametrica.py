@@ -122,6 +122,87 @@ def color_de_indice_base100(indice: float) -> str:
     return color_de_tension(5.0 - (float(indice) - 100.0) * 0.2)
 
 
+def _cruces(anclas: list, corte: float) -> list:
+    """Valores donde el puntaje interpolado cruza `corte`.
+
+    Son varios cuando la escala no es monótona: costo_financiamiento_tesoro
+    (ITCM) tiene el óptimo en el medio y cada corte lo cruza dos veces.
+    """
+    out = []
+    for (x0, p0), (x1, p1) in zip(anclas, anclas[1:]):
+        if p0 == p1:
+            continue
+        if min(p0, p1) <= corte <= max(p0, p1):
+            out.append(x0 + (x1 - x0) * (corte - p0) / (p1 - p0))
+    return out
+
+
+def umbrales_en_unidad(indicador: str, escala: "Escala") -> list | None:
+    """Tramos de color del indicador, EN LAS UNIDADES DEL VALOR CRUDO.
+
+    Interpola las anclas hacia atrás en los puntajes de corte y devuelve
+    [{color, desde, hasta}] ordenado, con None en los extremos abiertos.
+    None si el indicador no tiene escala puntuable.
+
+    Se calcula y no se escribe (ADR-0182): un umbral en prosa envejece con el
+    dato — las fichas de agosto de 2026 quedaron desactualizadas en una semana.
+    """
+    if indicador in escala.anclas:
+        anclas = sorted((float(x), float(p)) for x, p in escala.anclas[indicador])
+    elif indicador in escala.bandas:
+        anclas = _anclas(escala.bandas[indicador])
+    else:
+        return None
+    if len(anclas) < 2:
+        return None
+
+    # Los puntos donde puede cambiar el color: los cruces de los cortes de
+    # CORTES_SEMAFORO llevados a puntaje 0-100 (color_de_puntaje es
+    # (100−puntaje)/10, así que el corte de tensión `tope` es el puntaje
+    # 100−tope×10). El último corte ("rojo", ∞) no delimita nada: se excluye.
+    cortes_puntaje = {100.0 - tope * 10.0 for _, tope in CORTES_SEMAFORO[:-1]}
+    quiebres = sorted({round(x, 6)
+                       for corte in cortes_puntaje
+                       for x in _cruces(anclas, corte)})
+
+    # Fuera del rango de anclas el puntaje es plano, así que el color del
+    # primer y del último tramo se evalúa en los bordes.
+    limites = [None] + quiebres + [None]
+    tramos = []
+    for desde, hasta in zip(limites, limites[1:]):
+        if desde is None and hasta is None:
+            medio = anclas[0][0]
+        elif desde is None:
+            medio = hasta - 1.0
+        elif hasta is None:
+            medio = desde + 1.0
+        else:
+            medio = (desde + hasta) / 2.0
+        color = color_de_puntaje(puntaje_desde_anclas(medio, anclas))
+        if tramos and tramos[-1]["color"] == color:
+            tramos[-1]["hasta"] = hasta        # fusiona tramos contiguos del mismo color
+            continue
+        tramos.append({"color": color,
+                       "desde": None if desde is None else round(desde, 4),
+                       "hasta": None if hasta is None else round(hasta, 4)})
+
+    # Aplicar la inversa declarada: las anclas de algunos indicadores están en
+    # unidades de la banda, no del valor crudo (mismo caso que span_crudo).
+    t = escala.transformaciones.get(indicador)
+    if isinstance(t, tuple):
+        inversa = t[1]
+        for tramo in tramos:
+            for k in ("desde", "hasta"):
+                if tramo[k] is not None:
+                    tramo[k] = round(float(inversa(tramo[k])), 4)
+        if any(tramo["desde"] is not None and tramo["hasta"] is not None
+               and tramo["desde"] > tramo["hasta"] for tramo in tramos):
+            for tramo in tramos:                # la inversa puede invertir el orden
+                tramo["desde"], tramo["hasta"] = tramo["hasta"], tramo["desde"]
+            tramos.reverse()
+    return tramos
+
+
 def texto_bandas(bandas: list) -> str:
     """Texto legible de una tabla de bandas, para transparencia en el frontend."""
     partes = []
