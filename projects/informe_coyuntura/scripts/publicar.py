@@ -31,6 +31,7 @@ import itcg                                           # bandas y pesos del ITCG 
 import itcp                                           # bandas y pesos del ITCP política
 import itvc                                           # pesos y rebase del ITVC vida cotidiana
 import sensibilidad                                   # rango de robustez (ADR-0019)
+import parametrica                                    # motor de puntaje y semáforo
 
 
 def coma(x) -> str:
@@ -1705,6 +1706,109 @@ GESTION_OCULTOS = set(itcg.INDICADORES_CONTEXTO)
 VIDA_OCULTOS = {"endeudamiento_familiar", "indice_lider"}
 
 
+# ── Semáforo de 4 colores (ADR-0181) ──────────────────────────────────────────
+# Capa de LECTURA: no toca ningún puntaje, peso ni índice. El color sale de la
+# tensión sin redondear — `aporte_score` está redondeado y usarlo rompe el borde
+# (ver test_no_usa_la_tension_redondeada en test_semaforo.py). Por eso cada
+# rama recalcula la tensión desde el dato más crudo disponible: el puntaje
+# 0-100 del indicador (no su `aporte_score`) para ITCM/ITCG/ITCP, el
+# `indice_itvc` base-100 para vida cotidiana, y solo para espíritu de época
+# —donde no hay otro dato— el propio `aporte_score`.
+_ESCALAS_SEMAFORO = {
+    "macro": ("itcm", itcm, "ITCM"),
+    "gestion": ("itcg", itcg, "ITCG"),
+    "politica": ("itcp", itcp, "ITCP"),
+}
+
+# Bloque de índice que cuelga de cada cinturón, y si es base-100 (ITVC) o
+# puntaje 0-100 por bandas (ITCM/ITCG/ITCP) — determina qué fórmula de color
+# corresponde al índice y a sus dimensiones.
+_INDICE_DE_CINTURON = {"macro": "itcm", "gestion": "itcg", "politica": "itcp",
+                       "vida_cotidiana": "itvc"}
+
+
+def _escala_de(mod, sigla):
+    return parametrica.Escala(
+        getattr(mod, f"BANDAS_{sigla}"),
+        getattr(mod, f"ANCLAS_{sigla}", None),
+        getattr(mod, f"TRANSFORMACIONES_{sigla}", None),
+    )
+
+
+def _por_que(color, valor, unidad, tramos):
+    """Una frase que explica el color con la misma aritmética que lo produjo.
+
+    Se genera y no se escribe: es lo que evita que la prosa de la ficha se
+    desincronice del dato (ADR-0182). Membresía de tramo low-exclusivo /
+    high-inclusivo, la misma convención del motor (parametrica.puntaje_banda).
+    """
+    if valor is None or not tramos:
+        return None
+    actual = next((t for t in tramos
+                   if (t["desde"] is None or valor > t["desde"])
+                   and (t["hasta"] is None or valor <= t["hasta"])), None)
+    if actual is None:
+        return None
+    borde = actual["desde"] if actual["desde"] is not None else actual["hasta"]
+    if borde is None:
+        return f"{coma(valor)} {unidad}: {color.capitalize()} en todo el rango."
+    return (f"{coma(valor)} {unidad} cae en el tramo que corresponde a "
+            f"{color.capitalize()}, a {coma(round(abs(valor - borde), 2))} "
+            f"del corte más cercano.")
+
+
+def _semaforo_de(color, tension, umbrales, unidad, valor):
+    return {"color": color,
+            "tension": None if tension is None else round(tension, 1),
+            "umbrales": umbrales,
+            "unidad": unidad,
+            "por_que": _por_que(color, valor, unidad, umbrales)}
+
+
+def _semaforos(informe):
+    """Adjunta el bloque `semaforo` a cada indicador, dimensión e índice."""
+    for cinturon, bloque in informe["cinturones"].items():
+        clave, mod, sigla = _ESCALAS_SEMAFORO.get(cinturon, (None, None, None))
+        escala = _escala_de(mod, sigla) if mod else None
+
+        for ikey, ind in bloque["indicadores"].items():
+            idx100 = ind.get("indice_itvc")
+            p = ind.get(f"puntaje_{clave}") if clave else None
+            if isinstance(p, (int, float)) and ind.get("en_indice"):
+                tension = (100.0 - float(p)) / 10.0
+                color = parametrica.color_de_puntaje(float(p))
+                umbrales = parametrica.umbrales_en_unidad(ikey, escala)
+                unidad = ind.get("unidad")
+            elif isinstance(idx100, (int, float)):
+                tension = 5.0 - (float(idx100) - 100.0) * 0.2
+                color = parametrica.color_de_indice_base100(float(idx100))
+                umbrales, unidad = None, None
+            elif ind.get("aporte_score") is not None:
+                tension = float(ind["aporte_score"])
+                color = parametrica.color_de_tension(tension)
+                umbrales, unidad = None, None
+            else:
+                continue
+            ind["semaforo"] = _semaforo_de(color, tension, umbrales, unidad,
+                                           ind.get("valor"))
+
+        indice_key = _INDICE_DE_CINTURON.get(cinturon)
+        if not indice_key:
+            continue
+        indice = bloque.get(indice_key)
+        if not indice:
+            continue
+        color_idx = (parametrica.color_de_indice_base100 if indice_key == "itvc"
+                     else parametrica.color_de_puntaje)
+        indice["semaforo"] = {"color": color_idx(indice["valor"]),
+                              "umbrales": None, "unidad": None, "por_que": None,
+                              "tension": None}
+        for dim in indice.get("dimensiones", {}).values():
+            dim["semaforo"] = {"color": color_idx(dim["puntaje"]),
+                               "umbrales": None, "unidad": None,
+                               "por_que": None, "tension": None}
+
+
 def aplicar_scoring(informe, series):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo
     explica, y cada cinturón con cómo se compone su score."""
@@ -1788,6 +1892,7 @@ def aplicar_scoring(informe, series):
             ind["aporte_formula"] = formula
             ind["aporte_nota"] = nota
             ind["aporte_lectura"] = lectura
+    _semaforos(informe)
     return informe
 
 

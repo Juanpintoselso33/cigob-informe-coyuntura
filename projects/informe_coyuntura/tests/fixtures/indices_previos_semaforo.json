@@ -1,0 +1,25 @@
+{
+  "indices": [
+    [
+      "macro",
+      "itcm",
+      61.9
+    ],
+    [
+      "gestion",
+      "itcg",
+      79.4
+    ],
+    [
+      "politica",
+      "itcp",
+      66.9
+    ],
+    [
+      "vida_cotidiana",
+      "itvc",
+      90.3
+    ]
+  ],
+  "score_global": 3.4
+}
