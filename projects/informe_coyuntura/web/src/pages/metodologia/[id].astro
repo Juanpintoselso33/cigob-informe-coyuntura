@@ -39,6 +39,18 @@ const pct = (n: number) => coma(Math.round(n * 1000) / 10) + "%";
 const numero = (valor: unknown): number | null =>
   typeof valor === "number" && Number.isFinite(valor) ? valor : null;
 
+// Un tramo con desde/hasta en null es extremo abierto. Un color puede
+// aparecer más de una vez: el indicador de costo de financiamiento del Tesoro
+// tiene el óptimo en el medio, así que amarillo y naranja quedan partidos en
+// dos tramos, uno a cada lado (ADR-0182).
+function rangoLegible(t: { desde: number | null; hasta: number | null }): string {
+  const n = (x: number) => String(x).replace(".", ",");
+  if (t.desde === null && t.hasta === null) return "todo el rango";
+  if (t.desde === null) return `≤ ${n(t.hasta!)}`;
+  if (t.hasta === null) return `≥ ${n(t.desde)}`;
+  return `${n(t.desde)} – ${n(t.hasta)}`;
+}
+
 // ── Datos runtime según el tipo de ficha ────────────────────────────────
 const esIndicador = f.tipo === "indicador";
 const fi = f as FichaIndicador;
@@ -315,6 +327,78 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
             {fi.dobleUso && (
               <p class="cg-ficha-p" style="margin-top:14px;"><strong>Participación en otros indicadores.</strong> {fi.dobleUso}</p>
             )}
+          </section>
+        )}
+
+        <!-- ── Semáforo: valores que determinan el color (ADR-0181/0182) ── -->
+        {ind?.semaforo?.umbrales && (
+          <section class="cg-section">
+            <div class="cg-section-head">
+              <p class="cg-eyebrow">Semáforo</p>
+              <h2 class="cg-h2">Semáforo — valores que determinan el color</h2>
+              <p class="cg-h2-sub">
+                Estos son los valores concretos, en la unidad propia de este indicador,
+                que hacen que el semáforo esté en verde, amarillo, naranja o rojo.
+              </p>
+            </div>
+            <div class="cg-ficha-card">
+              <div class="cg-ficha-tablewrap">
+                <table class="cg-ficha-tabla">
+                  <thead>
+                    <tr><th>Rango ({ind.semaforo.unidad})</th><th>Color</th></tr>
+                  </thead>
+                  <tbody>
+                    {ind.semaforo.umbrales.map((t: any) => (
+                      <tr>
+                        <td>{rangoLegible(t)}</td>
+                        <td>
+                          <span class:list={["cg-verdict", t.color]}>
+                            <span class="cg-verdict-dot"></span>{t.color.toUpperCase()}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        )}
+
+        <!-- ── Datos concretos detrás del valor: detalle_txt ya existía en el
+             modal, esta sección lo hace visible en la ficha pública ── -->
+        {ind?.detalle_txt && (
+          <section class="cg-section">
+            <div class="cg-section-head">
+              <p class="cg-eyebrow">Transparencia</p>
+              <h2 class="cg-h2">Datos concretos detrás del valor</h2>
+              <p class="cg-h2-sub">Qué hay, específicamente, detrás del dato que define el color de este mes.</p>
+            </div>
+            <div class="cg-ficha-card">
+              <p class="cg-ficha-p" style="margin:0;">{ind.detalle_txt}</p>
+            </div>
+          </section>
+        )}
+
+        <!-- ── Color vigente y por qué: misma aritmética que produjo el color,
+             para que la prosa nunca se desincronice del dato ── -->
+        {ind?.semaforo?.por_que && (
+          <section class="cg-section">
+            <div class="cg-section-head">
+              <p class="cg-eyebrow">Semáforo</p>
+              <h2 class="cg-h2">Color vigente y por qué</h2>
+            </div>
+            <div class="cg-ficha-callout">
+              <strong>Color vigente.</strong>{" "}
+              <span class:list={["cg-verdict", ind.semaforo.color]}>
+                <span class="cg-verdict-dot"></span>{ind.semaforo.color.toUpperCase()}
+              </span>{" "}
+              — {ind.semaforo.por_que}
+            </div>
+            <p class="cg-ficha-p" style="margin-top:12px; font-size:12.5px; color:var(--muted);">
+              El color es una lectura adicional del puntaje: no reemplaza ni cambia la
+              ponderación del indicador en el índice.
+            </p>
           </section>
         )}
 
