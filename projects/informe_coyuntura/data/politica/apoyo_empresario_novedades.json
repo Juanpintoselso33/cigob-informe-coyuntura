@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 0,
+  "comunicados_vistos": 46,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. NO puntúa: el indicador no se publica hasta que haya segunda pasada con kappa ≥ 0,70. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/prensa/{id}/"
   },
   "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-08-07"
+  "ultima_corrida": "2026-08-08"
  },
  "pendientes": {},
  "revisadas": {

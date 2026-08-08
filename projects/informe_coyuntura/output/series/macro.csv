@@ -1,101 +1,102 @@
 fecha,indicador,valor,unidad,fuente
-2026-07-01,tcrm_bilateral_eeuu,93.33,índice (base dic-2015),BCRA ITCRM
-2026-06-01,tcrm_bilateral_eeuu,92.88,índice (base dic-2015),BCRA ITCRM
-2026-05-01,tcrm_bilateral_eeuu,91.33,índice (base dic-2015),BCRA ITCRM
-2026-04-01,tcrm_bilateral_eeuu,91.97,índice (base dic-2015),BCRA ITCRM
-2026-03-01,tcrm_bilateral_eeuu,94.89,índice (base dic-2015),BCRA ITCRM
-2026-02-01,tcrm_bilateral_eeuu,98.11,índice (base dic-2015),BCRA ITCRM
-2026-01-01,tcrm_bilateral_eeuu,103.74,índice (base dic-2015),BCRA ITCRM
-2025-12-01,tcrm_bilateral_eeuu,106.26,índice (base dic-2015),BCRA ITCRM
-2025-11-01,tcrm_bilateral_eeuu,107.57,índice (base dic-2015),BCRA ITCRM
-2025-10-01,tcrm_bilateral_eeuu,110.71,índice (base dic-2015),BCRA ITCRM
-2025-09-01,tcrm_bilateral_eeuu,110.0,índice (base dic-2015),BCRA ITCRM
-2025-08-01,tcrm_bilateral_eeuu,105.97,índice (base dic-2015),BCRA ITCRM
-2025-07-01,tcrm_bilateral_eeuu,102.82,índice (base dic-2015),BCRA ITCRM
-2025-06-01,tcrm_bilateral_eeuu,97.11,índice (base dic-2015),BCRA ITCRM
-2025-05-01,tcrm_bilateral_eeuu,95.96,índice (base dic-2015),BCRA ITCRM
-2025-04-01,tcrm_bilateral_eeuu,95.33,índice (base dic-2015),BCRA ITCRM
-2025-03-01,tcrm_bilateral_eeuu,93.79,índice (base dic-2015),BCRA ITCRM
-2025-02-01,tcrm_bilateral_eeuu,95.59,índice (base dic-2015),BCRA ITCRM
-2025-01-01,tcrm_bilateral_eeuu,96.08,índice (base dic-2015),BCRA ITCRM
-2024-12-01,tcrm_bilateral_eeuu,96.09,índice (base dic-2015),BCRA ITCRM
-2024-11-01,tcrm_bilateral_eeuu,96.27,índice (base dic-2015),BCRA ITCRM
-2024-10-01,tcrm_bilateral_eeuu,96.49,índice (base dic-2015),BCRA ITCRM
-2024-09-01,tcrm_bilateral_eeuu,97.25,índice (base dic-2015),BCRA ITCRM
-2024-08-01,tcrm_bilateral_eeuu,98.75,índice (base dic-2015),BCRA ITCRM
-2024-07-01,tcrm_bilateral_eeuu,100.56,índice (base dic-2015),BCRA ITCRM
-2024-06-01,tcrm_bilateral_eeuu,102.57,índice (base dic-2015),BCRA ITCRM
-2024-05-01,tcrm_bilateral_eeuu,104.91,índice (base dic-2015),BCRA ITCRM
-2024-04-01,tcrm_bilateral_eeuu,109.27,índice (base dic-2015),BCRA ITCRM
-2024-03-01,tcrm_bilateral_eeuu,117.3,índice (base dic-2015),BCRA ITCRM
-2024-02-01,tcrm_bilateral_eeuu,128.36,índice (base dic-2015),BCRA ITCRM
-2024-01-01,tcrm_bilateral_eeuu,146.53,índice (base dic-2015),BCRA ITCRM
-2023-12-01,tcrm_bilateral_eeuu,137.4,índice (base dic-2015),BCRA ITCRM
-2026-07-01,tcrm_bilateral_brasil,86.99,índice (base dic-2015),BCRA ITCRM
-2026-06-01,tcrm_bilateral_brasil,86.16,índice (base dic-2015),BCRA ITCRM
-2026-05-01,tcrm_bilateral_brasil,86.81,índice (base dic-2015),BCRA ITCRM
-2026-04-01,tcrm_bilateral_brasil,86.48,índice (base dic-2015),BCRA ITCRM
-2026-03-01,tcrm_bilateral_brasil,85.69,índice (base dic-2015),BCRA ITCRM
-2026-02-01,tcrm_bilateral_brasil,89.09,índice (base dic-2015),BCRA ITCRM
-2026-01-01,tcrm_bilateral_brasil,91.44,índice (base dic-2015),BCRA ITCRM
-2025-12-01,tcrm_bilateral_brasil,91.51,índice (base dic-2015),BCRA ITCRM
-2025-11-01,tcrm_bilateral_brasil,94.8,índice (base dic-2015),BCRA ITCRM
-2025-10-01,tcrm_bilateral_brasil,96.71,índice (base dic-2015),BCRA ITCRM
-2025-09-01,tcrm_bilateral_brasil,96.43,índice (base dic-2015),BCRA ITCRM
-2025-08-01,tcrm_bilateral_brasil,91.53,índice (base dic-2015),BCRA ITCRM
-2025-07-01,tcrm_bilateral_brasil,87.71,índice (base dic-2015),BCRA ITCRM
-2025-06-01,tcrm_bilateral_brasil,82.61,índice (base dic-2015),BCRA ITCRM
-2025-05-01,tcrm_bilateral_brasil,79.74,índice (base dic-2015),BCRA ITCRM
-2025-04-01,tcrm_bilateral_brasil,77.45,índice (base dic-2015),BCRA ITCRM
-2025-03-01,tcrm_bilateral_brasil,76.23,índice (base dic-2015),BCRA ITCRM
-2025-02-01,tcrm_bilateral_brasil,77.12,índice (base dic-2015),BCRA ITCRM
-2025-01-01,tcrm_bilateral_brasil,73.74,índice (base dic-2015),BCRA ITCRM
-2024-12-01,tcrm_bilateral_brasil,72.91,índice (base dic-2015),BCRA ITCRM
-2024-11-01,tcrm_bilateral_brasil,76.51,índice (base dic-2015),BCRA ITCRM
-2024-10-01,tcrm_bilateral_brasil,79.23,índice (base dic-2015),BCRA ITCRM
-2024-09-01,tcrm_bilateral_brasil,80.84,índice (base dic-2015),BCRA ITCRM
-2024-08-01,tcrm_bilateral_brasil,81.82,índice (base dic-2015),BCRA ITCRM
-2024-07-01,tcrm_bilateral_brasil,83.5,índice (base dic-2015),BCRA ITCRM
-2024-06-01,tcrm_bilateral_brasil,87.35,índice (base dic-2015),BCRA ITCRM
-2024-05-01,tcrm_bilateral_brasil,93.47,índice (base dic-2015),BCRA ITCRM
-2024-04-01,tcrm_bilateral_brasil,97.41,índice (base dic-2015),BCRA ITCRM
-2024-03-01,tcrm_bilateral_brasil,107.57,índice (base dic-2015),BCRA ITCRM
-2024-02-01,tcrm_bilateral_brasil,117.96,índice (base dic-2015),BCRA ITCRM
-2024-01-01,tcrm_bilateral_brasil,135.84,índice (base dic-2015),BCRA ITCRM
-2023-12-01,tcrm_bilateral_brasil,127.57,índice (base dic-2015),BCRA ITCRM
-2026-07-01,tcrm,85.93,índice (base dic-2015),BCRA ITCRM
-2026-06-01,tcrm,85.27,índice (base dic-2015),BCRA ITCRM
-2026-05-01,tcrm,84.61,índice (base dic-2015),BCRA ITCRM
-2026-04-01,tcrm,84.96,índice (base dic-2015),BCRA ITCRM
-2026-03-01,tcrm,86.53,índice (base dic-2015),BCRA ITCRM
-2026-02-01,tcrm,90.4,índice (base dic-2015),BCRA ITCRM
-2026-01-01,tcrm,93.86,índice (base dic-2015),BCRA ITCRM
-2025-12-01,tcrm,95.01,índice (base dic-2015),BCRA ITCRM
-2025-11-01,tcrm,96.34,índice (base dic-2015),BCRA ITCRM
-2025-10-01,tcrm,99.24,índice (base dic-2015),BCRA ITCRM
-2025-09-01,tcrm,99.44,índice (base dic-2015),BCRA ITCRM
-2025-08-01,tcrm,95.38,índice (base dic-2015),BCRA ITCRM
-2025-07-01,tcrm,92.09,índice (base dic-2015),BCRA ITCRM
-2025-06-01,tcrm,86.42,índice (base dic-2015),BCRA ITCRM
-2025-05-01,tcrm,84.19,índice (base dic-2015),BCRA ITCRM
-2025-04-01,tcrm,82.62,índice (base dic-2015),BCRA ITCRM
-2025-03-01,tcrm,80.78,índice (base dic-2015),BCRA ITCRM
-2025-02-01,tcrm,81.32,índice (base dic-2015),BCRA ITCRM
-2025-01-01,tcrm,79.98,índice (base dic-2015),BCRA ITCRM
-2024-12-01,tcrm,80.07,índice (base dic-2015),BCRA ITCRM
-2024-11-01,tcrm,82.03,índice (base dic-2015),BCRA ITCRM
-2024-10-01,tcrm,84.34,índice (base dic-2015),BCRA ITCRM
-2024-09-01,tcrm,86.34,índice (base dic-2015),BCRA ITCRM
-2024-08-01,tcrm,87.46,índice (base dic-2015),BCRA ITCRM
-2024-07-01,tcrm,88.18,índice (base dic-2015),BCRA ITCRM
-2024-06-01,tcrm,90.21,índice (base dic-2015),BCRA ITCRM
-2024-05-01,tcrm,93.75,índice (base dic-2015),BCRA ITCRM
-2024-04-01,tcrm,97.36,índice (base dic-2015),BCRA ITCRM
-2024-03-01,tcrm,106.24,índice (base dic-2015),BCRA ITCRM
-2024-02-01,tcrm,116.15,índice (base dic-2015),BCRA ITCRM
-2024-01-01,tcrm,133.24,índice (base dic-2015),BCRA ITCRM
-2023-12-01,tcrm,125.38,índice (base dic-2015),BCRA ITCRM
-2023-11-01,tcrm,83.51,índice (base dic-2015),BCRA ITCRM
+2026-07-01,tcrm_bilateral_eeuu,93.36,índice (base dic-2015),BCRA ITCRM
+2026-06-01,tcrm_bilateral_eeuu,92.91,índice (base dic-2015),BCRA ITCRM
+2026-05-01,tcrm_bilateral_eeuu,91.36,índice (base dic-2015),BCRA ITCRM
+2026-04-01,tcrm_bilateral_eeuu,91.99,índice (base dic-2015),BCRA ITCRM
+2026-03-01,tcrm_bilateral_eeuu,94.92,índice (base dic-2015),BCRA ITCRM
+2026-02-01,tcrm_bilateral_eeuu,98.15,índice (base dic-2015),BCRA ITCRM
+2026-01-01,tcrm_bilateral_eeuu,103.77,índice (base dic-2015),BCRA ITCRM
+2025-12-01,tcrm_bilateral_eeuu,106.29,índice (base dic-2015),BCRA ITCRM
+2025-11-01,tcrm_bilateral_eeuu,107.6,índice (base dic-2015),BCRA ITCRM
+2025-10-01,tcrm_bilateral_eeuu,110.74,índice (base dic-2015),BCRA ITCRM
+2025-09-01,tcrm_bilateral_eeuu,110.03,índice (base dic-2015),BCRA ITCRM
+2025-08-01,tcrm_bilateral_eeuu,106.0,índice (base dic-2015),BCRA ITCRM
+2025-07-01,tcrm_bilateral_eeuu,102.85,índice (base dic-2015),BCRA ITCRM
+2025-06-01,tcrm_bilateral_eeuu,97.14,índice (base dic-2015),BCRA ITCRM
+2025-05-01,tcrm_bilateral_eeuu,95.99,índice (base dic-2015),BCRA ITCRM
+2025-04-01,tcrm_bilateral_eeuu,95.36,índice (base dic-2015),BCRA ITCRM
+2025-03-01,tcrm_bilateral_eeuu,93.82,índice (base dic-2015),BCRA ITCRM
+2025-02-01,tcrm_bilateral_eeuu,95.62,índice (base dic-2015),BCRA ITCRM
+2025-01-01,tcrm_bilateral_eeuu,96.11,índice (base dic-2015),BCRA ITCRM
+2024-12-01,tcrm_bilateral_eeuu,96.12,índice (base dic-2015),BCRA ITCRM
+2024-11-01,tcrm_bilateral_eeuu,96.3,índice (base dic-2015),BCRA ITCRM
+2024-10-01,tcrm_bilateral_eeuu,96.52,índice (base dic-2015),BCRA ITCRM
+2024-09-01,tcrm_bilateral_eeuu,97.28,índice (base dic-2015),BCRA ITCRM
+2024-08-01,tcrm_bilateral_eeuu,98.78,índice (base dic-2015),BCRA ITCRM
+2024-07-01,tcrm_bilateral_eeuu,100.59,índice (base dic-2015),BCRA ITCRM
+2024-06-01,tcrm_bilateral_eeuu,102.6,índice (base dic-2015),BCRA ITCRM
+2024-05-01,tcrm_bilateral_eeuu,104.94,índice (base dic-2015),BCRA ITCRM
+2024-04-01,tcrm_bilateral_eeuu,109.31,índice (base dic-2015),BCRA ITCRM
+2024-03-01,tcrm_bilateral_eeuu,117.34,índice (base dic-2015),BCRA ITCRM
+2024-02-01,tcrm_bilateral_eeuu,128.4,índice (base dic-2015),BCRA ITCRM
+2024-01-01,tcrm_bilateral_eeuu,146.58,índice (base dic-2015),BCRA ITCRM
+2023-12-01,tcrm_bilateral_eeuu,137.41,índice (base dic-2015),BCRA ITCRM
+2026-07-01,tcrm_bilateral_brasil,86.82,índice (base dic-2015),BCRA ITCRM
+2026-06-01,tcrm_bilateral_brasil,86.0,índice (base dic-2015),BCRA ITCRM
+2026-05-01,tcrm_bilateral_brasil,86.65,índice (base dic-2015),BCRA ITCRM
+2026-04-01,tcrm_bilateral_brasil,86.31,índice (base dic-2015),BCRA ITCRM
+2026-03-01,tcrm_bilateral_brasil,85.52,índice (base dic-2015),BCRA ITCRM
+2026-02-01,tcrm_bilateral_brasil,88.92,índice (base dic-2015),BCRA ITCRM
+2026-01-01,tcrm_bilateral_brasil,91.26,índice (base dic-2015),BCRA ITCRM
+2025-12-01,tcrm_bilateral_brasil,91.33,índice (base dic-2015),BCRA ITCRM
+2025-11-01,tcrm_bilateral_brasil,94.62,índice (base dic-2015),BCRA ITCRM
+2025-10-01,tcrm_bilateral_brasil,96.53,índice (base dic-2015),BCRA ITCRM
+2025-09-01,tcrm_bilateral_brasil,96.25,índice (base dic-2015),BCRA ITCRM
+2025-08-01,tcrm_bilateral_brasil,91.36,índice (base dic-2015),BCRA ITCRM
+2025-07-01,tcrm_bilateral_brasil,87.54,índice (base dic-2015),BCRA ITCRM
+2025-06-01,tcrm_bilateral_brasil,82.45,índice (base dic-2015),BCRA ITCRM
+2025-05-01,tcrm_bilateral_brasil,79.59,índice (base dic-2015),BCRA ITCRM
+2025-04-01,tcrm_bilateral_brasil,77.31,índice (base dic-2015),BCRA ITCRM
+2025-03-01,tcrm_bilateral_brasil,76.09,índice (base dic-2015),BCRA ITCRM
+2025-02-01,tcrm_bilateral_brasil,76.97,índice (base dic-2015),BCRA ITCRM
+2025-01-01,tcrm_bilateral_brasil,73.6,índice (base dic-2015),BCRA ITCRM
+2024-12-01,tcrm_bilateral_brasil,72.77,índice (base dic-2015),BCRA ITCRM
+2024-11-01,tcrm_bilateral_brasil,76.36,índice (base dic-2015),BCRA ITCRM
+2024-10-01,tcrm_bilateral_brasil,79.08,índice (base dic-2015),BCRA ITCRM
+2024-09-01,tcrm_bilateral_brasil,80.69,índice (base dic-2015),BCRA ITCRM
+2024-08-01,tcrm_bilateral_brasil,81.66,índice (base dic-2015),BCRA ITCRM
+2024-07-01,tcrm_bilateral_brasil,83.34,índice (base dic-2015),BCRA ITCRM
+2024-06-01,tcrm_bilateral_brasil,87.18,índice (base dic-2015),BCRA ITCRM
+2024-05-01,tcrm_bilateral_brasil,93.29,índice (base dic-2015),BCRA ITCRM
+2024-04-01,tcrm_bilateral_brasil,97.23,índice (base dic-2015),BCRA ITCRM
+2024-03-01,tcrm_bilateral_brasil,107.37,índice (base dic-2015),BCRA ITCRM
+2024-02-01,tcrm_bilateral_brasil,117.73,índice (base dic-2015),BCRA ITCRM
+2024-01-01,tcrm_bilateral_brasil,135.58,índice (base dic-2015),BCRA ITCRM
+2023-12-01,tcrm_bilateral_brasil,127.36,índice (base dic-2015),BCRA ITCRM
+2026-07-01,tcrm,85.82,índice (base dic-2015),BCRA ITCRM
+2026-06-01,tcrm,85.17,índice (base dic-2015),BCRA ITCRM
+2026-05-01,tcrm,84.42,índice (base dic-2015),BCRA ITCRM
+2026-04-01,tcrm,84.67,índice (base dic-2015),BCRA ITCRM
+2026-03-01,tcrm,86.23,índice (base dic-2015),BCRA ITCRM
+2026-02-01,tcrm,90.09,índice (base dic-2015),BCRA ITCRM
+2026-01-01,tcrm,93.54,índice (base dic-2015),BCRA ITCRM
+2025-12-01,tcrm,94.68,índice (base dic-2015),BCRA ITCRM
+2025-11-01,tcrm,96.01,índice (base dic-2015),BCRA ITCRM
+2025-10-01,tcrm,98.9,índice (base dic-2015),BCRA ITCRM
+2025-09-01,tcrm,99.1,índice (base dic-2015),BCRA ITCRM
+2025-08-01,tcrm,95.05,índice (base dic-2015),BCRA ITCRM
+2025-07-01,tcrm,91.78,índice (base dic-2015),BCRA ITCRM
+2025-06-01,tcrm,86.13,índice (base dic-2015),BCRA ITCRM
+2025-05-01,tcrm,83.9,índice (base dic-2015),BCRA ITCRM
+2025-04-01,tcrm,82.34,índice (base dic-2015),BCRA ITCRM
+2025-03-01,tcrm,80.51,índice (base dic-2015),BCRA ITCRM
+2025-02-01,tcrm,81.04,índice (base dic-2015),BCRA ITCRM
+2025-01-01,tcrm,79.7,índice (base dic-2015),BCRA ITCRM
+2024-12-01,tcrm,79.8,índice (base dic-2015),BCRA ITCRM
+2024-11-01,tcrm,81.75,índice (base dic-2015),BCRA ITCRM
+2024-10-01,tcrm,84.05,índice (base dic-2015),BCRA ITCRM
+2024-09-01,tcrm,86.05,índice (base dic-2015),BCRA ITCRM
+2024-08-01,tcrm,87.16,índice (base dic-2015),BCRA ITCRM
+2024-07-01,tcrm,87.88,índice (base dic-2015),BCRA ITCRM
+2024-06-01,tcrm,89.9,índice (base dic-2015),BCRA ITCRM
+2024-05-01,tcrm,93.43,índice (base dic-2015),BCRA ITCRM
+2024-04-01,tcrm,97.03,índice (base dic-2015),BCRA ITCRM
+2024-03-01,tcrm,105.88,índice (base dic-2015),BCRA ITCRM
+2024-02-01,tcrm,115.75,índice (base dic-2015),BCRA ITCRM
+2024-01-01,tcrm,132.79,índice (base dic-2015),BCRA ITCRM
+2023-12-01,tcrm,124.88,índice (base dic-2015),BCRA ITCRM
+2023-11-01,tcrm,83.2,índice (base dic-2015),BCRA ITCRM
+2026-08-07,tc_mayorista,1498.4355,ARS/USD,BCRA
 2026-08-06,tc_mayorista,1497.0062,ARS/USD,BCRA
 2026-08-05,tc_mayorista,1496.3132,ARS/USD,BCRA
 2026-08-04,tc_mayorista,1496.4509,ARS/USD,BCRA
@@ -729,7 +730,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-27,tc_mayorista,807.425,ARS/USD,BCRA
 2023-12-26,tc_mayorista,806.8833,ARS/USD,BCRA
 2023-12-22,tc_mayorista,804.775,ARS/USD,BCRA
-2023-12-21,tc_mayorista,804.225,ARS/USD,BCRA
 2026-06-01,saldo_comercial_12m,22481.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-05-01,saldo_comercial_12m,21166.7,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-04-01,saldo_comercial_12m,18324.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
@@ -969,13 +969,14 @@ fecha,indicador,valor,unidad,fuente
 2022-03-01,recaudacion,99.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-02-01,recaudacion,101.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2022-01-01,recaudacion,101.9,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
-2026-08-04,prestamos_privados,141208105.0,M ARS,BCRA
-2026-08-03,prestamos_privados,141209329.0,M ARS,BCRA
-2026-07-31,prestamos_privados,141333817.0,M ARS,BCRA
-2026-07-30,prestamos_privados,141219211.0,M ARS,BCRA
-2026-07-29,prestamos_privados,141057961.0,M ARS,BCRA
-2026-07-28,prestamos_privados,140874483.0,M ARS,BCRA
-2026-07-27,prestamos_privados,140277353.0,M ARS,BCRA
+2026-08-05,prestamos_privados,140663039.0,M ARS,BCRA
+2026-08-04,prestamos_privados,141214162.0,M ARS,BCRA
+2026-08-03,prestamos_privados,141188617.0,M ARS,BCRA
+2026-07-31,prestamos_privados,141343775.0,M ARS,BCRA
+2026-07-30,prestamos_privados,141374692.0,M ARS,BCRA
+2026-07-29,prestamos_privados,141084544.0,M ARS,BCRA
+2026-07-28,prestamos_privados,140878463.0,M ARS,BCRA
+2026-07-27,prestamos_privados,140285715.0,M ARS,BCRA
 2026-07-24,prestamos_privados,139391984.0,M ARS,BCRA
 2026-07-23,prestamos_privados,138816407.0,M ARS,BCRA
 2026-07-22,prestamos_privados,138114834.0,M ARS,BCRA
@@ -988,7 +989,7 @@ fecha,indicador,valor,unidad,fuente
 2026-07-13,prestamos_privados,137426834.0,M ARS,BCRA
 2026-07-08,prestamos_privados,138497091.0,M ARS,BCRA
 2026-07-07,prestamos_privados,138471658.0,M ARS,BCRA
-2026-07-06,prestamos_privados,138884931.0,M ARS,BCRA
+2026-07-06,prestamos_privados,138884935.0,M ARS,BCRA
 2026-07-03,prestamos_privados,138604110.0,M ARS,BCRA
 2026-07-02,prestamos_privados,138909994.0,M ARS,BCRA
 2026-07-01,prestamos_privados,138388210.0,M ARS,BCRA
@@ -1600,7 +1601,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-27,prestamos_privados,19013739.0,M ARS,BCRA
 2023-12-26,prestamos_privados,18844412.0,M ARS,BCRA
 2023-12-22,prestamos_privados,18664152.0,M ARS,BCRA
-2023-12-21,prestamos_privados,18513812.0,M ARS,BCRA
 2026-06-01,presion_dolarizacion,45.53,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-05-01,presion_dolarizacion,49.82,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-04-01,presion_dolarizacion,49.5,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
@@ -2043,6 +2043,7 @@ fecha,indicador,valor,unidad,fuente
 2024-04-01,costo_financiamiento_tesoro,-10.83,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2024-03-01,costo_financiamiento_tesoro,-14.96,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
 2023-12-01,costo_financiamiento_tesoro,-12.24,% real anual,Sec. de Finanzas (colocaciones) + BCRA (REM)
+2026-08-05,base_monetaria,46530255.0,M ARS,BCRA
 2026-08-04,base_monetaria,45693033.0,M ARS,BCRA
 2026-08-03,base_monetaria,46439196.0,M ARS,BCRA
 2026-07-31,base_monetaria,46193622.0,M ARS,BCRA
@@ -2674,7 +2675,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-27,base_monetaria,9226815.0,M ARS,BCRA
 2023-12-26,base_monetaria,9213444.0,M ARS,BCRA
 2023-12-22,base_monetaria,9030905.0,M ARS,BCRA
-2023-12-21,base_monetaria,9167600.0,M ARS,BCRA
+2026-08-06,badlar,22.0,% anual,BCRA
 2026-08-05,badlar,20.875,% anual,BCRA
 2026-08-04,badlar,22.3125,% anual,BCRA
 2026-08-03,badlar,21.4375,% anual,BCRA
@@ -3307,4 +3308,3 @@ fecha,indicador,valor,unidad,fuente
 2023-12-27,badlar,108.875,% anual,BCRA
 2023-12-26,badlar,109.3125,% anual,BCRA
 2023-12-22,badlar,109.5625,% anual,BCRA
-2023-12-21,badlar,109.9375,% anual,BCRA

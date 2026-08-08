@@ -1,9 +1,9 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-08-07T04:02:29.364315",
-  "score": 3.3,
+  "generated_at": "2026-08-08T03:34:23.635229",
+  "score": 3.5,
   "itcp": {
-    "valor": 66.7,
+    "valor": 65.1,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -60,7 +60,7 @@
       "alianzas_territoriales": {
         "nombre": "Alianzas territoriales",
         "peso": 0.19,
-        "puntaje": 85.2,
+        "puntaje": 77.7,
         "indicadores": {
           "iaf_transferencias": {
             "peso": 0.4,
@@ -71,9 +71,9 @@
           },
           "alineamiento_senadores_prov": {
             "peso": 0.3,
-            "puntaje_banda": 100.0,
-            "puntaje_aplicado": 100.0,
-            "valor": 70.6,
+            "puntaje_banda": 75.2,
+            "puntaje_aplicado": 75.2,
+            "valor": 60.1,
             "peso_efectivo": 0.057
           },
           "adhesion_reformas_provincial": {
@@ -170,13 +170,13 @@
       "sector_privado": {
         "nombre": "Sector privado",
         "peso": 0.13,
-        "puntaje": 55.6,
+        "puntaje": 54.2,
         "indicadores": {
           "brecha_obra_publica": {
             "peso": 0.5,
-            "puntaje_banda": 75.4,
-            "puntaje_aplicado": 75.4,
-            "valor": 0.2,
+            "puntaje_banda": 72.8,
+            "puntaje_aplicado": 72.8,
+            "valor": -1.1,
             "peso_efectivo": 0.065
           },
           "apoyo_empresario": {
@@ -215,7 +215,7 @@
       "ventana_dias": 365,
       "unidad": "DNUs por ley",
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
-      "fecha_dato": "2026-08-07",
+      "fecha_dato": "2026-08-08",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
@@ -224,17 +224,17 @@
       "peso_efectivo": 0.042
     },
     "brecha_obra_publica": {
-      "valor": 0.2,
+      "valor": -1.1,
       "unidad": "pp de brecha (obra pública − privada, 12m)",
       "fuente": "INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)",
-      "fecha_dato": "2026-08-01",
+      "fecha_dato": "2026-09-01",
       "desactualizado": false,
-      "variacion_12m": 9.1,
-      "detalle_txt": "Brecha de 0,2 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
+      "variacion_12m": 4.9,
+      "detalle_txt": "Brecha de -1,1 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
       "en_indice": true,
       "dimension": "sector_privado",
-      "puntaje_itcp": 75.4,
-      "puntaje_banda": 75.4,
+      "puntaje_itcp": 72.8,
+      "puntaje_banda": 72.8,
       "peso_efectivo": 0.065
     },
     "apoyo_empresario": {
@@ -278,7 +278,7 @@
       "unidad": "Índice (0–100)",
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
       "fecha_dato": "2026-06-09",
-      "desactualizado": true,
+      "desactualizado": false,
       "en_indice": false
     },
     "iaf_transferencias": {
@@ -302,12 +302,12 @@
       "valor": 15.4,
       "aprobados_n": 2,
       "enviados_n": 13,
-      "cohorte_desde": "2024-08-07",
-      "cohorte_hasta": "2025-08-07",
+      "cohorte_desde": "2024-08-08",
+      "cohorte_hasta": "2025-08-08",
       "dias_madurado_min": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
-      "fecha_dato": "2026-08-07",
+      "fecha_dato": "2026-08-08",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
@@ -321,7 +321,7 @@
       "total_n": 10,
       "unidad": "% de sesiones",
       "fuente": "Cámara de Diputados (datos abiertos) — sesiones",
-      "fecha_dato": "2026-08-07",
+      "fecha_dato": "2026-08-08",
       "desactualizado": false,
       "detalle_txt": "1 de 10 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
       "en_indice": true,
@@ -332,13 +332,13 @@
     },
     "comisiones_caidas": {
       "valor": 97.0,
-      "dictamen_n": 507,
+      "dictamen_n": 494,
       "aprobados_n": 15,
-      "caidas_n": 492,
+      "caidas_n": 479,
       "ventana_dias": 365,
       "unidad": "% de proyectos",
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
-      "fecha_dato": "2026-08-07",
+      "fecha_dato": "2026-08-08",
       "desactualizado": false,
       "en_indice": false
     },
@@ -346,7 +346,7 @@
       "valor": 66.7,
       "unidad": "% de jurisdicciones (sobre 24) adheridas al RIGI",
       "fuente": "Tabla de provincias adheridas — Ministerio de Agricultura, Ganadería y Pesca",
-      "fecha_dato": "2026-08-07",
+      "fecha_dato": "2026-08-08",
       "n_provincias": 16,
       "desactualizado": false,
       "en_indice": true,
@@ -364,15 +364,15 @@
       "detalle_txt": "3 vetos insistidos por el Congreso + 0 decretos rechazados en el recinto en los últimos 12 meses",
       "unidad": "Derrotas del Ejecutivo en el recinto, últimos 12 meses (vetos insistidos + decretos rechazados)",
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
-      "fecha_dato": "2026-08-06",
-      "desactualizado": true,
+      "fecha_dato": "2026-08-08",
+      "desactualizado": false,
       "en_indice": false
     },
     "rotacion_gabinete": {
       "valor": 7,
       "unidad": "salidas de rango ministerial (acum. 12 meses)",
       "fuente": "Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)",
-      "fecha_dato": "2026-08-07",
+      "fecha_dato": "2026-08-08",
       "desactualizado": false,
       "salidas_politicas": 5,
       "salidas_estructurales": 2,
@@ -395,8 +395,8 @@
       "valor": 99.8,
       "unidad": "% cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días)",
       "fuente": "Votaciones nominales de Diputados y Senado — elaboración CIGOB",
-      "fecha_dato": "2026-07-16",
-      "n_actas": 57,
+      "fecha_dato": "2026-08-06",
+      "n_actas": 63,
       "desactualizado": false,
       "componentes": {
         "diputados": {
@@ -408,9 +408,9 @@
         },
         "senado": {
           "valor": 99.6,
-          "fecha_dato": "2026-07-16",
-          "n_actas": 24,
-          "corrida_exitosa_en": "2026-08-06",
+          "fecha_dato": "2026-08-06",
+          "n_actas": 30,
+          "corrida_exitosa_en": "2026-08-08",
           "desactualizado": false
         }
       },
@@ -430,8 +430,8 @@
       "detalle_txt": "1 de 3 normas desafiadas en el recinto siguen en pie (vetos con insistencia votada + decretos votados bajo la ley 26.122, últimos 12 meses)",
       "unidad": "% de normas desafiadas en el recinto que siguen en pie, últimos 12 meses",
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-      "fecha_dato": "2026-08-06",
-      "desactualizado": true,
+      "fecha_dato": "2026-08-08",
+      "desactualizado": false,
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 26.6,
@@ -445,7 +445,7 @@
       "ultimo_desafio": "2025-09-18",
       "unidad": "normas del Ejecutivo desafiadas en el recinto, últimos 12 meses",
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
-      "fecha_dato": "2026-08-07",
+      "fecha_dato": "2026-08-08",
       "desactualizado": false,
       "detalle_txt": "3 normas propias desafiadas en el recinto en los últimos 12 meses (2 cayeron, 1 siguen en pie)",
       "en_indice": true,
@@ -525,17 +525,17 @@
       "peso_efectivo": 0.06
     },
     "alineamiento_senadores_prov": {
-      "valor": 70.6,
+      "valor": 60.1,
       "unidad": "% votos de senadores no-LLA alineados con LLA, por provincia",
       "fuente": "Votaciones nominales del Senado — elaboración CIGOB",
-      "fecha_dato": "2026-07-16",
+      "fecha_dato": "2026-08-06",
       "n_provincias": 24,
-      "corrida_exitosa_en": "2026-08-07",
+      "corrida_exitosa_en": "2026-08-08",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "alianzas_territoriales",
-      "puntaje_itcp": 100.0,
-      "puntaje_banda": 100.0,
+      "puntaje_itcp": 75.2,
+      "puntaje_banda": 75.2,
       "peso_efectivo": 0.057
     }
   }

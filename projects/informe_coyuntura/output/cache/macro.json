@@ -1,6 +1,6 @@
 {
   "cinturon": "macro",
-  "generated_at": "2026-08-07T03:58:10.715750",
+  "generated_at": "2026-08-08T03:30:24.583413",
   "score": 3.8,
   "itcm": {
     "valor": 61.9,
@@ -140,13 +140,13 @@
       "competitividad_externa": {
         "nombre": "Competitividad externa",
         "peso": 0.11,
-        "puntaje": 49.8,
+        "puntaje": 49.5,
         "indicadores": {
           "tcrm": {
             "peso": 1.0,
-            "puntaje_banda": 49.8,
-            "puntaje_aplicado": 49.8,
-            "valor": 85.93,
+            "puntaje_banda": 49.5,
+            "puntaje_aplicado": 49.5,
+            "valor": 85.82,
             "peso_efectivo": 0.11
           }
         },
@@ -236,10 +236,10 @@
       "peso_efectivo": 0.0336
     },
     "badlar": {
-      "valor": 20.88,
+      "valor": 22.0,
       "unidad": "% anual",
       "fuente": "BCRA — BADLAR bancos privados (API monetarias)",
-      "fecha_dato": "2026-08-05",
+      "fecha_dato": "2026-08-06",
       "desactualizado": false,
       "en_indice": false
     },
@@ -377,15 +377,15 @@
       "peso_efectivo": 0.072
     },
     "tcrm": {
-      "valor": 85.93,
+      "valor": 85.82,
       "unidad": "Índice (base dic-2015=100)",
       "fuente": "BCRA — Índice de Tipo de Cambio Real Multilateral (ITCRM)",
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "en_indice": true,
       "dimension": "competitividad_externa",
-      "puntaje_itcm": 49.8,
-      "puntaje_banda": 49.8,
+      "puntaje_itcm": 49.5,
+      "puntaje_banda": 49.5,
       "peso_efectivo": 0.11
     },
     "rem_ipc_12m": {
@@ -478,7 +478,7 @@
       "fecha_dato": "2026-06-01",
       "desactualizado": false,
       "nominal_ia": 44.9,
-      "detalle_txt": "nominal 44,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-06) — al 2026-08-04 (provisorio, no puntúa): 3,1% real con deflactor de 2026-06",
+      "detalle_txt": "nominal 44,9% i.a. deflactado por IPC — crédito realizado, no capacidad (IdC) (mes común: 2026-06) — al 2026-08-05 (provisorio, no puntúa): 2,9% real con deflactor de 2026-06",
       "en_indice": true,
       "dimension": "financiamiento",
       "puntaje_itcm": 54.0,
@@ -515,26 +515,26 @@
       "peso_efectivo": 0.12
     },
     "prestamos_privados": {
-      "valor": 1.98,
+      "valor": 1.56,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — préstamos al sector privado (API monetarias)",
-      "fecha_dato": "2026-08-04",
+      "fecha_dato": "2026-08-05",
       "desactualizado": false,
       "en_indice": false
     },
     "base_monetaria": {
-      "valor": 0.4,
+      "valor": 1.53,
       "unidad": "% mensual nominal",
       "fuente": "BCRA — base monetaria (API monetarias)",
-      "fecha_dato": "2026-08-04",
+      "fecha_dato": "2026-08-05",
       "desactualizado": false,
       "en_indice": false
     },
     "tc_mayorista": {
-      "valor": 0.41,
+      "valor": 0.51,
       "unidad": "% mensual",
       "fuente": "BCRA — TC mayorista A3500 (API monetarias)",
-      "fecha_dato": "2026-08-06",
+      "fecha_dato": "2026-08-07",
       "desactualizado": false,
       "en_indice": false
     }
