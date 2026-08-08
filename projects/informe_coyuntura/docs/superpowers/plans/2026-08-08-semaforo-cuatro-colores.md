@@ -501,15 +501,17 @@ class TestNoMovioNingunNumero:
     tocar; si alguno cambia, el cambio se salió del alcance."""
 
     def test_los_indices_siguen_donde_estaban(self, informe):
+        # Los valores se pinean contra el snapshot PREVIO al cambio, que el
+        # implementador congela en el Step 2 de esta tarea. Comparar el snapshot
+        # contra sí mismo no verificaría nada.
         cinturones = informe["cinturones"]
-        assert cinturones["macro"]["itcm"]["valor"] == pytest.approx(
-            cinturones["macro"]["itcm"]["valor"])
-        # Los valores concretos se pinean contra el snapshot previo al cambio,
-        # que el implementador captura en el Step 2 de esta tarea.
         esperado = json.loads((RAIZ / "tests" / "fixtures" /
                                "indices_previos_semaforo.json").read_text(encoding="utf-8"))
+        assert len(esperado["indices"]) == 4
         for cinturon, clave, valor in esperado["indices"]:
-            assert cinturones[cinturon][clave]["valor"] == pytest.approx(valor, abs=0.05)
+            assert cinturones[cinturon][clave]["valor"] == pytest.approx(valor, abs=0.05), (
+                f"el semáforo movió {clave}: {cinturones[cinturon][clave]['valor']} "
+                f"en vez de {valor}")
         assert informe["score_global"] == pytest.approx(esperado["score_global"], abs=0.05)
 ```
 
