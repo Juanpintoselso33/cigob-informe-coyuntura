@@ -1,4 +1,19 @@
-"""El semáforo publicado: cobertura, coherencia y que no movió ningún número."""
+"""El semáforo publicado: cobertura, coherencia y que no movió ningún número.
+
+Corre `publicar._semaforos()` EN MEMORIA sobre una copia profunda del
+snapshot ya committeado (`web/src/data/informe.json`), en vez de leer el
+resultado de una corrida real de `publicar.py`. Motivo: el snapshot
+committeado en esta rama no se regenera hasta la Task 8 (pipeline completo,
+se corre en `main` después del merge — así no choca con el cron nocturno).
+Si estos tests dependieran del snapshot ya publicado con `semaforo`,
+quedarían en rojo durante las Tasks 4-7 enteras, sin decir nada sobre si
+`_semaforos` sigue funcionando. El snapshot committeado YA pasó por
+`aplicar_scoring` (sin el paso `_semaforos`, que es justo lo que se agrega
+acá) así que trae todo lo que `_semaforos` necesita como insumo
+(`puntaje_itcm/itcg/itcp`, `indice_itvc`, `aporte_score`, `en_indice`,
+`valor`, `unidad`) — correrla en memoria sobre una copia es válido y no
+escribe ningún archivo (ADR-0179)."""
+import copy
 import json
 import sys
 from pathlib import Path
@@ -9,20 +24,41 @@ RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ / "scripts"))
 
 import parametrica
+import publicar
 
 SNAPSHOT = RAIZ / "web" / "src" / "data" / "informe.json"
 
 
-@pytest.fixture(scope="module")
-def informe():
+def _cargar_snapshot():
     with open(SNAPSHOT, encoding="utf-8") as f:
         return json.load(f)
+
+
+@pytest.fixture(scope="module")
+def informe():
+    """Copia del snapshot committeado con `_semaforos` aplicado en memoria."""
+    copia = copy.deepcopy(_cargar_snapshot())
+    publicar._semaforos(copia)
+    return copia
 
 
 def _indicadores(informe):
     for cinturon, bloque in informe["cinturones"].items():
         for ikey, ind in bloque["indicadores"].items():
             yield cinturon, ikey, ind
+
+
+def _indices_y_score(informe):
+    """Los cuatro índices + score_global: los números que `_semaforos` NO
+    puede tocar."""
+    c = informe["cinturones"]
+    return {
+        "itcm": c["macro"]["itcm"]["valor"],
+        "itcg": c["gestion"]["itcg"]["valor"],
+        "itcp": c["politica"]["itcp"]["valor"],
+        "itvc": c["vida_cotidiana"]["itvc"]["valor"],
+        "score_global": informe["score_global"],
+    }
 
 
 class TestCobertura:
@@ -88,20 +124,37 @@ class TestCoherencia:
             assert tramos[0]["color"] == sem["color"], f"{cinturon}/{ikey}"
 
 
+class TestTensionEnDominio:
+    """La tensión PUBLICADA (no el color) tiene que quedar en la escala 0-10
+    del informe. El color no la delata si se sale del dominio: los cuatro
+    cortes de CORTES_SEMAFORO caen todos adentro de [0, 10], así que un valor
+    fuera de rango puede seguir dando un color válido (visto en vida
+    cotidiana: mora_familias tensión 21,6, pobreza_nowcast −0,4, etc., todas
+    con color correcto pese a la tensión fuera de dominio — bug real que este
+    test existe para atajar)."""
+
+    def test_ninguna_tension_publicada_sale_de_0_10(self, informe):
+        fuera = [(c, k, i["semaforo"]["tension"]) for c, k, i in _indicadores(informe)
+                 if i.get("semaforo") and i["semaforo"]["tension"] is not None
+                 and not (0.0 <= i["semaforo"]["tension"] <= 10.0)]
+        assert fuera == []
+
+
 class TestNoMovioNingunNumero:
     """El semáforo es una capa de lectura. Estos son los números que NO puede
     tocar; si alguno cambia, el cambio se salió del alcance."""
 
-    def test_los_indices_siguen_donde_estaban(self, informe):
-        # Los valores se pinean contra el snapshot PREVIO al cambio, que el
-        # implementador congela en el Step 2 de esta tarea. Comparar el snapshot
-        # contra sí mismo no verificaría nada.
-        cinturones = informe["cinturones"]
-        esperado = json.loads((RAIZ / "tests" / "fixtures" /
-                               "indices_previos_semaforo.json").read_text(encoding="utf-8"))
-        assert len(esperado["indices"]) == 4
-        for cinturon, clave, valor in esperado["indices"]:
-            assert cinturones[cinturon][clave]["valor"] == pytest.approx(valor, abs=0.05), (
-                f"el semáforo movió {clave}: {cinturones[cinturon][clave]['valor']} "
-                f"en vez de {valor}")
-        assert informe["score_global"] == pytest.approx(esperado["score_global"], abs=0.05)
+    def test_los_indices_siguen_donde_estaban(self):
+        # Invariancia directa: mismo snapshot base, antes y después de
+        # aplicar _semaforos. Más fuerte que pinear contra una fixture
+        # congelada en un commit anterior (que solo prueba "no cambió desde
+        # tal momento", no "_semaforos específicamente no mueve nada").
+        base = _cargar_snapshot()
+        antes = _indices_y_score(base)
+
+        despues_informe = copy.deepcopy(base)
+        publicar._semaforos(despues_informe)
+        despues = _indices_y_score(despues_informe)
+
+        assert despues == antes, (
+            f"_semaforos movió un índice o el score global: {despues} en vez de {antes}")

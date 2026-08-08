@@ -451,7 +451,7 @@ def _macro_input_txt(ikey, ind):
         c, n = ind["componentes"], ind.get("niveles") or {}
         txt = (f"{coma(ind.get('valor'))} σ = precio {coma(c.get('precio'))} · "
                f"volumen {coma(c.get('volumen'))} · asignación {coma(c.get('asignacion'))} "
-               f"({ind.get('semaforo', '')})")
+               f"({ind.get('banda_idc', '')})")
         if n:
             txt += (f" — niveles: tasa real {coma(n.get('tasa_real_pp'))} pp · "
                     f"depósitos {coma(n.get('dep_real_ia_pct'))}% i.a. real · "
@@ -1780,7 +1780,13 @@ def _semaforos(informe):
                 umbrales = parametrica.umbrales_en_unidad(ikey, escala)
                 unidad = ind.get("unidad")
             elif isinstance(idx100, (int, float)):
-                tension = 5.0 - (float(idx100) - 100.0) * 0.2
+                # El COLOR usa la tensión cruda (sin acotar): es lo que hace
+                # que 0/10 en un componente lea "empujó el índice hacia
+                # arriba" en vez de "no aporta" (ver _scoring_vida_itvc). La
+                # TENSIÓN PUBLICADA sí se acota a [0, 10] — es la misma
+                # convención 0-10 que usa el resto del informe, y
+                # itvc.tension_de_itvc ya hace exactamente ese corte.
+                tension = itvc.tension_de_itvc(float(idx100))
                 color = parametrica.color_de_indice_base100(float(idx100))
                 umbrales, unidad = None, None
             elif ind.get("aporte_score") is not None:

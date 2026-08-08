@@ -612,7 +612,14 @@ def fetch_idc() -> dict | None:
         ym = max(zs)
         zp, zv, za, z = zs[ym]
         tasa_real, dep_real, holgura = base[ym]
-        semaforo = "verde" if z > 0.5 else "amarillo" if z >= -0.5 else "rojo"
+        # Nombre de campo `banda_idc`, no `semaforo`: este es un semáforo de 3
+        # colores propio del IDC (por z-score, ajeno al motor paramétrico),
+        # y colisionaba de nombre con el semáforo de 4 colores que publica
+        # publicar.py._semaforos sobre CADA indicador (ADR-0181). Antes de
+        # este rename, publicar.py leía este campo para armar
+        # aporte_input_txt del propio idc ANTES de que _semaforos lo
+        # pisara — funcionaba por orden de ejecución, no por diseño.
+        banda_idc = "verde" if z > 0.5 else "amarillo" if z >= -0.5 else "rojo"
         return {
             "valor": z,
             "unidad": "σ vs. su historia",
@@ -625,7 +632,7 @@ def fetch_idc() -> dict | None:
                         "holgura_pct": round(holgura, 1)},
             "ventana": f"{min(zs)} → {max(zs)} ({len(zs)} meses)",
             "badlar_real_mensual": round(tasa_real, 2),
-            "semaforo": semaforo,
+            "banda_idc": banda_idc,
             "desactualizado": False,
         }
     except Exception as e:
