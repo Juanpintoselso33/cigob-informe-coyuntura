@@ -139,6 +139,17 @@ class TestUmbralesEnUnidad:
         bordes = [b for t in tramos for b in (t["desde"], t["hasta"]) if b is not None]
         assert max(bordes) > 5.0, f"parecen equivalentes mensuales, no anuales: {bordes}"
 
+    def test_transformacion_creciente_no_dispara_la_guarda_de_orden(self):
+        # rem_ipc_12m es la única transformación declarada hoy y es creciente
+        # (más REM anual → más equivalente mensual): el camino soportado.
+        # Cubre la rama sana de la guarda que hace ValueError ante una
+        # inversa decreciente (ninguna existe todavía, así que esa rama no
+        # tiene un test propio — queda documentada en el comentario del código).
+        tramos = parametrica.umbrales_en_unidad("rem_ipc_12m", ESCALA_ITCM)
+        for tramo in tramos:
+            if tramo["desde"] is not None and tramo["hasta"] is not None:
+                assert tramo["desde"] <= tramo["hasta"], tramo
+
     def test_sin_bandas_devuelve_none(self):
         assert parametrica.umbrales_en_unidad("no_existe", ESCALA_ITCG) is None
 

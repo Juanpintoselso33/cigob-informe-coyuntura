@@ -195,11 +195,20 @@ def umbrales_en_unidad(indicador: str, escala: "Escala") -> list | None:
             for k in ("desde", "hasta"):
                 if tramo[k] is not None:
                     tramo[k] = round(float(inversa(tramo[k])), 4)
-        if any(tramo["desde"] is not None and tramo["hasta"] is not None
-               and tramo["desde"] > tramo["hasta"] for tramo in tramos):
-            for tramo in tramos:                # la inversa puede invertir el orden
-                tramo["desde"], tramo["hasta"] = tramo["hasta"], tramo["desde"]
-            tramos.reverse()
+        # Si la inversa fuera decreciente, invertiría el orden desde/hasta de
+        # cada tramo. Ningún indicador real la ejercita hoy (la única
+        # transformación declarada, la de rem_ipc_12m, es creciente), así que
+        # reordenar en silencio dejaría en producción una rama sin ningún test
+        # que la pise. Preferible fallar fuerte: el día que aparezca una
+        # inversa decreciente, hay que sumarle soporte explícito y su test.
+        for tramo in tramos:
+            if (tramo["desde"] is not None and tramo["hasta"] is not None
+                    and tramo["desde"] > tramo["hasta"]):
+                raise ValueError(
+                    f"{indicador}: la inversa de la transformación invierte el "
+                    "orden del tramo (desde > hasta); las inversas decrecientes "
+                    "no están soportadas todavía."
+                )
     return tramos
 
 
