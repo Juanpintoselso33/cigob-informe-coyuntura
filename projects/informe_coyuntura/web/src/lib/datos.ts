@@ -172,13 +172,21 @@ export function mesLegible(period: string): string {
   return m ? `${MESES_LARGO[+m[2] - 1]} ${m[1]}` : period;
 }
 
-// Semáforo de una dimensión, derivado de la fórmula de tensión publicada de
-// cada índice — no es un umbral nuevo: bandas: tensión = (100−p)/10 → verde
-// tensión ≤4 (p≥60), rojo >6 (p<40); base-100 (ITVC): tensión = 5−(p−100)×0,2
-// → verde p≥95, rojo p<90.
-export function semaforoDimension(puntaje: number, base100: boolean): "verde" | "amarillo" | "rojo" {
-  if (base100) return puntaje >= 95 ? "verde" : puntaje >= 90 ? "amarillo" : "rojo";
-  return puntaje >= 60 ? "verde" : puntaje >= 40 ? "amarillo" : "rojo";
+export type ColorSemaforo = "verde" | "amarillo" | "naranja" | "rojo";
+
+// El color LO CALCULA parametrica.py y viaja en el snapshot (ADR-0181). Acá
+// solo se lee: si el cliente lo recalculara, habría dos definiciones del corte
+// y se desincronizarían sin que falle nada. Hasta agosto de 2026 esta función
+// calculaba 3 colores en el cliente, con una vara distinta para el ITVC
+// base-100 (verde a tensión 6) que para los índices 0-100 (verde a tensión 4).
+// Si falta el bloque `semaforo` (p. ej. asistencia_directa, fuera del índice)
+// cae en "amarillo": ni la falsa calma de verde ni la falsa alarma de rojo
+// para un dato que simplemente no se puntúa.
+export function semaforoDe(x: { semaforo?: { color?: string } } | null | undefined): ColorSemaforo {
+  const c = x?.semaforo?.color;
+  return c === "verde" || c === "amarillo" || c === "naranja" || c === "rojo"
+    ? c
+    : "amarillo";
 }
 
 // Peor dimensión (la que más tensión aporta) del índice de un cinturón.

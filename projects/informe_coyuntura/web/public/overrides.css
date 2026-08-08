@@ -82,10 +82,15 @@
 .cg-tile--vida     { border-top-color: var(--c-vida); }
 .cg-tile--gestion  { border-top-color: var(--c-gestion); }
 .cg-tile--espiritu { border-top-color: var(--c-humor); }
-.cg-tile-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+/* justify-content: flex-start (no space-between): con el punto del semáforo
+   pasan a ser TRES hijos, y space-between hubiera repartido el espacio libre
+   entre los tres separando el punto del nombre. El badge se empuja al borde
+   con margin-left: auto en vez de eso — mismo recurso que .cg-tile-micro más
+   abajo. */
+.cg-tile-head { display: flex; align-items: flex-start; gap: 8px; }
 .cg-tile-name { font-size: 13.5px; font-weight: 800; color: var(--dark); line-height: 1.25; }
 .cg-tile-badge {
-    flex-shrink: 0; font-size: 9px; font-weight: 800; text-transform: uppercase;
+    flex-shrink: 0; margin-left: auto; font-size: 9px; font-weight: 800; text-transform: uppercase;
     letter-spacing: .05em; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--bd);
     white-space: nowrap;
 }

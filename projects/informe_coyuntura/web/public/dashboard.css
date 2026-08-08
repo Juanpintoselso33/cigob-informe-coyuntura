@@ -383,6 +383,15 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
         var(--rojo), var(--rojo) 4px, #B91C1C 4px, #B91C1C 7px);
 }
 .cg-genoma-seg.is-critica   { box-shadow: 0 0 0 1.5px var(--rojo); }
+/* Punto de color del semáforo en la card de indicador (IndicadorTile): mismo
+   corte de 4 colores que el genoma del cinturón, a escala de indicador. Va
+   con aria-hidden — el número y el "por qué" del tooltip llevan la misma
+   información sin depender del color. */
+.cg-tile-dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px; align-self: center; }
+.cg-tile-dot.sem-verde    { background: var(--verde); }
+.cg-tile-dot.sem-amarillo { background: var(--amarillo); }
+.cg-tile-dot.sem-naranja  { background: var(--naranja); }
+.cg-tile-dot.sem-rojo     { background: var(--rojo); }
 .cg-genoma-tip {
     position: absolute; left: 0; right: 0; bottom: calc(100% + 8px);
     background: var(--paper); border: 1px solid var(--bd); border-radius: 8px;

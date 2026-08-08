@@ -26,3 +26,21 @@ class TestTokensCss:
         css = CSS.read_text(encoding="utf-8")
         for color in COLORES:
             assert re.search(rf"\.cg-verdict\.{color}\s+\.cg-verdict-dot", css), f"falta punto de {color} en verdict"
+
+
+class TestSinCortesDuplicadosEnTs:
+    def test_datos_ts_no_recalcula_el_semaforo(self):
+        """Los cortes viven solo en parametrica.py. Si el cliente los repite,
+        se desincronizan sin que falle nada."""
+        ts = (LIB / "datos.ts").read_text(encoding="utf-8")
+        assert "semaforoDimension" not in ts, (
+            "semaforoDimension calculaba el color en el cliente; "
+            "tiene que leer el color publicado")
+        assert "semaforoDe" in ts, "falta el lector semaforoDe"
+
+    def test_ningun_corte_del_semaforo_hardcodeado_en_ts(self):
+        prohibidos = (">= 95", ">= 90", ">= 105", ">= 85")
+        for archivo in LIB.glob("*.ts"):
+            texto = archivo.read_text(encoding="utf-8")
+            for patron in prohibidos:
+                assert patron not in texto, f"{archivo.name}: corte hardcodeado {patron}"

@@ -1,5 +1,5 @@
 ---
-import { presentacion, label, visualDe, badgeEstado, periodoDato, series, formatValor } from "../lib/datos.ts";
+import { presentacion, label, visualDe, badgeEstado, periodoDato, series, formatValor, semaforoDe } from "../lib/datos.ts";
 import { DESCRIPCIONES } from "../lib/descripciones.ts";
 import { chartPath } from "../lib/sparkline.ts";
 
@@ -7,6 +7,7 @@ const { ikey, ind, slug } = Astro.props;
 const pres = presentacion(ikey, ind);
 const vis = visualDe(ikey, ind);
 const badge = badgeEstado(ind);
+const color = semaforoDe(ind);
 const badgeCls = badge === "Automático" ? "auto" : badge === "Carga manual" ? "manual" : "estim";
 // El chip muestra el período del dato en vez del rótulo "Automático" (que no
 // informaba nada); manual/estimación conservan su rótulo — ahí el origen ES
@@ -32,6 +33,7 @@ const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) 
 ---
 <article class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable"]} data-indicador={ikey} data-cinturon={slug}>
   <div class="cg-tile-head">
+    <span class:list={["cg-tile-dot", `sem-${color}`]} title={ind.semaforo?.por_que ?? undefined} aria-hidden="true"></span>
     <span class="cg-tile-name">{label(ikey)}</span>
     <span class:list={["cg-tile-badge", badgeCls]} title={chipTitle}>{chip}</span>
   </div>

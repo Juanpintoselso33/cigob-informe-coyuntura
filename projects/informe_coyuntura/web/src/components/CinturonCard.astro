@@ -1,5 +1,5 @@
 ---
-import { verdictDeCinturon, indicadoresOrdenados, cap, indiceDe, semaforoDimension, peorDimension, num } from "../lib/datos.ts";
+import { verdictDeCinturon, indicadoresOrdenados, cap, indiceDe, semaforoDe, peorDimension, num } from "../lib/datos.ts";
 import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import IndicadorRow from "./IndicadorRow.astro";
 const { slug, nombre, sub, cinturon } = Astro.props;
@@ -42,7 +42,7 @@ const peor = peorDimension(cinturon);
           <>
             <button
               type="button"
-              class:list={["cg-genoma-seg", `sem-${semaforoDimension(dim.puntaje, !!indice.base100)}`, "cg-dim--clickable", { "is-critica": dim.critica }]}
+              class:list={["cg-genoma-seg", `sem-${semaforoDe(dim)}`, "cg-dim--clickable", { "is-critica": dim.critica }]}
               data-dimension={dkey} data-cinturon={slug}
               style={`flex-grow:${pesoPct(dim)};`}
               aria-label={`${dim.nombre}: puntaje ${num(dim.puntaje)}, pesa ${pesoPct(dim)}% del índice — tocá para ver qué mide`}></button>
