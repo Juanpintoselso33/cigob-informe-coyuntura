@@ -7,6 +7,7 @@ cinturon: 'politica'
 archivos: ['procedencia_anclas.py']
 continua: ['0120']
 cierra: ['0103']
+relacionado: ['0181']
 ambito: 'ITCG · ITCP · comentarios de bandas · `procedencia_anclas.py` · trinquete'
 ---
 

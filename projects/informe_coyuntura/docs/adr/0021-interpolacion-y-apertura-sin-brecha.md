@@ -7,7 +7,7 @@ fecha: 2026-07-03
 cinturon: 'gestion'
 indicadores: [apertura_comercial]
 supersede: ['0013']
-relacionado: ['0054', '0055', '0056', '0069', '0071', '0072', '0075', '0076', '0081']
+relacionado: ['0054', '0055', '0056', '0069', '0071', '0072', '0075', '0076', '0081', '0181']
 ---
 
 # ADR-0021 — Puntaje interpolado en ITCM/ITCG y apertura comercial sin brecha

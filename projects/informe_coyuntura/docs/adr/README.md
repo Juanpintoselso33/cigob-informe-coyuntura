@@ -163,6 +163,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0170](0170-judicializacion-y-paralisis-pasan-a-fuente-viva.md) | Judicialización y parálisis de denuncias pasan a fuente viva | `judicializacion`, `paralisis_denuncias` | vigente |
 | [0171](0171-la-lectura-por-partes-no-ordena-empates.md) | La lectura por partes no ordena empates |  | vigente |
 | [0172](0172-la-serie-termina-donde-esta-la-card.md) | La serie termina donde está la card |  | vigente |
+| [0183](0183-rediseno-del-cinturon-politico.md) | Rediseño del cinturón político según el documento de agosto: registrado, no aplicado |  | propuesto |
 
 ### Gestión (ITCG)
 
@@ -263,5 +264,5 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0178](0178-los-tests-no-escriben-en-el-arbol.md) | Los tests no escriben en el árbol |  | vigente |
 | [0179](0179-ningun-test-escribe-en-un-archivo-versionado.md) | Ningún test escribe en un archivo versionado |  | vigente |
 | [0180](0180-integracion-con-la-plataforma-google.md) | Integración con la plataforma Google: medición, indexación y warehouse |  | vigente |
-| [0181](0181-semaforo-de-4-colores.md) | Semáforo de 4 colores |  | vigente |
-| [0182](0182-umbrales-en-unidad-propia.md) | Umbrales de color en unidad propia de cada índice |  | vigente |
+| [0181](0181-el-color-es-la-tension-que-ya-se-publica.md) | El color es la tensión que ya se publica, no una escala nueva |  | vigente |
+| [0182](0182-los-umbrales-del-semaforo-se-calculan.md) | Los umbrales del semáforo se calculan, no se escriben |  | vigente |
