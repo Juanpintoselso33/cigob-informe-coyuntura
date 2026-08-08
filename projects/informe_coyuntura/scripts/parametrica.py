@@ -92,6 +92,36 @@ def tension_de_indice(indice: float) -> float:
     return round((100.0 - indice) / 10.0, 1)
 
 
+# ── Semáforo de 4 colores (ADR-0181) ──────────────────────────────────────────
+# El color NO es una escala nueva: es la tensión 0-10 que el informe ya publica,
+# partida en cuatro tramos. Para los índices 0-100 eso da los cortes 60/40/20,
+# que son los bordes de BANDAS_INTERPRETACION; para el ITVC base-100 sale de
+# despejar su propia fórmula (tensión = 5 − (índice−100) × 0,2).
+#
+# El color se calcula SIEMPRE sobre la tensión sin redondear. `aporte_score` en
+# el snapshot está redondeado a un decimal y usarlo acá rompe el borde: puntaje
+# 59,9 da tensión 4,01, que redondeada es 4,0 y saldría verde.
+CORTES_SEMAFORO = (("verde", 4.0), ("amarillo", 6.0), ("naranja", 8.0), ("rojo", INF))
+
+
+def color_de_tension(tension: float) -> str:
+    """Color del semáforo para una tensión 0-10 (sin redondear)."""
+    for color, tope in CORTES_SEMAFORO:
+        if tension <= tope:
+            return color
+    return CORTES_SEMAFORO[-1][0]
+
+
+def color_de_puntaje(puntaje: float) -> str:
+    """Color de un puntaje 0-100 (ITCM/ITCG/ITCP), vía su tensión equivalente."""
+    return color_de_tension((100.0 - float(puntaje)) / 10.0)
+
+
+def color_de_indice_base100(indice: float) -> str:
+    """Color de un índice base-100 (ITVC), vía su fórmula de tensión publicada."""
+    return color_de_tension(5.0 - (float(indice) - 100.0) * 0.2)
+
+
 def texto_bandas(bandas: list) -> str:
     """Texto legible de una tabla de bandas, para transparencia en el frontend."""
     partes = []
