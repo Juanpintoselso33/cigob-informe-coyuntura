@@ -140,6 +140,41 @@ class TestTensionEnDominio:
         assert fuera == []
 
 
+class TestPorQue:
+    """`_por_que` arma "a X del corte más cercano" -- tiene que comparar las
+    DOS distancias del tramo (a `desde` y a `hasta`), no asumir que el corte
+    más cercano es siempre `desde`.
+
+    Bug real de la revisión final de esta rama: tomaba `desde` cuando existía
+    y nunca miraba `hasta`, así que en cualquier tramo donde el valor cae más
+    cerca de `hasta` la prosa publicaba la distancia al corte LEJANO. Afectó
+    12/49 indicadores del snapshot real -- p. ej. `ratio_dnu` (tramo
+    naranja 1,6–1,8667, valor 1,84): el corte más cercano es `hasta` a 0,03,
+    y la versión rota publicaba 0,24 (la distancia a `desde`)."""
+
+    def test_toma_el_borde_mas_cercano_cuando_es_hasta(self):
+        # Tramo [10, 20]; el valor 19 está a 9 de `desde` y a 1 de `hasta` --
+        # el corte más cercano es `hasta`, no `desde`.
+        tramo = [{"color": "amarillo", "desde": 10.0, "hasta": 20.0}]
+        frase = publicar._por_que("amarillo", 19.0, "%", tramo)
+        assert "a 1,0 del corte más cercano" in frase, frase
+        assert "a 9,0 del corte más cercano" not in frase, (
+            "publicó la distancia al borde lejano (desde) en vez del cercano (hasta)")
+
+    def test_sigue_tomando_desde_cuando_es_el_mas_cercano(self):
+        # Mismo tramo, valor 11: ahora el más cercano es `desde` (distancia 1).
+        tramo = [{"color": "amarillo", "desde": 10.0, "hasta": 20.0}]
+        frase = publicar._por_que("amarillo", 11.0, "%", tramo)
+        assert "a 1,0 del corte más cercano" in frase, frase
+
+    def test_borde_abierto_usa_el_unico_borde_finito(self):
+        # `desde=None` (tramo abierto por abajo): no hay dos distancias para
+        # comparar, tiene que seguir usando el único borde finito (`hasta`).
+        tramo = [{"color": "verde", "desde": None, "hasta": 6.0}]
+        frase = publicar._por_que("verde", 5.0, "%", tramo)
+        assert "a 1,0 del corte más cercano" in frase, frase
+
+
 class TestNoMovioNingunNumero:
     """El semáforo es una capa de lectura. Estos son los números que NO puede
     tocar; si alguno cambia, el cambio se salió del alcance."""

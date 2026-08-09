@@ -196,3 +196,46 @@ class TestVerdictDeCinturonConoceElVocabularioDeEstado:
             f"verdictDeCinturon compara contra {fantasma}, que _estado() "
             f"nunca produce (vocabulario real: {reales})"
         )
+
+
+class TestNingunEstadoFantasmaEnTodoElArchivo:
+    """Las dos pruebas de arriba solo miran el CUERPO de `verdictDeCinturon`.
+    Eso no alcanza: el bug original no nació en el cuerpo de la función, nació
+    en el comentario de tipo de `Cinturon.estado` ("estable | en_tension |
+    critico") que documentaba mal el vocabulario -- de ahí es de donde
+    cualquiera que toque `verdictDeCinturon` copia los nombres. Arreglar solo
+    la función y dejar el comentario roto siembra la próxima recurrencia.
+
+    Estos dos tests generalizan la Dirección 2 (ningún fantasma) a TODO
+    `datos.ts`, no solo al cuerpo de una función nombrada."""
+
+    def test_el_comentario_de_tipo_de_cinturon_estado_no_lista_un_fantasma(self):
+        ts = DATOS_TS.read_text(encoding="utf-8")
+        m = re.search(r"estado:\s*string;\s*//\s*(.+)", ts)
+        assert m, "no se encontró el comentario de tipo de Cinturon.estado"
+        listados = {v.strip() for v in m.group(1).split("|")}
+        reales = _estados_reales()
+        assert listados == reales, (
+            f"el comentario de tipo de Cinturon.estado lista {listados}, "
+            f"pero _estado() solo emite {reales}"
+        )
+
+    def test_ninguna_comparacion_de_estado_en_todo_el_archivo_es_fantasma(self):
+        """Generaliza la Dirección 2 más allá de `verdictDeCinturon`: si
+        mañana otra función de datos.ts repitiera el patrón `estado === "X"`
+        con un valor fantasma, este test lo atrapa aunque esa función nunca
+        se llame `verdictDeCinturon`.
+
+        El identificador bare `estado` (sin objeto por delante) es el
+        parámetro de cinturón que usa `verdictDeCinturon` -- `(?<!\\.)`
+        excluye a propósito `ind.estado` / `c.estado`, que son el `estado`
+        POR INDICADOR (vocabulario "placeholder"/"fresco"/etc., un campo
+        distinto sin relación con los tres valores de `_estado()`)."""
+        ts = DATOS_TS.read_text(encoding="utf-8")
+        comparados = set(re.findall(r'(?<!\.)\bestado\s*===\s*"(\w+)"', ts))
+        reales = _estados_reales()
+        fantasma = comparados - reales
+        assert not fantasma, (
+            f"datos.ts compara estado contra {fantasma} en algún lugar del "
+            f"archivo, valor que _estado() nunca produce (real: {reales})"
+        )

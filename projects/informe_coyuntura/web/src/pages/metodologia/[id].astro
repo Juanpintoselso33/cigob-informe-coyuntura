@@ -44,11 +44,17 @@ const numero = (valor: unknown): number | null =>
 // tiene el óptimo en el medio, así que amarillo y naranja quedan partidos en
 // dos tramos, uno a cada lado (ADR-0182).
 function rangoLegible(t: { desde: number | null; hasta: number | null }): string {
-  const n = (x: number) => String(x).replace(".", ",");
+  // `num()` (datos.ts) es el ÚNICO formateador de números para pantalla del
+  // proyecto: separador de miles es-AR, coma decimal, menos tipográfico
+  // U+2212. Antes esta función tenía su propio `String(x).replace(".", ",")`
+  // -- sin separador de miles (desregulación publicaba "≥ 11000" mientras su
+  // propia tabla de anclas, dos secciones arriba, mostraba "13.300"), con
+  // guion ASCII en vez de U+2212, y sin techo de precisión (el ruido de
+  // redondeo de la interpolación salía entero: "≥ 39,2892%").
   if (t.desde === null && t.hasta === null) return "todo el rango";
-  if (t.desde === null) return `≤ ${n(t.hasta!)}`;
-  if (t.hasta === null) return `≥ ${n(t.desde)}`;
-  return `${n(t.desde)} – ${n(t.hasta)}`;
+  if (t.desde === null) return `≤ ${num(t.hasta)}`;
+  if (t.hasta === null) return `≥ ${num(t.desde)}`;
+  return `${num(t.desde)} – ${num(t.hasta)}`;
 }
 
 // ── Datos runtime según el tipo de ficha ────────────────────────────────

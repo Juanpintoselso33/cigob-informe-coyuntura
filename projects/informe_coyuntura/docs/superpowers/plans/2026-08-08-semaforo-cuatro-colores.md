@@ -20,7 +20,7 @@
 - **Nunca `git add -A` ni `git add .`** en este repo (OneDrive restaura snapshots viejos encima de los buenos). Cada commit stagea archivos explícitos.
 - **Tests con el pool limitado** si se corre algo en paralelo; `pytest` de este repo es secuencial y no necesita flags.
 - **Convención de bordes del motor:** low exclusivo, high inclusivo. El semáforo la respeta: puntaje 60,0 es verde, 59,9 es amarillo.
-- **Dos conceptos de color conviven, y acá no se unifican.** `verdictDeCinturon(estado)` pinta el chip del cinturón desde su `estado` editorial (`estable` / `en_tension` / `alerta` / `critico`) y **sigue con 3 colores**: ese enum alimenta el BLUF, el panel de tensión, `cinturonesRojos` y `score_global`, así que cambiarlo sería un cambio de índice y no de presentación — justamente lo que §4.4 de la spec prohíbe. El semáforo nuevo pinta indicadores, dimensiones e índices desde la tensión, con 4 colores. `.cg-verdict` es la clase de chip compartida —está indexada por nombre de color, no por qué concepto lo produjo— y se le agrega `naranja`. Unificar el chip del cinturón con el color de su índice queda como pendiente declarado, no como olvido.
+- **Dos conceptos de color conviven, y acá no se unifican.** `verdictDeCinturon(estado)` pinta el chip del cinturón desde su `estado` editorial (`estable` / `en_tension` / `tensionado`, los tres únicos valores que emite `_estado()`) y **sigue con 3 colores**: ese enum alimenta el BLUF, el panel de tensión y `cinturonesRojos`, así que cambiarlo sería un cambio de índice y no de presentación — justamente lo que §4.4 de la spec prohíbe. (`score_global` no es parte de esa cadena: es un promedio ponderado de los *scores* 0-10 de cada cinturón, y `estado` se deriva por separado de ese mismo score vía `_estado()` — son dos lecturas del mismo número, no una alimenta a la otra.) El semáforo nuevo pinta indicadores, dimensiones e índices desde la tensión, con 4 colores. `.cg-verdict` es la clase de chip compartida —está indexada por nombre de color, no por qué concepto lo produjo— y se le agrega `naranja`. Unificar el chip del cinturón con el color de su índice queda como pendiente declarado, no como olvido.
 
 ## File Structure
 
@@ -1092,17 +1092,27 @@ Un color que está en un commit y no en la página no está entregado.
 
 **Files:** ninguno nuevo — se corre el pipeline y se verifica.
 
-- [ ] **Step 1: Correr la ruta acotada**
+- [ ] **Step 1: Correr la ruta acotada — sin saltarse el colector que sí se tocó**
 
-El cambio es de presentación y no toca colectores, así que **no** hace falta el
-pipeline completo. Alcanza con regenerar y publicar:
+La capa de semáforo en sí es de presentación, pero la Task 3 **sí** tocó un
+colector: `scripts/macro.py:635` renombró el campo `semaforo` → `banda_idc`
+que lee `publicar.py:454` para armar el texto del modal de `idc`. Eso es
+exactamente el caso "un cinturón tocado" de CLAUDE.md (macro), así que el
+primer paso de la ruta acotada es ese colector — **no** el pipeline completo
+de los cinco cinturones, pero tampoco cero colectores:
 
 ```bash
+python scripts/macro.py
 python scripts/generar_informe.py
 python scripts/publicar.py
 python scripts/gate_calidad.py
 python -m pytest tests -q
 ```
+
+Si se omite `scripts/macro.py`, `output/cache/macro.json` se queda con la
+clave vieja (`semaforo`) y sin la nueva (`banda_idc: null`), y el modal
+público de `idc` publica el texto con el paréntesis vacío: "… asignación
+−1,11 () — niveles: …".
 
 Expected: gate y pytest en verde. Son dos puertas distintas: que pase el gate
 no implica que pasen los tests de reconciliación.

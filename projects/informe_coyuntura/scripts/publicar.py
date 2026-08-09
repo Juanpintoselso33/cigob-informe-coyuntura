@@ -1749,9 +1749,10 @@ def _por_que(color, valor, unidad, tramos):
                    and (t["hasta"] is None or valor <= t["hasta"])), None)
     if actual is None:
         return None
-    borde = actual["desde"] if actual["desde"] is not None else actual["hasta"]
-    if borde is None:
+    bordes = [b for b in (actual["desde"], actual["hasta"]) if b is not None]
+    if not bordes:
         return f"{coma(valor)} {unidad}: {color.capitalize()} en todo el rango."
+    borde = min(bordes, key=lambda b: abs(valor - b))
     return (f"{coma(valor)} {unidad} cae en el tramo que corresponde a "
             f"{color.capitalize()}, a {coma(round(abs(valor - borde), 2))} "
             f"del corte más cercano.")

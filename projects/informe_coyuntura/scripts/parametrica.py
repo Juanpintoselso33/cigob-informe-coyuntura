@@ -180,7 +180,11 @@ def umbrales_en_unidad(indicador: str, escala: "Escala") -> list | None:
             medio = (desde + hasta) / 2.0
         color = color_de_puntaje(puntaje_desde_anclas(medio, anclas))
         if tramos and tramos[-1]["color"] == color:
-            tramos[-1]["hasta"] = hasta        # fusiona tramos contiguos del mismo color
+            # fusiona tramos contiguos del mismo color — redondeado igual que
+            # el path de abajo, o el borde fusionado queda con los 6
+            # decimales crudos del quiebre mientras el tramo siguiente lo
+            # repite ya redondeado a 4 (visible en costo_financiamiento_tesoro).
+            tramos[-1]["hasta"] = None if hasta is None else round(hasta, 4)
             continue
         tramos.append({"color": color,
                        "desde": None if desde is None else round(desde, 4),

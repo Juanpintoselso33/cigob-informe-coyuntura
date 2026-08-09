@@ -66,7 +66,7 @@ export interface IndiceParametrico {
 }
 export interface Cinturon {
   score: number;
-  estado: string;         // estable | en_tension | critico
+  estado: string;         // estable | en_tension | tensionado
   barbarismo_riesgo: string;
   indicadores: Record<string, Indicador>;
   alerta: string | null;

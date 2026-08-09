@@ -160,3 +160,19 @@ class TestUmbralesEnUnidad:
                 tramos = parametrica.umbrales_en_unidad(indicador, escala)
                 vistos = [(t["color"], t["desde"], t["hasta"]) for t in tramos]
                 assert len(vistos) == len(set(vistos)), f"{indicador}: tramos repetidos"
+
+    def test_ningun_borde_tiene_mas_de_4_decimales(self):
+        # El path que FUSIONA tramos contiguos del mismo color asignaba el
+        # quiebre crudo (`round(x, 6)`) en vez de redondear a 4 decimales
+        # como el path de abajo -- costo_financiamiento_tesoro quedaba con
+        # "≤ -3,571429" en un tramo y "-3,5714 – ..." en el contiguo: el
+        # mismo borde, publicado dos veces con distinta precisión.
+        for sigla, escala in ESCALAS.items():
+            for indicador in escala.bandas:
+                tramos = parametrica.umbrales_en_unidad(indicador, escala)
+                for tramo in tramos:
+                    for borde in (tramo["desde"], tramo["hasta"]):
+                        if borde is None:
+                            continue
+                        assert borde == round(borde, 4), (
+                            f"{sigla}/{indicador}: borde con más de 4 decimales: {borde}")
