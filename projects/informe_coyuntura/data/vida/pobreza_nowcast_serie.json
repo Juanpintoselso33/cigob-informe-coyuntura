@@ -1,0 +1,124 @@
+{
+  "_meta": {
+    "fuente": "UTDT — Nowcast de Pobreza (González-Rozada), informes mensuales PDF",
+    "actualizado": "2026-08-09",
+    "nota": "Cada informe se lee una sola vez en su vida (ADR-0113); cada corrida valida las URL ya conocidas con un HEAD (Content-Length) y sólo re-lee la que cambió de tamaño — ver docstring de fetch_pobreza_nowcast_serie en descargar_series.py."
+  },
+  "informes": {
+    "_165757190787894000.pdf": {
+      "periodo": null,
+      "valor": null,
+      "content_length": 36669
+    },
+    "_173144609308498200.pdf": {
+      "periodo": null,
+      "valor": null,
+      "content_length": 1171163
+    },
+    "_173396023962915800.pdf": {
+      "periodo": null,
+      "valor": null,
+      "content_length": 1212912
+    },
+    "_173524235834907300.pdf": {
+      "periodo": null,
+      "valor": null,
+      "content_length": 647134
+    },
+    "_173559489269933100.pdf": {
+      "periodo": null,
+      "valor": null,
+      "content_length": 314438
+    },
+    "_173947738989487900.pdf": {
+      "periodo": "2025-01",
+      "valor": 35.8,
+      "content_length": 306185
+    },
+    "_174198643380076500.pdf": {
+      "periodo": "2025-02",
+      "valor": 34.9,
+      "content_length": 314465
+    },
+    "_174440258875089800.pdf": {
+      "periodo": "2025-03",
+      "valor": 36.1,
+      "content_length": 319943
+    },
+    "_174725751517959400.pdf": {
+      "periodo": "2025-04",
+      "valor": 35.4,
+      "content_length": 325426
+    },
+    "_174976285421694100.pdf": {
+      "periodo": "2025-05",
+      "valor": 34.7,
+      "content_length": 328591
+    },
+    "_175252670248265400.pdf": {
+      "periodo": "2025-06",
+      "valor": 31.6,
+      "content_length": 340299
+    },
+    "_175517518601599400.pdf": {
+      "periodo": "2025-07",
+      "valor": 31.1,
+      "content_length": 302937
+    },
+    "_175753727750593200.pdf": {
+      "periodo": "2025-08",
+      "valor": 31.1,
+      "content_length": 510266
+    },
+    "_176047579896591900.pdf": {
+      "periodo": "2025-09",
+      "valor": 30.7,
+      "content_length": 520616
+    },
+    "_176304014697962300.pdf": {
+      "periodo": "2025-10",
+      "valor": 30.7,
+      "content_length": 526070
+    },
+    "_176548885949059100.pdf": {
+      "periodo": "2025-11",
+      "valor": 31.0,
+      "content_length": 541679
+    },
+    "_176833860242068300.pdf": {
+      "periodo": "2025-12",
+      "valor": 30.6,
+      "content_length": 502537
+    },
+    "_177092971096373300.pdf": {
+      "periodo": "2026-01",
+      "valor": 30.2,
+      "content_length": 967004
+    },
+    "_177334930254038900.pdf": {
+      "periodo": "2026-02",
+      "valor": 30.6,
+      "content_length": 957121
+    },
+    "_177670649308033200.pdf": {
+      "periodo": "2026-03",
+      "valor": 29.0,
+      "content_length": 958635
+    },
+    "_177879604483823000.pdf": {
+      "periodo": "2026-04",
+      "valor": 29.2,
+      "content_length": 944802
+    },
+    "_178163550204131300.pdf": {
+      "periodo": "2026-05",
+      "valor": 29.6,
+      "content_length": 944153
+    },
+    "_178423269927738400.pdf": {
+      "periodo": "2026-06",
+      "valor": 31.6,
+      "content_length": 945227
+    }
+  }
+}

@@ -11,6 +11,7 @@ import re
 import time
 import signal
 import calendar
+import functools
 import requests
 import urllib3
 from contextlib import contextmanager
@@ -459,6 +460,32 @@ def fetch_ipc_nucleo_serie() -> list:
 POBREZA_INDEC_ID = "64.2_POBLACION_NUA_0_0_34_74"   # INDEC EPH, % personas, TOTAL, semestral
 
 
+def _una_sola_vez_por_corrida(fn):
+    """Memoiza un fetcher sin argumentos: la corrida lo pide más de una vez y
+    la fuente se lee una sola.
+
+    Existe por un caso medido, no por prolijidad. `itvc_pobreza` se construye
+    a partir de las OTRAS dos series de pobreza, así que `pobreza_nowcast` y
+    `pobreza_indec` se pedían dos veces cada una por corrida. La del nowcast
+    baja y parsea TODOS los informes PDF publicados de la UTDT —su propio
+    docstring avisa que es caro y por eso no vive en el colector diario— y
+    tarda más de seis minutos y medio por pasada. Se pagaba dos veces.
+
+    Devuelve una copia: el llamador recibe una lista propia y no puede
+    ensuciar la de los demás.
+    """
+    @functools.lru_cache(maxsize=1)
+    def _cacheado():
+        return fn()
+
+    @functools.wraps(fn)
+    def _wrapper():
+        return [list(x) for x in _cacheado()]
+    _wrapper.cache_clear = _cacheado.cache_clear
+    return _wrapper
+
+
+@_una_sola_vez_por_corrida
 def fetch_pobreza_indec_serie() -> list:
     """Tasa OFICIAL de pobreza (INDEC, EPH continua): % de personas bajo la
     línea, total de aglomerados urbanos, semestral desde 2003 (ADR-0114).
@@ -504,15 +531,125 @@ def fetch_itvc_pobreza() -> list:
             for f, v in fetch_pobreza_nowcast_serie() if v]
 
 
+POBREZA_NOWCAST_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "pobreza_nowcast_serie.json"
+
+
+@_una_sola_vez_por_corrida
 def fetch_pobreza_nowcast_serie() -> list:
     """Serie del Nowcast de Pobreza de la UTDT, un punto por informe mensual
-    (ADR-0113). Recorre todos los PDF publicados, que es caro, y por eso vive
-    acá y no en el colector diario. [[YYYY-MM-01, %]]."""
+    (ADR-0113). STORE persistente, mismo patrón que `fetch_ivi_serie` (misma
+    editorial, UTDT): cada informe se lee una sola vez en su vida. Antes, esta
+    serie bajaba y parseaba TODOS los PDF publicados EN CADA CORRIDA —medido:
+    ~140s hoy, y en otra corrida superó los 400s sin terminar, según la red—
+    porque no existía otro modo de reconstruir la serie completa. Memoizada
+    además (ver `_una_sola_vez_por_corrida`): `itvc_pobreza` la vuelve a pedir
+    dentro de la misma corrida.
+
+    **El riesgo que un store URL-keyed corre, y por qué no es silencioso acá.**
+    El `fname` de cada informe es un timestamp de subida, NO un hash de
+    contenido (a diferencia del IVI, cuyo docstring llama "hash-based" a sus
+    URLs) — así que nada impide, en principio, que la UTDT reemplace el PDF
+    de una URL ya vista sin cambiar la URL. Si eso pasara con un store liso,
+    el valor quedaría congelado y nadie se enteraría. El propio colector
+    documenta que las revisiones del autor llegan como informe NUEVO ("si dos
+    informes estiman el mismo semestre, gana el más nuevo"), nunca como un
+    reemplazo del mismo archivo — así que la lectura de arriba es que el
+    reemplazo silencioso no debería ocurrir. Pero "no debería" no es
+    "detectado si ocurre", así que cada corrida hace un HEAD por URL YA
+    CONOCIDA (barato: ~10s hoy para 23 informes vs. descargar y parsear los
+    23 PDF) y compara el Content-Length contra el guardado. Si cambió, se
+    re-lee ESE informe puntual y se avisa por consola — un reemplazo se
+    vuelve una alerta, no un número mudo.
+
+    Rechazado:
+    - Hash de contenido propio: para calcularlo hay que bajar el PDF entero,
+      que es exactamente el costo que se quiere evitar; el Content-Length del
+      HEAD da una señal equivalente gratis.
+    - Revalidar sólo los últimos K informes: deja al resto de la historia sin
+      cobertura a cambio de un ahorro que la medición de arriba dice que no
+      hace falta (~10s por los 23 informes completos).
+    - Una bandera de re-lectura forzada: ya existe gratis y sin código nuevo
+      — borrar este store.
+
+    La regla "gana el más nuevo" (ADR-0153) sigue viva: la serie se
+    reconstruye recorriendo TODOS los fname conocidos en orden cronológico
+    (mismo criterio de `_listar_informes`) y pisando `serie[periodo]` en ese
+    orden, así que un informe publicado después sigue ganando el semestre que
+    comparte con uno anterior, venga o no del store.
+    [[YYYY-MM-01, %]]."""
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
-    from utdt_nowcast_pobreza import fetch_nowcast_pobreza
-    d = (fetch_nowcast_pobreza(historico=True) or {}).get("pobreza_nowcast") or {}
-    return [[f"{ym}-01", v] for ym, v in sorted((d.get("serie") or {}).items())]
+    from utdt_nowcast_pobreza import _listar_informes, _leer_informe, _huecos, NOWCAST_DESCARGA
+
+    store = json.loads(POBREZA_NOWCAST_SERIE_STORE.read_text(encoding="utf-8-sig")) \
+        if POBREZA_NOWCAST_SERIE_STORE.exists() else {"_meta": {}, "informes": {}}
+    nuevos = cache = cambios = 0
+    tocado = False   # backfill de content_length sin re-leer -- ver más abajo
+    try:
+        fnames = _listar_informes()   # ascendente, más viejo -> más nuevo
+        for fname in fnames:
+            previo = store["informes"].get(fname)
+            try:
+                head = requests.head(NOWCAST_DESCARGA + fname, headers=HTTP_HEADERS,
+                                      timeout=HTTP_TIMEOUT, verify=False, allow_redirects=True)
+                largo = int(head.headers["Content-Length"]) if "Content-Length" in head.headers else None
+            except Exception:
+                largo = None   # sin red para verificar: se trata como sin cambios (fail-open)
+            if previo is not None:
+                if largo is not None and previo.get("content_length") is None:
+                    # el primer HEAD de este informe falló en su momento y quedó
+                    # sin fingerprint -- se completa ahora sin gastar una relectura,
+                    # así no queda ciego a cambios futuros para siempre.
+                    previo["content_length"] = largo
+                    tocado = True
+                if largo is None or previo.get("content_length") is None \
+                        or largo == previo["content_length"]:
+                    cache += 1
+                    continue
+                print(f"  [ALERTA] Nowcast pobreza: {fname} cambió de tamaño "
+                      f"({previo['content_length']} -> {largo} bytes) -- mismo URL, "
+                      "contenido distinto; se vuelve a leer")
+            try:
+                d = _leer_informe(fname)
+            except Exception as e:
+                print(f"  [WARN] Nowcast pobreza: informe no procesado ({fname[-24:]}): {str(e)[:60]}")
+                continue
+            store["informes"][fname] = {
+                "periodo": d["periodo"] if d else None,
+                "valor": d["valor"] if d else None,
+                "content_length": largo,
+            }
+            if previo is None:
+                nuevos += 1
+            else:
+                cambios += 1
+        store["_meta"] = {
+            "fuente": "UTDT — Nowcast de Pobreza (González-Rozada), informes mensuales PDF",
+            "actualizado": datetime.today().strftime("%Y-%m-%d"),
+            "nota": ("Cada informe se lee una sola vez en su vida (ADR-0113); cada "
+                     "corrida valida las URL ya conocidas con un HEAD (Content-Length) "
+                     "y sólo re-lee la que cambió de tamaño — ver docstring de "
+                     "fetch_pobreza_nowcast_serie en descargar_series.py."),
+        }
+        if nuevos or cambios or tocado:
+            POBREZA_NOWCAST_SERIE_STORE.write_text(
+                json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
+        etiqueta = f", {cambios} cambios detectados" if cambios else ""
+        print(f"  [OK] Nowcast pobreza: {nuevos} informes nuevos, {cache} del store{etiqueta} "
+              f"(serie: {len(store['informes'])} informes)")
+    except Exception as e:
+        print(f"  [WARN] Nowcast pobreza: listado UTDT no disponible ({str(e)[:60]}); serie del store")
+
+    serie = {}
+    for fname in sorted(store["informes"]):
+        info = store["informes"][fname]
+        if info.get("valor") is not None:
+            serie[info["periodo"]] = info["valor"]
+    huecos = _huecos(serie)
+    if huecos:
+        print(f"  [WARN] Nowcast pobreza: huecos en la serie {huecos} -- probable "
+              "informe mal fechado, no un mes sin publicar (ADR-0153)")
+    return [[f"{ym}-01", v] for ym, v in sorted(serie.items())]
 
 
 CUENTA_CORRIENTE_ID = "160.2_TL_CUENNTE_0_T_22"   # INDEC, balanza de pagos, trimestral
