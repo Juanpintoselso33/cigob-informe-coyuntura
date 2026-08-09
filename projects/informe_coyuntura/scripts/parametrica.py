@@ -112,9 +112,18 @@ def color_de_tension(tension: float) -> str:
     return CORTES_SEMAFORO[-1][0]
 
 
+def tension_de_puntaje(puntaje: float) -> float:
+    """Tensión 0-10 equivalente a un puntaje 0-100 (ITCM/ITCG/ITCP), sin
+    redondear ni acotar -- un puntaje ya vive en [0, 100] por construcción
+    (banda, o promedio ponderado de puntajes que ya viven ahí, como el de
+    una dimensión), así que la tensión resultante ya cae sola en [0, 10];
+    a diferencia del índice base-100 del ITVC, acá no hace falta acotar."""
+    return (100.0 - float(puntaje)) / 10.0
+
+
 def color_de_puntaje(puntaje: float) -> str:
     """Color de un puntaje 0-100 (ITCM/ITCG/ITCP), vía su tensión equivalente."""
-    return color_de_tension((100.0 - float(puntaje)) / 10.0)
+    return color_de_tension(tension_de_puntaje(puntaje))
 
 
 def color_de_indice_base100(indice: float) -> str:

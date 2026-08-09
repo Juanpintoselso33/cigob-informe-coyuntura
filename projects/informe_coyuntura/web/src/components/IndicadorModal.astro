@@ -196,6 +196,15 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       nombre: dim.nombre, puntaje: dim.puntaje,
       peso: dim.peso_efectivo ?? dim.peso, critica: !!dim.critica,
       indiceValor: blk.valor, que: DIM_DESCRIPCIONES[dkey] ?? "",
+      // Semáforo de la dimensión (Tanda C, revisión de coherencia UI,
+      // ago-2026): el modal pintaba el punto de color del encabezado de
+      // grupo/genoma y no lo explicaba al abrir -- mismo gap que tenía el
+      // indicador antes de la Tanda B. `_semaforos()` publica `tension` y
+      // `por_que` también para dimensiones (no solo `color`); `umbrales` y
+      // `unidad` siguen en null a propósito porque el puntaje de una
+      // dimensión ya está en la escala del semáforo, sin unidad cruda a la
+      // que traducir un tramo.
+      semaforo: dim.semaforo ?? null,
       comps,
       ajustes: (blk.ajustes_aplicados ?? []).filter((a: any) => miembros.has(a.indicador)),
     };
@@ -269,6 +278,14 @@ const dimsJson = JSON.stringify(dims);
   const nf = { format: (n) => _nf.format(n).replace("-", "−") };
   const nfPct = { format: (n) => _nfPct.format(n).replace("-", "−") };
   const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  // Nombre del color + chip HTML: usados tanto por el modal de indicador como
+  // por el de dimensión (Tanda C, revisión de coherencia UI, ago-2026) --
+  // hoisted acá arriba para no duplicar la función en las dos ramas.
+  const NOMBRE_COLOR = { verde: "Verde", amarillo: "Amarillo", naranja: "Naranja", rojo: "Rojo" };
+  const chipDe = (color) => {
+    const nombre = NOMBRE_COLOR[color] || color;
+    return `<span class="cg-verdict ${esc(color)}"><span class="cg-verdict-dot"></span>${esc(nombre)}</span>`;
+  };
   // La ficha mezclaba dos formatos en el MISMO campo: "jun 2026 · dato al
   // 2026-06-01" — mes legible al lado de un ISO. El resto del sitio usa
   // dd/mm/aaaa (ver el pie del hero), así que la fecha del dato también.
@@ -462,13 +479,8 @@ const dimsJson = JSON.stringify(dims);
       // repetirse (costo_financiamiento_tesoro tiene amarillo y naranja dos
       // veces cada uno, con verde como único tramo cerrado) y se recorre tal
       // cual, sin deduplicar por color.
-      const NOMBRE_COLOR = { verde: "Verde", amarillo: "Amarillo", naranja: "Naranja", rojo: "Rojo" };
       const semCaja = document.getElementById("cg-modal-semaforo");
       if (d.semaforo && d.semaforo.color) {
-        const chipDe = (color) => {
-          const nombre = NOMBRE_COLOR[color] || color;
-          return `<span class="cg-verdict ${esc(color)}"><span class="cg-verdict-dot"></span>${esc(nombre)}</span>`;
-        };
         // `por_que` sale nulo para los indicadores sin escala puntuable
         // (vida cotidiana, espíritu de época): ahí no se fabrica una
         // explicación -- se remite a la tensión ya explicada más abajo, en
@@ -654,13 +666,32 @@ const dimsJson = JSON.stringify(dims);
         `${Math.round(d.peso * 100)}% × ${nf.format(d.puntaje)} = <strong>${nf.format(aporte)}</strong> puntos.</p>`;
       document.getElementById("cg-modal-score").style.display = "";
 
-      // El modal de dimensión reusa el MISMO DOM que el de indicador. Sin
-      // limpiar estos dos, quedaban con el contenido del último indicador
-      // abierto -- semáforo era mío (Tanda B); detalle-por-empresa ya
-      // pasaba antes de esta rama (ej. RIGI/Privatizaciones), encontrado al
-      // verificar el bloque nuevo y arreglado acá de paso, mismo patrón.
-      document.getElementById("cg-modal-semaforo").innerHTML = "";
-      document.getElementById("cg-modal-semaforo").style.display = "none";
+      // El modal de dimensión reusa el MISMO DOM que el de indicador. El
+      // semáforo AHORA SE RENDERIZA acá (Tanda C, revisión de coherencia UI,
+      // ago-2026: el punto de color del encabezado de grupo y del tramo de
+      // genoma no se explicaba al abrir el modal -- mismo gap que tenía el
+      // indicador antes de la Tanda B). Por eso ya no alcanza con limpiarlo:
+      // como el indicador, tiene que sobreescribirse SIEMPRE -- rama con
+      // contenido y rama sin él -- para que abrir una dimensión después de
+      // un indicador no deje pegado el semáforo del indicador anterior (el
+      // bug que esta misma limpieza existía para evitar, en la otra
+      // dirección). `cg-modal-detalle` (detalle por empresa) sigue sin
+      // aplicar a una dimensión, así que ese sí solo se limpia.
+      const semCaja = document.getElementById("cg-modal-semaforo");
+      if (d.semaforo && d.semaforo.color) {
+        // `por_que` de una dimensión ata su puntaje a la tensión que produce
+        // su color (publicar._por_que_dimension) -- no hay tabla de tramos
+        // como la de un indicador porque el puntaje YA está en la escala del
+        // semáforo, sin unidad cruda a la que traducir un corte.
+        const porQueHtml = d.semaforo.por_que ? ` — ${esc(d.semaforo.por_que)}` : "";
+        semCaja.innerHTML =
+          `<h4 class="cg-modal-h4">Semáforo</h4>` +
+          `<p class="cg-score-map"><strong>Color vigente:</strong> ${chipDe(d.semaforo.color)}${porQueHtml}</p>`;
+        semCaja.style.display = "";
+      } else {
+        semCaja.innerHTML = "";
+        semCaja.style.display = "none";
+      }
       document.getElementById("cg-modal-detalle").innerHTML = "";
       document.getElementById("cg-modal-detalle").style.display = "none";
       document.getElementById("cg-modal-contexto").style.display = "none";

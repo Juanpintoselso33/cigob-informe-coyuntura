@@ -1778,6 +1778,22 @@ def _semaforo_de(color, tension, umbrales, unidad, valor):
             "por_que": _por_que(color, valor, unidad, umbrales)}
 
 
+def _por_que_dimension(puntaje, tension, base100):
+    """`por_que` de una DIMENSIÓN: no hay tabla de tramos como la de un
+    indicador (ADR-0182) porque el puntaje de una dimensión YA está en la
+    escala del semáforo -- 0-100, o el índice base-100 del ITVC -- no hay
+    unidad cruda a la que traducir los cortes de CORTES_SEMAFORO. Los cortes
+    en sí los explica `SemaforoLeyenda.astro`, presente en toda página que
+    puede abrir este modal (home y detalle de cinturón); esta frase solo ata
+    el puntaje concreto de la dimensión a la tensión que produce su color,
+    en vez de dejar el bloque en blanco como si no hubiera nada que decir.
+    """
+    etiqueta = "El índice de la dimensión" if base100 else "El puntaje de la dimensión"
+    sufijo = "" if base100 else "/100"
+    return (f"{etiqueta}, {coma(round(float(puntaje), 1))}{sufijo}, equivale a una "
+            f"tensión de {coma(tension)}/10 en la escala del informe.")
+
+
 def _semaforos(informe):
     """Adjunta el bloque `semaforo` a cada indicador, dimensión e índice."""
     for cinturon, bloque in informe["cinturones"].items():
@@ -1788,7 +1804,7 @@ def _semaforos(informe):
             idx100 = ind.get("indice_itvc")
             p = ind.get(f"puntaje_{clave}") if clave else None
             if isinstance(p, (int, float)) and ind.get("en_indice"):
-                tension = (100.0 - float(p)) / 10.0
+                tension = parametrica.tension_de_puntaje(float(p))
                 color = parametrica.color_de_puntaje(float(p))
                 umbrales = parametrica.umbrales_en_unidad(ikey, escala)
                 unidad = ind.get("unidad")
@@ -1817,15 +1833,31 @@ def _semaforos(informe):
         indice = bloque.get(indice_key)
         if not indice:
             continue
-        color_idx = (parametrica.color_de_indice_base100 if indice_key == "itvc"
+        base100 = indice_key == "itvc"
+        color_idx = (parametrica.color_de_indice_base100 if base100
                      else parametrica.color_de_puntaje)
         indice["semaforo"] = {"color": color_idx(indice["valor"]),
                               "umbrales": None, "unidad": None, "por_que": None,
                               "tension": None}
+        # A diferencia del índice de arriba (que ningún modal muestra hoy),
+        # la dimensión SÍ tiene un modal propio (revisión de coherencia UI,
+        # ago-2026: el de indicador nombraba el color en texto, el de
+        # dimensión solo lo pintaba) -- por eso acá sí vale la pena la
+        # tensión y el "por qué", y en el índice no. El puntaje de una
+        # dimensión ya vive en la escala del semáforo (0-100, o el índice
+        # base-100 del ITVC), así que no hace falta -ni existe- una tabla de
+        # tramos en unidad cruda como la de un indicador: `umbrales` y
+        # `unidad` siguen en None.
         for dim in indice.get("dimensiones", {}).values():
-            dim["semaforo"] = {"color": color_idx(dim["puntaje"]),
-                               "umbrales": None, "unidad": None,
-                               "por_que": None, "tension": None}
+            puntaje_dim = float(dim["puntaje"])
+            tension_dim = (itvc.tension_de_itvc(puntaje_dim) if base100
+                           else round(parametrica.tension_de_puntaje(puntaje_dim), 1))
+            dim["semaforo"] = {
+                "color": color_idx(puntaje_dim),
+                "umbrales": None, "unidad": None,
+                "por_que": _por_que_dimension(puntaje_dim, tension_dim, base100),
+                "tension": tension_dim,
+            }
 
     # Cortes de CORTES_SEMAFORO expuestos en el snapshot (Tanda A, revisión de
     # coherencia de la UI, ago-2026): la leyenda web arma su texto ("tensión
