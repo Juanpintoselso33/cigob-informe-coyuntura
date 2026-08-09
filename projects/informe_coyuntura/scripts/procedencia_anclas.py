@@ -127,8 +127,10 @@ PROCEDENCIA = {
     "desregulacion_normativa": ("convencion", "el conteo pasa a ser OFICIAL (informe mensual del Min. de Desregulación) pero la vara NO: el organismo no publica meta, así que los cortes 100/300/600/1200 los ponemos nosotros — misma limitación que declaraba ADR-0096, con otra fuente para el número (ADR-0125)"),
     "reduccion_estado": ("convencion", "«calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85"),
     "gasto_funcionamiento": ("convencion", "bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico"),
-    "masa_salarial": ("convencion", "gemela de gasto_funcionamiento: los cortes son grados de recorte fijados contra el ajuste 2024, sin serie previa (ADR-0121)"),
-    "reestructuracion_organismos": ("conceptual", "medidor de avance 0-100 hacia el plan de disoluciones/fusiones; el 100 es el ancla, no el rango observado (ADR-0121)"),
+    # masa_salarial salió del índice por ADR-0186 (a pedido de CIGOB, dudas
+    # sobre la exposición de la fuente): su banda sigue existiendo pero ya no
+    # pondera, así que no entra acá — mismo criterio que asistencia_directa.
+    "reestructuracion_organismos": ("conceptual", "medidor de avance 0-100 hacia el plan de disoluciones/cierres; el 100 es el ancla, no el rango observado (ADR-0121)"),
     "fal_modernizacion_laboral": ("conceptual", "cortes sobre los estados que la escala puede tomar, no sobre el rango observado (ADR-0098)"),
     "privatizaciones": ("documento", "etapas 0-4 definidas en el documento de diseño"),
     "rigi_inversiones": ("convencion", "referencia el 22,1% de jun-2026 y la composición del pipeline de ese momento"),

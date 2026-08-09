@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'gestion'
 indicadores: [asistencia_directa, social_orden, cumplido]
+continuado_por: ['0186']
 ambito: 'ITCG · `asistencia_directa` · dimensión `social_orden` · estado `cumplido`'
 origen: 'Auditoría externa del cinturón de gestión (doc 2), punto 3.8'
 ---

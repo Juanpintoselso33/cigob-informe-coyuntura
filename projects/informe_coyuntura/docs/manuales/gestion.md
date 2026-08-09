@@ -15,7 +15,7 @@ al ADR.
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
 | `reformas_economicas` | 35% | `cepo_mulc`, `apertura_comercial`, `desregulacion_normativa` |
-| `reforma_estado` | 25% | `reduccion_estado`, `gasto_funcionamiento`, `masa_salarial`, `reestructuracion_organismos` |
+| `reforma_estado` | 25% | `reduccion_estado`, `gasto_funcionamiento`, `reestructuracion_organismos` |
 | `reforma_laboral` | 15% | `fal_modernizacion_laboral`, `litigiosidad_laboral` |
 | `privatizaciones_inversion` | 15% | `privatizaciones`, `rigi_inversiones`, `concesiones_infraestructura` |
 | `social_orden` | 10% | `protocolo_antipiquetes`, `libertad_opcion_salud` |
@@ -76,8 +76,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 35% |
-| Peso efectivo en el índice | **8.8%** |
+| Peso dentro de la dimensión | 44% |
+| Peso efectivo en el índice | **10.9%** |
 | Procedencia del ancla | `convencion` — «calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85 |
 
 **Bandas**: ≤ -12 → 100 · -12–-8 → 85 · -8–-4 → 65 · -4–0 → 40 · > 0 → 10
@@ -90,25 +90,11 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **6.2%** |
+| Peso dentro de la dimensión | 31% |
+| Peso efectivo en el índice | **7.8%** |
 | Procedencia del ancla | `convencion` — bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico |
 
 **Bandas**: ≤ -25 → 100 · -25–-15 → 85 · -15–-5 → 65 · -5–0 → 40 · > 0 → 10
-
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0013).
-
-#### Masa salarial pública
-
-`masa_salarial`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **5.0%** |
-| Procedencia del ancla | `convencion` — gemela de gasto_funcionamiento: los cortes son grados de recorte fijados contra el ajuste 2024, sin serie previa (ADR-0121) |
-
-**Bandas**: ≤ -20 → 100 · -20–-12 → 85 · -12–-5 → 65 · -5–0 → 40 · > 0 → 10
 
 **Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0013).
 
@@ -118,13 +104,13 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 20% |
-| Peso efectivo en el índice | **5.0%** |
+| Peso dentro de la dimensión | 25% |
+| Peso efectivo en el índice | **6.2%** |
 | Procedencia del ancla | `conceptual` — medidor de avance 0-100 hacia el plan de disoluciones/fusiones; el 100 es el ancla, no el rango observado (ADR-0121) |
 
 **Bandas**: > 80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤ 20 → 10
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0013).
+**Lo gobiernan**: [ADR-0185](../adr/0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) `reestructuracion_organismos` habla solo de disolución o cierre
 
 ### Dimensión `reforma_laboral` (15%)
 
@@ -238,6 +224,7 @@ histórica.
 
 - `alertas_manifestacion` — Alertas de manifestación (GCBA) (declarado como contexto)
 - `asistencia_directa` — Asistencia directa (TDPS)
+- `masa_salarial` — Masa salarial pública
 - `protestas_caba` — Protestas en CABA (ACLED) (declarado como contexto)
 
 ## Decisiones abiertas
@@ -252,7 +239,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-26 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+28 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -280,3 +267,5 @@ histórica.
 - [0142](../adr/0142-el-fal-mide-sus-dos-actos-fundamentales.md) — El FAL mide sus dos actos fundamentales
 - [0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) — La desregulación se mide en artículos, no en normas
 - [0164](../adr/0164-familia-del-itcg-la-respuesta-del-capital-privado.md) — Familia del ITCG: la respuesta del capital privado
+- [0185](../adr/0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) — `reestructuracion_organismos` habla solo de disolución o cierre
+- [0186](../adr/0186-masa-salarial-sale-del-itcg.md) — `masa_salarial` sale del cálculo del ITCG

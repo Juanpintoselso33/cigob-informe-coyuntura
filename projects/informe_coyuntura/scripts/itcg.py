@@ -113,11 +113,20 @@ BANDAS_ITCG = {
         # este ajuste. No es reducible: no hay serie comparable previa a dic-2023.
         (-INF, -20.0, 100), (-20.0, -12.0, 85), (-12.0, -5.0, 65), (-5.0, 0.0, 40), (0.0, INF, 10),
     ],
-    "reestructuracion_organismos": [    # % de avance (actos de disolución/fusión vs plan)
+    "reestructuracion_organismos": [    # % de avance (actos de disolución o cierre vs plan)
         # CONCEPTUAL (ADR-0121): medidor de avance 0-100 hacia el plan, mismo
-        # patrón que privatizaciones y fal. El 100 —plan de disoluciones/fusiones
+        # patrón que privatizaciones y fal. El 100 —plan de disoluciones/cierres
         # completo— es el ancla con significado, no el rango observado; los cortes
         # son cuartos de avance en números redondos.
+        #
+        # ADR-0185 (2026-08-09): CIGOB pidió hablar solo de disolución o cierre
+        # —no de fusión, transformación ni centralización, "difuso, no puede
+        # registrarse caso por caso"—. El indicador YA medía solo eso: la
+        # búsqueda en InfoLeg siempre fue texto="disolucion" y nunca sumó
+        # fusiones por separado. Lo que cambió es la ETIQUETA, no el cálculo.
+        # El denominador (45 = plan completo) tiene una historia distinta —ver
+        # ORGANISMOS_PLAN_TOTAL en gestion.py y el ADR— que este comentario no
+        # repite para no desincronizarse.
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
     "fal_modernizacion_laboral": [      # Actos fundamentales del FAL (ADR-0142)
@@ -200,8 +209,15 @@ DIMENSIONES_ITCG = {
         # Doc: dotación mide personas, estructura mide organigrama, gasto mide
         # magnitud fiscal, masa salarial filtra inflación — "las tres son
         # necesarias pero ninguna sola alcanza" + organismos como 4ª pata.
-        "indicadores": {"reduccion_estado": 0.35, "gasto_funcionamiento": 0.25,
-                        "masa_salarial": 0.20, "reestructuracion_organismos": 0.20},
+        #
+        # ADR-0186 (2026-08-09): sale masa_salarial, a pedido de CIGOB — dudas
+        # sobre la forma de exponer estos datos, no incluir hasta tener certeza
+        # de las afirmaciones que permiten sostener. Los tres que quedan
+        # conservan su proporción relativa (35:25:20 = 7:5:4), así que la
+        # dimensión no cambia de carácter, sólo deja de arrastrar un componente
+        # bajo revisión. Antes 35/25/20/20.
+        "indicadores": {"reduccion_estado": 0.4375, "gasto_funcionamiento": 0.3125,
+                        "reestructuracion_organismos": 0.25},
     },
     "reforma_laboral": {
         "nombre": "Reforma laboral",
@@ -300,6 +316,28 @@ INDICADORES_CUMPLIDOS = {
                    "desde entonces, sin variación en 27 meses. La línea de base de 2023 "
                    "ya era 98,3%: el margen para seguir informando algo nuevo estaba "
                    "agotado desde el arranque.",
+    },
+}
+
+# ── Retirados del índice por decisión editorial, no por techo (ADR-0186) ────
+# Mismo mecanismo que INDICADORES_CUMPLIDOS —la card se sigue mostrando dentro
+# de su dimensión, sólo se retira el puntaje— pero por un motivo distinto: acá
+# no se llegó a un máximo que agotó el recorrido, se sacó porque la forma de
+# exponer la fuente generó dudas que todavía no están saldadas. Llamarlo
+# "cumplido" sería falso — nada se cumplió — así que es un estado propio.
+#
+# `desde` es el mes en que salió del cálculo; se publica en la card para que
+# el lector sepa desde cuándo el número que ve no mueve el índice.
+INDICADORES_SUSPENDIDOS = {
+    "masa_salarial": {
+        "dimension": "reforma_estado",
+        "desde": "2026-08",
+        "desde_txt": "agosto de 2026",
+        "por_que": "CIGOB pidió sacarlo del índice: la forma de exponer estos datos "
+                   "genera dudas sobre las afirmaciones que permiten sostener, y no "
+                   "conviene incluirlo hasta tener certeza. La card se sigue "
+                   "publicando con su valor mensual — lo que se retira es el "
+                   "puntaje, no el dato.",
     },
 }
 

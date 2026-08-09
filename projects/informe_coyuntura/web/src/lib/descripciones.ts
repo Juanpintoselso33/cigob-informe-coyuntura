@@ -339,12 +339,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   reduccion_estado: {
     que: "Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del mandato), según la serie mensual oficial del INDEC.",
-    aporta: "La métrica insignia de la reforma del Estado: personas, no pesos. A diferencia de las series de sector público total, excluye provincias y municipios — mide solo lo que depende del Gobierno nacional.",
+    aporta: "La métrica insignia de la reforma del Estado: personas, no pesos. Universo: Administración Pública Nacional — incluye fuerzas armadas y de seguridad (~10% de la dotación) y no incluye empresas del Estado ni provincias/municipios.",
     frecuencia: "Mensual", tipo: "Variación vs. dic-2023",
   },
   reestructuracion_organismos: {
-    que: "Cuántos organismos públicos se disolvieron, fusionaron o centralizaron desde diciembre de 2023.",
-    aporta: "Mide el avance concreto de la reforma del aparato estatal.",
+    que: "Cuántos organismos públicos se disolvieron o cerraron desde diciembre de 2023.",
+    aporta: "Mide el avance concreto de la reforma del aparato estatal por la vía más dura y verificable: el cierre. No cuenta fusiones, transformaciones ni reorganizaciones que no impliquen disolver un organismo — esas son difíciles de verificar caso por caso y quedan fuera de lo que este indicador afirma medir.",
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   rigi_inversiones: {

@@ -120,8 +120,22 @@ INDICADORES_ESPERADOS = [
     "alertas_manifestacion", "protestas_caba",
 ]
 
-# Calibración del proxy InfoLeg de reestructuración: 18 actos = avance 40%
+# Calibración del proxy InfoLeg de disolución/cierre: 18 actos = avance 40%
 # (validado con estimación manual, ver docstring original); 45 = plan completo.
+#
+# PROCEDENCIA DEL 45, para la pregunta que dejó abierta CIGOB (ago-2026, ver
+# ADR-0185): el 45 se fijó en may-2026 (commit 43ff990) contra una estimación
+# manual descripta EXPLÍCITAMENTE como "decretos de disolución/fusión de
+# organismos" — el mismo commit dice "18 docs = 40% validado con estimación
+# manual; 45 docs = 100%" hablando de ese universo amplio, no de disoluciones
+# a secas. La búsqueda en InfoLeg, en cambio, siempre fue solo texto="disolucion"
+# (nunca sumó una búsqueda separada por "fusion"): lo que el buscador cuenta y
+# lo que el 45 se calibró para representar pueden no ser el mismo universo.
+#
+# No se corrige acá: no hay una nueva estimación manual restringida a
+# disolución/cierre que reemplace la de mayo. Cambiar el 45 sin ese trabajo
+# sería mover una escala publicada por corazonada. Queda declarado para que
+# alguien lo revalide — ver ADR-0185, sección "Pregunta abierta sobre el 45".
 ORGANISMOS_PLAN_TOTAL = 45
 
 
@@ -913,18 +927,37 @@ def fetch_reduccion_estado() -> dict | None:
             "var_fuerzas_seguridad": var_fuerzas,
             "var_planta_civil": var_civil,
             "fecha_desglose_fuerzas": fecha_fuerzas,
+            # Reordenado 2026-08-09: este texto es lo primero que se lee del
+            # indicador (tile + modal, antes de abrir la ficha), y la versión
+            # previa enterraba la inclusión de fuerzas armadas como TERCERA
+            # cláusula de una oración larga que abría con la exclusión de
+            # empresas. Es el mismo patrón por el que CIGOB, en una observación
+            # sobre este indicador que después retiró (ver ADR pendiente de
+            # revisión externa), creyó que las fuerzas también estaban
+            # excluidas: leyó "sin contar empresas..." y no llegó a la cláusula
+            # de fuerzas armadas, dos afirmaciones después. Ahora el alcance
+            # (qué entra, qué no) es la PRIMERA cláusula tras el titular, y las
+            # dos exclusiones/inclusiones van juntas y simétricas en vez de una
+            # al principio y otra al final. ADR-0128 sigue siendo la fuente de
+            # la decisión de fondo (no descontar fuerzas del denominador); esto
+            # solo cambia el orden en que se lee, no el cálculo.
             "detalle_txt": (
                 f"{miles(serie[ult])} agentes ({ult}) vs {miles(base)} en dic-2023"
-                + ("" if var_empresas is None or var_total is None else
-                   f" · sin contar empresas del Estado, que por su lado varían "
-                   f"{str(var_empresas).replace('.', ',')}%; el universo completo "
-                   f"varía {str(var_total).replace('.', ',')}%")
+                + ("" if var_civil is None and var_empresas is None else
+                   " · universo: Administración Pública Nacional"
+                   + ("" if var_civil is None else
+                      ", INCLUYE fuerzas armadas y de seguridad (~10% de la dotación)")
+                   + ("" if var_empresas is None else
+                      ", NO incluye empresas del Estado"))
                 + ("" if var_civil is None else
-                   f" · incluye fuerzas armadas y de seguridad, que son ~10% de la "
-                   f"dotación y se redujeron menos "
+                   f" · fuerzas armadas y de seguridad se redujeron menos "
                    f"({str(var_fuerzas).replace('.', ',')}%): sin ellas, la planta "
                    f"civil varía {str(var_civil).replace('.', ',')}% "
-                   f"(a {fecha_fuerzas})")),
+                   f"(a {fecha_fuerzas})")
+                + ("" if var_empresas is None or var_total is None else
+                   f" · empresas del Estado varían "
+                   f"{str(var_empresas).replace('.', ',')}% aparte; el universo "
+                   f"completo varía {str(var_total).replace('.', ',')}%")),
         }
     except Exception as e:
         _warn("reduccion_estado", e)
@@ -980,6 +1013,36 @@ def fetch_gasto_funcionamiento() -> dict | None:
     de funcionamiento), variación REAL vs el mismo mes de 2023. Mide la
     magnitud fiscal del aparato administrativo aislada de la inflación —
     distingue achicamiento real de licuación nominal.
+
+    NO excluye personal de FFAA/seguridad (CIGOB, ago-2026, pidió evaluarlo).
+    Investigado y descartado por ahora (verificado 2026-08-09): FUNC_SALARIOS_ID
+    y FUNC_OTROS_ID vienen del IMIG (datos.gob.ar, catálogo "sspm", dataset 452),
+    un esquema Ahorro-Inversión-Financiamiento agregado a nivel de todo el
+    Sector Público Nacional — confirmado leyendo su metadata completa (`meta:
+    {"catalog", "dataset"}` de la API): no tiene columna de jurisdicción, así
+    que no se puede filtrar por FFAA/seguridad DENTRO de esta fuente.
+
+    Existe una fuente hermana que sí tiene jurisdicción — la misma API SIDIF de
+    Presupuesto Abierto que usa fetch_asistencia_directa(), con `jurisdiccion_id`
+    como columna/filtro y granularidad mensual (`columns=[..., "mes"]`).
+    Probado en vivo: Defensa = jurisdicción 45, Seguridad = jurisdicción 41
+    (Gendarmería/Prefectura/PSA no aparecen como jurisdicción propia — caen
+    como entidades DENTRO de Seguridad, a diferencia del padrón de dotación
+    de INDEC que sí las lista sueltas). Pero el total de Personal (inciso 1)
+    de TODA la SIDIF en 2025 da ~13,7 billones de ARS, de los cuales Defensa+
+    Seguridad son ~44% — muy por encima del ~10% de la dotación (ver
+    reduccion_estado/_dotacion_fuerzas), lo que indica que el universo SIDIF no
+    es el mismo que el universo IMIG (probablemente Administración Nacional
+    contra Sector Público Nacional No Financiero completo, o un problema de
+    fuente de financiamiento duplicada en la consulta cruda). Sustituir la
+    fuente sin resolver esa discrepancia sería publicar una exclusión no
+    validada — exactamente el "fudge factor" que este proyecto evita.
+    Migrar de verdad implicaría: (1) reconciliar el alcance SIDIF vs IMIG,
+    (2) mapear qué incisos SIDIF equivalen a "funcionamiento" IMIG, (3)
+    reconstruir la serie mensual completa (no sólo restar una jurisdicción)
+    desde dic-2023 en la base nueva, y (4) validar que el total sin FFAA/
+    seguridad no se mueva por razones ajenas al pedido de CIGOB. Es un
+    proyecto de reconstrucción de indicador, no una exclusión de una línea.
     """
     try:
         salarios = _indec_nivel_mensual(FUNC_SALARIOS_ID, limit=48)
@@ -1006,10 +1069,14 @@ def fetch_gasto_funcionamiento() -> dict | None:
 
 def fetch_reestructuracion_organismos() -> dict | None:
     """
-    Avance de la reestructuración del aparato estatal, proxy InfoLeg: normas
-    con "disolucion" desde dic-2023. DNU 70/23 no aparece en búsqueda de texto
-    libre (no indexado); los documentos capturados son actos POSTERIORES al
-    megadecreto. Calibración: 18 actos = 40% (validado manualmente); 45 = 100%.
+    Avance de la disolución o cierre de organismos del aparato estatal, proxy
+    InfoLeg: normas con "disolucion" desde dic-2023 — NO fusión, transformación
+    ni centralización (ADR-0185: CIGOB pidió precisar que se mide solo esto,
+    "lo demás es difuso y no puede registrarse caso por caso"). DNU 70/23 no
+    aparece en búsqueda de texto libre (no indexado); los documentos capturados
+    son actos POSTERIORES al megadecreto. Calibración: 18 actos = 40% (validado
+    manualmente); 45 = 100% — ver la nota sobre el 45 junto a
+    ORGANISMOS_PLAN_TOTAL.
     """
     try:
         today = date.today()
@@ -1026,7 +1093,7 @@ def fetch_reestructuracion_organismos() -> dict | None:
             "fecha_dato":     today.isoformat(),
             "desactualizado": False,
             "conteo_normas":  count,
-            "detalle_txt":    f"{count} actos de disolución/fusión desde dic-2023 ({ORGANISMOS_PLAN_TOTAL} = plan completo)",
+            "detalle_txt":    f"{count} actos de disolución o cierre de organismos desde dic-2023 ({ORGANISMOS_PLAN_TOTAL} = plan completo)",
         }
     except Exception as e:
         _warn("reestructuracion_organismos", e)
@@ -2596,6 +2663,14 @@ def anotar_indicadores(indicadores: dict, resultado: dict | None) -> None:
             # conserva su dimensión para poder mostrarse junto a sus pares
             ind["dimension"] = meta_cumplido.get("dimension")
             ind["cumplido"] = meta_cumplido
+        # Retirados del índice por decisión editorial, no por techo alcanzado
+        # (ADR-0186): mismo mecanismo, motivo distinto — se marcan SIEMPRE,
+        # igual que las cumplidas.
+        if nombre in itcg.INDICADORES_SUSPENDIDOS:
+            meta_susp = dict(itcg.INDICADORES_SUSPENDIDOS[nombre])
+            ind["en_indice"] = False
+            ind["dimension"] = meta_susp.get("dimension")
+            ind["suspendido"] = meta_susp
 
 
 def calcular_score(indicadores: dict) -> float:

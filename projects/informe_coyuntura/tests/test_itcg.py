@@ -29,7 +29,7 @@ import gestion
 #     este test fija es el ITCG que produce la combinación de puntajes del
 #     documento, no el valor crudo de cada indicador.
 #   * reduccion_estado −10,5% vs dic-2023 → 88,8 (banda 85).
-#   * gasto_funcionamiento −18% real → 81,0 · masa_salarial −15% real → 82,3.
+#   * gasto_funcionamiento −18% real → 81,0.
 #   * reestructuracion_organismos 40% → 52,5 (borde de banda: promedio 40/65).
 #   * fal_modernizacion_laboral 100 → 100 (dos actos fundamentales, ADR-0142)
 #     · litigiosidad +3,6% → 57,8 (ADR-0023 lo repartía 0,7/0,3; ADR-0128 lo
@@ -38,8 +38,8 @@ import gestion
 #   * rigi_inversiones 22,1% → 47,7 (banda 40).
 #   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
 #     protocolo 52% → 76,6 (banda 85) · libertad_opcion_salud 40% → 65 (ancla).
-# Dimensiones: económicas=83,4 estado=78,3 laboral=57,9 privatizaciones=58,1
-# social=83,6 → ITCG = 75,9.
+# Dimensiones: económicas=81,3 estado=77,3 laboral=78,9 privatizaciones=58,1
+# social=72,8 → ITCG = 75,6.
 EJEMPLO = {
     "cepo_mulc": 4.91,                  # 100 (plano bajo la primera ancla)
     "apertura_comercial": 4.86,         # alícuota efectiva % → 67,6
@@ -48,7 +48,11 @@ EJEMPLO = {
     # unidad, no la fuente.
     "reduccion_estado": -10.5,          # 88,8 (banda 85)
     "gasto_funcionamiento": -18.0,      # 81,0 (banda 85)
-    "masa_salarial": -15.0,             # 82,3 (banda 85)
+    # masa_salarial YA NO PUNTÚA (ADR-0186, 2026-08-09): sale del cálculo del
+    # ITCG a pedido de CIGOB. Se deja el valor acá porque gestion.py lo sigue
+    # pasando en `valores` (la card se sigue publicando) — calcular_itcg lo
+    # ignora al no estar en ninguna DIMENSIONES_ITCG["...]["indicadores"].
+    "masa_salarial": -15.0,             # sin efecto: no integra ninguna dimensión
     "reestructuracion_organismos": 40.0,  # 52,5 (borde 40/65)
     "fal_modernizacion_laboral": 100.0,  # 100 — los DOS actos fundamentales
     # cumplidos: Ley 27.802 (mar-2026) + Decreto 408/2026 (jun-2026). ADR-0142.
@@ -70,14 +74,17 @@ def test_itcg_reproduce_ejemplo():
     # 83,4 → 81,3 (ADR-0143: la desregulación pasa de normas a artículos y el
     # puntaje del indicador baja de 82,0 a 71,3 — misma trayectoria, otra unidad)
     assert dims["reformas_economicas"]["puntaje"] == 81.3
-    assert dims["reforma_estado"]["puntaje"] == 78.3
+    # 78,3 → 77,3 (ADR-0186: masa_salarial sale del cálculo; reduccion_estado,
+    # gasto_funcionamiento y reestructuracion_organismos renormalizan 35/25/20
+    # → 43,75/31,25/25, conservando su proporción relativa 7:5:4).
+    assert dims["reforma_estado"]["puntaje"] == 77.3
     # 38,9 → 44,3 (ADR-0128, reparto 50/50) → 78,9 (ADR-0142, el FAL pasa a
     # medir sus dos actos fundamentales y salta de 30,8 a 100). El segundo
     # salto es editorial y no empírico: está declarado en el ADR y en la ficha.
     assert dims["reforma_laboral"]["puntaje"] == 78.9
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
     assert dims["social_orden"]["puntaje"] == 72.8   # sin asistencia_directa (ADR-0100)
-    assert r["valor"] == 75.9          # 71,4 (ADR-0128) → 76,6 (0142) → 75,9 (0143)
+    assert r["valor"] == 75.6          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186)
     assert r["banda"] == "moderadamente_aflojado"
     assert itcg.tension_de_itcg(r["valor"]) == 2.4
     assert r["ajustes_aplicados"] == []
@@ -164,19 +171,39 @@ def test_bordes_de_banda():
 
 
 def test_renormalizacion_ante_faltantes():
-    """Sin gasto_funcionamiento ni masa_salarial (fuentes caídas), la Reforma
-    del Estado renormaliza entre dotación (0,35) y organismos (0,20)."""
+    """Sin gasto_funcionamiento (fuente caída), la Reforma del Estado
+    renormaliza entre dotación (0,4375) y organismos (0,25) — los dos únicos
+    indicadores que quedan, ya que masa_salarial no es más miembro de la
+    dimensión (ADR-0186: salió del cálculo, no de "faltó el dato")."""
     valores = dict(EJEMPLO)
     valores["gasto_funcionamiento"] = None
-    valores["masa_salarial"] = None
     r = itcg.calcular_itcg(valores)
     d2 = r["dimensiones"]["reforma_estado"]
     assert set(d2["indicadores"]) == {"reduccion_estado", "reestructuracion_organismos"}
-    # (0,35×88,8 + 0,20×52,5) / 0,55 = 75,6 (puntajes interpolados)
+    # (0,4375×88,8 + 0,25×52,5) / 0,6875 = 75,6 (puntajes interpolados; mismo
+    # resultado que antes de ADR-0186 porque la proporción 7:4 entre estos dos
+    # se conservó al renormalizar sin masa_salarial)
     assert d2["puntaje"] == 75.6
     pesos = [i["peso_efectivo"] for d in r["dimensiones"].values()
              for i in d["indicadores"].values()]
     assert abs(sum(pesos) - 1.0) <= 0.001
+
+
+def test_masa_salarial_no_integra_ninguna_dimension():
+    """ADR-0186: masa_salarial sale del cálculo del ITCG a pedido de CIGOB.
+    Sigue en BANDAS_ITCG (la ficha publica su banda) pero ninguna dimensión
+    la pesa — a diferencia de asistencia_directa (ADR-0100), no es una
+    promesa cumplida: es un retiro por decisión editorial."""
+    assert "masa_salarial" in itcg.BANDAS_ITCG
+    for dim in itcg.DIMENSIONES_ITCG.values():
+        assert "masa_salarial" not in dim["indicadores"]
+    assert "masa_salarial" in itcg.INDICADORES_SUSPENDIDOS
+    assert itcg.INDICADORES_SUSPENDIDOS["masa_salarial"]["dimension"] == "reforma_estado"
+    # con o sin su valor, el ITCG no cambia: no hay dimensión que lo pese
+    con_valor = dict(EJEMPLO)
+    sin_valor = dict(EJEMPLO)
+    sin_valor["masa_salarial"] = None
+    assert itcg.calcular_itcg(con_valor)["valor"] == itcg.calcular_itcg(sin_valor)["valor"]
 
 
 def test_ajuste_manual_del_analista():

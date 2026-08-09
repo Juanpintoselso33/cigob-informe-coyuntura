@@ -22,13 +22,15 @@ const filas = indicadoresOrdenados(c);
 // Los indicadores de contexto (en_indice === false) no construyen la tensión:
 // se muestran en un bloque aparte para no confundirlos con los del índice.
 const filasIndice = filas.filter(({ ind }) => ind.en_indice !== false);
-// Dentro de los que no puntúan hay dos estados distintos y conviene no
-// mezclarlos: los de CONTEXTO no miden la dimensión de su índice, mientras que
-// los CUMPLIDOS sí la miden y salieron del cálculo justamente por haber llegado
-// a su máximo y quedarse ahí. Decirle "no integra el índice" a una promesa
-// lograda invierte el sentido de la noticia.
+// Dentro de los que no puntúan hay TRES estados distintos y conviene no
+// mezclarlos: los de CONTEXTO no miden la dimensión de su índice; los
+// CUMPLIDOS sí la miden y salieron del cálculo por haber llegado a su máximo
+// y quedarse ahí; los SUSPENDIDOS (ADR-0186) también la miden pero salieron
+// por decisión editorial —dudas sobre la fuente, no un techo alcanzado—, así
+// que decirles "logrado" sería tan falso como decirles "contexto".
 const filasCumplidas = filas.filter(({ ind }) => ind.en_indice === false && ind.cumplido);
-const filasContexto = filas.filter(({ ind }) => ind.en_indice === false && !ind.cumplido);
+const filasSuspendidas = filas.filter(({ ind }) => ind.en_indice === false && ind.suspendido);
+const filasContexto = filas.filter(({ ind }) => ind.en_indice === false && !ind.cumplido && !ind.suspendido);
 const fuentes = fuentesDeCinturon(c);
 const indice = indiceDe(c);   // ITCM / ITCG / ITVC / ITCP, o null (espíritu)
 // Los indicadores del índice se muestran AGRUPADOS por dimensión, en el mismo
@@ -45,12 +47,14 @@ const gruposDim = Object.entries(dimsDe)
     peso: dim.peso,
     critica: !!dim.critica,
     semaforo: dim.semaforo,   // A4: mismo punto que las cards, en el encabezado del grupo
-    // Las promesas cumplidas se muestran DENTRO de su dimensión aunque ya no
-    // puntúen: pertenecen ahí, y sacarlas a un bloque aparte haría parecer que
-    // miden otra cosa. Van al final del grupo, con su etiqueta.
+    // Las promesas cumplidas y las suspendidas se muestran DENTRO de su
+    // dimensión aunque ya no puntúen: pertenecen ahí, y sacarlas a un bloque
+    // aparte haría parecer que miden otra cosa. Van al final del grupo, con
+    // su etiqueta.
     filas: [
       ...filasIndice.filter(({ key }) => key in (dim.indicadores ?? {})),
       ...filasCumplidas.filter(({ ind }) => ind.dimension === dkey),
+      ...filasSuspendidas.filter(({ ind }) => ind.dimension === dkey),
     ],
   }))
   .filter(g => g.filas.length > 0);
@@ -298,7 +302,7 @@ const robChartData = rob?.hist && indice ? {
                   {g.nombre}
                 </h3>
                 <span class="cg-dim-group-meta">
-                  <strong>{num(g.puntaje)}</strong>{indice!.base100 ? "" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.filter(f => !f.ind.cumplido).length} {g.filas.filter(f => !f.ind.cumplido).length === 1 ? "indicador" : "indicadores"}{g.filas.some(f => f.ind.cumplido) && ` + ${g.filas.filter(f => f.ind.cumplido).length} logrado`}
+                  <strong>{num(g.puntaje)}</strong>{indice!.base100 ? "" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.filter(f => !f.ind.cumplido && !f.ind.suspendido).length} {g.filas.filter(f => !f.ind.cumplido && !f.ind.suspendido).length === 1 ? "indicador" : "indicadores"}{g.filas.some(f => f.ind.cumplido) && ` + ${g.filas.filter(f => f.ind.cumplido).length} logrado`}{g.filas.some(f => f.ind.suspendido) && ` + ${g.filas.filter(f => f.ind.suspendido).length} en revisión`}
                 </span>
               </div>
               <div class="cg-tile-grid">
@@ -306,6 +310,11 @@ const robChartData = rob?.hist && indice ? {
                   ind.cumplido ? (
                     <div class="cg-cumplido-wrap" title={ind.cumplido.por_que}>
                       <span class="cg-cumplido-chip">✓ Logrado en {ind.cumplido.desde_txt ?? ind.cumplido.desde} · ya no puntúa</span>
+                      <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />
+                    </div>
+                  ) : ind.suspendido ? (
+                    <div class="cg-suspendido-wrap" title={ind.suspendido.por_que}>
+                      <span class="cg-suspendido-chip">⏸ Fuera del índice desde {ind.suspendido.desde_txt ?? ind.suspendido.desde} · en revisión</span>
                       <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />
                     </div>
                   ) : <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />

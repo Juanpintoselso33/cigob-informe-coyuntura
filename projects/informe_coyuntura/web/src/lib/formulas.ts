@@ -130,8 +130,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Masa salarial devengada del personal público (Presupuesto Abierto) contra 2023, descontada la inflación — filtra tanto despidos como licuación.",
   },
   reestructuracion_organismos: {
-    latex: String.raw`\frac{\text{actos de disoluci\'on/reestructuraci\'on}}{45\;(\text{plan completo})}\times 100`,
-    leyenda: "Normas con disolución de organismos desde dic-2023 (InfoLeg). Calibración validada a mano: 18 actos = 40%.",
+    latex: String.raw`\frac{\text{actos de disoluci\'on o cierre}}{45\;(\text{plan completo})}\times 100`,
+    leyenda: "Normas con disolución de organismos desde dic-2023 (InfoLeg). No cuenta fusiones ni transformaciones. Calibración validada a mano: 18 actos = 40%.",
   },
   fal_modernizacion_laboral: {
     latex: String.raw`\frac{\text{actos fundamentales cumplidos}}{2}\times 100`,

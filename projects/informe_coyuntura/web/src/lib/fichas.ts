@@ -2051,12 +2051,14 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Base caja: el calendario de pagos puede desalinear meses.",
       "Comparte el deflactor con el gasto de funcionamiento: un error del IPC mueve a los dos a la vez.",
+      "Desde agosto de 2026 no integra el ITCG: CIGOB pidió sacarlo del cálculo por dudas sobre la forma de exponer estos datos, hasta tener certeza de las afirmaciones que permiten sostener. La card se sigue publicando con su valor mensual — ver ADR-0186.",
     ],
     faltantes: "Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "Series revisables por el publicador; recalculada entera en cada actualización.",
     cambios: [
       { fecha: "2026-07-02", cambio: "Indicador nuevo, creado con el ITCG." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-08-09", cambio: "Sale del cálculo del ITCG a pedido de CIGOB (dudas sobre la exposición de la fuente); la dimensión reforma_estado renormaliza sus pesos 35/25/20 → 43,75/31,25/25 entre los tres indicadores que quedan. La card se mantiene. Ver ADR-0186." },
     ],
   },
 
@@ -2072,7 +2074,7 @@ export const FICHAS: Record<string, Ficha> = {
       acceso: "Automático: consulta al buscador oficial de normas (mismo mecanismo que la desregulación).",
     },
     transformaciones: [
-      "Avance = actos de disolución o reestructuración, con calibración declarada y validada a mano: 18 actos = 40% de avance; 45 actos = plan completo.",
+      "Avance = actos de disolución o cierre de organismos, con calibración declarada y validada a mano: 18 actos = 40% de avance; 45 actos = plan completo. No cuenta fusiones, transformaciones ni centralizaciones: son difíciles de verificar caso por caso y CIGOB pidió (ago-2026) hablar solo de disolución o cierre.",
     ],
     anclas: {
       bandas: [
@@ -2088,6 +2090,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "El megadecreto 70/2023 no aparece en la búsqueda de texto: solo captura los actos posteriores.",
       "La calibración (18 = 40%, 45 = plan completo) es una decisión propia validada a mano y declarada.",
+      "El 45 (plan completo) se fijó en mayo de 2026 contra una estimación manual descripta en ese momento como \"decretos de disolución/fusión de organismos\" — un universo más amplio que el que la etiqueta de este indicador afirma medir desde agosto de 2026. La búsqueda en InfoLeg no cambió (siempre fue solo «disolución»), pero no hay una revalidación manual del 45 restringida a disolución/cierre. Declarado, no corregido — ver ADR-0185.",
     ],
     faltantes: "Con el buscador caído, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "El acumulado se reevalúa completo en cada actualización.",
@@ -2095,6 +2098,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-05", cambio: "Automatizado desde el inicio del cinturón con la misma búsqueda." },
       { fecha: "2026-07-02", cambio: "Umbrales institucionales del ITCG." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
+      { fecha: "2026-08-09", cambio: "Etiqueta y descripción precisadas a pedido de CIGOB: se habla solo de disolución o cierre, no de fusión/transformación/centralización. El cálculo no cambió — la búsqueda en InfoLeg siempre fue solo «disolución». Ver ADR-0185." },
     ],
   },
 
