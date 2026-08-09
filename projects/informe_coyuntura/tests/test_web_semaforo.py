@@ -6,6 +6,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parents[1]
 CSS = RAIZ / "web" / "public" / "dashboard.css"
 LIB = RAIZ / "web" / "src" / "lib"
+COMPONENTES = RAIZ / "web" / "src" / "components"
 
 sys.path.insert(0, str(RAIZ / "scripts"))
 import publicar  # noqa: E402  (sys.path.insert tiene que ir antes)
@@ -63,6 +64,48 @@ class TestSinCortesDuplicadosEnTs:
                     raise AssertionError(
                         f"{archivo.name}:{n}: el color se deriva de una "
                         f"comparación numérica en el cliente — {linea.strip()!r}")
+
+
+class TestLeyendaNoHardcodeaLosCortes:
+    """A3 (revisión de coherencia UI, ago-2026): SemaforoLeyenda.astro tiene
+    que armar su texto ("tensión ≤ 4") leyendo `informe.semaforo_cortes` (que
+    sale de CORTES_SEMAFORO vía publicar._semaforos), no escribiendo los
+    tramos a mano -- si no, se desincroniza del motor sin que nada falle.
+
+    No se generalizó esta prohibición a TODO `web/src/**/*.astro` como la de
+    arriba hace con `web/src/lib/*.ts`: probado contra el árbol real, ese
+    regex da falsos positivos ajenos al semáforo -- p. ej. `Bluf.astro`
+    (`rojos.length > 0`, un array de cinturones en rojo) y `TensionPanel.astro`
+    ("1 cinturón en rojo es manejable"). Acotarlo al único archivo nuevo que
+    puede reintroducir el defecto es lo que le da dientes de verdad sin
+    romper código ajeno que ya usa la palabra "rojo" con otro sentido."""
+
+    ARCHIVO = COMPONENTES / "SemaforoLeyenda.astro"
+    CORTES_PROHIBIDOS = ("4", "6", "8", "60", "40", "20", "105", "95", "85")
+
+    def test_existe(self):
+        assert self.ARCHIVO.exists(), "falta SemaforoLeyenda.astro (A3)"
+
+    def test_lee_semaforo_cortes_del_snapshot(self):
+        src = self.ARCHIVO.read_text(encoding="utf-8")
+        assert "semaforo_cortes" in src, (
+            "la leyenda tiene que leer informe.semaforo_cortes, no "
+            "hardcodear los tramos")
+
+    def test_no_hardcodea_ningun_corte_conocido(self):
+        """Escanea código, no prosa: un comentario puede decir "los 4 colores"
+        sin que eso sea un corte hardcodeado -- lo que este test prohíbe es
+        que el número aparezca en una línea de código/template."""
+        src = self.ARCHIVO.read_text(encoding="utf-8")
+        for n, linea in enumerate(src.splitlines(), 1):
+            if linea.strip().startswith("//"):
+                continue
+            for tok in self.CORTES_PROHIBIDOS:
+                if re.search(rf"(?<!\w){tok}(?!\w)", linea):
+                    raise AssertionError(
+                        f"SemaforoLeyenda.astro:{n}: aparece el literal "
+                        f"{tok!r}, uno de los cortes que solo puede vivir en "
+                        f"parametrica.CORTES_SEMAFORO -- {linea.strip()!r}")
 
 
 # ---------------------------------------------------------------------------

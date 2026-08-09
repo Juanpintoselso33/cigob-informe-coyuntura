@@ -4,6 +4,7 @@ import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import Bluf from "../components/Bluf.astro";
 import CinturonCard from "../components/CinturonCard.astro";
+import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import Evolucion from "../components/Evolucion.astro";
 import TensionPanel from "../components/TensionPanel.astro";
 import Recomendaciones from "../components/Recomendaciones.astro";
@@ -23,6 +24,7 @@ import { informe, CINTURONES } from "../lib/datos.ts";
         <h2 class="cg-h2">Los cinturones, hoy</h2>
         <p class="cg-h2-sub">Cada card ordena primero los indicadores automatizados con dato fresco.</p>
       </div>
+      <SemaforoLeyenda />
       <div class="cg-grid cg-grid--4">
         {CINTURONES.map(c => (
           <CinturonCard slug={c.slug} nombre={c.nombre} sub={c.sub} cinturon={informe.cinturones[c.key]} />

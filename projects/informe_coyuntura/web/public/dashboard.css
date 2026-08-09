@@ -383,11 +383,19 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
         var(--rojo), var(--rojo) 4px, #B91C1C 4px, #B91C1C 7px);
 }
 .cg-genoma-seg.is-critica   { box-shadow: 0 0 0 1.5px var(--rojo); }
-/* Punto de color del semáforo en la card de indicador (IndicadorTile): mismo
-   corte de 4 colores que el genoma del cinturón, a escala de indicador. Va
-   con aria-hidden — el número y el "por qué" del tooltip llevan la misma
-   información sin depender del color. */
-.cg-tile-dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 8px; align-self: center; }
+/* Punto de color del semáforo en la card de indicador (IndicadorTile) y en el
+   encabezado de dimensión ([slug].astro): mismo corte de 4 colores que el
+   genoma del cinturón, a escala de indicador/dimensión. Es `role="img"` con
+   `aria-label` (armado en datos.ts::semaforoAriaLabel) — el color es el ÚNICO
+   portador de esa lectura en la card, así que no puede ir `aria-hidden` (A2,
+   revisión de coherencia UI, ago-2026; antes iba aria-hidden + title, que es
+   invisible a lectores de pantalla e inalcanzable en touch a la vez). 10px en
+   vez de 8 y un borde interior sutil para que no se pierda contra el fondo
+   claro de la card. */
+.cg-tile-dot {
+    width: 10px; height: 10px; border-radius: 50%; flex: 0 0 10px; align-self: center;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.15);
+}
 .cg-tile-dot.sem-verde    { background: var(--verde); }
 .cg-tile-dot.sem-amarillo { background: var(--amarillo); }
 .cg-tile-dot.sem-naranja  { background: var(--naranja); }
@@ -452,12 +460,18 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
     display: flex; align-items: center; gap: 6px;
 }
 .cg-ind-value .cg-ind-unit { color: var(--muted-soft); font-weight: 500; font-size: 11px; }
+/* Frescura/origen del dato (no tensión): mismo defecto que el badge de
+   IndicadorTile (A1), corregido acá también -- ver overrides.css para la
+   nota completa. `fresco` (el caso común) queda casi invisible; `manual` y
+   `placeholder` (la excepción) se marcan con un borde, no con hue. */
 .cg-ind-value .cg-ind-est {
     display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+    background: var(--bd);
 }
-.cg-ind-value .cg-ind-est.verde    { background: var(--verde); }
-.cg-ind-value .cg-ind-est.amarillo { background: var(--amarillo); }
-.cg-ind-value .cg-ind-est.rojo     { background: var(--rojo); }
+.cg-ind-value .cg-ind-est.manual,
+.cg-ind-value .cg-ind-est.placeholder {
+    background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--muted-soft);
+}
 .cg-ind-sparkline {
     flex: 0 0 60px;
     height: 22px;

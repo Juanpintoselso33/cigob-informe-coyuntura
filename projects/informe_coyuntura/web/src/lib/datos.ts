@@ -22,6 +22,10 @@ export interface DimensionIndice {
   peso: number;
   puntaje: number;
   critica?: boolean;   // bajo el umbral crítico: el resto del índice no la compensa (ADR-0020)
+  // Semáforo de 4 colores (ADR-0181): igual forma que el de indicador/índice,
+  // pero sin `tension`/`umbrales`/`por_que` propios -- la dimensión solo
+  // publica el color (ver publicar._semaforos).
+  semaforo?: { color?: string; tension?: number | null; umbrales?: unknown; unidad?: string | null; por_que?: string | null };
   indicadores: Record<string, { puntaje_banda: number; puntaje_aplicado: number; peso_efectivo: number }>;
 }
 export interface IndiceParametrico {
@@ -132,6 +136,14 @@ export interface Informe {
   barbarismo_activo: string;
   alerta_multicinturon: boolean;
   flags: string[];
+  // Cortes de parametrica.CORTES_SEMAFORO (ADR-0181), expuestos para que la
+  // leyenda de los 4 colores (SemaforoLeyenda.astro) arme su texto sin
+  // repetirlos a mano -- `hasta: null` en el último tramo es rojo, sin techo.
+  // Opcional: lo agrega `publicar._semaforos()` desde ago-2026, así que un
+  // snapshot generado con una versión anterior del pipeline (el commiteado
+  // hoy, entre esta rama y la próxima corrida) todavía no lo trae —
+  // SemaforoLeyenda.astro no debe asumir que está.
+  semaforo_cortes?: { color: ColorSemaforo; hasta: number | null }[];
 }
 
 export const informe = informeRaw as unknown as Informe;
@@ -191,6 +203,21 @@ export function semaforoDe(x: { semaforo?: { color?: string } } | null | undefin
   return c === "verde" || c === "amarillo" || c === "naranja" || c === "rojo"
     ? c
     : "amarillo";
+}
+
+// Texto accesible del punto del semáforo (Tanda A, revisión de coherencia UI,
+// ago-2026): el color es el ÚNICO portador de esa lectura en la card -- antes
+// el punto iba `aria-hidden` con el "por qué" solo en un `title` (invisible a
+// lectores de pantalla, inalcanzable en touch). Nombra el color y, si el
+// snapshot lo trae (solo el semáforo de INDICADOR lo tiene: el de dimensión e
+// índice no calcula `por_que`, ver publicar._semaforos), la misma frase que
+// antes iba en el tooltip.
+export function semaforoAriaLabel(
+  semaforo?: { color?: string; por_que?: string | null } | null,
+): string {
+  const color = semaforo?.color;
+  if (!color) return "Semáforo";
+  return semaforo?.por_que ? `Semáforo: ${color} — ${semaforo.por_que}` : `Semáforo: ${color}`;
 }
 
 // Peor dimensión (la que más tensión aporta) del índice de un cinturón.

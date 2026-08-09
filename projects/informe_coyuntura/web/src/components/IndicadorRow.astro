@@ -2,6 +2,10 @@
 import { label, aclaracion, presentacion } from "../lib/datos.ts";
 import Sparkline from "./Sparkline.astro";
 const { ikey, ind, bucket, slug } = Astro.props;
+// Solo para el punto del sparkline (cg-spark-dot), que Sparkline.astro solo
+// dibuja cuando bucket==="fresco" -- en la práctica siempre resuelve a
+// "verde" (marca "dato fresco", no una lectura de tensión) y sus otras dos
+// ramas están muertas.
 const estDot = bucket === "fresco" ? "verde" : bucket === "manual" ? "amarillo" : "rojo";
 const nota = aclaracion(bucket, ind);
 const clickable = bucket !== "placeholder";
@@ -18,6 +22,11 @@ const pres = presentacion(ikey, ind);
   <span class="cg-ind-value">
     {pres.texto}
     {pres.unidad && <span class="cg-ind-unit">{pres.unidad}</span>}
-    <span class:list={["cg-ind-est", estDot]}></span>
+    {/* Frescura/origen del dato, no tensión -- iba coloreado verde/amarillo/
+        rojo con la paleta del semáforo, en la misma card donde el genoma
+        pinta tensión real (mismo defecto que A1, acá en la card de resumen
+        de la portada: un "— pendiente" pintaba rojo, como si fuera crisis).
+        Clase por bucket, no por color (revisión de coherencia UI, ago-2026). */}
+    <span class:list={["cg-ind-est", bucket]} aria-hidden="true"></span>
   </span>
 </li>

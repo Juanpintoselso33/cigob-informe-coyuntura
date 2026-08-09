@@ -94,9 +94,18 @@
     letter-spacing: .05em; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--bd);
     white-space: nowrap;
 }
-.cg-tile-badge.auto   { background: var(--verde-soft);    color: #14532D; border-color: #BBF7D0; }
-.cg-tile-badge.manual { background: var(--amarillo-soft); color: #713F12; border-color: #FDE68A; }
-.cg-tile-badge.estim  { background: var(--bg-page);       color: var(--muted); }
+/* A1 (revisión de coherencia UI, ago-2026): el badge dice frescura/origen del
+   dato ("MAY 2026" / "Carga manual" / "Estimación"), no desempeño — pintarlo
+   con la paleta del semáforo (verde/amarillo) lo hacía competir con el punto
+   de tensión de la misma card, y encima la píldora era el elemento más
+   grande y llamativo mientras el punto real medía 8px. Los tres estados usan
+   ahora solo neutros que el sitio ya tiene: la distinción entre `auto` (el
+   caso común, sin marcar) y `manual`/`estim` (la excepción) queda en el
+   texto —que ya la dice— y en un borde más visible, no en el hue. */
+.cg-tile-badge.auto   { background: var(--bg-page); color: var(--muted); }
+.cg-tile-badge.manual,
+.cg-tile-badge.estim  { background: var(--paper); color: var(--dark); border-color: var(--muted-soft); }
+.cg-tile-badge.estim  { font-style: italic; }
 .cg-tile-desc { margin: 0; font-size: 11.5px; line-height: 1.45; color: var(--muted);
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 /* En una sola columna, 2 líneas son ~10 palabras y la descripción se corta
@@ -733,6 +742,10 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-dim-group-name {
   margin: 0; font-size: 15px; font-weight: 800; color: var(--dark);
   letter-spacing: .01em;
+  /* A4: la dimensión ya tiene color publicado (mismo que el genoma de la
+     portada) pero el encabezado era texto plano -- el punto va inline, antes
+     del nombre, con el mismo tratamiento que en las cards de indicador. */
+  display: inline-flex; align-items: center; gap: 7px;
 }
 .cg-dim-group-meta { font-size: 12.5px; color: var(--muted); }
 .cg-dim-group-meta strong {
@@ -1161,3 +1174,26 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-mas[open] > summary::after { transform: rotate(180deg); }
 .cg-mas > summary:hover { text-decoration: underline; }
 .cg-mas > p { margin-top: 8px; }
+
+/* ── Leyenda de los 4 colores del semáforo (A3, revisión de coherencia UI,
+   ago-2026) ──────────────────────────────────────────────────────────────
+   Nota de lectura discreta, no un panel propio: mismo tratamiento
+   tipográfico que .cg-nota-met / .cg-panel-nota (texto muted, sin card, sin
+   sombra). Los puntos de acá van aria-hidden a propósito -- a diferencia del
+   punto de una card real, el color YA es redundante con el nombre visible
+   ("Verde"), así que no hace falta que el lector de pantalla lo anuncie dos
+   veces. */
+.cg-sem-leyenda {
+  margin: 0 0 20px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.cg-sem-leyenda-intro { margin: 0 0 8px; max-width: 68ch; }
+.cg-sem-leyenda-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 6px 20px;
+}
+.cg-sem-leyenda-list li { display: flex; align-items: center; gap: 7px; }
+.cg-sem-leyenda-list strong { color: var(--dark); font-weight: 700; }
+.cg-sem-leyenda-lectura { font-variant-numeric: tabular-nums; }

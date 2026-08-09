@@ -1815,6 +1815,17 @@ def _semaforos(informe):
                                "umbrales": None, "unidad": None,
                                "por_que": None, "tension": None}
 
+    # Cortes de CORTES_SEMAFORO expuestos en el snapshot (Tanda A, revisión de
+    # coherencia de la UI, ago-2026): la leyenda web arma su texto ("tensión
+    # ≤ 4", "tensión ≤ 6"...) leyendo esto, en vez de tener los números
+    # escritos a mano y desincronizables. `hasta=None` es el equivalente
+    # serializable de parametrica.INF (rojo no tiene techo) — JSON no
+    # tiene infinito.
+    informe["semaforo_cortes"] = [
+        {"color": color, "hasta": None if tope == parametrica.INF else tope}
+        for color, tope in parametrica.CORTES_SEMAFORO
+    ]
+
 
 def aplicar_scoring(informe, series):
     """Anota cada indicador con su aporte de tensión (0–10) y el mapeo que lo

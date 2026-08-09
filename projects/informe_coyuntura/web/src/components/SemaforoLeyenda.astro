@@ -1,0 +1,41 @@
+---
+// A3 (revisión de coherencia UI, ago-2026): nota de lectura para los 4
+// colores del semáforo -- hasta ahora no existía ninguna explicación en el
+// sitio de qué significan verde/amarillo/naranja/rojo, y naranja en
+// particular no es una convención universal como los otros tres.
+//
+// Los cortes NO se escriben acá: salen de `informe.semaforo_cortes`, que
+// `publicar._semaforos()` arma desde `parametrica.CORTES_SEMAFORO` (ADR-0181)
+// -- es la única fuente de verdad y este componente solo la lee, para no
+// desincronizarse si algún día CORTES_SEMAFORO cambia (ver
+// tests/test_web_semaforo.py y test_publicar_semaforo.py::TestCortesExpuestos).
+import { informe, cap } from "../lib/datos.ts";
+
+// Optional en el tipo: un snapshot generado antes de que `publicar._semaforos()`
+// empezara a publicar este campo (el commiteado hoy) todavía no lo trae. No
+// romper el build por eso -- simplemente no hay leyenda hasta la próxima
+// corrida del pipeline, que sí lo va a traer.
+const cortes = informe.semaforo_cortes ?? [];
+---
+{cortes.length > 0 && (
+<div class="cg-sem-leyenda">
+  <p class="cg-sem-leyenda-intro">
+    El color es la misma tensión 0–10 que ya publica el informe, partida en cuatro tramos — no es una escala nueva.
+  </p>
+  <ul class="cg-sem-leyenda-list">
+    {cortes.map((corte, i) => {
+      const anterior = i > 0 ? cortes[i - 1].hasta : null;
+      const lectura = corte.hasta !== null
+        ? `tensión ≤ ${corte.hasta}`
+        : `tensión > ${anterior}`;
+      return (
+        <li>
+          <span class:list={["cg-tile-dot", `sem-${corte.color}`]} aria-hidden="true"></span>
+          <strong>{cap(corte.color)}</strong>
+          <span class="cg-sem-leyenda-lectura">{lectura}</span>
+        </li>
+      );
+    })}
+  </ul>
+</div>
+)}

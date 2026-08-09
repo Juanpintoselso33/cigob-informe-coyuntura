@@ -1,5 +1,5 @@
 ---
-import { presentacion, label, visualDe, badgeEstado, periodoDato, series, formatValor, semaforoDe } from "../lib/datos.ts";
+import { presentacion, label, visualDe, badgeEstado, periodoDato, series, formatValor, semaforoDe, semaforoAriaLabel } from "../lib/datos.ts";
 import { DESCRIPCIONES } from "../lib/descripciones.ts";
 import { chartPath } from "../lib/sparkline.ts";
 
@@ -38,7 +38,13 @@ const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) 
 ---
 <article class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable"]} data-indicador={ikey} data-cinturon={slug}>
   <div class="cg-tile-head">
-    {color && <span class:list={["cg-tile-dot", `sem-${color}`]} title={ind.semaforo?.por_que ?? undefined} aria-hidden="true"></span>}
+    {color && (
+      <span
+        class:list={["cg-tile-dot", `sem-${color}`]}
+        role="img"
+        aria-label={semaforoAriaLabel(ind.semaforo)}
+      ></span>
+    )}
     <span class="cg-tile-name">{label(ikey)}</span>
     <span class:list={["cg-tile-badge", badgeCls]} title={chipTitle}>{chip}</span>
   </div>

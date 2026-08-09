@@ -4,9 +4,10 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import IndicadorTile from "../components/IndicadorTile.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
+import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import {
   informe, CINTURONES, verdictDeCinturon, indicadoresOrdenados,
-  fuentesDeCinturon, cap, indiceDe, label, num,
+  fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel,
 } from "../lib/datos.ts";
 
 export function getStaticPaths() {
@@ -43,6 +44,7 @@ const gruposDim = Object.entries(dimsDe)
     puntaje: dim.puntaje,
     peso: dim.peso,
     critica: !!dim.critica,
+    semaforo: dim.semaforo,   // A4: mismo punto que las cards, en el encabezado del grupo
     // Las promesas cumplidas se muestran DENTRO de su dimensión aunque ya no
     // puntúen: pertenecen ahí, y sacarlas a un bloque aparte haría parecer que
     // miden otra cosa. Van al final del grupo, con su etiqueta.
@@ -279,12 +281,22 @@ const robChartData = rob?.hist && indice ? {
             : "Tocá cualquier indicador para ver qué mide, qué aporta y su evolución. Automatizados primero; carga manual y estimaciones al final."}
         </p>
       </div>
+      <SemaforoLeyenda />
       {gruposDim.length > 0 ? (
         <div class={`cg-dim-groups cg-dim-groups--${meta.slug}`} id="cg-dim-groups">
           {gruposDim.map(g => (
             <div class="cg-dim-group" data-grupo={g.dkey}>
               <div class="cg-dim-group-head">
-                <h3 class="cg-dim-group-name">{g.nombre}</h3>
+                <h3 class="cg-dim-group-name">
+                  {g.semaforo?.color && (
+                    <span
+                      class:list={["cg-tile-dot", `sem-${semaforoDe(g)}`]}
+                      role="img"
+                      aria-label={semaforoAriaLabel(g.semaforo)}
+                    ></span>
+                  )}
+                  {g.nombre}
+                </h3>
                 <span class="cg-dim-group-meta">
                   <strong>{num(g.puntaje)}</strong>{indice!.base100 ? "" : "/100"} · pesa {Math.round(g.peso * 100)}% · {g.filas.filter(f => !f.ind.cumplido).length} {g.filas.filter(f => !f.ind.cumplido).length === 1 ? "indicador" : "indicadores"}{g.filas.some(f => f.ind.cumplido) && ` + ${g.filas.filter(f => f.ind.cumplido).length} logrado`}
                 </span>

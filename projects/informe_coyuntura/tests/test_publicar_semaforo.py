@@ -175,6 +175,21 @@ class TestPorQue:
         assert "a 1,0 del corte más cercano" in frase, frase
 
 
+class TestCortesExpuestos:
+    """A3 (revisión de coherencia UI, ago-2026): la leyenda web arma su texto
+    ("tensión ≤ 4") leyendo `informe.semaforo_cortes`, no escribiendo los
+    números a mano. Este test ata lo publicado a CORTES_SEMAFORO -- si
+    alguien cambia el motor sin tocar `_semaforos`, o serializa mal el
+    infinito de "rojo", se desincroniza en silencio sin esto."""
+
+    def test_semaforo_cortes_espeja_cortes_semaforo(self, informe):
+        esperado = [
+            {"color": color, "hasta": None if tope == parametrica.INF else tope}
+            for color, tope in parametrica.CORTES_SEMAFORO
+        ]
+        assert informe["semaforo_cortes"] == esperado
+
+
 class TestNoMovioNingunNumero:
     """El semáforo es una capa de lectura. Estos son los números que NO puede
     tocar; si alguno cambia, el cambio se salió del alcance."""
