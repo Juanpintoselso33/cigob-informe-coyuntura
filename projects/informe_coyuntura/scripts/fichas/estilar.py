@@ -80,6 +80,123 @@ def _margenes_celda(tabla, pt=4):
     tbl_pr.append(mar)
 
 
+def _ancho_y_columnas(tabla, ancho_total_twips):
+    """La tabla ocupa el ancho completo del texto, con columnas repartidas
+    según lo que cada una tiene que mostrar.
+
+    pandoc deja las tablas con el ancho que le parece y alineadas a la
+    izquierda: las angostas quedan tiradas contra el margen, con media página
+    vacía al lado, y las columnas de una palabra ocupan lo mismo que las de una
+    oración. Se calcula el reparto con el largo del texto de cada columna, que
+    es la aproximación más simple que da un resultado equilibrado sin tener que
+    codificar a mano el diseño de cada tabla.
+    """
+    filas = tabla.rows
+    if not filas:
+        return
+    n = len(filas[0].cells)
+    if n == 0:
+        return
+
+    # Dos medidas por columna, y hacen falta las dos:
+    #
+    #  · el promedio de largo dice cuánto ESPACIO necesita en total, y sirve
+    #    para repartir la holgura;
+    #  · la palabra más larga dice cuánto ancho necesita como MÍNIMO, porque
+    #    una palabra no se parte. Repartir sólo por promedio dejó la columna
+    #    de color en 9% y Word puso "VERD / E" y "NARA / NJA" en dos líneas.
+    pesos, minimos = [], []
+    for j in range(n):
+        largos, palabra_larga = [], 4
+        for i, fila in enumerate(filas):
+            celdas = fila.cells
+            if j >= len(celdas):
+                continue
+            # Las filas separadoras de dimensión abarcan el ancho completo:
+            # su texto no dice nada del reparto entre columnas.
+            if i > 0 and len(celdas) > 1 and celdas[0].text.strip() == celdas[-1].text.strip():
+                continue
+            t = celdas[j].text.strip()
+            largos.append(len(t) * (0.4 if i == 0 else 1.0))
+            # El espacio de no separación NO es un corte posible: "14,0 %" es
+            # una sola unidad para Word. `split()` lo trata como whitespace y
+            # medía "14,0", así que la columna de peso salía angosta y Word
+            # terminaba partiendo el par igual, que es justo lo que el nbsp
+            # estaba puesto para evitar.
+            for palabra in t.replace(chr(0xA0), chr(0x2013)).split():
+                palabra_larga = max(palabra_larga, len(palabra))
+        pesos.append(max(sum(largos) / max(len(largos), 1), 3.0))
+        # A 9 pt un carácter mide ~5 pt (100 twips); + los márgenes de celda.
+        minimos.append(palabra_larga * 100 + 300)
+
+    # Si los mínimos no entran, no hay reparto que salve la tabla: se deja que
+    # Word acomode como pueda antes que forzar columnas ilegibles.
+    if sum(minimos) >= ancho_total_twips:
+        return
+
+    # Reparto: primero el mínimo de cada una, y la holgura por proporción del
+    # espacio que cada columna necesita.
+    holgura = ancho_total_twips - sum(minimos)
+    total_peso = sum(pesos)
+    anchos = [m + int(holgura * p / total_peso) for m, p in zip(minimos, pesos)]
+    anchos[-1] += ancho_total_twips - sum(anchos)   # el redondeo va a la última
+
+    tbl = tabla._tbl
+    tbl_pr = tbl.tblPr
+    for etiqueta in ("w:tblW", "w:tblLayout", "w:jc"):
+        for viejo in tbl_pr.findall(qn(etiqueta)):
+            tbl_pr.remove(viejo)
+    w_el = OxmlElement("w:tblW")
+    w_el.set(qn("w:w"), str(int(ancho_total_twips)))
+    w_el.set(qn("w:type"), "dxa")
+    tbl_pr.append(w_el)
+    layout = OxmlElement("w:tblLayout")
+    layout.set(qn("w:type"), "fixed")     # sin esto Word recalcula y los ignora
+    tbl_pr.append(layout)
+
+
+    grid = tbl.find(qn("w:tblGrid"))
+    if grid is not None:
+        tbl.remove(grid)
+    grid = OxmlElement("w:tblGrid")
+    for a in anchos:
+        gc = OxmlElement("w:gridCol")
+        gc.set(qn("w:w"), str(a))
+        grid.append(gc)
+    tbl.insert(list(tbl).index(tbl_pr) + 1, grid)
+
+    for fila in filas:
+        celdas = fila.cells
+        for j, celda in enumerate(celdas):
+            if j >= len(anchos):
+                continue
+            tc_pr = celda._tc.get_or_add_tcPr()
+            for viejo in tc_pr.findall(qn("w:tcW")):
+                tc_pr.remove(viejo)
+            tw = OxmlElement("w:tcW")
+            tw.set(qn("w:w"), str(anchos[j]))
+            tw.set(qn("w:type"), "dxa")
+            tc_pr.append(tw)
+
+
+def _aire_alrededor(doc, pt_antes=8, pt_despues=10):
+    """Separa las tablas del texto que las rodea.
+
+    Una tabla en Word no tiene espacio propio: pegada al párrafo de arriba y al
+    de abajo se lee como si fuera parte de la oración. El aire se pone en los
+    párrafos vecinos, que es donde Word lo entiende."""
+    from docx.table import Table
+    from docx.text.paragraph import Paragraph
+    hijos = list(doc.element.body.iterchildren())
+    for i, hijo in enumerate(hijos):
+        if not hijo.tag.endswith("}tbl"):
+            continue
+        if i > 0 and hijos[i - 1].tag.endswith("}p"):
+            Paragraph(hijos[i - 1], doc).paragraph_format.space_after = Pt(pt_antes)
+        if i + 1 < len(hijos) and hijos[i + 1].tag.endswith("}p"):
+            Paragraph(hijos[i + 1], doc).paragraph_format.space_before = Pt(pt_despues)
+
+
 def _no_partir(fila):
     tr_pr = fila._tr.get_or_add_trPr()
     if not tr_pr.findall(qn("w:cantSplit")):
@@ -154,10 +271,23 @@ def estilar(path):
             f"separadoras de dimensión.")
     n_color, n_seccion = 0, 0
 
+    # Ancho útil de la página: es el que tienen que ocupar las tablas.
+    #
+    # `cigob_reference.docx` no declara el tamaño de página —lo hereda del
+    # default de Word— así que `page_width` viene en None y hay que suponerlo.
+    # A4 es lo que usa el template en la práctica, verificado sobre el PDF.
+    A4_TWIPS = 11906
+    EMU_POR_TWIP = 635
+    sec = doc.sections[0]
+    ancho_pagina = (sec.page_width / EMU_POR_TWIP) if sec.page_width else A4_TWIPS
+    margen = ((sec.left_margin or 0) + (sec.right_margin or 0)) / EMU_POR_TWIP
+    ancho_texto = int(ancho_pagina - margen)
+
     for tabla in doc.tables:
-        tabla.autofit = True
+        tabla.autofit = False
         _bordes(tabla)
         _margenes_celda(tabla)
+        _ancho_y_columnas(tabla, ancho_texto)
         con_encabezado = _tiene_encabezado(tabla)
 
         for i, fila in enumerate(tabla.rows):
@@ -237,6 +367,8 @@ def estilar(path):
         if p.style.name.startswith("Heading"):
             _keep_next(p)
             n_keep += 1
+
+    _aire_alrededor(doc)
 
     props = doc.core_properties
     props.comments = ((props.comments + " · ") if props.comments else "") + SELLO
