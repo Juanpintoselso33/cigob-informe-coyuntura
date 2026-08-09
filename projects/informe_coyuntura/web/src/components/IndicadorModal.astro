@@ -477,7 +477,9 @@ const dimsJson = JSON.stringify(dims);
         // el error que esto evita).
         const porQueHtml = d.semaforo.por_que
           ? ` — ${esc(d.semaforo.por_que)}`
-          : (d.aporteScore != null ? ` — la tensión que le corresponde se explica más abajo, en "Cómo incide en el score".` : "");
+          : (d.aporteScore != null || d.aporteNota != null
+              ? ` — la tensión que le corresponde se explica más abajo, en "Cómo incide en el score".`
+              : "");
         let tablaHtml = "";
         if (Array.isArray(d.semaforo.umbrales) && d.semaforo.umbrales.length) {
           const filas = d.semaforo.umbrales.map(t =>
