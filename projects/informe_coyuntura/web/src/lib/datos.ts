@@ -227,10 +227,18 @@ export function indicadoresRezagados(inf: Informe): number {
   return n;
 }
 
-// Semáforo del cinturón a partir de su estado
+// Semáforo del cinturón a partir de su estado. Son 3 colores porque `estado`
+// tiene exactamente 3 valores ("estable" | "en_tension" | "tensionado",
+// _estado() en publicar.py/generar_informe.py) -- no confundir con el
+// semáforo de 4 colores de indicadores/índices (parametrica.CORTES_SEMAFORO,
+// ADR-0181), que es un concepto aparte y sigue separado a propósito. El
+// mapeo espeja generar_informe.py:192 (estable=verde, en_tension=amarillo,
+// tensionado=rojo); antes comparaba contra "critico"/"alerta", valores que
+// _estado() nunca emite, así que "tensionado" caía siempre en el default y
+// ningún cinturón podía pintarse rojo.
 export function verdictDeCinturon(estado: string): "verde" | "amarillo" | "rojo" {
   if (estado === "estable") return "verde";
-  if (estado === "critico" || estado === "alerta") return "rojo";
+  if (estado === "tensionado") return "rojo";
   return "amarillo"; // en_tension
 }
 
