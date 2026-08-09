@@ -48,6 +48,33 @@ def _indicadores(informe):
             yield cinturon, ikey, ind
 
 
+def _tensiones_publicadas(nodo, ruta=""):
+    """Recorre el snapshot ENTERO (dicts y listas, cualquier profundidad) y
+    devuelve (ruta, valor) de cada clave `tension` que encuentra -- sin
+    enumerar a mano indicador/dimensión/índice, que son los tres lugares que
+    hoy la publican.
+
+    Motivo (ADR-0182, ADR-0184): el mismo bug -- perder el acotamiento a
+    [0, 10] al re-derivar la fórmula de tensión a mano en vez de reusar
+    `itvc.tension_de_itvc()` -- ya ocurrió dos veces, cada vez en un lugar
+    que el guard anterior no miraba porque `TestTensionEnDominio` solo
+    iteraba `_indicadores(informe)`. Un recorrido genérico cubre también un
+    cuarto lugar que empiece a publicar `tension` mañana, sin que nadie
+    tenga que acordarse de extender esta función a mano -- que es
+    exactamente el error que produjo el bug las dos veces anteriores.
+    """
+    if isinstance(nodo, dict):
+        for clave, valor in nodo.items():
+            sub_ruta = f"{ruta}.{clave}" if ruta else clave
+            if clave == "tension":
+                yield sub_ruta, valor
+            else:
+                yield from _tensiones_publicadas(valor, sub_ruta)
+    elif isinstance(nodo, list):
+        for i, valor in enumerate(nodo):
+            yield from _tensiones_publicadas(valor, f"{ruta}[{i}]")
+
+
 def _indices_y_score(informe):
     """Los cuatro índices + score_global: los números que `_semaforos` NO
     puede tocar."""
@@ -126,17 +153,38 @@ class TestCoherencia:
 
 class TestTensionEnDominio:
     """La tensión PUBLICADA (no el color) tiene que quedar en la escala 0-10
-    del informe. El color no la delata si se sale del dominio: los cuatro
-    cortes de CORTES_SEMAFORO caen todos adentro de [0, 10], así que un valor
-    fuera de rango puede seguir dando un color válido (visto en vida
-    cotidiana: mora_familias tensión 21,6, pobreza_nowcast −0,4, etc., todas
-    con color correcto pese a la tensión fuera de dominio — bug real que este
-    test existe para atajar)."""
+    del informe, la publique quien la publique -- indicador, dimensión o
+    índice. El color no la delata si se sale del dominio: los cuatro cortes
+    de CORTES_SEMAFORO caen todos adentro de [0, 10], así que un valor fuera
+    de rango puede seguir dando un color válido.
+
+    El mismo defecto ya pasó dos veces, siempre por re-derivar a mano una
+    fórmula que ya existe como función (perdiendo su clamp) en vez de
+    reusarla:
+    - ADR-0182: seis tensiones de INDICADOR del ITVC fuera de [0, 10]
+      (mora_familias 21,6, patentamiento_motos −3,0, etc.), todas con color
+      correcto pese al valor fuera de dominio. Se atajó reusando
+      `itvc.tension_de_itvc()`, que clampea.
+    - ADR-0184: la misma re-derivación, ahora en una DIMENSIÓN
+      (`vulnerabilidad`, ITVC, puntaje 17,2 → tensión cruda 21,6, acotada a
+      10,0 antes de publicarse). El guard de arriba no lo hubiera detectado
+      porque `TestTensionEnDominio` en ese momento solo recorría
+      `_indicadores(informe)` -- nunca miraba `dimensiones[k]["semaforo"]`.
+
+    Por eso este test recorre el snapshot ENTERO con `_tensiones_publicadas`
+    en vez de iterar una de las formas conocidas: la lección de las dos
+    veces anteriores es que enumerar los lugares a mano es precisamente lo
+    que deja pasar el próximo.
+
+    `tension: null` (hoy, el bloque del ÍNDICE -- ITCM/ITCG/ITCP/ITVC en su
+    nivel superior -- lo publica así a propósito, ADR-0184: no tiene todavía
+    ningún modal que lo consuma) no es "fuera del dominio": no es un número
+    publicado, así que no hay nada que acotar. Se ignora, no se falla.
+    """
 
     def test_ninguna_tension_publicada_sale_de_0_10(self, informe):
-        fuera = [(c, k, i["semaforo"]["tension"]) for c, k, i in _indicadores(informe)
-                 if i.get("semaforo") and i["semaforo"]["tension"] is not None
-                 and not (0.0 <= i["semaforo"]["tension"] <= 10.0)]
+        fuera = [(ruta, v) for ruta, v in _tensiones_publicadas(informe)
+                 if v is not None and not (0.0 <= v <= 10.0)]
         assert fuera == []
 
 
