@@ -10,6 +10,27 @@ author: "Fundación CIGOB"
 
 Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
+## Cómo se define el color
+
+Todos los colores de este documento —el del índice, el de cada dimensión y el de cada indicador— salen de una sola escala: la **tensión de 0 a 10** que publica el informe. Se parte en cuatro tramos y esos tramos son los mismos para todo.
+
+El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el promedio del 4º trimestre de 2023. Por encima de 100 hay mejora acumulada; por debajo, deterioro. La tensión sale de 5 − (índice − 100) × 0,2.
+
+| Tensión | Índice del ITVC y de sus dimensiones (base 100 = 4º trim. 2023) | Color |
+|---|---|---|
+| hasta 4 | 105 o más | VERDE |
+| más de 4 y hasta 6 | de 95 a 105 | AMARILLO |
+| más de 6 y hasta 8 | de 85 a 95 | NARANJA |
+| más de 8 | menos de 85 | ROJO |
+
+**Cada indicador tiene además su propia tabla**, en su unidad de medida —pesos, porcentaje, índice, lo que corresponda—, dentro de su ficha, bajo el título «Semáforo — valores que determinan el color». Ahí no hay ninguna escala intermedia: sólo el dato real y el color que le toca.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
 ## ITVC — el índice del cinturón
 
 | | | | |

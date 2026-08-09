@@ -106,7 +106,11 @@ def verificar_portada(cint, tablas_portada, fallas):
         return
     idx = cb[clave]
 
-    banner = tablas_portada[0][0] if tablas_portada else None
+    # El banner es la tabla de UNA fila; no "la primera de la portada", que es
+    # frágil y ya rompió: al anteponer la tabla de «Cómo se define el color»,
+    # el verificador empezó a leer los cortes del semáforo como si fueran el
+    # valor del índice y marcó ocho fallas en documentos correctos.
+    banner = next((t[0] for t in tablas_portada if len(t) == 1), None)
     if banner:
         v = coma(idx.get("valor"), 1)
         if v not in norm(banner[0]):
@@ -117,9 +121,13 @@ def verificar_portada(cint, tablas_portada, fallas):
             fallas.append(f"{cint}/portada: el índice figura {norm(banner[1])}, "
                           f"el snapshot dice {c}")
 
-    # Tabla de dimensiones: la que tiene una fila por dimensión más encabezado.
+    # Tabla de dimensiones: se busca por su encabezado, no por el número de
+    # filas. Contar filas alcanzaba mientras fuera la única de ese tamaño, pero
+    # la tabla de cortes del semáforo tiene 5 y un cinturón de 4 dimensiones
+    # produciría el mismo número: el verificador compararía una contra la otra.
     dims = idx.get("dimensiones") or {}
-    tabla_dim = next((t for t in tablas_portada if len(t) == len(dims) + 1), None)
+    tabla_dim = next((t for t in tablas_portada
+                      if len(t) > 1 and norm(t[0][0]) == "Dimensión"), None)
     if tabla_dim is None:
         fallas.append(f"{cint}/portada: no encuentro la tabla de dimensiones")
         return

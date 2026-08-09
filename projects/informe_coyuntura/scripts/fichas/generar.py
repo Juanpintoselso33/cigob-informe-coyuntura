@@ -211,6 +211,70 @@ for o in ind.values():
     conteo[c] = conteo.get(c, 0) + 1
 resumen_colores = " · ".join(f"{conteo[c]} en {c}" for c in ORDEN_COLOR if conteo.get(c))
 
+# ── Cómo se define el color ──────────────────────────────────────────────────
+# La portada muestra colores en el índice, en cada dimensión y en cada
+# indicador, y sin esto no dice en ninguna parte qué rango produce cada uno.
+# Faltaba: el lector veía "77,5 VERDE" y "24,4 % NARANJA" sin la regla que los
+# une. Las tablas por indicador están, pero recién dentro de cada ficha y en
+# la unidad propia de ese indicador.
+#
+# Los cortes salen del snapshot (`semaforo_cortes`), no se escriben acá: son
+# los mismos que aplica el informe, y si se recalibran, esta tabla los sigue.
+CORTES = informe.get("semaforo_cortes") or []
+if CORTES:
+    w("## Cómo se define el color")
+    w("")
+    w("Todos los colores de este documento —el del índice, el de cada dimensión "
+      "y el de cada indicador— salen de una sola escala: la **tensión de 0 a 10** "
+      "que publica el informe. Se parte en cuatro tramos y esos tramos son los "
+      "mismos para todo.")
+    w("")
+    topes = [c.get("hasta") for c in CORTES]
+    if CINT == "vida_cotidiana":
+        # El ITVC es base-100 (100 = 4T-2023), no un puntaje 0-100: su tensión
+        # es 5 − (índice − 100) × 0,2, así que los mismos cortes 4/6/8 caen en
+        # otros números y la tabla tiene que decir ésos, no los del resto.
+        escala = [("105 o más", "verde"), ("de 95 a 105", "amarillo"),
+                  ("de 85 a 95", "naranja"), ("menos de 85", "rojo")]
+        titulo_col = f"Índice del {SIGLA} y de sus dimensiones (base 100 = 4º trim. 2023)"
+        nota = ("El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde "
+                "100 es el promedio del 4º trimestre de 2023. Por encima de 100 hay "
+                "mejora acumulada; por debajo, deterioro. La tensión sale de "
+                "5 − (índice − 100) × 0,2.")
+    else:
+        escala = [("60 o más", "verde"), ("de 40 a 60", "amarillo"),
+                  ("de 20 a 40", "naranja"), ("menos de 20", "rojo")]
+        # Sin índice —espíritu de época— la columna del puntaje no describe
+        # nada de este cinturón: la escala 0-100 es la de los índices, y acá
+        # no hay ninguno. Se deja igual, dicho como referencia general.
+        titulo_col = (f"Puntaje del {SIGLA} y de sus dimensiones (0 a 100)" if idx
+                      else "Puntaje en la escala de los índices (0 a 100)")
+        nota = ((f"El puntaje del {SIGLA} y el de cada dimensión van de 0 a 100, donde "
+                 "100 es la mejor situación. La tensión es su reflejo: "
+                 "(100 − puntaje) ÷ 10.") if idx else
+                ("Este cinturón no arma un índice paramétrico, así que no tiene "
+                 "puntaje propio ni dimensiones: el color de su indicador sale "
+                 "directamente de la tensión. La columna del medio queda como "
+                 "referencia de cómo se lee la misma escala en los cinturones que "
+                 "sí tienen índice."))
+    w(nota)
+    w("")
+    w(f"| Tensión | {titulo_col} | Color |")
+    w("|---|---|---|")
+    filas_t = ["hasta 4", "más de 4 y hasta 6", "más de 6 y hasta 8", "más de 8"]
+    for (rango_valor, color), t in zip(escala, filas_t):
+        w(f"| {t} | {rango_valor} | {COLOR[color]} |")
+    w("")
+    w("**Cada indicador tiene además su propia tabla**, en su unidad de medida "
+      "—pesos, porcentaje, índice, lo que corresponda—, dentro de su ficha, bajo "
+      "el título «Semáforo — valores que determinan el color». Ahí no hay ninguna "
+      "escala intermedia: sólo el dato real y el color que le toca.")
+    w("")
+    w(SALTO)
+    w("")
+    w("**CIGOB · INFORME DE COYUNTURA**")
+    w("")
+
 if idx:
     sem_idx = idx.get("semaforo") or {}
     w(f"## {SIGLA} — el índice del cinturón")

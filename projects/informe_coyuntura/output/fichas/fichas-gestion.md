@@ -10,6 +10,27 @@ author: "Fundación CIGOB"
 
 Este documento tiene una ficha por indicador — son 14 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
+## Cómo se define el color
+
+Todos los colores de este documento —el del índice, el de cada dimensión y el de cada indicador— salen de una sola escala: la **tensión de 0 a 10** que publica el informe. Se parte en cuatro tramos y esos tramos son los mismos para todo.
+
+El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejor situación. La tensión es su reflejo: (100 − puntaje) ÷ 10.
+
+| Tensión | Puntaje del ITCG y de sus dimensiones (0 a 100) | Color |
+|---|---|---|
+| hasta 4 | 60 o más | VERDE |
+| más de 4 y hasta 6 | de 40 a 60 | AMARILLO |
+| más de 6 y hasta 8 | de 20 a 40 | NARANJA |
+| más de 8 | menos de 20 | ROJO |
+
+**Cada indicador tiene además su propia tabla**, en su unidad de medida —pesos, porcentaje, índice, lo que corresponda—, dentro de su ficha, bajo el título «Semáforo — valores que determinan el color». Ahí no hay ninguna escala intermedia: sólo el dato real y el color que le toca.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
 ## ITCG — el índice del cinturón
 
 | | | | |

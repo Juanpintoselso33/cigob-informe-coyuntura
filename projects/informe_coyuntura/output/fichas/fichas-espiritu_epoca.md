@@ -10,6 +10,27 @@ author: "Fundación CIGOB"
 
 Este documento tiene una ficha por indicador — acá hay una sola, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
+## Cómo se define el color
+
+Todos los colores de este documento —el del índice, el de cada dimensión y el de cada indicador— salen de una sola escala: la **tensión de 0 a 10** que publica el informe. Se parte en cuatro tramos y esos tramos son los mismos para todo.
+
+Este cinturón no arma un índice paramétrico, así que no tiene puntaje propio ni dimensiones: el color de su indicador sale directamente de la tensión. La columna del medio queda como referencia de cómo se lee la misma escala en los cinturones que sí tienen índice.
+
+| Tensión | Puntaje en la escala de los índices (0 a 100) | Color |
+|---|---|---|
+| hasta 4 | 60 o más | VERDE |
+| más de 4 y hasta 6 | de 40 a 60 | AMARILLO |
+| más de 6 y hasta 8 | de 20 a 40 | NARANJA |
+| más de 8 | menos de 20 | ROJO |
+
+**Cada indicador tiene además su propia tabla**, en su unidad de medida —pesos, porcentaje, índice, lo que corresponda—, dentro de su ficha, bajo el título «Semáforo — valores que determinan el color». Ahí no hay ninguna escala intermedia: sólo el dato real y el color que le toca.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
 Este cinturón no arma un índice paramétrico: sus indicadores se leen solos, sin puntaje agregado ni dimensiones ponderadas.
 
 Colores vigentes: 1 en verde.
