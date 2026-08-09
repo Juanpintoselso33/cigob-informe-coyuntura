@@ -200,6 +200,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0164](0164-familia-del-itcg-la-respuesta-del-capital-privado.md) | Familia del ITCG: la respuesta del capital privado |  | vigente |
 | [0185](0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) | `reestructuracion_organismos` habla solo de disolución o cierre | `reestructuracion_organismos` | vigente |
 | [0186](0186-masa-salarial-sale-del-itcg.md) | `masa_salarial` sale del cálculo del ITCG | `masa_salarial`, `reforma_estado` | vigente |
+| [0187](0187-gasto-funcionamiento-no-migra-a-sidif.md) | `gasto_funcionamiento` no migra a SIDIF: el universo no reconcilia con el IMIG | `gasto_funcionamiento` | rechazado |
 
 ### Vida cotidiana (ITVC)
 

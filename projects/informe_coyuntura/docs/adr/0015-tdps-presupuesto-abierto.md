@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-02
 cinturon: 'gestion'
 archivos: ['scripts/gestion.py', 'data/gestion/tdps_baseline_2023.json', '.github/workflows/data-pipeline.yml']
+relacionado: ['0187']
 ambito: '`scripts/gestion.py` · `data/gestion/tdps_baseline_2023.json` · `.github/workflows/data-pipeline.yml`'
 ---
 

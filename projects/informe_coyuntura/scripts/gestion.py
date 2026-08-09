@@ -1018,34 +1018,26 @@ def fetch_gasto_funcionamiento() -> dict | None:
     distingue achicamiento real de licuación nominal.
 
     NO excluye personal de FFAA/seguridad (CIGOB, ago-2026, pidió evaluarlo).
-    Investigado y descartado por ahora (verificado 2026-08-09): FUNC_SALARIOS_ID
-    y FUNC_OTROS_ID vienen del IMIG (datos.gob.ar, catálogo "sspm", dataset 452),
-    un esquema Ahorro-Inversión-Financiamiento agregado a nivel de todo el
-    Sector Público Nacional — confirmado leyendo su metadata completa (`meta:
-    {"catalog", "dataset"}` de la API): no tiene columna de jurisdicción, así
-    que no se puede filtrar por FFAA/seguridad DENTRO de esta fuente.
+    Investigado a fondo y RECHAZADO, no sólo "no investigado" (ADR-0187,
+    2026-08-09): FUNC_SALARIOS_ID/FUNC_OTROS_ID vienen del IMIG (datos.gob.ar,
+    catálogo "sspm", dataset 452), agregado del Sector Público Nacional No
+    Financiero sin columna de jurisdicción — no se puede filtrar por
+    FFAA/seguridad DENTRO de esta fuente.
 
-    Existe una fuente hermana que sí tiene jurisdicción — la misma API SIDIF de
-    Presupuesto Abierto que usa fetch_asistencia_directa(), con `jurisdiccion_id`
-    como columna/filtro y granularidad mensual (`columns=[..., "mes"]`).
-    Probado en vivo: Defensa = jurisdicción 45, Seguridad = jurisdicción 41
-    (Gendarmería/Prefectura/PSA no aparecen como jurisdicción propia — caen
-    como entidades DENTRO de Seguridad, a diferencia del padrón de dotación
-    de INDEC que sí las lista sueltas). Pero el total de Personal (inciso 1)
-    de TODA la SIDIF en 2025 da ~13,7 billones de ARS, de los cuales Defensa+
-    Seguridad son ~44% — muy por encima del ~10% de la dotación (ver
-    reduccion_estado/_dotacion_fuerzas), lo que indica que el universo SIDIF no
-    es el mismo que el universo IMIG (probablemente Administración Nacional
-    contra Sector Público Nacional No Financiero completo, o un problema de
-    fuente de financiamiento duplicada en la consulta cruda). Sustituir la
-    fuente sin resolver esa discrepancia sería publicar una exclusión no
-    validada — exactamente el "fudge factor" que este proyecto evita.
-    Migrar de verdad implicaría: (1) reconciliar el alcance SIDIF vs IMIG,
-    (2) mapear qué incisos SIDIF equivalen a "funcionamiento" IMIG, (3)
-    reconstruir la serie mensual completa (no sólo restar una jurisdicción)
-    desde dic-2023 en la base nueva, y (4) validar que el total sin FFAA/
-    seguridad no se mueva por razones ajenas al pedido de CIGOB. Es un
-    proyecto de reconstrucción de indicador, no una exclusión de una línea.
+    La alternativa evaluada (SIDIF de Presupuesto Abierto, la misma API de
+    fetch_asistencia_directa(), con jurisdiccion_id: Defensa=45, Seguridad=41)
+    reprodujo el 44% de Defensa+Seguridad sobre el gasto en personal —no es
+    artefacto de consulta, se verificó sin duplicación entre agrupamientos y
+    descartando pensiones (dominan las fuerzas activas, no los institutos de
+    retiro)— pero el universo NO reconcilia con el IMIG: SIDIF (incisos 1+2+3,
+    sin excluir nada) capta sólo ~80% del total IMIG en 2024 y 2025 por igual,
+    y la serie mensual de variación real que SIDIF produciría correlaciona
+    apenas r=0,42 con la que hoy publica este indicador (diferencia media 5,5
+    pp, máxima 16,4 pp, ene-2025 a jun-2026). Migrar de fuente sin resolver esa
+    discrepancia mezclaría el efecto de excluir FFAA/seguridad (~6 pp, medido
+    aparte) con el ruido de cambiar de fuente (~5,5 pp) en un número que nadie
+    podría después desenredar. Ver ADR-0187 para las cifras completas y las
+    condiciones bajo las que esto se puede reabrir.
     """
     try:
         salarios = _indec_nivel_mensual(FUNC_SALARIOS_ID, limit=48)
