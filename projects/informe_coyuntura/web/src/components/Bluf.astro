@@ -21,11 +21,24 @@ for (const x of estados) {
   if (p && (!foco || p.tension > foco.dim.tension)) foco = { dim: p, meta: x.meta };
 }
 
+// Todas las cláusulas van en minúscula -- la mayúscula de arranque se
+// aplica UNA sola vez, al final, sobre el string ya unido. Antes, la
+// cláusula de `masTenso` traía su "Con" mayúscula hardcodeada asumiendo
+// que siempre iba a ser la primera del párrafo (cierto mientras
+// `rojos` era estructuralmente siempre 0); apenas un cinturón puede
+// pintarse rojo, esa cláusula pasa a la segunda posición y la mayúscula
+// queda en mitad de la oración, después de un punto y coma.
 const frases: string[] = [];
 if (rojos.length > 0) {
-  frases.push(`${cap(nombres(rojos))} ${rojos.length === 1 ? "está" : "están"} en zona crítica`);
+  frases.push(`${nombres(rojos)} ${rojos.length === 1 ? "está" : "están"} en zona crítica`);
 }
-frases.push(`Con una tensión global de ${num(informe.score_global)}/10, ${masTenso.meta.nombre.toLowerCase()} es el cinturón más exigido del tablero (${num(masTenso.c.score)}/10)`);
+if (rojos.length === 1 && rojos[0] === masTenso) {
+  // El cinturón en rojo y el más exigido son el mismo: no repetir el
+  // nombre dos cláusulas seguidas (redundante -- ya se lo nombró arriba).
+  frases.push(`con una tensión global de ${num(informe.score_global)}/10, es además el cinturón más exigido del tablero (${num(masTenso.c.score)}/10)`);
+} else {
+  frases.push(`con una tensión global de ${num(informe.score_global)}/10, ${masTenso.meta.nombre.toLowerCase()} es el cinturón más exigido del tablero (${num(masTenso.c.score)}/10)`);
+}
 if (amarillos.length > 0 && !amarillos.includes(masTenso)) {
   frases.push(`${nombres(amarillos)} ${amarillos.length === 1 ? "opera" : "operan"} en tensión`);
 } else if (amarillos.length > 1) {
@@ -34,7 +47,7 @@ if (amarillos.length > 0 && !amarillos.includes(masTenso)) {
 if (verdes.length > 0) {
   frases.push(`${nombres(verdes)} se ${verdes.length === 1 ? "mantiene estable" : "mantienen estables"}`);
 }
-const fraseEstados = frases.join("; ") + ".";
+const fraseEstados = cap(frases.join("; ")) + ".";
 const fraseFoco = foco
   ? `La mayor presión puntual del mes está en ${foco.dim.nombre.toLowerCase()} (${num(foco.dim.puntaje)}${foco.dim.base100 ? "" : "/100"}), la dimensión que más tensión aporta al índice de ${foco.meta.nombre.toLowerCase()}.`
   : "";

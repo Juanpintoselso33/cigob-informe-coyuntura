@@ -130,24 +130,55 @@ def _resolver(estado: str, mapa: dict, fallback: str) -> str:
     return mapa.get(estado, fallback)
 
 
+def _mapa_canonico() -> dict:
+    """El mapeo estado->color ya decidido en generar_informe.py:192 (el
+    emoji que pinta el informe markdown), traducido a los nombres de color
+    del chip web -- la fuente de verdad que verdictDeCinturon tiene que
+    espejar, no sólo "algún color válido"."""
+    fuente = GENERAR_INFORME_PY.read_text(encoding="utf-8")
+    m = re.search(
+        r'_emoji_estado[\s\S]*?return\s*\{([\s\S]*?)\}\.get',
+        fuente,
+    )
+    assert m, "No se encontró el mapeo estado->emoji en generar_informe.py"
+    emoji_a_color = {"🟢": "verde", "🟡": "amarillo", "🔴": "rojo"}
+    return {
+        estado: emoji_a_color[emoji]
+        for estado, emoji in re.findall(r'"(\w+)":\s*"(.)"', m.group(1))
+    }
+
+
 class TestVerdictDeCinturonConoceElVocabularioDeEstado:
     """Las dos direcciones que tienen que sostenerse simultáneamente para que
     web y pipeline no vuelvan a divergir en silencio."""
 
-    def test_todo_estado_real_resuelve_a_un_color_valido(self):
-        """Dirección 1: ningún valor que `_estado()` puede emitir queda sin
-        verdicto. Ya vale hoy (incluso con el bug) porque existe un
-        fallback -- lo que falla es la dirección 2, más abajo."""
+    def test_todo_estado_real_resuelve_al_color_canonico(self):
+        """Dirección 1, con dientes: no alcanza con "algún color válido" --
+        eso ya vale hoy incluso con el bug (hay un fallback que atrapa
+        cualquier string no reconocido, así que 'tensionado' resuelve a
+        'amarillo' sin que este chequeo se entere). Fix round 1: el
+        regresion-test real es que cada estado real resuelva EXACTAMENTE
+        el color que generar_informe.py:192 ya decidió -- si alguien borra
+        la rama 'tensionado' de verdictDeCinturon, este assert tiene que
+        fallar acá, no sólo en un test aparte que alguien podría podar como
+        redundante."""
         cuerpo = _cuerpo_verdict_de_cinturon()
         mapa = _mapa_explicito(cuerpo)
         fallback = _color_fallback(cuerpo)
-        assert fallback in COLORES_DEL_CHIP
+        canonico = _mapa_canonico()
 
-        for estado in _estados_reales():
-            color = _resolver(estado, mapa, fallback)
-            assert color in COLORES_DEL_CHIP, (
+        assert set(canonico) == _estados_reales(), (
+            "El mapeo de generar_informe.py no cubre los mismos tres "
+            "estados que _estado() puede emitir -- revisar el regex o el "
+            "archivo fuente"
+        )
+
+        for estado, esperado in canonico.items():
+            obtenido = _resolver(estado, mapa, fallback)
+            assert obtenido == esperado, (
                 f"'{estado}' (real, emitido por _estado()) resuelve a "
-                f"'{color}', que no es un color válido del chip"
+                f"'{obtenido}' en el chip web, pero generar_informe.py "
+                f"(fuente de verdad) lo pinta '{esperado}'"
             )
 
     def test_verdict_de_cinturon_no_compara_contra_estados_fantasma(self):
@@ -164,37 +195,4 @@ class TestVerdictDeCinturonConoceElVocabularioDeEstado:
         assert not fantasma, (
             f"verdictDeCinturon compara contra {fantasma}, que _estado() "
             f"nunca produce (vocabulario real: {reales})"
-        )
-
-
-def test_verdict_de_cinturon_espeja_el_color_de_generar_informe():
-    """No sólo el vocabulario: el color asignado a cada estado real tiene
-    que coincidir con el que generar_informe.py:192 le pone al informe
-    markdown (estable=verde, en_tension=amarillo, tensionado=rojo) -- ese
-    mapeo es el que ya está decidido y la web lo venía contradiciendo."""
-    fuente = GENERAR_INFORME_PY.read_text(encoding="utf-8")
-    m = re.search(
-        r'_emoji_estado[\s\S]*?return\s*\{([\s\S]*?)\}\.get',
-        fuente,
-    )
-    assert m, "No se encontró el mapeo estado->emoji en generar_informe.py"
-    emoji_a_color = {"🟢": "verde", "🟡": "amarillo", "🔴": "rojo"}
-    color_esperado = {
-        estado: emoji_a_color[emoji]
-        for estado, emoji in re.findall(r'"(\w+)":\s*"(.)"', m.group(1))
-    }
-    assert set(color_esperado) == _estados_reales(), (
-        "El mapeo de generar_informe.py no cubre los mismos tres estados "
-        "que _estado() puede emitir -- revisar el regex o el archivo fuente"
-    )
-
-    cuerpo = _cuerpo_verdict_de_cinturon()
-    mapa = _mapa_explicito(cuerpo)
-    fallback = _color_fallback(cuerpo)
-
-    for estado, esperado in color_esperado.items():
-        obtenido = _resolver(estado, mapa, fallback)
-        assert obtenido == esperado, (
-            f"'{estado}' resuelve a '{obtenido}' en el chip web, pero "
-            f"generar_informe.py lo pinta '{esperado}'"
         )
