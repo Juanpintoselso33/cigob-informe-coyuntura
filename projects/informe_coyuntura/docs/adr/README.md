@@ -198,7 +198,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0142](0142-el-fal-mide-sus-dos-actos-fundamentales.md) | El FAL mide sus dos actos fundamentales | `fal_modernizacion_laboral` | vigente |
 | [0143](0143-la-desregulacion-se-mide-en-articulos.md) | La desregulación se mide en artículos, no en normas | `desregulacion_normativa` | vigente |
 | [0164](0164-familia-del-itcg-la-respuesta-del-capital-privado.md) | Familia del ITCG: la respuesta del capital privado |  | vigente |
-| [0185](0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) | `reestructuracion_organismos` habla solo de disolución o cierre | `reestructuracion_organismos` | parcial |
+| [0185](0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) | `reestructuracion_organismos` habla solo de disolución o cierre | `reestructuracion_organismos` | vigente |
 | [0186](0186-masa-salarial-sale-del-itcg.md) | `masa_salarial` sale del cálculo del ITCG | `masa_salarial`, `reforma_estado` | vigente |
 
 ### Vida cotidiana (ITVC)

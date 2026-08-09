@@ -123,19 +123,22 @@ INDICADORES_ESPERADOS = [
 # Calibración del proxy InfoLeg de disolución/cierre: 18 actos = avance 40%
 # (validado con estimación manual, ver docstring original); 45 = plan completo.
 #
-# PROCEDENCIA DEL 45, para la pregunta que dejó abierta CIGOB (ago-2026, ver
-# ADR-0185): el 45 se fijó en may-2026 (commit 43ff990) contra una estimación
-# manual descripta EXPLÍCITAMENTE como "decretos de disolución/fusión de
-# organismos" — el mismo commit dice "18 docs = 40% validado con estimación
-# manual; 45 docs = 100%" hablando de ese universo amplio, no de disoluciones
-# a secas. La búsqueda en InfoLeg, en cambio, siempre fue solo texto="disolucion"
-# (nunca sumó una búsqueda separada por "fusion"): lo que el buscador cuenta y
-# lo que el 45 se calibró para representar pueden no ser el mismo universo.
+# PROCEDENCIA DEL 45 (ADR-0185): se fijó en may-2026 (commit 43ff990) contra
+# una estimación manual descripta EXPLÍCITAMENTE como "decretos de disolución/
+# fusión de organismos" — un universo más amplio que el que la etiqueta
+# pública describe desde ago-2026 (solo disolución/cierre). La búsqueda en
+# InfoLeg, en cambio, siempre fue solo texto="disolucion".
 #
-# No se corrige acá: no hay una nueva estimación manual restringida a
-# disolución/cierre que reemplace la de mayo. Cambiar el 45 sin ese trabajo
-# sería mover una escala publicada por corazonada. Queda declarado para que
-# alguien lo revalide — ver ADR-0185, sección "Pregunta abierta sobre el 45".
+# REVISADO ago-2026 (ADR-0185, no se cambia): se buscó un ancla mejor
+# siguiendo el orden de ADR-0105 y ninguna sobrevivió al escrutinio — Ley
+# Bases no fija una cifra objetivo (sólo excluye organismos de la
+# disolución), el Ministerio de Desregulación no publica un contador de
+# "organismos cerrados", y la única cifra de prensa ("~60 organismos a
+# disolver", jul-2024) cuenta ORGANISMOS mientras este indicador cuenta
+# NORMAS (una norma puede cerrar varios organismos: confirmado leyendo los
+# 18 casos), así que emparejarlas mezclaría unidades. El 45 se mantiene
+# como convención calibrada, ahora documentada en detalle en el ADR en vez
+# de sólo declarada.
 ORGANISMOS_PLAN_TOTAL = 45
 
 

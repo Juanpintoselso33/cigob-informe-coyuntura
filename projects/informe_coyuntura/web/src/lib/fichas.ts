@@ -2090,7 +2090,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "El megadecreto 70/2023 no aparece en la búsqueda de texto: solo captura los actos posteriores.",
       "La calibración (18 = 40%, 45 = plan completo) es una decisión propia validada a mano y declarada.",
-      "El 45 (plan completo) se fijó en mayo de 2026 contra una estimación manual descripta en ese momento como \"decretos de disolución/fusión de organismos\" — un universo más amplio que el que la etiqueta de este indicador afirma medir desde agosto de 2026. La búsqueda en InfoLeg no cambió (siempre fue solo «disolución»), pero no hay una revalidación manual del 45 restringida a disolución/cierre. Declarado, no corregido — ver ADR-0185.",
+      "El 45 (plan completo) se fijó en mayo de 2026 contra una estimación manual descripta en ese momento como \"decretos de disolución/fusión de organismos\" — un universo más amplio que el que la etiqueta de este indicador afirma medir desde agosto de 2026. Se revisó (agosto de 2026) si había una cifra mejor: ni la Ley Bases, ni el Ministerio de Desregulación, ni la prensa publican un objetivo de organismos a cerrar en la misma unidad que este indicador mide (normas, no organismos), así que el 45 se mantiene como convención declarada, no corregida — el detalle de la búsqueda está en ADR-0185.",
     ],
     faltantes: "Con el buscador caído, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "El acumulado se reevalúa completo en cada actualización.",
@@ -2099,6 +2099,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-02", cambio: "Umbrales institucionales del ITCG." },
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-08-09", cambio: "Etiqueta y descripción precisadas a pedido de CIGOB: se habla solo de disolución o cierre, no de fusión/transformación/centralización. El cálculo no cambió — la búsqueda en InfoLeg siempre fue solo «disolución». Ver ADR-0185." },
+      { fecha: "2026-08-09", cambio: "Se buscó una cifra mejor que 45 para el denominador (Ley Bases, Ministerio de Desregulación, prensa) y ninguna resultó viable; el 45 se mantiene, ahora documentado en detalle. Ver ADR-0185." },
     ],
   },
 
