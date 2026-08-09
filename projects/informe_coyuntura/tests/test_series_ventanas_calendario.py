@@ -71,10 +71,39 @@ def test_el_promedio_movil_del_ipi_exige_ventana_completa(monkeypatch):
     assert "2025-06" not in s, "2025-04 sigue dentro de la ventana de junio"
 
 
-def test_el_valor_vigente_del_ipi_no_cambio():
-    """La corrección es de robustez, no de metodología: sobre la serie real,
-    que no tiene huecos, el resultado tiene que ser el mismo de antes."""
-    assert macro._ipi_ia_por_mes()[max(macro._ipi_ia_por_mes())] == -1.07
+def test_el_ipi_ia_no_deja_huecos_de_calendario():
+    """Reemplaza a un test que fijaba un valor puntual (-1.07) y quedó rojo en
+    `main` sin que nadie tocara `macro.py`. Estaba mal planteado por dos
+    razones independientes, no por una sola:
+
+    1. Indexaba con `max(...)`: el mes más nuevo. Cada vez que el INDEC
+       publica un mes nuevo la aserción pasa a hablar de un mes distinto; el
+       18-jul-2026 el máximo era 2026-05, hoy es 2026-06.
+    2. Aunque se fijara un mes en vez del máximo, el INDEC revisa los niveles
+       ya publicados: 2026-05 valía -1.07 cuando se escribió el test y hoy,
+       sobre la misma serie real, vale -0.98 sin que el código haya cambiado.
+       Verificado recorriendo los 112 meses de la serie vigente: ningún mes
+       vale ya -1.07.
+
+    Fijar un número contra una fuente que se revisa está roto por diseño, no
+    por bug: no hay valor que se pueda dejar escrito y seguir siendo cierto
+    mañana. Lo que hay que proteger es el invariante del refactor —ventanas
+    por CALENDARIO, no por posición—, y eso sí sobrevive a que la fuente
+    agregue meses o revise historia: la serie emitida no puede tener saltos de
+    mes. `test_el_promedio_movil_del_ipi_exige_ventana_completa` ya prueba,
+    con datos sintéticos, que un hueco real se excluye; este test corre lo
+    mismo contra la fuente real para agarrar un problema que uno sintético no
+    puede: que la aritmética de calendario (cruce de año, formato de fecha del
+    INDEC, etc.) se rompa con datos reales aunque el caso sintético pase."""
+    s = macro._ipi_ia_por_mes()
+    meses = sorted(s)
+    assert len(meses) > 12, "la serie real tiene que traer más de un año de datos"
+    for anterior, siguiente in zip(meses, meses[1:]):
+        assert descargar_series._mes_previo(siguiente) == anterior, (
+            f"hueco de calendario entre {anterior} y {siguiente}: la serie "
+            "real no tiene huecos, así que uno acá sería un bug de armado de "
+            "ventanas, no un hueco de la fuente"
+        )
 
 
 # ── Cuenta corriente como acompañante del saldo comercial (ADR-0080) ────────

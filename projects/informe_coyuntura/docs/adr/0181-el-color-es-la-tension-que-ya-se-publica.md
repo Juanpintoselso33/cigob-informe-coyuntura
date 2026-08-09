@@ -296,18 +296,43 @@ Si más adelante se quiere, se agrega **sobre** el color publicado, sin tocar el
 motor: la tensión y el color de cada corrida quedan en el snapshot y en
 BigQuery (ADR-0180), así que la serie necesaria ya se está acumulando.
 
-### La pregunta abierta: la vara del ITVC
+### La vara del ITVC: la pregunta se cerró por omisión, y eso queda declarado
 
-Lo implementado es la **vara unificada**: verde a tensión 4 en los cinco
-cinturones. Si CIGOB prefiere conservar para el ITVC la vara vieja —verde a
-tensión 6, que es la que venía usando la web sin haberlo declarado— eso es una
-**excepción explícita que hay que decidir y anotar acá**, no algo que pueda
-quedar por omisión. Volver atrás son dos líneas en
-`parametrica.color_de_indice_base100`.
+Esta sección dejó planteada una pregunta: si CIGOB prefería conservar para el
+ITVC la vara vieja —verde a tensión 6, la que venía usando la web sin
+haberlo declarado—, eso tenía que ser una excepción explícita, decidida y
+anotada acá, no algo que quedara por omisión.
 
-Se deja escrito de este lado porque la asimetría importa: la vara unificada es
-defendible sin nota al pie, la vara indulgente sólo es defendible si alguien
-la firma.
+**Nadie la pidió.** La vara unificada —verde a tensión 4 en los cinco
+cinturones, incluido el ITVC— está implementada, publicada y en producción
+desde el 8-ago-2026. No hubo objeción de CIGOB ni antes ni después de ese
+despliegue, así que lo que rige hoy es la vara única, adoptada **por
+default**, no por una decisión de CIGOB sobre este punto puntual: nadie de
+CIGOB respondió afirmativamente a la pregunta de esta sección, y no
+corresponde registrar acá una conformidad que no se dio. Lo que sí es cierto,
+y es lo que este párrafo cierra, es que la ausencia de objeción tiene una
+fecha y un resultado verificable: el ITVC (90,3) se pinta **naranja** en el
+snapshot que sirve la producción hoy —`itvc.semaforo.color = "naranja"` en
+`web/src/data/informe.json`—, tensión 6,94 sobre la fórmula publicada
+(`5 − (90,3−100) × 0,2`), consistente con la tabla de "Consecuencias" más
+arriba.
+
+**Sigue siendo reversible, y el camino es el mismo que se anotó al principio:**
+volver a la vara indulgente para el ITVC son dos líneas en
+`parametrica.color_de_indice_base100` —cambiar `5.0 - (indice - 100.0) * 0.2`
+por la fórmula que dé verde a tensión 6 en vez de 4— más los tests de borde de
+ITVC en `tests/test_semaforo.py` que habría que reescribir para el nuevo
+corte. El costo de reconsiderar esto no es releer código: es la tabla de
+"vida cotidiana se ve peor" en la sección de "Consecuencias" de más arriba
+—seis componentes que bajan de color y el ITVC total que pasa de amarillo a
+naranja—, porque esa tabla es exactamente lo que se recupera si se revierte
+esta sección, y lo que se vuelve a perder si no.
+
+Esta sección queda como el registro de que la pregunta se hizo, de que nadie
+la contestó, y de que "nadie contestó" tuvo como efecto adoptar la opción que
+menos favorece a vida cotidiana. Si en el futuro CIGOB pide la excepción, la
+respuesta no reabre este ADR: se anota como una decisión nueva, con su propia
+fecha, que revierte esta sección.
 
 ### Dos consecuencias que aparecieron implementando
 
