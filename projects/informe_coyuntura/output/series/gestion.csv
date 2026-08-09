@@ -25,39 +25,39 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2024-01-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
 2023-12-01,rigi_inversiones,0,US$ M aprobados (acum.),Min. Economía RIGI + BO (fechas de sanción)
-2026-08-01,reestructuracion_organismos,40.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2026-07-01,reestructuracion_organismos,40.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2026-06-01,reestructuracion_organismos,40.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2026-05-01,reestructuracion_organismos,40.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2026-04-01,reestructuracion_organismos,37.8,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2026-03-01,reestructuracion_organismos,37.8,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2026-02-01,reestructuracion_organismos,35.6,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2026-01-01,reestructuracion_organismos,33.3,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-12-01,reestructuracion_organismos,33.3,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-11-01,reestructuracion_organismos,33.3,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-10-01,reestructuracion_organismos,33.3,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-09-01,reestructuracion_organismos,33.3,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-08-01,reestructuracion_organismos,33.3,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-07-01,reestructuracion_organismos,28.9,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-06-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-05-01,reestructuracion_organismos,22.2,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-04-01,reestructuracion_organismos,17.8,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-03-01,reestructuracion_organismos,17.8,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-02-01,reestructuracion_organismos,15.6,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2025-01-01,reestructuracion_organismos,13.3,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-12-01,reestructuracion_organismos,8.9,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-11-01,reestructuracion_organismos,6.7,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-10-01,reestructuracion_organismos,6.7,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-09-01,reestructuracion_organismos,4.4,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-08-01,reestructuracion_organismos,4.4,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-07-01,reestructuracion_organismos,2.2,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-06-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-05-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-04-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-03-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-02-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2024-01-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
-2023-12-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)",InfoLeg ('disolucion' desde dic-2023)
+2026-08-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2026-07-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2026-06-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2026-05-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2026-04-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2026-03-01,reestructuracion_organismos,24.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2026-02-01,reestructuracion_organismos,22.2,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2026-01-01,reestructuracion_organismos,20.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-12-01,reestructuracion_organismos,20.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-11-01,reestructuracion_organismos,20.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-10-01,reestructuracion_organismos,20.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-09-01,reestructuracion_organismos,20.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-08-01,reestructuracion_organismos,20.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-07-01,reestructuracion_organismos,20.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-06-01,reestructuracion_organismos,20.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-05-01,reestructuracion_organismos,20.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-04-01,reestructuracion_organismos,15.6,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-03-01,reestructuracion_organismos,15.6,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-02-01,reestructuracion_organismos,13.3,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2025-01-01,reestructuracion_organismos,11.1,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-12-01,reestructuracion_organismos,6.7,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-11-01,reestructuracion_organismos,4.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-10-01,reestructuracion_organismos,4.4,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-09-01,reestructuracion_organismos,2.2,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-08-01,reestructuracion_organismos,2.2,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-07-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-06-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-05-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-04-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-03-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-02-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2024-01-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
+2023-12-01,reestructuracion_organismos,0.0,"% de avance (proxy InfoLeg, 45 actos = 100%)","InfoLeg ('disolucion' desde dic-2023, cierres vigentes)"
 2026-06-01,reduccion_estado,-20.36,% vs dic-2023,INDEC (dotación APN mensual)
 2026-05-01,reduccion_estado,-19.81,% vs dic-2023,INDEC (dotación APN mensual)
 2026-04-01,reduccion_estado,-19.25,% vs dic-2023,INDEC (dotación APN mensual)
