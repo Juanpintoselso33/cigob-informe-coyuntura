@@ -122,6 +122,13 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
       frecuencia: d.frecuencia, tipo: d.tipo,
       fuente: ind.fuente ?? "", fecha: ind.fecha_dato ?? "", estado,
       periodo: periodoDato(ikey, ind),
+      // Semáforo (Tanda B, revisión de coherencia UI, ago-2026): el modal
+      // pintaba el punto de color en la card y no lo mencionaba en ningún
+      // lado al hacer clic. `null` cuando el indicador no tiene bloque
+      // semaforo (asistencia_directa, fuera del índice a propósito) -- el
+      // script del modal tiene que chequear esto antes de renderizar, no
+      // asumir que siempre hay color.
+      semaforo: ind.semaforo ?? null,
       aporteScore: ind.aporte_score ?? null,
       aporteFormula: ind.aporte_formula ?? null,
       aporteNota: ind.aporte_nota ?? null,
@@ -203,6 +210,7 @@ const dimsJson = JSON.stringify(dims);
     <h3 class="cg-modal-title" id="cg-modal-title"></h3>
     <p class="cg-modal-desc" id="cg-modal-que"></p>
     <dl class="cg-modal-ficha" id="cg-modal-ficha"></dl>
+    <div class="cg-modal-semaforo" id="cg-modal-semaforo"></div>
     <div class="cg-modal-detalle" id="cg-modal-detalle"></div>
     <div class="cg-modal-aporta" id="cg-modal-aporta"></div>
     <div class="cg-modal-formula" id="cg-modal-formula" hidden>
@@ -226,6 +234,11 @@ const dimsJson = JSON.stringify(dims);
 <script type="application/json" id="cg-dims-data" set:html={dimsJson}></script>
 <script>
   import { track } from "../lib/analytics.ts";
+  // rangoLegible vive en formato.ts, no en datos.ts: datos.ts importa
+  // informe.json/series.json completos, y este <script> ya recibe esos
+  // mismos datos vía <script type="application/json"> más abajo -- importar
+  // datos.ts acá los duplicaría enteros en el bundle del navegador.
+  import { rangoLegible } from "../lib/formato.ts";
   // ApexCharts se carga en demanda (import dinámico) la primera vez que se abre un
   // indicador, para no pesar en la carga de página cuando nadie abre el modal.
   let CHARTS = null;
@@ -439,6 +452,54 @@ const dimsJson = JSON.stringify(dims);
         celda("Fuente", fuenteCorta, d.fuente);
       mostrarFormula(d.formula, d.formulaLeyenda);
 
+      // Semáforo (Tanda B): el punto de color de la card no se explicaba en
+      // ningún lado al hacer clic. El color se NOMBRA en texto (no solo se
+      // pinta) porque es lo que saca a alguien que no distingue los colores
+      // de depender únicamente del chip -- pintar sin nombrar sería
+      // decoración, no información. Sin bloque `semaforo` (asistencia_directa,
+      // fuera del índice a propósito) no se renderiza nada, ni se inventa un
+      // color. `umbrales` es una LISTA de tramos, no un mapa: un color puede
+      // repetirse (costo_financiamiento_tesoro tiene amarillo y naranja dos
+      // veces cada uno, con verde como único tramo cerrado) y se recorre tal
+      // cual, sin deduplicar por color.
+      const NOMBRE_COLOR = { verde: "Verde", amarillo: "Amarillo", naranja: "Naranja", rojo: "Rojo" };
+      const semCaja = document.getElementById("cg-modal-semaforo");
+      if (d.semaforo && d.semaforo.color) {
+        const chipDe = (color) => {
+          const nombre = NOMBRE_COLOR[color] || color;
+          return `<span class="cg-verdict ${esc(color)}"><span class="cg-verdict-dot"></span>${esc(nombre)}</span>`;
+        };
+        // `por_que` sale nulo para los indicadores sin escala puntuable
+        // (vida cotidiana, espíritu de época): ahí no se fabrica una
+        // explicación -- se remite a la tensión ya explicada más abajo, en
+        // vez de repetir el mismo número con otra precisión (ver el aviso
+        // de "dos vocabularios" del `banda_idc` del IdC, que es justamente
+        // el error que esto evita).
+        const porQueHtml = d.semaforo.por_que
+          ? ` — ${esc(d.semaforo.por_que)}`
+          : (d.aporteScore != null ? ` — la tensión que le corresponde se explica más abajo, en "Cómo incide en el score".` : "");
+        let tablaHtml = "";
+        if (Array.isArray(d.semaforo.umbrales) && d.semaforo.umbrales.length) {
+          const filas = d.semaforo.umbrales.map(t =>
+            `<tr><td>${esc(rangoLegible(t))}</td><td>${chipDe(t.color)}</td></tr>`).join("");
+          tablaHtml =
+            `<div class="cg-ficha-tablewrap" style="margin-top:10px;">` +
+              `<table class="cg-ficha-tabla">` +
+                `<thead><tr><th>Rango (${esc(d.semaforo.unidad || "")})</th><th>Color</th></tr></thead>` +
+                `<tbody>${filas}</tbody>` +
+              `</table>` +
+            `</div>`;
+        }
+        semCaja.innerHTML =
+          `<h4 class="cg-modal-h4">Semáforo</h4>` +
+          `<p class="cg-score-map"><strong>Color vigente:</strong> ${chipDe(d.semaforo.color)}${porQueHtml}</p>` +
+          tablaHtml;
+        semCaja.style.display = "";
+      } else {
+        semCaja.innerHTML = "";
+        semCaja.style.display = "none";
+      }
+
       const score = document.getElementById("cg-modal-score");
       const indiceHtml = incidenciaIndiceHtml(d.indiceMeta);
       let tensionHtml = "";
@@ -591,6 +652,15 @@ const dimsJson = JSON.stringify(dims);
         `${Math.round(d.peso * 100)}% × ${nf.format(d.puntaje)} = <strong>${nf.format(aporte)}</strong> puntos.</p>`;
       document.getElementById("cg-modal-score").style.display = "";
 
+      // El modal de dimensión reusa el MISMO DOM que el de indicador. Sin
+      // limpiar estos dos, quedaban con el contenido del último indicador
+      // abierto -- semáforo era mío (Tanda B); detalle-por-empresa ya
+      // pasaba antes de esta rama (ej. RIGI/Privatizaciones), encontrado al
+      // verificar el bloque nuevo y arreglado acá de paso, mismo patrón.
+      document.getElementById("cg-modal-semaforo").innerHTML = "";
+      document.getElementById("cg-modal-semaforo").style.display = "none";
+      document.getElementById("cg-modal-detalle").innerHTML = "";
+      document.getElementById("cg-modal-detalle").style.display = "none";
       document.getElementById("cg-modal-contexto").style.display = "none";
       // Sin gráfico aparte: las filas de composición YA son el visual (un
       // bar chart de puntajes repetiría la misma información).

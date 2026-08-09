@@ -332,6 +332,14 @@
     letter-spacing: .06em; color: var(--muted); margin: 0 0 3px;
 }
 .cg-modal-ficha dd { margin: 0; font-size: 13px; color: var(--dark); font-weight: 700; overflow-wrap: anywhere; }
+/* Semáforo del indicador (Tanda B): mismo tratamiento de caja que
+   .cg-modal-score, para que la explicación del color quede al mismo nivel
+   visual que el resto de los bloques de transparencia del modal. */
+.cg-modal-semaforo {
+    background: var(--bg-page); border: 1px solid var(--bd);
+    border-radius: 10px; padding: 14px 16px; margin: 0 0 20px;
+}
+.cg-modal-semaforo .cg-modal-h4 { margin-top: 0; }
 .cg-modal-h4 {
     font-size: 11px; font-weight: 800; text-transform: uppercase;
     letter-spacing: .08em; color: var(--muted); margin: 4px 0 6px;

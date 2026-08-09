@@ -1,5 +1,14 @@
 import informeRaw from "../data/informe.json";
 import seriesRaw from "../data/series.json";
+import { num } from "./formato.ts";
+
+// `num` vive en formato.ts (sin import de informe.json/series.json) para que
+// los <script> client-side puedan formatear números sin arrastrar el
+// snapshot completo al bundle del navegador -- ver el comentario de cabecera
+// de formato.ts. Acá se reexporta para no tocar los ~15 archivos que ya
+// hacen `import { num } from "../lib/datos.ts"` en frontmatter (build time,
+// donde arrastrar el snapshot no importa: ya está importado igual).
+export { num };
 
 export interface Indicador {
   valor: number | string | null;
@@ -356,25 +365,7 @@ export function label(key: string): string {
 }
 
 // Formato de valor: números con separador es-AR; strings tal cual; null → "—"
-const NF = new Intl.NumberFormat("es-AR", { maximumFractionDigits: 2 });
 const NF_COMPACT = new Intl.NumberFormat("es-AR", { notation: "compact", maximumFractionDigits: 1 });
-
-// ÚNICO formateador de números para pantalla. Antes cada componente tenía su
-// propio `coma = n => String(n).replace(".", ",")` —cinco copias— y en los
-// lugares donde el número se interpolaba crudo salía con punto: la auditoría
-// mobile del 29-jul-2026 encontró el MISMO valor escrito de las dos formas en
-// una sola página (`3,2` en la bajada y `3.2` en la card del hero, `47,4` y
-// `47.4`, `96.7/100` junto a `96,7`), y `/metodologia/` con punto en todo.
-// Dos reglas, las dos son convención del proyecto:
-//   · separador decimal es-AR (coma)
-//   · menos tipográfico U+2212, no el guion U+002D — igual que las unidades y
-//     las anclas que escribe el pipeline (ver politica.py)
-// NO usar para el CSV descargable ni para valores que van a `style`/`width`:
-// ahí el número tiene que quedar parseable.
-export function num(valor: number | null | undefined): string {
-  if (valor === null || valor === undefined || Number.isNaN(valor)) return "—";
-  return NF.format(valor).replace("-", "−");
-}
 
 export function formatValor(valor: unknown): string {
   if (valor === null || valor === undefined) return "—";

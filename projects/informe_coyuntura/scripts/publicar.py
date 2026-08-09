@@ -449,9 +449,21 @@ def _macro_input_txt(ikey, ind):
                 f"+ Bopreal {int(ind.get('bopreal_12m', 0))} (M USD)")
     if ikey == "idc" and ind.get("componentes"):
         c, n = ind["componentes"], ind.get("niveles") or {}
+        # `banda_idc` es el semáforo de 3 colores propio del IdC (por
+        # z-score, ajeno al motor paramétrico -- ver macro.py:fetch_idc). El
+        # punto de color de la card sale del semáforo de 4 colores que
+        # _semaforos() calcula sobre el puntaje ITCM del indicador: otra
+        # escala, con sus propios cortes. Hoy suelen coincidir, pero no
+        # siempre -- con z = −0,6 esta banda da "rojo" mientras el semáforo
+        # de 4 colores da "naranja" (revisión de coherencia UI, Tanda B,
+        # ago-2026). Por eso el paréntesis dice explícitamente de qué escala
+        # es, en vez de un color suelto sin dueño; se omite entero si el
+        # colector no corrió y `banda_idc` no está (clave vieja `semaforo`).
+        banda_idc = ind.get("banda_idc")
+        banda_idc_txt = f" (banda propia del IdC: {banda_idc})" if banda_idc else ""
         txt = (f"{coma(ind.get('valor'))} σ = precio {coma(c.get('precio'))} · "
-               f"volumen {coma(c.get('volumen'))} · asignación {coma(c.get('asignacion'))} "
-               f"({ind.get('banda_idc', '')})")
+               f"volumen {coma(c.get('volumen'))} · asignación {coma(c.get('asignacion'))}"
+               f"{banda_idc_txt}")
         if n:
             txt += (f" — niveles: tasa real {coma(n.get('tasa_real_pp'))} pp · "
                     f"depósitos {coma(n.get('dep_real_ia_pct'))}% i.a. real · "
