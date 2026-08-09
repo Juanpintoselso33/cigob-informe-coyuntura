@@ -729,7 +729,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-28,tc_mayorista,807.975,ARS/USD,BCRA
 2023-12-27,tc_mayorista,807.425,ARS/USD,BCRA
 2023-12-26,tc_mayorista,806.8833,ARS/USD,BCRA
-2023-12-22,tc_mayorista,804.775,ARS/USD,BCRA
 2026-06-01,saldo_comercial_12m,22481.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-05-01,saldo_comercial_12m,21166.7,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
 2026-04-01,saldo_comercial_12m,18324.1,M USD (acum. 12 meses),INDEC — ICA (vía datos.gob.ar)
@@ -1600,7 +1599,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-28,prestamos_privados,19120180.0,M ARS,BCRA
 2023-12-27,prestamos_privados,19013739.0,M ARS,BCRA
 2023-12-26,prestamos_privados,18844412.0,M ARS,BCRA
-2023-12-22,prestamos_privados,18664152.0,M ARS,BCRA
 2026-06-01,presion_dolarizacion,45.53,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-05-01,presion_dolarizacion,49.82,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
 2026-04-01,presion_dolarizacion,49.5,pts (0-100),"ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)"
@@ -2675,7 +2673,6 @@ fecha,indicador,valor,unidad,fuente
 2023-12-28,base_monetaria,9205744.0,M ARS,BCRA
 2023-12-27,base_monetaria,9226815.0,M ARS,BCRA
 2023-12-26,base_monetaria,9213444.0,M ARS,BCRA
-2023-12-22,base_monetaria,9030905.0,M ARS,BCRA
 2026-08-06,badlar,22.0,% anual,BCRA
 2026-08-05,badlar,20.875,% anual,BCRA
 2026-08-04,badlar,22.3125,% anual,BCRA
@@ -3308,4 +3305,3 @@ fecha,indicador,valor,unidad,fuente
 2023-12-28,badlar,109.0,% anual,BCRA
 2023-12-27,badlar,108.875,% anual,BCRA
 2023-12-26,badlar,109.3125,% anual,BCRA
-2023-12-22,badlar,109.5625,% anual,BCRA
