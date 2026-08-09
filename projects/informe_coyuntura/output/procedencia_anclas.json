@@ -22,16 +22,16 @@
           "motivo": "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120)"
         },
         {
-          "indicador": "emae_ia",
-          "categoria": "conceptual",
-          "peso": 0.088,
-          "motivo": "bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120)"
-        },
-        {
           "indicador": "recaudacion",
           "categoria": "conceptual",
           "peso": 0.072,
-          "motivo": "bandas de variación real en torno al cero; los cortes además caen razonablemente en la distribución 2021-2023 (ADR-0120)"
+          "motivo": "bandas de variación real en torno al cero; los cortes caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120)"
+        },
+        {
+          "indicador": "emae_ia",
+          "categoria": "conceptual",
+          "peso": 0.066,
+          "motivo": "bandas de crecimiento en torno al cero; el corte de crecimiento nulo cae en p26 de la historia 2021-2023 (ADR-0120)"
         },
         {
           "indicador": "rem_ipc_12m",
@@ -56,6 +56,12 @@
           "categoria": "conceptual",
           "peso": 0.0336,
           "motivo": "anclas en desvíos estándar: +1σ ≈ p84 · −1σ ≈ p16 (ADR-0028)"
+        },
+        {
+          "indicador": "emae_difusion",
+          "categoria": "conceptual",
+          "peso": 0.022,
+          "motivo": "cortes por CANTIDAD DE SECTORES (14-15 generalizado · 11-13 mayoría amplia · 8-10 ajustada · 5-7 minoría · 0-4 contracción), puestos en el hueco entre valores alcanzables; explícitamente NO se ancló en el 50% de manual porque la mediana histórica argentina es 73,3% (ADR-0124)"
         },
         {
           "indicador": "ipi_manufacturero",
@@ -118,9 +124,9 @@
       "peso_total": 1.0,
       "categorias": {
         "documento": 0.33999999999999997,
-        "convencion": 0.39699999999999996,
-        "conceptual": 0.218,
-        "historia_larga": 0.045
+        "convencion": 0.3975000000000001,
+        "conceptual": 0.1875,
+        "historia_larga": 0.075
       },
       "detalle": [
         {
@@ -144,20 +150,14 @@
         {
           "indicador": "fal_modernizacion_laboral",
           "categoria": "conceptual",
-          "peso": 0.105,
+          "peso": 0.075,
           "motivo": "cortes sobre los estados que la escala puede tomar, no sobre el rango observado (ADR-0098)"
         },
         {
           "indicador": "reestructuracion_organismos",
           "categoria": "conceptual",
-          "peso": 0.05,
-          "motivo": "medidor de avance 0-100 hacia el plan de disoluciones/fusiones; el 100 es el ancla, no el rango observado (ADR-0121)"
-        },
-        {
-          "indicador": "libertad_opcion_salud",
-          "categoria": "conceptual",
-          "peso": 0.033,
-          "motivo": "% de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121)"
+          "peso": 0.0625,
+          "motivo": "medidor de avance 0-100 hacia el plan de disoluciones/cierres; el 100 es el ancla, no el rango observado (ADR-0121)"
         },
         {
           "indicador": "concesiones_infraestructura",
@@ -166,34 +166,34 @@
           "motivo": "tasa de adjudicación km/plan; el 100 (plan adjudicado) es el ancla (ADR-0121)"
         },
         {
+          "indicador": "libertad_opcion_salud",
+          "categoria": "conceptual",
+          "peso": 0.02,
+          "motivo": "% de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121)"
+        },
+        {
           "indicador": "litigiosidad_laboral",
           "categoria": "historia_larga",
-          "peso": 0.045,
+          "peso": 0.075,
           "motivo": "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023)"
         },
         {
           "indicador": "reduccion_estado",
           "categoria": "convencion",
-          "peso": 0.0875,
+          "peso": 0.1094,
           "motivo": "«calibrado con el dato real»: el recorte observado de ~10-12% define la banda 85"
+        },
+        {
+          "indicador": "gasto_funcionamiento",
+          "categoria": "convencion",
+          "peso": 0.0781,
+          "motivo": "bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico"
         },
         {
           "indicador": "desregulacion_normativa",
           "categoria": "convencion",
           "peso": 0.07,
-          "motivo": "la meta de 100 normas = plan completo es convención propia, declarada en ADR-0096"
-        },
-        {
-          "indicador": "protocolo_antipiquetes",
-          "categoria": "convencion",
-          "peso": 0.067,
-          "motivo": "calibrada con la caída observada en CABA en 2024-2025"
-        },
-        {
-          "indicador": "gasto_funcionamiento",
-          "categoria": "convencion",
-          "peso": 0.0625,
-          "motivo": "bandas anchas por el ajuste de 2024, que la propia ficha llama históricamente atípico"
+          "motivo": "el conteo pasa a ser OFICIAL (informe mensual del Min. de Desregulación) pero la vara NO: el organismo no publica meta, así que los cortes 100/300/600/1200 los ponemos nosotros — misma limitación que declaraba ADR-0096, con otra fuente para el número (ADR-0125)"
         },
         {
           "indicador": "rigi_inversiones",
@@ -202,107 +202,151 @@
           "motivo": "referencia el 22,1% de jun-2026 y la composición del pipeline de ese momento"
         },
         {
-          "indicador": "masa_salarial",
+          "indicador": "asistencia_directa",
           "categoria": "convencion",
-          "peso": 0.05,
-          "motivo": "gemela de gasto_funcionamiento: los cortes son grados de recorte fijados contra el ajuste 2024, sin serie previa (ADR-0121)"
+          "peso": 0.04,
+          "motivo": "el corte de «cumplido» en 95% es propio y queda POR DEBAJO de la línea de base: la TDPS ya marcaba 98,3% en ago-2023 y 100,0 todos los meses del mandato, así que el indicador puntúa 100 sobre un tramo que ya estaba andado (calibración pendiente, ADR-0189)"
+        },
+        {
+          "indicador": "protocolo_antipiquetes",
+          "categoria": "convencion",
+          "peso": 0.04,
+          "motivo": "calibrada con la caída observada en CABA en 2024-2025"
         }
       ],
       "share": {
         "documento": 0.34,
-        "convencion": 0.397,
-        "conceptual": 0.218,
-        "historia_larga": 0.045
+        "convencion": 0.398,
+        "conceptual": 0.188,
+        "historia_larga": 0.075
       },
-      "share_circular": 0.397
+      "share_circular": 0.398
     },
     "ITCP": {
       "peso_total": 1.0,
       "categorias": {
-        "externa": 0.17500000000000002,
-        "conceptual": 0.4215,
-        "convencion": 0.40349999999999997
+        "externa": 0.1554,
+        "conceptual": 0.48030000000000006,
+        "convencion": 0.33430000000000004,
+        "historia_larga": 0.03
       },
       "detalle": [
         {
           "indicador": "eficacia_legislativa",
           "categoria": "externa",
-          "peso": 0.08,
+          "peso": 0.0567,
           "motivo": "Directorio Legislativo: 40-50% Macri · 63-67% Alberto Fernández · 75-82% CFK (ADR-0061)"
         },
         {
           "indicador": "ratio_dnu",
           "categoria": "externa",
-          "peso": 0.0575,
+          "peso": 0.042,
           "motivo": "ACIJ 2011-2024, cuatro presidencias: 344 DNU / 1.058 leyes ≈ 0,33 (ADR-0058/0059)"
+        },
+        {
+          "indicador": "produccion_legislativa",
+          "categoria": "externa",
+          "peso": 0.0315,
+          "motivo": "el techo es el promedio histórico de 74,4 leyes/año de los 18 años completos del dataset de HCDN (2008-2025, 1.340 leyes, cuatro presidencias), no el rango 15-47 observado bajo esta administración (ADR-0168)"
         },
         {
           "indicador": "bloqueo_sostenido",
           "categoria": "externa",
-          "peso": 0.0375,
+          "peso": 0.0252,
           "motivo": "ninguna insistencia exitosa entre 2003 y 2025: ~100% histórico de sostenimiento (ADR-0069)"
-        },
-        {
-          "indicador": "brecha_obra_publica",
-          "categoria": "conceptual",
-          "peso": 0.15,
-          "motivo": "números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088)"
         },
         {
           "indicador": "iaf_transferencias",
           "categoria": "conceptual",
-          "peso": 0.088,
+          "peso": 0.076,
           "motivo": "variación real anclada en el cero con cortes simétricos de 10 pp, como recaudacion/emae del ITCM (ADR-0121)"
         },
         {
           "indicador": "votometro_ventaja_lla",
           "categoria": "conceptual",
-          "peso": 0.08,
+          "peso": 0.07,
           "motivo": "ventaja electoral anclada en el cero (empate) con márgenes simétricos redondos (ADR-0121)"
+        },
+        {
+          "indicador": "brecha_obra_publica",
+          "categoria": "conceptual",
+          "peso": 0.065,
+          "motivo": "números redondos alrededor del cero, explícitamente NO calibrados contra el rango observado (ADR-0088)"
+        },
+        {
+          "indicador": "apoyo_empresario",
+          "categoria": "conceptual",
+          "peso": 0.065,
+          "motivo": "el rango TEÓRICO del saldo (−1 a +1) partido en cinco tramos iguales y centrado en el cero —apoya tanto como critica—; no se mira el rango observado, que ni siquiera toca los extremos (ADR-0150)"
+        },
+        {
+          "indicador": "cobertura_judicial",
+          "categoria": "conceptual",
+          "peso": 0.06,
+          "motivo": "niveles redondos de cobertura de un cuerpo (>90 completa · 80-90 buena · 70-80 aceptable · 60-70 deficitaria · ≤60 crítica), explícitamente NO calibrados contra el rango observado 64-73%, que es desempeño real y bajo (ADR-0126)"
         },
         {
           "indicador": "adhesion_reformas_provincial",
           "categoria": "conceptual",
-          "peso": 0.066,
+          "peso": 0.057,
           "motivo": "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"
+        },
+        {
+          "indicador": "velocidad_resolucion",
+          "categoria": "conceptual",
+          "peso": 0.03,
+          "motivo": "el 100% es el punto donde la Corte resuelve exactamente lo que le entra, sin acumular ni descargar atraso; los cortes son márgenes redondos alrededor de ese valor y no el rango observado 26-142 (ADR-0168)"
+        },
+        {
+          "indicador": "paralisis_denuncias",
+          "categoria": "conceptual",
+          "peso": 0.03,
+          "motivo": "cortes redondos sobre sesiones por año de dos comisiones —una por semestre, por trimestre, por bimestre—, no calibrados contra el rango observado 2-7 (ADR-0168)"
         },
         {
           "indicador": "veto_quorum",
           "categoria": "conceptual",
-          "peso": 0.0375,
+          "peso": 0.0273,
           "motivo": "tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121)"
+        },
+        {
+          "indicador": "judicializacion",
+          "categoria": "historia_larga",
+          "peso": 0.03,
+          "motivo": "el techo es el 0,78% de densidad cautelar promedio de 2016-2019 —dos gobiernos anteriores al medido— contra 1,66% del promedio 2020-2026 (ADR-0168)"
         },
         {
           "indicador": "cohesion_bloque",
           "categoria": "convencion",
-          "peso": 0.18,
+          "peso": 0.15,
           "motivo": "calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048)"
         },
         {
           "indicador": "conflictividad_nacional",
           "categoria": "convencion",
-          "peso": 0.12,
+          "peso": 0.1,
           "motivo": "calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052)"
         },
         {
           "indicador": "alineamiento_senadores_prov",
           "categoria": "convencion",
-          "peso": 0.066,
+          "peso": 0.057,
           "motivo": "recalibrada con 29 puntos propios de feb-2024 en adelante (ADR-0038)"
         },
         {
           "indicador": "desafios_legislativos",
           "categoria": "convencion",
-          "peso": 0.0375,
+          "peso": 0.0273,
           "motivo": "anclas sobre el conteo observado (4 a 13 en 22 meses), leído contra el carácter excepcional del acto (ADR-0089)"
         }
       ],
       "share": {
-        "externa": 0.175,
-        "conceptual": 0.421,
-        "convencion": 0.403
+        "externa": 0.155,
+        "conceptual": 0.48,
+        "convencion": 0.334,
+        "historia_larga": 0.03
       },
-      "share_circular": 0.403
+      "share_circular": 0.334
     },
     "ITVC": {
       "peso_total": 1.0000000000000002,
@@ -313,20 +357,32 @@
         {
           "indicador": "brecha_salario_cbt",
           "categoria": "conceptual",
-          "peso": 0.2275,
+          "peso": 0.1706,
           "motivo": "rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123)"
-        },
-        {
-          "indicador": "informalidad",
-          "categoria": "conceptual",
-          "peso": 0.1225,
-          "motivo": "rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123)"
         },
         {
           "indicador": "peso_tarifas",
           "categoria": "conceptual",
           "peso": 0.1125,
           "motivo": "nivel de regulados vs salario rebaseado a 4T-2023; ancla en fecha fija"
+        },
+        {
+          "indicador": "mora_familias",
+          "categoria": "conceptual",
+          "peso": 0.1,
+          "motivo": "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"
+        },
+        {
+          "indicador": "pobreza_nowcast",
+          "categoria": "conceptual",
+          "peso": 0.0931,
+          "motivo": "rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha"
+        },
+        {
+          "indicador": "informalidad",
+          "categoria": "conceptual",
+          "peso": 0.0919,
+          "motivo": "rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123)"
         },
         {
           "indicador": "ipc_alimentos",
@@ -341,10 +397,10 @@
           "motivo": "ICC rebaseado a 4T-2023; ancla en fecha fija"
         },
         {
-          "indicador": "mortalidad_pymes",
+          "indicador": "empleo_registrado",
           "categoria": "conceptual",
-          "peso": 0.054,
-          "motivo": "nivel del IPI desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"
+          "peso": 0.0603,
+          "motivo": "asalariados privados registrados (SIPA) rebaseados a 4T-2023, sin invertir (ADR-0130); ancla en fecha fija"
         },
         {
           "indicador": "alquiler_real",
@@ -353,46 +409,22 @@
           "motivo": "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"
         },
         {
-          "indicador": "endeudamiento_familiar",
-          "categoria": "conceptual",
-          "peso": 0.05,
-          "motivo": "stock real rebaseado a 4T-2023; el tope conceptual de 140 (base+40, ADR-0033) le recorta el extremo, no lo calibra"
-        },
-        {
-          "indicador": "mora_familias",
-          "categoria": "conceptual",
-          "peso": 0.05,
-          "motivo": "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"
-        },
-        {
-          "indicador": "despacho_cemento",
-          "categoria": "conceptual",
-          "peso": 0.048,
-          "motivo": "nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"
-        },
-        {
           "indicador": "inseguridad",
           "categoria": "conceptual",
           "peso": 0.045,
           "motivo": "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"
         },
         {
-          "indicador": "indice_lider",
+          "indicador": "mortalidad_pymes",
           "categoria": "conceptual",
-          "peso": 0.03,
-          "motivo": "Índice Líder UTDT rebaseado a 4T-2023 (ADR-0112); ancla en fecha fija"
+          "peso": 0.0397,
+          "motivo": "nivel del IPI desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"
         },
         {
-          "indicador": "pluriempleo",
+          "indicador": "despacho_cemento",
           "categoria": "conceptual",
-          "peso": 0.018,
-          "motivo": "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"
-        },
-        {
-          "indicador": "consumo_carne",
-          "categoria": "conceptual",
-          "peso": 0.015,
-          "motivo": "consumo per cápita rebaseado a 4T-2023; ancla en fecha fija"
+          "peso": 0.0362,
+          "motivo": "nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"
         },
         {
           "indicador": "sentimiento_digital",
@@ -401,9 +433,21 @@
           "motivo": "canasta de búsquedas rebaseada a 4T-2023, invertida (ADR-0034); ancla en fecha fija"
         },
         {
+          "indicador": "pluriempleo",
+          "categoria": "conceptual",
+          "peso": 0.0138,
+          "motivo": "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"
+        },
+        {
+          "indicador": "consumo_carne",
+          "categoria": "conceptual",
+          "peso": 0.0112,
+          "motivo": "consumo per cápita rebaseado a 4T-2023; ancla en fecha fija"
+        },
+        {
           "indicador": "patentamiento_motos",
           "categoria": "conceptual",
-          "peso": 0.0075,
+          "peso": 0.0056,
           "motivo": "móvil 12m rebaseado a 4T-2023 (ADR-0024); el tope conceptual de 140 le recorta el boom, no lo calibra"
         }
       ],

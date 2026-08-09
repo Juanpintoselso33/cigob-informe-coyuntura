@@ -135,8 +135,10 @@ PROCEDENCIA = {
     "privatizaciones": ("documento", "etapas 0-4 definidas en el documento de diseño"),
     "rigi_inversiones": ("convencion", "referencia el 22,1% de jun-2026 y la composición del pipeline de ese momento"),
     "concesiones_infraestructura": ("conceptual", "tasa de adjudicación km/plan; el 100 (plan adjudicado) es el ancla (ADR-0121)"),
-    # asistencia_directa salió del índice por ADR-0100 (clavada en 100,0): su
-    # banda sigue existiendo pero ya no pondera, así que no entra acá.
+    # asistencia_directa vuelve a puntuar por ADR-0189: el ITCG mide avance de
+    # propuestas y no puede descartar las cumplidas. Su ancla es la más floja
+    # del cinturón y conviene que quede contada como tal.
+    "asistencia_directa": ("convencion", "el corte de «cumplido» en 95% es propio y queda POR DEBAJO de la línea de base: la TDPS ya marcaba 98,3% en ago-2023 y 100,0 todos los meses del mandato, así que el indicador puntúa 100 sobre un tramo que ya estaba andado (calibración pendiente, ADR-0189)"),
     "protocolo_antipiquetes": ("convencion", "calibrada con la caída observada en CABA en 2024-2025"),
     "libertad_opcion_salud": ("conceptual", "% de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121)"),
     "litigiosidad_laboral": ("historia_larga", "calibrada sobre 2021-2026, que incluye dos gobiernos (ADR-0023)"),

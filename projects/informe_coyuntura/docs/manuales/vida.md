@@ -74,6 +74,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 25% |
 | Peso efectivo en el índice | **9.3%** |
+| Procedencia del ancla | `conceptual` — rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -177,6 +178,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 40% |
 | Peso efectivo en el índice | **6.0%** |
+| Procedencia del ancla | `conceptual` — asalariados privados registrados (SIPA) rebaseados a 4T-2023, sin invertir (ADR-0130); ancla en fecha fija |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 

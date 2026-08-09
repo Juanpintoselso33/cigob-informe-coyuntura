@@ -131,8 +131,27 @@ def _tiene_encabezado(tabla):
                    for p in c.paragraphs for r in p.runs)
 
 
+# Sello para no aplicar el estilo dos veces sobre el mismo archivo.
+#
+# Hace falta porque este script NO es idempotente: la primera pasada quita el
+# prefijo MARCA_DIM de las filas separadoras, así que la segunda ya no las
+# reconoce y las trata como filas comunes — les pisa el sombreado de sección
+# con el de fila alternada. Pasó de verdad: tres documentos re-estilados
+# perdieron el separador de dimensión y ningún chequeo de contenido lo vio,
+# porque el texto seguía intacto.
+#
+# El pipeline correcto es siempre pandoc → estilar sobre un .docx recién
+# convertido. Si hay que re-estilar, se vuelve a convertir primero.
+SELLO = "fichas-cigob: estilado"
+
+
 def estilar(path):
     doc = Document(path)
+    if SELLO in (doc.core_properties.comments or ""):
+        raise SystemExit(
+            f"{path}: ya tiene el estilo aplicado. Volvé a convertirlo con "
+            f"pandoc antes de estilarlo — una segunda pasada rompe las filas "
+            f"separadoras de dimensión.")
     n_color, n_seccion = 0, 0
 
     for tabla in doc.tables:
@@ -219,6 +238,8 @@ def estilar(path):
             _keep_next(p)
             n_keep += 1
 
+    props = doc.core_properties
+    props.comments = ((props.comments + " · ") if props.comments else "") + SELLO
     doc.save(path)
     return {"tablas": len(doc.tables), "celdas_color": n_color,
             "filas_seccion": n_seccion, "titulos_pegados": n_keep}

@@ -50,8 +50,9 @@ EJEMPLO = {
     "gasto_funcionamiento": -18.0,      # 81,0 (banda 85)
     # masa_salarial YA NO PUNTÚA (ADR-0186, 2026-08-09): sale del cálculo del
     # ITCG a pedido de CIGOB. Se deja el valor acá porque gestion.py lo sigue
-    # pasando en `valores` (la card se sigue publicando) — calcular_itcg lo
-    # ignora al no estar en ninguna DIMENSIONES_ITCG["...]["indicadores"].
+    # pasando en `valores` —el colector no deja de medirlo— y calcular_itcg lo
+    # ignora al no estar en ninguna DIMENSIONES_ITCG["..."]["indicadores"].
+    # Desde ADR-0189 tampoco se publica la card.
     "masa_salarial": -15.0,             # sin efecto: no integra ninguna dimensión
     "reestructuracion_organismos": 40.0,  # 52,5 (borde 40/65)
     "fal_modernizacion_laboral": 100.0,  # 100 — los DOS actos fundamentales
@@ -83,10 +84,12 @@ def test_itcg_reproduce_ejemplo():
     # salto es editorial y no empírico: está declarado en el ADR y en la ficha.
     assert dims["reforma_laboral"]["puntaje"] == 78.9
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
-    assert dims["social_orden"]["puntaje"] == 72.8   # sin asistencia_directa (ADR-0100)
-    assert r["valor"] == 75.6          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186)
+    # ADR-0189: vuelve asistencia_directa y la dimension recupera el 40/40/20
+    # del documento. 0,4x100 + 0,4x76,6 + 0,2x65 = 83,6 (antes 72,8 con 67/33).
+    assert dims["social_orden"]["puntaje"] == 83.6
+    assert r["valor"] == 76.7          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189)
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.4
+    assert itcg.tension_de_itcg(r["valor"]) == 2.3
     assert r["ajustes_aplicados"] == []
 
 
@@ -218,9 +221,10 @@ def test_ajuste_manual_del_analista():
     aj = r["ajustes_aplicados"][0]
     assert aj["indicador"] == "protocolo_antipiquetes"
     assert (aj["de"], aj["a"]) == (76.6, 40)
-    # D5 = 0,67×40 + 0,33×65 = 48,2 (asistencia_directa salió del cálculo por
-    # promesa cumplida, ADR-0100; antes era 0,4×100 + 0,4×40 + 0,2×65 = 69)
-    assert r["dimensiones"]["social_orden"]["puntaje"] == 48.2
+    # D5 = 0,4×100 + 0,4×40 + 0,2×65 = 69,0 — ADR-0189 devuelve
+    # asistencia_directa al cálculo y restituye los pesos del documento;
+    # con el reparto 67/33 de ADR-0100 esto daba 48,2.
+    assert r["dimensiones"]["social_orden"]["puntaje"] == 69.0
     # lo que se protege es que el override BAJE el índice, no un número fijo:
     # atado a un valor absoluto se rompía con cada recalibración ajena (pasó
     # con ADR-0142, que subió la línea de base de 71,4 a 76,6).

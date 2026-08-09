@@ -365,45 +365,23 @@ def test_gestion_itcg_reconcilia():
 
     en_indice = {k: i for k, i in c["indicadores"].items() if i.get("en_indice")}
     contexto = {k: i for k, i in c["indicadores"].items() if i.get("en_indice") is False}
-    # ADR-0100: asistencia_directa sale del cálculo (promesa cumplida, clavada
-    # en 100,0 desde abr-2024) pero SIGUE publicándose, a diferencia de los
-    # ocultos de ADR-0051.
-    # ADR-0186: `masa_salarial` también sale del cálculo, por un motivo
-    # distinto del de la promesa cumplida — CIGOB pidió suspenderlo hasta
-    # tener certeza sobre lo que sus datos permiten afirmar. Sigue publicándose
-    # con su valor mensual: lo que se retira es el puntaje, no el dato. Por eso
-    # son 13 y no 14.
-    assert len(en_indice) == 13, f"esperaba 13 indicadores en el índice, hay {len(en_indice)}"
-    assert "asistencia_directa" not in en_indice
-    cumplida = c["indicadores"].get("asistencia_directa")
-    assert cumplida is not None, "la promesa cumplida no debe desaparecer del snapshot"
-    assert cumplida.get("cumplido", {}).get("desde") == "2024-04"
-    suspendido = c["indicadores"].get("masa_salarial")
-    assert suspendido is not None, "el suspendido no debe desaparecer del snapshot"
-    assert suspendido.get("en_indice") is False
-    assert suspendido.get("suspendido", {}).get("desde"), "suspendido sin fecha"
-    assert suspendido.get("suspendido", {}).get("por_que"), "suspendido sin explicación"
-    assert suspendido.get("valor") is not None, "se retira el puntaje, no el dato"
+    # ADR-0189: todo lo que gestión publica, puntúa. Son 14 — los 13 que ya
+    # puntuaban más `asistencia_directa`, que vuelve al cálculo: el ITCG mide
+    # avance de propuestas y un índice de avance no puede descartar las
+    # cumplidas. `masa_salarial` sigue sin puntuar (duda metodológica sin
+    # saldar, ADR-0186) y por eso ahora tampoco se publica.
+    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
+    assert contexto == {}, ("gestión no publica indicadores que no puntúen: "
+                            f"{sorted(contexto)}")
+    assert len(c["indicadores"]) == 14, "el snapshot no debe traer cards sin puntaje"
+    assert "asistencia_directa" in en_indice, "la promesa cumplida puntúa (ADR-0189)"
     assert "litigiosidad_laboral" in en_indice
-    # ADR-0051: los 2 de contexto (alertas_manifestacion, protestas_caba)
-    # quedan OCULTOS del snapshot (GESTION_OCULTOS, mismo criterio que
-    # ADR-0022/0048/0049) — siguen en pipeline como seguimiento interno.
-    #
-    # ADR-0100 abre UNA excepción acotada y explícita: las promesas cumplidas
-    # no puntúan pero sí se publican, porque miden su dimensión y el hecho de
-    # estar cumplidas es parte del relato. La regla de 0051 sigue valiendo para
-    # todo lo demás: fuera de las cumplidas, no puede haber cards sin puntaje.
-    # ADR-0186 suma la segunda excepción: el suspendido. Son dos motivos
-    # declarados y acotados —cumplido, suspendido—, no una puerta abierta:
-    # una card sin puntaje que no traiga ninguno de los dos sigue prohibida.
-    solo_contexto = {k: i for k, i in contexto.items()
-                     if not i.get("cumplido") and not i.get("suspendido")}
-    assert solo_contexto == {}, f"gestión no debería publicar contexto: {set(solo_contexto)}"
-    for k, i in contexto.items():
-        motivo = i.get("cumplido") or i["suspendido"]
-        assert motivo.get("desde"), f"{k}: fuera del índice sin fecha"
-        assert motivo.get("por_que"), f"{k}: fuera del índice sin explicación"
-    for oculto in ("alertas_manifestacion", "protestas_caba"):
+    # Los cuatro que no puntúan quedan OCULTOS del snapshot (GESTION_OCULTOS):
+    # los 2 de contexto por ADR-0051, y la promesa cumplida y el suspendido por
+    # ADR-0189. Nada de esto deja de medirse — colector, stores y series siguen
+    # corriendo como seguimiento interno, y las razones de no puntuar siguen
+    # documentadas en itcg.INDICADORES_{CONTEXTO,CUMPLIDOS,SUSPENDIDOS}.
+    for oculto in ("alertas_manifestacion", "protestas_caba", "masa_salarial"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto del snapshot"
 
     ponderado = sum(i["puntaje_itcg"] * i["peso_efectivo"] for i in en_indice.values())

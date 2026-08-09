@@ -18,7 +18,7 @@ al ADR.
 | `reforma_estado` | 25% | `reduccion_estado`, `gasto_funcionamiento`, `reestructuracion_organismos` |
 | `reforma_laboral` | 15% | `fal_modernizacion_laboral`, `litigiosidad_laboral` |
 | `privatizaciones_inversion` | 15% | `privatizaciones`, `rigi_inversiones`, `concesiones_infraestructura` |
-| `social_orden` | 10% | `protocolo_antipiquetes`, `libertad_opcion_salud` |
+| `social_orden` | 10% | `asistencia_directa`, `protocolo_antipiquetes`, `libertad_opcion_salud` |
 
 Suma de pesos: 100%.
 
@@ -62,7 +62,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 20% |
 | Peso efectivo en el índice | **7.0%** |
-| Procedencia del ancla | `convencion` — la meta de 100 normas = plan completo es convención propia, declarada en ADR-0096 |
+| Procedencia del ancla | `convencion` — el conteo pasa a ser OFICIAL (informe mensual del Min. de Desregulación) pero la vara NO: el organismo no publica meta, así que los cortes 100/300/600/1200 los ponemos nosotros — misma limitación que declaraba ADR-0096, con otra fuente para el número (ADR-0125) |
 
 **Bandas**: > 30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤ 2500 → 10
 
@@ -106,11 +106,11 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 25% |
 | Peso efectivo en el índice | **6.2%** |
-| Procedencia del ancla | `conceptual` — medidor de avance 0-100 hacia el plan de disoluciones/fusiones; el 100 es el ancla, no el rango observado (ADR-0121) |
+| Procedencia del ancla | `conceptual` — medidor de avance 0-100 hacia el plan de disoluciones/cierres; el 100 es el ancla, no el rango observado (ADR-0121) |
 
 **Bandas**: > 80 → 100 · 60–80 → 85 · 40–60 → 65 · 20–40 → 40 · ≤ 20 → 10
 
-**Lo gobiernan**: [ADR-0185](../adr/0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) `reestructuracion_organismos` habla solo de disolución o cierre
+**Lo gobiernan**: [ADR-0185](../adr/0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) `reestructuracion_organismos` habla solo de disolución o cierre · [ADR-0188](../adr/0188-reestructuracion-organismos-numerador-caso-por-caso.md) `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso
 
 ### Dimensión `reforma_laboral` (15%)
 
@@ -188,14 +188,28 @@ Suma de pesos: 100%.
 
 ### Dimensión `social_orden` (10%)
 
+#### Asistencia directa (TDPS)
+
+`asistencia_directa`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 40% |
+| Peso efectivo en el índice | **4.0%** |
+| Procedencia del ancla | `convencion` — el corte de «cumplido» en 95% es propio y queda POR DEBAJO de la línea de base: la TDPS ya marcaba 98,3% en ago-2023 y 100,0 todos los meses del mandato, así que el indicador puntúa 100 sobre un tramo que ya estaba andado (calibración pendiente, ADR-0189) |
+
+**Bandas**: > 95 → 100 · 85–95 → 85 · 60–85 → 65 · 30–60 → 40 · ≤ 30 → 10
+
+**Lo gobiernan**: [ADR-0100](../adr/0100-promesa-cumplida-no-es-contexto.md) Una promesa cumplida no es un indicador de contexto · [ADR-0189](../adr/0189-si-no-puntua-no-se-muestra.md) Si no puntúa no se muestra, y una promesa cumplida sí puntúa
+
 #### Orden público (piquetes)
 
 `protocolo_antipiquetes`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 67% |
-| Peso efectivo en el índice | **6.7%** |
+| Peso dentro de la dimensión | 40% |
+| Peso efectivo en el índice | **4.0%** |
 | Procedencia del ancla | `convencion` — calibrada con la caída observada en CABA en 2024-2025 |
 
 **Bandas**: > 75 → 100 · 50–75 → 85 · 25–50 → 65 · 0–25 → 40 · ≤ 0 → 10
@@ -208,8 +222,8 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 33% |
-| Peso efectivo en el índice | **3.3%** |
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **2.0%** |
 | Procedencia del ancla | `conceptual` — % de usuarios con libre opción; el 100 (libre opción plena) es el ancla (ADR-0121) |
 
 **Bandas**: > 70 → 100 · 50–70 → 85 · 30–50 → 65 · 10–30 → 40 · ≤ 10 → 10
@@ -222,10 +236,7 @@ Estos indicadores se siguen scrapeando y cacheando, pero están fuera
 del índice y fuera del tablero. Sus bandas quedan como referencia
 histórica.
 
-- `alertas_manifestacion` — Alertas de manifestación (GCBA) (declarado como contexto)
-- `asistencia_directa` — Asistencia directa (TDPS)
 - `masa_salarial` — Masa salarial pública
-- `protestas_caba` — Protestas en CABA (ACLED) (declarado como contexto)
 
 ## Decisiones abiertas
 
@@ -239,7 +250,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-28 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+30 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -269,3 +280,5 @@ histórica.
 - [0164](../adr/0164-familia-del-itcg-la-respuesta-del-capital-privado.md) — Familia del ITCG: la respuesta del capital privado
 - [0185](../adr/0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) — `reestructuracion_organismos` habla solo de disolución o cierre
 - [0186](../adr/0186-masa-salarial-sale-del-itcg.md) — `masa_salarial` sale del cálculo del ITCG
+- [0188](../adr/0188-reestructuracion-organismos-numerador-caso-por-caso.md) — `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso
+- [0189](../adr/0189-si-no-puntua-no-se-muestra.md) — Si no puntúa no se muestra, y una promesa cumplida sí puntúa

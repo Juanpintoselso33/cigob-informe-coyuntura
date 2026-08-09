@@ -259,12 +259,16 @@ DIMENSIONES_ITCG = {
         "nombre": "Reforma social y orden",
         "peso": 0.10,
         # Doc: "mide desintermediación, liberalización salud y orden público".
-        # 2026-07-20 (ADR-0100): sale asistencia_directa, clavada en 100,0 desde
-        # abr-2024. Los dos que quedan conservan su proporción relativa
-        # (40:20 = 2:1), así que la dimensión no cambia de carácter, sólo deja
-        # de arrastrar un componente sin recorrido. Antes 40/40/20.
-        "indicadores": {"protocolo_antipiquetes": 0.67,
-                        "libertad_opcion_salud": 0.33},
+        # 2026-07-20 (ADR-0100) sacó asistencia_directa por estar clavada en
+        # 100,0, y repartió su 40% entre los otros dos (67/33).
+        # 2026-08-09 (ADR-0189) lo devuelve y restituye el 40/40/20 del
+        # documento: el ITCG mide cuánto avanzó el gobierno en sus propuestas,
+        # y un índice de avance que descarta las propuestas YA CUMPLIDAS
+        # sub-reporta el avance por construcción. "No se mueve" es un argumento
+        # de un índice de variación mensual; éste no lo es.
+        "indicadores": {"asistencia_directa": 0.40,
+                        "protocolo_antipiquetes": 0.40,
+                        "libertad_opcion_salud": 0.20},
     },
 }
 
@@ -300,29 +304,24 @@ INTERPRETACION_LEGIBLE = {
 # resultado de gestión sino un derecho ejercido.
 INDICADORES_CONTEXTO = ["alertas_manifestacion", "protestas_caba"]
 
-# ── Promesas cumplidas: no puntúan, pero se muestran (ADR-0100) ─────────────
-# Estado distinto de INDICADORES_CONTEXTO. ADR-0051 sacó del tablero los
-# indicadores que NO miden la dimensión de su índice; éstos sí la miden, y el
-# hecho de que la promesa esté cumplida es parte de lo que el informe cuenta.
-# Lo que se retira es el puntaje, no la card: un indicador clavado en su máximo
-# no aporta información al promedio mensual y sí infla la dimensión.
+# ── Promesas cumplidas: VUELVEN a puntuar (ADR-0189, revierte ADR-0100) ─────
+# Quedó vacío a propósito, y la constante se conserva porque el mecanismo
+# —`anotar_indicadores()` y `GESTION_OCULTOS`— sigue en pie por si hiciera
+# falta otra vez.
 #
-# `desde` es el mes en que alcanzó el máximo y dejó de moverse; se publica en
-# la card para que el lector sepa por qué no cambia.
-INDICADORES_CUMPLIDOS = {
-    "asistencia_directa": {
-        # La card se sigue mostrando DENTRO de su dimensión, no en un bloque
-        # aparte: pertenece ahí y lo que cambió es que dejó de puntuar.
-        "dimension": "social_orden",
-        "desde": "2024-04",
-        "desde_txt": "abril de 2024",
-        "por_que": "La desintermediación de los planes sociales llegó al 100% del "
-                   "devengado pagado directo a personas en abril de 2024 y se mantiene "
-                   "desde entonces, sin variación en 27 meses. La línea de base de 2023 "
-                   "ya era 98,3%: el margen para seguir informando algo nuevo estaba "
-                   "agotado desde el arranque.",
-    },
-}
+# ADR-0100 había sacado `asistencia_directa` del cálculo con el argumento de
+# que un indicador clavado en su máximo no aporta información al promedio
+# mensual. Ese es el criterio correcto para un índice de coyuntura, y el ITCG
+# no lo es: mide cuánto avanzó el gobierno en sus propuestas. Un índice de
+# avance que descarta las propuestas ya cumplidas informa menos avance del que
+# hubo, y el sesgo crece justamente a medida que el gobierno cumple.
+#
+# Queda pendiente, y es un problema distinto: `asistencia_directa` marcaba
+# 98,3% en la base de agosto de 2023, así que su recorrido dentro del mandato
+# es de menos de dos puntos. Puntúa 100 sobre una escala que no está anclada
+# al punto de partida. Es una discusión de calibración del indicador, no de si
+# corresponde incluirlo.
+INDICADORES_CUMPLIDOS = {}
 
 # ── Retirados del índice por decisión editorial, no por techo (ADR-0186) ────
 # Mismo mecanismo que INDICADORES_CUMPLIDOS —la card se sigue mostrando dentro

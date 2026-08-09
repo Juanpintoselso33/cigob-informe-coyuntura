@@ -6,6 +6,7 @@ fecha: 2026-08-09
 cinturon: 'gestion'
 indicadores: [masa_salarial, reforma_estado]
 continua: ['0100']
+continuado_por: ['0189']
 ambito: 'ITCG · `masa_salarial` · dimensión `reforma_estado`'
 origen: 'Revisión de fichas de Gestión por CIGOB (ronda de agosto de 2026): "CREO QUE DEBERIAMOS SACARLO" / "Concuerdo, para mi es confuso los métodos de exposición de los datos, no incluir hasta tanto tengamos certeza de afirmaciones."'
 ---

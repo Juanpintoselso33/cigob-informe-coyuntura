@@ -107,7 +107,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 30% |
 | Peso efectivo en el índice | **7.2%** |
-| Procedencia del ancla | `conceptual` — bandas de variación real en torno al cero; los cortes además caen razonablemente en la distribución 2021-2023 (ADR-0120) |
+| Procedencia del ancla | `conceptual` — bandas de variación real en torno al cero; los cortes caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120) |
 
 **Bandas**: > 110 → 100 · 100–110 → 85 · 90–100 → 60 · 80–90 → 35 · ≤ 80 → 10
 
@@ -209,6 +209,7 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 20% |
 | Peso efectivo en el índice | **2.2%** |
+| Procedencia del ancla | `conceptual` — cortes por CANTIDAD DE SECTORES (14-15 generalizado · 11-13 mayoría amplia · 8-10 ajustada · 5-7 minoría · 0-4 contracción), puestos en el hueco entre valores alcanzables; explícitamente NO se ancló en el 50% de manual porque la mediana histórica argentina es 73,3% (ADR-0124) |
 
 **Bandas**: > 90 → 100 · 70–90 → 80 · 50–70 → 60 · 30–50 → 35 · ≤ 30 → 10
 

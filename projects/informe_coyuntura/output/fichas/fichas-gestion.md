@@ -8,13 +8,13 @@ author: "Fundación CIGOB"
 
 # Cinturón Gestión — resumen
 
-Este documento tiene una ficha por indicador — son 15 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 14 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## ITCG — el índice del cinturón
 
 | | | | |
 |---|---|---|---|
-| **ITCG: 76,8** | **VERDE** | Moderadamente aflojado | 15 indicadores: 8 en verde · 4 en amarillo · 1 en naranja |
+| **ITCG: 77,5** | **VERDE** | Moderadamente aflojado | 14 indicadores: 9 en verde · 4 en amarillo · 1 en naranja |
 
 ## Dimensiones
 
@@ -24,7 +24,7 @@ Este documento tiene una ficha por indicador — son 15 en total, y cada una arr
 | Reforma del Estado | El achicamiento del Estado en cuatro medidas que se controlan entre sí. | 80,8 | VERDE | 25,0 % |
 | Reforma laboral | Instrumento y resultado. | 79,7 | VERDE | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales. | 62,9 | VERDE | 15,0 % |
-| Reforma social y orden | La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud. | 84,4 | VERDE | 10,0 % |
+| Reforma social y orden | La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud. | 90,6 | VERDE | 10,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -45,7 +45,6 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Reforma del Estado** | | | | |
 | Dotación del Estado (APN) | Cuánto varía la dotación de personal de la Administración Pública Nacional respecto de diciembre de 2023 (inicio del… | −20,36 % de variación vs dic-2023 (dotación APN) | VERDE | 10,9 % |
 | Gasto de funcionamiento | Cuánto varía en términos reales el gasto de funcionamiento del Estado nacional respecto de 2023. | −31,37 % de variación real vs 2023-06 (IMIG funcionamiento) | VERDE | 7,8 % |
-| Masa salarial pública | Cuánto varía en términos reales la masa salarial del personal del Estado nacional respecto de 2023. | −32,37 % de variación real vs 2023-06 (SPN remuneraciones) | — | fuera: suspendido, en revisión |
 | Reestructuración de organismos | Cuántos organismos públicos se disolvieron o cerraron desde diciembre de 2023, con ese cierre todavía vigente. | 24,4 % de avance (proxy InfoLeg, caso por caso) | NARANJA | 6,2 % |
 | **DIMENSIÓN: Reforma laboral** | | | | |
 | Fondo de Asistencia Laboral | Si están dados los dos actos que ponen en pie al Fondo de Asistencia Laboral, el mecanismo para financiar las… | 100 Índice 0–100 (actos fundamentales del FAL: ley + reglamentación) | VERDE | 7,5 % |
@@ -55,9 +54,9 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Inversiones RIGI | Cuánto de la inversión del Régimen de Incentivo a Grandes Inversiones (RIGI) ya está aprobada. | 31,6 % de inversión aprobada sobre el pipeline | VERDE | 6,0 % |
 | Concesiones viales | Qué porcentaje de los kilómetros del plan de la Red Federal de Concesiones ya está adjudicado. | 28,7 % de km adjudicados / km del plan (Red Federal de Concesiones) | AMARILLO | 3,0 % |
 | **DIMENSIÓN: Reforma social y orden** | | | | |
-| Asistencia directa (TDPS) | La Tasa de Desintermediación de Planes Sociales (TDPS). | 100 TDPS: % del gasto social pagado directo (sin intermediación) | — | fuera: promesa cumplida |
-| Orden público (piquetes) | En qué porcentaje se redujeron los cortes de calle por manifestación en CABA respecto de 2023 (el distrito donde actúan… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 6,7 % |
-| Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 31,8 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 3,3 % |
+| Asistencia directa (TDPS) | La Tasa de Desintermediación de Planes Sociales (TDPS). | 100 TDPS: % del gasto social pagado directo (sin intermediación) | VERDE | 4,0 % |
+| Orden público (piquetes) | En qué porcentaje se redujeron los cortes de calle por manifestación en CABA respecto de 2023 (el distrito donde actúan… | 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | VERDE | 4,0 % |
+| Libertad de opción en salud | Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados directo a la prepaga, inscripta como… | 31,8 % de usuarios de prepagas con aportes derivados directo (sin triangulación) | AMARILLO | 2,0 % |
 
 *Datos al 2026-08-09.*
 
@@ -513,73 +512,6 @@ Ponderación vigente en el ITCG: 7,8 % efectivo. El color es una lectura adicion
 **2026-07-02** — Indicador nuevo, creado con el ITCG.
 
 **2026-07-03** — Puntaje interpolado entre anclas.
-
-```{=openxml}
-<w:p><w:r><w:br w:type="page"/></w:r></w:p>
-```
-
-**CIGOB · INFORME DE COYUNTURA**
-
-*Ficha metodológica · Cinturón Gestión · Capa de semáforo (4 colores)*
-
-# Masa salarial pública
-
-Cuánto varía en términos reales la masa salarial del personal del Estado nacional respecto de 2023.
-
-| | | | |
-|---|---|---|---|
-| **Hoy: −32,37 % de variación real vs 2023-06 (SPN remuneraciones)** (2026-06) | **—** | Fuera del índice | Cinturón Gestión |
-
-## Identificación
-
-| | | | |
-|---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | masa_salarial | **CINTURÓN** | Gestión |
-| **DIMENSIÓN EN EL ITCG** | Reforma del Estado | **UNIDAD DE MEDIDA** | % de variación real vs 2023-06 (SPN remuneraciones) |
-| **SERIE DISPONIBLE** | 2024-01 → 2026-06 (30 puntos) | **REZAGO DE PUBLICACIÓN** | Las series de gasto se publican con ~2 meses de rezago. |
-| **PRODUCTOR DEL DATO** | Secretaría de Hacienda (base caja); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Remuneraciones del Sector Público Nacional, variación real contra el mismo mes de 2023 |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-09 |
-
-## Definición — qué mide y por qué importa
-
-Cuánto varía en términos reales la masa salarial del personal del Estado nacional respecto de 2023.
-
-Filtra el efecto de la inflación sobre plantas nominales: complementa a la dotación (personas) con el costo salarial real.
-
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en cuatro medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real, masa salarial real y reestructuración de organismos.
-
-## Método de cómputo
-
-- Variación real contra el mismo mes de 2023, deflactada por IPC — la misma mecánica que el gasto de funcionamiento.
-- Complementa a la dotación con el costo real: distingue el achicamiento genuino de la licuación nominal por inflación.
-
-## Datos concretos detrás del valor
-
-Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
-
-- $ 1,61 bn devengados (2026-06) vs $ 0,34 bn (2023-06) · inflación del período ×6,9
-
-- **Participación en otros indicadores.** Solapamiento conceptual declarado con el componente de salarios del gasto de funcionamiento (fuentes distintas, misma dimensión).
-
-## Transparencia — limitaciones declaradas
-
-- Base caja: el calendario de pagos puede desalinear meses.
-- Comparte el deflactor con el gasto de funcionamiento: un error del IPC mueve a los dos a la vez.
-- Desde agosto de 2026 no integra el ITCG: CIGOB pidió sacarlo del cálculo por dudas sobre la forma de exponer estos datos, hasta tener certeza de las afirmaciones que permiten sostener. La card se sigue publicando con su valor mensual — ver ADR-0186.
-
-## Si falta el dato / Política de revisiones
-
-- **Si falta el dato:** Si falta un insumo, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.
-
-- **Política de revisiones:** Series revisables por el publicador; recalculada entera en cada actualización.
-
-## Historial — cambios metodológicos documentados
-
-**2026-07-02** — Indicador nuevo, creado con el ITCG.
-
-**2026-07-03** — Puntaje interpolado entre anclas.
-
-**2026-08-09** — Sale del cálculo del ITCG a pedido de CIGOB (dudas sobre la exposición de la fuente); la dimensión reforma_estado renormaliza sus pesos 35/25/20 → 43,75/31,25/25 entre los tres indicadores que quedan. La card se mantiene. Ver ADR-0186.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1137,7 +1069,7 @@ La Tasa de Desintermediación de Planes Sociales (TDPS): qué porcentaje del dev
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 100 TDPS: % del gasto social pagado directo (sin intermediación)** (2026-08) | **—** | Fuera del índice | Cinturón Gestión |
+| **Hoy: 100 TDPS: % del gasto social pagado directo (sin intermediación)** (2026-08) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1162,11 +1094,34 @@ Verifica contra el presupuesto —no contra el anuncio— que el Decreto 198/202
 - TDPS = 100 × devengado en «ayudas sociales a personas» / total de transferencias de los programas; el resto del inciso son fondos que llegan vía terceros (las «unidades de gestión» eliminadas por decreto en 2024).
 - Línea de base 2023 (Potenciar Trabajo): 98,3% directo.
 
+## Semáforo — valores que determinan el color
+
+Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
+
+**Valores que definen cada color**
+
+| Rango (TDPS: % del gasto social pagado directo (sin intermediación)) | Color |
+|---|---|
+| ≥ 67 | VERDE |
+| 45 – 67 | AMARILLO |
+| 35 – 45 | NARANJA |
+| ≤ 35 | ROJO |
+
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
 - Devengado 2026: $ 542.901M directo a personas (5.1.4) / $ 542.901M transferido · baseline Potenciar 2023: 98,3% (con $ 17.224M vía organizaciones)
+
+## Color vigente y por qué
+
+Dato vigente: 100 TDPS: % del gasto social pagado directo (sin intermediación) (2026-08).
+
+100,0 TDPS: % del gasto social pagado directo (sin intermediación) cae en el tramo que corresponde a Verde, a 33,0 del corte más cercano.
+
+**Color vigente: VERDE**
+
+Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1200,7 +1155,7 @@ En qué porcentaje se redujeron los cortes de calle por manifestación en CABA r
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC)** (2025-12) | **VERDE** | Peso efectivo 6,7 % del ITCG | Cinturón Gestión |
+| **Hoy: 74,2 % de reducción de cortes por manifestación en CABA vs 2023 (IRPC)** (2025-12) | **VERDE** | Peso efectivo 4 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1252,7 +1207,7 @@ Dato vigente: 74,2 % de reducción de cortes por manifestación en CABA vs 2023 
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCG: 6,7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCG: 4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** El seguimiento interno de eventos de protesta (ACLED) que mantiene el proyecto muestra que la protesta no desapareció — se reconvirtió a marchas sin corte; ese contraste informa la lectura de este indicador aunque ya no se publique como card propia.
 
@@ -1291,7 +1246,7 @@ Qué porcentaje de los usuarios de medicina prepaga tiene sus aportes derivados 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 31,8 % de usuarios de prepagas con aportes derivados directo (sin triangulación)** (2026-03) | **AMARILLO** | Peso efectivo 3,3 % del ITCG | Cinturón Gestión |
+| **Hoy: 31,8 % de usuarios de prepagas con aportes derivados directo (sin triangulación)** (2026-03) | **AMARILLO** | Peso efectivo 2 % del ITCG | Cinturón Gestión |
 
 ## Identificación
 
@@ -1342,7 +1297,7 @@ Dato vigente: 31,8 % de usuarios de prepagas con aportes derivados directo (sin 
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCG: 3,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCG: 2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 

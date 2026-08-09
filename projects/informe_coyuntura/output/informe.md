@@ -1,6 +1,6 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-09 14:55:57"
+generado: "2026-08-09 15:43:06"
 score_global: 2.6
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -78,7 +78,7 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 39.83 | índice | 2026-07-01 | fresco |
 
-### 🟢 Gestion — score 2.3/10 (estable)
+### 🟢 Gestion — score 2.2/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -116,4 +116,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:derrotas_legislativas,bloqueo_sostenido`
 
 ---
-*Generado por CIGOB — 2026-08-09 14:55:57 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-09 15:43:06 — schema 1.2.0*

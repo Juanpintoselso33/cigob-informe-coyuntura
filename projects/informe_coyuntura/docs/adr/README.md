@@ -202,6 +202,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0186](0186-masa-salarial-sale-del-itcg.md) | `masa_salarial` sale del cálculo del ITCG | `masa_salarial`, `reforma_estado` | vigente |
 | [0187](0187-gasto-funcionamiento-no-migra-a-sidif.md) | `gasto_funcionamiento` no migra a SIDIF: el universo no reconcilia con el IMIG | `gasto_funcionamiento` | rechazado |
 | [0188](0188-reestructuracion-organismos-numerador-caso-por-caso.md) | `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso | `reestructuracion_organismos` | vigente |
+| [0189](0189-si-no-puntua-no-se-muestra.md) | Si no puntúa no se muestra, y una promesa cumplida sí puntúa | `asistencia_directa`, `masa_salarial`, `social_orden` | vigente |
 
 ### Vida cotidiana (ITVC)
 
@@ -271,3 +272,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0181](0181-el-color-es-la-tension-que-ya-se-publica.md) | El color es la tensión que ya se publica, no una escala nueva |  | vigente |
 | [0182](0182-los-umbrales-del-semaforo-se-calculan.md) | Los umbrales del semáforo se calculan, no se escriben |  | vigente |
 | [0184](0184-la-dimension-tambien-dice-de-que-color-es-y-por-que.md) | La dimensión también dice de qué color es y por qué |  | vigente |
+| [0190](0190-renombrar-los-indices.md) | Renombrar los índices: las siglas no dicen qué miden y chocan con las de la UTDT |  | propuesto |

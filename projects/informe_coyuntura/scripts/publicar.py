@@ -1705,7 +1705,17 @@ ESPIRITU_OCULTOS = {"icc_utdt", "sentimiento_digital", "clima_electoral"}
 # tablero solo muestra lo que integra las dimensiones del ITCG. Colector,
 # stores y series siguen corriendo como seguimiento interno (razones de no
 # puntuar documentadas en itcg.INDICADORES_CONTEXTO).
-GESTION_OCULTOS = set(itcg.INDICADORES_CONTEXTO)
+#
+# ADR-0189: se les suman los cumplidos y los suspendidos. ADR-0100 y ADR-0186
+# los habían dejado visibles sin puntuar, cada uno con su propio estado; la
+# revisión editorial de agosto de 2026 cerró la excepción y volvió a la regla
+# de ADR-0051 sin casos especiales: si no puntúa, no se muestra — ni en el
+# tablero ni en las fichas metodológicas, que salen de este mismo snapshot.
+# Las constantes siguen existiendo: son las que documentan POR QUÉ no puntúan
+# y las que `anotar_indicadores()` usa para sacarlos del cálculo.
+GESTION_OCULTOS = (set(itcg.INDICADORES_CONTEXTO)
+                   | set(itcg.INDICADORES_CUMPLIDOS)
+                   | set(itcg.INDICADORES_SUSPENDIDOS))
 
 # Indicadores de vida cotidiana OCULTOS del snapshot (ADR-0154, mismo criterio
 # que ADR-0022): la revisión editorial los sacó del ITVC y el tablero solo

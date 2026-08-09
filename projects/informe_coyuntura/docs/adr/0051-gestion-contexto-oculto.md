@@ -7,6 +7,7 @@ cinturon: 'gestion'
 archivos: ['scripts/publicar.py', 'web/src/lib/fichas.ts', 'tests/test_publicar.py']
 supersede: ['0017']
 relacionado: ['0053']
+continuado_por: ['0189']
 ambito: '`scripts/publicar.py` · `web/src/lib/fichas.ts` · `tests/test_publicar.py`'
 ---
 

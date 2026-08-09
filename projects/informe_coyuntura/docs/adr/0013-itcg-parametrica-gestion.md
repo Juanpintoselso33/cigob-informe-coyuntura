@@ -6,7 +6,7 @@ nota_estado: 'Superado por ADR-0021'
 fecha: 2026-07-02
 cinturon: 'gestion'
 archivos: ['scripts/itcg.py', 'scripts/gestion.py', 'scripts/parametrica.py', 'scripts/publicar.py', 'scripts/descargar_series.py', 'data/gestion/*']
-relacionado: ['0068']
+relacionado: ['0068', '0190']
 superado_por: ['0021']
 ambito: '`scripts/itcg.py` · `scripts/gestion.py` · `scripts/parametrica.py` · `scripts/publicar.py` · `scripts/descargar_series.py` · `data/gestion/*` · web'
 ---
