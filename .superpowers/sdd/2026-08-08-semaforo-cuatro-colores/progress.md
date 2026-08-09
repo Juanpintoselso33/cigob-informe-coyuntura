@@ -191,3 +191,15 @@ Task 9: complete (commits 8b4d9cf..29d698e, review clean)
 Task 10: complete (commits 29d698e..c8e4266, review clean). El revisor
   recalculo el conteo de tests colectando (28 hoy, 26 antes del fix) y releyo
   0182/0183 completos confirmando que no quedaron pasajes obsoletos.
+Task 8: complete. Merge por rebase sobre main (2 corridas del cron entraron
+  mientras tanto), pipeline COMPLETO y atomico (las 3 fallas G3 de la corrida
+  parcial eran staleness), gate limpio 67/5, pytest 1958 passed / 1 failed
+  (IPI preexistente), build 81 paginas, push 0f0a68d..6949f74, deploy
+  verificado en produccion con Chrome, y bigquery_export 8461 filas.
+  Verificado EN LA PAGINA: "1 CINTURONES EN ROJO" (era estructuralmente 0),
+  chip CRITICO en vida cotidiana, BLUF con la prosa corregida, genoma con los
+  4 colores, tabla no monotona con amarillo x2 / naranja x2 / verde intervalo
+  cerrado, y el por-que publicando 4,43 (borde mas cercano) y no 9,96.
+PENDIENTE ABIERTO: la vara del ITVC. Se publico la unificada (vida cotidiana
+  en naranja). Si CIGOB prefiere la excepcion son 2 lineas en
+  color_de_indice_base100 + el texto de ADR-0181.
