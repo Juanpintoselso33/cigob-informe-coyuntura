@@ -131,7 +131,7 @@ export const FORMULAS: Record<string, Formula> = {
   },
   reestructuracion_organismos: {
     latex: String.raw`\frac{\text{actos de disoluci\'on o cierre}}{45\;(\text{plan completo})}\times 100`,
-    leyenda: "Normas con disolución de organismos desde dic-2023 (InfoLeg). No cuenta fusiones ni transformaciones. Calibración validada a mano: 18 actos = 40%.",
+    leyenda: "Normas con disolución de organismos desde dic-2023 (InfoLeg), filtradas caso por caso contra un registro curado: no cuentan ni fusiones/transformaciones ni hallazgos de texto que no sean, revisados uno por uno, el cierre vigente de un organismo público (por ejemplo, un acto rechazado después por el Congreso). Calibración validada a mano: 45 = plan completo.",
   },
   fal_modernizacion_laboral: {
     latex: String.raw`\frac{\text{actos fundamentales cumplidos}}{2}\times 100`,

@@ -6,6 +6,7 @@ nota_estado: 'la precisión de etiquetas y la revisión del denominador están c
 fecha: 2026-08-09
 cinturon: 'gestion'
 indicadores: [reestructuracion_organismos]
+continuado_por: ['0188']
 ambito: 'ITCG · `reestructuracion_organismos` · etiquetas públicas, denominador y calidad del numerador'
 origen: 'Revisión de fichas de Gestión por CIGOB (ronda de agosto de 2026): "HAY QUE CAMBIAR Y PRECISAR QUE MEDIMOS, Y HABLAR SOLO DE DISOLUCION O CIERRE. lo de reestructuración, fusión o transformación es difuso, y no puede levantarse o registrarse, había que ir caso por caso."'
 ---

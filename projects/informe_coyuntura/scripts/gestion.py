@@ -14,7 +14,8 @@ CINCO DIMENSIONES (35/25/15/15/10):
   2. Reforma del Estado — reduccion_estado (dotación APN, XLSX INDEC mensual),
      gasto_funcionamiento (IMIG salarios+otros, real vs mismo mes 2023),
      masa_salarial (AIF SPN remuneraciones, real vs mismo mes 2023),
-     reestructuracion_organismos (InfoLeg "disolucion").
+     reestructuracion_organismos (InfoLeg "disolucion" como descubrimiento,
+     filtrado caso por caso contra un registro curado, ADR-0188).
   3. Reforma laboral — fal_modernizacion_laboral (Fondo de Cese, manual:
      adopción por CCT sin fuente estructurada; CNV RG 1071/2025 como contexto).
   4. Privatizaciones e inversión — privatizaciones (etapas 0-4 por empresa,
@@ -74,6 +75,8 @@ MANUALES_PATH        = PROJECT_DIR / "data" / "gestion" / "manuales.json"
 PRIVATIZACIONES_PATH = PROJECT_DIR / "data" / "gestion" / "privatizaciones.json"
 AJUSTES_PATH         = PROJECT_DIR / "data" / "gestion" / "ajustes_itcg.json"
 RIGI_FECHAS_PATH     = PROJECT_DIR / "data" / "gestion" / "rigi_fechas.json"
+REESTRUCTURACION_NORMAS_PATH = (PROJECT_DIR / "data" / "gestion"
+                                / "reestructuracion_organismos_normas.json")
 
 # ── URLs ──────────────────────────────────────────────────────────────────────
 DOLARAPI_URL        = "https://dolarapi.com/v1/dolares"
@@ -139,6 +142,15 @@ INDICADORES_ESPERADOS = [
 # 18 casos), así que emparejarlas mezclaría unidades. El 45 se mantiene
 # como convención calibrada, ahora documentada en detalle en el ADR en vez
 # de sólo declarada.
+#
+# EL NUMERADOR YA NO ES "18" (ADR-0188): la lectura caso por caso que dejó
+# declarada ADR-0185 encontró que 7 de esos 18 hallazgos de texto no eran
+# cierres vigentes de un organismo público — 3 por coincidencia léxica
+# (derecho privado, obra social sindical, un producto de limpieza) y 4 por
+# ser actos de los Decretos 461/2025 y 462/2025, rechazados por el Congreso
+# en ago-2025 y abrogados. El 45 sigue siendo el denominador (no cambia); el
+# numerador ahora es 11, contra REESTRUCTURACION_NORMAS_PATH — ver esa
+# constante y fetch_reestructuracion_organismos().
 ORGANISMOS_PLAN_TOTAL = 45
 
 
@@ -1062,33 +1074,96 @@ def fetch_gasto_funcionamiento() -> dict | None:
         return None
 
 
+def _reestructuracion_normas_clasificadas() -> dict:
+    """Registro CURADO caso por caso (ADR-0188): {id InfoLeg: {estado, motivo,
+    detalle, ...}}. El colector solo LEE este archivo — nunca lo escribe.
+    Clasificar una norma ("¿es un cierre vigente de un organismo público?") es
+    juicio del analista, el mismo criterio con el que privatizaciones.json y
+    privatizaciones_fechas.json tampoco los toca el colector."""
+    try:
+        return json.loads(REESTRUCTURACION_NORMAS_PATH.read_text(
+            encoding="utf-8-sig")).get("normas", {})
+    except (OSError, json.JSONDecodeError):
+        return {}
+
+
 def fetch_reestructuracion_organismos() -> dict | None:
     """
-    Avance de la disolución o cierre de organismos del aparato estatal, proxy
-    InfoLeg: normas con "disolucion" desde dic-2023 — NO fusión, transformación
-    ni centralización (ADR-0185: CIGOB pidió precisar que se mide solo esto,
-    "lo demás es difuso y no puede registrarse caso por caso"). DNU 70/23 no
-    aparece en búsqueda de texto libre (no indexado); los documentos capturados
-    son actos POSTERIORES al megadecreto. Calibración: 18 actos = 40% (validado
-    manualmente); 45 = 100% — ver la nota sobre el 45 junto a
-    ORGANISMOS_PLAN_TOTAL.
+    Avance de la disolución o cierre de organismos del aparato estatal — NO
+    fusión, transformación ni centralización (ADR-0185: CIGOB pidió precisar
+    que se mide solo esto, "lo demás es difuso y no puede registrarse caso por
+    caso"). DNU 70/23 no aparece en búsqueda de texto libre (no indexado); los
+    documentos capturados son actos POSTERIORES al megadecreto.
+
+    ADR-0188: la búsqueda de texto ("disolucion") por sí sola CONTAMINA el
+    conteo — de los primeros 18 hallazgos, 3 no hablaban de un organismo
+    público (coincidencia léxica: derecho societario privado, una obra social
+    sindical, un producto de limpieza) y 4 eran actos de los Decretos
+    461/2025 y 462/2025, rechazados por el Congreso y abrogados — esos
+    organismos siguen existiendo. Por eso InfoLeg queda solo como
+    DESCUBRIMIENTO (mismo patrón mes a mes que desregulacion_normativa y
+    privatizaciones/novedades, `_infoleg_buscar_mes`): cada norma que
+    encuentra se contrasta contra el registro curado de
+    REESTRUCTURACION_NORMAS_PATH, caso por caso:
+      - "vigente"  → cuenta.
+      - "excluido" → no cuenta; el registro trae motivo + detalle, auditable.
+      - ausente    → todavía nadie la clasificó: NO cuenta (más seguro que
+        sumarla sin revisar, que es exactamente el defecto que este ADR
+        corrige) y la corrida lo avisa en vez de sumarla o descartarla en
+        silencio (mismo principio que "el detector avisa, no clasifica" de
+        detectar_novedades_privatizaciones, ADR-0129).
     """
     try:
-        today = date.today()
-        count = _infoleg_post(
-            texto="disolucion", tipo_norma="",
-            fecha_desde=("01", "12", "2023"),
-            fecha_hasta=(today.strftime("%d"), today.strftime("%m"), today.strftime("%Y")),
-        )
+        clasificadas = _reestructuracion_normas_clasificadas()
+        hoy = date.today()
+        anio, mes = 2023, 12
+        session = requests.Session()
+        vigentes, excluidas, sin_clasificar, vistas = [], [], [], set()
+        while (anio, mes) <= (hoy.year, hoy.month):
+            for norma_id, titulo in _infoleg_buscar_mes("disolucion", anio, mes, session=session):
+                if norma_id in vistas:
+                    continue
+                vistas.add(norma_id)
+                entrada = clasificadas.get(norma_id)
+                if entrada is None:
+                    sin_clasificar.append({"id": norma_id, "titulo": titulo,
+                                            "periodo": f"{anio}-{mes:02d}"})
+                elif entrada.get("estado") == "vigente":
+                    vigentes.append(norma_id)
+                else:
+                    excluidas.append({"id": norma_id, "titulo": titulo, **entrada})
+            mes += 1
+            if mes == 13:
+                mes = 1
+                anio += 1
+
+        if sin_clasificar:
+            print(f"[WARN] gestion.reestructuracion_organismos: "
+                  f"{len(sin_clasificar)} norma(s) de InfoLeg sin clasificar en "
+                  f"{REESTRUCTURACION_NORMAS_PATH.name}, no cuentan hasta revisión "
+                  "caso por caso: " +
+                  "; ".join(f"{n['id']} ({n['titulo']})" for n in sin_clasificar))
+
+        count = len(vigentes)
         avance = round(min(100.0, count * 100.0 / ORGANISMOS_PLAN_TOTAL), 1)
         return {
             "valor":          avance,
-            "unidad":         "% de avance (proxy InfoLeg)",
+            "unidad":         "% de avance (proxy InfoLeg, caso por caso)",
             "fuente":         INFOLEG_HOME,
-            "fecha_dato":     today.isoformat(),
+            "fecha_dato":     hoy.isoformat(),
             "desactualizado": False,
             "conteo_normas":  count,
-            "detalle_txt":    f"{count} actos de disolución o cierre de organismos desde dic-2023 ({ORGANISMOS_PLAN_TOTAL} = plan completo)",
+            # ADR-0188: exclusiones auditables (motivo + detalle, ver el
+            # registro curado) y avisos de hallazgos nuevos sin clasificar.
+            "excluidas":      excluidas,
+            "sin_clasificar": sin_clasificar,
+            "detalle_txt": (
+                f"{count} actos de disolución o cierre de organismos desde dic-2023 "
+                f"({ORGANISMOS_PLAN_TOTAL} = plan completo)"
+                + (f" · {len(excluidas)} excluidos por falso positivo o por revertidos "
+                   "por el Congreso" if excluidas else "")
+                + (f" · {len(sin_clasificar)} sin clasificar todavía, no cuentan"
+                   if sin_clasificar else "")),
         }
     except Exception as e:
         _warn("reestructuracion_organismos", e)

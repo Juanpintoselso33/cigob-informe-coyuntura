@@ -127,6 +127,11 @@ BANDAS_ITCG = {
         # El denominador (45 = plan completo) tiene una historia distinta —ver
         # ORGANISMOS_PLAN_TOTAL en gestion.py y el ADR— que este comentario no
         # repite para no desincronizarse.
+        #
+        # ADR-0188 (2026-08-09): el NUMERADOR sí cambió (18 → 11 actos): la
+        # lectura caso por caso que dejó declarada ADR-0185 encontró 7
+        # hallazgos de texto que no eran cierres vigentes de un organismo
+        # público. Ver fetch_reestructuracion_organismos() en gestion.py.
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
     "fal_modernizacion_laboral": [      # Actos fundamentales del FAL (ADR-0142)

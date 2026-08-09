@@ -201,6 +201,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0185](0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) | `reestructuracion_organismos` habla solo de disolución o cierre | `reestructuracion_organismos` | vigente |
 | [0186](0186-masa-salarial-sale-del-itcg.md) | `masa_salarial` sale del cálculo del ITCG | `masa_salarial`, `reforma_estado` | vigente |
 | [0187](0187-gasto-funcionamiento-no-migra-a-sidif.md) | `gasto_funcionamiento` no migra a SIDIF: el universo no reconcilia con el IMIG | `gasto_funcionamiento` | rechazado |
+| [0188](0188-reestructuracion-organismos-numerador-caso-por-caso.md) | `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso | `reestructuracion_organismos` | vigente |
 
 ### Vida cotidiana (ITVC)
 

@@ -1,0 +1,123 @@
+{
+ "_meta": {
+  "conteo": {
+   "excluido_falso_positivo": 3,
+   "excluido_rechazado_congreso": 4,
+   "total": 18,
+   "vigente": 11
+  },
+  "descripcion": "Clasificación caso por caso (CIGOB pidió 'ir caso por caso', ago-2026) de las normas que la búsqueda de InfoLeg texto=\"disolucion\" devuelve desde el 01/12/2023. Registro CURADO: el colector (gestion.py, fetch_reestructuracion_organismos) solo LO LEE, nunca lo escribe. 'vigente' cuenta en el indicador. 'excluido' no cuenta y lleva 'motivo' ('falso_positivo' o 'rechazado_congreso') más 'detalle' con la evidencia. Una norma que la búsqueda encuentre y no esté acá se trata como SIN CLASIFICAR: no cuenta y la corrida avisa (campo 'sin_clasificar' de la card), hasta que alguien la agregue con su motivo. Ver ADR-0185 (lectura caso por caso original) y ADR-0188 (por qué se corrige el numerador).",
+  "metodo": "InfoLeg, enumeración mes a mes con _infoleg_buscar_mes('disolucion', anio, mes) desde 2023-12 (mismo patrón que desregulacion_normativa y privatizaciones/novedades: el buscador no pagina de forma estable con un rango largo).",
+  "revisado": "2026-08-09"
+ },
+ "normas": {
+  "401548": {
+   "detalle": "Inspección General de Justicia: reglamenta en abstracto el procedimiento de disolución y liquidación de sociedades y asociaciones civiles de derecho PRIVADO. No hay ningún organismo público concreto disolviéndose.",
+   "estado": "excluido",
+   "motivo": "falso_positivo",
+   "titulo": "Resolución GENERAL 15/2024"
+  },
+  "402880": {
+   "detalle": "Ministerio de Justicia: personal de planta permanente en situación de disponibilidad como consecuencia de la disolución del INADI, dispuesta por el Decreto 696/2024.",
+   "estado": "vigente",
+   "organismo": "INADI (Instituto Nacional contra la Discriminación, la Xenofobia y el Racismo)",
+   "titulo": "Resolución 250/2024"
+  },
+  "404694": {
+   "detalle": "Disolución directa del I.A.T., creado por Decreto 1004/2014.",
+   "estado": "vigente",
+   "organismo": "Instituto Argentino del Transporte (I.A.T.)",
+   "titulo": "Decreto 870/2024"
+  },
+  "407557": {
+   "detalle": "Ministerio de Capital Humano: personal en disponibilidad como consecuencia de la disolución del programa, dispuesta por el Decreto 1094/2024.",
+   "estado": "vigente",
+   "organismo": "Programa de Promoción del Microcrédito para el Desarrollo de la Economía Social",
+   "titulo": "Resolución 747/2024"
+  },
+  "408166": {
+   "detalle": "Disolución de tres fondos fiduciarios públicos en un solo decreto (Ley 27.742, art. 5).",
+   "estado": "vigente",
+   "organismo": "3 fondos fiduciarios públicos (Decreto 6/2025)",
+   "titulo": "Decreto 6/2025"
+  },
+  "408403": {
+   "detalle": "Ministerio de Economía: personal en disponibilidad como consecuencia de la disolución de la Subsecretaría, dispuesta por el Decreto 3/2025.",
+   "estado": "vigente",
+   "organismo": "Subsecretaría de Puertos y Vías Navegables",
+   "titulo": "Resolución 10/2025"
+  },
+  "410261": {
+   "detalle": "Disolución directa de un fondo fiduciario público (Ley 27.742, art. 5).",
+   "estado": "vigente",
+   "organismo": "Fondo fiduciario público (Decreto 144/2025)",
+   "titulo": "Decreto 144/2025"
+  },
+  "411051": {
+   "detalle": "Disolución directa del FFTEF.",
+   "estado": "vigente",
+   "organismo": "Fondo Fiduciario para el Transporte Eléctrico Federal (FFTEF)",
+   "titulo": "Decreto 234/2025"
+  },
+  "412483": {
+   "detalle": "Disolución de dos fondos fiduciarios en un solo decreto.",
+   "estado": "vigente",
+   "organismo": "2 fondos fiduciarios: FISU y fondo de promoción científica (Decreto 312/2025)",
+   "titulo": "Decreto 312/2025"
+  },
+  "413034": {
+   "detalle": "Disolución de cinco organismos de Cultura en un solo decreto.",
+   "estado": "vigente",
+   "organismo": "5 organismos de Cultura: Institutos Browniano, Newberiano y Belgraniano, Instituto Perón y su comisión de homenaje (Decreto 346/2025)",
+   "titulo": "Decreto 346/2025"
+  },
+  "414196": {
+   "detalle": "Superintendencia de Servicios de Salud: inicio del proceso de disolución y liquidación de la Obra Social del Personal de la Industria Botonera (R.N.A.S. 1-0300-6) — obra social SINDICAL PRIVADA regulada por el Estado, no un organismo de la Administración Pública Nacional.",
+   "estado": "excluido",
+   "motivo": "falso_positivo",
+   "titulo": "Resolución 1056/2025"
+  },
+  "414868": {
+   "detalle": "Disponía la disolución de la Dirección Nacional de Vialidad, la Agencia Nacional de Seguridad Vial y la Comisión Nacional del Tránsito y la Seguridad Vial. Confirmado en vivo en InfoLeg (09-ago-2026), en la propia página del decreto: 'DECRETO RECHAZADO POR EL ARTICULO 1º DE LA RESOLUCION 94/2025 DE LA HONORABLE CAMARA DE DIPUTADOS DE LA NACION ... RECHAZADO POR EL ARTICULO 1º DE LA RESOLUCION 55/2025 DEL HONORABLE SENADO DE LA NACION ... ABROGADO CONFORME LO DISPUESTO POR ARTICULO 24 DE LA LEY N° 26.122 POR HABER SIDO RECHAZADO POR AMBAS CAMARAS DEL CONGRESO DE LA NACION'. Los tres organismos siguen existiendo.",
+   "estado": "excluido",
+   "motivo": "rechazado_congreso",
+   "titulo": "Decreto 461/2025"
+  },
+  "415450": {
+   "detalle": "Ministerio de Economía: personal en disponibilidad por la disolución del INAFCI (Instituto Nacional de la Agricultura Familiar, Campesina e Indígena), dispuesta por el Decreto 462/2025 (mismo paquete que el Decreto 461/2025, rechazado por el Congreso). Confirmado en vivo en InfoLeg (09-ago-2026): 'Observaciones: ABROGADA POR EL ARTICULO 1° DE LA RESOLUCION 1343/2025 DEL MINISTERIO DE ECONOMIA, B.O. 12/09/2025'. El INAFCI sigue existiendo.",
+   "estado": "excluido",
+   "motivo": "rechazado_congreso",
+   "titulo": "Resolución 1044/2025"
+  },
+  "416696": {
+   "detalle": "Ministerio de Economía: personal en disponibilidad por la disolución de la Agencia Nacional de Seguridad Vial (ANSV), dispuesta por el Decreto 461/2025 (rechazado por el Congreso). Confirmado en vivo en InfoLeg (09-ago-2026): 'Observaciones: ABROGADA POR EL ARTICULO 2° DE LA RESOLUCION 1343/2025 DEL MINISTERIO DE ECONOMIA'.",
+   "estado": "excluido",
+   "motivo": "rechazado_congreso",
+   "titulo": "Resolución 1217/2025"
+  },
+  "416760": {
+   "detalle": "Ministerio de Economía: personal en disponibilidad por la transformación del INTA, la disolución del Instituto Nacional de Semillas (INASE) y la transformación del INV, del mismo paquete rechazado por el Congreso. Confirmado en vivo en InfoLeg (09-ago-2026): 'Observaciones: ABROGADA POR EL ARTICULO 3° DE LA RESOLUCION 1343/2025 DEL MINISTERIO DE ECONOMIA'. Los tres organismos siguen existiendo.",
+   "estado": "excluido",
+   "motivo": "rechazado_congreso",
+   "titulo": "Resolución 1240/2025"
+  },
+  "422981": {
+   "detalle": "Disolución directa del IOSFA, creado por el Decreto de Necesidad y Urgencia 637/2013.",
+   "estado": "vigente",
+   "organismo": "IOSFA (Instituto de Obra Social de las Fuerzas Armadas)",
+   "titulo": "Decreto DNU 88/2026"
+  },
+  "424174": {
+   "detalle": "Disolución directa del CNIN. El mismo decreto fusiona, en un artículo aparte, otros dos institutos — esa fusión no está incluida en esta clasificación ni en el conteo (ADR-0185).",
+   "estado": "vigente",
+   "organismo": "Centro Nacional de Investigaciones Nutricionales (CNIN)",
+   "titulo": "Decreto 192/2026"
+  },
+  "425460": {
+   "detalle": "ANMAT: prohíbe productos de limpieza de la marca Agranel, uno de ellos llamado \"Cloro Granulado Disolución Rápida\". Coincidencia léxica con el nombre comercial de un producto químico — no hay ningún organismo público involucrado.",
+   "estado": "excluido",
+   "motivo": "falso_positivo",
+   "titulo": "Disposición 2491/2026"
+  }
+ }
+}

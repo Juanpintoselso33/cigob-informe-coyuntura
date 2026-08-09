@@ -343,8 +343,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación vs. dic-2023",
   },
   reestructuracion_organismos: {
-    que: "Cuántos organismos públicos se disolvieron o cerraron desde diciembre de 2023.",
-    aporta: "Mide el avance concreto de la reforma del aparato estatal por la vía más dura y verificable: el cierre. No cuenta fusiones, transformaciones ni reorganizaciones que no impliquen disolver un organismo — esas son difíciles de verificar caso por caso y quedan fuera de lo que este indicador afirma medir.",
+    que: "Cuántos organismos públicos se disolvieron o cerraron desde diciembre de 2023, con ese cierre todavía vigente.",
+    aporta: "Mide el avance concreto de la reforma del aparato estatal por la vía más dura y verificable: el cierre. No cuenta fusiones, transformaciones ni reorganizaciones que no impliquen disolver un organismo — esas son difíciles de verificar caso por caso y quedan fuera de lo que este indicador afirma medir. Tampoco cuenta un hallazgo de la búsqueda que, revisado caso por caso, resultó ajeno a un organismo público o fue revertido después: cada norma se contrasta contra un registro curado antes de sumar.",
     frecuencia: "Mensual", tipo: "Avance de reforma",
   },
   rigi_inversiones: {

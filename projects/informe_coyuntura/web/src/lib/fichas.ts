@@ -2069,12 +2069,12 @@ export const FICHAS: Record<string, Ficha> = {
     rezago: "Sin rezago: conteo al día de la actualización.",
     fuente: {
       organismo: "InfoLeg (Ministerio de Justicia)",
-      operacion: "Conteo de normas nacionales publicadas desde diciembre de 2023 cuyo texto contiene «disolución»",
+      operacion: "Conteo de normas nacionales publicadas desde diciembre de 2023 cuyo texto contiene «disolución», filtrado caso por caso contra un registro curado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/",
-      acceso: "Automático: consulta al buscador oficial de normas (mismo mecanismo que la desregulación).",
+      acceso: "InfoLeg como descubrimiento (mismo mecanismo que la desregulación) + un registro curado que clasifica cada hallazgo: cuenta, no cuenta por ser ajeno a un organismo público, o no cuenta por haber sido revertido.",
     },
     transformaciones: [
-      "Avance = actos de disolución o cierre de organismos, con calibración declarada y validada a mano: 18 actos = 40% de avance; 45 actos = plan completo. No cuenta fusiones, transformaciones ni centralizaciones: son difíciles de verificar caso por caso y CIGOB pidió (ago-2026) hablar solo de disolución o cierre.",
+      "Avance = actos de disolución o cierre VIGENTES de organismos públicos, sobre un plan de 45 (calibración declarada). No cuenta fusiones, transformaciones ni centralizaciones —difíciles de verificar caso por caso, CIGOB pidió (ago-2026) hablar solo de disolución o cierre— y desde agosto de 2026 tampoco cuenta un hallazgo de texto que no sea, caso por caso, el cierre vigente de un organismo público (ADR-0188): de los 18 documentos que la búsqueda encontraba, 11 pasan el filtro (24,4% de avance); los otros 7 quedan excluidos con su motivo documentado.",
     ],
     anclas: {
       bandas: [
@@ -2089,8 +2089,10 @@ export const FICHAS: Record<string, Ficha> = {
     },
     limitaciones: [
       "El megadecreto 70/2023 no aparece en la búsqueda de texto: solo captura los actos posteriores.",
-      "La calibración (18 = 40%, 45 = plan completo) es una decisión propia validada a mano y declarada.",
+      "La calibración (originalmente 18 = 40%, 45 = plan completo) es una decisión propia validada a mano y declarada; el 45 no cambió, el numerador sí (ver el cambio de agosto de 2026 abajo).",
       "El 45 (plan completo) se fijó en mayo de 2026 contra una estimación manual descripta en ese momento como \"decretos de disolución/fusión de organismos\" — un universo más amplio que el que la etiqueta de este indicador afirma medir desde agosto de 2026. Se revisó (agosto de 2026) si había una cifra mejor: ni la Ley Bases, ni el Ministerio de Desregulación, ni la prensa publican un objetivo de organismos a cerrar en la misma unidad que este indicador mide (normas, no organismos), así que el 45 se mantiene como convención declarada, no corregida — el detalle de la búsqueda está en ADR-0185.",
+      "Una búsqueda de texto por sí sola no distingue de qué habla la norma: de los 18 documentos que \"disolución\" encontraba, 3 eran ajenos a un organismo público (el procedimiento de disolución de sociedades y asociaciones civiles privadas, la disolución de una obra social sindical privada, y un producto de limpieza llamado \"Cloro Granulado Disolución Rápida\") y 4 eran actos de un paquete de decretos (461/2025 y 462/2025) que el Congreso rechazó en agosto de 2025 y quedaron abrogados — esos organismos siguen existiendo. Los 7 se excluyen, cada uno con su motivo y su norma (ADR-0188).",
+      "Si InfoLeg indexa una norma nueva con \"disolución\" que todavía nadie clasificó caso por caso, esa norma NO se suma al avance: la corrida la deja afuera y lo avisa, en vez de contarla sin revisar (que es exactamente el defecto que corrigió agosto de 2026) o descartarla en silencio.",
     ],
     faltantes: "Con el buscador caído, se mantiene el último valor disponible, señalado como desactualizado; sin dato, los pesos de la dimensión se renormalizan.",
     revisiones: "El acumulado se reevalúa completo en cada actualización.",
@@ -2100,6 +2102,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Puntaje interpolado entre anclas." },
       { fecha: "2026-08-09", cambio: "Etiqueta y descripción precisadas a pedido de CIGOB: se habla solo de disolución o cierre, no de fusión/transformación/centralización. El cálculo no cambió — la búsqueda en InfoLeg siempre fue solo «disolución». Ver ADR-0185." },
       { fecha: "2026-08-09", cambio: "Se buscó una cifra mejor que 45 para el denominador (Ley Bases, Ministerio de Desregulación, prensa) y ninguna resultó viable; el 45 se mantiene, ahora documentado en detalle. Ver ADR-0185." },
+      { fecha: "2026-08-09", cambio: "El conteo pasa de 18 a 11 (avance de 40,0% a 24,4%; ITCG de 78,7 a 76,8): la lectura caso por caso que pidió CIGOB encontró que 3 de los 18 documentos no hablaban de un organismo público y 4 eran actos de un paquete de decretos que el Congreso rechazó y quedaron sin efecto. InfoLeg sigue siendo la fuente de descubrimiento, pero cada hallazgo se contrasta ahora contra un registro curado con motivo y norma; lo que todavía nadie clasificó no cuenta y la corrida lo avisa. Ver ADR-0188." },
     ],
   },
 
