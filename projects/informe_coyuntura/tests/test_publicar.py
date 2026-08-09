@@ -368,11 +368,22 @@ def test_gestion_itcg_reconcilia():
     # ADR-0100: asistencia_directa sale del cálculo (promesa cumplida, clavada
     # en 100,0 desde abr-2024) pero SIGUE publicándose, a diferencia de los
     # ocultos de ADR-0051.
-    assert len(en_indice) == 14, f"esperaba 14 indicadores en el índice, hay {len(en_indice)}"
+    # ADR-0186: `masa_salarial` también sale del cálculo, por un motivo
+    # distinto del de la promesa cumplida — CIGOB pidió suspenderlo hasta
+    # tener certeza sobre lo que sus datos permiten afirmar. Sigue publicándose
+    # con su valor mensual: lo que se retira es el puntaje, no el dato. Por eso
+    # son 13 y no 14.
+    assert len(en_indice) == 13, f"esperaba 13 indicadores en el índice, hay {len(en_indice)}"
     assert "asistencia_directa" not in en_indice
     cumplida = c["indicadores"].get("asistencia_directa")
     assert cumplida is not None, "la promesa cumplida no debe desaparecer del snapshot"
     assert cumplida.get("cumplido", {}).get("desde") == "2024-04"
+    suspendido = c["indicadores"].get("masa_salarial")
+    assert suspendido is not None, "el suspendido no debe desaparecer del snapshot"
+    assert suspendido.get("en_indice") is False
+    assert suspendido.get("suspendido", {}).get("desde"), "suspendido sin fecha"
+    assert suspendido.get("suspendido", {}).get("por_que"), "suspendido sin explicación"
+    assert suspendido.get("valor") is not None, "se retira el puntaje, no el dato"
     assert "litigiosidad_laboral" in en_indice
     # ADR-0051: los 2 de contexto (alertas_manifestacion, protestas_caba)
     # quedan OCULTOS del snapshot (GESTION_OCULTOS, mismo criterio que
@@ -382,11 +393,16 @@ def test_gestion_itcg_reconcilia():
     # no puntúan pero sí se publican, porque miden su dimensión y el hecho de
     # estar cumplidas es parte del relato. La regla de 0051 sigue valiendo para
     # todo lo demás: fuera de las cumplidas, no puede haber cards sin puntaje.
-    solo_contexto = {k: i for k, i in contexto.items() if not i.get("cumplido")}
+    # ADR-0186 suma la segunda excepción: el suspendido. Son dos motivos
+    # declarados y acotados —cumplido, suspendido—, no una puerta abierta:
+    # una card sin puntaje que no traiga ninguno de los dos sigue prohibida.
+    solo_contexto = {k: i for k, i in contexto.items()
+                     if not i.get("cumplido") and not i.get("suspendido")}
     assert solo_contexto == {}, f"gestión no debería publicar contexto: {set(solo_contexto)}"
     for k, i in contexto.items():
-        assert i["cumplido"].get("desde"), f"{k}: promesa cumplida sin fecha de logro"
-        assert i["cumplido"].get("por_que"), f"{k}: promesa cumplida sin explicación"
+        motivo = i.get("cumplido") or i["suspendido"]
+        assert motivo.get("desde"), f"{k}: fuera del índice sin fecha"
+        assert motivo.get("por_que"), f"{k}: fuera del índice sin explicación"
     for oculto in ("alertas_manifestacion", "protestas_caba"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto del snapshot"
 

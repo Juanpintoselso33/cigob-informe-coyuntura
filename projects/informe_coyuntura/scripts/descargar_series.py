@@ -2974,9 +2974,14 @@ GESTION_DERIVADAS = [
      fetch_desregulacion_serie),
     # A % calibrado (45 actos = plan completo, misma escala que el titular):
     # a diferencia de desregulación (100 normas = 100%), acá conteo ≠ %.
+    # El conteo sale de gestion.serie_reestructuracion_vigentes() y no de un
+    # recuento propio: cuenta los cierres VIGENTES contra el registro curado,
+    # el mismo filtro que la card (ADR-0188). El total del plan también se
+    # toma de la constante, no se repite el 45 acá.
     ("reestructuracion_organismos", "% de avance (proxy InfoLeg, 45 actos = 100%)",
-     "InfoLeg ('disolucion' desde dic-2023)",
-     lambda: [[f, round(min(100.0, v / 45.0 * 100.0), 1)] for f, v in fetch_infoleg_serie("disolucion")]),
+     "InfoLeg ('disolucion' desde dic-2023, cierres vigentes)",
+     lambda: [[f, round(min(100.0, v * 100.0 / gestion.ORGANISMOS_PLAN_TOTAL), 1)]
+              for f, v in gestion.serie_reestructuracion_vigentes()]),
     ("reduccion_estado", "% vs dic-2023", "INDEC (dotación APN mensual)", fetch_reduccion_serie),
     ("asistencia_directa", "% TDPS (directo a personas / transferencias)", "API Presupuesto Abierto (SIDIF)", fetch_tdps_serie),
     ("gasto_funcionamiento", "% real vs mismo mes 2023", "Sec. Hacienda IMIG + IPC INDEC",

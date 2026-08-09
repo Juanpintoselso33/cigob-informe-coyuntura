@@ -1087,6 +1087,40 @@ def _reestructuracion_normas_clasificadas() -> dict:
         return {}
 
 
+def serie_reestructuracion_vigentes() -> list:
+    """Serie mensual del conteo ACUMULADO de cierres VIGENTES al fin de cada
+    mes, desde dic-2023. [[YYYY-MM-01, count]].
+
+    Vive acá, y no en descargar_series, porque el filtro del registro curado
+    tiene que ser UNO SOLO. Cuando el numerador de la card pasó a contar los
+    11 cierres vigentes (ADR-0188) pero la serie siguió contando las 18
+    menciones crudas de InfoLeg, el gate G3 —que compara la card contra el
+    último punto de la serie— marcó 24,4 % contra 40,0 %. Dos caminos de
+    código contando la misma cosa divergen apenas uno cambia.
+
+    Mismo criterio que la card, incluido el de las normas sin clasificar: no
+    cuentan hasta que alguien las revise.
+    """
+    clasificadas = _reestructuracion_normas_clasificadas()
+    hoy = date.today()
+    session = requests.Session()
+    anio, mes = 2023, 12
+    vistas, acumulado, out = set(), 0, []
+    while (anio, mes) <= (hoy.year, hoy.month):
+        for norma_id, _titulo in _infoleg_buscar_mes("disolucion", anio, mes,
+                                                     session=session):
+            if norma_id in vistas:
+                continue
+            vistas.add(norma_id)
+            if (clasificadas.get(norma_id) or {}).get("estado") == "vigente":
+                acumulado += 1
+        out.append([f"{anio}-{mes:02d}-01", acumulado])
+        mes += 1
+        if mes == 13:
+            mes, anio = 1, anio + 1
+    return out
+
+
 def fetch_reestructuracion_organismos() -> dict | None:
     """
     Avance de la disolución o cierre de organismos del aparato estatal — NO
