@@ -266,3 +266,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0180](0180-integracion-con-la-plataforma-google.md) | Integración con la plataforma Google: medición, indexación y warehouse |  | vigente |
 | [0181](0181-el-color-es-la-tension-que-ya-se-publica.md) | El color es la tensión que ya se publica, no una escala nueva |  | vigente |
 | [0182](0182-los-umbrales-del-semaforo-se-calculan.md) | Los umbrales del semáforo se calculan, no se escriben |  | vigente |
+| [0184](0184-la-dimension-tambien-dice-de-que-color-es-y-por-que.md) | La dimensión también dice de qué color es y por qué |  | vigente |

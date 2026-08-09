@@ -7,6 +7,7 @@ cinturon: 'transversal'
 indice: 'todos'
 archivos: ['scripts/parametrica.py']
 continua: ['0181']
+continuado_por: ['0184']
 ambito: 'Umbrales del semáforo en la unidad cruda del indicador · interpolación inversa'
 origen: 'Las 15 fichas de Gestión traen los umbrales escritos en prosa, y los números con los que se escribieron envejecieron en una semana'
 ---
