@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-09T02:26:04.527318",
+  "generated_at": "2026-08-09T10:36:03.247069",
   "period": "2026-08",
   "score_global": 3.4,
   "ponderacion": {
@@ -956,8 +956,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 67,1/100, equivale a una tensión de 3,3/10 en la escala del informe.",
+              "tension": 3.3
             }
           },
           "viabilidad_fiscal_comercial": {
@@ -993,8 +993,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 71,0/100, equivale a una tensión de 2,9/10 en la escala del informe.",
+              "tension": 2.9
             }
           },
           "financiamiento": {
@@ -1037,8 +1037,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 54,8/100, equivale a una tensión de 4,5/10 en la escala del informe.",
+              "tension": 4.5
             }
           },
           "actividad": {
@@ -1074,8 +1074,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 46,7/100, equivale a una tensión de 5,3/10 en la escala del informe.",
+              "tension": 5.3
             }
           },
           "competitividad_externa": {
@@ -1097,8 +1097,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 49,5/100, equivale a una tensión de 5,0/10 en la escala del informe.",
+              "tension": 5.0
             }
           },
           "inversion": {
@@ -1127,8 +1127,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 64,9/100, equivale a una tensión de 3,5/10 en la escala del informe.",
+              "tension": 3.5
             }
           }
         },
@@ -2426,8 +2426,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 46,5/100, equivale a una tensión de 5,3/10 en la escala del informe.",
+              "tension": 5.3
             }
           },
           "alianzas_territoriales": {
@@ -2463,8 +2463,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 77,7/100, equivale a una tensión de 2,2/10 en la escala del informe.",
+              "tension": 2.2
             }
           },
           "cohesion_interna": {
@@ -2486,8 +2486,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 96,7/100, equivale a una tensión de 0,3/10 en la escala del informe.",
+              "tension": 0.3
             }
           },
           "conflicto_social": {
@@ -2509,8 +2509,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 48,9/100, equivale a una tensión de 5,1/10 en la escala del informe.",
+              "tension": 5.1
             }
           },
           "imagen_voto": {
@@ -2532,8 +2532,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 73,0/100, equivale a una tensión de 2,7/10 en la escala del informe.",
+              "tension": 2.7
             }
           },
           "poder_judicial": {
@@ -2576,8 +2576,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 59,2/100, equivale a una tensión de 4,1/10 en la escala del informe.",
+              "tension": 4.1
             }
           },
           "sector_privado": {
@@ -2606,8 +2606,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 54,2/100, equivale a una tensión de 4,6/10 en la escala del informe.",
+              "tension": 4.6
             }
           }
         },
@@ -3885,7 +3885,7 @@
           }
         },
         "sentimiento_digital": {
-          "valor": 26.1,
+          "valor": 25.4,
           "unidad": "interés 0–100",
           "fuente": "Google Trends",
           "fecha_dato": "2026-08-09",
@@ -3954,7 +3954,7 @@
         }
       },
       "alerta": null,
-      "fuente_enriquecida": "vida_cotidiana_20260809_0217.json",
+      "fuente_enriquecida": "vida_cotidiana_20260809_1021.json",
       "score_explicacion": "ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida cotidiana) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITVC − 100) × 0,2.",
       "itvc": {
         "valor": 90.3,
@@ -4003,8 +4003,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El índice de la dimensión, 110,5, equivale a una tensión de 2,9/10 en la escala del informe.",
+              "tension": 2.9
             }
           },
           "precios": {
@@ -4037,8 +4037,8 @@
               "color": "rojo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El índice de la dimensión, 82,7, equivale a una tensión de 8,5/10 en la escala del informe.",
+              "tension": 8.5
             }
           },
           "vulnerabilidad": {
@@ -4059,8 +4059,8 @@
               "color": "rojo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El índice de la dimensión, 17,2, equivale a una tensión de 10,0/10 en la escala del informe.",
+              "tension": 10.0
             }
           },
           "empleo": {
@@ -4099,8 +4099,8 @@
               "color": "naranja",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El índice de la dimensión, 92,6, equivale a una tensión de 6,5/10 en la escala del informe.",
+              "tension": 6.5
             }
           },
           "percepcion": {
@@ -4127,8 +4127,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El índice de la dimensión, 99,8, equivale a una tensión de 5,0/10 en la escala del informe.",
+              "tension": 5.0
             }
           },
           "seguridad": {
@@ -4149,8 +4149,8 @@
               "color": "amarillo",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El índice de la dimensión, 102,1, equivale a una tensión de 4,6/10 en la escala del informe.",
+              "tension": 4.6
             }
           }
         },
@@ -6436,8 +6436,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 76,6/100, equivale a una tensión de 2,3/10 en la escala del informe.",
+              "tension": 2.3
             }
           },
           "reforma_estado": {
@@ -6480,8 +6480,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 90,5/100, equivale a una tensión de 0,9/10 en la escala del informe.",
+              "tension": 0.9
             }
           },
           "reforma_laboral": {
@@ -6510,8 +6510,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 79,7/100, equivale a una tensión de 2,0/10 en la escala del informe.",
+              "tension": 2.0
             }
           },
           "privatizaciones_inversion": {
@@ -6547,8 +6547,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 62,9/100, equivale a una tensión de 3,7/10 en la escala del informe.",
+              "tension": 3.7
             }
           },
           "social_orden": {
@@ -6577,8 +6577,8 @@
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": null,
-              "tension": null
+              "por_que": "El puntaje de la dimensión, 84,4/100, equivale a una tensión de 1,6/10 en la escala del informe.",
+              "tension": 1.6
             }
           }
         },
