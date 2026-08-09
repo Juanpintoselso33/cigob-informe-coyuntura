@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-08
 cinturon: 'transversal'
 indice: 'todos'
-archivos: ['scripts/parametrica.py', 'scripts/publicar.py', 'web/src/lib/datos.ts']
+archivos: ['scripts/parametrica.py', 'scripts/publicar.py', 'web/src/lib/datos.ts', 'web/src/components/Bluf.astro']
 relacionado: ['0121', '0021']
 continuado_por: ['0182']
 ambito: 'Semáforo de 4 colores · capa de lectura sobre los cinco cinturones'
@@ -165,29 +165,59 @@ Otras consecuencias:
   derivaba de un número; ahora lo lee. Dos definiciones del mismo corte en dos
   lenguajes se desincronizan sin que falle nada.
 
-**HONESTIDAD SOBRE EL EFECTO: el semáforo no arregla el chip del cinturón, lo
-deja a la vista.** `verdictDeCinturon` (`web/src/lib/datos.ts`) devuelve rojo
-ramificando sobre `estado === "critico" || estado === "alerta"`, y **ninguno de
-esos dos valores lo produce nada en `scripts/`**: el vocabulario real que emite
-`_estado()` es `estable` / `en_tension` / `tensionado`. `tensionado` —el peor de
-los tres— cae en el `else` y se pinta **amarillo**. De ahí que `cinturonesRojos`
-sea estructuralmente **0**: el sitio no puede mostrar un cinturón en rojo, y el
-hero, el archivo, la metodología y el panel de tensión cuentan cero rojos
-siempre; la frase *"está en zona crítica"* del BLUF no puede dispararse nunca.
+**El semáforo no arreglaba el chip del cinturón: lo dejó a la vista, y dos
+commits después de anotarlo acá se terminó arreglando en esta misma rama.**
+`verdictDeCinturon` (`web/src/lib/datos.ts`) devolvía rojo ramificando sobre
+`estado === "critico" || estado === "alerta"`, y **ninguno de esos dos valores
+lo produce nada en `scripts/`**: el vocabulario real que emite `_estado()`
+(`scripts/publicar.py:342`, réplica de `generar_informe.py`) es `estable` /
+`en_tension` / `tensionado`. `tensionado` —el peor de los tres— caía en el
+`else` y se pintaba **amarillo**. De ahí que `cinturonesRojos` fuera
+estructuralmente **0**: el sitio no podía mostrar un cinturón en rojo, y el
+hero, el archivo, la metodología y el panel de tensión contaban cero rojos
+siempre; la frase *"está en zona crítica"* del BLUF no podía dispararse nunca.
 
-Es **anterior** a este cambio y queda **fuera de alcance a propósito**: tocar
-`verdictDeCinturon` mueve el BLUF, la frontada y el conteo de rojos, que no es
-una decisión de color. Pero el semáforo lo vuelve visible en la misma página:
-vida cotidiana está hoy en `tensionado` (score 6,9), su ITVC 90,3 se pinta
-**naranja** con la regla nueva, y su chip sigue diciendo **amarillo**. Queda
-anotado acá porque este ADR pasó a ser el único documento que describe
-`verdictDeCinturon`, y una descripción que no mencione la rama muerta se lee
-como que la función anda.
+El bug es **anterior** a este ADR —nada de lo que acá se decide lo causó ni lo
+necesitaba—, pero el semáforo lo volvió visible en la misma página: vida
+cotidiana pasó a `tensionado` (score 6,9), su ITVC 90,3 se pinta **naranja**
+con la regla nueva, y su chip seguía diciendo **amarillo** al lado, en la misma
+card. Verlo así de expuesto, no una decisión editorial nueva, es lo que lo sacó
+de "pendiente declarado" a arreglado: `f333b0c` corrigió la comparación y
+`29d698e` le puso un test que falla en las dos direcciones si alguien la
+reabre.
+
+**Por qué entraba en el alcance de un cambio de presentación.** Arreglarlo no
+tocó ningún puntaje, banda, peso ni `UMBRALES`: `generar_informe.py:192` ya
+mapeaba `{"estable": "🟢", "en_tension": "🟡", "tensionado": "🔴"}` desde antes
+de este ADR, así que el informe markdown **siempre pintó `tensionado` de
+rojo**. El único desacuerdo estaba en la web, que comparaba contra un
+vocabulario que `_estado()` nunca produce. Alinear `verdictDeCinturon` con el
+mapeo que el propio pipeline ya publicaba no inventa un criterio: corrige la
+réplica del lado que estaba mal. `tests/test_web_semaforo.py` deriva ahora el
+vocabulario real corriendo `_estado()` (no copiándolo a mano) y compara el
+color resultante contra `generar_informe.py:192` en las dos direcciones: que
+ningún estado real quede sin el color canónico, y que ninguna rama compare
+contra un estado fantasma.
+
+**Arreglarlo expuso un segundo bug, en una rama que nunca se había ejecutado
+en producción.** `Bluf.astro` armaba la cláusula del cinturón más exigido con
+su mayúscula ("Con...") hardcodeada, asumiendo que siempre iba a ser la
+primera frase del párrafo —cierto mientras `cinturonesRojos` fue
+estructuralmente siempre 0—. En cuanto un cinturón pudo pintarse rojo, esa
+cláusula pasó a segunda posición y el párrafo leía "...está en zona crítica;
+**Con** una tensión global..." con la mayúscula en mitad de la oración después
+de un punto y coma, y además nombraba dos veces seguidas el mismo cinturón
+cuando el rojo coincidía con el más exigido. `29d698e` lo corrige: la
+mayúscula se aplica una sola vez, al final, sobre el string ya unido, y la
+segunda cláusula no repite el nombre cuando es el mismo cinturón. Es el tipo
+de defecto que ningún test detecta por muestreo: hasta este branch no había
+ningún dato real capaz de ejercitar esa rama.
 
 ### Confirmación
 
-26 tests en `tests/test_semaforo.py`, `tests/test_publicar_semaforo.py` y
-`tests/test_web_semaforo.py`:
+28 tests en `tests/test_semaforo.py`, `tests/test_publicar_semaforo.py` y
+`tests/test_web_semaforo.py` — 26 de la decisión de este ADR más 2 agregados
+por el fix de `verdictDeCinturon` descripto arriba:
 
 - Los bordes exactos: tensión 4,0 → verde y 4,01 → amarillo; puntaje 60,0 →
   verde y 59,9 → amarillo (convención low-exclusivo / high-inclusivo, la misma
@@ -203,6 +233,11 @@ como que la función anda.
   fixture congelada, que sólo probaría "no cambió desde tal día".
 - Que los cuatro colores tienen token CSS y reglas de genoma y verdict, y que
   ningún `.ts` deriva el color de un número.
+- **Que `verdictDeCinturon` no vuelve a divergir de `_estado()`**: ningún
+  estado real (`estable`/`en_tension`/`tensionado`, obtenidos corriendo
+  `_estado()`, no copiados a mano) queda sin el color que
+  `generar_informe.py:192` ya le asigna, y ninguna comparación del chip
+  menciona un estado que `_estado()` no produce.
 
 ## Pros y contras de las opciones
 
@@ -299,7 +334,10 @@ sería cambiar una paleta, sería reemplazar una lectura por otra en cuatro
 componentes editoriales. La clase CSS `.cg-verdict` es compartida y está
 indexada por nombre de color, no por qué concepto lo produjo, así que recibe
 `naranja` igual. **Unificar el chip del cinturón con el color de su índice queda
-pendiente declarado, no olvidado.**
+pendiente declarado, no olvidado.** (No confundir con el bug de vocabulario de
+`verdictDeCinturon` ya corregido en "Consecuencias": esto es la pregunta
+conceptual de si conviene fusionar dos lecturas distintas, no si el mapeo
+vigente es correcto.)
 
 El sentido de la derivación importa y es fácil de invertir al leerlo: el score
 del cinturón produce el `estado`, no al revés, y `score_global` es el promedio
