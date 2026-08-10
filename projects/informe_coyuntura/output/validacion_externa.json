@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-09T15:43:02.136716",
+    "generated_at": "2026-08-10T03:53:51.710283",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -1051,7 +1051,7 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.355,
-        "concesiones_infraestructura": 0.323,
+        "concesiones_infraestructura": 0.322,
         "desregulacion_normativa": 0.921,
         "fal_modernizacion_laboral": 0.347,
         "gasto_funcionamiento": 0.239,
@@ -1061,11 +1061,11 @@
         "privatizaciones": 0.829,
         "protocolo_antipiquetes": 0.867,
         "reduccion_estado": 0.755,
-        "reestructuracion_organismos": 0.434
+        "reestructuracion_organismos": 0.433
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.207,
-        "cepo_mulc": 0.323,
+        "cepo_mulc": 0.322,
         "desregulacion_normativa": 0.369,
         "fal_modernizacion_laboral": 0.863,
         "gasto_funcionamiento": 0.212,
@@ -1201,7 +1201,7 @@
       },
       "reestructuracion_organismos": {
         "apertura_comercial": 0.359,
-        "cepo_mulc": 0.434,
+        "cepo_mulc": 0.433,
         "concesiones_infraestructura": 0.769,
         "desregulacion_normativa": 0.581,
         "fal_modernizacion_laboral": 0.888,
@@ -2336,7 +2336,7 @@
     "2026-05": 2131.0,
     "2026-06": 2087.8,
     "2026-07": 2090.0,
-    "2026-08": 1955.8
+    "2026-08": 1955.3
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {

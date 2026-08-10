@@ -2,7 +2,7 @@
  "_meta": {
   "descripcion": "Normas del BO que nombran empresas privatizables. Detección automática; la etapa la sigue asignando el analista (ADR-0129). Sacar de 'pendientes' lo ya revisado.",
   "nuevas_en_la_corrida": 0,
-  "ultima_corrida": "2026-08-09"
+  "ultima_corrida": "2026-08-10"
  },
  "pendientes": {
   "425373": {
