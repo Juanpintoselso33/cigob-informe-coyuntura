@@ -20,12 +20,12 @@
       "combinado": {
         "media": 56.9,
         "p05": 55.2,
-        "p95": 58.6,
+        "p95": 58.5,
         "desvio": 1.02
       },
       "insumos": {
         "media": 56.9,
-        "p05": 56.0,
+        "p05": 55.9,
         "p95": 57.9,
         "desvio": 0.6
       }
@@ -44,63 +44,63 @@
       "icip": 60.9,
       "emae_ia": 61.1,
       "ipi_manufacturero": 62.0,
-      "idc": 61.8,
       "emae_difusion": 61.5,
       "presion_dolarizacion": 61.7,
+      "idc": 61.7,
       "credito_privado": 61.7
     },
     "tension": {
       "base": 3.8,
       "rango_combinado": [
-        4.1,
+        4.2,
         4.5
       ]
     }
   },
   "itcg": {
-    "valor_publicado": 77.5,
-    "valor_recomputado": 77.5,
+    "valor_publicado": 77.2,
+    "valor_recomputado": 77.2,
     "experimentos": {
       "pesos": {
-        "media": 77.4,
-        "p05": 76.1,
-        "p95": 78.8,
-        "desvio": 0.81
+        "media": 77.2,
+        "p05": 75.8,
+        "p95": 78.5,
+        "desvio": 0.79
       },
       "combinado": {
-        "media": 77.4,
-        "p05": 75.6,
-        "p95": 79.1,
-        "desvio": 1.07
+        "media": 77.1,
+        "p05": 75.3,
+        "p95": 78.9,
+        "desvio": 1.09
       },
       "insumos": {
-        "media": 77.3,
-        "p05": 76.2,
-        "p95": 78.4,
-        "desvio": 0.66
+        "media": 77.1,
+        "p05": 75.9,
+        "p95": 78.3,
+        "desvio": 0.71
       }
     },
     "leave_one_out": {
-      "reestructuracion_organismos": 82.3,
+      "reestructuracion_organismos": 82.0,
       "cepo_mulc": 72.7,
-      "apertura_comercial": 81.6,
-      "reduccion_estado": 73.7,
-      "fal_modernizacion_laboral": 74.4,
-      "litigiosidad_laboral": 80.5,
-      "gasto_funcionamiento": 75.3,
-      "libertad_opcion_salud": 78.4,
-      "privatizaciones": 76.6,
-      "asistencia_directa": 76.8,
-      "concesiones_infraestructura": 78.1,
-      "protocolo_antipiquetes": 76.9,
-      "desregulacion_normativa": 77.9,
-      "rigi_inversiones": 77.4
+      "apertura_comercial": 81.1,
+      "reduccion_estado": 73.4,
+      "fal_modernizacion_laboral": 74.1,
+      "litigiosidad_laboral": 80.2,
+      "gasto_funcionamiento": 75.0,
+      "libertad_opcion_salud": 78.1,
+      "privatizaciones": 76.3,
+      "concesiones_infraestructura": 77.9,
+      "asistencia_directa": 76.5,
+      "protocolo_antipiquetes": 76.6,
+      "desregulacion_normativa": 77.6,
+      "rigi_inversiones": 77.1
     },
     "tension": {
       "base": 2.3,
       "rango_combinado": [
         2.1,
-        2.4
+        2.5
       ]
     }
   },
