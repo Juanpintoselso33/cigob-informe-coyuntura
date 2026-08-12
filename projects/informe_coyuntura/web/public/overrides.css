@@ -1276,7 +1276,7 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   align-items: center;
   gap: 1px;
   text-align: center;
-  margin-top: -6px;
+  margin-top: 2px;
 }
 .cg-aguja-titulo {
   font-size: 11px;
@@ -1332,7 +1332,6 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-cint-head .cg-aguja { max-width: 104px; flex: 0 0 auto; }
 .cg-cint-head .cg-aguja-lectura { font-size: 11.5px; line-height: 1.25; }
 .cg-cint-head .cg-aguja-valor { font-size: 13px; }
-.cg-cint-head .cg-aguja-cap { margin-top: -10px; }
 
 /* Los puntos del panel de tensión toman la misma vara que las agujas. */
 .cg-dot.sem-verde    { background: var(--verde); }
@@ -1421,7 +1420,12 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 
 /* La aguja dentro de una dimensión: chica y sin título, porque el nombre de la
    dimensión ya está en la fila de arriba. */
-.cg-itcm-dim .cg-aguja { max-width: 132px; margin: 2px auto 0; }
-.cg-itcm-dim .cg-aguja-lectura { font-size: 11.5px; }
-.cg-itcm-dim .cg-aguja-valor { font-size: 13px; }
-.cg-itcm-dim .cg-aguja-cap { margin-top: -12px; }
+.cg-itcm-dim .cg-aguja { max-width: 176px; margin: 6px auto 0; }
+.cg-itcm-dim .cg-aguja-lectura { font-size: 12.5px; }
+.cg-itcm-dim .cg-aguja-valor { font-size: 15px; }
+
+/* Las cards de dimensión: título arriba con altura pareja y la aguja centrada
+   abajo, para que la grilla no quede escalonada cuando un nombre ocupa dos
+   líneas y otro una. */
+.cg-itcm-dim { display: flex; flex-direction: column; }
+.cg-itcm-dim-head { min-height: 2.6em; align-items: flex-start; }
