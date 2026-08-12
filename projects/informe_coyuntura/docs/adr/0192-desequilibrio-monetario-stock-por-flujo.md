@@ -209,10 +209,14 @@ existe con sentido antes de la apertura.
 - Las URLs `/metodologia/dolarizacion_depositos/` y
   `/metodologia/presion_dolarizacion/` redirigen **directo** a la ficha vigente,
   sin encadenarse, y quedan fuera del sitemap.
-- Queda un choque de nombres a resolver con Diego: el ITCM ya tenía un indicador
-  llamado «Desequilibrio monetario (IDM)» y ahora hay dos con nombre parecido. Se
-  desambigua en la web como «Desequilibrio monetario (confianza en el peso)», que
-  es un parche de presentación, no una solución.
+- El choque de nombres con el IDM se resuelve renombrando LOS DOS en la web, no
+  poniéndole un paréntesis aclaratorio a uno. El IDM pasa a «Exceso de pesos
+  sobre la demanda (IDM)» y este indicador a «Dolarización dentro y fuera del
+  sistema». Los dos nombres nuevos dicen qué mide cada uno y, además, van en la
+  misma dirección que su número: en ambos, más alto es peor. «Confianza en el
+  peso» tenía el defecto opuesto — la confianza baja cuando el valor sube.
+  Las claves internas no se tocan: se citan desde series, histórico, BigQuery y
+  ADRs.
 
 ### Confirmación
 
