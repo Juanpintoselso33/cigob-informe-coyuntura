@@ -96,7 +96,9 @@ const aria = valor === null
         stroke-linecap="butt"
       />
     ))}
-    <line {...tick(0)} class="cg-aguja-tick" />
+    {/* Una marca por corte, no solo en los extremos: son las divisiones que
+        permiten leer en qué tramo cae la aguja cuando el color no llega. */}
+    {tramos.map(t => <line {...tick(t.desde)} class="cg-aguja-tick" />)}
     <line {...tick(TENSION_MAX)} class="cg-aguja-tick" />
     <text {...rotulo(0)} class="cg-aguja-escala" text-anchor="middle">0</text>
     <text {...rotulo(TENSION_MAX)} class="cg-aguja-escala" text-anchor="middle">{TENSION_MAX}</text>

@@ -22,6 +22,15 @@ const c = informe.cinturones[meta.key];
 // tres valores no se pierde —sigue mandando en la regla sistémica— pero no se
 // expresa en color, porque sobre la misma tensión 0-10 parte distinto que el
 // semáforo y los dos veredictos se contradecían a la vista.
+//
+// Se muestra como TEXTO junto a la aguja. La primera versión lo borró de la
+// página entera y eso fue quitar información: `estado` es el concepto que
+// dispara "1 tensionado es manejable, 2 o más no", y el lector no tenía cómo
+// saber de qué lado caía este cinturón.
+const ESTADO_LABEL: Record<string, string> = {
+  estable: "Estable", en_tension: "En tensión", tensionado: "Tensionado",
+};
+const estadoLabel = ESTADO_LABEL[c.estado] ?? cap(c.estado);
 const filas = indicadoresOrdenados(c);
 // Los indicadores de contexto (en_indice === false) no construyen la tensión:
 // se muestran en un bloque aparte para no confundirlos con los del índice.
@@ -233,9 +242,10 @@ const robChartData = rob?.hist && indice ? {
       <h1 class="cg-hero-title cg-detalle-title">{meta.nombre}</h1>
       <p class="cg-hero-lead cg-detalle-lead">{meta.sub}.</p>
       <div class="cg-detalle-meta">
-        {/* La aguja reemplaza a la píldora de veredicto y al chip de score:
-            los dos decían el mismo número con menos claridad. */}
+        {/* La aguja reemplaza al chip de score, que repetía su número. El
+            estado queda al lado, en texto: es otro concepto, no otro color. */}
         <Aguja tension={c.score} titulo={`Tensión de ${meta.nombre}`} ocultarTitulo />
+        <span class="cg-detalle-chip">Estado del cinturón: <strong>{estadoLabel}</strong></span>
         {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>

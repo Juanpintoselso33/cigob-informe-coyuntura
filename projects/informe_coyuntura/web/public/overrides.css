@@ -1243,13 +1243,18 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-aguja--chica  { max-width: 160px; }
 .cg-aguja--grande { max-width: 300px; }
 
-/* Tramos apagados por defecto: si los cuatro gritan, ninguno informa. */
-.cg-aguja-tramo { opacity: .18; transition: opacity .2s ease; }
-.cg-aguja-tramo.is-activo { opacity: 1; }
-.cg-aguja-tramo.sem-verde    { stroke: var(--verde); }
-.cg-aguja-tramo.sem-amarillo { stroke: var(--amarillo); }
-.cg-aguja-tramo.sem-naranja  { stroke: var(--naranja); }
-.cg-aguja-tramo.sem-rojo     { stroke: var(--rojo); }
+/* Tramos apagados por defecto: si los cuatro gritan, ninguno informa. Van con
+   los tintes suaves y OPACOS, no con opacidad baja: translúcidos dejaban ver
+   el arco base por debajo y el tramo terminaba siendo un gris sucio. */
+.cg-aguja-tramo { transition: stroke .2s ease; }
+.cg-aguja-tramo.sem-verde    { stroke: var(--verde-soft); }
+.cg-aguja-tramo.sem-amarillo { stroke: var(--amarillo-soft); }
+.cg-aguja-tramo.sem-naranja  { stroke: var(--naranja-soft); }
+.cg-aguja-tramo.sem-rojo     { stroke: var(--rojo-soft); }
+.cg-aguja-tramo.sem-verde.is-activo    { stroke: var(--verde); }
+.cg-aguja-tramo.sem-amarillo.is-activo { stroke: var(--amarillo); }
+.cg-aguja-tramo.sem-naranja.is-activo  { stroke: var(--naranja); }
+.cg-aguja-tramo.sem-rojo.is-activo     { stroke: var(--rojo); }
 
 .cg-aguja-linea {
   stroke: var(--dark);
@@ -1296,6 +1301,8 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 @media (prefers-reduced-motion: reduce) {
   .cg-aguja-tramo { transition: none; }
 }
+/* Las marcas de corte, que son las que dan la escala sin color. */
+.cg-aguja-tick { stroke: #6B7370; }
 
 /* Hero en dos columnas: el texto explica, la aguja contesta. En mobile la
    aguja va PRIMERO — es la respuesta, y la respuesta no se scrollea. */
@@ -1338,7 +1345,10 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
    posición del puntero deja de ser un canal propio en cuanto el color se
    pierde — impresión en gris, fotocopia, forced-colors. El arco atenuado que
    había antes desaparecía y la aguja quedaba como un ángulo sin escala. */
-.cg-aguja-base { stroke: var(--bd); }
+/* 3,69:1 contra el papel. El valor anterior (--bd) daba 1,27:1 — por debajo
+   del 3:1 que WCAG pide para un elemento gráfico que porta significado, o sea
+   que el arco de referencia directamente no estaba ahí. */
+.cg-aguja-base { stroke: #7F8783; }
 .cg-aguja-tick { stroke: var(--muted-soft); stroke-width: 1.5; }
 .cg-aguja-escala {
   font-family: "JetBrains Mono", ui-monospace, monospace;
@@ -1350,7 +1360,7 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 @media print {
   /* En papel el color no se puede dar por hecho: los tramos se apagan del
      todo y mandan la posición, las marcas y la etiqueta. */
-  .cg-aguja-tramo { opacity: 0; }
+  .cg-aguja-tramo { stroke: none; }
   .cg-aguja-base { stroke: #767676; }
   .cg-aguja-linea, .cg-aguja-eje { stroke: #000; fill: #000; }
 }
