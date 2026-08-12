@@ -52,6 +52,25 @@ Antes de reintentarlo: la primera versión daba `r2 −0.0` porque entrenaba
 contra `cinturones`, que es la FOTO de la corrida (un mes por corrida, 35 filas)
 y no la historia. La historia mensual de los índices está en `series_indices`.
 
+**Y TimesFM (`AI.FORECAST`), evaluado y no adoptado** (2026-08-12). Está
+disponible en `southamerica-east1` y funciona con nuestros datos —su ventana de
+contexto mínima es 64, así que acepta series de 31 puntos, y al ser zero-shot no
+necesita entrenarlas—. Backtest ocultando los últimos 6 meses de las 87 series
+mensuales con ≥24 puntos:
+
+    le gana a repetir el último valor en 48/87 series (55%), mediana de mejora 3%
+
+Se probaron dos criterios para aislar dónde sí sirve, medidos sólo con datos de
+entrenamiento, y los dos fallaron: separar por "series que se mueven" da 57% vs
+55%, y separar por direccionalidad da 47% en las que están en tendencia contra
+62% en las que oscilan — al revés de lo esperado. Hay triunfos grandes sueltos
+(credito_privado 20×, ipc_nivel 15×) pero sin regla para anticiparlos, y
+reportarlos sin la regla sería elegir los casos que convienen.
+
+En las DIARIAS, contra el ARIMA_PLUS que corre acá abajo (holdout de 30 días):
+gana en badlar y base_monetaria, pierde en prestamos_privados, y en
+tc_mayorista le gana el baseline ingenuo a los dos. No hay motivo para cambiar.
+
 Uso:
     python scripts/bq_ml.py anomalias
     python scripts/bq_ml.py --todo
