@@ -1463,3 +1463,10 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 /* Sin el borde de color, el punto del semáforo pasa a ser lo primero que se ve
    en el tile, que es exactamente lo que el rediseño busca. */
 .cg-tile--compacto .cg-tile-dot { width: 10px; height: 10px; }
+/* Foco visible en los tiles: ahora son disparadores de teclado y hay que poder
+   ver dónde está uno parado. */
+.cg-tile.cg-ind--clickable:focus-visible,
+.cg-itcm-dim.cg-dim--clickable:focus-visible {
+  outline: 3px solid var(--teal-dark);
+  outline-offset: 2px;
+}

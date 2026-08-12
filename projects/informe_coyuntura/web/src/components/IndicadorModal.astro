@@ -411,7 +411,7 @@ const dimsJson = JSON.stringify(dims);
   });
 
   document.querySelectorAll(".cg-ind--clickable[data-indicador]").forEach(li => {
-    li.addEventListener("click", () => {
+    const abrirIndicador = () => {
       const key = li.getAttribute("data-indicador");
       const cint = li.getAttribute("data-cinturon") || "";
       const d = INFO[`${cint}.${key}`] || INFO[key] || { label: key, cinturon: "", que: "", aporta: "", valor: "—", unidad: "", fuente: "", fecha: "", estado: "" };
@@ -594,6 +594,14 @@ const dimsJson = JSON.stringify(dims);
       }
       modal.removeAttribute("hidden");
       requestAnimationFrame(() => renderChart(tipo, key, d, serie));
+    };
+    li.addEventListener("click", abrirIndicador);
+    // Enter y Espacio, como ya hacían las cards de dimensión: sin esto el tile
+    // es alcanzable sólo con mouse, y desde que la variante compacta mandó la
+    // descripción y la fuente al modal, eso dejaba a quien navega con teclado
+    // sin ninguna via para llegar a ellas.
+    li.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); abrirIndicador(); }
     });
   });
 

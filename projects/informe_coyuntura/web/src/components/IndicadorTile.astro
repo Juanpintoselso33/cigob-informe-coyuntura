@@ -42,7 +42,17 @@ if (vis.tipo === "barra" && vis.avance) {
 
 const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) : null;
 ---
-<article class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable", { "cg-tile--compacto": compacto }]} data-indicador={ikey} data-cinturon={slug}>
+{/* Es un disparador de verdad: `role`, `tabindex` y nombre accesible. Antes
+    era un <article> con un listener de click, o sea alcanzable sólo con mouse.
+    Con la variante compacta eso pasó de defecto a bloqueo: la descripción y la
+    fuente se fueron al modal, y quien navega con teclado se quedaba sin ninguna
+    forma de llegar a ellas. Copia el patrón que ya usaban las cards de
+    dimensión (cg-dim--clickable). */}
+<article
+  class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable", { "cg-tile--compacto": compacto }]}
+  data-indicador={ikey} data-cinturon={slug}
+  role="button" tabindex="0"
+  aria-label={`${label(ikey)}: ver qué mide, su fuente y su evolución`}>
   <div class="cg-tile-head">
     {color && (
       <span
