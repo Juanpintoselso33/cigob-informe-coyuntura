@@ -47,36 +47,36 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **6.5%** |
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **5.2%** |
 | Procedencia del ancla | `conceptual` — hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120) |
 
 **Bandas**: ≤ 1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · > 5 → 10
 
 **Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 
-#### Desequilibrio monetario (IDM)
+#### Exceso de pesos sobre la demanda (IDM)
 
 `idm`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **6.5%** |
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **5.2%** |
 | Procedencia del ancla | `convencion` — «calibrado con la historia 2024-2026» |
 
 **Bandas**: ≤ -2 → 100 · -2–2 → 85 · 2–5 → 60 · 5–8 → 35 · > 8 → 10
 
 **Lo gobiernan**: [ADR-0053](../adr/0053-transparencia-y-agregados-monetarios-idm.md) Transparencia y agregados monetarios del IDM
 
-#### Desequilibrio monetario (confianza en el peso)
+#### Dolarización dentro y fuera del sistema
 
 `desequilibrio_monetario`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 10% |
-| Peso efectivo en el índice | **2.6%** |
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **5.2%** |
 
 **Bandas**: ≤ 20 → 100 · 20–50 → 60 · 50–80 → 35 · > 80 → 10
 

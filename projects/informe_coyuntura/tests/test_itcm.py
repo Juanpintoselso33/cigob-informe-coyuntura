@@ -37,7 +37,7 @@ import itcm
 #   * icip         = capitalización digital (% i.a.). 8,2 → 73,1 (banda 80).
 #   * saldo/emae quedan planos más allá de la última ancla (85 y 100).
 #   * credito_privado = % i.a. REAL de préstamos privados (ADR-0022). +26% → 80.
-# Dimensiones: estab=64,8 fiscal=68,4 financ=43,1 (reservas 45% + IdC 40% +
+# Dimensiones: estab=64,7 fiscal=68,4 financ=43,1 (reservas 45% + IdC 40% +
 # crédito 15%) actividad=100 competitividad=45,7 inversión=54,7 → ITCM=62,8.
 EJEMPLO = {
     "ipc_total": 2.58,             # interpolado 63,7 (banda 65)
@@ -63,7 +63,7 @@ EJEMPLO = {
 def test_itcm_reproduce_ejemplo():
     r = itcm.calcular_itcm(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["estabilidad_monetaria"]["puntaje"] == 64.8
+    assert dims["estabilidad_monetaria"]["puntaje"] == 64.7
     assert dims["viabilidad_fiscal_comercial"]["puntaje"] == 78.5
     assert dims["financiamiento"]["puntaje"] == 54.7
     assert dims["actividad"]["puntaje"] == 100.0
@@ -76,8 +76,8 @@ def test_itcm_reproduce_ejemplo():
     assert r["banda"] == "moderadamente_aflojado"
     desequilibrio = dims["estabilidad_monetaria"]["indicadores"]["desequilibrio_monetario"]
     assert desequilibrio["puntaje_aplicado"] == 64.8
-    assert desequilibrio["peso"] == 0.10
-    assert desequilibrio["peso_efectivo"] == 0.026
+    assert desequilibrio["peso"] == 0.20
+    assert desequilibrio["peso_efectivo"] == 0.052
     assert itcm.tension_de_itcm(r["valor"]) == 3.3
     assert r["ajustes_aplicados"] == []
 
@@ -133,17 +133,36 @@ def test_itcm_usa_anclas_explicitas_para_desequilibrio_monetario():
     )
     assert indicador["puntaje_banda"] == 64.8
     assert indicador["puntaje_aplicado"] == 64.8
-    assert indicador["peso"] == 0.10
-    assert indicador["peso_efectivo"] == 0.026
+    assert indicador["peso"] == 0.20
+    assert indicador["peso_efectivo"] == 0.052
 
 
-def test_estabilidad_monetaria_usa_pesos_40_25_25_10():
+def test_estabilidad_monetaria_usa_pesos_40_20_20_20():
+    """El desequilibrio monetario pesa lo mismo que el REM y el IDM (ADR-0193):
+    son tres lecturas distintas de la misma tensión y ninguna manda sobre las
+    otras. El IPC conserva su 40% porque la inflación realizada es el núcleo."""
     assert itcm.DIMENSIONES_ITCM["estabilidad_monetaria"]["indicadores"] == {
         "ipc_total": 0.40,
-        "rem_ipc_12m": 0.25,
-        "idm": 0.25,
-        "desequilibrio_monetario": 0.10,
+        "rem_ipc_12m": 0.20,
+        "idm": 0.20,
+        "desequilibrio_monetario": 0.20,
     }
+
+
+def test_el_desequilibrio_pesa_como_las_reservas_y_no_como_el_tcrm():
+    """La ficha pide "un peso similar al de los indicadores cambiarios/de
+    reservas". El comparable es reservas_bcra; el TCRM llega a 11% por ser el
+    único de su dimensión, que es un artefacto de la estructura."""
+    D = itcm.DIMENSIONES_ITCM
+
+    def nominal(dim, ind):
+        return D[dim]["peso"] * D[dim]["indicadores"][ind]
+
+    desequilibrio = nominal("estabilidad_monetaria", "desequilibrio_monetario")
+    reservas = nominal("financiamiento", "reservas_bcra")
+    assert abs(desequilibrio - reservas) < 0.005, (
+        f"desequilibrio {desequilibrio:.2%} debería estar cerca de "
+        f"reservas {reservas:.2%}")
 
 
 def test_pesos_efectivos_reconcilian_con_itcm():
@@ -259,19 +278,20 @@ def test_ajuste_vencido_no_se_aplica(tmp_path):
 
 
 def test_renormalizacion_indicador_faltante():
-    """Sin REM, la dimensión renormaliza IPC, IDM y presión de dolarización."""
+    """Sin REM, la dimensión renormaliza IPC, IDM y desequilibrio monetario."""
     valores = dict(EJEMPLO, rem_ipc_12m=None)
     r = itcm.calcular_itcm(valores)
-    # (63,7×0.40 + 51,7×0.25 + 64,8×0.10) / 0.75 = 59,85 → 59,8
-    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 59.8
-    assert abs(r["valor"] - 65.7) <= 0.05
+    # (63,7×0.40 + 51,7×0.20 + 64,8×0.20) / 0.80 = 60,975 → 61,0
+    assert r["dimensiones"]["estabilidad_monetaria"]["puntaje"] == 61.0
+    assert abs(r["valor"] - 66.0) <= 0.05   # +0,29 = (60,975 − 59,85) × 0,26
 
 
 def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
     valores = dict(EJEMPLO, desequilibrio_monetario=None)
     r = itcm.calcular_itcm(valores)
     estabilidad = r["dimensiones"]["estabilidad_monetaria"]
-    assert estabilidad["puntaje"] == 64.8
+    # (63,7×0.40 + 79,8×0.20 + 51,7×0.20) / 0.80 = 64,725 → 64,7
+    assert estabilidad["puntaje"] == 64.7
     assert "desequilibrio_monetario" not in estabilidad["indicadores"]
 
 

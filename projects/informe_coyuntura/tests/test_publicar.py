@@ -312,7 +312,7 @@ def test_macro_itcm_reconcilia():
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto"
     assert "credito_privado" in en_indice
     desequilibrio = en_indice["desequilibrio_monetario"]
-    assert desequilibrio["peso_efectivo"] == 0.026
+    assert desequilibrio["peso_efectivo"] == 0.052   # 20% de una dimensión de 26% (ADR-0193)
     assert desequilibrio["aporte_input_txt"] == publicar._macro_input_txt(
         "desequilibrio_monetario", desequilibrio
     )

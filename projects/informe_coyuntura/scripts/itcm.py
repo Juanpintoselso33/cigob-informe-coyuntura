@@ -288,15 +288,25 @@ DIMENSIONES_ITCM = {
         "nombre": "Estabilidad monetaria-inflacionaria",
         "peso": 0.26,
         "indicadores": {
+            # 40/20/20/20 (ADR-0193). El desequilibrio monetario no hereda el
+            # 10% de presion_dolarizacion: la ficha pide "un peso similar al de
+            # los indicadores cambiarios/de reservas ya existentes" y ese 10%
+            # daba 2,6% nominal, menos de la mitad del comparable.
+            #
+            # El comparable es reservas_bcra (5,44% nominal), no el TCRM: el
+            # TCRM llega a 11% porque es el único indicador de su dimensión, no
+            # porque se lo haya juzgado el doble de importante que las reservas.
+            # Anclar ahí sería leer un artefacto de la estructura.
+            #
+            # El 20% deja al indicador en 5,2% nominal, al lado de reservas. Lo
+            # que cede son rem e idm, no el IPC: los tres son lecturas distintas
+            # de la misma tensión monetaria y ninguna es más autoritativa que
+            # otra, mientras que la inflación realizada sigue siendo el núcleo
+            # de la dimensión y conserva su 40%.
             "ipc_total": 0.40,
-            "rem_ipc_12m": 0.25,
-            "idm": 0.25,
-            # Hereda el 10% que tenía presion_dolarizacion, a la que reemplaza
-            # (ADR-0192). La ficha pide "un peso similar al de los indicadores
-            # cambiarios/de reservas" pero deja el número final a definir con
-            # Diego: hasta entonces se conserva el peso del indicador que sale,
-            # que es el cambio mínimo y no inventa una ponderación nueva.
-            "desequilibrio_monetario": 0.10,
+            "rem_ipc_12m": 0.20,
+            "idm": 0.20,
+            "desequilibrio_monetario": 0.20,
         },
     },
     "viabilidad_fiscal_comercial": {

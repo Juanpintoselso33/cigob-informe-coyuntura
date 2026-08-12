@@ -7,7 +7,7 @@ cinturon: 'macro'
 parametros: ['BANDAS_ITCM']
 archivos: ['procedencia_anclas.py']
 cierra: ['0103']
-relacionado: ['0192']
+relacionado: ['0192', '0193']
 continuado_por: ['0121']
 ambito: 'ITCM · comentarios de `BANDAS_ITCM` · `procedencia_anclas.py` · trinquete'
 ---

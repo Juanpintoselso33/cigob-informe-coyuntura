@@ -88,7 +88,14 @@ TECHOS = {
     # —cero meses verdes en los quince de la ventana— y la propia ficha preveía
     # reemplazarlos por percentiles reales en su sección 7. Preferir un ancla de
     # documento que satura el semáforo no es menos circular, es menos útil.
-    "ITCM": {"circular": 0.41, "sin_declarar": 0.01},
+    #
+    # SUBE otra vez a 0,42 el 2026-08-11 (ADR-0193), por el mismo indicador y
+    # por la misma razón: al llevar su peso interno de 10% a 20% para que
+    # quedara a la altura de las reservas, su ancla de convención pesa el doble
+    # y la fracción circular del ITCM pasa de 40,3% a 41,6%. La circularidad se
+    # mide ponderada por peso, así que repesar un indicador la mueve aunque
+    # ninguna banda cambie.
+    "ITCM": {"circular": 0.42, "sin_declarar": 0.01},
     # ITCG y ITCP bajaron el 2026-07-20 (ADR-0121) al declarar el origen de sus
     # bandas sin_declarar: los medidores de avance 0-100 (ITCG) y los indicadores
     # anclados al cero (ITCP: ventaja electoral, quórum, transferencias) eran

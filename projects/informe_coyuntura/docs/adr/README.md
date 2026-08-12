@@ -94,6 +94,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0152](0152-la-recaudacion-mide-nivel-no-variacion.md) | La recaudación pasa a medir NIVEL, y suma los impuestos provinciales |  | vigente |
 | [0158](0158-validacion-del-itcm-por-puntos-de-giro.md) | El ITCM se valida por puntos de giro, no sólo por correlación |  | vigente |
 | [0192](0192-desequilibrio-monetario-stock-por-flujo.md) | Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va | `desequilibrio_monetario`, `presion_dolarizacion` | vigente |
+| [0193](0193-peso-del-desequilibrio-monetario.md) | El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó | `desequilibrio_monetario`, `rem_ipc_12m`, `idm` | vigente |
 
 ### Política (ITCP)
 

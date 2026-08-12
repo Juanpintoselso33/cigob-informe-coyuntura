@@ -200,7 +200,7 @@ def test_desequilibrio_monetario_tiene_capa_publica_completa_y_sin_jerga_interna
     assert ficha
     texto = ficha.group(1)
     assert 'id: "desequilibrio_monetario"' in texto
-    assert "10%" in texto and "2,6%" in texto
+    assert "20%" in texto and "5,2%" in texto
     assert "abril de 2025" in texto and "enero de 2021" in texto
     assert "BCRA" in texto
     assert "ADR-" not in texto

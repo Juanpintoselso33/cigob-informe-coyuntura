@@ -944,7 +944,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Las dos posiciones se cruzan por interpolación bilineal entre las cuatro esquinas de la matriz, expresadas en tensión de 0 a 100: A alto con B bajo (confianza real) da 0; A bajo con B bajo (dolarización contenida en el sistema) da 40; A alto con B alto (fuga oculta fuera del sistema) da 77,5; A bajo con B alto (deterioro dentro y fuera) da 90.",
       "La celda que la ficha original dejó escrita como «naranja/rojo» se resuelve como el punto medio entre naranja (65) y rojo (90), que es 77,5.",
       "La tensión se traduce al ITCM con anclas explícitas que son su inversión exacta: 0 da 100 y 100 da 0. Las cuatro esquinas caen sobre esa recta, de modo que no hay una segunda escala que se pueda desincronizar de la del cálculo.",
-      "Pesa 10% dentro de estabilidad monetaria, dimensión que representa 26% del ITCM: su peso nominal efectivo es 2,6% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas, y deja el número final a definir; hasta entonces conserva el del indicador que reemplaza.",
+      "Pesa 20% dentro de estabilidad monetaria, dimensión que representa 26% del ITCM: su peso nominal efectivo es 5,2% del índice. La ficha original pide un peso similar al de los indicadores cambiarios y de reservas: 5,2% queda al lado del 5,4% de las reservas del BCRA, que es el comparable. No se tomó el tipo de cambio real como referencia, porque su 11% viene de ser el único indicador de su dimensión y no de un juicio sobre su importancia relativa.",
     ],
     anclas: {
       bandas: [
@@ -970,6 +970,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Un mes entra sólo si tiene los cinco insumos. Si falta cualquiera, ese punto no se calcula: nunca se imputa cero. La card conserva el último valor válido, señalado como desactualizado; sin dato utilizable, el ITCM renormaliza los componentes disponibles.",
     revisiones: "Las revisiones de la planilla del mercado de cambios se incorporan en la siguiente actualización. Los cortes por percentiles quedan congelados: no se recalculan con cada corrida, porque si se movieran con el último dato el puntaje de un mes dejaría de ser reproducible y la serie cambiaría hacia atrás sin que nadie tocara nada.",
     cambios: [
+      { fecha: "2026-08-11", cambio: "El peso dentro de estabilidad monetaria pasa de 10% a 20%, para que su peso nominal en el índice quede a la altura del de las reservas, como pedía la ficha original. Ceden el REM y el IDM; la inflación realizada conserva su 40%." },
       { fecha: "2026-08-11", cambio: "Alta del indicador, a partir de la ficha Desequilibrio Monetario. Reemplaza a la presión de dolarización de carteras dentro de estabilidad monetaria. Los cortes de banda preliminares de la ficha se sustituyeron por percentiles reales de cada serie, como la propia ficha preveía: con los preliminares ninguno de los quince meses de la ventana daba verde, y su referencia de que más de 3.000 millones era comparable a julio de 2025 erraba por unos 80%, porque ese mes fueron 5.436 millones." },
     ],
   },

@@ -7,8 +7,8 @@ fecha: 2026-07-07
 cinturon: 'politica'
 indicadores: [indice_rice, es_bloque_lla, fetch_cohesion_bloque]
 archivos: ['scripts/politica.py', _hcdn_votaciones_session, _hcdn_votaciones_get, _descubrir_actas, _url_acta, _parsear_acta, _cohesion_desactualizada, 'data/politica/manuales.json', 'scripts/descargar_series.py']
-superado_por: ['0040']
 relacionado: ['0191']
+superado_por: ['0040']
 ambito: '`scripts/politica.py` (`indice_rice`, `es_bloque_lla`, `_hcdn_votaciones_session`, `_hcdn_votaciones_get`, `_descubrir_actas`, `_url_acta`, `_parsear_acta`, `fetch_cohesion_bloque`, `_cohesion_desactualizada`) · `data/politica/manuales.json` · `scripts/descargar_series.py`'
 ---
 
