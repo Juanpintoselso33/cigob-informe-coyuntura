@@ -264,6 +264,46 @@ def casos() -> list[dict]:
     ]
 
 
+def subir_a_bigquery(informe: list[dict], corrida: str) -> str | None:
+    """Una fila por CAMPO comparado, con las dos lecturas y si coinciden.
+
+    Va a BigQuery y no sólo al JSON local porque el JSON está gitignoreado: sin
+    esto, el modo sombra acumula evidencia que nadie puede abrir. Se acumula por
+    `generated_at`, igual que las tablas de snapshot (ADR-0180), así que la serie
+    de discrepancias es consultable en el tiempo — que es exactamente el dato con
+    el que después se decide si esto pasa a fallar de verdad.
+    """
+    try:
+        from google.cloud import bigquery
+    except ImportError:
+        return None
+
+    filas = []
+    for caso in informe:
+        disc = {d["campo"]: d for d in caso.get("discrepancias", [])}
+        for campo, valor in (caso.get("parser") or {}).items():
+            d = disc.get(campo)
+            filas.append({
+                "generated_at": corrida, "modelo": MODELO, "caso": caso["caso"],
+                "campo": campo,
+                "valor_parser": None if valor is None else float(valor),
+                "valor_modelo": (None if (caso.get("modelo") or {}).get(campo) is None
+                                 else float(caso["modelo"][campo])),
+                "coincide": d is None,
+                "tipo": (d or {}).get("tipo"),
+                "reusado": bool(caso.get("reusado")),
+            })
+    if not filas:
+        return None
+    tabla = f"{PROYECTO}.informe_coyuntura.verificacion_pdf"
+    cliente = bigquery.Client(project=PROYECTO)
+    cliente.load_table_from_json(filas, tabla, job_config=bigquery.LoadJobConfig(
+        write_disposition="WRITE_APPEND",
+        schema_update_options=[bigquery.SchemaUpdateOption.ALLOW_FIELD_ADDITION],
+        autodetect=True)).result()
+    return tabla
+
+
 def main() -> int:
     p = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     p.add_argument("--caso", help="correr uno solo (sagyp | ciccra | sdds)")
@@ -330,6 +370,11 @@ def main() -> int:
         else:
             print(f"  [ok] {clave}: las dos lecturas coinciden en "
                   f"{len(caso['campos'])} campo(s)")
+
+    if informe:
+        subida = subir_a_bigquery(informe, datetime.now().isoformat(timespec="seconds"))
+        if subida:
+            print(f"  → {subida}")
 
     SALIDA.mkdir(parents=True, exist_ok=True)
     (SALIDA / "estado.json").write_text(

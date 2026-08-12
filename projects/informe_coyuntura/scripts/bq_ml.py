@@ -300,6 +300,33 @@ def _hay_credenciales() -> bool:
     return False
 
 
+def _subir_resultados(cliente, ds: str, tarea: str, salidas: dict, corrida: str) -> str | None:
+    """Deja el resultado en una tabla, no sólo en el JSON local.
+
+    Los modelos vivían en BigQuery y sus resultados en `output/bq_ml/*.json`, que
+    está gitignoreado: en la consola no había NADA que mirar. Una herramienta
+    interna que nadie puede abrir no se usa. Se acumula por `generated_at`, igual
+    que las tablas de snapshot (ADR-0180), así que la bandeja de hoy se puede
+    comparar contra la de la semana pasada.
+    """
+    from google.cloud import bigquery
+
+    filas = []
+    for bandeja, items in salidas.items():
+        for f in items:
+            filas.append({**{k: (v.isoformat() if hasattr(v, "isoformat") else v)
+                             for k, v in f.items()},
+                          "bandeja": bandeja, "generated_at": corrida})
+    if not filas:
+        return None
+    tabla = f"{ds}.ml_{tarea}_resultado"
+    cliente.load_table_from_json(filas, tabla, job_config=bigquery.LoadJobConfig(
+        write_disposition="WRITE_APPEND",
+        schema_update_options=[bigquery.SchemaUpdateOption.ALLOW_FIELD_ADDITION],
+        autodetect=True)).result()
+    return tabla
+
+
 def correr(nombre: str, ds: str, cliente, dry_run: bool) -> dict:
     pasos = TAREAS[nombre](ds)
     if dry_run:
@@ -357,6 +384,10 @@ def main() -> int:
                 json.dumps(r, ensure_ascii=False, indent=2, default=str),
                 encoding="utf-8")
             print(f"  → {destino.relative_to(RAIZ)}")
+            listas = {k: v for k, v in r.items() if isinstance(v, list)}
+            tabla = _subir_resultados(cliente, ds, t, listas, resumen["generado"])
+            if tabla:
+                print(f"  → {tabla}")
 
     if not args.dry_run:
         (SALIDA / "resumen.json").write_text(
