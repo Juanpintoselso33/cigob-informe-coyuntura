@@ -24,7 +24,7 @@ Uso: python scripts/gate_calidad.py [--warn-only] [--snapshot <dir>]
 import json
 import re
 import sys
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -75,6 +75,35 @@ MAX_DIAS = {
     "endeudamiento_familiar": 140, "inseguridad": 150,
 }
 CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón
+
+# ── G2b: días máximos SIN un fetch exitoso, por indicador (ADR-0191) ──────────
+# G2 mide el rezago del DATO (`fecha_dato`). G2b mide el rezago del FETCH
+# (`obtenido_en`, que sella el colector sólo cuando la fuente contestó). Son
+# cosas distintas y G2 solo no alcanza: en una serie anual `fecha_dato` no se
+# mueve aunque el fetch ande perfecto, así que su tope tiene que ser generoso
+# —judicializacion tiene 430 días— y esa misma holgura tapa que la fuente lleve
+# meses sin contestar. Pasó: judicializacion estuvo 12 días en carry-forward
+# desde el 31-jul-2026 sin que nada fallara, y se encontró mirando a mano.
+#
+# Un indicador SIN `obtenido_en` se saltea: son los manuales y los derivados de
+# series, que no tienen fetch propio que medir. El campo aparece la primera vez
+# que el indicador se obtiene bien, así que el chequeo se enciende solo.
+#
+# El default es 14 días y no 30 porque el sello mide el FETCH, no el dato: una
+# fuente mensual igual se consulta todas las noches y renueva su sello aunque
+# devuelva el mismo valor. O sea que 14 días sin un fetch exitoso ya es una
+# fuente caída, no un dato que todavía no salió. Se deja margen para un outage
+# de una semana larga sin cortar la publicación por algo que se va a recuperar
+# solo (CONTRAT.AR y CAFAM fallan de a ratos y vuelven).
+G2B_MAX_DIAS_DEFAULT = 14
+G2B_MAX_DIAS = {
+    # SAIJ bloquea el rango de egreso de los runners (403 desde Azure, 200
+    # desde una IP argentina — medido el 12-ago-2026, ver ADR-0191). Hasta que
+    # haya un egreso propio el refresco es manual desde Argentina, al ritmo
+    # mensual del informe. 45 días deja margen sobre ese ciclo sin volver a
+    # dejar que se congele en silencio.
+    "judicializacion": 45,
+}
 
 # ── G3: pares card/serie con semántica DISTINTA (excepción con motivo) ──
 G3_EXCEPCIONES = {
@@ -206,6 +235,19 @@ def main() -> int:
                                   f"(fecha_dato {i.get('fecha_dato')})")
             elif i.get("fecha_dato"):
                 fallas.append(f"G2 {ck}/{ik}: fecha_dato no parseable ({i.get('fecha_dato')})")
+            # G2b — frescura del FETCH, no del dato
+            sello = i.get("obtenido_en")
+            if sello:
+                try:
+                    dias = (hoy - datetime.fromisoformat(str(sello)).date()).days
+                except ValueError:
+                    fallas.append(f"G2b {ck}/{ik}: obtenido_en no parseable ({sello})")
+                else:
+                    tope_b = G2B_MAX_DIAS.get(ik, G2B_MAX_DIAS_DEFAULT)
+                    if dias > tope_b:
+                        fallas.append(f"G2b {ck}/{ik}: {dias}d sin un fetch exitoso "
+                                      f"> tope {tope_b}d (último: {sello}) — la card "
+                                      f"se sigue publicando desde cache")
             if i.get("desactualizado"):
                 desactualizados += 1
             # G3 — invariante serie ↔ titular

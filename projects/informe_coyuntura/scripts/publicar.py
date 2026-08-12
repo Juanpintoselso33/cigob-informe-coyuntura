@@ -1989,6 +1989,27 @@ def var_real_credito_12m(cc_serie, ipc_serie):
     return round(((cc_now / cc_old) / (ipc_now / ipc_old) - 1) * 100, 1)
 
 
+def _sellar_vida(indicadores, raw):
+    """Sella cuándo se obtuvo en vivo cada indicador de vida (ADR-0191).
+
+    Vida no pasa por el patrón `frescos`/cache de los otros cinturones: el
+    colector escribe un JSON crudo por corrida y acá se reconstruyen las cards.
+    El sello sale del `metadata.timestamp` de ESE archivo, no de `datetime.now()`,
+    porque si el colector no corrió hoy la card se rearma igual desde el crudo
+    viejo — y sellarla con la hora de esta corrida diría que es fresca cuando no
+    lo es. Los indicadores que se agregan después de acá (mora_familias, que sale
+    de la serie y no del crudo) quedan sin sello a propósito: su frescura la
+    controla G3 contra la serie, no este chequeo.
+    """
+    sello = (raw.get("metadata", {}) or {}).get("timestamp") or ""
+    if not sello:
+        return indicadores
+    for ind in indicadores.values():
+        if ind.get("valor") is not None:
+            ind["obtenido_en"] = sello
+    return indicadores
+
+
 def _carry_forward(enriquecido, previo):
     """Si una fuente falla y un indicador de vida viene sin valor (None), mantener
     el último dato publicado en lugar de perderlo. Evita que un outage puntual
@@ -2001,6 +2022,10 @@ def _carry_forward(enriquecido, previo):
             ind["fecha_dato"] = prev.get("fecha_dato")
             if prev.get("fuente"):
                 ind["fuente"] = prev["fuente"]
+            # El sello viejo se arrastra SIN tocar: es la fecha que deja de
+            # moverse la que mide hace cuánto que la fuente no contesta.
+            if prev.get("obtenido_en"):
+                ind["obtenido_en"] = prev["obtenido_en"]
             print(f"[carry-forward] vida.{key}: sin dato nuevo, se mantiene {prev.get('valor')} ({prev.get('fecha_dato')})")
     return enriquecido
 
@@ -2024,6 +2049,7 @@ def main():
         raw = json.loads(Path(vida_files[-1]).read_text(encoding="utf-8"))
         enriquecido = build_vida(raw)
         if enriquecido:
+            enriquecido = _sellar_vida(enriquecido, raw)
             enriquecido = _carry_forward(enriquecido, prev_vida)
             vida = informe["cinturones"]["vida_cotidiana"]
             vida["indicadores"] = enriquecido

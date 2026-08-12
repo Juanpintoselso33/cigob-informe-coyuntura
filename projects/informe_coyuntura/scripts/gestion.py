@@ -181,6 +181,18 @@ def _warn(ind: str, err: Exception) -> None:
     print(f"[WARN] {CINTURON}.{ind}: {err}. Usando fallback.")
 
 
+def _sellar(resultado: dict) -> dict:
+    """Sella el momento en que este valor se obtuvo de la fuente en vivo (ADR-0191).
+
+    Se aplica SOLO a resultados frescos. El carry-forward hace
+    `{**anterior, "desactualizado": True}`, asi que arrastra el sello viejo
+    intacto: es esa fecha que deja de moverse la que mide hace cuanto que la
+    fuente no contesta. `fecha_dato` no sirve para eso — en las series anuales
+    no se mueve aunque el fetch ande perfecto.
+    """
+    return {**resultado, "obtenido_en": datetime.now().isoformat(timespec="seconds")}
+
+
 def _manual_entry(nombre: str, manuales: dict, cache_anterior: dict) -> dict | None:
     """Entrada desde manuales.json (valor = insumo que bandea el ITCG) o cache
     anterior como último recurso. Manual ⇒ desactualizado=True (badge honesto)."""
@@ -2827,7 +2839,7 @@ def main() -> None:
             resultado = auto_fetchers[nombre]()
 
         if resultado is not None and resultado.get("valor") is not None:
-            indicadores[nombre] = resultado
+            indicadores[nombre] = _sellar(resultado)
             if not resultado.get("desactualizado"):
                 frescos_auto += 1
         else:

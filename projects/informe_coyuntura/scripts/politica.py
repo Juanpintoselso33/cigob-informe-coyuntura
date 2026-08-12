@@ -292,6 +292,18 @@ def _warn(indicador: str, msg: str) -> None:
     print(f"[WARN] {CINTURON}.{indicador}: {msg}. Usando cache.")
 
 
+def _sellar(resultado: dict) -> dict:
+    """Sella el momento en que este valor se obtuvo de la fuente en vivo (ADR-0191).
+
+    Se aplica SOLO a resultados frescos. El carry-forward hace
+    `{**anterior, "desactualizado": True}`, asi que arrastra el sello viejo
+    intacto: es esa fecha que deja de moverse la que mide hace cuanto que la
+    fuente no contesta. `fecha_dato` no sirve para eso — en las series anuales
+    no se mueve aunque el fetch ande perfecto.
+    """
+    return {**resultado, "obtenido_en": datetime.now().isoformat(timespec="seconds")}
+
+
 def _days_old(fecha_str: str) -> int:
     try:
         fecha = date.fromisoformat(str(fecha_str)[:10])
@@ -4636,7 +4648,7 @@ def main() -> None:
     for nombre, fetcher in colectores:
         resultado = fetcher()
         if _resultado_utilizable(nombre, resultado):
-            frescos[nombre] = resultado
+            frescos[nombre] = _sellar(resultado)
             frescos_count += 1
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}
@@ -4663,7 +4675,7 @@ def main() -> None:
 
     compuesto_cohesion = componer_cohesion_bloque(entrada_dip, entrada_sen)
     if compuesto_cohesion is not None:
-        frescos["cohesion_bloque"] = compuesto_cohesion
+        frescos["cohesion_bloque"] = _sellar(compuesto_cohesion)
         if dip_ok and sen_ok:
             frescos_count += 1
 
@@ -4673,7 +4685,7 @@ def main() -> None:
     # que fetch_derrotas_legislativas (en la lista de arriba) ya actualizó.
     resultado_bloqueo = fetch_bloqueo_sostenido()
     if _resultado_utilizable("bloqueo_sostenido", resultado_bloqueo):
-        frescos["bloqueo_sostenido"] = resultado_bloqueo
+        frescos["bloqueo_sostenido"] = _sellar(resultado_bloqueo)
         frescos_count += 1
     elif "bloqueo_sostenido" in indicadores_anteriores:
         frescos["bloqueo_sostenido"] = {**indicadores_anteriores["bloqueo_sostenido"],
@@ -4686,7 +4698,7 @@ def main() -> None:
     # los haría inconsistentes entre sí.
     resultado_desafios = fetch_desafios_legislativos()
     if _resultado_utilizable("desafios_legislativos", resultado_desafios):
-        frescos["desafios_legislativos"] = resultado_desafios
+        frescos["desafios_legislativos"] = _sellar(resultado_desafios)
         frescos_count += 1
     elif "desafios_legislativos" in indicadores_anteriores:
         frescos["desafios_legislativos"] = {**indicadores_anteriores["desafios_legislativos"],
@@ -4699,14 +4711,14 @@ def main() -> None:
                         ("paralisis_denuncias", fetch_paralisis_denuncias)):
         _res = _fn()
         if _resultado_utilizable(_clave, _res):
-            frescos[_clave] = _res
+            frescos[_clave] = _sellar(_res)
             frescos_count += 1
         elif _clave in indicadores_anteriores:
             frescos[_clave] = {**indicadores_anteriores[_clave], "desactualizado": True}
 
     resultado_judicial = fetch_cobertura_judicial()
     if _resultado_utilizable("cobertura_judicial", resultado_judicial):
-        frescos["cobertura_judicial"] = resultado_judicial
+        frescos["cobertura_judicial"] = _sellar(resultado_judicial)
         frescos_count += 1
     elif "cobertura_judicial" in indicadores_anteriores:
         frescos["cobertura_judicial"] = {**indicadores_anteriores["cobertura_judicial"],

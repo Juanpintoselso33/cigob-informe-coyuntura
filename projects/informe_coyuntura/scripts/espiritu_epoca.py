@@ -61,6 +61,18 @@ def _warn(indicador: str, msg) -> None:
     print(f"[WARN] {CINTURON}.{indicador}: {msg}. Usando cache.")
 
 
+def _sellar(resultado: dict) -> dict:
+    """Sella el momento en que este valor se obtuvo de la fuente en vivo (ADR-0191).
+
+    Se aplica SOLO a resultados frescos. El carry-forward hace
+    `{**anterior, "desactualizado": True}`, asi que arrastra el sello viejo
+    intacto: es esa fecha que deja de moverse la que mide hace cuanto que la
+    fuente no contesta. `fecha_dato` no sirve para eso — en las series anuales
+    no se mueve aunque el fetch ande perfecto.
+    """
+    return {**resultado, "obtenido_en": datetime.now().isoformat(timespec="seconds")}
+
+
 def _vida_files_desc() -> list[str]:
     return sorted(glob.glob(VIDA_GLOB), reverse=True)
 
@@ -219,7 +231,7 @@ def main() -> None:
     ]:
         resultado = fetcher()
         if resultado is not None and resultado.get("valor") is not None:
-            frescos[nombre] = resultado
+            frescos[nombre] = _sellar(resultado)
             frescos_count  += 1
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}

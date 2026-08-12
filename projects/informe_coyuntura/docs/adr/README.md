@@ -273,3 +273,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0182](0182-los-umbrales-del-semaforo-se-calculan.md) | Los umbrales del semáforo se calculan, no se escriben |  | vigente |
 | [0184](0184-la-dimension-tambien-dice-de-que-color-es-y-por-que.md) | La dimensión también dice de qué color es y por qué |  | vigente |
 | [0190](0190-renombrar-los-indices.md) | Renombrar los índices: las siglas no dicen qué miden y chocan con las de la UTDT |  | propuesto |
+| [0191](0191-frescura-del-fetch-y-no-solo-del-dato.md) | El gate mide la frescura del dato pero no la del fetch, y por eso una fuente puede caerse en silencio | `judicializacion` | vigente |

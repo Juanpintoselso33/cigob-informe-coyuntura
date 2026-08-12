@@ -150,6 +150,18 @@ def _warn(indicador: str, err: Exception) -> None:
     print(f"[WARN] {CINTURON}.{indicador}: {err}. Usando cache.")
 
 
+def _sellar(resultado: dict) -> dict:
+    """Sella el momento en que este valor se obtuvo de la fuente en vivo (ADR-0191).
+
+    Se aplica SOLO a resultados frescos. El carry-forward hace
+    `{**anterior, "desactualizado": True}`, asi que arrastra el sello viejo
+    intacto: es esa fecha que deja de moverse la que mide hace cuanto que la
+    fuente no contesta. `fecha_dato` no sirve para eso — en las series anuales
+    no se mueve aunque el fetch ande perfecto.
+    """
+    return {**resultado, "obtenido_en": datetime.now().isoformat(timespec="seconds")}
+
+
 def _indec_serie(series_id: str, limit: int = 2) -> list:
     params = {"ids": series_id, "format": "json", "limit": limit, "sort": "desc"}
     r = requests.get(INDEC_SERIES_BASE, params=params, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
@@ -1750,7 +1762,7 @@ def main() -> None:
     ]:
         resultado = fetcher()
         if resultado is not None and resultado.get("valor") is not None:
-            frescos[nombre] = resultado
+            frescos[nombre] = _sellar(resultado)
             frescos_count  += 1
         elif nombre in indicadores_anteriores:
             frescos[nombre] = {**indicadores_anteriores[nombre], "desactualizado": True}

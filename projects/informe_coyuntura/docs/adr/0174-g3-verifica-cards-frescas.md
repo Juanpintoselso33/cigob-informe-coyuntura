@@ -7,7 +7,7 @@ cinturon: 'transversal'
 indice: 'todos'
 archivos: ['scripts/gate_calidad.py']
 continua: ['0133']
-relacionado: ['0172', '0173', '0176']
+relacionado: ['0172', '0173', '0176', '0191']
 ambito: 'Gate de calidad · alcance del invariante G3'
 origen: 'Una card en carry-forward por rate limit de Trends bloqueó la publicación de los cinco cinturones contra su propia serie fresca'
 ---
