@@ -3,7 +3,7 @@
 // extracción → gates → índices → tensión), los índices paramétricos con sus
 // valores vivos, los controles de credibilidad y el acceso al diccionario de fichas.
 // TODOS los números salen del snapshot en el build — nada cargado a mano.
-import { informe, CINTURONES, indiceDe, badgeEstado, cinturonesRojos, cap, num } from "../lib/datos.ts";
+import { informe, CINTURONES, indiceDe, badgeEstado, num } from "../lib/datos.ts";
 import { FICHAS } from "../lib/fichas.ts";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -24,7 +24,6 @@ for (const c of Object.values(informe.cinturones)) {
 const nInd = vistos.size;
 const nFuentes = fuentes.size;
 const nFichas = Object.keys(FICHAS).length;
-const rojos = cinturonesRojos(informe);
 
 // los índices paramétricos, con valor vivo y composición
 const indices = CINTURONES
@@ -36,22 +35,12 @@ const compDe = (i: (typeof indices)[number]["indice"]) => {
   const nComp = dims.reduce((s, d) => s + Object.keys(d.indicadores ?? {}).length, 0);
   return `${nDims} dimensiones · ${nComp} ${i.base100 ? "componentes" : "indicadores"}`;
 };
-// correlaciones vivas de la validación externa, etiquetadas por índice
-const rs = indices
-  .filter(x => typeof x.indice.data.validacion?.r_niveles === "number")
-  .map(x => {
-    const r = x.indice.data.validacion!.r_niveles;
-    return `${x.indice.sigla} ${(r > 0 ? "+" : "−")}${Math.abs(r).toFixed(2).replace(".", ",")}`;
-  });
-
-const fase = (informe as any).ponderacion?.fase === "temprana"
-  ? "fase temprana del mandato" : "fase de consolidación";
 ---
 <section class="cg-section cg-method" id="metodologia">
   <div class="cg-section-head">
     <p class="cg-eyebrow">Cómo se construye</p>
     <h2 class="cg-h2">El método de los cinturones</h2>
-    <p class="cg-h2-sub">Lectura situacional de la realidad como sistema, según la Planificación Estratégica Situacional (PES) de Carlos Matus: cinco cinturones — macro, política, vida cotidiana, gestión y espíritu de época — rodean al gobierno y se leen juntos.</p>
+    <p class="cg-h2-sub">De la fuente oficial al color, sin pasos a mano.</p>
   </div>
 
   <!-- El recorrido del dato: de la fuente oficial al semáforo, con números vivos -->
@@ -109,33 +98,13 @@ const fase = (informe as any).ponderacion?.fase === "temprana"
     ))}
   </div>
 
-  <!-- Por qué creerle: los controles publicados -->
-  <div class="cg-method-grid">
-    <article>
-      <h3>Robustez publicada</h3>
-      <p>Cada índice se recalcula en <strong>1.000 escenarios</strong> perturbando pesos e insumos (Monte Carlo); la banda donde cae el 90% de los casos se publica junto al valor. Si la lectura dependiera de la ponderación exacta, se vería.</p>
-    </article>
-    <article>
-      <h3>Validación externa</h3>
-      <p>Cada índice se contrasta contra un ancla externa que nadie del proyecto controla — marcha de la actividad (ITCM), incertidumbre de política EPU (ITCP), consumo medido en supermercados (ITVC), Merval en dólares (ITCG) — y la matriz cruzada compara cada índice contra las cuatro a la vez, para ver si correlaciona más con la propia que con las ajenas. Hoy no se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período.{rs.length > 0 && <Fragment> Hoy: <strong>r {rs.join(" · ")}</strong>.</Fragment>}</p>
-    </article>
-    <article>
-      <h3>Ponderación por fase</h3>
-      <p>El global pondera los cinco cinturones según el momento del mandato ({fase}): al principio pesan más gestión y espíritu de época — construyen credibilidad —; en la consolidación, macro y política. Cada cinturón vigila además su <strong>riesgo de barbarismo</strong> (hoy: {cap(informe.barbarismo_activo)}).</p>
-    </article>
-    <article>
-      <h3>Regla de lectura</h3>
-      <p>Un cinturón en rojo es manejable; <strong>dos o más simultáneos</strong> señalan inestabilidad sistémica. Hoy: {rojos === 0 ? "ninguno en rojo" : `${rojos} en rojo`}.</p>
-    </article>
-  </div>
-
   <!-- Acceso al diccionario: la documentación completa -->
   <a class="cg-met-cta" href={`${base}/metodologia/`}>
     <div>
       <span class="cg-met-cta-num">{nFichas}</span>
       <div class="cg-met-cta-txt">
         <strong>fichas metodológicas — una por indicador e índice.</strong>
-        Qué mide, de dónde sale el dato, cómo se calcula, cómo puntúa, qué limitaciones tiene y qué cambió de método. Formato del estándar internacional (ODS / OCDE), generado de los mismos datos que ve en pantalla.
+        Qué mide, de dónde sale, cómo puntúa y qué limitaciones declara.
       </div>
     </div>
     <span class="cg-met-cta-go">Abrir el diccionario →</span>

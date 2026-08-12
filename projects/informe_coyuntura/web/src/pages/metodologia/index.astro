@@ -5,7 +5,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
-import { informe, CINTURONES, label, badgeEstado, indiceDe, indicadoresOrdenados, mesLegible, num } from "../../lib/datos.ts";
+import { informe, CINTURONES, label, badgeEstado, indiceDe, indicadoresOrdenados, mesLegible, num, cap, cinturonesRojos } from "../../lib/datos.ts";
 import { DESCRIPCIONES } from "../../lib/descripciones.ts";
 import { FICHAS } from "../../lib/fichas.ts";
 
@@ -27,6 +27,19 @@ const indices = CINTURONES
   .filter(x => x.indice);
 
 const totalFichas = Object.keys(FICHAS).length;
+
+// Los controles de credibilidad vivían en la portada (ADR-0194). Se mudaron acá
+// con sus datos vivos: correlaciones de la validación externa, fase de la
+// ponderación y cinturones tensionados.
+const rs = indices
+  .filter(x => typeof x.indice!.data.validacion?.r_niveles === "number")
+  .map(x => {
+    const r = x.indice!.data.validacion!.r_niveles;
+    return `${x.indice!.sigla} ${(r > 0 ? "+" : "\u2212")}${Math.abs(r).toFixed(2).replace(".", ",")}`;
+  });
+const fase = (informe as any).ponderacion?.fase === "temprana"
+  ? "fase temprana del mandato" : "fase de consolidación";
+const tensionados = cinturonesRojos(informe);
 ---
 <Layout title="Diccionario de indicadores · Informe de Coyuntura · CiGob">
   <Nav />
@@ -58,6 +71,32 @@ const totalFichas = Object.keys(FICHAS).length;
         <article><h3>Índices según OCDE/JRC</h3><p>Los índices compuestos (ITCM, ITCP, ITVC, ITCG) se documentan con el <strong>checklist del Handbook on Constructing Composite Indicators</strong> (OCDE/JRC, 2008): marco conceptual, normalización, agregación, robustez y validación, paso por paso.</p></article>
         <article><h3>Generada desde los datos</h3><p>Los números de cada ficha (valores, puntajes, pesos, bandas de robustez) <strong>no se transcriben</strong>: salen del mismo archivo de datos que alimenta las cards del informe y se reconstruyen con cada actualización.</p></article>
         <article><h3>Decisiones con registro</h3><p>Cada cambio de método queda asentado con fecha en un <strong>registro de decisiones</strong>: qué se cambió, por qué, qué alternativas se descartaron y cómo afectó al valor publicado. Cada ficha publica su historial.</p></article>
+      </div>
+    </section>
+
+    <section class="cg-section">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">Por qué creerle</p>
+        <h2 class="cg-h2">Los controles que se publican</h2>
+        <p class="cg-h2-sub">Cada uno se puede auditar contra los datos que alimentan el informe.</p>
+      </div>
+      <div class="cg-method-grid">
+        <article>
+          <h3>Robustez publicada</h3>
+          <p>Cada índice se recalcula en <strong>1.000 escenarios</strong> perturbando pesos e insumos (Monte Carlo); la banda donde cae el 90% de los casos se publica junto al valor. Si la lectura dependiera de la ponderación exacta, se vería.</p>
+        </article>
+        <article>
+          <h3>Validación externa</h3>
+          <p>Cada índice se contrasta contra un ancla externa que nadie del proyecto controla — marcha de la actividad (ITCM), incertidumbre de política EPU (ITCP), consumo medido en supermercados (ITVC), Merval en dólares (ITCG) — y la matriz cruzada compara cada índice contra las cuatro a la vez, para ver si correlaciona más con la propia que con las ajenas. Hoy no se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período.{rs.length > 0 && <Fragment> Hoy: <strong>r {rs.join(" · ")}</strong>.</Fragment>}</p>
+        </article>
+        <article>
+          <h3>Ponderación por fase</h3>
+          <p>El global pondera los cinco cinturones según el momento del mandato ({fase}): al principio pesan más gestión y espíritu de época — construyen credibilidad —; en la consolidación, macro y política. Cada cinturón vigila además su <strong>riesgo de barbarismo</strong> (hoy: {cap(informe.barbarismo_activo)}).</p>
+        </article>
+        <article>
+          <h3>Regla de lectura</h3>
+          <p>Un cinturón tensionado es manejable; <strong>dos o más simultáneos</strong> señalan inestabilidad sistémica. Hoy: {tensionados === 0 ? "ninguno tensionado" : tensionados === 1 ? "1 tensionado" : `${tensionados} tensionados`}.</p>
+        </article>
       </div>
     </section>
 
