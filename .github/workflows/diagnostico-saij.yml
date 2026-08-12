@@ -1,0 +1,88 @@
+name: Diagnóstico SAIJ (descartable)
+
+# Workflow de diagnóstico, NO parte del pipeline. Existe para responder una
+# sola pregunta y después se borra.
+#
+# `judicializacion` viene con `desactualizado: true` desde el 31-jul-2026
+# (ADR-0170), en las 12 corridas del cron sin una sola excepción: SAIJ devuelve
+# 403 en la PRIMERA consulta. Desde una IP argentina la misma URL, con el mismo
+# User-Agent, devuelve 200 — las 22 requests del loop completo en 2,3 s. Ya se
+# descartó que sea el UA (tres variantes dan 200 desde AR), la hora (los
+# workflow_dispatch de las 08:32 y 12:35 ART también dieron 403) y el rate
+# limiting (el 403 llega antes de encadenar nada). `robots.txt` de SAIJ no
+# declara `/busqueda`.
+#
+# Queda una hipótesis sin medir: que SAIJ bloquee el rango de egreso de los
+# runners. Este workflow la mide desde adentro y anota la IP, que es el dato
+# que hace falta para pedir el desbloqueo por el canal formal.
+#
+# Se corre a mano (`workflow_dispatch`), no toca el árbol de trabajo, no
+# commitea y no necesita ningún secret.
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  diagnostico:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Egreso del runner
+        run: |
+          echo "== De qué IP sale el runner =="
+          # ipinfo.io da IP, org (el ASN dueño del rango) y país en una llamada.
+          # Es el dato concreto que pide cualquier pedido de desbloqueo.
+          curl -sS --max-time 20 https://ipinfo.io/json || echo "(ipinfo no respondió)"
+          echo
+
+      - name: SAIJ con distintos User-Agent
+        run: |
+          # Desde AR los tres dan 200. Si acá alguno da 200 y otro 403, el
+          # problema es el UA y se arregla en una línea de politica.py; si dan
+          # 403 los tres, el filtro no mira el UA y queda la IP.
+          URL='https://www.saij.gob.ar/busqueda?o=0&p=1&f=Jurisdicci%C3%B3n&r=%28texto%3A%22medida+cautelar%22+AND+fecha-rango%3A%5B20160101+TO+20161231%5D%29'
+
+          probar() {
+            printf '%-34s -> ' "$1"
+            curl -sS --max-time 25 -o /tmp/saij-body.txt \
+                 -w 'HTTP %{http_code}  %{size_download} bytes  %{time_total}s\n' \
+                 -H "User-Agent: $2" "$URL" || echo "(curl falló)"
+          }
+
+          echo "== SAIJ /busqueda =="
+          probar "UA del colector"    "CIGOB-InformeCoyuntura/1.0"
+          probar "UA de navegador"    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+          probar "sin UA"             ""
+          echo
+
+          echo "== Headers y cuerpo de la respuesta (UA del colector) =="
+          # El cuerpo del 403 suele nombrar al que bloquea (WAF, proxy, filtro
+          # geográfico). Desde AR la respuesta es Apache-Coyote pelado, sin
+          # rastro de WAF, así que lo que aparezca acá es nuevo.
+          curl -sS --max-time 25 -D - -o /tmp/saij-403.txt \
+               -H "User-Agent: CIGOB-InformeCoyuntura/1.0" "$URL" || true
+          echo "--- primeros 400 bytes del cuerpo ---"
+          head -c 400 /tmp/saij-403.txt || true
+          echo
+
+      - name: Control — el resto de las fuentes desde el mismo runner
+        run: |
+          # Contexto para no confundir un bloqueo con una fuente flaky. CAFAM y
+          # CEPA YA anduvieron desde un runner (5-ago 08:32 ART), así que ahí no
+          # hay bloqueo. Si SAIJ es el único 403 mientras estas contestan, la
+          # diferencia es de SAIJ y no de la red del runner.
+          control() {
+            printf '%-24s -> ' "$1"
+            curl -sS --max-time 30 -o /dev/null \
+                 -w 'HTTP %{http_code}  %{time_total}s\n' \
+                 -H 'User-Agent: Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)' "$2" \
+              || echo "(sin respuesta)"
+          }
+
+          control "CONTRAT.AR"   "https://contratar.gob.ar/"
+          control "CEPA"         "https://centrocepa.com.ar/documentos/informes"
+          control "CAFAM"        "https://back.cafam.org.ar/api/patentamientos?month_start=7&month_end=7&year=2026&type=TODOS"
+          control "datos.gob.ar" "https://apis.datos.gob.ar/series/api/series/?ids=452.2_SALARIOSIOS_0_T_8_22&format=json&limit=4&sort=desc"
+          control "infoleg"      "https://www.infoleg.gob.ar/"
