@@ -3,7 +3,13 @@ import { presentacion, label, visualDe, badgeEstado, periodoDato, series, format
 import { DESCRIPCIONES } from "../lib/descripciones.ts";
 import { chartPath } from "../lib/sparkline.ts";
 
-const { ikey, ind, slug } = Astro.props;
+// `compacto`: la variante de la página de cinturón. Deja el punto de color, el
+// nombre y el valor, y saca la descripción y el chip de origen. No se pierde
+// nada: el tile entero abre el modal, que trae la descripción completa, la
+// fuente y la evolución. Sirve a las dos metas del rediseño a la vez —menos
+// texto en la superficie, y el estado de TODOS los indicadores del cinturón
+// visible junto en vez de repartido en cinco pantallas de scroll.
+const { ikey, ind, slug, compacto = false } = Astro.props;
 const pres = presentacion(ikey, ind);
 const vis = visualDe(ikey, ind);
 const badge = badgeEstado(ind);
@@ -36,7 +42,7 @@ if (vis.tipo === "barra" && vis.avance) {
 
 const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) : null;
 ---
-<article class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable"]} data-indicador={ikey} data-cinturon={slug}>
+<article class:list={["cg-tile", `cg-tile--${slug}`, "cg-ind--clickable", { "cg-tile--compacto": compacto }]} data-indicador={ikey} data-cinturon={slug}>
   <div class="cg-tile-head">
     {color && (
       <span
@@ -46,9 +52,9 @@ const sp = vis.tipo === "sparkline" ? chartPath(series[ikey] ?? [], 240, 44, 5) 
       ></span>
     )}
     <span class="cg-tile-name">{label(ikey)}</span>
-    <span class:list={["cg-tile-badge", badgeCls]} title={chipTitle}>{chip}</span>
+    {!compacto && <span class:list={["cg-tile-badge", badgeCls]} title={chipTitle}>{chip}</span>}
   </div>
-  {desc && <p class="cg-tile-desc">{desc}</p>}
+  {!compacto && desc && <p class="cg-tile-desc">{desc}</p>}
   <div class="cg-tile-value">
     <span class="cg-tile-num">{headline}</span>
     {unidad && <span class="cg-tile-unit">{unidad}</span>}

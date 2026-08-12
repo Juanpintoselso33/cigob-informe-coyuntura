@@ -1429,3 +1429,17 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
    líneas y otro una. */
 .cg-itcm-dim { display: flex; flex-direction: column; }
 .cg-itcm-dim-head { min-height: 2.6em; align-items: flex-start; }
+
+/* Tile compacto (página de cinturón): punto, nombre y valor. La descripción y
+   el chip de origen viven en el modal, que abre el tile entero. Así el estado
+   de todos los indicadores del cinturón se ve junto. */
+.cg-tile--compacto { padding: 10px 12px; gap: 4px; }
+.cg-tile--compacto .cg-tile-head { margin-bottom: 2px; }
+.cg-tile--compacto .cg-tile-name { font-size: 12.5px; line-height: 1.3; }
+.cg-tile--compacto .cg-tile-num { font-size: 19px; }
+.cg-tile--compacto .cg-tile-vis { margin-top: 2px; }
+.cg-tile--compacto .cg-tile-vis svg { height: 28px; }
+/* Con tiles compactos entran más por fila: el objetivo es ver el estado del
+   cinturón entero junto, no recorrerlo en cinco pantallas. `.cg-tile-grid` es
+   flex, así que lo que manda es la base, no grid-template-columns. */
+.cg-tile-grid > .cg-tile--compacto { flex: 1 1 178px; max-width: 260px; }

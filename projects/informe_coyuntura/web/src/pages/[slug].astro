@@ -344,14 +344,14 @@ const robChartData = rob?.hist && indice ? {
                   ind.cumplido ? (
                     <div class="cg-cumplido-wrap" title={ind.cumplido.por_que}>
                       <span class="cg-cumplido-chip">✓ Logrado en {ind.cumplido.desde_txt ?? ind.cumplido.desde} · ya no puntúa</span>
-                      <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />
+                      <IndicadorTile ikey={key} ind={ind} slug={meta.slug} compacto />
                     </div>
                   ) : ind.suspendido ? (
                     <div class="cg-suspendido-wrap" title={ind.suspendido.por_que}>
                       <span class="cg-suspendido-chip">⏸ Fuera del índice desde {ind.suspendido.desde_txt ?? ind.suspendido.desde} · en revisión</span>
-                      <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />
+                      <IndicadorTile ikey={key} ind={ind} slug={meta.slug} compacto />
                     </div>
-                  ) : <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />
+                  ) : <IndicadorTile ikey={key} ind={ind} slug={meta.slug} compacto />
                 ))}
               </div>
             </div>
@@ -362,14 +362,14 @@ const robChartData = rob?.hist && indice ? {
                 <h3 class="cg-dim-group-name">Sin dimensión asignada</h3>
               </div>
               <div class="cg-tile-grid">
-                {filasSinDimension.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+                {filasSinDimension.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} compacto />)}
               </div>
             </div>
           )}
         </div>
       ) : (
         <div class="cg-tile-grid">
-          {filasIndice.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+          {filasIndice.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} compacto />)}
         </div>
       )}
     </section>
@@ -382,7 +382,7 @@ const robChartData = rob?.hist && indice ? {
           <p class="cg-h2-sub">Datos de seguimiento que ayudan a leer el cinturón pero <strong>no construyen la tensión</strong> del {indice?.sigla ?? "índice"}: quedan fuera del cálculo para que el indicador sea transparente.</p>
         </div>
         <div class="cg-tile-grid">
-          {filasContexto.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} />)}
+          {filasContexto.map(({ key, ind }) => <IndicadorTile ikey={key} ind={ind} slug={meta.slug} compacto />)}
         </div>
       </section>
     )}
