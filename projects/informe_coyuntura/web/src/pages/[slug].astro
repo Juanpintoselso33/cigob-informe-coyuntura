@@ -27,10 +27,14 @@ const c = informe.cinturones[meta.key];
 // página entera y eso fue quitar información: `estado` es el concepto que
 // dispara "1 tensionado es manejable, 2 o más no", y el lector no tenía cómo
 // saber de qué lado caía este cinturón.
-const ESTADO_LABEL: Record<string, string> = {
-  estable: "Estable", en_tension: "En tensión", tensionado: "Tensionado",
-};
-const estadoLabel = ESTADO_LABEL[c.estado] ?? cap(c.estado);
+// La regla sistémica del informe cuenta cinturones TENSIONADOS: uno es
+// manejable, dos o más señalan inestabilidad. Eso es lo único para lo que se
+// usa `estado`, así que es lo único que se muestra. Presentarlo como "estado
+// del cinturón" lo ponía a competir con la aguja —y con este snapshot macro
+// decía a la vez "Sin tensión relevante" y "En tensión"—, cuando en realidad
+// no son dos opiniones sobre lo mismo: uno mide magnitud, el otro decide
+// pertenencia a un conteo.
+const cuentaParaAlerta = c.estado === "tensionado";
 const filas = indicadoresOrdenados(c);
 // Los indicadores de contexto (en_indice === false) no construyen la tensión:
 // se muestran en un bloque aparte para no confundirlos con los del índice.
@@ -245,7 +249,9 @@ const robChartData = rob?.hist && indice ? {
         {/* La aguja reemplaza al chip de score, que repetía su número. El
             estado queda al lado, en texto: es otro concepto, no otro color. */}
         <Aguja tension={c.score} titulo={`Tensión de ${meta.nombre}`} ocultarTitulo />
-        <span class="cg-detalle-chip">Estado del cinturón: <strong>{estadoLabel}</strong></span>
+        <span class="cg-detalle-chip" title="La regla del informe cuenta los cinturones tensionados: uno es manejable, dos o más señalan inestabilidad sistémica.">
+          Cuenta para la alerta sistémica: <strong>{cuentaParaAlerta ? "Sí" : "No"}</strong>
+        </span>
         {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>

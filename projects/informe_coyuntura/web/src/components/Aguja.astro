@@ -62,11 +62,13 @@ const arco = (desde: number, hasta: number) => {
 
 const [px, py] = valor !== null ? punto(valor, R - GROSOR / 2 - 2) : [CX, CY];
 
-// Marcas de los extremos: sin ellas la aguja es un ángulo sin escala en cuanto
-// el color se pierde. Van por fuera del arco para no ensuciar los tramos.
+// Separadores de tramo: CRUZAN la banda de lado a lado en vez de rozarla por
+// fuera. Por fuera medían 5 unidades y en las agujas chicas quedaban en ~2 px,
+// que el antialiasing borra; cruzando la banda se ven a cualquier tamaño y son
+// lo que deja leer la escala cuando el color no llega.
 const tick = (t: number) => {
-  const [xa, ya] = punto(t, R + GROSOR / 2 + 1);
-  const [xb, yb] = punto(t, R + GROSOR / 2 + 6);
+  const [xa, ya] = punto(t, R - GROSOR / 2 - 1);
+  const [xb, yb] = punto(t, R + GROSOR / 2 + 1);
   return { x1: xa.toFixed(2), y1: ya.toFixed(2), x2: xb.toFixed(2), y2: yb.toFixed(2) };
 };
 const rotulo = (t: number) => {

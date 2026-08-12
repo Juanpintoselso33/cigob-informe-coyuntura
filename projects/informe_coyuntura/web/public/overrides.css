@@ -1251,6 +1251,12 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-aguja-tramo.sem-amarillo { stroke: var(--amarillo-soft); }
 .cg-aguja-tramo.sem-naranja  { stroke: var(--naranja-soft); }
 .cg-aguja-tramo.sem-rojo     { stroke: var(--rojo-soft); }
+/* El activo se distingue TAMBIÉN por grosor, no solo por tono: entre los
+   tintes suaves el contraste consecutivo es de 1,01:1 a 1,07:1, así que en
+   gris o con daltonismo el color no alcanzaba para decir cuál es. El CSS gana
+   sobre el atributo de presentación del SVG. */
+.cg-aguja-tramo.is-activo { stroke-width: 30 !important; }
+.cg-aguja--chica .cg-aguja-tramo.is-activo { stroke-width: 26 !important; }
 .cg-aguja-tramo.sem-verde.is-activo    { stroke: var(--verde); }
 .cg-aguja-tramo.sem-amarillo.is-activo { stroke: var(--amarillo); }
 .cg-aguja-tramo.sem-naranja.is-activo  { stroke: var(--naranja); }
@@ -1301,8 +1307,7 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 @media (prefers-reduced-motion: reduce) {
   .cg-aguja-tramo { transition: none; }
 }
-/* Las marcas de corte, que son las que dan la escala sin color. */
-.cg-aguja-tick { stroke: #6B7370; }
+
 
 /* Hero en dos columnas: el texto explica, la aguja contesta. En mobile la
    aguja va PRIMERO — es la respuesta, y la respuesta no se scrollea. */
@@ -1349,7 +1354,11 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
    del 3:1 que WCAG pide para un elemento gráfico que porta significado, o sea
    que el arco de referencia directamente no estaba ahí. */
 .cg-aguja-base { stroke: #7F8783; }
-.cg-aguja-tick { stroke: var(--muted-soft); stroke-width: 1.5; }
+/* Separadores de tramo. La longitud la da la geometría (cruzan la banda);
+   acá van grosor y color. Antes esta regla pisaba —por venir después— a otra
+   de #6B7370, y dejaba las marcas en 2,58:1: por debajo del mínimo y encima
+   invisibles por finas. */
+.cg-aguja-tick { stroke: var(--paper); stroke-width: 2.5; }
 .cg-aguja-escala {
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 11px;
