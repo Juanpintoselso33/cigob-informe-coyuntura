@@ -43,6 +43,10 @@ __pycache__/
 # El archivo de verdad de estas corridas son los modelos en BigQuery. Ver ADR-0196.
 projects/informe_coyuntura/output/bq_ml/
 
+# Igual criterio para el segundo lector de PDF (scripts/verificacion_pdf.py):
+# es opinión sobre un dato, no el dato, y se regenera solo. Ver ADR-0198.
+projects/informe_coyuntura/output/verificacion_pdf/
+
 
 # Backups transitorios de un archivo (el script crea .bak al actualizar)
 *.bak

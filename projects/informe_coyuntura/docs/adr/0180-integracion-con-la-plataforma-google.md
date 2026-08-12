@@ -6,7 +6,7 @@ fecha: 2026-08-06
 cinturon: 'transversal'
 indice: 'todos'
 archivos: ['web/src/lib/analytics.ts', 'web/src/layouts/Layout.astro', 'web/src/components/IndicadorModal.astro', 'web/public/robots.txt', 'web/astro.config.mjs', 'scripts/ga4_dimensiones.py', 'scripts/bigquery_export.py']
-relacionado: ['0196']
+relacionado: ['0196', '0198']
 ambito: 'Plataforma Google · medición de uso, indexación y warehouse histórico'
 origen: 'El informe se publica hace meses y no había ninguna medición: no se sabía si alguien lo leía, qué indicadores miraba, ni si Google lo estaba indexando'
 ---

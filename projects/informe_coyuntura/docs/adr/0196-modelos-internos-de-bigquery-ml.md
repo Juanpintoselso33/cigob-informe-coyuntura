@@ -6,7 +6,7 @@ fecha: 2026-08-12
 cinturon: 'transversal'
 parametros: ['MIN_PUNTOS_MENSUAL', 'MESES_ALERTA', 'SERIES_DIARIAS']
 archivos: ['scripts/bq_ml.py', 'scripts/bigquery_export.py', '.gitignore']
-relacionado: ['0180']
+relacionado: ['0180', '0198']
 ambito: 'Herramientas internas de análisis sobre el archivo de BigQuery — no alimentan el snapshot ni la web'
 origen: 'Pregunta del usuario sobre qué se podía hacer con ML predictivo en BigQuery, con el pedido explícito de que fueran herramientas internas y no algo para mostrar'
 ---
