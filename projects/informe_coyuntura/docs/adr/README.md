@@ -279,3 +279,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0194](0194-la-aguja-es-la-lectura-primaria.md) | La aguja es la lectura primaria, y el color deja de tener dos varas |  | vigente |
 | [0195](0195-un-solo-criterio-de-tensionado.md) | Un cinturón "tensionado" cuenta para la alerta, siempre |  | vigente |
 | [0196](0196-modelos-internos-de-bigquery-ml.md) | Modelos internos de BigQuery ML: dos que quedan, uno que se descarta medido |  | vigente |
+| [0197](0197-piso-de-cobertura-de-las-series-reconstruidas.md) | Una serie reconstruida no publica meses armados sobre una fracción del índice |  | vigente |

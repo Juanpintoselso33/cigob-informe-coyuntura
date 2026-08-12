@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'macro'
 archivos: ['publicar._linea_base', 'validacion_externa.linea_base_itcm']
+relacionado: ['0197']
 ambito: 'ITCM · card pública "Punto de partida" · `publicar._linea_base` · `validacion_externa.linea_base_itcm`'
 origen: 'Auditoría de consistencia del cinturón macro, sección IV.1 (prioridad alta)'
 ---

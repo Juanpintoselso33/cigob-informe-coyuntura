@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-04
 cinturon: 'gestion'
 archivos: ['sensibilidad.py']
-relacionado: ['0075', '0078']
+relacionado: ['0075', '0078', '0197']
 ambito: 'Sección Robustez de las tres paramétricas (ITCM · ITCG · ITVC) + `sensibilidad.py` + pipeline nocturno'
 ---
 

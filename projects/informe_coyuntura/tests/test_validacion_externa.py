@@ -41,7 +41,13 @@ def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
 
     def calcular(valores):
         recibidos.append(valores)
-        return {"valor": 42.0}
+        # Con la forma que devuelve el motor real: la reconstrucción mide la
+        # cobertura del mes sobre `dimensiones[*].indicadores[*].peso` para
+        # aplicar el piso (ADR-0197). Este test mira QUÉ VALORES llegan al
+        # motor, así que el stub declara cobertura plena y no interfiere.
+        return {"valor": 42.0,
+                "dimensiones": {"d": {"peso": 1.0,
+                                      "indicadores": {"i": {"peso": 1.0}}}}}
 
     monkeypatch.setattr(validacion_externa.itcm, "calcular_itcm", calcular)
 
@@ -92,7 +98,12 @@ def test_reconstruccion_itcp_mascara_de_era_para_eficacia(monkeypatch, tmp_path)
         if all(v is None for v in valores.values()):
             return None   # como el motor real: sin ningún indicador no hay índice
         recibidos[len(recibidos)] = dict(valores)
-        return {"valor": 50.0, "dimensiones": {"x": {"peso": 1.0}}}
+        # `indicadores` es lo que mira el piso de cobertura desde ADR-0197: el
+        # criterio dejó de contar dimensiones con algún dato y pasa a sumar el
+        # peso de los indicadores presentes. Cobertura plena para no interferir.
+        return {"valor": 50.0,
+                "dimensiones": {"x": {"peso": 1.0,
+                                      "indicadores": {"i": {"peso": 1.0}}}}}
 
     monkeypatch.setattr(validacion_externa.itcp, "calcular_itcp", calcular)
 

@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-12T04:02:41.400250",
+    "generated_at": "2026-08-12T11:53:57.623239",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -2283,9 +2283,7 @@
     "2026-03": 72.5,
     "2026-04": 69.4,
     "2026-05": 73.9,
-    "2026-06": 81.8,
-    "2026-07": 73.2,
-    "2026-08": 65.2
+    "2026-06": 81.8
   },
   "merval_usd_mensual": {
     "2023-11": 918.3,
@@ -2321,16 +2319,16 @@
     "2026-05": 2131.0,
     "2026-06": 2087.8,
     "2026-07": 2090.0,
-    "2026-08": 1913.2
+    "2026-08": 1913.4
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
-      "r": 0.764,
-      "n": 33
+      "r": 0.75,
+      "n": 31
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.171,
-      "n": 32
+      "r": 0.122,
+      "n": 30
     },
     "niveles (ITCG vs ICG)": {
       "r": -0.684,
@@ -2679,8 +2677,8 @@
       "n": 31
     },
     "niveles, sin la dimensión de sector privado": {
-      "r": -0.597,
-      "n": 31
+      "r": -0.601,
+      "n": 29
     }
   },
   "brecha_obra_publica_por_gobierno": {
@@ -4073,9 +4071,9 @@
           "etiqueta": "Clima electoral",
           "fuente": "Votómetro",
           "propia": false,
-          "r_niveles": -0.232,
-          "r_diferencias": -0.15,
-          "n": 33
+          "r_niveles": -0.165,
+          "r_diferencias": -0.156,
+          "n": 31
         },
         {
           "estadistica": "consumo_mayoristas",
@@ -4118,9 +4116,9 @@
           "etiqueta": "Incertidumbre de política (EPU)",
           "fuente": "Banco de España / SECMCA",
           "propia": false,
-          "r_niveles": 0.244,
-          "r_diferencias": 0.004,
-          "n": 32
+          "r_niveles": 0.264,
+          "r_diferencias": -0.064,
+          "n": 31
         },
         {
           "estadistica": "financiamiento_externo_privado",
@@ -4181,9 +4179,9 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": true,
-          "r_niveles": 0.764,
-          "r_diferencias": 0.171,
-          "n": 33
+          "r_niveles": 0.75,
+          "r_diferencias": 0.122,
+          "n": 31
         },
         {
           "estadistica": "transporte_pasajeros",
@@ -4207,14 +4205,14 @@
       "n_propias": 4,
       "n_ajenas": 11,
       "niveles": {
-        "convergente": 0.385,
-        "discriminante": 0.374,
+        "convergente": 0.381,
+        "discriminante": 0.37,
         "brecha": 0.011
       },
       "diferencias": {
-        "convergente": 0.137,
-        "discriminante": 0.163,
-        "brecha": -0.026
+        "convergente": 0.125,
+        "discriminante": 0.169,
+        "brecha": -0.044
       },
       "factor": {
         "cargas": {
@@ -4397,8 +4395,8 @@
         ],
         "r_niveles": 0.668,
         "r_diferencias": 0.008,
-        "mejor_sola_niveles": 0.764,
-        "mejor_sola_diferencias": 0.171,
+        "mejor_sola_niveles": 0.75,
+        "mejor_sola_diferencias": 0.144,
         "aporte_sobre_tendencia": {
           "n": 31,
           "suficiente": true,
@@ -4568,7 +4566,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,385 y a las 11 ajenas con 0,374. En los cambios mes a mes la separación no se sostiene: 0,137 con lo propio contra 0,163 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,381 y a las 11 ajenas con 0,37. En los cambios mes a mes la separación no se sostiene: 0,125 con lo propio contra 0,169 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
     "itcp": {
       "indice": "itcp",

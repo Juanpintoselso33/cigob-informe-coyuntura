@@ -1,6 +1,6 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-12 09:31:27"
+generado: "2026-08-12 11:54:43"
 score_global: 2.7
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -117,4 +117,4 @@ schema_version: "1.2.0"
 - `desactualizado:espiritu_epoca:sentimiento_digital`
 
 ---
-*Generado por CIGOB — 2026-08-12 09:31:27 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-12 11:54:43 — schema 1.2.0*

@@ -362,17 +362,70 @@ def linea_base_itcm(serie_itcm: dict) -> dict | None:
     }
 
 
+# Piso de cobertura de las series reconstruidas (ADR-0197). Un mes por debajo
+# no se publica: no es "el índice con ruido", es otro índice —el de los pocos
+# componentes que llegaron— presentado con el mismo nombre.
+PISO_COBERTURA = 0.60
+
+
+def _cobertura_de_peso(r: dict) -> float:
+    """Fracción del peso NOMINAL del índice que efectivamente tiene dato.
+
+    No es lo mismo que contar dimensiones con algún dato, que era el criterio
+    anterior del ITCP. El motor renormaliza DENTRO de cada dimensión, así que
+    una dimensión con un solo indicador vivo de cinco sigue aportando su peso
+    entero y la cobertura dimensional da 100%. Medido de las dos maneras, el
+    ITCG de jul-2026 daba 100% dimensional y 44,8% de peso real: el criterio
+    viejo lo dejaba pasar.
+    """
+    return sum(d["peso"] * sum(i["peso"] for i in d["indicadores"].values())
+               for d in r["dimensiones"].values())
+
+
+def _ultimo_mes_completo() -> str:
+    """El mes calendario cerrado. El mes en curso reconstruye con lo que haya
+    llegado hasta hoy, que es una muestra arbitraria del mes."""
+    hoy = datetime.now(timezone.utc)
+    return f"{hoy.year - 1}-12" if hoy.month == 1 else f"{hoy.year}-{hoy.month - 1:02d}"
+
+
+def _serie_con_piso(nombre: str, valores_por_mes: dict, calcular,
+                    hasta: str | None = None) -> dict:
+    """Reconstruye la serie y descarta los meses que no llegan al piso.
+
+    Se descarta en vez de publicar-con-advertencia porque el consumidor de esto
+    es una correlación: un punto con 30% de cobertura pesa lo mismo que uno con
+    94% dentro del r, y ninguna nota al pie corrige eso.
+    """
+    out = {}
+    for ym, valores in valores_por_mes.items():
+        if hasta and ym > hasta:
+            print(f"  [i] serie {nombre}: {ym} excluido por mes en curso (incompleto)")
+            continue
+        r = calcular(valores)
+        if not r:
+            continue
+        cobertura = _cobertura_de_peso(r)
+        if cobertura < PISO_COBERTURA:
+            print(f"  [i] serie {nombre}: {ym} excluido por cobertura insuficiente "
+                  f"({cobertura:.0%} del peso del índice con datos)")
+            continue
+        out[ym] = r["valor"]
+    return out
+
+
 def construir_serie_itcm() -> dict:
     """Serie mensual del ITCM reconstruida desde las series de componentes
     (mismo motor, puntaje interpolado, sin overrides del analista): todos los
     componentes tienen serie salvo IAI/ICIP, que faltan y el motor renormaliza.
-    Reservas netas solo desde jun-2024 (límite de fuente documentado)."""
-    out = {}
-    for ym, valores in _valores_itcm_por_mes().items():
-        r = itcm.calcular_itcm(valores)
-        if r:
-            out[ym] = r["valor"]
-    return out
+    Reservas netas solo desde jun-2024 (límite de fuente documentado).
+
+    Sin tope de mes en curso, a diferencia de ITCG/ITCP: las fuentes del ITCM
+    (INDEC, BCRA mensual, Hacienda) publican por mes cerrado, así que el último
+    mes reconstruible ya es un mes completo. El piso de cobertura sí se aplica,
+    aunque hoy no recorte nada (mínimo histórico 73,4%): es la red por si una
+    fuente se cae y el índice queda armado sobre la mitad de sus componentes."""
+    return _serie_con_piso("ITCM", _valores_itcm_por_mes(), itcm.calcular_itcm)
 
 
 # Pares cuyo acoplamiento es DE DISEÑO, con el motivo. No son hallazgos: que
@@ -556,13 +609,23 @@ def construir_serie_itcg() -> dict:
     """Serie mensual del ITCG reconstruida desde las series de componentes
     (mismo motor, puntaje interpolado, sin overrides del analista): 14 de los
     15 componentes tienen serie con historia; el protocolo antipiquetes recién
-    acumula y el motor renormaliza."""
-    out = {}
-    for ym, valores in _valores_itcg_por_mes().items():
-        r = itcg.calcular_itcg(valores)
-        if r:
-            out[ym] = r["valor"]
-    return out
+    acumula y el motor renormaliza.
+
+    PISO DE COBERTURA Y MES EN CURSO (2026-08-12, ADR-0197). El ITCP tenía las
+    dos defensas desde 2026-07-09 y el ITCG no tenía ninguna, así que la cola de
+    la serie venía publicando meses armados sobre una fracción del índice: jul
+    con 44,8% del peso y ago con 29,2%, contra una mediana histórica de 94%.
+    Los dos entraban a la correlación contra el Merval como puntos de pleno
+    derecho.
+
+    No era ruido: los componentes que faltan en la cola son sistemáticamente los
+    que puntúan alto (apertura_comercial 14%, reduccion_estado 10,9%), así que
+    la ausencia empuja el índice para abajo. Recalculando jun-2026 —cobertura
+    plena, índice 81,8— con sólo los componentes que sobrevivían en agosto da
+    66,9, prácticamente el 65,2 que se publicaba como agosto. La "caída" de 16
+    puntos era el faltante, no la gestión."""
+    return _serie_con_piso("ITCG", _valores_itcg_por_mes(), itcg.calcular_itcg,
+                           hasta=_ultimo_mes_completo())
 
 
 # Indicadores del ITCG cuya SERIE guarda una magnitud distinta de la que
@@ -671,9 +734,10 @@ def construir_serie_itcp() -> dict:
       ADR-0048); la transformación var_vs_2023 que protestas necesitaba
       se fue con ellos.
 
-    PISO DE COBERTURA (2026-07-09): los meses donde las dimensiones con
-    algún dato suman menos del 60% del peso del índice se EXCLUYEN de la
-    serie. Hallazgo real de la auditoría de hoy: el mes en curso (parcial)
+    PISO DE COBERTURA (2026-07-09; desde 2026-08-12 medido por peso de
+    indicador y no por dimensión, ADR-0197): los meses que no llegan al 60%
+    del peso del índice se EXCLUYEN de la serie. Hallazgo original de la
+    auditoría de aquel día: el mes en curso (parcial)
     quedaba reconstruido solo con "poder legislativo" e "imagen y voto"
     (40% del peso, renormalizado al 100%) y daba un valor artefacto que
     saltaba decenas de puntos según qué serie tuviera o no un punto en ese
@@ -712,18 +776,13 @@ def construir_serie_itcp() -> dict:
     hoy = datetime.now(timezone.utc)
     ult_completo = f"{hoy.year - 1}-12" if hoy.month == 1 else f"{hoy.year}-{hoy.month - 1:02d}"
     ult = min(ult, ult_completo)
-    out = {}
-    for ym, valores in _valores_itcp_por_mes(directos, ult).items():
-        r = itcp.calcular_itcp(valores)
-        if not r:
-            continue
-        cobertura = sum(d["peso"] for d in r["dimensiones"].values())
-        if cobertura < 0.6:
-            print(f"  [i] serie ITCP: {ym} excluido por cobertura insuficiente "
-                  f"({cobertura:.0%} del peso del índice con datos)")
-            continue
-        out[ym] = r["valor"]
-    return out
+    # El piso pasó de medirse por dimensión a medirse por PESO (2026-08-12,
+    # ADR-0197). Es estrictamente más estricto y hoy no recorta ningún mes del
+    # ITCP —su mínimo histórico es 66,8% del peso—, pero deja de haber dos
+    # definiciones de "cobertura" en el mismo archivo: la dimensional daba 100%
+    # en meses con menos de la mitad del índice cargado.
+    return _serie_con_piso("ITCP", _valores_itcp_por_mes(directos, ult),
+                           itcp.calcular_itcp)
 
 
 def _valores_itcp_por_mes(directos: dict | None = None, ult: str | None = None) -> dict:
