@@ -7,7 +7,7 @@ import IndicadorTile from "../components/IndicadorTile.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import {
-  informe, CINTURONES, indicadoresOrdenados,
+  informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel,
 } from "../lib/datos.ts";
 
@@ -276,11 +276,13 @@ const robChartData = rob?.hist && indice ? {
                  role="button" tabindex="0" aria-label={`Ver la composición de ${dim.nombre}`}>
               <div class="cg-itcm-dim-head">
                 <span class="cg-itcm-dim-name">{dim.nombre}</span>
-                <span class="cg-itcm-dim-val"><strong>{num(dim.puntaje)}</strong>{indice.base100 ? "" : "/100"} · pesa {Math.round(dim.peso * 100)}%</span>
+                <span class="cg-itcm-dim-val">pesa {Math.round(dim.peso * 100)}%</span>
               </div>
-              <div class="cg-bar" role="img" aria-label={`${num(dim.puntaje)} de 100`}>
-                <div class="cg-bar-fill" style={`width:${Math.min(100, dim.puntaje)}%`}></div>
-              </div>
+              <Aguja
+                tension={dim.semaforo?.tension ?? tensionDeDimension(dim.puntaje, !!indice.base100)}
+                titulo={dim.nombre}
+                ocultarTitulo
+              />
               {dim.critica && (
                 <p class="cg-dim-critica">
                   <span class="cg-dim-critica-chip">Dimensión crítica</span>

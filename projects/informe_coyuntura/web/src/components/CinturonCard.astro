@@ -2,7 +2,6 @@
 import { indicadoresOrdenados, cap, indiceDe, semaforoDe, peorDimension, num } from "../lib/datos.ts";
 import Aguja from "./Aguja.astro";
 import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
-import IndicadorRow from "./IndicadorRow.astro";
 const { slug, nombre, sub, cinturon } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 // La píldora de `estado` (estable/en_tension/tensionado) sale de la card y la
@@ -15,10 +14,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 // publicados (`semaforo_cortes`). El `estado` no se toca ni se reinterpreta —
 // es metodología y sigue mandando en la regla sistémica del panel de tensión—,
 // pero deja de expresarse en colores para no contradecir a la aguja.
+// La card ya no lista indicadores: sólo cuenta cuántos hay, para que el enlace
+// diga a qué se entra.
 const filas = indicadoresOrdenados(cinturon);
-const MAX = 6;
-const visibles = filas.slice(0, MAX);
-const ocultos = filas.length - visibles.length;
 const href = `${base}/${slug}/`;
 // Genoma del cinturón: un tramo por dimensión del índice (ancho = peso,
 // color = semáforo derivado de la fórmula de tensión publicada). Cada tramo
@@ -67,9 +65,6 @@ const peor = peorDimension(cinturon);
   {!indice && (
     <div class="cg-genoma-cap cg-genoma-cap--solo">Cinturón cualitativo · sin índice de dimensiones — se lee por su indicador</div>
   )}
-  <ul class="cg-ind-list">
-    {visibles.map(({ key, ind, bucket }) => <IndicadorRow ikey={key} ind={ind} bucket={bucket} slug={slug} />)}
-  </ul>
   <div class="cg-cint-foot">
     {/* El score ya lo dice la aguja; acá queda solo el riesgo, que no está en
         ningún otro lado de la card. */}
@@ -77,6 +72,6 @@ const peor = peorDimension(cinturon);
     {/* El enlace decía "ver detalle" en minúscula cuando había ocultos y "Ver
         detalle" cuando no: la card de espíritu de época (sin ocultos) quedaba
         distinta de las otras cuatro. El contador va aparte del rótulo. */}
-    <a href={href} class="cg-cint-ver">{ocultos > 0 ? `+${ocultos} · ` : ""}Ver detalle →</a>
+    <a href={href} class="cg-cint-ver">Ver {filas.length} indicadores →</a>
   </div>
 </article>
