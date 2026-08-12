@@ -105,6 +105,11 @@ def build_vida(raw):
         _add(out, "consumo_carnes_total", carnes["total"],
              "kg/hab/año", "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
              f"{carnes['mes']}-01")
+        # Las variaciones i.a. las publica la misma fuente y las consume la
+        # matriz A×B en `_por_que_carne`. Viajan COLGADAS del indicador, como
+        # ya hacen `componentes` en el IAI o `regimen` en otros: meterlas como
+        # clave suelta del dict las convertiría en un indicador fantasma.
+        out["consumo_carnes_total"]["variaciones"] = carnes.get("variaciones") or {}
     else:
         _add(out, "consumo_carne", carne.get("valor"),
              "kg/hab/año", "CICCRA", carne.get("fecha"))
@@ -1818,6 +1823,59 @@ def _por_que_dimension(puntaje, tension, base100):
             f"tensión de {coma(tension)}/10 en la escala del informe.")
 
 
+# Corte verde del Componente B de la ficha de proteína animal: promedio
+# histórico de largo plazo del consumo total de carnes en Argentina (Bolsa de
+# Comercio de Rosario, últimos 10 años). Es un ancla EXTERNA, no un percentil
+# de la propia serie, así que no agrega circularidad al índice.
+CARNES_TOTAL_SOSTENIDO = 112.8
+
+
+def _por_que_carne(vacuna, total, variaciones):
+    """La matriz A×B de la ficha, dicha en una frase.
+
+    La ficha quiere distinguir dos cosas que el indicador de carne vacuna solo
+    no puede separar: que la gente coma menos vacuna porque la reemplaza por
+    pollo o cerdo (sustitución, precios relativos) de que coma menos proteína
+    animal en total (empobrecimiento).
+
+    Esto NO cambia el color ni el aporte al índice. El ITVC mide evolución
+    contra el arranque del mandato y el color sale de ahí; la matriz de la
+    ficha es un semáforo de nivel absoluto, que es otra pregunta. Hacer que
+    mande sobre el color metería una tercera vara en un cinturón que ya tiene
+    una — así que la matriz entra como el `por_que`, que es justamente el campo
+    que explica un color y que en vida cotidiana venía vacío.
+    """
+    if vacuna is None or total is None:
+        return None
+    var_v = (variaciones or {}).get("vacuna")
+    var_t = (variaciones or {}).get("total")
+    if var_v is None or var_t is None:
+        return None
+
+    ratio = vacuna / total * 100
+    cae_vacuna = var_v < 0
+    total_sostenido = total >= CARNES_TOTAL_SOSTENIDO
+    base = (f"la carne vacuna suma {coma(round(vacuna, 1))} kg por habitante "
+            f"({coma(round(var_v, 1))}% interanual) y el total de carnes "
+            f"{coma(round(total, 1))} kg ({coma(round(var_t, 1))}%); "
+            f"la vacuna es el {coma(round(ratio, 1))}% de lo que se come")
+
+    if cae_vacuna and total_sostenido:
+        return (f"Sustitución, no menos proteína: {base}. El total se mantiene "
+                f"en o por encima del promedio histórico de largo plazo "
+                f"({coma(CARNES_TOTAL_SOSTENIDO)} kg), así que lo que cae es la "
+                f"vacuna en favor de pollo y cerdo.")
+    if cae_vacuna and not total_sostenido:
+        return (f"Cae el acceso a proteína animal, no sólo a la vacuna: {base}. "
+                f"El total quedó por debajo del promedio histórico de largo "
+                f"plazo ({coma(CARNES_TOTAL_SOSTENIDO)} kg), o sea que las otras "
+                f"carnes no compensan la caída.")
+    if not cae_vacuna and total_sostenido:
+        return f"Consumo sostenido: {base}."
+    return (f"Combinación inesperada — la vacuna no cae y el total sí: {base}. "
+            f"Conviene revisar el dato de origen antes de leerlo.")
+
+
 def _semaforos(informe):
     """Adjunta el bloque `semaforo` a cada indicador, dimensión e índice."""
     for cinturon, bloque in informe["cinturones"].items():
@@ -1850,6 +1908,16 @@ def _semaforos(informe):
                 continue
             ind["semaforo"] = _semaforo_de(color, tension, umbrales, unidad,
                                            ind.get("valor"))
+            # El color de un indicador de vida sale de su nivel rebaseado, así
+            # que para la carne vacuna dice "cayó contra el arranque" y nada
+            # más — que es justo la lectura ambigua que la ficha de proteína
+            # animal quiere desarmar. La matriz A×B no lo cambia: lo explica.
+            if ikey == "consumo_carne":
+                total_ind = bloque["indicadores"].get("consumo_carnes_total") or {}
+                por_que = _por_que_carne(ind.get("valor"), total_ind.get("valor"),
+                                         total_ind.get("variaciones"))
+                if por_que:
+                    ind["semaforo"]["por_que"] = por_que
 
         indice_key = _INDICE_DE_CINTURON.get(cinturon)
         if not indice_key:

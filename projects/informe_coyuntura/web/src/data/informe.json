@@ -3741,7 +3741,7 @@
             "tension": 7.1,
             "umbrales": null,
             "unidad": null,
-            "por_que": null
+            "por_que": "Sustitución, no menos proteína: la carne vacuna suma 47,3 kg por habitante (−7,7% interanual) y el total de carnes 114,5 kg (−1,7%); la vacuna es el 41,3% de lo que se come. El total se mantiene en o por encima del promedio histórico de largo plazo (112,8 kg), así que lo que cae es la vacuna en favor de pollo y cerdo."
           }
         },
         "consumo_carnes_total": {
@@ -3750,6 +3750,12 @@
           "fuente": "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
+          "variaciones": {
+            "vacuna": -7.67,
+            "aviar": 0.57,
+            "porcina": 9.29,
+            "total": -1.69
+          },
           "obtenido_en": "2026-08-12T10:34:33.997923",
           "en_indice": false,
           "aporte_score": null,
