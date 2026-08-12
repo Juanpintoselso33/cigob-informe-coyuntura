@@ -36,6 +36,13 @@ __pycache__/
 *.pyd
 .pytest_cache/
 
+# Salidas de los modelos internos de BigQuery ML (scripts/bq_ml.py).
+# El resto de `output/` SÍ se versiona a propósito: es el rastro de auditoría de
+# lo que se publicó. Esto no — no alimenta el snapshot, no sale en la web y no
+# es lo que se publicó, así que versionarlo mezclaría diagnóstico con evidencia.
+# El archivo de verdad de estas corridas son los modelos en BigQuery. Ver ADR-0196.
+projects/informe_coyuntura/output/bq_ml/
+
 
 # Backups transitorios de un archivo (el script crea .bak al actualizar)
 *.bak

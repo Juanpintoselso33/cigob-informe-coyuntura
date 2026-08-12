@@ -354,6 +354,18 @@ def construir_filas_analisis(gen: str) -> dict[str, list[dict]]:
     return filas
 
 
+def _hay_credenciales() -> bool:
+    """GOOGLE_APPLICATION_CREDENTIALS (CI) o el ADC de gcloud (local)."""
+    if os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
+        return True
+    for base in (os.environ.get("CLOUDSDK_CONFIG"),
+                 os.path.join(os.path.expanduser("~"), ".config", "gcloud"),
+                 os.path.join(os.environ.get("APPDATA", ""), "gcloud")):
+        if base and os.path.exists(os.path.join(base, "application_default_credentials.json")):
+            return True
+    return False
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--proyecto", default=os.environ.get("GCP_PROJECT", PROYECTO_POR_DEFECTO))
@@ -379,8 +391,19 @@ def main() -> int:
         print("\n[dry-run, no se escribió nada]")
         return 0
 
-    if not os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
-        print("ERROR: falta GOOGLE_APPLICATION_CREDENTIALS", file=sys.stderr)
+    # Dos formas válidas de autenticar y el chequeo sólo miraba una: en CI la
+    # credencial llega por GOOGLE_APPLICATION_CREDENTIALS (secret -> archivo
+    # temporal), pero en una máquina local lo normal es
+    # `gcloud auth application-default login`, que deja el ADC en el directorio
+    # de configuración de gcloud y NO exporta ninguna variable. Con el chequeo
+    # viejo, una corrida local con credenciales perfectamente válidas salía por
+    # 2 sin intentar nada.
+    if not _hay_credenciales():
+        print("ERROR: sin credenciales de Google Cloud. Correr "
+              "`gcloud auth application-default login` o exportar "
+              "GOOGLE_APPLICATION_CREDENTIALS.", file=sys.stderr)
+        print()
+        print("EXPORT A BIGQUERY: FALLÓ — no se subió nada.")
         return 2
 
     from google.api_core.exceptions import Forbidden, NotFound
