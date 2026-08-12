@@ -249,8 +249,11 @@ const robChartData = rob?.hist && indice ? {
         {/* La aguja reemplaza al chip de score, que repetía su número. El
             estado queda al lado, en texto: es otro concepto, no otro color. */}
         <Aguja tension={c.score} titulo={`Tensión de ${meta.nombre}`} ocultarTitulo />
-        <span class="cg-detalle-chip" title="La regla del informe cuenta los cinturones tensionados: uno es manejable, dos o más señalan inestabilidad sistémica.">
+        {/* La regla va VISIBLE, no en un `title`: un tooltip no existe para
+            quien navega con el dedo, que es la mitad de los lectores. */}
+        <span class="cg-detalle-chip">
           Cuenta para la alerta sistémica: <strong>{cuentaParaAlerta ? "Sí" : "No"}</strong>
+          <span class="cg-chip-nota">2 o más señalan inestabilidad</span>
         </span>
         {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>

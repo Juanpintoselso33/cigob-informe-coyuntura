@@ -1395,3 +1395,4 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 /* .cg-matriz pasó de <div> a <ul>: sin esto hereda las viñetas y el padding
    de lista del navegador. */
 .cg-matriz { list-style: none; padding: 0; }
+.cg-chip-nota { color: var(--muted); font-weight: 500; margin-left: 5px; }
