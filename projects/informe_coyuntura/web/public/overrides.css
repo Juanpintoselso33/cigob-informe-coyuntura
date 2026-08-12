@@ -1470,3 +1470,6 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   outline: 3px solid var(--teal-dark);
   outline-offset: 2px;
 }
+/* La aguja dentro del modal: centrada y con aire, sin el título (el modal ya
+   encabeza con el nombre del indicador). */
+#cg-modal-semaforo .cg-aguja { max-width: 200px; margin: 6px auto 10px; }
