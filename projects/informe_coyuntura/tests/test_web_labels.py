@@ -157,8 +157,8 @@ def test_idm_explica_la_composicion_oficial_del_m2_transaccional():
     )
 
 
-def test_presion_dolarizacion_tiene_capa_publica_completa_y_sin_jerga_interna():
-    clave = "presion_dolarizacion"
+def test_desequilibrio_monetario_tiene_capa_publica_completa_y_sin_jerga_interna():
+    clave = "desequilibrio_monetario"
     fuentes = {
         "datos": DATOS_TS,
         "descripciones": DESCRIPCIONES_TS,
@@ -169,46 +169,51 @@ def test_presion_dolarizacion_tiene_capa_publica_completa_y_sin_jerga_interna():
         assert re.search(r"(?<![a-zA-Z_])" + clave + r":", fuente), (
             f"Falta {clave} en {nombre}.ts"
         )
-        assert not re.search(r"(?<![a-zA-Z_])dolarizacion_depositos:", fuente), (
-            f"La clave sustituida sigue activa en {nombre}.ts"
-        )
+        for sustituida in ("dolarizacion_depositos", "presion_dolarizacion"):
+            assert not re.search(r"(?<![a-zA-Z_])" + sustituida + r":", fuente), (
+                f"La clave sustituida {sustituida} sigue activa en {nombre}.ts"
+            )
 
     descripcion = re.search(
-        r'presion_dolarizacion:\s*\{[\s\S]*?aporta:\s*"([^"]+)"',
+        r'desequilibrio_monetario:\s*\{[\s\S]*?aporta:\s*"([^"]+)"',
         DESCRIPCIONES_TS,
     )
     assert descripcion
     assert "BCRA" not in descripcion.group(1) and "ADR-" not in descripcion.group(1)
 
     formula = re.search(
-        r'presion_dolarizacion:\s*\{([\s\S]*?)\n\s*\},',
+        r'desequilibrio_monetario:\s*\{([\s\S]*?)\n\s*\},',
         FORMULAS_TS,
     )
     assert formula
     formula_txt = formula.group(1)
-    assert "CCL" in formula_txt and "M2" in formula_txt and "compras" in formula_txt
+    # Los dos componentes y la matriz que los cruza tienen que estar dichos:
+    # sin eso la fórmula parece un promedio y el indicador no es un promedio.
+    assert "M2" in formula_txt and "divisas" in formula_txt
+    assert "bilineal" in formula_txt and "matriz" in formula_txt
     assert "0" in formula_txt and "100" in formula_txt
 
     ficha = re.search(
-        r'presion_dolarizacion:\s*\{([\s\S]*?)\n\s*\},\n\n\s*iai:',
+        r'desequilibrio_monetario:\s*\{([\s\S]*?)\n\s*\},\n\n\s*iai:',
         FICHAS_TS,
     )
     assert ficha
     texto = ficha.group(1)
-    assert 'id: "presion_dolarizacion"' in texto
+    assert 'id: "desequilibrio_monetario"' in texto
     assert "10%" in texto and "2,6%" in texto
-    assert "CERA" in texto and "abril de 2025" in texto and "junio de 2025" in texto
-    assert "ArgentinaDatos" in texto and "BCRA" in texto
-    assert "variable 108" not in texto and "variable 100" not in texto and "ADR-" not in texto
+    assert "abril de 2025" in texto and "enero de 2021" in texto
+    assert "BCRA" in texto
+    assert "ADR-" not in texto
 
 
-def test_url_metodologica_anterior_redirige_a_la_ficha_vigente():
+def test_urls_metodologicas_anteriores_redirigen_a_la_ficha_vigente():
     assert "redirects" in ASTRO_CONFIG
-    assert re.search(
-        r"['\"]?/metodologia/dolarizacion_depositos/?['\"]?\s*:\s*"
-        r"['\"]/metodologia/presion_dolarizacion/?['\"]",
-        ASTRO_CONFIG,
-    )
+    for vieja in ("dolarizacion_depositos", "presion_dolarizacion"):
+        assert re.search(
+            r"['\"]?/metodologia/" + vieja + r"/?['\"]?\s*:\s*"
+            r"['\"]/metodologia/desequilibrio_monetario/?['\"]",
+            ASTRO_CONFIG,
+        ), f"falta el redirect de {vieja} a la ficha vigente"
 
 
 def test_metodologia_describe_anclas_declaradas_sin_afirmar_puntos_medios():

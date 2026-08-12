@@ -15,8 +15,8 @@ from statistics import fmean, pstdev
 
 sys.path.insert(0, str(Path(__file__).parent))
 import comarb
+import desequilibrio_monetario
 import itcm
-import presion_dolarizacion
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 sys.stdout.reconfigure(encoding="utf-8")
@@ -111,7 +111,7 @@ BCRA_DEP_PRIV_ID        = 100  # Depósitos privados en pesos — insumo IdC e I
 BCRA_PREST_PRIV_ID      = 117  # Préstamos otorgados al sector privado — insumo IdC
 BCRA_CIRCULANTE_ID      = 17   # Billetes y monedas en poder del público — insumo M3 privado (IDM)
 BCRA_M2_PRIV_ID         = 197  # M2 transaccional del sector privado — demanda de dinero (IDM)
-PRESION_MAX_REZAGO_MESES = 2   # Mercado de Cambios publica con hasta dos meses de rezago
+DESEQUILIBRIO_MAX_REZAGO_MESES = 2   # Mercado de Cambios publica con hasta dos meses de rezago
 
 HTTP_TIMEOUT = 30
 HTTP_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; CIGOB-Monitor/1.0)"}
@@ -123,7 +123,7 @@ INDICADORES_ESPERADOS = [
     "ipc_total", "reservas_bcra", "idc", "badlar",
     "emae_ia", "emae_difusion", "ipi_manufacturero", "saldo_comercial_12m",
     "recaudacion", "tcrm",
-    "rem_ipc_12m", "idm", "presion_dolarizacion", "iai", "icip",
+    "rem_ipc_12m", "idm", "desequilibrio_monetario", "iai", "icip",
     "credito_privado", "prestamos_privados", "base_monetaria", "tc_mayorista",
     "costo_financiamiento_tesoro", "resultado_primario",
 ]
@@ -144,6 +144,9 @@ def save_cache(data: dict) -> None:
 
 def _purgar_indicadores_obsoletos(indicadores: dict) -> None:
     indicadores.pop("dolarizacion_depositos", None)
+    # Reemplazado por desequilibrio_monetario (ADR-0192): medía la misma fuga
+    # cambiaria, desde la misma planilla del BCRA.
+    indicadores.pop("presion_dolarizacion", None)
 
 
 def _warn(indicador: str, err: Exception) -> None:
@@ -313,11 +316,11 @@ def _idm_serie_mensual(meses_hist: int = 24) -> list:
     return out
 
 
-def _presion_dolarizacion_serie_mensual(
+def _desequilibrio_monetario_serie_mensual(
     meses_hist: int = 36,
 ) -> list[dict]:
-    """Serie común de presión de dolarización para el titular y el backfill."""
-    return presion_dolarizacion.obtener_serie(
+    """Serie común del desequilibrio monetario para el titular y el backfill."""
+    return desequilibrio_monetario.obtener_serie(
         meses_hist=meses_hist,
         fetch_bcra_fin_mes=_bcra_fin_de_mes,
     )
@@ -1320,41 +1323,39 @@ def _rezago_mensual(mes: str, hoy: date | None = None) -> int:
     return (hoy.year - anio) * 12 + hoy.month - numero_mes
 
 
-def fetch_presion_dolarizacion() -> dict | None:
-    """Presión de salida del peso con observable específico para cada régimen."""
+def fetch_desequilibrio_monetario() -> dict | None:
+    """Confianza en el peso: dolarización DENTRO del sistema x fuga FUERA de él."""
     try:
-        serie = _presion_dolarizacion_serie_mensual()
+        serie = _desequilibrio_monetario_serie_mensual()
         if not serie:
             raise ValueError("sin meses con insumos completos")
         fila = serie[-1]
         rezago = _rezago_mensual(fila["mes"])
-        if not 0 <= rezago <= PRESION_MAX_REZAGO_MESES:
+        if not 0 <= rezago <= DESEQUILIBRIO_MAX_REZAGO_MESES:
             raise ValueError(
                 f'último mes {fila["mes"]} fuera del rezago admisible '
-                f"(0-{PRESION_MAX_REZAGO_MESES} meses)"
+                f"(0-{DESEQUILIBRIO_MAX_REZAGO_MESES} meses)"
             )
         return {
-            "valor": fila["presion"],
-            "unidad": "pts (0-100)",
+            "valor": fila["tension"],
+            "unidad": "pts de tensión (0-100)",
             "fuente": (
-                "ArgentinaDatos (CCL + dólar cripto) + BCRA (A3500, M2 "
-                "privado y Mercado de Cambios)"
+                "BCRA (M2 transaccional privado, circulante, depósitos privados "
+                "en pesos y en dólares, y Mercado de Cambios)"
             ),
             "fecha_dato": f'{fila["mes"]}-01',
             "desactualizado": False,
-            "regimen": fila["regimen"],
-            "metrica": fila["metrica"],
-            "ventana_meses": fila["ventana_meses"],
-            "ventana_parcial": fila["ventana_parcial"],
             "puntaje_itcm": fila["puntaje_itcm"],
-            # Composición formal/informal (ADR-0057): None si el régimen es
-            # "precio" o si faltó el dólar cripto para la ventana del mes.
-            "presion_formal": fila.get("presion_formal"),
-            "presion_informal": fila.get("presion_informal"),
-            "brecha_informal": fila.get("brecha_informal"),
+            # Los dos componentes y su posición en la matriz: los consume el
+            # detalle de la card y la ficha metodológica.
+            "componente_a": fila["componente_a"],
+            "componente_b": fila["componente_b"],
+            "posicion_a": fila["posicion_a"],
+            "posicion_b": fila["posicion_b"],
+            "celda": fila["celda"],
         }
     except Exception as e:
-        _warn("presion_dolarizacion", e)
+        _warn("desequilibrio_monetario", e)
         return None
 
 
@@ -1750,7 +1751,7 @@ def main() -> None:
         ("tcrm",               fetch_tcrm),
         ("rem_ipc_12m",        fetch_rem_ipc_12m),
         ("idm",                fetch_idm),
-        ("presion_dolarizacion", fetch_presion_dolarizacion),
+        ("desequilibrio_monetario", fetch_desequilibrio_monetario),
         ("iai",                fetch_iai),
         ("icip",               fetch_icip),
         ("credito_privado",    fetch_credito_privado),

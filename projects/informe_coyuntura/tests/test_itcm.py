@@ -43,7 +43,7 @@ EJEMPLO = {
     "ipc_total": 2.58,             # interpolado 63,7 (banda 65)
     "rem_ipc_12m": 23.3,           # ANUAL crudo → 1,76% mensual → 79,8 (banda 85)
     "idm": 4.5,                    # gap i.a. real: 51,7 (banda 60)
-    "presion_dolarizacion": 45.24,   # presión de carteras 0-100: 64,8
+    "desequilibrio_monetario": 35.2,  # tensión 0-100 de la matriz A×B: 64,8
     # ADR-0152: dejó de ser variación i.a. y pasó a NIVEL de base imponible real
     # desestacionalizada (100 = 4T-2023). 94,4 es la mediana de la serie observada.
     "recaudacion": 94.4,
@@ -74,10 +74,10 @@ def test_itcm_reproduce_ejemplo():
     assert dims["financiamiento"]["indicadores"]["idc"]["puntaje_aplicado"] == 49.7
     assert r["valor"] == 67.0
     assert r["banda"] == "moderadamente_aflojado"
-    presion = dims["estabilidad_monetaria"]["indicadores"]["presion_dolarizacion"]
-    assert presion["puntaje_aplicado"] == 64.8
-    assert presion["peso"] == 0.10
-    assert presion["peso_efectivo"] == 0.026
+    desequilibrio = dims["estabilidad_monetaria"]["indicadores"]["desequilibrio_monetario"]
+    assert desequilibrio["puntaje_aplicado"] == 64.8
+    assert desequilibrio["peso"] == 0.10
+    assert desequilibrio["peso_efectivo"] == 0.026
     assert itcm.tension_de_itcm(r["valor"]) == 3.3
     assert r["ajustes_aplicados"] == []
 
@@ -120,17 +120,16 @@ def test_puntaje_desde_anclas_respeta_los_cinco_puntos_aprobados():
     assert parametrica.puntaje_desde_anclas(120.0, anclas) == 10.0
 
 
-def test_itcm_usa_anclas_explicitas_para_presion_dolarizacion():
+def test_itcm_usa_anclas_explicitas_para_desequilibrio_monetario():
     valores = dict(EJEMPLO)
 
     r = itcm.calcular_itcm(valores)
     indicador = r["dimensiones"]["estabilidad_monetaria"]["indicadores"][
-        "presion_dolarizacion"
+        "desequilibrio_monetario"
     ]
 
-    assert itcm.ANCLAS_ITCM["presion_dolarizacion"] == (
-        (0.0, 100.0), (25.0, 85.0), (50.0, 60.0),
-        (75.0, 35.0), (100.0, 10.0),
+    assert itcm.ANCLAS_ITCM["desequilibrio_monetario"] == (
+        (0.0, 100.0), (100.0, 0.0),
     )
     assert indicador["puntaje_banda"] == 64.8
     assert indicador["puntaje_aplicado"] == 64.8
@@ -143,7 +142,7 @@ def test_estabilidad_monetaria_usa_pesos_40_25_25_10():
         "ipc_total": 0.40,
         "rem_ipc_12m": 0.25,
         "idm": 0.25,
-        "presion_dolarizacion": 0.10,
+        "desequilibrio_monetario": 0.10,
     }
 
 
@@ -197,15 +196,14 @@ def test_bordes_de_banda():
     assert itcm.puntaje_banda(2.0, b["idm"]) == 85
     assert itcm.puntaje_banda(2.01, b["idm"]) == 60
     assert itcm.puntaje_banda(8.01, b["idm"]) == 10            # excedente fuerte
-    # Presión de dolarización: mayor presión = menor puntaje ITCM
-    assert itcm.puntaje_banda(0.0, b["presion_dolarizacion"]) == 100
-    assert itcm.puntaje_banda(0.01, b["presion_dolarizacion"]) == 85
-    assert itcm.puntaje_banda(25.0, b["presion_dolarizacion"]) == 85
-    assert itcm.puntaje_banda(25.01, b["presion_dolarizacion"]) == 60
-    assert itcm.puntaje_banda(50.0, b["presion_dolarizacion"]) == 60
-    assert itcm.puntaje_banda(50.01, b["presion_dolarizacion"]) == 35
-    assert itcm.puntaje_banda(75.0, b["presion_dolarizacion"]) == 35
-    assert itcm.puntaje_banda(75.01, b["presion_dolarizacion"]) == 10
+    # Desequilibrio monetario: los cortes son los cuatro colores de la matriz,
+    # sobre la escala de TENSIÓN (mayor tensión = menor puntaje ITCM).
+    assert itcm.puntaje_banda(20.0, b["desequilibrio_monetario"]) == 100
+    assert itcm.puntaje_banda(20.01, b["desequilibrio_monetario"]) == 60
+    assert itcm.puntaje_banda(50.0, b["desequilibrio_monetario"]) == 60
+    assert itcm.puntaje_banda(50.01, b["desequilibrio_monetario"]) == 35
+    assert itcm.puntaje_banda(80.0, b["desequilibrio_monetario"]) == 35
+    assert itcm.puntaje_banda(80.01, b["desequilibrio_monetario"]) == 10
     # TCRM: apreciación (nivel bajo) = más tensión
     assert itcm.puntaje_banda(110.1, b["tcrm"]) == 100         # competitivo
     assert itcm.puntaje_banda(110.0, b["tcrm"]) == 80          # high inclusivo
@@ -269,12 +267,12 @@ def test_renormalizacion_indicador_faltante():
     assert abs(r["valor"] - 65.7) <= 0.05
 
 
-def test_sin_presion_dolarizacion_renormaliza_los_componentes_disponibles():
-    valores = dict(EJEMPLO, presion_dolarizacion=None)
+def test_sin_desequilibrio_monetario_renormaliza_los_componentes_disponibles():
+    valores = dict(EJEMPLO, desequilibrio_monetario=None)
     r = itcm.calcular_itcm(valores)
     estabilidad = r["dimensiones"]["estabilidad_monetaria"]
     assert estabilidad["puntaje"] == 64.8
-    assert "presion_dolarizacion" not in estabilidad["indicadores"]
+    assert "desequilibrio_monetario" not in estabilidad["indicadores"]
 
 
 def test_renormalizacion_dimension_faltante():

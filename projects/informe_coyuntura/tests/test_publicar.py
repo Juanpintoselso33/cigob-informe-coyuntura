@@ -23,45 +23,34 @@ def test_build_vida_agrega_sentimiento_digital_aunque_trends_falle():
     assert enriquecido["sentimiento_digital"]["valor"] is None
 
 
-def test_macro_input_txt_explica_presion_dolarizacion_en_regimen_restringido():
+def test_macro_input_txt_explica_los_dos_componentes_del_desequilibrio():
     ind = {
-        "valor": 75.15,
-        "regimen": "precio",
-        "metrica": 50.12,
-        "ventana_meses": 3,
-        "ventana_parcial": False,
+        "valor": 50.91,
+        "componente_a": 33.5,
+        "componente_b": 2066.6,
+        "celda": "amarillo",
     }
-    assert publicar._macro_input_txt("presion_dolarizacion", ind) == (
-        "presión 75,15 pts = brecha CCL/mayorista 50,12% "
-        "(promedio móvil 3 meses)"
+    assert publicar._macro_input_txt("desequilibrio_monetario", ind) == (
+        "tensión 50,91 pts = liquidez privada en pesos transaccionales 33,5% × "
+        "compra neta de divisas del sector privado US$ 2066,6 M — "
+        "dolarización contenida en el sistema"
     )
 
 
-def test_macro_input_txt_explica_transicion_del_regimen_abierto():
+def test_macro_input_txt_nombra_la_celda_de_fuga_oculta():
+    """La celda que la ficha llama «naranja/rojo»: el stock se ve bien y la fuga
+    no. Es el caso que el indicador existe para exponer, así que tiene que
+    quedar dicho en el detalle y no sólo en el número."""
     ind = {
-        "valor": 42.86,
-        "regimen": "flujo",
-        "metrica": 5.14,
-        "ventana_meses": 1,
-        "ventana_parcial": True,
+        "valor": 77.5,
+        "componente_a": 49.96,
+        "componente_b": 6545.1,
+        "celda": "naranja_rojo",
     }
-    assert publicar._macro_input_txt("presion_dolarizacion", ind) == (
-        "presión 42,86 pts = compras netas de USD de personas humanas "
-        "5,14% del M2 privado (ventana de transición: 1 mes)"
-    )
-
-
-def test_macro_input_txt_explica_ventana_movil_del_regimen_abierto():
-    ind = {
-        "valor": 45.24,
-        "regimen": "flujo",
-        "metrica": 5.43,
-        "ventana_meses": 3,
-        "ventana_parcial": False,
-    }
-    assert publicar._macro_input_txt("presion_dolarizacion", ind) == (
-        "presión 45,24 pts = compras netas de USD de personas humanas "
-        "5,43% del M2 privado (ventana móvil 3 meses)"
+    assert publicar._macro_input_txt("desequilibrio_monetario", ind) == (
+        "tensión 77,5 pts = liquidez privada en pesos transaccionales 49,96% × "
+        "compra neta de divisas del sector privado US$ 6545,1 M — "
+        "fuga oculta fuera del sistema"
     )
 
 
@@ -100,7 +89,10 @@ def test_scoring_itcm_pasa_anclas_explicitas_al_monte_carlo(monkeypatch):
 def test_acumular_historico_purga_indicador_sustituido(monkeypatch, tmp_path):
     historico = tmp_path / "indicadores.json"
     historico.write_text(
-        json.dumps({"dolarizacion_depositos": {"2026-06": 29.07}}),
+        json.dumps({
+            "dolarizacion_depositos": {"2026-06": 29.07},
+            "presion_dolarizacion": {"2026-07": 45.24},
+        }),
         encoding="utf-8",
     )
     monkeypatch.setattr(publicar, "HISTORICO_PATH", historico)
@@ -108,7 +100,7 @@ def test_acumular_historico_purga_indicador_sustituido(monkeypatch, tmp_path):
         "cinturones": {
             "macro": {
                 "indicadores": {
-                    "presion_dolarizacion": {"valor": 45.24},
+                    "desequilibrio_monetario": {"valor": 50.91},
                 }
             }
         }
@@ -117,7 +109,8 @@ def test_acumular_historico_purga_indicador_sustituido(monkeypatch, tmp_path):
     store = publicar.acumular_historico(informe)
 
     assert "dolarizacion_depositos" not in store
-    assert list(store["presion_dolarizacion"].values()) == [45.24]
+    assert "presion_dolarizacion" not in store
+    assert list(store["desequilibrio_monetario"].values()) == [50.91]
 
 
 def test_carry_forward_restaura_sentimiento_digital_ausente_de_trends():
@@ -318,16 +311,19 @@ def test_macro_itcm_reconcilia():
     for oculto in ("badlar", "prestamos_privados", "base_monetaria", "tc_mayorista"):
         assert oculto not in c["indicadores"], f"{oculto} debería estar oculto"
     assert "credito_privado" in en_indice
-    presion = en_indice["presion_dolarizacion"]
-    assert presion["peso_efectivo"] == 0.026
-    assert presion["aporte_input_txt"] == publicar._macro_input_txt(
-        "presion_dolarizacion", presion
+    desequilibrio = en_indice["desequilibrio_monetario"]
+    assert desequilibrio["peso_efectivo"] == 0.026
+    assert desequilibrio["aporte_input_txt"] == publicar._macro_input_txt(
+        "desequilibrio_monetario", desequilibrio
     )
     series = json.loads((DATA / "series.json").read_text(encoding="utf-8"))
-    assert "dolarizacion_depositos" not in series
-    serie_presion = series["presion_dolarizacion"]
-    assert serie_presion[0]["fecha"][:7] == "2023-12"
-    assert serie_presion[-1]["valor"] == presion["valor"]
+    for sustituido in ("dolarizacion_depositos", "presion_dolarizacion"):
+        assert sustituido not in series
+    serie_desequilibrio = series["desequilibrio_monetario"]
+    # Arranca en la apertura del cepo y no en dic-2023 como el resto: antes de
+    # eso el componente de fuga no tiene lectura interpretable (ADR-0192).
+    assert serie_desequilibrio[0]["fecha"][:7] == "2025-04"
+    assert serie_desequilibrio[-1]["valor"] == desequilibrio["valor"]
 
     ponderado = sum(i["puntaje_itcm"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itcm_val) <= 0.15, f"ponderado {ponderado} != ITCM {itcm_val}"

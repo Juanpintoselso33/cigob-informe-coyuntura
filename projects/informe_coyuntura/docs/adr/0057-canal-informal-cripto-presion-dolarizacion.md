@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-15
 cinturon: 'macro'
 indicadores: [presion_dolarizacion]
-relacionado: ['0055', '0083']
+relacionado: ['0055', '0083', '0192']
 ambito: 'Cinturón macro · ITCM · `presion_dolarizacion` · régimen abierto (desde abr-2025)'
 ---
 

@@ -18,16 +18,16 @@ def test_itcm_declara_anclas_explicitas_en_sensibilidad():
     assert sensibilidad.INDICES["itcm"]["anclas"] == itcm.ANCLAS_ITCM
 
 
-def test_perturbacion_de_presion_repuntua_con_anclas_explicitas():
+def test_perturbacion_del_desequilibrio_repuntua_con_anclas_explicitas():
     dims = {
         "estabilidad_monetaria": {
             "peso": 1.0,
             "ind": {
-                "presion_dolarizacion": {
+                "desequilibrio_monetario": {
                     "peso": 1.0,
                     "puntaje": 64.8,
                     "banda": 64.8,
-                    "valor": 45.24,
+                    "valor": 35.2,
                 }
             },
         }
@@ -42,5 +42,5 @@ def test_perturbacion_de_presion_repuntua_con_anclas_explicitas():
         escala=itcm.ESCALA_ITCM,
     )
 
-    # +5% del rango crudo 0-100: 45,24 → 50,24; anclas ITCM → 59,8.
+    # +5% del rango crudo 0-100: 35,2 → 40,2; anclas ITCM → 59,8.
     assert resultado == 59.8

@@ -8,7 +8,7 @@ y nada que los obligue.
      componentes: los indicadores nuevos no entraban y la validación externa se
      quedó atrás del índice en silencio.
   2. La matriz de redundancia puntuaba TODO con bandas, pero el motor usa
-     anclas explícitas para `presion_dolarizacion` — hasta 25 puntos de
+     anclas explícitas para `desequilibrio_monetario` — hasta 25 puntos de
      diferencia sobre un número que se publicaba.
   3. El diagnóstico de bandas puntuaba el valor ANUAL del REM contra bandas
      MENSUALES, y mandaba a revisar una banda perfectamente calibrada.

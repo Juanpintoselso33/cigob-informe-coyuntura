@@ -324,8 +324,8 @@ def puntaje_de(valor, indicador: str, bandas_por_indicador: dict,
     hay que saber para puntuar, y que antes vivían separadas:
 
       1. QUÉ ESCALA. Algunos indicadores tienen anclas explícitas que NO
-         coinciden con los puntos medios de sus bandas: `presion_dolarizacion`
-         con valor 75 da 10 puntos por bandas y 35 por anclas.
+         coinciden con los puntos medios de sus bandas: `desequilibrio_monetario`
+         con valor 75 da 18,3 puntos por bandas y 25 por anclas.
       2. SI EL VALOR SE TRANSFORMA ANTES. `rem_ipc_12m` se publica como
          expectativa ANUAL (24,2%) y se puntúa por su equivalente MENSUAL
          (1,82%), contra bandas mensuales.

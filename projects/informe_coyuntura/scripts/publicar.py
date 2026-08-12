@@ -203,7 +203,8 @@ def acumular_historico(informe):
     store = {}
     if HISTORICO_PATH.exists():
         store = json.loads(HISTORICO_PATH.read_text(encoding="utf-8"))
-    store.pop("dolarizacion_depositos", None)
+    for sustituido in ("dolarizacion_depositos", "presion_dolarizacion"):
+        store.pop(sustituido, None)
     ym = datetime.now().strftime("%Y-%m")
     for c in informe["cinturones"].values():
         for ik, ind in c["indicadores"].items():
@@ -472,18 +473,18 @@ def _macro_input_txt(ikey, ind):
     if ikey == "idm" and ind.get("m3_real_ia") is not None:
         return (f"brecha {coma(ind.get('valor'))} pp = M3 priv. real i.a. "
                 f"{coma(ind['m3_real_ia'])}% − M2 priv. real i.a. {coma(ind['m2_real_ia'])}%")
-    if ikey == "presion_dolarizacion" and ind.get("metrica") is not None:
-        meses = int(ind.get("ventana_meses") or 0)
-        periodo = f"{meses} {'mes' if meses == 1 else 'meses'}"
-        if ind.get("regimen") == "precio":
-            return (f"presión {coma(ind.get('valor'))} pts = brecha CCL/mayorista "
-                    f"{coma(ind['metrica'])}% (promedio móvil {periodo})")
-        if ind.get("regimen") == "flujo":
-            ventana = (f"ventana de transición: {periodo}" if ind.get("ventana_parcial")
-                       else f"ventana móvil {periodo}")
-            return (f"presión {coma(ind.get('valor'))} pts = compras netas de USD "
-                    f"de personas humanas {coma(ind['metrica'])}% del M2 privado "
-                    f"({ventana})")
+    if ikey == "desequilibrio_monetario" and ind.get("componente_a") is not None:
+        celdas = {
+            "verde": "confianza real",
+            "amarillo": "dolarización contenida en el sistema",
+            "naranja_rojo": "fuga oculta fuera del sistema",
+            "rojo": "deterioro dentro y fuera del sistema",
+        }
+        lectura = celdas.get(ind.get("celda"), "")
+        return (f"tensión {coma(ind.get('valor'))} pts = liquidez privada en pesos "
+                f"transaccionales {coma(ind['componente_a'])}% × compra neta de "
+                f"divisas del sector privado US$ {coma(ind['componente_b'])} M"
+                + (f" — {lectura}" if lectura else ""))
     if ikey == "iai" and ind.get("componentes"):
         c = ind["componentes"]
         partes = [f"ISAC {coma(c.get('isac'))}%", f"BK importados {coma(c.get('bk_importados'))}%"]

@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-18
 cinturon: 'macro'
 indicadores: [presion_dolarizacion]
-relacionado: ['0057']
+relacionado: ['0057', '0192']
 ambito: 'Cinturón macro · ITCM · `presion_dolarizacion` · régimen abierto'
 origen: 'Auditoría de consistencia del cinturón macro (17-jul-2026), observación 11 — y el stress test que **ADR-0057 dejó pedido**'
 ---

@@ -5,7 +5,7 @@ estado: 'superado'
 nota_estado: 'Superado por ADR-0055'
 fecha: 2026-07-13
 cinturon: 'macro'
-relacionado: ['0009', '0012', '0021', '0030', '0053']
+relacionado: ['0009', '0012', '0021', '0030', '0053', '0192']
 superado_por: ['0055']
 ambito: 'Cinturón macro · ITCM · colector BCRA/INDEC · series históricas · validación externa · web metodológica'
 ---

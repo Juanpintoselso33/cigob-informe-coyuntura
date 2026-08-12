@@ -1,12 +1,13 @@
 ---
 madr: 4
 id: '0055'
-estado: 'aceptado'
+estado: 'superado'
 nota_estado: 'Aceptado · supersede ADR-0054'
 fecha: 2026-07-14
 cinturon: 'macro'
 supersede: ['0054']
 relacionado: ['0006', '0012', '0021', '0030', '0053', '0057']
+superado_por: ['0192']
 ambito: 'Cinturón macro · ITCM · fuentes cambiarias BCRA/ArgentinaDatos · series históricas · validación externa'
 ---
 

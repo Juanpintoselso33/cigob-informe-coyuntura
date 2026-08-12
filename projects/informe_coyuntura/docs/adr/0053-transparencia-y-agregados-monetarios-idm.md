@@ -6,7 +6,7 @@ fecha: 2026-07-13
 cinturon: 'macro'
 indicadores: [idm]
 archivos: ['IndicadorModal.astro', 'metodologia/[id].astro', 'descripciones.ts', 'fichas.ts']
-relacionado: ['0007', '0009', '0051', '0054', '0055']
+relacionado: ['0007', '0009', '0051', '0054', '0055', '0192']
 ambito: 'IDM del ITCM · web (`IndicadorModal.astro`, `metodologia/[id].astro`, `descripciones.ts`, `fichas.ts`) · tests de display'
 ---
 

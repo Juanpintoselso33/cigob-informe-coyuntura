@@ -75,7 +75,20 @@ TECHOS = {
     # a partir de acá el ITCM no puede volver a subir de 0,38 sin que alguien
     # lo firme. El 0,38 que queda es convención irreducible (idm, iai, icip,
     # costo de financiamiento, crédito real: sin historia previa a dic-2023).
-    "ITCM": {"circular": 0.38, "sin_declarar": 0.01},
+    #
+    # SUBE a 0,41 el 2026-08-11 (ADR-0192), y es una decisión tomada, no un
+    # efecto lateral: `desequilibrio_monetario` entra con cortes calibrados por
+    # percentiles de su propia serie —convención— en el lugar de
+    # `presion_dolarizacion`, cuyas anclas venían del documento de diseño. El
+    # cambio de fuente de las anclas mueve la fracción circular del ITCM de
+    # 38,0% a 40,3%.
+    #
+    # Se acepta porque la alternativa no existe: los cortes preliminares del
+    # documento (verde <500, rojo >3.000 millones) no cierran contra el dato
+    # —cero meses verdes en los quince de la ventana— y la propia ficha preveía
+    # reemplazarlos por percentiles reales en su sección 7. Preferir un ancla de
+    # documento que satura el semáforo no es menos circular, es menos útil.
+    "ITCM": {"circular": 0.41, "sin_declarar": 0.01},
     # ITCG y ITCP bajaron el 2026-07-20 (ADR-0121) al declarar el origen de sus
     # bandas sin_declarar: los medidores de avance 0-100 (ITCG) y los indicadores
     # anclados al cero (ITCP: ventaja electoral, quórum, transferencias) eran
@@ -105,7 +118,7 @@ PROCEDENCIA = {
     "ipc_total": ("conceptual", "bandas normativas: metas de estabilidad de precios, deliberadamente NO ancladas a la historia para no blanquear la señal (ADR-0120)"),
     "rem_ipc_12m": ("conceptual", "hereda las bandas normativas del ipc_total —misma vara para inflación esperada y realizada— (ADR-0120)"),
     "idm": ("convencion", "«calibrado con la historia 2024-2026»"),
-    "presion_dolarizacion": ("documento", "«conserva los cortes institucionales» del documento de diseño"),
+    "desequilibrio_monetario": ("convencion", "cortes por percentiles (p0/p25/p50/p75/p100) de cada componente, como pide la sección 7 de la ficha; la matriz A×B y sus cuatro esquinas vienen del documento (ADR-0192)"),
     "recaudacion": ("conceptual", "bandas de variación real en torno al cero; los cortes caen razonablemente en la distribución 2021-2023 de la serie DGI que se puntúa desde ADR-0127 (mediana +4,5%; p0/p14/p57/p80) y NO se recalibraron al cambiar de fuente (ADR-0120)"),
     "saldo_comercial_12m": ("conceptual", "bandas en torno al equilibrio comercial (cero), techo institucional 85; consistentes con la mediana histórica (ADR-0120)"),
     "reservas_bcra": ("conceptual", "bandas en torno al cero de reservas netas: nivel de cobertura, no distribución observada (ADR-0120)"),

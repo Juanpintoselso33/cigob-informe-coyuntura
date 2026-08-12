@@ -14,7 +14,7 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `estabilidad_monetaria` | 26% | `ipc_total`, `rem_ipc_12m`, `idm`, `presion_dolarizacion` |
+| `estabilidad_monetaria` | 26% | `ipc_total`, `rem_ipc_12m`, `idm`, `desequilibrio_monetario` |
 | `viabilidad_fiscal_comercial` | 24% | `resultado_primario`, `recaudacion`, `saldo_comercial_12m` |
 | `financiamiento` | 16% | `reservas_bcra`, `idc`, `costo_financiamiento_tesoro`, `credito_privado` |
 | `actividad` | 11% | `emae_ia`, `emae_difusion`, `ipi_manufacturero` |
@@ -69,19 +69,18 @@ Suma de pesos: 100%.
 
 **Lo gobiernan**: [ADR-0053](../adr/0053-transparencia-y-agregados-monetarios-idm.md) Transparencia y agregados monetarios del IDM
 
-#### Presión de dolarización de carteras
+#### Desequilibrio monetario (confianza en el peso)
 
-`presion_dolarizacion`
+`desequilibrio_monetario`
 
 | | |
 |---|---|
 | Peso dentro de la dimensión | 10% |
 | Peso efectivo en el índice | **2.6%** |
-| Procedencia del ancla | `documento` — «conserva los cortes institucionales» del documento de diseño |
 
-**Bandas**: ≤ 0 → 100 · 0–25 → 85 · 25–50 → 60 · 50–75 → 35 · > 75 → 10
+**Bandas**: ≤ 20 → 100 · 20–50 → 60 · 50–80 → 35 · > 80 → 10
 
-**Lo gobiernan**: [ADR-0057](../adr/0057-canal-informal-cripto-presion-dolarizacion.md) Canal informal (dólar cripto) en la presión de dolarización · [ADR-0083](../adr/0083-presion-dolarizacion-maximo.md) La presión de dolarización pasa a ser el máximo de sus dos canales
+**Lo gobiernan**: [ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va
 
 ### Dimensión `viabilidad_fiscal_comercial` (24%)
 
@@ -288,7 +287,7 @@ histórica.
 
 ## Decisiones abiertas
 
-3 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
+4 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
 
 > La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
 
@@ -300,6 +299,8 @@ histórica.
 - **[ADR-0158](../adr/0158-validacion-del-itcm-por-puntos-de-giro.md)** — El ITCM se valida por puntos de giro, no sólo por correlación
   <br>- **Queda pendiente** el régimen socioeconómico para los otros tres cinturones.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0159. Verificar antes de tratarlo como abierto.
+- **[ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md)** — Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va
+  <br>- El peso definitivo dentro de la dimensión queda pendiente de definir con Diego.
 
 ## Todos los ADR vigentes de este cinturón
 
@@ -316,7 +317,6 @@ histórica.
 - [0028](../adr/0028-idc-z-scores.md) — IdC rediseñado: z-scores de nivel contra la propia historia
 - [0029](../adr/0029-recaudacion-promedio-movil-3m.md) — Recaudación real: promedio móvil de 3 meses sobre IPC cerrado
 - [0053](../adr/0053-transparencia-y-agregados-monetarios-idm.md) — Transparencia y agregados monetarios del IDM
-- [0055](../adr/0055-presion-dolarizacion-carteras-itcm.md) — Presión de dolarización de carteras sensible al régimen cambiario
 - [0056](../adr/0056-suavizado-ajuste-automatico-saldo-comercial.md) — Suavizado del ajuste automático de saldo comercial por composición expo/impo
 - [0057](../adr/0057-canal-informal-cripto-presion-dolarizacion.md) — Canal informal (dólar cripto) en la presión de dolarización
 - [0071](../adr/0071-costo-financiamiento-tesoro.md) — costo_financiamiento_tesoro: el precio del financiamiento soberano entra al ITCM
@@ -336,3 +336,4 @@ histórica.
 - [0127](../adr/0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) — La recaudación mide la base imponible, no la caja: pasa a DGI
 - [0152](../adr/0152-la-recaudacion-mide-nivel-no-variacion.md) — La recaudación pasa a medir NIVEL, y suma los impuestos provinciales
 - [0158](../adr/0158-validacion-del-itcm-por-puntos-de-giro.md) — El ITCM se valida por puntos de giro, no sólo por correlación
+- [0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) — Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va

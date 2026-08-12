@@ -71,7 +71,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0029](0029-recaudacion-promedio-movil-3m.md) | Recaudación real: promedio móvil de 3 meses sobre IPC cerrado | `recaudacion` | vigente |
 | [0053](0053-transparencia-y-agregados-monetarios-idm.md) | Transparencia y agregados monetarios del IDM | `idm` | vigente |
 | [0054](0054-dolarizacion-depositos-itcm.md) | Dolarización de depósitos como indicador del ITCM |  | superado por [0055](0055-presion-dolarizacion-carteras-itcm.md) |
-| [0055](0055-presion-dolarizacion-carteras-itcm.md) | Presión de dolarización de carteras sensible al régimen cambiario |  | vigente |
+| [0055](0055-presion-dolarizacion-carteras-itcm.md) | Presión de dolarización de carteras sensible al régimen cambiario |  | superado por [0192](0192-desequilibrio-monetario-stock-por-flujo.md) |
 | [0056](0056-suavizado-ajuste-automatico-saldo-comercial.md) | Suavizado del ajuste automático de saldo comercial por composición expo/impo | `saldo_comercial_12m` | vigente |
 | [0057](0057-canal-informal-cripto-presion-dolarizacion.md) | Canal informal (dólar cripto) en la presión de dolarización | `presion_dolarizacion` | vigente |
 | [0071](0071-costo-financiamiento-tesoro.md) | costo_financiamiento_tesoro: el precio del financiamiento soberano entra al ITCM | `costo_financiamiento_tesoro` | vigente |
@@ -93,6 +93,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0127](0127-la-recaudacion-mide-la-base-imponible-no-la-caja.md) | La recaudación mide la base imponible, no la caja: pasa a DGI | `recaudacion`, `resultado_primario` | vigente |
 | [0152](0152-la-recaudacion-mide-nivel-no-variacion.md) | La recaudación pasa a medir NIVEL, y suma los impuestos provinciales |  | vigente |
 | [0158](0158-validacion-del-itcm-por-puntos-de-giro.md) | El ITCM se valida por puntos de giro, no sólo por correlación |  | vigente |
+| [0192](0192-desequilibrio-monetario-stock-por-flujo.md) | Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va | `desequilibrio_monetario`, `presion_dolarizacion` | vigente |
 
 ### Política (ITCP)
 

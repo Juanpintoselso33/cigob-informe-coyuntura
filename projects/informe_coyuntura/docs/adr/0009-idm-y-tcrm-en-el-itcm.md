@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-06-28
 cinturon: 'macro'
 archivos: ['scripts/itcm.py', 'scripts/macro.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'tests/', 'datos.ts', 'descripciones.ts', '[slug].astro', 'Hero.astro']
-relacionado: ['0053', '0054']
+relacionado: ['0053', '0054', '0192']
 ambito: '`scripts/itcm.py` · `scripts/macro.py` · `scripts/descargar_series.py` · `scripts/publicar.py` · `tests/` · web (`datos.ts`, `descripciones.ts`, `[slug].astro`, `Hero.astro`)'
 ---
 

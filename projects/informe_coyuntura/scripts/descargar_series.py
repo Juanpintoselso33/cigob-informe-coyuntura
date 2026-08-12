@@ -35,7 +35,7 @@ HTTP_HEADERS = {"User-Agent": "CIGOB-InformeCoyuntura/1.0"}
 INDEC_BASE   = "https://apis.datos.gob.ar/series/api/series/"
 BCRA_BASE    = "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias"
 INDICADORES_SUSTITUIDOS = {
-    "presion_dolarizacion": {"dolarizacion_depositos"},
+    "desequilibrio_monetario": {"presion_dolarizacion", "dolarizacion_depositos"},
 }
 
 # ── Presupuesto de tiempo por indicador (ADR-0173) ────────────────────────────
@@ -264,18 +264,21 @@ def fetch_idm_serie(meses: int | None = None) -> list:
     return [[f"{ym}-01", gap] for ym, gap, _m3, _m2 in serie[-meses:]]
 
 
-def fetch_presion_dolarizacion_serie(
+def fetch_desequilibrio_monetario_serie(
     meses: int | None = None,
 ) -> list:
-    """Serie 0–100 construida por el mismo helper que alimenta el titular."""
+    """Serie de tensión 0–100 construida por el mismo helper que alimenta el titular.
+
+    Arranca en abril de 2025 y no en diciembre de 2023 como el resto: el
+    componente de fuga sólo tiene lectura interpretable desde la apertura del
+    cepo a personas humanas (ver MES_INICIO en desequilibrio_monetario.py)."""
     meses = meses or _meses_desde_asuncion()
-    serie = macro._presion_dolarizacion_serie_mensual(
+    serie = macro._desequilibrio_monetario_serie_mensual(
         meses_hist=meses + 4,
     )
     return [
-        [f'{fila["mes"]}-01', fila["presion"]]
+        [f'{fila["mes"]}-01', fila["tension"]]
         for fila in serie
-        if fila["mes"] >= "2023-12"
     ][-meses:]
 
 
@@ -767,9 +770,9 @@ MACRO_DERIVADAS = [
     ("tcrm_bilateral_eeuu", "índice (base dic-2015)", "BCRA ITCRM",
      lambda: [[f, v] for f, v in macro.fetch_itcrm_bilateral("eeuu")][-32:]),
     ("idm", "pp (brecha i.a. real)", "BCRA (M3/M2 privado) + IPC INDEC", fetch_idm_serie),
-    ("presion_dolarizacion", "pts (0-100)",
-     "ArgentinaDatos (CCL) + BCRA (A3500, M2 privado y Mercado de Cambios)",
-     fetch_presion_dolarizacion_serie),
+    ("desequilibrio_monetario", "pts de tensión (0-100)",
+     "BCRA (M2 transaccional privado, circulante, depósitos privados y Mercado de Cambios)",
+     fetch_desequilibrio_monetario_serie),
     ("idc", "σ vs. su historia", "BCRA (BADLAR/depósitos/préstamos) + IPC INDEC", fetch_idc_serie),
     ("iai", "% i.a. ponderado", "INDEC (ISAC + bienes de capital importados)", fetch_iai_serie),
     ("icip", "% i.a. ponderado", "INDEC (servicios informática + productividad)", fetch_icip_serie),

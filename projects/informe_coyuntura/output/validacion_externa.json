@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-11T03:51:11.609424",
+    "generated_at": "2026-08-11T21:48:47.813720",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -214,43 +214,44 @@
     }
   },
   "serie_itcm": {
-    "2023-12": 31.4,
-    "2024-01": 30.4,
-    "2024-02": 37.8,
-    "2024-03": 37.6,
-    "2024-04": 38.3,
-    "2024-05": 58.6,
-    "2024-06": 49.5,
-    "2024-07": 53.8,
-    "2024-08": 53.2,
-    "2024-09": 58.3,
-    "2024-10": 60.6,
-    "2024-11": 63.7,
-    "2024-12": 69.7,
-    "2025-01": 74.9,
-    "2025-02": 73.5,
-    "2025-03": 69.1,
-    "2025-04": 72.1,
-    "2025-05": 74.3,
-    "2025-06": 71.5,
-    "2025-07": 68.7,
-    "2025-08": 67.8,
-    "2025-09": 67.7,
+    "2023-12": 31.8,
+    "2024-01": 30.7,
+    "2024-02": 37.5,
+    "2024-03": 37.0,
+    "2024-04": 37.3,
+    "2024-05": 58.1,
+    "2024-06": 49.2,
+    "2024-07": 54.1,
+    "2024-08": 53.6,
+    "2024-09": 58.8,
+    "2024-10": 60.9,
+    "2024-11": 63.3,
+    "2024-12": 69.4,
+    "2025-01": 74.7,
+    "2025-02": 73.3,
+    "2025-03": 68.7,
+    "2025-04": 72.5,
+    "2025-05": 73.5,
+    "2025-06": 70.8,
+    "2025-07": 68.3,
+    "2025-08": 67.7,
+    "2025-09": 67.5,
     "2025-10": 66.9,
-    "2025-11": 62.7,
-    "2025-12": 65.4,
-    "2026-01": 60.9,
-    "2026-02": 57.7,
-    "2026-03": 62.0,
-    "2026-04": 60.6,
-    "2026-05": 64.7,
-    "2026-06": 59.1
+    "2025-11": 63.7,
+    "2025-12": 65.7,
+    "2026-01": 60.0,
+    "2026-02": 57.3,
+    "2026-03": 61.8,
+    "2026-04": 59.9,
+    "2026-05": 64.4,
+    "2026-06": 58.6
   },
   "linea_base_itcm": {
     "periodo": "2023-12",
-    "valor": 31.4,
-    "cobertura": 0.826,
+    "valor": 31.8,
+    "cobertura": 0.8,
     "sin_dato": [
+      "desequilibrio_monetario",
       "iai",
       "icip",
       "reservas_bcra"
@@ -320,23 +321,23 @@
   },
   "correlaciones_itcm": {
     "niveles (ITCM vs índice líder)": {
-      "r": 0.696,
+      "r": 0.703,
       "n": 31
     },
     "primeras diferencias (ITCM vs líder)": {
-      "r": 0.402,
+      "r": 0.418,
       "n": 30
     },
     "líder adelantado 1 mes vs ITCM": {
-      "r": 0.394,
+      "r": 0.4,
       "n": 31
     },
     "líder adelantado 3 meses vs ITCM": {
-      "r": -0.167,
+      "r": -0.171,
       "n": 31
     },
     "ITCM adelantado 1 mes vs líder": {
-      "r": 0.74,
+      "r": 0.742,
       "n": 30
     }
   },
@@ -345,19 +346,19 @@
       {
         "mes": "2024-01",
         "tipo": "valle",
-        "amplitud": -11.78,
+        "amplitud": -11.26,
         "provisorio": true
       },
       {
         "mes": "2025-01",
         "tipo": "pico",
-        "amplitud": 8.48,
+        "amplitud": 8.4,
         "provisorio": false
       },
       {
         "mes": "2026-02",
         "tipo": "valle",
-        "amplitud": -5.53,
+        "amplitud": -5.75,
         "provisorio": true
       }
     ],
@@ -510,41 +511,35 @@
         "falsas": 3,
         "perdidos": 2,
         "total": 5
-      },
-      {
-        "componente": "presion_dolarizacion",
-        "falsas": 3,
-        "perdidos": 3,
-        "total": 6
       }
     ],
-    "evaluables": 15,
-    "peores": 14,
+    "evaluables": 14,
+    "peores": 13,
     "iguales": 1,
     "mejores": 0
   },
   "redundancia_itcm": {
     "diferencias": {
       "n_pares": 105,
-      "r_abs_medio": 0.186,
+      "r_abs_medio": 0.188,
       "share_altos": 0.0
     },
     "umbral": 0.7,
     "n_indicadores": 15,
     "n_pares": 105,
     "r_abs_medio": 0.46,
-    "share_altos": 0.229,
-    "share_bajos": 0.362,
+    "share_altos": 0.219,
+    "share_bajos": 0.371,
     "matriz": {
       "costo_financiamiento_tesoro": {
         "credito_privado": -0.026,
+        "desequilibrio_monetario": 0.611,
         "emae_difusion": -0.032,
         "emae_ia": 0.178,
         "idc": 0.11,
         "idm": 0.176,
         "ipc_total": 0.133,
         "ipi_manufacturero": -0.024,
-        "presion_dolarizacion": 0.445,
         "recaudacion": 0.29,
         "rem_ipc_12m": 0.2,
         "reservas_bcra": -0.431,
@@ -554,13 +549,13 @@
       },
       "credito_privado": {
         "costo_financiamiento_tesoro": -0.026,
+        "desequilibrio_monetario": -0.371,
         "emae_difusion": 0.753,
         "emae_ia": 0.8,
         "idc": 0.912,
         "idm": -0.191,
         "ipc_total": 0.859,
         "ipi_manufacturero": 0.671,
-        "presion_dolarizacion": 0.193,
         "recaudacion": -0.344,
         "rem_ipc_12m": 0.908,
         "reservas_bcra": 0.281,
@@ -568,15 +563,31 @@
         "saldo_comercial_12m": 0.652,
         "tcrm": -0.545
       },
+      "desequilibrio_monetario": {
+        "costo_financiamiento_tesoro": 0.611,
+        "credito_privado": -0.371,
+        "emae_difusion": -0.235,
+        "emae_ia": -0.205,
+        "idc": -0.423,
+        "idm": -0.049,
+        "ipc_total": -0.469,
+        "ipi_manufacturero": -0.257,
+        "recaudacion": 0.293,
+        "rem_ipc_12m": -0.368,
+        "reservas_bcra": -0.325,
+        "resultado_primario": -0.293,
+        "saldo_comercial_12m": 0.571,
+        "tcrm": -0.42
+      },
       "emae_difusion": {
         "costo_financiamiento_tesoro": -0.032,
         "credito_privado": 0.753,
+        "desequilibrio_monetario": -0.235,
         "emae_ia": 0.791,
         "idc": 0.657,
         "idm": -0.4,
         "ipc_total": 0.623,
         "ipi_manufacturero": 0.555,
-        "presion_dolarizacion": -0.0,
         "recaudacion": -0.599,
         "rem_ipc_12m": 0.679,
         "reservas_bcra": 0.294,
@@ -587,12 +598,12 @@
       "emae_ia": {
         "costo_financiamiento_tesoro": 0.178,
         "credito_privado": 0.8,
+        "desequilibrio_monetario": -0.205,
         "emae_difusion": 0.791,
         "idc": 0.833,
         "idm": 0.001,
         "ipc_total": 0.732,
         "ipi_manufacturero": 0.767,
-        "presion_dolarizacion": 0.412,
         "recaudacion": -0.256,
         "rem_ipc_12m": 0.743,
         "reservas_bcra": 0.338,
@@ -603,12 +614,12 @@
       "idc": {
         "costo_financiamiento_tesoro": 0.11,
         "credito_privado": 0.912,
+        "desequilibrio_monetario": -0.423,
         "emae_difusion": 0.657,
         "emae_ia": 0.833,
         "idm": -0.071,
         "ipc_total": 0.91,
         "ipi_manufacturero": 0.74,
-        "presion_dolarizacion": 0.264,
         "recaudacion": -0.242,
         "rem_ipc_12m": 0.911,
         "reservas_bcra": 0.586,
@@ -619,12 +630,12 @@
       "idm": {
         "costo_financiamiento_tesoro": 0.176,
         "credito_privado": -0.191,
+        "desequilibrio_monetario": -0.049,
         "emae_difusion": -0.4,
         "emae_ia": 0.001,
         "idc": -0.071,
         "ipc_total": -0.244,
         "ipi_manufacturero": 0.23,
-        "presion_dolarizacion": 0.338,
         "recaudacion": 0.28,
         "rem_ipc_12m": -0.292,
         "reservas_bcra": -0.196,
@@ -635,12 +646,12 @@
       "ipc_total": {
         "costo_financiamiento_tesoro": 0.133,
         "credito_privado": 0.859,
+        "desequilibrio_monetario": -0.469,
         "emae_difusion": 0.623,
         "emae_ia": 0.732,
         "idc": 0.91,
         "idm": -0.244,
         "ipi_manufacturero": 0.588,
-        "presion_dolarizacion": 0.212,
         "recaudacion": -0.297,
         "rem_ipc_12m": 0.935,
         "reservas_bcra": 0.645,
@@ -651,12 +662,12 @@
       "ipi_manufacturero": {
         "costo_financiamiento_tesoro": -0.024,
         "credito_privado": 0.671,
+        "desequilibrio_monetario": -0.257,
         "emae_difusion": 0.555,
         "emae_ia": 0.767,
         "idc": 0.74,
         "idm": 0.23,
         "ipc_total": 0.588,
-        "presion_dolarizacion": 0.312,
         "recaudacion": -0.293,
         "rem_ipc_12m": 0.54,
         "reservas_bcra": 0.49,
@@ -664,32 +675,16 @@
         "saldo_comercial_12m": 0.384,
         "tcrm": -0.543
       },
-      "presion_dolarizacion": {
-        "costo_financiamiento_tesoro": 0.445,
-        "credito_privado": 0.193,
-        "emae_difusion": -0.0,
-        "emae_ia": 0.412,
-        "idc": 0.264,
-        "idm": 0.338,
-        "ipc_total": 0.212,
-        "ipi_manufacturero": 0.312,
-        "recaudacion": 0.336,
-        "rem_ipc_12m": 0.268,
-        "reservas_bcra": -0.386,
-        "resultado_primario": 0.445,
-        "saldo_comercial_12m": 0.613,
-        "tcrm": -0.754
-      },
       "recaudacion": {
         "costo_financiamiento_tesoro": 0.29,
         "credito_privado": -0.344,
+        "desequilibrio_monetario": 0.293,
         "emae_difusion": -0.599,
         "emae_ia": -0.256,
         "idc": -0.242,
         "idm": 0.28,
         "ipc_total": -0.297,
         "ipi_manufacturero": -0.293,
-        "presion_dolarizacion": 0.336,
         "rem_ipc_12m": -0.297,
         "reservas_bcra": -0.496,
         "resultado_primario": -0.084,
@@ -699,13 +694,13 @@
       "rem_ipc_12m": {
         "costo_financiamiento_tesoro": 0.2,
         "credito_privado": 0.908,
+        "desequilibrio_monetario": -0.368,
         "emae_difusion": 0.679,
         "emae_ia": 0.743,
         "idc": 0.911,
         "idm": -0.292,
         "ipc_total": 0.935,
         "ipi_manufacturero": 0.54,
-        "presion_dolarizacion": 0.268,
         "recaudacion": -0.297,
         "reservas_bcra": 0.365,
         "resultado_primario": 0.901,
@@ -715,13 +710,13 @@
       "reservas_bcra": {
         "costo_financiamiento_tesoro": -0.431,
         "credito_privado": 0.281,
+        "desequilibrio_monetario": -0.325,
         "emae_difusion": 0.294,
         "emae_ia": 0.338,
         "idc": 0.586,
         "idm": -0.196,
         "ipc_total": 0.645,
         "ipi_manufacturero": 0.49,
-        "presion_dolarizacion": -0.386,
         "recaudacion": -0.496,
         "rem_ipc_12m": 0.365,
         "resultado_primario": 0.05,
@@ -731,13 +726,13 @@
       "resultado_primario": {
         "costo_financiamiento_tesoro": 0.336,
         "credito_privado": 0.792,
+        "desequilibrio_monetario": -0.293,
         "emae_difusion": 0.465,
         "emae_ia": 0.691,
         "idc": 0.866,
         "idm": 0.002,
         "ipc_total": 0.842,
         "ipi_manufacturero": 0.464,
-        "presion_dolarizacion": 0.445,
         "recaudacion": -0.084,
         "rem_ipc_12m": 0.901,
         "reservas_bcra": 0.05,
@@ -747,13 +742,13 @@
       "saldo_comercial_12m": {
         "costo_financiamiento_tesoro": 0.476,
         "credito_privado": 0.652,
+        "desequilibrio_monetario": 0.571,
         "emae_difusion": 0.352,
         "emae_ia": 0.591,
         "idc": 0.689,
         "idm": 0.003,
         "ipc_total": 0.721,
         "ipi_manufacturero": 0.384,
-        "presion_dolarizacion": 0.613,
         "recaudacion": -0.043,
         "rem_ipc_12m": 0.822,
         "reservas_bcra": -0.33,
@@ -763,13 +758,13 @@
       "tcrm": {
         "costo_financiamiento_tesoro": -0.551,
         "credito_privado": -0.545,
+        "desequilibrio_monetario": -0.42,
         "emae_difusion": -0.273,
         "emae_ia": -0.641,
         "idc": -0.66,
         "idm": -0.282,
         "ipc_total": -0.626,
         "ipi_manufacturero": -0.543,
-        "presion_dolarizacion": -0.754,
         "recaudacion": -0.023,
         "rem_ipc_12m": -0.667,
         "reservas_bcra": 0.165,
@@ -959,16 +954,6 @@
         "por_diseno": null
       },
       {
-        "a": "presion_dolarizacion",
-        "b": "tcrm",
-        "r": -0.754,
-        "n": 31,
-        "dimension_a": "estabilidad_monetaria",
-        "dimension_b": "competitividad_externa",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "credito_privado",
         "b": "emae_difusion",
         "r": 0.753,
@@ -1019,8 +1004,8 @@
         "por_diseno": null
       }
     ],
-    "pares_cruzados": 19,
-    "pares_no_explicados": 19
+    "pares_cruzados": 18,
+    "pares_no_explicados": 18
   },
   "redundancia_itcg": {
     "diferencias": {
@@ -2336,15 +2321,15 @@
     "2026-05": 2131.0,
     "2026-06": 2087.8,
     "2026-07": 2090.0,
-    "2026-08": 1977.0
+    "2026-08": 1913.2
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
-      "r": 0.765,
+      "r": 0.764,
       "n": 33
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.152,
+      "r": 0.17,
       "n": 32
     },
     "niveles (ITCG vs ICG)": {
@@ -4196,8 +4181,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": true,
-          "r_niveles": 0.765,
-          "r_diferencias": 0.152,
+          "r_niveles": 0.764,
+          "r_diferencias": 0.17,
           "n": 33
         },
         {
@@ -4227,9 +4212,9 @@
         "brecha": 0.011
       },
       "diferencias": {
-        "convergente": 0.132,
+        "convergente": 0.137,
         "discriminante": 0.163,
-        "brecha": -0.031
+        "brecha": -0.026
       },
       "factor": {
         "cargas": {
@@ -4412,8 +4397,8 @@
         ],
         "r_niveles": 0.668,
         "r_diferencias": 0.008,
-        "mejor_sola_niveles": 0.765,
-        "mejor_sola_diferencias": 0.152,
+        "mejor_sola_niveles": 0.764,
+        "mejor_sola_diferencias": 0.17,
         "aporte_sobre_tendencia": {
           "n": 31,
           "suficiente": true,
@@ -4583,7 +4568,7 @@
           ]
         ]
       },
-      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,385 y a las 11 ajenas con 0,374. En los cambios mes a mes la separación no se sostiene: 0,132 con lo propio contra 0,163 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+      "lectura": "Contra un panel de 15 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,385 y a las 11 ajenas con 0,374. En los cambios mes a mes la separación no se sostiene: 0,137 con lo propio contra 0,163 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
     "itcp": {
       "indice": "itcp",

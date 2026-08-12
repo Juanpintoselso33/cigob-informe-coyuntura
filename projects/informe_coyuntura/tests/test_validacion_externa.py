@@ -13,11 +13,11 @@ def test_carga_itcm_prioriza_csv_fresco_y_preserva_historico(monkeypatch, tmp_pa
     snapshot = tmp_path / "series.json"
     snapshot.write_text(json.dumps({
         "idm": [{"fecha": "2023-12-01", "valor": 1.0}],
-        "presion_dolarizacion": [{"fecha": "2023-12-01", "valor": -99.0}],
+        "desequilibrio_monetario": [{"fecha": "2023-12-01", "valor": -99.0}],
     }), encoding="utf-8")
     monkeypatch.setattr(validacion_externa, "SERIES", snapshot)
     monkeypatch.setattr(validacion_externa.publicar, "build_series", lambda: {
-        "presion_dolarizacion": [
+        "desequilibrio_monetario": [
             {"fecha": "2023-12-01", "valor": -2.0},
             {"fecha": "2024-01-01", "valor": 1.5},
         ],
@@ -26,7 +26,7 @@ def test_carga_itcm_prioriza_csv_fresco_y_preserva_historico(monkeypatch, tmp_pa
     series = validacion_externa._cargar_series_itcm()
 
     assert series["idm"] == [{"fecha": "2023-12-01", "valor": 1.0}]
-    assert series["presion_dolarizacion"][-1] == {
+    assert series["desequilibrio_monetario"][-1] == {
         "fecha": "2024-01-01",
         "valor": 1.5,
     }
@@ -35,7 +35,7 @@ def test_carga_itcm_prioriza_csv_fresco_y_preserva_historico(monkeypatch, tmp_pa
 def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
     monkeypatch.setattr(validacion_externa, "_cargar_series_itcm", lambda: {
         "ipc_total": [{"fecha": "2023-12-01", "valor": 25.5}],
-        "presion_dolarizacion": [{"fecha": "2023-12-01", "valor": -2.0}],
+        "desequilibrio_monetario": [{"fecha": "2023-12-01", "valor": -2.0}],
     })
     recibidos = []
 
@@ -51,7 +51,7 @@ def test_reconstruccion_itcm_incluye_dolarizacion(monkeypatch):
         "rem_ipc_12m": None,
         "saldo_comercial_12m": None,
         "idm": None,
-        "presion_dolarizacion": -2.0,
+        "desequilibrio_monetario": -2.0,
         "recaudacion": None,
         "reservas_bcra": None,
         "idc": None,
@@ -139,7 +139,7 @@ def test_todo_indicador_del_itcm_con_serie_entra_a_la_reconstruccion():
 def test_la_matriz_puntua_con_la_misma_escala_que_el_indice():
     """Bug encontrado por auditoría externa (18-jul-2026): la matriz de
     redundancia puntuaba TODO por bandas, pero el motor usa anclas explícitas
-    para presion_dolarizacion, y no coinciden (valor 75 → 10 por bandas, 35 por
+    para desequilibrio_monetario, y no coinciden (valor 75 → 10 por bandas, 35 por
     anclas). La matriz correlacionaba un puntaje que el índice nunca usa,
     contradiciendo la premisa declarada de ADR-0075.
 

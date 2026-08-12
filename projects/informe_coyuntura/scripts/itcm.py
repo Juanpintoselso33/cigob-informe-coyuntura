@@ -53,11 +53,14 @@ Incorporaciones de la 3ª tanda (propuesta "Índice de Desequilibrio Monetario"
     (oferta vs demanda real de pesos) sin esos defectos. El IDM se computa en
     macro.py a partir de circulante (var. 17) + depósitos privados (var. 100) y
     M2 privado transaccional (var. 197) del BCRA, deflactados por el IPC.
-  * Presión de dolarización de carteras: indicador separado del IDM que usa
-    brecha CCL/mayorista durante el régimen restringido y compras netas de USD
-    de personas humanas relativas al M2 privado durante el régimen abierto.
-    Ambos observables se convierten a una presión común 0-100; mayor presión
-    reduce el ITCM mediante anclas explícitas, sin confundir el CERA con una corrida.
+  * Desequilibrio monetario (ficha de Diego, ago-2026; ADR-0192): indicador
+    separado del IDM que cruza DOS componentes en una matriz — cuánta de la
+    liquidez privada total sigue en pesos transaccionales (stock, dentro del
+    sistema) contra cuántos dólares netos compra el sector privado no financiero
+    (flujo, fuera del sistema). Reemplaza a `presion_dolarizacion` (ADR-0055),
+    que medía la misma fuga cambiaria desde la misma fuente del BCRA y quedaba
+    contándola dos veces dentro de la dimensión. El módulo resuelve la matriz y
+    publica una tensión 0-100; mayor tensión reduce el ITCM.
   * Nueva dimensión COMPETITIVIDAD EXTERNA (12%): el TCRM (ITCRM oficial del BCRA,
     base 2015=100) deja de ser contexto y puntúa. Apreciación real = atraso
     cambiario = más tensión. Las 4 dimensiones originales se recortan en
@@ -80,7 +83,6 @@ macro.py como promedios ponderados de variaciones interanuales:
 from pathlib import Path
 
 import parametrica
-from presion_dolarizacion import ANCLAS_PUNTAJE
 
 INF = float("inf")
 
@@ -115,12 +117,16 @@ BANDAS_ITCM = {
         # may-26 va de −11 pp en la remonetización post-estabilización a +7 pp en el pico).
         (-INF, -2.0, 100), (-2.0, 2.0, 85), (2.0, 5.0, 60), (5.0, 8.0, 35), (8.0, INF, 10),
     ],
-    "presion_dolarizacion": [           # presión de salida del peso, escala 0-100
-        # La categoría conserva los cortes institucionales; el puntaje continuo usa
-        # ANCLAS_ITCM para reproducir exactamente 0→100, 25→85, 50→60,
-        # 75→35 y 100→10, sin reinterpretar los cortes como puntos medios.
-        (-INF, 0.0, 100), (0.0, 25.0, 85), (25.0, 50.0, 60),
-        (50.0, 75.0, 35), (75.0, INF, 10),
+    "desequilibrio_monetario": [        # tensión 0-100 de la matriz A × B (ADR-0192)
+        # El valor crudo YA VIENE en unidades de tensión: desequilibrio_monetario.py
+        # resuelve la matriz de la ficha por interpolación bilineal y publica
+        # 0 (verde) a 100 (deterioro total). Estos cortes son los CUATRO COLORES
+        # de esa matriz —sus esquinas (0 · 40 · 77,5 · 90) caen una en cada tramo—
+        # y sirven a la lectura categórica; el puntaje continuo sale de
+        # ANCLAS_ITCM, que es la inversión exacta puntaje = 100 − tensión.
+        # La divergencia banda/ancla es deliberada y del mismo tipo que la que
+        # documenta ADR-0082: el motor siempre usa las anclas.
+        (-INF, 20.0, 100), (20.0, 50.0, 60), (50.0, 80.0, 35), (80.0, INF, 10),
     ],
     "recaudacion": [                    # índice de base imponible real (100 = 4T-2023)
         # ANCLAS NUEVAS (ADR-0152). La métrica dejó de ser variación interanual y
@@ -265,7 +271,11 @@ BANDAS_ITCM = {
 }
 
 ANCLAS_ITCM = {
-    "presion_dolarizacion": ANCLAS_PUNTAJE,
+    # Las cuatro esquinas de la matriz del desequilibrio monetario (0 · 40 ·
+    # 77,5 · 90 de tensión → 100 · 60 · 22,5 · 10 de puntaje) caen TODAS sobre
+    # esta recta, así que dos anclas la reproducen exactamente y no hay una
+    # segunda escala que se pueda desincronizar de la del módulo.
+    "desequilibrio_monetario": ((0.0, 100.0), (100.0, 0.0)),
 }
 
 # Dimensiones del índice con su peso y la ponderación interna de indicadores.
@@ -281,7 +291,12 @@ DIMENSIONES_ITCM = {
             "ipc_total": 0.40,
             "rem_ipc_12m": 0.25,
             "idm": 0.25,
-            "presion_dolarizacion": 0.10,
+            # Hereda el 10% que tenía presion_dolarizacion, a la que reemplaza
+            # (ADR-0192). La ficha pide "un peso similar al de los indicadores
+            # cambiarios/de reservas" pero deja el número final a definir con
+            # Diego: hasta entonces se conserva el peso del indicador que sale,
+            # que es el cambio mínimo y no inventa una ponderación nueva.
+            "desequilibrio_monetario": 0.10,
         },
     },
     "viabilidad_fiscal_comercial": {

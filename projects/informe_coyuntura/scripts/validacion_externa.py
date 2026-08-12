@@ -78,7 +78,7 @@ CONSUMO_SHOPPINGS_ID = "458.1_VENTAS_TOTADA_0_M_52_56"
 # Se usan SUBCUENTAS DE NO RESIDENTES y no el total: el total de la cuenta
 # equivale a la variación de reservas, y `reservas_bcra` es componente del ITCM.
 # Por la misma regla queda afuera «formación de activos externos», que sale del
-# mismo balance cambiario que `presion_dolarizacion` (también componente).
+# mismo balance cambiario que `desequilibrio_monetario` (también componente).
 #
 # Son FLUJOS en millones de dólares que cruzan el cero: no se rebasean a 100
 # —dividir por un promedio cercano a cero no significa nada— y no hace falta,
@@ -290,7 +290,7 @@ def _valores_itcm_por_mes() -> dict:
     ipc_mm = m("ipc_total")               # ya publicada en % m/m (04-jul-2026)
     rem = m("rem_ipc_12m")                # % anual → equivalente mensual
     saldo = m("saldo_comercial")          # M USD mensual → suma móvil 12m
-    directos = {k: m(k) for k in ("idm", "presion_dolarizacion", "recaudacion",
+    directos = {k: m(k) for k in ("idm", "desequilibrio_monetario", "recaudacion",
                                   "reservas_bcra", "idc", "credito_privado",
                                   "emae_ia", "emae_difusion", "ipi_manufacturero", "tcrm",
                                   # ADR-0071 / ADR-0072: ambos tienen serie

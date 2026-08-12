@@ -102,10 +102,10 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Detecta si sobran pesos respecto de lo que la economía quiere retener: una brecha positiva señala excedente monetario que puede presionar precios y brecha cambiaria; una negativa, remonetización traccionada por demanda real de dinero.",
     frecuencia: "Mensual", tipo: "Brecha i.a. real",
   },
-  presion_dolarizacion: {
-    que: "Una medida de 0 a 100 de la presión por salir del peso. Bajo restricciones cambiarias observa la brecha entre el dólar CCL y el mayorista; desde abril de 2025 combina las compras netas de dólares de personas humanas en relación con el M2 privado (canal bancarizado) con la brecha del dólar cripto frente al mayorista (canal no bancarizado).",
-    aporta: "Distingue la presión de cartera que se expresa en precios paralelos de la que, con acceso abierto, se expresa en compras efectivas de divisas — y ya no se queda ciega a la demanda que elige un canal no bancarizado. Mayor presión reduce el puntaje de estabilidad monetaria.",
-    frecuencia: "Mensual", tipo: "Presión 0–100",
+  desequilibrio_monetario: {
+    que: "Una medida de 0 a 100 de la tensión monetaria vista desde la confianza en el peso. Cruza dos cosas que por separado engañan: cuánta de la liquidez privada total —pesos más dólares depositados— sigue estando en pesos de uso transaccional (lo que se ve, porque queda dentro del sistema financiero), y cuántos dólares netos compra el sector privado no financiero en el mercado de cambios (lo que se va, aunque nunca pase por un depósito).",
+    aporta: "Los dos componentes se leen juntos porque uno solo miente: si la salida hacia el colchón es fuerte, la foto de adentro puede verse estable o hasta mejorando —esos dólares nunca entraron al denominador— mientras el fondo es lo peor posible. El resultado sale de cruzarlos en una matriz, no de promediarlos. Mayor tensión reduce el puntaje de estabilidad monetaria.",
+    frecuencia: "Mensual", tipo: "Tensión 0–100",
   },
   iai: {
     que: "Índice Anticipador de Inversión: mide la inversión física/tradicional combinando la actividad de la construcción (ISAC) y la importación de bienes de capital, en variación interanual.",
