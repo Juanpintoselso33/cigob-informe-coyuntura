@@ -273,6 +273,13 @@ def subir_a_bigquery(informe: list[dict], corrida: str) -> str | None:
     de discrepancias es consultable en el tiempo — que es exactamente el dato con
     el que después se decide si esto pasa a fallar de verdad.
     """
+    # Guarda contra tests: `main()` es testeable y llama acá, así que sin esto
+    # una corrida de pytest escribe filas reales en la tabla de produccion. Pasó
+    # el 2026-08-12: un test dejó una fila de un caso inventado y el panel
+    # publicó "1 campo verificado" en vez de 9, porque la vista toma el último
+    # `generated_at`. Un test no puede tocar el dato que el panel muestra.
+    if "pytest" in sys.modules:
+        return None
     try:
         from google.cloud import bigquery
     except ImportError:

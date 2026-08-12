@@ -34,6 +34,8 @@ from datetime import datetime, timezone
 PROYECTO = os.environ.get("GCP_PROJECT", "cigob-analytics")
 DATASET = "informe_coyuntura"
 PREFIJO = "custom.googleapis.com/informe"
+BUCKET = os.environ.get("PANEL_BUCKET", f"{PROYECTO}-panel")
+PANEL_URL = f"https://storage.cloud.google.com/{BUCKET}/panel.html"
 
 # Cada métrica con su descripción: son las que arma `panel_ml_salud`.
 METRICAS = {
@@ -145,25 +147,30 @@ def dashboard() -> dict:
         "mosaicLayout": {
             "columns": 12,
             "tiles": [
-                {"width": 12, "height": 1, "xPos": 0, "yPos": 0,
+                {"width": 12, "height": 2, "xPos": 0, "yPos": 0,
                  "widget": {"title": "", "text": {
-                     "content": ("**Sala de máquinas.** Detector de anomalías, "
-                                 "segundo lector de los PDF de origen y pronóstico "
-                                 "de las diarias del BCRA. Ninguno toca el snapshot "
-                                 "publicado. Detalle en BigQuery → vistas `panel_ml_*`."),
+                     "content": (
+                         "### Sala de máquinas\n"
+                         "Este tablero es el **semáforo y la alerta**: Cloud Monitoring "
+                         "sólo grafica métricas, así que el pronóstico a 30 días, la "
+                         "tabla de parser-vs-modelo y el detalle de las anomalías no "
+                         "entran acá.\n\n"
+                         f"**Panel completo → [{PANEL_URL}]({PANEL_URL})**  \n"
+                         "Datos → BigQuery, vistas `panel_ml_*`. "
+                         "Ninguna de las tres herramientas toca el snapshot publicado."),
                      "format": "MARKDOWN"}}},
-                {"width": 3, "height": 3, "xPos": 0, "yPos": 1,
+                {"width": 3, "height": 3, "xPos": 0, "yPos": 2,
                  "widget": _scorecard("alertas_abiertas", "Alertas abiertas", 1)},
-                {"width": 3, "height": 3, "xPos": 3, "yPos": 1,
+                {"width": 3, "height": 3, "xPos": 3, "yPos": 2,
                  "widget": _scorecard("campos_en_discrepancia",
                                       "Campos en discrepancia", 0)},
-                {"width": 3, "height": 3, "xPos": 6, "yPos": 1,
+                {"width": 3, "height": 3, "xPos": 6, "yPos": 2,
                  "widget": _scorecard("anomalias_a_revisar", "A revisar", 1)},
-                {"width": 3, "height": 3, "xPos": 9, "yPos": 1,
+                {"width": 3, "height": 3, "xPos": 9, "yPos": 2,
                  "widget": _scorecard("campos_verificados", "Campos verificados", 999)},
-                {"width": 6, "height": 4, "xPos": 0, "yPos": 4,
+                {"width": 6, "height": 4, "xPos": 0, "yPos": 5,
                  "widget": _widget("alertas_abiertas", "Alertas abiertas en el tiempo")},
-                {"width": 6, "height": 4, "xPos": 6, "yPos": 4,
+                {"width": 6, "height": 4, "xPos": 6, "yPos": 5,
                  "widget": _widget("campos_en_discrepancia",
                                    "Discrepancias parser vs modelo")},
             ],
@@ -190,6 +197,54 @@ def crear_dashboard(s) -> str | None:
         print(f"  [!] dashboard: HTTP {r.status_code} {r.text[:250]}", file=sys.stderr)
         return None
     return nombre.rsplit("/", 1)[-1] if nombre else None
+
+
+def politica_alerta(s) -> str | None:
+    """Avisa cuando el parser y el modelo dejan de coincidir.
+
+    Es lo único que justifica Cloud Monitoring acá: un panel hay que ir a
+    mirarlo, una política te busca. Se dispara sólo con `campos_en_discrepancia`
+    —no con las anomalías— porque una discrepancia significa que dos lectores
+    independientes del MISMO documento dicen cosas distintas, y eso siempre
+    amerita mirar. Las anomalías, medido, son casi siempre eventos reales.
+    """
+    nombre = "Informe de Coyuntura — el parser y el modelo no coinciden"
+    base = f"https://monitoring.googleapis.com/v3/projects/{PROYECTO}/alertPolicies"
+    existentes = s.get(base).json().get("alertPolicies", []) or []
+    if any(p.get("displayName") == nombre for p in existentes):
+        return "ya existía"
+
+    cuerpo = {
+        "displayName": nombre,
+        "documentation": {
+            "content": (f"Un campo leído del PDF difiere entre el parser de regex y "
+                        f"el modelo. Revisar el documento de origen antes de confiar "
+                        f"en el indicador.\n\nPanel: {PANEL_URL}"),
+            "mimeType": "text/markdown",
+        },
+        "combiner": "OR",
+        "conditions": [{
+            "displayName": "campos_en_discrepancia > 0",
+            "conditionThreshold": {
+                "filter": (f'metric.type="{PREFIJO}/campos_en_discrepancia" '
+                           'resource.type="global"'),
+                "comparison": "COMPARISON_GT",
+                "thresholdValue": 0,
+                "duration": "0s",
+                "aggregations": [{"alignmentPeriod": "3600s",
+                                  "perSeriesAligner": "ALIGN_MAX"}],
+            },
+        }],
+        # Sin canal de notificación: crearlo requiere confirmar un mail desde la
+        # consola, así que la política queda armada y el canal se engancha a mano.
+        "notificationChannels": [],
+        "enabled": True,
+    }
+    r = s.post(base, data=json.dumps(cuerpo))
+    if r.status_code >= 300:
+        print(f"  [!] política: HTTP {r.status_code} {r.text[:200]}", file=sys.stderr)
+        return None
+    return (r.json() or {}).get("name", "").rsplit("/", 1)[-1]
 
 
 def links_looker() -> dict:
@@ -231,6 +286,10 @@ def main() -> int:
         if did:
             print(f"  dashboard: https://console.cloud.google.com/monitoring/"
                   f"dashboards/builder/{did}?project={PROYECTO}")
+        pol = politica_alerta(s)
+        if pol:
+            print(f"  política de alerta: {pol}")
+        print(f"  panel completo: {PANEL_URL}")
 
     print("\n  Looker Studio (abre con la vista ya conectada, falta un clic en «Crear»):")
     for titulo, url in links_looker().items():

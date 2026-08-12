@@ -47,6 +47,11 @@ projects/informe_coyuntura/output/bq_ml/
 # es opinión sobre un dato, no el dato, y se regenera solo. Ver ADR-0198.
 projects/informe_coyuntura/output/verificacion_pdf/
 
+# El panel HTML generado (scripts/panel_html.py). Se regenera desde las vistas
+# de BigQuery en cada corrida y se publica en Cloud Storage; versionarlo sería
+# guardar una foto de algo que ya vive en otro lado. Ver ADR-0198.
+projects/informe_coyuntura/output/panel/
+
 
 # Backups transitorios de un archivo (el script crea .bak al actualizar)
 *.bak

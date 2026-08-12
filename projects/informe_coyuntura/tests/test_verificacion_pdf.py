@@ -120,6 +120,18 @@ def test_un_caso_omitido_no_borra_su_ultima_lectura(monkeypatch, tmp_path):
     assert guardado["casos"][0]["reusado"] is True
 
 
+def test_los_tests_no_escriben_en_bigquery():
+    """Incidente del 2026-08-12: `main()` es testeable y llama a
+    `subir_a_bigquery`, así que una corrida de pytest dejó una fila de un caso
+    inventado en la tabla de producción. La vista del panel toma el último
+    `generated_at`, así que esa fila hizo que el panel publicara «1 campo
+    verificado» en vez de 9. Un test no puede tocar el dato que el panel muestra.
+    """
+    assert vp.subir_a_bigquery([{"caso": "x", "parser": {"a": 1.0},
+                                 "modelo": {"a": 1.0},
+                                 "discrepancias": []}], "2026-01-01") is None
+
+
 def test_el_modelo_esta_declarado_en_una_constante():
     """Se eligió midiendo, y las bajas de modelo son frecuentes: cambiarlo tiene
     que ser una línea, no una búsqueda por el archivo."""

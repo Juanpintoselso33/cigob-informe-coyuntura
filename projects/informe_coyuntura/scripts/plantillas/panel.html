@@ -1,0 +1,450 @@
+<title>Sala de Máquinas</title>
+<style>
+:root{
+  --ground:#F1F4F5; --surface:#FFFFFF; --surface-2:#F7F9FA;
+  --ink:#12171A; --muted:#5A656C; --line:#DDE3E6; --line-soft:#E9EDEF;
+  --accent:#0B6F78; --accent-soft:#E2F0F1;
+  --ok:#2C7150; --ok-soft:#E4EFE9; --warn:#9C5D00; --warn-soft:#F7EDDC;
+  --crit:#A0281F; --crit-soft:#F7E4E2;
+  --mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0C1013; --surface:#151A1E; --surface-2:#1A2126;
+    --ink:#E3E9EC; --muted:#8A959C; --line:#283137; --line-soft:#1F272C;
+    --accent:#48BDC6; --accent-soft:#123336;
+    --ok:#5BAE83; --ok-soft:#162B22; --warn:#D3922F; --warn-soft:#2E2413;
+    --crit:#E0685C; --crit-soft:#2E1917;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0C1013; --surface:#151A1E; --surface-2:#1A2126;
+  --ink:#E3E9EC; --muted:#8A959C; --line:#283137; --line-soft:#1F272C;
+  --accent:#48BDC6; --accent-soft:#123336;
+  --ok:#5BAE83; --ok-soft:#162B22; --warn:#D3922F; --warn-soft:#2E2413;
+  --crit:#E0685C; --crit-soft:#2E1917;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--sans); font-size:15px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1040px; margin:0 auto; padding:40px 24px 72px;
+      display:flex; flex-direction:column; gap:34px}
+h1,h2,h3{margin:0; text-wrap:balance; font-weight:600}
+h1{font-size:1.55rem; letter-spacing:-.015em}
+h2{font-size:1.02rem; letter-spacing:-.005em}
+p{margin:0}
+.num{font-variant-numeric:tabular-nums; font-family:var(--mono)}
+
+/* ── etiquetas y cabeceras ─────────────────────────────────────────── */
+.eyebrow{
+  font-family:var(--mono); font-size:.66rem; text-transform:uppercase;
+  letter-spacing:.13em; color:var(--muted); font-weight:600;
+}
+.sec{display:flex; flex-direction:column; gap:14px}
+.sec-head{display:flex; align-items:baseline; justify-content:space-between;
+          gap:16px; flex-wrap:wrap; border-bottom:1px solid var(--line);
+          padding-bottom:9px}
+.sec-note{font-size:.82rem; color:var(--muted); max-width:60ch}
+
+/* ── encabezado ────────────────────────────────────────────────────── */
+header{display:flex; flex-direction:column; gap:9px}
+.sub{color:var(--muted); font-size:.9rem; max-width:66ch}
+.stamps{display:flex; gap:20px; flex-wrap:wrap; font-family:var(--mono);
+        font-size:.72rem; color:var(--muted)}
+.stamps b{font-weight:500; color:var(--ink)}
+
+/* ── barra de estado ───────────────────────────────────────────────── */
+.estado{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  border:1px solid var(--line); border-radius:3px; overflow:hidden;
+  background:var(--surface);
+}
+.estado > div{padding:16px 18px; border-right:1px solid var(--line-soft);
+              display:flex; flex-direction:column; gap:5px}
+.estado > div:last-child{border-right:0}
+.estado .v{font-family:var(--mono); font-size:1.75rem; line-height:1;
+           font-variant-numeric:tabular-nums; font-weight:500}
+.estado .k{font-family:var(--mono); font-size:.66rem; text-transform:uppercase;
+           letter-spacing:.1em; color:var(--muted)}
+.v.ok{color:var(--ok)} .v.warn{color:var(--warn)} .v.crit{color:var(--crit)}
+
+/* ── chips ─────────────────────────────────────────────────────────── */
+.chip{display:inline-flex; align-items:center; gap:6px; padding:2px 8px;
+      border-radius:2px; font-family:var(--mono); font-size:.68rem;
+      text-transform:uppercase; letter-spacing:.07em; font-weight:600;
+      white-space:nowrap}
+.chip.ok{background:var(--ok-soft); color:var(--ok)}
+.chip.warn{background:var(--warn-soft); color:var(--warn)}
+.chip.crit{background:var(--crit-soft); color:var(--crit)}
+.chip.mut{background:var(--surface-2); color:var(--muted)}
+.chip::before{content:""; width:5px; height:5px; border-radius:50%;
+              background:currentColor; flex:none}
+
+/* ── tarjetas ──────────────────────────────────────────────────────── */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(268px,1fr)); gap:14px}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:3px;
+      padding:18px; display:flex; flex-direction:column; gap:12px}
+.card h3{font-size:.95rem}
+.card .desc{font-size:.83rem; color:var(--muted); line-height:1.5}
+.card .top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
+.metric{display:flex; align-items:baseline; gap:7px; font-family:var(--mono)}
+.metric .big{font-size:1.5rem; font-variant-numeric:tabular-nums}
+.metric .unit{font-size:.72rem; color:var(--muted)}
+
+/* ── alerta ────────────────────────────────────────────────────────── */
+.alerta{background:var(--surface); border:1px solid var(--line);
+        border-left:3px solid var(--warn); border-radius:3px; padding:18px 20px;
+        display:flex; flex-direction:column; gap:10px}
+.alerta.vacia{border-left-color:var(--ok)}
+.alerta .who{font-family:var(--mono); font-size:.95rem; font-weight:600}
+.alerta .why{font-size:.86rem; color:var(--muted); max-width:72ch}
+.alerta .fila{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+
+/* ── tablas ────────────────────────────────────────────────────────── */
+.tabla-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:3px;
+            background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:.83rem}
+th,td{text-align:left; padding:9px 14px; border-bottom:1px solid var(--line-soft);
+      white-space:nowrap}
+th{font-family:var(--mono); font-size:.65rem; text-transform:uppercase;
+   letter-spacing:.09em; color:var(--muted); font-weight:600;
+   background:var(--surface-2)}
+tbody tr:last-child td{border-bottom:0}
+td.n{font-family:var(--mono); font-variant-numeric:tabular-nums; text-align:right}
+td.name{font-family:var(--mono); font-size:.8rem}
+
+/* ── formas ────────────────────────────────────────────────────────── */
+.formas{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px}
+.forma{background:var(--surface); border:1px solid var(--line); border-radius:3px;
+       padding:16px; display:flex; flex-direction:column; gap:10px}
+.forma .glyph{height:46px}
+.forma .n{font-family:var(--mono); font-size:1.35rem; font-variant-numeric:tabular-nums}
+.forma .t{font-family:var(--mono); font-size:.7rem; text-transform:uppercase;
+          letter-spacing:.09em; color:var(--muted)}
+.forma .d{font-size:.79rem; color:var(--muted); line-height:1.45}
+
+/* ── sparklines ────────────────────────────────────────────────────── */
+.spark{background:var(--surface); border:1px solid var(--line); border-radius:3px;
+       padding:16px 18px; display:flex; flex-direction:column; gap:9px}
+.spark .hd{display:flex; align-items:baseline; justify-content:space-between; gap:12px}
+.spark .nm{font-size:.86rem; font-weight:600}
+.spark .un{font-family:var(--mono); font-size:.66rem; color:var(--muted)}
+.spark .ft{display:flex; justify-content:space-between; font-family:var(--mono);
+           font-size:.72rem; color:var(--muted); font-variant-numeric:tabular-nums}
+.spark .ft b{color:var(--ink); font-weight:600}
+
+/* ── descartados ───────────────────────────────────────────────────── */
+.desc-list{display:flex; flex-direction:column; gap:0; border:1px solid var(--line);
+           border-radius:3px; background:var(--surface); overflow:hidden}
+.desc-item{padding:15px 18px; border-bottom:1px solid var(--line-soft);
+           display:flex; flex-direction:column; gap:5px}
+.desc-item:last-child{border-bottom:0}
+.desc-item .h{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.desc-item .h b{font-family:var(--mono); font-size:.85rem; font-weight:600}
+.desc-item .r{font-size:.82rem; color:var(--muted); max-width:76ch}
+
+/* ── donde ─────────────────────────────────────────────────────────── */
+.donde{background:var(--surface-2); border:1px solid var(--line); border-radius:3px;
+       padding:18px 20px; display:flex; flex-direction:column; gap:12px}
+.donde code{font-family:var(--mono); font-size:.78rem; background:var(--surface);
+            border:1px solid var(--line-soft); border-radius:2px; padding:1px 6px}
+.donde a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
+.donde a:hover,.donde a:focus-visible{border-bottom-color:var(--accent)}
+.rows{display:flex; flex-direction:column; gap:7px; font-size:.84rem}
+.rows > div{display:flex; gap:12px; align-items:baseline; flex-wrap:wrap}
+.rows .lbl{font-family:var(--mono); font-size:.68rem; text-transform:uppercase;
+           letter-spacing:.08em; color:var(--muted); min-width:96px}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+footer{color:var(--muted); font-size:.78rem; border-top:1px solid var(--line);
+       padding-top:16px; line-height:1.6}
+@media (prefers-reduced-motion:no-preference){
+  .card,.spark,.forma{transition:border-color .15s ease}
+}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Informe de Coyuntura · herramientas internas</div>
+  <h1>Sala de Máquinas</h1>
+  <p class="sub">Lo que corre por atrás del informe y no sale en la web: el detector de
+     anomalías, el pronóstico de las series diarias del BCRA y el segundo lector de los
+     PDF de origen. Ninguno toca el snapshot publicado.</p>
+  <div class="stamps" id="stamps"></div>
+</header>
+
+<div class="estado" id="estado"></div>
+
+<section class="sec">
+  <div class="sec-head">
+    <h2>Bandeja de entrada</h2>
+    <span class="eyebrow" id="bandeja-n"></span>
+  </div>
+  <p class="sec-note">Lo reciente <em>y</em> con forma de error de lectura, más cualquier
+     campo donde el parser y el modelo no coincidan. Todo lo demás queda archivado.</p>
+  <div id="alertas"></div>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <h2>Las tres herramientas</h2>
+    <span class="eyebrow">estado de la última corrida</span>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <h2>Por qué la forma importa</h2>
+    <span class="eyebrow">auditoría de 118 anomalías</span>
+  </div>
+  <p class="sec-note">Un dígito mal leído es un <b>pico</b>: al mes siguiente la fuente se
+     lee bien y la serie vuelve. Un cambio real de política es un <b>escalón</b>: salta y
+     se queda. Sin ese corte, el 85% de la alerta es historia conocida.</p>
+  <div class="formas" id="formas"></div>
+  <p class="sec-note">Las 12 de forma pico se revisaron una por una: la devaluación de
+     diciembre de 2023 en <span class="num">ipc_alimentos</span>, la cuarentena en
+     <span class="num">pluriempleo</span>, tres picos de protestas. <b>Todas son eventos
+     reales.</b> El detector no encontró un solo error de dato en la historia del proyecto
+     — en estas series, un valor raro es señal y no ruido.</p>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <h2>Parser contra modelo</h2>
+    <span class="eyebrow">gemini-3.6-flash · modo sombra</span>
+  </div>
+  <p class="sec-note">Las dos lecturas del mismo texto, campo por campo. El parser sigue
+     siendo la fuente del dato; el modelo sólo avisa cuando no coinciden.</p>
+  <div class="tabla-wrap"><table id="verif"></table></div>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <h2>Pronóstico a 30 días</h2>
+    <span class="eyebrow">ARIMA_PLUS · intervalo 90%</span>
+  </div>
+  <p class="sec-note">Las cuatro series diarias del BCRA, las únicas del archivo con
+     historia suficiente para que el intervalo signifique algo. La línea llena es
+     historia; la punteada, pronóstico.</p>
+  <div class="cards" id="sparks"></div>
+</section>
+
+<section class="sec">
+  <div class="sec-head">
+    <h2>Lo que se midió y no entró</h2>
+    <span class="eyebrow">resultados negativos, con el número</span>
+  </div>
+  <p class="sec-note">Se guardan para que nadie los reconstruya de memoria dentro de seis
+     meses.</p>
+  <div class="desc-list">
+    <div class="desc-item">
+      <div class="h"><b>Nowcast del ITCM</b><span class="chip crit">descartado</span></div>
+      <p class="r">Estimar el índice del mes con los cuatro indicadores diarios del BCRA.
+        Contra un holdout secuencial da <span class="num">MAE 7,69</span>, y repetir el mes
+        anterior da <span class="num">3,75</span> · predecir la media,
+        <span class="num">2,65</span>. Peor que no hacer nada: con ~30 filas mensuales no
+        hay algoritmo que lo arregle, falta historia.</p>
+    </div>
+    <div class="desc-item">
+      <div class="h"><b>TimesFM (AI.FORECAST)</b><span class="chip crit">descartado</span></div>
+      <p class="r">Modelo fundacional zero-shot. Le gana a repetir el último valor en
+        <span class="num">48 de 87</span> series (55%), con mediana de mejora del 3%. Se
+        probaron dos criterios para aislar dónde sirve y los dos fallaron.</p>
+    </div>
+    <div class="desc-item">
+      <div class="h"><b>Detector de anomalías</b><span class="chip warn">reencuadrado</span></div>
+      <p class="r">Se construyó como control de calidad de datos y resultó ser un detector
+        de eventos. Sirve igual con la expectativa corregida y el filtro por forma, pero el
+        instrumento correcto para calidad de dato es el segundo lector de PDF.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-head"><h2>Dónde vive cada cosa</h2></div>
+  <div class="donde">
+    <div class="rows">
+      <div><span class="lbl">Consola</span>
+        <a href="https://console.cloud.google.com/bigquery?project=cigob-analytics&amp;d=informe_coyuntura&amp;p=cigob-analytics&amp;page=dataset">
+        BigQuery · cigob-analytics.informe_coyuntura</a></div>
+      <div><span class="lbl">Vistas</span> <code>panel_ml_alertas</code>
+        <code>panel_ml_anomalias</code> <code>panel_ml_forecast</code>
+        <code>panel_ml_verificacion</code> <code>panel_ml_salud</code></div>
+      <div><span class="lbl">Modelos</span> <code>ml_anomalias_series</code>
+        <code>ml_forecast_diarias</code></div>
+      <div><span class="lbl">Correr</span> <code>python scripts/bq_ml.py --todo</code>
+        <code>python scripts/verificacion_pdf.py</code></div>
+      <div><span class="lbl">Decisiones</span> ADR-0196 (modelos internos) ·
+        ADR-0198 (segundo lector)</div>
+    </div>
+  </div>
+</section>
+
+<footer id="pie"></footer>
+</div>
+
+<script>/*__DATOS__*/</script>
+<script>
+const $ = (s) => document.querySelector(s);
+const nf = (v, d = 2) => v === null || v === undefined ? "—"
+  : Number(v).toLocaleString("es-AR", {minimumFractionDigits: d, maximumFractionDigits: d});
+const compacto = (v) => Math.abs(v) >= 1e6 ? (v / 1e6).toLocaleString("es-AR",
+  {maximumFractionDigits: 1}) + " M" : nf(v, Math.abs(v) < 100 ? 2 : 1);
+const fecha = (s) => new Date(s).toLocaleString("es-AR",
+  {day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit"});
+
+const S = DATOS.salud;
+
+/* ── sellos de tiempo ─────────────────────────────────────────────── */
+$("#stamps").innerHTML = `
+  <span>Modelos <b>${fecha(S.ultima_corrida_ml)}</b></span>
+  <span>Lectura de PDF <b>${fecha(S.ultima_corrida_pdf)}</b></span>
+  <span>Fuente <b>BigQuery · informe_coyuntura</b></span>`;
+
+/* ── barra de estado ──────────────────────────────────────────────── */
+const nivel = (n) => n === 0 ? "ok" : n <= 2 ? "warn" : "crit";
+$("#estado").innerHTML = [
+  ["Alertas abiertas", S.alertas_abiertas, nivel(S.alertas_abiertas)],
+  ["A revisar", S.anomalias_a_revisar, nivel(S.anomalias_a_revisar)],
+  ["Campos en discrepancia", S.campos_en_discrepancia, nivel(S.campos_en_discrepancia)],
+  ["Campos verificados", S.campos_verificados, "ok"],
+].map(([k, v, c]) => `<div><span class="v ${c}">${v}</span><span class="k">${k}</span></div>`).join("");
+
+/* ── bandeja ──────────────────────────────────────────────────────── */
+const A = DATOS.alertas;
+$("#bandeja-n").textContent = A.length === 0 ? "sin novedades"
+  : `${A.length} ${A.length === 1 ? "abierta" : "abiertas"}`;
+$("#alertas").innerHTML = A.length === 0
+  ? `<div class="alerta vacia"><div class="fila"><span class="chip ok">todo en orden</span></div>
+     <p class="why">Ninguna anomalía con forma de error de lectura y ninguna discrepancia
+     entre el parser y el modelo.</p></div>`
+  : A.map(a => {
+      const r = DATOS.recientes.find(x => x.indicador === a.sujeto) || {};
+      const ctx = r.previo != null
+        ? `Venía en <span class="num">${compacto(r.previo)}</span> y saltó a
+           <span class="num">${compacto(r.valor)}</span>.
+           ${r.siguiente == null
+             ? "Todavía no hay mes siguiente, así que no sabemos si vuelve — por eso entra acá."
+             : `Al mes siguiente quedó en <span class="num">${compacto(r.siguiente)}</span>.`}`
+        : "";
+      return `<div class="alerta">
+        <div class="fila"><span class="who">${a.sujeto}</span>
+          <span class="chip warn">${a.origen}</span>
+          <span class="chip mut">${a.nota || ""}</span>
+          ${a.periodo ? `<span class="chip mut">${String(a.periodo).slice(0, 7)}</span>` : ""}</div>
+        <p class="why">${a.detalle}. ${ctx}</p></div>`;
+    }).join("");
+
+/* ── tarjetas ─────────────────────────────────────────────────────── */
+const totalAnom = Object.values(DATOS.formas).reduce((a, b) => a + b, 0);
+$("#cards").innerHTML = `
+  <div class="card"><div class="top"><h3>Detector de anomalías</h3>
+    <span class="chip ${S.anomalias_a_revisar ? "warn" : "ok"}">${
+      S.anomalias_a_revisar ? "1 a revisar" : "limpio"}</span></div>
+    <div class="metric"><span class="big">${totalAnom}</span>
+      <span class="unit">detectadas en toda la historia</span></div>
+    <p class="desc">ARIMA_PLUS sobre las series con 24+ puntos mensuales, umbral 0,99.
+      Sólo <b>${DATOS.formas.pico || 0}</b> tienen forma de error de lectura.</p></div>
+
+  <div class="card"><div class="top"><h3>Segundo lector de PDF</h3>
+    <span class="chip ${S.campos_en_discrepancia ? "crit" : "ok"}">${
+      S.campos_en_discrepancia ? S.campos_en_discrepancia + " discrepancia(s)" : "coincide"}</span></div>
+    <div class="metric"><span class="big">${S.campos_verificados}</span>
+      <span class="unit">campos · 3 documentos</span></div>
+    <p class="desc">Lee el mismo texto que el parser de regex y compara. Sólo consulta
+      cuando cambia la huella del documento: <b>US$ 0,57 por mes</b>.</p></div>
+
+  <div class="card"><div class="top"><h3>Pronóstico diario</h3>
+    <span class="chip ok">vigente</span></div>
+    <div class="metric"><span class="big">${Object.keys(DATOS.series).length}</span>
+      <span class="unit">series · 30 días</span></div>
+    <p class="desc">Las únicas con ~635 puntos, que es lo que hace falta para que el
+      intervalo de confianza no sea decorativo.</p></div>`;
+
+/* ── formas ───────────────────────────────────────────────────────── */
+const glifo = (tipo) => {
+  const pts = tipo === "pico" ? [[0,34],[22,32],[44,8],[66,33],[88,34]]
+            : tipo === "escalon" ? [[0,34],[22,34],[44,10],[66,9],[88,10]]
+            : tipo === "parcial" ? [[0,34],[22,33],[44,8],[66,20],[88,21]]
+            : [[0,34],[22,32],[44,10]];
+  const d = pts.map((p, i) => (i ? "L" : "M") + p[0] + " " + p[1]).join(" ");
+  const corte = tipo === "sin_vecinos"
+    ? `<line x1="52" y1="2" x2="52" y2="42" stroke="var(--line)"
+             stroke-width="1.5" stroke-dasharray="3 3"/>` : "";
+  return `<svg class="glyph" viewBox="0 0 88 44" fill="none" aria-hidden="true"
+    preserveAspectRatio="xMinYMid meet" width="100%">
+    ${corte}<path d="${d}" stroke="var(--accent)" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="44" cy="${tipo === "escalon" ? 10 : tipo === "parcial" ? 8 : tipo === "pico" ? 8 : 10}"
+      r="3" fill="var(--accent)"/></svg>`;
+};
+const TEXTO = {
+  pico: ["Pico", "Se va y vuelve. Es la firma de un dígito mal leído — y también la de un shock real, por eso hay que mirarlo."],
+  escalon: ["Escalón", "Salta y se queda. Un cambio de política, no un error. Es el 64% de lo detectado."],
+  parcial: ["Parcial", "Vuelve a medias. Ambiguo: queda archivado pero consultable."],
+  sin_vecinos: ["Sin vecinos", "Falta el mes siguiente, o el anterior. Es el caso que más urge mirar: saltó y no sabemos aún si vuelve."],
+};
+$("#formas").innerHTML = ["pico", "escalon", "parcial", "sin_vecinos"]
+  .map(k => `<div class="forma">${glifo(k)}
+    <div><span class="n">${DATOS.formas[k] || 0}</span></div>
+    <div class="t">${TEXTO[k][0]}</div>
+    <p class="d">${TEXTO[k][1]}</p></div>`).join("");
+
+/* ── verificación ─────────────────────────────────────────────────── */
+const CASO = {sagyp: "SAGYP · carnes", ciccra: "CICCRA · informe", sdds: "BCRA · planilla SDDS"};
+$("#verif").innerHTML = `<thead><tr><th>Documento</th><th>Campo</th>
+  <th style="text-align:right">Parser</th><th style="text-align:right">Modelo</th>
+  <th>Estado</th></tr></thead><tbody>` +
+  DATOS.verificacion.map(v => `<tr>
+    <td>${CASO[v.caso] || v.caso}</td><td class="name">${v.campo}</td>
+    <td class="n">${nf(v.valor_parser)}</td><td class="n">${nf(v.valor_modelo)}</td>
+    <td><span class="chip ${v.coincide ? "ok" : "crit"}">${
+      v.coincide ? "coincide" : "difiere"}</span></td></tr>`).join("") + "</tbody>";
+
+/* ── sparklines ───────────────────────────────────────────────────── */
+function spark(clave) {
+  const s = DATOS.series[clave];
+  const [nombre, unidad] = DATOS.etiquetas[clave] || [clave, ""];
+  const h = s.hist, f = s.fore;
+  if (!h.length || !f.length) return "";
+  const W = 300, H = 74, P = 3;
+  const vals = h.map(p => p[1]).concat(f.map(p => p[3]), f.map(p => p[2]));
+  const lo = Math.min(...vals), hi = Math.max(...vals), span = (hi - lo) || 1;
+  const n = h.length + f.length - 1;
+  const X = (i) => P + (i / n) * (W - 2 * P);
+  const Y = (v) => P + (1 - (v - lo) / span) * (H - 2 * P);
+  const lh = h.map((p, i) => `${i ? "L" : "M"}${X(i).toFixed(1)} ${Y(p[1]).toFixed(1)}`).join(" ");
+  const off = h.length - 1;
+  const lf = f.map((p, i) => `${i ? "L" : "M"}${X(off + i).toFixed(1)} ${Y(p[1]).toFixed(1)}`).join(" ");
+  const banda = f.map((p, i) => `${i ? "L" : "M"}${X(off + i).toFixed(1)} ${Y(p[3]).toFixed(1)}`).join(" ")
+    + " " + f.slice().reverse().map((p, i) =>
+        `L${X(off + f.length - 1 - i).toFixed(1)} ${Y(p[2]).toFixed(1)}`).join(" ") + " Z";
+  const ult = h[h.length - 1][1], fin = f[f.length - 1];
+  return `<div class="spark">
+    <div class="hd"><span class="nm">${nombre}</span><span class="un">${unidad}</span></div>
+    <svg viewBox="0 0 ${W} ${H}" width="100%" height="74" fill="none"
+         role="img" aria-label="${nombre}: hoy ${compacto(ult)}, en 30 días ${compacto(fin[1])}">
+      <path d="${banda}" fill="var(--accent)" opacity=".13"/>
+      <path d="${lh}" stroke="var(--accent)" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="${lf}" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="3 3"
+            stroke-linejoin="round"/>
+      <circle cx="${X(off).toFixed(1)}" cy="${Y(ult).toFixed(1)}" r="2.6" fill="var(--accent)"/>
+    </svg>
+    <div class="ft"><span>hoy <b>${compacto(ult)}</b></span>
+      <span>+30 d <b>${compacto(fin[1])}</b>
+        <span style="opacity:.7">[${compacto(fin[2])} – ${compacto(fin[3])}]</span></span></div>
+  </div>`;
+}
+$("#sparks").innerHTML = ["tc_mayorista", "badlar", "prestamos_privados", "base_monetaria"]
+  .map(spark).join("");
+
+$("#pie").innerHTML = `Herramientas internas del Informe de Coyuntura — no alimentan el
+  snapshot ni la web. Los datos de esta página son la última corrida registrada en
+  BigQuery: modelos ${fecha(S.ultima_corrida_ml)}, lectura de PDF
+  ${fecha(S.ultima_corrida_pdf)}.`;
+</script>
