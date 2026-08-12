@@ -1142,6 +1142,7 @@ fecha,indicador,valor,unidad,fuente
 2014-10-01,desocupacion,0.069,%,INDEC/datos.gob.ar
 2014-07-01,desocupacion,0.075,%,INDEC/datos.gob.ar
 2014-04-01,desocupacion,0.071,%,INDEC/datos.gob.ar
+2026-06-01,consumo_carnes_total,114.45,kg/hab/año (PM 12m),SAGYP — tablero consumo per cápita de carnes
 2026-05-01,consumo_carne,47.5,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2026-04-01,consumo_carne,46.2,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2026-03-01,consumo_carne,47.3,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"

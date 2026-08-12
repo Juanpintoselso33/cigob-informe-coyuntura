@@ -89,9 +89,25 @@ def build_vida(raw):
     _add(out, "alquiler_real", round(alq.get("variacion_mensual_pct", 0), 2),
          "% m/m alquileres", "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)",
          alq.get("fecha"))
+    # Componente A de la ficha de proteína animal. Pasa de CICCRA al tablero de
+    # SAGYP para que A, B y C salgan del MISMO PDF: misma metodología de
+    # promedio móvil 12m, mismo corte temporal y mismo perímetro. Mezclarlos
+    # haría que el ratio bovina/total compare dos fuentes distintas.
+    # CICCRA queda como respaldo si el tablero no trae el mes.
+    carnes = raw.get("consumo_carnes") or {}
     carne = ciccra.get("consumo_carne_per_capita", {})
-    _add(out, "consumo_carne", carne.get("valor"),
-         "kg/hab/año", "CICCRA", carne.get("fecha"))
+    if carnes.get("vacuna") is not None:
+        _add(out, "consumo_carne", carnes["vacuna"],
+             "kg/hab/año", "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
+             f"{carnes['mes']}-01")
+        # Componentes B y C: el total distingue sustitución de empobrecimiento,
+        # y el ratio dice cuál de los dos está pasando.
+        _add(out, "consumo_carnes_total", carnes["total"],
+             "kg/hab/año", "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
+             f"{carnes['mes']}-01")
+    else:
+        _add(out, "consumo_carne", carne.get("valor"),
+             "kg/hab/año", "CICCRA", carne.get("fecha"))
     inf = indec.get("informalidad_trimestral") or indec.get("informalidad_anual", {})
     _add(out, "informalidad", round(inf.get("valor", 0) * 100, 1),
          "%", "INDEC EPH", inf.get("fecha"))

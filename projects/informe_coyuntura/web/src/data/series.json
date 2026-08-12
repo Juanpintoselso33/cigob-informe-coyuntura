@@ -24467,6 +24467,12 @@
       "valor": 0.078
     }
   ],
+  "consumo_carnes_total": [
+    {
+      "fecha": "2026-08-01",
+      "valor": 114.45
+    }
+  ],
   "consumo_carne": [
     {
       "fecha": "2023-10-01",

@@ -2254,6 +2254,33 @@ CARNE_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "car
 MOTOS_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "motos_serie.json"
 
 
+def fetch_carnes_total_serie() -> list:
+    """Serie mensual del consumo TOTAL de carnes (vacuna+aviar+porcina).
+
+    El tablero de SAGYP es una foto del mes, no una serie: publica el promedio
+    móvil 12m vigente y lo pisa cada mes. Así que la serie se ACUMULA acá, un
+    punto por corrida, igual que hace CICCRA con sus PDFs y los patentamientos
+    comerciales con el portal de justicia. La primera corrida deja un solo
+    punto; el histórico se construye solo con el nocturno.
+    """
+    store_path = Path(__file__).resolve().parents[1] / "data" / "vida" / "carnes_total_serie.json"
+    try:
+        store = json.loads(store_path.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        store = {}
+    try:
+        sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+        from collectors.consumo_carnes import fetch_consumo_carnes
+        d = fetch_consumo_carnes()
+        store[d["mes"]] = d["total"]
+        store_path.parent.mkdir(parents=True, exist_ok=True)
+        store_path.write_text(json.dumps(store, ensure_ascii=False, indent=2,
+                                         sort_keys=True), encoding="utf-8")
+    except Exception as e:
+        print(f"  [WARN] consumo_carnes_total: {e}. Se usa el caché.")
+    return [[f"{ym}-01", v] for ym, v in sorted(store.items())]
+
+
 def fetch_carne_serie() -> list:
     """Serie MENSUAL del consumo de carne per cápita (promedio móvil 12m,
     CICCRA) desde oct-2023 (línea base del ITVC). Los PDFs mensuales se bajan
@@ -2430,6 +2457,8 @@ VIDA_DERIVADAS += [
     ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),
     ("inseguridad_snic", "hechos/año (total país)", "SNIC (CSV oficial, suma anual)", fetch_inseguridad_serie),
     ("consumo_carne", "kg/hab/año (PM 12m)", "CICCRA (informes mensuales, caché local)", fetch_carne_serie),
+    ("consumo_carnes_total", "kg/hab/año (PM 12m)",
+     "SAGYP — tablero consumo per cápita de carnes", fetch_carnes_total_serie),
     # La MISMA métrica que muestra la card del indicador (ISAC general nivel
     # s.e., serie 33.2 desestacionalizada): card y modal comparten fuente.
     ("despacho_cemento", "índice ISAC (desest.)", "INDEC ISAC (33.2, s.e.)",
