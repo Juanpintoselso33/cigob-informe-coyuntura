@@ -32,7 +32,15 @@ hallazgo, y así es como termina en un informe.
 
 **El ICC ya está en el cinturón vida cotidiana** (`icc_utdt`, 39,8, pesa 82% de
 su dimensión) y ya se rebasea contra el 4T-2023 dentro del ITVC. La comparación
-que el documento quiere hacer el informe ya la hace, y bien.
+que el documento quiere hacer, el informe ya la hace y ya la publica:
+
+> ICC rebaseado = **90,9** sobre base 100 = 4T-2023, o sea **9,1% por debajo**
+> del arranque del mandato.
+
+Ese es el número que hay que usar. Es del mismo signo que el cálculo de arriba;
+difiere un poco porque el ITVC toma el trimestre oct-dic y el documento tomó
+cuatro meses desde septiembre. **No hay nada que construir: hay que no usar el
+número del documento.**
 
 ---
 

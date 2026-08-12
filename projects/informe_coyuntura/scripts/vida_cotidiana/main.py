@@ -64,18 +64,32 @@ def imprimir_resumen(resultados: dict) -> None:
     print("\n" + "=" * 60 + "\n")
 
 
+def _seguro(fn, nombre):
+    """Corre un colector y devuelve None si falla, en vez de tumbar la corrida.
+
+    El resto de las fuentes de este cinturón no tienen por qué caerse porque
+    una cambió de formato: el pipeline ya sabe publicar con lo que hay y marcar
+    lo que falta (exit code 1 = mixto fresco/cache)."""
+    try:
+        return fn()
+    except Exception as e:
+        logger.error("colector %s falló: %s", nombre, e)
+        return None
+
+
 def run_all() -> dict:
     from collectors.indec_series import fetch_indec
     from collectors.bcra import fetch_bcra
     from collectors.utdt_icc import fetch_icc
     from collectors.cafam import fetch_cafam
     from collectors.ciccra import fetch_ciccra
+    from collectors.consumo_carnes import fetch_consumo_carnes
     from collectors.snic import fetch_snic
     from collectors.salud import fetch_salud
     from collectors.trends import fetch_trends
     from collectors.utdt_nowcast_pobreza import fetch_nowcast_pobreza
 
-    logger.info("Iniciando recolección — 8 fuentes...")
+    logger.info("Iniciando recolección — 9 fuentes...")
 
     fuentes_automatizadas = [
         "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
@@ -83,6 +97,7 @@ def run_all() -> dict:
         "utdt_icc (Indice de Confianza del Consumidor)",
         "cafam (patentamiento motos por provincia)",
         "ciccra (consumo carne vacuna per capita — PDF mensual)",
+        "consumo_carnes (total vacuna+aviar+porcina per capita — tablero SAGYP)",
         "snic (estadisticas criminales nacionales + CABA)",
         "salud (datasets DEIS/SNVS via datos.salud.gob.ar CKAN)",
         "trends (interes Google: inflacion, precios, inseguridad, trabajo)",
@@ -99,6 +114,12 @@ def run_all() -> dict:
         "pobreza": fetch_nowcast_pobreza(),
         "cafam":  fetch_cafam(),
         "ciccra": fetch_ciccra(),
+        # Componentes B y C de la ficha de proteína animal: sin el total, una
+        # caída de la vacuna se lee como empobrecimiento cuando puede ser
+        # sustitución hacia pollo o cerdo. Falla suave: si el PDF de SAGYP
+        # cambia de forma, el parser levanta y este colector queda en None
+        # sin tumbar al resto del cinturón.
+        "consumo_carnes": _seguro(fetch_consumo_carnes, "consumo_carnes"),
         "snic":   fetch_snic(),
         "salud":  fetch_salud(),
         "trends": fetch_trends(),
