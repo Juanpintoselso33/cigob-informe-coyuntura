@@ -229,6 +229,57 @@ export function semaforoAriaLabel(
   return semaforo?.por_que ? `Semáforo: ${color} — ${semaforo.por_que}` : `Semáforo: ${color}`;
 }
 
+// ── Escala de tensión y color, para las agujas ───────────────────────────────
+// El semáforo de 4 colores vive sobre la TENSIÓN 0-10 y sus cortes se publican
+// en `informe.semaforo_cortes` (parametrica.CORTES_SEMAFORO, ADR-0181). Los
+// índices, las dimensiones y los indicadores ya traen su `semaforo.color`
+// calculado; el CINTURÓN no —publica `score` (que ya es tensión 0-10) y un
+// `estado` de tres valores—, así que su color se deriva acá.
+//
+// Derivarlo NO contradice la regla de "el color lo calcula el pipeline": los
+// CORTES siguen siendo los del snapshot y esta función solo los aplica. Lo que
+// estaría mal es escribir 4/6/8 en el front, y eso es justamente lo que esto
+// evita. Si `semaforo_cortes` no viene (snapshot viejo), devuelve null y el
+// llamador decide no pintar, en vez de inventar un color.
+export const TENSION_MAX = 10;
+
+export function colorPorTension(
+  tension: number | null | undefined,
+  cortes = informe.semaforo_cortes,
+): ColorSemaforo | null {
+  if (tension == null || !Number.isFinite(tension) || !cortes?.length) return null;
+  for (const corte of cortes) {
+    if (corte.hasta === null || tension <= corte.hasta) return corte.color;
+  }
+  return cortes[cortes.length - 1].color;
+}
+
+// Tramos de la aguja, en tensión 0-10, listos para dibujar. Cierra el último
+// corte abierto contra TENSION_MAX para que el arco tenga un final.
+export interface TramoSemaforo { color: ColorSemaforo; desde: number; hasta: number; }
+
+export function tramosSemaforo(cortes = informe.semaforo_cortes): TramoSemaforo[] {
+  if (!cortes?.length) return [];
+  const out: TramoSemaforo[] = [];
+  let desde = 0;
+  for (const corte of cortes) {
+    const hasta = corte.hasta ?? TENSION_MAX;
+    out.push({ color: corte.color, desde, hasta });
+    desde = hasta;
+  }
+  return out;
+}
+
+// Cómo se dice el color en voz alta. El color no puede ser el único canal
+// (daltonismo, impresión en gris, lector de pantalla), así que toda aguja
+// muestra además esta etiqueta y la posición del puntero.
+export const LECTURA_SEMAFORO: Record<ColorSemaforo, string> = {
+  verde: "Sin tensión relevante",
+  amarillo: "Tensión moderada",
+  naranja: "Tensión alta",
+  rojo: "Tensión crítica",
+};
+
 // Peor dimensión (la que más tensión aporta) del índice de un cinturón.
 // La comparación entre índices de escala distinta (bandas 0-100 vs ITVC
 // base-100) se hace en TENSIÓN equivalente, con las fórmulas publicadas.

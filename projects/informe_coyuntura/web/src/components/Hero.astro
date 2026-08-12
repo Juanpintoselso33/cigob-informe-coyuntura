@@ -1,5 +1,14 @@
 ---
-import { informe, cinturonesRojos, cap, mesLegible, indicadoresRezagados, num } from "../lib/datos.ts";
+// El titular del informe se lee ahora por la AGUJA, no por cuatro números.
+//
+// Antes había un párrafo institucional de seis líneas y una fila de cuatro
+// stats numéricas (edición, cinturones en rojo, score /10, riesgo dominante).
+// El lector tenía que leer para saber si el país está bien o mal. La aguja
+// contesta eso antes de leer nada; el texto que queda dice qué está pasando
+// ahora, y el encuadre conceptual del observatorio vive en /metodologia.
+import { informe, cinturonesRojos, cap, mesLegible, indicadoresRezagados } from "../lib/datos.ts";
+import Aguja from "./Aguja.astro";
+
 const rojos = cinturonesRojos(informe);
 const f = informe.generated_at;
 const datosAl = `${f.slice(8, 10)}/${f.slice(5, 7)}/${f.slice(0, 4)}`;
@@ -9,29 +18,33 @@ const datosAl = `${f.slice(8, 10)}/${f.slice(5, 7)}/${f.slice(0, 4)}`;
 const rezagados = indicadoresRezagados(informe);
 ---
 <header class="cg-hero" id="top">
-  <div class="cg-hero-inner">
-    <p class="cg-hero-eyebrow">Observatorio · Fundación CiGob</p>
-    <h1 class="cg-hero-title">Gobernar la tensión: <em>mapa de viabilidad y restricciones en la Argentina actual.</em></h1>
-    <p class="cg-hero-lead">
-      La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos, sino por su
-      capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos de
-      acción disponibles. Este informe de coyuntura sistematiza el mapa de tensiones de la Argentina actual
-      a través de <strong>cinco cinturones analíticos</strong>, examinando cómo las decisiones oficiales
-      operan un constante intercambio de problemas donde la viabilidad fiscal, cambiaria, social y política
-      se recalculan en tiempo real.
-    </p>
-    <div class="cg-hero-stats">
-      <div class="cg-hero-stat"><div class="cg-hero-stat-num" style="font-size:20px;">{mesLegible(informe.period)}</div><div class="cg-hero-stat-lbl">Edición</div></div>
-      <div class="cg-hero-stat"><div class="cg-hero-stat-num">{rojos}</div><div class="cg-hero-stat-lbl">Cinturones en rojo</div></div>
-      <div class="cg-hero-stat"><div class="cg-hero-stat-num">{num(informe.score_global)}</div><div class="cg-hero-stat-lbl">Score global /10</div></div>
-      <div class="cg-hero-stat"><div class="cg-hero-stat-num" style="font-size:20px;">{cap(informe.barbarismo_activo)}</div><div class="cg-hero-stat-lbl">Riesgo dominante</div></div>
+  <div class="cg-hero-inner cg-hero-inner--aguja">
+    <div class="cg-hero-texto">
+      <p class="cg-hero-eyebrow">Observatorio · Fundación CiGob · {mesLegible(informe.period)}</p>
+      <h1 class="cg-hero-title">Gobernar la tensión: <em>mapa de viabilidad y restricciones en la Argentina actual.</em></h1>
+      <p class="cg-hero-lead">
+        Cinco cinturones miden cuánta tensión tiene que procesar el gobierno para sostener su proyecto.
+        {rojos === 0
+          ? " Ninguno está tensionado este mes."
+          : rojos === 1
+            ? " Uno está tensionado: es manejable."
+            : ` ${rojos} están tensionados, y dos o más se retroalimentan.`}
+      </p>
+      <p class="cg-hero-meta">
+        <span class:list={["cg-status-pill", informe.alerta_multicinturon ? "is-err" : "is-signed"]}>
+          <span class="cg-status-dot"></span>
+          <span class="cg-status-text">{informe.alerta_multicinturon ? "Alerta sistémica" : "Estable"}</span>
+        </span>
+        <span class="cg-hero-since">Actualizado el {datosAl}{rezagados > 0 ? ` · ${rezagados} indicadores con rezago declarado` : ""}</span>
+      </p>
     </div>
-    <p class="cg-hero-meta">
-      <span class:list={["cg-status-pill", informe.alerta_multicinturon ? "is-err" : "is-signed"]}>
-        <span class="cg-status-dot"></span>
-        <span class="cg-status-text">{informe.alerta_multicinturon ? "Alerta sistémica" : "Estable"}</span>
-      </span>
-      <span class="cg-hero-since">Edición mensual · actualizado el {datosAl} — cada indicador muestra la fecha de su propio dato{rezagados > 0 ? ` · ${rezagados} con rezago declarado` : ""}</span>
-    </p>
+    <div class="cg-hero-aguja">
+      <Aguja
+        tension={informe.score_global}
+        titulo="Tensión general"
+        tamano="grande"
+        pie={`Riesgo dominante: ${cap(informe.barbarismo_activo)}`}
+      />
+    </div>
   </div>
 </header>

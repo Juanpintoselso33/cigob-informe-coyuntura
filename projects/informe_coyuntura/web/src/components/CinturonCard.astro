@@ -1,11 +1,20 @@
 ---
-import { verdictDeCinturon, indicadoresOrdenados, cap, indiceDe, semaforoDe, peorDimension, num } from "../lib/datos.ts";
+import { indicadoresOrdenados, cap, indiceDe, semaforoDe, peorDimension, num } from "../lib/datos.ts";
+import Aguja from "./Aguja.astro";
 import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import IndicadorRow from "./IndicadorRow.astro";
 const { slug, nombre, sub, cinturon } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const verdict = verdictDeCinturon(cinturon.estado);
-const verdictLabel = { verde: "Estable", amarillo: "En tensión", rojo: "Crítico" }[verdict];
+// La píldora de `estado` (estable/en_tension/tensionado) sale de la card y la
+// reemplaza la aguja. No es cosmética: sobre la MISMA tensión 0-10 había dos
+// particiones distintas y no coincidían. Con los datos de agosto de 2026, macro
+// en 3,9 era "en tensión" para `estado` y verde para el semáforo; vida en 6,9
+// era "tensionado" y naranja. El lector veía dos veredictos del mismo número.
+//
+// Acá se unifica el CANAL VISUAL: todo color de cinturón sale de los cortes
+// publicados (`semaforo_cortes`). El `estado` no se toca ni se reinterpreta —
+// es metodología y sigue mandando en la regla sistémica del panel de tensión—,
+// pero deja de expresarse en colores para no contradecir a la aguja.
 const filas = indicadoresOrdenados(cinturon);
 const MAX = 6;
 const visibles = filas.slice(0, MAX);
@@ -31,9 +40,7 @@ const peor = peorDimension(cinturon);
       <div class="cg-cint-sub">{sub}</div>
       <div class="cg-cint-name"><a href={href} class="cg-cint-link">{nombre}</a></div>
     </div>
-    <span class:list={["cg-verdict", verdict]}>
-      <span class="cg-verdict-dot"></span>{verdictLabel}
-    </span>
+    <Aguja tension={cinturon.score} titulo={`Tensión de ${nombre}`} ocultarTitulo />
   </div>
   {dims.length > 0 && (
     <>
@@ -64,7 +71,9 @@ const peor = peorDimension(cinturon);
     {visibles.map(({ key, ind, bucket }) => <IndicadorRow ikey={key} ind={ind} bucket={bucket} slug={slug} />)}
   </ul>
   <div class="cg-cint-foot">
-    <span>Score <strong>{num(cinturon.score)}/10</strong> · {cap(cinturon.barbarismo_riesgo)}</span>
+    {/* El score ya lo dice la aguja; acá queda solo el riesgo, que no está en
+        ningún otro lado de la card. */}
+    <span>{cap(cinturon.barbarismo_riesgo)}</span>
     {/* El enlace decía "ver detalle" en minúscula cuando había ocultos y "Ver
         detalle" cuando no: la card de espíritu de época (sin ocultos) quedaba
         distinta de las otras cuatro. El contador va aparte del rótulo. */}

@@ -1226,3 +1226,104 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-sem-leyenda-list li { display: flex; align-items: center; gap: 7px; }
 .cg-sem-leyenda-list strong { color: var(--dark); font-weight: 700; }
 .cg-sem-leyenda-lectura { font-variant-numeric: tabular-nums; }
+
+/* ── Aguja de temperatura (F1: la lectura primaria pasa a ser el color) ──────
+   El arco lleva los cuatro tramos del semáforo atenuados y enciende el que
+   contiene el valor; la aguja marca la posición. Se lee sin color: la
+   posición del puntero y la etiqueta bastan solas, que es el requisito de
+   accesibilidad del rediseño. */
+.cg-aguja {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.cg-aguja-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.cg-aguja--chica  { max-width: 160px; }
+.cg-aguja--grande { max-width: 300px; }
+
+/* Tramos apagados por defecto: si los cuatro gritan, ninguno informa. */
+.cg-aguja-tramo { opacity: .18; transition: opacity .2s ease; }
+.cg-aguja-tramo.is-activo { opacity: 1; }
+.cg-aguja-tramo.sem-verde    { stroke: var(--verde); }
+.cg-aguja-tramo.sem-amarillo { stroke: var(--amarillo); }
+.cg-aguja-tramo.sem-naranja  { stroke: var(--naranja); }
+.cg-aguja-tramo.sem-rojo     { stroke: var(--rojo); }
+
+.cg-aguja-linea {
+  stroke: var(--dark);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+}
+.cg-aguja--grande .cg-aguja-linea { stroke-width: 4.5; }
+.cg-aguja-eje { fill: var(--dark); }
+
+.cg-aguja-cap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  text-align: center;
+  margin-top: -6px;
+}
+.cg-aguja-titulo {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cg-aguja-lectura { font-size: 14px; font-weight: 700; color: var(--dark); }
+.cg-aguja--grande .cg-aguja-lectura { font-size: 20px; }
+.cg-aguja.sem-verde    .cg-aguja-lectura { color: #14532D; }
+.cg-aguja.sem-amarillo .cg-aguja-lectura { color: #713F12; }
+.cg-aguja.sem-naranja  .cg-aguja-lectura { color: #7C2D12; }
+.cg-aguja.sem-rojo     .cg-aguja-lectura { color: #7F1D1D; }
+.cg-aguja-lectura.is-sindato { color: var(--muted-soft); font-weight: 600; }
+
+.cg-aguja-valor {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--dark);
+  font-variant-numeric: tabular-nums;
+}
+.cg-aguja--grande .cg-aguja-valor { font-size: 24px; }
+.cg-aguja-valor-max { font-size: .62em; color: var(--muted-soft); font-weight: 500; }
+.cg-aguja-pie { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cg-aguja-tramo { transition: none; }
+}
+
+/* Hero en dos columnas: el texto explica, la aguja contesta. En mobile la
+   aguja va PRIMERO — es la respuesta, y la respuesta no se scrollea. */
+.cg-hero-inner--aguja {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px 48px;
+  align-items: center;
+}
+.cg-hero-inner--aguja .cg-hero-lead { max-width: 60ch; margin-bottom: 14px; }
+.cg-hero-aguja { display: flex; justify-content: center; }
+
+@media (max-width: 860px) {
+  .cg-hero-inner--aguja { grid-template-columns: 1fr; gap: 20px; }
+  .cg-hero-texto { order: 2; }
+  .cg-hero-aguja { order: 1; }
+}
+
+/* La aguja del cinturón vive en la cabecera de la card, a la derecha del
+   nombre. Chica y sin título propio: el nombre ya está arriba. */
+.cg-cint-head { align-items: center; gap: 12px; }
+.cg-cint-head .cg-aguja { max-width: 104px; flex: 0 0 auto; }
+.cg-cint-head .cg-aguja-lectura { font-size: 11.5px; line-height: 1.25; }
+.cg-cint-head .cg-aguja-valor { font-size: 13px; }
+.cg-cint-head .cg-aguja-cap { margin-top: -10px; }
+
+/* Los puntos del panel de tensión toman la misma vara que las agujas. */
+.cg-dot.sem-verde    { background: var(--verde); }
+.cg-dot.sem-amarillo { background: var(--amarillo); }
+.cg-dot.sem-naranja  { background: var(--naranja); }
+.cg-dot.sem-rojo     { background: var(--rojo); }

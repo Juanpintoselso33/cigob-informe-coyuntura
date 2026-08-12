@@ -1,25 +1,31 @@
 ---
-import { informe, CINTURONES, verdictDeCinturon, cinturonesRojos, cap } from "../lib/datos.ts";
-const rojos = cinturonesRojos(informe);
+// Dos escalas conviven sobre la misma tensión 0-10 y NO coinciden: el
+// `estado` (estable/en_tension/tensionado) parte más temprano que los cortes
+// del semáforo. Es una inconsistencia de metodología, no de front, y este
+// rediseño no la resuelve — la deja de exhibir como si fuera un error de la
+// página: el COLOR sale siempre de los cortes publicados, y la regla sistémica
+// conserva `estado` pero dicha con su propia palabra ("tensionado"), sin
+// llamarle "rojo" a algo que la aguja pinta naranja.
+import { informe, CINTURONES, colorPorTension, cinturonesRojos, cap } from "../lib/datos.ts";
+const tensionados = cinturonesRojos(informe);
 ---
 <div class="cg-panel" id="cg-tension">
   <p class="cg-eyebrow">Tensión sistémica</p>
   <h3>Riesgo dominante: {cap(informe.barbarismo_activo)}</h3>
   <div class="cg-matriz">
     {CINTURONES.map(c => {
-      const v = verdictDeCinturon(informe.cinturones[c.key].estado);
-      const color = v === "rojo" ? "var(--rojo)" : v === "amarillo" ? "var(--amarillo)" : "var(--verde)";
+      const color = colorPorTension(informe.cinturones[c.key].score);
       return (
         <span class="cg-matriz-item">
-          <span class="cg-dot" style={`background:${color}`}></span>
+          <span class:list={["cg-dot", color ? `sem-${color}` : null]}></span>
           {c.nombre} · {cap(informe.cinturones[c.key].barbarismo_riesgo)}
         </span>
       );
     })}
   </div>
   <div class="cg-tension-rule">
-    Regla de lectura: <strong>1 cinturón en rojo</strong> es manejable;
+    Regla de lectura: <strong>1 cinturón tensionado</strong> es manejable;
     <strong>2 o más</strong> indican inestabilidad sistémica con crisis que se retroalimentan.
-    Actualmente: <strong>{rojos} en rojo</strong>.
+    Actualmente: <strong>{tensionados === 1 ? "1 tensionado" : `${tensionados} tensionados`}</strong>.
   </div>
 </div>
