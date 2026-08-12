@@ -9,9 +9,16 @@
 // El color NO es el único canal, por tres razones concretas: hay lectores que
 // no distinguen rojo de verde, el informe se imprime y se fotocopia en gris, y
 // un lector de pantalla no ve nada de esto. Así que cada aguja lleva, además
-// del color: la POSICIÓN del puntero sobre el arco (que se lee igual en gris),
-// una ETIQUETA con el nombre del tramo, y un `aria-label` que dice las tres
-// cosas en una frase.
+// del color: un ARCO BASE neutro con marcas y números en los extremos —que
+// sobrevive a la escala de grises y le da referencia a la posición del
+// puntero—, una ETIQUETA con el nombre del tramo, y un `aria-label` que dice
+// todo en una frase.
+//
+// Dos ausencias distintas, que antes se confundían en una (revisión
+// adversarial, ago-2026): que no haya TENSIÓN y que no haya ESCALA. Sin cortes
+// publicados el componente decía "Sin dato" mientras imprimía el número al
+// lado. Ahora la falta de escala se nombra como lo que es y el valor se sigue
+// mostrando, porque el dato existe: lo que falta es cómo clasificarlo.
 import { tramosSemaforo, colorPorTension, LECTURA_SEMAFORO, TENSION_MAX, num } from "../lib/datos.ts";
 
 interface Props {
@@ -29,8 +36,9 @@ interface Props {
 const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false } = Astro.props as Props;
 
 const tramos = tramosSemaforo();
-const color = colorPorTension(tension);
+const hayEscala = tramos.length > 0;
 const valor = typeof tension === "number" && Number.isFinite(tension) ? tension : null;
+const color = hayEscala ? colorPorTension(tension) : null;
 
 // Geometría del arco. Semicírculo de 180°: 0 de tensión a la izquierda, el
 // máximo a la derecha. El viewBox es fijo y el tamaño real lo pone el CSS, así
@@ -54,15 +62,31 @@ const arco = (desde: number, hasta: number) => {
 
 const [px, py] = valor !== null ? punto(valor, R - GROSOR / 2 - 2) : [CX, CY];
 
+// Marcas de los extremos: sin ellas la aguja es un ángulo sin escala en cuanto
+// el color se pierde. Van por fuera del arco para no ensuciar los tramos.
+const tick = (t: number) => {
+  const [xa, ya] = punto(t, R + GROSOR / 2 + 1);
+  const [xb, yb] = punto(t, R + GROSOR / 2 + 6);
+  return { x1: xa.toFixed(2), y1: ya.toFixed(2), x2: xb.toFixed(2), y2: yb.toFixed(2) };
+};
+const rotulo = (t: number) => {
+  const [x, y] = punto(t, R + GROSOR / 2 + 15);
+  return { x: x.toFixed(2), y: (y + 4).toFixed(2) };
+};
+
 const lectura = color ? LECTURA_SEMAFORO[color] : null;
-const aria = valor === null || !color
+const aria = valor === null
   ? `${titulo}: sin dato`
-  : `${titulo}: tensión ${num(valor)} de ${TENSION_MAX} — ${lectura} (${color})`;
+  : lectura
+    ? `${titulo}: tensión ${num(valor)} de ${TENSION_MAX} — ${lectura} (${color})`
+    : `${titulo}: tensión ${num(valor)} de ${TENSION_MAX} — escala de colores no disponible`;
 ---
-<figure class:list={["cg-aguja", `cg-aguja--${tamano}`, color ? `sem-${color}` : "is-sindato"]}>
-  <svg viewBox="0 0 240 132" role="img" aria-label={aria} class="cg-aguja-svg">
-    {/* Tramos del semáforo: el fondo del arco. Van atenuados para que la
-        aguja gane la mirada; el tramo donde cae el valor se enciende. */}
+<figure class:list={["cg-aguja", `cg-aguja--${tamano}`, color ? `sem-${color}` : "is-sinescala"]}>
+  <svg viewBox="-6 0 252 140" role="img" aria-label={aria} class="cg-aguja-svg">
+    {/* Arco base neutro: es la referencia que queda cuando el color no llega
+        —impresión en gris, forced-colors, cortes ausentes— y lo que convierte
+        al ángulo de la aguja en una posición legible sobre una escala. */}
+    <path d={arco(0, TENSION_MAX)} class="cg-aguja-base" stroke-width={GROSOR} fill="none" stroke-linecap="butt" />
     {tramos.map(t => (
       <path
         d={arco(t.desde, t.hasta)}
@@ -72,6 +96,10 @@ const aria = valor === null || !color
         stroke-linecap="butt"
       />
     ))}
+    <line {...tick(0)} class="cg-aguja-tick" />
+    <line {...tick(TENSION_MAX)} class="cg-aguja-tick" />
+    <text {...rotulo(0)} class="cg-aguja-escala" text-anchor="middle">0</text>
+    <text {...rotulo(TENSION_MAX)} class="cg-aguja-escala" text-anchor="middle">{TENSION_MAX}</text>
     {valor !== null && (
       <>
         {/* La aguja: una línea desde el centro hasta el arco. Es la que se lee
@@ -83,9 +111,11 @@ const aria = valor === null || !color
   </svg>
   <figcaption class="cg-aguja-cap">
     {!ocultarTitulo && <span class="cg-aguja-titulo">{titulo}</span>}
-    {valor !== null && lectura
-      ? <span class="cg-aguja-lectura">{lectura}</span>
-      : <span class="cg-aguja-lectura is-sindato">Sin dato</span>}
+    {valor === null
+      ? <span class="cg-aguja-lectura is-sindato">Sin dato</span>
+      : lectura
+        ? <span class="cg-aguja-lectura">{lectura}</span>
+        : <span class="cg-aguja-lectura is-sinescala">Escala no disponible</span>}
     {valor !== null && (
       <span class="cg-aguja-valor">{num(valor)}<span class="cg-aguja-valor-max">/{TENSION_MAX}</span></span>
     )}

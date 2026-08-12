@@ -1327,3 +1327,52 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-dot.sem-amarillo { background: var(--amarillo); }
 .cg-dot.sem-naranja  { background: var(--naranja); }
 .cg-dot.sem-rojo     { background: var(--rojo); }
+
+/* La aguja en la cabecera del cinturón: alineada con los chips de metadatos. */
+.cg-detalle-meta { align-items: center; }
+.cg-detalle-meta .cg-aguja { max-width: 118px; margin-right: 4px; }
+.cg-detalle-meta .cg-aguja-lectura { font-size: 12px; }
+.cg-detalle-meta .cg-aguja-cap { margin-top: -10px; }
+
+/* Arco base, marcas y extremos (revisión adversarial, ago-2026): sin esto la
+   posición del puntero deja de ser un canal propio en cuanto el color se
+   pierde — impresión en gris, fotocopia, forced-colors. El arco atenuado que
+   había antes desaparecía y la aguja quedaba como un ángulo sin escala. */
+.cg-aguja-base { stroke: var(--bd); }
+.cg-aguja-tick { stroke: var(--muted-soft); stroke-width: 1.5; }
+.cg-aguja-escala {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  fill: var(--muted);
+}
+.cg-aguja-lectura.is-sinescala { color: var(--muted); font-weight: 600; }
+
+@media print {
+  /* En papel el color no se puede dar por hecho: los tramos se apagan del
+     todo y mandan la posición, las marcas y la etiqueta. */
+  .cg-aguja-tramo { opacity: 0; }
+  .cg-aguja-base { stroke: #767676; }
+  .cg-aguja-linea, .cg-aguja-eje { stroke: #000; fill: #000; }
+}
+
+@media (forced-colors: active) {
+  .cg-aguja-base { stroke: CanvasText; }
+  .cg-aguja-tramo { forced-color-adjust: none; }
+  .cg-aguja-linea { stroke: CanvasText; }
+  .cg-aguja-eje { fill: CanvasText; }
+  .cg-aguja-tick { stroke: CanvasText; }
+}
+
+/* El panel de tensión: cada cinturón dice su lectura en texto, no solo en el
+   punto de color, y el que dispara la regla sistémica queda nombrado. */
+.cg-matriz-item { display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap; }
+.cg-matriz-lectura { font-size: 11.5px; color: var(--muted); }
+.cg-matriz-item.is-tensionado { font-weight: 700; }
+.cg-matriz-tag {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  padding: 1px 6px; border-radius: 999px;
+  background: var(--naranja-soft); color: #7C2D12; border: 1px solid #FED7AA;
+}
+/* .cg-matriz pasó de <div> a <ul>: sin esto hereda las viñetas y el padding
+   de lista del navegador. */
+.cg-matriz { list-style: none; padding: 0; }

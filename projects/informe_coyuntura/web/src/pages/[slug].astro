@@ -1,12 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Aguja from "../components/Aguja.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import IndicadorTile from "../components/IndicadorTile.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
 import {
-  informe, CINTURONES, verdictDeCinturon, indicadoresOrdenados,
+  informe, CINTURONES, indicadoresOrdenados,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel,
 } from "../lib/datos.ts";
 
@@ -16,8 +17,11 @@ export function getStaticPaths() {
 
 const { meta } = Astro.props;
 const c = informe.cinturones[meta.key];
-const verdict = verdictDeCinturon(c.estado);
-const verdictLabel = { verde: "Estable", amarillo: "En tensión", rojo: "Crítico" }[verdict];
+// La cabecera del cinturón se lee por la aguja, igual que en la portada: una
+// sola vara de color en todo el sitio (los cortes publicados). El `estado` de
+// tres valores no se pierde —sigue mandando en la regla sistémica— pero no se
+// expresa en color, porque sobre la misma tensión 0-10 parte distinto que el
+// semáforo y los dos veredictos se contradecían a la vista.
 const filas = indicadoresOrdenados(c);
 // Los indicadores de contexto (en_indice === false) no construyen la tensión:
 // se muestran en un bloque aparte para no confundirlos con los del índice.
@@ -229,8 +233,9 @@ const robChartData = rob?.hist && indice ? {
       <h1 class="cg-hero-title cg-detalle-title">{meta.nombre}</h1>
       <p class="cg-hero-lead cg-detalle-lead">{meta.sub}.</p>
       <div class="cg-detalle-meta">
-        <span class:list={["cg-verdict", verdict]}><span class="cg-verdict-dot"></span>{verdictLabel}</span>
-        <span class="cg-detalle-chip">Score <strong>{num(c.score)}/10</strong></span>
+        {/* La aguja reemplaza a la píldora de veredicto y al chip de score:
+            los dos decían el mismo número con menos claridad. */}
+        <Aguja tension={c.score} titulo={`Tensión de ${meta.nombre}`} ocultarTitulo />
         {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>

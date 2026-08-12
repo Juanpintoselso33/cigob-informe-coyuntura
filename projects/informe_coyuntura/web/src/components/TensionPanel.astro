@@ -1,31 +1,51 @@
 ---
-// Dos escalas conviven sobre la misma tensión 0-10 y NO coinciden: el
-// `estado` (estable/en_tension/tensionado) parte más temprano que los cortes
-// del semáforo. Es una inconsistencia de metodología, no de front, y este
-// rediseño no la resuelve — la deja de exhibir como si fuera un error de la
-// página: el COLOR sale siempre de los cortes publicados, y la regla sistémica
-// conserva `estado` pero dicha con su propia palabra ("tensionado"), sin
-// llamarle "rojo" a algo que la aguja pinta naranja.
-import { informe, CINTURONES, colorPorTension, cinturonesRojos, cap } from "../lib/datos.ts";
+// Dos escalas conviven sobre la misma tensión 0-10 y NO coinciden: el `estado`
+// (estable/en_tension/tensionado) parte más temprano que los cortes del
+// semáforo. Es una inconsistencia de metodología, no de front, y este rediseño
+// no la resuelve — la deja de exhibir como si fuera un error de la página: el
+// COLOR sale siempre de los cortes publicados, y la regla sistémica conserva
+// `estado` pero dicha con su propia palabra ("tensionado"), sin llamarle
+// "rojo" a algo que la aguja pinta naranja.
+//
+// El punto de color NO alcanza para leer el panel (revisión adversarial,
+// ago-2026): antes cada cinturón era un punto sin etiqueta ni nombre
+// accesible, y el conteo de abajo decía "1 tensionado" sin decir cuál. Ahora
+// cada fila lleva su lectura en texto y el que dispara la regla queda marcado.
+import { informe, CINTURONES, colorPorTension, LECTURA_SEMAFORO, verdictDeCinturon, cinturonesRojos, cap } from "../lib/datos.ts";
 const tensionados = cinturonesRojos(informe);
+const filas = CINTURONES.map(c => {
+  const cint = informe.cinturones[c.key];
+  const color = colorPorTension(cint.score);
+  return {
+    nombre: c.nombre,
+    riesgo: cap(cint.barbarismo_riesgo),
+    color,
+    lectura: color ? LECTURA_SEMAFORO[color] : "Escala no disponible",
+    tensionado: verdictDeCinturon(cint.estado) === "rojo",
+  };
+});
+const nombresTensionados = filas.filter(f => f.tensionado).map(f => f.nombre);
 ---
 <div class="cg-panel" id="cg-tension">
   <p class="cg-eyebrow">Tensión sistémica</p>
   <h3>Riesgo dominante: {cap(informe.barbarismo_activo)}</h3>
-  <div class="cg-matriz">
-    {CINTURONES.map(c => {
-      const color = colorPorTension(informe.cinturones[c.key].score);
-      return (
-        <span class="cg-matriz-item">
-          <span class:list={["cg-dot", color ? `sem-${color}` : null]}></span>
-          {c.nombre} · {cap(informe.cinturones[c.key].barbarismo_riesgo)}
-        </span>
-      );
-    })}
-  </div>
+  <ul class="cg-matriz" role="list">
+    {filas.map(f => (
+      <li class:list={["cg-matriz-item", { "is-tensionado": f.tensionado }]}>
+        <span class:list={["cg-dot", f.color ? `sem-${f.color}` : null]} aria-hidden="true"></span>
+        <span>{f.nombre} · {f.riesgo}</span>
+        <span class="cg-matriz-lectura">{f.lectura}</span>
+        {f.tensionado && <span class="cg-matriz-tag">Tensionado</span>}
+      </li>
+    ))}
+  </ul>
   <div class="cg-tension-rule">
     Regla de lectura: <strong>1 cinturón tensionado</strong> es manejable;
     <strong>2 o más</strong> indican inestabilidad sistémica con crisis que se retroalimentan.
-    Actualmente: <strong>{tensionados === 1 ? "1 tensionado" : `${tensionados} tensionados`}</strong>.
+    Actualmente: <strong>{
+      tensionados === 0
+        ? "ninguno tensionado"
+        : `${tensionados} tensionado${tensionados === 1 ? "" : "s"} (${nombresTensionados.join(", ")})`
+    }</strong>.
   </div>
 </div>
