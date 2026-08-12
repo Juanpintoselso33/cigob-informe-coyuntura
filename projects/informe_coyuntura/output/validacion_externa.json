@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-11T23:35:48.987021",
+    "generated_at": "2026-08-12T04:02:41.400250",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -1036,7 +1036,7 @@
       },
       "cepo_mulc": {
         "apertura_comercial": 0.355,
-        "concesiones_infraestructura": 0.322,
+        "concesiones_infraestructura": 0.321,
         "desregulacion_normativa": 0.921,
         "fal_modernizacion_laboral": 0.347,
         "gasto_funcionamiento": 0.239,
@@ -1050,7 +1050,7 @@
       },
       "concesiones_infraestructura": {
         "apertura_comercial": 0.207,
-        "cepo_mulc": 0.322,
+        "cepo_mulc": 0.321,
         "desregulacion_normativa": 0.369,
         "fal_modernizacion_laboral": 0.863,
         "gasto_funcionamiento": 0.212,
@@ -2285,7 +2285,7 @@
     "2026-05": 73.9,
     "2026-06": 81.8,
     "2026-07": 73.2,
-    "2026-08": 65.5
+    "2026-08": 65.2
   },
   "merval_usd_mensual": {
     "2023-11": 918.3,
@@ -2329,7 +2329,7 @@
       "n": 33
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.17,
+      "r": 0.171,
       "n": 32
     },
     "niveles (ITCG vs ICG)": {
@@ -4074,7 +4074,7 @@
           "fuente": "Votómetro",
           "propia": false,
           "r_niveles": -0.232,
-          "r_diferencias": -0.151,
+          "r_diferencias": -0.15,
           "n": 33
         },
         {
@@ -4182,7 +4182,7 @@
           "fuente": "BYMA / CCL",
           "propia": true,
           "r_niveles": 0.764,
-          "r_diferencias": 0.17,
+          "r_diferencias": 0.171,
           "n": 33
         },
         {
@@ -4398,7 +4398,7 @@
         "r_niveles": 0.668,
         "r_diferencias": 0.008,
         "mejor_sola_niveles": 0.764,
-        "mejor_sola_diferencias": 0.17,
+        "mejor_sola_diferencias": 0.171,
         "aporte_sobre_tendencia": {
           "n": 31,
           "suficiente": true,
