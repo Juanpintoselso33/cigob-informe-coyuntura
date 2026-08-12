@@ -15,15 +15,44 @@ encontrar correlación espuria. Así que acá sólo hay modelos que no dependen 
 eso:
 
   anomalias  Detecta valores que no pegan con la historia de SU PROPIA serie.
-             Es un control de calidad de datos, no un hallazgo económico: cubre
-             el hueco que deja `gate_calidad.py`, que mira estructura y frescura
-             pero no plausibilidad. Un PDF mal parseado pasa el gate y no pasa
-             esto.
+             Se construyó como control de calidad de datos, para cubrir el hueco
+             que deja `gate_calidad.py` —que mira estructura y frescura, no
+             plausibilidad—. **Leer abajo qué resultó ser en la práctica antes
+             de confiar en él para eso.**
 
   forecast   Pronóstico sobre las series DIARIAS (tc_mayorista, badlar y las
              otras dos del BCRA, ~635 puntos cada una). Son las únicas con datos
              suficientes para un ARIMA con estacionalidad e intervalos que
              signifiquen algo.
+
+## El detector de anomalías encuentra eventos, no errores (auditado 2026-08-12)
+
+Se revisaron **las 118 anomalías** que devuelve sobre la historia completa,
+clasificándolas por forma: un dígito mal leído es un **PICO** —al mes siguiente
+la fuente se lee bien y la serie vuelve—, mientras que un cambio real de política
+es un **ESCALÓN**: salta y se queda.
+
+    escalón (salta y se queda)   75
+    pico (se va y vuelve)        12
+    parcial                      11
+    sin serie con qué comparar   19
+
+Y las 12 de forma pico se miraron una por una: `ipc_alimentos` 2023-12 (29,7 —
+la devaluación de diciembre), `alquiler_real` 2024-04, `protestas_caba` en tres
+meses distintos, `pluriempleo` 2020-04 (la cuarentena), `icg_utdt` 2002-06.
+**Todas son eventos reales. Ninguna es un error de dato.**
+
+O sea: en toda la historia del proyecto este detector encontró **cero** de lo que
+se construyó para encontrar, y 118 de algo que el informe ya publica por diseño.
+En este dataset un valor estadísticamente raro es señal, no ruido — es la
+naturaleza de las series argentinas del período, no un defecto del modelo.
+
+Sirve igual, con la expectativa corregida: la salida se parte por forma y
+`revisar` trae sólo lo reciente CON forma de error de lectura, que baja el
+volumen unas diez veces. Pero el instrumento correcto para calidad de dato es
+`verificacion_pdf.py` (ADR-0198), que compara contra el documento de origen en
+vez de contra la propia serie. Un error de columna que cae dentro del rango
+histórico —el caso peligroso— es invisible acá y evidente allá.
 
 ## Lo que NO está, a propósito
 
@@ -129,13 +158,34 @@ WHERE valor IS NOT NULL
     HAVING COUNT(DISTINCT DATE_TRUNC(DATE(fecha), MONTH)) >= {MIN_PUNTOS_MENSUAL}
   )
 """),
+        # Se traen el punto ANTERIOR y el SIGUIENTE de cada anomalía. Sin ellos
+        # no se puede distinguir un pico de un escalón, que es la única
+        # distinción que separa "dato mal leído" de "pasó algo" (ver el
+        # docstring del módulo).
         ("consulta", f"""
-SELECT indicador, fecha, valor, lower_bound, upper_bound, anomaly_probability
-FROM ML.DETECT_ANOMALIES(
-  MODEL `{ds}.ml_anomalias_series`,
-  STRUCT(0.99 AS anomaly_prob_threshold))
-WHERE is_anomaly
-ORDER BY anomaly_probability DESC, fecha DESC
+WITH detectadas AS (
+  SELECT indicador, fecha, valor, lower_bound, upper_bound, anomaly_probability
+  FROM ML.DETECT_ANOMALIES(
+    MODEL `{ds}.ml_anomalias_series`,
+    STRUCT(0.99 AS anomaly_prob_threshold))
+  WHERE is_anomaly
+),
+mensual AS (
+  SELECT indicador, DATE_TRUNC(DATE(fecha), MONTH) AS mes, AVG(valor) AS valor
+  FROM `{ds}.series` WHERE valor IS NOT NULL GROUP BY 1, 2
+),
+vecinos AS (
+  SELECT indicador, mes, valor,
+         LAG(valor)  OVER (PARTITION BY indicador ORDER BY mes) AS previo,
+         LEAD(valor) OVER (PARTITION BY indicador ORDER BY mes) AS siguiente
+  FROM mensual
+)
+SELECT d.indicador, d.fecha, d.valor, d.lower_bound, d.upper_bound,
+       d.anomaly_probability, v.previo, v.siguiente
+FROM detectadas d
+LEFT JOIN vecinos v
+  ON v.indicador = d.indicador AND v.mes = DATE_TRUNC(DATE(d.fecha), MONTH)
+ORDER BY d.anomaly_probability DESC, d.fecha DESC
 LIMIT 200
 """),
     ]
@@ -178,14 +228,43 @@ TAREAS = {"anomalias": sql_anomalias, "forecast": sql_forecast}
 MESES_ALERTA = 4
 
 
+def forma_de(fila: dict) -> str:
+    """PICO si el valor se va y VUELVE; ESCALÓN si salta y se QUEDA.
+
+    Es la única distinción que separa las dos causas posibles de un valor raro.
+    Un dígito mal leído es un PICO por construcción: al mes siguiente la fuente
+    se lee bien y la serie vuelve a su nivel. Un cambio real de política es un
+    ESCALÓN: salta y se queda ahí.
+
+    Medido sobre las 118 anomalías de la corrida del 2026-08-12: 75 escalones y
+    12 picos. La forma es lo que hace usable la alerta — sin este corte, el 85%
+    del volumen es historia conocida.
+    """
+    prev, act, sig = fila.get("previo"), fila.get("valor"), fila.get("siguiente")
+    if prev is None or act is None or sig is None:
+        return "sin_vecinos"
+    salto = act - prev
+    if abs(salto) < 1e-9:
+        return "plano"
+    # Qué proporción del salto se deshizo al mes siguiente.
+    vuelta = (sig - act) / -salto
+    if vuelta > 0.6:
+        return "pico"
+    if vuelta < 0.25:
+        return "escalon"
+    return "parcial"
+
+
 def _posproceso_anomalias(salidas: dict) -> dict:
-    """Separa lo que hay que mirar hoy de lo que ya se sabe.
+    """Separa lo que hay que mirar hoy de lo que ya se sabe, y por FORMA.
 
     El modelo detecta anomalías sobre TODA la historia de cada serie, y eso está
     bien —es como se entrena—, pero como alerta operativa no sirve mezclado: lo
     que importa es si un PDF que se parseó esta semana trajo un dígito de más.
     """
     filas = salidas.get("filas") or []
+    for f in filas:
+        f["forma"] = forma_de(f)
     corte = date.today() - timedelta(days=MESES_ALERTA * 31)
     def _fecha(f):
         # ML.DETECT_ANOMALIES devuelve la columna de tiempo como datetime aunque
@@ -195,7 +274,12 @@ def _posproceso_anomalias(salidas: dict) -> dict:
         if isinstance(v, datetime):
             return v.date()
         return v if isinstance(v, date) else date.fromisoformat(str(v)[:10])
-    salidas["recientes"] = [f for f in filas if _fecha(f) >= corte]
+    recientes = [f for f in filas if _fecha(f) >= corte]
+    # `revisar` es la bandeja de entrada de verdad: reciente Y con forma de
+    # error de lectura. El resto queda accesible pero no compite por atención.
+    salidas["revisar"] = [f for f in recientes if f["forma"] in ("pico", "sin_vecinos")]
+    salidas["recientes_otras_formas"] = [f for f in recientes
+                                         if f["forma"] not in ("pico", "sin_vecinos")]
     salidas["historicas"] = [f for f in filas if _fecha(f) < corte]
     del salidas["filas"]
     return salidas
