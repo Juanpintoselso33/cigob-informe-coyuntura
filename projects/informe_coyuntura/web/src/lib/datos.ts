@@ -103,35 +103,26 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
   if (c.itcm) return {
     sigla: "ITCM",
     nombre: "Índice de Tensión del Cinturón Macroeconómico",
-    descripcion: "Índice de Tensión del Cinturón Macroeconómico (paramétrica CIGOB, may-2026). " +
-      "0 = cinturón severamente apretado, 100 = aflojado. Pondera seis dimensiones; " +
-      `la tensión del cinturón es (100 − ITCM) / 10.`,
+    descripcion: "0 = cinturón severamente apretado, 100 = aflojado. Pondera seis dimensiones.",
     data: c.itcm,
   };
   if (c.itcg) return {
     sigla: "ITCG",
     nombre: "Índice de Tensión del Cinturón de Gestión",
-    descripcion: "Índice de Tensión del Cinturón de Gestión (paramétrica CIGOB, jul-2026). " +
-      "0 = el gobierno promete reformas pero no las ejecuta; 100 = agenda de reformas " +
-      "ejecutándose. Pondera cinco dimensiones; la tensión del cinturón es (100 − ITCG) / 10.",
+    descripcion: "0 = se prometen reformas y no se ejecutan; 100 = agenda ejecutándose. Pondera cinco dimensiones.",
     data: c.itcg,
   };
   if (c.itvc) return {
     sigla: "ITVC",
     base100: true,   // índice de seguimiento sin techo en 100 (no mostrar "/100")
     nombre: "Índice de Tensión del Cinturón de Vida Cotidiana",
-    descripcion: "Índice de seguimiento base 100 (paramétrica CIGOB, jul-2026): cada componente " +
-      "se rebasea a 100 = promedio del 4º trimestre de 2023 (el arranque del mandato). " +
-      "Más de 100 = mejora acumulada de la vida cotidiana; menos de 100 = deterioro. " +
-      "Pondera seis dimensiones; la tensión del cinturón es 5 − (ITVC − 100) × 0,2 — una lectura del resultado, no lo que se promedia.",
+    descripcion: "100 = el arranque del mandato (4º trimestre de 2023). Más de 100 es mejora; menos, deterioro.",
     data: c.itvc,
   };
   if (c.itcp) return {
     sigla: "ITCP",
     nombre: "Índice de Tensión del Cinturón Político",
-    descripcion: "Índice de Tensión del Cinturón Político (paramétrica CIGOB, jul-2026). " +
-      "0 = mínimo capital político, 100 = máximo (capacidad de gobernar, no popularidad). " +
-      "Pondera cinco dimensiones; la tensión del cinturón es (100 − ITCP) / 10.",
+    descripcion: "0 = mínimo capital político, 100 = máximo. Capacidad de gobernar, no popularidad.",
     data: c.itcp,
   };
   return null;
