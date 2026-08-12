@@ -71,9 +71,27 @@ propio valor —"tensionado"— en vez de pedirle prestada la palabra "rojo" a u
 escala que no es la suya. Con eso desaparece la contradicción visible sin mover
 un solo umbral.
 
-**Queda abierto del lado de la metodología**: que dos particiones distintas de
-la misma tensión conviva es un problema real, y esta decisión sólo deja de
-exhibirlo como si fuera un error de la página.
+**Queda abierto del lado de la metodología**, y son TRES particiones, no dos.
+Sobre la misma tensión 0-10:
+
+```text
+semáforo (color)      verde ≤4 · amarillo ≤6 · naranja ≤8 · rojo >8
+estado                estable ≤3 · en_tension ≤6 · tensionado >6
+alerta multicinturón  cuenta sólo los cinturones con score >= 7
+```
+
+Ninguna coincide con las otras, y entre 6 y 7 hay una **zona muerta**: un
+cinturón queda clasificado "tensionado" y NO cuenta para la alerta. Con el
+snapshot de agosto de 2026 le pasa a vida cotidiana, en 6,9.
+
+Eso se descubrió intentando mostrarlo: una versión de esta página llegó a
+publicar un chip que decía "Cuenta para la alerta sistémica: Sí" para vida
+cotidiana, que es falso. El chip se retiró. Escribir el 7 en el front para
+arreglarlo sería meter un umbral de metodología en la capa de presentación,
+que es justo lo que este ADR evita.
+
+Esta decisión sólo deja de exhibir la inconsistencia como si fuera un error de
+la página; **no la resuelve**.
 
 ### 3. El color nunca es el único canal
 

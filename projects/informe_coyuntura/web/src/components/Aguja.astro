@@ -47,6 +47,10 @@ const R = 100;
 const CX = 120;
 const CY = 116;
 const GROSOR = tamano === "grande" ? 22 : 18;
+// El tramo activo se dibuja más grueso (es su canal no cromático), así que la
+// geometría de las marcas tiene que usar ESTE número y no el de los inactivos:
+// si no, la marca no cruza la banda activa y quedan colas sin cortar.
+const GROSOR_ACTIVO = tamano === "grande" ? 30 : 26;
 
 const rad = (t: number) => Math.PI * (1 - Math.min(Math.max(t, 0), TENSION_MAX) / TENSION_MAX);
 const punto = (t: number, radio = R) => {
@@ -67,12 +71,12 @@ const [px, py] = valor !== null ? punto(valor, R - GROSOR / 2 - 2) : [CX, CY];
 // que el antialiasing borra; cruzando la banda se ven a cualquier tamaño y son
 // lo que deja leer la escala cuando el color no llega.
 const tick = (t: number) => {
-  const [xa, ya] = punto(t, R - GROSOR / 2 - 1);
-  const [xb, yb] = punto(t, R + GROSOR / 2 + 1);
+  const [xa, ya] = punto(t, R - GROSOR_ACTIVO / 2 - 1);
+  const [xb, yb] = punto(t, R + GROSOR_ACTIVO / 2 + 1);
   return { x1: xa.toFixed(2), y1: ya.toFixed(2), x2: xb.toFixed(2), y2: yb.toFixed(2) };
 };
 const rotulo = (t: number) => {
-  const [x, y] = punto(t, R + GROSOR / 2 + 15);
+  const [x, y] = punto(t, R + GROSOR_ACTIVO / 2 + 12);
   return { x: x.toFixed(2), y: (y + 4).toFixed(2) };
 };
 

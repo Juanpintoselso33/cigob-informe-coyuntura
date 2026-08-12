@@ -27,14 +27,22 @@ const c = informe.cinturones[meta.key];
 // página entera y eso fue quitar información: `estado` es el concepto que
 // dispara "1 tensionado es manejable, 2 o más no", y el lector no tenía cómo
 // saber de qué lado caía este cinturón.
-// La regla sistémica del informe cuenta cinturones TENSIONADOS: uno es
-// manejable, dos o más señalan inestabilidad. Eso es lo único para lo que se
-// usa `estado`, así que es lo único que se muestra. Presentarlo como "estado
-// del cinturón" lo ponía a competir con la aguja —y con este snapshot macro
-// decía a la vez "Sin tensión relevante" y "En tensión"—, cuando en realidad
-// no son dos opiniones sobre lo mismo: uno mide magnitud, el otro decide
-// pertenencia a un conteo.
-const cuentaParaAlerta = c.estado === "tensionado";
+// Acá hubo un chip que decía "Cuenta para la alerta sistémica: Sí/No" a partir
+// de `estado`, y era FALSO. Sobre la misma tensión 0-10 hay tres particiones
+// distintas y ninguna coincide con las otras:
+//
+//   semáforo (color)      verde ≤4 · amarillo ≤6 · naranja ≤8 · rojo >8
+//   estado                estable ≤3 · en_tension ≤6 · tensionado >6
+//   alerta multicinturón  cuenta sólo los de score >= 7
+//
+// Entre 6 y 7 hay una zona muerta: un cinturón es "tensionado" y NO cuenta para
+// la alerta. Con este snapshot le pasa a vida cotidiana, en 6,9. El chip
+// afirmaba que sí contaba.
+//
+// No se puede arreglar desde el front sin escribir el umbral 7 a mano, que es
+// justo lo que este rediseño no hace, así que la afirmación se retira: la
+// magnitud la da la aguja y la regla sistémica vive en el panel de la portada,
+// donde se explica. Queda reportado como decisión de metodología (ADR-0194).
 const filas = indicadoresOrdenados(c);
 // Los indicadores de contexto (en_indice === false) no construyen la tensión:
 // se muestran en un bloque aparte para no confundirlos con los del índice.
@@ -242,22 +250,22 @@ const robChartData = rob?.hist && indice ? {
   <Nav />
   <header class={`cg-hero cg-detalle-hero cg-detalle-hero--${meta.slug}`} id="top">
     <div class="cg-hero-inner cg-detalle-inner">
+      <div class="cg-detalle-cols">
+      <div class="cg-detalle-texto">
       <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a> · Cinturón</p>
       <h1 class="cg-hero-title cg-detalle-title">{meta.nombre}</h1>
       <p class="cg-hero-lead cg-detalle-lead">{meta.sub}.</p>
       <div class="cg-detalle-meta">
         {/* La aguja reemplaza al chip de score, que repetía su número. El
             estado queda al lado, en texto: es otro concepto, no otro color. */}
-        <Aguja tension={c.score} titulo={`Tensión de ${meta.nombre}`} ocultarTitulo />
-        {/* La regla va VISIBLE, no en un `title`: un tooltip no existe para
-            quien navega con el dedo, que es la mitad de los lectores. */}
-        <span class="cg-detalle-chip">
-          Cuenta para la alerta sistémica: <strong>{cuentaParaAlerta ? "Sí" : "No"}</strong>
-          <span class="cg-chip-nota">2 o más señalan inestabilidad</span>
-        </span>
         {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>
+      </div>
+      </div>
+      <div class="cg-detalle-aguja">
+        <Aguja tension={c.score} titulo={`Tensión de ${meta.nombre}`} tamano="grande" />
+      </div>
       </div>
     </div>
   </header>

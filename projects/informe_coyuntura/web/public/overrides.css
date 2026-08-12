@@ -1340,11 +1340,25 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-dot.sem-naranja  { background: var(--naranja); }
 .cg-dot.sem-rojo     { background: var(--rojo); }
 
-/* La aguja en la cabecera del cinturón: alineada con los chips de metadatos. */
+/* La cabecera del cinturón, en dos columnas: el título explica, la aguja
+   contesta. Antes la aguja iba metida entre los chips de metadatos, a 118px,
+   y quedaba como un adorno en vez de ser la lectura principal de la página. */
+.cg-detalle-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px 48px;
+  align-items: center;
+}
+.cg-detalle-aguja { display: flex; justify-content: center; }
+.cg-detalle-aguja .cg-aguja { max-width: 300px; }
 .cg-detalle-meta { align-items: center; }
-.cg-detalle-meta .cg-aguja { max-width: 118px; margin-right: 4px; }
-.cg-detalle-meta .cg-aguja-lectura { font-size: 12px; }
-.cg-detalle-meta .cg-aguja-cap { margin-top: -10px; }
+
+@media (max-width: 860px) {
+  .cg-detalle-cols { grid-template-columns: 1fr; gap: 16px; }
+  .cg-detalle-texto { order: 2; }
+  .cg-detalle-aguja { order: 1; }
+  .cg-detalle-aguja .cg-aguja { max-width: 260px; }
+}
 
 /* Arco base, marcas y extremos (revisión adversarial, ago-2026): sin esto la
    posición del puntero deja de ser un canal propio en cuanto el color se
@@ -1375,11 +1389,19 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 }
 
 @media (forced-colors: active) {
-  .cg-aguja-base { stroke: CanvasText; }
-  .cg-aguja-tramo { forced-color-adjust: none; }
+  /* Con colores forzados no hay contraste garantizado entre CanvasText y los
+     tintes del semáforo, y dejando los tramos con color propio los separadores
+     podían quedar invisibles (o CanvasText sobre CanvasText si además faltaban
+     los tramos). Se usa un único par del sistema: la banda en CanvasText y los
+     cortes en Canvas, que por definición contrastan entre sí en la paleta
+     forzada, clara u oscura. El grosor del tramo activo sigue funcionando como
+     canal redundante. */
+  .cg-aguja-base,
+  .cg-aguja-tramo { forced-color-adjust: none; stroke: CanvasText; }
+  .cg-aguja-tick { forced-color-adjust: none; stroke: Canvas; stroke-width: 3; }
   .cg-aguja-linea { stroke: CanvasText; }
   .cg-aguja-eje { fill: CanvasText; }
-  .cg-aguja-tick { stroke: CanvasText; }
+  .cg-aguja-escala { fill: CanvasText; }
 }
 
 /* El panel de tensión: cada cinturón dice su lectura en texto, no solo en el
