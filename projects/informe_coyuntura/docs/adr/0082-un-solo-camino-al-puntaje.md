@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-18
 cinturon: 'politica'
 archivos: ['parametrica.Escala']
-relacionado: ['0192']
+relacionado: ['0192', '0195']
 ambito: 'Motor paramétrico · `parametrica.Escala` (nuevo) · ITCM/ITCG/ITCP · todo módulo que reproduzca puntajes'
 origen: 'El mismo bug, cuatro veces en una jornada'
 ---

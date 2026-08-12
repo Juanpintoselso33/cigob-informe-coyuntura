@@ -50,6 +50,35 @@ UMBRALES = {
     "EN_TENSION_MAX": 6,
 }
 
+
+def estado_de_score(score: float) -> str:
+    """Traduce la tensión 0-10 de un cinturón a su estado.
+
+    ÚNICA definición. Antes había tres criterios distintos para lo mismo:
+    `generar_informe._estado`, una "réplica" en `publicar._estado`, y adentro de
+    `detectar_barbarismo` un tercero —`score >= EN_TENSION_MAX + 1`— que se
+    usaba para contar los cinturones de la alerta multicinturón.
+
+    Ese `+1` sólo coincide con `> EN_TENSION_MAX` cuando los scores son enteros,
+    y no lo son: tienen un decimal. Entre 6 y 7 quedaba una ZONA MUERTA donde un
+    cinturón estaba clasificado "tensionado" y a la vez no contaba para la
+    alerta. En agosto de 2026 le pasaba a vida cotidiana, en 6,9: el informe la
+    llamaba tensionada y la regla "dos o más señalan inestabilidad" la ignoraba.
+
+    Lo encontró una revisión adversarial del rediseño visual, al intentar
+    mostrar en la web si un cinturón contaba para la alerta (ADR-0195).
+    """
+    if score <= UMBRALES["ESTABLE_MAX"]:
+        return "estable"
+    if score <= UMBRALES["EN_TENSION_MAX"]:
+        return "en_tension"
+    return "tensionado"
+
+
+def es_tensionado(score: float) -> bool:
+    """Si este cinturón cuenta para la alerta multicinturón."""
+    return estado_de_score(score) == "tensionado"
+
 # Mapping cinturón dominante → barbarismo activo (marco PES de Matus)
 BARBARISMO_MAP = {
     "macro": "tecnocrático",

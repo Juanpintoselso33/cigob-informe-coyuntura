@@ -25,7 +25,7 @@ DATA.mkdir(parents=True, exist_ok=True)
 
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
-from config import PESOS_CINTURONES, UMBRALES        # pesos y umbrales del informe
+from config import PESOS_CINTURONES, UMBRALES, estado_de_score  # pesos y umbrales del informe
 import itcm                                           # bandas y pesos del ITCM macro
 import itcg                                           # bandas y pesos del ITCG gestión
 import itcp                                           # bandas y pesos del ITCP política
@@ -340,13 +340,10 @@ SCORE_EXPLICACION = {
 }
 
 
-def _estado(score):
-    """Réplica de generar_informe._estado: traduce el score 0–10 a estado."""
-    if score <= UMBRALES["ESTABLE_MAX"]:
-        return "estable"
-    if score <= UMBRALES["EN_TENSION_MAX"]:
-        return "en_tension"
-    return "tensionado"
+# Era una "réplica" escrita a mano de generar_informe._estado. Una réplica es
+# una copia que puede desincronizarse, y de hecho el criterio de la alerta ya se
+# había desincronizado de las dos (ADR-0195). Ahora las tres son la misma.
+_estado = estado_de_score
 
 
 def recomputar_vida_y_global(informe):

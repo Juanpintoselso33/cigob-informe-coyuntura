@@ -15,7 +15,8 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 sys.path.insert(0, str(Path(__file__).parent))
 sys.stdout.reconfigure(encoding="utf-8")
 
-from config import PESOS_CINTURONES, UMBRALES, BARBARISMO_MAP, fase_mandato, MANDATO_INICIO
+from config import (PESOS_CINTURONES, UMBRALES, BARBARISMO_MAP, fase_mandato,
+                    MANDATO_INICIO, estado_de_score, es_tensionado)
 # Reutilizan el motor de scoring vigente para recalcular ITCM/ITCG/ITCP desde
 # los valores crudos ya persistidos en el caché (sin red) — ver
 # _INDICES_PARAMETRICOS más abajo y el ADR que documenta este cambio.
@@ -60,12 +61,9 @@ def _recalcular_indice(nombre: str, indicadores: dict, score_cache: float) -> tu
     return tension_de(resultado["valor"]), resultado
 
 
-def _estado(score: float) -> str:
-    if score <= UMBRALES["ESTABLE_MAX"]:
-        return "estable"
-    if score <= UMBRALES["EN_TENSION_MAX"]:
-        return "en_tension"
-    return "tensionado"
+# La definición vive en config.estado_de_score: es la misma que usa publicar y
+# la misma con la que se cuenta la alerta.
+_estado = estado_de_score
 
 
 def load_caches() -> dict[str, dict]:
@@ -96,12 +94,14 @@ def detectar_barbarismo(cinturones_data: dict) -> tuple[str | None, bool]:
     Retorna (barbarismo_activo, alerta_multicinturon).
     Regla matusiana: nunca apretar 3 cinturones a la vez.
     barbarismo_activo = cinturón con score más alto que supera umbral de tensión.
-    alerta_multicinturon = True si 2+ cinturones están "tensionados" (score >= 7).
+    alerta_multicinturon = True si 2+ cinturones están "tensionados", con el
+    MISMO criterio que `_estado` — no uno propio: cuando acá decía
+    `score >= EN_TENSION_MAX + 1` había una zona muerta entre 6 y 7 (ADR-0195).
     """
     tensionados = [
         (nombre, data["score"])
         for nombre, data in cinturones_data.items()
-        if data["score"] >= UMBRALES["EN_TENSION_MAX"] + 1
+        if es_tensionado(data["score"])
     ]
     en_tension_o_mas = [
         (nombre, data["score"])

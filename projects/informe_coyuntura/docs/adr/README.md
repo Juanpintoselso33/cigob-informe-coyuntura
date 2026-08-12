@@ -277,3 +277,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0190](0190-renombrar-los-indices.md) | Renombrar los índices: las siglas no dicen qué miden y chocan con las de la UTDT |  | propuesto |
 | [0191](0191-frescura-del-fetch-y-no-solo-del-dato.md) | El gate mide la frescura del dato pero no la del fetch, y por eso una fuente puede caerse en silencio | `judicializacion` | vigente |
 | [0194](0194-la-aguja-es-la-lectura-primaria.md) | La aguja es la lectura primaria, y el color deja de tener dos varas |  | vigente |
+| [0195](0195-un-solo-criterio-de-tensionado.md) | Un cinturón "tensionado" cuenta para la alerta, siempre |  | vigente |
