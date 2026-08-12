@@ -1443,3 +1443,23 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
    cinturón entero junto, no recorrerlo en cinco pantallas. `.cg-tile-grid` es
    flex, así que lo que manda es la base, no grid-template-columns. */
 .cg-tile-grid > .cg-tile--compacto { flex: 1 1 178px; max-width: 260px; }
+
+/* ── F4: el color saturado queda reservado al semáforo ───────────────────────
+   Cada tile y cada card de dimensión llevaba un borde de 3px en el color del
+   cinturón. Dentro de la página de un cinturón ese color no distingue NADA
+   —todas las cards son del mismo cinturón— y compite con el único color que
+   ahí porta significado, que es el del semáforo. Se neutraliza.
+
+   En la portada el borde de color SÍ se queda: ahí las cinco cards conviven y
+   el color las distingue entre sí, o sea que informa. La regla es esa, no una
+   preferencia estética: el color que no distingue nada, se va. */
+.cg-tile--macro,
+.cg-tile--politica,
+.cg-tile--vida,
+.cg-tile--gestion,
+.cg-tile--espiritu { border-top-color: var(--bd); }
+.cg-itcm-dim { border-top-color: var(--bd); }
+
+/* Sin el borde de color, el punto del semáforo pasa a ser lo primero que se ve
+   en el tile, que es exactamente lo que el rediseño busca. */
+.cg-tile--compacto .cg-tile-dot { width: 10px; height: 10px; }
