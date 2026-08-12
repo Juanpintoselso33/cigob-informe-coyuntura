@@ -296,8 +296,8 @@ const robChartData = rob?.hist && indice ? {
         <h2 class="cg-h2">El detalle, hoy</h2>
         <p class="cg-h2-sub">
           {indice
-            ? "Los que construyen el índice de tensión. Tocá cualquiera para ver qué mide, qué aporta y su evolución. Automatizados primero; carga manual y estimaciones al final."
-            : "Tocá cualquier indicador para ver qué mide, qué aporta y su evolución. Automatizados primero; carga manual y estimaciones al final."}
+            ? "Los que construyen el índice. Tocá uno para ver qué mide y cómo viene."
+            : "Tocá un indicador para ver qué mide y cómo viene."}
         </p>
       </div>
       <SemaforoLeyenda />
@@ -374,10 +374,9 @@ const robChartData = rob?.hist && indice ? {
           <p class="cg-eyebrow">Robustez</p>
           <h2 class="cg-h2">¿Cuánto depende el {indice.sigla} de la ponderación elegida?</h2>
           <p class="cg-h2-sub">
-            Análisis de sensibilidad (Monte Carlo): el índice se recalcula en{" "}
             {rob.n_draws.toLocaleString("es-AR")} escenarios perturbando{" "}
-            {indice.base100 ? "los pesos ±20%" : "los pesos ±20% y los valores de entrada ±5%"}.
-            La curva es la distribución de resultados; la franja sombreada, donde cae el 90% de los casos.
+            {indice.base100 ? "los pesos ±20%" : "los pesos ±20% y las entradas ±5%"}.
+            La franja sombreada es donde cae el 90%.
           </p>
         </div>
         <div class={`cg-rob cg-rob--${meta.slug}`} data-det="rob" role="button" tabindex="0"
