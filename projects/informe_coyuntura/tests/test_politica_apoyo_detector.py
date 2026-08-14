@@ -27,7 +27,6 @@ def entorno(tmp_path, monkeypatch):
     ]}, ensure_ascii=False), encoding="utf-8")
     monkeypatch.setattr(politica, "APOYO_CODIFICACION_PATH", cod)
     monkeypatch.setattr(politica, "APOYO_NOVEDADES_PATH", tmp_path / "novedades.json")
-    monkeypatch.setattr(politica, "UIA_MARGEN_IDS", 3)
     monkeypatch.setattr(politica, "_aea_comunicados", lambda s: [])
     return tmp_path
 
@@ -35,24 +34,21 @@ def entorno(tmp_path, monkeypatch):
 def test_no_reavisa_lo_ya_codificado(entorno, monkeypatch):
     """El caso central: los 103 comunicados que alguien ya clasificó no pueden
     volver a aparecer como pendientes."""
-    monkeypatch.setattr(politica, "_uia_comunicado", lambda i, s: {
-        "camara": "UIA", "id": str(i), "fecha": "2026-05-06",
-        "titulo": "La UIA viajó a Córdoba", "url": ""} if i == 4239 else None)
+    monkeypatch.setattr(politica, "_uia_comunicados", lambda s, omitidos: [])
     store = politica.detectar_novedades_empresarias()
     assert store["pendientes"] == {}
     assert "UIA|4239" in store["revisadas"]
 
 
 def test_avisa_lo_nuevo_una_sola_vez(entorno, monkeypatch):
-    # el barrido arranca en el último id conocido + 1 (acá 4239 → 4240)
-    nuevo = {"camara": "UIA", "id": "4240", "fecha": "2026-07-20",
+    nuevo = {"camara": "UIA", "id": "comunicado-nuevo", "fecha": "2026-07-20",
              "titulo": "Comunicado nuevo", "url": "u"}
-    monkeypatch.setattr(politica, "_uia_comunicado",
-                        lambda i, s: dict(nuevo) if i == 4240 else None)
+    monkeypatch.setattr(politica, "_uia_comunicados",
+                        lambda s, omitidos: [] if "comunicado-nuevo" in omitidos else [dict(nuevo)])
     a = politica.detectar_novedades_empresarias()
-    assert list(a["pendientes"]) == ["UIA|4240"]
+    assert list(a["pendientes"]) == ["UIA|comunicado-nuevo"]
     assert a["_meta"]["nuevos_en_la_corrida"] == 1
-    assert a["pendientes"]["UIA|4240"]["postura"] is None, "no clasifica: eso es humano"
+    assert a["pendientes"]["UIA|comunicado-nuevo"]["postura"] is None, "no clasifica: eso es humano"
     b = politica.detectar_novedades_empresarias()
     assert b["_meta"]["nuevos_en_la_corrida"] == 0, "avisó dos veces del mismo"
 
@@ -77,11 +73,11 @@ def test_una_camara_caida_no_tumba_la_otra(entorno, monkeypatch):
     def explota(s):
         raise RuntimeError("sitio caído")
     monkeypatch.setattr(politica, "_aea_comunicados", explota)
-    monkeypatch.setattr(politica, "_uia_comunicado", lambda i, s: {
-        "camara": "UIA", "id": str(i), "fecha": "2026-07-20",
-        "titulo": "x", "url": ""} if i == 4241 else None)
+    monkeypatch.setattr(politica, "_uia_comunicados", lambda s, omitidos: [{
+        "camara": "UIA", "id": "nueva", "fecha": "2026-07-20",
+        "titulo": "x", "url": ""}])
     store = politica.detectar_novedades_empresarias()
-    assert "UIA|4241" in store["pendientes"]
+    assert "UIA|nueva" in store["pendientes"]
 
 
 def test_el_detector_avisa_pero_no_clasifica(entorno, monkeypatch):
@@ -89,7 +85,7 @@ def test_el_detector_avisa_pero_no_clasifica(entorno, monkeypatch):
     la asigna una persona. Lo que cambió con ADR-0150 es que el indicador que
     alimenta ya se publica (antes este test verificaba que NO estuviera en
     itcp.py); el reparto detección-automática / clasificación-humana no."""
-    monkeypatch.setattr(politica, "_uia_comunicado", lambda i, s: None)
+    monkeypatch.setattr(politica, "_uia_comunicados", lambda s, omitidos: [])
     store = politica.detectar_novedades_empresarias()
     assert "valor" not in store and "serie" not in store
     itcp = (RAIZ / "scripts" / "itcp.py").read_text(encoding="utf-8")
@@ -100,19 +96,51 @@ def test_el_aviso_trae_el_texto_del_comunicado(monkeypatch):
     """La causa raíz de ADR-0150: sin cuerpo, quien codifica sólo tiene el
     título, y títulos como «Comunicado de la UIA» no dicen nada. El scraper
     viejo devolvía el menú de navegación del sitio."""
-    html = ('<html><head><title>Comunicado de la UIA | UIA</title></head>'
+    html = ('<html><head><meta property="og:title" content="Comunicado de la UIA">'
+            '<meta property="article:published_time" content="2026-03-11"></head>'
             '<nav>Institucional Novedades Documentos Contacto</nav>'
-            '<span>11/03/2026</span>'
-            '<div class="nota--body"><p>Expresamos nuestro profundo malestar.</p>'
-            '<p>Miles de empresas atraviesan un momento difícil.</p></div>'
-            '<div class="nota--tags">tags</div></html>')
+            r'55:T4ed,\u003cp data-block-key=\"a\"\u003eExpresamos nuestro profundo malestar.\u003c/p\u003e'
+            r'\u003cp data-block-key=\"b\"\u003eMiles de empresas atraviesan un momento difícil.\u003c/p\u003e4b:['
+            '</html>')
 
     class R:
         status_code, text = 200, html
     monkeypatch.setattr(politica, "HTTP_TIMEOUT", 1)
-    c = politica._uia_comunicado(4226, type("S", (), {"get": lambda *a, **k: R()})())
+    c = politica._uia_comunicado(
+        "https://www.uia.org.ar/uia/novedades/comunicado-de-la-uia",
+        type("S", (), {"get": lambda *a, **k: R()})())
     assert "malestar" in c["texto"] and "momento difícil" in c["texto"]
     assert "Institucional Novedades" not in c["texto"], "volvió a leer el menú"
+
+
+def test_el_listado_nuevo_no_vuelve_a_descargar_slugs_ya_vistos(monkeypatch):
+    html = ('<a href="/uia/novedades/ya-vista">A</a>'
+            '<a href="/uia/novedades/nueva/">B</a>')
+    pedidos = []
+
+    class R:
+        status_code, text = 200, html
+        def raise_for_status(self): pass
+
+    class S:
+        def get(self, url, **kwargs):
+            pedidos.append(url)
+            return R()
+
+    monkeypatch.setattr(politica, "_uia_comunicado",
+                        lambda url, session: {"id": url.rsplit("/", 1)[-1]})
+    out = politica._uia_comunicados(S(), {"ya-vista"})
+    assert [c["id"] for c in out] == ["nueva"]
+    assert pedidos == [politica.UIA_NOVEDADES_URL]
+
+
+def test_una_url_migrada_no_reavisa_un_comunicado_ya_codificado(entorno, monkeypatch):
+    monkeypatch.setattr(politica, "_uia_comunicados", lambda s, omitidos: [{
+        "camara": "UIA", "id": "la-uia-viajo-a-cordoba-2",
+        "fecha": "2026-05-06", "titulo": "La UIA viajó a Córdoba", "url": "u"}])
+    store = politica.detectar_novedades_empresarias()
+    assert store["pendientes"] == {}
+    assert "UIA|la-uia-viajo-a-cordoba-2" in store["revisadas"]
 
 
 def test_el_store_esta_en_el_git_add_del_cron():

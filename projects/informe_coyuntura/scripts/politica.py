@@ -1362,12 +1362,10 @@ def _jus_fechas(filas: list[dict], campo: str, tipo: str = "Juez") -> list[str]:
 APOYO_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_empresario_novedades.json"
 APOYO_CODIFICACION_PATH = PROJECT_DIR / "data" / "politica" / "apoyo_empresario_codificacion.json"
 
-# UIA sirve cada comunicado en /prensa/{id}/ SIN JavaScript, con id secuencial
-# (el listado sí es una app, por eso se recorre por id y no por el índice).
-# OJO: /comunicaciones/noticias/ es OTRA sección y está dominada por informes
-# del CEU — es el mismo patrón que hundió a ADEBA, ver ADR-0148.
-UIA_PRENSA_URL = "https://www.uia.org.ar/prensa/{}/"
-UIA_MARGEN_IDS = 60          # cuántos ids por encima del último conocido se sondean
+# La UIA migró en agosto de 2026 de /prensa/{id}/ a un sitio Next con slugs.
+# El HTML inicial trae el listado de novedades y cada ficha trae fecha, título
+# y cuerpo en el stream RSC, por lo que no hace falta ejecutar JavaScript.
+UIA_NOVEDADES_URL = "https://www.uia.org.ar/uia/novedades"
 AEA_PRENSA_URL = "https://www.aeanet.net/prensa.html"
 
 _MESES_AEA = {m: i for i, m in enumerate(
@@ -1380,48 +1378,52 @@ def _limpio(html: str) -> str:
 
 
 def _uia_cuerpo(html: str) -> str:
-    """El comunicado vive en `<div class="nota--body">`.
-
-    Sacarlo NO es un detalle de presentación: sin cuerpo, quien codifica sólo
-    tiene el título, y títulos como «Comunicado de la Unión Industrial
-    Argentina» no dicen nada. La primera versión de este scraper barría el HTML
-    entero y se quedaba con el menú de navegación, idéntico en las 57 notas —
-    error que ningún test veía y que sólo apareció cuando dos codificadores
-    ciegos, por separado, avisaron que los textos venían todos iguales
-    (ADR-0150).
-    """
-    m = re.search(r'class="nota--body"(.*?)(?:class="nota--tags"|</section>|<footer)',
-                  html, re.S | re.I)
-    if not m:
+    """Extrae el rich text completo del stream RSC del sitio Next de UIA."""
+    bloques = re.findall(
+        r'(?:\\u003cp\b.*?\\u003c/p\\u003e)+', html, re.S | re.I)
+    if not bloques:
         return ""
-    parrafos = re.findall(r"<p[^>]*>(.*?)</p>", m.group(1), re.S) or [m.group(1)]
-    return _limpio(" ".join(parrafos))
+    cuerpo = max(bloques, key=len)
+    cuerpo = cuerpo.replace(r"\u003c", "<").replace(r"\u003e", ">")
+    return _limpio(cuerpo.replace(r'\"', '"'))
 
 
-def _uia_comunicado(id_: int, session: requests.Session) -> dict | None:
-    """Un comunicado de UIA por id. None si ese id no es de la sección prensa.
-
-    El cuerpo va COMPLETO, sin tope de caracteres. La versión anterior cortaba
-    en 1800 y eso truncaba 37 de los 57 comunicados a mitad de palabra: el
-    pasaje que fija postura suele venir al final (la cita del dirigente, el
-    «por lo expuesto»), así que quien codifica leía la crónica y se perdía la
-    posición. Mismo defecto que el de `_uia_cuerpo`, y con el mismo síntoma:
-    ningún test lo veía porque el texto truncado sigue siendo texto válido.
-    """
-    r = session.get(UIA_PRENSA_URL.format(id_), timeout=HTTP_TIMEOUT)
+def _uia_comunicado(url: str, session: requests.Session) -> dict | None:
+    """Una novedad del sitio vigente de UIA, identificada por su slug."""
+    r = session.get(url, timeout=HTTP_TIMEOUT)
     if r.status_code != 200:
         return None
-    plano = _limpio(re.sub(r"<script.*?</script>|<style.*?</style>", " ",
-                           r.text, flags=re.S | re.I))
-    fecha = re.search(r"(\d{2})/(\d{2})/(20\d{2})", plano)
-    titulo = re.search(r"<title>(.*?)\s*\|", r.text, re.S)
+    fecha = re.search(
+        r'<meta\s+property="article:published_time"\s+content="(20\d{2}-\d{2}-\d{2})"',
+        r.text, re.I)
+    titulo = re.search(r'<meta\s+property="og:title"\s+content="([^"]+)"', r.text, re.I)
     if not (fecha and titulo):
         return None
-    return {"camara": "UIA", "id": str(id_),
-            "fecha": f"{fecha.group(3)}-{fecha.group(2)}-{fecha.group(1)}",
-            "titulo": _limpio(titulo.group(1)),
+    slug = url.rstrip("/").rsplit("/", 1)[-1]
+    return {"camara": "UIA", "id": slug,
+            "fecha": fecha.group(1), "titulo": unescape(titulo.group(1)),
             "texto": _uia_cuerpo(r.text),
-            "url": UIA_PRENSA_URL.format(id_)}
+            "url": url}
+
+
+def _uia_comunicados(session: requests.Session, omitidos: set[str] | None = None) -> list[dict]:
+    """Novedades visibles en el listado vigente; no re-fetch las ya vistas."""
+    r = session.get(UIA_NOVEDADES_URL, timeout=HTTP_TIMEOUT)
+    r.raise_for_status()
+    slugs = sorted(set(re.findall(r'href="/uia/novedades/([^"/?#]+)', r.text)))
+    salida, omitidos = [], omitidos or set()
+    for slug in slugs:
+        if slug in omitidos:
+            continue
+        url = f"{UIA_NOVEDADES_URL}/{slug}"
+        try:
+            c = _uia_comunicado(url, session)
+        except Exception as e:
+            print(f"  [WARN] apoyo/UIA {slug}: {e}")
+            continue
+        if c:
+            salida.append(c)
+    return salida
 
 
 def _aea_comunicados(session: requests.Session) -> list[dict]:
@@ -1472,6 +1474,17 @@ def _apoyo_ya_codificados() -> set[str]:
         else:
             claves.add(f"AEA|{_apoyo_clave_aea(c['fecha'], c.get('titulo', ''))}")
     return claves
+
+
+def _apoyo_firmas_codificadas() -> set[tuple[str, str]]:
+    """Fecha+título evita reavisar notas migradas cuyo id viejo desapareció."""
+    try:
+        casos = json.loads(APOYO_CODIFICACION_PATH.read_text(
+            encoding="utf-8-sig")).get("casos", [])
+    except (OSError, json.JSONDecodeError):
+        return set()
+    return {(c.get("fecha", ""), _apoyo_clave_aea("", c.get("titulo", "")))
+            for c in casos}
 
 
 APOYO_DESDE = "2023-12"        # arranque del período (asunción Milei)
@@ -1539,7 +1552,7 @@ def fetch_apoyo_empresario() -> dict | None:
     que apoyan = mayor tensión con el sector privado organizado.
 
     Fuente: comunicados institucionales fechados de aeanet.net/prensa.html y
-    uia.org.ar/prensa/, codificados a mano con el protocolo de ADR-0131 —
+    uia.org.ar/uia/novedades, codificados a mano con el protocolo de ADR-0131 —
     dos codificadores ciegos entre sí, kappa 1,000 (postura) y 0,955
     (destinatario), desacuerdos adjudicados por el autor del manual.
 
@@ -1603,6 +1616,7 @@ def detectar_novedades_empresarias() -> dict:
     session = requests.Session()
     session.headers.update(HTTP_HEADERS)
     nuevas, vistos = 0, 0
+    firmas_codificadas = _apoyo_firmas_codificadas()
 
     def anotar(c: dict) -> None:
         nonlocal nuevas, vistos
@@ -1610,24 +1624,22 @@ def detectar_novedades_empresarias() -> dict:
         clave = f"{c['camara']}|{c['id']}"
         if clave in revisadas:
             return
+        firma = (c.get("fecha", ""), _apoyo_clave_aea("", c.get("titulo", "")))
+        if firma in firmas_codificadas:
+            revisadas[clave] = {"fecha": c["fecha"], "titulo": c["titulo"][:160],
+                                "origen": "migración de URL; ya codificado"}
+            return
         revisadas[clave] = {"fecha": c["fecha"], "titulo": c["titulo"][:160]}
         pendientes[clave] = {**c, "postura": None, "destinatario": None,
                              "nota": "sin codificar — ver apoyo_empresario_reglas.json"}
         nuevas += 1
 
-    # UIA: se sondea hacia arriba desde el último id conocido. Los ids se
-    # comparten con otras secciones del sitio, así que la mayoría dará None.
-    ids_uia = [int(k.split("|")[1]) for k in revisadas
-               if k.startswith("UIA|") and k.split("|")[1].isdigit()]
-    desde = (max(ids_uia) + 1) if ids_uia else 4240
-    for id_ in range(desde, desde + UIA_MARGEN_IDS):
-        try:
-            c = _uia_comunicado(id_, session)
-        except Exception as e:
-            print(f"  [WARN] apoyo/UIA id={id_}: {e}")
-            continue
-        if c:
+    try:
+        omitidos = {k.split("|", 1)[1] for k in revisadas if k.startswith("UIA|")}
+        for c in _uia_comunicados(session, omitidos):
             anotar(c)
+    except Exception as e:
+        print(f"  [WARN] apoyo/UIA: {e}")
 
     try:
         for c in _aea_comunicados(session):
@@ -1642,7 +1654,7 @@ def detectar_novedades_empresarias() -> dict:
                         "apoyo_empresario_reglas.json. NO puntúa: el indicador no "
                         "se publica hasta que haya segunda pasada con kappa ≥ 0,70. "
                         "Sacar de 'pendientes' lo ya codificado."),
-        "fuentes": {"UIA": UIA_PRENSA_URL.format("{id}"), "AEA": AEA_PRENSA_URL},
+        "fuentes": {"UIA": UIA_NOVEDADES_URL, "AEA": AEA_PRENSA_URL},
         "ultima_corrida": date.today().isoformat(),
         "comunicados_vistos": vistos,
         "nuevos_en_la_corrida": nuevas,

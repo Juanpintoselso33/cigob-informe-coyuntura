@@ -2112,30 +2112,54 @@ def _carry_forward(enriquecido, previo):
     return enriquecido
 
 
+def _elegir_crudo_vida(vida_files, fuente_previa=None):
+    """El crudo local nunca puede hacer retroceder el bloque ya publicado.
+
+    Los nombres llevan YYYYMMDD_HHMM y por eso ordenan cronológicamente. Si el
+    snapshot previo declara un archivo más nuevo que los presentes en el clon,
+    significa que ese crudo no se versionó o no llegó a esta máquina: publicar
+    con el último disponible reescribiría datos frescos con datos viejos.
+    """
+    if not vida_files:
+        return None
+    candidato = Path(sorted(vida_files)[-1])
+    if fuente_previa and candidato.name < os.path.basename(fuente_previa):
+        return None
+    return candidato
+
+
 def main():
     informe = json.loads((OUT / "informe.json").read_text(encoding="utf-8"))
     series = build_series()
 
     # Snapshot publicado anterior → fuente para carry-forward ante outages.
-    prev_vida = {}
+    prev_vida, prev_vida_block = {}, None
     prev_path = DATA / "informe.json"
     if prev_path.exists():
         try:
             prev_snap = json.loads(prev_path.read_text(encoding="utf-8"))
-            prev_vida = prev_snap["cinturones"]["vida_cotidiana"]["indicadores"]
+            prev_vida_block = prev_snap["cinturones"]["vida_cotidiana"]
+            prev_vida = prev_vida_block["indicadores"]
         except (json.JSONDecodeError, KeyError):
             prev_vida = {}
 
     vida_files = sorted(glob.glob(str(ROOT / "scripts" / "vida_cotidiana" / "data" / "vida_cotidiana_*.json")))
-    if vida_files:
-        raw = json.loads(Path(vida_files[-1]).read_text(encoding="utf-8"))
+    fuente_previa = (prev_vida_block or {}).get("fuente_enriquecida")
+    vida_path = _elegir_crudo_vida(vida_files, fuente_previa)
+    if vida_path is None and prev_vida_block and vida_files:
+        informe["cinturones"]["vida_cotidiana"] = prev_vida_block
+        print(f"[carry-forward] vida: el crudo local más nuevo "
+              f"({Path(vida_files[-1]).name}) es anterior al publicado "
+              f"({fuente_previa}); se preserva el bloque publicado")
+    elif vida_path:
+        raw = json.loads(vida_path.read_text(encoding="utf-8"))
         enriquecido = build_vida(raw)
         if enriquecido:
             enriquecido = _sellar_vida(enriquecido, raw)
             enriquecido = _carry_forward(enriquecido, prev_vida)
             vida = informe["cinturones"]["vida_cotidiana"]
             vida["indicadores"] = enriquecido
-            vida["fuente_enriquecida"] = os.path.basename(vida_files[-1])
+            vida["fuente_enriquecida"] = vida_path.name
             # Endeudamiento: scoreable vía variación interanual real del crédito.
             real = var_real_credito_12m(
                 raw.get("bcra", {}).get("credito_consumo_serie"), series.get("ipc_nivel"))

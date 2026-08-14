@@ -1306,7 +1306,7 @@ export const FICHAS: Record<string, Ficha> = {
     fuente: {
       organismo: "Asociación Empresaria Argentina (AEA) y Unión Industrial Argentina (UIA)",
       operacion: "Comunicados institucionales fechados de las secciones de prensa de ambas entidades",
-      url: "https://www.uia.org.ar/prensa/",
+      url: "https://www.uia.org.ar/uia/novedades",
       acceso: "Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona.",
     },
     transformaciones: [

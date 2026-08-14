@@ -121,6 +121,26 @@ def test_carry_forward_restaura_sentimiento_digital_ausente_de_trends():
     assert resultado["sentimiento_digital"]["fecha_dato"] == "2026-07-08"
 
 
+def test_un_crudo_de_vida_mas_viejo_no_reemplaza_el_snapshot_publicado(tmp_path):
+    viejo = tmp_path / "vida_cotidiana_20260812_1035.json"
+    viejo.write_text("{}", encoding="utf-8")
+    assert publicar._elegir_crudo_vida(
+        [str(viejo)], "vida_cotidiana_20260813_0352.json") is None
+
+
+def test_el_crudo_de_vida_igual_o_mas_nuevo_si_se_publica(tmp_path):
+    actual = tmp_path / "vida_cotidiana_20260813_0352.json"
+    actual.write_text("{}", encoding="utf-8")
+    assert publicar._elegir_crudo_vida(
+        [str(actual)], "vida_cotidiana_20260813_0352.json") == actual
+
+
+def test_el_crudo_de_vida_esta_en_el_git_add_del_cron():
+    workflow = (ROOT.parents[1] / ".github" / "workflows" /
+                "data-pipeline.yml").read_text(encoding="utf-8")
+    assert "scripts/vida_cotidiana/data/vida_cotidiana_*.json" in workflow
+
+
 def test_publicar_no_toca_el_arbol_cuando_se_le_redirige_la_salida(tmp_path):
     """El guardián de ADR-0178: si alguien saca el redirect, esto lo caza acá y
     no tres archivos de test más adelante como una falla incomprensible."""
