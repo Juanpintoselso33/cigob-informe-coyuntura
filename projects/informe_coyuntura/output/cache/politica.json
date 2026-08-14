@@ -3,7 +3,7 @@
   "generated_at": "2026-08-14T03:46:14.564439",
   "score": 3.5,
   "itcp": {
-    "valor": 65.1,
+    "valor": 65.4,
     "banda": "moderadamente_aflojado",
     "banda_legible": "Moderadamente aflojado",
     "dimensiones": {
@@ -134,7 +134,7 @@
       "poder_judicial": {
         "nombre": "Poder judicial",
         "peso": 0.15,
-        "puntaje": 59.2,
+        "puntaje": 60.8,
         "indicadores": {
           "cobertura_judicial": {
             "peso": 0.4,
@@ -145,9 +145,9 @@
           },
           "judicializacion": {
             "peso": 0.2,
-            "puntaje_banda": 43.1,
-            "puntaje_aplicado": 43.1,
-            "valor": 1.75,
+            "puntaje_banda": 51.2,
+            "puntaje_aplicado": 51.2,
+            "valor": 1.62,
             "peso_efectivo": 0.03
           },
           "velocidad_resolucion": {
@@ -486,17 +486,18 @@
       "peso_efectivo": 0.0315
     },
     "judicializacion": {
-      "valor": 1.75,
+      "valor": 1.62,
       "unidad": "% de sumarios con medida cautelar",
       "fuente": "SAIJ — buscador de jurisprudencia (Federal + Nacional)",
       "fecha_dato": "2026-01-01",
-      "desactualizado": true,
-      "detalle_txt": "104 de 5947 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
+      "desactualizado": false,
+      "detalle_txt": "107 de 6586 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
       "en_indice": true,
       "dimension": "poder_judicial",
-      "puntaje_itcp": 43.1,
-      "puntaje_banda": 43.1,
-      "peso_efectivo": 0.03
+      "puntaje_itcp": 51.2,
+      "puntaje_banda": 51.2,
+      "peso_efectivo": 0.03,
+      "obtenido_en": "2026-08-14T09:18:29.377967"
     },
     "velocidad_resolucion": {
       "valor": 45.4,
