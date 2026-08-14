@@ -1,0 +1,34 @@
+---
+// Qué es la tensión, dicho en la portada (ADR-0199).
+//
+// El rediseño de la aguja (ADR-0194) sacó de acá el párrafo institucional de
+// seis líneas, y con razón: el estado tiene que entenderse antes de leer. Pero
+// se llevó puesta la única definición del concepto que el informe publica, y
+// la portada quedó mostrando cinco agujas de "tensión" sin decir tensión de
+// qué. Esto NO devuelve aquel párrafo: son dos frases al lado de las agujas
+// que ya se están mirando, y el encuadre completo sigue viviendo en
+// /metodologia#marco.
+//
+// Va después del BLUF y antes de las cards: el lector llega acá justo cuando
+// pasa de "cómo viene el mes" a cinco números que dicen 0-10.
+//
+// Sin cifras de cortes: la dirección de la escala se explica, los umbrales
+// salen de `semaforo_cortes` y los muestra SemaforoLeyenda (ADR-0181/0194).
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+<aside class="cg-marco-home" aria-labelledby="cg-marco-home-t">
+  <div class="cg-marco-home-txt">
+    <p class="cg-eyebrow">El marco</p>
+    <h2 class="cg-marco-home-h" id="cg-marco-home-t">Qué es la tensión</h2>
+    <p>
+      La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos, sino por su
+      capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos de
+      acción disponibles. Los cinco cinturones son los frentes donde eso se juega.
+    </p>
+    <p>
+      Cada uno publica la suya de <strong>0 a 10</strong>: 0 es un cinturón aflojado —el gobierno procesa las
+      demandas con los recursos que tiene— y 10 uno apretado, donde cada decisión se paga con otra.
+    </p>
+  </div>
+  <a class="cg-marco-home-cta" href={`${base}/metodologia/#marco`}>El marco completo →</a>
+</aside>

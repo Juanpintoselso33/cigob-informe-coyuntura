@@ -1497,3 +1497,41 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 @media (max-width: 720px) {
   .cg-marco .cg-marco-lead { font-size: 16px; }
 }
+
+/* ── "Qué es la tensión" en la portada (ADR-0199) ──────────────────────
+   Nota de lectura, no una card de datos: borde de acento a la izquierda como
+   .cg-tension-rule, fondo tenue y sin sombra, para que no compita con el BLUF
+   que tiene arriba ni con las cinco cards que tiene abajo. Es lo que evita
+   reconstruir el paredón de texto que el rediseño sacó del hero. */
+.cg-marco-home {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 28px; flex-wrap: wrap;
+  margin-top: 40px;
+  padding: 22px 26px;
+  background: var(--bg-tint);
+  border: 1px solid var(--bd);
+  border-left: 3px solid var(--teal);
+  border-radius: 10px;
+}
+.cg-marco-home-txt { max-width: 68ch; }
+.cg-marco-home-h {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: 22px; color: var(--dark);
+  margin: 0 0 8px; line-height: 1.15;
+}
+.cg-marco-home p {
+  font-size: 14.5px; line-height: 1.65; color: var(--dark);
+  margin: 0 0 8px;
+}
+.cg-marco-home p:last-child { margin-bottom: 0; }
+.cg-marco-home strong { font-weight: 700; }
+.cg-marco-home-cta {
+  flex-shrink: 0;
+  font-size: 13px; font-weight: 700; color: var(--teal);
+  white-space: nowrap;
+}
+@media (max-width: 720px) {
+  .cg-marco-home { padding: 18px 20px; gap: 14px; }
+  .cg-marco-home-cta { align-self: flex-start; }
+}

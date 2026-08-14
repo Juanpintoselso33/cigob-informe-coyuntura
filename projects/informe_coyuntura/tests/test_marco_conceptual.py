@@ -22,6 +22,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 METODOLOGIA_INDEX = ROOT / "web" / "src" / "pages" / "metodologia" / "index.astro"
+# La portada dice la definición por su cuenta (ADR-0200): la aguja grande, las
+# cinco de cinturón y la leyenda del semáforo nombran la tensión sin definirla,
+# y mandar a otra página para entender la pantalla en la que ya estás es un clic
+# de más. Es redundancia deliberada con /metodologia, no un descuido.
+MARCO_HOME = ROOT / "web" / "src" / "components" / "MarcoTension.astro"
+HOME_INDEX = ROOT / "web" / "src" / "pages" / "index.astro"
 
 
 def _texto_normalizado(path: Path) -> str:
@@ -68,6 +74,32 @@ def test_la_seccion_del_marco_tiene_ancla():
         "La sección del marco perdió su ancla id=\"marco\". Es la sección que "
         "abre /metodologia y el destino natural de cualquier enlace que explique "
         "qué es la tensión (ADR-0199)."
+    )
+
+
+def test_la_portada_define_la_tension_por_su_cuenta():
+    texto = _texto_normalizado(MARCO_HOME)
+    for frase in [
+        "La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos",
+        "procesar la tensión",
+        "entre las demandas del entorno y los recursos de acción disponibles",
+    ]:
+        assert frase in texto, (
+            f"El bloque de la portada perdió «{frase}». La portada muestra seis "
+            "agujas de tensión y una leyenda de semáforo que la nombra; si el "
+            "bloque no la define, ninguna otra cosa del home lo hace (ADR-0200)."
+        )
+    assert "0 a 10" in texto, (
+        "El bloque de la portada dejó de explicar la dirección de la escala "
+        "(ADR-0200)."
+    )
+
+
+def test_la_portada_monta_el_bloque_del_marco():
+    home = _texto_normalizado(HOME_INDEX)
+    assert "<MarcoTension" in home, (
+        "MarcoTension.astro existe pero la portada ya no lo monta: el archivo "
+        "puede seguir intacto y el bloque no salir publicado (ADR-0200)."
     )
 
 
