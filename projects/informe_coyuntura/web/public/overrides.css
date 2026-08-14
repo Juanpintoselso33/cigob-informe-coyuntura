@@ -1505,9 +1505,10 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   outline: 3px solid var(--teal-dark);
   outline-offset: 2px;
 }
-/* La aguja dentro del modal: centrada y con aire, sin el título (el modal ya
-   encabeza con el nombre del indicador). */
-#cg-modal-semaforo .cg-aguja { max-width: 200px; margin: 6px auto 10px; }
+/* La barra dentro del modal: con aire, sin título propio (el modal ya encabeza
+   con el nombre del indicador). La aguja iba a 200px y centrada porque era
+   alta y angosta; la barra toma el ancho de la columna del modal. */
+#cg-modal-semaforo .cg-nivel { margin: 6px 0 10px; }
 
 /* ── El marco conceptual (/metodologia) ────────────────────────────────
    Prosa, no cards. El encuadre es un argumento encadenado —qué es la tensión,
