@@ -40,6 +40,48 @@ Monorepo for CIGOB/UBA political analysis tools.
 Read the nearest `README.md` before changing a project; project docs have
 the operational detail, the root README is just an entry point.
 
+## Local environment: Mac and tower
+
+The command blocks in this file are written for the tower (PowerShell, plain
+`python`). On the **Mac** everything works the same once you know these four
+things — set up and verified 2026-08-13:
+
+- **Python.** There is no `python` on the PATH (Homebrew ships `python3`, with
+  nothing installed in it). The project venv is
+  `projects/informe_coyuntura/.venv`, built with uv on **Python 3.12** to match
+  the CI. Either `source .venv/bin/activate` — after which every `python …`
+  block in this file works verbatim — or call `.venv/bin/python` directly. To
+  rebuild it:
+
+  ```bash
+  cd projects/informe_coyuntura
+  uv venv --python 3.12 .venv
+  uv pip install --python .venv/bin/python -r requirements.txt
+  ```
+
+- **Web.** `node_modules` is installed under `projects/informe_coyuntura/web/`.
+  `npm run build` · `npm run preview -- --port 4321`.
+- **BigQuery.** `bigquery_export.py` (last step of every data run, ADR-0180)
+  authenticates with `GOOGLE_APPLICATION_CREDENTIALS` in CI and with gcloud ADC
+  locally. The gcloud SDK is installed (Homebrew cask, on the PATH), but the
+  **ADC is not set up yet**: run `gcloud auth application-default login` once,
+  interactively, against project `cigob-analytics`. Until that happens the
+  export step fails on this machine and a manual run never reaches the
+  historical archive.
+- **Permissions.** The tree arrived from the tower with every directory at
+  `555` — no write bit even for the owner. Editing existing files works, but
+  creating them does not, which breaks `uv venv`, `npm install`,
+  `git worktree add` and, worst of all, **`git add`** (`insufficient permission
+  for adding an object to repository database .git/objects`, which only shows
+  up once the work is already done). Fixed repo-wide; if it ever comes back:
+
+  ```bash
+  find . -type d ! -perm -u+w -exec chmod u+w {} +
+  ```
+
+`projects/informe_coyuntura/.env` is present on this machine and stays
+gitignored — it is copied by hand, never versioned.
+
 ## Working rules
 
 - Spanish for user-facing prose/docs unless the surrounding file is English.
@@ -66,13 +108,16 @@ the operational detail, the root README is just an entry point.
 - `git pull --rebase` before pushing — the nightly bot commits to main and a
   plain push will be rejected as non-fast-forward.
 - **Never `git add -A` / `git add .` in this repo — stage files explicitly.**
-  The repo lives inside OneDrive, and OneDrive restores stale copies of the
-  generated snapshots (`web/src/data/informe.json`,
+  **On the tower** the checkout lives inside OneDrive, and OneDrive restores
+  stale copies of the generated snapshots (`web/src/data/informe.json`,
   `data/historico/indicadores.json`) over the good ones: they show up as
   modified with a *today* mtime but *yesterday's* `generated_at` inside, and
   no script wrote them. A blanket `add` then commits that stale snapshot over
   the cron's fresh one and it deploys. Verified twice on 2026-07-27, once by
-  falling into it (fixed in `c6c0b6c`).
+  falling into it (fixed in `c6c0b6c`). The Mac checkout
+  (`~/dev/trabajo/CIGOB/`) is **not** under OneDrive, so that specific hazard
+  doesn't apply there — the rule still does, because the repo regularly has
+  more than one thing in flight.
   - Tell-tale: `git status` dirty on generated files nobody regenerated.
   - If it happens, the cron's version is the good one — recover it with
     `git checkout <commit-with-bot-snapshot> -- <file>` and check that

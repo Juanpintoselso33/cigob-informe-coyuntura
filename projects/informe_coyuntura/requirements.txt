@@ -9,3 +9,7 @@ pymupdf>=1.24         # Figura 1 de esos informes: las barras son vectoriales y 
 pytrends>=4.9.2
 pytest>=8.0           # gates G4-G5 del pipeline nocturno (reconciliación + robustez)
 google-cloud-bigquery>=3.25   # scripts/bigquery_export.py, último paso del nocturno
+pyyaml>=6.0           # frontmatter de los ADR: scripts/adr_coherencia.py y
+                      # scripts/manual_cinturon.py. No lo trae nadie transitivamente
+                      # y la CI no lo notaba porque sólo corre pytest, que parsea
+                      # el frontmatter a mano

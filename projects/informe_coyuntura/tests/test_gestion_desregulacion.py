@@ -21,6 +21,20 @@ import parametrica
 STORE = gestion.DESREG_OFICIAL_STORE
 
 
+@pytest.fixture(autouse=True)
+def _store_escribe_en_tmp(tmp_path, monkeypatch):
+    """`desregulacion_oficial_serie()` persiste el store en cada llamada (es
+    parte de su trabajo: los informes publicados son inmutables y se cachean),
+    así que cualquier test que la llame escribe en el árbol versionado y el
+    guardián de conftest lo marca en teardown. Se redirige la constante a
+    tmp_path con una copia de los datos reales: los tests siguen leyendo el
+    store de verdad y la escritura cae afuera del repo."""
+    if STORE.exists():
+        destino = tmp_path / STORE.name
+        destino.write_bytes(STORE.read_bytes())
+        monkeypatch.setattr(gestion, "DESREG_OFICIAL_STORE", destino)
+
+
 def _store():
     if not STORE.exists():
         pytest.skip("todavía no se corrió el colector de desregulación")
