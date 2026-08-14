@@ -56,7 +56,7 @@ const tensionados = cinturonesRojos(informe);
       <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a></p>
       <h1 class="cg-hero-title cg-detalle-title">Metodología</h1>
       <p class="cg-hero-lead cg-detalle-lead">
-        Primero el marco: qué es la tensión que mide el informe y de dónde salen los cinco cinturones.
+        Primero el marco: qué es la tensión que mide el informe y de dónde salen los cuatro cinturones.
         Después, una ficha metodológica por indicador, con estructura estándar: qué mide, de dónde sale,
         cómo se calcula, cómo incide en el índice, qué limitaciones tiene y qué decisiones de
         método se tomaron. Para leer el informe alcanza con el marco; para auditarlo, está todo.
@@ -80,37 +80,36 @@ const tensionados = cinturonesRojos(informe);
       <div class="cg-section-head">
         <p class="cg-eyebrow">El marco</p>
         <h2 class="cg-h2">Qué es la tensión que mide el informe</h2>
-        <p class="cg-h2-sub">El encuadre del que salen los cinco cinturones y la escala 0–10.</p>
+        <p class="cg-h2-sub">El encuadre del que salen los cuatro cinturones y la escala 0–10.</p>
       </div>
       <div class="cg-marco">
         <p class="cg-marco-lead">
           La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos, sino por su
           capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos de
           acción disponibles. Este informe de coyuntura sistematiza el mapa de tensiones de la Argentina actual
-          a través de <strong>cinco cinturones analíticos</strong>, examinando cómo las decisiones oficiales
+          a través de <strong>cuatro cinturones analíticos</strong>, examinando cómo las decisiones oficiales
           operan un constante intercambio de problemas donde la viabilidad fiscal, cambiaria, social y política
           se recalculan en tiempo real.
         </p>
         <p>
           El encuadre es el marco <strong>CIGOB-Matus</strong>, que la Fundación CiGob amplía de tres cinturones
-          a cinco. Un cinturón no es un área temática: es un frente donde el gobierno gasta y repone capacidad
+          a cuatro. Un cinturón no es un área temática: es un frente donde el gobierno gasta y repone capacidad
           de gobernar. Macroeconomía, política, gestión estatal y vida cotidiana miden el intercambio entre lo
-          que el gobierno decide y lo que el entorno le devuelve; espíritu de época mide la sintonía emocional
-          con el humor social — apretarlo es que el gobierno deje de representar emocionalmente a quienes
-          gobierna.
+          que el gobierno decide y lo que el entorno le devuelve. El marco contempla además un cinturón de
+          espíritu de época —la sintonía emocional con el humor social—, que este informe dejó de publicar en
+          agosto de 2026 porque su operacionalización no estaba a la altura de pesar como los otros cuatro.
         </p>
         <p>
           Cada cinturón publica su tensión en una <strong>escala de 0 a 10</strong>: 0 es un cinturón aflojado
           —el gobierno procesa las demandas con los recursos que tiene— y 10 uno apretado, donde cada decisión
-          se paga con otra. Cuatro de los cinco derivan esa tensión de un índice paramétrico propio (ITCM, ITCP,
-          ITVC, ITCG), documentado más abajo; espíritu de época todavía promedia tres proxies, a la espera de
-          una paramétrica propia. Las palabras y los colores que acompañan a cada barra de tensión salen de los
-          cortes que se publican junto con los datos, no del texto de esta página.
+          se paga con otra. Los cuatro derivan esa tensión de un índice paramétrico propio (ITCM, ITCP, ITVC,
+          ITCG), documentado más abajo. Las palabras y los colores que acompañan a cada barra de tensión salen
+          de los cortes que se publican junto con los datos, no del texto de esta página.
         </p>
         <p>
           Mirar un solo cinturón es el riesgo que el marco llama <strong>barbarismo</strong>: gobernar mirando
           nada más que los indicadores económicos (tecnocrático), la imagen (político) o la eficiencia operativa
-          (gerencial), mientras el cinturón que nadie mira se rompe sin aviso. Por eso los cinco se publican
+          (gerencial), mientras el cinturón que nadie mira se rompe sin aviso. Por eso los cuatro se publican
           juntos, cada uno declara a qué barbarismo está expuesto, y la regla de lectura cuenta cuántos están
           tensionados a la vez.
         </p>
@@ -148,7 +147,7 @@ const tensionados = cinturonesRojos(informe);
         </article>
         <article>
           <h3>Ponderación por fase</h3>
-          <p>El global pondera los cinco cinturones según el momento del mandato ({fase}): al principio pesan más gestión y espíritu de época — construyen credibilidad —; en la consolidación, macro y política. Cada cinturón vigila además su <strong>riesgo de barbarismo</strong> (hoy: {cap(informe.barbarismo_activo)}).</p>
+          <p>El global pondera los cuatro cinturones según el momento del mandato ({fase}): al principio pesan todos igual, porque el mandato todavía está construyendo credibilidad; en la consolidación, macro y política pesan más que gestión. Cada cinturón vigila además su <strong>riesgo de barbarismo</strong> (hoy: {cap(informe.barbarismo_activo)}).</p>
         </article>
         <article>
           <h3>Regla de lectura</h3>

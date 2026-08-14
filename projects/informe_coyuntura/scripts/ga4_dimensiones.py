@@ -44,7 +44,7 @@ DIMENSIONES = [
     {
         "parameter_name": "cinturon",
         "display_name": "cinturon",
-        "description": "Cinturon del informe: macro, politica, gestion, vida, espiritu",
+        "description": "Cinturon del informe: macro, politica, gestion, vida",
     },
     {
         "parameter_name": "dimension",

@@ -45,7 +45,11 @@ FRAGMENTOS_DEL_PARRAFO_ORIGINAL = [
     "procesar la tensión",
     "entre las demandas del entorno y los recursos de acción disponibles",
     "sistematiza el mapa de tensiones de la Argentina actual",
-    "cinco cinturones analíticos",
+    # Decía "cinco cinturones analíticos" hasta ADR-0205, que sacó espíritu de
+    # época del tablero. Es el ÚNICO cambio al párrafo de la Fundación y es una
+    # decisión editorial, no una poda: el resto sigue palabra por palabra, y
+    # este guard sigue vigilando que así siga.
+    "cuatro cinturones analíticos",
     "operan un constante intercambio de problemas",
     "la viabilidad fiscal, cambiaria, social y política se recalculan en tiempo real",
 ]

@@ -14,7 +14,6 @@ RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ))
 sys.path.insert(0, str(RAIZ / "scripts"))
 
-import espiritu_epoca
 import macro
 import politica
 import publicar
@@ -36,8 +35,12 @@ def test_sellar_no_muta_el_original():
 
 
 def test_todos_los_colectores_sellan_igual():
-    """Cuatro copias del helper: si divergen, G2b miente en un cinturón."""
-    for modulo in (macro, politica, espiritu_epoca):
+    """Copias del helper: si divergen, G2b miente en un cinturón.
+
+    Eran tres módulos hasta ADR-0205; espiritu_epoca.py se borró con su
+    cinturón. Gestión y vida cotidiana sellan por otras vías (ver los tests
+    de carry-forward de abajo)."""
+    for modulo in (macro, politica):
         sellado = modulo._sellar({"valor": 1})
         assert "obtenido_en" in sellado, modulo.__name__
         datetime.fromisoformat(sellado["obtenido_en"])

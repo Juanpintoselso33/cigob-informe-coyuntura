@@ -11,7 +11,7 @@ const COL = { muted: "#9CA39F", grid: "#ECE6DA", dark: "#1F2A28", zero: "#C9C2B4
 // Color por slug de cinturón (coincide con --c-* de dashboard.css).
 export const COLOR_CINTURON: Record<string, string> = {
   macro: "#1E40AF", politica: "#B91C1C", vida: "#92400E",
-  gestion: "#4338CA", espiritu: "#9D174D",
+  gestion: "#4338CA",
 };
 export function colorDe(slug?: string): string {
   return (slug && COLOR_CINTURON[slug]) || "#4998DB";

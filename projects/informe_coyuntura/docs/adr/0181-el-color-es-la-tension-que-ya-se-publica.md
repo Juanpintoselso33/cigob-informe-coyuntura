@@ -6,7 +6,7 @@ fecha: 2026-08-08
 cinturon: 'transversal'
 indice: 'todos'
 archivos: ['scripts/parametrica.py', 'scripts/publicar.py', 'web/src/lib/datos.ts', 'web/src/components/Bluf.astro']
-relacionado: ['0021', '0121', '0194', '0204']
+relacionado: ['0021', '0121', '0194', '0204', '0205']
 continuado_por: ['0182']
 ambito: 'Semáforo de 4 colores · capa de lectura sobre los cinco cinturones'
 origen: 'Cuatro documentos CIGOB del 2026-08-05/08 (las 15 fichas de Gestión, ITCG_completo_semaforo y el de indicadores y semáforos del cinturón político) que piden un semáforo de 4 colores, cada uno con una regla de corte distinta'

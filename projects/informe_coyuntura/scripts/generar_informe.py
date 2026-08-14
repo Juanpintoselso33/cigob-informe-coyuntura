@@ -28,7 +28,7 @@ PROJECT_DIR = SCRIPT_DIR.parent
 CACHE_DIR   = PROJECT_DIR / "output" / "cache"
 OUTPUT_DIR  = PROJECT_DIR / "output"
 
-CINTURONES_ESPERADOS = ["macro", "politica", "vida_cotidiana", "gestion", "espiritu_epoca"]
+CINTURONES_ESPERADOS = ["macro", "politica", "vida_cotidiana", "gestion"]
 
 SCHEMA_VERSION = "1.2.0"
 

@@ -132,7 +132,7 @@ export interface Informe {
   generated_at: string;
   period: string;
   score_global: number;
-  cinturones: Record<"macro" | "politica" | "vida_cotidiana" | "gestion" | "espiritu_epoca", Cinturon>;
+  cinturones: Record<"macro" | "politica" | "vida_cotidiana" | "gestion", Cinturon>;
   barbarismo_activo: string;
   alerta_multicinturon: boolean;
   flags: string[];
@@ -172,7 +172,6 @@ export const CINTURONES = [
   { key: "politica",       slug: "politica", nombre: "Política",          sub: "El tablero de poder" },
   { key: "vida_cotidiana", slug: "vida",     nombre: "Vida cotidiana",    sub: "El bolsillo y la calle" },
   { key: "gestion",        slug: "gestion",  nombre: "Gestión",           sub: "La capacidad de ejecutar" },
-  { key: "espiritu_epoca", slug: "espiritu", nombre: "Espíritu de época", sub: "El humor social" },
 ] as const;
 
 // Edición mensual: "2026-07" → "Julio 2026" (la entrega del informe es
@@ -382,10 +381,6 @@ export const LABELS: Record<string, string> = {
   pluriempleo: "Subocupación demandante", inseguridad: "Victimización (IVI)",
   icc_utdt: "Confianza del consumidor (ICC)", sentimiento_digital: "Sentimiento digital (Trends)",
   patentamiento_motos: "Patentamiento de motos", desocupacion: "Desocupación",
-  // espíritu de época (único puntuable: intención migratoria; clima_electoral
-  // quedó oculto del tablero — seguimiento interno)
-  clima_electoral: "Clima electoral (Votómetro)",
-  indice_intencion_migratoria: "Intención migratoria (Trends)",
   // gestion
   cepo_mulc: "Brecha cambiaria (cepo)", privatizaciones: "Privatizaciones (etapas)",
   concesiones_infraestructura: "Concesiones viales", reduccion_estado: "Dotación del Estado (APN)",
@@ -458,8 +453,6 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   peso_tarifas: "% m/m", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "% m/m",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.",
-  // espíritu de época
-  clima_electoral: "pp", indice_intencion_migratoria: "pts",
   // gestion (insumos del ITCG)
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "%",
   cobertura_judicial: "% cubierto",
@@ -527,9 +520,6 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   inseguridad: "% de hogares víctimas (últimos 12 meses)", icc_utdt: "Índice",
   sentimiento_digital: "Índice (0–100)",
   patentamiento_motos: "Unidades",
-  // espíritu de época
-  clima_electoral: "Puntos porcentuales",
-  indice_intencion_migratoria: "Índice (0–100)",
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",
@@ -557,11 +547,11 @@ export const UNIDADES_SERIE: Record<string, string> = {
   rigi_inversiones: "US$ M aprobados", // card = % del pipeline; serie = inversión aprobada acumulada
 };
 
-// Datos duros de migración real que acompañan a indice_intencion_migratoria
-// como contraste (bloque contexto_duro de la card). Las claves son las que
-// publica espiritu_epoca.py; el orden de este objeto es el orden de lectura.
-// Nunca puntúan: el modal los muestra solo para que la intención expresada
-// en búsquedas no se lea sin la migración efectiva al lado.
+// Datos duros de migración real. Acompañaban a indice_intencion_migratoria
+// como contraste en el modal; ese indicador salió con el cinturón de espíritu
+// de época (ADR-0205). El mapa queda porque el bloque `contexto_duro` es
+// genérico y estas etiquetas son las únicas que hay escritas — si nadie lo usa
+// en unos meses, se borra.
 export const CONTEXTO_DURO_META: Record<string, { label: string; freq: "mensual" | "anual"; nota?: string }> = {
   eeuu_niv: { label: "EE.UU. — visas de no inmigrante emitidas a argentinos", freq: "mensual", nota: "incluye turismo y negocios" },
   eeuu_iv: { label: "EE.UU. — visas de inmigrante (residencia permanente)", freq: "mensual" },

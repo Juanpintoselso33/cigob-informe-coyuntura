@@ -198,9 +198,9 @@ def test_publicar_genera_snapshot(tmp_path):
     informe = json.loads((salida / "informe.json").read_text(encoding="utf-8"))
     series = json.loads((salida / "series.json").read_text(encoding="utf-8"))
 
-    # 5 cinturones presentes
+    # 4 cinturones presentes (ADR-0205: espíritu de época salió del tablero)
     assert set(informe["cinturones"]) == {"macro", "politica", "vida_cotidiana",
-                                          "gestion", "espiritu_epoca"}
+                                          "gestion"}
 
     # vida_cotidiana enriquecido: al menos 10 indicadores (no los 3 legacy)
     vida = informe["cinturones"]["vida_cotidiana"]["indicadores"]
@@ -218,20 +218,24 @@ def test_publicar_genera_snapshot(tmp_path):
     assert fechas == sorted(fechas)
 
 
-def test_espiritu_epoca_presente_y_coherente():
-    """El 5º cinturón publica SOLO la intención migratoria (ADR-0049): los 3
-    proxies iniciales quedan OCULTOS del snapshot (ESPIRITU_OCULTOS, mismo
-    criterio ADR-0022/0048 — se siguen cacheando como seguimiento interno) y
-    el score publicado es la tensión de ese único indicador."""
+def test_espiritu_epoca_no_volvio_al_tablero():
+    """El inverso del test que había acá hasta ADR-0205.
+
+    Era `test_espiritu_epoca_presente_y_coherente` y verificaba que el 5º
+    cinturón publicara sólo la intención migratoria (ADR-0049). El cinturón
+    salió del tablero: era provisorio, tenía un solo indicador y aun así
+    ponderaba el 20% del global, tirándolo sistemáticamente para abajo (era el
+    más bajo de los cinco). Se conserva el chequeo dado vuelta porque el
+    camino de vuelta es un merge de una rama vieja, no una decisión: si
+    reaparece, que falle acá y no en la página."""
     informe = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
-    esp = informe["cinturones"]["espiritu_epoca"]
-    assert set(esp["indicadores"]) == {"indice_intencion_migratoria"}, \
-        f"espíritu de época debería publicar solo la intención migratoria: {set(esp['indicadores'])}"
-    mig = esp["indicadores"]["indice_intencion_migratoria"]
-    assert mig.get("aporte_score") is not None, "intención migratoria sin aporte_score"
-    assert abs(mig["aporte_score"] - esp["score"]) <= 0.1
-    # la card conserva el contraste de migración real (Componente B, nunca puntúa)
-    assert isinstance(mig.get("contexto_duro"), dict)
+    assert "espiritu_epoca" not in informe["cinturones"], (
+        "volvió el cinturón de espíritu de época al snapshot publicado; "
+        "si es a propósito, va con un ADR que supersede al 0205")
+    for cint in informe["cinturones"].values():
+        assert "indice_intencion_migratoria" not in cint["indicadores"], (
+            "volvió indice_intencion_migratoria: se retiró con su cinturón "
+            "(ADR-0205), no se mudó a otro")
 
 
 def test_politica_itcp_reconcilia():
@@ -418,8 +422,13 @@ def test_gestion_itcg_reconcilia():
 
 
 def test_pesos_por_fase_del_mandato():
-    """Marco Conceptual: en los primeros años del mandato, gestión y espíritu
-    de época pesan más que en la fase de consolidación. Ambos sets suman 1."""
+    """Marco Conceptual: en los primeros años del mandato, gestión pesa más
+    que en la fase de consolidación. Ambos sets suman 1.
+
+    Eran cinco cinturones y la afirmación cubría también a espíritu de época,
+    que salió del tablero con ADR-0205. Los pesos de consolidación se
+    renormalizaron conservando la relación entre los cuatro que quedan, así que
+    la desigualdad de gestión sigue siendo la misma afirmación del marco."""
     from datetime import date
     from config import (pesos_cinturones, fase_mandato, PESOS_FASE_TEMPRANA,
                         PESOS_FASE_CONSOLIDACION, PESOS_CINTURONES)
@@ -430,11 +439,13 @@ def test_pesos_por_fase_del_mandato():
     assert fase_mandato(date(2027, 12, 11)) == "consolidacion"
     assert pesos_cinturones(date(2024, 6, 1)) is PESOS_FASE_TEMPRANA
     assert pesos_cinturones(date(2028, 1, 1)) is PESOS_FASE_CONSOLIDACION
-    # gestión y espíritu pesan más (o igual que nadie menos) en la fase temprana
-    for k in ("gestion", "espiritu_epoca"):
+    # gestión pesa más en la fase temprana que en la de consolidación
+    for k in ("gestion",):
         assert PESOS_FASE_TEMPRANA[k] > PESOS_FASE_CONSOLIDACION[k]
     assert set(PESOS_CINTURONES) == {"macro", "politica", "vida_cotidiana",
-                                     "gestion", "espiritu_epoca"}
+                                     "gestion"}, (
+        "el tablero es de CUATRO cinturones desde ADR-0205; si vuelve a haber "
+        "cinco, tiene que ser con un ADR y no por un merge")
 
 
 def test_score_global_reconcilia_con_pesos():

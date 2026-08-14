@@ -1,10 +1,12 @@
 ---
 madr: 4
 id: '0049'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0205'
 fecha: 2026-07-11
 cinturon: 'espiritu'
 archivos: ['scripts/espiritu_epoca.py', 'scripts/publicar.py', 'web/src/lib/fichas.ts', 'web/src/components/Evolucion.astro', 'tests/*']
+superado_por: ['0205']
 ambito: '`scripts/espiritu_epoca.py` · `scripts/publicar.py` · `web/src/lib/fichas.ts` · `web/src/components/Evolucion.astro` · `tests/*`'
 ---
 

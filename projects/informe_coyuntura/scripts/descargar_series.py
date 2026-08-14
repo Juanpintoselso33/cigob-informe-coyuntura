@@ -1826,29 +1826,10 @@ VIDA_DERIVADAS.append(
 )
 
 
-INTENCION_MIGRATORIA_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "intencion_migratoria_serie.json"
-
-
-def fetch_intencion_migratoria_serie() -> list:
-    """Serie MENSUAL del índice de intención migratoria (ADR-0035): Tanda 1
-    (única puntuable de las 5 tandas del Componente A), misma técnica de
-    ventana fija + reemplazo total que sentimiento_digital (ADR-0034). Store
-    COMPARTIDO con espiritu_epoca.py — el que corra primero esa noche hace el
-    fetch real si hace falta (a lo sumo una vez por mes), el otro reutiliza
-    el store ya fresco. [[YYYY-MM-01, interés]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
-    import trends as _t
-    store = _t.fetch_intencion_migratoria_store(INTENCION_MIGRATORIA_STORE)
-    if not store.get("mensual"):
-        print("  [WARN] intencion_migratoria: store todavía sin datos mensuales")
-    return [[f"{ym}-01", v] for ym, v in sorted(store.get("mensual", {}).items())]
-
-
-VIDA_DERIVADAS.append(
-    ("indice_intencion_migratoria", "interés 0–100 (canasta mensual)",
-     "Google Trends (ventana fija 2021→, ADR-0035)", fetch_intencion_migratoria_serie)
-)
+# La serie de indice_intencion_migratoria se descargaba acá hasta ADR-0205.
+# El indicador se retiró con el cinturón de espíritu de época, así que el
+# nocturno dejó de bajarla: lo ya recolectado queda congelado en
+# data/vida/intencion_migratoria_serie.json.
 
 
 def fetch_endeudamiento_serie() -> list:

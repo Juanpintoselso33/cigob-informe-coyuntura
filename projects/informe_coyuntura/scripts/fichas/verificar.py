@@ -38,7 +38,6 @@ DOCS = {
     "politica": "Fichas Semaforo Politica.docx",
     "gestion": "Fichas Semaforo Gestion.docx",
     "vida_cotidiana": "Fichas Semaforo Vida cotidiana.docx",
-    "espiritu_epoca": "Fichas Semaforo Espiritu de epoca.docx",
 }
 # Los mismos cortes que publica el informe, para el chequeo de coherencia del
 # ITVC: la ficha declara la escala base-100 y tiene que caer en su propio tramo.

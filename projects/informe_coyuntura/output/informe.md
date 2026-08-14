@@ -1,7 +1,7 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-14 13:27:12"
-score_global: 2.7
+generado: "2026-08-14 18:44:48"
+score_global: 3.2
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-08
 
-**Score global:** 2.7/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 3.2/10  |  **Riesgo dominante:** tecnocrático
 
 ## Cinturones
 
@@ -101,15 +101,5 @@ schema_version: "1.2.0"
 | alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-08-14 | fresco |
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
-### 🟢 Espiritu Epoca — score 0.7/10 (estable)
-*Riesgo de barbarismo: político*
-
-| Indicador | Valor | Unidad | Fecha | Estado |
-|---|---|---|---|---|
-| icc_utdt | 39.8 | índice | 2026-07-01 | fresco |
-| sentimiento_digital | 30.3 | interés 0–100 | 2026-08-14 | fresco |
-| clima_electoral | 4.0 | pp (LLA − PJ) | 2026-06-22 | fresco |
-| indice_intencion_migratoria | 7.0 | interés 0–100 (canasta mensual) | 2026-07-01 | fresco |
-
 ---
-*Generado por CIGOB — 2026-08-14 13:27:12 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-14 18:44:48 — schema 1.2.0*

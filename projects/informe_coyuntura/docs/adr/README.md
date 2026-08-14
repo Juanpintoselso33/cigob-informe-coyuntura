@@ -240,8 +240,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 
 | # | Decisión | Indicadores | Estado |
 |---|---|---|---|
-| [0035](0035-indice-expectativa-futuro-emigracion.md) | Índice de intención migratoria: 4º indicador de espíritu_epoca |  | vigente |
-| [0049](0049-espiritu-epoca-solo-intencion-migratoria.md) | Espíritu de época: la intención migratoria queda como único indicador del cinturón |  | vigente |
+| [0035](0035-indice-expectativa-futuro-emigracion.md) | Índice de intención migratoria: 4º indicador de espíritu_epoca |  | superado por [0205](0205-espiritu-de-epoca-sale-del-tablero.md) |
+| [0049](0049-espiritu-epoca-solo-intencion-migratoria.md) | Espíritu de época: la intención migratoria queda como único indicador del cinturón |  | superado por [0205](0205-espiritu-de-epoca-sale-del-tablero.md) |
 
 ### Transversal
 
@@ -287,3 +287,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0202](0202-la-pagina-se-llama-metodologia.md) | La página se llama Metodología, no «Diccionario de indicadores» |  | vigente |
 | [0203](0203-el-sello-de-corrida-lleva-zona-horaria.md) | El sello de corrida lleva zona horaria |  | vigente |
 | [0204](0204-la-tension-se-lee-en-una-barra-recta.md) | La tensión se lee en una barra recta, no en un velocímetro |  | vigente |
+| [0205](0205-espiritu-de-epoca-sale-del-tablero.md) | Espíritu de época sale del tablero: el informe pondera cuatro cinturones |  | vigente |

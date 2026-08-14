@@ -1,11 +1,12 @@
 ---
 madr: 4
 id: '0035'
-estado: 'aceptado'
+estado: 'superado'
 nota_estado: 'Aceptado e implementado — Componente A y Componente B, 2026-07-10'
 fecha: '2026-07-07 (propuesto) · 2026-07-10 (decidido e implementado, misma sesión)'
 cinturon: 'espiritu'
 archivos: ['scripts/vida_cotidiana/collectors/trends.py', 'scripts/espiritu_epoca.py', 'scripts/descargar_series.py', 'data/vida/intencion_migratoria_serie.json', 'data/vida/componente_b_migracion.json', 'data-pipeline.yml']
+superado_por: ['0205']
 ambito: '`scripts/vida_cotidiana/collectors/trends.py` (fetch compartido Componente A) · `scripts/espiritu_epoca.py` · `scripts/descargar_series.py` (Componente A y B) · `data/vida/intencion_migratoria_serie.json` · `data/vida/componente_b_migracion.json` (nuevo) · `data-pipeline.yml` · ficha metodológica'
 ---
 

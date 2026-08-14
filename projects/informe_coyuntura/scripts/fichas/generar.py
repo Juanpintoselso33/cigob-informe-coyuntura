@@ -1,6 +1,6 @@
 """Markdown de las fichas de un cinturón, en el formato que circuló Luis.
 
-    python scripts/fichas/generar.py <macro|politica|gestion|vida_cotidiana|espiritu_epoca>
+    python scripts/fichas/generar.py <macro|politica|gestion|vida_cotidiana>
 
 Misma anatomía que aquellas fichas de gestión: encabezado, nombre, definición
 de una línea, el banner "Hoy:", la tabla de Identificación, y las secciones de
@@ -28,7 +28,6 @@ SIGLA, NOMBRE = {
  "politica": ("ITCP", "Política"),
  "gestion": ("ITCG", "Gestión"),
  "vida_cotidiana": ("ITVC", "Vida cotidiana"),
- "espiritu_epoca": ("", "Espíritu de época"),
 }[CINT]
 SALIDA_MD = SALIDA_DIR / f"fichas-{CINT}.md"
 

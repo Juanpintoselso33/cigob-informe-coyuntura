@@ -51,7 +51,7 @@ export interface AnclasFicha {
 export interface FichaIndicador {
   tipo: "indicador";
   id: string;                       // clave técnica en informe.json / series.json
-  cinturon: "macro" | "politica" | "vida_cotidiana" | "gestion" | "espiritu_epoca";
+  cinturon: "macro" | "politica" | "vida_cotidiana" | "gestion";
   rezago: string;                   // cuánto tarda la fuente en publicar
   fuente: FuenteFicha;
   transformaciones: string[];       // complemento en llano de la fórmula (ODS 4.c)
@@ -174,7 +174,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "macro",
     resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Trece indicadores en seis dimensiones, con umbrales y pesos de la paramétrica institucional CIGOB.",
     marcoConceptual: [
-      "El informe lee la realidad como un sistema de cinco cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales y externas, financiamiento, actividad, competitividad e inversión.",
+      "El informe lee la realidad como un sistema de cuatro cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales y externas, financiamiento, actividad, competitividad e inversión.",
       "El marco, las dimensiones, los umbrales y los pesos provienen de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). El índice no estima esos parámetros a partir de los datos: los toma del marco y luego mide — con las herramientas de robustez de abajo — cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
@@ -1768,38 +1768,6 @@ export const FICHAS: Record<string, Ficha> = {
   // sentimiento_digital compartidos con vida) quedaron como seguimiento
   // interno, fuera del tablero y del score
   // ═══════════════════════════════════════════════════════════════════════
-  indice_intencion_migratoria: {
-    tipo: "indicador",
-    id: "indice_intencion_migratoria",
-    cinturon: "espiritu_epoca",
-    rezago: "Hasta un mes: el mes en curso se descarta por incompleto; el dato se actualiza como máximo una vez por mes calendario.",
-    fuente: {
-      organismo: "Google Trends (fuente no oficial)",
-      operacion: "Interés de búsqueda en Argentina de una canasta de términos de intención de emigrar (por ejemplo \"emigrar de argentina\", \"vivir en el exterior\")",
-      url: "https://trends.google.com/",
-      acceso: "Automático: consulta mensual de la canasta en ventana fija (2021 en adelante); cada descarga sana reemplaza el archivo completo — actualizaciones con escalas distintas nunca se mezclan.",
-    },
-    transformaciones: [
-      "La tensión es lineal en el interés de búsqueda: 0 → tensión 0 · 50 → tensión 5 · 100 → tensión 10.",
-      "El cociente entre valores de una misma consulta cancela la renormalización de escala de la fuente, igual que en sentimiento digital.",
-      "Se recolectan además canastas de contexto (ciudadanías, trabajo/visas, destinos y un diagnóstico de causa económica vs. estructural) y un desglose por provincia — ninguna de estas entra al puntaje: son insumo de lectura para el analista, no números publicados en la card.",
-    ],
-    incidenciaTexto: [
-      "Es el único indicador del cinturón espíritu de época: la tensión del cinturón es directamente la de este indicador (0 → tensión 0 · 50 → 5 · 100 → 10), sin índice compuesto (versión provisional).",
-    ],
-    limitaciones: [
-      "Mide intención expresada en la búsqueda, no un trámite ni una salida real del país: alguien puede buscar por curiosidad sin intención de emigrar.",
-      "Por eso este indicador nunca se publica solo: su card en el tablero lo acompaña con un contraste de migración efectiva — seis registros administrativos de cinco destinos (visas de EE.UU., residencias permanentes de Canadá, nacionalizaciones de España, ciudadanías de Italia y residencias definitivas de Chile). El contraste no puntúa: mezcla flujos de naturaleza distinta y cada fuente publica con su propio calendario (las europeas y Chile son anuales; las series de EE.UU. llegan con rezago).",
-      "Fuente no oficial con límites de consulta: si el servicio restringe el acceso, se mantiene el último valor del archivo propio.",
-    ],
-    faltantes: "Con la fuente caída o sin el mes calendario todavía consultado, se mantiene el último valor del archivo propio, marcado como desactualizado.",
-    revisiones: "Reemplazo total del archivo en cada descarga sana; la fuente no revisa datos propiamente.",
-    cambios: [
-      { fecha: "2026-07-10", cambio: "Cuarto indicador del cinturón espíritu de época: intención de emigrar vía Google Trends, distinta de la ansiedad económica inmediata que ya mide sentimiento digital." },
-      { fecha: "2026-07-10", cambio: "La card del indicador incorpora el contraste de migración real: seis registros administrativos de EE.UU., Canadá, España, Italia y Chile, que acompañan la lectura sin puntuar." },
-      { fecha: "2026-07-11", cambio: "Queda como único indicador del cinturón: la revisión editorial retiró del tablero las tres lecturas duplicadas de otros cinturones (confianza del consumidor, sentimiento digital y clima electoral), que se siguen registrando como seguimiento interno sin puntuar." },
-    ],
-  },
 
   // ═══════════════════════════════════════════════════════════════════════
   // Gestión — indicadores del ITCG

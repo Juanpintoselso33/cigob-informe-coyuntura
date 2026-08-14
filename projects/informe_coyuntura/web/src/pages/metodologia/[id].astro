@@ -23,7 +23,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const CINT_NOMBRE: Record<string, string> = {
   macro: "Macroeconomía", politica: "Política", vida_cotidiana: "Vida cotidiana",
-  gestion: "Gestión", espiritu_epoca: "Espíritu de época",
+  gestion: "Gestión",
 };
 const slugDe = Object.fromEntries(CINTURONES.map(c => [c.key, c.slug]));
 const cinturon = (informe.cinturones as any)[f.cinturon];

@@ -107,7 +107,6 @@ jobs:
           correr scripts/gestion.py             gestion     12m
           correr scripts/vida_cotidiana/main.py vida_main   8m
           correr scripts/vida_cotidiana.py      vida_cache  5m
-          correr scripts/espiritu_epoca.py      espiritu    8m
           correr scripts/descargar_series.py    series      25m
           correr scripts/validacion_externa.py  validacion  5m
           correr scripts/generar_informe.py     generar     5m

@@ -1,17 +1,16 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-14T13:27:12.392609-03:00",
+  "generated_at": "2026-08-14T18:44:48.785305-03:00",
   "period": "2026-08",
-  "score_global": 2.7,
+  "score_global": 3.2,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
     "pesos": {
-      "macro": 0.2,
-      "politica": 0.2,
-      "vida_cotidiana": 0.2,
-      "gestion": 0.2,
-      "espiritu_epoca": 0.2
+      "macro": 0.25,
+      "politica": 0.25,
+      "vida_cotidiana": 0.25,
+      "gestion": 0.25
     }
   },
   "cinturones": {
@@ -1885,72 +1884,6 @@
         },
         "ajustes_aplicados": []
       }
-    },
-    "espiritu_epoca": {
-      "score": 0.7,
-      "estado": "estable",
-      "barbarismo_riesgo": "político",
-      "indicadores": {
-        "icc_utdt": {
-          "valor": 39.8,
-          "unidad": "índice",
-          "fuente": "UTDT — Índice de Confianza del Consumidor",
-          "fecha_dato": "2026-07-01",
-          "desactualizado": false,
-          "obtenido_en": "2026-08-14T13:19:00"
-        },
-        "sentimiento_digital": {
-          "valor": 30.3,
-          "unidad": "interés 0–100",
-          "fuente": "Google Trends (inflación, precios, inseguridad, trabajo)",
-          "fecha_dato": "2026-08-14",
-          "desactualizado": false,
-          "obtenido_en": "2026-08-14T13:19:00"
-        },
-        "clima_electoral": {
-          "valor": 4.0,
-          "unidad": "pp (LLA − PJ)",
-          "fuente": "Votómetro CIGOB",
-          "fecha_dato": "2026-06-22",
-          "desactualizado": false,
-          "obtenido_en": "2026-08-14T13:19:00"
-        },
-        "indice_intencion_migratoria": {
-          "valor": 7.0,
-          "unidad": "interés 0–100 (canasta mensual)",
-          "fuente": "Google Trends (canasta intención migratoria, ventana fija 2021→)",
-          "fecha_dato": "2026-07-01",
-          "desactualizado": false,
-          "contexto_duro": {
-            "eeuu_niv": {
-              "periodo": "2025-09",
-              "valor": 31362
-            },
-            "eeuu_iv": {
-              "periodo": "2025-09",
-              "valor": 63
-            },
-            "canada_pr": {
-              "periodo": "2026-05",
-              "valor": 30
-            },
-            "espana_nacionalidad": {
-              "periodo": "2025",
-              "valor": 11291
-            },
-            "italia_aire": {
-              "periodo": "2024",
-              "valor": 33492
-            },
-            "chile_residencia": {
-              "periodo": "2025",
-              "valor": 580
-            }
-          },
-          "obtenido_en": "2026-08-14T13:20:05"
-        }
-      },
-      "alerta": null
     }
   },
   "barbarismo_activo": "tecnocrático",

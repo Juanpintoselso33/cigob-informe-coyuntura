@@ -320,12 +320,10 @@ SCORING = {
     "pluriempleo":         (lambda v: v - 5,            "5% → 0 · 10% → 5 · 15% → 10 (subocupación demandante)"),
     "patentamiento_motos": (lambda v: (70_000 - v) / 5000, "70.000 → 0 · 45.000 → 5 · 20.000 → 10 (unidades/mes)"),
     "icc_utdt":            (lambda v: (60 - v) / 3,     "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)"),
-    # ── espíritu de época ── único puntuable del cinturón (ADR-0049); los ex
-    # proxies clima_electoral/sentimiento_digital/icc_utdt están en
-    # ESPIRITU_OCULTOS y ya no llegan a este loop
-    "clima_electoral":     (lambda v: 5 - v / 3,        "+15pp → 0 · 0 → 5 · −15pp → 10 (gap LLA−PJ, Votómetro)"),
+    # sentimiento_digital lo puntúa VIDA COTIDIANA. Vivía acá abajo del rótulo
+    # de espíritu de época porque el cinturón lo espejaba; el cinturón salió
+    # (ADR-0205) y la entrada se queda, que es de quien siempre fue.
     "sentimiento_digital": (lambda v: v / 10,           "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)"),
-    "indice_intencion_migratoria": (lambda v: v / 10,   "0 → 0 · 50 → 5 · 100 → 10 (interés en términos de intención de emigrar: mayor = más desconexión)"),
     "inseguridad":         (lambda v: (v / POB_AR * 100_000 - 3000) / 400,
                                                         "tasa/100k hab (pob. 46,7M): 3.000 → 0 · 5.000 → 5 · 7.000 → 10"),
     # Se puntúa sobre la variación interanual REAL (deflactada), no el stock nominal.
@@ -356,8 +354,6 @@ SCORE_EXPLICACION = {
                        "cotidiana) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, "
                        "vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. "
                        "La tensión del cinturón es 5 − (ITVC − 100) × 0,2."),
-    "espiritu_epoca": ("Tensión (0–10) de la intención migratoria, único indicador del cinturón "
-                       "(v1 provisional). Mayor = más desconexión entre el gobierno y el humor social."),
 }
 
 
@@ -1711,14 +1707,6 @@ MACRO_OCULTOS = {"badlar", "prestamos_privados", "base_monetaria", "tc_mayorista
 # (colector, registro curado, cache y series) como seguimiento interno.
 POLITICA_OCULTOS = set(itcp.INDICADORES_CONTEXTO)
 
-# Indicadores de espíritu de época OCULTOS del snapshot (ADR-0049, mismo
-# criterio): el cinturón queda con la intención migratoria como único
-# puntuable; estos tres son lecturas duplicadas de cards que ya viven en
-# vida cotidiana (icc_utdt, sentimiento_digital) y política (clima_electoral
-# = votometro_ventaja_lla). El colector los sigue cacheando como seguimiento
-# interno.
-ESPIRITU_OCULTOS = {"icc_utdt", "sentimiento_digital", "clima_electoral"}
-
 # Indicadores de gestión OCULTOS del snapshot (ADR-0051, cierra la regla de
 # ADR-0048/0049 sobre el último cinturón que publicaba contexto visible): el
 # tablero solo muestra lo que integra las dimensiones del ITCG. Colector,
@@ -2016,11 +2004,6 @@ def aplicar_scoring(informe, series):
                 _familias(c["itcp"], itcp.FAMILIAS_ITCP, itcp.FAMILIAS_ITCP_META)
                 _vintages(c, "itcp")
             continue
-        if ckey == "espiritu_epoca":
-            # sin continue: el puntuable que queda (intención migratoria)
-            # se anota abajo con el loop genérico de SCORING
-            for oculto in ESPIRITU_OCULTOS:
-                c["indicadores"].pop(oculto, None)
         for ikey, ind in c["indicadores"].items():
             aporte = formula = nota = lectura = None
             if ikey in SCORING:

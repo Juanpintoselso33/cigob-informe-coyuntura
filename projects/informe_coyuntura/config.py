@@ -3,30 +3,38 @@ from datetime import date
 sys.stdout.reconfigure(encoding='utf-8')
 
 # ── Ponderación entre cinturones: por fase del mandato ────────────────────────
-# "Marco Conceptual del Informe de Coyuntura" (CIGOB, may-2026): "los cinco
-# cinturones no tienen igual peso temporal. En los primeros 2-4 años de
-# gobierno (especialmente en ciclos electorales cortos), el cinturón de
-# gestión y el de espíritu de época pesan más que en gobiernos de largo
-# plazo" — construyen el capital de credibilidad que después permite
-# sacrificios macro mayores. El doc no fija números: estos valores son la
-# operacionalización CIGOB-informe (ajustar cuando la fundación los formalice).
+# "Marco Conceptual del Informe de Coyuntura" (CIGOB, may-2026): "los cinturones
+# no tienen igual peso temporal. En los primeros 2-4 años de gobierno
+# (especialmente en ciclos electorales cortos), el cinturón de gestión (...)
+# pesa más que en gobiernos de largo plazo" — construye el capital de
+# credibilidad que después permite sacrificios macro mayores. El doc no fija
+# números: estos valores son la operacionalización CIGOB-informe (ajustar
+# cuando la fundación los formalice).
+#
+# Son CUATRO desde el 2026-08-14 (ADR-0205). Espíritu de época salió del
+# tablero: era provisorio, tenía un solo indicador y aun así se llevaba el 20%
+# del global. El marco de Matus sigue teniendo su cinturón de espíritu de
+# época; lo que se retira es la operacionalización, que no estaba a la altura
+# de pesar como los otros cuatro.
 
 MANDATO_INICIO = date(2023, 12, 10)   # asunción del mandato presidencial vigente
 FASE_TEMPRANA_ANIOS = 4               # "primeros 2-4 años": tomamos el techo
 
 PESOS_FASE_TEMPRANA = {               # mandato en construcción de credibilidad
-    "macro": 0.20,
-    "politica": 0.20,
-    "vida_cotidiana": 0.20,
-    "gestion": 0.20,
-    "espiritu_epoca": 0.20,
-}
-PESOS_FASE_CONSOLIDACION = {          # mandato consolidado (4+ años / reelección)
     "macro": 0.25,
     "politica": 0.25,
-    "vida_cotidiana": 0.20,
-    "gestion": 0.15,
-    "espiritu_epoca": 0.15,
+    "vida_cotidiana": 0.25,
+    "gestion": 0.25,
+}
+# Consolidación: se conservan los pesos RELATIVOS que tenían los cuatro entre
+# sí (25/25/20/15 sobre 0,85) renormalizados a 1. Sacar un cinturón no es
+# ocasión para recalibrar la importancia de los otros: eso sería una decisión
+# de metodología distinta, y se toma aparte si se toma.
+PESOS_FASE_CONSOLIDACION = {          # mandato consolidado (4+ años / reelección)
+    "macro": 0.29,
+    "politica": 0.29,
+    "vida_cotidiana": 0.24,
+    "gestion": 0.18,
 }
 
 
@@ -85,5 +93,4 @@ BARBARISMO_MAP = {
     "politica": "político",
     "gestion": "gerencial",
     "vida_cotidiana": "político",
-    "espiritu_epoca": "político",
 }
