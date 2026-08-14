@@ -1,6 +1,6 @@
 # Skill: Informe de Coyuntura — Mantenimiento y Operación
 
-> Actualizado 2026-07-09. Este skill es un resumen operativo de orientación
+> Actualizado 2026-08-14. Este skill es un resumen operativo de orientación
 > rápida, **no la fuente de verdad** — para detalle de metodología/pesos/
 > bandas de un indicador puntual, siempre confirmar contra `README.md`,
 > `docs/adr/` (decisiones vigentes, inmutables) y los tests (`tests/*.py`
@@ -17,7 +17,7 @@ desactualizado o un score no cierra.
 
 ---
 
-## Los cinco cinturones (marco CIGOB-Matus)
+## Los cuatro cinturones del tablero
 
 | Cinturón | Motor de scoring | Script de tablas | Doc/ADR de referencia |
 |---|---|---|---|
@@ -25,18 +25,28 @@ desactualizado o un score no cierra.
 | Gestión | ITCG (paramétrico, 5 dimensiones) | `scripts/itcg.py` | `docs/adr/0013`, `0021`, `0023` |
 | Vida cotidiana | ITVC-B100 (índice rebaseado, 100 = prom. 4T-2023) | `scripts/itvc.py` | `docs/adr/0018`, `0024` |
 | Política | ITCP (paramétrico, 5 dimensiones estilo Matus) | `scripts/itcp.py` | `docs/adr/0036`, `0037`, `0038` |
-| Espíritu de Época | v1, promedio simple de proxies compartidos | `scripts/espiritu_epoca.py` | — |
 
-Los primeros cuatro comparten el **motor paramétrico común**
+**Espíritu de época salió del tablero el 2026-08-14 (ADR-0205).** Tenía un solo
+indicador y aun así pesaba 20% del global. `scripts/espiritu_epoca.py` se borró
+junto con su paso del workflow nocturno; `indice_intencion_migratoria` ya no se
+publica y su serie queda congelada en el archivo histórico. Ojo con dos cosas: el
+**marco conceptual CIGOB-Matus sigue teniendo** ese cinturón (lo que se retiró es
+la operacionalización, no la categoría), y la serie de `score_global` en BigQuery
+tiene una **discontinuidad en esa fecha** — no se restateó hacia atrás, así que
+toda comparación con ediciones previas tiene que decir de qué lado del cambio
+está. Quedan restos inertes en el árbol (`output/cache/espiritu_epoca.json`,
+`output/fichas/`, `__pycache__`): no son señal de que el cinturón siga vivo.
+
+Los cuatro comparten el **motor paramétrico común**
 `scripts/parametrica.py`: bandas por indicador (low exclusivo/high
 inclusivo), **puntaje INTERPOLADO entre anclas** (no escalonado — ver
 `docs/adr/0021`), renormalización de pesos ante indicadores faltantes,
 overrides del analista con vencimiento (`data/<cinturon>/ajustes_*.json`).
 Tensión del cinturón = `(100 − índice) / 10`.
 
-El score global pondera los cinco cinturones por **fase del mandato**
-(`config.py`: fase temprana 20% parejo los cinco; consolidación
-25/25/20/15/15).
+El score global pondera los cuatro cinturones por **fase del mandato**. Los pesos
+vigentes son los de `config.py` (`PESOS_FASE_TEMPRANA` /
+`PESOS_FASE_CONSOLIDACION`) — leerlos ahí, no de memoria.
 
 ---
 
@@ -53,7 +63,6 @@ projects/informe_coyuntura/
     vida_cotidiana/main.py     ← orquestador real (bcra, indec_series, utdt_icc,
                                   cafam, ciccra, snic, salud, trends)
     itvc.py                    ← tablas del cinturón vida cotidiana
-    espiritu_epoca.py          ← 5º cinturón
     parametrica.py             ← motor común (bandas, interpolación, overrides)
     descargar_series.py        ← backfill histórico → output/series/*.csv
     generar_informe.py         ← arma output/informe.json + informe.md
@@ -73,7 +82,7 @@ projects/informe_coyuntura/
     sensibilidad.json
   docs/
     adr/                       ← decisiones de diseño/metodología (SE MANTIENE)
-    cinturon_*.md               ← specs de diseño (READ-ONLY, no se mantienen)
+    archivo/cinturon_*.md      ← specs de diseño (READ-ONLY, no se mantienen)
     260523_proyecto_pais_estado_extraccion.md  ← panorama de indicadores/fuentes
   web/                          ← app Astro pública (lee web/src/data/*.json)
 ```
@@ -87,19 +96,37 @@ reporte ya generado sin correr los colectores. El pipeline nocturno de CI
 
 ## Cómo correr el informe completo
 
+**Dos preparaciones sin las cuales la corrida miente** (detalle en `CLAUDE.md`):
+
+1. **No hay `python` pelado en esta Mac.** El venv es
+   `projects/informe_coyuntura/.venv` (uv, Python 3.12). Activarlo
+   (`source .venv/bin/activate`) o llamar `.venv/bin/python` — los bloques de
+   abajo asumen el venv activo.
+2. **Exportar las credenciales**: `set -a; source ./.env; set +a`. Sin ellas los
+   colectores fallan auth y **caen a caché en silencio**: la corrida termina, el
+   gate pasa, y publicás datos de ayer creyendo que son frescos.
+
+Cada paso lee lo que escribió el anterior — correrlos de a uno y esperar a que
+termine, no lanzarlos en paralelo ni encadenarlos a ciegas.
+
 ```bash
 cd projects/informe_coyuntura
 python scripts/macro.py
 python scripts/politica.py
 python scripts/gestion.py
 python scripts/vida_cotidiana/main.py
-python scripts/espiritu_epoca.py       # corre DESPUÉS de vida y política (los lee)
+python scripts/vida_cotidiana.py       # puente legacy — corre después de main.py
+python scripts/descargar_series.py
+python scripts/validacion_externa.py
 python scripts/generar_informe.py
 python scripts/publicar.py             # snapshot para la web
 python scripts/gate_calidad.py         # G1-G3/G6
 python -m pytest tests -q              # G4-G5 (gate_calidad pasando NO implica esto)
 python scripts/bigquery_export.py      # archivo histórico en BigQuery (ADR-0180)
 ```
+
+El orden canónico es el de `.github/workflows/data-pipeline.yml` — si diverge,
+gana el workflow.
 
 El export a BigQuery lo hace solo el nocturno; **una corrida manual no**. Las
 tablas de snapshot se acumulan por `generated_at`, así que la corrida que no se
@@ -138,7 +165,7 @@ puntual.
 
 ## Para agregar o recalibrar un indicador
 
-1. Elegir el cinturón y ver si entra a un índice paramétrico (ITCM/ITCG/ITVC/ITCP) o es promedio simple (Espíritu de Época).
+1. Elegir el cinturón: los cuatro del tablero (macro/gestión/vida cotidiana/política) entran a su índice paramétrico (ITCM/ITCG/ITVC/ITCP).
 2. Si es paramétrico: agregar/ajustar la banda en `BANDAS_ITC*` del script de tablas (`itcm.py`/`itcg.py`/`itvc.py`/`itcp.py`) — anclas con low exclusivo/high inclusivo, tramos extremos abiertos (`INF`/`-INF`) salvo que haya una razón explícita para uno finito.
 3. Implementar `fetch_<indicador>()` en el colector del cinturón, agregarlo a `INDICADORES_ESPERADOS` y al diccionario de indicadores/dimensiones.
 4. Escribir el test que fija el comportamiento (bandas + wiring) ANTES de dar por terminado — este proyecto es TDD estricto, ver cualquier `tests/test_itc*.py` como molde.
