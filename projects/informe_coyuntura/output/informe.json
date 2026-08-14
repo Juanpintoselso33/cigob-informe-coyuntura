@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-14T18:44:48.785305-03:00",
+  "generated_at": "2026-08-14T18:57:58.212131-03:00",
   "period": "2026-08",
-  "score_global": 3.2,
+  "score_global": 4.2,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -1142,8 +1142,8 @@
       }
     },
     "vida_cotidiana": {
-      "score": 2.9,
-      "estado": "estable",
+      "score": 6.9,
+      "estado": "tensionado",
       "barbarismo_riesgo": "político",
       "indicadores": {
         "ipc_total": {

@@ -63,11 +63,13 @@ things — set up and verified 2026-08-13:
   `npm run build` · `npm run preview -- --port 4321`.
 - **BigQuery.** `bigquery_export.py` (last step of every data run, ADR-0180)
   authenticates with `GOOGLE_APPLICATION_CREDENTIALS` in CI and with gcloud ADC
-  locally. The gcloud SDK is installed (Homebrew cask, on the PATH), but the
-  **ADC is not set up yet**: run `gcloud auth application-default login` once,
-  interactively, against project `cigob-analytics`. Until that happens the
-  export step fails on this machine and a manual run never reaches the
-  historical archive.
+  locally. The gcloud SDK is installed (Homebrew cask, on the PATH) and the
+  **ADC is set up** (verified 2026-08-14: a manual run exported all tables to
+  `cigob-analytics.informe_coyuntura` without warnings). The `gcloud` CLI
+  itself has no logged-in account and does not need one — the scripts go
+  through the Python SDK. If the export ever starts failing with credential
+  errors, re-run `gcloud auth application-default login` against project
+  `cigob-analytics`.
 - **Permissions.** The tree arrived from the tower with every directory at
   `555` — no write bit even for the owner. Editing existing files works, but
   creating them does not, which breaks `uv venv`, `npm install`,

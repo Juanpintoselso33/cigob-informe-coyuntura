@@ -363,6 +363,59 @@ SCORE_EXPLICACION = {
 _estado = estado_de_score
 
 
+def _reconciliar_intermedio(informe):
+    """Le devuelve a `output/informe.json` los scores que sólo este script sabe.
+
+    `output/informe.json` (y su `informe.md`) es el artefacto de schema público
+    —"v1.0.0 para dev externo"— y lo escribe `generar_informe.py`, que corre
+    ANTES y **no puede** calcular el ITVC: sólo ve el caché del colector viejo,
+    con 3 indicadores y un score legacy de vida cotidiana. El snapshot que
+    publica el sitio lo arma este script, con 17 indicadores y el ITVC real.
+
+    Resultado, hasta el 2026-08-14: los dos artefactos publicaban números
+    distintos del mismo mes y nadie fallaba. Con la corrida de agosto, vida
+    cotidiana decía 2,9 en el intermedio y 6,9 en el sitio, y el global 2,7
+    contra 3,5. La condición estaba documentada en la docstring de
+    `recomputar_vida_y_global` desde siempre; lo que faltaba era cerrar la
+    consecuencia.
+
+    Esto **no es el arreglo de fondo**. El de fondo es que la máquina del ITVC
+    (`_itvc_indices`, el rebase, los ajustes, la robustez, la validación) viva
+    en un módulo que importen los dos scripts, y que `generar_informe.py`
+    registre vida cotidiana en `_INDICES_PARAMETRICOS` como los otros tres.
+    Eso es refactorizar el camino de publicación entero y se hace aparte
+    (ADR-0206). Mientras tanto, acá se corrigen los números para que los dos
+    artefactos no se contradigan, y `test_artefactos_coherentes.py` impide que
+    la brecha se reabra en silencio.
+    """
+    path = OUT / "informe.json"
+    if not path.exists():
+        return
+    intermedio = json.loads(path.read_text(encoding="utf-8"))
+    cambios = []
+    for ckey, c in informe["cinturones"].items():
+        destino = intermedio.get("cinturones", {}).get(ckey)
+        if destino is None:
+            continue
+        if destino.get("score") != c["score"]:
+            cambios.append(f"{ckey} {destino.get('score')}→{c['score']}")
+        destino["score"] = c["score"]
+        if "estado" in c:
+            destino["estado"] = c["estado"]
+    if intermedio.get("score_global") != informe["score_global"]:
+        cambios.append(f"global {intermedio.get('score_global')}→{informe['score_global']}")
+    intermedio["score_global"] = informe["score_global"]
+    path.write_text(json.dumps(intermedio, ensure_ascii=False, indent=2, default=str),
+                    encoding="utf-8")
+    # El .md sale del MISMO dict, así que se regenera con el escritor de
+    # generar_informe en vez de parchearle líneas sueltas al texto.
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import generar_informe as _gi
+    _gi.escribir_md(intermedio)
+    if cambios:
+        print(f"[OK] intermedio reconciliado: {' · '.join(cambios)}")
+
+
 def recomputar_vida_y_global(informe):
     """Vida cotidiana se puntúa con el ITVC-B100 calculado en aplicar_scoring
     (el colector vida_cotidiana.py sigue emitiendo su score legacy en el cache;
@@ -2207,6 +2260,12 @@ def main():
     (DATA / "series.json").write_text(
         json.dumps(series, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Snapshot escrito en {DATA} · histórico: {len(store)} indicadores en {HISTORICO_PATH.name}")
+
+    # Sólo al publicar de verdad: con CIGOB_SALIDA_WEB los tests corren este
+    # script fuera del árbol (ADR-0178) y tocar output/ acá lo ensuciaría igual,
+    # que es exactamente el defecto que aquel ADR arregló.
+    if not os.environ.get("CIGOB_SALIDA_WEB"):
+        _reconciliar_intermedio(informe)
 
 
 if __name__ == "__main__":

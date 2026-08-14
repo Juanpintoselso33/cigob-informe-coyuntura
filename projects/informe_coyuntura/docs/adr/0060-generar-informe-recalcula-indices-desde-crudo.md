@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-15
 cinturon: 'politica'
 archivos: ['scripts/generar_informe.py', 'scripts/politica.py']
-relacionado: ['0058']
+relacionado: ['0058', '0206']
 ambito: '`scripts/generar_informe.py` · `scripts/politica.py` (refactor) · pipeline completo (4 cinturones)'
 ---
 

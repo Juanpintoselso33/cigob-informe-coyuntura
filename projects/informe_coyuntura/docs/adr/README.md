@@ -235,6 +235,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0155](0155-el-ancla-del-itvc-pasa-a-ser-el-consumo-medido.md) | El ancla de validación del ITVC pasa a ser el consumo medido |  | vigente |
 | [0160](0160-la-dispersion-del-itvc-se-publica-junto-al-neto.md) | La dispersión del ITVC se publica junto al neto |  | vigente |
 | [0163](0163-el-itvc-se-contrasta-contra-volumenes-fisicos-del-hogar.md) | El ITVC se contrasta contra volúmenes físicos consumidos por los hogares |  | vigente |
+| [0206](0206-los-dos-artefactos-publicados-dicen-lo-mismo.md) | Los dos artefactos publicados dicen lo mismo |  | vigente |
 
 ### Espíritu de época
 
@@ -288,3 +289,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0203](0203-el-sello-de-corrida-lleva-zona-horaria.md) | El sello de corrida lleva zona horaria |  | vigente |
 | [0204](0204-la-tension-se-lee-en-una-barra-recta.md) | La tensión se lee en una barra recta, no en un velocímetro |  | vigente |
 | [0205](0205-espiritu-de-epoca-sale-del-tablero.md) | Espíritu de época sale del tablero: el informe pondera cuatro cinturones |  | vigente |
+| [0207](0207-la-serie-comparable-es-una-vista-no-un-backfill.md) | La serie comparable es una vista, no un backfill |  | vigente |
