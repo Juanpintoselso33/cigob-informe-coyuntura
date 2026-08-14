@@ -1,7 +1,7 @@
 # Claude Code Context For This Repo
 
 Canonical operating guide for Claude Code in this repo. Codex reads
-`AGENTS.md` (gitignored, same directory) — keep both in sync; this file is
+`AGENTS.md` (same directory) — keep both in sync; this file is
 the source of truth, `AGENTS.md` points back here.
 
 ## Do not bulk-load `.claude/skills/`
@@ -171,7 +171,7 @@ first, don't assume.
 
 ## ADRs: formato MADR v4, e ids que NO se renumeran
 
-`docs/adr/` sigue **MADR v4** en castellano desde 2026-07-31 (165 ADR).
+`docs/adr/` sigue **MADR v4** en castellano desde 2026-07-31.
 Frontmatter YAML + esqueleto `Contexto y planteo · Factores de decisión ·
 Opciones consideradas · Decisión (+ Consecuencias, Confirmación) · Pros y
 contras · Más información`. `docs/adr/README.md` documenta el formato.
