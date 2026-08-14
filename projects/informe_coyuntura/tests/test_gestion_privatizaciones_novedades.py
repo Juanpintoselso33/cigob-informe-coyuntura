@@ -65,7 +65,13 @@ def test_el_store_se_versiona_en_el_cron():
     assert "privatizaciones_novedades.json" in wf
 
 
-def test_la_card_publica_las_pendientes():
+def test_la_card_publica_las_pendientes(tmp_path, monkeypatch):
+    # El fetch ejecuta el detector y persiste el store. La prueba tiene que
+    # observar ese comportamiento sin reescribir el registro versionado cuando
+    # InfoLeg publica una novedad durante la suite.
+    store = tmp_path / "privatizaciones_novedades.json"
+    store.write_bytes(gestion.PRIVATIZACIONES_NOVEDADES_PATH.read_bytes())
+    monkeypatch.setattr(gestion, "PRIVATIZACIONES_NOVEDADES_PATH", store)
     card = gestion.fetch_privatizaciones()
     if card is None:
         pytest.skip("colector sin datos")

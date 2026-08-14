@@ -53,6 +53,12 @@ def test_la_salida_regenerada_esta_en_el_git_add_del_workflow(ruta):
         f"se recalcula cada noche y se descarta")
 
 
+def test_el_informe_markdown_regenerado_se_versiona_en_el_cron():
+    texto = WORKFLOW.read_text(encoding="utf-8")
+    bloque = texto.split("git add", 1)[1] if "git add" in texto else ""
+    assert "projects/informe_coyuntura/output/informe.md" in bloque
+
+
 @pytest.mark.parametrize("ruta", sorted(REGENERADAS))
 def test_la_salida_versionada_no_quedo_atras_del_snapshot(ruta):
     """El contrapunto del anterior, sobre la evidencia y no sobre el YAML: si

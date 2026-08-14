@@ -146,10 +146,12 @@ jobs:
                   projects/informe_coyuntura/output/series/*.csv \
                   projects/informe_coyuntura/output/sensibilidad.json \
                   projects/informe_coyuntura/output/informe.json \
+                  projects/informe_coyuntura/output/informe.md \
                   projects/informe_coyuntura/output/validacion_externa.json \
                   projects/informe_coyuntura/web/src/data/informe.json \
                   projects/informe_coyuntura/web/src/data/series.json \
                   projects/informe_coyuntura/data/historico/indicadores.json \
+                  projects/informe_coyuntura/scripts/vida_cotidiana/data/vida_cotidiana_*.json \
                   projects/informe_coyuntura/data/macro/patentamientos_comerciales.json \
                   projects/informe_coyuntura/data/macro/comarb_recaudacion.json \
                   projects/informe_coyuntura/data/gestion/rigi_fechas.json \
