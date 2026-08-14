@@ -1,11 +1,11 @@
 ---
 import { indicadoresOrdenados, cap, indiceDe, semaforoDe, peorDimension, num } from "../lib/datos.ts";
-import Aguja from "./Aguja.astro";
+import NivelTension from "./NivelTension.astro";
 import { DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 const { slug, nombre, sub, cinturon } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 // La píldora de `estado` (estable/en_tension/tensionado) sale de la card y la
-// reemplaza la aguja. No es cosmética: sobre la MISMA tensión 0-10 había dos
+// reemplaza la barra. No es cosmética: sobre la MISMA tensión 0-10 había dos
 // particiones distintas y no coincidían. Con los datos de agosto de 2026, macro
 // en 3,9 era "en tensión" para `estado` y verde para el semáforo; vida en 6,9
 // era "tensionado" y naranja. El lector veía dos veredictos del mismo número.
@@ -13,7 +13,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 // Acá se unifica el CANAL VISUAL: todo color de cinturón sale de los cortes
 // publicados (`semaforo_cortes`). El `estado` no se toca ni se reinterpreta —
 // es metodología y sigue mandando en la regla sistémica del panel de tensión—,
-// pero deja de expresarse en colores para no contradecir a la aguja.
+// pero deja de expresarse en colores para no contradecir a la barra.
 // La card ya no lista indicadores: sólo cuenta cuántos hay, para que el enlace
 // diga a qué se entra.
 const filas = indicadoresOrdenados(cinturon);
@@ -38,8 +38,14 @@ const peor = peorDimension(cinturon);
       <div class="cg-cint-sub">{sub}</div>
       <div class="cg-cint-name"><a href={href} class="cg-cint-link">{nombre}</a></div>
     </div>
-    <Aguja tension={cinturon.score} titulo={`Tensión de ${nombre}`} ocultarTitulo />
   </div>
+  {/* Dos barras horizontales en la misma card, y dicen cosas distintas: ésta
+      es el NIVEL de tensión del cinturón (una pista continua 0-10 con un
+      marcador) y la de abajo es el GENOMA (bloques separados, uno por
+      dimensión, ancho = peso). Se distinguen por textura —continua vs. con
+      huecos—, por alto y por su propio rótulo. Si alguna vez se las hace
+      parecidas, la card deja de leerse. */}
+  <NivelTension tension={cinturon.score} titulo={`Tensión de ${nombre}`} ocultarTitulo />
   {dims.length > 0 && (
     <>
       <div class="cg-genoma" role="group" aria-label={`Dimensiones del ${indice.sigla}: el ancho de cada tramo es su peso en el índice`}>
@@ -66,7 +72,7 @@ const peor = peorDimension(cinturon);
     <div class="cg-genoma-cap cg-genoma-cap--solo">Cinturón cualitativo · sin índice de dimensiones — se lee por su indicador</div>
   )}
   <div class="cg-cint-foot">
-    {/* El score ya lo dice la aguja; acá queda solo el riesgo, que no está en
+    {/* El score ya lo dice la barra; acá queda solo el riesgo, que no está en
         ningún otro lado de la card. */}
     <span>{cap(cinturon.barbarismo_riesgo)}</span>
     {/* El enlace decía "ver detalle" en minúscula cuando había ocultos y "Ver

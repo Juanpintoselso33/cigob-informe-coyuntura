@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Aguja from "../components/Aguja.astro";
+import NivelTension from "../components/NivelTension.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import IndicadorTile from "../components/IndicadorTile.astro";
@@ -17,13 +17,13 @@ export function getStaticPaths() {
 
 const { meta } = Astro.props;
 const c = informe.cinturones[meta.key];
-// La cabecera del cinturón se lee por la aguja, igual que en la portada: una
+// La cabecera del cinturón se lee por la barra, igual que en la portada: una
 // sola vara de color en todo el sitio (los cortes publicados). El `estado` de
 // tres valores no se pierde —sigue mandando en la regla sistémica— pero no se
 // expresa en color, porque sobre la misma tensión 0-10 parte distinto que el
 // semáforo y los dos veredictos se contradecían a la vista.
 //
-// Se muestra como TEXTO junto a la aguja. La primera versión lo borró de la
+// Se muestra como TEXTO junto a la barra. La primera versión lo borró de la
 // página entera y eso fue quitar información: `estado` es el concepto que
 // dispara "1 tensionado es manejable, 2 o más no", y el lector no tenía cómo
 // saber de qué lado caía este cinturón.
@@ -41,7 +41,7 @@ const c = informe.cinturones[meta.key];
 //
 // No se puede arreglar desde el front sin escribir el umbral 7 a mano, que es
 // justo lo que este rediseño no hace, así que la afirmación se retira: la
-// magnitud la da la aguja y la regla sistémica vive en el panel de la portada,
+// magnitud la da la barra y la regla sistémica vive en el panel de la portada,
 // donde se explica. Queda reportado como decisión de metodología (ADR-0194).
 const filas = indicadoresOrdenados(c);
 // Los indicadores de contexto (en_indice === false) no construyen la tensión:
@@ -256,15 +256,15 @@ const robChartData = rob?.hist && indice ? {
       <h1 class="cg-hero-title cg-detalle-title">{meta.nombre}</h1>
       <p class="cg-hero-lead cg-detalle-lead">{meta.sub}.</p>
       <div class="cg-detalle-meta">
-        {/* La aguja reemplaza al chip de score, que repetía su número. El
+        {/* La barra reemplaza al chip de score, que repetía su número. El
             estado queda al lado, en texto: es otro concepto, no otro color. */}
         {indice && <span class="cg-detalle-chip">{indice.sigla} <strong>{num(indice.data.valor as number)}{indice.base100 ? "" : "/100"}</strong> · {indice.data.banda_legible}</span>}
         <span class="cg-detalle-chip">Riesgo: <strong>{cap(c.barbarismo_riesgo)}</strong></span>
         <span class="cg-detalle-chip">{filas.length} {filas.length === 1 ? "indicador" : "indicadores"}</span>
       </div>
       </div>
-      <div class="cg-detalle-aguja">
-        <Aguja tension={c.score} titulo={`Tensión de ${meta.nombre}`} tamano="grande" />
+      <div class="cg-detalle-nivel">
+        <NivelTension tension={c.score} titulo={`Tensión de ${meta.nombre}`} tamano="grande" />
       </div>
       </div>
     </div>
@@ -286,7 +286,7 @@ const robChartData = rob?.hist && indice ? {
                 <span class="cg-itcm-dim-name">{dim.nombre}</span>
                 <span class="cg-itcm-dim-val">pesa {Math.round(dim.peso * 100)}%</span>
               </div>
-              <Aguja
+              <NivelTension
                 tension={dim.semaforo?.tension ?? tensionDeDimension(dim.puntaje, !!indice.base100)}
                 titulo={dim.nombre}
                 ocultarTitulo

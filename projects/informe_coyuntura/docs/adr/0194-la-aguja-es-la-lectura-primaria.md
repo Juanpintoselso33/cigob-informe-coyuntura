@@ -2,10 +2,12 @@
 madr: 4
 id: '0194'
 estado: 'aceptado'
+nota_estado: 'La decisión 1 (la aguja de arco como lectura primaria) la reemplazó ADR-0204 por una barra recta. Las otras tres siguen vigentes.'
 fecha: 2026-08-12
 cinturon: 'transversal'
 archivos: ['web/src/components/Aguja.astro', 'web/src/components/Hero.astro', 'web/src/components/CinturonCard.astro', 'web/src/components/TensionPanel.astro', 'web/src/components/Metodologia.astro', 'web/src/pages/[slug].astro', 'web/src/pages/metodologia/index.astro', 'web/src/lib/datos.ts', 'web/public/overrides.css']
 relacionado: ['0181', '0195', '0199', '0200']
+superado_parcialmente_por: ['0204']
 ambito: 'Capa visual y textual del informe · portada, cinturones y metodología'
 origen: 'Rediseño pedido por el editor: que el estado se lea por color y posición antes que por número, con menos texto'
 ---
@@ -142,5 +144,11 @@ números vivos, que es credibilidad de un vistazo y no prosa.
 
 ## Más información
 
+- **La decisión 1 ya no está vigente.** La aguja de arco la reemplazó una barra
+  recta en [[0204-la-tension-se-lee-en-una-barra-recta]]: el editor pidió sacar
+  la metáfora del velocímetro. Las decisiones 2, 3 y 4 de este ADR siguen
+  mandando —una sola vara de color, el color nunca como único canal, y la
+  metodología fuera de la portada—, y la zona muerta entre 6 y 7 que queda
+  reportada arriba sigue abierta del lado de la metodología.
 - Los cortes vienen de `parametrica.CORTES_SEMAFORO` vía `publicar._semaforos()`.
 - `estado` sale de `_estado()` en `generar_informe.py`, con sus propios umbrales.

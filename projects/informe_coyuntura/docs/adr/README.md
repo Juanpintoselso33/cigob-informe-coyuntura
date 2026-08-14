@@ -286,3 +286,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0201](0201-el-nav-manda-a-la-pagina-de-metodologia.md) | El Nav manda a la página de metodología, no al ancla de la portada |  | vigente |
 | [0202](0202-la-pagina-se-llama-metodologia.md) | La página se llama Metodología, no «Diccionario de indicadores» |  | vigente |
 | [0203](0203-el-sello-de-corrida-lleva-zona-horaria.md) | El sello de corrida lleva zona horaria |  | vigente |
+| [0204](0204-la-tension-se-lee-en-una-barra-recta.md) | La tensión se lee en una barra recta, no en un velocímetro |  | vigente |

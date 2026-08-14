@@ -282,3 +282,103 @@ class TestNingunEstadoFantasmaEnTodoElArchivo:
             f"datos.ts compara estado contra {fantasma} en algún lugar del "
             f"archivo, valor que _estado() nunca produce (real: {reales})"
         )
+
+
+# ---------------------------------------------------------------------------
+# La barra de nivel de tensión (ADR-0204) reemplazó a la aguja de arco de
+# ADR-0194 en las seis superficies del sitio. Lo que hay que sostener es lo
+# mismo que sostenía la aguja: que los tramos los decida el snapshot y no el
+# front, y que las DOS implementaciones de la barra no se separen.
+# ---------------------------------------------------------------------------
+
+NIVEL_ASTRO = COMPONENTES / "NivelTension.astro"
+MODAL_ASTRO = COMPONENTES / "IndicadorModal.astro"
+
+
+class TestNivelTensionNoDecideElColor:
+    """No se le aplica la prohibición de literales que tiene SemaforoLeyenda:
+    acá los números son geometría legítima (el viewBox mide 280 de ancho y 40
+    de alto) y esa lista daría falsos positivos -- el 40 del viewBox no es el
+    corte 40 de un índice 0-100. Lo que se prohíbe es el invariante que de
+    verdad importa: que una línea nombre un color y a la vez compare un
+    número, o sea que el umbral se decida acá."""
+
+    def test_existe(self):
+        assert NIVEL_ASTRO.exists(), "falta NivelTension.astro (ADR-0204)"
+
+    def test_lee_los_tramos_del_snapshot(self):
+        src = NIVEL_ASTRO.read_text(encoding="utf-8")
+        assert "tramosSemaforo" in src, (
+            "la barra tiene que dibujar los tramos que publica el snapshot, "
+            "no partir la escala por su cuenta")
+
+    def test_no_deriva_el_color_de_un_numero(self):
+        color = re.compile("|".join(COLORES))
+        comparacion_numerica = re.compile(r"[<>]=?\s*\d|\d\s*[<>]=?")
+        for n, linea in enumerate(NIVEL_ASTRO.read_text(encoding="utf-8").splitlines(), 1):
+            if linea.strip().startswith("//"):
+                continue
+            if color.search(linea) and comparacion_numerica.search(linea):
+                raise AssertionError(
+                    f"NivelTension.astro:{n}: el color se deriva de una "
+                    f"comparación numérica -- {linea.strip()!r}")
+
+    def test_la_aguja_de_arco_no_volvio(self):
+        """`Aguja.astro` se borró con ADR-0204. Que no reaparezca por un merge
+        de una rama vieja: es justo la superficie que el editor pidió sacar, y
+        volvería sin que nada más fallara."""
+        assert not (COMPONENTES / "Aguja.astro").exists(), (
+            "volvió Aguja.astro -- ADR-0204 la reemplazó por NivelTension.astro")
+
+
+class TestElCloneDelModalNoSeSepara:
+    """`nivelHTML()` en IndicadorModal.astro redibuja la MISMA barra en el
+    cliente. Está duplicada a propósito: importar el componente traería
+    `datos.ts` entero al bundle del navegador (informe.json + series.json).
+    El costo de esa decisión es que los números del trazado viven en dos
+    archivos, y si se cambian de un lado y no del otro el modal dibuja otra
+    barra sin que nada falle. Esto es lo que lo ata."""
+
+    def _componente(self) -> tuple[str, str, str, str]:
+        src = NIVEL_ASTRO.read_text(encoding="utf-8")
+        pares = {
+            "ANCHO": r"const ANCHO = (\d+)",
+            # El tamaño "chica" es el que replica el modal.
+            "ALTO": r"const ALTO = grande \? \d+ : (\d+)",
+            "GROSOR": r"const GROSOR = grande \? \d+ : (\d+)",
+            "GROSOR_ACTIVO": r"const GROSOR_ACTIVO = grande \? \d+ : (\d+)",
+        }
+        out = []
+        for nombre, patron in pares.items():
+            m = re.search(patron, src)
+            assert m, (
+                f"NivelTension.astro: no se pudo leer {nombre}. Si se "
+                "reformateó la declaración, actualizá también este test: "
+                "existe para que el clon del modal no se separe.")
+            out.append(m.group(1))
+        return tuple(out)
+
+    def _modal(self) -> tuple[str, str, str, str]:
+        src = MODAL_ASTRO.read_text(encoding="utf-8")
+        m = re.search(
+            r"const ANCHO = (\d+), ALTO = (\d+), Y = ALTO / 2, G = (\d+), GA = (\d+)", src)
+        assert m, (
+            "IndicadorModal.astro: no se pudo leer la geometría de "
+            "nivelHTML(). Si se reformateó, actualizá también este test.")
+        return m.group(1), m.group(2), m.group(3), m.group(4)
+
+    def test_la_geometria_es_la_misma(self):
+        assert self._componente() == self._modal(), (
+            "la barra del modal se separó de NivelTension.astro: "
+            f"componente={self._componente()} modal={self._modal()} "
+            "(ANCHO, ALTO, GROSOR, GROSOR_ACTIVO)")
+
+    def test_el_modal_conserva_el_mecanismo_de_escalado(self):
+        """Las tres piezas que hacen que la barra se estire sin engordar. Sin
+        `non-scaling-stroke`, el estirado horizontal convierte al marcador
+        vertical en un bloque; sin `preserveAspectRatio="none"`, la barra
+        crece de alto con el ancho del contenedor."""
+        src = MODAL_ASTRO.read_text(encoding="utf-8")
+        for pieza in ('preserveAspectRatio="none"', "non-scaling-stroke", "--cg-nivel-alto"):
+            assert pieza in src, (
+                f"nivelHTML() perdió {pieza!r} -- ver el punto 2 de ADR-0204")

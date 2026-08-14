@@ -1,0 +1,153 @@
+---
+// Barra de nivel de tensión: la lectura primaria del informe.
+//
+// Dibuja la tensión 0-10 sobre una PISTA RECTA partida en los cuatro tramos
+// del semáforo, con un marcador donde cae el valor. Reemplaza a la aguja de
+// arco que montó ADR-0194: el editor pidió sacar la metáfora del velocímetro,
+// que se lee como un tablero de auto y no como una escala de análisis
+// (ADR-0204). Lo que cambia es la geometría, no el contrato.
+//
+// Lo que NO cambia, porque es lo que hacía legible a la aguja: los tramos
+// salen de `tramosSemaforo()`, que lee los cortes del snapshot. Acá no hay
+// ningún umbral escrito a mano, y si mañana cambian los cortes la barra se
+// redibuja sola.
+//
+// El color tampoco es acá el único canal, por las mismas tres razones
+// concretas: hay lectores que no distinguen rojo de verde, el informe se
+// imprime y se fotocopia en gris, y un lector de pantalla no ve nada de esto.
+// Así que cada barra lleva, además del color: una PISTA BASE neutra con
+// marcas en cada corte y números en los extremos —que sobrevive a la escala
+// de grises y le da referencia a la posición del marcador—, una ETIQUETA con
+// el nombre del tramo, y un `aria-label` que dice todo en una frase.
+//
+// Las dos ausencias siguen separadas, como las dejó la revisión adversarial de
+// ago-2026: que no haya TENSIÓN y que no haya ESCALA. Sin cortes publicados el
+// valor se sigue mostrando —el dato existe, lo que falta es cómo clasificarlo—
+// y lo que se nombra es la falta de escala.
+//
+// ── Por qué el SVG se dibuja así ────────────────────────────────────────────
+// La barra tiene que ocupar el ancho que le den (280 px en una card, 720 en el
+// hero) SIN engordar: si el viewBox escalara parejo, la misma pista mediría 56
+// px de alto en la card y 144 en el hero. Entonces:
+//   · `preserveAspectRatio="none"` → sólo se estira el eje X (las posiciones),
+//   · `vector-effect="non-scaling-stroke"` en cada trazo → los grosores se
+//     resuelven en píxeles de pantalla y no se deforman con ese estirado,
+//   · el viewBox mide ALTO unidades y el CSS le fija ALTO px → la escala
+//     vertical es exactamente 1, así que las `y` son píxeles reales,
+//   · y los rótulos 0/10 son HTML, no `<text>`: dentro del SVG el estirado
+//     horizontal los dejaría anchos y chatos.
+import { tramosSemaforo, colorPorTension, LECTURA_SEMAFORO, TENSION_MAX, num } from "../lib/datos.ts";
+
+interface Props {
+  tension: number | null | undefined;
+  titulo: string;
+  /** "grande" para el titular del informe, "chica" para cards y listas. */
+  tamano?: "grande" | "chica";
+  /** Texto corto bajo la barra (p. ej. el riesgo dominante). Opcional. */
+  pie?: string;
+  /** El título sigue nombrando la barra para el lector de pantalla, pero no
+      se dibuja. Para cuando el contexto ya lo dice (la card del cinturón ya
+      lleva su nombre arriba y repetirlo es ruido). */
+  ocultarTitulo?: boolean;
+}
+const { tension, titulo, tamano = "chica", pie, ocultarTitulo = false } = Astro.props as Props;
+
+const tramos = tramosSemaforo();
+const hayEscala = tramos.length > 0;
+const valor = typeof tension === "number" && Number.isFinite(tension) ? tension : null;
+const color = hayEscala ? colorPorTension(tension) : null;
+
+// Geometría. ANCHO es nominal —el eje X se estira al ancho real— y ALTO son
+// píxeles de pantalla, porque el CSS le da al SVG exactamente esta altura.
+const grande = tamano === "grande";
+const ANCHO = 280;
+const ALTO = grande ? 52 : 40;
+const Y = ALTO / 2;
+const GROSOR = grande ? 18 : 12;
+// El tramo activo se dibuja más grueso (es su canal no cromático), así que la
+// geometría de las marcas tiene que usar ESTE número y no el de los inactivos:
+// si no, la marca no cruza la banda activa y quedan colas sin cortar.
+const GROSOR_ACTIVO = grande ? 26 : 18;
+
+const x = (t: number) => (Math.min(Math.max(t, 0), TENSION_MAX) / TENSION_MAX) * ANCHO;
+const px = valor !== null ? x(valor) : 0;
+
+// Separadores de tramo: CRUZAN la banda de lado a lado en vez de rozarla por
+// fuera. Es lo que deja leer la escala cuando el color no llega.
+const tick = (t: number) => ({
+  x1: x(t).toFixed(2), y1: (Y - GROSOR_ACTIVO / 2 - 2).toFixed(2),
+  x2: x(t).toFixed(2), y2: (Y + GROSOR_ACTIVO / 2 + 2).toFixed(2),
+});
+// El marcador sobresale de la banda por arriba y por abajo: así se ve dónde
+// cae el valor aunque quede sobre el tramo activo, que va saturado.
+const Y_MARCA_1 = (Y - GROSOR_ACTIVO / 2 - 5).toFixed(2);
+const Y_MARCA_2 = (Y + GROSOR_ACTIVO / 2 + 5).toFixed(2);
+
+const lectura = color ? LECTURA_SEMAFORO[color] : null;
+const aria = valor === null
+  ? `${titulo}: sin dato`
+  : lectura
+    ? `${titulo}: tensión ${num(valor)} de ${TENSION_MAX} — ${lectura} (${color})`
+    : `${titulo}: tensión ${num(valor)} de ${TENSION_MAX} — escala de colores no disponible`;
+---
+<figure
+  class:list={["cg-nivel", `cg-nivel--${tamano}`, color ? `sem-${color}` : "is-sinescala"]}
+  style={`--cg-nivel-alto:${ALTO}px`}
+>
+  {/* La lectura va ARRIBA de la pista, no debajo: con una barra ancha el ojo
+      entra por el texto y después confirma la posición, que es el orden en el
+      que se lee una escala horizontal. */}
+  <figcaption class="cg-nivel-cap">
+    {!ocultarTitulo && <span class="cg-nivel-titulo">{titulo}</span>}
+    {valor === null
+      ? <span class="cg-nivel-lectura is-sindato">Sin dato</span>
+      : lectura
+        ? <span class="cg-nivel-lectura">{lectura}</span>
+        : <span class="cg-nivel-lectura is-sinescala">Escala no disponible</span>}
+    {valor !== null && (
+      <span class="cg-nivel-valor">{num(valor)}<span class="cg-nivel-valor-max">/{TENSION_MAX}</span></span>
+    )}
+  </figcaption>
+  <svg
+    viewBox={`0 0 ${ANCHO} ${ALTO}`}
+    preserveAspectRatio="none"
+    role="img"
+    aria-label={aria}
+    class="cg-nivel-svg"
+  >
+    {/* Pista base neutra: es la referencia que queda cuando el color no llega
+        —impresión en gris, forced-colors, cortes ausentes— y lo que convierte
+        la posición del marcador en una lectura sobre una escala. */}
+    <line
+      x1="0" y1={Y} x2={ANCHO} y2={Y}
+      class="cg-nivel-base" stroke-width={GROSOR} stroke-linecap="butt"
+      vector-effect="non-scaling-stroke"
+    />
+    {tramos.map(t => (
+      <line
+        x1={x(t.desde).toFixed(2)} y1={Y} x2={x(t.hasta).toFixed(2)} y2={Y}
+        class:list={["cg-nivel-tramo", `sem-${t.color}`, { "is-activo": t.color === color }]}
+        stroke-width={GROSOR}
+        stroke-linecap="butt"
+        vector-effect="non-scaling-stroke"
+      />
+    ))}
+    {/* Una marca por corte, no solo en los extremos: son las divisiones que
+        permiten leer en qué tramo cae el marcador cuando el color no llega. */}
+    {tramos.map(t => <line {...tick(t.desde)} class="cg-nivel-tick" vector-effect="non-scaling-stroke" />)}
+    <line {...tick(TENSION_MAX)} class="cg-nivel-tick" vector-effect="non-scaling-stroke" />
+    {valor !== null && (
+      <line
+        x1={px.toFixed(2)} y1={Y_MARCA_1} x2={px.toFixed(2)} y2={Y_MARCA_2}
+        class="cg-nivel-marca" vector-effect="non-scaling-stroke"
+      />
+    )}
+  </svg>
+  {/* Los extremos de la escala, en HTML: dentro del SVG el estirado horizontal
+      los dejaría anchos y chatos. */}
+  <div class="cg-nivel-escala" aria-hidden="true">
+    <span>0</span>
+    <span>{TENSION_MAX}</span>
+  </div>
+  {pie && <p class="cg-nivel-pie">{pie}</p>}
+</figure>

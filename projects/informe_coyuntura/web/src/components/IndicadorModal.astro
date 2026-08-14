@@ -238,10 +238,10 @@ const dimsJson = JSON.stringify(dims);
     </button>
   </div>
 </div>
-{/* Los tramos del semáforo, para que el modal dibuje la MISMA aguja que la
+{/* Los tramos del semáforo, para que el modal dibuje la MISMA barra que la
     portada y la página de cinturón. Salen de `semaforo_cortes` igual que las
     demás: el modal no reimplementa los cortes, los recibe. */}
-<script type="application/json" id="cg-aguja-data" set:html={JSON.stringify({ tramos: tramosSemaforo(), lectura: LECTURA_SEMAFORO, max: TENSION_MAX })}></script>
+<script type="application/json" id="cg-nivel-data" set:html={JSON.stringify({ tramos: tramosSemaforo(), lectura: LECTURA_SEMAFORO, max: TENSION_MAX })}></script>
 <script type="application/json" id="cg-info-data" set:html={infoJson}></script>
 <script type="application/json" id="cg-series-data" set:html={seriesJson}></script>
 <script type="application/json" id="cg-dims-data" set:html={dimsJson}></script>
@@ -270,47 +270,46 @@ const dimsJson = JSON.stringify(dims);
     if (!MATH) MATH = await import("../lib/math.ts");
     MATH.renderFormula(document.getElementById("cg-formula-math"), latex);
   }
-  const AGUJA = JSON.parse(document.getElementById("cg-aguja-data").textContent);
+  const NIVEL = JSON.parse(document.getElementById("cg-nivel-data").textContent);
 
-  // La MISMA aguja que dibuja Aguja.astro, en el cliente. Se repite la
+  // La MISMA barra que dibuja NivelTension.astro, en el cliente. Se repite la
   // geometría y no el criterio: los tramos y la escala vienen del snapshot
-  // (AGUJA), así que no hay un segundo lugar donde se decida un umbral. Sin
+  // (NIVEL), así que no hay un segundo lugar donde se decida un umbral. Sin
   // esto el modal era la única superficie del sitio que seguía explicando el
   // semáforo con un chip de color y una tabla, mientras todo lo demás ya se
   // leía por posición.
-  function agujaHTML(tension) {
-    if (typeof tension !== "number" || !isFinite(tension) || !AGUJA.tramos.length) return "";
-    const R = 100, CX = 120, CY = 116, G = 18, GA = 26, MAX = AGUJA.max;
-    const rad = t => Math.PI * (1 - Math.min(Math.max(t, 0), MAX) / MAX);
-    const pt = (t, r) => [CX + r * Math.cos(rad(t)), CY - r * Math.sin(rad(t))];
-    const arco = (a, b) => {
-      const [x0, y0] = pt(a, R), [x1, y1] = pt(b, R);
-      return `M ${x0.toFixed(2)} ${y0.toFixed(2)} A ${R} ${R} 0 0 1 ${x1.toFixed(2)} ${y1.toFixed(2)}`;
-    };
-    const activo = AGUJA.tramos.find(t => tension <= t.hasta) || AGUJA.tramos[AGUJA.tramos.length - 1];
-    const tick = t => {
-      const [xa, ya] = pt(t, R - GA / 2 - 1), [xb, yb] = pt(t, R + GA / 2 + 1);
-      return `<line x1="${xa.toFixed(2)}" y1="${ya.toFixed(2)}" x2="${xb.toFixed(2)}" y2="${yb.toFixed(2)}" class="cg-aguja-tick"/>`;
-    };
-    const rot = t => { const [x, y] = pt(t, R + GA / 2 + 12); return [x.toFixed(2), (y + 4).toFixed(2)]; };
-    const [r0x, r0y] = rot(0), [rmx, rmy] = rot(MAX);
-    const [px, py] = pt(tension, R - G / 2 - 2);
-    const tramos = AGUJA.tramos.map(t =>
-      `<path d="${arco(t.desde, t.hasta)}" class="cg-aguja-tramo sem-${t.color}${t.color === activo.color ? " is-activo" : ""}" stroke-width="${G}" fill="none" stroke-linecap="butt"/>`).join("");
-    const lectura = AGUJA.lectura[activo.color] || "";
+  //
+  // Los números de la geometría (ANCHO/ALTO/grosores, el viewBox estirado sólo
+  // en X y el vector-effect) tienen que seguir a los de NivelTension.astro: si
+  // se cambian allá y no acá, el modal dibuja otra barra. Están explicados en
+  // el encabezado de ese archivo.
+  function nivelHTML(tension) {
+    if (typeof tension !== "number" || !isFinite(tension) || !NIVEL.tramos.length) return "";
+    const ANCHO = 280, ALTO = 40, Y = ALTO / 2, G = 12, GA = 18, MAX = NIVEL.max;
+    const x = t => (Math.min(Math.max(t, 0), MAX) / MAX) * ANCHO;
+    const activo = NIVEL.tramos.find(t => tension <= t.hasta) || NIVEL.tramos[NIVEL.tramos.length - 1];
+    const pista = (a, b, cls, grosor) =>
+      `<line x1="${x(a).toFixed(2)}" y1="${Y}" x2="${x(b).toFixed(2)}" y2="${Y}" class="${cls}"` +
+      ` stroke-width="${grosor}" stroke-linecap="butt" vector-effect="non-scaling-stroke"/>`;
+    const tick = t =>
+      `<line x1="${x(t).toFixed(2)}" y1="${Y - GA / 2 - 2}" x2="${x(t).toFixed(2)}" y2="${Y + GA / 2 + 2}"` +
+      ` class="cg-nivel-tick" vector-effect="non-scaling-stroke"/>`;
+    const tramos = NIVEL.tramos.map(t =>
+      pista(t.desde, t.hasta, `cg-nivel-tramo sem-${t.color}${t.color === activo.color ? " is-activo" : ""}`, G)).join("");
+    const lectura = NIVEL.lectura[activo.color] || "";
     const valor = String(Math.round(tension * 10) / 10).replace(".", ",");
-    return `<figure class="cg-aguja cg-aguja--chica sem-${activo.color}">` +
-      `<svg viewBox="-20 -2 288 132" role="img" aria-label="Tensión ${valor} de ${MAX} — ${lectura} (${activo.color})" class="cg-aguja-svg">` +
-        `<path d="${arco(0, MAX)}" class="cg-aguja-base" stroke-width="${G}" fill="none" stroke-linecap="butt"/>` +
+    return `<figure class="cg-nivel cg-nivel--chica sem-${activo.color}" style="--cg-nivel-alto:${ALTO}px">` +
+      `<figcaption class="cg-nivel-cap"><span class="cg-nivel-lectura">${lectura}</span>` +
+      `<span class="cg-nivel-valor">${valor}<span class="cg-nivel-valor-max">/${MAX}</span></span></figcaption>` +
+      `<svg viewBox="0 0 ${ANCHO} ${ALTO}" preserveAspectRatio="none" role="img"` +
+      ` aria-label="Tensión ${valor} de ${MAX} — ${lectura} (${activo.color})" class="cg-nivel-svg">` +
+        pista(0, MAX, "cg-nivel-base", G) +
         tramos +
-        AGUJA.tramos.map(t => tick(t.desde)).join("") + tick(MAX) +
-        `<text x="${r0x}" y="${r0y}" class="cg-aguja-escala" text-anchor="middle">0</text>` +
-        `<text x="${rmx}" y="${rmy}" class="cg-aguja-escala" text-anchor="middle">${MAX}</text>` +
-        `<line x1="${CX}" y1="${CY}" x2="${px.toFixed(2)}" y2="${py.toFixed(2)}" class="cg-aguja-linea"/>` +
-        `<circle cx="${CX}" cy="${CY}" r="6" class="cg-aguja-eje"/>` +
+        NIVEL.tramos.map(t => tick(t.desde)).join("") + tick(MAX) +
+        `<line x1="${x(tension).toFixed(2)}" y1="${Y - GA / 2 - 5}" x2="${x(tension).toFixed(2)}" y2="${Y + GA / 2 + 5}"` +
+        ` class="cg-nivel-marca" vector-effect="non-scaling-stroke"/>` +
       `</svg>` +
-      `<figcaption class="cg-aguja-cap"><span class="cg-aguja-lectura">${lectura}</span>` +
-      `<span class="cg-aguja-valor">${valor}<span class="cg-aguja-valor-max">/${MAX}</span></span></figcaption></figure>`;
+      `<div class="cg-nivel-escala" aria-hidden="true"><span>0</span><span>${MAX}</span></div></figure>`;
   }
 
   const INFO = JSON.parse(document.getElementById("cg-info-data").textContent);
@@ -553,7 +552,7 @@ const dimsJson = JSON.stringify(dims);
         }
         semCaja.innerHTML =
           `<h4 class="cg-modal-h4">Semáforo</h4>` +
-          agujaHTML(d.semaforo.tension) +
+          nivelHTML(d.semaforo.tension) +
           `<p class="cg-score-map"><strong>Color vigente:</strong> ${chipDe(d.semaforo.color)}${porQueHtml}</p>` +
           tablaHtml;
         semCaja.style.display = "";
@@ -742,7 +741,7 @@ const dimsJson = JSON.stringify(dims);
         const porQueHtml = d.semaforo.por_que ? ` — ${esc(d.semaforo.por_que)}` : "";
         semCaja.innerHTML =
           `<h4 class="cg-modal-h4">Semáforo</h4>` +
-          agujaHTML(d.semaforo.tension) +
+          nivelHTML(d.semaforo.tension) +
           `<p class="cg-score-map"><strong>Color vigente:</strong> ${chipDe(d.semaforo.color)}${porQueHtml}</p>`;
         semCaja.style.display = "";
       } else {

@@ -220,7 +220,7 @@ export function semaforoAriaLabel(
   return semaforo?.por_que ? `Semáforo: ${color} — ${semaforo.por_que}` : `Semáforo: ${color}`;
 }
 
-// ── Escala de tensión y color, para las agujas ───────────────────────────────
+// ── Escala de tensión y color, para las barras ───────────────────────────────
 // El semáforo de 4 colores vive sobre la TENSIÓN 0-10 y sus cortes se publican
 // en `informe.semaforo_cortes` (parametrica.CORTES_SEMAFORO, ADR-0181). Los
 // índices, las dimensiones y los indicadores ya traen su `semaforo.color`
@@ -245,8 +245,8 @@ export function colorPorTension(
   return cortes[cortes.length - 1].color;
 }
 
-// Tramos de la aguja, en tensión 0-10, listos para dibujar. Cierra el último
-// corte abierto contra TENSION_MAX para que el arco tenga un final.
+// Tramos de la barra, en tensión 0-10, listos para dibujar. Cierra el último
+// corte abierto contra TENSION_MAX para que la pista tenga un final.
 export interface TramoSemaforo { color: ColorSemaforo; desde: number; hasta: number; }
 
 export function tramosSemaforo(cortes = informe.semaforo_cortes): TramoSemaforo[] {
@@ -262,8 +262,8 @@ export function tramosSemaforo(cortes = informe.semaforo_cortes): TramoSemaforo[
 }
 
 // Cómo se dice el color en voz alta. El color no puede ser el único canal
-// (daltonismo, impresión en gris, lector de pantalla), así que toda aguja
-// muestra además esta etiqueta y la posición del puntero.
+// (daltonismo, impresión en gris, lector de pantalla), así que toda barra
+// muestra además esta etiqueta y la posición del marcador.
 export const LECTURA_SEMAFORO: Record<ColorSemaforo, string> = {
   verde: "Sin tensión relevante",
   amarillo: "Tensión moderada",

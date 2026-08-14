@@ -1227,164 +1227,191 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-sem-leyenda-list strong { color: var(--dark); font-weight: 700; }
 .cg-sem-leyenda-lectura { font-variant-numeric: tabular-nums; }
 
-/* ── Aguja de temperatura (F1: la lectura primaria pasa a ser el color) ──────
-   El arco lleva los cuatro tramos del semáforo atenuados y enciende el que
-   contiene el valor; la aguja marca la posición. Se lee sin color: la
-   posición del puntero y la etiqueta bastan solas, que es el requisito de
-   accesibilidad del rediseño. */
-.cg-aguja {
+/* ── Barra de nivel de tensión (ADR-0204: sale la metáfora del velocímetro) ──
+   La pista lleva los cuatro tramos del semáforo atenuados y enciende el que
+   contiene el valor; el marcador dice dónde cae. Se lee sin color: la posición
+   del marcador sobre la pista base y la etiqueta bastan solas, que es el
+   requisito de accesibilidad que ya traía la aguja de ADR-0194.
+
+   `--cg-nivel-alto` lo escribe el componente: el SVG mide en el viewBox lo
+   mismo que ocupa en pantalla, y eso es lo que hace que la escala vertical sea
+   1 y que las `y` del trazado sean píxeles reales. No tocar uno sin el otro. */
+.cg-nivel {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
 }
-.cg-aguja-svg { width: 100%; height: auto; display: block; overflow: visible; }
-.cg-aguja--chica  { max-width: 160px; }
-.cg-aguja--grande { max-width: 300px; }
+.cg-nivel-svg {
+  width: 100%;
+  height: var(--cg-nivel-alto, 40px);
+  display: block;
+  overflow: visible;
+}
 
 /* Tramos apagados por defecto: si los cuatro gritan, ninguno informa. Van con
    los tintes suaves y OPACOS, no con opacidad baja: translúcidos dejaban ver
-   el arco base por debajo y el tramo terminaba siendo un gris sucio. */
-.cg-aguja-tramo { transition: stroke .2s ease; }
-.cg-aguja-tramo.sem-verde    { stroke: var(--verde-soft); }
-.cg-aguja-tramo.sem-amarillo { stroke: var(--amarillo-soft); }
-.cg-aguja-tramo.sem-naranja  { stroke: var(--naranja-soft); }
-.cg-aguja-tramo.sem-rojo     { stroke: var(--rojo-soft); }
+   la pista base por debajo y el tramo terminaba siendo un gris sucio. */
+.cg-nivel-tramo { transition: stroke .2s ease; }
+.cg-nivel-tramo.sem-verde    { stroke: var(--verde-soft); }
+.cg-nivel-tramo.sem-amarillo { stroke: var(--amarillo-soft); }
+.cg-nivel-tramo.sem-naranja  { stroke: var(--naranja-soft); }
+.cg-nivel-tramo.sem-rojo     { stroke: var(--rojo-soft); }
 /* El activo se distingue TAMBIÉN por grosor, no solo por tono: entre los
    tintes suaves el contraste consecutivo es de 1,01:1 a 1,07:1, así que en
    gris o con daltonismo el color no alcanzaba para decir cuál es. El CSS gana
    sobre el atributo de presentación del SVG. */
-.cg-aguja-tramo.is-activo { stroke-width: 30 !important; }
-.cg-aguja--chica .cg-aguja-tramo.is-activo { stroke-width: 26 !important; }
-.cg-aguja-tramo.sem-verde.is-activo    { stroke: var(--verde); }
-.cg-aguja-tramo.sem-amarillo.is-activo { stroke: var(--amarillo); }
-.cg-aguja-tramo.sem-naranja.is-activo  { stroke: var(--naranja); }
-.cg-aguja-tramo.sem-rojo.is-activo     { stroke: var(--rojo); }
+.cg-nivel-tramo.is-activo { stroke-width: 18 !important; }
+.cg-nivel--grande .cg-nivel-tramo.is-activo { stroke-width: 26 !important; }
+.cg-nivel-tramo.sem-verde.is-activo    { stroke: var(--verde); }
+.cg-nivel-tramo.sem-amarillo.is-activo { stroke: var(--amarillo); }
+.cg-nivel-tramo.sem-naranja.is-activo  { stroke: var(--naranja); }
+.cg-nivel-tramo.sem-rojo.is-activo     { stroke: var(--rojo); }
 
-.cg-aguja-linea {
+.cg-nivel-marca {
   stroke: var(--dark);
   stroke-width: 3.5;
   stroke-linecap: round;
 }
-.cg-aguja--grande .cg-aguja-linea { stroke-width: 4.5; }
-.cg-aguja-eje { fill: var(--dark); }
+.cg-nivel--grande .cg-nivel-marca { stroke-width: 4.5; }
 
-.cg-aguja-cap {
+/* Título en su propia línea; debajo, lectura y número. En las cards el número
+   se va al borde derecho (`margin-left:auto`), donde queda alineado con el 10
+   de la escala. En el tamaño grande NO: con la pista a 720 px eso los dejaba a
+   un palmo uno del otro y se leían como dos datos sueltos en vez de como una
+   sola lectura. */
+.cg-nivel-cap {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1px;
-  text-align: center;
-  margin-top: 2px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1px 12px;
 }
-.cg-aguja-titulo {
+.cg-nivel-valor { margin-left: auto; }
+.cg-nivel--grande .cg-nivel-valor { margin-left: 0; }
+.cg-nivel-titulo {
+  flex: 0 0 100%;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--muted);
 }
-.cg-aguja-lectura { font-size: 14px; font-weight: 700; color: var(--dark); }
-.cg-aguja--grande .cg-aguja-lectura { font-size: 20px; }
-.cg-aguja.sem-verde    .cg-aguja-lectura { color: #14532D; }
-.cg-aguja.sem-amarillo .cg-aguja-lectura { color: #713F12; }
-.cg-aguja.sem-naranja  .cg-aguja-lectura { color: #7C2D12; }
-.cg-aguja.sem-rojo     .cg-aguja-lectura { color: #7F1D1D; }
-.cg-aguja-lectura.is-sindato { color: var(--muted-soft); font-weight: 600; }
+.cg-nivel-lectura { font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.2; }
+.cg-nivel--grande .cg-nivel-lectura { font-size: 20px; }
+.cg-nivel.sem-verde    .cg-nivel-lectura { color: #14532D; }
+.cg-nivel.sem-amarillo .cg-nivel-lectura { color: #713F12; }
+.cg-nivel.sem-naranja  .cg-nivel-lectura { color: #7C2D12; }
+.cg-nivel.sem-rojo     .cg-nivel-lectura { color: #7F1D1D; }
+.cg-nivel-lectura.is-sindato { color: var(--muted-soft); font-weight: 600; }
 
-.cg-aguja-valor {
+.cg-nivel-valor {
   font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 15px;
   font-weight: 700;
   color: var(--dark);
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
-.cg-aguja--grande .cg-aguja-valor { font-size: 24px; }
-.cg-aguja-valor-max { font-size: .62em; color: var(--muted-soft); font-weight: 500; }
-.cg-aguja-pie { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+.cg-nivel--grande .cg-nivel-valor { font-size: 24px; }
+.cg-nivel-valor-max { font-size: .62em; color: var(--muted-soft); font-weight: 500; }
+.cg-nivel-pie { font-size: 11.5px; color: var(--muted); margin: 2px 0 0; }
+
+/* Los extremos de la escala. Van en HTML y no en <text> porque el SVG se
+   estira sólo en X (preserveAspectRatio="none") y ahí adentro quedarían
+   anchos y chatos. */
+.cg-nivel-escala {
+  display: flex;
+  justify-content: space-between;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .cg-aguja-tramo { transition: none; }
+  .cg-nivel-tramo { transition: none; }
 }
 
 
-/* Hero en dos columnas: el texto explica, la aguja contesta. En mobile la
-   aguja va PRIMERO — es la respuesta, y la respuesta no se scrollea. */
-.cg-hero-inner--aguja {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 28px 48px;
-  align-items: center;
+/* Hero en una sola columna: la barra es ancha y baja, así que va de banda bajo
+   el lead en vez de pelear por una columna propia como hacía la aguja. Se le
+   pone techo para que la lectura y el número no queden a un palmo uno de otro
+   en pantallas anchas. */
+.cg-hero-inner--nivel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
-.cg-hero-inner--aguja .cg-hero-lead { max-width: 60ch; margin-bottom: 14px; }
-.cg-hero-aguja { display: flex; justify-content: center; }
+.cg-hero-inner--nivel .cg-hero-lead { max-width: 60ch; margin-bottom: 14px; }
+/* El hero va centrado (`.cg-hero-inner` tiene text-align:center), así que la
+   banda se centra con él y su lectura también. La cabecera del cinturón, que
+   es la otra que usa el tamaño grande, va alineada a la izquierda y no toca
+   ninguna de estas dos reglas. */
+.cg-hero-nivel { width: 100%; max-width: 720px; margin: 0 auto; }
+.cg-hero-nivel .cg-nivel-cap { justify-content: center; }
 
-@media (max-width: 860px) {
-  .cg-hero-inner--aguja { grid-template-columns: 1fr; gap: 20px; }
-  .cg-hero-texto { order: 2; }
-  .cg-hero-aguja { order: 1; }
-}
+/* La barra del cinturón va bajo el nombre, a lo ancho de la card. */
+.cg-cint-head { align-items: flex-start; gap: 12px; }
+.cg-cint .cg-nivel { margin-top: 10px; }
+.cg-cint .cg-nivel-lectura { font-size: 12.5px; }
+.cg-cint .cg-nivel-valor { font-size: 14px; }
 
-/* La aguja del cinturón vive en la cabecera de la card, a la derecha del
-   nombre. Chica y sin título propio: el nombre ya está arriba. */
-.cg-cint-head { align-items: center; gap: 12px; }
-.cg-cint-head .cg-aguja { max-width: 104px; flex: 0 0 auto; }
-.cg-cint-head .cg-aguja-lectura { font-size: 11.5px; line-height: 1.25; }
-.cg-cint-head .cg-aguja-valor { font-size: 13px; }
-
-/* Los puntos del panel de tensión toman la misma vara que las agujas. */
+/* Los puntos del panel de tensión toman la misma vara que las barras. */
 .cg-dot.sem-verde    { background: var(--verde); }
 .cg-dot.sem-amarillo { background: var(--amarillo); }
 .cg-dot.sem-naranja  { background: var(--naranja); }
 .cg-dot.sem-rojo     { background: var(--rojo); }
 
-/* La cabecera del cinturón, en dos columnas: el título explica, la aguja
-   contesta. Antes la aguja iba metida entre los chips de metadatos, a 118px,
-   y quedaba como un adorno en vez de ser la lectura principal de la página. */
+/* La cabecera del cinturón repite el patrón del hero: título y chips arriba,
+   la barra de banda abajo. */
 .cg-detalle-cols {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 24px 48px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.cg-detalle-aguja { display: flex; justify-content: center; }
-.cg-detalle-aguja .cg-aguja { max-width: 300px; }
+.cg-detalle-nivel { width: 100%; max-width: 720px; }
 .cg-detalle-meta { align-items: center; }
 
-@media (max-width: 860px) {
-  .cg-detalle-cols { grid-template-columns: 1fr; gap: 16px; }
-  .cg-detalle-texto { order: 2; }
-  .cg-detalle-aguja { order: 1; }
-  .cg-detalle-aguja .cg-aguja { max-width: 260px; }
-}
-
-/* Arco base, marcas y extremos (revisión adversarial, ago-2026): sin esto la
-   posición del puntero deja de ser un canal propio en cuanto el color se
-   pierde — impresión en gris, fotocopia, forced-colors. El arco atenuado que
-   había antes desaparecía y la aguja quedaba como un ángulo sin escala. */
+/* Pista base, marcas y extremos (revisión adversarial, ago-2026): sin esto la
+   posición del marcador deja de ser un canal propio en cuanto el color se
+   pierde — impresión en gris, fotocopia, forced-colors. La pista atenuada que
+   había antes desaparecía y el marcador quedaba como un palito sin escala. */
 /* 3,69:1 contra el papel. El valor anterior (--bd) daba 1,27:1 — por debajo
    del 3:1 que WCAG pide para un elemento gráfico que porta significado, o sea
-   que el arco de referencia directamente no estaba ahí. */
-.cg-aguja-base { stroke: #7F8783; }
+   que la pista de referencia directamente no estaba ahí. */
+.cg-nivel-base { stroke: #7F8783; }
 /* Separadores de tramo. La longitud la da la geometría (cruzan la banda);
    acá van grosor y color. Antes esta regla pisaba —por venir después— a otra
    de #6B7370, y dejaba las marcas en 2,58:1: por debajo del mínimo y encima
    invisibles por finas. */
-.cg-aguja-tick { stroke: var(--paper); stroke-width: 2.5; }
-.cg-aguja-escala {
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 11px;
-  fill: var(--muted);
-}
-.cg-aguja-lectura.is-sinescala { color: var(--muted); font-weight: 600; }
+.cg-nivel-tick { stroke: var(--paper); stroke-width: 2.5; }
+.cg-nivel-lectura.is-sinescala { color: var(--muted); font-weight: 600; }
 
 @media print {
-  /* En papel el color no se puede dar por hecho: los tramos se apagan del
-     todo y mandan la posición, las marcas y la etiqueta. */
-  .cg-aguja-tramo { stroke: none; }
-  .cg-aguja-base { stroke: #767676; }
-  .cg-aguja-linea, .cg-aguja-eje { stroke: #000; fill: #000; }
+  /* En papel el color no se puede dar por hecho: se fuerza una rampa de grises
+     con contraste propio, el tramo activo conserva su grosor como canal
+     redundante y el marcador va negro.
+
+     OJO CON LA ESPECIFICIDAD, que acá costó una regla muerta: la versión
+     anterior decía `.cg-nivel-tramo { stroke: none }` (una clase) y NUNCA se
+     aplicó, porque `.cg-nivel-tramo.sem-verde.is-activo` tiene tres y gana
+     aunque esté antes. Los tramos salían impresos con su color igual. Se
+     descubrió mirando el render en gris, no leyendo el CSS: no hay test que
+     mire esto. Por eso acá se repiten los selectores completos en vez de
+     apoyarse en el orden del archivo. */
+  .cg-nivel-tramo.sem-verde,
+  .cg-nivel-tramo.sem-amarillo,
+  .cg-nivel-tramo.sem-naranja,
+  .cg-nivel-tramo.sem-rojo { stroke: #D8D8D8; }
+  .cg-nivel-tramo.sem-verde.is-activo,
+  .cg-nivel-tramo.sem-amarillo.is-activo,
+  .cg-nivel-tramo.sem-naranja.is-activo,
+  .cg-nivel-tramo.sem-rojo.is-activo { stroke: #5A5A5A; }
+  .cg-nivel-base { stroke: #767676; }
+  .cg-nivel-tick { stroke: #FFF; }
+  .cg-nivel-marca { stroke: #000; }
 }
 
 @media (forced-colors: active) {
@@ -1395,12 +1422,20 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
      cortes en Canvas, que por definición contrastan entre sí en la paleta
      forzada, clara u oscura. El grosor del tramo activo sigue funcionando como
      canal redundante. */
-  .cg-aguja-base,
-  .cg-aguja-tramo { forced-color-adjust: none; stroke: CanvasText; }
-  .cg-aguja-tick { forced-color-adjust: none; stroke: Canvas; stroke-width: 3; }
-  .cg-aguja-linea { stroke: CanvasText; }
-  .cg-aguja-eje { fill: CanvasText; }
-  .cg-aguja-escala { fill: CanvasText; }
+  /* Mismos selectores completos que en @media print, y por la misma razón: a
+     una clase sola la pisa `.cg-nivel-tramo.sem-X.is-activo`. */
+  .cg-nivel-base,
+  .cg-nivel-tramo,
+  .cg-nivel-tramo.sem-verde,
+  .cg-nivel-tramo.sem-amarillo,
+  .cg-nivel-tramo.sem-naranja,
+  .cg-nivel-tramo.sem-rojo,
+  .cg-nivel-tramo.sem-verde.is-activo,
+  .cg-nivel-tramo.sem-amarillo.is-activo,
+  .cg-nivel-tramo.sem-naranja.is-activo,
+  .cg-nivel-tramo.sem-rojo.is-activo { forced-color-adjust: none; stroke: CanvasText; }
+  .cg-nivel-tick { forced-color-adjust: none; stroke: Canvas; stroke-width: 3; }
+  .cg-nivel-marca { stroke: CanvasText; }
 }
 
 /* El panel de tensión: cada cinturón dice su lectura en texto, no solo en el
@@ -1418,15 +1453,15 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-matriz { list-style: none; padding: 0; }
 .cg-chip-nota { color: var(--muted); font-weight: 500; margin-left: 5px; }
 
-/* La aguja dentro de una dimensión: chica y sin título, porque el nombre de la
+/* La barra dentro de una dimensión: sin título, porque el nombre de la
    dimensión ya está en la fila de arriba. */
-.cg-itcm-dim .cg-aguja { max-width: 176px; margin: 6px auto 0; }
-.cg-itcm-dim .cg-aguja-lectura { font-size: 12.5px; }
-.cg-itcm-dim .cg-aguja-valor { font-size: 15px; }
+.cg-itcm-dim .cg-nivel { margin-top: auto; padding-top: 8px; }
+.cg-itcm-dim .cg-nivel-lectura { font-size: 12.5px; }
+.cg-itcm-dim .cg-nivel-valor { font-size: 15px; }
 
-/* Las cards de dimensión: título arriba con altura pareja y la aguja centrada
-   abajo, para que la grilla no quede escalonada cuando un nombre ocupa dos
-   líneas y otro una. */
+/* Las cards de dimensión: título arriba con altura pareja y la barra abajo,
+   para que la grilla no quede escalonada cuando un nombre ocupa dos líneas y
+   otro una. `margin-top: auto` en la barra la empuja al pie de la card. */
 .cg-itcm-dim { display: flex; flex-direction: column; }
 .cg-itcm-dim-head { min-height: 2.6em; align-items: flex-start; }
 
