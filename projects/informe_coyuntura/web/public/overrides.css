@@ -1473,3 +1473,27 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 /* La aguja dentro del modal: centrada y con aire, sin el título (el modal ya
    encabeza con el nombre del indicador). */
 #cg-modal-semaforo .cg-aguja { max-width: 200px; margin: 6px auto 10px; }
+
+/* ── El marco conceptual (/metodologia) ────────────────────────────────
+   Prosa, no cards. El encuadre es un argumento encadenado —qué es la tensión,
+   qué es un cinturón, cómo se mide, qué pasa si se mira uno solo— y trocearlo
+   en cuatro tiles lo convierte en cuatro afirmaciones sueltas, que es justo lo
+   que le pasó cuando se fue de la portada.
+
+   Lleva ancho de lectura propio: el contenedor de la página va a 1280px y una
+   línea de ese largo no se lee de corrido. */
+.cg-marco { max-width: 72ch; }
+.cg-marco p {
+  font-size: 15px; line-height: 1.7; color: var(--dark);
+  margin: 0 0 14px;
+}
+.cg-marco p:last-child { margin-bottom: 0; }
+.cg-marco p strong { font-weight: 700; }
+/* El párrafo de apertura es LA definición del informe (y el texto original,
+   palabra por palabra). Entra más grande para que se lea como definición y no
+   como una nota al pie más. */
+.cg-marco .cg-marco-lead { font-size: 17px; line-height: 1.65; }
+.cg-marco .cg-marco-lead strong { color: var(--teal-dark); }
+@media (max-width: 720px) {
+  .cg-marco .cg-marco-lead { font-size: 16px; }
+}

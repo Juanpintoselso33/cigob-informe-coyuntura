@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-12
 cinturon: 'transversal'
 archivos: ['web/src/components/Aguja.astro', 'web/src/components/Hero.astro', 'web/src/components/CinturonCard.astro', 'web/src/components/TensionPanel.astro', 'web/src/components/Metodologia.astro', 'web/src/pages/[slug].astro', 'web/src/pages/metodologia/index.astro', 'web/src/lib/datos.ts', 'web/public/overrides.css']
-relacionado: ['0181', '0195']
+relacionado: ['0181', '0195', '0199']
 ambito: 'Capa visual y textual del informe · portada, cinturones y metodología'
 origen: 'Rediseño pedido por el editor: que el estado se lea por color y posición antes que por número, con menos texto'
 ---

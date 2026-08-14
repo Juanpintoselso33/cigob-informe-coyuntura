@@ -281,3 +281,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0196](0196-modelos-internos-de-bigquery-ml.md) | Modelos internos de BigQuery ML: dos que quedan, uno que se descarta medido |  | vigente |
 | [0197](0197-piso-de-cobertura-de-las-series-reconstruidas.md) | Una serie reconstruida no publica meses armados sobre una fracción del índice |  | vigente |
 | [0198](0198-segundo-lector-de-los-pdf-de-origen.md) | Un segundo lector para los PDF de origen, en modo sombra |  | vigente |
+| [0199](0199-el-marco-conceptual-vuelve-en-metodologia.md) | El marco conceptual vuelve, y esta vez sí vive en /metodologia |  | vigente |

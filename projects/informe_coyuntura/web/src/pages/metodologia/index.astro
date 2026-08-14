@@ -48,9 +48,10 @@ const tensionados = cinturonesRojos(informe);
       <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a> · Metodología</p>
       <h1 class="cg-hero-title cg-detalle-title">Diccionario de indicadores</h1>
       <p class="cg-hero-lead cg-detalle-lead">
-        Una ficha metodológica por indicador, con estructura estándar: qué mide, de dónde sale,
+        Primero el marco: qué es la tensión que mide el informe y de dónde salen los cinco cinturones.
+        Después, una ficha metodológica por indicador, con estructura estándar: qué mide, de dónde sale,
         cómo se calcula, cómo incide en el índice, qué limitaciones tiene y qué decisiones de
-        método se tomaron. Para leer el informe no hace falta nada de esto; para auditarlo, está todo.
+        método se tomaron. Para leer el informe alcanza con el marco; para auditarlo, está todo.
       </p>
       <div class="cg-detalle-meta">
         <span class="cg-detalle-chip">Edición <strong>{mesLegible(informe.period)}</strong></span>
@@ -59,6 +60,54 @@ const tensionados = cinturonesRojos(informe);
     </div>
   </header>
   <main class="cg-main">
+
+    {/* El encuadre conceptual del informe. Vivía en el hero de la portada y se
+        fue con el rediseño de la aguja (ADR-0194), que lo dio por mudado acá
+        sin mudarlo: durante un día el sitio publicó una tensión 0-10 sin decir
+        en ningún lado qué es esa tensión. Vuelve donde el rediseño dijo que
+        estaba, y antes que nada: se explica qué se mide antes de explicar cómo
+        se documenta (ADR-0199). El párrafo de apertura es el original, palabra
+        por palabra. */}
+    <section class="cg-section cg-method" id="marco">
+      <div class="cg-section-head">
+        <p class="cg-eyebrow">El marco</p>
+        <h2 class="cg-h2">Qué es la tensión que mide el informe</h2>
+        <p class="cg-h2-sub">El encuadre del que salen los cinco cinturones y la escala 0–10.</p>
+      </div>
+      <div class="cg-marco">
+        <p class="cg-marco-lead">
+          La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos, sino por su
+          capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos de
+          acción disponibles. Este informe de coyuntura sistematiza el mapa de tensiones de la Argentina actual
+          a través de <strong>cinco cinturones analíticos</strong>, examinando cómo las decisiones oficiales
+          operan un constante intercambio de problemas donde la viabilidad fiscal, cambiaria, social y política
+          se recalculan en tiempo real.
+        </p>
+        <p>
+          El encuadre es el marco <strong>CIGOB-Matus</strong>, que la Fundación CiGob amplía de tres cinturones
+          a cinco. Un cinturón no es un área temática: es un frente donde el gobierno gasta y repone capacidad
+          de gobernar. Macroeconomía, política, gestión estatal y vida cotidiana miden el intercambio entre lo
+          que el gobierno decide y lo que el entorno le devuelve; espíritu de época mide la sintonía emocional
+          con el humor social — apretarlo es que el gobierno deje de representar emocionalmente a quienes
+          gobierna.
+        </p>
+        <p>
+          Cada cinturón publica su tensión en una <strong>escala de 0 a 10</strong>: 0 es un cinturón aflojado
+          —el gobierno procesa las demandas con los recursos que tiene— y 10 uno apretado, donde cada decisión
+          se paga con otra. Cuatro de los cinco derivan esa tensión de un índice paramétrico propio (ITCM, ITCP,
+          ITVC, ITCG), documentado más abajo; espíritu de época todavía promedia tres proxies, a la espera de
+          una paramétrica propia. Las palabras y los colores que acompañan a cada aguja salen de los cortes que
+          se publican junto con los datos, no del texto de esta página.
+        </p>
+        <p>
+          Mirar un solo cinturón es el riesgo que el marco llama <strong>barbarismo</strong>: gobernar mirando
+          nada más que los indicadores económicos (tecnocrático), la imagen (político) o la eficiencia operativa
+          (gerencial), mientras el cinturón que nadie mira se rompe sin aviso. Por eso los cinco se publican
+          juntos, cada uno declara a qué barbarismo está expuesto, y la regla de lectura cuenta cuántos están
+          tensionados a la vez.
+        </p>
+      </div>
+    </section>
 
     <section class="cg-section">
       <div class="cg-section-head">
