@@ -17,7 +17,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
                 <h4>El observatorio</h4>
                 <a href={`${base}/#snapshot`}>Mes actual</a>
                 <a href={`${base}/#evolucion`}>Evolución</a>
-                <a href={`${base}/#metodologia`}>Metodología</a>
+                {/* Mismo destino que el ítem del Nav (ADR-0201): un rótulo
+                    "Metodología" no puede llevar a dos lugares distintos según
+                    desde dónde se lo toque. */}
+                <a href={`${base}/metodologia/`}>Metodología</a>
             </div>
             <div>
                 <h4>Institucional</h4>
@@ -26,7 +29,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             </div>
             <div>
                 <h4>Para investigadores</h4>
-                <a href={`${base}/#metodologia`}>Metodología</a>
+                {/* Los dos destinos que le sirven a quien viene a auditar: el
+                    encuadre y el diccionario. Antes eran "Metodología" (al
+                    ancla de la portada) y "Fichas", o sea un resumen y el
+                    detalle, con el marco en ningún lado. */}
+                <a href={`${base}/metodologia/#marco`}>Marco metodológico</a>
                 <a href={`${base}/metodologia/`}>Fichas metodológicas</a>
                 <p style="margin-top:8px;color:#9CA39F;font-size:12.5px;">
                     Buenos Aires · República Argentina

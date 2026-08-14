@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-13
 cinturon: 'transversal'
 archivos: ['web/src/pages/metodologia/index.astro', 'web/public/overrides.css', 'tests/test_marco_conceptual.py']
-relacionado: ['0194', '0200']
+relacionado: ['0194', '0200', '0201']
 ambito: 'Capa textual del informe — el encuadre conceptual que se publica'
 origen: 'El editor notó que la explicación del concepto de tensión había desaparecido del sitio y pidió reponerla en /metodologia'
 ---

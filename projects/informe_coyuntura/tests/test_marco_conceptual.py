@@ -28,6 +28,7 @@ METODOLOGIA_INDEX = ROOT / "web" / "src" / "pages" / "metodologia" / "index.astr
 # de más. Es redundancia deliberada con /metodologia, no un descuido.
 MARCO_HOME = ROOT / "web" / "src" / "components" / "MarcoTension.astro"
 HOME_INDEX = ROOT / "web" / "src" / "pages" / "index.astro"
+NAV = ROOT / "web" / "src" / "components" / "Nav.astro"
 
 
 def _texto_normalizado(path: Path) -> str:
@@ -100,6 +101,21 @@ def test_la_portada_monta_el_bloque_del_marco():
     assert "<MarcoTension" in home, (
         "MarcoTension.astro existe pero la portada ya no lo monta: el archivo "
         "puede seguir intacto y el bloque no salir publicado (ADR-0200)."
+    )
+
+
+def test_el_nav_manda_a_la_pagina_de_metodologia():
+    """El ítem «Metodología» del Nav va a /metodologia/, no al ancla de la
+    portada. Con `/#metodologia` el marco quedaba a dos clics del lector que
+    navega por el Nav — declarado como deuda en ADR-0199/0200, cerrado en
+    ADR-0201."""
+    nav = _texto_normalizado(NAV)
+    assert '`${base}/#metodologia`' not in nav, (
+        "El Nav volvió a apuntar «Metodología» al ancla de la portada. El "
+        "destino es la página /metodologia/, donde vive el marco (ADR-0201)."
+    )
+    assert '`${base}/metodologia/`' in nav, (
+        "El Nav dejó de tener un ítem que apunte a /metodologia/ (ADR-0201)."
     )
 
 

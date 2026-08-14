@@ -9,12 +9,21 @@ const links = [
   { href: `${base}/vida/`, label: "Vida cotidiana", seg: "vida" },
   { href: `${base}/gestion/`, label: "Gestión", seg: "gestion" },
   { href: `${base}/espiritu/`, label: "Espíritu de época", seg: "espiritu" },
-  { href: `${base}/#metodologia`, label: "Metodología", seg: "__none__" },
+  // Apunta a la PÁGINA de metodología, no al ancla de la portada. Mientras
+  // apuntó a `/#metodologia` el marco conceptual quedaba a dos clics del lector
+  // que usa el Nav, y el ítem no se encendía nunca (ADR-0199/0200 lo declararon
+  // como deuda; ADR-0201 la cierra). La sección de la portada sigue existiendo
+  // con su propio CTA al diccionario: lo que cambia es a dónde manda el Nav.
+  { href: `${base}/metodologia/`, label: "Metodología", seg: "metodologia" },
 ];
 function isActive(seg: string): boolean {
-  if (seg === "__none__") return false;
   if (seg === "") return path === base;
-  return path === `${base}/${seg}`;
+  const destino = `${base}/${seg}`;
+  // Coincidencia por rama, no exacta: /metodologia tiene una subpágina por
+  // ficha (/metodologia/itcm, /metodologia/ipc_total…) y el ítem tiene que
+  // quedarse encendido ahí adentro. Los cinturones no tienen subpáginas hoy,
+  // así que para ellos se comporta igual que la comparación exacta.
+  return path === destino || path.startsWith(`${destino}/`);
 }
 ---
 <nav class="cg-nav">
