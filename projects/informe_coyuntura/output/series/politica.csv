@@ -32,7 +32,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,votometro_ventaja_lla,12.3,pp (brecha LLA−PJ),Votómetro CIGOB
 2024-01-01,votometro_ventaja_lla,14.2,pp (brecha LLA−PJ),Votómetro CIGOB
 2023-12-01,votometro_ventaja_lla,16.1,pp (brecha LLA−PJ),Votómetro CIGOB
-2026-08-13,veto_quorum,10.0,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
+2026-08-14,veto_quorum,10.0,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
 2026-07-31,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
 2026-06-30,veto_quorum,8.3,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
 2026-05-31,veto_quorum,0.0,% sesiones en minoría (12m móviles),Cámara de Diputados (datos abiertos)
@@ -110,7 +110,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,rotacion_gabinete,1,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2024-01-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
 2023-12-01,rotacion_gabinete,0,salidas de rango ministerial (acum. 12 meses),Decretos de designación y renuncia — Boletín Oficial (registro curado CIGOB)
-2026-08-01,ratio_dnu,1.92,DNUs por ley (12m móviles),InfoLeg
+2026-08-01,ratio_dnu,1.88,DNUs por ley (12m móviles),InfoLeg
 2026-07-01,ratio_dnu,1.92,DNUs por ley (12m móviles),InfoLeg
 2026-06-01,ratio_dnu,2.3,DNUs por ley (12m móviles),InfoLeg
 2026-05-01,ratio_dnu,4.727,DNUs por ley (12m móviles),InfoLeg
@@ -263,7 +263,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,eficacia_legislativa,31.8,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,eficacia_legislativa,30.4,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,eficacia_legislativa,36.0,% proyectos PE aprobados (12m móviles),Cámara de Diputados (datos abiertos)
-2026-08-13,desafios_legislativos,3.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-08-14,desafios_legislativos,3.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-07-31,desafios_legislativos,10.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-06-30,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-05-31,desafios_legislativos,11.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -296,7 +296,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-29,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2024-01-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2023-12-31,desafios_legislativos,0.0,normas desafiadas en el recinto (12m),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
-2026-08-13,derrotas_legislativas,3,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
+2026-08-14,derrotas_legislativas,3,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-07-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-06-30,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
 2026-05-31,derrotas_legislativas,8,derrotas del Ejecutivo en el recinto (12m móviles),InfoLeg + actas del Senado — elaboración CIGOB
@@ -394,7 +394,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2024-01-01,comisiones_caidas,98.9,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
 2023-12-01,comisiones_caidas,98.6,% con dictamen sin sanción (12m móviles),Cámara de Diputados (datos abiertos)
-2026-08-13,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
+2026-08-14,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-07-31,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-06-30,cohesion_bloque,99.8,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
 2026-05-31,cohesion_bloque,99.9,% cohesión (índice de Rice bicameral 65/35),Votaciones nominales de Diputados y Senado — elaboración CIGOB
@@ -561,7 +561,7 @@ fecha,indicador,valor,unidad,fuente
 2018-01-01,brecha_obra_publica,11.9,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2017-12-01,brecha_obra_publica,14.5,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
 2017-11-01,brecha_obra_publica,19.4,"pp (obra pública − privada, 12m móviles)","INDEC · Encuesta Cualitativa de la Construcción (ISAC, Cuadro 7.1)"
-2026-08-13,bloqueo_sostenido,33.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
+2026-08-14,bloqueo_sostenido,33.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-07-31,bloqueo_sostenido,20.0,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-06-30,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
 2026-05-31,bloqueo_sostenido,27.3,% normas desafiadas en el recinto que siguen en pie (12m móviles),Actas de Diputados y Senado + InfoLeg — elaboración CIGOB
@@ -624,7 +624,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,apoyo_empresario,-0.6,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2024-01-01,apoyo_empresario,-0.6,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
 2023-12-01,apoyo_empresario,-0.667,"saldo de postura (−1 a +1, 12m móviles)",Comunicados de AEA y UIA — codificación CIGOB
-2026-08-13,alineamiento_senadores_prov,57.0,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
+2026-08-14,alineamiento_senadores_prov,57.0,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-07-31,alineamiento_senadores_prov,70.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-06-30,alineamiento_senadores_prov,70.2,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB
 2026-05-31,alineamiento_senadores_prov,78.6,% votos de senadores no-LLA alineados con LLA,Votaciones nominales del Senado — elaboración CIGOB

@@ -2,9 +2,9 @@
  "_meta": {
   "descripcion": "Fallos de la CSJN que declaran inconstitucionalidad o tienen al Estado como parte. Detección automática; la lectura y la clasificación las hace el analista (ADR-0140). NO es un contador: el endpoint abierto topea en 10 registros por consulta y no pagina. Sacar de 'pendientes' lo ya revisado.",
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
-  "nuevas_en_la_corrida": 0,
+  "nuevas_en_la_corrida": 1,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-08-13"
+  "ultima_corrida": "2026-08-14"
  },
  "pendientes": {
   "818689": {
@@ -260,6 +260,21 @@
    "sentencia_arbitraria": false,
    "titulo": "Convenio de transferencia del sistema previsional y aplicación de normas nacionales",
    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830418"
+  },
+  "831004": {
+   "caratula": "CENCOSUD SA c/ ESTADO NACIONAL MINISTERIO DE ECONOMIA SECRETARIA DE INDUSTRIA Y DESARROLLO PRODUCTIVO s/LEALTAD COMERCIAL - LEY 22802 - ART 22",
+   "expediente": "CCF 007777/2024/CS001",
+   "fecha": "13/08/2026",
+   "fuero": "CCF",
+   "inconstitucional": true,
+   "materia": "ADMINISTRATIVO",
+   "motivos": [
+    "declara inconstitucionalidad",
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": false,
+   "titulo": "Competencia en materia de lealtad comercial y decretos de necesidad y urgencia",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=831004"
   }
  },
  "revisadas": {
@@ -446,6 +461,11 @@
   "830488": {
    "fecha": "06/08/2026",
    "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "831004": {
+   "fecha": "13/08/2026",
+   "marcado": true,
    "termino": "inconstitucionalidad"
   }
  }
