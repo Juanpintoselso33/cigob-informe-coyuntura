@@ -79,8 +79,46 @@ things — set up and verified 2026-08-13:
   find . -type d ! -perm -u+w -exec chmod u+w {} +
   ```
 
-`projects/informe_coyuntura/.env` is present on this machine and stays
-gitignored — it is copied by hand, never versioned.
+### `.env`: seven credentials, and one trap that fails silently
+
+`projects/informe_coyuntura/.env` holds seven credentials (BA Transporte ×2,
+Presupuesto Abierto, ACLED ×2, ACLED-UBA ×2). It is gitignored, copied to each
+machine by hand, never versioned. Nothing loads it for you — there is no
+python-dotenv in `requirements.txt`, the scripts read `os.environ` directly, and
+the CI injects the same names from GitHub secrets. Locally you export it
+yourself:
+
+```bash
+set -a; source ./.env; set +a
+```
+
+**The trap** (hit 2026-08-14, cost one aborted pipeline run): the file arrived
+from the tower with **CRLF** line endings, so `source` leaves a trailing `\r` on
+*every* value. The tokens go out malformed, the source rejects the auth, and the
+collector **falls back to cache without saying anything** — the run completes,
+the gate passes, and you publish yesterday's data believing it is fresh. The
+only hint is `command not found: ^M` scrolling past at the top.
+
+Converted to LF and locked down to `600` on the Mac. Before trusting any file
+that a shell has to `source`, check it:
+
+```bash
+file .env                    # must NOT say "with CRLF line terminators"
+```
+
+And when running the pipeline by hand, verify the credentials landed before
+burning 20 minutes on a run that will quietly use cache:
+
+```zsh
+# zsh (the Mac's shell): ${(P)v} is its indirect expansion; in bash it is ${!v}
+set -a; source ./.env; set +a
+for v in BA_TRANSPORTE_CLIENT_ID PRESUPUESTO_ABIERTO_TOKEN ACLED_USERNAME; do
+  [ -n "${(P)v}" ] || echo "FALTA $v"
+done
+```
+
+The same warning applies to anything else copied over from the tower — check
+first, don't assume.
 
 ## Working rules
 
@@ -169,6 +207,12 @@ happened and cost real time (see both verified incidents below): guessing
 "full pipeline" for a one-cinturón change burns ~20 min doing nothing
 useful; guessing "just this collector" when multiple cinturones are
 genuinely stale produces false G3 gate failures that look like real bugs.
+
+**Before any of the sequences below**: the collectors need the seven
+credentials exported (`set -a; source ./.env; set +a` — see the `.env` section
+above). Without them the fetches fail auth and every collector falls back to
+cache *silently*: the run finishes, the gate passes, and you publish stale data.
+On the Mac, also activate the venv — there is no bare `python` on the PATH.
 
 **One cinturón touched (the common case — a single collector/indicator
 fix)**: scope it, don't touch the others at all.
