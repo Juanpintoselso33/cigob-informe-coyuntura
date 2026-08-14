@@ -1,6 +1,6 @@
 {
   "cinturon": "politica",
-  "generated_at": "2026-08-14T03:46:14.564439",
+  "generated_at": "2026-08-14T13:14:56.932667",
   "score": 3.5,
   "itcp": {
     "valor": 65.4,
@@ -134,7 +134,7 @@
       "poder_judicial": {
         "nombre": "Poder judicial",
         "peso": 0.15,
-        "puntaje": 60.8,
+        "puntaje": 60.9,
         "indicadores": {
           "cobertura_judicial": {
             "peso": 0.4,
@@ -145,9 +145,9 @@
           },
           "judicializacion": {
             "peso": 0.2,
-            "puntaje_banda": 51.2,
-            "puntaje_aplicado": 51.2,
-            "valor": 1.62,
+            "puntaje_banda": 51.9,
+            "puntaje_aplicado": 51.9,
+            "valor": 1.61,
             "peso_efectivo": 0.03
           },
           "velocidad_resolucion": {
@@ -202,7 +202,7 @@
       "fuente": "Votómetro CIGOB",
       "fecha_dato": "2026-06-22",
       "desactualizado": false,
-      "obtenido_en": "2026-08-14T03:42:48",
+      "obtenido_en": "2026-08-14T13:09:59",
       "en_indice": true,
       "dimension": "imagen_voto",
       "puntaje_itcp": 73.0,
@@ -218,7 +218,7 @@
       "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
       "fecha_dato": "2026-08-14",
       "desactualizado": false,
-      "obtenido_en": "2026-08-14T03:42:50",
+      "obtenido_en": "2026-08-14T13:09:59",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 19.0,
@@ -233,7 +233,7 @@
       "desactualizado": false,
       "variacion_12m": 4.9,
       "detalle_txt": "Brecha de -1,1 pp entre lo que esperan las constructoras de obra pública y las de obra privada (promedio de 12 meses). Negativa = las que dependen del Estado esperan peor que sus pares privadas.",
-      "obtenido_en": "2026-08-14T03:42:53",
+      "obtenido_en": "2026-08-14T13:10:00",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 72.8,
@@ -252,7 +252,7 @@
       "criticas_ventana": 5,
       "pendientes_de_codificar": 0,
       "detalle_txt": "En los últimos doce meses AEA y UIA se pronunciaron 7 veces sobre medidas del Gobierno nacional: 2 de apoyo y 5 de crítica. Saldo −0,429 en una escala de −1 (todo crítica) a +1 (todo apoyo).",
-      "obtenido_en": "2026-08-14T03:42:53",
+      "obtenido_en": "2026-08-14T13:10:00",
       "en_indice": true,
       "dimension": "sector_privado",
       "puntaje_itcp": 35.7,
@@ -268,7 +268,7 @@
       "fecha_dato": "2026-07-01",
       "desactualizado": false,
       "detalle_txt": "1978 eventos de protesta y disturbios en el país en 12m (hasta 2026-07) vs 2605 en todo 2023 (-24,1%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país",
-      "obtenido_en": "2026-08-14T03:43:08",
+      "obtenido_en": "2026-08-14T13:10:11",
       "en_indice": true,
       "dimension": "conflicto_social",
       "puntaje_itcp": 52.9,
@@ -284,7 +284,7 @@
       "fuente": "https://centrocepa.com.ar/documentos/informes/809-la-contracara-de-la-caida-de-la-recaudacion-provincial-el-incremento-de-la-conflictividad-laboral",
       "fecha_dato": "2026-06-09",
       "desactualizado": false,
-      "obtenido_en": "2026-08-14T03:43:14",
+      "obtenido_en": "2026-08-14T13:10:14",
       "en_indice": false
     },
     "iaf_transferencias": {
@@ -298,7 +298,7 @@
       "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
       "fecha_dato": "2025-12-31",
       "desactualizado": false,
-      "obtenido_en": "2026-08-14T03:43:16",
+      "obtenido_en": "2026-08-14T13:10:14",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 76.6,
@@ -316,7 +316,7 @@
       "fuente": "datos.hcdn.gob.ar — proyectos-parlamentarios + leyes-sancionadas",
       "fecha_dato": "2026-08-14",
       "desactualizado": false,
-      "obtenido_en": "2026-08-14T03:43:25",
+      "obtenido_en": "2026-08-14T13:10:16",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 50.8,
@@ -332,7 +332,7 @@
       "fecha_dato": "2026-08-14",
       "desactualizado": false,
       "detalle_txt": "1 de 10 sesiones legislativas convocadas en los últimos 12 meses quedaron en minoría (no reunieron quórum)",
-      "obtenido_en": "2026-08-14T03:43:28",
+      "obtenido_en": "2026-08-14T13:10:16",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 78.3,
@@ -349,7 +349,7 @@
       "fuente": "datos.hcdn.gob.ar — dictámenes + movimientos-de-proyectos",
       "fecha_dato": "2026-08-14",
       "desactualizado": false,
-      "obtenido_en": "2026-08-14T03:43:33",
+      "obtenido_en": "2026-08-14T13:10:17",
       "en_indice": false
     },
     "adhesion_reformas_provincial": {
@@ -359,7 +359,7 @@
       "fecha_dato": "2026-08-14",
       "n_provincias": 16,
       "desactualizado": false,
-      "obtenido_en": "2026-08-14T03:43:34",
+      "obtenido_en": "2026-08-14T13:10:17",
       "en_indice": true,
       "dimension": "alianzas_territoriales",
       "puntaje_itcp": 81.7,
@@ -377,7 +377,7 @@
       "fuente": "InfoLeg (vetos e insistencias) + actas de votación del Senado (decretos, ley 26.122) — elaboración CIGOB",
       "fecha_dato": "2026-08-14",
       "desactualizado": false,
-      "obtenido_en": "2026-08-14T03:44:02",
+      "obtenido_en": "2026-08-14T13:10:43",
       "en_indice": false
     },
     "rotacion_gabinete": {
@@ -390,7 +390,7 @@
       "salidas_estructurales": 2,
       "ultima_salida": "Manuel Adorni — Jefe de Gabinete de Ministros (2026-06)",
       "detalle_txt": "7 salidas en 12 meses = 5 políticas · 2 por bancas electorales — Gerardo Werthein (2025-10), Guillermo Francos (2025-11), Lisandro Catalan (2025-11), Patricia Bullrich (2025-12), Luis Petri (2025-12), Mariano Cuneo Libarona (2026-03), Manuel Adorni (2026-06)",
-      "obtenido_en": "2026-08-14T03:44:09",
+      "obtenido_en": "2026-08-14T13:10:48",
       "en_indice": false
     },
     "protestas_caba": {
@@ -402,7 +402,7 @@
       "eventos_2023": 240,
       "var_vs_2023": 15.8,
       "detalle_txt": "278 eventos en 12m (hasta 2026-07) vs 240 en 2023 (+15,8%) — cuenta marchas y concentraciones, no cortes: contrastar con el protocolo",
-      "obtenido_en": "2026-08-14T03:44:09",
+      "obtenido_en": "2026-08-14T13:10:48",
       "en_indice": false
     },
     "cohesion_bloque": {
@@ -417,7 +417,7 @@
           "valor": 99.9,
           "fecha_dato": "2026-06-24",
           "n_actas": 33,
-          "corrida_exitosa_en": "2026-08-09",
+          "corrida_exitosa_en": "2026-08-14",
           "desactualizado": false
         },
         "senado": {
@@ -428,7 +428,7 @@
           "desactualizado": false
         }
       },
-      "obtenido_en": "2026-08-14T03:44:46",
+      "obtenido_en": "2026-08-14T13:13:50",
       "en_indice": true,
       "dimension": "cohesion_interna",
       "puntaje_itcp": 96.7,
@@ -447,7 +447,7 @@
       "fuente": "Actas de votación de Diputados y Senado + InfoLeg (vetos e insistencias) — elaboración CIGOB",
       "fecha_dato": "2026-08-14",
       "desactualizado": false,
-      "obtenido_en": "2026-08-14T03:44:53",
+      "obtenido_en": "2026-08-14T13:13:56",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 26.6,
@@ -464,7 +464,7 @@
       "fecha_dato": "2026-08-14",
       "desactualizado": false,
       "detalle_txt": "3 normas propias desafiadas en el recinto en los últimos 12 meses (2 cayeron, 1 siguen en pie)",
-      "obtenido_en": "2026-08-14T03:44:53",
+      "obtenido_en": "2026-08-14T13:13:56",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 90.0,
@@ -478,7 +478,7 @@
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
       "detalle_txt": "25 leyes sancionadas en los últimos 12 meses. El promedio histórico del dataset (2008-2025, cuatro presidencias) es de 74 leyes por año.",
-      "obtenido_en": "2026-08-14T03:44:56",
+      "obtenido_en": "2026-08-14T13:13:56",
       "en_indice": true,
       "dimension": "poder_legislativo",
       "puntaje_itcp": 30.0,
@@ -486,18 +486,18 @@
       "peso_efectivo": 0.0315
     },
     "judicializacion": {
-      "valor": 1.62,
+      "valor": 1.61,
       "unidad": "% de sumarios con medida cautelar",
       "fuente": "SAIJ — buscador de jurisprudencia (Federal + Nacional)",
       "fecha_dato": "2026-01-01",
       "desactualizado": false,
-      "detalle_txt": "107 de 6586 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
+      "detalle_txt": "107 de 6641 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.",
+      "obtenido_en": "2026-08-14T13:14:00",
       "en_indice": true,
       "dimension": "poder_judicial",
-      "puntaje_itcp": 51.2,
-      "puntaje_banda": 51.2,
-      "peso_efectivo": 0.03,
-      "obtenido_en": "2026-08-14T09:18:29.377967"
+      "puntaje_itcp": 51.9,
+      "puntaje_banda": 51.9,
+      "peso_efectivo": 0.03
     },
     "velocidad_resolucion": {
       "valor": 45.4,
@@ -506,7 +506,7 @@
       "fecha_dato": "2025-12-31",
       "desactualizado": false,
       "detalle_txt": "En 2025 la Corte resolvió 26.524 expedientes sobre 58.424 ingresados. Por encima de 100% descarga atraso; por debajo lo acumula.",
-      "obtenido_en": "2026-08-14T03:44:58",
+      "obtenido_en": "2026-08-14T13:14:00",
       "en_indice": true,
       "dimension": "poder_judicial",
       "puntaje_itcp": 94.6,
@@ -520,7 +520,7 @@
       "fecha_dato": "2026-08-01",
       "desactualizado": false,
       "detalle_txt": "6 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 5.0).",
-      "obtenido_en": "2026-08-14T03:45:01",
+      "obtenido_en": "2026-08-14T13:14:02",
       "en_indice": true,
       "dimension": "poder_judicial",
       "puntaje_itcp": 55.0,
@@ -539,7 +539,7 @@
       "cargos_sin_cubrir": 69,
       "fecha_padron": "2026-06-05",
       "detalle_txt": "604 de 955 cargos de juez habilitados tienen titular designado · 282 funcionan con subrogante y 69 están sin cubrir (padrón al 2026-06-05; la serie incorpora designaciones y renuncias posteriores)",
-      "obtenido_en": "2026-08-14T03:45:14",
+      "obtenido_en": "2026-08-14T13:14:03",
       "en_indice": true,
       "dimension": "poder_judicial",
       "puntaje_itcp": 51.6,

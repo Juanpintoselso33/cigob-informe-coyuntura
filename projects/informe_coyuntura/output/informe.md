@@ -1,6 +1,6 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-14 09:19:37"
+generado: "2026-08-14 13:27:12"
 score_global: 2.7
 barbarismo_activo: "tecnocrático"
 alerta_multicinturon: false
@@ -32,7 +32,7 @@ schema_version: "1.2.0"
 | idm | 6.24 | pp (brecha i.a. real) | 2026-06-01 | fresco |
 | desequilibrio_monetario | 50.86 | pts de tensión (0-100) | 2026-06-01 | fresco |
 | iai | -0.18 | % i.a. ponderado | 2026-06-01 | fresco |
-| icip | 8.36 | % i.a. ponderado | 2026-04-01 | ⚠ cache |
+| icip | 8.36 | % i.a. ponderado | 2026-04-01 | fresco |
 | credito_privado | 8.4 | % i.a. real | 2026-06-01 | fresco |
 | costo_financiamiento_tesoro | 8.07 | % real anual (TIREA vs. inflación esperada REM) | 2026-06-01 | fresco |
 | resultado_primario | 5.55 | % de la recaudación (acum. 12 meses) | 2026-06-01 | fresco |
@@ -63,7 +63,7 @@ schema_version: "1.2.0"
 | bloqueo_sostenido | 33.3 | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-08-14 | fresco |
 | desafios_legislativos | 3.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-08-14 | fresco |
 | produccion_legislativa | 25 | leyes sancionadas (12m) | 2026-08-01 | fresco |
-| judicializacion | 1.62 | % de sumarios con medida cautelar | 2026-01-01 | fresco |
+| judicializacion | 1.61 | % de sumarios con medida cautelar | 2026-01-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 6 | sesiones de las comisiones de control (12m) | 2026-08-01 | fresco |
 | cobertura_judicial | 69.63 | % de cargos de juez con juez designado | 2026-08-01 | fresco |
@@ -78,12 +78,12 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 39.83 | índice | 2026-07-01 | fresco |
 
-### 🟢 Gestion — score 2.3/10 (estable)
+### 🟢 Gestion — score 2.4/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 5.99 | % de brecha CCL/mayorista | 2026-08-14 | fresco |
+| cepo_mulc | 5.94 | % de brecha CCL/mayorista | 2026-08-14 | fresco |
 | apertura_comercial | 6.18 | % del intercambio (alícuota efectiva) | 2026-06-01 | fresco |
 | desregulacion_normativa | 16178.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-06-01 | fresco |
 | reduccion_estado | -20.36 | % de variación vs dic-2023 (dotación APN) | 2026-06-01 | fresco |
@@ -93,7 +93,7 @@ schema_version: "1.2.0"
 | fal_modernizacion_laboral | 100.0 | Índice 0–100 (actos fundamentales del FAL: ley + reglamentación) | 2026-08-14 | fresco |
 | litigiosidad_laboral | 2.8 | % variación juicios SRT (12m vs 12m previos) | 2026-04-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
-| rigi_inversiones | 31.6 | % de inversión aprobada sobre el pipeline | 2026-08-14 | fresco |
+| rigi_inversiones | 23.5 | % de inversión aprobada sobre el pipeline | 2026-08-14 | fresco |
 | concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-14 | fresco |
 | asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-08-14 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
@@ -107,14 +107,9 @@ schema_version: "1.2.0"
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
 | icc_utdt | 39.8 | índice | 2026-07-01 | fresco |
-| sentimiento_digital | 25.4 | interés 0–100 | 2026-08-09 | ⚠ cache |
+| sentimiento_digital | 30.3 | interés 0–100 | 2026-08-14 | fresco |
 | clima_electoral | 4.0 | pp (LLA − PJ) | 2026-06-22 | fresco |
 | indice_intencion_migratoria | 7.0 | interés 0–100 (canasta mensual) | 2026-07-01 | fresco |
 
-## Advertencias
-
-- `desactualizado:macro:icip`
-- `desactualizado:espiritu_epoca:sentimiento_digital`
-
 ---
-*Generado por CIGOB — 2026-08-14 09:19:37 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-14 13:27:12 — schema 1.2.0*
