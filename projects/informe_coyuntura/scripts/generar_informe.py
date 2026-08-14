@@ -121,7 +121,17 @@ def detectar_barbarismo(cinturones_data: dict) -> tuple[str | None, bool]:
 
 def construir_informe(caches: dict) -> dict:
     """Construye el payload JSON v1.0.0 a partir de los caches."""
-    now = datetime.now()
+    # `.astimezone()` y no `.now()` a secas: este sello es la CLAVE DE CORRIDA
+    # del archivo histórico en BigQuery, y un timestamp sin offset lo lee como
+    # UTC. En la CI eso salía bien de casualidad (el runner corre en UTC); una
+    # corrida manual desde una máquina en ART quedaba 3 horas adelantada. Ver
+    # ADR-0203, que mide el daño: 3 de 11 corridas archivadas.
+    #
+    # `.astimezone()` sella con el offset de la máquina —`-03:00` acá, `+00:00`
+    # en el runner— sin hardcodear zona. El reloj de pared no cambia, así que
+    # los consumidores que cortan el string (`[:10]`, `[:19]`, `.slice(0,10)`)
+    # siguen viendo exactamente lo mismo.
+    now = datetime.now().astimezone()
     period = now.strftime("%Y-%m")
 
     cinturones_data: dict = {}

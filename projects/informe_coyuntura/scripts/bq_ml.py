@@ -373,7 +373,10 @@ def main() -> int:
         cliente = bigquery.Client(project=args.proyecto)
 
     SALIDA.mkdir(parents=True, exist_ok=True)
-    resumen = {"generado": datetime.now().isoformat(timespec="seconds"), "dataset": ds}
+    # Con offset: `resumen["generado"]` es la clave de corrida que
+    # `_subir_resultados` escribe en las tablas ML, y panel_ml.py elige la
+    # vigente con MAX(generated_at) (ADR-0203).
+    resumen = {"generado": datetime.now().astimezone().isoformat(timespec="seconds"), "dataset": ds}
     for t in tareas:
         r = correr(t, ds, cliente, args.dry_run)
         # El resumen lleva los conteos, no las filas: es lo que se mira primero.

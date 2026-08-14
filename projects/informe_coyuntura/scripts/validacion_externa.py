@@ -1072,7 +1072,10 @@ def main():
     # la matriz de redundancia, que hacía fallar un test que se leyó todo ese
     # tiempo como "staleness que resuelve la próxima corrida" (ADR-0177).
     resultados = {"_meta": {"adr": "0019 Decisión 6",
-                            "generated_at": datetime.now().isoformat(),
+                            # Con offset, como el sello del snapshot (ADR-0203):
+                            # test_salidas_versionadas_frescas RESTA los dos, y
+                            # naive menos aware es TypeError.
+                            "generated_at": datetime.now().astimezone().isoformat(),
                             "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"}}
     print(f"serie ITVC reconstruida: {len(itvc_full)} meses "
           f"({min(itvc_full)} → {max(itvc_full)}) · último: {itvc_full[max(itvc_full)]}")

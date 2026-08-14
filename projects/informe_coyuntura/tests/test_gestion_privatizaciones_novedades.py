@@ -9,6 +9,21 @@ sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
 import gestion
 
 
+@pytest.fixture(autouse=True)
+def _novedades_escribe_en_tmp(tmp_path, monkeypatch):
+    """El detector persiste su store en cada corrida —es parte de su trabajo—,
+    así que un test que lo ejercita escribe en el árbol versionado y el guardián
+    de conftest lo marca en teardown. Se redirige la constante a tmp_path con
+    una copia de los datos reales: los tests siguen leyendo el store de verdad
+    y la escritura cae afuera del repo. Mismo patrón que
+    test_gestion_desregulacion.py."""
+    origen = gestion.PRIVATIZACIONES_NOVEDADES_PATH
+    if origen.exists():
+        destino = tmp_path / origen.name
+        destino.write_bytes(origen.read_bytes())
+        monkeypatch.setattr(gestion, "PRIVATIZACIONES_NOVEDADES_PATH", destino)
+
+
 def test_las_nueve_empresas_tienen_termino_de_busqueda():
     """Si se agrega una empresa al registro y no se le pone término, el
     detector la ignora en silencio y nadie se entera."""

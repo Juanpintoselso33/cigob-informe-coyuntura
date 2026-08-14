@@ -379,7 +379,9 @@ def main() -> int:
                   f"{len(caso['campos'])} campo(s)")
 
     if informe:
-        subida = subir_a_bigquery(informe, datetime.now().isoformat(timespec="seconds"))
+        # Con offset: es la clave de corrida en BigQuery y panel_ml.py elige la
+        # vigente con MAX(generated_at) (ADR-0203).
+        subida = subir_a_bigquery(informe, datetime.now().astimezone().isoformat(timespec="seconds"))
         if subida:
             print(f"  → {subida}")
 
@@ -387,7 +389,7 @@ def main() -> int:
     (SALIDA / "estado.json").write_text(
         json.dumps({**previo, **estado}, ensure_ascii=False, indent=1), encoding="utf-8")
     (SALIDA / "ultima.json").write_text(
-        json.dumps({"generado": datetime.now().isoformat(timespec="seconds"),
+        json.dumps({"generado": datetime.now().astimezone().isoformat(timespec="seconds"),
                     "modelo": MODELO, "casos": informe},
                    ensure_ascii=False, indent=1, default=str), encoding="utf-8")
 
