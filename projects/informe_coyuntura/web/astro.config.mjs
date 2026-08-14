@@ -6,7 +6,25 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://informe.cigob.org',
   base: '/',
-  build: { format: 'directory', assets: '_assets' },
+  build: {
+    format: 'directory',
+    assets: '_assets',
+    // Los gráficos ya se importan bajo demanda desde IndicadorModal y los
+    // paneles de validación. Separar ApexCharts de nuestros wrappers mantiene
+    // el vendor pesado en un chunk estable y cacheable entre deploys aunque
+    // cambie la lógica de presentación propia.
+  },
+  vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('/node_modules/apexcharts/')) return 'vendor-apexcharts';
+          },
+        },
+      },
+    },
+  },
   redirects: {
     // Apuntan DIRECTO a la ficha vigente y no en cadena: cada salto extra es un
     // redirect que Search Console cuenta aparte.
