@@ -99,9 +99,9 @@ reporte ya generado sin correr los colectores. El pipeline nocturno de CI
 **Dos preparaciones sin las cuales la corrida miente** (detalle en `CLAUDE.md`):
 
 1. **No hay `python` pelado en esta Mac.** El venv es
-   `projects/informe_coyuntura/.venv` (uv, Python 3.12). Activarlo
-   (`source .venv/bin/activate`) o llamar `.venv/bin/python` — los bloques de
-   abajo asumen el venv activo.
+   `projects/informe_coyuntura/.venv` (uv, Python 3.12). Los bloques de abajo
+   llaman `.venv/bin/python` explícitamente; `source .venv/bin/activate` también
+   sirve si preferís un `python` pelado.
 2. **Exportar las credenciales**: `set -a; source ./.env; set +a`. Sin ellas los
    colectores fallan auth y **caen a caché en silencio**: la corrida termina, el
    gate pasa, y publicás datos de ayer creyendo que son frescos.
@@ -111,18 +111,18 @@ termine, no lanzarlos en paralelo ni encadenarlos a ciegas.
 
 ```bash
 cd projects/informe_coyuntura
-python scripts/macro.py
-python scripts/politica.py
-python scripts/gestion.py
-python scripts/vida_cotidiana/main.py
-python scripts/vida_cotidiana.py       # puente legacy — corre después de main.py
-python scripts/descargar_series.py
-python scripts/validacion_externa.py
-python scripts/generar_informe.py
-python scripts/publicar.py             # snapshot para la web
-python scripts/gate_calidad.py         # G1-G3/G6
-python -m pytest tests -q              # G4-G5 (gate_calidad pasando NO implica esto)
-python scripts/bigquery_export.py      # archivo histórico en BigQuery (ADR-0180)
+.venv/bin/python scripts/macro.py
+.venv/bin/python scripts/politica.py
+.venv/bin/python scripts/gestion.py
+.venv/bin/python scripts/vida_cotidiana/main.py
+.venv/bin/python scripts/vida_cotidiana.py   # puente legacy — corre después de main.py
+.venv/bin/python scripts/descargar_series.py
+.venv/bin/python scripts/validacion_externa.py
+.venv/bin/python scripts/generar_informe.py
+.venv/bin/python scripts/publicar.py         # snapshot para la web
+.venv/bin/python scripts/gate_calidad.py     # G1-G3/G6
+.venv/bin/python -m pytest tests -q          # G4-G5 (gate_calidad pasando NO implica esto)
+.venv/bin/python scripts/bigquery_export.py  # archivo histórico en BigQuery (ADR-0180)
 ```
 
 El orden canónico es el de `.github/workflows/data-pipeline.yml` — si diverge,
@@ -135,9 +135,9 @@ sube ese día se pierde del archivo. Es idempotente.
 **Y falta el último paso, que es el que importa: pushear a `main` y verificar la
 URL de producción.** Ver "Terminar el trabajo" al final de este archivo.
 
-Validar con lo más angosto posible en vez de correr todo: `python -m
-pytest tests/ -k <algo>`, o un colector individual si el cambio es
-puntual.
+Validar con lo más angosto posible en vez de correr todo:
+`.venv/bin/python -m pytest tests/ -k <algo>`, o un colector individual si el
+cambio es puntual.
 
 ### Exit codes de los colectores
 

@@ -14,10 +14,10 @@ scoring, tests) — not product/PRD building. Do not scan or consider them per
 turn. Only read a specific `SKILL.md` if the user explicitly invokes BMAD or
 a named workflow by name.
 
-`.claude/skills/informe-coyuntura.md` was rewritten 2026-07-09 (5 cinturones,
-current paramétrica engines, current file layout) — still, it's a quick-
-reference, not the source of truth. It will drift again as the project
-evolves; when in doubt prefer `projects/informe_coyuntura/README.md`,
+`.claude/skills/informe-coyuntura.md` was updated 2026-08-14 (**four**
+cinturones after ADR-0205, current paramétrica engines, current file layout) —
+still, it's a quick-reference, not the source of truth. It will drift again as
+the project evolves; when in doubt prefer `projects/informe_coyuntura/README.md`,
 `docs/adr/`, and the tests over anything hand-summarized in a skill file.
 
 ## Repo overview
@@ -42,16 +42,16 @@ the operational detail, the root README is just an entry point.
 
 ## Local environment: Mac and tower
 
-The command blocks in this file are written for the tower (PowerShell, plain
-`python`). On the **Mac** everything works the same once you know these four
-things — set up and verified 2026-08-13:
+The command blocks in this file are written for the **Mac** (zsh, project venv)
+— that is the machine this checkout lives on. On the tower they are the same
+commands under PowerShell with a plain `python`. Four things to know about the
+Mac — set up and verified 2026-08-13:
 
 - **Python.** There is no `python` on the PATH (Homebrew ships `python3`, with
-  nothing installed in it). The project venv is
-  `projects/informe_coyuntura/.venv`, built with uv on **Python 3.12** to match
-  the CI. Either `source .venv/bin/activate` — after which every `python …`
-  block in this file works verbatim — or call `.venv/bin/python` directly. To
-  rebuild it:
+  nothing installed in it), so every block below calls `.venv/bin/python`
+  explicitly. The project venv is `projects/informe_coyuntura/.venv`, built with
+  uv on **Python 3.12** to match the CI; `source .venv/bin/activate` also works
+  if you prefer a bare `python`. To rebuild it:
 
   ```bash
   cd projects/informe_coyuntura
@@ -162,8 +162,8 @@ first, don't assume.
   - If it happens, the cron's version is the good one — recover it with
     `git checkout <commit-with-bot-snapshot> -- <file>` and check that
     `generated_at` matches the nightly run, not your manual one.
-- Validate with the narrowest useful command: `python -m pytest tests/ -k
-  ...`, `npx tsc --noEmit`, `npm run build` — not a full pipeline re-run
+- Validate with the narrowest useful command: `.venv/bin/python -m pytest
+  tests/ -k ...`, `npx tsc --noEmit`, `npm run build` — not a full pipeline re-run
   unless the task actually needs fresh live data.
 - Design/methodology decisions go in `docs/adr/` (ADRs) — they're
   maintained, unlike `docs/archivo/cinturon_*.md`/`.docx`, which are
@@ -185,7 +185,7 @@ contras · Más información`. `docs/adr/README.md` documenta el formato.
   comillas YAML 1.1 los lee como octal: `0012`→10, `0036`→30, y la referencia
   apunta a otro ADR sin que falle nada. Costó 38 filas del índice en silencio.
 - El índice del README y las relaciones inversas **se generan**:
-  `python scripts/adr_coherencia.py`. No editar la tabla a mano.
+  `.venv/bin/python scripts/adr_coherencia.py`. No editar la tabla a mano.
 - `tests/test_adr_format.py` (993 tests) es el gate: frontmatter, vocabulario
   cerrado de `estado`, bidireccionalidad, índice sincronizado y que todo ADR
   citado desde código exista. Ese último chequeo encontró un ADR-0165 citado
@@ -193,9 +193,9 @@ contras · Más información`. `docs/adr/README.md` documenta el formato.
 - Si se reescribe el CUERPO de ADR existentes, verificar que no se perdió
   ninguna cifra ni identificador — ningún otro test mira el contenido:
 
-  ```powershell
-  python scripts/adr_migracion.py huella --git 5390885 > base.json
-  python scripts/adr_migracion.py verificar base.json
+  ```bash
+  .venv/bin/python scripts/adr_migracion.py huella --git 5390885 > base.json
+  .venv/bin/python scripts/adr_migracion.py verificar base.json
   ```
 
   `5390885` es el último commit anterior a la migración.
@@ -214,20 +214,20 @@ genuinely stale produces false G3 gate failures that look like real bugs.
 credentials exported (`set -a; source ./.env; set +a` — see the `.env` section
 above). Without them the fetches fail auth and every collector falls back to
 cache *silently*: the run finishes, the gate passes, and you publish stale data.
-On the Mac, also activate the venv — there is no bare `python` on the PATH.
 
 **One cinturón touched (the common case — a single collector/indicator
 fix)**: scope it, don't touch the others at all.
 
-```powershell
-python scripts/<colector_del_cinturon>.py         # macro.py | politica.py | gestion.py | vida_cotidiana/main.py
-python scripts/descargar_series.py --indicador <nombre>   # only if series/backfill also changed
-python scripts/validacion_externa.py              # only if the change touched BANDAS_* or added/changed an indicator SERIES of a parametric index
-python scripts/generar_informe.py
-python scripts/publicar.py
-python scripts/gate_calidad.py
-python -m pytest tests -q
-python scripts/bigquery_export.py                 # espeja la corrida en BigQuery (ADR-0180)
+```bash
+cd projects/informe_coyuntura
+.venv/bin/python scripts/<colector_del_cinturon>.py       # macro.py | politica.py | gestion.py | vida_cotidiana/main.py
+.venv/bin/python scripts/descargar_series.py --indicador <nombre>   # only if series/backfill also changed
+.venv/bin/python scripts/validacion_externa.py            # only if the change touched BANDAS_* or added/changed an indicator SERIES of a parametric index
+.venv/bin/python scripts/generar_informe.py
+.venv/bin/python scripts/publicar.py
+.venv/bin/python scripts/gate_calidad.py
+.venv/bin/python -m pytest tests -q
+.venv/bin/python scripts/bigquery_export.py               # espeja la corrida en BigQuery (ADR-0180)
 ```
 
 `validacion_externa.py` reconstructs each index's historical series from the
@@ -261,20 +261,20 @@ for it.
 pipeline in one continuous sequence**, same order as
 `.github/workflows/data-pipeline.yml`:
 
-```powershell
-python scripts/macro.py
-python scripts/politica.py
-python scripts/gestion.py
-python scripts/vida_cotidiana/main.py
-python scripts/vida_cotidiana.py
-python scripts/espiritu_epoca.py
-python scripts/descargar_series.py
-python scripts/validacion_externa.py
-python scripts/generar_informe.py
-python scripts/publicar.py
-python scripts/gate_calidad.py
-python -m pytest tests -q
-python scripts/bigquery_export.py                 # espeja la corrida en BigQuery (ADR-0180)
+```bash
+cd projects/informe_coyuntura
+.venv/bin/python scripts/macro.py
+.venv/bin/python scripts/politica.py
+.venv/bin/python scripts/gestion.py
+.venv/bin/python scripts/vida_cotidiana/main.py
+.venv/bin/python scripts/vida_cotidiana.py
+.venv/bin/python scripts/descargar_series.py
+.venv/bin/python scripts/validacion_externa.py
+.venv/bin/python scripts/generar_informe.py
+.venv/bin/python scripts/publicar.py
+.venv/bin/python scripts/gate_calidad.py
+.venv/bin/python -m pytest tests -q
+.venv/bin/python scripts/bigquery_export.py               # espeja la corrida en BigQuery (ADR-0180)
 ```
 
 Do not run collectors piecemeal in a way that leaves *some* cinturones
@@ -289,7 +289,7 @@ scope; run the full sequence again instead. Set the expectation up front
 (~15-20 min).
 
 **After ANY manual pipeline run (full or scoped), before pushing**: run
-`python -m pytest tests -q` in addition to `gate_calidad.py` — the real CI
+`.venv/bin/python -m pytest tests -q` in addition to `gate_calidad.py` — the real CI
 runs both as separate sequential gates (G1-G3/G6 via gate_calidad.py, G4-G5
 via pytest). `gate_calidad.py` passing does NOT mean the pytest
 reconciliation tests pass. Verified 2026-07-09: skipped the pytest step
@@ -385,15 +385,15 @@ lot cheaper than either (a) guessing wrong and missing a real bug, or
 
 Start in `projects/informe_coyuntura/`.
 
-```powershell
-python scripts/macro.py
-python scripts/politica.py
-python scripts/gestion.py
-python scripts/vida_cotidiana/main.py
-python scripts/espiritu_epoca.py
-python scripts/generar_informe.py
-python scripts/publicar.py       # writes web/src/data/{informe,series}.json
-python scripts/bigquery_export.py  # espeja la corrida en BigQuery (ADR-0180)
+```bash
+.venv/bin/python scripts/macro.py
+.venv/bin/python scripts/politica.py
+.venv/bin/python scripts/gestion.py
+.venv/bin/python scripts/vida_cotidiana/main.py
+.venv/bin/python scripts/vida_cotidiana.py   # puente legacy, después de main.py
+.venv/bin/python scripts/generar_informe.py
+.venv/bin/python scripts/publicar.py         # writes web/src/data/{informe,series}.json
+.venv/bin/python scripts/bigquery_export.py  # espeja la corrida en BigQuery (ADR-0180)
 ```
 
 Collector exit codes: `0` all fresh · `1` mixed fresh/cache · `2` all cache

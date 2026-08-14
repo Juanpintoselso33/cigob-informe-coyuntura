@@ -19,10 +19,10 @@ fresh clone goes there, not here.
   are irrelevant to a given turn.
 - Treat `.claude/skills/informe-coyuntura.md` as useful operational context, but
   verify it against the current repo docs before relying on details. It was
-  rewritten 2026-07-09 (five cinturones, current paramétrica engines, current
-  file layout), so it is not stale today — but it is a quick reference, not the
-  source of truth, and it will drift again. When in doubt prefer
-  `projects/informe_coyuntura/README.md`, `docs/adr/`, and the tests.
+  updated 2026-08-14 (**four** cinturones after ADR-0205, current paramétrica
+  engines, current file layout), so it is not stale today — but it is a quick
+  reference, not the source of truth, and it will drift again. When in doubt
+  prefer `projects/informe_coyuntura/README.md`, `docs/adr/`, and the tests.
 
 ## Repo Overview
 
@@ -47,31 +47,41 @@ the entry point; project README files contain the operational details.
 
 Start in `projects/informe_coyuntura/`.
 
+**Interpreter (Mac).** There is no bare `python` on this machine — Homebrew only
+ships `python3`, empty. Use the project venv `.venv/bin/python` (uv, Python 3.12,
+matching CI), or `source .venv/bin/activate` first. On the tower these same
+commands run under PowerShell with a plain `python`.
+
+**Espíritu de época left the tablero on 2026-08-14 (ADR-0205)**:
+`scripts/espiritu_epoca.py` was deleted along with its pipeline step. Four
+cinturones remain (macro / política / gestión / vida cotidiana), and `config.py`
+weights four, not five.
+
 Current collector commands:
 
-```powershell
-python scripts/macro.py
-python scripts/politica.py
-python scripts/gestion.py
-python scripts/vida_cotidiana/main.py
-python scripts/espiritu_epoca.py
+```bash
+.venv/bin/python scripts/macro.py
+.venv/bin/python scripts/politica.py
+.venv/bin/python scripts/gestion.py
+.venv/bin/python scripts/vida_cotidiana/main.py
+.venv/bin/python scripts/vida_cotidiana.py   # puente legacy, después de main.py
 ```
 
 Generate the report:
 
-```powershell
-python scripts/generar_informe.py
+```bash
+.venv/bin/python scripts/generar_informe.py
 ```
 
 Publish data for the Astro web app:
 
-```powershell
-python scripts/publicar.py
+```bash
+.venv/bin/python scripts/publicar.py
 ```
 
 Preview/build the web app:
 
-```powershell
+```bash
 cd web
 npm install
 npm run build
