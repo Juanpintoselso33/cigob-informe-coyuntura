@@ -1,7 +1,12 @@
 ---
-// Diccionario de indicadores (/metodologia): el índice de las fichas
-// metodológicas. Lista los índices paramétricos y todos los indicadores
-// por cinturón; los que ya tienen ficha completa linkean a ella.
+// Metodología (/metodologia): el marco conceptual del informe (ADR-0199) más
+// el índice de las fichas metodológicas. Lista los índices paramétricos y
+// todos los indicadores por cinturón; los que ya tienen ficha completa linkean
+// a ella.
+//
+// Se llamó «Diccionario de indicadores» hasta ADR-0202. Dejó de ser cierto
+// cuando el marco entró acá: el diccionario es la mitad de abajo de la página,
+// no la página.
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
@@ -41,12 +46,15 @@ const fase = (informe as any).ponderacion?.fase === "temprana"
   ? "fase temprana del mandato" : "fase de consolidación";
 const tensionados = cinturonesRojos(informe);
 ---
-<Layout title="Diccionario de indicadores · Informe de Coyuntura · CiGob">
+<Layout title="Metodología · Informe de Coyuntura · CiGob">
   <Nav />
   <header class="cg-hero cg-detalle-hero" id="top">
     <div class="cg-hero-inner cg-detalle-inner">
-      <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a> · Metodología</p>
-      <h1 class="cg-hero-title cg-detalle-title">Diccionario de indicadores</h1>
+      {/* El eyebrow decía "← Resumen · Metodología" cuando el h1 era
+          "Diccionario de indicadores". Con el h1 en "Metodología" repetiría la
+          palabra dos veces en dos líneas seguidas. */}
+      <p class="cg-eyebrow"><a href={`${base}/`}>← Resumen</a></p>
+      <h1 class="cg-hero-title cg-detalle-title">Metodología</h1>
       <p class="cg-hero-lead cg-detalle-lead">
         Primero el marco: qué es la tensión que mide el informe y de dónde salen los cinco cinturones.
         Después, una ficha metodológica por indicador, con estructura estándar: qué mide, de dónde sale,
@@ -218,7 +226,7 @@ const tensionados = cinturonesRojos(informe);
     <section class="cg-section">
       <div class="cg-section-head">
         <p class="cg-eyebrow">Referencias</p>
-        <h2 class="cg-h2">Los estándares que sigue este diccionario</h2>
+        <h2 class="cg-h2">Los estándares que siguen estas fichas</h2>
       </div>
       <ul class="cg-ficha-ul">
         <li><strong>Template de metadatos de indicadores ODS</strong> (IAEG-SDGs, Naciones Unidas): la estructura de las fichas de indicador — definición, fuentes, método de cómputo, limitaciones, tratamiento de faltantes.</li>

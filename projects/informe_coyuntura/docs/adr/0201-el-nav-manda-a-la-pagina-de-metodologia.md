@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-13
 cinturon: 'transversal'
 archivos: ['web/src/components/Nav.astro', 'web/src/components/Footer.astro', 'tests/test_marco_conceptual.py']
-relacionado: ['0199', '0200']
+relacionado: ['0199', '0200', '0202']
 ambito: 'Navegación del sitio — a dónde manda el ítem «Metodología»'
 origen: 'Deuda declarada en ADR-0199 y 0200; el editor pidió cerrarla'
 ---

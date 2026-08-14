@@ -98,7 +98,12 @@ const compDe = (i: (typeof indices)[number]["indice"]) => {
     ))}
   </div>
 
-  <!-- Acceso al diccionario: la documentación completa -->
+  {/* Acceso a /metodologia: el marco conceptual + la documentación completa.
+      El CTA nombra las fichas porque es lo que cuenta el número que tiene al
+      lado, pero la página ya no se llama "el diccionario" (ADR-0202).
+
+      Comentario JSX y no HTML a propósito: los `<!-- -->` de Astro se publican
+      en el HTML servido, y este es una nota interna. */}
   <a class="cg-met-cta" href={`${base}/metodologia/`}>
     <div>
       <span class="cg-met-cta-num">{nFichas}</span>
@@ -107,6 +112,6 @@ const compDe = (i: (typeof indices)[number]["indice"]) => {
         Qué mide, de dónde sale, cómo puntúa y qué limitaciones declara.
       </div>
     </div>
-    <span class="cg-met-cta-go">Abrir el diccionario →</span>
+    <span class="cg-met-cta-go">Abrir la metodología →</span>
   </a>
 </section>
