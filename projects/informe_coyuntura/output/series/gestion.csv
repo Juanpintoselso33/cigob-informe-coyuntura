@@ -781,6 +781,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
 2024-01-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
 2023-12-01,fal_modernizacion_laboral,0.0,Índice 0–100 (FAL),"Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)"
+2026-07-01,desregulacion_normativa,16771.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-06-01,desregulacion_normativa,16178.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-05-01,desregulacion_normativa,15507.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
 2026-04-01,desregulacion_normativa,15251.0,"artículos modificados o eliminados, acumulados desde dic-2023",Min. de Desregulación y Transformación del Estado — informe mensual
@@ -845,7 +846,7 @@ fecha,indicador,valor,unidad,fuente
 2024-02-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2024-01-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
 2023-12-01,concesiones_infraestructura,0.0,% km adjudicados RFC,CONTRAT.AR + RFC (hitos fechados)
-2026-08-01,cepo_mulc,5.72,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
+2026-08-01,cepo_mulc,5.73,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-07-01,cepo_mulc,5.9,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-06-01,cepo_mulc,4.65,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)
 2026-05-01,cepo_mulc,6.35,% brecha CCL/mayorista (prom. mensual),ArgentinaDatos (CCL) + BCRA (A3500)

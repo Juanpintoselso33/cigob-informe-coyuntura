@@ -152,6 +152,7 @@ fecha,indicador,valor,unidad,fuente
 2016-10-01,pluriempleo,7.2,%,"INDEC EPH (47.2, trimestral)"
 2016-07-01,pluriempleo,7.0,%,"INDEC EPH (47.2, trimestral)"
 2016-04-01,pluriempleo,7.7,%,"INDEC EPH (47.2, trimestral)"
+2026-07-01,peso_tarifas,2.13,% m/m regulados,INDEC serie 148.3
 2026-06-01,peso_tarifas,2.3,% m/m regulados,INDEC serie 148.3
 2026-05-01,peso_tarifas,2.4,% m/m regulados,INDEC serie 148.3
 2026-04-01,peso_tarifas,4.68,% m/m regulados,INDEC serie 148.3
@@ -198,7 +199,6 @@ fecha,indicador,valor,unidad,fuente
 2022-11-01,peso_tarifas,6.23,% m/m regulados,INDEC serie 148.3
 2022-10-01,peso_tarifas,7.41,% m/m regulados,INDEC serie 148.3
 2022-09-01,peso_tarifas,4.55,% m/m regulados,INDEC serie 148.3
-2022-08-01,peso_tarifas,6.29,% m/m regulados,INDEC serie 148.3
 2026-07-01,patentamiento_motos,72433,unidades/mes,CAFAM API (histórico mensual)
 2026-06-01,patentamiento_motos,69273,unidades/mes,CAFAM API (histórico mensual)
 2026-05-01,patentamiento_motos,69753,unidades/mes,CAFAM API (histórico mensual)
@@ -531,6 +531,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_endeudamiento,88.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2023-11-01,itvc_endeudamiento,104.6,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
 2023-10-01,itvc_endeudamiento,106.9,índice real (100 = 4T-2023),BCRA Informe sobre Bancos (familias) + IPC INDEC
+2026-07-01,itvc_alquiler,64.8,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2026-06-01,itvc_alquiler,64.3,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2026-05-01,itvc_alquiler,65.6,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2026-04-01,itvc_alquiler,65.2,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
@@ -564,6 +565,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_alquiler,107.7,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2023-11-01,itvc_alquiler,98.6,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
 2023-10-01,itvc_alquiler,92.2,índice (100 = 4T-2023),INDEC IPC-GBA alquiler + nivel general GBA (elab. CIGOB)
+2026-07-01,itvc_alimentos,107.6,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2026-06-01,itvc_alimentos,107.5,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2026-05-01,itvc_alimentos,106.9,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2026-04-01,itvc_alimentos,107.2,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
@@ -597,6 +599,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,itvc_alimentos,97.4,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2023-11-01,itvc_alimentos,100.6,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
 2023-10-01,itvc_alimentos,103.2,índice (100 = 4T-2023),INDEC IPC Alimentos + IPC general (elab. CIGOB)
+2026-07-01,ipc_nivel,12076.3937,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-06-01,ipc_nivel,11826.4103,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-05-01,ipc_nivel,11607.3937,indice base dic-2016=100,INDEC/datos.gob.ar
 2026-04-01,ipc_nivel,11363.0904,indice base dic-2016=100,INDEC/datos.gob.ar
@@ -644,7 +647,7 @@ fecha,indicador,valor,unidad,fuente
 2022-10-01,ipc_nivel,1028.706,indice base dic-2016=100,INDEC/datos.gob.ar
 2022-09-01,ipc_nivel,967.3076,indice base dic-2016=100,INDEC/datos.gob.ar
 2022-08-01,ipc_nivel,911.1316,indice base dic-2016=100,INDEC/datos.gob.ar
-2022-07-01,ipc_nivel,851.761,indice base dic-2016=100,INDEC/datos.gob.ar
+2026-07-01,ipc_alimentos,1.98,% m/m,INDEC serie 146.3
 2026-06-01,ipc_alimentos,1.3,% m/m,INDEC serie 146.3
 2026-05-01,ipc_alimentos,2.46,% m/m,INDEC serie 146.3
 2026-04-01,ipc_alimentos,1.5,% m/m,INDEC serie 146.3
@@ -691,7 +694,6 @@ fecha,indicador,valor,unidad,fuente
 2022-11-01,ipc_alimentos,3.51,% m/m,INDEC serie 146.3
 2022-10-01,ipc_alimentos,6.17,% m/m,INDEC serie 146.3
 2022-09-01,ipc_alimentos,6.74,% m/m,INDEC serie 146.3
-2022-08-01,ipc_alimentos,7.1,% m/m,INDEC serie 146.3
 2025-12-01,inseguridad_snic,2418600,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
 2024-12-01,inseguridad_snic,2542456,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
 2023-12-01,inseguridad_snic,2435858,hechos/año (total país),"SNIC (CSV oficial, suma anual)"
@@ -835,72 +837,6 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,indice_lider,130.8,índice,UTDT — Índice Líder (CIF)
 2021-08-01,indice_lider,128.8,índice,UTDT — Índice Líder (CIF)
 2021-07-01,indice_lider,128.6,índice,UTDT — Índice Líder (CIF)
-2026-07-01,indice_intencion_migratoria,7.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2026-06-01,indice_intencion_migratoria,9.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2026-05-01,indice_intencion_migratoria,9.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2026-04-01,indice_intencion_migratoria,3.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2026-03-01,indice_intencion_migratoria,9.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2026-02-01,indice_intencion_migratoria,11.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2026-01-01,indice_intencion_migratoria,5.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-12-01,indice_intencion_migratoria,3.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-11-01,indice_intencion_migratoria,4.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-10-01,indice_intencion_migratoria,5.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-09-01,indice_intencion_migratoria,9.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-08-01,indice_intencion_migratoria,6.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-07-01,indice_intencion_migratoria,10.4,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-06-01,indice_intencion_migratoria,7.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-05-01,indice_intencion_migratoria,5.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-04-01,indice_intencion_migratoria,4.4,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-03-01,indice_intencion_migratoria,5.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2025-01-01,indice_intencion_migratoria,4.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-12-01,indice_intencion_migratoria,9.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-11-01,indice_intencion_migratoria,12.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-10-01,indice_intencion_migratoria,7.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-09-01,indice_intencion_migratoria,10.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-08-01,indice_intencion_migratoria,5.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-07-01,indice_intencion_migratoria,8.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-06-01,indice_intencion_migratoria,11.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-05-01,indice_intencion_migratoria,11.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-04-01,indice_intencion_migratoria,11.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-03-01,indice_intencion_migratoria,18.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-02-01,indice_intencion_migratoria,14.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2024-01-01,indice_intencion_migratoria,16.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-12-01,indice_intencion_migratoria,11.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-11-01,indice_intencion_migratoria,16.4,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-10-01,indice_intencion_migratoria,16.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-09-01,indice_intencion_migratoria,14.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-08-01,indice_intencion_migratoria,19.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-07-01,indice_intencion_migratoria,21.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-06-01,indice_intencion_migratoria,14.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-05-01,indice_intencion_migratoria,20.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-04-01,indice_intencion_migratoria,18.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-03-01,indice_intencion_migratoria,16.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-02-01,indice_intencion_migratoria,18.4,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2023-01-01,indice_intencion_migratoria,22.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-12-01,indice_intencion_migratoria,14.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-11-01,indice_intencion_migratoria,16.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-10-01,indice_intencion_migratoria,15.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-09-01,indice_intencion_migratoria,13.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-08-01,indice_intencion_migratoria,23.4,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-07-01,indice_intencion_migratoria,27.4,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-06-01,indice_intencion_migratoria,17.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-05-01,indice_intencion_migratoria,16.4,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-04-01,indice_intencion_migratoria,14.4,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-03-01,indice_intencion_migratoria,17.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-02-01,indice_intencion_migratoria,19.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2022-01-01,indice_intencion_migratoria,22.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-12-01,indice_intencion_migratoria,11.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-11-01,indice_intencion_migratoria,19.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-10-01,indice_intencion_migratoria,13.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-09-01,indice_intencion_migratoria,17.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-08-01,indice_intencion_migratoria,18.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-07-01,indice_intencion_migratoria,16.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-06-01,indice_intencion_migratoria,26.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-05-01,indice_intencion_migratoria,20.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-04-01,indice_intencion_migratoria,22.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-03-01,indice_intencion_migratoria,16.6,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-02-01,indice_intencion_migratoria,14.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
-2021-01-01,indice_intencion_migratoria,17.4,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0035)"
 2026-07-01,icc_utdt,39.8,índice,"UTDT (ICC, serie XLS)"
 2026-06-01,icc_utdt,42.5,índice,"UTDT (ICC, serie XLS)"
 2026-05-01,icc_utdt,40.5,índice,"UTDT (ICC, serie XLS)"
@@ -961,7 +897,7 @@ fecha,indicador,valor,unidad,fuente
 2021-08-01,icc_utdt,37.8,índice,"UTDT (ICC, serie XLS)"
 2021-07-01,icc_utdt,39.2,índice,"UTDT (ICC, serie XLS)"
 2021-06-01,icc_utdt,35.6,índice,"UTDT (ICC, serie XLS)"
-2026-08-01,endeudamiento_familiar,43.42,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-08-01,endeudamiento_familiar,43.83,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-07-01,endeudamiento_familiar,46.42,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-06-01,endeudamiento_familiar,47.31,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-05-01,endeudamiento_familiar,45.93,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
@@ -1173,6 +1109,7 @@ fecha,indicador,valor,unidad,fuente
 2023-12-01,consumo_carne,52.9,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2023-11-01,consumo_carne,53.4,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2023-10-01,consumo_carne,53.2,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
+2026-06-01,brecha_salario_cbt,3.87,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-05-01,brecha_salario_cbt,3.81,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-04-01,brecha_salario_cbt,3.86,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2026-03-01,brecha_salario_cbt,3.82,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
@@ -1232,6 +1169,7 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,brecha_salario_cbt,4.13,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2021-08-01,brecha_salario_cbt,4.08,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
 2021-07-01,brecha_salario_cbt,4.04,canastas (RIPTE/CBT),INDEC (RIPTE + Canasta Básica Total)
+2026-07-01,alquiler_real,1.47,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)
 2026-06-01,alquiler_real,3.87,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)
 2026-05-01,alquiler_real,1.75,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)
 2026-04-01,alquiler_real,4.64,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)
@@ -1290,4 +1228,3 @@ fecha,indicador,valor,unidad,fuente
 2021-11-01,alquiler_real,1.78,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)
 2021-10-01,alquiler_real,2.94,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)
 2021-09-01,alquiler_real,1.37,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)
-2021-08-01,alquiler_real,2.86,% m/m alquileres,INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)
