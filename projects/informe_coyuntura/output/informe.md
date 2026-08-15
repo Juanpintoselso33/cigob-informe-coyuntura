@@ -1,15 +1,15 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-15 03:37:11"
+generado: "2026-08-15 13:50:53"
 score_global: 4.2
-barbarismo_activo: "tecnocrático"
+barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
 ---
 
 # Informe de Coyuntura — 2026-08
 
-**Score global:** 4.2/10  |  **Riesgo dominante:** tecnocrático
+**Score global:** 4.2/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
@@ -106,4 +106,4 @@ schema_version: "1.2.0"
 - `desactualizado:politica:judicializacion`
 
 ---
-*Generado por CIGOB — 2026-08-15 03:37:11 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-15 13:50:53 — schema 1.2.0*

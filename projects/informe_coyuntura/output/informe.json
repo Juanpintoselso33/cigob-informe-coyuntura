@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-15T03:37:11.376544+00:00",
+  "generated_at": "2026-08-15T13:50:53.696954-03:00",
   "period": "2026-08",
   "score_global": 4.2,
   "ponderacion": {
@@ -1168,7 +1168,159 @@
           "desactualizado": false
         }
       },
-      "alerta": null
+      "alerta": null,
+      "itvc": {
+        "valor": 90.6,
+        "banda": "deterioro_moderado",
+        "banda_legible": "Deterioro moderado vs 4T-2023",
+        "dimensiones": {
+          "ingresos": {
+            "nombre": "Ingresos y consumo",
+            "peso": 0.3725,
+            "puntaje": 111.3,
+            "indicadores": {
+              "brecha_salario_cbt": {
+                "peso": 0.458,
+                "puntaje_banda": 112.5,
+                "puntaje_aplicado": 112.5,
+                "peso_efectivo": 0.1706
+              },
+              "informalidad": {
+                "peso": 0.2467,
+                "puntaje_banda": 94.2,
+                "puntaje_aplicado": 94.2,
+                "peso_efectivo": 0.0919
+              },
+              "pobreza_nowcast": {
+                "peso": 0.25,
+                "puntaje_banda": 126.9,
+                "puntaje_aplicado": 126.9,
+                "peso_efectivo": 0.0931
+              },
+              "consumo_carne": {
+                "peso": 0.0302,
+                "puntaje_banda": 89.3,
+                "puntaje_aplicado": 89.3,
+                "peso_efectivo": 0.0112
+              },
+              "patentamiento_motos": {
+                "peso": 0.0151,
+                "puntaje_banda": 140.0,
+                "puntaje_aplicado": 140.0,
+                "peso_efectivo": 0.0056
+              }
+            },
+            "peso_efectivo": 0.3725
+          },
+          "precios": {
+            "nombre": "Presión de precios",
+            "peso": 0.25,
+            "puntaje": 82.8,
+            "indicadores": {
+              "ipc_alimentos": {
+                "peso": 0.35,
+                "puntaje_banda": 107.6,
+                "puntaje_aplicado": 107.6,
+                "peso_efectivo": 0.0875
+              },
+              "peso_tarifas": {
+                "peso": 0.45,
+                "puntaje_banda": 71.5,
+                "puntaje_aplicado": 71.5,
+                "peso_efectivo": 0.1125
+              },
+              "alquiler_real": {
+                "peso": 0.2,
+                "puntaje_banda": 64.8,
+                "puntaje_aplicado": 64.8,
+                "peso_efectivo": 0.05
+              }
+            },
+            "peso_efectivo": 0.25
+          },
+          "vulnerabilidad": {
+            "nombre": "Vulnerabilidad financiera",
+            "peso": 0.1,
+            "puntaje": 17.2,
+            "indicadores": {
+              "mora_familias": {
+                "peso": 1.0,
+                "puntaje_banda": 17.2,
+                "puntaje_aplicado": 17.2,
+                "peso_efectivo": 0.1
+              }
+            },
+            "peso_efectivo": 0.1
+          },
+          "empleo": {
+            "nombre": "Prospectivas de empleo",
+            "peso": 0.15,
+            "puntaje": 92.6,
+            "indicadores": {
+              "empleo_registrado": {
+                "peso": 0.4023,
+                "puntaje_banda": 96.1,
+                "puntaje_aplicado": 96.1,
+                "peso_efectivo": 0.0603
+              },
+              "mortalidad_pymes": {
+                "peso": 0.2644,
+                "puntaje_banda": 97.4,
+                "puntaje_aplicado": 97.4,
+                "peso_efectivo": 0.0397
+              },
+              "despacho_cemento": {
+                "peso": 0.2414,
+                "puntaje_banda": 82.2,
+                "puntaje_aplicado": 82.2,
+                "peso_efectivo": 0.0362
+              },
+              "pluriempleo": {
+                "peso": 0.0919,
+                "puntaje_banda": 90.7,
+                "puntaje_aplicado": 90.7,
+                "peso_efectivo": 0.0138
+              }
+            },
+            "peso_efectivo": 0.15
+          },
+          "percepcion": {
+            "nombre": "Confianza y percepción",
+            "peso": 0.0825,
+            "puntaje": 99.8,
+            "indicadores": {
+              "icc_utdt": {
+                "peso": 0.8182,
+                "puntaje_banda": 90.9,
+                "puntaje_aplicado": 90.9,
+                "peso_efectivo": 0.0675
+              },
+              "sentimiento_digital": {
+                "peso": 0.1818,
+                "puntaje_banda": 140.0,
+                "puntaje_aplicado": 140.0,
+                "peso_efectivo": 0.015
+              }
+            },
+            "peso_efectivo": 0.0825
+          },
+          "seguridad": {
+            "nombre": "Seguridad",
+            "peso": 0.045,
+            "puntaje": 102.1,
+            "indicadores": {
+              "inseguridad": {
+                "peso": 1.0,
+                "puntaje_banda": 102.1,
+                "puntaje_aplicado": 102.1,
+                "peso_efectivo": 0.045
+              }
+            },
+            "peso_efectivo": 0.045
+          }
+        },
+        "ajustes_aplicados": []
+      }
     },
     "gestion": {
       "score": 2.4,
@@ -1886,7 +2038,7 @@
       }
     }
   },
-  "barbarismo_activo": "tecnocrático",
+  "barbarismo_activo": "político",
   "alerta_multicinturon": false,
   "flags": [
     "desactualizado:politica:judicializacion"
