@@ -7,7 +7,7 @@ cinturon: 'transversal'
 archivos: ['config.py', 'scripts/generar_informe.py', 'scripts/publicar.py', 'web/src/lib/datos.ts', 'web/src/components/Nav.astro', 'web/src/pages/metodologia/index.astro', 'web/src/pages/frontada.astro', 'tests/test_publicar.py', 'tests/test_marco_conceptual.py', '.github/workflows/data-pipeline.yml']
 supersede: ['0035', '0049']
 supersede_parcialmente: ['0199']
-relacionado: ['0181', '0206', '0207']
+relacionado: ['0181', '0206', '0207', '0208']
 ambito: 'El perímetro del tablero: qué cinturones publica y pondera el informe'
 origen: 'Luis Babino: un cinturón provisorio, con un solo indicador, no puede pesar el 20% del global'
 ---

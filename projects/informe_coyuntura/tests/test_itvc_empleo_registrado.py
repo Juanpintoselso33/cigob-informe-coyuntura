@@ -49,7 +49,9 @@ def test_el_peso_nominal_de_la_dimension_no_se_toco():
 def test_no_se_invierte():
     """Más empleo es MEJOR. Si alguien lo invierte, el ITVC leería la
     destrucción de empleo como una mejora."""
-    fuente = (RAIZ / "scripts" / "publicar.py").read_text(encoding="utf-8")
+    # La línea vivía en publicar.py hasta ADR-0208, que mudó la construcción
+    # de los índices a itvc.py para que generar_informe.py también la use.
+    fuente = (RAIZ / "scripts" / "itvc.py").read_text(encoding="utf-8")
     linea = next(l for l in fuente.splitlines() if 'idx["empleo_registrado"]' in l)
     assert "invertido" not in linea, linea
 

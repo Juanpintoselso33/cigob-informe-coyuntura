@@ -236,6 +236,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0160](0160-la-dispersion-del-itvc-se-publica-junto-al-neto.md) | La dispersión del ITVC se publica junto al neto |  | vigente |
 | [0163](0163-el-itvc-se-contrasta-contra-volumenes-fisicos-del-hogar.md) | El ITVC se contrasta contra volúmenes físicos consumidos por los hogares |  | vigente |
 | [0206](0206-los-dos-artefactos-publicados-dicen-lo-mismo.md) | Los dos artefactos publicados dicen lo mismo |  | vigente |
+| [0208](0208-el-itvc-vive-en-su-modulo-y-el-intermedio-nace-bien.md) | El ITVC vive en su módulo, y el intermedio nace bien |  | vigente |
 
 ### Espíritu de época
 

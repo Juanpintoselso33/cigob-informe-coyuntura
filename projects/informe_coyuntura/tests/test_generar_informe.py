@@ -10,7 +10,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import pytest
+
 import generar_informe
+import itvc
 import itcp
 
 
@@ -84,9 +87,19 @@ def test_recalcula_itcg(tmp_path, monkeypatch):
     assert ges["score"] == 4.0
 
 
-def test_cinturon_sin_parametrica_usa_score_cacheado_sin_bloque_de_indice(tmp_path, monkeypatch):
-    """vida_cotidiana / espiritu_epoca no tienen ITCM/ITCG/ITCP: el score
-    cacheado se conserva tal cual y no se agrega ninguna clave de índice."""
+def test_vida_recalcula_el_itvc_y_no_usa_el_score_cacheado(tmp_path, monkeypatch):
+    """El inverso del test que había acá hasta ADR-0208.
+
+    Decía que vida cotidiana no tiene paramétrica y que por eso se conservaba
+    el score del caché tal cual. Era cierto de este script y era el bug: el
+    ITVC existe, se arma desde las SERIES, y sólo publicar.py sabía hacerlo.
+    Con el caché de agosto de 2026 eso daba 2,9 acá y 6,9 en el sitio, y de
+    ahí salía además un barbarismo dominante equivocado.
+
+    Ahora se recalcula. El caché sintético de abajo dice 4,2 a propósito: si
+    ese número sobrevive, alguien volvió a confiar en el caché."""
+    if not any(generar_informe.DIR_SERIES.glob("*.csv")):
+        pytest.skip("sin output/series/*.csv no hay ITVC que recalcular")
     monkeypatch.setattr(generar_informe, "CACHE_DIR", tmp_path)
     _escribir_cache(tmp_path, "vida_cotidiana", {
         "cinturon": "vida_cotidiana",
@@ -97,7 +110,11 @@ def test_cinturon_sin_parametrica_usa_score_cacheado_sin_bloque_de_indice(tmp_pa
     informe = generar_informe.construir_informe(generar_informe.load_caches())
     vida = informe["cinturones"]["vida_cotidiana"]
 
-    assert vida["score"] == 4.2
+    assert "itvc" in vida, "vida cotidiana tiene que publicar su bloque de índice"
+    assert vida["score"] != 4.2, (
+        "el score salió del caché del colector en vez de recalcularse desde "
+        "las series — es exactamente el defecto que arregló ADR-0208")
+    assert vida["score"] == round(itvc.tension_de_itvc(vida["itvc"]["valor"]), 1)
     assert "itcm" not in vida and "itcg" not in vida and "itcp" not in vida
 
 

@@ -312,3 +312,149 @@ def calcular_itvc(indices: dict, ajustes: dict | None = None) -> dict | None:
         "dimensiones": resultado_dims,
         "ajustes_aplicados": ajustes_aplicados,
     }
+
+
+# ── Construcción de los índices base-100 desde las series ────────────────────
+# Vivía dentro de publicar.py, que era el único que sabía armar el ITVC. Por eso
+# generar_informe.py publicaba un score legacy de vida cotidiana y los dos
+# artefactos del informe decían números distintos (ADR-0206). Acá es importable
+# por los dos, que es lo que cierra la causa (ADR-0208).
+
+BASE_MESES = ("2023-10", "2023-11", "2023-12")
+WINSOR_TOPE = 140.0   # techo de componentes B100 (ADR-0033) — SOLO techo:
+                           # un boom (motos 166,7) no compra compensación
+                           # ilimitada; las crisis NO se recortan — se señalizan
+                           # con el flag de dimensión crítica (ADR-0020)
+
+# Serie transformada (ya rebaseada en descargar_series) → indicador del cinturón
+SERIES_REBASEADAS = {
+    "itvc_alimentos":     "ipc_alimentos",
+    "itvc_tarifas":       "peso_tarifas",
+    "itvc_alquiler":      "alquiler_real",
+    "itvc_ipi":           "mortalidad_pymes",
+    "itvc_isac":          "despacho_cemento",
+    "itvc_pobreza":       "pobreza_nowcast",
+}
+
+
+def rebase_movil12(series, skey):
+    """Índice base-100 por ACUMULADO MÓVIL de 12 meses (ADR-0024): promedio de
+    los últimos 12 meses de la serie vs el promedio de las ventanas móviles que
+    terminan en el 4T-2023. Desestacionaliza flujos con calendario fuerte
+    (motos: enero ≈ 2× junio) — misma lógica que la carne (CICCRA ya publica
+    su PM-12m). Si la serie no alcanza para las ventanas base, devuelve None
+    (cae al fallback de baselines)."""
+    serie = series.get(skey) or []
+    vals = {p["fecha"][:7]: p["valor"] for p in serie if p.get("valor")}
+    yms = sorted(vals)
+
+    def ventana(fin):
+        i = yms.index(fin) if fin in yms else -1
+        if i < 11:
+            return None
+        win = yms[i - 11:i + 1]
+        # 12 meses CONSECUTIVOS (sin huecos): compara el rango real
+        a0, m0 = int(win[0][:4]), int(win[0][5:7])
+        af, mf = int(win[-1][:4]), int(win[-1][5:7])
+        if (af * 12 + mf) - (a0 * 12 + m0) != 11:
+            return None
+        return sum(vals[k] for k in win) / 12.0
+
+    bases = [v for v in (ventana(f) for f in BASE_MESES) if v]
+    actual = ventana(yms[-1]) if yms else None
+    if not bases or not actual:
+        return None
+    return round(actual / (sum(bases) / len(bases)) * 100.0, 1)
+
+
+def rebase_de_serie(series, skey, invertido=False, base_meses=None):
+    """Índice base-100 del ÚLTIMO punto de una serie vs su promedio 4T-2023.
+    En series trimestrales el 4T-2023 es un único punto (2023-10), que coincide
+    naturalmente con la base del doc; en mensuales, el promedio oct-nov-dic.
+    `base_meses` permite una base DECLARADA distinta cuando la fuente no midió
+    el 4T-2023 (ej. IVI: encuesta suspendida 2020-2023, reanudada ene-2024)."""
+    serie = series.get(skey) or []
+    vals = {p["fecha"][:7]: p["valor"] for p in serie}
+    base_vals = [vals[m] for m in (base_meses or BASE_MESES) if vals.get(m) is not None]
+    if not serie or not base_vals:
+        return None
+    base = sum(base_vals) / len(base_vals)
+    ult = serie[-1]["valor"]
+    if not ult or not base:
+        return None
+    return round((base / ult if invertido else ult / base) * 100.0, 1)
+
+
+def indices_desde_series(vida_ind, series, baselines=None):
+    """Índices base-100 por componente del ITVC (None = componente sin dato).
+
+    `series` es {indicador: [{fecha, valor}, ...]} y `vida_ind` los indicadores
+    del cinturón, que sólo se usan para los tres fallbacks de baselines.
+    `baselines` es el contenido ya leído de `data/vida/itvc_baselines.json`:
+    se recibe como dict y no como ruta a propósito, para que este módulo siga
+    sin conocer el layout del repo y lo puedan importar tanto publicar.py como
+    generar_informe.py (ADR-0208)."""
+    idx = {}
+    for skey, ikey in SERIES_REBASEADAS.items():
+        serie = series.get(skey) or []
+        idx[ikey] = serie[-1]["valor"] if serie else None
+    # Rebase directo desde las series oficiales existentes
+    idx["brecha_salario_cbt"] = rebase_de_serie(series, "brecha_salario_cbt")
+    # Mora del crédito familiar (ADR-0067): % de cartera irregular, invertido
+    # (más mora = peor). Desde ADR-0154 sostiene sola la dimensión de
+    # vulnerabilidad: endeudamiento_familiar salió del índice.
+    idx["mora_familias"] = rebase_de_serie(series, "mora_familias", invertido=True)
+    idx["icc_utdt"] = rebase_de_serie(series, "icc_utdt")
+    idx["pluriempleo"] = rebase_de_serie(series, "pluriempleo", invertido=True)
+    # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.
+    # Es el único componente de la dimensión que mide empleo de verdad; los
+    # otros tres son proxies (producción, construcción, pluriempleo) — el
+    # líder salió del cinturón en ADR-0154.
+    idx["empleo_registrado"] = rebase_de_serie(series, "empleo_registrado")
+    # Informalidad TRIMESTRAL (52.2_ASDJ, barrido vida 2/13): la 303.1 murió en
+    # 2020 pero la 52.2 sigue viva — base = 4T-2023 exacto (punto 2023-10),
+    # invertida (menos informalidad = mejora). Reemplaza la excepción anual.
+    idx["informalidad"] = rebase_de_serie(series, "informalidad", invertido=True)
+    # Motos (CAFAM), carne (CICCRA PM-12m) e inseguridad (SNIC anual: su serie
+    # emite el total del año en YYYY-12, así el 4T-2023 resuelve al año 2023 —
+    # la excepción declarada del doc): rebase de la serie reconstruida.
+    # Motos por acumulado móvil 12m (ADR-0024): el flujo mensual crudo tiene
+    # estacionalidad fuerte y contra la base fija 4T-2023 mide calendario.
+    idx["patentamiento_motos"] = (rebase_movil12(series, "patentamiento_motos")
+                                  or rebase_de_serie(series, "patentamiento_motos"))
+    idx["consumo_carne"] = rebase_de_serie(series, "consumo_carne")
+    # IVI (ADR-0032): base = ene-2024, la primera medición tras la reanudación
+    # de la encuesta (suspendida 2020-2023; su ventana de 12 meses captura
+    # mayormente el año PRE-mandato, así que aproxima bien el arranque).
+    idx["inseguridad"] = rebase_de_serie(series, "inseguridad", invertido=True,
+                                               base_meses=("2024-01",))
+    # Sentimiento digital (ADR-0034): canasta mensual Trends de ventana fija —
+    # el cociente intra-consulta es inmune a la renormalización. Invertido:
+    # más búsquedas de inflación/precios = más urgencia percibida.
+    idx["sentimiento_digital"] = rebase_de_serie(series, "sentimiento_digital",
+                                                       invertido=True)
+    # Fallback: constante 4T-2023 documentada en itvc_baselines.json (con
+    # fuente) × valor actual del indicador, si la serie no está disponible.
+    bas = baselines or {}
+    for ikey, invertido in (("consumo_carne", False), ("inseguridad", True),
+                            ("patentamiento_motos", False)):
+        if idx[ikey] is not None:
+            continue
+        b = (bas.get(ikey) or {}).get("valor")
+        v = (vida_ind.get(ikey) or {}).get("valor")
+        idx[ikey] = (round((b / v if invertido else v / b) * 100.0, 1)
+                     if b and isinstance(v, (int, float)) and v else None)
+    # WINSORIZACIÓN ASIMÉTRICA (ADR-0033, tratamiento de outliers JRC): los
+    # componentes B100 se acotan al TECHO de 140 — un boom puntual (motos
+    # 166,7: +67% vs base) no debe comprar compensación ilimitada en la
+    # agregación lineal. SIN piso deliberadamente: las crisis (endeudamiento
+    # 31,7) no se recortan, se señalizan (flag crítica, ADR-0020). El crudo
+    # queda en _winsor para la nota del modal.
+    idx["_winsor"] = {}
+    for ikey, v in list(idx.items()):
+        if ikey.startswith("_") or v is None:
+            continue
+        if v > WINSOR_TOPE:
+            idx["_winsor"][ikey] = v
+            idx[ikey] = WINSOR_TOPE
+    return idx

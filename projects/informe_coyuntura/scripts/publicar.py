@@ -30,6 +30,7 @@ import itcm                                           # bandas y pesos del ITCM 
 import itcg                                           # bandas y pesos del ITCG gestión
 import itcp                                           # bandas y pesos del ITCP política
 import itvc                                           # pesos y rebase del ITVC vida cotidiana
+import series_io                                     # lectura de output/series/*.csv
 import sensibilidad                                   # rango de robustez (ADR-0019)
 import parametrica                                    # motor de puntaje y semáforo
 
@@ -166,35 +167,11 @@ def build_vida(raw):
 
 
 def build_series():
-    """Agrupa output/series/*.csv en {indicador: [{fecha, valor}, ...]} asc."""
-    series = {}
-    for csv_path in sorted(glob.glob(str(OUT / "series" / "*.csv"))):
-        with open(csv_path, encoding="utf-8") as f:
-            for row in csv.DictReader(f):
-                ind = row["indicador"]
-                try:
-                    val = float(row["valor"])
-                except (TypeError, ValueError):
-                    continue
-                series.setdefault(ind, []).append({"fecha": row["fecha"], "valor": val})
-    for ind in series:
-        # Deduplicar por fecha: si un indicador aparece en más de un CSV de
-        # cinturón con la MISMA métrica, colapsar a un punto por fecha. (Las
-        # métricas distintas van bajo claves distintas — ej. ipc_total en % m/m
-        # vs ipc_nivel como insumo deflactor.)
-        por_fecha = {p["fecha"]: p for p in series[ind]}
-        series[ind] = sorted(por_fecha.values(), key=lambda p: p["fecha"])
-    # Alias: algunos indicadores del informe tienen su serie historica bajo otra
-    # clave en los CSV. Exponer la serie tambien bajo la clave del indicador para
-    # que el sparkline y el modal la encuentren.
-    alias = {
-        "saldo_comercial_12m": "saldo_comercial",
-        "clima_electoral": "votometro_ventaja_lla",   # espíritu reusa la serie del Votómetro
-    }
-    for ind_key, serie_key in alias.items():
-        if serie_key in series and ind_key not in series:
-            series[ind_key] = series[serie_key]
-    return series
+    """Agrupa output/series/*.csv en {indicador: [{fecha, valor}, ...]} asc.
+
+    La implementación se mudó a series_io para que generar_informe.py pueda
+    leer las mismas series y calcular el ITVC (ADR-0208)."""
+    return series_io.build_series(OUT / "series")
 
 
 # Histórico acumulado: red de seguridad para NO PERDER DATOS. Cada corrida persiste
@@ -613,140 +590,27 @@ def _politica_input_txt(ikey, ind):
 
 AJUSTES_ITVC_PATH = ROOT / "data" / "vida" / "ajustes_itvc.json"
 ITVC_BASELINES_PATH = ROOT / "data" / "vida" / "itvc_baselines.json"
-ITVC_BASE_MESES = ("2023-10", "2023-11", "2023-12")
-ITVC_WINSOR_TOPE = 140.0   # techo de componentes B100 (ADR-0033) — SOLO techo:
-                           # un boom (motos 166,7) no compra compensación
-                           # ilimitada; las crisis NO se recortan — se señalizan
-                           # con el flag de dimensión crítica (ADR-0020)
-
-# Serie transformada (ya rebaseada en descargar_series) → indicador del cinturón
-ITVC_SERIES_REBASEADAS = {
-    "itvc_alimentos":     "ipc_alimentos",
-    "itvc_tarifas":       "peso_tarifas",
-    "itvc_alquiler":      "alquiler_real",
-    "itvc_ipi":           "mortalidad_pymes",
-    "itvc_isac":          "despacho_cemento",
-    "itvc_pobreza":       "pobreza_nowcast",
-}
-
-
-def _itvc_rebase_movil12(series, skey):
-    """Índice base-100 por ACUMULADO MÓVIL de 12 meses (ADR-0024): promedio de
-    los últimos 12 meses de la serie vs el promedio de las ventanas móviles que
-    terminan en el 4T-2023. Desestacionaliza flujos con calendario fuerte
-    (motos: enero ≈ 2× junio) — misma lógica que la carne (CICCRA ya publica
-    su PM-12m). Si la serie no alcanza para las ventanas base, devuelve None
-    (cae al fallback de baselines)."""
-    serie = series.get(skey) or []
-    vals = {p["fecha"][:7]: p["valor"] for p in serie if p.get("valor")}
-    yms = sorted(vals)
-
-    def ventana(fin):
-        i = yms.index(fin) if fin in yms else -1
-        if i < 11:
-            return None
-        win = yms[i - 11:i + 1]
-        # 12 meses CONSECUTIVOS (sin huecos): compara el rango real
-        a0, m0 = int(win[0][:4]), int(win[0][5:7])
-        af, mf = int(win[-1][:4]), int(win[-1][5:7])
-        if (af * 12 + mf) - (a0 * 12 + m0) != 11:
-            return None
-        return sum(vals[k] for k in win) / 12.0
-
-    bases = [v for v in (ventana(f) for f in ITVC_BASE_MESES) if v]
-    actual = ventana(yms[-1]) if yms else None
-    if not bases or not actual:
-        return None
-    return round(actual / (sum(bases) / len(bases)) * 100.0, 1)
-
-
-def _itvc_rebase_de_serie(series, skey, invertido=False, base_meses=None):
-    """Índice base-100 del ÚLTIMO punto de una serie vs su promedio 4T-2023.
-    En series trimestrales el 4T-2023 es un único punto (2023-10), que coincide
-    naturalmente con la base del doc; en mensuales, el promedio oct-nov-dic.
-    `base_meses` permite una base DECLARADA distinta cuando la fuente no midió
-    el 4T-2023 (ej. IVI: encuesta suspendida 2020-2023, reanudada ene-2024)."""
-    serie = series.get(skey) or []
-    vals = {p["fecha"][:7]: p["valor"] for p in serie}
-    base_vals = [vals[m] for m in (base_meses or ITVC_BASE_MESES) if vals.get(m) is not None]
-    if not serie or not base_vals:
-        return None
-    base = sum(base_vals) / len(base_vals)
-    ult = serie[-1]["valor"]
-    if not ult or not base:
-        return None
-    return round((base / ult if invertido else ult / base) * 100.0, 1)
+# La construcción de los índices base-100 se mudó a itvc.py (ADR-0208): era el
+# único lugar donde vivía, y por eso generar_informe.py —que corre antes— no
+# podía calcular el ITVC y publicaba un score legacy. Acá quedan sólo las rutas,
+# que son layout del repo y no metodología del índice.
+ITVC_BASE_MESES = itvc.BASE_MESES
+ITVC_WINSOR_TOPE = itvc.WINSOR_TOPE
+ITVC_SERIES_REBASEADAS = itvc.SERIES_REBASEADAS
+_itvc_rebase_movil12 = itvc.rebase_movil12
+_itvc_rebase_de_serie = itvc.rebase_de_serie
 
 
 def _itvc_indices(vida_ind, series):
-    """Índices base-100 por componente del ITVC (None = componente sin dato)."""
-    idx = {}
-    for skey, ikey in ITVC_SERIES_REBASEADAS.items():
-        serie = series.get(skey) or []
-        idx[ikey] = serie[-1]["valor"] if serie else None
-    # Rebase directo desde las series oficiales existentes
-    idx["brecha_salario_cbt"] = _itvc_rebase_de_serie(series, "brecha_salario_cbt")
-    # Mora del crédito familiar (ADR-0067): % de cartera irregular, invertido
-    # (más mora = peor). Desde ADR-0154 sostiene sola la dimensión de
-    # vulnerabilidad: endeudamiento_familiar salió del índice.
-    idx["mora_familias"] = _itvc_rebase_de_serie(series, "mora_familias", invertido=True)
-    idx["icc_utdt"] = _itvc_rebase_de_serie(series, "icc_utdt")
-    idx["pluriempleo"] = _itvc_rebase_de_serie(series, "pluriempleo", invertido=True)
-    # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.
-    # Es el único componente de la dimensión que mide empleo de verdad; los
-    # otros tres son proxies (producción, construcción, pluriempleo) — el
-    # líder salió del cinturón en ADR-0154.
-    idx["empleo_registrado"] = _itvc_rebase_de_serie(series, "empleo_registrado")
-    # Informalidad TRIMESTRAL (52.2_ASDJ, barrido vida 2/13): la 303.1 murió en
-    # 2020 pero la 52.2 sigue viva — base = 4T-2023 exacto (punto 2023-10),
-    # invertida (menos informalidad = mejora). Reemplaza la excepción anual.
-    idx["informalidad"] = _itvc_rebase_de_serie(series, "informalidad", invertido=True)
-    # Motos (CAFAM), carne (CICCRA PM-12m) e inseguridad (SNIC anual: su serie
-    # emite el total del año en YYYY-12, así el 4T-2023 resuelve al año 2023 —
-    # la excepción declarada del doc): rebase de la serie reconstruida.
-    # Motos por acumulado móvil 12m (ADR-0024): el flujo mensual crudo tiene
-    # estacionalidad fuerte y contra la base fija 4T-2023 mide calendario.
-    idx["patentamiento_motos"] = (_itvc_rebase_movil12(series, "patentamiento_motos")
-                                  or _itvc_rebase_de_serie(series, "patentamiento_motos"))
-    idx["consumo_carne"] = _itvc_rebase_de_serie(series, "consumo_carne")
-    # IVI (ADR-0032): base = ene-2024, la primera medición tras la reanudación
-    # de la encuesta (suspendida 2020-2023; su ventana de 12 meses captura
-    # mayormente el año PRE-mandato, así que aproxima bien el arranque).
-    idx["inseguridad"] = _itvc_rebase_de_serie(series, "inseguridad", invertido=True,
-                                               base_meses=("2024-01",))
-    # Sentimiento digital (ADR-0034): canasta mensual Trends de ventana fija —
-    # el cociente intra-consulta es inmune a la renormalización. Invertido:
-    # más búsquedas de inflación/precios = más urgencia percibida.
-    idx["sentimiento_digital"] = _itvc_rebase_de_serie(series, "sentimiento_digital",
-                                                       invertido=True)
-    # Fallback: constante 4T-2023 documentada en itvc_baselines.json (con
-    # fuente) × valor actual del indicador, si la serie no está disponible.
+    """Los índices del ITVC, con los baselines de este repo ya cargados."""
+    return itvc.indices_desde_series(vida_ind, series, _itvc_baselines())
+
+
+def _itvc_baselines() -> dict:
     try:
-        bas = json.loads(ITVC_BASELINES_PATH.read_text(encoding="utf-8-sig"))
+        return json.loads(ITVC_BASELINES_PATH.read_text(encoding="utf-8-sig"))
     except (OSError, json.JSONDecodeError):
-        bas = {}
-    for ikey, invertido in (("consumo_carne", False), ("inseguridad", True),
-                            ("patentamiento_motos", False)):
-        if idx[ikey] is not None:
-            continue
-        b = (bas.get(ikey) or {}).get("valor")
-        v = (vida_ind.get(ikey) or {}).get("valor")
-        idx[ikey] = (round((b / v if invertido else v / b) * 100.0, 1)
-                     if b and isinstance(v, (int, float)) and v else None)
-    # WINSORIZACIÓN ASIMÉTRICA (ADR-0033, tratamiento de outliers JRC): los
-    # componentes B100 se acotan al TECHO de 140 — un boom puntual (motos
-    # 166,7: +67% vs base) no debe comprar compensación ilimitada en la
-    # agregación lineal. SIN piso deliberadamente: las crisis (endeudamiento
-    # 31,7) no se recortan, se señalizan (flag crítica, ADR-0020). El crudo
-    # queda en _winsor para la nota del modal.
-    idx["_winsor"] = {}
-    for ikey, v in list(idx.items()):
-        if ikey.startswith("_") or v is None:
-            continue
-        if v > ITVC_WINSOR_TOPE:
-            idx["_winsor"][ikey] = v
-            idx[ikey] = ITVC_WINSOR_TOPE
-    return idx
+        return {}
 
 
 VALIDACION_EXTERNA_PATH = ROOT / "output" / "validacion_externa.json"
@@ -1382,7 +1246,20 @@ def _vintages(cinturon, indice_key):
     total = sum(f["peso"] for f in filas)
     dias_medio = sum(f["dias"] * f["peso"] for f in filas) / total
     mas_viejo = max(filas, key=lambda f: f["dias"])
-    mas_nuevo = min(filas, key=lambda f: f["dias"])
+    # El más nuevo se elige entre los que NO están rotulados hacia adelante.
+    # Los que sí (la encuesta del ISAC rotula por el mes de cierre de la
+    # ventana que pregunta) cuentan como antigüedad cero para el promedio —eso
+    # es correcto y está arriba—, pero su fecha no puede salir impresa: el
+    # texto dice "el dato más reciente es del <fecha>" y publicar ahí un día
+    # que todavía no pasó es afirmar algo falso.
+    #
+    # Estaba latente y no lo destapó ningún cambio de código: mientras algún
+    # componente tuviera el dato de HOY había empate en 0 días y `min` devolvía
+    # el otro. Al correr el calendario un día, el rotulado hacia adelante queda
+    # solo en el mínimo y sale su fecha. Encontrado el 2026-08-15, con
+    # brecha_obra_publica en 2026-09-01.
+    no_futuros = [f for f in filas if f["fecha"] <= str(hoy)]
+    mas_nuevo = min(no_futuros or filas, key=lambda f: f["dias"])
     # los que arrastran el promedio: más de un trimestre de antigüedad
     rezagados = sorted([f for f in filas if f["dias"] >= 90],
                        key=lambda f: -f["dias"])

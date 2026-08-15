@@ -6,6 +6,7 @@ fecha: 2026-08-14
 cinturon: 'vida'
 archivos: ['scripts/publicar.py', 'scripts/generar_informe.py', 'tests/test_artefactos_coherentes.py']
 relacionado: ['0060', '0178', '0205']
+superado_parcialmente_por: ['0208']
 ambito: 'Coherencia entre el artefacto intermedio (schema público) y el snapshot que publica el sitio'
 origen: 'Al sacar espíritu de época, generar_informe.py devolvió un global que no cuadraba; investigarlo destapó que los dos artefactos publicaban números distintos desde antes'
 ---

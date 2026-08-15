@@ -491,6 +491,25 @@ def main() -> int:
             "  borra todo a los 60 días. Habilitá facturación y volvé a correr esto."
         )
 
+    # La vista comparable se REDEFINE en cada corrida (ADR-0208). Su SQL se
+    # genera desde config.PESOS_CINTURONES, así que si cambian los pesos —o el
+    # conjunto de cinturones, como pasó al sacar espíritu de época— la vista
+    # tiene que rehacerse o queda promediando un perímetro que ya no existe.
+    # ADR-0207 la dejó de corrida manual y eso era un cabo suelto: nadie se
+    # acuerda, y ningún test lo agarra porque vive en BigQuery. Acá no hay que
+    # acordarse. `CREATE OR REPLACE VIEW` es metadata: no escanea datos, no
+    # cuesta y es idempotente.
+    try:
+        import bq_vista_comparable
+        cliente.query(
+            bq_vista_comparable.sql_de_la_vista(args.proyecto, args.dataset),
+            location=UBICACION,
+        ).result()
+        print(f"\nvista {bq_vista_comparable.VISTA} redefinida con los pesos vigentes")
+    except Exception as e:
+        # No tumba la corrida: el archivo ya está subido, que es lo que importa.
+        print(f"\n  AVISO: no se pudo redefinir la vista comparable: {e}")
+
     print("\nlisto")
     return 0
 

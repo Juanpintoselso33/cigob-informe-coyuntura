@@ -6,6 +6,7 @@ fecha: 2026-08-14
 cinturon: 'transversal'
 archivos: ['scripts/bq_vista_comparable.py']
 relacionado: ['0180', '0205']
+superado_parcialmente_por: ['0208']
 ambito: 'Archivo histórico en BigQuery · lectura del score global a través de un cambio de perímetro'
 origen: 'Sacar espíritu de época dejó la columna score_global de `corridas` sin poder leerse de corrido'
 ---

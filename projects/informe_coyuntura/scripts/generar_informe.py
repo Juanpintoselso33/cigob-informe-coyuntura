@@ -20,7 +20,8 @@ from config import (PESOS_CINTURONES, UMBRALES, BARBARISMO_MAP, fase_mandato,
 # Reutilizan el motor de scoring vigente para recalcular ITCM/ITCG/ITCP desde
 # los valores crudos ya persistidos en el caché (sin red) — ver
 # _INDICES_PARAMETRICOS más abajo y el ADR que documenta este cambio.
-import macro, gestion, politica, itcm, itcg, itcp
+import macro, gestion, politica, itcm, itcg, itcp, itvc
+import series_io
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 SCRIPT_DIR  = Path(__file__).parent
@@ -47,11 +48,54 @@ _INDICES_PARAMETRICOS = {
     "politica": ("itcp", politica.calcular_itcp_cinturon, itcp.tension_de_itcp),
 }
 
+# Vida cotidiana va aparte porque su índice no se arma desde el caché del
+# colector sino desde las SERIES persistidas: cada componente es un índice
+# base-100 rebaseado contra el 4T-2023. Hasta ADR-0208 eso vivía sólo dentro de
+# publicar.py, así que acá se copiaba el score legacy del colector viejo (2,9
+# contra los 6,9 reales de agosto de 2026) y el global salía mal en el
+# artefacto público. Ahora se calcula con el mismo código.
+DIR_SERIES = PROJECT_DIR / "output" / "series"
+AJUSTES_ITVC_PATH = PROJECT_DIR / "data" / "vida" / "ajustes_itvc.json"
+ITVC_BASELINES_PATH = PROJECT_DIR / "data" / "vida" / "itvc_baselines.json"
+
+
+def _recalcular_itvc(indicadores: dict) -> tuple[float | None, dict | None]:
+    """(tensión, resultado) del ITVC desde las series, o (None, None).
+
+    `indicadores` es el caché del colector, que hoy trae tres: se pasa igual
+    porque `indices_desde_series` lo usa para tres fallbacks de baseline, que
+    sólo entran cuando falta la serie del componente. Con las series completas
+    —el caso normal— el resultado no depende de este argumento: verificado el
+    2026-08-15, da 90,3 igual con el caché de 3 que con los 17 enriquecidos.
+    Ése es el único camino por el que este script y publicar.py podrían
+    separarse, y lo cubre `test_artefactos_coherentes.py`.
+    """
+    try:
+        series = series_io.build_series(DIR_SERIES)
+    except OSError:
+        return None, None
+    if not series:
+        return None, None
+    try:
+        baselines = json.loads(ITVC_BASELINES_PATH.read_text(encoding="utf-8-sig"))
+    except (OSError, json.JSONDecodeError):
+        baselines = {}
+    indices = itvc.indices_desde_series(indicadores, series, baselines)
+    indices.pop("_winsor", None)
+    ajustes = itvc.cargar_ajustes(AJUSTES_ITVC_PATH, datetime.now().strftime("%Y-%m"))
+    resultado = itvc.calcular_itvc(indices, ajustes)
+    if not resultado:
+        return None, None
+    return itvc.tension_de_itvc(resultado["valor"]), resultado
+
 
 def _recalcular_indice(nombre: str, indicadores: dict, score_cache: float) -> tuple[float, dict | None]:
     """(score, resultado) recalculados con el código vigente, o el score
     cacheado sin bloque de índice si `nombre` no tiene paramétrica (vida
     cotidiana, espíritu de época) o si no hay ningún valor utilizable."""
+    if nombre == "vida_cotidiana":
+        tension, resultado = _recalcular_itvc(indicadores)
+        return (tension, resultado) if tension is not None else (score_cache, None)
     if nombre not in _INDICES_PARAMETRICOS:
         return score_cache, None
     _, calcular, tension_de = _INDICES_PARAMETRICOS[nombre]
@@ -162,7 +206,10 @@ def construir_informe(caches: dict) -> dict:
             "alerta":             None,
         }
         if resultado_indice:
-            clave = _INDICES_PARAMETRICOS[nombre][0]
+            # vida cotidiana no está en _INDICES_PARAMETRICOS: su índice se
+            # arma desde las series, no desde el caché (ver _recalcular_itvc).
+            clave = ("itvc" if nombre == "vida_cotidiana"
+                     else _INDICES_PARAMETRICOS[nombre][0])
             cinturones_data[nombre][clave] = resultado_indice
 
     barbarismo_activo, alerta_multicinturon = detectar_barbarismo(cinturones_data)
