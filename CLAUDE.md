@@ -402,3 +402,44 @@ Collector exit codes: `0` all fresh · `1` mixed fresh/cache · `2` all cache
 Useful docs: `projects/informe_coyuntura/README.md`,
 `docs/260523_proyecto_pais_estado_extraccion.md`, `docs/archivo/cinturon_*.md`
 (diseño original, read-only), `docs/adr/README.md`.
+
+### El informe en un solo archivo (`web/tools/emitir-artifact.mjs`)
+
+Colapsa lo que dejó `npm run build` en un HTML único, interactivo y sin un solo pedido a la
+red: las seis secciones, los gráficos de ApexCharts y las fórmulas de KaTeX. Sale a
+`web/dist-artifact/` (ignorado) y no entra al build ni a CI.
+
+```bash
+cd projects/informe_coyuntura/web && npm run build
+node tools/emitir-artifact.mjs            # completo  → 3,7 MB
+node tools/emitir-artifact.mjs --lite     # ApexCharts por CDN, sin KaTeX → 2,6 MB
+node tools/emitir-artifact.mjs --con-fichas
+```
+
+**Sirve para abrir y navegar, no para pegarlo en una conversación con un modelo.** El completo
+son **1.511.640 tokens** y el lite 979.444 — contra los 200k de claude.ai. No hay poda que lo
+arregle: el 83 % de cada página son las series en `<script>` inline y **una sola sección ya son
+183.400 tokens**. Para ingesta están `output/informe.md` (2.627) y `output/fichas/*.md`
+(121.507 las cuatro).
+
+Tres cosas del emisor que no son obvias y que conviene no re-descubrir:
+
+- **Acá no hay view transitions**, así que cada script de página se escribió dando por sentado
+  que es el único documento y busca `cg-det-modal`, `cg-dim-groups` y compañía por id fijo.
+  Apiladas, esas ids se repiten. La salida no es renombrarlas —el JS las tiene literales— sino
+  **envolver cada módulo en una función cuyo parámetro se llama `document`** y está acotado a
+  su sección: tapa al global dentro de ese scope y el código sigue sin enterarse. Por eso el
+  emisor no parchea una sola línea de la lógica del informe.
+- **Vite carga ApexCharts y KaTeX con `import()` dinámico**, que dentro de un `<script>` inline
+  no resuelve contra nada. Los especificadores son literales, así que se reescriben a promesas
+  ya resueltas contra globales. Y el runtime se emite como `type="module"` **y último**: como
+  script clásico corría antes que las bibliotecas, y la primera sección que necesitara un
+  gráfico al inicializarse se habría roto sin hacer ruido.
+- **`hoisted.DJFWlTNo.js` es `@vercel/analytics`** y pide `va.vercel-scripts.com`. Resulta ser
+  además la entrada declarada de Frontada y Metodología, que no hacen nada más — así que esas
+  dos secciones se quedan sin entrada y no pierden nada. Un archivo que se reparte no puede
+  fichar a quien lo abre.
+
+El emisor **aborta** si queda una ruta sin empotrar, un `export` suelto, un `import()` relativo,
+una llamada a un tercero o un ancla sin destino: "autocontenido" es su única promesa y no se
+nota rota hasta que alguien lo abre sin servidor.
