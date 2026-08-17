@@ -7,7 +7,7 @@
       "senado.gob.ar/votaciones — actas con la fórmula 'en los términos de la ley 26.122' (tallies contados del detalleActa)",
       "votaciones.hcdn.gob.ar/pdf/acta/{id} — actas de Diputados (solo semilla histórica: la detección automática de decretos usa el Senado)"
     ],
-    "actualizado": "2026-08-15"
+    "actualizado": "2026-08-17"
   },
   "vetos": [
     {
