@@ -914,7 +914,6 @@ fecha,indicador,valor,unidad,fuente
 2024-03-31,rem_ipc_12m,120.0,% anual,BCRA
 2024-02-29,rem_ipc_12m,146.9,% anual,BCRA
 2024-01-31,rem_ipc_12m,183.2,% anual,BCRA
-2023-12-31,rem_ipc_12m,213.0,% anual,BCRA
 2026-06-01,recaudacion,88.2,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2026-05-01,recaudacion,97.7,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)
 2026-04-01,recaudacion,95.4,% i.a. real,Sec. Hacienda (recaudación DGI) + IPC (deflactor)

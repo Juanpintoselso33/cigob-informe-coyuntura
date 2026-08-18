@@ -1,0 +1,368 @@
+{
+  "metadata": {
+    "timestamp": "2026-08-18T01:27:59.472825",
+    "fuentes_automatizadas": [
+      "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
+      "bcra (creditos privados, tarjeta, personales, hipotecarios, BADLAR)",
+      "utdt_icc (Indice de Confianza del Consumidor)",
+      "cafam (patentamiento motos por provincia)",
+      "ciccra (consumo carne vacuna per capita — PDF mensual)",
+      "consumo_carnes (total vacuna+aviar+porcina per capita — tablero SAGYP)",
+      "snic (estadisticas criminales nacionales + CABA)",
+      "salud (datasets DEIS/SNVS via datos.salud.gob.ar CKAN)",
+      "trends (interes Google: inflacion, precios, inseguridad, trabajo)"
+    ]
+  },
+  "indec": {
+    "ipc_total": {
+      "valor": 12076.3937,
+      "variacion_mensual_pct": 2.113772426786187,
+      "fecha": "2026-07-01"
+    },
+    "ipc_alimentos": {
+      "valor": 12907.5083,
+      "variacion_mensual_pct": 1.9755215453024277,
+      "fecha": "2026-07-01"
+    },
+    "ipc_vivienda": {
+      "valor": 13505.3648,
+      "variacion_mensual_pct": 2.211547637275313,
+      "fecha": "2026-07-01"
+    },
+    "ipc_regulados": {
+      "valor": 12652.9797,
+      "variacion_mensual_pct": 2.127177815316572,
+      "fecha": "2026-07-01"
+    },
+    "ipc_alquiler_gba": {
+      "valor": 12449.235,
+      "variacion_mensual_pct": 1.474988428083801,
+      "fecha": "2026-07-01"
+    },
+    "cbt": {
+      "valor": 506380.55,
+      "variacion_mensual_pct": 2.170654952369988,
+      "fecha": "2026-07-01"
+    },
+    "cba": {
+      "valor": 229131.47,
+      "variacion_mensual_pct": 2.6329645578795136,
+      "fecha": "2026-07-01"
+    },
+    "ripte": {
+      "valor": 1915878.76,
+      "fecha": "2026-06-01"
+    },
+    "brecha_salario_cbt": {
+      "valor": 3.8656024153876856,
+      "ripte_pesos": 1915878.76,
+      "cbt_pesos": 495622.3,
+      "canastas_que_cubre": 3.8656024153876856,
+      "fecha": "2026-06-01",
+      "nota": "RIPTE / CBT del mismo mes (2026-06): canastas cubiertas por el salario imponible promedio — CBT de 2026-07 ya publicada ($506,381): esa brecha queda provisoria hasta que salga el RIPTE"
+    },
+    "isalarios_total": {
+      "valor": 8978.1,
+      "variacion_mensual_pct": 3.7332221065535576,
+      "fecha": "2026-04-01"
+    },
+    "salario_real_indice": {
+      "valor": 74.34421420030385,
+      "fecha": "2026-04-01",
+      "nota": "Salario nominal / IPC * 100"
+    },
+    "desocupacion": {
+      "valor": 0.078,
+      "fecha": "2026-01-01"
+    },
+    "empleo": {
+      "valor": 0.4479999999999999,
+      "fecha": "2026-01-01"
+    },
+    "subocupacion_demandante": {
+      "valor": 0.075,
+      "fecha": "2026-01-01"
+    },
+    "empleo_registrado": {
+      "valor": 6106.526,
+      "fecha": "2026-05-01"
+    },
+    "informalidad_trimestral": {
+      "valor": 0.379,
+      "fecha": "2026-01-01"
+    },
+    "informalidad_anual": {
+      "valor": 0.3675,
+      "fecha": "2025-01-01"
+    },
+    "isac": {
+      "valor": 148.112056182325,
+      "variacion_mensual_pct": -4.137358595102569,
+      "fecha": "2026-06-01"
+    },
+    "emae": {
+      "valor": 0.0024035831362152,
+      "variacion_mensual_pct": -85.6807951591572,
+      "fecha": "2026-05-01"
+    },
+    "ipi": {
+      "valor": 119.098206634938,
+      "variacion_mensual_pct": 0.938282507569177,
+      "fecha": "2026-06-01"
+    },
+    "faena_vacuna": {
+      "valor": 1077.09725,
+      "variacion_mensual_pct": 7.560833915652276,
+      "fecha": "2026-06-01"
+    },
+    "acero_crudo": {
+      "valor": 732.977,
+      "variacion_mensual_pct": -12.267180552147616,
+      "fecha": "2026-04-01"
+    }
+  },
+  "bcra": {
+    "prestamos_privado_total": {
+      "valor": 140336555.0,
+      "fecha": "2026-08-12"
+    },
+    "prestamos_tarjeta": {
+      "valor": 22351926.0,
+      "fecha": "2026-08-11"
+    },
+    "prestamos_personales": {
+      "valor": 21478600.0,
+      "fecha": "2026-08-11"
+    },
+    "prestamos_hipotecarios": {
+      "valor": 8371358.0,
+      "fecha": "2026-08-11"
+    },
+    "credito_consumo_total": {
+      "valor": 43830526.0,
+      "fecha": "2026-08-11",
+      "unidad": "Millones de pesos",
+      "nota": "Tarjeta + personales. Proxy de endeudamiento familiar de consumo."
+    },
+    "credito_consumo_serie": [
+      {
+        "fecha": "2025-05-30",
+        "valor": 35005775.0
+      },
+      {
+        "fecha": "2025-06-30",
+        "valor": 36458691.0
+      },
+      {
+        "fecha": "2025-07-31",
+        "valor": 37905861.0
+      },
+      {
+        "fecha": "2025-08-29",
+        "valor": 38920368.0
+      },
+      {
+        "fecha": "2025-09-30",
+        "valor": 39738476.0
+      },
+      {
+        "fecha": "2025-10-31",
+        "valor": 40706700.0
+      },
+      {
+        "fecha": "2025-11-28",
+        "valor": 41813339.0
+      },
+      {
+        "fecha": "2025-12-30",
+        "valor": 42868285.0
+      },
+      {
+        "fecha": "2026-01-30",
+        "valor": 43071509.0
+      },
+      {
+        "fecha": "2026-02-27",
+        "valor": 43510304.0
+      },
+      {
+        "fecha": "2026-03-31",
+        "valor": 44792251.0
+      },
+      {
+        "fecha": "2026-04-30",
+        "valor": 45508193.0
+      },
+      {
+        "fecha": "2026-05-29",
+        "valor": 45930807.0
+      },
+      {
+        "fecha": "2026-06-30",
+        "valor": 47314710.0
+      },
+      {
+        "fecha": "2026-07-31",
+        "valor": 46422336.0
+      },
+      {
+        "fecha": "2026-08-11",
+        "valor": 43830526.0
+      }
+    ],
+    "badlar": {
+      "valor": 22.5625,
+      "fecha": "2026-08-13"
+    }
+  },
+  "utdt": {
+    "icc_utdt": {
+      "valor": 39.82558059692383,
+      "fecha": "2026-07-01",
+      "unidad": "Índice"
+    },
+    "indice_lider": {
+      "valor": 125.62487303397535,
+      "fecha": "2026-06-01",
+      "unidad": "Índice"
+    }
+  },
+  "pobreza": {
+    "pobreza_nowcast": {
+      "periodo": "2026-06",
+      "semestre": "Enero 2026 - Junio 2026",
+      "valor": 31.6,
+      "ic_inf": 30.1,
+      "ic_sup": 33.0,
+      "fecha": "2026-06-01",
+      "unidad": "% de personas en hogares pobres"
+    }
+  },
+  "cafam": {
+    "patentamiento_motos": {
+      "valor": 72573,
+      "fecha": "2026-07",
+      "unidad": "Unidades",
+      "provincias": {
+        "BUENOS AIRES": 21424,
+        "CAPITAL FEDERAL": 1987,
+        "CATAMARCA": 961,
+        "CHACO": 4641,
+        "CHUBUT": 304,
+        "CORDOBA": 5881,
+        "CORRIENTES": 2824,
+        "ENTRE RIOS": 2375,
+        "FORMOSA": 1706,
+        "JUJUY": 2275,
+        "LA PAMPA": 646,
+        "LA RIOJA": 927,
+        "MENDOZA": 1775,
+        "MISIONES": 1838,
+        "NEUQUEN": 823,
+        "RIO NEGRO": 873,
+        "RUNA": 5,
+        "SALTA": 3168,
+        "SAN JUAN": 1176,
+        "SAN LUIS": 654,
+        "SANTA CRUZ": 100,
+        "SANTA FE": 7307,
+        "SANTIAGO DEL ESTERO": 3027,
+        "TIERRA DEL FUEGO": 27,
+        "TUCUMAN": 5849
+      },
+      "fuente": "CAFAM API"
+    }
+  },
+  "ciccra": {
+    "consumo_carne_per_capita": {
+      "valor": 47.5,
+      "fecha": "2026-05",
+      "unidad": "kg por habitante/año",
+      "fuente": "CICCRA",
+      "url": "https://ciccra.com.ar/wp-content/uploads/2026/06/Inf-No-304-2026-mayo.pdf",
+      "nota": "Consumo aparente per capita anualizado"
+    }
+  },
+  "consumo_carnes": {
+    "mes": "2026-06",
+    "total": 114.45,
+    "vacuna": 47.28,
+    "aviar": 47.24,
+    "porcina": 19.93,
+    "ratio_bovina": 41.31,
+    "variaciones": {
+      "vacuna": -7.67,
+      "aviar": 0.57,
+      "porcina": 9.29,
+      "total": -1.69
+    }
+  },
+  "snic": {
+    "inseguridad_snic": {
+      "anio": "2025",
+      "total_hechos": 2418600,
+      "tipos_principales": {
+        "Robos (excluye los agravados por el resultado de lesiones y/o muertes)": 360946,
+        "Hurtos": 308523,
+        "Otros delitos contra la propiedad": 249754,
+        "Amenazas": 217883,
+        "Lesiones dolosas": 179710
+      },
+      "fuente": "SNIC - Ministerio de Seguridad",
+      "url": "https://cloud-snic.minseg.gob.ar/Bases/SNIC/snic-pais.csv",
+      "nota": "Datos anuales. Rezago ~5 meses desde cierre de anio."
+    },
+    "delitos_caba_disponible": {
+      "anio": 2025,
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/ministerio-de-justicia-y-seguridad/delitos/delitos_2025.csv",
+      "size_mb": 17.3,
+      "last_modified": "Wed, 17 Jun 2026 15:10:50 GMT",
+      "nota": "CSV con hechos geolocalizados. Descargar con pd.read_csv(url) para analisis detallado."
+    }
+  },
+  "salud": {
+    "salud_datasets": {
+      "valor": 3,
+      "datasets_disponibles": [
+        {
+          "id": "c1643775-18e1-40fd-9e7f-0cebb5b1abe6",
+          "title": "Defunciones Generales Mensuales ocurridas y registradas en la República Argentina.",
+          "name": "datos-salud-gob-ar-dataset-defunciones-mensuales-ocurridas-en-la-republica-argentina"
+        },
+        {
+          "id": "76ce7d19-921d-4d17-bb20-73c1fe55f07e",
+          "title": "Serie histórica de defunciones ocurridas en Argentina por jurisdicción",
+          "name": "serie-historica-de-defunciones-ocurridas-en-argentina-por-jurisdiccion"
+        },
+        {
+          "id": "7fd3f531-9aeb-45ea-9395-cfcc4af61515",
+          "title": "Tasa de Mortalidad Fetal Total",
+          "name": "tasa-de-mortalidad-fetal-total"
+        }
+      ],
+      "fuente": "datos.salud.gob.ar — CKAN API (busqueda general)",
+      "nota": "Usar las URLs de CKAN para descargar microdatos DEIS o SNVS."
+    }
+  },
+  "trends": {
+    "sentimiento_digital": {
+      "interes_relativo": {
+        "inflacion": 5.0,
+        "precios": 33.8,
+        "inseguridad": 0.5,
+        "trabajo": 49.5
+      },
+      "keywords": [
+        "inflacion",
+        "precios",
+        "inseguridad",
+        "trabajo"
+      ],
+      "geo": "AR",
+      "timeframe": "ultimos 3 meses",
+      "escala": "0-100 (100 = maximo historico en el periodo)",
+      "fuente": "Google Trends via pytrends",
+      "nota": "Proxy de urgencia percibida. Alto 'inseguridad'/'precios' = presion ciudadana. Sujeto a rate limits de Google — puede fallar silenciosamente."
+    }
+  }
+}

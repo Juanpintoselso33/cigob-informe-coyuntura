@@ -1,6 +1,6 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-18 00:16:54"
+generado: "2026-08-18 01:36:24"
 score_global: 4.2
 barbarismo_activo: "político"
 alerta_multicinturon: false
@@ -83,23 +83,23 @@ schema_version: "1.2.0"
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 5.8 | % de brecha CCL/mayorista | 2026-08-17 | fresco |
+| cepo_mulc | 5.8 | % de brecha CCL/mayorista | 2026-08-18 | fresco |
 | apertura_comercial | 6.18 | % del intercambio (alícuota efectiva) | 2026-06-01 | fresco |
 | desregulacion_normativa | 16771.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-07-01 | fresco |
 | reduccion_estado | -20.36 | % de variación vs dic-2023 (dotación APN) | 2026-06-01 | fresco |
 | gasto_funcionamiento | -31.37 | % de variación real vs 2023-06 (IMIG funcionamiento) | 2026-06-01 | fresco |
 | masa_salarial | -32.37 | % de variación real vs 2023-06 (SPN remuneraciones) | 2026-06-01 | fresco |
-| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-08-17 | fresco |
-| fal_modernizacion_laboral | 100.0 | Índice 0–100 (actos fundamentales del FAL: ley + reglamentación) | 2026-08-17 | fresco |
+| reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-08-18 | fresco |
+| fal_modernizacion_laboral | 100.0 | Índice 0–100 (actos fundamentales del FAL: ley + reglamentación) | 2026-08-18 | fresco |
 | litigiosidad_laboral | 2.8 | % variación juicios SRT (12m vs 12m previos) | 2026-04-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
-| rigi_inversiones | 23.5 | % de inversión aprobada sobre el pipeline | 2026-08-17 | fresco |
-| concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-17 | fresco |
-| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-08-17 | fresco |
+| rigi_inversiones | 23.5 | % de inversión aprobada sobre el pipeline | 2026-08-18 | fresco |
+| concesiones_infraestructura | 28.7 | % de km adjudicados / km del plan (Red Federal de Concesiones) | 2026-08-18 | fresco |
+| asistencia_directa | 100.0 | TDPS: % del gasto social pagado directo (sin intermediación) | 2026-08-18 | fresco |
 | protocolo_antipiquetes | 74.2 | % de reducción de cortes por manifestación en CABA vs 2023 (IRPC) | 2025-12-31 | fresco |
 | libertad_opcion_salud | 31.8 | % de usuarios de prepagas con aportes derivados directo (sin triangulación) | 2026-03-01 | fresco |
-| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-08-17 | fresco |
+| alertas_manifestacion | 0 | alertas de manifestación (mes corriente, GTFS-RT) | 2026-08-18 | fresco |
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-08-18 00:16:54 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-18 01:36:24 — schema 1.2.0*
