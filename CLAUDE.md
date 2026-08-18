@@ -327,11 +327,29 @@ ready, the whole chain has to hold:
 Verifying a link in the middle does not authorise saying "done".
 
 **Toda corrida de datos termina en BigQuery, no en el commit.** El nocturno lo
-hace solo (último paso de `data-pipeline.yml`); **una corrida manual no**, y esa
-corrida se pierde para siempre del archivo histórico — las tablas de snapshot se
-acumulan por `generated_at`, así que lo que no se sube ese día no se puede
-reconstruir después. Si publicaste a mano, corré `bigquery_export.py`. Es
-idempotente: re-correr la misma corrida no duplica. Ver ADR-0180.
+hace solo (último paso de `data-pipeline.yml`); **una corrida manual no**. Las
+tablas de snapshot se acumulan por `generated_at`, así que lo que no se sube ese
+día queda afuera del archivo. Si publicaste a mano, corré `bigquery_export.py`.
+Es idempotente: re-correr la misma corrida no duplica. Ver ADR-0180.
+
+Se recupera **sólo si el snapshot quedó commiteado**:
+`scripts/bigquery_backfill.py` reconstruye corridas viejas desde git y las
+escribe con el código de hoy (ADR-0209; así se rellenaron las 206 corridas
+anteriores al 6-ago-2026). Lo que no tiene commit no se puede recuperar — pasó
+con la corrida del 15-ago 16:40 UTC, exportada a mano y superada por otra diez
+minutos después antes de commitear.
+
+Dos cosas al consultar el archivo:
+
+- **Filtrá por `corridas.origen = 'cron'`** si querés la evolución del dato. De
+  las 226 corridas archivadas sólo 71 son del nocturno; el resto son
+  republicaciones y regeneraciones de desarrollo (julio tiene 116 manuales
+  contra 24 del cron), y sin filtrar el mes parece un sismo.
+- **`corridas.score_global` no se lee de corrido** a través de un cambio de
+  perímetro. Para eso está la vista `corridas_comparables`. Y ojo: corrige el
+  perímetro, **no la metodología** — recalibraciones de bandas y cambios de
+  indicador siguen adentro, así que comparar cinturones entre meses lejanos
+  mide tanto el método como la coyuntura.
 
 - **A feature branch is invisible.** Work on a PR branch never reaches the site.
   If the user is waiting to see a change, the branch has to be merged to `main`.

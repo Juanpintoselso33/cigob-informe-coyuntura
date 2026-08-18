@@ -50,6 +50,36 @@ UBICACION = "southamerica-east1"  # São Paulo: la región más cercana a AR
 CINTURONES_CON_SERIE = {"macro", "politica", "gestion", "vida_cotidiana"}
 
 
+def origen_de_esta_corrida() -> str:
+    """'cron' si corre en GitHub Actions, 'manual' si la lanzó una persona.
+
+    El archivo mezcla las dos cosas y no son lo mismo: el cron publica una vez
+    por día, y una republicación a mano puede haber varias en una tarde de
+    desarrollo. Sin esta marca, un mes con mucho trabajo encima parece un mes
+    de saltos violentos del dato (ADR-0209).
+    """
+    return "cron" if os.environ.get("GITHUB_ACTIONS") == "true" else "manual"
+
+
+def _valor_y_texto(valor) -> tuple[float | None, str | None]:
+    """Parte el valor de un indicador en (numérico, textual).
+
+    Hasta el 2-jul-2026 cuatro indicadores de gestión eran CUALITATIVOS y su
+    `valor` era una frase ('Parcial — corredores viales en licitación'). La
+    columna `valor` de BigQuery es FLOAT, así que esas filas rompen el load —
+    y son 195 en el histórico. En vez de tirarlas, el texto se guarda en
+    `valor_txt` y `valor` queda NULL: el indicador sigue existiendo en el
+    archivo, con su valor legible, y las consultas numéricas no lo ven.
+    """
+    if isinstance(valor, str):
+        return None, valor
+    if isinstance(valor, bool):  # bool es subclase de int: no es un valor numérico acá
+        return None, str(valor)
+    if isinstance(valor, (int, float)):
+        return float(valor), None
+    return None, None
+
+
 def _indice_de(cinturon: dict) -> tuple[str | None, dict | None]:
     """Devuelve (sigla, bloque) del índice paramétrico del cinturón.
 
@@ -62,8 +92,19 @@ def _indice_de(cinturon: dict) -> tuple[str | None, dict | None]:
     return None, None
 
 
-def construir_filas(snapshot: dict) -> dict[str, list[dict]]:
-    """Aplana el snapshot anidado en las seis tablas."""
+def construir_filas(
+    snapshot: dict,
+    raiz: Path | None = None,
+    origen: str | None = None,
+) -> dict[str, list[dict]]:
+    """Aplana el snapshot anidado en las seis tablas.
+
+    `raiz` permite armar las filas contra un árbol que NO es el working tree —
+    lo usa el backfill, que reconstruye cada corrida vieja desde git. Por
+    defecto es el checkout actual, que es lo que hace el pipeline nocturno.
+    """
+    raiz = raiz or RAIZ
+    dir_series = raiz / "output" / "series"
     gen = snapshot["generated_at"]
     filas: dict[str, list[dict]] = {
         "corridas": [],
@@ -83,6 +124,7 @@ def construir_filas(snapshot: dict) -> dict[str, list[dict]]:
             "barbarismo_activo": snapshot.get("barbarismo_activo"),
             "alerta_multicinturon": snapshot.get("alerta_multicinturon"),
             "flags": json.dumps(snapshot.get("flags", []), ensure_ascii=False),
+            "origen": origen or origen_de_esta_corrida(),
         }
     )
 
@@ -122,13 +164,15 @@ def construir_filas(snapshot: dict) -> dict[str, list[dict]]:
             )
             for nombre_i, i in (d.get("indicadores", {}) or {}).items():
                 det = detalle.get(nombre_i, {}) or {}
+                valor, valor_txt = _valor_y_texto(i.get("valor", det.get("valor")))
                 filas["indicadores"].append(
                     {
                         "generated_at": gen,
                         "cinturon": nombre_c,
                         "dimension": nombre_d,
                         "indicador": nombre_i,
-                        "valor": i.get("valor", det.get("valor")),
+                        "valor": valor,
+                        "valor_txt": valor_txt,
                         "unidad": det.get("unidad"),
                         "fuente": det.get("fuente"),
                         "fecha_dato": det.get("fecha_dato"),
@@ -149,13 +193,15 @@ def construir_filas(snapshot: dict) -> dict[str, list[dict]]:
         for nombre_i, det in detalle.items():
             if nombre_i in en_indice:
                 continue
+            valor, valor_txt = _valor_y_texto(det.get("valor"))
             filas["indicadores"].append(
                 {
                     "generated_at": gen,
                     "cinturon": nombre_c,
                     "dimension": det.get("dimension"),
                     "indicador": nombre_i,
-                    "valor": det.get("valor"),
+                    "valor": valor,
+                    "valor_txt": valor_txt,
                     "unidad": det.get("unidad"),
                     "fuente": det.get("fuente"),
                     "fecha_dato": det.get("fecha_dato"),
@@ -186,7 +232,7 @@ def construir_filas(snapshot: dict) -> dict[str, list[dict]]:
                 }
             )
 
-    for csv_path in sorted(DIR_SERIES.glob("*.csv")):
+    for csv_path in sorted(dir_series.glob("*.csv")):
         cinturon = csv_path.stem
         if cinturon not in CINTURONES_CON_SERIE:
             continue
@@ -223,7 +269,7 @@ def _serie_mensual(obj) -> list[tuple[str, float | None]]:
     return salida
 
 
-def construir_filas_analisis(gen: str) -> dict[str, list[dict]]:
+def construir_filas_analisis(gen: str, raiz: Path | None = None) -> dict[str, list[dict]]:
     """Aplana los artefactos de output/*.json que produce el análisis.
 
     Todo lleva `generated_at` de la corrida del snapshot: así una correlación
@@ -238,8 +284,10 @@ def construir_filas_analisis(gen: str) -> dict[str, list[dict]]:
         "panel_validacion", "giros",
     )}
 
+    base = (raiz or RAIZ) / "output"
+
     def leer(nombre: str):
-        ruta = RAIZ / "output" / f"{nombre}.json"
+        ruta = base / f"{nombre}.json"
         if not ruta.exists():
             return None
         return json.loads(ruta.read_text(encoding="utf-8"))
@@ -454,14 +502,14 @@ def main() -> int:
                 return 3
             disposicion = bigquery.WriteDisposition.WRITE_APPEND
 
-        job = cliente.load_table_from_json(
-            rs,
-            destino,
-            job_config=bigquery.LoadJobConfig(
-                write_disposition=disposicion,
-                autodetect=True,
-            ),
-        )
+        # ALLOW_FIELD_ADDITION: sin esto, un campo nuevo (`origen`, `valor_txt`)
+        # contra una tabla que ya existe hace fallar el load en vez de ampliar
+        # el esquema. Sólo aplica al APPEND; el TRUNCATE reescribe el esquema.
+        cfg = bigquery.LoadJobConfig(write_disposition=disposicion, autodetect=True)
+        if disposicion == bigquery.WriteDisposition.WRITE_APPEND:
+            cfg.schema_update_options = [bigquery.SchemaUpdateOption.ALLOW_FIELD_ADDITION]
+
+        job = cliente.load_table_from_json(rs, destino, job_config=cfg)
         job.result()
         print(f"  {tabla:20} {len(rs):>6} filas -> {destino}")
 
