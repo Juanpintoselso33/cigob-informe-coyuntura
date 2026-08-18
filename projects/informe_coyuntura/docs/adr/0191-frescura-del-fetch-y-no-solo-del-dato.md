@@ -6,7 +6,7 @@ fecha: 2026-08-12
 cinturon: 'transversal'
 indicadores: [judicializacion]
 archivos: ['scripts/gate_calidad.py', 'scripts/publicar.py', 'scripts/macro.py', 'scripts/politica.py', 'scripts/gestion.py', 'scripts/espiritu_epoca.py', _sellar, _sellar_vida, _carry_forward, 'G2B_MAX_DIAS', 'tests/test_gate_frescura_fetch.py', 'tests/test_sello_obtenido_en.py']
-relacionado: ['0037', '0133', '0135', '0168', '0170', '0174']
+relacionado: ['0037', '0133', '0135', '0168', '0170', '0174', '0210']
 ambito: 'Sello `obtenido_en` en los cinco cinturones · chequeo G2b en el gate de calidad'
 origen: 'Auditoría de salud del pipeline, 2026-08-11: judicializacion llevaba 12 días publicándose desde cache sin que ningún gate lo dijera.'
 ---

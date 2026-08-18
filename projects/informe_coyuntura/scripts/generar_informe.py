@@ -16,7 +16,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 sys.stdout.reconfigure(encoding="utf-8")
 
 from config import (PESOS_CINTURONES, UMBRALES, BARBARISMO_MAP, fase_mandato,
-                    MANDATO_INICIO, estado_de_score, es_tensionado)
+                    MANDATO_INICIO, estado_de_score, es_tensionado,
+                    cache_es_esperable)
 # Reutilizan el motor de scoring vigente para recalcular ITCM/ITCG/ITCP desde
 # los valores crudos ya persistidos en el caché (sin red) — ver
 # _INDICES_PARAMETRICOS más abajo y el ADR que documenta este cambio.
@@ -110,6 +111,21 @@ def _recalcular_indice(nombre: str, indicadores: dict, score_cache: float) -> tu
 _estado = estado_de_score
 
 
+def _dias_sin_fetch(vals: dict) -> int | None:
+    """Días desde el último fetch exitoso, según el sello `obtenido_en` (ADR-0191).
+
+    Devuelve None si no hay sello o no se puede leer: sin medición no se le
+    concede ventana a nadie, así que el indicador cuenta como desactualizado.
+    """
+    sello = vals.get("obtenido_en")
+    if not sello:
+        return None
+    try:
+        return (datetime.now().date() - datetime.fromisoformat(str(sello)).date()).days
+    except (ValueError, TypeError):
+        return None
+
+
 def load_caches() -> dict[str, dict]:
     caches = {}
     for cinturon in CINTURONES_ESPERADOS:
@@ -190,10 +206,14 @@ def construir_informe(caches: dict) -> dict:
         indicadores = cache.get("indicadores", {})
         score, resultado_indice = _recalcular_indice(nombre, indicadores, cache.get("score", 5.0))
 
-        # Detectar indicadores desactualizados
+        # Detectar indicadores desactualizados. Los que tienen ventana
+        # DECLARADA y siguen adentro no entran: andan por caché a propósito y
+        # el flag diario tapaba a los que sí están rotos (ADR-0210). Cuando se
+        # pasan de la ventana, G2b corta la publicación.
         desactualizados = [
             ind for ind, vals in indicadores.items()
             if vals.get("desactualizado", False)
+            and not cache_es_esperable(ind, _dias_sin_fetch(vals))
         ]
         if desactualizados:
             flags.append(f"desactualizado:{nombre}:{','.join(desactualizados)}")

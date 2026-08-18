@@ -94,3 +94,47 @@ BARBARISMO_MAP = {
     "gestion": "gerencial",
     "vida_cotidiana": "político",
 }
+
+# ── Días tolerados sin un fetch exitoso, por indicador (ADR-0191/0210) ────────
+# Mide el rezago del FETCH (`obtenido_en`, que el colector sella sólo cuando la
+# fuente contestó), no el del DATO (`fecha_dato`).
+#
+# Vive acá y no en `gate_calidad.py` porque tiene DOS consumidores —el gate y
+# `generar_informe.py`, que arma los `flags` del snapshot— y una política con
+# dos dueños se desincroniza. Mismo criterio que los pesos en ADR-0207.
+#
+# **Una entrada explícita acá declara que el indicador anda por caché a
+# propósito**, y por eso no cuenta como carry-forward mientras esté en su
+# ventana. Un indicador SIN entrada usa el default y sigue avisando desde el
+# primer día: es la diferencia entre "sabemos que este se refresca a mano" y
+# "esta fuente se acaba de caer y no nos enteramos". Bajar esa guardia a todos
+# habría dejado muda por dos semanas una caída real — que es exactamente cómo
+# se perdió `sentimiento_digital` el 9-jul-2026.
+DIAS_SIN_FETCH_DEFAULT = 14
+DIAS_SIN_FETCH = {
+    # SAIJ bloquea por IP el rango de egreso de los runners (403 desde Azure,
+    # 200 desde una IP argentina — medido el 12-ago-2026 y re-confirmado el
+    # 18-ago contra un runner, donde también fallan los UA de browser: no es
+    # cuestión de headers). Hasta que haya un egreso propio el refresco es
+    # manual desde Argentina, al ritmo mensual del informe. 45 días deja margen
+    # sobre ese ciclo sin volver a dejar que se congele en silencio.
+    "judicializacion": 45,
+}
+
+
+def dias_sin_fetch_tolerados(indicador: str) -> int:
+    """Ventana declarada para este indicador, o el default."""
+    return DIAS_SIN_FETCH.get(indicador, DIAS_SIN_FETCH_DEFAULT)
+
+
+def cache_es_esperable(indicador: str, dias_sin_fetch: int | None) -> bool:
+    """True si servir este indicador desde caché HOY es la política, no una falla.
+
+    Pide las dos cosas: que el indicador tenga tolerancia DECLARADA y que
+    todavía esté adentro. Sin `obtenido_en` (`dias_sin_fetch is None`) devuelve
+    False — son los manuales y los derivados de series, que no tienen fetch
+    propio que medir y no pueden reclamar una ventana que nadie les midió.
+    """
+    if indicador not in DIAS_SIN_FETCH or dias_sin_fetch is None:
+        return False
+    return dias_sin_fetch <= DIAS_SIN_FETCH[indicador]

@@ -292,3 +292,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0205](0205-espiritu-de-epoca-sale-del-tablero.md) | Espíritu de época sale del tablero: el informe pondera cuatro cinturones |  | vigente |
 | [0207](0207-la-serie-comparable-es-una-vista-no-un-backfill.md) | La serie comparable es una vista, no un backfill |  | vigente |
 | [0209](0209-el-archivo-se-rellena-desde-git.md) | El archivo se rellena desde git, y cada corrida dice de dónde vino |  | vigente |
+| [0210](0210-un-cache-esperable-no-es-carry-forward.md) | Un caché esperable no es carry-forward |  | vigente |

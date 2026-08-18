@@ -28,6 +28,9 @@ from datetime import date, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from config import (DIAS_SIN_FETCH, DIAS_SIN_FETCH_DEFAULT,  # noqa: E402
+                    cache_es_esperable)
 SNAPSHOT = (Path(sys.argv[sys.argv.index("--snapshot") + 1])
             if "--snapshot" in sys.argv else ROOT / "web" / "src" / "data")
 # Las anclas de validación no viven en el snapshot publicado sino en la salida
@@ -95,15 +98,11 @@ CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón
 # fuente caída, no un dato que todavía no salió. Se deja margen para un outage
 # de una semana larga sin cortar la publicación por algo que se va a recuperar
 # solo (CONTRAT.AR y CAFAM fallan de a ratos y vuelven).
-G2B_MAX_DIAS_DEFAULT = 14
-G2B_MAX_DIAS = {
-    # SAIJ bloquea el rango de egreso de los runners (403 desde Azure, 200
-    # desde una IP argentina — medido el 12-ago-2026, ver ADR-0191). Hasta que
-    # haya un egreso propio el refresco es manual desde Argentina, al ritmo
-    # mensual del informe. 45 días deja margen sobre ese ciclo sin volver a
-    # dejar que se congele en silencio.
-    "judicializacion": 45,
-}
+# La tabla se mudó a `config.py` (ADR-0210): la comparten el gate y
+# `generar_informe.py`, que arma los `flags` del snapshot con el mismo
+# criterio. Acá sólo se consume.
+G2B_MAX_DIAS_DEFAULT = DIAS_SIN_FETCH_DEFAULT
+G2B_MAX_DIAS = DIAS_SIN_FETCH
 
 # ── G3: pares card/serie con semántica DISTINTA (excepción con motivo) ──
 G3_EXCEPCIONES = {
@@ -237,18 +236,25 @@ def main() -> int:
                 fallas.append(f"G2 {ck}/{ik}: fecha_dato no parseable ({i.get('fecha_dato')})")
             # G2b — frescura del FETCH, no del dato
             sello = i.get("obtenido_en")
+            dias_sin_fetch = None
             if sello:
                 try:
-                    dias = (hoy - datetime.fromisoformat(str(sello)).date()).days
+                    dias_sin_fetch = (hoy - datetime.fromisoformat(str(sello)).date()).days
                 except ValueError:
                     fallas.append(f"G2b {ck}/{ik}: obtenido_en no parseable ({sello})")
                 else:
                     tope_b = G2B_MAX_DIAS.get(ik, G2B_MAX_DIAS_DEFAULT)
-                    if dias > tope_b:
-                        fallas.append(f"G2b {ck}/{ik}: {dias}d sin un fetch exitoso "
+                    if dias_sin_fetch > tope_b:
+                        fallas.append(f"G2b {ck}/{ik}: {dias_sin_fetch}d sin un fetch exitoso "
                                       f"> tope {tope_b}d (último: {sello}) — la card "
                                       f"se sigue publicando desde cache")
-            if i.get("desactualizado"):
+            # Un indicador con ventana DECLARADA y todavía adentro no es
+            # carry-forward: está andando como se decidió que ande (ADR-0210).
+            # judicializacion se refresca a mano porque SAIJ bloquea a los
+            # runners, así que avisaba todas las noches — y un aviso que suena
+            # siempre deja de leerse. Cuando se pase de su ventana lo agarra
+            # G2b de arriba, que además CORTA la publicación en vez de avisar.
+            if i.get("desactualizado") and not cache_es_esperable(ik, dias_sin_fetch):
                 desactualizados += 1
             # G3 — invariante serie ↔ titular
             s = series.get(ik)
