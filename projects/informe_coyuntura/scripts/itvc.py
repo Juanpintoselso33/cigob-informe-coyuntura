@@ -44,7 +44,12 @@ DIMENSIONES_ITVC = {
         # redundancia lo confirmó (ADR-0108): motos correlaciona −0,974 con la
         # mora y +0,770 con el salario, y sólo +0,442 con el ICC.
         "nombre": "Ingresos y consumo",
-        "peso": 0.3725,
+        # ADR-0214: baja de 0,3725 a 0,2806 porque `informalidad` se fue a la
+        # dimensión de empleo. NO es una recalibración: el peso que se va es
+        # exactamente el peso EFECTIVO que el indicador ya tenía (9,19% del
+        # índice), así que ninguno de los que quedan cambia lo que aporta y el
+        # ITCIS no se mueve. Los nominales de acá se derivan de esos efectivos.
+        "peso": 0.2806,
         # ADR-0153: entra `pobreza_nowcast` con 25%. Hasta el 30-jul-2026 era una
         # card VISIBLE que no puntuaba, o sea el patrón de "contexto" que el
         # editor dio de baja: no había tercera opción entre entrar al índice e ir
@@ -81,9 +86,9 @@ DIMENSIONES_ITVC = {
         # Por eso entra a ESTA dimensión, donde el solapamiento queda explícito y
         # los pesos lo absorben, y no como dimensión aparte fingiendo
         # independencia.
-        "indicadores": {"brecha_salario_cbt": 0.4580, "informalidad": 0.2467,
-                        "pobreza_nowcast": 0.25,
-                        "consumo_carne": 0.0302, "patentamiento_motos": 0.0151},
+        "indicadores": {"brecha_salario_cbt": 0.6081,
+                        "pobreza_nowcast": 0.3319,
+                        "consumo_carne": 0.0400, "patentamiento_motos": 0.0200},
     },
     "precios": {
         "nombre": "Presión de precios",
@@ -130,7 +135,13 @@ DIMENSIONES_ITVC = {
     },
     "empleo": {
         "nombre": "Prospectivas de empleo",
-        "peso": 0.15,
+        # ADR-0214: sube de 0,15 a 0,2419 al recibir `informalidad` con su peso
+        # efectivo intacto (9,19%). Pasa a ser la segunda dimensión del índice,
+        # y eso es la consecuencia buscada: la informalidad es una condición
+        # del EMPLEO —de qué tipo de empleo se consigue—, no del ingreso, y
+        # medirla acá es lo que ADR-0033 dejó anotado como pendiente cuando
+        # observó que "la informalidad vive en Ingresos".
+        "peso": 0.2419,
         # ADR-0112: entra indice_lider con 20%. La dimensión se llama
         # prospectiva pero sus tres componentes describen lo que YA pasó (IPI e
         # ISAC son contemporáneos, la subocupación llega con dos trimestres de
@@ -168,8 +179,14 @@ DIMENSIONES_ITVC = {
         #
         # Los cuatro que quedan ABSORBEN proporcionalmente (÷0,87), regla
         # simétrica de la de las altas, conservando el orden relativo.
-        "indicadores": {"empleo_registrado": 0.4023, "mortalidad_pymes": 0.2644,
-                        "despacho_cemento": 0.2414, "pluriempleo": 0.0919},
+        # `informalidad` es el componente más pesado, por encima de
+        # `empleo_registrado`, que ADR-0130 había puesto como principal. Es
+        # aritmética del traslado —trae 9,19% y el registrado tiene 6,04%—, no
+        # una decisión de jerarquía: los dos miden empleo desde los dos lados,
+        # cuánto hay y de qué calidad es.
+        "indicadores": {"informalidad": 0.3799, "empleo_registrado": 0.2495,
+                        "mortalidad_pymes": 0.1640,
+                        "despacho_cemento": 0.1497, "pluriempleo": 0.0569},
     },
     "percepcion": {
         # ADR-0115. Antes se llamaba "confianza" y mezclaba tres cosas: ADR-0110

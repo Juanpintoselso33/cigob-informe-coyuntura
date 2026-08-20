@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-20T19:29:27.256678-03:00",
+  "generated_at": "2026-08-20T20:14:23.044945-03:00",
   "period": "2026-08",
   "score_global": 4.2,
   "ponderacion": {
@@ -3418,7 +3418,7 @@
           "desactualizado": false,
           "obtenido_en": "2026-08-18T01:27:59.472825",
           "en_indice": true,
-          "dimension": "ingresos",
+          "dimension": "empleo",
           "indice_itvc": 94.2,
           "peso_efectivo": 0.0919,
           "aporte_score": 6.2,
@@ -3512,7 +3512,7 @@
           "en_indice": true,
           "dimension": "empleo",
           "indice_itvc": 95.7,
-          "peso_efectivo": 0.0603,
+          "peso_efectivo": 0.0604,
           "aporte_score": 5.9,
           "aporte_formula": "Índice base-100 vs 4T-2023: 95,7 (100 = arranque del mandato; más = mejora); pesa 6,0% del ITCIS. Tensión = 5 − (índice − 100) × 0,2.",
           "aporte_nota": null,
@@ -3674,48 +3674,42 @@
         "dimensiones": {
           "ingresos": {
             "nombre": "Ingresos y consumo",
-            "peso": 0.3725,
-            "puntaje": 111.3,
+            "peso": 0.2806,
+            "puntaje": 116.9,
             "indicadores": {
               "brecha_salario_cbt": {
-                "peso": 0.458,
+                "peso": 0.6081,
                 "puntaje_banda": 112.5,
                 "puntaje_aplicado": 112.5,
                 "peso_efectivo": 0.1706
               },
-              "informalidad": {
-                "peso": 0.2467,
-                "puntaje_banda": 94.2,
-                "puntaje_aplicado": 94.2,
-                "peso_efectivo": 0.0919
-              },
               "pobreza_nowcast": {
-                "peso": 0.25,
+                "peso": 0.3319,
                 "puntaje_banda": 126.9,
                 "puntaje_aplicado": 126.9,
                 "peso_efectivo": 0.0931
               },
               "consumo_carne": {
-                "peso": 0.0302,
+                "peso": 0.04,
                 "puntaje_banda": 89.3,
                 "puntaje_aplicado": 89.3,
                 "peso_efectivo": 0.0112
               },
               "patentamiento_motos": {
-                "peso": 0.0151,
+                "peso": 0.02,
                 "puntaje_banda": 140.0,
                 "puntaje_aplicado": 140.0,
                 "peso_efectivo": 0.0056
               }
             },
-            "peso_efectivo": 0.3725,
+            "peso_efectivo": 0.2806,
             "critica": false,
             "semaforo": {
               "color": "verde",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 111,3, equivale a una tensión de 2,7/10 en la escala del informe.",
-              "tension": 2.7
+              "por_que": "El índice de la dimensión, 116,9, equivale a una tensión de 1,6/10 en la escala del informe.",
+              "tension": 1.6
             }
           },
           "precios": {
@@ -3776,42 +3770,48 @@
           },
           "empleo": {
             "nombre": "Prospectivas de empleo",
-            "peso": 0.15,
-            "puntaje": 92.4,
+            "peso": 0.2419,
+            "puntaje": 93.1,
             "indicadores": {
+              "informalidad": {
+                "peso": 0.3799,
+                "puntaje_banda": 94.2,
+                "puntaje_aplicado": 94.2,
+                "peso_efectivo": 0.0919
+              },
               "empleo_registrado": {
-                "peso": 0.4023,
+                "peso": 0.2495,
                 "puntaje_banda": 95.7,
                 "puntaje_aplicado": 95.7,
-                "peso_efectivo": 0.0603
+                "peso_efectivo": 0.0604
               },
               "mortalidad_pymes": {
-                "peso": 0.2644,
+                "peso": 0.164,
                 "puntaje_banda": 97.4,
                 "puntaje_aplicado": 97.4,
                 "peso_efectivo": 0.0397
               },
               "despacho_cemento": {
-                "peso": 0.2414,
+                "peso": 0.1497,
                 "puntaje_banda": 82.2,
                 "puntaje_aplicado": 82.2,
                 "peso_efectivo": 0.0362
               },
               "pluriempleo": {
-                "peso": 0.0919,
+                "peso": 0.0569,
                 "puntaje_banda": 90.7,
                 "puntaje_aplicado": 90.7,
                 "peso_efectivo": 0.0138
               }
             },
-            "peso_efectivo": 0.15,
+            "peso_efectivo": 0.2419,
             "critica": false,
             "semaforo": {
               "color": "naranja",
               "umbrales": null,
               "unidad": null,
-              "por_que": "El índice de la dimensión, 92,4, equivale a una tensión de 6,5/10 en la escala del informe.",
-              "tension": 6.5
+              "por_que": "El índice de la dimensión, 93,1, equivale a una tensión de 6,4/10 en la escala del informe.",
+              "tension": 6.4
             }
           },
           "percepcion": {
@@ -3867,7 +3867,7 @@
         },
         "ajustes_aplicados": [],
         "robustez": {
-          "p05": 88.5,
+          "p05": 88.4,
           "p95": 92.8,
           "tension_rango": [
             6.4,
@@ -3879,45 +3879,45 @@
           },
           "n_draws": 1000,
           "hist": [
-            4,
             3,
-            8,
-            15,
-            11,
-            17,
-            26,
-            21,
-            30,
-            27,
-            37,
-            39,
-            37,
-            47,
-            48,
-            59,
-            42,
-            49,
-            54,
-            42,
-            43,
-            58,
-            32,
-            37,
-            43,
-            44,
-            29,
-            32,
-            18,
-            15,
-            9,
-            7,
-            10,
             2,
+            2,
+            6,
+            13,
+            19,
+            17,
+            16,
+            31,
+            27,
+            26,
+            29,
+            42,
+            45,
+            52,
+            54,
+            40,
+            57,
+            49,
+            55,
+            64,
+            48,
+            41,
+            39,
+            51,
+            35,
+            35,
+            21,
+            21,
+            9,
+            14,
+            10,
+            14,
+            8,
             2,
             3
           ],
-          "hist_min": 87.4,
-          "hist_max": 94.11,
+          "hist_min": 87.27,
+          "hist_max": 93.94,
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
@@ -5168,7 +5168,7 @@
         }
       },
       "fuente_enriquecida": "vida_cotidiana_20260818_0128.json",
-      "score_explicacion": "ITCIS-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada en las condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITCIS − 100) × 0,2."
+      "score_explicacion": "ITCIS-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada en las condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. La tensión del cinturón es 5 − (ITCIS − 100) × 0,2."
     },
     "gestion": {
       "score": 2.4,

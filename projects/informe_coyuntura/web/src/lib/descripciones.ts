@@ -446,10 +446,10 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.",
   social_orden: "La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud.",
   // ITCIS
-  ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.",
+  ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.",
   precios: "Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).",
   vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. Es la única señal de la dimensión desde que el stock de deuda salió del índice — el nivel de deuda no distingue acceso de fragilidad, la mora sí.",
-  empleo: "Las perspectivas de trabajo, con el empleo registrado del sector privado como componente principal, más tres señales del entorno que lo demanda: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
+  empleo: "El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
   percepcion: "El ánimo con que se vive el momento, medido de dos maneras: preguntando (el Índice de Confianza del Consumidor de la UTDT) y observando qué busca la gente en internet.",
   seguridad: "Qué proporción de los hogares fue víctima de un delito. No es percepción ni sensación: es el hecho, relevado por encuesta.",
   // ITCP

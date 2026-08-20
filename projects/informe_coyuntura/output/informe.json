@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-20T19:29:27.256678-03:00",
+  "generated_at": "2026-08-20T20:14:23.044945-03:00",
   "period": "2026-08",
   "score_global": 4.2,
   "ponderacion": {
@@ -1176,41 +1176,35 @@
         "dimensiones": {
           "ingresos": {
             "nombre": "Ingresos y consumo",
-            "peso": 0.3725,
-            "puntaje": 111.3,
+            "peso": 0.2806,
+            "puntaje": 116.9,
             "indicadores": {
               "brecha_salario_cbt": {
-                "peso": 0.458,
+                "peso": 0.6081,
                 "puntaje_banda": 112.5,
                 "puntaje_aplicado": 112.5,
                 "peso_efectivo": 0.1706
               },
-              "informalidad": {
-                "peso": 0.2467,
-                "puntaje_banda": 94.2,
-                "puntaje_aplicado": 94.2,
-                "peso_efectivo": 0.0919
-              },
               "pobreza_nowcast": {
-                "peso": 0.25,
+                "peso": 0.3319,
                 "puntaje_banda": 126.9,
                 "puntaje_aplicado": 126.9,
                 "peso_efectivo": 0.0931
               },
               "consumo_carne": {
-                "peso": 0.0302,
+                "peso": 0.04,
                 "puntaje_banda": 89.3,
                 "puntaje_aplicado": 89.3,
                 "peso_efectivo": 0.0112
               },
               "patentamiento_motos": {
-                "peso": 0.0151,
+                "peso": 0.02,
                 "puntaje_banda": 140.0,
                 "puntaje_aplicado": 140.0,
                 "peso_efectivo": 0.0056
               }
             },
-            "peso_efectivo": 0.3725
+            "peso_efectivo": 0.2806
           },
           "precios": {
             "nombre": "Presión de precios",
@@ -1254,35 +1248,41 @@
           },
           "empleo": {
             "nombre": "Prospectivas de empleo",
-            "peso": 0.15,
-            "puntaje": 92.4,
+            "peso": 0.2419,
+            "puntaje": 93.1,
             "indicadores": {
+              "informalidad": {
+                "peso": 0.3799,
+                "puntaje_banda": 94.2,
+                "puntaje_aplicado": 94.2,
+                "peso_efectivo": 0.0919
+              },
               "empleo_registrado": {
-                "peso": 0.4023,
+                "peso": 0.2495,
                 "puntaje_banda": 95.7,
                 "puntaje_aplicado": 95.7,
-                "peso_efectivo": 0.0603
+                "peso_efectivo": 0.0604
               },
               "mortalidad_pymes": {
-                "peso": 0.2644,
+                "peso": 0.164,
                 "puntaje_banda": 97.4,
                 "puntaje_aplicado": 97.4,
                 "peso_efectivo": 0.0397
               },
               "despacho_cemento": {
-                "peso": 0.2414,
+                "peso": 0.1497,
                 "puntaje_banda": 82.2,
                 "puntaje_aplicado": 82.2,
                 "peso_efectivo": 0.0362
               },
               "pluriempleo": {
-                "peso": 0.0919,
+                "peso": 0.0569,
                 "puntaje_banda": 90.7,
                 "puntaje_aplicado": 90.7,
                 "peso_efectivo": 0.0138
               }
             },
-            "peso_efectivo": 0.15
+            "peso_efectivo": 0.2419
           },
           "percepcion": {
             "nombre": "Confianza y percepción",

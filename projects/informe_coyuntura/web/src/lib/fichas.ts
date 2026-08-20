@@ -2582,7 +2582,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el consumo rebaseado a 100 = promedio del 4º trimestre de 2023 (menos carne = deterioro).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (3,02% interno · 1,12% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (4% interno · 1,12% del ITCIS).",
     ],
     limitaciones: [
       "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: la caída del consumo de carne vacuna se compensa en buena medida con el aumento del de cerdo y la estabilidad del de pollo, de modo que el consumo total de las tres carnes cae mucho menos que el de vacuna sola. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,12%) y acompaña, no lidera.",
@@ -2614,7 +2614,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se invierte, como los otros componentes que se leen al revés: más pobreza es peor, así que la base va arriba en el cociente y por encima de 100 significa MENOS pobreza que en la transición.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (25% interno · 9,31% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (33,19% interno · 9,31% del ITCIS).",
       "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
     ],
     limitaciones: [
@@ -2647,7 +2647,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos informalidad = mejora) contra el trimestre del arranque del mandato (4º trimestre de 2023).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (24,67% interno · 9,19% del ITCIS).",
+      "Pertenece a la dimensión de prospectivas de empleo (37,99% interno · 9,19% del ITCIS): es su componente más pesado.",
     ],
     limitaciones: [
       "Solo asalariados: no captura la informalidad cuentapropista.",
@@ -2679,7 +2679,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se usa la serie desestacionalizada porque la original mostraba variaciones de hasta ±20% mensual de puro calendario.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (26,44% interno · 3,97% del ITCIS).",
+      "Pertenece a la dimensión de prospectivas de empleo (16,4% interno · 3,97% del ITCIS).",
     ],
     limitaciones: [
       "Es una aproximación declarada: mide producción industrial agregada, no mortandad de empresas — el nombre del indicador promete más de lo que la fuente da.",
@@ -2709,7 +2709,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La serie original tiene un desplome estacional en diciembre que contaminaría la base: por eso la desestacionalizada.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (24,14% interno · 3,62% del ITCIS).",
+      "Pertenece a la dimensión de prospectivas de empleo (14,97% interno · 3,62% del ITCIS).",
     ],
     limitaciones: [
       "Aproximación al empleo vía actividad de la construcción, no despachos de cemento reales (la serie de insumos existe aparte, como contraste).",
@@ -2737,7 +2737,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (9,19% interno · 1,38% del ITCIS).",
+      "Pertenece a la dimensión de prospectivas de empleo (5,69% interno · 1,38% del ITCIS).",
     ],
     limitaciones: [
       "Aproximación declarada: mide gente que trabaja poco y busca más, no la tenencia de múltiples empleos.",
@@ -2862,7 +2862,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Recorte declarado: el componente se acota al techo de 140 — un boom puntual no compra compensación ilimitada dentro del índice; el valor crudo queda declarado en el detalle.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (1,51% interno · 0,56% del ITCIS): el peso más chico del índice.",
+      "Pertenece a la dimensión de ingresos y consumo (2% interno · 0,56% del ITCIS): el peso más chico del índice.",
     ],
     limitaciones: [
       "Es el componente más eufórico del cinturón (muy por encima de su base): motivo del techo de recorte y de la baja de peso.",

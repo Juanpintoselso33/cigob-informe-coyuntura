@@ -7,6 +7,8 @@ cinturon: 'vida'
 indicadores: [empleo_registrado, empleo]
 complementa: ['0112']
 relacionado: ['0127']
+modificado_por: ['0214']
+complementado_por: ['0214']
 ambito: 'ITVC · `empleo_registrado` (nuevo) · dimensión `empleo` · serie'
 origen: 'Hallazgo al separar la recaudación por componente (ADR-0127)'
 ---

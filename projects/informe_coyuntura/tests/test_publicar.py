@@ -490,11 +490,14 @@ def test_vida_itvc_reconcilia():
 
     # Los pesos de dimensión llegan publicados. Ya no son los 35/25/10/15/15 del
     # doc 260702: ADR-0115 partió la dimensión de confianza en percepción y
+    # ADR-0214: ingresos 0,3725→0,2806 y empleo 0,15→0,2419 al mudarse
+    # `informalidad`, que se lleva su peso EFECTIVO (9,19%) intacto. El ITCIS
+    # no se movió: los nominales cambian, lo que cada componente aporta no.
     # seguridad y mudó consumo a ingresos, repartiendo los pesos nominales de
     # modo que el peso EFECTIVO de cada indicador quedara idéntico.
     pesos = {k: d["peso"] for k, d in c["itvc"]["dimensiones"].items()}
-    assert pesos == {"ingresos": 0.3725, "precios": 0.25, "vulnerabilidad": 0.10,
-                     "empleo": 0.15, "percepcion": 0.0825, "seguridad": 0.045}
+    assert pesos == {"ingresos": 0.2806, "precios": 0.25, "vulnerabilidad": 0.10,
+                     "empleo": 0.2419, "percepcion": 0.0825, "seguridad": 0.045}
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
 
     for k, i in en_indice.items():

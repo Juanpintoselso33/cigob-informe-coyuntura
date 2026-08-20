@@ -4,6 +4,7 @@ id: '0154'
 estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'vida'
+relacionado: ['0214']
 cerrado_por: ['0167']
 ambito: 'cinturón vida cotidiana (ITVC-B100), dimensiones vulnerabilidad'
 ---

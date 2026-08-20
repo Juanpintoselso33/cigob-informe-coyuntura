@@ -1,4 +1,4 @@
-# Manual metodológico — cinturón Vida cotidiana (ITVC)
+# Manual metodológico — cinturón Impacto social (ITCIS)
 
 > **Generado** por `scripts/manual_cinturon.py` desde el código que corre
 > (`scripts/itvc.py`) y el frontmatter de los ADR. No editar a mano.
@@ -14,10 +14,10 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `ingresos` | 37% | `brecha_salario_cbt`, `informalidad`, `pobreza_nowcast`, `consumo_carne`, `patentamiento_motos` |
+| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carne`, `patentamiento_motos` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias` |
-| `empleo` | 15% | `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `pluriempleo` |
+| `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `pluriempleo` |
 | `percepcion` | 8% | `icc_utdt`, `sentimiento_digital` |
 | `seguridad` | 4% | `inseguridad` |
 
@@ -36,7 +36,7 @@ donde colar una calibración (ADR-0123).
 
 ## Qué mide cada indicador
 
-### Dimensión `ingresos` (37%)
+### Dimensión `ingresos` (28%)
 
 #### Salario real vs. canasta
 
@@ -44,23 +44,9 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 46% |
+| Peso dentro de la dimensión | 61% |
 | Peso efectivo en el índice | **17.1%** |
 | Procedencia del ancla | `conceptual` — rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123) |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
-
-#### Informalidad laboral
-
-`informalidad`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 25% |
-| Peso efectivo en el índice | **9.2%** |
-| Procedencia del ancla | `conceptual` — rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -72,7 +58,7 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 25% |
+| Peso dentro de la dimensión | 33% |
 | Peso efectivo en el índice | **9.3%** |
 | Procedencia del ancla | `conceptual` — rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha |
 
@@ -80,13 +66,13 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0113](../adr/0113-nowcast-de-pobreza.md) La pobreza se publica, con la única fuente mensual que existe · [ADR-0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) La pobreza oficial acompaña al nowcast en el mismo gráfico
 
-#### Consumo de carne per cápita
+#### Consumo de carne vacuna per cápita
 
 `consumo_carne`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 3% |
+| Peso dentro de la dimensión | 4% |
 | Peso efectivo en el índice | **1.1%** |
 | Procedencia del ancla | `conceptual` — consumo per cápita rebaseado a 4T-2023; ancla en fecha fija |
 
@@ -168,7 +154,21 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0067](../adr/0067-mora-familias-indicador-propio.md) la mora de las familias sale del compuesto de endeudamiento y puntúa como indicador propio del ITVC
 
-### Dimensión `empleo` (15%)
+### Dimensión `empleo` (24%)
+
+#### Informalidad laboral
+
+`informalidad`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 38% |
+| Peso efectivo en el índice | **9.2%** |
+| Procedencia del ancla | `conceptual` — rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123) |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0214](../adr/0214-la-informalidad-es-una-condicion-del-empleo.md) La informalidad es una condición del empleo, no del ingreso
 
 #### Empleo registrado privado
 
@@ -176,7 +176,7 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 40% |
+| Peso dentro de la dimensión | 25% |
 | Peso efectivo en el índice | **6.0%** |
 | Procedencia del ancla | `conceptual` — asalariados privados registrados (SIPA) rebaseados a 4T-2023, sin invertir (ADR-0130); ancla en fecha fija |
 
@@ -190,7 +190,7 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 26% |
+| Peso dentro de la dimensión | 16% |
 | Peso efectivo en el índice | **4.0%** |
 | Procedencia del ancla | `conceptual` — nivel del IPI desestacionalizado rebaseado a 4T-2023; ancla en fecha fija |
 
@@ -204,7 +204,7 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 24% |
+| Peso dentro de la dimensión | 15% |
 | Peso efectivo en el índice | **3.6%** |
 | Procedencia del ancla | `conceptual` — nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija |
 
@@ -218,7 +218,7 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 9% |
+| Peso dentro de la dimensión | 6% |
 | Peso efectivo en el índice | **1.4%** |
 | Procedencia del ancla | `conceptual` — subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija |
 
@@ -283,7 +283,7 @@ histórica.
 
 ## Decisiones abiertas
 
-5 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
+6 ADR vigentes de este cinturón declaran algo pendiente de decisión editorial. No son trabajo técnico: son llamadas que sólo puede hacer el editor.
 
 > La detección lee la prosa, así que **sobre-reporta a propósito**: si un ADR anota un pendiente y lo resuelve unos párrafos más abajo, sigue apareciendo acá. Se prefiere ese error al contrario —perder una decisión realmente abierta—. La marca ⚠️ sí es firme: sale de las relaciones declaradas entre ADR, no de adivinar sobre el texto.
 
@@ -301,10 +301,12 @@ histórica.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0160. Verificar antes de tratarlo como abierto.
 - **[ADR-0160](../adr/0160-la-dispersion-del-itvc-se-publica-junto-al-neto.md)** — La dispersión del ITVC se publica junto al neto
   <br>- Queda como pendiente editorial si la dispersión merece su propio gráfico: hoy
+- **[ADR-0206](../adr/0206-los-dos-artefactos-publicados-dicen-lo-mismo.md)** — Los dos artefactos publicados dicen lo mismo
+  <br>fondo y queda pendiente: `_scoring_vida_itvc` arrastra `_itvc_indices`, el
 
 ## Todos los ADR vigentes de este cinturón
 
-25 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+28 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -331,3 +333,6 @@ histórica.
 - [0155](../adr/0155-el-ancla-del-itvc-pasa-a-ser-el-consumo-medido.md) — El ancla de validación del ITVC pasa a ser el consumo medido
 - [0160](../adr/0160-la-dispersion-del-itvc-se-publica-junto-al-neto.md) — La dispersión del ITVC se publica junto al neto
 - [0163](../adr/0163-el-itvc-se-contrasta-contra-volumenes-fisicos-del-hogar.md) — El ITVC se contrasta contra volúmenes físicos consumidos por los hogares
+- [0206](../adr/0206-los-dos-artefactos-publicados-dicen-lo-mismo.md) — Los dos artefactos publicados dicen lo mismo
+- [0208](../adr/0208-el-itvc-vive-en-su-modulo-y-el-intermedio-nace-bien.md) — El ITVC vive en su módulo, y el intermedio nace bien
+- [0214](../adr/0214-la-informalidad-es-una-condicion-del-empleo.md) — La informalidad es una condición del empleo, no del ingreso

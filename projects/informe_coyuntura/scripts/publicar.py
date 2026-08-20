@@ -329,8 +329,8 @@ SCORE_EXPLICACION = {
                        "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
                        "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),
     "vida_cotidiana": ("ITCIS-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada en las "
-                       "condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, "
-                       "vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. "
+                       "condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 28%, precios 25%, "
+                       "vulnerabilidad financiera 10%, empleo 24%, confianza y percepción 8%, seguridad 5%. "
                        "La tensión del cinturón es 5 − (ITCIS − 100) × 0,2."),
 }
 

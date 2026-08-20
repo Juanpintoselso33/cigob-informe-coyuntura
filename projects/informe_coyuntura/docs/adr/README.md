@@ -237,6 +237,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0163](0163-el-itvc-se-contrasta-contra-volumenes-fisicos-del-hogar.md) | El ITVC se contrasta contra volúmenes físicos consumidos por los hogares |  | vigente |
 | [0206](0206-los-dos-artefactos-publicados-dicen-lo-mismo.md) | Los dos artefactos publicados dicen lo mismo |  | vigente |
 | [0208](0208-el-itvc-vive-en-su-modulo-y-el-intermedio-nace-bien.md) | El ITVC vive en su módulo, y el intermedio nace bien |  | vigente |
+| [0214](0214-la-informalidad-es-una-condicion-del-empleo.md) | La informalidad es una condición del empleo, no del ingreso | `informalidad` | vigente |
 
 ### Espíritu de época
 

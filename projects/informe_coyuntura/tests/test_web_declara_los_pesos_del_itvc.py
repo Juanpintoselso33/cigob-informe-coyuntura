@@ -87,11 +87,61 @@ def _declarados(texto: str) -> list[tuple[str, float]]:
     # y así fue como se quedó con el valor previo a ADR-0111/0153. Los que
     # hablan de OTRO índice (los del ITCM) caen en claves que no están en
     # PESOS y el comparador los saltea.
-    for m in re.finditer(r"([0-9]+,[0-9]+)% del (?:ITCIS|índice)", texto):
+    for m in re.finditer(r"([0-9]+(?:,[0-9]+)?)% del (?:ITCIS|índice)", texto):
         i = bisect.bisect_right(claves, (m.start(), "\uffff")) - 1
         if i >= 0:
             fuera.append((claves[i][1], float(m.group(1).replace(",", "."))))
     return fuera
+
+
+# La oración canónica de la ficha: dimensión, peso interno y peso efectivo en
+# una sola frase. Se parsea entera y no por pedazos, para no confundirla con
+# los `cambios`, que citan pesos VIEJOS a propósito ("entra con 50% interno")
+# y son registro histórico, no declaración vigente.
+PERTENECE = re.compile(
+    r"Pertenece a la dimensión de ([^(]+?)\s*"
+    r"\((\d+(?:,\d+)?)% interno · (\d+(?:,\d+)?)% del ITCIS\)")
+
+
+def _pertenencias(texto: str):
+    """(indicador, dimensión declarada, % interno, % efectivo) de cada ficha
+    que use la oración canónica."""
+    claves = [(m.start(), m.group(1))
+              for m in re.finditer(r"^  ([a-z_0-9]+): \{$", texto, re.M)]
+    fuera = []
+    for m in PERTENECE.finditer(texto):
+        i = bisect.bisect_right(claves, (m.start(), "\uffff")) - 1
+        if i >= 0:
+            fuera.append((claves[i][1], m.group(1).strip().lower(),
+                          float(m.group(2).replace(",", ".")),
+                          float(m.group(3).replace(",", "."))))
+    return fuera
+
+
+def test_hay_pertenencias_que_verificar():
+    assert len(_pertenencias(FICHAS)) >= 8
+
+
+def test_la_ficha_ubica_y_pesa_cada_indicador_como_la_parametrica():
+    """El peso INTERNO y la dimensión son lo que se mueve cuando un indicador
+    cambia de casa: el efectivo puede quedar intacto —ADR-0214 lo conserva a
+    propósito— y aun así la ficha queda declarando un reparto que ya no
+    existe."""
+    nombres = {k: d["nombre"].lower() for k, d in itvc.DIMENSIONES_ITVC.items()}
+    dim_de = {i: nombres[k] for k, d in itvc.DIMENSIONES_ITVC.items()
+              for i in d["indicadores"]}
+    malos = []
+    for ind, dim, interno, efectivo in _pertenencias(FICHAS):
+        if ind not in PESOS:
+            continue
+        if dim != dim_de[ind]:
+            malos.append(f"{ind}: la ficha lo pone en «{dim}», la paramétrica "
+                         f"en «{dim_de[ind]}»")
+        esperado = PESOS[ind][0] * 100
+        if abs(interno - esperado) > 0.06:
+            malos.append(f"{ind}: la ficha dice {interno}% interno, la "
+                         f"paramétrica da {round(esperado, 2)}%")
+    assert not malos, "fichas.ts y la paramétrica no dicen lo mismo:\n  " + "\n  ".join(malos)
 
 
 def test_las_fichas_declaran_el_peso_que_calcula_la_parametrica():
