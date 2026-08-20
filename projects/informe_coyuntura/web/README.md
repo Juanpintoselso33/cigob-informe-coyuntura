@@ -1,4 +1,4 @@
-# Informe de Coyuntura — Web (Astro)
+# Monitor del Plan de Gobierno — Web (Astro)
 
 App [Astro](https://astro.build/) que renderiza el observatorio público del Informe de
 Coyuntura. Replica el estilo del observatorio de klipea (CSS propio de CIGOB) y se

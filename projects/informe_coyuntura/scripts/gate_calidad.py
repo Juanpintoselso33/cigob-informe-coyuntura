@@ -391,6 +391,19 @@ def main() -> int:
                                       f"publica un período nuevo (> {G7_MAX_SIN_AVANZAR}d); "
                                       f"sigue clavada en {info.get('ultimo')}")
 
+    # ── G8 — la lectura del mes ──────────────────────────────────────────────
+    # AVISA, no bloquea: sin archivo del período la portada cae sola a la
+    # síntesis automática, que es publicable y dice de dónde sale (ADR-0211).
+    # Lo que este aviso evita es lo otro: que el mes arranque, nadie escriba la
+    # lectura y nadie se entere hasta que un lector lo note.
+    periodo = inf.get("period")
+    if periodo:
+        editorial = ROOT / "web" / "src" / "contenido" / "lectura-del-mes" / f"{periodo}.md"
+        if not editorial.exists():
+            avisos.append(f"G8: {periodo} sin lectura editorial "
+                          f"({editorial.relative_to(ROOT)}) — la portada publica la "
+                          f"síntesis automática")
+
     # ── Bloqueantes vs. no bloqueantes (ADR-0133) ────────────────────────────
     # Una fuente que se atrasa NO puede impedir que se publique todo lo demás.
     # El indicador ya queda marcado `desactualizado`, publicar.py hace

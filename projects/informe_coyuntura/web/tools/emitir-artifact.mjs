@@ -427,7 +427,7 @@ const html = `<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Informe de Coyuntura · CiGob</title>
+<title>Monitor del Plan de Gobierno · CiGob</title>
 <meta name="generator" content="web/tools/emitir-artifact.mjs — desde web/dist">
 <style>${css}</style>
 </head>

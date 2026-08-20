@@ -1,6 +1,6 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-18 01:36:24"
+generado: "2026-08-20 20:34:22"
 score_global: 4.2
 barbarismo_activo: "político"
 alerta_multicinturon: false
@@ -102,4 +102,4 @@ schema_version: "1.2.0"
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-08-18 01:36:24 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-20 20:34:22 — schema 1.2.0*

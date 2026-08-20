@@ -1,10 +1,12 @@
 ---
 madr: 4
 id: '0190'
-estado: 'propuesto'
+estado: 'aceptado'
 fecha: 2026-08-09
 cinturon: 'transversal'
+archivos: ['scripts/publicar.py', 'scripts/panel_validacion.py', 'tests/test_siglas_publicas.py']
 relacionado: ['0012', '0013', '0018', '0189']
+superado_parcialmente_por: ['0212']
 ambito: 'Nombres y siglas de los cuatro índices paramétricos'
 origen: 'Editor, 2026-08-09: "quedan pendiente renombrar los índices, quedaron con nombres poco indicativos de lo que son, además muy parecidos a los de la Di Tella."'
 ---
@@ -66,7 +68,66 @@ sale a CIGOB fija más las siglas actuales.
 
 ## Decisión
 
-**Pendiente.** Este ADR queda en `propuesto` para dejar registrado el problema
+**Cerrado el 2026-08-20.** Los dos problemas se resuelven, y ninguno por la vía
+que este ADR había imaginado.
+
+**El de atribución —el más serio— se resuelve nombrando al dueño, no
+renombrando lo propio.** El riesgo real nunca fue la sigla en sí: era que un
+lector encontrara `ICG` e `ITCG` juntos y no supiera cuál es nuestro. Se
+audita dónde aparece el ajeno y se corrige ahí:
+
+- el texto del contraste del ITCG decía *"la confianza en el gobierno (ICG UTDT)
+  diverge del ITCG"*, poniendo las dos siglas a una letra en la misma oración.
+  Ahora escribe el ajeno entero —*"el Índice de Confianza en el Gobierno de la
+  Universidad Torcuato Di Tella —un índice ajeno, no nuestro—"*— y deja el
+  propio como la única sigla de la frase;
+- la etiqueta del panel pasa de `Confianza en el Gobierno (ICG)` a
+  `Confianza en el Gobierno (ICG de la UTDT)`: el dueño va pegado a la sigla y
+  no sólo en la columna de al lado, que es lo que este ADR pedía en su tercer
+  punto pendiente.
+
+`tests/test_siglas_publicas.py` lo vuelve estructural: falla si el snapshot
+publica una sigla de tercero —`ICG`, `LICIP`— sin su dueño en el mismo texto.
+
+**El de "no dicen qué miden" lo resuelve la portada, no la sigla.** Desde
+[[0213-la-portada-dice-que-mide-cada-cinturon]] el lector tiene en pantalla qué
+mide cada uno de los cuatro antes de ver un número. Una sigla de cuatro letras
+nunca iba a poder decir "capacidad de validar las normas que el proyecto
+necesita"; una frase sí, y ya está publicada.
+
+**Por lo tanto ITCM, ITCP e ITCG se conservan.** No queda nada por definir. El
+único renombre que se hizo es el del cuarto, y no fue por este ADR: fue porque
+el cinturón cambió de nombre y su sigla tenía que seguirlo
+([[0212-el-monitor-del-plan-de-gobierno-y-el-cinturon-de-impacto-social]]).
+
+### Lo que se descartó, y por qué
+
+Renombrar los tres restantes costaba una migración —o una divergencia
+permanente entre página, claves, ADR y BigQuery— para comprar legibilidad que
+la portada ya entrega gratis. Y el `ITCG` sigue siendo, literalmente, el Índice
+de Tensión del Cinturón de Gestión: el nombre es correcto, lo que fallaba era
+que el ajeno se publicaba sin dueño.
+
+---
+
+**Registro del estado anterior (parcial, 2026-08-20).**
+[[0212-el-monitor-del-plan-de-gobierno-y-el-cinturon-de-impacto-social]] tomó la
+**opción 1** —renombrar sólo lo público— para **uno** de los cuatro: el cinturón
+de vida cotidiana pasó a llamarse *Impacto social* y su índice, de `ITVC` a
+`ITCIS`, con las claves técnicas, la URL y BigQuery intactos. Llegó junto con la
+primera de las tres definiciones que este ADR esperaba: la Fundación nombró ese
+cinturón.
+
+Sigue pendiente lo demás, y en particular **lo más caro de los dos problemas que
+este ADR nombra: la colisión de ITCG con el ICG de la UTDT**, que el propio
+informe publica. Renombrar uno de cuatro no la toca. ITCM, ITCG e ITCP esperan.
+
+El texto que sigue es el planteo original y vale tal cual para esos tres.
+
+---
+
+**Pendiente (redacción original, 2026-08-09).** Este ADR queda en `propuesto`
+para dejar registrado el problema
 y que no se pierda; la decisión requiere definir antes tres cosas:
 
 1. **Los nombres nuevos**, que es una decisión editorial de CIGOB, no técnica.

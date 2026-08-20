@@ -18,12 +18,19 @@ def test_la_dimension_empleo_mide_empleo():
     assert "empleo_registrado" in _dim()
 
 
-def test_es_el_componente_principal():
-    """0,35 nominal de ADR-0130 → 0,4023 cuando ADR-0154 saca al índice líder y
-    los cuatro que quedan absorben proporcionalmente (÷0,87). Sigue siendo el
-    principal, que es lo que este test cuida."""
+def test_sigue_pesando_mas_que_los_proxies():
+    """Lo que ADR-0130 puso a cuidar es que la medida DIRECTA de empleo pese
+    más que los tres proxies de entorno (IPI, cemento, subocupación). Eso sigue
+    en pie. Lo que cambió es que ya no es el componente más pesado de la
+    dimensión: ADR-0214 mudó `informalidad` acá con su peso efectivo intacto
+    (9,19% del índice contra 6,04%), y quedó primera. No es una degradación del
+    registrado — es que la dimensión pasó a tener DOS medidas directas de
+    empleo, una de volumen y otra de calidad, que es lo que ADR-0033 pedía."""
     ind = _dim()
-    assert ind["empleo_registrado"] == max(ind.values()) == 0.4023
+    assert ind["empleo_registrado"] == 0.2495
+    for proxy in ("mortalidad_pymes", "despacho_cemento", "pluriempleo"):
+        assert ind["empleo_registrado"] > ind[proxy], f"{proxy} lo pasó"
+    assert max(ind, key=ind.get) == "informalidad", "ADR-0214 la puso primera"
 
 
 def test_los_pesos_suman_uno():
@@ -42,8 +49,12 @@ def test_los_proxies_conservan_su_orden_relativo():
     assert valores == sorted(valores, reverse=True), ind
 
 
-def test_el_peso_nominal_de_la_dimension_no_se_toco():
-    assert itvc.DIMENSIONES_ITVC["empleo"]["peso"] == 0.15
+def test_el_peso_nominal_sube_solo_por_lo_que_entro():
+    """ADR-0130 no tocó el nominal (0,15). ADR-0214 lo sube a 0,2419, y el
+    delta tiene que ser EXACTAMENTE el peso efectivo que traía `informalidad`
+    (0,3725 × 0,2467 = 0,0919). Si difiere, alguien recalibró de contrabando."""
+    peso = itvc.DIMENSIONES_ITVC["empleo"]["peso"]
+    assert abs(peso - (0.15 + 0.3725 * 0.2467)) < 5e-5, peso
 
 
 def test_no_se_invierte():

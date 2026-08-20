@@ -8,9 +8,9 @@ cuándo, el registro histórico está en [docs/adr/](../adr/README.md).
 
 | Cinturón | Índice | Manual |
 |---|---|---|
-| Política | `ITCP` | [politica.md](politica.md) |
-| Macro | `ITCM` | [macro.md](macro.md) |
-| Gestión | `ITCG` | [gestion.md](gestion.md) |
-| Vida cotidiana | `ITVC` | [vida.md](vida.md) |
+| Política | ITCP | [politica.md](politica.md) |
+| Macro | ITCM | [macro.md](macro.md) |
+| Gestión | ITCG | [gestion.md](gestion.md) |
+| Impacto social | ITCIS | [vida.md](vida.md) |
 
 Regenerar: `python scripts/manual_cinturon.py --todos`

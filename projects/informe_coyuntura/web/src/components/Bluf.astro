@@ -1,10 +1,18 @@
 ---
 import { informe, cap, mesLegible, CINTURONES, verdictDeCinturon, peorDimension, num } from "../lib/datos.ts";
 
-// Síntesis AUTOMÁTICA del tablero (sin placeholder editorial en producción):
-// se arma de los mismos datos del snapshot, así nunca queda vieja ni vacía.
-// La lectura editorial firmada del equipo se suma con cada edición mensual;
-// mientras no exista, esta síntesis es honesta sobre su origen (ver nota).
+// La lectura del mes tiene DOS caminos, y el orden importa (ADR-0211).
+//
+// 1. Si el período publicado tiene su archivo en contenido/lectura-del-mes/,
+//    se publica ese texto, firmado por el equipo.
+// 2. Si no lo tiene, cae a la síntesis AUTOMÁTICA que se arma del snapshot y
+//    lo declara al pie.
+//
+// El fallback no es prolijidad: el nocturno publica todas las noches, así que
+// sin él, el primer día del mes siguiente la portada amanece mostrando la
+// lectura del mes pasado como si fuera la de hoy. Ningún gate lo detecta
+// —gate_calidad.py mira estructura, frescura y card-vs-serie, no la vigencia
+// de la prosa—, así que la única defensa es que el código no pueda hacerlo.
 const estados = CINTURONES.map(m => ({ meta: m, c: informe.cinturones[m.key] }))
   .filter(x => x.c);
 const porVerdict = (v: string) => estados.filter(x => verdictDeCinturon(x.c.estado) === v);
@@ -51,6 +59,14 @@ const fraseEstados = cap(frases.join("; ")) + ".";
 const fraseFoco = foco
   ? `La mayor presión puntual del mes está en ${foco.dim.nombre.toLowerCase()} (${num(foco.dim.puntaje)}${foco.dim.base100 ? "" : "/100"}), la dimensión que más tensión aporta al índice de ${foco.meta.nombre.toLowerCase()}.`
   : "";
+
+// El archivo del período, si alguien lo escribió. El glob es EAGER porque
+// esto se resuelve en build: no hay servidor que pueda ir a buscarlo después.
+// La ruta se compara por sufijo `/AAAA-MM.md` — `informe.period` ya viene en
+// ese formato exacto desde el snapshot.
+const editoriales = import.meta.glob<{ Content: any }>("../contenido/lectura-del-mes/*.md", { eager: true });
+const Editorial = Object.entries(editoriales)
+  .find(([ruta]) => ruta.endsWith(`/${informe.period}.md`))?.[1]?.Content;
 ---
 <section class="cg-section cg-bluf" id="snapshot">
   <p class="cg-eyebrow">La lectura del mes</p>
@@ -58,10 +74,19 @@ const fraseFoco = foco
   {/* sin línea de score/riesgo: el hero los muestra un scroll arriba y el
       texto de abajo los integra — duplicarlos acá fue hallazgo de la
       revisión adversarial 2026-07-11 */}
-  <p class="cg-bluf-text">
-    {fraseEstados} {fraseFoco} El riesgo dominante del período es el barbarismo
-    {informe.barbarismo_activo}: el desequilibrio hacia el que más se inclina hoy el
-    tablero si las tensiones no se procesan.
-  </p>
-  <p class="cg-bluf-nota">Síntesis generada automáticamente a partir del tablero de indicadores. La lectura editorial del equipo acompaña cada edición mensual.</p>
+  {Editorial ? (
+    <Fragment>
+      <div class="cg-bluf-text cg-bluf-editorial"><Editorial /></div>
+      <p class="cg-bluf-nota">Lectura editorial del equipo CiGob · {mesLegible(informe.period)}</p>
+    </Fragment>
+  ) : (
+    <Fragment>
+      <p class="cg-bluf-text">
+        {fraseEstados} {fraseFoco} El riesgo dominante del período es el barbarismo
+        {informe.barbarismo_activo}: el desequilibrio hacia el que más se inclina hoy el
+        tablero si las tensiones no se procesan.
+      </p>
+      <p class="cg-bluf-nota">Síntesis generada automáticamente a partir del tablero de indicadores. La lectura editorial del equipo acompaña cada edición mensual.</p>
+    </Fragment>
+  )}
 </section>

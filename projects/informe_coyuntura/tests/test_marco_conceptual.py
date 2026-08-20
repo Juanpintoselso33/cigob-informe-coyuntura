@@ -87,16 +87,38 @@ def test_la_portada_define_la_tension_por_su_cuenta():
     for frase in [
         "La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos",
         "procesar la tensión",
-        "entre las demandas del entorno y los recursos de acción disponibles",
+        "entre las demandas del entorno y los recursos",
     ]:
         assert frase in texto, (
             f"El bloque de la portada perdió «{frase}». La portada muestra seis "
             "agujas de tensión y una leyenda de semáforo que la nombra; si el "
             "bloque no la define, ninguna otra cosa del home lo hace (ADR-0200)."
         )
+
+
+def test_la_portada_dice_que_mide_cada_cinturon():
+    """El espacio que dejó la escala 0-10 no quedó vacío: lo ocupa qué mide cada
+    cinturón, que era la pregunta que el lector hacía primero (ADR-0213). Los
+    cuatro tienen que estar nombrados: con tres, la portada define un tablero
+    de cuatro agujas a medias."""
+    texto = _texto_normalizado(MARCO_HOME)
+    faltantes = [c for c in ("MACRO", "POLÍTICA", "GESTIÓN", "IMPACTO SOCIAL")
+                 if c not in texto]
+    assert not faltantes, (
+        f"El bloque de la portada no dice qué mide {faltantes} (ADR-0213)."
+    )
+
+
+def test_la_escala_sigue_explicada_en_metodologia():
+    """La dirección de la escala salió de la portada (ADR-0213), y eso sólo es
+    aceptable mientras siga explicada en algún lado: cada aguja publica un
+    número /10 que no significa nada por su cuenta. Si esta frase también se
+    va, el sitio vuelve a publicar una escala muda -- que es exactamente el
+    agujero que abrió ADR-0199."""
+    texto = _texto_normalizado(METODOLOGIA_INDEX)
     assert "0 a 10" in texto, (
-        "El bloque de la portada dejó de explicar la dirección de la escala "
-        "(ADR-0200)."
+        "/metodologia dejó de explicar la dirección de la escala, y la portada "
+        "ya no la explica (ADR-0213): no queda ninguna página que lo diga."
     )
 
 

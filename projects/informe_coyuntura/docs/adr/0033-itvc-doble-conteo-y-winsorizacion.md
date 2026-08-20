@@ -6,6 +6,7 @@ fecha: 2026-07-04
 cinturon: 'vida'
 indicadores: [ipc_alimentos]
 relacionado: ['0067']
+cerrado_por: ['0214']
 ambito: 'ITVC-B100: métrica de `ipc_alimentos` + tratamiento de outliers de componentes'
 ---
 

@@ -220,22 +220,22 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Continua (12m)", tipo: "Nivel (%)",
   },
 
-  // ── Vida cotidiana (el bolsillo y la calle) ─────────────────────
+  // ── Impacto social (el bolsillo y la calle) ─────────────────────
   brecha_salario_cbt: {
     que: "Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.",
     aporta: "Mide el poder adquisitivo real del ingreso, lo que la gente siente en el bolsillo.",
     frecuencia: "Mensual", tipo: "Ratio (canastas)",
   },
-  // ADR-0033: en el ITVC puntúa el encarecimiento RELATIVO (alimentos vs IPC
+  // ADR-0033: en el ITCIS puntúa el encarecimiento RELATIVO (alimentos vs IPC
   // general) — la versión salario/alimentos duplicaba la brecha (r = 0,985)
   ipc_alimentos: {
-    que: "Cuánto suben en el mes los precios de alimentos y bebidas. En el ITVC puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.",
+    que: "Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.",
     aporta: "Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.",
     frecuencia: "Mensual", tipo: "Variación (card) · nivel vs IPC general (índice)",
   },
   endeudamiento_familiar: {
-    que: "Cuánto deben las familias por consumo (tarjetas + personales). En el ITVC puntúa el NIVEL de deuda REAL (descontada la inflación), rebaseado a 100 = 4T-2023: más crédito real es más acceso al financiamiento.",
-    aporta: "Mide el acceso al crédito de los hogares como stock puro. La otra cara —si esa deuda se puede pagar— la mide la mora de las familias, su compañera en la dimensión de vulnerabilidad: juntas distinguen crédito que financia consumo de endeudamiento por necesidad.",
+    que: "Cuánto deben las familias por consumo (tarjetas + personales), en nivel de deuda REAL (descontada la inflación). Ya NO puntúa en el ITCIS: salió del índice en ADR-0154 porque el stock de deuda por sí solo no distingue acceso al crédito de fragilidad. Se sigue relevando y su serie se publica.",
+    aporta: "Mide el acceso al crédito de los hogares como stock puro, y esa es justamente su limitación: sin saber si esa deuda se puede pagar, más crédito no dice si es acceso o necesidad. Lo que quedó midiendo la dimensión de vulnerabilidad es la mora de esa cartera, que sí lo distingue.",
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Índice de deuda real (B100)",
   },
   mora_familias: {
@@ -244,22 +244,22 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Nivel (%)",
   },
   peso_tarifas: {
-    que: "Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITVC puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.",
+    que: "Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITCIS puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.",
     aporta: "Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.",
     frecuencia: "Mensual", tipo: "Variación (card) · nivel vs salarios (índice)",
   },
   pobreza_nowcast: {
     que: "El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del INDEC, que se publica dos veces al año: es una proyección que se actualiza todos los meses.",
-    aporta: "Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Se publica como contexto: no integra el índice.",
+    aporta: "Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Integra el ITCIS con el 25% de la dimensión de ingresos y consumo (9,31% del índice), invertida: más pobreza, peor puntaje.",
     frecuencia: "Mensual (semestre móvil)", tipo: "Estimación de terceros",
   },
   indice_lider: {
-    que: "Un índice que combina señales tempranas de la economía —financieras, de expectativas y de actividad— para anticipar los cambios de rumbo antes de que aparezcan en los datos corrientes. En el ITVC puntúa por su NIVEL rebaseado a 100 = 4T-2023.",
-    aporta: "Es el único componente del cinturón que mira hacia adelante: todos los demás describen lo que ya ocurrió. Un índice líder que se da vuelta anticipa el punto de giro que el resto de la dimensión va a registrar meses después.",
+    que: "Un índice que combina señales tempranas de la economía —financieras, de expectativas y de actividad— para anticipar los cambios de rumbo antes de que aparezcan en los datos corrientes. Ya NO puntúa en el ITCIS: salió del índice en ADR-0154 y pasó a ser el ancla externa contra la que se valida el ITCM.",
+    aporta: "Mira hacia adelante, que es lo que ningún componente del cinturón hace: los demás describen lo que ya ocurrió. Por eso su lugar pasó a ser el de contraste externo — un índice líder que se da vuelta anticipa el punto de giro que la marcha de la actividad va a registrar meses después.",
     frecuencia: "Mensual", tipo: "Nivel (índice base 100)",
   },
   alquiler_real: {
-    que: "Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITVC puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.",
+    que: "Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITCIS puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.",
     aporta: "La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.",
     frecuencia: "Mensual", tipo: "Variación (card) · nivel relativo al IPC (índice)",
   },
@@ -275,11 +275,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   informalidad: {
     que: "Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC.",
-    aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. En el ITVC su base es el 4T-2023 exacto (el trimestre de arranque del mandato).",
+    aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).",
     frecuencia: "Trimestral (EPH)", tipo: "Nivel (%)",
   },
   mortalidad_pymes: {
-    que: "La salud del entramado productivo y del empleo PyME, aproximada por la actividad industrial manufacturera. En el ITVC puntúa por el NIVEL del IPI desestacionalizado rebaseado a 100 = 4T-2023 (ya no la variación de un mes, que premiaba o castigaba por estacionalidad).",
+    que: "La salud del entramado productivo y del empleo PyME, aproximada por la actividad industrial manufacturera. En el ITCIS puntúa por el NIVEL del IPI desestacionalizado rebaseado a 100 = 4T-2023 (ya no la variación de un mes, que premiaba o castigaba por estacionalidad).",
     aporta: "Cuando la industria se contrae, las PyMEs y su empleo son las primeras en sufrirlo; el nivel acumulado dice si la actividad recuperó o no el punto de partida del mandato.",
     frecuencia: "Mensual", tipo: "Variación (card) · nivel desest. (índice)",
   },
@@ -430,7 +430,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
 };
 
 // Qué mide cada DIMENSIÓN de los índices paramétricos (modal de dimensión).
-// Claves únicas entre ITCM/ITCG/ITVC.
+// Claves únicas entre ITCM/ITCG/ITCIS.
 export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCM
   estabilidad_monetaria: "La estabilidad de la moneda desde cuatro señales complementarias: la inflación actual (IPC), la esperada por el mercado (REM), el desequilibrio entre oferta y demanda transaccional de pesos (IDM) y la presión por salir del peso, observada según el régimen cambiario vigente.",
@@ -445,11 +445,11 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   reforma_laboral: "Instrumento y resultado: la adopción del Fondo de Asistencia Laboral (el reemplazo del canal indemnizatorio) y la litigiosidad laboral (la industria del juicio que la reforma promete enfriar).",
   privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.",
   social_orden: "La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud.",
-  // ITVC
-  ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.",
+  // ITCIS
+  ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.",
   precios: "Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).",
-  vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo, en dos señales: el nivel de crédito real (acceso al financiamiento) y la mora de esa cartera (si esa deuda se puede pagar). Deuda que crece con mora estable es acceso; con mora en aumento es fragilidad.",
-  empleo: "Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
+  vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. Es la única señal de la dimensión desde que el stock de deuda salió del índice — el nivel de deuda no distingue acceso de fragilidad, la mora sí.",
+  empleo: "El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
   percepcion: "El ánimo con que se vive el momento, medido de dos maneras: preguntando (el Índice de Confianza del Consumidor de la UTDT) y observando qué busca la gente en internet.",
   seguridad: "Qué proporción de los hogares fue víctima de un delito. No es percepción ni sensación: es el hecho, relevado por encuesta.",
   // ITCP

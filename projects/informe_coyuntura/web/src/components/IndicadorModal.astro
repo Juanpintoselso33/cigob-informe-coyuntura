@@ -5,7 +5,7 @@ import { FORMULAS } from "../lib/formulas.ts";
 
 const CINT_NOMBRE: Record<string, string> = {
   macro: "Macroeconomía", politica: "Política",
-  vida_cotidiana: "Vida cotidiana", gestion: "Gestión",
+  vida_cotidiana: "Impacto social", gestion: "Gestión",
 };
 const SLUG_DE: Record<string, string> =
   Object.fromEntries(CINTURONES.map(c => [c.key, c.slug]));
@@ -21,7 +21,7 @@ const INDICE_KEY: Record<string, string> = {
 const INDICE_CFG: Record<string, { key: string; sigla: string; base100: boolean }> = {
   macro: { key: "itcm", sigla: "ITCM", base100: false },
   gestion: { key: "itcg", sigla: "ITCG", base100: false },
-  vida_cotidiana: { key: "itvc", sigla: "ITVC", base100: true },
+  vida_cotidiana: { key: "itvc", sigla: "ITCIS", base100: true },
   politica: { key: "itcp", sigla: "ITCP", base100: false },
 };
 const numero = (valor: unknown): number | null =>
@@ -527,7 +527,7 @@ const dimsJson = JSON.stringify(dims);
       const semCaja = document.getElementById("cg-modal-semaforo");
       if (d.semaforo && d.semaforo.color) {
         // `por_que` sale nulo para los indicadores sin escala puntuable
-        // (vida cotidiana, espíritu de época): ahí no se fabrica una
+        // (impacto social, espíritu de época): ahí no se fabrica una
         // explicación -- se remite a la tensión ya explicada más abajo, en
         // vez de repetir el mismo número con otra precisión (ver el aviso
         // de "dos vocabularios" del `banda_idc` del IdC, que es justamente

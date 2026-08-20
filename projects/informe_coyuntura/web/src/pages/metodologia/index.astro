@@ -46,7 +46,7 @@ const fase = (informe as any).ponderacion?.fase === "temprana"
   ? "fase temprana del mandato" : "fase de consolidación";
 const tensionados = cinturonesRojos(informe);
 ---
-<Layout title="Metodología · Informe de Coyuntura · CiGob">
+<Layout title="Metodología · Monitor del Plan de Gobierno · CiGob">
   <Nav />
   <header class="cg-hero cg-detalle-hero" id="top">
     <div class="cg-hero-inner cg-detalle-inner">
@@ -86,7 +86,7 @@ const tensionados = cinturonesRojos(informe);
         <p class="cg-marco-lead">
           La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos, sino por su
           capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos de
-          acción disponibles. Este informe de coyuntura sistematiza el mapa de tensiones de la Argentina actual
+          acción disponibles. Este monitor del plan de gobierno sistematiza el mapa de tensiones de la Argentina actual
           a través de <strong>cuatro cinturones analíticos</strong>, examinando cómo las decisiones oficiales
           operan un constante intercambio de problemas donde la viabilidad fiscal, cambiaria, social y política
           se recalculan en tiempo real.
@@ -94,7 +94,7 @@ const tensionados = cinturonesRojos(informe);
         <p>
           El encuadre es el marco <strong>CIGOB-Matus</strong>, que la Fundación CiGob amplía de tres cinturones
           a cuatro. Un cinturón no es un área temática: es un frente donde el gobierno gasta y repone capacidad
-          de gobernar. Macroeconomía, política, gestión estatal y vida cotidiana miden el intercambio entre lo
+          de gobernar. Macroeconomía, política, gestión estatal e impacto social miden el intercambio entre lo
           que el gobierno decide y lo que el entorno le devuelve. El marco contempla además un cinturón de
           espíritu de época —la sintonía emocional con el humor social—, que este informe dejó de publicar en
           agosto de 2026 porque su operacionalización no estaba a la altura de pesar como los otros cuatro.
@@ -102,7 +102,7 @@ const tensionados = cinturonesRojos(informe);
         <p>
           Cada cinturón publica su tensión en una <strong>escala de 0 a 10</strong>: 0 es un cinturón aflojado
           —el gobierno procesa las demandas con los recursos que tiene— y 10 uno apretado, donde cada decisión
-          se paga con otra. Los cuatro derivan esa tensión de un índice paramétrico propio (ITCM, ITCP, ITVC,
+          se paga con otra. Los cuatro derivan esa tensión de un índice paramétrico propio (ITCM, ITCP, ITCIS,
           ITCG), documentado más abajo. Las palabras y los colores que acompañan a cada barra de tensión salen
           de los cortes que se publican junto con los datos, no del texto de esta página.
         </p>
@@ -124,7 +124,7 @@ const tensionados = cinturonesRojos(informe);
       </div>
       <div class="cg-method-grid">
         <article><h3>Una ficha por indicador</h3><p>Estructura fija tomada del <strong>template de metadatos ODS</strong> (Naciones Unidas) y de las fichas metodológicas de los institutos de estadística: definición, fuente exacta, método de cómputo, limitaciones declaradas y tratamiento de datos faltantes.</p></article>
-        <article><h3>Índices según OCDE/JRC</h3><p>Los índices compuestos (ITCM, ITCP, ITVC, ITCG) se documentan con el <strong>checklist del Handbook on Constructing Composite Indicators</strong> (OCDE/JRC, 2008): marco conceptual, normalización, agregación, robustez y validación, paso por paso.</p></article>
+        <article><h3>Índices según OCDE/JRC</h3><p>Los índices compuestos (ITCM, ITCP, ITCIS, ITCG) se documentan con el <strong>checklist del Handbook on Constructing Composite Indicators</strong> (OCDE/JRC, 2008): marco conceptual, normalización, agregación, robustez y validación, paso por paso.</p></article>
         <article><h3>Generada desde los datos</h3><p>Los números de cada ficha (valores, puntajes, pesos, bandas de robustez) <strong>no se transcriben</strong>: salen del mismo archivo de datos que alimenta las cards del informe y se reconstruyen con cada actualización.</p></article>
         <article><h3>Decisiones con registro</h3><p>Cada cambio de método queda asentado con fecha en un <strong>registro de decisiones</strong>: qué se cambió, por qué, qué alternativas se descartaron y cómo afectó al valor publicado. Cada ficha publica su historial.</p></article>
       </div>
@@ -143,7 +143,7 @@ const tensionados = cinturonesRojos(informe);
         </article>
         <article>
           <h3>Validación externa</h3>
-          <p>Cada índice se contrasta contra un ancla externa que nadie del proyecto controla — marcha de la actividad (ITCM), incertidumbre de política EPU (ITCP), consumo medido en supermercados (ITVC), Merval en dólares (ITCG) — y la matriz cruzada compara cada índice contra las cuatro a la vez, para ver si correlaciona más con la propia que con las ajenas. Hoy no se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período.{rs.length > 0 && <Fragment> Hoy: <strong>r {rs.join(" · ")}</strong>.</Fragment>}</p>
+          <p>Cada índice se contrasta contra un ancla externa que nadie del proyecto controla — marcha de la actividad (ITCM), incertidumbre de política EPU (ITCP), consumo medido en supermercados (ITCIS), Merval en dólares (ITCG) — y la matriz cruzada compara cada índice contra las cuatro a la vez, para ver si correlaciona más con la propia que con las ajenas. Hoy no se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período.{rs.length > 0 && <Fragment> Hoy: <strong>r {rs.join(" · ")}</strong>.</Fragment>}</p>
         </article>
         <article>
           <h3>Ponderación por fase</h3>

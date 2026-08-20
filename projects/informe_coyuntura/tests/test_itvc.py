@@ -1,7 +1,8 @@
 """Tests unitarios del módulo ITVC-B100 (sin red).
 
-Pinean: los pesos del doc 260702 vida cotidiana (35/25/10/15/15 y los
-internos), la agregación por índices rebaseados (sin bandas por componente),
+Pinean: los pesos vigentes del cinturón —el doc 260702 arrancó en
+35/25/10/15/15 y las enmiendas posteriores están declaradas una por una en los
+comentarios de cada assert— y los internos, la agregación por índices rebaseados (sin bandas por componente),
 la escala de interpretación, el mapeo lineal a tensión 0-10 (decisión del
 usuario: 5 − (ITVC−100)×0,2) y la renormalización ante faltantes.
 """
@@ -48,7 +49,11 @@ def test_itvc_reproduce_ejemplo():
     """
     r = itvc.calcular_itvc(EJEMPLO)
     dims = r["dimensiones"]
-    assert dims["ingresos"]["puntaje"] == 91.3   # ADR-0115: entran carne y motos
+    # ADR-0214: 91,3 → 89,0. `informalidad` (96,0, el mejor de la dimensión
+    # después de motos) se fue a empleo, así que lo que queda promedia más
+    # bajo. El EJEMPLO tampoco declara `pobreza_nowcast`, así que la
+    # dimensión renormaliza sobre los tres que quedan.
+    assert dims["ingresos"]["puntaje"] == 89.0
     assert dims["precios"]["puntaje"] == 75.3
     # ADR-0154: la dimensión queda apoyada en la mora sola, así que su puntaje
     # ES el índice de la mora. Antes promediaba 0,5×118 + 0,5×60 = 89,0 con
@@ -59,10 +64,18 @@ def test_itvc_reproduce_ejemplo():
     # nuevos, que no son exactamente proporcionales por redondeo. Sigue dando
     # 92,2 con ADR-0154 (sale el líder, que el EJEMPLO tampoco declaraba): la
     # renormalización reparte entre los mismos tres.
-    assert dims["empleo"]["puntaje"] == 92.2
+    # ADR-0214: 92,2 → 94,1 al recibir `informalidad` (96,0), que está por
+    # encima del promedio de los proxies.
+    assert dims["empleo"]["puntaje"] == 94.1
     assert dims["percepcion"]["puntaje"] == 116.5   # ADR-0115: sólo ICC + Trends
     assert dims["seguridad"]["puntaje"] == 104.0    # ADR-0115: victimización sola
-    assert r["valor"] == 87.0
+    # ADR-0214: 87,0 → 86,9. El traslado es NEUTRO sobre el índice cuando
+    # están todos los componentes —conserva el peso efectivo de cada uno—,
+    # pero el EJEMPLO no declara tres de ellos (pobreza, alquiler, empleo
+    # registrado) y la renormalización opera DENTRO de cada dimensión: con
+    # huecos, el agrupamiento sí cambia el resultado. La corrida real, con
+    # los dieciséis presentes, dio 90,7 antes y 90,7 después.
+    assert r["valor"] == 86.9
     assert r["banda"] == "deterioro_moderado"
     assert r["ajustes_aplicados"] == []
 
@@ -80,15 +93,19 @@ def test_pesos_del_documento():
     relativo y ninguna toca los pesos NOMINALES de dimensión, que no se
     modificaron nunca."""
     pesos = {k: d["peso"] for k, d in itvc.DIMENSIONES_ITVC.items()}
-    assert pesos == {"ingresos": 0.3725, "precios": 0.25, "vulnerabilidad": 0.10,
-                     "empleo": 0.15, "percepcion": 0.0825, "seguridad": 0.045}
+    assert pesos == {"ingresos": 0.2806, "precios": 0.25, "vulnerabilidad": 0.10,
+                     "empleo": 0.2419, "percepcion": 0.0825, "seguridad": 0.045}
     assert abs(sum(pesos.values()) - 1.0) < 1e-9
     d = itvc.DIMENSIONES_ITVC
     # ADR-0153: entra pobreza_nowcast con 25% y los cuatro previos ceden ×0,75
     # conservando su orden relativo.
-    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.4580, "informalidad": 0.2467,
-                                            "pobreza_nowcast": 0.25,
-                                            "consumo_carne": 0.0302, "patentamiento_motos": 0.0151}
+    # ADR-0214: sale `informalidad` a la dimensión de empleo. Los internos que
+    # quedan NO se recalibran: se derivan de los pesos efectivos intactos sobre
+    # el nominal nuevo (0,2806), así que cada uno sigue aportando lo mismo al
+    # índice — 17,06%, 9,31%, 1,12% y 0,56%.
+    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.6081,
+                                            "pobreza_nowcast": 0.3319,
+                                            "consumo_carne": 0.0400, "patentamiento_motos": 0.0200}
     assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
     # ADR-0154: sale endeudamiento_familiar (redundante, winsorizado y de signo
     # equívoco) y la mora sostiene sola la dimensión.
@@ -97,10 +114,14 @@ def test_pesos_del_documento():
                                            "alquiler_real": 0.20}
     # ADR-0130: entra empleo_registrado con 0,35 y los cuatro proxies ceden ×0,65
     # ADR-0154: sale indice_lider y los cuatro que quedan absorben ÷0,87
-    assert d["empleo"]["indicadores"] == {"empleo_registrado": 0.4023,
-                                          "mortalidad_pymes": 0.2644,
-                                          "despacho_cemento": 0.2414,
-                                          "pluriempleo": 0.0919}
+    # ADR-0214: entra `informalidad` con su peso efectivo intacto (9,19%) y
+    # queda primera. Los otros cuatro tampoco se recalibran: sus internos bajan
+    # sólo porque el nominal de la dimensión subió a 0,2419.
+    assert d["empleo"]["indicadores"] == {"informalidad": 0.3799,
+                                          "empleo_registrado": 0.2495,
+                                          "mortalidad_pymes": 0.1640,
+                                          "despacho_cemento": 0.1497,
+                                          "pluriempleo": 0.0569}
     assert d["percepcion"]["indicadores"] == {"icc_utdt": 0.8182, "sentimiento_digital": 0.1818}
     assert d["seguridad"]["indicadores"] == {"inseguridad": 1.0}
     for dim in d.values():
@@ -148,16 +169,17 @@ def test_renormalizacion_ante_faltantes():
     """Sin carne ni motos (fuentes sin dato), la dimensión que renormaliza es
     INGRESOS: ADR-0115 los movió ahí desde la vieja dimensión de confianza.
 
-    Quedan brecha (0,6107) e informalidad (0,3289) y el motor reparte entre las
-    dos, de modo que la dimensión vuelve al valor que tenía antes de recibirlos
-    (90,5) — que es la comprobación de que la renormalización no inventa peso."""
+    Desde ADR-0214 queda apoyada en brecha y pobreza —`informalidad` se fue a
+    empleo—, y como el EJEMPLO tampoco declara pobreza, el único que sobrevive
+    es la brecha: la dimensión ES su índice (87,5). Que no invente peso sigue
+    siendo lo que este test comprueba, y lo verifica la suma de efectivos."""
     valores = dict(EJEMPLO)
     valores["consumo_carne"] = None
     valores["patentamiento_motos"] = None
     r = itvc.calcular_itvc(valores)
     ing = r["dimensiones"]["ingresos"]
-    assert set(ing["indicadores"]) == {"brecha_salario_cbt", "informalidad"}
-    assert ing["puntaje"] == 90.5
+    assert set(ing["indicadores"]) == {"brecha_salario_cbt"}
+    assert ing["puntaje"] == 87.5
     pesos = [i["peso_efectivo"] for d in r["dimensiones"].values()
              for i in d["indicadores"].values()]
     assert abs(sum(pesos) - 1.0) <= 0.001
@@ -171,7 +193,7 @@ def test_ajuste_manual_del_analista():
     # EJEMPLO no trae alquiler_real (ADR-0111), así que precios renormaliza
     # sobre los dos componentes del doc: 0,4375×95 + 0,5625×80 = 86,6
     assert r["dimensiones"]["precios"]["puntaje"] == 86.6
-    assert r["valor"] == 89.8
+    assert r["valor"] == 89.7
 
 
 def test_sin_datos_devuelve_none():

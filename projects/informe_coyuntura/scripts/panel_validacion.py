@@ -81,7 +81,7 @@ ETIQUETAS = {
     "inversion_portafolio_externa": "Inversión de cartera de no residentes",
     "financiamiento_externo_privado": "Financiamiento externo a empresas",
     "epu_argentina": "Incertidumbre de política (EPU)",
-    "icg_utdt": "Confianza en el Gobierno (ICG)",
+    "icg_utdt": "Confianza en el Gobierno (ICG de la UTDT)",
     "clima_electoral": "Clima electoral",
     "indice_lider": "Índice Líder de actividad",
 }

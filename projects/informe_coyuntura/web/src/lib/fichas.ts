@@ -7,7 +7,7 @@
 //   · la ficha metodológica de los institutos de estadística (DANE/INE);
 //   · las "data pages" de Our World in Data (última actualización, linaje del
 //     dato, "lo que hay que saber para leerlo").
-// Para los índices compuestos (ITCM/ITCG/ITVC) las secciones siguen el
+// Para los índices compuestos (ITCM/ITCG/ITCIS) las secciones siguen el
 // checklist del Handbook on Constructing Composite Indicators (OCDE/JRC, 2008).
 //
 // División del trabajo — cada dato vive en UNA sola fuente:
@@ -70,7 +70,7 @@ export interface FichaIndice {
   id: string;                       // "itcm" (clave del bloque en informe.json)
   sigla: string;
   nombreLargo: string;
-  base100?: boolean;                // índice de seguimiento base 100 (ITVC): sin techo,
+  base100?: boolean;                // índice de seguimiento base 100 (ITCIS): sin techo,
                                     // tensión = 5 − (valor − 100) × 0,2
   cinturon: "macro" | "gestion" | "vida_cotidiana" | "politica";
   resumen: string;                  // qué es, para el encabezado
@@ -205,7 +205,7 @@ export const FICHAS: Record<string, Ficha> = {
     validacion: [
       "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra un ancla externa que nadie del proyecto controla: el Índice Líder de la Universidad Torcuato Di Tella, que resume la marcha de la actividad económica. Se espera correlación positiva — a menor tensión macroeconómica, más actividad.",
       "El ancla se eligió por un criterio explícito: que el co-movimiento aguante en los cambios mes a mes, y no sólo en el nivel. Es la prueba que no se puede satisfacer con la tendencia común del período, que en estos años arrastró a casi todas las series argentinas en la misma dirección. Ambas correlaciones (niveles y cambios mes a mes) se publican en la página del cinturón.",
-      "Una salvedad que se publica junto al número: el orden temporal va al revés de lo que sugiere el nombre del índice externo — el ajuste mejora cuando se adelanta el ITCM y empeora cuando se adelanta el líder, así que sirve para validar el mismo mes y no como alerta temprana. El indicador integraba el cinturón de vida cotidiana y se movió acá porque mide el ciclo de la actividad y no una condición de los hogares.",
+      "Una salvedad que se publica junto al número: el orden temporal va al revés de lo que sugiere el nombre del índice externo — el ajuste mejora cuando se adelanta el ITCM y empeora cuando se adelanta el líder, así que sirve para validar el mismo mes y no como alerta temprana. El indicador integraba el cinturón de impacto social y se movió acá porque mide el ciclo de la actividad y no una condición de los hogares.",
       "La matriz de validación cruzada verifica además el poder discriminante: que cada índice del informe correlacione más con su ancla propia que con las ajenas (que el ITCM mida lo macroeconómico y no «el humor general»). La matriz completa, con sus límites declarados, se publica en la página del cinturón.",
     ],
     comunicacion: [
@@ -364,7 +364,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-5, 5], [-3.5, 20], [-1, 40], [1.5, 60], [4, 80], [5, 100]],
       unidadCorta: "% i.a.",
     },
-    dobleUso: "La misma serie se extrae también como insumo de contexto en el cinturón de vida cotidiana.",
+    dobleUso: "La misma serie se extrae también como insumo de contexto en el cinturón de impacto social.",
     limitaciones: [
       "El EMAE es provisorio y el INDEC lo revisa hacia atrás con cada publicación; la serie del informe absorbe esas revisiones al regenerarse.",
       "Comparte dimensión con el IPI manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y el 11% del índice colgaba de un solo dato.",
@@ -1002,7 +1002,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-10, 10], [-6, 35], [0, 60], [6, 80], [10, 100]],
       unidadCorta: "% i.a.",
     },
-    dobleUso: "La operación ISAC también alimenta (en su variante desestacionalizada) un componente del ITVC de vida cotidiana; los bienes de capital son una subserie del ICA que alimenta el saldo comercial.",
+    dobleUso: "La operación ISAC también alimenta (en su variante desestacionalizada) un componente del ITCIS; los bienes de capital son una subserie del ICA que alimenta el saldo comercial.",
     limitaciones: [
       "Los bienes de capital se miden en dólares corrientes e incluyen el efecto de los precios internacionales: el índice de cantidades oficial es solo trimestral.",
       "El tercer componente (patentamientos comerciales) no tiene serie histórica pública: se acumula desde mediados de 2026 y recién tendrá comparación interanual a mediados de 2027.",
@@ -1045,7 +1045,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-20, 10], [-12.5, 35], [0, 60], [12.5, 80], [20, 100]],
       unidadCorta: "% i.a.",
     },
-    dobleUso: "La operación IPI también alimenta (en su variante desestacionalizada) un componente del ITVC de vida cotidiana.",
+    dobleUso: "La operación IPI también alimenta (en su variante desestacionalizada) un componente del ITCIS.",
     limitaciones: [
       "El diseño institucional incluía la importación de hardware de alta tecnología, que no es automatizable con las fuentes públicas actuales: el índice quedó con dos de tres componentes, renormalizados y declarados.",
       "AMBIGÜEDAD DE INTERPRETACIÓN, declarada. Un aumento de los pagos al exterior por servicios de informática admite dos lecturas opuestas y el índice adopta una: puede significar que la economía se está digitalizando —incorpora software, nube e inteligencia artificial para producir mejor— o que depende de tecnología que no produce y gira divisas para conseguirla. El indicador puntúa la primera lectura: más pagos, mejor puntaje. La evidencia disponible la respalda sólo en parte. Sobre ciento siete meses, los pagos anticipan a la productividad con una correlación de 0,28 cuando se los adelanta un trimestre: una asociación real pero modesta, compatible también con que ambas variables suban juntas cuando la economía crece, sin que una cause a la otra. Quien lea el indicador debe saber que un valor alto no distingue por sí solo entre capitalización tecnológica y dependencia tecnológica.",
@@ -1091,7 +1091,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-10, 10], [-5, 25], [4, 45], [14, 65], [30, 85], [40, 100]],
       unidadCorta: "% i.a. real",
     },
-    dobleUso: "La misma serie se sigue extrayendo como contexto no publicado, y el cinturón de vida cotidiana usa las líneas a familias (tarjetas y personales) para su componente de endeudamiento.",
+    dobleUso: "La misma serie se sigue extrayendo como contexto no publicado, y el cinturón de impacto social usa las líneas a familias (tarjetas y personales) para su componente de endeudamiento.",
     limitaciones: [
       "Bandas calibradas a la remonetización 2024-2026 (el crédito real llegó a crecer 90% interanual desde una base ínfima): calibración propia sobre historia corta, declarada.",
       "Agregado total: no distingue empresas de familias ni líneas de crédito.",
@@ -1395,7 +1395,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Cuenta eventos, no personas: una marcha multitudinaria y una concentración chica pesan igual — es una medida de frecuencia del conflicto, no de su masividad.",
-      "La base de comparación es fija (el total de 2023): a medida que pasa el tiempo, la referencia envejece — el mismo criterio declarado que usa el índice de vida cotidiana con su base de fin de 2023.",
+      "La base de comparación es fija (el total de 2023): a medida que pasa el tiempo, la referencia envejece — el mismo criterio declarado que usa el índice de impacto social con su base de fin de 2023.",
       "La cobertura de ACLED para la Argentina es confiable desde 2020; los años anteriores registran menos eventos por expansión de la propia cobertura, no por menor conflictividad — por eso ni las bandas ni el gráfico usan datos previos a la base.",
       "Depende de la cobertura de prensa que releva ACLED: eventos sin cobertura periodística no entran al registro.",
     ],
@@ -2402,7 +2402,7 @@ export const FICHAS: Record<string, Ficha> = {
   // seguimiento interno, igual que los ocultos de macro/política/espíritu.)
 
   // ═══════════════════════════════════════════════════════════════════════
-  // Vida cotidiana — componentes base-100 del ITVC (100 = promedio 4T-2023)
+  // Impacto social — componentes base-100 del ITCIS (100 = promedio 4T-2023)
   // ═══════════════════════════════════════════════════════════════════════
   brecha_salario_cbt: {
     tipo: "indicador",
@@ -2421,18 +2421,18 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023 (más canastas = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo y sigue siendo el componente más pesado del ITVC (17,06% efectivo).",
-      "El ITVC promedia sus componentes base-100 por dimensión: por encima de 100, la brecha acumula mejora contra el arranque del mandato.",
+      "Pertenece a la dimensión de ingresos y consumo y sigue siendo el componente más pesado del ITCIS (17,06% efectivo).",
+      "El ITCIS promedia sus componentes base-100 por dimensión: por encima de 100, la brecha acumula mejora contra el arranque del mandato.",
     ],
     limitaciones: [
       "El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.",
-      "El peso del componente (22,75% del índice) es una discusión abierta declarada del diseño.",
+      "El peso del componente (17,06% del índice) es una discusión abierta declarada del diseño.",
       "Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.",
     ],
     faltantes: "Si una fuente falla, se mantiene el último valor publicado (marcado como desactualizado); si el componente no calcula, los pesos del índice se renormalizan.",
     revisiones: "Cada actualización re-descarga las series completas y adopta las revisiones de las fuentes; con canasta fresca sin salario, el par se declara provisorio.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC base-100 como rebase directo del cociente, con 22,75% de peso efectivo." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS base-100 como rebase directo del cociente, con 22,75% de peso efectivo." },
       { fecha: "2026-07-04", cambio: "Alineación estricta por mes común: antes podía mezclar el salario de un mes con la canasta de otro. Además queda como única medición del ratio ingresos/comida del índice." },
     ],
   },
@@ -2454,7 +2454,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El componente del índice mide el encarecimiento RELATIVO de la comida: el nivel de alimentos contra el nivel general de precios, rebaseado a 100 = 4º trimestre de 2023. Por encima de 100, la comida sube menos que el resto de los precios.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios (35% interno · 8,75% del ITVC).",
+      "Pertenece a la dimensión de presión de precios (35% interno · 8,75% del ITCIS).",
       "La comparación contra el IPC general evita contar dos veces el ratio salario/comida, que ya mide la brecha con la canasta.",
     ],
     limitaciones: [
@@ -2464,7 +2464,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, los pesos del índice se renormalizan.",
     revisiones: "La API sirve la serie revisada; la base del 4º trimestre de 2023 se recalcula dinámicamente de la propia serie.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC base-100 (entonces como nivel contra el salario)." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS base-100 (entonces como nivel contra el salario)." },
       { fecha: "2026-07-04", cambio: "Rediseño: nivel contra el IPC general, eliminando el doble conteo con la brecha salario/canasta." },
     ],
   },
@@ -2483,11 +2483,11 @@ export const FICHAS: Record<string, Ficha> = {
     },
     transformaciones: [
       "Mora ponderada: el ratio de irregularidad de préstamos personales y el de tarjetas de crédito se combinan según el saldo de cada línea.",
-      "En el ITVC puntúa por el nivel relativo al 4º trimestre de 2023 (índice base 100), invertido: más mora que en la base, peor puntaje.",
+      "En el ITCIS puntúa por el nivel relativo al 4º trimestre de 2023 (índice base 100), invertido: más mora que en la base, peor puntaje.",
       "Sin piso de recorte, igual que el resto de los componentes: el deterioro no se maquilla.",
     ],
     incidenciaTexto: [
-      "Es el único componente de la dimensión de vulnerabilidad financiera, así que aporta el 10% del ITVC por sí solo.",
+      "Es el único componente de la dimensión de vulnerabilidad financiera, así que aporta el 10% del ITCIS por sí solo.",
       "Acompañaba al endeudamiento de consumo al 50% cada uno. El endeudamiento dejó de integrar el índice porque leía el crecimiento de la deuda real como mayor acceso al crédito, y con la morosidad multiplicada por más de cinco en el mismo período esa lectura compensaba justo la señal que la dimensión existe para dar.",
     ],
     limitaciones: [
@@ -2498,7 +2498,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado. Es el único componente de su dimensión, así que no hay con qué renormalizar dentro de ella: si se quedara sin dato, la dimensión entera no se calcula y su diez por ciento se reparte entre las otras cinco. Ese es el costo de haber dejado la dimensión con un solo indicador, y queda declarado.",
     revisiones: "La planilla oficial se relee completa en cada actualización y adopta las revisiones del BCRA.",
     cambios: [
-      { fecha: "2026-07-15", cambio: "Entra al ITVC como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa." },
+      { fecha: "2026-07-15", cambio: "Entra al ITCIS como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa." },
     ],
   },
 
@@ -2520,7 +2520,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se compara contra el índice general del Gran Buenos Aires y no contra el nacional: dividir un precio de una plaza por el índice de otra mezclaría dos mercados en el mismo cociente.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios (20% interno · 5% del ITVC).",
+      "Pertenece a la dimensión de presión de precios (20% interno · 5% del ITCIS).",
       "Entra por debajo de tarifas y alimentos porque el alquiler golpea a los hogares inquilinos —alrededor de un tercio de los urbanos— mientras los otros dos pesan sobre todos.",
       "Es el único componente del cinturón que mide el costo de la vivienda, un gasto fijo que ningún otro captura.",
     ],
@@ -2552,7 +2552,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El componente mide el peso de los servicios regulados en el salario: nivel de regulados contra nivel del RIPTE, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, las tarifas subieron más que los salarios desde el arranque.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de presión de precios (45% interno · 11,25% del ITVC).",
+      "Pertenece a la dimensión de presión de precios (45% interno · 11,25% del ITCIS).",
       "Captura el efecto de la quita de subsidios que el IPC general diluye.",
     ],
     limitaciones: [
@@ -2562,7 +2562,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización.",
     revisiones: "Re-descarga completa por actualización; base dinámica de la propia serie.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC base-100 como nivel de regulados contra el salario (antes puntuaba por variación mensual anclada)." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS base-100 como nivel de regulados contra el salario (antes puntuaba por variación mensual anclada)." },
     ],
   },
 
@@ -2582,17 +2582,17 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el consumo rebaseado a 100 = promedio del 4º trimestre de 2023 (menos carne = deterioro).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (3,02% interno · 1,12% del ITVC).",
+      "Pertenece a la dimensión de ingresos y consumo (4% interno · 1,12% del ITCIS).",
     ],
     limitaciones: [
-      "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: la caída del consumo de carne vacuna se compensa en buena medida con el aumento del de cerdo y la estabilidad del de pollo, de modo que el consumo total de las tres carnes cae mucho menos que el de vacuna sola. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,5%) y acompaña, no lidera.",
+      "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: la caída del consumo de carne vacuna se compensa en buena medida con el aumento del de cerdo y la estabilidad del de pollo, de modo que el consumo total de las tres carnes cae mucho menos que el de vacuna sola. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,12%) y acompaña, no lidera.",
       "Fuente sectorial privada, publicada en PDF sin interfaz de datos: la lectura depende del formato del informe.",
       "La línea de base del 4º trimestre de 2023 usa la foto contemporánea de entonces, declarada; el dato revisado de la fuente difiere levemente.",
     ],
     faltantes: "Un mes sin informe legible queda vacío en la serie y se reintenta el mes más reciente en cada actualización; el titular nunca retrocede respecto de la serie publicada.",
     revisiones: "Los informes procesados no se releen; si la fuente revisa, el dato nuevo entra por el informe siguiente.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC con línea de base documentada; el mismo día se reconstruyó la serie mensual real desde octubre de 2023 y pasó a rebase dinámico." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS con línea de base documentada; el mismo día se reconstruyó la serie mensual real desde octubre de 2023 y pasó a rebase dinámico." },
       { fecha: "2026-07-06", cambio: "El titular queda protegido contra retrocesos: si la lectura en vivo devuelve un informe más viejo que el ya publicado en la serie (falla transitoria de la fuente), se mantiene el último punto de la serie." },
     ],
   },
@@ -2614,7 +2614,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se invierte, como los otros componentes que se leen al revés: más pobreza es peor, así que la base va arriba en el cociente y por encima de 100 significa MENOS pobreza que en la transición.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (25% interno · 9,31% del ITVC).",
+      "Pertenece a la dimensión de ingresos y consumo (33,19% interno · 9,31% del ITCIS).",
       "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
     ],
     limitaciones: [
@@ -2647,7 +2647,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos informalidad = mejora) contra el trimestre del arranque del mandato (4º trimestre de 2023).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (24,67% interno · 9,19% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (37,99% interno · 9,19% del ITCIS): es su componente más pesado.",
     ],
     limitaciones: [
       "Solo asalariados: no captura la informalidad cuentapropista.",
@@ -2657,7 +2657,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, la brecha salarial absorbe el peso de la dimensión.",
     revisiones: "La encuesta se revisa; la re-descarga completa por actualización adopta las revisiones.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC vía la serie anual disponible, invertida, con base en el año 2023." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS vía la serie anual disponible, invertida, con base en el año 2023." },
       { fecha: "2026-07-04", cambio: "Pasa a la serie trimestral con base exacta en el 4º trimestre de 2023 (la anual solo se actualizaba una vez al año y planchaba el componente)." },
     ],
   },
@@ -2679,7 +2679,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se usa la serie desestacionalizada porque la original mostraba variaciones de hasta ±20% mensual de puro calendario.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (26,44% interno · 3,97% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (16,4% interno · 3,97% del ITCIS).",
     ],
     limitaciones: [
       "Es una aproximación declarada: mide producción industrial agregada, no mortandad de empresas — el nombre del indicador promete más de lo que la fuente da.",
@@ -2688,7 +2688,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "Los factores de desestacionalización se recalculan y revisan la serie; la re-descarga completa los absorbe.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad)." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad)." },
     ],
   },
 
@@ -2709,7 +2709,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La serie original tiene un desplome estacional en diciembre que contaminaría la base: por eso la desestacionalizada.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (24,14% interno · 3,62% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (14,97% interno · 3,62% del ITCIS).",
     ],
     limitaciones: [
       "Aproximación al empleo vía actividad de la construcción, no despachos de cemento reales (la serie de insumos existe aparte, como contraste).",
@@ -2717,7 +2717,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "Serie desestacionalizada revisable por la fuente; re-descarga completa por actualización.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias)." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias)." },
     ],
   },
 
@@ -2737,7 +2737,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (9,19% interno · 1,38% del ITVC).",
+      "Pertenece a la dimensión de prospectivas de empleo (5,69% interno · 1,38% del ITCIS).",
     ],
     limitaciones: [
       "Aproximación declarada: mide gente que trabaja poco y busca más, no la tenencia de múltiples empleos.",
@@ -2746,7 +2746,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "La encuesta se revisa; re-descarga completa por actualización.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC con rebase invertido base-100." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS con rebase invertido base-100." },
     ],
   },
 
@@ -2767,7 +2767,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La ventana de 12 meses de la pregunta desestacionaliza por construcción.",
     ],
     incidenciaTexto: [
-      "Es el único indicador de la dimensión de seguridad, así que se lleva su peso entero: 4,5% del ITVC.",
+      "Es el único indicador de la dimensión de seguridad, así que se lleva su peso entero: 4,5% del ITCIS.",
     ],
     limitaciones: [
       "La encuesta estuvo suspendida entre 2020 y 2023: la base de enero de 2024 es una aproximación declarada del arranque (su ventana de 12 meses cubre mayormente el año previo).",
@@ -2777,7 +2777,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "Los informes procesados no se releen; el registro oficial de contraste se revisa hacia atrás y su serie se refresca completa.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC vía el registro anual de delitos, invertido, con base 2023." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS vía el registro anual de delitos, invertido, con base 2023." },
       { fecha: "2026-07-04", cambio: "La métrica pasa a la encuesta mensual de victimización (con la base declarada en enero de 2024); el registro de denuncias queda como serie de contraste." },
     ],
   },
@@ -2797,9 +2797,9 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el ICC rebaseado a 100 = promedio del 4º trimestre de 2023 (más confianza = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de confianza y percepción (81,8% interno · 6,75% del ITVC).",
+      "Pertenece a la dimensión de confianza y percepción (81,8% interno · 6,75% del ITCIS).",
     ],
-    dobleUso: "Doble función declarada: (1) componente del ITVC; (2) ancla de la validación externa del ITVC — para no ser circular, en ese estudio el índice se recalcula sin este componente. Hasta julio de 2026 puntuó además en el cinturón espíritu de época, que desde entonces quedó acotado a la intención migratoria; esa lectura se sigue registrando como seguimiento interno.",
+    dobleUso: "Doble función declarada: (1) componente del ITCIS; (2) ancla de la validación externa del ITCIS — para no ser circular, en ese estudio el índice se recalcula sin este componente. Hasta julio de 2026 puntuó además en el cinturón espíritu de época, que desde entonces quedó acotado a la intención migratoria; esa lectura se sigue registrando como seguimiento interno.",
     limitaciones: [
       "Mide percepción y ánimo, no condiciones materiales: por diseño convive con medidas de conducta (consumo, patentamientos) en la misma dimensión.",
       "Depende del formato de publicación de la universidad: un cambio en el listado o la planilla interrumpe la lectura hasta adaptarla.",
@@ -2807,7 +2807,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
     revisiones: "La planilla oficial trae la serie completa en cada descarga y adopta las revisiones de la fuente.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC base-100 con 50% interno de su dimensión." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS base-100 con 50% interno de su dimensión." },
       { fecha: "2026-07-04", cambio: "Cede cinco puntos de peso interno al sentimiento digital, que mide lo mismo por conducta de búsqueda." },
     ],
   },
@@ -2828,7 +2828,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El cociente entre valores de una misma consulta cancela la renormalización de escala de la fuente.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de confianza y percepción (18,2% interno · 1,5% del ITVC): peso chico acorde a un constructo blando.",
+      "Pertenece a la dimensión de confianza y percepción (18,2% interno · 1,5% del ITCIS): peso chico acorde a un constructo blando.",
       "La card muestra el pulso de tres meses; el puntaje usa la canasta mensual de ventana fija — doble registro declarado.",
     ],
     dobleUso: "Hasta julio de 2026 integró además el cinturón espíritu de época con fórmula de tensión propia; ese cinturón quedó acotado a la intención migratoria y la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.",
@@ -2862,7 +2862,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Recorte declarado: el componente se acota al techo de 140 — un boom puntual no compra compensación ilimitada dentro del índice; el valor crudo queda declarado en el detalle.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (1,51% interno · 0,56% del ITVC): el peso más chico del índice.",
+      "Pertenece a la dimensión de ingresos y consumo (2% interno · 0,56% del ITCIS): el peso más chico del índice.",
     ],
     limitaciones: [
       "Es el componente más eufórico del cinturón (muy por encima de su base): motivo del techo de recorte y de la baja de peso.",
@@ -2871,7 +2871,7 @@ export const FICHAS: Record<string, Ficha> = {
     faltantes: "Un mes que falla en la API se saltea; la card mantiene el último valor como desactualizado; sin componente, renormalización.",
     revisiones: "La API expone el histórico completo y se reconsulta entero en cada actualización.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITVC con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad." },
       { fecha: "2026-07-04", cambio: "Se aplica el techo de recorte 140 y el peso interno baja de 10% a 5%." },
     ],
   },
@@ -2944,19 +2944,19 @@ export const FICHAS: Record<string, Ficha> = {
   },
 
   // ═══════════════════════════════════════════════════════════════════════
-  // ITVC — índice base-100 del cinturón vida cotidiana (checklist OCDE/JRC)
+  // ITCIS — índice base-100 del cinturón de impacto social (checklist OCDE/JRC)
   // ═══════════════════════════════════════════════════════════════════════
   itvc: {
     tipo: "indice",
     id: "itvc",
-    sigla: "ITVC",
-    nombreLargo: "Índice de Tensión del Cinturón de Vida Cotidiana",
+    sigla: "ITCIS",
+    nombreLargo: "Índice de Tensión del Cinturón de Impacto Social",
     base100: true,
     cinturon: "vida_cotidiana",
-    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada de la vida cotidiana; menos de 100 = deterioro. Dieciséis componentes en seis dimensiones.",
+    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Dieciséis componentes en seis dimensiones.",
     marcoConceptual: [
-      "El cinturón de vida cotidiana mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, endeudamiento de las familias, empleo y el clima de confianza y seguridad.",
-      "El marco proviene del documento institucional del ITVC en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. A diferencia del ITCM y el ITCG, no usa tablas de umbrales: mide la evolución acumulada contra una línea de base común — el arranque del mandato.",
+      "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, endeudamiento de las familias, empleo y el clima de confianza y seguridad.",
+      "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. A diferencia del ITCM y el ITCG, no usa tablas de umbrales: mide la evolución acumulada contra una línea de base común — el arranque del mandato.",
     ],
     seleccion: [
       "Trece componentes en cinco dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto.",
@@ -2971,7 +2971,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Cada componente es un índice continuo rebaseado a 100 = promedio del 4º trimestre de 2023 (o su base declarada). No hay bandas ni anclas: la normalización es el rebase, y las transformaciones por componente (acumulados móviles, deflactación, relativos al IPC general) están documentadas en cada ficha.",
     ],
     agregacion: {
-      latex: String.raw`\text{ITVC}=\sum_{\text{6 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{componentes}}\text{peso}_{\text{interno}}\times\min(\text{componente},140)\Big)`,
+      latex: String.raw`\text{ITCIS}=\sum_{\text{6 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{componentes}}\text{peso}_{\text{interno}}\times\min(\text{componente},140)\Big)`,
       leyenda: "Promedio ponderado en dos niveles (37% ingresos y consumo · 25% precios · 15% empleo · 10% vulnerabilidad financiera · 8% confianza y percepción · 5% seguridad), con el techo de recorte declarado.",
       parrafos: [
         "La agregación es compensatoria y el flag de dimensión crítica lo declara cuando una dimensión cae por debajo del umbral. Cuáles están marcadas se lee en la tabla de composición, que se recalcula con cada actualización: nombrarlas acá dejaría el texto viejo al mes siguiente.",
@@ -2985,14 +2985,14 @@ export const FICHAS: Record<string, Ficha> = {
       "Se acompaña con el ejercicio de quitar cada componente por vez.",
     ],
     validacion: [
-      "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra el consumo medido: las ventas en supermercados a precios constantes que publica el INDEC, en su serie desestacionalizada. Se espera correlación positiva — si las condiciones materiales mejoran respecto del arranque del mandato, los hogares compran más en términos reales. El ancla no integra el índice, así que la comparación usa el ITVC completo, el mismo que se publica.",
+      "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra el consumo medido: las ventas en supermercados a precios constantes que publica el INDEC, en su serie desestacionalizada. Se espera correlación positiva — si las condiciones materiales mejoran respecto del arranque del mandato, los hogares compran más en términos reales. El ancla no integra el índice, así que la comparación usa el ITCIS completo, el mismo que se publica.",
       "El ancla fue el Índice de Confianza del Consumidor hasta julio de 2026 y se cambió por dos motivos medidos. El primero es que la confianza ES uno de los componentes del índice, lo que obligaba a comparar contra una versión recalculada sin ese componente: un número que no es el que se publica. El segundo es que alrededor de un tercio del peso del índice se mueve en sentido CONTRARIO a la confianza, porque en estos años el ánimo mejoró mientras el peso del alquiler, la pobreza, la morosidad y la informalidad empeoraban.",
       "La confianza del consumidor se sigue publicando, como contraste que DISTINGUE en vez de confirmar: sirve para mostrar que la percepción y las condiciones materiales no son lo mismo. Que ese número sea más bajo no es una falla del índice, es el resultado.",
       "Lo que el ancla no cubre, y queda declarado: mide comercio registrado de supermercados. No ve el comercio informal, y tampoco el traslado de compras al canal mayorista y de descuento, que se mueve en sentido contrario —comprar ahí es señal de ajuste, no de holgura— y por eso no se suma al ancla.",
       "La matriz de validación cruzada compara además cada índice del informe contra todas las anclas a la vez, para ver si correlaciona más con la propia que con las ajenas. No se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período.",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10 con su propia fórmula: tensión = 5 − (ITVC − 100) × 0,2. Un índice en 100 (sin cambios contra el arranque) equivale a tensión 5; cada 5 puntos de índice mueven un punto de tensión.",
+      "El resto del informe consume el índice como tensión 0–10 con su propia fórmula: tensión = 5 − (ITCIS − 100) × 0,2. Un índice en 100 (sin cambios contra el arranque) equivale a tensión 5; cada 5 puntos de índice mueven un punto de tensión.",
       "Cada componente publica su ficha con la transformación exacta, su nivel actual y su peso.",
     ],
     interpretacion: [
@@ -3010,7 +3010,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     cambios: [
       { fecha: "2026-05", cambio: "Versión inicial del cinturón: fórmulas de tensión ancladas por indicador, promediadas." },
-      { fecha: "2026-07-03", cambio: "Nace el ITVC base 100: reemplaza el promedio de fórmulas ancladas por la evolución acumulada contra el 4º trimestre de 2023, con robustez Monte Carlo y flag de dimensión crítica publicados. Los patentamientos pasan al acumulado móvil de 12 meses por estacionalidad." },
+      { fecha: "2026-07-03", cambio: "Nace el ITCIS base 100: reemplaza el promedio de fórmulas ancladas por la evolución acumulada contra el 4º trimestre de 2023, con robustez Monte Carlo y flag de dimensión crítica publicados. Los patentamientos pasan al acumulado móvil de 12 meses por estacionalidad." },
       { fecha: "2026-07-04", cambio: "Barrido componente por componente: la victimización pasa de la serie anual de denuncias a la encuesta mensual; se elimina el doble conteo salario/comida (dos componentes correlacionaban 0,985); se aplica el techo de recorte 140 sin piso; el sentimiento digital pasa a puntuar tras un banco de pruebas empírico; y la matriz de validación cruzada queda como tercer pilar de robustez." },
       { fecha: "2026-07-15", cambio: "La mora de las familias se separa como indicador propio de la dimensión de vulnerabilidad financiera (antes iba multiplicada dentro del endeudamiento): la deuda mide el acceso al crédito y la mora, si esa deuda se puede pagar. El índice pasa a catorce indicadores puntuables y la dimensión reparte 50/50." },
     ],
@@ -3028,7 +3028,7 @@ export const FICHAS: Record<string, Ficha> = {
     resumen: "Mide el capital político del gobierno —la capacidad de gobernar con otros actores, no la popularidad— en una escala 0–100: 0 = mínimo capital político, 100 = máximo. Cinco dimensiones con pesos editoriales explícitos, sin documento institucional previo que los fije.",
     marcoConceptual: [
       "El cinturón político mide el capital político del gobierno según el marco de Carlos Matus (Política, Planificación y Gobierno): la capacidad de gobernar con otros actores —el Congreso, los gobernadores, el propio bloque legislativo, la calle—, no la popularidad medida en encuestas. Se organiza en cinco dimensiones: poder legislativo, alianzas territoriales, cohesión interna del oficialismo, conflicto social e imagen y voto.",
-      "A diferencia del ITCM, el ITCG y el ITVC, no existe un documento institucional que fije los pesos de estas cinco dimensiones: el marco ya las describía, pero nunca se habían ponderado. Los pesos son una decisión editorial explícita, apoyada en esa misma distinción del marco: la dimensión de imagen y voto pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
+      "A diferencia del ITCM, el ITCG y el ITCIS, no existe un documento institucional que fije los pesos de estas cinco dimensiones: el marco ya las describía, pero nunca se habían ponderado. Los pesos son una decisión editorial explícita, apoyada en esa misma distinción del marco: la dimensión de imagen y voto pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
     ],
     seleccion: [
       "Once indicadores puntúan en cinco dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El tablero publica solo lo que integra el índice: dos mediciones que quedaron fuera del puntaje (la rotación del gabinete y las protestas en la Ciudad de Buenos Aires) se siguen relevando como seguimiento interno, sin tile propio. Reemplaza a un promedio simple de nueve indicadores que pesaba todo por igual, sin distinguir la capacidad de gobernar de la popularidad.",

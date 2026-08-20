@@ -36,7 +36,7 @@ const c = informe.cinturones[meta.key];
 //   alerta multicinturón  cuenta sólo los de score >= 7
 //
 // Entre 6 y 7 hay una zona muerta: un cinturón es "tensionado" y NO cuenta para
-// la alerta. Con este snapshot le pasa a vida cotidiana, en 6,9. El chip
+// la alerta. Con este snapshot le pasa a impacto social, en 6,9. El chip
 // afirmaba que sí contaba.
 //
 // No se puede arreglar desde el front sin escribir el umbral 7 a mano, que es
@@ -57,7 +57,7 @@ const filasCumplidas = filas.filter(({ ind }) => ind.en_indice === false && ind.
 const filasSuspendidas = filas.filter(({ ind }) => ind.en_indice === false && ind.suspendido);
 const filasContexto = filas.filter(({ ind }) => ind.en_indice === false && !ind.cumplido && !ind.suspendido);
 const fuentes = fuentesDeCinturon(c);
-const indice = indiceDe(c);   // ITCM / ITCG / ITVC / ITCP, o null (espíritu)
+const indice = indiceDe(c);   // ITCM / ITCG / ITCIS / ITCP, o null (espíritu)
 // Los indicadores del índice se muestran AGRUPADOS por dimensión, en el mismo
 // orden en que se listan las dimensiones arriba: leer el detalle deja de ser
 // una grilla plana de quince cards y pasa a seguir la estructura del índice.
@@ -141,14 +141,14 @@ const domDelta = rob?.dominante && indice
 const robAmplitud = rob ? Math.round((rob.p95 - rob.p05) * 10) / 10 : null;
 
 // Validación externa (una por cinturón con paramétrica): co-movimiento del
-// índice reconstruido mes a mes contra su contraste externo propio (ITVC
+// índice reconstruido mes a mes contra su contraste externo propio (ITCIS
 // recalculado SIN su componente ICC, para no ser circular, contra el ICC
 // UTDT; ITCM/ITCG/ITCP contra su propio par de mercado o de prensa). Ambas
 // series se rebasean/normalizan al período común para dibujarlas en una
 // misma escala.
 const val = indice?.data.validacion ?? null;
 // Matriz de validación cruzada (las cuatro paramétricas con contraste
-// externo — ITCM/ITCG/ITVC/ITCP): se muestra solo en esos cinturones, con la
+// externo — ITCM/ITCG/ITCIS/ITCP): se muestra solo en esos cinturones, con la
 // fila del índice propio señalada. El filtro es genérico (busca la sigla del
 // cinturón actual entre las filas ya calculadas), así que un cinturón sin
 // validación propia (n < 12 meses de solape) queda afuera automáticamente
@@ -246,7 +246,7 @@ const robChartData = rob?.hist && indice ? {
   n_draws: rob.n_draws, base100: !!indice.base100,
 } : null;
 ---
-<Layout title={`${meta.nombre} · Informe de Coyuntura · CiGob`}>
+<Layout title={`${meta.nombre} · Monitor del Plan de Gobierno · CiGob`}>
   <Nav />
   <header class={`cg-hero cg-detalle-hero cg-detalle-hero--${meta.slug}`} id="top">
     <div class="cg-hero-inner cg-detalle-inner">
@@ -822,7 +822,7 @@ const robChartData = rob?.hist && indice ? {
       <section class="cg-section cg-nota-met">
         <p class="cg-eyebrow">Nota metodológica</p>
         <p>
-          El cinturón se puntúa con el <strong>ITVC-B100</strong>, un índice de{" "}
+          El cinturón se puntúa con el <strong>ITCIS-B100</strong>, un índice de{" "}
           <strong>seguimiento de gestión</strong>: cada componente se rebasea a 100 en el{" "}
           <strong>promedio del 4º trimestre de 2023</strong> (no diciembre puntual, para
           amortiguar la distorsión de la devaluación) y el índice acumula la mejora o el
@@ -836,8 +836,8 @@ const robChartData = rob?.hist && indice ? {
           victimización (LICIP-UTDT) con base en enero de 2024 — la encuesta estuvo suspendida
           entre 2020 y 2023 y no existe medición del 4º trimestre de 2023; el registro de
           denuncias (SNIC) queda como contraste. El{" "}
-          <strong>score {num(c.score)}/10</strong> deriva del <strong>ITVC {num(c.itvc?.valor)}</strong>:
-          tensión = 5 − (ITVC − 100) × 0,2.
+          <strong>score {num(c.score)}/10</strong> deriva del <strong>ITCIS {num(c.itvc?.valor)}</strong>:
+          tensión = 5 − (ITCIS − 100) × 0,2.
         </p>
       </section>
     )}
@@ -1011,7 +1011,7 @@ const robChartData = rob?.hist && indice ? {
       <p class="cg-modal-desc">
         Cada fila es un índice; cada columna, una vara externa. Las celdas sombreadas marcan
         el par natural: la macroeconomía con el precio del riesgo argentino, la gestión con el
-        valor de las empresas, la vida cotidiana con el ánimo del consumidor y la política con
+        valor de las empresas, el impacto social con el ánimo del consumidor y la política con
         la incertidumbre de política en la prensa (EPU). Una fila cuyo par natural es el más
         fuerte de su fila está midiendo algo propio.
       </p>

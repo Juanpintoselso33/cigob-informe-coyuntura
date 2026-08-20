@@ -6,7 +6,7 @@ nota_estado: 'La decisión 1 (la aguja de arco como lectura primaria) la reempla
 fecha: 2026-08-12
 cinturon: 'transversal'
 archivos: ['web/src/components/Aguja.astro', 'web/src/components/Hero.astro', 'web/src/components/CinturonCard.astro', 'web/src/components/TensionPanel.astro', 'web/src/components/Metodologia.astro', 'web/src/pages/[slug].astro', 'web/src/pages/metodologia/index.astro', 'web/src/lib/datos.ts', 'web/public/overrides.css']
-relacionado: ['0181', '0195', '0199', '0200']
+relacionado: ['0181', '0195', '0199', '0200', '0213']
 superado_parcialmente_por: ['0204']
 ambito: 'Capa visual y textual del informe · portada, cinturones y metodología'
 origen: 'Rediseño pedido por el editor: que el estado se lea por color y posición antes que por número, con menos texto'

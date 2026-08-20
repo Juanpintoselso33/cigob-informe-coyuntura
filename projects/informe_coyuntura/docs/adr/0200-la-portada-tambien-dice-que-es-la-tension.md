@@ -6,6 +6,7 @@ fecha: 2026-08-13
 cinturon: 'transversal'
 archivos: ['web/src/components/MarcoTension.astro', 'web/src/pages/index.astro', 'web/public/overrides.css', 'tests/test_marco_conceptual.py']
 relacionado: ['0194', '0199', '0201']
+modificado_por: ['0213']
 ambito: 'Capa textual de la portada — la definición del concepto que el tablero mide'
 origen: 'Pedido del editor el mismo día que se repuso el marco en /metodologia: la explicación también tiene que estar en el home'
 ---

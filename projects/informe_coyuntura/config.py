@@ -51,6 +51,18 @@ def pesos_cinturones(hoy: date | None = None) -> dict:
 # Pesos vigentes hoy (lo que consumen generar_informe.py y publicar.py).
 PESOS_CINTURONES = pesos_cinturones()
 
+# ── Siglas PÚBLICAS de los cuatro índices (ADR-0190) ──────────────────────────
+# La sigla que lee el lector no es la clave técnica. `itvc` sigue siendo la
+# clave del snapshot, el nombre del módulo y el de las tablas de BigQuery: lo
+# que cambió en agosto de 2026 es cómo se llama en la página, junto con el
+# cinturón (Vida cotidiana → Impacto social). Las otras tres esperan la
+# definición editorial que ADR-0190 dejó pendiente —incluida la colisión de
+# ITCG con el ICG de la UTDT, que el propio informe publica—; cuando lleguen
+# se cambian acá y en web/src/lib/datos.ts::indiceDe, que son los dos únicos
+# lugares donde la sigla se declara. La prosa las nombra literal, y
+# tests/test_siglas_publicas.py es el que impide que quede una vieja suelta.
+SIGLAS_PUBLICAS = {"itcm": "ITCM", "itcg": "ITCG", "itvc": "ITCIS", "itcp": "ITCP"}
+
 # Umbrales de clasificación de estado por cinturón (score 0-10)
 # score <= ESTABLE_MAX → "estable" | <= EN_TENSION_MAX → "en_tension" | > EN_TENSION_MAX → "tensionado"
 UMBRALES = {

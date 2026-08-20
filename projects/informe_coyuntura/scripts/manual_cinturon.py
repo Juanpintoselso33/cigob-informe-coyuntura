@@ -32,13 +32,17 @@ RAIZ = Path(__file__).resolve().parent.parent
 ADR_DIR = RAIZ / "docs" / "adr"
 SALIDA = RAIZ / "docs" / "manuales"
 sys.path.insert(0, str(RAIZ / "scripts"))
+sys.path.insert(0, str(RAIZ))
+from config import SIGLAS_PUBLICAS  # noqa: E402  (necesita el sys.path de arriba)
 
-# cinturón -> (módulo, índice, nombre legible)
+# cinturón -> (módulo, índice TÉCNICO, nombre legible). El índice de acá
+# arma `DIMENSIONES_*`/`BANDAS_*` y la clave de procedencia_anclas.json, así
+# que NO es la sigla pública: esa vive en config.SIGLAS_PUBLICAS (ADR-0190).
 CINTURONES = {
     "politica": ("itcp", "ITCP", "Política"),
     "macro": ("itcm", "ITCM", "Macro"),
     "gestion": ("itcg", "ITCG", "Gestión"),
-    "vida": ("itvc", "ITVC", "Vida cotidiana"),
+    "vida": ("itvc", "ITVC", "Impacto social"),
 }
 
 # ADR que define la paramétrica del cinturón. Los indicadores que no tienen
@@ -204,7 +208,7 @@ def generar(cinturon: str) -> Path:
     procedencia = cargar_procedencia(indice)
 
     L = []
-    L += [f"# Manual metodológico — cinturón {legible} ({indice})", ""]
+    L += [f"# Manual metodológico — cinturón {legible} ({SIGLAS_PUBLICAS[modulo]})", ""]
     L += [
         "> **Generado** por `scripts/manual_cinturon.py` desde el código que corre",
         f"> (`scripts/{modulo}.py`) y el frontmatter de los ADR. No editar a mano.",
@@ -335,9 +339,9 @@ def indice_manuales() -> Path:
          "decisiones siguen abiertas. Para saber **por qué** se decidió algo y",
          "cuándo, el registro histórico está en [docs/adr/](../adr/README.md).",
          "", "| Cinturón | Índice | Manual |", "|---|---|---|"]
-    for c, (_, indice, legible) in CINTURONES.items():
+    for c, (modulo, _, legible) in CINTURONES.items():
         if (SALIDA / f"{c}.md").exists():
-            L.append(f"| {legible} | `{indice}` | [{c}.md]({c}.md) |")
+            L.append(f"| {legible} | {SIGLAS_PUBLICAS[modulo]} | [{c}.md]({c}.md) |")
     L += ["", "Regenerar: `python scripts/manual_cinturon.py --todos`", ""]
     d = SALIDA / "README.md"
     d.write_text("\n".join(L), encoding="utf-8", newline="\n")
