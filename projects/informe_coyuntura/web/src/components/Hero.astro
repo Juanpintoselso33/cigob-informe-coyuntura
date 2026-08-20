@@ -4,16 +4,16 @@
 // Antes había un párrafo institucional de seis líneas y una fila de cuatro
 // stats numéricas (edición, cinturones en rojo, score /10, riesgo dominante).
 // El lector tenía que leer para saber si el país está bien o mal. La barra
-// contesta eso antes de leer nada; el texto que queda dice qué está pasando
-// ahora, y el encuadre conceptual del observatorio vive en /metodologia.
+// contesta eso antes de leer nada; la bajada ya no narra el mes —eso pasó a
+// ser la lectura editorial del BLUF— sino que dice qué es este producto.
+// El encuadre conceptual del observatorio vive en /metodologia.
 //
 // La barra va de BANDA bajo el lead, no en una segunda columna: es ancha y
 // baja, y metida en una columna propia quedaba apretada contra el título
 // (ADR-0204). La aguja de arco que estaba antes sí pedía columna.
-import { informe, cinturonesRojos, cap, mesLegible, indicadoresRezagados } from "../lib/datos.ts";
+import { informe, cap, mesLegible, indicadoresRezagados } from "../lib/datos.ts";
 import NivelTension from "./NivelTension.astro";
 
-const rojos = cinturonesRojos(informe);
 const f = informe.generated_at;
 const datosAl = `${f.slice(8, 10)}/${f.slice(5, 7)}/${f.slice(0, 4)}`;
 // Frescura honesta (revisión adversarial 2026-07-11): generated_at es la
@@ -27,12 +27,7 @@ const rezagados = indicadoresRezagados(informe);
       <p class="cg-hero-eyebrow">Observatorio · Fundación CiGob · {mesLegible(informe.period)}</p>
       <h1 class="cg-hero-title">Gobernar la tensión: <em>monitor de viabilidad y restricciones del proyecto de gobierno del presidente Milei.</em></h1>
       <p class="cg-hero-lead">
-        Cuatro cinturones miden la tensión que tiene que procesar el gobierno para sostener su proyecto.
-        {rojos === 0
-          ? " Ninguno está tensionado este mes."
-          : rojos === 1
-            ? " Uno está tensionado: es manejable."
-            : ` ${rojos} están tensionados, y dos o más se retroalimentan.`}
+        Monitor de evaluación de Proyectos de Gobierno basado en la metodología CIGOB-MATUS.
       </p>
       <p class="cg-hero-meta">
         <span class:list={["cg-status-pill", informe.alerta_multicinturon ? "is-err" : "is-signed"]}>

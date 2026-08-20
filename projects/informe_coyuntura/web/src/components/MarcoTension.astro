@@ -12,8 +12,11 @@
 // Va después del BLUF y antes de las cards: el lector llega acá justo cuando
 // pasa de "cómo viene el mes" a cinco números que dicen 0-10.
 //
-// Sin cifras de cortes: la dirección de la escala se explica, los umbrales
-// salen de `semaforo_cortes` y los muestra SemaforoLeyenda (ADR-0181/0194).
+// La DIRECCIÓN de la escala ya no se explica acá (decisión editorial de
+// ago-2026): el párrafo pasó a decir qué mide cada cinturón, que es lo que
+// el lector preguntaba primero. El 0-10 queda explicado en /metodologia#marco
+// y los umbrales los muestra SemaforoLeyenda desde `semaforo_cortes`
+// (ADR-0181/0194).
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 <aside class="cg-marco-home" aria-labelledby="cg-marco-home-t">
@@ -22,12 +25,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     <h2 class="cg-marco-home-h" id="cg-marco-home-t">Qué es la tensión</h2>
     <p>
       La gobernabilidad de un proyecto de gobierno no se mide por la ausencia de conflictos, sino por su
-      capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos de
-      acción disponibles. Los cuatro cinturones son los frentes donde eso se juega.
-    </p>
-    <p>
-      Cada uno publica la suya de <strong>0 a 10</strong>: 0 es un cinturón aflojado —el gobierno procesa las
-      demandas con los recursos que tiene— y 10 uno apretado, donde cada decisión se paga con otra.
+      capacidad para <strong>procesar la tensión</strong> entre las demandas del entorno y los recursos
+      disponibles por el gobierno. Los cuatro cinturones son las dimensiones donde medimos esta tensión:
+      <strong>MACRO</strong> mide la sustentabilidad intertemporal del proyecto de gobierno.
+      <strong>POLÍTICA</strong> mide la capacidad de validar las normas y regulaciones que demanda el proyecto.
+      <strong>GESTIÓN</strong> mide la capacidad de cumplir con sus compromisos. Y, por último
+      —pero con particular relevancia en los tramos cercanos a una elección—, <strong>IMPACTO SOCIAL</strong>
+      mide la capacidad del proyecto de ser validado en las urnas.
     </p>
   </div>
   <a class="cg-marco-home-cta" href={`${base}/metodologia/#marco`}>El marco completo →</a>
