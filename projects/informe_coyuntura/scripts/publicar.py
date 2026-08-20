@@ -25,7 +25,8 @@ DATA.mkdir(parents=True, exist_ok=True)
 
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
-from config import PESOS_CINTURONES, UMBRALES, estado_de_score  # pesos y umbrales del informe
+from config import (PESOS_CINTURONES, UMBRALES, SIGLAS_PUBLICAS,  # pesos, umbrales y siglas
+                    estado_de_score)
 import itcm                                           # bandas y pesos del ITCM macro
 import itcg                                           # bandas y pesos del ITCG gestión
 import itcp                                           # bandas y pesos del ITCP política
@@ -157,7 +158,7 @@ def build_vida(raw):
     _add(out, "sentimiento_digital", round(sum(sd.values()) / len(sd), 1) if sd else None,
          "interés 0–100", "Google Trends", ts,
          detalle_txt=("El titular es el pulso de los últimos 3 meses (escala relativa "
-                      "de esa ventana). El gráfico y el puntaje del ITVC usan la "
+                      "de esa ventana). El gráfico y el puntaje del ITCIS usan la "
                       "canasta mensual de ventana fija desde 2021, cuyo cociente "
                       "contra el 4T-2023 es inmune a la renormalización de Trends."))
     motos = cafam.get("patentamiento_motos", {})
@@ -307,7 +308,7 @@ SCORING = {
     "endeudamiento_familiar": (lambda v: 5 + v / 4,     "−20% real → 0 · 0% → 5 · +20% real → 10 (var. interanual real del crédito)", "var_real_12m"),
 }
 
-VIDA_CONTEXTO = ("Indicador de contexto — no integra el ITVC (paramétrica CIGOB jul-2026) "
+VIDA_CONTEXTO = ("Indicador de contexto — no integra el ITCIS (paramétrica CIGOB jul-2026) "
                  "o su componente no pudo calcularse en esta corrida.")
 
 MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
@@ -327,10 +328,10 @@ SCORE_EXPLICACION = {
     "gestion":        ("ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
                        "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
                        "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),
-    "vida_cotidiana": ("ITVC-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada de la vida "
-                       "cotidiana) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, "
+    "vida_cotidiana": ("ITCIS-B100 (índice de seguimiento, 100 = promedio del 4T-2023; mayor = mejora acumulada en las "
+                       "condiciones de vida) ponderado por 6 dimensiones: ingresos y consumo 37%, precios 25%, "
                        "vulnerabilidad financiera 10%, empleo 15%, confianza y percepción 8%, seguridad 5%. "
-                       "La tensión del cinturón es 5 − (ITVC − 100) × 0,2."),
+                       "La tensión del cinturón es 5 − (ITCIS − 100) × 0,2."),
 }
 
 
@@ -672,7 +673,7 @@ def _validacion_itvc(bloque, series):
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
         "pares": [[m, itvc_serie[m], consumo[m]] for m in comunes],
         "plot": "rebase100",
-        "titulo": "¿El ITVC acompaña lo que la gente puede comprar?",
+        "titulo": "¿El ITCIS acompaña lo que la gente puede comprar?",
         "sub": ("Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables "
                 "externas relacionadas que no lo componen. Este cinturón no tiene una única "
                 "serie de referencia, así que se compara contra un panel de estadísticas "
@@ -682,7 +683,7 @@ def _validacion_itvc(bloque, series):
                 "—luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de "
                 "una sola. El detalle —las cargas de cada una y el panel completo— está en la "
                 "ficha metodológica."),
-        "serie_label": "ITVC (reconstrucción mensual)",
+        "serie_label": "ITCIS (reconstrucción mensual)",
         "externa_label": "consumo en supermercados (precios constantes)",
         "trans_label": "ambas series con base 100 en el cuarto trimestre de 2023",
         "conclusion": " ".join(partes),
@@ -1353,7 +1354,7 @@ def _validacion_cruzada(informe):
     PAR_PROPIO = {"ITCM": "lider", "ITCG": "merval", "ITVC": "consumo", "ITCP": "epu"}
     filas = []
     for ik in ("ITCM", "ITCG", "ITVC", "ITCP"):
-        fila = {"indice": ik, "propio": PAR_PROPIO[ik]}
+        fila = {"indice": SIGLAS_PUBLICAS[ik.lower()], "propio": PAR_PROPIO[ik]}
         for ek, ext in externas.items():
             r, n = _r(indices[ik], ext)
             # rd: correlación de los cambios mes a mes — la prueba exigente,
@@ -1404,7 +1405,7 @@ def _validacion_cruzada(informe):
         "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro "
                 "contrastes externos a la vez. Cada uno tiene el propio: la macroeconomía "
                 "(ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de "
-                "las empresas en dólares, la vida cotidiana (ITVC) con el consumo medido en "
+                "las empresas en dólares, el impacto social (ITCIS) con el consumo medido en "
                 "supermercados, la política (ITCP) con la incertidumbre de política que mide la "
                 "prensa (EPU Argentina). Si cada índice mide su propio terreno, debería "
                 "correlacionar con su par natural al menos tanto como con los ajenos. Es la "
@@ -1413,7 +1414,7 @@ def _validacion_cruzada(informe):
         # el veredicto. El detalle par por par queda para el desarrollo.
         "conclusion": (f"Los cuatro pares propios dan el signo esperado. ITCM "
                        f"{fmt(f_itcm['lider']['r'])} con la actividad, ITCG "
-                       f"{fmt(f_itcg['merval']['r'])} con el Merval en dólares, ITVC "
+                       f"{fmt(f_itcg['merval']['r'])} con el Merval en dólares, ITCIS "
                        f"{fmt(f_itvc['consumo']['r'])} con el consumo medido, ITCP "
                        f"{fmt(f_itcp['epu']['r'])} con la incertidumbre de política — este último "
                        f"más moderado que los otros tres, coherente con un índice con varios "
@@ -1602,7 +1603,7 @@ def _scoring_vida_itvc(c, series):
                 .get(ikey, "4T-2023")
             formula = (f"Índice base-100 vs {base_lbl}: {coma(info['puntaje_aplicado'])} "
                        f"(100 = arranque del mandato; más = mejora); pesa "
-                       f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITVC. "
+                       f"{coma(round(info['peso_efectivo'] * 100, 1))}% del ITCIS. "
                        f"Tensión = 5 − (índice − 100) × 0,2.")
             if ikey in winsorizados:
                 nota = (f"Winsorizado (tratamiento de outliers): índice crudo "

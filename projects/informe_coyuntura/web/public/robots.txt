@@ -1,4 +1,4 @@
-# Informe de Coyuntura · CiGob — https://informe.cigob.org
+# Monitor del Plan de Gobierno · CiGob — https://informe.cigob.org
 # El informe es material público: se permite el rastreo completo.
 
 User-agent: *

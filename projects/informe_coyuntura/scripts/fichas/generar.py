@@ -27,7 +27,7 @@ SIGLA, NOMBRE = {
  "macro": ("ITCM", "Macroeconomía"),
  "politica": ("ITCP", "Política"),
  "gestion": ("ITCG", "Gestión"),
- "vida_cotidiana": ("ITVC", "Vida cotidiana"),
+ "vida_cotidiana": ("ITCIS", "Impacto social"),
 }[CINT]
 SALIDA_MD = SALIDA_DIR / f"fichas-{CINT}.md"
 

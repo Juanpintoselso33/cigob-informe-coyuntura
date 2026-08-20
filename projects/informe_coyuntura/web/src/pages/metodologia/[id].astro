@@ -22,7 +22,7 @@ const f = FICHAS[id!];
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 const CINT_NOMBRE: Record<string, string> = {
-  macro: "Macroeconomía", politica: "Política", vida_cotidiana: "Vida cotidiana",
+  macro: "Macroeconomía", politica: "Política", vida_cotidiana: "Impacto social",
   gestion: "Gestión",
 };
 const slugDe = Object.fromEntries(CINTURONES.map(c => [c.key, c.slug]));
@@ -143,7 +143,7 @@ const pasosIndice = !esIndicador ? [
 const titulo = esIndicador ? label(f.id) : `${fx.sigla} — ${fx.nombreLargo}`;
 const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
 ---
-<Layout title={`Ficha metodológica: ${titulo} · Informe de Coyuntura · CiGob`}>
+<Layout title={`Ficha metodológica: ${titulo} · Monitor del Plan de Gobierno · CiGob`}>
   <Nav />
   <header class={`cg-hero cg-detalle-hero cg-detalle-hero--${slug}`} id="top">
     <div class="cg-hero-inner cg-detalle-inner">

@@ -32,10 +32,10 @@ const POLARIDAD_SIGNO: Record<string, 1 | -1> = {
   // diría que "más es mejor", que es justo lo contrario de lo que mide.
   idm: -1, litigiosidad_laboral: -1, gasto_funcionamiento: -1, masa_salarial: -1,
   reduccion_estado: -1,
-  // vida cotidiana (series que cruzan el cero). endeudamiento_familiar salió
+  // impacto social (series que cruzan el cero). endeudamiento_familiar salió
   // de la lista (ADR-0067): su card es el stock nominal en billones (nunca
   // cruza el cero) y la polaridad −1 era la semántica del compuesto viejo
-  // deuda×mora — el stock real puro puntúa con signo positivo en el ITVC.
+  // deuda×mora — el stock real puro puntúa con signo positivo en el ITCIS.
   mortalidad_pymes: 1,
   // política: % var. vs 2023 — caer (menos conflicto en la calle) es la mejora
   conflictividad_nacional: -1,

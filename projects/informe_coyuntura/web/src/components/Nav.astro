@@ -6,7 +6,7 @@ const links = [
   { href: `${base}/`, label: "Resumen", seg: "" },
   { href: `${base}/macro/`, label: "Macro", seg: "macro" },
   { href: `${base}/politica/`, label: "Política", seg: "politica" },
-  { href: `${base}/vida/`, label: "Vida cotidiana", seg: "vida" },
+  { href: `${base}/vida/`, label: "Impacto social", seg: "vida" },
   { href: `${base}/gestion/`, label: "Gestión", seg: "gestion" },
   // Apunta a la PÁGINA de metodología, no al ancla de la portada. Mientras
   // apuntó a `/#metodologia` el marco conceptual quedaba a dos clics del lector
@@ -35,7 +35,7 @@ function isActive(seg: string): boolean {
           <span class="cg-nav-sub">Ciencias para gobernar</span>
         </span>
       </a>
-      <a class="cg-nav-producto" href={`${base}/`}>Informe de Coyuntura<span class="cg-nav-mes">{mesLegible(informe.period)}</span></a>
+      <a class="cg-nav-producto" href={`${base}/`}>Monitor del Plan de Gobierno<span class="cg-nav-mes">{mesLegible(informe.period)}</span></a>
     </div>
     <button class="cg-nav-burger" id="cg-nav-burger" aria-label="Secciones del informe"
             aria-expanded="false" aria-controls="cg-nav-links">☰</button>

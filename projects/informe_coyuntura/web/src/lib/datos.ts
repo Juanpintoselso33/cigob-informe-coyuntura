@@ -87,7 +87,7 @@ export interface Cinturon {
   itcm?: IndiceParametrico;  // solo macro
   itcg?: IndiceParametrico;  // solo gestión
   itcp?: IndiceParametrico;  // solo política
-  itvc?: IndiceParametrico;  // solo vida cotidiana (base 100 = 4T-2023)
+  itvc?: IndiceParametrico;  // solo impacto social (base 100 = 4T-2023)
 }
 
 // Índice paramétrico del cinturón (si tiene): sigla, nombre y descripción
@@ -113,9 +113,9 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
     data: c.itcg,
   };
   if (c.itvc) return {
-    sigla: "ITVC",
+    sigla: "ITCIS",
     base100: true,   // índice de seguimiento sin techo en 100 (no mostrar "/100")
-    nombre: "Índice de Tensión del Cinturón de Vida Cotidiana",
+    nombre: "Índice de Tensión del Cinturón de Impacto Social",
     descripcion: "100 = el arranque del mandato (4º trimestre de 2023). Más de 100 es mejora; menos, deterioro.",
     data: c.itvc,
   };
@@ -170,7 +170,7 @@ export const series = Object.fromEntries(
 export const CINTURONES = [
   { key: "macro",          slug: "macro",    nombre: "Macroeconomía",     sub: "El motor económico" },
   { key: "politica",       slug: "politica", nombre: "Política",          sub: "El tablero de poder" },
-  { key: "vida_cotidiana", slug: "vida",     nombre: "Vida cotidiana",    sub: "El bolsillo y la calle" },
+  { key: "vida_cotidiana", slug: "vida",     nombre: "Impacto social",    sub: "El bolsillo y la calle" },
   { key: "gestion",        slug: "gestion",  nombre: "Gestión",           sub: "La capacidad de ejecutar" },
 ] as const;
 
@@ -188,7 +188,7 @@ export type ColorSemaforo = "verde" | "amarillo" | "naranja" | "rojo";
 // El color LO CALCULA parametrica.py y viaja en el snapshot (ADR-0181). Acá
 // solo se lee: si el cliente lo recalculara, habría dos definiciones del corte
 // y se desincronizarían sin que falle nada. Hasta agosto de 2026 esta función
-// calculaba 3 colores en el cliente, con una vara distinta para el ITVC
+// calculaba 3 colores en el cliente, con una vara distinta para el ITCIS
 // base-100 (verde a tensión 6) que para los índices 0-100 (verde a tensión 4).
 // El contrato son 4 colores, no 5: no hay "sin dato" acá adentro. Si falta el
 // bloque `semaforo` esta función devuelve "amarillo" igual, PERO eso no debe
@@ -271,7 +271,7 @@ export const LECTURA_SEMAFORO: Record<ColorSemaforo, string> = {
 };
 
 // Peor dimensión (la que más tensión aporta) del índice de un cinturón.
-// La comparación entre índices de escala distinta (bandas 0-100 vs ITVC
+// La comparación entre índices de escala distinta (bandas 0-100 vs ITCIS
 // base-100) se hace en TENSIÓN equivalente, con las fórmulas publicadas.
 export function tensionDeDimension(puntaje: number, base100: boolean): number {
   return base100 ? 5 - (puntaje - 100) * 0.2 : (100 - puntaje) / 10;
@@ -371,7 +371,7 @@ export const LABELS: Record<string, string> = {
   comisiones_caidas: "Comisiones sin sanción",
   derrotas_legislativas: "Derrotas legislativas del Ejecutivo",
   bloqueo_sostenido: "Bloqueo legislativo sostenido",
-  // vida cotidiana (claves de publicar.py)
+  // impacto social (claves de publicar.py)
   brecha_salario_cbt: "Salario real vs. canasta", ipc_alimentos: "Inflación de alimentos",
   endeudamiento_familiar: "Endeudamiento de consumo", mora_familias: "Mora de las familias",
   peso_tarifas: "Peso de tarifas (regulados)", alquiler_real: "Costo real del alquiler", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
@@ -447,7 +447,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   alineamiento_senadores_prov: "%", adhesion_reformas_provincial: "%",
   derrotas_legislativas: "derrotas 12m",
   bloqueo_sostenido: "% en pie",
-  // vida cotidiana
+  // impacto social
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   mora_familias: "%",
   peso_tarifas: "% m/m", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "% m/m",
@@ -510,7 +510,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   comisiones_caidas: "% de proyectos",
   derrotas_legislativas: "Derrotas en el recinto (vetos insistidos + decretos rechazados, acum. 12 meses)",
   bloqueo_sostenido: "% de normas desafiadas en el recinto que siguen en pie (últimos 12 meses)",
-  // vida cotidiana
+  // impacto social
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
   endeudamiento_familiar: "Billones de pesos", mora_familias: "% de la cartera en situación irregular",
   peso_tarifas: "% mensual", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
