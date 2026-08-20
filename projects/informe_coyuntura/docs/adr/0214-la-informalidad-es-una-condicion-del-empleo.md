@@ -111,6 +111,13 @@ decimales.
   la dimensión. Deja de serlo, y por eso este ADR lo **modifica**: lo que se
   conserva de aquella decisión es que la medida directa de empleo pese más que
   los tres proxies de entorno, y el test lo verifica en esos términos.
+- **Hay que re-correr `validacion_externa.py`, no alcanza con publicar.** El
+  script reconstruye la serie histórica del índice mes a mes desde las series
+  de componentes y los pesos VIGENTES, y en los meses con datos faltantes
+  renormaliza por dimensión — así que el traslado mueve la reconstrucción y
+  con ella las correlaciones publicadas contra el consumo medido. Verificado:
+  la corrida movió los r del panel en la tercera decimal. Es el mismo agujero
+  que ADR-0167 documentó para las recalibraciones de banda.
 - El pendiente D10 de ADR-0033 queda cerrado.
 
 ### Confirmación

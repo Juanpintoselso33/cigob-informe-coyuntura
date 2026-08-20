@@ -16,7 +16,7 @@ la página, el próximo que lo lea traduce mal) y las cadenas de `publicar.py`,
 que son las que viajan al snapshot. NO cubre comentarios ni docstrings de
 Python: ahí la clave técnica sigue llamándose `itvc` con todo derecho.
 """
-import ast
+import re
 from pathlib import Path
 
 import pytest
@@ -107,3 +107,27 @@ def test_las_cuatro_siglas_estan_declaradas_en_un_solo_lugar():
     datos = (ROOT / "web" / "src" / "lib" / "datos.ts").read_text(encoding="utf-8")
     for sigla in SIGLAS_PUBLICAS.values():
         assert f'sigla: "{sigla}"' in datos, f"datos.ts no declara {sigla}"
+
+
+# Siglas de TERCEROS que el informe publica, con el dueño que tiene que ir
+# pegado. `ICG` es el caso que motiva la regla: difiere del propio `ITCG` en una
+# letra, los dos son índices y conviven en la misma página. Un lector que
+# encuentra los dos no tiene cómo saber cuál es nuestro (ADR-0190).
+AJENAS = {"ICG": ("UTDT", "Di Tella"), "LICIP": ("UTDT", "Di Tella")}
+
+
+def test_ninguna_sigla_ajena_se_publica_sin_su_dueno():
+    """No es cosmética: es atribución. Publicar «ICG» a secas al lado de «ITCG»
+    hace pasar por propio un índice de un tercero, que es el más serio de los
+    dos problemas que ADR-0190 nombra."""
+    import json
+    snapshot = json.loads(
+        (ROOT / "web" / "src" / "data" / "informe.json").read_text(encoding="utf-8"))
+    sueltas = []
+    for ruta, texto in _textos_del_snapshot(snapshot):
+        for sigla, duenos in AJENAS.items():
+            if re.search(rf"\b{sigla}\b", texto) and not any(d in texto for d in duenos):
+                sueltas.append(f"{ruta}: «{sigla}» sin {duenos[0]} → {texto[:80]}")
+    assert not sueltas, (
+        "siglas de terceros publicadas sin decir de quién son:\n  "
+        + "\n  ".join(sueltas))

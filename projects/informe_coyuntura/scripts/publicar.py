@@ -1444,8 +1444,9 @@ def _validacion_itcg(bloque):
     r_niv, r_dif = niveles.get("r"), difs.get("r")
     icg_txt = ""
     if icg_niv is not None:
-        icg_txt = (f" El contraste discriminante también informa: la confianza en el gobierno "
-                   f"(ICG UTDT) diverge del ITCG ({coma(icg_niv)}) — la ejecución se acumula "
+        icg_txt = (f" El contraste discriminante también informa: el Índice de Confianza en "
+                   f"el Gobierno de la Universidad Torcuato Di Tella —un índice ajeno, no "
+                   f"nuestro— diverge del ITCG ({coma(icg_niv)}) — la ejecución se acumula "
                    f"mientras el capital político sigue su propio ciclo. El índice mide "
                    f"gestión, no popularidad.")
     bloque["validacion"] = {
