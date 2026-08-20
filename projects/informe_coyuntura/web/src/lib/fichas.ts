@@ -2426,7 +2426,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.",
-      "El peso del componente (22,75% del índice) es una discusión abierta declarada del diseño.",
+      "El peso del componente (17,06% del índice) es una discusión abierta declarada del diseño.",
       "Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.",
     ],
     faltantes: "Si una fuente falla, se mantiene el último valor publicado (marcado como desactualizado); si el componente no calcula, los pesos del índice se renormalizan.",
@@ -2585,7 +2585,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Pertenece a la dimensión de ingresos y consumo (3,02% interno · 1,12% del ITCIS).",
     ],
     limitaciones: [
-      "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: la caída del consumo de carne vacuna se compensa en buena medida con el aumento del de cerdo y la estabilidad del de pollo, de modo que el consumo total de las tres carnes cae mucho menos que el de vacuna sola. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,5%) y acompaña, no lidera.",
+      "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: la caída del consumo de carne vacuna se compensa en buena medida con el aumento del de cerdo y la estabilidad del de pollo, de modo que el consumo total de las tres carnes cae mucho menos que el de vacuna sola. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,12%) y acompaña, no lidera.",
       "Fuente sectorial privada, publicada en PDF sin interfaz de datos: la lectura depende del formato del informe.",
       "La línea de base del 4º trimestre de 2023 usa la foto contemporánea de entonces, declarada; el dato revisado de la fuente difiere levemente.",
     ],

@@ -234,8 +234,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación (card) · nivel vs IPC general (índice)",
   },
   endeudamiento_familiar: {
-    que: "Cuánto deben las familias por consumo (tarjetas + personales). En el ITCIS puntúa el NIVEL de deuda REAL (descontada la inflación), rebaseado a 100 = 4T-2023: más crédito real es más acceso al financiamiento.",
-    aporta: "Mide el acceso al crédito de los hogares como stock puro. La otra cara —si esa deuda se puede pagar— la mide la mora de las familias, su compañera en la dimensión de vulnerabilidad: juntas distinguen crédito que financia consumo de endeudamiento por necesidad.",
+    que: "Cuánto deben las familias por consumo (tarjetas + personales), en nivel de deuda REAL (descontada la inflación). Ya NO puntúa en el ITCIS: salió del índice en ADR-0154 porque el stock de deuda por sí solo no distingue acceso al crédito de fragilidad. Se sigue relevando y su serie se publica.",
+    aporta: "Mide el acceso al crédito de los hogares como stock puro, y esa es justamente su limitación: sin saber si esa deuda se puede pagar, más crédito no dice si es acceso o necesidad. Lo que quedó midiendo la dimensión de vulnerabilidad es la mora de esa cartera, que sí lo distingue.",
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Índice de deuda real (B100)",
   },
   mora_familias: {
@@ -250,12 +250,12 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   pobreza_nowcast: {
     que: "El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del INDEC, que se publica dos veces al año: es una proyección que se actualiza todos los meses.",
-    aporta: "Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Se publica como contexto: no integra el índice.",
+    aporta: "Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Integra el ITCIS con el 25% de la dimensión de ingresos y consumo (9,31% del índice), invertida: más pobreza, peor puntaje.",
     frecuencia: "Mensual (semestre móvil)", tipo: "Estimación de terceros",
   },
   indice_lider: {
-    que: "Un índice que combina señales tempranas de la economía —financieras, de expectativas y de actividad— para anticipar los cambios de rumbo antes de que aparezcan en los datos corrientes. En el ITCIS puntúa por su NIVEL rebaseado a 100 = 4T-2023.",
-    aporta: "Es el único componente del cinturón que mira hacia adelante: todos los demás describen lo que ya ocurrió. Un índice líder que se da vuelta anticipa el punto de giro que el resto de la dimensión va a registrar meses después.",
+    que: "Un índice que combina señales tempranas de la economía —financieras, de expectativas y de actividad— para anticipar los cambios de rumbo antes de que aparezcan en los datos corrientes. Ya NO puntúa en el ITCIS: salió del índice en ADR-0154 y pasó a ser el ancla externa contra la que se valida el ITCM.",
+    aporta: "Mira hacia adelante, que es lo que ningún componente del cinturón hace: los demás describen lo que ya ocurrió. Por eso su lugar pasó a ser el de contraste externo — un índice líder que se da vuelta anticipa el punto de giro que la marcha de la actividad va a registrar meses después.",
     frecuencia: "Mensual", tipo: "Nivel (índice base 100)",
   },
   alquiler_real: {
@@ -446,10 +446,10 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   privatizaciones_inversion: "Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales.",
   social_orden: "La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud.",
   // ITCIS
-  ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.",
+  ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.",
   precios: "Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).",
-  vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo, en dos señales: el nivel de crédito real (acceso al financiamiento) y la mora de esa cartera (si esa deuda se puede pagar). Deuda que crece con mora estable es acceso; con mora en aumento es fragilidad.",
-  empleo: "Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
+  vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. Es la única señal de la dimensión desde que el stock de deuda salió del índice — el nivel de deuda no distingue acceso de fragilidad, la mora sí.",
+  empleo: "Las perspectivas de trabajo, con el empleo registrado del sector privado como componente principal, más tres señales del entorno que lo demanda: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.",
   percepcion: "El ánimo con que se vive el momento, medido de dos maneras: preguntando (el Índice de Confianza del Consumidor de la UTDT) y observando qué busca la gente en internet.",
   seguridad: "Qué proporción de los hogares fue víctima de un delito. No es percepción ni sensación: es el hecho, relevado por encuesta.",
   // ITCP
