@@ -1,10 +1,11 @@
 ---
 madr: 4
 id: '0190'
-estado: 'propuesto'
+estado: 'parcial'
 fecha: 2026-08-09
 cinturon: 'transversal'
 relacionado: ['0012', '0013', '0018', '0189']
+superado_parcialmente_por: ['0212']
 ambito: 'Nombres y siglas de los cuatro índices paramétricos'
 origen: 'Editor, 2026-08-09: "quedan pendiente renombrar los índices, quedaron con nombres poco indicativos de lo que son, además muy parecidos a los de la Di Tella."'
 ---
@@ -66,7 +67,24 @@ sale a CIGOB fija más las siglas actuales.
 
 ## Decisión
 
-**Pendiente.** Este ADR queda en `propuesto` para dejar registrado el problema
+**Parcial desde el 2026-08-20.**
+[[0212-el-monitor-del-plan-de-gobierno-y-el-cinturon-de-impacto-social]] tomó la
+**opción 1** —renombrar sólo lo público— para **uno** de los cuatro: el cinturón
+de vida cotidiana pasó a llamarse *Impacto social* y su índice, de `ITVC` a
+`ITCIS`, con las claves técnicas, la URL y BigQuery intactos. Llegó junto con la
+primera de las tres definiciones que este ADR esperaba: la Fundación nombró ese
+cinturón.
+
+Sigue pendiente lo demás, y en particular **lo más caro de los dos problemas que
+este ADR nombra: la colisión de ITCG con el ICG de la UTDT**, que el propio
+informe publica. Renombrar uno de cuatro no la toca. ITCM, ITCG e ITCP esperan.
+
+El texto que sigue es el planteo original y vale tal cual para esos tres.
+
+---
+
+**Pendiente (redacción original, 2026-08-09).** Este ADR queda en `propuesto`
+para dejar registrado el problema
 y que no se pierda; la decisión requiere definir antes tres cosas:
 
 1. **Los nombres nuevos**, que es una decisión editorial de CIGOB, no técnica.

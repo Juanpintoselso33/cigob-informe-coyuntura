@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'transversal'
 archivos: ['scripts/resumir.py', 'scripts/publicar.py', 'scripts/panel_validacion.py', 'web/src/pages/[slug].astro', 'web/public/overrides.css', 'tests/test_resumir.py']
+relacionado: ['0211']
 ambito: 'Publicación y web · texto de todas las cards con conclusión'
 origen: 'Reconstruido el 2026-07-31 desde los commits ec3d576, d2cf19c y 5390885, la docstring de `scripts/resumir.py` y `tests/test_resumir.py`. El código citaba ADR-0165 pero el ADR nunca se había escrito; lo detectó `tests/test_adr_format.py` en su primera corrida.'
 commit: 'd2cf19c'

@@ -276,7 +276,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0181](0181-el-color-es-la-tension-que-ya-se-publica.md) | El color es la tensión que ya se publica, no una escala nueva |  | vigente |
 | [0182](0182-los-umbrales-del-semaforo-se-calculan.md) | Los umbrales del semáforo se calculan, no se escriben |  | vigente |
 | [0184](0184-la-dimension-tambien-dice-de-que-color-es-y-por-que.md) | La dimensión también dice de qué color es y por qué |  | vigente |
-| [0190](0190-renombrar-los-indices.md) | Renombrar los índices: las siglas no dicen qué miden y chocan con las de la UTDT |  | propuesto |
+| [0190](0190-renombrar-los-indices.md) | Renombrar los índices: las siglas no dicen qué miden y chocan con las de la UTDT |  | parcial |
 | [0191](0191-frescura-del-fetch-y-no-solo-del-dato.md) | El gate mide la frescura del dato pero no la del fetch, y por eso una fuente puede caerse en silencio | `judicializacion` | vigente |
 | [0194](0194-la-aguja-es-la-lectura-primaria.md) | La aguja es la lectura primaria, y el color deja de tener dos varas |  | vigente |
 | [0195](0195-un-solo-criterio-de-tensionado.md) | Un cinturón "tensionado" cuenta para la alerta, siempre |  | vigente |
@@ -293,3 +293,6 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0207](0207-la-serie-comparable-es-una-vista-no-un-backfill.md) | La serie comparable es una vista, no un backfill |  | vigente |
 | [0209](0209-el-archivo-se-rellena-desde-git.md) | El archivo se rellena desde git, y cada corrida dice de dónde vino |  | vigente |
 | [0210](0210-un-cache-esperable-no-es-carry-forward.md) | Un caché esperable no es carry-forward |  | vigente |
+| [0211](0211-la-lectura-del-mes-la-escribe-el-equipo.md) | La lectura del mes la escribe el equipo, y si no la escribió nadie la portada lo dice |  | vigente |
+| [0212](0212-el-monitor-del-plan-de-gobierno-y-el-cinturon-de-impacto-social.md) | El producto es el Monitor del Plan de Gobierno y el cuarto cinturón es Impacto social |  | vigente |
+| [0213](0213-la-portada-dice-que-mide-cada-cinturon.md) | La portada dice qué mide cada cinturón, y la escala se explica en metodología |  | vigente |
