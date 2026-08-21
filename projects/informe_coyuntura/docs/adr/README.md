@@ -239,6 +239,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0208](0208-el-itvc-vive-en-su-modulo-y-el-intermedio-nace-bien.md) | El ITVC vive en su módulo, y el intermedio nace bien |  | vigente |
 | [0214](0214-la-informalidad-es-una-condicion-del-empleo.md) | La informalidad es una condición del empleo, no del ingreso | `informalidad` | vigente |
 | [0215](0215-la-carne-se-mide-con-dos-fuentes-y-se-declara.md) | La carne se mide con dos fuentes, y eso se declara | `consumo_carne`, `consumo_carnes_total` | vigente |
+| [0216](0216-o-integra-el-indice-o-no-es-card.md) | O integra el índice, o no es card | `consumo_carnes_total`, `consumo_carne` | vigente |
 
 ### Espíritu de época
 

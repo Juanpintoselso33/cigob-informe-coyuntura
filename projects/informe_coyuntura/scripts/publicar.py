@@ -1962,6 +1962,22 @@ def aplicar_scoring(informe, series):
             ind["aporte_nota"] = nota
             ind["aporte_lectura"] = lectura
     _semaforos(informe)
+
+    # REGLA (ADR-0153): o integra el índice, o no es card. No hay tercera
+    # opción, y `consumo_carnes_total` era exactamente la tercera: se publicaba
+    # como card y no puntuaba.
+    #
+    # Su dato NO se pierde: alimenta la matriz A×B que explica el color de la
+    # carne, y su serie se sigue publicando. Se saca DESPUÉS de `_semaforos`
+    # justamente porque la matriz lo lee ahí — sacarlo antes deja a la carne sin
+    # su explicación y nada falla en voz alta (verificado).
+    #
+    # PENDIENTE DECLARADO: esto ordena la vidriera, no arregla el fondo. El
+    # indicador que puntúa sigue siendo la VACUNA sola, cuando lo que la ficha
+    # de proteína animal quiere medir es el acceso total a proteína cárnica.
+    # Ver ADR-0216.
+    vida = informe["cinturones"].get("vida_cotidiana", {})
+    vida.get("indicadores", {}).pop("consumo_carnes_total", None)
     return informe
 
 

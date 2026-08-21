@@ -60,7 +60,26 @@ def test_la_card_sale_de_sagyp():
     mismo PDF. Si vuelve a CICCRA, la matriz A×B compara dos fuentes."""
     fuente = _card("consumo_carne").get("fuente", "")
     assert "SAGYP" in fuente, f"la card dice fuente {fuente!r}"
-    assert "SAGYP" in _card("consumo_carnes_total").get("fuente", "")
+
+
+def test_el_total_no_se_publica_como_card(): 
+    """ADR-0216: o integra el índice, o no es card. El total no puntúa, así que
+    no ocupa lugar en la vidriera — su dato se lee dentro de la card de carne."""
+    ind = SNAPSHOT["cinturones"]["vida_cotidiana"]["indicadores"]
+    assert "consumo_carnes_total" not in ind, "volvió como card de contexto"
+    assert "consumo_carnes_total" in SERIES, "su serie tiene que seguir publicándose"
+    assert all(i.get("en_indice") for i in ind.values()), (
+        "hay cards que no integran el índice: " +
+        ", ".join(k for k, i in ind.items() if not i.get("en_indice")))
+
+
+def test_la_matriz_ab_sigue_explicando_el_color():
+    """El total se descarta DESPUÉS de `_semaforos`, porque la matriz lo lee
+    ahí. Hacerlo antes deja a la carne sin explicación y NADA falla en voz alta
+    — pasó al implementarlo en VIDA_OCULTOS. Este test es ese guard."""
+    por_que = (_card("consumo_carne").get("semaforo") or {}).get("por_que")
+    assert por_que, "la carne perdió la matriz A×B que explica su color"
+    assert "total de carnes" in por_que, por_que
 
 
 def test_las_dos_fuentes_no_se_separaron():
