@@ -41,9 +41,21 @@ PESOS = {
 
 
 def _bloque(texto: str, clave: str) -> str:
-    """El objeto literal de un indicador: desde `clave: {` hasta el `},` que lo
-    cierra en la misma indentación. Alcanza para no cruzar de vecino."""
-    m = re.search(rf"^(\s*){re.escape(clave)}: \{{$", texto, re.M)
+    r"""El objeto literal de un indicador: desde `clave: {` hasta el `},` que lo
+    cierra en la misma indentación. Alcanza para no cruzar de vecino.
+
+    La sangría se captura con `[ \t]*` y NO con `\s*`: `\s` incluye el salto de
+    línea, así que la versión greedy arrancaba el match en la línea en blanco
+    anterior y se llevaba el `\n` adentro de la sangría capturada. El cierre
+    pasaba a buscarse como `^\n  \},?$`, que no existe, y el bloque se
+    extendía hasta el final del archivo.
+
+    Costaba caro y en silencio: 62 de 73 bloques desbordaban, y las
+    aserciones de la forma «tal frase TIENE que estar en el bloque» pasaban
+    porque la frase estaba en cualquier otra ficha. Una guarda que no puede
+    fallar es peor que ninguna: ocupa el lugar de la que sí serviría.
+    """
+    m = re.search(rf"^([ \t]*){re.escape(clave)}: \{{$", texto, re.M)
     if not m:
         return ""
     fin = re.compile(rf"^{m.group(1)}\}},?$", re.M).search(texto, m.end())

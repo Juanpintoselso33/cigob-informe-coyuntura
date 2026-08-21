@@ -144,6 +144,20 @@ entonces ya está roto.
   compara un nombre con su fuente. Antes de dar por bueno un indicador que ya
   existe, verificá de qué serie sale.
 
+- **Si cambia el indicador, cambia la ficha — y hay tres guardas que lo
+  exigen** (ADR-0220). Un cambio de datos que deja atrás el texto que lo
+  describe ya no se puede mergear: `tests/test_la_ficha_no_se_queda_atras.py`
+  falla si un indicador publicado no tiene ficha, si la ficha declara un
+  organismo distinto del que el colector realmente usó, o si un ADR aceptado
+  nombra un indicador y su ficha no registra el cambio. La tercera es la que
+  hace el trabajo: escribir el ADR *es* el disparador, no hay nada que
+  recordar. Costó una ficha entera describiendo el IPI mientras el colector
+  bajaba la SRT, y un indicador puntuando 2,42% sin ficha ninguna. Y ojo con
+  la trampa que apareció en el camino: **62 de 73 bloques de ficha
+  desbordaban hasta el fin del archivo** por un `\s*` greedy en el extractor,
+  así que varias guardas pasaban sin mirar nada. Una guarda que no se probó
+  rompiéndola no se sabe si guarda.
+
 Y una que aplica a cualquier fuente nueva: **el rezago se mide, no se copia del
 documento**. El informe de fuentes de PyMEs afirmaba 45-60 días de demora y son
 ~3 meses; el de la carne daba por descontada una serie histórica que no existe.

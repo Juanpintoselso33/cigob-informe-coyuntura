@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [trabajo_independiente]
 archivos: ['scripts/vida_cotidiana/collectors/trabajo_independiente.py', 'scripts/vida_cotidiana/main.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'tests/test_trabajo_independiente.py']
 complementa: ['0218']
-relacionado: ['0033', '0130']
+relacionado: ['0033', '0130', '0220']
 ambito: 'ITCIS · dimensión de prospectivas de empleo · sustitución de asalariados por independientes'
 origen: 'Segunda mitad del documento "260811 cierre de pymes", que ADR-0218 dejó anotada como otro indicador'
 ---
