@@ -66,7 +66,6 @@ def build_vida(raw):
     utdt = raw.get("utdt", {})
     ciccra = raw.get("ciccra", {}); snic = raw.get("snic", {})
     trends = raw.get("trends", {})
-    ts = raw.get("metadata", {}).get("timestamp", "")[:10]
     out = {}
 
     bs = indec.get("brecha_salario_cbt", {})
@@ -168,13 +167,27 @@ def build_vida(raw):
     # _carry_forward (que solo repara claves ya presentes con valor=None) --
     # hallazgo real 2026-07-09, sentimiento_digital desapareció del índice
     # tras varias corridas seguidas que agotaron el rate limit de Trends.
-    sd = trends.get("sentimiento_digital", {}).get("interes_relativo") or {}
+    # `interes_relativo` trae el ÍNDICE por término del último mes cerrado, así
+    # que este promedio simple ES la canasta (ADR-0222): card y serie salen del
+    # mismo store y del mismo cálculo, y el par volvió a reconciliar en G3.
+    #
+    # `fecha_dato` es el MES del dato y no el timestamp de la corrida. Antes era
+    # el timestamp porque la card salía de una consulta en tiempo real: si esa
+    # consulta fallaba, la card quedaba en None y el carry-forward la marcaba
+    # desactualizada, que era la única señal de que Trends estaba caído. Ahora la
+    # card sale del store, así que con Trends muerto seguiría publicando un valor
+    # con fecha de hoy y nadie se enteraría. Con el mes del dato, esa demora la
+    # ve G2 como en cualquier fuente mensual (tope general de 110 días; el rezago
+    # estructural de esta serie llega a ~62, porque el mes en curso no cuenta).
+    sd_raw = trends.get("sentimiento_digital", {})
+    sd = sd_raw.get("interes_relativo") or {}
+    sd_mes = f"{sd_raw['mes']}-01" if sd and sd_raw.get("mes") else None
     _add(out, "sentimiento_digital", round(sum(sd.values()) / len(sd), 1) if sd else None,
-         "interés 0–100", "Google Trends", ts,
-         detalle_txt=("El titular es el pulso de los últimos 3 meses (escala relativa "
-                      "de esa ventana). El gráfico y el puntaje del ITCIS usan la "
-                      "canasta mensual de ventana fija desde 2021, cuyo cociente "
-                      "contra el 4T-2023 es inmune a la renormalización de Trends."))
+         "índice (100 = 4T-2023)", "Google Trends", sd_mes,
+         detalle_txt=("Promedio simple de seis términos de búsqueda —inflación, precios, "
+                      "dólar, empleo, inseguridad y corrupción—, cada uno comparado contra "
+                      "su propio 4º trimestre de 2023 en una ventana fija desde 2021. "
+                      "Mayor = más búsquedas de urgencia. El ITCIS lo puntúa invertido."))
     # ADR-0224: el que PUNTÚA es la motorización total —autos + motos 0km per
     # cápita—, no cada vehículo por su lado. Las dos patas se siguen relevando
     # y se agregan acá abajo porque son los Componentes A y B de la matriz A×B
@@ -351,7 +364,7 @@ SCORING = {
     # sentimiento_digital lo puntúa VIDA COTIDIANA. Vivía acá abajo del rótulo
     # de espíritu de época porque el cinturón lo espejaba; el cinturón salió
     # (ADR-0205) y la entrada se queda, que es de quien siempre fue.
-    "sentimiento_digital": (lambda v: v / 10,           "0 → 0 · 50 → 5 · 100 → 10 (interés en inflación/precios/inseguridad/trabajo: mayor = más preocupación)"),
+    "sentimiento_digital": (lambda v: v / 10,           "0 → 0 · 50 → 5 · 100 → 10 (canasta de seis búsquedas de urgencia vs 4T-2023: mayor = más preocupación)"),
     "inseguridad":         (lambda v: (v / POB_AR * 100_000 - 3000) / 400,
                                                         "tasa/100k hab (pob. 46,7M): 3.000 → 0 · 5.000 → 5 · 7.000 → 10"),
     # Se puntúa sobre la variación interanual REAL (deflactada), no el stock nominal.

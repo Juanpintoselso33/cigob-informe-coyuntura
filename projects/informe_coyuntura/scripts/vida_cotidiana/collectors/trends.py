@@ -13,12 +13,28 @@ from pathlib import Path
 
 from config import (
     TRENDS_KEYWORDS, TRENDS_GEO,
+    TRENDS_VENTANA_DESDE, TRENDS_BASE_MESES, TRENDS_MIN_MESES,
     MIGRACION_TANDA_INTENCION, MIGRACION_TANDA_CIUDADANIAS,
     MIGRACION_TANDA_TRABAJO_VISAS, MIGRACION_TANDA_DESTINOS,
     MIGRACION_TANDA_DIAGNOSTICO, MIGRACION_CATEGORIA_EMPLEO,
 )
 
 logger = logging.getLogger(__name__)
+
+# Store del sentimiento digital: lo comparten el colector (que arma la card) y
+# descargar_series.py (que arma la serie publicada). Fuente UNICA, como el de
+# intencion migratoria — si cada uno consultara Trends por su cuenta, la card y
+# la serie saldrian de corridas distintas y ademas se duplicarian los pedidos
+# contra una fuente con rate limit.
+SENTIMIENTO_STORE = (Path(__file__).resolve().parents[3]
+                     / "data" / "vida" / "sentimiento_serie.json")
+
+# Marca de formato del store. El de antes de ADR-0222 guardaba en `mensual` el
+# promedio CRUDO de un payload compartido (interes 0-100); el de ahora guarda un
+# INDICE base 100 = 4T-2023. Son numeros parecidos y unidades distintas, asi que
+# un store viejo leido como nuevo publicaria una escala por otra sin que falle
+# nada. Sin esta marca no hay forma de distinguirlos mirando el archivo.
+SENTIMIENTO_ESQUEMA = "adr-0222"
 
 
 def _patch_urllib3():
@@ -43,52 +59,169 @@ def _patch_urllib3():
         logger.debug("urllib3 patch SKIP: %s", e)
 
 
-def _fetch_trends(keywords: list[str], geo: str, timeframe: str = "today 3-m") -> dict:
-    """Retorna interes relativo (0-100) para cada keyword en el periodo."""
-    _patch_urllib3()
-    from pytrends.request import TrendReq
-
-    pt = TrendReq(hl="es-AR", tz=-180, timeout=(10, 30), retries=2, backoff_factor=0.5)
-    pt.build_payload(keywords, cat=0, timeframe=timeframe, geo=geo, gprop="")
-    df = pt.interest_over_time()
-
-    if df is None or df.empty:
+def _mensual_de_df(df, kw: str, hoy: datetime) -> dict:
+    """{YYYY-MM: interes} de UN termino, sin el mes en curso (incompleto)."""
+    if df is None or df.empty or kw not in df.columns:
         return {}
+    serie = df[kw]
+    mensual = {}
+    for d, v in serie.groupby(serie.index.strftime("%Y-%m")).mean().items():
+        if v > 0 and d < hoy.strftime("%Y-%m"):
+            mensual[d] = round(float(v), 1)
+    return mensual
 
-    # Promedio de los ultimos 4 periodos por keyword
-    tail = df[keywords].tail(4)
-    return {kw: round(float(tail[kw].mean()), 1) for kw in keywords if kw in tail.columns}
+
+def indice_de_termino(mensual: dict) -> dict:
+    """Indice base 100 = 4T-2023 de UN termino, rebaseado DENTRO de su consulta.
+
+    Acá es donde muere el problema de escalas. Trends devuelve `c * real(t)`,
+    con `c` un escalar propio de cada consulta (el maximo del payload vale 100).
+    Al dividir por el promedio del 4T-2023 de la MISMA consulta, `c` se cancela
+    y queda el cociente real. Por eso seis consultas distintas se pueden
+    promediar sin ancla ni empalme, y por eso un termino que se pudo refrescar
+    hoy convive con otro que quedo de una corrida vieja: cada uno es adimensional.
+    Verificado (20-ago-2026) contra el mismo termino en payloads distintos: el
+    cociente entre las dos lecturas es constante (CV 0,0% en `trabajo` y `dolar`,
+    0,8% en `precios`) y el indice B100 coincide hasta el decimo.
+    """
+    base = [mensual[m] for m in TRENDS_BASE_MESES if mensual.get(m)]
+    if len(base) < len(TRENDS_BASE_MESES):
+        return {}
+    b = sum(base) / len(base)
+    return {m: round(v / b * 100.0, 1) for m, v in mensual.items()} if b else {}
+
+
+def compuesto_sentimiento(store: dict) -> dict:
+    """Canasta mensual: promedio SIMPLE de los indices por termino (ADR-0222).
+
+    Peso igual y explicito, 1/N por termino. Solo se emiten los meses en los que
+    estan LOS N terminos: si un mes se calculara con los que haya, la canasta
+    cambiaria de composicion mes a mes y los saltos serian de composicion, no de
+    busquedas.
+    """
+    if store.get("_meta", {}).get("esquema") != SENTIMIENTO_ESQUEMA:
+        return {}
+    indices = {}
+    for kw in TRENDS_KEYWORDS:
+        idx = indice_de_termino((store.get("terminos", {}).get(kw) or {}).get("mensual") or {})
+        if not idx:
+            return {}                       # falta un termino → no hay canasta
+        indices[kw] = idx
+    meses = set.intersection(*(set(v) for v in indices.values()))
+    return {m: round(sum(indices[kw][m] for kw in TRENDS_KEYWORDS) / len(TRENDS_KEYWORDS), 1)
+            for m in sorted(meses)}
+
+
+def fetch_sentimiento_store(store_path: Path | None = None) -> dict:
+    """Store por termino del sentimiento digital (ADR-0034 + ADR-0222).
+
+    Una consulta por termino sobre la ventana fija 2021→hoy. Cada termino se
+    reemplaza ENTERO cuando su propia descarga es sana (>= TRENDS_MIN_MESES
+    meses y los tres meses de la base); el que falla conserva su serie previa.
+    Eso es nuevo y lo habilita el rebase por termino: con la canasta cruda de
+    antes, mezclar terminos de corridas distintas mezclaba escalas y por eso el
+    reemplazo tenia que ser todo-o-nada.
+
+    Idempotente dentro del dia: un termino ya refrescado hoy no se vuelve a
+    pedir, asi el colector (card) y descargar_series.py (serie) comparten los
+    seis pedidos en vez de gastar doce contra una fuente con rate limit.
+    """
+    # Se resuelve acá y no como default del parámetro: un default se liga al
+    # definir la función y deja de mirar el módulo, con lo que la ruta se vuelve
+    # imposible de sustituir en un test sin tocar el disco de verdad.
+    store_path = Path(store_path) if store_path else SENTIMIENTO_STORE
+    hoy = datetime.today()
+    sello = hoy.strftime("%Y-%m-%d")
+    store = json.loads(store_path.read_text(encoding="utf-8-sig")) \
+        if store_path.exists() else {}
+    if store.get("_meta", {}).get("esquema") != SENTIMIENTO_ESQUEMA:
+        # Store de antes de ADR-0222 (o inexistente): su `mensual` esta en otra
+        # unidad, asi que se descarta en vez de leerse como si fuera un indice.
+        store = {"_meta": {"esquema": SENTIMIENTO_ESQUEMA}, "terminos": {}, "mensual": {}}
+    store.setdefault("terminos", {})
+
+    pt = None
+    for kw in TRENDS_KEYWORDS:
+        if (store["terminos"].get(kw) or {}).get("actualizado") == sello:
+            continue                        # ya se pidio hoy
+        try:
+            if pt is None:
+                _patch_urllib3()
+                from pytrends.request import TrendReq
+                pt = TrendReq(hl="es-AR", tz=-180, timeout=(10, 40), retries=2, backoff_factor=1)
+            pt.build_payload([kw], cat=0, geo=TRENDS_GEO,
+                             timeframe=f"{TRENDS_VENTANA_DESDE} {sello}")
+            mensual = _mensual_de_df(pt.interest_over_time(), kw, hoy)
+            if len(mensual) < TRENDS_MIN_MESES:
+                raise ValueError(f"solo {len(mensual)} meses sanos (rate limit?)")
+            if not indice_de_termino(mensual):
+                raise ValueError("faltan meses de la base 4T-2023")
+            store["terminos"][kw] = {"actualizado": sello, "mensual": mensual}
+            logger.info("sentimiento/%s OK: %d meses", kw, len(mensual))
+        except Exception as e:
+            logger.warning("sentimiento/%s FAIL (%s); queda la serie previa (%s)",
+                           kw, str(e)[:80],
+                           (store["terminos"].get(kw) or {}).get("actualizado", "sin serie"))
+
+    compuesto = compuesto_sentimiento(store)
+    if compuesto:
+        store["mensual"] = compuesto
+        store["_meta"] = {
+            "esquema": SENTIMIENTO_ESQUEMA,
+            "fuente": "Google Trends (una consulta por termino, ventana fija 2021→)",
+            "actualizado": max(t["actualizado"] for t in store["terminos"].values()),
+            "keywords": list(TRENDS_KEYWORDS),
+            "unidad": "indice 100 = 4T-2023 (mas busquedas = mas urgencia)",
+            "nota": ("ADR-0222: cada termino se rebasa contra su propio 4T-2023 dentro de "
+                     "su consulta, asi que el escalar de Trends se cancela y los seis se "
+                     "promedian con peso igual. Cada termino se reemplaza entero cuando su "
+                     "descarga es sana; el que falla conserva la anterior."),
+        }
+        store_path.parent.mkdir(parents=True, exist_ok=True)
+        store_path.write_text(json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
+    return store
 
 
 def fetch_trends() -> dict:
-    """Descarga interes relativo en Google Trends para palabras clave de vida cotidiana."""
+    """Card del sentimiento digital: ultimo mes CERRADO de la canasta.
+
+    Hasta ADR-0222 la card era un pulso propio de 3 meses en tiempo real, con su
+    consulta aparte: eso obligaba a la excepcion G3 del gate (card y serie con
+    semantica distinta) y a una segunda ronda de pedidos. Con seis terminos ese
+    pulso necesitaria seis consultas mas para un numero que no puntua, asi que
+    card y serie pasan a ser el mismo dato y el par vuelve a reconciliar.
+    """
     results = {}
-
     try:
-        interes = _fetch_trends(TRENDS_KEYWORDS, TRENDS_GEO, timeframe="today 3-m")
-        if not interes:
-            raise ValueError("DataFrame vacio — posible rate limit")
-
+        store = fetch_sentimiento_store()
+        compuesto = store.get("mensual") or {}
+        if not compuesto:
+            raise ValueError("canasta vacia — Trends sin datos y sin store previo")
+        ultimo = max(compuesto)
+        # Se publica el DESGLOSE por termino, no el promedio: publicar.py lo
+        # promedia y asi la card y la serie salen del mismo calculo, ademas de
+        # dejar a la vista de que termino viene el movimiento.
+        por_termino = {kw: indice_de_termino(store["terminos"][kw]["mensual"])[ultimo]
+                       for kw in TRENDS_KEYWORDS}
         results["sentimiento_digital"] = {
-            "interes_relativo": interes,
-            "keywords": TRENDS_KEYWORDS,
+            "interes_relativo": por_termino,
+            "keywords": list(TRENDS_KEYWORDS),
             "geo": TRENDS_GEO,
-            "timeframe": "ultimos 3 meses",
-            "escala": "0-100 (100 = maximo historico en el periodo)",
+            "mes": ultimo,
+            "canasta": compuesto[ultimo],
+            "timeframe": f"ventana fija {TRENDS_VENTANA_DESDE}→, ultimo mes cerrado",
+            "escala": "indice 100 = 4T-2023 por termino (peso igual, ADR-0222)",
             "fuente": "Google Trends via pytrends",
-            "nota": (
-                "Proxy de urgencia percibida. Alto 'inseguridad'/'precios' = presion ciudadana. "
-                "Sujeto a rate limits de Google — puede fallar silenciosamente."
-            ),
+            "nota": ("Proxy de urgencia percibida. Mayor = mas busquedas de urgencia = peor. "
+                     "Sujeto a rate limits de Google — cada termino conserva su serie previa."),
         }
-        logger.info("Trends OK: %s", interes)
+        logger.info("Trends OK (%s): canasta %.1f", ultimo, compuesto[ultimo])
 
     except Exception as e:
         logger.warning("Trends FAIL (normal si hay rate limit): %s", e)
-        # Fallback: retornar estructura vacia pero documentada
         results["sentimiento_digital"] = {
             "interes_relativo": None,
-            "keywords": TRENDS_KEYWORDS,
+            "keywords": list(TRENDS_KEYWORDS),
             "geo": TRENDS_GEO,
             "fuente": "Google Trends via pytrends",
             "nota": f"Rate limit o error de conexion: {e}. Reintentar en 1h.",

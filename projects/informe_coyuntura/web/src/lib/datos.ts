@@ -522,7 +522,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   mortalidad_pymes: "Empleadores de hasta 50 trabajadores con cobertura de ART",
   trabajo_independiente: "% del empleo registrado que son autónomos o monotributistas", despacho_cemento: "Índice", pluriempleo: "% de ocupados",
   inseguridad: "% de hogares víctimas (últimos 12 meses)", icc_utdt: "Índice",
-  sentimiento_digital: "Índice (0–100)",
+  sentimiento_digital: "Índice (100 = 4T-2023)",
   patentamiento_motos: "Unidades",
   patentamiento_autos: "Unidades (autos 0km inscriptos en el mes)",
   motorizacion_total: "Vehículos 0km (autos + motos) por cada 1.000 habitantes, acumulado de 12 meses",
