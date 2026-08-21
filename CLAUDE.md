@@ -122,6 +122,35 @@ done
 The same warning applies to anything else copied over from the tower — check
 first, don't assume.
 
+## Reglas del tablero que se rompen solas
+
+Dos reglas de metodología que ya están decididas en ADRs y que **igual se
+violan** cada vez que alguien agrega o toca un indicador. Van acá porque el
+lugar donde estaban —los ADR— se lee *después* de escribir el código, y para
+entonces ya está roto.
+
+- **O integra el índice, o no es card.** ADR-0153 dio de baja la categoría
+  "indicador de contexto" y ADR-0216 tuvo que volver a aplicarla: un indicador
+  que se publica como card y no puntúa vuelve a existir por omisión, cayendo en
+  el `else` de `publicar.py` que le pone la nota de contexto. Si el dato hace
+  falta pero no debe puntuar, va **dentro** de la explicación de otra card —como
+  el total de carnes en la matriz A×B— o a `VIDA_OCULTOS`, nunca como card
+  propia. `tests/test_cierre_pymes.py` lo verifica para todo el cinturón.
+- **Un indicador tiene que medir lo que su nombre dice.** Dos casos reales:
+  `mortalidad_pymes` midió producción industrial durante trece meses
+  (ADR-0218), y la ficha de proteína animal definía un compuesto de tres carnes
+  mientras el índice puntuaba la vacuna sola (ADR-0217). En los dos, el rótulo
+  público era correcto y el contenido no — y nadie lo detectó porque ningún gate
+  compara un nombre con su fuente. Antes de dar por bueno un indicador que ya
+  existe, verificá de qué serie sale.
+
+Y una que aplica a cualquier fuente nueva: **el rezago se mide, no se copia del
+documento**. El informe de fuentes de PyMEs afirmaba 45-60 días de demora y son
+~3 meses; el de la carne daba por descontada una serie histórica que no existe.
+Antes de fijar un tope en `MAX_DIAS`, mirá hasta qué mes llega la fuente de
+verdad — si no, el gate empieza a marcar demoras falsas o, peor, deja pasar un
+indicador congelado.
+
 ## Working rules
 
 - Spanish for user-facing prose/docs unless the surrounding file is English.
