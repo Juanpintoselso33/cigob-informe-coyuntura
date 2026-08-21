@@ -111,8 +111,15 @@ def _csv_falso(desde=(2022, 11), hasta=(2026, 7), tipo="Automotores",
 
 
 def _correr(monkeypatch, texto_autos, texto_motos=None,
-            declarado=("202211", "202607")):
-    """Corre el colector contra CSVs sintéticos y una población fija."""
+            declarado=("202211", "202607"), declarado_motos=None):
+    """Corre el colector contra CSVs sintéticos y una población fija.
+
+    `declarado_motos` permite que cada registro declare su PROPIO período. Sin
+    eso no se puede probar la guarda de «los dos llegan al mismo mes»: con un
+    único período declarado, un CSV de motos más corto lo viola primero y el
+    anclaje de período revienta antes, así que el test pasaría por el motivo
+    equivocado. Verificado rompiendo la guarda a propósito.
+    """
     class _Resp:
         status_code = 200
 
@@ -128,7 +135,8 @@ def _correr(monkeypatch, texto_autos, texto_motos=None,
 
     def _url(dataset, patron):
         estado["proximo"] = "autos" if "automotores" in dataset else "motos"
-        return ("http://falso/x.csv", declarado[0], declarado[1])
+        d = declarado if estado["proximo"] == "autos" else (declarado_motos or declarado)
+        return ("http://falso/x.csv", d[0], d[1])
 
     monkeypatch.setattr(_mot, "_url_del_recurso", _url)
     monkeypatch.setattr(_mot, "_fetch_poblacion",
@@ -172,8 +180,12 @@ def test_revienta_si_el_periodo_declarado_no_es_el_que_trae(monkeypatch):
 
 
 def test_revienta_si_un_mes_viene_con_menos_jurisdicciones(monkeypatch):
+    """La lista recortada conserva Tierra del Fuego a propósito: sin ella, la
+    guarda del rótulo revienta primero y este test pasaría por otro motivo.
+    Verificado rompiendo el conteo de jurisdicciones a mano."""
+    recortada = JURISDICCIONES[:4] + [_mot.JURISDICCION_EXCLUIDA]
     with pytest.raises(ValueError, match="jurisdicciones"):
-        _correr(monkeypatch, _csv_falso(jurisdicciones_ultimo=JURISDICCIONES[:5]))
+        _correr(monkeypatch, _csv_falso(jurisdicciones_ultimo=recortada))
 
 
 def test_revienta_si_la_serie_no_cubre_la_base_del_indice(monkeypatch):
@@ -187,8 +199,10 @@ def test_revienta_si_los_dos_registros_no_llegan_al_mismo_mes(monkeypatch):
     una pata corta, y el derrumbe se leería como caída del acceso."""
     autos = _csv_falso()
     motos = _csv_falso(hasta=(2026, 6)).replace('"Automotores"', '"Motovehículos"')
-    with pytest.raises(ValueError, match="período|mismo mes"):
-        _correr(monkeypatch, autos, motos)
+    # Cada uno declara su propio período, así que el anclaje de período está
+    # conforme y el único que puede agarrar esto es la guarda del mismo mes.
+    with pytest.raises(ValueError, match="mismo mes"):
+        _correr(monkeypatch, autos, motos, declarado_motos=("202211", "202606"))
 
 
 def test_revienta_si_la_fuente_le_cambia_el_rotulo_a_tierra_del_fuego(monkeypatch):
@@ -431,3 +445,119 @@ def test_card_y_serie_estan_en_unidades_distintas_y_el_gate_lo_sabe():
     en G3 — o el gate bloquea la publicación todos los días."""
     import gate_calidad
     assert "motorizacion_total" in gate_calidad.G3_EXCEPCIONES
+
+# ── 9 · Las mismas garantías, pero contra el CÓDIGO y no contra el snapshot ──
+#
+# Los tests de arriba leen `informe.json`, así que sólo ven una regresión
+# DESPUÉS de republicar. Se verificó rompiendo cada guarda a propósito: con el
+# snapshot viejo en disco, mutar `itvc.py` o `publicar.py` no las hacía fallar.
+# Éstos ejercitan el camino vivo y cierran esa ventana.
+import publicar                 # noqa: E402
+
+
+def test_en_vivo_el_componente_no_se_recorta_al_techo():
+    """Mutar la exención en `itvc.py` tiene que hacer fallar esto sin necesidad
+    de volver a publicar."""
+    series = {"motorizacion_total": [{"fecha": "2026-07-01", "valor": 152.4}]}
+    idx = itvc.indices_desde_series({}, series, {})
+    assert idx["motorizacion_total"] == 152.4, (
+        f"el componente salió en {idx['motorizacion_total']}: la exención del "
+        f"techo dejó de aplicarse en el índice vivo")
+    assert "motorizacion_total" not in idx["_winsor"], (
+        "quedó anotado como winsorizado, así que el modal va a mostrar una "
+        "nota de recorte que no ocurrió")
+
+
+def test_en_vivo_los_demas_componentes_siguen_con_techo():
+    """La contracara: la exención no puede haberse convertido en un permiso
+    general por la puerta de atrás."""
+    series = {"itvc_alimentos": [{"fecha": "2026-07-01", "valor": 152.4}]}
+    idx = itvc.indices_desde_series({}, series, {})
+    assert idx["ipc_alimentos"] == itvc.WINSOR_TOPE
+    assert idx["_winsor"]["ipc_alimentos"] == 152.4
+
+
+def test_en_vivo_la_matriz_cubre_los_cuatro_cuadrantes():
+    """La matriz A×B tiene que decir algo distinto en cada cuadrante. Si alguien
+    la desconecta o colapsa las ramas, esto lo agarra sin republicar."""
+    base = {"autos_12m": 500_000.0, "motos_12m": 700_000.0, "total_12m": 1_200_000.0,
+            "ratio_motos": 58.4, "ratio_motos_base": 51.6,
+            "autos_var": -2.0, "motos_var": 31.2, "total_var": 15.0}
+    cuadrantes = {
+        "sube_total y mas_motos": dict(base),
+        "cae_total y mas_motos": dict(base, total_var=-8.0),
+        "sube_total y menos_motos": dict(base, ratio_motos=48.0),
+        "cae_total y menos_motos": dict(base, total_var=-8.0, ratio_motos=48.0),
+    }
+    textos = {k: publicar._por_que_motorizacion(v) for k, v in cuadrantes.items()}
+    assert all(textos.values()), f"algún cuadrante quedó mudo: {textos}"
+    assert len(set(textos.values())) == 4, (
+        f"dos cuadrantes dicen lo mismo, así que la matriz no distingue: {textos}")
+    # El que decide el editorial: total que sube con la mezcla corriéndose a la
+    # moto NO puede leerse como sustitución descendente.
+    assert "Más acceso" in textos["sube_total y mas_motos"]
+    assert "Sustitución descendente" in textos["cae_total y mas_motos"]
+
+
+def test_en_vivo_la_matriz_no_inventa_cuando_falta_un_dato():
+    assert publicar._por_que_motorizacion(None) is None
+    assert publicar._por_que_motorizacion({}) is None
+    assert publicar._por_que_motorizacion({"ratio_motos": 58.4}) is None
+
+
+def test_en_vivo_autos_y_motos_se_descartan_despues_de_los_semaforos():
+    """Que el `pop` siga en `aplicar_scoring` y DESPUÉS de `_semaforos`.
+
+    El orden importa para la carne —su matriz lee el indicador hermano— y este
+    test lo cuida para las tres juntas, que es como están escritas.
+    """
+    fuente = (ROOT / "scripts" / "publicar.py").read_text(encoding="utf-8")
+    cuerpo = fuente[fuente.index("def aplicar_scoring("):]
+    i_sem = cuerpo.index("_semaforos(informe)")
+    i_pop = cuerpo.index("for descartada in")
+    assert i_sem < i_pop, (
+        "el descarte de las cards quedó ANTES de _semaforos: la matriz de la "
+        "carne se queda sin su `por_que` y ningún gate lo ve")
+    for descartada in ("consumo_carne", "patentamiento_autos", "patentamiento_motos"):
+        assert descartada in cuerpo[i_pop:i_pop + 300], (
+            f"{descartada} salió de la lista de descarte: vuelve a publicarse "
+            f"como card sin puntuar")
+
+def test_en_vivo_la_exclusion_resta_de_verdad():
+    """El mecanismo central de ADR-0224, probado sobre la función que lo hace.
+
+    Los otros tests de exclusión leen el snapshot, así que sólo verían el
+    problema DESPUÉS de republicar: se comprobó neutralizando `_sin_la_excluida`
+    y ninguno se enteró. Éste sí.
+    """
+    total = {"2026-06": 1000, "2026-07": 2000}
+    por_prov = {"2026-06": {"Buenos Aires": 900, _mot.JURISDICCION_EXCLUIDA: 100},
+                "2026-07": {"Buenos Aires": 1500, _mot.JURISDICCION_EXCLUIDA: 500}}
+    limpio = _mot._sin_la_excluida(total, por_prov)
+    assert limpio == {"2026-06": 900, "2026-07": 1500}, (
+        f"la exclusión no está restando: {limpio}")
+
+
+def test_en_vivo_la_exclusion_no_se_cae_si_la_jurisdiccion_no_reporta():
+    """Un mes en que la provincia no informa no puede tumbar la corrida: la
+    exclusión resta cero. La ausencia SOSTENIDA la agarra la guarda del rótulo,
+    que mira el último mes."""
+    limpio = _mot._sin_la_excluida({"2026-07": 1000}, {"2026-07": {"Buenos Aires": 1000}})
+    assert limpio == {"2026-07": 1000}
+
+
+def test_en_vivo_el_colector_excluye_la_jurisdiccion_de_las_tres_series(monkeypatch):
+    """De punta a punta: el CSV falso da el mismo valor a las 24 jurisdicciones,
+    así que el total sin excluir sería 24 filas y el publicado 23."""
+    d = _correr(monkeypatch, _csv_falso())
+    ultimo = max(d["serie_autos"])
+    crudo = _csv_falso()
+    filas_ultimo = [l for l in crudo.strip().split("\n")[1:]
+                    if f',{int(ultimo[:4])},{int(ultimo[5:7])},' in l]
+    total_24 = sum(int(l.split(",")[5]) for l in filas_ultimo)
+    tdf = next(int(l.split(",")[5]) for l in filas_ultimo
+               if _mot.JURISDICCION_EXCLUIDA in l)
+    assert d["serie_autos"][ultimo] == total_24 - tdf, (
+        f"la serie publica {d['serie_autos'][ultimo]} y el total sin la "
+        f"jurisdicción excluida es {total_24 - tdf}")
+    assert d["serie_motos"][ultimo] == total_24 - tdf
