@@ -55,7 +55,7 @@ def test_el_factor_solo_se_arma_con_estadisticas_del_terreno_propio():
 def test_una_serie_identica_a_su_familia_da_brecha_positiva():
     base = _serie([1, 3, 2, 5, 4, 7, 6, 9, 8, 11, 10, 13, 12, 15, 14, 17])
     ruido = _serie([5, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5, 6, 5])
-    panel = {"consumo_supermercados": dict(base), "merval_usd": ruido}
+    panel = {"consumo_mayoristas": dict(base), "merval_usd": ruido}
     p = pv.perfil("itvc", base, panel)
     assert p["niveles"]["convergente"] == 1.0
     assert p["diferencias"]["brecha"] > 0
@@ -77,7 +77,7 @@ def test_la_brecha_negativa_no_se_esconde_en_el_texto():
 
 def test_sin_datos_suficientes_no_inventa_perfil():
     corta = _serie([1, 2, 3])
-    p = pv.perfil("itvc", corta, {"consumo_supermercados": _serie([1, 2, 3])})
+    p = pv.perfil("itvc", corta, {"consumo_mayoristas": _serie([1, 2, 3])})
     assert p["perfil"] == []
     assert p["niveles"]["brecha"] is None
     assert pv.lectura(p) == ""
@@ -93,12 +93,15 @@ def test_el_texto_publico_usa_coma_decimal_y_menos_tipografico():
 
 def _panel_consumo(base):
     """Las cuatro estadísticas que arman el factor del ITVC (volúmenes físicos),
-    más una del comercio y una ajena, que NO deben entrar al factor."""
+    más una del comercio y una ajena, que NO deben entrar al factor.
+
+    El canal de comercio que se usa acá es el mayorista: las ventas en
+    supermercados salieron del panel en ADR-0225, al pasar a componente."""
     return {"electricidad_residencial": dict(base),
             "gas_residencial": {k: v * 1.4 + 2 for k, v in base.items()},
             "transporte_pasajeros": {k: -v for k, v in base.items()},
             "ventas_naftas": {k: v * 0.8 + 5 for k, v in base.items()},
-            "consumo_supermercados": {k: v * 1.1 for k, v in base.items()},
+            "consumo_mayoristas": {k: v * 1.1 for k, v in base.items()},
             "merval_usd": _serie([5, 6, 5, 7, 5, 8, 5, 9, 5, 10, 5, 11, 5, 12, 5, 13])}
 
 
@@ -111,8 +114,8 @@ def test_una_familia_de_tres_o_mas_recibe_su_factor_comun():
     # el Merval es ajeno y las ventas de comercio no arman el factor (ADR-0163),
     # aunque sí están en la familia del ITVC y se publican en el panel
     assert "merval_usd" not in f["cargas"]
-    assert "consumo_supermercados" not in f["cargas"]
-    assert any(fila["estadistica"] == "consumo_supermercados" for fila in p["perfil"])
+    assert "consumo_mayoristas" not in f["cargas"]
+    assert any(fila["estadistica"] == "consumo_mayoristas" for fila in p["perfil"])
 
 
 def test_el_factor_deduce_solo_que_una_serie_va_invertida():

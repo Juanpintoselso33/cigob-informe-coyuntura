@@ -54,14 +54,20 @@ import itvc
 import parametrica
 import publicar
 
-# Ventas en supermercados a precios constantes, SERIE DESESTACIONALIZADA del
-# INDEC (vía datos.gob.ar). Es el ancla del ITVC desde ADR-0155.
+# Las ventas en supermercados ya no se bajan acá: desde ADR-0225 son un
+# COMPONENTE del ITCIS y las baja su colector
+# (`vida_cotidiana/collectors/indec_supermercados.py`), como cualquier otro
+# componente. Tener dos caminos de descarga para la misma serie era
+# exactamente la clase de duplicación que deja al índice y a su contraste
+# leyendo bases distintas sin que nada avise.
 #
-# Ojo con la variante: la serie ORIGINAL tiene una estacionalidad enorme y
-# suavizarla con una media móvil de 12 meses la atrasa medio año — probado, y
-# el atraso INVIERTE el signo de la correlación (−0,514 con media móvil contra
-# +0,563 con la desestacionalizada del organismo). Usar la que publica el INDEC.
-CONSUMO_SUPER_ID = "455.1_VENTAS_PREADA_0_M_44_44"
+# Lo que SÍ hay que conservar de aquella decisión, porque vuelve a morder cada
+# vez que alguien suaviza una serie a mano: la variante ORIGINAL del INDEC
+# tiene una estacionalidad enorme y aplanarla con una media móvil de 12 meses
+# la atrasa medio año — probado, y el atraso INVIERTE el signo de la
+# correlación (−0,514 con media móvil contra +0,563 con la desestacionalizada
+# del organismo). Se usa siempre la desestacionalizada que publica la fuente.
+
 # Los otros dos canales de consumo, para el panel del ITVC (ADR-0159).
 CONSUMO_MAYORISTAS_ID = "456.1_VENTAS_PREADA_0_M_44_40"
 CONSUMO_SHOPPINGS_ID = "458.1_VENTAS_TOTADA_0_M_52_56"
@@ -141,6 +147,10 @@ COMPONENTES = {
     # con el móvil de 12 meses aplicado a la suma, así que entra como la de
     # carnes: sin rebasear y sin pasar por MOVIL12.
     "motorizacion_total":     ("motorizacion_total", False, False, True),
+    # ADR-0225: ventas en supermercados a precios constantes, serie
+    # desestacionalizada del INDEC. Rebase normal a 4T-2023 y sin móvil 12m,
+    # igual que en `itvc.indices_desde_series` — la fuente ya la desestacionalizó.
+    "consumo_supermercados":  ("consumo_supermercados", False, False, False),
     "informalidad":           ("informalidad", True, True, False),
     # ADR-0219: invertido, igual que informalidad y pluriempleo.
     "trabajo_independiente":  ("trabajo_independiente", True, False, False),
@@ -860,32 +870,6 @@ def _rebase_4t23(serie: dict) -> dict:
     return {m: round(100.0 * v / prom, 2) for m, v in serie.items()}
 
 
-def fetch_consumo_supermercados_mensual() -> dict:
-    """{YYYY-MM: índice base 100 = 4T-2023} del consumo medido en supermercados.
-
-    Ancla del ITVC (ADR-0155). Ventas a precios constantes, serie
-    desestacionalizada del INDEC, rebaseada al mismo 4T-2023 que usan los
-    componentes del índice para que las dos series se lean en la misma escala.
-
-    Por qué ésta y no el ICC: el ICC es un COMPONENTE del ITVC (6,75%), así que
-    validar contra él exigía publicar un índice artificial «sin ICC»; y en el
-    período medido un tercio del peso del ITVC correlaciona negativo contra el
-    ICC, porque la confianza subió mientras alquiler, pobreza, mora e
-    informalidad empeoraban. El consumo medido no compone el índice y da +0,563
-    en niveles contra +0,337 del ICC.
-
-    Lo que NO cubre, y va declarado en la ficha: comercio registrado de
-    supermercados. No ve el comercio informal, y el traslado de compras al canal
-    mayorista/discounter —que correlaciona NEGATIVO (−0,16)— no entra acá.
-    """
-    serie = _serie_datos_gob(CONSUMO_SUPER_ID)
-    base = [serie[m] for m in BASE_MESES if m in serie]
-    if len(base) < len(BASE_MESES):
-        raise ValueError("consumo: falta algún mes del 4T-2023 para la base")
-    prom = sum(base) / len(base)
-    return {m: round(100.0 * v / prom, 2) for m, v in serie.items()}
-
-
 def fetch_merval_usd_mensual() -> dict:
     """{YYYY-MM: Merval en USD} — cierre mensual del índice Merval (Yahoo
     Finance, ^MERV) sobre el CCL promedio del mes (ArgentinaDatos). Es el par
@@ -1120,25 +1104,16 @@ def main():
     resultados["serie_itvc"] = itvc_full
     resultados["serie_itvc_sin_icc"] = itvc_sin
 
-    # Ancla: el consumo medido. NO compone el índice, así que la comparación usa
-    # el ITVC COMPLETO —el que efectivamente se publica— y no una variante.
-    try:
-        consumo = fetch_consumo_supermercados_mensual()
-        resultados["consumo_supermercados_mensual"] = consumo
-    except Exception as e:
-        print(f"[WARN] consumo de supermercados no disponible: {e}")
-        consumo = {}
+    # ADR-0225: el ITCIS YA NO TIENE ANCLA ÚNICA. Las ventas en supermercados,
+    # que lo eran desde ADR-0155, pasaron a componente del índice; y ninguna de
+    # las candidatas que quedan sostiene un titular (el desarrollo está en el
+    # ADR). El contraste del cinturón es el panel y su factor común, que se
+    # calculan más abajo como para los otros dos socioeconómicos.
+    #
+    # El ICC queda como contraste DISCRIMINANTE, que es lo único que era: mide
+    # si la percepción sigue a las condiciones materiales. Necesita la variante
+    # sin ICC porque el ICC sí compone el índice.
     pares = {}
-    if consumo:
-        pares.update({
-            "niveles (ITVC vs consumo)": (itvc_full, consumo),
-            "primeras diferencias (ITVC vs consumo)": (_difs(itvc_full), _difs(consumo)),
-            "ITVC adelantado 1 mes vs consumo": (_lag(itvc_full, 1), consumo),
-            "consumo adelantado 1 mes vs ITVC": (itvc_full, _lag(consumo, 1)),
-        })
-    # El ICC queda como contraste DISCRIMINANTE, no como ancla: mide si la
-    # percepción sigue a las condiciones materiales. Sigue necesitando la
-    # variante sin ICC, porque el ICC sí compone el índice.
     pares.update({
         "discriminante: ITVC sin ICC vs ICC (niveles)": (itvc_sin, icc),
         "discriminante: ITVC sin ICC vs ICC (diferencias)": (_difs(itvc_sin), _difs(icc)),
@@ -1404,7 +1379,6 @@ def main():
         import panel_validacion as pnl
         series_json = cargar_series()
         panel = {
-            "consumo_supermercados": resultados.get("consumo_supermercados_mensual") or {},
             "merval_usd": resultados.get("merval_usd_mensual") or {},
             "epu_argentina": resultados.get("epu_argentina_mensual") or {},
             "indice_lider": resultados.get("indice_lider_mensual") or {},

@@ -116,12 +116,16 @@ def test_pesos_del_documento():
     # ADR-0223: entra `patentamiento_autos` con 2%, el mismo peso que motos, y
     # los cuatro previos ceden ×0,98 conservando su orden relativo.
     # ADR-0224: motos y autos se funden en `motorizacion_total`, que toma la
-    # SUMA de los dos (0,0196 + 0,0200). Los otros tres no se tocan: el cambio
-    # es sólo del bloque de vehículos.
-    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.5959,
-                                            "pobreza_nowcast": 0.3253,
-                                            "consumo_carnes_total": 0.0392,
-                                            "motorizacion_total": 0.0396}
+    # SUMA de los dos (0,0196 + 0,0200). Los otros tres no se tocan.
+    # ADR-0225: entra `consumo_supermercados` con 20% y los CUATRO previos
+    # ceden ×0,80. Es el único componente que mide volumen efectivamente
+    # comprado. Los decimales de acá salen de `alta_proporcional` aplicada
+    # sobre la dimensión tal como la dejó ADR-0224, no de una cuenta a mano.
+    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.4767,
+                                            "pobreza_nowcast": 0.2602,
+                                            "consumo_carnes_total": 0.0314,
+                                            "motorizacion_total": 0.0317,
+                                            "consumo_supermercados": 0.2000}
     assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
     # ADR-0154: sale endeudamiento_familiar (redundante, winsorizado y de signo
     # equívoco) y la mora sostiene sola la dimensión.
@@ -218,3 +222,49 @@ def test_ajuste_manual_del_analista():
 def test_sin_datos_devuelve_none():
     assert itvc.calcular_itvc({}) is None
     assert itvc.calcular_itvc({k: None for k in EJEMPLO}) is None
+
+
+# ── La regla de alta, probada como REGLA y no como cinco decimales ───────────
+# `alta_proporcional` existe (ADR-0225) para que la cesión no quede escrita a
+# mano en el código: los pesos previos de una dimensión cambian cada vez que
+# entra o se funde un componente, y unos decimales ya multiplicados quedan
+# inválidos en silencio apenas eso pasa.
+
+def test_la_cesion_es_proporcional_y_conserva_el_orden():
+    previos = {"a": 0.60, "b": 0.30, "c": 0.10}
+    out = itvc.alta_proporcional(previos, "nuevo", 0.20)
+    assert out["nuevo"] == 0.20
+    assert abs(sum(out.values()) - 1.0) < 1e-9
+    # cada previo cedió exactamente ×0,80
+    for k, v in previos.items():
+        assert abs(out[k] - v * 0.80) < 1e-9
+    # y el orden relativo entre ellos no se movió
+    assert [k for k in sorted(previos, key=previos.get, reverse=True)] == \
+           [k for k in sorted(('a', 'b', 'c'), key=lambda k: out[k], reverse=True)]
+
+
+def test_la_cesion_se_recalcula_sobre_lo_que_haya():
+    """El motivo por el que es función: si otra alta cambió la dimensión, la
+    regla sigue valiendo sobre los pesos nuevos sin tocar esta línea."""
+    out = itvc.alta_proporcional({"a": 0.5, "b": 0.5}, "nuevo", 0.20)
+    assert out == {"a": 0.4, "b": 0.4, "nuevo": 0.20}
+
+
+def test_un_alta_no_puede_pisar_un_componente_existente():
+    import pytest
+    with pytest.raises(ValueError):
+        itvc.alta_proporcional({"a": 1.0}, "a", 0.20)
+
+
+def test_un_peso_fuera_de_rango_no_se_acepta():
+    import pytest
+    for malo in (0.0, 1.0, -0.1, 1.5):
+        with pytest.raises(ValueError):
+            itvc.alta_proporcional({"a": 1.0}, "nuevo", malo)
+
+
+def test_el_supermercado_puntua_y_no_es_card_de_contexto():
+    """ADR-0216/0153: o integra el índice, o no es card. El supermercado dejó
+    de ser ancla de validación justamente para no quedar en ese limbo."""
+    comp = {i for dd in itvc.DIMENSIONES_ITVC.values() for i in dd["indicadores"]}
+    assert "consumo_supermercados" in comp

@@ -217,6 +217,7 @@ PROCEDENCIA = {
                           "a 1,11% de peso el techo acota una compensación que el "
                           "peso ya acota, y contra esta base —deprimida— 140 es el "
                           "nivel de un año normal, no un outlier"),
+    "consumo_supermercados": ("conceptual", "serie desestacionalizada del INDEC rebaseada a 4T-2023 (ADR-0225); ancla en fecha fija, sin móvil 12m porque la fuente ya la desestacionalizó"),
     "inseguridad": ("conceptual", "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"),
 }
 

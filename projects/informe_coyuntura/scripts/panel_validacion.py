@@ -39,8 +39,10 @@ import regresion_validacion
 # familia conceptual de cada estadística del panel. Ninguna es componente de
 # ninguno de los cuatro índices — se verifica en un test.
 FAMILIA = {
-    # consumo de los hogares: tres canales del mismo fenómeno
-    "consumo_supermercados": "itvc",
+    # consumo de los hogares. Eran TRES canales del mismo fenómeno: las ventas
+    # en supermercados salieron en ADR-0225 porque pasaron a COMPONENTE del
+    # ITCIS —miden condiciones materiales del hogar, así que integran el índice
+    # en vez de juzgarlo—. Es la misma regla que sacó al ICC.
     "consumo_mayoristas": "itvc",
     "consumo_shoppings": "itvc",
     # vida material de los hogares medida en VOLÚMENES FÍSICOS (ADR-0163):
@@ -69,7 +71,6 @@ FAMILIA = {
 # lector no tiene forma de saber qué se está usando de validador ni de ir a
 # chequearlo, que es justamente lo que esta sección promete.
 ETIQUETAS = {
-    "consumo_supermercados": "Ventas en supermercados",
     "consumo_mayoristas": "Ventas en autoservicios mayoristas",
     "consumo_shoppings": "Ventas en centros de compras",
     "electricidad_residencial": "Demanda eléctrica residencial",
@@ -87,7 +88,6 @@ ETIQUETAS = {
 }
 
 FUENTES = {
-    "consumo_supermercados": "INDEC",
     "consumo_mayoristas": "INDEC",
     "consumo_shoppings": "INDEC",
     "electricidad_residencial": "CAMMESA",

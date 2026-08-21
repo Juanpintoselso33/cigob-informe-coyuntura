@@ -92,6 +92,14 @@ MAX_DIAS = {
     # cadencia y el colector exige que lleguen al mismo mes—, así que el tope
     # de autos vale para la suma sin recalibrar nada.
     "motorizacion_total": 90,
+    # ADR-0225. Encadena DOS rezagos y por eso el default de 110 marcaría
+    # atraso todos los meses: el INDEC publica el mes M unos 52 días después
+    # de terminado (junio-2026 salió el 21-ago-2026) y la API de datos.gob.ar
+    # tarda ~13 días más en espejarlo (mayo-2026 apareció el 5-ago-2026). El
+    # último punto disponible tiene entonces entre ~95 y ~126 días según en qué
+    # parte del ciclo caiga la corrida. 140 deja margen sobre ese techo y
+    # avisa antes de que se saltee un mes entero, que es lo que hay que agarrar.
+    "consumo_supermercados": 140,
     "endeudamiento_familiar": 140, "inseguridad": 150,
 }
 CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón
@@ -200,8 +208,9 @@ G7_MAX_DIAS_DEFAULT = 150
 G7_MAX_DIAS = {
     "merval_usd": 45,                       # mercado, cierra todos los meses
     "clima_electoral": 75,                  # Votómetro, mensual propio
-    "consumo_supermercados": 190,           # INDEC, publica con 2-3 meses
-    "consumo_mayoristas": 190,
+    # `consumo_supermercados` salió del panel en ADR-0225 (pasó a componente):
+    # su frescura la vigila `MAX_DIAS`, como la de cualquier otro componente.
+    "consumo_mayoristas": 190,             # INDEC, publica con 2-3 meses
     "consumo_shoppings": 190,
     "inversion_directa_externa": 220,       # balance cambiario BCRA
     "inversion_portafolio_externa": 220,

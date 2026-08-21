@@ -228,15 +228,32 @@ def test_puntua_el_total_y_no_un_vehiculo():
 
 
 def test_el_peso_es_la_suma_de_los_dos_que_reemplaza():
-    """0,0196 (motos) + 0,0200 (autos) = 0,0396. Si alguien lo cambia sin un
-    ADR, la fusión habría movido el peso del bloque de vehículos de contrabando."""
+    """0,0196 (motos) + 0,0200 (autos) = 0,0396, y los otros tres intactos: eso
+    es lo que hace que la fusión sea sólo del bloque de vehículos y no una
+    recalibración encubierta.
+
+    Se verifica como RAZONES contra los otros componentes y no como decimales
+    absolutos. El motivo es concreto y ya pasó: toda alta posterior a la
+    dimensión multiplica a los cuatro por el mismo factor —la cesión es
+    proporcional (`itvc.alta_proporcional`)— así que los decimales cambian
+    mientras el invariante que este test protege sigue intacto. Escrito como
+    igualdad exacta, el test se rompía al entrar `consumo_supermercados`
+    (ADR-0225) y parecía denunciar que la fusión había movido el peso, cuando
+    lo único que había pasado es que los cuatro cedieron ×0,80 juntos.
+
+    Lo que sigue fijo, y es lo que un cambio de contrabando rompería: cuánto
+    pesa la motorización EN RELACIÓN a cada uno de los otros tres."""
     ingresos = itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
-    assert ingresos["motorizacion_total"] == pytest.approx(0.0396)
-    # Y los otros tres quedaron intactos, que es lo que hace que el cambio sea
-    # sólo del bloque de vehículos.
-    assert ingresos["brecha_salario_cbt"] == pytest.approx(0.5959)
-    assert ingresos["pobreza_nowcast"] == pytest.approx(0.3253)
-    assert ingresos["consumo_carnes_total"] == pytest.approx(0.0392)
+    motor = ingresos["motorizacion_total"]
+    esperadas = {"brecha_salario_cbt": 0.0396 / 0.5959,
+                 "pobreza_nowcast": 0.0396 / 0.3253,
+                 "consumo_carnes_total": 0.0396 / 0.0392}
+    for otro, razon in esperadas.items():
+        assert motor / ingresos[otro] == pytest.approx(razon, rel=1e-3), (
+            f"la motorización dejó de pesar lo de los dos vehículos en relación "
+            f"a {otro}: razón {motor / ingresos[otro]:.6f}, esperada {razon:.6f}")
+    # Y los cuatro siguen sumando lo que la dimensión reparte entre ellos.
+    assert sum(ingresos.values()) == pytest.approx(1.0)
 
 
 def test_autos_y_motos_no_son_cards():

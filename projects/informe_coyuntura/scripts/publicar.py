@@ -217,6 +217,15 @@ def build_vida(raw):
     _add(out, "patentamiento_motos", motos.get("valor"),
          "unidades", "DNRPA — inscripciones iniciales de motovehículos",
          f"{motos['fecha']}-01" if motos.get("fecha") else None)
+    # ADR-0225: el único componente del cinturón que mide volumen efectivamente
+    # comprado. Se llama SIEMPRE, aunque el colector haya fallado, por el mismo
+    # motivo que la motorización y sentimiento_digital: una clave ausente es
+    # invisible para `_carry_forward`, que sólo repara las que ya están en None.
+    super_ = (raw.get("indec_supermercados") or {}).get("consumo_supermercados", {})
+    _add(out, "consumo_supermercados", super_.get("valor"),
+         "índice (2004 = 100, desestacionalizado)",
+         "INDEC — Encuesta de supermercados (ventas a precios constantes)",
+         f"{super_['fecha']}-01" if super_.get("fecha") else None)
     return out
 
 

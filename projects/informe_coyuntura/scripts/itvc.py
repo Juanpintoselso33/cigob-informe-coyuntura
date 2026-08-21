@@ -30,6 +30,35 @@ import parametrica
 
 INF = float("inf")
 
+
+def alta_proporcional(previos: dict, nuevo: str, peso: float) -> dict:
+    """Alta de un componente con CESIÓN PROPORCIONAL de los que ya estaban.
+
+    Es la regla que el cinturón viene aplicando en cada alta —ADR-0130 (35%),
+    ADR-0112 (20%), ADR-0153 (25%), ADR-0219 (10%), ADR-0223 (2%), ADR-0225
+    (20%)— y hasta ahora se aplicaba a mano, dejando en el código los decimales
+    ya multiplicados. Escrita así, la regla se lee en el código en vez de
+    quedar implícita en un comentario al lado de cuatro números.
+
+    Que sea una función y no una constante importa por un motivo concreto: los
+    pesos previos de una dimensión cambian cuando entra o se funde otro
+    componente, y unos decimales calculados a mano quedan inválidos en silencio
+    apenas eso pasa. Acá la cesión se recalcula sobre lo que efectivamente haya.
+
+    Los previos ceden un factor (1 − peso) y **conservan su orden relativo**,
+    que es la parte que hace que el alta no sea una recalibración encubierta:
+    ninguno de los que estaban cambia lo que aporta EN RELACIÓN a los otros.
+    El peso NOMINAL de la dimensión no se toca nunca en una alta.
+    """
+    if not 0.0 < peso < 1.0:
+        raise ValueError(f"peso fuera de rango: {peso}")
+    if nuevo in previos:
+        raise ValueError(f"{nuevo} ya está en la dimensión")
+    factor = 1.0 - peso
+    out = {k: round(v * factor, 4) for k, v in previos.items()}
+    out[nuevo] = peso
+    return out
+
 # Dimensiones y pesos del doc 260702 (sección III). Las claves de indicador
 # son las HISTÓRICAS del cinturón vida (mapeo componente→clave en el ADR-0018):
 # I_SRC→brecha_salario_cbt · I_IFL→informalidad · I_IA→ipc_alimentos ·
@@ -117,10 +146,52 @@ DIMENSIONES_ITVC = {
         # tiene con qué distinguirlas. El total sí: si fuera sustitución
         # descendente estaría plano, porque cada moto que entra tendría un auto
         # que sale. Sube 7,5% en la ventana en que las dos series se separan.
-        "indicadores": {"brecha_salario_cbt": 0.5959,
-                        "pobreza_nowcast": 0.3253,
-                        "consumo_carnes_total": 0.0392,
-                        "motorizacion_total": 0.0396},
+        #
+        # ADR-0225: entra `consumo_supermercados` con 20%, aplicando la regla
+        # de cesión proporcional sobre lo que HAYA en la dimensión — por eso se
+        # llama a `alta_proporcional` en vez de dejar acá los decimales ya
+        # multiplicados. Los previos ceden ×0,80 y conservan su orden relativo.
+        # El peso NOMINAL de la dimensión no se toca.
+        #
+        # Y esto es exactamente el caso que la función existe para sobrevivir:
+        # el alta se escribió cuando la dimensión tenía cinco componentes —los
+        # dos vehículos por separado— y ADR-0224 los fundió en el medio. Con los
+        # decimales calculados a mano, el merge habría dejado pesos que no suman
+        # uno sin que nada avisara; con la regla escrita como regla, la cesión
+        # se recalculó sola sobre los cuatro que quedaron.
+        #
+        # POR QUÉ 20%, fijado antes de mirar el efecto. En esta dimensión
+        # `brecha_salario_cbt` mide la CAPACIDAD de comprar y `pobreza_nowcast`
+        # cuenta a quién no le alcanza; las dos son estructurales. Los únicos
+        # rastros de compra REALIZADA eran la carne y la motorización, que
+        # juntos no llegan al 8% de la dimensión y miran una proteína y los
+        # vehículos. El supermercado mide la canasta cotidiana entera y con 113
+        # meses de historia, así que tiene que pesar bastante más que esos dos
+        # y bastante menos que las dos estructurales. 20% es el número redondo
+        # de esa banda.
+        #
+        # ES EL ÚNICO COMPONENTE QUE MIDE VOLUMEN EFECTIVAMENTE COMPRADO. Los
+        # otros miden ingreso, precio, empleo, mora, percepción o victimización.
+        # Medido antes de incorporarlo: el 43% de su nivel y el 82% de su
+        # movimiento mes a mes NO los reproducen las seis dimensiones juntas.
+        #
+        # Venía de ser el ANCLA de validación externa (ADR-0155) y por eso sale
+        # del panel en el mismo movimiento: es la regla que sacó al ICC. Un
+        # indicador no puede ser componente y juez del mismo índice.
+        #
+        # El par que hay que declarar, y no esconder: contra `pobreza_nowcast`
+        # da −0,758 en NIVELES (n=20) y −0,093 al destendenciar. Queda por
+        # debajo de tres de los cinco pares altos que la pobreza YA tiene, y la
+        # matriz del cinturón tiene 42 pares sobre 0,7 sobre 136 — es la época
+        # en común de ADR-0108, no señal repetida. En primeras diferencias, que
+        # es donde se cuenta dos veces lo que se promedia, su máximo contra
+        # cualquier componente es +0,345.
+        "indicadores": alta_proporcional(
+            {"brecha_salario_cbt": 0.5959,
+             "pobreza_nowcast": 0.3253,
+             "consumo_carnes_total": 0.0392,
+             "motorizacion_total": 0.0396},
+            "consumo_supermercados", 0.20),
     },
     "precios": {
         "nombre": "Presión de precios",
@@ -529,6 +600,14 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # móvil de 12 meses de ADR-0024, que ahí se aplica a la suma de los dos
     # vehículos y no a cada uno—. Las dos series se siguen bajando: son los
     # Componentes A y B de la matriz A×B que explica el color.
+    #
+    # ADR-0225: ventas en supermercados a precios constantes. NO invertido —
+    # más volumen comprado es mejor. Rebase directo y sin móvil 12m: la serie
+    # que publica el INDEC YA viene desestacionalizada, así que la ventana
+    # móvil sólo agregaría un rezago de medio año sobre algo que no tiene
+    # calendario que sacar. Es la misma regla que dejó ADR-0155 — usar la
+    # desestacionalizada de la fuente antes que suavizarla acá.
+    idx["consumo_supermercados"] = rebase_de_serie(series, "consumo_supermercados")
     #
     # Inseguridad (SNIC anual: su serie emite el total del año en YYYY-12, así
     # el 4T-2023 resuelve al año 2023 — la excepción declarada del doc).

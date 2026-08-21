@@ -112,29 +112,29 @@ def test_toda_ancla_declarada_se_verifica(tmp_path):
 
 def test_un_ancla_que_dejo_de_avanzar_se_ve_aunque_el_rezago_pase(tmp_path):
     """El caso que el rezago absoluto NO agarra: una fuente con atraso
-    estructural grande (consumo INDEC, tope 190d) que se clava. Su rezago sigue
+    estructural grande (consumo mayorista INDEC, tope 190d) que se clava. Su rezago sigue
     por debajo del tope durante meses; lo que la delata es que hace 200 días que
     no publica un período nuevo."""
     anclas = _todas_frescas()
-    anclas["consumo_supermercados"] = {
+    anclas["consumo_mayoristas"] = {
         "ultimo": _mes(120), "n": 113,
         "avanzo": (date.today() - timedelta(days=200)).isoformat(),
     }
     cod, salida = _correr(_snapshot(tmp_path), _validacion(tmp_path, anclas))
     assert "no publica un período nuevo" in salida, salida
-    assert "consumo_supermercados" in salida
+    assert "consumo_mayoristas" in salida
     assert "[FALLA]" not in salida, "es una demora, no puede bloquear:\n" + salida
     assert cod == 0
 
 
 def test_una_fuente_con_atraso_estructural_pero_que_avanza_no_molesta():
-    """El contrapunto: 120 días de rezago son normales en el consumo INDEC
+    """El contrapunto: 120 días de rezago son normales en el consumo mayorista INDEC
     mientras siga publicando todos los meses."""
     import tempfile, pathlib
     with tempfile.TemporaryDirectory() as d:
         tmp = pathlib.Path(d)
         anclas = _todas_frescas()
-        anclas["consumo_supermercados"] = {
+        anclas["consumo_mayoristas"] = {
             "ultimo": _mes(120), "n": 113,
             "avanzo": (date.today() - timedelta(days=20)).isoformat(),
         }

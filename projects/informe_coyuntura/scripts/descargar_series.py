@@ -2058,6 +2058,22 @@ def fetch_patentamiento_motos_serie() -> list:
     return [[f"{ym}-01", v] for ym, v in sorted(_motorizacion()["serie_motos"].items())]
 
 
+def fetch_consumo_supermercados_serie() -> list:
+    """Ventas en supermercados a precios constantes, serie desestacionalizada
+    del INDEC (ADR-0225). MISMA serie que la card y que el índice: el colector
+    devuelve el histórico completo y la card es su último punto.
+
+    Se guarda el índice CRUDO de la fuente (base 2004 = 100) y no el rebase a
+    4T-2023: el rebase lo hacen `itvc.indices_desde_series` y la reconstrucción
+    de `validacion_externa`, cada uno con la misma función que usa para todos
+    los demás componentes. Guardar acá una serie ya rebaseada crearía un
+    segundo lugar donde la base puede quedar distinta."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from collectors.indec_supermercados import fetch_consumo_supermercados
+    d = fetch_consumo_supermercados()
+    return [[f"{ym}-01", v] for ym, v in sorted(d["serie"].items())]
+
+
 def fetch_empleadores_pyme_serie() -> list:
     """Cantidad mensual de empleadores de hasta 50 trabajadores con cobertura
     de ART (SRT). Es la MISMA serie que alimenta la card y el índice: el
@@ -2488,6 +2504,12 @@ VIDA_DERIVADAS += [
      "DNRPA — inscripciones iniciales de automotores (CSV mensual por "
      "jurisdicción), sin Tierra del Fuego",
      fetch_patentamiento_autos_serie),
+    # ADR-0225: el componente que mide volumen efectivamente comprado. Sin
+    # cache y sin acumulación: la API devuelve el histórico entero en cada
+    # corrida, igual que la DNRPA.
+    ("consumo_supermercados", "índice (2004 = 100, desestacionalizado)",
+     "INDEC — Encuesta de supermercados, ventas a precios constantes (API datos.gob.ar)",
+     fetch_consumo_supermercados_serie),
     # inseguridad = IVI mensual (ADR-0032); el SNIC anual sigue como serie de
     # contraste bajo clave propia (sin card: alimenta la ficha y validaciones)
     ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),

@@ -82,6 +82,7 @@ def run_all() -> dict:
     from collectors.bcra import fetch_bcra
     from collectors.utdt_icc import fetch_icc
     from collectors.motorizacion import fetch_motorizacion
+    from collectors.indec_supermercados import fetch_consumo_supermercados
     from collectors.ciccra import fetch_ciccra
     from collectors.consumo_carnes import fetch_consumo_carnes
     from collectors.srt_empleadores import fetch_empleadores_pyme
@@ -104,12 +105,18 @@ def run_all() -> dict:
         `descargar_series.py` del mismo colector."""
         d = fetch_motorizacion()
         return {k: v for k, v in d.items() if not k.startswith('serie')}
+
+    def _supermercados_sin_serie():
+        """Mismo criterio: la card es el último punto y la serie completa
+        (113 meses) la baja `descargar_series.py` del mismo colector."""
+        d = fetch_consumo_supermercados()
+        return {k: v for k, v in d.items() if k != 'serie'}
     from collectors.snic import fetch_snic
     from collectors.salud import fetch_salud
     from collectors.trends import fetch_trends
     from collectors.utdt_nowcast_pobreza import fetch_nowcast_pobreza
 
-    logger.info("Iniciando recolección — 12 fuentes...")
+    logger.info("Iniciando recolección — 13 fuentes...")
 
     fuentes_automatizadas = [
         "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
@@ -117,6 +124,7 @@ def run_all() -> dict:
         "utdt_icc (Indice de Confianza del Consumidor)",
         "dnrpa (motorizacion total: inscripciones iniciales de automotores y "
         "motovehiculos por jurisdiccion)",
+        "indec_supermercados (ventas a precios constantes, serie desestacionalizada)",
         "ciccra (consumo carne vacuna per capita — PDF mensual)",
         "consumo_carnes (total vacuna+aviar+porcina per capita — tablero SAGYP)",
         "srt (empleadores con cobertura de ART por tamano de nomina)",
@@ -141,6 +149,13 @@ def run_all() -> dict:
         # por nombre y el colector levanta excepción ante cualquier cambio de
         # forma — que reviente no puede tumbar al resto del cinturón.
         "motorizacion": _seguro(_motorizacion_sin_series, "motorizacion"),
+        # Ventas en supermercados a precios constantes (ADR-0225). Falla
+        # suave por consistencia con el resto, pero conviene saber qué
+        # significa acá: el colector revienta si la serie no trae los tres
+        # meses de la base 4T-2023, y sin base el componente mediría contra
+        # otra cosa. Que quede en None y lo repare el carry-forward es
+        # preferible a publicar un índice rebaseado contra vaya a saber qué.
+        "indec_supermercados": _seguro(_supermercados_sin_serie, "indec_supermercados"),
         "ciccra": fetch_ciccra(),
         # Componentes B y C de la ficha de proteína animal: sin el total, una
         # caída de la vacuna se lee como empobrecimiento cuando puede ser
