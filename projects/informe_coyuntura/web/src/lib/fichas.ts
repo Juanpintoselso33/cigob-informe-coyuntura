@@ -196,6 +196,8 @@ export const FICHAS: Record<string, Ficha> = {
       parrafos: [
         "No hay pesos implícitos: la composición completa — dimensiones, pesos, puntajes del mes — se publica en la tabla de abajo y en la página del cinturón.",
         "La agregación es compensatoria: una dimensión buena puede tapar una mala. Por eso el índice incluye el flag de dimensión crítica: si una dimensión cae por debajo de su umbral crítico, se declara junto al valor publicado. La compensación se señaliza, no se corrige.",
+        "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
+        "Esa serie hereda la procedencia de la reconstrucción, y conviene leerla con eso puesto: se calcula sin los ajustes del analista y llega hasta el último mes que supera el piso de cobertura, que puede ser anterior al mes de la tarjeta. Un mes en el que ningún indicador de la dimensión tiene dato no deja punto: el hueco se publica como hueco, sin arrastre ni interpolación, y el panel declara desde qué mes arranca cada una.",
       ],
     },
     robustez: [
@@ -246,6 +248,7 @@ export const FICHAS: Record<string, Ficha> = {
         fecha: "2026-07-04",
         cambio: "IdC rediseñado por comparación estandarizada contra su propia historia, recaudación como promedio móvil trimestral real y matriz de validación cruzada como tercer pilar de robustez.",
       },
+      { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses (ADR-0231). No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes." },
     ],
   },
 
@@ -3094,6 +3097,8 @@ export const FICHAS: Record<string, Ficha> = {
       leyenda: "Promedio ponderado en dos niveles: dentro de cada dimensión y entre dimensiones (35% reformas económicas · 25% reforma del Estado · 15% laboral · 15% privatizaciones e inversión · 10% social y orden).",
       parrafos: [
         "La agregación es compensatoria: por eso el índice incluye el flag de dimensión crítica — si una dimensión cae por debajo de su umbral, se declara junto al valor publicado en lugar de dejar que el promedio la esconda.",
+        "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
+        "Esa serie hereda la procedencia de la reconstrucción, y conviene leerla con eso puesto: se calcula sin los ajustes del analista y llega hasta el último mes que supera el piso de cobertura, que puede ser anterior al mes de la tarjeta. Un mes en el que ningún indicador de la dimensión tiene dato no deja punto: el hueco se publica como hueco, sin arrastre ni interpolación, y el panel declara desde qué mes arranca cada una.",
       ],
     },
     robustez: [
@@ -3133,6 +3138,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Revisión metodológica: puntaje interpolado entre anclas, flag de dimensión crítica, la brecha cambiaria deja de contar dos veces (sale del compuesto de apertura), y la litigiosidad entra al índice como resultado de la reforma laboral. El protocolo de orden público se automatiza con anclajes públicos." },
       { fecha: "2026-07-04", cambio: "Matriz de validación cruzada como tercer pilar de robustez, con el Merval en dólares como ancla propia del índice." },
       { fecha: "2026-08-21", cambio: "El Merval en dólares deja de encabezar la validación externa —publicaba +0,75 en niveles y +0,07 al descontar la tendencia— y el cinturón pasa a publicar el panel y su factor común. La validez externa queda declarada como problema abierto, con las cuatro condiciones que tendría que cumplir una candidata fijadas de antemano. Se evaluó y se descartó el gasto en subsidios económicos, como contraste y como componente. No cambia ningún indicador, ningún peso ni ninguna banda." },
+      { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses (ADR-0231). No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes." },
     ],
   },
 
@@ -3171,6 +3177,9 @@ export const FICHAS: Record<string, Ficha> = {
         "El índice y la tensión son DOS ESCALAS DISTINTAS y conviene no confundirlas. El índice suma niveles: cada componente vale lo que vale contra su base de 2023, y esos números se promedian. La tensión es una lectura del resultado —5 − (índice − 100) × 0,2, recortada al rango 0-10— pensada para ponerlo en la misma vara que los otros cinturones. La tensión que aparece en la ficha de cada componente aplica esa misma fórmula a ese componente solo, y sirve para leerlo, no para calcular: al índice entra el nivel, nunca la tensión.",
         "Eso explica algo que sorprende: varios componentes muestran una tensión de 0 o de 10 a la vez. No es que midan lo mismo — es que la escala 0-10 se corta ahí, y su tensión sin recortar seguiría subiendo o bajando. Cada ficha publica ese valor sin recortar junto al recortado, para que el techo no esconda la diferencia.",
         "Hay además un segundo recorte, éste sí sobre el número que entra al índice: salvo motorización total, ningún componente puede superar 140 (un salto puntual de uno solo no compra compensación ilimitada en el promedio). El recorte es sólo hacia arriba: las caídas no se recortan, se señalizan con el flag de dimensión crítica. La tabla de composición identifica cada componente recortado, su nivel crudo y cuánto resta el recorte; también marca la excepción cuando supera 140.",
+        "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
+        "Esa serie hereda la procedencia de la reconstrucción, y conviene leerla con eso puesto: se calcula sin los ajustes del analista y llega hasta el último mes que supera el piso de cobertura, que puede ser anterior al mes de la tarjeta. Un mes en el que ningún indicador de la dimensión tiene dato no deja punto: el hueco se publica como hueco, sin arrastre ni interpolación, y el panel declara desde qué mes arranca cada una.",
+        "Dos cosas de esa serie en este cinturón. Las dimensiones con pocos componentes tienen una serie muy pegada a la de ellos —vulnerabilidad financiera son dos, y la mora se lleva el 70%—, así que ahí la serie no agrega información sobre el componente: lo que agrega es ponerlo en la misma escala que las otras cinco dimensiones, que es lo único que permite comparar cuánto se movió cada una. Y el techo de recorte se aplica al COMPONENTE antes de promediar, nunca a la dimensión, así que la serie de la dimensión agrega componentes ya recortados: es el mismo número que entra al índice.",
       ],
     },
     robustez: [
@@ -3217,6 +3226,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos a la dimensión de ingresos y consumo, con el mismo peso y la misma transformación que el de motos (ADR-0223). El índice queda con dieciocho componentes. La razón no es sumar un dato más de consumo: con motos solas, un aumento del patentamiento se lee siempre como mejora, y la moto es además el sustituto barato del auto. Las dos series juntas distinguen más consumo de bajar de categoría." },
       { fecha: "2026-08-21", cambio: "Las ventas en supermercados a precios constantes dejan de ser el ancla de validación externa y entran como componente de la dimensión de ingresos y consumo, con 20% interno (ADR-0225). El índice queda con dieciocho componentes y es la primera vez que uno mide volumen efectivamente comprado. En el mismo movimiento el cinturón deja de tener ancla única y su contraste pasa a ser el panel: el reemplazo natural —el consumo privado de las Cuentas Nacionales— existe pero todavía tiene nueve trimestres, y queda declarado como referencia en formación con su umbral de promoción fijado de antemano." },
       { fecha: "2026-08-21", cambio: "La carga del servicio de deuda de las familias entra como segunda pata de vulnerabilidad financiera, con 30% interno; la mora conserva 70%. El índice queda con diecinueve componentes." },
+      { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses (ADR-0233). No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes." },
     ],
   },
 
@@ -3253,6 +3263,8 @@ export const FICHAS: Record<string, Ficha> = {
       leyenda: "Promedio ponderado en dos niveles: 21% poder legislativo · 19% alianzas territoriales · 15% cohesión interna · 10% conflicto social · 7% imagen y voto · 15% poder judicial · 13% sector privado.",
       parrafos: [
         "La agregación es compensatoria: una dimensión alta puede tapar una baja. Por eso el índice incluye el flag de dimensión crítica: si una dimensión cae por debajo de su umbral, se declara junto al valor publicado en lugar de dejar que el promedio la esconda.",
+        "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
+        "Esa serie hereda la procedencia de la reconstrucción, y conviene leerla con eso puesto: se calcula sin los ajustes del analista y llega hasta el último mes que supera el piso de cobertura, que puede ser anterior al mes de la tarjeta. Un mes en el que ningún indicador de la dimensión tiene dato no deja punto: el hueco se publica como hueco, sin arrastre ni interpolación, y el panel declara desde qué mes arranca cada una.",
       ],
     },
     robustez: [
@@ -3291,6 +3303,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-15", cambio: "Las comisiones sin sanción salen del puntaje: su fuente es ciega a las sanciones del Senado y se solapa con la eficacia legislativa corregida. Poder legislativo queda con cuatro indicadores." },
       { fecha: "2026-07-16", cambio: "Se incorpora el bloqueo legislativo sostenido a la dimensión de poder legislativo: la contracara de las derrotas (qué porción de las normas propias desafiadas en el recinto sigue en pie). El índice pasa a once indicadores puntuables y los pesos internos de la dimensión se redistribuyen." },
       { fecha: "2026-07-31", cambio: "El índice alcanza su estructura vigente de siete dimensiones y dieciocho indicadores: incorpora el Poder Judicial y el sector privado como actores diferenciados, y amplía la medición legislativa. La composición y los pesos vigentes quedan publicados en la tabla del índice." },
+      { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses (ADR-0231). No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes." },
     ],
   },
 };

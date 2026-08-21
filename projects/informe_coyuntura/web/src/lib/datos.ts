@@ -37,6 +37,11 @@ export interface DimensionIndice {
   // publica el color (ver publicar._semaforos).
   semaforo?: { color?: string; tension?: number | null; umbrales?: unknown; unidad?: string | null; por_que?: string | null };
   indicadores: Record<string, { puntaje_banda: number; puntaje_aplicado: number; peso_efectivo: number }>;
+  // Serie mensual de la dimensión (ADR-0231): [periodo, puntaje]. Sale de la
+  // reconstrucción histórica, del mismo resultado del motor que arma la serie
+  // del índice — no de una segunda agregación. Ausente cuando la dimensión no
+  // tiene componentes con historia mensual reconstruible.
+  serie?: [string, number][];
 }
 export interface IndiceParametrico {
   valor: number;          // 0-100, mayor = menos tensión (cinturón aflojado)
@@ -50,6 +55,12 @@ export interface IndiceParametrico {
                dominante: { indicador: string; indice_sin: number } | null;
                n_draws: number; metodo: string;
                hist?: number[]; hist_min?: number; hist_max?: number };
+  // Encabezado de las series por dimensión (ADR-0231): los textos y el período
+  // cubierto. Su ausencia significa que ninguna dimensión llegó al mínimo de
+  // meses, y entonces la sección entera no se dibuja.
+  dimensiones_serie?: { titulo: string; sub: string; escala: string; base100: boolean;
+                        desde: string; hasta: string; n: number;
+                        n_dimensiones: number; nota: string };
   // Validación externa (ADR-0019 D6): serie mensual del índice junto a su
   // variable externa de contraste, con los textos de la sección armados por
   // publicar (título, explicación, leyendas, conclusión) y el modo de escala
