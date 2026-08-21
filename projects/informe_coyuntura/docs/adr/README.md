@@ -305,3 +305,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0212](0212-el-monitor-del-plan-de-gobierno-y-el-cinturon-de-impacto-social.md) | El producto es el Monitor del Plan de Gobierno y el cuarto cinturón es Impacto social |  | vigente |
 | [0213](0213-la-portada-dice-que-mide-cada-cinturon.md) | La portada dice qué mide cada cinturón, y la escala se explica en metodología |  | vigente |
 | [0220](0220-la-ficha-se-ata-al-colector-y-al-adr.md) | La ficha se ata al colector y al ADR |  | vigente |
+| [0227](0227-demorada-no-es-desactualizada.md) | «Demorada» no es «desactualizada» |  | vigente |

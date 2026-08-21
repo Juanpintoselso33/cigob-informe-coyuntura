@@ -134,10 +134,14 @@ jobs:
       # Gates de calidad. Desde ADR-0133 el gate distingue:
       #   * INTEGRIDAD (G1 campos faltantes · G3 card≠serie · G6 jerga interna)
       #     → corta. El snapshot afirmaría algo que no es cierto.
-      #   * DEMORA (G2 una fuente atrasada) → NO corta. El indicador ya va
-      #     marcado como desactualizado y publicar.py hace carry-forward; dejar
-      #     todo el informe sin actualizar por una fuente lenta es peor que
-      #     mostrar un dato viejo señalado como viejo.
+      #   * DEMORA (G2 una fuente atrasada) → NO corta. Dejar todo el informe
+      #     sin actualizar porque un organismo publica lento es peor que
+      #     publicar el último dato que ese organismo llegó a sacar.
+      #     OJO (ADR-0227): "demorada" NO quiere decir "desactualizada". El
+      #     flag `desactualizado` lo escribe el colector cuando el fetch falla
+      #     y sirve caché; una card demorada con el fetch sano lo tiene en
+      #     false, y está bien. El gate sólo LEE el snapshot y corre después
+      #     de publicar.py: no marca nada.
       - name: Gate de calidad del snapshot (G1-G3, G6)
         run: python scripts/gate_calidad.py
 

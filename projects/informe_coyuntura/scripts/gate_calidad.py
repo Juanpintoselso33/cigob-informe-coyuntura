@@ -229,6 +229,10 @@ def _parse_fecha(f):
 def main() -> int:
     warn_only = "--warn-only" in sys.argv
     fallas, avisos = [], []
+    # (nombre, rezago, tope, fecha_dato, desactualizado) de cada card que
+    # G2 reporta demorada. El resumen final lo usa para DECIR lo que el
+    # snapshot tiene, en vez de afirmar algo sobre él (ADR-0227).
+    demoradas_detalle = []
     inf = json.loads((SNAPSHOT / "informe.json").read_text(encoding="utf-8"))
     series = json.loads((SNAPSHOT / "series.json").read_text(encoding="utf-8"))
     hoy = date.today()
@@ -253,6 +257,12 @@ def main() -> int:
                 if rezago > tope:
                     fallas.append(f"G2 {ck}/{ik}: rezago {rezago}d > tope {tope}d "
                                   f"(fecha_dato {i.get('fecha_dato')})")
+                    # Se guarda el estado REAL del flag, no una suposición: el
+                    # resumen del final lo lee de acá en vez de afirmar que
+                    # todas las demoradas están marcadas (ADR-0227).
+                    demoradas_detalle.append(
+                        (f"{ck}/{ik}", rezago, tope, i.get("fecha_dato"),
+                         bool(i.get("desactualizado"))))
             elif i.get("fecha_dato"):
                 fallas.append(f"G2 {ck}/{ik}: fecha_dato no parseable ({i.get('fecha_dato')})")
             # G2b — frescura del FETCH, no del dato
@@ -425,19 +435,37 @@ def main() -> int:
                           f"({editorial.relative_to(ROOT)}) — la portada publica la "
                           f"síntesis automática")
 
-    # ── Bloqueantes vs. no bloqueantes (ADR-0133) ────────────────────────────
+    # ── Bloqueantes vs. no bloqueantes (ADR-0133, corregido por ADR-0227) ────
     # Una fuente que se atrasa NO puede impedir que se publique todo lo demás.
-    # El indicador ya queda marcado `desactualizado`, publicar.py hace
-    # carry-forward del último valor bueno y el tablero lo muestra como viejo:
-    # el lector no se entera de nada falso. Bloquear la publicación entera por
-    # eso deja al informe SIN ACTUALIZAR NADA, que es peor que mostrar un
-    # indicador viejo señalado como viejo.
+    # Bloquear la publicación entera por eso deja al informe SIN ACTUALIZAR
+    # NADA —incluidos los indicadores que sí están frescos—, que es peor que
+    # publicar el último dato que la fuente llegó a sacar.
+    #
+    # OJO CON LA REDACCIÓN (ADR-0227): acá decía que "el indicador ya queda
+    # marcado `desactualizado` y publicar.py hace carry-forward", y es FALSO.
+    # Son dos condiciones distintas y ninguna implica la otra:
+    #
+    #   `desactualizado`  lo escribe el COLECTOR y quiere decir "el fetch falló
+    #                     y estoy sirviendo caché" (o "es carga manual"). Es un
+    #                     estado del PIPELINE.
+    #   demora G2         la calcula ESTE gate y quiere decir "la fuente publica
+    #                     con más rezago que su tope MAX_DIAS". El fetch anduvo
+    #                     perfecto; el organismo todavía no sacó nada más nuevo.
+    #                     Es un estado de la FUENTE.
+    #
+    # Un indicador demorado con el fetch sano tiene `desactualizado: false` y
+    # está bien que lo tenga: su valor es el último que existe, no un valor
+    # arrastrado. Verificado el 21-ago-2026 con macro/icip (142d, fetch de esa
+    # misma mañana) y vida_cotidiana/mora_familias (112d). Además el gate es de
+    # SÓLO LECTURA y corre DESPUÉS de publicar.py, así que aunque quisiera
+    # marcar algo llegaría tarde.
     #
     # Lo que sí bloquea es la INCONSISTENCIA: un indicador sin valor (G1), una
     # card que no coincide con su serie (G3) o jerga interna en texto público
     # (G6). Ahí el snapshot afirma algo que no es cierto, y eso no se publica.
     bloqueantes = [f_ for f_ in fallas if not f_.startswith(NO_BLOQUEAN)]
     demorados = [f_ for f_ in fallas if f_.startswith(NO_BLOQUEAN)]
+    demoradas_anclas = [f_ for f_ in demorados if f_.startswith("G7-frescura ")]
 
     print(f"Gate de calidad — {hoy.isoformat()}")
     for a in avisos:
@@ -454,9 +482,34 @@ def main() -> int:
               f"validación y editorial limpios")
         return 0
     if not bloqueantes:
+        # Hasta ADR-0227 este resumen decía "los indicadores atrasados van
+        # marcados como desactualizados". Era una afirmación UNIVERSAL sobre el
+        # snapshot que el snapshot no cumplía —y que este gate ni siquiera
+        # puede hacer cumplir, porque sólo lee—. El arreglo no es reemplazarla
+        # por otra afirmación universal más prudente: es que el resumen LEA el
+        # estado de cada card y lo diga. Una línea derivada del dato no puede
+        # divergir del dato. Lo vigila
+        # tests/test_gate_no_afirma_lo_que_el_snapshot_no_cumple.py.
         print(f"  → {len(demorados)} fuente(s) demorada(s), ninguna falla de "
-              f"integridad. El snapshot SE PUBLICA: los indicadores atrasados "
-              f"van marcados como desactualizados.")
+              f"integridad. El snapshot SE PUBLICA.")
+        if demoradas_detalle:
+            print(f"    {len(demoradas_detalle)} card(s) con la fuente demorada. "
+                  f"«Demorada» es que el organismo todavía no publicó nada más "
+                  f"nuevo, NO que el fetch haya fallado: eso es `desactualizado`, "
+                  f"lo escribe el colector y lo vigila G2b. Son cosas distintas y "
+                  f"el estado del flag va abajo, leído del snapshot:")
+            for nombre, rezago, tope, fecha, flag in demoradas_detalle:
+                marca = ("desactualizado=true (además está en caché: lo mira G2b)"
+                         if flag else
+                         "desactualizado=false — publica el último dato que "
+                         "existe, no un valor arrastrado")
+                print(f"      · {nombre}: {fecha}, {rezago}d contra un tope de "
+                      f"{tope}d · {marca}")
+        if demoradas_anclas:
+            nombres = ", ".join(f_.split(":")[0][12:] for f_ in demoradas_anclas)
+            print(f"    Anclas de validación demoradas ({len(demoradas_anclas)}): "
+                  f"{nombres}. Sus correlaciones se publican igual, calculadas "
+                  f"con la última observación disponible.")
         return 0
     print(f"  → {len(bloqueantes)} falla(s) de integridad. El snapshot NO debe "
           f"publicarse." + (f" (+{len(demorados)} fuente(s) demorada(s))"

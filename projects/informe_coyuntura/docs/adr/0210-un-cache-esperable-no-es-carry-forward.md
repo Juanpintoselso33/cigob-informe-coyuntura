@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-18
 cinturon: 'transversal'
 archivos: ['config.py', 'scripts/gate_calidad.py', 'scripts/generar_informe.py']
-relacionado: ['0133', '0191']
+relacionado: ['0133', '0191', '0227']
 ambito: 'Gate G2 · flags del snapshot · indicadores que se refrescan a mano por política'
 origen: 'judicializacion avisaba carry-forward todas las noches con el dato de un día'
 ---

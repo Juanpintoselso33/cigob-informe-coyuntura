@@ -6,7 +6,7 @@ fecha: 2026-07-26
 cinturon: 'transversal'
 archivos: ['gate_calidad.py', 'data-pipeline.yml', 'requirements.txt']
 relacionado: ['0172', '0176', '0191', '0210']
-continuado_por: ['0173', '0174']
+continuado_por: ['0173', '0174', '0227']
 ambito: '`gate_calidad.py` · `data-pipeline.yml` · `requirements.txt`'
 origen: 'El cron falló tres noches seguidas; planteo del editor'
 ---
@@ -70,6 +70,15 @@ snapshot esté bien o mal armado.
 |---|---|---|
 | **Integridad** | G1 indicador sin valor · G3 card ≠ serie · G6 jerga interna en texto público | **sí** |
 | **Demora** | G2 una fuente atrasada respecto de su tope | **no** |
+
+> **Corrección (ADR-0227, 21-ago-2026).** El párrafo que sigue es **falso** en
+> su premisa, aunque la decisión que justifica sigue siendo la correcta. Una
+> fuente que se atrasa **no** deja al indicador marcado `desactualizado`: ese
+> flag lo escribe el colector cuando el fetch falla y sirve caché, y una card
+> demorada con el fetch sano lo tiene en `false`. No hay carry-forward. El
+> motivo real por el que la demora no debe bloquear es otro y es más simple:
+> **el valor publicado es el último que la fuente llegó a sacar**, no un valor
+> arrastrado. Ver [[0227-demorada-no-es-desactualizada]].
 
 El razonamiento: cuando una fuente se atrasa, el indicador **ya queda marcado
 `desactualizado`**, `publicar.py` hace carry-forward del último valor bueno y el
