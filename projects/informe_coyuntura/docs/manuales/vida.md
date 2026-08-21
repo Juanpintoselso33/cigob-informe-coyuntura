@@ -14,7 +14,7 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `patentamiento_motos`, `patentamiento_autos` |
+| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `motorizacion_total` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias` |
 | `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `pluriempleo`, `trabajo_independiente` |
@@ -80,32 +80,18 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna
 
-#### Patentamiento de motos
+#### Motorización total
 
-`patentamiento_motos`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 2% |
-| Peso efectivo en el índice | **0.5%** |
-| Procedencia del ancla | `conceptual` — móvil 12m rebaseado a 4T-2023 (ADR-0024); el tope conceptual de 140 le recorta el boom, no lo calibra |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) El espejo de las motos: el patentamiento de autos
-
-#### Patentamiento de autos
-
-`patentamiento_autos`
+`motorizacion_total`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 2% |
-| Peso efectivo en el índice | **0.6%** |
+| Peso dentro de la dimensión | 4% |
+| Peso efectivo en el índice | **1.1%** |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) El espejo de las motos: el patentamiento de autos
+**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
 
 ### Dimensión `precios` (25%)
 
