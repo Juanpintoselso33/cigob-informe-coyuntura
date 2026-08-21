@@ -245,6 +245,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0218](0218-el-cierre-de-pymes-se-mide-con-la-srt.md) | El cierre de PyMEs se mide con la SRT, no con la producción industrial | `mortalidad_pymes` | vigente |
 | [0219](0219-la-contracara-del-cierre-el-trabajo-independiente.md) | La contracara del cierre: el trabajo independiente | `trabajo_independiente` | vigente |
 | [0223](0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) | El espejo de las motos: el patentamiento de autos | `patentamiento_autos`, `patentamiento_motos` | vigente |
+| [0224](0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) | Puntúa la motorización total, no cada vehículo por su lado | `motorizacion_total`, `patentamiento_autos`, `patentamiento_motos` | vigente |
 
 ### Espíritu de época
 

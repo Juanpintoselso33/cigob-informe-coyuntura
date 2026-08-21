@@ -8,6 +8,7 @@ indicadores: [patentamiento_autos, patentamiento_motos]
 archivos: ['scripts/vida_cotidiana/collectors/dnrpa_autos.py', 'scripts/vida_cotidiana/main.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'tests/test_patentamiento_autos.py']
 complementa: ['0024']
 relacionado: ['0018', '0108', '0130', '0153', '0216']
+superado_parcialmente_por: ['0224']
 ambito: 'ITCIS · dimensión de ingresos y consumo · patentamiento de automotores'
 origen: 'Pedido del editor: incorporar el patentamiento de autos como espejo del de motos'
 ---
@@ -15,6 +16,18 @@ origen: 'Pedido del editor: incorporar el patentamiento de autos como espejo del
 # ADR-0223 — El espejo de las motos: el patentamiento de autos
 
 ## Contexto y planteo del problema
+
+> **Superado parcialmente por [[0224-puntua-la-motorizacion-total-no-cada-vehiculo]]**
+> (mismo día). Lo que sigue en pie: el diagnóstico —con motos solas el índice no
+> puede distinguir más consumo de bajar de categoría—, la elección de la DNRPA
+> contra ACARA y ADEFA, la transformación por móvil de 12 meses y el tope de
+> frescura de 90 días medido sobre el catálogo. Lo que cambió: `patentamiento_autos`
+> **deja de ser un componente propio**. Los dos vehículos se funden en
+> `motorizacion_total`, porque agregar la segunda serie hizo *visible* la
+> divergencia pero no cambió **qué puntúa**, que era donde estaba el problema.
+> Lo que este ADR dejó anotado como «lo primero a revisar» —el techo de
+> winsorización sobre motos— se resuelve allá.
+
 
 El cinturón mide consumo durable con **una sola** serie de vehículos:
 `patentamiento_motos`, que entró en [[0018-itvc-parametrica-vida-cotidiana]] y

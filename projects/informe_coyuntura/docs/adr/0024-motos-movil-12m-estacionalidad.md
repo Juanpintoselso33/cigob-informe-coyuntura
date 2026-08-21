@@ -4,6 +4,7 @@ id: '0024'
 estado: 'aceptado'
 fecha: 2026-07-03
 cinturon: 'vida'
+relacionado: ['0224']
 complementado_por: ['0223']
 ---
 

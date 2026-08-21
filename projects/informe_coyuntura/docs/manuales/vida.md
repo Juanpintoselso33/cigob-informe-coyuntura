@@ -91,7 +91,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
+**Lo gobiernan**: [ADR-0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) Puntúa la motorización total, no cada vehículo por su lado
 
 ### Dimensión `precios` (25%)
 
@@ -319,7 +319,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-33 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+34 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -354,3 +354,4 @@ histórica.
 - [0218](../adr/0218-el-cierre-de-pymes-se-mide-con-la-srt.md) — El cierre de PyMEs se mide con la SRT, no con la producción industrial
 - [0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) — La contracara del cierre: el trabajo independiente
 - [0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) — El espejo de las motos: el patentamiento de autos
+- [0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) — Puntúa la motorización total, no cada vehículo por su lado

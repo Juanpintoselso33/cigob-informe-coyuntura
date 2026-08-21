@@ -8,7 +8,7 @@ indicadores: [consumo_carnes_total, consumo_carne]
 archivos: ['scripts/itvc.py', 'scripts/descargar_series.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'tests/test_carne_compuesto.py']
 supersede: ['0215']
 cierra: ['0216']
-relacionado: ['0018', '0119', '0220']
+relacionado: ['0018', '0119', '0220', '0224']
 ambito: 'ITCIS · componente de proteína animal · qué puntúa y con qué serie'
 origen: 'Editor, agosto de 2026: "el indicador tiene que cruzar los tres tipos de consumo, y la card termina diciendo vacuna — al pedo lo que estamos haciendo"'
 ---
