@@ -42,7 +42,7 @@ El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el pro
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
 | Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,4 | VERDE | 28,1 % |
-| Presión de precios | Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general). | 83,2 | ROJO | 25,0 % |
+| Presión de precios | Lo que más duele en la compra de todos los días: alimentos, tarifas y alquiler. | 83,2 | ROJO | 25,0 % |
 | Prospectivas de empleo | El trabajo por sus dos caras: cuánto hay y de qué calidad es. | 92,5 | NARANJA | 24,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. | 17,2 | ROJO | 10,0 % |
 | Confianza y percepción | El ánimo con que se vive el momento, medido de dos maneras. | 100,1 | AMARILLO | 8,2 % |
@@ -207,7 +207,7 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa 
 
 Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.
 
-**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).
+**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos, tarifas y alquiler. Los dos primeros se miden contra los salarios, no contra la inflación general; el alquiler, contra el resto de los precios — un gasto fijo que ningún otro componente del cinturón captura.
 
 ## Método de cómputo
 
@@ -294,7 +294,7 @@ Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En e
 
 Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.
 
-**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).
+**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos, tarifas y alquiler. Los dos primeros se miden contra los salarios, no contra la inflación general; el alquiler, contra el resto de los precios — un gasto fijo que ningún otro componente del cinturón captura.
 
 ## Método de cómputo
 
@@ -379,7 +379,7 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 
 La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.
 
-**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general).
+**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos, tarifas y alquiler. Los dos primeros se miden contra los salarios, no contra la inflación general; el alquiler, contra el resto de los precios — un gasto fijo que ningún otro componente del cinturón captura.
 
 ## Método de cómputo
 

@@ -20,7 +20,11 @@ doc 260702 — ver `docs/adr/0013-itcg-parametrica-gestion.md`; motor común en
 base 100 = 4T-2023. El score global pondera los cuatro cinturones por fase del
 mandato (`config.py`: fase temprana 25% parejo; consolidación 29/29/24/18).
 
-Documento de referencia con detalle por indicador: [`docs/260523_proyecto_pais_estado_extraccion.md`](docs/260523_proyecto_pais_estado_extraccion.md).
+Detalle por indicador —qué mide, fuente, transformaciones, límites—: las fichas
+metodológicas de [`output/fichas/`](output/fichas), que `scripts/fichas/generar.py`
+regenera desde `web/src/lib/fichas.ts` y el snapshot. El relevamiento fundacional de
+fuentes, [`docs/260523_proyecto_pais_estado_extraccion.md`](docs/260523_proyecto_pais_estado_extraccion.md),
+describe el estado a mayo de 2026 y se conserva como histórico.
 
 **Documentación de arquitectura** (cómo funciona el sistema de punta a punta —
 pipeline, motor paramétrico, web, operaciones): [`docs/arquitectura/`](docs/arquitectura/README.md).
@@ -125,8 +129,8 @@ projects/informe_coyuntura/
 │   └── politica/manuales.json             # fallback Político
 ├── docs/
 │   ├── 260520 Proyecto País...docx        # documento base de los 4 cinturones
-│   ├── 260523_proyecto_pais_estado_extraccion.md  # estado actual — leer primero
-│   ├── arquitectura/                      # diseño operativo vigente
+│   ├── 260523_proyecto_pais_estado_extraccion.md  # relevamiento de fuentes, mayo 2026
+│   ├── arquitectura/                      # arquitectura del sistema, foto al 04-jul-2026
 │   ├── adr/                               # decisiones metodológicas
 │   └── archivo/cinturon_*.md              # diseño original, sólo histórico
 ├── output/                               # outputs VERSIONADOS (ver nota abajo)

@@ -41,11 +41,11 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
-| Poder legislativo | La capacidad de gobernar por ley en el Congreso. | 46,5 | AMARILLO | 21,0 % |
+| Poder legislativo | La capacidad de gobernar por ley en el Congreso, en seis señales. | 46,5 | AMARILLO | 21,0 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 75,8 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 96,7 | VERDE | 15,0 % |
 | Poder judicial | La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. | 58,9 | AMARILLO | 15,0 % |
-| Sector privado | La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan… | 54,2 | AMARILLO | 13,0 % |
+| Sector privado | La relación con los empresarios por dos vías, lo que esperan y lo que dicen. | 54,2 | AMARILLO | 13,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar. | 52,9 | AMARILLO | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,6 | VERDE | 7,0 % |
 
@@ -212,7 +212,7 @@ Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en 
 
 Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. En el relevamiento cerrado el 19 de julio de 2026, el 95% de los decretos de necesidad y urgencia de esta gestión nunca había llegado a votarse en el recinto; de los ocho que sí habían llegado, seis habían caído. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -307,7 +307,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 
 Conviene una advertencia antes del dato: este indicador se comporta distinto según el gobierno, porque para el actual el recorte de la obra pública es el programa y no un síntoma de dificultades, de modo que la tensión con el sector puede subir mientras el Gobierno gobierna con comodidad. Dicho eso, lo que mide es sólido. Las dos submuestras son el mismo sector: mismos costos, mismo crédito, misma economía. Lo único que las distingue es quién les paga. Por eso la diferencia entre ambas aísla lo que aporta el Estado y descarta el ciclo económico general. Cuando las que dependen de la obra pública esperan mucho peor que sus pares privadas, la fuente del problema es la política pública y no el mercado.
 
-**Dimensión que integra — Sector privado.** La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados. Al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga: la diferencia aísla lo que aporta la política pública y descarta el ciclo económico.
+**Dimensión que integra — Sector privado.** La relación con los empresarios por dos vías, lo que esperan y lo que dicen. La primera es la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados: al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga, así que la diferencia aísla lo que aporta la política pública y descarta el ciclo económico. La segunda es la postura pública de la Asociación Empresaria Argentina y la Unión Industrial Argentina — el saldo entre apoyos y críticas de sus comunicados sobre medidas del Ejecutivo nacional en los últimos doce meses —, que es el vínculo dicho y no inferido.
 
 ## Método de cómputo
 
@@ -398,7 +398,7 @@ Qué dicen en público, por escrito y con firma institucional, las dos cámaras 
 
 Es la única medida directa de la relación entre el Gobierno y el empresariado organizado: las demás miran el clima de negocios o los datos de un sector, y de ahí infieren el vínculo. Acá el vínculo está dicho. Conviene saber qué no dice: no mide el humor del empresariado en general ni la opinión de sus asociados, sino lo que una asociación decidió declarar públicamente — una cámara puede callar por conveniencia y ese silencio no aparece. La clasificación la hace una persona siguiendo reglas escritas de antemano, y dos personas distintas la hicieron por separado para verificar que las reglas no dejan lugar a la interpretación.
 
-**Dimensión que integra — Sector privado.** La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados. Al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga: la diferencia aísla lo que aporta la política pública y descarta el ciclo económico.
+**Dimensión que integra — Sector privado.** La relación con los empresarios por dos vías, lo que esperan y lo que dicen. La primera es la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan para clientes privados: al ser el mismo sector, con los mismos costos y el mismo crédito, lo único que las separa es quién les paga, así que la diferencia aísla lo que aporta la política pública y descarta el ciclo económico. La segunda es la postura pública de la Asociación Empresaria Argentina y la Unión Industrial Argentina — el saldo entre apoyos y críticas de sus comunicados sobre medidas del Ejecutivo nacional en los últimos doce meses —, que es el vínculo dicho y no inferido.
 
 ## Método de cómputo
 
@@ -669,7 +669,7 @@ Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina apr
 
 Mide la capacidad real de convertir la agenda de gobierno en ley, sin castigar a los proyectos recién enviados que todavía no tuvieron tiempo de tratarse.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -769,7 +769,7 @@ Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda 
 
 El quórum es el primer filtro de cualquier agenda legislativa: sin él no se debate ni se vota nada. Una tasa alta indica que el oficialismo no logra reunir a la cámara, sea porque la oposición se ausenta deliberadamente o porque sus propios aliados no acompañan.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -1031,7 +1031,7 @@ De las normas del Ejecutivo que el Congreso desafió en el recinto en los últim
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2024-03 → 2026-08 (30 puntos) | **REZAGO DE PUBLICACIÓN** | Las cámaras publican sus actas de votación a los días de cada sesión; el clasificador incorpora las actas nuevas en la actualización nocturna siguiente. La caída de un veto se registra con la publicación de la ley insistida en el Boletín Oficial, dos a tres semanas después del voto de la segunda cámara. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia) |
-| **MODO DE ACCESO** | Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos se comparte con el indicador de derrotas legislativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **MODO DE ACCESO** | Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos es el mismo que usa el indicador de normas desafiadas en el recinto. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1039,7 +1039,7 @@ De las normas del Ejecutivo que el Congreso desafió en el recinto en los últim
 
 Es la cara ganada del pulso legislativo que el conteo de derrotas no registra: un gobierno sin mayoría gobierna sosteniendo sus vetos con un tercio de una cámara. Una tasa alta indica bloqueo firme; una baja, un Congreso capaz de voltear sus normas. Al mirar 12 meses atrás, una crisis reciente pesa durante un año.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -1127,7 +1127,7 @@ Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto 
 
 Mide con qué frecuencia el Congreso decide dar la pelea, sin importar cómo termine. Desafiar una norma del Ejecutivo es un acto excepcional —exige mayorías especiales o un procedimiento específico—, así que un puñado al año ya indica confrontación abierta. Junto con la proporción de normas que el Gobierno logra sostener, responde las dos preguntas del pulso legislativo: cuánto lo confrontan y cuánto aguanta.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 
@@ -1212,7 +1212,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 
 Mide la actividad legislativa por su volumen, que es el número que efectivamente se mueve. La participación del Ejecutivo en esa producción es notablemente estable —entre cinco y diez leyes por ventana en todo el período—, de modo que cuando su porcentaje sube, lo que cambió no fue el Ejecutivo sino el Congreso, que sancionó menos. Medir el total evita leer una parálisis legislativa como un avance del Gobierno.
 
-**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
+**Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso, en seis señales: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas de sus normas pone el Congreso a votación en el recinto, qué porción de esas normas desafiadas logra sostener en pie, y cuántas leyes sanciona el Congreso en total — el volumen contra el que se lee todo lo demás.
 
 ## Método de cómputo
 

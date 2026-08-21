@@ -34,7 +34,7 @@ export interface FuenteFicha {
   operacion: string;    // la operación estadística / serie exacta
   serie?: string;       // identificador técnico de la serie (API)
   url?: string;         // página oficial de la fuente
-  acceso: string;       // cómo lo obtiene el informe (automático/manual)
+  acceso: string;       // cómo lo obtiene el informe (automático/semiautomático/manual)
 }
 
 // Banda institucional tal como la publica el documento CIGOB, más los puntos
@@ -1725,7 +1725,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia)",
       operacion: "Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia)",
       url: "https://votaciones.hcdn.gob.ar",
-      acceso: "Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos se comparte con el indicador de derrotas legislativas.",
+      acceso: "Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos es el mismo que usa el indicador de normas desafiadas en el recinto.",
     },
     transformaciones: [
       "Una norma queda DESAFIADA desde su primera votación en el recinto, gane quien gane: la insistencia de una ley vetada (art. 83 de la Constitución) o el control de un decreto bajo la ley 26.122.",
