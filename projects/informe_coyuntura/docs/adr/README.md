@@ -252,6 +252,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0223](0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) | El espejo de las motos: el patentamiento de autos | `patentamiento_autos`, `patentamiento_motos` | vigente |
 | [0224](0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) | Puntúa la motorización total, no cada vehículo por su lado | `motorizacion_total`, `patentamiento_autos`, `patentamiento_motos` | vigente |
 | [0225](0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) | El supermercado deja de validar el índice y pasa a integrarlo | `consumo_supermercados` | vigente |
+| [0232](0232-regulados-frente-al-salario-no-es-peso-de-tarifas.md) | La canasta de servicios puntúa contra asequibilidad, no contra 2023 | `peso_tarifas` | vigente |
 
 ### Espíritu de época
 

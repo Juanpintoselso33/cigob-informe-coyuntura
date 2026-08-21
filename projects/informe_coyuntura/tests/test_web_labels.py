@@ -95,6 +95,42 @@ def test_todo_cinturon_con_parametrica_esta_en_indice_cfg_del_modal():
         )
 
 
+def test_el_modal_no_esconde_la_advertencia_cuando_hay_score():
+    """Regresión encontrada al revisar el rojo de `peso_tarifas`.
+
+    `aporte_nota` viajaba en el snapshot (incluida la nota de winsorización de
+    sentimiento), pero el modal sólo la dibujaba en un `else if`: todo
+    indicador con `aporte_score` —justamente los que pueden tener recorte o
+    caveat de lectura— la ocultaba.
+    """
+    rama_score = INDICADOR_MODAL_ASTRO.index("if (d.aporteScore != null)")
+    nota_visible = INDICADOR_MODAL_ASTRO.index('if (d.aporteNota && d.aporteScore != null)', rama_score)
+    armado_final = INDICADOR_MODAL_ASTRO.index("score.innerHTML", rama_score)
+    assert rama_score < nota_visible < armado_final
+    assert "Advertencia de lectura:" in INDICADOR_MODAL_ASTRO
+
+
+def test_tarifas_usa_canasta_real_y_ancla_internacional():
+    """IPC Regulados/RIPTE no es una factura ni una participación del gasto."""
+    assert 'peso_tarifas: "Canasta de servicios públicos / salario"' in DATOS_TS
+    assert "2(E-10)" in FORMULAS_TS and "2(P-5)" in FORMULAS_TS
+    assert "entra la mayor tensión" in DESCRIPCIONES_TS
+    assert "no puntúa hasta" not in DESCRIPCIONES_TS
+
+
+def test_ficha_markdown_de_tarifas_no_recae_en_la_base_temporal():
+    """El entregable versionado debe decir lo mismo que la ficha web."""
+    ficha = (ROOT / "output/fichas/fichas-vida_cotidiana.md").read_text(encoding="utf-8")
+    bloque = ficha.split("# Canasta de servicios públicos / salario", 1)[1].split(
+        "CIGOB · INFORME DE COYUNTURA", 1
+    )[0]
+    assert "**Hoy: 14,5 % del salario RIPTE** (2026-08)" in bloque
+    assert "**Color vigente: VERDE**" in bloque
+    assert "100 equivale a tensión 5" in bloque
+    assert "no al nivel tarifario del 4º trimestre de 2023" in bloque
+    assert "2,13 % m/m regulados" not in bloque
+
+
 def test_toda_dimension_parametrica_tiene_descripcion_en_dim_descripciones():
     # mismo hallazgo 2026-07-09: aunque se arregle el wiring de arriba, sin
     # esto el modal de dimensión de política abriría con el campo "qué mide"

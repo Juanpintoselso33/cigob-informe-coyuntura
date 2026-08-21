@@ -1,13 +1,14 @@
 """ITVC-B100 — Índice de Tensión del Cinturón de Vida Cotidiana (base 100).
 
 Implementa el "ITVC — versión base 100" (Fundación CIGOB, doc 260702 vida
-cotidiana, jul-2026): un índice de SEGUIMIENTO DE GESTIÓN, no de nivel
-absoluto. Cada componente se rebasea a 100 = promedio del 4º trimestre de
-2023 (oct-nov-dic, para amortiguar la distorsión de la devaluación de fines
-de diciembre); el ITVC es el promedio ponderado directo de esos índices.
+cotidiana, jul-2026): un índice de SEGUIMIENTO DE GESTIÓN. Los componentes se
+rebasean a 100 = promedio del 4º trimestre de 2023, con una excepción vigente:
+`peso_tarifas` usa umbrales internacionales de 10% para agua+energía y 5% para
+transporte, para no tomar como normal el precio subsidiado de 2023 (ADR-0232).
+El ITVC es el promedio ponderado directo de esos índices.
 
-    ITVC > 100 = mejora acumulada vs el arranque del mandato
-    ITVC < 100 = deterioro acumulado
+    ITVC > 100 = condiciones por encima de la referencia compuesta
+    ITVC < 100 = condiciones por debajo de la referencia compuesta
 
 A diferencia del ITCM/ITCG no hay tablas de bandas: los componentes entran
 como índices continuos (la banda solo interpreta el resultado agregado).
@@ -196,12 +197,10 @@ DIMENSIONES_ITVC = {
     "precios": {
         "nombre": "Presión de precios",
         "peso": 0.25,
-        # ADR-0111: entra alquiler_real con 20%. Los tres son precios de la
-        # canasta cotidiana, pero el alquiler golpea a los hogares INQUILINOS
-        # —alrededor de un tercio de los urbanos— mientras tarifas y alimentos
-        # pegan en todos; por eso entra por debajo de los otros dos. Le ceden
-        # proporcionalmente, conservando el orden relativo previo (tarifas
-        # arriba de alimentos). El peso NOMINAL de la dimensión no se toca.
+        # ADR-0232 cambia la VARIABLE y el ancla de `peso_tarifas`, no su lugar
+        # en el índice: pasa de IPC Regulados/RIPTE contra 4T-2023 a la canasta
+        # efectiva del IIEP contra umbrales internacionales por rubro.
+        # Conserva el 45% interno fijado antes de esta corrección.
         "indicadores": {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
                         "alquiler_real": 0.20},
     },
@@ -332,11 +331,11 @@ BANDAS_INTERPRETACION = [
 ]
 
 INTERPRETACION_LEGIBLE = {
-    "deterioro_sustancial": "Deterioro sustancial vs 4T-2023",
-    "deterioro_moderado":   "Deterioro moderado vs 4T-2023",
-    "sin_cambios":          "Sin cambios significativos vs 4T-2023",
-    "mejora_moderada":      "Mejora moderada vs 4T-2023",
-    "mejora_sustancial":    "Mejora sustancial vs 4T-2023",
+    "deterioro_sustancial": "Deterioro sustancial frente a las referencias",
+    "deterioro_moderado":   "Deterioro moderado frente a las referencias",
+    "sin_cambios":          "Sin cambios significativos frente a las referencias",
+    "mejora_moderada":      "Mejora moderada frente a las referencias",
+    "mejora_sustancial":    "Mejora sustancial frente a las referencias",
 }
 
 # VACÍA, y tiene que quedar vacía (ADR-0153).
@@ -363,6 +362,27 @@ def tension_de_itvc(itvc: float) -> float:
     """Tensión 0-10 del cinturón, lineal sobre la escala del doc:
     5 − (ITVC − 100) × 0,2, acotada a [0, 10]."""
     return round(min(10.0, max(0.0, 5.0 - (itvc - 100.0) * 0.2)), 1)
+
+
+def indice_asequibilidad_tarifas(carga_salario: float,
+                                  transporte_pct_canasta: float) -> float:
+    """Canasta IIEP → escala común del ITCIS (ADR-0232).
+
+    Evalúa agua+energía y transporte por separado y conserva la peor señal.
+    Centralizar esta cuenta evita que la serie que puntúa y la explicación de
+    la card puedan implementar fórmulas distintas sin que nadie lo note.
+    """
+    carga = float(carga_salario)
+    participacion = float(transporte_pct_canasta)
+    if carga <= 0:
+        raise ValueError(f"carga tarifaria fuera de rango: {carga}")
+    if not 0 <= participacion <= 100:
+        raise ValueError(f"participación del transporte fuera de rango: {participacion}")
+    transporte = carga * participacion / 100.0
+    agua_energia = carga - transporte
+    t_ae = min(10.0, max(0.0, 2.0 * (agua_energia - 10.0)))
+    t_transporte = min(10.0, max(0.0, 2.0 * (transporte - 5.0)))
+    return round(125.0 - 5.0 * max(t_ae, t_transporte), 1)
 
 
 def cargar_ajustes(path, periodo: str) -> dict:
@@ -485,6 +505,8 @@ WINSOR_EXENTOS = frozenset({"motorizacion_total"})
 # Serie transformada (ya rebaseada en descargar_series) → indicador del cinturón
 SERIES_REBASEADAS = {
     "itvc_alimentos":     "ipc_alimentos",
+    # Índice de asequibilidad por componente: 100 = tensión 5. No se rebasea;
+    # agua+energía y transporte llegan contra sus propias anclas (ADR-0232).
     "itvc_tarifas":       "peso_tarifas",
     "itvc_alquiler":      "alquiler_real",
     "itvc_isac":          "despacho_cemento",

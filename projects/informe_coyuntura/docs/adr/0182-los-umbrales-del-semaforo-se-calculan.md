@@ -7,6 +7,7 @@ cinturon: 'transversal'
 indice: 'todos'
 archivos: ['scripts/parametrica.py']
 continua: ['0181']
+relacionado: ['0232']
 continuado_por: ['0184']
 ambito: 'Umbrales del semáforo en la unidad cruda del indicador · interpolación inversa'
 origen: 'Las 15 fichas de Gestión traen los umbrales escritos en prosa, y los números con los que se escribieron envejecieron en una semana'
@@ -114,12 +115,14 @@ escribe a mano por la misma razón que los umbrales no se escriben a mano.
   `5 − (índice−100) × 0,2` en vez de reusar `itvc.tension_de_itvc()`, que ya
   acota a `[0, 10]`. Resultado: **seis componentes del ITVC con la tensión
   fuera de su dominio documentado** (`mora_familias` 21,6, `alquiler_real` 12,1,
-  `peso_tarifas` 10,7, `pobreza_nowcast` −0,4, `sentimiento_digital` −2,5,
+  el antiguo `peso_tarifas` 10,7, `pobreza_nowcast` −0,4, `sentimiento_digital` −2,5,
   `patentamiento_motos` −3,0). **Ningún color cambiaba**, porque los cuatro
   cortes caen dentro de `[0, 10]`, así que ningún test de color podía detectarlo.
   Volver a derivar un número que ya tiene función es la manera de producir un
   defecto que no se ve. El color sigue saliendo de la tensión **cruda**, sin
   acotar, vía `color_de_indice_base100`: eso no cambió.
+  ADR-0232 cambió después la variable tarifaria; el 10,7 queda como evidencia
+  histórica de este bug de presentación, no como su tensión vigente.
 
 ### Confirmación
 

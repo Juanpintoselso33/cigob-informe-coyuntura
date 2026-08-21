@@ -24,7 +24,7 @@ export interface Indicador {
   puntaje_itcm?: number;  // macro: puntaje 0-100 aplicado en el ITCM
   puntaje_itcg?: number;  // gestión: puntaje 0-100 aplicado en el ITCG
   puntaje_itcp?: number;  // política: puntaje 0-100 aplicado en el ITCP
-  indice_itvc?: number;   // vida: índice base-100 del componente (100 = 4T-2023)
+  indice_itvc?: number;   // vida: índice común; tarifas usa umbrales 10%/5% por rubro (ADR-0232)
   [k: string]: unknown;
 }
 export interface DimensionIndice {
@@ -121,7 +121,7 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
     fichaId: "itvc",
     base100: true,   // índice de seguimiento sin techo en 100 (no mostrar "/100")
     nombre: "Índice de Tensión del Cinturón de Impacto Social",
-    descripcion: "100 = el arranque del mandato (4º trimestre de 2023). Más de 100 es mejora; menos, deterioro.",
+    descripcion: "100 = el arranque del mandato para la mayoría de los componentes; servicios públicos usa una escala construida con umbrales internacionales por rubro. Más de 100 es mejora; menos, deterioro.",
     data: c.itvc,
   };
   if (c.itcp) return {
@@ -380,7 +380,7 @@ export const LABELS: Record<string, string> = {
   // impacto social (claves de publicar.py)
   brecha_salario_cbt: "Salario real vs. canasta", ipc_alimentos: "Inflación de alimentos",
   endeudamiento_familiar: "Endeudamiento de consumo", mora_familias: "Mora de las familias",
-  peso_tarifas: "Peso de tarifas (regulados)", alquiler_real: "Costo real del alquiler", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
+  peso_tarifas: "Canasta de servicios públicos / salario", alquiler_real: "Costo real del alquiler", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
   consumo_carne: "Consumo de carne vacuna per cápita",
   consumo_carnes_total: "Consumo total de carnes per cápita", informalidad: "Informalidad laboral",
   mortalidad_pymes: "Empleadores PyME activos", trabajo_independiente: "Peso del trabajo independiente", despacho_cemento: "Construcción (ISAC)",
@@ -459,7 +459,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // impacto social
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   mora_familias: "%",
-  peso_tarifas: "% m/m", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
+  peso_tarifas: "% salario", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.", patentamiento_autos: "u.",
   motorizacion_total: "c/1.000 hab.",
@@ -524,7 +524,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   // impacto social
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
   endeudamiento_familiar: "Billones de pesos", mora_familias: "% de la cartera en situación irregular",
-  peso_tarifas: "% mensual", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
+  peso_tarifas: "% de un salario RIPTE", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
   consumo_carne: "kg por habitante/año", consumo_carnes_total: "kg por habitante/año (vacuna + aviar + porcina)",
   informalidad: "% de asalariados",
   mortalidad_pymes: "Empleadores de hasta 50 trabajadores con cobertura de ART",

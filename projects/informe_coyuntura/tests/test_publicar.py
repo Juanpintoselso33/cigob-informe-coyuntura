@@ -1,4 +1,5 @@
 import json, subprocess, sys, os
+import pytest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]   # projects/informe_coyuntura
@@ -21,6 +22,29 @@ def test_build_vida_agrega_sentimiento_digital_aunque_trends_falle():
     enriquecido = publicar.build_vida(raw)
     assert "sentimiento_digital" in enriquecido
     assert enriquecido["sentimiento_digital"]["valor"] is None
+
+
+def test_build_vida_conserva_la_clave_tarifaria_si_iiep_falla():
+    enriquecido = publicar.build_vida({"iiep_tarifas": None})
+    assert "peso_tarifas" in enriquecido
+    assert enriquecido["peso_tarifas"]["valor"] is None
+
+
+def test_carry_forward_tarifas_restaura_todos_los_insumos_del_score():
+    nuevo = publicar.build_vida({"iiep_tarifas": None})
+    previo = {"peso_tarifas": {
+        "valor": 14.5,
+        "fecha_dato": "2026-08-01",
+        "fuente": "IIEP UBA-CONICET",
+        "obtenido_en": "2026-08-21T14:14:59",
+        "variacion_mensual_pct": -2.1,
+        "cobertura_costos_pct": 55.0,
+        "transporte_pct_canasta": 43.0,
+        "fuente_url": "https://economicas.uba.ar/iiep/reporte-agosto-2026/",
+    }}
+    restaurado = publicar._carry_forward(nuevo, previo)["peso_tarifas"]
+    for campo, valor in previo["peso_tarifas"].items():
+        assert restaurado[campo] == valor
 
 
 def test_macro_input_txt_explica_los_dos_componentes_del_desequilibrio():
@@ -627,6 +651,47 @@ def test_vida_itvc_reconcilia():
 
     for k, i in en_indice.items():
         assert i.get("aporte_score") is not None, f"{k} integra el índice sin aporte_score"
+
+    servicios = c["indicadores"]["peso_tarifas"]
+    assert servicios["valor"] == 14.5
+    assert servicios["unidad"] == "% del salario RIPTE"
+    assert servicios["en_indice"] is True
+    assert servicios["indice_itvc"] == 112.6
+    assert servicios["peso_efectivo"] == 0.1125
+    assert servicios["aporte_score"] == 2.5
+    assert servicios["transporte_pct_canasta"] == 43.0
+    assert "agua+energía 8,3% + transporte 6,2%" in servicios["aporte_formula"]
+    assert "4T-2023" not in servicios["aporte_formula"]
+    assert "IIEP UBA-CONICET" in servicios["fuente"]
+    serie_servicios = json.loads((DATA / "series.json").read_text(encoding="utf-8"))["peso_tarifas"]
+    assert len(serie_servicios) == 9
+    assert serie_servicios[0] == {"fecha": "2025-12-01", "valor": 11.1}
+    assert serie_servicios[-1] == {"fecha": "2026-08-01", "valor": 14.5}
+
+
+def test_tarifas_no_mezcla_card_y_score_de_meses_distintos():
+    cinturon = {"indicadores": {"peso_tarifas": {
+        "valor": 14.5,
+        "transporte_pct_canasta": 43.0,
+        "fecha_dato": "2026-08-01",
+    }}}
+    series = {"itvc_tarifas": [{"fecha": "2026-07-01", "valor": 115.0}]}
+    with pytest.raises(ValueError, match="card 2026-08"):
+        publicar._series_tarifas_alineadas_con_card(cinturon, series)
+
+
+def test_tarifas_recalcula_el_score_desde_los_datos_visibles():
+    cinturon = {"indicadores": {"peso_tarifas": {
+        "valor": 14.5,
+        "transporte_pct_canasta": 43.0,
+        "fecha_dato": "2026-08-01",
+    }}}
+    correcto = {"itvc_tarifas": [{"fecha": "2026-08-01", "valor": 112.6}]}
+    assert publicar._series_tarifas_alineadas_con_card(cinturon, correcto) == correcto
+
+    mutado = {"itvc_tarifas": [{"fecha": "2026-08-01", "valor": 115.0}]}
+    with pytest.raises(ValueError, match="115.0 != 112.6"):
+        publicar._series_tarifas_alineadas_con_card(cinturon, mutado)
 
 
 def test_robustez_publicada_encierra_el_valor():

@@ -1,7 +1,7 @@
 ---
 periodo: "2026-08"
 generado: "2026-08-21 16:03:48"
-score_global: 4.3
+score_global: 4.0
 barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-08
 
-**Score global:** 4.3/10  |  **Riesgo dominante:** político
+**Score global:** 4.0/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
@@ -69,7 +69,7 @@ schema_version: "1.2.0"
 | cobertura_judicial | 69.63 | % de cargos de juez con juez designado | 2026-08-01 | fresco |
 | alineamiento_senadores_prov | 57.0 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-08-06 | fresco |
 
-### 🔴 Vida Cotidiana — score 7.1/10 (tensionado)
+### 🔴 Vida Cotidiana — score 6.2/10 (tensionado)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |

@@ -110,9 +110,9 @@ TECHOS = {
     # observado— y diluye la proporción circular del índice. El techo se baja
     # para fijar la mejora, igual que se hizo con el ITCM en ADR-0120.
     "ITCP": {"circular": 0.34, "sin_declarar": 0.01},
-    # ITVC entró al registro el 2026-07-20 (ADR-0123) con 0% circular: al no
-    # tener bandas —cada componente se mide como distancia a la fecha fija
-    # 4T-2023— no hay cortes que calibrar contra el período. Techo en 0,01: si
+    # ITVC entró al registro el 2026-07-20 (ADR-0123) con 0% circular. Desde
+    # ADR-0232, diecisiete componentes usan fecha fija y tarifas usa un rango
+    # externo; ninguno se calibra contra el período. Techo en 0,01: si
     # algún día un componente del ITVC pasara a anclarse al rango observado,
     # tiene que verse.
     "ITVC": {"circular": 0.01, "sin_declarar": 0.01},
@@ -183,18 +183,17 @@ PROCEDENCIA = {
     "conflictividad_nacional": ("convencion", "calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052)"),
 
     # ── ITVC (ADR-0123) ──────────────────────────────────────────────────────
-    # El ITVC no tiene bandas: cada componente se rebasea a 100 = 4T-2023 y el
-    # índice promedia esos niveles. El ancla de TODOS es una FECHA FIJA (el
-    # arranque del mandato), no un rango observado, así que no hay dónde
-    # calibrar contra el período — son conceptuales por construcción. Es el
-    # único índice sin una sola ancla de convención. La winsorización a 140
+    # El ITVC promedia índices en una escala común. Diecisiete componentes usan
+    # una FECHA FIJA; `peso_tarifas` usa umbrales externos de asequibilidad
+    # (ADR-0232). Ninguno se calibra contra el rango observado por esta gestión,
+    # así que sigue sin anclas de convención. La winsorización a 140
     # (base +40, ADR-0033) es un tope conceptual redondo, no calibrado al
     # boom observado; toca a dos componentes y se anota en su motivo.
     "brecha_salario_cbt": ("conceptual", "rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123)"),
     "informalidad": ("conceptual", "rebase base-100 a 4T-2023, invertido; ancla en la fecha fija (ADR-0123)"),
     "pobreza_nowcast": ("conceptual", "rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha"),
     "ipc_alimentos": ("conceptual", "encarecimiento relativo rebaseado a 4T-2023 (ADR-0033); ancla en fecha fija"),
-    "peso_tarifas": ("conceptual", "nivel de regulados vs salario rebaseado a 4T-2023; ancla en fecha fija"),
+    "peso_tarifas": ("externa", "canasta IIEP/RIPTE: agua+energía contra 10-15% (Banco Mundial) y transporte contra 5% (ONU-Hábitat), evaluados por separado sin compensación (ADR-0232)"),
     "alquiler_real": ("conceptual", "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"),
     "mora_familias": ("conceptual", "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"),
     "mortalidad_pymes": ("conceptual", "nivel del IPI desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"),

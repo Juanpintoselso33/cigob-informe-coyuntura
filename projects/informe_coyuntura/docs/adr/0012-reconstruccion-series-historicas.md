@@ -6,6 +6,7 @@ fecha: 2026-06-30
 cinturon: 'politica'
 archivos: ['scripts/descargar_series.py', 'scripts/politica.py', 'scripts/publicar.py', 'docs/backfill-series.md']
 relacionado: ['0054', '0055', '0190', '0218']
+modificado_por: ['0232']
 ambito: '`scripts/descargar_series.py` · `scripts/politica.py` · `scripts/publicar.py` · `docs/backfill-series.md`'
 ---
 
@@ -37,8 +38,10 @@ punto de la serie reconstruida debe coincidir con el valor live** (verificado un
 - **Votómetro** (`votometro_ventaja_lla`, y `clima_electoral` por alias): la brecha
   ponderada LLA−PJ recalculada a fin de cada mes desde `encuestasRaw` (todos los sondeos
   desde dic-2023), con la misma ponderación recencia×calidad. 31 puntos.
-- **Vida** (`ipc_alimentos`, `peso_tarifas`, `mortalidad_pymes`): variación m/m % de la
-  serie índice INDEC (`fetch_indec_var_mensual` = `(idxₜ/idxₜ₋₁−1)×100`). 47 puntos c/u.
+- **Vida** (`ipc_alimentos`, `peso_tarifas`, `mortalidad_pymes`): originalmente,
+  variación m/m de series INDEC. Para `peso_tarifas` esta decisión fue modificada
+  por ADR-0232: hoy la serie es la canasta IIEP/RIPTE y no conserva los 47 puntos
+  de IPC Regulados bajo el nombre nuevo.
 - **InfoLeg** (`desregulacion_normativa`, `reestructuracion_organismos`): conteo acumulado
   de normas ("deroga"/"disolucion") reconsultado a fin de cada mes. 31 / 24 puntos.
 - **`iaf_transferencias`**: variación real i.a. anual (RON Hacienda) deflactada por IPC

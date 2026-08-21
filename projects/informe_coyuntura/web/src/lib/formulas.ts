@@ -170,7 +170,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Padrones oficiales de la SSS: cuántos usuarios ya derivan sus aportes directo (canal creado por el DNU 70/2023), sin triangular por una obra social.",
   },
 
-  // ── Impacto social (ITCIS-B100: índices 100 = promedio 4T-2023) ──────────
+  // ── Impacto social (ITCIS: 17 bases temporales + tarifas por asequibilidad) ─
   brecha_salario_cbt: {
     latex: String.raw`\frac{\text{salario registrado promedio (RIPTE)}}{\text{canasta b\'asica total del hogar}}`,
     leyenda: "Cuántas canastas de pobreza compra un sueldo. Al ITCIS entra rebaseado: 100 = arranque del mandato (4T-2023).",
@@ -180,8 +180,8 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Encarecimiento relativo de la comida: si los alimentos suben más que el resto de los precios, la canasta de los hogares de menores ingresos se castiga aunque la inflación general baje. Más de 100 = la comida sube menos que el promedio (alivio); menos de 100 = la comida encarece por encima del resto. Independiente del salario — el poder de compra ya lo mide la brecha salario/canasta, en Ingresos. (La card muestra la variación mensual del rubro.)",
   },
   peso_tarifas: {
-    latex: String.raw`100\cdot\frac{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{hoy}}}{\left(\text{salario}\,/\,\text{tarifas}\right)_{\text{4T-23}}}`,
-    leyenda: "Cuántas facturas de servicios regulados paga el sueldo, contra el arranque del mandato. Debajo de 100 = las tarifas pesan más en el bolsillo que en 2023 (fin de subsidios).",
+    latex: String.raw`T=\max\left\{\operatorname{clip}_{0}^{10}\!\left[2(E-10)\right],\operatorname{clip}_{0}^{10}\!\left[2(P-5)\right]\right\},\quad I=125-5T`,
+    leyenda: "E es agua+energía y P es transporte, cada uno como % del RIPTE. Agua+energía: 10% = tensión 0, 12,5% = 5 y 15% = 10. Transporte: 5% = tensión 0, 7,5% = 5 y 10% = 10. Se usa el peor de los dos grupos para impedir compensaciones; la card muestra además el total.",
   },
   indice_lider: {
     latex: String.raw`100\cdot\frac{\text{Índice Líder}_{\text{hoy}}}{\text{Índice Líder}_{\text{4T-23}}}`,

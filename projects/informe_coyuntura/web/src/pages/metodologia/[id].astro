@@ -202,14 +202,14 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
           <span class="cg-detalle-chip">Hoy <strong>{pres.texto}{pres.unidad ? ` ${pres.unidad}` : ""}</strong> ({periodoVigente})</span>
         )}
         {esIndicador && puntajeHoy !== null && indice && (
-          <span class="cg-detalle-chip">{indice.base100 ? "Componente" : `Puntaje en el ${indice.sigla}`} <strong>{coma(puntajeHoy)}{indice.base100 ? "" : "/100"}</strong>{indice.base100 ? " · 100 = 4T-2023" : ""}</span>
+          <span class="cg-detalle-chip">{indice.base100 ? "Componente" : `Puntaje en el ${indice.sigla}`} <strong>{coma(puntajeHoy)}{indice.base100 ? "" : "/100"}</strong>{indice.base100 ? (f.id === "peso_tarifas" ? " · 100 = tensión 5" : " · 100 = 4T-2023") : ""}</span>
         )}
         {esIndicador && integraIndice && pesoEfectivo !== null && pesoEfectivo > 0 && indice && (
           <span class="cg-detalle-chip">Peso efectivo <strong>{pct(pesoEfectivo)}</strong> del {indice.sigla}</span>
         )}
         {esIndicador && ind && <span class="cg-detalle-chip"><strong>{badgeEstado(ind)}</strong></span>}
         {!esIndicador && it && (
-          <span class="cg-detalle-chip">Hoy <strong>{coma(it.valor)}{fx.base100 ? "" : "/100"}</strong>{it.banda_legible ? ` · ${it.banda_legible}` : ""}{fx.base100 ? " · base 100 = 4T-2023" : ""}</span>
+          <span class="cg-detalle-chip">Hoy <strong>{coma(it.valor)}{fx.base100 ? "" : "/100"}</strong>{it.banda_legible ? ` · ${it.banda_legible}` : ""}{fx.base100 ? " · escala de referencia 100" : ""}</span>
         )}
         {!esIndicador && tension !== null && (
           <span class="cg-detalle-chip">Tensión <strong>{coma(tension)}/10</strong></span>
@@ -335,7 +335,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
                     : `El indicador representa ${pct(pesoEfectivo)} efectivo del ${indice.sigla}; los pesos nominales se ajustan cuando faltan datos.`}
                   {aporteIndice !== null && puntajeHoy !== null && (
                     <Fragment>{" "}{indice.base100
-                      ? `Nivel aplicado ${coma(puntajeHoy)} (100 = 4T-2023) × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`
+                      ? `Nivel aplicado ${coma(puntajeHoy)} (${f.id === "peso_tarifas" ? "100 = tensión 5" : "100 = 4T-2023"}) × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`
                       : `Puntaje aplicado ${coma(puntajeHoy)}/100 × ${pct(pesoEfectivo)} ≈ ${coma(aporteIndice, 2)} puntos del ${indice.sigla}.`}</Fragment>
                   )}
                 </div>

@@ -115,9 +115,11 @@ con n = 30, el \|r\| crítico al 5% es 0,361.
 | Resultado financiero del SPN, 12m real | +0,816 | +0,268 | **+0,062** | −0,203 |
 | **Merval en dólares** (ancla anterior) | +0,751 | +0,066 | +0,132 | +0,197 |
 
-**El mejor en números está descalificado.** El precio relativo de los regulados
-es el único que cruza significancia al 5%, y su serie de origen —el IPC
-Regulados— es el numerador de `peso_tarifas`, **componente del ITCIS**. Además
+**El mejor en números estaba descalificado.** El precio relativo de los regulados
+era el único que cruzaba significancia al 5%, y su serie de origen —el IPC
+Regulados— era el numerador de `peso_tarifas`, **componente del ITCIS**. ADR-0232
+reemplazó luego ese componente por la canasta IIEP; este párrafo conserva el
+universo evaluado en esta decisión, no describe la fuente tarifaria vigente. Además
 su correlación es el episodio tarifario de 2024: el precio relativo salta de 100
 a 140,5 entre dic-2023 y dic-2024, se ameseta, y de ene-2025 en adelante el r se
 apaga y cambia de signo.

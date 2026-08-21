@@ -244,9 +244,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Nivel (%)",
   },
   peso_tarifas: {
-    que: "Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITCIS puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.",
-    aporta: "Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.",
-    frecuencia: "Mensual", tipo: "Variación (card) · nivel vs salarios (índice)",
+    que: "Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del AMBA.",
+    aporta: "Mide directamente la asequibilidad de los servicios públicos y puntúa con 45% de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.",
+    frecuencia: "Mensual", tipo: "Canasta de servicios / salario · ancla internacional",
   },
   pobreza_nowcast: {
     que: "El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del INDEC, que se publica dos veces al año: es una proyección que se actualiza todos los meses.",
@@ -467,7 +467,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   social_orden: "La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud.",
   // ITCIS
   ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.",
-  precios: "Lo que más duele en la compra de todos los días: alimentos, tarifas y alquiler. Los dos primeros se miden contra los salarios, no contra la inflación general; el alquiler, contra el resto de los precios — un gasto fijo que ningún otro componente del cinturón captura.",
+  precios: "Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.",
   vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. Es la única señal de la dimensión desde que el stock de deuda salió del índice — el nivel de deuda no distingue acceso de fragilidad, la mora sí.",
   empleo: "El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.",
   percepcion: "El ánimo con que se vive el momento, medido de dos maneras: preguntando (el Índice de Confianza del Consumidor de la UTDT) y observando qué busca la gente en internet.",

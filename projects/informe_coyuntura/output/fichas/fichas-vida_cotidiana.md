@@ -14,9 +14,9 @@ Este documento tiene una ficha por indicador — son 18 en total, y cada una arr
 
 Todos los colores de este documento —el del índice, el de cada dimensión y el de cada indicador— salen de una sola escala: la **tensión de 0 a 10** que publica el informe. Se parte en cuatro tramos y esos tramos son los mismos para todo.
 
-El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el promedio del 4º trimestre de 2023. Por encima de 100 hay mejora acumulada; por debajo, deterioro. La tensión sale de 5 − (índice − 100) × 0,2.
+El ITVC no es un puntaje de 0 a 100: usa una escala continua donde 100 equivale a tensión 5. En 17 componentes, 100 es el promedio del 4º trimestre de 2023; la canasta de servicios públicos es la excepción: 100 surge de referencias internacionales de asequibilidad. La tensión sale de 5 − (índice − 100) × 0,2 en ambos casos.
 
-| Tensión | Índice del ITCIS y de sus dimensiones (base 100 = 4º trim. 2023) | Color |
+| Tensión | Índice del ITCIS y de sus dimensiones (100 = tensión 5) | Color |
 |---|---|---|
 | hasta 4 | 105 o más | VERDE |
 | más de 4 y hasta 6 | de 95 a 105 | AMARILLO |
@@ -35,14 +35,14 @@ El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el pro
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 89,3** | **NARANJA** | Deterioro moderado vs 4T-2023 | 18 indicadores: 5 en verde · 3 en amarillo · 6 en naranja · 4 en rojo |
+| **ITCIS: 93,8** | **NARANJA** | Deterioro moderado frente a las referencias | 18 indicadores: 6 en verde · 3 en amarillo · 6 en naranja · 3 en rojo |
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
 | Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,4 | VERDE | 28,1 % |
-| Presión de precios | Lo que más duele en la compra de todos los días: alimentos, tarifas y alquiler. | 83,2 | ROJO | 25,0 % |
+| Presión de precios | Tres gastos sensibles. | 101,3 | AMARILLO | 25,0 % |
 | Prospectivas de empleo | El trabajo por sus dos caras: cuánto hay y de qué calidad es. | 92,5 | NARANJA | 24,2 % |
 | Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. | 17,2 | ROJO | 10,0 % |
 | Confianza y percepción | El ánimo con que se vive el momento, medido de dos maneras. | 100,1 | AMARILLO | 8,2 % |
@@ -68,7 +68,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 83,2 índice (2004 = 100, desestacionalizado) | NARANJA | 5,6 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,98 % m/m | VERDE | 8,8 % |
-| Peso de tarifas (regulados) | Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. | 2,13 % m/m regulados | ROJO | 11,2 % |
+| Canasta de servicios públicos / salario | Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar… | 14,5 % del salario RIPTE | VERDE | 11,2 % |
 | Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,47 % m/m alquileres | ROJO | 5,0 % |
 | **DIMENSIÓN: Prospectivas de empleo** | | | | |
 | Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 8,3 % |
@@ -128,7 +128,7 @@ Mide el poder adquisitivo real del ingreso, lo que la gente siente en el bolsill
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -207,7 +207,7 @@ Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa 
 
 Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.
 
-**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos, tarifas y alquiler. Los dos primeros se miden contra los salarios, no contra la inflación general; el alquiler, contra el resto de los precios — un gasto fijo que ningún otro componente del cinturón captura.
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -216,7 +216,7 @@ Es la inflación más sensible socialmente: pega directo en la mesa de cada hoga
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -270,82 +270,87 @@ Ponderación vigente en el ITCIS: 8,8 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Peso de tarifas (regulados)
+# Canasta de servicios públicos / salario
 
-Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITCIS puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.
+Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del AMBA.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,13 % m/m regulados** (2026-07) | **ROJO** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 14,5 % del salario RIPTE** (2026-08) | **VERDE** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | peso_tarifas | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m regulados |
-| **SERIE DISPONIBLE** | 2022-09 → 2026-07 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC sale a mediados del mes siguiente; el componente espera además el salario formal (~2 meses). |
-| **PRODUCTOR DEL DATO** | INDEC (precios regulados) + Secretaría de Trabajo (RIPTE) | **OPERACIÓN ESTADÍSTICA** | IPC — precios regulados, comparados contra el salario formal |
-| **MODO DE ACCESO** | Automático: API pública de series y planilla del RIPTE. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % del salario RIPTE |
+| **SERIE DISPONIBLE** | 2025-12 → 2026-08 (9 puntos) | **REZAGO DE PUBLICACIÓN** | El IIEP publica durante el mismo mes una estimación de la canasta y del RIPTE del período. |
+| **PRODUCTOR DEL DATO** | IIEP UBA-CONICET, Observatorio de Tarifas y Subsidios | **OPERACIÓN ESTADÍSTICA** | Canasta de Servicios Públicos del AMBA sobre salario RIPTE |
+| **MODO DE ACCESO** | Automático: páginas mensuales del reporte de Tarifas y Subsidios. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITCIS puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.
+Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del AMBA.
 
-Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.
+Mide directamente la asequibilidad de los servicios públicos y puntúa con 45% de la dimensión de precios. Agua+energía y transporte se comparan por separado con referencias internacionales de 10% y 5% del ingreso; entra la mayor tensión para que un rubro caro no quede oculto por otro barato.
 
-**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos, tarifas y alquiler. Los dos primeros se miden contra los salarios, no contra la inflación general; el alquiler, contra el resto de los precios — un gasto fijo que ningún otro componente del cinturón captura.
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
-- La card muestra la variación mensual de los regulados.
-- El componente mide el peso de los servicios regulados en el salario: nivel de regulados contra nivel del RIPTE, rebaseado a 100 = 4º trimestre de 2023. Por debajo de 100, las tarifas subieron más que los salarios desde el arranque.
+- El IIEP suma las facturas mensuales de electricidad, gas, agua y transporte para un hogar representativo del AMBA.
+- La card publica esa canasta como porcentaje del salario RIPTE estimado por el propio reporte.
+- El total se separa usando la participación del transporte que publica el IIEP. Agua+energía se compara con 10% del ingreso y transporte con 5%; cada exceso de 2,5 puntos agrega 5 de tensión. Se toma el peor grupo y el índice que entra al ITCIS es 125 − 5 × tensión.
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este componente no usa como vara las tarifas subsidiadas de 2023. Agua y energía se comparan con 10% del ingreso, transporte con 5%, y se conserva la mayor tensión. Ese resultado se expresa en la escala común del ITCIS, donde 100 equivale a tensión 5; no es un índice temporal base 100.
 
 **Valores que definen cada color**
 
-| Rango (índice base 100 = 4º trim. 2023) | Color |
+| Rango (índice de asequibilidad; 100 = tensión 5) | Color |
 |---|---|
 | 105 o más | VERDE |
 | de 95 a 105 | AMARILLO |
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **72,4**.
+Este componente está hoy en **112,6**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (2,13 % m/m regulados) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (14,5 % del salario RIPTE) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 2,13 % m/m regulados (2026-07).
+Dato vigente: 14,5 % del salario RIPTE (2026-08).
 
-El componente está en 72,4 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
+Agua y energía representan 8,3% del salario; transporte, 6,2%. La mayor de las dos señales fija la tensión equivalente en 2,5/10. El índice de asequibilidad resultante es 112,6 — 105 o más —, que corresponde al tramo VERDE. 100 equivale a tensión 5; no al nivel tarifario del 4º trimestre de 2023.
 
-**Color vigente: ROJO**
+**Color vigente: VERDE**
 
 Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
-- La tensión equivalente del componente excede la escala del cinturón y se corta en el máximo: el deterioro es mayor que lo que la escala muestra.
-- Depende del RIPTE, que cubre solo asalariados formales.
+- Representa un hogar tipo del AMBA y no al país entero; consumo, segmentación y cuadros tarifarios varían por hogar y jurisdicción.
+- El denominador es RIPTE: representa empleo formal estable, no el ingreso mediano de todos los hogares.
+- Las referencias internacionales usan ingreso o presupuesto del hogar; el RIPTE es un salario formal individual. La comparación es una escala de asequibilidad del ingreso formal representativo, no una estimación de pobreza energética de todos los hogares.
+- La serie exacta reconstruida comienza en diciembre de 2025, cuando los informes PDF pasan a expresar en texto tanto la carga sobre el salario como la participación del transporte. Los meses anteriores no se estiman leyendo puntos de un gráfico.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización.
+- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; si no hay dato utilizable, la dimensión renormaliza entre alimentos y alquiler.
 
-- **Política de revisiones:** Re-descarga completa por actualización; base dinámica de la propia serie.
+- **Política de revisiones:** Re-descarga completa de las páginas mensuales; las anclas de 10% para agua+energía y 5% para transporte son fijas y no se recalibran con el resultado argentino.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS base-100 como nivel de regulados contra el salario (antes puntuaba por variación mensual anclada).
+**2026-08-21** — IPC Regulados/RIPTE se reemplaza por la canasta efectiva IIEP/RIPTE. Conserva su peso; agua+energía y transporte pasan a anclas internacionales propias, sin usar como vara el 4T-2023 subsidiado.
+
+**2026-07-03** — Entra al ITCIS base-100 como nivel de regulados contra el salario (decisión superada por ADR-0232).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -379,7 +384,7 @@ Cuánto se encareció el alquiler de la vivienda por encima del resto de los pre
 
 La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.
 
-**Dimensión que integra — Presión de precios.** Lo que más duele en la compra de todos los días: alimentos, tarifas y alquiler. Los dos primeros se miden contra los salarios, no contra la inflación general; el alquiler, contra el resto de los precios — un gasto fijo que ningún otro componente del cinturón captura.
+**Dimensión que integra — Presión de precios.** Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.
 
 ## Método de cómputo
 
@@ -389,7 +394,7 @@ La desregulación del mercado de alquileres fue uno de los cambios de política 
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -476,7 +481,7 @@ Distingue dos cosas que se parecen y no son lo mismo: si el consumo de vacuna ca
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -566,7 +571,7 @@ Mide la precariedad laboral y la exclusión de la red de protección social. En 
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -655,7 +660,7 @@ Es la contracara del cierre de empresas. Cuando caen los empleadores, dice si es
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -743,7 +748,7 @@ Es el cierre neto de empresas medido de forma directa, no aproximado por la prod
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -832,7 +837,7 @@ Termómetro de la obra pública y privada, sensible al ciclo económico.
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -915,7 +920,7 @@ Señala empleo insuficiente: gente ocupada a la que no le alcanza.
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1001,7 +1006,7 @@ Es la única medida directa de empleo del cinturón. Los otros componentes de la
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1088,7 +1093,7 @@ Mide una de las principales preocupaciones cotidianas midiendo lo que la gente e
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1175,7 +1180,7 @@ Captura el humor económico de la gente, que anticipa consumo y voto.
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1264,7 +1269,7 @@ Es la única medición de pobreza con frecuencia mensual que existe en el país,
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1355,7 +1360,7 @@ Mide la preocupación por la conducta (qué busca la gente cuando algo le duele)
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1452,7 +1457,7 @@ Mide acceso total a un vehículo sin confundir una suba de motos con una mejora 
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1549,7 +1554,7 @@ Es el único componente del cinturón que mide volumen efectivamente comprado. T
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
@@ -1637,7 +1642,7 @@ Es la señal directa de estrés financiero de los hogares: la deuda puede crecer
 
 ## Semáforo — valores que determinan el color
 
-Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+Este cinturón no usa tablas de bandas por indicador: el componente entra como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
 
 **Valores que definen cada color**
 
