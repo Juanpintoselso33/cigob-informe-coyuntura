@@ -491,6 +491,83 @@ def _marcar_dimensiones_criticas(bloque, umbral):
         dim["critica"] = dim["puntaje"] < umbral
 
 
+# Mínimo de meses para publicar la serie de una dimensión. Con menos, la
+# "evolución" es un segmento y el lector le lee una pendiente que no está
+# medida. Es el mismo criterio de los 12 puntos que ya pide la validación
+# externa antes de emitir una correlación.
+MIN_MESES_SERIE_DIMENSION = 12
+
+
+def _series_dimensiones(bloque, sigla, base100=False):
+    """Anexa a cada dimensión del índice su serie mensual (ADR-0231).
+
+    El índice se publica con 31-33 meses y cada componente con los suyos, pero
+    la capa del medio —la dimensión— existía sólo como el valor del mes. Y ahí
+    está la lectura: el ITCIS cae 6 puntos entre dic-2023 y ago-2026 escondiendo
+    que ingresos sube 24 y vulnerabilidad financiera se derrumba 82. Un índice
+    plano puede ser calma o dos fuerzas opuestas del mismo tamaño, y hasta acá
+    no había forma de distinguirlas.
+
+    La serie viene de `validacion_externa.py`, del MISMO resultado mensual del
+    motor con el que se arma la serie del índice — no hay una segunda
+    agregación. Y por eso hereda su procedencia y hay que decirla: se
+    reconstruye desde las series de componentes, sin overrides del analista, y
+    termina en el último mes que pasó el piso de cobertura, que en los tres
+    índices por bandas es anterior al mes de la card.
+    """
+    dims = (bloque or {}).get("dimensiones") or {}
+    if not dims:
+        return
+    por_dim = ((_cargar_validacion().get("series_dimensiones") or {}).get(sigla)) or {}
+    publicadas, meses = 0, set()
+    for dkey, dim in dims.items():
+        serie = (por_dim.get(dkey) or {}).get("serie") or {}
+        if len(serie) < MIN_MESES_SERIE_DIMENSION:
+            continue
+        dim["serie"] = [[ym, serie[ym]] for ym in sorted(serie)]
+        publicadas += 1
+        meses |= set(serie)
+    if not publicadas:
+        return
+
+    escala = ("base 100 = promedio del 4T-2023" if base100
+              else "puntaje 0-100 de las bandas del índice")
+    faltan = [d["nombre"] for k, d in dims.items() if "serie" not in d]
+    partes = [
+        f"El índice es el promedio ponderado de estas dimensiones, y su valor "
+        f"agregado puede quedarse quieto porque nada se mueve o porque dos cosas "
+        f"grandes se mueven en direcciones opuestas. Estas series separan los dos "
+        f"casos: cada una es la misma dimensión que se lee arriba, mes a mes, en "
+        f"la misma escala ({escala}).",
+        "Se calculan con el motor del índice y no con una cuenta aparte: el "
+        "promedio ponderado de los componentes de la dimensión, renormalizando "
+        "por el peso que efectivamente tiene dato ese mes, es el mismo paso que "
+        "el índice ya da para llegar a su propio número.",
+        "Vienen de la reconstrucción histórica —las series de cada componente "
+        "pasadas por el motor, sin ajustes del analista—, así que llegan hasta el "
+        "último mes con cobertura suficiente y ese mes puede ser anterior al de "
+        "la card. Un mes en el que ninguna componente de la dimensión tiene dato "
+        "no deja punto: el hueco se muestra como hueco, no se arrastra ni se "
+        "interpola.",
+    ]
+    if faltan:
+        partes.append(
+            f"Sin serie publicable: {', '.join(sorted(faltan)).lower()} — sus "
+            f"componentes no tienen historia mensual reconstruible, así que la "
+            f"dimensión puntúa en la card y no puede dibujarse hacia atrás.")
+
+    bloque["dimensiones_serie"] = {
+        "titulo": "Qué dimensión movió el índice",
+        "sub": ("La capa del medio: entre el índice y sus indicadores están las "
+                "dimensiones, y son ellas las que explican el movimiento."),
+        "escala": escala,
+        "base100": bool(base100),
+        "desde": min(meses), "hasta": max(meses), "n": len(meses),
+        "n_dimensiones": publicadas,
+        "nota": " ".join(partes),
+    }
+
+
 def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
     """Cinturones con índice paramétrico (macro → ITCM, gestión → ITCG,
     política → ITCP): el puntaje lo computa el colector; acá solo se traduce
@@ -516,6 +593,7 @@ def _scoring_indice(c, clave, mod, contexto_txt, input_txt_fn):
         except Exception as e:
             print(f"[WARN] robustez {sigla}: {e}")
         _marcar_dimensiones_criticas(bloque, UMBRAL_CRITICO_BANDAS)
+        _series_dimensiones(bloque, clave)
     for ikey, ind in c["indicadores"].items():
         aporte = formula = nota = lectura = None
         p = ind.get(f"puntaje_{clave}")
@@ -1747,6 +1825,7 @@ def _scoring_vida_itvc(c, series):
         except Exception as e:
             print(f"[WARN] robustez ITVC: {e}")
         _marcar_dimensiones_criticas(resultado, UMBRAL_CRITICO_BASE100)
+        _series_dimensiones(resultado, "itvc", base100=True)
         _validacion_itvc(resultado, series)
 
     ajustados = {a["indicador"]: a for a in (resultado or {}).get("ajustes_aplicados", [])}

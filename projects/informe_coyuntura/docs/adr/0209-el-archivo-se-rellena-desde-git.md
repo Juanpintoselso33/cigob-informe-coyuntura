@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-18
 cinturon: 'transversal'
 archivos: ['scripts/bigquery_backfill.py', 'scripts/bigquery_export.py']
-relacionado: ['0180', '0205', '0207', '0221']
+relacionado: ['0180', '0205', '0207', '0221', '0231']
 ambito: 'Archivo histórico en BigQuery · corridas anteriores al 6-ago-2026 · columnas `origen` y `valor_txt`'
 origen: 'El espejo en BigQuery arrancó el 6-ago-2026, pero el informe publica desde el 23-may'
 ---

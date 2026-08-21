@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-04
 cinturon: 'vida'
 indicadores: [ipc_alimentos]
-relacionado: ['0067', '0219', '0222', '0224']
+relacionado: ['0067', '0219', '0222', '0224', '0231']
 cerrado_por: ['0214']
 ambito: 'ITVC-B100: métrica de `ipc_alimentos` + tratamiento de outliers de componentes'
 ---

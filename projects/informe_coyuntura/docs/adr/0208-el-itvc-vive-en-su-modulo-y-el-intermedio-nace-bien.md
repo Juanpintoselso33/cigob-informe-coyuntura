@@ -6,7 +6,7 @@ fecha: 2026-08-15
 cinturon: 'vida'
 archivos: ['scripts/itvc.py', 'scripts/series_io.py', 'scripts/generar_informe.py', 'scripts/publicar.py', 'scripts/bigquery_export.py', 'tests/test_generar_informe.py', 'tests/test_itvc_empleo_registrado.py']
 supersede_parcialmente: ['0206', '0207']
-relacionado: ['0060', '0205']
+relacionado: ['0060', '0205', '0231']
 ambito: 'Construcción del ITVC · qué script puede calcularlo y de dónde sale el barbarismo dominante'
 origen: 'ADR-0206 dejó el arreglo de fondo pendiente y ADR-0207 dejó la vista de BigQuery a merced de que alguien se acordara'
 ---
