@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-21T14:20:34.555886+00:00",
+  "generated_at": "2026-08-21T11:24:32.884090-03:00",
   "period": "2026-08",
   "score_global": 4.1,
   "ponderacion": {
@@ -1546,7 +1546,7 @@
           "leyes_count": 25,
           "ventana_dias": 365,
           "unidad": "DNUs por ley",
-          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
           "fecha_dato": "2026-08-21",
           "desactualizado": false,
           "obtenido_en": "2026-08-21T14:01:47",
@@ -1746,7 +1746,7 @@
           "periodo": "2025 vs 2024",
           "ipc_aplicado_pct": 41.9,
           "unidad": "% interanual real",
-          "fuente": "https://www.argentina.gob.ar/sites/default/files/serie_ron_2003_2025.csv",
+          "fuente": "Sec. Hacienda — serie RON de recursos de origen nacional + IPC INDEC (deflactor)",
           "fecha_dato": "2025-12-31",
           "desactualizado": false,
           "obtenido_en": "2026-08-21T14:02:14",
@@ -5209,7 +5209,7 @@
         "cepo_mulc": {
           "valor": 5.74,
           "unidad": "% de brecha CCL/mayorista",
-          "fuente": "https://dolarapi.com/v1/dolares",
+          "fuente": "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
           "fecha_dato": "2026-08-21",
           "desactualizado": false,
           "obtenido_en": "2026-08-21T14:05:18",
@@ -5448,7 +5448,7 @@
         "reestructuracion_organismos": {
           "valor": 24.4,
           "unidad": "% de avance (proxy InfoLeg, caso por caso)",
-          "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+          "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
           "fecha_dato": "2026-08-21",
           "desactualizado": false,
           "conteo_normas": 11,

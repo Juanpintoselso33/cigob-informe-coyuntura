@@ -152,7 +152,7 @@
     "cepo_mulc": {
       "valor": 5.74,
       "unidad": "% de brecha CCL/mayorista",
-      "fuente": "https://dolarapi.com/v1/dolares",
+      "fuente": "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
       "fecha_dato": "2026-08-21",
       "desactualizado": false,
       "obtenido_en": "2026-08-21T14:05:18",
@@ -248,7 +248,7 @@
     "reestructuracion_organismos": {
       "valor": 24.4,
       "unidad": "% de avance (proxy InfoLeg, caso por caso)",
-      "fuente": "https://servicios.infoleg.gob.ar/infolegInternet/",
+      "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
       "fecha_dato": "2026-08-21",
       "desactualizado": false,
       "conteo_normas": 11,
