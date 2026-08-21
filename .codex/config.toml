@@ -1,0 +1,48 @@
+# MCP exclusivos de CIGOB. Codex carga este archivo sólo en un checkout trusted.
+
+[mcp_servers.analytics-mcp]
+command = "/opt/homebrew/bin/uv"
+args = ["tool", "run", "--from", "analytics-mcp", "analytics-mcp"]
+
+[mcp_servers.analytics-mcp.env]
+GOOGLE_APPLICATION_CREDENTIALS = "/Users/juan/.config/cigob/ga4-informe-sa.json"
+GOOGLE_PROJECT_ID = "cigob-analytics"
+
+[mcp_servers.aws-api]
+command = "/opt/homebrew/bin/uv"
+args = ["tool", "run", "awslabs.aws-api-mcp-server@latest"]
+
+[mcp_servers.aws-api.env]
+AWS_PROFILE = "unify-old"
+AWS_REGION = "us-east-1"
+FASTMCP_LOG_LEVEL = "ERROR"
+
+[mcp_servers.aws-docs]
+command = "/opt/homebrew/bin/uv"
+args = ["tool", "run", "awslabs.aws-documentation-mcp-server@latest"]
+
+[mcp_servers.aws-docs.env]
+FASTMCP_LOG_LEVEL = "ERROR"
+
+[mcp_servers.aws-iac]
+command = "/opt/homebrew/bin/uv"
+args = ["tool", "run", "awslabs.aws-iac-mcp-server@latest"]
+
+[mcp_servers.aws-iac.env]
+AWS_PROFILE = "unify-old"
+FASTMCP_LOG_LEVEL = "ERROR"
+
+[mcp_servers.cigob-slack]
+command = "sh"
+args = [
+  "-c",
+  "set -a; . /Users/juan/.config/slack-mcp-cigob/.env; set +a; exec /Users/juan/.local/share/mise/shims/npx -y slack-mcp-server@latest --transport stdio",
+]
+
+[mcp_servers.search-console]
+command = "/opt/homebrew/bin/uv"
+args = ["tool", "run", "mcp-search-console"]
+
+[mcp_servers.search-console.env]
+GSC_CREDENTIALS_PATH = "/Users/juan/.config/cigob/ga4-informe-sa.json"
+GSC_SKIP_OAUTH = "true"

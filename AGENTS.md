@@ -1,17 +1,17 @@
 # Codex Context For This Repo
 
-Read `CLAUDE.md` first — it is the canonical operating guide, and it IS
-versioned in the repo (since 2026-07-31). This file is versioned too (since
-2026-08-05), and it is the Codex-specific bridge to that same context, kept
-lightweight: route work, then read the specific source files needed for the
-task. `CLAUDE.md` stays the source of truth: anything that has to survive a
-fresh clone goes there, not here.
+This file is the lightweight Codex entrypoint. It contains enough context to
+route ordinary work without loading the larger `CLAUDE.md` on every turn.
+`CLAUDE.md` remains the cross-agent detailed guide: read the relevant section
+only when this file, the nearest README, or a selected workflow points to it.
+Durable project facts must remain consistent across both files.
 
 ## Reuse Claude Context
 
-- Claude/BMAD skills live under `.claude/skills/`.
-- When a user invokes BMAD, a named workflow, or a task that clearly matches a
-  skill, read the matching `.claude/skills/<skill>/SKILL.md` before acting.
+- BMAD workflow sources live under `.claude/skills/`; Codex discovers the single
+  router `.agents/skills/bmad/` instead of indexing 44 physical copies.
+- When a user invokes BMAD or names a workflow, use the `bmad` router and read
+  exactly `.claude/skills/<workflow>/SKILL.md` before acting.
 - If that skill references relative `steps/`, `templates/`, `assets/`, or
   `references/`, resolve them relative to the skill folder and read only the
   files required for the current task.

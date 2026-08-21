@@ -1,0 +1,4 @@
+interface:
+  display_name: BMAD Router
+  short_description: Carga bajo demanda el workflow BMAD correcto del repositorio
+  default_prompt: Guiame con el workflow BMAD adecuado para esta tarea.
