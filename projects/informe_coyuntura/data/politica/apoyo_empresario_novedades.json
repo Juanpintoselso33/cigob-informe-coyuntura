@@ -1,13 +1,13 @@
 {
  "_meta": {
-  "comunicados_vistos": 46,
+  "comunicados_vistos": 48,
   "descripcion": "Comunicados nuevos de UIA y AEA pendientes de codificar (ADR-0149). Detección automática; la postura y el destinatario los asigna una persona con las reglas de apoyo_empresario_reglas.json. NO puntúa: el indicador no se publica hasta que haya segunda pasada con kappa ≥ 0,70. Sacar de 'pendientes' lo ya codificado.",
   "fuentes": {
    "AEA": "https://www.aeanet.net/prensa.html",
    "UIA": "https://www.uia.org.ar/uia/novedades"
   },
-  "nuevos_en_la_corrida": 0,
-  "ultima_corrida": "2026-08-18"
+  "nuevos_en_la_corrida": 2,
+  "ultima_corrida": "2026-08-21"
  },
  "pendientes": {
   "UIA|con-un-nuevo-esquema-federal-uia-joven-lanzo-la-ed": {
@@ -20,6 +20,17 @@
    "texto": "Industria Inspira es un concurso federal que invita a estudiantes de escuelas técnicas de todo el país a desarrollar proyectos industriales, innovadores y sustentables para resolver problemáticas concretas de sus comunidades, fortaleciendo el vínculo entre educación e industria.      14 de mayo de 2026.  El Departamento Joven de la Unión Industrial Argentina (UIA) lanzó la edición 2026 de Industria Inspira, la iniciativa creada en 2021 que busca vincular el mundo industrial con las escuelas técnicas de todo el país. Por primera vez, el lanzamiento tuvo un formato simultáneo y federal, con actividades presenciales en 20 provincias realizadas en fábricas locales, donde estudiantes participaron de la transmisión del evento y recorrieron plantas industriales de cada región.  La sede central del lanzamiento fue el Centro X de la Unión Industrial Argentina (UIA), espacio desarrollado junto a  Accenture  para experimentar tecnologías innovadoras aplicadas a procesos productivos reales. Participaron del encuentro el presidente de la UIA, Martín Rappallini, autoridades educativas provinciales y alumnos de la Escuela Técnica N.º 12 Libertador Gral. José de San Martín, de la Ciudad de Buenos Aires.  Durante la jornada se realizó la apertura oficial de las inscripciones al Concurso Industria Inspira 2026, que invita a estudiantes de los últimos años de escuelas técnicas a desarrollar proyectos industriales, innovadores y sustentables para resolver problemáticas concretas de sus comunidades. Las inscripciones estarán abiertas hasta el 14 de agosto.  En la edición 2025, Industria Inspira alcanzó un récord de participación con 374 proyectos presentados por 198 escuelas técnicas de todo el país. Para este año, UIA Joven impulsó un nuevo esquema federal orientado a fortalecer el alcance territorial del programa, que promueve una mayor articulación con cámaras regionales y sectoriales. Estas tendrán un rol activo en la organización de sedes locales y el acompañamiento de las escuelas participantes.  El proceso de selección contará con tres instancias. En una primera etapa, referentes industriales y educativos de cada provincia seleccionarán los tres mejores proyectos locales, que avanzarán a la instancia nacional. Luego, un comité nacional elegirá cinco finalistas, y por último un jurado definirá los tres equipos ganadores.  Los proyectos seleccionados recibirán equipamiento tecnológico para sus escuelas, acceso a programas de educación continua desarrollados junto a la  Universidad Siglo 21  y kits de materiales para los estudiantes. Además, el equipo ganador del primer puesto viajará a Buenos Aires para recibir su reconocimiento durante la 32.ª Conferencia Industrial de la UIA.  En el marco del convenio firmado entre la UIA y la Universidad Siglo 21, la edición 2026 incorporará talleres virtuales para alumnos y docentes, orientados a fortalecer el desarrollo de los proyectos desde sus primeras etapas y promover experiencias de aprendizaje vinculadas a los desafíos reales de la industria.",
    "titulo": "Con un nuevo esquema federal, UIA Joven lanzó la edición 2026 de Industria Inspira",
    "url": "https://www.uia.org.ar/uia/novedades/con-un-nuevo-esquema-federal-uia-joven-lanzo-la-ed"
+  },
+  "UIA|curso-de-fortalecimiento-industrial-finalizo-la-ed": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-08-20",
+   "id": "curso-de-fortalecimiento-industrial-finalizo-la-ed",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "Los más de 850 asistentes de todo el país conformaron un perfil amplio de participantes que, además de ser federal, incluyó a: microempresas (12,08%), pequeñas empresas (22,87%), medianas tramo 1 (18,94%), medianas tramo 2 (6,93%), grandes empresas (10,65%) y profesionales independientes (28,52%). En términos de representación, el curso contó con sectores como: metalurgia, metalmecánica, autopartes, alimentos y bebidas, textil e indumentaria, químico, plástico, farmacéutico, construcción, logística y servicios industriales, además de consultores y profesionales independientes. Un 44,25% de las empresas que participaron son exportadoras.  Otro activo que enriqueció la cursada fue el perfil profesional de los cursantes: niveles de conducción (directores, gerentes, dueños, socios, responsables de área), áreas técnicas y operativas (supervisores, coordinadores y responsables de producción, mantenimiento, calidad y logística).  En línea con las prioridades de la agenda UIA, el curso reunió a participantes de todas las regiones del país. Representantes sectoriales de distintas provincias conformaron un espacio de intercambio y aprendizaje conjunto. A través de sus diversas iniciativas, la institución integra la perspectiva territorial para potenciar un rasgo distintivo del ecosistema industrial argentino.  Cada uno de los módulos contó con el acompañamiento de institutos y empresas como Accenture, Andreani, BNA, Bihotz Consulting \\u0026amp; Coaching, CEA (Cámara de Generadores y Cadena de Valor de Energías Renovables), CESSI, CFI (Consejo Federal de Inversiones), Fabiana Renault, Galicia, ITBA, Mercado Libre, Pacto Global Argentina, Rockwell Automation, Siemens, Universidad Austral Ingeniería, Universidad Nacional de San Martín (UNSAM), Universidad Torcuato Di Tella y Witwot.  Todos los módulos del Curso de Fortalecimiento Industrial y sus respectivas clases se encuentran alojadas en la biblioteca audiovisual de la UIA.",
+   "titulo": "Curso de Fortalecimiento Industrial: finalizó la edición 2026 con más de 850 participantes",
+   "url": "https://www.uia.org.ar/uia/novedades/curso-de-fortalecimiento-industrial-finalizo-la-ed"
   },
   "UIA|formacion-tecnica-y-empresas-inet-y-el-sector-prod": {
    "camara": "UIA",
@@ -119,6 +130,17 @@
    "texto": "20 de mayo de 2026.  La Unión Industrial Argentina (UIA) encabezó hoy la firma de un compromiso sectorial sin precedentes junto a 13 cámaras empresarias representativas de toda la cadena de valor de los envases, con el objetivo de promover la sanción de una Ley Nacional de Gestión Integral de Envases, una iniciativa construida a partir del diálogo técnico, la articulación público-privada y más de dos décadas de esfuerzo y debate.  La nueva Ley de Envases debería cuidar el ambiente y al mismo tiempo asegurar la productividad y la competitividad de las empresas, dentro de un modelo de economía circular.  El acuerdo reúne tanto a los sectores productores de envases como a quienes los utilizan en sus procesos productivos, incluyendo industrias alimenticias y a todos los actores vinculados al ecosistema de fabricación, utilización y gestión de envases. La amplitud de esta representación constituye un verdadero hito: la demostración de que es posible alcanzar consensos superiores entre sectores con miradas diversas, priorizando una solución equilibrada y sostenible para el futuro de la sociedad.  La discusión sobre una legislación nacional de envases comenzó en 2004 y atravesó más de 20 años de análisis, intercambio técnico y una trabajosa construcción de acuerdos. A lo largo de ese proceso se fueron consolidando hitos fundamentales que permitieron avanzar hacia puntos de consenso compartidos por el entramado productivo.  En 2022, a través de la Comisión de Envases del Departamento de Ambiente y Desarrollo Sustentable de la UIA, se profundizó el trabajo técnico para identificar aspectos centrales de una futura normativa. Posteriormente, durante 2024, se desarrolló una mesa público-privada convocada por la Subsecretaría de Industria, con participación activa de la UIA y sus cámaras asociadas, para elaborar una propuesta legislativa que reflejara los consensos alcanzados por el sector productivo.  Si bien el proyecto actualmente en análisis es una iniciativa impulsada por el Poder Ejecutivo, su contenido incorpora gran parte del trabajo técnico construido en ese ámbito de articulación público-privada. Hoy ese proyecto convive en el Congreso con otras iniciativas legislativas, razón por la cual las cámaras y la UIA decidieron dar un paso institucional adicional: formalizar un compromiso conjunto para promover ante legisladores, comisiones y autoridades ejecutivas una propuesta basada en consensos amplios y sostenibles.  El documento firmado expresa la unidad alcanzada alrededor de 14 puntos de consenso que aportan equilibrio, representatividad y legitimidad a una discusión estratégica para el desarrollo productivo y ambiental del país.  La iniciativa constituye además una señal de madurez institucional y responsabilidad sectorial. Demuestra que aun existiendo intereses diversos dentro del entramado empresario, es posible construir acuerdos amplios que permitan diseñar políticas públicas superadoras y soluciones que beneficien al conjunto.  Este compromiso es un punto de partida hacia una legislación moderna y eficiente, y es también la muestra concreta de que el diálogo colectivo y la conciencia ciudadana son las herramientas definitivas para transformar la gestión ambiental y productiva de la Argentina.  Las cámaras que firmaron el documento son las siguientes (por orden alfabético):",
    "titulo": "La UIA y 13 cámaras sectoriales firmaron un compromiso histórico para impulsar la Ley de Envases",
    "url": "https://www.uia.org.ar/uia/novedades/la-uia-y-13-camaras-sectoriales-firmaron-un-compro"
+  },
+  "UIA|presentamos-el-informe-proveedores-mineros-en-arge": {
+   "camara": "UIA",
+   "destinatario": null,
+   "fecha": "2026-08-18",
+   "id": "presentamos-el-informe-proveedores-mineros-en-arge",
+   "nota": "sin codificar — ver apoyo_empresario_reglas.json",
+   "postura": null,
+   "texto": "En el marco del encuentro organizado por los gobernadores de la Mesa del Litio, el Consejo Federal de Inversiones (CFI) y el Banco Interamericano de Desarrollo (BID), presentamos los resultados del estudio realizado junto con el BID y CAEM sobre las potencialidades de desarrollo de proveedores del sector minero en Argentina.  En un contexto de creciente demanda global, la expansión de proyectos mineros abre una oportunidad concreta para generar empleo, diversificar las economías provinciales, fortalecer capacidades productivas locales y capturar mayor valor en los territorios donde se desarrolla la actividad.  Entre los puntos más relevante del informe, destaca la oportunidad que existe en la Argentina y el desafío de lograr que los proveedores argentinos estén preparados para integrarse a la cadena de valor minera. Existe una plataforma productiva diversa sobre la cual construir ingeniería, metalmecánica, químicos, logística y otras capacidades ya presentes en el país. Sobre 91 rubros analizados, 73 cuentan con oferta nacional relevada, aunque todavía existen brechas importantes en capacidad, certificaciones, homologaciones, financiamiento y coordinación con la demanda.",
+   "titulo": "Presentamos el informe \"Proveedores Mineros en Argentina\"",
+   "url": "https://www.uia.org.ar/uia/novedades/presentamos-el-informe-proveedores-mineros-en-arge"
   }
  },
  "revisadas": {
@@ -435,6 +457,10 @@
    "fecha": "2026-05-14",
    "titulo": "Con un nuevo esquema federal, UIA Joven lanzó la edición 2026 de Industria Inspira"
   },
+  "UIA|curso-de-fortalecimiento-industrial-finalizo-la-ed": {
+   "fecha": "2026-08-20",
+   "titulo": "Curso de Fortalecimiento Industrial: finalizó la edición 2026 con más de 850 participantes"
+  },
   "UIA|el-mercosur-y-confindustria-avanzan-en-una-agenda": {
    "fecha": "2026-04-23",
    "origen": "migración de URL; ya codificado",
@@ -500,6 +526,10 @@
    "fecha": "2026-03-17",
    "origen": "migración de URL; ya codificado",
    "titulo": "Preocupación en la Junta Directiva de la UIA"
+  },
+  "UIA|presentamos-el-informe-proveedores-mineros-en-arge": {
+   "fecha": "2026-08-18",
+   "titulo": "Presentamos el informe \"Proveedores Mineros en Argentina\""
   }
  }
 }

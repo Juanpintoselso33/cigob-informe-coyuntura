@@ -88,73 +88,73 @@ fecha,indicador,valor,unidad,fuente
 2019-03-01,trabajo_independiente,16.79,% del empleo registrado,SIPA — autónomos y monotributo sobre el total de trabajo registrado
 2019-02-01,trabajo_independiente,16.9,% del empleo registrado,SIPA — autónomos y monotributo sobre el total de trabajo registrado
 2019-01-01,trabajo_independiente,16.82,% del empleo registrado,SIPA — autónomos y monotributo sobre el total de trabajo registrado
-2026-07-01,sentimiento_digital,26.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2026-06-01,sentimiento_digital,28.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2026-05-01,sentimiento_digital,35.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2026-04-01,sentimiento_digital,33.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2026-07-01,sentimiento_digital,26.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2026-06-01,sentimiento_digital,29.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2026-05-01,sentimiento_digital,34.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2026-04-01,sentimiento_digital,33.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2026-03-01,sentimiento_digital,33.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2026-02-01,sentimiento_digital,34.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2026-02-01,sentimiento_digital,33.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2026-01-01,sentimiento_digital,33.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-12-01,sentimiento_digital,30.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-11-01,sentimiento_digital,31.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-10-01,sentimiento_digital,30.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-09-01,sentimiento_digital,31.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-08-01,sentimiento_digital,32.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-07-01,sentimiento_digital,32.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-06-01,sentimiento_digital,32.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-05-01,sentimiento_digital,36.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-04-01,sentimiento_digital,34.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-12-01,sentimiento_digital,31.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-11-01,sentimiento_digital,31.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-10-01,sentimiento_digital,30.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-09-01,sentimiento_digital,30.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-08-01,sentimiento_digital,32.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-07-01,sentimiento_digital,32.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-06-01,sentimiento_digital,33.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-05-01,sentimiento_digital,36.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-04-01,sentimiento_digital,33.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2025-03-01,sentimiento_digital,31.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-02-01,sentimiento_digital,33.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2025-01-01,sentimiento_digital,34.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-12-01,sentimiento_digital,32.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-11-01,sentimiento_digital,33.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-10-01,sentimiento_digital,33.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-09-01,sentimiento_digital,33.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-08-01,sentimiento_digital,34.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-07-01,sentimiento_digital,30.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-06-01,sentimiento_digital,32.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-05-01,sentimiento_digital,41.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-02-01,sentimiento_digital,32.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2025-01-01,sentimiento_digital,36.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-12-01,sentimiento_digital,32.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-11-01,sentimiento_digital,34.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-10-01,sentimiento_digital,33.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-09-01,sentimiento_digital,34.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-08-01,sentimiento_digital,34.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-07-01,sentimiento_digital,31.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-06-01,sentimiento_digital,34.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-05-01,sentimiento_digital,42.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2024-04-01,sentimiento_digital,40.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-03-01,sentimiento_digital,38.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-02-01,sentimiento_digital,39.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2024-01-01,sentimiento_digital,43.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-12-01,sentimiento_digital,43.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-03-01,sentimiento_digital,38.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-02-01,sentimiento_digital,40.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2024-01-01,sentimiento_digital,43.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-12-01,sentimiento_digital,43.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2023-11-01,sentimiento_digital,38.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-10-01,sentimiento_digital,35.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-09-01,sentimiento_digital,37.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-08-01,sentimiento_digital,37.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-07-01,sentimiento_digital,38.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-06-01,sentimiento_digital,38.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-05-01,sentimiento_digital,42.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-04-01,sentimiento_digital,39.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-03-01,sentimiento_digital,40.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-10-01,sentimiento_digital,36.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-09-01,sentimiento_digital,38.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-08-01,sentimiento_digital,37.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-07-01,sentimiento_digital,38.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-06-01,sentimiento_digital,38.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-05-01,sentimiento_digital,42.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-04-01,sentimiento_digital,40.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-03-01,sentimiento_digital,40.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2023-02-01,sentimiento_digital,37.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2023-01-01,sentimiento_digital,40.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-12-01,sentimiento_digital,39.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-11-01,sentimiento_digital,40.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-10-01,sentimiento_digital,37.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-09-01,sentimiento_digital,38.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-08-01,sentimiento_digital,42.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-07-01,sentimiento_digital,43.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-06-01,sentimiento_digital,43.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-05-01,sentimiento_digital,42.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-04-01,sentimiento_digital,40.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2023-01-01,sentimiento_digital,39.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-12-01,sentimiento_digital,39.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-11-01,sentimiento_digital,39.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-10-01,sentimiento_digital,38.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-09-01,sentimiento_digital,39.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-08-01,sentimiento_digital,40.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-07-01,sentimiento_digital,43.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-06-01,sentimiento_digital,42.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-05-01,sentimiento_digital,41.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-04-01,sentimiento_digital,42.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2022-03-01,sentimiento_digital,41.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-02-01,sentimiento_digital,37.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2022-01-01,sentimiento_digital,35.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-12-01,sentimiento_digital,33.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-11-01,sentimiento_digital,36.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-10-01,sentimiento_digital,35.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-09-01,sentimiento_digital,34.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-02-01,sentimiento_digital,37.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2022-01-01,sentimiento_digital,34.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-12-01,sentimiento_digital,34.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-11-01,sentimiento_digital,36.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-10-01,sentimiento_digital,35.0,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-09-01,sentimiento_digital,34.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2021-08-01,sentimiento_digital,35.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-07-01,sentimiento_digital,34.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-06-01,sentimiento_digital,34.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-07-01,sentimiento_digital,35.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-06-01,sentimiento_digital,35.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2021-05-01,sentimiento_digital,35.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-04-01,sentimiento_digital,34.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-03-01,sentimiento_digital,36.5,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-02-01,sentimiento_digital,38.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
-2021-01-01,sentimiento_digital,35.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-04-01,sentimiento_digital,35.8,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-03-01,sentimiento_digital,36.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-02-01,sentimiento_digital,38.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
+2021-01-01,sentimiento_digital,36.2,interés 0–100 (canasta mensual),"Google Trends (ventana fija 2021→, ADR-0034)"
 2026-06-01,pobreza_nowcast,31.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-05-01,pobreza_nowcast,29.6,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
 2026-04-01,pobreza_nowcast,29.2,% de personas,UTDT — Nowcast de Pobreza (informes PDF)
@@ -532,39 +532,40 @@ fecha,indicador,valor,unidad,fuente
 2025-03-01,itvc_pobreza,111.1,índice (100 = 4T-2023),UTDT — Nowcast de Pobreza (nivel) + INDEC EPH (base 2º sem. 2023)
 2025-02-01,itvc_pobreza,114.9,índice (100 = 4T-2023),UTDT — Nowcast de Pobreza (nivel) + INDEC EPH (base 2º sem. 2023)
 2025-01-01,itvc_pobreza,112.0,índice (100 = 4T-2023),UTDT — Nowcast de Pobreza (nivel) + INDEC EPH (base 2º sem. 2023)
-2026-06-01,itvc_lider,95.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2026-05-01,itvc_lider,94.8,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2026-04-01,itvc_lider,94.1,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2026-03-01,itvc_lider,95.4,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2026-02-01,itvc_lider,94.8,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2026-01-01,itvc_lider,93.7,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-12-01,itvc_lider,96.0,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2026-07-01,itvc_lider,94.4,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2026-06-01,itvc_lider,95.0,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2026-05-01,itvc_lider,95.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2026-04-01,itvc_lider,94.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2026-03-01,itvc_lider,96.7,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2026-02-01,itvc_lider,93.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2026-01-01,itvc_lider,94.2,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-12-01,itvc_lider,95.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2025-11-01,itvc_lider,94.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-10-01,itvc_lider,97.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-09-01,itvc_lider,91.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-08-01,itvc_lider,92.7,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-07-01,itvc_lider,97.4,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-06-01,itvc_lider,96.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-05-01,itvc_lider,98.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-04-01,itvc_lider,99.7,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-03-01,itvc_lider,98.1,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-02-01,itvc_lider,99.7,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2025-01-01,itvc_lider,98.2,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2024-12-01,itvc_lider,96.3,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-10-01,itvc_lider,97.7,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-09-01,itvc_lider,91.7,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-08-01,itvc_lider,92.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-07-01,itvc_lider,97.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-06-01,itvc_lider,96.8,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-05-01,itvc_lider,98.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-04-01,itvc_lider,99.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-03-01,itvc_lider,97.7,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-02-01,itvc_lider,100.0,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2025-01-01,itvc_lider,97.8,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2024-12-01,itvc_lider,96.2,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2024-11-01,itvc_lider,95.4,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2024-10-01,itvc_lider,94.4,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2024-10-01,itvc_lider,94.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2024-09-01,itvc_lider,93.4,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2024-08-01,itvc_lider,92.0,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2024-08-01,itvc_lider,91.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2024-07-01,itvc_lider,91.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2024-06-01,itvc_lider,89.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2024-05-01,itvc_lider,93.3,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2024-06-01,itvc_lider,89.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2024-05-01,itvc_lider,93.1,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2024-04-01,itvc_lider,88.3,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2024-03-01,itvc_lider,85.2,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2024-03-01,itvc_lider,84.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2024-02-01,itvc_lider,87.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2024-01-01,itvc_lider,94.2,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2023-12-01,itvc_lider,95.7,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2024-01-01,itvc_lider,94.0,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2023-12-01,itvc_lider,95.6,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2023-11-01,itvc_lider,100.9,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
-2023-10-01,itvc_lider,103.4,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
+2023-10-01,itvc_lider,103.5,índice (100 = 4T-2023),UTDT — Índice Líder (serie XLS)
 2026-06-01,itvc_isac,82.2,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2026-05-01,itvc_isac,85.7,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
 2026-04-01,itvc_isac,80.4,índice (100 = 4T-2023),INDEC ISAC desestacionalizado
@@ -876,66 +877,67 @@ fecha,indicador,valor,unidad,fuente
 2016-10-01,informalidad,33.6,%,"INDEC EPH (52.2, trimestral)"
 2016-07-01,informalidad,33.8,%,"INDEC EPH (52.2, trimestral)"
 2016-04-01,informalidad,33.4,%,"INDEC EPH (52.2, trimestral)"
-2026-06-01,indice_lider,125.6,índice,UTDT — Índice Líder (CIF)
-2026-05-01,indice_lider,124.7,índice,UTDT — Índice Líder (CIF)
-2026-04-01,indice_lider,123.8,índice,UTDT — Índice Líder (CIF)
-2026-03-01,indice_lider,125.5,índice,UTDT — Índice Líder (CIF)
-2026-02-01,indice_lider,124.7,índice,UTDT — Índice Líder (CIF)
-2026-01-01,indice_lider,123.3,índice,UTDT — Índice Líder (CIF)
-2025-12-01,indice_lider,126.3,índice,UTDT — Índice Líder (CIF)
-2025-11-01,indice_lider,124.5,índice,UTDT — Índice Líder (CIF)
-2025-10-01,indice_lider,128.3,índice,UTDT — Índice Líder (CIF)
-2025-09-01,indice_lider,120.5,índice,UTDT — Índice Líder (CIF)
-2025-08-01,indice_lider,121.9,índice,UTDT — Índice Líder (CIF)
-2025-07-01,indice_lider,128.1,índice,UTDT — Índice Líder (CIF)
-2025-06-01,indice_lider,127.1,índice,UTDT — Índice Líder (CIF)
-2025-05-01,indice_lider,130.2,índice,UTDT — Índice Líder (CIF)
-2025-04-01,indice_lider,131.2,índice,UTDT — Índice Líder (CIF)
-2025-03-01,indice_lider,129.0,índice,UTDT — Índice Líder (CIF)
-2025-02-01,indice_lider,131.2,índice,UTDT — Índice Líder (CIF)
-2025-01-01,indice_lider,129.1,índice,UTDT — Índice Líder (CIF)
-2024-12-01,indice_lider,126.7,índice,UTDT — Índice Líder (CIF)
-2024-11-01,indice_lider,125.6,índice,UTDT — Índice Líder (CIF)
-2024-10-01,indice_lider,124.2,índice,UTDT — Índice Líder (CIF)
-2024-09-01,indice_lider,122.8,índice,UTDT — Índice Líder (CIF)
+2026-07-01,indice_lider,124.4,índice,UTDT — Índice Líder (CIF)
+2026-06-01,indice_lider,125.3,índice,UTDT — Índice Líder (CIF)
+2026-05-01,indice_lider,126.0,índice,UTDT — Índice Líder (CIF)
+2026-04-01,indice_lider,125.1,índice,UTDT — Índice Líder (CIF)
+2026-03-01,indice_lider,127.4,índice,UTDT — Índice Líder (CIF)
+2026-02-01,indice_lider,123.8,índice,UTDT — Índice Líder (CIF)
+2026-01-01,indice_lider,124.2,índice,UTDT — Índice Líder (CIF)
+2025-12-01,indice_lider,126.4,índice,UTDT — Índice Líder (CIF)
+2025-11-01,indice_lider,124.7,índice,UTDT — Índice Líder (CIF)
+2025-10-01,indice_lider,128.8,índice,UTDT — Índice Líder (CIF)
+2025-09-01,indice_lider,120.9,índice,UTDT — Índice Líder (CIF)
+2025-08-01,indice_lider,122.0,índice,UTDT — Índice Líder (CIF)
+2025-07-01,indice_lider,128.6,índice,UTDT — Índice Líder (CIF)
+2025-06-01,indice_lider,127.6,índice,UTDT — Índice Líder (CIF)
+2025-05-01,indice_lider,129.8,índice,UTDT — Índice Líder (CIF)
+2025-04-01,indice_lider,131.7,índice,UTDT — Índice Líder (CIF)
+2025-03-01,indice_lider,128.8,índice,UTDT — Índice Líder (CIF)
+2025-02-01,indice_lider,131.8,índice,UTDT — Índice Líder (CIF)
+2025-01-01,indice_lider,129.0,índice,UTDT — Índice Líder (CIF)
+2024-12-01,indice_lider,126.8,índice,UTDT — Índice Líder (CIF)
+2024-11-01,indice_lider,125.8,índice,UTDT — Índice Líder (CIF)
+2024-10-01,indice_lider,124.5,índice,UTDT — Índice Líder (CIF)
+2024-09-01,indice_lider,123.2,índice,UTDT — Índice Líder (CIF)
 2024-08-01,indice_lider,121.1,índice,UTDT — Índice Líder (CIF)
-2024-07-01,indice_lider,120.5,índice,UTDT — Índice Líder (CIF)
-2024-06-01,indice_lider,117.8,índice,UTDT — Índice Líder (CIF)
-2024-05-01,indice_lider,122.8,índice,UTDT — Índice Líder (CIF)
-2024-04-01,indice_lider,116.2,índice,UTDT — Índice Líder (CIF)
-2024-03-01,indice_lider,112.1,índice,UTDT — Índice Líder (CIF)
-2024-02-01,indice_lider,115.2,índice,UTDT — Índice Líder (CIF)
+2024-07-01,indice_lider,120.8,índice,UTDT — Índice Líder (CIF)
+2024-06-01,indice_lider,118.1,índice,UTDT — Índice Líder (CIF)
+2024-05-01,indice_lider,122.7,índice,UTDT — Índice Líder (CIF)
+2024-04-01,indice_lider,116.4,índice,UTDT — Índice Líder (CIF)
+2024-03-01,indice_lider,111.9,índice,UTDT — Índice Líder (CIF)
+2024-02-01,indice_lider,115.6,índice,UTDT — Índice Líder (CIF)
 2024-01-01,indice_lider,123.9,índice,UTDT — Índice Líder (CIF)
-2023-12-01,indice_lider,125.9,índice,UTDT — Índice Líder (CIF)
-2023-11-01,indice_lider,132.7,índice,UTDT — Índice Líder (CIF)
-2023-10-01,indice_lider,136.1,índice,UTDT — Índice Líder (CIF)
-2023-09-01,indice_lider,137.6,índice,UTDT — Índice Líder (CIF)
-2023-08-01,indice_lider,141.1,índice,UTDT — Índice Líder (CIF)
-2023-07-01,indice_lider,137.7,índice,UTDT — Índice Líder (CIF)
-2023-06-01,indice_lider,141.9,índice,UTDT — Índice Líder (CIF)
-2023-05-01,indice_lider,138.3,índice,UTDT — Índice Líder (CIF)
-2023-04-01,indice_lider,139.0,índice,UTDT — Índice Líder (CIF)
-2023-03-01,indice_lider,138.9,índice,UTDT — Índice Líder (CIF)
-2023-02-01,indice_lider,138.1,índice,UTDT — Índice Líder (CIF)
-2023-01-01,indice_lider,136.7,índice,UTDT — Índice Líder (CIF)
-2022-12-01,indice_lider,134.3,índice,UTDT — Índice Líder (CIF)
-2022-11-01,indice_lider,130.2,índice,UTDT — Índice Líder (CIF)
-2022-10-01,indice_lider,130.8,índice,UTDT — Índice Líder (CIF)
-2022-09-01,indice_lider,131.3,índice,UTDT — Índice Líder (CIF)
-2022-08-01,indice_lider,131.3,índice,UTDT — Índice Líder (CIF)
-2022-07-01,indice_lider,133.9,índice,UTDT — Índice Líder (CIF)
-2022-06-01,indice_lider,135.1,índice,UTDT — Índice Líder (CIF)
-2022-05-01,indice_lider,136.1,índice,UTDT — Índice Líder (CIF)
-2022-04-01,indice_lider,136.5,índice,UTDT — Índice Líder (CIF)
-2022-03-01,indice_lider,137.4,índice,UTDT — Índice Líder (CIF)
-2022-02-01,indice_lider,136.7,índice,UTDT — Índice Líder (CIF)
-2022-01-01,indice_lider,132.5,índice,UTDT — Índice Líder (CIF)
-2021-12-01,indice_lider,133.7,índice,UTDT — Índice Líder (CIF)
-2021-11-01,indice_lider,132.9,índice,UTDT — Índice Líder (CIF)
-2021-10-01,indice_lider,131.4,índice,UTDT — Índice Líder (CIF)
-2021-09-01,indice_lider,130.8,índice,UTDT — Índice Líder (CIF)
-2021-08-01,indice_lider,128.8,índice,UTDT — Índice Líder (CIF)
-2021-07-01,indice_lider,128.6,índice,UTDT — Índice Líder (CIF)
+2023-12-01,indice_lider,126.1,índice,UTDT — Índice Líder (CIF)
+2023-11-01,indice_lider,133.1,índice,UTDT — Índice Líder (CIF)
+2023-10-01,indice_lider,136.4,índice,UTDT — Índice Líder (CIF)
+2023-09-01,indice_lider,138.0,índice,UTDT — Índice Líder (CIF)
+2023-08-01,indice_lider,141.3,índice,UTDT — Índice Líder (CIF)
+2023-07-01,indice_lider,138.1,índice,UTDT — Índice Líder (CIF)
+2023-06-01,indice_lider,142.2,índice,UTDT — Índice Líder (CIF)
+2023-05-01,indice_lider,138.5,índice,UTDT — Índice Líder (CIF)
+2023-04-01,indice_lider,139.2,índice,UTDT — Índice Líder (CIF)
+2023-03-01,indice_lider,139.1,índice,UTDT — Índice Líder (CIF)
+2023-02-01,indice_lider,138.5,índice,UTDT — Índice Líder (CIF)
+2023-01-01,indice_lider,136.9,índice,UTDT — Índice Líder (CIF)
+2022-12-01,indice_lider,134.5,índice,UTDT — Índice Líder (CIF)
+2022-11-01,indice_lider,130.5,índice,UTDT — Índice Líder (CIF)
+2022-10-01,indice_lider,131.0,índice,UTDT — Índice Líder (CIF)
+2022-09-01,indice_lider,131.5,índice,UTDT — Índice Líder (CIF)
+2022-08-01,indice_lider,131.5,índice,UTDT — Índice Líder (CIF)
+2022-07-01,indice_lider,134.1,índice,UTDT — Índice Líder (CIF)
+2022-06-01,indice_lider,135.3,índice,UTDT — Índice Líder (CIF)
+2022-05-01,indice_lider,136.4,índice,UTDT — Índice Líder (CIF)
+2022-04-01,indice_lider,136.6,índice,UTDT — Índice Líder (CIF)
+2022-03-01,indice_lider,137.7,índice,UTDT — Índice Líder (CIF)
+2022-02-01,indice_lider,137.0,índice,UTDT — Índice Líder (CIF)
+2022-01-01,indice_lider,132.9,índice,UTDT — Índice Líder (CIF)
+2021-12-01,indice_lider,134.0,índice,UTDT — Índice Líder (CIF)
+2021-11-01,indice_lider,133.2,índice,UTDT — Índice Líder (CIF)
+2021-10-01,indice_lider,131.6,índice,UTDT — Índice Líder (CIF)
+2021-09-01,indice_lider,131.0,índice,UTDT — Índice Líder (CIF)
+2021-08-01,indice_lider,129.0,índice,UTDT — Índice Líder (CIF)
+2026-08-01,icc_utdt,39.9,índice,"UTDT (ICC, serie XLS)"
 2026-07-01,icc_utdt,39.8,índice,"UTDT (ICC, serie XLS)"
 2026-06-01,icc_utdt,42.5,índice,"UTDT (ICC, serie XLS)"
 2026-05-01,icc_utdt,40.5,índice,"UTDT (ICC, serie XLS)"
@@ -995,10 +997,9 @@ fecha,indicador,valor,unidad,fuente
 2021-09-01,icc_utdt,38.5,índice,"UTDT (ICC, serie XLS)"
 2021-08-01,icc_utdt,37.8,índice,"UTDT (ICC, serie XLS)"
 2021-07-01,icc_utdt,39.2,índice,"UTDT (ICC, serie XLS)"
-2021-06-01,icc_utdt,35.6,índice,"UTDT (ICC, serie XLS)"
-2026-08-01,endeudamiento_familiar,43.83,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-08-01,endeudamiento_familiar,43.72,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-07-01,endeudamiento_familiar,46.42,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
-2026-06-01,endeudamiento_familiar,47.31,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
+2026-06-01,endeudamiento_familiar,47.32,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-05-01,endeudamiento_familiar,45.93,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-04-01,endeudamiento_familiar,45.51,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
 2026-03-01,endeudamiento_familiar,44.79,billones de pesos (consumo),BCRA API v4.0 (personales + tarjeta)
@@ -1220,6 +1221,7 @@ fecha,indicador,valor,unidad,fuente
 2023-03-01,consumo_carnes_total,99.3,índice base 100 = 4T-2023,"INDEC — faena de vacunos, porcinos y aves (toneladas), per cápita"
 2023-02-01,consumo_carnes_total,99.0,índice base 100 = 4T-2023,"INDEC — faena de vacunos, porcinos y aves (toneladas), per cápita"
 2023-01-01,consumo_carnes_total,99.2,índice base 100 = 4T-2023,"INDEC — faena de vacunos, porcinos y aves (toneladas), per cápita"
+2026-07-01,consumo_carne,46.3,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2026-05-01,consumo_carne,47.5,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2026-04-01,consumo_carne,46.2,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"
 2026-03-01,consumo_carne,47.3,kg/hab/año (PM 12m),"CICCRA (informes mensuales, caché local)"

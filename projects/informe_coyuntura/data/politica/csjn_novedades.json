@@ -2,9 +2,9 @@
  "_meta": {
   "descripcion": "Fallos de la CSJN que declaran inconstitucionalidad o tienen al Estado como parte. Detección automática; la lectura y la clasificación las hace el analista (ADR-0140). NO es un contador: el endpoint abierto topea en 10 registros por consulta y no pagina. Sacar de 'pendientes' lo ya revisado.",
   "fuente": "https://sjconsulta.csjn.gov.ar/sjconsulta/novedades/buscar.html",
-  "nuevas_en_la_corrida": 0,
+  "nuevas_en_la_corrida": 2,
   "registros_vistos_en_la_corrida": 40,
-  "ultima_corrida": "2026-08-18"
+  "ultima_corrida": "2026-08-21"
  },
  "pendientes": {
   "818689": {
@@ -261,6 +261,34 @@
    "titulo": "Convenio de transferencia del sistema previsional y aplicación de normas nacionales",
    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830418"
   },
+  "830871": {
+   "caratula": "AMADO JORGE NICOLAS c/ ANSES s/REAJUSTES VARIOS",
+   "expediente": "CSS 001199/2015/CS001",
+   "fecha": "20/08/2026",
+   "fuero": "CSS",
+   "inconstitucional": false,
+   "materia": "PREVISIONAL",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": true,
+   "titulo": "Omisión de expedirse sobre planteos de los litigantes",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830871"
+  },
+  "830997": {
+   "caratula": "Recurso Queja Nº 1 - PUEBLA, JULIO CESAR c/ EN-M SALUD DE LA NACION-EXPTE 139524691/22 Y OTROS s/AMPARO LEY 16.986",
+   "expediente": "CAF 023482/2023/1/RH001",
+   "fecha": "20/08/2026",
+   "fuero": "CAF",
+   "inconstitucional": false,
+   "materia": "HONORARIOS",
+   "motivos": [
+    "el Estado es parte"
+   ],
+   "sentencia_arbitraria": true,
+   "titulo": "Regulación de honorarios de abogados: fundamentos dogmáticos y apartamiento de la ley",
+   "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/getSintesisAnalisis.html?idAnalisis=830997"
+  },
   "831004": {
    "caratula": "CENCOSUD SA c/ ESTADO NACIONAL MINISTERIO DE ECONOMIA SECRETARIA DE INDUSTRIA Y DESARROLLO PRODUCTIVO s/LEALTAD COMERCIAL - LEY 22802 - ART 22",
    "expediente": "CCF 007777/2024/CS001",
@@ -466,6 +494,16 @@
   "830488": {
    "fecha": "06/08/2026",
    "marcado": false,
+   "termino": "inconstitucionalidad"
+  },
+  "830871": {
+   "fecha": "20/08/2026",
+   "marcado": true,
+   "termino": "inconstitucionalidad"
+  },
+  "830997": {
+   "fecha": "20/08/2026",
+   "marcado": true,
    "termino": "inconstitucionalidad"
   },
   "831004": {
