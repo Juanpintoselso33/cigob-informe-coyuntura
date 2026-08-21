@@ -166,6 +166,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0171](0171-la-lectura-por-partes-no-ordena-empates.md) | La lectura por partes no ordena empates |  | vigente |
 | [0172](0172-la-serie-termina-donde-esta-la-card.md) | La serie termina donde está la card |  | vigente |
 | [0183](0183-rediseno-del-cinturon-politico.md) | Rediseño del cinturón político según el documento de agosto: registrado, no aplicado |  | propuesto |
+| [0230](0230-nadie-publica-si-un-decreto-sigue-rigiendo.md) | Nadie publica si un decreto sigue rigiendo |  | rechazado |
 
 ### Gestión (ITCG)
 

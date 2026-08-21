@@ -6,6 +6,7 @@ fecha: 2026-07-26
 cinturon: 'gestion'
 indicadores: [desregulacion_normativa]
 modifica: ['0125']
+relacionado: ['0230']
 ambito: 'ITCG · `desregulacion_normativa` · bandas · serie · card · ficha'
 origen: 'revisión externa del cinturón de gestión (23-jul-2026)'
 ---

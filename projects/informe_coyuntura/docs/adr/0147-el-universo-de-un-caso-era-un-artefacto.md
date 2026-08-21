@@ -4,7 +4,7 @@ id: '0147'
 estado: 'aceptado'
 fecha: 2026-07-26
 cinturon: 'politica'
-relacionado: ['0168']
+relacionado: ['0168', '0230']
 ambito: 'cinturón político (ITCP) · bloque judicial'
 origen: 'al intentar responder la última decisión editorial abierta'
 ---

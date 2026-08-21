@@ -4,6 +4,7 @@ id: '0141'
 estado: 'aceptado'
 fecha: 2026-07-26
 cinturon: 'politica'
+relacionado: ['0230']
 ambito: 'cinturón político (ITCP), bloque judicial — herramienta interna'
 ---
 
