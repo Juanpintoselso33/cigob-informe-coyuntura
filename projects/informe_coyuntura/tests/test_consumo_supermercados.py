@@ -156,10 +156,13 @@ def test_entra_con_20_por_ciento_y_los_previos_cedieron():
     ind = itvc.DIMENSIONES_ITVC["ingresos"]["indicadores"]
     assert ind[CLAVE] == 0.20
     assert abs(sum(ind.values()) - 1.0) < 1e-9
-    # los cinco previos, contra lo que tenían antes de esta alta
+    # los CUATRO previos, contra lo que tenían antes de esta alta. Eran cinco
+    # cuando el alta se escribió; ADR-0224 fundió los dos vehículos en
+    # `motorizacion_total` mientras la rama estaba abierta, y la cesión se
+    # recalculó sola sobre lo que quedó — que es para lo que existe
+    # `alta_proporcional`.
     previos = {"brecha_salario_cbt": 0.5959, "pobreza_nowcast": 0.3253,
-               "consumo_carnes_total": 0.0392, "patentamiento_motos": 0.0196,
-               "patentamiento_autos": 0.0200}
+               "consumo_carnes_total": 0.0392, "motorizacion_total": 0.0396}
     for k, v in previos.items():
         assert abs(ind[k] - round(v * 0.80, 4)) < 1e-9, f"{k} no cedió ×0,80"
 
