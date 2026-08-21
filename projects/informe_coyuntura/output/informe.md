@@ -1,7 +1,7 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-21 14:15:43"
-score_global: 4.2
+generado: "2026-08-21 16:03:48"
+score_global: 4.3
 barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-08
 
-**Score global:** 4.2/10  |  **Riesgo dominante:** político
+**Score global:** 4.3/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
@@ -78,19 +78,19 @@ schema_version: "1.2.0"
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
 | icc_utdt | 39.87 | índice | 2026-08-01 | fresco |
 
-### 🟢 Gestion — score 2.3/10 (estable)
+### 🟢 Gestion — score 2.7/10 (estable)
 *Riesgo de barbarismo: gerencial*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
 |---|---|---|---|---|
-| cepo_mulc | 5.74 | % de brecha CCL/mayorista | 2026-08-21 | fresco |
+| cepo_mulc | 5.78 | % de brecha CCL/mayorista | 2026-08-21 | fresco |
 | apertura_comercial | 6.18 | % del intercambio (alícuota efectiva) | 2026-06-01 | fresco |
 | desregulacion_normativa | 16771.0 | artículos de normas modificados o eliminados, acumulados desde dic-2023 | 2026-07-01 | fresco |
 | reduccion_estado | -20.36 | % de variación vs dic-2023 (dotación APN) | 2026-06-01 | fresco |
 | gasto_funcionamiento | -31.37 | % de variación real vs 2023-06 (IMIG funcionamiento) | 2026-06-01 | fresco |
 | masa_salarial | -32.37 | % de variación real vs 2023-06 (SPN remuneraciones) | 2026-06-01 | fresco |
 | reestructuracion_organismos | 24.4 | % de avance (proxy InfoLeg, caso por caso) | 2026-08-21 | fresco |
-| fal_modernizacion_laboral | 100.0 | Índice 0–100 (actos fundamentales del FAL: ley + reglamentación) | 2026-08-21 | fresco |
+| fal_modernizacion_laboral | 50.0 | Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción) | 2026-08-21 | fresco |
 | litigiosidad_laboral | 2.1 | % variación juicios SRT (12m vs 12m previos) | 2026-05-01 | fresco |
 | privatizaciones | 51.4 | % de avance (etapas 0-4, cartera Ley Bases) | 2026-06-30 | fresco |
 | rigi_inversiones | 23.5 | % de inversión aprobada sobre el pipeline | 2026-08-21 | fresco |
@@ -102,4 +102,4 @@ schema_version: "1.2.0"
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-08-21 14:15:43 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-21 16:03:48 — schema 1.2.0*

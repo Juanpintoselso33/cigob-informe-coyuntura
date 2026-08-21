@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-21
 cinturon: 'gestion'
 indicadores: [fal_modernizacion_laboral]
-archivos: ['scripts/gestion.py', 'scripts/itcg.py', 'scripts/descargar_series.py', 'data/gestion/fal_hitos.json', 'tests/test_gestion_fal_actos.py', 'tests/test_descargar_series_fal.py', 'tests/test_itcg.py']
+archivos: ['scripts/gestion.py', 'scripts/itcg.py', 'scripts/descargar_series.py', 'data/gestion/fal_hitos.json', 'tests/test_gestion_fal_actos.py', 'tests/test_descargar_series_fal.py', 'tests/test_itcg.py', 'tests/test_gestion_dotacion_fuerzas.py']
 supersede: ['0142']
 revierte: ['0142']
 relacionado: ['0042', '0068', '0098', '0121', '0128', '0218', '0221', '0226']
@@ -266,6 +266,15 @@ perder por separado: que un acto suspendido no cuente, que el índice **pueda**
 bajar, que la adopción no se contamine con el régimen de la construcción y que
 la reversión editorial esté dicha en el texto público. Cada una se verificó
 rompiéndola a propósito.
+
+Y vuelve a funcionar la guardia que ADR-0098 había dejado sobre la dimensión y
+que ADR-0142 tuvo que desactivar. Su propio texto fijaba la condición —*«si
+algún día el FAL vuelve a ser un indicador vivo, esta guardia debería volver a
+mirar la dimensión»*— y ese día llegó. Ahora exige que el FAL **no esté en el
+techo de su escala**, que es la falla concreta que este ADR corrige, con 45
+puntos de margen contra el valor de hoy: la lección de
+[[0221-un-cable-trampa-mira-la-banda-no-el-puntaje]] es que un cable trampa
+pegado al valor actual dispara por ruido y termina ignorado.
 
 La guarda de la caída **no mira la serie publicada**, y eso es deliberado: la
 suspensión de marzo cayó sobre un mes que ya valía cero —la ley se publicó el 6

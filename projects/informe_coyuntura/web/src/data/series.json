@@ -3134,23 +3134,23 @@
     },
     {
       "fecha": "2026-03-01",
-      "valor": 50.0
+      "valor": 0.0
     },
     {
       "fecha": "2026-04-01",
-      "valor": 50.0
+      "valor": 25.0
     },
     {
       "fecha": "2026-05-01",
-      "valor": 50.0
+      "valor": 25.0
     },
     {
       "fecha": "2026-06-01",
-      "valor": 100.0
+      "valor": 50.0
     },
     {
       "fecha": "2026-07-01",
-      "valor": 100.0
+      "valor": 50.0
     }
   ],
   "desregulacion_normativa": [
