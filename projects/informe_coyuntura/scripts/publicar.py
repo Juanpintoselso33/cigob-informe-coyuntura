@@ -697,69 +697,90 @@ def _cargar_validacion():
 
 
 def _validacion_itvc(bloque, series):
-    """Anexa al bloque ITVC su validación externa: el índice contra el CONSUMO
-    medido (ventas en supermercados a precios constantes, serie
-    desestacionalizada del INDEC) — correlación positiva esperada.
+    """Anexa al bloque ITCIS su validación externa. **Sin ancla única** desde
+    ADR-0225: el contraste es el PANEL y su factor común.
 
-    Fue el ICC de UTDT hasta jul-2026 (ADR-0155). Se cambió por dos razones que
-    se miden: el ICC ES un componente del ITVC (6,75%), lo que obligaba a
-    publicar un índice artificial «sin ICC» para no ser circular; y un tercio del
-    peso del índice correlaciona NEGATIVO contra el ICC, porque en el período la
-    confianza subió mientras alquiler, pobreza, mora e informalidad empeoraban.
-    El consumo no compone el índice y ajusta mejor.
+    Por qué no hay una sola serie enfrente, que es lo que el lector espera y
+    hay que explicarle:
 
-    El ICC no se descarta: queda como contraste DISCRIMINANTE en la conclusión —
-    mide si la percepción sigue a las condiciones materiales, y el hallazgo es
-    que en estos años lo hizo flojo.
+    - El ancla era el consumo en supermercados (ADR-0155) y **pasó a ser
+      componente del índice**. Medía condiciones materiales del hogar, así que
+      integra el ITCIS en vez de juzgarlo — la misma regla que sacó al ICC.
+    - El reemplazo conceptualmente correcto existe y está identificado: el
+      **consumo privado de las Cuentas Nacionales** del INDEC, que no es una
+      faceta del consumo del hogar sino su agregado. Pero es trimestral y
+      arranca con la base del índice, así que hoy tiene nueve trimestres: su
+      correlación en diferencias oscila entre 0,17 y 0,73 según qué trimestre
+      se saque. No es un número publicable, y se declara como serie de
+      referencia en formación en la ficha metodológica.
+    - Las candidatas mensuales que quedan son todas facetas —naftas, luz, gas,
+      transporte, los otros dos canales de comercio— y ninguna sostiene un
+      titular sin un párrafo de salvedades.
+
+    Así que el titular es el factor común de los volúmenes físicos que consume
+    el hogar, que es contra lo que el gráfico ya venía comparando. `pares` sale
+    del factor y no de un par suelto: la matriz de validación cruzada (ADR-0031)
+    lee justamente esa clave, y dejarla apuntando a una serie que ahora compone
+    el índice habría vuelto circular la matriz entera sin que nada avisara.
     """
     val = _cargar_validacion()
     itvc_serie = val.get("serie_itvc") or {}
-    consumo = val.get("consumo_supermercados_mensual") or {}
-    comunes = sorted(set(itvc_serie) & set(consumo))
-    if len(comunes) < 12:
+    panel = (val.get("panel_validacion") or {}).get("itvc") or {}
+    factor = panel.get("factor") or {}
+    pares = factor.get("pares") or []
+    if len(pares) < 12 or not itvc_serie:
         return
-    corr = val.get("correlaciones", {})
-    niveles = corr.get("niveles (ITVC vs consumo)") or {}
-    difs = corr.get("primeras diferencias (ITVC vs consumo)") or {}
-    r_niv, r_dif = niveles.get("r"), difs.get("r")
+    r_niv, r_dif = factor.get("r_niveles"), factor.get("r_diferencias")
     if r_niv is None:
         return
+    corr = val.get("correlaciones", {})
     icc_niv = (corr.get("discriminante: ITVC sin ICC vs ICC (niveles)") or {}).get("r")
 
-    partes = [f"Contra el consumo en supermercados solo —una sola del panel— la correlación es "
-              f"{coma(r_niv)} en niveles"
-              + (f" y {coma(r_dif)} en los cambios mes a mes" if r_dif is not None else "")
-              + ": cuando las condiciones materiales mejoran respecto del arranque del "
-                "mandato, la gente efectivamente compra más en términos reales."]
-    # El contraste discriminante: percepción contra condiciones. Se emite sólo si
-    # el número lo sostiene, y con la lectura puesta — un r bajo acá NO es una
-    # falla del índice, es el hallazgo.
-    if icc_niv is not None and icc_niv < r_niv:
-        partes.append(f"El ánimo, en cambio, acompaña menos: contra la confianza del consumidor "
-                      f"(ICC de UTDT) la correlación es {coma(icc_niv)}. No es una falla del "
-                      f"índice sino un resultado — en estos años la confianza se movió con más "
-                      f"independencia de las condiciones materiales que las condiciones entre sí. "
-                      f"Se publica porque distingue: este cinturón mide lo que le pasa a los "
-                      f"hogares, no lo que opinan.")
+    partes = [
+        "No hay una sola serie externa que haga de contraste, y el motivo es parte del "
+        "resultado. La que cumplía ese papel —las ventas en supermercados a precios "
+        "constantes— mide condiciones materiales del hogar, así que pasó a integrar el "
+        "índice: un indicador no puede ser componente y juez del mismo índice.",
+        "El reemplazo natural sería el consumo privado que publica el INDEC en las Cuentas "
+        "Nacionales, que no es un canal del consumo del hogar sino su total; pero es "
+        "trimestral y arranca junto con el índice, así que todavía son nueve trimestres y "
+        "la correlación se mueve demasiado según cuál se saque. Queda declarado como la "
+        "referencia que va a reemplazar a este panel cuando tenga historia, con el umbral "
+        "fijado de antemano para que la decisión no dependa de mirar el número.",
+        "Mientras tanto el contraste es el panel completo, y el gráfico compara el índice "
+        "contra el factor común de lo que el hogar consume en volumen físico —luz, gas, "
+        "transporte, combustible—, que es lo que esas series comparten en vez de cualquiera "
+        "de ellas suelta.",
+    ]
+    if icc_niv is not None:
+        partes.append(
+            f"La confianza del consumidor (ICC de UTDT) sigue publicándose como contraste que "
+            f"DISTINGUE en vez de confirmar: contra ella la correlación es {coma(icc_niv)}. Un "
+            f"número más bajo ahí no es una falla del índice, es el resultado — este cinturón "
+            f"mide lo que les pasa a los hogares, no lo que opinan.")
+
     bloque["validacion"] = {
-        "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
-        "pares": [[m, itvc_serie[m], consumo[m]] for m in comunes],
-        "plot": "rebase100",
-        "titulo": "¿El ITCIS acompaña lo que la gente puede comprar?",
+        "r_niveles": r_niv, "r_diferencias": r_dif, "n": factor.get("n"),
+        "pares": pares,
+        "plot": "minmax",
+        "titulo": "¿El ITCIS acompaña lo que el hogar efectivamente consume?",
         "sub": ("Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables "
                 "externas relacionadas que no lo componen. Este cinturón no tiene una única "
-                "serie de referencia, así que se compara contra un panel de estadísticas "
-                "externas y se mira si acompaña más a las de su propio terreno que a las "
-                "ajenas. El gráfico compara el índice contra el factor común de las "
-                "estadísticas de su terreno que miden volúmenes consumidos por los hogares "
-                "—luz, gas, transporte, combustible—: lo que todas ellas comparten, en vez de "
-                "una sola. El detalle —las cargas de cada una y el panel completo— está en la "
-                "ficha metodológica."),
+                "serie de referencia —la que hacía de ancla pasó a ser componente del índice, y "
+                "su reemplazo natural, el consumo privado de las Cuentas Nacionales, todavía "
+                "tiene nueve trimestres—, así que se compara contra un panel de estadísticas "
+                "externas y se mira si acompaña más a las de su propio terreno que a las ajenas. "
+                "El gráfico muestra el factor común de las que miden volúmenes consumidos por "
+                "los hogares —luz, gas, transporte, combustible—: lo que todas ellas comparten, "
+                "en vez de una sola. El detalle —las cargas de cada una, el panel completo y la "
+                "referencia en formación— está en la ficha metodológica."),
         "serie_label": "ITCIS (reconstrucción mensual)",
-        "externa_label": "consumo en supermercados (precios constantes)",
-        "trans_label": "ambas series con base 100 en el cuarto trimestre de 2023",
+        "externa_label": "factor común de los volúmenes consumidos por el hogar",
+        "trans_label": ("series normalizadas al rango del período; el factor es un puntaje "
+                        "estandarizado y cruza el cero"),
         "conclusion": " ".join(partes),
     }
+
 
 def _validacion_itcm(bloque):
     """Anexa al bloque ITCM su validación externa: la serie mensual del índice
@@ -1390,7 +1411,8 @@ def _validacion_cruzada(informe):
     cuatro índices reconstruidos contra los CUATRO contrastes externos a la
     vez. Validez convergente + discriminante: cada índice debe correlacionar
     más fuerte con su par teórico (ITCM ↔ actividad · ITCG ↔ Merval ·
-    ITVC ↔ consumo · ITCP ↔ EPU Argentina) que con el contraste ajeno — la prueba
+    ITCIS ↔ el volumen que consume el hogar · ITCP ↔ EPU Argentina) que con el
+    contraste ajeno — la prueba
     de que no miden "todo junto". Hoy no se cumple en todos, y la conclusión lo
     declara con el detalle derivado de los números."""
     try:
@@ -1407,9 +1429,14 @@ def _validacion_cruzada(informe):
     # informe: se reemplazó por el Índice Líder y el reemplazo es total, no una
     # suma — decisión del editor. La matriz es 4×4, un contraste propio por
     # índice.
+    # ADR-0225: el contraste propio del ITCIS ya no es el consumo en
+    # supermercados —que ahora COMPONE el índice— sino el factor común de los
+    # volúmenes físicos que consume el hogar. La clave se renombra: dejarla
+    # como "consumo" habría dicho en el tablero que el índice se contrasta
+    # contra una serie que en realidad lleva adentro.
     externas = {"lider": {p[0]: p[2] for p in bloques["ITCM"]},
                 "merval": {p[0]: p[2] for p in bloques["ITCG"]},
-                "consumo": {p[0]: p[2] for p in bloques["ITVC"]},
+                "volumen_hogar": {p[0]: p[2] for p in bloques["ITVC"]},
                 "epu": {p[0]: p[2] for p in bloques["ITCP"]}}
 
     def _r(a, b):
@@ -1423,7 +1450,8 @@ def _validacion_cruzada(informe):
         ms = sorted(s)
         return {ms[i]: s[ms[i]] - s[ms[i - 1]] for i in range(1, len(ms))}
 
-    PAR_PROPIO = {"ITCM": "lider", "ITCG": "merval", "ITVC": "consumo", "ITCP": "epu"}
+    PAR_PROPIO = {"ITCM": "lider", "ITCG": "merval",
+                  "ITVC": "volumen_hogar", "ITCP": "epu"}
     filas = []
     for ik in ("ITCM", "ITCG", "ITVC", "ITCP"):
         fila = {"indice": SIGLAS_PUBLICAS[ik.lower()], "propio": PAR_PROPIO[ik]}
@@ -1447,7 +1475,8 @@ def _validacion_cruzada(informe):
     # actividad y su par propio quedó por debajo de dos ajenos. La frase se
     # recalcula en cada corrida para que no pueda sobreafirmar.
     ETIQ = {"lider": "la actividad", "merval": "el Merval",
-            "consumo": "el consumo medido", "epu": "la incertidumbre de política"}
+            "volumen_hogar": "el volumen que consume el hogar",
+            "epu": "la incertidumbre de política"}
     superados = []
     for f in filas:
         propio = abs(f[f["propio"]]["r"])
@@ -1471,14 +1500,15 @@ def _validacion_cruzada(informe):
     informe["validacion_cruzada"] = {
         "filas": filas,
         "externas": [["lider", "Actividad (Índice Líder UTDT)"], ["merval", "Merval en USD"],
-                     ["consumo", "Consumo en supermercados (precios constantes)"],
+                     ["volumen_hogar", "Volumen consumido por el hogar (factor común)"],
                      ["epu", "Incertidumbre de política (EPU Argentina)"]],
         "titulo": "¿Cada índice mide lo suyo?",
         "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro "
                 "contrastes externos a la vez. Cada uno tiene el propio: la macroeconomía "
                 "(ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de "
-                "las empresas en dólares, el impacto social (ITCIS) con el consumo medido en "
-                "supermercados, la política (ITCP) con la incertidumbre de política que mide la "
+                "las empresas en dólares, el impacto social (ITCIS) con el factor común de los "
+                "volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política "
+                "(ITCP) con la incertidumbre de política que mide la "
                 "prensa (EPU Argentina). Si cada índice mide su propio terreno, debería "
                 "correlacionar con su par natural al menos tanto como con los ajenos. Es la "
                 "prueba clásica de que un indicador no mide \"todo junto\"."),
@@ -1487,7 +1517,8 @@ def _validacion_cruzada(informe):
         "conclusion": (f"Los cuatro pares propios dan el signo esperado. ITCM "
                        f"{fmt(f_itcm['lider']['r'])} con la actividad, ITCG "
                        f"{fmt(f_itcg['merval']['r'])} con el Merval en dólares, ITCIS "
-                       f"{fmt(f_itvc['consumo']['r'])} con el consumo medido, ITCP "
+                       f"{fmt(f_itvc['volumen_hogar']['r'])} con el volumen que consume el "
+                       f"hogar, ITCP "
                        f"{fmt(f_itcp['epu']['r'])} con la incertidumbre de política — este último "
                        f"más moderado que los otros tres, coherente con un índice con varios "
                        f"componentes recién automatizados y con historia corta. "

@@ -229,6 +229,10 @@ ight)_{	ext{4T-23}}}`,
     latex: String.raw`100\cdot\frac{\text{inscripciones iniciales, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4T-23}}}`,
     leyenda: "Autos 0km inscriptos en los registros de la propiedad del automotor (DNRPA) en promedio móvil anual — misma transformación que motos, y por el mismo motivo medido: enero pesa 1,36 veces el mes promedio y diciembre 0,57. La card muestra el mes crudo.",
   },
+  consumo_supermercados: {
+    latex: String.raw`100\cdot\frac{\text{ventas a precios constantes}_{\text{hoy}}}{\text{ventas a precios constantes}_{\text{4T-23}}}`,
+    leyenda: "Índice de ventas en supermercados a precios constantes del INDEC, en la serie DESESTACIONALIZADA que publica el propio organismo. No se le aplica promedio móvil, a diferencia de motos y autos: la fuente ya le sacó el calendario, y volver a suavizarla con una media móvil de 12 meses la atrasaría medio año — probado, y ese atraso llega a invertir el signo de la correlación. Mide comercio registrado de cadenas: no ve el almacén de barrio ni el comercio informal.",
+  },
   inseguridad: {
     latex: String.raw`100\cdot\frac{\text{hogares v\'ictimas}_{\text{ene-24}}}{\text{hogares v\'ictimas}_{\text{hoy}}}`,
     leyenda: "Índice de Victimización del LICIP (Universidad Di Tella): porcentaje de hogares de 40 centros urbanos que sufrió al menos un delito en los últimos 12 meses, lo haya denunciado o no — capta la cifra negra que las estadísticas de denuncias no ven. Encuesta mensual; la ventana de 12 meses absorbe la estacionalidad. Base declarada: enero 2024, la primera medición tras la reanudación de la encuesta (suspendida 2020-2023) — su ventana de 12 meses cubre mayormente el año previo al mandato. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. Contraste: los hechos denunciados del SNIC, en la ficha.",

@@ -167,7 +167,8 @@ const cruz = cruzRaw?.filas?.some((f: { indice: string }) => f.indice === indice
   ? cruzRaw : null;
 // etiquetas cortas de las anclas externas para la matriz en mobile
 const CRUZ_CORTAS: Record<string, string> = {
-  lider: "Actividad", merval: "Merval USD", consumo: "Consumo", epu: "EPU Argentina",
+  lider: "Actividad", merval: "Merval USD",
+  volumen_hogar: "Volumen del hogar", epu: "EPU Argentina",
 };
 let valSvg: {
   W: number; H: number; base: number; top: number;

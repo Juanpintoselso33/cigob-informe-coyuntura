@@ -2421,12 +2421,12 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023 (más canastas = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (59,59% interno · 16,72% del ITCIS) y sigue siendo el componente más pesado.",
+      "Pertenece a la dimensión de ingresos y consumo (47,67% interno · 13,38% del ITCIS) y sigue siendo el componente más pesado.",
       "El ITCIS promedia sus componentes base-100 por dimensión: por encima de 100, la brecha acumula mejora contra el arranque del mandato.",
     ],
     limitaciones: [
       "El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.",
-      "El peso del componente (16,72% del índice) es una discusión abierta declarada del diseño.",
+      "El peso del componente (13,38% del índice) es una discusión abierta declarada del diseño.",
       "Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.",
     ],
     faltantes: "Si una fuente falla, se mantiene el último valor publicado (marcado como desactualizado); si el componente no calcula, los pesos del índice se renormalizan.",
@@ -2583,7 +2583,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menos proteína por habitante = deterioro).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (3,92% interno · 1,1% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (3,14% interno · 0,88% del ITCIS).",
       "Mide el acceso TOTAL a proteína cárnica, no el consumo de una carne. La distinción no es de matiz: la carne vacuna cae 10,7% contra el arranque del mandato y el total cae 5,0%, porque parte de esa caída es sustitución hacia pollo y cerdo. Leer la vacuna sola como pérdida de poder adquisitivo es el falso positivo que este indicador desarma.",
       "La composición se publica junto al color: qué parte del consumo sigue siendo vacuna, y si el total se sostiene o cae con ella.",
     ],
@@ -2618,7 +2618,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se invierte, como los otros componentes que se leen al revés: más pobreza es peor, así que la base va arriba en el cociente y por encima de 100 significa MENOS pobreza que en la transición.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (32,53% interno · 9,13% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (26,02% interno · 7,3% del ITCIS).",
       "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
     ],
     limitaciones: [
@@ -2914,7 +2914,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Es el único componente EXENTO del techo de recorte de 140 que rige para el resto del índice. Con un peso de 1,11%, lo máximo que puede aportar por encima de ese techo son 0,33 puntos del índice, así que el techo acota una compensación que el peso ya acota. Y contra una base tomada en el 4º trimestre de 2023 —el fondo del congelamiento previo a la devaluación— el nivel 140 no marca un valor extremo: dos tercios de los meses de la década anterior lo habrían superado.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (3,96% interno · 1,11% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (3,17% interno · 0,89% del ITCIS).",
       "Mide el acceso TOTAL a un vehículo 0 kilómetro, no la compra de un tipo de vehículo. La distinción decide el signo: cuando el patentamiento de motos sube, puede ser que hogares sin vehículo accedan al primero o que hogares con auto bajen de categoría, y las dos cosas mueven la serie de motos hacia arriba. El total las separa, porque un descenso de categoría deja el total plano: cada moto que entra tendría un auto que sale.",
       "La composición se publica junto al color: cuántos autos y cuántas motos hay detrás del total, y qué proporción de lo que se patenta son motos contra la proporción del arranque del mandato.",
     ],
@@ -2934,6 +2934,41 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-04", cambio: "Se aplica al componente de motos el techo de recorte 140 y su peso interno baja de 10% a 5%." },
       { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos como componente espejo, con el mismo peso y la misma transformación que motos (ADR-0223)." },
       { fecha: "2026-08-21", cambio: "Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro (ADR-0224). El motivo es que ninguna de las dos series por separado distingue acceso de descenso de categoría, y el total sí. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego." },
+    ],
+  },
+
+  consumo_supermercados: {
+    tipo: "indicador",
+    id: "consumo_supermercados",
+    cinturon: "vida_cotidiana",
+    rezago: "Encadena dos demoras y por eso es de las cards más lentas del cinturón: el INDEC publica el mes de referencia unos 52 días después de terminado, y la API de series tarda unas dos semanas más en espejarlo. El último punto disponible tiene entre tres y cuatro meses según en qué parte de ese ciclo caiga la corrida.",
+    fuente: {
+      organismo: "INDEC",
+      operacion: "Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada",
+      serie: "455.1_VENTAS_PREADA_0_M_44_44 · API de series de tiempo de datos.gob.ar, enero de 2017 en adelante",
+      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-12-37",
+      acceso: "Automático: API pública sin credenciales.",
+    },
+    transformaciones: [
+      "Componente del índice: el índice de la fuente rebaseado a 100 = promedio del 4º trimestre de 2023 (más volumen comprado = mejora).",
+      "Se usa la serie DESESTACIONALIZADA que publica el propio INDEC y no se la vuelve a suavizar. No es un detalle de implementación: aplanar la serie original con una media móvil de 12 meses la atrasa medio año, y ese atraso llega a invertir el signo de la relación — está medido, y es la razón por la que la regla del proyecto es tomar el ajuste estacional de la fuente antes que fabricarlo.",
+      "Tampoco lleva promedio móvil de 12 meses, a diferencia de los patentamientos: esa transformación existe para sacarle el calendario a un flujo crudo, y acá el calendario ya está sacado.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de ingresos y consumo (20% interno · 5,61% del ITCIS).",
+      "Es el único componente del índice que mide VOLUMEN EFECTIVAMENTE COMPRADO. Los otros diecisiete miden lo que entra al hogar (ingresos), lo que cuesta (precios), de dónde sale ese ingreso (empleo), lo que no se llega a pagar (mora), lo que se opina (percepción) o el delito sufrido. Ninguno mira lo que el hogar se llevó de la góndola.",
+      "El peso surge de esa jerarquía: por encima de los dos proxies de compra realizada que ya había —una proteína y la motorización, que juntos no llegan al 8% de la dimensión— y por debajo de las dos medidas estructurales, la brecha entre salario y canasta y el conteo de pobreza.",
+    ],
+    limitaciones: [
+      "Cubre comercio registrado de cadenas de supermercados: no ve el almacén de barrio, la feria ni el comercio informal, que es justamente donde se refugia parte del gasto cuando el ingreso se estrecha.",
+      "Tampoco ve el traslado de compras al canal mayorista y de descuento. Ese canal se mueve en sentido contrario —comprar ahí es señal de ajuste, no de holgura— y por eso no se suma a este componente; se sigue publicando aparte, en el panel de contraste externo del cinturón.",
+      "«A precios constantes» significa deflactado con índices de precios del propio INDEC, así que comparte insumo con el componente de precios de los alimentos. El solapamiento está declarado y medido: entre los dos la correlación es +0,558 en niveles y +0,058 al mirar los cambios mes a mes.",
+      "Mide cantidad vendida, no calidad de lo comprado: un carrito que cambia primera marca por segunda a igual volumen se registra igual.",
+    ],
+    faltantes: "El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la card mantiene el último valor como desactualizado.",
+    revisiones: "La API devuelve el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior.",
+    cambios: [
+      { fecha: "2026-08-21", cambio: "Entra al ITCIS con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo (ADR-0225). Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel." },
     ],
   },
 
@@ -3014,13 +3049,13 @@ export const FICHAS: Record<string, Ficha> = {
     nombreLargo: "Índice de Tensión del Cinturón de Impacto Social",
     base100: true,
     cinturon: "vida_cotidiana",
-    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Diecisiete componentes en seis dimensiones.",
+    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Dieciocho componentes en seis dimensiones.",
     marcoConceptual: [
       "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, la mora de las familias con el crédito, el empleo y sus prospectivas, y el clima de confianza y seguridad.",
       "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. A diferencia del ITCM y el ITCG, no usa tablas de umbrales: mide la evolución acumulada contra una línea de base común — el arranque del mandato.",
     ],
     seleccion: [
-      "Diecisiete componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
+      "Dieciocho componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
       "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada donde no existe medición de entonces (la encuesta de victimización arranca su base en enero de 2024, documentado).",
     ],
     tratamiento: [
@@ -3046,11 +3081,15 @@ export const FICHAS: Record<string, Ficha> = {
       "Se acompaña con el ejercicio de quitar cada componente por vez.",
     ],
     validacion: [
-      "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra el consumo medido: las ventas en supermercados a precios constantes que publica el INDEC, en su serie desestacionalizada. Se espera correlación positiva — si las condiciones materiales mejoran respecto del arranque del mandato, los hogares compran más en términos reales. El ancla no integra el índice, así que la comparación usa el ITCIS completo, el mismo que se publica.",
-      "El ancla fue el Índice de Confianza del Consumidor hasta julio de 2026 y se cambió por dos motivos medidos. El primero es que la confianza ES uno de los componentes del índice, lo que obligaba a comparar contra una versión recalculada sin ese componente: un número que no es el que se publica. El segundo es que alrededor de un tercio del peso del índice se mueve en sentido CONTRARIO a la confianza, porque en estos años el ánimo mejoró mientras el peso del alquiler, la pobreza, la morosidad y la informalidad empeoraban.",
-      "La confianza del consumidor se sigue publicando, como contraste que DISTINGUE en vez de confirmar: sirve para mostrar que la percepción y las condiciones materiales no son lo mismo. Que ese número sea más bajo no es una falla del índice, es el resultado.",
-      "Lo que el ancla no cubre, y queda declarado: mide comercio registrado de supermercados. No ve el comercio informal, y tampoco el traslado de compras al canal mayorista y de descuento, que se mueve en sentido contrario —comprar ahí es señal de ajuste, no de holgura— y por eso no se suma al ancla.",
-      "La matriz de validación cruzada compara además cada índice del informe contra todas las anclas a la vez, para ver si correlaciona más con la propia que con las ajenas. No se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período.",
+      "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra un PANEL de estadísticas externas, no contra una sola. No es una preferencia de método: es que hoy no hay una serie única que pueda hacer de referencia, y el motivo forma parte del resultado.",
+      "El ancla era el consumo medido —las ventas en supermercados a precios constantes del INDEC— y dejó de serlo porque pasó a ser COMPONENTE del índice. Mide condiciones materiales del hogar, así que le corresponde integrar el ITCIS y no juzgarlo: es la misma regla que antes había desplazado a la confianza del consumidor, que también componía el índice.",
+      "El reemplazo conceptualmente correcto está identificado y declarado: el consumo privado que el INDEC publica en las Cuentas Nacionales a precios constantes. No es un canal del consumo del hogar sino su agregado, que es exactamente lo que el cinturón dice medir. Todavía no puede usarse: es trimestral y arranca junto con la base del índice, así que la muestra son nueve trimestres y la correlación en primeras diferencias se mueve entre 0,17 y 0,73 según qué trimestre se quite. Un número que depende de cuál dato se saque no es un número publicable.",
+      "El umbral de promoción queda fijado por adelantado, antes de volver a mirar la correlación: pasa a ser la serie de referencia del cinturón cuando acumule 20 trimestres, hacia fines de 2028. Fijarlo ahora es lo que impide que la decisión termine dependiendo del número que dé ese día.",
+      "Su solapamiento con el índice también queda declarado y medido, porque el consumo privado contiene a las ventas en supermercados, que ahora son componente: la encuesta de supermercados representa el 4,49% del consumo privado en promedio del período (5,68% al inicio, 3,68% en el último trimestre disponible). El acoplamiento existe, es de segundo orden y se publica en vez de omitirse.",
+      "Mientras tanto el contraste es el panel completo, y el gráfico compara el índice contra el FACTOR COMÚN de las estadísticas de su terreno que miden volúmenes físicos consumidos por el hogar —electricidad, gas, transporte, combustible—: lo que todas ellas comparten, en lugar de cualquiera de ellas suelta. Las cargas de cada una y la varianza que el factor explica se publican acá abajo.",
+      "Del panel se reportan dos promedios —contra las estadísticas del propio terreno y contra las ajenas— y la brecha entre ambos, en niveles y en primeras diferencias. La segunda es la que manda: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período, así que un valor alto en niveles puede ser sólo eso.",
+      "La confianza del consumidor se sigue publicando como contraste que DISTINGUE en vez de confirmar: sirve para mostrar que la percepción y las condiciones materiales no son lo mismo. Que ese número sea más bajo no es una falla del índice, es el resultado.",
+      "La matriz de validación cruzada compara además cada índice del informe contra todos los contrastes a la vez, para ver si correlaciona más con el propio que con los ajenos. No se cumple en todos los casos y la matriz lo declara.",
     ],
     comunicacion: [
       "El resto del informe consume el índice como tensión 0–10 con su propia fórmula: tensión = 5 − (ITCIS − 100) × 0,2. Un índice en 100 (sin cambios contra el arranque) equivale a tensión 5; cada 5 puntos de índice mueven un punto de tensión.",
@@ -3079,6 +3118,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-20", cambio: "El componente de proteína animal pasa a puntuar el consumo TOTAL de carnes y no la carne vacuna sola (ADR-0217): buena parte de la caída de la vacuna es sustitución hacia pollo y cerdo, y leerla como pérdida de poder adquisitivo era un falso positivo. La vacuna sigue relevándose como diagnóstico, sin tarjeta propia." },
       { fecha: "2026-08-21", cambio: "Dos cambios en la dimensión de empleo. El cierre de PyMEs pasa a medirse con los empleadores activos de la SRT en lugar del IPI manufacturero, que era una aproximación por producción industrial (ADR-0218). Y entra el peso del trabajo independiente como su contracara (ADR-0219). El índice queda con diecisiete componentes y cuatro de los seis de la dimensión miden empleo directamente." },
       { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos a la dimensión de ingresos y consumo, con el mismo peso y la misma transformación que el de motos (ADR-0223). El índice queda con dieciocho componentes. La razón no es sumar un dato más de consumo: con motos solas, un aumento del patentamiento se lee siempre como mejora, y la moto es además el sustituto barato del auto. Las dos series juntas distinguen más consumo de bajar de categoría." },
+      { fecha: "2026-08-21", cambio: "Las ventas en supermercados a precios constantes dejan de ser el ancla de validación externa y entran como componente de la dimensión de ingresos y consumo, con 20% interno (ADR-0225). El índice queda con dieciocho componentes y es la primera vez que uno mide volumen efectivamente comprado. En el mismo movimiento el cinturón deja de tener ancla única y su contraste pasa a ser el panel: el reemplazo natural —el consumo privado de las Cuentas Nacionales— existe pero todavía tiene nueve trimestres, y queda declarado como referencia en formación con su umbral de promoción fijado de antemano." },
     ],
   },
 

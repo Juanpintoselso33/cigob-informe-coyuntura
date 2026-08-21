@@ -323,6 +323,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Es la compra más cara que hace un hogar después de la vivienda, y la más sensible al crédito: se pospone apenas el ingreso se estrecha. Leído junto al de motos separa dos cosas que un solo indicador confunde — que los hogares compren más, o que bajen de categoría —, porque la moto es a la vez medio de trabajo y sustituto barato del auto.",
     frecuencia: "Mensual (el mes se publica en los primeros días del siguiente)", tipo: "Conteo",
   },
+  consumo_supermercados: {
+    que: "Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el INDEC en su serie desestacionalizada. En el ITCIS puntúa rebaseado a 100 = 4T-2023.",
+    aporta: "Es el único componente del cinturón que mide volumen efectivamente comprado. Todos los demás miden lo que entra (ingresos), lo que cuesta (precios), de dónde viene el ingreso (empleo), lo que no se paga (mora) o lo que se opina (percepción): ninguno mira lo que el hogar se llevó de la góndola. Cubre comercio registrado de cadenas, así que no ve el almacén de barrio ni el comercio informal.",
+    frecuencia: "Mensual (el INDEC lo publica unos dos meses después del mes de referencia)", tipo: "Índice",
+  },
 
   // ── Espíritu de época (el humor social) ─────────────────────────
   clima_electoral: {

@@ -382,6 +382,7 @@ export const LABELS: Record<string, string> = {
   icc_utdt: "Confianza del consumidor (ICC)", sentimiento_digital: "Sentimiento digital (Trends)",
   motorizacion_total: "Motorización total",
   patentamiento_motos: "Patentamiento de motos", patentamiento_autos: "Patentamiento de autos",
+  consumo_supermercados: "Ventas en supermercados",
   desocupacion: "Desocupación",
   // gestion
   cepo_mulc: "Brecha cambiaria (cepo)", privatizaciones: "Privatizaciones (etapas)",
@@ -456,6 +457,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.", patentamiento_autos: "u.",
   motorizacion_total: "c/1.000 hab.",
+  consumo_supermercados: "índice",
   // gestion (insumos del ITCG)
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "%",
   cobertura_judicial: "% cubierto",
@@ -526,6 +528,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   patentamiento_motos: "Unidades",
   patentamiento_autos: "Unidades (autos 0km inscriptos en el mes)",
   motorizacion_total: "Vehículos 0km (autos + motos) por cada 1.000 habitantes, acumulado de 12 meses",
+  consumo_supermercados: "Índice de ventas a precios constantes (2004 = 100, desestacionalizado)",
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",
