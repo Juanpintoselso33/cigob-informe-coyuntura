@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-10
 cinturon: 'politica'
 archivos: ['scripts/itcp.py', 'scripts/politica.py', 'scripts/descargar_series.py', 'scripts/validacion_externa.py', 'scripts/publicar.py', 'scripts/gate_calidad.py', 'web/src/lib/*', 'tests/*']
-relacionado: ['0064', '0168', '0183', '0232']
+relacionado: ['0064', '0168', '0183', '0233']
 ambito: '`scripts/itcp.py` · `scripts/politica.py` · `scripts/descargar_series.py` · `scripts/validacion_externa.py` · `scripts/publicar.py` · `scripts/gate_calidad.py` · `web/src/lib/*` · `tests/*`'
 ---
 

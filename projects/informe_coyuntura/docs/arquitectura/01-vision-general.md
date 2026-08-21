@@ -10,17 +10,18 @@ intervención manual.
 Los cinturones vienen del marco Matusiano (Triángulo de Gobierno) adoptado por
 el CIGOB:
 
-| Cinturón | Slug | Indicadores | Puntuación |
-|---|---|---|---|
-| Situación macroeconómica | `macro` | 17 (+4 nominales ocultos) | **ITCM** paramétrico |
-| Gestión / reformas | `gestion` | 14 | **ITCG** paramétrico |
-| Vida cotidiana | `vida_cotidiana` | 18 | **ITVC-B100** |
-| Política | `politica` | 18 | **ITCP** paramétrico |
+| Cinturón | Slug | Puntuación |
+|---|---|---|
+| Situación macroeconómica | `macro` | **ITCM** paramétrico |
+| Gestión / reformas | `gestion` | **ITCG** paramétrico |
+| Vida cotidiana | `vida_cotidiana` | **ITVC-B100** |
+| Política | `politica` | **ITCP** paramétrico |
 
 Espíritu de época fue el quinto cinturón hasta que salió del tablero
-(ADR-0205). Los conteos de arriba son los del snapshot vigente y se mueven con
-cada alta o baja de indicador: la cuenta viva la publica la propia página de
-metodología.
+(ADR-0205). El conteo de indicadores por cinturón se mueve con cada alta o
+baja, así que no se repite acá: la tabla del
+[README del proyecto](../../README.md) lo lleva y la cuenta viva la publica la
+propia página de metodología.
 
 Cada cinturón publica un **score de tensión 0-10** (mayor = más tensión) y el
 sitio los agrega en un panel global.

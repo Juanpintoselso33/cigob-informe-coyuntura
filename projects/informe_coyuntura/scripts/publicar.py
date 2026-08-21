@@ -2456,7 +2456,6 @@ def aplicar_scoring(informe, series):
             ind["aporte_lectura"] = lectura
     _semaforos(informe)
 
-
     # REGLA (ADR-0153/0216): o integra el índice, o no es card.
     #
     # Desde ADR-0217 el que puntúa es el consumo TOTAL de carnes, así que la

@@ -46,7 +46,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 96,7 | VERDE | 15,0 % |
 | Poder judicial | La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. | 59,4 | AMARILLO | 15,0 % |
 | Sector privado | La relación con los empresarios por dos vías, lo que esperan y lo que dicen. | 54,2 | AMARILLO | 13,0 % |
-| Conflicto social | La conflictividad social que el gobierno tiene que administrar. | 71,7 | VERDE | 10,0 % |
+| Conflicto social | La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. | 71,7 | VERDE | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,6 | VERDE | 7,0 % |
 
 ```{=openxml}
@@ -544,7 +544,7 @@ Ponderación vigente en el ITCP: 6 % efectivo. El color es una lectura adicional
 
 **2026-07-11** — Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable.
 
-**2026-08-21** — Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral (ADR-0232).
+**2026-08-21** — Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral (ADR-0233).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

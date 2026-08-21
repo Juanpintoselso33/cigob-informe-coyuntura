@@ -23,10 +23,13 @@ La corrida completa sin manos:
    despliega**: el build lo hace Vercel, no el workflow.
 5. `bigquery_export.py` espeja la corrida en el archivo histórico (ADR-0180).
 
-Los topes de frescura y las excepciones del G3 se calibran en
-`scripts/gate_calidad.py` (cabecera del archivo); al cambiar la semántica
-card/serie de un indicador (ej. pulso vs canasta), declarar la excepción ahí
-con su motivo.
+Los topes de frescura del dato (`MAX_DIAS`) y del fetch (`DIAS_SIN_FETCH`) se
+calibran en `config.py`, no en el gate: los comparte con `publicar.py`, que
+marca `desactualizado` en el snapshot, y una política con dos dueños se
+desincroniza en silencio. Las excepciones del G3 y los topes propios de la
+serie (`G3B_MAX_DIAS`) siguen en la cabecera de `scripts/gate_calidad.py`; al
+cambiar la semántica card/serie de un indicador (ej. pulso vs canasta),
+declarar la excepción ahí con su motivo.
 
 > **GitHub Pages se retiró en julio de 2026** y con él `pages.yml`. El sitio
 > lo construye **Vercel** en cada push a `main` (Root Directory =

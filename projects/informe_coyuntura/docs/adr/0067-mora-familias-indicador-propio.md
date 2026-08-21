@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-15
 cinturon: 'vida'
 indicadores: [endeudamiento_familiar, mora_familias]
-relacionado: ['0018', '0033', '0231', '0233']
+relacionado: ['0018', '0033', '0231', '0232', '0233']
 ambito: 'Cinturón vida cotidiana · ITVC · dimensión Vulnerabilidad financiera · `endeudamiento_familiar` · `mora_familias` (nuevo)'
 ---
 

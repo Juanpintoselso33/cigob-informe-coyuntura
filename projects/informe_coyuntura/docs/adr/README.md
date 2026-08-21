@@ -167,7 +167,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0172](0172-la-serie-termina-donde-esta-la-card.md) | La serie termina donde está la card |  | vigente |
 | [0183](0183-rediseno-del-cinturon-politico.md) | Rediseño del cinturón político según el documento de agosto: registrado, no aplicado |  | propuesto |
 | [0230](0230-nadie-publica-si-un-decreto-sigue-rigiendo.md) | Nadie publica si un decreto sigue rigiendo |  | rechazado |
-| [0232](0232-la-intensidad-laboral-complementa-la-calle.md) | La intensidad laboral complementa la calle | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` | vigente |
+| [0233](0233-la-intensidad-laboral-complementa-la-calle.md) | La intensidad laboral complementa la calle | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` | vigente |
 
 ### Gestión (ITCG)
 

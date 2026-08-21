@@ -74,7 +74,10 @@ Para screenshots de verificación visual se usa Playwright contra ese server
 ## Flujo de trabajo
 
 1. Cambio metodológico → **ADR primero** (`docs/adr/`, formato de los
-   existentes, fila en el README del índice).
+   existentes). El índice del README y las relaciones inversas **no se
+   escriben a mano**: los regenera `python scripts/adr_coherencia.py` desde el
+   frontmatter, y los manuales de cinturón, `python scripts/manual_cinturon.py
+   --todos`.
 2. Código + tests recalibrados **con el engine** (nunca valores a mano).
 3. Si toca la web: build + screenshot comparado contra una card aprobada.
 4. Commit de archivos relevantes (nada de `git add -A`), push a `main`,
