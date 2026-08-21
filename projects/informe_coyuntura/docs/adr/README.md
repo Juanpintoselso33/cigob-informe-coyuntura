@@ -226,7 +226,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0109](0109-saturacion-de-la-escala-de-tension.md) | Saturación de la escala de tensión: verificada, no requiere cambio |  | vigente |
 | [0110](0110-percepcion-seguridad-y-consumo.md) | La dimensión se llama por lo que tiene adentro | `confianza` | vigente |
 | [0111](0111-alquiler-real-entra-al-itvc.md) | El costo del alquiler entra al cinturón; pobreza y expectativas no | `precios`, `alquiler_real`, `itvc_alquiler` | vigente |
-| [0112](0112-el-cinturon-mira-hacia-adelante.md) | El cinturón incorpora su primera medida prospectiva | `empleo`, `indice_lider`, `itvc_lider` | vigente |
+| [0112](0112-el-cinturon-mira-hacia-adelante.md) | El cinturón incorpora su primera medida prospectiva | `empleo`, `indice_lider`, `itvc_lider` | superado por [0154](0154-endeudamiento-e-indice-lider-salen-del-itvc.md) |
 | [0113](0113-nowcast-de-pobreza.md) | La pobreza se publica, con la única fuente mensual que existe | `pobreza_nowcast`, `utdt_nowcast_pobreza` | vigente |
 | [0114](0114-pobreza-oficial-acompana-al-nowcast.md) | La pobreza oficial acompaña al nowcast en el mismo gráfico | `pobreza_nowcast`, `pobreza_indec` | vigente |
 | [0115](0115-reorganizacion-de-la-dimension-de-percepcion.md) | La dimensión de percepción se parte en tres | `ingresos`, `percepcion`, `seguridad` | vigente |

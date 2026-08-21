@@ -1660,7 +1660,7 @@ def _validacion_itcp(bloque):
     local — Banco de España + SECMCA, misma familia metodológica que
     Baker/Bloom/Davis) — correlación negativa esperada. No es un precio de
     mercado como los otros tres pares: es la lectura pública de la política
-    misma, ajena a los once componentes del índice."""
+    misma, ajena a los componentes del índice."""
     val = _cargar_validacion()
     serie = val.get("serie_itcp") or {}
     epu = val.get("epu_argentina_mensual") or {}
@@ -1674,6 +1674,10 @@ def _validacion_itcp(bloque):
     r_sin_priv = (corr.get("niveles, sin la dimensión de sector privado") or {}).get("r")
     difs = corr.get("primeras diferencias (ITCP vs EPU)") or {}
     r_niv, r_dif = niveles.get("r"), difs.get("r")
+    n_componentes = sum(
+        len(d.get("indicadores", {}))
+        for d in bloque.get("dimensiones", {}).values()
+    )
     bloque["validacion"] = {
         "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
         "pares": [[m, serie[m], epu[m]] for m in comunes],
@@ -1686,7 +1690,7 @@ def _validacion_itcp(bloque):
                 "cuánto se habla de incertidumbre alrededor del gobierno y sus políticas. El "
                 "ITCP se reconstruye mes a mes desde las series de sus componentes (sin los "
                 "ajustes del analista: el nivel puede diferir del publicado — lo que valida es "
-                "su evolución); varios de los once componentes tienen historia corta o recién "
+                f"su evolución); varios de los {n_componentes} componentes tienen historia corta o recién "
                 "se automatizaron en julio de 2026 (cohesión del bloque oficialista, alineamiento "
                 "de senadores por provincia, adhesión provincial al RIGI), así que la reconstrucción de los "
                 "meses más antiguos se apoya sobre todo en poder legislativo, el votómetro y la "
@@ -1760,6 +1764,20 @@ def _scoring_vida_itvc(c, series):
             ind["dimension"] = dkey
             ind["indice_itvc"] = info["puntaje_aplicado"]
             ind["peso_efectivo"] = info["peso_efectivo"]
+            if ikey in winsorizados:
+                ind["indice_itvc_crudo"] = winsorizados[ikey]
+                ind["recorte_itvc"] = round(winsorizados[ikey] - itvc.WINSOR_TOPE, 1)
+            else:
+                ind.pop("indice_itvc_crudo", None)
+                ind.pop("recorte_itvc", None)
+            # La exención actúa antes de los ajustes del analista. Mirar el
+            # puntaje aplicado atribuiría falsamente al techo un override que
+            # lo cruza por sí solo.
+            if (ikey in itvc.WINSOR_EXENTOS
+                    and info["puntaje_banda"] > itvc.WINSOR_TOPE):
+                ind["winsor_exento"] = True
+            else:
+                ind.pop("winsor_exento", None)
             aporte = itvc.tension_de_itvc(info["puntaje_aplicado"])
             # tensión SIN topear: el 0 de un componente en mejora fuerte no es
             # "no incide" — es tensión negativa cortada por la escala, y hay
@@ -2239,6 +2257,37 @@ def aplicar_scoring(informe, series):
     return informe
 
 
+# Procedencia de los insumos que no son íntegramente automáticos. El default
+# es automático porque ése es el contrato de los colectores; las excepciones
+# viven acá para que el snapshot —y no una heurística de la UI— diga cómo se
+# obtuvo cada dato. "Semiautomático" significa detección automática con una
+# clasificación humana necesaria para que el valor avance.
+METODO_OBTENCION_EXCEPCIONES = {
+    "apoyo_empresario": "semiautomatico",
+    # Los dos leen el mismo registro legislativo: las actas inequívocas se
+    # clasifican solas y las ambiguas no avanzan hasta el triage humano.
+    "desafios_legislativos": "semiautomatico",
+    "bloqueo_sostenido": "semiautomatico",
+    # El anuario de la Corte se releva una vez por año sin extractor.
+    "velocidad_resolucion": "manual",
+    # Detectan novedades automáticamente, pero el dato sólo incorpora los
+    # hechos asentados o clasificados por una persona en el registro curado.
+    "reestructuracion_organismos": "semiautomatico",
+    "fal_modernizacion_laboral": "semiautomatico",
+    "protocolo_antipiquetes": "semiautomatico",
+    "privatizaciones": "manual",
+}
+
+
+def anotar_metodo_obtencion(informe):
+    """Adjunta a cada indicador la procedencia que debe declarar la web."""
+    for cinturon in informe.get("cinturones", {}).values():
+        for clave, indicador in cinturon.get("indicadores", {}).items():
+            indicador["metodo_obtencion"] = METODO_OBTENCION_EXCEPCIONES.get(
+                clave, "automatico")
+    return informe
+
+
 def _val_en(serie, objetivo_ym):
     """Último valor de `serie` (lista {fecha, valor}) con mes <= objetivo (YYYY-MM)."""
     cand = [d for d in serie if d["fecha"][:7] <= objetivo_ym]
@@ -2416,6 +2465,7 @@ def main():
                 })
 
     informe = sanitizar_fuentes(informe)
+    informe = anotar_metodo_obtencion(informe)
     informe = aplicar_scoring(informe, series)
     informe = recomputar_vida_y_global(informe)
     _validacion_cruzada(informe)   # matriz discriminante (ADR-0031): necesita los 3 bloques

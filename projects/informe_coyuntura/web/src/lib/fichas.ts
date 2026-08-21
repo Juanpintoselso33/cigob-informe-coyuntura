@@ -540,7 +540,7 @@ export const FICHAS: Record<string, Ficha> = {
       operacion: "Anuario estadístico, sobre su sistema de gestión judicial",
       serie: "Expedientes ingresados y resueltos por año",
       url: "https://www.csjn.gov.ar/transparencia/datos-estadisticos",
-      acceso: "Los tableros interactivos no admiten consulta automática, pero la Corte publica una versión estática de cada hoja con las etiquetas de datos visibles, y el anuario en documento.",
+      acceso: "Carga manual anual: los tableros interactivos no admiten consulta automática; el valor se releva de la versión estática de cada hoja y se valida contra el anuario en documento.",
     },
     transformaciones: [
       "Se divide lo resuelto sobre lo ingresado en cada año. Cien por ciento es el punto donde la Corte resuelve exactamente lo que le entra.",
@@ -1237,7 +1237,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Cámara de Diputados · Senado de la Nación · InfoLeg",
       operacion: "Actas de votación nominal de ambas cámaras y base de legislación nacional — normas del Poder Ejecutivo sometidas a votación en el recinto",
       url: "https://votaciones.hcdn.gob.ar",
-      acceso: "Automático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos registrados en InfoLeg. Elaboración propia sobre fuentes oficiales.",
+      acceso: "Semiautomático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos de InfoLeg; los casos ambiguos del registro compartido con bloqueo sostenido quedan pendientes de revisión humana.",
     },
     transformaciones: [
       "Una norma cuenta como desafiada cuando el Congreso la somete a votación en el recinto: un veto presidencial sobre el que se vota una insistencia, o un decreto puesto a consideración bajo el procedimiento de la ley 26.122.",
@@ -1357,7 +1357,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     limitaciones: [
       "Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.",
-      "Los datos respaldan que la dependencia sea una vulnerabilidad real y no una objeción teórica, pero también que sea latente: de los 162 decretos de necesidad y urgencia dictados desde diciembre de 2023, el 95% nunca se votó en el recinto y por lo tanto sigue vigente; de los ocho que sí se votaron, seis cayeron. El 7 de agosto de 2025 cayeron cinco en un solo día.",
+      "En el relevamiento cerrado el 19 de julio de 2026, los datos respaldaban que la dependencia fuera una vulnerabilidad real y no una objeción teórica, pero también que fuera latente: de los 162 decretos de necesidad y urgencia dictados desde diciembre de 2023, el 95% nunca se había votado en el recinto y por lo tanto seguía vigente; de los ocho que sí se habían votado, seis habían caído. El 7 de agosto de 2025 cayeron cinco en un solo día.",
       "Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.",
       "Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.",
       "El buscador no expone un listado con fecha por norma: reconstruir la serie mensual exige una consulta separada por mes, no una descarga única.",
@@ -1725,7 +1725,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia)",
       operacion: "Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia)",
       url: "https://votaciones.hcdn.gob.ar",
-      acceso: "Automático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos se comparte con el indicador de derrotas legislativas.",
+      acceso: "Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos se comparte con el indicador de derrotas legislativas.",
     },
     transformaciones: [
       "Una norma queda DESAFIADA desde su primera votación en el recinto, gane quien gane: la insistencia de una ley vetada (art. 83 de la Constitución) o el control de un decreto bajo la ley 26.122.",
@@ -2042,7 +2042,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "InfoLeg (Ministerio de Justicia)",
       operacion: "Conteo de normas nacionales publicadas desde diciembre de 2023 cuyo texto contiene «disolución», filtrado caso por caso contra un registro curado",
       url: "https://servicios.infoleg.gob.ar/infolegInternet/",
-      acceso: "InfoLeg como descubrimiento (mismo mecanismo que la desregulación) + un registro curado que clasifica cada hallazgo: cuenta, no cuenta por ser ajeno a un organismo público, o no cuenta por haber sido revertido.",
+      acceso: "Semiautomático: InfoLeg descubre las normas y una persona clasifica cada hallazgo en el registro curado: cuenta, no cuenta por ser ajeno a un organismo público, o no cuenta por haber sido revertido.",
     },
     transformaciones: [
       "Avance = actos de disolución o cierre VIGENTES de organismos públicos, sobre un plan de 45 (calibración declarada). No cuenta fusiones, transformaciones ni centralizaciones —difíciles de verificar caso por caso, CIGOB pidió (ago-2026) hablar solo de disolución o cierre— y desde agosto de 2026 tampoco cuenta un hallazgo de texto que no sea, caso por caso, el cierre vigente de un organismo público (ADR-0188): de los 18 documentos que la búsqueda encontraba, 11 pasan el filtro (24,4% de avance); los otros 7 quedan excluidos con su motivo documentado.",
@@ -2086,7 +2086,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de fondos comunes de inversión)",
       operacion: "Avance del Fondo de Asistencia Laboral por lo que rige: construcción normativa vigente (50%) + entrada en vigencia del régimen (20%) + adopción efectiva (30%)",
       url: "https://www.infoleg.gob.ar/",
-      acceso: "Registro versionado de hechos fechados: cada acto normativo se verifica por número en InfoLeg y cada suspensión judicial de alcance general se asienta con su órgano, su fecha de inicio y la resolución que la levanta. Los fondos registrados en la Comisión Nacional de Valores se leen automáticamente. Las menciones del instrumento en el Boletín Oficial y el conteo amplio de fondos de cese se muestran como contexto y no inciden en el puntaje.",
+      acceso: "Semiautomático: los actos normativos y las suspensiones judiciales se verifican y asientan en un registro versionado; los fondos registrados en la Comisión Nacional de Valores se leen automáticamente. Las menciones del instrumento en el Boletín Oficial y el conteo amplio de fondos de cese se muestran como contexto y no inciden en el puntaje.",
     },
     transformaciones: [
       "La construcción normativa vale la mitad del indicador y se reparte en partes iguales entre los dos actos que ponen en pie al Fondo: la Ley 27.802 de Modernización Laboral, con la que el Congreso lo instauró (publicada el 6 de marzo de 2026), y el Decreto 408/2026, con el que el Poder Ejecutivo reglamentó el Título II (publicado el 1 de junio de 2026). Un acto cuenta mientras esté dictado y no suspendido: si un tribunal frena su vigencia con alcance general, deja de sumar mientras dure la suspensión.",
@@ -2335,7 +2335,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Diagnóstico Político (consultora; relevamiento diario de cortes sobre más de cien medios desde 2009)",
       operacion: "Reducción porcentual de los cortes por manifestación en CABA contra 2023, con los anclajes anuales públicos de la fuente (2023: 931 · 2024: 440 · 2025: 240)",
       url: "https://diagnosticopolitico.com.ar/monitoreos-politicos",
-      acceso: "Automático sobre un registro curado: los anclajes anuales se cargan con su fuente pública; un detector revisa la página de la consultora y avisa cuando aparece un año nuevo.",
+      acceso: "Semiautomático: un detector avisa cuando aparece un año nuevo y una persona carga en el registro curado el anclaje anual con su fuente pública.",
     },
     transformaciones: [
       "Reducción = (1 − cortes del último año cerrado / cortes de 2023) × 100.",
@@ -2922,7 +2922,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Pasaje a per cápita con la población urbana total proyectada del INDEC, interpolada a meses desde su serie trimestral.",
       "Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menos vehículos por habitante = deterioro).",
       "Se excluye Tierra del Fuego de las dos series. La provincia inscribió unas 29.000 motos en un solo año contra menos de 900 en cada uno de los dos anteriores, concentradas en ocho meses: es un movimiento registral de su régimen de promoción industrial, no compras de hogares fueguinos. La exclusión se aplica a la provincia entera y a toda la serie, porque recortar sólo los meses anómalos exigiría un umbral, y cualquier umbral que atrape una carga fiscal también atrapa un mes de cuarentena.",
-      "Es el único componente EXENTO del techo de recorte de 140 que rige para el resto del índice. Con un peso de 1,11%, lo máximo que puede aportar por encima de ese techo son 0,33 puntos del índice, así que el techo acota una compensación que el peso ya acota. Y contra una base tomada en el 4º trimestre de 2023 —el fondo del congelamiento previo a la devaluación— el nivel 140 no marca un valor extremo: dos tercios de los meses de la década anterior lo habrían superado.",
+      "Es el único componente EXENTO del techo de recorte de 140 que rige para el resto del índice. Con un peso efectivo de 0,89%, si llegara a 170 aportaría 0,27 puntos del índice por encima de ese techo: la compensación ya queda acotada por el peso. Y contra una base tomada en el 4º trimestre de 2023 —el fondo del congelamiento previo a la devaluación— el nivel 140 no marca un valor extremo: dos tercios de los meses de la década anterior lo habrían superado.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de ingresos y consumo (3,17% interno · 0,89% del ITCIS).",
@@ -2999,7 +2999,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     seleccion: [
       "Catorce indicadores puntúan en cinco dimensiones (la tabla de composición muestra la estructura vigente con los puntajes de hoy). El tablero solo muestra lo que integra el índice: dos series complementarias de conflictividad (alertas de manifestación y eventos de protesta) se siguen relevando como seguimiento interno, sin publicarse ni puntuar.",
-      "Criterio de selección: fuentes públicas verificables y automatizables. El cinturón es íntegramente automático: el único registro curado a mano (privatizaciones) cita la norma del Boletín Oficial detrás de cada estado.",
+      "Criterio de selección: fuentes públicas verificables. Privatizaciones usa un registro curado a mano y cita la norma del Boletín Oficial detrás de cada estado; su ficha declara esa carga manual. El cálculo del índice a partir de los valores publicados sí es automático.",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y luego entre dimensiones si una queda vacía.",
@@ -3079,19 +3079,19 @@ export const FICHAS: Record<string, Ficha> = {
     tratamiento: [
       "Componentes faltantes: los pesos se renormalizan dentro de la dimensión y entre dimensiones; ante una fuente caída, el indicador mantiene su último valor publicado marcado como desactualizado.",
       "Polaridad: los componentes donde «más es peor» —informalidad, mora de las familias, pluriempleo, peso del trabajo independiente, victimización y búsquedas de urgencia— se invierten para que en todos valga la misma lectura: por encima de 100, mejora.",
-      "Recorte asimétrico declarado: los componentes se acotan a un techo de 140 (un boom puntual no compra compensación ilimitada) y deliberadamente NO tienen piso — el deterioro no se recorta, se señaliza con el flag de dimensión crítica.",
+      "Recorte asimétrico declarado: todos los componentes salvo motorización total se acotan a un techo de 140 (un boom puntual no compra compensación ilimitada) y deliberadamente NO tienen piso — el deterioro no se recorta, se señaliza con el flag de dimensión crítica. Motorización total está exenta porque su peso efectivo limita el aporte y 140 no es un extremo frente a su historia; la ficha del componente cuantifica ambos argumentos.",
     ],
     normalizacion: [
       "Cada componente es un índice continuo rebaseado a 100 = promedio del 4º trimestre de 2023 (o su base declarada). No hay bandas ni anclas: la normalización es el rebase, y las transformaciones por componente (acumulados móviles, deflactación, relativos al IPC general) están documentadas en cada ficha.",
     ],
     agregacion: {
-      latex: String.raw`\text{ITCIS}=\sum_{\text{6 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{componentes}}\text{peso}_{\text{interno}}\times\min(\text{componente},140)\Big)`,
+      latex: String.raw`\begin{gathered}\text{ITCIS}=\sum_d w_d\sum_{i\in d}w_i\,\operatorname{cap}_i(x_i)\\[3pt]\operatorname{cap}_i(x)=\begin{cases}x,&i=\text{motorización total}\\\min(x,140),&\text{resto}\end{cases}\end{gathered}`,
       leyenda: "Promedio ponderado en dos niveles (28,06% ingresos y consumo · 25% presión de precios · 24,19% prospectivas de empleo · 10% vulnerabilidad financiera · 8,25% confianza y percepción · 4,5% seguridad), con el techo de recorte declarado.",
       parrafos: [
         "La agregación es compensatoria y el flag de dimensión crítica lo declara cuando una dimensión cae por debajo del umbral. Cuáles están marcadas se lee en la tabla de composición, que se recalcula con cada actualización: nombrarlas acá dejaría el texto viejo al mes siguiente.",
         "El índice y la tensión son DOS ESCALAS DISTINTAS y conviene no confundirlas. El índice suma niveles: cada componente vale lo que vale contra su base de 2023, y esos números se promedian. La tensión es una lectura del resultado —5 − (índice − 100) × 0,2, recortada al rango 0-10— pensada para ponerlo en la misma vara que los otros cinturones. La tensión que aparece en la ficha de cada componente aplica esa misma fórmula a ese componente solo, y sirve para leerlo, no para calcular: al índice entra el nivel, nunca la tensión.",
         "Eso explica algo que sorprende: varios componentes muestran una tensión de 0 o de 10 a la vez. No es que midan lo mismo — es que la escala 0-10 se corta ahí, y su tensión sin recortar seguiría subiendo o bajando. Cada ficha publica ese valor sin recortar junto al recortado, para que el techo no esconda la diferencia.",
-        "Hay además un segundo recorte, éste sí sobre el número que entra al índice: ningún componente puede superar 140 (un salto puntual de uno solo no compra compensación ilimitada en el promedio). El recorte es sólo hacia arriba: las caídas no se recortan, se señalizan con el flag de dimensión crítica. Qué componentes están recortados y cuánto resta el recorte se publica en la ficha de cada uno y en la tabla de composición, porque cambia mes a mes",
+        "Hay además un segundo recorte, éste sí sobre el número que entra al índice: salvo motorización total, ningún componente puede superar 140 (un salto puntual de uno solo no compra compensación ilimitada en el promedio). El recorte es sólo hacia arriba: las caídas no se recortan, se señalizan con el flag de dimensión crítica. La tabla de composición identifica cada componente recortado, su nivel crudo y cuánto resta el recorte; también marca la excepción cuando supera 140.",
       ],
     },
     robustez: [

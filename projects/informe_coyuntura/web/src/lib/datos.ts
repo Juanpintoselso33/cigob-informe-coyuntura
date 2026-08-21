@@ -17,6 +17,7 @@ export interface Indicador {
   fecha_dato: string;
   desactualizado: boolean;
   estado?: string;        // "placeholder" cuando aplica
+  metodo_obtencion?: "automatico" | "semiautomatico" | "manual";
   avance_pct?: number;
   notas?: string;
   en_indice?: boolean;    // macro/gestión/política/vida: integra el índice paramétrico (false = contexto)
@@ -638,8 +639,10 @@ export function visualDe(key: string, ind: Indicador): Visual {
 }
 
 // Badge honesto del origen del dato.
-export function badgeEstado(ind: Indicador): "Automático" | "Carga manual" | "Estimación" {
+export function badgeEstado(ind: Indicador): "Automático" | "Semiautomático" | "Carga manual" | "Estimación" {
   if (ind.estado === "placeholder" || ind.valor === null) return "Estimación";
+  if (ind.metodo_obtencion === "manual") return "Carga manual";
+  if (ind.metodo_obtencion === "semiautomatico") return "Semiautomático";
   return "Automático";
 }
 

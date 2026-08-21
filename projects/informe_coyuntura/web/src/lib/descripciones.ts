@@ -156,7 +156,7 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   ratio_dnu: {
     que: "Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en los últimos 12 meses.",
-    aporta: "Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas: gobernar por decreto suele salir bien —el 95% de los decretos de necesidad y urgencia de esta gestión nunca llegó a votarse en el recinto y por lo tanto sigue vigente—, pero de los ocho que sí llegaron, seis cayeron. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.",
+    aporta: "Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. En el relevamiento cerrado el 19 de julio de 2026, el 95% de los decretos de necesidad y urgencia de esta gestión nunca había llegado a votarse en el recinto; de los ocho que sí habían llegado, seis habían caído. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.",
     frecuencia: "Continua (12m)", tipo: "Ratio",
   },
   conflictividad_nacional: {
@@ -312,6 +312,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     que: "Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet: inflación, precios, dólar, empleo, inseguridad y corrupción.",
     aporta: "Mide la preocupación por la conducta (qué busca la gente cuando algo le duele), complementando al ICC que la mide por encuesta. Los seis términos pesan lo mismo y cada uno se compara contra el arranque del mandato. La corrupción es la excepción de lectura: se mueve por escándalos, así que un pico suyo dice que se habla de un caso, no que empeoró el bolsillo.",
     frecuencia: "Mensual", tipo: "Índice (100 = 4T-2023)",
+  },
+  motorizacion_total: {
+    que: "Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el ITCIS se compara contra el promedio del 4º trimestre de 2023.",
+    aporta: "Mide acceso total a un vehículo sin confundir una suba de motos con una mejora automática: si los hogares sólo reemplazaran autos por motos, la suma quedaría estable. La ficha muestra ambas patas y el cambio de su composición para distinguir acceso de sustitución descendente.",
+    frecuencia: "Mensual (primeros días del mes siguiente)", tipo: "Nivel per cápita · índice base-100 en el gráfico",
   },
   patentamiento_motos: {
     que: "Cuántas motos se patentan en el mes.",

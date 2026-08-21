@@ -1,29 +1,24 @@
 # Monitor del Plan de Gobierno
 
-Colectores de datos para los cinco cinturones del marco CIGOB-Matus (Macro, Político, Vida Cotidiana, Gestión y Espíritu de Época) y generador del informe periódico.
+Colectores de datos para los cuatro cinturones publicados del marco CIGOB-Matus (Macro, Política, Impacto Social y Gestión) y generador del informe periódico. Espíritu de Época salió del tablero el 14 de agosto de 2026.
 
-## Estado actual (junio 2026)
+## Estado actual (agosto 2026)
 
-| Cinturón | Indicadores totales | Automáticos | Carga manual | Sin fuente |
-|---|---|---|---|---|
-| Vida Cotidiana | 14 + 1 manual | 14 | 1 | 0 |
-| Macro | 17 (13 en el ITCM + 4 internos ocultos) | 17 | 0 | 0 |
-| Político | 9 | 7 | 2 | 0 |
-| Gestión | 17 (14 en el ITCG + 3 contexto) | 16 | 1 | 0 |
-| Espíritu de Época | 3 (v1, proxies compartidos) | 3 | 0 | 0 |
+| Cinturón | Indicadores publicados | Automáticos | Semiautomáticos | Carga manual |
+|---|---:|---:|---:|---:|
+| Impacto Social | 18 | 18 | 0 | 0 |
+| Macro | 17 | 17 | 0 | 0 |
+| Política | 18 | 14 | 3 | 1 |
+| Gestión | 14 | 10 | 3 | 1 |
 
-Macro y gestión se puntúan con índices paramétricos 0–100 de dimensiones ponderadas
+Los cuatro cinturones se puntúan con índices paramétricos de dimensiones ponderadas
 (**ITCM**, diseño original en `docs/archivo/cinturon_macro.md` — superado por los
 ADRs 0009/0010/0021/0022/0053/0055, versión vigente en `scripts/itcm.py`, y **ITCG**, 5
 dimensiones 35/25/15/15/10 del
 doc 260702 — ver `docs/adr/0013-itcg-parametrica-gestion.md`; motor común en
-`scripts/parametrica.py`); el resto promedia tensiones 0–10. El score global pondera
-los cinco cinturones por fase del mandato (`config.py`: fase temprana 20% parejo;
-consolidación 25/25/20/15/15, según la ponderación temporal del Marco Conceptual).
-En el ITCM, `presion_dolarizacion` mide la presión latente de salida del peso con
-un observable acorde a cada régimen: brecha CCL/A3500 suavizada antes de abril de
-2025 y compras netas de personas sobre M2 privado desde la apertura; ambos se
-traducen a una escala común (ADR-0055).
+`scripts/parametrica.py`). ITCM, ITCP e ITCG usan una escala 0–100; el ITCIS es
+base 100 = 4T-2023. El score global pondera los cuatro cinturones por fase del
+mandato (`config.py`: fase temprana 25% parejo; consolidación 29/29/24/18).
 
 Documento de referencia con detalle por indicador: [`docs/260523_proyecto_pais_estado_extraccion.md`](docs/260523_proyecto_pais_estado_extraccion.md).
 
@@ -36,13 +31,14 @@ Las decisiones de diseño y metodología están en [`docs/adr/`](docs/adr/README
 ```bash
 git clone https://github.com/Fundacion-CIGOB/cigob-informe-coyuntura.git
 cd cigob-informe-coyuntura/projects/informe_coyuntura
-pip install -r requirements.txt
+uv venv --python 3.12
+uv pip install --python .venv/bin/python -r requirements.txt
 ```
 
 Para el orquestador completo de vida cotidiana:
 
 ```bash
-pip install -r scripts/vida_cotidiana/requirements.txt
+uv pip install --python .venv/bin/python -r scripts/vida_cotidiana/requirements.txt
 ```
 
 ## Ejecución de los colectores
@@ -50,11 +46,11 @@ pip install -r scripts/vida_cotidiana/requirements.txt
 Desde la carpeta `projects/informe_coyuntura/`:
 
 ```bash
-python scripts/macro.py                    # 17 indicadores (13 ITCM + 4 internos ocultos)
-python scripts/politica.py                 # 7 auto + 2 manual
-python scripts/gestion.py                  # ITCG: 16 auto + 1 manual (protocolo)
-python scripts/vida_cotidiana/main.py      # 8 fuentes, ~32 datapoints
-python scripts/espiritu_epoca.py           # 3 proxies (corre después de vida y política)
+.venv/bin/python scripts/macro.py
+.venv/bin/python scripts/politica.py
+.venv/bin/python scripts/gestion.py
+.venv/bin/python scripts/vida_cotidiana/main.py
+.venv/bin/python scripts/vida_cotidiana.py   # puente legacy, después de main.py
 ```
 
 Cada colector corre de forma independiente. No es necesario correrlos todos.
@@ -62,27 +58,27 @@ Cada colector corre de forma independiente. No es necesario correrlos todos.
 ## Generación del informe
 
 ```bash
-python scripts/generar_informe.py
+.venv/bin/python scripts/generar_informe.py
 ```
 
 ## Web pública
 
 La página pública del informe vive en `web/` (app Astro) y se publica en
-`https://informe.cigob.org`. Replica el
+`https://cigob-informe-coyuntura.vercel.app/`. Replica el
 observatorio de klipea (CSS propio de CIGOB) y se alimenta del snapshot de datos.
 
 Ciclo de actualización:
 
 ```bash
 # 1. correr los colectores y regenerar el informe
-python scripts/generar_informe.py
+.venv/bin/python scripts/generar_informe.py
 # 2. armar el snapshot que consume la web (web/src/data/{informe,series}.json)
-python scripts/publicar.py
+.venv/bin/python scripts/publicar.py
 # 3. (opcional) previsualizar local
 cd web && npm install && npm run build && npm run preview
-# 4. commit del snapshot + push a main → GitHub Actions buildea y deploya
+# 4. commit del snapshot + push a main → Vercel buildea y deploya
 # 5. espejar la corrida en el archivo histórico de BigQuery (ADR-0180)
-python scripts/bigquery_export.py
+.venv/bin/python scripts/bigquery_export.py
 ```
 
 El paso 5 lo hace solo el pipeline nocturno, pero **una corrida manual no**: las
@@ -90,10 +86,10 @@ tablas de snapshot se acumulan por `generated_at`, así que lo que no se sube es
 día se pierde del archivo y no se puede reconstruir. Es idempotente — re-correr
 la misma corrida no duplica.
 
-`scripts/publicar.py` enriquece el cinturón de vida cotidiana (3 → 13 indicadores
-desde `scripts/vida_cotidiana/data/`), agrupa las series en `series.json` y
-sanitiza rutas locales en los campos `fuente`. El deploy (`.github/workflows/pages.yml`)
-corre `npm ci && npm run build` antes de publicar. Detalle de diseño en
+`scripts/publicar.py` enriquece el cinturón de impacto social desde los artefactos
+de `scripts/vida_cotidiana/data/`, agrupa las series en `series.json` y
+sanitiza rutas locales en los campos `fuente`. Vercel construye la app Astro
+desde `web/` con cada push a `main`. Detalle de diseño en
 `docs/specs/2026-05-29-informe-coyuntura-web-design.md`.
 
 ## Outputs
@@ -103,7 +99,6 @@ corre `npm ci && npm run build` antes de publicar. Detalle de diseño en
 | `output/cache/macro.json` | Último fetch válido del cinturón macro |
 | `output/cache/politica.json` | Último fetch válido del cinturón político |
 | `output/cache/gestion.json` | Último fetch válido del cinturón gestión |
-| `output/cache/espiritu_epoca.json` | Último fetch válido del cinturón espíritu de época |
 | `scripts/vida_cotidiana/data/vida_cotidiana_*.json` | Output del orquestador de vida cotidiana |
 | `output/informe.json` | Informe completo, schema v1.1.0 |
 | `output/informe.md` | Informe markdown para Drive y reunión |
@@ -131,28 +126,24 @@ projects/informe_coyuntura/
 ├── docs/
 │   ├── 260520 Proyecto País...docx        # documento base de los 4 cinturones
 │   ├── 260523_proyecto_pais_estado_extraccion.md  # estado actual — leer primero
-│   ├── cinturon_espiritu_epoca.md
-│   ├── cinturon_gestion.md
-│   ├── cinturon_macro.md
-│   ├── cinturon_politica.md
-│   ├── cinturon_vida_cotidiana.md
-│   └── archivo/                           # borradores pre-rediseño
+│   ├── arquitectura/                      # diseño operativo vigente
+│   ├── adr/                               # decisiones metodológicas
+│   └── archivo/cinturon_*.md              # diseño original, sólo histórico
 ├── output/                               # outputs VERSIONADOS (ver nota abajo)
 │   ├── cache/                            # último fetch válido por cinturón (fallback CI)
 │   ├── informe.json / informe.md        # reporte generado
 │   └── series/                           # CSVs de series por cinturón
 └── scripts/
-    ├── espiritu_epoca.py                  # 3 proxies del humor social (v1)
     ├── generar_informe.py
-    ├── gestion.py                         # 15 indicadores (ITCG)
+    ├── gestion.py                         # colector del cinturón de gestión
     ├── itcg.py                            # bandas y fórmula del ITCG gestión
     ├── itcm.py                            # bandas y fórmula del ITCM macro
     ├── parametrica.py                     # motor común de los índices paramétricos
-    ├── macro.py                           # 17 indicadores (13 ITCM + 4 internos ocultos) (ITCM)
-    ├── politica.py                        # 9 indicadores
+    ├── macro.py                           # colector del cinturón macro
+    ├── politica.py                        # colector del cinturón político
     ├── vida_cotidiana.py                  # puente legacy al orquestador global
     └── vida_cotidiana/
-        ├── main.py                        # orquestador completo (14+ datapoints)
+        ├── main.py                        # orquestador completo de impacto social
         ├── collectors/                    # bcra, indec_series, utdt_icc, cafam, ciccra, snic, salud, trends
         ├── config.py
         ├── data/                          # outputs crudos del orquestador (versionados)
@@ -163,8 +154,8 @@ projects/informe_coyuntura/
 > (no están en `.gitignore`) para que un colaborador tenga el reporte y los datos ya
 > generados sin correr los colectores. Se regeneran corriendo los scripts; el pipeline
 > diario (CI) los actualiza. Lo único que NO se versiona son deps/caches
-> (`node_modules/`, `__pycache__/`) y el build web (`web-dominio/` en la raíz del
-> repo, lo regenera el CI).
+> (`node_modules/`, `__pycache__/`) y el build web (`web/dist/`, que Astro
+> regenera en cada build).
 
 ## Onboarding rápido
 
@@ -173,7 +164,7 @@ projects/informe_coyuntura/
    y el motor paramétrico correspondiente (`scripts/itcm.py`, `itcg.py`, `itcp.py`,
    `parametrica.py`). `docs/archivo/cinturon_*.md` es el diseño original
    pre-implementación — superado por los ADRs, no refleja el estado actual.
-3. Correr los cinco scripts para verificar que las fuentes respondan.
+3. Correr los cuatro colectores y el orquestador de impacto social para verificar que las fuentes respondan.
 4. Inspeccionar los outputs en `output/cache/*.json` (cada uno tiene indicadores, score y metadatos de extracción).
 
 ## Documentación en Word (institucional)

@@ -23,6 +23,7 @@ Estos tests cuidan siete cosas que pueden volver a romperse:
    permiso general.
 """
 import csv
+import copy
 import importlib.util
 import json
 import re
@@ -405,15 +406,14 @@ def test_el_indice_vivo_y_la_reconstruccion_eximan_a_los_mismos():
     assert validacion_externa.ITVC_TECHO == itvc.WINSOR_TOPE
 
 
-def test_la_excepcion_tiene_sus_dos_argumentos_medidos_escritos():
-    """No alcanza con eximir: el motivo tiene que estar donde se lee el código,
-    o el próximo que lo mire sólo ve un `if` que perdona a un componente."""
-    bloque = ITVC_PY.split("WINSOR_EXENTOS")[0].split("WINSOR_TOPE")[-1]
-    assert "0,33 puntos" in bloque, "falta el argumento del peso"
-    assert "64%" in bloque, "falta el argumento de la base deprimida"
-    assert "propio ADR" in bloque, (
-        "falta decir que el problema del techo es más grande que este "
-        "componente y que acá no se resuelve")
+def test_el_peso_acota_el_aporte_que_la_exencion_deja_por_encima_del_techo():
+    """La cifra publicada debe salir de los pesos vigentes, no de un reparto
+    anterior de la dimensión ingresos."""
+    dim = itvc.DIMENSIONES_ITVC["ingresos"]
+    peso_efectivo = dim["peso"] * dim["indicadores"]["motorizacion_total"]
+    assert peso_efectivo == pytest.approx(0.0089, abs=0.00005)
+    exceso_si_llegara_a_170 = (170 - itvc.WINSOR_TOPE) * peso_efectivo
+    assert exceso_si_llegara_a_170 == pytest.approx(0.27, abs=0.005)
 
 
 # ── 8 · Serie, base y frescura ──────────────────────────────────────────────
@@ -492,6 +492,47 @@ def test_en_vivo_los_demas_componentes_siguen_con_techo():
     idx = itvc.indices_desde_series({}, series, {})
     assert idx["ipc_alimentos"] == itvc.WINSOR_TOPE
     assert idx["_winsor"]["ipc_alimentos"] == 152.4
+
+
+def test_publicar_expone_crudo_recorte_y_exencion_en_el_snapshot():
+    cinturon = copy.deepcopy(SNAPSHOT["cinturones"]["vida_cotidiana"])
+    indicadores = cinturon["indicadores"]
+    series = copy.deepcopy(SERIES)
+
+    publicar._scoring_vida_itvc(cinturon, series)
+
+    sentimiento = indicadores["sentimiento_digital"]
+    assert sentimiento["indice_itvc"] == itvc.WINSOR_TOPE
+    assert sentimiento["indice_itvc_crudo"] == 173.6
+    assert sentimiento["recorte_itvc"] == 33.6
+    assert "winsor_exento" not in sentimiento
+    motor = indicadores["motorizacion_total"]
+    assert motor["indice_itvc"] == 142.9
+    assert "indice_itvc_crudo" not in motor
+    assert motor["winsor_exento"] is True
+
+
+def test_un_ajuste_que_cruza_140_no_se_publica_como_exencion(monkeypatch):
+    cinturon = copy.deepcopy(SNAPSHOT["cinturones"]["vida_cotidiana"])
+    series = copy.deepcopy(SERIES)
+    series["motorizacion_total"][-1]["valor"] = 130.0
+    monkeypatch.setattr(
+        publicar.itvc,
+        "cargar_ajustes",
+        lambda *_: {
+            "motorizacion_total": {
+                "puntaje": 150.0,
+                "justificacion": "caso de prueba",
+                "vigente_hasta": "2099-12",
+            }
+        },
+    )
+
+    publicar._scoring_vida_itvc(cinturon, series)
+
+    motor = cinturon["indicadores"]["motorizacion_total"]
+    assert motor["indice_itvc"] == 150.0
+    assert "winsor_exento" not in motor
 
 
 def test_en_vivo_la_matriz_cubre_los_cuatro_cuadrantes():

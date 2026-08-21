@@ -121,6 +121,70 @@ def test_carry_forward_restaura_sentimiento_digital_ausente_de_trends():
     assert resultado["sentimiento_digital"]["fecha_dato"] == "2026-07-08"
 
 
+def test_el_snapshot_declara_la_procedencia_de_cada_indicador():
+    informe = {
+        "cinturones": {
+            "macro": {"indicadores": {"ipc_total": {"valor": 1.0}}},
+            "politica": {"indicadores": {
+                "apoyo_empresario": {"valor": 0.0},
+                "desafios_legislativos": {"valor": 3.0},
+                "bloqueo_sostenido": {"valor": 33.3},
+                "velocidad_resolucion": {"valor": 85.7},
+            }},
+            "gestion": {"indicadores": {
+                "reestructuracion_organismos": {"valor": 24.4},
+                "fal_modernizacion_laboral": {"valor": 50.0},
+                "protocolo_antipiquetes": {"valor": 74.2},
+                "privatizaciones": {"valor": 50.0},
+            }},
+        }
+    }
+
+    resultado = publicar.anotar_metodo_obtencion(informe)
+
+    assert resultado["cinturones"]["macro"]["indicadores"]["ipc_total"]["metodo_obtencion"] == "automatico"
+    metodos = {
+        clave: indicador["metodo_obtencion"]
+        for cinturon in resultado["cinturones"].values()
+        for clave, indicador in cinturon["indicadores"].items()
+    }
+    assert {k for k, v in metodos.items() if v == "semiautomatico"} == {
+        "apoyo_empresario",
+        "desafios_legislativos",
+        "bloqueo_sostenido",
+        "reestructuracion_organismos",
+        "fal_modernizacion_laboral",
+        "protocolo_antipiquetes",
+    }
+    assert {k for k, v in metodos.items() if v == "manual"} == {
+        "velocidad_resolucion",
+        "privatizaciones",
+    }
+
+
+def test_la_validacion_itcp_deriva_el_conteo_de_la_composicion(monkeypatch):
+    meses = {f"2025-{m:02d}": float(m) for m in range(1, 13)}
+    monkeypatch.setattr(publicar, "_cargar_validacion", lambda: {
+        "serie_itcp": meses,
+        "epu_argentina_mensual": meses,
+        "correlaciones_itcp": {
+            "niveles (ITCP vs EPU Argentina)": {"r": -0.4, "n": 12},
+            "primeras diferencias (ITCP vs EPU)": {"r": -0.2, "n": 11},
+            "niveles, sin la dimensión de sector privado": {"r": -0.3},
+        },
+    })
+    bloque = {
+        "dimensiones": {
+            "uno": {"indicadores": {"a": {}, "b": {}}},
+            "dos": {"indicadores": {"c": {}}},
+        }
+    }
+
+    publicar._validacion_itcp(bloque)
+
+    assert "3 componentes" in bloque["validacion"]["sub"]
+
+
 def test_un_crudo_de_vida_mas_viejo_no_reemplaza_el_snapshot_publicado(tmp_path):
     viejo = tmp_path / "vida_cotidiana_20260812_1035.json"
     viejo.write_text("{}", encoding="utf-8")

@@ -1,11 +1,13 @@
 ---
 madr: 4
 id: '0112'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0154: el Índice Líder salió del ITCIS y pasó a validar el ITCM'
 fecha: 2026-07-20
 cinturon: 'vida'
 indicadores: [empleo, indice_lider, itvc_lider]
 corrige: ['0111']
+superado_por: ['0154']
 complementado_por: ['0130']
 ambito: 'ITVC · dimensión `empleo` · `indice_lider` (nuevo) · serie `itvc_lider`'
 origen: 'Auditoría de Vida Cotidiana, punto 3.6 (expectativas a futuro)'

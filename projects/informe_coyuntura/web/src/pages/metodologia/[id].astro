@@ -6,6 +6,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
+import katex from "katex";
 import seriesRaw from "../../data/series.json";
 import { informe, CINTURONES, label, presentacion, badgeEstado, UNIDADES_LARGAS, indiceDe, mesLegible, num } from "../../lib/datos.ts";
 import { rangoLegible } from "../../lib/formato.ts";
@@ -14,6 +15,39 @@ import { FORMULAS } from "../../lib/formulas.ts";
 import { FICHAS, tramoDeAnclas, type FichaIndicador, type FichaIndice } from "../../lib/fichas.ts";
 
 export function getStaticPaths() {
+  const vivos = Object.values(informe.cinturones)
+    .flatMap(c => Object.keys(c.indicadores));
+  const incompletos = vivos.filter(id => {
+    const d = DESCRIPCIONES[id];
+    const formula = FORMULAS[id];
+    return !FICHAS[id]
+      || !d?.que.trim()
+      || !d?.aporta.trim()
+      || !d?.frecuencia.trim()
+      || !d?.tipo.trim()
+      || !formula?.latex.trim()
+      || !formula?.leyenda.trim();
+  });
+  if (incompletos.length) {
+    throw new Error(`Indicadores vivos sin ficha pública completa: ${incompletos.join(", ")}`);
+  }
+  const formulasConControl = vivos.filter(id =>
+    /[\u0000-\u0009\u000b\u000c\u000e-\u001f]/.test(FORMULAS[id].latex),
+  );
+  if (formulasConControl.length) {
+    throw new Error(`Fórmulas públicas con caracteres de control: ${formulasConControl.join(", ")}`);
+  }
+  const formulasInvalidas = vivos.flatMap(id => {
+    try {
+      katex.renderToString(FORMULAS[id].latex, { throwOnError: true });
+      return [];
+    } catch (error) {
+      return [`${id}: ${error instanceof Error ? error.message : String(error)}`];
+    }
+  });
+  if (formulasInvalidas.length) {
+    throw new Error(`Fórmulas públicas inválidas:\n${formulasInvalidas.join("\n")}`);
+  }
   return Object.keys(FICHAS).map(id => ({ params: { id } }));
 }
 
@@ -134,7 +168,13 @@ const composicion = it
   ? Object.entries(it.dimensiones).map(([dkey, dim]: [string, any]) => ({
       key: dkey, nombre: dim.nombre, peso: dim.peso, puntaje: dim.puntaje, critica: !!dim.critica,
       inds: Object.entries(dim.indicadores ?? {}).map(([ikey, i]: [string, any]) => ({
-        key: ikey, label: label(ikey), peso: i.peso, puntaje: i.puntaje_aplicado,
+        key: ikey,
+        label: label(ikey),
+        peso: i.peso,
+        puntaje: i.puntaje_aplicado,
+        crudo: (cinturon.indicadores[ikey] as any)?.indice_itvc_crudo ?? null,
+        recorte: (cinturon.indicadores[ikey] as any)?.recorte_itvc ?? null,
+        exento: (cinturon.indicadores[ikey] as any)?.winsor_exento === true,
       })),
     }))
   : [];
@@ -451,7 +491,11 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
                             {k === 0 && <td class="num" rowspan={dim.inds.length}>{pct(dim.peso)}</td>}
                             <td>{i.label}</td>
                             <td class="num">{pct(i.peso)}</td>
-                            <td class="num">{coma(i.puntaje)}</td>
+                            <td class="num">
+                              {coma(i.puntaje)}
+                              {i.crudo !== null && <small class="cg-ficha-cell-note">crudo {coma(i.crudo)} · recorte −{coma(i.recorte)}</small>}
+                              {i.exento && <small class="cg-ficha-cell-note">exento del techo de 140</small>}
+                            </td>
                           </tr>
                         ))
                       )}
@@ -484,7 +528,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
             </div>
           )}
           {(!it.ajustes_aplicados || it.ajustes_aplicados.length === 0) && (
-            <p class="cg-ficha-p" style="font-size:12.5px; color:var(--muted);">Este mes no hay ajustes de analista activos: el índice es 100% automático.</p>
+            <p class="cg-ficha-p" style="font-size:12.5px; color:var(--muted);">Este mes no hay ajustes de analista activos: el índice se calculó directamente con los valores publicados.</p>
           )}
         </section>
 

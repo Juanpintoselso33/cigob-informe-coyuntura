@@ -457,8 +457,8 @@ WINSOR_TOPE = 140.0   # techo de componentes B100 (ADR-0033) — SOLO techo:
 # del ITCIS. Esto NO lo levanta: exime a uno solo, con dos motivos medidos.
 #
 # 1. A su peso, el techo protege contra algo que no puede pasar.
-#    `motorizacion_total` pesa 1,11% del índice. Lo máximo que puede comprar
-#    por encima del techo son 0,33 puntos de ITCIS, y eso exigiría que el
+#    `motorizacion_total` pesa 0,89% del índice. Lo máximo que puede comprar
+#    por encima del techo son 0,27 puntos de ITCIS, y eso exigiría que el
 #    componente llegara a 170. El techo existe para que un boom no compre
 #    compensación ILIMITADA en una agregación lineal; acá la compensación ya
 #    está acotada por el peso, que es el mecanismo del que el techo es un

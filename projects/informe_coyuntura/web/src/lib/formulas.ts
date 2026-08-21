@@ -24,7 +24,7 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Crecimientos interanuales reales (descontada la inflación) de los agregados privados. Positivo = sobran pesos → presión sobre precios y brecha; negativo = remonetización genuina.",
   },
   desequilibrio_monetario: {
-    latex: String.raw`A_t=100\,\frac{M2^{transaccional}_{privado}}{\text{circulante}+\text{dep}^{\$}_{priv}+\text{dep}^{U\!S\!D}_{priv}}\qquad B_t=\text{compra neta de divisas del SPNF (U\!S\!D M)}\[6pt]a=\pi_A(A_t),\;b=\pi_B(B_t)\in[0,1]\qquad T_t=(1-a)(1-b)\,40+a(1-b)\,0+(1-a)b\,90+ab\,77{,}5\[6pt]\text{puntaje ITCM}=100-T_t`,
+    latex: String.raw`A_t=100\,\frac{M2^{transaccional}_{privado}}{\text{circulante}+\text{dep}^{\$}_{priv}+\text{dep}^{U\!S\!D}_{priv}}\qquad B_t=\text{compra neta de divisas del SPNF (U\!S\!D M)}\\[6pt]a=\pi_A(A_t),\;b=\pi_B(B_t)\in[0,1]\qquad T_t=(1-a)(1-b)\,40+a(1-b)\,0+(1-a)b\,90+ab\,77{,}5\\[6pt]\text{puntaje ITCM}=100-T_t`,
     leyenda: "El indicador cruza dos componentes en vez de promediarlos. A mide, sobre el total de la liquidez privada (pesos más los dólares depositados, valuados en pesos), qué proporción sigue en pesos de uso transaccional: es la dolarización que se ve, porque no sale del sistema. B mide la compra neta de divisas del sector privado no financiero en el mercado de cambios: es la que se va, y aparece aunque no toque ningún depósito. Cada uno se lleva a una posición de 0 a 1 interpolando entre los percentiles de su ventana de calibración (A desde enero de 2021, que es cuando el BCRA empieza a publicar el M2 transaccional privado; B desde abril de 2025, la apertura del cepo a personas humanas, para no mezclar regímenes cambiarios). La tensión sale de interpolar bilinealmente entre las cuatro esquinas de la matriz: confianza real 0, dolarización contenida en el sistema 40, fuga oculta fuera del sistema 77,5 y deterioro dentro y fuera 90. La matriz no es simétrica a propósito: que se degrade la fuga cuesta casi el doble que se degrade el stock, porque la fuga fuera del sistema es la señal grave. El puntaje del ITCM es el complemento de la tensión.",
   },
   recaudacion: {
@@ -90,6 +90,10 @@ export const FORMULAS: Record<string, Formula> = {
   emae_difusion: {
     latex: String.raw`\frac{\text{sectores que crecen i.a.}}{15\ \text{sectores}}\times 100`,
     leyenda: "EMAE por sector (INDEC): se compara cada uno de los quince sectores contra el mismo mes del año anterior y se cuenta cuántos crecen. 15 de 15 = todos los sectores en alza; 8 de 15 = poco más de la mitad. Se compara contra el año anterior y no contra el mes previo porque las series son originales, sin desestacionalizar. Limitación declarada: todos los sectores cuentan igual, sin ponderar por su tamaño en la economía — un mes en que crece la pesca cuenta lo mismo que uno en que crece la industria.",
+  },
+  ipi_manufacturero: {
+    latex: String.raw`\frac{1}{3}\sum_{m=0}^{2}\left(\frac{\text{IPI manufacturero}_{t-m}}{\text{IPI manufacturero}_{t-m-12}}-1\right)\times 100`,
+    leyenda: "Promedio simple de las tres variaciones interanuales más recientes del Índice de Producción Industrial manufacturero del INDEC. El promedio móvil reduce el ruido mensual sin mezclar meses de distinta estacionalidad.",
   },
   tcrm: {
     latex: String.raw`\text{ITCRM}_{\text{hoy}}\qquad(\text{base dic-2015}=100)`,
@@ -180,13 +184,11 @@ export const FORMULAS: Record<string, Formula> = {
     leyenda: "Cuántas facturas de servicios regulados paga el sueldo, contra el arranque del mandato. Debajo de 100 = las tarifas pesan más en el bolsillo que en 2023 (fin de subsidios).",
   },
   indice_lider: {
-    latex: String.raw`100\cdotrac{	ext{'Indice L'ider}_{	ext{hoy}}}{	ext{'Indice L'ider}_{	ext{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\text{Índice Líder}_{\text{hoy}}}{\text{Índice Líder}_{\text{4T-23}}}`,
     leyenda: "Nivel del Índice Líder de la Universidad Torcuato Di Tella contra el arranque del mandato. Por encima de 100, las señales tempranas de la economía están mejor que en 2023.",
   },
   alquiler_real: {
-    latex: String.raw`100\cdotrac{\left(	ext{IPC general}\,/\,	ext{alquiler}
-ight)_{	ext{hoy}}}{\left(	ext{IPC general}\,/\,	ext{alquiler}
-ight)_{	ext{4T-23}}}`,
+    latex: String.raw`100\cdot\frac{\left(\text{IPC general}\,/\,\text{alquiler}\right)_{\text{hoy}}}{\left(\text{IPC general}\,/\,\text{alquiler}\right)_{\text{4T-23}}}`,
     leyenda: "Cuánto sube el alquiler comparado con el resto de los precios, contra el arranque del mandato. Debajo de 100 = el alquiler se encareció más que todo lo demás.",
   },
   trabajo_independiente: {
@@ -220,6 +222,10 @@ ight)_{	ext{4T-23}}}`,
   consumo_carnes_total: {
     latex: String.raw`100\cdot\frac{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{hoy}}}{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{4T-23}}}`,
     leyenda: "Acceso total a proteína cárnica por habitante, promedio móvil de 12 meses, 100 = 4T-2023. La evolución se reconstruye desde la faena del INDEC; el nivel en kilos lo publica SAGYP.",
+  },
+  motorizacion_total: {
+    latex: String.raw`100\cdot\frac{\left[\left(\sum_{12m}\text{autos}+\sum_{12m}\text{motos}\right)\,/\,\text{población}\right]_{\text{hoy}}}{\left[\left(\sum_{12m}\text{autos}+\sum_{12m}\text{motos}\right)\,/\,\text{población}\right]_{\text{4T-23}}}`,
+    leyenda: "Inscripciones iniciales de autos y motos sumadas en una ventana móvil de doce meses, por habitante y rebaseadas a 100 = promedio del 4º trimestre de 2023. Tierra del Fuego se excluye de ambas patas por el movimiento registral documentado en la ficha.",
   },
   patentamiento_motos: {
     latex: String.raw`100\cdot\frac{\text{patentamientos, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4T-23}}}`,
