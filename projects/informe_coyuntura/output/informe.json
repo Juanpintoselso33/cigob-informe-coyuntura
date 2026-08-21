@@ -1,8 +1,8 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-21T14:09:24.933689-03:00",
+  "generated_at": "2026-08-21T14:15:43.936921-03:00",
   "period": "2026-08",
-  "score_global": 4.1,
+  "score_global": 4.2,
   "ponderacion": {
     "fase": "temprana",
     "mandato_inicio": "2023-12-10",
@@ -1142,7 +1142,7 @@
       }
     },
     "vida_cotidiana": {
-      "score": 6.8,
+      "score": 7.1,
       "estado": "tensionado",
       "barbarismo_riesgo": "político",
       "indicadores": {
@@ -1170,38 +1170,44 @@
       },
       "alerta": null,
       "itvc": {
-        "valor": 90.8,
+        "valor": 89.3,
         "banda": "deterioro_moderado",
         "banda_legible": "Deterioro moderado vs 4T-2023",
         "dimensiones": {
           "ingresos": {
             "nombre": "Ingresos y consumo",
             "peso": 0.2806,
-            "puntaje": 117.7,
+            "puntaje": 112.4,
             "indicadores": {
               "brecha_salario_cbt": {
-                "peso": 0.5959,
+                "peso": 0.4767,
                 "puntaje_banda": 112.5,
                 "puntaje_aplicado": 112.5,
-                "peso_efectivo": 0.1672
+                "peso_efectivo": 0.1338
               },
               "pobreza_nowcast": {
-                "peso": 0.3253,
+                "peso": 0.2602,
                 "puntaje_banda": 126.9,
                 "puntaje_aplicado": 126.9,
-                "peso_efectivo": 0.0913
+                "peso_efectivo": 0.073
               },
               "consumo_carnes_total": {
-                "peso": 0.0392,
+                "peso": 0.0314,
                 "puntaje_banda": 95.0,
                 "puntaje_aplicado": 95.0,
-                "peso_efectivo": 0.011
+                "peso_efectivo": 0.0088
               },
               "motorizacion_total": {
-                "peso": 0.0396,
+                "peso": 0.0317,
                 "puntaje_banda": 142.9,
                 "puntaje_aplicado": 142.9,
-                "peso_efectivo": 0.0111
+                "peso_efectivo": 0.0089
+              },
+              "consumo_supermercados": {
+                "peso": 0.2,
+                "puntaje_banda": 91.2,
+                "puntaje_aplicado": 91.2,
+                "peso_efectivo": 0.0561
               }
             },
             "peso_efectivo": 0.2806

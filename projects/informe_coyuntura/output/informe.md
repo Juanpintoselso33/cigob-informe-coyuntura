@@ -1,7 +1,7 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-21 14:09:24"
-score_global: 4.1
+generado: "2026-08-21 14:15:43"
+score_global: 4.2
 barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-08
 
-**Score global:** 4.1/10  |  **Riesgo dominante:** político
+**Score global:** 4.2/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
@@ -69,7 +69,7 @@ schema_version: "1.2.0"
 | cobertura_judicial | 69.63 | % de cargos de juez con juez designado | 2026-08-01 | fresco |
 | alineamiento_senadores_prov | 57.0 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-08-06 | fresco |
 
-### 🔴 Vida Cotidiana — score 6.8/10 (tensionado)
+### 🔴 Vida Cotidiana — score 7.1/10 (tensionado)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -102,4 +102,4 @@ schema_version: "1.2.0"
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-08-21 14:09:24 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-21 14:15:43 — schema 1.2.0*
