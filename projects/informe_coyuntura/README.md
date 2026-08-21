@@ -130,7 +130,7 @@ projects/informe_coyuntura/
 ├── docs/
 │   ├── 260520 Proyecto País...docx        # documento base de los 4 cinturones
 │   ├── 260523_proyecto_pais_estado_extraccion.md  # relevamiento de fuentes, mayo 2026
-│   ├── arquitectura/                      # arquitectura del sistema, foto al 04-jul-2026
+│   ├── arquitectura/                      # arquitectura del sistema (flujo, contratos, operación)
 │   ├── adr/                               # decisiones metodológicas
 │   └── archivo/cinturon_*.md              # diseño original, sólo histórico
 ├── output/                               # outputs VERSIONADOS (ver nota abajo)

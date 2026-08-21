@@ -14,7 +14,6 @@ flowchart LR
         C2[gestion.py]
         C3[vida_cotidiana/main.py]
         C4[politica.py]
-        C5[espiritu_epoca.py]
     end
     Fuentes --> Colectores
     Colectores -->|escriben| CACHE[(output/cache/*.json)]
@@ -46,7 +45,7 @@ python scripts/generar_informe.py       # ensambla output/informe.json
 python scripts/descargar_series.py      # series oficiales + derivadas
 python scripts/validacion_externa.py    # refresca el store de validación
 python scripts/publicar.py              # scoring + snapshot web/src/data
-python -m pytest tests/ -q              # 40 tests deben quedar verdes
+python -m pytest tests/ -q              # la suite debe quedar verde
 ```
 
 ## Colectores
@@ -57,7 +56,6 @@ python -m pytest tests/ -q              # 40 tests deben quedar verdes
 | `scripts/gestion.py` | gestión | Presupuesto Abierto (token), Boletín Oficial, ACLED (sonda auto-destrabante con credenciales UBA), Diagnóstico Político |
 | `scripts/vida_cotidiana/main.py` | vida | modular: `collectors/{bcra,cafam,ciccra,indec_series,salud,snic,trends,utdt_icc,manual}.py`, config central en `config.py` |
 | `scripts/politica.py` | política | HCDN datos abiertos, encuestas |
-| `scripts/espiritu_epoca.py` | espíritu | comparte ICC y sentimiento con vida |
 
 Cada colector escribe `output/cache/<cinturon>_<timestamp>.json`; el
 ensamblador toma el más reciente. Si una fuente falla, `publicar.py` hace

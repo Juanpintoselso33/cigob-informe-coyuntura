@@ -5,10 +5,11 @@ usan en ESTE proyecto.
 
 ## Del sistema
 
-- **Cinturón**: cada una de las cinco áreas de seguimiento (macro, gestión,
-  vida cotidiana, política, espíritu de época), del marco Matusiano.
+- **Cinturón**: cada una de las cuatro áreas de seguimiento (macro, gestión,
+  vida cotidiana, política), del marco Matusiano. Espíritu de época fue la
+  quinta hasta ADR-0205.
 - **Paramétrica**: índice compuesto con reglas explícitas de agregación
-  (pesos, bandas o rebases) — ITCM, ITCG, ITVC.
+  (pesos, bandas o rebases) — ITCM, ITCG, ITVC, ITCP.
 - **Tensión (0-10)**: la escala común de todos los cinturones; mayor = más
   tensión para el gobierno.
 - **Snapshot**: la foto congelada (`informe.json` + `series.json`) que la

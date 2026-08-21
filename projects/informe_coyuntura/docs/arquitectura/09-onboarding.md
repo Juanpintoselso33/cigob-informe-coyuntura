@@ -44,23 +44,25 @@ python scripts/generar_informe.py      # ensambla (NO refresca colectores)
 python scripts/descargar_series.py     # series + stores resilientes
 python scripts/validacion_externa.py   # robustez pilar 3
 python scripts/publicar.py             # scoring + snapshot web/src/data
-python -m pytest tests/ -q             # 40 verdes o no se pushea
+python -m pytest tests/ -q             # verdes o no se pushea
 ```
 
 ## Ver la web local
 
 ```bash
 cd web
-npm run build    # sale a ../../../web-dominio (base /)
+npm run build      # sale a dist/ (base /)
+npm run preview    # sirve dist/ con el MIME correcto
 ```
 
 ⚠️ No servir el build con `python -m http.server` pelado: en Windows sirve
-`.js` como `text/plain` y los módulos mueren. Server mínimo con MIME correcto:
+`.js` como `text/plain` y los módulos mueren. `npm run preview` alcanza; si
+hace falta un server propio, con MIME correcto:
 
 ```python
-# srv.py — python srv.py, sirve web-dominio en :8932
+# srv.py — python srv.py, sirve dist/ en :8932
 import http.server, functools
-h = functools.partial(http.server.SimpleHTTPRequestHandler, directory="web-dominio")
+h = functools.partial(http.server.SimpleHTTPRequestHandler, directory="dist")
 h.extensions_map = {**http.server.SimpleHTTPRequestHandler.extensions_map,
                     ".js": "text/javascript", ".mjs": "text/javascript"}
 http.server.HTTPServer(("", 8932), h).serve_forever()

@@ -1,7 +1,7 @@
 """Genera el manual metodológico vigente de un cinturón.
 
 El registro de ADR responde *por qué se decidió cada cosa y cuándo*. Es un
-log histórico de 165 documentos y ~142.000 palabras: sirve para auditar,
+log histórico de más de 230 documentos: sirve para auditar,
 no para leer de corrido. Lo que falta es la otra mitad —la **referencia**:
 qué mide el cinturón HOY, con qué pesos, con qué anclas y qué decisiones
 siguen abiertas— y son dos documentos distintos, no uno largo.

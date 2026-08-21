@@ -68,7 +68,8 @@ analista) y la evolución histórica.
 ## Build y publicación
 
 Hay un único target de deploy (ver [05 — Operaciones](05-operaciones.md)).
-`astro.config.mjs` fija `site: "https://informe.cigob.org"`, `base: "/"` y
-`outDir: "../../../web-dominio"`. El CI ejecuta un solo `npm run build` y
-publica `web-dominio/` directamente en GitHub Pages desde este mismo repo.
-No se usa `DEPLOY_TARGET`, un subpath `/informe/` ni un repo de deploy externo.
+`astro.config.mjs` fija `site: "https://informe.cigob.org"` y `base: "/"`, y
+deja el `outDir` por defecto (`dist/`). Quien construye y publica es
+**Vercel**, en cada push a `main`, con Root Directory
+`projects/informe_coyuntura/web`. No se usa `DEPLOY_TARGET`, un subpath
+`/informe/` ni un repo de deploy externo.
