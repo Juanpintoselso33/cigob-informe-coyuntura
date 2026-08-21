@@ -288,96 +288,139 @@ fecha,indicador,valor,unidad,fuente
 2022-11-01,peso_tarifas,6.23,% m/m regulados,INDEC serie 148.3
 2022-10-01,peso_tarifas,7.41,% m/m regulados,INDEC serie 148.3
 2022-09-01,peso_tarifas,4.55,% m/m regulados,INDEC serie 148.3
-2026-07-01,patentamiento_motos,72433,unidades/mes,CAFAM API (histórico mensual)
-2026-06-01,patentamiento_motos,69273,unidades/mes,CAFAM API (histórico mensual)
-2026-05-01,patentamiento_motos,69753,unidades/mes,CAFAM API (histórico mensual)
-2026-04-01,patentamiento_motos,81981,unidades/mes,CAFAM API (histórico mensual)
-2026-03-01,patentamiento_motos,82160,unidades/mes,CAFAM API (histórico mensual)
-2026-02-01,patentamiento_motos,71478,unidades/mes,CAFAM API (histórico mensual)
-2026-01-01,patentamiento_motos,69294,unidades/mes,CAFAM API (histórico mensual)
-2025-12-01,patentamiento_motos,60658,unidades/mes,CAFAM API (histórico mensual)
-2025-11-01,patentamiento_motos,52414,unidades/mes,CAFAM API (histórico mensual)
-2025-10-01,patentamiento_motos,63756,unidades/mes,CAFAM API (histórico mensual)
-2025-09-01,patentamiento_motos,59556,unidades/mes,CAFAM API (histórico mensual)
-2025-08-01,patentamiento_motos,55073,unidades/mes,CAFAM API (histórico mensual)
-2025-07-01,patentamiento_motos,54841,unidades/mes,CAFAM API (histórico mensual)
-2025-06-01,patentamiento_motos,48301,unidades/mes,CAFAM API (histórico mensual)
-2025-05-01,patentamiento_motos,53097,unidades/mes,CAFAM API (histórico mensual)
-2025-04-01,patentamiento_motos,53741,unidades/mes,CAFAM API (histórico mensual)
-2025-03-01,patentamiento_motos,51764,unidades/mes,CAFAM API (histórico mensual)
-2025-02-01,patentamiento_motos,41648,unidades/mes,CAFAM API (histórico mensual)
-2025-01-01,patentamiento_motos,60048,unidades/mes,CAFAM API (histórico mensual)
-2024-12-01,patentamiento_motos,50482,unidades/mes,CAFAM API (histórico mensual)
-2024-11-01,patentamiento_motos,50910,unidades/mes,CAFAM API (histórico mensual)
-2024-10-01,patentamiento_motos,46787,unidades/mes,CAFAM API (histórico mensual)
-2024-09-01,patentamiento_motos,41050,unidades/mes,CAFAM API (histórico mensual)
-2024-08-01,patentamiento_motos,55360,unidades/mes,CAFAM API (histórico mensual)
-2024-07-01,patentamiento_motos,40772,unidades/mes,CAFAM API (histórico mensual)
-2024-06-01,patentamiento_motos,33347,unidades/mes,CAFAM API (histórico mensual)
-2024-05-01,patentamiento_motos,39650,unidades/mes,CAFAM API (histórico mensual)
-2024-04-01,patentamiento_motos,39003,unidades/mes,CAFAM API (histórico mensual)
-2024-03-01,patentamiento_motos,29233,unidades/mes,CAFAM API (histórico mensual)
-2024-02-01,patentamiento_motos,31334,unidades/mes,CAFAM API (histórico mensual)
-2024-01-01,patentamiento_motos,33946,unidades/mes,CAFAM API (histórico mensual)
-2023-12-01,patentamiento_motos,33378,unidades/mes,CAFAM API (histórico mensual)
-2023-11-01,patentamiento_motos,40882,unidades/mes,CAFAM API (histórico mensual)
-2023-10-01,patentamiento_motos,43544,unidades/mes,CAFAM API (histórico mensual)
-2023-09-01,patentamiento_motos,35424,unidades/mes,CAFAM API (histórico mensual)
-2023-08-01,patentamiento_motos,43125,unidades/mes,CAFAM API (histórico mensual)
-2023-07-01,patentamiento_motos,38028,unidades/mes,CAFAM API (histórico mensual)
-2023-06-01,patentamiento_motos,34333,unidades/mes,CAFAM API (histórico mensual)
-2023-05-01,patentamiento_motos,40756,unidades/mes,CAFAM API (histórico mensual)
-2023-04-01,patentamiento_motos,40554,unidades/mes,CAFAM API (histórico mensual)
-2023-03-01,patentamiento_motos,49422,unidades/mes,CAFAM API (histórico mensual)
-2023-02-01,patentamiento_motos,36491,unidades/mes,CAFAM API (histórico mensual)
-2023-01-01,patentamiento_motos,42577,unidades/mes,CAFAM API (histórico mensual)
-2022-12-01,patentamiento_motos,29282,unidades/mes,CAFAM API (histórico mensual)
-2022-11-01,patentamiento_motos,35162,unidades/mes,CAFAM API (histórico mensual)
-2026-07-01,patentamiento_autos,45318,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2026-06-01,patentamiento_autos,47788,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2026-05-01,patentamiento_autos,43256,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2026-04-01,patentamiento_autos,48090,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2026-03-01,patentamiento_autos,49582,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2026-02-01,patentamiento_autos,42301,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2026-01-01,patentamiento_autos,66768,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-12-01,patentamiento_autos,24384,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-11-01,patentamiento_autos,35721,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-10-01,patentamiento_autos,52559,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-09-01,patentamiento_autos,56485,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-08-01,patentamiento_autos,55117,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-07-01,patentamiento_autos,63040,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-06-01,patentamiento_autos,52961,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-05-01,patentamiento_autos,56535,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-04-01,patentamiento_autos,55225,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-03-01,patentamiento_autos,48560,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-02-01,patentamiento_autos,44759,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2025-01-01,patentamiento_autos,69792,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-12-01,patentamiento_autos,22001,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-11-01,patentamiento_autos,36426,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-10-01,patentamiento_autos,44695,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-09-01,patentamiento_autos,43874,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-08-01,patentamiento_autos,41688,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-07-01,patentamiento_autos,43352,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-06-01,patentamiento_autos,31057,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-05-01,patentamiento_autos,34964,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-04-01,patentamiento_autos,33122,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-03-01,patentamiento_autos,25975,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-02-01,patentamiento_autos,25213,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2024-01-01,patentamiento_autos,34165,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-12-01,patentamiento_autos,18782,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-11-01,patentamiento_autos,36211,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-10-01,patentamiento_autos,42151,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-09-01,patentamiento_autos,33844,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-08-01,patentamiento_autos,39701,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-07-01,patentamiento_autos,44325,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-06-01,patentamiento_autos,40301,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-05-01,patentamiento_autos,40361,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-04-01,patentamiento_autos,34963,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-03-01,patentamiento_autos,40131,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-02-01,patentamiento_autos,30705,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2023-01-01,patentamiento_autos,50616,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2022-12-01,patentamiento_autos,19879,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
-2022-11-01,patentamiento_autos,33907,unidades/mes,DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)
+2026-07-01,patentamiento_motos,72418,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-06-01,patentamiento_motos,69475,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-05-01,patentamiento_motos,69925,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-04-01,patentamiento_motos,82081,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-03-01,patentamiento_motos,82235,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-02-01,patentamiento_motos,71571,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-01-01,patentamiento_motos,69342,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-12-01,patentamiento_motos,60787,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-11-01,patentamiento_motos,51935,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-10-01,patentamiento_motos,56606,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-09-01,patentamiento_motos,53811,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-08-01,patentamiento_motos,49835,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-07-01,patentamiento_motos,50429,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-06-01,patentamiento_motos,46262,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-05-01,patentamiento_motos,52739,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-04-01,patentamiento_motos,53460,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-03-01,patentamiento_motos,51821,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-02-01,patentamiento_motos,41817,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-01-01,patentamiento_motos,60228,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-12-01,patentamiento_motos,50458,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-11-01,patentamiento_motos,51106,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-10-01,patentamiento_motos,46995,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-09-01,patentamiento_motos,41134,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-08-01,patentamiento_motos,55528,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-07-01,patentamiento_motos,40924,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-06-01,patentamiento_motos,33459,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-05-01,patentamiento_motos,39831,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-04-01,patentamiento_motos,39141,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-03-01,patentamiento_motos,29328,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-02-01,patentamiento_motos,31432,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-01-01,patentamiento_motos,34034,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-12-01,patentamiento_motos,33472,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-11-01,patentamiento_motos,40992,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-10-01,patentamiento_motos,43686,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-09-01,patentamiento_motos,35413,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-08-01,patentamiento_motos,43419,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-07-01,patentamiento_motos,38257,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-06-01,patentamiento_motos,34532,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-05-01,patentamiento_motos,40986,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-04-01,patentamiento_motos,40839,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-03-01,patentamiento_motos,49598,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-02-01,patentamiento_motos,36589,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-01-01,patentamiento_motos,42763,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2022-12-01,patentamiento_motos,29517,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2022-11-01,patentamiento_motos,35284,unidades/mes,"DNRPA — inscripciones iniciales de motovehículos (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-07-01,patentamiento_autos,44886,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-06-01,patentamiento_autos,47240,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-05-01,patentamiento_autos,42840,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-04-01,patentamiento_autos,47609,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-03-01,patentamiento_autos,49101,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-02-01,patentamiento_autos,41894,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-01-01,patentamiento_autos,66189,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-12-01,patentamiento_autos,24145,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-11-01,patentamiento_autos,35332,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-10-01,patentamiento_autos,52084,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-09-01,patentamiento_autos,55881,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-08-01,patentamiento_autos,54470,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-07-01,patentamiento_autos,62373,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-06-01,patentamiento_autos,52399,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-05-01,patentamiento_autos,55941,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-04-01,patentamiento_autos,54611,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-03-01,patentamiento_autos,47989,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-02-01,patentamiento_autos,44220,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2025-01-01,patentamiento_autos,69109,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-12-01,patentamiento_autos,21686,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-11-01,patentamiento_autos,35957,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-10-01,patentamiento_autos,44150,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-09-01,patentamiento_autos,43423,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-08-01,patentamiento_autos,41285,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-07-01,patentamiento_autos,42881,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-06-01,patentamiento_autos,30688,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-05-01,patentamiento_autos,34527,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-04-01,patentamiento_autos,32787,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-03-01,patentamiento_autos,25674,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-02-01,patentamiento_autos,24923,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2024-01-01,patentamiento_autos,33853,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-12-01,patentamiento_autos,18556,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-11-01,patentamiento_autos,35730,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-10-01,patentamiento_autos,41715,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-09-01,patentamiento_autos,33454,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-08-01,patentamiento_autos,39221,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-07-01,patentamiento_autos,43866,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-06-01,patentamiento_autos,39892,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-05-01,patentamiento_autos,39935,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-04-01,patentamiento_autos,34573,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-03-01,patentamiento_autos,39709,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-02-01,patentamiento_autos,30312,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2023-01-01,patentamiento_autos,50071,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2022-12-01,patentamiento_autos,19606,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2022-11-01,patentamiento_autos,33462,unidades/mes,"DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción), sin Tierra del Fuego"
+2026-07-01,motorizacion_total,142.9,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2026-06-01,motorizacion_total,142.5,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2026-05-01,motorizacion_total,140.7,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2026-04-01,motorizacion_total,140.4,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2026-03-01,motorizacion_total,138.2,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2026-02-01,motorizacion_total,134.9,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2026-01-01,motorizacion_total,132.1,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-12-01,motorizacion_total,131.6,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-11-01,motorizacion_total,130.3,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-10-01,motorizacion_total,130.4,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-09-01,motorizacion_total,128.6,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-08-01,motorizacion_total,126.0,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-07-01,motorizacion_total,125.3,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-06-01,motorizacion_total,122.3,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-05-01,motorizacion_total,118.7,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-04-01,motorizacion_total,115.2,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-03-01,motorizacion_total,111.4,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-02-01,motorizacion_total,106.7,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2025-01-01,motorizacion_total,103.6,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-12-01,motorizacion_total,97.1,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-11-01,motorizacion_total,95.0,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-10-01,motorizacion_total,94.0,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-09-01,motorizacion_total,93.4,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-08-01,motorizacion_total,91.8,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-07-01,motorizacion_total,90.3,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-06-01,motorizacion_total,90.2,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-05-01,motorizacion_total,91.4,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-04-01,motorizacion_total,92.2,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-03-01,motorizacion_total,92.6,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-02-01,motorizacion_total,96.4,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2024-01-01,motorizacion_total,97.6,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-12-01,motorizacion_total,100.4,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-11-01,motorizacion_total,100.2,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-10-01,motorizacion_total,99.4,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-09-01,motorizacion_total,97.3,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-08-01,motorizacion_total,97.4,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-07-01,motorizacion_total,96.5,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-06-01,motorizacion_total,95.8,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-05-01,motorizacion_total,95.6,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-04-01,motorizacion_total,95.3,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-03-01,motorizacion_total,95.1,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-02-01,motorizacion_total,94.2,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
+2023-01-01,motorizacion_total,94.1,índice base 100 = 4T-2023,"DNRPA — inscripciones iniciales de automotores y motovehículos, per cápita (INDEC), sin Tierra del Fuego"
 2026-05-01,mortalidad_pymes,460777,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2026-04-01,mortalidad_pymes,462918,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina
 2026-03-01,mortalidad_pymes,464922,empleadores (hasta 50 trabajadores),SRT — serie histórica de partes empleadoras por tamaño de nómina

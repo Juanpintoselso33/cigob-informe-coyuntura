@@ -208,8 +208,12 @@ PROCEDENCIA = {
     "consumo_carnes_total": ("conceptual",
                              "consumo total de carnes per cápita rebaseado a 4T-2023 "
                              "desde la faena del INDEC; ancla en fecha fija (ADR-0217)"),
-    "patentamiento_motos": ("conceptual", "móvil 12m rebaseado a 4T-2023 (ADR-0024); el tope conceptual de 140 le recorta el boom, no lo calibra"),
-    "patentamiento_autos": ("conceptual", "móvil 12m rebaseado a 4T-2023 (ADR-0223), misma transformación que motos; ancla en fecha fija"),
+    "motorizacion_total": ("conceptual",
+                          "autos + motos per cápita, móvil 12m rebaseado a 4T-2023 "
+                          "(ADR-0224); ancla en fecha fija. EXENTO del tope de 140: "
+                          "a 1,11% de peso el techo acota una compensación que el "
+                          "peso ya acota, y contra esta base —deprimida— 140 es el "
+                          "nivel de un año normal, no un outlier"),
     "inseguridad": ("conceptual", "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"),
 }
 
