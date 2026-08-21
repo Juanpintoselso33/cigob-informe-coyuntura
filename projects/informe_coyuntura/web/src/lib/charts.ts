@@ -332,8 +332,10 @@ export function componentesDe(key: string, comp: Record<string, number>): { nomb
     iai: { isac: "Construcción (ISAC)", bk_importados: "Bienes de capital", patentamientos_comerciales: "Patentamientos" },
     icip: { servicios_tech: "Servicios tech", productividad: "Productividad" },
     fal_modernizacion_laboral: {
-      ley_27802: "Ley 27.802 (Congreso)",
-      decreto_408_2026: "Decreto 408/2026 (reglamentación)",
+      ley_27802: "Ley 27.802 vigente",
+      decreto_408_2026: "Decreto 408/2026 vigente",
+      vigencia: "Régimen en vigencia",
+      adopcion: "Fondos inscriptos (CNV)",
     },
     concesiones_infraestructura: {
       etapa_i: "Etapa I (% adj.)",
