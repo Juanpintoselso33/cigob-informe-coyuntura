@@ -9,6 +9,9 @@ el 2026-07-09) sin que ningún gate lo detectara -- gate_calidad.py chequea
 que la CARD tenga datos completos, nunca cruzó contra la capa de display.
 Este test cierra la clase de bug en vez de solo el síntoma puntual.
 """
+import csv
+import json
+import unicodedata
 import re
 import sys
 from pathlib import Path
@@ -233,36 +236,103 @@ def test_metodologia_describe_anclas_declaradas_sin_afirmar_puntos_medios():
 # El corte del 10% separa la escala distinta del redondeo: hoy deja afuera a
 # `cepo_mulc` (3,1% de brecha, las dos en %) y a `sentimiento_digital` (8,4%,
 # las dos en puntos), y adentro a los dos que sí cambian de magnitud.
-BRECHA_ESCALA = 0.10
+# ── El gráfico no puede rotularse con la unidad de otra escala ──────────────
+# Primera versión (20-ago-2026): infería "otra escala" desde el TAMAÑO de la
+# brecha entre la card y el último punto de la serie, con un corte en 10%. Duró
+# un día. Rompió el nocturno con `sentimiento_digital` —card 29,9 contra serie
+# 26,8, un 10,4%— que está en la MISMA escala: son dos consultas distintas a
+# Google Trends y difieren por ruido, no por unidad. Un umbral puesto al lado
+# del ruido dispara con el ruido.
+#
+# La magnitud era un proxy, y había algo directo que comparar: los CSV de
+# `output/series/` declaran su propia `unidad`, y la card declara la suya. Se
+# comparan esas dos declaraciones — pero por FAMILIA y no por texto, porque la
+# misma unidad se redacta de veinte maneras ("% de sesiones" y "% sesiones en
+# minoría (12m móviles)" son la misma cosa). Comparando texto crudo saltan 28
+# de 66; por familia quedan 3, y los 3 son reales.
+#
+# Y se autodiagnostica, que es lo que la primera versión no hacía. Si la familia
+# difiere pero card y serie son el MISMO número, no hay dos escalas: hay un
+# metadato viejo. Así apareció `recaudacion`, que decía "% i.a. real" desde que
+# el 29-jul-2026 pasó a devolver un índice base 100. G3 no podía verlo —compara
+# números, y los números coincidían— y ninguna otra guarda mira las unidades.
+FAMILIAS_DE_UNIDAD = (
+    ("índice",      r"\bindice\b|base 100|100 ="),
+    ("pp",          r"\bpp\b|puntos porcentuales"),
+    ("porcentaje",  r"%|\bporcentaje\b"),
+    ("moneda",      r"us\$|\bm usd\b|millones de usd|\$"),
+    ("escala 0100", r"0[\-–]100"),
+    ("días",        r"\bdias\b"),
+)
+# Coincidencia numérica por debajo de la cual card y serie son "el mismo dato":
+# la misma tolerancia con la que G3 reconcilia card contra serie.
+IGUAL_NUMERO = 0.01
 
 
-def test_toda_serie_en_otra_escala_declara_su_unidad():
-    import json
-    import sys as _sys
-    _sys.path.insert(0, str(ROOT / "scripts"))
-    from gate_calidad import G3_EXCEPCIONES
+def _familia(unidad: str) -> str:
+    s = unicodedata.normalize("NFD", unidad or "")
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn").lower()
+    for nombre, patron in FAMILIAS_DE_UNIDAD:
+        if re.search(patron, s):
+            return nombre
+    return "conteo"
 
+
+def _unidad_de_cada_serie() -> dict:
+    out = {}
+    for archivo in sorted((ROOT / "output" / "series").glob("*.csv")):
+        with archivo.open(encoding="utf-8") as fh:
+            for fila in csv.DictReader(fh):
+                if fila.get("unidad"):
+                    out[fila["indicador"]] = fila["unidad"]
+    return out
+
+
+def test_hay_unidades_que_comparar():
+    assert len(_unidad_de_cada_serie()) > 50, "revisá el lector de los CSV de series"
+
+
+def test_ninguna_serie_se_rotula_con_la_unidad_de_otra_escala():
     snapshot = json.loads((ROOT / "web" / "src" / "data" / "informe.json").read_text(encoding="utf-8"))
     series = json.loads((ROOT / "web" / "src" / "data" / "series.json").read_text(encoding="utf-8"))
     cards = {k: i for c in snapshot["cinturones"].values()
              for k, i in c.get("indicadores", {}).items()}
+    unidad_serie = _unidad_de_cada_serie()
+
     bloque = DATOS_TS[DATOS_TS.index("UNIDADES_SERIE"):]
     bloque = bloque[:bloque.index("};")]
     declarados = set(re.findall(r"^\s*([a-z_0-9]+):", bloque, re.M))
 
-    faltan = []
-    for clave in G3_EXCEPCIONES:
-        card, serie = cards.get(clave), series.get(clave) or []
-        if not card or not serie or not isinstance(card.get("valor"), (int, float)):
+    metadato_viejo, sin_declarar = [], []
+    for clave, card in sorted(cards.items()):
+        us, uc = unidad_serie.get(clave), card.get("unidad")
+        if not us or not uc or _familia(uc) == _familia(us):
             continue
-        ultimo = serie[-1].get("valor")
-        if not isinstance(ultimo, (int, float)) or not card["valor"]:
-            continue
-        brecha = abs(card["valor"] - ultimo) / abs(card["valor"])
-        if brecha > BRECHA_ESCALA and clave not in declarados:
-            faltan.append(f"{clave}: card {card['valor']} vs serie {ultimo} "
-                          f"({brecha * 100:.0f}% de brecha)")
-    assert not faltan, (
-        "el gráfico va a rotular estas series con la unidad de su card, que es "
-        "de otra escala. Agregalas a UNIDADES_SERIE en datos.ts:\n  " +
-        "\n  ".join(faltan))
+        puntos = series.get(clave) or []
+        ultimo = puntos[-1].get("valor") if puntos else None
+        mismo_numero = (
+            isinstance(ultimo, (int, float))
+            and isinstance(card.get("valor"), (int, float))
+            and card["valor"]
+            and abs(card["valor"] - ultimo) / abs(card["valor"]) <= IGUAL_NUMERO
+        )
+        detalle = (f"{clave}: la card dice «{uc}» ({_familia(uc)}) y la serie "
+                   f"«{us}» ({_familia(us)})")
+        if mismo_numero:
+            # Publicar el mismo número con unidades de distinta familia es un
+            # metadato viejo, y declararlo en UNIDADES_SERIE no lo arregla:
+            # rotularía el gráfico con una etiqueta que ya no describe el dato.
+            metadato_viejo.append(detalle)
+        elif clave not in declarados:
+            sin_declarar.append(detalle)
+
+    assert not metadato_viejo, (
+        "card y serie publican EL MISMO número con unidades de distinta "
+        "familia, así que no son dos escalas: una de las dos etiquetas quedó "
+        "vieja. Corregí la que ya no describe lo que se calcula — en "
+        "`descargar_series.py` si es la de la serie:\n  "
+        + "\n  ".join(metadato_viejo))
+    assert not sin_declarar, (
+        "estas series están en otra escala que su card, y el gráfico las va a "
+        "rotular con la unidad de la card. Agregalas a UNIDADES_SERIE en "
+        "datos.ts:\n  " + "\n  ".join(sin_declarar))

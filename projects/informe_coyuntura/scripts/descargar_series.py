@@ -753,7 +753,13 @@ MACRO_DERIVADAS = [
     ("ipi_manufacturero", "% i.a. (promedio 3 meses)", "INDEC — IPI manufacturero (vía datos.gob.ar)", fetch_ipi_serie),
     # acompaña al IPC general en el modal, no puntúa (ADR-0077)
     ("ipc_nucleo", "% mensual", "INDEC — IPC núcleo nacional (vía datos.gob.ar)", fetch_ipc_nucleo_serie),
-    ("recaudacion", "% i.a. real", "Sec. Hacienda (recaudación DGI) + IPC (deflactor)", fetch_recaudacion_real_serie),
+    # La unidad decía "% i.a. real" y la serie devuelve un ÍNDICE desde el
+    # 29-jul-2026, cuando `fetch_recaudacion_real_serie` reemplazó la variación
+    # interanual por la base imponible real desestacionalizada. El metadato
+    # quedó tres semanas describiendo la métrica anterior; ningún gate lo veía
+    # porque card y serie coinciden en el número (88,2 contra 88,2) y G3 sólo
+    # compara números.
+    ("recaudacion", "índice (100 = 4T-2023)", "Sec. Hacienda (recaudación DGI) + IPC (deflactor)", fetch_recaudacion_real_serie),
     ("credito_privado", "% i.a. real", "BCRA (préstamos privados) + IPC INDEC", fetch_credito_privado_serie),
     ("costo_financiamiento_tesoro", "% real anual", "Sec. de Finanzas (colocaciones) + BCRA (REM)", fetch_costo_financiamiento_tesoro_serie),
     ("resultado_primario", "% de la recaudación (12m)", "Sec. de Hacienda — IMIG + recaudación", fetch_resultado_primario_serie),
