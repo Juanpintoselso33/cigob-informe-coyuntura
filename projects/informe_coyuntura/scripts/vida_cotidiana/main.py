@@ -85,6 +85,7 @@ def run_all() -> dict:
     from collectors.ciccra import fetch_ciccra
     from collectors.consumo_carnes import fetch_consumo_carnes
     from collectors.srt_empleadores import fetch_empleadores_pyme
+    from collectors.trabajo_independiente import fetch_trabajo_independiente
 
     def _empleadores_sin_serie():
         """La card sólo necesita el último mes. La serie completa (359
@@ -92,12 +93,16 @@ def run_all() -> dict:
         guardarla acá la duplicaría en un archivo versionado."""
         d = fetch_empleadores_pyme()
         return {k: v for k, v in d.items() if not k.startswith('serie_')}
+
+    def _independiente_sin_serie():
+        d = fetch_trabajo_independiente()
+        return {k: v for k, v in d.items() if k != 'serie'}
     from collectors.snic import fetch_snic
     from collectors.salud import fetch_salud
     from collectors.trends import fetch_trends
     from collectors.utdt_nowcast_pobreza import fetch_nowcast_pobreza
 
-    logger.info("Iniciando recolección — 10 fuentes...")
+    logger.info("Iniciando recolección — 11 fuentes...")
 
     fuentes_automatizadas = [
         "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
@@ -107,6 +112,7 @@ def run_all() -> dict:
         "ciccra (consumo carne vacuna per capita — PDF mensual)",
         "consumo_carnes (total vacuna+aviar+porcina per capita — tablero SAGYP)",
         "srt (empleadores con cobertura de ART por tamano de nomina)",
+        "sipa (autonomos y monotributo sobre el empleo registrado)",
         "snic (estadisticas criminales nacionales + CABA)",
         "salud (datasets DEIS/SNVS via datos.salud.gob.ar CKAN)",
         "trends (interes Google: inflacion, precios, inseguridad, trabajo)",
@@ -134,6 +140,10 @@ def run_all() -> dict:
         # Falla suave como el de carnes: el XLSX de la SRT es pesado y su
         # formato puede cambiar; que se caiga no puede tumbar al cinturon.
         "empleadores_pyme": _seguro(_empleadores_sin_serie, "empleadores_pyme"),
+        # La contracara del cierre de PyMEs (ADR-0219): si las empresas que
+        # cierran reaparecen como gente facturando por su cuenta, es
+        # reconfiguracion; si no reaparecen, es destruccion.
+        "trabajo_independiente": _seguro(_independiente_sin_serie, "trabajo_independiente"),
         "snic":   fetch_snic(),
         "salud":  fetch_salud(),
         "trends": fetch_trends(),

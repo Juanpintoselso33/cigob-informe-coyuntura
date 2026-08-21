@@ -377,7 +377,7 @@ export const LABELS: Record<string, string> = {
   peso_tarifas: "Peso de tarifas (regulados)", alquiler_real: "Costo real del alquiler", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
   consumo_carne: "Consumo de carne vacuna per cápita",
   consumo_carnes_total: "Consumo total de carnes per cápita", informalidad: "Informalidad laboral",
-  mortalidad_pymes: "Empleadores PyME activos", despacho_cemento: "Construcción (ISAC)",
+  mortalidad_pymes: "Empleadores PyME activos", trabajo_independiente: "Peso del trabajo independiente", despacho_cemento: "Construcción (ISAC)",
   pluriempleo: "Subocupación demandante", inseguridad: "Victimización (IVI)",
   icc_utdt: "Confianza del consumidor (ICC)", sentimiento_digital: "Sentimiento digital (Trends)",
   patentamiento_motos: "Patentamiento de motos", desocupacion: "Desocupación",
@@ -450,7 +450,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // impacto social
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   mora_familias: "%",
-  peso_tarifas: "% m/m", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores",
+  peso_tarifas: "% m/m", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.",
   // gestion (insumos del ITCG)
@@ -516,7 +516,8 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   peso_tarifas: "% mensual", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
   consumo_carne: "kg por habitante/año", consumo_carnes_total: "kg por habitante/año (vacuna + aviar + porcina)",
   informalidad: "% de asalariados",
-  mortalidad_pymes: "Empleadores de hasta 50 trabajadores con cobertura de ART", despacho_cemento: "Índice", pluriempleo: "% de ocupados",
+  mortalidad_pymes: "Empleadores de hasta 50 trabajadores con cobertura de ART",
+  trabajo_independiente: "% del empleo registrado que son autónomos o monotributistas", despacho_cemento: "Índice", pluriempleo: "% de ocupados",
   inseguridad: "% de hogares víctimas (últimos 12 meses)", icc_utdt: "Índice",
   sentimiento_digital: "Índice (0–100)",
   patentamiento_motos: "Unidades",

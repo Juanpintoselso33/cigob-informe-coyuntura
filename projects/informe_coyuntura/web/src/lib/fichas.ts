@@ -2651,7 +2651,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos informalidad = mejora) contra el trimestre del arranque del mandato (4º trimestre de 2023).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (37,99% interno · 9,19% del ITCIS): es su componente más pesado.",
+      "Pertenece a la dimensión de prospectivas de empleo (34,19% interno · 8,27% del ITCIS): es su componente más pesado.",
     ],
     limitaciones: [
       "Solo asalariados: no captura la informalidad cuentapropista.",
@@ -2683,7 +2683,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se usa la serie desestacionalizada porque la original mostraba variaciones de hasta ±20% mensual de puro calendario.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (16,4% interno · 3,97% del ITCIS).",
+      "Pertenece a la dimensión de prospectivas de empleo (14,76% interno · 3,57% del ITCIS).",
     ],
     limitaciones: [
       "Es una aproximación declarada: mide producción industrial agregada, no mortandad de empresas — el nombre del indicador promete más de lo que la fuente da.",
@@ -2713,7 +2713,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La serie original tiene un desplome estacional en diciembre que contaminaría la base: por eso la desestacionalizada.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (14,97% interno · 3,62% del ITCIS).",
+      "Pertenece a la dimensión de prospectivas de empleo (13,47% interno · 3,26% del ITCIS).",
     ],
     limitaciones: [
       "Aproximación al empleo vía actividad de la construcción, no despachos de cemento reales (la serie de insumos existe aparte, como contraste).",
@@ -2741,7 +2741,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: la tasa rebaseada de forma invertida (menos subocupación demandante = mejora) contra el 4º trimestre de 2023.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de prospectivas de empleo (5,69% interno · 1,38% del ITCIS).",
+      "Pertenece a la dimensión de prospectivas de empleo (5,12% interno · 1,24% del ITCIS).",
     ],
     limitaciones: [
       "Aproximación declarada: mide gente que trabaja poco y busca más, no la tenencia de múltiples empleos.",

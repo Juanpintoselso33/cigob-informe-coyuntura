@@ -2001,6 +2001,16 @@ def fetch_itvc_tarifas() -> list:
     return _itvc_relativo_salario(INDEC_SERIES["ipc_regulados"])
 
 
+def fetch_trabajo_independiente_serie() -> list:
+    """Participación del trabajo independiente en el empleo registrado, en %.
+    Misma serie para la card y para el índice (ADR-0219)."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from collectors.trabajo_independiente import fetch_trabajo_independiente
+    d = fetch_trabajo_independiente()
+    return [[f"{ym}-01", v] for ym, v in sorted(d["serie"].items())
+            if ym >= "2019-01"]
+
+
 def fetch_empleadores_pyme_serie() -> list:
     """Cantidad mensual de empleadores de hasta 50 trabajadores con cobertura
     de ART (SRT). Es la MISMA serie que alimenta la card y el índice: el
@@ -2494,6 +2504,9 @@ VIDA_DERIVADAS += [
     # ADR-0218: `mortalidad_pymes` deja de ser el IPI industrial y pasa a medir
     # lo que su nombre promete — el cierre neto de PyMEs. Una sola serie para la
     # card y para el índice; `itvc_ipi` se retira.
+    ("trabajo_independiente", "% del empleo registrado",
+     "SIPA — autónomos y monotributo sobre el total de trabajo registrado",
+     fetch_trabajo_independiente_serie),
     ("mortalidad_pymes", "empleadores (hasta 50 trabajadores)",
      "SRT — serie histórica de partes empleadoras por tamaño de nómina",
      fetch_empleadores_pyme_serie),

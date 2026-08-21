@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-21T02:08:34.750484-03:00",
+  "generated_at": "2026-08-21T08:56:32.400045-03:00",
   "period": "2026-08",
   "score_global": 4.2,
   "ponderacion": {
@@ -1252,34 +1252,40 @@
             "puntaje": 92.5,
             "indicadores": {
               "informalidad": {
-                "peso": 0.3799,
+                "peso": 0.3419,
                 "puntaje_banda": 94.2,
                 "puntaje_aplicado": 94.2,
-                "peso_efectivo": 0.0919
+                "peso_efectivo": 0.0827
               },
               "empleo_registrado": {
-                "peso": 0.2495,
+                "peso": 0.2246,
                 "puntaje_banda": 95.7,
                 "puntaje_aplicado": 95.7,
-                "peso_efectivo": 0.0604
+                "peso_efectivo": 0.0543
               },
               "mortalidad_pymes": {
-                "peso": 0.164,
+                "peso": 0.1476,
                 "puntaje_banda": 93.8,
                 "puntaje_aplicado": 93.8,
-                "peso_efectivo": 0.0397
+                "peso_efectivo": 0.0357
               },
               "despacho_cemento": {
-                "peso": 0.1497,
+                "peso": 0.1347,
                 "puntaje_banda": 82.2,
                 "puntaje_aplicado": 82.2,
-                "peso_efectivo": 0.0362
+                "peso_efectivo": 0.0326
               },
               "pluriempleo": {
-                "peso": 0.0569,
+                "peso": 0.0512,
                 "puntaje_banda": 90.7,
                 "puntaje_aplicado": 90.7,
-                "peso_efectivo": 0.0138
+                "peso_efectivo": 0.0124
+              },
+              "trabajo_independiente": {
+                "peso": 0.1,
+                "puntaje_banda": 92.8,
+                "puntaje_aplicado": 92.8,
+                "peso_efectivo": 0.0242
               }
             },
             "peso_efectivo": 0.2419

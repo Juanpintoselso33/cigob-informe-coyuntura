@@ -278,6 +278,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).",
     frecuencia: "Trimestral (EPH)", tipo: "Nivel (%)",
   },
+  trabajo_independiente: {
+    que: "Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el ITCIS puntúa INVERTIDA: más peso independiente es peor.",
+    aporta: "Es la contracara del cierre de empresas. Cuando caen los empleadores, dice si esas unidades productivas desaparecieron o se reconfiguraron en gente que factura por su cuenta. Un empleo que se corre del salario al trabajo independiente pierde aportes patronales, indemnización y estabilidad, aunque siga siendo registrado.",
+    frecuencia: "Mensual (unos 3 meses de rezago)", tipo: "Participación (%)",
+  },
   mortalidad_pymes: {
     que: "Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona declarada con cobertura de ART. Cuando una PyME cierra, quiebra o despide a toda su nómina, el contrato con la aseguradora se rescinde casi en el acto, así que la baja aparece en el mes. En el ITCIS puntúa por el NIVEL rebaseado a 100 = 4T-2023: menos empleadores es peor.",
     aporta: "Es el cierre neto de empresas medido de forma directa, no aproximado por la producción industrial: el saldo entre las que abren y las que cierran, que es el dato que dice si el entramado PyME se está achicando.",

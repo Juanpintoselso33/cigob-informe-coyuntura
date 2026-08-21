@@ -78,6 +78,8 @@ MAX_DIAS = {
     # de 2026 el último dato era mayo). El tope de 140 venía del IPI, que es
     # más rápido; con esta fuente dejaría menos de un mes de margen.
     "mortalidad_pymes": 165, "despacho_cemento": 140, "consumo_carne": 140,
+    # SIPA publica con el mismo rezago de ~3 meses que la SRT (ADR-0219).
+    "trabajo_independiente": 165,
     "endeudamiento_familiar": 140, "inseguridad": 150,
 }
 CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón

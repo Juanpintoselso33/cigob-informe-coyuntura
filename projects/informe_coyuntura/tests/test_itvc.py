@@ -118,11 +118,14 @@ def test_pesos_del_documento():
     # ADR-0214: entra `informalidad` con su peso efectivo intacto (9,19%) y
     # queda primera. Los otros cuatro tampoco se recalibran: sus internos bajan
     # sólo porque el nominal de la dimensión subió a 0,2419.
-    assert d["empleo"]["indicadores"] == {"informalidad": 0.3799,
-                                          "empleo_registrado": 0.2495,
-                                          "mortalidad_pymes": 0.1640,
-                                          "despacho_cemento": 0.1497,
-                                          "pluriempleo": 0.0569}
+    # ADR-0219: entra trabajo_independiente con 10% y los cinco ceden ×0,90,
+    # conservando su orden relativo.
+    assert d["empleo"]["indicadores"] == {"informalidad": 0.3419,
+                                          "empleo_registrado": 0.2246,
+                                          "mortalidad_pymes": 0.1476,
+                                          "despacho_cemento": 0.1347,
+                                          "pluriempleo": 0.0512,
+                                          "trabajo_independiente": 0.1000}
     assert d["percepcion"]["indicadores"] == {"icc_utdt": 0.8182, "sentimiento_digital": 0.1818}
     assert d["seguridad"]["indicadores"] == {"inseguridad": 1.0}
     for dim in d.values():

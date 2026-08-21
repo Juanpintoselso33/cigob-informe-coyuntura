@@ -138,6 +138,8 @@ COMPONENTES = {
     "consumo_carnes_total":   ("consumo_carnes_total", False, False, True),
     "patentamiento_motos":    ("patentamiento_motos", False, False, False),
     "informalidad":           ("informalidad", True, True, False),
+    # ADR-0219: invertido, igual que informalidad y pluriempleo.
+    "trabajo_independiente":  ("trabajo_independiente", True, False, False),
     "inseguridad":            ("inseguridad", True, False, False),      # IVI mensual (ADR-0032)
     "sentimiento_digital":    ("sentimiento_digital", True, False, False),  # ADR-0034
 }

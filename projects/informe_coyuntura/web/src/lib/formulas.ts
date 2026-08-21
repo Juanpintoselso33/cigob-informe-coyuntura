@@ -189,6 +189,10 @@ ight)_{	ext{hoy}}}{\left(	ext{IPC general}\,/\,	ext{alquiler}
 ight)_{	ext{4T-23}}}`,
     leyenda: "Cuánto sube el alquiler comparado con el resto de los precios, contra el arranque del mandato. Debajo de 100 = el alquiler se encareció más que todo lo demás.",
   },
+  trabajo_independiente: {
+    latex: String.raw`100\cdot\frac{\text{participaci\'on}_{\text{4T-23}}}{\text{participaci\'on}_{\text{hoy}}}\quad\text{con}\quad\text{participaci\'on}=\frac{\text{aut\'onomos}+\text{monotributo}}{\text{empleo registrado total}}`,
+    leyenda: "Peso de autónomos y monotributistas en el empleo registrado, invertido: más participación independiente es peor, 100 = 4T-2023.",
+  },
   mortalidad_pymes: {
     latex: String.raw`100\cdot\frac{\text{empleadores hasta 50}_{\text{hoy}}}{\text{empleadores hasta 50}_{\text{4T-23}}}`,
     leyenda: "Cantidad de empleadores de hasta 50 trabajadores con cobertura de ART (SRT), 100 = 4T-2023. Menos empleadores es peor.",

@@ -121,6 +121,12 @@ def build_vida(raw):
     # ADR-0218: el indicador pasa a medir lo que su nombre promete — el cierre
     # neto de PyMEs — con la base de empleadores con cobertura de ART de la SRT.
     # Antes publicaba la variación mensual del IPI manufacturero.
+    ind_ = raw.get("trabajo_independiente") or {}
+    if ind_.get("participacion") is not None:
+        _add(out, "trabajo_independiente", ind_["participacion"],
+             "% del empleo registrado",
+             "SIPA — autónomos y monotributo sobre el total de trabajo registrado",
+             f"{ind_['mes']}-01")
     emp = raw.get("empleadores_pyme") or {}
     if emp.get("pyme") is not None:
         _add(out, "mortalidad_pymes", emp["pyme"],

@@ -483,7 +483,9 @@ def test_vida_itvc_reconcilia():
     # 18 desde 2026-07-30 (ADR-0153: entra pobreza_nowcast a la dimensión de
     # ingresos; era una card visible que no puntuaba, patrón dado de baja).
     # 16 el mismo día (ADR-0154: salen endeudamiento_familiar e indice_lider).
-    assert len(en_indice) == 16, f"esperaba 16 componentes en el índice, hay {len(en_indice)}"
+    # 17 desde 2026-08-21 (ADR-0219: entra trabajo_independiente, la
+    # contracara del cierre de PyMEs).
+    assert len(en_indice) == 17, f"esperaba 17 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

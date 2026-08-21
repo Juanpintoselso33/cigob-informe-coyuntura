@@ -184,9 +184,14 @@ DIMENSIONES_ITVC = {
         # aritmética del traslado —trae 9,19% y el registrado tiene 6,04%—, no
         # una decisión de jerarquía: los dos miden empleo desde los dos lados,
         # cuánto hay y de qué calidad es.
-        "indicadores": {"informalidad": 0.3799, "empleo_registrado": 0.2495,
-                        "mortalidad_pymes": 0.1640,
-                        "despacho_cemento": 0.1497, "pluriempleo": 0.0569},
+        # ADR-0219: entra `trabajo_independiente` con 10% y los cinco previos
+        # ceden proporcionalmente (×0,90), conservando su orden relativo. Es la
+        # contracara de `mortalidad_pymes`: una PyME que cierra y reaparece como
+        # gente facturando por su cuenta no es lo mismo que una que desaparece.
+        "indicadores": {"informalidad": 0.3419, "empleo_registrado": 0.2246,
+                        "mortalidad_pymes": 0.1476,
+                        "despacho_cemento": 0.1347, "pluriempleo": 0.0512,
+                        "trabajo_independiente": 0.1000},
     },
     "percepcion": {
         # ADR-0115. Antes se llamaba "confianza" y mezclaba tres cosas: ADR-0110
@@ -435,6 +440,12 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # Reemplaza al IPI industrial, que llevaba el nombre `mortalidad_pymes`
     # sin medir mortalidad ni PyMEs.
     idx["mortalidad_pymes"] = rebase_de_serie(series, "mortalidad_pymes")
+    # ADR-0219: participación del trabajo independiente en el empleo
+    # registrado, INVERTIDA. Un empleo que se corre del salario al trabajo
+    # por cuenta propia pierde aportes patronales, indemnización y
+    # estabilidad, aunque siga siendo registrado.
+    idx["trabajo_independiente"] = rebase_de_serie(series, "trabajo_independiente",
+                                                  invertido=True)
     # Informalidad TRIMESTRAL (52.2_ASDJ, barrido vida 2/13): la 303.1 murió en
     # 2020 pero la 52.2 sigue viva — base = 4T-2023 exacto (punto 2023-10),
     # invertida (menos informalidad = mejora). Reemplaza la excepción anual.

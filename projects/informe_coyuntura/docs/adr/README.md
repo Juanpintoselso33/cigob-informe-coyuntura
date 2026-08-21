@@ -242,6 +242,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0216](0216-o-integra-el-indice-o-no-es-card.md) | O integra el índice, o no es card | `consumo_carnes_total`, `consumo_carne` | vigente |
 | [0217](0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) | Puntúa el acceso total a proteína, no la carne vacuna | `consumo_carnes_total`, `consumo_carne` | vigente |
 | [0218](0218-el-cierre-de-pymes-se-mide-con-la-srt.md) | El cierre de PyMEs se mide con la SRT, no con la producción industrial | `mortalidad_pymes` | vigente |
+| [0219](0219-la-contracara-del-cierre-el-trabajo-independiente.md) | La contracara del cierre: el trabajo independiente | `trabajo_independiente` | vigente |
 
 ### Espíritu de época
 
