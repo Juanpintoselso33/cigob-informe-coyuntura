@@ -1876,9 +1876,11 @@ def _por_que_motorizacion(composicion):
         return None
 
     corrimiento = ratio - ratio_base
+    # En millones el total y en miles las dos patas: "1352 mil vehículos" es
+    # un número que nadie dice en voz alta.
     base = (f"en los últimos doce meses se patentaron "
-            f"{coma(round(composicion['total_12m'] / 1000))} mil vehículos 0 km "
-            f"({coma(round(var_t, 1))}% interanual): "
+            f"{coma(round(composicion['total_12m'] / 1_000_000, 2))} millones de "
+            f"vehículos 0 km ({coma(round(var_t, 1))}% interanual): "
             f"{coma(round(composicion['autos_12m'] / 1000))} mil autos "
             f"({coma(round(var_a, 1))}%) y "
             f"{coma(round(composicion['motos_12m'] / 1000))} mil motos "

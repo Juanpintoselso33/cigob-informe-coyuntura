@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2026-08-21T12:39:21.202678",
+    "timestamp": "2026-08-21T13:39:31.891462",
     "fuentes_automatizadas": [
       "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
       "bcra (creditos privados, tarjeta, personales, hipotecarios, BADLAR)",
@@ -409,7 +409,7 @@
       ],
       "geo": "AR",
       "fuente": "Google Trends via pytrends",
-      "nota": "Rate limit o error de conexion: HTTPSConnectionPool(host='www.google.com', port=443): Max retries exceeded with url: /sorry/index?continue=https://trends.google.com/trends/api/explore%3Fhl%3Des-AR%26tz%3D-180%26req%3D%257B%2522comparisonItem%2522%253A%2B%255B%257B%2522keyword%2522%253A%2B%2522inflacion%2522%252C%2B%2522time%2522%253A%2B%2522today%2B3-m%2522%252C%2B%2522geo%2522%253A%2B%2522AR%2522%257D%252C%2B%257B%2522keyword%2522%253A%2B%2522precios%2522%252C%2B%2522time%2522%253A%2B%2522today%2B3-m%2522%252C%2B%2522geo%2522%253A%2B%2522AR%2522%257D%252C%2B%257B%2522keyword%2522%253A%2B%2522inseguridad%2522%252C%2B%2522time%2522%253A%2B%2522today%2B3-m%2522%252C%2B%2522geo%2522%253A%2B%2522AR%2522%257D%252C%2B%257B%2522keyword%2522%253A%2B%2522trabajo%2522%252C%2B%2522time%2522%253A%2B%2522today%2B3-m%2522%252C%2B%2522geo%2522%253A%2B%2522AR%2522%257D%255D%252C%2B%2522category%2522%253A%2B0%252C%2B%2522property%2522%253A%2B%2522%2522%257D&hl=es-AR&q=EgS-H3JQGL7iodQGIi8UkFG0IpdfZ_GvvRzysNQqF5b5QpyTgvgcv-BMy1XJzFXLutJNwTl85dGotIBLADICclJaAUM (Caused by ResponseError('too many 429 error responses')). Reintentar en 1h."
+      "nota": "Rate limit o error de conexion: HTTPSConnectionPool(host='www.google.com', port=443): Max retries exceeded with url: /sorry/index?continue=https://trends.google.com/trends/api/explore%3Fhl%3Des-AR%26tz%3D-180%26req%3D%257B%2522comparisonItem%2522%253A%2B%255B%257B%2522keyword%2522%253A%2B%2522inflacion%2522%252C%2B%2522time%2522%253A%2B%2522today%2B3-m%2522%252C%2B%2522geo%2522%253A%2B%2522AR%2522%257D%252C%2B%257B%2522keyword%2522%253A%2B%2522precios%2522%252C%2B%2522time%2522%253A%2B%2522today%2B3-m%2522%252C%2B%2522geo%2522%253A%2B%2522AR%2522%257D%252C%2B%257B%2522keyword%2522%253A%2B%2522inseguridad%2522%252C%2B%2522time%2522%253A%2B%2522today%2B3-m%2522%252C%2B%2522geo%2522%253A%2B%2522AR%2522%257D%252C%2B%257B%2522keyword%2522%253A%2B%2522trabajo%2522%252C%2B%2522time%2522%253A%2B%2522today%2B3-m%2522%252C%2B%2522geo%2522%253A%2B%2522AR%2522%257D%255D%252C%2B%2522category%2522%253A%2B0%252C%2B%2522property%2522%253A%2B%2522%2522%257D&hl=es-AR&q=EgS-H3JQGN7-odQGIi_22ptBsNu7rjaKiVix7tx3MalpS56mlJ6vqr3QiXyPkm7th_tU6XAO0Zfy9gbSnDICclJaAUM (Caused by ResponseError('too many 429 error responses')). Reintentar en 1h."
     }
   }
 }
