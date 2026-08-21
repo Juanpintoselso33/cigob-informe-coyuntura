@@ -1,0 +1,228 @@
+{
+ "_meta": {
+  "descripcion": "Relevamiento de fuentes para un indicador de SUPERVIVENCIA JUDICIAL de las normas del Ejecutivo: si una norma dictada desde dic-2023 fue suspendida por cautelar, declarada inconstitucional o derogada. ADR-0230. NO es una serie, NO puntúa y NO alimenta ningún índice: el indicador se rechazó porque ninguna fuente publica el estado judicial de una norma. El relevamiento se versiona para no volver a recorrer el camino.",
+  "fecha": "2026-08-21",
+  "veredicto": "NINGUNA FUENTE SIRVE",
+  "origen": "el capítulo laboral del DNU 70/2023 lo frenó la Justicia y no el Congreso; el informe mide el desafío legislativo (bloqueo_sostenido, desafios_legislativos) y no el judicial",
+  "vocabulario_veredicto": [
+   "no_sirve",
+   "parcial",
+   "sirve"
+  ]
+ },
+ "universo_que_habria_que_cubrir": {
+  "decretos_publicados_10dic2023_a_21ago2026": 2990,
+  "normas_del_pen_en_el_dataset_abierto_desde_2023_12_10": 2914,
+  "dnu_en_la_misma_ventana": 113,
+  "fuente_del_conteo": "buscador de InfoLeg (tipoNorma=Decreto) para los 2.990; CSV abierto de datos.jus.gob.ar para los 2.914; los DNU se enumeran mes a mes con texto='necesidad y urgencia' y se filtran por la clase 'Decreto DNU'",
+  "nota": "las resoluciones ministeriales quedan afuera de estos conteos y son un orden de magnitud más: cualquier cobertura medida sobre los DNU es una COTA SUPERIOR"
+ },
+ "fuentes": {
+  "infoleg_web": {
+   "veredicto": "no_sirve",
+   "url": "https://servicios.infoleg.gob.ar/infolegInternet/verNorma.do?id=395521",
+   "que_publica": "tipo, número, organismo, fecha, resumen y el recuento de normas que la modifican",
+   "que_no_publica": "cualquier estado judicial",
+   "caso_de_prueba": {
+    "norma": "DNU 70/2023",
+    "hecho_real": "su Título IV (laboral) está suspendido por la Justicia desde enero de 2024 y nunca rigió",
+    "lo_que_dice_la_fuente": "la ficha no tiene campo de estado; el texto completo (260.811 bytes) trae 3 'Nota Infoleg' y las tres son normativas — Decretos 942/2025, 1120/2024 y 730/2024; cero menciones de cautelar, inconstitucionalidad o CNAT",
+    "vinculos": "verVinculos.do?modo=2 lista 50 normas que la modifican o complementan, todas decretos y resoluciones; ningún fallo"
+   }
+  },
+  "infoleg_dataset_abierto": {
+   "veredicto": "parcial",
+   "url": "https://datos.jus.gob.ar/dataset/d9a963ea-8b1d-4ca3-9dd9-07a4773e8c23",
+   "ultima_actualizacion": "2026-08-03",
+   "columnas": [
+    "id_norma",
+    "tipo_norma",
+    "numero_norma",
+    "clase_norma",
+    "organismo_origen",
+    "fecha_sancion",
+    "numero_boletin",
+    "fecha_boletin",
+    "pagina_boletin",
+    "titulo_resumido",
+    "titulo_sumario",
+    "texto_resumido",
+    "observaciones",
+    "texto_original",
+    "texto_actualizado",
+    "modificada_por",
+    "modifica_a"
+   ],
+   "campo_de_estado": null,
+   "observaciones_no_vacias": 200,
+   "observaciones_que_mencionan_algo_judicial": 0,
+   "observaciones_que_declaran_abrogacion": 9,
+   "observaciones_que_declaran_rechazo_del_congreso": 6,
+   "dnu_rechazados_por_ambas_camaras_desde_dic_2023": [
+    "656/2024",
+    "340/2025",
+    "345/2025",
+    "351/2025",
+    "461/2025",
+    "462/2025"
+   ],
+   "por_que_solo_parcial": "cubre la vida NORMATIVA de la norma (derogación, rechazo legislativo) y es ciega a la judicial. Sirve para un indicador de vigencia normativa; no para uno de supervivencia judicial"
+  },
+  "saij_legislacion": {
+   "veredicto": "no_sirve",
+   "url": "https://www.saij.gob.ar/busqueda",
+   "tiene_campo_estado": true,
+   "vocabulario_cerrado_del_campo_estado": [
+    "Vigente, de alcance general",
+    "Individual, Solo Modificatoria o Sin Eficacia",
+    "Derogada",
+    "Vetada",
+    "No vigente, ley caduca",
+    "Refundida, ley caduca"
+   ],
+   "valores_judiciales_en_ese_vocabulario": 0,
+   "caso_de_prueba": {
+    "norma": "DNU 70/2023 (2023-12-20)",
+    "estado_que_devuelve": "Vigente, de alcance general",
+    "por_que_importa": "es la trampa exacta: un campo que se llama 'estado' y mide vida normativa, servido junto al Título IV laboral como derecho en vigor"
+   },
+   "cobertura_del_propio_campo": {
+    "ventana": "2023-12-10 a 2026-08-21",
+    "registros_de_legislacion": 15128,
+    "con_el_campo_vacio": 8015,
+    "share_vacio": 0.53,
+    "derogada": 29,
+    "vetada": 11
+   }
+  },
+  "saij_jurisprudencia": {
+   "veredicto": "no_sirve",
+   "url": "https://www.saij.gob.ar/busqueda",
+   "es_la_fuente_de": "judicializacion (ADR-0135, ADR-0170)",
+   "cobertura_por_norma": {
+    "universo_medido": "los 113 DNU dictados entre el 10-dic-2023 y el 31-jul-2026",
+    "consulta_inclusiva": "texto:\"<numero>/<anio>\"",
+    "dnu_con_al_menos_un_documento": 10,
+    "share": 0.088,
+    "mediana_de_documentos_por_dnu": 0,
+    "dnu_de_2026_con_algun_documento": 0,
+    "dnu_de_2026_medidos": 24,
+    "consulta_exacta_decreto_n_anio": {
+     "dnu_con_al_menos_un_documento": 4,
+     "medidos": 111,
+     "share": 0.036
+    },
+    "concentracion": "el DNU 70/2023 solo se lleva 134 de los ~170 documentos; sacándolo, 9 DNU acumulan 33 documentos y 103 no tienen ninguno",
+    "nota": "la consulta inclusiva matchea cualquier norma con ese número —resoluciones, leyes provinciales—, así que 8,8% es una COTA SUPERIOR de la cobertura real"
+   },
+   "rezago_medido": {
+    "metodo": "documentos de jurisprudencia fechados en cada mes de 2026 contra el promedio del mismo mes de 2024 y 2025, ya maduros",
+    "share_por_antiguedad_del_mes": {
+     "0_meses": 0.11,
+     "1_mes": 0.26,
+     "2_meses": 0.65,
+     "3_meses": 1.11,
+     "4_meses": 0.68,
+     "5_meses": 1.02,
+     "6_meses": 0.84
+    },
+    "conclusion": "un mes de fallos llega al 26% de su volumen final al mes siguiente y al 65% a los dos meses; recién a los cinco meses deja de crecer. El rezago es de ~5 meses, no de semanas",
+    "por_que_judicializacion_lo_tolera": "es un cociente y numerador y denominador se recortan juntos (ADR-0170); un conteo por norma no cancelaría nada"
+   },
+   "proxy_mas_cercano_que_si_se_puede_construir": {
+    "definicion": "% anual de sumarios Federal+Nacional cuyo texto menciona 'inconstitucionalidad', misma construcción que judicializacion con otra palabra",
+    "serie": {
+     "2016": 0.803,
+     "2017": 1.119,
+     "2018": 1.032,
+     "2019": 0.623,
+     "2020": 0.804,
+     "2021": 1.51,
+     "2022": 1.107,
+     "2023": 1.172,
+     "2024": 1.756,
+     "2025": 1.439,
+     "2026": 3.465
+    },
+    "r_con_judicializacion_niveles": 0.454,
+    "r_con_judicializacion_diferencias": -0.002,
+    "por_que_no_entra": "no es redundante y aun así no sirve: cuenta la palabra en cualquier pleito —privado, provincial, tributario— y no dice qué norma cayó. Es el mismo error que ADR-0131 ya había encontrado. El salto de 1,44 a 3,47 entre 2025 y 2026 es mezcla editorial de la base más el rezago, no vetos de constitucionalidad multiplicándose en ocho meses"
+   }
+  },
+  "csjn": {
+   "veredicto": "no_sirve",
+   "ya_relevado_en": [
+    "0140",
+    "0141"
+   ],
+   "buscador_completo": {
+    "url": "https://sjconsulta.csjn.gov.ar/sjconsulta/fallos/consulta.html",
+    "tiene_el_campo_exacto": "casilla «Sentencias que declaran Inconstitucionalidad»",
+    "bloqueo": "reCAPTCHA y, desde 2026, además un WAF ante clientes automáticos"
+   },
+   "endpoint_abierto_de_novedades": {
+    "tope": 10,
+    "pagina": false,
+    "hallazgo_nuevo_de_este_relevamiento": {
+     "pregunta": "¿trae la clave que cruzaría fallo con norma?",
+     "medicion": "de los 21 fallos marcados que el detector de ADR-0141 acumuló, 0 nombran una norma con número en carátula, título o materia",
+     "consecuencia": "aunque el tope de 10 se levantara, el payload no permite atribuir un fallo a una norma: falta la clave de cruce, no sólo el volumen"
+    }
+   },
+   "cij": "disuelto por Acordada 10/2025; además su robots.txt hace Disallow de /adj/fallos/",
+   "datos_jus_gob_ar": "0 datasets para 'jurisprudencia', 'inconstitucionalidad' o 'cautelar' relacionados con normas"
+  },
+  "chequeado_eldiarioar_fopea": {
+   "veredicto": "parcial",
+   "url": "https://impactosdesregularizacion.fopea.org/",
+   "datos": "https://docs.google.com/spreadsheets/d/1gjj1VYF1ZKeG1EwVqzsxTPv90YaXwK9Bb2Fw7Vh9pdE/export?format=csv",
+   "filas": 161,
+   "columnas": [
+    "Fecha",
+    "Tema",
+    "Sector",
+    "Normativa",
+    "Resumen oficial",
+    "Propósito",
+    "Análisis Chequeado/DiarioAR",
+    "¿Por qué?",
+    "¿Qué impacto tuvo?",
+    "Impacto"
+   ],
+   "impacto": {
+    "MODERADO": 62,
+    "ALTO": 43,
+    "BAJO": 36,
+    "NULO": 20
+   },
+   "reproduce_la_premisa_del_pedido": {
+    "dnu_70_2023": {
+     "nulo": 16,
+     "filas": 45,
+     "share": 0.356
+    },
+    "resto": {
+     "nulo": 4,
+     "filas": 116,
+     "share": 0.034
+    }
+   },
+   "por_que_no_alcanza": [
+    "está CONGELADA: 123 filas con fecha parseable van del 20-dic-2023 al 24-abr-2025, y el producto se publicó en dic-2025. El rezago ya es de ~16 meses y crece solo",
+    "'NULO' mezcla por definición el freno judicial con la modificación normativa posterior, así que no se puede separar la pata judicial de la normativa",
+    "el hecho judicial vive en prosa libre: sólo 2 de 161 filas dicen 'cautelar' o 'inconstitucional' textualmente. No hay campo",
+    "el universo son 161 medidas de desregulación, no las ~2.914 normas del Ejecutivo"
+   ]
+  },
+  "cels_mida": {
+   "veredicto": "no_sirve",
+   "url": "https://www.cels.org.ar/mida/",
+   "por_que": "conceptualmente es lo que haría falta —cruza normas con los amparos que las revirtieron— pero el sitio está en mantenimiento y no devuelve datos. Vale revisitarlo"
+  }
+ },
+ "que_haria_falta_para_desbloquearlo": [
+  "que la CSJN exponga el buscador de fallos (el campo 'inconstitucional' ya existe y ya lo calcula) — es el pedido de acceso a la información que ADR-0140 dejó formulado",
+  "que cualquiera de esas fuentes publique la NORMA IMPUGNADA como campo, y no sólo la carátula: sin clave de cruce norma↔fallo no hay indicador, por más fallos que se publiquen",
+  "que el MIDA del CELS vuelva a estar en línea con datos descargables"
+ ]
+}

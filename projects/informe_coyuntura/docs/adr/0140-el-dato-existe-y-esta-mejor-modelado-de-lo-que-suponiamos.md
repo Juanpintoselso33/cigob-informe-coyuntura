@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-26
 cinturon: 'politica'
 corrige: ['0131']
+relacionado: ['0230']
 ambito: 'cinturón político (ITCP), bloque judicial'
 origen: 'el editor pidió buscar alternativas en lugar de aceptar el cierre.'
 ---

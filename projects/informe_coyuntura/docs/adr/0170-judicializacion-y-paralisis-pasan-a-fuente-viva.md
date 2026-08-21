@@ -8,7 +8,7 @@ indice: 'ITCP'
 indicadores: [judicializacion, paralisis_denuncias]
 archivos: ['scripts/politica.py', 'scripts/descargar_series.py']
 continua: ['0168']
-relacionado: ['0131', '0134', '0135', '0139', '0191']
+relacionado: ['0131', '0134', '0135', '0139', '0191', '0230']
 ambito: 'Cinturón político (ITCP) · dimensión `poder_judicial`'
 origen: 'ADR-0168 dejó declarado que tres de los cuatro indicadores leían un relevamiento versionado en vez de la fuente'
 ---
