@@ -172,13 +172,13 @@ export const FICHAS: Record<string, Ficha> = {
     sigla: "ITCM",
     nombreLargo: "Índice de Tensión del Cinturón Macroeconómico",
     cinturon: "macro",
-    resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Trece indicadores en seis dimensiones, con umbrales y pesos de la paramétrica institucional CIGOB.",
+    resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Diecisiete indicadores en seis dimensiones, con umbrales y pesos de la paramétrica institucional CIGOB.",
     marcoConceptual: [
       "El informe lee la realidad como un sistema de cuatro cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales y externas, financiamiento, actividad, competitividad e inversión.",
       "El marco, las dimensiones, los umbrales y los pesos provienen de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). El índice no estima esos parámetros a partir de los datos: los toma del marco y luego mide — con las herramientas de robustez de abajo — cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
-      "Trece indicadores agrupados en seis dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023).",
+      "Diecisiete indicadores agrupados en seis dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023).",
       "Las variables nominales de seguimiento (préstamos y base monetaria nominales, tipo de cambio mayorista, BADLAR) se extraen como insumo de cálculo pero no se publican como indicadores del cinturón: en un régimen de desinflación, su variación nominal confunde más de lo que informa. La BADLAR entra al índice a través de la tasa real del IdC; el crédito entra deflactado.",
     ],
     tratamiento: [
@@ -209,7 +209,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La matriz de validación cruzada verifica además el poder discriminante: que cada índice del informe correlacione más con su ancla propia que con las ajenas (que el ITCM mida lo macroeconómico y no «el humor general»). La matriz completa, con sus límites declarados, se publica en la página del cinturón.",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCM) / 10. Así, los umbrales globales de lectura no cambian: 0–3 estable, 4–6 en tensión, 7–10 tensionado.",
+      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCM) / 10. Los cortes globales son continuos: hasta 3, estable; más de 3 y hasta 6, en tensión; más de 6, tensionado.",
       "Cada indicador del cinturón publica su propia ficha, su fórmula y su tensión equivalente — cómo se leería el cinturón si solo existiera ese indicador —, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
@@ -500,7 +500,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Sistema Argentino de Información Jurídica (SAIJ)",
       operacion: "Buscador de jurisprudencia, restringido por jurisdicción",
       serie: "Conteo de sumarios por año, con y sin el término de búsqueda",
-      url: "https://www.saij.gob.ar/busqueda",
+      url: "https://www.saij.gob.ar/buscador/jurisprudencia-federal",
       acceso: "Automático: la consulta y el modo de leer los totales quedaron verificados y documentados.",
     },
     transformaciones: [
@@ -539,7 +539,7 @@ export const FICHAS: Record<string, Ficha> = {
       organismo: "Corte Suprema de Justicia de la Nación",
       operacion: "Anuario estadístico, sobre su sistema de gestión judicial",
       serie: "Expedientes ingresados y resueltos por año",
-      url: "https://www.csjn.gov.ar/estadisticas",
+      url: "https://www.csjn.gov.ar/transparencia/datos-estadisticos",
       acceso: "Los tableros interactivos no admiten consulta automática, pero la Corte publica una versión estática de cada hoja con las etiquetas de datos visibles, y el anuario en documento.",
     },
     transformaciones: [
@@ -1211,7 +1211,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la ventaja, interpolado entre anclas: más de +15 puntos → el más alto; entre +5 y +15 → alto; entre −5 y +5 → moderado; entre −15 y −5 → bajo; −15 o menos → el más bajo.",
-      "Es el único indicador de la dimensión de imagen y voto del índice del cinturón (8% del total) — la dimensión que pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
+      "Es el único indicador de la dimensión de imagen y voto del índice del cinturón (7% del total) — la dimensión que pesa deliberadamente menos que las otras seis, porque el proyecto distingue capital político de popularidad electoral.",
     ],
     dobleUso: "El mismo dato alimentó el indicador de clima electoral del cinturón espíritu de época entre junio y julio de 2026, hasta que ese cinturón quedó acotado a la intención migratoria como único indicador; la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.",
     limitaciones: [
@@ -1246,7 +1246,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del conteo, interpolado entre anclas: 2 desafíos o menos en doce meses → el más alto; entre 2 y 5 → alto; entre 5 y 9 → moderado; entre 9 y 12 → bajo; más de 12 → el más bajo. Las anclas parten de que desafiar una norma del Ejecutivo en el recinto es un acto excepcional, que exige mayorías especiales o un procedimiento específico: un puñado al año ya es confrontación abierta.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 15% junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum y el bloqueo sostenido.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), donde pesa 13% junto a la eficacia parlamentaria, el ratio DNU, las sesiones caídas por quórum, el bloqueo sostenido y la producción legislativa.",
       "Se lee en par con el bloqueo sostenido: éste cuenta cuántas veces el Congreso da la pelea; aquél, qué proporción de esas peleas gana el Gobierno.",
     ],
     limitaciones: [
@@ -1353,7 +1353,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del ratio, interpolado entre anclas: 0,3 o menos → el más alto; entre 0,3 y 0,7 → alto; entre 0,7 y 1,2 → moderado; entre 1,2 y 2 → bajo; más de 2 → el más bajo. Estas anclas están ancladas a la práctica histórica 2011-2024 (cuatro presidencias distintas): en promedio, una de cada tres leyes sancionadas tuvo un DNU — ratio ≈0,3.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 20% junto a la eficacia legislativa, las sesiones caídas por quórum, las derrotas legislativas y el bloqueo sostenido.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), donde pesa 20% junto a la eficacia legislativa, las sesiones caídas por quórum, los desafíos legislativos, el bloqueo sostenido y la producción legislativa.",
     ],
     limitaciones: [
       "Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.",
@@ -1391,7 +1391,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación, interpolado entre anclas: −32% o menos → el más alto; entre −32% y −29% → alto; entre −29% y −26% → moderado; entre −26% y −15% → bajo; más de −15% → el más bajo. Los umbrales se calibraron con la serie mensual real del indicador (30 meses, dic-2023 en adelante, rango observado −34% a +3%): las cinco bandas tienen meses reales observados.",
-      "Es el único indicador de la dimensión de conflicto social del índice del cinturón (12% del total).",
+      "Es el único indicador de la dimensión de conflicto social del índice del cinturón (10% del total).",
     ],
     limitaciones: [
       "Cuenta eventos, no personas: una marcha multitudinaria y una concentración chica pesan igual — es una medida de frecuencia del conflicto, no de su masividad.",
@@ -1425,7 +1425,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación real, interpolado entre anclas: más de +10% → el más alto; entre 0% y +10% → alto; entre −10% y 0% → moderado; entre −20% y −10% → bajo; −20% o menos → el más bajo.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (22% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (19% del total), donde pesa 40% junto al 30% del alineamiento de senadores por provincia y el 30% de la adhesión provincial al RIGI.",
     ],
     limitaciones: [
       "Granularidad anual: no capta la tensión federal dentro del año.",
@@ -1464,7 +1464,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje aprobado, interpolado entre anclas: más de 50% → el más alto; entre 30% y 50% → alto; entre 15% y 30% → moderado; entre 5% y 15% → bajo; 5% o menos → el más bajo. Los umbrales se calibraron contra series históricas de otras gestiones (proporción de proyectos del Ejecutivo que se convirtieron en ley), no contra el rango de esta gestión.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 25% junto al ratio DNU, las sesiones caídas por quórum, las derrotas legislativas y el bloqueo sostenido.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), donde pesa 27% junto al ratio DNU, las sesiones caídas por quórum, los desafíos legislativos, el bloqueo sostenido y la producción legislativa.",
     ],
     limitaciones: [
       "Al exigir un año de margen antes de contar un proyecto, el indicador reporta sobre una cohorte de hace 12 a 24 meses, no sobre el año corriente — es menos inmediato a cambio de no castigar a los proyectos recién enviados.",
@@ -1505,7 +1505,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Mide qué tan unido vota el bloque oficialista puertas adentro de las dos cámaras — no si acompaña una «posición oficial», algo que no puede observarse de forma independiente. Si en una votación casi todo el bloque va junto en el mismo sentido (a favor o en contra), la cohesión es alta; si el bloque se parte en partes similares, la cohesión es baja.",
       "El puntaje del índice se asigna por bandas del compuesto, interpolado entre anclas: más de 99,9% → el más alto; entre 99% y 99,9% → alto; entre 97% y 99% → moderado; entre 95% y 97% → bajo; 95% o menos → el más bajo. Los umbrales se calibraron contra la serie mensual del propio compuesto (dic-2023 en adelante, rango observado 90,3–100): las cinco bandas tienen meses reales observados.",
-      "Es el único indicador de la dimensión de cohesión interna del oficialismo del índice del cinturón (18% del total).",
+      "Es el único indicador de la dimensión de cohesión interna del oficialismo del índice del cinturón (15% del total).",
     ],
     limitaciones: [
       "Solo cuenta al bloque propio de LLA: deja afuera a los aliados de bloques separados, una decisión declarada para no inflar la cohesión medida con votos ajenos al oficialismo propiamente dicho.",
@@ -1544,7 +1544,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Reemplaza, desde julio de 2026, a un indicador de carga manual (\"alineamiento de gobernadores\") que quedó congelado por meses sin una fuente pública estructurada para actualizarlo — dos rondas de búsqueda de fuentes automatizables no encontraron ninguna que midiera directamente la postura del Poder Ejecutivo provincial.",
       "Caveat importante: este indicador mide comportamiento de voto de SENADORES, no la postura pública del gobernador de la provincia — un senador no depende del gobernador de turno, puede responder a la estrategia nacional de su propio partido. Es la mejor señal automatizable disponible hoy, no una medición directa del Poder Ejecutivo provincial.",
       "El puntaje del índice se asigna por bandas de ese porcentaje, interpolado entre anclas: más de 70% de coincidencia → el más alto; entre 60% y 70% → alto; entre 50% y 60% → moderado; entre 40% y 50% → bajo; 40% o menos → el más bajo. Los umbrales se calibraron con la serie mensual reconstruida del propio indicador (feb-2024 en adelante).",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (22% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (19% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% de adhesión al RIGI.",
     ],
     limitaciones: [
       "Proxy de comportamiento legislativo, no medición directa de la postura del gobernador (Poder Ejecutivo provincial) — ver caveat arriba.",
@@ -1578,7 +1578,7 @@ export const FICHAS: Record<string, Ficha> = {
     incidenciaTexto: [
       "Mide adhesión a un régimen fiscal y de promoción de inversiones puntual, no el alineamiento político general de una provincia con la Nación — eso lo mide, con otro método, el indicador de alineamiento de senadores por provincia. Una provincia puede adherir al RIGI por conveniencia fiscal aun con un gobernador crítico del gobierno nacional, y a la inversa.",
       "El puntaje del índice se asigna por bandas del porcentaje adherido, interpolado entre anclas: más de 80% de jurisdicciones adheridas → el más alto; entre 60% y 80% → alto; entre 40% y 60% → moderado; entre 20% y 40% → bajo; menos de 20% → el más bajo. Los umbrales se chequearon contra la serie histórica real del indicador (24 meses, jul-2024 a jun-2026): a diferencia de otros indicadores del cinturón, no se recalibraron — la adhesión es un evento irreversible por jurisdicción, así que el rango observado hoy es el arranque de un proceso todavía en curso, no una muestra representativa contra la cual fijar anclas permanentes.",
-      "Integra la dimensión de alianzas territoriales del índice del cinturón (22% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
+      "Integra la dimensión de alianzas territoriales del índice del cinturón (19% del total), donde pesa 30% junto al 40% de las transferencias federales y el 30% del alineamiento de senadores por provincia.",
     ],
     limitaciones: [
       "Cuenta la adhesión formal, no la inversión efectiva que esa adhesión termina generando en cada provincia.",
@@ -1653,7 +1653,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas del porcentaje de sesiones caídas, interpolado entre anclas: 5% o menos → el más alto; entre 5% y 10% → alto; entre 10% y 20% → moderado; entre 20% y 30% → bajo; más de 30% → el más bajo.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 15% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos y el bloqueo sostenido.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), donde pesa 13% junto al ratio DNU, la eficacia legislativa, los desafíos legislativos, el bloqueo sostenido y la producción legislativa.",
     ],
     limitaciones: [
       "Las sesiones desactivadas antes de la convocatoria formal no aparecen en el registro oficial: el indicador subestima el bloqueo.",
@@ -1746,7 +1746,7 @@ export const FICHAS: Record<string, Ficha> = {
     },
     incidenciaTexto: [
       "Los umbrales usan una referencia externa, no el rango propio del período: entre 2003 y 2025 el Congreso no logró revertir ningún veto presidencial —ni siquiera frente a los gobiernos en minoría—, así que sostener el 90% o más de lo desafiado es el dominio histórico normal del bloqueo; por debajo del 25%, el Ejecutivo perdió la llave del tercio. El período cubierto recorre casi todo el rango: 100% en el primer semestre de 2024, 75% tras la caída del decreto de fondos reservados, 33% tras la ola de insistencias y derogaciones de agosto-octubre de 2025, y el mínimo en 2026, cuando la ventana móvil todavía carga esa ola pero los desafíos sostenidos más viejos ya salieron de ella.",
-      "Integra la dimensión de poder legislativo del índice del cinturón (25% del total), donde pesa 20% junto a la eficacia parlamentaria, el ratio DNU, las derrotas legislativas y las sesiones caídas por quórum. Es la contracara de las derrotas: aquéllas cuentan las normas caídas en términos absolutos; éste acredita también las sostenidas. Más es mejor.",
+      "Integra la dimensión de poder legislativo del índice del cinturón (21% del total), donde pesa 12% junto a la eficacia parlamentaria, el ratio DNU, los desafíos legislativos, las sesiones caídas por quórum y la producción legislativa. Se lee en par con los desafíos: aquéllos cuentan cuántas normas llegan al recinto; éste acredita qué proporción sigue en pie. Más es mejor.",
     ],
     limitaciones: [
       "La ventana de 12 meses retiene las caídas durante un año: la recuperación del bloqueo después de una crisis aparece con rezago mecánico, incluso si el Congreso nuevo dejó de desafiar normas (los desafíos viejos salen de la ventana doce meses después, no antes).",
@@ -2939,7 +2939,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Es un proxy de consumo durable, no de bienestar general.",
     ],
     faltantes: "El colector levanta excepción ante cualquier cambio de forma de la fuente —una columna que falta, un mes a medio cargar, una jurisdicción que cambia de nombre— en vez de publicar una serie recortada. Con la fuente caída, la card mantiene el último valor como desactualizado y la serie conserva sus puntos anteriores.",
-    revisiones: "Los dos archivos publican su histórico completo y se rebajan enteros en cada corrida, así que una corrección de la fuente se incorpora sola.",
+    revisiones: "Los dos archivos publican su histórico completo y se releen enteros en cada corrida, así que una corrección de la fuente se incorpora sola.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITCIS el patentamiento de motos con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad." },
       { fecha: "2026-07-04", cambio: "Se aplica al componente de motos el techo de recorte 140 y su peso interno baja de 10% a 5%." },
@@ -2998,7 +2998,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El marco proviene de la «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Gestión» (Fundación CIGOB, julio de 2026). Los pesos de las cinco dimensiones y la estructura de la primera vienen del documento; los pesos internos de las restantes son operacionalización propia documentada.",
     ],
     seleccion: [
-      "Quince indicadores puntúan en cinco dimensiones (la tabla de composición muestra la estructura vigente con los puntajes de hoy). El tablero solo muestra lo que integra el índice: dos series complementarias de conflictividad (alertas de manifestación y eventos de protesta) se siguen relevando como seguimiento interno, sin publicarse ni puntuar.",
+      "Catorce indicadores puntúan en cinco dimensiones (la tabla de composición muestra la estructura vigente con los puntajes de hoy). El tablero solo muestra lo que integra el índice: dos series complementarias de conflictividad (alertas de manifestación y eventos de protesta) se siguen relevando como seguimiento interno, sin publicarse ni puntuar.",
       "Criterio de selección: fuentes públicas verificables y automatizables. El cinturón es íntegramente automático: el único registro curado a mano (privatizaciones) cita la norma del Boletín Oficial detrás de cada estado.",
     ],
     tratamiento: [
@@ -3032,7 +3032,7 @@ export const FICHAS: Record<string, Ficha> = {
       "La matriz de validación cruzada compara además cada índice del informe contra todas las anclas a la vez, para ver si correlaciona más con la propia que con las ajenas. No se cumple en todos los casos y la matriz lo declara: en una muestra de unos treinta meses casi todas las series argentinas comparten la tendencia del período.",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCG) / 10, con los umbrales globales de siempre (0–3 estable · 4–6 en tensión · 7–10 tensionado).",
+      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCG) / 10. Los cortes globales son continuos: hasta 3, estable; más de 3 y hasta 6, en tensión; más de 6, tensionado.",
       "Cada indicador publica su ficha, su fórmula, su tensión equivalente y los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
@@ -3123,7 +3123,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Mide evolución contra un punto de partida, no niveles absolutos: un país que arranca mal y mejora poco puntúa mejor que uno que arranca bien y empeora poco.",
       "El punto de partida (4º trimestre de 2023) contiene la devaluación de diciembre: parte de las mejoras medidas es rebote del pozo — auditado y declarado, con la base mantenida por diseño del documento institucional.",
-      "Dos discusiones de diseño están abiertas y declaradas: el peso de la brecha salarial (17,06%, el mayor del índice) y el signo con el que puntúa el trabajo independiente, que admite leerse como precarización o como emprendedorismo.",
+      "Dos discusiones de diseño están abiertas y declaradas: el peso de la brecha salarial (13,38% del índice) y el signo con el que puntúa el trabajo independiente, que admite leerse como precarización o como emprendedorismo.",
       "El análisis multivariado previo del estándar OCDE/JRC está pendiente; la eliminación del doble conteo salario/comida (detectado por correlación casi perfecta entre dos componentes) fue un paso en esa dirección.",
     ],
     cambios: [
@@ -3149,15 +3149,15 @@ export const FICHAS: Record<string, Ficha> = {
     sigla: "ITCP",
     nombreLargo: "Índice de Tensión del Cinturón Político",
     cinturon: "politica",
-    resumen: "Mide el capital político del gobierno —la capacidad de gobernar con otros actores, no la popularidad— en una escala 0–100: 0 = mínimo capital político, 100 = máximo. Cinco dimensiones con pesos editoriales explícitos, sin documento institucional previo que los fije.",
+    resumen: "Mide el capital político del gobierno —la capacidad de gobernar con otros actores, no la popularidad— en una escala 0–100: 0 = mínimo capital político, 100 = máximo. Dieciocho indicadores en siete dimensiones con pesos editoriales explícitos.",
     marcoConceptual: [
-      "El cinturón político mide el capital político del gobierno según el marco de Carlos Matus (Política, Planificación y Gobierno): la capacidad de gobernar con otros actores —el Congreso, los gobernadores, el propio bloque legislativo, la calle—, no la popularidad medida en encuestas. Se organiza en cinco dimensiones: poder legislativo, alianzas territoriales, cohesión interna del oficialismo, conflicto social e imagen y voto.",
-      "A diferencia del ITCM, el ITCG y el ITCIS, no existe un documento institucional que fije los pesos de estas cinco dimensiones: el marco ya las describía, pero nunca se habían ponderado. Los pesos son una decisión editorial explícita, apoyada en esa misma distinción del marco: la dimensión de imagen y voto pesa deliberadamente menos que las otras cuatro, porque el proyecto distingue capital político de popularidad electoral.",
+      "El cinturón político mide el capital político del gobierno según el marco de Carlos Matus (Política, Planificación y Gobierno): la capacidad de gobernar con otros actores —el Congreso, las provincias, el propio bloque legislativo, la calle, el Poder Judicial y el sector privado—, no la popularidad medida en encuestas. Se organiza en siete dimensiones: poder legislativo, alianzas territoriales, cohesión interna del oficialismo, conflicto social, imagen y voto, poder judicial y sector privado.",
+      "A diferencia del ITCM, el ITCG y el ITCIS, no existe un documento institucional previo que fije estos pesos. Son una decisión editorial explícita: poder legislativo 21%, alianzas territoriales 19%, cohesión interna 15%, conflicto social 10%, imagen y voto 7%, poder judicial 15% y sector privado 13%. La imagen electoral pesa deliberadamente menos porque el proyecto distingue capital político de popularidad.",
     ],
     seleccion: [
-      "Once indicadores puntúan en cinco dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El tablero publica solo lo que integra el índice: dos mediciones que quedaron fuera del puntaje (la rotación del gabinete y las protestas en la Ciudad de Buenos Aires) se siguen relevando como seguimiento interno, sin tile propio. Reemplaza a un promedio simple de nueve indicadores que pesaba todo por igual, sin distinguir la capacidad de gobernar de la popularidad.",
+      "Dieciocho indicadores puntúan en siete dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El tablero publica solo lo que integra el índice: tres indicadores retirados conservan ficha histórica y otros seguimientos no puntuables permanecen internos, sin tarjeta pública. El esquema reemplazó a un promedio simple que pesaba todo por igual, sin distinguir actores ni mecanismos de poder.",
       "Criterio de selección: fuentes públicas verificables y automatizables. El alineamiento de los gobernadores —una estimación manual sin fuente pública estructurada— se retiró del índice en julio de 2026 y lo reemplazó el alineamiento de voto de los senadores por provincia, una conducta observable.",
-      "La revisión editorial de julio de 2026 acotó el alcance del índice a la capacidad del gobierno de gestionar y avanzar su agenda —el Parlamento, las alianzas territoriales y la cohesión del oficialismo—: la rotación del gabinete y el volumen de protesta quedaron fuera del puntaje y del tablero, aunque su recolección continúa (mismo criterio que los insumos monetarios del índice macroeconómico).",
+      "La revisión editorial de julio de 2026 acotó el objeto a la capacidad de gestionar y avanzar la agenda, pero amplió los actores observados: además del Parlamento, las alianzas territoriales, la cohesión y la conflictividad, incorporó la respuesta del Poder Judicial y del sector privado. La rotación del gabinete y el volumen de protestas de la Ciudad de Buenos Aires quedaron fuera del puntaje.",
     ],
     tratamiento: [
       "Indicadores faltantes: los pesos se renormalizan entre los presentes, primero dentro de la dimensión y, si una dimensión queda vacía, entre dimensiones.",
@@ -3169,8 +3169,8 @@ export const FICHAS: Record<string, Ficha> = {
       "A diferencia de ITCM/ITCG, cuyos umbrales provienen de un documento institucional, acá los umbrales de los indicadores originales heredan el criterio de la fórmula que reemplazan, y los de los indicadores incorporados en julio de 2026 se calibraron contra la serie mensual reconstruida de cada uno (la ficha de cada indicador documenta sus cortes y su calibración).",
     ],
     agregacion: {
-      latex: String.raw`\text{ITCP}=\sum_{\text{5 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
-      leyenda: "Promedio ponderado en dos niveles: dentro de cada dimensión y entre dimensiones (30% poder legislativo · 25% alianzas territoriales · 20% cohesión interna del oficialismo · 15% conflicto social · 10% imagen y voto).",
+      latex: String.raw`\text{ITCP}=\sum_{\text{7 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{indicadores}}\text{peso}_{\text{interno}}\times\text{puntaje}_{0\text{–}100}\Big)`,
+      leyenda: "Promedio ponderado en dos niveles: 21% poder legislativo · 19% alianzas territoriales · 15% cohesión interna · 10% conflicto social · 7% imagen y voto · 15% poder judicial · 13% sector privado.",
       parrafos: [
         "La agregación es compensatoria: una dimensión alta puede tapar una baja. Por eso el índice incluye el flag de dimensión crítica: si una dimensión cae por debajo de su umbral, se declara junto al valor publicado en lugar de dejar que el promedio la esconda.",
       ],
@@ -3184,7 +3184,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Participa además de la matriz de validación cruzada que compara los cuatro índices del informe contra sus cuatro anclas externas a la vez, publicada en la página del cinturón.",
     ],
     comunicacion: [
-      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCP) / 10, con los mismos umbrales globales de siempre (0–3 estable · 4–6 en tensión · 7–10 tensionado).",
+      "El resto del informe consume el índice como tensión 0–10: tensión = (100 − ITCP) / 10. Los cortes globales son continuos: hasta 3, estable; más de 3 y hasta 6, en tensión; más de 6, tensionado.",
       "Cada indicador del cinturón publica su ficha, su fórmula y su tensión equivalente, junto con los ajustes de analista activos, si los hay.",
     ],
     interpretacion: [
@@ -3195,7 +3195,7 @@ export const FICHAS: Record<string, Ficha> = {
       { rango: "81 – 100", lectura: "Aflojado" },
     ],
     limitaciones: [
-      "Los pesos de las cinco dimensiones no provienen de un documento institucional previo, a diferencia de los otros tres índices del informe: son una decisión editorial explícita, declarada como tal.",
+      "Los pesos de las siete dimensiones no provienen de un documento institucional previo, a diferencia de los otros tres índices del informe: son una decisión editorial explícita, declarada como tal.",
       "Varios de los indicadores son incorporaciones de julio de 2026: sus umbrales se calibraron contra series mensuales reconstruidas de unos dos años — una historia real pero corta, que cubre un solo gobierno.",
       "Su validación externa es la más reciente del sistema: varios componentes tienen historia corta y la reconstrucción de los meses más antiguos se apoya en los indicadores de serie más larga (con un piso de cobertura declarado) — las correlaciones se leen como consistencia, no como prueba.",
       "El alineamiento territorial se mide por el comportamiento de voto de los senadores, no por la postura del Poder Ejecutivo provincial: no existe todavía una fuente pública estructurada que mida directamente el alineamiento de los gobernadores.",
@@ -3210,6 +3210,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-11", cambio: "En la dimensión de conflicto social, la conflictividad nacional (eventos de protesta y disturbios de todo el país, serie mensual completa) reemplaza a la medición anterior basada en informes de conflictividad, que no permitía una serie comparable." },
       { fecha: "2026-07-15", cambio: "Las comisiones sin sanción salen del puntaje: su fuente es ciega a las sanciones del Senado y se solapa con la eficacia legislativa corregida. Poder legislativo queda con cuatro indicadores." },
       { fecha: "2026-07-16", cambio: "Se incorpora el bloqueo legislativo sostenido a la dimensión de poder legislativo: la contracara de las derrotas (qué porción de las normas propias desafiadas en el recinto sigue en pie). El índice pasa a once indicadores puntuables y los pesos internos de la dimensión se redistribuyen." },
+      { fecha: "2026-07-31", cambio: "El índice alcanza su estructura vigente de siete dimensiones y dieciocho indicadores: incorpora el Poder Judicial y el sector privado como actores diferenciados, y amplía la medición legislativa. La composición y los pesos vigentes quedan publicados en la tabla del índice." },
     ],
   },
 };

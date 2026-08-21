@@ -58,6 +58,13 @@ const ind = esIndicador ? cinturon.indicadores[f.id] : null;
 const desc = esIndicador ? (DESCRIPCIONES[f.id] ?? { que: "", aporta: "", frecuencia: "—", tipo: "—" }) : null;
 const formula = esIndicador ? FORMULAS[f.id] : null;
 const pres = ind ? presentacion(f.id, ind) : null;
+// La brecha de obra pública releva expectativas para el mes indicado; su
+// fecha puede quedar por delante de la edición sin ser un dato "del futuro".
+const periodoVigente = ind
+  ? (f.id === "brecha_obra_publica"
+      ? `expectativas a ${mesLeg(ind.fecha_dato)}`
+      : mesLeg(ind.fecha_dato))
+  : null;
 const indice = indiceDe(cinturon);
 let dimNombre: string | null = null;
 let pesoDimNominal: number | null = null;
@@ -109,8 +116,8 @@ if (esIndicador && fi.anclas && !fi.anclas.sinEjemplo && typeof ind?.valor === "
   const t = tramoDeAnclas(fi.anclas.puntos, ind.valor);
   const v = `${coma(ind.valor, 2)} ${fi.anclas.unidadCorta}`;
   ejemplo = t.plano
-    ? `El dato vigente (${v}, ${mesLeg(ind.fecha_dato)}) cae en el tramo plano de la escala (más allá del ancla ${coma(t.borde, 2)}): puntaje ${coma(puntajeHoy)}.`
-    : `El dato vigente (${v}, ${mesLeg(ind.fecha_dato)}) cae entre las anclas ${coma(t.x0, 2)} → ${t.y0} puntos y ${coma(t.x1, 2)} → ${t.y1} puntos. La recta entre ambas da el puntaje del mes: ${coma(puntajeHoy)}.`;
+    ? `El dato vigente (${v}, ${periodoVigente}) cae en el tramo plano de la escala (más allá del ancla ${coma(t.borde, 2)}): puntaje ${coma(puntajeHoy)}.`
+    : `El dato vigente (${v}, ${periodoVigente}) cae entre las anclas ${coma(t.x0, 2)} → ${t.y0} puntos y ${coma(t.x1, 2)} → ${t.y1} puntos. La recta entre ambas da el puntaje del mes: ${coma(puntajeHoy)}.`;
 }
 
 // índice: bloque paramétrico completo
@@ -152,7 +159,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
       <p class="cg-hero-lead cg-detalle-lead">{esIndicador ? desc!.que : fx.resumen}</p>
       <div class="cg-detalle-meta">
         {esIndicador && pres && (
-          <span class="cg-detalle-chip">Hoy <strong>{pres.texto}{pres.unidad ? ` ${pres.unidad}` : ""}</strong> ({mesLeg(ind.fecha_dato)})</span>
+          <span class="cg-detalle-chip">Hoy <strong>{pres.texto}{pres.unidad ? ` ${pres.unidad}` : ""}</strong> ({periodoVigente})</span>
         )}
         {esIndicador && puntajeHoy !== null && indice && (
           <span class="cg-detalle-chip">{indice.base100 ? "Componente" : `Puntaje en el ${indice.sigla}`} <strong>{coma(puntajeHoy)}{indice.base100 ? "" : "/100"}</strong>{indice.base100 ? " · 100 = 4T-2023" : ""}</span>
@@ -240,7 +247,7 @@ const heroTitulo = esIndicador ? label(f.id) : fx.sigla;
             </div>
             {fi.fuente.serie && <div><dt>Serie exacta</dt><dd>{fi.fuente.serie}</dd></div>}
             <div><dt>Modo de acceso</dt><dd>{fi.fuente.acceso}</dd></div>
-            <div><dt>Última actualización</dt><dd>Dato a {mesLeg(ind.fecha_dato)} · informe generado el {informe.generated_at.slice(0, 10)}</dd></div>
+            <div><dt>Última actualización</dt><dd>Dato de {periodoVigente} · informe generado el {informe.generated_at.slice(0, 10)}</dd></div>
           </dl>
         </section>
 

@@ -32,6 +32,9 @@ const indices = CINTURONES
   .filter(x => x.indice);
 
 const totalFichas = Object.keys(FICHAS).length;
+const fichasVigentes = Object.values(informe.cinturones)
+  .reduce((n, c) => n + Object.keys(c.indicadores).length, 0) + indices.length;
+const fichasHistoricas = totalFichas - fichasVigentes;
 
 // Los controles de credibilidad vivían en la portada (ADR-0194). Se mudaron acá
 // con sus datos vivos: correlaciones de la validación externa, fase de la
@@ -63,7 +66,7 @@ const tensionados = cinturonesRojos(informe);
       </p>
       <div class="cg-detalle-meta">
         <span class="cg-detalle-chip">Edición <strong>{mesLegible(informe.period)}</strong></span>
-        <span class="cg-detalle-chip"><strong>{totalFichas}</strong> fichas publicadas</span>
+        <span class="cg-detalle-chip"><strong>{fichasVigentes}</strong> vigentes · {fichasHistoricas} históricas</span>
       </div>
     </div>
   </header>
@@ -163,8 +166,8 @@ const tensionados = cinturonesRojos(informe);
       </div>
       <div class="cg-dicc-list">
         {indices.map(({ meta, indice }) => {
-          const tieneFicha = indice!.sigla.toLowerCase() in FICHAS;
-          const href = `${base}/metodologia/${indice!.sigla.toLowerCase()}/`;
+          const tieneFicha = indice!.fichaId in FICHAS;
+          const href = `${base}/metodologia/${indice!.fichaId}/`;
           const Row = tieneFicha ? "a" : "div";
           return (
             <Row class:list={["cg-dicc-row", { "is-pend": !tieneFicha }]} href={tieneFicha ? href : undefined}>

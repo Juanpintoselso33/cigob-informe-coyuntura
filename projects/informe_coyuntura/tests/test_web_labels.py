@@ -26,6 +26,8 @@ import itvc
 DATOS_TS = (ROOT / "web" / "src" / "lib" / "datos.ts").read_text(encoding="utf-8")
 INDICADOR_MODAL_ASTRO = (ROOT / "web" / "src" / "components" / "IndicadorModal.astro").read_text(encoding="utf-8")
 METODOLOGIA_ASTRO = (ROOT / "web" / "src" / "pages" / "metodologia" / "[id].astro").read_text(encoding="utf-8")
+METODOLOGIA_INDEX_ASTRO = (ROOT / "web" / "src" / "pages" / "metodologia" / "index.astro").read_text(encoding="utf-8")
+METODOLOGIA_HOME_ASTRO = (ROOT / "web" / "src" / "components" / "Metodologia.astro").read_text(encoding="utf-8")
 DESCRIPCIONES_TS = (ROOT / "web" / "src" / "lib" / "descripciones.ts").read_text(encoding="utf-8")
 FORMULAS_TS = (ROOT / "web" / "src" / "lib" / "formulas.ts").read_text(encoding="utf-8")
 FICHAS_TS = (ROOT / "web" / "src" / "lib" / "fichas.ts").read_text(encoding="utf-8")
@@ -217,6 +219,28 @@ def test_urls_metodologicas_anteriores_redirigen_a_la_ficha_vigente():
             r"['\"]/metodologia/desequilibrio_monetario/?['\"]",
             ASTRO_CONFIG,
         ), f"falta el redirect de {vieja} a la ficha vigente"
+
+
+def test_los_enlaces_de_indices_usan_el_id_de_ficha_y_no_la_sigla_publica():
+    """ITCIS es la sigla pública, pero la ficha conserva el id técnico itvc."""
+    assert "fichaId" in DATOS_TS
+    for fuente in (METODOLOGIA_HOME_ASTRO, METODOLOGIA_INDEX_ASTRO):
+        assert "indice.fichaId" in fuente or "indice!.fichaId" in fuente
+        assert "sigla.toLowerCase()" not in fuente
+
+
+def test_un_dato_automatico_rezagado_no_se_rotula_como_carga_manual():
+    bloque = re.search(
+        r"export function badgeEstado\(ind: Indicador\)([\s\S]*?)\n}",
+        DATOS_TS,
+    )
+    assert bloque, "no se encontró badgeEstado()"
+    assert "desactualizado" not in bloque.group(1), (
+        "la frescura del dato no define su método de obtención"
+    )
+    assert "badgeEstado(ind)" in INDICADOR_MODAL_ASTRO, (
+        "el modal debe usar la misma clasificación de procedencia que las cards"
+    )
 
 
 def test_metodologia_describe_anclas_declaradas_sin_afirmar_puntos_medios():

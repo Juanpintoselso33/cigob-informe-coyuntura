@@ -18,6 +18,7 @@ los tests de reconciliación comparan el snapshot consigo mismo. Nadie cruzaba
 la PROSA contra la paramétrica. Este test hace eso.
 """
 import bisect
+import importlib
 import re
 import sys
 from pathlib import Path
@@ -244,23 +245,53 @@ def _n_componentes() -> int:
     return sum(len(d["indicadores"]) for d in itvc.DIMENSIONES_ITVC.values())
 
 
-def test_la_ficha_del_indice_declara_bien_cuantos_componentes_tiene():
-    """Cualquier «N componentes en M dimensiones» de la ficha del índice, sea en
-    el resumen o en la selección, tiene que dar los números de la paramétrica."""
+# Los CUATRO índices declaran su composición en prosa, no sólo el ITCIS. La
+# primera versión de esta guarda miraba únicamente la ficha del ITCIS, y por eso
+# no vio que la del ITCG decía «Quince indicadores puntúan en cinco dimensiones»
+# con catorce — lo encontró una revisión externa el 2026-08-21. Un hueco de la
+# guarda es tan caro como el error que deja pasar.
+PARAMETRICAS = {"itcm": "itcm", "itcg": "itcg", "itcp": "itcp", "itvc": "itvc"}
+
+
+def _composicion_real(modulo: str) -> tuple:
+    """(componentes, dimensiones) de la paramétrica de un cinturón."""
+    mod = importlib.import_module(modulo)
+    dims = next(getattr(mod, x) for x in dir(mod) if x.startswith("DIMENSIONES"))
+    return sum(len(d["indicadores"]) for d in dims.values()), len(dims)
+
+
+@pytest.mark.parametrize("ficha,modulo", sorted(PARAMETRICAS.items()))
+def test_la_ficha_del_indice_declara_bien_cuantos_componentes_tiene(ficha, modulo):
+    """Cualquier «N componentes/indicadores en M dimensiones» de la ficha de un
+    índice tiene que dar los números de su paramétrica."""
+    bloque = _bloque(FICHAS, ficha)
+    if not bloque:
+        pytest.skip(f"{ficha} no tiene ficha")
     frases = re.findall(
-        r"(\w+) componentes en (\w+) dimensiones", FICHA_ITVC, re.I)
-    assert frases, "la ficha del ITCIS dejó de declarar su composición: revisá el parser"
+        r"(\w+) (?:componentes|indicadores) (?:puntúan )?en (\w+) dimensiones",
+        bloque, re.I)
+    if not frases:
+        pytest.skip(f"la ficha de {ficha} no declara su composición en prosa")
+    comps, ndims = _composicion_real(modulo)
     malos = []
     for comp, dim in frases:
         c, d = NUMERALES.get(comp.lower()), NUMERALES.get(dim.lower())
         if c is None or d is None:
-            malos.append(f"«{comp} componentes en {dim} dimensiones» no se pudo leer")
+            malos.append(f"«{comp} … en {dim} dimensiones» no se pudo leer")
             continue
-        if c != _n_componentes() or d != len(itvc.DIMENSIONES_ITVC):
-            malos.append(
-                f"la ficha dice «{comp} componentes en {dim} dimensiones» y la "
-                f"paramétrica tiene {_n_componentes()} en {len(itvc.DIMENSIONES_ITVC)}")
-    assert not malos, "la ficha del ITCIS no se cuenta bien:\n  " + "\n  ".join(malos)
+        if c != comps or d != ndims:
+            malos.append(f"la ficha dice «{comp} en {dim} dimensiones» y la "
+                         f"paramétrica tiene {comps} en {ndims}")
+    assert not malos, f"la ficha de {ficha} no se cuenta bien:\n  " + "\n  ".join(malos)
+
+
+def test_alguna_ficha_declara_su_composicion():
+    """Si el patrón de la prosa cambia y las cuatro empiezan a saltearse, los
+    parametrizados de arriba pasarían todos por `skip` sin mirar nada."""
+    con = [f for f in PARAMETRICAS if re.search(
+        r"\w+ (?:componentes|indicadores) (?:puntúan )?en \w+ dimensiones",
+        _bloque(FICHAS, f), re.I)]
+    assert len(con) >= 2, f"sólo {con} declaran composición: revisá el parser"
 
 
 def test_la_leyenda_de_agregacion_declara_los_pesos_de_dimension_vigentes():

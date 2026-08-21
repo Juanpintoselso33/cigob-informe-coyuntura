@@ -471,13 +471,13 @@ em { font-family: 'Montserrat', sans-serif; font-style: italic; color: var(--cta
 .cg-ind-value .cg-ind-unit { color: var(--muted-soft); font-weight: 500; font-size: 11px; }
 /* Frescura/origen del dato (no tensión): mismo defecto que el badge de
    IndicadorTile (A1), corregido acá también -- ver overrides.css para la
-   nota completa. `fresco` (el caso común) queda casi invisible; `manual` y
+   nota completa. `fresco` (el caso común) queda casi invisible; `rezagado` y
    `placeholder` (la excepción) se marcan con un borde, no con hue. */
 .cg-ind-value .cg-ind-est {
     display: inline-block; width: 9px; height: 9px; border-radius: 50%;
     background: var(--bd);
 }
-.cg-ind-value .cg-ind-est.manual,
+.cg-ind-value .cg-ind-est.rezagado,
 .cg-ind-value .cg-ind-est.placeholder {
     background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--muted-soft);
 }

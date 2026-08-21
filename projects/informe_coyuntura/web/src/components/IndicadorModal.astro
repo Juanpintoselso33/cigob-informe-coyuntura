@@ -1,5 +1,5 @@
 ---
-import { informe, series, label, presentacion, formatValor, periodoDato, UNIDADES_LARGAS, UNIDADES_SERIE, CINTURONES, BARRA_0_100, CONTEXTO_DURO_META, tramosSemaforo, LECTURA_SEMAFORO, TENSION_MAX } from "../lib/datos.ts";
+import { informe, series, label, presentacion, formatValor, periodoDato, badgeEstado, UNIDADES_LARGAS, UNIDADES_SERIE, CINTURONES, BARRA_0_100, CONTEXTO_DURO_META, tramosSemaforo, LECTURA_SEMAFORO, TENSION_MAX } from "../lib/datos.ts";
 import { DESCRIPCIONES, DIM_DESCRIPCIONES } from "../lib/descripciones.ts";
 import { FORMULAS } from "../lib/formulas.ts";
 
@@ -108,9 +108,7 @@ for (const [ckey, c] of Object.entries(informe.cinturones)) {
   for (const [ikey, ind] of Object.entries(c.indicadores)) {
     const p = presentacion(ikey, ind);
     const d = DESCRIPCIONES[ikey] ?? { que: "", aporta: "", frecuencia: "—", tipo: "—" };
-    const estado = ind.estado === "placeholder"
-      ? "Estimación"
-      : ind.desactualizado ? "Carga manual" : "Automático";
+    const estado = badgeEstado(ind);
     const claveInfo = `${SLUG_DE[ckey] ?? ckey}.${ikey}`;
     const indiceMeta = ind.en_indice === false ? null : (indiceMetaDe[claveInfo] ?? null);
     info[claveInfo] = {

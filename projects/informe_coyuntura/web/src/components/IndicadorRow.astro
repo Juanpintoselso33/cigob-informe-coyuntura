@@ -6,7 +6,7 @@ const { ikey, ind, bucket, slug } = Astro.props;
 // dibuja cuando bucket==="fresco" -- en la práctica siempre resuelve a
 // "verde" (marca "dato fresco", no una lectura de tensión) y sus otras dos
 // ramas están muertas.
-const estDot = bucket === "fresco" ? "verde" : bucket === "manual" ? "amarillo" : "rojo";
+const estDot = bucket === "fresco" ? "verde" : bucket === "rezagado" ? "amarillo" : "rojo";
 const nota = aclaracion(bucket, ind);
 const clickable = bucket !== "placeholder";
 const pres = presentacion(ikey, ind);

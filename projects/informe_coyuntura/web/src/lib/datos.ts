@@ -94,6 +94,7 @@ export interface Cinturon {
 // para que la página de detalle lo renderice de forma genérica.
 export interface IndiceInfo {
   sigla: string;
+  fichaId: string;
   nombre: string;
   descripcion: string;
   base100?: boolean;  // índice de seguimiento base 100 (sin techo: no mostrar "/100")
@@ -102,18 +103,21 @@ export interface IndiceInfo {
 export function indiceDe(c: Cinturon): IndiceInfo | null {
   if (c.itcm) return {
     sigla: "ITCM",
+    fichaId: "itcm",
     nombre: "Índice de Tensión del Cinturón Macroeconómico",
     descripcion: "0 = cinturón severamente apretado, 100 = aflojado. Pondera seis dimensiones.",
     data: c.itcm,
   };
   if (c.itcg) return {
     sigla: "ITCG",
+    fichaId: "itcg",
     nombre: "Índice de Tensión del Cinturón de Gestión",
     descripcion: "0 = se prometen reformas y no se ejecutan; 100 = agenda ejecutándose. Pondera cinco dimensiones.",
     data: c.itcg,
   };
   if (c.itvc) return {
     sigla: "ITCIS",
+    fichaId: "itvc",
     base100: true,   // índice de seguimiento sin techo en 100 (no mostrar "/100")
     nombre: "Índice de Tensión del Cinturón de Impacto Social",
     descripcion: "100 = el arranque del mandato (4º trimestre de 2023). Más de 100 es mejora; menos, deterioro.",
@@ -121,6 +125,7 @@ export function indiceDe(c: Cinturon): IndiceInfo | null {
   };
   if (c.itcp) return {
     sigla: "ITCP",
+    fichaId: "itcp",
     nombre: "Índice de Tensión del Cinturón Político",
     descripcion: "0 = mínimo capital político, 100 = máximo. Capacidad de gobernar, no popularidad.",
     data: c.itcp,
@@ -320,16 +325,16 @@ export function verdictDeCinturon(estado: string): "verde" | "amarillo" | "rojo"
 }
 
 // Clasificación de un indicador para el orden de display
-export type Bucket = "fresco" | "manual" | "placeholder";
+export type Bucket = "fresco" | "rezagado" | "placeholder";
 export function bucketDeIndicador(ind: Indicador): Bucket {
   if (ind.estado === "placeholder" || ind.valor === null) return "placeholder";
-  if (ind.desactualizado) return "manual";
+  if (ind.desactualizado) return "rezagado";
   return "fresco";
 }
 
-// Devuelve los indicadores de un cinturón ordenados: fresco → manual → placeholder
+// Devuelve los indicadores de un cinturón ordenados: fresco → rezagado → placeholder
 export function indicadoresOrdenados(c: Cinturon): { key: string; ind: Indicador; bucket: Bucket }[] {
-  const orden: Record<Bucket, number> = { fresco: 0, manual: 1, placeholder: 2 };
+  const orden: Record<Bucket, number> = { fresco: 0, rezagado: 1, placeholder: 2 };
   return Object.entries(c.indicadores)
     .map(([key, ind]) => ({ key, ind, bucket: bucketDeIndicador(ind) }))
     .sort((a, b) => orden[a.bucket] - orden[b.bucket]);
@@ -422,7 +427,7 @@ export function cap(s: string): string {
 // Aclaración chica para buckets no-frescos
 export function aclaracion(b: Bucket, ind: Indicador): string | null {
   if (b === "placeholder") return "— pendiente";
-  if (b === "manual") return `dato a ${ind.fecha_dato}`;
+  if (b === "rezagado") return `dato a ${ind.fecha_dato}`;
   return null;
 }
 
@@ -635,7 +640,6 @@ export function visualDe(key: string, ind: Indicador): Visual {
 // Badge honesto del origen del dato.
 export function badgeEstado(ind: Indicador): "Automático" | "Carga manual" | "Estimación" {
   if (ind.estado === "placeholder" || ind.valor === null) return "Estimación";
-  if (ind.desactualizado) return "Carga manual";
   return "Automático";
 }
 
@@ -666,6 +670,7 @@ export function periodoDato(key: string, ind: Indicador): string {
   if (PERIODO_ANUAL.has(key)) return String(anio);
   const mes = parseInt(f.slice(5, 7), 10);
   if (!mes) return String(anio);
+  if (key === "brecha_obra_publica") return `expect. ${MESES_CORTOS[mes - 1]} ${anio}`;
   if (PERIODO_TRIMESTRAL.has(key)) return `${Math.floor((mes - 1) / 3) + 1}T ${anio}`;
   return `${MESES_CORTOS[mes - 1]} ${anio}`;
 }

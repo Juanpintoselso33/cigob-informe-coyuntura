@@ -23,12 +23,12 @@ for (const c of Object.values(informe.cinturones)) {
 }
 const nInd = vistos.size;
 const nFuentes = fuentes.size;
-const nFichas = Object.keys(FICHAS).length;
-
 // los índices paramétricos, con valor vivo y composición
 const indices = CINTURONES
   .map(c => ({ meta: c, indice: indiceDe(informe.cinturones[c.key]) }))
   .filter(x => x.indice) as { meta: (typeof CINTURONES)[number]; indice: NonNullable<ReturnType<typeof indiceDe>> }[];
+const nFichasVigentes = nInd + indices.length;
+const nFichasHistoricas = Object.keys(FICHAS).length - nFichasVigentes;
 const compDe = (i: (typeof indices)[number]["indice"]) => {
   const dims = Object.values(i.data.dimensiones);
   const nDims = dims.length;
@@ -40,7 +40,7 @@ const compDe = (i: (typeof indices)[number]["indice"]) => {
   <div class="cg-section-head">
     <p class="cg-eyebrow">Cómo se construye</p>
     <h2 class="cg-h2">El método de los cinturones</h2>
-    <p class="cg-h2-sub">De la fuente oficial al color, sin pasos a mano.</p>
+    <p class="cg-h2-sub">De la fuente citada al color, con cada transformación documentada.</p>
   </div>
 
   <!-- El recorrido del dato: de la fuente oficial al semáforo, con números vivos -->
@@ -48,13 +48,13 @@ const compDe = (i: (typeof indices)[number]["indice"]) => {
     <div class="cg-met-step" role="listitem">
       <span class="cg-met-num">{nFuentes}</span>
       <span class="cg-met-lbl">Fuentes</span>
-      <span class="cg-met-desc">INDEC, BCRA, Hacienda, InfoLeg, HCDN y más: públicas y citadas.</span>
+      <span class="cg-met-desc">Series y operaciones de INDEC, BCRA, Hacienda, InfoLeg, HCDN y más, siempre citadas.</span>
     </div>
     <span class="cg-met-arrow" aria-hidden="true">→</span>
     <div class="cg-met-step" role="listitem">
       <span class="cg-met-num">{nInd}</span>
       <span class="cg-met-lbl">Indicadores</span>
-      <span class="cg-met-desc">{autos} se extraen solos cada madrugada; el resto se declara manual o estimación.</span>
+      <span class="cg-met-desc">{autos} se extraen automáticamente; cualquier estimación se identifica como tal.</span>
     </div>
     <span class="cg-met-arrow" aria-hidden="true">→</span>
     <div class="cg-met-step" role="listitem">
@@ -79,7 +79,7 @@ const compDe = (i: (typeof indices)[number]["indice"]) => {
   <!-- Los índices paramétricos, con su valor vivo → ficha metodológica -->
   <div class="cg-met-indices">
     {indices.map(({ meta, indice }) => (
-      <a class={`cg-met-ind cg-met-ind--${meta.slug}`} href={`${base}/metodologia/${indice.sigla.toLowerCase()}/`}>
+      <a class={`cg-met-ind cg-met-ind--${meta.slug}`} href={`${base}/metodologia/${indice.fichaId}/`}>
         <div class="cg-met-ind-head">
           <span class="cg-met-ind-sigla">{indice.sigla}</span>
           <span class="cg-met-ind-cint">{meta.nombre}</span>
@@ -106,10 +106,10 @@ const compDe = (i: (typeof indices)[number]["indice"]) => {
       en el HTML servido, y este es una nota interna. */}
   <a class="cg-met-cta" href={`${base}/metodologia/`}>
     <div>
-      <span class="cg-met-cta-num">{nFichas}</span>
+      <span class="cg-met-cta-num">{nFichasVigentes}</span>
       <div class="cg-met-cta-txt">
-        <strong>fichas metodológicas — una por indicador e índice.</strong>
-        Qué mide, de dónde sale, cómo puntúa y qué limitaciones declara.
+        <strong>fichas vigentes — una por indicador e índice.</strong>
+        Qué mide, de dónde sale, cómo puntúa y qué limitaciones declara. Además, {nFichasHistoricas} fichas históricas preservan los indicadores retirados.
       </div>
     </div>
     <span class="cg-met-cta-go">Abrir la metodología →</span>
