@@ -6,9 +6,9 @@ Colectores de datos para los cuatro cinturones publicados del marco CIGOB-Matus 
 
 | Cinturón | Indicadores publicados | Automáticos | Semiautomáticos | Carga manual |
 |---|---:|---:|---:|---:|
-| Impacto Social | 18 | 18 | 0 | 0 |
+| Impacto Social | 19 | 19 | 0 | 0 |
 | Macro | 17 | 17 | 0 | 0 |
-| Política | 18 | 14 | 3 | 1 |
+| Política | 19 | 15 | 3 | 1 |
 | Gestión | 14 | 10 | 3 | 1 |
 
 Los cuatro cinturones se puntúan con índices paramétricos de dimensiones ponderadas

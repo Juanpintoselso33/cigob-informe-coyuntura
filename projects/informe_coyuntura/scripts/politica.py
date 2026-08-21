@@ -101,6 +101,9 @@ CSJN_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "csjn_novedades.json"
 VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
 VOTOMETRO_HTML = PROJECT_DIR / "data" / "politica" / "votometro_fallback.html"  # fallback local
 
+sys.path.insert(0, str(PROJECT_DIR))
+from config import rezago_maximo_tolerado  # noqa: E402  (necesita el sys.path de arriba)
+
 CINTURON              = "politica"
 INDICADORES_ESPERADOS = [
     "votometro_ventaja_lla",
@@ -858,7 +861,6 @@ CONFLICTOS_LABORALES_URL = (
 CONFLICTOS_LABORALES_XLSX_FALLBACK = (
     "https://www.argentina.gob.ar/sites/default/files/"
     "evolucion_mensual_de_la_conflictividad_laboral._datos_a_mayo_2026.xlsx")
-STALE_JORNADAS_DAYS = 150  # publicación mensual con 2-3 meses de rezago observado
 
 
 def fetch_conflictividad_nacional() -> dict | None:
@@ -923,6 +925,33 @@ def fetch_conflictividad_nacional() -> dict | None:
         return None
 
 
+def _columna_jornadas_de_paro(ws) -> int:
+    """Columna del total de jornadas de paro del cuadro C1, buscada por rótulo.
+
+    El cuadro apila tres grupos —conflictos con paro, huelguistas y jornadas—
+    y cada uno abre sus propias columnas de total y de sector. Tomar la columna
+    por posición fija no falla el día que la Secretaría de Trabajo agrega o
+    reordena una: devuelve otra magnitud, con un valor plausible que ningún
+    control de frescura ni de coherencia card/serie puede distinguir.
+    """
+    filas = list(ws.iter_rows(min_row=1, max_row=8, values_only=True))
+    for i, fila in enumerate(filas[1:], start=1):   # la fila 1 es el título del cuadro
+        for j in range(1, len(fila)):               # la columna 0 es el período
+            if "jornada" not in str(fila[j] or "").strip().lower():
+                continue
+            fin = next((k for k in range(j + 1, len(fila))
+                        if str(fila[k] or "").strip()), len(fila))
+            sub = filas[i + 1] if i + 1 < len(filas) else ()
+            for k in range(j, min(fin, len(sub))):
+                if str(sub[k] or "").strip().lower().startswith("total"):
+                    return k
+            if fin - j == 1:
+                return j
+            raise ValueError("conflictos laborales: el grupo de jornadas de paro "
+                             "no declara columna de total")
+    raise ValueError("conflictos laborales: columna de jornadas de paro no encontrada")
+
+
 def fetch_jornadas_individuales_no_trabajadas_serie() -> list:
     """Serie rolling-12 de jornadas individuales no trabajadas, total país.
 
@@ -964,10 +993,11 @@ def fetch_jornadas_individuales_no_trabajadas_serie() -> list:
     if ws is None:
         raise ValueError("conflictos laborales: cuadro C1 no encontrado")
 
+    col = _columna_jornadas_de_paro(ws)
     mensual = []
-    for row in ws.iter_rows(min_row=4, values_only=True):
+    for row in ws.iter_rows(values_only=True):
         fecha = row[0] if row else None
-        valor = row[7] if len(row) > 7 else None  # total jornadas de paro
+        valor = row[col] if len(row) > col else None
         if not hasattr(fecha, "year") or not isinstance(valor, (int, float)):
             continue
         mensual.append((f"{fecha.year:04d}-{fecha.month:02d}", int(valor)))
@@ -988,7 +1018,8 @@ def fetch_jornadas_individuales_no_trabajadas() -> dict | None:
             "unidad": "jornadas individuales no trabajadas (12m)",
             "fuente": "Secretaría de Trabajo — Estadísticas de conflictos laborales",
             "fecha_dato": fecha,
-            "desactualizado": _days_old(fecha) > STALE_JORNADAS_DAYS,
+            "desactualizado": _days_old(fecha) > rezago_maximo_tolerado(
+                "jornadas_individuales_no_trabajadas_12m"),
             "detalle_txt": (
                 f"{valor:,}".replace(",", ".")
                 + " jornadas en los últimos 12 meses. La fuente las calcula como "

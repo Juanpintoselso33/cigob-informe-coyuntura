@@ -58,6 +58,27 @@ def _xlsx_jornadas() -> bytes:
     return out.getvalue()
 
 
+def _xlsx_jornadas_con_columnas_reordenadas() -> bytes:
+    """El mismo cuadro C1 con los tres grupos abiertos por sector, que es como
+    la Secretaría de Trabajo puede publicarlo: el total de jornadas deja de
+    caer en la columna 7."""
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "1"
+    ws.append(["C1. Conflictos con paro, huelguistas y jornadas de paro"])
+    ws.append(["Mes", "Conflictos con paro", None, None,
+               "Huelguistas", None, None, None, "Jornadas de paro", None, None])
+    ws.append([None, "Total", "Privado", "Estatal",
+               "Total", "Privado", "Estatal", "Sin clasificar",
+               "Total", "Privado", "Estatal"])
+    for mes in range(1, 13):
+        ws.append([datetime(2025, mes, 1), 5, 3, 2, 900, 500, 400, 0,
+                   mes * 100, mes * 60, mes * 40])
+    out = io.BytesIO()
+    wb.save(out)
+    return out.getvalue()
+
+
 def test_parser_carga_deuda_busca_rotulos_no_numero_de_hoja(monkeypatch):
     monkeypatch.setattr(descargar_series.requests, "get",
                         lambda *args, **kwargs: _Respuesta(content=_xlsx_deuda()))
@@ -152,6 +173,53 @@ def test_jornadas_usa_planilla_directa_si_falla_la_pagina_indice(monkeypatch):
     monkeypatch.setattr(politica.requests, "get", fake_get)
     assert politica.fetch_jornadas_individuales_no_trabajadas_serie()[-1] == [
         "2025-12-01", 7_800]
+
+
+def test_jornadas_ubica_su_columna_por_rotulo_y_no_por_posicion(monkeypatch):
+    """Si el cuadro abre una columna más antes del grupo de jornadas, tomar la
+    posición fija devuelve otra magnitud —huelguistas sin clasificar— con un
+    valor plausible que ni la frescura ni la coherencia card/serie detectan."""
+    monkeypatch.setattr(
+        politica.requests, "get",
+        lambda *_a, **_k: _Respuesta(content=_xlsx_jornadas_con_columnas_reordenadas()))
+    assert politica.fetch_jornadas_individuales_no_trabajadas_serie() == [
+        ["2025-12-01", 7_800]]
+
+
+def test_jornadas_falla_ruidoso_si_el_cuadro_pierde_la_columna(monkeypatch):
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.append(["C1. Conflictos con paro y huelguistas"])
+    ws.append(["Mes", "Conflictos con paro", "Huelguistas"])
+    ws.append([None, "Total", "Total"])
+    for mes in range(1, 13):
+        ws.append([datetime(2025, mes, 1), 5, 900])
+    out = io.BytesIO()
+    wb.save(out)
+    monkeypatch.setattr(politica.requests, "get",
+                        lambda *_a, **_k: _Respuesta(content=out.getvalue()))
+    try:
+        politica.fetch_jornadas_individuales_no_trabajadas_serie()
+    except ValueError as e:
+        assert "jornadas de paro" in str(e)
+    else:
+        raise AssertionError("el parser aceptó un cuadro sin columna de jornadas")
+    # y el colector lo traduce en ausencia de card, no en un número inventado
+    assert politica.fetch_jornadas_individuales_no_trabajadas() is None
+
+
+def test_el_tope_de_frescura_de_las_jornadas_tiene_un_solo_dueno(monkeypatch):
+    """Mismo contrato que la carga del servicio de deuda: el flag de la card y
+    la demora que reporta el gate salen del único tope de `config.MAX_DIAS`."""
+    monkeypatch.setattr(politica.requests, "get",
+                        lambda *_a, **_k: _Respuesta(content=_xlsx_jornadas()))
+    monkeypatch.setitem(config.MAX_DIAS,
+                        "jornadas_individuales_no_trabajadas_12m", 100_000)
+    assert politica.fetch_jornadas_individuales_no_trabajadas()["desactualizado"] is False
+    monkeypatch.setitem(config.MAX_DIAS,
+                        "jornadas_individuales_no_trabajadas_12m", 1)
+    assert politica.fetch_jornadas_individuales_no_trabajadas()["desactualizado"] is True
+    assert gate_calidad.MAX_DIAS["jornadas_individuales_no_trabajadas_12m"] == 1
 
 
 def test_vulnerabilidad_combina_incumplimiento_y_carga():
