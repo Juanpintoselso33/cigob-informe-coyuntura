@@ -369,7 +369,7 @@ export const FICHAS: Record<string, Ficha> = {
       "El EMAE es provisorio y el INDEC lo revisa hacia atrás con cada publicación; la serie del informe absorbe esas revisiones al regenerarse.",
       "Comparte dimensión con el IPI manufacturero, que aporta la segunda lectura de actividad; hasta julio de 2026 era la única variable, y el 11% del índice colgaba de un solo dato.",
     ],
-    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión de actividad queda vacía y su peso se redistribuye entre las demás.",
+    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros dos indicadores de la dimensión.",
     revisiones: "La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
       { fecha: "2026-06", cambio: "En el índice desde la paramétrica original como única variable de actividad; su peso de dimensión bajó de 15% a 13% y luego a 11% al incorporarse las dimensiones de competitividad e inversión." },
@@ -682,12 +682,12 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Mide sólo la industria manufacturera, alrededor de un sexto del producto: no es una medida de actividad agregada y no reemplaza al EMAE, lo acompaña.",
       "El EMAE ya incluye a la industria manufacturera, así que este indicador no aporta un sector nuevo sino una segunda medición del mismo: su función es que la dimensión no dependa de un único dato, no ampliar la cobertura.",
-      "Ambos indicadores de la dimensión los publica el INDEC. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían los dos juntos.",
+      "Los tres indicadores de la dimensión los publica el INDEC, y dos de ellos salen de la misma operación EMAE. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían todos juntos.",
       "El promedio de tres meses amortigua los cambios de nivel: un quiebre brusco tarda dos o tres meses en verse completo.",
       "La serie es original, no desestacionalizada; la comparación interanual absorbe la estacionalidad pero no los efectos de calendario, que el suavizado atenúa sin eliminar.",
       "El INDEC revisa el índice hacia atrás con cada publicación.",
     ],
-    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda sólo con el EMAE y su peso se renormaliza.",
+    faltantes: "Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda con el EMAE y su difusión sectorial, y los pesos se renormalizan.",
     revisiones: "La fuente revisa la serie; el informe la regenera completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.",
     cambios: [
       { fecha: "2026-07-18", cambio: "Alta del indicador como segunda señal de actividad junto al EMAE, tras una auditoría de consistencia que señaló que el 11% del índice colgaba de un único dato." },
@@ -1045,7 +1045,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-20, 10], [-12.5, 35], [0, 60], [12.5, 80], [20, 100]],
       unidadCorta: "% i.a.",
     },
-    dobleUso: "La operación IPI también alimenta (en su variante desestacionalizada) un componente del ITCIS.",
+    dobleUso: "La misma operación IPI alimenta al indicador de producción industrial manufacturera, que puntúa por sí mismo en la dimensión de actividad del ITCM: acá entra como cociente contra el empleo, allá como variación interanual del nivel general.",
     limitaciones: [
       "El diseño institucional incluía la importación de hardware de alta tecnología, que no es automatizable con las fuentes públicas actuales: el índice quedó con dos de tres componentes, renormalizados y declarados.",
       "AMBIGÜEDAD DE INTERPRETACIÓN, declarada. Un aumento de los pagos al exterior por servicios de informática admite dos lecturas opuestas y el índice adopta una: puede significar que la economía se está digitalizando —incorpora software, nube e inteligencia artificial para producir mejor— o que depende de tecnología que no produce y gira divisas para conseguirla. El indicador puntúa la primera lectura: más pagos, mejor puntaje. La evidencia disponible la respalda sólo en parte. Sobre ciento siete meses, los pagos anticipan a la productividad con una correlación de 0,28 cuando se los adelanta un trimestre: una asociación real pero modesta, compatible también con que ambas variables suban juntas cuando la economía crece, sin que una cause a la otra. Quien lea el indicador debe saber que un valor alto no distingue por sí solo entre capitalización tecnológica y dependencia tecnológica.",
@@ -1936,7 +1936,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-12, 100], [-10, 85], [-6, 65], [-2, 40], [0, 10]],
       unidadCorta: "% vs dic-2023",
     },
-    dobleUso: "Mide personas; el costo de la nómina lo miden por separado el gasto de funcionamiento y la masa salarial — tres patas complementarias declaradas de la misma dimensión.",
+    dobleUso: "Mide personas; el costo de la nómina lo mide por separado el gasto de funcionamiento — dos patas complementarias declaradas de la misma dimensión. La masa salarial las acompañó hasta agosto de 2026, cuando salió del ITCG por ADR-0186.",
     limitaciones: [
       "Los meses recientes vienen imputados y el INDEC los revisa hacia atrás.",
       "Las bandas se calibraron a mano contra el recorte observado (~10-12% → banda alta): es una convención propia del proyecto y no una meta oficial.",
@@ -1978,7 +1978,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-25, 100], [-20, 85], [-10, 65], [-2.5, 40], [0, 10]],
       unidadCorta: "% real vs 2023",
     },
-    dobleUso: "Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta): el marco las trata como patas complementarias — ninguna sola alcanza.",
+    dobleUso: "Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta), que el marco trataba como pata complementaria hasta que salió del ITCG por ADR-0186. Desde entonces es la única lectura del costo de la nómina dentro de la dimensión, y acompaña a la dotación de personal, que mide cuánta gente hay y no cuánto cuesta.",
     limitaciones: [
       "Bandas calibradas a mano contra el ajuste 2024, un episodio históricamente atípico.",
       "La base caja/devengado de Hacienda está sujeta a reclasificaciones presupuestarias.",

@@ -162,6 +162,52 @@ def test_el_snapshot_declara_la_procedencia_de_cada_indicador():
     }
 
 
+def test_ninguna_excepcion_de_procedencia_apunta_a_un_indicador_que_ya_no_existe():
+    """El default de `anotar_metodo_obtencion` es «automatico», así que una clave
+    que dejó de existir —los renombres son frecuentes: `patentamiento_motos` →
+    `motorizacion_total`, `presion_dolarizacion` → `desequilibrio_monetario`— no
+    rompe nada: el dato de carga manual pasa a badgearse como automático en la
+    web y a sumar al contador de Metodologia.astro. El snapshot publicado es el
+    contrato: si la clave no está ahí, la excepción quedó muerta."""
+    snapshot = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
+    publicados = {
+        clave
+        for cinturon in snapshot["cinturones"].values()
+        for clave in (cinturon.get("indicadores") or {})
+    }
+
+    huerfanas = sorted(set(publicar.METODO_OBTENCION_EXCEPCIONES) - publicados)
+
+    assert not huerfanas, (
+        "estas excepciones de procedencia no corresponden a ningún indicador "
+        "publicado, así que su dato se declara «automático» en la web sin que "
+        "nada avise: " + ", ".join(huerfanas))
+
+
+def test_el_snapshot_publicado_declara_la_procedencia_que_dictan_las_excepciones():
+    """La otra mitad: que el snapshot en disco esté efectivamente anotado. Sin
+    esto, `anotar_metodo_obtencion` podría dejar de llamarse en `main()` y los
+    badges volverían a «Automático» con los tests en verde."""
+    snapshot = json.loads((DATA / "informe.json").read_text(encoding="utf-8"))
+    declarado = {
+        clave: indicador.get("metodo_obtencion")
+        for cinturon in snapshot["cinturones"].values()
+        for clave, indicador in (cinturon.get("indicadores") or {}).items()
+        if isinstance(indicador, dict)
+    }
+
+    assert declarado and all(v is not None for v in declarado.values()), (
+        "hay indicadores publicados sin `metodo_obtencion`: la web no puede "
+        "decir cómo se obtuvo el dato")
+    for clave, esperado in publicar.METODO_OBTENCION_EXCEPCIONES.items():
+        # Con `.get`: si la clave ya no se publica lo dice el test de arriba,
+        # que es el dueño de ese caso; acá el mensaje tiene que seguir siendo
+        # legible en vez de reventar con un KeyError.
+        assert declarado.get(clave) == esperado, (
+            f"{clave} se publica como {declarado.get(clave)!r} y la excepción "
+            f"declara {esperado!r}")
+
+
 def test_la_validacion_itcp_deriva_el_conteo_de_la_composicion(monkeypatch):
     meses = {f"2025-{m:02d}": float(m) for m in range(1, 13)}
     monkeypatch.setattr(publicar, "_cargar_validacion", lambda: {

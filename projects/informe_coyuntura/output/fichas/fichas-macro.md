@@ -42,10 +42,10 @@ El puntaje del ITCM y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
 | Estabilidad monetaria-inflacionaria | La estabilidad de la moneda desde cuatro señales complementarias. | 65,0 | VERDE | 26,0 % |
-| Viabilidad fiscal-comercial | Si las cuentas cierran: la recaudación real (el sostén del ancla fiscal) y el saldo comercial (los dólares genuinos del intercambio). | 71,0 | VERDE | 24,0 % |
-| Capacidad y costo del financiamiento | Si hay combustible para la economía: reservas netas (el respaldo externo), capacidad prestable del sistema financiero (IdC) y crédito real efectivamente otorgado. | 52,1 | AMARILLO | 16,0 % |
+| Viabilidad fiscal-comercial | Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. | 71,0 | VERDE | 24,0 % |
+| Capacidad y costo del financiamiento | Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero (IdC), crédito real otorgado y el costo del Tesoro. | 52,1 | AMARILLO | 16,0 % |
 | Inversión | Si alguien está apostando al futuro: inversión física (construcción, bienes de capital) y capitalización digital e intangible. | 64,9 | VERDE | 12,0 % |
-| Actividad económica | Si la economía crece o se contrae: el EMAE interanual como pulso general de la actividad. | 64,1 | VERDE | 11,0 % |
+| Actividad económica | Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. | 64,1 | VERDE | 11,0 % |
 | Competitividad externa | Si el tipo de cambio real alcanza para competir: el ITCRM oficial del BCRA contra su propia historia. | 48,7 | AMARILLO | 11,0 % |
 
 ```{=openxml}
@@ -207,7 +207,7 @@ Los dólares de libre disponibilidad del Banco Central: lo que realmente posee, 
 
 Es el termómetro real de la solvencia externa: con netas bajas o negativas, cualquier shock obliga a devaluar o a frenar importaciones. Las brutas pueden lucir altas y ocultar esa fragilidad.
 
-**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía: reservas netas (el respaldo externo), capacidad prestable del sistema financiero (IdC) y crédito real efectivamente otorgado.
+**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero (IdC), crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
 
 ## Método de cómputo
 
@@ -293,7 +293,7 @@ Ponderación vigente en el ITCM: 5,4 % efectivo. El color es una lectura adicion
 
 Un sistema con capacidad de fondeo por encima de lo habitual puede acompañar la inversión y la actividad; uno sin margen, no. Se publica en desvíos estándar respecto de la historia 2018→hoy: 0 es el mes típico · por encima de +0,5 expansión (verde) · por debajo de −0,5 contracción (rojo). Datos del BCRA (BADLAR, depósitos y préstamos privados) e IPC del INDEC.
 
-**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía: reservas netas (el respaldo externo), capacidad prestable del sistema financiero (IdC) y crédito real efectivamente otorgado.
+**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero (IdC), crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
 
 ## Método de cómputo
 
@@ -384,7 +384,7 @@ El pulso mensual de la actividad económica: cuánto creció o cayó respecto de
 
 Adelanta el ritmo del PBI: si la economía se expande o se contrae.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae: el EMAE interanual como pulso general de la actividad.
+**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
 
 ## Método de cómputo
 
@@ -428,7 +428,7 @@ Ponderación vigente en el ITCM: 6,6 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión de actividad queda vacía y su peso se redistribuye entre las demás.
+- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, el peso se redistribuye entre los otros dos indicadores de la dimensión.
 
 - **Política de revisiones:** La fuente revisa (serie provisoria); el informe regenera la serie completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.
 
@@ -474,7 +474,7 @@ De los quince sectores en que el INDEC divide la actividad económica, cuántos 
 
 Distingue un crecimiento generalizado de uno concentrado en pocos sectores. El EMAE informa cuánto crece la economía; este indicador, en cuántas partes de ella crece: dos meses con la misma variación agregada pueden significar cosas muy distintas según cuántos sectores la sostengan.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae: el EMAE interanual como pulso general de la actividad.
+**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
 
 ## Método de cómputo
 
@@ -560,7 +560,7 @@ Cuánto produce la industria manufacturera respecto de un año atrás, promediad
 
 Segunda lectura de la actividad, junto al EMAE: mide sólo la industria y se publica algo antes, de modo que la dimensión no depende de un único dato.
 
-**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae: el EMAE interanual como pulso general de la actividad.
+**Dimensión que integra — Actividad económica.** Si la economía crece o se contrae, y en cuántas partes: el EMAE interanual, cuántos de sus quince sectores crecen y la producción industrial manufacturera. El EMAE da el pulso general y su apertura sectorial distingue un crecimiento generalizado de uno concentrado en pocos sectores; la industria aporta una segunda lectura que se publica antes, para que la dimensión no cuelgue de un solo dato.
 
 ## Método de cómputo
 
@@ -602,14 +602,14 @@ Ponderación vigente en el ITCM: 2,2 % efectivo. El color es una lectura adicion
 
 - Mide sólo la industria manufacturera, alrededor de un sexto del producto: no es una medida de actividad agregada y no reemplaza al EMAE, lo acompaña.
 - El EMAE ya incluye a la industria manufacturera, así que este indicador no aporta un sector nuevo sino una segunda medición del mismo: su función es que la dimensión no dependa de un único dato, no ampliar la cobertura.
-- Ambos indicadores de la dimensión los publica el INDEC. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían los dos juntos.
+- Los tres indicadores de la dimensión los publica el INDEC, y dos de ellos salen de la misma operación EMAE. La redundancia cubre el riesgo de que falte o se revise una serie, no el de que el organismo cambie de metodología: en ese caso se moverían todos juntos.
 - El promedio de tres meses amortigua los cambios de nivel: un quiebre brusco tarda dos o tres meses en verse completo.
 - La serie es original, no desestacionalizada; la comparación interanual absorbe la estacionalidad pero no los efectos de calendario, que el suavizado atenúa sin eliminar.
 - El INDEC revisa el índice hacia atrás con cada publicación.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda sólo con el EMAE y su peso se renormaliza.
+- **Si falta el dato:** Si el dato falta, se mantiene el último valor disponible, señalado como desactualizado; sin ningún valor previo, la dimensión queda con el EMAE y su difusión sectorial, y los pesos se renormalizan.
 
 - **Política de revisiones:** La fuente revisa la serie; el informe la regenera completa en cada actualización y puntúa siempre el último dato publicado, sin proyecciones propias.
 
@@ -651,7 +651,7 @@ El balance entre lo que el país exporta y lo que importa, acumulado en los últ
 
 Muestra si el intercambio de bienes aporta o resta dólares. No alcanza para saber si el sector externo en conjunto los genera: faltan los servicios, los intereses y las utilidades giradas, que se ven en la cuenta corriente del gráfico.
 
-**Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: la recaudación real (el sostén del ancla fiscal) y el saldo comercial (los dólares genuinos del intercambio).
+**Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.
 
 ## Método de cómputo
 
@@ -746,7 +746,7 @@ Cuánta economía formal hay para gravar, medida en pesos constantes y comparada
 
 Mide el tamaño de la base imponible y el nivel de actividad, no la caja del Estado. Por eso excluye la aduana: cuando el Gobierno baja retenciones, la recaudación total cae porque así se decidió, y contar esa caída como deterioro sería puntuar como fracaso el cumplimiento de una promesa. Un nivel por debajo de 100 dice que hay menos economía formal para gravar que en la transición, con independencia de cómo venga la comparación contra el año anterior.
 
-**Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: la recaudación real (el sostén del ancla fiscal) y el saldo comercial (los dólares genuinos del intercambio).
+**Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.
 
 ## Método de cómputo
 
@@ -1352,7 +1352,7 @@ Dato vigente: 8,36 % i.a. ponderado (2026-04).
 
 Ponderación vigente en el ITCM: 4,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** La operación IPI también alimenta (en su variante desestacionalizada) un componente del ITCIS.
+- **Participación en otros indicadores.** La misma operación IPI alimenta al indicador de producción industrial manufacturera, que puntúa por sí mismo en la dimensión de actividad del ITCM: acá entra como cociente contra el empleo, allá como variación interanual del nivel general.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1410,7 +1410,7 @@ Cuánto crece el crédito al sector privado en términos reales (variación inte
 
 Es el crédito REALIZADO — complementa al IdC, que mide la capacidad prestable: si la capacidad existe pero el crédito real no crece, el financiamiento no está llegando a la economía. Es la única señal no redundante de los viejos indicadores monetarios de contexto.
 
-**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía: reservas netas (el respaldo externo), capacidad prestable del sistema financiero (IdC) y crédito real efectivamente otorgado.
+**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero (IdC), crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
 
 ## Método de cómputo
 
@@ -1497,7 +1497,7 @@ Qué tasa de interés real paga el Tesoro para renovar su deuda en pesos: la tas
 
 Es el precio del financiamiento del Estado. Reservas, capacidad prestable y crédito miden cuánta financiación hay; esta mide cuánto cuesta conseguirla. Los dos extremos son malos: una tasa real muy negativa indica que el Tesoro coloca licuando al ahorrista, y una muy alta que la deuda crece más rápido que la economía.
 
-**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía: reservas netas (el respaldo externo), capacidad prestable del sistema financiero (IdC) y crédito real efectivamente otorgado.
+**Dimensión que integra — Capacidad y costo del financiamiento.** Si hay combustible para la economía y a qué precio: reservas netas, capacidad prestable del sistema financiero (IdC), crédito real otorgado y el costo del Tesoro. Las tres primeras miden cuánta financiación hay —el respaldo externo, lo que el sistema puede prestar y lo que efectivamente prestó—; la tasa real que el Tesoro paga para renovar su deuda en pesos mide cuánto cuesta conseguirla.
 
 ## Método de cómputo
 
@@ -1587,7 +1587,7 @@ Cuánto le sobra (o le falta) al Estado nacional después de pagar todo su gasto
 
 Es el resultado fiscal, no los ingresos. La recaudación puede caer porque la actividad afloja o porque se bajaron impuestos a propósito, y en ninguno de los dos casos eso dice si las cuentas cierran. Este indicador responde esa pregunta directamente: de cada cien pesos recaudados, cuántos quedan.
 
-**Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: la recaudación real (el sostén del ancla fiscal) y el saldo comercial (los dólares genuinos del intercambio).
+**Dimensión que integra — Viabilidad fiscal-comercial.** Si las cuentas cierran: el resultado primario sobre lo recaudado, la recaudación real y el saldo comercial. El resultado primario responde la pregunta de frente —de cada cien pesos recaudados, cuántos quedan después de pagar el gasto y antes de los intereses—; la recaudación real es el sostén del ancla fiscal y el saldo comercial, los dólares genuinos del intercambio.
 
 ## Método de cómputo
 

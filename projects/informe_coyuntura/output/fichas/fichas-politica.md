@@ -44,7 +44,7 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 | Poder legislativo | La capacidad de gobernar por ley en el Congreso. | 46,5 | AMARILLO | 21,0 % |
 | Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 75,8 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 96,7 | VERDE | 15,0 % |
-| Poder judicial | La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. | 58,9 | AMARILLO | 15,0 % |
+| Poder judicial | La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. | 58,9 | AMARILLO | 15,0 % |
 | Sector privado | La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan… | 54,2 | AMARILLO | 13,0 % |
 | Conflicto social | La conflictividad social que el gobierno tiene que administrar. | 52,9 | AMARILLO | 10,0 % |
 | Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,6 | VERDE | 7,0 % |
@@ -1296,7 +1296,7 @@ Qué porcentaje de los fallos publicados en jurisdicción federal y nacional inv
 
 Mide cuánto de la agenda se dirime en tribunales por la vía de la suspensión, que es el instrumento con el que una decisión del Ejecutivo se frena antes de discutirse en el fondo. Se publica como proporción y no como conteo porque el número de fallos publicados depende del volumen editorial de la base de jurisprudencia: el conteo crudo se quintuplica entre 2016 y 2021 sin que las cautelares se hayan quintuplicado.
 
-**Dimensión que integra — Poder judicial.** La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. No es una decisión que el Gobierno tome solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura de los tribunales es un termómetro de la negociación política. La dimensión mide por ahora la capacidad de nombrar, no el comportamiento de la Justicia.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
 
 ## Método de cómputo
 
@@ -1380,7 +1380,7 @@ Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los 
 
 Distingue una Corte que se pone al día de una que acumula. Por encima de cien resuelve más de lo que recibe y descarga atraso; por debajo, el atraso crece. Importa para este cinturón porque una causa que tarda años en resolverse deja en pie, mientras tanto, lo que se discute.
 
-**Dimensión que integra — Poder judicial.** La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. No es una decisión que el Gobierno tome solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura de los tribunales es un termómetro de la negociación política. La dimensión mide por ahora la capacidad de nombrar, no el comportamiento de la Justicia.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
 
 ## Método de cómputo
 
@@ -1465,7 +1465,7 @@ Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Cons
 
 Mide si el mecanismo de control disciplinario de los jueces está funcionando o está detenido. Se cuentan las sesiones de ambas comisiones y no las de una sola porque el conjunto da una serie estable y comparable mes a mes, mientras que cada comisión por separado sesiona pocas veces al año.
 
-**Dimensión que integra — Poder judicial.** La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. No es una decisión que el Gobierno tome solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura de los tribunales es un termómetro de la negociación política. La dimensión mide por ahora la capacidad de nombrar, no el comportamiento de la Justicia.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
 
 ## Método de cómputo
 
@@ -1549,7 +1549,7 @@ Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene ju
 
 Mide una capacidad que el Gobierno no ejerce solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura del Poder Judicial es un termómetro de la negociación política, no de la gestión administrativa. La serie muestra un desgaste sostenido durante más de dos años —las renuncias siguieron y las designaciones se detuvieron— seguido de una recuperación abrupta cuando el Senado aprobó un conjunto de pliegos en junio de 2026.
 
-**Dimensión que integra — Poder judicial.** La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. No es una decisión que el Gobierno tome solo: designar jueces requiere acuerdo del Senado, de modo que la cobertura de los tribunales es un termómetro de la negociación política. La dimensión mide por ahora la capacidad de nombrar, no el comportamiento de la Justicia.
+**Dimensión que integra — Poder judicial.** La relación con el Poder Judicial por cuatro vías: cobertura de cargos de juez, cautelares sobre la agenda, velocidad de la Corte y control disciplinario. La primera mide la capacidad de integrar los tribunales, que el Gobierno no ejerce solo —designar jueces requiere acuerdo del Senado—, de modo que funciona como termómetro de la negociación política. Las otras tres miran el comportamiento de la Justicia: qué proporción de los fallos federales y nacionales involucra una medida cautelar, cuántos expedientes resuelve la Corte Suprema sobre los que le ingresan, y cuántas veces sesionan las comisiones del Consejo de la Magistratura que tramitan las denuncias contra jueces.
 
 ## Método de cómputo
 

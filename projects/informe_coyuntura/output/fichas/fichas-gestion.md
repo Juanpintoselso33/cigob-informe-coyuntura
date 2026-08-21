@@ -42,7 +42,7 @@ El puntaje del ITCG y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
 | Reformas económicas fundamentales | El corazón de la promesa económica: cepo desarmado (brecha cambiaria), comercio exterior abierto (alícuota efectiva) y desregulación normativa. | 76,1 | VERDE | 35,0 % |
-| Reforma del Estado | El achicamiento del Estado en cuatro medidas que se controlan entre sí. | 80,8 | VERDE | 25,0 % |
+| Reforma del Estado | El achicamiento del Estado en tres medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real y reestructuración de organismos. | 80,8 | VERDE | 25,0 % |
 | Reforma laboral | Instrumento y resultado. | 57,9 | AMARILLO | 15,0 % |
 | Privatizaciones e inversión | Los activos del Estado y la inversión privada grande: privatizaciones, cartera del RIGI y concesiones viales. | 57,5 | AMARILLO | 15,0 % |
 | Reforma social y orden | La reforma social y el orden público: asistencia sin intermediarios (TDPS), protocolo antipiquetes y libertad de opción en salud. | 90,6 | VERDE | 10,0 % |
@@ -393,7 +393,7 @@ Cuánto varía la dotación de personal de la Administración Pública Nacional 
 
 La métrica insignia de la reforma del Estado: personas, no pesos. Universo: Administración Pública Nacional — incluye fuerzas armadas y de seguridad (~10% de la dotación) y no incluye empresas del Estado ni provincias/municipios.
 
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en cuatro medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real, masa salarial real y reestructuración de organismos.
+**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en tres medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real y reestructuración de organismos.
 
 ## Método de cómputo
 
@@ -431,7 +431,7 @@ Dato vigente: −20,36 % de variación vs dic-2023 (dotación APN) (2026-06).
 
 Ponderación vigente en el ITCG: 10,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Mide personas; el costo de la nómina lo miden por separado el gasto de funcionamiento y la masa salarial — tres patas complementarias declaradas de la misma dimensión.
+- **Participación en otros indicadores.** Mide personas; el costo de la nómina lo mide por separado el gasto de funcionamiento — dos patas complementarias declaradas de la misma dimensión. La masa salarial las acompañó hasta agosto de 2026, cuando salió del ITCG por ADR-0186.
 
 ## Transparencia — limitaciones declaradas
 
@@ -485,7 +485,7 @@ Cuánto varía en términos reales el gasto de funcionamiento del Estado naciona
 
 La magnitud fiscal del aparato administrativo, aislada de la inflación: distingue el achicamiento del Estado de la mera licuación nominal.
 
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en cuatro medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real, masa salarial real y reestructuración de organismos.
+**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en tres medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real y reestructuración de organismos.
 
 ## Método de cómputo
 
@@ -521,7 +521,7 @@ Dato vigente: −31,37 % de variación real vs 2023-06 (IMIG funcionamiento) (20
 
 Ponderación vigente en el ITCG: 7,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta): el marco las trata como patas complementarias — ninguna sola alcanza.
+- **Participación en otros indicadores.** Su componente de salarios se solapa conceptualmente con la masa salarial (fuente distinta), que el marco trataba como pata complementaria hasta que salió del ITCG por ADR-0186. Desde entonces es la única lectura del costo de la nómina dentro de la dimensión, y acompaña a la dotación de personal, que mide cuánta gente hay y no cuánto cuesta.
 
 ## Transparencia — limitaciones declaradas
 
@@ -572,7 +572,7 @@ Cuántos organismos públicos se disolvieron o cerraron desde diciembre de 2023,
 
 Mide el avance concreto de la reforma del aparato estatal por la vía más dura y verificable: el cierre. No cuenta fusiones, transformaciones ni reorganizaciones que no impliquen disolver un organismo — esas son difíciles de verificar caso por caso y quedan fuera de lo que este indicador afirma medir. Tampoco cuenta un hallazgo de la búsqueda que, revisado caso por caso, resultó ajeno a un organismo público o fue revertido después: cada norma se contrasta contra un registro curado antes de sumar.
 
-**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en cuatro medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real, masa salarial real y reestructuración de organismos.
+**Dimensión que integra — Reforma del Estado.** El achicamiento del Estado en tres medidas que se controlan entre sí: dotación de personal, gasto de funcionamiento real y reestructuración de organismos.
 
 ## Método de cómputo
 

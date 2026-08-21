@@ -119,7 +119,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 Mide el poder adquisitivo real del ingreso, lo que la gente siente en el bolsillo.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -466,7 +466,7 @@ Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en 
 
 Distingue dos cosas que se parecen y no son lo mismo: si el consumo de vacuna cae y el total se sostiene, hay sustitución hacia pollo o cerdo; si caen los dos juntos, hay una pérdida real de acceso a proteína animal. Por eso puntúa el total y no la vacuna, que sola no permite separarlas — el desglose por carne se publica acá abajo, junto al color. El titular muestra el nivel oficial en kilos; el gráfico y el puntaje van en índice base 100 = 4T-2023, reconstruido desde la faena, que es lo único con historia para comparar contra el arranque del mandato.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -558,7 +558,7 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -645,7 +645,7 @@ Qué proporción del empleo registrado son trabajadores independientes —autón
 
 Es la contracara del cierre de empresas. Cuando caen los empleadores, dice si esas unidades productivas desaparecieron o se reconfiguraron en gente que factura por su cuenta. Un empleo que se corre del salario al trabajo independiente pierde aportes patronales, indemnización y estabilidad, aunque siga siendo registrado.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -733,7 +733,7 @@ Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona 
 
 Es el cierre neto de empresas medido de forma directa, no aproximado por la producción industrial: el saldo entre las que abren y las que cierran, que es el dato que dice si el entramado PyME se está achicando.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -823,7 +823,7 @@ El nivel de actividad de la construcción, gran motor de empleo de baja califica
 
 Termómetro de la obra pública y privada, sensible al ciclo económico.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -907,7 +907,7 @@ Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le
 
 Señala empleo insuficiente: gente ocupada a la que no le alcanza.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -991,7 +991,7 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 
 Es la única medida directa de empleo del cinturón. Los otros componentes de la dimensión describen actividad —producción industrial, construcción— o anticipan giros, pero ninguno cuenta puestos de trabajo. Desde diciembre de 2023 el sector privado registrado perdió alrededor de doscientos cincuenta mil puestos, y la caída interanual no se interrumpió en ningún mes desde agosto de 2025.
 
-**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.
 
 ## Método de cómputo
 
@@ -1255,7 +1255,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Integra el ITCIS con el 25% de la dimensión de ingresos y consumo (9,31% del índice), invertida: más pobreza, peor puntaje.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -1440,7 +1440,7 @@ Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por c
 
 Mide acceso total a un vehículo sin confundir una suba de motos con una mejora automática: si los hogares sólo reemplazaran autos por motos, la suma quedaría estable. La ficha muestra ambas patas y el cambio de su composición para distinguir acceso de sustitución descendente.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -1539,7 +1539,7 @@ Cuánto compra la gente en los supermercados una vez descontada la inflación: e
 
 Es el único componente del cinturón que mide volumen efectivamente comprado. Todos los demás miden lo que entra (ingresos), lo que cuesta (precios), de dónde viene el ingreso (empleo), lo que no se paga (mora) o lo que se opina (percepción): ninguno mira lo que el hogar se llevó de la góndola. Cubre comercio registrado de cadenas, así que no ve el almacén de barrio ni el comercio informal.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
