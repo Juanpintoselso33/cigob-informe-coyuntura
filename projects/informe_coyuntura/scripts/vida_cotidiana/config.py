@@ -98,8 +98,27 @@ CABA_DELITOS_URL = "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/minist
 SALUD_CKAN_BASE = "https://datos.salud.gob.ar/api/3/action/"
 
 # ── Google Trends ─────────────────────────────────────────────────────────────
-TRENDS_KEYWORDS = ["inflacion", "precios", "inseguridad", "trabajo"]
+# ADR-0222. Canasta de SEIS terminos con peso IGUAL. Cada uno se consulta SOLO
+# —una consulta por termino— y se rebasa contra su propio 4T-2023 DENTRO de esa
+# consulta. Trends normaliza cada payload por un escalar (el maximo del payload
+# = 100) que se cancela en el cociente valor/base, asi que dos consultas
+# distintas son comparables una vez rebaseadas y no hace falta ni termino ancla
+# ni empalme de escalas. El tope de 5 terminos por consulta deja de importar.
+#
+# El orden de la lista NO es el de importancia: los seis pesan 1/6. El peso por
+# volumen que habia antes —promedio crudo de un payload compartido, donde
+# `trabajo` se llevaba el 53% y `inseguridad` el 2,5%— no lo eligio nadie.
+#
+# `trabajo` salio y entro `empleo`: los related queries de `trabajo` son
+# "ley de trabajo", "trabajo social", "dia del trabajo" y "trabajo practico"
+# —derecho laboral, calendario y tarea escolar—, mientras que los de `empleo`
+# son "portal empleo", "bolsa de empleo", "computrabajo" y "buscar empleo".
+TRENDS_KEYWORDS = ["inflacion", "precios", "dolar", "empleo", "inseguridad", "corrupcion"]
 TRENDS_GEO      = "AR"
+# Ventana fija de la consulta mensual y base del rebase por termino (ADR-0034).
+TRENDS_VENTANA_DESDE = "2021-01-01"
+TRENDS_BASE_MESES    = ("2023-10", "2023-11", "2023-12")
+TRENDS_MIN_MESES     = 36        # descarga sana: menos que esto no reemplaza nada
 
 # ── Google Trends — intencion migratoria (ADR-0035) ──────────────────────────
 # Tanda 1: puntuable (4o proxy de espiritu_epoca). Tandas 2-4: contexto, sin

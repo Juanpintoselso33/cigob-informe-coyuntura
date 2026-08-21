@@ -111,7 +111,12 @@ G2B_MAX_DIAS = DIAS_SIN_FETCH
 
 # ── G3: pares card/serie con semántica DISTINTA (excepción con motivo) ──
 G3_EXCEPCIONES = {
-    "sentimiento_digital": "card = pulso 3m en tiempo real; serie = canasta mensual ventana fija (ADR-0034)",
+    # `sentimiento_digital` estuvo acá hasta ADR-0222. La excepción existía por
+    # el doble registro que declaraba ADR-0034 —card = pulso propio de 3 meses,
+    # serie = canasta mensual de ventana fija—, que se terminó: la card publica
+    # el último mes cerrado de la misma canasta, calculado por el mismo código
+    # sobre el mismo store. Vuelve a reconciliar como los demás, que es lo que
+    # de verdad vigila que las dos mitades no se desincronicen.
     "rigi_inversiones": "card = % de la meta; serie = monto acumulado en M USD",
     "protestas_caba": "card = eventos acumulados 12m; serie = eventos semanales",
     "cepo_mulc": "card = brecha CCL/mayorista SPOT del día; serie = brecha entre el PROMEDIO MENSUAL del CCL y el promedio mensual del A3500 (fetch_brecha_serie). No es un problema de anclaje sino de estadístico: un promedio mensual no puede igualar un spot diario en una serie que oscila ±30% m/m, y acercar las anclas no lo arreglaría. La tolerancia especial del 10% que hubo acá falló el 16-jul-2026 (11,5%) y ese mismo día el par pasaba por 0,02 de margen: era un parche que iba a fallar todos los meses volátiles. La frescura de la serie la sigue vigilando G3b (reclasificado 2026-08-05: hasta ADR-0172 estaba anotado como 'misma familia de anclaje que votometro/derrotas', que era un diagnóstico equivocado)",

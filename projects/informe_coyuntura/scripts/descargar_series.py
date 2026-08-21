@@ -1778,55 +1778,40 @@ SENTIMIENTO_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" 
 
 
 def fetch_sentimiento_serie() -> list:
-    """Serie MENSUAL del sentimiento digital (ADR-0034): canasta de las 4
-    keywords en VENTANA FIJA 2021→hoy con resolución mensual nativa de Trends.
-    La escala de Trends es relativa a la ventana consultada, pero el COCIENTE
-    entre dos meses de la MISMA consulta es invariante a la renormalización —
-    eso vuelve puntuable el B100 vs 4T-2023 (verificado: 3 corridas idénticas,
-    amplitud 0,0; r = +0,76 contra el IPC m/m). El mes en curso se descarta
-    (incompleto). Store persistente con REEMPLAZO TOTAL en cada descarga sana:
-    valores de corridas distintas no se mezclan (escalas distintas).
-    [[YYYY-MM-01, interés]]."""
+    """Serie MENSUAL del sentimiento digital (ADR-0034 + ADR-0222): canasta de
+    los 6 términos en VENTANA FIJA 2021→hoy, resolución mensual nativa.
+
+    El cálculo vive en el colector (`vida_cotidiana/collectors/trends.py`) y no
+    acá: la card y la serie salen del MISMO store, así que no pueden discrepar
+    ni gastar dos rondas de pedidos contra una fuente con rate limit. Cada
+    término se consulta solo y se rebasa contra su propio 4T-2023 dentro de esa
+    consulta —el escalar de Trends se cancela en el cociente—, y la canasta es
+    el promedio simple de los seis índices. El mes en curso se descarta.
+    [[YYYY-MM-01, índice base 100 = 4T-2023]]."""
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana" / "collectors"))
     import trends as _t
-    from config import TRENDS_KEYWORDS, TRENDS_GEO
-    store = json.loads(SENTIMIENTO_SERIE_STORE.read_text(encoding="utf-8-sig")) \
-        if SENTIMIENTO_SERIE_STORE.exists() else {"_meta": {}, "mensual": {}}
-    try:
-        _t._patch_urllib3()
-        from pytrends.request import TrendReq
-        pt = TrendReq(hl="es-AR", tz=-180, timeout=(10, 40), retries=2, backoff_factor=1)
-        hoy = datetime.today()
-        pt.build_payload(TRENDS_KEYWORDS, cat=0,
-                         timeframe=f"2021-01-01 {hoy.strftime('%Y-%m-%d')}", geo=TRENDS_GEO)
-        df = pt.interest_over_time()
-        if df is None or df.empty:
-            raise ValueError("Trends devolvió vacío (rate limit)")
-        cols = [k for k in TRENDS_KEYWORDS if k in df.columns]
-        canasta = df[cols].mean(axis=1)
-        mensual = {}
-        for d, v in canasta.groupby(canasta.index.strftime("%Y-%m")).mean().items():
-            if v > 0 and d < hoy.strftime("%Y-%m"):        # mes en curso: fuera
-                mensual[d] = round(float(v), 1)
-        if len(mensual) >= 36:                              # descarga sana → REEMPLAZO total
-            store["mensual"] = mensual
-            store["_meta"] = {"fuente": "Google Trends (canasta mensual, ventana fija 2021→)",
-                              "actualizado": datetime.today().strftime("%Y-%m-%d"),
-                              "nota": ("ADR-0034: escala relativa a la ventana — el store se "
-                                       "reemplaza entero en cada corrida sana; corridas "
-                                       "distintas no se mezclan.")}
-            SENTIMIENTO_SERIE_STORE.write_text(
-                json.dumps(store, indent=2, ensure_ascii=False), encoding="utf-8")
-    except Exception as e:
-        print(f"  [WARN] sentimiento: Trends no disponible ({str(e)[:60]}); serie del store "
-              f"(al {store['_meta'].get('actualizado')})")
-    return [[f"{ym}-01", v] for ym, v in sorted(store["mensual"].items())]
+    store = _t.fetch_sentimiento_store(SENTIMIENTO_SERIE_STORE)
+    mensual = store.get("mensual") or {}
+    if not mensual:
+        # Se levanta a propósito en vez de devolver []: `_correr` trata el error
+        # como fuente caída y `_filas_previas` conserva las filas que el CSV ya
+        # tenía. Devolviendo una lista vacía, la escritura completa borraría la
+        # serie del gráfico sin que nada avisara — que es el modo de falla que
+        # documenta `_filas_previas`, en este mismo archivo.
+        raise ValueError("Trends sin datos y sin store utilizable "
+                         f"(formato {_t.SENTIMIENTO_ESQUEMA})")
+    viejos = [kw for kw, t in store.get("terminos", {}).items()
+              if t.get("actualizado") != datetime.today().strftime("%Y-%m-%d")]
+    if viejos:
+        print(f"  [WARN] sentimiento: {len(viejos)} término(s) del store previo "
+              f"({', '.join(viejos)}); la canasta llega hasta {max(mensual)}")
+    return [[f"{ym}-01", v] for ym, v in sorted(mensual.items())]
 
 
 VIDA_DERIVADAS.append(
-    ("sentimiento_digital", "interés 0–100 (canasta mensual)",
-     "Google Trends (ventana fija 2021→, ADR-0034)", fetch_sentimiento_serie)
+    ("sentimiento_digital", "índice (100 = 4T-2023)",
+     "Google Trends (6 términos, ventana fija 2021→, ADR-0222)", fetch_sentimiento_serie)
 )
 
 

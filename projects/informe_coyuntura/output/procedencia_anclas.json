@@ -434,7 +434,7 @@
           "indicador": "sentimiento_digital",
           "categoria": "conceptual",
           "peso": 0.015,
-          "motivo": "canasta de búsquedas rebaseada a 4T-2023, invertida (ADR-0034); ancla en fecha fija"
+          "motivo": "canasta de 6 búsquedas, cada término rebaseado a su propio 4T-2023 y promediado con peso igual, invertida (ADR-0034, ADR-0222); ancla en fecha fija"
         },
         {
           "indicador": "pluriempleo",

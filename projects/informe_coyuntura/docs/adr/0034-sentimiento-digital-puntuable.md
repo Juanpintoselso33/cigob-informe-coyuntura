@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-04
 cinturon: 'vida'
 indicadores: [sentimiento_digital]
+complementado_por: ['0222']
 ambito: '`sentimiento_digital` (10% de Confianza = 1,5% del ITVC) + pesos internos de Confianza'
 ---
 

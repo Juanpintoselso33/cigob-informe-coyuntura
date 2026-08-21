@@ -115,7 +115,7 @@ def run_all() -> dict:
         "sipa (autonomos y monotributo sobre el empleo registrado)",
         "snic (estadisticas criminales nacionales + CABA)",
         "salud (datasets DEIS/SNVS via datos.salud.gob.ar CKAN)",
-        "trends (interes Google: inflacion, precios, inseguridad, trabajo)",
+        "trends (interes Google: inflacion, precios, dolar, empleo, inseguridad, corrupcion)",
     ]
 
     resultados = {

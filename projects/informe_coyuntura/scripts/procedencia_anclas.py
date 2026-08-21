@@ -202,7 +202,10 @@ PROCEDENCIA = {
     "pluriempleo": ("conceptual", "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"),
     "empleo_registrado": ("conceptual", "asalariados privados registrados (SIPA) rebaseados a 4T-2023, sin invertir (ADR-0130); ancla en fecha fija"),
     "icc_utdt": ("conceptual", "ICC rebaseado a 4T-2023; ancla en fecha fija"),
-    "sentimiento_digital": ("conceptual", "canasta de búsquedas rebaseada a 4T-2023, invertida (ADR-0034); ancla en fecha fija"),
+    "sentimiento_digital": ("conceptual",
+                            "canasta de 6 búsquedas, cada término rebaseado a su propio 4T-2023 "
+                            "y promediado con peso igual, invertida (ADR-0034, ADR-0222); "
+                            "ancla en fecha fija"),
     "trabajo_independiente": ("conceptual",
                              "participación rebaseada a 4T-2023; ancla en fecha fija (ADR-0219)"),
     "consumo_carnes_total": ("conceptual",
