@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'macro'
 archivos: ['scripts/puntos_de_giro.py']
-relacionado: ['0167']
+relacionado: ['0167', '0226']
 cerrado_por: ['0159']
 ambito: 'validación externa del ITCM; módulo `scripts/puntos_de_giro.py`'
 ---

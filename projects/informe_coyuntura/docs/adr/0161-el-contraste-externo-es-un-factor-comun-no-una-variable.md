@@ -4,7 +4,7 @@ id: '0161'
 estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'politica'
-relacionado: ['0167', '0225']
+relacionado: ['0167', '0225', '0226']
 ambito: 'validación externa del ITVC y el ITCP; módulo'
 ---
 

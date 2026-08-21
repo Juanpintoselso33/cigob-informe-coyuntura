@@ -206,6 +206,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0188](0188-reestructuracion-organismos-numerador-caso-por-caso.md) | `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso | `reestructuracion_organismos` | vigente |
 | [0189](0189-si-no-puntua-no-se-muestra.md) | Si no puntúa no se muestra, y una promesa cumplida sí puntúa | `asistencia_directa`, `masa_salarial`, `social_orden` | vigente |
 | [0221](0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) | Un cable trampa mira la banda, no el puntaje | `litigiosidad_laboral` | vigente |
+| [0226](0226-el-itcg-se-queda-sin-validacion-externa-y-lo-declara.md) | El ITCG se queda sin validación externa única, y lo declara |  | vigente |
 
 ### Vida cotidiana (ITVC)
 
