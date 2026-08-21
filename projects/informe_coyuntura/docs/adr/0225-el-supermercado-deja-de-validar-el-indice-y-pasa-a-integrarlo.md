@@ -199,8 +199,23 @@ mirar el resultado el día que llegue:
 
 La familia del ITCIS en el panel pasa de 7 estadísticas a 6, y la brecha
 convergente-discriminante **empeora en niveles de +0,004 a −0,052**. En
-diferencias queda igual (−0,030 → −0,029). Es un costo real, y es chico sobre
-todo porque la prueba ya no discriminaba.
+diferencias se mueve poco: de −0,030 a **−0,035**. Es un costo real, y es chico
+sobre todo porque la prueba ya no discriminaba.
+
+Los dos números no son estrictamente comparables y conviene decirlo: el «antes»
+se midió sobre el índice de 18 componentes y el «después» sobre el de 19, así
+que parte del movimiento es que el índice cambió, no sólo el panel. El
+diagnóstico no depende de esa distinción —una brecha que pasa de +0,004 a −0,05
+sigue diciendo que no discrimina— pero leerlos como un antes/después limpio sí
+sería sobreafirmar.
+
+Y hay un resultado que la corrida deja a la vista, contra el índice nuevo: en la
+matriz de validación cruzada el ITCIS correlaciona **+0,48 en niveles con la
+actividad** (par del ITCM) contra **−0,09 con su propio contraste**. En los
+cambios mes a mes el orden se corrige (+0,45 contra el propio, +0,52 con la
+actividad) pero sigue sin separarse. Se publica: es el mismo criterio con el que
+[[0159-validacion-por-panel-para-los-socioeconomicos]] publica el caso que no
+confirma.
 
 #### El límite duro, para que nadie lo cruce sin darse cuenta
 

@@ -492,7 +492,11 @@ def test_vida_itvc_reconcilia():
     # motorizacion_total. El espejo de ADR-0223 duró un día como componente
     # propio: la pregunta que planteaba —¿compran más o bajan de categoría?— se
     # contesta con la SUMA, no con las dos series compitiendo por el signo).
-    assert len(en_indice) == 17, f"esperaba 17 componentes en el índice, hay {len(en_indice)}"
+    # 18 el mismo día (ADR-0225: entra consumo_supermercados, que era el ancla
+    # de validación externa del cinturón. Mide condiciones materiales del
+    # hogar, así que integra el índice en vez de juzgarlo — y es el único
+    # componente que mide volumen efectivamente comprado).
+    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"
