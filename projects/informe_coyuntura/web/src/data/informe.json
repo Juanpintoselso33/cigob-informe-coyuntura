@@ -4219,7 +4219,7 @@
                 "etiqueta": "Merval en dólares",
                 "fuente": "BYMA / CCL",
                 "propia": false,
-                "r_niveles": -0.029,
+                "r_niveles": -0.027,
                 "r_diferencias": 0.087,
                 "n": 33
               },
@@ -6452,173 +6452,173 @@
           "metodo": "pesos ±20% + insumos ±5% del rango entre anclas, re-puntuados por interpolación (Monte Carlo). El error del índice de precios se sortea una sola vez por corrida y se propaga a los indicadores que lo usan como deflactor, en lugar de suponer que cada uno se equivoca por su cuenta."
         },
         "validacion": {
-          "r_niveles": 0.751,
-          "r_diferencias": 0.132,
+          "r_niveles": 0.669,
+          "r_diferencias": -0.004,
           "n": 31,
           "pares": [
             [
               "2023-12",
               18.7,
-              964.7
+              -2.377
             ],
             [
               "2024-01",
               25.6,
-              1055.4
+              -1.509
             ],
             [
               "2024-02",
               30.8,
-              864.5
+              -2.233
             ],
             [
               "2024-03",
               34.8,
-              1138.3
+              -1.038
             ],
             [
               "2024-04",
               41.1,
-              1253.4
+              -1.021
             ],
             [
               "2024-05",
               36.6,
-              1443.2
+              -1.058
             ],
             [
               "2024-06",
               40.8,
-              1240.2
+              -1.451
             ],
             [
               "2024-07",
               40.3,
-              1090.6
+              -1.631
             ],
             [
               "2024-08",
               40.9,
-              1322.5
+              -1.136
             ],
             [
               "2024-09",
               40.3,
-              1361.4
+              -0.941
             ],
             [
               "2024-10",
               43.7,
-              1555.2
+              -0.273
             ],
             [
               "2024-11",
               47.9,
-              1984.1
+              0.158
             ],
             [
               "2024-12",
               49.3,
-              2242.3
+              3.224
             ],
             [
               "2025-01",
               49.8,
-              2163.3
+              1.942
             ],
             [
               "2025-02",
               50.4,
-              1829.1
+              2.074
             ],
             [
               "2025-03",
               50.5,
-              1850.1
+              -0.134
             ],
             [
               "2025-04",
               52.0,
-              1670.2
+              0.427
             ],
             [
               "2025-05",
               58.6,
-              1903.6
+              0.321
             ],
             [
               "2025-06",
               56.1,
-              1673.1
+              -0.053
             ],
             [
               "2025-07",
               60.7,
-              1815.2
+              0.085
             ],
             [
               "2025-08",
               66.1,
-              1489.0
+              0.008
             ],
             [
               "2025-09",
               65.5,
-              1220.4
+              0.212
             ],
             [
               "2025-10",
               65.3,
-              1975.4
+              -0.077
             ],
             [
               "2025-11",
               68.5,
-              2024.9
+              0.365
             ],
             [
               "2025-12",
               68.3,
-              2003.1
+              1.252
             ],
             [
               "2026-01",
               67.8,
-              2105.6
+              1.967
             ],
             [
               "2026-02",
               68.5,
-              1795.8
+              0.208
             ],
             [
               "2026-03",
               72.5,
-              2039.2
+              1.34
             ],
             [
               "2026-04",
               69.4,
-              1916.1
+              0.704
             ],
             [
               "2026-05",
               74.7,
-              2131.0
+              2.186
             ],
             [
               "2026-06",
               81.8,
-              2087.8
+              0.563
             ]
           ],
           "plot": "minmax",
-          "titulo": "¿La transformación se pricea en el valor de las empresas?",
-          "sub": "El contraste natural del cinturón de gestión es el capital de riesgo: si la agenda de reformas efectivamente se ejecuta, las empresas argentinas deberían valer más en dólares. El ITCG se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución) y se compara con el índice Merval medido en dólares (cierre mensual sobre el contado con liquidación), que no integra el índice. El Merval es una de las cuatro estadísticas del terreno propio de este cinturón —las otras tres miden cuánto capital de afuera decide entrar: inversión directa, inversión de cartera y financiamiento a empresas— y el gráfico compara el índice contra el factor común de las cuatro. El detalle está en la ficha metodológica.",
+          "titulo": "¿Contra qué se contrasta un índice de ejecución?",
+          "sub": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen. Este cinturón no tiene una serie de referencia única, y no por falta de búsqueda: no existe ninguna estadística mensual argentina, publicada por un tercero, que mida cuánto avanzó una agenda de reformas. Así que se compara contra un panel de estadísticas externas —el valor de las empresas argentinas en dólares y tres medidas de cuánto capital de afuera decide entrar— y se mira si el índice acompaña más a las de su propio terreno que a las ajenas. El gráfico muestra el factor común de las cuatro: lo que todas comparten, en vez de una sola. El detalle —las cargas de cada una, el panel completo y qué haría falta para cerrar la validez externa— está en la ficha metodológica.",
           "serie_label": "ITCG (reconstrucción mensual)",
-          "externa_label": "Merval en dólares",
+          "externa_label": "factor común del capital privado",
           "trans_label": "series normalizadas al rango del período",
-          "conclusion": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,669 en niveles y −0,004 en los cambios mes a mes: menos que la mejor de ellas por separado. Contra el Merval solo —una de las cuatro— la correlación es 0,751 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: el Índice de Confianza en el Gobierno de la Universidad Torcuato Di Tella —un índice ajeno, no nuestro— diverge del ITCG (−0,686) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad.",
+          "conclusion": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,669 en niveles y −0,004 en los cambios mes a mes: menos que la mejor de ellas por separado. No hay una sola serie externa que haga de contraste de este cinturón, y el motivo no es que no se haya buscado: es que no existe. Ninguna institución publica en Argentina una serie mensual que mida cuánto avanzó una agenda de reformas, y los índices internacionales de capacidad estatal —efectividad de gobierno, calidad regulatoria, libertad económica— son anuales o peores: contra los treinta y un meses que tiene este índice aportan entre cero y tres observaciones, y el más cercano por concepto se actualiza cada cinco años, con una edición vigente que retrata al Estado ANTES de la desregulación que acá se mide. El contraste que encabezaba esta sección era el Merval en dólares y dejó de hacerlo. Publicaba +0,751 en niveles, pero descontada la tendencia del período queda en +0,066 y en los cambios mes a mes en +0,132, por debajo del 0,153 que promedian las estadísticas que el panel usa como contraste AJENO — el índice se movía con el que era su contraste propio menos que con las series que no tienen nada que ver. Un índice de acciones pone precio a lo que el mercado espera de la ejecución, que no es la ejecución. Sigue publicándose como una de las cuatro estadísticas del terreno propio de este cinturón. Se evaluó reemplazarlo por el gasto en subsidios económicos —energía y transporte, a precios constantes— y no entra por ninguna de las dos puertas, lo que es en sí un resultado. Como contraste externo está del lado equivocado de la comparación: este índice mide lo que el gobierno HIZO, y un contraste tiene que medir lo que PASÓ como consecuencia; bajar subsidios es un instrumento de la misma agenda, y además lo publica el propio gobierno que la ejecuta. Como componente del índice lo frenó la medición: sobre una simple tendencia en el tiempo agrega 0,011 de poder explicativo, contra los 0,347 con los que el consumo en supermercados se ganó su lugar dentro del índice de impacto social. El contraste que DISTINGUE en vez de confirmar sigue siendo el Índice de Confianza en el Gobierno de la Universidad Torcuato Di Tella —ajeno, no nuestro—: contra él la correlación es −0,686. Que sea negativa no es una falla, es el resultado: la ejecución se acumula y el capital político sigue su propio ciclo. Este cinturón mide gestión, no popularidad. Con todo eso sobre la mesa, la validez externa de este cinturón queda declarada como PROBLEMA ABIERTO y no como casilla llena. Lo que haría falta para cerrarla está escrito en la ficha metodológica, junto con el umbral que tendría que cumplir una candidata para promoverse — fijado de antemano, para que la decisión no dependa de mirar el número el día que aparezca.",
           "panel": {
             "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,382 y a las 9 ajenas con 0,406. En los cambios mes a mes la separación no se sostiene: 0,122 con lo propio contra 0,153 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto.",
             "nota_factor": "El peso y el signo de cada estadística los fija el cálculo, no el autor: a la que se mueve al revés le sale carga negativa sola. Se estiman con las estadísticas externas únicamente —el índice no participa—, y por eso el contraste no se puede acomodar.",
@@ -7112,9 +7112,9 @@
             }
           },
           "resumen": "Contra el factor común de las 4 estadísticas de su terreno —lo que comparten, no una sola— el índice acompaña con 0,669 en niveles y −0,004 en los cambios mes a mes: menos que la mejor de ellas por separado.",
-          "detalle_texto": "Contra el Merval solo —una de las cuatro— la correlación es 0,751 en niveles: cuando la ejecución de reformas avanza, el mercado revaloriza a las empresas argentinas. El contraste discriminante también informa: el Índice de Confianza en el Gobierno de la Universidad Torcuato Di Tella —un índice ajeno, no nuestro— diverge del ITCG (−0,686) — la ejecución se acumula mientras el capital político sigue su propio ciclo. El índice mide gestión, no popularidad.",
-          "sub_resumen": "El contraste natural del cinturón de gestión es el capital de riesgo: si la agenda de reformas efectivamente se ejecuta, las empresas argentinas deberían valer más en dólares.",
-          "sub_detalle": "El ITCG se reconstruye mes a mes desde las series de sus componentes (sin los ajustes del analista: el nivel puede diferir del publicado — lo que valida es su evolución) y se compara con el índice Merval medido en dólares (cierre mensual sobre el contado con liquidación), que no integra el índice. El Merval es una de las cuatro estadísticas del terreno propio de este cinturón —las otras tres miden cuánto capital de afuera decide entrar: inversión directa, inversión de cartera y financiamiento a empresas— y el gráfico compara el índice contra el factor común de las cuatro. El detalle está en la ficha metodológica."
+          "detalle_texto": "No hay una sola serie externa que haga de contraste de este cinturón, y el motivo no es que no se haya buscado: es que no existe. Ninguna institución publica en Argentina una serie mensual que mida cuánto avanzó una agenda de reformas, y los índices internacionales de capacidad estatal —efectividad de gobierno, calidad regulatoria, libertad económica— son anuales o peores: contra los treinta y un meses que tiene este índice aportan entre cero y tres observaciones, y el más cercano por concepto se actualiza cada cinco años, con una edición vigente que retrata al Estado ANTES de la desregulación que acá se mide. El contraste que encabezaba esta sección era el Merval en dólares y dejó de hacerlo. Publicaba +0,751 en niveles, pero descontada la tendencia del período queda en +0,066 y en los cambios mes a mes en +0,132, por debajo del 0,153 que promedian las estadísticas que el panel usa como contraste AJENO — el índice se movía con el que era su contraste propio menos que con las series que no tienen nada que ver. Un índice de acciones pone precio a lo que el mercado espera de la ejecución, que no es la ejecución. Sigue publicándose como una de las cuatro estadísticas del terreno propio de este cinturón. Se evaluó reemplazarlo por el gasto en subsidios económicos —energía y transporte, a precios constantes— y no entra por ninguna de las dos puertas, lo que es en sí un resultado. Como contraste externo está del lado equivocado de la comparación: este índice mide lo que el gobierno HIZO, y un contraste tiene que medir lo que PASÓ como consecuencia; bajar subsidios es un instrumento de la misma agenda, y además lo publica el propio gobierno que la ejecuta. Como componente del índice lo frenó la medición: sobre una simple tendencia en el tiempo agrega 0,011 de poder explicativo, contra los 0,347 con los que el consumo en supermercados se ganó su lugar dentro del índice de impacto social. El contraste que DISTINGUE en vez de confirmar sigue siendo el Índice de Confianza en el Gobierno de la Universidad Torcuato Di Tella —ajeno, no nuestro—: contra él la correlación es −0,686. Que sea negativa no es una falla, es el resultado: la ejecución se acumula y el capital político sigue su propio ciclo. Este cinturón mide gestión, no popularidad. Con todo eso sobre la mesa, la validez externa de este cinturón queda declarada como PROBLEMA ABIERTO y no como casilla llena. Lo que haría falta para cerrarla está escrito en la ficha metodológica, junto con el umbral que tendría que cumplir una candidata para promoverse — fijado de antemano, para que la decisión no dependa de mirar el número el día que aparezca.",
+          "sub_resumen": "Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables externas relacionadas que no lo componen.",
+          "sub_detalle": "Este cinturón no tiene una serie de referencia única, y no por falta de búsqueda: no existe ninguna estadística mensual argentina, publicada por un tercero, que mida cuánto avanzó una agenda de reformas. Así que se compara contra un panel de estadísticas externas —el valor de las empresas argentinas en dólares y tres medidas de cuánto capital de afuera decide entrar— y se mira si el índice acompaña más a las de su propio terreno que a las ajenas. El gráfico muestra el factor común de las cuatro: lo que todas comparten, en vez de una sola. El detalle —las cargas de cada una, el panel completo y qué haría falta para cerrar la validez externa— está en la ficha metodológica."
         },
         "redundancia": {
           "n_indicadores": 14,
@@ -7250,10 +7250,10 @@
           "n": 31,
           "rd": 0.44
         },
-        "merval": {
-          "r": 0.76,
+        "capital_privado": {
+          "r": 0.72,
           "n": 31,
-          "rd": 0.18
+          "rd": 0.23
         },
         "volumen_hogar": {
           "r": 0.12,
@@ -7268,16 +7268,16 @@
       },
       {
         "indice": "ITCG",
-        "propio": "merval",
+        "propio": "capital_privado",
         "lider": {
           "r": 0.38,
           "n": 31,
           "rd": -0.32
         },
-        "merval": {
-          "r": 0.75,
+        "capital_privado": {
+          "r": 0.67,
           "n": 31,
-          "rd": 0.13
+          "rd": 0.12
         },
         "volumen_hogar": {
           "r": 0.16,
@@ -7298,10 +7298,10 @@
           "n": 30,
           "rd": 0.52
         },
-        "merval": {
-          "r": 0.13,
+        "capital_privado": {
+          "r": 0.12,
           "n": 30,
-          "rd": 0.1
+          "rd": 0.01
         },
         "volumen_hogar": {
           "r": -0.08,
@@ -7322,10 +7322,10 @@
           "n": 30,
           "rd": 0.06
         },
-        "merval": {
+        "capital_privado": {
           "r": -0.09,
           "n": 30,
-          "rd": 0.23
+          "rd": 0.18
         },
         "volumen_hogar": {
           "r": 0.37,
@@ -7345,8 +7345,8 @@
         "Actividad (Índice Líder UTDT)"
       ],
       [
-        "merval",
-        "Merval en USD"
+        "capital_privado",
+        "Respuesta del capital privado (factor común)"
       ],
       [
         "volumen_hogar",
@@ -7358,11 +7358,11 @@
       ]
     ],
     "titulo": "¿Cada índice mide lo suyo?",
-    "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez. Cada uno tiene el propio: la macroeconomía (ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de las empresas en dólares, el impacto social (ITCIS) con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
-    "conclusion": "Los cuatro pares propios dan el signo esperado. ITCM +0,72 con la actividad, ITCG +0,75 con el Merval en dólares, ITCIS -0,08 con el volumen que consume el hogar, ITCP -0,47 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 4 índices la correlación más fuerte no es con su par propio (ITCM correlaciona +0,76 con el Merval contra +0,72 con su propio par; ITCIS correlaciona +0,5 con la actividad contra -0,08 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "sub": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez. Cada uno tiene el propio: la macroeconomía (ITCM) con la marcha de la actividad, la gestión (ITCG) con el factor común de la respuesta del capital privado —el valor de las empresas en dólares y tres medidas de cuánto capital de afuera entra—, el impacto social (ITCIS) con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\".",
+    "conclusion": "Los cuatro pares propios dan el signo esperado. ITCM +0,72 con la actividad, ITCG +0,67 con la respuesta del capital privado, ITCIS -0,08 con el volumen que consume el hogar, ITCP -0,47 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 1 de los 4 índices la correlación más fuerte no es con su par propio (ITCIS correlaciona +0,5 con la actividad contra -0,08 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "resumen": "Los cuatro pares propios dan el signo esperado.",
-    "detalle_texto": "ITCM +0,72 con la actividad, ITCG +0,75 con el Merval en dólares, ITCIS -0,08 con el volumen que consume el hogar, ITCP -0,47 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 2 de los 4 índices la correlación más fuerte no es con su par propio (ITCM correlaciona +0,76 con el Merval contra +0,72 con su propio par; ITCIS correlaciona +0,5 con la actividad contra -0,08 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
+    "detalle_texto": "ITCM +0,72 con la actividad, ITCG +0,67 con la respuesta del capital privado, ITCIS -0,08 con el volumen que consume el hogar, ITCP -0,47 con la incertidumbre de política — este último más moderado que los otros tres, coherente con un índice con varios componentes recién automatizados y con historia corta. La separación es parcial, y se declara: en 1 de los 4 índices la correlación más fuerte no es con su par propio (ITCIS correlaciona +0,5 con la actividad contra -0,08 con su propio par). En una muestra de unos treinta meses en la que toda la economía y la política se movieron juntas, los contrastes externos comparten buena parte de la tendencia del período, así que el nivel no alcanza para separarlos; los cambios mes a mes que acompañan a cada celda son la lectura más exigente.",
     "sub_resumen": "Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro contrastes externos a la vez.",
-    "sub_detalle": "Cada uno tiene el propio: la macroeconomía (ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de las empresas en dólares, el impacto social (ITCIS) con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\"."
+    "sub_detalle": "Cada uno tiene el propio: la macroeconomía (ITCM) con la marcha de la actividad, la gestión (ITCG) con el factor común de la respuesta del capital privado —el valor de las empresas en dólares y tres medidas de cuánto capital de afuera entra—, el impacto social (ITCIS) con el factor común de los volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política (ITCP) con la incertidumbre de política que mide la prensa (EPU Argentina). Si cada índice mide su propio terreno, debería correlacionar con su par natural al menos tanto como con los ajenos. Es la prueba clásica de que un indicador no mide \"todo junto\"."
   }
 }

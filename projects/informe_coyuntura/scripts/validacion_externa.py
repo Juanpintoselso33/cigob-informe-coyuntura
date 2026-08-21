@@ -854,6 +854,30 @@ def _valores_itcp_por_mes(directos: dict | None = None, ult: str | None = None) 
     return out
 
 
+def _sin_tendencia(serie: dict) -> dict:
+    """Residuos de la serie contra una recta en el tiempo.
+
+    Es la cuenta que separa co-movimiento de tendencia compartida, y en esta
+    muestra separa mucho: el Merval publicaba +0,751 en niveles contra el ITCG
+    y destendenciado queda en +0,067 (ADR-0226). Sin este número, un lector no
+    tiene forma de saber cuánto de una correlación alta es que las dos series
+    suben durante treinta y un meses.
+    """
+    meses = sorted(serie)
+    n = len(meses)
+    if n < 3:
+        return {}
+    xs = list(range(n))
+    ys = [serie[m] for m in meses]
+    mx, my = sum(xs) / n, sum(ys) / n
+    var = sum((x - mx) ** 2 for x in xs)
+    if var == 0:
+        return {}
+    b = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / var
+    a = my - b * mx
+    return {m: ys[i] - (a + b * xs[i]) for i, m in enumerate(meses)}
+
+
 def _serie_datos_gob(sid: str) -> dict:
     """{YYYY-MM: valor} de una serie de datos.gob.ar."""
     r = requests.get(SERIES_API, params={"ids": sid, "limit": 5000,
@@ -1235,11 +1259,18 @@ def main():
     try:
         merval = fetch_merval_usd_mensual()
         resultados["merval_usd_mensual"] = merval
-        # Convergente PROPIO del ITCG (ADR-0031): el equity pricea la
-        # transformación estructural (positiva esperada)
+        # El Merval sigue midiéndose y sigue en el panel, pero YA NO se publica
+        # como el par que valida al índice (ADR-0226): pricea lo que el mercado
+        # espera de la ejecución, no la ejecución. Sus tres números son la
+        # prueba de por qué dejó de encabezar.
         pares_g.update({
             "niveles (ITCG vs Merval USD)": (serie_itcg, merval),
             "primeras diferencias (ITCG vs Merval USD)": (_difs(serie_itcg), _difs(merval)),
+            # El destendenciado es el que sostiene que el Merval dejó de
+            # encabezar (ADR-0226): se calcula acá y no se escribe a mano en
+            # la prosa, para que envejezca con los datos.
+            "niveles sin tendencia (ITCG vs Merval USD)":
+                (_sin_tendencia(serie_itcg), _sin_tendencia(merval)),
         })
     except Exception as e:
         print(f"[WARN] Merval USD no disponible: {e}")

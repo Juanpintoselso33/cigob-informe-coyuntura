@@ -1435,7 +1435,11 @@ def _validacion_cruzada(informe):
     # como "consumo" habría dicho en el tablero que el índice se contrasta
     # contra una serie que en realidad lleva adentro.
     externas = {"lider": {p[0]: p[2] for p in bloques["ITCM"]},
-                "merval": {p[0]: p[2] for p in bloques["ITCG"]},
+                # La columna del ITCG ya no es el Merval sino el factor común de
+                # su panel (ADR-0226): `pares` sale de ahí, y dejar el rótulo
+                # viejo habría hecho que la matriz dijera "Merval" mientras
+                # compara contra otra cosa.
+                "capital_privado": {p[0]: p[2] for p in bloques["ITCG"]},
                 "volumen_hogar": {p[0]: p[2] for p in bloques["ITVC"]},
                 "epu": {p[0]: p[2] for p in bloques["ITCP"]}}
 
@@ -1450,7 +1454,7 @@ def _validacion_cruzada(informe):
         ms = sorted(s)
         return {ms[i]: s[ms[i]] - s[ms[i - 1]] for i in range(1, len(ms))}
 
-    PAR_PROPIO = {"ITCM": "lider", "ITCG": "merval",
+    PAR_PROPIO = {"ITCM": "lider", "ITCG": "capital_privado",
                   "ITVC": "volumen_hogar", "ITCP": "epu"}
     filas = []
     for ik in ("ITCM", "ITCG", "ITVC", "ITCP"):
@@ -1474,7 +1478,7 @@ def _validacion_cruzada(informe):
     # escrito a mano; eso quedó corto cuando el ancla de macro pasó a ser la
     # actividad y su par propio quedó por debajo de dos ajenos. La frase se
     # recalcula en cada corrida para que no pueda sobreafirmar.
-    ETIQ = {"lider": "la actividad", "merval": "el Merval",
+    ETIQ = {"lider": "la actividad", "capital_privado": "la respuesta del capital privado",
             "volumen_hogar": "el volumen que consume el hogar",
             "epu": "la incertidumbre de política"}
     superados = []
@@ -1499,14 +1503,17 @@ def _validacion_cruzada(informe):
                          "es la prueba de que cada índice mide su terreno y no «todo junto».")
     informe["validacion_cruzada"] = {
         "filas": filas,
-        "externas": [["lider", "Actividad (Índice Líder UTDT)"], ["merval", "Merval en USD"],
+        "externas": [["lider", "Actividad (Índice Líder UTDT)"],
+                     ["capital_privado", "Respuesta del capital privado (factor común)"],
                      ["volumen_hogar", "Volumen consumido por el hogar (factor común)"],
                      ["epu", "Incertidumbre de política (EPU Argentina)"]],
         "titulo": "¿Cada índice mide lo suyo?",
         "sub": ("Los cuatro índices se reconstruyen mes a mes y se comparan contra los cuatro "
                 "contrastes externos a la vez. Cada uno tiene el propio: la macroeconomía "
-                "(ITCM) con la marcha de la actividad, la gestión (ITCG) con el valor de "
-                "las empresas en dólares, el impacto social (ITCIS) con el factor común de los "
+                "(ITCM) con la marcha de la actividad, la gestión (ITCG) con el factor común "
+                "de la respuesta del capital privado —el valor de las empresas en dólares y "
+                "tres medidas de cuánto capital de afuera entra—, el impacto social (ITCIS) "
+                "con el factor común de los "
                 "volúmenes que el hogar consume —luz, gas, transporte, combustible—, la política "
                 "(ITCP) con la incertidumbre de política que mide la "
                 "prensa (EPU Argentina). Si cada índice mide su propio terreno, debería "
@@ -1516,7 +1523,8 @@ def _validacion_cruzada(informe):
         # el veredicto. El detalle par por par queda para el desarrollo.
         "conclusion": (f"Los cuatro pares propios dan el signo esperado. ITCM "
                        f"{fmt(f_itcm['lider']['r'])} con la actividad, ITCG "
-                       f"{fmt(f_itcg['merval']['r'])} con el Merval en dólares, ITCIS "
+                       f"{fmt(f_itcg['capital_privado']['r'])} con la respuesta del capital "
+                       f"privado, ITCIS "
                        f"{fmt(f_itvc['volumen_hogar']['r'])} con el volumen que consume el "
                        f"hogar, ITCP "
                        f"{fmt(f_itcp['epu']['r'])} con la incertidumbre de política — este último "
@@ -1529,51 +1537,119 @@ def _validacion_cruzada(informe):
 
 
 def _validacion_itcg(bloque):
-    """Anexa al bloque ITCG su validación externa CONTRA SU PAR PROPIO
-    (ADR-0031): el Merval en dólares — el mercado de acciones pricea la
-    transformación estructural (convergente, positiva esperada). El
-    contraste con el ICG UTDT sigue como hallazgo DISCRIMINANTE en la
-    conclusión: la ejecución se acumula, la popularidad cicla."""
+    """Anexa al bloque ITCG su validación externa. **Sin ancla única, y el
+    problema queda declarado abierto** (ADR-0226).
+
+    Por qué no hay una sola serie enfrente, que es lo que el lector espera:
+
+    - **No existe.** No hay ninguna serie mensual, argentina, publicada por un
+      tercero, que mida avance de reformas. Los índices internacionales de
+      capacidad estatal dan entre cero y tres observaciones contra los treinta y
+      un meses del índice, y el más cercano por concepto —el de regulación de
+      mercados de la OCDE— se actualiza cada cinco años, con una edición vigente
+      anterior a la desregulación que el índice mide.
+    - **El Merval no servía**, y sus propios números lo dicen: publicaba +0,75
+      en niveles, +0,07 al descontarle la tendencia y +0,13 en los cambios mes a
+      mes, por debajo del promedio de las estadísticas que el panel usa como
+      contraste AJENO. Sale de encabezar; sigue en el panel.
+    - **El gasto en subsidios se evaluó y no entra por ninguna de las dos
+      puertas.** Como validador está del lado equivocado de la ecuación: el
+      índice mide lo que el gobierno hizo y un validador tiene que medir lo que
+      pasó como consecuencia — bajar subsidios es un instrumento de la agenda,
+      no un efecto de ella; y lo publica el mismo gobierno que ejecuta. Como
+      componente lo frenó la medición: aporta 0,011 de R² sobre una tendencia,
+      contra los 0,347 que justificaron el alta del supermercado en el ITCIS.
+
+    Así que el titular es el factor común del panel, que es contra lo que el
+    gráfico ya venía comparando, y la sección dice que **la validez externa de
+    este cinturón sigue siendo un problema abierto**. Declararlo es más honesto
+    que llenar la casilla con la serie que mejor correlacione.
+    """
     val = _cargar_validacion()
     serie = val.get("serie_itcg") or {}
-    merval = val.get("merval_usd_mensual") or {}
-    comunes = sorted(set(serie) & set(merval))
-    if len(comunes) < 12:
+    panel = (val.get("panel_validacion") or {}).get("itcg") or {}
+    factor = panel.get("factor") or {}
+    pares = factor.get("pares") or []
+    if len(pares) < 12 or not serie:
+        return
+    r_niv, r_dif = factor.get("r_niveles"), factor.get("r_diferencias")
+    if r_niv is None:
         return
     corr = val.get("correlaciones_itcg", {})
-    niveles = corr.get("niveles (ITCG vs Merval USD)") or {}
-    difs = corr.get("primeras diferencias (ITCG vs Merval USD)") or {}
+    mrv_niv = (corr.get("niveles (ITCG vs Merval USD)") or {}).get("r")
+    mrv_dif = (corr.get("primeras diferencias (ITCG vs Merval USD)") or {}).get("r")
+    mrv_sin = (corr.get("niveles sin tendencia (ITCG vs Merval USD)") or {}).get("r")
+    ajenas = (panel.get("diferencias") or {}).get("discriminante")
     icg_niv = (corr.get("niveles (ITCG vs ICG)") or {}).get("r")
-    r_niv, r_dif = niveles.get("r"), difs.get("r")
-    icg_txt = ""
+
+    partes = [
+        "No hay una sola serie externa que haga de contraste de este cinturón, y el motivo "
+        "no es que no se haya buscado: es que no existe. Ninguna institución publica en "
+        "Argentina una serie mensual que mida cuánto avanzó una agenda de reformas, y los "
+        "índices internacionales de capacidad estatal —efectividad de gobierno, calidad "
+        "regulatoria, libertad económica— son anuales o peores: contra los treinta y un "
+        "meses que tiene este índice aportan entre cero y tres observaciones, y el más "
+        "cercano por concepto se actualiza cada cinco años, con una edición vigente que "
+        "retrata al Estado ANTES de la desregulación que acá se mide.",
+    ]
+    if None not in (mrv_niv, mrv_sin, mrv_dif):
+        signo = lambda r: ("+" if r > 0 else "") + coma(r)
+        cola = ""
+        if ajenas is not None and abs(mrv_dif) < ajenas:
+            cola = (f", por debajo del {coma(ajenas)} que promedian las estadísticas que el "
+                    f"panel usa como contraste AJENO — el índice se movía con el que era su "
+                    f"contraste propio menos que con las series que no tienen nada que ver")
+        partes.append(
+            f"El contraste que encabezaba esta sección era el Merval en dólares y dejó de "
+            f"hacerlo. Publicaba {signo(mrv_niv)} en niveles, pero descontada la tendencia del "
+            f"período queda en {signo(mrv_sin)} y en los cambios mes a mes en "
+            f"{signo(mrv_dif)}{cola}. Un índice de acciones pone precio a lo que el mercado "
+            f"espera de la ejecución, que no es la ejecución. Sigue publicándose como una de "
+            f"las cuatro estadísticas del terreno propio de este cinturón.")
+    partes.append(
+        "Se evaluó reemplazarlo por el gasto en subsidios económicos —energía y transporte, "
+        "a precios constantes— y no entra por ninguna de las dos puertas, lo que es en sí "
+        "un resultado. Como contraste externo está del lado equivocado de la comparación: "
+        "este índice mide lo que el gobierno HIZO, y un contraste tiene que medir lo que "
+        "PASÓ como consecuencia; bajar subsidios es un instrumento de la misma agenda, y "
+        "además lo publica el propio gobierno que la ejecuta. Como componente del índice lo "
+        "frenó la medición: sobre una simple tendencia en el tiempo agrega 0,011 de poder "
+        "explicativo, contra los 0,347 con los que el consumo en supermercados se ganó su "
+        "lugar dentro del índice de impacto social.")
     if icg_niv is not None:
-        icg_txt = (f" El contraste discriminante también informa: el Índice de Confianza en "
-                   f"el Gobierno de la Universidad Torcuato Di Tella —un índice ajeno, no "
-                   f"nuestro— diverge del ITCG ({coma(icg_niv)}) — la ejecución se acumula "
-                   f"mientras el capital político sigue su propio ciclo. El índice mide "
-                   f"gestión, no popularidad.")
+        partes.append(
+            f"El contraste que DISTINGUE en vez de confirmar sigue siendo el Índice de "
+            f"Confianza en el Gobierno de la Universidad Torcuato Di Tella —ajeno, no "
+            f"nuestro—: contra él la correlación es {coma(icg_niv)}. Que sea negativa no es "
+            f"una falla, es el resultado: la ejecución se acumula y el capital político sigue "
+            f"su propio ciclo. Este cinturón mide gestión, no popularidad.")
+    partes.append(
+        "Con todo eso sobre la mesa, la validez externa de este cinturón queda declarada como "
+        "PROBLEMA ABIERTO y no como casilla llena. Lo que haría falta para cerrarla está "
+        "escrito en la ficha metodológica, junto con el umbral que tendría que cumplir una "
+        "candidata para promoverse — fijado de antemano, para que la decisión no dependa de "
+        "mirar el número el día que aparezca.")
+
     bloque["validacion"] = {
-        "r_niveles": r_niv, "r_diferencias": r_dif, "n": niveles.get("n"),
-        "pares": [[m, serie[m], merval[m]] for m in comunes],
+        "r_niveles": r_niv, "r_diferencias": r_dif, "n": factor.get("n"),
+        "pares": pares,
         "plot": "minmax",
-        "titulo": "¿La transformación se pricea en el valor de las empresas?",
-        "sub": ("El contraste natural del cinturón de gestión es el capital de riesgo: si la "
-                "agenda de reformas efectivamente se ejecuta, las empresas argentinas deberían "
-                "valer más en dólares. El ITCG se reconstruye mes a mes desde las series de sus "
-                "componentes (sin los ajustes del analista: el nivel puede diferir del publicado "
-                "— lo que valida es su evolución) y se compara con el índice Merval medido en "
-                "dólares (cierre mensual sobre el contado con liquidación), que no integra el "
-                "índice. El Merval es una de las cuatro estadísticas del terreno propio de este "
-                "cinturón —las otras tres miden cuánto capital de afuera decide entrar: "
-                "inversión directa, inversión de cartera y financiamiento a empresas— y el "
-                "gráfico compara el índice contra el factor común de las cuatro. El detalle "
+        "titulo": "¿Contra qué se contrasta un índice de ejecución?",
+        "sub": ("Paso 9 del estándar JRC/OCDE: un índice válido debe co-moverse con variables "
+                "externas relacionadas que no lo componen. Este cinturón no tiene una serie de "
+                "referencia única, y no por falta de búsqueda: no existe ninguna estadística "
+                "mensual argentina, publicada por un tercero, que mida cuánto avanzó una agenda "
+                "de reformas. Así que se compara contra un panel de estadísticas externas —el "
+                "valor de las empresas argentinas en dólares y tres medidas de cuánto capital "
+                "de afuera decide entrar— y se mira si el índice acompaña más a las de su "
+                "propio terreno que a las ajenas. El gráfico muestra el factor común de las "
+                "cuatro: lo que todas comparten, en vez de una sola. El detalle —las cargas de "
+                "cada una, el panel completo y qué haría falta para cerrar la validez externa— "
                 "está en la ficha metodológica."),
         "serie_label": "ITCG (reconstrucción mensual)",
-        "externa_label": "Merval en dólares",
+        "externa_label": "factor común del capital privado",
         "trans_label": "series normalizadas al rango del período",
-        "conclusion": (f"Contra el Merval solo —una de las cuatro— la correlación es "
-                       f"{coma(r_niv)} en niveles: cuando la ejecución de reformas "
-                       f"avanza, el mercado revaloriza a las empresas argentinas.{icg_txt}"),
+        "conclusion": " ".join(partes),
     }
 
 
