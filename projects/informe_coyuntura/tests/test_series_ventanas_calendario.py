@@ -108,11 +108,32 @@ def test_el_ipi_ia_no_deja_huecos_de_calendario():
 
 # ── Cuenta corriente como acompañante del saldo comercial (ADR-0080) ────────
 
-def test_la_cuenta_corriente_acumula_cuatro_trimestres():
+def test_la_cuenta_corriente_acumula_cuatro_trimestres(monkeypatch):
     """Se acumula a 4 trimestres para ser comparable con el saldo comercial de
     12 meses. Contra un trimestre suelto el contraste mezclaría escalas."""
+    trimestral = [
+        (f"{anio}-{mes:02d}-01", float(valor))
+        for valor, (anio, mes) in enumerate(
+            (
+                (2023, 1), (2023, 4), (2023, 7), (2023, 10),
+                (2024, 1), (2024, 4), (2024, 7), (2024, 10),
+                (2025, 1), (2025, 4), (2025, 7), (2025, 10),
+            ),
+            start=1,
+        )
+    ]
+
+    def fuente_sintetica(series_id, limit):
+        assert series_id == descargar_series.CUENTA_CORRIENTE_ID
+        assert limit == 200
+        return list(reversed(trimestral))
+
+    monkeypatch.setattr(descargar_series, "fetch_indec", fuente_sintetica)
+
     serie = descargar_series.fetch_cuenta_corriente_serie()
-    assert len(serie) >= 8, len(serie)
+    assert len(serie) == 8
+    assert serie[0] == ["2024-01-01", 14.0]
+    assert serie[-1] == ["2025-10-01", 42.0]
     fechas = [f for f, _ in serie]
     assert fechas == sorted(fechas)
     assert all(f.endswith("-01") for f in fechas)
