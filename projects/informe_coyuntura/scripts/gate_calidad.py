@@ -74,7 +74,10 @@ MAX_DIAS = {
     "libertad_opcion_salud": 220,       # SSS
     # mensuales con ~2-3 meses de rezago de publicación
     "emae_ia": 140, "iai": 140, "icip": 140, "brecha_salario_cbt": 150,
-    "mortalidad_pymes": 140, "despacho_cemento": 140, "consumo_carne": 140,
+    # ADR-0218: la SRT publica con ~3 meses de rezago (verificado: en agosto
+    # de 2026 el último dato era mayo). El tope de 140 venía del IPI, que es
+    # más rápido; con esta fuente dejaría menos de un mes de margen.
+    "mortalidad_pymes": 165, "despacho_cemento": 140, "consumo_carne": 140,
     "endeudamiento_familiar": 140, "inseguridad": 150,
 }
 CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón

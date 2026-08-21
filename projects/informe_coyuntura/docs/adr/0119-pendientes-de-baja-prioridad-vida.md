@@ -6,6 +6,7 @@ fecha: 2026-07-20
 cinturon: 'vida'
 indicadores: [consumo_carne]
 relacionado: ['0215', '0216', '0217']
+cerrado_por: ['0218']
 ambito: 'ITVC · fichas públicas de `consumo_carne` y de los indicadores invertidos'
 origen: 'Auditoría de Vida Cotidiana, recomendaciones de baja prioridad'
 ---

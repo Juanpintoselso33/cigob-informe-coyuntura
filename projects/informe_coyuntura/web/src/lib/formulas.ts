@@ -190,8 +190,8 @@ ight)_{	ext{4T-23}}}`,
     leyenda: "Cuánto sube el alquiler comparado con el resto de los precios, contra el arranque del mandato. Debajo de 100 = el alquiler se encareció más que todo lo demás.",
   },
   mortalidad_pymes: {
-    latex: String.raw`100\cdot\frac{\text{producci\'on industrial}_{\text{hoy}}}{\text{producci\'on industrial}_{\text{4T-23}}}`,
-    leyenda: "Nivel del IPI manufacturero desestacionalizado como proxy de la salud de las pymes industriales (empleadoras), 100 = 4T-2023.",
+    latex: String.raw`100\cdot\frac{\text{empleadores hasta 50}_{\text{hoy}}}{\text{empleadores hasta 50}_{\text{4T-23}}}`,
+    leyenda: "Cantidad de empleadores de hasta 50 trabajadores con cobertura de ART (SRT), 100 = 4T-2023. Menos empleadores es peor.",
   },
   despacho_cemento: {
     latex: String.raw`100\cdot\frac{\text{actividad de la construcci\'on}_{\text{hoy}}}{\text{actividad de la construcci\'on}_{\text{4T-23}}}`,

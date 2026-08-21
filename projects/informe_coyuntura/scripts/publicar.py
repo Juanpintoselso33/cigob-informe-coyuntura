@@ -118,10 +118,14 @@ def build_vida(raw):
     inf = indec.get("informalidad_trimestral") or indec.get("informalidad_anual", {})
     _add(out, "informalidad", round(inf.get("valor", 0) * 100, 1),
          "%", "INDEC EPH", inf.get("fecha"))
-    ipi = indec.get("ipi", {})
-    _add(out, "mortalidad_pymes", round(ipi.get("variacion_mensual_pct", 0), 2),
-         "% m/m (IPI desest.)", "INDEC — IPI manufacturero desestacionalizado (vía datos.gob.ar)",
-         ipi.get("fecha"))
+    # ADR-0218: el indicador pasa a medir lo que su nombre promete — el cierre
+    # neto de PyMEs — con la base de empleadores con cobertura de ART de la SRT.
+    # Antes publicaba la variación mensual del IPI manufacturero.
+    emp = raw.get("empleadores_pyme") or {}
+    if emp.get("pyme") is not None:
+        _add(out, "mortalidad_pymes", emp["pyme"],
+             "empleadores", "SRT — partes empleadoras con cobertura de ART, hasta 50 trabajadores",
+             f"{emp['mes']}-01")
     isac = indec.get("isac", {})
     _add(out, "despacho_cemento", round(isac.get("valor", 0), 1),
          "índice ISAC", "INDEC — ISAC desestacionalizado (vía datos.gob.ar)", isac.get("fecha"))

@@ -1647,8 +1647,6 @@ VIDA_INDEC = [
 VIDA_DERIVADAS = [
     ("ipc_alimentos",    "% m/m",           "INDEC serie 146.3", lambda: fetch_indec_var_mensual("146.3_IALIMENNAL_DICI_M_45")),
     ("peso_tarifas",     "% m/m regulados", "INDEC serie 148.3", lambda: fetch_indec_var_mensual("148.3_IREGULANAL_DICI_M_22")),
-    ("mortalidad_pymes", "% m/m (IPI desest.)", "INDEC — IPI desestacionalizado",
-     lambda: fetch_indec_var_mensual(ITVC_IPI_DESEST_ID)),
 ]
 def fetch_icc_serie(meses: int = 60) -> list:
     """Serie histórica del ICC UTDT: parsea TODAS las filas del XLS oficial (col 0 fecha,
@@ -2001,6 +1999,18 @@ def fetch_itvc_tarifas() -> list:
     sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
     from config import INDEC_SERIES
     return _itvc_relativo_salario(INDEC_SERIES["ipc_regulados"])
+
+
+def fetch_empleadores_pyme_serie() -> list:
+    """Cantidad mensual de empleadores de hasta 50 trabajadores con cobertura
+    de ART (SRT). Es la MISMA serie que alimenta la card y el índice: el
+    rebase a 100 = 4T-2023 lo hace `itvc.rebase_de_serie`, así que no hay dos
+    números distintos para lo mismo (ADR-0218)."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from collectors.srt_empleadores import fetch_empleadores_pyme
+    d = fetch_empleadores_pyme()
+    return [[f"{ym}-01", v] for ym, v in sorted(d["serie_pyme"].items())
+            if ym >= "2019-01"]
 
 
 def fetch_itvc_ipi() -> list:
@@ -2481,7 +2491,12 @@ VIDA_DERIVADAS += [
     # divergen, la ficha pública dice una cosa y el CSV de la serie otra.
     ("alquiler_real", "% m/m alquileres",
      "INDEC — IPC-GBA alquiler de la vivienda (vía datos.gob.ar)", fetch_alquiler_real_serie),
-    ("itvc_ipi", "índice (100 = 4T-2023)", "INDEC IPI desestacionalizado", fetch_itvc_ipi),
+    # ADR-0218: `mortalidad_pymes` deja de ser el IPI industrial y pasa a medir
+    # lo que su nombre promete — el cierre neto de PyMEs. Una sola serie para la
+    # card y para el índice; `itvc_ipi` se retira.
+    ("mortalidad_pymes", "empleadores (hasta 50 trabajadores)",
+     "SRT — serie histórica de partes empleadoras por tamaño de nómina",
+     fetch_empleadores_pyme_serie),
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
     ("mora_familias", "% de cartera irregular (familias)", "BCRA — Informe sobre Bancos (personales + tarjetas)", fetch_mora_serie),

@@ -279,9 +279,9 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Trimestral (EPH)", tipo: "Nivel (%)",
   },
   mortalidad_pymes: {
-    que: "La salud del entramado productivo y del empleo PyME, aproximada por la actividad industrial manufacturera. En el ITCIS puntúa por el NIVEL del IPI desestacionalizado rebaseado a 100 = 4T-2023 (ya no la variación de un mes, que premiaba o castigaba por estacionalidad).",
-    aporta: "Cuando la industria se contrae, las PyMEs y su empleo son las primeras en sufrirlo; el nivel acumulado dice si la actividad recuperó o no el punto de partida del mandato.",
-    frecuencia: "Mensual", tipo: "Variación (card) · nivel desest. (índice)",
+    que: "Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona declarada con cobertura de ART. Cuando una PyME cierra, quiebra o despide a toda su nómina, el contrato con la aseguradora se rescinde casi en el acto, así que la baja aparece en el mes. En el ITCIS puntúa por el NIVEL rebaseado a 100 = 4T-2023: menos empleadores es peor.",
+    aporta: "Es el cierre neto de empresas medido de forma directa, no aproximado por la producción industrial: el saldo entre las que abren y las que cierran, que es el dato que dice si el entramado PyME se está achicando.",
+    frecuencia: "Mensual (unos 3 meses de rezago)", tipo: "Cantidad de empleadores",
   },
   despacho_cemento: {
     que: "El nivel de actividad de la construcción, gran motor de empleo de baja calificación.",

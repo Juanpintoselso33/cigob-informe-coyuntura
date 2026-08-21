@@ -348,7 +348,6 @@ SERIES_REBASEADAS = {
     "itvc_alimentos":     "ipc_alimentos",
     "itvc_tarifas":       "peso_tarifas",
     "itvc_alquiler":      "alquiler_real",
-    "itvc_ipi":           "mortalidad_pymes",
     "itvc_isac":          "despacho_cemento",
     "itvc_pobreza":       "pobreza_nowcast",
     # Reconstruida desde la faena de las tres carnes: ya llega en base 100
@@ -431,6 +430,11 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # otros tres son proxies (producción, construcción, pluriempleo) — el
     # líder salió del cinturón en ADR-0154.
     idx["empleo_registrado"] = rebase_de_serie(series, "empleo_registrado")
+    # ADR-0218: cierre neto de PyMEs — empleadores de hasta 50 trabajadores
+    # con cobertura de ART (SRT). NO invertido: menos empleadores es peor.
+    # Reemplaza al IPI industrial, que llevaba el nombre `mortalidad_pymes`
+    # sin medir mortalidad ni PyMEs.
+    idx["mortalidad_pymes"] = rebase_de_serie(series, "mortalidad_pymes")
     # Informalidad TRIMESTRAL (52.2_ASDJ, barrido vida 2/13): la 303.1 murió en
     # 2020 pero la 52.2 sigue viva — base = 4T-2023 exacto (punto 2023-10),
     # invertida (menos informalidad = mejora). Reemplaza la excepción anual.

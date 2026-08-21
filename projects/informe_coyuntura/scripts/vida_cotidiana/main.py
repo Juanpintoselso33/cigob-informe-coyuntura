@@ -84,12 +84,20 @@ def run_all() -> dict:
     from collectors.cafam import fetch_cafam
     from collectors.ciccra import fetch_ciccra
     from collectors.consumo_carnes import fetch_consumo_carnes
+    from collectors.srt_empleadores import fetch_empleadores_pyme
+
+    def _empleadores_sin_serie():
+        """La card sólo necesita el último mes. La serie completa (359
+        puntos) la baja `descargar_series.py` del mismo colector, así que
+        guardarla acá la duplicaría en un archivo versionado."""
+        d = fetch_empleadores_pyme()
+        return {k: v for k, v in d.items() if not k.startswith('serie_')}
     from collectors.snic import fetch_snic
     from collectors.salud import fetch_salud
     from collectors.trends import fetch_trends
     from collectors.utdt_nowcast_pobreza import fetch_nowcast_pobreza
 
-    logger.info("Iniciando recolección — 9 fuentes...")
+    logger.info("Iniciando recolección — 10 fuentes...")
 
     fuentes_automatizadas = [
         "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
@@ -98,6 +106,7 @@ def run_all() -> dict:
         "cafam (patentamiento motos por provincia)",
         "ciccra (consumo carne vacuna per capita — PDF mensual)",
         "consumo_carnes (total vacuna+aviar+porcina per capita — tablero SAGYP)",
+        "srt (empleadores con cobertura de ART por tamano de nomina)",
         "snic (estadisticas criminales nacionales + CABA)",
         "salud (datasets DEIS/SNVS via datos.salud.gob.ar CKAN)",
         "trends (interes Google: inflacion, precios, inseguridad, trabajo)",
@@ -120,6 +129,11 @@ def run_all() -> dict:
         # cambia de forma, el parser levanta y este colector queda en None
         # sin tumbar al resto del cinturón.
         "consumo_carnes": _seguro(fetch_consumo_carnes, "consumo_carnes"),
+        # Cierre neto de PyMEs (ADR-0218): cuando una PyME cierra o despide a
+        # toda su nomina, el contrato con la ART se rescinde casi en el acto.
+        # Falla suave como el de carnes: el XLSX de la SRT es pesado y su
+        # formato puede cambiar; que se caiga no puede tumbar al cinturon.
+        "empleadores_pyme": _seguro(_empleadores_sin_serie, "empleadores_pyme"),
         "snic":   fetch_snic(),
         "salud":  fetch_salud(),
         "trends": fetch_trends(),

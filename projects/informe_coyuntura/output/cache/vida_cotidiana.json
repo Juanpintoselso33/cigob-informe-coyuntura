@@ -1,6 +1,6 @@
 {
   "cinturon": "vida_cotidiana",
-  "generated_at": "2026-08-18T01:28:37.227821",
+  "generated_at": "2026-08-21T02:04:24.858116",
   "score": 3.0,
   "indicadores": {
     "ipc_total": {
@@ -18,10 +18,10 @@
       "desactualizado": false
     },
     "icc_utdt": {
-      "valor": 39.83,
+      "valor": 39.87,
       "unidad": "índice",
       "fuente": "https://www.utdt.edu/listado_contenidos.php?id_item_menu=16458",
-      "fecha_dato": "2026-07-01",
+      "fecha_dato": "2026-08-01",
       "desactualizado": false
     }
   }

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-20T21:32:35.778692-03:00",
+  "generated_at": "2026-08-21T02:08:34.750484-03:00",
   "period": "2026-08",
   "score_global": 4.2,
   "ponderacion": {
@@ -1161,16 +1161,16 @@
           "desactualizado": false
         },
         "icc_utdt": {
-          "valor": 39.83,
+          "valor": 39.87,
           "unidad": "índice",
           "fuente": "https://www.utdt.edu/listado_contenidos.php?id_item_menu=16458",
-          "fecha_dato": "2026-07-01",
+          "fecha_dato": "2026-08-01",
           "desactualizado": false
         }
       },
       "alerta": null,
       "itvc": {
-        "valor": 90.7,
+        "valor": 90.6,
         "banda": "deterioro_moderado",
         "banda_legible": "Deterioro moderado vs 4T-2023",
         "dimensiones": {
@@ -1249,7 +1249,7 @@
           "empleo": {
             "nombre": "Prospectivas de empleo",
             "peso": 0.2419,
-            "puntaje": 93.1,
+            "puntaje": 92.5,
             "indicadores": {
               "informalidad": {
                 "peso": 0.3799,
@@ -1265,8 +1265,8 @@
               },
               "mortalidad_pymes": {
                 "peso": 0.164,
-                "puntaje_banda": 97.4,
-                "puntaje_aplicado": 97.4,
+                "puntaje_banda": 93.8,
+                "puntaje_aplicado": 93.8,
                 "peso_efectivo": 0.0397
               },
               "despacho_cemento": {

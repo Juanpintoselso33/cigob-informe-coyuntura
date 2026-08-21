@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-06-30
 cinturon: 'politica'
 archivos: ['scripts/descargar_series.py', 'scripts/politica.py', 'scripts/publicar.py', 'docs/backfill-series.md']
-relacionado: ['0054', '0055', '0190']
+relacionado: ['0054', '0055', '0190', '0218']
 ambito: '`scripts/descargar_series.py` · `scripts/politica.py` · `scripts/publicar.py` · `docs/backfill-series.md`'
 ---
 

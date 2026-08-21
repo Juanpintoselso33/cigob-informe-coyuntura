@@ -116,7 +116,9 @@ COMPONENTES = {
     "ipc_alimentos":          ("itvc_alimentos", False, False, True),   # ya base-100 (ADR-0033: relativo al IPC)
     "peso_tarifas":           ("itvc_tarifas", False, False, True),
     "alquiler_real":          ("itvc_alquiler", False, False, True),  # ADR-0111
-    "mortalidad_pymes":       ("itvc_ipi", False, False, True),
+    # ADR-0218: cantidad de empleadores PyME (SRT). Serie en unidades, no
+    # base-100, así que la reconstrucción la rebasea como a las demás.
+    "mortalidad_pymes":       ("mortalidad_pymes", False, False, False),
     "despacho_cemento":       ("itvc_isac", False, False, True),
     "pobreza_nowcast":        ("itvc_pobreza", False, False, True),   # ADR-0153
     "mora_familias":          ("mora_familias", True, False, False),   # ADR-0067 (2026-07-15):

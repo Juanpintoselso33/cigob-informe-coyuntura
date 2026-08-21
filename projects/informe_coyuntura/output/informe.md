@@ -1,6 +1,6 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-20 21:32:35"
+generado: "2026-08-21 02:08:34"
 score_global: 4.2
 barbarismo_activo: "político"
 alerta_multicinturon: false
@@ -76,7 +76,7 @@ schema_version: "1.2.0"
 |---|---|---|---|---|
 | ipc_total | 2.11 | % mensual | 2026-07-01 | fresco |
 | desocupacion | 0.1 | % | 2026-01-01 | fresco |
-| icc_utdt | 39.83 | índice | 2026-07-01 | fresco |
+| icc_utdt | 39.87 | índice | 2026-08-01 | fresco |
 
 ### 🟢 Gestion — score 2.4/10 (estable)
 *Riesgo de barbarismo: gerencial*
@@ -102,4 +102,4 @@ schema_version: "1.2.0"
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-08-20 21:32:35 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-21 02:08:34 — schema 1.2.0*

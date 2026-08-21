@@ -74,10 +74,11 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 4% |
 | Peso efectivo en el índice | **1.1%** |
+| Procedencia del ancla | `conceptual` — consumo total de carnes per cápita rebaseado a 4T-2023 desde la faena del INDEC; ancla en fecha fija (ADR-0217) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0215](../adr/0215-la-carne-se-mide-con-dos-fuentes-y-se-declara.md) La carne se mide con dos fuentes, y eso se declara · [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card
+**Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna
 
 #### Patentamiento de motos
 
@@ -183,7 +184,7 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0130](../adr/0130-la-dimension-empleo-pasa-a-medir-empleo.md) La dimensión de empleo pasa a medir empleo
 
-#### Actividad industrial (IPI)
+#### Empleadores PyME activos
 
 `mortalidad_pymes`
 
@@ -195,7 +196,7 @@ donde colar una calibración (ADR-0123).
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
+**Lo gobiernan**: [ADR-0218](../adr/0218-el-cierre-de-pymes-se-mide-con-la-srt.md) El cierre de PyMEs se mide con la SRT, no con la producción industrial
 
 #### Construcción (ISAC)
 
@@ -305,7 +306,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-30 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+31 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -335,5 +336,6 @@ histórica.
 - [0206](../adr/0206-los-dos-artefactos-publicados-dicen-lo-mismo.md) — Los dos artefactos publicados dicen lo mismo
 - [0208](../adr/0208-el-itvc-vive-en-su-modulo-y-el-intermedio-nace-bien.md) — El ITVC vive en su módulo, y el intermedio nace bien
 - [0214](../adr/0214-la-informalidad-es-una-condicion-del-empleo.md) — La informalidad es una condición del empleo, no del ingreso
-- [0215](../adr/0215-la-carne-se-mide-con-dos-fuentes-y-se-declara.md) — La carne se mide con dos fuentes, y eso se declara
 - [0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) — O integra el índice, o no es card
+- [0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) — Puntúa el acceso total a proteína, no la carne vacuna
+- [0218](../adr/0218-el-cierre-de-pymes-se-mide-con-la-srt.md) — El cierre de PyMEs se mide con la SRT, no con la producción industrial
