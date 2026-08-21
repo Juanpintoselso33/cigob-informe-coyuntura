@@ -224,6 +224,16 @@ la canasta vieja—.
 
 El par card/serie lo vigila G3 en `gate_calidad.py`, ahora sin excepción.
 
+**Corrida real (21-ago-2026, 14:01).** Las cifras de arriba se calcularon sobre
+respuestas de Trends capturadas a mano mientras la IP estaba bloqueada; la
+corrida del colector las reproduce **al décimo**: canasta 57,6 en jul-2026,
+componente crudo 173,6, y el techo superado en 19 de 67 meses, 7 de los últimos
+12. La card publica 57,6 y la serie termina en 57,6 —el par reconcilia—, el
+ITCIS queda en 90,6 y el gate pasa sin fallas de integridad. En el store de
+producción cada término tiene entre 32 y 42 valores distintos en 67 meses: los 2
+de `inseguridad` y el 1 de `corrupcion` dentro de un payload compartido eran el
+truncamiento, y desaparecieron.
+
 ## Más información
 
 ### El banco de pruebas (20–21 de agosto de 2026)
