@@ -87,7 +87,11 @@ MAX_DIAS = {
     # Con esa cadencia la card nunca pasa de ~72 días de antigüedad; 90 es el
     # punto donde una publicación se corrió más allá del mes siguiente entero,
     # o sea un mes salteado, que es justo lo que el tope tiene que agarrar.
-    "patentamiento_autos": 90,
+    # ADR-0224: el tope pasa al componente que quedó. Es el MISMO número y por
+    # la misma medición —los dos registros de la DNRPA publican con la misma
+    # cadencia y el colector exige que lleguen al mismo mes—, así que el tope
+    # de autos vale para la suma sin recalibrar nada.
+    "motorizacion_total": 90,
     "endeudamiento_familiar": 140, "inseguridad": 150,
 }
 CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón
@@ -131,6 +135,13 @@ G3_EXCEPCIONES = {
     # NO es un caso de anclaje: que las dos fuentes no se separen lo vigila
     # tests/test_carne_compuesto.py contra la variación i.a. que publica SAGYP.
     "consumo_carnes_total": "card = nivel kg/hab (SAGYP); serie = índice base-100 desde faena INDEC (ADR-0217)",
+    # ADR-0224: la card publica el NIVEL —vehículos 0km por cada mil
+    # habitantes, que es el número con significado para el lector— y la serie
+    # el ÍNDICE base 100 = 4T-2023, que es lo que puntúa. A diferencia de la
+    # carne, acá NO hay dos fuentes: las dos salen de la misma descarga de la
+    # DNRPA y de la misma serie de población del INDEC, así que no pueden
+    # separarse. Es sólo un cambio de unidad, y por eso el par no coincide.
+    "motorizacion_total": "card = vehículos 0km por mil habitantes; serie = índice base-100, misma fuente (ADR-0224)",
     # Acá vivía la FAMILIA DE ANCLAJE: siete indicadores perdonados porque la
     # card evaluaba su ventana en date.today() y la serie a fin de mes cerrado.
     # Ya no queda ninguno. ADR-0172 les puso a las series un punto final

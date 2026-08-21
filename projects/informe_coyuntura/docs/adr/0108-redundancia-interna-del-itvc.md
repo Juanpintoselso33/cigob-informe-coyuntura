@@ -6,7 +6,7 @@ fecha: 2026-07-20
 cinturon: 'vida'
 archivos: ['validacion_externa.matriz_redundancia_itvc', '_EscalaIdentidad']
 extiende: ['0085']
-relacionado: ['0223']
+relacionado: ['0223', '0224']
 ambito: 'ITVC · card pública "Consistencia interna" · `validacion_externa.matriz_redundancia_itvc` · `_EscalaIdentidad` (nuevo)'
 origen: 'Auditoría de Vida Cotidiana, puntos 3.7 y 5 (prioridad media)'
 ---

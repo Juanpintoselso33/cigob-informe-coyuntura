@@ -380,6 +380,7 @@ export const LABELS: Record<string, string> = {
   mortalidad_pymes: "Empleadores PyME activos", trabajo_independiente: "Peso del trabajo independiente", despacho_cemento: "Construcción (ISAC)",
   pluriempleo: "Subocupación demandante", inseguridad: "Victimización (IVI)",
   icc_utdt: "Confianza del consumidor (ICC)", sentimiento_digital: "Sentimiento digital (Trends)",
+  motorizacion_total: "Motorización total",
   patentamiento_motos: "Patentamiento de motos", patentamiento_autos: "Patentamiento de autos",
   desocupacion: "Desocupación",
   // gestion
@@ -454,6 +455,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   peso_tarifas: "% m/m", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.", patentamiento_autos: "u.",
+  motorizacion_total: "c/1.000 hab.",
   // gestion (insumos del ITCG)
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "%",
   cobertura_judicial: "% cubierto",
@@ -523,6 +525,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   sentimiento_digital: "Índice (0–100)",
   patentamiento_motos: "Unidades",
   patentamiento_autos: "Unidades (autos 0km inscriptos en el mes)",
+  motorizacion_total: "Vehículos 0km (autos + motos) por cada 1.000 habitantes, acumulado de 12 meses",
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",
@@ -554,6 +557,11 @@ export const UNIDADES_SERIE: Record<string, string> = {
   // gráfico rotulaba el índice como kilos: mostraba "95 kg/hab" al lado de una
   // card que decía 114,45 kg/hab, para el MISMO mes.
   consumo_carnes_total: "índice (100 = 4T-2023)",
+  // ADR-0224: mismo caso. La card publica el NIVEL —vehículos 0km por cada mil
+  // habitantes, que es el número que le dice algo al lector— y la serie el
+  // índice base-100 que es lo que puntúa. Acá las dos salen de la MISMA
+  // descarga de la DNRPA: es sólo un cambio de unidad, no de fuente.
+  motorizacion_total: "índice (100 = 4T-2023)",
 };
 
 // Datos duros de migración real. Acompañaban a indice_intencion_migratoria

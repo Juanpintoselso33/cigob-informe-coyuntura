@@ -43,20 +43,36 @@ def test_todo_componente_puntuable_entra_a_la_matriz():
     )
 
 
-def test_motos_no_es_redundante_con_el_icc():
+def test_el_componente_de_vehiculos_no_es_redundante_con_el_icc():
     """La pregunta que la auditoría pidió responder empíricamente.
 
     Planteaba que `patentamiento_motos` podía ser en gran medida redundante con
-    el ICC. No lo es: queda muy por debajo del umbral en niveles y también en
-    cambios mes a mes. Si algún día superara el umbral, la recomendación de la
-    auditoría pasaría a estar respaldada y habría que revisarlo.
+    el ICC —los dos podían estar midiendo humor del consumidor y no acceso—. No
+    lo era, y la pregunta sigue viva sobre el componente que la heredó: desde
+    ADR-0224 el que puntúa es `motorizacion_total`, que suma autos y motos.
+
+    Si algún día superara el umbral, la recomendación de la auditoría pasaría a
+    estar respaldada y habría que revisarlo.
     """
     m = ve.matriz_redundancia_itvc()
-    r = m["matriz"]["patentamiento_motos"]["icc_utdt"]
+    r = m["matriz"]["motorizacion_total"]["icc_utdt"]
     assert abs(r) < m["umbral"], (
-        f"motos ↔ ICC alcanzó |r|={abs(r):.3f} ≥ {m['umbral']}: la hipótesis de "
-        f"la auditoría pasaría a estar respaldada"
+        f"motorización ↔ ICC alcanzó |r|={abs(r):.3f} ≥ {m['umbral']}: la "
+        f"hipótesis de la auditoría pasaría a estar respaldada"
     )
+
+
+def test_el_par_autos_motos_ya_no_esta_en_la_matriz():
+    """ADR-0223 tuvo que declarar el par autos↔motos como el único del cinturón
+    por encima de 0,7 al destendenciar (+0,801), y con un motivo incómodo: daba
+    tan alto porque el techo aplanaba a motos y comparaba a autos contra una
+    recta. ADR-0224 lo disuelve fundiendo los dos en un componente.
+
+    Si el par volviera a aparecer, volvería con él ese artefacto de lectura.
+    """
+    m = ve.matriz_redundancia_itvc()
+    assert "patentamiento_motos" not in m["matriz"]
+    assert "patentamiento_autos" not in m["matriz"]
 
 
 def test_el_acoplamiento_en_niveles_no_se_publica_solo():

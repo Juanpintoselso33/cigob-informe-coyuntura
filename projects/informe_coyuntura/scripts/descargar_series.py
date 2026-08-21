@@ -2017,19 +2017,60 @@ def fetch_trabajo_independiente_serie() -> list:
             if ym >= "2019-01"]
 
 
+# El colector de motorización baja DOS CSV de la DNRPA y la serie de población
+# del INDEC, y de ahí salen TRES series de este módulo. Sin esta caché de
+# corrida, `descargar_series.py` los bajaría tres veces por corrida y el
+# `main.py` del cinturón una cuarta.
+_MOTORIZACION_CACHE = {}
+
+
+def _motorizacion() -> dict:
+    if not _MOTORIZACION_CACHE:
+        sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+        from collectors.motorizacion import fetch_motorizacion
+        _MOTORIZACION_CACHE["d"] = fetch_motorizacion()
+    return _MOTORIZACION_CACHE["d"]
+
+
+def fetch_motorizacion_total_serie() -> list:
+    """Motorización total: autos + motos 0km per cápita, acumulado móvil de 12
+    meses, índice base 100 = promedio del 4T-2023.
+
+    Es el componente que PUNTÚA en el ITCIS desde ADR-0224. Reemplaza a
+    `patentamiento_motos` y `patentamiento_autos`, que dejan de puntuar y pasan
+    a ser los Componentes A y B de la matriz A×B que explica el color.
+
+    Llega YA rebaseada, igual que la de carnes: entra por `SERIES_REBASEADAS` y
+    `itvc.py` toma su último punto sin volver a transformarla."""
+    return [[f"{ym}-01", v] for ym, v in sorted(_motorizacion()["serie"].items())]
+
+
 def fetch_patentamiento_autos_serie() -> list:
-    """Inscripciones iniciales de automotores por mes, total país (DNRPA).
-    MISMA serie que la card y que el índice (ADR-0223): el colector devuelve
-    el histórico y la card es su último punto.
+    """Inscripciones iniciales de automotores por mes (DNRPA), sin Tierra del
+    Fuego. Componente B de la matriz A×B (ADR-0224): ya no puntúa, pero se
+    sigue publicando porque es la mitad de la explicación del color.
 
     Arranca en nov-2022 —11 meses antes de la base— para que las ventanas
-    móviles de 12 meses que terminan en oct/nov/dic-2023 estén completas, igual
-    que la de motos (ADR-0024). El archivo de la DNRPA llega hasta el año 2000;
-    el recorte lo hace el colector."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    from collectors.dnrpa_autos import fetch_patentamiento_autos
-    d = fetch_patentamiento_autos()
-    return [[f"{ym}-01", v] for ym, v in sorted(d["serie"].items())]
+    móviles de 12 meses que terminan en oct/nov/dic-2023 estén completas
+    (ADR-0024). El archivo de la DNRPA llega hasta el año 2000; el recorte lo
+    hace el colector."""
+    return [[f"{ym}-01", v] for ym, v in sorted(_motorizacion()["serie_autos"].items())]
+
+
+def fetch_patentamiento_motos_serie() -> list:
+    """Inscripciones iniciales de motovehículos por mes (DNRPA), sin Tierra del
+    Fuego. Componente A de la matriz A×B (ADR-0224).
+
+    Cambió de fuente en ADR-0224: era CAFAM, que publica sólo el total país y
+    obligaba a acumular la serie mes a mes en un store local. La DNRPA es el
+    registro mismo, publica el histórico entero en cada corrida y —lo que
+    decide— trae la apertura por jurisdicción sin la cual el artefacto de
+    Tierra del Fuego no se puede sacar.
+
+    Las dos fuentes miden lo mismo y está verificado: sobre los catorce meses
+    a jul-2026, el cociente DNRPA/CAFAM está entre 1,000 y 1,006. CAFAM es la
+    cámara y republica el dato del registro, con un redondeo de días de corte."""
+    return [[f"{ym}-01", v] for ym, v in sorted(_motorizacion()["serie_motos"].items())]
 
 
 def fetch_empleadores_pyme_serie() -> list:
@@ -2273,7 +2314,6 @@ def fetch_inseguridad_serie() -> list:
 
 
 CARNE_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "carne_serie.json"
-MOTOS_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "motos_serie.json"
 
 
 # Faena mensual en toneladas de las tres carnes (INDEC, vía la API de series de
@@ -2420,98 +2460,6 @@ def fetch_carne_serie() -> list:
     return [[f"{ym}-01", v] for ym, v in sorted(cache.items()) if v]
 
 
-def fetch_motos_serie() -> list:
-    """Serie mensual de patentamientos de motovehículos vía la API de CAFAM
-    (la misma fuente del colector; expone meses históricos — verificado
-    jul-2026). Desde nov-2022: 11 meses antes de la línea base del ITVC para
-    que el rebase por acumulado móvil de 12 meses (ADR-0024, motos tienen
-    estacionalidad fuerte: enero ≈ 2× junio) tenga ventanas completas en el
-    4T-2023. [[YYYY-MM-01, unidades]]."""
-    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-    from config import CAFAM_API
-    hoy = date.today()
-    fin = (hoy.replace(day=1) - timedelta(days=1))     # último mes completo
-    out = []
-    y, m = 2022, 11
-    while (y, m) <= (fin.year, fin.month):
-        try:
-            r = requests.get(CAFAM_API, params={"month_start": m, "month_end": m,
-                                                "year": y, "type": "TODOS"},
-                             headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
-            r.raise_for_status()
-            total = sum(p["count"] for p in r.json().get("provinces", []))
-            if total > 0:
-                out.append([f"{y}-{m:02d}-01", total])
-        except Exception as e:
-            print(f"  [WARN] motos serie {y}-{m:02d}: {e}")
-        m += 1
-        if m > 12:
-            m = 1; y += 1
-    return out
-
-
-def fetch_motos_serie_cached() -> list:
-    """Serie mensual de motos con cache historico persistente."""
-    import importlib.util
-    config_path = Path(__file__).parent / "vida_cotidiana" / "config.py"
-    spec = importlib.util.spec_from_file_location("_vida_cotidiana_config", config_path)
-    vida_config = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(vida_config)
-    CAFAM_API = vida_config.CAFAM_API
-
-    def _load_cache() -> dict:
-        try:
-            data = json.loads(MOTOS_SERIE_STORE.read_text(encoding="utf-8-sig"))
-            if isinstance(data, dict):
-                return {k: int(v) for k, v in data.items() if v is not None}
-        except (OSError, json.JSONDecodeError, TypeError, ValueError):
-            pass
-
-        cache = {}
-        csv_path = OUTPUT_DIR / "vida_cotidiana.csv"
-        try:
-            with open(csv_path, newline="", encoding="utf-8-sig") as f:
-                for row in csv.DictReader(f):
-                    if row.get("indicador") == "patentamiento_motos":
-                        ym = str(row.get("fecha", ""))[:7]
-                        try:
-                            cache[ym] = int(float(row.get("valor") or 0))
-                        except ValueError:
-                            continue
-        except OSError:
-            pass
-        return cache
-
-    cache = _load_cache()
-    hoy = date.today()
-    fin = hoy.replace(day=1) - timedelta(days=1)
-    y, m = 2022, 11
-    while (y, m) <= (fin.year, fin.month):
-        ym = f"{y}-{m:02d}"
-        if ym not in cache:
-            try:
-                r = requests.get(CAFAM_API, params={"month_start": m, "month_end": m,
-                                                    "year": y, "type": "TODOS"},
-                                 headers=HTTP_HEADERS, timeout=min(HTTP_TIMEOUT, 10))
-                r.raise_for_status()
-                total = sum(p["count"] for p in r.json().get("provinces", []))
-                if total > 0:
-                    cache[ym] = total
-                    MOTOS_SERIE_STORE.write_text(
-                        json.dumps(cache, indent=2, ensure_ascii=False), encoding="utf-8")
-            except Exception as e:
-                print(f"  [WARN] motos serie {ym}: {e}")
-        m += 1
-        if m > 12:
-            m = 1; y += 1
-    if cache:
-        MOTOS_SERIE_STORE.write_text(
-            json.dumps({k: cache[k] for k in sorted(cache)}, indent=2, ensure_ascii=False),
-            encoding="utf-8")
-    return [[f"{ym}-01", cache[ym]] for ym in sorted(cache)]
-
-
-# Componentes transformados del ITVC-B100 (100 = promedio 4T-2023, ADR-0018)
 VIDA_DERIVADAS += [
     ("itvc_alimentos", "índice (100 = 4T-2023)", "INDEC IPC Alimentos + IPC general (elab. CIGOB)", fetch_itvc_alimentos),
     ("itvc_tarifas", "índice (100 = 4T-2023)", "INDEC IPC Regulados + RIPTE (elab. CIGOB)", fetch_itvc_tarifas),
@@ -2534,12 +2482,26 @@ VIDA_DERIVADAS += [
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
     ("mora_familias", "% de cartera irregular (familias)", "BCRA — Informe sobre Bancos (personales + tarjetas)", fetch_mora_serie),
-    ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie_cached),
-    # ADR-0223: el espejo de las motos. A diferencia de CAFAM —que se consulta
-    # mes a mes y por eso necesita cache— la DNRPA publica el histórico entero
-    # en un CSV, así que no hay nada que acumular: cada corrida lo rebaja completo.
+    # ADR-0224: las tres salen del MISMO colector y de la misma descarga.
+    # `motorizacion_total` es la que puntúa; autos y motos son los Componentes
+    # A y B de la matriz que explica su color, y por eso se siguen publicando
+    # aunque ya no armen índice.
+    #
+    # Las tres excluyen Tierra del Fuego, y va escrito en la línea de fuente
+    # porque es lo que el lector ve: la provincia patentó 29.005 motos en 2025
+    # contra 816 en 2023: un evento registral de su régimen de promoción, no
+    # 29.000 hogares fueguinos comprando una moto.
+    ("motorizacion_total", "índice base 100 = 4T-2023",
+     "DNRPA — inscripciones iniciales de automotores y motovehículos, "
+     "per cápita (INDEC), sin Tierra del Fuego",
+     fetch_motorizacion_total_serie),
+    ("patentamiento_motos", "unidades/mes",
+     "DNRPA — inscripciones iniciales de motovehículos (CSV mensual por "
+     "jurisdicción), sin Tierra del Fuego",
+     fetch_patentamiento_motos_serie),
     ("patentamiento_autos", "unidades/mes",
-     "DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)",
+     "DNRPA — inscripciones iniciales de automotores (CSV mensual por "
+     "jurisdicción), sin Tierra del Fuego",
      fetch_patentamiento_autos_serie),
     # inseguridad = IVI mensual (ADR-0032); el SNIC anual sigue como serie de
     # contraste bajo clave propia (sin card: alimenta la ficha y validaciones)

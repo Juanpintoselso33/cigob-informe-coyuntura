@@ -14,7 +14,7 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `patentamiento_motos`, `patentamiento_autos` |
+| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `motorizacion_total` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias` |
 | `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `pluriempleo`, `trabajo_independiente` |
@@ -80,32 +80,18 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card · [ADR-0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) Puntúa el acceso total a proteína, no la carne vacuna
 
-#### Patentamiento de motos
+#### Motorización total
 
-`patentamiento_motos`
-
-| | |
-|---|---|
-| Peso dentro de la dimensión | 2% |
-| Peso efectivo en el índice | **0.5%** |
-| Procedencia del ancla | `conceptual` — móvil 12m rebaseado a 4T-2023 (ADR-0024); el tope conceptual de 140 le recorta el boom, no lo calibra |
-
-**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
-
-**Lo gobiernan**: [ADR-0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) El espejo de las motos: el patentamiento de autos
-
-#### Patentamiento de autos
-
-`patentamiento_autos`
+`motorizacion_total`
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 2% |
-| Peso efectivo en el índice | **0.6%** |
+| Peso dentro de la dimensión | 4% |
+| Peso efectivo en el índice | **1.1%** |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) El espejo de las motos: el patentamiento de autos
+**Lo gobiernan**: [ADR-0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) Puntúa la motorización total, no cada vehículo por su lado
 
 ### Dimensión `precios` (25%)
 
@@ -333,7 +319,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-33 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+34 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -368,3 +354,4 @@ histórica.
 - [0218](../adr/0218-el-cierre-de-pymes-se-mide-con-la-srt.md) — El cierre de PyMEs se mide con la SRT, no con la producción industrial
 - [0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) — La contracara del cierre: el trabajo independiente
 - [0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) — El espejo de las motos: el patentamiento de autos
+- [0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) — Puntúa la motorización total, no cada vehículo por su lado

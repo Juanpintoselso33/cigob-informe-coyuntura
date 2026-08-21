@@ -488,7 +488,11 @@ def test_vida_itvc_reconcilia():
     # 18 el mismo día (ADR-0223: entra patentamiento_autos, el espejo de las
     # motos — con motos solas, subir el patentamiento siempre se leía como
     # mejora, y la moto es el sustituto barato del auto).
-    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
+    # 17 desde 2026-08-21 (ADR-0224: los dos vehículos se funden en
+    # motorizacion_total. El espejo de ADR-0223 duró un día como componente
+    # propio: la pregunta que planteaba —¿compran más o bajan de categoría?— se
+    # contesta con la SUMA, no con las dos series compitiendo por el signo).
+    assert len(en_indice) == 17, f"esperaba 17 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

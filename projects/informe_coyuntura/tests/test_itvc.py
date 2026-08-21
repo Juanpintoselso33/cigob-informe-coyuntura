@@ -33,7 +33,10 @@ EJEMPLO = {
     "inseguridad": 104.0,
     "sentimiento_digital": 110.0,
     "consumo_carnes_total": 92.0,   # ADR-0217: puntúa el total, no la vacuna
-    "patentamiento_motos": 130.0,
+    # ADR-0224: era `patentamiento_motos`. Se conserva el MISMO valor del doc
+    # para que la aritmética del ejemplo siga siendo comparable: lo que cambió
+    # es qué componente lo lleva, no el número.
+    "motorizacion_total": 130.0,
 }
 
 
@@ -53,7 +56,10 @@ def test_itvc_reproduce_ejemplo():
     # después de motos) se fue a empleo, así que lo que queda promedia más
     # bajo. El EJEMPLO tampoco declara `pobreza_nowcast`, así que la
     # dimensión renormaliza sobre los tres que quedan.
-    assert dims["ingresos"]["puntaje"] == 89.0
+    # ADR-0224: 89,0 → 90,3. Motos y autos se fundieron en un componente que
+    # pesa la suma de los dos, así que el 130,0 del ejemplo entra con 0,0396 en
+    # vez de con 0,0196 y tira la dimensión para arriba.
+    assert dims["ingresos"]["puntaje"] == 90.3
     assert dims["precios"]["puntaje"] == 75.3
     # ADR-0154: la dimensión queda apoyada en la mora sola, así que su puntaje
     # ES el índice de la mora. Antes promediaba 0,5×118 + 0,5×60 = 89,0 con
@@ -75,7 +81,11 @@ def test_itvc_reproduce_ejemplo():
     # registrado) y la renormalización opera DENTRO de cada dimensión: con
     # huecos, el agrupamiento sí cambia el resultado. La corrida real, con
     # los dieciséis presentes, dio 90,7 antes y 90,7 después.
-    assert r["valor"] == 86.9
+    # ADR-0224: 86,9 → 87,2, por lo mismo. El ejemplo declara el componente de
+    # vehículos con 130,0 y ahora pesa el doble, así que sobre una dimensión a
+    # la que le faltan componentes el efecto se amplifica. La corrida real dio
+    # 90,7 antes y 90,8 después.
+    assert r["valor"] == 87.2
     assert r["banda"] == "deterioro_moderado"
     assert r["ajustes_aplicados"] == []
 
@@ -105,11 +115,13 @@ def test_pesos_del_documento():
     # índice — 17,06%, 9,31%, 1,12% y 0,56%.
     # ADR-0223: entra `patentamiento_autos` con 2%, el mismo peso que motos, y
     # los cuatro previos ceden ×0,98 conservando su orden relativo.
+    # ADR-0224: motos y autos se funden en `motorizacion_total`, que toma la
+    # SUMA de los dos (0,0196 + 0,0200). Los otros tres no se tocan: el cambio
+    # es sólo del bloque de vehículos.
     assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.5959,
                                             "pobreza_nowcast": 0.3253,
                                             "consumo_carnes_total": 0.0392,
-                                            "patentamiento_motos": 0.0196,
-                                            "patentamiento_autos": 0.0200}
+                                            "motorizacion_total": 0.0396}
     assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
     # ADR-0154: sale endeudamiento_familiar (redundante, winsorizado y de signo
     # equívoco) y la mora sostiene sola la dimensión.
@@ -173,7 +185,7 @@ def test_escala_interpretacion():
 
 
 def test_renormalizacion_ante_faltantes():
-    """Sin carnes ni motos (fuentes sin dato), la dimensión que renormaliza es
+    """Sin carnes ni vehículos (fuentes sin dato), la dimensión que renormaliza es
     INGRESOS: ADR-0115 los movió ahí desde la vieja dimensión de confianza.
 
     Desde ADR-0214 queda apoyada en brecha y pobreza —`informalidad` se fue a
@@ -182,7 +194,7 @@ def test_renormalizacion_ante_faltantes():
     siendo lo que este test comprueba, y lo verifica la suma de efectivos."""
     valores = dict(EJEMPLO)
     valores["consumo_carnes_total"] = None
-    valores["patentamiento_motos"] = None
+    valores["motorizacion_total"] = None
     r = itvc.calcular_itvc(valores)
     ing = r["dimensiones"]["ingresos"]
     assert set(ing["indicadores"]) == {"brecha_salario_cbt"}
@@ -200,7 +212,7 @@ def test_ajuste_manual_del_analista():
     # EJEMPLO no trae alquiler_real (ADR-0111), así que precios renormaliza
     # sobre los dos componentes del doc: 0,4375×95 + 0,5625×80 = 86,6
     assert r["dimensiones"]["precios"]["puntaje"] == 86.6
-    assert r["valor"] == 89.7
+    assert r["valor"] == 90.0
 
 
 def test_sin_datos_devuelve_none():

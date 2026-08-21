@@ -63,7 +63,7 @@ def _add(out, key, valor, unidad, fuente, fecha, **extra):
 def build_vida(raw):
     """Mapea el JSON crudo (por fuente) a indicadores estilo informe.json."""
     indec = raw.get("indec", {}); bcra = raw.get("bcra", {})
-    utdt = raw.get("utdt", {}); cafam = raw.get("cafam", {})
+    utdt = raw.get("utdt", {})
     ciccra = raw.get("ciccra", {}); snic = raw.get("snic", {})
     trends = raw.get("trends", {})
     ts = raw.get("metadata", {}).get("timestamp", "")[:10]
@@ -175,17 +175,35 @@ def build_vida(raw):
                       "de esa ventana). El gráfico y el puntaje del ITCIS usan la "
                       "canasta mensual de ventana fija desde 2021, cuyo cociente "
                       "contra el 4T-2023 es inmune a la renormalización de Trends."))
-    motos = cafam.get("patentamiento_motos", {})
-    _add(out, "patentamiento_motos", motos.get("valor"),
-         "unidades", "CAFAM", motos.get("fecha"))
-    # ADR-0223: el espejo de las motos. Se llama SIEMPRE (aunque el colector
-    # haya fallado y venga None) por el mismo motivo que sentimiento_digital:
-    # una clave ausente es invisible para `_carry_forward`, que sólo repara las
-    # que ya están con valor None.
-    autos = (raw.get("dnrpa_autos") or {}).get("patentamiento_autos", {})
+    # ADR-0224: el que PUNTÚA es la motorización total —autos + motos 0km per
+    # cápita—, no cada vehículo por su lado. Las dos patas se siguen relevando
+    # y se agregan acá abajo porque son los Componentes A y B de la matriz A×B
+    # que explica el color; se descartan como card DESPUÉS de `_semaforos`.
+    #
+    # Los tres se llaman SIEMPRE (aunque el colector haya fallado y vengan
+    # None) por el mismo motivo que sentimiento_digital: una clave ausente es
+    # invisible para `_carry_forward`, que sólo repara las que ya están con
+    # valor None.
+    moto = raw.get("motorizacion") or {}
+    mt = moto.get("motorizacion_total", {})
+    _add(out, "motorizacion_total", mt.get("valor"),
+         mt.get("unidad") or "vehículos 0km por cada 1.000 habitantes (12 meses)",
+         mt.get("fuente") or ("DNRPA — inscripciones iniciales de automotores y "
+                              "motovehículos, per cápita (INDEC)"),
+         f"{mt['fecha']}-01" if mt.get("fecha") else None)
+    # La composición viaja COLGADA del indicador, como las `variaciones` de la
+    # carne: meterla como clave suelta del dict la convertiría en un indicador
+    # fantasma.
+    if out.get("motorizacion_total") is not None and mt.get("composicion"):
+        out["motorizacion_total"]["composicion"] = mt["composicion"]
+    autos = moto.get("patentamiento_autos", {})
     _add(out, "patentamiento_autos", autos.get("valor"),
          "unidades", "DNRPA — inscripciones iniciales de automotores",
          f"{autos['fecha']}-01" if autos.get("fecha") else None)
+    motos = moto.get("patentamiento_motos", {})
+    _add(out, "patentamiento_motos", motos.get("valor"),
+         "unidades", "DNRPA — inscripciones iniciales de motovehículos",
+         f"{motos['fecha']}-01" if motos.get("fecha") else None)
     return out
 
 
@@ -329,7 +347,6 @@ SCORING = {
     "mortalidad_pymes":    (lambda v: 5 - v,            "+5% → 0 · 0% → 5 · −5% → 10 (IPI m/m)"),
     "despacho_cemento":    (lambda v: (180 - v) / 10,   "180 → 0 · 130 → 5 · 80 → 10 (índice ISAC)"),
     "pluriempleo":         (lambda v: v - 5,            "5% → 0 · 10% → 5 · 15% → 10 (subocupación demandante)"),
-    "patentamiento_motos": (lambda v: (70_000 - v) / 5000, "70.000 → 0 · 45.000 → 5 · 20.000 → 10 (unidades/mes)"),
     "icc_utdt":            (lambda v: (60 - v) / 3,     "60 → 0 · 45 → 5 · 30 → 10 (índice de confianza)"),
     # sentimiento_digital lo puntúa VIDA COTIDIANA. Vivía acá abajo del rótulo
     # de espíritu de época porque el cinturón lo espejaba; el cinturón salió
@@ -1829,6 +1846,68 @@ def _por_que_carne(vacuna, total, variaciones):
             f"Conviene revisar el dato de origen antes de leerlo.")
 
 
+def _por_que_motorizacion(composicion):
+    """La matriz A×B de la ficha de motorización, dicha en una frase.
+
+    La ficha quiere distinguir dos cosas que el patentamiento de motos solo no
+    puede separar, y que fueron el desacuerdo editorial que originó ADR-0224:
+
+    - que la gente pase del auto a la moto porque no sostiene el auto
+      (sustitución descendente, empobrecimiento), o
+    - que compre su primera moto sin haber tenido nunca un auto (acceso).
+
+    Las dos empujan el patentamiento de motos hacia arriba. Lo que las separa
+    es el TOTAL: si fuera sustitución, cada moto que entra tendría un auto que
+    sale y el total estaría plano. El eje A es entonces la dirección del total,
+    y el eje B el corrimiento de la mezcla.
+
+    Esto NO cambia el color ni el aporte al índice —el color sale del nivel
+    rebaseado, como en toda card del cinturón—; entra como el `por_que`, que es
+    el campo que explica un color. Mismo criterio que `_por_que_carne`.
+    """
+    if not composicion:
+        return None
+    ratio = composicion.get("ratio_motos")
+    ratio_base = composicion.get("ratio_motos_base")
+    var_t = composicion.get("total_var")
+    var_a = composicion.get("autos_var")
+    var_m = composicion.get("motos_var")
+    if None in (ratio, ratio_base, var_t, var_a, var_m):
+        return None
+
+    corrimiento = ratio - ratio_base
+    # En millones el total y en miles las dos patas: "1352 mil vehículos" es
+    # un número que nadie dice en voz alta.
+    base = (f"en los últimos doce meses se patentaron "
+            f"{coma(round(composicion['total_12m'] / 1_000_000, 2))} millones de "
+            f"vehículos 0 km ({coma(round(var_t, 1))}% interanual): "
+            f"{coma(round(composicion['autos_12m'] / 1000))} mil autos "
+            f"({coma(round(var_a, 1))}%) y "
+            f"{coma(round(composicion['motos_12m'] / 1000))} mil motos "
+            f"({coma(round(var_m, 1))}%). Las motos son el "
+            f"{coma(round(ratio, 1))}% de lo que se patenta, contra "
+            f"{coma(round(ratio_base, 1))}% al arranque del mandato")
+
+    sube_total = var_t > 0
+    mas_motos = corrimiento > 0
+
+    if sube_total and mas_motos:
+        return (f"Más acceso, con la mezcla corriéndose a la moto: {base}. "
+                f"El total sube, así que no es que los hogares bajen del auto a "
+                f"la moto —eso dejaría el total plano—: entran hogares que "
+                f"antes no patentaban nada. Que entren en dos ruedas y no en "
+                f"cuatro es el dato que conviene mirar aparte.")
+    if not sube_total and mas_motos:
+        return (f"Sustitución descendente: {base}. El total cae mientras la "
+                f"mezcla se corre a la moto, que es el patrón de hogares que "
+                f"dejan el auto y no de hogares que acceden por primera vez.")
+    if sube_total and not mas_motos:
+        return (f"Más acceso y mezcla estable o mejor: {base}. Sube el total y "
+                f"la moto no gana participación.")
+    return (f"Menos acceso: {base}. Cae el total sin que la moto compense, o "
+            f"sea que se patenta menos de todo.")
+
+
 def _semaforos(informe):
     """Adjunta el bloque `semaforo` a cada indicador, dimensión e índice."""
     for cinturon, bloque in informe["cinturones"].items():
@@ -1869,6 +1948,13 @@ def _semaforos(informe):
                 vacuna_ind = bloque["indicadores"].get("consumo_carne") or {}
                 por_que = _por_que_carne(vacuna_ind.get("valor"), ind.get("valor"),
                                          ind.get("variaciones"))
+                if por_que:
+                    ind["semaforo"]["por_que"] = por_que
+            # Lo mismo para la motorización (ADR-0224): el color dice "subió
+            # contra el arranque" y nada más, que es justo la lectura ambigua
+            # que el editorial discutía. La matriz A×B no lo cambia: lo explica.
+            if ikey == "motorizacion_total":
+                por_que = _por_que_motorizacion(ind.get("composicion"))
                 if por_que:
                     ind["semaforo"]["por_que"] = por_que
 
@@ -2006,8 +2092,21 @@ def aplicar_scoring(informe, series):
     # Se descarta DESPUÉS de `_semaforos` justamente porque la matriz la lee
     # ahí. Sacarla antes deja al total sin su explicación y nada falla en voz
     # alta: probado con VIDA_OCULTOS, el `por_que` quedó vacío y el gate pasó.
+    #
+    # ADR-0224: lo mismo con las dos patas de la motorización. El que puntúa es
+    # el total; autos y motos son los Componentes A y B de su matriz A×B, o sea
+    # diagnóstico, y su valor se lee ahí adentro.
+    #
+    # OJO a la diferencia con la vacuna, que es la razón de que esto esté
+    # escrito: la matriz de la CARNE lee el indicador hermano, así que depende
+    # del orden y romperlo no hace ruido. La de la MOTORIZACIÓN no — su
+    # composición viaja colgada del propio total, que es justamente para que no
+    # dependa de este `pop`. Van juntas acá abajo por consistencia, no porque
+    # las dos lo necesiten; si alguien mueve este bloque, la carne se rompe en
+    # silencio y la motorización no.
     vida = informe["cinturones"].get("vida_cotidiana", {})
-    vida.get("indicadores", {}).pop("consumo_carne", None)
+    for descartada in ("consumo_carne", "patentamiento_autos", "patentamiento_motos"):
+        vida.get("indicadores", {}).pop(descartada, None)
     return informe
 
 

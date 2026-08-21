@@ -105,11 +105,22 @@ DIMENSIONES_ITVC = {
         # motos está clavada ahí desde ene-2026, así que el techo borra el tramo
         # en que las dos se separan. Es el único par del cinturón por encima de
         # 0,7 al destendenciar y está declarado en el ADR, con el motivo.
+        # ADR-0224: los dos componentes de vehículos se funden en
+        # `motorizacion_total`, que toma su peso combinado (0,0196 + 0,0200)
+        # SIN tocar a los otros tres. Autos y motos siguen relevándose: son los
+        # Componentes A y B de la matriz A×B que explica el color, igual que la
+        # vacuna dentro del total de carnes.
+        #
+        # El motivo es el mismo que en ADR-0217. Con las dos series por
+        # separado, una suba de motos admite dos lecturas opuestas —el hogar
+        # accedió a su primer vehículo, o bajó de categoría— y el índice no
+        # tiene con qué distinguirlas. El total sí: si fuera sustitución
+        # descendente estaría plano, porque cada moto que entra tendría un auto
+        # que sale. Sube 7,5% en la ventana en que las dos series se separan.
         "indicadores": {"brecha_salario_cbt": 0.5959,
                         "pobreza_nowcast": 0.3253,
                         "consumo_carnes_total": 0.0392,
-                        "patentamiento_motos": 0.0196,
-                        "patentamiento_autos": 0.0200},
+                        "motorizacion_total": 0.0396},
     },
     "precios": {
         "nombre": "Presión de precios",
@@ -369,6 +380,37 @@ WINSOR_TOPE = 140.0   # techo de componentes B100 (ADR-0033) — SOLO techo:
                            # ilimitada; las crisis NO se recortan — se señalizan
                            # con el flag de dimensión crítica (ADR-0020)
 
+# ── La excepción al techo, ACOTADA a un componente (ADR-0224) ────────────────
+#
+# El techo de 140 rige para todos los componentes y está declarado en la ficha
+# del ITCIS. Esto NO lo levanta: exime a uno solo, con dos motivos medidos.
+#
+# 1. A su peso, el techo protege contra algo que no puede pasar.
+#    `motorizacion_total` pesa 1,11% del índice. Lo máximo que puede comprar
+#    por encima del techo son 0,33 puntos de ITCIS, y eso exigiría que el
+#    componente llegara a 170. El techo existe para que un boom no compre
+#    compensación ILIMITADA en una agregación lineal; acá la compensación ya
+#    está acotada por el peso, que es el mecanismo del que el techo es un
+#    sustituto grueso.
+#
+# 2. Contra la base 4T-2023, 140 no marca un outlier: marca un año normal.
+#    El 4T-2023 fue el fondo del congelamiento previo a la devaluación, o sea
+#    una base DEPRIMIDA. Medido sobre 2011-2019 y rebaseado a esa misma base,
+#    el 64% de los meses del total de motorización habrían superado 140 (y el
+#    84% de los de autos solos), con máximos de 206,7 para el total y 213,4
+#    para autos. El criterio del JRC que ADR-0033 cita recorta un puñado de
+#    valores extremos —del orden del percentil 95—, no dos tercios de la
+#    distribución. Winsorizar acá no controla outliers: censura el rango
+#    normal, y convierte al componente en una constante justo cuando empieza a
+#    decir algo.
+#
+# Lo que esta excepción NO decide: si el techo de 140 sigue siendo el número
+# correcto PARA EL RESTO de los componentes, dado que todos comparten la misma
+# base deprimida. El problema es más grande que este componente y merece su
+# propio ADR; acá no se resuelve. `sentimiento_digital` y todos los demás
+# siguen con techo.
+WINSOR_EXENTOS = frozenset({"motorizacion_total"})
+
 # Serie transformada (ya rebaseada en descargar_series) → indicador del cinturón
 SERIES_REBASEADAS = {
     "itvc_alimentos":     "ipc_alimentos",
@@ -379,6 +421,9 @@ SERIES_REBASEADAS = {
     # Reconstruida desde la faena de las tres carnes: ya llega en base 100
     # = 4T-2023, así que no se re-rebasea (ADR-0217).
     "consumo_carnes_total": "consumo_carnes_total",
+    # Autos + motos per cápita por acumulado móvil 12m: el colector ya la
+    # entrega en base 100 = 4T-2023 (ADR-0224), como la de carnes.
+    "motorizacion_total": "motorizacion_total",
 }
 
 
@@ -478,20 +523,15 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # pérdida de acceso a proteína es el falso positivo que la ficha vino a
     # desarmar.
     #
-    # Motos (CAFAM) e inseguridad (SNIC anual: su serie
-    # emite el total del año en YYYY-12, así el 4T-2023 resuelve al año 2023 —
-    # la excepción declarada del doc): rebase de la serie reconstruida.
-    # Motos por acumulado móvil 12m (ADR-0024): el flujo mensual crudo tiene
-    # estacionalidad fuerte y contra la base fija 4T-2023 mide calendario.
-    idx["patentamiento_motos"] = (rebase_movil12(series, "patentamiento_motos")
-                                  or rebase_de_serie(series, "patentamiento_motos"))
-    # ADR-0223: autos, con la MISMA transformación que motos y por el mismo
-    # motivo medido — la estacionalidad del flujo crudo es incluso más fuerte
-    # (enero pesa 1,36 veces el mes promedio y diciembre 0,57). Sin serie no
-    # hay fallback a baseline como en motos, y es deliberado: la DNRPA publica
-    # el histórico completo en cada corrida, así que o está entero o no está.
-    idx["patentamiento_autos"] = (rebase_movil12(series, "patentamiento_autos")
-                                  or rebase_de_serie(series, "patentamiento_autos"))
+    # ADR-0224: motos y autos YA NO arman índice. El que puntúa es
+    # `motorizacion_total`, que entra por SERIES_REBASEADAS más arriba porque
+    # el colector ya lo entrega en base 100 = 4T-2023 —incluida la ventana
+    # móvil de 12 meses de ADR-0024, que ahí se aplica a la suma de los dos
+    # vehículos y no a cada uno—. Las dos series se siguen bajando: son los
+    # Componentes A y B de la matriz A×B que explica el color.
+    #
+    # Inseguridad (SNIC anual: su serie emite el total del año en YYYY-12, así
+    # el 4T-2023 resuelve al año 2023 — la excepción declarada del doc).
     # IVI (ADR-0032): base = ene-2024, la primera medición tras la reanudación
     # de la encuesta (suspendida 2020-2023; su ventana de 12 meses captura
     # mayormente el año PRE-mandato, así que aproxima bien el arranque).
@@ -505,8 +545,12 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # Fallback: constante 4T-2023 documentada en itvc_baselines.json (con
     # fuente) × valor actual del indicador, si la serie no está disponible.
     bas = baselines or {}
-    for ikey, invertido in (("inseguridad", True),
-                            ("patentamiento_motos", False)):
+    # ADR-0224: `patentamiento_motos` salió de este bucle junto con su condición
+    # de componente. El fallback a baseline existía porque CAFAM se consulta mes
+    # a mes y podía no contestar; la motorización total viene de un CSV que la
+    # DNRPA publica entero en cada corrida, así que o está completa o no está —
+    # el mismo criterio deliberado que ya tenía autos.
+    for ikey, invertido in (("inseguridad", True),):
         if idx[ikey] is not None:
             continue
         b = (bas.get(ikey) or {}).get("valor")
@@ -514,14 +558,15 @@ def indices_desde_series(vida_ind, series, baselines=None):
         idx[ikey] = (round((b / v if invertido else v / b) * 100.0, 1)
                      if b and isinstance(v, (int, float)) and v else None)
     # WINSORIZACIÓN ASIMÉTRICA (ADR-0033, tratamiento de outliers JRC): los
-    # componentes B100 se acotan al TECHO de 140 — un boom puntual (motos
-    # 166,7: +67% vs base) no debe comprar compensación ilimitada en la
-    # agregación lineal. SIN piso deliberadamente: las crisis (endeudamiento
-    # 31,7) no se recortan, se señalizan (flag crítica, ADR-0020). El crudo
-    # queda en _winsor para la nota del modal.
+    # componentes B100 se acotan al TECHO de 140 — un boom puntual no debe
+    # comprar compensación ilimitada en la agregación lineal. SIN piso
+    # deliberadamente: las crisis (endeudamiento 31,7) no se recortan, se
+    # señalizan (flag crítica, ADR-0020). El crudo queda en _winsor para la
+    # nota del modal. Los de WINSOR_EXENTOS se saltean: ver el bloque de
+    # arriba, donde está escrito por qué y por qué no es un permiso general.
     idx["_winsor"] = {}
     for ikey, v in list(idx.items()):
-        if ikey.startswith("_") or v is None:
+        if ikey.startswith("_") or v is None or ikey in WINSOR_EXENTOS:
             continue
         if v > WINSOR_TOPE:
             idx["_winsor"][ikey] = v

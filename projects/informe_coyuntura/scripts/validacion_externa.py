@@ -136,9 +136,11 @@ COMPONENTES = {
     # ADR-0217: puntúa el consumo TOTAL de carnes, no la vacuna sola. Su
     # serie se reconstruye desde la faena del INDEC y YA llega en base 100.
     "consumo_carnes_total":   ("consumo_carnes_total", False, False, True),
-    "patentamiento_motos":    ("patentamiento_motos", False, False, False),
-    # ADR-0223: mismo tratamiento que motos — móvil 12m y rebase a 4T-2023.
-    "patentamiento_autos":    ("patentamiento_autos", False, False, False),
+    # ADR-0224: el que puntúa es la motorización TOTAL —autos + motos per
+    # cápita—, no cada vehículo por su lado. Su serie YA llega en base 100 y
+    # con el móvil de 12 meses aplicado a la suma, así que entra como la de
+    # carnes: sin rebasear y sin pasar por MOVIL12.
+    "motorizacion_total":     ("motorizacion_total", False, False, True),
     "informalidad":           ("informalidad", True, True, False),
     # ADR-0219: invertido, igual que informalidad y pluriempleo.
     "trabajo_independiente":  ("trabajo_independiente", True, False, False),
@@ -149,11 +151,21 @@ COMPONENTES = {
 BASES_PROPIAS = {"inseguridad": ("2024-01",)}   # IVI reanudado ene-2024 (ADR-0032)
 # Componentes que entran por acumulado móvil de 12 meses porque su flujo
 # mensual crudo tiene estacionalidad fuerte y contra una base fija mediría
-# calendario: motos (ADR-0024) y autos (ADR-0223). Tiene que ser la MISMA
-# lista que aplica `itvc.indices_desde_series`, o la serie reconstruida y el
-# índice vivo dejan de ser el mismo índice.
-MOVIL12 = {"patentamiento_motos", "patentamiento_autos"}
+# calendario. Tiene que ser la MISMA lista que aplica
+# `itvc.indices_desde_series`, o la serie reconstruida y el índice vivo dejan
+# de ser el mismo índice.
+#
+# Quedó VACÍA en ADR-0224: los dos que estaban —motos (ADR-0024) y autos
+# (ADR-0223)— se fundieron en `motorizacion_total`, cuyo colector aplica la
+# ventana móvil a la SUMA de los dos y entrega la serie ya rebaseada. Se deja
+# el mecanismo en pie porque la próxima serie de flujo crudo lo va a necesitar.
+MOVIL12: set[str] = set()
 ITVC_TECHO = 140.0                              # winsorización asimétrica (ADR-0033)
+# ADR-0224: la excepción al techo, acotada a un componente. Tiene que ser la
+# MISMA que `itvc.WINSOR_EXENTOS` — si divergen, la serie reconstruida y el
+# índice vivo dejan de ser el mismo índice, que es justo lo que esta
+# reconstrucción existe para poder afirmar.
+TECHO_EXENTOS = frozenset({"motorizacion_total"})
 
 
 def _mensual(serie: list) -> dict:
@@ -244,11 +256,14 @@ def _indices_itvc_por_componente() -> dict:
     for comp, (skey, invertido, anual, ya_rebaseada) in COMPONENTES.items():
         vals = _mensual(series.get(skey) or [])
         if comp in MOVIL12:
-            vals = _movil12(vals)          # ADR-0024/0223: estacionalidad fuerte
+            vals = _movil12(vals)          # estacionalidad fuerte del flujo crudo
         idx = (vals if ya_rebaseada
                else _rebase(vals, invertido, anual, BASES_PROPIAS.get(comp)))
-        # winsorización asimétrica del ADR-0033: mismo techo que publicar
-        indices_por_comp[comp] = {ym: min(v, ITVC_TECHO) for ym, v in idx.items()}
+        # winsorización asimétrica del ADR-0033: mismo techo que publicar, y
+        # la misma excepción acotada del ADR-0224
+        indices_por_comp[comp] = (
+            dict(idx) if comp in TECHO_EXENTOS
+            else {ym: min(v, ITVC_TECHO) for ym, v in idx.items()})
     return indices_por_comp
 
 
@@ -586,12 +601,21 @@ def matriz_redundancia_itvc(umbral: float = 0.7) -> dict:
     al crédito prendario). Ésta es la medición que responde esa pregunta, y de
     paso las mismas dudas sobre `consumo_carne`.
 
+    ADR-0224 cerró esa pregunta por otro lado: motos y autos dejaron de ser
+    componentes y se fundieron en `motorizacion_total`. Con eso desaparece de
+    la matriz el par autos↔motos, que ADR-0223 había tenido que declarar como
+    el único del cinturón por encima de 0,7 al destendenciar (+0,801) — y que
+    daba tan alto justamente porque el techo aplanaba a motos y comparaba a
+    autos contra una recta.
+
     ADVERTENCIA DE LECTURA: los componentes entran winsorizados al techo de
     ADR-0033, igual que en el índice publicado. Un componente clavado en el
     techo pierde varianza, y sin varianza no hay correlación que calcular — su
     fila puede salir vacía o subestimada. Es una limitación real de la medición,
-    no un resultado: hoy afecta a los cinco componentes saturados que la propia
-    auditoría señala en su punto 3.1.
+    no un resultado. `motorizacion_total` es la única excepción (TECHO_EXENTOS,
+    ADR-0224): entra sin recortar, así que su fila SÍ es comparable con las
+    demás — y conviene tenerlo presente al leer la matriz, porque no todas las
+    filas están medidas en las mismas condiciones.
     """
     comp = {i for d in itvc.DIMENSIONES_ITVC.values() for i in d["indicadores"]}
     dims = {k: {"indicadores": d["indicadores"]} for k, d in itvc.DIMENSIONES_ITVC.items()}
