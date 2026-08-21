@@ -197,7 +197,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0125](0125-la-desregulacion-pasa-a-la-fuente-oficial.md) | La desregulación pasa a medirse con la fuente oficial | `desregulacion_normativa` | vigente |
 | [0128](0128-fuerzas-en-la-dotacion-y-peso-del-fal.md) | Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión | `reduccion_estado`, `reforma_laboral` | vigente |
 | [0129](0129-detector-de-novedades-de-privatizaciones.md) | Privatizaciones: se automatiza la detección, no la clasificación | `privatizaciones` | vigente |
-| [0142](0142-el-fal-mide-sus-dos-actos-fundamentales.md) | El FAL mide sus dos actos fundamentales | `fal_modernizacion_laboral` | vigente |
+| [0142](0142-el-fal-mide-sus-dos-actos-fundamentales.md) | El FAL mide sus dos actos fundamentales | `fal_modernizacion_laboral` | superado por [0228](0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) |
 | [0143](0143-la-desregulacion-se-mide-en-articulos.md) | La desregulación se mide en artículos, no en normas | `desregulacion_normativa` | vigente |
 | [0164](0164-familia-del-itcg-la-respuesta-del-capital-privado.md) | Familia del ITCG: la respuesta del capital privado |  | vigente |
 | [0185](0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) | `reestructuracion_organismos` habla solo de disolución o cierre | `reestructuracion_organismos` | vigente |
@@ -207,6 +207,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0189](0189-si-no-puntua-no-se-muestra.md) | Si no puntúa no se muestra, y una promesa cumplida sí puntúa | `asistencia_directa`, `masa_salarial`, `social_orden` | vigente |
 | [0221](0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) | Un cable trampa mira la banda, no el puntaje | `litigiosidad_laboral` | vigente |
 | [0226](0226-el-itcg-se-queda-sin-validacion-externa-y-lo-declara.md) | El ITCG se queda sin validación externa única, y lo declara |  | vigente |
+| [0228](0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) | El FAL puntúa lo que rige, no lo que se dictó | `fal_modernizacion_laboral` | vigente |
 
 ### Vida cotidiana (ITVC)
 

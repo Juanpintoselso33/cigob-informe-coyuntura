@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-25
 cinturon: 'gestion'
 indicadores: [reduccion_estado, reforma_laboral]
-relacionado: ['0187']
+relacionado: ['0187', '0228']
 ambito: 'ITCG · `reduccion_estado` (contexto) · dimensión `reforma_laboral` (pesos)'
 origen: 'Aporte externo sobre el cinturón de gestión (doc 260723), puntos 2 y 4'
 ---

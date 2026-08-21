@@ -1,11 +1,14 @@
 ---
 madr: 4
 id: '0142'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0228'
 fecha: 2026-07-26
 cinturon: 'gestion'
 indicadores: [fal_modernizacion_laboral]
 relacionado: ['0221']
+superado_por: ['0228']
+revertido_por: ['0228']
 ambito: 'ITCG · `fal_modernizacion_laboral` · bandas · serie · card · ficha'
 origen: 'revisión externa del cinturón de gestión (documento del 23-jul-2026)'
 ---
