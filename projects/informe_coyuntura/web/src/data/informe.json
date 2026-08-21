@@ -3372,7 +3372,7 @@
         "consumo_carnes_total": {
           "valor": 114.45,
           "unidad": "kg/hab/año",
-          "fuente": "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
+          "fuente": "SAGYP — tablero de consumo per cápita de carnes (nivel) · INDEC — faena de vacunos, porcinos y aves (evolución del índice)",
           "fecha_dato": "2026-06-01",
           "desactualizado": false,
           "variaciones": {

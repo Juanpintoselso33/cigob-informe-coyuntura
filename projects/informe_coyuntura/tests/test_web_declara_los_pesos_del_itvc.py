@@ -161,3 +161,131 @@ def test_hay_pesos_que_verificar():
     """Si el patrón de la prosa cambia y el parser deja de encontrar nada, el
     test de arriba pasaría vacío."""
     assert len(_declarados(FICHAS)) >= 6
+
+
+# ── Un indicador que dejó de puntuar tiene que decirlo en su descripción ─────
+# El caso que motiva la regla (2026-08-21): `consumo_carne` dejó de puntuar
+# —pasó a puntuar el total de las tres carnes— y su descripción siguió diciendo
+# "proxy histórico del bienestar alimentario", como si nada. Peor: la
+# descripción del indicador NUEVO mandaba a "leerlo junto al de carne vacuna",
+# que ya no era una card.
+#
+# Ningún test miraba eso. Los pesos sí, la dimensión sí, la prosa no. Esta es la
+# prosa: si el indicador tiene descripción publicada y NO está en la
+# paramétrica, su texto tiene que declararlo.
+DESCRIPCIONES = (ROOT / "web" / "src" / "lib" / "descripciones.ts").read_text(encoding="utf-8")
+
+
+def _claves_con_descripcion() -> set:
+    bloque = DESCRIPCIONES[DESCRIPCIONES.index("export const DESCRIPCIONES"):]
+    return set(re.findall(r"^  ([a-z_0-9]+): \{$", bloque, re.M))
+
+
+def test_hay_descripciones_que_revisar():
+    assert len(_claves_con_descripcion()) > 20
+
+
+def test_lo_que_dejo_de_puntuar_lo_dice_su_descripcion():
+    """Sólo se exige a los del cinturón: son los que la paramétrica conoce, así
+    que son los únicos donde 'no está en DIMENSIONES_ITVC' significa de verdad
+    'dejó de puntuar' y no 'es de otro cinturón'."""
+    del_cinturon = {i for d in itvc.DIMENSIONES_ITVC.values() for i in d["indicadores"]}
+    # Los que alguna vez integraron el ITCIS y hoy no: viven en VIDA_OCULTOS o
+    # quedaron como desglose de otro (consumo_carne dentro de la matriz A×B).
+    from publicar import VIDA_OCULTOS
+    retirados = (VIDA_OCULTOS | {"consumo_carne"}) & _claves_con_descripcion()
+    assert retirados, "el conjunto de referencia quedó vacío: revisá el parser"
+
+    mudos = []
+    for clave in sorted(retirados):
+        bloque = _bloque(DESCRIPCIONES, clave)
+        if not any(f in bloque for f in ("NO puntúa", "no puntúa", "no integra")):
+            mudos.append(clave)
+    assert not mudos, (
+        "estos indicadores dejaron de puntuar y su descripción no lo dice, así "
+        "que el lector los lee como si siguieran adentro: " + ", ".join(mudos))
+
+
+# ── La ficha del ÍNDICE: lo que ninguna guarda por indicador podía ver ───────
+# Los tests de arriba cruzan la ficha de CADA indicador contra la paramétrica.
+# La ficha del índice no tiene indicador, así que se quedó afuera y acumuló tres
+# años de deriva sin que nada la mirara (encontrado el 2026-08-21):
+#
+#   - declaraba "37% ingresos · 25% precios · 15% empleo", el reparto anterior a
+#     mudar la informalidad de casa (ADR-0214). Cuatro de seis pesos mal, en el
+#     párrafo que explica cómo se agrega el índice.
+#   - decía "Dieciséis componentes" en el resumen y "Trece componentes en cinco
+#     dimensiones" en la selección: se contradecía a sí misma, y las dos cifras
+#     estaban mal.
+#
+# No es prosa de adorno: es la metodología publicada. Un lector que quiera
+# reproducir el índice con lo que dice la ficha obtiene otro número.
+NUMERALES = {"tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7,
+             "ocho": 8, "nueve": 9, "diez": 10, "once": 11, "doce": 12,
+             "trece": 13, "catorce": 14, "quince": 15, "dieciséis": 16,
+             "diecisiete": 17, "dieciocho": 18, "diecinueve": 19, "veinte": 20}
+
+FICHA_ITVC = _bloque(FICHAS, "itvc")
+
+
+def _n_componentes() -> int:
+    return sum(len(d["indicadores"]) for d in itvc.DIMENSIONES_ITVC.values())
+
+
+def test_la_ficha_del_indice_declara_bien_cuantos_componentes_tiene():
+    """Cualquier «N componentes en M dimensiones» de la ficha del índice, sea en
+    el resumen o en la selección, tiene que dar los números de la paramétrica."""
+    frases = re.findall(
+        r"(\w+) componentes en (\w+) dimensiones", FICHA_ITVC, re.I)
+    assert frases, "la ficha del ITCIS dejó de declarar su composición: revisá el parser"
+    malos = []
+    for comp, dim in frases:
+        c, d = NUMERALES.get(comp.lower()), NUMERALES.get(dim.lower())
+        if c is None or d is None:
+            malos.append(f"«{comp} componentes en {dim} dimensiones» no se pudo leer")
+            continue
+        if c != _n_componentes() or d != len(itvc.DIMENSIONES_ITVC):
+            malos.append(
+                f"la ficha dice «{comp} componentes en {dim} dimensiones» y la "
+                f"paramétrica tiene {_n_componentes()} en {len(itvc.DIMENSIONES_ITVC)}")
+    assert not malos, "la ficha del ITCIS no se cuenta bien:\n  " + "\n  ".join(malos)
+
+
+def test_la_leyenda_de_agregacion_declara_los_pesos_de_dimension_vigentes():
+    """El paréntesis de la leyenda es la única declaración pública del reparto
+    ENTRE dimensiones. Los pesos por indicador ya tienen guarda; éste no la
+    tenía, y era el que estaba mal."""
+    m = re.search(r"Promedio ponderado en dos niveles \(([^)]+)\)", FICHA_ITVC)
+    assert m, "la leyenda de agregación cambió de forma: actualizá este parser"
+    declarados = {}
+    for trozo in m.group(1).split("·"):
+        d = re.match(r"\s*(\d+(?:,\d+)?)%\s+(.+?)\s*$", trozo)
+        assert d, f"no se pudo leer «{trozo.strip()}» de la leyenda"
+        declarados[d.group(2).lower()] = float(d.group(1).replace(",", "."))
+
+    reales = {d["nombre"].lower(): round(d["peso"] * 100, 2)
+              for d in itvc.DIMENSIONES_ITVC.values()}
+    faltan = set(reales) - set(declarados)
+    sobran = set(declarados) - set(reales)
+    assert not faltan and not sobran, (
+        f"la leyenda no nombra las mismas dimensiones que la paramétrica.\n"
+        f"  falta declarar: {sorted(faltan)}\n  declara de más: {sorted(sobran)}")
+    malos = [f"{n}: la ficha dice {declarados[n]}%, la paramétrica da {reales[n]}%"
+             for n in reales if abs(declarados[n] - reales[n]) > 0.06]
+    assert not malos, ("la leyenda de agregación declara pesos que ya no son:\n  "
+                       + "\n  ".join(malos))
+
+
+# ── Todo lo que puntúa tiene ficha ──────────────────────────────────────────
+# `trabajo_independiente` entró al índice con 2,42% y estuvo publicado sin ficha
+# técnica: el modal lo mostraba y no había a dónde ir a leer qué mide, de dónde
+# sale ni qué no cubre. Ningún test lo veía porque todos los que cruzan fichas
+# saltean con `skip` al indicador que no tiene entrada — la ausencia se leía
+# como "nada que verificar".
+def test_todo_componente_del_indice_tiene_ficha_tecnica():
+    claves = set(re.findall(r"^  ([a-z_0-9]+): \{$", FICHAS, re.M))
+    sin_ficha = sorted(set(PESOS) - claves)
+    assert not sin_ficha, (
+        "estos indicadores puntúan en el ITCIS y no tienen ficha en fichas.ts, "
+        "así que la web los muestra sin decir qué miden ni qué no cubren: "
+        + ", ".join(f"{i} ({PESOS[i][1]}%)" for i in sin_ficha))

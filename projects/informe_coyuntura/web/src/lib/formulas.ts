@@ -217,9 +217,9 @@ ight)_{	ext{4T-23}}}`,
     latex: String.raw`100\cdot\frac{\text{informalidad}_{\text{4T-23}}}{\text{informalidad}_{\text{hoy}}}`,
     leyenda: "Asalariados sin descuento jubilatorio (EPH, trimestral). En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100. La card muestra la tasa del trimestre.",
   },
-  consumo_carne: {
-    latex: String.raw`100\cdot\frac{\text{kg de carne por habitante}_{\text{hoy}}}{\text{kg por habitante}_{\text{4T-23}}}`,
-    leyenda: "Consumo per cápita anualizado (promedio móvil 12 meses, CICCRA): el termómetro de bolsillo más argentino, 100 = 4T-2023.",
+  consumo_carnes_total: {
+    latex: String.raw`100\cdot\frac{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{hoy}}}{\left(\text{vacuna}+\text{aviar}+\text{porcina}\right)\text{ por habitante}_{\text{4T-23}}}`,
+    leyenda: "Acceso total a proteína cárnica por habitante, promedio móvil de 12 meses, 100 = 4T-2023. La evolución se reconstruye desde la faena del INDEC; el nivel en kilos lo publica SAGYP.",
   },
   patentamiento_motos: {
     latex: String.raw`100\cdot\frac{\text{patentamientos, promedio 12 meses}_{\text{hoy}}}{\text{promedio 12 meses}_{\text{4T-23}}}`,

@@ -2670,29 +2670,69 @@ export const FICHAS: Record<string, Ficha> = {
     tipo: "indicador",
     id: "mortalidad_pymes",
     cinturon: "vida_cotidiana",
-    rezago: "~2 meses (calendario de difusión industrial del INDEC).",
+    rezago: "~3 meses. La SRT publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones.",
     fuente: {
-      organismo: "INDEC",
-      operacion: "IPI manufacturero — índice de producción industrial, serie desestacionalizada (aproximación declarada de la mortandad de empresas)",
-      serie: "453.1_SERIE_DESEADA_0_0_24_58 · API de datos.gob.ar",
-      url: "https://www.indec.gob.ar/indec/web/Nivel4-Tema-3-6-15",
-      acceso: "Automático: API pública de series de tiempo.",
+      organismo: "SRT — Superintendencia de Riesgos del Trabajo",
+      operacion: "Serie histórica de partes empleadoras según tamaño de la nómina, cuadro 4.2: cantidad de empleadores con al menos una persona declarada con cobertura de ART, abierta por tramo de nómina, desde julio de 1996.",
+      url: "https://www.srt.gob.ar/estadisticas/",
+      acceso: "Automático: lectura mensual del XLSX publicado por la SRT.",
     },
     transformaciones: [
-      "Componente del índice: el nivel desestacionalizado rebaseado a 100 = promedio del 4º trimestre de 2023.",
-      "Se usa la serie desestacionalizada porque la original mostraba variaciones de hasta ±20% mensual de puro calendario.",
+      "Recorte PyME: se SUMAN los tramos de 1 · 2 · 3 a 5 · 6 a 10 · 11 a 25 · 26 a 40 · 41 a 50 trabajadores. No se toma el total del sistema aunque el tramo PyME sea la enorme mayoría de los empleadores: el total incluye a las grandes, y el indicador dejaría de decir PyME apenas cambie esa proporción.",
+      "Componente del índice: el NIVEL de empleadores activos rebaseado a 100 = promedio del 4º trimestre de 2023. No la variación neta del mes: el nivel acumulado dice cuántas empresas quedan respecto del arranque, que es la pregunta del informe, y no depende de la estacionalidad de un mes suelto.",
+      "Una sola serie, en unidades, para el titular y para el índice — el rebase lo hace el motor. Antes se publicaban dos series distintas para el mismo indicador y nunca podían reconciliarse.",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de prospectivas de empleo (14,76% interno · 3,57% del ITCIS).",
+      "Mide el cierre neto de empresas de forma directa: 491.484 empleadores PyME en el 4º trimestre de 2023 contra 460.777 en mayo de 2026, o sea 30.707 menos, un 6,2% de caída.",
+      "Contraste que la misma fuente permite: las empresas de más de 500 trabajadores cayeron 3,8% en el mismo período. El fenómeno es del tramo chico, no de toda la economía.",
     ],
     limitaciones: [
-      "Es una aproximación declarada: mide producción industrial agregada, no mortandad de empresas — el nombre del indicador promete más de lo que la fuente da.",
-      "La taxonomía de la dimensión (empleo sin medidas directas de empleo) es una discusión abierta declarada del diseño.",
+      "Sólo ve empleadores con al menos una persona declarada: una empresa que despide a toda su nómina y sigue existiendo cuenta como baja, y una que nunca tuvo empleados no cuenta nunca.",
+      "Es cobertura de riesgos del trabajo, no padrón tributario: el universo es el de las relaciones laborales registradas con ART.",
+      "Mide el saldo neto, no las altas y bajas por separado: un mes con mucha rotación y saldo cero se lee igual que un mes quieto.",
+      "El equivalente por el lado de AFIP —la base de empleadores de OEDE— dejaría ver el universo tributario completo, pero está congelada en octubre de 2023, justo antes del período que el informe evalúa.",
     ],
-    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.",
-    revisiones: "Los factores de desestacionalización se recalculan y revisan la serie; la re-descarga completa los absorbe.",
+    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión. Si el cuadro 4.2 deja de traer alguno de los siete tramos, el colector falla en voz alta en vez de publicar una suma incompleta.",
+    revisiones: "La SRT reemite el archivo entero cada mes y la serie se relee completa en cada corrida, así que las revisiones hacia atrás entran solas.",
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITCIS como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad)." },
+      { fecha: "2026-08-21", cambio: "Pasa a medir lo que su nombre promete (ADR-0218): empleadores PyME activos de la SRT, en lugar del IPI manufacturero del INDEC, que era una aproximación declarada por producción industrial. El componente pasa de 97,4 a 93,8 — la producción había recuperado más que el número de empresas. El rótulo público pasa de «Actividad industrial (IPI)» a «Empleadores PyME activos» y el tope de frescura sube de 140 a 165 días." },
+    ],
+  },
+
+  trabajo_independiente: {
+    tipo: "indicador",
+    id: "trabajo_independiente",
+    cinturon: "vida_cotidiana",
+    rezago: "~3 meses, el mismo del cierre administrativo con que el SIPA publica sus series de trabajo registrado.",
+    fuente: {
+      organismo: "SIPA — Sistema Integrado Previsional Argentino (Secretaría de Trabajo)",
+      operacion: "Series mensuales sin estacionalidad de trabajadores registrados: autónomos y monotributistas por un lado; asalariados del sector privado, del sector público y de casas particulares por el otro.",
+      serie: "151.1_IPENDIETAC_2012_M_34 y _M_36 (independientes) · 151.1_AARIADOTAC_2012_M_26, _M_25 y _M_40 (asalariados) · API de datos.gob.ar",
+      url: "https://www.argentina.gob.ar/trabajo/estadisticas",
+      acceso: "Automático: API pública de series de tiempo.",
+    },
+    transformaciones: [
+      "Participación: autónomos más monotributistas sobre el TOTAL del empleo registrado, no sólo sobre el privado — un asalariado que pasa a monotributo puede venir de cualquiera de los tres sectores.",
+      "El monotributo social queda EXCLUIDO, y es la decisión que más pesa acá: su serie cae 394 mil personas en un solo mes, diciembre de 2024. Eso no es mercado de trabajo, es una decisión regulatoria sobre el propio régimen.",
+      "Componente del índice: la participación rebaseada de forma INVERTIDA contra el promedio del 4º trimestre de 2023 (más peso independiente = deterioro).",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de prospectivas de empleo (10% interno · 2,42% del ITCIS).",
+      "Es la contracara del cierre de empresas: una economía donde cierran PyMEs y aparecen personas facturando por su cuenta no es lo mismo que una donde cierran y no aparece nada. Entre el 4º trimestre de 2023 y mayo de 2026 los independientes registrados crecen 6,2% mientras los asalariados caen 3,3%.",
+      "Lo que costaba no excluir el monotributo social: con ese régimen adentro la participación BAJA de 22,91% a 22,05% y el indicador habría leído una reforma administrativa como una mejora del empleo. Sin él, SUBE de 19,12% a 20,60%. Las dos lecturas son opuestas y sólo una describe la economía.",
+    ],
+    limitaciones: [
+      "El signo es una decisión de criterio, no un hecho de la fuente. Se puntúa invertido porque un empleo que se corre del salario al trabajo por cuenta propia pierde aportes patronales, indemnización y estabilidad, aunque siga siendo registrado. La lectura contraria —emprendedorismo registrado como mejora— existe y está declarada; cambiarla es cambiar un signo y recalcular.",
+      "La participación puede subir porque caen los asalariados y no porque crezcan los independientes. Por eso el informe publica las dos variaciones por separado y no sólo el cociente.",
+      "Sólo ve trabajo REGISTRADO: la informalidad, que es el otro modo de salir de la relación salarial, la mide su propio componente.",
+      "La exclusión del monotributo social deja fuera un régimen que sí es empleo para quien lo tiene; lo que queda afuera es su serie, por el quiebre regulatorio, no la existencia del fenómeno.",
+    ],
+    faltantes: "Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión. Si alguna de las cinco series de SIPA no responde, el colector falla en voz alta: una participación calculada sobre un denominador incompleto sería un número plausible y equivocado.",
+    revisiones: "El SIPA revisa hacia atrás con cada edición y las cinco series se releen completas en cada corrida, así que las revisiones entran solas.",
+    cambios: [
+      { fecha: "2026-08-21", cambio: "Entra al ITCIS (ADR-0219) como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca." },
     ],
   },
 
@@ -2957,18 +2997,18 @@ export const FICHAS: Record<string, Ficha> = {
     nombreLargo: "Índice de Tensión del Cinturón de Impacto Social",
     base100: true,
     cinturon: "vida_cotidiana",
-    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Dieciséis componentes en seis dimensiones.",
+    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Diecisiete componentes en seis dimensiones.",
     marcoConceptual: [
       "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, endeudamiento de las familias, empleo y el clima de confianza y seguridad.",
       "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. A diferencia del ITCM y el ITCG, no usa tablas de umbrales: mide la evolución acumulada contra una línea de base común — el arranque del mandato.",
     ],
     seleccion: [
-      "Trece componentes en cinco dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto.",
+      "Diecisiete componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
       "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada donde no existe medición de entonces (la encuesta de victimización arranca su base en enero de 2024, documentado).",
     ],
     tratamiento: [
       "Componentes faltantes: los pesos se renormalizan dentro de la dimensión y entre dimensiones; ante una fuente caída, el indicador mantiene su último valor publicado marcado como desactualizado.",
-      "Polaridad: los componentes donde «más es peor» (informalidad, victimización, subocupación, búsquedas de urgencia) se invierten para que en todos valga la misma lectura: por encima de 100, mejora.",
+      "Polaridad: los componentes donde «más es peor» —informalidad, mora de las familias, pluriempleo, peso del trabajo independiente, victimización y búsquedas de urgencia— se invierten para que en todos valga la misma lectura: por encima de 100, mejora.",
       "Recorte asimétrico declarado: los componentes se acotan a un techo de 140 (un boom puntual no compra compensación ilimitada) y deliberadamente NO tienen piso — el deterioro no se recorta, se señaliza con el flag de dimensión crítica.",
     ],
     normalizacion: [
@@ -2976,7 +3016,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     agregacion: {
       latex: String.raw`\text{ITCIS}=\sum_{\text{6 dimensiones}}\text{peso}_{\text{dim}}\times\Big(\sum_{\text{componentes}}\text{peso}_{\text{interno}}\times\min(\text{componente},140)\Big)`,
-      leyenda: "Promedio ponderado en dos niveles (37% ingresos y consumo · 25% precios · 15% empleo · 10% vulnerabilidad financiera · 8% confianza y percepción · 5% seguridad), con el techo de recorte declarado.",
+      leyenda: "Promedio ponderado en dos niveles (28,06% ingresos y consumo · 25% presión de precios · 24,19% prospectivas de empleo · 10% vulnerabilidad financiera · 8,25% confianza y percepción · 4,5% seguridad), con el techo de recorte declarado.",
       parrafos: [
         "La agregación es compensatoria y el flag de dimensión crítica lo declara cuando una dimensión cae por debajo del umbral. Cuáles están marcadas se lee en la tabla de composición, que se recalcula con cada actualización: nombrarlas acá dejaría el texto viejo al mes siguiente.",
         "El índice y la tensión son DOS ESCALAS DISTINTAS y conviene no confundirlas. El índice suma niveles: cada componente vale lo que vale contra su base de 2023, y esos números se promedian. La tensión es una lectura del resultado —5 − (índice − 100) × 0,2, recortada al rango 0-10— pensada para ponerlo en la misma vara que los otros cinturones. La tensión que aparece en la ficha de cada componente aplica esa misma fórmula a ese componente solo, y sirve para leerlo, no para calcular: al índice entra el nivel, nunca la tensión.",
@@ -3009,7 +3049,7 @@ export const FICHAS: Record<string, Ficha> = {
     limitaciones: [
       "Mide evolución contra un punto de partida, no niveles absolutos: un país que arranca mal y mejora poco puntúa mejor que uno que arranca bien y empeora poco.",
       "El punto de partida (4º trimestre de 2023) contiene la devaluación de diciembre: parte de las mejoras medidas es rebote del pozo — auditado y declarado, con la base mantenida por diseño del documento institucional.",
-      "Dos discusiones de diseño están abiertas y declaradas: el peso de la brecha salarial (22,75%, el mayor del índice) y la taxonomía de las dimensiones de empleo y confianza.",
+      "Dos discusiones de diseño están abiertas y declaradas: el peso de la brecha salarial (17,06%, el mayor del índice) y el signo con el que puntúa el trabajo independiente, que admite leerse como precarización o como emprendedorismo.",
       "El análisis multivariado previo del estándar OCDE/JRC está pendiente; la eliminación del doble conteo salario/comida (detectado por correlación casi perfecta entre dos componentes) fue un paso en esa dirección.",
     ],
     cambios: [
@@ -3017,6 +3057,10 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Nace el ITCIS base 100: reemplaza el promedio de fórmulas ancladas por la evolución acumulada contra el 4º trimestre de 2023, con robustez Monte Carlo y flag de dimensión crítica publicados. Los patentamientos pasan al acumulado móvil de 12 meses por estacionalidad." },
       { fecha: "2026-07-04", cambio: "Barrido componente por componente: la victimización pasa de la serie anual de denuncias a la encuesta mensual; se elimina el doble conteo salario/comida (dos componentes correlacionaban 0,985); se aplica el techo de recorte 140 sin piso; el sentimiento digital pasa a puntuar tras un banco de pruebas empírico; y la matriz de validación cruzada queda como tercer pilar de robustez." },
       { fecha: "2026-07-15", cambio: "La mora de las familias se separa como indicador propio de la dimensión de vulnerabilidad financiera (antes iba multiplicada dentro del endeudamiento): la deuda mide el acceso al crédito y la mora, si esa deuda se puede pagar. El índice pasa a catorce indicadores puntuables y la dimensión reparte 50/50." },
+      { fecha: "2026-08-19", cambio: "El cinturón pasa a llamarse Impacto Social y el índice, ITCIS (ADR-0212). Cambia la etiqueta, no la composición: ninguna clave de datos, ninguna serie y ningún peso se tocan." },
+      { fecha: "2026-08-20", cambio: "La informalidad se muda de la dimensión de ingresos y consumo a la de prospectivas de empleo, que es donde mide (ADR-0214). Los pesos de las dos dimensiones se ajustan para que el peso efectivo de cada componente quede intacto: se mueve de casa, no de importancia. Ingresos pasa de 37% a 28,06% y empleo de 15% a 24,19%." },
+      { fecha: "2026-08-20", cambio: "El componente de proteína animal pasa a puntuar el consumo TOTAL de carnes y no la carne vacuna sola (ADR-0217): buena parte de la caída de la vacuna es sustitución hacia pollo y cerdo, y leerla como pérdida de poder adquisitivo era un falso positivo. La vacuna sigue relevándose como diagnóstico, sin tarjeta propia." },
+      { fecha: "2026-08-21", cambio: "Dos cambios en la dimensión de empleo. El cierre de PyMEs pasa a medirse con los empleadores activos de la SRT en lugar del IPI manufacturero, que era una aproximación por producción industrial (ADR-0218). Y entra el peso del trabajo independiente como su contracara (ADR-0219). El índice queda con diecisiete componentes y cuatro de los seis de la dimensión miden empleo directamente." },
     ],
   },
 

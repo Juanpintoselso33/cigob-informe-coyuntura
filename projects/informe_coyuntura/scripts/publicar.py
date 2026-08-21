@@ -104,8 +104,12 @@ def build_vida(raw):
              f"{carnes['mes']}-01")
         # Componentes B y C: el total distingue sustitución de empobrecimiento,
         # y el ratio dice cuál de los dos está pasando.
+        # Las DOS fuentes, porque el modal publica una sola línea de fuente y
+        # el lector ve el nivel de una y el gráfico de la otra (ADR-0217).
         _add(out, "consumo_carnes_total", carnes["total"],
-             "kg/hab/año", "SAGYP — tablero consumo per cápita de carnes (promedio móvil 12m)",
+             "kg/hab/año",
+             "SAGYP — tablero de consumo per cápita de carnes (nivel) · "
+             "INDEC — faena de vacunos, porcinos y aves (evolución del índice)",
              f"{carnes['mes']}-01")
         # Las variaciones i.a. las publica la misma fuente y las consume la
         # matriz A×B en `_por_que_carne`. Viajan COLGADAS del indicador, como
@@ -296,6 +300,17 @@ POB_AR = 46_700_000
 # Los indicadores macro, gestión y política NO están acá: su puntaje viene del
 # ITCM/ITCG/ITCP calculado por el colector (macro.py+itcm.py, gestion.py+itcg.py,
 # politica.py+itcp.py) y se traduce en aplicar_scoring() vía _scoring_indice().
+#
+# ⚠ HOY ESTE MAPA NO SE EJECUTA. Los cuatro cinturones salen de aplicar_scoring()
+# por `continue` antes de llegar al bucle que lo consulta: vida cotidiana puntúa
+# por el ITCIS base-100 desde julio de 2026 y los otros tres por su propio índice
+# paramétrico. Queda como el fallback de un cinturón que no tenga índice propio.
+#
+# Consecuencia práctica, y el motivo de esta nota: sus textos son de la
+# metodología PREVIA a los índices base-100 y describen cosas que ya no son
+# —`mortalidad_pymes` acá dice «IPI m/m» y hace un año que mide empleadores de la
+# SRT—. No es una fuente de verdad de nada: para saber qué mide un indicador van
+# la paramétrica del cinturón, su ficha y `web/src/lib/formulas.ts`.
 SCORING = {
     # ── vida cotidiana ── (metodología CIGOB validada may-2026; anclas de dominio)
     "ipc_alimentos":       (lambda v: v,                "0% → 0 · 5% → 5 · 10% → 10 (mensual)"),

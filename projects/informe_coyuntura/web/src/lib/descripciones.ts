@@ -264,13 +264,13 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     frecuencia: "Mensual", tipo: "Variación (card) · nivel relativo al IPC (índice)",
   },
   consumo_carne: {
-    que: "Cuántos kilos de carne vacuna consume por año cada habitante.",
-    aporta: "Proxy histórico del bienestar alimentario y del poder de compra popular.",
-    frecuencia: "Mensual", tipo: "Nivel per cápita",
+    que: "Cuántos kilos de carne vacuna consume por año cada habitante. Ya NO puntúa por su cuenta: desde ADR-0217 el índice mide el acceso TOTAL a proteína cárnica, y la vacuna quedó como el desglose que explica si una caída es sustitución o pérdida real. Se sigue relevando y su serie se publica.",
+    aporta: "Es la carne con más peso simbólico y la que más se mueve, así que su caída sola se lee como empobrecimiento aunque el total se sostenga. Separarla del total es lo que permite decir cuál de las dos cosas está pasando.",
+    frecuencia: "Mensual", tipo: "Nivel per cápita (desglose)",
   },
   consumo_carnes_total: {
     que: "Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. Es el acceso total a proteína cárnica, sin importar de qué animal viene.",
-    aporta: "Leído junto al de carne vacuna distingue dos cosas que se parecen y no son lo mismo: si la vacuna cae y el total se sostiene, hay sustitución hacia pollo o cerdo; si caen las dos juntas, hay una pérdida real de acceso a proteína animal. El indicador de vacuna solo no permite separarlas. El titular publica el nivel oficial en kilos; el gráfico y el puntaje van en índice base 100 = 4T-2023, reconstruido desde la faena, que es lo único con historia para comparar contra el arranque del mandato.",
+    aporta: "Distingue dos cosas que se parecen y no son lo mismo: si el consumo de vacuna cae y el total se sostiene, hay sustitución hacia pollo o cerdo; si caen los dos juntos, hay una pérdida real de acceso a proteína animal. Por eso puntúa el total y no la vacuna, que sola no permite separarlas — el desglose por carne se publica acá abajo, junto al color. El titular muestra el nivel oficial en kilos; el gráfico y el puntaje van en índice base 100 = 4T-2023, reconstruido desde la faena, que es lo único con historia para comparar contra el arranque del mandato.",
     frecuencia: "Mensual (unos 2 meses de rezago)", tipo: "Nivel (kg/hab) · índice base-100 en el gráfico",
   },
   informalidad: {

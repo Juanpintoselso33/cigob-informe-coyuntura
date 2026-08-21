@@ -1,14 +1,14 @@
 ---
-title: "Fichas metodológicas · Cinturón Vida cotidiana"
+title: "Fichas metodológicas · Cinturón Impacto social"
 subtitle: "Informe de Coyuntura · Capa de semáforo (4 colores)"
 author: "Fundación CIGOB"
 ---
 
 **CIGOB · INFORME DE COYUNTURA**
 
-# Cinturón Vida cotidiana — resumen
+# Cinturón Impacto social — resumen
 
-Este documento tiene una ficha por indicador — son 16 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -16,7 +16,7 @@ Todos los colores de este documento —el del índice, el de cada dimensión y e
 
 El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el promedio del 4º trimestre de 2023. Por encima de 100 hay mejora acumulada; por debajo, deterioro. La tensión sale de 5 − (índice − 100) × 0,2.
 
-| Tensión | Índice del ITVC y de sus dimensiones (base 100 = 4º trim. 2023) | Color |
+| Tensión | Índice del ITCIS y de sus dimensiones (base 100 = 4º trim. 2023) | Color |
 |---|---|---|
 | hasta 4 | 105 o más | VERDE |
 | más de 4 y hasta 6 | de 95 a 105 | AMARILLO |
@@ -31,20 +31,20 @@ El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el pro
 
 **CIGOB · INFORME DE COYUNTURA**
 
-## ITVC — el índice del cinturón
+## ITCIS — el índice del cinturón
 
 | | | | |
 |---|---|---|---|
-| **ITVC: 90,3** | **NARANJA** | Deterioro moderado vs 4T-2023 | 16 indicadores: 5 en verde · 3 en amarillo · 4 en naranja · 4 en rojo |
+| **ITCIS: 90,6** | **NARANJA** | Deterioro moderado vs 4T-2023 | 17 indicadores: 5 en verde · 3 en amarillo · 5 en naranja · 4 en rojo |
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
-| Ingresos y consumo | Si el sueldo alcanza y qué compra. | 110,5 | VERDE | 37,2 % |
-| Presión de precios | Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general). | 82,7 | ROJO | 25,0 % |
-| Prospectivas de empleo | Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo. | 92,6 | NARANJA | 15,0 % |
-| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo, en dos señales. | 17,2 | ROJO | 10,0 % |
+| Ingresos y consumo | Si el sueldo alcanza y qué compra. | 117,1 | VERDE | 28,1 % |
+| Presión de precios | Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general). | 83,2 | ROJO | 25,0 % |
+| Prospectivas de empleo | El trabajo por sus dos caras: cuánto hay y de qué calidad es. | 92,5 | NARANJA | 24,2 % |
+| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. | 17,2 | ROJO | 10,0 % |
 | Confianza y percepción | El ánimo con que se vive el momento, medido de dos maneras. | 99,8 | AMARILLO | 8,2 % |
 | Seguridad | Qué proporción de los hogares fue víctima de un delito. | 102,1 | AMARILLO | 4,5 % |
 
@@ -58,32 +58,33 @@ El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el pro
 
 Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador el índice del cinturón; el color es el del semáforo de este mes.
 
-| Indicador | Qué mide | Hoy | Color | Peso en el ITVC |
+| Indicador | Qué mide | Hoy | Color | Peso en el ITCIS |
 |---|---|---|---|---|
 | **DIMENSIÓN: Ingresos y consumo** | | | | |
-| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,81 canastas (RIPTE/CBT) | VERDE | 17,1 % |
-| Consumo de carne per cápita | Cuántos kilos de carne vacuna consume por año cada habitante. | 47,5 kg/hab/año | NARANJA | 1,1 % |
-| Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 9,2 % |
+| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,87 canastas (RIPTE/CBT) | VERDE | 17,1 % |
+| Consumo total de carnes per cápita | Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. | 114,45 kg/hab/año | AMARILLO | 1,1 % |
 | Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,6 % de personas | VERDE | 9,3 % |
-| Patentamiento de motos | Cuántas motos se patentan en el mes. | 72.533 unidades | VERDE | 0,6 % |
+| Patentamiento de motos | Cuántas motos se patentan en el mes. | 72.596 unidades | VERDE | 0,6 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
-| Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,3 % m/m | VERDE | 8,8 % |
-| Peso de tarifas (regulados) | Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. | 2,3 % m/m regulados | ROJO | 11,2 % |
-| Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 3,87 % m/m alquileres | ROJO | 5,0 % |
+| Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,98 % m/m | VERDE | 8,8 % |
+| Peso de tarifas (regulados) | Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. | 2,13 % m/m regulados | ROJO | 11,2 % |
+| Costo real del alquiler | Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. | 1,47 % m/m alquileres | ROJO | 5,0 % |
 | **DIMENSIÓN: Prospectivas de empleo** | | | | |
-| Actividad industrial (IPI) | La salud del entramado productivo y del empleo PyME, aproximada por la actividad industrial manufacturera. | 0,94 % m/m (IPI desest.) | AMARILLO | 4,0 % |
-| Construcción (ISAC) | El nivel de actividad de la construcción, gran motor de empleo de baja calificación. | 148,1 índice ISAC | ROJO | 3,6 % |
-| Subocupación demandante | Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le alcanza. | 7,5 % | NARANJA | 1,4 % |
-| Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.130,15 miles de puestos | AMARILLO | 6,0 % |
+| Informalidad laboral | Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC. | 37,9 % | NARANJA | 8,3 % |
+| Peso del trabajo independiente | Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los… | 20,6 % del empleo registrado | NARANJA | 2,4 % |
+| Empleadores PyME activos | Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona declarada con cobertura de ART. | 460.777 empleadores | NARANJA | 3,6 % |
+| Construcción (ISAC) | El nivel de actividad de la construcción, gran motor de empleo de baja calificación. | 148,1 índice ISAC | ROJO | 3,3 % |
+| Subocupación demandante | Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le alcanza. | 7,5 % | NARANJA | 1,2 % |
+| Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.106,53 miles de puestos | AMARILLO | 5,4 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
 | Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,52 % de la cartera en situación irregular | ROJO | 10,0 % |
 | **DIMENSIÓN: Confianza y percepción** | | | | |
-| Confianza del consumidor (ICC) | El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor). | 39,8 índice | NARANJA | 6,8 % |
-| Sentimiento digital (Trends) | La urgencia económica que percibe la sociedad, medida por cuánto se busca en internet sobre inflación, precios… | 25,4 interés 0–100 | VERDE | 1,5 % |
+| Confianza del consumidor (ICC) | El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor). | 39,9 índice | NARANJA | 6,8 % |
+| Sentimiento digital (Trends) | La urgencia económica que percibe la sociedad, medida por cuánto se busca en internet sobre inflación, precios… | 28,6 interés 0–100 | VERDE | 1,5 % |
 | **DIMENSIÓN: Seguridad** | | | | |
 | Victimización (IVI) | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 28 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,5 % |
 
-*Datos al 2026-08-09.*
+*Datos al 2026-08-21.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -91,7 +92,7 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Salario real vs. canasta
 
@@ -99,17 +100,17 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,81 canastas (RIPTE/CBT)** (2026-05) | **VERDE** | Peso efectivo 17,1 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 3,87 canastas (RIPTE/CBT)** (2026-06) | **VERDE** | Peso efectivo 17,1 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | brecha_salario_cbt | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Ingresos y consumo | **UNIDAD DE MEDIDA** | canastas (RIPTE/CBT) |
-| **SERIE DISPONIBLE** | 2021-07 → 2026-05 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (RIPTE) corre un mes detrás de la canasta: el par común queda ~2 meses atrás del calendario. |
+| **IDENTIFICADOR TÉCNICO** | brecha_salario_cbt | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | canastas (RIPTE/CBT) |
+| **SERIE DISPONIBLE** | 2021-08 → 2026-06 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El salario formal (RIPTE) corre un mes detrás de la canasta: el par común queda ~2 meses atrás del calendario. |
 | **PRODUCTOR DEL DATO** | Secretaría de Trabajo (RIPTE) + INDEC (Canasta Básica Total) | **OPERACIÓN ESTADÍSTICA** | RIPTE — remuneración imponible promedio de los trabajadores estables ÷ Canasta Básica Total por adulto equivalente |
-| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: descarga de la planilla oficial del RIPTE y API de series para la canasta; el cociente se calcula alineando por mes común. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -117,7 +118,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 Mide el poder adquisitivo real del ingreso, lo que la gente siente en el bolsillo.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -137,28 +138,28 @@ Este cinturón no usa tablas de bandas por indicador: cada componente entra al �
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **110,8**.
+Este componente está hoy en **112,5**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- RIPTE / CBT del mismo mes (2026-05): canastas cubiertas por el salario imponible promedio — CBT de 2026-06 ya publicada ($495,622): esa brecha queda provisoria hasta que salga el RIPTE
+- RIPTE / CBT del mismo mes (2026-06): canastas cubiertas por el salario imponible promedio — CBT de 2026-07 ya publicada ($506,381): esa brecha queda provisoria hasta que salga el RIPTE
 
 ## Color vigente y por qué
 
-Dato vigente: 3,81 canastas (RIPTE/CBT) (2026-05).
+Dato vigente: 3,87 canastas (RIPTE/CBT) (2026-06).
 
-El componente está en 110,8 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+El componente está en 112,5 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITVC: 17,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 17,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.
-- El peso del componente (22,75% del índice) es una discusión abierta declarada del diseño.
+- El peso del componente (17,06% del índice) es una discusión abierta declarada del diseño.
 - Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.
 
 ## Si falta el dato / Política de revisiones
@@ -169,7 +170,7 @@ Ponderación vigente en el ITVC: 17,1 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC base-100 como rebase directo del cociente, con 22,75% de peso efectivo.
+**2026-07-03** — Entra al ITCIS base-100 como rebase directo del cociente, con 22,75% de peso efectivo.
 
 **2026-07-04** — Alineación estricta por mes común: antes podía mezclar el salario de un mes con la canasta de otro. Además queda como única medición del ratio ingresos/comida del índice.
 
@@ -179,29 +180,29 @@ Ponderación vigente en el ITVC: 17,1 % efectivo. El color es una lectura adicio
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Inflación de alimentos
 
-Cuánto suben en el mes los precios de alimentos y bebidas. En el ITVC puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
+Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,3 % m/m** (2026-06) | **VERDE** | Peso efectivo 8,8 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 1,98 % m/m** (2026-07) | **VERDE** | Peso efectivo 8,8 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | ipc_alimentos | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m |
-| **SERIE DISPONIBLE** | 2022-08 → 2026-06 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC se publica a mediados del mes siguiente. |
+| **IDENTIFICADOR TÉCNICO** | ipc_alimentos | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m |
+| **SERIE DISPONIBLE** | 2022-09 → 2026-07 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC se publica a mediados del mes siguiente. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | IPC — Alimentos y bebidas no alcohólicas, nivel nacional; el componente lo compara contra el IPC general |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto suben en el mes los precios de alimentos y bebidas. En el ITVC puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
+Cuánto suben en el mes los precios de alimentos y bebidas. En el ITCIS puntúa por el NIVEL acumulado del índice de alimentos relativo al IPC general, rebaseado a 100 = 4T-2023: si supera 100, la comida subió menos que el resto de los precios desde el arranque del mandato (alivio relativo); si queda debajo, encarece por encima del promedio.
 
 Es la inflación más sensible socialmente: pega directo en la mesa de cada hogar, y castiga la canasta de los hogares de menores ingresos aunque la inflación general baje. Es una pregunta de precios pura, independiente del salario — el poder de compra lo mide la brecha salario/canasta, en Ingresos.
 
@@ -225,23 +226,23 @@ Este cinturón no usa tablas de bandas por indicador: cada componente entra al �
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **107,5**.
+Este componente está hoy en **107,6**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (1,3 % m/m) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (1,98 % m/m) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 1,3 % m/m (2026-06).
+Dato vigente: 1,98 % m/m (2026-07).
 
-El componente está en 107,5 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
+El componente está en 107,6 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE.
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITVC: 8,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 8,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -256,7 +257,7 @@ Ponderación vigente en el ITVC: 8,8 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC base-100 (entonces como nivel contra el salario).
+**2026-07-03** — Entra al ITCIS base-100 (entonces como nivel contra el salario).
 
 **2026-07-04** — Rediseño: nivel contra el IPC general, eliminando el doble conteo con la brecha salario/canasta.
 
@@ -266,29 +267,29 @@ Ponderación vigente en el ITVC: 8,8 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Peso de tarifas (regulados)
 
-Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITVC puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.
+Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITCIS puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 2,3 % m/m regulados** (2026-06) | **ROJO** | Peso efectivo 11,2 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 2,13 % m/m regulados** (2026-07) | **ROJO** | Peso efectivo 11,2 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | peso_tarifas | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m regulados |
-| **SERIE DISPONIBLE** | 2022-08 → 2026-06 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC sale a mediados del mes siguiente; el componente espera además el salario formal (~2 meses). |
+| **IDENTIFICADOR TÉCNICO** | peso_tarifas | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m regulados |
+| **SERIE DISPONIBLE** | 2022-09 → 2026-07 (47 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC sale a mediados del mes siguiente; el componente espera además el salario formal (~2 meses). |
 | **PRODUCTOR DEL DATO** | INDEC (precios regulados) + Secretaría de Trabajo (RIPTE) | **OPERACIÓN ESTADÍSTICA** | IPC — precios regulados, comparados contra el salario formal |
-| **MODO DE ACCESO** | Automático: API pública de series y planilla del RIPTE. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública de series y planilla del RIPTE. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITVC puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.
+Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. En el ITCIS puntúa por el NIVEL acumulado de regulados relativo a los salarios, rebaseado a 100 = 4T-2023.
 
 Mide el impacto acumulado de la quita de subsidios sobre el gasto fijo del hogar en términos de ingresos — la decisión de política más atribuible a la gestión dentro de la dimensión de precios.
 
@@ -312,23 +313,23 @@ Este cinturón no usa tablas de bandas por indicador: cada componente entra al �
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **71,5**.
+Este componente está hoy en **72,4**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (2,3 % m/m regulados) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (2,13 % m/m regulados) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 2,3 % m/m regulados (2026-06).
+Dato vigente: 2,13 % m/m regulados (2026-07).
 
-El componente está en 71,5 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
+El componente está en 72,4 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITVC: 11,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 11,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -343,7 +344,7 @@ Ponderación vigente en el ITVC: 11,2 % efectivo. El color es una lectura adicio
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC base-100 como nivel de regulados contra el salario (antes puntuaba por variación mensual anclada).
+**2026-07-03** — Entra al ITCIS base-100 como nivel de regulados contra el salario (antes puntuaba por variación mensual anclada).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -351,29 +352,29 @@ Ponderación vigente en el ITVC: 11,2 % efectivo. El color es una lectura adicio
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Costo real del alquiler
 
-Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITVC puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
+Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITCIS puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,87 % m/m alquileres** (2026-06) | **ROJO** | Peso efectivo 5 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 1,47 % m/m alquileres** (2026-07) | **ROJO** | Peso efectivo 5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | alquiler_real | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m alquileres |
-| **SERIE DISPONIBLE** | 2021-08 → 2026-06 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC-GBA se publica a mediados del mes siguiente (~1 mes). |
+| **IDENTIFICADOR TÉCNICO** | alquiler_real | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Presión de precios | **UNIDAD DE MEDIDA** | % m/m alquileres |
+| **SERIE DISPONIBLE** | 2021-09 → 2026-07 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El IPC-GBA se publica a mediados del mes siguiente (~1 mes). |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Índice de Precios al Consumidor del Gran Buenos Aires — alquiler de la vivienda |
-| **MODO DE ACCESO** | Automático: API pública de series. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública de series. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
-Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITVC puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
+Cuánto se encareció el alquiler de la vivienda por encima del resto de los precios. En el ITCIS puntúa por el NIVEL del alquiler relativo al índice general del Gran Buenos Aires, rebaseado a 100 = 4T-2023.
 
 La desregulación del mercado de alquileres fue uno de los cambios de política más visibles del período, y el costo de la vivienda golpea sobre todo a los hogares inquilinos urbanos — un gasto fijo que ningún otro componente del cinturón captura.
 
@@ -398,23 +399,23 @@ Este cinturón no usa tablas de bandas por indicador: cada componente entra al �
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **64,3**.
+Este componente está hoy en **64,8**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (3,87 % m/m alquileres) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (1,47 % m/m alquileres) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 3,87 % m/m alquileres (2026-06).
+Dato vigente: 1,47 % m/m alquileres (2026-07).
 
-El componente está en 64,3 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
+El componente está en 64,8 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITVC: 5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -438,38 +439,39 @@ Ponderación vigente en el ITVC: 5 % efectivo. El color es una lectura adicional
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Consumo de carne per cápita
+# Consumo total de carnes per cápita
 
-Cuántos kilos de carne vacuna consume por año cada habitante.
+Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. Es el acceso total a proteína cárnica, sin importar de qué animal viene.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 47,5 kg/hab/año** (2026-05) | **NARANJA** | Peso efectivo 1,1 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 114,45 kg/hab/año** (2026-06) | **AMARILLO** | Peso efectivo 1,1 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | consumo_carne | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Ingresos y consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
-| **SERIE DISPONIBLE** | 2023-10 → 2026-05 (30 puntos) | **REZAGO DE PUBLICACIÓN** | La cámara publica el informe de cada mes con un mes de demora; el titular y la serie avanzan juntos apenas aparece el informe nuevo. |
-| **PRODUCTOR DEL DATO** | CICCRA — Cámara de la Industria y Comercio de Carnes | **OPERACIÓN ESTADÍSTICA** | Informe económico mensual: consumo aparente de carne vacuna por habitante, promedio móvil de 12 meses anualizado |
-| **MODO DE ACCESO** | Automático: lectura del informe mensual (PDF); cada informe se procesa una sola vez y queda en el archivo propio de la serie. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-09 |
+| **IDENTIFICADOR TÉCNICO** | consumo_carnes_total | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | kg/hab/año |
+| **SERIE DISPONIBLE** | 2023-01 → 2026-06 (42 puntos) | **REZAGO DE PUBLICACIÓN** | El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena. |
+| **PRODUCTOR DEL DATO** | SAGYP (nivel) e INDEC (evolución) | **OPERACIÓN ESTADÍSTICA** | Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses. Evolución: faena mensual en toneladas de vacunos, porcinos y aves (INDEC, series 40.3_VT_0_M_17 · 40.3_PT_0_M_18 · 40.3_AT_0_M_14), per cápita con la población proyectada del INDEC. |
+| **MODO DE ACCESO** | Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
-Cuántos kilos de carne vacuna consume por año cada habitante.
+Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. Es el acceso total a proteína cárnica, sin importar de qué animal viene.
 
-Proxy histórico del bienestar alimentario y del poder de compra popular.
+Distingue dos cosas que se parecen y no son lo mismo: si el consumo de vacuna cae y el total se sostiene, hay sustitución hacia pollo o cerdo; si caen los dos juntos, hay una pérdida real de acceso a proteína animal. Por eso puntúa el total y no la vacuna, que sola no permite separarlas — el desglose por carne se publica acá abajo, junto al color. El titular muestra el nivel oficial en kilos; el gráfico y el puntaje van en índice base 100 = 4T-2023, reconstruido desde la faena, que es lo único con historia para comparar contra el arranque del mandato.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
-- La fuente ya publica el promedio móvil de 12 meses: desestacionaliza por construcción.
-- Componente del índice: el consumo rebaseado a 100 = promedio del 4º trimestre de 2023 (menos carne = deterioro).
+- Suma de las tres carnes —vacuna, aviar y porcina— en toneladas, promedio móvil de 12 meses: la misma ventana con la que la fuente oficial publica su per cápita, y la que saca la estacionalidad fuerte de la faena.
+- Pasaje a per cápita con la población total proyectada del INDEC, interpolada a meses desde su serie trimestral.
+- Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menos proteína por habitante = deterioro).
 
 ## Semáforo — valores que determinan el color
 
@@ -484,41 +486,44 @@ Este cinturón no usa tablas de bandas por indicador: cada componente entra al �
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **89,3**.
+Este componente está hoy en **95**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (47,5 kg/hab/año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (114,45 kg/hab/año) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 47,5 kg/hab/año (2026-05).
+Dato vigente: 114,45 kg/hab/año (2026-06).
 
-El componente está en 89,3 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+Sustitución, no menos proteína: la carne vacuna suma 47,3 kg por habitante (−7,7% interanual) y el total de carnes 114,5 kg (−1,7%); la vacuna es el 41,3% de lo que se come. El total se mantiene en o por encima del promedio histórico de largo plazo (112,8 kg), así que lo que cae es la vacuna en favor de pollo y cerdo.
 
-**Color vigente: NARANJA**
+**Color vigente: AMARILLO**
 
-Ponderación vigente en el ITVC: 1,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 1,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
-- Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: la caída del consumo de carne vacuna se compensa en buena medida con el aumento del de cerdo y la estabilidad del de pollo, de modo que el consumo total de las tres carnes cae mucho menos que el de vacuna sola. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,5%) y acompaña, no lidera.
-- Fuente sectorial privada, publicada en PDF sin interfaz de datos: la lectura depende del formato del informe.
-- La línea de base del 4º trimestre de 2023 usa la foto contemporánea de entonces, declarada; el dato revisado de la fuente difiere levemente.
+- El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.
+- La evolución se reconstruye desde la FAENA, que es producción y no netea exportaciones. No afecta al puntaje —el índice se lee contra su propia base, así que pesa la evolución y no el nivel— pero sí explica que la variación reconstruida no dé idéntica a la que publica el tablero. La distancia entre ambas se vigila: si supera los 3 puntos porcentuales, la faena dejó de aproximar el consumo.
+- Sólo cubre las tres carnes. Huevo, lácteos, pescado y legumbres también son proteína y también muestran sustitución; sus fuentes no tienen la frecuencia necesaria para un seguimiento mensual.
+- El pasaje a per cápita usa una proyección de población, no un censo del mes.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Un mes sin informe legible queda vacío en la serie y se reintenta el mes más reciente en cada actualización; el titular nunca retrocede respecto de la serie publicada.
+- **Si falta el dato:** Un mes sin tablero legible deja el titular en el último valor publicado; la serie del índice sigue avanzando con la faena, que es independiente.
 
-- **Política de revisiones:** Los informes procesados no se releen; si la fuente revisa, el dato nuevo entra por el informe siguiente.
+- **Política de revisiones:** La faena del INDEC se revisa hacia atrás y la serie se reconstruye entera en cada corrida, así que las revisiones entran solas.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC con línea de base documentada; el mismo día se reconstruyó la serie mensual real desde octubre de 2023 y pasó a rebase dinámico.
+**2026-07-03** — Entra al ITCIS el consumo de carne VACUNA (CICCRA), con línea de base documentada.
 
-**2026-07-06** — El titular queda protegido contra retrocesos: si la lectura en vivo devuelve un informe más viejo que el ya publicado en la serie (falla transitoria de la fuente), se mantiene el último punto de la serie.
+**2026-08-12** — Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP.
+
+**2026-08-20** — Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023 (ADR-0217). La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -526,7 +531,7 @@ Ponderación vigente en el ITVC: 1,1 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Informalidad laboral
 
@@ -534,25 +539,25 @@ Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en n
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 37,9 %** (2026-01) | **NARANJA** | Peso efectivo 9,2 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 37,9 %** (2026-01) | **NARANJA** | Peso efectivo 8,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | informalidad | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Ingresos y consumo | **UNIDAD DE MEDIDA** | % |
+| **IDENTIFICADOR TÉCNICO** | informalidad | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % |
 | **SERIE DISPONIBLE** | 2016-04 → 2026-01 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
 | **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — asalariados sin descuento jubilatorio, tasa trimestral |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
 Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC.
 
-Mide la precariedad laboral y la exclusión de la red de protección social. En el ITVC su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
+Mide la precariedad laboral y la exclusión de la red de protección social. En el ITCIS su base es el 4T-2023 exacto (el trimestre de arranque del mandato).
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
 
 ## Método de cómputo
 
@@ -587,7 +592,7 @@ El componente está en 94,2 sobre la base 100 del 4º trimestre de 2023 — de 8
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITVC: 9,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 8,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -603,7 +608,7 @@ Ponderación vigente en el ITVC: 9,2 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC vía la serie anual disponible, invertida, con base en el año 2023.
+**2026-07-03** — Entra al ITCIS vía la serie anual disponible, invertida, con base en el año 2023.
 
 **2026-07-04** — Pasa a la serie trimestral con base exacta en el 4º trimestre de 2023 (la anual solo se actualizaba una vez al año y planchaba el componente).
 
@@ -613,38 +618,39 @@ Ponderación vigente en el ITVC: 9,2 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Actividad industrial (IPI)
+# Peso del trabajo independiente
 
-La salud del entramado productivo y del empleo PyME, aproximada por la actividad industrial manufacturera. En el ITVC puntúa por el NIVEL del IPI desestacionalizado rebaseado a 100 = 4T-2023 (ya no la variación de un mes, que premiaba o castigaba por estacionalidad).
+Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el ITCIS puntúa INVERTIDA: más peso independiente es peor.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 0,94 % m/m (IPI desest.)** (2026-06) | **AMARILLO** | Peso efectivo 4 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 20,6 % del empleo registrado** (2026-05) | **NARANJA** | Peso efectivo 2,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | mortalidad_pymes | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % m/m (IPI desest.) |
-| **SERIE DISPONIBLE** | 2022-08 → 2026-06 (47 puntos) | **REZAGO DE PUBLICACIÓN** | ~2 meses (calendario de difusión industrial del INDEC). |
-| **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | IPI manufacturero — índice de producción industrial, serie desestacionalizada (aproximación declarada de la mortandad de empresas) |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-09 |
+| **IDENTIFICADOR TÉCNICO** | trabajo_independiente | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % del empleo registrado |
+| **SERIE DISPONIBLE** | 2019-01 → 2026-05 (89 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses, el mismo del cierre administrativo con que el SIPA publica sus series de trabajo registrado. |
+| **PRODUCTOR DEL DATO** | SIPA — Sistema Integrado Previsional Argentino (Secretaría de Trabajo) | **OPERACIÓN ESTADÍSTICA** | Series mensuales sin estacionalidad de trabajadores registrados: autónomos y monotributistas por un lado; asalariados del sector privado, del sector público y de casas particulares por el otro. |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
-La salud del entramado productivo y del empleo PyME, aproximada por la actividad industrial manufacturera. En el ITVC puntúa por el NIVEL del IPI desestacionalizado rebaseado a 100 = 4T-2023 (ya no la variación de un mes, que premiaba o castigaba por estacionalidad).
+Qué proporción del empleo registrado son trabajadores independientes —autónomos y monotributistas— frente a los asalariados. En el ITCIS puntúa INVERTIDA: más peso independiente es peor.
 
-Cuando la industria se contrae, las PyMEs y su empleo son las primeras en sufrirlo; el nivel acumulado dice si la actividad recuperó o no el punto de partida del mandato.
+Es la contracara del cierre de empresas. Cuando caen los empleadores, dice si esas unidades productivas desaparecieron o se reconfiguraron en gente que factura por su cuenta. Un empleo que se corre del salario al trabajo independiente pierde aportes patronales, indemnización y estabilidad, aunque siga siendo registrado.
 
-**Dimensión que integra — Prospectivas de empleo.** Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
 
 ## Método de cómputo
 
-- Componente del índice: el nivel desestacionalizado rebaseado a 100 = promedio del 4º trimestre de 2023.
-- Se usa la serie desestacionalizada porque la original mostraba variaciones de hasta ±20% mensual de puro calendario.
+- Participación: autónomos más monotributistas sobre el TOTAL del empleo registrado, no sólo sobre el privado — un asalariado que pasa a monotributo puede venir de cualquiera de los tres sectores.
+- El monotributo social queda EXCLUIDO, y es la decisión que más pesa acá: su serie cae 394 mil personas en un solo mes, diciembre de 2024. Eso no es mercado de trabajo, es una decisión regulatoria sobre el propio régimen.
+- Componente del índice: la participación rebaseada de forma INVERTIDA contra el promedio del 4º trimestre de 2023 (más peso independiente = deterioro).
 
 ## Semáforo — valores que determinan el color
 
@@ -659,38 +665,40 @@ Este cinturón no usa tablas de bandas por indicador: cada componente entra al �
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **97,4**.
+Este componente está hoy en **92,8**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (0,94 % m/m (IPI desest.)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (20,6 % del empleo registrado) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 0,94 % m/m (IPI desest.) (2026-06).
+Dato vigente: 20,6 % del empleo registrado (2026-05).
 
-El componente está en 97,4 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
+El componente está en 92,8 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
 
-**Color vigente: AMARILLO**
+**Color vigente: NARANJA**
 
-Ponderación vigente en el ITVC: 4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 2,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
-- Es una aproximación declarada: mide producción industrial agregada, no mortandad de empresas — el nombre del indicador promete más de lo que la fuente da.
-- La taxonomía de la dimensión (empleo sin medidas directas de empleo) es una discusión abierta declarada del diseño.
+- El signo es una decisión de criterio, no un hecho de la fuente. Se puntúa invertido porque un empleo que se corre del salario al trabajo por cuenta propia pierde aportes patronales, indemnización y estabilidad, aunque siga siendo registrado. La lectura contraria —emprendedorismo registrado como mejora— existe y está declarada; cambiarla es cambiar un signo y recalcular.
+- La participación puede subir porque caen los asalariados y no porque crezcan los independientes. Por eso el informe publica las dos variaciones por separado y no sólo el cociente.
+- Sólo ve trabajo REGISTRADO: la informalidad, que es el otro modo de salir de la relación salarial, la mide su propio componente.
+- La exclusión del monotributo social deja fuera un régimen que sí es empleo para quien lo tiene; lo que queda afuera es su serie, por el quiebre regulatorio, no la existencia del fenómeno.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión.
+- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión. Si alguna de las cinco series de SIPA no responde, el colector falla en voz alta: una participación calculada sobre un denominador incompleto sería un número plausible y equivocado.
 
-- **Política de revisiones:** Los factores de desestacionalización se recalculan y revisan la serie; la re-descarga completa los absorbe.
+- **Política de revisiones:** El SIPA revisa hacia atrás con cada edición y las cinco series se releen completas en cada corrida, así que las revisiones entran solas.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad).
+**2026-08-21** — Entra al ITCIS (ADR-0219) como la contracara del cierre de PyMEs, con 10% de la dimensión; los cinco componentes previos ceden proporcionalmente y conservan su orden relativo. El componente entra en 92,8 y el peso nominal de la dimensión no se toca.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -698,7 +706,97 @@ Ponderación vigente en el ITVC: 4 % efectivo. El color es una lectura adicional
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
+
+# Empleadores PyME activos
+
+Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona declarada con cobertura de ART. Cuando una PyME cierra, quiebra o despide a toda su nómina, el contrato con la aseguradora se rescinde casi en el acto, así que la baja aparece en el mes. En el ITCIS puntúa por el NIVEL rebaseado a 100 = 4T-2023: menos empleadores es peor.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 460.777 empleadores** (2026-05) | **NARANJA** | Peso efectivo 3,6 % del ITCIS | Cinturón Impacto social |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | mortalidad_pymes | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | empleadores |
+| **SERIE DISPONIBLE** | 2019-01 → 2026-05 (89 puntos) | **REZAGO DE PUBLICACIÓN** | ~3 meses. La SRT publica su serie histórica todos los meses, con el rezago del cierre administrativo de las declaraciones. |
+| **PRODUCTOR DEL DATO** | SRT — Superintendencia de Riesgos del Trabajo | **OPERACIÓN ESTADÍSTICA** | Serie histórica de partes empleadoras según tamaño de la nómina, cuadro 4.2: cantidad de empleadores con al menos una persona declarada con cobertura de ART, abierta por tramo de nómina, desde julio de 1996. |
+| **MODO DE ACCESO** | Automático: lectura mensual del XLSX publicado por la SRT. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
+
+## Definición — qué mide y por qué importa
+
+Cuántas empresas de hasta 50 trabajadores siguen teniendo al menos una persona declarada con cobertura de ART. Cuando una PyME cierra, quiebra o despide a toda su nómina, el contrato con la aseguradora se rescinde casi en el acto, así que la baja aparece en el mes. En el ITCIS puntúa por el NIVEL rebaseado a 100 = 4T-2023: menos empleadores es peor.
+
+Es el cierre neto de empresas medido de forma directa, no aproximado por la producción industrial: el saldo entre las que abren y las que cierran, que es el dato que dice si el entramado PyME se está achicando.
+
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+
+## Método de cómputo
+
+- Recorte PyME: se SUMAN los tramos de 1 · 2 · 3 a 5 · 6 a 10 · 11 a 25 · 26 a 40 · 41 a 50 trabajadores. No se toma el total del sistema aunque el tramo PyME sea la enorme mayoría de los empleadores: el total incluye a las grandes, y el indicador dejaría de decir PyME apenas cambie esa proporción.
+- Componente del índice: el NIVEL de empleadores activos rebaseado a 100 = promedio del 4º trimestre de 2023. No la variación neta del mes: el nivel acumulado dice cuántas empresas quedan respecto del arranque, que es la pregunta del informe, y no depende de la estacionalidad de un mes suelto.
+- Una sola serie, en unidades, para el titular y para el índice — el rebase lo hace el motor. Antes se publicaban dos series distintas para el mismo indicador y nunca podían reconciliarse.
+
+## Semáforo — valores que determinan el color
+
+Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+
+**Valores que definen cada color**
+
+| Rango (índice base 100 = 4º trim. 2023) | Color |
+|---|---|
+| 105 o más | VERDE |
+| de 95 a 105 | AMARILLO |
+| de 85 a 95 | NARANJA |
+| menos de 85 | ROJO |
+
+Este componente está hoy en **93,8**.
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- El informe publica el valor (460.777 empleadores) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+
+## Color vigente y por qué
+
+Dato vigente: 460.777 empleadores (2026-05).
+
+El componente está en 93,8 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+
+**Color vigente: NARANJA**
+
+Ponderación vigente en el ITCIS: 3,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- Sólo ve empleadores con al menos una persona declarada: una empresa que despide a toda su nómina y sigue existiendo cuenta como baja, y una que nunca tuvo empleados no cuenta nunca.
+- Es cobertura de riesgos del trabajo, no padrón tributario: el universo es el de las relaciones laborales registradas con ART.
+- Mide el saldo neto, no las altas y bajas por separado: un mes con mucha rotación y saldo cero se lee igual que un mes quieto.
+- El equivalente por el lado de AFIP —la base de empleadores de OEDE— dejaría ver el universo tributario completo, pero está congelada en octubre de 2023, justo antes del período que el informe evalúa.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Se mantiene el último valor publicado como desactualizado; sin componente, renormalización dentro de la dimensión. Si el cuadro 4.2 deja de traer alguno de los siete tramos, el colector falla en voz alta en vez de publicar una suma incompleta.
+
+- **Política de revisiones:** La SRT reemite el archivo entero cada mes y la serie se relee completa en cada corrida, así que las revisiones hacia atrás entran solas.
+
+## Historial — cambios metodológicos documentados
+
+**2026-07-03** — Entra al ITCIS como nivel desestacionalizado base-100 (antes puntuaba por variación mensual de la serie original, dominada por estacionalidad).
+
+**2026-08-21** — Pasa a medir lo que su nombre promete (ADR-0218): empleadores PyME activos de la SRT, en lugar del IPI manufacturero del INDEC, que era una aproximación declarada por producción industrial. El componente pasa de 97,4 a 93,8 — la producción había recuperado más que el número de empresas. El rótulo público pasa de «Actividad industrial (IPI)» a «Empleadores PyME activos» y el tope de frescura sube de 140 a 165 días.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Construcción (ISAC)
 
@@ -706,17 +804,17 @@ El nivel de actividad de la construcción, gran motor de empleo de baja califica
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 148,1 índice ISAC** (2026-06) | **ROJO** | Peso efectivo 3,6 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 148,1 índice ISAC** (2026-06) | **ROJO** | Peso efectivo 3,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | despacho_cemento | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | índice ISAC |
+| **IDENTIFICADOR TÉCNICO** | despacho_cemento | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | índice ISAC |
 | **SERIE DISPONIBLE** | 2021-07 → 2026-06 (60 puntos) | **REZAGO DE PUBLICACIÓN** | ~2 meses (calendario de difusión de la construcción del INDEC). |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | ISAC — Indicador Sintético de la Actividad de la Construcción, serie desestacionalizada (el nombre histórico del indicador quedó; la métrica real es el ISAC) |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -724,7 +822,7 @@ El nivel de actividad de la construcción, gran motor de empleo de baja califica
 
 Termómetro de la obra pública y privada, sensible al ciclo económico.
 
-**Dimensión que integra — Prospectivas de empleo.** Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
 
 ## Método de cómputo
 
@@ -760,7 +858,7 @@ El componente está en 82,2 sobre la base 100 del 4º trimestre de 2023 — meno
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITVC: 3,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 3,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -774,7 +872,7 @@ Ponderación vigente en el ITVC: 3,6 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias).
+**2026-07-03** — Entra al ITCIS como nivel desestacionalizado base-100; el mismo día el gráfico pasó a la misma métrica del titular (antes mostraba otra serie de insumos por un alias).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -782,7 +880,7 @@ Ponderación vigente en el ITVC: 3,6 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Subocupación demandante
 
@@ -790,17 +888,17 @@ Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 7,5 %** (2026-01) | **NARANJA** | Peso efectivo 1,4 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 7,5 %** (2026-01) | **NARANJA** | Peso efectivo 1,2 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | pluriempleo | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % |
+| **IDENTIFICADOR TÉCNICO** | pluriempleo | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | % |
 | **SERIE DISPONIBLE** | 2016-04 → 2026-01 (40 puntos) | **REZAGO DE PUBLICACIÓN** | Encuesta trimestral publicada con uno a dos trimestres de rezago. |
 | **PRODUCTOR DEL DATO** | INDEC (EPH) | **OPERACIÓN ESTADÍSTICA** | EPH — tasa de subocupación demandante (aproximación declarada del pluriempleo) |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -808,7 +906,7 @@ Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le
 
 Señala empleo insuficiente: gente ocupada a la que no le alcanza.
 
-**Dimensión que integra — Prospectivas de empleo.** Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
 
 ## Método de cómputo
 
@@ -843,7 +941,7 @@ El componente está en 90,7 sobre la base 100 del 4º trimestre de 2023 — de 8
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITVC: 1,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 1,2 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -858,7 +956,7 @@ Ponderación vigente en el ITVC: 1,4 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC con rebase invertido base-100.
+**2026-07-03** — Entra al ITCIS con rebase invertido base-100.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -866,7 +964,7 @@ Ponderación vigente en el ITVC: 1,4 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Empleo registrado privado
 
@@ -874,17 +972,17 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6.130,15 miles de puestos** (2026-04) | **AMARILLO** | Peso efectivo 6 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 6.106,53 miles de puestos** (2026-05) | **AMARILLO** | Peso efectivo 5,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | empleo_registrado | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | miles de puestos |
-| **SERIE DISPONIBLE** | 2023-10 → 2026-04 (31 puntos) | **REZAGO DE PUBLICACIÓN** | Los datos del Sistema Integrado Previsional se publican con alrededor de tres meses de rezago: son declaraciones de las empresas que se consolidan y se revisan. |
+| **IDENTIFICADOR TÉCNICO** | empleo_registrado | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Prospectivas de empleo | **UNIDAD DE MEDIDA** | miles de puestos |
+| **SERIE DISPONIBLE** | 2023-10 → 2026-05 (32 puntos) | **REZAGO DE PUBLICACIÓN** | Los datos del Sistema Integrado Previsional se publican con alrededor de tres meses de rezago: son declaraciones de las empresas que se consolidan y se revisan. |
 | **PRODUCTOR DEL DATO** | Ministerio de Capital Humano — Sistema Integrado Previsional Argentino (SIPA) | **OPERACIÓN ESTADÍSTICA** | Trabajadores registrados según modalidad ocupacional principal — asalariados del sector privado, en miles de personas |
-| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -892,7 +990,7 @@ Cuántos asalariados del sector privado están registrados ante la seguridad soc
 
 Es la única medida directa de empleo del cinturón. Los otros componentes de la dimensión describen actividad —producción industrial, construcción— o anticipan giros, pero ninguno cuenta puestos de trabajo. Desde diciembre de 2023 el sector privado registrado perdió alrededor de doscientos cincuenta mil puestos, y la caída interanual no se interrumpió en ningún mes desde agosto de 2025.
 
-**Dimensión que integra — Prospectivas de empleo.** Las perspectivas de trabajo: mortalidad de pymes (empleadores), construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
+**Dimensión que integra — Prospectivas de empleo.** El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan tres señales del entorno que demanda ese empleo: actividad industrial, construcción (cemento, el sector más intensivo en mano de obra) y pluriempleo.
 
 ## Método de cómputo
 
@@ -913,23 +1011,23 @@ Este cinturón no usa tablas de bandas por indicador: cada componente entra al �
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **96,1**.
+Este componente está hoy en **95,7**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (6.130,15 miles de puestos) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (6.106,53 miles de puestos) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 6.130,15 miles de puestos (2026-04).
+Dato vigente: 6.106,53 miles de puestos (2026-05).
 
-El componente está en 96,1 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
+El componente está en 95,7 sobre la base 100 del 4º trimestre de 2023 — de 95 a 105 —, que es el tramo AMARILLO.
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITVC: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 5,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -954,7 +1052,7 @@ Ponderación vigente en el ITVC: 6 % efectivo. El color es una lectura adicional
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Victimización (IVI)
 
@@ -962,17 +1060,17 @@ Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 mes
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 28 % de hogares víctimas (últimos 12 meses)** (2026-04) | **AMARILLO** | Peso efectivo 4,5 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 28 % de hogares víctimas (últimos 12 meses)** (2026-04) | **AMARILLO** | Peso efectivo 4,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | inseguridad | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Seguridad | **UNIDAD DE MEDIDA** | % de hogares víctimas (últimos 12 meses) |
+| **IDENTIFICADOR TÉCNICO** | inseguridad | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Seguridad | **UNIDAD DE MEDIDA** | % de hogares víctimas (últimos 12 meses) |
 | **SERIE DISPONIBLE** | 2020-01 → 2026-04 (31 puntos) | **REZAGO DE PUBLICACIÓN** | La encuesta de victimización se publica con uno a dos meses de rezago. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — LICIP (métrica) + Ministerio de Seguridad — SNIC (contraste) | **OPERACIÓN ESTADÍSTICA** | IVI — Índice de Victimización: porcentaje de hogares de 40 centros urbanos que sufrieron al menos un delito en los últimos 12 meses, denunciado o no |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; el registro oficial de delitos (SNIC) se publica como serie de contraste. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1016,7 +1114,7 @@ El componente está en 102,1 sobre la base 100 del 4º trimestre de 2023 — de 
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITVC: 4,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 4,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1032,7 +1130,7 @@ Ponderación vigente en el ITVC: 4,5 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC vía el registro anual de delitos, invertido, con base 2023.
+**2026-07-03** — Entra al ITCIS vía el registro anual de delitos, invertido, con base 2023.
 
 **2026-07-04** — La métrica pasa a la encuesta mensual de victimización (con la base declarada en enero de 2024); el registro de denuncias queda como serie de contraste.
 
@@ -1042,7 +1140,7 @@ Ponderación vigente en el ITVC: 4,5 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Confianza del consumidor (ICC)
 
@@ -1050,17 +1148,17 @@ El optimismo de la gente sobre la economía y sus finanzas personales (Índice d
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 39,8 índice** (2026-07) | **NARANJA** | Peso efectivo 6,8 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 39,9 índice** (2026-08) | **NARANJA** | Peso efectivo 6,8 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | icc_utdt | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice |
+| **IDENTIFICADOR TÉCNICO** | icc_utdt | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice |
 | **SERIE DISPONIBLE** | 2021-06 → 2026-07 (60 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: la universidad publica el índice del mes durante el mes siguiente. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — Centro de Investigación en Finanzas | **OPERACIÓN ESTADÍSTICA** | ICC — Índice de Confianza del Consumidor, serie histórica nacional |
-| **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1093,19 +1191,19 @@ Este componente está hoy en **90,9**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (39,8 índice) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (39,9 índice) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 39,8 índice (2026-07).
+Dato vigente: 39,9 índice (2026-08).
 
 El componente está en 90,9 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
 
 **Color vigente: NARANJA**
 
-Ponderación vigente en el ITVC: 6,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 6,8 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
-- **Participación en otros indicadores.** Doble función declarada: (1) componente del ITVC; (2) ancla de la validación externa del ITVC — para no ser circular, en ese estudio el índice se recalcula sin este componente. Hasta julio de 2026 puntuó además en el cinturón espíritu de época, que desde entonces quedó acotado a la intención migratoria; esa lectura se sigue registrando como seguimiento interno.
+- **Participación en otros indicadores.** Doble función declarada: (1) componente del ITCIS; (2) ancla de la validación externa del ITCIS — para no ser circular, en ese estudio el índice se recalcula sin este componente. Hasta julio de 2026 puntuó además en el cinturón espíritu de época, que desde entonces quedó acotado a la intención migratoria; esa lectura se sigue registrando como seguimiento interno.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1120,7 +1218,7 @@ Ponderación vigente en el ITVC: 6,8 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC base-100 con 50% interno de su dimensión.
+**2026-07-03** — Entra al ITCIS base-100 con 50% interno de su dimensión.
 
 **2026-07-04** — Cede cinco puntos de peso interno al sentimiento digital, que mide lo mismo por conducta de búsqueda.
 
@@ -1130,7 +1228,7 @@ Ponderación vigente en el ITVC: 6,8 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Pobreza (estimación mensual)
 
@@ -1138,25 +1236,25 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 31,6 % de personas** (2026-06) | **VERDE** | Peso efectivo 9,3 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 31,6 % de personas** (2026-06) | **VERDE** | Peso efectivo 9,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | pobreza_nowcast | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Ingresos y consumo | **UNIDAD DE MEDIDA** | % de personas |
+| **IDENTIFICADOR TÉCNICO** | pobreza_nowcast | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | % de personas |
 | **SERIE DISPONIBLE** | 2025-01 → 2026-06 (18 puntos) | **REZAGO DE PUBLICACIÓN** | El informe mensual sale a mediados del mes siguiente al que describe. La referencia oficial del INDEC llega dos veces al año y con más demora. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella (estimación mensual) e INDEC (base y referencia oficial) | **OPERACIÓN ESTADÍSTICA** | Nowcast de pobreza: porcentaje de personas en hogares con ingresos por debajo de la línea, estimado mes a mes; y Encuesta Permanente de Hogares del INDEC para la base y el contraste |
-| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: los informes mensuales se descubren desde el listado de la universidad y cada uno se procesa una sola vez; la serie oficial sale de la interfaz pública de series de tiempo. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
 El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes del dato. No es la cifra oficial del INDEC, que se publica dos veces al año: es una proyección que se actualiza todos los meses.
 
-Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Se publica como contexto: no integra el índice.
+Es la única medición de pobreza con frecuencia mensual que existe en el país, y la variable de mayor carga simbólica del cinturón. Integra el ITCIS con el 25% de la dimensión de ingresos y consumo (9,31% del índice), invertida: más pobreza, peor puntaje.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -1192,7 +1290,7 @@ El componente está en 126,9 sobre la base 100 del 4º trimestre de 2023 — 105
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITVC: 9,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 9,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1219,7 +1317,7 @@ Ponderación vigente en el ITVC: 9,3 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Sentimiento digital (Trends)
 
@@ -1227,17 +1325,17 @@ La urgencia económica que percibe la sociedad, medida por cuánto se busca en i
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 25,4 interés 0–100** (2026-08) | **VERDE** | Peso efectivo 1,5 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 28,6 interés 0–100** (2026-08) | **VERDE** | Peso efectivo 1,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | sentimiento_digital | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Confianza y percepción | **UNIDAD DE MEDIDA** | interés 0–100 |
+| **IDENTIFICADOR TÉCNICO** | sentimiento_digital | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | interés 0–100 |
 | **SERIE DISPONIBLE** | 2021-01 → 2026-07 (67 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un mes: el mes en curso se descarta por incompleto; la card muestra además un pulso de los últimos tres meses casi en tiempo real. |
 | **PRODUCTOR DEL DATO** | Google Trends (fuente no oficial) | **OPERACIÓN ESTADÍSTICA** | Interés de búsqueda en Argentina de una canasta de cuatro términos de urgencia económica: inflación, precios, inseguridad y trabajo |
-| **MODO DE ACCESO** | Automático: consulta mensual de la canasta en ventana fija (2021 en adelante); cada descarga sana reemplaza el archivo completo — actualizaciones con escalas distintas nunca se mezclan. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: consulta mensual de la canasta en ventana fija (2021 en adelante); cada descarga sana reemplaza el archivo completo — actualizaciones con escalas distintas nunca se mezclan. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1271,17 +1369,17 @@ Este componente está hoy en **140**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITVC usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.
+- El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITCIS usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.
 
 ## Color vigente y por qué
 
-Dato vigente: 25,4 interés 0–100 (2026-08).
+Dato vigente: 28,6 interés 0–100 (2026-08).
 
 El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITVC: 1,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 1,5 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 - **Participación en otros indicadores.** Hasta julio de 2026 integró además el cinturón espíritu de época con fórmula de tensión propia; ese cinturón quedó acotado a la intención migratoria y la lectura duplicada se sigue registrando como seguimiento interno, sin publicarse ni puntuar.
 
@@ -1309,7 +1407,7 @@ Ponderación vigente en el ITVC: 1,5 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Patentamiento de motos
 
@@ -1317,17 +1415,17 @@ Cuántas motos se patentan en el mes.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 72.533 unidades** (2026-07) | **VERDE** | Peso efectivo 0,6 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 72.596 unidades** (2026-07) | **VERDE** | Peso efectivo 0,6 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | patentamiento_motos | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Ingresos y consumo | **UNIDAD DE MEDIDA** | unidades |
+| **IDENTIFICADOR TÉCNICO** | patentamiento_motos | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | unidades |
 | **SERIE DISPONIBLE** | 2022-11 → 2026-07 (45 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: se toma el último mes calendario completo (el mes en curso sería un acumulado parcial). |
 | **PRODUCTOR DEL DATO** | CAFAM — Cámara Argentina de Fabricantes de Motovehículos | **OPERACIÓN ESTADÍSTICA** | Patentamientos mensuales de motovehículos, total país |
-| **MODO DE ACCESO** | Automático: API pública sin credenciales; la serie histórica se consulta mes a mes desde fines de 2022. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública sin credenciales; la serie histórica se consulta mes a mes desde fines de 2022. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1335,7 +1433,7 @@ Cuántas motos se patentan en el mes.
 
 Proxy de consumo durable de los sectores medios y bajos.
 
-**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, cuánta gente trabaja en la informalidad, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
@@ -1361,17 +1459,17 @@ Este componente está hoy en **140**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (72.533 unidades) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (72.596 unidades) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 72.533 unidades (2026-07).
+Dato vigente: 72.596 unidades (2026-07).
 
 El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITVC: 0,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 0,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1386,7 +1484,7 @@ Ponderación vigente en el ITVC: 0,6 % efectivo. El color es una lectura adicion
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITVC con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad.
+**2026-07-03** — Entra al ITCIS con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad.
 
 **2026-07-04** — Se aplica el techo de recorte 140 y el peso interno baja de 10% a 5%.
 
@@ -1396,7 +1494,7 @@ Ponderación vigente en el ITVC: 0,6 % efectivo. El color es una lectura adicion
 
 **CIGOB · INFORME DE COYUNTURA**
 
-*Ficha metodológica · Cinturón Vida cotidiana · Capa de semáforo (4 colores)*
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
 # Mora de las familias
 
@@ -1404,17 +1502,17 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 14,52 % de la cartera en situación irregular** (2026-05) | **ROJO** | Peso efectivo 10 % del ITVC | Cinturón Vida cotidiana |
+| **Hoy: 14,52 % de la cartera en situación irregular** (2026-05) | **ROJO** | Peso efectivo 10 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | mora_familias | **CINTURÓN** | Vida cotidiana |
-| **DIMENSIÓN EN EL ITVC** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la cartera en situación irregular |
+| **IDENTIFICADOR TÉCNICO** | mora_familias | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la cartera en situación irregular |
 | **SERIE DISPONIBLE** | 2021-07 → 2026-05 (59 puntos) | **REZAGO DE PUBLICACIÓN** | El anexo del Informe sobre Bancos se publica con ~2 meses de rezago. |
 | **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Anexo del Informe sobre Bancos — planilla de calidad de cartera, sección Familias: ratio de irregularidad y saldos de préstamos personales y tarjetas |
-| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial; el titular es el último punto de la serie mensual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1422,12 +1520,12 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 
 Es la señal directa de estrés financiero de los hogares: la deuda puede crecer por acceso sano o por necesidad, pero la mora que se dispara solo tiene una lectura. Puntúa invertida: más mora, peor.
 
-**Dimensión que integra — Vulnerabilidad financiera.** Cuán expuestas están las familias por su deuda de consumo, en dos señales: el nivel de crédito real (acceso al financiamiento) y la mora de esa cartera (si esa deuda se puede pagar). Deuda que crece con mora estable es acceso; con mora en aumento es fragilidad.
+**Dimensión que integra — Vulnerabilidad financiera.** Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. Es la única señal de la dimensión desde que el stock de deuda salió del índice — el nivel de deuda no distingue acceso de fragilidad, la mora sí.
 
 ## Método de cómputo
 
 - Mora ponderada: el ratio de irregularidad de préstamos personales y el de tarjetas de crédito se combinan según el saldo de cada línea.
-- En el ITVC puntúa por el nivel relativo al 4º trimestre de 2023 (índice base 100), invertido: más mora que en la base, peor puntaje.
+- En el ITCIS puntúa por el nivel relativo al 4º trimestre de 2023 (índice base 100), invertido: más mora que en la base, peor puntaje.
 - Sin piso de recorte, igual que el resto de los componentes: el deterioro no se maquilla.
 
 ## Semáforo — valores que determinan el color
@@ -1459,7 +1557,7 @@ El componente está en 17,2 sobre la base 100 del 4º trimestre de 2023 — meno
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITVC: 10 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 10 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1475,4 +1573,4 @@ Ponderación vigente en el ITVC: 10 % efectivo. El color es una lectura adiciona
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-15** — Entra al ITVC como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa.
+**2026-07-15** — Entra al ITCIS como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa.
