@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-21T14:52:53.815418-03:00",
+    "generated_at": "2026-08-21T14:56:51.798191-03:00",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -289,7 +289,12 @@
     "desfase_medio": 1.0,
     "apareados": 1,
     "provisorios": 2,
-    "sin_par": 0
+    "sin_par": 0,
+    "referencia_ventana": {
+      "desde": "2021-08",
+      "hasta": "2026-07",
+      "n": 60
+    }
   },
   "senales_itcm": {
     "compuesto": {
@@ -2563,7 +2568,7 @@
     "2026-05": 2131.0,
     "2026-06": 2087.8,
     "2026-07": 2090.0,
-    "2026-08": 1837.3
+    "2026-08": 1842.6
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
@@ -3938,7 +3943,7 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": false,
-          "r_niveles": -0.027,
+          "r_niveles": -0.028,
           "r_diferencias": 0.087,
           "n": 33
         },

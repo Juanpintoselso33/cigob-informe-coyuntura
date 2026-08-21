@@ -1194,6 +1194,13 @@ def main():
         # referencia, y con cuánto adelanto.
         import puntos_de_giro as pdg
         resultados["giros_itcm"] = pdg.analisis(serie_itcm, lider)
+        # Qué ventana de la referencia entró de verdad al cálculo (ADR-0226).
+        # No es metadato decorativo: recortar la referencia a la ventana del
+        # índice le fabrica giros en el borde y mueve la concordancia
+        # publicada, y sin este registro el cambio no deja rastro en ningún
+        # lado. Hay un test que exige historia previa suficiente.
+        resultados["giros_itcm"]["referencia_ventana"] = {
+            "desde": min(lider), "hasta": max(lider), "n": len(lider)}
         # ¿el compuesto yerra menos que cada una de sus partes? Es el criterio
         # con el que la OCDE justifica usar un compuesto y no los sueltos.
         _por_mes = _valores_itcm_por_mes()
