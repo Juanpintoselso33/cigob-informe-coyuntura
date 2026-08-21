@@ -131,7 +131,9 @@ COMPONENTES = {
     # ADR-0130: empleo registrado privado (SIPA). NO invertido — más empleo es
     # mejor. Entra a la reconstrucción como los demás componentes de rebase.
     "empleo_registrado":      ("empleo_registrado", False, False, False),
-    "consumo_carne":          ("consumo_carne", False, False, False),
+    # ADR-0217: puntúa el consumo TOTAL de carnes, no la vacuna sola. Su
+    # serie se reconstruye desde la faena del INDEC y YA llega en base 100.
+    "consumo_carnes_total":   ("consumo_carnes_total", False, False, True),
     "patentamiento_motos":    ("patentamiento_motos", False, False, False),
     "informalidad":           ("informalidad", True, True, False),
     "inseguridad":            ("inseguridad", True, False, False),      # IVI mensual (ADR-0032)

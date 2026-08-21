@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-20T20:34:22.405441-03:00",
+  "generated_at": "2026-08-20T21:32:35.778692-03:00",
   "period": "2026-08",
   "score_global": 4.2,
   "ponderacion": {
@@ -1177,7 +1177,7 @@
           "ingresos": {
             "nombre": "Ingresos y consumo",
             "peso": 0.2806,
-            "puntaje": 116.9,
+            "puntaje": 117.1,
             "indicadores": {
               "brecha_salario_cbt": {
                 "peso": 0.6081,
@@ -1191,10 +1191,10 @@
                 "puntaje_aplicado": 126.9,
                 "peso_efectivo": 0.0931
               },
-              "consumo_carne": {
+              "consumo_carnes_total": {
                 "peso": 0.04,
-                "puntaje_banda": 89.3,
-                "puntaje_aplicado": 89.3,
+                "puntaje_banda": 95.0,
+                "puntaje_aplicado": 95.0,
                 "peso_efectivo": 0.0112
               },
               "patentamiento_motos": {

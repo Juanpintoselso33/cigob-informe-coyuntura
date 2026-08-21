@@ -14,7 +14,7 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carne`, `patentamiento_motos` |
+| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `patentamiento_motos` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias` |
 | `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `pluriempleo` |
@@ -66,19 +66,18 @@ donde colar una calibración (ADR-0123).
 
 **Lo gobiernan**: [ADR-0113](../adr/0113-nowcast-de-pobreza.md) La pobreza se publica, con la única fuente mensual que existe · [ADR-0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) La pobreza oficial acompaña al nowcast en el mismo gráfico
 
-#### Consumo de carne vacuna per cápita
+#### Consumo total de carnes per cápita
 
-`consumo_carne`
+`consumo_carnes_total`
 
 | | |
 |---|---|
 | Peso dentro de la dimensión | 4% |
 | Peso efectivo en el índice | **1.1%** |
-| Procedencia del ancla | `conceptual` — consumo per cápita rebaseado a 4T-2023; ancla en fecha fija |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0119](../adr/0119-pendientes-de-baja-prioridad-vida.md) Los tres pendientes de baja prioridad del cinturón de vida
+**Lo gobiernan**: [ADR-0215](../adr/0215-la-carne-se-mide-con-dos-fuentes-y-se-declara.md) La carne se mide con dos fuentes, y eso se declara · [ADR-0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) O integra el índice, o no es card
 
 #### Patentamiento de motos
 
@@ -306,7 +305,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-28 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+30 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -336,3 +335,5 @@ histórica.
 - [0206](../adr/0206-los-dos-artefactos-publicados-dicen-lo-mismo.md) — Los dos artefactos publicados dicen lo mismo
 - [0208](../adr/0208-el-itvc-vive-en-su-modulo-y-el-intermedio-nace-bien.md) — El ITVC vive en su módulo, y el intermedio nace bien
 - [0214](../adr/0214-la-informalidad-es-una-condicion-del-empleo.md) — La informalidad es una condición del empleo, no del ingreso
+- [0215](../adr/0215-la-carne-se-mide-con-dos-fuentes-y-se-declara.md) — La carne se mide con dos fuentes, y eso se declara
+- [0216](../adr/0216-o-integra-el-indice-o-no-es-card.md) — O integra el índice, o no es card

@@ -8,6 +8,7 @@ indicadores: [consumo_carnes_total, consumo_carne]
 archivos: ['scripts/publicar.py', 'tests/test_carne_dos_fuentes.py']
 extiende: ['0153']
 relacionado: ['0119']
+cerrado_por: ['0217']
 ambito: 'ITCIS · qué se publica como card · Componente B de proteína animal'
 origen: 'Editor, agosto de 2026: "no se pueden mostrar indicadores como cards que no integran el índice"'
 ---

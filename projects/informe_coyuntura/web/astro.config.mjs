@@ -28,6 +28,9 @@ export default defineConfig({
   redirects: {
     // Apuntan DIRECTO a la ficha vigente y no en cadena: cada salto extra es un
     // redirect que Search Console cuenta aparte.
+    // ADR-0217: la ficha pasó a describir el compuesto de las tres carnes,
+    // que es lo que puntúa. La URL vieja circulaba en el informe de agosto.
+    '/metodologia/consumo_carne/': '/metodologia/consumo_carnes_total/',
     '/metodologia/dolarizacion_depositos/': '/metodologia/desequilibrio_monetario/',
     '/metodologia/presion_dolarizacion/': '/metodologia/desequilibrio_monetario/',
   },

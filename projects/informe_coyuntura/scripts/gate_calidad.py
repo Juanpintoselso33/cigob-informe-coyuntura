@@ -110,6 +110,14 @@ G3_EXCEPCIONES = {
     "rigi_inversiones": "card = % de la meta; serie = monto acumulado en M USD",
     "protestas_caba": "card = eventos acumulados 12m; serie = eventos semanales",
     "cepo_mulc": "card = brecha CCL/mayorista SPOT del día; serie = brecha entre el PROMEDIO MENSUAL del CCL y el promedio mensual del A3500 (fetch_brecha_serie). No es un problema de anclaje sino de estadístico: un promedio mensual no puede igualar un spot diario en una serie que oscila ±30% m/m, y acercar las anclas no lo arreglaría. La tolerancia especial del 10% que hubo acá falló el 16-jul-2026 (11,5%) y ese mismo día el par pasaba por 0,02 de margen: era un parche que iba a fallar todos los meses volátiles. La frescura de la serie la sigue vigilando G3b (reclasificado 2026-08-05: hasta ADR-0172 estaba anotado como 'misma familia de anclaje que votometro/derrotas', que era un diagnóstico equivocado)",
+    # ADR-0217: la card publica el NIVEL per cápita oficial que informa SAGYP
+    # (kg/hab/año, el número que le sirve al lector); la serie es el ÍNDICE
+    # base 100 = 4T-2023 reconstruido desde la faena del INDEC, que es lo
+    # único que tiene historia para rebasear. Miden lo mismo en dos unidades
+    # y desde dos fuentes, así que nunca van a coincidir por construcción.
+    # NO es un caso de anclaje: que las dos fuentes no se separen lo vigila
+    # tests/test_carne_compuesto.py contra la variación i.a. que publica SAGYP.
+    "consumo_carnes_total": "card = nivel kg/hab (SAGYP); serie = índice base-100 desde faena INDEC (ADR-0217)",
     # Acá vivía la FAMILIA DE ANCLAJE: siete indicadores perdonados porque la
     # card evaluaba su ventana en date.today() y la serie a fin de mes cerrado.
     # Ya no queda ninguno. ADR-0172 les puso a las series un punto final

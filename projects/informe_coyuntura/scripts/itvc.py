@@ -88,7 +88,7 @@ DIMENSIONES_ITVC = {
         # independencia.
         "indicadores": {"brecha_salario_cbt": 0.6081,
                         "pobreza_nowcast": 0.3319,
-                        "consumo_carne": 0.0400, "patentamiento_motos": 0.0200},
+                        "consumo_carnes_total": 0.0400, "patentamiento_motos": 0.0200},
     },
     "precios": {
         "nombre": "Presión de precios",
@@ -351,6 +351,9 @@ SERIES_REBASEADAS = {
     "itvc_ipi":           "mortalidad_pymes",
     "itvc_isac":          "despacho_cemento",
     "itvc_pobreza":       "pobreza_nowcast",
+    # Reconstruida desde la faena de las tres carnes: ya llega en base 100
+    # = 4T-2023, así que no se re-rebasea (ADR-0217).
+    "consumo_carnes_total": "consumo_carnes_total",
 }
 
 
@@ -432,14 +435,20 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # 2020 pero la 52.2 sigue viva — base = 4T-2023 exacto (punto 2023-10),
     # invertida (menos informalidad = mejora). Reemplaza la excepción anual.
     idx["informalidad"] = rebase_de_serie(series, "informalidad", invertido=True)
-    # Motos (CAFAM), carne (CICCRA PM-12m) e inseguridad (SNIC anual: su serie
+    # ADR-0217: el que puntúa es el consumo TOTAL de carnes, no la vacuna
+    # sola. La vacuna sigue relevándose —es el Componente A de la ficha y la
+    # mitad de la matriz A×B que explica el color— pero ya no arma índice: una
+    # caída suya puede ser sustitución hacia pollo y cerdo, y leerla como
+    # pérdida de acceso a proteína es el falso positivo que la ficha vino a
+    # desarmar.
+    #
+    # Motos (CAFAM) e inseguridad (SNIC anual: su serie
     # emite el total del año en YYYY-12, así el 4T-2023 resuelve al año 2023 —
     # la excepción declarada del doc): rebase de la serie reconstruida.
     # Motos por acumulado móvil 12m (ADR-0024): el flujo mensual crudo tiene
     # estacionalidad fuerte y contra la base fija 4T-2023 mide calendario.
     idx["patentamiento_motos"] = (rebase_movil12(series, "patentamiento_motos")
                                   or rebase_de_serie(series, "patentamiento_motos"))
-    idx["consumo_carne"] = rebase_de_serie(series, "consumo_carne")
     # IVI (ADR-0032): base = ene-2024, la primera medición tras la reanudación
     # de la encuesta (suspendida 2020-2023; su ventana de 12 meses captura
     # mayormente el año PRE-mandato, así que aproxima bien el arranque).
@@ -453,7 +462,7 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # Fallback: constante 4T-2023 documentada en itvc_baselines.json (con
     # fuente) × valor actual del indicador, si la serie no está disponible.
     bas = baselines or {}
-    for ikey, invertido in (("consumo_carne", False), ("inseguridad", True),
+    for ikey, invertido in (("inseguridad", True),
                             ("patentamiento_motos", False)):
         if idx[ikey] is not None:
             continue

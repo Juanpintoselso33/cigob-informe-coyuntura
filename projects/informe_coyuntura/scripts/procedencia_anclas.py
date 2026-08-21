@@ -203,7 +203,9 @@ PROCEDENCIA = {
     "empleo_registrado": ("conceptual", "asalariados privados registrados (SIPA) rebaseados a 4T-2023, sin invertir (ADR-0130); ancla en fecha fija"),
     "icc_utdt": ("conceptual", "ICC rebaseado a 4T-2023; ancla en fecha fija"),
     "sentimiento_digital": ("conceptual", "canasta de búsquedas rebaseada a 4T-2023, invertida (ADR-0034); ancla en fecha fija"),
-    "consumo_carne": ("conceptual", "consumo per cápita rebaseado a 4T-2023; ancla en fecha fija"),
+    "consumo_carnes_total": ("conceptual",
+                             "consumo total de carnes per cápita rebaseado a 4T-2023 "
+                             "desde la faena del INDEC; ancla en fecha fija (ADR-0217)"),
     "patentamiento_motos": ("conceptual", "móvil 12m rebaseado a 4T-2023 (ADR-0024); el tope conceptual de 140 le recorta el boom, no lo calibra"),
     "inseguridad": ("conceptual", "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"),
 }

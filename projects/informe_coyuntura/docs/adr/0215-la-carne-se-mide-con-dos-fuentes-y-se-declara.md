@@ -1,12 +1,14 @@
 ---
 madr: 4
 id: '0215'
-estado: 'aceptado'
+estado: 'superado'
+nota_estado: 'Superado por ADR-0217'
 fecha: 2026-08-20
 cinturon: 'vida'
 indicadores: [consumo_carne, consumo_carnes_total]
 archivos: ['scripts/publicar.py', 'scripts/descargar_series.py', 'tests/test_carne_dos_fuentes.py']
 relacionado: ['0018', '0119', '0174']
+superado_por: ['0217']
 ambito: 'ITCIS · componente A de proteína animal · fuente de la card y de la serie'
 origen: 'Auditoría de agosto de 2026: la card salió de SAGYP y la serie quedó en CICCRA sin que nadie lo declarara'
 ---

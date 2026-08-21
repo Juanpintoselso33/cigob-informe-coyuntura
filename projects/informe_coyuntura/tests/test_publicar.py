@@ -205,7 +205,9 @@ def test_publicar_genera_snapshot(tmp_path):
     # vida_cotidiana enriquecido: al menos 10 indicadores (no los 3 legacy)
     vida = informe["cinturones"]["vida_cotidiana"]["indicadores"]
     assert len(vida) >= 10, f"vida cotidiana solo tiene {len(vida)} indicadores"
-    assert "consumo_carne" in vida and "icc_utdt" in vida
+    # ADR-0217: el que publica card es el consumo TOTAL de carnes; la vacuna
+    # pasó a ser diagnóstico dentro de la matriz A×B y ya no es card.
+    assert "consumo_carnes_total" in vida and "icc_utdt" in vida
 
     # cada indicador tiene la forma mínima
     for cint in informe["cinturones"].values():

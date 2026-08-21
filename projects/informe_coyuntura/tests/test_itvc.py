@@ -32,7 +32,7 @@ EJEMPLO = {
     "icc_utdt": 118.0,
     "inseguridad": 104.0,
     "sentimiento_digital": 110.0,
-    "consumo_carne": 92.0,
+    "consumo_carnes_total": 92.0,   # ADR-0217: puntúa el total, no la vacuna
     "patentamiento_motos": 130.0,
 }
 
@@ -105,7 +105,8 @@ def test_pesos_del_documento():
     # índice — 17,06%, 9,31%, 1,12% y 0,56%.
     assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.6081,
                                             "pobreza_nowcast": 0.3319,
-                                            "consumo_carne": 0.0400, "patentamiento_motos": 0.0200}
+                                            "consumo_carnes_total": 0.0400,
+                                            "patentamiento_motos": 0.0200}
     assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
     # ADR-0154: sale endeudamiento_familiar (redundante, winsorizado y de signo
     # equívoco) y la mora sostiene sola la dimensión.
@@ -166,7 +167,7 @@ def test_escala_interpretacion():
 
 
 def test_renormalizacion_ante_faltantes():
-    """Sin carne ni motos (fuentes sin dato), la dimensión que renormaliza es
+    """Sin carnes ni motos (fuentes sin dato), la dimensión que renormaliza es
     INGRESOS: ADR-0115 los movió ahí desde la vieja dimensión de confianza.
 
     Desde ADR-0214 queda apoyada en brecha y pobreza —`informalidad` se fue a
@@ -174,7 +175,7 @@ def test_renormalizacion_ante_faltantes():
     es la brecha: la dimensión ES su índice (87,5). Que no invente peso sigue
     siendo lo que este test comprueba, y lo verifica la suma de efectivos."""
     valores = dict(EJEMPLO)
-    valores["consumo_carne"] = None
+    valores["consumo_carnes_total"] = None
     valores["patentamiento_motos"] = None
     r = itvc.calcular_itvc(valores)
     ing = r["dimensiones"]["ingresos"]

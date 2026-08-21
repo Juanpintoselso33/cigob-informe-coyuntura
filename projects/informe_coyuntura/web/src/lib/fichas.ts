@@ -2566,37 +2566,41 @@ export const FICHAS: Record<string, Ficha> = {
     ],
   },
 
-  consumo_carne: {
+  consumo_carnes_total: {
     tipo: "indicador",
-    id: "consumo_carne",
+    id: "consumo_carnes_total",
     cinturon: "vida_cotidiana",
-    rezago: "La cámara publica el informe de cada mes con un mes de demora; el titular y la serie avanzan juntos apenas aparece el informe nuevo.",
+    rezago: "El tablero oficial publica el mes con unas semanas de demora; la faena del INDEC, con dos meses. El titular avanza con el tablero y el índice con la faena.",
     fuente: {
-      organismo: "CICCRA — Cámara de la Industria y Comercio de Carnes",
-      operacion: "Informe económico mensual: consumo aparente de carne vacuna por habitante, promedio móvil de 12 meses anualizado",
-      url: "https://ciccra.com.ar/",
-      acceso: "Automático: lectura del informe mensual (PDF); cada informe se procesa una sola vez y queda en el archivo propio de la serie.",
+      organismo: "SAGYP (nivel) e INDEC (evolución)",
+      operacion: "Nivel: SAGYP — Dirección Nacional de Producción Ganadera, tablero de consumo per cápita de carnes, promedio móvil de 12 meses. Evolución: faena mensual en toneladas de vacunos, porcinos y aves (INDEC, series 40.3_VT_0_M_17 · 40.3_PT_0_M_18 · 40.3_AT_0_M_14), per cápita con la población proyectada del INDEC.",
+      url: "https://www.magyp.gob.ar/sitio/areas/bovinos/informacion_sectorial",
+      acceso: "Automático: lectura mensual del PDF del tablero y de la API de series de tiempo del INDEC.",
     },
     transformaciones: [
-      "La fuente ya publica el promedio móvil de 12 meses: desestacionaliza por construcción.",
-      "Componente del índice: el consumo rebaseado a 100 = promedio del 4º trimestre de 2023 (menos carne = deterioro).",
+      "Suma de las tres carnes —vacuna, aviar y porcina— en toneladas, promedio móvil de 12 meses: la misma ventana con la que la fuente oficial publica su per cápita, y la que saca la estacionalidad fuerte de la faena.",
+      "Pasaje a per cápita con la población total proyectada del INDEC, interpolada a meses desde su serie trimestral.",
+      "Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menos proteína por habitante = deterioro).",
     ],
     incidenciaTexto: [
       "Pertenece a la dimensión de ingresos y consumo (4% interno · 1,12% del ITCIS).",
+      "Mide el acceso TOTAL a proteína cárnica, no el consumo de una carne. La distinción no es de matiz: la carne vacuna cae 10,7% contra el arranque del mandato y el total cae 5,0%, porque parte de esa caída es sustitución hacia pollo y cerdo. Leer la vacuna sola como pérdida de poder adquisitivo es el falso positivo que este indicador desarma.",
+      "La composición se publica junto al color: qué parte del consumo sigue siendo vacuna, y si el total se sostiene o cae con ella.",
     ],
     limitaciones: [
-      "Consumo «aparente» (producción menos exportaciones), no medición de hogares. No capta la sustitución hacia proteína más barata, que en este período fue grande: la caída del consumo de carne vacuna se compensa en buena medida con el aumento del de cerdo y la estabilidad del de pollo, de modo que el consumo total de las tres carnes cae mucho menos que el de vacuna sola. Como termómetro de TENDENCIA sigue siendo válido —la carne vacuna se mueve casi igual que el total de las tres (correlación 0,99 en los cambios mes a mes)—, pero leído como NIVEL de bienestar alimentario exagera el deterioro. Por eso pesa poco (1,12%) y acompaña, no lidera.",
-      "Fuente sectorial privada, publicada en PDF sin interfaz de datos: la lectura depende del formato del informe.",
-      "La línea de base del 4º trimestre de 2023 usa la foto contemporánea de entonces, declarada; el dato revisado de la fuente difiere levemente.",
+      "El nivel es consumo «aparente», no medición de hogares: no observa lo que come una familia, sino lo que queda en el mercado interno.",
+      "La evolución se reconstruye desde la FAENA, que es producción y no netea exportaciones. No afecta al puntaje —el índice se lee contra su propia base, así que pesa la evolución y no el nivel— pero sí explica que la variación reconstruida no dé idéntica a la que publica el tablero. La distancia entre ambas se vigila: si supera los 3 puntos porcentuales, la faena dejó de aproximar el consumo.",
+      "Sólo cubre las tres carnes. Huevo, lácteos, pescado y legumbres también son proteína y también muestran sustitución; sus fuentes no tienen la frecuencia necesaria para un seguimiento mensual.",
+      "El pasaje a per cápita usa una proyección de población, no un censo del mes.",
     ],
-    faltantes: "Un mes sin informe legible queda vacío en la serie y se reintenta el mes más reciente en cada actualización; el titular nunca retrocede respecto de la serie publicada.",
-    revisiones: "Los informes procesados no se releen; si la fuente revisa, el dato nuevo entra por el informe siguiente.",
+    faltantes: "Un mes sin tablero legible deja el titular en el último valor publicado; la serie del índice sigue avanzando con la faena, que es independiente.",
+    revisiones: "La faena del INDEC se revisa hacia atrás y la serie se reconstruye entera en cada corrida, así que las revisiones entran solas.",
     cambios: [
-      { fecha: "2026-07-03", cambio: "Entra al ITCIS con línea de base documentada; el mismo día se reconstruyó la serie mensual real desde octubre de 2023 y pasó a rebase dinámico." },
-      { fecha: "2026-07-06", cambio: "El titular queda protegido contra retrocesos: si la lectura en vivo devuelve un informe más viejo que el ya publicado en la serie (falla transitoria de la fuente), se mantiene el último punto de la serie." },
+      { fecha: "2026-07-03", cambio: "Entra al ITCIS el consumo de carne VACUNA (CICCRA), con línea de base documentada." },
+      { fecha: "2026-08-12", cambio: "Se suma el consumo total de las tres carnes y la matriz que distingue sustitución de pérdida de acceso; el nivel pasa al tablero de SAGYP." },
+      { fecha: "2026-08-20", cambio: "Pasa a puntuar el TOTAL y no la vacuna, con la serie reconstruida desde la faena del INDEC hasta el 4º trimestre de 2023 (ADR-0217). La vacuna queda como diagnóstico dentro de la matriz. El componente pasa de 89,3 a 95,0 sin mover el índice del cinturón." },
     ],
   },
-
   pobreza_nowcast: {
     tipo: "indicador",
     id: "pobreza_nowcast",

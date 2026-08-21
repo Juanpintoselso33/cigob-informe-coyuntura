@@ -2235,31 +2235,84 @@ CARNE_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "car
 MOTOS_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "motos_serie.json"
 
 
-def fetch_carnes_total_serie() -> list:
-    """Serie mensual del consumo TOTAL de carnes (vacuna+aviar+porcina).
+# Faena mensual en toneladas de las tres carnes (INDEC, vía la API de series de
+# datos.gob.ar). Verificadas el 2026-08-20: las tres llegan a 2026-06 y arrancan
+# mucho antes del 4T-2023, que es la base del ITCIS.
+FAENA_TONELADAS = {
+    "vacuna":  "40.3_VT_0_M_17",
+    "porcina": "40.3_PT_0_M_18",
+    "aviar":   "40.3_AT_0_M_14",
+}
+# Población urbana total (INDEC, EPH). Trimestral y proyectada en línea recta
+# —crece exactamente 100 mil por trimestre—, así que interpolar y extender con
+# su propia pendiente no inventa nada que la fuente no diga.
+POBLACION_ID = "461.3_POBLACION_ANO_AEA_T_28_3"
 
-    El tablero de SAGYP es una foto del mes, no una serie: publica el promedio
-    móvil 12m vigente y lo pisa cada mes. Así que la serie se ACUMULA acá, un
-    punto por corrida, igual que hace CICCRA con sus PDFs y los patentamientos
-    comerciales con el portal de justicia. La primera corrida deja un solo
-    punto; el histórico se construye solo con el nocturno.
+
+def _poblacion_mensual(pob: list):
+    """Interpola la serie trimestral a meses y la extiende con su pendiente."""
+    puntos = sorted((f[:7], v) for f, v in pob)
+    ym = lambda x: int(x[:4]) * 12 + int(x[5:7])
+
+    def en(mes: str) -> float:
+        t = ym(mes)
+        if t <= ym(puntos[0][0]):
+            return puntos[0][1]
+        for (f0, v0), (f1, v1) in zip(puntos, puntos[1:]):
+            if ym(f0) <= t <= ym(f1):
+                return v0 + (v1 - v0) * (t - ym(f0)) / (ym(f1) - ym(f0))
+        (f0, v0), (f1, v1) = puntos[-2], puntos[-1]
+        return v1 + (v1 - v0) / (ym(f1) - ym(f0)) * (t - ym(f1))
+
+    return en
+
+
+def fetch_carnes_total_serie() -> list:
+    """Consumo TOTAL de carnes per cápita (vacuna + aviar + porcina), índice
+    base 100 = promedio del 4T-2023.
+
+    Es el componente que PUNTÚA en el ITCIS (ADR-0217): mide el acceso a
+    proteína cárnica sin confundir sustitución con empobrecimiento, que es lo
+    que la vacuna sola no puede distinguir.
+
+    Se reconstruye desde la FAENA en toneladas del INDEC y no desde el tablero
+    de SAGYP: el tablero publica el nivel per cápita ya calculado, pero es una
+    foto del mes que se pisa en cada edición, así que no tiene historia contra
+    la cual rebasear. La faena sí, y desde 2009.
+
+    Dos supuestos, declarados:
+
+    - La faena es PRODUCCIÓN. Sin netear exportaciones el nivel no es consumo
+      aparente. No importa acá: el índice se lee contra su propia base, así que
+      lo que pesa es la evolución, no el nivel — y el nivel per cápita oficial
+      se sigue publicando en la card, que sale de SAGYP.
+    - El pasaje a per cápita usa la población urbana total del INDEC,
+      interpolada a meses. Es una proyección en línea recta de la propia
+      fuente, no una estimación nuestra.
     """
-    store_path = Path(__file__).resolve().parents[1] / "data" / "vida" / "carnes_total_serie.json"
-    try:
-        store = json.loads(store_path.read_text(encoding="utf-8-sig"))
-    except (OSError, json.JSONDecodeError):
-        store = {}
-    try:
-        sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
-        from collectors.consumo_carnes import fetch_consumo_carnes
-        d = fetch_consumo_carnes()
-        store[d["mes"]] = d["total"]
-        store_path.parent.mkdir(parents=True, exist_ok=True)
-        store_path.write_text(json.dumps(store, ensure_ascii=False, indent=2,
-                                         sort_keys=True), encoding="utf-8")
-    except Exception as e:
-        print(f"  [WARN] consumo_carnes_total: {e}. Se usa el caché.")
-    return [[f"{ym}-01", v] for ym, v in sorted(store.items())]
+    crudas = {}
+    for carne, sid in FAENA_TONELADAS.items():
+        crudas[carne] = {f[:7]: v for f, v in fetch_indec(sid, limit=240)}
+    meses = sorted(set.intersection(*[set(d) for d in crudas.values()]))
+    if len(meses) < 24:
+        raise RuntimeError(f"faena: sólo {len(meses)} meses en común entre las tres carnes")
+    total = {m: sum(crudas[c][m] for c in crudas) for m in meses}
+
+    # Promedio móvil de 12 meses: la misma ventana con la que SAGYP publica su
+    # per cápita, y la que saca la estacionalidad fuerte de la faena.
+    movil = {meses[i]: sum(total[m] for m in meses[i - 11:i + 1])
+             for i in range(11, len(meses))}
+
+    pob = _poblacion_mensual(fetch_indec(POBLACION_ID, limit=80))
+    per_capita = {m: movil[m] / pob(m) for m in movil}
+
+    base_meses = [m for m in ("2023-10", "2023-11", "2023-12") if m in per_capita]
+    if len(base_meses) < 3:
+        raise RuntimeError("faena: la serie no llega al 4T-2023, que es la base del índice")
+    base = sum(per_capita[m] for m in base_meses) / len(base_meses)
+
+    return [[f"{m}-01", round(per_capita[m] / base * 100, 1)]
+            for m in sorted(per_capita) if m >= "2023-01"]
 
 
 def fetch_carne_serie() -> list:
@@ -2438,8 +2491,9 @@ VIDA_DERIVADAS += [
     ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),
     ("inseguridad_snic", "hechos/año (total país)", "SNIC (CSV oficial, suma anual)", fetch_inseguridad_serie),
     ("consumo_carne", "kg/hab/año (PM 12m)", "CICCRA (informes mensuales, caché local)", fetch_carne_serie),
-    ("consumo_carnes_total", "kg/hab/año (PM 12m)",
-     "SAGYP — tablero consumo per cápita de carnes", fetch_carnes_total_serie),
+    ("consumo_carnes_total", "índice base 100 = 4T-2023",
+     "INDEC — faena de vacunos, porcinos y aves (toneladas), per cápita",
+     fetch_carnes_total_serie),
     # La MISMA métrica que muestra la card del indicador (ISAC general nivel
     # s.e., serie 33.2 desestacionalizada): card y modal comparten fuente.
     ("despacho_cemento", "índice ISAC (desest.)", "INDEC ISAC (33.2, s.e.)",
