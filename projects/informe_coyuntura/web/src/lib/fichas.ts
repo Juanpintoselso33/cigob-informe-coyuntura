@@ -1091,7 +1091,7 @@ export const FICHAS: Record<string, Ficha> = {
       puntos: [[-10, 10], [-5, 25], [4, 45], [14, 65], [30, 85], [40, 100]],
       unidadCorta: "% i.a. real",
     },
-    dobleUso: "La misma serie se sigue extrayendo como contexto no publicado, y el cinturón de impacto social usa las líneas a familias (tarjetas y personales) para su componente de endeudamiento.",
+    dobleUso: "La misma serie se sigue extrayendo como contexto no publicado. El cinturón de impacto social usó las líneas a familias (tarjetas y personales) para un componente de endeudamiento que dejó de integrar el ITCIS en julio de 2026: leía el crecimiento de la deuda real como mayor acceso al crédito. Esa dimensión la mide la mora desde entonces.",
     limitaciones: [
       "Bandas calibradas a la remonetización 2024-2026 (el crédito real llegó a crecer 90% interanual desde una base ínfima): calibración propia sobre historia corta, declarada.",
       "Agregado total: no distingue empresas de familias ni líneas de crédito.",
@@ -2999,7 +2999,7 @@ export const FICHAS: Record<string, Ficha> = {
     cinturon: "vida_cotidiana",
     resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Diecisiete componentes en seis dimensiones.",
     marcoConceptual: [
-      "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, endeudamiento de las familias, empleo y el clima de confianza y seguridad.",
+      "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, la mora de las familias con el crédito, el empleo y sus prospectivas, y el clima de confianza y seguridad.",
       "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. A diferencia del ITCM y el ITCG, no usa tablas de umbrales: mide la evolución acumulada contra una línea de base común — el arranque del mandato.",
     ],
     seleccion: [
