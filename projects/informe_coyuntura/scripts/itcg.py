@@ -32,8 +32,10 @@ Decisiones sobre ambigüedades del documento (ADR-0013):
     bandas ancladas en la lineal del doc (0% → 100 · 15% → 0).
   * Fondo de Cese (D3): el doc lo define compuesto (cobertura CCT 40% +
     patrimonio FCI/CNV 30% + litigiosidad diff-in-diff 30%); se computa en
-    gestion.py renormalizando lo disponible y conserva la clave histórica
-    fal_modernizacion_laboral.
+    gestion.py y conserva la clave histórica fal_modernizacion_laboral. Desde
+    ADR-0228 mide el Fondo de Asistencia Laboral VIGENTE en tres etapas
+    (construcción firme 50% + vigencia 20% + adopción 30%): un acto suspendido
+    judicialmente deja de contar, que es lo que ADR-0142 no podía representar.
   * Estado legal del protocolo antipiquetes (anulado 29-dic-2025, en
     apelación): el doc pide tratarlo como dato de primer orden — se expone
     como contexto del indicador y habilita override del analista en
@@ -134,28 +136,41 @@ BANDAS_ITCG = {
         # público. Ver fetch_reestructuracion_organismos() en gestion.py.
         (80.0, INF, 100), (60.0, 80.0, 85), (40.0, 60.0, 65), (20.0, 40.0, 40), (-INF, 20.0, 10),
     ],
-    "fal_modernizacion_laboral": [      # Actos fundamentales del FAL (ADR-0142)
-        # RECALIBRADO 2026-07-26 porque cambió lo que mide la escala. El
-        # indicador dejó de ser el compuesto de ADR-0098 (construcción 40 +
-        # vigencia 20 + adopción 40, escala continua 0-100) y pasa a medir los
-        # DOS ACTOS FUNDAMENTALES que ponen en pie al Fondo, 50 cada uno. La
-        # escala nueva sólo puede tomar TRES valores y las bandas describen
-        # exactamente esos tres, con los cortes en los huecos:
-        #     0  ningún acto: el Fondo no existe             ->  10
-        #    50  sancionado pero sin reglamentar             ->  50
-        #   100  ley + reglamentación: bases completas       -> 100
+    "fal_modernizacion_laboral": [      # FAL vigente, en tres etapas (ADR-0228)
+        # RECALIBRADO 2026-08-21 porque volvió a cambiar lo que mide la escala.
+        # ADR-0142 la había reducido a contar dos actos dictados (0/50/100) y el
+        # indicador quedó clavado en 100. Ahora mide si la reforma RIGE:
         #
-        # HONESTIDAD SOBRE EL EFECTO: con los dos actos cumplidos el puntaje
-        # pasa de 30,8 a 100 y el ITCG sube 5,2 puntos. El cambio MEJORA el
-        # número y la justificación es editorial (la revisión externa sostiene
-        # que sancionar y reglamentar agota la promesa hasta la vigencia), no
-        # empírica. ADR-0098 sostenía lo contrario. Queda escrito para que se
-        # pueda discutir.
+        #     0,50 · actos fundamentales VIGENTES / 2
+        #     0,20 · régimen en vigencia (1-nov-2026)
+        #     0,30 · al menos un FAL registrado en la CNV
         #
-        # Y EL INDICADOR YA NO DISCRIMINA: los dos actos ocurrieron y no se
-        # deshacen, así que queda fijo en 100 para siempre. Va contra ADR-0042
-        # y se publica igual por decisión del editor. Ver ADR-0142.
-        (75.0, INF, 100), (25.0, 75.0, 50), (-INF, 25.0, 10),
+        # La escala realizable es una escalera con huecos —0 · 20 · 25 · 30 · 45
+        # · 50 · 55 · 70 · 75 · 80 · 100— y las bandas describen sus tramos, con
+        # los cortes puestos en los huecos, no en el rango observado:
+        #
+        #     0            nada firme: ni ley ni reglamentación en vigor  ->  10
+        #    20-30         construcción a medias, o un acto suspendido    ->  30
+        #    45-55         construcción firme completa, régimen sin regir ->  55  <- hoy (50)
+        #    70-80         régimen vigente, todavía sin fondos            ->  80
+        #   100            vigente, firme y con fondos operando           -> 100
+        #
+        # ESTO REVIERTE UNA DECISIÓN EDITORIAL, y conviene decirlo entero: la de
+        # ADR-0142, que dio los 100 puntos por haber dictado la ley y el decreto.
+        # No se revierte por un cambio de gusto sino porque apareció evidencia
+        # que aquella decisión no tuvo a la vista — la base de desregulaciones de
+        # Chequeado y elDiarioAR (12 de 12 medidas laborales con impacto NULO),
+        # el Labor Freedom de Heritage (variación neta cero en tres ediciones) y,
+        # sobre todo, que la propia Ley 27.802 estuvo suspendida con efecto
+        # general entre el 30-mar y el 23-abr-2026, con la acción de fondo
+        # todavía abierta.
+        #
+        # HONESTIDAD SOBRE EL EFECTO, en el sentido contrario al de ADR-0142: el
+        # puntaje pasa de 100 a 55, la dimensión de 80,4 a 57,9 y el ITCG baja
+        # 3,4 puntos. El cambio EMPEORA el número. Eso no lo hace correcto por
+        # sí solo —el argumento es de categoría, no de dirección— pero se
+        # registra con la misma vara con que se registró la subida.
+        (90.0, INF, 100), (62.5, 90.0, 80), (37.5, 62.5, 55), (10.0, 37.5, 30), (-INF, 10.0, 10),
     ],
     "privatizaciones": [                # % de avance por etapas (promedio etapa/4 de la cartera)
         # Etapas 0-4 del doc: 0 sin definir · 1 preparatoria · 2 pliegos ·
@@ -246,6 +261,11 @@ DIMENSIONES_ITCG = {
         # justificación es únicamente conceptual —instrumento y resultado
         # pesan igual— y viene de una revisión externa, no de mirar el número.
         # Queda escrito acá y en la ficha para que se pueda discutir.
+        #
+        # ADR-0228 (2026-08-21): el reparto 50/50 NO se toca; lo que cambia es
+        # el instrumento. `fal_modernizacion_laboral` vuelve a medir si la
+        # reforma rige y deja de estar clavado en 100, con lo que la dimensión
+        # baja de 80,4 a 57,9. Sigue siendo la más floja del ITCG.
         "indicadores": {"fal_modernizacion_laboral": 0.50,
                         "litigiosidad_laboral": 0.50},
     },

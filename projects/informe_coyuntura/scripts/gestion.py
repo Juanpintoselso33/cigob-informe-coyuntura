@@ -1278,17 +1278,37 @@ def _bo_conteo(texto: str, desde: str = "10/12/2023", hasta: str | None = None) 
     return int((d.get("content", {}).get("cantidad_result_seccion") or {}).get("1", 0))
 
 
-def _cnv_fondos_cese() -> int:
-    """Cantidad de FCI registrados en CNV cuya denominación refiere al
-    instrumento de cese: 'CESE' (RG 1071/2025, régimen Ley Bases) o
-    'ASISTENCIA LABORAL' (FAL, Ley 27.802). Registro completo vía POST JSON,
-    sin auth — verificado 2026-07: 1.656 fondos, 0 bajo cualquiera de las dos
-    denominaciones; el cero es un dato duro, no un faltante."""
+def _cnv_registro_fci() -> list:
+    """Registro completo de FCI de la CNV (POST JSON, sin auth). Verificado
+    2026-07: 1.656 fondos."""
     r = requests.post(CNV_FCI_URL, json={}, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT)
     r.raise_for_status()
     fondos = r.json()
     if not isinstance(fondos, list) or not fondos:
         raise ValueError("registro CNV de FCI vacío o con formato inesperado")
+    return fondos
+
+
+def _cnv_fondos_fal(fondos: list) -> int:
+    """Fondos registrados en CNV bajo la denominación del régimen de la Ley
+    27.802: 'ASISTENCIA LABORAL'.
+
+    ADR-0228: esta es la que PUNTÚA, y por eso NO incluye 'CESE'. El "fondo de
+    cese laboral" es el régimen homónimo de la industria de la construcción
+    (Ley 22.250, nombre desde la Ley 25.371) — la misma contaminación que
+    ADR-0068 sacó de la consulta al Boletín Oficial y que quedó viva acá. Un
+    fondo de la construcción que se registre mañana valdría treinta puntos del
+    indicador sin tener nada que ver con el FAL. El conteo ancho sigue existiendo
+    y viaja en la card como contexto."""
+    return sum(1 for f in fondos
+               if "ASISTENCIA LABORAL" in str(f.get("Text", "")).upper())
+
+
+def _cnv_fondos_cese(fondos: list) -> int:
+    """Conteo ANCHO, de contexto: 'CESE' (RG 1071/2025, régimen Ley Bases) o
+    'ASISTENCIA LABORAL' (FAL, Ley 27.802). Verificado 2026-07: 0 bajo
+    cualquiera de las dos denominaciones; el cero es un dato duro, no un
+    faltante."""
     return sum(1 for f in fondos
                if any(t in str(f.get("Text", "")).upper()
                       for t in ("CESE", "ASISTENCIA LABORAL")))
@@ -1296,73 +1316,157 @@ def _cnv_fondos_cese() -> int:
 
 FAL_HITOS_PATH = PROJECT_DIR / "data" / "gestion" / "fal_hitos.json"
 
-# ADR-0142: el indicador pasa a medir los DOS ACTOS FUNDAMENTALES que ponen en
-# pie al Fondo, a propuesta de la revisión externa del cinturón y por decisión
-# editorial explícita. Cada acto vale la mitad del índice — o sea el 25% de la
-# dimensión reforma_laboral, que es lo que pidió el documento.
+# ADR-0228: el indicador vuelve a medir si la reforma RIGE, no si se DICTÓ.
 #
-# Se reemplaza el compuesto de ADR-0098 (0,40 construcción + 0,20 vigencia +
-# 0,40 adopción). El desacuerdo es de fondo y conviene dejarlo escrito: ADR-0098
-# sostenía que "mientras nada rija el efecto es cero" y por eso topeaba en 30
-# puntos hasta noviembre; la revisión externa sostiene que sancionar la ley y
-# reglamentarla "cumple hasta aquí el cumplimiento de la promesa del Gobierno".
-# Ganó la segunda lectura.
+# ADR-0142 lo había reducido a contar los dos actos fundamentales —Ley 27.802 y
+# Decreto 408/2026— con 50 puntos cada uno, por decisión editorial y a propuesta
+# de la revisión externa del cinturón, que sostenía que sancionar y reglamentar
+# "agota el cumplimiento de la promesa del Gobierno" hasta la vigencia. El costo
+# estaba declarado y era grave: los dos actos ya habían ocurrido, no se deshacen,
+# y el indicador quedaba clavado en 100 para siempre — contra ADR-0042.
+#
+# Lo que cambió no es el criterio editorial sino la evidencia. Tres terceros
+# independientes dicen que en política laboral argentina "dictada" y "rige" son
+# estados distintos, y que la diferencia es justo lo que este indicador borraba:
+#
+#   · Base de desregulaciones de Chequeado y elDiarioAR (FOPEA, dic-2025): de
+#     las 160 normas analizadas, las 12 del sector Trabajo y Seguridad Social
+#     están calificadas de impacto NULO, las 12 — es el capítulo laboral del
+#     DNU 70/2023, frenado en sede judicial. Ningún otro sector se acerca.
+#   · Heritage, subíndice Labor Freedom de Argentina: 53,5 (Índice 2024, datos
+#     pre-gestión) → 55,2 (2025) → 53,5 (2026). Variación neta cero en tres
+#     ediciones.
+#   · La propia Ley 27.802: suspendida con efecto general entre el 30-mar y el
+#     23-abr-2026 por la cautelar de "CGTRA c/ Estado Nacional", que alcanzaba
+#     expresamente a los artículos del FAL. La acción de fondo sigue abierta.
+#
+# El indicador viejo publicaba 100 durante los 24 días en que la ley que crea el
+# Fondo estaba judicialmente suspendida, y su serie era monótona por diseño: no
+# tenía forma de bajar. Ahora puntúa en tres etapas —construcción normativa
+# VIGENTE, régimen en vigencia y adopción efectiva— y cada una es un hecho
+# fechado y verificable.
 FAL_ACTOS_FUNDAMENTALES = (
     ("Ley 27.802", "Congreso de la Nación — Ley de Modernización Laboral que instaura el FAL"),
     ("Decreto 408/2026", "Poder Ejecutivo Nacional — reglamentación del Título II (FAL)"),
 )
 
+# Pesos de las tres etapas (ADR-0228). Son una convención declarada, igual que
+# el 40/20/40 de ADR-0098 y el 100/0/0 de ADR-0142:
+#   0,50 construcción  los dos actos siguen siendo la mayor parte del indicador
+#                      —el editor tiene razón en que son el grueso de lo que el
+#                      Gobierno podía hacer— pero ya no son TODO, porque un acto
+#                      que no rige no es la promesa cumplida.
+#   0,20 vigencia      mismo peso que le dio ADR-0098. Es un hecho fechado y es
+#                      un hecho de gestión: el propio decreto reglamentario
+#                      difirió el arranque cinco meses, del 1-jun al 1-nov-2026.
+#   0,30 adopción      menos que el 0,40 de ADR-0098, porque aquella etapa se
+#                      apoyaba en un pleno provisorio (420 menciones del BO,
+#                      ADR-0068) y ésta se apoya en un hecho duro y binario.
+FAL_PESO_CONSTRUCCION = 0.50
+FAL_PESO_VIGENCIA = 0.20
+FAL_PESO_ADOPCION = 0.30
+
+
+def _fal_suspendido(hitos: dict, norma: str, en_fecha: str) -> dict | None:
+    """La suspensión judicial con efecto general vigente sobre `norma` en
+    `en_fecha`, o None. `hasta` en null = sigue suspendida."""
+    for s in ((hitos.get("judicial") or {}).get("suspensiones") or []):
+        if s.get("norma") != norma:
+            continue
+        desde, hasta = s.get("desde"), s.get("hasta")
+        if desde and desde <= en_fecha and (not hasta or en_fecha < hasta):
+            return s
+    return None
+
+
+def fal_estado_actos(hitos: dict, en_fecha: str) -> list:
+    """Estado de cada acto fundamental a una fecha: dictado, suspendido, vigente.
+
+    Un acto CUENTA sólo si está dictado y no suspendido. Es toda la corrección
+    de ADR-0228 y vive acá para que la card y la serie usen la misma regla — la
+    forma en que ADR-0098 y ADR-0142 se desincronizaron dos veces."""
+    por_norma = {h.get("norma"): h for h in (hitos.get("construccion") or [])}
+    out = []
+    for norma, descripcion in FAL_ACTOS_FUNDAMENTALES:
+        fecha_acto = (por_norma.get(norma) or {}).get("fecha")
+        dictado = bool(fecha_acto and fecha_acto <= en_fecha)
+        susp = _fal_suspendido(hitos, norma, en_fecha) if dictado else None
+        out.append({
+            "norma": norma,
+            "descripcion": descripcion,
+            "fecha": fecha_acto,
+            "dictado": dictado,
+            "suspendido": bool(susp),
+            "suspension": ({"desde": susp["desde"], "hasta": susp.get("hasta"),
+                            "organo": susp.get("organo"),
+                            "alcance": susp.get("alcance")} if susp else None),
+            "vigente": dictado and not susp,
+        })
+    return out
+
+
+def fal_indice(hitos: dict, en_fecha: str, fondos_fal: int) -> tuple:
+    """Índice 0-100 del FAL a una fecha, y sus tres etapas.
+
+    construcción = actos fundamentales VIGENTES / 2
+    vigencia     = 1 si el régimen ya rige y ningún acto está suspendido
+    adopción     = 1 si existe al menos un FAL registrado en la CNV
+
+    Devuelve (indice, actos, etapas)."""
+    actos = fal_estado_actos(hitos, en_fecha)
+    construccion = sum(1 for a in actos if a["vigente"]) / len(actos)
+    fecha_vigencia = (hitos.get("vigencia") or {}).get("fecha", "9999-12-31")
+    vigencia = 1.0 if (en_fecha >= fecha_vigencia and construccion == 1.0) else 0.0
+    adopcion = 1.0 if fondos_fal > 0 else 0.0
+    indice = round(100.0 * (FAL_PESO_CONSTRUCCION * construccion
+                            + FAL_PESO_VIGENCIA * vigencia
+                            + FAL_PESO_ADOPCION * adopcion), 1)
+    return indice, actos, {"construccion": construccion,
+                           "vigencia": vigencia,
+                           "adopcion": adopcion,
+                           "fecha_vigencia": fecha_vigencia}
+
 
 def fetch_fal_modernizacion_laboral() -> dict | None:
     """
-    Avance del Fondo de Asistencia Laboral (Ley 27.802) medido por sus DOS
-    ACTOS FUNDAMENTALES, 50 puntos cada uno (ADR-0142):
+    Avance del Fondo de Asistencia Laboral (Ley 27.802) medido por lo que RIGE,
+    no por lo que se dictó (ADR-0228):
 
-        1. Ley 27.802 — el Congreso instaura el FAL          (06-mar-2026)
-        2. Decreto 408/2026 — el PEN lo reglamenta           (01-jun-2026)
+        0,50 · construcción normativa vigente  (Ley 27.802 · Decreto 408/2026,
+                                                cada uno vale la mitad, y sólo
+                                                mientras no estén suspendidos)
+        0,20 · régimen en vigencia             (1-nov-2026, art. 27 del decreto)
+        0,30 · adopción efectiva               (≥1 FAL registrado en la CNV)
 
-    Los dos actos ponen las bases para el funcionamiento del Fondo y, según el
-    criterio editorial adoptado, agotan lo que el Gobierno podía cumplir de la
-    promesa hasta la entrada en vigencia del régimen el 1-nov-2026.
+    QUÉ CAMBIÓ Y POR QUÉ. Reemplaza al conteo de actos de ADR-0142, que valía
+    100 y puntuaba 100 porque los dos actos ya habían ocurrido y no podían
+    deshacerse. Esa versión no tenía forma de representar el hecho central del
+    período que decía medir: **la ley que crea el Fondo estuvo suspendida con
+    efecto general entre el 30-mar y el 23-abr-2026** y su
+    inconstitucionalidad todavía se discute. Publicaba cien mientras un juez la
+    tenía frenada.
 
-    QUÉ CAMBIÓ Y QUÉ SE PIERDE. Reemplaza al compuesto de ADR-0098 (0,40
-    construcción + 0,20 vigencia + 0,40 adopción), que valía 40,2 y puntuaba
-    30,8. Con los dos actos cumplidos el índice vale 100 y puntúa 100: la
-    dimensión `reforma_laboral` pasa de 45,1 a 79,7 y el ITCG sube 5,2 puntos.
-    No se puede invocar neutralidad — el cambio mejora el puntaje y la
-    justificación es editorial, no empírica.
+    Es el mismo error de categoría de ADR-0218 —un indicador que no mide lo que
+    su nombre dice— en su versión más cara: «modernización laboral» puntuando el
+    máximo porque se firmaron dos papeles.
 
-    Y HAY UN COSTO QUE HAY QUE MIRAR DE FRENTE: los dos actos ya ocurrieron y
-    no se pueden deshacer, así que **el indicador queda fijo en 100 y ningún
-    hecho futuro lo mueve** — ni la entrada en vigencia, ni que el Fondo
-    funcione o no. Deja de discriminar (contra ADR-0042). La decisión de
-    publicarlo así fue del editor, con el efecto a la vista.
-
-    Todo lo que el compuesto puntuaba sigue relevándose y viaja en la card como
-    CONTEXTO, sin incidir en el puntaje: fondos registrados en CNV, menciones
-    del FAL en el Boletín Oficial y fecha de vigencia del régimen. Si en algún
-    momento se quiere volver a un indicador vivo, los insumos están.
+    Todo lo que se relevaba como contexto se sigue relevando: menciones del FAL
+    en el Boletín Oficial y el conteo ancho de fondos de cese en la CNV. Lo que
+    entró al puntaje es el conteo ESTRECHO —sólo «asistencia laboral»—, porque
+    un fondo de la industria de la construcción no es adopción del FAL.
     """
     try:
         hitos = json.loads(FAL_HITOS_PATH.read_text(encoding="utf-8-sig"))
         hoy_iso = date.today().isoformat()
-        por_norma = {h.get("norma"): h for h in hitos.get("construccion", [])}
 
-        actos = []
-        for norma, descripcion in FAL_ACTOS_FUNDAMENTALES:
-            h = por_norma.get(norma)
-            fecha_acto = (h or {}).get("fecha")
-            actos.append({
-                "norma": norma,
-                "descripcion": descripcion,
-                "fecha": fecha_acto,
-                "cumplido": bool(fecha_acto and fecha_acto <= hoy_iso),
-            })
-        cumplidos = [a for a in actos if a["cumplido"]]
-        indice = round(100.0 * len(cumplidos) / len(actos), 1) if actos else 0.0
+        fondos = _cnv_registro_fci()
+        n_fal, n_cese = _cnv_fondos_fal(fondos), _cnv_fondos_cese(fondos)
 
-        # ── Contexto: se releva pero NO puntúa (ADR-0142) ───────────────────
-        n_cese = _cnv_fondos_cese()
+        indice, actos, etapas = fal_indice(hitos, hoy_iso, n_fal)
+        vigentes = [a for a in actos if a["vigente"]]
+        suspendidos = [a for a in actos if a["suspendido"]]
+
+        # ── Contexto: se releva pero NO puntúa ──────────────────────────────
         menciones = None
         cobertura_txt = ""
         try:
@@ -1371,30 +1475,47 @@ def fetch_fal_modernizacion_laboral() -> dict | None:
         except Exception as e:
             _warn("fal cobertura BO (contexto, no puntúa)", e)
 
-        fecha_vigencia = (hitos.get("vigencia") or {}).get("fecha", "9999-12-31")
-        vigente = hoy_iso >= fecha_vigencia
+        fondo = ((hitos.get("judicial") or {}).get("_meta") or {}).get("causa_de_fondo") or {}
+        litigio_abierto = (fondo.get("estado") == "en trámite")
 
         return {
             "valor":          indice,
-            "unidad":         "Índice 0–100 (actos fundamentales del FAL: ley + reglamentación)",
-            "fuente":         "InfoLeg — Ley 27.802 y Decreto 408/2026 (normas publicadas)",
-            "fecha_dato":     date.today().isoformat(),
+            "unidad":         "Índice 0–100 (FAL vigente: construcción firme, vigencia y adopción)",
+            "fuente":         "InfoLeg — Ley 27.802 y Decreto 408/2026 · estado judicial de la Ley 27.802 · CNV (registro de FCI)",
+            "fecha_dato":     hoy_iso,
             "desactualizado": False,
             "actos":          actos,
-            "actos_cumplidos": len(cumplidos),
-            "actos_totales":   len(actos),
+            "actos_vigentes": len(vigentes),
+            "actos_totales":  len(actos),
+            "etapas":         etapas,
+            "componentes":    {
+                "ley_27802": 100.0 if actos[0]["vigente"] else 0.0,
+                "decreto_408_2026": 100.0 if actos[1]["vigente"] else 0.0,
+                "vigencia": 100.0 * etapas["vigencia"],
+                "adopcion": 100.0 * etapas["adopcion"],
+            },
+            "fal_cnv_registrados":  n_fal,
+            "vigencia_desde":       etapas["fecha_vigencia"],
+            "regimen_vigente":      bool(etapas["vigencia"]),
+            "litigio_de_fondo_abierto": litigio_abierto,
+            "causa_de_fondo":       fondo.get("caratula"),
             # contexto, no puntúa
             "fci_cese_registrados": n_cese,
-            "menciones_bo":   menciones,
-            "vigencia_desde": fecha_vigencia,
-            "regimen_vigente": vigente,
+            "menciones_bo":         menciones,
             "detalle_txt": (
-                f"{len(cumplidos)} de {len(actos)} actos fundamentales cumplidos"
-                + (" (" + " · ".join(f"{a['norma']} {a['fecha']}" for a in cumplidos) + ")"
-                   if cumplidos else "")
-                + (" · régimen VIGENTE" if vigente else
-                   f" · el régimen entra en vigencia el {fecha_vigencia}")
-                + f" · contexto: {n_cese} fondos registrados en CNV"
+                f"{len(vigentes)} de {len(actos)} actos fundamentales vigentes"
+                + (" (" + " · ".join(f"{a['norma']} {a['fecha']}" for a in vigentes) + ")"
+                   if vigentes else "")
+                + ("".join(f" · {a['norma']} SUSPENDIDA por "
+                           f"{(a['suspension'] or {}).get('organo', 'la Justicia')} "
+                           f"desde {(a['suspension'] or {}).get('desde')}"
+                           for a in suspendidos))
+                + (" · régimen VIGENTE" if etapas["vigencia"] else
+                   f" · el régimen entra en vigencia el {etapas['fecha_vigencia']}")
+                + f" · {n_fal} fondos de asistencia laboral registrados en CNV"
+                + (" · la inconstitucionalidad de la ley todavía se discute en "
+                   f"«{fondo.get('caratula')}»" if litigio_abierto else "")
+                + f" · contexto: {n_cese} fondos de cese en CNV"
                 + (f" · {cobertura_txt}" if cobertura_txt else "")),
         }
     except Exception as e:

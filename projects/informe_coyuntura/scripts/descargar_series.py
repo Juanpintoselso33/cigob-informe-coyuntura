@@ -2923,27 +2923,36 @@ def fetch_privatizaciones_serie() -> list:
 
 
 def fetch_fal_serie() -> list:
-    """Serie mensual del avance del FAL por sus DOS ACTOS FUNDAMENTALES.
+    """Serie mensual del avance del FAL, con la MISMA regla que la card.
 
-    Desde ADR-0142 la serie se reconstruye en la MISMA escala que la card: 50
-    puntos por cada acto cumplido a fin de cada mes, leídos de `fal_hitos.json`
-    (norma publicada y fechada, verificable por número en InfoLeg).
+    Desde ADR-0228 el índice mide lo que RIGE y no lo que se dictó, en tres
+    etapas fechadas (`gestion.fal_indice`):
 
-        0    hasta feb-2026    ni ley ni reglamentación
-        50   desde mar-2026    Ley 27.802 sancionada (06-mar-2026)
-        100  desde jun-2026    Decreto 408/2026 reglamenta (01-jun-2026)
+        0,50 · actos fundamentales VIGENTES / 2
+        0,20 · régimen en vigencia (1-nov-2026, art. 27 del Decreto 408/2026)
+        0,30 · al menos un FAL registrado en la CNV
 
-    Es una escalera de tres peldaños y no se mueve más: los dos actos ocurrieron
-    y no se deshacen. La limitación está documentada en ADR-0142 — se publica
-    así por decisión editorial, sabiendo que el indicador dejó de discriminar.
+    El resultado ya no es monótono, y ésa es la corrección: entre el 30-mar y el
+    23-abr-2026 la Ley 27.802 estuvo suspendida con efecto general por la
+    cautelar de "CGTRA c/ Estado Nacional", que alcanzaba a los artículos del
+    Fondo. La serie de ADR-0142 publicaba 50 ese mes porque contaba la ley como
+    un acto cumplido; ésta publica 0, que es lo que regía.
 
-    No requiere red: sale del registro de hitos.
+    Cada mes se evalúa AL CIERRE, así que un hecho del 30 de marzo cuenta en
+    marzo. No toca la red mientras el régimen no esté vigente: la adopción es
+    cero por razón legal hasta el 1-nov-2026 y el resto sale del registro de
+    hitos. Desde esa fecha consulta el registro de la CNV una sola vez.
+
+    LIMITACIÓN DECLARADA: el registro de la CNV publica un stock al momento de
+    la consulta, sin historia. Para los meses posteriores a la vigencia la
+    adopción se aplica con el valor de hoy hacia atrás; hasta que exista un
+    primer fondo eso no cambia nada, y cuando exista habrá que fechar el alta
+    como se fecharon las normas.
     [[YYYY-MM-01, índice]]."""
-    hitos_json = json.loads(gestion.FAL_HITOS_PATH.read_text(encoding="utf-8-sig"))
-    por_norma = {h.get("norma"): h for h in hitos_json.get("construccion", [])}
-    fechas_actos = [(por_norma.get(norma) or {}).get("fecha")
-                    for norma, _ in gestion.FAL_ACTOS_FUNDAMENTALES]
-    total = len(gestion.FAL_ACTOS_FUNDAMENTALES)
+    hitos = json.loads(gestion.FAL_HITOS_PATH.read_text(encoding="utf-8-sig"))
+    fecha_vigencia = (hitos.get("vigencia") or {}).get("fecha", "9999-12-31")
+
+    fondos_fal = None                       # se resuelve sólo si hace falta
 
     out = []
     hoy = date.today()
@@ -2952,23 +2961,18 @@ def fetch_fal_serie() -> list:
     while (y, m) <= (fin.year, fin.month):
         ult_dia = calendar.monthrange(y, m)[1]
         cierre = f"{y}-{m:02d}-{ult_dia:02d}"
-        cumplidos = sum(1 for f in fechas_actos if f and f <= cierre)
-        out.append([f"{y}-{m:02d}-01", round(100.0 * cumplidos / total, 1)])
+        if cierre < fecha_vigencia:
+            n_fal = 0                        # imposible por norma antes de la vigencia
+        else:
+            if fondos_fal is None:
+                fondos_fal = gestion._cnv_fondos_fal(gestion._cnv_registro_fci())
+            n_fal = fondos_fal
+        indice, _, _ = gestion.fal_indice(hitos, cierre, n_fal)
+        out.append([f"{y}-{m:02d}-01", indice])
         m += 1
         if m > 12:
             m, y = 1, y + 1
     return out
-
-
-# El ICG no cuelga de `listado_contenidos.php` como el ICC (16458) o el Índice
-# Líder (16461) —por eso no aparece sondeando ids vecinos—: su ficha vive en
-# `ver_contenido.php` y la descarga en una página aparte, "Descarga de datos".
-# Estas dos constantes se usaban en fetch_icg_serie sin estar definidas en
-# ningún lado: la función levantaba NameError en cada corrida desde que se
-# escribió, así que la serie nunca se refrescó (ADR-0175).
-UTDT_ICG_LISTADO = "https://www.utdt.edu/listado_contenidos.php?id_item_menu=28756"
-UTDT_ICG_REFERER = "https://www.utdt.edu/ver_contenido.php?id_contenido=1439&id_item_menu=2964"
-
 
 def fetch_icg_serie() -> list:
     """Serie mensual del ICG UTDT (Índice de Confianza en el Gobierno, 0-5) —
@@ -3058,7 +3062,7 @@ GESTION_DERIVADAS = [
     ("apertura_comercial", "% alícuota efectiva del comercio exterior", "ARCA (DEX+DIM) + INDEC ICA + BCRA A3500", fetch_alicuota_serie),
     ("concesiones_infraestructura", "% km adjudicados RFC", "CONTRAT.AR + RFC (hitos fechados)", fetch_concesiones_serie),
     ("privatizaciones", "% avance (etapas 0-4, cartera Ley Bases)", "BO — hitos fechados (elab. CIGOB)", fetch_privatizaciones_serie),
-    ("fal_modernizacion_laboral", "Índice 0–100 (FAL)", "Boletín Oficial (menciones del FAL, Ley 27.802) + CNV (registro FCI)", fetch_fal_serie),
+    ("fal_modernizacion_laboral", "Índice 0–100 (FAL vigente)", "InfoLeg (Ley 27.802 y Decreto 408/2026) + estado judicial de la ley + CNV (registro FCI)", fetch_fal_serie),
     ("rigi_inversiones", "US$ M aprobados (acum.)", "Min. Economía RIGI + BO (fechas de sanción)", fetch_rigi_serie),
     ("desregulacion_normativa", "artículos modificados o eliminados, acumulados desde dic-2023",
      "Min. de Desregulación y Transformación del Estado — informe mensual",

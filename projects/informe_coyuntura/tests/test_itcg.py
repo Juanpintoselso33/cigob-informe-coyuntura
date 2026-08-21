@@ -31,15 +31,16 @@ import gestion
 #   * reduccion_estado −10,5% vs dic-2023 → 88,8 (banda 85).
 #   * gasto_funcionamiento −18% real → 81,0.
 #   * reestructuracion_organismos 40% → 52,5 (borde de banda: promedio 40/65).
-#   * fal_modernizacion_laboral 100 → 100 (dos actos fundamentales, ADR-0142)
+#   * fal_modernizacion_laboral 50 → 55 (FAL vigente en tres etapas, ADR-0228:
+#     los dos actos rigen, el régimen todavía no y no hay fondos inscriptos)
 #     · litigiosidad +3,6% → 57,8 (ADR-0023 lo repartía 0,7/0,3; ADR-0128 lo
 #     pasó a 0,5/0,5).
 #   * privatizaciones 51,4% → 71,4 (banda 65).
 #   * rigi_inversiones 22,1% → 47,7 (banda 40).
 #   * concesiones 35% → 52,5 (borde de banda) · asistencia 96% → 100 ·
 #     protocolo 52% → 76,6 (banda 85) · libertad_opcion_salud 40% → 65 (ancla).
-# Dimensiones: económicas=81,3 estado=77,3 laboral=78,9 privatizaciones=58,1
-# social=72,8 → ITCG = 75,6.
+# Dimensiones: económicas=81,3 estado=77,3 laboral=56,4 privatizaciones=58,1
+# social=83,6 → ITCG = 73,3.
 EJEMPLO = {
     "cepo_mulc": 4.91,                  # 100 (plano bajo la primera ancla)
     "apertura_comercial": 4.86,         # alícuota efectiva % → 67,6
@@ -55,10 +56,12 @@ EJEMPLO = {
     # Desde ADR-0189 tampoco se publica la card.
     "masa_salarial": -15.0,             # sin efecto: no integra ninguna dimensión
     "reestructuracion_organismos": 40.0,  # 52,5 (borde 40/65)
-    "fal_modernizacion_laboral": 100.0,  # 100 — los DOS actos fundamentales
-    # cumplidos: Ley 27.802 (mar-2026) + Decreto 408/2026 (jun-2026). ADR-0142.
-    # La escala vieja de tres etapas (ADR-0098) daba 40,2 → 30,8; la nueva sólo
-    # puede tomar 0, 50 o 100 y ya está en el techo.
+    "fal_modernizacion_laboral": 50.0,  # 55 — ADR-0228: los dos actos
+    # fundamentales rigen (Ley 27.802 de mar-2026 y Decreto 408/2026 de
+    # jun-2026, ninguno suspendido), el régimen no entra en vigencia hasta el
+    # 1-nov-2026 y no hay fondos inscriptos en la CNV: 0,50·1 + 0,20·0 + 0,30·0.
+    # ADR-0142 daba 100 → 100 contando los actos DICTADOS, sin poder ver que la
+    # ley estuvo suspendida 24 días.
     "litigiosidad_laboral": 3.6,        # 57,8 (banda 65) — resultado (30%, ADR-0023)
     "privatizaciones": 51.4,            # 71,4 (banda 65)
     "rigi_inversiones": 22.1,           # 47,7 (banda 40)
@@ -80,16 +83,18 @@ def test_itcg_reproduce_ejemplo():
     # → 43,75/31,25/25, conservando su proporción relativa 7:5:4).
     assert dims["reforma_estado"]["puntaje"] == 77.3
     # 38,9 → 44,3 (ADR-0128, reparto 50/50) → 78,9 (ADR-0142, el FAL pasa a
-    # medir sus dos actos fundamentales y salta de 30,8 a 100). El segundo
-    # salto es editorial y no empírico: está declarado en el ADR y en la ficha.
-    assert dims["reforma_laboral"]["puntaje"] == 78.9
+    # contar sus dos actos DICTADOS y salta de 30,8 a 100) → 56,4 (ADR-0228, el
+    # FAL vuelve a medir lo que RIGE y baja de 100 a 55). El de ADR-0142 fue un
+    # salto editorial y no empírico; el de ADR-0228 lo revierte con evidencia
+    # externa. Los dos están declarados en su ADR y en la ficha.
+    assert dims["reforma_laboral"]["puntaje"] == 56.4
     assert dims["privatizaciones_inversion"]["puntaje"] == 58.1
     # ADR-0189: vuelve asistencia_directa y la dimension recupera el 40/40/20
     # del documento. 0,4x100 + 0,4x76,6 + 0,2x65 = 83,6 (antes 72,8 con 67/33).
     assert dims["social_orden"]["puntaje"] == 83.6
-    assert r["valor"] == 76.7          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189)
+    assert r["valor"] == 73.3          # 71,4 (0128) → 76,6 (0142) → 75,9 (0143) → 75,6 (0186) → 76,7 (0189) → 73,3 (0228)
     assert r["banda"] == "moderadamente_aflojado"
-    assert itcg.tension_de_itcg(r["valor"]) == 2.3
+    assert itcg.tension_de_itcg(r["valor"]) == 2.7
     assert r["ajustes_aplicados"] == []
 
 

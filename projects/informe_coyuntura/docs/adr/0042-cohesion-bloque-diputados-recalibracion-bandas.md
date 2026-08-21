@@ -6,6 +6,7 @@ fecha: 2026-07-09
 cinturon: 'politica'
 parametros: ['BANDAS_ITCP["cohesion_bloque"]']
 archivos: ['scripts/itcp.py', 'tests/test_itcp.py']
+relacionado: ['0228']
 ambito: '`scripts/itcp.py` (`BANDAS_ITCP["cohesion_bloque"]`) · `tests/test_itcp.py`'
 ---
 

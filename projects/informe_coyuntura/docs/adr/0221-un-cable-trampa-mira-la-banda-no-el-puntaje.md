@@ -6,7 +6,7 @@ fecha: 2026-08-21
 cinturon: 'gestion'
 indicadores: [litigiosidad_laboral]
 archivos: ['tests/test_gestion_dotacion_fuerzas.py', '.github/workflows/data-pipeline.yml', 'tests/test_bigquery_backfill.py']
-relacionado: ['0098', '0142', '0209']
+relacionado: ['0098', '0142', '0209', '0228']
 ambito: 'ITCG · guardia de la dimensión de reforma laboral · dónde se pone el umbral'
 origen: 'Cuatro noches seguidas de nocturno caído (18 al 21 de agosto de 2026), investigadas al revisar por qué no se commiteaba el snapshot'
 ---

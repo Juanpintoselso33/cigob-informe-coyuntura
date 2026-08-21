@@ -103,10 +103,21 @@ def test_la_dimension_laboral_sigue_siendo_la_mas_floja():
     vara?" es la segunda, y fue una decisión editorial declarada — no cambió
     ningún hecho del mundo entre el 25 y el 26 de julio.
 
-    Lo que la guardia protege ahora es lo único que sigue en pie: la
-    litigiosidad laboral, que es el RESULTADO de la reforma y no su
-    instrumento, no mejoró. Si algún día el FAL vuelve a ser un indicador
-    vivo, esta guardia debería volver a mirar la dimensión.
+    EL FAL VOLVIÓ A SER UN INDICADOR VIVO (2026-08-21, ADR-0228), que es lo que
+    la propia guardia dejó escrito como condición para volver a mirar la
+    dimensión. El indicador dejó de contar actos DICTADOS —donde estaba clavado
+    en su techo— y pasa a medir los que RIGEN: puntúa 55 y la dimensión vuelve a
+    57,9, abajo de todo el ITCG junto con privatizaciones e inversión.
+
+    Así que la guardia mira dos cosas otra vez, y ninguna de las dos es un corte
+    cerca del valor de hoy:
+
+      1. la litigiosidad, que es el RESULTADO, sigue sin enfriarse;
+      2. el FAL, que es el INSTRUMENTO, **no está saturado en su banda más
+         alta**. Ésa es la falla concreta que ADR-0228 corrigió y la única
+         forma en que la dimensión puede volver a inflarse sin que cambie nada
+         del mundo: hoy puntúa 55 sobre 100, así que hay 45 puntos de margen y
+         no dispara por ruido mensual.
 
     MIRA LA BANDA, NO EL PUNTAJE (retocado el 2026-08-21, ADR-0221). Antes
     exigía `puntaje < 60,0`, y el puntaje era 59,4 el día que se escribió: el
@@ -145,6 +156,17 @@ def test_la_dimension_laboral_sigue_siendo_la_mas_floja():
         f"{piso_sin_cambio}% que la paramétrica llama «sin cambio apreciable»: "
         f"la industria del juicio se habría enfriado de verdad, y eso hay que "
         f"mirarlo, no dar por bueno (puntaje {litigiosidad})")
-    # el FAL ya no discrimina (ADR-0142): quedó fijo en su techo
-    assert puntajes["reforma_laboral"] > litigiosidad, (
-        "la dimensión debería estar sostenida por el FAL en 100")
+    # El instrumento no puede estar en el techo de su escala. Es lo que pasó
+    # entre ADR-0142 y ADR-0228: los dos actos ya habían ocurrido, no podían
+    # deshacerse, y el indicador publicaba el máximo incluso durante los 24 días
+    # en que la ley que crea el Fondo estuvo judicialmente suspendida.
+    fal = parametrica.puntaje_de(
+        valores["fal_modernizacion_laboral"], "fal_modernizacion_laboral",
+        itcg.BANDAS_ITCG)
+    techo = max(p for _, _, p in itcg.BANDAS_ITCG["fal_modernizacion_laboral"])
+    assert fal < techo, (
+        f"el FAL puntúa {fal}, el techo de su escala: el instrumento se quedó "
+        f"sin recorrido y la dimensión pasa a depender sólo de la litigiosidad. "
+        f"Si el régimen entró en vigencia y hay fondos operando esto es correcto "
+        f"y hay que decirlo en un ADR; si no, el indicador volvió a contar actos "
+        f"dictados (ver ADR-0228)")

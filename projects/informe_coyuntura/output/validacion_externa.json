@@ -1,7 +1,7 @@
 {
   "_meta": {
     "adr": "0019 Decisión 6",
-    "generated_at": "2026-08-21T14:56:51.798191-03:00",
+    "generated_at": "2026-08-21T16:03:35.941718-03:00",
     "nota": "ITVC sin ICC para evitar circularidad (el ICC pesa 7,5% del ITVC)"
   },
   "serie_itvc": {
@@ -896,22 +896,22 @@
   },
   "redundancia_itcg": {
     "diferencias": {
-      "n_pares": 77,
-      "r_abs_medio": 0.113,
+      "n_pares": 76,
+      "r_abs_medio": 0.114,
       "share_altos": 0.013
     },
     "umbral": 0.7,
     "n_indicadores": 14,
-    "n_pares": 77,
-    "r_abs_medio": 0.447,
-    "share_altos": 0.234,
-    "share_bajos": 0.364,
+    "n_pares": 76,
+    "r_abs_medio": 0.445,
+    "share_altos": 0.237,
+    "share_bajos": 0.368,
     "matriz": {
       "apertura_comercial": {
         "cepo_mulc": 0.355,
         "concesiones_infraestructura": 0.207,
         "desregulacion_normativa": 0.505,
-        "fal_modernizacion_laboral": 0.269,
+        "fal_modernizacion_laboral": 0.211,
         "gasto_funcionamiento": 0.017,
         "libertad_opcion_salud": 0.295,
         "litigiosidad_laboral": 0.497,
@@ -925,7 +925,7 @@
         "apertura_comercial": 0.355,
         "concesiones_infraestructura": 0.321,
         "desregulacion_normativa": 0.92,
-        "fal_modernizacion_laboral": 0.347,
+        "fal_modernizacion_laboral": 0.307,
         "gasto_funcionamiento": 0.239,
         "libertad_opcion_salud": 0.89,
         "litigiosidad_laboral": 0.413,
@@ -939,7 +939,7 @@
         "apertura_comercial": 0.207,
         "cepo_mulc": 0.321,
         "desregulacion_normativa": 0.438,
-        "fal_modernizacion_laboral": 0.863,
+        "fal_modernizacion_laboral": 0.903,
         "gasto_funcionamiento": 0.212,
         "litigiosidad_laboral": 0.127,
         "masa_salarial": 0.12,
@@ -952,7 +952,7 @@
         "apertura_comercial": 0.505,
         "cepo_mulc": 0.92,
         "concesiones_infraestructura": 0.438,
-        "fal_modernizacion_laboral": 0.53,
+        "fal_modernizacion_laboral": 0.479,
         "gasto_funcionamiento": 0.294,
         "libertad_opcion_salud": 0.92,
         "litigiosidad_laboral": 0.42,
@@ -963,25 +963,24 @@
         "reestructuracion_organismos": 0.617
       },
       "fal_modernizacion_laboral": {
-        "apertura_comercial": 0.269,
-        "cepo_mulc": 0.347,
-        "concesiones_infraestructura": 0.863,
-        "desregulacion_normativa": 0.53,
-        "gasto_funcionamiento": 0.121,
-        "libertad_opcion_salud": 0.209,
-        "litigiosidad_laboral": 0.194,
-        "masa_salarial": 0.161,
-        "privatizaciones": 0.573,
-        "protocolo_antipiquetes": 0.318,
-        "reduccion_estado": 0.22,
-        "reestructuracion_organismos": 0.888
+        "apertura_comercial": 0.211,
+        "cepo_mulc": 0.307,
+        "concesiones_infraestructura": 0.903,
+        "desregulacion_normativa": 0.479,
+        "gasto_funcionamiento": 0.058,
+        "litigiosidad_laboral": 0.17,
+        "masa_salarial": 0.139,
+        "privatizaciones": 0.521,
+        "protocolo_antipiquetes": 0.285,
+        "reduccion_estado": 0.189,
+        "reestructuracion_organismos": 0.797
       },
       "gasto_funcionamiento": {
         "apertura_comercial": 0.017,
         "cepo_mulc": 0.239,
         "concesiones_infraestructura": 0.212,
         "desregulacion_normativa": 0.294,
-        "fal_modernizacion_laboral": 0.121,
+        "fal_modernizacion_laboral": 0.058,
         "libertad_opcion_salud": 0.248,
         "litigiosidad_laboral": 0.159,
         "masa_salarial": 0.433,
@@ -994,7 +993,6 @@
         "apertura_comercial": 0.295,
         "cepo_mulc": 0.89,
         "desregulacion_normativa": 0.92,
-        "fal_modernizacion_laboral": 0.209,
         "gasto_funcionamiento": 0.248,
         "litigiosidad_laboral": 0.34,
         "masa_salarial": 0.393,
@@ -1008,7 +1006,7 @@
         "cepo_mulc": 0.413,
         "concesiones_infraestructura": 0.127,
         "desregulacion_normativa": 0.42,
-        "fal_modernizacion_laboral": 0.194,
+        "fal_modernizacion_laboral": 0.17,
         "gasto_funcionamiento": 0.159,
         "libertad_opcion_salud": 0.34,
         "masa_salarial": 0.472,
@@ -1022,7 +1020,7 @@
         "cepo_mulc": 0.464,
         "concesiones_infraestructura": 0.12,
         "desregulacion_normativa": 0.457,
-        "fal_modernizacion_laboral": 0.161,
+        "fal_modernizacion_laboral": 0.139,
         "gasto_funcionamiento": 0.433,
         "libertad_opcion_salud": 0.393,
         "litigiosidad_laboral": 0.472,
@@ -1036,7 +1034,7 @@
         "cepo_mulc": 0.829,
         "concesiones_infraestructura": 0.531,
         "desregulacion_normativa": 0.943,
-        "fal_modernizacion_laboral": 0.573,
+        "fal_modernizacion_laboral": 0.521,
         "gasto_funcionamiento": 0.403,
         "libertad_opcion_salud": 0.794,
         "litigiosidad_laboral": 0.345,
@@ -1050,7 +1048,7 @@
         "cepo_mulc": 0.867,
         "concesiones_infraestructura": 0.26,
         "desregulacion_normativa": 0.875,
-        "fal_modernizacion_laboral": 0.318,
+        "fal_modernizacion_laboral": 0.285,
         "gasto_funcionamiento": 0.169,
         "libertad_opcion_salud": 0.994,
         "litigiosidad_laboral": 0.296,
@@ -1064,7 +1062,7 @@
         "cepo_mulc": 0.755,
         "concesiones_infraestructura": 0.164,
         "desregulacion_normativa": 0.71,
-        "fal_modernizacion_laboral": 0.22,
+        "fal_modernizacion_laboral": 0.189,
         "gasto_funcionamiento": 0.164,
         "libertad_opcion_salud": 0.708,
         "litigiosidad_laboral": 0.796,
@@ -1078,7 +1076,7 @@
         "cepo_mulc": 0.433,
         "concesiones_infraestructura": 0.769,
         "desregulacion_normativa": 0.617,
-        "fal_modernizacion_laboral": 0.888,
+        "fal_modernizacion_laboral": 0.797,
         "gasto_funcionamiento": 0.107,
         "libertad_opcion_salud": 0.283,
         "litigiosidad_laboral": 0.22,
@@ -1130,22 +1128,22 @@
         "por_diseno": null
       },
       {
+        "a": "concesiones_infraestructura",
+        "b": "fal_modernizacion_laboral",
+        "r": 0.903,
+        "n": 32,
+        "dimension_a": "privatizaciones_inversion",
+        "dimension_b": "reforma_laboral",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
         "a": "cepo_mulc",
         "b": "libertad_opcion_salud",
         "r": 0.89,
         "n": 28,
         "dimension_a": "reformas_economicas",
         "dimension_b": "social_orden",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
-        "a": "fal_modernizacion_laboral",
-        "b": "reestructuracion_organismos",
-        "r": 0.888,
-        "n": 32,
-        "dimension_a": "reforma_laboral",
-        "dimension_b": "reforma_estado",
         "misma_dimension": false,
         "por_diseno": null
       },
@@ -1170,16 +1168,6 @@
         "por_diseno": null
       },
       {
-        "a": "concesiones_infraestructura",
-        "b": "fal_modernizacion_laboral",
-        "r": 0.863,
-        "n": 32,
-        "dimension_a": "privatizaciones_inversion",
-        "dimension_b": "reforma_laboral",
-        "misma_dimension": false,
-        "por_diseno": null
-      },
-      {
         "a": "cepo_mulc",
         "b": "privatizaciones",
         "r": 0.829,
@@ -1195,6 +1183,16 @@
         "r": 0.799,
         "n": 30,
         "dimension_a": "social_orden",
+        "dimension_b": "reforma_estado",
+        "misma_dimension": false,
+        "por_diseno": null
+      },
+      {
+        "a": "fal_modernizacion_laboral",
+        "b": "reestructuracion_organismos",
+        "r": 0.797,
+        "n": 32,
+        "dimension_a": "reforma_laboral",
         "dimension_b": "reforma_estado",
         "misma_dimension": false,
         "por_diseno": null
@@ -2529,10 +2527,10 @@
     "2025-12": 68.3,
     "2026-01": 67.8,
     "2026-02": 68.5,
-    "2026-03": 72.5,
-    "2026-04": 69.4,
-    "2026-05": 74.7,
-    "2026-06": 81.8
+    "2026-03": 69.5,
+    "2026-04": 67.9,
+    "2026-05": 73.3,
+    "2026-06": 75.0
   },
   "merval_usd_mensual": {
     "2023-11": 918.3,
@@ -2568,27 +2566,27 @@
     "2026-05": 2131.0,
     "2026-06": 2087.8,
     "2026-07": 2090.0,
-    "2026-08": 1842.6
+    "2026-08": 1844.2
   },
   "correlaciones_itcg": {
     "niveles (ITCG vs Merval USD)": {
-      "r": 0.751,
+      "r": 0.753,
       "n": 31
     },
     "primeras diferencias (ITCG vs Merval USD)": {
-      "r": 0.132,
+      "r": 0.123,
       "n": 30
     },
     "niveles sin tendencia (ITCG vs Merval USD)": {
-      "r": 0.066,
+      "r": 0.096,
       "n": 31
     },
     "niveles (ITCG vs ICG)": {
-      "r": -0.686,
+      "r": -0.677,
       "n": 31
     },
     "primeras diferencias (ITCG vs ICG)": {
-      "r": 0.168,
+      "r": 0.126,
       "n": 30
     }
   },
@@ -4325,8 +4323,8 @@
           "etiqueta": "Ventas en autoservicios mayoristas",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.821,
-          "r_diferencias": -0.06,
+          "r_niveles": -0.822,
+          "r_diferencias": -0.059,
           "n": 30
         },
         {
@@ -4334,8 +4332,8 @@
           "etiqueta": "Ventas en centros de compras",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": 0.503,
-          "r_diferencias": 0.047,
+          "r_niveles": 0.505,
+          "r_diferencias": 0.04,
           "n": 30
         },
         {
@@ -4343,8 +4341,8 @@
           "etiqueta": "Demanda eléctrica residencial",
           "fuente": "CAMMESA",
           "propia": false,
-          "r_niveles": 0.033,
-          "r_diferencias": -0.234,
+          "r_niveles": 0.025,
+          "r_diferencias": -0.205,
           "n": 31
         },
         {
@@ -4352,8 +4350,8 @@
           "etiqueta": "Incertidumbre de política (EPU)",
           "fuente": "Banco de España / SECMCA",
           "propia": false,
-          "r_niveles": 0.263,
-          "r_diferencias": -0.069,
+          "r_niveles": 0.271,
+          "r_diferencias": -0.105,
           "n": 31
         },
         {
@@ -4361,8 +4359,8 @@
           "etiqueta": "Financiamiento externo a empresas",
           "fuente": "BCRA",
           "propia": true,
-          "r_niveles": 0.591,
-          "r_diferencias": 0.155,
+          "r_niveles": 0.607,
+          "r_diferencias": 0.192,
           "n": 31
         },
         {
@@ -4370,8 +4368,8 @@
           "etiqueta": "Consumo residencial de gas",
           "fuente": "Sec. de Energía",
           "propia": false,
-          "r_niveles": 0.014,
-          "r_diferencias": -0.215,
+          "r_niveles": 0.005,
+          "r_diferencias": -0.23,
           "n": 30
         },
         {
@@ -4379,8 +4377,8 @@
           "etiqueta": "Confianza en el Gobierno (ICG de la UTDT)",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": -0.686,
-          "r_diferencias": 0.164,
+          "r_niveles": -0.677,
+          "r_diferencias": 0.122,
           "n": 31
         },
         {
@@ -4388,8 +4386,8 @@
           "etiqueta": "Índice Líder de actividad",
           "fuente": "UTDT",
           "propia": false,
-          "r_niveles": 0.376,
-          "r_diferencias": -0.321,
+          "r_niveles": 0.383,
+          "r_diferencias": -0.382,
           "n": 31
         },
         {
@@ -4397,8 +4395,8 @@
           "etiqueta": "Inversión directa de no residentes",
           "fuente": "BCRA",
           "propia": true,
-          "r_niveles": -0.079,
-          "r_diferencias": 0.067,
+          "r_niveles": -0.081,
+          "r_diferencias": -0.031,
           "n": 31
         },
         {
@@ -4406,8 +4404,8 @@
           "etiqueta": "Inversión de cartera de no residentes",
           "fuente": "BCRA",
           "propia": true,
-          "r_niveles": 0.106,
-          "r_diferencias": -0.134,
+          "r_niveles": 0.117,
+          "r_diferencias": -0.14,
           "n": 31
         },
         {
@@ -4415,8 +4413,8 @@
           "etiqueta": "Merval en dólares",
           "fuente": "BYMA / CCL",
           "propia": true,
-          "r_niveles": 0.751,
-          "r_diferencias": 0.132,
+          "r_niveles": 0.753,
+          "r_diferencias": 0.123,
           "n": 31
         },
         {
@@ -4424,8 +4422,8 @@
           "etiqueta": "Pasajeros en transporte público",
           "fuente": "INDEC",
           "propia": false,
-          "r_niveles": -0.464,
-          "r_diferencias": -0.118,
+          "r_niveles": -0.465,
+          "r_diferencias": -0.137,
           "n": 30
         },
         {
@@ -4433,22 +4431,22 @@
           "etiqueta": "Ventas de naftas",
           "fuente": "Sec. de Energía",
           "propia": false,
-          "r_niveles": 0.497,
-          "r_diferencias": -0.15,
+          "r_niveles": 0.509,
+          "r_diferencias": -0.128,
           "n": 31
         }
       ],
       "n_propias": 4,
       "n_ajenas": 9,
       "niveles": {
-        "convergente": 0.382,
-        "discriminante": 0.406,
-        "brecha": -0.024
+        "convergente": 0.39,
+        "discriminante": 0.407,
+        "brecha": -0.017
       },
       "diferencias": {
-        "convergente": 0.122,
-        "discriminante": 0.153,
-        "brecha": -0.031
+        "convergente": 0.121,
+        "discriminante": 0.156,
+        "brecha": -0.035
       },
       "factor": {
         "cargas": {
@@ -4610,38 +4608,38 @@
           ],
           [
             "2026-03",
-            72.5,
+            69.5,
             1.34
           ],
           [
             "2026-04",
-            69.4,
+            67.9,
             0.704
           ],
           [
             "2026-05",
-            74.7,
+            73.3,
             2.186
           ],
           [
             "2026-06",
-            81.8,
+            75.0,
             0.563
           ]
         ],
-        "r_niveles": 0.669,
-        "r_diferencias": -0.004,
-        "mejor_sola_niveles": 0.751,
-        "mejor_sola_diferencias": 0.155,
+        "r_niveles": 0.678,
+        "r_diferencias": -0.059,
+        "mejor_sola_niveles": 0.753,
+        "mejor_sola_diferencias": 0.192,
         "aporte_sobre_tendencia": {
           "n": 31,
           "suficiente": true,
           "colineal": false,
           "r2_tendencia": 0.449,
-          "r2_con_indice": 0.453,
-          "aporte": 0.004,
+          "r2_con_indice": 0.461,
+          "aporte": 0.012,
           "signo": "positivo",
-          "coef": 0.0257
+          "coef": 0.046
         },
         "plano": "niveles",
         "pares_grafico": [
@@ -4782,27 +4780,27 @@
           ],
           [
             "2026-03",
-            72.5,
+            69.5,
             1.34
           ],
           [
             "2026-04",
-            69.4,
+            67.9,
             0.704
           ],
           [
             "2026-05",
-            74.7,
+            73.3,
             2.186
           ],
           [
             "2026-06",
-            81.8,
+            75.0,
             0.563
           ]
         ]
       },
-      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,382 y a las 9 ajenas con 0,406. En los cambios mes a mes la separación no se sostiene: 0,122 con lo propio contra 0,153 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
+      "lectura": "Contra un panel de 13 estadísticas externas —ninguna forma parte del índice— la comparación se hace en dos planos. En niveles el índice acompaña a las 4 estadísticas de su propio terreno con 0,39 y a las 9 ajenas con 0,407. En los cambios mes a mes la separación no se sostiene: 0,121 con lo propio contra 0,156 con lo ajeno. Descontada la tendencia común del período, el índice se mueve tanto o más con estadísticas de otros terrenos que con las del suyo. Se publica porque el estándar pide explicar las diferencias, no informar sólo las que confirman: con unos treinta meses de historia y un panel corto, es un resultado a vigilar antes que un veredicto."
     },
     "itcp": {
       "indice": "itcp",

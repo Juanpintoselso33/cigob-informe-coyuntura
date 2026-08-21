@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-15
 cinturon: 'gestion'
 indicadores: [fal_modernizacion_laboral]
-relacionado: ['0013', '0062']
+relacionado: ['0013', '0062', '0228']
 modificado_por: ['0098']
 ambito: 'Cinturón gestión · ITCG · `fal_modernizacion_laboral`'
 ---
