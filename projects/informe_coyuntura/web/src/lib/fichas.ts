@@ -2421,12 +2421,12 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el cociente rebaseado a 100 = promedio del 4º trimestre de 2023 (más canastas = mejora).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo y sigue siendo el componente más pesado del ITCIS (17,06% efectivo).",
+      "Pertenece a la dimensión de ingresos y consumo (59,59% interno · 16,72% del ITCIS) y sigue siendo el componente más pesado.",
       "El ITCIS promedia sus componentes base-100 por dimensión: por encima de 100, la brecha acumula mejora contra el arranque del mandato.",
     ],
     limitaciones: [
       "El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.",
-      "El peso del componente (17,06% del índice) es una discusión abierta declarada del diseño.",
+      "El peso del componente (16,72% del índice) es una discusión abierta declarada del diseño.",
       "Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.",
     ],
     faltantes: "Si una fuente falla, se mantiene el último valor publicado (marcado como desactualizado); si el componente no calcula, los pesos del índice se renormalizan.",
@@ -2583,7 +2583,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menos proteína por habitante = deterioro).",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (4% interno · 1,12% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (3,92% interno · 1,1% del ITCIS).",
       "Mide el acceso TOTAL a proteína cárnica, no el consumo de una carne. La distinción no es de matiz: la carne vacuna cae 10,7% contra el arranque del mandato y el total cae 5,0%, porque parte de esa caída es sustitución hacia pollo y cerdo. Leer la vacuna sola como pérdida de poder adquisitivo es el falso positivo que este indicador desarma.",
       "La composición se publica junto al color: qué parte del consumo sigue siendo vacuna, y si el total se sostiene o cae con ella.",
     ],
@@ -2618,7 +2618,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se invierte, como los otros componentes que se leen al revés: más pobreza es peor, así que la base va arriba en el cociente y por encima de 100 significa MENOS pobreza que en la transición.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (33,19% interno · 9,31% del ITCIS).",
+      "Pertenece a la dimensión de ingresos y consumo (32,53% interno · 9,13% del ITCIS).",
       "Cubre lo que el indicador de salario no puede ver: la brecha entre salario y canasta compara salario REGISTRADO, así que sólo alcanza al empleo formal, mientras la pobreza cuenta personas, incluidos los hogares informales y los que no viven de un sueldo.",
     ],
     limitaciones: [
@@ -2906,7 +2906,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Recorte declarado: el componente se acota al techo de 140 — un boom puntual no compra compensación ilimitada dentro del índice; el valor crudo queda declarado en el detalle.",
     ],
     incidenciaTexto: [
-      "Pertenece a la dimensión de ingresos y consumo (2% interno · 0,56% del ITCIS): el peso más chico del índice.",
+      "Pertenece a la dimensión de ingresos y consumo (1,96% interno · 0,55% del ITCIS): el peso más chico del índice, empatado con el de autos.",
     ],
     limitaciones: [
       "Es el componente más eufórico del cinturón (muy por encima de su base): motivo del techo de recorte y de la baja de peso.",
@@ -2917,6 +2917,42 @@ export const FICHAS: Record<string, Ficha> = {
     cambios: [
       { fecha: "2026-07-03", cambio: "Entra al ITCIS con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad." },
       { fecha: "2026-07-04", cambio: "Se aplica el techo de recorte 140 y el peso interno baja de 10% a 5%." },
+      { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos como componente espejo y el peso interno pasa de 2% a 1,96%: los cuatro componentes previos de la dimensión ceden proporcionalmente y conservan su orden relativo (ADR-0223). Lo que mide y cómo se transforma no cambian; sí cambia lo que se puede leer con él, porque las dos series juntas distinguen más consumo de sustitución hacia el vehículo barato." },
+    ],
+  },
+
+  patentamiento_autos: {
+    tipo: "indicador",
+    id: "patentamiento_autos",
+    cinturon: "vida_cotidiana",
+    rezago: "Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo.",
+    fuente: {
+      organismo: "DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios",
+      operacion: "Inscripciones iniciales de automotores (0 kilómetro, subastados y armados fuera de fábrica), por mes y jurisdicción del registro seccional",
+      serie: "Estadística de trámites de automotores, enero de 2000 en adelante",
+      url: "https://datos.jus.gob.ar/dataset/estadistica-de-tramites-de-automotores",
+      acceso: "Automático: CSV abierto sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse.",
+    },
+    transformaciones: [
+      "Componente del índice: el promedio móvil de 12 meses contra las ventanas móviles equivalentes del 4º trimestre de 2023 — la misma transformación que las motos, y por el mismo motivo medido: enero pesa 1,36 veces el mes promedio y diciembre 0,57, de modo que el flujo crudo contra una base fija mediría calendario además de poder de compra.",
+      "Se suman las 24 jurisdicciones. La apertura por provincia queda disponible y no entra al puntaje.",
+    ],
+    incidenciaTexto: [
+      "Pertenece a la dimensión de ingresos y consumo (2% interno · 0,56% del ITCIS): el peso más chico del índice, empatado con el de motos.",
+      "El peso igual al de motos es deliberado: es su espejo, y darle más o menos afirmaría cuál de los dos vehículos dice más del bolsillo sin haberlo medido.",
+      "Leído contra el de motos separa dos cosas que un solo indicador confunde. Que las dos series suban a la vez es más consumo; que la de motos suba mientras la de autos cae es sustitución hacia el vehículo barato, y esa segunda lectura no existía cuando el índice miraba motos solas.",
+    ],
+    limitaciones: [
+      "Es una compra financiada: responde tanto al crédito y a las condiciones de importación como al ingreso de los hogares. No distingue un hogar que puede más de un hogar que consigue cuota.",
+      "Cuenta unidades, no gama ni precio: un mes de autos de entrada de gama y uno de vehículos caros se registran igual.",
+      "La inscripción es del registro seccional donde se hace el trámite, que no siempre coincide con dónde vive el comprador — la apertura por jurisdicción sirve para composición, no para geografía del consumo.",
+      "Es un proxy de consumo durable, no de bienestar general.",
+      "En el informe de redundancia aparece como el par más acoplado del cinturón junto al de motos. Buena parte de ese acoplamiento es de medición y no del fenómeno: el componente de motos está apoyado contra el techo de recorte del índice, así que su línea quedó plana y el tramo en que las dos series se separan —autos bajando desde fines de 2025, motos subiendo— no entra en la comparación. Medido sobre las series sin recortar, el acoplamiento cae por debajo del umbral.",
+    ],
+    faltantes: "El colector levanta excepción ante cualquier cambio de forma de la fuente en vez de publicar una serie recortada; con la fuente caída, la card mantiene el último valor como desactualizado y la serie conserva sus puntos anteriores.",
+    revisiones: "El archivo publica el histórico completo desde el año 2000 y se rebaja entero en cada corrida, así que una corrección de la fuente se incorpora sola.",
+    cambios: [
+      { fecha: "2026-08-21", cambio: "Entra al ITCIS con 2% de la dimensión de ingresos y consumo, como espejo del patentamiento de motos y con su misma transformación (ADR-0223). La fuente es el registro, no la cámara: ACARA reelabora estos mismos números y ADEFA mide producción y ventas de fábrica a concesionario, que ocurren antes de que el auto exista como patente." },
     ],
   },
 
@@ -2997,13 +3033,13 @@ export const FICHAS: Record<string, Ficha> = {
     nombreLargo: "Índice de Tensión del Cinturón de Impacto Social",
     base100: true,
     cinturon: "vida_cotidiana",
-    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Diecisiete componentes en seis dimensiones.",
+    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Dieciocho componentes en seis dimensiones.",
     marcoConceptual: [
       "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, la mora de las familias con el crédito, el empleo y sus prospectivas, y el clima de confianza y seguridad.",
       "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. A diferencia del ITCM y el ITCG, no usa tablas de umbrales: mide la evolución acumulada contra una línea de base común — el arranque del mandato.",
     ],
     seleccion: [
-      "Diecisiete componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
+      "Dieciocho componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
       "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada donde no existe medición de entonces (la encuesta de victimización arranca su base en enero de 2024, documentado).",
     ],
     tratamiento: [
@@ -3061,6 +3097,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-20", cambio: "La informalidad se muda de la dimensión de ingresos y consumo a la de prospectivas de empleo, que es donde mide (ADR-0214). Los pesos de las dos dimensiones se ajustan para que el peso efectivo de cada componente quede intacto: se mueve de casa, no de importancia. Ingresos pasa de 37% a 28,06% y empleo de 15% a 24,19%." },
       { fecha: "2026-08-20", cambio: "El componente de proteína animal pasa a puntuar el consumo TOTAL de carnes y no la carne vacuna sola (ADR-0217): buena parte de la caída de la vacuna es sustitución hacia pollo y cerdo, y leerla como pérdida de poder adquisitivo era un falso positivo. La vacuna sigue relevándose como diagnóstico, sin tarjeta propia." },
       { fecha: "2026-08-21", cambio: "Dos cambios en la dimensión de empleo. El cierre de PyMEs pasa a medirse con los empleadores activos de la SRT en lugar del IPI manufacturero, que era una aproximación por producción industrial (ADR-0218). Y entra el peso del trabajo independiente como su contracara (ADR-0219). El índice queda con diecisiete componentes y cuatro de los seis de la dimensión miden empleo directamente." },
+      { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos a la dimensión de ingresos y consumo, con el mismo peso y la misma transformación que el de motos (ADR-0223). El índice queda con dieciocho componentes. La razón no es sumar un dato más de consumo: con motos solas, un aumento del patentamiento se lee siempre como mejora, y la moto es además el sustituto barato del auto. Las dos series juntas distinguen más consumo de bajar de categoría." },
     ],
   },
 

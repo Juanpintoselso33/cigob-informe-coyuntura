@@ -137,6 +137,8 @@ COMPONENTES = {
     # serie se reconstruye desde la faena del INDEC y YA llega en base 100.
     "consumo_carnes_total":   ("consumo_carnes_total", False, False, True),
     "patentamiento_motos":    ("patentamiento_motos", False, False, False),
+    # ADR-0223: mismo tratamiento que motos — móvil 12m y rebase a 4T-2023.
+    "patentamiento_autos":    ("patentamiento_autos", False, False, False),
     "informalidad":           ("informalidad", True, True, False),
     # ADR-0219: invertido, igual que informalidad y pluriempleo.
     "trabajo_independiente":  ("trabajo_independiente", True, False, False),
@@ -145,6 +147,12 @@ COMPONENTES = {
 }
 # Bases DECLARADAS distintas del 4T-2023 (misma regla que publicar):
 BASES_PROPIAS = {"inseguridad": ("2024-01",)}   # IVI reanudado ene-2024 (ADR-0032)
+# Componentes que entran por acumulado móvil de 12 meses porque su flujo
+# mensual crudo tiene estacionalidad fuerte y contra una base fija mediría
+# calendario: motos (ADR-0024) y autos (ADR-0223). Tiene que ser la MISMA
+# lista que aplica `itvc.indices_desde_series`, o la serie reconstruida y el
+# índice vivo dejan de ser el mismo índice.
+MOVIL12 = {"patentamiento_motos", "patentamiento_autos"}
 ITVC_TECHO = 140.0                              # winsorización asimétrica (ADR-0033)
 
 
@@ -235,8 +243,8 @@ def _indices_itvc_por_componente() -> dict:
     indices_por_comp = {}
     for comp, (skey, invertido, anual, ya_rebaseada) in COMPONENTES.items():
         vals = _mensual(series.get(skey) or [])
-        if comp == "patentamiento_motos":
-            vals = _movil12(vals)          # ADR-0024: estacionalidad fuerte
+        if comp in MOVIL12:
+            vals = _movil12(vals)          # ADR-0024/0223: estacionalidad fuerte
         idx = (vals if ya_rebaseada
                else _rebase(vals, invertido, anual, BASES_PROPIAS.get(comp)))
         # winsorización asimétrica del ADR-0033: mismo techo que publicar

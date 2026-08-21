@@ -86,9 +86,30 @@ DIMENSIONES_ITVC = {
         # Por eso entra a ESTA dimensión, donde el solapamiento queda explícito y
         # los pesos lo absorben, y no como dimensión aparte fingiendo
         # independencia.
-        "indicadores": {"brecha_salario_cbt": 0.6081,
-                        "pobreza_nowcast": 0.3319,
-                        "consumo_carnes_total": 0.0400, "patentamiento_motos": 0.0200},
+        # ADR-0223: entra `patentamiento_autos` con 2%, exactamente el peso de
+        # las motos. Es el espejo del componente que ya estaba y el peso igual
+        # es la única asignación que no afirma, sin haberlo medido, cuál de los
+        # dos vehículos dice más del bolsillo. Los cuatro previos ceden
+        # proporcionalmente (×0,98) y conservan su orden relativo — la regla de
+        # ADR-0130/0153. El peso NOMINAL de la dimensión no se toca.
+        #
+        # Sobre las series SIN recortar correlacionan +0,894 en niveles y
+        # +0,368 en primeras diferencias: el nivel alto es la época en común que
+        # ADR-0108 ya documentó para todo el cinturón, no señal repetida. Y
+        # desde dic-2025 se separan — autos cae de 136,1 a 125,5 mientras motos
+        # sube de 138,2 a 170,5—, que es exactamente lo que una sola de las dos
+        # series no podía mostrar.
+        #
+        # OJO al leer la matriz de redundancia publicada, que dice +0,978 y
+        # +0,801 para este par: mide los componentes DESPUÉS del techo de 140, y
+        # motos está clavada ahí desde ene-2026, así que el techo borra el tramo
+        # en que las dos se separan. Es el único par del cinturón por encima de
+        # 0,7 al destendenciar y está declarado en el ADR, con el motivo.
+        "indicadores": {"brecha_salario_cbt": 0.5959,
+                        "pobreza_nowcast": 0.3253,
+                        "consumo_carnes_total": 0.0392,
+                        "patentamiento_motos": 0.0196,
+                        "patentamiento_autos": 0.0200},
     },
     "precios": {
         "nombre": "Presión de precios",
@@ -464,6 +485,13 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # estacionalidad fuerte y contra la base fija 4T-2023 mide calendario.
     idx["patentamiento_motos"] = (rebase_movil12(series, "patentamiento_motos")
                                   or rebase_de_serie(series, "patentamiento_motos"))
+    # ADR-0223: autos, con la MISMA transformación que motos y por el mismo
+    # motivo medido — la estacionalidad del flujo crudo es incluso más fuerte
+    # (enero pesa 1,36 veces el mes promedio y diciembre 0,57). Sin serie no
+    # hay fallback a baseline como en motos, y es deliberado: la DNRPA publica
+    # el histórico completo en cada corrida, así que o está entero o no está.
+    idx["patentamiento_autos"] = (rebase_movil12(series, "patentamiento_autos")
+                                  or rebase_de_serie(series, "patentamiento_autos"))
     # IVI (ADR-0032): base = ene-2024, la primera medición tras la reanudación
     # de la encuesta (suspendida 2020-2023; su ventana de 12 meses captura
     # mayormente el año PRE-mandato, así que aproxima bien el arranque).

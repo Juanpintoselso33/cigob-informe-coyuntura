@@ -380,7 +380,8 @@ export const LABELS: Record<string, string> = {
   mortalidad_pymes: "Empleadores PyME activos", trabajo_independiente: "Peso del trabajo independiente", despacho_cemento: "Construcción (ISAC)",
   pluriempleo: "Subocupación demandante", inseguridad: "Victimización (IVI)",
   icc_utdt: "Confianza del consumidor (ICC)", sentimiento_digital: "Sentimiento digital (Trends)",
-  patentamiento_motos: "Patentamiento de motos", desocupacion: "Desocupación",
+  patentamiento_motos: "Patentamiento de motos", patentamiento_autos: "Patentamiento de autos",
+  desocupacion: "Desocupación",
   // gestion
   cepo_mulc: "Brecha cambiaria (cepo)", privatizaciones: "Privatizaciones (etapas)",
   concesiones_infraestructura: "Concesiones viales", reduccion_estado: "Dotación del Estado (APN)",
@@ -452,7 +453,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   mora_familias: "%",
   peso_tarifas: "% m/m", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
-  sentimiento_digital: "pts", patentamiento_motos: "u.",
+  sentimiento_digital: "pts", patentamiento_motos: "u.", patentamiento_autos: "u.",
   // gestion (insumos del ITCG)
   cepo_mulc: "%", reduccion_estado: "%", apertura_comercial: "%",
   cobertura_judicial: "% cubierto",
@@ -521,6 +522,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   inseguridad: "% de hogares víctimas (últimos 12 meses)", icc_utdt: "Índice",
   sentimiento_digital: "Índice (0–100)",
   patentamiento_motos: "Unidades",
+  patentamiento_autos: "Unidades (autos 0km inscriptos en el mes)",
   // gestion
   cepo_mulc: "% de brecha", privatizaciones: "% de avance (etapas 0-4)",
   concesiones_infraestructura: "% de km adjudicados (RFC)", reduccion_estado: "% de variación vs dic-2023",

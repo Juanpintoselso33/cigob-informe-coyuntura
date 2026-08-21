@@ -39,7 +39,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · > 5 → 10
 
-**Lo gobiernan**: [ADR-0077](../adr/0077-ipc-nucleo-serie-acompanante.md) El IPC general se lee junto al núcleo · [ADR-0122](../adr/0122-riesgo-sistemico-del-deflactor-ipc.md) El riesgo sistémico del deflactor IPC, declarado en la metodología
+**Lo gobiernan**: [ADR-0077](../adr/0077-ipc-nucleo-serie-acompanante.md) El IPC general se lee junto al núcleo · [ADR-0122](../adr/0122-riesgo-sistemico-del-deflactor-ipc.md) El riesgo sistémico del deflactor IPC, declarado en la metodología · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
 
 #### Expectativas inflación (REM 12m)
 
@@ -53,7 +53,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ 1 → 100 · 1–2 → 85 · 2–3 → 65 · 3–5 → 40 · > 5 → 10
 
-**Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
+**Lo gobiernan**: [ADR-0002](../adr/0002-rem-equivalente-mensual.md) El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
 
 #### Exceso de pesos sobre la demanda (IDM)
 
@@ -67,7 +67,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ -2 → 100 · -2–2 → 85 · 2–5 → 60 · 5–8 → 35 · > 8 → 10
 
-**Lo gobiernan**: [ADR-0053](../adr/0053-transparencia-y-agregados-monetarios-idm.md) Transparencia y agregados monetarios del IDM
+**Lo gobiernan**: [ADR-0053](../adr/0053-transparencia-y-agregados-monetarios-idm.md) Transparencia y agregados monetarios del IDM · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
 
 #### Dolarización dentro y fuera del sistema
 
@@ -77,10 +77,11 @@ Suma de pesos: 100%.
 |---|---|
 | Peso dentro de la dimensión | 20% |
 | Peso efectivo en el índice | **5.2%** |
+| Procedencia del ancla | `convencion` — cortes por percentiles (p0/p25/p50/p75/p100) de cada componente, como pide la sección 7 de la ficha; la matriz A×B y sus cuatro esquinas vienen del documento (ADR-0192) |
 
 **Bandas**: ≤ 20 → 100 · 20–50 → 60 · 50–80 → 35 · > 80 → 10
 
-**Lo gobiernan**: [ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va
+**Lo gobiernan**: [ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va · [ADR-0193](../adr/0193-peso-del-desequilibrio-monetario.md) El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó
 
 ### Dimensión `viabilidad_fiscal_comercial` (24%)
 
@@ -301,10 +302,11 @@ histórica.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0159. Verificar antes de tratarlo como abierto.
 - **[ADR-0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md)** — Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va
   <br>- El peso definitivo dentro de la dimensión queda pendiente de definir con Diego.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0193. Verificar antes de tratarlo como abierto.
 
 ## Todos los ADR vigentes de este cinturón
 
-31 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+32 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0002](../adr/0002-rem-equivalente-mensual.md) — El REM se puntúa por su equivalente mensual (raíz-12), no por nivel absoluto
 - [0003](../adr/0003-recaudacion-interanual-real.md) — La recaudación se mide en variación interanual REAL (deflactada)
@@ -337,3 +339,4 @@ histórica.
 - [0152](../adr/0152-la-recaudacion-mide-nivel-no-variacion.md) — La recaudación pasa a medir NIVEL, y suma los impuestos provinciales
 - [0158](../adr/0158-validacion-del-itcm-por-puntos-de-giro.md) — El ITCM se valida por puntos de giro, no sólo por correlación
 - [0192](../adr/0192-desequilibrio-monetario-stock-por-flujo.md) — Desequilibrio monetario: cruzar el stock que se ve con el flujo que se va
+- [0193](../adr/0193-peso-del-desequilibrio-monetario.md) — El desequilibrio monetario pesa como las reservas, no como el indicador que reemplazó

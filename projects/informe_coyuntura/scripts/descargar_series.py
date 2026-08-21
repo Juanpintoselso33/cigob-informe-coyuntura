@@ -2017,6 +2017,21 @@ def fetch_trabajo_independiente_serie() -> list:
             if ym >= "2019-01"]
 
 
+def fetch_patentamiento_autos_serie() -> list:
+    """Inscripciones iniciales de automotores por mes, total país (DNRPA).
+    MISMA serie que la card y que el índice (ADR-0223): el colector devuelve
+    el histórico y la card es su último punto.
+
+    Arranca en nov-2022 —11 meses antes de la base— para que las ventanas
+    móviles de 12 meses que terminan en oct/nov/dic-2023 estén completas, igual
+    que la de motos (ADR-0024). El archivo de la DNRPA llega hasta el año 2000;
+    el recorte lo hace el colector."""
+    sys.path.insert(0, str(Path(__file__).parent / "vida_cotidiana"))
+    from collectors.dnrpa_autos import fetch_patentamiento_autos
+    d = fetch_patentamiento_autos()
+    return [[f"{ym}-01", v] for ym, v in sorted(d["serie"].items())]
+
+
 def fetch_empleadores_pyme_serie() -> list:
     """Cantidad mensual de empleadores de hasta 50 trabajadores con cobertura
     de ART (SRT). Es la MISMA serie que alimenta la card y el índice: el
@@ -2520,6 +2535,12 @@ VIDA_DERIVADAS += [
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
     ("mora_familias", "% de cartera irregular (familias)", "BCRA — Informe sobre Bancos (personales + tarjetas)", fetch_mora_serie),
     ("patentamiento_motos", "unidades/mes", "CAFAM API (histórico mensual)", fetch_motos_serie_cached),
+    # ADR-0223: el espejo de las motos. A diferencia de CAFAM —que se consulta
+    # mes a mes y por eso necesita cache— la DNRPA publica el histórico entero
+    # en un CSV, así que no hay nada que acumular: cada corrida lo rebaja completo.
+    ("patentamiento_autos", "unidades/mes",
+     "DNRPA — inscripciones iniciales de automotores (CSV mensual por jurisdicción)",
+     fetch_patentamiento_autos_serie),
     # inseguridad = IVI mensual (ADR-0032); el SNIC anual sigue como serie de
     # contraste bajo clave propia (sin card: alimenta la ficha y validaciones)
     ("inseguridad", "% de hogares víctimas (12 meses)", "UTDT — IVI (LICIP)", fetch_ivi_serie),

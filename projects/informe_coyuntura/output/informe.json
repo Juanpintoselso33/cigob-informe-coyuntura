@@ -1,6 +1,6 @@
 {
   "schema_version": "1.2.0",
-  "generated_at": "2026-08-21T11:24:32.884090-03:00",
+  "generated_at": "2026-08-21T12:07:13.997565-03:00",
   "period": "2026-08",
   "score_global": 4.1,
   "ponderacion": {
@@ -1170,37 +1170,43 @@
       },
       "alerta": null,
       "itvc": {
-        "valor": 90.6,
+        "valor": 90.7,
         "banda": "deterioro_moderado",
         "banda_legible": "Deterioro moderado vs 4T-2023",
         "dimensiones": {
           "ingresos": {
             "nombre": "Ingresos y consumo",
             "peso": 0.2806,
-            "puntaje": 117.1,
+            "puntaje": 117.3,
             "indicadores": {
               "brecha_salario_cbt": {
-                "peso": 0.6081,
+                "peso": 0.5959,
                 "puntaje_banda": 112.5,
                 "puntaje_aplicado": 112.5,
-                "peso_efectivo": 0.1706
+                "peso_efectivo": 0.1672
               },
               "pobreza_nowcast": {
-                "peso": 0.3319,
+                "peso": 0.3253,
                 "puntaje_banda": 126.9,
                 "puntaje_aplicado": 126.9,
-                "peso_efectivo": 0.0931
+                "peso_efectivo": 0.0913
               },
               "consumo_carnes_total": {
-                "peso": 0.04,
+                "peso": 0.0392,
                 "puntaje_banda": 95.0,
                 "puntaje_aplicado": 95.0,
-                "peso_efectivo": 0.0112
+                "peso_efectivo": 0.011
               },
               "patentamiento_motos": {
-                "peso": 0.02,
+                "peso": 0.0196,
                 "puntaje_banda": 140.0,
                 "puntaje_aplicado": 140.0,
+                "peso_efectivo": 0.0055
+              },
+              "patentamiento_autos": {
+                "peso": 0.02,
+                "puntaje_banda": 125.5,
+                "puntaje_aplicado": 125.5,
                 "peso_efectivo": 0.0056
               }
             },

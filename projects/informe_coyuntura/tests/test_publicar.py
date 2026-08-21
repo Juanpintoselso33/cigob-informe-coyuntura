@@ -485,7 +485,10 @@ def test_vida_itvc_reconcilia():
     # 16 el mismo día (ADR-0154: salen endeudamiento_familiar e indice_lider).
     # 17 desde 2026-08-21 (ADR-0219: entra trabajo_independiente, la
     # contracara del cierre de PyMEs).
-    assert len(en_indice) == 17, f"esperaba 17 componentes en el índice, hay {len(en_indice)}"
+    # 18 el mismo día (ADR-0223: entra patentamiento_autos, el espejo de las
+    # motos — con motos solas, subir el patentamiento siempre se leía como
+    # mejora, y la moto es el sustituto barato del auto).
+    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"

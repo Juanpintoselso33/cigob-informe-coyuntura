@@ -318,6 +318,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Proxy de consumo durable de los sectores medios y bajos.",
     frecuencia: "Mensual", tipo: "Conteo",
   },
+  patentamiento_autos: {
+    que: "Cuántos autos 0 kilómetro se inscriben en el mes en los Registros Seccionales de la Propiedad del Automotor. En el ITCIS puntúa por el promedio móvil de 12 meses rebaseado a 100 = 4T-2023, igual que las motos.",
+    aporta: "Es la compra más cara que hace un hogar después de la vivienda, y la más sensible al crédito: se pospone apenas el ingreso se estrecha. Leído junto al de motos separa dos cosas que un solo indicador confunde — que los hogares compren más, o que bajen de categoría —, porque la moto es a la vez medio de trabajo y sustituto barato del auto.",
+    frecuencia: "Mensual (el mes se publica en los primeros días del siguiente)", tipo: "Conteo",
+  },
 
   // ── Espíritu de época (el humor social) ─────────────────────────
   clima_electoral: {

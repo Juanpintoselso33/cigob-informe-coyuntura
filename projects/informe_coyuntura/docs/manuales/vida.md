@@ -14,7 +14,7 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `patentamiento_motos` |
+| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `patentamiento_motos`, `patentamiento_autos` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias` |
 | `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `pluriempleo`, `trabajo_independiente` |
@@ -44,8 +44,8 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 61% |
-| Peso efectivo en el índice | **17.1%** |
+| Peso dentro de la dimensión | 60% |
+| Peso efectivo en el índice | **16.7%** |
 | Procedencia del ancla | `conceptual` — rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
@@ -59,7 +59,7 @@ donde colar una calibración (ADR-0123).
 | | |
 |---|---|
 | Peso dentro de la dimensión | 33% |
-| Peso efectivo en el índice | **9.3%** |
+| Peso efectivo en el índice | **9.1%** |
 | Procedencia del ancla | `conceptual` — rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
@@ -87,12 +87,25 @@ donde colar una calibración (ADR-0123).
 | | |
 |---|---|
 | Peso dentro de la dimensión | 2% |
-| Peso efectivo en el índice | **0.6%** |
+| Peso efectivo en el índice | **0.5%** |
 | Procedencia del ancla | `conceptual` — móvil 12m rebaseado a 4T-2023 (ADR-0024); el tope conceptual de 140 le recorta el boom, no lo calibra |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0018).
+**Lo gobiernan**: [ADR-0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) El espejo de las motos: el patentamiento de autos
+
+#### Patentamiento de autos
+
+`patentamiento_autos`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 2% |
+| Peso efectivo en el índice | **0.6%** |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) El espejo de las motos: el patentamiento de autos
 
 ### Dimensión `precios` (25%)
 
@@ -234,6 +247,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 10% |
 | Peso efectivo en el índice | **2.4%** |
+| Procedencia del ancla | `conceptual` — participación rebaseada a 4T-2023; ancla en fecha fija (ADR-0219) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -319,7 +333,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-32 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+33 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -353,3 +367,4 @@ histórica.
 - [0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) — Puntúa el acceso total a proteína, no la carne vacuna
 - [0218](../adr/0218-el-cierre-de-pymes-se-mide-con-la-srt.md) — El cierre de PyMEs se mide con la SRT, no con la producción industrial
 - [0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) — La contracara del cierre: el trabajo independiente
+- [0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) — El espejo de las motos: el patentamiento de autos

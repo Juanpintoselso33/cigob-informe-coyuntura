@@ -140,7 +140,7 @@ Suma de pesos: 100%.
 
 **Bandas**: ≤ -15 → 100 · -15–-5 → 85 · -5–5 → 65 · 5–20 → 40 · > 20 → 10
 
-**Lo gobiernan**: sin ADR propio — se definió con la paramétrica del cinturón (ADR-0013).
+**Lo gobiernan**: [ADR-0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) Un cable trampa mira la banda, no el puntaje
 
 ### Dimensión `privatizaciones_inversion` (15%)
 
@@ -250,7 +250,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-30 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+31 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -282,3 +282,4 @@ histórica.
 - [0186](../adr/0186-masa-salarial-sale-del-itcg.md) — `masa_salarial` sale del cálculo del ITCG
 - [0188](../adr/0188-reestructuracion-organismos-numerador-caso-por-caso.md) — `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso
 - [0189](../adr/0189-si-no-puntua-no-se-muestra.md) — Si no puntúa no se muestra, y una promesa cumplida sí puntúa
+- [0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) — Un cable trampa mira la banda, no el puntaje

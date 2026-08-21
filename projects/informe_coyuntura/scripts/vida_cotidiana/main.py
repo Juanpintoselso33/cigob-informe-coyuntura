@@ -82,6 +82,7 @@ def run_all() -> dict:
     from collectors.bcra import fetch_bcra
     from collectors.utdt_icc import fetch_icc
     from collectors.cafam import fetch_cafam
+    from collectors.dnrpa_autos import fetch_patentamiento_autos
     from collectors.ciccra import fetch_ciccra
     from collectors.consumo_carnes import fetch_consumo_carnes
     from collectors.srt_empleadores import fetch_empleadores_pyme
@@ -97,18 +98,26 @@ def run_all() -> dict:
     def _independiente_sin_serie():
         d = fetch_trabajo_independiente()
         return {k: v for k, v in d.items() if k != 'serie'}
+
+    def _autos_sin_serie():
+        """Mismo criterio que los dos de arriba: la card sólo necesita el
+        último mes y la serie completa la baja `descargar_series.py` del
+        mismo colector."""
+        d = fetch_patentamiento_autos()
+        return {k: v for k, v in d.items() if k != 'serie'}
     from collectors.snic import fetch_snic
     from collectors.salud import fetch_salud
     from collectors.trends import fetch_trends
     from collectors.utdt_nowcast_pobreza import fetch_nowcast_pobreza
 
-    logger.info("Iniciando recolección — 11 fuentes...")
+    logger.info("Iniciando recolección — 12 fuentes...")
 
     fuentes_automatizadas = [
         "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
         "bcra (creditos privados, tarjeta, personales, hipotecarios, BADLAR)",
         "utdt_icc (Indice de Confianza del Consumidor)",
         "cafam (patentamiento motos por provincia)",
+        "dnrpa (patentamiento autos: inscripciones iniciales por jurisdiccion)",
         "ciccra (consumo carne vacuna per capita — PDF mensual)",
         "consumo_carnes (total vacuna+aviar+porcina per capita — tablero SAGYP)",
         "srt (empleadores con cobertura de ART por tamano de nomina)",
@@ -128,6 +137,11 @@ def run_all() -> dict:
         "utdt":   fetch_icc(),
         "pobreza": fetch_nowcast_pobreza(),
         "cafam":  fetch_cafam(),
+        # El espejo de las motos (ADR-0223). Falla suave: el recurso del
+        # catálogo de la DNRPA se descubre por nombre y el colector levanta
+        # excepción ante cualquier cambio de forma — que reviente no puede
+        # tumbar al resto del cinturón.
+        "dnrpa_autos": _seguro(_autos_sin_serie, "dnrpa_autos"),
         "ciccra": fetch_ciccra(),
         # Componentes B y C de la ficha de proteína animal: sin el total, una
         # caída de la vacuna se lee como empobrecimiento cuando puede ser

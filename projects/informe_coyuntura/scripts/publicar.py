@@ -178,6 +178,14 @@ def build_vida(raw):
     motos = cafam.get("patentamiento_motos", {})
     _add(out, "patentamiento_motos", motos.get("valor"),
          "unidades", "CAFAM", motos.get("fecha"))
+    # ADR-0223: el espejo de las motos. Se llama SIEMPRE (aunque el colector
+    # haya fallado y venga None) por el mismo motivo que sentimiento_digital:
+    # una clave ausente es invisible para `_carry_forward`, que sólo repara las
+    # que ya están con valor None.
+    autos = (raw.get("dnrpa_autos") or {}).get("patentamiento_autos", {})
+    _add(out, "patentamiento_autos", autos.get("valor"),
+         "unidades", "DNRPA — inscripciones iniciales de automotores",
+         f"{autos['fecha']}-01" if autos.get("fecha") else None)
     return out
 
 
@@ -2068,17 +2076,41 @@ def _carry_forward(enriquecido, previo):
 def _elegir_crudo_vida(vida_files, fuente_previa=None):
     """El crudo local nunca puede hacer retroceder el bloque ya publicado.
 
-    Los nombres llevan YYYYMMDD_HHMM y por eso ordenan cronológicamente. Si el
-    snapshot previo declara un archivo más nuevo que los presentes en el clon,
-    significa que ese crudo no se versionó o no llegó a esta máquina: publicar
-    con el último disponible reescribiría datos frescos con datos viejos.
+    **El nombre NO ordena cronológicamente entre máquinas**, y eso costó una
+    corrida (2026-08-21). Lleva `YYYYMMDD_HHMM` en la hora LOCAL de quien lo
+    escribió: la CI corre en UTC y la Mac en hora argentina, tres horas atrás.
+    Una corrida manual de las 12:06 ART —que son las 15:06 UTC— produce
+    `..._1206.json` y pierde el orden alfabético contra el `..._1408.json` que
+    el nocturno escribió 58 minutos ANTES. El timestamp de adentro del archivo
+    tiene el mismo defecto: es hora local sin zona.
+
+    Lo que pasa cuando se elige mal no es un error visible: se publica el crudo
+    del cron creyendo que es el de la corrida manual. Ese día se notó sólo
+    porque la corrida agregaba un indicador nuevo y el gate lo vio faltar (G1,
+    sin fecha_dato). Sin un indicador nuevo, habría pasado en silencio.
+
+    Se ordena entonces por **mtime**, que es lo único que dice qué archivo se
+    escribió último en ESTA máquina, y se desempata por nombre para que dos
+    archivos con la misma marca queden en orden estable. Sigue en pie el
+    resguardo de más arriba: si el snapshot previo declara un crudo más nuevo
+    que todos los presentes, no se publica.
     """
     if not vida_files:
         return None
-    candidato = Path(sorted(vida_files)[-1])
-    if fuente_previa and candidato.name < os.path.basename(fuente_previa):
+    candidato = Path(max(vida_files, key=lambda f: (Path(f).stat().st_mtime, f)))
+    if not fuente_previa:
+        return candidato
+    # El resguardo se compara por mtime igual que la elección. Comparándolo por
+    # NOMBRE —como estaba— rechazaba el crudo recién escrito a mano por ser
+    # alfabéticamente menor que el del nocturno, y arrastraba el bloque
+    # anterior: la corrida manual "publicaba" y no cambiaba nada.
+    anterior = candidato.parent / os.path.basename(fuente_previa)
+    if not anterior.exists():
+        # El crudo que declara el snapshot previo no llegó a esta máquina, así
+        # que no hay con qué comparar y publicar el disponible podría pisar
+        # datos frescos con viejos. Se corta, que es el motivo del resguardo.
         return None
-    return candidato
+    return candidato if candidato.stat().st_mtime >= anterior.stat().st_mtime else None
 
 
 def main():

@@ -103,10 +103,13 @@ def test_pesos_del_documento():
     # quedan NO se recalibran: se derivan de los pesos efectivos intactos sobre
     # el nominal nuevo (0,2806), así que cada uno sigue aportando lo mismo al
     # índice — 17,06%, 9,31%, 1,12% y 0,56%.
-    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.6081,
-                                            "pobreza_nowcast": 0.3319,
-                                            "consumo_carnes_total": 0.0400,
-                                            "patentamiento_motos": 0.0200}
+    # ADR-0223: entra `patentamiento_autos` con 2%, el mismo peso que motos, y
+    # los cuatro previos ceden ×0,98 conservando su orden relativo.
+    assert d["ingresos"]["indicadores"] == {"brecha_salario_cbt": 0.5959,
+                                            "pobreza_nowcast": 0.3253,
+                                            "consumo_carnes_total": 0.0392,
+                                            "patentamiento_motos": 0.0196,
+                                            "patentamiento_autos": 0.0200}
     assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
     # ADR-0154: sale endeudamiento_familiar (redundante, winsorizado y de signo
     # equívoco) y la mora sostiene sola la dimensión.

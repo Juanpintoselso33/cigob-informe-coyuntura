@@ -80,6 +80,14 @@ MAX_DIAS = {
     "mortalidad_pymes": 165, "despacho_cemento": 140, "consumo_carne": 140,
     # SIPA publica con el mismo rezago de ~3 meses que la SRT (ADR-0219).
     "trabajo_independiente": 165,
+    # DNRPA (ADR-0223). El rezago está MEDIDO sobre el historial de
+    # actualizaciones del catálogo, no copiado de ningún documento: el mes M
+    # aparece entre el día 1 y el 4 de M+1 (sep-2025 a ago-2026), con un solo
+    # caso más tardío, el 13-mar-2026. Es dato registral, no una encuesta.
+    # Con esa cadencia la card nunca pasa de ~72 días de antigüedad; 90 es el
+    # punto donde una publicación se corrió más allá del mes siguiente entero,
+    # o sea un mes salteado, que es justo lo que el tope tiene que agarrar.
+    "patentamiento_autos": 90,
     "endeudamiento_familiar": 140, "inseguridad": 150,
 }
 CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón

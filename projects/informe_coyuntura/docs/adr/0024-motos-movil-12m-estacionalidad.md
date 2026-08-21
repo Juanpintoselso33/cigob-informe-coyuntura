@@ -4,6 +4,7 @@ id: '0024'
 estado: 'aceptado'
 fecha: 2026-07-03
 cinturon: 'vida'
+complementado_por: ['0223']
 ---
 
 # ADR-0024 — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)

@@ -209,6 +209,7 @@ PROCEDENCIA = {
                              "consumo total de carnes per cápita rebaseado a 4T-2023 "
                              "desde la faena del INDEC; ancla en fecha fija (ADR-0217)"),
     "patentamiento_motos": ("conceptual", "móvil 12m rebaseado a 4T-2023 (ADR-0024); el tope conceptual de 140 le recorta el boom, no lo calibra"),
+    "patentamiento_autos": ("conceptual", "móvil 12m rebaseado a 4T-2023 (ADR-0223), misma transformación que motos; ancla en fecha fija"),
     "inseguridad": ("conceptual", "IVI rebaseado a su base declarada ene-2024 (ADR-0032), también fecha fija, no rango observado"),
 }
 
