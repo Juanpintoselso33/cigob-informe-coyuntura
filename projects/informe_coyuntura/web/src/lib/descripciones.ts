@@ -270,8 +270,8 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
   },
   consumo_carnes_total: {
     que: "Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. Es el acceso total a proteína cárnica, sin importar de qué animal viene.",
-    aporta: "Leído junto al de carne vacuna distingue dos cosas que se parecen y no son lo mismo: si la vacuna cae y el total se sostiene, hay sustitución hacia pollo o cerdo; si caen las dos juntas, hay una pérdida real de acceso a proteína animal. El indicador de vacuna solo no permite separarlas.",
-    frecuencia: "Mensual", tipo: "kg/hab/año (promedio móvil 12m)",
+    aporta: "Leído junto al de carne vacuna distingue dos cosas que se parecen y no son lo mismo: si la vacuna cae y el total se sostiene, hay sustitución hacia pollo o cerdo; si caen las dos juntas, hay una pérdida real de acceso a proteína animal. El indicador de vacuna solo no permite separarlas. El titular publica el nivel oficial en kilos; el gráfico y el puntaje van en índice base 100 = 4T-2023, reconstruido desde la faena, que es lo único con historia para comparar contra el arranque del mandato.",
+    frecuencia: "Mensual (unos 2 meses de rezago)", tipo: "Nivel (kg/hab) · índice base-100 en el gráfico",
   },
   informalidad: {
     que: "Qué porcentaje de los asalariados trabaja sin aportes jubilatorios (empleo en negro), según la EPH trimestral del INDEC.",

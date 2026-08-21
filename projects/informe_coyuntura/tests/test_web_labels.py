@@ -219,3 +219,50 @@ def test_urls_metodologicas_anteriores_redirigen_a_la_ficha_vigente():
 def test_metodologia_describe_anclas_declaradas_sin_afirmar_puntos_medios():
     assert "Los puntos declarados anclan el puntaje" in METODOLOGIA_ASTRO
     assert "Cada banda finita ancla su puntaje en su punto medio" not in METODOLOGIA_ASTRO
+
+
+# ── El gráfico no puede rotular la serie con la unidad de la card ────────────
+# G3_EXCEPCIONES son, por definición, los indicadores cuya card y cuya serie NO
+# coinciden. Cuando además están en ESCALAS distintas, el modal necesita
+# `UNIDADES_SERIE` o el gráfico hereda la unidad de la card y miente.
+#
+# Pasó con `consumo_carnes_total` (ADR-0217): la card publicaba 114,45 kg/hab y
+# el gráfico, para el MISMO mes, mostraba "95 kg/hab" — que no eran kilos sino
+# el índice base 100. El lector lo leyó como un dato desactualizado.
+#
+# El corte del 10% separa la escala distinta del redondeo: hoy deja afuera a
+# `cepo_mulc` (3,1% de brecha, las dos en %) y a `sentimiento_digital` (8,4%,
+# las dos en puntos), y adentro a los dos que sí cambian de magnitud.
+BRECHA_ESCALA = 0.10
+
+
+def test_toda_serie_en_otra_escala_declara_su_unidad():
+    import json
+    import sys as _sys
+    _sys.path.insert(0, str(ROOT / "scripts"))
+    from gate_calidad import G3_EXCEPCIONES
+
+    snapshot = json.loads((ROOT / "web" / "src" / "data" / "informe.json").read_text(encoding="utf-8"))
+    series = json.loads((ROOT / "web" / "src" / "data" / "series.json").read_text(encoding="utf-8"))
+    cards = {k: i for c in snapshot["cinturones"].values()
+             for k, i in c.get("indicadores", {}).items()}
+    bloque = DATOS_TS[DATOS_TS.index("UNIDADES_SERIE"):]
+    bloque = bloque[:bloque.index("};")]
+    declarados = set(re.findall(r"^\s*([a-z_0-9]+):", bloque, re.M))
+
+    faltan = []
+    for clave in G3_EXCEPCIONES:
+        card, serie = cards.get(clave), series.get(clave) or []
+        if not card or not serie or not isinstance(card.get("valor"), (int, float)):
+            continue
+        ultimo = serie[-1].get("valor")
+        if not isinstance(ultimo, (int, float)) or not card["valor"]:
+            continue
+        brecha = abs(card["valor"] - ultimo) / abs(card["valor"])
+        if brecha > BRECHA_ESCALA and clave not in declarados:
+            faltan.append(f"{clave}: card {card['valor']} vs serie {ultimo} "
+                          f"({brecha * 100:.0f}% de brecha)")
+    assert not faltan, (
+        "el gráfico va a rotular estas series con la unidad de su card, que es "
+        "de otra escala. Agregalas a UNIDADES_SERIE en datos.ts:\n  " +
+        "\n  ".join(faltan))
