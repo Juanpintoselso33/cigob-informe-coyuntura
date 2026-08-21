@@ -3049,13 +3049,13 @@ export const FICHAS: Record<string, Ficha> = {
     nombreLargo: "Índice de Tensión del Cinturón de Impacto Social",
     base100: true,
     cinturon: "vida_cotidiana",
-    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Dieciocho componentes en seis dimensiones.",
+    resumen: "Índice de seguimiento base 100: cada componente se compara contra el promedio del 4º trimestre de 2023 (el arranque del mandato). Más de 100 = mejora acumulada en las condiciones de vida; menos de 100 = deterioro. Diecinueve componentes en seis dimensiones.",
     marcoConceptual: [
       "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, la mora de las familias con el crédito, el empleo y sus prospectivas, y el clima de confianza y seguridad.",
       "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. A diferencia del ITCM y el ITCG, no usa tablas de umbrales: mide la evolución acumulada contra una línea de base común — el arranque del mandato.",
     ],
     seleccion: [
-      "Dieciocho componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
+      "Diecinueve componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
       "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada donde no existe medición de entonces (la encuesta de victimización arranca su base en enero de 2024, documentado).",
     ],
     tratamiento: [
@@ -3081,7 +3081,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Se acompaña con el ejercicio de quitar cada componente por vez.",
     ],
     validacion: [
-      "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra un PANEL de estadísticas externas, no contra una sola. No es una preferencia de método: es que hoy no hay una serie única que pueda hacer de referencia, y el motivo forma parte del resultado.",
+      "El índice se reconstruye mes a mes desde diciembre de 2023 y se contrasta contra un PANEL de estadísticas externas, no contra una sola. No es una preferencia de método: no hay una serie única en condiciones de hacer de referencia, y el motivo forma parte del resultado.",
       "El ancla era el consumo medido —las ventas en supermercados a precios constantes del INDEC— y dejó de serlo porque pasó a ser COMPONENTE del índice. Mide condiciones materiales del hogar, así que le corresponde integrar el ITCIS y no juzgarlo: es la misma regla que antes había desplazado a la confianza del consumidor, que también componía el índice.",
       "El reemplazo conceptualmente correcto está identificado y declarado: el consumo privado que el INDEC publica en las Cuentas Nacionales a precios constantes. No es un canal del consumo del hogar sino su agregado, que es exactamente lo que el cinturón dice medir. Todavía no puede usarse: es trimestral y arranca junto con la base del índice, así que la muestra son nueve trimestres y la correlación en primeras diferencias se mueve entre 0,17 y 0,73 según qué trimestre se quite. Un número que depende de cuál dato se saque no es un número publicable.",
       "El umbral de promoción queda fijado por adelantado, antes de volver a mirar la correlación: pasa a ser la serie de referencia del cinturón cuando acumule 20 trimestres, hacia fines de 2028. Fijarlo ahora es lo que impide que la decisión termine dependiendo del número que dé ese día.",

@@ -7,7 +7,7 @@ fecha: 2026-07-30
 cinturon: 'transversal'
 archivos: ['scripts/regresion_validacion.py']
 cierra: ['0159']
-relacionado: ['0167', '0169']
+relacionado: ['0167', '0169', '0225']
 ambito: '`scripts/regresion_validacion.py`'
 ---
 

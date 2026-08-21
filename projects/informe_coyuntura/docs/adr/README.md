@@ -247,6 +247,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0222](0222-la-canasta-de-busquedas-pesa-por-termino-no-por-volumen.md) | La canasta de búsquedas pesa por término, no por volumen | `sentimiento_digital` | vigente |
 | [0223](0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) | El espejo de las motos: el patentamiento de autos | `patentamiento_autos`, `patentamiento_motos` | vigente |
 | [0224](0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) | Puntúa la motorización total, no cada vehículo por su lado | `motorizacion_total`, `patentamiento_autos`, `patentamiento_motos` | vigente |
+| [0225](0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) | El supermercado deja de validar el índice y pasa a integrarlo | `consumo_supermercados` | vigente |
 
 ### Espíritu de época
 

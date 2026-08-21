@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'vida'
 archivos: ['scripts/desestacionalizar.py']
+relacionado: ['0225']
 ambito: 'panel y factor común del ITVC; `scripts/desestacionalizar.py`,'
 ---
 

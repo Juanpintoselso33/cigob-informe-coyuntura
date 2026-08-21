@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [patentamiento_autos, patentamiento_motos]
 archivos: ['scripts/vida_cotidiana/collectors/dnrpa_autos.py', 'scripts/vida_cotidiana/main.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'tests/test_patentamiento_autos.py']
 complementa: ['0024']
-relacionado: ['0018', '0108', '0130', '0153', '0216']
+relacionado: ['0018', '0108', '0130', '0153', '0216', '0225']
 superado_parcialmente_por: ['0224']
 ambito: 'ITCIS · dimensión de ingresos y consumo · patentamiento de automotores'
 origen: 'Pedido del editor: incorporar el patentamiento de autos como espejo del de motos'

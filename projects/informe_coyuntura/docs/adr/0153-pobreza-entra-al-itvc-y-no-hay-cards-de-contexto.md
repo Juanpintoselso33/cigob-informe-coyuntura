@@ -4,7 +4,7 @@ id: '0153'
 estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'vida'
-relacionado: ['0223', '0224']
+relacionado: ['0223', '0224', '0225']
 extendido_por: ['0216']
 ambito: 'cinturón vida cotidiana (ITVC-B100), dimensión ingresos y consumo;'
 ---

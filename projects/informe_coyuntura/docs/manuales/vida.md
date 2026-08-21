@@ -14,7 +14,7 @@ al ADR.
 
 | Dimensión | Peso | Indicadores |
 |---|---:|---|
-| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `motorizacion_total` |
+| `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `motorizacion_total`, `consumo_supermercados` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
 | `vulnerabilidad` | 10% | `mora_familias` |
 | `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `pluriempleo`, `trabajo_independiente` |
@@ -44,8 +44,8 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 60% |
-| Peso efectivo en el índice | **16.7%** |
+| Peso dentro de la dimensión | 48% |
+| Peso efectivo en el índice | **13.4%** |
 | Procedencia del ancla | `conceptual` — rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
@@ -58,8 +58,8 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 33% |
-| Peso efectivo en el índice | **9.1%** |
+| Peso dentro de la dimensión | 26% |
+| Peso efectivo en el índice | **7.3%** |
 | Procedencia del ancla | `conceptual` — rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
@@ -72,8 +72,8 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 4% |
-| Peso efectivo en el índice | **1.1%** |
+| Peso dentro de la dimensión | 3% |
+| Peso efectivo en el índice | **0.9%** |
 | Procedencia del ancla | `conceptual` — consumo total de carnes per cápita rebaseado a 4T-2023 desde la faena del INDEC; ancla en fecha fija (ADR-0217) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
@@ -86,12 +86,25 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 4% |
-| Peso efectivo en el índice | **1.1%** |
+| Peso dentro de la dimensión | 3% |
+| Peso efectivo en el índice | **0.9%** |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
 **Lo gobiernan**: [ADR-0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) Puntúa la motorización total, no cada vehículo por su lado
+
+#### Ventas en supermercados
+
+`consumo_supermercados`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 20% |
+| Peso efectivo en el índice | **5.6%** |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) El supermercado deja de validar el índice y pasa a integrarlo
 
 ### Dimensión `precios` (25%)
 
@@ -311,7 +324,7 @@ histórica.
   <br>⚠️ Puede estar resuelto: lo tocó ADR-0167. Verificar antes de tratarlo como abierto.
 - **[ADR-0155](../adr/0155-el-ancla-del-itvc-pasa-a-ser-el-consumo-medido.md)** — El ancla de validación del ITVC pasa a ser el consumo medido
   <br>lo que prohíbe ADR-0045. Lo que sí falta —y se anota como pendiente editorial— es
-  <br>⚠️ Puede estar resuelto: lo tocó ADR-0160. Verificar antes de tratarlo como abierto.
+  <br>⚠️ Puede estar resuelto: lo tocó ADR-0160, ADR-0225. Verificar antes de tratarlo como abierto.
 - **[ADR-0160](../adr/0160-la-dispersion-del-itvc-se-publica-junto-al-neto.md)** — La dispersión del ITVC se publica junto al neto
   <br>- Queda como pendiente editorial si la dispersión merece su propio gráfico: hoy
 - **[ADR-0206](../adr/0206-los-dos-artefactos-publicados-dicen-lo-mismo.md)** — Los dos artefactos publicados dicen lo mismo
@@ -319,7 +332,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-34 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+35 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -355,3 +368,4 @@ histórica.
 - [0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) — La contracara del cierre: el trabajo independiente
 - [0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) — El espejo de las motos: el patentamiento de autos
 - [0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) — Puntúa la motorización total, no cada vehículo por su lado
+- [0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) — El supermercado deja de validar el índice y pasa a integrarlo

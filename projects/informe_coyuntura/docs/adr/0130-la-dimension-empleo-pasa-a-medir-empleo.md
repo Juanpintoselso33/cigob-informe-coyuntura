@@ -6,7 +6,7 @@ fecha: 2026-07-25
 cinturon: 'vida'
 indicadores: [empleo_registrado, empleo]
 complementa: ['0112']
-relacionado: ['0127', '0218', '0219', '0223']
+relacionado: ['0127', '0218', '0219', '0223', '0225']
 modificado_por: ['0214']
 complementado_por: ['0214']
 ambito: 'ITVC · `empleo_registrado` (nuevo) · dimensión `empleo` · serie'

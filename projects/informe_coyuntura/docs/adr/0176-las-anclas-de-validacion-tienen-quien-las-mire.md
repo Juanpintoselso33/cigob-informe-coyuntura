@@ -7,7 +7,7 @@ cinturon: 'transversal'
 indice: 'todos'
 archivos: ['scripts/gate_calidad.py', 'scripts/validacion_externa.py']
 continua: ['0175']
-relacionado: ['0133', '0159', '0174', '0178']
+relacionado: ['0133', '0159', '0174', '0178', '0225']
 continuado_por: ['0177']
 ambito: 'Gate de calidad · G7, frescura de las anclas de validación externa'
 origen: 'ADR-0175 dejó anotado que una serie que es sólo insumo de validación no tiene quién la vigile'
