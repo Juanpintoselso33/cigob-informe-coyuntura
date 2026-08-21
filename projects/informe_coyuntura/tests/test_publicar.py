@@ -409,7 +409,7 @@ def test_politica_itcp_reconcilia():
     # al fijar la orientación — produccion_legislativa al bloque legislativo y
     # judicializacion, velocidad_resolucion y paralisis_denuncias al judicial,
     # que deja de colgar de un solo dato.
-    # 19 desde ADR-0232: entra la intensidad laboral oficial en conflicto social.
+    # 19 desde ADR-0233: entra la intensidad laboral oficial en conflicto social.
     assert len(en_indice) == 19, f"esperaba 19 indicadores en el índice, hay {len(en_indice)}"
     for _nuevo in ("produccion_legislativa", "judicializacion",
                    "velocidad_resolucion", "paralisis_denuncias"):
@@ -632,7 +632,7 @@ def test_vida_itvc_reconcilia():
     # de validación externa del cinturón. Mide condiciones materiales del
     # hogar, así que integra el índice en vez de juzgarlo — y es el único
     # componente que mide volumen efectivamente comprado).
-    # 19 desde ADR-0231: entra carga del servicio de deuda en vulnerabilidad.
+    # 19 desde ADR-0232: entra carga del servicio de deuda en vulnerabilidad.
     assert len(en_indice) == 19, f"esperaba 19 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
@@ -796,12 +796,12 @@ def test_dimensiones_criticas_marcadas():
 
 
 def test_mora_y_carga_sostienen_la_vulnerabilidad():
-    """Vulnerabilidad (D3 del ITVC) después de ADR-0231.
+    """Vulnerabilidad (D3 del ITVC) después de ADR-0232.
 
     ADR-0067 había separado la mora del compuesto I_EC y las dejó 50/50 con el
     endeudamiento, declarando el reparto como provisorio. ADR-0154 saca el
     endeudamiento —redundante (+0,943 con la brecha salarial), clavado en el
-    techo de winsorización y de signo equívoco—. ADR-0231 incorpora la carga
+    techo de winsorización y de signo equívoco—. ADR-0232 incorpora la carga
     CDF/MS como señal previa al incumplimiento, con 30%.
 
     Este test cuida las dos mitades: que el endeudamiento NO se publique como

@@ -5,15 +5,6 @@ definición del equipo. Cada una tiene propuesta armada — decidir es elegir,
 no investigar desde cero. Numeración heredada de las sesiones de trabajo
 (las D anteriores se resolvieron en ADRs).
 
-## D5 — Segundo componente de vulnerabilidad financiera
-
-**Qué:** la dimensión Vulnerabilidad del ITVC (10%) tiene UN solo indicador
-(endeudamiento real×mora), que además está en zona crítica (31,7) y es el
-dominante del índice (leave-one-out: sin él el ITVC salta de 90,7 a ~98).
-**Propuesta:** sumar un segundo componente (candidatos: cheques rechazados
-BCRA, cantidad de deudores en situación irregular ≥2, morosidad de servicios).
-**Para decidir:** elegir candidato y peso interno; el motor renormaliza solo.
-
 ## D7 — TDPS saturado
 
 **Qué:** `asistencia_directa` (TDPS) llegó a 100% — todo el gasto social
@@ -38,10 +29,13 @@ reservas), posicional para los que solo tienen sentido relativo a su historia.
 ## D9 — Dimensiones mono-indicador
 
 **Qué:** varias dimensiones (en los tres índices) descansan en un único
-indicador: un error de fuente se transmite entero al índice.
-**Relación:** D5 es el caso urgente (por crítica); D9 es la política general.
+indicador: un error de fuente se transmite entero al índice. Vulnerabilidad
+del ITCIS y Conflicto social del ITCP salieron de esa lista (ADR-0232 y
+ADR-0233); quedan Competitividad externa (ITCM), Imagen y voto y Cohesión
+interna (ITCP) y Seguridad (ITCIS).
 **Para decidir:** mínimo de 2 componentes por dimensión como regla, o
-aceptar mono-indicador con flag.
+aceptar mono-indicador con flag. El barrido se sigue haciendo dimensión por
+dimensión mientras no haya regla escrita.
 
 ## D10 — Taxonomía de dimensiones del ITVC
 
@@ -57,6 +51,15 @@ indicador→dimensión vs repesar. Cambia la lectura pública del índice:
 decisión editorial, no técnica.
 
 ## Resueltas recientemente (para no reabrir)
+
+- **D5 — Vulnerabilidad financiera ya tiene segundo componente** (ADR-0232,
+  21-ago-2026): entra la carga del servicio de deuda de las familias sobre la
+  masa salarial registrada (BCRA, IEF) con 30%, y la mora conserva 70% por ser
+  directa, mensual y más fresca. La descripción vieja de esta D hablaba del
+  compuesto endeudamiento real×mora, que ADR-0154 ya había desarmado.
+- **Conflicto social del ITCP dejó de depender sólo de ACLED** (ADR-0233,
+  21-ago-2026): suman las jornadas individuales no trabajadas de la Secretaría
+  de Trabajo, acumuladas a 12 meses, con 40%.
 
 - **Base 4T-2023 del ITVC se mantiene** pese al efecto base de la
   devaluación (la brecha marca +12,2% vs 4T-23 pero +2,7% vs oct-23

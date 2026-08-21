@@ -26,7 +26,7 @@ DATA.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 from config import (PESOS_CINTURONES, UMBRALES, SIGLAS_PUBLICAS,  # pesos, umbrales y siglas
-                    estado_de_score)
+                    estado_de_score, rezago_maximo_tolerado)
 import itcm                                           # bandas y pesos del ITCM macro
 import itcg                                           # bandas y pesos del ITCG gestión
 import itcp                                           # bandas y pesos del ITCP política
@@ -2677,7 +2677,7 @@ def main():
                      detalle_txt=("Porcentaje del crédito de consumo de las familias "
                                   "(préstamos personales y tarjetas) con atrasos de pago, "
                                   "ponderado por el saldo de cada línea."))
-            # Carga del servicio de deuda (ADR-0231): segunda pata de
+            # Carga del servicio de deuda (ADR-0232): segunda pata de
             # vulnerabilidad. La planilla del IEF contiene una serie mensual,
             # aunque el BCRA la libera por lotes semestrales; por eso el dato
             # se fecha con el último mes observado y no con la publicación.
@@ -2686,11 +2686,12 @@ def main():
                 ult_carga = serie_carga[-1]
                 dias_carga = (date.today()
                               - date.fromisoformat(ult_carga["fecha"][:10])).days
+                tope_carga = rezago_maximo_tolerado("carga_servicio_deuda_hogares")
                 _add(enriquecido, "carga_servicio_deuda_hogares",
                      ult_carga["valor"], "% de la masa salarial registrada",
                      "BCRA — Informe de Estabilidad Financiera (CDF/MS)",
                      ult_carga["fecha"][:7],
-                     desactualizado=dias_carga > 300,
+                     desactualizado=dias_carga > tope_carga,
                      detalle_txt=("Cuotas de capital e intereses de las familias como "
                                   "porcentaje de la masa salarial registrada; el BCRA "
                                   "promedia tres meses tanto en el numerador como en el "

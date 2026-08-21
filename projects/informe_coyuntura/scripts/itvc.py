@@ -229,7 +229,7 @@ DIMENSIONES_ITVC = {
         #    17,2 y dejaba la dimensión en 78,6, o sea que TAPABA la señal que
         #    la dimensión existe para dar.
         #
-        # ADR-0231: entra la carga del servicio de deuda de los hogares. La
+        # ADR-0232: entra la carga del servicio de deuda de los hogares. La
         # mora mide incumplimiento ya materializado; la carga CDF/MS mide qué
         # parte de la masa salarial registrada queda comprometida antes del
         # atraso. En niveles comparten la crisis (+0,883), pero en cambios
@@ -591,7 +591,7 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # Mora del crédito familiar (ADR-0067): % de cartera irregular, invertido
     # (más mora = peor).
     idx["mora_familias"] = rebase_de_serie(series, "mora_familias", invertido=True)
-    # Carga del servicio de deuda sobre la masa salarial registrada (ADR-0231):
+    # Carga del servicio de deuda sobre la masa salarial registrada (ADR-0232):
     # más ingreso comprometido en cuotas e intereses = peor capacidad de pago.
     idx["carga_servicio_deuda_hogares"] = rebase_de_serie(
         series, "carga_servicio_deuda_hogares", invertido=True)

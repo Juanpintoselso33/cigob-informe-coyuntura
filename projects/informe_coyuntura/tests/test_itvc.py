@@ -16,7 +16,7 @@ import itvc
 
 # Fixture con índices base-100 realistas (100 = promedio 4T-2023):
 # ingresos = 0,65×87,5 + 0,35×96 = 90,5 · precios = 0,4×95 + 0,6×60 = 74,0
-# vulnerabilidad (ADR-0231) = 0,70×mora + 0,30×carga = 63,0
+# vulnerabilidad (ADR-0232) = 0,70×mora + 0,30×carga = 63,0
 # empleo = 0,45×102 + 0,4×80 + 0,15×96 = 92,3
 # confianza (ADR-0034) = 0,45×118 + 0,3×104 + 0,1×110 + 0,1×92 + 0,05×130 = 111,0
 # ITVC = 0,35×90,5 + 0,25×74 + 0,10×89 + 0,15×92,3 + 0,15×111,0 = 89,6
@@ -62,7 +62,7 @@ def test_itvc_reproduce_ejemplo():
     # vez de con 0,0196 y tira la dimensión para arriba.
     assert dims["ingresos"]["puntaje"] == 90.3
     assert dims["precios"]["puntaje"] == 75.3
-    # ADR-0231: mora 70% + carga del servicio de deuda 30%.
+    # ADR-0232: mora 70% + carga del servicio de deuda 30%.
     assert dims["vulnerabilidad"]["puntaje"] == 63.0
     # 92,3 → 92,2 al entrar empleo_registrado (ADR-0130): el EJEMPLO no lo
     # declara, así que la dimensión renormaliza sobre los proxies con sus pesos
@@ -126,7 +126,7 @@ def test_pesos_del_documento():
                                             "motorizacion_total": 0.0317,
                                             "consumo_supermercados": 0.2000}
     assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
-    # ADR-0154 saca endeudamiento; ADR-0231 agrega carga del servicio de deuda,
+    # ADR-0154 saca endeudamiento; ADR-0232 agrega carga del servicio de deuda,
     # una señal previa al incumplimiento que complementa la mora.
     assert d["vulnerabilidad"]["indicadores"] == {
         "mora_familias": 0.70,

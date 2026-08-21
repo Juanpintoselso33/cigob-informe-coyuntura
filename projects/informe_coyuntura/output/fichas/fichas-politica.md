@@ -490,7 +490,7 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 
 Aproxima la tensión en la calle a escala nacional, un límite real al margen de maniobra del Gobierno. Menos conflicto que en 2023 significa menos tensión; la comparación de 12 meses contra el año completo absorbe la estacionalidad del calendario de protestas.
 
-**Dimensión que integra — Conflicto social.** La conflictividad social que el gobierno tiene que administrar: los eventos de protesta y disturbios de todo el país registrados por ACLED, acumulados en 12 meses y comparados contra 2023, la línea de base del mandato.
+**Dimensión que integra — Conflicto social.** La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. Los eventos de protesta y disturbios de todo el país registrados por ACLED, acumulados en 12 meses y comparados contra 2023 —la línea de base del mandato—, se completan con las jornadas individuales no trabajadas por conflicto laboral que publica la Secretaría de Trabajo, también acumuladas en 12 meses: huelguistas por duración del paro, que agrega el tamaño y la persistencia que el conteo de eventos no distingue.
 
 ## Método de cómputo
 
@@ -578,7 +578,7 @@ Cuántas jornadas individuales de trabajo se perdieron por paros en todo el paí
 
 Agrega intensidad a la frecuencia de eventos que mide ACLED: distingue un conflicto breve y pequeño de uno largo o masivo. Es una estadística laboral oficial y sus valores mensuales pueden sumarse sin duplicar conflictos ni personas.
 
-**Dimensión que integra — Conflicto social.** La conflictividad social que el gobierno tiene que administrar: los eventos de protesta y disturbios de todo el país registrados por ACLED, acumulados en 12 meses y comparados contra 2023, la línea de base del mandato.
+**Dimensión que integra — Conflicto social.** La conflictividad social que el gobierno tiene que administrar, medida en la calle y en el trabajo. Los eventos de protesta y disturbios de todo el país registrados por ACLED, acumulados en 12 meses y comparados contra 2023 —la línea de base del mandato—, se completan con las jornadas individuales no trabajadas por conflicto laboral que publica la Secretaría de Trabajo, también acumuladas en 12 meses: huelguistas por duración del paro, que agrega el tamaño y la persistencia que el conteo de eventos no distingue.
 
 ## Método de cómputo
 

@@ -134,7 +134,7 @@ COMPONENTES = {
     # (hallazgo de la revisión ITVC↔ICC 2026-07-16: el pico reconstruido de
     # oct-2025 ignoraba la mora disparándose en plena crisis)
     "carga_servicio_deuda_hogares": (
-        "carga_servicio_deuda_hogares", True, False, False),  # ADR-0231
+        "carga_servicio_deuda_hogares", True, False, False),  # ADR-0232
     "brecha_salario_cbt":     ("brecha_salario_cbt", False, False, False),
     "icc_utdt":               ("icc_utdt", False, False, False),
     "pluriempleo":            ("pluriempleo", True, False, False),

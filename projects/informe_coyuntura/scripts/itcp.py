@@ -491,7 +491,7 @@ BANDAS_ITCP = {
         (-15.0, INF, 10),
     ],
     "jornadas_individuales_no_trabajadas_12m": [
-        # ADR-0232: intensidad laboral oficial, huelguistas × duración del
+        # ADR-0233: intensidad laboral oficial, huelguistas × duración del
         # paro, acumulada en doce meses. Menor = mejor. Anclas externas al
         # mandato, fijadas sobre los 17 años completos 2006-2022: 5,0 / 6,5 /
         # 8,0 / 10,0 millones dejan 4/2/4/3/4 años en las cinco bandas. No se
@@ -592,7 +592,7 @@ DIMENSIONES_ITCP = {
         # puntos, acumulado YTD no comparable, sin backfill posible), que
         # pasa a seguimiento interno. Antes: 2026-07-10 (ADR-0048)
         # protestas_caba había salido por la revisión editorial y CEPA
-        # había quedado solo. ADR-0232 agrega la intensidad laboral oficial:
+        # había quedado solo. ADR-0233 agrega la intensidad laboral oficial:
         # ACLED conserva 60% por cubrir protesta y disturbios en toda la calle;
         # las jornadas individuales no trabajadas reciben 40% por agregar
         # tamaño × duración con una serie oficial desde 2006. Los pesos ENTRE

@@ -1,15 +1,19 @@
 """Contratos de las dos dimensiones que dejaron de depender de una sola señal."""
 import io
+import json
 import sys
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 
 import openpyxl
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import config
 import descargar_series
+import gate_calidad
 import itcp
 import itvc
 import politica
@@ -61,17 +65,79 @@ def test_parser_carga_deuda_busca_rotulos_no_numero_de_hoja(monkeypatch):
     assert serie == [["2023-10-01", 10.0], ["2026-04-01", 24.076]]
 
 
-def test_parser_jornadas_suma_exactamente_doce_meses(monkeypatch):
-    contenido = _xlsx_jornadas()
+def test_carga_deuda_lee_la_planilla_de_la_edicion_vigente(monkeypatch):
+    """La planilla del IEF cambia de nombre cada semestre: si el colector la
+    tuviera clavada, la edición nueva daría 404 y la serie quedaría congelada
+    sin ruido. Se descubre desde la página de la edición más reciente."""
+    edicion_vigente = descargar_series._bcra_ief_ediciones()[0]
+    pedidas = []
 
     def fake_get(url, **_kwargs):
+        pedidas.append(url)
+        if url == edicion_vigente:
+            return _Respuesta(
+                text='<a href="/archivos/informes/IEF-2027-01-serie.xlsx">series</a>')
+        if url.endswith(".xlsx"):
+            return _Respuesta(content=_xlsx_deuda())
+        raise descargar_series.requests.ConnectionError(f"sin edición: {url}")
+
+    monkeypatch.setattr(descargar_series.requests, "get", fake_get)
+    assert descargar_series.fetch_carga_servicio_deuda_serie()[-1] == ["2026-04-01", 24.076]
+    assert pedidas[-1] == "https://www.bcra.gob.ar/archivos/informes/IEF-2027-01-serie.xlsx"
+    assert pedidas[-1] != descargar_series.BCRA_IEF_CARGA_DEUDA
+
+
+def test_carga_deuda_usa_planilla_directa_si_ninguna_edicion_responde(monkeypatch):
+    pedidas = []
+
+    def fake_get(url, **_kwargs):
+        pedidas.append(url)
+        if url == descargar_series.BCRA_IEF_CARGA_DEUDA:
+            return _Respuesta(content=_xlsx_deuda())
+        raise descargar_series.requests.ConnectionError("BCRA caído")
+
+    monkeypatch.setattr(descargar_series.requests, "get", fake_get)
+    assert descargar_series.fetch_carga_servicio_deuda_serie()[-1] == ["2026-04-01", 24.076]
+    assert pedidas[-1] == descargar_series.BCRA_IEF_CARGA_DEUDA
+
+
+def test_ediciones_del_ief_van_de_la_mas_nueva_a_la_mas_vieja():
+    """El IEF es semestral y su página usa un slug regular, así que la edición
+    a probar se deduce de la fecha en vez de fijarse a mano."""
+    from datetime import date as _date
+    assert descargar_series._bcra_ief_ediciones(_date(2026, 8, 21)) == [
+        "https://www.bcra.gob.ar/publicaciones/"
+        "informe-de-estabilidad-financiera-segundo-semestre-2026/",
+        "https://www.bcra.gob.ar/publicaciones/"
+        "informe-de-estabilidad-financiera-primer-semestre-2026/",
+        "https://www.bcra.gob.ar/publicaciones/"
+        "informe-de-estabilidad-financiera-segundo-semestre-2025/",
+    ]
+    assert descargar_series._bcra_ief_ediciones(_date(2026, 3, 1))[0].endswith(
+        "informe-de-estabilidad-financiera-primer-semestre-2026/")
+
+
+def test_parser_jornadas_suma_exactamente_doce_meses(monkeypatch):
+    contenido = _xlsx_jornadas()
+    pedidas = []
+
+    def fake_get(url, **_kwargs):
+        pedidas.append(url)
         if url == politica.CONFLICTOS_LABORALES_URL:
-            return _Respuesta(text='<a href="/datos/conflictos-vigente.xlsx">mensual</a>')
+            return _Respuesta(
+                text='<a href="/sites/default/files/'
+                     'evolucion_mensual_de_la_conflictividad_laboral._datos_a_junio_2026.xlsx">'
+                     'mensual</a>')
         return _Respuesta(content=contenido)
 
     monkeypatch.setattr(politica.requests, "get", fake_get)
     serie = politica.fetch_jornadas_individuales_no_trabajadas_serie()
     assert serie == [["2025-12-01", 7_800]]
+    # La planilla que se bajó es la que anuncia la página, no la clavada.
+    assert pedidas[-1] == (
+        "https://www.argentina.gob.ar/sites/default/files/"
+        "evolucion_mensual_de_la_conflictividad_laboral._datos_a_junio_2026.xlsx")
+    assert pedidas[-1] != politica.CONFLICTOS_LABORALES_XLSX_FALLBACK
 
 
 def test_jornadas_usa_planilla_directa_si_falla_la_pagina_indice(monkeypatch):
@@ -105,3 +171,29 @@ def test_conflicto_social_combina_calle_e_intensidad_laboral():
     assert dim["puntaje"] == 64.0
     assert dim["indicadores"]["conflictividad_nacional"]["peso"] == 0.60
     assert dim["indicadores"]["jornadas_individuales_no_trabajadas_12m"]["peso"] == 0.40
+
+
+def test_el_tope_de_frescura_de_la_carga_tiene_un_solo_dueno(monkeypatch):
+    """El rezago tolerado de la carga del servicio de deuda lo consumen dos
+    lados —el gate, que reporta la demora, y `publicar.py`, que marca
+    `desactualizado` en el snapshot—. Repetir la constante dejaba al snapshot
+    diciendo "al día" mientras el gate reportaba demora."""
+    monkeypatch.setitem(config.MAX_DIAS, "carga_servicio_deuda_hogares", 42)
+    assert config.rezago_maximo_tolerado("carga_servicio_deuda_hogares") == 42
+    assert gate_calidad.MAX_DIAS.get(
+        "carga_servicio_deuda_hogares", gate_calidad.MAX_DIAS_DEFAULT) == 42
+
+
+def test_el_snapshot_no_declara_al_dia_una_carga_que_el_gate_reporta_demorada():
+    """Contrato del artefacto publicado (`web/src/data/informe.json`): el flag
+    de la card tiene que salir del mismo tope con el que el gate la juzga."""
+    snapshot = json.loads(
+        (ROOT / "web" / "src" / "data" / "informe.json").read_text(encoding="utf-8"))
+    card = (snapshot["cinturones"]["vida_cotidiana"]["indicadores"]
+            ["carga_servicio_deuda_hogares"])
+    fecha = datetime.strptime(card["fecha_dato"] + "-01", "%Y-%m-%d").date()
+    rezago = (date.today() - fecha).days
+    tope = config.rezago_maximo_tolerado("carga_servicio_deuda_hogares")
+    assert card["desactualizado"] is (rezago > tope), (
+        f"la card declara desactualizado={card['desactualizado']} con {rezago}d "
+        f"de rezago contra un tope de {tope}d")
