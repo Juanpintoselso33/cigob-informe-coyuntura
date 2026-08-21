@@ -7,6 +7,7 @@ cinturon: 'gestion'
 indicadores: [desregulacion_normativa]
 archivos: ['desregulacion_oficial.json']
 modifica: ['0096']
+relacionado: ['0229']
 modificado_por: ['0143']
 ambito: 'ITCG · `desregulacion_normativa` · fuente · unidad · banda · serie · `desregulacion_oficial.json`'
 origen: 'Aporte de la revisión externa del cinturón de gestión (doc 260723), decisión del editor'

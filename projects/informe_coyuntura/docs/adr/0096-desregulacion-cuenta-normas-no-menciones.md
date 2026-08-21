@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'gestion'
 indicadores: [desregulacion_normativa]
+relacionado: ['0229']
 modificado_por: ['0125']
 ambito: 'ITCG · `desregulacion_normativa` · serie · caché por norma'
 origen: 'Auditoría externa del cinturón de gestión (doc 1), prioridad alta'
