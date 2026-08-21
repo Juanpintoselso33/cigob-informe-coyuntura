@@ -678,7 +678,7 @@ def fetch_ratio_dnu() -> dict | None:
             "leyes_count": leyes,
             "ventana_dias": 365,
             "unidad": "DNUs por ley",
-            "fuente": INFOLEG_HOME,
+            "fuente": "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
             "fecha_dato": str(date.today()),
             "desactualizado": False,
         }
@@ -971,7 +971,7 @@ def fetch_iaf_transferencias() -> dict | None:
             "periodo": f"{year_ref} vs {year_ant}",
             "ipc_aplicado_pct": round(ipc * 100.0, 1),
             "unidad": "% interanual real",
-            "fuente": RON_CSV_URL,
+            "fuente": "Sec. Hacienda — serie RON de recursos de origen nacional + IPC INDEC (deflactor)",
             # La fecha del DATO es el cierre del año de referencia, no la de la
             # corrida. Antes acá iba `date.today()`: la card se mostraba fresca
             # todos los días mientras comparaba dos años calendario cerrados —en

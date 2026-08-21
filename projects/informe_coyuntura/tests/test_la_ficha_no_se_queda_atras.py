@@ -110,34 +110,61 @@ SIGLAS = {
     "SIPA": "SISTEMA INTEGRADO PREVISIONAL ARGENTINO",
 }
 
+# Palabras que casi todos los organismos del Estado comparten. Sin sacarlas, el
+# cotejo por palabras da por buena cualquier pareja: "Ministerio de Economía" y
+# "Ministerio de Trabajo" comparten «ministerio» y pasarían.
+GENERICAS = {
+    "ministerio", "secretaria", "subsecretaria", "nacional", "nacion",
+    "direccion", "instituto", "sistema", "argentina", "argentino", "gobierno",
+    "oficina", "registro", "serie", "series", "datos", "base", "indice",
+    "informe", "publica", "publico", "publicos", "total", "propia", "encuesta",
+    "estadistica", "estadisticas", "tablero", "anuario", "general", "federal",
+    "centro", "investigacion", "universidad",
+}
+
 
 def _sin_tildes(s: str) -> str:
     s = unicodedata.normalize("NFD", s or "")
-    return "".join(c for c in s if unicodedata.category(c) != "Mn").upper()
+    return "".join(c for c in s if unicodedata.category(c) != "Mn")
 
 
 def _siglas(s: str) -> set:
-    return set(re.findall(r"\b[A-Z]{3,}\b", _sin_tildes(s)))
+    """Siglas de verdad: se leen del texto TAL CUAL, no de su versión en
+    mayúsculas. La primera versión de esta función pasaba el string a
+    mayúsculas y recién ahí buscaba `[A-Z]{3,}`, con lo cual toda palabra de
+    tres letras contaba como sigla y el cotejo se volvía «comparten alguna
+    palabra» — «Ministerio de Economía» daba por buena a «Ministerio de
+    Trabajo». Acá una sigla es lo que estaba en mayúsculas en el original."""
+    return set(re.findall(r"\b[A-Z][A-Z0-9]{1,}\b", _sin_tildes(s)))
+
+
+def _palabras(s: str) -> set:
+    return {w for w in re.findall(r"[a-z]{4,}", _sin_tildes(s).lower())} - GENERICAS
 
 
 def _mismo_organismo(declarado: str, real: str, url_ficha: str) -> bool:
-    d, r = _sin_tildes(declarado), _sin_tildes(real)
     sd, sr = _siglas(declarado), _siglas(real)
     if sd & sr:
         return True
-    # sigla de un lado, nombre completo del otro
-    for s in sd | sr:
-        largo = SIGLAS.get(s)
-        if largo and (largo in d or largo in r):
+    # La expansión de una sigla se busca en EL OTRO lado. Buscarla en el propio
+    # —como hacía la primera versión— da siempre verdadero: «SRT» expande a
+    # «Superintendencia de Riesgos del Trabajo», que por supuesto aparece en el
+    # string del que salió la sigla. Con eso, la SRT «coincidía» con el INDEC.
+    for sigla, otro in ([(x, _sin_tildes(real).upper()) for x in sd]
+                        + [(x, _sin_tildes(declarado).upper()) for x in sr]):
+        largo = SIGLAS.get(sigla)
+        if largo and largo in otro:
             return True
-    # el colector a veces publica la URL de descarga como fuente: se compara el
-    # host contra el de la ficha, que es la misma afirmación por otra vía
-    if r.strip().startswith("HTTP") and url_ficha:
+    # El colector a veces publica la URL de descarga como fuente: se compara el
+    # host contra el de la ficha, que es la misma afirmación por otra vía.
+    if real.strip().lower().startswith("http") and url_ficha:
         h1 = urlparse(real.strip()).netloc.lower().removeprefix("www.")
         h2 = urlparse(url_ficha.strip()).netloc.lower().removeprefix("www.")
         if h1 and h1 == h2:
             return True
-    return False
+    # Sin siglas compartidas: se comparan las palabras que distinguen. Hace
+    # falta porque 14 de los 66 nombran su fuente sin ninguna sigla.
+    return bool(_palabras(declarado) & _palabras(real))
 
 
 def test_la_ficha_declara_la_fuente_que_el_colector_uso():

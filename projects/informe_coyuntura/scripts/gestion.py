@@ -312,7 +312,7 @@ def fetch_cepo_mulc() -> dict | None:
         return {
             "valor":          brecha,
             "unidad":         "% de brecha CCL/mayorista",
-            "fuente":         DOLARAPI_URL,
+            "fuente":         "dolarapi.com — CCL y mayorista (el mayorista replica la referencia A3500 del BCRA)",
             "fecha_dato":     date.today().isoformat(),
             "desactualizado": False,
         }
@@ -1195,7 +1195,7 @@ def fetch_reestructuracion_organismos() -> dict | None:
         return {
             "valor":          avance,
             "unidad":         "% de avance (proxy InfoLeg, caso por caso)",
-            "fuente":         INFOLEG_HOME,
+            "fuente":         "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
             "fecha_dato":     hoy.isoformat(),
             "desactualizado": False,
             "conteo_normas":  count,
@@ -1852,7 +1852,7 @@ def fetch_rigi_inversiones() -> dict | None:
         return {
             "valor":          round(min(100.0, float(count)), 1),
             "unidad":         "% (proxy: conteo de Resoluciones VPU)",
-            "fuente":         INFOLEG_HOME,
+            "fuente":         "InfoLeg — Ministerio de Justicia (base de normas nacionales)",
             "fecha_dato":     today.isoformat(),
             "desactualizado": True,
         }
