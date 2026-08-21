@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "descripcion": "Hitos normativos del Fondo de Asistencia Laboral (Ley 27.802) para el indicador fal_modernizacion_laboral en su etapa de CONSTRUCCIÓN (ADR-0098). Cada hito está fechado y respaldado por una norma publicada, verificable por número en InfoLeg — mismo patrón que concesiones_fechas.json y privatizaciones_fechas.json.",
-    "por_que": "Hasta el 1-nov-2026 el régimen no está vigente y la adopción no puede empezar por razón legal. Medir sólo adopción hacía que el indicador informara ~0 sobre 100, que se lee como fracaso de gestión cuando el Gobierno ya hizo todo lo que legalmente podía hacer. La etapa de construcción mide eso.",
-    "verificado": "2026-07-20 contra el buscador de InfoLeg, por número de norma"
+    "descripcion": "Hechos fechados del Fondo de Asistencia Laboral (Ley 27.802) para el indicador fal_modernizacion_laboral: los actos normativos que lo construyen, la fecha en que el régimen empieza a regir y el estado judicial de esos actos (ADR-0228). Cada entrada está fechada y respaldada por una norma publicada o por una resolución judicial identificable — mismo patrón que concesiones_fechas.json y privatizaciones_fechas.json.",
+    "por_que": "Una norma dictada y una norma que rige son dos estados distintos, y en política laboral argentina divergen: las doce medidas del sector Trabajo y Seguridad Social de la base de desregulaciones de Chequeado y elDiarioAR están calificadas de impacto NULO —son el capítulo laboral del DNU 70/2023, frenado en sede judicial— y la propia Ley 27.802 estuvo suspendida con efecto general entre el 30-mar y el 23-abr-2026. Por eso el indicador puntúa actos VIGENTES, no actos dictados.",
+    "verificado": "2026-07-20 los hitos normativos contra el buscador de InfoLeg, por número de norma. 2026-08-21 el estado judicial contra las resoluciones y su cobertura (ver `fuente` de cada entrada de `judicial`)."
   },
   "vigencia": {
     "fecha": "2026-11-01",
@@ -30,5 +30,27 @@
       "organismo": "Poder Ejecutivo Nacional",
       "fuente": "InfoLeg — Decreto Reglamentario 408/2026, aprueba la reglamentación del Título II (Fondo de Asistencia Laboral) de la Ley 27.802, publicado 01-jun-2026"
     }
-  ]
+  ],
+  "judicial": {
+    "_meta": {
+      "criterio": "Sólo entra una suspensión con EFECTO GENERAL que alcance a los artículos del FAL. Una cautelar de alcance individual no cambia si el régimen rige para todos. `hasta` es null mientras la suspensión sigue vigente.",
+      "causa_de_fondo": {
+        "caratula": "CGTRA c/ Estado Nacional s/ Acción Declarativa",
+        "estado": "en trámite",
+        "objeto": "acción declarativa de inconstitucionalidad de carácter colectivo contra una parte sustancial de la Ley 27.802, inscripta en el Registro Público de Procesos Colectivos de la CSJN (Acordada 12/2016)",
+        "fuente": "Arese, César, «Efectos inmediatos de la cautelar dictada en CGT c/ Estado Nacional suspendiendo parte de la Ley 27802», RC D 141/2026 · Infobae, 08-jul-2026 (Sala IV de la Cámara Contencioso Administrativo Federal confirma el rechazo del pedido cautelar y la ley sigue vigente mientras tramita la demanda colectiva)"
+      }
+    },
+    "suspensiones": [
+      {
+        "norma": "Ley 27.802",
+        "desde": "2026-03-30",
+        "hasta": "2026-04-23",
+        "organo": "Juzgado Nacional de Primera Instancia del Trabajo N° 63",
+        "alcance": "cautelar innovativa con efecto general (proceso colectivo) sobre unos 82 artículos de la Ley 27.802, entre ellos los que implementan el Fondo de Asistencia Laboral",
+        "levantada_por": "Cámara Nacional de Apelaciones del Trabajo, Sala VIII — concedió efecto suspensivo a la apelación del Estado Nacional y dejó sin efecto la cautelar, con lo que la ley volvió a regir",
+        "fuente": "La Nación, 30-mar-2026 («el fallo frena el Fondo de Asistencia Laboral (FAL), las limitaciones al derecho a huelga…») e Infobae, 30-mar-2026 (la cautelar suspendió «con efecto general… normas sobre contrato de trabajo, tercerización, solidaridad, jornada, indemnizaciones, huelga, ultraactividad, negociación colectiva, tutela sindical, teletrabajo y el Fondo de Asistencia Laboral») · levantamiento: La Nación e Infobae, 23-abr-2026 · ratificaciones posteriores: Juzgado CAF 12, 08-may-2026, y Sala IV de la Cámara CAF, 08-jul-2026"
+      }
+    ]
+  }
 }
