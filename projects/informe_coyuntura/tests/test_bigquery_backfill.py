@@ -15,6 +15,7 @@ no confiadas a una inspección posterior.
 Nada de acá toca BigQuery ni pide credenciales.
 """
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -167,7 +168,21 @@ def test_la_historia_en_git_no_tiene_corridas_rotas():
 
     Es el supuesto sobre el que se apoya todo el backfill; si git deja de poder
     contarlo, quiero enterarme acá y no a mitad de una escritura en BigQuery.
+
+    El clon shallow se detecta y se nombra. Sin eso, en CI —donde
+    `actions/checkout` clona con `fetch-depth: 1`— el test fallaba con
+    «assert 1 >= 225», que se lee como "se rompió la historia" cuando lo que
+    pasa es que no hay historia que leer. Cuatro noches de nocturno caído por
+    un mensaje que apuntaba al lugar equivocado.
     """
+    shallow = subprocess.run(
+        ["git", "rev-parse", "--is-shallow-repository"],
+        capture_output=True, text=True, cwd=RAIZ).stdout.strip()
+    assert shallow != "true", (
+        "el checkout es shallow, así que no hay historia para contar y este "
+        "test no puede verificar nada. No es que la historia esté rota: falta "
+        "`fetch-depth: 0` en el checkout de este entorno.")
+
     corridas = bf.corridas_en_git()
     assert len(corridas) >= 225
     assert all(c["generated_at"] for c in corridas)

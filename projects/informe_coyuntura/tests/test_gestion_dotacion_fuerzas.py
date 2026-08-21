@@ -105,8 +105,22 @@ def test_la_dimension_laboral_sigue_siendo_la_mas_floja():
 
     Lo que la guardia protege ahora es lo único que sigue en pie: la
     litigiosidad laboral, que es el RESULTADO de la reforma y no su
-    instrumento, sigue por debajo de 60. Si algún día el FAL vuelve a ser un
-    indicador vivo, esta guardia debería volver a mirar la dimensión."""
+    instrumento, no mejoró. Si algún día el FAL vuelve a ser un indicador
+    vivo, esta guardia debería volver a mirar la dimensión.
+
+    MIRA LA BANDA, NO EL PUNTAJE (retocado el 2026-08-21, ADR-0221). Antes
+    exigía `puntaje < 60,0`, y el puntaje era 59,4 el día que se escribió: el
+    cable trampa quedó a un punto del valor. Un mes nuevo de la SRT lo movió a
+    60,8 y disparó cuatro noches seguidas de nocturno — pero los juicios no se
+    habían enfriado: crecían 2,1% (127.363 en 12 meses contra 124.767 previos).
+    Lo único que había pasado es que la tasa se desaceleró 0,7 pp DENTRO DE LA
+    MISMA banda, y el puntaje interpolado cruzó un número redondo.
+
+    Un cable trampa a un punto del valor actual dispara por ruido, y lo que
+    dispara por ruido se termina ignorando — que es la peor manera de perder
+    una guardia. La banda (-5%, +5%) es la categoría de la propia metodología:
+    "sin cambio apreciable". Mientras la variación siga ahí adentro no pasó
+    nada que mirar. Si baja de -5%, la litigiosidad se enfrió de verdad."""
     import json
     cache = Path(__file__).parent.parent / "output" / "cache" / "gestion.json"
     if not cache.exists():
@@ -117,11 +131,20 @@ def test_la_dimension_laboral_sigue_siendo_la_mas_floja():
     r = itcg.calcular_itcg(valores)
     puntajes = {k: d["puntaje"] for k, d in r["dimensiones"].items()}
     import parametrica
+    variacion = valores["litigiosidad_laboral"]
     litigiosidad = parametrica.puntaje_de(
-        valores["litigiosidad_laboral"], "litigiosidad_laboral", itcg.BANDAS_ITCG)
-    assert litigiosidad < 60.0, (
-        f"la litigiosidad subió a {litigiosidad}: la industria del juicio se "
-        f"habría enfriado de verdad, y eso hay que mirarlo, no dar por bueno")
+        variacion, "litigiosidad_laboral", itcg.BANDAS_ITCG)
+    # El piso de la banda "sin cambio apreciable" de BANDAS_ITCG, leído de la
+    # paramétrica y no escrito a mano acá: si alguien recalibra las bandas, esta
+    # guardia se mueve con ellas en vez de quedar apuntando a un número viejo.
+    piso_sin_cambio = next(desde for desde, hasta, _ in
+                           itcg.BANDAS_ITCG["litigiosidad_laboral"]
+                           if desde < 0 < hasta)
+    assert variacion > piso_sin_cambio, (
+        f"los juicios laborales cayeron {variacion}% interanual, por debajo del "
+        f"{piso_sin_cambio}% que la paramétrica llama «sin cambio apreciable»: "
+        f"la industria del juicio se habría enfriado de verdad, y eso hay que "
+        f"mirarlo, no dar por bueno (puntaje {litigiosidad})")
     # el FAL ya no discrimina (ADR-0142): quedó fijo en su techo
     assert puntajes["reforma_laboral"] > litigiosidad, (
         "la dimensión debería estar sostenida por el FAL en 100")

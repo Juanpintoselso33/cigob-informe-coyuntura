@@ -205,6 +205,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0187](0187-gasto-funcionamiento-no-migra-a-sidif.md) | `gasto_funcionamiento` no migra a SIDIF: el universo no reconcilia con el IMIG | `gasto_funcionamiento` | rechazado |
 | [0188](0188-reestructuracion-organismos-numerador-caso-por-caso.md) | `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso | `reestructuracion_organismos` | vigente |
 | [0189](0189-si-no-puntua-no-se-muestra.md) | Si no puntúa no se muestra, y una promesa cumplida sí puntúa | `asistencia_directa`, `masa_salarial`, `social_orden` | vigente |
+| [0221](0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) | Un cable trampa mira la banda, no el puntaje | `litigiosidad_laboral` | vigente |
 
 ### Vida cotidiana (ITVC)
 

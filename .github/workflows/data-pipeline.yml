@@ -36,6 +36,14 @@ jobs:
         working-directory: projects/informe_coyuntura
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Historia COMPLETA, no el clon shallow por defecto. `bigquery_backfill`
+          # reconstruye corridas viejas leyendo el snapshot commit por commit
+          # (ADR-0209), y su test verifica ese supuesto contando las corridas que
+          # hay en git. Con `fetch-depth: 1` encuentra una sola y falla — el
+          # nocturno se cayó cuatro noches seguidas por eso, sin que ningún dato
+          # estuviera mal. El repo pesa 16 MB y 913 commits: traer todo no cuesta.
+          fetch-depth: 0
 
       - uses: actions/setup-python@v6
         with:

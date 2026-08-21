@@ -7,6 +7,7 @@ cinturon: 'gestion'
 indicadores: [fal_modernizacion_laboral]
 archivos: ['fal_hitos.json']
 modifica: ['0068']
+relacionado: ['0221']
 ambito: 'ITCG · `fal_modernizacion_laboral` · banda · serie · `fal_hitos.json`'
 origen: 'Auditoría externa del cinturón de gestión (doc 2), prioridad alta'
 ---

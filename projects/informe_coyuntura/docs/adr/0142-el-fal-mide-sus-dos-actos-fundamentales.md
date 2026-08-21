@@ -5,6 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-26
 cinturon: 'gestion'
 indicadores: [fal_modernizacion_laboral]
+relacionado: ['0221']
 ambito: 'ITCG · `fal_modernizacion_laboral` · bandas · serie · card · ficha'
 origen: 'revisión externa del cinturón de gestión (documento del 23-jul-2026)'
 ---

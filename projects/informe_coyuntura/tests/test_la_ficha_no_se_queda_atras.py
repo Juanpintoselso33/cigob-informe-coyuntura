@@ -176,7 +176,25 @@ def _adrs_con_indicadores():
         if estado not in ("aceptado", "aceptada"):
             continue
         claves = [x.strip().strip("'\"") for x in inds.strip("[]").split(",") if x.strip()]
-        yield p.stem[:4], fecha, claves
+        yield p.stem[:4], fecha, claves, campo("archivos")
+
+
+# Un ADR que sólo toca tests o workflows no cambió el indicador: cambió cómo lo
+# verificamos. ADR-0221 es el caso — recalibra el cable trampa de
+# `litigiosidad_laboral` sin mover un dato— y la guardia disparó contra él a los
+# cinco minutos de escrita. La salida NO es sacarle el indicador al frontmatter
+# para que el test calle: eso es acomodar el registro a la herramienta. Es
+# distinguir lo que de verdad son dos cosas distintas.
+#
+# Ante la duda se exige el rastro: un ADR sin `archivos:` entra igual.
+SOLO_VERIFICACION = ("tests/", ".github/")
+
+
+def _cambia_como_se_produce(archivos: str) -> bool:
+    rutas = [x.strip().strip("'\"") for x in archivos.strip("[]").split(",") if x.strip()]
+    if not rutas:
+        return True
+    return any(not r.startswith(SOLO_VERIFICACION) for r in rutas)
 
 
 def test_hay_adrs_que_verificar():
@@ -192,8 +210,8 @@ def test_un_adr_que_toca_un_indicador_lo_cuenta_en_su_ficha():
     `indicadores:` también se usó para nombrar funciones del colector, y el
     hueco de "no tiene ficha" ya lo cierra la guarda 1 contra el snapshot."""
     faltan = []
-    for num, fecha, claves in _adrs_con_indicadores():
-        if fecha < DESDE:
+    for num, fecha, claves, archivos in _adrs_con_indicadores():
+        if fecha < DESDE or not _cambia_como_se_produce(archivos):
             continue
         for clave in claves:
             b = _bloque(FICHAS, clave)

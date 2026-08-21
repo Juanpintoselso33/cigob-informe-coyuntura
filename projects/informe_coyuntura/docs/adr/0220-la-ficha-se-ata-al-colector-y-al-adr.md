@@ -94,6 +94,15 @@ indicador con ficha tiene que dejar en `cambios:` una entrada que lo cite o que
 sea de esa fecha o posterior. **No hay nada que recordar**: no se puede aceptar
 un ADR que toca un indicador sin contarlo donde el lector lo va a leer.
 
+**Un ADR que sólo toca `tests/` o `.github/` queda exento**: cambió cómo
+verificamos el indicador, no cómo se produce. La distinción no es teórica —
+[[0221-un-cable-trampa-mira-la-banda-no-el-puntaje]] recalibra el cable trampa de
+`litigiosidad_laboral` sin mover un dato, y la guardia disparó contra él a los
+cinco minutos de escrita. La salida no fue sacarle el indicador al frontmatter
+para que el test callara —eso es acomodar el registro a la herramienta— sino
+separar dos cosas que de verdad son distintas. Ante la duda se exige el rastro:
+un ADR sin `archivos:` entra igual.
+
 **Rige desde el 21 de agosto de 2026 y no se retrofitea.** El frontmatter
 `indicadores:` se usó con criterios distintos a lo largo del proyecto —hay ADRs
 que ahí nombran funciones del colector— y aplicarla hacia atrás pedía tocar 88
