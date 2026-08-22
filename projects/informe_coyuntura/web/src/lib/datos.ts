@@ -17,6 +17,7 @@ export interface Indicador {
   fecha_dato: string;
   desactualizado: boolean;
   estado?: string;        // "placeholder" cuando aplica
+  metodo_obtencion?: "automatico" | "semiautomatico" | "manual";
   avance_pct?: number;
   notas?: string;
   en_indice?: boolean;    // macro/gestión/política/vida: integra el índice paramétrico (false = contexto)
@@ -366,6 +367,7 @@ export const LABELS: Record<string, string> = {
   apoyo_empresario: "Postura pública de las cámaras empresarias",
   desafios_legislativos: "Normas desafiadas en el recinto",
   conflictividad_nacional: "Conflictividad social (país)",
+  jornadas_individuales_no_trabajadas_12m: "Intensidad de los paros",
   movilizacion_cepa: "Tensión social (CEPA, interno)", iaf_transferencias: "Armonía federal (transferencias)",
   eficacia_legislativa: "Eficacia parlamentaria", cohesion_bloque: "Cohesión del bloque LLA (bicameral)",
   cohesion_bloque_senado: "Cohesión del bloque LLA (Senado, fusionado)",
@@ -379,6 +381,7 @@ export const LABELS: Record<string, string> = {
   // impacto social (claves de publicar.py)
   brecha_salario_cbt: "Salario real vs. canasta", ipc_alimentos: "Inflación de alimentos",
   endeudamiento_familiar: "Endeudamiento de consumo", mora_familias: "Mora de las familias",
+  carga_servicio_deuda_hogares: "Carga del servicio de deuda",
   peso_tarifas: "Peso de tarifas (regulados)", alquiler_real: "Costo real del alquiler", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
   consumo_carne: "Consumo de carne vacuna per cápita",
   consumo_carnes_total: "Consumo total de carnes per cápita", informalidad: "Informalidad laboral",
@@ -449,6 +452,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   apoyo_empresario: "saldo",
   desafios_legislativos: "normas",
   conflictividad_nacional: "% vs 2023",
+  jornadas_individuales_no_trabajadas_12m: "jornadas 12m",
   iaf_transferencias: "% real", eficacia_legislativa: "%", cohesion_bloque: "%",
   cohesion_bloque_senado: "%", rotacion_gabinete: "salidas 12m",
   gobernadores_alineamiento: "%", veto_quorum: "%", comisiones_caidas: "%",
@@ -458,6 +462,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // impacto social
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   mora_familias: "%",
+  carga_servicio_deuda_hogares: "%",
   peso_tarifas: "% m/m", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.", patentamiento_autos: "u.",
@@ -509,6 +514,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   desafios_legislativos: "Normas desafiadas (12 meses)",
   movilizacion_cepa: "Índice (0–100)",
   conflictividad_nacional: "% de variación vs 2023 (eventos de protesta y disturbios en el país, acum. 12 meses)",
+  jornadas_individuales_no_trabajadas_12m: "Jornadas individuales no trabajadas por paros (acumulado de 12 meses)",
   iaf_transferencias: "% interanual real",
   eficacia_legislativa: "% de proyectos",
   cohesion_bloque: "% de votos (Rice bicameral: Diputados 65% + Senado 35%)",
@@ -523,6 +529,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   // impacto social
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
   endeudamiento_familiar: "Billones de pesos", mora_familias: "% de la cartera en situación irregular",
+  carga_servicio_deuda_hogares: "% de la masa salarial registrada comprometida en servicios de deuda",
   peso_tarifas: "% mensual", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
   consumo_carne: "kg por habitante/año", consumo_carnes_total: "kg por habitante/año (vacuna + aviar + porcina)",
   informalidad: "% de asalariados",
@@ -618,7 +625,7 @@ export const BARRA_0_100 = new Set<string>([
   "eficacia_legislativa", "cohesion_bloque", "alineamiento_senadores_prov",
   "adhesion_reformas_provincial", "veto_quorum", "comisiones_caidas", "movilizacion_cepa",
   "informalidad", "pluriempleo", "sentimiento_digital", "icc_utdt", "indice_intencion_migratoria",
-  "mora_familias",
+  "mora_familias", "carga_servicio_deuda_hogares",
 ]);
 
 function clamp100(n: number): number { return Math.max(0, Math.min(100, n)); }
@@ -638,8 +645,10 @@ export function visualDe(key: string, ind: Indicador): Visual {
 }
 
 // Badge honesto del origen del dato.
-export function badgeEstado(ind: Indicador): "Automático" | "Carga manual" | "Estimación" {
+export function badgeEstado(ind: Indicador): "Automático" | "Semiautomático" | "Carga manual" | "Estimación" {
   if (ind.estado === "placeholder" || ind.valor === null) return "Estimación";
+  if (ind.metodo_obtencion === "manual") return "Carga manual";
+  if (ind.metodo_obtencion === "semiautomatico") return "Semiautomático";
   return "Automático";
 }
 

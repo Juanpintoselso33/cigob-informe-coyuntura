@@ -6,7 +6,7 @@ fecha: 2026-07-09
 cinturon: 'politica'
 parametros: ['BANDAS_ITCP["comisiones_caidas"]']
 archivos: ['scripts/itcp.py', 'tests/test_itcp.py', 'web/src/lib/fichas.ts', 'scripts/gate_calidad.py']
-relacionado: ['0058', '0059', '0061', '0064', '0081', '0167', '0168', '0171', '0225', '0226']
+relacionado: ['0058', '0059', '0061', '0064', '0081', '0167', '0168', '0171', '0225', '0226', '0231', '0232']
 ambito: '`scripts/itcp.py` (`BANDAS_ITCP["comisiones_caidas"]`) · `tests/test_itcp.py` · `web/src/lib/fichas.ts` · `scripts/gate_calidad.py` (excepción G3 de votometro_ventaja_lla, hallazgo menor de la misma auditoría)'
 ---
 

@@ -16,7 +16,7 @@ al ADR.
 |---|---:|---|
 | `ingresos` | 28% | `brecha_salario_cbt`, `pobreza_nowcast`, `consumo_carnes_total`, `motorizacion_total`, `consumo_supermercados` |
 | `precios` | 25% | `ipc_alimentos`, `peso_tarifas`, `alquiler_real` |
-| `vulnerabilidad` | 10% | `mora_familias` |
+| `vulnerabilidad` | 10% | `mora_familias`, `carga_servicio_deuda_hogares` |
 | `empleo` | 24% | `informalidad`, `empleo_registrado`, `mortalidad_pymes`, `despacho_cemento`, `pluriempleo`, `trabajo_independiente` |
 | `percepcion` | 8% | `icc_utdt`, `sentimiento_digital` |
 | `seguridad` | 4% | `inseguridad` |
@@ -88,6 +88,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 3% |
 | Peso efectivo en el índice | **0.9%** |
+| Procedencia del ancla | `conceptual` — autos + motos per cápita, móvil 12m rebaseado a 4T-2023 (ADR-0224); ancla en fecha fija. EXENTO del tope de 140: a 0,89% de peso el techo acota una compensación que el peso ya acota, y contra esta base —deprimida— 140 es el nivel de un año normal, no un outlier |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -101,6 +102,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 20% |
 | Peso efectivo en el índice | **5.6%** |
+| Procedencia del ancla | `conceptual` — serie desestacionalizada del INDEC rebaseada a 4T-2023 (ADR-0225); ancla en fecha fija, sin móvil 12m porque la fuente ya la desestacionalizó |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
@@ -158,13 +160,26 @@ donde colar una calibración (ADR-0123).
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **10.0%** |
+| Peso dentro de la dimensión | 70% |
+| Peso efectivo en el índice | **7.0%** |
 | Procedencia del ancla | `conceptual` — nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0067](../adr/0067-mora-familias-indicador-propio.md) la mora de las familias sale del compuesto de endeudamiento y puntúa como indicador propio del ITVC
+**Lo gobiernan**: [ADR-0067](../adr/0067-mora-familias-indicador-propio.md) la mora de las familias sale del compuesto de endeudamiento y puntúa como indicador propio del ITVC · [ADR-0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) La carga de deuda anticipa la mora
+
+#### Carga del servicio de deuda
+
+`carga_servicio_deuda_hogares`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 30% |
+| Peso efectivo en el índice | **3.0%** |
+
+**Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
+
+**Lo gobiernan**: [ADR-0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) La carga de deuda anticipa la mora
 
 ### Dimensión `empleo` (24%)
 
@@ -276,11 +291,11 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 18% |
 | Peso efectivo en el índice | **1.5%** |
-| Procedencia del ancla | `conceptual` — canasta de búsquedas rebaseada a 4T-2023, invertida (ADR-0034); ancla en fecha fija |
+| Procedencia del ancla | `conceptual` — canasta de 6 búsquedas, cada término rebaseado a su propio 4T-2023 y promediado con peso igual, invertida (ADR-0034, ADR-0222); ancla en fecha fija |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 
-**Lo gobiernan**: [ADR-0034](../adr/0034-sentimiento-digital-puntuable.md) Sentimiento digital: de contexto a componente del ITVC
+**Lo gobiernan**: [ADR-0034](../adr/0034-sentimiento-digital-puntuable.md) Sentimiento digital: de contexto a componente del ITVC · [ADR-0222](../adr/0222-la-canasta-de-busquedas-pesa-por-termino-no-por-volumen.md) La canasta de búsquedas pesa por término, no por volumen
 
 ### Dimensión `seguridad` (4%)
 
@@ -332,7 +347,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-35 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+36 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0018](../adr/0018-itvc-parametrica-vida-cotidiana.md) — ITVC-B100: paramétrica base 100 del cinturón de Vida Cotidiana
 - [0024](../adr/0024-motos-movil-12m-estacionalidad.md) — Motos por acumulado móvil de 12 meses (auditoría de estacionalidad)
@@ -345,7 +360,6 @@ histórica.
 - [0109](../adr/0109-saturacion-de-la-escala-de-tension.md) — Saturación de la escala de tensión: verificada, no requiere cambio
 - [0110](../adr/0110-percepcion-seguridad-y-consumo.md) — La dimensión se llama por lo que tiene adentro
 - [0111](../adr/0111-alquiler-real-entra-al-itvc.md) — El costo del alquiler entra al cinturón; pobreza y expectativas no
-- [0112](../adr/0112-el-cinturon-mira-hacia-adelante.md) — El cinturón incorpora su primera medida prospectiva
 - [0113](../adr/0113-nowcast-de-pobreza.md) — La pobreza se publica, con la única fuente mensual que existe
 - [0114](../adr/0114-pobreza-oficial-acompana-al-nowcast.md) — La pobreza oficial acompaña al nowcast en el mismo gráfico
 - [0115](../adr/0115-reorganizacion-de-la-dimension-de-percepcion.md) — La dimensión de percepción se parte en tres
@@ -366,6 +380,8 @@ histórica.
 - [0217](../adr/0217-puntua-el-acceso-total-a-proteina-no-la-vacuna.md) — Puntúa el acceso total a proteína, no la carne vacuna
 - [0218](../adr/0218-el-cierre-de-pymes-se-mide-con-la-srt.md) — El cierre de PyMEs se mide con la SRT, no con la producción industrial
 - [0219](../adr/0219-la-contracara-del-cierre-el-trabajo-independiente.md) — La contracara del cierre: el trabajo independiente
+- [0222](../adr/0222-la-canasta-de-busquedas-pesa-por-termino-no-por-volumen.md) — La canasta de búsquedas pesa por término, no por volumen
 - [0223](../adr/0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) — El espejo de las motos: el patentamiento de autos
 - [0224](../adr/0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) — Puntúa la motorización total, no cada vehículo por su lado
 - [0225](../adr/0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) — El supermercado deja de validar el índice y pasa a integrarlo
+- [0231](../adr/0231-la-carga-de-deuda-anticipa-la-mora.md) — La carga de deuda anticipa la mora

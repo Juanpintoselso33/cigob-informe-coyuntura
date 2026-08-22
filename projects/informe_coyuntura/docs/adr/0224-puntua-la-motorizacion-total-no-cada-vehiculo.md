@@ -8,6 +8,7 @@ indicadores: [motorizacion_total, patentamiento_autos, patentamiento_motos]
 archivos: ['scripts/vida_cotidiana/collectors/motorizacion.py', 'scripts/vida_cotidiana/main.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'tests/test_motorizacion_total.py']
 supersede_parcialmente: ['0223']
 relacionado: ['0018', '0024', '0033', '0108', '0153', '0216', '0217']
+modificado_por: ['0225']
 ambito: 'ITCIS · dimensión de ingresos y consumo · qué puntúa del patentamiento de vehículos'
 origen: 'Desacuerdo editorial: un editor sostiene que el pasaje del auto a la moto es empobrecimiento y debe puntuar negativo; el otro, que es acceso y es una mejora'
 ---
@@ -157,6 +158,11 @@ Toma el **peso combinado de los dos que reemplaza** —0,0196 de motos más 0,02
 de autos = 0,0396 de la dimensión de ingresos, 1,11% del índice— y **los otros
 tres componentes de la dimensión no se tocan**. Es el único reparto que no
 afirma nada que no se haya medido.
+
+Esos porcentajes describen el reparto al tomar esta decisión. ADR-0225, dictado
+después, incorporó consumo de supermercados y redujo proporcionalmente el peso
+vigente de motorización a 3,17% de la dimensión y 0,89% del ITCIS; con ese peso,
+el máximo del ejemplo de 170 es 0,27 puntos por encima del techo.
 
 Fuente: los dos registros de la **DNRPA**, sumados y divididos por la población
 urbana total proyectada del INDEC, con acumulado móvil de 12 meses

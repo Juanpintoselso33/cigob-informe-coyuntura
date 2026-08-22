@@ -230,11 +230,16 @@ DIMENSIONES_ITVC = {
         #    17,2 y dejaba la dimensión en 78,6, o sea que TAPABA la señal que
         #    la dimensión existe para dar.
         #
-        # Precedente de dimensión con un solo indicador: `seguridad`. El peso
-        # NOMINAL de la dimensión no se toca, como en toda alta o baja previa —
-        # bajarlo acá porque el ITVC cae sería mover un peso para que el número
-        # quede mejor, prohibido por ADR-0045.
-        "indicadores": {"mora_familias": 1.0},
+        # ADR-0231: entra la carga del servicio de deuda de los hogares. La
+        # mora mide incumplimiento ya materializado; la carga CDF/MS mide qué
+        # parte de la masa salarial registrada queda comprometida antes del
+        # atraso. En niveles comparten la crisis (+0,883), pero en cambios
+        # mensuales apenas +0,182: no es la misma señal repetida. Parte con
+        # 30% porque el BCRA la actualiza en lotes semestrales; la mora conserva
+        # 70% por ser mensual, directa y más fresca. El peso NOMINAL de la
+        # dimensión no cambia.
+        "indicadores": {"mora_familias": 0.70,
+                        "carga_servicio_deuda_hogares": 0.30},
     },
     "empleo": {
         "nombre": "Prospectivas de empleo",
@@ -457,8 +462,8 @@ WINSOR_TOPE = 140.0   # techo de componentes B100 (ADR-0033) — SOLO techo:
 # del ITCIS. Esto NO lo levanta: exime a uno solo, con dos motivos medidos.
 #
 # 1. A su peso, el techo protege contra algo que no puede pasar.
-#    `motorizacion_total` pesa 1,11% del índice. Lo máximo que puede comprar
-#    por encima del techo son 0,33 puntos de ITCIS, y eso exigiría que el
+#    `motorizacion_total` pesa 0,89% del índice. Lo máximo que puede comprar
+#    por encima del techo son 0,27 puntos de ITCIS, y eso exigiría que el
 #    componente llegara a 170. El techo existe para que un boom no compre
 #    compensación ILIMITADA en una agregación lineal; acá la compensación ya
 #    está acotada por el peso, que es el mecanismo del que el techo es un
@@ -562,9 +567,12 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # Rebase directo desde las series oficiales existentes
     idx["brecha_salario_cbt"] = rebase_de_serie(series, "brecha_salario_cbt")
     # Mora del crédito familiar (ADR-0067): % de cartera irregular, invertido
-    # (más mora = peor). Desde ADR-0154 sostiene sola la dimensión de
-    # vulnerabilidad: endeudamiento_familiar salió del índice.
+    # (más mora = peor).
     idx["mora_familias"] = rebase_de_serie(series, "mora_familias", invertido=True)
+    # Carga del servicio de deuda sobre la masa salarial registrada (ADR-0231):
+    # más ingreso comprometido en cuotas e intereses = peor capacidad de pago.
+    idx["carga_servicio_deuda_hogares"] = rebase_de_serie(
+        series, "carga_servicio_deuda_hogares", invertido=True)
     idx["icc_utdt"] = rebase_de_serie(series, "icc_utdt")
     idx["pluriempleo"] = rebase_de_serie(series, "pluriempleo", invertido=True)
     # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.

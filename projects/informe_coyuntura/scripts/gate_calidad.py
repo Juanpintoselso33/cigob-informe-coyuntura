@@ -101,6 +101,11 @@ MAX_DIAS = {
     # avisa antes de que se saltee un mes entero, que es lo que hay que agarrar.
     "consumo_supermercados": 140,
     "endeudamiento_familiar": 140, "inseguridad": 150,
+    # IEF: la serie es mensual, pero el BCRA libera la planilla por lote
+    # semestral. 300 días cubre el ciclo sin presentarla como fuente mensual.
+    "carga_servicio_deuda_hogares": 300,
+    # Trabajo: planilla mensual con 2-3 meses de rezago observado.
+    "jornadas_individuales_no_trabajadas_12m": 150,
 }
 CARRY_FORWARD_MAX = 0.40                # tope de desactualizados por cinturón
 

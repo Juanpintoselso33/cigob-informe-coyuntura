@@ -181,6 +181,9 @@ PROCEDENCIA = {
     "adhesion_reformas_provincial": ("conceptual", "anclas NO tocadas: la adhesión es un evento irreversible y el rango de hoy es un punto de partida, no el rango final (ADR-0044)"),
     "cohesion_bloque": ("convencion", "calibrada contra su propia serie reconstruida desde 2024 (ADR-0042/0048)"),
     "conflictividad_nacional": ("convencion", "calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052)"),
+    "jornadas_individuales_no_trabajadas_12m": (
+        "historia_larga",
+        "anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0232)"),
 
     # ── ITVC (ADR-0123) ──────────────────────────────────────────────────────
     # El ITVC no tiene bandas: cada componente se rebasea a 100 = 4T-2023 y el
@@ -197,6 +200,9 @@ PROCEDENCIA = {
     "peso_tarifas": ("conceptual", "nivel de regulados vs salario rebaseado a 4T-2023; ancla en fecha fija"),
     "alquiler_real": ("conceptual", "encarecimiento relativo del alquiler rebaseado a 4T-2023 (ADR-0111)"),
     "mora_familias": ("conceptual", "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"),
+    "carga_servicio_deuda_hogares": (
+        "conceptual",
+        "carga CDF/MS rebaseada a la fecha fija 4T-2023 e invertida (ADR-0231)"),
     "mortalidad_pymes": ("conceptual", "nivel del IPI desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"),
     "despacho_cemento": ("conceptual", "nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"),
     "pluriempleo": ("conceptual", "subocupación demandante rebaseada a 4T-2023, invertida; ancla en fecha fija"),
@@ -214,7 +220,7 @@ PROCEDENCIA = {
     "motorizacion_total": ("conceptual",
                           "autos + motos per cápita, móvil 12m rebaseado a 4T-2023 "
                           "(ADR-0224); ancla en fecha fija. EXENTO del tope de 140: "
-                          "a 1,11% de peso el techo acota una compensación que el "
+                          "a 0,89% de peso el techo acota una compensación que el "
                           "peso ya acota, y contra esta base —deprimida— 140 es el "
                           "nivel de un año normal, no un outlier"),
     "consumo_supermercados": ("conceptual", "serie desestacionalizada del INDEC rebaseada a 4T-2023 (ADR-0225); ancla en fecha fija, sin móvil 12m porque la fuente ya la desestacionalizó"),

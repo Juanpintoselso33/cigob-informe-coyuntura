@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Impacto social — resumen
 
-Este documento tiene una ficha por indicador — son 17 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 19 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,17 +35,17 @@ El ITVC no es un puntaje de 0 a 100: es un índice base 100, donde 100 es el pro
 
 | | | | |
 |---|---|---|---|
-| **ITCIS: 90,6** | **NARANJA** | Deterioro moderado vs 4T-2023 | 17 indicadores: 5 en verde · 3 en amarillo · 5 en naranja · 4 en rojo |
+| **ITCIS: 90,0** | **NARANJA** | Deterioro moderado vs 4T-2023 | 19 indicadores: 5 en verde · 3 en amarillo · 6 en naranja · 5 en rojo |
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Índice | Color | Peso |
 |---|---|---|---|---|
-| Ingresos y consumo | Si el sueldo alcanza y qué compra. | 117,1 | VERDE | 28,1 % |
+| Ingresos y consumo | Si el sueldo alcanza y qué compra. | 112,4 | VERDE | 28,1 % |
 | Presión de precios | Lo que más duele en la compra de todos los días: alimentos y tarifas, medidos contra los salarios (no contra la inflación general). | 83,2 | ROJO | 25,0 % |
 | Prospectivas de empleo | El trabajo por sus dos caras: cuánto hay y de qué calidad es. | 92,5 | NARANJA | 24,2 % |
-| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. | 17,2 | ROJO | 10,0 % |
-| Confianza y percepción | El ánimo con que se vive el momento, medido de dos maneras. | 99,8 | AMARILLO | 8,2 % |
+| Vulnerabilidad financiera | Cuán expuestas están las familias por su deuda de consumo. | 24,7 | ROJO | 10,0 % |
+| Confianza y percepción | El ánimo con que se vive el momento, medido de dos maneras. | 100,1 | AMARILLO | 8,2 % |
 | Seguridad | Qué proporción de los hogares fue víctima de un delito. | 102,1 | AMARILLO | 4,5 % |
 
 ```{=openxml}
@@ -61,10 +61,11 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Indicador | Qué mide | Hoy | Color | Peso en el ITCIS |
 |---|---|---|---|---|
 | **DIMENSIÓN: Ingresos y consumo** | | | | |
-| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,87 canastas (RIPTE/CBT) | VERDE | 17,1 % |
-| Consumo total de carnes per cápita | Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. | 114,45 kg/hab/año | AMARILLO | 1,1 % |
-| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,6 % de personas | VERDE | 9,3 % |
-| Patentamiento de motos | Cuántas motos se patentan en el mes. | 72.596 unidades | VERDE | 0,6 % |
+| Salario real vs. canasta | Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio. | 3,87 canastas (RIPTE/CBT) | VERDE | 13,4 % |
+| Consumo total de carnes per cápita | Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en promedio móvil de doce meses. | 114,45 kg/hab/año | AMARILLO | 0,9 % |
+| Pobreza (estimación mensual) | El porcentaje de personas que viven en hogares urbanos pobres, estimado para el semestre móvil que termina en el mes… | 31,6 % de personas | VERDE | 7,3 % |
+| Motorización total | Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de… | 30,9 vehículos 0km por cada 1.000 habitantes (12 meses) | VERDE | 0,9 % |
+| Ventas en supermercados | Cuánto compra la gente en los supermercados una vez descontada la inflación. | 83,2 índice (2004 = 100, desestacionalizado) | NARANJA | 5,6 % |
 | **DIMENSIÓN: Presión de precios** | | | | |
 | Inflación de alimentos | Cuánto suben en el mes los precios de alimentos y bebidas. | 1,98 % m/m | VERDE | 8,8 % |
 | Peso de tarifas (regulados) | Cuánto suben en el mes los precios regulados: luz, gas, agua y transporte. | 2,13 % m/m regulados | ROJO | 11,2 % |
@@ -77,10 +78,11 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | Subocupación demandante | Qué porcentaje de los ocupados busca trabajar más horas porque su empleo no le alcanza. | 7,5 % | NARANJA | 1,2 % |
 | Empleo registrado privado | Cuántos asalariados del sector privado están registrados ante la seguridad social. | 6.106,53 miles de puestos | AMARILLO | 5,4 % |
 | **DIMENSIÓN: Vulnerabilidad financiera** | | | | |
-| Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,52 % de la cartera en situación irregular | ROJO | 10,0 % |
+| Mora de las familias | Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular —… | 14,52 % de la cartera en situación irregular | ROJO | 7,0 % |
+| Carga del servicio de deuda | Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus… | 24,08 % de la masa salarial registrada | ROJO | 3,0 % |
 | **DIMENSIÓN: Confianza y percepción** | | | | |
 | Confianza del consumidor (ICC) | El optimismo de la gente sobre la economía y sus finanzas personales (Índice de Confianza del Consumidor). | 39,9 índice | NARANJA | 6,8 % |
-| Sentimiento digital (Trends) | La urgencia económica que percibe la sociedad, medida por cuánto se busca en internet sobre inflación, precios… | 28,6 interés 0–100 | VERDE | 1,5 % |
+| Sentimiento digital (Trends) | Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet. | 57,6 índice (100 = 4T-2023) | VERDE | 1,5 % |
 | **DIMENSIÓN: Seguridad** | | | | |
 | Victimización (IVI) | Qué porcentaje de los hogares sufrió al menos un delito en los últimos 12 meses, según la encuesta mensual de… | 28 % de hogares víctimas (últimos 12 meses) | AMARILLO | 4,5 % |
 
@@ -100,7 +102,7 @@ Cuántas canastas básicas totales alcanza a cubrir el salario formal promedio.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 3,87 canastas (RIPTE/CBT)** (2026-06) | **VERDE** | Peso efectivo 17,1 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 3,87 canastas (RIPTE/CBT)** (2026-06) | **VERDE** | Peso efectivo 13,4 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -154,12 +156,12 @@ El componente está en 112,5 sobre la base 100 del 4º trimestre de 2023 — 105
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 17,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 13,4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - El RIPTE cubre solo asalariados formales estables: deja afuera a informales y cuentapropistas; la canasta es por adulto equivalente.
-- El peso del componente (17,06% del índice) es una discusión abierta declarada del diseño.
+- El peso del componente (13,38% del índice) es una discusión abierta declarada del diseño.
 - Efecto base auditado: parte de la mejora contra el 4º trimestre de 2023 es rebote de la devaluación de diciembre.
 
 ## Si falta el dato / Política de revisiones
@@ -447,7 +449,7 @@ Los kilos de carne por habitante y por año sumando vacuna, aviar y porcina, en 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 114,45 kg/hab/año** (2026-06) | **AMARILLO** | Peso efectivo 1,1 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 114,45 kg/hab/año** (2026-06) | **AMARILLO** | Peso efectivo 0,9 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -502,7 +504,7 @@ Sustitución, no menos proteína: la carne vacuna suma 47,3 kg por habitante (�
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCIS: 1,1 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1156,7 +1158,7 @@ El optimismo de la gente sobre la economía y sus finanzas personales (Índice d
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | icc_utdt | **CINTURÓN** | Impacto social |
 | **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice |
-| **SERIE DISPONIBLE** | 2021-06 → 2026-07 (60 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: la universidad publica el índice del mes durante el mes siguiente. |
+| **SERIE DISPONIBLE** | 2021-07 → 2026-08 (60 puntos) | **REZAGO DE PUBLICACIÓN** | Semanas: la universidad publica el índice del mes durante el mes siguiente. |
 | **PRODUCTOR DEL DATO** | Universidad Torcuato Di Tella — Centro de Investigación en Finanzas | **OPERACIÓN ESTADÍSTICA** | ICC — Índice de Confianza del Consumidor, serie histórica nacional |
 | **MODO DE ACCESO** | Automático: se descubre la planilla más reciente desde el listado de la universidad y se lee la serie completa. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
@@ -1185,7 +1187,7 @@ Este cinturón no usa tablas de bandas por indicador: cada componente entra al �
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **90,9**.
+Este componente está hoy en **91,2**.
 
 ## Datos concretos detrás del valor
 
@@ -1197,7 +1199,7 @@ Qué hay, específicamente, detrás del dato que define el color de este mes —
 
 Dato vigente: 39,9 índice (2026-08).
 
-El componente está en 90,9 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+El componente está en 91,2 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
 
 **Color vigente: NARANJA**
 
@@ -1236,7 +1238,7 @@ El porcentaje de personas que viven en hogares urbanos pobres, estimado para el 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 31,6 % de personas** (2026-06) | **VERDE** | Peso efectivo 9,3 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 31,6 % de personas** (2026-06) | **VERDE** | Peso efectivo 7,3 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1290,7 +1292,7 @@ El componente está en 126,9 sobre la base 100 del 4º trimestre de 2023 — 105
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 9,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 7,3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1321,34 +1323,36 @@ Ponderación vigente en el ITCIS: 9,3 % efectivo. El color es una lectura adicio
 
 # Sentimiento digital (Trends)
 
-La urgencia económica que percibe la sociedad, medida por cuánto se busca en internet sobre inflación, precios, inseguridad y trabajo.
+Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet: inflación, precios, dólar, empleo, inseguridad y corrupción.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 28,6 interés 0–100** (2026-08) | **VERDE** | Peso efectivo 1,5 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 57,6 índice (100 = 4T-2023)** (2026-07) | **VERDE** | Peso efectivo 1,5 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | sentimiento_digital | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | interés 0–100 |
-| **SERIE DISPONIBLE** | 2021-01 → 2026-07 (67 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un mes: el mes en curso se descarta por incompleto; la card muestra además un pulso de los últimos tres meses casi en tiempo real. |
-| **PRODUCTOR DEL DATO** | Google Trends (fuente no oficial) | **OPERACIÓN ESTADÍSTICA** | Interés de búsqueda en Argentina de una canasta de cuatro términos de urgencia económica: inflación, precios, inseguridad y trabajo |
-| **MODO DE ACCESO** | Automático: consulta mensual de la canasta en ventana fija (2021 en adelante); cada descarga sana reemplaza el archivo completo — actualizaciones con escalas distintas nunca se mezclan. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
+| **DIMENSIÓN EN EL ITCIS** | Confianza y percepción | **UNIDAD DE MEDIDA** | índice (100 = 4T-2023) |
+| **SERIE DISPONIBLE** | 2021-01 → 2026-07 (67 puntos) | **REZAGO DE PUBLICACIÓN** | Hasta un mes: el mes en curso se descarta por incompleto y se publica el último mes cerrado. |
+| **PRODUCTOR DEL DATO** | Google Trends (fuente no oficial) | **OPERACIÓN ESTADÍSTICA** | Interés de búsqueda en Argentina de una canasta de seis términos: inflación, precios, dólar, empleo, inseguridad y corrupción |
+| **MODO DE ACCESO** | Automático: una consulta por término sobre la misma ventana fija (2021 en adelante). Cada término se reemplaza entero cuando su propia descarga es sana; el que falla conserva su serie anterior. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
-La urgencia económica que percibe la sociedad, medida por cuánto se busca en internet sobre inflación, precios, inseguridad y trabajo.
+Cuánta atención pública se llevan seis problemas, medida por lo que se busca en internet: inflación, precios, dólar, empleo, inseguridad y corrupción.
 
-Mide la preocupación económica por la conducta (qué busca la gente cuando le duele el bolsillo), complementando al ICC que la mide por encuesta. Puntúa en el índice con la canasta mensual comparada contra el arranque del mandato; el titular es el pulso en tiempo real.
+Mide la preocupación por la conducta (qué busca la gente cuando algo le duele), complementando al ICC que la mide por encuesta. Los seis términos pesan lo mismo y cada uno se compara contra el arranque del mandato. La corrupción es la excepción de lectura: se mueve por escándalos, así que un pico suyo dice que se habla de un caso, no que empeoró el bolsillo.
 
 **Dimensión que integra — Confianza y percepción.** El ánimo con que se vive el momento, medido de dos maneras: preguntando (el Índice de Confianza del Consumidor de la UTDT) y observando qué busca la gente en internet.
 
 ## Método de cómputo
 
-- Componente del índice: la canasta mensual rebaseada de forma invertida (más búsquedas de urgencia = peor) contra el promedio del 4º trimestre de 2023.
-- El cociente entre valores de una misma consulta cancela la renormalización de escala de la fuente.
+- Cada término se compara contra su propio 4º trimestre de 2023 dentro de su propia consulta: la fuente normaliza cada consulta por un factor único, que se cancela en ese cociente. Por eso seis consultas distintas se promedian sin necesidad de un término de anclaje.
+- La canasta es el promedio simple de los seis: peso igual y declarado. El promedio de los valores crudos que se usaba antes pesaba por volumen de búsqueda, y ese reparto no lo eligió nadie.
+- Componente del índice: la canasta rebaseada de forma invertida (más búsquedas de urgencia = peor) contra el promedio del 4º trimestre de 2023.
+- Sólo se publican los meses en los que están los seis términos: una canasta que cambia de composición mes a mes mueve el número por composición y no por búsquedas.
 
 ## Semáforo — valores que determinan el color
 
@@ -1369,11 +1373,11 @@ Este componente está hoy en **140**.
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El titular es el pulso de los últimos 3 meses (escala relativa de esa ventana). El gráfico y el puntaje del ITCIS usan la canasta mensual de ventana fija desde 2021, cuyo cociente contra el 4T-2023 es inmune a la renormalización de Trends.
+- Promedio simple de seis términos de búsqueda —inflación, precios, dólar, empleo, inseguridad y corrupción—, cada uno comparado contra su propio 4º trimestre de 2023 en una ventana fija desde 2021. Mayor = más búsquedas de urgencia. El ITCIS lo puntúa invertido.
 
 ## Color vigente y por qué
 
-Dato vigente: 28,6 interés 0–100 (2026-08).
+Dato vigente: 57,6 índice (100 = 4T-2023) (2026-07).
 
 El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
 
@@ -1386,20 +1390,24 @@ Ponderación vigente en el ITCIS: 1,5 % efectivo. El color es una lectura adicio
 ## Transparencia — limitaciones declaradas
 
 - Mide atención, no sentimiento: una noticia dispara búsquedas sin que cambie el bolsillo.
-- Fuente no oficial con límites de consulta: si el servicio restringe el acceso, la serie continúa desde el archivo propio.
-- Validación de constructo documentada: es la serie del cinturón que más co-mueve con la inflación mensual.
+- «Corrupción» es un proxy de saliencia de escándalo, no de urgencia del hogar: un pico suyo se lee como que se habla de un caso, no como que empeoró el bolsillo.
+- Un término de mucho volumen aplasta a uno de poco cuando comparten consulta —la fuente redondea a entero—, y por eso se consulta uno por vez. Con la canasta de cuatro términos anterior, «inseguridad» quedaba reducida a ceros y unos.
+- La canasta entera está por debajo de su base: el componente queda recortado en el techo de 140 en buena parte de los meses recientes, así que su movimiento no se refleja completo en el índice.
+- Fuente no oficial con límites de consulta: si el servicio restringe el acceso, cada término continúa desde el archivo propio.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Con la fuente caída, la serie sale del archivo propio (con su fecha declarada); la card mantiene el último valor como desactualizado.
+- **Si falta el dato:** Con la fuente caída, cada término conserva su última serie buena y la canasta llega hasta el último mes en que están los seis; la card mantiene el último valor como desactualizado.
 
-- **Política de revisiones:** Reemplazo total del archivo en cada descarga sana; la fuente no revisa datos propiamente.
+- **Política de revisiones:** Reemplazo total de la serie de cada término en cada descarga sana; la fuente no revisa datos propiamente.
 
 ## Historial — cambios metodológicos documentados
 
 **2026-07-03** — Declarado indicador de contexto: la ventana de tres meses no permitía línea de base 2023.
 
 **2026-07-04** — Pasa a componente puntuable tras un banco de pruebas empírico: la canasta de ventana fija con cociente interno resultó estable entre actualizaciones y consistente con la inflación.
+
+**2026-08-21** — ADR-0222: la canasta pasa a seis términos con peso igual —entran dólar, empleo y corrupción, y sale trabajo, cuyas búsquedas asociadas son derecho laboral, un plan social, el feriado y la tarea escolar—. Cada término se consulta por separado y se compara contra su propia base, lo que reemplaza al promedio crudo, que pesaba por volumen de búsqueda. La card deja de ser un pulso aparte y publica el mismo último mes cerrado que el gráfico.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1409,36 +1417,39 @@ Ponderación vigente en el ITCIS: 1,5 % efectivo. El color es una lectura adicio
 
 *Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
 
-# Patentamiento de motos
+# Motorización total
 
-Cuántas motos se patentan en el mes.
+Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el ITCIS se compara contra el promedio del 4º trimestre de 2023.
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 72.596 unidades** (2026-07) | **VERDE** | Peso efectivo 0,6 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 30,9 vehículos 0km por cada 1.000 habitantes (12 meses)** (2026-07) | **VERDE** | Peso efectivo 0,9 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
 | | | | |
 |---|---|---|---|
-| **IDENTIFICADOR TÉCNICO** | patentamiento_motos | **CINTURÓN** | Impacto social |
-| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | unidades |
-| **SERIE DISPONIBLE** | 2022-11 → 2026-07 (45 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: se toma el último mes calendario completo (el mes en curso sería un acumulado parcial). |
-| **PRODUCTOR DEL DATO** | CAFAM — Cámara Argentina de Fabricantes de Motovehículos | **OPERACIÓN ESTADÍSTICA** | Patentamientos mensuales de motovehículos, total país |
-| **MODO DE ACCESO** | Automático: API pública sin credenciales; la serie histórica se consulta mes a mes desde fines de 2022. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
+| **IDENTIFICADOR TÉCNICO** | motorizacion_total | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | vehículos 0km por cada 1.000 habitantes (12 meses) |
+| **SERIE DISPONIBLE** | 2023-01 → 2026-07 (43 puntos) | **REZAGO DE PUBLICACIÓN** | Menos de un mes: el registro publica cada mes en los primeros días del siguiente. Se toma el último mes calendario completo. |
+| **PRODUCTOR DEL DATO** | DNRPA — Dirección Nacional de los Registros Nacionales de la Propiedad del Automotor y de Créditos Prendarios (unidades) e INDEC (población) | **OPERACIÓN ESTADÍSTICA** | Inscripciones iniciales de automotores y de motovehículos (0 kilómetro), por mes y jurisdicción del registro seccional, sumadas y divididas por la población urbana total proyectada del INDEC. |
+| **MODO DE ACCESO** | Automático: CSV abierto sin credenciales. La dirección de descarga lleva el período adentro y cambia todos los meses, así que se descubre por catálogo en cada corrida en lugar de fijarse. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
-Cuántas motos se patentan en el mes.
+Cuántos vehículos 0 kilómetro —autos y motos sumados— se incorporan por cada mil habitantes en una ventana móvil de doce meses. En el ITCIS se compara contra el promedio del 4º trimestre de 2023.
 
-Proxy de consumo durable de los sectores medios y bajos.
+Mide acceso total a un vehículo sin confundir una suba de motos con una mejora automática: si los hogares sólo reemplazaran autos por motos, la suma quedaría estable. La ficha muestra ambas patas y el cambio de su composición para distinguir acceso de sustitución descendente.
 
 **Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
 
 ## Método de cómputo
 
-- Componente del índice: el promedio móvil de 12 meses contra las ventanas móviles equivalentes del 4º trimestre de 2023 — la estacionalidad del flujo crudo es fuerte (enero duplica a junio).
-- Recorte declarado: el componente se acota al techo de 140 — un boom puntual no compra compensación ilimitada dentro del índice; el valor crudo queda declarado en el detalle.
+- Se suman las unidades de los dos registros —autos y motos— y se toma el acumulado móvil de 12 meses. La estacionalidad del flujo crudo es fuerte en los dos (enero pesa 1,36 veces el mes promedio en autos, y en motos duplica a junio), de modo que contra una base fija mediría calendario además de poder de compra.
+- Pasaje a per cápita con la población urbana total proyectada del INDEC, interpolada a meses desde su serie trimestral.
+- Componente del índice: el resultado rebaseado a 100 = promedio del 4º trimestre de 2023 (menos vehículos por habitante = deterioro).
+- Se excluye Tierra del Fuego de las dos series. La provincia inscribió unas 29.000 motos en un solo año contra menos de 900 en cada uno de los dos anteriores, concentradas en ocho meses: es un movimiento registral de su régimen de promoción industrial, no compras de hogares fueguinos. La exclusión se aplica a la provincia entera y a toda la serie, porque recortar sólo los meses anómalos exigiría un umbral, y cualquier umbral que atrape una carga fiscal también atrapa un mes de cuarentena.
+- Es el único componente EXENTO del techo de recorte de 140 que rige para el resto del índice. Con un peso efectivo de 0,89%, si llegara a 170 aportaría 0,27 puntos del índice por encima de ese techo: la compensación ya queda acotada por el peso. Y contra una base tomada en el 4º trimestre de 2023 —el fondo del congelamiento previo a la devaluación— el nivel 140 no marca un valor extremo: dos tercios de los meses de la década anterior lo habrían superado.
 
 ## Semáforo — valores que determinan el color
 
@@ -1453,40 +1464,137 @@ Este cinturón no usa tablas de bandas por indicador: cada componente entra al �
 | de 85 a 95 | NARANJA |
 | menos de 85 | ROJO |
 
-Este componente está hoy en **140**.
+Este componente está hoy en **142,9**.
 
 ## Datos concretos detrás del valor
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (72.596 unidades) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (30,9 vehículos 0km por cada 1.000 habitantes (12 meses)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 72.596 unidades (2026-07).
+Dato vigente: 30,9 vehículos 0km por cada 1.000 habitantes (12 meses) (2026-07).
 
-El componente está en 140 sobre la base 100 del 4º trimestre de 2023 — 105 o más —, que es el tramo VERDE. Está en el techo de winsorización (140): el índice se recorta ahí, así que el valor real es mejor que el que entra al cálculo y el semáforo ya no distingue mejoras.
+Más acceso, con la mezcla corriéndose a la moto: en los últimos doce meses se patentaron 1,35 millones de vehículos 0 km (15,0% interanual): 562 mil autos (−2,0%) y 790 mil motos (31,2%). Las motos son el 58,4% de lo que se patenta, contra 51,6% al arranque del mandato. El total sube, así que no es que los hogares bajen del auto a la moto —eso dejaría el total plano—: entran hogares que antes no patentaban nada. Que entren en dos ruedas y no en cuatro es el dato que conviene mirar aparte.
 
 **Color vigente: VERDE**
 
-Ponderación vigente en el ITCIS: 0,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 0,9 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
-- Es el componente más eufórico del cinturón (muy por encima de su base): motivo del techo de recorte y de la baja de peso.
-- Aproximación al consumo discrecional financiado, no al bienestar general.
+- Es un FLUJO de altas, no el parque circulante: cuenta los vehículos que se incorporan, no los que hay. Un hogar que conserva el auto que ya tenía no aparece.
+- Cuenta unidades, no gama ni precio: un auto de entrada de gama y uno caro se registran igual, y una moto pesa lo mismo que un auto en la suma. El registro no publica cilindrada ni valor, así que separar gamas exigiría otra fuente.
+- Es una compra financiada: responde tanto al crédito prendario y a las condiciones de importación como al ingreso de los hogares. No distingue un hogar que puede más de un hogar que consigue cuota.
+- La composición no es neutral, y el indicador no la puntúa. Los índices de pobreza multidimensional de referencia tratan al automóvil como un activo cuya sola tenencia saca al hogar de la privación, y a la motocicleta como un activo menor; los índices de riqueza que estiman el peso de cada bien en vez de suponerlo le asignan a la moto alrededor de un quinto del peso del auto. La escalera de activos existe y tiene peldaños. Que el total suba mientras la mezcla se corre a la moto es acceso y descenso de peldaño a la vez, y el color sólo refleja lo primero.
+- Una suba del total puede venir de precios relativos y no de ingreso. El precio de adquirir un vehículo cayó en términos reales mientras el del transporte público más que se duplicó, así que parte de la motorización es un desplazamiento forzado desde el colectivo y no una mejora del bolsillo. El componente no separa esos dos motores.
+- La inscripción es del registro seccional donde se hace el trámite, que no siempre coincide con dónde vive el comprador — la apertura por jurisdicción sirve para composición, no para geografía del consumo.
+- Es un proxy de consumo durable, no de bienestar general.
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Un mes que falla en la API se saltea; la card mantiene el último valor como desactualizado; sin componente, renormalización.
+- **Si falta el dato:** El colector levanta excepción ante cualquier cambio de forma de la fuente —una columna que falta, un mes a medio cargar, una jurisdicción que cambia de nombre— en vez de publicar una serie recortada. Con la fuente caída, la card mantiene el último valor como desactualizado y la serie conserva sus puntos anteriores.
 
-- **Política de revisiones:** La API expone el histórico completo y se reconsulta entero en cada actualización.
+- **Política de revisiones:** Los dos archivos publican su histórico completo y se releen enteros en cada corrida, así que una corrección de la fuente se incorpora sola.
 
 ## Historial — cambios metodológicos documentados
 
-**2026-07-03** — Entra al ITCIS con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad.
+**2026-07-03** — Entra al ITCIS el patentamiento de motos con rebase simple del flujo mensual; el mismo día pasa al acumulado móvil de 12 meses por la estacionalidad.
 
-**2026-07-04** — Se aplica el techo de recorte 140 y el peso interno baja de 10% a 5%.
+**2026-07-04** — Se aplica al componente de motos el techo de recorte 140 y su peso interno baja de 10% a 5%.
+
+**2026-08-21** — Entra el patentamiento de autos como componente espejo, con el mismo peso y la misma transformación que motos (ADR-0223).
+
+**2026-08-21** — Los dos vehículos se funden en la motorización total per cápita, que toma el peso combinado de ambos; autos y motos dejan de ser tarjetas y pasan a explicar el color desde adentro (ADR-0224). El motivo es que ninguna de las dos series por separado distingue acceso de descenso de categoría, y el total sí. Con el cambio, el componente deja de estar apoyado contra el techo de recorte —del que queda exento— y vuelve a moverse con la fuente. La fuente de motos pasa de la cámara al registro, que es lo único que permite excluir el movimiento registral de Tierra del Fuego.
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
+
+# Ventas en supermercados
+
+Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el INDEC en su serie desestacionalizada. En el ITCIS puntúa rebaseado a 100 = 4T-2023.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 83,2 índice (2004 = 100, desestacionalizado)** (2026-05) | **NARANJA** | Peso efectivo 5,6 % del ITCIS | Cinturón Impacto social |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | consumo_supermercados | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Ingresos y consumo | **UNIDAD DE MEDIDA** | índice (2004 = 100, desestacionalizado) |
+| **SERIE DISPONIBLE** | 2017-01 → 2026-05 (113 puntos) | **REZAGO DE PUBLICACIÓN** | Encadena dos demoras y por eso es de las cards más lentas del cinturón: el INDEC publica el mes de referencia unos 52 días después de terminado, y la API de series tarda unas dos semanas más en espejarlo. El último punto disponible tiene entre tres y cuatro meses según en qué parte de ese ciclo caiga la corrida. |
+| **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta de supermercados — ventas a precios constantes, serie desestacionalizada |
+| **MODO DE ACCESO** | Automático: API pública sin credenciales. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
+
+## Definición — qué mide y por qué importa
+
+Cuánto compra la gente en los supermercados una vez descontada la inflación: el índice de ventas a precios constantes que publica el INDEC en su serie desestacionalizada. En el ITCIS puntúa rebaseado a 100 = 4T-2023.
+
+Es el único componente del cinturón que mide volumen efectivamente comprado. Todos los demás miden lo que entra (ingresos), lo que cuesta (precios), de dónde viene el ingreso (empleo), lo que no se paga (mora) o lo que se opina (percepción): ninguno mira lo que el hogar se llevó de la góndola. Cubre comercio registrado de cadenas, así que no ve el almacén de barrio ni el comercio informal.
+
+**Dimensión que integra — Ingresos y consumo.** Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y dos termómetros de bolsillo —el consumo de carne y el patentamiento de motos— que se mueven con el poder de compra.
+
+## Método de cómputo
+
+- Componente del índice: el índice de la fuente rebaseado a 100 = promedio del 4º trimestre de 2023 (más volumen comprado = mejora).
+- Se usa la serie DESESTACIONALIZADA que publica el propio INDEC y no se la vuelve a suavizar. No es un detalle de implementación: aplanar la serie original con una media móvil de 12 meses la atrasa medio año, y ese atraso llega a invertir el signo de la relación — está medido, y es la razón por la que la regla del proyecto es tomar el ajuste estacional de la fuente antes que fabricarlo.
+- Tampoco lleva promedio móvil de 12 meses, a diferencia de los patentamientos: esa transformación existe para sacarle el calendario a un flujo crudo, y acá el calendario ya está sacado.
+
+## Semáforo — valores que determinan el color
+
+Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+
+**Valores que definen cada color**
+
+| Rango (índice base 100 = 4º trim. 2023) | Color |
+|---|---|
+| 105 o más | VERDE |
+| de 95 a 105 | AMARILLO |
+| de 85 a 95 | NARANJA |
+| menos de 85 | ROJO |
+
+Este componente está hoy en **91,2**.
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- El informe publica el valor (83,2 índice (2004 = 100, desestacionalizado)) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+
+## Color vigente y por qué
+
+Dato vigente: 83,2 índice (2004 = 100, desestacionalizado) (2026-05).
+
+El componente está en 91,2 sobre la base 100 del 4º trimestre de 2023 — de 85 a 95 —, que es el tramo NARANJA.
+
+**Color vigente: NARANJA**
+
+Ponderación vigente en el ITCIS: 5,6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- Cubre comercio registrado de cadenas de supermercados: no ve el almacén de barrio, la feria ni el comercio informal, que es justamente donde se refugia parte del gasto cuando el ingreso se estrecha.
+- Tampoco ve el traslado de compras al canal mayorista y de descuento. Ese canal se mueve en sentido contrario —comprar ahí es señal de ajuste, no de holgura— y por eso no se suma a este componente; se sigue publicando aparte, en el panel de contraste externo del cinturón.
+- «A precios constantes» significa deflactado con índices de precios del propio INDEC, así que comparte insumo con el componente de precios de los alimentos. El solapamiento está declarado y medido: entre los dos la correlación es +0,558 en niveles y +0,058 al mirar los cambios mes a mes.
+- Mide cantidad vendida, no calidad de lo comprado: un carrito que cambia primera marca por segunda a igual volumen se registra igual.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** El colector levanta excepción si la serie no trae los tres meses de la base del 4º trimestre de 2023, en lugar de rebasear contra lo que haya: sin base, el componente mediría contra otra cosa sin que nada avisara. Con la fuente caída, la card mantiene el último valor como desactualizado.
+
+- **Política de revisiones:** La API devuelve el histórico completo en cada corrida, así que una revisión del INDEC —habituales en las series desestacionalizadas, que se recalculan al agregar meses— se incorpora sola y sin dejar huella de la versión anterior.
+
+## Historial — cambios metodológicos documentados
+
+**2026-08-21** — Entra al ITCIS con 20% de la dimensión de ingresos y consumo, y los cinco componentes previos ceden proporcionalmente conservando su orden relativo (ADR-0225). Venía de ser el ancla de validación externa del cinturón: mide condiciones materiales del hogar, así que integra el índice en vez de juzgarlo — la misma regla que había sacado a la confianza del consumidor de ese papel.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -1502,7 +1610,7 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 14,52 % de la cartera en situación irregular** (2026-05) | **ROJO** | Peso efectivo 10 % del ITCIS | Cinturón Impacto social |
+| **Hoy: 14,52 % de la cartera en situación irregular** (2026-05) | **ROJO** | Peso efectivo 7 % del ITCIS | Cinturón Impacto social |
 
 ## Identificación
 
@@ -1520,7 +1628,7 @@ Qué porcentaje del crédito de consumo de las familias (préstamos personales y
 
 Es la señal directa de estrés financiero de los hogares: la deuda puede crecer por acceso sano o por necesidad, pero la mora que se dispara solo tiene una lectura. Puntúa invertida: más mora, peor.
 
-**Dimensión que integra — Vulnerabilidad financiera.** Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. Es la única señal de la dimensión desde que el stock de deuda salió del índice — el nivel de deuda no distingue acceso de fragilidad, la mora sí.
+**Dimensión que integra — Vulnerabilidad financiera.** Cuán expuestas están las familias por su deuda de consumo. Combina la mora de la cartera —incumplimiento ya materializado— con la carga del servicio de deuda sobre la masa salarial —capacidad de pago comprometida antes del atraso—.
 
 ## Método de cómputo
 
@@ -1557,7 +1665,7 @@ El componente está en 17,2 sobre la base 100 del 4º trimestre de 2023 — meno
 
 **Color vigente: ROJO**
 
-Ponderación vigente en el ITCIS: 10 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCIS: 7 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
@@ -1567,10 +1675,99 @@ Ponderación vigente en el ITCIS: 10 % efectivo. El color es una lectura adicion
 
 ## Si falta el dato / Política de revisiones
 
-- **Si falta el dato:** Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado. Es el único componente de su dimensión, así que no hay con qué renormalizar dentro de ella: si se quedara sin dato, la dimensión entera no se calcula y su diez por ciento se reparte entre las otras cinco. Ese es el costo de haber dejado la dimensión con un solo indicador, y queda declarado.
+- **Si falta el dato:** Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado. Si faltara sólo la mora, la dimensión renormaliza temporalmente sobre la carga del servicio de deuda.
 
 - **Política de revisiones:** La planilla oficial se relee completa en cada actualización y adopta las revisiones del BCRA.
 
 ## Historial — cambios metodológicos documentados
 
 **2026-07-15** — Entra al ITCIS como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa.
+
+**2026-08-21** — Conserva 70% de vulnerabilidad al incorporarse la carga del servicio de deuda como señal previa al incumplimiento (ADR-0231).
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Impacto social · Capa de semáforo (4 colores)*
+
+# Carga del servicio de deuda
+
+Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus deudas. El BCRA calcula promedios de tres meses para el servicio de deuda y para la masa salarial.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 24,08 % de la masa salarial registrada** (2026-04) | **ROJO** | Peso efectivo 3 % del ITCIS | Cinturón Impacto social |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | carga_servicio_deuda_hogares | **CINTURÓN** | Impacto social |
+| **DIMENSIÓN EN EL ITCIS** | Vulnerabilidad financiera | **UNIDAD DE MEDIDA** | % de la masa salarial registrada |
+| **SERIE DISPONIBLE** | 2012-04 → 2026-04 (169 puntos) | **REZAGO DE PUBLICACIÓN** | La serie es mensual, pero el BCRA la publica por lotes con el Informe de Estabilidad Financiera semestral. |
+| **PRODUCTOR DEL DATO** | BCRA | **OPERACIÓN ESTADÍSTICA** | Informe de Estabilidad Financiera — estimación de la carga mensual de los servicios de deuda de las familias |
+| **MODO DE ACCESO** | Automático: lectura de la planilla oficial de series del informe. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-04 · informe generado el 2026-08-21 |
+
+## Definición — qué mide y por qué importa
+
+Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus deudas. El BCRA calcula promedios de tres meses para el servicio de deuda y para la masa salarial.
+
+Mide capacidad comprometida antes de que aparezca el incumplimiento. Complementa a la mora: una observa la presión de pagos y la otra los atrasos ya materializados.
+
+**Dimensión que integra — Vulnerabilidad financiera.** Cuán expuestas están las familias por su deuda de consumo. Combina la mora de la cartera —incumplimiento ya materializado— con la carga del servicio de deuda sobre la masa salarial —capacidad de pago comprometida antes del atraso—.
+
+## Método de cómputo
+
+- Toma la carga de capital e intereses sobre la masa salarial registrada de los sectores público y privado.
+- El BCRA usa promedios de tres meses tanto para la carga como para la masa salarial.
+- En el ITCIS se rebasa al promedio del 4º trimestre de 2023 y se invierte: más ingreso comprometido en deuda significa peor capacidad de pago.
+
+## Semáforo — valores que determinan el color
+
+Este cinturón no usa tablas de bandas por indicador: cada componente entra al índice como un número rebaseado a 100 = promedio del 4º trimestre de 2023, el arranque del mandato. Por encima de 100 hay mejora acumulada; por debajo, deterioro. El color se lee sobre ese número rebaseado, no sobre el valor en su unidad original.
+
+**Valores que definen cada color**
+
+| Rango (índice base 100 = 4º trim. 2023) | Color |
+|---|---|
+| 105 o más | VERDE |
+| de 95 a 105 | AMARILLO |
+| de 85 a 95 | NARANJA |
+| menos de 85 | ROJO |
+
+Este componente está hoy en **42,3**.
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- Cuotas de capital e intereses de las familias como porcentaje de la masa salarial registrada; el BCRA promedia tres meses tanto en el numerador como en el denominador. Más carga implica menor capacidad de pago.
+
+## Color vigente y por qué
+
+Dato vigente: 24,08 % de la masa salarial registrada (2026-04).
+
+El componente está en 42,3 sobre la base 100 del 4º trimestre de 2023 — menos de 85 —, que es el tramo ROJO. Está por debajo del punto donde la tensión toca 10, así que el semáforo ya no distingue deterioros adicionales: seguiría rojo igual.
+
+**Color vigente: ROJO**
+
+Ponderación vigente en el ITCIS: 3 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- El denominador cubre masa salarial registrada: no representa directamente a hogares informales o sin ingresos salariales.
+- Es una estimación de carga agregada; no muestra cómo se distribuye entre hogares ni cuántos concentran el esfuerzo.
+- La publicación semestral introduce más rezago que la mora aunque los puntos internos sean mensuales.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Si una edición del informe no está disponible, la serie conserva sus puntos previos. Si faltara este componente, vulnerabilidad renormaliza temporalmente sobre la mora.
+
+- **Política de revisiones:** Cada nueva planilla reemplaza el histórico completo y puede revisar meses anteriores.
+
+## Historial — cambios metodológicos documentados
+
+**2026-08-21** — Incorporado como señal previa al incumplimiento con 30% de vulnerabilidad; la mora conserva 70%.

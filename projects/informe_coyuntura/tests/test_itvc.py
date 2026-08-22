@@ -16,7 +16,7 @@ import itvc
 
 # Fixture con índices base-100 realistas (100 = promedio 4T-2023):
 # ingresos = 0,65×87,5 + 0,35×96 = 90,5 · precios = 0,4×95 + 0,6×60 = 74,0
-# vulnerabilidad (ADR-0154) = mora sola = 60,0
+# vulnerabilidad (ADR-0231) = 0,70×mora + 0,30×carga = 63,0
 # empleo = 0,45×102 + 0,4×80 + 0,15×96 = 92,3
 # confianza (ADR-0034) = 0,45×118 + 0,3×104 + 0,1×110 + 0,1×92 + 0,05×130 = 111,0
 # ITVC = 0,35×90,5 + 0,25×74 + 0,10×89 + 0,15×92,3 + 0,15×111,0 = 89,6
@@ -26,6 +26,7 @@ EJEMPLO = {
     "ipc_alimentos": 95.0,
     "peso_tarifas": 60.0,
     "mora_familias": 60.0,
+    "carga_servicio_deuda_hogares": 70.0,
     "mortalidad_pymes": 102.0,
     "despacho_cemento": 80.0,
     "pluriempleo": 96.0,
@@ -61,10 +62,8 @@ def test_itvc_reproduce_ejemplo():
     # vez de con 0,0196 y tira la dimensión para arriba.
     assert dims["ingresos"]["puntaje"] == 90.3
     assert dims["precios"]["puntaje"] == 75.3
-    # ADR-0154: la dimensión queda apoyada en la mora sola, así que su puntaje
-    # ES el índice de la mora. Antes promediaba 0,5×118 + 0,5×60 = 89,0 con
-    # endeudamiento, que salió del índice.
-    assert dims["vulnerabilidad"]["puntaje"] == 60.0
+    # ADR-0231: mora 70% + carga del servicio de deuda 30%.
+    assert dims["vulnerabilidad"]["puntaje"] == 63.0
     # 92,3 → 92,2 al entrar empleo_registrado (ADR-0130): el EJEMPLO no lo
     # declara, así que la dimensión renormaliza sobre los proxies con sus pesos
     # nuevos, que no son exactamente proporcionales por redondeo. Sigue dando
@@ -85,7 +84,7 @@ def test_itvc_reproduce_ejemplo():
     # vehículos con 130,0 y ahora pesa el doble, así que sobre una dimensión a
     # la que le faltan componentes el efecto se amplifica. La corrida real dio
     # 90,7 antes y 90,8 después.
-    assert r["valor"] == 87.2
+    assert r["valor"] == 87.5
     assert r["banda"] == "deterioro_moderado"
     assert r["ajustes_aplicados"] == []
 
@@ -127,9 +126,12 @@ def test_pesos_del_documento():
                                             "motorizacion_total": 0.0317,
                                             "consumo_supermercados": 0.2000}
     assert abs(sum(d["ingresos"]["indicadores"].values()) - 1.0) < 1e-9
-    # ADR-0154: sale endeudamiento_familiar (redundante, winsorizado y de signo
-    # equívoco) y la mora sostiene sola la dimensión.
-    assert d["vulnerabilidad"]["indicadores"] == {"mora_familias": 1.0}
+    # ADR-0154 saca endeudamiento; ADR-0231 agrega carga del servicio de deuda,
+    # una señal previa al incumplimiento que complementa la mora.
+    assert d["vulnerabilidad"]["indicadores"] == {
+        "mora_familias": 0.70,
+        "carga_servicio_deuda_hogares": 0.30,
+    }
     assert d["precios"]["indicadores"] == {"ipc_alimentos": 0.35, "peso_tarifas": 0.45,
                                            "alquiler_real": 0.20}
     # ADR-0130: entra empleo_registrado con 0,35 y los cuatro proxies ceden ×0,65
@@ -216,7 +218,7 @@ def test_ajuste_manual_del_analista():
     # EJEMPLO no trae alquiler_real (ADR-0111), así que precios renormaliza
     # sobre los dos componentes del doc: 0,4375×95 + 0,5625×80 = 86,6
     assert r["dimensiones"]["precios"]["puntaje"] == 86.6
-    assert r["valor"] == 90.0
+    assert r["valor"] == 90.3
 
 
 def test_sin_datos_devuelve_none():

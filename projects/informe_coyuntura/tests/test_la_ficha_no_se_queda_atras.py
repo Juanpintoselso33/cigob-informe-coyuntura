@@ -103,6 +103,8 @@ def test_todo_indicador_publicado_tiene_ficha_tecnica():
 # legítimas —"UTDT" y "Universidad Torcuato Di Tella" son el mismo— y esa
 # equivalencia tiene que estar escrita en algún lado en vez de adivinarse.
 SIGLAS = {
+    "AEA": "ASOCIACION EMPRESARIA ARGENTINA",
+    "UIA": "UNION INDUSTRIAL ARGENTINA",
     "UTDT": "UNIVERSIDAD TORCUATO DI TELLA",
     "CSJN": "CORTE SUPREMA DE JUSTICIA DE LA NACION",
     "SSS": "SUPERINTENDENCIA DE SERVICIOS DE SALUD",
@@ -144,7 +146,10 @@ def _palabras(s: str) -> set:
 
 def _mismo_organismo(declarado: str, real: str, url_ficha: str) -> bool:
     sd, sr = _siglas(declarado), _siglas(real)
-    if sd & sr:
+    # Una sigla compartida sólo acredita identidad si está declarada como
+    # organismo. `ART`, `IPC` o `PIB` pueden aparecer en dos fuentes distintas
+    # por ser el objeto medido, no quien lo produce.
+    if any(sigla in SIGLAS for sigla in sd & sr):
         return True
     # La expansión de una sigla se busca en EL OTRO lado. Buscarla en el propio
     # —como hacía la primera versión— da siempre verdadero: «SRT» expande a
@@ -165,6 +170,22 @@ def _mismo_organismo(declarado: str, real: str, url_ficha: str) -> bool:
     # Sin siglas compartidas: se comparan las palabras que distinguen. Hace
     # falta porque 14 de los 66 nombran su fuente sin ninguna sigla.
     return bool(_palabras(declarado) & _palabras(real))
+
+
+def test_una_sigla_del_tema_no_hace_coincidir_dos_organismos_distintos():
+    assert not _mismo_organismo(
+        "INDEC — encuesta de cobertura de ART",
+        "Superintendencia de Riesgos del Trabajo (SRT)",
+        "",
+    )
+
+
+def test_una_sigla_institucional_declarada_si_acredita_la_misma_fuente():
+    assert _mismo_organismo(
+        "SRT",
+        "Superintendencia de Riesgos del Trabajo",
+        "",
+    )
 
 
 def test_la_ficha_declara_la_fuente_que_el_colector_uso():

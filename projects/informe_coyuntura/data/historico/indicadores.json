@@ -47,6 +47,9 @@
     "2026-07": 3.81,
     "2026-08": 3.87
   },
+  "carga_servicio_deuda_hogares": {
+    "2026-08": 24.076
+  },
   "cepo_mulc": {
     "2026-07": 6.02,
     "2026-08": 5.78
@@ -210,6 +213,9 @@
   "ipi_manufacturero": {
     "2026-07": -1.07,
     "2026-08": -2.0
+  },
+  "jornadas_individuales_no_trabajadas_12m": {
+    "2026-08": 4760195.0
   },
   "judicializacion": {
     "2026-07": 1.65,

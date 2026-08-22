@@ -66,7 +66,7 @@ Suma de pesos: 100%.
 
 **Bandas**: > 30000 → 100 · 15000–30000 → 85 · 7000–15000 → 60 · 2500–7000 → 35 · ≤ 2500 → 10
 
-**Lo gobiernan**: [ADR-0096](../adr/0096-desregulacion-cuenta-normas-no-menciones.md) Desregulación: contar normas derogadas, no menciones de una palabra · [ADR-0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) La desregulación pasa a medirse con la fuente oficial · [ADR-0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) La desregulación se mide en artículos, no en normas
+**Lo gobiernan**: [ADR-0096](../adr/0096-desregulacion-cuenta-normas-no-menciones.md) Desregulación: contar normas derogadas, no menciones de una palabra · [ADR-0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) La desregulación pasa a medirse con la fuente oficial · [ADR-0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) La desregulación se mide en artículos, no en normas · [ADR-0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) La desregulación cuenta actos, no efectos, y la ficha lo dice
 
 ### Dimensión `reforma_estado` (25%)
 
@@ -124,9 +124,9 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **7.5%** |
 | Procedencia del ancla | `conceptual` — cortes sobre los estados que la escala puede tomar, no sobre el rango observado (ADR-0098) |
 
-**Bandas**: > 75 → 100 · 25–75 → 50 · ≤ 25 → 10
+**Bandas**: > 90 → 100 · 62.5–90 → 80 · 37.5–62.5 → 55 · 10–37.5 → 30 · ≤ 10 → 10
 
-**Lo gobiernan**: [ADR-0068](../adr/0068-fal-regimen-ley-27802.md) fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 · [ADR-0098](../adr/0098-fal-en-tres-etapas.md) El FAL se mide en tres etapas: construcción, vigencia y adopción · [ADR-0142](../adr/0142-el-fal-mide-sus-dos-actos-fundamentales.md) El FAL mide sus dos actos fundamentales
+**Lo gobiernan**: [ADR-0068](../adr/0068-fal-regimen-ley-27802.md) fal_modernizacion_laboral: la consulta al BO contaba el régimen de la construcción — se re-apunta al FAL de la Ley 27.802 · [ADR-0098](../adr/0098-fal-en-tres-etapas.md) El FAL se mide en tres etapas: construcción, vigencia y adopción · [ADR-0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) El FAL puntúa lo que rige, no lo que se dictó
 
 #### Litigiosidad laboral (SRT)
 
@@ -250,7 +250,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-31 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+33 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0006](../adr/0006-brecha-cambiaria-ccl-mayorista.md) — La brecha cambiaria (cepo_mulc) se mide CCL/mayorista, no CCL/oficial-minorista
 - [0011](../adr/0011-rigi-plataforma-oficial.md) — El RIGI se mide desde la plataforma oficial (inversión aprobada/pipeline), no por conteo de normas
@@ -275,7 +275,6 @@ histórica.
 - [0125](../adr/0125-la-desregulacion-pasa-a-la-fuente-oficial.md) — La desregulación pasa a medirse con la fuente oficial
 - [0128](../adr/0128-fuerzas-en-la-dotacion-y-peso-del-fal.md) — Las fuerzas están en la dotación, y el FAL baja a la mitad de su dimensión
 - [0129](../adr/0129-detector-de-novedades-de-privatizaciones.md) — Privatizaciones: se automatiza la detección, no la clasificación
-- [0142](../adr/0142-el-fal-mide-sus-dos-actos-fundamentales.md) — El FAL mide sus dos actos fundamentales
 - [0143](../adr/0143-la-desregulacion-se-mide-en-articulos.md) — La desregulación se mide en artículos, no en normas
 - [0164](../adr/0164-familia-del-itcg-la-respuesta-del-capital-privado.md) — Familia del ITCG: la respuesta del capital privado
 - [0185](../adr/0185-reestructuracion-organismos-habla-solo-de-disolucion-o-cierre.md) — `reestructuracion_organismos` habla solo de disolución o cierre
@@ -283,3 +282,6 @@ histórica.
 - [0188](../adr/0188-reestructuracion-organismos-numerador-caso-por-caso.md) — `reestructuracion_organismos`: el numerador cuenta solo cierres vigentes de organismos públicos, caso por caso
 - [0189](../adr/0189-si-no-puntua-no-se-muestra.md) — Si no puntúa no se muestra, y una promesa cumplida sí puntúa
 - [0221](../adr/0221-un-cable-trampa-mira-la-banda-no-el-puntaje.md) — Un cable trampa mira la banda, no el puntaje
+- [0226](../adr/0226-el-itcg-se-queda-sin-validacion-externa-y-lo-declara.md) — El ITCG se queda sin validación externa única, y lo declara
+- [0228](../adr/0228-el-fal-puntua-lo-que-rige-no-lo-que-se-dicto.md) — El FAL puntúa lo que rige, no lo que se dictó
+- [0229](../adr/0229-la-desregulacion-cuenta-actos-no-efectos.md) — La desregulación cuenta actos, no efectos, y la ficha lo dice

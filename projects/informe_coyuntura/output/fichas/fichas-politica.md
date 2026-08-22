@@ -8,7 +8,7 @@ author: "Fundación CIGOB"
 
 # Cinturón Política — resumen
 
-Este documento tiene una ficha por indicador — son 18 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
+Este documento tiene una ficha por indicador — son 19 en total, y cada una arranca en página nueva. Antes de las fichas, el cinturón completo de un vistazo.
 
 ## Cómo se define el color
 
@@ -35,19 +35,19 @@ El puntaje del ITCP y el de cada dimensión van de 0 a 100, donde 100 es la mejo
 
 | | | | |
 |---|---|---|---|
-| **ITCP: 65,0** | **VERDE** | Moderadamente aflojado | 18 indicadores: 9 en verde · 5 en amarillo · 3 en naranja · 1 en rojo |
+| **ITCP: 67,0** | **VERDE** | Moderadamente aflojado | 19 indicadores: 10 en verde · 5 en amarillo · 3 en naranja · 1 en rojo |
 
 ## Dimensiones
 
 | Dimensión | Qué mide | Puntaje | Color | Peso |
 |---|---|---|---|---|
 | Poder legislativo | La capacidad de gobernar por ley en el Congreso. | 46,5 | AMARILLO | 21,0 % |
-| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 77,7 | VERDE | 19,0 % |
+| Alianzas territoriales | El sostén federal del gobierno, visto desde tres señales. | 75,8 | VERDE | 19,0 % |
 | Cohesión interna del oficialismo | Qué tan unido está el oficialismo puertas adentro. | 96,7 | VERDE | 15,0 % |
-| Poder judicial | La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. | 59,2 | AMARILLO | 15,0 % |
+| Poder judicial | La capacidad de integrar el Poder Judicial, medida por la proporción de cargos de juez que tienen juez designado. | 59,4 | AMARILLO | 15,0 % |
 | Sector privado | La relación con los empresarios, medida por la diferencia entre lo que esperan las constructoras que trabajan para el Estado y lo que esperan sus pares que trabajan… | 54,2 | AMARILLO | 13,0 % |
-| Conflicto social | La conflictividad social que el gobierno tiene que administrar. | 48,9 | AMARILLO | 10,0 % |
-| Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,0 | VERDE | 7,0 % |
+| Conflicto social | La conflictividad social que el gobierno tiene que administrar. | 71,7 | VERDE | 10,0 % |
+| Imagen y voto | La ventaja electoral medida en las encuestas: la brecha de intención de voto entre La Libertad Avanza y el peronismo. | 73,6 | VERDE | 7,0 % |
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -71,23 +71,24 @@ Agrupados por dimensión. La columna de peso dice cuánto mueve cada indicador e
 | **DIMENSIÓN: Alianzas territoriales** | | | | |
 | Armonía federal (transferencias) | Cuánto varían, en términos reales, las transferencias del Estado nacional a las provincias. | 0,8 % interanual real | VERDE | 7,6 % |
 | Adhesión provincial al RIGI | Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos Aires) figuran adheridas al Régimen de… | 66,7 % de jurisdicciones (sobre 24) adheridas al RIGI | VERDE | 5,7 % |
-| Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 60,1 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 5,7 % |
+| Alineamiento de senadores por provincia | Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Libertad Avanza) coincide con la posición… | 57 % votos de senadores no-LLA alineados con LLA, por provincia | VERDE | 5,7 % |
 | **DIMENSIÓN: Cohesión interna del oficialismo** | | | | |
 | Cohesión del bloque LLA (bicameral) | Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones divididas de los últimos 90 días de ambas… | 99,8 % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) | VERDE | 15,0 % |
 | **DIMENSIÓN: Poder judicial** | | | | |
-| Judicialización de la agenda | Qué porcentaje de los fallos publicados en jurisdicción federal y nacional involucra una medida cautelar. | 1,75 % de sumarios con medida cautelar | AMARILLO | 3,0 % |
+| Judicialización de la agenda | Qué porcentaje de los fallos publicados en jurisdicción federal y nacional involucra una medida cautelar. | 1,57 % de sumarios con medida cautelar | AMARILLO | 3,0 % |
 | Velocidad de resolución de la Corte | Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los que le ingresan. | 45,4 % de expedientes resueltos sobre ingresados | VERDE | 3,0 % |
-| Actividad de las comisiones de control | Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las… | 6 sesiones de las comisiones de control (12m) | AMARILLO | 3,0 % |
+| Actividad de las comisiones de control | Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Consejo de la Magistratura que tramitan las… | 7 sesiones de las comisiones de control (12m) | AMARILLO | 3,0 % |
 | Cobertura de cargos judiciales | Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene juez designado. | 69,63 % de cargos de juez con juez designado | AMARILLO | 6,0 % |
 | **DIMENSIÓN: Sector privado** | | | | |
 | Brecha de expectativas: obra pública vs. privada | La diferencia entre lo que esperan las empresas constructoras que trabajan para el Estado y lo que esperan las que… | −1,1 pp de brecha (obra pública − privada, 12m) | VERDE | 6,5 % |
 | Postura pública de las cámaras empresarias | Qué dicen en público, por escrito y con firma institucional, las dos cámaras empresarias de referencia —la Asociación… | −0,43 saldo de postura (−1 a +1, 12m móviles) | NARANJA | 6,5 % |
 | **DIMENSIÓN: Conflicto social** | | | | |
-| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −23 % vs 2023 | AMARILLO | 10,0 % |
+| Conflictividad social (país) | Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 12 meses completos, comparados contra el… | −24,1 % vs 2023 | AMARILLO | 6,0 % |
+| Intensidad de los paros | Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. | 4.760.195 jornadas individuales no trabajadas (12m) | VERDE | 4,0 % |
 | **DIMENSIÓN: Imagen y voto** | | | | |
-| Ventaja LLA−PJ (Votómetro) | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4 Puntos porcentuales | VERDE | 7,0 % |
+| Ventaja LLA−PJ (Votómetro) | La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas disponibles. | 4,3 Puntos porcentuales | VERDE | 7,0 % |
 
-*Datos al 2026-08-09.*
+*Datos al 2026-08-21.*
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -103,7 +104,7 @@ La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 4 Puntos porcentuales** (2026-06) | **VERDE** | Peso efectivo 7 % del ITCP | Cinturón Política |
+| **Hoy: 4,3 Puntos porcentuales** (2026-07) | **VERDE** | Peso efectivo 7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -113,7 +114,7 @@ La diferencia de intención de voto entre LLA y el PJ, ponderando las encuestas 
 | **DIMENSIÓN EN EL ITCP** | Imagen y voto | **UNIDAD DE MEDIDA** | Puntos porcentuales |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El Votómetro se actualiza cuando las consultoras publican encuestas nuevas (cadencia irregular, típicamente semanas); el informe recalcula la ventaja todos los días con lo cargado. |
 | **PRODUCTOR DEL DATO** | Fundación CIGOB — Votómetro | **OPERACIÓN ESTADÍSTICA** | Agregador de encuestas de intención de voto: todos los sondeos publicados desde diciembre de 2023, con calificación de calidad por consultora |
-| **MODO DE ACCESO** | Automático: lee el listado de encuestas que publica el Votómetro; si el sitio no responde, usa la última copia local. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: lee el listado de encuestas que publica el Votómetro; si el sitio no responde, usa la última copia local. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -146,13 +147,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (4 Puntos porcentuales) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (4,3 Puntos porcentuales) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 4 Puntos porcentuales (2026-06).
+Dato vigente: 4,3 Puntos porcentuales (2026-07).
 
-4,0 Puntos porcentuales cae en el tramo que corresponde a Verde, a 6,0 del corte más cercano.
+4,3 Puntos porcentuales cae en el tramo que corresponde a Verde, a 6,3 del corte más cercano.
 
 **Color vigente: VERDE**
 
@@ -204,13 +205,13 @@ Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | DNUs por ley |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | InfoLeg carga las normas al ritmo del Boletín Oficial: días entre la publicación y su aparición en el buscador. |
 | **PRODUCTOR DEL DATO** | InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Buscador oficial de normas — conteo de decretos de necesidad y urgencia y de leyes sancionadas en los últimos 365 días |
-| **MODO DE ACCESO** | Automático: consulta el buscador oficial con dos búsquedas (leyes y decretos con el texto «necesidad y urgencia», ambas acotadas a los últimos 365 días) y toma los conteos de resultados. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: consulta el buscador oficial con dos búsquedas (leyes y decretos con el texto «necesidad y urgencia», ambas acotadas a los últimos 365 días) y toma los conteos de resultados. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
 Cuántos Decretos de Necesidad y Urgencia se dictan por cada ley sancionada, en los últimos 12 meses.
 
-Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas: gobernar por decreto suele salir bien —el 95% de los decretos de necesidad y urgencia de esta gestión nunca llegó a votarse en el recinto y por lo tanto sigue vigente—, pero de los ocho que sí llegaron, seis cayeron. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
+Mide con cuánta frecuencia el Gobierno recurre al decreto en lugar de la ley, no si esos decretos le funcionan. Son dos preguntas distintas y conviene no confundirlas. En el relevamiento cerrado el 19 de julio de 2026, el 95% de los decretos de necesidad y urgencia de esta gestión nunca había llegado a votarse en el recinto; de los ocho que sí habían llegado, seis habían caído. La dependencia del decreto es una vulnerabilidad latente: no se cobra mientras el Congreso no active el procedimiento, y se cobra de golpe cuando lo activa.
 
 **Dimensión que integra — Poder legislativo.** La capacidad de gobernar por ley en el Congreso: cuánto legisla por decreto en vez de ley (ratio DNU), qué porción de la agenda del Ejecutivo se aprueba, cuántas sesiones de Diputados fracasan por falta de quórum, cuántas derrotas sufre el Ejecutivo en el recinto y qué porción de sus normas desafiadas logra sostener en pie.
 
@@ -252,7 +253,7 @@ Ponderación vigente en el ITCP: 4,2 % efectivo. El color es una lectura adicion
 ## Transparencia — limitaciones declaradas
 
 - Responde a la pregunta «¿cuánto depende el Gobierno del decreto?», no a «¿le funciona gobernar por decreto?». Cabe la lectura inversa —un Ejecutivo que decreta con éxito está avanzando su plan pese a no tener acompañamiento legislativo—, y el indicador no la mide: un ratio alto baja el puntaje aunque los decretos sigan vigentes. Se eligió la primera lectura porque el cinturón mide capital político en el sentido de capacidad sostenible de gobernar, y la norma dictada por decreto es reversible por el Congreso y por los tribunales de un modo en que la ley no lo es.
-- Los datos respaldan que la dependencia sea una vulnerabilidad real y no una objeción teórica, pero también que sea latente: de los 162 decretos de necesidad y urgencia dictados desde diciembre de 2023, el 95% nunca se votó en el recinto y por lo tanto sigue vigente; de los ocho que sí se votaron, seis cayeron. El 7 de agosto de 2025 cayeron cinco en un solo día.
+- En el relevamiento cerrado el 19 de julio de 2026, los datos respaldaban que la dependencia fuera una vulnerabilidad real y no una objeción teórica, pero también que fuera latente: de los 162 decretos de necesidad y urgencia dictados desde diciembre de 2023, el 95% nunca se había votado en el recinto y por lo tanto seguía vigente; de los ocho que sí se habían votado, seis habían caído. El 7 de agosto de 2025 cayeron cinco en un solo día.
 - Identificar DNU por la frase «necesidad y urgencia» es una aproximación: puede contar de más o de menos.
 - Depende del formulario del buscador oficial: un rediseño del sitio lo interrumpe hasta adaptarlo.
 - El buscador no expone un listado con fecha por norma: reconstruir la serie mensual exige una consulta separada por mes, no una descarga única.
@@ -299,7 +300,7 @@ La diferencia entre lo que esperan las empresas constructoras que trabajan para 
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | pp de brecha (obra pública − privada, 12m) |
 | **SERIE DISPONIBLE** | 2017-11 → 2026-09 (101 puntos) | **REZAGO DE PUBLICACIÓN** | El INDEC publica la encuesta junto con el informe mensual de la construcción, unas semanas después del cierre del período relevado. |
 | **PRODUCTOR DEL DATO** | INDEC | **OPERACIÓN ESTADÍSTICA** | Encuesta Cualitativa de la Construcción — expectativas de las empresas sobre el nivel de actividad de los próximos tres meses, con respuestas separadas para obra pública y obra privada (Cuadro 7.1) |
-| **MODO DE ACCESO** | Automático: descarga la planilla oficial del indicador sintético de la actividad de la construcción y lee el cuadro de expectativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: descarga la planilla oficial del indicador sintético de la actividad de la construcción y lee el cuadro de expectativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-09 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -390,7 +391,7 @@ Qué dicen en público, por escrito y con firma institucional, las dos cámaras 
 | **DIMENSIÓN EN EL ITCP** | Sector privado | **UNIDAD DE MEDIDA** | saldo de postura (−1 a +1, 12m móviles) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Ninguno en la fuente: los comunicados se publican el día en que la cámara los emite. El retraso es el de la clasificación, que hace una persona. |
 | **PRODUCTOR DEL DATO** | Asociación Empresaria Argentina (AEA) y Unión Industrial Argentina (UIA) | **OPERACIÓN ESTADÍSTICA** | Comunicados institucionales fechados de las secciones de prensa de ambas entidades |
-| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Semiautomático: un proceso diario detecta los comunicados nuevos y los deja pendientes; la clasificación de cada uno la hace una persona. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -424,7 +425,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- En los últimos doce meses AEA y UIA se pronunciaron 7 veces sobre medidas del Gobierno nacional: 2 de apoyo y 5 de crítica. Saldo −0,429 en una escala de −1 (todo crítica) a +1 (todo apoyo).
+- En los últimos doce meses AEA y UIA se pronunciaron 7 veces sobre medidas del Gobierno nacional: 2 de apoyo y 5 de crítica. Saldo −0,429 en una escala de −1 (todo crítica) a +1 (todo apoyo). Hay 12 comunicados detectados sin codificar.
 
 ## Color vigente y por qué
 
@@ -471,7 +472,7 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 
 | | | | |
 |---|---|---|---|
-| **Hoy: −23 % vs 2023** (2026-06) | **AMARILLO** | Peso efectivo 10 % del ITCP | Cinturón Política |
+| **Hoy: −24,1 % vs 2023** (2026-07) | **AMARILLO** | Peso efectivo 6 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -479,9 +480,9 @@ Cuántos eventos de protesta y disturbios hubo en todo el país en los últimos 
 |---|---|---|---|
 | **IDENTIFICADOR TÉCNICO** | conflictividad_nacional | **CINTURÓN** | Política |
 | **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | % vs 2023 |
-| **SERIE DISPONIBLE** | 2023-12 → 2026-06 (31 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de ACLED se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
+| **SERIE DISPONIBLE** | 2023-12 → 2026-07 (32 puntos) | **REZAGO DE PUBLICACIÓN** | El agregado de ACLED se publica semanalmente y los eventos más recientes se cargan con algunos días de rezago; por eso el mes en curso se excluye del cálculo hasta que cierra. |
 | **PRODUCTOR DEL DATO** | ACLED — Armed Conflict Location & Event Data | **OPERACIÓN ESTADÍSTICA** | Agregado semanal de eventos por provincia para América Latina — eventos de protesta y disturbios (Protests y Riots) en la Argentina |
-| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-06 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: descarga el archivo agregado semanal con la cuenta académica del proyecto y suma los eventos de las 24 jurisdicciones. Atribución: datos de ACLED. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-07 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -514,22 +515,22 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 2006 eventos de protesta y disturbios en el país en 12m (hasta 2026-06) vs 2605 en todo 2023 (-23,0%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país
+- 1978 eventos de protesta y disturbios en el país en 12m (hasta 2026-07) vs 2605 en todo 2023 (-24,1%) — cuenta marchas, concentraciones y disturbios de ACLED en las 24 jurisdicciones; CABA es ~9% del total del país
 
 ## Color vigente y por qué
 
-Dato vigente: −23 % vs 2023 (2026-06).
+Dato vigente: −24,1 % vs 2023 (2026-07).
 
-−23,0 % vs 2023 cae en el tramo que corresponde a Amarillo, a 2,5 del corte más cercano.
+−24,1 % vs 2023 cae en el tramo que corresponde a Amarillo, a 2,0 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
-Ponderación vigente en el ITCP: 10 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+Ponderación vigente en el ITCP: 6 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
 
 ## Transparencia — limitaciones declaradas
 
 - Cuenta eventos, no personas: una marcha multitudinaria y una concentración chica pesan igual — es una medida de frecuencia del conflicto, no de su masividad.
-- La base de comparación es fija (el total de 2023): a medida que pasa el tiempo, la referencia envejece — el mismo criterio declarado que usa el índice de vida cotidiana con su base de fin de 2023.
+- La base de comparación es fija (el total de 2023): a medida que pasa el tiempo, la referencia envejece — el mismo criterio declarado que usa el índice de impacto social con su base de fin de 2023.
 - La cobertura de ACLED para la Argentina es confiable desde 2020; los años anteriores registran menos eventos por expansión de la propia cobertura, no por menor conflictividad — por eso ni las bandas ni el gráfico usan datos previos a la base.
 - Depende de la cobertura de prensa que releva ACLED: eventos sin cobertura periodística no entran al registro.
 
@@ -542,6 +543,92 @@ Ponderación vigente en el ITCP: 10 % efectivo. El color es una lectura adiciona
 ## Historial — cambios metodológicos documentados
 
 **2026-07-11** — Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable.
+
+**2026-08-21** — Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral (ADR-0232).
+
+```{=openxml}
+<w:p><w:r><w:br w:type="page"/></w:r></w:p>
+```
+
+**CIGOB · INFORME DE COYUNTURA**
+
+*Ficha metodológica · Cinturón Política · Capa de semáforo (4 colores)*
+
+# Intensidad de los paros
+
+Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. La Secretaría de Trabajo las estima multiplicando la cantidad de huelguistas por la duración de cada paro.
+
+| | | | |
+|---|---|---|---|
+| **Hoy: 4.760.195 jornadas individuales no trabajadas (12m)** (2026-05) | **VERDE** | Peso efectivo 4 % del ITCP | Cinturón Política |
+
+## Identificación
+
+| | | | |
+|---|---|---|---|
+| **IDENTIFICADOR TÉCNICO** | jornadas_individuales_no_trabajadas_12m | **CINTURÓN** | Política |
+| **DIMENSIÓN EN EL ITCP** | Conflicto social | **UNIDAD DE MEDIDA** | jornadas individuales no trabajadas (12m) |
+| **SERIE DISPONIBLE** | 2006-12 → 2026-05 (234 puntos) | **REZAGO DE PUBLICACIÓN** | La Secretaría de Trabajo actualiza la planilla mensual con alrededor de dos a tres meses de rezago. |
+| **PRODUCTOR DEL DATO** | Secretaría de Trabajo, Empleo y Seguridad Social | **OPERACIÓN ESTADÍSTICA** | Estadísticas de conflictos laborales — evolución mensual de conflictos con paro, huelguistas y jornadas de paro |
+| **MODO DE ACCESO** | Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-05 · informe generado el 2026-08-21 |
+
+## Definición — qué mide y por qué importa
+
+Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. La Secretaría de Trabajo las estima multiplicando la cantidad de huelguistas por la duración de cada paro.
+
+Agrega intensidad a la frecuencia de eventos que mide ACLED: distingue un conflicto breve y pequeño de uno largo o masivo. Es una estadística laboral oficial y sus valores mensuales pueden sumarse sin duplicar conflictos ni personas.
+
+**Dimensión que integra — Conflicto social.** La conflictividad social que el gobierno tiene que administrar: los eventos de protesta y disturbios de todo el país registrados por ACLED, acumulados en 12 meses y comparados contra 2023, la línea de base del mandato.
+
+## Método de cómputo
+
+- Toma el total mensual nacional de jornadas individuales no trabajadas: cantidad de huelguistas multiplicada por la duración de los paros.
+- Suma los últimos doce meses. La propia metodología de la fuente autoriza esta suma; no se suman conflictos ni huelguistas porque podrían repetirse entre meses.
+- Menos jornadas significa menos tensión. Las anclas son 5,0 · 6,5 · 8,0 · 10,0 millones, fijadas sobre los diecisiete años completos anteriores al mandato (2006-2022).
+
+## Semáforo — valores que determinan el color
+
+Estos son los valores concretos, en la unidad propia de este indicador, que hacen que el semáforo esté en verde, amarillo, naranja o rojo. No se muestra ninguna fórmula ni escala intermedia de 0 a 100 — solo el dato real y el color que le corresponde.
+
+**Valores que definen cada color**
+
+| Rango (jornadas individuales no trabajadas (12m)) | Color |
+|---|---|
+| ≤ 7.600.000 | VERDE |
+| 7.600.000 – 9.000.000 | AMARILLO |
+| ≥ 9.000.000 | NARANJA |
+
+## Datos concretos detrás del valor
+
+Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
+
+- 4.760.195 jornadas en los últimos 12 meses. La fuente las calcula como huelguistas × duración del paro y permite sumar los meses; mide intensidad laboral, no cantidad de protestas.
+
+## Color vigente y por qué
+
+Dato vigente: 4.760.195 jornadas individuales no trabajadas (12m) (2026-05).
+
+4760195 jornadas individuales no trabajadas (12m) cae en el tramo que corresponde a Verde, a 2839805,0 del corte más cercano.
+
+**Color vigente: VERDE**
+
+Ponderación vigente en el ITCP: 4 % efectivo. El color es una lectura adicional — no reemplaza ni cambia esta ponderación.
+
+## Transparencia — limitaciones declaradas
+
+- La cantidad de huelguistas es una estimación construida a partir de múltiples fuentes, no un padrón administrativo exhaustivo.
+- No captura protestas sin paro ni conflicto social fuera de las relaciones laborales; esa cobertura corresponde a ACLED.
+- Se usa el nivel absoluto. El crecimiento de largo plazo de la población asalariada puede moverlo aun con una propensión al paro estable; conviene reevaluar una tasa por trabajador cuando exista una serie oficial mensual compatible.
+
+## Si falta el dato / Política de revisiones
+
+- **Si falta el dato:** Si la página o la planilla no responden, el colector mantiene el último valor publicado como desactualizado y la serie conserva sus puntos previos.
+
+- **Política de revisiones:** La planilla oficial se relee completa y las revisiones de meses anteriores se incorporan automáticamente.
+
+## Historial — cambios metodológicos documentados
+
+**2026-08-21** — Incorporado como segunda pata de conflicto social para medir tamaño y duración de los paros, con 40% interno; ACLED conserva 60%.
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>
@@ -567,7 +654,7 @@ Cuánto varían, en términos reales, las transferencias del Estado nacional a l
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % interanual real |
 | **SERIE DISPONIBLE** | 2018-12 → 2025-12 (8 puntos) | **REZAGO DE PUBLICACIÓN** | Por diseño compara el último año cerrado contra el anterior: durante 2026 se lee «2025 contra 2024» — el dato puede tener hasta un año de rezago. |
 | **PRODUCTOR DEL DATO** | Ministerio de Economía (Secretaría de Hacienda); deflactor: INDEC | **OPERACIÓN ESTADÍSTICA** | Serie RON — recursos de origen nacional transferidos a las provincias (archivo anual oficial), deflactada con el IPC nacional |
-| **MODO DE ACCESO** | Automático: descarga el archivo oficial y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: descarga el archivo oficial y deflacta con el IPC del INDEC obtenido por API. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -661,7 +748,7 @@ Qué porcentaje de los proyectos que envía el Ejecutivo el Congreso termina apr
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de proyectos |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de datos abiertos de Diputados carga proyectos y movimientos con días o semanas de demora respecto del hecho parlamentario. |
 | **PRODUCTOR DEL DATO** | HCDN — Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Datasets «proyectos parlamentarios» y «leyes sancionadas» del portal oficial de datos abiertos |
-| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública del portal, cruzando los proyectos de ley enviados por el Ejecutivo con el registro oficial de leyes sancionadas (que cubre las sanciones de ambas cámaras). | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -761,7 +848,7 @@ Qué porcentaje de las sesiones convocadas en Diputados para tratar temas queda 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de sesiones |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de datos abiertos de Diputados registra las sesiones a los días de ocurridas. |
 | **PRODUCTOR DEL DATO** | HCDN — Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Dataset «sesiones» (sesiones plenarias) del portal oficial de datos abiertos |
-| **MODO DE ACCESO** | Automático: API pública del portal, filtrando las sesiones de Diputados del período legislativo en curso. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: API pública del portal, filtrando las sesiones de Diputados del período legislativo en curso. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -852,7 +939,7 @@ Cuántas de las 24 jurisdicciones del país (23 provincias y la Ciudad de Buenos
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % de jurisdicciones (sobre 24) adheridas al RIGI |
 | **SERIE DISPONIBLE** | 2024-07 → 2026-07 (25 puntos) | **REZAGO DE PUBLICACIÓN** | La tabla de provincias adheridas se actualiza en el sitio oficial apenas una provincia formaliza su adhesión; el informe la relee completa en cada actualización. |
 | **PRODUCTOR DEL DATO** | Ministerio de Agricultura, Ganadería y Pesca (MAGyP) | **OPERACIÓN ESTADÍSTICA** | Tabla de provincias adheridas al Régimen de Incentivo para Grandes Inversiones (RIGI, Título VII de la Ley 27.742) |
-| **MODO DE ACCESO** | Automático: lectura directa de la tabla publicada en el sitio del MAGyP. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: lectura directa de la tabla publicada en el sitio del MAGyP. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -938,7 +1025,7 @@ Qué tan parejo vota puertas adentro el bloque propio de LLA en las votaciones d
 | **DIMENSIÓN EN EL ITCP** | Cohesión interna del oficialismo | **UNIDAD DE MEDIDA** | % cohesión (índice de Rice bicameral: Diputados 65% + Senado 35%, promedio actas divididas últimos 90 días) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Los portales de votaciones nominales de las dos cámaras registran cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados y Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales de ambas cámaras — bloque propio de La Libertad Avanza, actas divididas de los últimos 90 días |
-| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: lectura directa de los portales públicos de votaciones nominales de Diputados y del Senado; sin carga manual del analista. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -971,7 +1058,7 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 99,8% = Diputados 99,9% (peso 65%, 33 actas) · Senado 99,6% (peso 35%, 30 actas)
+- 99,8% = Diputados 100,0% (peso 65%, 13 actas) · Senado 99,5% (peso 35%, 21 actas)
 
 ## Color vigente y por qué
 
@@ -1031,7 +1118,7 @@ De las normas del Ejecutivo que el Congreso desafió en el recinto en los últim
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2024-03 → 2026-08 (30 puntos) | **REZAGO DE PUBLICACIÓN** | Las cámaras publican sus actas de votación a los días de cada sesión; el clasificador incorpora las actas nuevas en la actualización nocturna siguiente. La caída de un veto se registra con la publicación de la ley insistida en el Boletín Oficial, dos a tres semanas después del voto de la segunda cámara. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados + Senado de la Nación + InfoLeg (Ministerio de Justicia) | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras (insistencias de leyes vetadas y tratamientos de decretos bajo la ley 26.122) + base de legislación nacional (decretos de veto, leyes promulgadas por insistencia) |
-| **MODO DE ACCESO** | Automático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos se comparte con el indicador de derrotas legislativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Semiautomático: se leen las actas de votación de ambas cámaras y se identifica, en cada una, si se trató la insistencia de un veto o el control de un decreto, y cómo salió la votación. Los casos ambiguos quedan en una cola de revisión manual; nunca se infiere el sentido de una votación. El registro de eventos se comparte con el indicador de derrotas legislativas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1119,7 +1206,7 @@ Cuántas normas propias del Gobierno fueron puestas en discusión en el recinto 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Las actas de votación se publican con algunos días de demora respecto de la sesión; InfoLeg carga los vetos al ritmo del Boletín Oficial. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados · Senado de la Nación · InfoLeg | **OPERACIÓN ESTADÍSTICA** | Actas de votación nominal de ambas cámaras y base de legislación nacional — normas del Poder Ejecutivo sometidas a votación en el recinto |
-| **MODO DE ACCESO** | Automático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos registrados en InfoLeg. Elaboración propia sobre fuentes oficiales. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Semiautomático: clasifica las actas de votación de ambas cámaras y las cruza con los vetos de InfoLeg; los casos ambiguos del registro compartido con bloqueo sostenido quedan pendientes de revisión humana. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1204,7 +1291,7 @@ Cuántas leyes sancionó el Congreso en los últimos doce meses, sin distinguir 
 | **DIMENSIÓN EN EL ITCP** | Poder legislativo | **UNIDAD DE MEDIDA** | leyes sancionadas (12m) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El dataset se actualiza con la sanción de cada ley, de modo que el rezago es el de la carga en el portal de datos abiertos: en general unas semanas. |
 | **PRODUCTOR DEL DATO** | Cámara de Diputados de la Nación | **OPERACIÓN ESTADÍSTICA** | Dataset de leyes sancionadas, con el expediente inicial y la fecha de sanción definitiva de cada una |
-| **MODO DE ACCESO** | Automático: el mismo portal que el proyecto ya consulta para la eficacia parlamentaria. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: el mismo portal que el proyecto ya consulta para la eficacia parlamentaria. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1278,7 +1365,7 @@ Qué porcentaje de los fallos publicados en jurisdicción federal y nacional inv
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 1,75 % de sumarios con medida cautelar** (2026-01) | **AMARILLO** | Peso efectivo 3 % del ITCP | Cinturón Política |
+| **Hoy: 1,57 % de sumarios con medida cautelar** (2026-01) | **AMARILLO** | Peso efectivo 3 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1288,7 +1375,7 @@ Qué porcentaje de los fallos publicados en jurisdicción federal y nacional inv
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % de sumarios con medida cautelar |
 | **SERIE DISPONIBLE** | 2016-01 → 2026-01 (11 puntos) | **REZAGO DE PUBLICACIÓN** | La base indexa los fallos con demora variable y el punto es anual, de modo que el dato describe un año que ya cerró. |
 | **PRODUCTOR DEL DATO** | Sistema Argentino de Información Jurídica (SAIJ) | **OPERACIÓN ESTADÍSTICA** | Buscador de jurisprudencia, restringido por jurisdicción |
-| **MODO DE ACCESO** | Automático: la consulta y el modo de leer los totales quedaron verificados y documentados. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: la consulta y el modo de leer los totales quedaron verificados y documentados. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-01 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1320,13 +1407,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 104 de 5947 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.
+- 114 de 7273 sumarios de jurisdicción federal y nacional publicados en 2026 mencionan una medida cautelar. Se publica la proporción y no el conteo porque el volumen que la base publica varía por razones editoriales.
 
 ## Color vigente y por qué
 
-Dato vigente: 1,75 % de sumarios con medida cautelar (2026-01).
+Dato vigente: 1,57 % de sumarios con medida cautelar (2026-01).
 
-1,75 % de sumarios con medida cautelar cae en el tramo que corresponde a Amarillo, a 0,05 del corte más cercano.
+1,57 % de sumarios con medida cautelar cae en el tramo que corresponde a Amarillo, a 0,09 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -1372,7 +1459,7 @@ Cuántos expedientes resuelve la Corte Suprema en un año, en proporción a los 
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % de expedientes resueltos sobre ingresados |
 | **SERIE DISPONIBLE** | 2014-12 → 2025-12 (12 puntos) | **REZAGO DE PUBLICACIÓN** | El anuario se publica con el año cerrado, de modo que el dato describe el año anterior. |
 | **PRODUCTOR DEL DATO** | Corte Suprema de Justicia de la Nación | **OPERACIÓN ESTADÍSTICA** | Anuario estadístico, sobre su sistema de gestión judicial |
-| **MODO DE ACCESO** | Los tableros interactivos no admiten consulta automática, pero la Corte publica una versión estática de cada hoja con las etiquetas de datos visibles, y el anuario en documento. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Carga manual anual: los tableros interactivos no admiten consulta automática; el valor se releva de la versión estática de cada hoja y se valida contra el anuario en documento. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2025-12 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1447,7 +1534,7 @@ Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Cons
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 6 sesiones de las comisiones de control (12m)** (2026-08) | **AMARILLO** | Peso efectivo 3 % del ITCP | Cinturón Política |
+| **Hoy: 7 sesiones de las comisiones de control (12m)** (2026-08) | **AMARILLO** | Peso efectivo 3 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1457,7 +1544,7 @@ Cuántas veces sesionaron en los últimos doce meses las dos comisiones del Cons
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | sesiones de las comisiones de control (12m) |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | Depende de cuándo el Consejo publica la nota de cada sesión, en general dentro de las semanas siguientes. |
 | **PRODUCTOR DEL DATO** | Consejo de la Magistratura de la Nación | **OPERACIÓN ESTADÍSTICA** | Archivo de notas de prensa de las comisiones de Acusación y de Disciplina |
-| **MODO DE ACCESO** | Automático sobre el archivo público de notas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático sobre el archivo público de notas. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1489,13 +1576,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- 6 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 5.0).
+- 7 sesiones ordinarias de las comisiones de Acusación y Disciplina en los últimos 12 meses (rango de la serie: 2 a 7, promedio 5.0).
 
 ## Color vigente y por qué
 
-Dato vigente: 6 sesiones de las comisiones de control (12m) (2026-08).
+Dato vigente: 7 sesiones de las comisiones de control (12m) (2026-08).
 
-6 sesiones de las comisiones de control (12m) cae en el tramo que corresponde a Amarillo, a 0,5 del corte más cercano.
+7 sesiones de las comisiones de control (12m) cae en el tramo que corresponde a Amarillo, a 0,5 del corte más cercano.
 
 **Color vigente: AMARILLO**
 
@@ -1541,7 +1628,7 @@ Qué porcentaje de los cargos de juez de la justicia federal y nacional tiene ju
 | **DIMENSIÓN EN EL ITCP** | Poder judicial | **UNIDAD DE MEDIDA** | % de cargos de juez con juez designado |
 | **SERIE DISPONIBLE** | 2023-12 → 2026-08 (33 puntos) | **REZAGO DE PUBLICACIÓN** | El padrón de magistrados se publica con actualizaciones irregulares, en general de uno a dos meses. Los registros de designaciones y renuncias se actualizan con más frecuencia, de modo que la serie incorpora los movimientos posteriores a la última foto del padrón. |
 | **PRODUCTOR DEL DATO** | Ministerio de Justicia | **OPERACIÓN ESTADÍSTICA** | Padrón de magistrados de la Justicia Federal y Nacional (con marca de cargo vacante), más los registros de designaciones y de renuncias de magistrados |
-| **MODO DE ACCESO** | Automático: los tres archivos se resuelven por la interfaz del portal de datos abiertos. El nombre de cada archivo incluye su fecha de publicación y cambia en cada actualización, de modo que se busca el recurso vigente en lugar de construir la dirección a mano. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: los tres archivos se resuelven por la interfaz del portal de datos abiertos. El nombre de cada archivo incluye su fecha de publicación y cambia en cada actualización, de modo que se busca el recurso vigente en lugar de construir la dirección a mano. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1619,7 +1706,7 @@ Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Li
 
 | | | | |
 |---|---|---|---|
-| **Hoy: 60,1 % votos de senadores no-LLA alineados con LLA, por provincia** (2026-08) | **VERDE** | Peso efectivo 5,7 % del ITCP | Cinturón Política |
+| **Hoy: 57 % votos de senadores no-LLA alineados con LLA, por provincia** (2026-08) | **VERDE** | Peso efectivo 5,7 % del ITCP | Cinturón Política |
 
 ## Identificación
 
@@ -1629,7 +1716,7 @@ Qué porcentaje de los votos de senadores no alineados con el oficialismo (La Li
 | **DIMENSIÓN EN EL ITCP** | Alianzas territoriales | **UNIDAD DE MEDIDA** | % votos de senadores no-LLA alineados con LLA, por provincia |
 | **SERIE DISPONIBLE** | 2024-02 → 2026-08 (31 puntos) | **REZAGO DE PUBLICACIÓN** | El portal de votaciones nominales del Senado registra cada sesión a los pocos días de ocurrida; el informe recalcula el promedio de los últimos 90 días en cada actualización. |
 | **PRODUCTOR DEL DATO** | Senado de la Nación | **OPERACIÓN ESTADÍSTICA** | Votaciones nominales del Senado — coincidencia de senadores no alineados con la posición del bloque de La Libertad Avanza, por provincia, actas de los últimos 90 días |
-| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-09 |
+| **MODO DE ACCESO** | Automático: lectura directa del portal público de votaciones nominales del Senado; sin carga manual. | **ÚLTIMA ACTUALIZACIÓN** | Dato a 2026-08 · informe generado el 2026-08-21 |
 
 ## Definición — qué mide y por qué importa
 
@@ -1662,13 +1749,13 @@ Estos son los valores concretos, en la unidad propia de este indicador, que hace
 
 Qué hay, específicamente, detrás del dato que define el color de este mes — o qué falta publicar para poder verificarlo con precisión.
 
-- El informe publica el valor (60,1 % votos de senadores no-LLA alineados con LLA, por provincia) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
+- El informe publica el valor (57 % votos de senadores no-LLA alineados con LLA, por provincia) pero no los números que lo componen: la fuente entrega la serie ya calculada. Para auditar el dato hay que ir a la operación estadística citada más arriba.
 
 ## Color vigente y por qué
 
-Dato vigente: 60,1 % votos de senadores no-LLA alineados con LLA, por provincia (2026-08).
+Dato vigente: 57 % votos de senadores no-LLA alineados con LLA, por provincia (2026-08).
 
-60,1 % votos de senadores no-LLA alineados con LLA, por provincia cae en el tramo que corresponde a Verde, a 7,1 del corte más cercano.
+57,0 % votos de senadores no-LLA alineados con LLA, por provincia cae en el tramo que corresponde a Verde, a 4,0 del corte más cercano.
 
 **Color vigente: VERDE**
 

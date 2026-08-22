@@ -607,6 +607,7 @@
 .cg-ficha-tabla tbody th { font-weight: 700; font-size: 13px; vertical-align: top; }
 .cg-ficha-tabla tbody tr + tr { border-top: 1px dashed var(--bd); }
 .cg-ficha-tabla td.num { font-variant-numeric: tabular-nums; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; white-space: nowrap; }
+.cg-ficha-cell-note { display: block; margin-top: 3px; color: var(--muted); font-family: inherit; font-size: 10.5px; font-weight: 500; }
 .cg-cambios { list-style: none; margin: 0; padding: 0; max-width: 72ch; }
 .cg-cambios li {
   position: relative; padding: 0 0 16px 18px; margin-left: 6px;

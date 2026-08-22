@@ -1,7 +1,7 @@
 ---
 periodo: "2026-08"
-generado: "2026-08-21 16:03:48"
-score_global: 4.3
+generado: "2026-08-21 18:06:21"
+score_global: 4.2
 barbarismo_activo: "político"
 alerta_multicinturon: false
 schema_version: "1.2.0"
@@ -9,7 +9,7 @@ schema_version: "1.2.0"
 
 # Informe de Coyuntura — 2026-08
 
-**Score global:** 4.3/10  |  **Riesgo dominante:** político
+**Score global:** 4.2/10  |  **Riesgo dominante:** político
 
 ## Cinturones
 
@@ -40,7 +40,7 @@ schema_version: "1.2.0"
 | base_monetaria | 2.5 | % mensual nominal | 2026-08-18 | fresco |
 | tc_mayorista | 0.51 | % mensual | 2026-08-20 | fresco |
 
-### 🟡 Politica — score 3.5/10 (en_tension)
+### 🟡 Politica — score 3.3/10 (en_tension)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -50,6 +50,7 @@ schema_version: "1.2.0"
 | brecha_obra_publica | -1.1 | pp de brecha (obra pública − privada, 12m) | 2026-09-01 | fresco |
 | apoyo_empresario | -0.429 | saldo de postura (−1 a +1, 12m móviles) | 2026-08-01 | fresco |
 | conflictividad_nacional | -24.1 | % vs 2023 | 2026-07-01 | fresco |
+| jornadas_individuales_no_trabajadas_12m | 4760195 | jornadas individuales no trabajadas (12m) | 2026-05-01 | fresco |
 | movilizacion_cepa | 50.5 | Índice (0–100) | 2026-06-09 | fresco |
 | iaf_transferencias | 0.8 | % interanual real | 2025-12-31 | fresco |
 | eficacia_legislativa | 15.4 | % de proyectos | 2026-08-21 | fresco |
@@ -63,13 +64,13 @@ schema_version: "1.2.0"
 | bloqueo_sostenido | 33.3 | % de normas desafiadas en el recinto que siguen en pie, últimos 12 meses | 2026-08-21 | fresco |
 | desafios_legislativos | 3.0 | normas del Ejecutivo desafiadas en el recinto, últimos 12 meses | 2026-08-21 | fresco |
 | produccion_legislativa | 25 | leyes sancionadas (12m) | 2026-08-01 | fresco |
-| judicializacion | 1.61 | % de sumarios con medida cautelar | 2026-01-01 | ⚠ cache |
+| judicializacion | 1.57 | % de sumarios con medida cautelar | 2026-01-01 | fresco |
 | velocidad_resolucion | 45.4 | % de expedientes resueltos sobre ingresados | 2025-12-31 | fresco |
 | paralisis_denuncias | 7 | sesiones de las comisiones de control (12m) | 2026-08-01 | fresco |
 | cobertura_judicial | 69.63 | % de cargos de juez con juez designado | 2026-08-01 | fresco |
 | alineamiento_senadores_prov | 57.0 | % votos de senadores no-LLA alineados con LLA, por provincia | 2026-08-06 | fresco |
 
-### 🔴 Vida Cotidiana — score 7.1/10 (tensionado)
+### 🔴 Vida Cotidiana — score 7.0/10 (tensionado)
 *Riesgo de barbarismo: político*
 
 | Indicador | Valor | Unidad | Fecha | Estado |
@@ -102,4 +103,4 @@ schema_version: "1.2.0"
 | protestas_caba | 278 | eventos de protesta en 12 meses (CABA, ACLED) | 2026-07-01 | fresco |
 
 ---
-*Generado por CIGOB — 2026-08-21 16:03:48 — schema 1.2.0*
+*Generado por CIGOB — 2026-08-21 18:06:21 — schema 1.2.0*

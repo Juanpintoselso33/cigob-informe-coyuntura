@@ -6,6 +6,7 @@ nota_estado: 'Aceptado (observación verificada, sin cambio de método)'
 fecha: 2026-07-20
 cinturon: 'vida'
 archivos: ['itvc.tension_de_itvc']
+relacionado: ['0231']
 ambito: 'ITVC · `itvc.tension_de_itvc` · presentación por componente'
 origen: 'Auditoría de Vida Cotidiana, punto 3.1 y recomendación 1 (prioridad alta)'
 ---

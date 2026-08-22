@@ -121,6 +121,70 @@ def test_carry_forward_restaura_sentimiento_digital_ausente_de_trends():
     assert resultado["sentimiento_digital"]["fecha_dato"] == "2026-07-08"
 
 
+def test_el_snapshot_declara_la_procedencia_de_cada_indicador():
+    informe = {
+        "cinturones": {
+            "macro": {"indicadores": {"ipc_total": {"valor": 1.0}}},
+            "politica": {"indicadores": {
+                "apoyo_empresario": {"valor": 0.0},
+                "desafios_legislativos": {"valor": 3.0},
+                "bloqueo_sostenido": {"valor": 33.3},
+                "velocidad_resolucion": {"valor": 85.7},
+            }},
+            "gestion": {"indicadores": {
+                "reestructuracion_organismos": {"valor": 24.4},
+                "fal_modernizacion_laboral": {"valor": 50.0},
+                "protocolo_antipiquetes": {"valor": 74.2},
+                "privatizaciones": {"valor": 50.0},
+            }},
+        }
+    }
+
+    resultado = publicar.anotar_metodo_obtencion(informe)
+
+    assert resultado["cinturones"]["macro"]["indicadores"]["ipc_total"]["metodo_obtencion"] == "automatico"
+    metodos = {
+        clave: indicador["metodo_obtencion"]
+        for cinturon in resultado["cinturones"].values()
+        for clave, indicador in cinturon["indicadores"].items()
+    }
+    assert {k for k, v in metodos.items() if v == "semiautomatico"} == {
+        "apoyo_empresario",
+        "desafios_legislativos",
+        "bloqueo_sostenido",
+        "reestructuracion_organismos",
+        "fal_modernizacion_laboral",
+        "protocolo_antipiquetes",
+    }
+    assert {k for k, v in metodos.items() if v == "manual"} == {
+        "velocidad_resolucion",
+        "privatizaciones",
+    }
+
+
+def test_la_validacion_itcp_deriva_el_conteo_de_la_composicion(monkeypatch):
+    meses = {f"2025-{m:02d}": float(m) for m in range(1, 13)}
+    monkeypatch.setattr(publicar, "_cargar_validacion", lambda: {
+        "serie_itcp": meses,
+        "epu_argentina_mensual": meses,
+        "correlaciones_itcp": {
+            "niveles (ITCP vs EPU Argentina)": {"r": -0.4, "n": 12},
+            "primeras diferencias (ITCP vs EPU)": {"r": -0.2, "n": 11},
+            "niveles, sin la dimensión de sector privado": {"r": -0.3},
+        },
+    })
+    bloque = {
+        "dimensiones": {
+            "uno": {"indicadores": {"a": {}, "b": {}}},
+            "dos": {"indicadores": {"c": {}}},
+        }
+    }
+
+    publicar._validacion_itcp(bloque)
+
+    assert "3 componentes" in bloque["validacion"]["sub"]
+
+
 def test_un_crudo_de_vida_mas_viejo_no_reemplaza_el_snapshot_publicado(tmp_path):
     viejo = tmp_path / "vida_cotidiana_20260812_1035.json"
     viejo.write_text("{}", encoding="utf-8")
@@ -275,7 +339,8 @@ def test_politica_itcp_reconcilia():
     # al fijar la orientación — produccion_legislativa al bloque legislativo y
     # judicializacion, velocidad_resolucion y paralisis_denuncias al judicial,
     # que deja de colgar de un solo dato.
-    assert len(en_indice) == 18, f"esperaba 18 indicadores en el índice, hay {len(en_indice)}"
+    # 19 desde ADR-0232: entra la intensidad laboral oficial en conflicto social.
+    assert len(en_indice) == 19, f"esperaba 19 indicadores en el índice, hay {len(en_indice)}"
     for _nuevo in ("produccion_legislativa", "judicializacion",
                    "velocidad_resolucion", "paralisis_denuncias"):
         assert _nuevo in en_indice, f"{_nuevo} tendría que puntuar (ADR-0168)"
@@ -288,6 +353,7 @@ def test_politica_itcp_reconcilia():
     faltantes = {"votometro_ventaja_lla", "ratio_dnu", "eficacia_legislativa", "veto_quorum",
                  "iaf_transferencias", "alineamiento_senadores_prov",
                  "adhesion_reformas_provincial", "cohesion_bloque", "conflictividad_nacional",
+                 "jornadas_individuales_no_trabajadas_12m",
                  "desafios_legislativos"} - set(en_indice)
     assert not faltantes, f"faltan indicadores que no deberían faltar: {faltantes}"
     assert contexto == {}, f"política no debería publicar contexto: {set(contexto)}"
@@ -496,7 +562,8 @@ def test_vida_itvc_reconcilia():
     # de validación externa del cinturón. Mide condiciones materiales del
     # hogar, así que integra el índice en vez de juzgarlo — y es el único
     # componente que mide volumen efectivamente comprado).
-    assert len(en_indice) == 18, f"esperaba 18 componentes en el índice, hay {len(en_indice)}"
+    # 19 desde ADR-0231: entra carga del servicio de deuda en vulnerabilidad.
+    assert len(en_indice) == 19, f"esperaba 19 componentes en el índice, hay {len(en_indice)}"
 
     ponderado = sum(i["indice_itvc"] * i["peso_efectivo"] for i in en_indice.values())
     assert abs(ponderado - itvc_val) <= 0.2, f"ponderado {ponderado} != ITVC {itvc_val}"
@@ -556,14 +623,14 @@ def test_dimensiones_criticas_marcadas():
     assert informe["cinturones"]["vida_cotidiana"]["itvc"]["dimensiones"]["vulnerabilidad"]["critica"]
 
 
-def test_la_mora_sostiene_sola_la_vulnerabilidad():
-    """Vulnerabilidad (D3 del ITVC) después de ADR-0154.
+def test_mora_y_carga_sostienen_la_vulnerabilidad():
+    """Vulnerabilidad (D3 del ITVC) después de ADR-0231.
 
     ADR-0067 había separado la mora del compuesto I_EC y las dejó 50/50 con el
     endeudamiento, declarando el reparto como provisorio. ADR-0154 saca el
     endeudamiento —redundante (+0,943 con la brecha salarial), clavado en el
-    techo de winsorización y de signo equívoco, porque leía el crecimiento de la
-    deuda real como acceso al crédito— y la mora queda sola.
+    techo de winsorización y de signo equívoco—. ADR-0231 incorpora la carga
+    CDF/MS como señal previa al incumplimiento, con 30%.
 
     Este test cuida las dos mitades: que el endeudamiento NO se publique como
     card (patrón de ocultos, no card de contexto) y que la mora siga siendo la
@@ -591,11 +658,19 @@ def test_la_mora_sostiene_sola_la_vulnerabilidad():
     assert mora.get("en_indice"), "la mora debe puntuar en el ITVC"
     assert mora.get("indice_itvc") is not None
 
+    carga = vida.get("carga_servicio_deuda_hogares")
+    assert carga, "falta la card de carga_servicio_deuda_hogares"
+    serie_carga = series.get("carga_servicio_deuda_hogares") or []
+    assert serie_carga, "falta la serie carga_servicio_deuda_hogares"
+    assert carga["valor"] == serie_carga[-1]["valor"]
+    assert carga.get("en_indice")
+    assert carga.get("indice_itvc") is not None
+
     dim = informe["cinturones"]["vida_cotidiana"]["itvc"]["dimensiones"]["vulnerabilidad"]
-    assert set(dim["indicadores"]) == {"mora_familias"}
-    assert dim["indicadores"]["mora_familias"]["peso"] == 1.0
-    # el puntaje de la dimensión ES el índice de la mora, sin promedio que lo suavice
-    assert abs(dim["puntaje"] - dim["indicadores"]["mora_familias"]["puntaje_aplicado"]) <= 0.05
+    assert set(dim["indicadores"]) == {
+        "mora_familias", "carga_servicio_deuda_hogares"}
+    assert dim["indicadores"]["mora_familias"]["peso"] == 0.70
+    assert dim["indicadores"]["carga_servicio_deuda_hogares"]["peso"] == 0.30
 
 def test_la_card_de_consistencia_se_publica_aunque_no_haya_pares_altos(monkeypatch, tmp_path):
     """Bug de la auditoría de código: _redundancia_itcm hacía return si

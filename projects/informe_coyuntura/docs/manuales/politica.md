@@ -17,7 +17,7 @@ al ADR.
 | `poder_legislativo` | 21% | `ratio_dnu`, `eficacia_legislativa`, `veto_quorum`, `desafios_legislativos`, `bloqueo_sostenido`, `produccion_legislativa` |
 | `alianzas_territoriales` | 19% | `iaf_transferencias`, `alineamiento_senadores_prov`, `adhesion_reformas_provincial` |
 | `cohesion_interna` | 15% | `cohesion_bloque` |
-| `conflicto_social` | 10% | `conflictividad_nacional` |
+| `conflicto_social` | 10% | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` |
 | `imagen_voto` | 7% | `votometro_ventaja_lla` |
 | `poder_judicial` | 15% | `cobertura_judicial`, `judicializacion`, `velocidad_resolucion`, `paralisis_denuncias` |
 | `sector_privado` | 13% | `brecha_obra_publica`, `apoyo_empresario` |
@@ -200,15 +200,30 @@ Suma de pesos: 100%.
 
 | | |
 |---|---|
-| Peso dentro de la dimensión | 100% |
-| Peso efectivo en el índice | **10.0%** |
+| Peso dentro de la dimensión | 60% |
+| Peso efectivo en el índice | **6.0%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
 | Procedencia del ancla | `convencion` — calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052) |
 
 **Bandas**: ≤ -32 → 100 · -32–-29 → 85 · -29–-26 → 65 · -26–-15 → 40 · > -15 → 10
 
-**Lo gobiernan**: [ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md) Conflictividad nacional: de dónde viene y sobre qué actúa
+**Lo gobiernan**: [ADR-0132](../adr/0132-conflictividad-nacional-de-donde-viene-y-sobre-que-actua.md) Conflictividad nacional: de dónde viene y sobre qué actúa · [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle
+
+#### Intensidad de los paros
+
+`jornadas_individuales_no_trabajadas_12m`
+
+| | |
+|---|---|
+| Peso dentro de la dimensión | 40% |
+| Peso efectivo en el índice | **4.0%** |
+| Familia de lectura | tensión externa |
+| Rezago declarado | 6 meses |
+
+**Bandas**: ≤ 5e+06 → 100 · 5e+06–6.5e+06 → 85 · 6.5e+06–8e+06 → 65 · 8e+06–1e+07 → 40 · > 1e+07 → 10
+
+**Lo gobiernan**: [ADR-0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) La intensidad laboral complementa la calle
 
 ### Dimensión `imagen_voto` (7%)
 
@@ -379,7 +394,7 @@ histórica.
 
 ## Todos los ADR vigentes de este cinturón
 
-63 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
+64 en total. El índice completo, con los superados y rechazados, está en [docs/adr/README.md](../adr/README.md).
 
 - [0012](../adr/0012-reconstruccion-series-historicas.md) — Reconstrucción de series históricas para indicadores sin histórico (backfill)
 - [0036](../adr/0036-itcp-parametrica-politica.md) — ITCP: el cinturón de política se puntúa con la paramétrica de 5 dimensiones (decisión editorial, sin doc CIGOB)
@@ -444,3 +459,4 @@ histórica.
 - [0171](../adr/0171-la-lectura-por-partes-no-ordena-empates.md) — La lectura por partes no ordena empates
 - [0172](../adr/0172-la-serie-termina-donde-esta-la-card.md) — La serie termina donde está la card
 - [0183](../adr/0183-rediseno-del-cinturon-politico.md) — Rediseño del cinturón político según el documento de agosto: registrado, no aplicado
+- [0232](../adr/0232-la-intensidad-laboral-complementa-la-calle.md) — La intensidad laboral complementa la calle

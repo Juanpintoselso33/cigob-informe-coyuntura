@@ -167,6 +167,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0172](0172-la-serie-termina-donde-esta-la-card.md) | La serie termina donde está la card |  | vigente |
 | [0183](0183-rediseno-del-cinturon-politico.md) | Rediseño del cinturón político según el documento de agosto: registrado, no aplicado |  | propuesto |
 | [0230](0230-nadie-publica-si-un-decreto-sigue-rigiendo.md) | Nadie publica si un decreto sigue rigiendo |  | rechazado |
+| [0232](0232-la-intensidad-laboral-complementa-la-calle.md) | La intensidad laboral complementa la calle | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` | vigente |
 
 ### Gestión (ITCG)
 
@@ -226,7 +227,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0109](0109-saturacion-de-la-escala-de-tension.md) | Saturación de la escala de tensión: verificada, no requiere cambio |  | vigente |
 | [0110](0110-percepcion-seguridad-y-consumo.md) | La dimensión se llama por lo que tiene adentro | `confianza` | vigente |
 | [0111](0111-alquiler-real-entra-al-itvc.md) | El costo del alquiler entra al cinturón; pobreza y expectativas no | `precios`, `alquiler_real`, `itvc_alquiler` | vigente |
-| [0112](0112-el-cinturon-mira-hacia-adelante.md) | El cinturón incorpora su primera medida prospectiva | `empleo`, `indice_lider`, `itvc_lider` | vigente |
+| [0112](0112-el-cinturon-mira-hacia-adelante.md) | El cinturón incorpora su primera medida prospectiva | `empleo`, `indice_lider`, `itvc_lider` | superado por [0154](0154-endeudamiento-e-indice-lider-salen-del-itvc.md) |
 | [0113](0113-nowcast-de-pobreza.md) | La pobreza se publica, con la única fuente mensual que existe | `pobreza_nowcast`, `utdt_nowcast_pobreza` | vigente |
 | [0114](0114-pobreza-oficial-acompana-al-nowcast.md) | La pobreza oficial acompaña al nowcast en el mismo gráfico | `pobreza_nowcast`, `pobreza_indec` | vigente |
 | [0115](0115-reorganizacion-de-la-dimension-de-percepcion.md) | La dimensión de percepción se parte en tres | `ingresos`, `percepcion`, `seguridad` | vigente |
@@ -252,6 +253,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0223](0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) | El espejo de las motos: el patentamiento de autos | `patentamiento_autos`, `patentamiento_motos` | vigente |
 | [0224](0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) | Puntúa la motorización total, no cada vehículo por su lado | `motorizacion_total`, `patentamiento_autos`, `patentamiento_motos` | vigente |
 | [0225](0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) | El supermercado deja de validar el índice y pasa a integrarlo | `consumo_supermercados` | vigente |
+| [0231](0231-la-carga-de-deuda-anticipa-la-mora.md) | La carga de deuda anticipa la mora | `mora_familias`, `carga_servicio_deuda_hogares` | vigente |
 
 ### Espíritu de época
 
