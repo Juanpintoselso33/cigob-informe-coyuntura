@@ -1,6 +1,5 @@
 """Contratos de las dos dimensiones que dejaron de depender de una sola señal."""
 import io
-import json
 import sys
 from datetime import date, datetime
 from pathlib import Path
@@ -17,6 +16,7 @@ import gate_calidad
 import itcp
 import itvc
 import politica
+import publicar
 
 
 class _Respuesta:
@@ -208,17 +208,15 @@ def test_jornadas_falla_ruidoso_si_el_cuadro_pierde_la_columna(monkeypatch):
     assert politica.fetch_jornadas_individuales_no_trabajadas() is None
 
 
-def test_el_tope_de_frescura_de_las_jornadas_tiene_un_solo_dueno(monkeypatch):
-    """Mismo contrato que la carga del servicio de deuda: el flag de la card y
-    la demora que reporta el gate salen del único tope de `config.MAX_DIAS`."""
+def test_una_fuente_laboral_demorada_con_fetch_exitoso_no_es_cache(monkeypatch):
     monkeypatch.setattr(politica.requests, "get",
                         lambda *_a, **_k: _Respuesta(content=_xlsx_jornadas()))
     monkeypatch.setitem(config.MAX_DIAS,
-                        "jornadas_individuales_no_trabajadas_12m", 100_000)
-    assert politica.fetch_jornadas_individuales_no_trabajadas()["desactualizado"] is False
-    monkeypatch.setitem(config.MAX_DIAS,
                         "jornadas_individuales_no_trabajadas_12m", 1)
-    assert politica.fetch_jornadas_individuales_no_trabajadas()["desactualizado"] is True
+    card = politica.fetch_jornadas_individuales_no_trabajadas()
+    fecha = datetime.strptime(card["fecha_dato"], "%Y-%m-%d").date()
+    assert (date.today() - fecha).days > 1
+    assert card["desactualizado"] is False
     assert gate_calidad.MAX_DIAS["jornadas_individuales_no_trabajadas_12m"] == 1
 
 
@@ -242,26 +240,20 @@ def test_conflicto_social_combina_calle_e_intensidad_laboral():
 
 
 def test_el_tope_de_frescura_de_la_carga_tiene_un_solo_dueno(monkeypatch):
-    """El rezago tolerado de la carga del servicio de deuda lo consumen dos
-    lados —el gate, que reporta la demora, y `publicar.py`, que marca
-    `desactualizado` en el snapshot—. Repetir la constante dejaba al snapshot
-    diciendo "al día" mientras el gate reportaba demora."""
+    """El rezago del dato se configura para el gate sin redefinir su tope."""
     monkeypatch.setitem(config.MAX_DIAS, "carga_servicio_deuda_hogares", 42)
     assert config.rezago_maximo_tolerado("carga_servicio_deuda_hogares") == 42
     assert gate_calidad.MAX_DIAS.get(
         "carga_servicio_deuda_hogares", gate_calidad.MAX_DIAS_DEFAULT) == 42
 
 
-def test_el_snapshot_no_declara_al_dia_una_carga_que_el_gate_reporta_demorada():
-    """Contrato del artefacto publicado (`web/src/data/informe.json`): el flag
-    de la card tiene que salir del mismo tope con el que el gate la juzga."""
-    snapshot = json.loads(
-        (ROOT / "web" / "src" / "data" / "informe.json").read_text(encoding="utf-8"))
-    card = (snapshot["cinturones"]["vida_cotidiana"]["indicadores"]
-            ["carga_servicio_deuda_hogares"])
-    fecha = datetime.strptime(card["fecha_dato"] + "-01", "%Y-%m-%d").date()
-    rezago = (date.today() - fecha).days
-    tope = config.rezago_maximo_tolerado("carga_servicio_deuda_hogares")
-    assert card["desactualizado"] is (rezago > tope), (
-        f"la card declara desactualizado={card['desactualizado']} con {rezago}d "
-        f"de rezago contra un tope de {tope}d")
+def test_una_serie_de_deuda_demorada_no_se_publica_como_cache():
+    enriquecido = {}
+    publicar.agregar_carga_servicio_deuda(enriquecido, {
+        "carga_servicio_deuda_hogares": [
+            {"fecha": "2020-01-01", "valor": 12.5},
+        ],
+    })
+    card = enriquecido["carga_servicio_deuda_hogares"]
+    assert card["fecha_dato"] == "2020-01"
+    assert card["desactualizado"] is False

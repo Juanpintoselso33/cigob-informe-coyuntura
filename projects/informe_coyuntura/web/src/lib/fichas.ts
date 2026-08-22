@@ -172,13 +172,13 @@ export const FICHAS: Record<string, Ficha> = {
     sigla: "ITCM",
     nombreLargo: "Índice de Tensión del Cinturón Macroeconómico",
     cinturon: "macro",
-    resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Diecisiete indicadores en seis dimensiones, con umbrales y pesos de la paramétrica institucional CIGOB.",
+    resumen: "Mide la tensión del cinturón macroeconómico en una escala 0–100: 0 = cinturón severamente apretado (máxima tensión), 100 = aflojado. Usa umbrales y pesos de la paramétrica institucional CIGOB.",
     marcoConceptual: [
       "El informe lee la realidad como un sistema de cuatro cinturones que rodean al gobierno (Planificación Estratégica Situacional de Carlos Matus). El cinturón macroeconómico agrupa los indicadores del motor económico: precios, cuentas fiscales y externas, financiamiento, actividad, competitividad e inversión.",
       "El marco, las dimensiones, los umbrales y los pesos provienen de un documento institucional: «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Macroeconomía» (Fundación CIGOB, mayo de 2026). El índice no estima esos parámetros a partir de los datos: los toma del marco y luego mide — con las herramientas de robustez de abajo — cuánto dependen las conclusiones de esa elección.",
     ],
     seleccion: [
-      "Diecisiete indicadores agrupados en seis dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023).",
+      "Criterio de selección: fuentes públicas oficiales (INDEC, BCRA, ARCA), extracción automatizable y serie histórica reconstruible al inicio del mandato (diciembre de 2023).",
       "Las variables nominales de seguimiento (préstamos y base monetaria nominales, tipo de cambio mayorista, BADLAR) se extraen como insumo de cálculo pero no se publican como indicadores del cinturón: en un régimen de desinflación, su variación nominal confunde más de lo que informa. La BADLAR entra al índice a través de la tasa real del IdC; el crédito entra deflactado.",
     ],
     tratamiento: [
@@ -3079,13 +3079,13 @@ export const FICHAS: Record<string, Ficha> = {
     sigla: "ITCG",
     nombreLargo: "Índice de Tensión del Cinturón de Gestión",
     cinturon: "gestion",
-    resumen: "Mide si la agenda de reformas del gobierno se ejecuta, en una escala 0–100: 0 = el gobierno promete reformas pero no las ejecuta; 100 = agenda ejecutándose. Cinco dimensiones con umbrales y pesos de la paramétrica institucional CIGOB.",
+    resumen: "Mide si la agenda de reformas del gobierno se ejecuta, en una escala 0–100: 0 = el gobierno promete reformas pero no las ejecuta; 100 = agenda ejecutándose. Usa umbrales y pesos de la paramétrica institucional CIGOB.",
     marcoConceptual: [
       "El cinturón de gestión mide la capacidad de ejecutar: el cumplimiento efectivo de la agenda de reformas (económicas, del Estado, laboral, privatizaciones, social y de orden público), no la popularidad del gobierno ni el resultado macroeconómico.",
       "El marco proviene de la «Fórmula Paramétrica para la Evaluación del Estado de Tensión — Cinturón de la Gestión» (Fundación CIGOB, julio de 2026). Los pesos de las cinco dimensiones y la estructura de la primera vienen del documento; los pesos internos de las restantes son operacionalización propia documentada.",
     ],
     seleccion: [
-      "Catorce indicadores puntúan en cinco dimensiones (la tabla de composición muestra la estructura vigente con los puntajes de hoy). El tablero solo muestra lo que integra el índice: dos series complementarias de conflictividad (alertas de manifestación y eventos de protesta) se siguen relevando como seguimiento interno, sin publicarse ni puntuar.",
+      "El tablero solo muestra lo que integra el índice: dos series complementarias de conflictividad (alertas de manifestación y eventos de protesta) se siguen relevando como seguimiento interno, sin publicarse ni puntuar.",
       "Criterio de selección: fuentes públicas verificables. Privatizaciones usa un registro curado a mano y cita la norma del Boletín Oficial detrás de cada estado; su ficha declara esa carga manual. El cálculo del índice a partir de los valores publicados sí es automático.",
     ],
     tratamiento: [
@@ -3157,13 +3157,13 @@ export const FICHAS: Record<string, Ficha> = {
     nombreLargo: "Índice de Tensión del Cinturón de Impacto Social",
     base100: true,
     cinturon: "vida_cotidiana",
-    resumen: "Índice de seguimiento: dieciocho componentes se comparan contra el arranque del mandato y la canasta de servicios contra umbrales internacionales de asequibilidad por rubro. Más de 100 = mejores condiciones; menos de 100 = peores. Diecinueve componentes en seis dimensiones.",
+    resumen: "Índice de seguimiento: los componentes se comparan contra el arranque del mandato y la canasta de servicios contra umbrales internacionales de asequibilidad por rubro. Más de 100 = mejores condiciones; menos de 100 = peores.",
     marcoConceptual: [
       "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, la mora y la carga de deuda de las familias, el empleo y sus prospectivas, y el clima de confianza y seguridad.",
-      "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. Dieciocho componentes miden evolución acumulada contra el arranque del mandato; la canasta de servicios es la excepción documentada y usa anclas internacionales de asequibilidad.",
+      "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. Los componentes miden evolución acumulada contra el arranque del mandato; la canasta de servicios es la excepción documentada y usa anclas internacionales de asequibilidad.",
     ],
     seleccion: [
-      "Diecinueve componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
+      "Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
       "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada. La victimización usa enero de 2024 porque la encuesta no existía en 2023; servicios públicos usa umbrales internacionales separados para agua+energía y transporte porque comparar contra las tarifas subsidiadas de 2023 falseaba su asequibilidad.",
     ],
     tratamiento: [
@@ -3244,13 +3244,13 @@ export const FICHAS: Record<string, Ficha> = {
     sigla: "ITCP",
     nombreLargo: "Índice de Tensión del Cinturón Político",
     cinturon: "politica",
-    resumen: "Mide el capital político del gobierno —la capacidad de gobernar con otros actores, no la popularidad— en una escala 0–100: 0 = mínimo capital político, 100 = máximo. Diecinueve indicadores en siete dimensiones con pesos editoriales explícitos.",
+    resumen: "Mide el capital político del gobierno —la capacidad de gobernar con otros actores, no la popularidad— en una escala 0–100: 0 = mínimo capital político, 100 = máximo. Los pesos son editoriales y explícitos.",
     marcoConceptual: [
       "El cinturón político mide el capital político del gobierno según el marco de Carlos Matus (Política, Planificación y Gobierno): la capacidad de gobernar con otros actores —el Congreso, las provincias, el propio bloque legislativo, la calle, el Poder Judicial y el sector privado—, no la popularidad medida en encuestas. Se organiza en siete dimensiones: poder legislativo, alianzas territoriales, cohesión interna del oficialismo, conflicto social, imagen y voto, poder judicial y sector privado.",
       "A diferencia del ITCM, el ITCG y el ITCIS, no existe un documento institucional previo que fije estos pesos. Son una decisión editorial explícita: poder legislativo 21%, alianzas territoriales 19%, cohesión interna 15%, conflicto social 10%, imagen y voto 7%, poder judicial 15% y sector privado 13%. La imagen electoral pesa deliberadamente menos porque el proyecto distingue capital político de popularidad.",
     ],
     seleccion: [
-      "Diecinueve indicadores puntúan en siete dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El tablero publica solo lo que integra el índice: tres indicadores retirados conservan ficha histórica y otros seguimientos no puntuables permanecen internos, sin tarjeta pública. El esquema reemplazó a un promedio simple que pesaba todo por igual, sin distinguir actores ni mecanismos de poder.",
+      "El tablero publica solo lo que integra el índice: tres indicadores retirados conservan ficha histórica y otros seguimientos no puntuables permanecen internos, sin tarjeta pública. El esquema reemplazó a un promedio simple que pesaba todo por igual, sin distinguir actores ni mecanismos de poder.",
       "Criterio de selección: fuentes públicas verificables y automatizables. El alineamiento de los gobernadores —una estimación manual sin fuente pública estructurada— se retiró del índice en julio de 2026 y lo reemplazó el alineamiento de voto de los senadores por provincia, una conducta observable.",
       "La revisión editorial de julio de 2026 acotó el objeto a la capacidad de gestionar y avanzar la agenda, pero amplió los actores observados: además del Parlamento, las alianzas territoriales, la cohesión y la conflictividad, incorporó la respuesta del Poder Judicial y del sector privado. La rotación del gabinete y el volumen de protestas de la Ciudad de Buenos Aires quedaron fuera del puntaje.",
     ],

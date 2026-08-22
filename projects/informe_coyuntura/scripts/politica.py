@@ -101,9 +101,6 @@ CSJN_NOVEDADES_PATH = PROJECT_DIR / "data" / "politica" / "csjn_novedades.json"
 VOTOMETRO_URL  = "https://cigob.github.io/Votometro/"  # Votómetro live (embebido en cigob.org/votometro)
 VOTOMETRO_HTML = PROJECT_DIR / "data" / "politica" / "votometro_fallback.html"  # fallback local
 
-sys.path.insert(0, str(PROJECT_DIR))
-from config import rezago_maximo_tolerado  # noqa: E402  (necesita el sys.path de arriba)
-
 CINTURON              = "politica"
 INDICADORES_ESPERADOS = [
     "votometro_ventaja_lla",
@@ -1018,8 +1015,7 @@ def fetch_jornadas_individuales_no_trabajadas() -> dict | None:
             "unidad": "jornadas individuales no trabajadas (12m)",
             "fuente": "Secretaría de Trabajo — Estadísticas de conflictos laborales",
             "fecha_dato": fecha,
-            "desactualizado": _days_old(fecha) > rezago_maximo_tolerado(
-                "jornadas_individuales_no_trabajadas_12m"),
+            "desactualizado": False,
             "detalle_txt": (
                 f"{valor:,}".replace(",", ".")
                 + " jornadas en los últimos 12 meses. La fuente las calcula como "

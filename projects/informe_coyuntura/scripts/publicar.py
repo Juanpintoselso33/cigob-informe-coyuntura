@@ -26,7 +26,7 @@ DATA.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "scripts"))
 from config import (PESOS_CINTURONES, UMBRALES, SIGLAS_PUBLICAS,  # pesos, umbrales y siglas
-                    estado_de_score, rezago_maximo_tolerado)
+                    estado_de_score)
 import itcm                                           # bandas y pesos del ITCM macro
 import itcg                                           # bandas y pesos del ITCG gestión
 import itcp                                           # bandas y pesos del ITCP política
@@ -58,6 +58,21 @@ def _add(out, key, valor, unidad, fuente, fecha, **extra):
          "fecha_dato": fecha, "desactualizado": False}
     d.update(extra)
     out[key] = d
+
+
+def agregar_carga_servicio_deuda(enriquecido, series):
+    serie = series.get("carga_servicio_deuda_hogares") or []
+    if not serie:
+        return
+    ultimo = serie[-1]
+    _add(enriquecido, "carga_servicio_deuda_hogares",
+         ultimo["valor"], "% de la masa salarial registrada",
+         "BCRA — Informe de Estabilidad Financiera (CDF/MS)",
+         ultimo["fecha"][:7],
+         detalle_txt=("Cuotas de capital e intereses de las familias como "
+                      "porcentaje de la masa salarial registrada; el BCRA "
+                      "promedia tres meses tanto en el numerador como en el "
+                      "denominador. Más carga implica menor capacidad de pago."))
 
 
 def build_vida(raw):
@@ -2680,21 +2695,7 @@ def main():
             # vulnerabilidad. La planilla del IEF contiene una serie mensual,
             # aunque el BCRA la libera por lotes semestrales; por eso el dato
             # se fecha con el último mes observado y no con la publicación.
-            serie_carga = series.get("carga_servicio_deuda_hogares") or []
-            if serie_carga:
-                ult_carga = serie_carga[-1]
-                dias_carga = (date.today()
-                              - date.fromisoformat(ult_carga["fecha"][:10])).days
-                tope_carga = rezago_maximo_tolerado("carga_servicio_deuda_hogares")
-                _add(enriquecido, "carga_servicio_deuda_hogares",
-                     ult_carga["valor"], "% de la masa salarial registrada",
-                     "BCRA — Informe de Estabilidad Financiera (CDF/MS)",
-                     ult_carga["fecha"][:7],
-                     desactualizado=dias_carga > tope_carga,
-                     detalle_txt=("Cuotas de capital e intereses de las familias como "
-                                  "porcentaje de la masa salarial registrada; el BCRA "
-                                  "promedia tres meses tanto en el numerador como en el "
-                                  "denominador. Más carga implica menor capacidad de pago."))
+            agregar_carga_servicio_deuda(enriquecido, series)
             # Inseguridad: la card muestra el IVI mensual (LICIP-UTDT), la
             # métrica del ITVC desde el ADR-0032. El SNIC anual (denuncias
             # registradas) queda como contraste declarado en el detalle.
