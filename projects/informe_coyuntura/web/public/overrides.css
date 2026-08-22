@@ -1558,13 +1558,17 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
    estaba cuidando. */
 .cg-marco-home-txt { flex: 1 1 auto; min-width: 0; }
 @media (min-width: 900px) {
-  /* Sólo el cuerpo: el volanta y el título quedan a ancho completo arriba. */
-  .cg-marco-home-txt > p:not(.cg-eyebrow) {
-    columns: 2;
-    column-gap: 36px;
-    orphans: 2;
-    widows: 2;
+  /* Una columna por párrafo, en GRID y no en `columns`. El flujo de columnas
+     equilibra por altura y parte donde le toca —el corte caía en mitad de una
+     frase—; el grid le da una columna a cada párrafo y cada una cierra sola.
+     El volanta y el título quedan a ancho completo arriba. */
+  .cg-marco-home-cuerpo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 36px;
+    align-items: start;
   }
+  .cg-marco-home-cuerpo > p { margin-bottom: 0; }
 }
 @media (max-width: 899px) { .cg-marco-home-txt { max-width: 68ch; } }
 .cg-marco-home-h {
