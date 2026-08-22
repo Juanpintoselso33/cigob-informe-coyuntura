@@ -75,7 +75,8 @@ Un test verifica que el valor puntual cae dentro del rango.
 ### 2. Dimensión crítica — flag ADR-0020
 Una dimensión bajo el umbral crítico se marca en el snapshot y la web la
 señaliza ("el promedio del índice no la compensa"). Hoy: vulnerabilidad
-financiera (endeudamiento real×mora).
+financiera (mora materializada 70% y carga del servicio de deuda 30%,
+ADR-0232).
 
 ### 3. Validación externa — `validacion_externa.py`
 Reconstruye las series históricas de los tres índices y las contrasta con

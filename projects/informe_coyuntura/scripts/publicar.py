@@ -412,9 +412,8 @@ VIDA_CONTEXTO = ("Indicador de contexto — no integra el ITCIS (paramétrica CI
 
 MACRO_CONTEXTO = "Indicador de contexto — no integra el ITCM (paramétrica CIGOB may-2026)."
 GESTION_CONTEXTO = "Indicador de contexto — no integra el ITCG (paramétrica CIGOB jul-2026)."
-# Sin uso hoy: los 12 indicadores de política puntúan en el ITCP (itcp.py no
-# declara indicadores de contexto todavía) — se deja igual que MACRO/GESTION_CONTEXTO
-# por si un futuro indicador de política entra como contexto puro.
+# Texto de respaldo para una card de política que no integre el índice. Los
+# seguimientos internos vigentes se excluyen mediante POLITICA_OCULTOS.
 POLITICA_CONTEXTO = "Indicador de contexto — no integra el ITCP (paramétrica CIGOB jul-2026)."
 
 SCORE_EXPLICACION = {
