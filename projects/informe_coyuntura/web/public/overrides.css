@@ -1550,7 +1550,23 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   border-left: 3px solid var(--teal);
   border-radius: 10px;
 }
-.cg-marco-home-txt { max-width: 68ch; }
+/* El tope de 68ch dejaba el texto en poco más de la mitad de la card y el resto
+   en aire: el contenedor es flex con `space-between`, así que todo el sobrante
+   se iba entre el párrafo y el CTA — y a 1920 el hueco crecía otros 400px. La
+   medida de línea sigue acotada, pero por COLUMNA en vez de por bloque: así se
+   usa el ancho completo sin renglones de 110 caracteres, que es lo que ese tope
+   estaba cuidando. */
+.cg-marco-home-txt { flex: 1 1 auto; min-width: 0; }
+@media (min-width: 900px) {
+  /* Sólo el cuerpo: el volanta y el título quedan a ancho completo arriba. */
+  .cg-marco-home-txt > p:not(.cg-eyebrow) {
+    columns: 2;
+    column-gap: 36px;
+    orphans: 2;
+    widows: 2;
+  }
+}
+@media (max-width: 899px) { .cg-marco-home-txt { max-width: 68ch; } }
 .cg-marco-home-h {
   font-family: 'DM Serif Display', serif;
   font-weight: 400;
@@ -1565,12 +1581,18 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-marco-home strong { font-weight: 700; }
 .cg-marco-home-cta {
   flex-shrink: 0;
+  /* Con el texto a ancho completo, el `space-between` del contenedor se queda
+     sin contra qué empujar y el CTA cae al arranque de su propia fila. El
+     margen automático lo devuelve a la derecha sin depender del sobrante. */
+  margin-left: auto;
   font-size: 13px; font-weight: 700; color: var(--teal);
   white-space: nowrap;
 }
 @media (max-width: 720px) {
   .cg-marco-home { padding: 18px 20px; gap: 14px; }
-  .cg-marco-home-cta { align-self: flex-start; }
+  /* En una columna el CTA vuelve a la izquierda: el `margin-left: auto` que lo
+     manda a la derecha existe para cuando el texto ocupa todo el ancho. */
+  .cg-marco-home-cta { align-self: flex-start; margin-left: 0; }
 }
 
 /* ── Evolución por dimensión: small multiples (ADR-0231) ─────────────
