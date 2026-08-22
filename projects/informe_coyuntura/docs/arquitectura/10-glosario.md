@@ -57,8 +57,8 @@ usan en ESTE proyecto.
 - **Dominante (leave-one-out)**: el indicador que más arrastra el índice —
   se publica cuánto valdría el índice sin él.
 - **Par propio**: el ancla externa de cada índice (ITCM↔riesgo país,
-  ITCG↔Merval USD, ITVC↔ICC): una serie de mercado/encuesta que NO alimenta
-  al índice y debería co-moverse con él.
+  ITCG↔Merval USD, ITVC↔ICC, ITCP↔EPU Argentina): una serie de
+  mercado/encuesta que NO alimenta al índice y debería co-moverse con él.
 - **Matriz cruzada (3×3)**: cada índice contra las tres anclas — muestra si
   cada uno mide algo propio o todos miden lo mismo (ADR-0031).
 - **Niveles vs primeras diferencias**: correlación de las series tal cual
@@ -66,7 +66,7 @@ usan en ESTE proyecto.
   tendencia, los niveles correlacionan "gratis"; las diferencias son la
   prueba exigente.
 - **Lead-lag**: probar si un índice se mueve ANTES que su ancla (anticipa) o
-  junto (coincidente). Resultado documentado: los tres son coincidentes.
+  junto (coincidente). Resultado documentado: los cuatro son coincidentes.
 - **Circularidad**: cuando el ancla externa también es componente del índice
   (el ICC pesa 6,75% del ITVC) — por eso la validación se calcula también
   sin-ICC.

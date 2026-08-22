@@ -37,21 +37,12 @@ interna (ITCP) y Seguridad (ITCIS).
 aceptar mono-indicador con flag. El barrido se sigue haciendo dimensión por
 dimensión mientras no haya regla escrita.
 
-## D10 — Taxonomía de dimensiones del ITVC
-
-**Qué (auditoría 04-jul, ADR-0033):**
-- "Prospectivas de empleo" no contiene medidas directas de empleo (IPI +
-  cemento + subocupación 2,25%); la informalidad —laboral pura— vive en
-  Ingresos.
-- "Confianza y seguridad" es un cajón mixto: ánimo (ICC), delito (IVI),
-  consumo simbólico (carne), durable a crédito (motos), atención (Trends).
-- Concentración: la brecha salario/CBT pesa 22,75% del índice ella sola.
-**Para decidir:** renombrar dimensiones vs rearmar la asignación
-indicador→dimensión vs repesar. Cambia la lectura pública del índice:
-decisión editorial, no técnica.
-
 ## Resueltas recientemente (para no reabrir)
 
+- **D10 — La taxonomía del ITCIS quedó resuelta**: ADR-0115 separó
+  percepción, seguridad e ingresos; ADR-0130 incorporó empleo directo y
+  ADR-0214 trasladó informalidad a empleo. El manual vigente se genera desde
+  `scripts/itvc.py` en [`docs/manuales/vida.md`](../manuales/vida.md).
 - **D5 — Vulnerabilidad financiera ya tiene segundo componente** (ADR-0232,
   21-ago-2026): entra la carga del servicio de deuda de las familias sobre la
   masa salarial registrada (BCRA, IEF) con 30%, y la mora conserva 70% por ser

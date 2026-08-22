@@ -1,6 +1,6 @@
 name: Daily data pipeline
 
-# Corre el pipeline completo de los 5 cinturones del Informe de Coyuntura una
+# Corre el pipeline completo de los 4 cinturones del Informe de Coyuntura una
 # vez al día y commitea el snapshot a main. El deploy de la web (Vercel) lo
 # dispara Vercel solo, vía su integración de GitHub, en cuanto ve el push.
 #

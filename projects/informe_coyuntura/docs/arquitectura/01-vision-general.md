@@ -3,7 +3,7 @@
 ## Qué es
 
 Sistema automatizado que produce el **Informe de Coyuntura CIGOB**: un tablero
-público (informe.cigob.org) que sigue la situación argentina a través de
+público que sigue la situación argentina a través de
 **cuatro cinturones** de indicadores, con actualización nocturna sin
 intervención manual.
 

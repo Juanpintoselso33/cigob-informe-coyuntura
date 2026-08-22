@@ -1,6 +1,8 @@
 # Arquitectura del Informe de Coyuntura
 
-Documentación técnica del sistema que produce [informe.cigob.org](https://informe.cigob.org).
+Documentación técnica del sistema que produce el Informe de Coyuntura. La URL
+pública vigente y el ciclo de publicación están en el
+[README del proyecto](../../README.md#web-pública).
 
 **Qué manda cuando esta carpeta y otra cosa se contradicen.** Estas páginas
 describen la *forma* del sistema —flujo, contratos, operación— y se revisan de
@@ -17,9 +19,9 @@ decisión está en [`docs/adr/`](../adr/README.md).
 | [03 — Motor paramétrico y robustez](03-motor-parametrico.md) | ITCM / ITCG / ITVC-B100 / ITCP, interpolación, winsorización, Monte Carlo, validación externa |
 | [04 — Web](04-web.md) | Astro, librerías de presentación, modales, reglas editoriales |
 | [05 — Operaciones y deploy](05-operaciones.md) | CI nocturno, deploy por Vercel, verificación de producción, troubleshooting |
-| [06 — Catálogo de fuentes](06-catalogo-fuentes.md) | Indicador por indicador: fuente, vía, frecuencia, credenciales, resiliencia, descartes con evidencia |
+| [06 — Catálogo de fuentes](06-catalogo-fuentes.md) | Mapa de daños por familia de fuente, credenciales, resiliencia y descartes con evidencia; las fichas poseen el detalle por indicador |
 | [07 — Contratos de datos](07-contratos-datos.md) | Esquemas de `informe.json`, `series.json`, stores, ajustes e invariantes |
-| [08 — Decisiones abiertas](08-decisiones-abiertas.md) | La agenda metodológica CIGOB: D5-D10 con propuesta y qué falta para decidir |
+| [08 — Decisiones abiertas](08-decisiones-abiertas.md) | La agenda metodológica CIGOB vigente y las decisiones resueltas recientemente |
 | [09 — Onboarding](09-onboarding.md) | Día uno de un colaborador: setup, credenciales, corrida completa, trampas del entorno |
 | [10 — Glosario](10-glosario.md) | Términos del sistema, del motor, de la robustez y siglas de fuentes |
 

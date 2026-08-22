@@ -4874,7 +4874,7 @@
           "tension": null
         }
       },
-      "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."
+      "score_explicacion": "ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 7 dimensiones: poder legislativo 21%, alianzas territoriales 19%, cohesión interna del oficialismo 15%, conflicto social 10%, imagen y voto 7%, poder judicial 15%, sector privado 13%. La tensión del cinturón es (100 − ITCP) / 10."
     },
     "vida_cotidiana": {
       "score": 6.1,

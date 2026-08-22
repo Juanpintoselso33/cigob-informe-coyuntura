@@ -1,8 +1,8 @@
 """Arma el snapshot de datos que consume la web del informe de coyuntura.
 
 Lee output/informe.json + el ultimo vida_cotidiana_*.json + output/series/*.csv
-y escribe web/src/data/informe.json (con vida cotidiana enriquecido a ~13
-indicadores automaticos) y web/src/data/series.json.
+y escribe web/src/data/informe.json (con vida cotidiana enriquecido con los
+indicadores automáticos vigentes) y web/src/data/series.json.
 """
 import csv, glob, json, os, re, statistics, sys
 from datetime import date, datetime
@@ -420,9 +420,10 @@ SCORE_EXPLICACION = {
     "macro":          ("ITCM (índice paramétrico 0–100, mayor = menos tensión) ponderado por 6 dimensiones: "
                        "estabilidad monetaria 26%, viabilidad fiscal-comercial 24%, financiamiento 16%, "
                        "actividad 11%, competitividad externa 11%, inversión 12%. La tensión del cinturón es (100 − ITCM) / 10."),
-    "politica":       ("ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 5 dimensiones: "
-                       "poder legislativo 30%, alianzas territoriales 25%, cohesión interna del oficialismo 20%, "
-                       "conflicto social 15%, imagen y voto 10%. La tensión del cinturón es (100 − ITCP) / 10."),
+    "politica":       ("ITCP (índice paramétrico 0–100, mayor = más capital político) ponderado por 7 dimensiones: "
+                       "poder legislativo 21%, alianzas territoriales 19%, cohesión interna del oficialismo 15%, "
+                       "conflicto social 10%, imagen y voto 7%, poder judicial 15%, sector privado 13%. "
+                       "La tensión del cinturón es (100 − ITCP) / 10."),
     "gestion":        ("ITCG (índice paramétrico 0–100, mayor = agenda de reformas ejecutándose) ponderado por 5 dimensiones: "
                        "reformas económicas 35%, reforma del Estado 25%, reforma laboral 15%, "
                        "privatizaciones e inversión 15%, reforma social y orden 10%. La tensión del cinturón es (100 − ITCG) / 10."),

@@ -104,7 +104,7 @@ desde `web/` con cada push a `main`. Detalle de diseño en
 | `output/cache/politica.json` | Último fetch válido del cinturón político |
 | `output/cache/gestion.json` | Último fetch válido del cinturón gestión |
 | `scripts/vida_cotidiana/data/vida_cotidiana_*.json` | Output del orquestador de vida cotidiana |
-| `output/informe.json` | Informe completo, schema v1.1.0 |
+| `output/informe.json` | Informe completo, schema v1.2.0 |
 | `output/informe.md` | Informe markdown para Drive y reunión |
 
 ## Exit codes de los colectores

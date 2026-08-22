@@ -15,7 +15,7 @@ La corrida completa sin manos:
    - `gate_calidad.py` (G1 estructura · G2 frescura con tope por indicador y
      presupuesto de carry-forward ≤40% por cinturón · G3 invariante
      serie↔titular con excepciones declaradas · G6 cero jerga interna);
-   - `pytest tests/ -q` (G4 reconciliación paramétrica de los tres índices y
+   - `pytest tests/ -q` (G4 reconciliación paramétrica de los cuatro índices y
      el score global · G5 la robustez Monte Carlo encierra el valor).
 4. Commit del snapshot + caches + stores a `main` (bot). Por eso las
    sesiones de trabajo largas suelen terminar con un `git pull --rebase`
@@ -33,8 +33,9 @@ declarar la excepción ahí con su motivo.
 
 > **GitHub Pages se retiró en julio de 2026** y con él `pages.yml`. El sitio
 > lo construye **Vercel** en cada push a `main` (Root Directory =
-> `projects/informe_coyuntura/web`, dominio `informe.cigob.org`); no hay
-> workflow de deploy en este repo.
+> `projects/informe_coyuntura/web`); no hay workflow de deploy en este repo.
+> La URL de producción que se verifica está en el
+> [README del proyecto](../../README.md#web-pública).
 
 ### `piquetes-poll.yml` — poll liviano (15:00 y 21:00 UTC)
 Corre `piquetes_poll.py` (alertas de manifestaciones) sin la pipeline entera.
