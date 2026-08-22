@@ -1,16 +1,16 @@
 ---
 madr: 4
-id: '0231'
+id: '0233'
 estado: 'aceptado'
 fecha: 2026-08-21
 cinturon: 'transversal'
 archivos: ['scripts/validacion_externa.py', 'scripts/publicar.py', 'scripts/bigquery_export.py', 'tests/test_series_dimensiones.py', 'web/src/components/DimensionesEvolucion.astro', 'web/src/lib/sparkline.ts', 'web/src/lib/datos.ts', 'web/src/pages/[slug].astro']
-relacionado: ['0019', '0020', '0033', '0082', '0086', '0108', '0169', '0180', '0197', '0208', '0209', '0224', '0226']
+relacionado: ['0019', '0020', '0033', '0045', '0067', '0082', '0086', '0108', '0109', '0154', '0169', '0180', '0197', '0208', '0209', '0224', '0226']
 ambito: 'Los cuatro índices · la serie mensual por dimensión: qué se publica, cómo se agrega, qué se hace con los huecos'
 origen: 'Editor, 21-ago-2026: el informe publica la serie del índice y la de cada componente, pero «la capa del medio —las dimensiones— sólo existe como el valor del mes actual», así que no se puede ver qué dimensión explica el movimiento'
 ---
 
-# ADR-0231 — La dimensión también tiene historia
+# ADR-0233 — La dimensión también tiene historia
 
 `scripts/validacion_externa.py` · `scripts/publicar.py` · `scripts/bigquery_export.py`
 - **Relacionados**: [[0019-validacion-y-robustez-del-indice]] (la reconstrucción

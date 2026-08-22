@@ -6,7 +6,7 @@ fecha: 2026-08-12
 cinturon: 'transversal'
 parametros: ['PISO_COBERTURA']
 archivos: ['scripts/validacion_externa.py', 'tests/test_piso_cobertura.py']
-relacionado: ['0031', '0082', '0106', '0231']
+relacionado: ['0031', '0082', '0106', '0231', '0233']
 ambito: 'Series mensuales reconstruidas de ITCM/ITCG/ITCP y las correlaciones de validación externa que se publican en el snapshot'
 origen: 'Al medir qué paramétricas admitirían una lectura anticipada del mes, apareció que el ITCG ya venía publicando una sin declararla'
 ---

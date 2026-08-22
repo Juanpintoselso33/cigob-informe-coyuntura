@@ -6,7 +6,7 @@ fecha: 2026-08-21
 cinturon: 'vida'
 indicadores: [mora_familias, carga_servicio_deuda_hogares]
 archivos: ['scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'scripts/gate_calidad.py', 'web/src/lib/datos.ts', 'web/src/lib/descripciones.ts', 'web/src/lib/formulas.ts', 'web/src/lib/fichas.ts']
-relacionado: ['0045', '0067', '0108', '0109', '0154']
+relacionado: ['0019', '0020', '0033', '0045', '0067', '0082', '0086', '0108', '0109', '0154', '0169', '0180', '0197', '0208', '0209', '0224', '0226']
 ambito: 'ITCIS · dimensión de vulnerabilidad financiera'
 origen: 'Barrido de dimensiones sostenidas por un solo indicador'
 ---

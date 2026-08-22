@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""La serie por dimensión no puede contar otra cosa que el índice (ADR-0231).
+"""La serie por dimensión no puede contar otra cosa que el índice (ADR-0233).
 
 Publicar la capa del medio crea un riesgo nuevo y concreto: **dos verdades
 sobre el mismo número**. La dimensión ya se publicaba —el `puntaje` del mes en
@@ -54,7 +54,7 @@ SIGLAS = sorted(CINTURON_DE_INDICE)
 # defectos conocidos, y están acá para que el día que aparezca uno NUEVO el test
 # lo agarre en vez de quedar tapado por un margen genérico.
 #
-# NINGUNA se arregla desde este ADR: ADR-0231 expone lo que ya se calcula, no
+# NINGUNA se arregla desde este ADR: ADR-0233 expone lo que ya se calcula, no
 # cambia qué se calcula. Arreglar una mueve la serie publicada del índice y sus
 # correlaciones, y eso necesita su propio ADR.
 DIVERGENCIAS_DECLARADAS = {
@@ -67,7 +67,7 @@ DIVERGENCIAS_DECLARADAS = {
         "punto 2023-01 (36,7 → índice 96,8). El propio comentario de itvc.py dice "
         "que la serie trimestral «reemplaza la excepción anual»; la reconstrucción "
         "nunca se actualizó. Diferencia en la dimensión: 0,9 puntos. Hallado al "
-        "escribir ADR-0231 y NO tocado ahí — cambiar el flag mueve la serie "
+        "escribir ADR-0233 y NO tocado ahí — cambiar el flag mueve la serie "
         "histórica del ITCIS y las correlaciones que se publican con ella."
     ),
 }
@@ -242,19 +242,32 @@ def test_el_techo_de_winsorizacion_se_aplico_al_componente():
             f"({ve.ITVC_TECHO}): la agregación usó componentes sin recortar")
 
 
-def test_la_dimension_de_un_solo_componente_lo_pone_en_la_misma_escala():
-    """`vulnerabilidad` es 100% `mora_familias`: la fila no agrega información
-    sobre el componente, y es exactamente por eso que hay que publicarla — es lo
-    que lo pone en la misma escala que las otras cinco y permite compararlo.
-    Si algún día deja de ser un solo componente, el texto que lo explica queda
-    mintiendo y hay que reescribirlo."""
-    assert list(itvc.DIMENSIONES_ITVC["vulnerabilidad"]["indicadores"]) == ["mora_familias"]
+def test_la_dimension_dominada_por_un_componente_lo_pone_en_la_misma_escala():
+    """La versión original de esta guarda exigía que `vulnerabilidad` fuera 100%
+    `mora_familias`, y su docstring decía que si algún día dejaba de serlo el
+    texto que lo explica quedaba mintiendo. **Disparó el mismo día**: ADR-0231
+    le sumó la carga del servicio de deuda al 30%. La guarda hizo su trabajo y
+    el texto de la ficha se reescribió.
+
+    Lo que se cuida ahora es lo que sigue siendo cierto y es el motivo por el
+    que la serie vale: una dimensión con pocos componentes tiene una serie muy
+    pegada a la de ellos, y lo que aporta no es información nueva sobre el
+    componente sino ponerlo en la MISMA ESCALA que las otras cinco, que es lo
+    único que permite comparar cuánto se movió cada una."""
+    dim = itvc.DIMENSIONES_ITVC["vulnerabilidad"]["indicadores"]
+    assert len(dim) <= 2, (
+        "vulnerabilidad dejó de ser una dimensión chica: revisá el texto de la "
+        "ficha, que explica la serie apoyándose en que lo es")
+    dominante = max(dim, key=lambda k: dim[k]["peso"] if isinstance(dim[k], dict) else dim[k])
     serie = SERIES_DIM["itvc"]["vulnerabilidad"]["serie"]
-    componentes = ve._indices_itvc_por_componente()["mora_familias"]
+    comp = ve._indices_itvc_por_componente()[dominante]
     ym = max(serie)
-    previos = [k for k in componentes if k <= ym]
-    assert serie[ym] == round(componentes[max(previos)], 1), (
-        "la dimensión de un solo componente dejó de ser ese componente")
+    previos = [k for k in comp if k <= ym]
+    # No son el mismo número —hay un segundo componente— pero la dimensión no
+    # puede despegarse del que se lleva el 70%.
+    assert abs(serie[ym] - comp[max(previos)]) < 40, (
+        f"la dimensión ({serie[ym]}) se despegó de su componente dominante "
+        f"{dominante} ({comp[max(previos)]}): revisá el reparto de pesos")
 
 
 def test_bigquery_recibe_la_serie_por_dimension_en_tabla_propia():

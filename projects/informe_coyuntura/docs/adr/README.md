@@ -315,4 +315,4 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0213](0213-la-portada-dice-que-mide-cada-cinturon.md) | La portada dice qué mide cada cinturón, y la escala se explica en metodología |  | vigente |
 | [0220](0220-la-ficha-se-ata-al-colector-y-al-adr.md) | La ficha se ata al colector y al ADR |  | vigente |
 | [0227](0227-demorada-no-es-desactualizada.md) | «Demorada» no es «desactualizada» |  | vigente |
-| [0231](0231-la-dimension-tambien-tiene-historia.md) | La dimensión también tiene historia |  | vigente |
+| [0233](0233-la-dimension-tambien-tiene-historia.md) | La dimensión también tiene historia |  | vigente |

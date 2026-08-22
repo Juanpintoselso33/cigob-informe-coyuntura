@@ -5,7 +5,7 @@ estado: 'parcial'
 nota_estado: 'parcialmente aceptada (decisión 1 aceptada e implementada; 2-6 pendientes de decisión del editor)'
 fecha: 2026-07-03
 cinturon: 'gestion'
-relacionado: ['0056', '0071', '0075', '0078', '0231']
+relacionado: ['0056', '0071', '0075', '0078', '0231', '0233']
 origen: 'contraste metodológico contra la literatura de índices compuestos, pedido por el editor'
 ---
 

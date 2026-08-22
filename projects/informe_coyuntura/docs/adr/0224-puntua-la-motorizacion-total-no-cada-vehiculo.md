@@ -7,7 +7,7 @@ cinturon: 'vida'
 indicadores: [motorizacion_total, patentamiento_autos, patentamiento_motos]
 archivos: ['scripts/vida_cotidiana/collectors/motorizacion.py', 'scripts/vida_cotidiana/main.py', 'scripts/descargar_series.py', 'scripts/itvc.py', 'scripts/publicar.py', 'scripts/validacion_externa.py', 'scripts/procedencia_anclas.py', 'scripts/gate_calidad.py', 'tests/test_motorizacion_total.py']
 supersede_parcialmente: ['0223']
-relacionado: ['0018', '0024', '0033', '0108', '0153', '0216', '0217', '0233']
+relacionado: ['0018', '0024', '0033', '0108', '0153', '0216', '0217', '0231', '0233']
 modificado_por: ['0225']
 ambito: 'ITCIS · dimensión de ingresos y consumo · qué puntúa del patentamiento de vehículos'
 origen: 'Desacuerdo editorial: un editor sostiene que el pasaje del auto a la moto es empobrecimiento y debe puntuar negativo; el otro, que es acceso y es una mejora'
