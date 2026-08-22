@@ -65,7 +65,7 @@ está en las fichas.
 Familias de fuente del cinturón, que desde ADR-0036 puntúa con la paramétrica
 ITCP: Votómetro CIGOB · InfoLeg y Boletín Oficial (`ratio_dnu`) · ACLED
 (`conflictividad_nacional`, que reemplazó a la serie CEPA por ADR-0052) ·
-Secretaría de Trabajo (jornadas individuales no trabajadas, ADR-0233) · serie
+Secretaría de Trabajo (jornadas individuales no trabajadas, ADR-0232) · serie
 RON oficial (`iaf_transferencias`) · datos.hcdn.gob.ar y actas del Senado
 (eficacia legislativa, comisiones, cohesión de bloque) · elaboración CIGOB con
 registro datado (`data/politica/manuales.json`). El detalle indicador por

@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'politica'
 archivos: ['publicar._familias']
-relacionado: ['0166', '0168', '0233']
+relacionado: ['0166', '0168', '0232']
 continuado_por: ['0171']
 cerrado_por: ['0132']
 ambito: 'ITCP · card pública "Lectura por partes" · `publicar._familias`'

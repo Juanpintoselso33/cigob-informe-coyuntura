@@ -220,7 +220,7 @@ Suma de pesos: 100%.
 | Peso efectivo en el índice | **4.0%** |
 | Familia de lectura | tensión externa |
 | Rezago declarado | 6 meses |
-| Procedencia del ancla | `historia_larga` — anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0233) |
+| Procedencia del ancla | `historia_larga` — anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0232) |
 
 **Bandas**: ≤ 5e+06 → 100 · 5e+06–6.5e+06 → 85 · 6.5e+06–8e+06 → 65 · 8e+06–1e+07 → 40 · > 1e+07 → 10
 

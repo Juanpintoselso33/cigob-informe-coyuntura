@@ -2691,7 +2691,7 @@ def main():
                      detalle_txt=("Porcentaje del crédito de consumo de las familias "
                                   "(préstamos personales y tarjetas) con atrasos de pago, "
                                   "ponderado por el saldo de cada línea."))
-            # Carga del servicio de deuda (ADR-0232): segunda pata de
+            # Carga del servicio de deuda (ADR-0231): segunda pata de
             # vulnerabilidad. La planilla del IEF contiene una serie mensual,
             # aunque el BCRA la libera por lotes semestrales; por eso el dato
             # se fecha con el último mes observado y no con la publicación.

@@ -30,8 +30,8 @@ reservas), posicional para los que solo tienen sentido relativo a su historia.
 
 **Qué:** varias dimensiones (en los tres índices) descansan en un único
 indicador: un error de fuente se transmite entero al índice. Vulnerabilidad
-del ITCIS y Conflicto social del ITCP salieron de esa lista (ADR-0232 y
-ADR-0233); quedan Competitividad externa (ITCM), Imagen y voto y Cohesión
+del ITCIS y Conflicto social del ITCP salieron de esa lista (ADR-0231 y
+ADR-0232); quedan Competitividad externa (ITCM), Imagen y voto y Cohesión
 interna (ITCP) y Seguridad (ITCIS).
 **Para decidir:** mínimo de 2 componentes por dimensión como regla, o
 aceptar mono-indicador con flag. El barrido se sigue haciendo dimensión por
@@ -43,12 +43,12 @@ dimensión mientras no haya regla escrita.
   percepción, seguridad e ingresos; ADR-0130 incorporó empleo directo y
   ADR-0214 trasladó informalidad a empleo. El manual vigente se genera desde
   `scripts/itvc.py` en [`docs/manuales/vida.md`](../manuales/vida.md).
-- **D5 — Vulnerabilidad financiera ya tiene segundo componente** (ADR-0232,
+- **D5 — Vulnerabilidad financiera ya tiene segundo componente** (ADR-0231,
   21-ago-2026): entra la carga del servicio de deuda de las familias sobre la
   masa salarial registrada (BCRA, IEF) con 30%, y la mora conserva 70% por ser
   directa, mensual y más fresca. La descripción vieja de esta D hablaba del
   compuesto endeudamiento real×mora, que ADR-0154 ya había desarmado.
-- **Conflicto social del ITCP dejó de depender sólo de ACLED** (ADR-0233,
+- **Conflicto social del ITCP dejó de depender sólo de ACLED** (ADR-0232,
   21-ago-2026): suman las jornadas individuales no trabajadas de la Secretaría
   de Trabajo, acumuladas a 12 meses, con 40%.
 

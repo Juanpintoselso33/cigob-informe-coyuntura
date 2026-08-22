@@ -544,7 +544,7 @@ Ponderación vigente en el ITCP: 6 % efectivo. El color es una lectura adicional
 
 **2026-07-11** — Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable.
 
-**2026-08-21** — Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral (ADR-0233).
+**2026-08-21** — Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral (ADR-0232).
 
 ```{=openxml}
 <w:p><w:r><w:br w:type="page"/></w:r></w:p>

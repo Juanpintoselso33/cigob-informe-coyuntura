@@ -176,7 +176,7 @@ donde colar una calibración (ADR-0123).
 |---|---|
 | Peso dentro de la dimensión | 30% |
 | Peso efectivo en el índice | **3.0%** |
-| Procedencia del ancla | `conceptual` — carga CDF/MS rebaseada a la fecha fija 4T-2023 e invertida (ADR-0232) |
+| Procedencia del ancla | `conceptual` — carga CDF/MS rebaseada a la fecha fija 4T-2023 e invertida (ADR-0231) |
 
 **Escala**: sin bandas — ver «Cómo puntúa este cinturón» arriba.
 

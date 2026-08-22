@@ -257,7 +257,7 @@ def test_dimension_cohesion_interna_es_solo_el_compuesto():
 def test_dimension_conflicto_social_combina_extension_e_intensidad():
     # ADR-0048: protestas_caba salió a contexto. ADR-0052: movilizacion_cepa
     # también (sin backfill posible + acumulado YTD no comparable) —
-    # conflictividad_nacional (ACLED país entero) queda como ancla. ADR-0233
+    # conflictividad_nacional (ACLED país entero) queda como ancla. ADR-0232
     # suma la intensidad laboral oficial, sin tocar el peso de la dimensión.
     dim = itcp.DIMENSIONES_ITCP["conflicto_social"]
     assert dim["indicadores"] == {

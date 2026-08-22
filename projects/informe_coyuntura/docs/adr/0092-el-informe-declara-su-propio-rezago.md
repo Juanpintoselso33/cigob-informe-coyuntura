@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-20
 cinturon: 'politica'
 archivos: ['publicar._rezago']
-relacionado: ['0233']
+relacionado: ['0232']
 ambito: 'ITCP · card pública "Rezago del índice" · `publicar._rezago`'
 origen: 'Auditoría externa del cinturón político, prioridad 5'
 ---

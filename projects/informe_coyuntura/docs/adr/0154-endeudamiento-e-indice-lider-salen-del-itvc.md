@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-30
 cinturon: 'vida'
 supersede: ['0112']
-relacionado: ['0214', '0231', '0232', '0233']
+relacionado: ['0214', '0231', '0233']
 cerrado_por: ['0167']
 ambito: 'cinturón vida cotidiana (ITVC-B100), dimensiones vulnerabilidad'
 ---

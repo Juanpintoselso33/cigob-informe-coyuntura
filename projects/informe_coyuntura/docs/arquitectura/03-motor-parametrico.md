@@ -76,7 +76,7 @@ Un test verifica que el valor puntual cae dentro del rango.
 Una dimensión bajo el umbral crítico se marca en el snapshot y la web la
 señaliza ("el promedio del índice no la compensa"). Hoy: vulnerabilidad
 financiera (mora materializada 70% y carga del servicio de deuda 30%,
-ADR-0232).
+ADR-0231).
 
 ### 3. Validación externa — `validacion_externa.py`
 Reconstruye las series históricas de los cuatro índices y las contrasta con
