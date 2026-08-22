@@ -158,6 +158,14 @@ entonces ya está roto.
   así que varias guardas pasaban sin mirar nada. Una guarda que no se probó
   rompiéndola no se sabe si guarda.
 
+  Y al romperla, **borrá el bytecode antes de correr**: un `__pycache__` viejo
+  hace que pytest ejecute la versión anterior del módulo y el resultado no dice
+  nada sobre la mutación — pasa igual, y parece que la guarda no la agarra.
+
+  ```bash
+  PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m pytest tests -q -k <guarda>
+  ```
+
 Y una que aplica a cualquier fuente nueva: **el rezago se mide, no se copia del
 documento**. El informe de fuentes de PyMEs afirmaba 45-60 días de demora y son
 ~3 meses; el de la carne daba por descontada una serie histórica que no existe.
@@ -205,6 +213,13 @@ indicador congelado.
   - If it happens, the cron's version is the good one — recover it with
     `git checkout <commit-with-bot-snapshot> -- <file>` and check that
     `generated_at` matches the nightly run, not your manual one.
+- **`overrides.css` no puede dar por sentado el `display` de `dashboard.css`.**
+  Una regla `grid-template-columns` sobre un contenedor que `dashboard.css` deja
+  en `display: flex` es **inerte**: no falla, no avisa, y el reparto lo sigue
+  decidiendo el `flex-basis`. Así estuvo meses la grilla de los cuatro cinturones
+  saliendo 3+1 en desktop, con una regla puesta justamente para arreglarla
+  (verificado 2026-08-21). Antes de escribir grilla en `overrides.css`, mirá qué
+  `display` le pone `dashboard.css` a ese selector.
 - Validate with the narrowest useful command: `.venv/bin/python -m pytest
   tests/ -k ...`, `npx tsc --noEmit`, `npm run build` — not a full pipeline re-run
   unless the task actually needs fresh live data.
