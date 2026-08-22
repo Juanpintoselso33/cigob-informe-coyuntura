@@ -1,13 +1,20 @@
 /* Overrides propios sobre el CSS de klipea (dashboard.css).
    Se mantiene dashboard.css intacto; acá van sólo nuestros ajustes. */
 
-/* La grilla de mini-charts de Evolución usaba minmax(380px, 1fr), que fuerza
-   una columna mínima de 380px y desborda horizontalmente en celulares angostos
-   (<380px de viewport). min(340px, 100%) hace que la columna nunca supere el
-   ancho disponible: en desktop sigue armando 3 columnas, en mobile colapsa a 1. */
-.cg-chart-grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+/* Los cuatro cinturones iban en `display: flex` con `flex: 1 1 380px`, así que
+   en desktop entraban TRES en la primera fila y el cuarto quedaba solo abajo.
+   La regla que había acá declaraba `grid-template-columns` sobre un contenedor
+   flex, o sea que no hacía nada: el reparto lo seguía decidiendo el flex-basis.
+   Cuatro cards piden 2×2, no 3+1. */
+@media (min-width: 900px) {
+  .cg-chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* El tope de 520px del layout flex dejaría aire dentro de cada celda. */
+  .cg-chart-grid > * { max-width: none; }
 }
+/* Abajo de 900 sigue el flex de `dashboard.css`, que colapsa a una columna. */
 
 /* URLs largas en la lista de Fuentes (ej. la del serie_ron CSV) son strings sin
    puntos de corte y desbordaban horizontalmente en mobile. Que rompan en
