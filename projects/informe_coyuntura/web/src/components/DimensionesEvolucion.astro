@@ -1,0 +1,143 @@
+---
+// Small multiples de las series por dimensión (ADR-0233).
+//
+// POR QUÉ NO ES UN GRÁFICO CON SEIS LÍNEAS. Se probó: el ITCIS tiene seis
+// dimensiones y sus recorridos se cruzan repetidamente entre 17 y 113, así que
+// superpuestas hacen falta seis colores distinguibles, seis entradas de leyenda
+// y un ojo que siga una línea entre las otras cinco. El tablero ya tiene el
+// patrón del índice contra su ancla, pero ése compara DOS series y por eso
+// funciona.
+//
+// Un panel por dimensión, con el MISMO eje vertical en todos, resuelve las dos
+// cosas a la vez: cada recorrido se lee solo, y el alto compartido es lo que
+// hace que "ingresos subió" y "vulnerabilidad se derrumbó" sean comparables a
+// simple vista en vez de dos formas parecidas a distinta escala.
+//
+// Va renderizado en el servidor, en SVG: no pide JavaScript, no pide una
+// biblioteca de gráficos, y sobrevive al emisor de un solo archivo.
+import { num } from "../lib/formato.ts";
+import { panelPath, yDe } from "../lib/sparkline.ts";
+import type { IndiceParametrico } from "../lib/datos.ts";
+
+interface Props { indice: IndiceParametrico; sigla: string; slug: string; }
+const { indice, sigla, slug } = Astro.props as Props;
+
+const meta = indice.dimensiones_serie;
+
+// Sólo las dimensiones que traen serie. Las otras siguen puntuando arriba: no
+// se las esconde, se las nombra en la nota.
+const conSerie = Object.entries(indice.dimensiones)
+  .filter(([, d]) => Array.isArray(d.serie) && d.serie.length >= 2)
+  .map(([key, d]) => {
+    const serie = d.serie!.map(([fecha, valor]) => ({ fecha, valor }));
+    const primero = serie[0], ultimo = serie[serie.length - 1];
+    const vals = serie.map(p => p.valor);
+    return { key, dim: d, serie, primero, ultimo,
+             delta: ultimo.valor - primero.valor,
+             piso: Math.min(...vals), techo: Math.max(...vals) };
+  })
+  // Ordenadas por cuánto se movieron: lo que explica el movimiento del índice
+  // va primero, que es la pregunta que trae al lector a esta sección.
+  .sort((a, b) => Math.abs(b.delta) - Math.abs(a.delta));
+
+const W = 210, H = 74, PAD = 6;
+
+// Dominio COMPARTIDO por los seis paneles, con un margen del 6% para que la
+// línea no toque el borde. Si el eje fuera por panel, la comparación —el único
+// motivo por el que están juntos— sería falsa.
+const todos = conSerie.flatMap(d => d.serie.map(p => p.valor));
+const crudoMin = Math.min(...todos), crudoMax = Math.max(...todos);
+const margen = (crudoMax - crudoMin || 1) * 0.06;
+const dominio: [number, number] = [crudoMin - margen, crudoMax + margen];
+
+// Referencia: en base 100 es el arranque del mandato (el 100 significa algo);
+// en los índices por bandas es el medio de la escala. Se dibuja sólo si cae
+// dentro del rango visible — una línea pegada al borde no informa, confunde.
+const referencia = meta?.base100 ? 100 : 50;
+const refDentro = referencia > dominio[0] && referencia < dominio[1];
+const yRef = yDe(referencia, dominio, H, PAD);
+
+const unidad = meta?.base100 ? "" : "/100";
+const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const mesLegible = (ym: string) => `${MESES[+ym.slice(5, 7) - 1]}-${ym.slice(0, 4)}`;
+
+// El movimiento del índice en el mismo tramo, para poder decir en el subtítulo
+// cuánto esconde. Sale de las dimensiones, no de un número aparte.
+const mayor = conSerie[0];
+const menor = conSerie.length > 1 ? conSerie[conSerie.length - 1] : null;
+---
+{meta && conSerie.length > 0 && (
+  <section class="cg-section cg-dimserie">
+    <div class="cg-section-head">
+      <p class="cg-eyebrow">Evolución por dimensión</p>
+      <h2 class="cg-h2">{meta.titulo}</h2>
+      <p class="cg-h2-sub">{meta.sub}</p>
+    </div>
+
+    <p class="cg-dimserie-lede">
+      {mayor && (
+        <>La que más se movió entre {mesLegible(meta.desde)} y {mesLegible(meta.hasta)} es{" "}
+        <strong>{mayor.dim.nombre.toLowerCase()}</strong>, {mayor.delta >= 0 ? "que sube" : "que cae"}{" "}
+        {num(Math.abs(mayor.delta))} puntos{menor && Math.abs(menor.delta) < Math.abs(mayor.delta) / 3
+          ? <>, contra {num(Math.abs(menor.delta))} de {menor.dim.nombre.toLowerCase()}</> : null}.
+        Los paneles comparten el eje vertical, así que las alturas se comparan entre sí.</>
+      )}
+    </p>
+
+    <div class="cg-dimserie-grid" role="list">
+      {conSerie.map(({ key, dim, serie, primero, ultimo, delta, piso, techo }) => {
+        const p = panelPath(serie, dominio, W, H, PAD);
+        const dir = delta > 0.05 ? "sube" : delta < -0.05 ? "baja" : "plano";
+        return (
+          <figure class:list={["cg-dimserie-card", `dir-${dir}`, { "es-critica": dim.critica }]}
+                  role="listitem" data-dimension={key} data-cinturon={slug}>
+            <figcaption class="cg-dimserie-head">
+              <span class="cg-dimserie-nombre">{dim.nombre}</span>
+              <span class="cg-dimserie-peso">pesa {Math.round(dim.peso * 100)}%</span>
+            </figcaption>
+            <svg class="cg-dimserie-svg" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="none"
+                 role="img"
+                 aria-label={`${dim.nombre}: de ${num(primero.valor)} en ${mesLegible(primero.fecha)} a ${num(ultimo.valor)} en ${mesLegible(ultimo.fecha)}`}>
+              {refDentro && (
+                <line class="cg-dimserie-ref" x1="0" y1={yRef} x2={W} y2={yRef} />
+              )}
+              <path class="cg-dimserie-area" d={p.area} />
+              <path class="cg-dimserie-linea" d={p.linea} />
+              {p.ultimo && <circle class="cg-dimserie-dot" cx={p.ultimo.x} cy={p.ultimo.y} r="2.6" />}
+            </svg>
+            <div class="cg-dimserie-foot">
+              <span class="cg-dimserie-tramo">
+                {num(primero.valor)} <span aria-hidden="true">→</span> <strong>{num(ultimo.valor)}</strong>{unidad}
+              </span>
+              <span class:list={["cg-dimserie-delta", dir]}>
+                {delta > 0 ? "+" : ""}{num(delta)}
+              </span>
+            </div>
+            {/* El eje compartido es lo que hace comparables los paneles, y tiene
+                un costo: con una dimensión que recorre 82 puntos, las que
+                recorren 14 quedan planas. Esa planicie ES el dato —hay
+                dimensiones que llevan dos años quietas— pero dibujada sola se
+                confunde con un panel vacío. El rango propio lo dice en número,
+                así que "plano" queda medido en vez de sugerido. */}
+            <p class="cg-dimserie-rango">
+              recorre {num(techo - piso)} puntos ({num(piso)}–{num(techo)})
+              {serie.length < meta.n && <> · {serie.length} de {meta.n} meses, arranca en {mesLegible(primero.fecha)}</>}
+            </p>
+          </figure>
+        );
+      })}
+    </div>
+
+    <p class="cg-dimserie-nota">
+      {refDentro && (
+        <><span class="cg-dimserie-ref-chip" aria-hidden="true"></span>
+        La línea punteada marca {referencia}
+        {meta.base100 ? " — el arranque del mandato, base de todo el índice" : " — el medio de la escala"}.{" "}</>
+      )}
+      Eje vertical compartido en los {conSerie.length} paneles: {Math.floor(dominio[0])} a{" "}
+      {Math.ceil(dominio[1])} ({meta.escala}).{" "}
+      Período {mesLegible(meta.desde)} – {mesLegible(meta.hasta)}, {meta.n} meses.
+    </p>
+    <p class="cg-dimserie-nota">{meta.nota}</p>
+  </section>
+)}

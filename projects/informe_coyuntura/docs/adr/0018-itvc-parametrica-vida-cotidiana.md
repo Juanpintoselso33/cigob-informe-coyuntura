@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-07-03
 cinturon: 'vida'
 relacionado: ['0067', '0190', '0212', '0215', '0217', '0218', '0223', '0224']
-modificado_por: ['0232']
+modificado_por: ['0232', '0235']
 origen: 'doc "ITVC — versión base 100" (Fundación CIGOB, 260702, `docs/260702 vida cotidiana finakl.docx`)'
 ---
 
@@ -82,7 +82,7 @@ puntuación.
 | I_SRC salario/CBT (22,75%) | brecha_salario_cbt | rebase serie RIPTE/CBT | dinámica |
 | I_IFL informalidad (12,25%) | informalidad | invertido, serie ANUAL 52.1 | dinámica (base = año 2023) |
 | I_IA alimentos (10%) | ipc_alimentos | serie `itvc_alimentos` (nivel vs RIPTE) | dinámica |
-| I_PT tarifas (15%) | peso_tarifas | serie `itvc_tarifas` (canasta IIEP/RIPTE, asequibilidad por rubro; ADR-0232) | umbrales externos 10% agua+energía / 5% transporte |
+| I_PT tarifas (15%) | peso_tarifas | serie `itvc_tarifas` (canasta IIEP/RIPTE, asequibilidad por rubro; ADR-0235) | umbrales externos 10% agua+energía / 5% transporte |
 | I_EC endeudamiento (10%) | endeudamiento_familiar | serie `itvc_endeudamiento` (real × mora) | dinámica |
 | I_IPI industria (6,75%) | mortalidad_pymes | serie `itvc_ipi` (nivel desest.) | dinámica |
 | I_ISC construcción (6%) | despacho_cemento | serie `itvc_isac` (nivel desest.) | dinámica |

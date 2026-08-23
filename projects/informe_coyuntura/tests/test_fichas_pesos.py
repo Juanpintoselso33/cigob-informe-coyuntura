@@ -120,7 +120,7 @@ def _cuerpo_ficha(clave: str) -> str:
 
 NUMERO_EN_LETRAS = {
     5: "cinco", 6: "seis", 7: "siete", 14: "catorce",
-    17: "diecisiete", 18: "dieciocho",
+    17: "diecisiete", 18: "dieciocho", 19: "diecinueve",
 }
 
 

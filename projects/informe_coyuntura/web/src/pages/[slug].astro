@@ -6,6 +6,7 @@ import Footer from "../components/Footer.astro";
 import IndicadorTile from "../components/IndicadorTile.astro";
 import IndicadorModal from "../components/IndicadorModal.astro";
 import SemaforoLeyenda from "../components/SemaforoLeyenda.astro";
+import DimensionesEvolucion from "../components/DimensionesEvolucion.astro";
 import {
   informe, CINTURONES, indicadoresOrdenados, tensionDeDimension,
   fuentesDeCinturon, cap, indiceDe, label, num, semaforoDe, semaforoAriaLabel,
@@ -310,6 +311,7 @@ const robChartData = rob?.hist && indice ? {
         )}
       </section>
     )}
+    {indice && <DimensionesEvolucion indice={indice.data} sigla={indice.sigla} slug={meta.slug} />}
     <section class="cg-section">
       <div class="cg-section-head">
         <p class="cg-eyebrow">Indicadores</p>

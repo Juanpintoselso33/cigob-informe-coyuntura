@@ -4,7 +4,7 @@ Implementa el "ITVC — versión base 100" (Fundación CIGOB, doc 260702 vida
 cotidiana, jul-2026): un índice de SEGUIMIENTO DE GESTIÓN. Los componentes se
 rebasean a 100 = promedio del 4º trimestre de 2023, con una excepción vigente:
 `peso_tarifas` usa umbrales internacionales de 10% para agua+energía y 5% para
-transporte, para no tomar como normal el precio subsidiado de 2023 (ADR-0232).
+transporte, para no tomar como normal el precio subsidiado de 2023 (ADR-0235).
 El ITVC es el promedio ponderado directo de esos índices.
 
     ITVC > 100 = condiciones por encima de la referencia compuesta
@@ -197,7 +197,7 @@ DIMENSIONES_ITVC = {
     "precios": {
         "nombre": "Presión de precios",
         "peso": 0.25,
-        # ADR-0232 cambia la VARIABLE y el ancla de `peso_tarifas`, no su lugar
+        # ADR-0235 cambia la VARIABLE y el ancla de `peso_tarifas`, no su lugar
         # en el índice: pasa de IPC Regulados/RIPTE contra 4T-2023 a la canasta
         # efectiva del IIEP contra umbrales internacionales por rubro.
         # Conserva el 45% interno fijado antes de esta corrección.
@@ -229,11 +229,16 @@ DIMENSIONES_ITVC = {
         #    17,2 y dejaba la dimensión en 78,6, o sea que TAPABA la señal que
         #    la dimensión existe para dar.
         #
-        # Precedente de dimensión con un solo indicador: `seguridad`. El peso
-        # NOMINAL de la dimensión no se toca, como en toda alta o baja previa —
-        # bajarlo acá porque el ITVC cae sería mover un peso para que el número
-        # quede mejor, prohibido por ADR-0045.
-        "indicadores": {"mora_familias": 1.0},
+        # ADR-0231: entra la carga del servicio de deuda de los hogares. La
+        # mora mide incumplimiento ya materializado; la carga CDF/MS mide qué
+        # parte de la masa salarial registrada queda comprometida antes del
+        # atraso. En niveles comparten la crisis (+0,883), pero en cambios
+        # mensuales apenas +0,182: no es la misma señal repetida. Parte con
+        # 30% porque el BCRA la actualiza en lotes semestrales; la mora conserva
+        # 70% por ser mensual, directa y más fresca. El peso NOMINAL de la
+        # dimensión no cambia.
+        "indicadores": {"mora_familias": 0.70,
+                        "carga_servicio_deuda_hogares": 0.30},
     },
     "empleo": {
         "nombre": "Prospectivas de empleo",
@@ -366,7 +371,7 @@ def tension_de_itvc(itvc: float) -> float:
 
 def indice_asequibilidad_tarifas(carga_salario: float,
                                   transporte_pct_canasta: float) -> float:
-    """Canasta IIEP → escala común del ITCIS (ADR-0232).
+    """Canasta IIEP → escala común del ITCIS (ADR-0235).
 
     Evalúa agua+energía y transporte por separado y conserva la peor señal.
     Centralizar esta cuenta evita que la serie que puntúa y la explicación de
@@ -506,7 +511,7 @@ WINSOR_EXENTOS = frozenset({"motorizacion_total"})
 SERIES_REBASEADAS = {
     "itvc_alimentos":     "ipc_alimentos",
     # Índice de asequibilidad por componente: 100 = tensión 5. No se rebasea;
-    # agua+energía y transporte llegan contra sus propias anclas (ADR-0232).
+    # agua+energía y transporte llegan contra sus propias anclas (ADR-0235).
     "itvc_tarifas":       "peso_tarifas",
     "itvc_alquiler":      "alquiler_real",
     "itvc_isac":          "despacho_cemento",
@@ -584,9 +589,12 @@ def indices_desde_series(vida_ind, series, baselines=None):
     # Rebase directo desde las series oficiales existentes
     idx["brecha_salario_cbt"] = rebase_de_serie(series, "brecha_salario_cbt")
     # Mora del crédito familiar (ADR-0067): % de cartera irregular, invertido
-    # (más mora = peor). Desde ADR-0154 sostiene sola la dimensión de
-    # vulnerabilidad: endeudamiento_familiar salió del índice.
+    # (más mora = peor).
     idx["mora_familias"] = rebase_de_serie(series, "mora_familias", invertido=True)
+    # Carga del servicio de deuda sobre la masa salarial registrada (ADR-0231):
+    # más ingreso comprometido en cuotas e intereses = peor capacidad de pago.
+    idx["carga_servicio_deuda_hogares"] = rebase_de_serie(
+        series, "carga_servicio_deuda_hogares", invertido=True)
     idx["icc_utdt"] = rebase_de_serie(series, "icc_utdt")
     idx["pluriempleo"] = rebase_de_serie(series, "pluriempleo", invertido=True)
     # Empleo registrado privado (ADR-0130): NO invertido — más empleo es mejor.

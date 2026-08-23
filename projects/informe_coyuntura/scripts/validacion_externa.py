@@ -120,7 +120,7 @@ BASE_MESES = ("2023-10", "2023-11", "2023-12")
 # ITCM, más abajo.
 COMPONENTES = {
     "ipc_alimentos":          ("itvc_alimentos", False, False, True),   # ya base-100 (ADR-0033: relativo al IPC)
-    "peso_tarifas":           ("itvc_tarifas", False, False, True),    # ya en escala común por anclas externas (ADR-0232)
+    "peso_tarifas":           ("itvc_tarifas", False, False, True),    # ya en escala común por anclas externas (ADR-0235)
     "alquiler_real":          ("itvc_alquiler", False, False, True),  # ADR-0111
     # ADR-0218: cantidad de empleadores PyME (SRT). Serie en unidades, no
     # base-100, así que la reconstrucción la rebasea como a las demás.
@@ -133,6 +133,8 @@ COMPONENTES = {
     # split y la dimensión vulnerabilidad renormalizaba sobre endeudamiento solo
     # (hallazgo de la revisión ITVC↔ICC 2026-07-16: el pico reconstruido de
     # oct-2025 ignoraba la mora disparándose en plena crisis)
+    "carga_servicio_deuda_hogares": (
+        "carga_servicio_deuda_hogares", True, False, False),  # ADR-0231
     "brecha_salario_cbt":     ("brecha_salario_cbt", False, False, False),
     "icc_utdt":               ("icc_utdt", False, False, False),
     "pluriempleo":            ("pluriempleo", True, False, False),
@@ -297,8 +299,17 @@ def _valores_itvc_por_mes() -> dict:
     return out
 
 
-def construir_series_itvc() -> tuple:
-    """(serie ITVC completa, serie ITVC sin ICC, serie ICC) mensuales."""
+def construir_series_itvc(dimensiones: dict | None = None) -> tuple:
+    """(serie ITVC completa, serie ITVC sin ICC, serie ICC) mensuales.
+
+    Si se pasa un dict en `dimensiones`, se llena in-place con la serie por
+    DIMENSIÓN del índice completo (ADR-0233). Sale por parámetro y no por
+    valor de retorno para no cambiarle la firma a los cuatro llamadores que
+    ya existen — y sobre todo para que salga del MISMO `calcular_itvc` que
+    produce el punto del índice. Recalcularla aparte sería exactamente la
+    duplicación que este proyecto viene pagando cara: dos caminos que agregan
+    "igual" hasta que uno de los dos se actualiza.
+    """
     series = cargar_series()
     indices_por_comp = _indices_itvc_por_componente()
     ult = max(max(v) for v in indices_por_comp.values() if v)
@@ -312,6 +323,8 @@ def construir_series_itvc() -> tuple:
         r = itvc.calcular_itvc(punto)
         if r:
             itvc_full[ym] = r["valor"]
+            if dimensiones is not None:
+                _anotar_dimensiones(dimensiones, ym, r)
         r2 = itvc.calcular_itvc({k: v for k, v in punto.items() if k != "icc_utdt"})
         if r2:
             itvc_sin_icc[ym] = r2["valor"]
@@ -428,13 +441,45 @@ def _ultimo_mes_completo() -> str:
     return f"{hoy.year - 1}-12" if hoy.month == 1 else f"{hoy.year}-{hoy.month - 1:02d}"
 
 
+def _anotar_dimensiones(acumulador: dict, ym: str, r: dict) -> None:
+    """Vuelca las dimensiones del resultado `r` de un mes en el acumulador
+    `{dimension: {nombre, peso, serie: {ym: puntaje}}}` (ADR-0233).
+
+    Es la única forma en que se arma una serie por dimensión en todo el
+    proyecto: recibe el resultado que YA calculó el motor del índice para ese
+    mes, así que no puede aplicar una regla de agregación distinta de la del
+    índice. El promedio ponderado con renormalización por peso presente lo hizo
+    `parametrica.calcular_indice` / `itvc.calcular_itvc` una sola vez.
+
+    Un mes sin dato en una dimensión NO deja punto: el motor omite del todo la
+    dimensión que no tiene ningún componente presente, y acá se respeta. No hay
+    arrastre ni interpolación en esta capa — el único arrastre del proyecto es
+    el del ITCIS a nivel COMPONENTE ("último dato disponible", doc IV.2.1), que
+    ya ocurrió antes de que el motor viera el mes.
+    """
+    for dkey, d in (r.get("dimensiones") or {}).items():
+        puntaje = d.get("puntaje")
+        if puntaje is None:
+            continue
+        entrada = acumulador.setdefault(dkey, {"nombre": d.get("nombre"),
+                                               "peso": d.get("peso"), "serie": {}})
+        entrada["serie"][ym] = puntaje
+
+
 def _serie_con_piso(nombre: str, valores_por_mes: dict, calcular,
-                    hasta: str | None = None) -> dict:
+                    hasta: str | None = None, dimensiones: dict | None = None) -> dict:
     """Reconstruye la serie y descarta los meses que no llegan al piso.
 
     Se descarta en vez de publicar-con-advertencia porque el consumidor de esto
     es una correlación: un punto con 30% de cobertura pesa lo mismo que uno con
     94% dentro del r, y ninguna nota al pie corrige eso.
+
+    `dimensiones`, si viene, se llena con la serie por dimensión (ADR-0233)
+    desde el MISMO `calcular(valores)` que produce el punto del índice, y por
+    lo tanto con los mismos meses: un mes recortado por piso o por mes en curso
+    tampoco deja punto de dimensión. Que las dos series compartan la exclusión
+    no es un detalle — publicar la dimensión de un mes que el índice descartó
+    sería publicar la parte de un número que se decidió no publicar.
     """
     out = {}
     for ym, valores in valores_por_mes.items():
@@ -450,10 +495,12 @@ def _serie_con_piso(nombre: str, valores_por_mes: dict, calcular,
                   f"({cobertura:.0%} del peso del índice con datos)")
             continue
         out[ym] = r["valor"]
+        if dimensiones is not None:
+            _anotar_dimensiones(dimensiones, ym, r)
     return out
 
 
-def construir_serie_itcm() -> dict:
+def construir_serie_itcm(dimensiones: dict | None = None) -> dict:
     """Serie mensual del ITCM reconstruida desde las series de componentes
     (mismo motor, puntaje interpolado, sin overrides del analista): todos los
     componentes tienen serie salvo IAI/ICIP, que faltan y el motor renormaliza.
@@ -464,7 +511,8 @@ def construir_serie_itcm() -> dict:
     mes reconstruible ya es un mes completo. El piso de cobertura sí se aplica,
     aunque hoy no recorte nada (mínimo histórico 73,4%): es la red por si una
     fuente se cae y el índice queda armado sobre la mitad de sus componentes."""
-    return _serie_con_piso("ITCM", _valores_itcm_por_mes(), itcm.calcular_itcm)
+    return _serie_con_piso("ITCM", _valores_itcm_por_mes(), itcm.calcular_itcm,
+                           dimensiones=dimensiones)
 
 
 # Pares cuyo acoplamiento es DE DISEÑO, con el motivo. No son hallazgos: que
@@ -653,7 +701,7 @@ ITCG_SERIES = [
 ]
 
 
-def construir_serie_itcg() -> dict:
+def construir_serie_itcg(dimensiones: dict | None = None) -> dict:
     """Serie mensual del ITCG reconstruida desde las series de componentes
     (mismo motor, puntaje interpolado, sin overrides del analista): 14 de los
     15 componentes tienen serie con historia; el protocolo antipiquetes recién
@@ -673,7 +721,7 @@ def construir_serie_itcg() -> dict:
     66,9, prácticamente el 65,2 que se publicaba como agosto. La "caída" de 16
     puntos era el faltante, no la gestión."""
     return _serie_con_piso("ITCG", _valores_itcg_por_mes(), itcg.calcular_itcg,
-                           hasta=_ultimo_mes_completo())
+                           hasta=_ultimo_mes_completo(), dimensiones=dimensiones)
 
 
 # Indicadores del ITCG cuya SERIE guarda una magnitud distinta de la que
@@ -756,7 +804,7 @@ ITCP_SERIES = [k for d in itcp.DIMENSIONES_ITCP.values() for k in d["indicadores
 EFICACIA_COHORTE_100PCT_MILEI_DESDE = "2025-12"
 
 
-def construir_serie_itcp() -> dict:
+def construir_serie_itcp(dimensiones: dict | None = None) -> dict:
     """Serie mensual del ITCP reconstruida desde las series de componentes
     (mismo motor, puntaje interpolado, sin overrides del analista) — bastante
     más ruidosa que la de ITCM/ITCG porque la cobertura histórica real de
@@ -830,7 +878,7 @@ def construir_serie_itcp() -> dict:
     # definiciones de "cobertura" en el mismo archivo: la dimensional daba 100%
     # en meses con menos de la mitad del índice cargado.
     return _serie_con_piso("ITCP", _valores_itcp_por_mes(directos, ult),
-                           itcp.calcular_itcp)
+                           itcp.calcular_itcp, dimensiones=dimensiones)
 
 
 def _valores_itcp_por_mes(directos: dict | None = None, ult: str | None = None) -> dict:
@@ -1110,7 +1158,11 @@ def _serie_itcp_sin(dimension: str) -> dict:
 
 
 def main():
-    itvc_full, itvc_sin, icc = construir_series_itvc()
+    # Serie por DIMENSIÓN de los cuatro índices (ADR-0233). Cada builder la
+    # llena desde el mismo resultado mensual del motor con el que arma el
+    # punto del índice, así que no hay una segunda agregación que mantener.
+    dims = {"itvc": {}, "itcm": {}, "itcg": {}, "itcp": {}}
+    itvc_full, itvc_sin, icc = construir_series_itvc(dims["itvc"])
     # generated_at: sin sello no había forma de notar que este archivo dejó de
     # commitearse. El pipeline lo regeneraba cada noche, publicar.py le sacaba
     # las correlaciones para el snapshot y después se descartaba, así que la
@@ -1150,7 +1202,7 @@ def main():
         print(f"  {nombre}: r = {r}  (n = {n})")
 
     # ── ITCM vs Índice Líder (correlación positiva esperada) ───────────────
-    serie_itcm = construir_serie_itcm()
+    serie_itcm = construir_serie_itcm(dims["itcm"])
     print(f"\nserie ITCM reconstruida: {len(serie_itcm)} meses "
           f"({min(serie_itcm)} → {max(serie_itcm)}) · último: {serie_itcm[max(serie_itcm)]}")
     resultados["serie_itcm"] = serie_itcm
@@ -1256,7 +1308,7 @@ def main():
         print(f"  r = {p['r']:+.3f}  {p['a']} × {p['b']}{cruz}")
 
     # ── ITCG vs ICG UTDT (confianza en el gobierno; positiva esperada) ─────
-    serie_itcg = construir_serie_itcg()
+    serie_itcg = construir_serie_itcg(dims["itcg"])
     print(f"\nserie ITCG reconstruida: {len(serie_itcg)} meses "
           f"({min(serie_itcg)} → {max(serie_itcg)}) · último: {serie_itcg[max(serie_itcg)]}")
     resultados["serie_itcg"] = serie_itcg
@@ -1297,10 +1349,22 @@ def main():
             print(f"  {nombre}: r = {r}  (n = {n})")
 
     # ── ITCP vs EPU Argentina (incertidumbre de política; negativa esperada) ──
-    serie_itcp = construir_serie_itcp()
+    serie_itcp = construir_serie_itcp(dims["itcp"])
     print(f"\nserie ITCP reconstruida: {len(serie_itcp)} meses "
           f"({min(serie_itcp)} → {max(serie_itcp)}) · último: {serie_itcp[max(serie_itcp)]}")
     resultados["serie_itcp"] = serie_itcp
+
+    # La capa del medio: hasta ADR-0233 la dimensión sólo existía como el
+    # valor del mes en curso, así que no se podía ver cuál explica el
+    # movimiento del índice. La clave NO empieza con "serie_" a propósito:
+    # bigquery_export barre ese prefijo hacia `series_indices`, que no tiene
+    # columna donde poner de qué dimensión se trata.
+    resultados["series_dimensiones"] = {
+        sigla: bloque for sigla, bloque in dims.items() if bloque}
+    print("\nseries por dimensión (ADR-0233):")
+    for sigla, bloque in resultados["series_dimensiones"].items():
+        detalle = " · ".join(f"{k} {len(v['serie'])}m" for k, v in sorted(bloque.items()))
+        print(f"  {sigla.upper()}: {len(bloque)} dimensiones — {detalle}")
     try:
         epu = fetch_epu_argentina_mensual()
         resultados["epu_argentina_mensual"] = epu

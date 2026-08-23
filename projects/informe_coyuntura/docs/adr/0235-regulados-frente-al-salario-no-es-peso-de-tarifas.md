@@ -1,6 +1,6 @@
 ---
 madr: 4
-id: '0232'
+id: '0235'
 estado: 'aceptado'
 fecha: 2026-08-21
 cinturon: 'vida'
@@ -12,7 +12,7 @@ ambito: 'Canasta efectiva de servicios sobre ingreso · anclas internacionales d
 origen: 'Revisión editorial del rojo 10/10: el indicador afirmaba medir tarifas pero puntuaba un agregado de precios contra una base subsidiada'
 ---
 
-# ADR-0232 — La canasta de servicios puntúa contra asequibilidad, no contra 2023
+# ADR-0235 — La canasta de servicios puntúa contra asequibilidad, no contra 2023
 
 ## Contexto y planteo del problema
 

@@ -279,8 +279,8 @@ def construir_filas_analisis(gen: str, raiz: Path | None = None) -> dict[str, li
     que la hace interpretable después.
     """
     filas: dict[str, list[dict]] = {k: [] for k in (
-        "series_indices", "series_anclas", "correlaciones", "redundancia",
-        "redundancia_matriz", "redundancia_pares", "sensibilidad",
+        "series_indices", "series_dimensiones", "series_anclas", "correlaciones",
+        "redundancia", "redundancia_matriz", "redundancia_pares", "sensibilidad",
         "sensibilidad_leave_one_out", "sensibilidad_experimentos",
         "revision_bandas", "out_of_sample", "procedencia_anclas",
         "panel_validacion", "giros",
@@ -340,6 +340,23 @@ def construir_filas_analisis(gen: str, raiz: Path | None = None) -> dict[str, li
                         )
             for p in (valor.get("pares_altos") or []):
                 filas["redundancia_pares"].append({"generated_at": gen, "indice": indice, **p})
+
+    # Serie por dimensión (ADR-0233). TABLA PROPIA y no una fila más de
+    # `series_indices` con nombre compuesto (`itvc_dim_empleo`): esa tabla tiene
+    # una sola columna de identidad, así que la dimensión habría quedado
+    # codificada dentro de un string que cada consulta tiene que volver a
+    # partir. Con columnas propias, la serie se une por (indice_sigla,
+    # dimension) con la tabla `dimensiones` —el pesaje y el puntaje del mes de
+    # cada corrida— sin parsear nada. Es la misma razón por la que la matriz de
+    # redundancia se guarda en formato largo.
+    for sigla, bloque in (ve.get("series_dimensiones") or {}).items():
+        for dimension, d in (bloque or {}).items():
+            for periodo, v in _serie_mensual((d or {}).get("serie")):
+                filas["series_dimensiones"].append(
+                    {"generated_at": gen, "indice": sigla.upper(),
+                     "dimension": dimension, "nombre": d.get("nombre"),
+                     "peso": d.get("peso"), "periodo": periodo, "valor": v}
+                )
 
     for indice, perfil in (ve.get("panel_validacion") or {}).items():
         for e in (perfil or {}).get("perfil", []):

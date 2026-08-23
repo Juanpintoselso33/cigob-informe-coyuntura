@@ -1,13 +1,20 @@
 /* Overrides propios sobre el CSS de klipea (dashboard.css).
    Se mantiene dashboard.css intacto; acá van sólo nuestros ajustes. */
 
-/* La grilla de mini-charts de Evolución usaba minmax(380px, 1fr), que fuerza
-   una columna mínima de 380px y desborda horizontalmente en celulares angostos
-   (<380px de viewport). min(340px, 100%) hace que la columna nunca supere el
-   ancho disponible: en desktop sigue armando 3 columnas, en mobile colapsa a 1. */
-.cg-chart-grid {
-    grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
+/* Los cuatro cinturones iban en `display: flex` con `flex: 1 1 380px`, así que
+   en desktop entraban TRES en la primera fila y el cuarto quedaba solo abajo.
+   La regla que había acá declaraba `grid-template-columns` sobre un contenedor
+   flex, o sea que no hacía nada: el reparto lo seguía decidiendo el flex-basis.
+   Cuatro cards piden 2×2, no 3+1. */
+@media (min-width: 900px) {
+  .cg-chart-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* El tope de 520px del layout flex dejaría aire dentro de cada celda. */
+  .cg-chart-grid > * { max-width: none; }
 }
+/* Abajo de 900 sigue el flex de `dashboard.css`, que colapsa a una columna. */
 
 /* URLs largas en la lista de Fuentes (ej. la del serie_ron CSV) son strings sin
    puntos de corte y desbordaban horizontalmente en mobile. Que rompan en
@@ -1554,7 +1561,27 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
   border-left: 3px solid var(--teal);
   border-radius: 10px;
 }
-.cg-marco-home-txt { max-width: 68ch; }
+/* El tope de 68ch dejaba el texto en poco más de la mitad de la card y el resto
+   en aire: el contenedor es flex con `space-between`, así que todo el sobrante
+   se iba entre el párrafo y el CTA — y a 1920 el hueco crecía otros 400px. La
+   medida de línea sigue acotada, pero por COLUMNA en vez de por bloque: así se
+   usa el ancho completo sin renglones de 110 caracteres, que es lo que ese tope
+   estaba cuidando. */
+.cg-marco-home-txt { flex: 1 1 auto; min-width: 0; }
+@media (min-width: 900px) {
+  /* Una columna por párrafo, en GRID y no en `columns`. El flujo de columnas
+     equilibra por altura y parte donde le toca —el corte caía en mitad de una
+     frase—; el grid le da una columna a cada párrafo y cada una cierra sola.
+     El volanta y el título quedan a ancho completo arriba. */
+  .cg-marco-home-cuerpo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 36px;
+    align-items: start;
+  }
+  .cg-marco-home-cuerpo > p { margin-bottom: 0; }
+}
+@media (max-width: 899px) { .cg-marco-home-txt { max-width: 68ch; } }
 .cg-marco-home-h {
   font-family: 'DM Serif Display', serif;
   font-weight: 400;
@@ -1569,10 +1596,88 @@ a.cg-dicc-row:hover { box-shadow: var(--shadow-hover); transform: translateY(-2p
 .cg-marco-home strong { font-weight: 700; }
 .cg-marco-home-cta {
   flex-shrink: 0;
+  /* Con el texto a ancho completo, el `space-between` del contenedor se queda
+     sin contra qué empujar y el CTA cae al arranque de su propia fila. El
+     margen automático lo devuelve a la derecha sin depender del sobrante. */
+  margin-left: auto;
   font-size: 13px; font-weight: 700; color: var(--teal);
   white-space: nowrap;
 }
 @media (max-width: 720px) {
   .cg-marco-home { padding: 18px 20px; gap: 14px; }
-  .cg-marco-home-cta { align-self: flex-start; }
+  /* En una columna el CTA vuelve a la izquierda: el `margin-left: auto` que lo
+     manda a la derecha existe para cuando el texto ocupa todo el ancho. */
+  .cg-marco-home-cta { align-self: flex-start; margin-left: 0; }
+}
+
+/* ── Evolución por dimensión: small multiples (ADR-0231) ─────────────
+   Un panel por dimensión, todos con el MISMO eje vertical. El alto compartido
+   es la información: con ejes independientes, una dimensión que se movió tres
+   puntos y otra que se movió ochenta salen del mismo tamaño y la comparación
+   —el único motivo por el que están juntas— sería falsa. */
+.cg-dimserie-lede {
+    margin: 0 auto 18px; max-width: 760px; text-align: center;
+    font-size: 14px; color: var(--muted); line-height: 1.65;
+}
+.cg-dimserie-lede strong { color: var(--dark); font-weight: 800; }
+
+.cg-dimserie-grid {
+    display: grid; gap: 14px;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+.cg-dimserie-card {
+    margin: 0; padding: 12px 14px 10px;
+    background: var(--paper); border: 1px solid var(--bd);
+    border-top: 3px solid var(--muted-soft);
+    border-radius: var(--radius-card); box-shadow: var(--shadow-card);
+    display: flex; flex-direction: column; gap: 8px;
+}
+.cg-dimserie-card.dir-sube  { border-top-color: var(--verde); }
+.cg-dimserie-card.dir-baja  { border-top-color: var(--rojo); }
+.cg-dimserie-card.dir-plano { border-top-color: var(--muted-soft); }
+.cg-dimserie-card.es-critica { box-shadow: var(--shadow-card), inset 0 0 0 1px var(--rojo-soft); }
+
+.cg-dimserie-head {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+}
+.cg-dimserie-nombre { font-size: 13px; font-weight: 800; color: var(--dark); line-height: 1.3; }
+.cg-dimserie-peso { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+.cg-dimserie-svg { display: block; width: 100%; height: 74px; }
+.cg-dimserie-ref { stroke: var(--bd); stroke-width: 1; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+.cg-dimserie-linea {
+    fill: none; stroke: var(--muted); stroke-width: 2;
+    stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke;
+}
+.cg-dimserie-area { fill: var(--muted); opacity: .10; }
+.cg-dimserie-dot { fill: var(--muted); }
+.dir-sube .cg-dimserie-linea, .dir-sube .cg-dimserie-dot { stroke: var(--verde); fill: var(--verde); }
+.dir-sube .cg-dimserie-linea { fill: none; }
+.dir-sube .cg-dimserie-area { fill: var(--verde); }
+.dir-baja .cg-dimserie-linea, .dir-baja .cg-dimserie-dot { stroke: var(--rojo); fill: var(--rojo); }
+.dir-baja .cg-dimserie-linea { fill: none; }
+.dir-baja .cg-dimserie-area { fill: var(--rojo); }
+
+.cg-dimserie-foot {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 8px; border-top: 1px solid var(--bd-soft); padding-top: 7px;
+}
+.cg-dimserie-tramo { font-size: 12px; color: var(--muted); font-family: 'JetBrains Mono', monospace; }
+.cg-dimserie-tramo strong { color: var(--dark); font-size: 15px; font-weight: 700; }
+.cg-dimserie-delta {
+    font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;
+    padding: 1px 7px; border-radius: 999px; white-space: nowrap;
+}
+.cg-dimserie-delta.sube  { color: var(--verde); background: var(--verde-soft); }
+.cg-dimserie-delta.baja  { color: var(--rojo); background: var(--rojo-soft); }
+.cg-dimserie-delta.plano { color: var(--muted); background: var(--bd-soft); }
+
+.cg-dimserie-rango { margin: -3px 0 0; font-size: 11px; color: var(--muted-soft); line-height: 1.45; }
+.cg-dimserie-nota {
+    margin: 14px auto 0; max-width: 820px; text-align: left;
+    font-size: 12.5px; color: var(--muted); line-height: 1.65;
+}
+.cg-dimserie-ref-chip {
+    display: inline-block; width: 16px; height: 0; vertical-align: middle;
+    border-top: 1px dashed var(--muted-soft); margin-right: 5px;
 }

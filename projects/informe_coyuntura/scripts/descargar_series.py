@@ -23,7 +23,7 @@ import comarb    # recaudación provincial (Convenio Multilateral) + el cálculo
 import macro     # reutiliza el parser SDDS y las constantes del balance (reservas netas)
 import gestion   # reutiliza el lector del sheet oficial del RIGI + fechas del BO
 import politica  # reutiliza la reconstrucción histórica del Votómetro
-import itvc      # fórmula única de asequibilidad tarifaria (ADR-0232)
+import itvc      # fórmula única de asequibilidad tarifaria (ADR-0235)
 
 sys.stdout.reconfigure(encoding="utf-8")
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -1627,6 +1627,10 @@ POLITICA_DERIVADAS = [
     ("conflictividad_nacional", "% var. eventos de protesta y disturbios en el país vs 2023 (12m móviles)",
      "ACLED — agregado semanal por provincia (elaboración CIGOB)",
      fetch_conflictividad_nacional_mensual),
+    ("jornadas_individuales_no_trabajadas_12m",
+     "jornadas individuales no trabajadas (12m móviles)",
+     "Secretaría de Trabajo — Estadísticas de conflictos laborales",
+     politica.fetch_jornadas_individuales_no_trabajadas_serie),
     # movilizacion_cepa: seguimiento interno desde 2026-07-11 (ADR-0052) —
     # la serie se sigue guardando como contraste, igual que rotacion_gabinete.
     ("movilizacion_cepa", "Índice de conflictividad social (0-100)",
@@ -2006,7 +2010,7 @@ def fetch_itvc_alquiler() -> list:
 
 
 def fetch_itvc_tarifas() -> list:
-    """I_PT: asequibilidad de la canasta IIEP sobre RIPTE (ADR-0232).
+    """I_PT: asequibilidad de la canasta IIEP sobre RIPTE (ADR-0235).
 
     Agua+energía se compara con el límite inferior de 10% del rango del Banco
     Mundial; transporte, con el 5% de ONU-Hábitat. En cada grupo, exceder el
@@ -2135,6 +2139,9 @@ def fetch_itvc_isac() -> list:
 
 BCRA_INF_BANCOS_ANEXO = ("https://www.bcra.gob.ar/archivos/Pdfs/"
                          "PublicacionesEstadisticas/informes/InfBanc_Anexo.xlsx")
+BCRA_IEF_CARGA_DEUDA = ("https://www.bcra.gob.ar/archivos/Pdfs/"
+                        "PublicacionesEstadisticas/informes/"
+                        "Informe-estabilidad-finananciera-2026-01-serie.xlsx")
 
 
 def _anexo_bancos_familias() -> tuple:
@@ -2237,6 +2244,46 @@ def fetch_mora_serie() -> list:
     _deuda, mora = _anexo_bancos_familias()
     return [[f"{ym}-01", round(v, 2)] for ym, v in sorted(mora.items())
             if ym >= "2021-07" and v]
+
+
+def fetch_carga_servicio_deuda_serie() -> list:
+    """Carga mensual del servicio de deuda de las familias sobre la masa
+    salarial registrada (CDF/MS), en porcentaje.
+
+    El IEF del BCRA publica el histórico mensual completo en su planilla de
+    series. Se busca la hoja y la columna por sus rótulos, no por el número
+    ``17`` que tiene en la edición de julio de 2026: ese orden puede cambiar
+    cuando el BCRA agregue gráficos. El rebase B100 invertido lo hace
+    :func:`itvc.rebase_de_serie`, igual que para la mora.
+    """
+    import openpyxl
+    r = requests.get(BCRA_IEF_CARGA_DEUDA, headers=HTTP_HEADERS,
+                     timeout=HTTP_TIMEOUT * 3, verify=False)
+    r.raise_for_status()
+    wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True, data_only=True)
+    ws = next((wb[s] for s in wb.sheetnames
+               if "carga mensual" in str(wb[s].cell(2, 1).value or "").lower()
+               and "deuda" in str(wb[s].cell(2, 1).value or "").lower()), None)
+    if ws is None:
+        raise ValueError("IEF BCRA: hoja de carga del servicio de deuda no encontrada")
+
+    encabezado = next((row for row in ws.iter_rows(values_only=True)
+                       if row and str(row[0] or "").strip().lower().startswith("per")
+                       and "CDF / MS" in row), None)
+    if encabezado is None:
+        raise ValueError("IEF BCRA: columna CDF / MS no encontrada")
+    col = encabezado.index("CDF / MS")
+
+    out = []
+    for row in ws.iter_rows(values_only=True):
+        fecha = row[0] if row else None
+        valor = row[col] if len(row) > col else None
+        if not hasattr(fecha, "year") or not isinstance(valor, (int, float)):
+            continue
+        out.append([f"{fecha.year:04d}-{fecha.month:02d}-01", round(float(valor), 3)])
+    if not out:
+        raise ValueError("IEF BCRA: serie CDF / MS vacía")
+    return out
 
 
 IVI_SERIE_STORE = Path(__file__).resolve().parents[1] / "data" / "vida" / "ivi_serie.json"
@@ -2521,6 +2568,9 @@ VIDA_DERIVADAS += [
     ("itvc_isac", "índice (100 = 4T-2023)", "INDEC ISAC desestacionalizado", fetch_itvc_isac),
     ("itvc_endeudamiento", "índice real (100 = 4T-2023)", "BCRA Informe sobre Bancos (familias) + IPC INDEC", fetch_itvc_endeudamiento),
     ("mora_familias", "% de cartera irregular (familias)", "BCRA — Informe sobre Bancos (personales + tarjetas)", fetch_mora_serie),
+    ("carga_servicio_deuda_hogares", "% de la masa salarial registrada",
+     "BCRA — IEF, carga del servicio de deuda de las familias (CDF/MS)",
+     fetch_carga_servicio_deuda_serie),
     # ADR-0224: las tres salen del MISMO colector y de la misma descarga.
     # `motorizacion_total` es la que puntúa; autos y motos son los Componentes
     # A y B de la matriz que explica su color, y por eso se siguen publicando

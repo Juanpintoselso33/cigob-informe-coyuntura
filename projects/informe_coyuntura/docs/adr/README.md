@@ -167,6 +167,7 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0172](0172-la-serie-termina-donde-esta-la-card.md) | La serie termina donde está la card |  | vigente |
 | [0183](0183-rediseno-del-cinturon-politico.md) | Rediseño del cinturón político según el documento de agosto: registrado, no aplicado |  | propuesto |
 | [0230](0230-nadie-publica-si-un-decreto-sigue-rigiendo.md) | Nadie publica si un decreto sigue rigiendo |  | rechazado |
+| [0232](0232-la-intensidad-laboral-complementa-la-calle.md) | La intensidad laboral complementa la calle | `conflictividad_nacional`, `jornadas_individuales_no_trabajadas_12m` | vigente |
 
 ### Gestión (ITCG)
 
@@ -252,7 +253,8 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0223](0223-el-espejo-de-las-motos-el-patentamiento-de-autos.md) | El espejo de las motos: el patentamiento de autos | `patentamiento_autos`, `patentamiento_motos` | vigente |
 | [0224](0224-puntua-la-motorizacion-total-no-cada-vehiculo.md) | Puntúa la motorización total, no cada vehículo por su lado | `motorizacion_total`, `patentamiento_autos`, `patentamiento_motos` | vigente |
 | [0225](0225-el-supermercado-deja-de-validar-el-indice-y-pasa-a-integrarlo.md) | El supermercado deja de validar el índice y pasa a integrarlo | `consumo_supermercados` | vigente |
-| [0232](0232-regulados-frente-al-salario-no-es-peso-de-tarifas.md) | La canasta de servicios puntúa contra asequibilidad, no contra 2023 | `peso_tarifas` | vigente |
+| [0231](0231-la-carga-de-deuda-anticipa-la-mora.md) | La carga de deuda anticipa la mora | `mora_familias`, `carga_servicio_deuda_hogares` | vigente |
+| [0235](0235-regulados-frente-al-salario-no-es-peso-de-tarifas.md) | La canasta de servicios puntúa contra asequibilidad, no contra 2023 | `peso_tarifas` | vigente |
 
 ### Espíritu de época
 
@@ -314,4 +316,5 @@ Los ADR son inmutables en su decisión: si se revierte, se crea un ADR nuevo que
 | [0213](0213-la-portada-dice-que-mide-cada-cinturon.md) | La portada dice qué mide cada cinturón, y la escala se explica en metodología |  | vigente |
 | [0220](0220-la-ficha-se-ata-al-colector-y-al-adr.md) | La ficha se ata al colector y al ADR |  | vigente |
 | [0227](0227-demorada-no-es-desactualizada.md) | «Demorada» no es «desactualizada» |  | vigente |
-| [0231](0231-el-snapshot-declara-como-se-obtuvo-cada-dato.md) | El snapshot declara cómo se obtuvo cada dato |  | vigente |
+| [0233](0233-la-dimension-tambien-tiene-historia.md) | La dimensión también tiene historia |  | vigente |
+| [0234](0234-el-snapshot-declara-como-se-obtuvo-cada-dato.md) | El snapshot declara cómo se obtuvo cada dato |  | vigente |

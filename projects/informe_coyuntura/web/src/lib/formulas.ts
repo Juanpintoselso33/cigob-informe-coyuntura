@@ -211,6 +211,10 @@ export const FORMULAS: Record<string, Formula> = {
     latex: String.raw`\frac{\text{mora}_{\text{pers}}\cdot\text{saldo}_{\text{pers}}+\text{mora}_{\text{tarj}}\cdot\text{saldo}_{\text{tarj}}}{\text{saldo}_{\text{pers}}+\text{saldo}_{\text{tarj}}}`,
     leyenda: "Porcentaje de la cartera de consumo de las familias en situación irregular (Informe sobre Bancos, BCRA), ponderando la mora de personales y tarjetas por el saldo de cada línea. En el ITCIS puntúa por el nivel relativo al 4T-2023. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
   },
+  carga_servicio_deuda_hogares: {
+    latex: String.raw`100\cdot\frac{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{4T-23}}}{\left(\frac{\text{servicio de deuda}}{\text{masa salarial registrada}}\right)_{\text{hoy}}}`,
+    leyenda: "Carga mensual de capital e intereses de las familias sobre la masa salarial registrada (CDF/MS, BCRA), con promedio móvil de tres meses en numerador y denominador. Se invierte al rebasear: más ingreso comprometido en deuda significa menor capacidad de pago y peor puntaje.",
+  },
   pluriempleo: {
     latex: String.raw`100\cdot\frac{\text{subocupaci\'on}_{\text{4T-23}}}{\text{subocupaci\'on}_{\text{hoy}}}`,
     leyenda: "Subocupación demandante (EPH): gente que necesita trabajar más horas. En estos indicadores «al revés» la fórmula se invierte a propósito —el valor de 2023 va arriba y el de hoy abajo— para que, igual que en todos los demás, un resultado por encima de 100 signifique mejora: si hoy hay menos que en 2023, el cociente supera 100.",
@@ -296,6 +300,10 @@ export const FORMULAS: Record<string, Formula> = {
   conflictividad_nacional: {
     latex: String.raw`\left(\frac{\text{eventos de protesta y disturbios en el pa\'is}_{\text{\'ultimos 12 meses}}}{\text{eventos}_{\text{2023}}}-1\right)\times 100`,
     leyenda: "Eventos de protesta y disturbios en todo el país (marchas, concentraciones y disturbios registrados por ACLED, el relevamiento académico internacional estándar), acumulados en los últimos 12 meses completos y comparados contra el total de 2023, la línea de base del mandato. Negativo = menos conflicto en la calle que en 2023. El mes en curso se excluye hasta que cierra, porque el registro se carga con rezago.",
+  },
+  jornadas_individuales_no_trabajadas_12m: {
+    latex: String.raw`\sum_{m=t-11}^{t}\sum_{p\in m}\left(\text{huelguistas}_{p}\times\text{duraci\'on}_{p}\right)`,
+    leyenda: "Jornadas individuales no trabajadas por paros, acumuladas en doce meses. La metodología oficial permite sumar esta magnitud entre meses porque ya combina el tamaño y la duración del paro; no se suman conflictos ni huelguistas, que podrían repetirse.",
   },
   iaf_transferencias: {
     latex: String.raw`\left(\frac{\text{transferencias a provincias}_{\text{a\~no}}}{\text{transferencias}_{\text{a\~no anterior}}}\cdot\frac{\overline{\text{IPC}}_{\text{a\~no anterior}}}{\overline{\text{IPC}}_{\text{a\~no}}}-1\right)\times 100`,

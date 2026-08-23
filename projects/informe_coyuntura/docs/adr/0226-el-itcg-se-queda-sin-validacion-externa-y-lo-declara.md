@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-21
 cinturon: 'gestion'
 archivos: ['scripts/validacion_externa.py', 'scripts/publicar.py', 'tests/test_giros_referencia_completa.py']
-relacionado: ['0031', '0045', '0108', '0158', '0159', '0161', '0162', '0164', '0167', '0218', '0225', '0228', '0229']
+relacionado: ['0031', '0045', '0108', '0158', '0159', '0161', '0162', '0164', '0167', '0218', '0225', '0228', '0229', '0231', '0233']
 ambito: 'ITCG · contra qué se valida el índice, y qué se hace cuando la respuesta es que no hay contra qué'
 origen: 'Editor, 21-ago-2026: «buscar alguna validación externa que sea UN SOLO INDICADOR», y después: «no vamos a privar al índice de validez, robustez y capacidad por tener un validador externo que es un accesorio» · «sigue faltando la validez externa después»'
 ---
@@ -117,7 +117,7 @@ con n = 30, el \|r\| crítico al 5% es 0,361.
 
 **El mejor en números estaba descalificado.** El precio relativo de los regulados
 era el único que cruzaba significancia al 5%, y su serie de origen —el IPC
-Regulados— era el numerador de `peso_tarifas`, **componente del ITCIS**. ADR-0232
+Regulados— era el numerador de `peso_tarifas`, **componente del ITCIS**. ADR-0235
 reemplazó luego ese componente por la canasta IIEP; este párrafo conserva el
 universo evaluado en esta decisión, no describe la fuente tarifaria vigente. Además
 su correlación es el episodio tarifario de 2024: el precio relativo salta de 100

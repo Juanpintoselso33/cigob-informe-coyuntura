@@ -154,7 +154,7 @@ def cobertura(ikey):
 # continuo en una escala donde 100 equivale a tensión 5, así que `publicar.py`
 # no le puede calcular umbrales en la unidad nativa y publica `umbrales: null`.
 # En 17 componentes esa escala nace del rebase 4T-2023. `peso_tarifas` es la
-# excepción deliberada de ADR-0232: nace de límites internacionales de
+# excepción deliberada de ADR-0235: nace de límites internacionales de
 # asequibilidad y 100 NO es una base temporal. Los cortes 4/6/8 de tensión se
 # invierten a índice, y como el corte es techo inclusivo (`tension <= tope` en
 # parametrica.color_de_tension), el borde queda del lado del color mejor:

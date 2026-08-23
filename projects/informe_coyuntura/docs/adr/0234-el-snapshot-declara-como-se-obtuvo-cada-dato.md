@@ -1,6 +1,6 @@
 ---
 madr: 4
-id: '0231'
+id: '0234'
 estado: 'aceptado'
 fecha: 2026-08-21
 cinturon: 'transversal'
@@ -10,7 +10,7 @@ ambito: 'Campo `metodo_obtencion` del snapshot · badge de origen del dato · co
 origen: 'La web declaraba «Automático» sobre ocho datos que no avanzan sin una persona'
 ---
 
-# ADR-0231 — El snapshot declara cómo se obtuvo cada dato
+# ADR-0234 — El snapshot declara cómo se obtuvo cada dato
 
 ## Contexto y planteo del problema
 

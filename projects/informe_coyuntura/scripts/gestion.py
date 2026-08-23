@@ -47,7 +47,7 @@ manuales.json. NO quiere decir que el valor avance sin una persona: varios de
 estos indicadores detectan la novedad automáticamente y sólo incorporan lo que
 alguien asentó o clasificó en el registro curado. Lo que la web declara sobre la
 procedencia de cada dato sale de `METODO_OBTENCION_EXCEPCIONES` en publicar.py
-(ADR-0231), que es el único lugar donde eso se define.
+(ADR-0234), que es el único lugar donde eso se define.
 
 Nota INDEC www: el WAF de indec.gob.ar resetea el handshake TLS de Python
 (fingerprinting del ClientHello); el fetch del XLSX cae a curl como fallback.

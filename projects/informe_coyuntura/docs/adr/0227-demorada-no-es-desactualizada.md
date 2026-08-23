@@ -6,7 +6,7 @@ fecha: 2026-08-21
 cinturon: 'transversal'
 archivos: ['scripts/gate_calidad.py', 'tests/test_gate_no_afirma_lo_que_el_snapshot_no_cumple.py', '.github/workflows/data-pipeline.yml']
 continua: ['0133']
-relacionado: ['0191', '0210', '0220', '0231']
+relacionado: ['0191', '0210', '0220', '0231', '0234']
 ambito: 'Gate G2 · flag `desactualizado` · el resumen que imprime el gate'
 origen: 'El gate decía que marcaba los indicadores demorados y no marcaba ninguno'
 ---

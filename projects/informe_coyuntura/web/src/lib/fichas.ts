@@ -196,6 +196,8 @@ export const FICHAS: Record<string, Ficha> = {
       parrafos: [
         "No hay pesos implícitos: la composición completa — dimensiones, pesos, puntajes del mes — se publica en la tabla de abajo y en la página del cinturón.",
         "La agregación es compensatoria: una dimensión buena puede tapar una mala. Por eso el índice incluye el flag de dimensión crítica: si una dimensión cae por debajo de su umbral crítico, se declara junto al valor publicado. La compensación se señaliza, no se corrige.",
+        "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
+        "Esa serie hereda la procedencia de la reconstrucción, y conviene leerla con eso puesto: se calcula sin los ajustes del analista y llega hasta el último mes que supera el piso de cobertura, que puede ser anterior al mes de la tarjeta. Un mes en el que ningún indicador de la dimensión tiene dato no deja punto: el hueco se publica como hueco, sin arrastre ni interpolación, y el panel declara desde qué mes arranca cada una.",
       ],
     },
     robustez: [
@@ -246,6 +248,7 @@ export const FICHAS: Record<string, Ficha> = {
         fecha: "2026-07-04",
         cambio: "IdC rediseñado por comparación estandarizada contra su propia historia, recaudación como promedio móvil trimestral real y matriz de validación cruzada como tercer pilar de robustez.",
       },
+      { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses (ADR-0231). No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes." },
     ],
   },
 
@@ -1391,7 +1394,7 @@ export const FICHAS: Record<string, Ficha> = {
     ],
     incidenciaTexto: [
       "El puntaje del índice se asigna por bandas de la variación, interpolado entre anclas: −32% o menos → el más alto; entre −32% y −29% → alto; entre −29% y −26% → moderado; entre −26% y −15% → bajo; más de −15% → el más bajo. Los umbrales se calibraron con la serie mensual real del indicador (30 meses, dic-2023 en adelante, rango observado −34% a +3%): las cinco bandas tienen meses reales observados.",
-      "Es el único indicador de la dimensión de conflicto social del índice del cinturón (10% del total).",
+      "Aporta el 60% de la dimensión de conflicto social (6% del ITCP). La intensidad laboral oficial aporta el 40% restante.",
     ],
     limitaciones: [
       "Cuenta eventos, no personas: una marcha multitudinaria y una concentración chica pesan igual — es una medida de frecuencia del conflicto, no de su masividad.",
@@ -1403,6 +1406,51 @@ export const FICHAS: Record<string, Ficha> = {
     revisiones: "ACLED revisa y completa semanas recientes en cada publicación; el acumulado de 12 meses se recalcula completo desde el archivo en cada actualización y absorbe esas revisiones automáticamente.",
     cambios: [
       { fecha: "2026-07-11", cambio: "Incorporado como la medida de la dimensión de conflicto social: eventos de protesta y disturbios de todo el país. Reemplaza a la medición anterior basada en los informes de CEPA, que no permitía una serie mensual comparable." },
+      { fecha: "2026-08-21", cambio: "Conserva 60% de conflicto social al incorporarse las jornadas individuales no trabajadas como segunda pata de intensidad laboral (ADR-0232)." },
+    ],
+  },
+
+  jornadas_individuales_no_trabajadas_12m: {
+    tipo: "indicador",
+    id: "jornadas_individuales_no_trabajadas_12m",
+    cinturon: "politica",
+    rezago: "La Secretaría de Trabajo actualiza la planilla mensual con alrededor de dos a tres meses de rezago.",
+    fuente: {
+      organismo: "Secretaría de Trabajo, Empleo y Seguridad Social",
+      operacion: "Estadísticas de conflictos laborales — evolución mensual de conflictos con paro, huelguistas y jornadas de paro",
+      serie: "Cuadro C1, total de jornadas de paro",
+      url: "https://www.argentina.gob.ar/trabajo/estadisticas/relaciones-laborales/conflictos-laborales",
+      acceso: "Automático: descubre y lee la planilla XLSX vigente publicada en la página oficial.",
+    },
+    transformaciones: [
+      "Toma el total mensual nacional de jornadas individuales no trabajadas: cantidad de huelguistas multiplicada por la duración de los paros.",
+      "Suma los últimos doce meses. La propia metodología de la fuente autoriza esta suma; no se suman conflictos ni huelguistas porque podrían repetirse entre meses.",
+      "Menos jornadas significa menos tensión. Las anclas son 5,0 · 6,5 · 8,0 · 10,0 millones, fijadas sobre los diecisiete años completos anteriores al mandato (2006-2022).",
+    ],
+    anclas: {
+      bandas: [
+        { banda: "≤ 5.000.000", puntaje: 100 },
+        { banda: "5.000.000 – 6.500.000", puntaje: 85 },
+        { banda: "6.500.000 – 8.000.000", puntaje: 65 },
+        { banda: "8.000.000 – 10.000.000", puntaje: 40 },
+        { banda: "> 10.000.000", puntaje: 10 },
+      ],
+      puntos: [[5000000, 100], [6500000, 85], [8000000, 65], [10000000, 40]],
+      unidadCorta: "jornadas 12m",
+    },
+    incidenciaTexto: [
+      "Aporta el 40% de la dimensión de conflicto social (4% del ITCP); ACLED conserva el 60% por cubrir también protestas y disturbios no laborales.",
+      "Con 4,76 millones de jornadas en el último corte cae en la mejor banda, pero no reemplaza a ACLED: mide intensidad laboral, no toda la conflictividad callejera.",
+    ],
+    limitaciones: [
+      "La cantidad de huelguistas es una estimación construida a partir de múltiples fuentes, no un padrón administrativo exhaustivo.",
+      "No captura protestas sin paro ni conflicto social fuera de las relaciones laborales; esa cobertura corresponde a ACLED.",
+      "Se usa el nivel absoluto. El crecimiento de largo plazo de la población asalariada puede moverlo aun con una propensión al paro estable; conviene reevaluar una tasa por trabajador cuando exista una serie oficial mensual compatible.",
+    ],
+    faltantes: "Si la página o la planilla no responden, el colector mantiene el último valor publicado como desactualizado y la serie conserva sus puntos previos.",
+    revisiones: "La planilla oficial se relee completa y las revisiones de meses anteriores se incorporan automáticamente.",
+    cambios: [
+      { fecha: "2026-08-21", cambio: "Incorporado como segunda pata de conflicto social para medir tamaño y duración de los paros, con 40% interno; ACLED conserva 60%." },
     ],
   },
 
@@ -2498,7 +2546,7 @@ export const FICHAS: Record<string, Ficha> = {
       "Sin piso de recorte, igual que el resto de los componentes: el deterioro no se maquilla.",
     ],
     incidenciaTexto: [
-      "Es el único componente de la dimensión de vulnerabilidad financiera, así que aporta el 10% del ITCIS por sí solo.",
+      "Aporta el 70% de la dimensión de vulnerabilidad financiera (7% del ITCIS). La carga del servicio de deuda aporta el 30% restante.",
       "Acompañaba al endeudamiento de consumo al 50% cada uno. El endeudamiento dejó de integrar el índice porque leía el crecimiento de la deuda real como mayor acceso al crédito, y con la morosidad multiplicada por más de cinco en el mismo período esa lectura compensaba justo la señal que la dimensión existe para dar.",
     ],
     limitaciones: [
@@ -2506,10 +2554,44 @@ export const FICHAS: Record<string, Ficha> = {
       "Cubre el crédito bancario regulado: no ve el endeudamiento no bancario (fintech, cadenas de consumo, prestamistas informales), donde el estrés suele ser mayor.",
       "El corte es la cartera consolidada del sistema, con el rezago de la planilla oficial.",
     ],
-    faltantes: "Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado. Es el único componente de su dimensión, así que no hay con qué renormalizar dentro de ella: si se quedara sin dato, la dimensión entera no se calcula y su diez por ciento se reparte entre las otras cinco. Ese es el costo de haber dejado la dimensión con un solo indicador, y queda declarado.",
+    faltantes: "Si la planilla no está disponible, la serie conserva sus puntos previos y el titular queda en el último mes publicado. Si faltara sólo la mora, la dimensión renormaliza temporalmente sobre la carga del servicio de deuda.",
     revisiones: "La planilla oficial se relee completa en cada actualización y adopta las revisiones del BCRA.",
     cambios: [
       { fecha: "2026-07-15", cambio: "Entra al ITCIS como indicador propio: hasta ahora la mora vivía adentro del componente de endeudamiento (deuda real × mora); separarla hace legible cada señal — acceso al crédito por un lado, estrés de pago por el otro — sin cambiar la información que el índice procesa." },
+      { fecha: "2026-08-21", cambio: "Conserva 70% de vulnerabilidad al incorporarse la carga del servicio de deuda como señal previa al incumplimiento (ADR-0231)." },
+    ],
+  },
+
+  carga_servicio_deuda_hogares: {
+    tipo: "indicador",
+    id: "carga_servicio_deuda_hogares",
+    cinturon: "vida_cotidiana",
+    rezago: "La serie es mensual, pero el BCRA la publica por lotes con el Informe de Estabilidad Financiera semestral.",
+    fuente: {
+      organismo: "BCRA",
+      operacion: "Informe de Estabilidad Financiera — estimación de la carga mensual de los servicios de deuda de las familias",
+      serie: "CDF/MS: carga del servicio de deuda sobre masa salarial registrada",
+      url: "https://www.bcra.gob.ar/publicaciones/informe-de-estabilidad-financiera-primer-semestre-2026/",
+      acceso: "Automático: lectura de la planilla oficial de series del informe.",
+    },
+    transformaciones: [
+      "Toma la carga de capital e intereses sobre la masa salarial registrada de los sectores público y privado.",
+      "El BCRA usa promedios de tres meses tanto para la carga como para la masa salarial.",
+      "En el ITCIS se rebasa al promedio del 4º trimestre de 2023 y se invierte: más ingreso comprometido en deuda significa peor capacidad de pago.",
+    ],
+    incidenciaTexto: [
+      "Aporta el 30% de vulnerabilidad financiera (3% del ITCIS); la mora conserva 70% porque es directa, mensual y más fresca.",
+      "La correlación alta en niveles con la mora (+0,883) refleja la crisis compartida, pero en cambios mensuales baja a +0,182: la carga anticipa presión y la mora confirma incumplimiento.",
+    ],
+    limitaciones: [
+      "El denominador cubre masa salarial registrada: no representa directamente a hogares informales o sin ingresos salariales.",
+      "Es una estimación de carga agregada; no muestra cómo se distribuye entre hogares ni cuántos concentran el esfuerzo.",
+      "La publicación semestral introduce más rezago que la mora aunque los puntos internos sean mensuales.",
+    ],
+    faltantes: "Si una edición del informe no está disponible, la serie conserva sus puntos previos. Si faltara este componente, vulnerabilidad renormaliza temporalmente sobre la mora.",
+    revisiones: "Cada nueva planilla reemplaza el histórico completo y puede revisar meses anteriores.",
+    cambios: [
+      { fecha: "2026-08-21", cambio: "Incorporado como señal previa al incumplimiento con 30% de vulnerabilidad; la mora conserva 70%." },
     ],
   },
 
@@ -3020,6 +3102,8 @@ export const FICHAS: Record<string, Ficha> = {
       leyenda: "Promedio ponderado en dos niveles: dentro de cada dimensión y entre dimensiones (35% reformas económicas · 25% reforma del Estado · 15% laboral · 15% privatizaciones e inversión · 10% social y orden).",
       parrafos: [
         "La agregación es compensatoria: por eso el índice incluye el flag de dimensión crítica — si una dimensión cae por debajo de su umbral, se declara junto al valor publicado en lugar de dejar que el promedio la esconda.",
+        "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
+        "Esa serie hereda la procedencia de la reconstrucción, y conviene leerla con eso puesto: se calcula sin los ajustes del analista y llega hasta el último mes que supera el piso de cobertura, que puede ser anterior al mes de la tarjeta. Un mes en el que ningún indicador de la dimensión tiene dato no deja punto: el hueco se publica como hueco, sin arrastre ni interpolación, y el panel declara desde qué mes arranca cada una.",
       ],
     },
     robustez: [
@@ -3059,6 +3143,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-03", cambio: "Revisión metodológica: puntaje interpolado entre anclas, flag de dimensión crítica, la brecha cambiaria deja de contar dos veces (sale del compuesto de apertura), y la litigiosidad entra al índice como resultado de la reforma laboral. El protocolo de orden público se automatiza con anclajes públicos." },
       { fecha: "2026-07-04", cambio: "Matriz de validación cruzada como tercer pilar de robustez, con el Merval en dólares como ancla propia del índice." },
       { fecha: "2026-08-21", cambio: "El Merval en dólares deja de encabezar la validación externa —publicaba +0,75 en niveles y +0,07 al descontar la tendencia— y el cinturón pasa a publicar el panel y su factor común. La validez externa queda declarada como problema abierto, con las cuatro condiciones que tendría que cumplir una candidata fijadas de antemano. Se evaluó y se descartó el gasto en subsidios económicos, como contraste y como componente. No cambia ningún indicador, ningún peso ni ninguna banda." },
+      { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses (ADR-0231). No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes." },
     ],
   },
 
@@ -3072,18 +3157,18 @@ export const FICHAS: Record<string, Ficha> = {
     nombreLargo: "Índice de Tensión del Cinturón de Impacto Social",
     base100: true,
     cinturon: "vida_cotidiana",
-    resumen: "Índice de seguimiento: diecisiete componentes se comparan contra el arranque del mandato y la canasta de servicios contra umbrales internacionales de asequibilidad por rubro. Más de 100 = mejores condiciones; menos de 100 = peores. Dieciocho componentes en seis dimensiones.",
+    resumen: "Índice de seguimiento: dieciocho componentes se comparan contra el arranque del mandato y la canasta de servicios contra umbrales internacionales de asequibilidad por rubro. Más de 100 = mejores condiciones; menos de 100 = peores. Diecinueve componentes en seis dimensiones.",
     marcoConceptual: [
-      "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, la mora de las familias con el crédito, el empleo y sus prospectivas, y el clima de confianza y seguridad.",
-      "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. Diecisiete componentes miden evolución acumulada contra el arranque del mandato; la canasta de servicios es la excepción documentada y usa anclas internacionales de asequibilidad.",
+      "El cinturón de impacto social mide el bolsillo y la calle: ingresos contra canasta, precios sensibles, la mora y la carga de deuda de las familias, el empleo y sus prospectivas, y el clima de confianza y seguridad.",
+      "El marco proviene del documento institucional del índice en versión base 100 (Fundación CIGOB, julio de 2026), heredero del Monitor de la Vida Cotidiana de mayo de 2026. Dieciocho componentes miden evolución acumulada contra el arranque del mandato; la canasta de servicios es la excepción documentada y usa anclas internacionales de asequibilidad.",
     ],
     seleccion: [
-      "Dieciocho componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
+      "Diecinueve componentes en seis dimensiones (la tabla muestra la composición vigente con los niveles de hoy). Todos puntúan: el cinturón no tiene indicadores de contexto — lo que no integra el índice no se publica como tarjeta.",
       "Criterio: fuentes públicas con serie reconstruible al 4º trimestre de 2023 — o con línea de base declarada. La victimización usa enero de 2024 porque la encuesta no existía en 2023; servicios públicos usa umbrales internacionales separados para agua+energía y transporte porque comparar contra las tarifas subsidiadas de 2023 falseaba su asequibilidad.",
     ],
     tratamiento: [
       "Componentes faltantes: los pesos se renormalizan dentro de la dimensión y entre dimensiones; ante una fuente caída, el indicador mantiene su último valor publicado marcado como desactualizado.",
-      "Polaridad: los componentes donde «más es peor» —informalidad, mora de las familias, pluriempleo, peso del trabajo independiente, victimización y búsquedas de urgencia— se invierten para que en todos valga la misma lectura: por encima de 100, mejora.",
+      "Polaridad: los componentes donde «más es peor» —informalidad, mora y carga del servicio de deuda, pluriempleo, peso del trabajo independiente, victimización y búsquedas de urgencia— se invierten para que en todos valga la misma lectura: por encima de 100, mejora.",
       "Recorte asimétrico declarado: todos los componentes salvo motorización total se acotan a un techo de 140 (un boom puntual no compra compensación ilimitada) y deliberadamente NO tienen piso — el deterioro no se recorta, se señaliza con el flag de dimensión crítica. Motorización total está exenta porque su peso efectivo limita el aporte y 140 no es un extremo frente a su historia; la ficha del componente cuantifica ambos argumentos.",
     ],
     normalizacion: [
@@ -3097,6 +3182,9 @@ export const FICHAS: Record<string, Ficha> = {
         "El índice y la tensión son DOS ESCALAS DISTINTAS y conviene no confundirlas. El índice suma niveles: cada componente vale lo que vale contra su base de 2023, y esos números se promedian. La tensión es una lectura del resultado —5 − (índice − 100) × 0,2, recortada al rango 0-10— pensada para ponerlo en la misma vara que los otros cinturones. La tensión que aparece en la ficha de cada componente aplica esa misma fórmula a ese componente solo, y sirve para leerlo, no para calcular: al índice entra el nivel, nunca la tensión.",
         "Eso explica algo que sorprende: varios componentes muestran una tensión de 0 o de 10 a la vez. No es que midan lo mismo — es que la escala 0-10 se corta ahí, y su tensión sin recortar seguiría subiendo o bajando. Cada ficha publica ese valor sin recortar junto al recortado, para que el techo no esconda la diferencia.",
         "Hay además un segundo recorte, éste sí sobre el número que entra al índice: salvo motorización total, ningún componente puede superar 140 (un salto puntual de uno solo no compra compensación ilimitada en el promedio). El recorte es sólo hacia arriba: las caídas no se recortan, se señalizan con el flag de dimensión crítica. La tabla de composición identifica cada componente recortado, su nivel crudo y cuánto resta el recorte; también marca la excepción cuando supera 140.",
+        "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
+        "Esa serie hereda la procedencia de la reconstrucción, y conviene leerla con eso puesto: se calcula sin los ajustes del analista y llega hasta el último mes que supera el piso de cobertura, que puede ser anterior al mes de la tarjeta. Un mes en el que ningún indicador de la dimensión tiene dato no deja punto: el hueco se publica como hueco, sin arrastre ni interpolación, y el panel declara desde qué mes arranca cada una.",
+        "Dos cosas de esa serie en este cinturón. Las dimensiones con pocos componentes tienen una serie muy pegada a la de ellos —vulnerabilidad financiera son dos, y la mora se lleva el 70%—, así que ahí la serie no agrega información sobre el componente: lo que agrega es ponerlo en la misma escala que las otras cinco dimensiones, que es lo único que permite comparar cuánto se movió cada una. Y el techo de recorte se aplica al COMPONENTE antes de promediar, nunca a la dimensión, así que la serie de la dimensión agrega componentes ya recortados: es el mismo número que entra al índice.",
       ],
     },
     robustez: [
@@ -3142,6 +3230,8 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-08-21", cambio: "Dos cambios en la dimensión de empleo. El cierre de PyMEs pasa a medirse con los empleadores activos de la SRT en lugar del IPI manufacturero, que era una aproximación por producción industrial (ADR-0218). Y entra el peso del trabajo independiente como su contracara (ADR-0219). El índice queda con diecisiete componentes y cuatro de los seis de la dimensión miden empleo directamente." },
       { fecha: "2026-08-21", cambio: "Entra el patentamiento de autos a la dimensión de ingresos y consumo, con el mismo peso y la misma transformación que el de motos (ADR-0223). El índice queda con dieciocho componentes. La razón no es sumar un dato más de consumo: con motos solas, un aumento del patentamiento se lee siempre como mejora, y la moto es además el sustituto barato del auto. Las dos series juntas distinguen más consumo de bajar de categoría." },
       { fecha: "2026-08-21", cambio: "Las ventas en supermercados a precios constantes dejan de ser el ancla de validación externa y entran como componente de la dimensión de ingresos y consumo, con 20% interno (ADR-0225). El índice queda con dieciocho componentes y es la primera vez que uno mide volumen efectivamente comprado. En el mismo movimiento el cinturón deja de tener ancla única y su contraste pasa a ser el panel: el reemplazo natural —el consumo privado de las Cuentas Nacionales— existe pero todavía tiene nueve trimestres, y queda declarado como referencia en formación con su umbral de promoción fijado de antemano." },
+      { fecha: "2026-08-21", cambio: "La carga del servicio de deuda de las familias entra como segunda pata de vulnerabilidad financiera, con 30% interno; la mora conserva 70%. El índice queda con diecinueve componentes." },
+      { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses (ADR-0233). No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes." },
     ],
   },
 
@@ -3154,13 +3244,13 @@ export const FICHAS: Record<string, Ficha> = {
     sigla: "ITCP",
     nombreLargo: "Índice de Tensión del Cinturón Político",
     cinturon: "politica",
-    resumen: "Mide el capital político del gobierno —la capacidad de gobernar con otros actores, no la popularidad— en una escala 0–100: 0 = mínimo capital político, 100 = máximo. Dieciocho indicadores en siete dimensiones con pesos editoriales explícitos.",
+    resumen: "Mide el capital político del gobierno —la capacidad de gobernar con otros actores, no la popularidad— en una escala 0–100: 0 = mínimo capital político, 100 = máximo. Diecinueve indicadores en siete dimensiones con pesos editoriales explícitos.",
     marcoConceptual: [
       "El cinturón político mide el capital político del gobierno según el marco de Carlos Matus (Política, Planificación y Gobierno): la capacidad de gobernar con otros actores —el Congreso, las provincias, el propio bloque legislativo, la calle, el Poder Judicial y el sector privado—, no la popularidad medida en encuestas. Se organiza en siete dimensiones: poder legislativo, alianzas territoriales, cohesión interna del oficialismo, conflicto social, imagen y voto, poder judicial y sector privado.",
       "A diferencia del ITCM, el ITCG y el ITCIS, no existe un documento institucional previo que fije estos pesos. Son una decisión editorial explícita: poder legislativo 21%, alianzas territoriales 19%, cohesión interna 15%, conflicto social 10%, imagen y voto 7%, poder judicial 15% y sector privado 13%. La imagen electoral pesa deliberadamente menos porque el proyecto distingue capital político de popularidad.",
     ],
     seleccion: [
-      "Dieciocho indicadores puntúan en siete dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El tablero publica solo lo que integra el índice: tres indicadores retirados conservan ficha histórica y otros seguimientos no puntuables permanecen internos, sin tarjeta pública. El esquema reemplazó a un promedio simple que pesaba todo por igual, sin distinguir actores ni mecanismos de poder.",
+      "Diecinueve indicadores puntúan en siete dimensiones (la tabla de composición de abajo muestra la estructura vigente con los puntajes de hoy). El tablero publica solo lo que integra el índice: tres indicadores retirados conservan ficha histórica y otros seguimientos no puntuables permanecen internos, sin tarjeta pública. El esquema reemplazó a un promedio simple que pesaba todo por igual, sin distinguir actores ni mecanismos de poder.",
       "Criterio de selección: fuentes públicas verificables y automatizables. El alineamiento de los gobernadores —una estimación manual sin fuente pública estructurada— se retiró del índice en julio de 2026 y lo reemplazó el alineamiento de voto de los senadores por provincia, una conducta observable.",
       "La revisión editorial de julio de 2026 acotó el objeto a la capacidad de gestionar y avanzar la agenda, pero amplió los actores observados: además del Parlamento, las alianzas territoriales, la cohesión y la conflictividad, incorporó la respuesta del Poder Judicial y del sector privado. La rotación del gabinete y el volumen de protestas de la Ciudad de Buenos Aires quedaron fuera del puntaje.",
     ],
@@ -3178,6 +3268,8 @@ export const FICHAS: Record<string, Ficha> = {
       leyenda: "Promedio ponderado en dos niveles: 21% poder legislativo · 19% alianzas territoriales · 15% cohesión interna · 10% conflicto social · 7% imagen y voto · 15% poder judicial · 13% sector privado.",
       parrafos: [
         "La agregación es compensatoria: una dimensión alta puede tapar una baja. Por eso el índice incluye el flag de dimensión crítica: si una dimensión cae por debajo de su umbral, se declara junto al valor publicado en lugar de dejar que el promedio la esconda.",
+        "Cada dimensión publica además su SERIE MENSUAL, y sale del mismo cálculo que el índice: es el promedio ponderado de sus indicadores, renormalizado por el peso que tiene dato ese mes, aplicado a la reconstrucción histórica. No es una cuenta aparte — es el paso intermedio del índice hecho visible. Sirve para distinguir dos situaciones que el valor agregado confunde: un índice quieto porque nada se mueve, y un índice quieto porque dos dimensiones se mueven en direcciones opuestas y se compensan.",
+        "Esa serie hereda la procedencia de la reconstrucción, y conviene leerla con eso puesto: se calcula sin los ajustes del analista y llega hasta el último mes que supera el piso de cobertura, que puede ser anterior al mes de la tarjeta. Un mes en el que ningún indicador de la dimensión tiene dato no deja punto: el hueco se publica como hueco, sin arrastre ni interpolación, y el panel declara desde qué mes arranca cada una.",
       ],
     },
     robustez: [
@@ -3216,6 +3308,7 @@ export const FICHAS: Record<string, Ficha> = {
       { fecha: "2026-07-15", cambio: "Las comisiones sin sanción salen del puntaje: su fuente es ciega a las sanciones del Senado y se solapa con la eficacia legislativa corregida. Poder legislativo queda con cuatro indicadores." },
       { fecha: "2026-07-16", cambio: "Se incorpora el bloqueo legislativo sostenido a la dimensión de poder legislativo: la contracara de las derrotas (qué porción de las normas propias desafiadas en el recinto sigue en pie). El índice pasa a once indicadores puntuables y los pesos internos de la dimensión se redistribuyen." },
       { fecha: "2026-07-31", cambio: "El índice alcanza su estructura vigente de siete dimensiones y dieciocho indicadores: incorpora el Poder Judicial y el sector privado como actores diferenciados, y amplía la medición legislativa. La composición y los pesos vigentes quedan publicados en la tabla del índice." },
+      { fecha: "2026-08-21", cambio: "Cada dimensión pasa a publicar su serie mensual, con la misma agregación del índice y los mismos meses (ADR-0231). No cambia ningún indicador, peso ni banda: expone la capa del medio, que hasta ahora sólo existía como el valor del mes." },
     ],
   },
 };

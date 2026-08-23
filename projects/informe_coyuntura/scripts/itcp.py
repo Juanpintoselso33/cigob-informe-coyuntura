@@ -490,6 +490,18 @@ BANDAS_ITCP = {
         (-26.0, -15.0, 40),
         (-15.0, INF, 10),
     ],
+    "jornadas_individuales_no_trabajadas_12m": [
+        # ADR-0232: intensidad laboral oficial, huelguistas × duración del
+        # paro, acumulada en doce meses. Menor = mejor. Anclas externas al
+        # mandato, fijadas sobre los 17 años completos 2006-2022: 5,0 / 6,5 /
+        # 8,0 / 10,0 millones dejan 4/2/4/3/4 años en las cinco bandas. No se
+        # calibran contra 2024-2026 ni se normalizan por el resultado actual.
+        (-INF, 5_000_000.0, 100),
+        (5_000_000.0, 6_500_000.0, 85),
+        (6_500_000.0, 8_000_000.0, 65),
+        (8_000_000.0, 10_000_000.0, 40),
+        (10_000_000.0, INF, 10),
+    ],
     "protestas_caba": [
         # FUERA DEL ÍNDICE Y DEL TABLERO de política desde 2026-07-10
         # (ADR-0048: "no sería pertinente en este cinturón") — se sigue
@@ -580,8 +592,13 @@ DIMENSIONES_ITCP = {
         # puntos, acumulado YTD no comparable, sin backfill posible), que
         # pasa a seguimiento interno. Antes: 2026-07-10 (ADR-0048)
         # protestas_caba había salido por la revisión editorial y CEPA
-        # había quedado solo. Los pesos ENTRE dimensiones no se tocan.
-        "indicadores": {"conflictividad_nacional": 1.0},
+        # había quedado solo. ADR-0232 agrega la intensidad laboral oficial:
+        # ACLED conserva 60% por cubrir protesta y disturbios en toda la calle;
+        # las jornadas individuales no trabajadas reciben 40% por agregar
+        # tamaño × duración con una serie oficial desde 2006. Los pesos ENTRE
+        # dimensiones no se tocan.
+        "indicadores": {"conflictividad_nacional": 0.60,
+                        "jornadas_individuales_no_trabajadas_12m": 0.40},
     },
     "imagen_voto": {
         "nombre": "Imagen y voto",
@@ -689,6 +706,7 @@ FAMILIAS_ITCP = {
     "desafios_legislativos": "tension",        # el Congreso decide dar la pelea
     "veto_quorum": "tension",                  # la cámara no se reúne
     "conflictividad_nacional": "tension",      # la calle
+    "jornadas_individuales_no_trabajadas_12m": "tension",  # intensidad laboral
     "brecha_obra_publica": "tension",          # los empresarios que dependen del Estado
     "apoyo_empresario": "tension",             # lo que las cámaras dicen del Gobierno
     "alineamiento_senadores_prov": "tension",  # cómo votan los senadores provinciales
@@ -774,6 +792,7 @@ REZAGO_MESES_ITCP = {
     "desafios_legislativos": 6.0,
     "bloqueo_sostenido": 6.0,
     "conflictividad_nacional": 6.0,
+    "jornadas_individuales_no_trabajadas_12m": 6.0,
     # Ventanas de 90 días.
     "alineamiento_senadores_prov": 1.5,
     "cohesion_bloque": 1.5,

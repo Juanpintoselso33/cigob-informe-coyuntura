@@ -6,7 +6,7 @@ nota_estado: 'Aceptado (observación verificada, sin cambio de método)'
 fecha: 2026-07-20
 cinturon: 'vida'
 archivos: ['itvc.tension_de_itvc']
-relacionado: ['0232']
+relacionado: ['0231', '0232', '0233', '0235']
 ambito: 'ITVC · `itvc.tension_de_itvc` · presentación por componente'
 origen: 'Auditoría de Vida Cotidiana, punto 3.1 y recomendación 1 (prioridad alta)'
 ---
@@ -31,7 +31,7 @@ tensión cruda 21,3 y el entonces `peso_tarifas` 10,7 contra un techo de 10;
 `endeudamiento_familiar`, `patentamiento_motos` y
 `sentimiento_digital` dan −3,0, −3,0 y −2,5 contra un piso de 0.
 
-**Estado del caso tarifario:** ADR-0232 reemplazó IPC Regulados/RIPTE por la
+**Estado del caso tarifario:** ADR-0235 reemplazó IPC Regulados/RIPTE por la
 canasta IIEP y anclas internacionales por rubro. La tabla siguiente conserva
 el contrafáctico que justificó esta decisión general, pero esos valores de
 `peso_tarifas` ya no describen el indicador vigente.

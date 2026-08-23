@@ -10,6 +10,8 @@ Indicadores:
   conflictividad_nacional   — % var. eventos de protesta y disturbios en TODO el país vs. base
                                2023 (ACLED, 12m completos; ADR-0052 — reemplaza a
                                movilizacion_cepa en la dimensión conflicto_social)
+  jornadas_individuales_no_trabajadas_12m — intensidad laboral oficial: huelguistas ×
+                               duración del paro, acumulado móvil de 12 meses (ADR-0232)
   movilizacion_cepa         — Conflictividad social CEPA 0–100 (scrape centrocepa.com.ar, auto).
                                SEGUIMIENTO INTERNO desde 2026-07-11 (ADR-0052): sin backfill
                                posible (CEPA publica desde fines de 2025) y con fórmula de
@@ -55,7 +57,7 @@ Ojo con el «auto» de esta lista: acá significa que el colector busca el dato 
 sin entrada en manuales.json. NO significa que el valor avance sin una persona:
 varios de estos indicadores dejan lo ambiguo en triage (`pendientes_de_codificar`,
 `pendientes_triage`). Lo que la web declara sobre la procedencia de cada dato sale
-de `METODO_OBTENCION_EXCEPCIONES` en publicar.py (ADR-0231), que es el único lugar
+de `METODO_OBTENCION_EXCEPCIONES` en publicar.py (ADR-0234), que es el único lugar
 donde eso se define.
 """
 import sys
@@ -67,9 +69,11 @@ import calendar
 import logging
 import time
 import unicodedata
+import warnings
 import requests
 import urllib3
 import pdfplumber
+import openpyxl
 import gestion  # reutiliza el fetcher ACLED ya construido para protestas_caba (ADR-0017)
 import itcp
 from html import unescape
@@ -104,6 +108,7 @@ INDICADORES_ESPERADOS = [
     "brecha_obra_publica",
     "apoyo_empresario",
     "conflictividad_nacional",
+    "jornadas_individuales_no_trabajadas_12m",
     "movilizacion_cepa",
     "iaf_transferencias",
     "cohesion_bloque",
@@ -847,6 +852,13 @@ def fetch_protestas_caba() -> dict | None:
 # ── Conflictividad social nacional (ACLED, país entero) ──────────────────────
 
 STALE_CONFLICTIVIDAD_DAYS = 30   # el agregado ACLED es semanal con rezago corto
+CONFLICTOS_LABORALES_URL = (
+    "https://www.argentina.gob.ar/trabajo/estadisticas/relaciones-laborales/"
+    "conflictos-laborales")
+CONFLICTOS_LABORALES_XLSX_FALLBACK = (
+    "https://www.argentina.gob.ar/sites/default/files/"
+    "evolucion_mensual_de_la_conflictividad_laboral._datos_a_mayo_2026.xlsx")
+STALE_JORNADAS_DAYS = 150  # publicación mensual con 2-3 meses de rezago observado
 
 
 def fetch_conflictividad_nacional() -> dict | None:
@@ -908,6 +920,83 @@ def fetch_conflictividad_nacional() -> dict | None:
         }
     except Exception as e:
         _warn("conflictividad_nacional", str(e))
+        return None
+
+
+def fetch_jornadas_individuales_no_trabajadas_serie() -> list:
+    """Serie rolling-12 de jornadas individuales no trabajadas, total país.
+
+    La Secretaría de Trabajo define la métrica como huelguistas por duración
+    del paro y declara expresamente que, a diferencia de conflictos y
+    huelguistas, sus valores mensuales sí pueden sumarse para períodos largos.
+    Se descubre el XLSX vigente desde la página oficial; el enlace directo se
+    conserva sólo como fallback ante cambios transitorios del HTML.
+    """
+    url_xlsx = CONFLICTOS_LABORALES_XLSX_FALLBACK
+    try:
+        r_page = requests.get(CONFLICTOS_LABORALES_URL, headers=HTTP_HEADERS,
+                              timeout=HTTP_TIMEOUT)
+        r_page.raise_for_status()
+        soup = BeautifulSoup(r_page.text, "html.parser")
+        hrefs = [a.get("href", "") for a in soup.find_all("a")]
+        candidato = next((h for h in hrefs
+                          if h.lower().endswith(".xlsx")
+                          and "evolucion_mensual" in h.lower()), None)
+        if candidato:
+            from urllib.parse import urljoin
+            url_xlsx = urljoin(CONFLICTOS_LABORALES_URL, candidato)
+    except requests.RequestException:
+        # La planilla directa puede seguir disponible aunque falle la página
+        # índice; el fallback permite conservar esa independencia.
+        pass
+
+    r = requests.get(url_xlsx, headers=HTTP_HEADERS, timeout=HTTP_TIMEOUT * 3)
+    r.raise_for_status()
+    # La planilla oficial trae rangos de impresión inválidos en varias hojas;
+    # openpyxl los ignora correctamente, pero emite catorce warnings por
+    # corrida. No son una condición del dato y ensucian el log operativo.
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", message="Print area cannot be set")
+        wb = openpyxl.load_workbook(io.BytesIO(r.content), read_only=True,
+                                    data_only=True)
+    ws = next((wb[s] for s in wb.sheetnames
+               if str(wb[s].cell(1, 1).value or "").startswith("C1.")), None)
+    if ws is None:
+        raise ValueError("conflictos laborales: cuadro C1 no encontrado")
+
+    mensual = []
+    for row in ws.iter_rows(min_row=4, values_only=True):
+        fecha = row[0] if row else None
+        valor = row[7] if len(row) > 7 else None  # total jornadas de paro
+        if not hasattr(fecha, "year") or not isinstance(valor, (int, float)):
+            continue
+        mensual.append((f"{fecha.year:04d}-{fecha.month:02d}", int(valor)))
+    mensual.sort()
+    if len(mensual) < 12:
+        raise ValueError("conflictos laborales: menos de 12 meses de jornadas")
+    return [[f"{mensual[i][0]}-01", sum(v for _, v in mensual[i - 11:i + 1])]
+            for i in range(11, len(mensual))]
+
+
+def fetch_jornadas_individuales_no_trabajadas() -> dict | None:
+    """Intensidad laboral oficial acumulada en los últimos doce meses."""
+    try:
+        serie = fetch_jornadas_individuales_no_trabajadas_serie()
+        fecha, valor = serie[-1]
+        return {
+            "valor": valor,
+            "unidad": "jornadas individuales no trabajadas (12m)",
+            "fuente": "Secretaría de Trabajo — Estadísticas de conflictos laborales",
+            "fecha_dato": fecha,
+            "desactualizado": _days_old(fecha) > STALE_JORNADAS_DAYS,
+            "detalle_txt": (
+                f"{valor:,}".replace(",", ".")
+                + " jornadas en los últimos 12 meses. La fuente las calcula como "
+                  "huelguistas × duración del paro y permite sumar los meses; "
+                  "mide intensidad laboral, no cantidad de protestas."),
+        }
+    except Exception as e:
+        _warn("jornadas_individuales_no_trabajadas_12m", str(e))
         return None
 
 
@@ -4653,6 +4742,8 @@ def main() -> None:
         ("brecha_obra_publica",           fetch_brecha_obra_publica),
         ("apoyo_empresario",              fetch_apoyo_empresario),
         ("conflictividad_nacional",       fetch_conflictividad_nacional),
+        ("jornadas_individuales_no_trabajadas_12m",
+                                             fetch_jornadas_individuales_no_trabajadas),
         ("movilizacion_cepa",             fetch_cepa_movilizacion),
         ("iaf_transferencias",            fetch_iaf_transferencias),
         ("eficacia_legislativa",          fetch_eficacia_legislativa),

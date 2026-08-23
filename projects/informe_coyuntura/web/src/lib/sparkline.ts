@@ -50,3 +50,40 @@ export function sparkline(serie: PuntoSerie[], w = 60, h = 22, pad = 3): SparkPa
 export function chartPath(serie: PuntoSerie[], w: number, h: number, pad = 6): SparkPaths {
   return sparkline(serie, w, h, pad);
 }
+
+// ── Small multiples con dominio COMPARTIDO (ADR-0233) ────────────────────────
+//
+// `sparkline()` normaliza cada serie contra su propio min/max, que es lo
+// correcto para una fila de indicadores heterogéneos: ahí sólo se lee la
+// forma. Para las seis dimensiones de un índice es exactamente lo contrario —
+// se las dibuja juntas para COMPARARLAS, y con escalas independientes una que
+// se movió 3 puntos y otra que se movió 82 salen del mismo alto. El dominio
+// tiene que venir de afuera, calculado sobre todos los paneles a la vez.
+//
+// Tampoco recorta a VENTANA_SPARK: los paneles de un índice tienen que cubrir
+// el mismo período o la comparación vuelve a ser falsa, y son 33 puntos.
+export interface PanelPaths extends SparkPaths {
+  puntos: { x: number; y: number }[];
+}
+
+export function panelPath(serie: PuntoSerie[], dominio: [number, number],
+                          w: number, h: number, pad = 4): PanelPaths {
+  const [min, max] = dominio;
+  const span = max - min || 1;
+  if (serie.length < 2) return { linea: "", area: "", ultimo: null, vacio: true, puntos: [] };
+  const stepX = w / (serie.length - 1);
+  const puntos = serie.map((p, i) => ({
+    x: +(i * stepX).toFixed(2),
+    y: +(h - pad - ((p.valor - min) / span) * (h - 2 * pad)).toFixed(2),
+  }));
+  const linea = puntos.map((p, i) => `${i === 0 ? "M" : "L"}${p.x},${p.y}`).join(" ");
+  const area = `${linea} L${puntos[puntos.length - 1].x},${h} L${puntos[0].x},${h} Z`;
+  return { linea, area, ultimo: puntos[puntos.length - 1], vacio: false, puntos };
+}
+
+// Altura en el viewBox de un valor dado, para la línea de referencia.
+export function yDe(valor: number, dominio: [number, number], h: number, pad = 4): number {
+  const [min, max] = dominio;
+  const span = max - min || 1;
+  return +(h - pad - ((valor - min) / span) * (h - 2 * pad)).toFixed(2);
+}

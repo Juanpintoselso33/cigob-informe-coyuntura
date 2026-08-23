@@ -5,7 +5,7 @@ estado: 'aceptado'
 fecha: 2026-08-21
 cinturon: 'transversal'
 archivos: ['tests/test_la_ficha_no_se_queda_atras.py', 'tests/test_web_declara_los_pesos_del_itvc.py']
-relacionado: ['0217', '0218', '0219', '0222', '0227', '0231']
+relacionado: ['0217', '0218', '0219', '0222', '0227', '0231', '0234']
 ambito: 'Verificación · cómo se evita que la prosa publicada describa un indicador que ya cambió'
 origen: 'Editor, 21-ago-2026: «¿cómo podemos hacer que esto no vuelva a pasar? sí o sí»'
 ---

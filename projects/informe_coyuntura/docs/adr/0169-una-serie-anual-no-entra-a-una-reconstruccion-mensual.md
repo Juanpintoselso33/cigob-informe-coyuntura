@@ -8,7 +8,7 @@ indice: 'ITCP'
 indicadores: [judicializacion, velocidad_resolucion]
 archivos: ['scripts/validacion_externa.py']
 continua: ['0168']
-relacionado: ['0086', '0095', '0162', '0167']
+relacionado: ['0086', '0095', '0162', '0167', '0231', '0233']
 ambito: 'Validación externa · reconstrucción histórica de índices mensuales'
 origen: 'La validación del ITCP empeoró al entrar los cuatro indicadores de ADR-0168 y la auditoría encontró por qué'
 ---

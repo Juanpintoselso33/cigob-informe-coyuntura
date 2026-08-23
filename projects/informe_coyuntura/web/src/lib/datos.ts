@@ -24,7 +24,7 @@ export interface Indicador {
   puntaje_itcm?: number;  // macro: puntaje 0-100 aplicado en el ITCM
   puntaje_itcg?: number;  // gestión: puntaje 0-100 aplicado en el ITCG
   puntaje_itcp?: number;  // política: puntaje 0-100 aplicado en el ITCP
-  indice_itvc?: number;   // vida: índice común; tarifas usa umbrales 10%/5% por rubro (ADR-0232)
+  indice_itvc?: number;   // vida: índice común; tarifas usa umbrales 10%/5% por rubro (ADR-0235)
   [k: string]: unknown;
 }
 export interface DimensionIndice {
@@ -37,6 +37,11 @@ export interface DimensionIndice {
   // publica el color (ver publicar._semaforos).
   semaforo?: { color?: string; tension?: number | null; umbrales?: unknown; unidad?: string | null; por_que?: string | null };
   indicadores: Record<string, { puntaje_banda: number; puntaje_aplicado: number; peso_efectivo: number }>;
+  // Serie mensual de la dimensión (ADR-0233): [periodo, puntaje]. Sale de la
+  // reconstrucción histórica, del mismo resultado del motor que arma la serie
+  // del índice — no de una segunda agregación. Ausente cuando la dimensión no
+  // tiene componentes con historia mensual reconstruible.
+  serie?: [string, number][];
 }
 export interface IndiceParametrico {
   valor: number;          // 0-100, mayor = menos tensión (cinturón aflojado)
@@ -50,6 +55,12 @@ export interface IndiceParametrico {
                dominante: { indicador: string; indice_sin: number } | null;
                n_draws: number; metodo: string;
                hist?: number[]; hist_min?: number; hist_max?: number };
+  // Encabezado de las series por dimensión (ADR-0233): los textos y el período
+  // cubierto. Su ausencia significa que ninguna dimensión llegó al mínimo de
+  // meses, y entonces la sección entera no se dibuja.
+  dimensiones_serie?: { titulo: string; sub: string; escala: string; base100: boolean;
+                        desde: string; hasta: string; n: number;
+                        n_dimensiones: number; nota: string };
   // Validación externa (ADR-0019 D6): serie mensual del índice junto a su
   // variable externa de contraste, con los textos de la sección armados por
   // publicar (título, explicación, leyendas, conclusión) y el modo de escala
@@ -367,6 +378,7 @@ export const LABELS: Record<string, string> = {
   apoyo_empresario: "Postura pública de las cámaras empresarias",
   desafios_legislativos: "Normas desafiadas en el recinto",
   conflictividad_nacional: "Conflictividad social (país)",
+  jornadas_individuales_no_trabajadas_12m: "Intensidad de los paros",
   movilizacion_cepa: "Tensión social (CEPA, interno)", iaf_transferencias: "Armonía federal (transferencias)",
   eficacia_legislativa: "Eficacia parlamentaria", cohesion_bloque: "Cohesión del bloque LLA (bicameral)",
   cohesion_bloque_senado: "Cohesión del bloque LLA (Senado, fusionado)",
@@ -380,6 +392,7 @@ export const LABELS: Record<string, string> = {
   // impacto social (claves de publicar.py)
   brecha_salario_cbt: "Salario real vs. canasta", ipc_alimentos: "Inflación de alimentos",
   endeudamiento_familiar: "Endeudamiento de consumo", mora_familias: "Mora de las familias",
+  carga_servicio_deuda_hogares: "Carga del servicio de deuda",
   peso_tarifas: "Canasta de servicios públicos / salario", alquiler_real: "Costo real del alquiler", pobreza_nowcast: "Pobreza (estimación mensual)", indice_lider: "Índice líder (anticipa el ciclo)",
   consumo_carne: "Consumo de carne vacuna per cápita",
   consumo_carnes_total: "Consumo total de carnes per cápita", informalidad: "Informalidad laboral",
@@ -450,6 +463,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   apoyo_empresario: "saldo",
   desafios_legislativos: "normas",
   conflictividad_nacional: "% vs 2023",
+  jornadas_individuales_no_trabajadas_12m: "jornadas 12m",
   iaf_transferencias: "% real", eficacia_legislativa: "%", cohesion_bloque: "%",
   cohesion_bloque_senado: "%", rotacion_gabinete: "salidas 12m",
   gobernadores_alineamiento: "%", veto_quorum: "%", comisiones_caidas: "%",
@@ -459,6 +473,7 @@ export const UNIDADES_CORTAS: Record<string, string> = {
   // impacto social
   brecha_salario_cbt: "canastas", ipc_alimentos: "% m/m", endeudamiento_familiar: "bill. $",
   mora_familias: "%",
+  carga_servicio_deuda_hogares: "%",
   peso_tarifas: "% salario", alquiler_real: "% m/m", pobreza_nowcast: "%", indice_lider: "índice", consumo_carne: "kg/hab", consumo_carnes_total: "kg/hab", informalidad: "%", mortalidad_pymes: "empleadores", trabajo_independiente: "%",
   despacho_cemento: "índice", pluriempleo: "%", inseguridad: "% hogares", icc_utdt: "índice",
   sentimiento_digital: "pts", patentamiento_motos: "u.", patentamiento_autos: "u.",
@@ -510,6 +525,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   desafios_legislativos: "Normas desafiadas (12 meses)",
   movilizacion_cepa: "Índice (0–100)",
   conflictividad_nacional: "% de variación vs 2023 (eventos de protesta y disturbios en el país, acum. 12 meses)",
+  jornadas_individuales_no_trabajadas_12m: "Jornadas individuales no trabajadas por paros (acumulado de 12 meses)",
   iaf_transferencias: "% interanual real",
   eficacia_legislativa: "% de proyectos",
   cohesion_bloque: "% de votos (Rice bicameral: Diputados 65% + Senado 35%)",
@@ -524,6 +540,7 @@ export const UNIDADES_LARGAS: Record<string, string> = {
   // impacto social
   brecha_salario_cbt: "Canastas", ipc_alimentos: "% mensual",
   endeudamiento_familiar: "Billones de pesos", mora_familias: "% de la cartera en situación irregular",
+  carga_servicio_deuda_hogares: "% de la masa salarial registrada comprometida en servicios de deuda",
   peso_tarifas: "% de un salario RIPTE", alquiler_real: "% mensual", pobreza_nowcast: "% de personas en hogares pobres", indice_lider: "Índice (nivel)",
   consumo_carne: "kg por habitante/año", consumo_carnes_total: "kg por habitante/año (vacuna + aviar + porcina)",
   informalidad: "% de asalariados",
@@ -619,7 +636,7 @@ export const BARRA_0_100 = new Set<string>([
   "eficacia_legislativa", "cohesion_bloque", "alineamiento_senadores_prov",
   "adhesion_reformas_provincial", "veto_quorum", "comisiones_caidas", "movilizacion_cepa",
   "informalidad", "pluriempleo", "sentimiento_digital", "icc_utdt", "indice_intencion_migratoria",
-  "mora_familias",
+  "mora_familias", "carga_servicio_deuda_hogares",
 ]);
 
 function clamp100(n: number): number { return Math.max(0, Math.min(100, n)); }

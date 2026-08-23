@@ -164,6 +164,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     aporta: "Aproxima la tensión en la calle a escala nacional, un límite real al margen de maniobra del Gobierno. Menos conflicto que en 2023 significa menos tensión; la comparación de 12 meses contra el año completo absorbe la estacionalidad del calendario de protestas.",
     frecuencia: "Semanal (ACLED)", tipo: "Variación (%)",
   },
+  jornadas_individuales_no_trabajadas_12m: {
+    que: "Cuántas jornadas individuales de trabajo se perdieron por paros en todo el país durante los últimos doce meses. La Secretaría de Trabajo las estima multiplicando la cantidad de huelguistas por la duración de cada paro.",
+    aporta: "Agrega intensidad a la frecuencia de eventos que mide ACLED: distingue un conflicto breve y pequeño de uno largo o masivo. Es una estadística laboral oficial y sus valores mensuales pueden sumarse sin duplicar conflictos ni personas.",
+    frecuencia: "Mensual (12m)", tipo: "Conteo de jornadas",
+  },
   movilizacion_cepa: {
     que: "El nivel de conflictividad social y laboral: paros, protestas y cortes, según los informes del centro CEPA.",
     aporta: "Aproxima la tensión en la calle. Desde julio de 2026 no integra el índice del cinturón ni se publica en el tablero: su fuente publica informes recién desde fines de 2025 (sin serie histórica posible) y su cifra acumula conflictos desde el inicio de cada año, lo que impide comparar meses entre sí — la medición continúa como contraste interno del indicador nacional de conflictividad.",
@@ -242,6 +247,11 @@ export const DESCRIPCIONES: Record<string, Descripcion> = {
     que: "Qué porcentaje del crédito de consumo de las familias (préstamos personales y tarjetas) está en situación irregular — con atrasos de pago —, ponderado por el saldo de cada línea.",
     aporta: "Es la señal directa de estrés financiero de los hogares: la deuda puede crecer por acceso sano o por necesidad, pero la mora que se dispara solo tiene una lectura. Puntúa invertida: más mora, peor.",
     frecuencia: "Mensual (~2 meses de rezago)", tipo: "Nivel (%)",
+  },
+  carga_servicio_deuda_hogares: {
+    que: "Qué porcentaje de la masa salarial registrada destinan las familias al pago mensual de capital e intereses de sus deudas. El BCRA calcula promedios de tres meses para el servicio de deuda y para la masa salarial.",
+    aporta: "Mide capacidad comprometida antes de que aparezca el incumplimiento. Complementa a la mora: una observa la presión de pagos y la otra los atrasos ya materializados.",
+    frecuencia: "Mensual (publicación semestral)", tipo: "Nivel (%)",
   },
   peso_tarifas: {
     que: "Qué porcentaje de un salario RIPTE cuesta la canasta mensual de electricidad, gas, agua y transporte de un hogar representativo del AMBA.",
@@ -468,7 +478,7 @@ export const DIM_DESCRIPCIONES: Record<string, string> = {
   // ITCIS
   ingresos: "Si el sueldo alcanza y qué compra: la brecha entre el salario y la canasta de pobreza, la pobreza estimada mes a mes, y tres termómetros de bolsillo —las ventas de supermercados a precios constantes, el consumo de carne y la motorización total, que suma autos y motos 0 km por habitante— que se mueven con el poder de compra.",
   precios: "Tres gastos sensibles: alimentos contra el IPC general, alquiler contra el resto de los precios y la canasta efectiva de electricidad, gas, agua y transporte como proporción del salario. Agua+energía y transporte se evalúan por separado contra referencias internacionales de asequibilidad, no contra las tarifas subsidiadas de 2023.",
-  vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo, medida por la mora de esa cartera: qué proporción del crédito de consumo está en situación irregular. Es la única señal de la dimensión desde que el stock de deuda salió del índice — el nivel de deuda no distingue acceso de fragilidad, la mora sí.",
+  vulnerabilidad: "Cuán expuestas están las familias por su deuda de consumo. Combina la mora de la cartera —incumplimiento ya materializado— con la carga del servicio de deuda sobre la masa salarial —capacidad de pago comprometida antes del atraso—.",
   empleo: "El trabajo por sus dos caras: cuánto hay y de qué calidad es. La informalidad y el empleo registrado del sector privado miden lo segundo y lo primero; las completan cuatro señales del entorno que demanda ese empleo: el cierre neto de empleadores PyME, la construcción (cemento, el sector más intensivo en mano de obra), el pluriempleo y el peso del trabajo independiente sobre el empleo registrado.",
   percepcion: "El ánimo con que se vive el momento, medido de dos maneras: preguntando (el Índice de Confianza del Consumidor de la UTDT) y observando qué busca la gente en internet.",
   seguridad: "Qué proporción de los hogares fue víctima de un delito. No es percepción ni sensación: es el hecho, relevado por encuesta.",

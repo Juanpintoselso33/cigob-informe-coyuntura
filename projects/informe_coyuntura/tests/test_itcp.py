@@ -254,12 +254,16 @@ def test_dimension_cohesion_interna_es_solo_el_compuesto():
     assert dim["peso"] == 0.15   # 0.20 → 0.18 (ADR-0088) → 0.15 (ADR-0126)
 
 
-def test_dimension_conflicto_social_sin_protestas():
+def test_dimension_conflicto_social_combina_extension_e_intensidad():
     # ADR-0048: protestas_caba salió a contexto. ADR-0052: movilizacion_cepa
     # también (sin backfill posible + acumulado YTD no comparable) —
-    # conflictividad_nacional (ACLED país entero) queda sola en la dimensión.
+    # conflictividad_nacional (ACLED país entero) queda como ancla. ADR-0232
+    # suma la intensidad laboral oficial, sin tocar el peso de la dimensión.
     dim = itcp.DIMENSIONES_ITCP["conflicto_social"]
-    assert dim["indicadores"] == {"conflictividad_nacional": 1.0}
+    assert dim["indicadores"] == {
+        "conflictividad_nacional": 0.60,
+        "jornadas_individuales_no_trabajadas_12m": 0.40,
+    }
     assert dim["peso"] == 0.10   # 0.15 → 0.12 (ADR-0088) → 0.10 (ADR-0126)
 
 
@@ -293,6 +297,15 @@ def test_banda_conflictividad_nacional():
     assert itcp.puntaje_banda(2.7, bandas) == 10      # máximo real (ene-2024)
 
 
+def test_banda_jornadas_individuales_no_trabajadas():
+    bandas = itcp.BANDAS_ITCP["jornadas_individuales_no_trabajadas_12m"]
+    assert itcp.puntaje_banda(4_760_195, bandas) == 100
+    assert itcp.puntaje_banda(5_500_000, bandas) == 85
+    assert itcp.puntaje_banda(7_000_000, bandas) == 65
+    assert itcp.puntaje_banda(9_000_000, bandas) == 40
+    assert itcp.puntaje_banda(11_000_000, bandas) == 10
+
+
 def test_pesos_itcp_suman_uno_en_cada_dimension():
     for dkey, dim in itcp.DIMENSIONES_ITCP.items():
         assert abs(sum(dim["indicadores"].values()) - 1.0) < 1e-9, dkey
@@ -311,6 +324,7 @@ def test_calcular_itcp_pondera_dimensiones():
         "adhesion_reformas_provincial": 90.0, # alianzas_territoriales, puntaje 100
         "cohesion_bloque": 100.0,            # cohesion_interna, puntaje 100 (compuesto bicameral)
         "conflictividad_nacional": -40.0,    # conflicto_social, puntaje 100 (ADR-0052)
+        "jornadas_individuales_no_trabajadas_12m": 4_000_000,
         # rotacion_gabinete / protestas_caba (ADR-0048) / movilizacion_cepa
         # (ADR-0052) / comisiones_caidas (ADR-0064): contexto — aunque
         # lleguen en `valores`, el motor los ignora al no estar en dimensiones
