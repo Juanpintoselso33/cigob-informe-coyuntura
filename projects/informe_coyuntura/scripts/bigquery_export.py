@@ -339,7 +339,7 @@ def construir_filas_analisis(gen: str, raiz: Path | None = None) -> dict[str, li
             for p in (valor.get("pares_altos") or []):
                 filas["redundancia_pares"].append({"generated_at": gen, "indice": indice, **p})
 
-    # Serie por dimensión (ADR-0231). TABLA PROPIA y no una fila más de
+    # Serie por dimensión (ADR-0233). TABLA PROPIA y no una fila más de
     # `series_indices` con nombre compuesto (`itvc_dim_empleo`): esa tabla tiene
     # una sola columna de identidad, así que la dimensión habría quedado
     # codificada dentro de un string que cada consulta tiene que volver a

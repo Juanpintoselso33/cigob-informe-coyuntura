@@ -51,7 +51,7 @@ export function chartPath(serie: PuntoSerie[], w: number, h: number, pad = 6): S
   return sparkline(serie, w, h, pad);
 }
 
-// ── Small multiples con dominio COMPARTIDO (ADR-0231) ────────────────────────
+// ── Small multiples con dominio COMPARTIDO (ADR-0233) ────────────────────────
 //
 // `sparkline()` normaliza cada serie contra su propio min/max, que es lo
 // correcto para una fila de indicadores heterogéneos: ahí sólo se lee la

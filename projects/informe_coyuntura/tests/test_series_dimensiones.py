@@ -245,7 +245,7 @@ def test_el_techo_de_winsorizacion_se_aplico_al_componente():
 def test_la_dimension_dominada_por_un_componente_lo_pone_en_la_misma_escala():
     """La versión original de esta guarda exigía que `vulnerabilidad` fuera 100%
     `mora_familias`, y su docstring decía que si algún día dejaba de serlo el
-    texto que lo explica quedaba mintiendo. **Disparó el mismo día**: ADR-0231
+    texto que lo explica quedaba mintiendo. **Disparó el mismo día**: ADR-0233
     le sumó la carga del servicio de deuda al 30%. La guarda hizo su trabajo y
     el texto de la ficha se reescribió.
 

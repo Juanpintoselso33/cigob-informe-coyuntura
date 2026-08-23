@@ -499,7 +499,7 @@ MIN_MESES_SERIE_DIMENSION = 12
 
 
 def _series_dimensiones(bloque, sigla, base100=False):
-    """Anexa a cada dimensión del índice su serie mensual (ADR-0231).
+    """Anexa a cada dimensión del índice su serie mensual (ADR-0233).
 
     El índice se publica con 31-33 meses y cada componente con los suyos, pero
     la capa del medio —la dimensión— existía sólo como el valor del mes. Y ahí

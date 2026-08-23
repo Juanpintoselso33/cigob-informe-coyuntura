@@ -303,7 +303,7 @@ def construir_series_itvc(dimensiones: dict | None = None) -> tuple:
     """(serie ITVC completa, serie ITVC sin ICC, serie ICC) mensuales.
 
     Si se pasa un dict en `dimensiones`, se llena in-place con la serie por
-    DIMENSIÓN del índice completo (ADR-0231). Sale por parámetro y no por
+    DIMENSIÓN del índice completo (ADR-0233). Sale por parámetro y no por
     valor de retorno para no cambiarle la firma a los cuatro llamadores que
     ya existen — y sobre todo para que salga del MISMO `calcular_itvc` que
     produce el punto del índice. Recalcularla aparte sería exactamente la
@@ -443,7 +443,7 @@ def _ultimo_mes_completo() -> str:
 
 def _anotar_dimensiones(acumulador: dict, ym: str, r: dict) -> None:
     """Vuelca las dimensiones del resultado `r` de un mes en el acumulador
-    `{dimension: {nombre, peso, serie: {ym: puntaje}}}` (ADR-0231).
+    `{dimension: {nombre, peso, serie: {ym: puntaje}}}` (ADR-0233).
 
     Es la única forma en que se arma una serie por dimensión en todo el
     proyecto: recibe el resultado que YA calculó el motor del índice para ese
@@ -474,7 +474,7 @@ def _serie_con_piso(nombre: str, valores_por_mes: dict, calcular,
     es una correlación: un punto con 30% de cobertura pesa lo mismo que uno con
     94% dentro del r, y ninguna nota al pie corrige eso.
 
-    `dimensiones`, si viene, se llena con la serie por dimensión (ADR-0231)
+    `dimensiones`, si viene, se llena con la serie por dimensión (ADR-0233)
     desde el MISMO `calcular(valores)` que produce el punto del índice, y por
     lo tanto con los mismos meses: un mes recortado por piso o por mes en curso
     tampoco deja punto de dimensión. Que las dos series compartan la exclusión
@@ -1158,7 +1158,7 @@ def _serie_itcp_sin(dimension: str) -> dict:
 
 
 def main():
-    # Serie por DIMENSIÓN de los cuatro índices (ADR-0231). Cada builder la
+    # Serie por DIMENSIÓN de los cuatro índices (ADR-0233). Cada builder la
     # llena desde el mismo resultado mensual del motor con el que arma el
     # punto del índice, así que no hay una segunda agregación que mantener.
     dims = {"itvc": {}, "itcm": {}, "itcg": {}, "itcp": {}}
@@ -1354,14 +1354,14 @@ def main():
           f"({min(serie_itcp)} → {max(serie_itcp)}) · último: {serie_itcp[max(serie_itcp)]}")
     resultados["serie_itcp"] = serie_itcp
 
-    # La capa del medio: hasta ADR-0231 la dimensión sólo existía como el
+    # La capa del medio: hasta ADR-0233 la dimensión sólo existía como el
     # valor del mes en curso, así que no se podía ver cuál explica el
     # movimiento del índice. La clave NO empieza con "serie_" a propósito:
     # bigquery_export barre ese prefijo hacia `series_indices`, que no tiene
     # columna donde poner de qué dimensión se trata.
     resultados["series_dimensiones"] = {
         sigla: bloque for sigla, bloque in dims.items() if bloque}
-    print("\nseries por dimensión (ADR-0231):")
+    print("\nseries por dimensión (ADR-0233):")
     for sigla, bloque in resultados["series_dimensiones"].items():
         detalle = " · ".join(f"{k} {len(v['serie'])}m" for k, v in sorted(bloque.items()))
         print(f"  {sigla.upper()}: {len(bloque)} dimensiones — {detalle}")
