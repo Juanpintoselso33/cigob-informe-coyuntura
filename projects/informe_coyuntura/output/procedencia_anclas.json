@@ -221,12 +221,12 @@
       "share_circular": 0.398
     },
     "ITCP": {
-      "peso_total": 1.0,
+      "peso_total": 1.0000000000000002,
       "categorias": {
         "externa": 0.1554,
         "conceptual": 0.48030000000000006,
-        "convencion": 0.33430000000000004,
-        "historia_larga": 0.03
+        "convencion": 0.2943,
+        "historia_larga": 0.07
       },
       "detalle": [
         {
@@ -308,6 +308,12 @@
           "motivo": "tasa de fracaso de quórum anclada en el cero (Congreso funcionando), cortes redondos (ADR-0121)"
         },
         {
+          "indicador": "jornadas_individuales_no_trabajadas_12m",
+          "categoria": "historia_larga",
+          "peso": 0.04,
+          "motivo": "anclas fijadas sobre los 17 años completos 2006-2022 de la serie oficial, anteriores al mandato (ADR-0235)"
+        },
+        {
           "indicador": "judicializacion",
           "categoria": "historia_larga",
           "peso": 0.03,
@@ -322,7 +328,7 @@
         {
           "indicador": "conflictividad_nacional",
           "categoria": "convencion",
-          "peso": 0.1,
+          "peso": 0.06,
           "motivo": "calibrada contra los 30 puntos propios de la serie ACLED desde 2024 (ADR-0052)"
         },
         {
@@ -341,34 +347,29 @@
       "share": {
         "externa": 0.155,
         "conceptual": 0.48,
-        "convencion": 0.334,
-        "historia_larga": 0.03
+        "convencion": 0.294,
+        "historia_larga": 0.07
       },
-      "share_circular": 0.334
+      "share_circular": 0.294
     },
     "ITVC": {
       "peso_total": 1.0000000000000002,
       "categorias": {
-        "conceptual": 1.0000000000000002
+        "conceptual": 0.8875000000000002,
+        "externa": 0.1125
       },
       "detalle": [
+        {
+          "indicador": "peso_tarifas",
+          "categoria": "externa",
+          "peso": 0.1125,
+          "motivo": "canasta IIEP/RIPTE: agua+energía contra 10-15% (Banco Mundial) y transporte contra 5% (ONU-Hábitat), evaluados por separado sin compensación (ADR-0235)"
+        },
         {
           "indicador": "brecha_salario_cbt",
           "categoria": "conceptual",
           "peso": 0.1338,
           "motivo": "rebase base-100 a la fecha fija 4T-2023 (RIPTE/CBT), no al rango observado (ADR-0123)"
-        },
-        {
-          "indicador": "peso_tarifas",
-          "categoria": "conceptual",
-          "peso": 0.1125,
-          "motivo": "nivel de regulados vs salario rebaseado a 4T-2023; ancla en fecha fija"
-        },
-        {
-          "indicador": "mora_familias",
-          "categoria": "conceptual",
-          "peso": 0.1,
-          "motivo": "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"
         },
         {
           "indicador": "ipc_alimentos",
@@ -387,6 +388,12 @@
           "categoria": "conceptual",
           "peso": 0.073,
           "motivo": "rebase base-100 al 2º semestre de 2023, invertido (ADR-0153). La base sale de la serie oficial del INDEC porque el nowcast mensual no llega al 4T-2023; el desvío del empalme está medido y declarado en la ficha"
+        },
+        {
+          "indicador": "mora_familias",
+          "categoria": "conceptual",
+          "peso": 0.07,
+          "motivo": "nivel B100 vs 4T-2023, invertido (ADR-0067); ancla en fecha fija"
         },
         {
           "indicador": "icc_utdt",
@@ -431,6 +438,12 @@
           "motivo": "nivel del ISAC desestacionalizado rebaseado a 4T-2023; ancla en fecha fija"
         },
         {
+          "indicador": "carga_servicio_deuda_hogares",
+          "categoria": "conceptual",
+          "peso": 0.03,
+          "motivo": "carga CDF/MS rebaseada a la fecha fija 4T-2023 e invertida (ADR-0231)"
+        },
+        {
           "indicador": "trabajo_independiente",
           "categoria": "conceptual",
           "peso": 0.0242,
@@ -462,7 +475,8 @@
         }
       ],
       "share": {
-        "conceptual": 1.0
+        "conceptual": 0.887,
+        "externa": 0.112
       },
       "share_circular": 0.0
     }

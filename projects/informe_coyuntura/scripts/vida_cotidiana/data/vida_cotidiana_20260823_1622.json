@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "timestamp": "2026-08-21T14:14:59.423465",
+    "timestamp": "2026-08-23T16:21:14.947464",
     "fuentes_automatizadas": [
       "indec_series (IPC, CBT, salarios, empleo, RIPTE, ISAC, EMAE, IPI, faena, acero)",
       "bcra (creditos privados, tarjeta, personales, hipotecarios, BADLAR)",
@@ -11,6 +11,7 @@
       "consumo_carnes (total vacuna+aviar+porcina per capita — tablero SAGYP)",
       "srt (empleadores con cobertura de ART por tamano de nomina)",
       "sipa (autonomos y monotributo sobre el empleo registrado)",
+      "iiep_uba_conicet (canasta de luz, gas, agua y transporte del AMBA / RIPTE)",
       "snic (estadisticas criminales nacionales + CABA)",
       "salud (datasets DEIS/SNVS via datos.salud.gob.ar CKAN)",
       "trends (interes Google: inflacion, precios, dolar, empleo, inseguridad, corrupcion)"
@@ -126,24 +127,24 @@
   },
   "bcra": {
     "prestamos_privado_total": {
-      "valor": 141425106.0,
-      "fecha": "2026-08-18"
+      "valor": 141996115.0,
+      "fecha": "2026-08-19"
     },
     "prestamos_tarjeta": {
-      "valor": 22166195.0,
-      "fecha": "2026-08-14"
+      "valor": 22304178.0,
+      "fecha": "2026-08-18"
     },
     "prestamos_personales": {
-      "valor": 21555481.0,
-      "fecha": "2026-08-14"
+      "valor": 21632191.0,
+      "fecha": "2026-08-18"
     },
     "prestamos_hipotecarios": {
-      "valor": 8428993.0,
-      "fecha": "2026-08-14"
+      "valor": 8446379.0,
+      "fecha": "2026-08-18"
     },
     "credito_consumo_total": {
-      "valor": 43721676.0,
-      "fecha": "2026-08-14",
+      "valor": 43936369.0,
+      "fecha": "2026-08-18",
       "unidad": "Millones de pesos",
       "nota": "Tarjeta + personales. Proxy de endeudamiento familiar de consumo."
     },
@@ -209,13 +210,13 @@
         "valor": 46422376.0
       },
       {
-        "fecha": "2026-08-14",
-        "valor": 43721676.0
+        "fecha": "2026-08-18",
+        "valor": 43936369.0
       }
     ],
     "badlar": {
-      "valor": 23.0,
-      "fecha": "2026-08-19"
+      "valor": 24.3125,
+      "fecha": "2026-08-20"
     }
   },
   "utdt": {
@@ -358,6 +359,15 @@
     "independientes": 2587,
     "asalariados": 9967
   },
+  "iiep_tarifas": {
+    "valor": 14.5,
+    "peso_salario_pct": 14.5,
+    "variacion_mensual_pct": -2.1,
+    "cobertura_costos_pct": 55.0,
+    "transporte_pct_canasta": 43.0,
+    "fecha": "2026-08-01",
+    "url": "https://economicas.uba.ar/iiep/reporte-de-tarifas-y-subsidios-agosto-2026/"
+  },
   "snic": {
     "inseguridad_snic": {
       "anio": "2025",
@@ -408,12 +418,12 @@
   "trends": {
     "sentimiento_digital": {
       "interes_relativo": {
-        "inflacion": 64.4,
-        "precios": 58.1,
-        "dolar": 19.7,
-        "empleo": 64.8,
+        "inflacion": 66.0,
+        "precios": 57.6,
+        "dolar": 20.1,
+        "empleo": 63.8,
         "inseguridad": 64.9,
-        "corrupcion": 73.8
+        "corrupcion": 77.8
       },
       "keywords": [
         "inflacion",
@@ -425,7 +435,7 @@
       ],
       "geo": "AR",
       "mes": "2026-07",
-      "canasta": 57.6,
+      "canasta": 58.4,
       "timeframe": "ventana fija 2021-01-01→, ultimo mes cerrado",
       "escala": "indice 100 = 4T-2023 por termino (peso igual, ADR-0222)",
       "fuente": "Google Trends via pytrends",

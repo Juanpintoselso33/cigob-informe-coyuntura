@@ -501,13 +501,23 @@ def test_publicar_expone_crudo_recorte_y_exencion_en_el_snapshot():
 
     publicar._scoring_vida_itvc(cinturon, series)
 
+    # Sin números fijos: `SNAPSHOT` es el snapshot PUBLICADO, así que clavar
+    # 173,6 acá era clavar el índice de Google Trends de un día — se movía en
+    # la corrida siguiente y rompía el nocturno sin que nada estuviera mal. Lo
+    # que el test tiene que fijar es la relación, que no depende de la fecha.
     sentimiento = indicadores["sentimiento_digital"]
     assert sentimiento["indice_itvc"] == itvc.WINSOR_TOPE
-    assert sentimiento["indice_itvc_crudo"] == 173.6
-    assert sentimiento["recorte_itvc"] == 33.6
+    assert sentimiento["indice_itvc_crudo"] > itvc.WINSOR_TOPE, (
+        "si el crudo no supera el techo no hay recorte que exponer y este test "
+        "dejó de mirar lo que dice mirar")
+    assert sentimiento["recorte_itvc"] == round(
+        sentimiento["indice_itvc_crudo"] - itvc.WINSOR_TOPE, 1)
     assert "winsor_exento" not in sentimiento
+    # La exención sólo significa algo mientras el componente esté por encima
+    # del techo: si cae debajo, el `assert` de abajo avisa que este caso dejó
+    # de probar la exención en vez de pasar por casualidad.
     motor = indicadores["motorizacion_total"]
-    assert motor["indice_itvc"] == 142.9
+    assert motor["indice_itvc"] > itvc.WINSOR_TOPE
     assert "indice_itvc_crudo" not in motor
     assert motor["winsor_exento"] is True
 

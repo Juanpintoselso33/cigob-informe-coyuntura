@@ -726,6 +726,25 @@ def test_el_redondeo_de_la_card_no_cuenta_como_desalineacion():
         assert "desalineacion_serie" not in cinturon["indicadores"]["peso_tarifas"]
 
 
+def test_una_card_sin_desglose_publica_en_vez_de_reventar():
+    """`_carry_forward` restaura sólo los campos que el snapshot previo tenía,
+    así que un previo anterior al desglose devuelve el titular sin
+    `transporte_pct_canasta`. Recalcular ahí hacía `float(None)` → TypeError,
+    y encima sobre los datos exactos para los que existe el texto de fórmula
+    sin desglose, que quedaba inalcanzable. El mes se coteja igual."""
+    cinturon = _card_tarifas(transporte_pct_canasta=None)
+    series = {"itvc_tarifas": [{"fecha": "2026-08-01", "valor": 112.6}]}
+    alineadas = publicar._series_tarifas_alineadas_con_card(cinturon, series)
+    assert alineadas["itvc_tarifas"] == series["itvc_tarifas"]
+    assert "desalineacion_serie" not in cinturon["indicadores"]["peso_tarifas"]
+
+    # Sin desglose el mes sigue mandando: si no coincide, se cae igual.
+    cinturon = _card_tarifas(transporte_pct_canasta=None)
+    publicar._series_tarifas_alineadas_con_card(
+        cinturon, {"itvc_tarifas": [{"fecha": "2026-07-01", "valor": 112.6}]})
+    assert cinturon["indicadores"]["peso_tarifas"]["desalineacion_serie"]
+
+
 def test_el_rango_de_tarifas_no_es_tan_ancho_que_no_guarde_nada():
     """La contracara: ensanchar la tolerancia no puede volver inerte al guard.
     La banda que admite la card mide 0,5 puntos —±0,215 de propagar el

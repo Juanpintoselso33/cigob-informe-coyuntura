@@ -1,7 +1,7 @@
 {
   "_meta": {
     "fuente": "ACLED (acleddata.com) — API de eventos, cuenta académica UBA",
-    "descargado": "2026-08-21",
+    "descargado": "2026-08-23",
     "criterio": "cortes = notas con ('block', 'picket', 'barricad', 'roadblock', 'corte', 'piquete')",
     "nota": "Serie de VALIDACIÓN de los anclajes DP (no puntúa). Nivel Research = eventos con ~12 meses de rezago.",
     "dp_caba": {
@@ -40,7 +40,7 @@
       "cortes": 15
     },
     "2025": {
-      "eventos": 163,
+      "eventos": 164,
       "cortes": 14
     }
   },
@@ -410,7 +410,7 @@
       "cortes": 1
     },
     "2025-08": {
-      "eventos": 14,
+      "eventos": 15,
       "cortes": 0
     }
   }

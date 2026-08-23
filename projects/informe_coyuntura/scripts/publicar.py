@@ -1900,6 +1900,14 @@ def _series_tarifas_alineadas_con_card(c, series):
     if not fecha or len(puntos) != 1:
         motivo = (f"card {fecha or 'sin fecha'} sin un único punto coincidente "
                   f"en itvc_tarifas")
+    elif tarjeta.get("valor") is None or tarjeta.get("transporte_pct_canasta") is None:
+        # Carry-forward desde un snapshot anterior a que la card llevara
+        # desglose: `_carry_forward` sólo restaura los campos que el previo
+        # tenía, así que el titular vuelve y el desglose no. Recalcular acá
+        # reventaba con TypeError —`float(None)`— sobre exactamente los datos
+        # para los que existe el texto de fórmula sin desglose, que por eso
+        # era inalcanzable. El mes sí se pudo cotejar: alcanza para publicar.
+        pass
     else:
         publicado = puntos[0].get("valor")
         piso, techo = _rango_indice_compatible_con_card(
